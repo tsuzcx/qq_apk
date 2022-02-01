@@ -7,17 +7,27 @@ import com.qq.taf.jce.JceStruct;
 public final class RequestBindMobileV2
   extends JceStruct
 {
+  static byte[] cache_encrptBindMobileInfo;
   static int cache_type = 0;
+  public byte[] encrptBindMobileInfo;
+  public boolean isChangeBind;
   public boolean isFromChangeBind;
   public boolean isFromUni;
+  public boolean isSecNewReq;
   public String mobileNo = "";
   public String nationCode = "";
   public long originBinder;
   public int type = 0;
   
+  static
+  {
+    cache_encrptBindMobileInfo = (byte[])new byte[1];
+    ((byte[])cache_encrptBindMobileInfo)[0] = 0;
+  }
+  
   public RequestBindMobileV2() {}
   
-  public RequestBindMobileV2(String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public RequestBindMobileV2(String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, byte[] paramArrayOfByte)
   {
     this.nationCode = paramString1;
     this.mobileNo = paramString2;
@@ -25,6 +35,9 @@ public final class RequestBindMobileV2
     this.type = paramInt;
     this.isFromUni = paramBoolean1;
     this.isFromChangeBind = paramBoolean2;
+    this.isChangeBind = paramBoolean3;
+    this.isSecNewReq = paramBoolean4;
+    this.encrptBindMobileInfo = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -35,6 +48,9 @@ public final class RequestBindMobileV2
     this.type = paramJceInputStream.read(this.type, 3, false);
     this.isFromUni = paramJceInputStream.read(this.isFromUni, 4, false);
     this.isFromChangeBind = paramJceInputStream.read(this.isFromChangeBind, 5, false);
+    this.isChangeBind = paramJceInputStream.read(this.isChangeBind, 6, false);
+    this.isSecNewReq = paramJceInputStream.read(this.isSecNewReq, 7, false);
+    this.encrptBindMobileInfo = ((byte[])paramJceInputStream.read(cache_encrptBindMobileInfo, 8, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -45,6 +61,11 @@ public final class RequestBindMobileV2
     paramJceOutputStream.write(this.type, 3);
     paramJceOutputStream.write(this.isFromUni, 4);
     paramJceOutputStream.write(this.isFromChangeBind, 5);
+    paramJceOutputStream.write(this.isChangeBind, 6);
+    paramJceOutputStream.write(this.isSecNewReq, 7);
+    if (this.encrptBindMobileInfo != null) {
+      paramJceOutputStream.write(this.encrptBindMobileInfo, 8);
+    }
   }
 }
 

@@ -1,10 +1,16 @@
-import android.view.MotionEvent;
-
-public abstract interface bojk
+public class bojk
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  private static bojl a;
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public static bojl a()
+  {
+    return a;
+  }
+  
+  public static void a(bojl parambojl)
+  {
+    a = parambojl;
+  }
 }
 
 

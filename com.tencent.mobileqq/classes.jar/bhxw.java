@@ -1,15 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
 
-class bhxw
-  implements ValueAnimator.AnimatorUpdateListener
+public class bhxw
+  implements DialogInterface.OnCancelListener
 {
-  bhxw(bhxv parambhxv) {}
+  public bhxw(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    bhxv.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidateSelf();
+    if (this.a.a != null) {
+      this.a.a.finish();
+    }
   }
 }
 

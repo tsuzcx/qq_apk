@@ -1,9 +1,4 @@
-public abstract interface apdg
-{
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-}
+class apdg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

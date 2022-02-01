@@ -1,14 +1,10 @@
-final class atvt
-  implements bigw
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+
+public abstract interface atvt
 {
-  atvt(atve paramatve) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.a.a();
-    }
-  }
+  public abstract void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo);
 }
 
 

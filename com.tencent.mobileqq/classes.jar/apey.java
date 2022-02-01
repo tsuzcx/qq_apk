@@ -1,19 +1,16 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class apey
+class apey
+  implements View.OnClickListener
 {
-  public static Bundle a(Bundle paramBundle)
+  apey(apex paramapex) {}
+  
+  public void onClick(View paramView)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = new apfd(localBundle);
-    paramBundle.a(10L);
-    paramBundle.b(true);
-    paramBundle.a(true);
-    paramBundle.b(4096L);
-    return paramBundle.a();
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

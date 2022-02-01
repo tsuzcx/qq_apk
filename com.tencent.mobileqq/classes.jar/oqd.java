@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 final class oqd
-  implements DialogInterface.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  oqd(DialogInterface.OnClickListener paramOnClickListener) {}
+  oqd(otd paramotd, ViewBase paramViewBase, otp paramotp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(ViewBase paramViewBase)
   {
-    paramDialogInterface.dismiss();
-    this.a.onClick(paramDialogInterface, paramInt);
+    paramViewBase = this.jdField_a_of_type_Otd.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+    ozs.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+    if (this.jdField_a_of_type_Otd.a() != null) {
+      this.jdField_a_of_type_Otd.a().g(this.jdField_a_of_type_Otp);
+    }
   }
 }
 

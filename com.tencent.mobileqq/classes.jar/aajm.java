@@ -1,26 +1,28 @@
-import android.content.Context;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.comment.CommentView;
+import com.tencent.biz.subscribe.comment.ReplyContainer;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aajm
-  implements bkhw
+public class aajm
+  implements View.OnClickListener
 {
-  aajm(Context paramContext, String paramString, aajp paramaajp, bkho parambkho) {}
+  public aajm(CommentView paramCommentView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (aajj.a()) {
-      return;
-    }
-    aajj.a(true);
-    switch (paramInt)
+    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
     {
+      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
+      this.a.jdField_a_of_type_Aajn.b.setVisibility(8);
+      this.a.jdField_a_of_type_Aajn.a.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      aajj.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aajp);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

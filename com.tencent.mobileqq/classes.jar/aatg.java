@@ -1,25 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.troop.VideoCombineHelper.4;
+import com.tencent.qphone.base.util.QLog;
 
 public class aatg
-  implements View.OnClickListener
+  extends aauc
 {
-  public aatg(TroopGiftPanel paramTroopGiftPanel, aasq paramaasq) {}
-  
-  public void onClick(View paramView)
+  public aatg(VideoCombineHelper.4 param4)
   {
-    if (this.jdField_a_of_type_Aasq.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_Aasq.c);
-    }
-    for (;;)
-    {
-      bcst.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_Aasq.jdField_a_of_type_JavaLangString);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_Aasq.c);
-    }
+    super(param4.this$0);
+  }
+  
+  public void b(aaub paramaaub)
+  {
+    QLog.d(".troop.VideoCombineHelper", 2, "");
   }
 }
 

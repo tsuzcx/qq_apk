@@ -13,7 +13,7 @@ class CommonRecordSoundPanel$5
   {
     this.this$0.setRequestedOrientation4Recording(true);
     this.this$0.a.getWindow().clearFlags(128);
-    QQToast.a(this.this$0.a, 2131689965, 1).b(this.this$0.a.getTitleBarHeight());
+    QQToast.a(this.this$0.a, 2131689972, 1).b(this.this$0.a.getTitleBarHeight());
   }
 }
 

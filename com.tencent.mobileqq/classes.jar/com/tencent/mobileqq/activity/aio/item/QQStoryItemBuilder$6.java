@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahfy;
+import ahpk;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 
 class QQStoryItemBuilder$6
   implements Runnable
 {
-  QQStoryItemBuilder$6(QQStoryItemBuilder paramQQStoryItemBuilder, ahfy paramahfy, long paramLong, StoryVideoItem paramStoryVideoItem) {}
+  QQStoryItemBuilder$6(QQStoryItemBuilder paramQQStoryItemBuilder, ahpk paramahpk, long paramLong, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    Long localLong = (Long)this.jdField_a_of_type_Ahfy.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$StoryChatVideoView.getTag();
+    Long localLong = (Long)this.jdField_a_of_type_Ahpk.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$StoryChatVideoView.getTag();
     if ((localLong == null) || (localLong.longValue() != this.jdField_a_of_type_Long)) {
       return;
     }
-    this.jdField_a_of_type_Ahfy.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
-    this.jdField_a_of_type_Ahfy.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
-    QQStoryItemBuilder.a(this.jdField_a_of_type_Ahfy.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$StoryChatVideoView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, this.this$0.c, this.this$0.d, this.this$0.a);
+    this.jdField_a_of_type_Ahpk.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
+    this.jdField_a_of_type_Ahpk.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
+    QQStoryItemBuilder.a(this.jdField_a_of_type_Ahpk.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$StoryChatVideoView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, this.this$0.c, this.this$0.d, this.this$0.a);
   }
 }
 

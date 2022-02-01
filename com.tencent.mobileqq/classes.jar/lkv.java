@@ -1,19 +1,25 @@
-import com.tencent.av.core.VcControllerImpl;
-
 public class lkv
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public byte[] b;
-  public long c;
-  public long d;
-  public long e;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = "";
+  int jdField_c_of_type_Int = 0;
+  String jdField_c_of_type_JavaLangString = "";
+  int jdField_d_of_type_Int = 0;
+  String jdField_d_of_type_JavaLangString = "";
+  int jdField_e_of_type_Int = 0;
+  String jdField_e_of_type_JavaLangString = "";
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  int l = 0;
+  int m = 0;
   
-  public lkv(VcControllerImpl paramVcControllerImpl) {}
+  public lkv(lkl paramlkl) {}
 }
 
 

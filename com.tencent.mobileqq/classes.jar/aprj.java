@@ -1,106 +1,302 @@
-import android.os.Bundle;
-import com.tencent.ark.open.delegate.IArkDelegateNet;
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
 
-final class aprj
-  extends IArkDelegateNet
+public abstract class aprj
 {
-  public void download(String paramString, boolean paramBoolean1, boolean paramBoolean2, HashMap<String, String> paramHashMap, File paramFile, IArkDelegateNetCallback paramIArkDelegateNetCallback)
+  public static final float[] a;
+  public float a;
+  public aprf a;
+  public aprg a;
+  public aprk a;
+  public aprp a;
+  public String a;
+  private boolean a;
+  public short[] a;
+  public float b;
+  public String b;
+  public float[] b;
+  public float c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public int m;
+  public int n = -1;
+  public int o = 0;
+  
+  static
   {
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", paramString });
-    String str;
-    if (paramHashMap != null)
-    {
-      str = (String)paramHashMap.get("Cookie");
-      if (paramHashMap == null) {
-        break label161;
-      }
-      paramHashMap = (String)paramHashMap.get("Referer");
-      label53:
-      if (paramFile == null) {
-        break label168;
-      }
-    }
-    label161:
-    label168:
-    for (paramFile = paramFile.getAbsolutePath();; paramFile = "")
-    {
-      if (1 == BaseApplicationImpl.sProcessId) {
-        break label175;
-      }
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("url", paramString);
-      ((Bundle)localObject).putBoolean("supportGzip", paramBoolean1);
-      ((Bundle)localObject).putBoolean("supportRedirect", paramBoolean2);
-      ((Bundle)localObject).putString("Cookie", str);
-      ((Bundle)localObject).putString("Referer", paramHashMap);
-      ((Bundle)localObject).putString("file", paramFile);
-      apqv.a().a("callDownload", (Bundle)localObject, new aprm(this, paramString, paramIArkDelegateNetCallback));
-      return;
-      str = "";
-      break;
-      paramHashMap = "";
-      break label53;
-    }
-    label175:
-    Object localObject = ((bhhh)BaseApplicationImpl.getApplication().getRuntime().getManager(47)).a(1);
-    paramFile = new bhhf(paramString, new File(paramFile));
-    paramFile.n = paramBoolean1;
-    paramFile.p = paramBoolean2;
-    if (str != null) {
-      paramFile.a("Cookie", str);
-    }
-    if (paramHashMap != null) {
-      paramFile.a("Referer", paramHashMap);
-    }
-    paramHashMap = new Bundle();
-    ((bhhk)localObject).a(paramFile, new aprn(this, paramString, paramIArkDelegateNetCallback), paramHashMap);
+    jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
   }
   
-  public int getNetworkType()
+  public aprj(int paramInt)
   {
-    return bgnt.b(BaseApplication.getContext());
+    this.jdField_c_of_type_JavaLangString = aprn.jdField_a_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nuniform samplerExternalOES samplerOES;\nuniform sampler2D sampler2d1;\nuniform sampler2D sampler2d2;\nuniform sampler2D sampler2d3;\nuniform vec4 u_screenColor;\nvarying vec2 vTextureCoord;\n";
+    this.jdField_e_of_type_JavaLangString = "//抠像算法相关定义片段\n";
+    this.jdField_f_of_type_JavaLangString = "//用户自己定义变量及方法相关片段\n";
+    this.jdField_g_of_type_JavaLangString = "void main() {\n    vec2 position = vTextureCoord;\n";
+    this.jdField_h_of_type_JavaLangString = "    //用户定义片段，用于在获取颜色值前处理, 如纹理坐标改变\n";
+    this.jdField_i_of_type_JavaLangString = "    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);\n    #if defined(TEXTURE_TYPE_OES)\n        gl_FragColor = texture2D(samplerOES, position);\n        gl_FragColor.r = max(0.0, min(gl_FragColor.r, 1.0));\n        gl_FragColor.g = max(0.0, min(gl_FragColor.g, 1.0));\n        gl_FragColor.b = max(0.0, min(gl_FragColor.b, 1.0));\n    #endif\n    #if defined(TEXTURE_TYPE_SAMPLER2D)\n        gl_FragColor = texture2D(sampler2d1, position);\n    #endif\n    #if defined(TEXTURE_TYPE_Y_U_V)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        yuv.y = texture2D(sampler2d2, position).r-0.5;\n        yuv.z = texture2D(sampler2d3, position).r-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;\n        gl_FragColor.a = 1.0;\n    #endif\n    #if defined(TEXTURE_TYPE_Y_UV)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        vec2 uv = texture2D(sampler2d2, position).ra;\n        yuv.y = uv.x-0.5;\n        yuv.z = uv.y-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;//yuv->rgb\n        gl_FragColor.a = 1.0;\n    #endif\n";
+    this.jdField_j_of_type_JavaLangString = aprn.jdField_b_of_type_JavaLangString;
+    this.jdField_k_of_type_JavaLangString = aprn.jdField_c_of_type_JavaLangString;
+    this.jdField_l_of_type_JavaLangString = aprn.jdField_d_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaLangString = "precision mediump float;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nuniform mat4 uMVPMatrix;\nvoid main() {\n   gl_Position = uMVPMatrix * aPosition;\n   vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}";
+    this.o = paramInt;
   }
   
-  public boolean isNetworkAvailable()
+  private final int a(aprm paramaprm, boolean paramBoolean)
   {
-    return bgnt.g(null);
+    int i1 = 0;
+    a(paramaprm);
+    if (this.jdField_a_of_type_Aprk != null) {
+      this.jdField_a_of_type_Aprk.a();
+    }
+    if (this.n == 1) {
+      this.jdField_a_of_type_Aprf.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    }
+    for (;;)
+    {
+      GLES20.glBindTexture(3553, 0);
+      GLES20.glBindFramebuffer(36160, 0);
+      aprn.a("keyingHandleAfter");
+      if (paramBoolean) {
+        i1 = this.jdField_a_of_type_Aprg.a();
+      }
+      return i1;
+      this.jdField_a_of_type_Aprp.a();
+    }
   }
   
-  public void sendAppMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, IArkDelegateNetCallback paramIArkDelegateNetCallback)
+  private final void a(aprm paramaprm, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.sendAppMsg cmd=", paramString1, ", msg=", paramString2 });
-    if (1 != BaseApplicationImpl.sProcessId)
+    if (!this.jdField_a_of_type_Boolean) {
+      a(-1, 0.0F, 0.0F, 0.0F);
+    }
+    GLES20.glUseProgram(this.jdField_d_of_type_Int);
+    aprn.a("glUseProgram");
+    if (paramBoolean)
     {
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("cmd", paramString1);
-      ((Bundle)localObject).putString("msg", paramString2);
-      ((Bundle)localObject).putInt("timeOut", paramInt1);
-      ((Bundle)localObject).putInt("notifyType", paramInt2);
-      apqv.a().a("callSendAppMsg", (Bundle)localObject, new aprk(this, paramString1, paramString2, paramIArkDelegateNetCallback, paramInt2));
+      this.jdField_a_of_type_Aprg.a(paramInt1, paramInt2);
+      GLES20.glViewport(0, 0, paramInt1, paramInt2);
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+      GLES20.glClear(16384);
+    }
+    if (this.n == 1) {}
+    for (;;)
+    {
+      GLES20.glUniformMatrix4fv(this.jdField_g_of_type_Int, 1, false, paramArrayOfFloat1, 0);
+      GLES20.glUniformMatrix4fv(this.jdField_h_of_type_Int, 1, false, paramArrayOfFloat2, 0);
+      if (this.m != -1) {
+        GLES20.glUniform4f(this.m, paramaprm.jdField_a_of_type_Float, paramaprm.jdField_b_of_type_Float, paramaprm.jdField_c_of_type_Float, 1.0F);
+      }
+      aprn.a("keyingHandleBefore");
+      return;
+      this.jdField_a_of_type_Aprp.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    }
+  }
+  
+  public final int a(int[] paramArrayOfInt, aprm paramaprm, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    return a(paramArrayOfInt, paramaprm, paramArrayOfFloat1, paramArrayOfFloat2, false, 0, 0);
+  }
+  
+  public final int a(int[] paramArrayOfInt, aprm paramaprm, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramArrayOfInt == null) {
+      throw new IllegalArgumentException("textureIds can not be null!");
+    }
+    a(paramaprm, paramArrayOfFloat1, paramArrayOfFloat2, paramBoolean, paramInt1, paramInt2);
+    switch (this.o)
+    {
+    }
+    for (;;)
+    {
+      aprn.a("keyingTexture");
+      return a(paramaprm, paramBoolean);
+      if (paramArrayOfInt.length < 1) {
+        throw new IllegalArgumentException("textureIds.size should >= 1!");
+      }
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, paramArrayOfInt[0]);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glUniform1i(this.jdField_i_of_type_Int, 0);
+      continue;
+      if (paramArrayOfInt.length < 1) {
+        throw new IllegalArgumentException("textureIds.size should >= 1!");
+      }
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(36197, paramArrayOfInt[0]);
+      GLES20.glTexParameterf(36197, 10241, 9728.0F);
+      GLES20.glTexParameterf(36197, 10240, 9729.0F);
+      GLES20.glTexParameteri(36197, 10242, 33071);
+      GLES20.glTexParameteri(36197, 10243, 33071);
+      GLES20.glUniform1i(this.jdField_l_of_type_Int, 0);
+      continue;
+      if (paramArrayOfInt.length < 2) {
+        throw new IllegalArgumentException("textureIds.size should >= 2!");
+      }
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, paramArrayOfInt[0]);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glUniform1i(this.jdField_i_of_type_Int, 0);
+      GLES20.glActiveTexture(33985);
+      GLES20.glBindTexture(3553, paramArrayOfInt[1]);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glUniform1i(this.jdField_j_of_type_Int, 1);
+      if (this.o == 3)
+      {
+        if (paramArrayOfInt.length < 3) {
+          throw new IllegalArgumentException("textureIds.size should >= 3!");
+        }
+        GLES20.glActiveTexture(33986);
+        GLES20.glBindTexture(3553, paramArrayOfInt[2]);
+        GLES20.glTexParameterf(3553, 10240, 9729.0F);
+        GLES20.glTexParameterf(3553, 10241, 9729.0F);
+        GLES20.glTexParameterf(3553, 10242, 33071.0F);
+        GLES20.glTexParameterf(3553, 10243, 33071.0F);
+        GLES20.glUniform1i(this.jdField_k_of_type_Int, 2);
+      }
+    }
+  }
+  
+  protected String a()
+  {
+    this.jdField_c_of_type_JavaLangString = aprn.a(this.o);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append(this.jdField_d_of_type_JavaLangString).append(this.jdField_e_of_type_JavaLangString).append(this.jdField_f_of_type_JavaLangString).append(this.jdField_g_of_type_JavaLangString).append(this.jdField_h_of_type_JavaLangString).append(this.jdField_i_of_type_JavaLangString).append(this.jdField_j_of_type_JavaLangString).append(this.jdField_k_of_type_JavaLangString).append(this.jdField_l_of_type_JavaLangString);
+    return localStringBuilder.toString();
+  }
+  
+  protected abstract void a();
+  
+  public final void a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    long l1 = System.currentTimeMillis();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      throw new IllegalArgumentException("mVertexShader can not be empty!");
+    }
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    Object localObject = (ArkAppCenter)BaseApplicationImpl.getApplication().getRuntime().getManager(121);
-    if (localObject == null)
-    {
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, "ArkMultiProc.callSendAppMsg  appCenter is null");
-      return;
+    this.jdField_a_of_type_Boolean = true;
+    this.n = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_JavaLangString = a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("KeyingBase", 4, "init. markerType = " + this.n + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", mFragmentShader = \n" + this.jdField_b_of_type_JavaLangString);
     }
-    localObject = ((ArkAppCenter)localObject).a();
-    if (localObject == null)
-    {
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, "ArkMultiProc.callSendAppMsg  sso is null");
-      return;
+    if (this.n == 1) {
+      this.jdField_a_of_type_Aprf = new aprf(1.0F, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
     }
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.callSendAppMsg cmd=", paramString1, ", msg=", paramString2 });
-    ((apou)localObject).a(paramString1, paramString2, paramInt1, paramInt2, new aprl(this, paramIArkDelegateNetCallback));
+    for (;;)
+    {
+      this.jdField_a_of_type_Aprg = new aprg();
+      this.jdField_d_of_type_Int = aprn.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      aprn.a("createProgram");
+      if (this.jdField_d_of_type_Int == 0) {
+        break;
+      }
+      this.jdField_e_of_type_Int = GLES20.glGetAttribLocation(this.jdField_d_of_type_Int, "aPosition");
+      aprn.a("glGetAttribLocation aPosition");
+      if (this.jdField_e_of_type_Int != -1) {
+        break label303;
+      }
+      throw new RuntimeException("Could not get attrib location for aPosition");
+      if ((this.jdField_b_of_type_ArrayOfFloat != null) && (this.jdField_a_of_type_ArrayOfShort != null)) {
+        this.jdField_a_of_type_Aprp = new aprp(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfShort);
+      } else {
+        this.jdField_a_of_type_Aprp = new aprp();
+      }
+    }
+    label303:
+    this.jdField_f_of_type_Int = GLES20.glGetAttribLocation(this.jdField_d_of_type_Int, "aTextureCoord");
+    aprn.a("glGetAttribLocation aTextureCoord");
+    if (this.jdField_f_of_type_Int == -1) {
+      throw new RuntimeException("Could not get attrib location for aTextureCoord");
+    }
+    this.jdField_g_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "uMVPMatrix");
+    aprn.a("glGetUniformLocation uMVPMatrix");
+    this.jdField_h_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "uSTMatrix");
+    aprn.a("glGetUniformLocation uSTMatrix");
+    this.jdField_l_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "samplerOES");
+    aprn.a("glGetUniformLocation samplerOES");
+    this.jdField_i_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d1");
+    aprn.a("glGetUniformLocation sampler2d1");
+    this.jdField_j_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d2");
+    aprn.a("glGetUniformLocation sampler2d2");
+    this.jdField_k_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d3");
+    aprn.a("glGetUniformLocation sampler2d3");
+    this.m = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "u_screenColor");
+    aprn.a("glGetUniformLocation u_screenColor");
+    a();
+    if (this.jdField_a_of_type_Aprk != null) {
+      this.jdField_a_of_type_Aprk.a(this.jdField_d_of_type_Int);
+    }
+    QLog.i("KeyingBase", 2, " init need " + (System.currentTimeMillis() - l1) + "ms");
+  }
+  
+  protected abstract void a(aprm paramaprm);
+  
+  public void a(String paramString1, String paramString2, String paramString3, aprk paramaprk)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.jdField_f_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.jdField_h_of_type_JavaLangString = paramString2;
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      this.jdField_k_of_type_JavaLangString = paramString3;
+    }
+    this.jdField_a_of_type_Aprk = paramaprk;
+  }
+  
+  public void a(float[] paramArrayOfFloat, short[] paramArrayOfShort)
+  {
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_a_of_type_ArrayOfShort = paramArrayOfShort;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      GLES20.glDeleteProgram(this.jdField_d_of_type_Int);
+    } while (this.jdField_a_of_type_Aprg == null);
+    this.jdField_a_of_type_Aprg.a();
+    this.jdField_a_of_type_Aprg = null;
   }
 }
 

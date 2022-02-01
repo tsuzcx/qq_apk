@@ -1,33 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class tvw
-  extends anry
+class tvw
+  implements View.OnTouchListener
 {
-  tvr jdField_a_of_type_Tvr = null;
+  tvw(tvt paramtvt, tvs paramtvs, boolean paramBoolean) {}
   
-  public tvw(tvq paramtvq, tvr paramtvr)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Tvr = paramtvr;
-  }
-  
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptRecommendAdapter", 2, "onFollowPublicAccount isSuccess: " + paramBoolean + " | uin: " + paramString + " | mRecommendItem: " + this.jdField_a_of_type_Tvr);
-    }
-    if (this.jdField_a_of_type_Tvr != null)
+    switch (paramMotionEvent.getAction())
     {
-      paramString = this.jdField_a_of_type_Tvr;
-      if (!paramBoolean) {
-        break label76;
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Tvt.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.a.getResources().getColor(2131166074));
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Tvt.c.setBackgroundResource(2130843182);
+        return false;
       }
+      this.jdField_a_of_type_Tvt.c.setBackgroundResource(2130843183);
+      return false;
     }
-    label76:
-    for (int i = 1;; i = 0)
-    {
-      paramString.a(i);
-      return;
-    }
+    this.jdField_a_of_type_Tvt.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.a.getResources().getColor(2131166073));
+    this.jdField_a_of_type_Tvt.c.setBackgroundResource(2130843191);
+    return false;
   }
 }
 

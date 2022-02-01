@@ -1,106 +1,193 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.mobileqq.vip.diy.ETTextViewPlus;
-import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDownloader;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.io.File;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class bhie
-  extends bmuf
+  implements Handler.Callback, bhmo
 {
-  private String a;
-  private String b = "";
-  private int c = -1;
-  private int d = -1;
+  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+  private volatile String jdField_a_of_type_JavaLangString;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile WeakReference<bhig> jdField_b_of_type_MqqUtilWeakReference;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public bhie(String paramString1, View paramView, String paramString2)
+  private QQAppInterface a()
   {
-    super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramString2;
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
+      return (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    }
+    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   }
   
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  private void a(String paramString)
   {
-    paramLayoutParams.width = -1;
-    paramLayoutParams.height = -2;
-    int i = ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin;
-    ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = 0;
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
+    try
     {
-      ProfileTemplateNickNameContainer localProfileTemplateNickNameContainer = (ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView;
-      localProfileTemplateNickNameContainer.setTextViewX(i);
-      if ("center_horizontal".equals(paramJSONObject.optString("gravity"))) {
-        localProfileTemplateNickNameContainer.setTextCenter();
+      paramString = BitmapFactory.decodeFile(paramString);
+      paramString = new BitmapDrawable(a().getApp().getResources(), paramString);
+      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1);
+      localMessage.obj = paramString;
+      localMessage.sendToTarget();
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar getDrawable " + paramString.toString());
+        }
+        paramString = null;
       }
     }
-    return paramLayoutParams;
   }
   
-  protected void a(String paramString1, String paramString2)
+  private void b(String paramString)
   {
-    if ("f".equals(paramString1)) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("QQAvatarFHDDecoder", 2, "getLocalThumbFile ");
+    }
+    paramString = a().a(1, paramString, 0);
+    if (new File(paramString).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQAvatarFHDDecoder", 2, "getLocalThumbFile exist");
+      }
+      a(paramString);
+    }
+  }
+  
+  public void a(Setting paramSetting)
+  {
+    boolean bool1 = false;
+    Object localObject;
+    if ((paramSetting == null) || (TextUtils.isEmpty(paramSetting.uin)) || (TextUtils.isEmpty(paramSetting.url))) {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("downloadFHDAvatar return ");
+        if (paramSetting == null) {
+          break label71;
+        }
+        paramSetting = paramSetting.toString();
+        QLog.i("QQAvatarFHDDecoder", 2, paramSetting);
+      }
+    }
     for (;;)
     {
-      try
+      return;
+      label71:
+      paramSetting = "";
+      break;
+      localObject = bhhz.b(paramSetting.uin);
+      if (auog.a((String)localObject))
       {
-        this.c = Integer.parseInt(paramString2);
         if (QLog.isColorLevel()) {
-          QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font id=" + this.c);
+          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar already exist " + (String)localObject);
         }
+        a((String)localObject);
         return;
       }
-      catch (NumberFormatException paramString1)
+      paramSetting = FaceDownloader.a(paramSetting.url, paramSetting.bFaceFlags);
+      File localFile1 = new File((String)localObject);
+      File localFile2 = new File(localFile1.getPath() + System.currentTimeMillis());
+      if (HttpDownloadUtil.a(a(), new asjz(MsfSdkUtils.insertMtype("friendlist", paramSetting), localFile2, 0), this) == 0) {
+        bool1 = true;
+      }
+      boolean bool2;
+      if (bool1)
       {
-        yqp.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font id illegal :" + paramString2 + " error=" + paramString1);
-        return;
-      }
-      if ("ft".equals(paramString1)) {
-        try
+        if (localFile2.exists()) {
+          bool1 = localFile2.renameTo(localFile1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar suc " + bool1 + " " + (String)localObject);
+        }
+        bool2 = bool1;
+        if (bool1)
         {
-          this.d = Integer.parseInt(paramString2);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font type=" + this.d);
-            return;
+          a((String)localObject);
+          bool2 = bool1;
+        }
+      }
+      while (!bool2)
+      {
+        b(this.jdField_a_of_type_JavaLangString);
+        return;
+        bool2 = bool1;
+        if (localFile2.exists())
+        {
+          localFile2.delete();
+          bool2 = bool1;
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQAvatarFHDDecoder", 2, "onHttpStart " + paramString + " " + paramInt);
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2) {}
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQAvatarFHDDecoder", 2, "onHttpEnd " + paramString + " " + paramInt);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    if ((paramMessage.obj instanceof Drawable)) {}
+    for (paramMessage = (Drawable)paramMessage.obj;; paramMessage = null)
+    {
+      bhig localbhig;
+      String str;
+      if (this.jdField_b_of_type_MqqUtilWeakReference != null)
+      {
+        localbhig = (bhig)this.jdField_b_of_type_MqqUtilWeakReference.get();
+        if (localbhig != null)
+        {
+          str = this.jdField_a_of_type_JavaLangString;
+          if (paramMessage == null) {
+            break label105;
           }
         }
-        catch (NumberFormatException paramString1)
-        {
-          yqp.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font type illegal :" + paramString2 + " error=" + paramString1);
-          return;
-        }
       }
-    }
-    if ("bg".equals(paramString1))
-    {
-      this.jdField_a_of_type_JavaLangString = paramString2;
-      return;
-    }
-    super.a(paramString1, paramString2);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
-    {
-      ETTextViewPlus localETTextViewPlus = ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).a();
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label112;
+      label105:
+      for (boolean bool = true;; bool = false)
+      {
+        localbhig.a(str, bool, paramMessage);
+        this.jdField_b_of_type_MqqUtilWeakReference = null;
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaLangString = null;
+        return true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "set name font id=" + this.c + " type=" + this.d);
-      }
-      localETTextViewPlus.setFontAsync(this.c, this.d);
-    }
-    for (;;)
-    {
-      ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).setTextBgUrl(this.jdField_a_of_type_JavaLangString);
-      return;
-      label112:
-      yqp.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "profile nick name set font error because font id=" + this.c + " type=" + this.d + " is illegal!");
     }
   }
 }

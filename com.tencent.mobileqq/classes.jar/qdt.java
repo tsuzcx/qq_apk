@@ -1,32 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class qdt
-  implements ViewBase.OnClickListener
+public class qdt
+  extends qdl
 {
-  qdt(qdp paramqdp, int paramInt, pxk parampxk, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public qdt(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i;
-    snh localsnh;
-    if (this.jdField_a_of_type_Int == 1163)
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = this.a.a.a.a();
+    if (paramView.isPGCShortContent())
     {
-      i = 1;
-      localsnh = this.jdField_a_of_type_Pxk.a();
-      if (i == 0) {
-        break label42;
-      }
-    }
-    label42:
-    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
-    {
-      localsnh.b(paramViewBase);
+      ozs.b(this.a.getContext(), paramView, (int)paramView.mChannelID);
+      qam.a(this.a.getContext(), paramView);
       return;
-      i = 0;
-      break;
     }
+    ozs.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
   }
 }
 

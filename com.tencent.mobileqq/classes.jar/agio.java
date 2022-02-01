@@ -1,13 +1,15 @@
-public class agio
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
+class agio
+  implements bjig
 {
-  public int a;
-  TItemViewHolder jdField_a_of_type_JavaLangObject;
+  agio(agim paramagim) {}
   
-  public agio(int paramInt, TItemViewHolder paramTItemViewHolder)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Int = paramTItemViewHolder;
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    if (paramBaseResp.errCode != 0) {
+      agim.a(this.a, 1, 2131693111);
+    }
   }
 }
 

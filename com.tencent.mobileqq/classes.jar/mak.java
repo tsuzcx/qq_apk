@@ -1,22 +1,43 @@
+import android.util.SparseArray;
+
 public class mak
-  extends mah
 {
-  boolean a = false;
+  public short a;
+  public byte[] a;
+  public short b = 240;
+  public short c;
+  public short d;
   
-  public mak(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
+  public mak(byte[] paramArrayOfByte)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.a = paramBoolean;
+    this.jdField_a_of_type_Short = 320;
+    paramArrayOfByte = lop.a(paramArrayOfByte);
+    loo localloo = (loo)paramArrayOfByte.get(4);
+    if (localloo != null) {
+      this.jdField_a_of_type_ArrayOfByte = localloo.a();
+    }
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      paramArrayOfByte = (loo)paramArrayOfByte.get(3);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte = paramArrayOfByte.a();
+        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
+        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
+        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
+        int i = paramArrayOfByte[6];
+        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
+      }
+    }
   }
   
-  public int a()
+  public String toString()
   {
-    return 2;
-  }
-  
-  public boolean b()
-  {
-    return this.a;
+    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
+      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
+    }
   }
 }
 

@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker.OnPreviewFrameHandlerListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bodn
-  implements View.OnClickListener
+class bodn
+  implements QWalletFaceTracker.OnPreviewFrameHandlerListener
 {
-  public bodn(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  bodn(bodh parambodh) {}
   
-  public void onClick(View paramView)
+  public void getFaceRecognizeResult(float paramFloat)
   {
-    AEEditorMvClipMenu.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getFaceRecognizeResult=" + paramFloat);
+    }
+    if (paramFloat >= this.a.g)
+    {
+      bodh.a(this.a);
+      if (bodh.a(this.a)) {
+        this.a.ad();
+      }
+    }
   }
 }
 

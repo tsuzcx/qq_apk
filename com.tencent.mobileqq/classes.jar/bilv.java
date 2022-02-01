@@ -1,61 +1,40 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class bilv
-  extends bioy
+  extends QIPCModule
 {
-  public bilv(GroupListOpenFrame paramGroupListOpenFrame) {}
+  private static volatile bilv a;
   
-  public int getCount()
+  private bilv(String paramString)
   {
-    return this.a.jdField_a_of_type_Bipa.b();
+    super(paramString);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static bilv a()
   {
-    View localView;
-    Object localObject;
-    int i;
-    if (paramView == null)
+    if (a == null) {}
+    try
     {
-      paramView = new bilx(this);
-      localView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559678, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363667));
-      paramView.b = ((TextView)localView.findViewById(2131367635));
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367634));
-      localView.setTag(paramView);
-      localObject = this.a.jdField_a_of_type_Bipa.a(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      paramView.b.setText(String.valueOf(this.a.jdField_a_of_type_Bipa.a(paramInt)));
-      i = (int)(10.0F * this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a);
-      if (paramInt != 0) {
-        break label222;
+      if (a == null) {
+        a = new bilv("weibo_qipc_module");
       }
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839448);
+      return a;
     }
-    for (;;)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    QLog.d("WeiBoQIPCModule", 1, "onCall main proc action : " + paramString);
+    if ("action_install_weibo_sdk".equals(paramString))
     {
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bilw(this, paramInt, (String)localObject));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bilx)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label222:
-      if (paramInt == getCount() - 1) {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839439);
-      } else {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839442);
-      }
+      bilw.a(3);
+      callbackResult(paramInt, EIPCResult.createSuccessResult(new Bundle()));
     }
+    return null;
   }
 }
 

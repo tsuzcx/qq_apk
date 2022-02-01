@@ -1,59 +1,34 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class ajje
-  implements Comparator<ajhd>
+public class ajje
+  extends anyu
 {
-  public int a(ajhd paramajhd1, ajhd paramajhd2)
-  {
-    paramajhd1 = (Friends)paramajhd1.a;
-    paramajhd2 = (Friends)paramajhd2.a;
-    int i = a(paramajhd1);
-    int j = a(paramajhd2);
-    if (i == j) {
-      return anjs.a(paramajhd1.mComparePartInt, paramajhd1.mCompareSpell, paramajhd2.mComparePartInt, paramajhd2.mCompareSpell);
-    }
-    return i - j;
-  }
+  public ajje(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
   
-  public int a(Friends paramFriends)
+  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
   {
-    int i = 16384;
-    int k = bglf.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
-    int j;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      label32:
-      if (!bcnj.b()) {
-        break label100;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
     }
-    for (;;)
+    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
     {
-      switch (k)
+      AddRequestSuspiciousMsgFragment.a(this.a);
+      if (paramBoolean)
       {
-      case 5: 
-      case 6: 
-      default: 
-        return j | i | (int)paramFriends.getLastLoginType();
-        j = 131072;
-        break label32;
-        label100:
-        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-          i = 4096;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-          i = 8192;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
-          i = 12288;
-        }
-        break;
+        QQToast.a(this.a.getActivity(), anzj.a(2131698791), 0).a();
+        AddRequestSuspiciousMsgFragment.b(this.a);
+        this.a.getActivity().finish();
       }
     }
-    return j | i | 0x1;
-    return j | i | 0x2;
-    return j | i | 0x3;
+    else
+    {
+      return;
+    }
+    QQToast.a(this.a.getActivity(), anzj.a(2131698792), 0).a();
   }
 }
 

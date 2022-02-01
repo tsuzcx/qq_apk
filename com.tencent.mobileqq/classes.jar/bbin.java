@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-
-public class bbin
+public abstract interface bbin
 {
-  public volatile long a;
-  public volatile String a;
-  
-  public bbin(UniteSearchActivity paramUniteSearchActivity) {}
+  public abstract void a(String paramString);
 }
 
 

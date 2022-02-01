@@ -1,24 +1,19 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qqlive.module.videoreport.page.IScrollReader;
 import com.tencent.widget.AbsListView;
 
-class soi
-  implements bkhe
+public class soi
+  implements IScrollReader
 {
-  soi(snh paramsnh) {}
+  public soi(FastWebActivity paramFastWebActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public int readScroll(View paramView)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
+    if ((paramView instanceof AbsListView)) {
+      return ((AbsListView)paramView).getLastVisiblePosition();
     }
-    this.a.g();
-    snh.b(this.a);
-    this.a.h();
+    return 0;
   }
 }
 

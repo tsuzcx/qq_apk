@@ -1,65 +1,18 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Comparator;
 
-public class awos
-  extends awnh
+final class awos
+  implements Comparator<File>
 {
-  public awos(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
-  
-  public void a(boolean paramBoolean)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
+    if (paramFile1.lastModified() < paramFile2.lastModified()) {
+      return -1;
     }
-    super.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, awol paramawol)
-  {
-    if (paramBoolean) {
-      this.a.a(paramawol);
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {
+      return 1;
     }
-    super.a(paramBoolean, paramawol);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
-    Object localObject;
-    if ((paramBoolean) && ((paramObject instanceof awof)))
-    {
-      localObject = (awof)paramObject;
-      this.a.a((awof)localObject);
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramObject);
-      return;
-      if ((paramObject instanceof Integer))
-      {
-        localObject = (Integer)paramObject;
-        this.a.a((Integer)localObject);
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
-    }
-    super.b(paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
-    this.a.a(paramBoolean, paramObject);
-    super.b(paramBoolean, paramObject);
+    return 0;
   }
 }
 

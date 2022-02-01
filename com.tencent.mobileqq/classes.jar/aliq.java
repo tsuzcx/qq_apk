@@ -1,22 +1,6 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
-
-public abstract class aliq
+public abstract interface aliq
 {
-  FlowActivity a;
-  
-  public aliq(FlowActivity paramFlowActivity)
-  {
-    this.a = paramFlowActivity;
-  }
-  
-  public Context a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a(ViewGroup paramViewGroup);
+  public abstract void a(String paramString);
 }
 
 

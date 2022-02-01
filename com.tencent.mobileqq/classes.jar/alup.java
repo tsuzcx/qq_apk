@@ -1,11 +1,39 @@
-import com.tencent.mobileqq.persistence.Entity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class alup
+class alup
+  extends apcq
 {
-  public int a;
-  public Entity a;
+  private int jdField_a_of_type_Int = -1;
   
-  protected alup(alun paramalun) {}
+  public alup(alum paramalum, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
+  {
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      double d1 = paramSosoLbsInfo.a.a;
+      double d2 = paramSosoLbsInfo.a.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      }
+      alum.a(this.jdField_a_of_type_Alum, d1, d2, this.jdField_a_of_type_Int);
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      }
+    } while ((alum.a(this.jdField_a_of_type_Alum) == null) || (!alum.a(this.jdField_a_of_type_Alum).hasMessages(this.jdField_a_of_type_Int)));
+    alum.a(this.jdField_a_of_type_Alum, false, null, this.jdField_a_of_type_Int);
+  }
 }
 
 

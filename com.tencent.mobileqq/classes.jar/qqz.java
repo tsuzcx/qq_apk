@@ -1,23 +1,13 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
 
-class qqz
-  implements PopupWindow.OnDismissListener
+public class qqz
+  implements View.OnClickListener
 {
-  qqz(qqt paramqqt, bklj parambklj) {}
+  public qqz(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public void onDismiss()
-  {
-    this.jdField_a_of_type_Bklj.a(1.0F);
-    if (this.jdField_a_of_type_Qqt.a.b)
-    {
-      seu localseu = this.jdField_a_of_type_Qqt.a.a();
-      if (localseu != null)
-      {
-        localseu.c();
-        this.jdField_a_of_type_Qqt.a.b = false;
-      }
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

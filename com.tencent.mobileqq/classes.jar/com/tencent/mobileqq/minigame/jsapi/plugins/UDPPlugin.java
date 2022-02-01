@@ -10,7 +10,6 @@ import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -54,7 +53,7 @@ public class UDPPlugin
     catch (JSONException paramString) {}
   }
   
-  private void handleTaskOperation(JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString, int paramInt, UDPPlugin.UDPTask paramUDPTask)
+  private void handleTaskOperation(JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString, int paramInt, UDPPlugin.UDPTask paramUDPTask, JsRuntime paramJsRuntime)
   {
     if ("bind".equals(paramString)) {
       paramJSONObject1.put("port", paramUDPTask.bind());
@@ -69,51 +68,51 @@ public class UDPPlugin
         return;
       }
     } while (!"send".equals(paramString));
-    performSend(paramJSONObject1, paramJSONObject2, paramUDPTask);
+    performSend(paramJSONObject1, paramJSONObject2, paramUDPTask, paramJsRuntime);
   }
   
-  private void performSend(JSONObject paramJSONObject1, JSONObject paramJSONObject2, UDPPlugin.UDPTask paramUDPTask)
+  private void performSend(JSONObject paramJSONObject1, JSONObject paramJSONObject2, UDPPlugin.UDPTask paramUDPTask, JsRuntime paramJsRuntime)
   {
-    Object localObject2 = null;
-    String str = paramJSONObject2.optString("address");
+    Object localObject = null;
+    String str2 = paramJSONObject2.optString("address");
     int n = paramJSONObject2.optInt("port", -1);
     if (!paramJSONObject2.isNull("message")) {}
-    for (Object localObject1 = paramJSONObject2.optString("message", null);; localObject1 = null)
+    for (String str1 = paramJSONObject2.optString("message", null);; str1 = null)
     {
       int j;
       int i;
-      if (localObject1 != null)
+      if (str1 != null)
       {
-        paramJSONObject2 = ((String)localObject1).getBytes("UTF-8");
+        paramJSONObject2 = str1.getBytes("UTF-8");
         j = 0;
         i = paramJSONObject2.length;
       }
       for (;;)
       {
-        localObject1 = validAddress(str);
-        if (localObject1 != null) {
+        paramJsRuntime = validAddress(str2);
+        if (paramJsRuntime != null) {
           break;
         }
-        paramJSONObject1.put("errMsg", "invalid address :[" + str + "]");
-        QLog.d("UDPPlugin", 1, "invalid address :[" + str + "]");
+        paramJSONObject1.put("errMsg", "invalid address :[" + str2 + "]");
+        QLog.d("UDPPlugin", 1, "invalid address :[" + str2 + "]");
         return;
-        localObject1 = NativeBuffer.unpackNativeBuffer(paramJSONObject2, "message", (ITNativeBufferPool)this.jsPluginEngine.getNativeBufferPool());
+        paramJsRuntime = NativeBuffer.unpackNativeBuffer(paramJSONObject2, "message", paramJsRuntime);
         int k = paramJSONObject2.optInt("offset");
         int m = paramJSONObject2.optInt("length", -1);
         i = m;
         j = k;
-        paramJSONObject2 = localObject2;
-        if (localObject1 != null)
+        paramJSONObject2 = localObject;
+        if (paramJsRuntime != null)
         {
-          localObject1 = ((NativeBuffer)localObject1).buf;
+          paramJsRuntime = paramJsRuntime.buf;
           i = m;
           j = k;
-          paramJSONObject2 = (JSONObject)localObject1;
+          paramJSONObject2 = paramJsRuntime;
           if (m == -1)
           {
-            i = localObject1.length;
+            i = paramJsRuntime.length;
             j = k;
-            paramJSONObject2 = (JSONObject)localObject1;
+            paramJSONObject2 = paramJsRuntime;
           }
         }
       }
@@ -137,7 +136,7 @@ public class UDPPlugin
         paramJSONObject1.put("errMsg", "invalid length");
         return;
       }
-      paramUDPTask.send(paramJSONObject2, j, i, new InetSocketAddress((InetAddress)localObject1, n));
+      paramUDPTask.send(paramJSONObject2, j, i, new InetSocketAddress(paramJsRuntime, n));
       return;
     }
   }
@@ -176,18 +175,18 @@ public class UDPPlugin
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
     this.mJsRuntime = paramJsRuntime;
-    paramJsRuntime = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
       if ("createUDPTask".equals(paramString1))
       {
         paramString1 = new UDPPlugin.UDPTask(this);
         this.mTaskRegistry.put(paramString1.taskId, paramString1);
-        paramJsRuntime.put("udpTaskId", paramString1.taskId);
+        localJSONObject.put("udpTaskId", paramString1.taskId);
       }
       for (;;)
       {
-        return paramJsRuntime.toString();
+        return localJSONObject.toString();
         if ("operateUDPTask".equals(paramString1))
         {
           paramString1 = new JSONObject(paramString2);
@@ -197,8 +196,8 @@ public class UDPPlugin
           if (localUDPTask == null) {
             break;
           }
-          handleTaskOperation(paramJsRuntime, paramString1, paramString2, paramInt, localUDPTask);
-          paramString1 = paramJsRuntime.optString("errMsg", null);
+          handleTaskOperation(localJSONObject, paramString1, paramString2, paramInt, localUDPTask, paramJsRuntime);
+          paramString1 = localJSONObject.optString("errMsg", null);
           if (paramString1 != null) {
             callbackError(paramString1, paramInt);
           }
@@ -211,11 +210,11 @@ public class UDPPlugin
       {
         try
         {
-          paramJsRuntime.put("errMsg", paramString1.getMessage());
+          localJSONObject.put("errMsg", paramString1.getMessage());
         }
         catch (JSONException paramString1) {}
         continue;
-        paramJsRuntime.put("errMsg", "task already closed");
+        localJSONObject.put("errMsg", "task already closed");
       }
     }
     catch (IOException paramString1)
@@ -224,7 +223,7 @@ public class UDPPlugin
       {
         try
         {
-          paramJsRuntime.put("errMsg", paramString1.getMessage());
+          localJSONObject.put("errMsg", paramString1.getMessage());
         }
         catch (JSONException paramString1) {}
       }

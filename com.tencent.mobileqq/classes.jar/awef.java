@@ -1,15 +1,6 @@
-import java.util.Comparator;
-
-class awef
-  implements Comparator<awdw>
+public abstract interface awef
 {
-  public int a(awdw paramawdw1, awdw paramawdw2)
-  {
-    if (paramawdw1.a >= paramawdw2.a) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

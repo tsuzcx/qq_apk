@@ -1,5 +1,8 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aaak;
+import aaam;
+import aabg;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -11,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.qqcircle.events.QCircleCommentPraiseUpdateEvent;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest;
@@ -27,17 +30,14 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StReply;
 import java.util.ArrayList;
-import uxx;
-import vvt;
-import vvu;
-import zlx;
-import zwp;
-import zwr;
-import zxl;
+import uzg;
+import vyw;
+import vyx;
+import zps;
 
 public class QCircleCommentPraiseLayout
   extends LinearLayout
-  implements View.OnClickListener, zwr, zxl<QCircleReportBean>
+  implements aaam, aabg<QCircleReportBean>, View.OnClickListener
 {
   private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -46,11 +46,11 @@ public class QCircleCommentPraiseLayout
   private FeedCloudMeta.StComment jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   private FeedCloudMeta.StReply jdField_a_of_type_FeedcloudFeedCloudMeta$StReply;
-  private vvu jdField_a_of_type_Vvu;
+  private vyx jdField_a_of_type_Vyx;
   private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 2130843958;
+  private int jdField_b_of_type_Int = 2130843975;
   private boolean jdField_b_of_type_Boolean;
-  private int c = 2130843960;
+  private int c = 2130843977;
   
   public QCircleCommentPraiseLayout(Context paramContext)
   {
@@ -77,11 +77,11 @@ public class QCircleCommentPraiseLayout
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = zlx.a(getContext(), 3.0F);
+    localLayoutParams.rightMargin = zps.a(getContext(), 3.0F);
     localLayoutParams.gravity = 16;
-    localLayoutParams.bottomMargin = zlx.a(getContext(), 0.5F);
+    localLayoutParams.bottomMargin = zps.a(getContext(), 0.5F);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(zlx.a(getContext(), 20.0F), zlx.a(getContext(), 20.0F));
+    localLayoutParams = new LinearLayout.LayoutParams(zps.a(getContext(), 20.0F), zps.a(getContext(), 20.0F));
     localLayoutParams.gravity = 16;
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
@@ -100,7 +100,7 @@ public class QCircleCommentPraiseLayout
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(getResources().getDrawable(this.c));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166249));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166252));
       return;
     }
     catch (Exception localException)
@@ -115,7 +115,7 @@ public class QCircleCommentPraiseLayout
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(getResources().getDrawable(this.jdField_b_of_type_Int));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166248));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166251));
       return;
     }
     catch (Exception localException)
@@ -146,7 +146,7 @@ public class QCircleCommentPraiseLayout
       else
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(uxx.d(paramLong));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(uzg.d(paramLong));
         return;
       }
     }
@@ -163,7 +163,7 @@ public class QCircleCommentPraiseLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   public void onClick(View paramView)
@@ -178,7 +178,7 @@ public class QCircleCommentPraiseLayout
       if (this.jdField_a_of_type_Boolean) {
         break;
       }
-      QQToast.a(getContext(), anni.a(2131700978), 0).a();
+      QQToast.a(getContext(), anzj.a(2131701085), 0).a();
     }
     this.jdField_a_of_type_Boolean = false;
     FeedCloudMeta.StLike localStLike = new FeedCloudMeta.StLike();
@@ -196,13 +196,13 @@ public class QCircleCommentPraiseLayout
       boolean bool;
       label131:
       int m;
-      if (this.jdField_a_of_type_Vvu != null)
+      if (this.jdField_a_of_type_Vyx != null)
       {
-        vvu localvvu = this.jdField_a_of_type_Vvu;
+        vyx localvyx = this.jdField_a_of_type_Vyx;
         if (localStLike.status.get() == 0)
         {
           bool = true;
-          localvvu.a(bool);
+          localvyx.a(bool);
         }
       }
       else
@@ -226,7 +226,7 @@ public class QCircleCommentPraiseLayout
       {
         a(m, j);
         int n = localStLike.status.get();
-        VSNetworkHelper.a().a(getContext(), new QCircleDoLikeRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, i, localStLike, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, a()), new vvt(this, m, j, n, k));
+        VSNetworkHelper.a().a(getContext(), new QCircleDoLikeRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, i, localStLike, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, a()), new vyw(this, m, j, n, k));
         break;
         i = 4;
         break label104;
@@ -269,7 +269,7 @@ public class QCircleCommentPraiseLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -324,9 +324,9 @@ public class QCircleCommentPraiseLayout
     setVisibility(0);
   }
   
-  public void setOnClickHookListener(vvu paramvvu)
+  public void setOnClickHookListener(vyx paramvyx)
   {
-    this.jdField_a_of_type_Vvu = paramvvu;
+    this.jdField_a_of_type_Vyx = paramvyx;
   }
   
   public void setReportBean(QCircleReportBean paramQCircleReportBean)

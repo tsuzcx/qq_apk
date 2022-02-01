@@ -1,15 +1,16 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class rdf
-  extends rcs
+  implements View.OnClickListener
 {
-  rdf(rdd paramrdd, AppInterface paramAppInterface) {}
+  rdf(rde paramrde, int paramInt) {}
   
-  public Drawable a()
+  public void onClick(View paramView)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
+    this.jdField_a_of_type_Rde.a.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

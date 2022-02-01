@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
-public class akbn
-  implements QQPermissionCallback
+class akbn
+  implements aule
 {
-  public akbn(AvatarPendantActivity paramAvatarPendantActivity) {}
+  akbn(akbm paramakbm) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AvatarPendantActivity.e(this.a);
+    if ((paramInt1 == 3) && (paramInt2 == 0))
+    {
+      bdll.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
+      ChatHistoryC2CFileFragment.a(this.a.a, true);
+    }
   }
 }
 

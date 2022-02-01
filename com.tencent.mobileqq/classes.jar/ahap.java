@@ -1,21 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ahap
-  implements ahbm
+class ahap
+  implements View.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahap(aham paramaham) {}
+  
+  public void onClick(View paramView)
   {
-    if ((((MessageForStructing)paramChatMessage).structingMsg instanceof StructMsgSubImageVideo)) {
-      return 111;
+    MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)paramView.getTag();
+    auvi localauvi;
+    String str1;
+    if (localMessageForArkFlashChat != null)
+    {
+      localauvi = ((FlashChatManager)this.a.a.getManager(217)).a;
+      str1 = localauvi.c;
+      String str2 = localauvi.f;
+      String str3 = localauvi.g;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
+      }
+      if (!this.a.a(str1, str2, str3)) {
+        break label126;
+      }
     }
-    if (RIJRedPacketManager.a().a(paramChatMessage)) {
-      return 114;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label126:
+      if (!this.a.a(str1, localauvi.b, localMessageForArkFlashChat)) {}
     }
-    return 5;
   }
 }
 

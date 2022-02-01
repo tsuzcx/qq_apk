@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.ipc;
 
-import axiq;
-import axir;
+import aybj;
+import aybk;
 
 public class NearbyProcManager$2
   implements Runnable
 {
-  public NearbyProcManager$2(axiq paramaxiq, axir paramaxir, int paramInt, Object[] paramArrayOfObject) {}
+  public NearbyProcManager$2(aybj paramaybj, aybk paramaybk, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axir.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Aybk.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

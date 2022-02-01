@@ -8,14 +8,14 @@ import kotlin.jvm.internal.Intrinsics;
 import localpb.readinjoy.Readinjoy.ArticleSummary;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rit;
+import qzm;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ArticleSummary;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/struct/WeiShiVideoArticleInfo;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseVideoArticleInfo;", "()V", "in", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoSubscriptColor", "", "videoSubscriptTxt", "writeToParcel", "", "dest", "flags", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class WeiShiVideoArticleInfo
   extends BaseVideoArticleInfo
 {
-  public static final rit Companion = new rit(null);
+  public static final qzm Companion = new qzm(null);
   @JvmField
   @NotNull
   public static final String TABLE_NAME;

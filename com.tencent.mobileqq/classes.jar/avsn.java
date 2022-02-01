@@ -1,111 +1,222 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.support.v4.util.LruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class avsn
 {
-  private static avsn jdField_a_of_type_Avsn;
-  public static boolean a;
-  private avso jdField_a_of_type_Avso;
+  final LruCache<String, avsp> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  final List<Object> jdField_a_of_type_JavaUtilList;
+  final ConcurrentHashMap<String, Object[]> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  static
+  public avsn(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new avso(this, 20);
   }
   
-  public static avsn a()
+  public static final int a(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_Avsn == null) {
-      jdField_a_of_type_Avsn = new avsn();
+    int i = ((Integer)axws.a(paramQQAppInterface.getAccount(), "self_gender", Integer.valueOf(0))).intValue();
+    if (i == 2) {
+      return 1;
     }
-    return jdField_a_of_type_Avsn;
-  }
-  
-  public static URLDrawable a(String paramString, int paramInt1, int paramInt2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new arnj(-10065297, 100, 100);
-    localURLDrawableOptions.mFailedDrawable = new arnj(-10065297, 100, 100);
-    localURLDrawableOptions.mRequestHeight = paramInt2;
-    localURLDrawableOptions.mRequestWidth = paramInt1;
-    return URLDrawable.getDrawable(new File(paramString), localURLDrawableOptions);
-  }
-  
-  public static URLDrawable a(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt3, QQLiveDrawable.OnStateListener paramOnStateListener, URLDrawable paramURLDrawable)
-  {
-    QQLiveDrawable.QQLiveDrawableParams localQQLiveDrawableParams = new QQLiveDrawable.QQLiveDrawableParams();
-    localQQLiveDrawableParams.mPreviewWidth = paramInt1;
-    localQQLiveDrawableParams.mPreviewHeight = paramInt2;
-    localQQLiveDrawableParams.mDataSourceType = 3;
-    localQQLiveDrawableParams.mDataSource = paramString1;
-    localQQLiveDrawableParams.mLoopback = paramBoolean1;
-    localQQLiveDrawableParams.mMute = paramBoolean2;
-    localQQLiveDrawableParams.mPlayPause = paramBoolean3;
-    localQQLiveDrawableParams.mStartPosi = paramInt3;
-    localQQLiveDrawableParams.mPlayType = 2;
-    localQQLiveDrawableParams.mListener = paramOnStateListener;
-    localQQLiveDrawableParams.msgUniseq = paramLong;
-    localQQLiveDrawableParams.mCoverUrl = ShortVideoUtils.a(paramString2).toString();
-    localQQLiveDrawableParams.mCoverLoadingDrawable = new arnj(-10065297, 100, 100);
-    localQQLiveDrawableParams.mReportTag = "bus_type_aio_light_bubble";
-    paramString1 = URLDrawable.URLDrawableOptions.obtain();
-    paramString1.mExtraInfo = localQQLiveDrawableParams;
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL().getPath().equals(paramString2))) {}
-    for (paramString1.mLoadingDrawable = paramURLDrawable;; paramString1.mLoadingDrawable = new arnj(-10065297, 100, 100))
-    {
-      paramString1.mRequestWidth = paramInt1;
-      paramString1.mRequestHeight = paramInt2;
-      return URLDrawable.getDrawable(ahhm.a(paramLong), paramString1);
+    if (i == 1) {
+      return 0;
     }
+    return 2;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  private avsp a(String paramString)
   {
-    ChatMessage localChatMessage = MediaPlayerManager.a(paramQQAppInterface).a();
-    if (((localChatMessage == paramChatMessage) || (((localChatMessage instanceof MessageForLightVideo)) && (localChatMessage.uniseq == paramChatMessage.uniseq))) && (((MessageForLightVideo)paramChatMessage).videoStatus == 1)) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      if (bool) {
-        MediaPlayerManager.a(paramQQAppInterface).a(true);
+      if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache != null)
+      {
+        paramString = (avsp)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+        return paramString;
       }
-      return bool;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  private void a(String paramString, avsp paramavsp)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramavsp);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void a(avso paramavso)
+  public Object a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Avso = paramavso;
+    if ((paramString == null) || (paramString.length() == 0) || (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null))
+    {
+      paramString = null;
+      return paramString;
+    }
+    int i = 2;
+    avsp localavsp = a(paramString);
+    if (localavsp == null) {
+      if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      {
+        paramString = (String)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "self_nick", String.valueOf(""));
+        i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, i, NetConnInfoCenter.getServerTime());
+      }
+    }
+    for (;;)
+    {
+      switch (paramInt)
+      {
+      case 2: 
+      default: 
+        return null;
+        if (QLog.isDevelopLevel())
+        {
+          axxb.a("PttShow", "getGender no cache", new Object[] { paramString });
+          paramString = null;
+          continue;
+          i = localavsp.jdField_a_of_type_Int;
+          paramString = localavsp.b;
+        }
+        break;
+      case 1: 
+        return Integer.valueOf(i);
+        paramString = null;
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoPlayMgr", 2, "switchEarOrLoudspeaker:" + paramBoolean);
+    if ((paramString == null) || (paramString.length() == 0) || (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null)) {
+      return null;
     }
-    jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Avso != null) {
-      this.jdField_a_of_type_Avso.a(paramBoolean);
+    paramString = a(paramString, 2);
+    if ((paramString instanceof String)) {
+      return (String)paramString;
     }
+    return null;
   }
   
-  public boolean a()
+  public void a(MessageRecord paramMessageRecord)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return MediaPlayerManager.a((QQAppInterface)localAppRuntime).b();
-    }
-    return false;
+    if ((paramMessageRecord == null) || ((paramMessageRecord.extLong & 0x1) == 0) || (paramMessageRecord.senderuin == null)) {}
+    label218:
+    do
+    {
+      Object localObject1;
+      do
+      {
+        return;
+        localObject1 = a(paramMessageRecord.senderuin);
+      } while ((localObject1 != null) && (((avsp)localObject1).jdField_a_of_type_Long >= paramMessageRecord.time));
+      try
+      {
+        String str1 = paramMessageRecord.getExtInfoFromExtStr("hotchat_nick");
+        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("hotchat_gender"));
+        l1 = paramMessageRecord.time;
+        localObject2 = str1;
+        j = i;
+        if (!paramMessageRecord.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+          break label218;
+        }
+        str2 = (String)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "self_nick", String.valueOf(""));
+        k = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject1 = str1;
+        if (str2 == null) {
+          break;
+        }
+        localObject1 = str1;
+        if (str2.length() <= 0) {
+          break;
+        }
+        localObject1 = str2;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          int i;
+          long l1;
+          Object localObject2;
+          int j;
+          String str2;
+          int k;
+          long l2;
+          localException.printStackTrace();
+          continue;
+          if (k != 2) {
+            i = k;
+          }
+        }
+      }
+      l2 = NetConnInfoCenter.getServerTime();
+      localObject2 = localObject1;
+      j = i;
+      l1 = l2;
+      if (QLog.isDevelopLevel())
+      {
+        axxb.a("PttShow", "cacheSelfGender", new Object[] { str2, Integer.valueOf(k), Long.valueOf(l2) });
+        l1 = l2;
+        j = i;
+        localObject2 = localObject1;
+      }
+      a(paramMessageRecord.senderuin, (String)localObject2, j, l1);
+    } while (!QLog.isDevelopLevel());
+    axxb.a("PttShow", "cacheGender", new Object[] { paramMessageRecord.extStr });
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, long paramLong)
+  {
+    if ((paramString1 == null) || (paramString1.length() == 0)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localavsp = a(paramString1);
+          if ((localavsp == null) || (localavsp.jdField_a_of_type_Long > paramLong)) {
+            break;
+          }
+          localavsp.jdField_a_of_type_Int = paramInt;
+          if ((paramString2 != null) && (paramString2.length() > 0)) {
+            localavsp.b = paramString2;
+          }
+          localavsp.jdField_a_of_type_Long = paramLong;
+        } while (!QLog.isDevelopLevel());
+        axxb.a("PttShow", "cacheGender_update", new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+        return;
+      } while (localavsp != null);
+      avsp localavsp = new avsp();
+      localavsp.jdField_a_of_type_JavaLangString = paramString1;
+      localavsp.jdField_a_of_type_Int = paramInt;
+      if ((paramString2 != null) && (paramString2.length() > 0)) {
+        localavsp.b = paramString2;
+      }
+      localavsp.jdField_a_of_type_Long = paramLong;
+      a(paramString1, localavsp);
+    } while (!QLog.isDevelopLevel());
+    axxb.a("PttShow", "cacheGender_add", new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
   }
 }
 

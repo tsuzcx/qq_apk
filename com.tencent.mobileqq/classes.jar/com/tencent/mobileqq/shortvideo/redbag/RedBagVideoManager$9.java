@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import bckg;
+import bdcy;
 
 public class RedBagVideoManager$9
   implements Runnable
 {
-  public RedBagVideoManager$9(bckg parambckg) {}
+  public RedBagVideoManager$9(bdcy parambdcy) {}
   
   public void run()
   {
-    bckg.f(this.this$0);
+    bdcy.f(this.this$0);
   }
 }
 

@@ -1,118 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.ViewGroup;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class bffk
+  extends BroadcastReceiver
 {
-  private SparseArray<bffi> a;
+  public bffk(AbsPublishActivity paramAbsPublishActivity) {}
   
-  @NonNull
-  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bffi localbffi = a(paramInt);
-    if (localbffi != null) {
-      return localbffi.a(paramViewGroup);
-    }
-    return null;
-  }
-  
-  public bffi a(int paramInt)
-  {
-    return (bffi)this.a.get(paramInt);
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < this.a.size())
+    paramContext = paramIntent.getAction();
+    if ("key_photo_delete_action".equals(paramContext))
     {
-      ((bffi)this.a.valueAt(i)).a();
-      i += 1;
+      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
+      this.a.a(i, 9);
     }
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bffl)paramViewHolder;
-    if (paramViewHolder.a != null)
+    do
     {
-      bffi localbffi = a(paramViewHolder.a.b());
-      if (localbffi != null) {
-        localbffi.a(paramViewHolder);
+      return;
+      if ("key_audio_delete_action".equals(paramContext))
+      {
+        this.a.a(0);
+        this.a.a = null;
+        bgqv.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
+        return;
       }
-    }
-  }
-  
-  public void a(@NonNull RecyclerView.ViewHolder paramViewHolder, bfem parambfem, int paramInt)
-  {
-    bffi localbffi = a(parambfem.b());
-    if (localbffi != null)
-    {
-      ((bffl)paramViewHolder).a = parambfem;
-      localbffi.a(paramViewHolder, parambfem, paramInt);
-    }
-  }
-  
-  public void a(SparseArray<bffi> paramSparseArray)
-  {
-    this.a = paramSparseArray;
-  }
-  
-  public void a(bfem parambfem)
-  {
-    bffi localbffi = a(parambfem.b());
-    if (localbffi != null) {
-      localbffi.b(parambfem);
-    }
-  }
-  
-  public void a(bfew parambfew)
-  {
-    bffi localbffi = a(parambfew.b());
-    if ((localbffi != null) && ((localbffi instanceof bfgb))) {
-      ((bfgb)localbffi).a(parambfew);
-    }
-  }
-  
-  public void b(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bffl)paramViewHolder;
-    if (paramViewHolder.a != null)
-    {
-      bffi localbffi = a(paramViewHolder.a.b());
-      if (localbffi != null) {
-        localbffi.b(paramViewHolder);
-      }
-    }
-  }
-  
-  public void b(bfem parambfem)
-  {
-    bffi localbffi = a(parambfem.b());
-    if (localbffi != null) {
-      localbffi.c(parambfem);
-    }
-  }
-  
-  public void c(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bffl)paramViewHolder;
-    if (paramViewHolder.a != null)
-    {
-      bffi localbffi = a(paramViewHolder.a.b());
-      if (localbffi != null) {
-        localbffi.c(paramViewHolder);
-      }
-    }
-  }
-  
-  public void c(bfem parambfem)
-  {
-    bffi localbffi = a(parambfem.b());
-    if (localbffi != null) {
-      localbffi.d(parambfem);
-    }
+    } while (!"key_audio_play_action".equals(paramContext));
+    bgqv.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
   }
 }
 

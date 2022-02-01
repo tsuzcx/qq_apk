@@ -1,30 +1,62 @@
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class armw
-  implements armr
+public class armw
+  extends armf<armv>
 {
-  armw(armt paramarmt, MqqHandler paramMqqHandler) {}
-  
-  public void a(int paramInt)
+  public static armv c()
   {
-    switch (paramInt)
+    return (armv)aran.a().a(412);
+  }
+  
+  @NonNull
+  public armv a()
+  {
+    return new armv();
+  }
+  
+  @NonNull
+  public armv a(araj[] paramArrayOfaraj)
+  {
+    boolean bool = true;
+    localarmv = new armv();
+    try
     {
-    }
-    do
-    {
-      do
+      if (new JSONObject(paramArrayOfaraj[0].a).optInt("allow_edit_color_nick", 1) == 1) {}
+      for (;;)
       {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
+        localarmv.a = bool;
+        return localarmv;
+        bool = false;
+      }
+      return localarmv;
+    }
+    catch (JSONException paramArrayOfaraj)
+    {
+      yuk.e("QVipColorNickProcessor", "QVipColorNickProcessor onParsed exception :" + paramArrayOfaraj.getMessage());
+    }
+  }
+  
+  @NonNull
+  public armv b()
+  {
+    return new armv();
+  }
+  
+  public Class<armv> clazz()
+  {
+    return armv.class;
+  }
+  
+  public int type()
+  {
+    return 412;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armw
  * JD-Core Version:    0.7.0.1
  */

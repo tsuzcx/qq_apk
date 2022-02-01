@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atgv;
-import atgw;
+import atyp;
+import atyq;
 
 public class ThumbHttpDownloader$1
   implements Runnable
 {
-  public ThumbHttpDownloader$1(atgv paramatgv, atgw paramatgw) {}
+  public ThumbHttpDownloader$1(atyp paramatyp, atyq paramatyq) {}
   
   public void run()
   {
-    atgv.a(this.this$0, this.a);
+    atyp.a(this.this$0, this.a);
   }
 }
 

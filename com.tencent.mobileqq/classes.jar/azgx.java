@@ -1,19 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class azgx
-  implements View.OnClickListener
+public final class azgx
+  implements asmr
 {
-  azgx(azgv paramazgv, int paramInt) {}
+  public azgx(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void a(asmu paramasmu)
   {
-    if (this.jdField_a_of_type_Azgv.a != null) {
-      this.jdField_a_of_type_Azgv.a.b(paramView, this.jdField_a_of_type_Int);
+    if (paramasmu != null) {}
+    try
+    {
+      paramasmu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Throwable paramasmu) {}
   }
+  
+  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
+  
+  public boolean a(asmu paramasmu)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    behh.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(asmu paramasmu) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

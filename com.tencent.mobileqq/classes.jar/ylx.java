@@ -1,38 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import java.util.Comparator;
 
 public class ylx
-  extends wlf<yly>
+  implements Comparator<ylw>
 {
-  public static final String a = wjz.a("StorySvc.get_user_base_info");
-  
-  public String a()
+  public int a(ylw paramylw1, ylw paramylw2)
   {
-    return a;
-  }
-  
-  public yly a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
-    try
-    {
-      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
-      return new yly(localRspGetUserSelfInfo);
+    if (paramylw1.a == paramylw2.a) {
+      if (!paramylw1.b) {}
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    while (paramylw1.a > paramylw2.a)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        yqp.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      return -1;
+      if (paramylw2.b) {
+        return 1;
       }
+      return 0;
     }
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
+    return 1;
   }
 }
 

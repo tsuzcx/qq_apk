@@ -4,9 +4,9 @@ import android.app.Activity;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import mqq.util.WeakReference;
-import ugx;
-import umw;
-import upe;
+import ugz;
+import unx;
+import uqf;
 
 class RockDownloadPresenter$1
   extends RockDownloadPresenter.MyRockDownloadListener
@@ -18,10 +18,10 @@ class RockDownloadPresenter$1
   
   public void onDownloadCancel(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = ugx.b();
-    upe.a("RockDownloader", "rockdownload onDownloadCancel");
-    ugx.a();
-    WSPublicAccReport.getInstance().reportDownload(ugx.a(), i, 3, 1, 0);
+    int i = ugz.b();
+    uqf.a("RockDownloader", "rockdownload onDownloadCancel");
+    ugz.a();
+    WSPublicAccReport.getInstance().reportDownload(ugz.a(), i, 3, 1, 0);
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadCancel(paramRockDownloadInfo);
@@ -31,19 +31,19 @@ class RockDownloadPresenter$1
   public void onDownloadFail(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
     boolean bool = true;
-    ugx.a();
-    upe.d("RockDownloader", "onDownloadFail errorCode: " + paramInt + ",errorInfo:" + paramString + ",    " + paramRockDownloadInfo.toString());
+    ugz.a();
+    uqf.d("RockDownloader", "onDownloadFail errorCode: " + paramInt + ",errorInfo:" + paramString + ",    " + paramRockDownloadInfo.toString());
     this.this$0.a(paramRockDownloadInfo);
-    int i = ugx.b();
-    WSPublicAccReport.getInstance().reportDownload(ugx.a(), i, 3, 1, 0);
-    upe.d("RockDownloader", "Rock下载失败，QQ下载兜底！,eventType = " + i);
+    int i = ugz.b();
+    WSPublicAccReport.getInstance().reportDownload(ugz.a(), i, 3, 1, 0);
+    uqf.d("RockDownloader", "Rock下载失败，QQ下载兜底！,eventType = " + i);
     Object localObject = this.val$activity;
     RockDownloadPresenter localRockDownloadPresenter = this.this$0;
     WSDownloadParams localWSDownloadParams = RockDownloadPresenter.a(this.this$0);
     if (i != 1) {}
     for (;;)
     {
-      ugx.a((Activity)localObject, localRockDownloadPresenter, localWSDownloadParams, bool, i);
+      ugz.a((Activity)localObject, localRockDownloadPresenter, localWSDownloadParams, bool, i);
       localObject = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
       if (localObject == null) {
         break;
@@ -52,12 +52,12 @@ class RockDownloadPresenter$1
       return;
       bool = false;
     }
-    upe.d("RockDownloader", "Rock onDownloadFail, listenerWrapper is null！");
+    uqf.d("RockDownloader", "Rock onDownloadFail, listenerWrapper is null！");
   }
   
   public void onDownloadFinish(RockDownloadInfo paramRockDownloadInfo)
   {
-    upe.a("RockDownloader", "rockdownload onDownloadFinish");
+    uqf.a("RockDownloader", "rockdownload onDownloadFinish");
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadFinish(paramRockDownloadInfo);
@@ -66,7 +66,7 @@ class RockDownloadPresenter$1
   
   public void onDownloadProceedOn(RockDownloadInfo paramRockDownloadInfo, int paramInt)
   {
-    upe.a("RockDownloader", "rockdownload onDownloadProceedOn,process" + paramInt);
+    uqf.a("RockDownloader", "rockdownload onDownloadProceedOn,process" + paramInt);
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadProceedOn(paramRockDownloadInfo, paramInt);
@@ -75,9 +75,9 @@ class RockDownloadPresenter$1
   
   public void onDownloadStart(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = ugx.b();
-    upe.b("RockDownloader", "rockdownload onDownloadStart,eventType = " + i);
-    ugx.b();
+    int i = ugz.b();
+    uqf.b("RockDownloader", "rockdownload onDownloadStart,eventType = " + i);
+    ugz.b();
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadStart(paramRockDownloadInfo);
@@ -86,11 +86,11 @@ class RockDownloadPresenter$1
   
   public void onDownloadSuccess(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = ugx.b();
-    upe.c("RockDownloader", "rockdownload onDownloadSuccess,eventType = " + i);
-    ugx.a();
-    umw.a(1);
-    WSPublicAccReport.getInstance().reportDownload(ugx.a(), i, 2, 1, 0);
+    int i = ugz.b();
+    uqf.c("RockDownloader", "rockdownload onDownloadSuccess,eventType = " + i);
+    ugz.a();
+    unx.a(1);
+    WSPublicAccReport.getInstance().reportDownload(ugz.a(), i, 2, 1, 0);
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadSuccess(paramRockDownloadInfo);
@@ -100,13 +100,13 @@ class RockDownloadPresenter$1
       this.this$0.a(paramRockDownloadInfo, 2);
       return;
     }
-    upe.c("RockDownloader", "rockdownload onDownloadSuccess,but preload need not call install. eventType = " + i);
+    uqf.c("RockDownloader", "rockdownload onDownloadSuccess,but preload need not call install. eventType = " + i);
   }
   
   public void onDownloadWait(RockDownloadInfo paramRockDownloadInfo)
   {
-    upe.c("RockDownloader", "rockdownload onDownloadWait");
-    ugx.b();
+    uqf.c("RockDownloader", "rockdownload onDownloadWait");
+    ugz.b();
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadWait(paramRockDownloadInfo);
@@ -115,10 +115,10 @@ class RockDownloadPresenter$1
   
   public void onPermissionDeny(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = ugx.b();
-    upe.b("RockDownloader", "rockdownload onPermissionDeny");
-    ugx.a();
-    WSPublicAccReport.getInstance().reportDownload(ugx.a(), i, 3, 1, 0);
+    int i = ugz.b();
+    uqf.b("RockDownloader", "rockdownload onPermissionDeny");
+    ugz.a();
+    WSPublicAccReport.getInstance().reportDownload(ugz.a(), i, 3, 1, 0);
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onPermissionDeny(paramRockDownloadInfo);
@@ -127,8 +127,8 @@ class RockDownloadPresenter$1
   
   public void onPermissionPermit(RockDownloadInfo paramRockDownloadInfo)
   {
-    upe.b("RockDownloader", "rockdownload onPermissionPermit");
-    ugx.b();
+    uqf.b("RockDownloader", "rockdownload onPermissionPermit");
+    ugz.b();
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onPermissionPermit(paramRockDownloadInfo);

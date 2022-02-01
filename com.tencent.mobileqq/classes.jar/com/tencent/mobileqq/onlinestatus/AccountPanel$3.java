@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import aymu;
-import bddy;
+import azfn;
+import bdwt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AccountPanel$3
   implements Runnable
 {
-  public AccountPanel$3(aymu paramaymu) {}
+  public AccountPanel$3(azfn paramazfn) {}
   
   public void run()
   {
-    if ((aymu.a(this.this$0) != null) && (aymu.a(this.this$0) != null))
+    if ((azfn.a(this.this$0) != null) && (azfn.a(this.this$0) != null))
     {
-      aymu.a(this.this$0, true);
-      aymu.b(this.this$0, false);
-      aymu.a(this.this$0, aymu.a(this.this$0));
-      aymu.a(this.this$0).g(false);
-      bddy.a(aymu.a(this.this$0), false);
+      azfn.a(this.this$0, true);
+      azfn.b(this.this$0, false);
+      azfn.a(this.this$0, azfn.a(this.this$0));
+      azfn.a(this.this$0).g(false);
+      bdwt.a(azfn.a(this.this$0), false);
     }
   }
 }

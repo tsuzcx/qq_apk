@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
-import anjx;
-import anni;
-import anrg;
+import anvu;
+import anzj;
+import aodm;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,7 +31,7 @@ public class PrinterSubOptionActivity
   implements View.OnClickListener
 {
   public LayoutInflater a;
-  public anjx a;
+  public anvu a;
   public XListView a;
   da jdField_a_of_type_Da;
   private dn jdField_a_of_type_Dn = new cy(this);
@@ -42,18 +42,18 @@ public class PrinterSubOptionActivity
   
   public PrinterSubOptionActivity()
   {
-    this.jdField_a_of_type_Anjx = null;
+    this.jdField_a_of_type_Anvu = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Anjx.jdField_a_of_type_Dk != null)
+    if (this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk != null)
     {
       int j = 0;
       int k = 0;
       this.b.clear();
-      List localList = this.jdField_a_of_type_Anjx.jdField_a_of_type_Dk.a();
+      List localList = this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a();
       int i1 = localList.size();
       int i = 0;
       if (i < i1)
@@ -105,49 +105,49 @@ public class PrinterSubOptionActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_a_of_type_Anjx = ((anjx)this.app.a(8));
-    this.jdField_a_of_type_Anjx.jdField_a_of_type_Anrd.jdField_a_of_type_JavaUtilList = null;
-    getWindow().setBackgroundDrawableResource(2131165431);
-    setContentView(2131559052);
-    setTitle(2131691209);
+    this.jdField_a_of_type_Anvu = ((anvu)this.app.a(8));
+    this.jdField_a_of_type_Anvu.jdField_a_of_type_Aodj.jdField_a_of_type_JavaUtilList = null;
+    getWindow().setBackgroundDrawableResource(2131165429);
+    setContentView(2131559051);
+    setTitle(2131691212);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_Da = new da(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372863));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372976));
     this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Da);
-    if (!this.jdField_a_of_type_Anjx.jdField_a_of_type_Dk.a())
+    if (!this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a())
     {
-      paramBundle = findViewById(2131365986);
+      paramBundle = findViewById(2131366032);
       paramBundle.setVisibility(0);
-      paramBundle.setContentDescription(anni.a(2131707194));
-      ((TextView)findViewById(2131379028)).setText(getString(2131691201));
-      ((TextView)findViewById(2131363629)).setText(getString(2131691200));
+      paramBundle.setContentDescription(anzj.a(2131707303));
+      ((TextView)findViewById(2131379192)).setText(getString(2131691204));
+      ((TextView)findViewById(2131363653)).setText(getString(2131691203));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      setLeftViewName(2131690563);
+      setLeftViewName(2131690559);
       this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
       return true;
       a();
-      this.jdField_a_of_type_Anjx.jdField_a_of_type_Dk.a(this.jdField_a_of_type_Dn);
+      this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a(this.jdField_a_of_type_Dn);
     }
   }
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Anjx.jdField_a_of_type_Dk.a();
+    this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_JavaLangString = getString(2131691202);
+    this.jdField_a_of_type_JavaLangString = getString(2131691205);
     this.b.clear();
     a();
-    anrg localanrg = (anrg)this.app.a(74);
-    this.jdField_a_of_type_Boolean = localanrg.a();
-    localanrg.a();
+    aodm localaodm = (aodm)this.app.a(74);
+    this.jdField_a_of_type_Boolean = localaodm.a();
+    localaodm.a();
   }
   
   public boolean onBackEvent()

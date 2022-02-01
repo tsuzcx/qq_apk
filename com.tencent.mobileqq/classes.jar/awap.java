@@ -1,45 +1,75 @@
-import android.view.ViewTreeObserver;
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.os.Bundle;
+import com.tencent.jungle.videohub.proto.CommProtocolProto.commResponse;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import java.util.Arrays;
 
-public class awap
-  implements TencentMap.OnMapLoadedCallback
+class awap
+  extends nkq
 {
-  public awap(MapWidget paramMapWidget) {}
+  awap(awan paramawan, int paramInt1, int paramInt2, boolean paramBoolean, awaq paramawaq) {}
   
-  public void onMapLoaded()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    avwn localavwn = this.a.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", localavwn.a() });
-    }
-    if ((localavwn.a() != null) && (!awao.a(this.a.getContext(), this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap, localavwn.a())))
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.a.a(false);
-      this.a.setTag(-2147483648, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. success moveMapToSelfCenter selfItem: ", localavwn.a() });
+      localStringBuilder = new StringBuilder().append("sendPBRequest errorCode=").append(paramInt).append(" bundle=");
+      if (paramBundle != null) {
+        break label142;
       }
     }
-    for (;;)
+    label142:
+    for (Object localObject = "null";; localObject = paramBundle.toString())
     {
-      if (MapWidget.a(this.a) != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() != null) {
-          break;
-        }
-        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new awaq(this));
+      QLog.d("ODCsChannel", 2, (String)localObject + " data=" + Arrays.toString(paramArrayOfByte));
+      if ((paramInt == 0) && (paramArrayOfByte != null)) {
+        break label166;
       }
+      QLog.i("ODCsChannel", 2, "login: fail，errorCode=" + paramInt + " data=" + Arrays.toString(paramArrayOfByte));
+      if (this.jdField_a_of_type_Int <= 0) {
+        break;
+      }
+      awan.b(this.jdField_a_of_type_Awan, this.c, paramArrayOfByte, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Awaq);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localavwn.a() });
+    }
+    awan.a(this.jdField_a_of_type_Awan, paramInt, null, paramBundle, this.jdField_a_of_type_Awaq);
+    return;
+    label166:
+    localObject = new CommProtocolProto.commResponse();
+    try
+    {
+      ((CommProtocolProto.commResponse)localObject).mergeFrom(paramArrayOfByte);
+      if (((CommProtocolProto.commResponse)localObject).code.get() == 1008)
+      {
+        QLog.i("ODCsChannel", 2, "sendPBRequest: fail，token illegal, errorCode=1008");
+        awan.a(this.jdField_a_of_type_Awan, this.c, paramArrayOfByte, this.b, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Awaq);
+        return;
       }
     }
-    MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+        ((CommProtocolProto.commResponse)localObject).code.set(-10);
+        QLog.e("ODCsChannel", 2, "sendPBRequest: error=" + localInvalidProtocolBufferMicroException.getMessage());
+      }
+      if (((CommProtocolProto.commResponse)localObject).code.get() == 1006)
+      {
+        QLog.i("ODCsChannel", 2, "sendPBRequest: fail，user sig illegal, errorCode=1006");
+        this.jdField_a_of_type_Awan.a(this.c, paramArrayOfByte, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Awaq);
+        return;
+      }
+      if ((((CommProtocolProto.commResponse)localObject).code.get() != 0) && (this.jdField_a_of_type_Int > 0))
+      {
+        QLog.i("ODCsChannel", 2, "sendPBRequest: fail，errorCode=" + ((CommProtocolProto.commResponse)localObject).code.get());
+        awan.b(this.jdField_a_of_type_Awan, this.c, paramArrayOfByte, this.b, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Awaq);
+        return;
+      }
+      awan.a(this.jdField_a_of_type_Awan, paramInt, (CommProtocolProto.commResponse)localObject, paramBundle, this.jdField_a_of_type_Awaq);
+    }
   }
 }
 

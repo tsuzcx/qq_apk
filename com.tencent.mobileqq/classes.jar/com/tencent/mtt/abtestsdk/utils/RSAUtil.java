@@ -2,6 +2,7 @@ package com.tencent.mtt.abtestsdk.utils;
 
 import android.util.Base64;
 import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -75,7 +76,7 @@ public class RSAUtil
       localByteArrayOutputStream.close();
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte = new String(Base64.encode(paramArrayOfByte, 2));
+        paramArrayOfByte = new String(Base64.encode(paramArrayOfByte, 2), "UTF-8");
         return paramArrayOfByte;
       }
     }
@@ -122,22 +123,20 @@ public class RSAUtil
   
   public static PrivateKey getPrivateKey(String paramString)
   {
-    return KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(Base64.decode(paramString.getBytes(), 0)));
+    return KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(Base64.decode(paramString.getBytes("UTF-8"), 0)));
   }
   
   public static PublicKey getPublicKey(String paramString)
   {
-    return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(Base64.decode(paramString.getBytes(), 0)));
+    return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(Base64.decode(paramString.getBytes("UTF-8"), 0)));
   }
   
   private static RSAPublicKey getWUPRSAPublicKey()
   {
-    X509EncodedKeySpec localX509EncodedKeySpec;
-    if (mLogPublicKey == null) {
-      localX509EncodedKeySpec = new X509EncodedKeySpec(Base64.decode("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCLhKbpjQQUFgVs0xX8mELVU8oFwUBIAcmtZf4FmvjkPXwtBwTkqHY2jhwr4ZRgyfGNl2537AssBA+jV2JSHlcRHeGOfR1ijueU5NojoUayvdJb5AyYI1y+OaonUgVSBHvl4Kwj04yc+6+bDp4ZAAM1Z5T50sovA0wL8pnNWEKU7QIDAQAB".getBytes(), 0));
-    }
+    if (mLogPublicKey == null) {}
     try
     {
+      X509EncodedKeySpec localX509EncodedKeySpec = new X509EncodedKeySpec(Base64.decode("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCLhKbpjQQUFgVs0xX8mELVU8oFwUBIAcmtZf4FmvjkPXwtBwTkqHY2jhwr4ZRgyfGNl2537AssBA+jV2JSHlcRHeGOfR1ijueU5NojoUayvdJb5AyYI1y+OaonUgVSBHvl4Kwj04yc+6+bDp4ZAAM1Z5T50sovA0wL8pnNWEKU7QIDAQAB".getBytes("UTF-8"), 0));
       mLogPublicKey = (RSAPublicKey)KeyFactory.getInstance("RSA").generatePublic(localX509EncodedKeySpec);
       return mLogPublicKey;
     }
@@ -153,6 +152,13 @@ public class RSAUtil
       for (;;)
       {
         ABTestLog.error(localNoSuchAlgorithmException.getMessage(), new Object[0]);
+      }
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        ABTestLog.error(localUnsupportedEncodingException.getMessage(), new Object[0]);
       }
     }
   }

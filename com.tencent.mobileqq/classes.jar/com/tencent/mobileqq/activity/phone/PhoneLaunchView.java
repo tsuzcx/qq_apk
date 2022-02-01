@@ -8,9 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import bcst;
-import bglf;
+import anzj;
+import bdll;
+import bhlg;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,10 +27,10 @@ public class PhoneLaunchView
   public PhoneLaunchView(Activity paramActivity, int paramInt)
   {
     super(paramActivity, paramInt);
-    a(2131559554);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131372333));
+    a(2131559559);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131372448));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getResources(), (ImageView)a(2131372335));
+    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getResources(), (ImageView)a(2131372450));
   }
   
   private void j()
@@ -46,7 +46,7 @@ public class PhoneLaunchView
   {
     super.a();
     if (this.jdField_a_of_type_Int == 3) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131706780));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131706889));
     }
     for (;;)
     {
@@ -55,7 +55,7 @@ public class PhoneLaunchView
         j();
       }
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131706772));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131706881));
     }
   }
   
@@ -99,7 +99,7 @@ public class PhoneLaunchView
     }
     super.a(paramIntent, paramPhoneInnerFrame);
     if (this.jdField_a_of_type_Int == 3) {
-      ((TextView)a(2131372336)).setText(2131689634);
+      ((TextView)a(2131372451)).setText(2131689636);
     }
   }
   
@@ -109,11 +109,11 @@ public class PhoneLaunchView
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
       i = this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.d();
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "QQPim", "Clk_address_on", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "QQPim", "Clk_address_on", 0, 0, "", "", "", "");
       if ((i != 1) && (i != 2) && (i != 3) && (i != 4)) {
         break label80;
       }
-      bglf.a(6);
+      bhlg.a(6);
       j();
     }
     for (;;)
@@ -128,7 +128,7 @@ public class PhoneLaunchView
       }
       else
       {
-        a(anni.a(2131706782), anni.a(2131706778));
+        a(anzj.a(2131706891), anzj.a(2131706887));
       }
     }
   }

@@ -1,89 +1,193 @@
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.manager.AccountManager;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.ReqBody;
 
 public class adoi
-  extends WtloginObserver
+  extends adnc
 {
-  public adoi(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public static final String a;
+  protected adol a;
+  protected adom a;
   
-  public void OnAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  static
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
-      }
-      if (paramDevlockInfo.TimeLimit <= 0) {
-        paramDevlockInfo.TimeLimit = 60;
-      }
-      AuthDevVerifyCodeActivity.a(this.a, paramDevlockInfo.TimeLimit);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramWUserSigInfo = this.a.getString(2131715770);
-    this.a.a(paramWUserSigInfo, 1);
+    jdField_a_of_type_JavaLangString = "DoraemonOpenAPI." + adoi.class.getSimpleName();
   }
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public static Bundle a()
   {
-    if (QLog.isColorLevel())
+    Object localObject1 = xiz.a();
+    Object localObject2 = (anyw)((QQAppInterface)localObject1).getManager(51);
+    Object localObject3 = ((QQAppInterface)localObject1).getCurrentAccountUin();
+    localObject2 = ((anyw)localObject2).b((String)localObject3);
+    String str1;
+    int i;
+    if (localObject2 != null)
     {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      str1 = ((Card)localObject2).strNick;
+      if (((Card)localObject2).shGender == 0) {
+        i = 1;
       }
     }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt == 0)
+    for (;;)
     {
-      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      String str2 = ((Card)localObject2).strCity;
+      String str3 = ((Card)localObject2).strProvince;
+      String str4 = ((Card)localObject2).strCountry;
+      localObject2 = "";
+      localObject3 = ((QQAppInterface)localObject1).c((String)localObject3);
+      if ((localObject3 != null) && (!TextUtils.isEmpty(((Setting)localObject3).url))) {
+        localObject1 = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)((QQAppInterface)localObject1).a(1)).a().a(((Setting)localObject3).url, ((Setting)localObject3).bFaceFlags, ((Setting)localObject3).bUsrType, 0));
       }
-      asfr.a().a(null, this.a.app.getCurrentAccountUin(), 9);
-      this.a.setResult(-1);
-      this.a.finish();
-      paramErrMsg = (AppInterface)AuthDevVerifyCodeActivity.a(this.a).get();
-      paramWUserSigInfo = "";
-      if (paramErrMsg != null) {
-        paramWUserSigInfo = paramErrMsg.getAccount();
+      for (;;)
+      {
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putString("nickName", str1);
+        ((Bundle)localObject2).putInt("gender", i);
+        ((Bundle)localObject2).putString("avatarUrl", (String)localObject1);
+        ((Bundle)localObject2).putString("city", str2);
+        ((Bundle)localObject2).putString("province", str3);
+        ((Bundle)localObject2).putString("country", str4);
+        if (QLog.isDevelopLevel()) {
+          QLog.i(jdField_a_of_type_JavaLangString + ".getUserInfoDirectly", 2, ((Bundle)localObject2).toString());
+        }
+        return localObject2;
+        if (((Card)localObject2).shGender != 1) {
+          break label271;
+        }
+        i = 2;
+        break;
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i(jdField_a_of_type_JavaLangString + ".getUserInfoDirectly", 2, "getUserInfo QQHeadSetting is empty");
+          localObject1 = localObject2;
+        }
       }
-      asfr.a().a(paramErrMsg, this.a, paramWUserSigInfo, true);
-      return;
+      return null;
+      label271:
+      i = 0;
     }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+  }
+  
+  private void a(JSONObject paramJSONObject, admy paramadmy)
+  {
+    if (adqf.a())
     {
-      this.a.a(paramErrMsg.getMessage(), 1);
+      paramJSONObject = a();
+      if (paramJSONObject != null)
+      {
+        adqf.a(paramadmy, adna.a(paramJSONObject));
+        return;
+      }
+      adqf.a(paramadmy, 1, "get user info error, try again");
       return;
     }
-    this.a.a(2131715804, 1);
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString + ".requestUserInfo", 2, "not main process, send to main process");
+    }
+    adne.a(1, null, new adoj(this, paramadmy));
+  }
+  
+  private void b(JSONObject paramJSONObject, admy paramadmy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString + ".requestAppFriends", 2, "url params = " + paramJSONObject);
+    }
+    paramJSONObject = new Oidb_0xb6e.ReqBody();
+    paramJSONObject.appid.set(Integer.valueOf(this.jdField_a_of_type_Adnb.jdField_a_of_type_JavaLangString).intValue());
+    paramJSONObject.openid.set(this.jdField_a_of_type_Adol.jdField_a_of_type_JavaLangString);
+    paramJSONObject.openkey.set(this.jdField_a_of_type_Adol.b);
+    paramJSONObject.platform.set("openmobile_android");
+    nkm.a(BaseApplicationImpl.getApplication().getRuntime(), new adok(this, paramadmy), paramJSONObject.toByteArray(), "OidbSvc.0xb6e", 2926, 1, null, 0L);
+  }
+  
+  public adol a()
+  {
+    return this.jdField_a_of_type_Adol;
+  }
+  
+  protected void a(adol paramadol)
+  {
+    this.jdField_a_of_type_Adol = paramadol;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Adol != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Adol.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Adol.b));
+  }
+  
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy)
+  {
+    boolean bool = true;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+    case 17: 
+    case 18: 
+      do
+      {
+        do
+        {
+          return bool;
+          if ((!a()) || (adqa.a)) {
+            break;
+          }
+          adqf.a(paramadmy, this.jdField_a_of_type_Adol.a());
+        } while (!QLog.isColorLevel());
+        QLog.i(jdField_a_of_type_JavaLangString + "." + paramString, 2, "has login, use cache: " + this.jdField_a_of_type_Adol.toString());
+        return true;
+        if (this.jdField_a_of_type_Adom == null) {
+          this.jdField_a_of_type_Adom = new adom(this.jdField_a_of_type_Adnb, this);
+        }
+        this.jdField_a_of_type_Adom.a(paramJSONObject, paramadmy, false);
+        return true;
+        if (!a()) {
+          break;
+        }
+        adqf.a(paramadmy, this.jdField_a_of_type_Adol.a());
+      } while (!QLog.isColorLevel());
+      QLog.i(jdField_a_of_type_JavaLangString + "." + paramString, 2, "has login, use cache: " + this.jdField_a_of_type_Adol.toString());
+      return true;
+      if (this.jdField_a_of_type_Adom == null) {
+        this.jdField_a_of_type_Adom = new adom(this.jdField_a_of_type_Adnb, this);
+      }
+      this.jdField_a_of_type_Adom.a(paramJSONObject, paramadmy, true);
+      return true;
+    case 10: 
+      if (!a())
+      {
+        adqf.a(paramadmy, 5);
+        return true;
+      }
+      a(paramJSONObject, paramadmy);
+      return true;
+    }
+    if (!a())
+    {
+      adqf.a(paramadmy, 5);
+      return true;
+    }
+    b(paramJSONObject, paramadmy);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Adol = null;
   }
 }
 

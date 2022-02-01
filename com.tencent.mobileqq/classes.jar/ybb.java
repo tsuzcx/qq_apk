@@ -1,21 +1,17 @@
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class ybb
-  extends SimpleJob<Void>
+class ybb
+  implements yaw<Bitmap>
 {
-  public ybb(StoryTransitionActivity paramStoryTransitionActivity, String paramString)
-  {
-    super(paramString);
-  }
+  ybb(yaz paramyaz, List paramList, String paramString) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  @NonNull
+  public Stream<Bitmap> a(yas paramyas)
   {
-    yqp.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(why.a()) });
-    return null;
+    return yaz.a(this.jdField_a_of_type_Yaz, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.startup.director;
 
-import addy;
-import anwa;
-import bcow;
-import bcrg;
+import admw;
+import aoim;
+import bdho;
+import bdjy;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.startup.step.Step;
@@ -11,18 +11,18 @@ import com.tencent.mobileqq.startup.step.Step;
 public class StartupDirector$2
   implements Runnable
 {
-  public StartupDirector$2(bcow parambcow) {}
+  public StartupDirector$2(bdho parambdho) {}
   
   public void run()
   {
     ThreadManager.initDPC();
-    anwa.a().a(DeviceProfileManager.a());
-    if (bcow.d != 0)
+    aoim.a().a(DeviceProfileManager.a());
+    if (bdho.d != 0)
     {
-      addy.a().a(bcow.d);
-      bcow.d = 0;
+      admw.a().a(bdho.d);
+      bdho.d = 0;
     }
-    bcrg.b(30, this.this$0, null).step();
+    bdjy.b(30, this.this$0, null).step();
   }
 }
 

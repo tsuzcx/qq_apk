@@ -1,47 +1,16 @@
-import com.tencent.pts.utils.PTSLogger;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
 
 public class qpi
-  implements PTSLogger
+  extends CharacterStyle
 {
-  public void d(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 2, paramString2);
-  }
+  public qpi(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
   
-  public void e(String paramString1, String paramString2)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2 + ", t = " + paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public boolean isDebug()
-  {
-    return false;
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, 1, paramString2 + ", t = " + paramThrowable);
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(agej.a(2, 14, this.a.getResources()));
   }
 }
 

@@ -14,6 +14,7 @@ public class ReadInJoyUserInfo
   private static final String TAG = "ReadInJoyUserInfo";
   public int accountLevel;
   public int accountType;
+  public String authorizeDesc;
   public int faceFlag;
   public int faceType;
   public String faceUrl;
@@ -66,7 +67,7 @@ public class ReadInJoyUserInfo
   
   public String toString()
   {
-    return "ReadInJoyUserInfo, accountType = " + this.accountType + '\n' + "uin = " + this.uin + '\n' + "nick = " + this.nick + '\n' + "faceType = " + this.faceType + '\n' + "timestamp = " + this.timestamp + '\n' + "faceFlag = " + this.faceFlag + '\n' + "faceUrl = " + this.faceUrl + '\n' + "systemID = " + this.systemID + '\n' + "requestFlag = " + this.requestFlag + '\n' + "accountLevel = " + this.accountLevel + '\n' + "smallIconUrl = " + this.smallIconUrl + '\n' + "largeIconUrl = " + this.largeIconUrl + '\n' + "readlTimeRead = " + this.readlTimeRead + '\n' + "liveStatus = " + getLiveStatusString() + '\n';
+    return "ReadInJoyUserInfo, accountType = " + this.accountType + '\n' + "uin = " + this.uin + '\n' + "nick = " + this.nick + '\n' + "faceType = " + this.faceType + '\n' + "timestamp = " + this.timestamp + '\n' + "faceFlag = " + this.faceFlag + '\n' + "faceUrl = " + this.faceUrl + '\n' + "systemID = " + this.systemID + '\n' + "requestFlag = " + this.requestFlag + '\n' + "accountLevel = " + this.accountLevel + '\n' + "smallIconUrl = " + this.smallIconUrl + '\n' + "largeIconUrl = " + this.largeIconUrl + '\n' + "authorizeDesc = " + this.authorizeDesc + '\n' + "readlTimeRead = " + this.readlTimeRead + '\n' + "liveStatus = " + getLiveStatusString() + '\n';
   }
 }
 

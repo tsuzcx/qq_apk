@@ -1,92 +1,84 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bowh
+class bowh
+  extends PagerAdapter
 {
-  public static HashMap<String, Integer> a = new HashMap();
-  public static HashMap<String, Integer> b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<bowj> jdField_a_of_type_AndroidUtilSparseArray;
   
-  static
+  bowh(bowd parambowd, Context paramContext)
   {
-    a.put("actLbsSendPoiListFailure", Integer.valueOf(100));
-    a.put("actLbsSendGetPidFailure", Integer.valueOf(100));
-    a.put("actLbsPayBridgeFailure", Integer.valueOf(100));
-    a.put("actLbsPoiListFailure", Integer.valueOf(10000));
-    a.put("actLbsPackListFailure", Integer.valueOf(1000));
-    a.put("actLbsGetPackFailure", Integer.valueOf(100));
-    a.put("actLbsCaiShenResourceFailure", Integer.valueOf(100));
-    b = new HashMap();
-    b.put("actLbsSendPoiListFailure", Integer.valueOf(10000));
-    b.put("actLbsSendGetPidFailure", Integer.valueOf(10000));
-    b.put("actLbsPayBridgeFailure", Integer.valueOf(10000));
-    b.put("actLbsPoiListFailure", Integer.valueOf(100000));
-    b.put("actLbsPackListFailure", Integer.valueOf(10000));
-    b.put("actLbsGetPackFailure", Integer.valueOf(10000));
-    b.put("actLbsCaiShenResourceFailure", Integer.valueOf(10000));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public static void a(String paramString)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    try
+    paramViewGroup.removeView((View)paramObject);
+  }
+  
+  public int getCount()
+  {
+    if (bowd.a(this.jdField_a_of_type_Bowd) == null) {
+      return 0;
+    }
+    return bowd.a(this.jdField_a_of_type_Bowd).length;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  @SuppressLint({"ResourceType"})
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    Object localObject2 = (bowj)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      HashMap localHashMap = new HashMap();
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LbsPack", 2, "uploadSuccess " + paramString);
-        }
-        bctj.a(MobileQQ.sMobileQQ).a(str, paramString, false, 0L, 0L, localHashMap, null);
+      localObject2 = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558483, null);
+      localObject1 = new bowj(this);
+      ((bowj)localObject1).jdField_a_of_type_AndroidViewView = ((View)localObject2);
+      ((bowj)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131371336));
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+    }
+    localObject2 = bowd.a(this.jdField_a_of_type_Bowd)[paramInt];
+    TextView localTextView = ((bowj)localObject1).jdField_a_of_type_AndroidWidgetTextView;
+    localTextView.setText(((AECaptureMode)localObject2).textId);
+    if (bowd.a(this.jdField_a_of_type_Bowd))
+    {
+      localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165343));
+      if (bowd.a(this.jdField_a_of_type_Bowd) != localObject2) {
+        break label220;
       }
-      return;
+      localTextView.setAlpha(1.0F);
     }
-    catch (Throwable paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      localTextView.setOnClickListener(new bowi(this, (AECaptureMode)localObject2, paramInt));
+      paramViewGroup.addView(((bowj)localObject1).jdField_a_of_type_AndroidViewView);
+      return ((bowj)localObject1).jdField_a_of_type_AndroidViewView;
+      localTextView.setShadowLayer(4.0F, 0.0F, 2.0F, localTextView.getResources().getColor(2131165355));
+      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167302));
+      break;
+      label220:
+      localTextView.setAlpha(0.6F);
     }
   }
   
-  public static void a(String paramString, int paramInt)
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", String.valueOf(paramInt));
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!TextUtils.isEmpty(str)) && (a(paramString)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LbsPack", 2, "uploadFailure " + paramString + " " + paramInt);
-        }
-        bctj.a(MobileQQ.sMobileQQ).a(str, paramString, true, 0L, 0L, localHashMap, null);
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    paramString = (Integer)a.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return (int)(Math.random() * paramString.intValue()) == 1;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    paramString = (Integer)b.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return (int)(Math.random() * paramString.intValue()) == 1;
+    return paramView == paramObject;
   }
 }
 

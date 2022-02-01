@@ -1,17 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
 public class advz
-  implements bbaa
+  implements bliz
 {
-  public advz(ChatSettingActivity paramChatSettingActivity) {}
+  public advz(AssociatedAccountActivity paramAssociatedAccountActivity, blir paramblir) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    this.jdField_a_of_type_Blir.cancel();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690709));
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
   }
 }
 

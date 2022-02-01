@@ -1,10 +1,13 @@
 package com.tencent.qqmini.miniapp.plugin;
 
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidgetClient;
 
 public abstract interface IExtendedEmbeddedWidgetClient
   extends IEmbeddedWidgetClient
 {
+  public abstract IMiniAppContext getMiniAppContext();
+  
   public abstract void nativeDestroy();
   
   public abstract void nativePause();

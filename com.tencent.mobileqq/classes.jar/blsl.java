@@ -1,15 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import android.view.animation.Interpolator;
 
-public class blsl
-  extends Handler
+final class blsl
+  implements Interpolator
 {
-  public blsl(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
-  
-  public void handleMessage(Message paramMessage)
+  public float getInterpolation(float paramFloat)
   {
-    this.a.a(this.a.a, paramMessage);
+    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
   }
 }
 

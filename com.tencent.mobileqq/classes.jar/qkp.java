@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class qkp
-  implements ViewBase.IBuilder
+class qkp
+  implements View.OnTouchListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qkp(qkj paramqkj, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new qkn(paramVafContext);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
+    }
+    return false;
   }
 }
 

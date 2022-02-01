@@ -1,68 +1,112 @@
+import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bbng
-  extends bbnh
+  extends GPUBaseFilter
 {
-  public static final String a;
-  public int a;
-  public CharSequence a;
-  public CharSequence b;
-  public String b;
-  public CharSequence c;
+  private int jdField_a_of_type_Int = -1;
+  private List<GPUBaseFilter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<RenderBuffer> b;
   
-  static
+  private void a()
   {
-    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bbng.class.getSimpleName();
-  }
-  
-  public bbng(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public bbng(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
+    if (this.b != null)
     {
-    default: 
-      i = 1;
-    }
-    return i;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.i = paramString.optString("leftImageURL");
-      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_JavaLangString = bbup.a(paramString.optString("leftImageTagText"));
-      this.jdField_a_of_type_JavaLangCharSequence = bbup.a(paramString.optString("firstLineText"));
-      this.jdField_b_of_type_JavaLangCharSequence = bbup.a(paramString.optString("secondLineText"));
-      this.c = bbup.a(paramString.optJSONArray("thirdLineText"));
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((RenderBuffer)localIterator.next()).destroy();
+      }
+      this.b = null;
     }
   }
   
-  public boolean b()
+  public RenderBuffer a()
   {
-    return true;
+    if ((this.b != null) && (this.b.size() > 0)) {
+      return (RenderBuffer)this.b.get(this.b.size() - 1);
+    }
+    throw new RuntimeException("please check your state");
+  }
+  
+  public void a(@NonNull GPUBaseFilter paramGPUBaseFilter)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
+  }
+  
+  public void destroy()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).destroy();
+    }
+    a();
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        ((RenderBuffer)this.b.get(paramInt)).bind();
+        ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, null, null);
+        ((RenderBuffer)this.b.get(paramInt)).unbind();
+        this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+        }
+        else
+        {
+          ((RenderBuffer)this.b.get(paramInt)).bind();
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+          ((RenderBuffer)this.b.get(paramInt)).unbind();
+          this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+        }
+      }
+    }
+  }
+  
+  public void init()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((GPUBaseFilter)((Iterator)localObject).next()).onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    a();
+    this.b = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = j;
+    if (this.jdField_a_of_type_Boolean) {
+      i = j - 1;
+    }
+    j = 0;
+    while (j < i)
+    {
+      localObject = new RenderBuffer(paramInt1, paramInt2, 33984);
+      this.b.add(localObject);
+      j += 1;
+    }
   }
 }
 

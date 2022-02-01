@@ -1,65 +1,78 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import cooperation.troop_homework.outer.TroopHWRecordArrangeActivity;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
 
 public class bmsd
-  extends Handler
 {
-  public bmsd(TroopHWRecordArrangeActivity paramTroopHWRecordArrangeActivity) {}
+  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
+  private ObjectOutputStream jdField_a_of_type_JavaIoObjectOutputStream = new ObjectOutputStream(this.jdField_a_of_type_JavaIoByteArrayOutputStream);
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeInt(paramInt);
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeObject(paramObject);
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, "");
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null)
     {
-    default: 
-      return;
-    case 3: 
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
-    case 101: 
-      this.a.setResult(0);
-      this.a.finish();
+      this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString2);
       return;
     }
-    paramMessage = paramMessage.obj.toString();
-    Object localObject = new File(paramMessage);
-    long l;
-    if (((File)localObject).exists()) {
-      l = ((File)localObject).length();
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString1);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeBoolean(paramBoolean);
+  }
+  
+  public byte[] a()
+  {
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-      paramMessage = new JSONObject();
+      this.jdField_a_of_type_JavaIoObjectOutputStream.close();
       try
       {
-        paramMessage.put("webid", TroopHWRecordArrangeActivity.a(this.a));
-        paramMessage.put("type", "record");
-        paramMessage.put("state", "stop");
-        paramMessage.put("time", Math.round(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.duration / 1000.0F));
-        paramMessage.put("size", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.size);
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("jscallback", paramMessage.toString());
-        ((Intent)localObject).putExtra("localPath", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
-        this.a.setResult(-1, (Intent)localObject);
-        this.a.finish();
-        return;
-        l = 0L;
+        label7:
+        arrayOfByte1 = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
       }
-      catch (JSONException localJSONException)
+      catch (Exception localException1)
       {
         for (;;)
         {
-          localJSONException.printStackTrace();
+          try
+          {
+            byte[] arrayOfByte1;
+            this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+            return arrayOfByte1;
+          }
+          catch (Exception localException3)
+          {
+            byte[] arrayOfByte2;
+            return arrayOfByte2;
+          }
+          localException1 = localException1;
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.qqwalletmsg", 2, "flushDataAndCloseStream toByteArray Exception", localException1);
+          }
+          arrayOfByte2 = null;
         }
       }
+    }
+    catch (Exception localException2)
+    {
+      break label7;
     }
   }
 }

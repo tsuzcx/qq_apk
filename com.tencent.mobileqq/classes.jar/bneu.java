@@ -1,32 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
+import cooperation.qzone.plugin.PluginRecord;
+import java.io.File;
 
-public class bneu
-  implements Animator.AnimatorListener
+class bneu
+  implements bney
 {
-  public bneu(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
+  bneu(bnet parambnet) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean a(PluginRecord paramPluginRecord, File paramFile)
   {
-    AEAlbumLinearLayout.a(this.a, 0);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (AEAlbumLinearLayout.a(this.a) != null) {
-      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a), AEAlbumLinearLayout.a(this.a, AEAlbumLinearLayout.b(this.a)));
-    }
-    AEAlbumLinearLayout.a(this.a, 0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (AEAlbumLinearLayout.a(this.a) != null) {
-      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a));
-    }
+    return bnet.a(this.a, paramPluginRecord);
   }
 }
 

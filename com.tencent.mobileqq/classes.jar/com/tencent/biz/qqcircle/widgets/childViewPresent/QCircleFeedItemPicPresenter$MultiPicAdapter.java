@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.widgets.childViewPresent;
 
+import aaak;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.support.v4.view.PagerAdapter;
@@ -8,10 +9,10 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgtn;
+import bhtq;
 import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.widgets.QCirclePaiTongKuanIconView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -28,14 +29,13 @@ import java.util.LinkedList;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StImageBusiData;
 import qqcircle.QQCircleFeedBase.StSimulateData;
-import uxx;
-import vou;
-import vrc;
-import waa;
-import wab;
-import wac;
-import wad;
-import zwp;
+import vrd;
+import vtn;
+import vwk;
+import wdq;
+import wdr;
+import wds;
+import wdt;
 
 public class QCircleFeedItemPicPresenter$MultiPicAdapter
   extends PagerAdapter
@@ -45,18 +45,18 @@ public class QCircleFeedItemPicPresenter$MultiPicAdapter
   
   public QCircleFeedItemPicPresenter$MultiPicAdapter(QCircleFeedItemPicPresenter paramQCircleFeedItemPicPresenter) {}
   
-  private View a(wad paramwad, FeedCloudMeta.StImage paramStImage, int paramInt)
+  private View a(wdt paramwdt, FeedCloudMeta.StImage paramStImage, int paramInt)
   {
     String str = paramStImage.picUrl.get();
-    URLImageView localURLImageView = paramwad.jdField_a_of_type_ComTencentImageURLImageView;
+    URLImageView localURLImageView = paramwdt.jdField_a_of_type_ComTencentImageURLImageView;
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846601);
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844002);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846618);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844021);
     Object localObject;
     if (QCircleFeedItemPicPresenter.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter) != 0) {
       if ((paramStImage.width.get() != 0) && (paramStImage.height.get() != 0))
       {
-        localObject = uxx.a((FeedCloudMeta.StFeed)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter.jdField_a_of_type_JavaLangObject, paramStImage.width.get(), paramStImage.height.get());
+        localObject = vwk.a((FeedCloudMeta.StFeed)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter.jdField_a_of_type_JavaLangObject, paramStImage.width.get(), paramStImage.height.get());
         ViewGroup.LayoutParams localLayoutParams = localURLImageView.getLayoutParams();
         localLayoutParams.width = ((Integer)((Pair)localObject).first).intValue();
         localLayoutParams.height = ((Integer)((Pair)localObject).second).intValue();
@@ -67,50 +67,28 @@ public class QCircleFeedItemPicPresenter$MultiPicAdapter
     for (;;)
     {
       localObject = "";
-      if ((localURLImageView.getTag(2131373857) instanceof String)) {
-        localObject = (String)localURLImageView.getTag(2131373857);
+      if ((localURLImageView.getTag(2131373990) instanceof String)) {
+        localObject = (String)localURLImageView.getTag(2131373990);
       }
-      localURLImageView.setTag(2131373857, str);
+      localURLImageView.setTag(2131373990, str);
       if (!((String)localObject).equals(str))
       {
-        localObject = new vou().a(str).a((URLImageView)localURLImageView).b(false).a(true).c(localURLDrawableOptions.mRequestWidth).b(localURLDrawableOptions.mRequestHeight);
-        QCircleFeedPicLoader.a().a((vou)localObject, new waa(this));
+        localObject = new vrd().a(str).a((URLImageView)localURLImageView).b(false).a(true).c(localURLDrawableOptions.mRequestWidth).b(localURLDrawableOptions.mRequestHeight);
+        QCircleFeedPicLoader.a().a((vrd)localObject, new wdq(this));
       }
-      localURLImageView.setOnClickListener(new wab(this, paramInt, localURLImageView, paramStImage));
-      zwp.a().a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter);
-      try
+      localURLImageView.setOnClickListener(new wdr(this, paramInt, localURLImageView, paramStImage));
+      aaak.a().a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter);
+      a(paramwdt, paramStImage);
+      return paramwdt.jdField_a_of_type_AndroidWidgetFrameLayout;
+      if (localURLImageView.getLayoutParams() != null)
       {
-        localObject = new QQCircleFeedBase.StImageBusiData();
-        ((QQCircleFeedBase.StImageBusiData)localObject).mergeFrom(paramStImage.busiData.get().toByteArray());
-        if ((((QQCircleFeedBase.StImageBusiData)localObject).simulate_date != null) && (((QQCircleFeedBase.StImageBusiData)localObject).simulate_date.is_show_button.get() == 1) && (Build.VERSION.SDK_INT >= 21))
-        {
-          paramwad.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramwad.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wac(this, (QQCircleFeedBase.StImageBusiData)localObject));
-          vrc.a(86, 1, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter.b());
-        }
-        for (;;)
-        {
-          return paramwad.jdField_a_of_type_AndroidWidgetFrameLayout;
-          if (localURLImageView.getLayoutParams() == null) {
-            break;
-          }
-          localURLDrawableOptions.mRequestWidth = localURLImageView.getLayoutParams().width;
-          localURLDrawableOptions.mRequestHeight = localURLImageView.getLayoutParams().height;
-          break;
-          paramwad.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-      }
-      catch (Exception paramStImage)
-      {
-        for (;;)
-        {
-          QLog.e("QCircleFeedItemPicPresent", 1, "exception:", paramStImage);
-        }
+        localURLDrawableOptions.mRequestWidth = localURLImageView.getLayoutParams().width;
+        localURLDrawableOptions.mRequestHeight = localURLImageView.getLayoutParams().height;
       }
     }
   }
   
-  private wad a(ViewGroup paramViewGroup)
+  private wdt a(ViewGroup paramViewGroup)
   {
     FrameLayout localFrameLayout = new FrameLayout(paramViewGroup.getContext());
     URLImageView localURLImageView;
@@ -121,27 +99,56 @@ public class QCircleFeedItemPicPresenter$MultiPicAdapter
       localURLImageView = new URLImageView(paramViewGroup.getContext());
       localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       if (QCircleFeedItemPicPresenter.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter) != 0) {
-        break label204;
+        break label188;
       }
     }
-    label204:
+    label188:
     for (int i = -1;; i = QCircleFeedItemPicPresenter.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter))
     {
       localFrameLayout.addView(localURLImageView, new ViewGroup.LayoutParams(-1, i));
-      paramViewGroup = new ImageView(paramViewGroup.getContext());
-      Object localObject = new FrameLayout.LayoutParams(bgtn.a(27.0F), bgtn.a(27.0F));
-      ((FrameLayout.LayoutParams)localObject).bottomMargin = bgtn.a(12.0F);
-      ((FrameLayout.LayoutParams)localObject).rightMargin = bgtn.a(12.0F);
-      ((FrameLayout.LayoutParams)localObject).gravity = 85;
+      paramViewGroup = new QCirclePaiTongKuanIconView(paramViewGroup.getContext());
+      Object localObject = new FrameLayout.LayoutParams(-2, -2);
+      ((FrameLayout.LayoutParams)localObject).topMargin = bhtq.a(12.0F);
+      ((FrameLayout.LayoutParams)localObject).rightMargin = bhtq.a(10.0F);
+      ((FrameLayout.LayoutParams)localObject).gravity = 53;
       localFrameLayout.addView(paramViewGroup, (ViewGroup.LayoutParams)localObject);
-      paramViewGroup.setBackgroundResource(2130843921);
-      localObject = new wad(this);
-      ((wad)localObject).jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
-      ((wad)localObject).jdField_a_of_type_ComTencentImageURLImageView = localURLImageView;
-      ((wad)localObject).jdField_a_of_type_AndroidWidgetImageView = paramViewGroup;
+      localObject = new wdt(this);
+      ((wdt)localObject).jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
+      ((wdt)localObject).jdField_a_of_type_ComTencentImageURLImageView = localURLImageView;
+      ((wdt)localObject).jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePaiTongKuanIconView = paramViewGroup;
       return localObject;
       i = QCircleFeedItemPicPresenter.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter);
       break;
+    }
+  }
+  
+  private void a(wdt paramwdt, FeedCloudMeta.StImage paramStImage)
+  {
+    try
+    {
+      QQCircleFeedBase.StImageBusiData localStImageBusiData = new QQCircleFeedBase.StImageBusiData();
+      localStImageBusiData.mergeFrom(paramStImage.busiData.get().toByteArray());
+      if ((localStImageBusiData.simulate_date.get() != null) && (localStImageBusiData.simulate_date.is_show_button.get() == 1) && (Build.VERSION.SDK_INT >= 21))
+      {
+        paramwdt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePaiTongKuanIconView.setVisibility(0);
+        paramStImage = localStImageBusiData.simulate_date.simulate_name.get();
+        if (paramStImage.equals("")) {
+          paramwdt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePaiTongKuanIconView.a();
+        }
+        for (;;)
+        {
+          paramwdt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePaiTongKuanIconView.setOnClickListener(new wds(this, localStImageBusiData));
+          vtn.a(86, 1, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter.b());
+          return;
+          paramwdt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePaiTongKuanIconView.setTongKuanText(paramStImage);
+        }
+      }
+      paramwdt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePaiTongKuanIconView.setVisibility(8);
+    }
+    catch (Exception paramwdt)
+    {
+      QLog.e("QCircleFeedItemPicPresent", 1, "exception:", paramwdt);
+      return;
     }
   }
   
@@ -154,19 +161,19 @@ public class QCircleFeedItemPicPresenter$MultiPicAdapter
   {
     FeedCloudMeta.StImage localStImage = (FeedCloudMeta.StImage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     Object localObject;
-    wad localwad;
+    wdt localwdt;
     if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
     {
       localObject = (View)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      localwad = (wad)((View)localObject).getTag();
+      localwdt = (wdt)((View)localObject).getTag();
     }
     for (;;)
     {
       paramViewGroup.addView((View)localObject);
-      return a(localwad, localStImage, paramInt);
-      localwad = a(paramViewGroup);
-      localObject = localwad.jdField_a_of_type_AndroidWidgetFrameLayout;
-      ((View)localObject).setTag(localwad);
+      return a(localwdt, localStImage, paramInt);
+      localwdt = a(paramViewGroup);
+      localObject = localwdt.jdField_a_of_type_AndroidWidgetFrameLayout;
+      ((View)localObject).setTag(localwdt);
     }
   }
   

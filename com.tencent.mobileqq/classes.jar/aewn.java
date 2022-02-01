@@ -1,35 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class aewn
-  extends BroadcastReceiver
+class aewn
+  implements Animation.AnimationListener
 {
-  public aewn(QQIdentiferActivity paramQQIdentiferActivity) {}
+  aewn(aewm paramaewm, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
-    {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
-      {
-        QQIdentiferActivity.a(this.a, 204, avog.a);
-        QQIdentiferActivity.a(this.a, 204, avog.a);
-        this.a.finish();
-      }
+    if ((this.jdField_a_of_type_Boolean) && (aewm.a(this.jdField_a_of_type_Aewm) != null) && (aewm.a(this.jdField_a_of_type_Aewm).size() >= 2)) {
+      aewm.a(this.jdField_a_of_type_Aewm).sendEmptyMessageDelayed(1688002, 1400L);
     }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    if (aewm.a(this.jdField_a_of_type_Aewm) != null)
     {
-      int i;
-      return;
+      aewm.a(this.jdField_a_of_type_Aewm).a();
+      aewm.a(this.jdField_a_of_type_Aewm, null);
     }
-    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

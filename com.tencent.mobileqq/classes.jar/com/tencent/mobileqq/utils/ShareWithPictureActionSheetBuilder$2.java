@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.utils;
 
-import bgse;
+import bhsg;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareWithPictureActionSheetBuilder$2
   implements Runnable
 {
-  public ShareWithPictureActionSheetBuilder$2(bgse parambgse) {}
+  public ShareWithPictureActionSheetBuilder$2(bhsg parambhsg) {}
   
   public void run()
   {

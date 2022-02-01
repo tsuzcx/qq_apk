@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class behf
-  implements DialogInterface.OnClickListener
+final class behf
+  extends Editable.Factory
 {
-  public behf(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    if ((paramCharSequence instanceof behe)) {
+      return (Editable)paramCharSequence;
+    }
+    return new behe(paramCharSequence, 3, 20);
   }
 }
 

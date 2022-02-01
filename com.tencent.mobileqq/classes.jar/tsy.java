@@ -1,24 +1,81 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
-class tsy
-  implements bcob
+public class tsy
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  tsy(tsx paramtsx, tta paramtta) {}
+  private WeakReference<ReadInJoyArticleBottomVideoView> a;
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public tsy(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    QLog.e("NativeVueLoaderManager", 1, "[NativeVueLoaderManager], resCode: " + paramInt);
-    tsx.a(this.jdField_a_of_type_Tsx, false);
-    if (paramInt == 0)
-    {
-      tsx.b(this.jdField_a_of_type_Tsx, true);
-      tsx.a(this.jdField_a_of_type_Tsx, this.jdField_a_of_type_Tta);
+    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
+  }
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
       return;
     }
-    tsx.b(this.jdField_a_of_type_Tsx, false);
-    tsx.b(this.jdField_a_of_type_Tsx, this.jdField_a_of_type_Tta);
-    QLog.e("NativeVueLoaderManager", 2, "load NativeVue Error: " + paramInt);
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 9);
+    tno.c = true;
+    paramTVK_IMediaPlayer.j();
+    paramTVK_IMediaPlayer.r();
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).f = true;
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleBottomVideoView", 0, "error msg = " + paramString);
+      }
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.j();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInJoyArticleBottomVideoView", 3, "WebFastProteusViewAdBannerVideoCreator start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramSurfaceHolder == null) {
+      return;
+    }
+    paramSurfaceHolder.q();
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
+    }
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer) != null))
+    {
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
+    }
+    ReadInJoyArticleBottomVideoView.b(paramTVK_IMediaPlayer);
   }
 }
 

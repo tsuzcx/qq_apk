@@ -1,18 +1,30 @@
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bmod
-  implements QQPermissionCallback
+public class bmod
 {
-  bmod(bmob parambmob, int paramInt) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static long a(Context paramContext, String paramString)
   {
-    bglp.b(this.jdField_a_of_type_Bmob.mRuntime.a());
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static String a(Context paramContext, String paramString)
   {
-    bmob.a(this.jdField_a_of_type_Bmob, this.jdField_a_of_type_Int);
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
+  }
+  
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramString2 == null) {
+      return;
+    }
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
   }
 }
 

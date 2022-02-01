@@ -1,72 +1,20 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aimb
+class aimb
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  protected int c;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  public long d;
-  String jdField_d_of_type_JavaLangString;
-  int e = 0;
+  aimb(ailn paramailn, String paramString) {}
   
-  public aimb(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("puin");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("type");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("show_tab");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("content");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
-      this.jdField_b_of_type_Long = paramJSONObject.optLong("begin");
-      this.jdField_c_of_type_Long = paramJSONObject.optLong("end");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("shool_id");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("times");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Int = paramJSONObject.optInt("tid");
-      this.e = paramJSONObject.optInt("clicked");
-    }
-  }
-  
-  boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Long > 0L)
-    {
-      bool1 = bool2;
-      if (this.jdField_c_of_type_Int >= 0) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean b()
-  {
-    boolean bool2 = true;
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    boolean bool1 = bool2;
-    if (l >= this.jdField_b_of_type_Long)
-    {
-      bool1 = bool2;
-      if (l <= this.jdField_c_of_type_Long) {
-        bool1 = false;
-      }
-    }
-    return bool1;
+    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_Ailn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ailn.jdField_a_of_type_Aoad.a(localHotChatInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

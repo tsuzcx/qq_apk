@@ -1,25 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
-public class ango
+public abstract interface ango
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<View.OnClickListener> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
+  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong);
   
-  public ango(View paramView, int paramInt1, String paramString, int paramInt2, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    if (paramOnClickListener != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnClickListener);
-    }
-  }
+  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt);
 }
 
 

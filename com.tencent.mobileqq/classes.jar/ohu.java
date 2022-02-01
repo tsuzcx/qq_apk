@@ -1,18 +1,88 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.widgets.TabLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
 
-public class ohu
-  implements bhow
+class ohu
+  extends pfh
 {
-  public ohu(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
+  ohu(ohp paramohp) {}
   
-  public Object a(int paramInt)
+  public void a(float paramFloat, int paramInt)
   {
-    switch (paramInt)
+    super.a(paramFloat, paramInt);
+    paramFloat /= paramInt;
+    ohp.a(this.a).setY((1.0F - paramFloat) * ohp.a(this.a).getHeight() * 0.03F);
+  }
+  
+  public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    super.a(paramTabChannelCoverInfo);
+    if (paramTabChannelCoverInfo != null)
     {
-    default: 
-      return null;
+      QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onChannelTabSelected, channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), ", channelName = ", paramTabChannelCoverInfo.mChannelCoverName });
+      ohp.a(paramTabChannelCoverInfo.mChannelCoverId, 1);
+      this.a.c(paramTabChannelCoverInfo.mChannelCoverId);
+      ohp.a(this.a);
+      if (bnrf.A())
+      {
+        ohp.b(this.a, paramTabChannelCoverInfo);
+        ohp.b(this.a, ohp.a(this.a, ohp.a(this.a)));
+      }
     }
-    return new ohw(this.a);
+    try
+    {
+      ohp.a("0X8009B94", "", new paa().a("source", "303").a(paramTabChannelCoverInfo.mChannelCoverId).b("style", 0).a());
+      return;
+    }
+    catch (JSONException paramTabChannelCoverInfo)
+    {
+      QLog.d("ReadInJoyChannelViewPagerController", 2, "report click channel bar exception, e = ", paramTabChannelCoverInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    super.a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    paramInt = this.a.b();
+    ohp.a(this.a, paramInt);
+    ohp.a(this.a).a();
+  }
+  
+  public void a(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
+  {
+    int i = 0;
+    if (paramList != null) {
+      i = paramList.size();
+    }
+    QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onIndependentMainChannelListupdate, success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i) });
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
+      ohp.a(this.a, paramList);
+    }
+  }
+  
+  public void as_()
+  {
+    super.as_();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    int i = 8;
+    ohp.a(this.a, paramBoolean);
+    if (!paz.a())
+    {
+      ImageView localImageView = ohp.a(this.a);
+      if (paramBoolean) {
+        i = 0;
+      }
+      localImageView.setVisibility(i);
+      return;
+    }
+    ohp.a(this.a).setVisibility(8);
   }
 }
 

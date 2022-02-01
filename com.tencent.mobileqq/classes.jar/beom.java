@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class beom
-  implements View.OnClickListener
+class beom
+  extends beow
 {
-  public beom(NewTroopCreateActivity paramNewTroopCreateActivity) {}
-  
-  public void onClick(View paramView)
+  beom(beoh parambeoh, EditorState paramEditorState, List paramList)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(parambeoh, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    beoh.a(this.a).a(false, false);
   }
 }
 

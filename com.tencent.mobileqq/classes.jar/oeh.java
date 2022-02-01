@@ -1,83 +1,45 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
 public class oeh
-  implements oei
+  extends BroadcastReceiver
 {
-  private CustomTabView a;
+  public oeh(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void a(Context paramContext)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramContext != null) {
-      paramContext.sendBroadcast(new Intent("com.tencent.biz.pubaccount.ecshop.tabpage.finish"));
-    }
-    if (this.a != null) {
-      this.a.a();
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(List<ChatMessage> paramList, oej paramoej)
-  {
-    if (paramList.size() > 0)
+    paramContext = paramIntent.getAction();
+    if ("action_decode_finish".equals(paramContext))
     {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        localChatMessage.removeExtInfoToExtStr("add_title");
-        if (oer.c(localChatMessage) == 1) {
-          localIterator.remove();
-        }
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
       }
     }
-    if (paramoej != null) {
-      paramoej.a(paramList);
-    }
-  }
-  
-  public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
-  {
-    oek localoek = oem.a();
-    if (oen.a(localoek))
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EcshopMinusViewChatPie", 2, "initPublicAccountMenu new qqshop pubaccount return");
-      }
-      this.a = new CustomTabView(paramContext);
-      if (this.a.a(localoek))
+      do
       {
-        this.a.setTag("echopCustomTabView");
-        this.a.a(1);
-        paramRelativeLayout.addView(this.a);
-        paramContext = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-        if (paramContext != null)
-        {
-          paramContext.width = -1;
-          paramContext.height = -2;
-          paramContext.addRule(12);
-        }
-        paramContext = oet.a();
-        oet.a(paramContext);
-        this.a.a(paramContext);
-        return true;
-      }
+        return;
+      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
+      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
+    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700169));
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      return;
     }
-    return false;
-  }
-  
-  public boolean a(RelativeLayout paramRelativeLayout)
-  {
-    return (oen.a()) && (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopCustomTabView") != null);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700181));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847097);
   }
 }
 

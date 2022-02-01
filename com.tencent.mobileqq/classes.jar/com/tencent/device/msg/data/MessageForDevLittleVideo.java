@@ -1,8 +1,8 @@
 package com.tencent.device.msg.data;
 
-import anni;
-import aopw;
-import bglf;
+import anzj;
+import apdm;
+import bhlg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -19,7 +19,7 @@ public class MessageForDevLittleVideo
   {
     try
     {
-      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)aopw.a(this.msgData);
+      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)apdm.a(this.msgData);
       if (localDevLittleVideoMsgSerial != null)
       {
         this.thumbFileKey = localDevLittleVideoMsgSerial.thumbFileKey;
@@ -69,9 +69,9 @@ public class MessageForDevLittleVideo
     {
       localObject = (QQAppInterface)localObject;
       if (isSendFromLocal()) {
-        return anni.a(2131705364);
+        return anzj.a(2131705471);
       }
-      return bglf.b((QQAppInterface)localObject, this.senderuin, true) + anni.a(2131705368);
+      return bhlg.b((QQAppInterface)localObject, this.senderuin, true) + anzj.a(2131705475);
     }
     return null;
   }
@@ -108,7 +108,7 @@ public class MessageForDevLittleVideo
     localDevLittleVideoMsgSerial.senderuin = this.senderuin;
     try
     {
-      this.msgData = aopw.a(localDevLittleVideoMsgSerial);
+      this.msgData = apdm.a(localDevLittleVideoMsgSerial);
       return;
     }
     catch (Exception localException)

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.app;
 
-import anjo;
-import bgdt;
-import bgdy;
-import bgrt;
+import anvl;
+import bhdu;
+import bhdz;
+import bhrv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
 public class ConfigHandler$11
   implements Runnable
 {
-  public ConfigHandler$11(anjo paramanjo) {}
+  public ConfigHandler$11(anvl paramanvl) {}
   
   public void run()
   {
-    Object localObject = bgdt.a().a();
+    Object localObject = bhdu.a().a();
     if ((localObject == null) || (((UpgradeDetailWrapper)localObject).a == null)) {
       return;
     }
-    boolean bool = bgrt.b();
-    int i = bgrt.b();
+    boolean bool = bhrv.b();
+    int i = bhrv.b();
     int j = ((UpgradeDetailWrapper)localObject).a.a;
     if ((bool) && (j == i)) {}
     for (i = 1;; i = 0)
@@ -28,9 +28,9 @@ public class ConfigHandler$11
       if (i != 0) {
         break;
       }
-      bgdt.a().a((QQAppInterface)localObject, true);
-      bgrt.b(j);
-      bgrt.b(true);
+      bhdu.a().a((QQAppInterface)localObject, true);
+      bhrv.b(j);
+      bhrv.b(true);
       return;
     }
   }

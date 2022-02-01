@@ -1,14 +1,17 @@
-public abstract interface avek
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+
+public class avek
+  implements Handler.Callback
 {
-  public abstract void a(int paramInt);
+  public avek(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public boolean handleMessage(Message paramMessage)
+  {
+    MsgBackupSettingFragment.a(this.a, paramMessage);
+    return false;
+  }
 }
 
 

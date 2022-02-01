@@ -1,27 +1,20 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aaha
-  implements aafc
+class aaha
+  implements View.OnClickListener
 {
-  public aaha(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  aaha(aagz paramaagz, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    SubscribeHybirdFragment.a(this.a).a(paramInt);
-  }
-  
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
-  {
-    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
-    {
-      QQToast.a(this.a.getHostActivity(), anni.a(2131713334), 0).a();
-      return;
+    if (((this.jdField_a_of_type_Aagz.itemView instanceof RelativeFeedItemView)) && (aagu.a(this.jdField_a_of_type_Aagz.a) != null)) {
+      aagu.a(this.jdField_a_of_type_Aagz.a).a(this.jdField_a_of_type_Aagz.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
     }
-    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

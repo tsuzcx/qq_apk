@@ -1,52 +1,142 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class mij
-  implements Animator.AnimatorListener
+public class mij
+  implements lgq<PendantItem>, mhp
 {
-  mij(mih parammih) {}
+  private final int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final ArrayList<mii> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  private final lhs jdField_a_of_type_Lhs;
+  private mhi jdField_a_of_type_Mhi;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public mij(int paramInt, lhs paramlhs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
-    }
-    this.a.b(3, false);
-    if (mih.a(this.a) != null) {
-      mih.a(this.a).requestLayout();
-    }
-    mih.a(this.a, false);
+    this.jdField_a_of_type_JavaLangString = ("QavListItemHelper" + paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Lhs = paramlhs;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static mii a(int paramInt, PendantItem paramPendantItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
+    mii localmii = new mii();
+    localmii.jdField_a_of_type_Int = paramInt;
+    localmii.jdField_a_of_type_JavaLangString = paramPendantItem.getId();
+    localmii.jdField_c_of_type_JavaLangString = paramPendantItem.getDesc();
+    localmii.b = paramPendantItem.getIconurl();
+    localmii.jdField_d_of_type_JavaLangString = paramPendantItem.getDesc();
+    localmii.jdField_c_of_type_Boolean = false;
+    localmii.jdField_a_of_type_Boolean = paramPendantItem.isUsable();
+    localmii.jdField_a_of_type_JavaLangObject = paramPendantItem;
+    if (paramInt == 4) {
+      localmii.jdField_d_of_type_Boolean = true;
     }
-    this.a.c(3);
-    if (mih.a(this.a) != null) {
-      mih.a(this.a).requestLayout();
-    }
-    mih.a(this.a, false);
+    return localmii;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public ArrayList<mii> a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
+    long l = AudioHelper.b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Int == 5)
+    {
+      localObject = new mii();
+      ((mii)localObject).jdField_d_of_type_Boolean = false;
+      ((mii)localObject).jdField_a_of_type_JavaLangString = "-1";
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
     }
-    mih.a(this.a).setVisibility(0);
-    mih.a(this.a).setAlpha(0.0F);
-    mih.a(this.a).setVisibility(0);
-    mih.a(this.a).setAlpha(0.0F);
-    mih.a(this.a).height = -2;
-    mih.a(this.a).width = -2;
+    Object localObject = new mii();
+    ((mii)localObject).jdField_a_of_type_JavaLangString = "0";
+    ((mii)localObject).b = String.valueOf(2130842169);
+    ((mii)localObject).jdField_c_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Int == 4)
+    {
+      ((mii)localObject).jdField_d_of_type_Boolean = true;
+      ((mii)localObject).jdField_c_of_type_JavaLangString = paramContext.getString(2131694787);
+    }
+    for (((mii)localObject).jdField_d_of_type_JavaLangString = paramContext.getString(2131694788);; ((mii)localObject).jdField_d_of_type_JavaLangString = paramContext.getString(2131694787))
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      if (this.jdField_a_of_type_Lhs == null) {
+        break;
+      }
+      paramContext = this.jdField_a_of_type_Lhs.a(null);
+      localObject = (PendantItem)this.jdField_a_of_type_Lhs.a();
+      if ((localObject != null) && (!paramContext.contains(localObject))) {
+        this.jdField_a_of_type_Lhs.a(l, null);
+      }
+      if ((paramContext == null) || (paramContext.size() <= 0)) {
+        break;
+      }
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        localObject = (PendantItem)paramContext.next();
+        if (localObject != null)
+        {
+          localObject = a(this.jdField_a_of_type_Int, (PendantItem)localObject);
+          if (localObject != null) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          }
+        }
+      }
+      ((mii)localObject).jdField_d_of_type_Boolean = false;
+      ((mii)localObject).jdField_c_of_type_JavaLangString = paramContext.getString(2131694787);
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(long paramLong, PendantItem paramPendantItem)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "onItemSelectedChanged, seq[" + paramLong + "], current[" + paramPendantItem + "]");
+    }
+  }
+  
+  public void a(long paramLong, PendantItem paramPendantItem, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "onDownloadFinish, seq[" + paramLong + "], isSuc[" + paramBoolean + "], info[" + paramPendantItem + "]");
+    }
+    if (this.jdField_a_of_type_Mhi != null) {
+      this.jdField_a_of_type_Mhi.a(paramLong, paramPendantItem.getId(), paramBoolean);
+    }
+  }
+  
+  public void a(PendantItem paramPendantItem, int paramInt)
+  {
+    if (this.jdField_a_of_type_Mhi != null) {
+      this.jdField_a_of_type_Mhi.a(paramPendantItem.getId(), paramInt);
+    }
+  }
+  
+  public void a(mhi parammhi)
+  {
+    this.jdField_a_of_type_Mhi = parammhi;
+  }
+  
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mii parammii, mih parammih)
+  {
+    paramAppInterface = null;
+    if (this.jdField_a_of_type_Lhs != null) {
+      paramAppInterface = (PendantItem)this.jdField_a_of_type_Lhs.a(parammii.jdField_a_of_type_JavaLangString);
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "startDownloadTemplate, seq[" + paramLong + "], item[" + paramAppInterface + "]");
+    }
+    if (paramAppInterface != null)
+    {
+      this.jdField_a_of_type_Lhs.a(paramLong, paramAppInterface);
+      return;
+    }
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
+    parammih.a(paramLong, parammii.jdField_a_of_type_JavaLangString, false);
   }
 }
 

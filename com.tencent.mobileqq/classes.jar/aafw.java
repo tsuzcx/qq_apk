@@ -1,25 +1,89 @@
-public class aafw
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+
+public abstract class aafw<T>
+  implements Handler.Callback
 {
-  public static String a(long paramLong)
+  protected int a;
+  protected Context a;
+  protected Handler a;
+  protected View a;
+  protected int b = -1;
+  
+  public aafw(Context paramContext, boolean paramBoolean)
   {
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (paramBoolean) {
+      a();
     }
-    String str1 = anni.a(2131703511);
-    if (l < 10000L) {
-      return String.valueOf(l);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  protected Resources a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext != null) {
+      return this.jdField_a_of_type_AndroidContentContext.getResources();
     }
-    if (l < 10000000L)
+    return null;
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected final void a(Runnable paramRunnable)
+  {
+    if (paramRunnable == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public abstract void b();
+  
+  public final void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  protected abstract void d();
+  
+  protected abstract void e();
+  
+  public void f()
+  {
+    e();
+    a(-1);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      str1 = String.valueOf(l / 10000.0D + 0.05D);
-      return str1.substring(0, str1.indexOf(".") + 2) + "w";
+    default: 
+      return false;
     }
-    if (l < 100000000L) {
-      return l / 10000L + "w";
-    }
-    String str2 = String.valueOf(l / 100000000.0D);
-    return str2.substring(0, str2.indexOf(".") + 2) + str1;
+    d();
+    return true;
   }
 }
 

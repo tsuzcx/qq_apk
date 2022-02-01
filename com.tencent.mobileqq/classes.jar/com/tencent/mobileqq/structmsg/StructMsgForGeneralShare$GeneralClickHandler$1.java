@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.os.Bundle;
-import bcwp;
+import bdpi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgForGeneralShare$GeneralClickHandler$1
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$1(bcwp parambcwp, Bundle paramBundle) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$1(bdpi parambdpi, Bundle paramBundle) {}
   
   public void run()
   {

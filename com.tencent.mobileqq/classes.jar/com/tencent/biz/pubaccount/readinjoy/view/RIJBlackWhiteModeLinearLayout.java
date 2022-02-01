@@ -11,7 +11,7 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import uad;
+import uaf;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/RIJBlackWhiteModeLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "dispatchDrawCanvas", "Lkotlin/Function1;", "Landroid/graphics/Canvas;", "", "drawCanvas", "mContext", "dispatchDraw", "canvas", "draw", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJBlackWhiteModeLinearLayout
@@ -45,18 +45,18 @@ public final class RIJBlackWhiteModeLinearLayout
   protected void dispatchDraw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    uad.a.a(paramCanvas, true, this.b);
+    uaf.a.a(paramCanvas, true, this.b);
   }
   
   public void draw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    uad.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+    uaf.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RIJBlackWhiteModeLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -32,44 +32,6 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
     mGetVInfoKeyMap = Collections.unmodifiableMap(localHashMap);
   }
   
-  public static int configVideoInfoFormat(TVKPlayerVideoInfo paramTVKPlayerVideoInfo)
-  {
-    String str = (String)TVKMediaPlayerConfig.PlayerConfig.vod_fmt.getValue();
-    boolean bool;
-    if (str == null)
-    {
-      str = "";
-      if ((!str.equalsIgnoreCase("hls")) && (str.equalsIgnoreCase("auto"))) {}
-      bool = ((Boolean)TVKMediaPlayerConfig.PlayerConfig.is_cache_video_fenpian.getValue()).booleanValue();
-      if ((!paramTVKPlayerVideoInfo.getConfigMapValue("playmode", "").equals("cache_extend_video")) && (!paramTVKPlayerVideoInfo.getConfigMapValue("playmode", "").equals("cache_video"))) {
-        break label95;
-      }
-    }
-    label95:
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) || (bool)) {
-        break label100;
-      }
-      return 1;
-      break;
-    }
-    label100:
-    if (str.equalsIgnoreCase("hls")) {
-      return 3;
-    }
-    if (str.equalsIgnoreCase("mp4")) {
-      return 1;
-    }
-    if (str.equalsIgnoreCase("5min_mp4")) {
-      return 4;
-    }
-    if (str.equalsIgnoreCase("20min_mp4")) {
-      return 5;
-    }
-    return 0;
-  }
-  
   static void configVideoInfoHEVCLevel(TVKPlayerVideoInfo paramTVKPlayerVideoInfo, String paramString, boolean paramBoolean)
   {
     if (!paramBoolean) {}
@@ -171,8 +133,8 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
   static void videoInfoConfigDefinition(TVKPlaybackParam paramTVKPlaybackParam, TVKPlaybackInfo paramTVKPlaybackInfo)
   {
     if (paramTVKPlaybackParam == null) {}
-    label169:
-    label172:
+    label171:
+    label174:
     for (;;)
     {
       return;
@@ -199,13 +161,13 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
         {
           i = 1;
           if ((i == 0) && (paramTVKPlaybackParam.videoInfo().getPlayType() != 3)) {
-            break label169;
+            break label171;
           }
         }
         for (int i = 1;; i = 0)
         {
           if ((i == 0) || (!str2.equalsIgnoreCase("hd")) || (paramTVKPlaybackInfo.requestInfo().formatId() != 1)) {
-            break label172;
+            break label174;
           }
           paramTVKPlaybackInfo.requestInfo().definition("mp4");
           paramTVKPlaybackParam.definition("mp4");

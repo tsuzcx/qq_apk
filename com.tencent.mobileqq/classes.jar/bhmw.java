@@ -1,18 +1,22 @@
-import android.view.animation.Transformation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 class bhmw
-  implements bgtg<Integer>
+  implements DialogInterface.OnDismissListener
 {
-  bhmw(bhmv parambhmv) {}
+  bhmw(bhmr parambhmr) {}
   
-  public void a(bgta<Integer> parambgta, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.b(paramInteger.intValue());
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhmw
  * JD-Core Version:    0.7.0.1
  */

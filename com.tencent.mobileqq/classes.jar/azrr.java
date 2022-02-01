@@ -1,31 +1,96 @@
-import android.view.View;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import android.graphics.Bitmap;
+import android.media.ExifInterface;
+import android.text.TextUtils;
+import com.tencent.image.JpegExifReader;
+import com.tencent.mobileqq.pic.CompressInfo;
+import java.io.IOException;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileBaseHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileBaseSettingItem", "Lcom/tencent/mobileqq/widget/FormSimpleItem;", "getProfileBaseSettingItem", "()Lcom/tencent/mobileqq/widget/FormSimpleItem;", "setProfileBaseSettingItem", "(Lcom/tencent/mobileqq/widget/FormSimpleItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azrr
-  extends RecyclerView.ViewHolder
+public class azrr
+  extends azro
 {
-  @NotNull
-  private FormSimpleItem a;
-  
-  public azrr(@NotNull View paramView)
+  azrr(CompressInfo paramCompressInfo)
   {
-    super(paramView);
-    paramView = paramView.findViewById(2131368855);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSimpleItem");
-    }
-    this.a = ((FormSimpleItem)paramView);
+    super(paramCompressInfo);
   }
   
-  @NotNull
-  public final FormSimpleItem a()
+  protected int a(CompressInfo paramCompressInfo)
   {
-    return this.a;
+    switch (paramCompressInfo.jdField_g_of_type_Int)
+    {
+    default: 
+      return -1;
+    case 0: 
+    case 1: 
+      return 1;
+    }
+    return 2;
+  }
+  
+  protected boolean d()
+  {
+    boolean bool1 = true;
+    if (this.k == 1)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Boolean) && (azru.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c;
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.f = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + anzj.a(2131707053));
+        azpw.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " compress()", anzj.a(2131707054));
+      }
+      for (;;)
+      {
+        return bool1;
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = azru.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Int);
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
+        {
+          azpw.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " destPath is empty");
+          return false;
+        }
+        if (bhmi.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
+        {
+          azpw.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " destPath exist. return true");
+          return true;
+        }
+        try
+        {
+          Bitmap localBitmap = bhmq.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, null);
+          if (localBitmap == null)
+          {
+            azpw.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " bm == null, maybe is broken");
+            return false;
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(true);
+          azpw.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " decodeFile oom, execute commonCompress()");
+          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = "";
+          return c();
+        }
+        boolean bool2 = azru.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e, localOutOfMemoryError, a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
+        if (!JpegExifReader.isCrashJpeg(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)) {}
+        try
+        {
+          if (!bhmq.a(new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c), new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))) {
+            azpw.b(this.jdField_a_of_type_JavaLangString, "compress()", "Failed to save exif");
+          }
+          bool1 = bool2;
+          if (localOutOfMemoryError != null)
+          {
+            localOutOfMemoryError.recycle();
+            return bool2;
+          }
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            azpw.b(this.jdField_a_of_type_JavaLangString, "compress()", "cannot read exif, " + localIOException.getMessage());
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 

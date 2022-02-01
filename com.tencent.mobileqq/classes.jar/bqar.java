@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class bqar
-  implements DialogInterface.OnClickListener
+  extends bpli
 {
-  public bqar(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private bihw jdField_a_of_type_Bihw;
+  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public PtvTemplateManager.PtvTemplateInfo a()
   {
-    this.a.a();
+    return this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+  }
+  
+  public void a() {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bihw != null) {
+      this.jdField_a_of_type_Bihw.onDestroy();
+    }
   }
 }
 

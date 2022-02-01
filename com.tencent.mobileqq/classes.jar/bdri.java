@@ -1,132 +1,100 @@
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import cooperation.vip.pb.TianShuAccess.MapEntry;
-import cooperation.vip.pb.TianShuAccess.RspEntry;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class bdri
+  extends bdom
 {
-  public TianShuAccess.AdItem a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public static bdri a(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  private LinearLayout a(Context paramContext)
   {
-    if ((!paramBoolean) || (paramGetAdsRsp == null)) {
-      return null;
-    }
-    if (paramGetAdsRsp.mapAds.has()) {}
-    for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp == null; paramGetAdsRsp = null) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    paramGetAdsRsp = paramGetAdsRsp.iterator();
-    while (paramGetAdsRsp.hasNext())
-    {
-      localObject1 = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
-      if ((localObject1 != null) && (((TianShuAccess.RspEntry)localObject1).key.has())) {
-        localHashMap.put(Integer.valueOf(((TianShuAccess.RspEntry)localObject1).key.get()), localObject1);
-      }
-    }
-    paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(236));
-    if ((paramGetAdsRsp == null) || (paramGetAdsRsp.value == null) || (paramGetAdsRsp.value.lst.size() == 0) || (paramGetAdsRsp.value.lst.get(0) == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList.get() == null)) {
-      return null;
-    }
-    Object localObject1 = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList.get();
-    localHashMap = new HashMap();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (TianShuAccess.MapEntry)((Iterator)localObject1).next();
-      String str = ((TianShuAccess.MapEntry)localObject2).key.get();
-      localObject2 = ((TianShuAccess.MapEntry)localObject2).value.get();
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-        localHashMap.put(str, localObject2);
-      }
-    }
-    localObject1 = new bdri();
-    ((bdri)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
-    ((bdri)localObject1).c = ((String)localHashMap.get("pic"));
-    ((bdri)localObject1).b = ((String)localHashMap.get("url"));
-    ((bdri)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
-    if (TextUtils.isEmpty(((bdri)localObject1).c)) {
-      return null;
-    }
-    return localObject1;
+    Resources localResources = paramContext.getResources();
+    paramContext = new LinearLayout(paramContext);
+    paramContext.setOrientation(1);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    int i = localResources.getDimensionPixelSize(2131298913);
+    int j = localResources.getDimensionPixelSize(2131298914);
+    paramContext.setPadding(i, localResources.getDimensionPixelSize(2131298915), j, localResources.getDimensionPixelSize(2131298912));
+    paramContext.setLayoutParams(localLayoutParams);
+    return paramContext;
   }
   
-  public static List<bdri> a(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
+  protected int b()
   {
-    int i = 0;
-    if ((!paramBoolean) || (paramGetAdsRsp == null)) {
-      return null;
-    }
-    if (paramGetAdsRsp.mapAds.has()) {}
-    for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp == null; paramGetAdsRsp = null) {
-      return null;
-    }
-    Object localObject1 = new HashMap();
-    paramGetAdsRsp = paramGetAdsRsp.iterator();
+    return 21;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA) {}
+    Resources localResources = paramContext.getResources();
+    int i;
+    int k;
+    label102:
     Object localObject2;
-    while (paramGetAdsRsp.hasNext())
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      localObject2 = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
-      if ((localObject2 != null) && (((TianShuAccess.RspEntry)localObject2).key.has())) {
-        ((Map)localObject1).put(Integer.valueOf(((TianShuAccess.RspEntry)localObject2).key.get()), localObject2);
+      paramView = (LinearLayout)paramView;
+      paramView.removeAllViews();
+      i = paramView.getPaddingTop();
+      j = paramView.getPaddingBottom();
+      k = localResources.getDimensionPixelSize(2131298913);
+      int m = localResources.getDimensionPixelSize(2131298914);
+      a(paramView);
+      d(paramView);
+      paramView.setPadding(k, i, m, j);
+      k = agej.a(7.0F, localResources);
+      i = 0;
+      if (i >= this.a.size()) {
+        return paramView;
+      }
+      localObject2 = (bdol)this.a.get(i);
+      if (!(localObject2 instanceof bdtq)) {
+        break label216;
+      }
+      localObject1 = (bdtq)localObject2;
+      localObject2 = ((bdtq)localObject1).a(paramContext, null, paramBundle);
+      if (localObject2 != null)
+      {
+        localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+        localLayoutParams.topMargin = ((bdtq)localObject1).o;
+        localLayoutParams.bottomMargin = ((bdtq)localObject1).p;
+        paramView.addView((View)localObject2, localLayoutParams);
       }
     }
-    paramGetAdsRsp = (TianShuAccess.RspEntry)((Map)localObject1).get(Integer.valueOf(paramInt));
-    if ((paramGetAdsRsp == null) || (paramGetAdsRsp.value == null) || (paramGetAdsRsp.value.lst.size() == 0) || (paramGetAdsRsp.value.lst.get(0) == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList.get() == null)) {
-      return null;
-    }
-    localObject1 = new ArrayList();
-    paramInt = i;
-    for (;;)
+    label216:
+    while (!(localObject2 instanceof bdqq))
     {
-      Object localObject3;
-      if (paramInt < paramGetAdsRsp.value.lst.size())
-      {
-        localObject3 = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(paramInt)).argList.get();
-        localObject2 = new HashMap();
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          Object localObject4 = (TianShuAccess.MapEntry)((Iterator)localObject3).next();
-          String str = ((TianShuAccess.MapEntry)localObject4).key.get();
-          localObject4 = ((TianShuAccess.MapEntry)localObject4).value.get();
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject4))) {
-            ((Map)localObject2).put(str, localObject4);
-          }
-        }
-        localObject3 = new bdri();
-        ((bdri)localObject3).jdField_a_of_type_JavaLangString = ((String)((Map)localObject2).get("type"));
-        ((bdri)localObject3).c = ((String)((Map)localObject2).get("pic"));
-        ((bdri)localObject3).b = ((String)((Map)localObject2).get("url"));
-        ((bdri)localObject3).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(paramInt));
-        if (!TextUtils.isEmpty(((bdri)localObject3).c)) {}
-      }
-      else
-      {
-        return localObject1;
-      }
-      localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      URLDrawable.getDrawable(((bdri)localObject3).c, (URLDrawable.URLDrawableOptions)localObject2).startDownload();
-      bmvi.a().a(((bdri)localObject3).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem);
-      ((List)localObject1).add(localObject3);
-      paramInt += 1;
+      LinearLayout.LayoutParams localLayoutParams;
+      i += 1;
+      break label102;
+      paramView = a(paramContext);
+      break;
     }
+    Object localObject1 = ((bdol)localObject2).a(paramContext, null, paramBundle);
+    if (((bdqq)localObject2).a) {}
+    for (int j = 0;; j = agej.a(2.0F, localResources))
+    {
+      localObject2 = new LinearLayout.LayoutParams(-1, j);
+      ((LinearLayout.LayoutParams)localObject2).topMargin = k;
+      ((LinearLayout.LayoutParams)localObject2).bottomMargin = k;
+      if (localObject1 == null) {
+        break;
+      }
+      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+      break;
+    }
+    return paramView;
+  }
+  
+  public String b()
+  {
+    return "Layout21";
   }
 }
 

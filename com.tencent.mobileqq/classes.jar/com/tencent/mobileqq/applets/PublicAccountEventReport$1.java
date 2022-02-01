@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import alzs;
+import amlk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$1
@@ -10,7 +10,7 @@ public final class PublicAccountEventReport$1
   
   public void run()
   {
-    alzs.a().a(this.a);
+    amlk.a().a(this.a);
   }
 }
 

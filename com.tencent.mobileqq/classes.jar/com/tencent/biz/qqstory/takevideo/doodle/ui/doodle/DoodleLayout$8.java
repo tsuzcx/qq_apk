@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import yxi;
-import zao;
-import zax;
+import zbd;
+import zej;
+import zes;
 
 class DoodleLayout$8
   implements Runnable
 {
-  DoodleLayout$8(DoodleLayout paramDoodleLayout, yxi paramyxi, int paramInt, int[] paramArrayOfInt) {}
+  DoodleLayout$8(DoodleLayout paramDoodleLayout, zbd paramzbd, int paramInt, int[] paramArrayOfInt) {}
   
   public void run()
   {
-    ((zax)this.jdField_a_of_type_Yxi.a.a(102)).b(this.jdField_a_of_type_Int);
+    ((zes)this.jdField_a_of_type_Zbd.a.a(102)).b(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ArrayOfInt[0] = 1;
   }
 }

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public final class yrq
-  implements Parcelable.Creator<EditLocalVideoSource>
+class yrq
+  extends SimpleJob<Object>
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
+  yrq(yrh paramyrh, String paramString1, String paramString2)
   {
-    return new EditLocalVideoSource(paramParcel);
+    super(paramString1);
   }
   
-  public EditLocalVideoSource[] a(int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return new EditLocalVideoSource[paramInt];
+    yrh.a(this.jdField_a_of_type_Yrh).a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 

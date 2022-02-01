@@ -1,34 +1,10 @@
-import java.io.InputStream;
-
-public class axlo
+public abstract interface axlo
 {
-  public static byte[] a(InputStream paramInputStream, int paramInt)
-  {
-    Object localObject;
-    if (paramInt <= 0) {
-      localObject = null;
-    }
-    for (;;)
-    {
-      return localObject;
-      int i = 0;
-      byte[] arrayOfByte = new byte[paramInt];
-      localObject = arrayOfByte;
-      if (i >= paramInt) {
-        continue;
-      }
-      try
-      {
-        int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
-        localObject = arrayOfByte;
-        if (j <= 0) {
-          continue;
-        }
-        i += j;
-      }
-      finally {}
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
 }
 
 

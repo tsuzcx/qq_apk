@@ -1,53 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-
 public class alhy
-  implements View.OnTouchListener
 {
-  public alhy(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public alhy(alhw paramalhw, String paramString1, String paramString2, String paramString3)
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
-    }
-    do
-    {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.jdField_b_of_type_Int * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
-      }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.jdField_b_of_type_Int * -1)
-    {
-      this.a.k = false;
-      this.a.a(false, true);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692284);
-      return false;
-      this.a.k = true;
-      this.a.a(true, true);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

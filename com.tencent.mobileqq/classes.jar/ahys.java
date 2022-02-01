@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahys
-  implements DialogInterface.OnClickListener
+public class ahys
+  implements ahyf
 {
-  ahys(ahyk paramahyk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramahed.a(paramMessageRecord, paramahfq.b);
+  }
 }
 
 

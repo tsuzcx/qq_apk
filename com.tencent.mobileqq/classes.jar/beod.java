@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-
-public class beod
-  extends anmu
+public abstract interface beod
 {
-  public beod(NewTroopContactView paramNewTroopContactView) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void b(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
 }
 
 

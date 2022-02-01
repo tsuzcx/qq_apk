@@ -1,23 +1,36 @@
-import android.app.Activity;
-import com.tencent.avgame.app.AVGameAppInterface;
+import androidx.annotation.NonNull;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 
-public abstract interface mzs
+public class mzs
+  extends mzo
 {
-  public abstract Activity a();
+  protected mzo a()
+  {
+    return new mzs();
+  }
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public void a(mzo parammzo)
+  {
+    super.a(parammzo);
+  }
   
-  public abstract void a(AVGameAppInterface paramAVGameAppInterface, long paramLong, String paramString1, int paramInt, String paramString2, String paramString3);
+  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  {
+    super.a(paramCommonQuestionInfo);
+  }
   
-  public abstract void a(String paramString);
+  public int b()
+  {
+    return 5;
+  }
   
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(myc parammyc);
-  
-  public abstract void b(myc parammyc);
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
+  }
 }
 
 

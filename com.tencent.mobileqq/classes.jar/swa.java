@@ -1,15 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 
 public class swa
-  extends DataSetObserver
 {
-  public swa(FastWebActivity paramFastWebActivity) {}
-  
-  public void onChanged()
+  public static svv a(Context paramContext, int paramInt)
   {
-    super.onChanged();
-    if (FastWebActivity.a(this.a) == null) {}
+    switch (paramInt)
+    {
+    default: 
+      return new svy(paramContext);
+    case 2: 
+      return new ReadInJoySkinAnimManager(paramContext);
+    }
+    return new svz(paramContext);
   }
 }
 

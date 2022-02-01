@@ -1,90 +1,20 @@
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nsl
-  extends nrb
+class nsl
+  implements View.OnClickListener
 {
-  public nsl(Context paramContext, ArrayList<nyl> paramArrayList, nql paramnql, String paramString1, String paramString2)
-  {
-    super(paramContext, paramArrayList, paramnql, paramString1, paramString2);
-  }
+  nsl(nsj paramnsj, String paramString) {}
   
-  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, nyk paramnyk, int paramInt, nql paramnql, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    paramnyk = a(paramnyk, paramInt);
-    if (paramnyk.isEmpty())
-    {
-      paramContext = paramView;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("AccountDetailWindowViewWrapper", 2, "createView return convertView!");
-        paramContext = paramView;
-      }
-    }
-    do
-    {
-      return paramContext;
-      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
-        break;
-      }
-      paramView = (LinearLayout)paramView;
-      Object localObject = paramView.getTag();
-      if ((localObject == null) || (!(localObject instanceof nsl)) || (!((nsl)localObject).a(paramnyk))) {
-        break;
-      }
-      paramContext = paramView;
-    } while (!QLog.isDevelopLevel());
-    QLog.d("AccountDetailWindowViewWrapper", 2, "createView reuse!");
-    return paramView;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailWindowViewWrapper", 2, "createView new create!");
-    }
-    paramView = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131558410, paramViewGroup, false);
-    paramView.setPadding(0, afur.a(20.0F, paramViewGroup.getResources()), 0, 0);
-    paramContext = new nsl(paramContext, paramnyk, paramnql, paramString1, paramString2);
-    paramView.setTag(paramContext);
-    paramContext.a(paramView);
-    return paramView;
-  }
-  
-  @TargetApi(9)
-  private void a(LinearLayout paramLinearLayout)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailWindowViewWrapper", 2, "buildView!");
-    }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = afur.a(140.0F, (Resources)localObject);
-    int j = afur.a(10.0F, (Resources)localObject);
-    if (Build.VERSION.SDK_INT >= 9) {
-      ((HorizontalScrollView)paramLinearLayout.findViewById(2131381239)).setOverScrollMode(2);
-    }
-    localObject = (GridView)paramLinearLayout.findViewById(2131381230);
-    ((GridView)localObject).setClickable(true);
-    ((GridView)localObject).setColumnWidth(i);
-    ((GridView)localObject).setStretchMode(0);
-    ((GridView)localObject).setHorizontalSpacing(j);
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    ((GridView)localObject).setLayoutParams(new LinearLayout.LayoutParams((i + j) * k - j, -2));
-    ((GridView)localObject).setNumColumns(k);
-    ((GridView)localObject).setOnItemClickListener(this.jdField_a_of_type_Bkij);
-    if (Build.VERSION.SDK_INT >= 9) {
-      ((GridView)localObject).setOverScrollMode(2);
-    }
-    ((GridView)localObject).setAdapter(new nsm(this));
-    paramLinearLayout.setClickable(false);
-    paramLinearLayout.setOnClickListener(null);
+    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    nsj.a(this.jdField_a_of_type_Nsj).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

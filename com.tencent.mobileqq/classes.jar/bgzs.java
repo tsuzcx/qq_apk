@@ -1,20 +1,15 @@
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-class bgzs<E>
-  extends WeakReference<bgzq<E>>
-  implements bgzq<E>
+public class bgzs
+  implements bdxo
 {
-  public bgzs(bgzq<E> parambgzq)
-  {
-    super(parambgzq);
-  }
+  public bgzs(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public void a(E paramE, Object paramObject)
+  public void a()
   {
-    bgzq localbgzq = (bgzq)get();
-    if (localbgzq != null) {
-      localbgzq.a(paramE, paramObject);
-    }
+    bdxw localbdxw = new bdxw(new bdxn[] { new bdxv(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new bdxv(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
+    localbdxw.a = true;
+    TroopGiftToAllSurfaceView.a(this.a).a(new bdxn[] { localbdxw });
   }
 }
 

@@ -1,22 +1,13 @@
-import java.util.HashMap;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
 
-final class sjq
-  implements rtb
+public class sjq
+  implements blrf
 {
-  sjq(HashMap paramHashMap) {}
+  public sjq(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, @NotNull String paramString)
+  public void a()
   {
-    sjo.a(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.put("capture_url", paramString);
-    sjo.a(this.a);
+    this.a.a(new sjr(this, "onListViewDrawFinished"));
   }
 }
 

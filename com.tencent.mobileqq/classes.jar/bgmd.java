@@ -1,13 +1,17 @@
-import android.content.Context;
-import android.view.View;
+import java.util.ArrayList;
 
-public abstract interface bgmd
+public abstract class bgmd
+  implements bgki
 {
-  public abstract View a(Context paramContext, Object paramObject);
+  public abstract void a(ArrayList<bgkm> paramArrayList, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgmd
  * JD-Core Version:    0.7.0.1
  */

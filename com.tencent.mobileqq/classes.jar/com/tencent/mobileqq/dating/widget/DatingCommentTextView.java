@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewDebug.ExportedProperty;
 import android.widget.TextView;
-import arlv;
+import asbl;
 import com.tencent.qphone.base.util.QLog;
 
 public class DatingCommentTextView
@@ -73,8 +73,8 @@ public class DatingCommentTextView
         if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
           break label458;
         }
-        if ((arrayOfClickableSpan[0] instanceof arlv)) {
-          ((arlv)arrayOfClickableSpan[0]).a(true);
+        if ((arrayOfClickableSpan[0] instanceof asbl)) {
+          ((asbl)arrayOfClickableSpan[0]).a(true);
         } else {
           paramMotionEvent.setSpan(new BackgroundColorSpan(Color.parseColor("#d5d5d5")), this.jdField_a_of_type_Int, this.b, 33);
         }
@@ -92,8 +92,8 @@ public class DatingCommentTextView
       this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
       if ((this.jdField_a_of_type_Int >= 0) && (this.b >= this.jdField_a_of_type_Int))
       {
-        if ((arrayOfClickableSpan[0] instanceof arlv)) {
-          ((arlv)arrayOfClickableSpan[0]).a(false);
+        if ((arrayOfClickableSpan[0] instanceof asbl)) {
+          ((asbl)arrayOfClickableSpan[0]).a(false);
         }
         for (;;)
         {
@@ -107,9 +107,9 @@ public class DatingCommentTextView
         if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
           break label460;
         }
-        if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof arlv)))
+        if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof asbl)))
         {
-          ((arlv)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
+          ((asbl)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
           this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
         }
         for (;;)

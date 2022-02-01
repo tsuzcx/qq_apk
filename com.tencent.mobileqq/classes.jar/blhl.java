@@ -1,24 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class blhl
-  extends BroadcastReceiver
+public class blhl<T>
 {
-  blhl(blhj paramblhj) {}
+  private long jdField_a_of_type_Long;
+  private blhm<T> jdField_a_of_type_Blhm;
+  private long b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private blhl(blhm<T> paramblhm)
   {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (blhj.a(this.a) != null))
+    this.jdField_a_of_type_Blhm = paramblhm;
+  }
+  
+  public static <T> blhl<T> a(blhm<T> paramblhm)
+  {
+    return new blhl(paramblhm);
+  }
+  
+  public blhl<T> a(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
+  }
+  
+  public blhl<T> a(T paramT)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > this.b)
     {
-      blhj.a(this.a).dismiss();
-      blhj.a(this.a, null);
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_Blhm != null) {
+        this.jdField_a_of_type_Blhm.a(paramT);
+      }
     }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blhl
  * JD-Core Version:    0.7.0.1
  */

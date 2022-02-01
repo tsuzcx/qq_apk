@@ -1,41 +1,406 @@
-import android.support.v4.view.ViewPager;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class akvz
-  implements View.OnClickListener
+  extends aktq
+  implements aktz
 {
-  public akvz(ViewPagerTabLayout paramViewPagerTabLayout) {}
+  int jdField_a_of_type_Int = 0;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  protected boolean a;
+  boolean b;
+  public boolean c;
+  public boolean d;
+  boolean e;
   
-  public void onClick(View paramView)
+  protected akvz(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
-    if (i != -1)
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  private int a()
+  {
+    int j;
+    int k;
+    if (this.mPhotoCommonData.selectedPhotoList != null)
     {
-      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
-        break label92;
+      j = 0;
+      int i = 0;
+      k = i;
+      if (j >= this.mPhotoCommonData.selectedPhotoList.size()) {
+        break label75;
       }
-      if (ViewPagerTabLayout.a(this.a)) {
-        break label81;
+      String str = (String)this.mPhotoCommonData.selectedPhotoList.get(j);
+      if (((NewPhotoPreviewActivity)this.mActivity).getMediaType(str) != 1) {
+        break label77;
       }
-      this.a.setCurrentTab(i, false);
-      if (ViewPagerTabLayout.a(this.a) != null) {
-        ViewPagerTabLayout.a(this.a).a(i);
-      }
+      i += 1;
+    }
+    label75:
+    label77:
+    for (;;)
+    {
+      j += 1;
+      break;
+      k = 0;
+      return k;
+    }
+  }
+  
+  protected boolean a()
+  {
+    return !this.c;
+  }
+  
+  public void a_(SlideItemInfo paramSlideItemInfo)
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_Aktn.paths.size()) {
+      if (!((String)this.jdField_a_of_type_Aktn.paths.get(i)).equals(paramSlideItemInfo.b)) {}
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if ((i >= 0) && (i < this.jdField_a_of_type_Aktn.paths.size()) && (this.jdField_a_of_type_JavaUtilHashMap != null)) {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_Aktn.paths.get(i));
+      }
       return;
-      label81:
-      this.a.setCurrentTab(i);
+      i += 1;
       break;
-      label92:
-      if (ViewPagerTabLayout.a(this.a) != null) {
-        ViewPagerTabLayout.a(this.a).b(i);
+      i = -1;
+    }
+  }
+  
+  public void at_()
+  {
+    int i = ((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion();
+    if (i != -1)
+    {
+      String str = (String)this.jdField_a_of_type_Aktn.paths.get(i);
+      if (this.c)
+      {
+        if (this.mPhotoCommonData.selectedMediaInfoHashMap == null) {
+          this.mPhotoCommonData.selectedMediaInfoHashMap = new HashMap();
+        }
+        LocalMediaInfo localLocalMediaInfo = ((NewPhotoPreviewActivity)this.mActivity).getMediaInfo(str);
+        this.mPhotoCommonData.selectedMediaInfoHashMap.put(str, localLocalMediaInfo);
+        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        if (localLocalMediaInfo != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(localLocalMediaInfo.panoramaPhotoType));
+        }
+      }
+    }
+  }
+  
+  protected void d()
+  {
+    if (this.d)
+    {
+      localObject1 = new Intent();
+      ((Intent)localObject1).putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.mPhotoCommonData.selectedIndex);
+      ((NewPhotoPreviewActivity)this.mActivity).setResult(-1, (Intent)localObject1);
+      ((NewPhotoPreviewActivity)this.mActivity).finish();
+      return;
+    }
+    Object localObject1 = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
+    Object localObject2;
+    Object localObject3;
+    if ((this.c) && (this.mPhotoCommonData.selectedPhotoList != null) && (this.mPhotoCommonData.selectedPhotoList.isEmpty()) && (((ArrayList)localObject1).size() == 1))
+    {
+      localObject2 = (String)((ArrayList)localObject1).get(0);
+      localObject3 = ((NewPhotoPreviewActivity)this.mActivity).getMediaInfo((String)localObject2);
+      if (localObject3 != null)
+      {
+        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, Integer.valueOf(((LocalMediaInfo)localObject3).panoramaPhotoType));
+        if (this.mPhotoCommonData.selectedMediaInfoHashMap != null)
+        {
+          this.mPhotoCommonData.selectedMediaInfoHashMap.clear();
+          this.mPhotoCommonData.selectedMediaInfoHashMap.put(localObject2, localObject3);
+        }
+      }
+      if ((((NewPhotoPreviewActivity)this.mActivity).getMediaType((String)localObject2) == 1) && (!bhkd.a(this.mActivity, a(), (LocalMediaInfo)localObject3, this.e)))
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setClickable(true);
+        return;
+      }
+    }
+    if (localObject1 != null)
+    {
+      akrx.a(((ArrayList)localObject1).size(), this.jdField_a_of_type_Aktn.totalPicCount);
+      akrx.a(((NewPhotoPreviewActivity)this.mActivity).getIntent(), ((ArrayList)localObject1).size(), this.mPhotoCommonData.currentQualityType);
+    }
+    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+    if (localObject1 != null) {
+      alwe.a((List)localObject1);
+    }
+    if ((this.c) || (((aktm)this.mOtherCommonData).a()))
+    {
+      localIntent.putExtra("PeakConstants.selectedMediaInfoHashMap", this.mPhotoCommonData.selectedMediaInfoHashMap);
+      localIntent.putExtra("PhotoConst.PANORAMA_IMAGES", this.jdField_a_of_type_JavaUtilHashMap);
+    }
+    if (1 == this.jdField_a_of_type_Int) {
+      localIntent.putExtra("PhotoConst.KEY_SHOW_TYPE", 1);
+    }
+    for (;;)
+    {
+      a(localIntent, false, ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList());
+      if (!localIntent.getBooleanExtra("custom_photopreview_sendbtn_report", false)) {
+        break;
+      }
+      localObject3 = localIntent.getStringExtra("custom_photopreview_sendbtn_reportActionName");
+      localObject2 = localIntent.getStringExtra("custom_photopreview_sendbtn_album_reportReverse2");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = localIntent.getStringExtra("custom_photopreview_sendbtn_camera_reportReverse2");
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = localIntent.getStringExtra("custom_photopreview_sendbtn_reportReverse2");
+      }
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      if ((localObject3 == null) || (localObject1 == null)) {
+        break;
+      }
+      bdll.b(null, "CliOper", "", "", (String)localObject3, (String)localObject3, 0, 0, (String)localObject1, "", "", "");
+      return;
+      localIntent.putExtra("PhotoConst.KEY_SHOW_TYPE", 0);
+    }
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    this.jdField_a_of_type_Aktn.c = true;
+    super.initData(paramIntent);
+    this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)paramIntent.getSerializableExtra("PhotoConst.PANORAMA_IMAGES"));
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("PhotoConst.KEY_SHOW_TYPE", 0);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("QZONE_PEAK_SUPPORT_VIDEO_EDIT_WHEN_PREVIEW", false);
+    this.b = paramIntent.getBooleanExtra("from_qzone_slideshow", false);
+    ((aktm)this.mOtherCommonData).a(this.b, this.mPhotoCommonData);
+    this.c = paramIntent.getBooleanExtra("from_qzone", false);
+    this.d = paramIntent.getBooleanExtra("fromQzonePhotoGroup", false);
+    this.e = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_SHUOSHUO", false);
+    if (this.b) {
+      zkg.a().b(19);
+    }
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    if (this.jdField_a_of_type_Boolean) {
+      ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
+    }
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((this.b) && (paramInt2 == -1))
+    {
+      ((NewPhotoPreviewActivity)this.mActivity).setResult(paramInt2, null);
+      ((NewPhotoPreviewActivity)this.mActivity).finish();
+      return;
+    }
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  {
+    paramInt1 = ((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion();
+    if (paramInt1 != -1) {
+      this.jdField_a_of_type_Aktn.a = ((String)this.jdField_a_of_type_Aktn.paths.get(paramInt1));
+    }
+    if (this.jdField_a_of_type_Aktn.a != null)
+    {
+      bdll.b(null, "CliOper", "", "", "0x8004B39", "0x8004B39", 0, 0, "", "", "", "");
+      paramBundle = new Intent();
+      if (this.mPhotoCommonData.selectedMediaInfoHashMap == null) {
+        break label594;
+      }
+    }
+    label594:
+    for (paramView = (LocalMediaInfo)this.mPhotoCommonData.selectedMediaInfoHashMap.get(this.jdField_a_of_type_Aktn.a);; paramView = null)
+    {
+      if ((this.jdField_a_of_type_Boolean) && (bhkd.getMediaType(paramView) == 1) && (this.c) && (this.jdField_a_of_type_Aktn.c))
+      {
+        new HashMap(1).put("param_localmediainfo", paramView);
+        paramBundle = new Intent(BaseApplicationImpl.getContext(), EditLocalVideoActivity.class);
+        paramBundle.putExtras(((NewPhotoPreviewActivity)this.mActivity).getIntent());
+        paramBundle.putExtra("PhotoConst.PLUGIN_APK", "qzone_plugin.apk");
+        paramBundle.putExtra("PhotoConst.PLUGIN_NAME", "QZone");
+        paramBundle.putExtra("DirectBackToQzone", true);
+        paramBundle.putExtra("qzone_plugin_activity_name", "com.tencent.pubaccount.publish.QQPublicAccountPublishFeedActivity");
+        paramBundle.putExtra("short_video_refer", getClass().getName());
+        paramBundle.putExtra("PhotoConst.EDIT_LOCAL_VIDEO_ENTRY", 1);
+        paramBundle.putExtra("file_send_path", this.jdField_a_of_type_Aktn.a);
+        paramBundle.putExtra("PhotoConst.VIDEO_SIZE", paramView.fileSize);
+        paramBundle.putExtra("file_send_duration", paramView.mDuration);
+        paramBundle.putExtra("file_width", paramView.mediaWidth);
+        paramBundle.putExtra("file_height", paramView.mediaHeight);
+        paramView = paramBundle;
+      }
+      for (;;)
+      {
+        paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", this.mPhotoCommonData.currentQualityType);
+        paramView.putExtra("PhotoConst.SEND_BUSINESS_TYPE", this.jdField_a_of_type_Aktn.b);
+        ((NewPhotoPreviewActivity)this.mActivity).startActivity(paramView);
+        ((NewPhotoPreviewActivity)this.mActivity).overridePendingTransition(2130772037, 2130772039);
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setClickable(false);
+        paramView = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+        if ((paramView != null) && (paramView.hasExtra("custom_photopreview_editbtn_reportActionName")))
+        {
+          paramView = paramView.getStringExtra("custom_photopreview_editbtn_reportActionName");
+          if (paramView != null) {
+            bdll.b(null, "CliOper", "", "", paramView, paramView, 0, 0, "", "", "", "");
+          }
+        }
+        LpReportInfo_pf00064.allReport(603, 4, 1);
+        return;
+        if (this.jdField_a_of_type_Aktn.c)
+        {
+          paramView = new HashMap(1);
+          if ((this.mPhotoCommonData.selectedMediaInfoHashMap != null) && ((LocalMediaInfo)this.mPhotoCommonData.selectedMediaInfoHashMap.get(this.jdField_a_of_type_Aktn.a) != null)) {
+            paramView.put("param_localmediainfo", this.mPhotoCommonData.selectedMediaInfoHashMap.get(this.jdField_a_of_type_Aktn.a));
+          }
+          if (this.c) {
+            paramView = QzoneEditPictureActivity.a(this.mActivity, this.jdField_a_of_type_Aktn.a);
+          } else {
+            paramView = EditPicActivity.a(this.mActivity, this.jdField_a_of_type_Aktn.a, true, true, true, true, true, 3, 99, 4, paramView);
+          }
+        }
+        else
+        {
+          paramView = paramBundle;
+        }
+      }
+    }
+  }
+  
+  public void onSelectClick(View paramView)
+  {
+    int i = ((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion();
+    if (this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(i)))
+    {
+      if ((this.mPhotoCommonData.selectedIndex.indexOf(Integer.valueOf(i)) >= 0) && (i != -1) && (this.jdField_a_of_type_JavaUtilHashMap != null)) {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_Aktn.paths.get(i));
+      }
+      super.onSelectClick(paramView);
+      return;
+    }
+    if (i != -1) {}
+    for (String str = (String)this.jdField_a_of_type_Aktn.paths.get(i);; str = "")
+    {
+      LocalMediaInfo localLocalMediaInfo = ((NewPhotoPreviewActivity)this.mActivity).getMediaInfo(str);
+      if ((this.c) && (this.jdField_a_of_type_Aktn.paths != null) && (((NewPhotoPreviewActivity)this.mActivity).getMediaType(str) == 1) && (!bhkd.a(this.mActivity, a(), localLocalMediaInfo, ((aktm)this.mOtherCommonData).a())))
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).selectedBox.setChecked(false);
+        return;
+      }
+      if (i == -1) {
+        break;
+      }
+      str = (String)this.jdField_a_of_type_Aktn.paths.get(i);
+      if ((!this.c) && (!((aktm)this.mOtherCommonData).a())) {
+        break;
+      }
+      if (this.mPhotoCommonData.selectedMediaInfoHashMap == null) {
+        this.mPhotoCommonData.selectedMediaInfoHashMap = new HashMap();
+      }
+      localLocalMediaInfo = ((NewPhotoPreviewActivity)this.mActivity).getMediaInfo(str);
+      this.mPhotoCommonData.selectedMediaInfoHashMap.put(str, localLocalMediaInfo);
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      }
+      if (localLocalMediaInfo == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(localLocalMediaInfo.panoramaPhotoType));
+      break;
+    }
+  }
+  
+  public void updateButton()
+  {
+    boolean bool2 = true;
+    super.updateButton();
+    Object localObject;
+    if (((aktm)this.mOtherCommonData).a())
+    {
+      localObject = ((NewPhotoPreviewActivity)this.mActivity).getString(2131698458);
+      if (this.jdField_a_of_type_Int == 1) {
+        localObject = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694323);
+      }
+      if (this.jdField_a_of_type_Aktn.customSendBtnText == null) {
+        break label388;
+      }
+      localObject = this.jdField_a_of_type_Aktn.customSendBtnText;
+    }
+    label388:
+    for (;;)
+    {
+      if ((this.mPhotoCommonData.selectedPhotoList != null) && (this.mPhotoCommonData.selectedPhotoList.size() > 0) && (this.jdField_a_of_type_Int == 1))
+      {
+        Button localButton = ((NewPhotoPreviewActivity)this.mActivity).sendBtn;
+        if (this.mPhotoCommonData.selectedPhotoList.size() >= 3)
+        {
+          bool1 = true;
+          label132:
+          localButton.setEnabled(bool1);
+          ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setText((String)localObject + "(" + this.mPhotoCommonData.selectedPhotoList.size() + ")");
+        }
+      }
+      else if (this.jdField_a_of_type_Boolean)
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setText((CharSequence)localObject);
+        if (((aktm)this.mOtherCommonData).a()) {
+          ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setEnabled(false);
+        }
+        if ((this.c) && (this.jdField_a_of_type_Aktn.paths != null)) {
+          ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setEnabled(true);
+        }
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setOnCheckedChangeListener(null);
+        localObject = ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox;
+        if (this.mPhotoCommonData.currentQualityType != 2) {
+          break label383;
+        }
+      }
+      label383:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        ((CheckBox)localObject).setChecked(bool1);
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setOnCheckedChangeListener(this.mActivity);
+        if (this.mPhotoCommonData.currentQualityType == 2) {
+          ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setTextColor(-16734752);
+        }
+        c();
+        return;
+        localObject = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694302);
+        break;
+        bool1 = false;
+        break label132;
       }
     }
   }

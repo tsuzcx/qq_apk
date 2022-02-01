@@ -9,13 +9,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bglp;
-import bgpa;
-import bnwg;
-import bnwh;
-import bnwi;
-import bnwj;
-import bojc;
+import bhlq;
+import bhpc;
+import boxq;
+import boxr;
+import boxs;
+import boxt;
+import bpkx;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tavcut.player.MoviePlayer;
@@ -55,7 +55,7 @@ public class AEVideoPreviewFragment
     String str = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "UploadGiveUpVideo", "放弃上传这个视频吗？");
     try
     {
-      bglp.a(getActivity(), 230, str, null, getResources().getString(2131690582), getResources().getString(2131690912), new bnwi(this), new bnwj(this)).show();
+      bhlq.a(getActivity(), 230, str, null, getResources().getString(2131690580), getResources().getString(2131690912), new boxs(this), new boxt(this)).show();
       return;
     }
     catch (Exception localException)
@@ -66,24 +66,24 @@ public class AEVideoPreviewFragment
   
   protected int a()
   {
-    return 2131558566;
+    return 2131558568;
   }
   
   void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378304));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376760));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369081));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369100));
-    this.c = ((ImageView)paramView.findViewById(2131369224));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131377112));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379973));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379595));
+    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378461));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376897));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369171));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369190));
+    this.c = ((ImageView)paramView.findViewById(2131369315));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131377251));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380157));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379768));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bnwh(this));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new boxr(this));
   }
   
   void a(VideoResourceModel paramVideoResourceModel)
@@ -92,9 +92,9 @@ public class AEVideoPreviewFragment
     if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration() != null))
     {
       this.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeUs());
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(bojc.a((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(bpkx.a((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
     }
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setVideoProgressListener(new bnwg(this));
+    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setVideoProgressListener(new boxq(this));
   }
   
   protected int b()

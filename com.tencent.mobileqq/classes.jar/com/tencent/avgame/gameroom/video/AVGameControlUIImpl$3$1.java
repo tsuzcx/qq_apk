@@ -1,14 +1,14 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.mobileqq.utils.AudioHelper;
-import nal;
-import ncq;
-import ncz;
+import nbp;
+import ned;
+import ner;
 
 public class AVGameControlUIImpl$3$1
   implements Runnable
 {
-  public AVGameControlUIImpl$3$1(ncq paramncq) {}
+  public AVGameControlUIImpl$3$1(ned paramned) {}
   
   public void run()
   {
@@ -16,9 +16,9 @@ public class AVGameControlUIImpl$3$1
       return;
     }
     long l = AudioHelper.b();
-    this.a.a.jdField_a_of_type_Ncz.a("onAfterOpenCamera", l);
+    this.a.a.jdField_a_of_type_Ner.a("onAfterOpenCamera", l);
     AVGameControlUIImpl.b(this.a.a);
-    this.a.a.jdField_a_of_type_Nal.b(true);
+    this.a.a.jdField_a_of_type_Nbp.b(true);
   }
 }
 

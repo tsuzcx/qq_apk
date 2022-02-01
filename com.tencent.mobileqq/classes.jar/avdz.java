@@ -1,23 +1,19 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
 
-class avdz
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+public class avdz
+  extends BroadcastReceiver
 {
-  avdz(avdv paramavdv) {}
+  public avdz(HotChatFragment paramHotChatFragment) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    avdv.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (avdv.a(this.a) == null);
-    avdv.a(this.a).j();
+    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
+      this.a.a.refresh();
+    }
   }
 }
 

@@ -1,19 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class affq
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public affq(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public affq(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

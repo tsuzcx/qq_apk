@@ -1,45 +1,19 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class affj
-  implements View.OnClickListener
+  implements aqvj
 {
-  public affj(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public affj(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.b(3);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      Object localObject = ThemeUtil.getThemeVoiceRootPath();
-      if (localObject == null) {
-        break label126;
-      }
-      localObject = new File((String)localObject + File.separatorChar + "message.mp3");
-      if (!((File)localObject).exists()) {
-        break label126;
-      }
-      this.a.b();
-      this.a.a(Uri.fromFile((File)localObject));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label126:
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
-    }
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
   }
 }
 

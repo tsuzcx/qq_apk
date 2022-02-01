@@ -1,22 +1,20 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class aemf
-  implements View.OnClickListener
+class aemf
+  extends aemy
 {
-  public aemf(LbsBaseActivity paramLbsBaseActivity) {}
+  aemf(aeme paramaeme, int paramInt1, int paramInt2, String paramString)
+  {
+    super(paramaeme.a, paramInt1, paramInt2);
+  }
   
   public void onClick(View paramView)
   {
-    axdz.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
+    if (this.jdField_a_of_type_Aeme.a.a != null) {
+      this.jdField_a_of_type_Aeme.a.a.setText(this.jdField_a_of_type_JavaLangString);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,19 @@
-public abstract interface bivc
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class bivc
+  implements Animation.AnimationListener
 {
-  public abstract void a(bivb parambivb);
+  bivc(biva parambiva) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    biva.a(this.a, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

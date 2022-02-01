@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanageraux.link;
 
 import android.widget.TextView;
-import atvo;
+import aunj;
 
 class LinkByWeiyunFragment$1
   implements Runnable
@@ -10,7 +10,7 @@ class LinkByWeiyunFragment$1
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(atvo.a(this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth(), this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), 1));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(aunj.a(this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth(), this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), 1));
   }
 }
 

@@ -1,81 +1,27 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.Sizeable;
+import java.util.HashMap;
 
 public class bglc
 {
-  public static Bitmap a(String paramString)
+  private HashMap<Integer, bgld> a = new HashMap();
+  
+  public bglc()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Bitmap))) {
-        return (Bitmap)paramString;
-      }
-    }
-    return null;
+    this.a.put(Integer.valueOf(1), new bgld("https://pub.idqqimg.com/pc/misc/files/20191009/8e2e317d4dfb00cbf7765c38a049d4c1k1j13h02.png", 1L, 0, ""));
+    this.a.put(Integer.valueOf(2), new bgld("https://pub.idqqimg.com/pc/misc/files/20200324/5a1434be69aa5a61dca2e97db65cf50b.png", 1101236949L, 0, ""));
+    this.a.put(Integer.valueOf(3), new bgld("https://pub.idqqimg.com/pc/misc/files/20191009/8e2e317d4dfb00cbf7765c38a049d4c1k1j17n0g.png", 101786420L, 0, ""));
+    this.a.put(Integer.valueOf(4), new bgld("https://pub.idqqimg.com/pc/misc/files/20191009/8e2e317d4dfb00cbf7765c38a049d4c1k1j16hii.png", 1104445552L, 0, ""));
+    this.a.put(Integer.valueOf(5), new bgld("https://pub.idqqimg.com/pc/misc/files/20180702/b836834dfbe493017b8767425c0d23e8jj3xilnn.png", 101458937L, 0, ""));
+    this.a.put(Integer.valueOf(6), new bgld("https://pub.idqqimg.com/pc/misc/files/20190620/da7e017785e02546d81a93f6885b7c3fjx4cf6io.png", 1108961705L, 0, ""));
   }
   
-  public static Sizeable a(String paramString)
+  public bgld a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Sizeable))) {
-        return (Sizeable)paramString;
-      }
-    }
-    return null;
+    return (bgld)this.a.get(Integer.valueOf(paramInt));
   }
   
-  public static tds a(String paramString)
+  public String toString()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString instanceof tds)) {
-        return (tds)paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static void a(String paramString, Bitmap paramBitmap)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramBitmap);
-  }
-  
-  public static void a(String paramString, Sizeable paramSizeable)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramSizeable == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramSizeable);
-  }
-  
-  public static void a(String paramString, tds paramtds)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramtds == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramtds);
+    return this.a.toString();
   }
 }
 

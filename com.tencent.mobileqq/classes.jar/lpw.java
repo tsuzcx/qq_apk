@@ -1,16 +1,25 @@
-public class lpw
-  implements lpv
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
+class lpw
+  extends Handler
 {
-  public void a(lpu paramlpu) {}
+  WeakReference<lpv> a;
   
-  public boolean a(lpu paramlpu)
+  lpw(Looper paramLooper, lpv paramlpv)
   {
-    return false;
+    super(paramLooper);
+    this.a = new WeakReference(paramlpv);
   }
   
-  public boolean b(lpu paramlpu)
+  public void handleMessage(Message paramMessage)
   {
-    return true;
+    lpv locallpv = (lpv)this.a.get();
+    if (locallpv != null) {
+      locallpv.a(paramMessage);
+    }
   }
 }
 

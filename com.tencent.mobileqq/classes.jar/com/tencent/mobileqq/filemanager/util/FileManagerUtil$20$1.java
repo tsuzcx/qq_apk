@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import atcv;
-import atvo;
-import atvy;
-import atwd;
+import atup;
+import aunj;
+import aunt;
+import aunu;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -44,7 +44,7 @@ class FileManagerUtil$20$1
       if (QLog.isColorLevel()) {
         QLog.i("CHECK_FILE_EXISTED", 1, ((FileManagerEntity)localObject).fileName + " findFile 10md5[" + ((FileManagerEntity)localObject).str10Md5 + "], sha3[" + ((FileManagerEntity)localObject).strFileSha3 + "], md5[" + ((FileManagerEntity)localObject).strFileMd5 + "]");
       }
-    } while (!atvo.a((FileManagerEntity)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+    } while (!aunj.a((FileManagerEntity)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
     for (;;)
     {
       if (localObject == null)
@@ -52,12 +52,12 @@ class FileManagerUtil$20$1
         if (QLog.isColorLevel()) {
           QLog.i("CHECK_FILE_EXISTED", 1, "cann't find exsited file,entity[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "]");
         }
-        if (this.this$0.jdField_a_of_type_Atwd != null) {
-          this.this$0.jdField_a_of_type_Atwd.a(false);
+        if (this.this$0.jdField_a_of_type_Aunt != null) {
+          this.this$0.jdField_a_of_type_Aunt.a(false);
         }
         return;
       }
-      atvy.a().execute(new FileManagerUtil.20.1.1(this, (FileManagerEntity)localObject));
+      aunu.a().execute(new FileManagerUtil.20.1.1(this, (FileManagerEntity)localObject));
       return;
       label359:
       localObject = null;

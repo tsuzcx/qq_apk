@@ -1,90 +1,45 @@
-import com.tencent.mobileqq.magicface.DecoderUtil;
-import com.tencent.mobileqq.magicface.model.MagicFaceSuperBigDecoder.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class awfq
-  extends awfw
+final class awfq
+  implements HookMethodCallback
 {
-  private Runnable a;
-  
-  public awfq()
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new MagicFaceSuperBigDecoder.1(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] begins");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
-    int i = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder();
-    int j = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder();
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] ends, videoRet:" + i + ",alphaRet:" + j);
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func maigcfaceDecoder begins");
-    }
-    this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Awfs.b;
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    do
+    long l = Thread.currentThread().getId();
+    HashMap localHashMap;
+    if (awfo.a().containsKey(Long.valueOf(l)))
     {
-      do
-      {
-        return;
-        this.d = this.jdField_a_of_type_Awfs.jdField_a_of_type_ArrayOfByte;
-      } while (this.d == null);
-      b();
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    } while (!QLog.isColorLevel());
-    QLog.d("MagicFaceSuperBigDecoder", 2, "func maigcfaceDecoder ends");
-  }
-  
-  protected void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func initXbig begins");
-    }
-    try
-    {
-      this.c = new byte[817920];
-      this.f = new byte[817920];
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicFaceSuperBigDecoder", 2, "func initXbig ends");
+      l = SystemClock.uptimeMillis() - ((Long)awfo.a().remove(Long.valueOf(l))).longValue();
+      localHashMap = new HashMap(10);
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        break label139;
       }
+    }
+    label139:
+    for (paramMethodHookParam = "1";; paramMethodHookParam = "0")
+    {
+      localHashMap.put("param_IsMainThread", paramMethodHookParam);
+      localHashMap.put("param_OptType", "connection");
+      localHashMap.put("param_bustag", "Friends");
+      localHashMap.put("param_OptTotalCost", String.valueOf(l));
+      localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
+      bdmc.a(BaseApplicationImpl.getContext()).a(null, "actFriendSqliteOpt", true, l, 0L, localHashMap, null, false);
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
-    }
   }
   
-  public void c()
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func release begins.");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
-      label37:
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
-      super.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicFaceSuperBigDecoder", 2, "func release ends.");
-      }
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      break label37;
+    long l = Thread.currentThread().getId();
+    if (awfo.a().containsKey(Long.valueOf(l))) {
+      awfo.a().put(Long.valueOf(l), Long.valueOf(SystemClock.uptimeMillis()));
     }
   }
 }

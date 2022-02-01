@@ -1,84 +1,44 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.HashSet;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
 public class bazr
+  extends bbak<ReceiptMessageDetailFragment>
 {
-  private volatile long jdField_a_of_type_Long;
-  private bazt jdField_a_of_type_Bazt;
-  private String jdField_a_of_type_JavaLangString;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  
-  public bazr(String paramString, bazt parambazt)
+  public bazr(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    paramString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Bazt = parambazt;
+    super(paramReceiptMessageDetailFragment);
   }
   
-  public static File a()
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (bgjq.a()) {
-      return new File(anhk.ba + "status_ic");
-    }
-    return null;
-  }
-  
-  private boolean a(String paramString, File paramFile)
-  {
-    int i = HttpDownloadUtil.a(null, paramString, paramFile);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.img", 2, "download " + paramString + "result " + i);
+      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
     }
-    paramFile = bctj.a(BaseApplication.getContext());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("result", String.valueOf(i));
-    localHashMap.put("url", paramString);
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      paramFile.a("", "RichStatusIcon", bool, 0L, 0L, localHashMap, "");
-      if (i != 0) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
       }
-      return true;
+      paramBundle = new oidb_0x986.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.uint32_read_uin_num.get();
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
+      return;
     }
-    return false;
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(this.jdField_a_of_type_JavaLangString + paramString);
-  }
-  
-  public Bitmap a(String paramString1, String paramString2, String paramString3)
-  {
-    Bitmap localBitmap = a(paramString1);
-    if (localBitmap == null)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      if (this.jdField_a_of_type_JavaUtilHashSet == null) {
-        this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      }
-      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.img", 2, "decodeBitmap " + paramString1 + ", " + paramString2 + ", " + paramString3);
-        }
-        this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
-        new bazs(this, paramString1, paramString2, paramString3).execute((Void[])null);
-      }
+      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
     }
-    return localBitmap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    return;
   }
 }
 

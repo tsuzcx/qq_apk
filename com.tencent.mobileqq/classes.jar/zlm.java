@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class zlm
-  implements View.OnClickListener
+public class zlm
 {
-  zlm(zll paramzll) {}
+  protected int a = 48000;
+  protected int b = 1;
+  protected int c = 1;
+  protected int d = 48000;
+  protected int e = 1;
+  protected int f = 1;
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public byte[] a(int paramInt1, int paramInt2)
   {
-    zlh localzlh = this.a.jdField_a_of_type_Zlh;
-    if (localzlh != null) {
-      localzlh.a(this.a.jdField_a_of_type_Zln, this.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
   }
 }
 

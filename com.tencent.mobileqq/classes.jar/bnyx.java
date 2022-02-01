@@ -1,31 +1,12 @@
-class bnyx
-  implements bdvw
+import android.content.Intent;
+import java.util.HashSet;
+import org.json.JSONObject;
+
+public abstract interface bnyx
 {
-  private bnyw jdField_a_of_type_Bnyw;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public abstract HashSet<String> getFilterCmds();
   
-  bnyx(String paramString1, String paramString2, bnyw parambnyw)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Bnyw = parambnyw;
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
-    bnzb.b("AEDownloader", "onResp url: " + this.jdField_a_of_type_JavaLangString + " resultcode: " + parambdwt.a);
-    if (this.jdField_a_of_type_Bnyw != null) {
-      this.jdField_a_of_type_Bnyw.a(parambdwt);
-    }
-  }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bnyw != null) {
-      this.jdField_a_of_type_Bnyw.a((int)((float)paramLong1 / (float)paramLong2 * 100.0F));
-    }
-  }
+  public abstract void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject);
 }
 
 

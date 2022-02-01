@@ -1,26 +1,24 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
-class avbl
-  implements Comparator<File>
+public class avbl
+  implements DialogInterface.OnClickListener
 {
-  avbl(avbk paramavbk) {}
+  public avbl(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
-    do
+    try
     {
-      return -1;
-      if (paramFile1.lastModified() != paramFile2.lastModified()) {
-        break;
-      }
-      if (paramFile1.length() > paramFile2.length()) {
-        return 1;
-      }
-    } while (paramFile1.length() < paramFile2.length());
-    return 0;
-    return 1;
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "handleSDForImageShare dismiss Exception:", paramDialogInterface);
+    }
   }
 }
 

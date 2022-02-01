@@ -1,29 +1,56 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
 public class axru
-  implements bkhw
+  implements ServiceConnection
 {
-  public axru(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, bkho parambkho) {}
+  public axru(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    switch (paramInt)
+    MusicPlayerActivity.a(this.a, axqt.a(paramIBinder));
+    try
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.e();
-      return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null) {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.size());
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
+      if (paramComponentName != null)
+      {
+        String str = MusicPlayerActivity.a(this.a, paramComponentName);
+        if (MusicPlayerActivity.b().containsKey(str)) {
+          MusicPlayerActivity.a(this.a, (axsb)MusicPlayerActivity.b().get(str), paramIBinder);
+        }
+        for (;;)
+        {
+          int i = MusicPlayerActivity.a(this.a).a();
+          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
+          return;
+          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
+        }
       }
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.h();
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+      return;
     }
+    catch (Exception paramComponentName) {}
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    paramComponentName = MusicPlayerActivity.a(this.a);
+    if (paramComponentName != null) {}
+    try
+    {
+      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      return;
+    }
+    catch (RemoteException paramComponentName) {}
   }
 }
 

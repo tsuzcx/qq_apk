@@ -1,18 +1,68 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import java.util.ArrayList;
 
-class vmu
-  implements vmg
+public class vmu
+  implements vzf
 {
-  vmu(vms paramvms, Context paramContext) {}
+  public vmu(QCircleContentOperationView paramQCircleContentOperationView, View.OnClickListener paramOnClickListener) {}
   
-  public void a(View paramView, uzk paramuzk)
+  public void a()
   {
-    if ((paramuzk != null) && (vms.a(this.jdField_a_of_type_Vms) != null))
+    ArrayList localArrayList = new ArrayList();
+    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView)) {}
+    for (String str = "1";; str = "2")
     {
-      vtd.a().a((Activity)this.jdField_a_of_type_AndroidContentContext, paramuzk, vms.a(this.jdField_a_of_type_Vms), vms.a(this.jdField_a_of_type_Vms));
-      vms.a(this.jdField_a_of_type_Vms, paramView);
+      localArrayList.add(vtt.a("ext1", str));
+      vtr.a(82, 1, this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a(), localArrayList, QCircleContentOperationView.e(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    String str;
+    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView))
+    {
+      str = "1";
+      localArrayList.add(vtt.a("ext1", str));
+      if (!paramBoolean) {
+        break label69;
+      }
+    }
+    label69:
+    for (int i = 2;; i = 3)
+    {
+      vtr.a(82, i, this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a(), localArrayList, QCircleContentOperationView.f(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
+      return;
+      str = "2";
+      break;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+    int i;
+    QCircleContentOperationView localQCircleContentOperationView;
+    if (paramBoolean)
+    {
+      i = 2130844032;
+      ((QCircleContentOperationView)localObject).setBackgroundResource(i);
+      localQCircleContentOperationView = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+      if (!paramBoolean) {
+        break label52;
+      }
+    }
+    label52:
+    for (localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;; localObject = null)
+    {
+      localQCircleContentOperationView.setOnClickListener((View.OnClickListener)localObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.setClickable(paramBoolean);
+      return;
+      i = 0;
+      break;
     }
   }
 }

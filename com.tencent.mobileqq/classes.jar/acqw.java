@@ -1,41 +1,16 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-public class acqw
-  implements acqj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class acqw
+  implements DialogInterface.OnDismissListener
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  acqw(acqn paramacqn) {}
+  
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      acqy.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
-      paramVarArgs = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
-      ackk.a().a(paramVarArgs);
-      paramacpp.callJs(paramString, null);
-      if (paramacpp != null)
-      {
-        paramString = paramacpp.a();
-        if (paramacpp == null) {
-          break label99;
-        }
-      }
-      label99:
-      for (paramacpp = paramacpp.a();; paramacpp = null)
-      {
-        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramacpp, paramVarArgs);
-        return true;
-        paramString = null;
-        break;
-      }
-      return true;
-    }
-    catch (Throwable paramacpp)
-    {
-      paramacpp.printStackTrace();
-    }
+    acqn.a(this.a).b();
   }
 }
 

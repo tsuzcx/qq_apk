@@ -1,90 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
-import com.tencent.mobileqq.app.asyncdb.FullCache;
-import com.tencent.mobileqq.data.TroopStatisticsInfo;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.content.Context;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
+import java.io.File;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class anza
-  extends FullCache
+final class anza
+  extends biht
 {
-  public anza(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
+  anza(String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, ashc paramashc, IPicDownloadListener paramIPicDownloadListener, List paramList1, List paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
+  
+  public void onDone(bihu parambihu)
   {
-    super(paramQQAppInterface, paramDBDelayManager, TroopStatisticsInfo.class);
-    paramQQAppInterface = this.app.getEntityManagerFactory().createEntityManager();
-    long l = System.currentTimeMillis();
-    if (l - ayxu.a(ayyj.b, 0L) > 604800000L) {}
-    for (;;)
-    {
-      try
-      {
-        ayxu.a(ayyj.b, l);
-        paramQQAppInterface.drop(TroopStatisticsInfo.class);
-        this.cacheMap.clear();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, "doInit record time over 7 days, drop table");
-        }
-        return;
-        paramDBDelayManager = paramQQAppInterface.query(TroopStatisticsInfo.class);
-        if (paramDBDelayManager != null)
-        {
-          this.cacheMap.clear();
-          localObject = paramDBDelayManager.iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            TroopStatisticsInfo localTroopStatisticsInfo = (TroopStatisticsInfo)((Iterator)localObject).next();
-            this.cacheMap.put(getKey(localTroopStatisticsInfo), localTroopStatisticsInfo);
-            continue;
-          }
-        }
-      }
-      catch (Exception paramDBDelayManager)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.db.Cache.TroopStatisticsCache", 2, paramDBDelayManager.getMessage());
-        }
-        return;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        Object localObject = new StringBuilder().append("doInit size = ");
-        if (paramDBDelayManager == null)
-        {
-          i = 0;
-          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, i);
-          continue;
-        }
-      }
-      finally
-      {
-        paramQQAppInterface.close();
-      }
-      int i = paramDBDelayManager.size();
-    }
+    super.onDone(parambihu);
+    anyz.a(parambihu, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Ashc, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger);
   }
-  
-  public TroopStatisticsInfo a(String paramString)
-  {
-    if ((this.cacheMap == null) || (paramString == null)) {
-      return null;
-    }
-    return (TroopStatisticsInfo)this.cacheMap.get(paramString);
-  }
-  
-  public void destroy() {}
-  
-  public String getKey(Entity paramEntity)
-  {
-    return ((TroopStatisticsInfo)paramEntity).troopUin;
-  }
-  
-  public void init() {}
 }
 
 

@@ -1,42 +1,52 @@
-import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.content.res.XmlResourceParser;
+import org.xmlpull.v1.XmlPullParser;
 
 public class bezj
-  extends SimpleObserver<bezc>
 {
-  public bezj(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  private bezk jdField_a_of_type_Bezk;
+  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
   
-  public void a(bezc parambezc)
+  private void a()
   {
-    super.onNext(parambezc);
-    yqp.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    zkb.a(parambezc.a);
-    zkb.a(parambezc.b);
-    CheckArithHWResultFragment.a(this.a, parambezc.a, parambezc.b);
+    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
+    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
+    this.jdField_a_of_type_Bezk.a(str1, str2);
   }
   
-  public void onCancel()
+  public bezk a()
   {
-    super.onCancel();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    this.jdField_a_of_type_Bezk = new bezk();
+    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
+    if (i != 1)
+    {
+      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+      if (i == 2) {
+        if (!str.equals("MimeTypes")) {}
+      }
+      for (;;)
+      {
+        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
+        break;
+        if (str.equals("type"))
+        {
+          a();
+          continue;
+          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        }
+      }
+    }
+    return this.jdField_a_of_type_Bezk;
   }
   
-  public void onError(@NonNull Error paramError)
+  public bezk a(XmlResourceParser paramXmlResourceParser)
   {
-    super.onError(paramError);
-    yqp.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
-    QQToast.a(this.a.getActivity(), 1, anni.a(2131700569), 0).a();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    CheckArithHWResultFragment.a(this.a, null, null);
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bezj
  * JD-Core Version:    0.7.0.1
  */

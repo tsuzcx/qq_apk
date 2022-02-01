@@ -10,16 +10,16 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLImageView;
-import wba;
-import wbc;
-import wbd;
-import wbe;
-import wbf;
-import wbg;
-import wbh;
-import wbi;
-import wbj;
-import wbk;
+import wer;
+import wet;
+import weu;
+import wev;
+import wew;
+import wex;
+import wey;
+import wez;
+import wfa;
+import wfb;
 
 public class QCircleMultiTouchImageView
   extends URLImageView
@@ -144,9 +144,9 @@ public class QCircleMultiTouchImageView
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramOnClickListener);
   }
   
-  public void setOnDoubleTabListener(wba paramwba)
+  public void setOnDoubleTabListener(wer paramwer)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwba);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwer);
   }
   
   public void setOnDoubleTapListener(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
@@ -159,49 +159,49 @@ public class QCircleMultiTouchImageView
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramOnLongClickListener);
   }
   
-  public void setOnMatrixChangeListener(wbc paramwbc)
+  public void setOnMatrixChangeListener(wet paramwet)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbc);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwet);
   }
   
-  public void setOnOutsidePhotoTapListener(wbd paramwbd)
+  public void setOnOutsidePhotoTapListener(weu paramweu)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbd);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramweu);
   }
   
-  public void setOnPhotoTapListener(wbe paramwbe)
+  public void setOnPhotoTapListener(wev paramwev)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbe);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwev);
   }
   
-  public void setOnScaleBeginListener(wbf paramwbf)
+  public void setOnScaleBeginListener(wew paramwew)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbf);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwew);
   }
   
-  public void setOnScaleChangeListener(wbg paramwbg)
+  public void setOnScaleChangeListener(wex paramwex)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbg);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwex);
   }
   
-  public void setOnScaleEndListener(wbh paramwbh)
+  public void setOnScaleEndListener(wey paramwey)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbh);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwey);
   }
   
-  public void setOnSingleFlingListener(wbi paramwbi)
+  public void setOnSingleFlingListener(wez paramwez)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbi);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwez);
   }
   
-  public void setOnViewDragListener(wbj paramwbj)
+  public void setOnViewDragListener(wfa paramwfa)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbj);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwfa);
   }
   
-  public void setOnViewTapListener(wbk paramwbk)
+  public void setOnViewTapListener(wfb paramwfb)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbk);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwfb);
   }
   
   public void setRotationBy(float paramFloat)

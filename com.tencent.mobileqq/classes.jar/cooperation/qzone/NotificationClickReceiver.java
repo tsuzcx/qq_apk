@@ -8,14 +8,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import bccf;
-import blrv;
+import bcux;
+import bmsx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_dc00420;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import java.util.List;
+import uyx;
 
 public class NotificationClickReceiver
   extends BroadcastReceiver
@@ -76,11 +77,14 @@ public class NotificationClickReceiver
     if ((!TextUtils.isEmpty(str1)) && (str1.equals("com.qzone.detail.ui.activity.QzoneDetailActivity"))) {
       ((Intent)localObject).putExtra("isNeedBackToFriendFeed", a());
     }
+    int i = ((Intent)localObject).getIntExtra("type", 1);
+    str1 = paramIntent.getStringExtra("pushschema");
+    if (i == 2) {
+      uyx.a(BaseApplicationImpl.getContext(), str1);
+    }
     try
     {
-      paramContext.startActivity((Intent)localObject);
       localObject = paramIntent.getStringExtra("hostuin");
-      str1 = paramIntent.getStringExtra("pushschema");
       String str2 = paramIntent.getStringExtra("pushstatkey");
       paramIntent = "";
       paramContext = paramIntent;
@@ -89,30 +93,31 @@ public class NotificationClickReceiver
       {
         if (str1.startsWith("mqzone://arouse/livevideo"))
         {
-          paramContext = new blrv();
+          paramContext = new bmsx();
           paramContext.c = String.valueOf(322);
           paramContext.d = String.valueOf(3);
           paramContext.e = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          bccf.a.clear();
+          bcux.a.clear();
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {
-          break label268;
+          break label301;
         }
         paramContext = paramIntent;
         if (localUri.getPathSegments().size() <= 0) {}
       }
-      label268:
+      label301:
       for (paramContext = (String)localUri.getPathSegments().get(0);; paramContext = localUri.getQueryParameter("from"))
       {
         LpReportInfo_dc00420.report(3, 0, paramContext, str2, 1);
         QZoneLoginReportHelper.reportLoginFromMQQPush();
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("pushReport", 2, "CLICK: uin: " + (String)localObject + " schema: " + str1 + " pushstatkey: " + str2);
         }
-        QLog.d("pushReport", 2, "CLICK: uin: " + (String)localObject + " schema: " + str1 + " pushstatkey: " + str2);
         return;
+        paramContext.startActivity((Intent)localObject);
+        break;
       }
       return;
     }

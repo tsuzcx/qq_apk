@@ -5,11 +5,12 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class auin
   implements View.OnClickListener
 {
-  auin(auim paramauim) {}
+  auin(auik paramauik) {}
   
   public void onClick(View paramView)
   {
-    this.a.b();
+    aunj.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Augj.d());
+    this.a.b = true;
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

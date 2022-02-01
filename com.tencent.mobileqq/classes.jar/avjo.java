@@ -1,48 +1,24 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
-public class avjo
+public abstract class avjo
 {
-  public static long a(Bundle paramBundle)
+  public FrameLayout a;
+  public ImageView a;
+  public FullPopVideoView a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramBundle == null) {}
-    do
+    if (paramBoolean) {}
+    for (String str = "205929";; str = "205927")
     {
-      return 0L;
-      paramBundle = paramBundle.getString("roomid", "");
-    } while (TextUtils.isEmpty(paramBundle));
-    return Long.parseLong(paramBundle);
-  }
-  
-  public static String a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      paramBundle = "";
+      avma.a(this.jdField_a_of_type_JavaLangString, this.b, str, this.jdField_a_of_type_Boolean);
+      return;
     }
-    String str;
-    do
-    {
-      return paramBundle;
-      str = paramBundle.getString("roomtype");
-      paramBundle = str;
-    } while (!TextUtils.isEmpty(str));
-    return "0";
-  }
-  
-  public static String b(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return "";
-    }
-    return paramBundle.getString("fromid", "");
-  }
-  
-  public static String c(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return "";
-    }
-    return paramBundle.getString("shakespearetime", "");
   }
 }
 

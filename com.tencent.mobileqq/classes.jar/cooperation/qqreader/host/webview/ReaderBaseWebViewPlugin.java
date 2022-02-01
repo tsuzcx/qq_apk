@@ -2,7 +2,7 @@ package cooperation.qqreader.host.webview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import bhod;
+import bioy;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
@@ -62,9 +62,9 @@ public abstract class ReaderBaseWebViewPlugin
     onCreate();
   }
   
-  public void init(bhod parambhod, JsBridgeListener paramJsBridgeListener)
+  public void init(bioy parambioy, JsBridgeListener paramJsBridgeListener)
   {
-    this.mRuntime = parambhod;
+    this.mRuntime = parambioy;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
     this.jdField_a_of_type_AndroidContentContext = null;
     onCreate();

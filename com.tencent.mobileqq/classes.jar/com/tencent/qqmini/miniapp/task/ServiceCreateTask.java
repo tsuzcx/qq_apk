@@ -1,6 +1,7 @@
 package com.tencent.qqmini.miniapp.task;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -8,7 +9,11 @@ import com.tencent.qqmini.miniapp.core.service.AbsAppBrandService;
 import com.tencent.qqmini.miniapp.core.service.AppBrandRemoteService;
 import com.tencent.qqmini.miniapp.core.service.AppBrandService;
 import com.tencent.qqmini.miniapp.core.service.AppBrandWebviewService;
+import com.tencent.qqmini.miniapp.core.service.AppV8JsService;
 import com.tencent.qqmini.sdk.annotation.ClassTag;
+import com.tencent.qqmini.sdk.core.utils.WnsConfig;
+import com.tencent.qqmini.sdk.ipc.AppBrandCmdProxy;
+import com.tencent.qqmini.sdk.launcher.MiniSDKConst;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.DebugInfo;
@@ -18,6 +23,7 @@ import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader;
 import com.tencent.qqmini.sdk.task.AsyncTask;
 import com.tencent.smtt.sdk.JsVirtualMachine;
 import com.tencent.smtt.sdk.QbSdk;
+import java.io.File;
 
 @ClassTag(tag="ServiceCreateTask")
 public class ServiceCreateTask
@@ -46,6 +52,22 @@ public class ServiceCreateTask
     return true;
   }
   
+  private static boolean checkEnableV8()
+  {
+    boolean bool = false;
+    if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_v8_service", 0) > 0)
+    {
+      if (v8rtExist()) {
+        bool = true;
+      }
+    }
+    else {
+      return bool;
+    }
+    AppBrandCmdProxy.g().sendCmd("cmd_update_v8rt", new Bundle(), new ServiceCreateTask.3());
+    return false;
+  }
+  
   private void createWebviewService()
   {
     try
@@ -61,9 +83,14 @@ public class ServiceCreateTask
     }
   }
   
+  private static boolean v8rtExist()
+  {
+    return new File(MiniSDKConst.getMiniAppV8rtPath()).exists();
+  }
+  
   public void executeAsync()
   {
-    QMLog.i("ServiceCreateTask", "AppBrandRemoteService ServiceCreateTask executeAsync");
+    QMLog.i("ServiceCreateTask", "ServiceCreateTask executeAsync");
     if (this.appBrandRuntime != null)
     {
       localObject = this.appBrandRuntime.getMiniAppInfo();
@@ -71,31 +98,39 @@ public class ServiceCreateTask
       this.startTimestamp = System.currentTimeMillis();
       localObject = (RuntimeCreateTask)getRuntimeLoader().getTask(RuntimeCreateTask.class);
       if (localObject == null) {
-        break label119;
+        break label131;
       }
     }
     int i;
     int j;
-    label119:
+    boolean bool;
+    label131:
     for (Object localObject = ((RuntimeCreateTask)localObject).getAppBrandRuntime();; localObject = null)
     {
       this.appBrandRuntime = ((BaseRuntime)localObject);
       i = QbSdk.getTbsVersion(getContext());
       j = QbSdk.getTmpDirTbsVersion(getContext());
+      bool = checkEnableV8();
       if (!canDebug(this.appBrandRuntime)) {
-        break label124;
+        break label137;
       }
-      QMLog.i("ServiceCreateTask", "AppBrandRemoteService AppBrandRemoteService create start");
+      QMLog.i("ServiceCreateTask", "AppBrandRemoteService create start");
       onServiceCreateSucc(new AppBrandRemoteService(this.appBrandRuntime, null));
       return;
       localObject = null;
       break;
     }
-    label124:
+    label137:
+    if (bool)
+    {
+      QMLog.i("ServiceCreateTask", "AppV8JsService create start");
+      onServiceCreateSucc(new AppV8JsService(this.appBrandRuntime));
+      return;
+    }
     if (((i > 0) || (j > 0)) && (!isTbsFallback(getContext()))) {
       try
       {
-        QMLog.i("ServiceCreateTask", "AppBrandRemoteService AppBrandService create start");
+        QMLog.i("ServiceCreateTask", "AppBrandService create start");
         localObject = new AppBrandService(this.appBrandRuntime, null);
         ((AppBrandService)localObject).initFramework(getContext(), new ServiceCreateTask.1(this, (AppBrandService)localObject));
         return;
@@ -106,7 +141,7 @@ public class ServiceCreateTask
         return;
       }
     }
-    QMLog.i("ServiceCreateTask", "AppBrandRemoteService createWebviewService create start");
+    QMLog.i("ServiceCreateTask", "createWebviewService create start");
     new Handler(Looper.getMainLooper()).post(new ServiceCreateTask.2(this));
   }
   

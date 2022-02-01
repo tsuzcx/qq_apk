@@ -1,41 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aymr
-  extends aypl
+class aymr
+  implements View.OnClickListener
 {
-  public aymr(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  aymr(aymj paramaymj) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetOnlineStatus, isSuccess: ", Boolean.valueOf(paramBoolean), " , mIsUpdateStatus: ", Boolean.valueOf(AccountOnlineStateActivity.a(this.a)) });
-    }
-    if (AccountOnlineStateActivity.a(this.a))
-    {
-      AccountOnlineStateActivity.a(this.a, false);
-      if (paramBoolean) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
-      }
-    }
-    else
-    {
-      return;
-    }
-    AccountOnlineStateActivity.a(this.a, false, -1);
-  }
-  
-  public void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    super.b(paramBoolean, paramBundle);
-    int i = paramBundle.getInt("StatusId");
-    if (!paramBoolean) {
-      AccountOnlineStateActivity.a(this.a, false, -1);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetExtInfo: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " statusId", Integer.valueOf(i) });
-    }
+    blir localblir = blir.a(this.a.a);
+    localblir.a(2131716719, 1);
+    localblir.c(2131690580);
+    localblir.a(new ayms(this, localblir));
+    localblir.show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

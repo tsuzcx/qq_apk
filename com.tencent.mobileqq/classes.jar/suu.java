@@ -1,11 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.image.URLDrawableHandler;
 
-public class suu
-  implements bknn
+public abstract interface suu
+  extends URLDrawableHandler
 {
-  public suu(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void a() {}
+  public abstract void a(String paramString);
 }
 
 

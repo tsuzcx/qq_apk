@@ -1,25 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-
-class slc
-  extends skd
+public abstract interface slc
 {
-  slc(ske paramske) {}
+  public abstract void a();
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    ske.a(this.a, paramInt, paramBaseArticleInfo, paramString);
-  }
+  public abstract void b();
   
-  public int b()
-  {
-    return 4;
-  }
-  
-  public int c()
-  {
-    return 4;
-  }
+  public abstract void c();
 }
 
 

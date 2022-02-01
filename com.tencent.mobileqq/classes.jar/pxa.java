@@ -1,15 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public abstract interface pxa
+class pxa
+  implements ViewBase.OnClickListener
 {
-  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
+  pxa(pww parampww, Container paramContainer) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, pxb parampxb);
-  
-  public abstract int[] a(int paramInt);
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = BaseApplicationImpl.getContext();
+    int i;
+    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
+      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i == 0) && (prz.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
+        pww.a(this.jdField_a_of_type_Pww, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      }
+      return;
+      i = 0;
+      continue;
+      i = 1;
+    }
+  }
 }
 
 

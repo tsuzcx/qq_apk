@@ -1,105 +1,40 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 
-class mtw
-  extends BaseAdapter
+public final class mtw
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  mty jdField_a_of_type_Mty;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
   
-  mtw(Context paramContext, @NonNull mty parammty)
+  public mtw(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Mty = parammty;
-    this.jdField_a_of_type_ArrayOfJavaLangString = parammty.a();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842014);
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842013));
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable });
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(Context paramContext, @NonNull mty parammty)
-  {
-    if (paramContext != null) {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = parammty.a();
-    this.jdField_a_of_type_Mty = parammty;
-    notifyDataSetInvalidated();
-  }
-  
-  public void a(String paramString)
-  {
-    int j = getCount();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        mtz localmtz = (mtz)getItem(i);
-        if ((localmtz != null) && (localmtz.jdField_a_of_type_JavaLangString != null) && (localmtz.jdField_a_of_type_JavaLangString.equals(paramString))) {
-          a(i);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Mty != null) {
-      return this.jdField_a_of_type_Mty.a();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_Mty.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = (mtz)getItem(paramInt);
-    if (localObject != null) {
-      if (paramView == null)
-      {
-        paramView = new mtx(this.jdField_a_of_type_AndroidContentContext, ((mtz)localObject).jdField_a_of_type_Int, ((mtz)localObject).b);
-        localObject = (mtx)paramView;
-        if (paramInt != this.jdField_a_of_type_Int) {
-          break label117;
-        }
-      }
-    }
-    label117:
-    for (boolean bool = true;; bool = false)
-    {
-      ((mtx)localObject).a(bool);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      ((mtx)paramView).a(((mtz)localObject).b);
-      paramView.setContentDescription(((mtz)localObject).b);
-      ((mtx)paramView).a(((mtz)localObject).jdField_a_of_type_Int);
-      break;
-    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(paramInt);
   }
 }
 

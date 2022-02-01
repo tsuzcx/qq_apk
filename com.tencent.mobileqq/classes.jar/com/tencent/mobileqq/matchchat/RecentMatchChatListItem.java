@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.matchchat;
 
-import acvy;
-import acwh;
+import adab;
+import adak;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import asfu;
-import aslj;
-import bdnt;
-import bglf;
+import asvi;
+import atbg;
+import begp;
+import bhlg;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -57,8 +57,8 @@ public class RecentMatchChatListItem
         this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
         if ((localObject2 != null) && (localObject1 != null))
         {
-          this.mUnreadNum = ((acvy)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          if (acwh.d((MessageRecord)localObject1)) {
+          this.mUnreadNum = ((adab)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          if (adak.d((MessageRecord)localObject1)) {
             this.mUnreadFlag = 3;
           }
           a(paramQQAppInterface, paramContext, (QQMessageFacade.Message)localObject1);
@@ -66,7 +66,7 @@ public class RecentMatchChatListItem
           localObject2 = super.getMsgSummaryTemp();
           super.buildMessageBody((IMCoreMessageStub)localObject1, getRecentUserType(), paramQQAppInterface, paramContext, (MsgSummary)localObject2);
           this.mHasFlowerMsg = false;
-          this.mTitleName = bglf.b(paramQQAppInterface, getRecentUserUin(), true);
+          this.mTitleName = bhlg.b(paramQQAppInterface, getRecentUserUin(), true);
           this.mAuthenIconId = 0;
           super.dealStatus(paramQQAppInterface);
           a(paramQQAppInterface, (MsgSummary)localObject2);
@@ -96,11 +96,11 @@ public class RecentMatchChatListItem
         break label95;
         label274:
         if (this.mUnreadNum == 1) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698062));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698163));
         } else if (this.mUnreadNum == 2) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698063));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698164));
         } else if (this.mUnreadNum > 0) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698061, new Object[] { Integer.valueOf(this.mUnreadNum) }));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698162, new Object[] { Integer.valueOf(this.mUnreadNum) }));
         }
       }
     }
@@ -108,11 +108,11 @@ public class RecentMatchChatListItem
   
   protected void a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage)
   {
-    paramQQAppInterface = ((asfu)paramQQAppInterface.getManager(264)).a(paramMessage.frienduin, false);
+    paramQQAppInterface = ((asvi)paramQQAppInterface.getManager(264)).a(paramMessage.frienduin, false);
     if ((paramQQAppInterface != null) && (paramQQAppInterface.isSignalBomb()) && (paramQQAppInterface.distance >= 0) && (paramQQAppInterface.showDistanceHLight))
     {
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
-      this.mMsgExtroInfo = String.format(paramContext.getResources().getString(2131697980), new Object[] { aslj.a(paramQQAppInterface.distance) });
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
+      this.mMsgExtroInfo = String.format(paramContext.getResources().getString(2131698080), new Object[] { atbg.a(paramQQAppInterface.distance) });
     }
   }
   
@@ -137,7 +137,7 @@ public class RecentMatchChatListItem
     } while (this.mDisplayTime > l);
     this.mDisplayTime = l;
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new bdnt(paramQQAppInterface.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = new begp(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public void dealDraft(IMCoreAppRuntime paramIMCoreAppRuntime, MsgSummary paramMsgSummary)

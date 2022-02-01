@@ -1,53 +1,26 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.ListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ahqd
-  implements agma
+class ahqd
+  implements DialogInterface.OnClickListener
 {
-  private ahqe jdField_a_of_type_Ahqe;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private boolean jdField_a_of_type_Boolean;
+  ahqd(ahpx paramahpx, MessageForReplyText paramMessageForReplyText) {}
   
-  public ahqd(BaseChatPie paramBaseChatPie)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private ListView a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aicv)) {
-      return ((aicv)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_Ahpx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (((bgsl)this.jdField_a_of_type_Ahpx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.jdField_a_of_type_Ahpx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true).a) && ((this.jdField_a_of_type_Ahpx.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
     {
-    default: 
-    case 3: 
-    case 7: 
-    case 19: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_Ahqe = new ahqe();
-        return;
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Ahqe.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Ahqe.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      paramDialogInterface = (BaseActivity)this.jdField_a_of_type_Ahpx.jdField_a_of_type_AndroidContentContext;
+      QQToast.a(this.jdField_a_of_type_Ahpx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131696725, 0).b(paramDialogInterface.getTitleBarHeight());
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ahqe = null;
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 7, 13, 19 };
+    this.jdField_a_of_type_Ahpx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null, true);
   }
 }
 

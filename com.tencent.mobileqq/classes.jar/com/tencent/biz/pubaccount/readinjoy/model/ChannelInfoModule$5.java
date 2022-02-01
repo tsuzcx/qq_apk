@@ -1,48 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import java.util.List;
-import pha;
-import pmk;
-import pwn;
-import pym;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import poz;
 
 public class ChannelInfoModule$5
   implements Runnable
 {
-  public ChannelInfoModule$5(pwn parampwn, boolean paramBoolean1, boolean paramBoolean2, List paramList1, List paramList2) {}
+  public ChannelInfoModule$5(poz parampoz, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      pmk.a().c(false, null);
-      return;
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      pmk.a().c(true, this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
-    pwn.a(this.this$0, true);
-    this.this$0.a(this.jdField_a_of_type_JavaUtilList, true);
-    this.this$0.f(this.jdField_b_of_type_JavaUtilList);
-    if (!pha.a())
-    {
-      List localList = this.this$0.a(this.jdField_a_of_type_JavaUtilList);
-      pym.a().a(this.jdField_b_of_type_JavaUtilList);
-      pym.a().b(localList);
-      localList = this.this$0.g();
-      if (!this.jdField_b_of_type_JavaUtilList.equals(localList)) {
-        this.this$0.e(this.this$0.g());
-      }
-    }
-    pmk.a().b(true, this.this$0.e());
-    if (!pha.a())
-    {
-      pmk.a().c(true, this.this$0.f());
-      return;
-    }
-    pmk.a().c(true, this.jdField_a_of_type_JavaUtilList);
+    this.this$0.a.remove(this.a);
   }
 }
 

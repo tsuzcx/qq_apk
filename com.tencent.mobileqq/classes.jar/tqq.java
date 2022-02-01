@@ -1,16 +1,6 @@
-import kotlin.Metadata;
-import org.json.JSONObject;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "callBackId", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$showReadInJoyNativeCommentView$1$1"}, k=3, mv={1, 1, 16})
-final class tqq
-  implements tol
+public abstract interface tqq
 {
-  tqq(tqn paramtqn, String paramString) {}
-  
-  public final void a(String paramString, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Tqn.a(paramString, paramJSONObject);
-  }
+  public abstract void a();
 }
 
 

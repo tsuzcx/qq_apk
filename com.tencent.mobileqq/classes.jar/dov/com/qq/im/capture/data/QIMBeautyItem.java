@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bolx;
+import bpns;
 
 public class QIMBeautyItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMBeautyItem> CREATOR = new bolx();
+  public static final Parcelable.Creator<QIMBeautyItem> CREATOR = new bpns();
   public String a;
   public String b;
   public String c;

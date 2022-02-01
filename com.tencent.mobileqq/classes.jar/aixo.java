@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
-
-class aixo
-  implements Comparator<MayKnowRecommend>
+public abstract interface aixo
 {
-  aixo(aixj paramaixj) {}
-  
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
-  {
-    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
-  }
+  public abstract void a();
 }
 
 

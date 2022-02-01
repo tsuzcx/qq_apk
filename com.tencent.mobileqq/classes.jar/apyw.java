@@ -1,8 +1,9 @@
+import android.os.Bundle;
+import eipc.EIPCResult;
+
 public abstract interface apyw
 {
-  public abstract int a(int paramInt1, String paramString, int paramInt2, apyt paramapyt);
-  
-  public abstract void a(int paramInt);
+  public abstract EIPCResult a(Bundle paramBundle);
 }
 
 

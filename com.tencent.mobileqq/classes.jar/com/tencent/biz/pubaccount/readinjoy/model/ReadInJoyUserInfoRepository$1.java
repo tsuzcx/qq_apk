@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import pye;
+import pqo;
 
 public class ReadInJoyUserInfoRepository$1
   implements Runnable
 {
-  public ReadInJoyUserInfoRepository$1(pye parampye, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public ReadInJoyUserInfoRepository$1(pqo parampqo, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
-    if (pye.a(this.this$0) != null) {
-      pye.a(this.this$0).a(this.a);
+    if (pqo.a(this.this$0) != null) {
+      pqo.a(this.this$0).a(this.a);
     }
   }
 }

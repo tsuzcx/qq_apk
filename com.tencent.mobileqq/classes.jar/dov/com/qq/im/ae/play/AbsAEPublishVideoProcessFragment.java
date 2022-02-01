@@ -13,12 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bgsp;
-import bndd;
-import bnwz;
-import bnzw;
-import bohn;
-import bohp;
+import bhsr;
+import boem;
+import boyj;
+import bpbr;
+import bpji;
+import bpjk;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
@@ -41,7 +41,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   extends PublicBaseFragment
 {
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private bohp jdField_a_of_type_Bohp = bohn.a();
+  private bpjk jdField_a_of_type_Bpjk = bpji.a();
   public MoviePlayer a;
   public TAVCutVideoSession a;
   protected TAVCutVideoView a;
@@ -50,8 +50,8 @@ public abstract class AbsAEPublishVideoProcessFragment
   private void a()
   {
     Log.d("AbsAEPublishVideoProces", "initTavCutAndPlayer: 开始初始化tavcutsession、moviePlayer");
-    MediaModel localMediaModel = bnzw.a().a(this.jdField_a_of_type_JavaLangString);
-    if ((bgsp.a(this.jdField_a_of_type_JavaLangString)) || (a(localMediaModel)))
+    MediaModel localMediaModel = bpbr.a().a(this.jdField_a_of_type_JavaLangString);
+    if ((bhsr.a(this.jdField_a_of_type_JavaLangString)) || (a(localMediaModel)))
     {
       Log.e("AbsAEPublishVideoProces", "missionId异常！合成model损坏：" + a(localMediaModel));
       QQToast.a(getActivity(), "视频合成信息异常", 0).a();
@@ -65,7 +65,7 @@ public abstract class AbsAEPublishVideoProcessFragment
     SessionConfig localSessionConfig = new SessionConfig();
     localSessionConfig.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     localSessionConfig.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
-    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_Bohp.a());
+    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_Bpjk.a());
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setSessionConfig(localSessionConfig);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setVideoPath(localVideoResourceModel.getPath());
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setMediaModel(localMediaModel);
@@ -73,6 +73,7 @@ public abstract class AbsAEPublishVideoProcessFragment
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setTAVCutVideoView(this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.init(getActivity());
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setClip(Long.valueOf(localVideoResourceModel.getSelectTimeStart()), Long.valueOf(localVideoResourceModel.getSelectTimeDuration()), true);
+    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setStickerTouchEnable(false);
     a(localVideoResourceModel);
   }
   
@@ -123,7 +124,7 @@ public abstract class AbsAEPublishVideoProcessFragment
       str1 = getActivity().getIntent().getStringExtra("key_ae_video_mission_id");
     }
     String str2 = str1;
-    if (bgsp.a(str1))
+    if (bhsr.a(str1))
     {
       str2 = str1;
       if (localBundle != null)
@@ -148,7 +149,7 @@ public abstract class AbsAEPublishVideoProcessFragment
       str1 = getActivity().getIntent().getStringExtra("key_video_media_path");
     }
     String str2 = str1;
-    if (bgsp.a(str1))
+    if (bhsr.a(str1))
     {
       str2 = str1;
       if (localBundle != null)
@@ -175,11 +176,11 @@ public abstract class AbsAEPublishVideoProcessFragment
       }
       if (this.jdField_a_of_type_AndroidAppDialog == null)
       {
-        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(getActivity(), 2131755823);
+        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(getActivity(), 2131755824);
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559567);
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372466)).setText("正在保存封面...");
+        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559572);
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372578)).setText("正在保存封面...");
       }
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
@@ -259,8 +260,8 @@ public abstract class AbsAEPublishVideoProcessFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_JavaLangString = b();
-    bndd.a();
-    TAVCut.initTAVCut(getActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bnwz(this));
+    boem.a();
+    TAVCut.initTAVCut(getActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new boyj(this));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)

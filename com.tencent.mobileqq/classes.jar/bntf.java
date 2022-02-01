@@ -1,16 +1,40 @@
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.QQRecorder;
+import java.lang.ref.WeakReference;
+
 class bntf
-  implements bntm
+  extends Handler
 {
-  bntf(bnta parambnta) {}
+  bntf(bnte parambnte) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void handleMessage(Message paramMessage)
   {
-    if (bnta.a(this.a))
+    switch (paramMessage.what)
     {
-      bnta.a(this.a, paramBoolean1, paramBoolean2);
-      return;
     }
-    bnta.b(this.a, paramBoolean1, paramBoolean2);
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (bnte.a(this.a) != null) {
+            bnte.a(this.a).a(1, bnte.a(this.a));
+          }
+        } while (!(paramMessage.obj instanceof String));
+        paramMessage = (String)paramMessage.obj;
+        this.a.d(paramMessage);
+        this.a.c(paramMessage);
+        return;
+        bnte.a(this.a).c();
+        bhkm.b(2131230744, false);
+      } while (this.a.a == null);
+      paramMessage = (Context)this.a.a.get();
+    } while (paramMessage == null);
+    bhkm.a(paramMessage, false);
   }
 }
 

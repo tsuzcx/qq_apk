@@ -1,13 +1,17 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.app.Activity;
+import com.sina.weibo.sdk.openapi.IWBAPI;
+import mqq.util.WeakReference;
 
-public class bilx
+class bilx
 {
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
+  WeakReference<Activity> a;
+  WeakReference<IWBAPI> b;
   
-  protected bilx(bilv parambilv) {}
+  bilx(Activity paramActivity, IWBAPI paramIWBAPI)
+  {
+    this.a = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramIWBAPI);
+  }
 }
 
 

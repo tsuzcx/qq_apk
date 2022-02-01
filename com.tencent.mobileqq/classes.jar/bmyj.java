@@ -1,36 +1,45 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import java.util.concurrent.atomic.AtomicInteger;
+import mqq.observer.BusinessObserver;
 
 public class bmyj
-  extends RemoteCommand
+  implements BusinessObserver
 {
-  private static bmyk jdField_a_of_type_Bmyk;
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public bmyj()
+  protected boolean a(boolean paramBoolean, Bundle paramBundle)
   {
-    super("weiyun.notify_state");
+    return false;
   }
   
-  public void a(bmyk parambmyk)
-  {
-    jdField_a_of_type_Bmyk = parambmyk;
-  }
+  protected void b(boolean paramBoolean, Bundle paramBundle) {}
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  protected void c(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void d(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramOnInvokeFinishLinstener = new Bundle();
-    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    if (!a(paramBoolean, paramBundle)) {}
+    do
     {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
-      if (jdField_a_of_type_Bmyk != null) {
-        jdField_a_of_type_Bmyk.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      return;
+      if (paramInt == 0)
+      {
+        b(paramBoolean, paramBundle);
+        return;
       }
-    }
-    return paramOnInvokeFinishLinstener;
+      if (paramInt == 1)
+      {
+        c(paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 2)
+      {
+        a(paramBoolean, paramBundle);
+        return;
+      }
+    } while (paramInt != 100);
+    d(paramBoolean, paramBundle);
   }
 }
 

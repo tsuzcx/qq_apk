@@ -1,10 +1,50 @@
-public abstract interface bcfe
+import android.view.View;
+import com.tencent.mobileqq.search.activity.MessageSearchActivity;
+import java.util.List;
+
+public class bcfe
+  implements bcfq
 {
-  public abstract void B_();
+  public static final String a;
+  private List<bcfr> a;
+  private String b;
   
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  static
+  {
+    jdField_a_of_type_JavaLangString = anzj.a(2131704290);
+  }
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public bcfe(List<bcfr> paramList, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<bcfr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    bcni.a(this.b, 40, 0, paramView);
+    MessageSearchActivity.a(paramView.getContext(), this.b);
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
 }
 
 

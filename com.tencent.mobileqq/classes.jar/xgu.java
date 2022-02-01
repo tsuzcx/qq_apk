@@ -1,23 +1,37 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-public class xgu
-  extends yku
+class xgu
+  extends xfr
 {
-  public xgu(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
+  xgu(xgp paramxgp, StoryVideoItem paramStoryVideoItem)
   {
-    if ((paramObject instanceof QQUserUIItem))
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    Object localObject = (String)a("result");
+    try
     {
-      paramView = (QQUserUIItem)paramObject;
-      wjz.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        yqu.a("home_page", "clk_head_list", yqu.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", yqu.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
       }
     }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      yuk.c(this.b, "Error: 评分投票失败", localURISyntaxException);
+    }
+    return false;
   }
 }
 

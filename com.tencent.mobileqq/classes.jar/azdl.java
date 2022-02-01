@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azdl
+class azdl
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  bdzn jdField_a_of_type_Bdzn;
-  public PersonalityLabelPhoto a;
-  public int b = 0;
-  public int c = 0;
+  azdl(azdh paramazdh, azdw paramazdw) {}
   
-  azdl(azdk paramazdk) {}
+  public void onClick(View paramView)
+  {
+    azdh.a(this.jdField_a_of_type_Azdh).removeMessages(101);
+    azdh.a(this.jdField_a_of_type_Azdh).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Azdw.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

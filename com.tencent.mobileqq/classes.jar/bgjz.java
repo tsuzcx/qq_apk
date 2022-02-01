@@ -1,129 +1,137 @@
-import ActionMsg.MsgBody;
-import com.qq.taf.jce.HexUtil;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
 
 public class bgjz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static MsgBody a(String paramString)
+  public static int a;
+  public static boolean a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private bgka jdField_a_of_type_Bgka;
+  private int b = 1;
+  private int c;
+  
+  public bgjz(Activity paramActivity)
   {
-    MsgBody localMsgBody = new MsgBody();
-    try
-    {
-      JceInputStream localJceInputStream = new JceInputStream(HexUtil.hexStr2Bytes(paramString));
-      localJceInputStream.setServerEncoding("utf-8");
-      localMsgBody.readFrom(localJceInputStream);
-      return localMsgBody;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("ActionMsgUtil", 2, "decode error msg = " + paramString);
-      QLog.w("ActionMsgUtil", 2, localException.toString());
-      localMsgBody.msg = "";
-      localMsgBody.action = "";
-      localMsgBody.shareAppID = 0L;
-      localMsgBody.actMsgContentValue = "";
-    }
-    return localMsgBody;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public static bgka a(byte[] paramArrayOfByte)
+  public static int a(Activity paramActivity)
   {
-    bgka localbgka = new bgka();
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    paramActivity = paramActivity.getWindow().getDecorView();
+    int i = paramActivity.getHeight();
+    if (a(paramActivity) > i * 3 / 4) {
+      return 2;
+    }
+    return 1;
+  }
+  
+  public static int a(View paramView)
+  {
+    Rect localRect = new Rect();
+    paramView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    jdField_a_of_type_Int = a(paramActivity.getWindow().getDecorView());
+    jdField_a_of_type_Boolean = a(paramActivity);
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
+    }
+    return localRect.top == 0;
+  }
+  
+  @RequiresApi(api=16)
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
     for (;;)
     {
-      try
+      this.b = 1;
+      this.jdField_a_of_type_Bgka = null;
+      this.c = 0;
+      return;
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(bgka parambgka)
+  {
+    if (parambgka != null) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
+    }
+    this.b = 1;
+    this.jdField_a_of_type_Bgka = parambgka;
+    this.c = 0;
+  }
+  
+  public void onGlobalLayout()
+  {
+    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localView == null) {}
+    int i;
+    int j;
+    int k;
+    do
+    {
+      return;
+      i = localView.getHeight();
+      j = a(localView);
+      k = i - j;
+      if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-        localbgka.jdField_a_of_type_Int = paramArrayOfByte.get();
-        if (paramArrayOfByte.get() != 0) {
-          continue;
+        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
+        if ((m != this.c) && (this.jdField_a_of_type_Bgka != null)) {
+          this.jdField_a_of_type_Bgka.b(this.b, j, this.c);
         }
-        i = -3004;
-        localbgka.b = i;
-        if (paramArrayOfByte.hasRemaining())
-        {
-          i = paramArrayOfByte.get();
-          byte[] arrayOfByte = new byte[paramArrayOfByte.getShort()];
-          paramArrayOfByte.get(arrayOfByte);
-          localbgka.c = i;
-          localbgka.jdField_a_of_type_JavaLangString = new String(arrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.d("ActionMsgUtil", 2, "decodeAppShareCookie succes appShareCookie.buissnessType =" + localbgka.jdField_a_of_type_Int + "appShareCookie.action" + localbgka.b + "appShareCookie.actionType" + localbgka.c + "appShareCookie.actionValue" + localbgka.jdField_a_of_type_JavaLangString);
-          }
+        this.c = m;
+      }
+    } while (j == this.c);
+    if (k > i / 4)
+    {
+      this.b = 1;
+      if (this.jdField_a_of_type_Bgka != null) {
+        this.jdField_a_of_type_Bgka.a(this.b, j, k);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
+      }
+      this.c = j;
+      return;
+      if (k < i * 3 / 4)
+      {
+        this.b = 2;
+        if (this.jdField_a_of_type_Bgka != null) {
+          this.jdField_a_of_type_Bgka.a(this.b, j, k);
         }
       }
-      catch (Exception paramArrayOfByte)
-      {
-        int i;
-        paramArrayOfByte.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ActionMsgUtil", 2, "decodeAppShareCookie", paramArrayOfByte);
-      }
-      return localbgka;
-      i = -3005;
     }
-    return localbgka;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return a(paramString1, paramString2, 0L, null);
-  }
-  
-  public static String a(String paramString1, String paramString2, long paramLong, String paramString3)
-  {
-    String str = paramString1;
-    if (paramString1 == null)
-    {
-      str = "";
-      QLog.w("ActionMsgUtil", 2, "encode msg is null");
-    }
-    paramString1 = paramString2;
-    if (paramString2 == null)
-    {
-      paramString1 = "";
-      QLog.w("ActionMsgUtil", 2, "encode action is null");
-    }
-    paramString2 = new MsgBody();
-    paramString2.msg = str;
-    paramString2.action = paramString1;
-    paramString2.shareAppID = paramLong;
-    paramString2.actMsgContentValue = paramString3;
-    paramString1 = new JceOutputStream();
-    paramString1.setServerEncoding("utf-8");
-    paramString2.writeTo(paramString1);
-    return HexUtil.bytes2HexStr(paramString1.toByteArray());
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -3000) || (paramInt == -3004) || (paramInt == -3005);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == -2009) || (paramInt == -3012);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return paramInt == -2016;
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return paramInt == -2007;
-  }
-  
-  public static boolean e(int paramInt)
-  {
-    return paramInt == -2039;
   }
 }
 

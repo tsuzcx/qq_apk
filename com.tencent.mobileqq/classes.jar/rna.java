@@ -1,27 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-class rna
-  implements rnb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$1$1"}, k=3, mv={1, 1, 16})
+final class rna
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  rna(rmz paramrmz, Bitmap[] paramArrayOfBitmap) {}
+  rna(roq paramroq, ValueAnimator paramValueAnimator) {}
   
-  public void a()
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    rmz.a(this.jdField_a_of_type_Rmz);
-    if (rmz.a(this.jdField_a_of_type_Rmz) <= 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureTask", 2, "onCaptureFailed try angin tryCount:" + rmz.a(this.jdField_a_of_type_Rmz) + "  CaptureTask:" + this.jdField_a_of_type_Rmz);
-      }
-      this.jdField_a_of_type_Rmz.a(null);
+    Object localObject = this.jdField_a_of_type_Roq.j;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "videoHolder.columnBanner");
+    localObject = ((ViewGroup)localObject).getLayoutParams();
+    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
     }
-  }
-  
-  public void a(Bitmap paramBitmap, rmz paramrmz)
-  {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = paramBitmap;
-    rmz.a(this.jdField_a_of_type_Rmz);
+    ((ViewGroup.LayoutParams)localObject).height = ((Integer)paramValueAnimator).intValue();
+    this.jdField_a_of_type_Roq.j.requestLayout();
   }
 }
 

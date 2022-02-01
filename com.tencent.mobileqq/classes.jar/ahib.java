@@ -1,72 +1,17 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.CircleBubbleImageView;
-import java.net.URL;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahib
-  extends CircleBubbleImageView
+  extends ahkx
 {
-  URLDrawable a;
-  URLDrawable b;
-  
-  public ahib(Context paramContext)
+  ahib(ahgk paramahgk)
   {
-    super(paramContext);
-    a(true);
+    super(paramahgk, null);
   }
   
-  public void a(URLDrawable paramURLDrawable)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (this.a != null) {
-      this.a.setURLDrawableListener(null);
-    }
-    paramURLDrawable.setURLDrawableListener(this);
-    this.a = paramURLDrawable;
-    paramURLDrawable.startDownload();
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    setImageDrawable(paramURLDrawable);
-    if (this.b != paramURLDrawable) {
-      this.b = paramURLDrawable;
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable == this.a)
-    {
-      b(paramURLDrawable);
-      return;
-    }
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-  }
-  
-  @TargetApi(11)
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable == this.a) {
-      b(paramURLDrawable);
-    }
-    super.onLoadSuccessed(paramURLDrawable);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable)
-  {
-    super.setImageDrawable(paramDrawable);
-    if (this.a != null)
-    {
-      this.a.setURLDrawableListener(null);
-      this.a = null;
-    }
+    return new ahmt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

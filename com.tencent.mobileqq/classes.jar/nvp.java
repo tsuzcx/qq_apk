@@ -1,32 +1,21 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountSettingFragment;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
 
 public class nvp
-  implements TVK_SDKMgr.InstallListener
+  implements ocn<OACProfilePb.ProfileDataRsp>
 {
-  public nvp(VideoCoverView.5 param5) {}
+  public nvp(AccountSettingFragment paramAccountSettingFragment) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a(int paramInt, boolean paramBoolean, OACProfilePb.ProfileDataRsp paramProfileDataRsp, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    if (paramBoolean)
+    {
+      AccountSettingFragment.a(this.a, new AccountDetail(paramProfileDataRsp));
+      AccountSettingFragment.a(this.a, AccountSettingFragment.a(this.a));
+      AccountSettingFragment.b(this.a);
     }
-    this.a.this$0.b = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
-    }
-    this.a.this$0.b = true;
-    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
   }
 }
 

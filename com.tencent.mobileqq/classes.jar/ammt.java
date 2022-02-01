@@ -1,37 +1,20 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class ammt
-  extends ammq
+class ammt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ammt(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = 0;
-  }
+  ammt(amms paramamms) {}
   
-  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!a()) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
-      return;
-      this.b = true;
-      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
-    amuo.a(paramamux, anni.a(2131703395), 7, 0);
-    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
-    a(paramContext, paramQQAppInterface);
-  }
-  
-  public boolean a()
-  {
-    return (this.c) && (!this.jdField_a_of_type_Boolean);
+    int i = ((Integer)paramCompoundButton.getTag()).intValue();
+    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
+    amms.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

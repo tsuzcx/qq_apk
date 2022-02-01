@@ -1,73 +1,82 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class oyy
-  implements arxd
+  extends RecyclerView.Adapter
 {
-  public oyy(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<pqc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  sxm jdField_a_of_type_Sxm;
+  private List<pqc> b = new ArrayList();
   
-  public void a(arxg paramarxg)
+  public oyy(Context paramContext, List<pqc> paramList1, List<pqc> paramList2)
   {
-    if ((paramarxg instanceof asbq))
-    {
-      paramarxg = (asbq)paramarxg;
-      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramarxg.a(localContext, localContext.getResources().getDisplayMetrics().density));
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      ReadInJoyCommentComponentFragment.a(this.a);
-      return;
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(int paramInt, pqc parampqc)
+  {
+    if (paramInt == 0) {
+      bnrf.a("readinjoy_show_recommend_reason_in_title_b", parampqc.c);
     }
-    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramarxg, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
   }
   
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
-  
-  public boolean a(arxg paramarxg)
+  public int getItemCount()
   {
-    return true;
+    int j = 0;
+    if (this.jdField_a_of_type_JavaUtilList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
+    {
+      if (this.b != null) {
+        j = this.b.size();
+      }
+      return i + 0 + j;
+    }
   }
   
-  public void b()
+  public int getItemViewType(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
+    if (paramInt < this.b.size()) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    ozb localozb = (ozb)paramViewHolder;
+    pqc localpqc;
+    if (paramInt >= this.b.size())
+    {
+      paramInt -= this.b.size();
+      localpqc = (pqc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localozb.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
     for (;;)
     {
+      localozb.jdField_a_of_type_AndroidWidgetTextView.setText(localpqc.b);
+      localozb.b.setText(localpqc.d);
+      localozb.itemView.setOnClickListener(new oyz(this, localozb, localpqc, paramInt));
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
       return;
-      try
-      {
-        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      localpqc = (pqc)this.b.get(paramInt);
+      localozb.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
   
-  public void b(arxg paramarxg) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ozb(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560206, null));
+  }
 }
 
 

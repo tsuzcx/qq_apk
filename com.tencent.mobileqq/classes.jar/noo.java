@@ -1,24 +1,88 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class noo
-  implements Animation.AnimationListener
+  extends WebViewPlugin
 {
-  public noo(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
+  protected Activity a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public noo()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
+    this.mPluginNameSpace = "eqq";
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getString("uin");
+      localObject = ((JSONObject)localObject).getString("name");
+      Intent localIntent = agej.a(new Intent(this.a, ChatActivity.class), null);
+      localIntent.putExtra("uin", paramString);
+      localIntent.putExtra("uintype", 1024);
+      localIntent.putExtra("uinname", (String)localObject);
+      localIntent.putExtra("entrance", 0);
+      localIntent.putExtra("aio_msg_source", 999);
+      this.a.startActivity(localIntent);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      try
+      {
+        paramString = new JSONObject(paramString).getString("uin");
+        nok.a(this.a, null, paramString, false, -1, true, -1);
+        return;
+      }
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"eqq".equals(paramString2)) {}
+    do
+    {
+      return false;
+      if ("showEQQ".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0) {
+          a(paramVarArgs[0]);
+        }
+        return true;
+      }
+    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
+    b(paramVarArgs[0]);
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = this.mRuntime.a();
+  }
 }
 
 

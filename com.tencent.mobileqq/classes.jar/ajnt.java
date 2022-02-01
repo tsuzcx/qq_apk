@@ -1,28 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-class ajnt
-  implements DialogInterface.OnKeyListener
+public class ajnt
+  extends ajno
 {
-  ajnt(ajnk paramajnk, int paramInt) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public ajnt(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (paramInt == 4)
-    {
-      if (!ajnk.a(this.jdField_a_of_type_Ajnk)) {
-        break label28;
-      }
-      ajnk.a(this.jdField_a_of_type_Ajnk, this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      return true;
-      label28:
-      ajnk.a(this.jdField_a_of_type_Ajnk, ajnk.a(this.jdField_a_of_type_Ajnk), Long.valueOf(ajnk.a(this.jdField_a_of_type_Ajnk)).longValue());
-      ajnk.a(this.jdField_a_of_type_Ajnk);
-    }
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10021;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 109;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_add", 0, 0, String.valueOf(paramRecommendTroopItem.uin), paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10022;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 

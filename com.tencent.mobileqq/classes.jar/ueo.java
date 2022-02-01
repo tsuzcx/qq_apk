@@ -1,10 +1,10 @@
 class ueo
 {
-  private static final uen a = new uen(null);
+  private static final uem a = new uem(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ueo
  * JD-Core Version:    0.7.0.1
  */

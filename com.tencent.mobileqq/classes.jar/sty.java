@@ -1,10 +1,38 @@
-public abstract interface sty
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.util.WeakReference;
+
+class sty
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public abstract void a();
+  AbstractGifImage a;
   
-  public abstract void b();
+  sty(AbstractGifImage paramAbstractGifImage)
+  {
+    this.a = paramAbstractGifImage;
+  }
   
-  public abstract void c();
+  public void onPlayOnce()
+  {
+    Object localObject = (List)stx.a().get(this.a);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if (localWeakReference.get() != null) {
+          ((stz)localWeakReference.get()).a();
+        }
+      }
+    }
+    this.a.setGIFPlayOnceListener(null);
+    stx.b().remove(this.a);
+    stx.a().remove(this.a);
+  }
 }
 
 

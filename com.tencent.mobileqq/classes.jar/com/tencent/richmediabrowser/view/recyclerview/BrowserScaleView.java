@@ -405,10 +405,10 @@ public class BrowserScaleView
           f1 = f2;
           if (k >= paramInt2)
           {
-            f1 = f2;
             if (!isVerticalLongPhoto(paramInt3)) {
-              f1 = paramInt2 * 1.0F / k;
+              break label470;
             }
+            f1 = paramInt1 * 1.0F / j;
           }
         }
         f2 = f1;
@@ -429,11 +429,12 @@ public class BrowserScaleView
           f1 = f2;
           if (k >= paramInt2) {
             if (!isVerticalLongPhoto(paramInt3)) {
-              break label474;
+              break label483;
             }
           }
         }
-        label474:
+        label470:
+        label483:
         for (f1 = paramInt1 * 1.0F / j;; f1 = Math.min(paramInt1 * 1.0F / j, paramInt2 * 1.0F / k))
         {
           BrowserLogHelper.getInstance().getGalleryLog().d("BrowserScaleView", 4, "dw = " + j + ", dh = " + k + "， width = " + paramInt1 + ", height" + paramInt2 + ", degrees = " + paramInt3 + ", scale = " + f1);
@@ -443,7 +444,7 @@ public class BrowserScaleView
           this.privorY = (this.mDrawable.getIntrinsicHeight() / 2);
           showDefaultImage(this.defaultDx, this.defaultDy, paramInt3, f1, this.privorX, this.privorY);
           if (!isVerticalLongPhoto(paramInt3)) {
-            break;
+            break label507;
           }
           this.mDefaultScale = f1;
           this.mNormalScale = (paramInt2 * 1.0F / k);
@@ -451,7 +452,10 @@ public class BrowserScaleView
           this.mMaxScale = (this.mDefaultScale * 4.0F);
           this.mMaxOverScale = (this.mMaxScale * 5.0F);
           return;
+          f1 = paramInt2 * 1.0F / k;
+          break;
         }
+        label507:
         initScaleValue(f1);
         return;
       }

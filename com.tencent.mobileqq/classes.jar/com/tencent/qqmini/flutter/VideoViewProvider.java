@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.Surface;
 import android.view.View;
 import com.qflutter.video.QflutterVideoViewSource.Provider;
-import com.tencent.qqmini.flutter.core.page.tissue.TissuePageContainer;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.Map;
 
@@ -13,13 +12,14 @@ public class VideoViewProvider
 {
   public View getView(Context paramContext, int paramInt, Surface paramSurface, Map<String, Object> paramMap)
   {
-    if ("getView" + paramMap != null) {}
-    for (paramContext = paramMap.toString();; paramContext = "")
+    StringBuilder localStringBuilder = new StringBuilder().append("getView");
+    if (paramMap != null) {}
+    for (paramSurface = paramMap.toString();; paramSurface = "")
     {
-      QMLog.e("QFVideoView", paramContext);
+      QMLog.e("QFVideoView", paramSurface);
       paramMap.get("videoPlayerId");
       paramMap.put("autoplay", Boolean.valueOf(true));
-      return new FlutterVideoViewContainer(TissuePageContainer.activity, paramMap);
+      return new FlutterVideoViewContainer(paramContext, paramMap);
     }
   }
 }

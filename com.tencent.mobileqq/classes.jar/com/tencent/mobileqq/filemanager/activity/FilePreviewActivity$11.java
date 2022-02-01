@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.animation.AlphaAnimation;
-import atwj;
-import atwk;
+import auoe;
+import auof;
 
 class FilePreviewActivity$11
   implements Runnable
@@ -12,16 +12,16 @@ class FilePreviewActivity$11
   public void run()
   {
     if (this.this$0.b == null) {
-      this.this$0.b = new atwj(this.this$0.a);
+      this.this$0.b = new auoe(this.this$0.a);
     }
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
-    atwk localatwk = new atwk();
-    localatwk.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localatwk.jdField_a_of_type_Boolean = false;
-    localatwk.jdField_a_of_type_Int = atwj.jdField_a_of_type_Int;
-    localatwk.b = 1500;
-    this.this$0.b.a(localatwk);
+    auof localauof = new auof();
+    localauof.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localauof.jdField_a_of_type_Boolean = false;
+    localauof.jdField_a_of_type_Int = auoe.jdField_a_of_type_Int;
+    localauof.b = 1500;
+    this.this$0.b.a(localauof);
     this.this$0.b.a();
   }
 }

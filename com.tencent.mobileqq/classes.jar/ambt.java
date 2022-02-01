@@ -1,22 +1,31 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class ambt
-  implements Cloneable
+  extends amcb
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public TextView b;
+  protected final BaseChatPie a;
   
-  public ambt(ambs paramambs) {}
+  public ambt(BaseChatPie paramBaseChatPie)
+  {
+    this.a = paramBaseChatPie;
+  }
+  
+  void a(bhuk parambhuk, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((parambhuk != null) && (parambhuk.a() > 0))
+    {
+      if (this.a == null) {
+        break label43;
+      }
+      if (this.a.h() < 8) {
+        a(paramView, paramInt1, paramInt2, parambhuk, paramInt3, false);
+      }
+    }
+    return;
+    label43:
+    a(paramView, paramInt1, paramInt2, parambhuk, paramInt3, false);
+  }
 }
 
 

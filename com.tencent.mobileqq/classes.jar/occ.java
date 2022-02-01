@@ -1,9 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.PublicAccountMenuBar;
+
 public class occ
+  implements DialogInterface.OnDismissListener
 {
-  public long a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public occ(PublicAccountMenuBar paramPublicAccountMenuBar) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    PublicAccountMenuBar.a(this.a, false);
+  }
 }
 
 

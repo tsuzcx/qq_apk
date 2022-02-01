@@ -1,36 +1,17 @@
-import android.view.View;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahgw
+  extends ahkx
 {
-  private Map<Integer, LinkedList<View>> a = new HashMap();
-  
-  View a(int paramInt)
+  ahgw(ahgk paramahgk)
   {
-    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    if (localLinkedList == null) {
-      return null;
-    }
-    return (View)localLinkedList.poll();
+    super(paramahgk, null);
   }
   
-  void a()
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.a.clear();
-  }
-  
-  void a(int paramInt, View paramView)
-  {
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
-    }
-    localLinkedList1.add(paramView);
+    return new ahtp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

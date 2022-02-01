@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import java.util.ArrayList;
-import rjf;
-import rjg;
+import qzy;
+import qzz;
 
 class PageLoadManager$1$2
   implements Runnable
@@ -11,11 +11,11 @@ class PageLoadManager$1$2
   
   public void run()
   {
-    rjf.a(this.a.this$0, true);
-    if (rjf.a(this.a.this$0) != null) {
-      rjf.a(this.a.this$0).a(new ArrayList(), rjf.a(this.a.this$0));
+    qzy.a(this.a.this$0, true);
+    if (qzy.a(this.a.this$0) != null) {
+      qzy.a(this.a.this$0).a(new ArrayList(), qzy.a(this.a.this$0));
     }
-    rjf.b(this.a.this$0, false);
+    qzy.b(this.a.this$0, false);
   }
 }
 

@@ -1,13 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.image.AbstractGifImage;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-class ajns
-  implements DialogInterface.OnDismissListener
+public class ajns
+  extends ajno
 {
-  ajns(ajnk paramajnk) {}
+  public ajns(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  protected int a()
+  {
+    return 10028;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.a(paramRecommendTroopItem);
+    bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 21;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.b(paramRecommendTroopItem);
+    bdll.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10003;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.c(paramRecommendTroopItem);
+    bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
 }
 
 

@@ -1,25 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bnbp
-  implements Animation.AnimationListener
+  implements bnbt
 {
-  public bnbp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public bnbp(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
-    }
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,14 +1,21 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class afnj
-  extends amcl
+  implements aebz
 {
-  public View a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
+  public afnj(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  
+  public void a()
+  {
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
+  }
 }
 
 

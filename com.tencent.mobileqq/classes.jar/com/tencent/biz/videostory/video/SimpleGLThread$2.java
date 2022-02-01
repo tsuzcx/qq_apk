@@ -1,11 +1,11 @@
 package com.tencent.biz.videostory.video;
 
-import aaxn;
+import abbq;
 
 public class SimpleGLThread$2
   implements Runnable
 {
-  public SimpleGLThread$2(aaxn paramaaxn, Object paramObject) {}
+  public SimpleGLThread$2(abbq paramabbq, Object paramObject) {}
   
   public void run()
   {

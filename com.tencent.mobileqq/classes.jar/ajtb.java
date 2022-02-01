@@ -1,23 +1,6 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class ajtb
-  implements View.OnClickListener
+public abstract interface ajtb
 {
-  public ajtb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_d_of_type_Int == 11) {
-      bcst.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
-    }
-    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

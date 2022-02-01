@@ -1,6 +1,21 @@
-public abstract interface adez
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class adez
+  implements adci
 {
-  public abstract void a(awlp paramawlp, int paramInt);
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  {
+    ((abur)paramQQAppInterface.a(51)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
+  }
 }
 
 

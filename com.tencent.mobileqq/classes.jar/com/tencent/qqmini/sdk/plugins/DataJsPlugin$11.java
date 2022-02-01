@@ -1,7 +1,9 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import com.tencent.qqmini.sdk.auth.AuthState;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONObject;
 
 class DataJsPlugin$11
@@ -11,23 +13,15 @@ class DataJsPlugin$11
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (paramJSONObject != null)) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if (DataJsPlugin.access$400(this.this$0)) {
-          localJSONObject.put("data", paramJSONObject);
-        }
-        for (;;)
-        {
-          this.val$req.ok(localJSONObject);
-          return;
-          localJSONObject.put("data", paramJSONObject.toString());
-        }
-        this.val$req.fail();
-      }
-      catch (Throwable paramJSONObject) {}
+    QMLog.d("DataJsPlugin", "webapi_plugin_getuserinfo " + paramBoolean + ", " + paramJSONObject);
+    if (paramBoolean)
+    {
+      this.val$req.ok(paramJSONObject);
+      AuthState.setAllowPluginScopeName(null);
+      return;
     }
+    this.val$req.fail();
+    AuthState.setAllowPluginScopeName(null);
   }
 }
 

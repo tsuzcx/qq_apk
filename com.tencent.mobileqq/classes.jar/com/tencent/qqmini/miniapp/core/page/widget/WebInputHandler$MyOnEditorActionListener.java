@@ -13,8 +13,8 @@ import org.json.JSONObject;
 class WebInputHandler$MyOnEditorActionListener
   implements TextView.OnEditorActionListener
 {
-  private final NativeViewRequestEvent req;
-  private final WebEditText webEditText;
+  private NativeViewRequestEvent req;
+  private WebEditText webEditText;
   
   public WebInputHandler$MyOnEditorActionListener(WebInputHandler paramWebInputHandler, WebEditText paramWebEditText, NativeViewRequestEvent paramNativeViewRequestEvent)
   {
@@ -41,7 +41,7 @@ class WebInputHandler$MyOnEditorActionListener
         paramTextView.put("value", this.webEditText.getText().toString());
         this.req.jsService.evaluateSubscribeJS("onKeyboardConfirm", paramTextView.toString(), 0);
         if (!this.webEditText.isConfirmHold()) {
-          this.this$0.hideCurrentInput(true);
+          this.this$0.hideCurrentInput();
         }
         bool1 = bool2;
         if (WebInputHandler.access$200(this.this$0) == null) {

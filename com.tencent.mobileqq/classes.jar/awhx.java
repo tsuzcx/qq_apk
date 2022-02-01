@@ -1,60 +1,107 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopRemindSettingData;
-import com.tencent.mobileqq.managers.TroopRemindSettingManager.1;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class awhx
+class awhx
+  extends aojs
 {
-  private static awhx a;
+  awhx(awhv paramawhv) {}
   
-  public static awhx a()
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (a == null) {
-      a = new awhx();
+    if (this.a.jdField_a_of_type_Int == -1) {
+      return;
     }
-    return a;
+    if (1 == paramInt1) {
+      awhv.a(this.a, 2131693156);
+    }
+    this.a.jdField_a_of_type_Int = -1;
   }
   
-  public static void a()
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (a != null) {
-      a = null;
+    if (this.a.jdField_a_of_type_Int == -1) {
+      return;
+    }
+    if (1 == paramInt1) {
+      switch (paramInt2)
+      {
+      case -1: 
+      default: 
+        awhv.a(this.a, 2131693156);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = -1;
+      return;
+      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
+      {
+        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
+      }
+      else
+      {
+        awhv.a(this.a, 2131693157, 2);
+        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
+        continue;
+        awhv.a(this.a, 2131718941);
+        continue;
+        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
+      }
     }
   }
   
-  public void a(EntityManager paramEntityManager, QQAppInterface paramQQAppInterface)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
-  }
-  
-  public void a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
-    localTroopRemindSettingData.troopUin = paramString;
-    localTroopRemindSettingData.isOpenState = 1;
-    paramQQAppInterface.persistOrReplace(localTroopRemindSettingData);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_remind", true);
-  }
-  
-  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramString = (TroopRemindSettingData)paramQQAppInterface.a().createEntityManager().find(TroopRemindSettingData.class, paramString);
-    return (paramString != null) && (paramString.isOpenState == 0);
-  }
-  
-  public void b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.post(new TroopRemindSettingManager.1(this, paramQQAppInterface, paramString), 8, null, false);
+    if (this.a.b == 0) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
+      }
+      paramLong = paramTroopInfo.troopPrivilegeFlag;
+      if ((0x80 & paramLong) != 0L)
+      {
+        paramInt1 = 1;
+        if ((paramLong & 0x200) == 0L) {
+          break label112;
+        }
+        paramInt2 = 1;
+        label61:
+        paramString = awhv.a(this.a);
+        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
+          break label118;
+        }
+        ajpz.a(paramString, paramTroopInfo.troopuin, "");
+      }
+    }
+    for (;;)
+    {
+      this.a.b = 0;
+      return;
+      paramInt1 = 0;
+      break;
+      label112:
+      paramInt2 = 0;
+      break label61;
+      label118:
+      if (paramTroopInfo.cGroupOption == 1)
+      {
+        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
+        awhv.a(this.a, paramTroopInfo);
+      }
+      else
+      {
+        awhv.b(this.a, paramTroopInfo);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
+        }
+        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
+        awhv.a(this.a, 2131717454);
+      }
+    }
   }
 }
 

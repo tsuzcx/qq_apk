@@ -1,13 +1,35 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.3;
-
 public class bapi
-  implements banv
 {
-  public bapi(EffectsCameraCaptureView.3 param3) {}
-  
-  public void a()
+  public static String a(int paramInt)
   {
-    bnnx.a().a();
+    switch (paramInt)
+    {
+    default: 
+      return "UNKNOW";
+    case 100: 
+      return "AIO_SHORT_BUBBLE";
+    case 101: 
+      return "AIO_LONG_BUBBLE";
+    case 102: 
+      return "QZONE_VIDEO";
+    case 103: 
+      return "QZONE_GDT_VIDEO";
+    case 104: 
+      return "READINJOY_VIDEO";
+    case 105: 
+      return "ALBUM_VIDEO";
+    case 107: 
+      return "AVGAME_VIDEO";
+    case 106: 
+      return "QQGME_VIDEO";
+    case 109: 
+      return "FILE_VIDEO";
+    case 111: 
+      return "TRIBE_VIDEO";
+    case 108: 
+      return "AR_VIDEO";
+    }
+    return "GDT_AD_VIDEO";
   }
 }
 

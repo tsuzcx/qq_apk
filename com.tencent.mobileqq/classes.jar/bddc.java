@@ -1,45 +1,55 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.2;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bddc
+  extends biht
 {
-  public long a;
-  private DownloaderTask a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "now_for_qq";
-  public String e = "now_appid_2";
-  public String f = "now";
-  public String g;
-  public String h;
+  public bddc(RedBagVideoManager.2 param2, String paramString1, String paramString2, String paramString3) {}
   
-  public static bddc a(String paramString1, String paramString2, String paramString3)
+  public void onDone(bihu parambihu)
   {
-    bddc localbddc = new bddc();
-    localbddc.jdField_a_of_type_JavaLangString = "2";
-    localbddc.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
-    localbddc.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
-    localbddc.b = paramString1;
-    localbddc.c = paramString2;
-    localbddc.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i("NowDownloadTaskInfo", 4, localbddc.toString());
-    return localbddc;
-  }
-  
-  public DownloaderTask a()
-  {
-    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
-  }
-  
-  public void a(DownloaderTask paramDownloaderTask)
-  {
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
-  }
-  
-  public String toString()
-  {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    int i = 0;
+    boolean bool = true;
+    try
+    {
+      if (parambihu.a() == 3)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
+        }
+        parambihu = bdcy.a(this.b);
+        if (this.c.equalsIgnoreCase(parambihu))
+        {
+          bdcy.b(this.b);
+          bdcy.a(bdcy.jdField_a_of_type_JavaLangString + "videoRedbagResInfo", this.c);
+          bhsi.e(BaseApplication.getContext(), false);
+          break label271;
+        }
+      }
+      for (;;)
+      {
+        parambihu = new HashMap();
+        parambihu.put("param_FailCode", String.valueOf(i));
+        bdmc.a(BaseApplication.getContext()).a(null, "videoRedbagResDownload", bool, 0L, 0L, parambihu, "");
+        bdcy.jdField_a_of_type_Boolean = false;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("RedBagVideoManager", 2, "[onDone] checkMd5 failed: " + this.b);
+        }
+        bhmi.d(this.b);
+        bool = false;
+        i = 80704;
+        break label271;
+        if (QLog.isColorLevel()) {
+          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambihu.b + " code=" + parambihu.a);
+        }
+        i = parambihu.a;
+        bool = false;
+      }
+    }
+    finally {}
   }
 }
 

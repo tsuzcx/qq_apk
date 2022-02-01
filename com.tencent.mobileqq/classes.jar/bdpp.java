@@ -1,87 +1,57 @@
-import android.os.Bundle;
-import android.os.IBinder;
-import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
-import eipc.EIPCResult;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class bdpp
-  extends QIPCModule
+class bdpp
+  implements View.OnClickListener
 {
-  private static bdpp jdField_a_of_type_Bdpp;
-  private static String jdField_a_of_type_JavaLangString = "setup";
+  bdpp(bdpo parambdpo) {}
   
-  private bdpp(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public static bdpp a()
-  {
-    try
+    if (bdpo.a(this.a) == null)
     {
-      if (jdField_a_of_type_Bdpp == null) {
-        jdField_a_of_type_Bdpp = new bdpp("ThemeIPCModule");
-      }
-      bdpp localbdpp = jdField_a_of_type_Bdpp;
-      return localbdpp;
-    }
-    finally {}
-  }
-  
-  public static void a(String paramString, awnc<bdps> paramawnc)
-  {
-    if ((TextUtils.isEmpty(paramString)) || ("1000".equals(paramString)))
-    {
-      paramawnc.postQuery(null);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if ("999".equals(paramString))
+    for (;;)
     {
-      paramawnc.postQuery(new bdps().a());
-      return;
-    }
-    QuickUpdateIPCModule.a(3, ThemeUtil.getThemeConfigID(paramString), true, new bdpr(paramString, paramawnc));
-  }
-  
-  public static void a(String paramString, bdoz parambdoz)
-  {
-    Bundle localBundle = new Bundle();
-    if (parambdoz != null) {
-      localBundle.putParcelable("binder", new BinderWarpper(parambdoz.asBinder()));
-    }
-    localBundle.putString("themeId", paramString);
-    QIPCClientHelper.getInstance().callServer("ThemeIPCModule", jdField_a_of_type_JavaLangString, localBundle, null);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeIPCModule", 2, "onCall action = " + paramString);
-    }
-    paramBundle.setClassLoader(BinderWarpper.class.getClassLoader());
-    String str = paramBundle.getString("themeId");
-    if (paramBundle.containsKey("binder")) {}
-    for (IBinder localIBinder = ((BinderWarpper)paramBundle.getParcelable("binder")).a;; localIBinder = null)
-    {
-      if (jdField_a_of_type_JavaLangString.equals(paramString)) {
-        if (localIBinder == null) {
-          break label144;
+      int i;
+      try
+      {
+        int j = Integer.parseInt(String.valueOf(paramView.getTag()));
+        i = 0;
+        if (i >= this.a.a.size()) {
+          break;
+        }
+        View localView = (View)bdpo.a(this.a).get(i);
+        if (localView == null) {
+          break label174;
+        }
+        if (i == j) {
+          break label135;
+        }
+        bdol localbdol2 = (bdol)this.a.a.get(i);
+        if ((localbdol2 != null) && ((localbdol2 instanceof bdpq))) {
+          ((bdpq)localbdol2).a();
+        } else {
+          localView.setVisibility(8);
         }
       }
-      label144:
-      for (paramString = new bdpq(this, bdpa.asInterface(localIBinder));; paramString = null)
+      catch (Exception localException)
       {
-        ThemeSwitcher.a(str, "200", paramString);
-        return null;
-        QLog.e("ThemeIPCModule", 1, "onCall missing action = " + paramString);
-        return bhcy.a(this, paramString, paramBundle, paramInt);
+        localException.printStackTrace();
       }
+      break;
+      label135:
+      bdol localbdol1 = (bdol)this.a.a.get(i);
+      if ((localbdol1 != null) && ((localbdol1 instanceof bdpq))) {
+        ((bdpq)localbdol1).b();
+      }
+      label174:
+      i += 1;
     }
   }
 }

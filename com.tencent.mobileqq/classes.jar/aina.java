@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
+import mqq.os.MqqHandler;
 
-class aina
-  implements ainn
+public class aina
+  extends aojs
 {
-  aina(aimx paramaimx, List paramList1, List paramList2) {}
+  aina(aimx paramaimx) {}
   
-  public void a(long paramLong, boolean paramBoolean)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (paramBoolean)
+    paramString = this.a;
+    if ((paramBoolean1) && (paramBoolean2)) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      aimx.a(this.jdField_a_of_type_Aimx, this.jdField_a_of_type_JavaUtilList, paramLong, 2);
-      aimx.a(this.jdField_a_of_type_Aimx).a(false, (ChatMessage)this.b.get(0), false);
+      paramString.Y = paramBoolean1;
+      aimx.a(this.a).post(new NearbyChatPie.12.1(this));
       return;
     }
-    QQToast.a(aimx.a(this.jdField_a_of_type_Aimx).a(), 0, 2131718959, 0).a();
   }
 }
 

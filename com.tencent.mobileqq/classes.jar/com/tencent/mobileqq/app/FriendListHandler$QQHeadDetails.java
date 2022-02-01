@@ -4,12 +4,12 @@ import AvatarInfo.DestQQHeadInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anms;
+import anys;
 
 public class FriendListHandler$QQHeadDetails
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new anms();
+  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new anys();
   public byte a;
   public int a;
   public long a;

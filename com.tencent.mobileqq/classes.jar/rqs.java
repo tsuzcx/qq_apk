@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
 
 public class rqs
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public rqs(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  public rqs(VideoFeedsLikeAnimate.LikeExplosionCenterView paramLikeExplosionCenterView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
   }
 }
 

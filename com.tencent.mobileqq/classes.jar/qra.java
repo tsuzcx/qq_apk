@@ -1,20 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qra
-  implements Animation.AnimationListener
+public class qra
+  implements View.OnClickListener
 {
-  qra(qqt paramqqt, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, Object paramObject) {}
+  public qra(ComponentTopicItemSingle paramComponentTopicItemSingle, qzd paramqzd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    qqt.a(this.jdField_a_of_type_Qqt, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject, true);
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.a();
+    ozs.a = localArticleInfo;
+    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.getContext(), this.jdField_a_of_type_Qzd.b);
+    String str1 = ozs.a(localArticleInfo.mAlgorithmID, ozs.a(localArticleInfo), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.e(), 0, 0, bhnv.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.getContext()), localArticleInfo.mSubscribeID, null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+    String str2 = ubg.b(localArticleInfo.mChannelID);
+    ocd.a(null, localArticleInfo.mSubscribeID, str2, str2, 0, 0, localArticleInfo.mFeedId + "", String.valueOf(this.jdField_a_of_type_Qzd.a), String.valueOf(localArticleInfo.mAlgorithmID), str1, false);
+    ozs.a(localArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.e());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

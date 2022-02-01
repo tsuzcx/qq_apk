@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import almd;
-import anni;
+import alxv;
+import anzj;
 
 public class RMVideoInitState$6
   implements Runnable
 {
-  public RMVideoInitState$6(almd paramalmd) {}
+  public RMVideoInitState$6(alxv paramalxv) {}
   
   public void run()
   {
-    RMVideoStateMgr.a().b(0, anni.a(2131712226), false);
+    RMVideoStateMgr.a().b(0, anzj.a(2131712335), false);
   }
 }
 

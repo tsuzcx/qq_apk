@@ -1,21 +1,16 @@
-import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class nce
-  implements mzy
+  extends RecyclerView.OnScrollListener
 {
-  public nce(GuessSongStageView paramGuessSongStageView) {}
+  public nce(GameListView paramGameListView) {}
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessSongStageView", 2, "onLoad lottieDrawable = " + paramLottieDrawable);
-    }
-    if (paramLottieDrawable != null)
-    {
-      this.a.a = paramLottieDrawable;
-      GuessSongStageView.a(this.a);
+    if ((paramInt == 1) && (!this.a.c)) {
+      this.a.c = true;
     }
   }
 }

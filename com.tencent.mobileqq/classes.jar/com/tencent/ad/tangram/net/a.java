@@ -59,16 +59,25 @@ public enum a
   
   private void updateCacheIfNecessary(Context paramContext)
   {
+    if (!this.initialized) {
+      return;
+    }
     Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
     boolean bool;
-    if ((localBoolean != null) && (localBoolean.booleanValue())) {
+    if (localBoolean == null)
+    {
+      AdLog.e("AdIPV4", "updateCacheIfNecessary isOnMainProcess == null");
       bool = false;
     }
     for (;;)
     {
       AdLog.i("AdIPV4", String.format("updateCacheIfNecessary %b", new Object[] { Boolean.valueOf(bool) }));
       return;
-      if ((this.address != null) && (!TextUtils.isEmpty(this.address.ip)))
+      if (localBoolean.booleanValue())
+      {
+        bool = false;
+      }
+      else if ((this.address != null) && (!TextUtils.isEmpty(this.address.ip)))
       {
         bool = false;
       }
@@ -102,23 +111,30 @@ public enum a
     if (this.initialized) {
       return;
     }
-    try
-    {
-      if (this.initialized) {
-        return;
-      }
-    }
-    finally {}
-    this.initialized = true;
-    this.ipcHandler = new a.b();
     if (paramContext != null) {}
+    Boolean localBoolean;
     for (Object localObject1 = paramContext.getApplicationContext();; localObject1 = null)
     {
       localObject1 = new WeakReference(localObject1);
-      Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
-      if ((localBoolean == null) || (!localBoolean.booleanValue())) {
-        break;
+      localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
+      try
+      {
+        if (!this.initialized) {
+          break;
+        }
+        return;
       }
+      finally {}
+    }
+    if (localBoolean == null)
+    {
+      AdLog.e("AdIPV4", "getCache isOnMainProcess == null");
+      return;
+    }
+    this.ipcHandler = new a.b();
+    this.initialized = true;
+    if (localBoolean.booleanValue())
+    {
       AdThreadManager.INSTANCE.post(new a.1(this, (WeakReference)localObject1), 4);
       return;
     }

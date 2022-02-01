@@ -1,24 +1,16 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayih
-  implements ViewPager.OnPageChangeListener
+class ayih
+  implements View.OnClickListener
 {
-  public ayih(SearchResultFragment paramSearchResultFragment) {}
+  ayih(ayhj paramayhj) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.d(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

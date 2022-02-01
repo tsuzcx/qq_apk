@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter;
-import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azgo
+class azgo
+  implements View.OnClickListener
 {
-  public HiBoomTextView a;
-  public ProfileCardScrollImageView a;
+  azgo(azgj paramazgj, AutoReplyText paramAutoReplyText, boolean paramBoolean) {}
   
-  public azgo(VipProfileCardPreviewActivity.StylePagerAdapter paramStylePagerAdapter) {}
+  public void onClick(View paramView)
+  {
+    if (azgj.a(this.jdField_a_of_type_Azgj) != null) {
+      azgj.a(this.jdField_a_of_type_Azgj).b(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText, this.jdField_a_of_type_Boolean);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

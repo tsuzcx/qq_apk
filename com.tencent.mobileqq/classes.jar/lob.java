@@ -1,56 +1,38 @@
-import android.util.SparseArray;
-import com.tencent.smtt.utils.ByteUtils;
-import java.nio.ByteBuffer;
-
 public class lob
 {
-  public static SparseArray<loa> a(byte[] paramArrayOfByte)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  
+  public lob()
   {
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-    SparseArray localSparseArray = new SparseArray();
-    int j = 0;
-    while (j < paramArrayOfByte.length)
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof lob)))
     {
-      short s = a(localByteBuffer, j);
-      j += 2;
-      int i = b(localByteBuffer, j);
-      j += 2;
-      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
-      j += i;
-      localSparseArray.put(s, new loa(s, i, arrayOfByte));
+      paramObject = (lob)paramObject;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        return true;
+      }
     }
-    return localSparseArray;
+    return false;
   }
   
-  private static short a(ByteBuffer paramByteBuffer, int paramInt)
+  public String toString()
   {
-    return paramByteBuffer.getShort(paramInt);
-  }
-  
-  public static byte[] a(loa paramloa)
-  {
-    if (paramloa != null)
-    {
-      short s1 = paramloa.a();
-      short s2 = paramloa.b();
-      paramloa = paramloa.a();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
-      localByteBuffer.putShort(s1);
-      localByteBuffer.putShort(s2);
-      localByteBuffer.put(paramloa);
-      return localByteBuffer.array();
-    }
-    return null;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
-  }
-  
-  private static short b(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
+    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
   }
 }
 

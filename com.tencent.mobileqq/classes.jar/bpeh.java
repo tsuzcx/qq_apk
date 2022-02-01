@@ -1,191 +1,28 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoLimitRegion.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.StoryGuideLineView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class bpeh
-  extends bpen
+  implements Animator.AnimatorListener
 {
-  private StoryGuideLineView jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView;
-  private boolean jdField_a_of_type_Boolean;
+  public bpeh(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public bpeh(@NonNull bpep parambpep)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(parambpep);
+    AEEditorAILoadingView.a(this.a).setVisibility(8);
+    AEEditorAILoadingView.b(this.a).setVisibility(0);
+    AEEditorAILoadingView.b(this.a).playAnimation();
   }
   
-  public static void a(StoryGuideLineView paramStoryGuideLineView)
-  {
-    ThreadManager.excute(new EditVideoLimitRegion.1(paramStoryGuideLineView), 16, null, true);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  private boolean b()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    try
-    {
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView != null) {
-        return true;
-      }
-      this.jdField_a_of_type_Bpep.a().d();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView = ((StoryGuideLineView)a(2131372199));
-      a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "makeSureInitLayout error : " + localException.getMessage());
-      }
-    }
-    return false;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    if (!b()) {
-      return;
-    }
-    if ((!paramBoolean3) || (paramBoolean4))
-    {
-      Object localObject;
-      if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.a())
-      {
-        localObject = this.jdField_a_of_type_Bpep.a();
-        zhp localzhp = this.jdField_a_of_type_Bpep.a();
-        if (localObject != null) {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.setLinkerObject((bpqt)localObject);
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.setFollow();
-        }
-        if (localzhp != null) {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.setStoryTag(localzhp);
-        }
-      }
-      if ((this.jdField_a_of_type_Bpep instanceof bpwv))
-      {
-        localObject = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView;
-        if (!((bpwv)this.jdField_a_of_type_Bpep).r)
-        {
-          paramBoolean3 = true;
-          ((StoryGuideLineView)localObject).a(paramBoolean3);
-          label124:
-          if (!paramBoolean2) {
-            break label173;
-          }
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.f();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (!paramBoolean1) {
-        break label183;
-      }
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.h();
-      return;
-      paramBoolean3 = false;
-      break;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.a(true);
-      break label124;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.e();
-      break label124;
-      label173:
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.g();
-    }
-    label183:
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.i();
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    boolean bool = true;
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      bool = super.a(paramMessage);
-      do
-      {
-        do
-        {
-          return bool;
-          if ((paramMessage.obj == null) || (!(paramMessage.obj instanceof bpei))) {
-            break;
-          }
-          bpei localbpei = (bpei)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "showLimitView : left : " + localbpei.d + " right : " + localbpei.c + " top : " + localbpei.jdField_a_of_type_Boolean + " bottom : " + localbpei.b);
-          }
-          if (localbpei.e)
-          {
-            a(localbpei.d, localbpei.c, localbpei.jdField_a_of_type_Boolean, localbpei.b);
-            break;
-          }
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.j();
-          break;
-        } while (!b());
-        if (paramMessage.arg1 == 1)
-        {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.c();
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "showLink");
-          break;
-        }
-        if (paramMessage.arg1 != 0) {
-          break;
-        }
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.d();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "hideLink");
-        break;
-      } while (!b());
-      if (paramMessage.arg1 == 1)
-      {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "showStoryTag");
-        }
-      }
-      else if (paramMessage.arg1 == 3)
-      {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.b();
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "hideStoryTag");
-          continue;
-          if (paramMessage.arg1 == 1)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.c();
-            this.jdField_a_of_type_Boolean = true;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "showFollowCapture");
-            }
-          }
-          else if (paramMessage.arg1 == 0)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetStoryGuideLineView.d();
-            this.jdField_a_of_type_Boolean = false;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "hideFollowCapture");
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    b();
+    AEEditorAILoadingView.a(this.a).setAlpha(1.0F);
   }
 }
 

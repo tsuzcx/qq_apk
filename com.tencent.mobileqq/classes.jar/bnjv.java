@@ -1,8 +1,20 @@
-import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-public abstract interface bnjv
+final class bnjv
+  implements QQPermissionCallback
 {
-  public abstract void a(int paramInt, AEFilterManager paramAEFilterManager);
+  bnjv(String paramString1, String paramString2, String paramString3, Activity paramActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhlq.b(bnjs.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bnjs.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+  }
 }
 
 

@@ -1,23 +1,17 @@
-import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 class ahia
-  implements VideoDrawable.OnAudioPlayOnceListener
+  extends ahkx
 {
-  ahia(ahhy paramahhy) {}
-  
-  public void onFinish()
+  ahia(ahgk paramahgk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
-    }
-    if ((ahhy.a() != null) && (ahhy.a().get() != null))
-    {
-      ahhy.a(ahhy.a(this.a), (ChatMessage)ahhy.a().get());
-      ahhy.a(null);
-    }
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahmw(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

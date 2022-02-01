@@ -1,28 +1,21 @@
-import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
-class aqnv
+public class aqnv
+  implements bliz
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public aqnv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, blir paramblir) {}
   
-  public String a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a + this.b;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_Blir.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnv
  * JD-Core Version:    0.7.0.1
  */

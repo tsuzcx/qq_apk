@@ -1,32 +1,76 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ovo
-  implements wiw
+  implements BusinessObserver
 {
-  ovo(ovn paramovn, long paramLong, PublishVideoEntry paramPublishVideoEntry) {}
+  ovo(ovm paramovm, BaseCommentData paramBaseCommentData, int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
+    int i = 1;
+    if (paramBoolean) {}
+    for (;;)
     {
-      long l2 = (l1 - this.jdField_a_of_type_Long) / 1000L;
-      l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish) {
-        l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd - this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label234;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramInt = localWebSsoResponseBody.ret.get();
+        paramBundle = localWebSsoResponseBody.data.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyCommentSSOModule", 2, "commentLike ret=" + paramBundle);
+        }
+        if (paramInt != 0) {
+          break label234;
+        }
+        paramInt = i;
+        paramBundle.printStackTrace();
       }
-      QLog.d("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "CameraCaptureMerge: duration: " + l1 + ", time cost: " + l2 + "s");
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          if (ovm.a(this.jdField_a_of_type_Ovm) != null)
+          {
+            ovm.a(this.jdField_a_of_type_Ovm).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId, this.jdField_a_of_type_Int, this.b);
+            paramInt = i;
+          }
+          i = paramInt;
+          if ((i == 0) && (ovm.a(this.jdField_a_of_type_Ovm) != null)) {
+            ovm.a(this.jdField_a_of_type_Ovm).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId, this.jdField_a_of_type_Int, this.b);
+          }
+          return;
+        }
+        catch (Exception paramBundle)
+        {
+          for (;;)
+          {
+            paramInt = 1;
+          }
+        }
+        paramBundle = paramBundle;
+        paramInt = 0;
+      }
+      i = paramInt;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+        i = paramInt;
+        continue;
+        label234:
+        paramInt = 0;
+      }
     }
-    if (paramInt == 0)
-    {
-      ovn.a(this.jdField_a_of_type_Ovn, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramString2);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, new Object[] { "doCompositeCameraCaptureVideo: errorcode=%s, errorMsg=%s", Integer.valueOf(paramInt), paramString1 });
-    }
-    ovn.a(this.jdField_a_of_type_Ovn, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
   }
 }
 

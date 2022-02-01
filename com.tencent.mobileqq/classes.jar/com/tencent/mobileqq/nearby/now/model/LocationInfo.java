@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import axkf;
+import aycz;
 import java.io.Serializable;
 
 public class LocationInfo
   implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator<LocationInfo> CREATOR = new axkf();
+  public static final Parcelable.Creator<LocationInfo> CREATOR = new aycz();
   public String address = "";
   public String city = "";
   boolean isForeign = false;

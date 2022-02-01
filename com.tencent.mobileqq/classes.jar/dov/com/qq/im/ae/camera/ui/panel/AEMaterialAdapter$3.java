@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import anni;
-import bnmn;
+import anzj;
+import booa;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEMaterialAdapter$3
   implements Runnable
 {
-  public AEMaterialAdapter$3(bnmn parambnmn) {}
+  public AEMaterialAdapter$3(booa parambooa) {}
   
   public void run()
   {
-    QQToast.a(bnmn.a(this.this$0), anni.a(2131708591), 0).a();
+    QQToast.a(booa.a(this.this$0), anzj.a(2131708700), 0).a();
   }
 }
 

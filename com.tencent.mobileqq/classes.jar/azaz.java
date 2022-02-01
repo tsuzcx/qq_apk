@@ -1,47 +1,18 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.ProgressViewRed;
+import android.support.v4.view.ViewPager;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
 
-class azaz
-  extends CountDownTimer
+public class azaz
+  implements nqk
 {
-  azaz(azav paramazav, long paramLong1, long paramLong2, long[] paramArrayOfLong)
+  public azaz(SearchResultFragment paramSearchResultFragment) {}
+  
+  public void a(int paramInt)
   {
-    super(paramLong1, paramLong2);
+    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
+    this.a.jdField_a_of_type_Azam.a(false);
   }
   
-  public void onFinish()
-  {
-    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(79);
-    if (localPortalManager != null) {
-      localPortalManager.a();
-    }
-  }
-  
-  public void onTick(long paramLong)
-  {
-    if (azav.a(this.jdField_a_of_type_Azav).getVisibility() == 0)
-    {
-      this.jdField_a_of_type_Azav.a(paramLong);
-      azav.a(this.jdField_a_of_type_Azav).a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Azav.jdField_a_of_type_JavaLangStringBuilder);
-    }
-    if (this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.getVisibility() == 0)
-    {
-      this.jdField_a_of_type_Azav.a(paramLong);
-      this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Azav.jdField_b_of_type_JavaLangStringBuilder);
-    }
-    paramLong = System.currentTimeMillis() - this.jdField_a_of_type_Azav.jdField_b_of_type_Long;
-    if (paramLong > 2000L) {
-      this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
-    }
-    while (paramLong <= 1000L) {
-      return;
-    }
-    this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
-  }
+  public void b(int paramInt) {}
 }
 
 

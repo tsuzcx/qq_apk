@@ -1,12 +1,44 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-class zxr
-  extends RecyclerView.ViewHolder
+public class zxr
+  implements abhw
 {
-  public zxr(zxo paramzxo, View paramView)
+  public zxr(ScannerActivity paramScannerActivity) {}
+  
+  public void a(int paramInt)
   {
-    super(paramView);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    ScannerActivity.a(this.a).setVisibility(8);
+    bhpc localbhpc = bhlq.a(this.a, 230);
+    if (paramInt == 2) {
+      localbhpc.setMessage(2131717570);
+    }
+    for (;;)
+    {
+      zxs localzxs = new zxs(this);
+      localbhpc.setPositiveButton(2131694098, localzxs);
+      localbhpc.setOnCancelListener(localzxs);
+      localbhpc.show();
+      return;
+      localbhpc.setMessage(2131717579);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    String str = "QR_CODE";
+    if (ScannerActivity.a(this.a) != null) {
+      str = ScannerActivity.a(this.a).a();
+    }
+    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bhqz;
+import biru;
 
 class WebViewFragment$2
   implements Runnable
@@ -9,7 +9,7 @@ class WebViewFragment$2
   
   public void run()
   {
-    bhqz.a(this.this$0.getUrlFromIntent());
+    biru.a(this.this$0.getUrlFromIntent());
   }
 }
 

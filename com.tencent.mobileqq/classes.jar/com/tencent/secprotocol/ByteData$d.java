@@ -21,11 +21,11 @@ public class ByteData$d
     default: 
       return;
     case 162: 
-      ByteData.access$500(this.a, Long.valueOf((String)locald.c).longValue());
+      ByteData.access$600(this.a, Long.valueOf((String)locald.c).longValue());
       return;
     }
     ByteData.logCat("java_poxy", "cmd: " + locald.a + " reqType: " + locald.b);
-    ByteData.access$200(this.a, paramMessage.what, locald.a, locald.b, locald.c, null);
+    ByteData.access$300(this.a, paramMessage.what, locald.a, locald.b, locald.c, null);
   }
 }
 

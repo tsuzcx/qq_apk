@@ -1,49 +1,38 @@
-import android.text.TextUtils;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class aqnf
+public class aqnf
+  extends anyu
 {
-  private static volatile aqnf a;
+  public aqnf(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public static aqnf a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (a == null) {}
-    try
+    if ((paramBoolean) && (paramString != null))
     {
-      if (a == null) {
-        a = new aqnf();
+      String str = bhlg.c(this.a.app, paramString, false);
+      int i = 0;
+      while (i < this.a.c.getChildCount())
+      {
+        Object localObject = this.a.c.getChildAt(i);
+        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof aqno)) && (paramString.equals(((aqno)((View)localObject).getTag()).a)))
+        {
+          localObject = (TextView)((View)localObject).findViewById(2131371813);
+          if (localObject != null) {
+            ((TextView)localObject).setText(str);
+          }
+        }
+        i += 1;
       }
-      return a;
     }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(1);
-  }
-  
-  public String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,898 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ClubContentUpdateHandler.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqAppInfo;
+import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqBody;
+import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqItemInfo;
+import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspAppInfo;
+import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspBody;
+import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspItemInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anva
-  extends QIPCModule
+  extends anud
 {
-  private static anva a;
+  biht jdField_a_of_type_Biht = new anvb(this);
+  private bihw jdField_a_of_type_Bihw;
+  public QQAppInterface a;
   
-  private anva()
+  anva(QQAppInterface paramQQAppInterface)
   {
-    super("SignInModule");
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static anva a()
+  private void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (a == null) {
-      a = new anva();
-    }
-    return a;
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    paramInt = paramBundle.getInt("type", 1);
-    int i = paramBundle.getInt("result", 2);
-    int j = paramBundle.getInt("day", 1);
+    ((axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramString, paramInt1, "", paramInt2, 0);
     if (QLog.isColorLevel()) {
-      QLog.i("DailySignIn", 2, "SignInModule onCall type = " + paramInt + ",result = " + i + ",day = " + j);
+      QLog.d("ClubContentUpdateHandler", 2, "small emotion has update info.");
     }
-    if (i == 0)
+    bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), "small_emosm_update_flag" + paramString, paramInt1);
+  }
+  
+  private void a(int paramInt, bhwp parambhwp)
+  {
+    if (Math.abs(paramInt - bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambhwp.d)) > 5)
     {
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (paramString != null)
+      if (QLog.isColorLevel()) {
+        QLog.i("ClubContentUpdateHandler", 2, "New version json found!");
+      }
+      if (this.jdField_a_of_type_Bihw == null) {
+        this.jdField_a_of_type_Bihw = ((bihw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47));
+      }
+      File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getFilesDir(), parambhwp.a);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("version", paramInt);
+      localBundle.putString("json_name", parambhwp.d);
+      parambhwp = new bihu(parambhwp.b, localFile);
+      this.jdField_a_of_type_Bihw.a(1).a(parambhwp, this.jdField_a_of_type_Biht, localBundle);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      ClubContentUpdateInfoPb.ReqBody localReqBody = new ClubContentUpdateInfoPb.ReqBody();
+      Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
+      localReqBody.int_protocolver.set(1);
+      localReqBody.uint_clientplatid.set(109);
+      localReqBody.str_clientver.set("8.4.5.4745");
+      localReqBody.uint_uin.set(Long.parseLong((String)localObject1));
+      ArrayList localArrayList1 = new ArrayList();
+      int i = paramQQAppInterface.getApp().getSharedPreferences("sigResUpt", 0).getInt("sigTplCfgVer", 0);
+      ArrayList localArrayList2 = new ArrayList();
+      Object localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
+      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).str_name.set("signature_json");
+      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).uint_version.set(i);
+      localArrayList2.add(localObject2);
+      localObject2 = new ClubContentUpdateInfoPb.ReqAppInfo();
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject2).uint_appid.set(8);
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject2).rpt_msg_reqiteminfo.set(localArrayList2);
+      localArrayList1.add(localObject2);
+      localReqBody.rpt_msg_reqappinfo.set(localArrayList1);
+      localObject1 = new ToServiceMsg("mobileqq.service", (String)localObject1, "ClubContentUpdate.Req");
+      ((ToServiceMsg)localObject1).putWupBuffer(localReqBody.toByteArray());
+      ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
+      paramQQAppInterface.sendToService((ToServiceMsg)localObject1);
+    } while (!QLog.isColorLevel());
+    QLog.i("ClubContentUpdateHandler", 2, "checkUpdateSigTpl called.");
+  }
+  
+  private void a(String paramString1, int paramInt1, String paramString2, int paramInt2, Map<String, Integer> paramMap, boolean paramBoolean)
+  {
+    if (paramString1.equals(bhwl.d.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, sEmoticonWordingTask!");
+      }
+      a(paramInt1, bhwl.d, paramBoolean);
+    }
+    do
+    {
+      do
       {
-        paramString.getPreferences();
-        paramString = (anip)paramString.a(2);
-        if (QLog.isColorLevel()) {
-          QLog.i("DailySignIn", 2, "get oidb0x922 by web");
+        do
+        {
+          return;
+          if (!paramString1.equals(bhwl.a.e)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, sEPPromotionTask!");
+          }
+          paramInt2 = bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bhwl.a.d);
+        } while (paramInt1 <= paramInt2);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+        bhwl.a(MobileQQ.getContext(), bhwl.a.d, paramInt2);
+        paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("recommendEmotion_sp_name", 0);
+        ((anwx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).a();
+        paramString1.edit().putLong("last_get_recommendemotion_time_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), System.currentTimeMillis()).commit();
+        return;
+        if (!paramString1.contains("_json")) {
+          break;
         }
-        paramString.c(0);
-        paramString.l();
+        if (QLog.isColorLevel()) {
+          QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, name.contains(EmosmConstant.EMOTICON_JSON_UPDATE_REQUEST_SUFFIX!");
+        }
+      } while (!asos.a(paramInt2));
+      ((axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).b(paramString1.replace("_json", "").trim(), paramInt1, paramString2, paramInt2, 0);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, update emoji package!");
+      }
+      ((axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramString1, paramInt1, paramString2, paramInt2, 0);
+      paramMap.put(paramString1, Integer.valueOf(paramInt2));
+    } while (!QLog.isColorLevel());
+    QLog.d("ClubContentUpdateHandler", 2, "emotion has update info.");
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.has("group_domain")) && (paramJSONObject.has("group_strategy"))) {}
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        String str = paramJSONObject.getString("group_domain");
+        paramJSONObject = paramJSONObject.getString("group_strategy");
+        if (QLog.isColorLevel()) {
+          QLog.i("ClubContentUpdateHandler", 2, "cdnCacheConfig, domain: " + str + ", strategys: " + paramJSONObject);
+        }
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        do
+        {
+          paramJSONObject.printStackTrace();
+        } while (!QLog.isColorLevel());
+        QLog.w("ClubContentUpdateHandler", 2, "", paramJSONObject);
+        return;
       }
     }
+    QLog.w("ClubContentUpdateHandler", 2, "no cdnCacheConfig!");
+  }
+  
+  private boolean a(int paramInt, bhwp parambhwp, boolean paramBoolean)
+  {
+    int i = bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambhwp.d);
+    if (QLog.isColorLevel()) {
+      QLog.d("ClubContentUpdateHandler", 2, "updateResJson name = " + parambhwp.e + " localVersion = " + i + " version = " + paramInt);
+    }
+    if (paramInt > i)
+    {
+      bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambhwp, paramInt, paramBoolean);
+      return true;
+    }
+    return false;
+  }
+  
+  private void b() {}
+  
+  private void b(int paramInt1, String paramString, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    case 204: 
+    default: 
+    case 201: 
+      do
+      {
+        return;
+        QLog.i("ClubContentUpdateHandler", 1, "apollo realtime update panel id: " + paramString + ", version: " + paramInt2);
+        amsx localamsx = (amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+        if ((!amsx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (localamsx == null) || (1 != localamsx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))) {
+          break;
+        }
+      } while (!TextUtils.equals("tab_list_android_json_v665", paramString));
+      a(paramString, paramInt2);
+      return;
+      QLog.i("ClubContentUpdateHandler", 1, "panel update cancel, apollo not available.");
+      return;
+    case 205: 
+      QLog.i("ClubContentUpdateHandler", 1, "saveQVIPResConfigContent apollo_client realtime update apolloWebView config name: " + paramString + ", version: " + paramInt2);
+      ankt.a(null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, false);
+      return;
+    case 202: 
+      c(paramString, paramInt2);
+      return;
+    case 203: 
+      b(paramString, paramInt2);
+      return;
+    }
+    d(paramString, paramInt2);
+  }
+  
+  private void b(String paramString, int paramInt)
+  {
+    try
+    {
+      QLog.i("ClubContentUpdateHandler", 1, "apollo realtime update dress id: " + paramString + ", ver: " + paramInt);
+      amsx localamsx = (amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      if ((amsx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (localamsx != null) && (1 == localamsx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())))
+      {
+        int i = Integer.parseInt(paramString);
+        long l = localamsx.a(2, i) / 1000L;
+        if (l != paramInt)
+        {
+          aniv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, -1, new int[] { i }, -1, -1, true);
+          QLog.i("ClubContentUpdateHandler", 1, "download apollo dress id: " + i + ", loc ver: " + l);
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ClubContentUpdateHandler", 2, "apollo dress real time update id:" + paramString, localException);
+    }
+  }
+  
+  private void c(String paramString, int paramInt)
+  {
+    try
+    {
+      QLog.i("ClubContentUpdateHandler", 1, "apollo realtime update role id: " + paramString + ", ver: " + paramInt);
+      amsx localamsx = (amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      if ((amsx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (localamsx != null) && (1 == localamsx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())))
+      {
+        int i = Integer.parseInt(paramString);
+        long l = localamsx.a(1, i) / 1000L;
+        if (l != paramInt)
+        {
+          aniv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, i, null, -1, -1, true);
+          QLog.i("ClubContentUpdateHandler", 1, "download apollo role id: " + paramString + ", loc ver: " + l);
+        }
+      }
+      else
+      {
+        QLog.i("ClubContentUpdateHandler", 1, "apollo role res ");
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ClubContentUpdateHandler", 2, "apollo: update role res realTime failed name:" + paramString, localException);
+    }
+  }
+  
+  private void d(String paramString, int paramInt)
+  {
+    if (apcx.a().equals(paramString))
+    {
+      paramString = (amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      if ((!amsx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (paramString == null) || (1 != paramString.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))) {
+        break label180;
+      }
+      if ((apcx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(115) != null)
+      {
+        long l = apcx.b();
+        if (l != paramInt)
+        {
+          paramString = annv.av + "base.zip";
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("version", paramInt);
+          aniv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, annv.at, localBundle, new apcz());
+        }
+        QLog.i("ClubContentUpdateHandler", 1, "apollo_base_script login push version: " + paramInt + ", old version: " + l);
+      }
+    }
+    return;
+    label180:
+    QLog.i("ClubContentUpdateHandler", 1, "apollo_base_script login push");
+  }
+  
+  private void g(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
+    while (paramRspAppInfo.hasNext())
+    {
+      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
+      String str1 = localRspItemInfo.str_name.get();
+      int i = localRspItemInfo.uint_version.get();
+      String str2 = localRspItemInfo.str_extend.get();
+      int j = localRspItemInfo.uint_update_flag.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "handleGetIndividuationUrlsResponse, name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
+      }
+      if (!str1.equals(bhwl.b.e)) {}
+    }
+  }
+  
+  protected ClubContentUpdateInfoPb.ReqAppInfo a()
+  {
+    Object localObject = ((axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(0);
+    ArrayList localArrayList = new ArrayList();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Iterator)localObject).next();
+        if (QLog.isColorLevel()) {
+          QLog.d("ClubContentUpdateHandler", 2, "SmallEmojiId= " + localEmoticonPackage.epId + "status=" + localEmoticonPackage.status + "jobType=" + localEmoticonPackage.jobType + "updateFlag=" + localEmoticonPackage.updateFlag);
+        }
+        if ((localEmoticonPackage.jobType == 4) && (localEmoticonPackage.status == 2) && (!asos.b(localEmoticonPackage.updateFlag)))
+        {
+          ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+          localReqItemInfo.str_name.set(localEmoticonPackage.epId);
+          localReqItemInfo.uint_version.set(localEmoticonPackage.localVersion);
+          localArrayList.add(localReqItemInfo);
+        }
+      }
+    }
+    localObject = new ClubContentUpdateInfoPb.ReqAppInfo();
+    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).uint_appid.set(10);
+    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).rpt_msg_reqiteminfo.set(localArrayList);
+    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).setHasFlag(true);
+    return localObject;
+  }
+  
+  protected ClubContentUpdateInfoPb.ReqAppInfo a(bhwp parambhwp, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+    localReqItemInfo.str_name.set(parambhwp.e);
+    localReqItemInfo.uint_version.set(bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambhwp.d));
+    localArrayList.add(localReqItemInfo);
+    parambhwp = new ClubContentUpdateInfoPb.ReqAppInfo();
+    parambhwp.uint_appid.set(paramInt);
+    parambhwp.rpt_msg_reqiteminfo.set(localArrayList);
+    parambhwp.setHasFlag(true);
+    return parambhwp;
+  }
+  
+  public void a()
+  {
+    long l = System.currentTimeMillis();
+    ClubContentUpdateInfoPb.ReqBody localReqBody = new ClubContentUpdateInfoPb.ReqBody();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localReqBody.int_protocolver.set(1);
+    localReqBody.uint_clientplatid.set(109);
+    localReqBody.str_clientver.set("8.4.5.4745");
+    localReqBody.uint_uin.set(Long.parseLong((String)localObject));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(b());
+    localArrayList.add(a());
+    localArrayList.add(c());
+    localArrayList.add(b(bhwl.c, 7));
+    localArrayList.add(a(bhwl.e, 105));
+    localArrayList.add(b(bhwl.f, 11));
+    localArrayList.add(b(bhwl.h, 113));
+    localArrayList.add(b(bhwl.i, 5));
+    localReqBody.rpt_msg_reqappinfo.set(localArrayList);
+    localReqBody.setHasFlag(true);
+    localObject = new ToServiceMsg("mobileqq.service", (String)localObject, "ClubContentUpdate.Req");
+    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("ClubContentUpdateHandler", 2, "sendPbReq called cost: " + (System.currentTimeMillis() - l) + "ms");
+    }
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                paramInt1 = bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), "small_emosm_update_flag" + paramString);
+                if (QLog.isColorLevel()) {
+                  QLog.d("ClubContentUpdateHandler", 4, "func handleSmallEmosmResponse, name:" + paramString + ",version" + paramInt2 + ",localVersion:" + paramInt1);
+                }
+              } while (paramInt1 >= paramInt2);
+              a(paramInt2, 1, paramString);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("ClubContentUpdateHandler", 2, "func handleSmallEmosmResponse, bigEmoji and magicEmoji");
+              }
+              a(paramString, paramInt2, "", 1, new HashMap(), true);
+              return;
+            } while (!bhwl.c.e.equals(paramString));
+            a(paramInt2, bhwl.c, true);
+            return;
+          } while ((!bhwl.b.e.equals(paramString)) || (!QLog.isColorLevel()));
+          QLog.d("ClubContentUpdateHandler", 2, "saveQVIPResConfigContent, update json for individuation url config");
+          return;
+        } while (!bhwl.h.e.equals(paramString));
+        if (QLog.isColorLevel()) {
+          QLog.d("ClubContentUpdateHandler", 2, "saveQVIPResConfigContent UrlInterceptJson");
+        }
+        a(paramInt2, bhwl.h, true);
+        return;
+      } while (!bhwl.i.e.equals(paramString));
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "saveQVIPResConfigContent FontInfoList");
+      }
+      a(paramInt2, bhwl.i, true);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "saveQVIPResConfigContent, individuation mainpage, name=" + paramString);
+      }
+    } while (!paramString.equals("individuation_mainpage_config2"));
+  }
+  
+  public void a(Context paramContext)
+  {
+    int i = 0;
+    Object localObject = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).getString("qvip_res_push_cfg_txt.", "");
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject((String)localObject).getJSONArray("data");
+        if (i >= ((JSONArray)localObject).length()) {
+          continue;
+        }
+        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+        String str = localJSONObject.getString("filename");
+        if (!bhwl.e.a.equals(str)) {
+          break label168;
+        }
+        localObject = localJSONObject.getString("version");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          continue;
+        }
+        i = Integer.parseInt((String)localObject);
+      }
+      catch (Exception paramContext)
+      {
+        if (!QLog.isColorLevel()) {
+          break label167;
+        }
+        QLog.e("ClubContentUpdateHandler", 2, "Parse QVIP_RES_PUSH_CFG_TXT failed:" + paramContext.toString());
+        return;
+        i = -1;
+        if (i != -1) {
+          continue;
+        }
+      }
+      if (bhwl.a(paramContext, bhwl.e.d) != i)
+      {
+        a(i, bhwl.e);
+        return;
+      }
+      label167:
+      return;
+      label168:
+      i += 1;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ClubContentUpdateHandler", 2, "func saveQVIPResConfigContent invoked!");
+    }
+    BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putString("qvip_res_push_cfg_txt.", paramString).commit();
+    for (;;)
+    {
+      try
+      {
+        paramQQAppInterface = new JSONObject(paramString).getJSONArray("data");
+        j = paramQQAppInterface.length();
+        if (i >= j) {
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        int j;
+        int k;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("ClubContentUpdateHandler", 2, "name= saveQVIPResConfigContent ", paramQQAppInterface);
+        return;
+      }
+      try
+      {
+        paramString = paramQQAppInterface.getJSONObject(i);
+        j = paramString.getInt("version");
+        k = paramString.getInt("id");
+        paramString = paramString.getString("filename");
+        if (paramString == null) {
+          return;
+        }
+        a(k, paramString, j);
+        b(k, paramString, j);
+        if (bhwl.e.e.equals(paramString)) {
+          a(j, bhwl.e);
+        }
+      }
+      catch (Exception paramString)
+      {
+        continue;
+      }
+      i += 1;
+    }
+  }
+  
+  protected void a(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
+    while (paramRspAppInfo.hasNext())
+    {
+      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
+      String str1 = localRspItemInfo.str_name.get();
+      int i = localRspItemInfo.uint_version.get();
+      String str2 = localRspItemInfo.str_extend.get();
+      int j = localRspItemInfo.uint_update_flag.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "handleUrlInterceptJSONResponse name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
+      }
+      if (str1.equals(bhwl.h.e)) {
+        a(i, bhwl.h, false);
+      }
+    }
+  }
+  
+  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      i = 1;
+      if (i != 0) {
+        paramToServiceMsg = new ClubContentUpdateInfoPb.RspBody();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg.int_result.get() != 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ClubContentUpdateHandler", 2, "handleResponse, result=" + paramToServiceMsg.int_result.get());
+          }
+          b();
+          return;
+        }
+        paramToServiceMsg = ((ArrayList)paramToServiceMsg.rpt_msg_rspappinfo.get()).iterator();
+        if (!paramToServiceMsg.hasNext()) {
+          break label326;
+        }
+        paramFromServiceMsg = (ClubContentUpdateInfoPb.RspAppInfo)paramToServiceMsg.next();
+        switch (paramFromServiceMsg.uint_appid.get())
+        {
+        case 2: 
+        case 3: 
+        case 9: 
+        case 18: 
+        case 1: 
+          e(paramFromServiceMsg);
+          break;
+        case 10: 
+          d(paramFromServiceMsg);
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        return;
+      }
+      continue;
+      c(paramFromServiceMsg);
+      continue;
+      b(paramFromServiceMsg);
+      continue;
+      c(paramFromServiceMsg);
+      continue;
+      g(paramFromServiceMsg);
+      continue;
+      a(paramFromServiceMsg);
+      continue;
+      f(paramFromServiceMsg);
+      continue;
+      c(paramFromServiceMsg);
+      continue;
+      label326:
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    ThreadManager.getFileThreadHandler().post(new ClubContentUpdateHandler.1(this, paramInt, paramString));
+  }
+  
+  protected ClubContentUpdateInfoPb.ReqAppInfo b()
+  {
+    Object localObject = ((axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(0);
+    ArrayList localArrayList = new ArrayList();
+    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo;
+    int i;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Iterator)localObject).next();
+        if (QLog.isColorLevel()) {
+          QLog.d("ClubContentUpdateHandler", 2, "BigEmojiId= " + localEmoticonPackage.epId + "status=" + localEmoticonPackage.status + "jobType=" + localEmoticonPackage.jobType + "updateFlag=" + localEmoticonPackage.updateFlag + "localVersion=" + localEmoticonPackage.localVersion);
+        }
+        if ((localEmoticonPackage.jobType == 0) && (localEmoticonPackage.status == 2) && (!asos.b(localEmoticonPackage.updateFlag)))
+        {
+          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+          localReqItemInfo.str_name.set(localEmoticonPackage.epId);
+          localReqItemInfo.uint_version.set(localEmoticonPackage.localVersion);
+          localArrayList.add(localReqItemInfo);
+          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+          localReqItemInfo.str_name.set(localEmoticonPackage.epId + "_json");
+          i = localEmoticonPackage.jsonVersion;
+          if (i != 0) {
+            break label378;
+          }
+          i = localEmoticonPackage.localVersion;
+        }
+      }
+    }
+    label378:
+    for (;;)
+    {
+      localReqItemInfo.uint_version.set(i);
+      localArrayList.add(localReqItemInfo);
+      break;
+      localObject = new ClubContentUpdateInfoPb.ReqItemInfo();
+      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).str_name.set(bhwl.d.e);
+      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).uint_version.set(bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bhwl.d.d));
+      localArrayList.add(localObject);
+      localObject = new ClubContentUpdateInfoPb.ReqAppInfo();
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).uint_appid.set(1);
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).rpt_msg_reqiteminfo.set(localArrayList);
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).setHasFlag(true);
+      return localObject;
+    }
+  }
+  
+  protected ClubContentUpdateInfoPb.ReqAppInfo b(bhwp parambhwp, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+    localReqItemInfo.str_name.set(parambhwp.e);
+    localReqItemInfo.uint_version.set(bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambhwp.d));
+    localArrayList.add(localReqItemInfo);
+    parambhwp = new ClubContentUpdateInfoPb.ReqAppInfo();
+    parambhwp.uint_appid.set(paramInt);
+    parambhwp.rpt_msg_reqiteminfo.set(localArrayList);
+    parambhwp.setHasFlag(true);
+    return parambhwp;
+  }
+  
+  protected void b(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    Object localObject = (ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get();
+    paramRspAppInfo = new StringBuilder(((ArrayList)localObject).size() * 64);
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)((Iterator)localObject).next();
+      String str1 = localRspItemInfo.str_name.get();
+      int i = localRspItemInfo.uint_version.get();
+      String str2 = localRspItemInfo.str_extend.get();
+      int j = localRspItemInfo.uint_update_flag.get();
+      if (QLog.isColorLevel()) {
+        paramRspAppInfo.append("name=").append(str1).append(", version=").append(i).append(", updateFlag=").append(j).append(", extStr=").append(str2);
+      }
+      if ((str1.equals(bhwl.e.e)) && (i > bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bhwl.e.d))) {
+        a(i, bhwl.e);
+      }
+    }
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramRspAppInfo.toString()))) {
+      QLog.d("ClubContentUpdateHandler", 2, paramRspAppInfo.toString());
+    }
+  }
+  
+  protected ClubContentUpdateInfoPb.ReqAppInfo c()
+  {
+    Object localObject = ((axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(0);
+    ArrayList localArrayList = new ArrayList();
+    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo;
+    int i;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Iterator)localObject).next();
+        QLog.d("ClubContentUpdateHandler", 2, "MagicEmojiId= " + localEmoticonPackage.epId + "status=" + localEmoticonPackage.status + "jobType=" + localEmoticonPackage.jobType + "updateFlag=" + localEmoticonPackage.updateFlag + "localVersion=" + localEmoticonPackage.localVersion);
+        if ((localEmoticonPackage.jobType == 3) && (localEmoticonPackage.status == 2) && (!asos.b(localEmoticonPackage.updateFlag)))
+        {
+          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+          localReqItemInfo.str_name.set(localEmoticonPackage.epId);
+          localReqItemInfo.uint_version.set(localEmoticonPackage.localVersion);
+          localArrayList.add(localReqItemInfo);
+          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+          localReqItemInfo.str_name.set(localEmoticonPackage.epId + "_json");
+          i = localEmoticonPackage.jsonVersion;
+          if (i != 0) {
+            break label320;
+          }
+          i = localEmoticonPackage.localVersion;
+        }
+      }
+    }
+    label320:
+    for (;;)
+    {
+      localReqItemInfo.uint_version.set(i);
+      localArrayList.add(localReqItemInfo);
+      break;
+      localObject = new ClubContentUpdateInfoPb.ReqAppInfo();
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).uint_appid.set(1);
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).rpt_msg_reqiteminfo.set(localArrayList);
+      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).setHasFlag(true);
+      return localObject;
+    }
+  }
+  
+  protected void c(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
+    while (paramRspAppInfo.hasNext())
+    {
+      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
+      String str1 = localRspItemInfo.str_name.get();
+      int i = localRspItemInfo.uint_version.get();
+      String str2 = localRspItemInfo.str_extend.get();
+      int j = localRspItemInfo.uint_update_flag.get();
+      if (!TextUtils.isEmpty(str1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ClubContentUpdateHandler", 2, "name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
+        }
+        if (str1.equals(bhwl.c.e))
+        {
+          if (i > bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bhwl.c.d)) {
+            bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bhwl.c, i, false);
+          }
+        }
+        else if (str1.equals(bhwl.f.e))
+        {
+          if (i > bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bhwl.f.d)) {
+            bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bhwl.f, i, false);
+          }
+        }
+        else if (str1.equals(bhwl.i.e))
+        {
+          j = bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bhwl.i.d);
+          if (QLog.isColorLevel()) {
+            QLog.d("ClubContentUpdateHandler", 2, "FontInfoList_json remoteVersion = " + i + " localVersion = " + j);
+          }
+          if (i > j) {
+            bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bhwl.i, i, false);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void d(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClubContentUpdateHandler", 4, "func handleSmallEmosmResponse begins");
+    }
+    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
+    while (paramRspAppInfo.hasNext())
+    {
+      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
+      String str = localRspItemInfo.str_name.get();
+      int i = localRspItemInfo.uint_version.get();
+      int j = localRspItemInfo.uint_update_flag.get();
+      int k = bhwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), "small_emosm_update_flag" + str);
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 4, "func handleSmallEmosmResponse, name:" + str + ",updateFlag:" + j + ",version" + i + ",localVersion:" + k);
+      }
+      if (k < i) {
+        a(i, j, str);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ClubContentUpdateHandler", 4, "func handleSmallEmosmResponse ends");
+    }
+  }
+  
+  protected void e(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    QLog.d("ClubContentUpdateHandler", 2, "handleEmosmResponse begins");
+    paramRspAppInfo = (ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get();
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramRspAppInfo.iterator();
+    while (localIterator.hasNext())
+    {
+      paramRspAppInfo = (ClubContentUpdateInfoPb.RspItemInfo)localIterator.next();
+      String str1 = paramRspAppInfo.str_name.get();
+      int i = paramRspAppInfo.uint_version.get();
+      String str2 = paramRspAppInfo.str_extend.get();
+      int j = paramRspAppInfo.uint_update_flag.get();
+      String[] arrayOfString = str2.split("\\|\\|");
+      paramRspAppInfo = "";
+      if (arrayOfString.length > 0) {
+        paramRspAppInfo = arrayOfString[0];
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "name=" + str1 + ", version=" + i + ", tip=" + paramRspAppInfo + ", updateFlag=" + j + ",extStr=" + str2);
+      }
+      a(str1, i, paramRspAppInfo, j, localHashMap, false);
+    }
+  }
+  
+  protected void f(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
+    while (paramRspAppInfo.hasNext())
+    {
+      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
+      String str1 = localRspItemInfo.str_name.get();
+      int i = localRspItemInfo.uint_version.get();
+      String str2 = localRspItemInfo.str_extend.get();
+      int j = localRspItemInfo.uint_update_flag.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("ClubContentUpdateHandler", 2, "handleIndividuationMainpageConfigResponse, name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
+      }
+      if (!str1.equals("individuation_mainpage_config2")) {}
+    }
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
     return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("ClubContentUpdate.Req".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ClubContentUpdateHandler", 2, "onReceive called.");
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

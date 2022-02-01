@@ -4,7 +4,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class bh
-  extends asyw
+  extends atpa
 {
   public bh(LiteActivity paramLiteActivity) {}
   
@@ -24,11 +24,11 @@ public class bh
       return;
       if (paramBoolean)
       {
-        atvo.a(paramLong2);
+        aunj.a(paramLong2);
         return;
       }
     } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
-    atvo.a(paramLong2, paramInt2, paramString2);
+    aunj.a(paramLong2, paramInt2, paramString2);
   }
 }
 

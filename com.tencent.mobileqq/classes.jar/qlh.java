@@ -1,25 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-
-public class qlh
-  extends qkz
+class qlh
+  implements qoe
 {
-  public qlh(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  qlh(qlg paramqlg) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = this.a.a.a.a();
-    if (paramView.isPGCShortContent())
-    {
-      pha.b(this.a.getContext(), paramView, (int)paramView.mChannelID);
-      qib.a(this.a.getContext(), paramView);
-      return;
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    pha.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
   }
 }
 

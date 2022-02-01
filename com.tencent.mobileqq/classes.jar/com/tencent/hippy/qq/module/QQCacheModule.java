@@ -2,7 +2,7 @@ package com.tencent.hippy.qq.module;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bgmg;
+import bhmi;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.CacheModule;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -49,7 +49,7 @@ public class QQCacheModule
       }
       return;
     }
-    paramString = bgmg.a("viola_cache_file_" + paramString + "_" + ((AppRuntime)localObject).getAccount());
+    paramString = bhmi.a("viola_cache_file_" + paramString + "_" + ((AppRuntime)localObject).getAccount());
     if ((paramString instanceof String)) {}
     for (paramString = (String)paramString;; paramString = null)
     {
@@ -94,7 +94,7 @@ public class QQCacheModule
             continue;
           }
           str = localJSONArray.getString(i);
-          paramJSONObject = bgmg.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
+          paramJSONObject = bhmi.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
           if (!(paramJSONObject instanceof String)) {
             continue;
           }

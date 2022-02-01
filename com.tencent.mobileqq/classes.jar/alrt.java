@@ -1,24 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class alrt
-  extends Handler
+  implements aexy
 {
-  public alrt(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public alrt(LoginView paramLoginView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
-    }
-    this.a.a.setPadding(0, 0, 0, 0);
+    LoginView.a(this.a);
+  }
+  
+  public void b()
+  {
+    LoginView.a(this.a);
   }
 }
 

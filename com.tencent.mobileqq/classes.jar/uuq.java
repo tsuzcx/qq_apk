@@ -1,56 +1,95 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.1;
 
 public class uuq
-  extends uuf
+  extends uej<usv>
 {
-  public uuq(uqu paramuqu)
-  {
-    super(paramuqu);
-  }
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new uus(this);
+  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
+  private WSPlayerControlBar jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+  private WSVerticalVideoRelativeLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout;
+  private uuy jdField_a_of_type_Uuy;
+  private boolean jdField_a_of_type_Boolean;
   
-  public List<uru> a(ArrayList paramArrayList)
+  public uuq(Context paramContext, uuy paramuuy, WSVerticalVideoRelativeLayout paramWSVerticalVideoRelativeLayout)
   {
-    return WSVerticalDataManager.a().a(paramArrayList);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    upe.d("WSVerticalForRecommendPresenter", "WSVerticalForRecommendPresenter onPageSelected: " + paramInt);
-    uqu localuqu = a();
-    if (localuqu == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if ((paramViewHolder instanceof utw))
-        {
-          paramViewHolder = new uhc(4, new Object[] { Integer.valueOf(paramInt), ((utw)paramViewHolder).a });
-          wfo.a().dispatch(paramViewHolder);
-        }
-      } while (paramInt <= 0);
-      if (uof.a(paramInt))
-      {
-        localuqu.d(paramInt);
-        return;
-      }
-    } while (ugb.a().g() != paramInt);
-    localuqu.d();
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    uqu localuqu = a();
-    if (localuqu == null) {
-      return false;
+    super(paramContext);
+    this.jdField_a_of_type_Uuy = paramuuy;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = paramWSVerticalVideoRelativeLayout;
+    if ((this.jdField_a_of_type_Uuy != null) && (this.jdField_a_of_type_Uuy.a != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = this.jdField_a_of_type_Uuy.a.a();
     }
-    WSVerticalDataManager.a().a(2, paramBoolean1, paramBoolean2, paramString, localuqu.a(), this, null);
-    return true;
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout == null) {
+      return;
+    }
+    WSVerticalItemVideoProgressController.1 local1 = new WSVerticalItemVideoProgressController.1(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout.setDispatchTouchEventListener(new uur(this, local1));
+  }
+  
+  protected void a() {}
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setProgress(paramFloat);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected int b()
+  {
+    return 2131560029;
+  }
+  
+  protected void b()
+  {
+    a(0.0F);
+  }
+  
+  protected void c()
+  {
+    h();
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131381001));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
+    i();
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.a();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.b();
+    }
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.c();
+    }
   }
 }
 

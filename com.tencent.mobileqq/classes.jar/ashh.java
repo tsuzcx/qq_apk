@@ -1,96 +1,50 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class ashh
+class ashh
+  extends askr
 {
-  public int a;
-  public long a;
-  public asgn a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "0";
-  public String f = "";
+  ashh(ashd paramashd) {}
   
-  public ashh()
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  public ashh a()
-  {
-    ashh localashh = new ashh();
-    localashh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localashh.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
-    localashh.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localashh.c = this.c;
-    localashh.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localashh.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localashh.e = this.e;
-    return localashh;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = bgjw.a("");
-    this.jdField_b_of_type_JavaLangString = "";
-    this.c = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "0";
-    this.jdField_b_of_type_Int = 0;
-    this.f = "";
-    this.jdField_a_of_type_Asgn = null;
-  }
-  
-  public boolean a()
-  {
-    String str = bgjw.a(this.jdField_a_of_type_ArrayOfByte);
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
-    do
+    if (!this.a.a.containsKey(paramEmoticonPackage.epId)) {
+      return;
+    }
+    askd localaskd = (askd)ashd.l(this.a).getManager(43);
+    if (paramInt == 0)
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "onJsonComplete, start download fav emoticon: " + paramEmoticonPackage.epId);
+      }
+      paramInt = paramBundle.getInt("jsonType", askd.c);
+      paramBundle = new File(asos.r.replace("[epId]", paramEmoticonPackage.epId));
+      ArrayList localArrayList = new ArrayList();
+      aslf localaslf = new aslf();
+      if (paramBundle.exists()) {}
+      for (paramBundle = bhmi.a(paramBundle);; paramBundle = null)
       {
-        return false;
-      } while (!(paramObject instanceof ashh));
-      paramObject = (ashh)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    String str = bgjw.a(this.jdField_a_of_type_ArrayOfByte);
-    int i = 0;
-    if (str != null) {
-      i = str.length();
+        paramBundle = asks.a(ashd.m(this.a), paramEmoticonPackage, paramInt, paramBundle, localArrayList, localaslf);
+        if (paramBundle == null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "parse Json Error:" + paramBundle);
+        }
+        biah.a("emotionType", "emotionActionFav", "2", paramEmoticonPackage.epId, "", "", paramBundle, "", "", "");
+        return;
+      }
+      this.a.a(paramEmoticonPackage, localaskd, localArrayList, localaslf);
+      this.a.a(paramEmoticonPackage, localaskd);
+      return;
     }
-    localStringBuilder.append("{sig: ").append(i).append("}");
-    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{nickName: ").append(this.d).append("}");
-    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
-    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{tagName: ").append(this.f).append("}");
-    if (this.jdField_a_of_type_Asgn != null) {
-      localStringBuilder.append(this.jdField_a_of_type_Asgn.toString());
-    }
-    return localStringBuilder.toString();
+    this.a.a(paramEmoticonPackage);
+    biah.a("emotionType", "emotionActionFav", "1", paramEmoticonPackage.epId, "", bhnv.b(ashd.n(this.a).getApplication()) + "", paramInt + "", "", "", "");
   }
 }
 

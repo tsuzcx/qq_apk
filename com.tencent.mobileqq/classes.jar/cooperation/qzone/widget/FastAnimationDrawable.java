@@ -14,10 +14,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.util.LruCache;
-import bmkg;
-import bmpc;
-import bmpd;
-import bmpe;
+import bnlj;
+import bnqf;
+import bnqg;
+import bnqh;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -35,12 +35,12 @@ public class FastAnimationDrawable
 {
   public static byte[] a;
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = bmkg.d;
+  private long jdField_a_of_type_Long = bnlj.d;
   private Context jdField_a_of_type_AndroidContentContext;
   private volatile BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
   public LruCache<Integer, BitmapDrawable> a;
-  private bmpd jdField_a_of_type_Bmpd;
-  private bmpe jdField_a_of_type_Bmpe;
+  private bnqg jdField_a_of_type_Bnqg;
+  private bnqh jdField_a_of_type_Bnqh;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   private Set<SoftReference<Bitmap>> jdField_a_of_type_JavaUtilSet;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
@@ -54,21 +54,21 @@ public class FastAnimationDrawable
     jdField_a_of_type_ArrayOfByte = new byte[24576];
   }
   
-  public FastAnimationDrawable(Context paramContext, ArrayList<String> paramArrayList, long paramLong, bmpd parambmpd)
+  public FastAnimationDrawable(Context paramContext, ArrayList<String> paramArrayList, long paramLong, bnqg parambnqg)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newCachedThreadPool();
-    this.jdField_a_of_type_Bmpe = new bmpe(this, this);
+    this.jdField_a_of_type_Bnqh = new bnqh(this, this);
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
     this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().heightPixels;
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bmpd = parambmpd;
+    this.jdField_a_of_type_Bnqg = parambnqg;
     if (Build.VERSION.SDK_INT >= 11) {
       this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
     }
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidUtilLruCache = new bmpc(this, paramArrayList.size());
+    this.jdField_a_of_type_AndroidUtilLruCache = new bnqf(this, paramArrayList.size());
   }
   
   private static int a(Bitmap.Config paramConfig)
@@ -330,7 +330,7 @@ public class FastAnimationDrawable
     //   147: aload 8
     //   149: astore 6
     //   151: aload_1
-    //   152: invokestatic 232	bgmo:b	(Ljava/lang/String;)I
+    //   152: invokestatic 232	bhmq:b	(Ljava/lang/String;)I
     //   155: istore_3
     //   156: aload 8
     //   158: astore 7
@@ -669,7 +669,7 @@ public class FastAnimationDrawable
     if (isRunning())
     {
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bmpd = null;
+      this.jdField_a_of_type_Bnqg = null;
     }
   }
 }

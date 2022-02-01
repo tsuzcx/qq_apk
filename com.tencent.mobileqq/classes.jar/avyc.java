@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class avyc
-  implements DialogInterface.OnClickListener
+class avyc
+  implements TVK_SDKMgr.InstallListener
 {
-  public avyc(LocationDialogUtil.5 param5) {}
+  avyc(avya paramavya) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.a.a.finish();
+    avxz.b("installSDK onInstalledFailed arg0=" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    avxz.b("installSDK onInstalledSuccessed");
+    avya.a(this.a);
   }
 }
 

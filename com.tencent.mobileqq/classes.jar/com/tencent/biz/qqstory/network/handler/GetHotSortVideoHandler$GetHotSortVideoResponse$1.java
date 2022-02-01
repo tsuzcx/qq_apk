@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.network.handler;
 
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import wfo;
-import wot;
-import wpm;
-import wwc;
-import wwe;
-import wwf;
+import wjj;
+import wso;
+import wth;
+import wzx;
+import wzz;
+import xaa;
 
 public class GetHotSortVideoHandler$GetHotSortVideoResponse$1
   implements Runnable
 {
-  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(wwe paramwwe, ArrayList paramArrayList, wwf paramwwf) {}
+  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(wzz paramwzz, ArrayList paramArrayList, xaa paramxaa) {}
   
   public void run()
   {
-    ((wot)wpm.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, wwc.a(this.jdField_a_of_type_Wwe.a), true);
-    this.jdField_a_of_type_Wwf.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    wfo.a().dispatch(this.jdField_a_of_type_Wwf);
+    ((wso)wth.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, wzx.a(this.jdField_a_of_type_Wzz.a), true);
+    this.jdField_a_of_type_Xaa.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    wjj.a().dispatch(this.jdField_a_of_type_Xaa);
   }
 }
 

@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pwb;
-import rfc;
+import pon;
+import qvw;
 
 public class ArticleInfoModule$10
   implements Runnable
 {
-  public ArticleInfoModule$10(pwb parampwb, int paramInt, List paramList) {}
+  public ArticleInfoModule$10(pon parampon, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -21,9 +21,9 @@ public class ArticleInfoModule$10
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        rfc localrfc = (rfc)((Iterator)localObject).next();
-        if (localrfc.jdField_a_of_type_Int != 0) {
-          QLog.e("ArticleInfoModule", 2, "dislike fail ,articleID : " + localrfc.jdField_a_of_type_Long + ", failCode : " + localrfc.jdField_a_of_type_Int + ",fialMessage : " + localrfc.jdField_a_of_type_JavaLangString);
+        qvw localqvw = (qvw)((Iterator)localObject).next();
+        if (localqvw.jdField_a_of_type_Int != 0) {
+          QLog.e("ArticleInfoModule", 2, "dislike fail ,articleID : " + localqvw.jdField_a_of_type_Long + ", failCode : " + localqvw.jdField_a_of_type_Int + ",fialMessage : " + localqvw.jdField_a_of_type_JavaLangString);
         }
       }
     }

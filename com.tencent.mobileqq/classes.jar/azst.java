@@ -1,16 +1,10 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-public class azst
-  implements Animation.AnimationListener
+public final class azst
+  extends azsa
 {
-  public void a(Animation paramAnimation, float paramFloat) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected int a()
+  {
+    return 513;
+  }
 }
 
 

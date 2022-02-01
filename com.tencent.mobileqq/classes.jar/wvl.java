@@ -1,70 +1,19 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.RecommendActivityViewHolder.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class wvl
-  extends wvi
 {
-  public static final void b(wrs paramwrs)
+  public final long a;
+  public final wvj a;
+  public final long b;
+  
+  public wvl(wvj paramwvj, long paramLong1, long paramLong2)
   {
-    ThreadManager.post(new RecommendActivityViewHolder.1(paramwrs), 8, null, true);
+    this.jdField_a_of_type_Wvj = paramwvj;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
   
-  public void a()
+  public String toString()
   {
-    this.itemView.setTag(2131374552, null);
-  }
-  
-  public void a(wrs paramwrs)
-  {
-    super.a(paramwrs);
-    xfe.b(this.jdField_a_of_type_AndroidWidgetImageView, paramwrs.jdField_b_of_type_JavaLangString, true, (int)bgme.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    String str;
-    int i;
-    if (TextUtils.isEmpty(paramwrs.c))
-    {
-      str = anni.a(2131712037);
-      localTextView.setText(str);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.c.setVisibility(0);
-      if (paramwrs.jdField_b_of_type_Int <= 0) {
-        break label247;
-      }
-      i = 1;
-      label92:
-      a(1, i);
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "FollowPersonViewHolder userItem = " + paramwrs.c + ", faceDrawable = " + paramwrs.jdField_b_of_type_JavaLangString);
-      }
-      str = (String)this.itemView.getTag(2131374552);
-      if (!TextUtils.equals(paramwrs.jdField_a_of_type_JavaLangString, str)) {
-        switch (paramwrs.jdField_a_of_type_Int)
-        {
-        default: 
-          str = "unknown";
-        }
-      }
-    }
-    for (;;)
-    {
-      yqu.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramwrs.jdField_a_of_type_JavaLangString, str });
-      this.itemView.setTag(2131374552, paramwrs.jdField_a_of_type_JavaLangString);
-      return;
-      str = paramwrs.c;
-      break;
-      label247:
-      i = 0;
-      break label92;
-      str = "2";
-      continue;
-      str = "3";
-    }
+    return "Progress{intput=" + this.jdField_a_of_type_Wvj + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
   }
 }
 

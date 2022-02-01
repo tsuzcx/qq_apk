@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
+import android.text.InputFilter;
+import java.util.List;
 
-class alcs
-  extends bgmc
+public abstract interface alcs
 {
-  alcs(alcp paramalcp) {}
+  public abstract String a(List<String> paramList, boolean paramBoolean);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract InputFilter[] a(int paramInt);
 }
 
 

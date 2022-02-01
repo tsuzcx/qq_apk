@@ -3,13 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blzc;
+import bnae;
 import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
 
 public class DiscoverTab
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoverTab> CREATOR = new blzc();
+  public static final Parcelable.Creator<DiscoverTab> CREATOR = new bnae();
   public int a;
   public RedTouchExtendButton.RedInfo a;
   public String a;

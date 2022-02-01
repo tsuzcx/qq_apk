@@ -1,33 +1,40 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class bfid
-  extends bfhq
+  extends ContentObserver
 {
-  public bfid(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  
+  public bfid(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Handler paramHandler)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 18;
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = paramTroopAvatarWallPreviewActivity.getContentResolver();
   }
   
-  @Nullable
-  public bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void a()
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bfhr(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696588), bepx.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (Settings.System.getInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getContentResolver(), "accelerometer_rotation", -1) == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(4);
+      return;
     }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(1);
   }
-  
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

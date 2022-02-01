@@ -1,19 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class airs
-  implements bkom
+final class airs
+  implements Animation.AnimationListener
 {
-  public airs(AddContactsView paramAddContactsView) {}
-  
-  public void a(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    AddContactsView.b(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
+    }
   }
   
-  public void b(View paramView)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    AddContactsView.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
+    }
   }
 }
 

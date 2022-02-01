@@ -1,21 +1,11 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
+import java.util.HashMap;
 
-public class adpn
-  implements DialogInterface.OnClickListener
+public abstract interface adpn
 {
-  public adpn(BaseChatPie paramBaseChatPie) {}
+  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
-    this.a.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString, HashMap<String, APIQuotaItem> paramHashMap);
 }
 
 

@@ -159,7 +159,7 @@
                                 "attributes":{
                                     "setText:":"$video_time_txt",
                                     "setTextColorString:":"#FFFFFF",
-                                    "setFontSizeString:":"9.6",
+                                    "setFontSizeString:":"9",
                                     "setNumberOfLinesString:":"1"
                                 }
                             }

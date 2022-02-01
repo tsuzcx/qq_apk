@@ -1,30 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.util.QZLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class biiy
-  implements View.OnClickListener
+  extends bnva
 {
-  public biiy(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
+  private MQLruCache<String, Object> a;
   
-  public void onClick(View paramView)
+  public biiy(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public MQLruCache<String, Object> a()
+  {
+    return this.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = new biiz(this, paramInt);
+    this.a.setLargeSize(1);
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.a != null)
     {
-      if (AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) != null) {
-        AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).dismiss();
+      Iterator localIterator = this.a.getLargeCache().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = this.a.get(str);
+        if ((localObject != null) && ((localObject instanceof Bitmap)))
+        {
+          ((Bitmap)localObject).recycle();
+          QZLog.i("DIYProfileTemplate.DIYLottieLoader", 4, "recycle bitmap key = " + str);
+        }
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
+      this.a.releaseLargeCache();
     }
   }
 }

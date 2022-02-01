@@ -1,46 +1,31 @@
-import android.annotation.TargetApi;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "lastPosition", "", "newPosition", "onChange"}, k=3, mv={1, 1, 16})
 final class uar
-  implements DialogInterface.OnClickListener
+  implements blow
 {
-  uar(int paramInt1, int paramInt2, Runnable paramRunnable) {}
+  uar(uak paramuak) {}
   
-  @TargetApi(11)
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void a(int paramInt1, int paramInt2)
   {
-    paramInt = 1;
-    bmqa.a("readinjoy_user_data_switch", Integer.valueOf(0));
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
+    uak.a(this.a, paramInt2);
+    Object localObject = uak.a(this.a);
+    if (localObject != null) {}
+    for (float f = ((sdt)localObject).a(uak.a(this.a));; f = 1.0F)
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt = 0;
+      bnrf.a("readinjoy_font_size_ratio_sp", Float.valueOf(f));
+      bnrf.a("readinjoy_font_size_index_sp" + ozs.a(), Integer.valueOf(uak.a(this.a)));
+      localObject = uak.a(this.a);
+      if (localObject != null) {
+        ((uan)localObject).a(uak.a(this.a), f);
       }
-      paramDialogInterface.put("click_src", paramInt);
-      paramDialogInterface.put("user_data_alert_interval", this.b);
-      paramDialogInterface.put("click_opt", 1);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    oat.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uar
  * JD-Core Version:    0.7.0.1
  */

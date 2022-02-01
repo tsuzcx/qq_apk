@@ -1,61 +1,43 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class yeg
-  extends zpa
+  extends SimpleJob<Void>
 {
-  public static final String KEY = "DetailEmptySegment";
-  
-  public yeg(Context paramContext)
+  public yeg(QQStoryMainController paramQQStoryMainController, String paramString)
   {
-    super(paramContext);
+    super(paramString);
   }
   
-  public void T_()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (((StoryDetailListView)a()).a())
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {}
-    for (paramInt = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();; paramInt = 0)
-    {
-      int i = zlx.e(this.jdField_a_of_type_AndroidContentContext);
-      int j = zlx.a(this.jdField_a_of_type_AndroidContentContext);
-      int k = zlx.d(this.jdField_a_of_type_AndroidContentContext);
-      paramynb.a().getLayoutParams().width = j;
-      paramynb.a().getLayoutParams().height = (k - paramInt - i);
-      yqp.b("Q.qqstory.detail.DetailEmptySegment", "titleBarHeight=%d, statusBarHeight=%d, screenHeight=%d.", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(k));
-      return paramynb.a();
-    }
-  }
-  
-  public String a()
-  {
-    return "DetailEmptySegment";
-  }
-  
-  public ynb a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561659, paramViewGroup, false));
+    zom.a(this.a.jdField_a_of_type_AndroidAppActivity);
+    ((wlb)wth.a(6)).c();
+    xui.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
+    PngQuantUtils.a(QQStoryContext.a());
+    ((wjn)wth.a(4)).c();
+    bext.g();
+    ((wta)wth.a(10)).c();
+    yuk.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(wlt.a()) });
+    xil.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
+    yuk.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
+    ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    yuk.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
+    yuk.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
+    this.a.b = bdek.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+    yuk.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
+    yuk.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
+    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
+    yuk.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
+    return null;
   }
 }
 

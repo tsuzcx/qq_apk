@@ -1,17 +1,17 @@
 package com.tencent.open.applist;
 
 import android.widget.TextView;
-import anni;
-import birq;
+import anzj;
+import bjsp;
 
 public class QZoneAppListActivity$1$1
   implements Runnable
 {
-  public QZoneAppListActivity$1$1(birq parambirq) {}
+  public QZoneAppListActivity$1$1(bjsp parambjsp) {}
   
   public void run()
   {
-    QZoneAppListActivity.a(this.a.a).setText(anni.a(2131710372));
+    QZoneAppListActivity.a(this.a.a).setText(anzj.a(2131710481));
   }
 }
 

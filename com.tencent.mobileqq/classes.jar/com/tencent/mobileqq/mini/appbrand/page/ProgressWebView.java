@@ -3,12 +3,14 @@ package com.tencent.mobileqq.mini.appbrand.page;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Base64;
-import anni;
-import bgln;
-import bgsp;
+import anzj;
+import bhlo;
+import bhsr;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
@@ -20,6 +22,7 @@ import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.appbrand.utils.ShareUtils;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
 import com.tencent.mobileqq.mini.util.ApiUtil;
+import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.widget.QQToast;
@@ -30,9 +33,9 @@ import com.tencent.smtt.sdk.WebSettings.PluginState;
 import com.tencent.smtt.sdk.WebView;
 import java.io.File;
 import java.util.Set;
-import nlo;
+import nnj;
 import org.json.JSONObject;
-import zkr;
+import zom;
 
 public class ProgressWebView
   extends WebView
@@ -67,7 +70,7 @@ public class ProgressWebView
   public int htmlId;
   private Activity mActivity;
   private AppBrandRuntime mAppBrandRuntime;
-  private nlo mFileChooserHelper;
+  private nnj mFileChooserHelper;
   private String miniAppWebviewStr;
   private Set<String> supportApiMap;
   private WebView webView;
@@ -77,7 +80,7 @@ public class ProgressWebView
     super(paramActivity);
     this.mActivity = paramActivity;
     paramActivity = getSettings();
-    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bgln.c() + " miniProgram miniprogramhtmlwebview QMA/" + paramString);
+    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bhlo.c() + " miniProgram miniprogramhtmlwebview QMA/" + paramString);
     paramActivity.setSavePassword(false);
     paramActivity.setSaveFormData(false);
     paramActivity.setBuiltInZoomControls(true);
@@ -121,6 +124,23 @@ public class ProgressWebView
       QLog.d("ProgressWebView", 2, "[evaluateCallbackJs] callbackStr=" + paramString);
     }
     AppBrandTask.runTaskOnUiThread(new ProgressWebView.4(this, paramString));
+  }
+  
+  private String getImageFileType(String paramString)
+  {
+    try
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramString, localOptions);
+      paramString = ImageUtil.getType(localOptions);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("ProgressWebView", 1, "decodeFile error", paramString);
+    }
+    return "";
   }
   
   private void handleCallbackFail(String paramString1, JSONObject paramJSONObject, String paramString2, int paramInt)
@@ -179,12 +199,12 @@ public class ProgressWebView
     if ((this.mActivity == null) || (this.mActivity.isFinishing()))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of mActivity is empty");
-      QQToast.a(this.mActivity, 1, anni.a(2131707280), 0).a();
+      QQToast.a(this.mActivity, 1, anzj.a(2131707389), 0).a();
     }
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of sourceUrl is empty");
-      QQToast.a(this.mActivity, 1, anni.a(2131707283), 0).a();
+      QQToast.a(this.mActivity, 1, anzj.a(2131707392), 0).a();
       return;
     }
     Object localObject;
@@ -229,7 +249,7 @@ public class ProgressWebView
     //   0: iconst_1
     //   1: istore_3
     //   2: aload_1
-    //   3: invokestatic 339	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 368	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: ifeq +5 -> 11
     //   9: iconst_0
     //   10: ireturn
@@ -239,37 +259,37 @@ public class ProgressWebView
     //   15: astore 5
     //   17: aload 6
     //   19: astore 4
-    //   21: new 444	java/io/File
+    //   21: new 471	java/io/File
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 446	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: invokespecial 473	java/io/File:<init>	(Ljava/lang/String;)V
     //   29: astore_1
     //   30: aload 6
     //   32: astore 4
     //   34: aload_1
-    //   35: invokevirtual 449	java/io/File:exists	()Z
+    //   35: invokevirtual 476	java/io/File:exists	()Z
     //   38: ifne +12 -> 50
     //   41: aload 6
     //   43: astore 4
     //   45: aload_1
-    //   46: invokevirtual 452	java/io/File:createNewFile	()Z
+    //   46: invokevirtual 479	java/io/File:createNewFile	()Z
     //   49: pop
     //   50: aload 6
     //   52: astore 4
-    //   54: new 454	java/io/FileOutputStream
+    //   54: new 481	java/io/FileOutputStream
     //   57: dup
     //   58: aload_1
-    //   59: invokespecial 457	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   59: invokespecial 484	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   62: astore_1
     //   63: aload_1
     //   64: aload_0
-    //   65: invokevirtual 461	java/io/FileOutputStream:write	([B)V
+    //   65: invokevirtual 488	java/io/FileOutputStream:write	([B)V
     //   68: iload_3
     //   69: istore_2
     //   70: aload_1
     //   71: ifnull +9 -> 80
     //   74: aload_1
-    //   75: invokevirtual 464	java/io/FileOutputStream:close	()V
+    //   75: invokevirtual 491	java/io/FileOutputStream:close	()V
     //   78: iload_3
     //   79: istore_2
     //   80: iload_2
@@ -280,10 +300,10 @@ public class ProgressWebView
     //   86: new 113	java/lang/StringBuilder
     //   89: dup
     //   90: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 466
+    //   93: ldc_w 493
     //   96: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload_0
-    //   100: invokevirtual 469	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   100: invokevirtual 496	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   103: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   106: invokestatic 250	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   109: iload_3
@@ -299,16 +319,16 @@ public class ProgressWebView
     //   124: new 113	java/lang/StringBuilder
     //   127: dup
     //   128: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   131: ldc_w 471
+    //   131: ldc_w 498
     //   134: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   137: aload_1
-    //   138: invokevirtual 469	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 496	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   141: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   144: invokestatic 250	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   147: aload_0
     //   148: ifnull +104 -> 252
     //   151: aload_0
-    //   152: invokevirtual 464	java/io/FileOutputStream:close	()V
+    //   152: invokevirtual 491	java/io/FileOutputStream:close	()V
     //   155: iconst_0
     //   156: istore_2
     //   157: goto -77 -> 80
@@ -318,10 +338,10 @@ public class ProgressWebView
     //   164: new 113	java/lang/StringBuilder
     //   167: dup
     //   168: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   171: ldc_w 466
+    //   171: ldc_w 493
     //   174: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: aload_0
-    //   178: invokevirtual 469	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   178: invokevirtual 496	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   181: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   184: invokestatic 250	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   187: iconst_0
@@ -331,7 +351,7 @@ public class ProgressWebView
     //   193: aload 4
     //   195: ifnull +8 -> 203
     //   198: aload 4
-    //   200: invokevirtual 464	java/io/FileOutputStream:close	()V
+    //   200: invokevirtual 491	java/io/FileOutputStream:close	()V
     //   203: aload_0
     //   204: athrow
     //   205: astore_1
@@ -340,10 +360,10 @@ public class ProgressWebView
     //   209: new 113	java/lang/StringBuilder
     //   212: dup
     //   213: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   216: ldc_w 466
+    //   216: ldc_w 493
     //   219: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: aload_1
-    //   223: invokevirtual 469	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   223: invokevirtual 496	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   226: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   229: invokestatic 250	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   232: goto -29 -> 203
@@ -392,22 +412,29 @@ public class ProgressWebView
   {
     if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
     {
+      String str = MiniAppFileManager.getLocalPathSuffix(paramString);
       Object localObject = new File(paramString);
-      localObject = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-      if (zkr.a(this.mActivity, paramString, (String)localObject))
+      localObject = new StringBuilder().append(ShortVideoUtils.d()).append(System.currentTimeMillis() / 1000L).append("_").append(((File)localObject).getName());
+      if (TextUtils.isEmpty(str)) {}
+      for (str = "." + getImageFileType(paramString);; str = "")
       {
+        str = str;
+        QLog.d("ProgressWebView", 1, "saveImageToAlbum savePath : " + str);
+        if (!zom.a(this.mActivity, paramString, str)) {
+          break;
+        }
         if (QLog.isColorLevel()) {
           QLog.d("ProgressWebView", 2, "savaPicToAlbum success.");
         }
-        QQToast.a(this.mActivity, 2, anni.a(2131707270), 0).a();
+        QQToast.a(this.mActivity, 2, anzj.a(2131707379), 0).a();
         return;
       }
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed.");
-      QQToast.a(this.mActivity, 1, anni.a(2131707273), 0).a();
+      QQToast.a(this.mActivity, 1, anzj.a(2131707382), 0).a();
       return;
     }
     QLog.e("ProgressWebView", 1, "savaPicToAlbum failed. activity error.");
-    QQToast.a(this.mActivity, 1, anni.a(2131707277), 0).a();
+    QQToast.a(this.mActivity, 1, anzj.a(2131707386), 0).a();
   }
   
   private void sharePicToQQ(String paramString)
@@ -418,7 +445,7 @@ public class ProgressWebView
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "sharePicToQQ failed, because of sourceUrl is empty");
-      QQToast.a(this.mActivity, 1, anni.a(2131707281), 0).a();
+      QQToast.a(this.mActivity, 1, anzj.a(2131707390), 0).a();
       return;
     }
     Object localObject;
@@ -458,6 +485,11 @@ public class ProgressWebView
   
   public void clearUp() {}
   
+  public int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
   public void evaluateCallbackJs(int paramInt, String paramString)
   {
     QLog.i("ProgressWebView", 1, "evaluateCallbackJs 1 callbackId : " + paramInt + "; result : " + paramString);
@@ -479,6 +511,11 @@ public class ProgressWebView
     return null;
   }
   
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return new byte[0];
+  }
+  
   public int getPageWebViewId()
   {
     return 0;
@@ -487,7 +524,7 @@ public class ProgressWebView
   public void init(AppBrandRuntime paramAppBrandRuntime)
   {
     this.mAppBrandRuntime = paramAppBrandRuntime;
-    if (bgsp.a(this.miniAppWebviewStr)) {
+    if (bhsr.a(this.miniAppWebviewStr)) {
       this.miniAppWebviewStr = AppLoaderFactory.getAppLoaderManager().getMiniAppWebviewStr();
     }
     this.webView = this;

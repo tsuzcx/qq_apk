@@ -1,12 +1,7 @@
-import android.view.animation.Interpolator;
-
 public class bkgl
-  implements Interpolator
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return bkfh.a(paramFloat);
-  }
+  public volatile long a;
+  public volatile boolean a;
 }
 
 

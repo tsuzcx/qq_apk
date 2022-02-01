@@ -1,32 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-class mii
-  implements ValueAnimator.AnimatorUpdateListener
+public class mii
 {
-  mii(mih parammih) {}
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public mii()
   {
-    paramValueAnimator.getAnimatedFraction();
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f;
-    if (i <= 220)
-    {
-      f = i / 220.0F;
-      mih.a(this.a).setAlpha(f);
-    }
-    if (i <= 160)
-    {
-      f = i / 100.0F;
-      mih.a(this.a).setAlpha(f);
-    }
-    if (mih.a(this.a) != null) {
-      mih.a(this.a).requestLayout();
-    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "id[" + this.jdField_a_of_type_JavaLangString + "], name[" + this.c + "], desc[" + this.d + "]";
   }
 }
 

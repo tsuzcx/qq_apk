@@ -1,20 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Conversation;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aeaw
-  implements QQPermissionCallback
+public final class aeaw
+  implements DialogInterface.OnClickListener
 {
-  aeaw(aeav paramaeav, View paramView) {}
+  public aeaw(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, aebz paramaebz, Bundle paramBundle) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bglp.b(aeav.a(this.jdField_a_of_type_Aeav).a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Aeav.b(this.jdField_a_of_type_AndroidViewView);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

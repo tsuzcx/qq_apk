@@ -1,148 +1,104 @@
-import android.content.Context;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class alfc
-  extends alej
 {
-  public boolean a;
+  private static volatile alfc jdField_a_of_type_Alfc;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anzj.a(2131712201), anzj.a(2131712191), anzj.a(2131712172) };
+  private static final String[] b = { anzj.a(2131712197), anzj.a(2131712192), anzj.a(2131712177) };
   
-  public alfc(Context paramContext)
+  public static alfc a()
   {
-    this(paramContext, false);
+    if (jdField_a_of_type_Alfc == null) {}
+    try
+    {
+      if (jdField_a_of_type_Alfc == null) {
+        jdField_a_of_type_Alfc = new alfc();
+      }
+      return jdField_a_of_type_Alfc;
+    }
+    finally {}
   }
   
-  public alfc(Context paramContext, boolean paramBoolean)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131696959);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject = alil.a();
+    if (localObject != null)
+    {
+      localObject = (alao)((QQAppInterface)localObject).getManager(245);
+      if (localObject != null) {
+        return ((alao)localObject).a("hb_exclusive", 1, new String[] { "ani_queue_max" });
+      }
+    }
+    return 1;
   }
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public String a(int paramInt)
   {
-    if (paramMessageRecord == null)
+    Object localObject1 = alil.a();
+    Object localObject2;
+    JSONArray localJSONArray;
+    if (localObject1 != null)
     {
-      parambepr = null;
-      return parambepr;
-    }
-    boolean bool = axci.a(paramMessageRecord);
-    if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool)) {
-      return null;
-    }
-    if (bool)
-    {
-      if ((paramObject instanceof alfc))
-      {
-        paramObject = (alfc)paramObject;
-        paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-        return paramObject;
-      }
-      paramObject = new alfc(BaseApplication.getContext());
-      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-    }
-    if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
-    {
-      paramQQAppInterface = (MessageForDeliverGiftTips)paramMessageRecord;
-      paramInt = 1;
-      i = 1;
-      if (!(paramObject instanceof alfc)) {
-        break label287;
-      }
-      paramMessageRecord = (alfc)paramObject;
-      paramInt = i;
-      if (paramMessageRecord.jdField_a_of_type_Boolean)
-      {
-        paramInt = i;
-        if (!paramQQAppInterface.isToAll()) {
-          paramInt = 0;
+      localObject2 = (alao)((QQAppInterface)localObject1).getManager(245);
+      if (localObject2 != null) {
+        if (paramInt == 0)
+        {
+          localObject1 = "ask_text_list";
+          localJSONArray = ((alao)localObject2).a("hb_exclusive", new String[] { "aio_red", localObject1 });
+          if (paramInt != 0) {
+            break label110;
+          }
+          localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
+          label59:
+          localObject2 = localObject1;
+          if (localJSONArray != null)
+          {
+            if (localJSONArray.length() != 0) {
+              break label117;
+            }
+            localObject2 = localObject1;
+          }
         }
       }
-      i = paramInt;
-      paramObject = paramMessageRecord;
-      if (!paramMessageRecord.jdField_a_of_type_Boolean)
+    }
+    for (;;)
+    {
+      if ((localObject2 != null) && (localObject2.length > 0))
       {
-        paramMessageRecord.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-        paramObject = paramMessageRecord;
-      }
-    }
-    for (int i = paramInt;; i = paramInt)
-    {
-      parambepr = paramObject;
-      if (i == 0) {
+        return localObject2[(new java.util.Random().nextInt(localObject2.length + 0) + 0)];
+        localObject1 = "thx_text_list";
         break;
+        label110:
+        localObject1 = b;
+        break label59;
+        label117:
+        localObject2 = new String[localJSONArray.length()];
+        paramInt = 0;
       }
-      parambepr = paramObject;
-      if (TextUtils.isEmpty(paramQQAppInterface.remindBrief)) {
-        break;
-      }
-      parambepr = paramQQAppInterface.remindBrief.split("#");
-      paramObject.jdField_a_of_type_JavaLangString = ("[" + parambepr[0] + "]");
-      return paramObject;
-      bcst.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_RECEIVED_FLOWSER_MSG, MessageRecord cast to GiftTips", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
-      return null;
-      label287:
-      paramObject = new alfc(BaseApplication.getContext(), paramQQAppInterface.isToAll());
-      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
-      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
-      if (this.jdField_a_of_type_Beps == null) {
-        this.jdField_a_of_type_Beps = new beps();
-      }
-      this.jdField_a_of_type_Beps.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Beps != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Beps.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      while (paramInt < localJSONArray.length())
       {
-        localJSONException.printStackTrace();
+        localObject2[paramInt] = localJSONArray.optString(paramInt);
+        paramInt += 1;
+        continue;
+        return null;
+      }
+      continue;
+      localObject2 = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    Object localObject = alil.a();
+    if (localObject != null)
+    {
+      localObject = (alao)((QQAppInterface)localObject).getManager(245);
+      if (localObject != null) {
+        return ((alao)localObject).a("hb_exclusive", 1, new String[] { "is_display_all" }) == 1;
       }
     }
+    return true;
   }
 }
 

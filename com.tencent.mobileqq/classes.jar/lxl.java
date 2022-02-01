@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
-
-public class lxl
-  implements DialogInterface.OnClickListener
+class lxl
+  implements lya
 {
-  public lxl(AVSchema paramAVSchema, String paramString) {}
+  lxl(lxk paramlxk, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(lxz paramlxz)
   {
-    mqy.d();
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
+    paramlxz.a(this.jdField_a_of_type_JavaLangString);
+    paramlxz.a();
   }
 }
 

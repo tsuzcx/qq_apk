@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 class aynu
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  aynu(aynq paramaynq, AutoReplyText paramAutoReplyText) {}
+  aynu(aynp paramaynp) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((aynq.a(this.jdField_a_of_type_Aynq) != null) && (paramView != null))
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
-      aynq.a(this.jdField_a_of_type_Aynq, (View)paramView.getParent(), i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    axxb.a(this.a.e, 90);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

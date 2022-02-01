@@ -1,13 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract interface wtm
+public class wtm
+  extends wip
 {
-  public abstract void a(@Nullable wrs paramwrs, Error paramError);
-  
-  public abstract void a(@Nullable wrs paramwrs, @NonNull List<StoryVideoItem> paramList);
+  public Map<String, xcs> a = new HashMap();
 }
 
 

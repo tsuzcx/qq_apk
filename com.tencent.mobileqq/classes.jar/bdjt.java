@@ -1,31 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.widget.ImageView;
 
-class bdjt
-  extends bdjv
+public final class bdjt
+  implements bdhm
 {
-  bdjt(bdjq parambdjq)
-  {
-    super(parambdjq);
-  }
+  public bdjt(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void a()
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
+    if ((this.a != null) && (this.b != null))
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjt
  * JD-Core Version:    0.7.0.1
  */

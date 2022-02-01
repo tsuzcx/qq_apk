@@ -1,19 +1,35 @@
-import android.support.annotation.Nullable;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class xnc
-  extends weu
+class xnc
+  extends QQUIEventReceiver<xnb, wzr>
 {
-  @Nullable
-  public final File a;
-  public final String a;
-  public final boolean a;
-  
-  public xnc(String paramString, boolean paramBoolean, File paramFile)
+  public xnc(@NonNull xnb paramxnb)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    super(paramxnb);
+  }
+  
+  public void a(@NonNull xnb paramxnb, @NonNull wzr paramwzr)
+  {
+    if ((!TextUtils.equals(xnb.a(paramxnb).mContext, paramwzr.jdField_a_of_type_JavaLangString)) || (xnb.a(paramxnb) == null)) {
+      return;
+    }
+    if (paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      yuk.a(this.TAG, "pull feedId list fail %s", paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+      xnb.a(paramxnb).a(new ErrorMessage(paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
+      return;
+    }
+    xnb.a(paramxnb).mIsEnd = paramwzr.jdField_a_of_type_Boolean;
+    xnb.a(paramxnb).b(new ErrorMessage(), xnb.b(paramwzr.jdField_a_of_type_JavaUtilList), paramwzr.jdField_a_of_type_Boolean);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wzr.class;
   }
 }
 

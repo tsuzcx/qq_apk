@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class apuv
-  implements bcin
+  implements apum
 {
-  public apuv(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  private apuv(apuk paramapuk) {}
   
-  public void a(Exception paramException)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
-    }
-  }
-  
-  public void a(RuntimeException paramRuntimeException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
+    for (;;)
+    {
+      return false;
+      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramString = new Intent();
+      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
+      paramString.putExtra("from", apuk.class.getName());
+      paramString.putExtra("finishAfterSucc", true);
+      if (apuk.a(this.a) != null) {}
+      try
+      {
+        BaseApplicationImpl.getApplication().unregisterReceiver(apuk.a(this.a));
+        label105:
+        apuk.a(this.a, null);
+        apuk.a(this.a, new apuw(this, l));
+        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
+        BaseApplicationImpl.getApplication().registerReceiver(apuk.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
+        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
+        if (paramArrayOfVariantWrapper == null) {
+          continue;
+        }
+        paramArrayOfVariantWrapper.startActivity(paramString);
+        return false;
+      }
+      catch (Exception paramArrayOfVariantWrapper)
+      {
+        break label105;
+      }
     }
   }
 }

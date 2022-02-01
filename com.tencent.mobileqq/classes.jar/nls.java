@@ -1,23 +1,52 @@
-import android.app.Activity;
-import android.view.View;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class nls
-  implements bkhw
+  implements axrb
 {
-  nls(nlo paramnlo, Activity paramActivity, String paramString, bkho parambkho) {}
+  nls(nlr paramnlr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public String getToken()
   {
-    switch (paramInt)
-    {
+    return QQPlayerService.a(5, "" + this.a.a);
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.c);
     }
-    for (;;)
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
+    }
+    Object localObject = QQPlayerService.b();
+    localObject = nlr.a(this.a, (SongInfo)localObject);
+    if (localObject != null) {}
+    try
     {
-      this.jdField_a_of_type_Bkho.dismiss();
+      ((JSONObject)localObject).put("state", paramInt);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("*.qq.com");
+      awgm.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
       return;
-      nlo.b(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      nlo.a(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
+        }
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

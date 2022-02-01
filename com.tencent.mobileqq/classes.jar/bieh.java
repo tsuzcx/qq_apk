@@ -1,38 +1,39 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-
 public class bieh
-  implements Animator.AnimatorListener
 {
-  public bieh(FloatingScreenContainer paramFloatingScreenContainer) {}
+  public final String a;
+  public final String b;
+  @Deprecated
+  public final String c;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bieh()
   {
-    FloatingScreenContainer.a(this.a, false);
+    this.a = "0";
+    this.b = "";
+    this.c = "";
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bieh(String paramString1, String paramString2, String paramString3)
   {
-    FloatingScreenContainer.a(this.a).removeAllListeners();
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).b();
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).a();
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
     }
-    FloatingScreenContainer.a(this.a, true);
+    paramObject = (bieh)paramObject;
+    return this.b.equals(paramObject.b);
+  }
+  
+  public String toString()
+  {
+    return "WallpaperConfig{itemId='" + this.a + '\'' + ", imgPath='" + this.b + '\'' + ", videoPath='" + this.c + '\'' + '}';
   }
 }
 

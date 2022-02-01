@@ -4,11 +4,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import aqck;
+import aqrn;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public abstract interface IAppUIProxy
-  extends aqck
+  extends aqrn
 {
   public abstract void completeLoading(BaseActivity paramBaseActivity);
   

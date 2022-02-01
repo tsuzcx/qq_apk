@@ -1,89 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.image.SafeBitmapFactory;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqrb
-  extends aqkz<aqra>
 {
-  @NonNull
-  public aqra a(int paramInt)
-  {
-    return new aqra();
-  }
+  int a = -1;
   
-  @Nullable
-  public aqra a(aqlg[] paramArrayOfaqlg)
+  public static aqrb a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaqlg != null)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaqlg.length > 0) {
-        localObject1 = aqra.a(paramArrayOfaqlg);
+      return null;
+      try
+      {
+        aqrb localaqrb = new aqrb();
+        localaqrb.a = new JSONObject(paramString).getInt("maxcount");
+        aqry.a = localaqrb.a;
+        if (QLog.isColorLevel()) {
+          QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed maxcount " + localaqrb.a);
+        }
+        return localaqrb;
       }
-    }
-    return localObject1;
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed erro " + paramString.toString());
+    return null;
   }
   
-  public void a(aqra paramaqra)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onUpdate " + paramaqra.toString());
-    }
-    SafeBitmapFactory.setNeedRegionDecode(paramaqra.jdField_a_of_type_Boolean);
-    SafeBitmapFactory.setPxThreshoidToSp(paramaqra.jdField_a_of_type_Long);
-    SafeBitmapFactory.setRamThreshoidToSp(paramaqra.jdField_a_of_type_Int);
-    SafeBitmapFactory.setThreadCountToSp(paramaqra.jdField_b_of_type_Int);
-    beao.a(paramaqra.jdField_b_of_type_Long);
-    beao.b(paramaqra.jdField_c_of_type_Long);
-    beam.a(paramaqra.jdField_c_of_type_Int);
-  }
-  
-  public Class<aqra> clazz()
-  {
-    return aqra.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 251;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrb
  * JD-Core Version:    0.7.0.1
  */

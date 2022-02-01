@@ -1,38 +1,57 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.PluginProcessService;
-import com.tencent.shadow.dynamic.host.PpsController;
-import java.util.concurrent.CountDownLatch;
-
-class avin
-  implements ServiceConnection
+public class avin
 {
-  avin(avil paramavil, CountDownLatch paramCountDownLatch) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public String a()
   {
-    QLog.i("HuayangPluginNewDownloader", 2, "onServiceConnected ");
-    avil.a(this.jdField_a_of_type_Avil).unbindService(this);
-    paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
-    try
-    {
-      paramComponentName.exit();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        QLog.d("HuayangPluginNewDownloader", 2, "exit over", paramComponentName);
-      }
-    }
+    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
+  public void a()
+  {
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.f = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.d = "";
+    this.e = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bhmi.b(this.jdField_c_of_type_JavaLangString));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
 }
 
 

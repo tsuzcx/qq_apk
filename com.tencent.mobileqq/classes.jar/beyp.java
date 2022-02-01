@@ -1,107 +1,72 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import tencent.im.msg.im_msg_body.CustomFace;
 
 public class beyp
-  implements Manager
+  extends betv
 {
-  private long a;
-  public beyo a;
+  public im_msg_body.CustomFace a;
   
-  public beyp(QQAppInterface paramQQAppInterface) {}
-  
-  public beyo a(long paramLong, boolean paramBoolean, TroopChatPie paramTroopChatPie, String paramString)
+  public beyp(beyb parambeyb, beyg parambeyg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopClassControllerMan", 2, "updateTroopAioClassUI troopClassType" + paramLong + ", currentTroopClassType" + this.jdField_a_of_type_Long);
-    }
-    if ((paramLong != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Beyo != null)) {
-      this.jdField_a_of_type_Beyo.a(false, paramTroopChatPie, paramBoolean);
-    }
-    this.jdField_a_of_type_Beyo = a(paramTroopChatPie, paramString);
-    if (this.jdField_a_of_type_Beyo != null) {
-      this.jdField_a_of_type_Beyo.a(true, paramTroopChatPie, paramBoolean);
-    }
-    for (;;)
+    super(parambeyb, parambeyg);
+  }
+  
+  void s()
+  {
+    if (this.jdField_a_of_type_Beyg.a != null)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      return this.jdField_a_of_type_Beyo;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
-      }
+      v();
+      azrh localazrh = new azrh();
+      localazrh.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
+      localazrh.jdField_d_of_type_JavaLangString = this.c;
+      localazrh.c = this.jdField_d_of_type_JavaLangString;
+      localazrh.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Beyg.i;
+      localazrh.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      localazrh.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace;
+      this.jdField_a_of_type_Beyg.a.b(localazrh);
+      a(true);
     }
   }
   
-  public beyo a(TroopChatPie paramTroopChatPie, String paramString)
+  protected void v()
   {
-    if (TroopInfo.isHomeworkTroop(paramTroopChatPie.a, paramString))
+    im_msg_body.CustomFace localCustomFace = new im_msg_body.CustomFace();
+    localCustomFace.uint32_file_id.set((int)this.jdField_a_of_type_Long);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      if (!(this.jdField_a_of_type_Beyo instanceof bfhg)) {
-        this.jdField_a_of_type_Beyo = new bfhg(paramTroopChatPie.a, paramTroopChatPie.a(), paramTroopChatPie);
-      }
-      this.jdField_a_of_type_Long = 32L;
+      localObject = (bewy)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localCustomFace.uint32_server_ip.set(a(((bewy)localObject).jdField_a_of_type_JavaLangString));
+      localCustomFace.uint32_server_port.set(((bewy)localObject).jdField_a_of_type_Int);
     }
-    for (;;)
+    localCustomFace.uint32_file_type.set(Integer.valueOf(66).intValue());
+    localCustomFace.uint32_useful.set(1);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
+      localCustomFace.bytes_signature.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
+    }
+    localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(this.b));
+    localCustomFace.str_file_path.set(this.jdField_d_of_type_JavaLangString);
+    Object localObject = localCustomFace.uint32_origin;
+    if (this.n) {}
+    for (int i = 1;; i = 0)
     {
-      return this.jdField_a_of_type_Beyo;
-      if (TroopInfo.isFansTroop(paramTroopChatPie.a, paramString))
-      {
-        this.jdField_a_of_type_Long = 27L;
-      }
-      else
-      {
-        this.jdField_a_of_type_Beyo = null;
-        this.jdField_a_of_type_Long = 0L;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopClassControllerMan", 2, "getControllerByTroopUin null " + paramString);
-        }
-      }
+      ((PBUInt32Field)localObject).set(i);
+      localCustomFace.uint32_width.set(this.jdField_d_of_type_Int);
+      localCustomFace.uint32_height.set(this.jdField_q_of_type_Int);
+      localCustomFace.uint32_size.set((int)this.jdField_q_of_type_Long);
+      localCustomFace.uint32_source.set(200);
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace = localCustomFace;
+      return;
     }
   }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Beyo != null) {
-      this.jdField_a_of_type_Beyo.c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Beyo instanceof bfhg)) {
-      this.jdField_a_of_type_Beyo.a(bfpj.b(paramInt));
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Beyo != null) {
-      this.jdField_a_of_type_Beyo.b(paramBoolean);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Beyo != null) {
-      this.jdField_a_of_type_Beyo.b();
-    }
-    this.jdField_a_of_type_Beyo = null;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Beyo != null) {
-      this.jdField_a_of_type_Beyo.a();
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beyp
  * JD-Core Version:    0.7.0.1
  */

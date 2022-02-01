@@ -1,13 +1,28 @@
-import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class adda
-  implements adcb
+  implements adci
 {
-  public adda(MemoryDumpHelper.5 param5) {}
-  
-  public void a()
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    adcw.c(this.a.this$0);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x11e");
+    }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

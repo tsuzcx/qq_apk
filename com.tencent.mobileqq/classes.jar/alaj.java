@@ -1,29 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
 
-class alaj
-  implements View.OnClickListener
+public class alaj
+  extends BroadcastReceiver
 {
-  private alah jdField_a_of_type_Alah;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private alaj(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  alaj(alah paramalah, MqqHandler paramMqqHandler)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_Alah = paramalah;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Alah.jdField_a_of_type_JavaLangString + " on enter");
-    }
-    this.jdField_a_of_type_Alah.jdField_a_of_type_Alaf.onEnter();
-    bcst.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((!"troop_hblist_broadcast_action".equals(paramIntent.getAction())) || (!TroopUnAccalimedRedPacketList.b(this.a))) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          i = paramIntent.getIntExtra("result_code", 0);
+          int j = paramIntent.getIntExtra("grap_hb_state", 0);
+          paramContext = paramIntent.getStringExtra("listid");
+          if (QLog.isColorLevel()) {
+            QLog.d(TroopUnAccalimedRedPacketList.b(), 2, "RedPacketRefreshReceiver|resultCode:" + i + "|listId: " + paramContext + "|grabHbState: " + j);
+          }
+          if (i != -20180322) {
+            break;
+          }
+          if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+            TroopUnAccalimedRedPacketList.b(this.a).setVisibility(8);
+          }
+        } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+        return;
+      } while (i != -20180323);
+      if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+        TroopUnAccalimedRedPacketList.b(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+    } while ((TroopUnAccalimedRedPacketList.a(this.a) == null) || (TextUtils.isEmpty(paramContext)));
+    TroopUnAccalimedRedPacketList.a(this.a).a(paramContext);
+    alda.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a), paramContext);
   }
 }
 

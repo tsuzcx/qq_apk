@@ -1,21 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oye
-  implements ViewBase.OnClickListener
+public class oye
 {
-  oye(pan parampan, pay parampay) {}
+  private static boolean a;
   
-  public final void onClick(ViewBase paramViewBase)
+  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    paramViewBase = this.jdField_a_of_type_Pan;
-    if (paramViewBase == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter");
+    if (BaseApplicationImpl.sApplication == null) {
+      return null;
     }
-    ((ozh)paramViewBase).a(this.jdField_a_of_type_Pay, oyk.a(this.jdField_a_of_type_Pay, 1), 2);
+    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562978, null);
+    ((DragTextView)localView.findViewById(2131380394)).setDragViewType(2);
+    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131378359)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
+    ((TextView)localView.findViewById(2131380116)).setText(paramInt5);
+    return localView;
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    try
+    {
+      a = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static boolean a()
+  {
+    return a;
   }
 }
 

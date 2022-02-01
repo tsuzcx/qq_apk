@@ -1,40 +1,49 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.OrientationEventListener;
-import ruy;
+import com.tencent.qphone.base.util.QLog;
+import rlu;
 
 public class OrientationDetector$3
   implements Runnable
 {
-  public OrientationDetector$3(ruy paramruy, boolean paramBoolean) {}
+  public OrientationDetector$3(rlu paramrlu, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    synchronized (ruy.a(this.this$0))
+    synchronized (rlu.a(this.this$0))
     {
-      if (ruy.a(this.this$0) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d(rlu.a, 2, "run: innerEnable: enable=" + this.a + ", mEventListener=" + rlu.a(this.this$0));
+      }
+      if (rlu.a(this.this$0) == null) {
         return;
       }
     }
     try
     {
-      if (this.a) {
-        if (ruy.a(this.this$0).canDetectOrientation()) {
-          ruy.a(this.this$0).enable();
-        }
-      }
-      for (;;)
+      if (this.a)
       {
-        label53:
-        return;
-        localObject2 = finally;
-        throw localObject2;
-        ruy.a(this.this$0).disable();
+        if (rlu.a(this.this$0).canDetectOrientation()) {
+          rlu.a(this.this$0).enable();
+        }
+        if (!this.b) {}
       }
     }
     catch (Throwable localThrowable)
     {
-      break label53;
+      synchronized (rlu.a(this.this$0))
+      {
+        for (;;)
+        {
+          rlu.a(this.this$0, null);
+          return;
+          localObject3 = finally;
+          throw localObject3;
+          rlu.a(this.this$0).disable();
+        }
+        localThrowable = localThrowable;
+      }
     }
   }
 }

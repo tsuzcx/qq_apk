@@ -1,6 +1,22 @@
-public abstract interface amki
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
+public class amki
+  implements Animation.AnimationListener
 {
-  public abstract void onRender();
+  public amki(SpecailCareListActivity paramSpecailCareListActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

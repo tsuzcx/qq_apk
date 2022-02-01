@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-public class afqx
-  implements DialogInterface.OnClickListener
+public final class afqx
+  implements akgl
 {
-  public afqx(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  private WeakReference<amct> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afqx(amct paramamct)
   {
-    this.a.l();
-    this.a.a(azfl.g, this.a.a, false);
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nlw.a(), "2", "1");
+    this.a = new WeakReference(paramamct);
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    amct localamct = (amct)this.a.get();
+    if (localamct != null) {
+      localamct.a(paramMotionEvent);
+    }
   }
 }
 

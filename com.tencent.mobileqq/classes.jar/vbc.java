@@ -1,17 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import feedcloud.FeedCloudMeta.StReply;
 
-class vbc
-  implements DialogInterface.OnClickListener
+public class vbc
 {
-  vbc(vax paramvax) {}
+  public int a;
+  public FeedCloudMeta.StReply a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vbc(int paramInt, FeedCloudMeta.StReply paramStReply)
   {
-    if (paramInt == 1) {
-      this.a.a().finish();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
+  }
+  
+  public vbc(int paramInt1, FeedCloudMeta.StReply paramStReply, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
+    this.b = paramInt2;
   }
 }
 

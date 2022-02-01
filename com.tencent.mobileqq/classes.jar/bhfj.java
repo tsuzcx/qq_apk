@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
-import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bhfj
-  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
+final class bhfj
+  implements DownloadParams.DecodeHandler
 {
-  public bhfj(PathTraceManager paramPathTraceManager) {}
-  
-  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    PathTraceManager.a(this.a, paramPluginInterface);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    return bhmq.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

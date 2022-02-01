@@ -1,25 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "()V", "RIJ_SHANGHAI_PHP", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdv
-  implements Parcelable.Creator<SimpleCommentData>
+class pdv
+  extends blsy
 {
-  @NotNull
-  public SimpleCommentData a(@NotNull Parcel paramParcel)
+  pdv(pdt parampdt, View paramView)
   {
-    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    return new SimpleCommentData(paramParcel);
-  }
-  
-  @NotNull
-  public SimpleCommentData[] a(int paramInt)
-  {
-    return new SimpleCommentData[paramInt];
+    super(paramView);
+    paramView.setTag(this);
   }
 }
 

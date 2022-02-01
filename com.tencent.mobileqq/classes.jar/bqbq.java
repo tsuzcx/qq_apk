@@ -1,443 +1,256 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.av.video.effect.lowlight.LowLightTools;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.1;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
 
 public class bqbq
+  extends bqgi
 {
-  public static int a;
-  public static Object a;
-  public static final String a;
-  private static int jdField_b_of_type_Int;
-  public static final String b;
-  private static int c;
-  public static String c;
-  private static int d;
-  public static String d;
-  private static final String e;
-  private static final String f;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bqbs jdField_a_of_type_Bqbs;
-  private bqbv jdField_a_of_type_Bqbv;
-  public CaptureRedDotConfig a;
-  public FilterCategoryItem a;
-  HashMap<String, FilterDesc> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final CopyOnWriteArrayList<FilterCategory> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public boolean a;
-  private final CopyOnWriteArrayList<FilterCategoryItem> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  
-  static
+  public bqbq(@NonNull bqgk parambqgk)
   {
-    jdField_a_of_type_JavaLangString = alkn.jdField_d_of_type_JavaLangString + "pddata/prd/dov_capture_qsvf" + File.separator;
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "capture_res" + File.separator;
-    e = alkn.jdField_d_of_type_JavaLangString + "qav" + File.separator + "beauty" + File.separator;
-    f = e + "SKINCOLOR" + File.separator;
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "lowlight";
-    jdField_d_of_type_JavaLangString = jdField_c_of_type_JavaLangString + File.separator + "LowLight.png";
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 1;
-    jdField_d_of_type_Int = -1;
+    super(parambqgk);
   }
   
-  private bqbq()
+  /* Error */
+  public void a(int paramInt, @NonNull bqua parambqua)
   {
-    GraphicRenderMgr.loadSo();
-    String str = bgln.h() + " " + bgln.d();
-    QLog.i("CaptureVideoFilterManager", 2, "DeviceInfo " + str);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  }
-  
-  public static final bqbq a()
-  {
-    return bqbr.a();
-  }
-  
-  public static String a(Context paramContext)
-  {
-    try
-    {
-      File localFile = new File(jdField_a_of_type_JavaLangString + "filter_config.xml");
-      lbc.c("CaptureVideoFilterManager", "getQQShortVideoFilterConfig:" + jdField_a_of_type_JavaLangString + "filter_config.xml" + "|" + localFile.exists());
-      if (localFile.exists()) {
-        return bgmg.b(localFile);
-      }
-      a(paramContext, 0);
-      return null;
-    }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    lbc.c("CaptureVideoFilterManager", "setQQShortVideoFilterConfigVersion:" + paramInt);
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("capture_qq_video_filter_config_version", paramInt);
-    paramContext.commit();
-  }
-  
-  private boolean a()
-  {
-    String str = bgmg.d("filter_template.cfg");
-    boolean bool = a(str);
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureVideoFilterManager", 2, "initFromAsset" + str + " result:" + bool);
-    }
-    return bool;
-  }
-  
-  private boolean a(Context paramContext)
-  {
-    paramContext = a(paramContext);
-    boolean bool = a(paramContext);
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureVideoFilterManager", 2, "initFromCache" + paramContext + " result:" + bool);
-    }
-    return bool;
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    for (;;)
-    {
-      int i;
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        Object localObject3;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          localObject2 = FilterDesc.parse(paramString.getJSONArray("filters")).iterator();
-          if (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (FilterDesc)((Iterator)localObject2).next();
-            this.jdField_a_of_type_JavaUtilHashMap.put(((FilterDesc)localObject3).name, localObject3);
-            continue;
-          }
-          paramString = paramString.getJSONArray("categorys");
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-          return false;
-        }
-        Object localObject2 = new ArrayList(paramString.length());
-        i = 0;
-        if (i < paramString.length())
-        {
-          localObject3 = new FilterCategory(paramString.getJSONObject(i), null);
-          if ((((FilterCategory)localObject3).a.size() <= 0) || ((((FilterCategory)localObject3).a.size() == 1) && (((FilterCategoryItem)((FilterCategory)localObject3).a.get(0)).a()))) {
-            break label334;
-          }
-          ((ArrayList)localObject2).add(new FilterCategory(paramString.getJSONObject(i), null));
-          break label334;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)localObject2);
-        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        paramString = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        if (paramString.hasNext())
-        {
-          localObject2 = ((FilterCategory)paramString.next()).a.iterator();
-          if (!((Iterator)localObject2).hasNext()) {
-            continue;
-          }
-          localObject3 = (FilterCategoryItem)((Iterator)localObject2).next();
-          if (((FilterCategoryItem)localObject3).jdField_a_of_type_Boolean) {
-            continue;
-          }
-          localObject3 = ((FilterCategoryItem)localObject3).a();
-          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject3);
-        }
-      }
-      if (this.jdField_a_of_type_Bqbs != null) {
-        this.jdField_a_of_type_Bqbs.a();
-      }
-      return true;
-      label334:
-      i += 1;
-    }
-  }
-  
-  private void e()
-  {
-    File localFile = new File(jdField_d_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    for (;;)
-    {
-      Object localObject = LowLightTools.getLowLightImage(3.0F, 0.88F, 0.96F, 1.22F, false);
-      try
-      {
-        FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
-        ((Bitmap)localObject).compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);
-        localFileOutputStream.flush();
-        localFileOutputStream.close();
-        if (!localFile.exists())
-        {
-          jdField_a_of_type_Int = jdField_d_of_type_Int;
-          return;
-          localObject = localFile.getParentFile();
-          if (((File)localObject).exists()) {
-            continue;
-          }
-          ((File)localObject).mkdirs();
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("CaptureVideoFilterManager", 2, "LowLightTools saveBitmap:" + localException);
-        }
-        jdField_a_of_type_Int = jdField_b_of_type_Int;
-      }
-    }
-  }
-  
-  public FilterDesc a(String paramString)
-  {
-    return (FilterDesc)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public FilterCategoryItem a()
-  {
-    return this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem;
-  }
-  
-  public List<FilterCategoryItem> a()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bqbs = null;
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    for (;;)
-    {
-      StringBuilder localStringBuilder;
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig == null) {
-          return;
-        }
-        if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.updateRedDotInfo(paramInt1, paramInt2, paramString))
-        {
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("updateRedDotInfo==> type=");
-            localStringBuilder.append(paramInt1);
-            if (paramInt1 == 2)
-            {
-              localStringBuilder.append(",categoryId=").append(paramInt2);
-              QLog.d("QIMRedDotConfig_Filter", 2, localStringBuilder.toString());
-            }
-          }
-          else
-          {
-            this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
-            this.jdField_a_of_type_AndroidOsHandler.post(new CaptureVideoFilterManager.1(this));
-          }
-        }
-        else {
-          return;
-        }
-      }
-      if (paramInt1 == 3) {
-        localStringBuilder.append(",id=").append(paramString);
-      } else if (paramInt1 == 4) {
-        localStringBuilder.append(",defaultId=").append(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultUseId);
-      } else if (paramInt1 == 5) {
-        localStringBuilder.append(",defaultCategoryId=").append(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryId);
-      }
-    }
-  }
-  
-  public void a(bqbs parambqbs)
-  {
-    this.jdField_a_of_type_Bqbs = parambqbs;
-  }
-  
-  public void a(bqbv parambqbv)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      lbc.c("CaptureVideoFilterManager", "preDownloadResource list is empty!");
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Bqbv = parambqbv;
-      lbc.c("CaptureVideoFilterManager", "preDownloadResource list size: " + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      parambqbv = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (parambqbv.hasNext())
-      {
-        Object localObject1 = (FilterCategory)parambqbv.next();
-        if (((FilterCategory)localObject1).a != null)
-        {
-          localObject1 = ((FilterCategory)localObject1).a.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            FilterDesc localFilterDesc = ((FilterCategoryItem)((Iterator)localObject1).next()).a();
-            if (localFilterDesc != null)
-            {
-              lbc.c("CaptureVideoFilterManager", "preDownloadResource predownload: " + localFilterDesc.predownload + ", iconurl: " + localFilterDesc.iconurl + ", resurl:" + localFilterDesc.resurl);
-              if (localFilterDesc.predownload == 1)
-              {
-                Object localObject3;
-                if (!TextUtils.isEmpty(localFilterDesc.iconurl))
-                {
-                  localObject2 = localFilterDesc.getIconFile(jdField_b_of_type_JavaLangString);
-                  localObject3 = new File((String)localObject2);
-                  lbc.c("CaptureVideoFilterManager", "preDownloadResource icon " + (String)localObject2 + " exist: " + ((File)localObject3).exists());
-                  if (!((File)localObject3).exists())
-                  {
-                    localObject3 = new bdvs();
-                    ((bdvs)localObject3).jdField_a_of_type_Bdvw = new bqbu(this);
-                    ((bdvs)localObject3).jdField_a_of_type_JavaLangString = localFilterDesc.iconurl;
-                    ((bdvs)localObject3).jdField_a_of_type_Int = 0;
-                    ((bdvs)localObject3).jdField_c_of_type_JavaLangString = ((String)localObject2);
-                    ((bdvs)localObject3).a(localFilterDesc);
-                    lbd.a().a((bdws)localObject3);
-                    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-                  }
-                }
-                Object localObject2 = localFilterDesc.getResFold(jdField_b_of_type_JavaLangString);
-                if ((!TextUtils.isEmpty(localFilterDesc.resurl)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-                {
-                  localObject3 = new File((String)localObject2 + "params.json");
-                  lbc.c("CaptureVideoFilterManager", "preDownloadResource file " + (String)localObject2 + "params.json" + " exist: " + ((File)localObject3).exists());
-                  if (!((File)localObject3).exists())
-                  {
-                    localObject2 = new bdvs();
-                    ((bdvs)localObject2).jdField_a_of_type_Bdvw = new bqbt(this);
-                    ((bdvs)localObject2).jdField_a_of_type_JavaLangString = localFilterDesc.resurl;
-                    ((bdvs)localObject2).jdField_a_of_type_Int = 0;
-                    ((bdvs)localObject2).jdField_c_of_type_JavaLangString = (jdField_b_of_type_JavaLangString + localFilterDesc.name + ".zip");
-                    ((bdvs)localObject2).a(localFilterDesc);
-                    lbd.a().a((bdws)localObject2);
-                    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    } while ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0) || (this.jdField_a_of_type_Bqbv == null));
-    this.jdField_a_of_type_Bqbv.a(false);
-  }
-  
-  public void a(FilterCategoryItem paramFilterCategoryItem)
-  {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem = paramFilterCategoryItem;
-    if ((this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem != null) && (!this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem.a())) {
-      a(3, this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem.jdField_b_of_type_Int, this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem != null)
-    {
-      paramFilterCategoryItem = this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataFilterCategoryItem.a();
-      if (paramFilterCategoryItem != null)
-      {
-        QQFilterRenderManager localQQFilterRenderManager = EffectsCameraCaptureView.b();
-        if (localQQFilterRenderManager != null) {
-          localQQFilterRenderManager.getBusinessOperation().setFilterEffect(paramFilterCategoryItem);
-        }
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig != null) && (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.update))
-      {
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.update = false;
-        CaptureRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig, jdField_a_of_type_JavaLangString, "_Filter");
-      }
-      return;
-    }
-    CaptureRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig, jdField_a_of_type_JavaLangString, "_Filter");
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      com.tencent.av.video.effect.QavVideoEffect.DEBUG_MODE = true;
-    }
-    c();
-    if (!a(BaseApplicationImpl.sApplication)) {
-      a();
-    }
-    lbc.c("CaptureVideoFilterManager", "init mFilterCategoryRaw size:" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
-  }
-  
-  public void c()
-  {
-    CaptureRedDotConfig localCaptureRedDotConfig = CaptureRedDotConfig.getRedDotConfigFromFile(jdField_a_of_type_JavaLangString, "_Filter");
-    if (localCaptureRedDotConfig != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMRedDotConfig_Filter", 2, "CaptureVideoFilterManger init UpdateByServer= " + this.jdField_a_of_type_Boolean);
-      }
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig = localCaptureRedDotConfig;
-        }
-        return;
-      }
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Bqbv = null;
+    // Byte code:
+    //   0: aload_0
+    //   1: iload_1
+    //   2: aload_2
+    //   3: invokespecial 17	bqgi:a	(ILbqua;)V
+    //   6: invokestatic 22	bqzz:a	()Lbqzz;
+    //   9: invokevirtual 26	bqzz:c	()I
+    //   12: istore_3
+    //   13: iload_3
+    //   14: ifgt +4 -> 18
+    //   17: return
+    //   18: invokestatic 22	bqzz:a	()Lbqzz;
+    //   21: iload_3
+    //   22: invokevirtual 29	bqzz:a	(I)Ldov/com/qq/im/capture/data/QIMFilterCategoryItem;
+    //   25: astore 6
+    //   27: invokestatic 22	bqzz:a	()Lbqzz;
+    //   30: iload_3
+    //   31: invokevirtual 32	bqzz:b	(I)Ldov/com/qq/im/capture/data/QIMFilterCategoryItem;
+    //   34: astore 7
+    //   36: invokestatic 37	bplq:a	()Lbplq;
+    //   39: bipush 8
+    //   41: invokevirtual 40	bplq:c	(I)Lbpli;
+    //   44: checkcast 42	bpoz
+    //   47: invokevirtual 45	bpoz:a	()Lcom/tencent/mobileqq/richmedia/capture/data/MusicItemInfo;
+    //   50: astore 5
+    //   52: new 47	org/json/JSONObject
+    //   55: dup
+    //   56: invokespecial 50	org/json/JSONObject:<init>	()V
+    //   59: astore 4
+    //   61: aload 6
+    //   63: ifnull +97 -> 160
+    //   66: aload_2
+    //   67: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   70: getfield 61	com/tencent/mobileqq/tribe/TribeVideoPublishParams:combo0Info	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo;
+    //   73: ifnonnull +17 -> 90
+    //   76: aload_2
+    //   77: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   80: new 63	com/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo
+    //   83: dup
+    //   84: invokespecial 64	com/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo:<init>	()V
+    //   87: putfield 61	com/tencent/mobileqq/tribe/TribeVideoPublishParams:combo0Info	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo;
+    //   90: aload_2
+    //   91: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   94: getfield 61	com/tencent/mobileqq/tribe/TribeVideoPublishParams:combo0Info	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo;
+    //   97: aload 6
+    //   99: getfield 69	dov/com/qq/im/capture/data/QIMFilterCategoryItem:a	Ljava/lang/String;
+    //   102: putfield 72	com/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo:id	Ljava/lang/String;
+    //   105: aload_2
+    //   106: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   109: getfield 61	com/tencent/mobileqq/tribe/TribeVideoPublishParams:combo0Info	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo;
+    //   112: aload 6
+    //   114: getfield 75	dov/com/qq/im/capture/data/QIMFilterCategoryItem:f	Ljava/lang/String;
+    //   117: putfield 78	com/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo:type	Ljava/lang/String;
+    //   120: aload 6
+    //   122: getfield 80	dov/com/qq/im/capture/data/QIMFilterCategoryItem:b	Ljava/lang/String;
+    //   125: invokestatic 86	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   128: ifne +210 -> 338
+    //   131: aload 4
+    //   133: getstatic 91	xdr:B	Ljava/lang/String;
+    //   136: aload 6
+    //   138: getfield 80	dov/com/qq/im/capture/data/QIMFilterCategoryItem:b	Ljava/lang/String;
+    //   141: invokevirtual 95	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   144: pop
+    //   145: aload_2
+    //   146: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   149: getfield 61	com/tencent/mobileqq/tribe/TribeVideoPublishParams:combo0Info	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo;
+    //   152: aload 6
+    //   154: getfield 80	dov/com/qq/im/capture/data/QIMFilterCategoryItem:b	Ljava/lang/String;
+    //   157: putfield 98	com/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo:name	Ljava/lang/String;
+    //   160: aload 7
+    //   162: ifnull +105 -> 267
+    //   165: aload 7
+    //   167: getfield 80	dov/com/qq/im/capture/data/QIMFilterCategoryItem:b	Ljava/lang/String;
+    //   170: invokestatic 86	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   173: ifne +94 -> 267
+    //   176: aload 7
+    //   178: invokevirtual 101	dov/com/qq/im/capture/data/QIMFilterCategoryItem:c	()Z
+    //   181: ifne +86 -> 267
+    //   184: aload_2
+    //   185: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   188: getfield 105	com/tencent/mobileqq/tribe/TribeVideoPublishParams:filter	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter;
+    //   191: ifnonnull +17 -> 208
+    //   194: aload_2
+    //   195: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   198: new 107	com/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter
+    //   201: dup
+    //   202: invokespecial 108	com/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter:<init>	()V
+    //   205: putfield 105	com/tencent/mobileqq/tribe/TribeVideoPublishParams:filter	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter;
+    //   208: aload_2
+    //   209: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   212: getfield 105	com/tencent/mobileqq/tribe/TribeVideoPublishParams:filter	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter;
+    //   215: aload 7
+    //   217: getfield 69	dov/com/qq/im/capture/data/QIMFilterCategoryItem:a	Ljava/lang/String;
+    //   220: putfield 109	com/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter:id	Ljava/lang/String;
+    //   223: aload_2
+    //   224: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   227: getfield 105	com/tencent/mobileqq/tribe/TribeVideoPublishParams:filter	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter;
+    //   230: aload 7
+    //   232: getfield 75	dov/com/qq/im/capture/data/QIMFilterCategoryItem:f	Ljava/lang/String;
+    //   235: putfield 112	com/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter:typeId	Ljava/lang/String;
+    //   238: aload_2
+    //   239: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   242: getfield 105	com/tencent/mobileqq/tribe/TribeVideoPublishParams:filter	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter;
+    //   245: aload 7
+    //   247: getfield 80	dov/com/qq/im/capture/data/QIMFilterCategoryItem:b	Ljava/lang/String;
+    //   250: putfield 113	com/tencent/mobileqq/tribe/TribeVideoPublishParams$Filter:name	Ljava/lang/String;
+    //   253: aload 4
+    //   255: getstatic 116	xdr:z	Ljava/lang/String;
+    //   258: aload 7
+    //   260: getfield 80	dov/com/qq/im/capture/data/QIMFilterCategoryItem:b	Ljava/lang/String;
+    //   263: invokevirtual 95	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   266: pop
+    //   267: aload 5
+    //   269: ifnull +28 -> 297
+    //   272: aload 5
+    //   274: getfield 121	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:mMusicName	Ljava/lang/String;
+    //   277: invokestatic 86	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   280: ifne +17 -> 297
+    //   283: aload 4
+    //   285: getstatic 124	xdr:A	Ljava/lang/String;
+    //   288: aload 5
+    //   290: getfield 121	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:mMusicName	Ljava/lang/String;
+    //   293: invokevirtual 95	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   296: pop
+    //   297: aload_0
+    //   298: ldc 126
+    //   300: invokevirtual 129	bqbq:a	(Ljava/lang/Class;)Lbqgj;
+    //   303: checkcast 126	bqbr
+    //   306: astore 5
+    //   308: aload 5
+    //   310: ifnull +13 -> 323
+    //   313: aload 5
+    //   315: invokeinterface 132 1 0
+    //   320: ifnonnull +61 -> 381
+    //   323: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   326: ifeq -309 -> 17
+    //   329: ldc 139
+    //   331: iconst_2
+    //   332: ldc 141
+    //   334: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   337: return
+    //   338: aload 6
+    //   340: getfield 148	dov/com/qq/im/capture/data/QIMFilterCategoryItem:e	Ljava/lang/String;
+    //   343: invokestatic 86	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   346: ifne -186 -> 160
+    //   349: aload 4
+    //   351: getstatic 91	xdr:B	Ljava/lang/String;
+    //   354: aload 6
+    //   356: getfield 148	dov/com/qq/im/capture/data/QIMFilterCategoryItem:e	Ljava/lang/String;
+    //   359: invokevirtual 95	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   362: pop
+    //   363: aload_2
+    //   364: getfield 55	bqua:jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams;
+    //   367: getfield 61	com/tencent/mobileqq/tribe/TribeVideoPublishParams:combo0Info	Lcom/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo;
+    //   370: aload 6
+    //   372: getfield 148	dov/com/qq/im/capture/data/QIMFilterCategoryItem:e	Ljava/lang/String;
+    //   375: putfield 98	com/tencent/mobileqq/tribe/TribeVideoPublishParams$ComboInfo:name	Ljava/lang/String;
+    //   378: goto -218 -> 160
+    //   381: aload 5
+    //   383: invokeinterface 132 1 0
+    //   388: invokevirtual 153	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:a	()Lbqjh;
+    //   391: astore 6
+    //   393: ldc 155
+    //   395: getstatic 158	bplz:b	Ljava/lang/String;
+    //   398: invokevirtual 164	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   401: ifeq +16 -> 417
+    //   404: aload 6
+    //   406: ifnull +25 -> 431
+    //   409: aload 6
+    //   411: invokevirtual 168	bqjh:a	()Z
+    //   414: ifne +17 -> 431
+    //   417: aload 4
+    //   419: getstatic 171	xdr:y	Ljava/lang/String;
+    //   422: ldc 172
+    //   424: invokestatic 177	anzj:a	(I)Ljava/lang/String;
+    //   427: invokevirtual 95	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   430: pop
+    //   431: aload 5
+    //   433: invokeinterface 132 1 0
+    //   438: iload_1
+    //   439: invokevirtual 178	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:a	(I)Ljava/lang/String;
+    //   442: astore 5
+    //   444: aload 5
+    //   446: invokestatic 86	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   449: ifne +14 -> 463
+    //   452: aload 4
+    //   454: getstatic 181	xdr:x	Ljava/lang/String;
+    //   457: aload 5
+    //   459: invokevirtual 95	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   462: pop
+    //   463: aload 4
+    //   465: invokevirtual 185	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   468: astore 4
+    //   470: ldc 139
+    //   472: ldc 187
+    //   474: aload 4
+    //   476: invokestatic 192	yuk:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   479: aload_2
+    //   480: getfield 195	bqua:jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry	Lcom/tencent/biz/qqstory/database/PublishVideoEntry;
+    //   483: ldc 197
+    //   485: aload 4
+    //   487: invokevirtual 203	com/tencent/biz/qqstory/database/PublishVideoEntry:putExtra	(Ljava/lang/String;Ljava/lang/Object;)Z
+    //   490: pop
+    //   491: return
+    //   492: astore 5
+    //   494: goto -31 -> 463
+    //   497: astore 6
+    //   499: goto -68 -> 431
+    //   502: astore 5
+    //   504: goto -207 -> 297
+    //   507: astore 6
+    //   509: goto -242 -> 267
+    //   512: astore 8
+    //   514: goto -151 -> 363
+    //   517: astore 8
+    //   519: goto -374 -> 145
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	522	0	this	bqbq
+    //   0	522	1	paramInt	int
+    //   0	522	2	parambqua	bqua
+    //   12	19	3	i	int
+    //   59	427	4	localObject1	java.lang.Object
+    //   50	408	5	localObject2	java.lang.Object
+    //   492	1	5	localJSONException1	org.json.JSONException
+    //   502	1	5	localJSONException2	org.json.JSONException
+    //   25	385	6	localObject3	java.lang.Object
+    //   497	1	6	localJSONException3	org.json.JSONException
+    //   507	1	6	localJSONException4	org.json.JSONException
+    //   34	225	7	localQIMFilterCategoryItem	dov.com.qq.im.capture.data.QIMFilterCategoryItem
+    //   512	1	8	localJSONException5	org.json.JSONException
+    //   517	1	8	localJSONException6	org.json.JSONException
+    // Exception table:
+    //   from	to	target	type
+    //   452	463	492	org/json/JSONException
+    //   417	431	497	org/json/JSONException
+    //   283	297	502	org/json/JSONException
+    //   253	267	507	org/json/JSONException
+    //   349	363	512	org/json/JSONException
+    //   131	145	517	org/json/JSONException
   }
 }
 

@@ -1,21 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
 
-class arvz
-  implements DialogInterface.OnDismissListener
+public final class arvz
 {
-  arvz(arvy paramarvy) {}
+  public float a;
+  public final int a;
+  public final long a;
+  public final Point a;
+  public float b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public arvz(long paramLong, Point paramPoint, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
-    }
-    this.a.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPoint.x - this.jdField_a_of_type_Float;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPoint.y - this.b;
+  }
+  
+  public String toString()
+  {
+    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", mDistanceOfError=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

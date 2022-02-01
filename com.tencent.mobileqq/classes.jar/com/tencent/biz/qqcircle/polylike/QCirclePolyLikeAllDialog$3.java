@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.polylike;
 
-import vpe;
-import vph;
+import vrn;
+import vrq;
 
 public class QCirclePolyLikeAllDialog$3
   implements Runnable
 {
-  public QCirclePolyLikeAllDialog$3(vpe paramvpe) {}
+  public QCirclePolyLikeAllDialog$3(vrn paramvrn) {}
   
   public void run()
   {
-    vpe.a(this.this$0).notifyDataSetChanged();
+    vrn.a(this.this$0).notifyDataSetChanged();
   }
 }
 

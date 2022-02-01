@@ -1,20 +1,25 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class sdc
-  extends skd
+  implements Animator.AnimatorListener
 {
-  sdc(sce paramsce) {}
+  sdc(sda paramsda) {}
   
-  public int a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return 2;
+    QLog.d("TabBarView", 4, "onAnimationEnd");
+    sda.b(this.a);
+    this.a.b.clearAnimation();
   }
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    this.a.a.d(paramString);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

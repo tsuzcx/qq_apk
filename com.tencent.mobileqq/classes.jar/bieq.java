@@ -1,67 +1,41 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.graphics.Rect;
 
 public class bieq
-  extends WebViewPlugin
 {
-  public bieq()
+  private biel jdField_a_of_type_Biel;
+  private bien jdField_a_of_type_Bien;
+  
+  public bieq(biel parambiel, bien parambien)
   {
-    this.mPluginNameSpace = "floatingWindow";
+    this.jdField_a_of_type_Biel = parambiel;
+    this.jdField_a_of_type_Bien = parambien;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("floatingWindow".equals(paramString2))
-    {
-      if ("show".equals(paramString3))
-      {
-        bies.a(BaseApplication.getContext(), true, 16);
-        return true;
-      }
-      if ("hide".equals(paramString3))
-      {
-        bies.a(BaseApplication.getContext(), false, 16);
-        return true;
-      }
-      if ("close".equals(paramString3))
-      {
-        bies.a(BaseApplicationImpl.getContext(), 16);
-        return true;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Biel.a(new bier(this));
+    b();
   }
   
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
-    }
+    this.jdField_a_of_type_Bien.a(new Rect(0, 0, paramInt1, paramInt2));
   }
   
-  public void onCreate()
+  public void b()
   {
-    super.onCreate();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onCreate");
-    }
+    this.jdField_a_of_type_Biel.a();
   }
   
-  public void onDestroy()
+  public void c()
   {
-    super.onDestroy();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onDestroy");
-    }
+    this.jdField_a_of_type_Biel.b();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Biel.a(null);
+    this.jdField_a_of_type_Bien.a();
   }
 }
 

@@ -1,43 +1,32 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.avgame.ui.AVGameActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.avgame.app.AVGameAppInterface;
+import java.util.List;
 
-public class nep
-  extends BroadcastReceiver
+public abstract class nep
 {
-  public nep(AVGameActivity paramAVGameActivity) {}
+  protected Context a;
+  protected AVGameAppInterface a;
+  protected int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public nep(Context paramContext, AVGameAppInterface paramAVGameAppInterface)
   {
-    try
-    {
-      QLog.d("AVGameActivity", 1, "mShareResultReceiver onReceive");
-      if (paramIntent == null) {
-        return;
-      }
-      paramContext = paramIntent.getAction();
-      if (paramContext == null) {
-        return;
-      }
-      if (!"com.tencent.mobileqq.app.avgameshare.avgameshareutil".equals(paramContext)) {
-        return;
-      }
-      if (paramIntent.getBooleanExtra("avgame_share_result_success", false))
-      {
-        QLog.i("AVGameActivity", 1, "mShareResultReceiver onReceive success");
-        this.a.e();
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("AVGameActivity", 1, "onReceive error: " + paramContext.getMessage());
-      return;
-    }
-    QLog.i("AVGameActivity", 1, "mShareResultReceiver onReceive fail");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
   }
+  
+  public static nep a(int paramInt, Context paramContext, AVGameAppInterface paramAVGameAppInterface)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new neo(paramContext, paramAVGameAppInterface);
+    }
+    return new neq(paramContext, paramAVGameAppInterface);
+  }
+  
+  public void a(nes[] paramArrayOfnes1, nes[] paramArrayOfnes2, int paramInt1, int paramInt2, List<nbr> paramList) {}
 }
 
 

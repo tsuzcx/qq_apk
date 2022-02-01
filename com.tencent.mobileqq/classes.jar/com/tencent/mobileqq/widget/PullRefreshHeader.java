@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aaul;
+import aayo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -16,11 +16,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgsu;
+import bhsw;
 
 public class PullRefreshHeader
   extends RelativeLayout
-  implements aaul
+  implements aayo
 {
   private int jdField_a_of_type_Int = 0;
   public long a;
@@ -99,7 +99,7 @@ public class PullRefreshHeader
         break;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131718228), bgsu.a(paramLong, true, "yyyy-MM-dd") }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131718363), bhsw.a(paramLong, true, "yyyy-MM-dd") }));
     } while (this.f < 0);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.f);
     return;
@@ -138,14 +138,14 @@ public class PullRefreshHeader
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       return;
-      getResources().getDrawable(2130849565);
-      str = getResources().getString(2131718233);
+      getResources().getDrawable(2130849571);
+      str = getResources().getString(2131718368);
       continue;
-      getResources().getDrawable(2130849563);
-      str = getResources().getString(2131718227);
+      getResources().getDrawable(2130849569);
+      str = getResources().getString(2131718362);
       continue;
-      getResources().getDrawable(2130849564);
-      str = getResources().getString(2131718227);
+      getResources().getDrawable(2130849570);
+      str = getResources().getString(2131718362);
     }
   }
   
@@ -174,11 +174,11 @@ public class PullRefreshHeader
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       return;
-      localDrawable = getResources().getDrawable(2130849565);
+      localDrawable = getResources().getDrawable(2130849571);
       continue;
-      localDrawable = getResources().getDrawable(2130849563);
+      localDrawable = getResources().getDrawable(2130849569);
       continue;
-      localDrawable = getResources().getDrawable(2130849564);
+      localDrawable = getResources().getDrawable(2130849570);
     }
   }
   
@@ -186,7 +186,7 @@ public class PullRefreshHeader
   {
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718229);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718364);
       b(this.d);
       label17:
       d(paramLong);
@@ -214,7 +214,7 @@ public class PullRefreshHeader
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718232);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718367);
     b(this.c);
     d(paramLong);
   }
@@ -227,25 +227,25 @@ public class PullRefreshHeader
     if (this.jdField_a_of_type_Int == 0)
     {
       if (this.g == 0) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849561);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849567);
       }
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718230);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718365);
         b(this.jdField_b_of_type_Int);
         d(paramLong);
         return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839428);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839436);
       }
     }
     if (this.g == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849562);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849568);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718231);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718366);
       break;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839429);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839437);
     }
   }
   
@@ -254,16 +254,16 @@ public class PullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364999));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376313));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376310));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376312));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376318));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365046));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376445));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376442));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376444));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376450));
     if (this.jdField_a_of_type_Int != 0) {
       b();
     }
     if (this.g != 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839430);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839438);
     }
     c(0L);
   }

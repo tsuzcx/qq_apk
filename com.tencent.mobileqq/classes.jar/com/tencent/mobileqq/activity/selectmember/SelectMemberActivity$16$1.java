@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alsu;
+import amem;
 
 public class SelectMemberActivity$16$1
   implements Runnable
 {
-  public SelectMemberActivity$16$1(alsu paramalsu) {}
+  public SelectMemberActivity$16$1(amem paramamem) {}
   
   public void run()
   {

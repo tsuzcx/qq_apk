@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class bakq
-  implements Manager
+  implements QQPermissionCallback
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<Long, ChatMessage> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public bakq(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
   
-  public bakq(QQAppInterface paramQQAppInterface)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
+    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public ChatMessage a(long paramLong)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
-  }
-  
-  public ChatMessage b(long paramLong)
-  {
-    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
+    this.b.g();
   }
 }
 

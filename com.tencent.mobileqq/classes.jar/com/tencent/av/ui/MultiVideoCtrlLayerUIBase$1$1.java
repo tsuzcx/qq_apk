@@ -2,12 +2,12 @@ package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mfh;
+import mgd;
 
 public class MultiVideoCtrlLayerUIBase$1$1
   implements Runnable
 {
-  public MultiVideoCtrlLayerUIBase$1$1(mfh parammfh) {}
+  public MultiVideoCtrlLayerUIBase$1$1(mgd parammgd) {}
   
   public void run()
   {

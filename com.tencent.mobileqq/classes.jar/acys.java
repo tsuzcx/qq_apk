@@ -1,125 +1,36 @@
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ltencent.im.msg.im_msg_body.Elem;>;
-import localpb.richMsg.RichMsg.VideoFile;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype27;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.VideoFile;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
 
 public class acys
-  extends aczg
+  implements ViewPager.PageTransformer
 {
-  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder)
+  @TargetApi(11)
+  public void transformPage(View paramView, float paramFloat)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LightVideoElemDecoder", 2, "lightvideo msg decode failed");
+      if (paramFloat < -1.0F) {
+        paramView.setAlpha(0.0F);
       }
+    }
+    else {
       return;
     }
-    Object localObject = null;
-    Iterator localIterator = paramList.iterator();
-    paramList = (List<im_msg_body.Elem>)localObject;
-    label42:
-    do
+    if (paramFloat <= 1.0F)
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = (im_msg_body.Elem)localIterator.next();
-    } while ((!((im_msg_body.Elem)localObject).common_elem.has()) || (((im_msg_body.Elem)localObject).common_elem.uint32_service_type.get() != 27) || (!((im_msg_body.Elem)localObject).common_elem.bytes_pb_elem.has()));
-    label630:
-    for (;;)
-    {
-      try
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      if (paramFloat > 0.0F) {}
+      for (int i = 1;; i = -1)
       {
-        hummer_commelem.MsgElemInfo_servtype27 localMsgElemInfo_servtype27 = new hummer_commelem.MsgElemInfo_servtype27();
-        localMsgElemInfo_servtype27.mergeFrom(((im_msg_body.Elem)localObject).common_elem.bytes_pb_elem.get().toByteArray());
-        if (!localMsgElemInfo_servtype27.video_file.has()) {
-          break label630;
-        }
-        localObject = (im_msg_body.VideoFile)localMsgElemInfo_servtype27.video_file.get();
-        paramList = (List<im_msg_body.Elem>)localObject;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-      break label42;
-      if (paramList == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("LightVideoElemDecoder", 2, "lightvideo msg decode failed, videoFile is null");
+        paramFloat = (float)(Math.cos((Math.abs(paramFloat) + 1.0F) * 3.141592653589793D) / 2.0D);
+        paramView.setTranslationY(i * (paramFloat + 0.5F) * paramView.getHeight());
         return;
       }
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("elemType:light_video;\n");
-      }
-      RichMsg.VideoFile localVideoFile = new RichMsg.VideoFile();
-      localVideoFile.setHasFlag(true);
-      localVideoFile.bytes_file_name.set(paramList.bytes_file_name.get());
-      localVideoFile.bytes_file_md5.set(paramList.bytes_file_md5.get());
-      localVideoFile.bytes_file_uuid.set(paramList.bytes_file_uuid.get());
-      localVideoFile.uint32_file_format.set(paramList.uint32_file_format.get());
-      localVideoFile.uint32_file_size.set(paramList.uint32_file_size.get());
-      localVideoFile.uint32_file_time.set(paramList.uint32_file_time.get());
-      localVideoFile.uint32_thumb_width.set(paramList.uint32_thumb_width.get());
-      localVideoFile.uint32_thumb_height.set(paramList.uint32_thumb_height.get());
-      localVideoFile.uint32_file_status.set(2008);
-      localVideoFile.uint32_file_progress.set(0);
-      localVideoFile.bytes_thumb_file_md5.set(paramList.bytes_thumb_file_md5.get());
-      localVideoFile.bytes_source.set(paramList.bytes_source.get());
-      localVideoFile.uint32_thumb_file_size.set(paramList.uint32_thumb_file_size.get());
-      localVideoFile.uint32_busi_type.set(paramList.uint32_busi_type.get());
-      localVideoFile.uin32_from_chat_type.set(paramList.uint32_from_chat_type.get());
-      localVideoFile.uin32_to_chat_type.set(paramList.uint32_to_chat_type.get());
-      localVideoFile.bool_support_progressive.set(paramList.bool_support_progressive.get());
-      localVideoFile.uint32_file_width.set(paramList.uint32_file_width.get());
-      localVideoFile.uint32_file_height.set(paramList.uint32_file_height.get());
-      localVideoFile.uint32_sub_busi_type.set(paramList.uint32_sub_busi_type.get());
-      localVideoFile.uint32_video_attr.set(paramList.uint32_video_attr.get());
-      paramList = (MessageForLightVideo)bbzh.a(-2071);
-      paramList.msgtype = -2071;
-      paramList.msgData = localVideoFile.toByteArray();
-      paramList.msg = BaseApplication.getContext().getString(2131691131);
-      paramList.parse();
-      paramList1.add(paramList);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      paramStringBuilder.append("LightVideo.msg: ").append(paramList.toString() + "\n" + paramList.toLogString()).append("\n");
-      return;
     }
-  }
-  
-  public int a()
-  {
-    return 1000;
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
-  {
-    a(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (27 == paramElem.common_elem.uint32_service_type.get());
+    paramView.setAlpha(0.0F);
   }
 }
 

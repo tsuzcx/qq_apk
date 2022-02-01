@@ -1,37 +1,26 @@
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class asgr
+class asgr
+  implements Handler.Callback
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  asgr(asgq paramasgq) {}
   
-  public static asgr a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean handleMessage(Message paramMessage)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramSosoLbsInfo != null)
+    switch (paramMessage.what)
     {
-      localObject1 = localObject2;
-      if (paramSosoLbsInfo.a != null)
-      {
-        localObject1 = new asgr();
-        ((asgr)localObject1).a = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
-        ((asgr)localObject1).b = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
-        ((asgr)localObject1).d = 1;
-        ((asgr)localObject1).c = ((int)paramSosoLbsInfo.a.e);
-      }
     }
-    return localObject1;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "lat:" + this.a + " lon:" + this.b + " alt:" + this.c + " type:" + this.d;
+    do
+    {
+      return true;
+      this.a.b = true;
+      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
+    } while (this.a.b() < 300);
+    asgq.a(this.a).clear();
+    return true;
   }
 }
 

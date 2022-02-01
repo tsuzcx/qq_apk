@@ -1,56 +1,46 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedReq;
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.annotation.IdRes;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class blsy
-  extends QzoneExternalRequest
+public class blsy<M>
+  extends RecyclerView.ViewHolder
 {
-  public JceStruct a;
+  private SparseArray<View> a = new SparseArray();
   
-  public blsy(long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString, int paramInt)
+  public blsy(View paramView)
   {
-    super.setRefer(paramString);
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong1);
-    paramString = new AIONewestFeedReq();
-    paramString.uOpUin = paramLong1;
-    paramString.uHostUin = paramArrayList;
-    paramString.uLastTime = paramLong2;
-    paramString.src = paramInt;
-    this.a = paramString;
+    super(paramView);
   }
   
-  public static AIONewestFeedRsp a(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface, int[] paramArrayOfInt)
+  public blsy(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
+    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  protected Context a()
+  {
+    return this.itemView.getContext();
+  }
+  
+  protected <T extends View> T a(@IdRes int paramInt)
+  {
+    View localView2 = (View)this.a.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-      return paramArrayOfByte;
-      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
-      paramArrayOfByte = paramQQAppInterface;
-    } while (paramQQAppInterface != null);
-    return null;
+      localView1 = this.itemView.findViewById(paramInt);
+      this.a.put(paramInt, localView1);
+    }
+    return localView1;
   }
   
-  public String getCmdString()
-  {
-    return "QzoneNewService.getAIONewestFeed";
-  }
+  public void a(M paramM) {}
   
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getAIONewestFeed";
-  }
+  public void g() {}
 }
 
 

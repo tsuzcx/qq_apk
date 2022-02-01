@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.business.sougou;
 
-import apyt;
-import apyu;
+import aqmt;
+import aqmu;
 import java.lang.ref.WeakReference;
 
 class WordMatchManager$HotWordMatcher$1
@@ -13,9 +13,9 @@ class WordMatchManager$HotWordMatcher$1
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a != null))
     {
-      apyt localapyt = (apyt)this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a.get();
-      if (localapyt != null) {
-        localapyt.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.b, this.jdField_a_of_type_ArrayOfComTencentMobileqqBusinessSougouWordMatchManager$HotWordItem);
+      aqmt localaqmt = (aqmt)this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a.get();
+      if (localaqmt != null) {
+        localaqmt.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.b, this.jdField_a_of_type_ArrayOfComTencentMobileqqBusinessSougouWordMatchManager$HotWordItem);
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.dispatchNextTask();

@@ -1,51 +1,40 @@
-import android.support.annotation.NonNull;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ayrb
+public class ayrb
+  implements URLDrawable.URLDrawableListener
 {
-  private int jdField_a_of_type_Int;
-  private ayrc jdField_a_of_type_Ayrc;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
-  private int c;
+  public ayrb(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  ayrb(int paramInt1, int paramInt2, @NonNull ayrc paramayrc)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Ayrc = paramayrc;
+    QLog.i("NearbyMomentFragment", 1, "onLoadCanceled");
   }
   
-  void a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = this.jdField_a_of_type_Int;
-      int j = this.c;
-      this.c = (j + 1);
-      if (j >= i - 1)
-      {
-        this.c = 0;
-        if (this.jdField_a_of_type_Boolean) {
-          break label72;
-        }
-      }
+    if (NearbyMomentFragment.a(this.a) == 1) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
     }
-    label72:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Ayrc.a(this.jdField_a_of_type_Boolean);
-      return;
-      i = this.b;
-      break;
-    }
+    QLog.i("NearbyMomentFragment", 1, "onLoadFialed");
   }
   
-  void b()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    this.c = 0;
-    this.jdField_a_of_type_Boolean = true;
+    QLog.i("NearbyMomentFragment", 1, "onLoadProgressed");
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 1)
+    {
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+    }
+    QLog.i("NearbyMomentFragment", 1, "onLoadSuccessed");
   }
 }
 

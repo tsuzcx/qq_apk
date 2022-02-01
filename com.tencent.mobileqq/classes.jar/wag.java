@@ -1,47 +1,46 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowUserListItemView;
 
-class wag
-  extends RecyclerView.Adapter<wah>
+public class wag
+  implements wal
 {
-  public List<FeedCloudMeta.StTagInfo> a;
+  public wag(QCircleFollowUserListItemView paramQCircleFollowUserListItemView) {}
   
-  private wag(wae paramwae)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (QCircleFollowUserListItemView.a(this.a) == 1)
+    {
+      vtq.a(QCircleFollowUserListItemView.a(this.a), 11, 29, 4);
+      return;
+    }
+    String str = QCircleFollowUserListItemView.a(this.a);
+    if (QCircleFollowUserListItemView.b(this.a) == 0) {}
+    for (int i = 28;; i = 30)
+    {
+      vtq.a(str, 11, i, 4);
+      return;
+    }
   }
   
-  public wah a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new wah(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560704, paramViewGroup, false));
-  }
+  public void a(int paramInt) {}
   
-  public void a(List<FeedCloudMeta.StTagInfo> paramList)
+  public void b(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(wah paramwah, int paramInt)
-  {
-    paramwah.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramwah, paramInt, getItemId(paramInt));
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    if (paramInt == 0)
+    {
+      if (QCircleFollowUserListItemView.a(this.a) == 1) {
+        vtq.a(QCircleFollowUserListItemView.a(this.a), 11, 29, 3);
+      }
+    }
+    else {
+      return;
+    }
+    String str = QCircleFollowUserListItemView.a(this.a);
+    if (QCircleFollowUserListItemView.b(this.a) == 0) {}
+    for (paramInt = 28;; paramInt = 30)
+    {
+      vtq.a(str, 11, paramInt, 3);
+      return;
+    }
   }
 }
 

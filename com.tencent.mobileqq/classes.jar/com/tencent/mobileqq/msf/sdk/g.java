@@ -101,30 +101,30 @@ public class g
   {
     long l = System.currentTimeMillis();
     int k = a(a(paramTelephonyManager));
-    int j;
+    int i;
     if (k == -1) {
-      j = paramTelephonyManager.getNetworkType();
+      i = paramTelephonyManager.getNetworkType();
     }
     for (;;)
     {
-      return j;
+      return i;
       try
       {
         Method localMethod = TelephonyManager.class.getDeclaredMethod("getNetworkType", new Class[] { Integer.TYPE });
         localMethod.setAccessible(true);
         i = ((Integer)localMethod.invoke(paramTelephonyManager, new Object[] { Integer.valueOf(k) })).intValue();
-        j = i;
+        int j = y.a(i);
+        i = j;
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(a, 2, "getNetworkType:" + i + " ,simID:" + k + " ,cost:" + (System.currentTimeMillis() - l));
-        return i;
+        QLog.d(a, 2, "getNetworkType:" + j + " ,simID:" + k + " ,cost:" + (System.currentTimeMillis() - l));
+        return j;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          int i;
           QLog.e(a, 1, "getNetworkType excep!", localException);
           try
           {

@@ -1,21 +1,16 @@
 class atpc
-  implements atnd
+  implements atqq
 {
-  atpc(atow paramatow) {}
+  atpc(atpa paramatpa) {}
   
-  public void a()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.a.a(false, atul.a(this.a.a.a()), this.a.c(), new atpd(this));
-  }
-  
-  public void b()
-  {
-    this.a.v();
+    atpa.d(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atpc
  * JD-Core Version:    0.7.0.1
  */

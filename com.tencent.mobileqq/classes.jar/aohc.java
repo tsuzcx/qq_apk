@@ -1,33 +1,11 @@
-import java.util.Comparator;
+import com.google.gson.reflect.TypeToken;
+import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
+import java.util.ArrayList;
 
-public class aohc
-  implements Comparator<aohd>
+class aohc
+  extends TypeToken<ArrayList<TKDSearchHistoryBean>>
 {
-  private int a;
-  
-  public aohc(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int a(aohd paramaohd1, aohd paramaohd2)
-  {
-    if (this.a == 2) {
-      if (paramaohd1.b <= paramaohd2.b) {}
-    }
-    while (paramaohd1.a > paramaohd2.a)
-    {
-      return -1;
-      if (paramaohd1.b < paramaohd2.b) {
-        return 1;
-      }
-      return 0;
-    }
-    if (paramaohd1.a < paramaohd2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  aohc(aohb paramaohb) {}
 }
 
 

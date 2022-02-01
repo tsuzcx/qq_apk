@@ -1,9 +1,18 @@
+import com.tencent.mobileqq.activity.BaseChatPie;
+
 class agvh
-  implements bkhy
+  extends awuv
 {
-  agvh(agvg paramagvg) {}
+  agvh(agvf paramagvf) {}
   
-  public void onDismiss() {}
+  public void a() {}
+  
+  public void a(awpk paramawpk)
+  {
+    if ((agvf.a(this.a) != null) && (agvf.a(this.a).equals(paramawpk)) && (agvf.a(this.a) == agvf.a(this.a).a().a())) {
+      agvf.a(this.a).a().a();
+    }
+  }
 }
 
 

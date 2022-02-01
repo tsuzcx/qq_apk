@@ -1,16 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
 
 class bayt
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  bayt(bayi parambayi) {}
+  bayt(bayq parambayq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
-    this.a.mContext.setResult(8001);
+    if (bayq.a(this.a) != null) {
+      bayq.a(this.a).c();
+    }
+    bayq.a(this.a, 8);
   }
 }
 

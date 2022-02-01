@@ -1,41 +1,26 @@
-import android.content.Intent;
+import com.tencent.av.ui.QavPanel;
 import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.qphone.base.util.QLog;
 
 class mko
-  implements mib
+  implements mif
 {
-  mko(mkn parammkn, long paramLong) {}
+  mko(mkn parammkn) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
+    if (this.a.a.a != null)
     {
-      if (mkn.a(this.jdField_a_of_type_Mkn)) {
-        return;
-      }
-      if (this.jdField_a_of_type_Mkn.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
-        this.jdField_a_of_type_Mkn.a("0X80051FE");
-      }
-      for (;;)
-      {
-        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
-        this.jdField_a_of_type_Mkn.a.d = true;
-        this.jdField_a_of_type_Mkn.a.c(this.jdField_a_of_type_Long);
-        return;
-        if (this.jdField_a_of_type_Mkn.a.b) {
-          this.jdField_a_of_type_Mkn.a("0X8004201");
-        } else {
-          this.jdField_a_of_type_Mkn.a("0X8004205");
-        }
-      }
+      this.a.a.a.setViewEnable(2131373495, false);
+      this.a.a.a.setViewEnable(2131363092, false);
+      this.a.a.a.setViewEnable(2131363104, false);
+      this.a.a.a.setViewEnable(2131363103, false);
     }
-    if (this.jdField_a_of_type_Mkn.a.b)
-    {
-      this.jdField_a_of_type_Mkn.a("0X800439E");
-      return;
-    }
-    this.jdField_a_of_type_Mkn.a("0X80043FD");
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772169);
   }
 }
 

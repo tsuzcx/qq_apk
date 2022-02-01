@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
+import aadv;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,18 +13,17 @@ import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.util.Pair;
 import android.view.MotionEvent;
-import anni;
+import anzj;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
-import vft;
-import vgh;
-import vtu;
-import zzr;
+import vhx;
+import vil;
+import vwt;
 
 public class TextCell
   implements Serializable, Cloneable
 {
-  protected static double FADE_LENGTH = vtu.b(10.0F);
+  protected static double FADE_LENGTH = vwt.b(10.0F);
   protected static double FADE_SCALE = 0.0D;
   protected static double FADE_START_INTERVAL = 100.0D;
   public static final int FLAG_EMO = 256;
@@ -124,8 +124,8 @@ public class TextCell
       else
       {
         localPaint = paramPaint;
-        if ((paramPaint instanceof vft)) {
-          localPaint = ((vft)paramPaint).a();
+        if ((paramPaint instanceof vhx)) {
+          localPaint = ((vhx)paramPaint).a();
         }
       }
       int j = this.text.length();
@@ -146,9 +146,9 @@ public class TextCell
   private void a(Canvas paramCanvas, Paint paramPaint, int paramInt1, String paramString, Rect paramRect, int paramInt2, Bitmap paramBitmap, int paramInt3)
   {
     paramPaint.setAlpha(paramInt3);
-    if ((paramPaint instanceof vft))
+    if ((paramPaint instanceof vhx))
     {
-      ((vft)paramPaint).a(paramString, paramInt1, paramRect.left, paramRect.top, paramCanvas, paramBitmap);
+      ((vhx)paramPaint).a(paramString, paramInt1, paramRect.left, paramRect.top, paramCanvas, paramBitmap);
       return;
     }
     paramCanvas.drawText(paramString, paramRect.left, paramInt2, paramPaint);
@@ -195,8 +195,8 @@ public class TextCell
   public void draw(Canvas paramCanvas, Paint paramPaint, int paramInt1, Rect paramRect, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
     Typeface localTypeface = initFontInfo(paramPaint);
-    if (((this.useDefaultFont) || (!this.useHanyiColorFont)) && ((paramPaint instanceof vft))) {}
-    for (Paint localPaint = ((vft)paramPaint).a();; localPaint = paramPaint)
+    if (((this.useDefaultFont) || (!this.useHanyiColorFont)) && ((paramPaint instanceof vhx))) {}
+    for (Paint localPaint = ((vhx)paramPaint).a();; localPaint = paramPaint)
     {
       Shader localShader;
       float f;
@@ -224,13 +224,13 @@ public class TextCell
             paramPaint = this.text.substring(0, this.text.length() - 2);
             label165:
             if (!TextUtils.isEmpty(this.mFontFamilyUrl)) {
-              zzr.b(localPaint, this.mFontFamilyUrl);
+              aadv.b(localPaint, this.mFontFamilyUrl);
             }
           }
           try
           {
-            if ((localPaint instanceof vft)) {
-              ((vft)localPaint).a(paramPaint, paramInt1, paramRect.left, paramRect.top, paramCanvas, paramBitmap);
+            if ((localPaint instanceof vhx)) {
+              ((vhx)localPaint).a(paramPaint, paramInt1, paramRect.left, paramRect.top, paramCanvas, paramBitmap);
             }
             for (;;)
             {
@@ -270,8 +270,8 @@ public class TextCell
   public boolean fadedDraw(Canvas paramCanvas, Paint paramPaint, int paramInt1, Rect paramRect, int paramInt2, int paramInt3, Bitmap paramBitmap, int paramInt4, long paramLong)
   {
     Object localObject = initFontInfo(paramPaint);
-    if (((this.useDefaultFont) || (!this.useHanyiColorFont)) && ((paramPaint instanceof vft))) {}
-    for (Paint localPaint = ((vft)paramPaint).a();; localPaint = paramPaint)
+    if (((this.useDefaultFont) || (!this.useHanyiColorFont)) && ((paramPaint instanceof vhx))) {}
+    for (Paint localPaint = ((vhx)paramPaint).a();; localPaint = paramPaint)
     {
       int j;
       if ((this.type & 0xFF) == 0)
@@ -307,7 +307,7 @@ public class TextCell
           if (paramInt2 > 0) {
             a(paramCanvas, localPaint, paramInt1, paramPaint.substring(0, paramInt2), paramRect, j, paramBitmap, 255);
           }
-          localObject = anni.a(2131713545);
+          localObject = anzj.a(2131713654);
           double d1 = localPaint.measureText((String)localObject + (String)localObject) - localPaint.measureText((String)localObject) * 2.0F;
           for (;;)
           {
@@ -405,8 +405,8 @@ public class TextCell
     else
     {
       localPaint = paramPaint;
-      if ((paramPaint instanceof vft)) {
-        localPaint = ((vft)paramPaint).a();
+      if ((paramPaint instanceof vhx)) {
+        localPaint = ((vhx)paramPaint).a();
       }
     }
     int i = (int)(getDescent(localPaint) - getAscent(localPaint));
@@ -444,7 +444,7 @@ public class TextCell
   
   public ClickableSpan getSpan()
   {
-    return new vgh(this);
+    return new vil(this);
   }
   
   public String getText()
@@ -482,8 +482,8 @@ public class TextCell
     else
     {
       localPaint = paramPaint;
-      if ((paramPaint instanceof vft)) {
-        localPaint = ((vft)paramPaint).a();
+      if ((paramPaint instanceof vhx)) {
+        localPaint = ((vhx)paramPaint).a();
       }
     }
     float f = localPaint.measureText(this.text);
@@ -524,8 +524,8 @@ public class TextCell
       else
       {
         localPaint = paramPaint;
-        if ((paramPaint instanceof vft)) {
-          localPaint = ((vft)paramPaint).a();
+        if ((paramPaint instanceof vhx)) {
+          localPaint = ((vhx)paramPaint).a();
         }
       }
       paramInt1 = localPaint.getTextWidths(this.text, paramInt1, paramInt2, paramArrayOfFloat);
@@ -539,9 +539,9 @@ public class TextCell
   {
     Paint localPaint1;
     int i;
-    if ((!this.useHanyiColorFont) && ((paramPaint instanceof vft)))
+    if ((!this.useHanyiColorFont) && ((paramPaint instanceof vhx)))
     {
-      localPaint1 = ((vft)paramPaint).a();
+      localPaint1 = ((vhx)paramPaint).a();
       paramPaint = localPaint1.getTypeface();
       localPaint1.setTypeface(null);
       i = 1;
@@ -552,8 +552,8 @@ public class TextCell
       if (this.useDefaultFont)
       {
         localPaint2 = localPaint1;
-        if ((localPaint1 instanceof vft)) {
-          localPaint2 = ((vft)localPaint1).a();
+        if ((localPaint1 instanceof vhx)) {
+          localPaint2 = ((vhx)localPaint1).a();
         }
         localObject = paramPaint;
         if (i == 0)

@@ -1,24 +1,17 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.EditText;
 
-public class bhgb
-  extends EmojiUiPlugin
+final class bhgb
+  extends View.AccessibilityDelegate
 {
-  public void OnActivityCreate()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    this.mActivityType = 2;
-    super.OnActivityCreate();
-  }
-  
-  public void OnActivityPause()
-  {
-    super.OnActivityPause();
-    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
-  }
-  
-  public long getPluginBusiness()
-  {
-    return 8L;
+    EditText localEditText = (EditText)paramView;
+    localEditText.setHint("");
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
   }
 }
 

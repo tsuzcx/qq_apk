@@ -1,34 +1,30 @@
-public abstract interface aztr
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+
+class aztr
+  implements Animator.AnimatorListener
 {
-  public abstract int a();
+  aztr(azti paramazti, View paramView) {}
   
-  public abstract void a();
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Azti.l();
+  }
   
-  public abstract void a(float paramFloat);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Azti.l();
+  }
   
-  public abstract void a(int paramInt);
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void a(int paramInt, byte paramByte);
-  
-  public abstract void a(azts paramazts);
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Azti.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+  }
 }
 
 

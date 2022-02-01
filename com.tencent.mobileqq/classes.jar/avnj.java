@@ -1,117 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Deprecated
 public class avnj
+  implements View.OnClickListener
 {
-  HashMap<String, avnl> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  nhe jdField_a_of_type_Nhe;
+  public avnj(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
   
-  public void a(avnl paramavnl, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramavnl);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null)
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      acik.a(anbd.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
+      bnyy.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+    }
+    try
+    {
+      avme.a(118, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo, this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, List<String> paramList, avnk paramavnk)
-  {
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      if (i < j) {
-        try
-        {
-          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
-          i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed: " + (String)paramList.get(i));
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed, exception: " + (String)paramList.get(i));
-            }
-          }
-        }
-      }
-    }
-    paramString1 = (avnl)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-    if (paramString1 != null) {
-      paramString1.call(paramString2, paramList, paramavnk);
-    }
-    while (paramavnk == null) {
-      return;
-    }
-    paramavnk.a();
-  }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    if (!paramString.startsWith("jsbridge://")) {
-      return false;
-    }
-    List localList = Arrays.asList((paramString + "/#").split("/"));
-    if (localList.size() < 6) {
-      return false;
-    }
-    String str1 = (String)localList.get(2);
-    String str2 = (String)localList.get(3);
-    String str3 = (String)localList.get(4);
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        long l = Long.parseLong(str3);
-        localList = localList.subList(5, localList.size() - 1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("JB", 4, "calling " + str1 + "." + str2);
-        }
-        paramString = new avnk(paramWebView, l, paramString);
-        paramWebView = paramWebView.getUrl();
-        if (this.jdField_a_of_type_Nhe == null) {
-          this.jdField_a_of_type_Nhe = nhe.a();
-        }
-        if (this.jdField_a_of_type_Nhe.a(paramWebView, str1 + "." + str2))
-        {
-          a(str1, str2, localList, paramString);
-          return true;
-        }
+        localThrowable.printStackTrace();
       }
-      catch (Exception paramWebView)
-      {
-        return false;
-      }
-      QLog.e("JsBridge", 1, "JS API no auth url = " + nmj.b(paramWebView, new String[0]) + " objectName = " + str1 + " methodName = " + str2);
-      paramString.b();
     }
   }
 }

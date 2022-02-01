@@ -1,23 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-class oqx
-  extends AnimatorListenerAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class oqx
+  implements ViewBase.OnClickListener
 {
-  oqx(oqv paramoqv, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
+  oqx(otp paramotp, otd paramotd, Container paramContainer) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public final void onClick(ViewBase paramViewBase)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(4);
-    oqv.a(this.jdField_a_of_type_Oqv).a();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(0);
+    if (tpk.a(this.jdField_a_of_type_Otp))
+    {
+      paramViewBase = this.jdField_a_of_type_Otd.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      tpk.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otp, 2);
+      return;
+    }
+    this.jdField_a_of_type_Otd.b(this.jdField_a_of_type_Otp);
   }
 }
 

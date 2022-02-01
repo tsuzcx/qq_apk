@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import arrp;
-import arrr;
+import ashd;
+import ashf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class FavroamingManager$2$1
   implements Runnable
 {
-  public FavroamingManager$2$1(arrr paramarrr, List paramList) {}
+  public FavroamingManager$2$1(ashf paramashf, List paramList) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FavEmoRoamingObserver", 2, "start upload and download fav");
     }
-    this.jdField_a_of_type_Arrr.a.b(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Arrr.a.d();
+    this.jdField_a_of_type_Ashf.a.b(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Ashf.a.d();
   }
 }
 

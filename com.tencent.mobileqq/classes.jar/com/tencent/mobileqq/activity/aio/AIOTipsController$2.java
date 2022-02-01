@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aful;
-import afum;
-import aimh;
+import aged;
+import agee;
+import aiwf;
 
 public class AIOTipsController$2
   implements Runnable
 {
-  public AIOTipsController$2(aful paramaful, aimh paramaimh) {}
+  public AIOTipsController$2(aged paramaged, aiwf paramaiwf) {}
   
   public void run()
   {

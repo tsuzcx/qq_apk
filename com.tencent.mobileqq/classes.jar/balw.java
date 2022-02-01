@@ -1,54 +1,116 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
-class balw
-  implements baly
+public class balw
+  implements anwh, Manager
 {
-  balw(balv parambalv) {}
+  private QQAppInterface a;
   
-  public void a(int paramInt)
+  public balw(QQAppInterface paramQQAppInterface)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    this.a = paramQQAppInterface;
+    String str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.SilkCfg.name(), "null");
+    if (!"null".equalsIgnoreCase(str))
+    {
+      bhrp.a(paramQQAppInterface, str);
+      bhrp.a(paramQQAppInterface, true);
+      str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.StreamCfg.name(), "null");
+      if ("null".equalsIgnoreCase(str)) {
+        break label161;
+      }
+      bame.a(paramQQAppInterface, str);
+      bame.a(paramQQAppInterface, true);
     }
-    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
+    for (;;)
     {
+      paramQQAppInterface = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (paramQQAppInterface.length > 13)
+      {
+        boolean bool = "1".equals(paramQQAppInterface[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, bool);
+        if (paramQQAppInterface.length > 14)
+        {
+          bool = "1".equals(paramQQAppInterface[13]);
+          bdkv.a(BaseApplicationImpl.sApplication, bool);
+        }
+      }
+      DeviceProfileManager.a(this);
       return;
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
-      if (!localPtvTemplateInfo.advertisement) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
-      }
-    } while (balv.a(this.a) == null);
-    balv.a(this.a).a(localPtvTemplateInfo);
-    return;
-    this.a.a(paramInt);
-    banm.jdField_b_of_type_JavaLangString = balv.a(this.a).a + "";
-    banm.c = localPtvTemplateInfo.id;
-    banm.a = localPtvTemplateInfo.hasGesture();
-    boolean bool;
-    if (localPtvTemplateInfo.kind == 3)
-    {
-      bool = true;
-      banm.jdField_b_of_type_Boolean = bool;
-      if (bcig.a().a != 1) {
-        break label228;
-      }
-    }
-    label228:
-    for (paramInt = i;; paramInt = 2)
-    {
-      banm.f(paramInt);
-      return;
-      bool = false;
+      bhrp.a(paramQQAppInterface, false);
       break;
+      label161:
+      bame.a(paramQQAppInterface, false);
     }
+  }
+  
+  public void a(String paramString)
+  {
+    QQAppInterface localQQAppInterface = this.a;
+    bevn.a();
+    if (localQQAppInterface != null)
+    {
+      bame.b(localQQAppInterface, paramString);
+      bame.b(localQQAppInterface, true);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = this.a;
+    if ((localObject != null) && (paramBoolean))
+    {
+      bhrp.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.SilkCfg.name(), ""));
+      bhrp.a((QQAppInterface)localObject, true);
+      bame.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.StreamCfg.name(), ""));
+      bame.a((QQAppInterface)localObject, true);
+      localObject = DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (localObject.length > 13)
+      {
+        paramBoolean = "1".equals(localObject[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, paramBoolean);
+        if (localObject.length > 14)
+        {
+          paramBoolean = "1".equals(localObject[13]);
+          bdkv.a(BaseApplicationImpl.sApplication, paramBoolean);
+        }
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      baly.a(localQQAppInterface, paramString);
+      baly.a(localQQAppInterface, true);
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    bevn.a();
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      bamn.a(localQQAppInterface, paramString);
+      bamn.a(localQQAppInterface, true);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    bamn.a();
+    DeviceProfileManager.b(this);
+    bhrp.a();
+    bame.a();
   }
 }
 

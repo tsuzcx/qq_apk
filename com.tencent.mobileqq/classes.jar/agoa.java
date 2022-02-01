@@ -1,23 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
-
-public class agoa
-  implements ValueAnimator.AnimatorUpdateListener
+class agoa
 {
-  public agoa(IntimateScoreCardView paramIntimateScoreCardView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f < 0.5F)
-    {
-      IntimateScoreCardView.a(this.a).setAlpha(1.0F - f * 2.0F);
-      return;
-    }
-    IntimateScoreCardView.a(this.a).setAlpha(f * 2.0F - 1.0F);
-  }
+  private static final agnx a = new agnx(null);
 }
 
 

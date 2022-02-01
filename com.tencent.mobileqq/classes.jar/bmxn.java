@@ -1,18 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public final class bmxn
-  implements Parcelable.Creator<WadlResult>
+final class bmxn
+  implements FilenameFilter
 {
-  public WadlResult a(Parcel paramParcel)
+  public boolean accept(File paramFile, String paramString)
   {
-    return new WadlResult(paramParcel);
-  }
-  
-  public WadlResult[] a(int paramInt)
-  {
-    return new WadlResult[paramInt];
+    return !paramString.endsWith("OldVersion.version");
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import afmp;
-import afna;
-import anmw;
-import bglj;
+import afvt;
+import afwe;
+import anyw;
+import bhlk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -12,16 +12,16 @@ import mqq.os.MqqHandler;
 public class TroopMemberListActivity$40$2
   implements Runnable
 {
-  public TroopMemberListActivity$40$2(afmp paramafmp, String paramString) {}
+  public TroopMemberListActivity$40$2(afvt paramafvt, String paramString) {}
   
   public void run()
   {
-    Object localObject = (anmw)this.jdField_a_of_type_Afmp.a.app.getManager(51);
-    TroopMemberInfo localTroopMemberInfo = bglj.a().a(this.jdField_a_of_type_Afmp.a.app, this.jdField_a_of_type_Afmp.a.b, this.jdField_a_of_type_JavaLangString);
+    Object localObject = (anyw)this.jdField_a_of_type_Afvt.a.app.getManager(51);
+    TroopMemberInfo localTroopMemberInfo = bhlk.a().a(this.jdField_a_of_type_Afvt.a.app, this.jdField_a_of_type_Afvt.a.b, this.jdField_a_of_type_JavaLangString);
     if ((localTroopMemberInfo != null) && (localObject != null))
     {
-      localObject = this.jdField_a_of_type_Afmp.a.a(localTroopMemberInfo, (anmw)localObject);
-      ThreadManager.getUIHandler().post(new TroopMemberListActivity.40.2.1(this, (afna)localObject));
+      localObject = this.jdField_a_of_type_Afvt.a.a(localTroopMemberInfo, (anyw)localObject);
+      ThreadManager.getUIHandler().post(new TroopMemberListActivity.40.2.1(this, (afwe)localObject));
     }
   }
 }

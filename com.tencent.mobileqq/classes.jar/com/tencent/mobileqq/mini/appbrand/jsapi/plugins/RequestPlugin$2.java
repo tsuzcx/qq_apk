@@ -14,7 +14,6 @@ import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +65,7 @@ class RequestPlugin$2
       l2 = SystemClock.elapsedRealtime() - ((RequestTask.Request)localObject2).mRequestCreatedMillis;
       localObject3 = new StringBuilder().append("[request httpCallBack][minigame timecost=").append(l2).append("ms],[code=").append(paramInt).append("][url=").append(this.val$request.mUrl).append("][callbackId=").append(this.val$callbackId).append("][params=");
       if ((this.val$jsonParams == null) || (this.val$jsonParams.length() <= 1024)) {
-        break label541;
+        break label537;
       }
       localObject1 = this.val$jsonParams.substring(0, 1024);
     }
@@ -85,7 +84,7 @@ class RequestPlugin$2
           MiniReportManager.reportEventType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, 628, null, null, null, paramInt, (String)localObject1, l2, (String)localObject2);
           localObject1 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
           if (paramArrayOfByte == null) {
-            break label558;
+            break label554;
           }
           l1 = paramArrayOfByte.length;
           label297:
@@ -93,7 +92,7 @@ class RequestPlugin$2
           localObject1 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
           localObject2 = this.val$url;
           if (paramArrayOfByte == null) {
-            break label564;
+            break label560;
           }
           l1 = paramArrayOfByte.length;
           label340:
@@ -121,12 +120,12 @@ class RequestPlugin$2
           if (paramArrayOfByte != null)
           {
             if (!"arraybuffer".equals(this.val$request.mResponseType)) {
-              break label686;
+              break label682;
             }
             if (!this.this$0.isGameRuntime) {
-              break label570;
+              break label566;
             }
-            NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_NATIVE, "data", (JSONObject)localObject2, (ITNativeBufferPool)((BaseJsPluginEngine)localObject3).getNativeBufferPool());
+            NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_NATIVE, "data", (JSONObject)localObject2, this.val$jsRuntime);
           }
         }
         for (;;)
@@ -134,18 +133,18 @@ class RequestPlugin$2
           ((JSONObject)localObject1).put("res", localObject2);
           this.val$jsRuntime.evaluateSubcribeJS("onRequestTaskStateChange", ((JSONObject)localObject2).toString(), 0);
           return;
-          label541:
+          label537:
           localObject1 = this.val$jsonParams;
           break;
           localObject1 = "0";
           break label238;
-          label558:
+          label554:
           l1 = 0L;
           break label297;
-          label564:
+          label560:
           l1 = 0L;
           break label340;
-          label570:
+          label566:
           NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject2, null);
           continue;
           try
@@ -184,7 +183,7 @@ class RequestPlugin$2
           }
           catch (Throwable paramMap)
           {
-            break label675;
+            break label671;
           }
         }
       }

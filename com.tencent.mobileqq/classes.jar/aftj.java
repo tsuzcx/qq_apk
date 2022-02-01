@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aftj
-  implements aftz
+  implements View.OnClickListener
 {
-  public aftj(ReminderListFragment.5.1 param1) {}
+  public aftj(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ReminderListFragment.a(this.a.a.a, anni.a(2131712156));
+    TroopInfoActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

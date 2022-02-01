@@ -1,28 +1,104 @@
-import com.tencent.TMG.utils.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bdvr
-  implements bdvw
+public class bdvr
+  extends arac<bdvq>
 {
-  private bdvr(bdvp parambdvp) {}
-  
-  public void onResp(bdwt parambdwt)
+  public static bdvq a()
   {
-    synchronized (bdvp.a(this.a))
+    return (bdvq)aran.a().a(612);
+  }
+  
+  public static void a()
+  {
+    aran.a().a(new int[] { 612 });
+  }
+  
+  @NonNull
+  public bdvq a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[migrateOldOrDefaultContent]");
+    }
+    return new bdvq();
+  }
+  
+  @Nullable
+  public bdvq a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onParsed]");
+    }
+    bdvq localbdvq = new bdvq();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      bdvp.a(this.a, parambdwt.jdField_a_of_type_Int);
-      bdvp.b(this.a, parambdwt.b);
-      this.a.jdField_a_of_type_JavaLangString = parambdwt.jdField_a_of_type_JavaLangString;
-      this.a.jdField_a_of_type_Int = parambdwt.c;
-      bdvp.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpInterfaceForTVKImp", 0, "onResp, result = " + bdvp.a(this.a) + " , errorCode = " + bdvp.b(this.a) + " , mErrDesc = " + this.a.jdField_a_of_type_JavaLangString + " , mHttpCode = " + this.a.jdField_a_of_type_Int);
-      }
-      bdvp.a(this.a).notify();
-      return;
+      paramArrayOfaraj = paramArrayOfaraj[0];
+      if ((paramArrayOfaraj == null) || (TextUtils.isEmpty(paramArrayOfaraj.a))) {}
+    }
+    try
+    {
+      localbdvq.a = new JSONObject(paramArrayOfaraj.a);
+      return localbdvq;
+    }
+    catch (JSONException paramArrayOfaraj)
+    {
+      QLog.e("StudyRoomConfProcessor", 4, paramArrayOfaraj, new Object[0]);
+    }
+    return localbdvq;
+  }
+  
+  public void a(bdvq parambdvq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onUpdate] newConf:" + parambdvq);
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public Class<bdvq> clazz()
+  {
+    return bdvq.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[get migrateOldVersion]");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + a());
+    }
+  }
+  
+  public int type()
+  {
+    return 612;
+  }
 }
 
 

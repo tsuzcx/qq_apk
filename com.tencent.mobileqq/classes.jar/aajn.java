@@ -1,23 +1,15 @@
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class aajn
-  extends anry
+public class aajn
 {
-  WeakReference<aajp> a;
-  
-  public aajn(aajp paramaajp)
-  {
-    this.a = new WeakReference(paramaajp);
-  }
-  
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
-  {
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    aajp localaajp = (aajp)this.a.get();
-    if (localaajp != null) {
-      localaajp.a(paramBoolean, paramString, false);
-    }
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
 }
 
 

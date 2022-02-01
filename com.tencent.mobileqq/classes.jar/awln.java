@@ -1,19 +1,13 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public abstract class awln
+final class awln
+  implements Comparator<MessageRecord>
 {
-  public static int a(String paramString)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("ak:"))) {
-      return 1;
-    }
-    return 0;
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
-  
-  public abstract void a(String paramString1, String paramString2, Object paramObject);
-  
-  protected abstract boolean a(Bundle paramBundle);
 }
 
 

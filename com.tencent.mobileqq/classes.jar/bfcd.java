@@ -1,21 +1,22 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
 
-class bfcd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bfcd
+  extends bfag
 {
-  bfcd(bfcc parambfcc, String paramString) {}
-  
-  public void onGlobalLayout()
+  protected void a(bevx parambevx)
   {
-    bfcc.a(this.jdField_a_of_type_Bfcc).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    bfcc.a(this.jdField_a_of_type_Bfcc, this.jdField_a_of_type_JavaLangString);
+    parambevx.a = "LongConn.SharePic2Wechat";
+  }
+  
+  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
+  {
+    paramTryUpImgReq.uint32_bu_type.set(96);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfcd
  * JD-Core Version:    0.7.0.1
  */

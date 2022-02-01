@@ -1,53 +1,44 @@
-import android.content.SharedPreferences;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.memory.QLogReporter.1;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoet
+  extends BroadcastReceiver
 {
-  private static volatile aoet a;
-  public static final SimpleDateFormat a;
+  public aoet(QQAppInterface paramQQAppInterface) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
-  }
-  
-  public static aoet a()
-  {
-    if (jdField_a_of_type_Aoet == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aoet == null) {
-        jdField_a_of_type_Aoet = new aoet();
-      }
-      return jdField_a_of_type_Aoet;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (new GregorianCalendar().get(11) < 2) {}
-    SharedPreferences localSharedPreferences;
-    long l1;
-    Calendar localCalendar;
-    String str;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
     do
     {
-      return;
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
-      l1 = System.currentTimeMillis();
-      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
-      localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(l2);
-      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
-      localCalendar.setTimeInMillis(l1);
-    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
-    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
+      do
+      {
+        do
+        {
+          return;
+          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
+          {
+            avsj.a();
+            ayus.a();
+            aziu.c();
+            return;
+          }
+        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
+        paramContext = paramIntent.getStringExtra("kickedUin");
+      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
+      paramContext = this.a.getKickIntent();
+    } while (paramContext == null);
+    paramContext.putExtra("isSameDevice", false);
+    paramIntent = paramIntent.getStringExtra("msg");
+    if (!TextUtils.isEmpty(paramIntent)) {
+      paramContext.putExtra("msg", paramIntent);
+    }
+    this.a.setKickIntent(paramContext);
   }
 }
 

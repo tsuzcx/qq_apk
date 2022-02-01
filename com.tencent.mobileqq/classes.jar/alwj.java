@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
 public class alwj
-  implements DialogInterface.OnClickListener
+  implements bcwn
 {
-  public alwj(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  alwj(alwg paramalwg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  {
+    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
+    if (!paramBoolean) {
+      alug.a("", "0X80075BB", "", "", "", "");
+    }
+  }
 }
 
 

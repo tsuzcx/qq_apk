@@ -1,46 +1,77 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import MQQ.GetRoamToastRsp;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aefn
-  implements View.OnClickListener
+  extends aogx
 {
-  public aefn(ForwardRecentActivity paramForwardRecentActivity, ResultRecord paramResultRecord) {}
+  public aefn(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt)
   {
-    if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity)) {
-      if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, anhk.A, 6003))
-      {
-        ForwardRecentActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity).a(false);
-        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, anhk.A, 6003);
-      }
+    ChatSettingActivity.d(this.a);
+  }
+  
+  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp)
+  {
+    if (this.a.a == null) {
+      return;
     }
+    Object localObject1;
+    Object localObject2;
+    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((aogu)this.a.app.a(13)).a(paramGetRoamToastRsp)))
+    {
+      localObject1 = paramGetRoamToastRsp.sToast;
+      int i = ((String)localObject1).indexOf('#');
+      if (i < 0) {
+        break label306;
+      }
+      int j = ((String)localObject1).indexOf('#', i + 1);
+      if (j < 0) {
+        break label306;
+      }
+      localObject2 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, 0, i);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, i + 1, j);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, j + 1, ((String)localObject1).length());
+      ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(-12541697), i, j - 1, 33);
+      localObject1 = localObject2;
+    }
+    label298:
+    label306:
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.d.setText((CharSequence)localObject1);
+      this.a.a.setTag(paramGetRoamToastRsp);
+      this.a.a.setVisibility(0);
+      bdll.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
       return;
-      if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord))
+      if (QLog.isColorLevel())
       {
-        ForwardRecentActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity).a(true);
-        continue;
-        Bundle localBundle = new Bundle();
-        localBundle.putString("uin", anhk.A);
-        localBundle.putInt("uintype", -1);
-        localBundle.putString("caller_name", this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.c);
-        this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.a(aufw.k.intValue(), localBundle);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.app, "CliOper", "", "", "friendchoose", "0X8009D90", ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity), 0, "", "", "", "");
+        localObject1 = ChatSettingActivity.b(this.a);
+        localObject2 = new StringBuilder().append("onGetRoamToast: ").append(paramBoolean).append(",");
+        if (paramGetRoamToastRsp != null) {
+          break label298;
+        }
+      }
+      for (paramGetRoamToastRsp = "null";; paramGetRoamToastRsp = paramGetRoamToastRsp.sToast)
+      {
+        QLog.d((String)localObject1, 2, paramGetRoamToastRsp);
+        this.a.a.setVisibility(8);
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefn
  * JD-Core Version:    0.7.0.1
  */

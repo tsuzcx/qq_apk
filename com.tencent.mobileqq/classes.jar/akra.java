@@ -1,82 +1,163 @@
-import Wallet.GetSkinListRsp;
-import Wallet.SetSelectedSkinRsp;
-import Wallet.SkinInfo;
-import android.os.Bundle;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.sharpP.SharpPUtils;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.ListView;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import mqq.observer.BusinessObserver;
 
-class akra
-  implements BusinessObserver
+public class akra
+  extends BaseAdapter
 {
-  akra(akqz paramakqz) {}
+  private final String jdField_a_of_type_JavaLangString = "VerticalPictureAdapter";
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public akra(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, Context paramContext)
   {
-    int i = 0;
-    QLog.d("HbSkinLogic", 2, "mObserver type = " + paramInt + " isSuccess = " + paramBoolean + " bundle = " + paramBundle);
-    akqz.a(this.a, false);
-    if (paramBundle != null) {
-      switch (paramInt)
-      {
-      }
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.a.setRecyclerListener(new akrb(this));
+  }
+  
+  private void a(akrc paramakrc, int paramInt)
+  {
+    akqz localakqz = (akqz)getItem(paramInt);
+    if (localakqz == null)
+    {
+      QZLog.e("VerticalPictureAdapter", "photoInfo == null");
+      return;
     }
-    label241:
-    do
+    AbsListView.LayoutParams localLayoutParams2 = (AbsListView.LayoutParams)paramakrc.a.getLayoutParams();
+    AbsListView.LayoutParams localLayoutParams1 = localLayoutParams2;
+    if (localLayoutParams2 == null) {
+      localLayoutParams1 = new AbsListView.LayoutParams(-1, -2);
+    }
+    QZLog.d("VerticalPictureAdapter", 1, new Object[] { "photoInfo.heightWeightProportion:", Float.valueOf(localakqz.jdField_a_of_type_Float) });
+    if (localakqz.jdField_a_of_type_Float != 0.0F)
+    {
+      float f = bhtq.a();
+      localLayoutParams1.height = ((int)(localakqz.jdField_a_of_type_Float * f));
+    }
+    paramakrc.a.setLayoutParams(localLayoutParams1);
+    paramakrc.a.setImageDrawable(null);
+  }
+  
+  private void b(akrc paramakrc, int paramInt)
+  {
+    Object localObject = (akqz)getItem(paramInt);
+    if ((localObject == null) || (TextUtils.isEmpty(((akqz)localObject).jdField_a_of_type_JavaLangString))) {
+      QZLog.e("VerticalPictureAdapter", "loadImageData: bigUrl is empty");
+    }
+    for (;;)
     {
       return;
-      List localList = akqz.a(this.a).getList();
-      localList.clear();
-      akqz.a(this.a, localList);
-      GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
-      QLog.d("HbSkinLogic", 2, "GetSkinListRsp = " + localGetSkinListRsp);
-      if (localGetSkinListRsp != null)
+      File localFile = new File(((akqz)localObject).jdField_a_of_type_JavaLangString);
+      if (localFile.exists())
       {
-        akqz localakqz = this.a;
-        if (localGetSkinListRsp.is_hide_list) {}
-        for (paramInt = 8;; paramInt = 0)
+        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = bhtq.a();
+        float f = bhtq.a();
+        localURLDrawableOptions.mRequestHeight = ((int)(((akqz)localObject).jdField_a_of_type_Float * f));
+        localURLDrawableOptions.mLoadingDrawable = beyq.a;
+        try
         {
-          localakqz.b(paramInt);
-          if (!localGetSkinListRsp.is_hide_list) {
-            break label241;
+          localObject = localFile.toURI().toURL();
+          if (localObject != null)
+          {
+            localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+            if (localObject != null) {
+              switch (((URLDrawable)localObject).getStatus())
+              {
+              default: 
+                ((URLDrawable)localObject).startDownload();
+              }
+            }
+            if (localObject != null)
+            {
+              paramakrc.a.setImageDrawable((Drawable)localObject);
+              return;
+            }
           }
-          if (akqz.a(this.a) != -1) {
-            break;
-          }
-          akqw.c = akqz.a(this.a, -1);
-          return;
         }
-        akqz.b(this.a, true);
-        akqw.c = akqz.a(this.a, akqz.a(this.a));
-        return;
-        akqw.jdField_a_of_type_Boolean = paramBundle.getBoolean("isCache");
-        akqz.a(this.a, localGetSkinListRsp.selected_id);
-        QLog.d("HbSkinLogic", 2, "rsp size = " + localGetSkinListRsp.skin_list.size() + " serverSkinID = " + akqz.b(this.a));
-        akqw.c = localGetSkinListRsp.selected_id;
-        QLog.d("HbSkinLogic", 2, "select restor: " + akqw.c);
-        akqz.a(this.a).clear();
-        paramInt = i;
-        while (paramInt < localGetSkinListRsp.skin_list.size())
+        catch (MalformedURLException localMalformedURLException)
         {
-          paramBundle = new akqw((SkinInfo)localGetSkinListRsp.skin_list.get(paramInt));
-          paramBundle.jdField_a_of_type_Int = (paramInt + 1);
-          akqz.a(this.a).add(paramBundle);
-          paramInt += 1;
-        }
-        if (!TextUtils.isEmpty(localGetSkinListRsp.more_skin_url)) {
-          localList.add(akqy.c(localGetSkinListRsp.more_skin_url));
+          for (;;)
+          {
+            localMalformedURLException.printStackTrace();
+            localURLDrawable = null;
+          }
         }
       }
-      akqw.a(localList);
-      akqz.a(this.a).notifyDataSetChanged();
-      akqz.b(this.a, akqz.a(this.a));
-      return;
-      paramBundle = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    } while (!QLog.isColorLevel());
-    QLog.d("HbSkinLogic", 2, "SetSelectedSkinRsp = " + paramBundle);
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = bhtq.a();
+    localURLDrawableOptions.mRequestHeight = ((int)(bhtq.a() * localURLDrawable.jdField_a_of_type_Float));
+    localURLDrawableOptions.mLoadingDrawable = beyq.a;
+    URLDrawable localURLDrawable = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(localURLDrawable.jdField_a_of_type_JavaLangString), localURLDrawableOptions);
+    if (localURLDrawable == null) {
+      QLog.w("PEAK", 2, "drawable == null");
+    }
+    paramakrc.a.setImageDrawable(localURLDrawable);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VerticalPictureAdapter", 2, "wywy getCount =" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size());
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size()) && (paramInt >= 0)) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    akrc localakrc = new akrc(this, null);
+    if (paramView == null)
+    {
+      localakrc.a = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
+      localakrc.a.setTag(localakrc);
+    }
+    for (paramView = localakrc;; paramView = (akrc)paramView.getTag())
+    {
+      a(paramView, paramInt);
+      b(paramView, paramInt);
+      paramView = paramView.a;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

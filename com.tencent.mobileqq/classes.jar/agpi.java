@@ -1,52 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
 
 public class agpi
-  extends bdsh
 {
-  public static final String a(int paramInt)
-  {
-    return ancb.d + paramInt + "/panelGif.gif";
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c;
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public agpi(DoodleMsgLayout paramDoodleMsgLayout)
   {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
-    }
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
-    {
-      paramDownloadParams = (Integer)paramDownloadParams.tag;
-      paramOutputStream = new File(a(paramDownloadParams.intValue()));
-      if (paramOutputStream.exists())
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
-      paramOutputStream.getParentFile().mkdirs();
-      if ((BaseApplicationImpl.sApplication != null) && (!bgnt.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-      }
-      paramDownloadParams = new bhhf("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
-      paramDownloadParams.b = 1;
-      paramDownloadParams.p = false;
-      if (bhhh.a(paramDownloadParams, null) == 0)
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
-    }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
-    }
-    return null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

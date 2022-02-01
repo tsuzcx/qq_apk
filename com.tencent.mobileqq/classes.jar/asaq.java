@@ -1,18 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class asaq
-  implements ValueAnimator.AnimatorUpdateListener
+class asaq
+  implements View.OnClickListener
 {
-  public asaq(EmotionSearchPanel paramEmotionSearchPanel, int paramInt) {}
+  asaq(asap paramasap) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel.b - EmotionSearchPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel) * f);
-    EmotionSearchPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel, i);
-    EmotionSearchPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel, (int)((1.0F - f) * this.jdField_a_of_type_Int));
+    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
+    {
+      HotChatFlashPicActivity.a(this.a.a).dismiss();
+      HotChatFlashPicActivity.a(this.a.a, null);
+      this.a.a.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

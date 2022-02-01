@@ -1,41 +1,27 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 public class albn
-  extends albv
+  implements View.OnClickListener
 {
-  public albn()
-  {
-    this.jdField_a_of_type_Int = 2131562783;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public albn(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
   
-  private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext)
+  public void onClick(View paramView)
   {
-    albw localalbw = null;
-    if ((paramView.getTag() instanceof albw)) {
-      localalbw = (albw)paramView.getTag();
-    }
-    if ((localalbw == null) || (localalbw.a == null) || (paramRecentBaseData == null)) {
+    if (bmrq.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+      if (!TextUtils.isEmpty(str)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(str);
+      }
     }
-    bbdx.a(paramContext, localalbw.a, paramRecentBaseData.getRecentUserUin());
-  }
-  
-  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
-  {
-    return super.a(paramInt, paramObject, paramalby, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramaled);
-  }
-  
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
-  {
-    super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
-    a(paramView, paramRecentBaseData, paramContext);
   }
 }
 

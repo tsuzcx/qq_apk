@@ -1,16 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
-class rrh
-  implements View.OnClickListener
+public class rrh
+  implements TopGestureLayout.OnGestureListener
 {
-  rrh(rrg paramrrg) {}
+  public rrh(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void flingLToR()
   {
-    rrg.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
+      return;
+    }
+    VideoFeedsPlayActivity.a(this.a, true);
+    this.a.d();
+  }
+  
+  public void flingRToL()
+  {
+    if (VideoFeedsPlayActivity.a(this.a) != null) {
+      VideoFeedsPlayActivity.a(this.a).b();
+    }
   }
 }
 

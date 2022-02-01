@@ -1,21 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahzt
-  implements DialogInterface.OnClickListener
+public class ahzt
+  implements ahzu
 {
-  ahzt(ahzs paramahzs, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    paramDialogInterface = afur.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Ahzs.a.a.a);
-    paramDialogInterface.putExtra("uintype", 3000);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    int i = 1;
+    if (ahml.a(paramMessageRecord)) {
+      if (paramMessageRecord.istroop != 0) {
+        break label41;
+      }
+    }
+    for (;;)
+    {
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800B154", "0X800B154", i, 0, "", "", "", "");
+      return;
+      label41:
+      if (paramMessageRecord.istroop == 1) {
+        i = 2;
+      } else if (ChatActivityUtils.a(paramMessageRecord.istroop)) {
+        i = 3;
+      } else {
+        i = 4;
+      }
+    }
   }
 }
 

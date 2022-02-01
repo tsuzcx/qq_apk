@@ -1,23 +1,23 @@
 package dov.com.qq.im.story.mode;
 
-import boza;
-import boze;
+import bqav;
+import bqaz;
 import java.util.Set;
 
 public class StoryEffectTextMode$13$2
   implements Runnable
 {
-  public StoryEffectTextMode$13$2(boze paramboze, int paramInt) {}
+  public StoryEffectTextMode$13$2(bqaz parambqaz, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boze.jdField_a_of_type_Boza.c) {}
+    if (this.jdField_a_of_type_Bqaz.jdField_a_of_type_Bqav.c) {}
     do
     {
       return;
-      boza.a(this.jdField_a_of_type_Boze.jdField_a_of_type_Boza).remove(this.jdField_a_of_type_Boze.jdField_a_of_type_JavaLangString);
-    } while (!this.jdField_a_of_type_Boze.jdField_a_of_type_Boolean);
-    boza.a(this.jdField_a_of_type_Boze.jdField_a_of_type_Boza, this.jdField_a_of_type_Boze.jdField_a_of_type_Woa, this.jdField_a_of_type_Int);
+      bqav.a(this.jdField_a_of_type_Bqaz.jdField_a_of_type_Bqav).remove(this.jdField_a_of_type_Bqaz.jdField_a_of_type_JavaLangString);
+    } while (!this.jdField_a_of_type_Bqaz.jdField_a_of_type_Boolean);
+    bqav.a(this.jdField_a_of_type_Bqaz.jdField_a_of_type_Bqav, this.jdField_a_of_type_Bqaz.jdField_a_of_type_Wrv, this.jdField_a_of_type_Int);
   }
 }
 

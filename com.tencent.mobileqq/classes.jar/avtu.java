@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
+import com.tencent.qphone.base.util.QLog;
 
-public final class avtu
-  implements Parcelable.Creator<MusicInfo>
+public class avtu
+  implements DialogInterface.OnClickListener
 {
-  public MusicInfo a(Parcel paramParcel)
-  {
-    return new MusicInfo(paramParcel, null);
-  }
+  public avtu(HotPicPageView.4.2 param2) {}
   
-  public MusicInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MusicInfo[paramInt];
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    if (this.a.a.jdField_a_of_type_Avub.a == 1) {
+      this.a.a.jdField_a_of_type_Avub.a(0);
+    }
+    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 

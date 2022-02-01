@@ -1,25 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class boum
-  extends bomu
+class boum
+  implements View.OnClickListener
 {
-  public boum(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
+  boum(bouf parambouf) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
-    }
-    this.a.g();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
-    }
-    this.a.a(false);
+    bouf.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

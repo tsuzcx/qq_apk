@@ -1,15 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
-import qzb;
+import qrh;
 
 class RIJRedPacketManager$1
   implements Runnable
 {
-  RIJRedPacketManager$1(RIJRedPacketManager paramRIJRedPacketManager, qzb paramqzb) {}
+  RIJRedPacketManager$1(RIJRedPacketManager paramRIJRedPacketManager, qrh paramqrh, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.a(false);
+    qrh localqrh = this.jdField_a_of_type_Qrh;
+    if ((this.jdField_a_of_type_Boolean) && (this.this$0.b())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localqrh.a(bool);
+      return;
+    }
   }
 }
 

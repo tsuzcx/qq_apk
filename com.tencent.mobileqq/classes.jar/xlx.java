@@ -1,26 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class xlx
-  extends QQUIEventReceiver<xlv, wwz>
+public abstract interface xlx
 {
-  public xlx(@NonNull xlv paramxlv)
-  {
-    super(paramxlv);
-  }
-  
-  public void a(@NonNull xlv paramxlv, @NonNull wwz paramwwz)
-  {
-    yqp.b("InteractWidgetPageHolder", "receive poll info event.");
-    if (paramxlv.d()) {
-      paramxlv.a(paramxlv.jdField_a_of_type_Int, paramxlv.b, paramxlv.jdField_a_of_type_Xne, paramxlv.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwz.class;
-  }
+  public abstract void a(String paramString);
 }
 
 

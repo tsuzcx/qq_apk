@@ -1,77 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Path;
-import android.graphics.Path.Direction;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.music.AEEditorLyricPanelDialog.3.1;
 
 public class bpim
-  extends bppp
+  implements Animation.AnimationListener
 {
-  public float a;
-  public int a;
-  @NonNull
-  public Bitmap a;
-  public PointF a;
-  public bpib a;
-  public bpwh a;
-  public boolean a;
-  public Rect[] a;
-  public String[] a;
-  public float b;
-  public boolean b;
-  public float c;
-  public float d;
-  public float e = 1.0F;
+  bpim(bpij parambpij) {}
   
-  public bpim(bpik parambpik, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Bpwh = new bpwh();
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    bpij.a(this.a, false);
+    bpij.a(this.a).post(new AEEditorLyricPanelDialog.3.1(this));
   }
   
-  public void a(Canvas paramCanvas)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoteLayer", 2, "draw bitmap is null");
-      }
-    }
-    do
-    {
-      return;
-      paramCanvas.save();
-      paramCanvas.concat(bpik.a(this.jdField_a_of_type_Bpik).a(this));
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, -this.u / 2.0F, -this.v / 2.0F, bpik.a(this.jdField_a_of_type_Bpik));
-      if ((this.k) && (this.jdField_a_of_type_Boolean))
-      {
-        paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-        Path localPath = new Path();
-        Rect[] arrayOfRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
-        int j = arrayOfRect.length;
-        i = 0;
-        while (i < j)
-        {
-          Rect localRect = arrayOfRect[i];
-          localPath.reset();
-          localPath.addRoundRect(new RectF(localRect.left + 10, localRect.top + 5, localRect.right - 10, localRect.bottom - 5), 4.0F, 4.0F, Path.Direction.CCW);
-          paramCanvas.drawPath(localPath, bpik.b(this.jdField_a_of_type_Bpik));
-          i += 1;
-        }
-      }
-      paramCanvas.restore();
-    } while (!this.k);
-    int i = -1;
-    if (this.b) {
-      i = 2130839602;
-    }
-    bppm.a(paramCanvas, bpik.a(this.jdField_a_of_type_Bpik), this, i, 2130844623, 2130844630);
+    bpij.a(this.a, true);
   }
 }
 

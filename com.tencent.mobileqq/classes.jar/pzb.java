@@ -1,10 +1,51 @@
-public abstract interface pzb<BEAN>
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+public class pzb
+  implements ViewBase.OnClickListener
 {
-  public abstract void a(pze<BEAN> parampze);
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public abstract void a(boolean paramBoolean, pza<BEAN> parampza);
+  public pzb(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
   
-  public abstract boolean a();
+  private void a()
+  {
+    ocd.a(null, null, "0X80097D7", "0X80097D7", 0, 0, "", "", "", "", false);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    String str = "";
+    paramViewBase = str;
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      paramViewBase = str;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+      {
+        paramViewBase = str;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)
+        {
+          paramViewBase = str;
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f != null)
+          {
+            paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f;
+            ozs.d(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+          }
+        }
+      }
+    }
+    QLog.d("OnFriendsBiuClickListener", 1, "jump channel,  context:" + this.jdField_a_of_type_AndroidContentContext + "  url:" + paramViewBase);
+    a();
+  }
 }
 
 

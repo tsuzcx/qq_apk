@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ocb;
+import odl;
 
 class VideoFeedsUGView$9
   implements Runnable
@@ -12,7 +12,7 @@ class VideoFeedsUGView$9
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Ocb == null) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Ocb.j)) || (!this.this$0.jdField_a_of_type_Ocb.j.equals(this.a))) {
+    if ((this.this$0.jdField_a_of_type_Odl == null) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Odl.j)) || (!this.this$0.jdField_a_of_type_Odl.j.equals(this.a))) {
       return;
     }
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);

@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
-
-public final class aopb
-  implements Parcelable.Creator<SosoInterface.SosoAttribute>
+public abstract interface aopb
 {
-  public SosoInterface.SosoAttribute a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoAttribute(paramParcel);
-  }
-  
-  public SosoInterface.SosoAttribute[] a(int paramInt)
-  {
-    return new SosoInterface.SosoAttribute[paramInt];
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 

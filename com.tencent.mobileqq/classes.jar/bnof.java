@@ -1,29 +1,31 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class bnof
-  implements View.OnClickListener
+public class bnof
+  extends bnnn
 {
-  bnof(bnod parambnod, bnol parambnol, WMEditItem paramWMEditItem) {}
-  
-  public void onClick(View paramView)
+  private void a(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
   {
-    ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).hideSoftInputFromWindow(bnod.a(this.jdField_a_of_type_Bnod).getWindowToken(), 0);
-    bnod.a(this.jdField_a_of_type_Bnod).setTextColor(-1);
-    bnod.a(this.jdField_a_of_type_Bnod, bnod.a(this.jdField_a_of_type_Bnod));
-    bnod.a(this.jdField_a_of_type_Bnod, this.jdField_a_of_type_Bnol.a);
-    bnod.a(this.jdField_a_of_type_Bnod).setTextColor(-12339461);
-    bnod.a(this.jdField_a_of_type_Bnod, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
-    if (bnod.a(this.jdField_a_of_type_Bnod) != null) {
-      bnod.a(this.jdField_a_of_type_Bnod).a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.itemType, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.value, this.jdField_a_of_type_Bnol.a);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (parambioy == null)) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);
+    paramWebViewPlugin = new Intent("ReactNativeMsgDeliver");
+    paramWebViewPlugin.putExtra("args", paramArrayOfString[0]);
+    BaseApplication.getContext().sendBroadcast(paramWebViewPlugin);
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"Qzone".equals(paramString2)) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!"deliverMsg".equalsIgnoreCase(paramString3)) {
+      return false;
+    }
+    a(this.a, this.a.mRuntime, paramVarArgs);
+    return true;
   }
 }
 

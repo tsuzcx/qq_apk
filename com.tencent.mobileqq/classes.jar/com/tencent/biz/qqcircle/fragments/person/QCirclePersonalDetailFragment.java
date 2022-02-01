@@ -1,5 +1,9 @@
 package com.tencent.biz.qqcircle.fragments.person;
 
+import aabd;
+import aabe;
+import aabp;
+import aadg;
 import android.app.Activity;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Intent;
@@ -13,9 +17,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.biz.qqcircle.QCircleInitBean;
 import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
 import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.launchbean.QCircleFolderBean;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -23,58 +28,56 @@ import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import uxh;
-import uyp;
-import uyr;
-import uzb;
-import vab;
-import vbt;
-import vcb;
-import vcw;
-import vdc;
-import vde;
-import vec;
-import veh;
-import vno;
-import vnp;
-import vnq;
-import vnr;
-import vns;
-import vol;
-import vrf;
-import vri;
-import vrr;
-import vrt;
+import uys;
+import uyx;
+import vaa;
+import vad;
+import var;
+import vbr;
+import vdj;
+import vdr;
+import vfa;
+import vfg;
+import vfi;
+import vgg;
+import vgl;
+import vpt;
+import vpu;
+import vpv;
+import vpw;
+import vpx;
+import vqu;
+import vtq;
+import vtt;
+import vud;
 import vuf;
-import zlx;
-import zxi;
-import zxj;
-import zxu;
-import zzk;
+import vwf;
+import vxe;
+import zps;
 
 public class QCirclePersonalDetailFragment
   extends QCircleBaseFragment
 {
   private static int c;
   private int jdField_a_of_type_Int;
-  private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean;
+  protected aabd a;
+  private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean;
   private FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
   private String jdField_a_of_type_JavaLangString;
-  private uyp jdField_a_of_type_Uyp;
-  public uyr a;
-  private vab jdField_a_of_type_Vab;
-  private vbt jdField_a_of_type_Vbt;
-  private vcb jdField_a_of_type_Vcb;
-  public vde a;
-  private vns jdField_a_of_type_Vns;
-  private final vol jdField_a_of_type_Vol = vol.a();
-  private vuf jdField_a_of_type_Vuf;
-  protected zxi a;
+  private vaa jdField_a_of_type_Vaa;
+  public vad a;
+  private vbr jdField_a_of_type_Vbr;
+  private vdj jdField_a_of_type_Vdj;
+  private vdr jdField_a_of_type_Vdr;
+  public vfi a;
+  private vpx jdField_a_of_type_Vpx;
+  private final vqu jdField_a_of_type_Vqu = vqu.a();
+  private vxe jdField_a_of_type_Vxe;
   private int b;
   
-  private uzb a()
+  private var a()
   {
-    return new vnr(this);
+    return new vpw(this);
   }
   
   private void a(int paramInt)
@@ -91,7 +94,7 @@ public class QCirclePersonalDetailFragment
     {
       Message localMessage = Message.obtain();
       localMessage.what = paramInt;
-      this.jdField_a_of_type_Vcb.a("personal_page_action_title_bar_animation", localMessage);
+      this.jdField_a_of_type_Vdr.a("personal_page_action_title_bar_animation", localMessage);
       return;
       if (paramInt < 0) {
         paramInt = 0;
@@ -101,25 +104,25 @@ public class QCirclePersonalDetailFragment
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Vuf != null) {
-      this.jdField_a_of_type_Vuf.a(this.jdField_a_of_type_JavaLangString, paramBoolean);
+    if (this.jdField_a_of_type_Vxe != null) {
+      this.jdField_a_of_type_Vxe.a(this.jdField_a_of_type_JavaLangString, paramBoolean);
     }
   }
   
-  private List<zxu> b()
+  private List<aabp> b()
   {
     ArrayList localArrayList = new ArrayList();
-    uzb localuzb = a();
-    this.jdField_a_of_type_Uyr = new uyr(new Bundle());
-    this.jdField_a_of_type_Uyr.a(a());
-    this.jdField_a_of_type_Uyr.setInteractor(localuzb);
-    this.jdField_a_of_type_Uyr.setOnLoadDataDelegate(new vnq(this));
-    this.jdField_a_of_type_Uyp = new uyp(getActivity().getIntent().getExtras());
-    this.jdField_a_of_type_Uyp.a(a());
-    this.jdField_a_of_type_Uyp.setInteractor(localuzb);
-    this.jdField_a_of_type_Uyp.a(a());
-    localArrayList.add(this.jdField_a_of_type_Uyr);
-    localArrayList.add(this.jdField_a_of_type_Uyp);
+    var localvar = a();
+    this.jdField_a_of_type_Vad = new vad(new Bundle());
+    this.jdField_a_of_type_Vad.a(a());
+    this.jdField_a_of_type_Vad.setInteractor(localvar);
+    this.jdField_a_of_type_Vad.setOnLoadDataDelegate(new vpv(this));
+    this.jdField_a_of_type_Vaa = new vaa(getActivity().getIntent().getExtras());
+    this.jdField_a_of_type_Vaa.a(a());
+    this.jdField_a_of_type_Vaa.setInteractor(localvar);
+    this.jdField_a_of_type_Vaa.a(a());
+    localArrayList.add(this.jdField_a_of_type_Vad);
+    localArrayList.add(this.jdField_a_of_type_Vaa);
     return localArrayList;
   }
   
@@ -127,24 +130,24 @@ public class QCirclePersonalDetailFragment
   {
     Message localMessage = Message.obtain();
     localMessage.what = paramInt;
-    this.jdField_a_of_type_Vcb.a("personal_page_action_title_bar_follow_animation", localMessage);
+    this.jdField_a_of_type_Vdr.a("personal_page_action_title_bar_follow_animation", localMessage);
   }
   
-  private void c(boolean paramBoolean)
+  private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Vuf != null) {
-      this.jdField_a_of_type_Vuf.b(this.jdField_a_of_type_JavaLangString, paramBoolean);
+    if (this.jdField_a_of_type_Vxe != null) {
+      this.jdField_a_of_type_Vxe.b(this.jdField_a_of_type_JavaLangString, paramBoolean);
     }
   }
   
   private void d()
   {
-    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser != null) && (this.jdField_a_of_type_Uyr != null)) {
-      this.jdField_a_of_type_Uyr.setDatas(new ArrayList(Arrays.asList(new FeedCloudMeta.StUser[] { this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser })));
+    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser != null) && (this.jdField_a_of_type_Vad != null)) {
+      this.jdField_a_of_type_Vad.setDatas(new ArrayList(Arrays.asList(new FeedCloudMeta.StUser[] { this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser })));
     }
-    if ((zzk.a("2001" + this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Vuf != null))
+    if ((aadg.a("2001" + this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Vxe != null))
     {
-      this.jdField_a_of_type_Vuf.d("2001" + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Vxe.d("2001" + this.jdField_a_of_type_JavaLangString);
       return;
     }
     a(true);
@@ -160,54 +163,54 @@ public class QCirclePersonalDetailFragment
   {
     if (getActivity() != null)
     {
-      this.jdField_a_of_type_Vns = new vns(this);
+      this.jdField_a_of_type_Vpx = new vpx(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("action_reload_get_main_page");
-      getActivity().registerReceiver(this.jdField_a_of_type_Vns, localIntentFilter);
+      getActivity().registerReceiver(this.jdField_a_of_type_Vpx, localIntentFilter);
     }
   }
   
   public int a()
   {
-    return 2131560744;
+    return 2131560767;
   }
   
-  public List<zxj> a()
+  public aabd a()
+  {
+    return this.jdField_a_of_type_Aabd;
+  }
+  
+  public List<aabe> a()
   {
     a();
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Zxi = new zxi(2131365145, b(), 3, 1);
-    this.jdField_a_of_type_Vcb = new vcb(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean);
-    this.jdField_a_of_type_Vcb.a(a());
-    this.jdField_a_of_type_Vde = new vde();
-    this.jdField_a_of_type_Vde.a(this);
+    this.jdField_a_of_type_Aabd = new aabd(2131365189, b(), 3, 1);
+    this.jdField_a_of_type_Vdr = new vdr(this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean);
+    this.jdField_a_of_type_Vdr.a(a());
+    this.jdField_a_of_type_Vfi = new vfi();
+    this.jdField_a_of_type_Vfi.a(this);
     Object localObject = new FeedCloudMeta.StUser();
     ((FeedCloudMeta.StUser)localObject).id.set(this.jdField_a_of_type_JavaLangString);
-    localArrayList.add(this.jdField_a_of_type_Zxi);
-    localArrayList.add(this.jdField_a_of_type_Vcb);
-    localArrayList.add(this.jdField_a_of_type_Vde);
-    localObject = new vcw((FeedCloudMeta.StUser)localObject);
-    ((vcw)localObject).a(this);
+    localArrayList.add(this.jdField_a_of_type_Aabd);
+    localArrayList.add(this.jdField_a_of_type_Vdr);
+    localArrayList.add(this.jdField_a_of_type_Vfi);
+    localObject = new vfa((FeedCloudMeta.StUser)localObject);
+    ((vfa)localObject).a(this);
     localArrayList.add(localObject);
-    localArrayList.add(new vec());
-    vec localvec = new vec();
-    localvec.a(a());
-    localArrayList.add(localvec);
-    ((vcw)localObject).a(4);
-    this.jdField_a_of_type_Vbt = new vbt();
-    this.jdField_a_of_type_Vbt.a(this);
-    localArrayList.add(this.jdField_a_of_type_Vbt);
-    this.jdField_a_of_type_Vab = new vab();
-    this.jdField_a_of_type_Vab.a(this);
-    localArrayList.add(this.jdField_a_of_type_Vab);
-    localArrayList.add(new veh());
-    localArrayList.add(new vdc());
+    localArrayList.add(new vgg());
+    vgg localvgg = new vgg();
+    localvgg.a(a());
+    localArrayList.add(localvgg);
+    ((vfa)localObject).a(4);
+    this.jdField_a_of_type_Vdj = new vdj();
+    this.jdField_a_of_type_Vdj.a(this);
+    localArrayList.add(this.jdField_a_of_type_Vdj);
+    this.jdField_a_of_type_Vbr = new vbr();
+    this.jdField_a_of_type_Vbr.a(this);
+    localArrayList.add(this.jdField_a_of_type_Vbr);
+    localArrayList.add(new vgl());
+    localArrayList.add(new vfg());
     return localArrayList;
-  }
-  
-  public zxi a()
-  {
-    return this.jdField_a_of_type_Zxi;
   }
   
   protected void a()
@@ -221,11 +224,11 @@ public class QCirclePersonalDetailFragment
         return;
         localIntent = getActivity().getIntent();
       } while ((localIntent == null) || (!localIntent.hasExtra("key_bundle_common_init_bean")));
-      this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean = ((QCircleInitBean)localIntent.getSerializableExtra("key_bundle_common_init_bean"));
-    } while ((this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean == null) || (this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getUser() == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getUser().id.get())));
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getUser().id.get();
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getUser();
-    vrf.a(this.jdField_a_of_type_JavaLangString, 11, 1, 0, c());
+      this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean = ((QCircleInitBean)localIntent.getSerializableExtra("key_bundle_common_init_bean"));
+    } while ((this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean == null) || (this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean.getUser() == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean.getUser().id.get())));
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean.getUser().id.get();
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean.getUser();
+    vtq.a(this.jdField_a_of_type_JavaLangString, 11, 1, 0, c());
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -234,15 +237,15 @@ public class QCirclePersonalDetailFragment
     b();
     c();
     d();
-    c(true);
+    b(true);
     f();
-    vrr.a().a(new vrt().a("main").b("impression").a(a()));
+    vud.a().a(new vuf().a("main").b("impression").a(a()));
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_Vuf = ((vuf)a(vuf.class));
-    this.jdField_a_of_type_Vuf.a().observe(this, new vno(this));
+    this.jdField_a_of_type_Vxe = ((vxe)a(vxe.class));
+    this.jdField_a_of_type_Vxe.a().observe(this, new vpt(this));
   }
   
   public int c()
@@ -257,25 +260,26 @@ public class QCirclePersonalDetailFragment
   
   protected void c()
   {
-    this.b = zlx.a(getActivity(), 200.0F);
-    this.jdField_a_of_type_Zxi.a().setEnableRefresh(true);
-    this.jdField_a_of_type_Zxi.a().setEnableLoadMore(false);
-    this.jdField_a_of_type_Zxi.a().setParentFragment(this);
-    this.jdField_a_of_type_Zxi.a().a().setBackgroundColor(getResources().getColor(2131166233));
-    this.jdField_a_of_type_Zxi.a().a().addOnScrollListener(new vnp(this));
+    this.b = zps.a(getActivity(), 200.0F);
+    this.jdField_a_of_type_Aabd.a().setEnableRefresh(true);
+    this.jdField_a_of_type_Aabd.a().setEnableLoadMore(false);
+    this.jdField_a_of_type_Aabd.a().setParentFragment(this);
+    this.jdField_a_of_type_Aabd.a().a().setBackgroundColor(getResources().getColor(2131166234));
+    this.jdField_a_of_type_Aabd.a().a().setTransDispatchDelegate(vwf.a());
+    this.jdField_a_of_type_Aabd.a().a().addOnScrollListener(new vpu(this));
   }
   
   public String d()
   {
-    if (this.jdField_a_of_type_Uyp != null)
+    if (this.jdField_a_of_type_Vaa != null)
     {
-      if (this.jdField_a_of_type_Uyp.a() == 0) {
+      if (this.jdField_a_of_type_Vaa.a() == 0) {
         return "profile_page";
       }
-      if (this.jdField_a_of_type_Uyp.a() == 1) {
+      if (this.jdField_a_of_type_Vaa.a() == 1) {
         return "profile_moment";
       }
-      if (this.jdField_a_of_type_Uyp.a() == 2) {
+      if (this.jdField_a_of_type_Vaa.a() == 2) {
         return "profile_pushed";
       }
     }
@@ -291,49 +295,56 @@ public class QCirclePersonalDetailFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    if (vri.a().d()) {
-      vri.a().a(c(), getActivity().getIntent());
+    if (vtt.a().d()) {
+      vtt.a().a(c(), getActivity().getIntent());
     }
-    vri.a().a(c());
-    this.jdField_a_of_type_Vol.a();
+    vtt.a().a(c());
+    this.jdField_a_of_type_Vqu.a();
     int i = c;
     c = i + 1;
     if (i == 0) {
-      this.jdField_a_of_type_Vol.b();
+      this.jdField_a_of_type_Vqu.b();
     }
   }
   
   public boolean onBackEvent()
   {
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean;
+    if ((localObject != null) && (String.valueOf(10).equals(((QCircleInitBean)localObject).getLaunchFrom())))
+    {
+      localObject = new QCircleFolderBean();
+      ((QCircleFolderBean)localObject).setAssignShowTabType(1);
+      uyx.a(getActivity(), (QCircleFolderBean)localObject);
+    }
     return super.onBackEvent();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((getActivity() != null) && (this.jdField_a_of_type_Vns != null)) {
-      getActivity().unregisterReceiver(this.jdField_a_of_type_Vns);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Vpx != null)) {
+      getActivity().unregisterReceiver(this.jdField_a_of_type_Vpx);
     }
     c -= 1;
-    uxh.a();
+    uys.a();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    vri.a().b(c());
+    vtt.a().b(c());
   }
   
   public void onPause()
   {
     super.onPause();
-    vri.a().d(c());
+    vtt.a().d(c());
   }
   
   public void onResume()
   {
     super.onResume();
-    vri.a().c(c());
+    vtt.a().c(c());
   }
 }
 

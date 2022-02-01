@@ -1,0 +1,122 @@
+package com.tencent.mobileqq.triton.model;
+
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.Ref.IntRef;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/model/Version;", "", "version", "", "timeStamp", "", "(Ljava/lang/String;J)V", "getTimeStamp", "()J", "getVersion", "()Ljava/lang/String;", "compareTo", "", "other", "compareVersion", "lhs", "rhs", "component1", "component2", "copy", "equals", "", "", "hashCode", "toString", "TritonAPI_release"}, k=1, mv={1, 1, 16})
+public final class Version
+  implements Comparable<Version>
+{
+  private final long timeStamp;
+  @NotNull
+  private final String version;
+  
+  public Version(@NotNull String paramString, long paramLong)
+  {
+    this.version = paramString;
+    this.timeStamp = paramLong;
+  }
+  
+  private final int compareVersion(String paramString1, String paramString2)
+  {
+    paramString1 = StringsKt.split$default((CharSequence)paramString1, new char[] { '.' }, false, 0, 6, null);
+    paramString2 = StringsKt.split$default((CharSequence)paramString2, new char[] { '.' }, false, 0, 6, null);
+    Ref.IntRef localIntRef = new Ref.IntRef();
+    int j = Math.min(paramString1.size(), paramString2.size());
+    int i = 0;
+    while (i < j)
+    {
+      localIntRef.element = StringsKt.trimStart((String)paramString1.get(i), new char[] { '0' }).compareTo(StringsKt.trimStart((String)paramString2.get(i), new char[] { '0' }));
+      if (localIntRef.element != 0) {
+        return localIntRef.element;
+      }
+      i += 1;
+    }
+    return paramString1.size() - paramString2.size();
+  }
+  
+  public int compareTo(@NotNull Version paramVersion)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVersion, "other");
+    int k = compareVersion(this.version, paramVersion.version);
+    int i = k;
+    int j;
+    if (k == 0) {
+      j = this.timeStamp < paramVersion.timeStamp;
+    }
+    return j;
+  }
+  
+  @NotNull
+  public final String component1()
+  {
+    return this.version;
+  }
+  
+  public final long component2()
+  {
+    return this.timeStamp;
+  }
+  
+  @NotNull
+  public final Version copy(@NotNull String paramString, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "version");
+    return new Version(paramString, paramLong);
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof Version))
+      {
+        paramObject = (Version)paramObject;
+        if ((!Intrinsics.areEqual(this.version, paramObject.version)) || (this.timeStamp != paramObject.timeStamp)) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public final long getTimeStamp()
+  {
+    return this.timeStamp;
+  }
+  
+  @NotNull
+  public final String getVersion()
+  {
+    return this.version;
+  }
+  
+  public int hashCode()
+  {
+    String str = this.version;
+    if (str != null) {}
+    for (int i = str.hashCode();; i = 0)
+    {
+      long l = this.timeStamp;
+      return i * 31 + (int)(l ^ l >>> 32);
+    }
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "Version(version=" + this.version + ", timeStamp=" + this.timeStamp + ")";
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.triton.model.Version
+ * JD-Core Version:    0.7.0.1
+ */

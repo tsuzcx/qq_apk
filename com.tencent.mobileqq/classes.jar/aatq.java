@@ -1,17 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class aatq
-  implements DialogInterface.OnShowListener
+  implements aatl
 {
-  aatq(aatm paramaatm) {}
+  aatq(aatp paramaatp, long paramLong) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineMp4_M4a end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineMp4_M4aTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    paramString1 = new File(paramString1);
+    if ((paramBoolean) && (paramString1.exists()))
+    {
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Aatp.a.a(paramString1, this.jdField_a_of_type_Aatp.a.b, new aatr(this, l));
+      return;
+    }
+    this.jdField_a_of_type_Aatp.a.d = paramString2;
+    this.jdField_a_of_type_Aatp.a.a.a(this.jdField_a_of_type_Aatp.a);
   }
 }
 

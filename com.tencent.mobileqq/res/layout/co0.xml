@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/du3" android:layout_width="50.0dip" android:layout_height="50.0dip" app:authIconHeight="17.0dip" app:authIconMarginBottom="-2.0dip" app:authIconMarginRight="-3.0dip" app:authIconWidth="17.0dip" />
-</merge>
+<FrameLayout android:id="@id/nct" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/ncj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.image.URLImageView android:id="@id/nck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/mvx" android:background="@drawable/gga" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+</FrameLayout>

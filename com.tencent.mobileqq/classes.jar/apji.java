@@ -1,38 +1,21 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-class apji
-  extends apjl
+public class apji
 {
-  private apji()
-  {
-    super(null);
-  }
+  public int a = 3;
+  public int b = 3;
+  public int c = 1000;
+  public int d = 1;
+  public int e = 1;
   
-  public String a()
+  public String toString()
   {
-    return "GetPskey";
-  }
-  
-  public void a(apih paramapih, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length == 1)) {
-      paramVariantWrapper.SetString(apkf.b(paramArrayOfVariantWrapper[0].GetString()));
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean b()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder("ArDownloadDPC{");
+    localStringBuilder.append("networkControl=").append(this.a);
+    localStringBuilder.append(", dailyRetryTimes=").append(this.b);
+    localStringBuilder.append(", countRetryTimes=").append(this.c);
+    localStringBuilder.append(", entranceControl=").append(this.d);
+    localStringBuilder.append(", autoPreDownload=").append(this.e);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

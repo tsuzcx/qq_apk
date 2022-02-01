@@ -1,74 +1,40 @@
-import android.view.LayoutInflater;
+import android.app.Dialog;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class akep
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public akep(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public akep(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
   
-  public String a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
-      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (CameraPreviewActivity.a(this.a) != null) {
-      return CameraPreviewActivity.a(this.a).size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    akeq localakeq;
-    Object localObject;
-    if (paramView == null)
+    Object localObject = (aoip)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.a(20);
+    String str;
+    if (localObject != null)
     {
-      paramView = this.a.getLayoutInflater().inflate(2131559564, null);
-      localakeq = new akeq();
-      localakeq.a = ((URLImageView)paramView.findViewById(2131372845));
-      paramView.setTag(localakeq);
-      localObject = a(paramInt);
-      if (localObject == null) {
-        break label155;
+      ((aoip)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.o;
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label152;
       }
-      localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {}
     }
-    for (;;)
+    label152:
+    for (localObject = "0";; localObject = "1")
     {
-      try
-      {
-        localakeq.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localakeq = (akeq)paramView.getTag();
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString, str, (String)localObject, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        localMalformedURLException.printStackTrace();
-        continue;
-      }
-      label155:
-      localMalformedURLException.a.setImageDrawable(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.x();
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_AndroidAppDialog.show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

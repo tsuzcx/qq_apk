@@ -1,52 +1,66 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
 public class avmm
-  implements awjk
+  extends BroadcastReceiver
 {
-  private WeakReference<IVideoOuterStatusListener> a;
+  private avmm(GameSessionView paramGameSessionView) {}
   
-  public avmm(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramWeakReference;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
-    }
-    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
-    if (paramBoolean)
+    String str1 = paramIntent.getAction();
+    if (QLog.isColorLevel())
     {
-      localIVideoOuterStatusListener.onVideoStop();
-      return;
+      String str2 = GameSessionView.a;
+      if ("[onRecevier] action:" + str1 + ",data:" + paramIntent.getExtras() != null)
+      {
+        paramContext = paramIntent.getExtras().toString();
+        QLog.d(str2, 0, paramContext);
+      }
     }
-    localIVideoOuterStatusListener.onVideoStart(-1);
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    else
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      avmi.a().a(false);
-      a(false);
-      return;
+      if (str1 != null) {
+        break label78;
+      }
     }
-    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    avmi.a().a(true);
-    a(true);
-  }
-  
-  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
-  {
-    this.a = paramWeakReference;
+    label78:
+    int i;
+    label163:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramContext = null;
+            break;
+            if (!"action_qgame_messgae_change".equals(str1)) {
+              break label163;
+            }
+            paramContext = paramIntent.getExtras();
+          } while (paramContext == null);
+          paramIntent = (GameCenterSessionInfo)paramContext.getParcelable("key_game_msg");
+          i = paramContext.getInt("key_msg_change_type");
+          if (QLog.isColorLevel()) {
+            QLog.d(GameSessionView.a, 0, "[onReceive] type:" + i + ",info:" + paramIntent);
+          }
+          this.a.a();
+          return;
+        } while (!"action_qgame_unread_change".equals(str1));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      i = paramContext.getInt("key_msg_unread_cnt");
+    } while (!QLog.isColorLevel());
+    QLog.d(GameSessionView.a, 0, "[onReceive] cnt:" + i);
   }
 }
 

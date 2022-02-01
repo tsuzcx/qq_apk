@@ -1,20 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class akoc
   implements DialogInterface.OnClickListener
 {
-  public akoc(TopayManager.5.1 param1) {}
+  public akoc(BindVerifyActivity paramBindVerifyActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
     paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

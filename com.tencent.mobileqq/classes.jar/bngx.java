@@ -1,30 +1,23 @@
-import android.graphics.Matrix;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bngx
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  implements View.OnTouchListener
 {
-  private bngx(AECropperImageView paramAECropperImageView) {}
+  public bngx(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!AECropperImageView.a(this.a)) {
-      return false;
-    }
-    if (AECropperImageView.b(this.a))
+    this.a.a();
+    if ((!this.a.c) && (this.a.a != null))
     {
-      bnzb.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
-      return false;
+      this.a.a.setHint("");
+      this.a.c = true;
     }
-    Matrix localMatrix = this.a.getImageMatrix();
-    AECropperImageView.a(this.a, paramScaleGestureDetector.getFocusX());
-    AECropperImageView.b(this.a, paramScaleGestureDetector.getFocusY());
-    localMatrix.postScale(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-    this.a.setImageMatrix(localMatrix);
-    this.a.invalidate();
-    return true;
+    return false;
   }
 }
 

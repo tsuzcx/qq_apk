@@ -1,44 +1,17 @@
-class axve
-  implements aqiw
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
+
+public class axve
 {
-  axve(axuv paramaxuv) {}
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
-    {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
-      {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return anni.a(2131706088);
-        case 1: 
-          return anni.a(2131706059);
-        case 2: 
-          return anni.a(2131706029);
-        }
-        return anni.a(2131706061);
-      }
-    }
-  }
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public URLImageView b;
+  public URLImageView c;
 }
 
 

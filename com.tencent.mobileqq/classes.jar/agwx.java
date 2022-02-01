@@ -1,24 +1,48 @@
-import com.tencent.ark.open.delegate.ArkDelegateManager;
-import com.tencent.ark.open.delegate.IArkDelegateNet;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class agwx
-  extends ahhb
+  implements agvc
 {
-  public agwx(String paramString)
+  private BaseChatPie a;
+  
+  public agwx(BaseChatPie paramBaseChatPie)
   {
-    super(null, paramString);
+    this.a = paramBaseChatPie;
   }
   
-  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  private void a()
   {
-    WeakReference localWeakReference = new WeakReference(this);
-    IArkDelegateNet localIArkDelegateNet = ArkDelegateManager.getInstance().getNetDelegate();
-    if (localIArkDelegateNet == null) {
-      return false;
+    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
     }
-    localIArkDelegateNet.sendAppMsg(paramString1, paramString2, this.a, paramInt2, new agwy(this, localWeakReference));
-    return true;
+  }
+  
+  private void b()
+  {
+    if ((this.a != null) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 5: 
+      a();
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 5, 10 };
   }
 }
 

@@ -1,12 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+
 class amet
+  implements DialogInterface.OnClickListener
 {
-  bftw jdField_a_of_type_Bftw;
-  Boolean jdField_a_of_type_JavaLangBoolean;
+  amet(ames paramames) {}
   
-  public amet(amen paramamen, bftw parambftw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bftw = parambftw;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    if (this.a.a.d == 36) {
+      if (this.a.a.a == 1) {
+        this.a.a.m();
+      }
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      bdll.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
+      return;
+      this.a.a.a();
+      continue;
+      this.a.a.a();
+    }
   }
 }
 

@@ -1,31 +1,31 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-class avkc
-  implements avlv
+public class avkc
+  extends avkb
 {
-  avkc(avju paramavju) {}
+  private ImageView a;
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public avkc(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 101);
-    NowLive.sendServerPushMessage(avju.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+    super(paramContext, paramView, paramViewGroup);
+    this.a = ((ImageView)paramView.findViewById(2131363286));
   }
   
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public void a(FeedsItemData paramFeedsItemData)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 102);
-    NowLive.sendServerPushMessage(avju.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 103);
-    NowLive.sendServerPushMessage(avju.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+    this.itemView.setBackgroundDrawable(avmd.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130847081);
+    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130847081);
+    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
+    this.a.setOnClickListener(new avkd(this, paramFeedsItemData));
   }
 }
 

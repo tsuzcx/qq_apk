@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.music;
 
-import bdvs;
-import bdvu;
-import bdwt;
-import bgln;
+import beum;
+import beuo;
+import bevm;
+import bhlo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -23,14 +23,14 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
     return new QIMMusicConfigManager.GetSongListStepTask(this.this$0, this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager);
   }
   
-  public void onResp(bdwt parambdwt)
+  public void onResp(bevm parambevm)
   {
-    if (parambdwt.c == 200)
+    if (parambevm.c == 200)
     {
-      if (parambdwt.a != null)
+      if (parambevm.a != null)
       {
         QIMMusicConfigManager.GetSongListStepTask localGetSongListStepTask = a();
-        localGetSongListStepTask.jdField_a_of_type_JavaLangString = new String(parambdwt.a);
+        localGetSongListStepTask.jdField_a_of_type_JavaLangString = new String(parambevm.a);
         localGetSongListStepTask.a();
         this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, true, localGetSongListStepTask.jdField_a_of_type_JavaLangString);
         return;
@@ -40,29 +40,29 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
       return;
     }
     QIMMusicConfigManager.a(this.this$0, false);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, false, "Http Request fail, code=" + parambdwt.c);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, false, "Http Request fail, code=" + parambevm.c);
   }
   
   public void run()
   {
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.d = 1;
-    localbdvs.jdField_a_of_type_Bdvw = this;
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.d = 1;
+    localbeum.jdField_a_of_type_Beuq = this;
     long l = System.currentTimeMillis() / 1000L;
     String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
     HashMap localHashMap = new HashMap();
     localHashMap.put("app_id", "2000000025");
     localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
-    localHashMap.put("device_id", bgln.a());
+    localHashMap.put("device_id", bhlo.a());
     localHashMap.put("timestamp", String.valueOf(l));
     localHashMap.put("sign", a(l));
     localHashMap.putAll(a(this.c, str));
-    localbdvs.jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_self.fcg", localHashMap);
+    localbeum.jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_self.fcg", localHashMap);
     if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigManager", 2, "QQMusicReq SongList api request, req url=" + localbdvs.jdField_a_of_type_JavaLangString);
+      QLog.d("QIMMusicConfigManager", 2, "QQMusicReq SongList api request, req url=" + localbeum.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Bdvu.a(localbdvs);
+    this.jdField_a_of_type_Beuo.a(localbeum);
   }
 }
 

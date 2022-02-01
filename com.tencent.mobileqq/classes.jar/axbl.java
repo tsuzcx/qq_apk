@@ -1,103 +1,81 @@
-import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.mobileqq.data.MedalInfo;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class axbl
 {
+  public int a;
+  public MedalInfo a;
   public String a;
-  private boolean a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
   
   public axbl()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static axbl a(Context paramContext, String paramString, int paramInt)
+  public boolean a()
   {
-    try
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    for (;;)
     {
-      paramString = (String)axdz.a(paramString, "cike_guide_content", "");
-      if (!TextUtils.isEmpty(paramString))
+      try
       {
-        paramString = new JSONObject(paramString);
-        if (paramInt == 0) {
-          paramString = paramString.optJSONObject("publish_menu_alert_config");
+        localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
+        localJSONObject = null;
+        i = localJSONArray.length();
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount <= 1) || (i <= this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
+          continue;
         }
-        for (;;)
-        {
-          return a(paramContext, paramString);
-          if (paramInt == 1) {
-            paramString = paramString.optJSONObject("sendmsg_alert_config");
-          } else {
-            paramString = paramString.optJSONObject("authenticated_user_alert_config");
-          }
+        localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
+        if ((localJSONObject != null) && (localJSONObject.has("owned3d"))) {
+          this.jdField_a_of_type_JavaLangString = MedalWallMng.a(localJSONObject.getString("owned3d"));
+        }
+        if ((localJSONObject != null) && (localJSONObject.has("share"))) {
+          this.c = MedalWallMng.a(localJSONObject.getString("share"));
         }
       }
-      QLog.e("CikeConfigData", 1, "parseManageConfig, get config failed");
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      catch (Exception localException)
       {
-        QLog.e("CikeConfigData", 1, "parseManageConfig, exception: " + paramContext.getMessage());
+        JSONArray localJSONArray;
+        JSONObject localJSONObject;
+        int i;
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("MedalWallMng", 2, "parse res json fail", localException);
+        continue;
+        if (this.jdField_a_of_type_Int != 1) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+        if (!bhmi.b(this.b)) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+      }
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b))) {
+        this.b = (MedalWallMng.b + bjtz.d(this.jdField_a_of_type_JavaLangString));
+      }
+      if (this.jdField_a_of_type_Int != 2) {
+        continue;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return this.jdField_a_of_type_Boolean;
+      if (i > 1) {
+        localJSONObject = localJSONArray.getJSONObject(1);
       }
     }
-    return null;
-  }
-  
-  public static axbl a(Context paramContext, JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      axbl localaxbl = new axbl();
-      localaxbl.jdField_a_of_type_JavaLangString = paramJSONObject.optString("iconurl");
-      localaxbl.b = paramJSONObject.optString("title_text");
-      if (a(paramContext))
-      {
-        localaxbl.jdField_a_of_type_Boolean = true;
-        localaxbl.c = paramJSONObject.optString("download_installapp_text");
-      }
-      for (localaxbl.d = paramJSONObject.optString("jump_app_scheme");; localaxbl.d = paramJSONObject.optString("download_url_android"))
-      {
-        localaxbl.e = paramJSONObject.optString("moreurl");
-        return localaxbl;
-        localaxbl.jdField_a_of_type_Boolean = false;
-        localaxbl.c = paramJSONObject.optString("download_text");
-      }
-    }
-    QLog.e("CikeConfigData", 1, "parseJson, config is null");
-    return null;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return bgnw.a(paramContext, "com.tencent.litenow");
-  }
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramLong != 0L) && (!TextUtils.isEmpty(this.d)))
-    {
-      if (this.d.contains("?")) {
-        this.d = (this.d + "&uid=" + paramLong);
-      }
-    }
-    else {
-      return;
-    }
-    this.d = (this.d + "?uid=" + paramLong);
-  }
-  
-  public String toString()
-  {
-    return "imageUrl:" + this.jdField_a_of_type_JavaLangString + " titleTxt:" + this.b + " btnTxt:" + this.c + " btnUrl:" + this.d + " moreUrl:" + this.e + " d1:" + this.f + " toUin: " + this.g;
   }
 }
 

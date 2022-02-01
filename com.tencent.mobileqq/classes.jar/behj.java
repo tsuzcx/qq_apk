@@ -1,21 +1,83 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class behj
-  extends BroadcastReceiver
+public class behj
 {
-  behj(behi parambehi) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private static String a(String paramString)
   {
-    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    paramString = new StringBuilder(paramString);
+    int k = paramString.length();
+    int j;
+    for (int i = 0; i < k; i = j + 1)
     {
-      this.a.a = true;
-      this.a.dismiss();
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
+      j = i;
+      if ('\024' == paramString.charAt(i))
+      {
+        j = i;
+        if (i + 1 < k)
+        {
+          j = i;
+          if ('ÿ' == paramString.charAt(i + 1))
+          {
+            j = i;
+            if (i + 2 < k)
+            {
+              if (paramString.charAt(i + 2) == '\024') {
+                paramString.setCharAt(i + 2, 'ý');
+              }
+              j = i + 4;
+            }
+          }
+        }
+      }
+    }
+    return paramString.toString();
+  }
+  
+  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    bmko.a(null, a(paramString)).b(paramQQAppInterface, null).a(paramActivity, paramQQAppInterface.getAccount());
+    bmky.a(paramQQAppInterface, 6, 1);
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", -1);
+    localBundle.putString("forward_text", paramString);
+    paramString = new Intent();
+    paramString.putExtras(localBundle);
+    paramString.putExtra("direct_send_if_dataline_forward", true);
+    auxu.a(paramActivity, paramString, 21);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, true);
+  }
+  
+  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      ClipboardManager localClipboardManager = (ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard");
+      if (localClipboardManager != null)
+      {
+        localClipboardManager.setPrimaryClip(ClipData.newPlainText(paramString2, paramString1));
+        if (paramBoolean) {
+          QQToast.a(BaseApplicationImpl.getContext(), 2, anzj.a(2131705442), 0).a();
+        }
       }
     }
   }

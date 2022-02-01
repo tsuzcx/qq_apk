@@ -1,6 +1,35 @@
-public abstract interface mhz
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import java.lang.ref.WeakReference;
+
+class mhz
+  extends ClickableSpan
 {
-  public abstract void a();
+  private WeakReference<mhr> a;
+  
+  public mhz(mhr parammhr)
+  {
+    this.a = new WeakReference(parammhr);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.a == null) {}
+    do
+    {
+      return;
+      paramView = (mhr)this.a.get();
+    } while (paramView == null);
+    paramView.d();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

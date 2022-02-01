@@ -1,16 +1,34 @@
-import android.content.Context;
+import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
 
-final class blfr
+public class blfr
+  implements ArtFilterResource
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  blfo jdField_a_of_type_Blfo;
-  blfq jdField_a_of_type_Blfq;
-  
-  blfr(Context paramContext, blfq paramblfq, blfo paramblfo)
+  public String getCommonPrefix()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Blfq = paramblfq;
-    this.jdField_a_of_type_Blfo = paramblfo;
+    return alxd.c;
+  }
+  
+  public String getFilterResPath()
+  {
+    if (blfp.a) {
+      return brdl.b;
+    }
+    return bbfg.b;
+  }
+  
+  public String getModelPath()
+  {
+    return "";
+  }
+  
+  public String getReshapePath()
+  {
+    return "";
+  }
+  
+  public String getSoPathDir()
+  {
+    return bdek.b();
   }
 }
 

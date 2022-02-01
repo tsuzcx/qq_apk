@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.PublicAccountMenuBar;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
 public class oas
-  implements DialogInterface.OnDismissListener
+  implements bipr
 {
-  public oas(PublicAccountMenuBar paramPublicAccountMenuBar) {}
+  public oas(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public Object a(int paramInt)
   {
-    PublicAccountMenuBar.a(this.a, false);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new oav(this.a);
   }
 }
 

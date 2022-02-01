@@ -1,26 +1,12 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wkz
-  extends wla
+public abstract interface wkz
 {
-  public String a;
-  public boolean a;
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public wkz(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
-  {
-    super(paramErrorInfo);
-    if (paramPBUInt32Field.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
-      return;
-      bool = false;
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2, int paramInt);
 }
 
 

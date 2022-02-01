@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.ar.model;
 
-import aoty;
-import aouc;
-import aouf;
-import apew;
+import apho;
+import aphs;
+import aphv;
+import apsm;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformGLRenderManagerImpl$2
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$2(apew paramapew, aoty paramaoty, aouc paramaouc) {}
+  public UniformGLRenderManagerImpl$2(apsm paramapsm, apho paramapho, aphs paramaphs) {}
   
   public void run()
   {
-    aoty localaoty = this.jdField_a_of_type_Aoty;
-    apew localapew = this.this$0;
-    int i = apew.jdField_a_of_type_Int;
-    localapew = this.this$0;
-    localaoty.a(i, apew.b);
-    localaoty = this.this$0.jdField_a_of_type_Aoty;
-    this.this$0.jdField_a_of_type_Aoty = this.jdField_a_of_type_Aoty;
+    apho localapho = this.jdField_a_of_type_Apho;
+    apsm localapsm = this.this$0;
+    int i = apsm.jdField_a_of_type_Int;
+    localapsm = this.this$0;
+    localapho.a(i, apsm.b);
+    localapho = this.this$0.jdField_a_of_type_Apho;
+    this.this$0.jdField_a_of_type_Apho = this.jdField_a_of_type_Apho;
     if (QLog.isColorLevel()) {
       QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
     }
-    if ((localaoty != null) && (localaoty != this.this$0.jdField_a_of_type_Aoty)) {
-      localaoty.f();
+    if ((localapho != null) && (localapho != this.this$0.jdField_a_of_type_Apho)) {
+      localapho.f();
     }
-    if (this.this$0.jdField_a_of_type_Aoty == null) {
+    if (this.this$0.jdField_a_of_type_Apho == null) {
       return;
     }
-    if ((this.jdField_a_of_type_Aouc.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_Aouc.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Aouc.jdField_a_of_type_Long == 2048L))) {}
+    if ((this.jdField_a_of_type_Aphs.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_Aphs.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Aphs.jdField_a_of_type_Long == 2048L))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.this$0.jdField_a_of_type_Aouf.a();
-      this.this$0.jdField_a_of_type_Aouf.a(bool, this.jdField_a_of_type_Aouc);
-      this.this$0.jdField_a_of_type_Aoty.c();
-      this.this$0.jdField_a_of_type_Aoty.d();
+      this.this$0.jdField_a_of_type_Aphv.a();
+      this.this$0.jdField_a_of_type_Aphv.a(bool, this.jdField_a_of_type_Aphs);
+      this.this$0.jdField_a_of_type_Apho.c();
+      this.this$0.jdField_a_of_type_Apho.d();
       return;
     }
   }

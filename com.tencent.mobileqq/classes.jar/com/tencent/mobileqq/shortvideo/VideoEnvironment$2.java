@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcgf;
+import bcyx;
 
 final class VideoEnvironment$2
   implements Runnable
 {
-  VideoEnvironment$2(bcgf parambcgf, int paramInt) {}
+  VideoEnvironment$2(bcyx parambcyx, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bcgf != null) {
-      this.jdField_a_of_type_Bcgf.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Bcyx != null) {
+      this.jdField_a_of_type_Bcyx.a(this.jdField_a_of_type_Int);
     }
   }
 }

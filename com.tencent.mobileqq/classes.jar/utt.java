@@ -1,36 +1,42 @@
-import android.text.TextUtils;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class utt
-  extends uss
+  extends uuy
 {
   public utt(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    super(paramViewGroup, 2131560017, paramInt, paramWSVerticalPageFragment);
   }
   
-  public usp a(int paramInt)
+  public FrameLayout a()
   {
-    return new uua(a(), this);
+    if ((this.a instanceof utq)) {
+      return ((utq)this.a).a();
+    }
+    return null;
   }
   
-  public void a(int paramInt)
+  public utq a(int paramInt)
   {
-    super.a(paramInt);
+    return new uuz(a(), this);
   }
   
-  protected boolean a()
+  public void a() {}
+  
+  public void b() {}
+  
+  protected boolean b()
   {
     return true;
   }
   
-  protected boolean b()
+  public void c() {}
+  
+  protected boolean c()
   {
-    if ((this.a != null) && (TextUtils.equals(this.a.a(), "aio_home_page"))) {
-      return false;
-    }
-    return super.b();
+    return true;
   }
 }
 

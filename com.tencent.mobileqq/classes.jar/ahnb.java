@@ -1,20 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import java.io.File;
-
 class ahnb
-  implements ahnd
+  extends agen
 {
-  ahnb(ahmy paramahmy, String paramString, ahne paramahne) {}
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void a(int paramInt)
-  {
-    if (new File(this.jdField_a_of_type_JavaLangString).exists())
-    {
-      this.jdField_a_of_type_Ahne.a.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Ahne.f.setVisibility(8);
-    }
-  }
+  ahnb(ahmz paramahmz) {}
 }
 
 

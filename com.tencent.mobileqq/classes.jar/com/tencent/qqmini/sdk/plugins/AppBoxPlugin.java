@@ -31,7 +31,7 @@ public class AppBoxPlugin
   private static final String ERRMSG = "errMsg";
   public static final String EVENT_APP_BOX_CLOSE = "onAppBoxClose";
   public static final String KEY_REF_ID = "biz_src_miniapp";
-  public static final HashMap<Integer, String> S_CodeMsg_Map = MiniSDKConst.AdConst.CodeMsgMap;
+  public static final HashMap<Integer, String> S_CODE_MSG_MAP = MiniSDKConst.AdConst.CODE_MSG_MAP;
   private static final String TAG = "AppBoxPlugin";
   private Map<Integer, AppBoxPlugin.MiniAppBox> mAppBoxMap = new HashMap();
   

@@ -1,17 +1,41 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.net.Uri;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class bifw
-  implements apsw
+  extends biht
 {
-  public bifw(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public bifw(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onDone(bihu parambihu)
   {
-    if (paramBitmap == null) {
-      return;
+    super.onDone(parambihu);
+    if (QLog.isColorLevel()) {
+      QLog.d("PathTraceManager", 1, "voice down");
     }
-    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
+    parambihu = new File(this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      nof.a(parambihu, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
+      i = 1;
+    }
+    catch (IOException parambihu)
+    {
+      for (;;)
+      {
+        QLog.i("PathTraceManager", 1, "unzip fail");
+        int i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      QLog.d("PathTraceManager", 1, "unzip success");
+      if (this.b != null) {
+        bhkm.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
+      }
+    }
   }
 }
 

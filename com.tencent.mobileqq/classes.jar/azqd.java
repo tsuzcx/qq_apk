@@ -1,96 +1,116 @@
-import android.content.Intent;
-import android.graphics.PointF;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pic.ReportInfo;
+import java.net.URL;
 
 public class azqd
-  extends azpu
+  extends azpz
 {
-  public azqd(azlw paramazlw, azfe paramazfe)
-  {
-    super(paramazlw, paramazfe);
-  }
-  
-  private void a(azde paramazde)
-  {
-    if ((paramazde.jdField_a_of_type_JavaLangObject instanceof View)) {
-      ((View)paramazde.jdField_a_of_type_JavaLangObject).setVisibility(8);
-    }
-    j();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008119", "", 1, 0, 0, nlw.a(), "", "");
-  }
+  public ReportInfo a;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public boolean d;
+  public int e;
+  public long e;
+  public int f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
   public String a()
   {
-    return "VasProfileHeaderSimpleComponent";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nPicDownloadInfo");
+    localStringBuilder.append("\n |-").append("md5:").append(this.f);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("groupFileID:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("\n |-").append("uinType:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-").append("subMsgId:").append(this.jdField_g_of_type_Int);
+    localStringBuilder.append("\n |-").append("subVersion:").append(this.d);
+    localStringBuilder.append("\n |-").append("protocol:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("fileSizeFlag:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("thumbMsgUrl:").append(this.h);
+    localStringBuilder.append("\n |-").append("bigthumbMsgUrl:").append(this.k);
+    localStringBuilder.append("\n |-").append("bigMsgUrl:").append(this.i);
+    localStringBuilder.append("\n |-").append("rawMsgUrl:").append(this.j);
+    localStringBuilder.append("\n |-").append("isMixed:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("shareAppID:").append(this.jdField_e_of_type_Long);
+    localStringBuilder.append("\n |-").append("action:").append(this.l);
+    localStringBuilder.append("\n |-").append("actMsgContentValue:").append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("picExtraFlag:").append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n |-").append("picExtraObject:").append(this.jdField_a_of_type_JavaLangObject);
+    return localStringBuilder.toString();
   }
   
-  protected void a()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    if (TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString))
     {
-      VasProfileSimpleView localVasProfileSimpleView = new VasProfileSimpleView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
-      localVasProfileSimpleView.setClickListener(this);
-      localVasProfileSimpleView.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileSimpleView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+      a("PicDownloadInfo.check", "uuid invaid:" + this.jdField_g_of_type_JavaLangString);
+      return false;
     }
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  void j()
-  {
-    Object localObject2 = new PointF();
-    azlv localazlv = this.jdField_a_of_type_Azlw.a(1003);
-    Object localObject1 = localObject2;
-    if (localazlv != null)
+    if (this.jdField_b_of_type_JavaLangString == null)
     {
-      localObject1 = localObject2;
-      if ((localazlv instanceof azpr)) {
-        localObject1 = ((azpr)localazlv).a();
+      a("checkPicInfo", "selfUin invalid,selfUin:" + this.jdField_b_of_type_JavaLangString);
+      return false;
+    }
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_e_of_type_Long == 0L))
+    {
+      a("PicDownloadInfo.check", "groupFileID invaid:" + this.jdField_e_of_type_Long);
+      return false;
+    }
+    return super.a();
+  }
+  
+  String b()
+  {
+    int n = 65537;
+    if ("chatthumb".equals(this.jdField_e_of_type_JavaLangString)) {}
+    while (this.jdField_a_of_type_Boolean)
+    {
+      localObject = new azqt();
+      ((azqt)localObject).jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      ((azqt)localObject).d = this.d;
+      ((azqt)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((azqt)localObject).f = this.f;
+      localObject = beyq.a((azqt)localObject, n, null);
+      if (localObject == null) {
+        break label129;
+      }
+      return ((URL)localObject).toString();
+      if ("chatimg".equals(this.jdField_e_of_type_JavaLangString)) {
+        n = 1;
+      } else if ("chatraw".equals(this.jdField_e_of_type_JavaLangString)) {
+        n = 131075;
       }
     }
-    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, VipProfileCardDiyActivity.class);
-    ((Intent)localObject2).putExtra("extra_from", 1);
-    ((Intent)localObject2).putExtra("extra_card_id", ((azfe)this.b).a.lCurrentBgId);
-    ((Intent)localObject2).putExtra("extra_card_url", ((azfe)this.b).a.backgroundUrl);
-    ((Intent)localObject2).putExtra("extra_card_default_text", ((azfe)this.b).a.diyDefaultText);
-    if ((!TextUtils.isEmpty(((azfe)this.b).a.diyText)) && (((azfe)this.b).a.diyTextFontId > 0))
-    {
-      ((Intent)localObject2).putExtra("extra_card_text", ((azfe)this.b).a.diyText);
-      ((Intent)localObject2).putExtra("extra_card_font", ((azfe)this.b).a.diyTextFontId);
-      ((Intent)localObject2).putExtra("extra_card_x", ((PointF)localObject1).x);
-      ((Intent)localObject2).putExtra("extra_card_y", ((PointF)localObject1).y);
-      ((Intent)localObject2).putExtra("extra_card_scale", ((azfe)this.b).a.diyTextScale);
-      ((Intent)localObject2).putExtra("extra_card_rotation", ((azfe)this.b).a.diyTextDegree);
-      ((Intent)localObject2).putExtra("extra_card_transparency", ((azfe)this.b).a.diyTextTransparency);
+    Object localObject = beyq.a(this, n, null);
+    if (localObject != null) {
+      return ((URL)localObject).toString();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult((Intent)localObject2, 600001);
+    label129:
+    return null;
   }
   
-  public void onClick(View paramView)
+  public String d()
   {
-    super.onClick(paramView);
-    if ((paramView.getTag() instanceof azde))
-    {
-      azde localazde = (azde)paramView.getTag();
-      if (localazde.jdField_a_of_type_Int == 73) {
-        a(localazde);
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return c() + "_dp";
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

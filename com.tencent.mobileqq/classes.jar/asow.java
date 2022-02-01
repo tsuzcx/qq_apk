@@ -1,8 +1,15 @@
-public abstract interface asow
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout;
+
+public class asow
+  extends aslu
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public Button a;
+  public LinearLayout a;
+  public TextView a;
+  public EmotionInvalidPanelLinearLayout a;
 }
 
 

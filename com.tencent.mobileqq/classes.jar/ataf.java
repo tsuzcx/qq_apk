@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ataf
-  implements DialogInterface.OnClickListener
+public class ataf
 {
-  ataf(atae paramatae, atak paramatak) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    bcst.b(null, "dc00898", "", "", "0X800AE40", "0X800AE40", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_Atak != null) {
-      this.jdField_a_of_type_Atak.a();
-    }
+    return "CompletePesonalDataTask{type=" + this.jdField_a_of_type_Int + ", rewardCount=" + this.b + ", taskDescription='" + this.jdField_a_of_type_JavaLangString + '\'' + ", taskStatus=" + this.c + '}';
   }
 }
 

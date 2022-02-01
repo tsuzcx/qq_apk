@@ -1,21 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr.ProtoRequestRunnable;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class bfvf
 {
-  akeh jdField_a_of_type_Akeh;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
+  public int a;
+  public long a;
+  public aock a;
+  public bfve a;
+  public FromServiceMsg a;
+  public boolean a;
+  public TroopFileProtoReqMgr.ProtoRequestRunnable[] a;
   
-  protected bfvf(bfve parambfve) {}
+  public bfvf()
+  {
+    this.jdField_a_of_type_Aock = new aock();
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfvf
  * JD-Core Version:    0.7.0.1
  */

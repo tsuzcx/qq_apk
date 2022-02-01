@@ -8,7 +8,6 @@ import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,7 +15,7 @@ import org.json.JSONObject;
 class FileJsPlugin$5
   extends HttpCallBack
 {
-  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, int paramInt, JsRuntime paramJsRuntime, long paramLong, WeakReference paramWeakReference, File paramFile) {}
+  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, int paramInt, JsRuntime paramJsRuntime, long paramLong, File paramFile) {}
   
   private void reportUploadResult(long paramLong, int paramInt)
   {
@@ -50,42 +49,38 @@ class FileJsPlugin$5
   public void httpCallBack(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
   {
     QLog.d("[mini] FileJsPlugin", 1, "uploadTask httpCallBack! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], resCode:" + paramInt);
-    paramMap = (JsRuntime)this.val$webviewRef.get();
-    if (paramMap == null) {
-      return;
-    }
     if (paramInt > 0) {}
     for (;;)
     {
       try
       {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
-        localJSONObject.put("progress", 100);
-        localJSONObject.put("totalBytesSent", this.val$uploadFile.length());
-        localJSONObject.put("totalBytesExpectedToSend", this.val$uploadFile.length());
-        localJSONObject.put("state", "progressUpdate");
-        paramMap.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
+        paramMap = new JSONObject();
+        paramMap.put("uploadTaskId", this.val$uploadTaskId);
+        paramMap.put("progress", 100);
+        paramMap.put("totalBytesSent", this.val$uploadFile.length());
+        paramMap.put("totalBytesExpectedToSend", this.val$uploadFile.length());
+        paramMap.put("state", "progressUpdate");
+        this.val$webview.evaluateSubcribeJS("onUploadTaskStateChange", paramMap.toString(), 0);
         if (paramArrayOfByte != null) {
           continue;
         }
         paramArrayOfByte = "";
-        localJSONObject = new JSONObject();
-        localJSONObject.put("data", paramArrayOfByte);
-        localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
-        localJSONObject.put("statusCode", paramInt);
-        localJSONObject.put("state", "success");
-        paramMap.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
+        paramMap = new JSONObject();
+        paramMap.put("data", paramArrayOfByte);
+        paramMap.put("uploadTaskId", this.val$uploadTaskId);
+        paramMap.put("statusCode", paramInt);
+        paramMap.put("state", "success");
+        this.val$webview.evaluateSubcribeJS("onUploadTaskStateChange", paramMap.toString(), 0);
       }
       catch (Throwable paramArrayOfByte)
       {
         try
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
-          localJSONObject.put("state", "fail");
-          localJSONObject.put("errMsg", paramArrayOfByte.getMessage());
-          paramMap.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
+          paramMap = new JSONObject();
+          paramMap.put("uploadTaskId", this.val$uploadTaskId);
+          paramMap.put("state", "fail");
+          paramMap.put("errMsg", paramArrayOfByte.getMessage());
+          this.val$webview.evaluateSubcribeJS("onUploadTaskStateChange", paramMap.toString(), 0);
         }
         catch (Throwable paramArrayOfByte) {}
         continue;
@@ -98,7 +93,7 @@ class FileJsPlugin$5
       paramArrayOfByte.put("uploadTaskId", this.val$uploadTaskId);
       paramArrayOfByte.put("state", "fail");
       MiniappHttpUtil.fillErrMsg("uploadFile", paramArrayOfByte, paramInt);
-      paramMap.evaluateSubcribeJS("onUploadTaskStateChange", paramArrayOfByte.toString(), 0);
+      this.val$webview.evaluateSubcribeJS("onUploadTaskStateChange", paramArrayOfByte.toString(), 0);
     }
   }
   

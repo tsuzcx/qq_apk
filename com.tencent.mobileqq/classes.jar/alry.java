@@ -1,73 +1,83 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class alry
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public alry(FriendTabView paramFriendTabView) {}
+  public alry(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
-    alto localalto = (alto)paramView.getTag();
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      LoginView.a(this.a, null);
+    }
     String str;
-    boolean bool;
-    if ((localalto != null) && (localalto.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localalto.jdField_a_of_type_JavaLangObject != null))
+    SimpleAccount localSimpleAccount;
+    for (;;)
     {
-      str = "";
-      if (!(localalto.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label243;
-      }
-      str = ((Friends)localalto.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localalto.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      return;
+      if (paramCharSequence != null)
       {
-        if (!localalto.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label269;
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
         }
-        bool = this.a.a.a(localalto.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
-        label110:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
-        }
-        localalto.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.c)
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
         {
-          if (!localalto.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label294;
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
           }
-          paramView.setContentDescription(localalto.d.getText().toString() + anni.a(2131703733));
+          paramInt1 += 1;
         }
       }
     }
-    for (;;)
+    label110:
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
     {
-      this.a.c();
-      if (AppSetting.c) {
-        paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label308;
       }
-      EventCollector.getInstance().onViewClicked(paramView);
+      if ((localSimpleAccount != null) && (localSimpleAccount.isLogined())) {
+        if (!LoginView.i(this.a))
+        {
+          LoginView.i(this.a, true);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+          paramCharSequence = this.a.c;
+          if ((!LoginView.d(this.a)) && (!LoginView.e(this.a)) && (!LoginView.f(this.a)) && (!LoginView.g(this.a))) {
+            break label310;
+          }
+        }
+      }
+    }
+    label308:
+    label310:
+    for (paramInt1 = 2130846982;; paramInt1 = 2130844711)
+    {
+      paramCharSequence.setImageResource(paramInt1);
+      this.a.c.setContentDescription(anzj.a(2131705243));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+      LoginView.c(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
       return;
-      label243:
-      if (!(localalto.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
-        break;
-      }
-      str = ((PhoneContact)localalto.jdField_a_of_type_JavaLangObject).name;
+      paramCharSequence = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin());
+      break label126;
       break;
-      label269:
-      bool = this.a.a.a(localalto.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
-      break label110;
-      label294:
-      paramView.setContentDescription(localalto.d.getText().toString() + anni.a(2131703734));
     }
   }
 }

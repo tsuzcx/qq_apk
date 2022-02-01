@@ -1,20 +1,33 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-class aedb
-  extends aedu
+public class aedb
+  implements DialogInterface.OnDismissListener
 {
-  aedb(aeda paramaeda, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramaeda.a, paramInt1, paramInt2);
-  }
+  public aedb(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Aeda.a.a != null) {
-      this.jdField_a_of_type_Aeda.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    paramDialogInterface = (akjn)paramDialogInterface;
+    int i = paramDialogInterface.a();
+    boolean bool = paramDialogInterface.a();
+    ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, i);
+    if (bool)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690559));
+      return;
     }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
   }
 }
 

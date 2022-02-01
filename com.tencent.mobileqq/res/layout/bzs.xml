@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dqy" android:layout_width="fill_parent" android:layout_height="@dimen/baa"
+<RelativeLayout android:id="@id/dqy" android:layout_width="fill_parent" android:layout_height="@dimen/bae"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/dqx" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="@dimen/f7" android:layout_alignParentBottom="true">
         <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:scaleType="fitXY" android:contentDescription="@null" style="@style/hm" />
@@ -11,7 +11,7 @@
         <View android:id="@id/bmt" android:background="#ffebedf5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/dre" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="8.669983dip" android:layout_alignParentTop="true">
-        <com.tencent.mobileqq.gamecenter.view.ShadowView android:id="@id/kvv" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
+        <com.tencent.mobileqq.gamecenter.view.ShadowView android:id="@id/l9u" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
         <com.tencent.mobileqq.subaccount.UpArrowView android:id="@id/yw" android:duplicateParentState="true" android:layout_width="12.0dip" android:layout_height="8.0dip" android:layout_marginLeft="34.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </RelativeLayout>

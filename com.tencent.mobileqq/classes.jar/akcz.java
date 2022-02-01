@@ -1,76 +1,65 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimTipsInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import mqq.app.TicketManagerImpl;
-import mqq.os.MqqHandler;
+import com.tencent.widget.ListView;
 
 public class akcz
-  extends MqqHandler
+  implements blnt
 {
-  private WeakReference<ContactListView> a;
+  public akcz(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public akcz(ContactListView paramContactListView)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.a = new WeakReference(paramContactListView);
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.c(l);
+      return;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    ContactListView localContactListView = (ContactListView)this.a.get();
-    if (localContactListView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        case 3: 
-        case 7: 
-        default: 
-          throw new RuntimeException("Unknown message: " + paramMessage.what);
-        case 1: 
-          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.f()))
-          {
-            localContactListView.g();
-            ContactListView.a(localContactListView, false);
-          }
-          localContactListView.j();
-          return;
-        case 2: 
-          localContactListView.j();
-        }
-      } while (bgnt.d(localContactListView.getContext()));
-      localContactListView.i();
-      localContactListView.b(anni.a(2131701296));
-      return;
-      localContactListView.b = ((List)paramMessage.obj);
-      localContactListView.jdField_a_of_type_Ambx.a(localContactListView.b);
-      localContactListView.jdField_a_of_type_Ambx.notifyDataSetChanged();
-      return;
-      paramMessage = ContactListView.a(localContactListView).getAccount();
-      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
-    } while (localObject == null);
-    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
     if (QLog.isColorLevel()) {
-      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
     }
-    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
-    return;
-    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
-    return;
-    localContactListView.i();
-    localContactListView.l();
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.a(l);
+      if (!bhnv.g(this.a.getActivity())) {
+        break;
+      }
+      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
+      return true;
+    }
+    ChatHistoryTroopFileFragment.a(this.a, 1);
+    bgsk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
+    }
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
+    }
   }
 }
 

@@ -1,9 +1,6 @@
 public class bpnd
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public static final String[] a = { "Jitter", "SoulOut" };
 }
 
 

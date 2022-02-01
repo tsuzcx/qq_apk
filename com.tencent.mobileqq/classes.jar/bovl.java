@@ -1,18 +1,9 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-
 public class bovl
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public bovl(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    CropVideoActivity.a(this.a).b(f, f, 1.0F);
-    return true;
-  }
+  public int a;
+  public String a = "";
+  public String b = "";
+  public String c = "";
 }
 
 

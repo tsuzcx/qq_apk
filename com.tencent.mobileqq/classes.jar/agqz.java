@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Path;
+import java.util.List;
 
 public class agqz
-  implements View.OnClickListener
 {
-  public agqz(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public Path a;
+  public List<agqt> a;
+  public boolean a;
 }
 
 

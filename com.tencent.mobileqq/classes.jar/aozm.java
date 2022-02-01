@@ -1,24 +1,42 @@
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class aozm
+  extends aoxg
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 0;
-  
-  public aozm()
+  public aozm(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramQQAppInterface, paramContext);
   }
   
-  public String toString()
+  private boolean C()
   {
-    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      bmtk localbmtk = bmtk.a();
+      localbmtk.a = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localbmtk.b = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+      bmtd.a((Activity)this.jdField_a_of_type_AndroidContentContext, localbmtk, -1);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzonePublishQueueAction", 1, "doAction error: " + localException.getMessage());
+      a("QzonePublishQueueAction");
+    }
+    return false;
   }
 }
 

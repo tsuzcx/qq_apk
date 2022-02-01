@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alke
-  implements bcit
+class alke
+  implements View.OnClickListener
 {
-  public alke(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  alke(aljw paramaljw) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
+    try
+    {
+      bhlq.a(aljw.a(this.a), 0, null, anzj.a(2131699830), 2131690580, 2131694098, new alkf(this), new alkg(this)).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    alkm.a(paramBoolean1);
-    NewFlowCameraActivity.b(this.a);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + localThrowable.getMessage());
+      }
+    }
   }
 }
 

@@ -1,13 +1,13 @@
-public class bito
+import android.os.Bundle;
+
+public abstract interface bito
+  extends biod
 {
-  public final int a;
-  public final String a;
+  public abstract abgu getShare();
   
-  public bito(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract boolean setShareUrl(String paramString);
+  
+  public abstract boolean setSummary(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
 }
 
 

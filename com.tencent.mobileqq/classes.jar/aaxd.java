@@ -1,47 +1,43 @@
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aaxd
-  implements zmv
+public class aaxd
+  extends bgst
 {
-  aaxd(aaxc paramaaxc, aaxe paramaaxe, aaxf paramaaxf) {}
+  public aaxd(TroopGiftPanel paramTroopGiftPanel, int paramInt, aawl paramaawl) {}
   
-  public void onFailure(String paramString)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aaxe != null)
-    {
-      this.jdField_a_of_type_Aaxf.a(943004);
-      this.jdField_a_of_type_Aaxf.a(paramString);
-      this.jdField_a_of_type_Aaxe.b(this.jdField_a_of_type_Aaxf);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
-    }
+    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = anzj.a(2131714189);
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299011)).show();
+    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public void b(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo start");
+    super.b(paramInt, paramString);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = anzj.a(2131714201);
     }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (this.jdField_a_of_type_Aaxe != null) {
-      this.jdField_a_of_type_Aaxe.a(this.jdField_a_of_type_Aaxf);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
-    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299011)).show();
   }
 }
 

@@ -1,99 +1,26 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.PointF;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public class bnuh
-  implements SurfaceTexture.OnFrameAvailableListener
+class bnuh
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public bnuh(bnuf parambnuf) {}
+  bnuh(bnud parambnud) {}
   
-  private List<List<PointF>> a(List<List<PointF>> paramList)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    LinkedList localLinkedList1 = new LinkedList();
-    int k = paramList.size();
-    int i = 0;
-    while (i < k)
-    {
-      List localList = (List)paramList.get(i);
-      LinkedList localLinkedList2 = new LinkedList();
-      int m = localList.size();
-      int j = 0;
-      while (j < m)
-      {
-        PointF localPointF = (PointF)localList.get(j);
-        localLinkedList2.add(new PointF(localPointF.x, localPointF.y));
-        j += 1;
-      }
-      localLinkedList1.add(localLinkedList2);
-      i += 1;
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (bnud.a(this.a) != null) {
+      bnud.a(this.a).a("onActionScale", new float[] { f });
     }
-    return localLinkedList1;
+    return true;
   }
   
-  private List<float[]> b(List<float[]> paramList)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    LinkedList localLinkedList = new LinkedList();
-    int k = paramList.size();
-    int i = 0;
-    while (i < k)
-    {
-      float[] arrayOfFloat1 = (float[])paramList.get(i);
-      float[] arrayOfFloat2 = new float[arrayOfFloat1.length];
-      int j = 0;
-      while (j < arrayOfFloat1.length)
-      {
-        arrayOfFloat2[j] = arrayOfFloat1[j];
-        j += 1;
-      }
-      localLinkedList.add(arrayOfFloat2);
-      i += 1;
-    }
-    return localLinkedList;
+    return true;
   }
   
-  @TargetApi(19)
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    QLog.d(bnuf.a(), 4, "PngsCreator onFrameAvailable()");
-    paramSurfaceTexture.updateTexImage();
-    bnuf.a(this.a).RenderProcess(bnuf.a(this.a), 960, 480, -1, 0.0D, bnuf.a(this.a));
-    bnuf.a(this.a).a(bnuf.a(this.a));
-    bnrf localbnrf = bnuf.a(this.a);
-    Frame localFrame = bnuf.a(this.a);
-    if (bnuf.b(this.a) < bnuf.a(this.a).size())
-    {
-      paramSurfaceTexture = a((List)bnuf.a(this.a).get(bnuf.b(this.a)));
-      if (bnuf.b(this.a) >= bnuf.b(this.a).size()) {
-        break label341;
-      }
-    }
-    label341:
-    for (Object localObject = b((List)bnuf.b(this.a).get(bnuf.b(this.a)));; localObject = new ArrayList())
-    {
-      paramSurfaceTexture = RendererUtils.saveTexture(localbnrf.a(localFrame, 480, 480, paramSurfaceTexture, (List)localObject));
-      paramSurfaceTexture.setPremultiplied(false);
-      bncx.a(String.format(bnuf.a(this.a) + "/frame_%03d.png", new Object[] { Integer.valueOf(bnuf.b(this.a)) }), paramSurfaceTexture);
-      paramSurfaceTexture.recycle();
-      bnuf.c(this.a);
-      if (!bnuf.a(this.a).a())
-      {
-        QLog.d(bnuf.a(), 4, "pngs create duration = " + (System.currentTimeMillis() - bnuf.a(this.a)));
-        bnuf.a(this.a).a(bnuf.a(this.a));
-      }
-      return;
-      paramSurfaceTexture = new ArrayList();
-      break;
-    }
-  }
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

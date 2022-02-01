@@ -1,10 +1,54 @@
-import com.tencent.mobileqq.data.PrecoverResource;
+import android.graphics.Matrix;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-public abstract interface azcf
+public class azcf
+  implements azce
 {
-  public abstract void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject);
+  public void a(Matrix paramMatrix) {}
   
-  public abstract void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2);
+  public void a(MotionEvent paramMotionEvent) {}
+  
+  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return false;
+  }
+  
+  public void b(MotionEvent paramMotionEvent) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return false;
+  }
+  
+  public void c(MotionEvent paramMotionEvent) {}
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 

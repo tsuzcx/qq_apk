@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qdj
-  implements Animation.AnimationListener
+public class qdj
+  implements ViewBase.IBuilder
 {
-  qdj(qdi paramqdi, View paramView, Animation paramAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    return new qdi(paramVafContext);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

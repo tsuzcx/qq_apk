@@ -1,15 +1,14 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import com.tencent.theme.SkinData;
 
-public final class bbdr
-  extends Editable.Factory
+public class bbdr
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public SkinData a;
+  public String a;
+  
+  public bbdr(String paramString, SkinData paramSkinData)
   {
-    if ((paramCharSequence instanceof bdod)) {
-      return (Editable)paramCharSequence;
-    }
-    return new bdod(paramCharSequence, 1, 20);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentThemeSkinData = paramSkinData;
   }
 }
 

@@ -1,16 +1,40 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.1;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.2;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-class ahrg
-  implements ahvk
+public class ahrg
+  implements bcyt
 {
-  ahrg(ahrd paramahrd) {}
+  private ahrg(ahqw paramahqw) {}
   
-  public void a()
+  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
   {
-    if (ahrd.a(this.a).J) {
-      ahrd.a(this.a).ba();
+    ahrh localahrh = ahqw.a(this.a, paramMessageForShortVideo);
+    if (localahrh == null) {
+      return;
     }
-    ahrd.a(this.a).b(ahrd.a(this.a).hashCode());
+    paramMessageForShortVideo = paramMessageForShortVideo.frienduin + paramMessageForShortVideo.uniseq;
+    localahrh.a.setAnimProgress(anzj.a(2131712936), paramMessageForShortVideo);
+    localahrh.a.a(paramMessageForShortVideo, paramFloat);
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "CompressUpdateListener,onFinish. seq = " + paramMessageForShortVideo.uniseq);
+    }
+    blho.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.2(this, paramMessageForShortVideo, paramInt));
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean)
+  {
+    ahrh localahrh = ahqw.a(this.a, paramMessageForShortVideo);
+    if (localahrh == null) {
+      return;
+    }
+    blho.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.1(this, paramMessageForShortVideo, paramBoolean, localahrh));
   }
 }
 

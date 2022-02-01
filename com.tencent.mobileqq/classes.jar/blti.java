@@ -1,54 +1,72 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import cooperation.qzone.QZoneTopGestureLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-public class blti
-  extends TopGestureLayout.TopGestureDetector
+class blti
+  extends RecyclerView.AdapterDataObserver
 {
-  public blti(QZoneTopGestureLayout paramQZoneTopGestureLayout, Context paramContext)
-  {
-    super(paramQZoneTopGestureLayout, paramContext);
-  }
+  blti(blth paramblth) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  private void a(int paramInt1, int paramInt2)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return false;
-    }
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.b(this.a, -1);
-    }
-    if (QZoneTopGestureLayout.a(this.a)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    paramFloat2 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat2);
-    if (QZoneTopGestureLayout.a(this.a, 1))
+    View localView = this.a.a(blth.a(this.a));
+    if (localView != null) {}
+    for (int i = blth.a(this.a).getPosition(localView);; i = -1)
     {
-      if ((paramFloat2 < 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (paramFloat1 > 500.0F))
-      {
-        QZoneTopGestureLayout.c(this.a, -1);
-        this.a.mOnFlingGesture.flingLToR();
-        return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + blth.b(this.a) + ", currentPosition=" + i);
       }
+      if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
+      {
+        bltk.a(blth.a(this.a), true);
+        blth.a(this.a).addOnLayoutChangeListener(blth.a(this.a));
+        blth.a(this.a).requestLayout();
+      }
+      return;
     }
-    else if ((QZoneTopGestureLayout.b(this.a, 0)) && (paramFloat2 > 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (-1.0F * paramFloat1 > 500.0F))
-    {
-      QZoneTopGestureLayout.d(this.a, -1);
-      this.a.mOnFlingGesture.flingRToL();
-      return true;
-    }
-    return false;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onChanged()
   {
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.a(this.a, -1);
+    a(0, blth.a(this.a).getItemCount());
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if (paramObject == null) {
+      onItemRangeChanged(paramInt1, paramInt2);
     }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 <= blth.b(this.a)) {
+      blth.b(this.a, blth.b(this.a) + paramInt2);
+    }
+    a(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 == blth.b(this.a)) {
+      blth.b(this.a, paramInt2);
+    }
+    a(paramInt1, paramInt3);
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 <= blth.b(this.a)) {
+      blth.b(this.a, blth.b(this.a) - paramInt2);
+    }
+    a(paramInt1, paramInt2);
   }
 }
 

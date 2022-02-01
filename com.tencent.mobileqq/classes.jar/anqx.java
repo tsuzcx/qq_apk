@@ -1,107 +1,130 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.1;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.2;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.3;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgReqBody;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 public class anqx
-  extends anii
+  extends anak
 {
-  protected QQAppInterface a;
+  public int a;
+  private WeakReference<anqo> a;
   
-  public anqx(QQAppInterface paramQQAppInterface)
+  public anqx(anqo paramanqo)
   {
-    super(paramQQAppInterface);
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanqo);
   }
   
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2)
   {
-    int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameViewBinder", 2, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong), ", gameId=", Integer.valueOf(paramInt1), ", resultStr=", paramString2 });
     }
+    if (this.jdField_a_of_type_Int != paramInt2)
+    {
+      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] mCreateRoomReqCode != reqCode");
+      return;
+    }
+    anqo localanqo = (anqo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localanqo == null)
+    {
+      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] viewBinder null");
+      return;
+    }
+    if (localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    {
+      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] viewBinder app null");
+      return;
+    }
+    ApolloGameData localApolloGameData = ((annx)localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(paramInt1);
+    if (localApolloGameData == null)
+    {
+      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] gameData null");
+      return;
+    }
+    if (paramLong == 0L)
+    {
+      anaf.a(localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
+      return;
+    }
+    if (paramLong == -300404L)
+    {
+      anqo.a(localanqo).post(new ApolloGameViewBinder.ISessionHandler.1(this, localanqo, localApolloGameData));
+      return;
+    }
+    if (paramLong == -300405L)
+    {
+      anqo.a(localanqo).post(new ApolloGameViewBinder.ISessionHandler.2(this, localanqo, localApolloGameData));
+      return;
+    }
+    QLog.e("ApolloGameViewBinder", 1, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong) });
+    anqo.a(localanqo).post(new ApolloGameViewBinder.ISessionHandler.3(this, localanqo));
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2)
+  {
+    anqo localanqo = (anqo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localanqo == null) {
+      break label17;
+    }
+    label17:
+    while (localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_Int != paramInt2)
+    {
+      QLog.e("ApolloGameViewBinder", 1, "onCreateRoomId mCreateRoomReqCode != reqCode");
+      return;
+    }
+    if (!paramBoolean)
+    {
+      QLog.e("ApolloGameViewBinder", 1, "onCreateRoomId createSuccess:false");
+      return;
+    }
+    super.a(paramBoolean, paramInt1, paramLong, paramInt2);
+    ansi localansi = new ansi();
+    Object localObject = (annx)localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+    String str = anzj.a(2131699260);
+    ApolloGameData localApolloGameData = ((annx)localObject).a(paramInt1);
+    if ((localApolloGameData != null) && (!TextUtils.isEmpty(localApolloGameData.name)))
+    {
+      localObject = ((annx)localObject).a(localApolloGameData.actionId);
+      if (localObject == null) {
+        break label296;
+      }
+      str = ((ApolloActionData)localObject).actionName;
+    }
+    label296:
     for (;;)
     {
-      paramFromServiceMsg = (baia)this.a.getManager(65);
-      if (i != 0)
+      paramInt2 = localApolloGameData.actionId;
+      localansi.jdField_b_of_type_JavaLangString = localApolloGameData.name;
+      for (;;)
       {
-        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
-        try
-        {
-          localNumMsgRspBody.mergeFrom((byte[])paramObject);
-          if (localNumMsgRspBody.i_retcode.get() == 0)
-          {
-            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
-            return;
-            i = 0;
-          }
+        localansi.jdField_a_of_type_JavaLangString = str;
+        localansi.jdField_b_of_type_Int = paramInt2;
+        localansi.jdField_a_of_type_Long = paramLong;
+        localansi.jdField_a_of_type_Int = paramInt1;
+        localansi.d = 3;
+        localansi.e = 0;
+        if ((localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localanqo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
+          break;
         }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          for (;;)
-          {
-            paramObject.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
-          }
-          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
-          return;
+        anaf.a(localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localanqo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localansi);
+        if (!anas.a(localanqo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+          break;
         }
+        ((amsx)localanqo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(localanqo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramInt1, paramLong);
+        return;
+        localansi.jdField_b_of_type_JavaLangString = anzj.a(2131699300);
+        paramInt2 = 0;
       }
-    }
-    paramFromServiceMsg.a(null, paramToServiceMsg, false);
-  }
-  
-  public void a(List<NumRedMsg.NumMsgBusi> paramList, int paramInt, String paramString, long[] paramArrayOfLong)
-  {
-    NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
-    localNumMsgReqBody.i_proto_ver.set(1);
-    localNumMsgReqBody.ui_plat_id.set(109);
-    localNumMsgReqBody.str_client_ver.set("8.4.1.4680");
-    localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    localNumMsgReqBody.rpt_num_msg.set(localArrayList);
-    paramList = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "red_touch_num_svr.get_num_msg");
-    paramList.putWupBuffer(localNumMsgReqBody.toByteArray());
-    paramList.extraData.putInt("NumMsgListenerKey", paramInt);
-    paramList.extraData.putLongArray("NumMsgIDList", paramArrayOfLong);
-    paramList.extraData.putString("NumMsgListenerCmd", paramString);
-    sendPbReq(paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i("NumRedMsgHandler", 2, "sendPbReq called.");
-    }
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("red_touch_num_svr.get_num_msg".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NumRedMsgHandler", 2, "onReceive called.");
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }

@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.listentogether.data.ISong;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 public abstract interface avvi
+  extends View.OnTouchListener
 {
-  public abstract void a(ISong paramISong);
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void b(View paramView, int paramInt);
+  
+  public abstract void c(avub paramavub, int paramInt);
 }
 
 

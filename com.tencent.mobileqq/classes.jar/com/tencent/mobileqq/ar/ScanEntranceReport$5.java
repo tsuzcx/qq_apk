@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar;
 
-import aoxj;
-import bctj;
+import apkz;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$5
   implements Runnable
 {
-  public ScanEntranceReport$5(aoxj paramaoxj, boolean paramBoolean, long paramLong) {}
+  public ScanEntranceReport$5(apkz paramapkz, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    bctj.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_result", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_result", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

@@ -1,21 +1,19 @@
-public class azuf
+import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
+import java.util.Comparator;
+
+public final class azuf
+  implements Comparator<PortalManager.TimerConfig>
 {
-  public int a;
-  public byte[] a;
-  public int b;
-  
-  public azuf(byte[] paramArrayOfByte, int paramInt)
+  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = 0;
-  }
-  
-  public azuf(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = paramInt1;
+    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

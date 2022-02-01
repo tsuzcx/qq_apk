@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.danmaku.inject;
 
-import arew;
-import arfd;
+import arul;
+import arus;
 
 public class DanmakuContext$2
   implements Runnable
 {
   public void run()
   {
-    arew.a(this.this$0).a(this.jdField_a_of_type_Arge, this.jdField_a_of_type_Arfc);
+    arul.a(this.this$0).a(this.jdField_a_of_type_Arvt, this.jdField_a_of_type_Arur);
   }
 }
 

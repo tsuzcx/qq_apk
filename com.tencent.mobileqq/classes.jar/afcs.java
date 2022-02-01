@@ -1,20 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class afcs
-  implements bkom
+  implements DialogInterface.OnClickListener
 {
-  public afcs(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public afcs(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void a(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, true);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.data.ContactBinded;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajaq
-  extends ajax
+  extends aohk
 {
-  public ContactBinded a;
+  public ajaq(BlessResultActivity paramBlessResultActivity) {}
   
-  public ajaq(ContactBinded paramContactBinded)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataContactBinded = paramContactBinded;
-    this.jdField_a_of_type_Long = paramContactBinded.timestamp;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataContactBinded.isReaded;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
+    }
+    if ((paramBoolean) && (paramInt == bdcy.a)) {
+      bhlq.a(this.a.getActivity(), 0, null, this.a.getString(2131718230), 2131718232, 2131718231, new ajar(this), new ajas(this)).show();
+    }
   }
 }
 

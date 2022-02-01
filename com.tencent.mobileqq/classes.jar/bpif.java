@@ -1,241 +1,89 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bpif
-  extends bppp
+  extends RecyclerView.Adapter<bpii>
 {
-  public float a;
-  public int a;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  public DynamicTextItem a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
+  private bpih jdField_a_of_type_Bpih;
+  private String jdField_a_of_type_JavaLangString;
+  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public bpif(bpic parambpic)
+  public bpii a(ViewGroup paramViewGroup, int paramInt)
   {
-    this(parambpic, new bpie(0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F));
-    this.jdField_b_of_type_AndroidGraphicsPointF.set(parambpic.jdField_a_of_type_AndroidGraphicsPointF);
-    this.jdField_j_of_type_Int = zlx.a(BaseApplicationImpl.getContext(), 15.0F);
+    return new bpii(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558547, paramViewGroup, false));
   }
   
-  public bpif(bpic parambpic, @NonNull bpie parambpie)
+  public void a(bpih parambpih)
   {
-    super(parambpie.jdField_a_of_type_AndroidGraphicsPointF, parambpie.jdField_a_of_type_Float, parambpie.jdField_b_of_type_Float, parambpie.jdField_c_of_type_Float, parambpie.jdField_d_of_type_Float, parambpie.e, parambpie.jdField_f_of_type_Float, true);
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new bork();
-    this.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
-    this.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
-    this.jdField_a_of_type_Float = bpic.jdField_a_of_type_Int;
-    this.jdField_j_of_type_Int = zlx.a(BaseApplicationImpl.getContext(), 15.0F);
+    this.jdField_a_of_type_Bpih = parambpih;
   }
   
-  public bpif(bpic parambpic, @NonNull bpif parambpif)
+  public void a(bpii parambpii, int paramInt)
   {
-    super(parambpif, 1.0F);
-    if (parambpif.jdField_a_of_type_AndroidGraphicsRect == null) {}
-    for (this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);; this.jdField_a_of_type_AndroidGraphicsRect = new Rect(parambpif.jdField_a_of_type_AndroidGraphicsRect))
+    int j = 0;
+    if (paramInt >= 1)
     {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = parambpif.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
-      this.jdField_a_of_type_Float = parambpif.jdField_a_of_type_Float;
-      this.jdField_b_of_type_Float = parambpif.jdField_b_of_type_Float;
-      this.jdField_c_of_type_Float = parambpif.jdField_c_of_type_Float;
-      this.jdField_d_of_type_Float = parambpif.jdField_d_of_type_Float;
-      this.e = parambpif.e;
-      this.jdField_f_of_type_Float = parambpif.jdField_f_of_type_Float;
-      this.jdField_g_of_type_Float = parambpif.jdField_g_of_type_Float;
-      this.jdField_h_of_type_Float = parambpif.jdField_h_of_type_Float;
-      this.i = parambpif.i;
-      this.jdField_j_of_type_Int = zlx.a(BaseApplicationImpl.getContext(), 15.0F);
-      a(parambpif);
-      return;
-    }
-  }
-  
-  private void b(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    int j;
-    label35:
-    int m;
-    label47:
-    int k;
-    if (this.jdField_k_of_type_Int == 0)
-    {
-      j = 2130844628;
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isDataLocked())
+      localObject = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+      parambpii.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor((String)localObject));
+      parambpii.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(parambpii.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable);
+      if ((localObject != null) && (((String)localObject).equals(this.jdField_a_of_type_JavaLangString)))
       {
-        if (this.jdField_k_of_type_Int != 0) {
-          break label114;
+        i = 1;
+        localObject = parambpii.jdField_a_of_type_AndroidViewView;
+        if (i == 0) {
+          break label121;
         }
-        j = 2130844634;
       }
-      if (this.jdField_k_of_type_Int != 1) {
-        break label120;
+      label121:
+      for (i = j;; i = 4)
+      {
+        ((View)localObject).setVisibility(i);
+        parambpii.itemView.setOnClickListener(new bpig(this, paramInt));
+        EventCollector.getInstance().onRecyclerBindViewHolder(parambpii, paramInt, getItemId(paramInt));
+        return;
+        i = 0;
+        break;
       }
-      m = 2130844624;
-      if (this.jdField_k_of_type_Int != 2) {
-        break label127;
-      }
-      k = 2130844631;
-      label58:
-      if (this.n) {
-        j = -1;
-      }
-      if (!bpic.b(this.jdField_a_of_type_Bpic).a.e()) {
-        break label133;
-      }
-      k = -1;
-      j = -1;
     }
-    label133:
-    for (;;)
+    parambpii.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    Object localObject = parambpii.jdField_a_of_type_AndroidWidgetImageView;
+    if (bool) {}
+    for (int i = 2130837727;; i = 2130837728)
     {
-      bppm.a(paramCanvas, this.jdField_a_of_type_Bpic.jdField_a_of_type_Bppo, this, j, m, k);
-      paramCanvas.restore();
-      return;
-      j = 2130844627;
+      ((ImageView)localObject).setImageResource(i);
       break;
-      label114:
-      j = 2130844632;
-      break label35;
-      label120:
-      m = 2130844623;
-      break label47;
-      label127:
-      k = 2130844630;
-      break label58;
     }
   }
   
-  private void f()
+  public void a(String paramString)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localValueAnimator.setDuration(bpic.e);
-    localValueAnimator.addUpdateListener(new bpig(this));
-    localValueAnimator.start();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void g()
+  public void a(List<String> paramList)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localValueAnimator.setDuration(bpic.e);
-    localValueAnimator.addUpdateListener(new bpih(this));
-    localValueAnimator.start();
-  }
-  
-  protected void a()
-  {
-    this.jdField_d_of_type_Float = this.s;
-    this.e = this.t;
-    this.jdField_b_of_type_Float = this.q;
-    this.jdField_c_of_type_Float = this.r;
-    this.jdField_f_of_type_Float = (this.jdField_a_of_type_Bpic.n - this.jdField_b_of_type_AndroidGraphicsPointF.x - this.jdField_d_of_type_Float);
-    this.jdField_g_of_type_Float = (this.jdField_a_of_type_Bpic.o - this.jdField_b_of_type_AndroidGraphicsPointF.y - this.e);
-    this.jdField_h_of_type_Float = (1.0F - this.jdField_b_of_type_Float);
-    if (this.jdField_c_of_type_Float < 180.0F)
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null)
     {
-      this.i = (0.0F - this.jdField_c_of_type_Float);
-      return;
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_JavaUtilList.remove("#FFFFFF");
     }
-    this.i = (360.0F - this.jdField_c_of_type_Float);
+    this.jdField_a_of_type_JavaUtilList.add("#FFFFFF");
   }
   
-  public void a(Canvas paramCanvas)
+  public int getItemCount()
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isInSegment(bpic.a(this.jdField_a_of_type_Bpic).a())) && (!this.jdField_k_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if (this.jdField_f_of_type_Boolean) {
-        paramCanvas.drawColor(Color.parseColor("#66000000"));
-      }
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_k_of_type_Boolean))
-      {
-        if ((this.jdField_g_of_type_Boolean) && (this.jdField_h_of_type_Boolean))
-        {
-          float f1 = this.l;
-          float f2 = this.jdField_j_of_type_Float;
-          float f3 = this.m;
-          float f4 = this.jdField_k_of_type_Float;
-          float f5 = this.jdField_b_of_type_AndroidGraphicsPointF.x;
-          float f6 = this.s;
-          float f7 = this.jdField_b_of_type_AndroidGraphicsPointF.y;
-          paramCanvas.drawLine(f2 + f1, f4 + f3, f6 + f5, this.t + f7, this.jdField_a_of_type_Bpic.jdField_a_of_type_AndroidGraphicsPaint);
-          paramCanvas.save();
-          paramCanvas.concat(this.jdField_a_of_type_Bpic.jdField_a_of_type_Bppo.b(this));
-          int j = (int)(this.u * this.q * this.w) + this.jdField_j_of_type_Int * 2;
-          int k = (int)(this.v * this.q * this.w) + this.jdField_j_of_type_Int * 2;
-          paramCanvas.drawRect(new RectF(-j / 2, -k / 2, j / 2, k / 2), bpic.a(this.jdField_a_of_type_Bpic));
-          paramCanvas.restore();
-        }
-        if (this.jdField_g_of_type_Boolean) {
-          paramCanvas.drawColor(Color.parseColor("#66000000"));
-        }
-      }
-      paramCanvas.save();
-      paramCanvas.concat(this.jdField_a_of_type_Bpic.jdField_a_of_type_Bppo.a(this));
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(paramCanvas);
-      paramCanvas.restore();
-    } while (!this.jdField_k_of_type_Boolean);
-    b(paramCanvas);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_c_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bpii(this));
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bpij(this));
-    }
-    if (!this.jdField_j_of_type_Boolean) {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_c_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_j_of_type_Boolean)) {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.cancel();
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-      localStringBuilder.append("centerP x : ").append(this.jdField_b_of_type_AndroidGraphicsPointF.x).append(" y: ").append(this.jdField_b_of_type_AndroidGraphicsPointF.y);
-    }
-    localStringBuilder.append("textLeft: ").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append("mSaveScaleValue: ").append(this.jdField_b_of_type_Float);
-    localStringBuilder.append("mSaveRotateValue: ").append(this.jdField_c_of_type_Float);
-    localStringBuilder.append("mSaveTranslateXValue: ").append(this.jdField_d_of_type_Float);
-    localStringBuilder.append("mDistanceX: ").append(this.jdField_f_of_type_Float);
-    localStringBuilder.append("mDistanceY: ").append(this.jdField_g_of_type_Float);
-    localStringBuilder.append("mDScale: ").append(this.jdField_h_of_type_Float);
-    localStringBuilder.append("mDRotate: ").append(this.i);
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
   }
 }
 

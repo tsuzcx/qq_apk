@@ -1,13 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class asmp
-  implements DialogInterface.OnClickListener
+public abstract class asmp
+  extends asmu
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

@@ -7,21 +7,21 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tqr;
+import thn;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lorg/json/JSONObject;", "<anonymous parameter 1>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJBridgeInvokeHandler$register$25
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public RIJBridgeInvokeHandler$register$25(tqr paramtqr)
+  public RIJBridgeInvokeHandler$register$25(thn paramthn)
   {
     super(2);
   }
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    this.this$0.a().requestRedPacketContentShareToast(paramString);
+    this.this$0.a().clearMessageBoxData();
   }
 }
 

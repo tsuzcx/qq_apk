@@ -1,30 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.List;
-
-public abstract class bbkk
-  implements bbtj<bbkn>
+public class bbkk
 {
-  protected QQAppInterface a;
+  public int a;
+  public long a;
+  public bddn a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
   
-  public bbkk(QQAppInterface paramQQAppInterface)
+  public bbkk()
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a() {}
+  public void a(bbkk parambbkk)
+  {
+    if (parambbkk == null) {
+      throw new NullPointerException();
+    }
+    this.jdField_a_of_type_JavaLangString = parambbkk.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Bddn = parambbkk.jdField_a_of_type_Bddn;
+    this.jdField_a_of_type_Boolean = parambbkk.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = parambbkk.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Boolean = parambbkk.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Long = parambbkk.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = parambbkk.jdField_b_of_type_Long;
+    this.c = parambbkk.c;
+  }
   
-  public abstract void a(String paramString, List<FTSEntity> paramList);
-  
-  public void b() {}
-  
-  public abstract void b(bbtx parambbtx, bbtk<bbkm> parambbtk);
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
+  public String toString()
+  {
+    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+  }
 }
 
 

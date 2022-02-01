@@ -1,30 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class afav
-  extends Handler
+  extends anuw
 {
-  public afav(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public afav(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
+    if (paramBoolean1)
     {
-    default: 
-      return;
-    case 101: 
-      this.a.c();
-      String str = paramMessage.obj.toString();
-      paramMessage = str;
-      if (str == null) {
-        paramMessage = this.a.getString(2131718943);
-      }
-      this.a.a(paramMessage, 1);
-      return;
+      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
     }
-    this.a.c();
-    this.a.finish();
   }
 }
 

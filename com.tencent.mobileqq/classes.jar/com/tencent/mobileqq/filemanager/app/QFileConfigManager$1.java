@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atam;
+import atsh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class QFileConfigManager$1
   implements Runnable
 {
-  public QFileConfigManager$1(atam paramatam, HashMap paramHashMap) {}
+  public QFileConfigManager$1(atsh paramatsh, HashMap paramHashMap) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      atam.a(this.this$0).clear();
-      atam.a(this.this$0).putAll(this.a);
+      atsh.a(this.this$0).clear();
+      atsh.a(this.this$0).putAll(this.a);
       QLog.i("QFileConfigManager", 1, "setFileDownloadConfig: set download config. ");
     }
   }

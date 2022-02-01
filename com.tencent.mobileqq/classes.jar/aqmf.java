@@ -1,72 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class aqmf
-  extends aqkz<aqmg>
 {
-  public static aqmg a()
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d = 1.0F;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  
+  public aqmf(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    return (aqmg)aqlk.a().a(655);
+    this.e = paramFloat1;
+    this.f = paramFloat2;
+    this.g = paramFloat3;
+    this.h = paramFloat4;
+    this.jdField_a_of_type_Float = paramFloat5;
+    this.b = paramFloat6;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  @NonNull
-  public aqmg a(int paramInt)
+  public aqmf(int paramInt, float paramFloat1, float paramFloat2)
   {
-    return new aqmg();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  @Nullable
-  public aqmg a(aqlg[] paramArrayOfaqlg)
+  public static aqmf a(float paramFloat1, float paramFloat2)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqmg.a(paramArrayOfaqlg);
-    }
-    return null;
+    return new aqmf(1, paramFloat1, paramFloat2);
   }
   
-  public void a(aqmg paramaqmg)
+  public static aqmf a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIORelatedEmotionConfProcessor", 2, "AIORelatedEmotionConfProcessor onUpdate");
-    }
+    return new aqmf(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
   }
   
-  public Class<aqmg> clazz()
+  public static aqmf b(float paramFloat1, float paramFloat2)
   {
-    return aqmg.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 655;
+    return new aqmf(0, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmf
  * JD-Core Version:    0.7.0.1
  */

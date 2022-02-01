@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aipe;
+import ajan;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
 public class BlessManager$1
   implements Runnable
 {
-  public BlessManager$1(aipe paramaipe) {}
+  public BlessManager$1(ajan paramajan) {}
   
   public void run()
   {
-    aipe.a(this.this$0, true);
+    ajan.a(this.this$0, true);
     if (QLog.isColorLevel()) {
       QLog.d("BlessManager", 2, "mCheckMultiConfigRunnable");
     }
-    Set localSet = aipe.a(this.this$0);
+    Set localSet = ajan.a(this.this$0);
     if ((localSet != null) && (localSet.size() > 0)) {
       this.this$0.a(localSet);
     }
-    aipe.a(this.this$0, false);
+    ajan.a(this.this$0, false);
   }
 }
 

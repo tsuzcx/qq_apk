@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class axmy
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public axmy(StuffContainerView paramStuffContainerView) {}
+  public axmy(MultiCardFragment paramMultiCardFragment, axnk paramaxnk, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a != null) {
-      this.a.a.a(0);
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    if (this.jdField_a_of_type_Axnk == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
+    this.jdField_a_of_type_Axnk.a.setScaleX(f2);
+    this.jdField_a_of_type_Axnk.a.setScaleY(f2);
+    this.jdField_a_of_type_Axnk.a.setTranslationX(0.0F);
+    this.jdField_a_of_type_Axnk.a.setTranslationY(this.b * f1);
+    paramValueAnimator = this.jdField_a_of_type_Axnk.a.getLayoutParams();
+    float f3 = this.c;
+    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
+    this.jdField_a_of_type_Axnk.a.requestLayout();
   }
 }
 

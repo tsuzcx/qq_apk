@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
 class ahqm
-  implements View.OnClickListener
+  implements bbsu
 {
-  ahqm(ahqj paramahqj) {}
+  public WeakReference<ahqk> a;
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
   {
-    if (ahqj.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(ahqj.a(this.a).a) }));
-      }
-      ahqi localahqi = ahqj.a(this.a);
-      ahqj.a(this.a);
-      if (localahqi != null) {
-        localahqi.a();
-      }
+    if (this.a.get() != null) {
+      ahqk.a((ahqk)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

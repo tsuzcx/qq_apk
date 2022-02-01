@@ -1,6 +1,6 @@
 package com.tencent.common.app;
 
-import abev;
+import abiz;
 import android.content.Context;
 
 public final class SafeModeUtil$1
@@ -10,7 +10,7 @@ public final class SafeModeUtil$1
   
   public void run()
   {
-    abev.a(this.a, 2);
+    abiz.a(this.a, 2);
   }
 }
 

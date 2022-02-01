@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import whg;
-import whq;
+import wlb;
+import wll;
 
 public class PreloadDownloaderManager$1
   implements Runnable
 {
-  public PreloadDownloaderManager$1(whg paramwhg) {}
+  public PreloadDownloaderManager$1(wlb paramwlb) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b();
     this.this$0.jdField_a_of_type_JavaLangRunnable = null;
-    whq.a().a();
+    wll.a().a();
   }
 }
 

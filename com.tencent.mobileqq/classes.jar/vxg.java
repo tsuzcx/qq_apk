@@ -1,25 +1,17 @@
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StRankingItem;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
-public class vxg
-  implements vxe
+class vxg
+  implements aaav<FeedCloudRead.StGetFeedListRsp>
 {
-  public vxg(QCircleFuelRankItemView paramQCircleFuelRankItemView, FeedCloudMeta.StRankingItem paramStRankingItem) {}
+  vxg(vxe paramvxe, boolean paramBoolean, QCircleGetFeedListRequest paramQCircleGetFeedListRequest) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    if (QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView) != null)
-    {
-      vrg.a(89, 5, ((vdq)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.e(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user.id.get());
-      vrr.a().a(new vrt().a("followbutton").b("follow").a(((vdq)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a().mFeed).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.a()).c(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user.id.get()).a(((vdq)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a().mDataPosition));
-    }
+    this.jdField_a_of_type_Vxe.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
+    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + VSNetworkHelper.a(paramString));
   }
 }
 

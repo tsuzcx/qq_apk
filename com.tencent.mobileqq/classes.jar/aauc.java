@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-
-class aauc
-  implements ViewTreeObserver.OnPreDrawListener
+public class aauc
 {
-  aauc(aaub paramaaub, View paramView) {}
+  public aauc(aatd paramaatd) {}
   
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    aaub.a(this.jdField_a_of_type_Aaub, this.jdField_a_of_type_AndroidViewView);
-    return false;
-  }
+  public void a(aaub paramaaub) {}
+  
+  public void b(aaub paramaaub) {}
 }
 
 

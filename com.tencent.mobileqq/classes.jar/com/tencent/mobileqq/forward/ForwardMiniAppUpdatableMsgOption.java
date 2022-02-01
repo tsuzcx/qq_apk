@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.forward;
 
-import afur;
+import agej;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import aufz;
+import auxu;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 
 public class ForwardMiniAppUpdatableMsgOption
-  extends aufz
+  extends auxu
 {
   public ForwardMiniAppUpdatableMsgOption(Intent paramIntent)
   {
@@ -34,7 +34,7 @@ public class ForwardMiniAppUpdatableMsgOption
   
   private void b(int paramInt, String paramString)
   {
-    paramString = afur.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), new int[] { 2 }).putExtra("uintype", paramInt).putExtra("uin", paramString);
+    paramString = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), new int[] { 2 }).putExtra("uintype", paramInt).putExtra("uin", paramString);
     this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
   }
   

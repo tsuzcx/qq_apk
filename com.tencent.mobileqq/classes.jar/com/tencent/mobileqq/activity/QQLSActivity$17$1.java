@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aewv;
+import afga;
 import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
 public class QQLSActivity$17$1
   implements Runnable
 {
-  public QQLSActivity$17$1(aewv paramaewv) {}
+  public QQLSActivity$17$1(afga paramafga) {}
   
   public void run()
   {

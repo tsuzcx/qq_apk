@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface anbm
+class anbm
+  implements MediaPlayer.OnErrorListener
 {
-  public abstract List<TraceData> a();
+  anbm(anbl paramanbl) {}
   
-  public abstract boolean a(List<TraceData> paramList);
-  
-  public abstract boolean b(List<TraceData> paramList);
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
+    return false;
+  }
 }
 
 

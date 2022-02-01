@@ -1,6 +1,6 @@
-public abstract interface lrn
+public class lrn
 {
-  public abstract void a(lrl paramlrl, int paramInt1, int paramInt2);
+  lri a;
 }
 
 

@@ -1,44 +1,18 @@
-import android.os.AsyncTask;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import com.tencent.qphone.base.util.QLog;
 
-public class bqhj
-  extends AsyncTask<Void, Void, Integer>
+class bqhj
+  implements bjbj
 {
-  public bqhj(SVHwEncoder.HwEncode paramHwEncode) {}
+  bqhj(bqhi parambqhi) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void a(bjbh parambjbh)
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
-    {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!bgmg.c(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.a.b = str;
-      i = j;
-    }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!bgmg.b(str))
-      {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoStoryButton", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
     }
   }
+  
+  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
 }
 
 

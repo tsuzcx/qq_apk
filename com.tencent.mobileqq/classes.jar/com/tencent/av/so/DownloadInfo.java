@@ -4,8 +4,8 @@ import android.content.SharedPreferences;
 import com.tencent.av.business.manager.EffectConfigBase;
 import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import lbp;
-import lbq;
+import lbw;
+import lbx;
 import org.json.JSONObject;
 
 public class DownloadInfo
@@ -28,7 +28,7 @@ public class DownloadInfo
   
   public static DownloadInfo get()
   {
-    String str = lbq.b(367).a;
+    String str = lbx.b(367).a;
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.tryParse("QavSo", str);
     return localDownloadInfo;

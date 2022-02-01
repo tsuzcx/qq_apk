@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class atku
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
   atku(atkt paramatkt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    QfileCloudFileTabView.a(this.a.a, false);
+    this.a.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

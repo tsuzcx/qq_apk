@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adem
-  implements View.OnClickListener
+public class adem
+  implements adci
 {
-  adem(adek paramadek, adej paramadej, adeb paramadeb, JSONObject paramJSONObject, adea paramadea) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    this.jdField_a_of_type_Adek.d();
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "accept " + this.jdField_a_of_type_Adej.a);
-    adek.a(this.jdField_a_of_type_Adek, this.jdField_a_of_type_Adej, 2);
-    adek.a(this.jdField_a_of_type_Adek, 0, this.jdField_a_of_type_Adeb, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Adea);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((aoen)paramQQAppInterface.a(47)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

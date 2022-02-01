@@ -1,45 +1,18 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class zjw
-  extends yid<yiy>
+public final class zjw
+  implements Parcelable.Creator<SlideItemInfo>
 {
-  public zjw(@Nullable yih paramyih)
+  public SlideItemInfo a(Parcel paramParcel)
   {
-    super(paramyih);
+    return new SlideItemInfo(paramParcel);
   }
   
-  protected JobSegment<yig, yiy> a()
+  public SlideItemInfo[] a(int paramInt)
   {
-    return new yit();
-  }
-  
-  protected JobSegment<Integer, yig> a(yif paramyif)
-  {
-    return new zjx(paramyif);
-  }
-  
-  protected yiy a()
-  {
-    yij localyij = (yij)wpm.a(11);
-    List localList = localyij.b();
-    yiy localyiy = new yiy(new ErrorMessage());
-    localyiy.jdField_b_of_type_JavaUtilList = localyij.b(localList);
-    localyiy.jdField_b_of_type_Boolean = true;
-    localyiy.a = localyiy.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localyiy;
-  }
-  
-  protected yiy a(ErrorMessage paramErrorMessage)
-  {
-    return new yiy(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((yij)wpm.a(11)).b(paramList, paramBoolean);
+    return new SlideItemInfo[paramInt];
   }
 }
 

@@ -1,48 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
 
 public class bdjj
-  extends anii
-  implements Handler.Callback
 {
-  private String[] a = { "docs.qq.com" };
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public bdjj(QQAppInterface paramQQAppInterface)
+  private bdjj(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  
+  public String toString()
   {
-    super(paramQQAppInterface);
+    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
   }
-  
-  private void a(Runnable paramRunnable)
-  {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bdjk(this, paramRunnable)) == null) {
-      return;
-    }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
-  }
-  
-  public void a(String paramString)
-  {
-    a(new TenDocOCRExportHandler.1(this, paramString));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return bdjl.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

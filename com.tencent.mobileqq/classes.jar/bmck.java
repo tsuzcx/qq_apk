@@ -1,31 +1,21 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZLog;
+import com.tencent.smtt.sdk.WebView;
+import cooperation.comic.ui.QQComicFragment;
+import java.util.Observable;
+import java.util.Observer;
 
-final class bmck
-  implements bmco
+public class bmck
+  implements Observer
 {
-  public void a(boolean paramBoolean, Context paramContext, bmcp parambmcp)
+  public bmck(QQComicFragment paramQQComicFragment, WebView paramWebView) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean)
+    if (bmcx.a != null)
     {
-      long l1 = parambmcp.a.getLongExtra("key_launch_time", 0L);
-      if (l1 > 0L)
-      {
-        long l2 = System.currentTimeMillis();
-        QZLog.d("plugin_tag", 1, "IPluginManager onPluginReady Open Plugin Activity timedelay=" + (l2 - l1));
-      }
-      bmcj.b((Activity)paramContext, parambmcp);
-      return;
+      QLog.d("WebLog_WebViewFragment", 4, "RuntimeCreateObserver update ");
+      bmcx.a.a(this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext());
     }
-    Toast.makeText(BaseApplicationImpl.getContext(), anni.a(2131704642), 0).show();
   }
 }
 

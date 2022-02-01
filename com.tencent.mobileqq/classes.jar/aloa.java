@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class aloa
-  implements Parcelable.Creator<WordingItem>
+class aloa
+  implements View.OnTouchListener
 {
-  public WordingItem a(Parcel paramParcel)
-  {
-    return new WordingItem(paramParcel);
-  }
+  aloa(alnz paramalnz) {}
   
-  public WordingItem[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new WordingItem[paramInt];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

@@ -1,41 +1,23 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.DropdownView;
-import com.tencent.mobileqq.widget.DropdownView.1.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class bhwr
-  implements View.OnClickListener
+class bhwr
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public bhwr(DropdownView paramDropdownView) {}
+  bhwr(bhwq parambhwq) {}
   
-  public void onClick(View paramView)
+  public int getSpanSize(int paramInt)
   {
-    this.a.jdField_a_of_type_Bhws.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bhws.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Bhws.getAdapter() != null) && (this.a.jdField_a_of_type_Bhws.getAdapter().getCount() > 0))
+    int i = 3;
+    switch (this.a.getItemViewType(paramInt))
     {
-      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label167;
-      }
-      DropdownView.a(this.a).postDelayed(new DropdownView.1.1(this, paramView), 250L);
-      Context localContext = paramView.getContext();
-      if ((localContext != null) && ((localContext instanceof LoginActivity))) {
-        bcst.a(((LoginActivity)localContext).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
+    default: 
+      i = 1;
+    case 1: 
+    case 2: 
+    case 4: 
+      return i;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label167:
-      this.a.jdField_a_of_type_Bhws.dismissDropDown();
-    }
+    return 1;
   }
 }
 

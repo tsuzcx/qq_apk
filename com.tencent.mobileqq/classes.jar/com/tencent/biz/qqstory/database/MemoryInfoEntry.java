@@ -3,11 +3,11 @@ package com.tencent.biz.qqstory.database;
 import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
-import wev;
+import wiq;
 
 public class MemoryInfoEntry
   extends Entity
-  implements wev
+  implements wiq
 {
   public String cookie = "";
   public int isEnd = -1;

@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmkg;
+import bnlj;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
 import java.util.ArrayList;
-import yrk;
+import yvf;
 
 public class EditLocalGifSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new yrk();
+  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new yvf();
   @NonNull
   public int a;
   @NonNull
@@ -48,7 +48,7 @@ public class EditLocalGifSource
       paramString = new LocalMediaInfo();
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramString;
-    this.jdField_a_of_type_Long = bmkg.d;
+    this.jdField_a_of_type_Long = bnlj.d;
   }
   
   public EditLocalGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong)

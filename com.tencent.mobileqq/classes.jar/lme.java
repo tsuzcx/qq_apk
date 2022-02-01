@@ -1,98 +1,76 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.io.BufferedReader;
 
 public class lme
+  extends lmd
 {
-  private static int d = 48;
-  public int a;
-  public long a;
-  public lnm a;
-  public int b;
-  public int c;
+  private float jdField_a_of_type_Float;
+  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
+  private float jdField_b_of_type_Float;
+  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
+  private boolean c;
   
-  public lme()
+  public float a(float paramFloat)
   {
-    this.jdField_a_of_type_Lnm = new lnm();
-  }
-  
-  private static int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < 4)
-    {
-      j |= (paramArrayOfByte[(3 - i + paramInt)] & 0xFF) << (3 - i) * 4;
-      i += 1;
+    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+    int j = arrayOfFloat1.length;
+    int i = 1;
+    if (i < j) {
+      if (arrayOfFloat1[i] <= paramFloat) {}
     }
-    return j;
-  }
-  
-  private static long a(byte[] paramArrayOfByte, int paramInt)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < 8)
-    {
-      l |= (paramArrayOfByte[(7 - i + paramInt)] & 0xFF) << (7 - i) * 8;
-      i += 1;
-    }
-    return l;
-  }
-  
-  public static ArrayList<lme> a(byte[] paramArrayOfByte, int paramInt)
-  {
-    ArrayList localArrayList = null;
-    Object localObject;
-    if (paramArrayOfByte == null)
-    {
-      localObject = localArrayList;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("AVInviteAccount", 2, "getListFromBuffer detail is null");
-        localObject = localArrayList;
-      }
-    }
-    do
-    {
-      return localObject;
-      if (paramInt != 0) {
-        break;
-      }
-      localObject = localArrayList;
-    } while (!QLog.isColorLevel());
-    QLog.e("AVInviteAccount", 2, "getListFromBuffer buflen == 0");
-    return null;
-    int i = paramInt / d;
-    localArrayList = new ArrayList();
-    paramInt = 0;
     for (;;)
     {
-      localObject = localArrayList;
-      if (paramInt >= i) {
+      if (i == -1)
+      {
+        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
+        i += 1;
         break;
       }
-      localObject = new lme();
-      ((lme)localObject).jdField_a_of_type_Int = a(paramArrayOfByte, d * paramInt);
-      ((lme)localObject).jdField_a_of_type_Long = a(paramArrayOfByte, d * paramInt + 8);
-      try
+      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
+      j = i - 1;
+      float f1 = arrayOfFloat2[j];
+      float f2 = arrayOfFloat1[j];
+      float f3 = arrayOfFloat2[i];
+      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
+      i = -1;
+    }
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Float = llz.a(paramBufferedReader, "highMin");
+      this.jdField_b_of_type_Float = llz.a(paramBufferedReader, "highMax");
+      this.c = llz.a(paramBufferedReader, "relative");
+      this.jdField_b_of_type_ArrayOfFloat = new float[llz.a(paramBufferedReader, "scalingCount")];
+      int i = 0;
+      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
       {
-        ((lme)localObject).jdField_a_of_type_Lnm.a = new String(paramArrayOfByte, d * paramInt + 16, 5, "UTF-8");
-        ((lme)localObject).jdField_a_of_type_Lnm.b = new String(paramArrayOfByte, d * paramInt + 21, 5, "UTF-8");
-        ((lme)localObject).jdField_a_of_type_Lnm.c = new String(paramArrayOfByte, d * paramInt + 26, 12, "UTF-8");
-        ((lme)localObject).b = a(paramArrayOfByte, d * paramInt + 40);
-        ((lme)localObject).c = a(paramArrayOfByte, d * paramInt + 44);
-        localArrayList.add(localObject);
-        paramInt += 1;
+        this.jdField_b_of_type_ArrayOfFloat[i] = llz.a(paramBufferedReader, "scaling" + i);
+        i += 1;
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      this.jdField_a_of_type_ArrayOfFloat = new float[llz.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
       {
-        for (;;)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-        }
+        this.jdField_a_of_type_ArrayOfFloat[i] = llz.a(paramBufferedReader, "timeline" + i);
+        i += 1;
       }
     }
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * llu.a();
   }
 }
 

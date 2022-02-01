@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class bnoh
-  implements View.OnClickListener
+  implements bnok
 {
-  bnoh(bnod parambnod, bnol parambnol, WMEditItem paramWMEditItem) {}
+  bnoh(bnog parambnog) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
   {
-    bnod.a(this.jdField_a_of_type_Bnod, this.jdField_a_of_type_Bnol.a, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramJSONObject.put("recommend_on", paramBundle.getString("recommend_on"));
+    paramJSONObject.put("recommendPush_on", paramBundle.getString("recommendPush_on"));
+    paramJSONObject.put("recommendNotification_on", paramBundle.getString("recommendNotification_on"));
+    paramJSONObject.put("recommendChatCachePhoto_on", paramBundle.getString("recommendChatCachePhoto_on"));
   }
 }
 

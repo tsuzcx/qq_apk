@@ -1,41 +1,60 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.observer.BusinessObserver;
 
-public class avzf
-  implements View.OnClickListener
+class avzf
+  implements BusinessObserver
 {
-  public avzf(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
+  avzf(avzd paramavzd, avzh paramavzh, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 2;
-    if (!bgnt.a())
+    new Bundle();
+    paramBundle = paramBundle.getByteArray("data");
+    if (paramBundle == null)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693417, 0).a();
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, -10002);
       return;
     }
-    LocationRoom.Venue localVenue = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + localVenue);
-    }
-    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
-    for (;;)
+    FastAuthorize.AuthorizeResponse localAuthorizeResponse = new FastAuthorize.AuthorizeResponse();
+    try
     {
-      bcst.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_picked_location", localVenue);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      break;
-      i = 1;
+      localAuthorizeResponse.mergeFrom(paramBundle);
+      if ((localAuthorizeResponse.ret.get().equals("0")) && (localAuthorizeResponse.apk_name.has()))
+      {
+        if (localAuthorizeResponse.access_token.has()) {
+          this.jdField_a_of_type_Avzd.a.jdField_a_of_type_JavaLangString = localAuthorizeResponse.access_token.get();
+        }
+        if (localAuthorizeResponse.openid.has()) {
+          this.jdField_a_of_type_Avzd.a.b = localAuthorizeResponse.openid.get();
+        }
+        if (localAuthorizeResponse.pay_token.has()) {
+          this.jdField_a_of_type_Avzd.a.c = localAuthorizeResponse.pay_token.get();
+        }
+        this.jdField_a_of_type_Avzd.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, true, 0);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, -10003);
+      paramBundle.printStackTrace();
+      return;
+    }
+    QLog.e("XProxy", 2, "获取票据失败");
+    try
+    {
+      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, Integer.parseInt(localAuthorizeResponse.ret.get()));
+      return;
+    }
+    catch (NumberFormatException paramBundle)
+    {
+      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, 0);
+      QLog.e("XProxy", 2, "获取票据错误码不为int");
     }
   }
 }

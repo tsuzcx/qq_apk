@@ -1,39 +1,57 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adjo
-  extends nmf
+  implements adbw
 {
-  public adjo(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public int a()
   {
-    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
-    do
+    return 10007;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(164);
+    byte[] arrayOfByte = paramQQAppInterface.a().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (arrayOfByte != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
+    }
+    paramMessageRecord = paramQQAppInterface.a().a(paramMessageRecord.frienduin);
+    long l1 = 0L;
+    try
     {
-      return;
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      long l2 = Long.parseLong(paramMessageRecord);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramMessageRecord)
+    {
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString))
-        {
-          AddFriendLogicActivity.a(this.a, true);
-          this.a.a();
-          return;
-        }
-        AddFriendLogicActivity.a(this.a);
-        return;
+        QLog.d("QQGameMsgTmpRoutingType", 1, paramMessageRecord, new Object[0]);
       }
-      AddFriendLogicActivity.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
+    }
+    localCommTmp.to_uin.set(l1);
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8042;
   }
 }
 

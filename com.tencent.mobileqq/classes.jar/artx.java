@@ -1,76 +1,62 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import java.lang.ref.WeakReference;
 
-class artx
-  extends anry
+public class artx
+  implements Handler.Callback
 {
-  artx(arti paramarti, Bundle paramBundle, MessengerService paramMessengerService, boolean paramBoolean) {}
+  private WeakReference<DanmakuManager> a;
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  private artx(DanmakuManager paramDanmakuManager)
   {
-    int i = 1;
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    try
-    {
-      Object localObject = new Bundle();
-      if (paramBoolean) {}
-      for (;;)
-      {
-        ((Bundle)localObject).putInt("retCode", i);
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
-        }
-        localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
-        ((Intent)localObject).putExtra("action", "follow");
-        ((Intent)localObject).putExtra("isSuccess", paramBoolean);
-        ((Intent)localObject).putExtra("uin", paramString);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
-        zwp.a().a(new FollowUpdateEvent(1, paramString));
-        return;
-        i = 0;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
-    }
+    this.a = new WeakReference(paramDanmakuManager);
   }
   
-  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = 0;
-    super.onUnfollowPublicAccount(paramBoolean, paramString);
-    try
-    {
-      Object localObject = new Bundle();
-      if (paramBoolean) {
-        i = 1;
-      }
-      ((Bundle)localObject).putInt("retCode", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
-      }
-      localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
-      ((Intent)localObject).putExtra("action", "unFollow");
-      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
-      ((Intent)localObject).putExtra("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
-      zwp.a().a(new FollowUpdateEvent(0, paramString));
-      return;
+    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
+    if (localDanmakuManager == null) {
+      return false;
     }
-    catch (Throwable paramString)
+    switch (paramMessage.what)
     {
-      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+    default: 
+      return false;
+    case 1: 
+      DanmakuManager.a(localDanmakuManager, paramMessage);
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 2: 
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 4: 
+      DanmakuManager.b(localDanmakuManager);
+      return false;
+    case 3: 
+      DanmakuManager.c(localDanmakuManager);
+      return false;
+    case 5: 
+      DanmakuManager.b(localDanmakuManager, paramMessage);
+      return false;
+    case 6: 
+      DanmakuManager.d(localDanmakuManager);
+      return false;
+    case 7: 
+      DanmakuManager.e(localDanmakuManager);
+      return false;
+    case 8: 
+      DanmakuManager.f(localDanmakuManager);
+      return false;
+    case 9: 
+      DanmakuManager.g(localDanmakuManager);
+      return false;
+    case 10: 
+      DanmakuManager.h(localDanmakuManager);
+      return false;
     }
+    DanmakuManager.i(localDanmakuManager);
+    return false;
   }
 }
 

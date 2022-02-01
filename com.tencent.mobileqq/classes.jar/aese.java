@@ -1,20 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aese
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aese(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aese(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131717971), "qqsetting_notify_icon_key", paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
   }
 }
 

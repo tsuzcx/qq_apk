@@ -1,14 +1,14 @@
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
-
-public class aams
-  implements aamr
+final class aams
+  implements bljb
 {
-  public aams(AsyncRichTextView paramAsyncRichTextView) {}
+  aams(blir paramblir, aamv paramaamv) {}
   
-  public boolean a(String paramString)
+  public void onDismiss()
   {
-    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
-    return true;
+    this.jdField_a_of_type_Blir.dismiss();
+    if (this.jdField_a_of_type_Aamv != null) {
+      this.jdField_a_of_type_Aamv.a(true);
+    }
   }
 }
 

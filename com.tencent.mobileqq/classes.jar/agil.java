@@ -1,16 +1,8 @@
-public abstract class agil
+public abstract interface agil
 {
-  private boolean a;
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
+  public abstract int[] a();
 }
 
 

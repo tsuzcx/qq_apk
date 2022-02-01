@@ -1,10 +1,19 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArModelResource;
 
-public abstract interface aprx
+public final class aprx
+  implements Parcelable.Creator<ArModelResource>
 {
-  public abstract boolean needProcess(JSONObject paramJSONObject);
+  public ArModelResource a(Parcel paramParcel)
+  {
+    return new ArModelResource(paramParcel);
+  }
   
-  public abstract void process(JSONObject paramJSONObject, apry paramapry, Object paramObject);
+  public ArModelResource[] a(int paramInt)
+  {
+    return new ArModelResource[paramInt];
+  }
 }
 
 

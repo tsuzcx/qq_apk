@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/lfd" android:padding="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="156.0dip" android:layout_height="156.0dip" android:minHeight="156.0dip"
+<FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/lao" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/lbi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/lcb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/mis" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:id="@id/m_0" android:layout_width="fill_parent" android:layout_height="24.0dip" android:contentDescription="@string/wfp" />
+        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mbx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="@string/wfp" android:contentDescription="@string/wfp" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="312.0dip" android:layout_height="350.0dip" android:layout_marginTop="22.5dip">
+            <android.support.v7.widget.RecyclerView android:id="@id/lrz" android:scrollbars="none" android:clipToPadding="false" android:layout_width="312.0dip" android:layout_height="350.0dip" />
+            <View android:layout_gravity="bottom" android:background="@drawable/bjv" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+        </FrameLayout>
+        <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lva" android:background="@drawable/bjp" android:focusable="false" android:duplicateParentState="false" android:layout_width="296.0dip" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" />
+    </LinearLayout>
 </FrameLayout>

@@ -1,123 +1,53 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import java.io.IOException;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
 
-public class bqev
-  extends bqes
+class bqev
+  implements bqmo
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230756);
-  private float jdField_a_of_type_Float = 30.0F;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private int d = -1;
-  private int e;
+  bqev(bqeq parambqeq) {}
   
-  public bqev()
+  public void a()
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.mTextureType = 3553;
-    this.mFilterType = 106;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = zkh.a(paramString, null);
-      return;
+    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a();
+    if (this.a.jdField_a_of_type_Bqgk.a == 27) {
+      this.a.jdField_a_of_type_Bqgk.a(0);
     }
-    catch (IOException paramString)
+    if (this.a.jdField_a_of_type_Bqgk.a == 36)
     {
-      yqp.c("Q.qqstory.publish.edit GPUImagePixelationFilter", "setMosaicPath OutOfMemoryError", paramString);
+      bqcg localbqcg = (bqcg)this.a.a(bqcg.class);
+      if (localbqcg != null) {
+        localbqcg.c();
+      }
+      this.a.jdField_a_of_type_Bqgk.a(0);
     }
   }
   
-  public void onDestroy()
+  public void a(bqrk parambqrk)
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    if ((this.a.jdField_a_of_type_Bqgk.h() != 0) && (bqgk.a(bqeq.a(this.a), 134217728)))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      yqp.b("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap recycle");
-    }
-    if (this.d != -1) {
-      GlUtil.deleteTexture(this.d);
-    }
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_b_of_type_Float);
-    GLES20.glUniform1f(this.jdField_b_of_type_Int, this.jdField_c_of_type_Float);
-    GLES20.glUniform1f(this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      yqp.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap can't be null");
-      return;
-    }
-    GLES20.glActiveTexture(33985);
-    if ((this.d == -1) || (this.jdField_a_of_type_Boolean))
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
+      VideoSegmentPickerProviderView localVideoSegmentPickerProviderView = (VideoSegmentPickerProviderView)this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111);
+      if (localVideoSegmentPickerProviderView != null)
       {
-        yqp.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap is recycled");
-        return;
+        bqcg localbqcg = (bqcg)this.a.a(bqcg.class);
+        if (localbqcg != null)
+        {
+          localVideoSegmentPickerProviderView.setPlayMode(localbqcg.a());
+          localbqcg.n_();
+          localbqcg.b();
+        }
       }
-      if (this.d != -1) {
-        GlUtil.deleteTexture(this.d);
-      }
-      this.d = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111, new Object[] { parambqrk });
+      if (this.a.jdField_a_of_type_Bqgk.a == 0) {
+        this.a.jdField_a_of_type_Bqgk.a(36);
       }
     }
-    GLES20.glBindTexture(3553, this.d);
-    GLES20.glUniform1i(this.e, 1);
-  }
-  
-  public void onInitialized()
-  {
-    super.onInitialized();
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageWidthFactor");
-    checkLocation(this.jdField_a_of_type_Int, "imageWidthFactor");
-    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageHeightFactor");
-    checkLocation(this.jdField_b_of_type_Int, "imageHeightFactor");
-    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "pixel");
-    checkLocation(this.jdField_c_of_type_Int, "mPixelLocation");
-    this.e = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
-    a(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void onOutputSizeChanged(int paramInt1, int paramInt2)
-  {
-    super.onOutputSizeChanged(paramInt1, paramInt2);
-    yqp.a("Q.qqstory.publish.edit GPUImagePixelationFilter", "onOutputSizeChanged width=%s, height=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_b_of_type_Float = 0.0009259259F;
-    this.jdField_c_of_type_Float = 0.0005208334F;
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(103, new Object[] { parambqrk });
+    } while (this.a.jdField_a_of_type_Bqgk.a != 0);
+    this.a.jdField_a_of_type_Bqgk.a(27);
   }
 }
 

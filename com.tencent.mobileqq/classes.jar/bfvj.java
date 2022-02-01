@@ -1,104 +1,25 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
-public class bfvj
-  implements bfyg
+class bfvj
+  extends bfwn
 {
-  private long jdField_a_of_type_Long;
-  private UsingTimeReportManager jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  public String c;
+  bfvj(bfvh parambfvh) {}
   
-  public bfvj(String paramString1, String paramString2, String paramString3)
+  protected void a(Set<Long> paramSet)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
+    this.a.b = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(bfvh.c(this.a))))) {
+      this.a.b = 2;
+    }
+    bfvr.c("TroopFileTransferMgr", bfvr.a, "onW2MPausedDownload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.a > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.a(this);
-      this.jdField_b_of_type_Boolean = true;
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        bgri.a(bfvh.b(this.a), bfvh.d(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
     }
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.b(this);
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  private void h()
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseUsingTimeReport", 2, "stop,usingTime=" + l);
-    }
-    if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
-      a(l);
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    f();
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("BaseUsingTimeReport", 2, "start(), mStartTime=" + this.jdField_a_of_type_Long);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b()
-  {
-    h();
-    g();
-  }
-  
-  public void c()
-  {
-    h();
-  }
-  
-  public void d()
-  {
-    a();
-  }
-  
-  public void e()
-  {
-    b();
   }
 }
 

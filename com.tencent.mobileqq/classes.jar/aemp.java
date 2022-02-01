@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aemp
-  extends ayet
+  implements InputFilter
 {
-  public aemp(Leba paramLeba) {}
+  public aemp(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void a(Object paramObject)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    Leba.c(this.a);
+    if (paramCharSequence.toString().contains("\n")) {
+      return paramCharSequence.toString().replace("\n", "");
+    }
+    return null;
   }
 }
 

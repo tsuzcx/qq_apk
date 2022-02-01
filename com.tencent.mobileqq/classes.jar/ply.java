@@ -1,12 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
-
-public class ply
-  extends bmql
+public abstract interface ply
 {
-  protected void a(String paramString)
-  {
-    TaskManager.getInstance().accept(paramString);
-  }
+  public abstract void a(String paramString, plz paramplz);
 }
 
 

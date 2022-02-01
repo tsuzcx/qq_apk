@@ -1,25 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
 class amcg
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  amcg(amce paramamce) {}
+  amcg(amce paramamce, ContainerView paramContainerView) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    if (!(localObject instanceof amcj)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = (amcj)localObject;
-      if ((((amcj)localObject).a != null) && (this.a.a != null)) {
-        this.a.a.a(((amcj)localObject).a);
-      }
-    }
+    this.jdField_a_of_type_Amce.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView, paramView);
+    return false;
   }
 }
 

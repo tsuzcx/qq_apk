@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import afur;
+import agej;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -25,8 +25,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import azkb;
-import azkc;
+import bacn;
+import baco;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.Collections;
@@ -47,7 +47,7 @@ public class SingleTouchLayout
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
   View jdField_a_of_type_AndroidViewView;
-  public azkc a;
+  public baco a;
   boolean jdField_a_of_type_Boolean = true;
   public float b;
   public int b;
@@ -189,20 +189,20 @@ public class SingleTouchLayout
     return ((Integer)paramVarArgs.get(paramVarArgs.size() - 1)).intValue();
   }
   
-  Point a(int paramInt, azkb paramazkb)
+  Point a(int paramInt, bacn parambacn)
   {
     switch (paramInt)
     {
     default: 
-      return paramazkb.jdField_a_of_type_AndroidGraphicsPoint;
+      return parambacn.jdField_a_of_type_AndroidGraphicsPoint;
     case 0: 
-      return paramazkb.jdField_a_of_type_AndroidGraphicsPoint;
+      return parambacn.jdField_a_of_type_AndroidGraphicsPoint;
     case 1: 
-      return paramazkb.jdField_b_of_type_AndroidGraphicsPoint;
+      return parambacn.jdField_b_of_type_AndroidGraphicsPoint;
     case 2: 
-      return paramazkb.jdField_c_of_type_AndroidGraphicsPoint;
+      return parambacn.jdField_c_of_type_AndroidGraphicsPoint;
     }
-    return paramazkb.jdField_d_of_type_AndroidGraphicsPoint;
+    return parambacn.jdField_d_of_type_AndroidGraphicsPoint;
   }
   
   public PointF a()
@@ -210,50 +210,50 @@ public class SingleTouchLayout
     return this.jdField_c_of_type_AndroidGraphicsPointF;
   }
   
-  azkb a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
+  bacn a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
     Point localPoint1 = new Point(paramInt1, paramInt2);
     Point localPoint2 = new Point(paramInt3, paramInt2);
     Point localPoint3 = new Point(paramInt3, paramInt4);
     Point localPoint4 = new Point(paramInt1, paramInt4);
     Point localPoint5 = new Point((paramInt1 + paramInt3) / 2, (paramInt2 + paramInt4) / 2);
-    azkb localazkb = new azkb(this);
-    localazkb.jdField_a_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint1, paramFloat);
-    localazkb.jdField_b_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint2, paramFloat);
-    localazkb.jdField_c_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint3, paramFloat);
-    localazkb.jdField_d_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint4, paramFloat);
-    paramInt1 = a(new Integer[] { Integer.valueOf(localazkb.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localazkb.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localazkb.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localazkb.jdField_d_of_type_AndroidGraphicsPoint.x) });
-    paramInt2 = b(new Integer[] { Integer.valueOf(localazkb.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localazkb.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localazkb.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localazkb.jdField_d_of_type_AndroidGraphicsPoint.x) });
-    localazkb.jdField_a_of_type_Int = (paramInt1 - paramInt2);
-    paramInt3 = a(new Integer[] { Integer.valueOf(localazkb.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localazkb.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localazkb.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localazkb.jdField_d_of_type_AndroidGraphicsPoint.y) });
-    paramInt4 = b(new Integer[] { Integer.valueOf(localazkb.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localazkb.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localazkb.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localazkb.jdField_d_of_type_AndroidGraphicsPoint.y) });
-    localazkb.jdField_b_of_type_Int = (paramInt3 - paramInt4);
+    bacn localbacn = new bacn(this);
+    localbacn.jdField_a_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint1, paramFloat);
+    localbacn.jdField_b_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint2, paramFloat);
+    localbacn.jdField_c_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint3, paramFloat);
+    localbacn.jdField_d_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint4, paramFloat);
+    paramInt1 = a(new Integer[] { Integer.valueOf(localbacn.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localbacn.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localbacn.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localbacn.jdField_d_of_type_AndroidGraphicsPoint.x) });
+    paramInt2 = b(new Integer[] { Integer.valueOf(localbacn.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localbacn.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localbacn.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localbacn.jdField_d_of_type_AndroidGraphicsPoint.x) });
+    localbacn.jdField_a_of_type_Int = (paramInt1 - paramInt2);
+    paramInt3 = a(new Integer[] { Integer.valueOf(localbacn.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localbacn.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localbacn.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localbacn.jdField_d_of_type_AndroidGraphicsPoint.y) });
+    paramInt4 = b(new Integer[] { Integer.valueOf(localbacn.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localbacn.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localbacn.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localbacn.jdField_d_of_type_AndroidGraphicsPoint.y) });
+    localbacn.jdField_b_of_type_Int = (paramInt3 - paramInt4);
     localPoint1 = new Point((paramInt1 + paramInt2) / 2, (paramInt3 + paramInt4) / 2);
-    localazkb.jdField_c_of_type_Int = (localazkb.jdField_a_of_type_Int / 2 - localPoint1.x);
-    localazkb.jdField_d_of_type_Int = (localazkb.jdField_b_of_type_Int / 2 - localPoint1.y);
+    localbacn.jdField_c_of_type_Int = (localbacn.jdField_a_of_type_Int / 2 - localPoint1.x);
+    localbacn.jdField_d_of_type_Int = (localbacn.jdField_b_of_type_Int / 2 - localPoint1.y);
     paramInt2 = this.jdField_e_of_type_Int / 2;
     paramInt1 = this.jdField_f_of_type_Int / 2;
-    localPoint1 = localazkb.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localazkb.jdField_c_of_type_Int + paramInt2;
-    localPoint1 = localazkb.jdField_b_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localazkb.jdField_c_of_type_Int + paramInt2;
-    localPoint1 = localazkb.jdField_c_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localazkb.jdField_c_of_type_Int + paramInt2;
-    localPoint1 = localazkb.jdField_d_of_type_AndroidGraphicsPoint;
+    localPoint1 = localbacn.jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint1.x += localbacn.jdField_c_of_type_Int + paramInt2;
+    localPoint1 = localbacn.jdField_b_of_type_AndroidGraphicsPoint;
+    localPoint1.x += localbacn.jdField_c_of_type_Int + paramInt2;
+    localPoint1 = localbacn.jdField_c_of_type_AndroidGraphicsPoint;
+    localPoint1.x += localbacn.jdField_c_of_type_Int + paramInt2;
+    localPoint1 = localbacn.jdField_d_of_type_AndroidGraphicsPoint;
     paramInt3 = localPoint1.x;
-    localPoint1.x = (paramInt2 + localazkb.jdField_c_of_type_Int + paramInt3);
-    localPoint1 = localazkb.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localazkb.jdField_d_of_type_Int + paramInt1;
-    localPoint1 = localazkb.jdField_b_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localazkb.jdField_d_of_type_Int + paramInt1;
-    localPoint1 = localazkb.jdField_c_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localazkb.jdField_d_of_type_Int + paramInt1;
-    localPoint1 = localazkb.jdField_d_of_type_AndroidGraphicsPoint;
+    localPoint1.x = (paramInt2 + localbacn.jdField_c_of_type_Int + paramInt3);
+    localPoint1 = localbacn.jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint1.y += localbacn.jdField_d_of_type_Int + paramInt1;
+    localPoint1 = localbacn.jdField_b_of_type_AndroidGraphicsPoint;
+    localPoint1.y += localbacn.jdField_d_of_type_Int + paramInt1;
+    localPoint1 = localbacn.jdField_c_of_type_AndroidGraphicsPoint;
+    localPoint1.y += localbacn.jdField_d_of_type_Int + paramInt1;
+    localPoint1 = localbacn.jdField_d_of_type_AndroidGraphicsPoint;
     paramInt2 = localPoint1.y;
-    localPoint1.y = (paramInt1 + localazkb.jdField_d_of_type_Int + paramInt2);
-    localazkb.jdField_e_of_type_AndroidGraphicsPoint = a(this.m, localazkb);
-    localazkb.jdField_f_of_type_AndroidGraphicsPoint = a(this.n, localazkb);
-    return localazkb;
+    localPoint1.y = (paramInt1 + localbacn.jdField_d_of_type_Int + paramInt2);
+    localbacn.jdField_e_of_type_AndroidGraphicsPoint = a(this.m, localbacn);
+    localbacn.jdField_f_of_type_AndroidGraphicsPoint = a(this.n, localbacn);
+    return localbacn;
   }
   
   void a()
@@ -265,8 +265,8 @@ public class SingleTouchLayout
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.i);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.j);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_c_of_type_Float = afur.a(2.0F, getResources());
-    this.jdField_d_of_type_Float = afur.a(1.0F, getResources());
+    this.jdField_c_of_type_Float = agej.a(2.0F, getResources());
+    this.jdField_d_of_type_Float = agej.a(1.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_c_of_type_Float, 0.0F, this.jdField_d_of_type_Float, -16777216);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inDensity = 320;
@@ -274,14 +274,14 @@ public class SingleTouchLayout
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847406, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847423, localOptions);
       if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {}
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
       try
       {
-        this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847407, localOptions);
+        this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847424, localOptions);
         setIconSize(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
         a();
         return;
@@ -338,18 +338,18 @@ public class SingleTouchLayout
       QLog.d("SingleTouchLayout", 2, "transformDraw(): mActualViewWidth=" + i1 + ", mActualViewHeight=" + i2);
     }
     Object localObject = a(-this.jdField_h_of_type_Int, -this.jdField_h_of_type_Int, this.jdField_h_of_type_Int + i1, i2 + this.jdField_h_of_type_Int, paramFloat2);
-    if ((a(((azkb)localObject).jdField_a_of_type_Int, ((azkb)localObject).jdField_b_of_type_Int)) || (!this.jdField_e_of_type_Boolean) || (this.jdField_c_of_type_AndroidGraphicsPointF.x == 0.0F) || (this.jdField_c_of_type_AndroidGraphicsPointF.y == 0.0F) || (!this.jdField_a_of_type_Boolean))
+    if ((a(((bacn)localObject).jdField_a_of_type_Int, ((bacn)localObject).jdField_b_of_type_Int)) || (!this.jdField_e_of_type_Boolean) || (this.jdField_c_of_type_AndroidGraphicsPointF.x == 0.0F) || (this.jdField_c_of_type_AndroidGraphicsPointF.y == 0.0F) || (!this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_AndroidGraphicsPoint = ((azkb)localObject).jdField_a_of_type_AndroidGraphicsPoint;
-      this.jdField_b_of_type_AndroidGraphicsPoint = ((azkb)localObject).jdField_b_of_type_AndroidGraphicsPoint;
-      this.jdField_c_of_type_AndroidGraphicsPoint = ((azkb)localObject).jdField_c_of_type_AndroidGraphicsPoint;
-      this.jdField_d_of_type_AndroidGraphicsPoint = ((azkb)localObject).jdField_d_of_type_AndroidGraphicsPoint;
-      this.jdField_e_of_type_AndroidGraphicsPoint = ((azkb)localObject).jdField_e_of_type_AndroidGraphicsPoint;
-      this.jdField_f_of_type_AndroidGraphicsPoint = ((azkb)localObject).jdField_f_of_type_AndroidGraphicsPoint;
-      this.jdField_a_of_type_Int = ((azkb)localObject).jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = ((azkb)localObject).jdField_b_of_type_Int;
-      this.k = ((azkb)localObject).jdField_c_of_type_Int;
-      this.l = ((azkb)localObject).jdField_d_of_type_Int;
+      this.jdField_a_of_type_AndroidGraphicsPoint = ((bacn)localObject).jdField_a_of_type_AndroidGraphicsPoint;
+      this.jdField_b_of_type_AndroidGraphicsPoint = ((bacn)localObject).jdField_b_of_type_AndroidGraphicsPoint;
+      this.jdField_c_of_type_AndroidGraphicsPoint = ((bacn)localObject).jdField_c_of_type_AndroidGraphicsPoint;
+      this.jdField_d_of_type_AndroidGraphicsPoint = ((bacn)localObject).jdField_d_of_type_AndroidGraphicsPoint;
+      this.jdField_e_of_type_AndroidGraphicsPoint = ((bacn)localObject).jdField_e_of_type_AndroidGraphicsPoint;
+      this.jdField_f_of_type_AndroidGraphicsPoint = ((bacn)localObject).jdField_f_of_type_AndroidGraphicsPoint;
+      this.jdField_a_of_type_Int = ((bacn)localObject).jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = ((bacn)localObject).jdField_b_of_type_Int;
+      this.k = ((bacn)localObject).jdField_c_of_type_Int;
+      this.l = ((bacn)localObject).jdField_d_of_type_Int;
       localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject).leftMargin = ((this.jdField_a_of_type_Int + this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidViewView.getWidth()) / 2);
       ((FrameLayout.LayoutParams)localObject).topMargin = ((this.jdField_b_of_type_Int + this.jdField_f_of_type_Int - this.jdField_a_of_type_AndroidViewView.getHeight()) / 2);
@@ -541,7 +541,7 @@ public class SingleTouchLayout
           Log.d("SingleTouchLayout", "ActionDown -- (" + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ")");
         }
         Log.d("SingleTouchLayout", "ActionUp -- (" + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ")");
-        if ((this.jdField_a_of_type_Azkc != null) && (this.jdField_a_of_type_Boolean))
+        if ((this.jdField_a_of_type_Baco != null) && (this.jdField_a_of_type_Boolean))
         {
           if (this.jdField_g_of_type_Int == 2) {
             break label358;
@@ -552,17 +552,17 @@ public class SingleTouchLayout
           if (!b(paramMotionEvent.getX(), paramMotionEvent.getY())) {
             break label314;
           }
-          this.jdField_a_of_type_Azkc.b(this);
+          this.jdField_a_of_type_Baco.b(this);
         }
         for (;;)
         {
           this.jdField_g_of_type_Int = 0;
           break;
-          this.jdField_a_of_type_Azkc.a(this);
+          this.jdField_a_of_type_Baco.a(this);
           continue;
-          this.jdField_a_of_type_Azkc.a(this, paramMotionEvent.getX() - this.jdField_e_of_type_Float, paramMotionEvent.getY() - this.jdField_f_of_type_Float);
+          this.jdField_a_of_type_Baco.a(this, paramMotionEvent.getX() - this.jdField_e_of_type_Float, paramMotionEvent.getY() - this.jdField_f_of_type_Float);
           continue;
-          this.jdField_a_of_type_Azkc.a(this, this.jdField_h_of_type_Float);
+          this.jdField_a_of_type_Baco.a(this, this.jdField_h_of_type_Float);
         }
         if (QLog.isColorLevel()) {
           QLog.d("SingleTouchLayout", 4, "ActionMove: x=" + paramMotionEvent.getX() + ", y=" + paramMotionEvent.getY());

@@ -1,17 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import NS_MOBILE_FEEDS.mobile_online_report_item;
+import NS_MOBILE_FEEDS.mobile_online_report_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-class bngl
-  implements DialogInterface.OnClickListener
+public class bngl
+  extends QzoneExternalRequest
 {
-  bngl(bngh parambngh) {}
+  public JceStruct a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bngl(long paramLong, ArrayList<mobile_online_report_item> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    mobile_online_report_req localmobile_online_report_req = new mobile_online_report_req();
+    localmobile_online_report_req.appid = 8001;
+    localmobile_online_report_req.type_id = 0;
+    localmobile_online_report_req.uin = paramLong;
+    localmobile_online_report_req.vecOnlineItem = paramArrayList;
+    this.a = localmobile_online_report_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.reportOnlineTime";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "reportOnlineTime";
   }
 }
 

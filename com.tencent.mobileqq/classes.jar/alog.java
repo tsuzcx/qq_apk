@@ -1,90 +1,62 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.util.Log;
-import com.tencent.maxvideo.trim.TrimNative;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.debug.PstnCardTestActivity;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class alog
+class alog
+  implements blop
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
+  alog(alof paramalof) {}
   
-  public static int a(String paramString, int paramInt1, int paramInt2)
+  public void a(bloo parambloo)
   {
-    return a(paramString, paramInt1, paramInt2, true);
-  }
-  
-  public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    a = paramInt5;
-    b = paramInt6;
-    try
+    switch (parambloo.a)
     {
-      paramInt1 = TrimNative.prepare(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-      return paramInt1;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("ThumbnailUtils", 1, "init failed:" + Log.getStackTraceString(paramString));
-    }
-    return -444;
-  }
-  
-  public static int a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    c = paramInt1;
-    d = paramInt2;
-    if (paramBoolean)
-    {
-      if (c <= d) {
-        break label55;
+    default: 
+      if (AudioHelper.e()) {
+        PstnCardTestActivity.onDebugMenuEvent(parambloo, this.a.a);
       }
-      c = 480;
-      d = (int)(d / (paramInt1 * 1.0D / 480.0D));
+      return;
+    case 2131697919: 
+      this.a.e();
+      return;
+    case 2131691111: 
+      this.a.d();
+      return;
+    case 2131691121: 
+      this.a.c();
+      return;
+    case 2131691115: 
+      this.a.f();
+      return;
+    case 2131691122: 
+      this.a.i();
+      return;
+    case 2131691123: 
+      alof.a(this.a);
+      return;
+    case 2131691113: 
+      this.a.a(8);
+      bdll.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
+      return;
+    case 2131691120: 
+      this.a.h();
+      return;
+    case 2131691114: 
+      this.a.g();
+      return;
+    case 2131691117: 
+      MiniAppUtils.handleMiniAppMoreClick(this.a.a);
+      bdll.b(this.a.a.app, "dc00898", "", "", "0X8009CB9", "0X8009CB9", 0, 0, "", "", "", "");
+      return;
+    case 2131691116: 
+      this.a.m();
+      return;
+    case 2131698358: 
+      alof.b(this.a);
+      return;
     }
-    for (;;)
-    {
-      return TrimNative.initGetFrame(paramString, c, d);
-      label55:
-      d = 480;
-      c = (int)(c / (paramInt2 * 1.0D / 480.0D));
-    }
-  }
-  
-  public static Bitmap a(long paramLong1, long paramLong2)
-  {
-    if ((c <= 0) || (d <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(c, d, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getFrame(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
-  }
-  
-  public static Bitmap b(long paramLong1, long paramLong2)
-  {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
+    this.a.n();
   }
 }
 

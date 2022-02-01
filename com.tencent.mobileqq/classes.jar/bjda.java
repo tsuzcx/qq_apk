@@ -1,46 +1,43 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.mobileqq.widget.ScrollerRunnable.4;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bjda
+  implements Animator.AnimatorListener
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("qav_sdk_thread_sub");
-  private static Handler b = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public bjda(ScrollerRunnable.4 param4) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
+    if (this.a.a.getParent() != null)
+    {
+      this.a.a.clearAnimation();
+      if (QLog.isColorLevel()) {
+        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
+    }
+    if ((bgiy.a(this.a.this$0.k)) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.obtainMessage(50).sendToTarget();
+    }
   }
   
-  public static Handler a()
-  {
-    return jdField_a_of_type_AndroidOsHandler;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public static void a(Runnable paramRunnable)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    b.post(paramRunnable);
-  }
-  
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    b.postDelayed(paramRunnable, paramLong);
-  }
-  
-  public static Handler b()
-  {
-    return b;
-  }
-  
-  public static void b(Runnable paramRunnable)
-  {
-    b.removeCallbacks(paramRunnable);
-  }
-  
-  public static void c(Runnable paramRunnable)
-  {
-    jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
+    }
   }
 }
 

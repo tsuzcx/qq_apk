@@ -1,120 +1,74 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.mobileqq.widget.FolderTextView;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.ThemeImageView;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class aldg
-  extends alcd
+  extends biht
 {
-  private int jdField_a_of_type_Int = 2131562788;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  public aldg(PreloadManager paramPreloadManager, DownloadParam paramDownloadParam, aldq paramaldq, WeakReference paramWeakReference) {}
   
-  public int a()
+  public void onDoneFile(bihu parambihu)
   {
-    return 1;
-  }
-  
-  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
-  {
-    if (paramView == null)
+    super.onDoneFile(parambihu);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "RealTime onDoneFile|" + parambihu.jdField_a_of_type_Int + "|" + parambihu.jdField_a_of_type_JavaLangString + "|" + ((File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString)).getAbsolutePath());
+    }
+    Object localObject2;
+    Object localObject1;
+    if ((parambihu.jdField_a_of_type_Int == 0) && (parambihu.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambihu.jdField_a_of_type_JavaLangString)))
     {
-      paramViewGroup = new aldh();
-      paramView = a(paramContext, this.jdField_a_of_type_Int, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376214));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376202));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376212));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131376201));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131369333));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131379986));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)paramView.findViewById(2131379602));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363816));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)paramView.findViewById(2131363278));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramView.findViewById(2131363285));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setSupportMaskView(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramOnClickListener);
-      paramViewGroup.b.setOnClickListener(paramOnClickListener);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramViewGroup);
-      paramView.setTag(paramViewGroup);
-      paramOnLongClickListener = (RecentItemRecommendTroopData)paramObject;
-      paramViewGroup.a(paramOnLongClickListener, paramalby);
-      a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(-1, Integer.valueOf(paramInt));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(-1, Integer.valueOf(paramInt));
-      paramViewGroup.b.setTag(-1, Integer.valueOf(paramInt));
-      paramalby = null;
-      paramObject = paramalby;
-      if (paramOnLongClickListener.mUser != null)
+      localObject2 = (File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString);
+      if (localObject2 == null)
       {
-        paramObject = paramalby;
-        if ((paramOnLongClickListener.mUser.extraInfo instanceof RecentRecommendTroopItem)) {
-          paramObject = (RecentRecommendTroopItem)paramOnLongClickListener.mUser.extraInfo;
+        localObject1 = "";
+        localObject1 = MD5Coding.encodeFile2HexStr((String)localObject1);
+        if ((localObject2 == null) || (!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
+          break label242;
         }
-      }
-      if (paramObject != null) {
-        break label437;
-      }
-      paramalby = "";
-      label358:
-      if (paramObject != null) {
-        break label445;
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked)) || (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked.equalsIgnoreCase((String)localObject1))) {
+          break label224;
+        }
+        if (this.jdField_a_of_type_Aldq != null) {
+          this.jdField_a_of_type_Aldq.onResult(2, PreloadManager.PathResult.getFailRes(parambihu.jdField_a_of_type_JavaLangString));
+        }
+        PreloadManager.a(parambihu.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
       }
     }
-    label437:
-    label445:
-    for (paramObject = "";; paramObject = paramObject.recomAlgol)
+    label224:
+    label242:
+    do
     {
-      bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp_grp", 0, 0, paramalby, paramObject, "", "");
-      if (anpk.e)
+      do
       {
-        bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp", 0, 0, "", "", "", "");
-        anpk.e = false;
-      }
-      return paramView;
-      paramViewGroup = (aldh)paramView.getTag();
-      break;
-      paramalby = paramObject.uin;
-      break label358;
-    }
-  }
-  
-  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
-  {
-    if ((paramRecentBaseData == null) || (paramContext == null)) {
-      return null;
-    }
-    int i = paramRecentBaseData.mMenuFlag;
-    paramRecentBaseData = paramContext.getResources();
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    for (;;)
-    {
-      if ((i & 0xF) == 1) {
-        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
-      }
-      return this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
+        do
+        {
+          return;
+          localObject1 = ((File)localObject2).getAbsolutePath();
+          break;
+          alev.a(parambihu.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        } while (!PreloadManager.a((PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
+        if (parambihu.jdField_a_of_type_Int != 0) {
+          break label339;
+        }
+        localObject1 = alev.a(parambihu.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.isForceUnzip, 0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        localObject2 = new PreloadManager.PathResult();
+        ((PreloadManager.PathResult)localObject2).url = parambihu.jdField_a_of_type_JavaLangString;
+        ((PreloadManager.PathResult)localObject2).filePath = ((ResourceInfo)localObject1).filePath;
+        ((PreloadManager.PathResult)localObject2).folderPath = ((ResourceInfo)localObject1).folderPath;
+      } while (this.jdField_a_of_type_Aldq == null);
+      this.jdField_a_of_type_Aldq.onResult(0, (PreloadManager.PathResult)localObject2);
+      return;
+    } while (this.jdField_a_of_type_Aldq == null);
+    label339:
+    this.jdField_a_of_type_Aldq.onResult(1, PreloadManager.PathResult.getFailRes(parambihu.jdField_a_of_type_JavaLangString, parambihu.jdField_a_of_type_Int));
   }
 }
 

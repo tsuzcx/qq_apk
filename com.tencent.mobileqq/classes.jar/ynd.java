@@ -1,89 +1,51 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.widget.AbsListView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
 
 public class ynd
-  implements bkhe
+  extends wjm<ymx, yml>
 {
-  public ynd(MystoryListView paramMystoryListView) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public ynd(ymx paramymx)
   {
-    int j;
-    int k;
-    int m;
-    int i;
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
-    {
-      if (-MystoryListView.b(this.a) > zlx.d(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
-        this.a.jdField_a_of_type_Ync.b(true);
-      }
-      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
-        return;
-      }
-      View localView = paramAbsListView.getChildAt(0);
-      j = localView.getTop();
-      k = localView.getBottom();
-      m = localView.getHeight();
-      if (paramInt1 <= MystoryListView.c(this.a)) {
-        break label257;
-      }
-      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
-      i = j - MystoryListView.d(this.a);
-    }
-    for (;;)
-    {
-      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
-      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
-      MystoryListView.b(this.a, j);
-      MystoryListView.c(this.a, k);
-      MystoryListView.d(this.a, m);
-      MystoryListView.a(this.a, paramInt1);
-      if (MystoryListView.a(this.a) == null) {
-        break;
-      }
-      MystoryListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      return;
-      label257:
-      if (paramInt1 < MystoryListView.c(this.a))
-      {
-        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
-        i = k - MystoryListView.f(this.a);
-      }
-      else
-      {
-        i = k - MystoryListView.f(this.a);
-      }
-    }
+    super(paramymx);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(@NonNull ymx paramymx, @NonNull yml paramyml)
   {
-    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      if (MystoryListView.a(this.a) != null) {
-        MystoryListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-      }
+    if (paramyml.jdField_a_of_type_Int == 0) {
       return;
-      MystoryListView.a(this.a, false);
-      continue;
-      View localView = paramAbsListView.getChildAt(0);
-      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      if (localView != null)
-      {
-        MystoryListView.b(this.a, localView.getTop());
-        MystoryListView.c(this.a, localView.getBottom());
-        MystoryListView.d(this.a, localView.getHeight());
-      }
-      MystoryListView.a(this.a, true);
-      MystoryListView.e(this.a, 0);
     }
+    Object localObject = paramymx.a(paramyml.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramyml.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (!(localObject instanceof ymm))
+    {
+      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramyml.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (ymm)localObject;
+    FeedVideoInfo localFeedVideoInfo = ((ymk)wth.a(12)).a(paramyml.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((ymm)localObject).a).mVideoPullType);
+    if (localFeedVideoInfo == null)
+    {
+      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramyml.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((ymm)localObject).a).mVideoPullType) });
+      return;
+    }
+    ((ymm)localObject).c(localFeedVideoInfo.mVideoItemList, true);
+    ((GeneralFeedItem)((ymm)localObject).a).updateVideoInfo(localFeedVideoInfo);
+    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramyml.jdField_a_of_type_JavaLangString, Integer.valueOf(((ymm)localObject).a().size()));
+    ymx.a(paramymx).a((ynv)localObject);
   }
+  
+  public Class acceptEventClass()
+  {
+    return yml.class;
+  }
+  
+  public void b(@NonNull ymx paramymx, @NonNull yml paramyml) {}
 }
 
 

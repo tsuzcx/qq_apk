@@ -1,21 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaoj
-  extends anym
+  implements View.OnClickListener
 {
-  public aaoj(TroopMemberApiService paramTroopMemberApiService) {}
+  public aaoj(VideoPlayerView paramVideoPlayerView) {}
   
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.a(147, paramBundle);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
+    VideoPlayerView.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

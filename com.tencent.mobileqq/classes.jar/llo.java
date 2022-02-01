@@ -1,24 +1,8 @@
-import java.io.BufferedReader;
-
-public class llo
+public abstract interface llo
 {
-  boolean a;
-  boolean b;
+  public abstract void a(int paramInt);
   
-  public void a(BufferedReader paramBufferedReader)
-  {
-    if (!this.b)
-    {
-      this.a = lll.a(paramBufferedReader, "active");
-      return;
-    }
-    this.a = true;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
+  public abstract void invalidate();
 }
 
 

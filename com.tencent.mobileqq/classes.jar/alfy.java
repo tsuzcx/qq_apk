@@ -1,30 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-
 public class alfy
-  implements Animator.AnimatorListener
 {
-  public alfy(LoginView paramLoginView) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public alfy(String paramString, float paramFloat)
   {
-    LoginView.c(this.a, false);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    LoginView.c(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

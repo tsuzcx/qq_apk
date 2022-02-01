@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.leba;
 
-import ajvh;
-import ajvi;
-import antt;
-import arcs;
+import akgq;
+import akgr;
+import aogd;
+import arsh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.LebaPluginInfo;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class LebaMgrDataLogic$1
   implements Runnable
 {
-  public LebaMgrDataLogic$1(ajvh paramajvh, arcs paramarcs, boolean paramBoolean) {}
+  public LebaMgrDataLogic$1(akgq paramakgq, arsh paramarsh, boolean paramBoolean) {}
   
   public void run()
   {
@@ -24,10 +24,10 @@ public class LebaMgrDataLogic$1
       return;
     }
     localObject = (QQAppInterface)localObject;
-    QLog.i("leba_sort_LebaMgrDataLogic", 1, "handlePluginItem name: " + this.jdField_a_of_type_Arcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + "  cCurFlag:" + this.jdField_a_of_type_Arcs.jdField_a_of_type_Byte);
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "handlePluginItem name: " + this.jdField_a_of_type_Arsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + "  cCurFlag:" + this.jdField_a_of_type_Arsh.jdField_a_of_type_Byte);
     long l = NetConnInfoCenter.getServerTimeMillis();
-    ajvi.a().a((QQAppInterface)localObject, this.jdField_a_of_type_Arcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, this.jdField_a_of_type_Boolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-    ((antt)((QQAppInterface)localObject).a(31)).a(String.valueOf(this.jdField_a_of_type_Arcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), this.jdField_a_of_type_Boolean, l);
+    akgr.a().a((QQAppInterface)localObject, this.jdField_a_of_type_Arsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, this.jdField_a_of_type_Boolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+    ((aogd)((QQAppInterface)localObject).a(31)).a(String.valueOf(this.jdField_a_of_type_Arsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), this.jdField_a_of_type_Boolean, l);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
 import Override;
-import aiti;
-import aitj;
-import aitk;
+import ajer;
+import ajes;
+import ajet;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -18,14 +18,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import anni;
+import anzj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import tyg;
+import tyi;
 
 public class SearchContactsActivity
   extends SearchBaseActivity
@@ -34,7 +34,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new aitk(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new ajet(this);
   }
   
   private void a(String paramString)
@@ -76,7 +76,7 @@ public class SearchContactsActivity
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131712383) + tyg.a(this.app, getApplicationContext()) + anni.a(2131712382));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anzj.a(2131712492) + tyi.a(this.app, getApplicationContext()) + anzj.a(2131712491));
         this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
@@ -85,19 +85,19 @@ public class SearchContactsActivity
     else
     {
       if (this.h == 1) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131712390));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anzj.a(2131712499));
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aiti(this, bool));
-      String str2 = getResources().getString(2131690582);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ajer(this, bool));
+      String str2 = getResources().getString(2131690580);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aitj(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ajes(this));
       if (AppSetting.c)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
         if (this.i != 12) {
           break label263;
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anni.a(2131712392));
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anzj.a(2131712501));
       }
     }
     for (;;)
@@ -106,10 +106,10 @@ public class SearchContactsActivity
         break label278;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131712389));
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(anzj.a(2131712498));
       break;
       label263:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anni.a(2131712388));
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anzj.a(2131712497));
     }
     label278:
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);

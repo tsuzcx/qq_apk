@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
 public class baoo
-  implements bcit
+  implements View.OnTouchListener
 {
-  public baoo(CameraCaptureView paramCameraCaptureView) {}
+  public baoo(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
+    if (paramMotionEvent.getAction() == 0) {
+      QCallDetailActivity.a(this.a).setPressed(true);
     }
-    if (paramBoolean1)
-    {
-      CameraCaptureView.a(this.a, true);
-      return;
+    while (1 != paramMotionEvent.getAction()) {
+      return false;
     }
-    CameraCaptureView.a.g();
+    QCallDetailActivity.a(this.a).setPressed(false);
+    return false;
   }
 }
 

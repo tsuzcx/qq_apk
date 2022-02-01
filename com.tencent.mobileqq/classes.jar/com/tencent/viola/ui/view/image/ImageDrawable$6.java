@@ -1,15 +1,16 @@
 package com.tencent.viola.ui.view.image;
 
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView.ScaleType;
 
 final class ImageDrawable$6
   implements Runnable
 {
-  ImageDrawable$6(ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener, Drawable paramDrawable, String paramString) {}
+  ImageDrawable$6(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener) {}
   
   public void run()
   {
-    this.val$listener.getDrawable(this.val$finalResult, this.val$url);
+    ImageDrawable.access$200(this.val$drawable, this.val$scaleType, this.val$url, this.val$blurRadius, this.val$vWidth, this.val$vHeight, this.val$scaleRadio, this.val$listener);
   }
 }
 

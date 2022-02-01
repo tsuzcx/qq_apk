@@ -1,30 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.BubblePopupWindow;
 
-public class bjfx
-  implements View.OnLongClickListener
+class bjfx
+  implements bjfu
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjfy(this);
-  public BubblePopupWindow a;
-  public String a;
+  bjfx(bjfw parambjfw) {}
   
-  public bjfx(QidianProfileCardActivity paramQidianProfileCardActivity)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a.a(true, new View[] { this.a.a });
   }
   
-  public boolean onLongClick(View paramView)
+  public void b()
   {
-    int i = paramView.getId();
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
-    bguh localbguh = new bguh();
-    localbguh.a(i, anni.a(2131708516));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bgkw.a(paramView, localbguh, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bjfz(this));
-    return true;
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    this.a.b(5);
   }
 }
 

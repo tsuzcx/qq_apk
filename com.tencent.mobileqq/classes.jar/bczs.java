@@ -1,14 +1,6 @@
-import android.view.View;
-import android.view.ViewGroup;
-
-class bczs
+public abstract interface bczs
 {
-  public View a;
-  public ViewGroup a;
-  public View b;
-  public ViewGroup b;
-  public View c;
-  public View d;
+  public abstract void a(Object paramObject, int paramInt, Object... paramVarArgs);
 }
 
 

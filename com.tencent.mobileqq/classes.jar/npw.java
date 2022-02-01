@@ -1,43 +1,62 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class npw
-  implements nso
+public class npw
+  implements anui
 {
-  npw(npm paramnpm) {}
+  public npw(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
-    {
-      paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
-      }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
-      if (paramInt != 0)
-      {
-        if (!this.a.e) {
-          break label127;
-        }
-        if (paramInt <= f) {
-          break label119;
-        }
-        this.a.d(paramInt);
-      }
-    }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.q - f)
-    {
-      this.a.d(paramInt);
+    if (paramObject == null) {
       return;
     }
-    this.a.e();
+    paramObject = (Bundle)paramObject;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 17: 
+      paramBoolean = paramObject.getBoolean("result");
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramBoolean)
+      {
+        paramObject = this.a.getString(2131695383);
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(this.a.getString(2131695381));
+        localStringBuilder.append(this.a.c);
+        if (!paramBoolean) {
+          break label233;
+        }
+        paramInt = 2;
+        label104:
+        QQToast.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label238;
+        }
+      }
+      break;
+    }
+    label233:
+    label238:
+    for (paramInt = -1;; paramInt = 0)
+    {
+      paramObject.setResult(paramInt);
+      return;
+      this.a.a = paramObject.getBoolean("isOpen");
+      this.a.c = paramObject.getString("name");
+      if (this.a.c != null) {
+        this.a.b = this.a.getString(2131695389, new Object[] { this.a.c });
+      }
+      LebaSearchMoreInfoActivity.a(this.a);
+      return;
+      paramObject = this.a.getString(2131695382);
+      break;
+      paramInt = 1;
+      break label104;
+    }
   }
 }
 

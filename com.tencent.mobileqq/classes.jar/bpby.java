@@ -1,12 +1,28 @@
-import android.view.View;
-import android.widget.ImageView;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.InternalTaskEntry.1;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import java.util.concurrent.ScheduledFuture;
 
-class bpby
+public class bpby
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private long jdField_a_of_type_Long = -9223372036854775808L;
+  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
+  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   
-  bpby(bpbx parambpbx) {}
+  public String toString()
+  {
+    boolean bool2 = false;
+    long l = this.jdField_a_of_type_Long;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable != null)
+    {
+      bool1 = bool2;
+      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable)) {
+        bool1 = true;
+      }
+    }
+    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
+  }
 }
 
 

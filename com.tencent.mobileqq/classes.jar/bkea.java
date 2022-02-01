@@ -1,122 +1,77 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.qbar.QbarNative;
 
-public abstract class bkea
+public class bkea
 {
-  bkea(TraeAudioManager paramTraeAudioManager) {}
-  
-  public abstract String a();
-  
-  String a(int paramInt)
+  public static int a(int paramInt, byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
+    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
+      return -1;
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_OFF";
-      continue;
-      str = "STATE_TURNING_ON";
-      continue;
-      str = "STATE_ON";
-      continue;
-      str = "STATE_TURNING_OFF";
-    }
+    return QbarNative.nativeArrayConvert(paramInt, paramArrayOfByte.length, paramArrayOfByte, paramArrayOfInt);
   }
   
-  public abstract void a();
-  
-  abstract void a(Context paramContext, Intent paramIntent);
-  
-  public void a(Context paramContext, Intent paramIntent, bkeb parambkeb)
+  public static int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
-    {
-      int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
-      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
-      }
-      if (i == 10)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("TraeAudioManager", 2, "    BT off");
-        }
-        parambkeb.a("DEVICE_BLUETOOTHHEADSET", false);
-      }
-      while ((i != 12) || (!QLog.isColorLevel())) {
-        return;
-      }
-      QLog.w("TraeAudioManager", 2, "BT OFF-->ON,Visiable it...");
-      return;
+    if (paramArrayOfByte == null) {
+      return -1;
     }
-    a(paramContext, paramIntent);
+    return QbarNative.nativeYUVrotateLess(paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  abstract void a(IntentFilter paramIntentFilter);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext, bkeb parambkeb);
-  
-  String b(int paramInt)
+  public static int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "SCO_AUDIO_STATE_DISCONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTING";
-      continue;
-      str = "SCO_AUDIO_STATE_ERROR";
-    }
+    return QbarNative.nativeYUVrotate(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
   }
   
-  public void b(IntentFilter paramIntentFilter)
+  public static int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    a(paramIntentFilter);
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
+    }
+    return QbarNative.nativeCropGray2(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3);
   }
   
-  String c(int paramInt)
+  public static int a(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
+    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
+      return -1;
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
+    return QbarNative.nativeYuvToCropIntArray(paramArrayOfByte, paramArrayOfInt, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+  }
+  
+  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
     }
+    return QbarNative.nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, 0, 0, paramInt1, paramInt2, paramArrayOfByte1, paramArrayOfInt, paramInt3, paramInt4);
+  }
+  
+  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
+    }
+    return QbarNative.nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramArrayOfByte1, paramArrayOfInt, paramInt7, paramInt8);
+  }
+  
+  public static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
+      return -1;
+    }
+    return QbarNative.nativeTransPixels(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  public static int b(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
+      return -1;
+    }
+    return QbarNative.nativeTransBytes(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 

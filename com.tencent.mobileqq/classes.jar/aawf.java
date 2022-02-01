@@ -1,50 +1,18 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.GridView;
+import com.tencent.biz.troopgift.GridListViewPager;
 
 public class aawf
+  extends GridView
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  
-  public static aawf a(String paramString)
+  public aawf(GridListViewPager paramGridListViewPager, Context paramContext)
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      aawf localaawf = new aawf();
-      paramString = new JSONObject(paramString);
-      localaawf.a = paramString.optString("icon_image_url", "");
-      localaawf.b = paramString.optString("md5", "");
-      localaawf.c = paramString.optString("widget_id", "");
-      return localaawf;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    super(paramContext);
   }
   
-  public String a()
+  public void setOverScrollMode(int paramInt)
   {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return "k = icon_image_url, value = " + this.a + "\n k = md5, value = " + this.b + "\n k = widget_id, value = " + this.c;
+    super.setOverScrollMode(2);
   }
 }
 

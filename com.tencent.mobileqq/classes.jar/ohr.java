@@ -1,27 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
+import com.tencent.biz.widgets.TabLayout;
 
 public class ohr
-  implements aaob
+  implements Animator.AnimatorListener
 {
-  public ohr(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public ohr(ReadInJoyChannelViewPagerController.10 param10) {}
   
-  public void callback(Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
-      }
-      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
-        this.a.jdField_a_of_type_JavaLangString = null;
-      }
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
+    ohp.b(this.a.this$0, false);
+    ohp.a(this.a.this$0, ohp.a, 0.0F, 0);
+    ohp.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

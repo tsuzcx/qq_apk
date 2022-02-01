@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aedk
+class aedk
   implements View.OnClickListener
 {
-  public aedk(EditInfoActivity paramEditInfoActivity) {}
+  aedk(aede paramaede, MessageRecord paramMessageRecord) {}
   
   public void onClick(View paramView)
   {
-    this.a.o();
+    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Aede.a.a, abke.a(paramView));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

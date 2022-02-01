@@ -1,12 +1,10 @@
-import android.media.MediaPlayer;
-import android.os.Looper;
-import com.tencent.mobileqq.music.SongInfo;
-
 public class awyj
 {
-  public MediaPlayer a;
-  public Looper a;
-  public SongInfo a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

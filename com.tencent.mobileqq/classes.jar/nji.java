@@ -1,66 +1,15 @@
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+
 public class nji
+  implements TencentMap.OnMapClickListener
 {
-  public static int a()
-  {
-    aqut localaqut = (aqut)aqlk.a().a(207);
-    if (localaqut != null) {
-      return localaqut.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
+  public nji(PoiMapActivity paramPoiMapActivity) {}
   
-  public static String a()
+  public void onMapClick(LatLng paramLatLng)
   {
-    aqut localaqut = (aqut)aqlk.a().a(207);
-    if (localaqut != null) {
-      return localaqut.jdField_a_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  public static int b()
-  {
-    aqut localaqut = (aqut)aqlk.a().a(207);
-    if (localaqut != null) {
-      return localaqut.b;
-    }
-    return -1;
-  }
-  
-  public static String b()
-  {
-    aqut localaqut = (aqut)aqlk.a().a(207);
-    if (localaqut != null) {
-      return localaqut.c;
-    }
-    return null;
-  }
-  
-  public static String c()
-  {
-    aqut localaqut = (aqut)aqlk.a().a(207);
-    if (localaqut != null) {
-      return localaqut.d;
-    }
-    return null;
-  }
-  
-  public static String d()
-  {
-    aqut localaqut = (aqut)aqlk.a().a(207);
-    if (localaqut != null) {
-      return localaqut.e;
-    }
-    return null;
-  }
-  
-  public static String e()
-  {
-    aqut localaqut = (aqut)aqlk.a().a(207);
-    if (localaqut != null) {
-      return localaqut.f;
-    }
-    return null;
+    this.a.j();
   }
 }
 

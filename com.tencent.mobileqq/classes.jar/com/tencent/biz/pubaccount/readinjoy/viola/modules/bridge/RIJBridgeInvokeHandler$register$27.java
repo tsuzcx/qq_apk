@@ -7,21 +7,21 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tqr;
+import thn;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "param", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "params", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJBridgeInvokeHandler$register$27
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public RIJBridgeInvokeHandler$register$27(tqr paramtqr)
+  public RIJBridgeInvokeHandler$register$27(thn paramthn)
   {
     super(2);
   }
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    this.this$0.a().onClickBubbleTips(paramJSONObject, paramString);
+    this.this$0.a().hideFollowAlertView(paramJSONObject, paramString);
   }
 }
 

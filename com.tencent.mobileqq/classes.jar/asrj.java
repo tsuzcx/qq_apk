@@ -1,40 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.MobileQQ;
 
-public class asrj
-  implements View.OnClickListener
+class asrj
+  implements awzp
 {
-  public asrj(FMLocalFileActivity paramFMLocalFileActivity) {}
+  asrj(asri paramasri, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "[play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Asri.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.e();
-      Object localObject = (athg)paramView.getTag();
-      if (((athg)localObject).a != 0)
-      {
-        int i = ((athg)localObject).a;
-        localObject = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-        ((SharedPreferences.Editor)localObject).putBoolean("last_select_All", true);
-        ((SharedPreferences.Editor)localObject).commit();
-        FMLocalFileActivity.a(this.a, i);
-      }
-    }
+    this.jdField_a_of_type_Asri.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = this.jdField_a_of_type_JavaLangString;
+    aean.a(this.jdField_a_of_type_Asri.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Asri.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Asri.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Asri.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+    bdll.b(this.jdField_a_of_type_Asri.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_Asri.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
   }
 }
 

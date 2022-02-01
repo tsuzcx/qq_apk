@@ -4,17 +4,17 @@ import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIList;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import wrh;
-import wrk;
+import wvc;
+import wvf;
 
 public class LbsManager$3$2
   implements Runnable
 {
-  public LbsManager$3$2(wrh paramwrh, wrk paramwrk, qqstory_service.RspGetPOIList paramRspGetPOIList, ArrayList paramArrayList) {}
+  public LbsManager$3$2(wvc paramwvc, wvf paramwvf, qqstory_service.RspGetPOIList paramRspGetPOIList, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wrk.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPOIList.result.error_code.get(), this.jdField_a_of_type_Wrh.a, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Wvf.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPOIList.result.error_code.get(), this.jdField_a_of_type_Wvc.a, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

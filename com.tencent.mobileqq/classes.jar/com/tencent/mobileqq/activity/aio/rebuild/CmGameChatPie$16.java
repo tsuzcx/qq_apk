@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahyk;
-import amoi;
+import aihy;
+import anac;
 
 public class CmGameChatPie$16
   implements Runnable
 {
-  public CmGameChatPie$16(ahyk paramahyk, long paramLong) {}
+  public CmGameChatPie$16(aihy paramaihy, long paramLong) {}
   
   public void run()
   {
-    if (ahyk.a(this.this$0) != null)
+    if (aihy.a(this.this$0) != null)
     {
-      ahyk.a(this.this$0).a(2);
-      ahyk.a(this.this$0).a = this.a;
+      aihy.a(this.this$0).a(2);
+      aihy.a(this.this$0).a = this.a;
     }
   }
 }

@@ -15,13 +15,13 @@ class FileJsPlugin$14
   public String run()
   {
     long l1 = System.currentTimeMillis();
-    int i = ((MiniAppFileManager)FileJsPlugin.access$6100(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$filePath);
+    int i = ((MiniAppFileManager)FileJsPlugin.access$5900(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$filePath);
     if (i == 9999)
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$filePath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "invalid path" + this.val$filePath);
     }
-    String str = ((MiniAppFileManager)FileJsPlugin.access$6200(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$filePath);
+    String str = ((MiniAppFileManager)FileJsPlugin.access$6000(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$filePath);
     if (TextUtils.isEmpty(str))
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$filePath);

@@ -1,89 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class aqzj
-  extends aqkz<aqzh>
+class aqzj
+  implements Comparator<aqzk>
 {
-  @NonNull
-  public aqzh a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aqzh();
-  }
+  aqzj(aqzf paramaqzf, boolean paramBoolean, ArrayList paramArrayList) {}
   
-  @Nullable
-  public aqzh a(aqlg[] paramArrayOfaqlg)
+  public int a(aqzk paramaqzk1, aqzk paramaqzk2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    int i = -1;
+    if (paramaqzk1.jdField_a_of_type_Int > paramaqzk2.jdField_a_of_type_Int) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
+      return 1;
+      if (paramaqzk1.jdField_a_of_type_Int < paramaqzk2.jdField_a_of_type_Int) {
+        return -1;
       }
-      return aqzh.a(paramArrayOfaqlg[0]);
-    }
-    return null;
-  }
-  
-  public void a(aqzh paramaqzh)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaqzh == null) {
-        break label49;
+      if ((paramaqzk1.jdField_a_of_type_Boolean) && (!paramaqzk2.jdField_a_of_type_Boolean))
+      {
+        if (this.jdField_a_of_type_Boolean) {}
+        for (;;)
+        {
+          return i;
+          i = 1;
+        }
       }
+      if ((paramaqzk1.jdField_a_of_type_Boolean) || (!paramaqzk2.jdField_a_of_type_Boolean)) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    return -1;
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramaqzk1.jdField_a_of_type_Float - paramaqzk2.jdField_a_of_type_Float) > 3.0F)) {
+      return Float.compare(paramaqzk1.jdField_a_of_type_Float, paramaqzk2.jdField_a_of_type_Float);
     }
-    label49:
-    for (paramaqzh = paramaqzh.toString();; paramaqzh = " empty")
-    {
-      QLog.d("SearchRichConfProcessor", 2, paramaqzh);
-      bbsb.a().a();
-      return;
-    }
-  }
-  
-  public Class<aqzh> clazz()
-  {
-    return aqzh.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
     return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 432;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzj
  * JD-Core Version:    0.7.0.1
  */

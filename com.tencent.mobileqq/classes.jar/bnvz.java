@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
-public class bnvz
-  implements DialogInterface.OnDismissListener
+public abstract interface bnvz
 {
-  public bnvz(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    AETakeFacePhotoPreviewFragment.a(this.a);
-    AEVideoShelfEditFragment.a(this.a.getActivity(), false);
-  }
+  public abstract void a(AlumBasicData paramAlumBasicData);
 }
 
 

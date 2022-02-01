@@ -3,15 +3,15 @@ package com.tencent.biz.pubaccount.readinjoy.pts.util;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.qphone.base.util.QLog;
-import qoo;
-import qpc;
-import qph;
-import qpn;
+import qha;
+import qhq;
+import qhv;
+import qib;
 
 public class PTSLiteSwitchManager$1
   implements Runnable
 {
-  public PTSLiteSwitchManager$1(qph paramqph) {}
+  public PTSLiteSwitchManager$1(qhv paramqhv) {}
   
   public void run()
   {
@@ -35,12 +35,12 @@ public class PTSLiteSwitchManager$1
         QLog.i("PTSLiteSwitchManager", 1, "[init], ptsLiteMasterSwitchTmp = " + bool2);
         if ((bool1) || (bool2))
         {
-          qpc.b();
-          qoo.a().a("ptslite");
-          qpn.a().a();
+          qhq.b();
+          qha.a().a("ptslite");
+          qib.a().a();
         }
-        qph.a(this.this$0, bool1);
-        qph.b(this.this$0, bool2);
+        qhv.a(this.this$0, bool1);
+        qhv.b(this.this$0, bool2);
         return;
         bool1 = false;
         break;

@@ -1,6 +1,11 @@
-public abstract interface bhye
+public class bhye
 {
-  public abstract void a(String paramString);
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
 }
 
 

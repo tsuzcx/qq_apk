@@ -1,18 +1,37 @@
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+
 class neh
+  implements Application.ActivityLifecycleCallbacks
 {
-  public int a;
-  public String a;
+  neh(neg paramneg) {}
   
-  public neh(int paramInt, String paramString)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramActivity == neg.a(this.a))
+    {
+      neg.c(this.a);
+      this.a.a();
+    }
   }
   
-  public String toString()
+  public void onActivityPaused(Activity paramActivity)
   {
-    return "mTaskId[" + this.jdField_a_of_type_Int + "], mUrl[" + this.jdField_a_of_type_JavaLangString + "]";
+    if (paramActivity == neg.a(this.a)) {
+      neg.b(this.a);
+    }
   }
+  
+  public void onActivityResumed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

@@ -1,16 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class aenz
-  implements DialogInterface.OnDismissListener
+  implements afmf
 {
-  public aenz(LoginInfoActivity paramLoginInfoActivity) {}
+  public aenz(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(Editable paramEditable)
   {
-    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
-      LoginInfoActivity.a(this.a, null);
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardFriendListActivity.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      if (ForwardFriendListActivity.a(this.a) != null) {
+        ForwardFriendListActivity.a(this.a).a(paramEditable);
+      }
+      return;
+      ForwardFriendListActivity.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardFriendListActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
+    {
+      ForwardFriendListActivity.a(this.a, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131376581, ForwardFriendListActivity.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
     }
   }
 }

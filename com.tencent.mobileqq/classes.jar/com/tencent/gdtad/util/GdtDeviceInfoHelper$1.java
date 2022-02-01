@@ -1,9 +1,9 @@
 package com.tencent.gdtad.util;
 
-import acqy;
-import acrs;
-import acrv;
-import acrx;
+import acvc;
+import acvw;
+import acvz;
+import acwb;
 
 public final class GdtDeviceInfoHelper$1
   implements Runnable
@@ -12,8 +12,8 @@ public final class GdtDeviceInfoHelper$1
   
   public void run()
   {
-    acqy.b(acrx.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread delayMillis:%d count:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(acrx.a()) }));
-    if (acrx.a() >= 5) {}
+    acvc.b(acwb.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread delayMillis:%d count:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(acwb.a()) }));
+    if (acwb.a() >= 5) {}
     int i;
     label212:
     do
@@ -21,35 +21,35 @@ public final class GdtDeviceInfoHelper$1
       return;
       try
       {
-        if (acrx.a() >= 5) {
+        if (acwb.a() >= 5) {
           return;
         }
       }
       finally {}
-      acrx.a(acrx.a() + 1);
-      acrv localacrv = acrs.a().a();
-      i = acrx.a(localacrv);
-      if (localacrv != null) {
-        acqy.b(acrx.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread errorCode:%d errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(localacrv.jdField_a_of_type_Int), Long.valueOf(localacrv.jdField_a_of_type_Long) }));
+      acwb.a(acwb.a() + 1);
+      acvz localacvz = acvw.a().a();
+      i = acwb.a(localacvz);
+      if (localacvz != null) {
+        acvc.b(acwb.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread errorCode:%d errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(localacvz.jdField_a_of_type_Int), Long.valueOf(localacvz.jdField_a_of_type_Long) }));
       }
       for (;;)
       {
         if (i != 0) {
           break label212;
         }
-        if ((localacrv == null) || (localacrv.jdField_a_of_type_Long == 0L)) {
+        if ((localacvz == null) || (localacvz.jdField_a_of_type_Long == 0L)) {
           break;
         }
-        long l = localacrv.jdField_a_of_type_Long * 1000L - System.currentTimeMillis() + 1000L;
+        long l = localacvz.jdField_a_of_type_Long * 1000L - System.currentTimeMillis() + 1000L;
         if (l <= 0L) {
           break;
         }
-        acrx.a(l);
+        acwb.a(l);
         return;
-        acqy.b(acrx.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread initTuringSDK return null, errorCode:%d", new Object[] { Integer.valueOf(i) }));
+        acvc.b(acwb.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread initTuringSDK return null, errorCode:%d", new Object[] { Integer.valueOf(i) }));
       }
     } while (i != 3);
-    acrx.a(1800000L);
+    acwb.a(1800000L);
   }
 }
 

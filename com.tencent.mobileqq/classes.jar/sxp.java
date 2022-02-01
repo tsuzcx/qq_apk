@@ -1,149 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class sxp
-  extends BaseAdapter
+  implements TypeEvaluator<Rect>
 {
-  private List<BaseAdapter> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private sxr jdField_a_of_type_Sxr;
-  private sxs jdField_a_of_type_Sxs;
+  public sxp(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    return getView(paramInt, paramView, paramViewGroup);
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
   }
   
-  public List<BaseAdapter> a()
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a() {}
-  
-  public void a(BaseAdapter paramBaseAdapter)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramBaseAdapter == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramBaseAdapter);
-    paramBaseAdapter.registerDataSetObserver(new sxq(this));
-  }
-  
-  public void a(sxr paramsxr)
-  {
-    this.jdField_a_of_type_Sxr = paramsxr;
-  }
-  
-  public void a(sxs paramsxs)
-  {
-    this.jdField_a_of_type_Sxs = paramsxs;
-  }
-  
-  public int getCount()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getCount() + i) {}
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
-      int i = localBaseAdapter.getCount();
-      if (paramInt < i) {
-        return localBaseAdapter.getItem(paramInt);
-      }
-      paramInt -= i;
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
-      int i = localBaseAdapter.getCount();
-      if (paramInt < i) {
-        return localBaseAdapter.getItemId(paramInt);
-      }
-      paramInt -= i;
-    }
-    return -1L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    BaseAdapter localBaseAdapter;
-    if (localIterator.hasNext())
-    {
-      localBaseAdapter = (BaseAdapter)localIterator.next();
-      j = localBaseAdapter.getCount();
-      if (i >= j) {}
-    }
-    for (i = localBaseAdapter.getItemViewType(i);; i = -1)
-    {
-      return i + paramInt;
-      i -= j;
-      paramInt = localBaseAdapter.getViewTypeCount() + paramInt;
-      break;
-    }
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = paramInt;
-    Object localObject;
-    int j;
-    if (localIterator.hasNext())
-    {
-      localObject = (BaseAdapter)localIterator.next();
-      j = ((BaseAdapter)localObject).getCount();
-      if (i < j)
-      {
-        localObject = ((BaseAdapter)localObject).getView(i, paramView, paramViewGroup);
-        if (this.jdField_a_of_type_Sxs != null) {
-          this.jdField_a_of_type_Sxs.a(paramInt, (View)localObject);
-        }
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(i, paramView, paramViewGroup, getItemId(i));
-      return localObject;
-      i -= j;
-      break;
-      localObject = null;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getViewTypeCount() + i) {}
-    return Math.max(i, 1);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    super.notifyDataSetChanged();
-    if (this.jdField_a_of_type_Sxr != null) {
-      this.jdField_a_of_type_Sxr.a();
-    }
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 

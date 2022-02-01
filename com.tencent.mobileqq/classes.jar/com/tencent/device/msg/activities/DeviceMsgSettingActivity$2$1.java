@@ -1,11 +1,11 @@
 package com.tencent.device.msg.activities;
 
-import abuh;
+import abyl;
 
 public class DeviceMsgSettingActivity$2$1
   implements Runnable
 {
-  public DeviceMsgSettingActivity$2$1(abuh paramabuh) {}
+  public DeviceMsgSettingActivity$2$1(abyl paramabyl) {}
   
   public void run()
   {

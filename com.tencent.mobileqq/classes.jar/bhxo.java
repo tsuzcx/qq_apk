@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bhxo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bhxo(bhxn parambhxn, boolean paramBoolean) {}
+  bhxo(bhxk parambhxk) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bhxn.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,82 +1,134 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import Wallet.JudgeDownloadRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public class ales
-  extends alej
-  implements Cloneable
+class ales
+  implements BusinessObserver
 {
-  public ales(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131698400);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ales(aler paramaler, WeakReference paramWeakReference, biht parambiht) {}
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle arg3)
   {
-    if ((paramObject instanceof ales))
+    int i = 60;
+    PreloadManager localPreloadManager1;
+    label137:
+    JudgeDownloadRsp localJudgeDownloadRsp;
+    if (paramInt == 1)
     {
-      paramObject = (ales)paramObject;
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-    }
-    paramObject = new ales(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-    return paramObject;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QLog.d("TroopConfessToMeMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Beps.a(this.c);
+      try
+      {
+        localPreloadManager1 = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (!PreloadManager.a(localPreloadManager1))
+        {
+          if (this.jdField_a_of_type_Biht == null) {
+            break label622;
+          }
+          this.jdField_a_of_type_Aler.a(this.jdField_a_of_type_Biht);
+          return;
+        }
+        if (paramBoolean) {
+          break label137;
+        }
+        if (this.jdField_a_of_type_Biht != null) {
+          this.jdField_a_of_type_Aler.a(this.jdField_a_of_type_Biht);
+        }
+        localPreloadManager1.c();
+        return;
       }
+      catch (Throwable ???)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RealTimeFlowControlObj", 2, aler.a(this.jdField_a_of_type_Aler) + " startFlowControlReq onReceive exception:" + ???);
+        }
+        if (this.jdField_a_of_type_Biht == null) {
+          break label622;
+        }
+      }
+      this.jdField_a_of_type_Aler.a(this.jdField_a_of_type_Biht);
+      return;
+      localJudgeDownloadRsp = (JudgeDownloadRsp)???.getSerializable("rsp");
+      if (localJudgeDownloadRsp == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RealTimeFlowControlObj", 2, "onReceive rsp is null:" + localJudgeDownloadRsp);
+        }
+        if (this.jdField_a_of_type_Biht != null) {
+          this.jdField_a_of_type_Aler.a(this.jdField_a_of_type_Biht);
+        }
+        localPreloadManager1.c();
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RealTimeFlowControlObj", 2, aler.a(this.jdField_a_of_type_Aler) + "FlowControlRsp|" + localJudgeDownloadRsp.iDownloadStatus + "|" + localJudgeDownloadRsp.iSegTime + "|" + localJudgeDownloadRsp.iFailedRetryMax);
+      }
+    }
+    for (;;)
+    {
+      synchronized (aler.a(this.jdField_a_of_type_Aler))
+      {
+        switch (localJudgeDownloadRsp.iDownloadStatus)
+        {
+        case 1: 
+          aler.a(this.jdField_a_of_type_Aler).mDownloadStatus = 2;
+          localPreloadFlowControlConfig = aler.a(this.jdField_a_of_type_Aler);
+          if (localJudgeDownloadRsp.iSegTime > 60) {
+            i = localJudgeDownloadRsp.iSegTime;
+          }
+          localPreloadFlowControlConfig.mNextCanReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
+          if (localJudgeDownloadRsp.iDownloadStatus != 0) {
+            aler.a(this.jdField_a_of_type_Aler).mRetryReqTimes = 0;
+          }
+          aler.a(this.jdField_a_of_type_Aler).saveConfig();
+          if (localJudgeDownloadRsp.iDownloadStatus != 2) {
+            break label586;
+          }
+          localPreloadManager1.c();
+          if (this.jdField_a_of_type_Biht == null) {
+            break label622;
+          }
+          this.jdField_a_of_type_Aler.a(this.jdField_a_of_type_Biht);
+          return;
+          aler.a(this.jdField_a_of_type_Aler).mDownloadStatus = 1;
+          localPreloadFlowControlConfig = aler.a(this.jdField_a_of_type_Aler);
+          if (localJudgeDownloadRsp.iFailedRetryMax > 0)
+          {
+            paramInt = localJudgeDownloadRsp.iFailedRetryMax;
+            localPreloadFlowControlConfig.mRetryDownloadTimes = paramInt;
+            localPreloadFlowControlConfig = aler.a(this.jdField_a_of_type_Aler);
+            if (localJudgeDownloadRsp.iSegTime > 60) {
+              i = localJudgeDownloadRsp.iSegTime;
+            }
+            localPreloadFlowControlConfig.mValidDownloadTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
+          }
+          break;
+        }
+      }
+      paramInt = 3;
+      continue;
+      aler.a(this.jdField_a_of_type_Aler).mDownloadStatus = 0;
+      PreloadFlowControlConfig localPreloadFlowControlConfig = aler.a(this.jdField_a_of_type_Aler);
+      if (localJudgeDownloadRsp.iSegTime > 60) {
+        i = localJudgeDownloadRsp.iSegTime;
+      }
+      localPreloadFlowControlConfig.mNextRetryReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
+      continue;
+      label586:
+      if (localJudgeDownloadRsp.iDownloadStatus == 0)
+      {
+        this.jdField_a_of_type_Aler.a(localPreloadManager2);
+        return;
+      }
+      if (localJudgeDownloadRsp.iDownloadStatus == 1) {
+        this.jdField_a_of_type_Aler.a(localPreloadManager2);
+      }
+      label622:
       return;
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Beps != null) {
-        this.c = this.jdField_a_of_type_Beps.a();
-      }
-      localJSONObject.put("messageNavInfo", this.c);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    return localJSONObject.toString().getBytes();
   }
 }
 

@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
-
-public final class oby
-  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
+public abstract interface oby
 {
-  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
-  {
-    return new VideoInfo.LikeActionDownloadBar(paramParcel);
-  }
-  
-  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
-  {
-    return new VideoInfo.LikeActionDownloadBar[paramInt];
-  }
+  public abstract void a();
 }
 
 

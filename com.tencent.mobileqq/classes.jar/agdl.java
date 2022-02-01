@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class agdl
-  implements bdet
+  implements BusinessObserver
 {
-  agdl(agdj paramagdj) {}
+  agdl(agdk paramagdk) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    bdez localbdez = new bdez(3000, 360, 0);
-    localbdez.a = true;
-    this.a.a.e.a(new bdes[] { localbdez });
+    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
+      QLog.d("ReminderDataManagerNew", 2, "acs msg succ");
+    }
   }
 }
 

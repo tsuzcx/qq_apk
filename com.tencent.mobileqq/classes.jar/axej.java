@@ -1,75 +1,108 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils.1;
+import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0xb61.GetAppinfoRsp;
+import tencent.im.oidb.oidb_0xb61.GetPkgUrlRsp;
+import tencent.im.oidb.oidb_0xb61.RspBody;
+import tencent.im.oidb.qqconnect.Appinfo;
 
 public class axej
-  implements BusinessObserver
+  extends nkn
 {
-  public axej(NearbyUtils.1 param1) {}
+  public axej(MiniAppInfoManager.1 param1) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramBoolean) {
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniAppInfoManager", 2, "onResult type=" + this.a.jdField_a_of_type_Axeh.jdField_a_of_type_Int + ", appid=" + this.a.jdField_a_of_type_Axeh.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label798;
+      }
+    }
+    label798:
+    for (;;)
+    {
       try
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        paramBundle = ((oidb_0xb61.RspBody)new oidb_0xb61.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
         {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramInt = localWebSsoResponseBody.ret.get();
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          if (paramInt != 0)
-          {
-            paramBundle = paramBundle.optString("msg");
-            if (!TextUtils.isEmpty(paramBundle)) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
-            }
+          paramArrayOfByte = ", data=null";
+          QLog.i("MiniAppInfoManager", 2, paramArrayOfByte);
+          if ((this.a.jdField_a_of_type_Axek != null) && (this.a.jdField_a_of_type_Axek.a != null)) {
+            this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), false, this.a.jdField_a_of_type_Axeh);
           }
-          else
-          {
-            paramBundle = paramBundle.optString("signature");
-            if (QLog.isColorLevel()) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
-            }
-            try
-            {
-              if (TextUtils.isEmpty(paramBundle)) {
-                return;
-              }
-              if (this.a.jdField_a_of_type_Int != 0) {
-                break label283;
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().h(this.a.jdField_a_of_type_JavaLangString, bgku.decode(paramBundle, 0));
-              return;
-            }
-            catch (Exception paramBundle)
-            {
-              if (!QLog.isColorLevel()) {
-                return;
-              }
-            }
-            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
-            return;
-          }
+          return;
         }
       }
-      catch (Exception paramBundle)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        if (QLog.isColorLevel())
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
+      }
+      paramBundle = new oidb_0xb61.RspBody();
+      for (;;)
+      {
+        try
         {
-          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if (paramBundle.wording.has()) {
+            this.a.jdField_a_of_type_Axeh.g = paramBundle.wording.get();
+          }
+          if ((this.a.jdField_a_of_type_Int != 1) || (!paramBundle.get_appinfo_rsp.appinfo.has())) {
+            break label637;
+          }
+          this.a.jdField_a_of_type_Axeh.jdField_b_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.platform.get();
+          this.a.jdField_a_of_type_Axeh.jdField_b_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.app_name.get();
+          this.a.jdField_a_of_type_Axeh.jdField_c_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.app_state.get();
+          this.a.jdField_a_of_type_Axeh.jdField_c_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_url.get();
+          this.a.jdField_a_of_type_Axeh.e = paramBundle.get_appinfo_rsp.appinfo.icon_small_url.get();
+          this.a.jdField_a_of_type_Axeh.jdField_d_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_middle_url.get();
+          if (paramBundle.next_req_duration.has()) {
+            this.a.jdField_a_of_type_Axeh.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MiniAppInfoManager", 2, "receive appInfo: " + this.a.jdField_a_of_type_Axeh);
+          }
+          axem.a().a(this.a.jdField_a_of_type_Axeh);
+          if ((this.a.jdField_a_of_type_Axek == null) || (this.a.jdField_a_of_type_Axek.a == null)) {
+            break;
+          }
+          this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), true, this.a.jdField_a_of_type_Axeh);
           return;
-          label283:
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().i(this.a.jdField_a_of_type_JavaLangString, bgku.decode(paramBundle, 0));
         }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+        if ((this.a.jdField_a_of_type_Axek == null) || (this.a.jdField_a_of_type_Axek.a == null)) {
+          break;
+        }
+        this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), false, this.a.jdField_a_of_type_Axeh);
+        return;
+        label637:
+        if ((this.a.jdField_a_of_type_Int != 2) || (!paramBundle.get_mqqapp_url_rsp.has())) {
+          break label743;
+        }
+        this.a.jdField_a_of_type_Axeh.jdField_d_of_type_Int = paramBundle.get_mqqapp_url_rsp.app_version.get();
+        this.a.jdField_a_of_type_Axeh.f = paramBundle.get_mqqapp_url_rsp.pkg_url.get();
+        if (paramBundle.next_req_duration.has()) {
+          this.a.jdField_a_of_type_Axeh.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
+        }
+      }
+      label743:
+      if ((this.a.jdField_a_of_type_Axek != null) && (this.a.jdField_a_of_type_Axek.a != null))
+      {
+        this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), false, this.a.jdField_a_of_type_Axeh);
+        return;
+        paramBundle = "";
       }
     }
   }

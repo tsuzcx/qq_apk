@@ -1,59 +1,55 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import Wallet.PfaFriend;
+import Wallet.PfaFriendRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class akzm
-  implements View.OnClickListener
+final class akzm
+  implements DialogInterface.OnClickListener
 {
-  akzm(akyh paramakyh, Bundle paramBundle) {}
+  akzm(WeakReference paramWeakReference, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (akyh.a(this.jdField_a_of_type_Akyh) != null)
-    {
-      localObject1 = akyh.a(this.jdField_a_of_type_Akyh).obtainMessage(30);
-      akyh.a(this.jdField_a_of_type_Akyh).sendMessageDelayed((Message)localObject1, 2500L);
-    }
-    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    try
-    {
-      localObject1 = Class.forName((String)localObject1);
-      if (localObject1 != null)
+    if ((paramDialogInterface instanceof bhqp)) {
+      switch (paramInt)
       {
-        localObject1 = new Intent(akyh.a(this.jdField_a_of_type_Akyh).getApplicationContext(), (Class)localObject1);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).setAction(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).putExtra("url", str);
-        }
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        ((Intent)localObject1).putExtra("force_no_reload", true);
-        akyh.a(this.jdField_a_of_type_Akyh).startActivity((Intent)localObject1);
       }
-      bcst.a(akyh.a(this.jdField_a_of_type_Akyh).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+    }
+    do
+    {
       return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
+      akzk.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (bhqp)paramDialogInterface);
+    } while ((akzk.a == null) || (akzk.a.vecRec == null) || (akzk.a.vecRec.size() <= 0));
+    paramInt = 0;
+    label79:
+    String str;
+    int i;
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      for (;;)
+      str = "friendpay.selectpage.unrecomchoosefriclick";
+      i = 0;
+    }
+    for (;;)
+    {
+      paramDialogInterface = str;
+      if (i < akzk.a.vecRec.size())
       {
-        Object localObject2 = null;
+        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a.equals(((PfaFriend)akzk.a.vecRec.get(i)).uin)) {
+          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
+        }
       }
+      else
+      {
+        bdll.b(alil.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
+        paramInt += 1;
+        break label79;
+        break;
+      }
+      i += 1;
     }
   }
 }

@@ -1,35 +1,20 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.data.FlowMusic;
 
-public abstract class bppr
+class bppr
+  implements bpmp
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
+  bppr(bppq parambppq, String paramString) {}
   
-  public bppr(int paramInt1, String paramString, int paramInt2)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
-  
-  @NonNull
-  public abstract bpps a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  @NonNull
-  public abstract Class<? extends bpps> a();
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Filter:{" + this.jdField_a_of_type_JavaLangString + "}";
+    if (paramObject == null) {}
+    do
+    {
+      return;
+      paramObject = (FlowMusic)paramObject;
+      bppq.a(this.jdField_a_of_type_Bppq, bppq.a(this.jdField_a_of_type_Bppq, paramObject, this.jdField_a_of_type_JavaLangString));
+    } while (!bppq.a(this.jdField_a_of_type_Bppq).equals(bppq.a(this.jdField_a_of_type_Bppq).getClass()));
+    this.jdField_a_of_type_Bppq.d();
   }
 }
 

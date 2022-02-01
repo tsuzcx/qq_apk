@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqdataline.ipc.MessageRecordParcel;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 
-public final class bljk
-  implements Parcelable.Creator<MessageRecordParcel>
+public class bljk
+  implements ContextMenu.ContextMenuInfo
 {
-  public MessageRecordParcel a(Parcel paramParcel)
-  {
-    return MessageRecordParcel.a(paramParcel);
-  }
+  public int a;
+  public long a;
+  public View a;
   
-  public MessageRecordParcel[] a(int paramInt)
+  public bljk(View paramView, int paramInt, long paramLong)
   {
-    return new MessageRecordParcel[paramInt];
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bljk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,25 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.ViolaVideoUpdateController.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class rqh
+final class rqh
+  implements Animation.AnimationListener
 {
-  private long jdField_a_of_type_Long = 500L;
-  @NotNull
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  private Runnable b = new ViolaVideoUpdateController.1(this);
+  rqh(View paramView) {}
   
-  public rqh(@NotNull Runnable paramRunnable, long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
+    {
+      this.a.clearAnimation();
+      this.a.setVisibility(8);
+      this.a.setTag(-1, null);
     }
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManagerV2.getUIHandlerV2().post(this.b);
   }
   
-  public void b()
-  {
-    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.b);
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

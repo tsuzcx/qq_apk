@@ -1,292 +1,170 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewStub;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder.3;
-import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder.4;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.lang.ref.WeakReference;
-import java.net.MalformedURLException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class agsf
-  extends afuu
-  implements awyi
+abstract class agsf
 {
-  private float jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-  private long jdField_a_of_type_Long;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agsg(this);
-  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private View.OnClickListener b = new agsh(this);
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  String jdField_a_of_type_JavaLangString;
+  HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  Set<Long> jdField_a_of_type_JavaUtilSet;
+  Set<Long> b;
   
-  public agsf(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  long a(Set<Long> paramSet)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-  }
-  
-  @NonNull
-  private Drawable a(String paramString)
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165853));
-    float f = 8.0F * this.jdField_a_of_type_Float;
-    localGradientDrawable.setCornerRadius(f);
-    localGradientDrawable.setShape(0);
-    int i = afur.a(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    localGradientDrawable.setSize(i, i);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = i;
-    localURLDrawableOptions.mRequestHeight = i;
-    localURLDrawableOptions.mFailedDrawable = localGradientDrawable;
-    localURLDrawableOptions.mLoadingDrawable = localURLDrawableOptions.mFailedDrawable;
-    String str = null;
-    try
+    if ((paramSet != null) && (paramSet.size() > 0))
     {
-      paramString = URLDrawable.getDrawable(bdwn.a(paramString), localURLDrawableOptions);
-      str = paramString;
-      paramString.setTag(bgey.b(i, i, (int)f));
-      str = paramString;
-      paramString.setDecodeHandler(bgey.c);
-    }
-    catch (MalformedURLException paramString)
-    {
-      for (;;)
+      paramSet = paramSet.toArray();
+      if ((paramSet != null) && (paramSet.length > 0))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(paramString));
-        }
-        paramString = str;
-      }
-    }
-    if (paramString == null) {
-      return localGradientDrawable;
-    }
-    return paramString;
-  }
-  
-  private void a(long paramLong, int paramInt, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean)
-  {
-    Object localObject;
-    boolean bool;
-    if (paramInt != 1)
-    {
-      paramImageView1.setVisibility(8);
-      localObject = (RelativeLayout.LayoutParams)paramImageView2.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
-      ((RelativeLayout.LayoutParams)localObject).addRule(14);
-      paramImageView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramImageView2.setImageDrawable(aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, String.valueOf(paramLong)));
-      bool = bcnj.b();
-      if (!paramBoolean) {
-        break label144;
-      }
-      if (!bool) {
-        break label138;
-      }
-    }
-    label138:
-    for (paramInt = 2130844955;; paramInt = 2130844954)
-    {
-      paramImageView1.setBackgroundResource(paramInt);
-      paramImageView2.setBackgroundResource(paramInt);
-      return;
-      localObject = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      aoch localaoch = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, String.valueOf(paramLong));
-      paramImageView1.setImageDrawable((Drawable)localObject);
-      paramImageView2.setImageDrawable(localaoch);
-      break;
-    }
-    label144:
-    if (bool) {}
-    for (paramInt = 2130844953;; paramInt = 2130844952)
-    {
-      paramImageView1.setBackgroundResource(paramInt);
-      paramImageView2.setBackgroundResource(paramInt);
-      return;
-    }
-  }
-  
-  private void a(View paramView, String paramString)
-  {
-    Object localObject2 = new JSONObject(paramString);
-    int i = ((JSONObject)localObject2).optInt("type");
-    String str1 = ((JSONObject)localObject2).optString("icon_url");
-    paramString = ((JSONObject)localObject2).optString("jump_url");
-    Object localObject1 = ((JSONObject)localObject2).optString("name");
-    String str2 = ((JSONObject)localObject2).optString("sub_title");
-    Object localObject3 = ((JSONObject)localObject2).optString("title");
-    ((JSONObject)localObject2).optString("url");
-    long l = ((JSONObject)localObject2).optLong("friend_uin");
-    int j = ((JSONObject)localObject2).optInt("show_both_head");
-    Object localObject4 = paramView.findViewById(2131369606);
-    ((View)localObject4).getLayoutParams().width = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-    Object localObject5 = (ImageView)((View)localObject4).findViewById(2131368520);
-    ImageView localImageView = (ImageView)((View)localObject4).findViewById(2131368521);
-    ((TextView)((View)localObject4).findViewById(2131380115)).setText((CharSequence)localObject3);
-    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    a(l, j, (ImageView)localObject5, localImageView, bool);
-    if ((i == 1) || (i == 500) || (i == 400) || (i == 401) || (i == 404) || (i == 402) || (i == 403))
-    {
-      paramView = ((ViewStub)paramView.findViewById(2131380962)).inflate();
-      localObject2 = (TextView)paramView.findViewById(2131380112);
-      ((TextView)localObject2).setText((CharSequence)localObject1);
-      paramView.setTag(paramString);
-      paramView.setOnClickListener(this.b);
-      a(bool, (TextView)localObject2);
-      return;
-    }
-    if ((i == 100) || (i == 200) || (i == 300) || (i == 201))
-    {
-      paramView = ((ViewStub)paramView.findViewById(2131380960)).inflate();
-      localObject3 = (URLImageView)paramView.findViewById(2131368522);
-      localObject4 = (TextView)paramView.findViewById(2131380114);
-      localObject5 = (TextView)paramView.findViewById(2131380113);
-      ((TextView)localObject4).setText((CharSequence)localObject1);
-      if (TextUtils.isEmpty(str2))
-      {
-        ((TextView)localObject5).setVisibility(8);
-        ((URLImageView)localObject3).setImageDrawable(a(str1));
-        if (i != 100) {
-          break label489;
-        }
-        localObject1 = (ImageView)paramView.findViewById(2131368525);
-        ((ImageView)localObject1).setVisibility(0);
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject1);
-        ((URLImageView)localObject3).setTag(localObject2);
-        ((ImageView)localObject1).setTag(localObject2);
-        ((URLImageView)localObject3).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        ((ImageView)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
-      for (;;)
-      {
-        paramView.setTag(paramString);
-        a(bool, (TextView)localObject4);
-        return;
-        ((TextView)localObject5).setText(str2);
-        break;
-        label489:
-        if ((i == 201) || (i == 200)) {
-          paramView.setOnClickListener(this.b);
+        paramSet = paramSet[0];
+        if ((paramSet instanceof Long)) {
+          return ((Long)paramSet).longValue();
         }
       }
     }
-    ((TextView)((ViewStub)paramView.findViewById(2131380962)).inflate().findViewById(2131380112)).setText(anni.a(2131701027));
+    return 0L;
   }
   
-  private void a(String paramString)
+  agsf a(SessionInfo paramSessionInfo, String paramString, List<Long> paramList, int paramInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-  }
-  
-  private void a(boolean paramBoolean, TextView paramTextView)
-  {
-    if (!paramBoolean)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null)
     {
-      paramTextView.setTextColor(-14277082);
-      return;
-    }
-    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166993));
-  }
-  
-  protected afuv a()
-  {
-    return new agsi();
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, afuv paramafuv, View paramView, LinearLayout paramLinearLayout, afzq paramafzq)
-  {
-    paramafuv = paramView;
-    if (paramView == null)
-    {
-      paramafuv = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561089, null);
+      this.jdField_a_of_type_JavaUtilSet = new HashSet(paramList);
+      this.b = new HashSet(paramList);
       if (QLog.isColorLevel()) {
-        QLog.i("CommonHobbyForAIOShowItemBuilder", 0, String.format("bindData2View msg is: %s", new Object[] { paramMessageRecord.msg }));
+        QLog.d("ForwardOrderManager", 2, "Forward order onPreForward mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", mChatMsgListBefore.size() -> " + this.b.size() + ", ForwardID -> " + paramInt);
       }
     }
+    return this;
+  }
+  
+  void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "ForwardOrder onDestroy forward id -> " + this.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.jdField_a_of_type_JavaUtilSet = null;
+    }
+    if (this.b != null)
+    {
+      this.b.clear();
+      this.b = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "ForwardOrder msgIDToSend id -> " + paramLong);
+    }
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "ForwardOrder mChatMsgListAfter add id -> " + paramLong);
+      }
+    }
+    if (this.b != null)
+    {
+      this.b.add(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "ForwardOrder mChatMsgListBefore add id -> " + paramLong);
+      }
+    }
+  }
+  
+  abstract void a(long paramLong1, long paramLong2);
+  
+  void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
     try
     {
-      a(paramafuv, paramMessageRecord.msg);
-      this.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-      return paramafuv;
-    }
-    catch (JSONException paramView)
-    {
-      for (;;)
+      if ((this.b != null) && (this.b.size() > 0))
       {
-        QLog.e("CommonHobbyForAIOShowItemBuilder", 1, "getItemView JSONException", paramView);
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext()) {
+          if (((Long)localIterator.next()).longValue() == paramLong) {
+            localIterator.remove();
+          }
+        }
+        if ((this.b.size() <= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+        {
+          paramQQAppInterface = aean.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaLangString = "";
+          if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
+            this.jdField_a_of_type_Long = paramQQAppInterface[0];
+          }
+        }
       }
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        QLog.e("CommonHobbyForAIOShowItemBuilder", 1, "getItemView Exception", paramView);
-      }
-    }
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bguj[] a(View paramView)
-  {
-    return new bguj[0];
-  }
-  
-  public String getToken()
-  {
-    return QQPlayerService.a(1, String.valueOf(this.jdField_a_of_type_Long));
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo) {}
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
-    ImageView localImageView;
-    do
-    {
-      return;
-      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localImageView == null);
-    Resources localResources = localImageView.getContext().getResources();
-    if ((paramInt == 2) || (paramInt == 1))
-    {
-      localImageView.post(new CommonHobbyForAIOShowItemBuilder.3(this, localImageView));
-      localImageView.setContentDescription(localResources.getString(2131690158));
       return;
     }
-    localImageView.post(new CommonHobbyForAIOShowItemBuilder.4(this, localImageView));
-    localImageView.setContentDescription(localResources.getString(2131690156));
+    finally {}
+  }
+  
+  abstract void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord);
+  
+  boolean a(long paramLong, Set<Long> paramSet)
+  {
+    if (paramSet != null) {}
+    try
+    {
+      if (!paramSet.isEmpty())
+      {
+        paramSet = paramSet.iterator();
+        while (paramSet.hasNext()) {
+          if (((Long)paramSet.next()).longValue() == paramLong) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    finally {}
+  }
+  
+  abstract boolean a(long paramLong, boolean paramBoolean);
+  
+  abstract boolean a(QQAppInterface paramQQAppInterface, long paramLong);
+  
+  void b(long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.size() > 0) && (this.jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(paramLong1))))
+    {
+      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(paramLong1));
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong2));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "Forward order replaceOriginChatMsg mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", mChatMsgListAfter remove uniSeq -> " + paramLong1 + ", mChatMsgListAfter add uniSeq -> " + paramLong2 + ", ForwardID -> " + this.jdField_a_of_type_Int);
+      }
+    }
+    if ((this.b != null) && (this.b.size() > 0) && (this.b.contains(Long.valueOf(paramLong1))))
+    {
+      this.b.remove(Long.valueOf(paramLong1));
+      this.b.add(Long.valueOf(paramLong2));
+    }
   }
 }
 

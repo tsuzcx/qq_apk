@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
 
-public class aakc
-  implements View.OnClickListener
+public abstract interface aakc
 {
-  public aakc(VideoPlayerView paramVideoPlayerView) {}
+  public abstract void a(DialogInterface paramDialogInterface);
   
-  public void onClick(View paramView)
-  {
-    VideoPlayerView.f(this.a);
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void m();
 }
 
 

@@ -2,15 +2,14 @@ package com.tencent.mtt.abtestsdk.report;
 
 import com.tencent.mtt.abtestsdk.entity.AttaEntity;
 import com.tencent.mtt.abtestsdk.utils.ABTestLog;
+import com.tencent.mtt.abtestsdk.utils.ThreadUtil;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import okhttp3.OkHttpClient.Builder;
 
 public class AttaReport
 {
-  private static final String TAG = "ttaReport";
+  private static final String TAG = "attaReport";
   private String attId = "04800015034";
   private String attToken = "6299336879";
   private final OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -56,9 +55,7 @@ public class AttaReport
     }
     paramAttaEntity = createReportData(paramAttaEntity);
     ABTestLog.debug("atta report params is:" + paramAttaEntity.toString(), new Object[0]);
-    ExecutorService localExecutorService = Executors.newSingleThreadExecutor();
-    localExecutorService.execute(new AttaReport.1(this, paramAttaEntity));
-    localExecutorService.shutdown();
+    ThreadUtil.execute(new AttaReport.1(this, paramAttaEntity));
   }
   
   public void setAttId(String paramString)

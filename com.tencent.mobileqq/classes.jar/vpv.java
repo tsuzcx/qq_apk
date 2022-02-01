@@ -1,35 +1,16 @@
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
 
-class vpv
-  implements zwo
+public class vpv
+  implements aabr<vad>
 {
-  vpv(vpu paramvpu) {}
+  public vpv(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public void a(boolean paramBoolean, Map<String, zwm> paramMap)
+  public void a(aabu paramaabu, vad paramvad)
   {
-    if ((paramBoolean) && (paramMap != null))
+    if ((paramaabu.d()) && (QCirclePersonalDetailFragment.a(this.a) != null))
     {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = (zwm)paramMap.get(str);
-        if (!vpp.a.containsKey(str))
-        {
-          localObject = AnimationView.AnimationInfo.loadFromFolder(((zwm)localObject).b);
-          if (localObject != null)
-          {
-            ((AnimationView.AnimationInfo)localObject).mInterval = 40;
-            ((AnimationView.AnimationInfo)localObject).mCycle = 2147483647;
-            vpp.a.put(str, localObject);
-          }
-        }
-      }
-      vpu.a(this.a);
+      QCirclePersonalDetailFragment.a(this.a).a(QCirclePersonalDetailFragment.a(this.a), false);
+      QCirclePersonalDetailFragment.a(this.a).b(QCirclePersonalDetailFragment.a(this.a), false);
     }
   }
 }

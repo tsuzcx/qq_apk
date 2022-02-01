@@ -1,134 +1,126 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bckr
+public abstract class bckr
+  implements bckk
 {
-  private static volatile bckr a;
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  private bckm jdField_a_of_type_Bckm;
+  private bckq jdField_a_of_type_Bckq = new bckq();
+  protected QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<bckl> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static bckr a()
+  public bckm a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bckr();
-      }
-      return a;
-    }
-    finally {}
+    return this.jdField_a_of_type_Bckm;
   }
   
-  public Bundle a(String paramString, Bundle paramBundle)
+  protected abstract bckm a(Context paramContext);
+  
+  public String a()
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
+    return this.jdField_a_of_type_Bckq.a();
+  }
+  
+  protected void a() {}
+  
+  public void a(bckl parambckl)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambckl);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "create, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3 + " templateid:" + paramInt);
+    }
+    this.jdField_a_of_type_Bckq.a(true);
+    this.jdField_a_of_type_Bckq.a(paramString1);
+    this.jdField_a_of_type_Bckq.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bckm = a(paramContext);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "updateData, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3);
+    }
+    this.jdField_a_of_type_Bckq.a(paramString1);
+    this.jdField_a_of_type_Bckq.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "pause");
+    }
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireEvent, key:" + paramString1 + " value:" + paramString2);
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_NICK_NAME_BY_UIN", paramBundle);
-      localObject1 = localObject2;
-      if (paramString != null)
-      {
-        localObject1 = localObject2;
-        if (paramString.isSuccess()) {
-          localObject1 = paramString.data;
-        }
+      bckl localbckl = (bckl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbckl != null) {
+        localbckl.a(this, paramString1, paramString2);
       }
     }
-    do
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "resume");
+    }
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "destroy");
+    }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (this.jdField_a_of_type_Bckm != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  return localObject1;
-                                  if (!"CMD_GET_CURRENT_NICK_NAME".equals(paramString)) {
-                                    break;
-                                  }
-                                  paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_NICK_NAME", paramBundle);
-                                  localObject1 = localObject2;
-                                } while (paramString == null);
-                                localObject1 = localObject2;
-                              } while (!paramString.isSuccess());
-                              return paramString.data;
-                              if (!"CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString)) {
-                                break;
-                              }
-                              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", paramBundle);
-                              localObject1 = localObject2;
-                            } while (paramString == null);
-                            localObject1 = localObject2;
-                          } while (!paramString.isSuccess());
-                          return paramString.data;
-                          if (!"CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString)) {
-                            break;
-                          }
-                          paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_VIDEO_REDBAG_STAT", paramBundle);
-                          localObject1 = localObject2;
-                        } while (paramString == null);
-                        localObject1 = localObject2;
-                      } while (!paramString.isSuccess());
-                      return paramString.data;
-                      if (!"CMD_GET_CURRENT_USER_HEAD".equals(paramString)) {
-                        break;
-                      }
-                      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_USER_HEAD", paramBundle);
-                      localObject1 = localObject2;
-                    } while (paramString == null);
-                    localObject1 = localObject2;
-                  } while (!paramString.isSuccess());
-                  return paramString.data;
-                  if (!"CMD_DOWNLOAD_PTU_ADDITIONAL_RES".equals(paramString)) {
-                    break;
-                  }
-                  paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_DOWNLOAD_PTU_ADDITIONAL_RES", paramBundle);
-                  localObject1 = localObject2;
-                } while (paramString == null);
-                localObject1 = localObject2;
-              } while (!paramString.isSuccess());
-              return paramString.data;
-              if (!"CMD_DOWNLOAD_PTU_BASE_RES".equals(paramString)) {
-                break;
-              }
-              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_DOWNLOAD_PTU_BASE_RES", paramBundle);
-              localObject1 = localObject2;
-            } while (paramString == null);
-            localObject1 = localObject2;
-          } while (!paramString.isSuccess());
-          return paramString.data;
-          localObject1 = localObject2;
-        } while (!"CMD_QUERY_STATUS_PTU_RES".equals(paramString));
-        paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_STATUS_PTU_RES", paramBundle);
-        localObject1 = localObject2;
-      } while (paramString == null);
-      localObject1 = localObject2;
-    } while (!paramString.isSuccess());
-    return paramString.data;
+      this.jdField_a_of_type_Bckm.f();
+      this.jdField_a_of_type_Bckm = null;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Bckq = null;
+  }
+  
+  protected void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireOnRichViewChangedEvent");
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      bckl localbckl = (bckl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbckl != null) {
+        localbckl.a(this);
+      }
+    }
   }
 }
 

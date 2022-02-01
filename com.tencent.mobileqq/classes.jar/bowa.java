@@ -1,30 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
-
-class bowa
-  implements EIPClientConnectListener
+public abstract interface bowa
 {
-  bowa(bovz parambovz) {}
+  public abstract void a();
   
-  public void connectFailed()
-  {
-    bovz.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectFailed!");
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bovz.a(this.a, paramEIPCConnection.procName);
-    }
-    bovz.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectSuccess:" + bovz.a(this.a));
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

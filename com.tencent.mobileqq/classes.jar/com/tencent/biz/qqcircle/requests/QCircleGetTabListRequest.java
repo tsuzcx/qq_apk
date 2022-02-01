@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StBusiInfoData;
 import qqcircle.QQCircleFeedBase.StBusiInfoReqData;
-import uwz;
+import uyk;
 
 public class QCircleGetTabListRequest
   extends QCircleBaseRequest
@@ -23,8 +23,8 @@ public class QCircleGetTabListRequest
   public QCircleGetTabListRequest(FeedCloudMeta.StGPSV2 paramStGPSV2)
   {
     QQCircleFeedBase.StBusiInfoReqData localStBusiInfoReqData = new QQCircleFeedBase.StBusiInfoReqData();
-    if (uwz.a().a() != null) {
-      localStBusiInfoReqData.busiMap.set(uwz.a().a().busiMap.get());
+    if (uyk.a().a() != null) {
+      localStBusiInfoReqData.busiMap.set(uyk.a().a().busiMap.get());
     }
     if (paramStGPSV2 != null) {
       localStBusiInfoReqData.gpsInfo.set(paramStGPSV2);

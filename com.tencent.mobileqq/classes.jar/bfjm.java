@@ -1,14 +1,15 @@
 import android.text.Editable;
-import java.util.Comparator;
+import android.text.Editable.Factory;
 
-final class bfjm
-  implements Comparator
+public final class bfjm
+  extends Editable.Factory
 {
-  bfjm(Editable paramEditable) {}
-  
-  public int compare(Object paramObject1, Object paramObject2)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
+    }
+    return new begz(paramCharSequence, 3, 20);
   }
 }
 

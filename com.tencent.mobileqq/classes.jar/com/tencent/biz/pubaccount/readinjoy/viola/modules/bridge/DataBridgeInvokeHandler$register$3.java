@@ -7,27 +7,21 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tpx;
+import tgs;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "param", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class DataBridgeInvokeHandler$register$3
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public DataBridgeInvokeHandler$register$3(tpx paramtpx)
+  public DataBridgeInvokeHandler$register$3(tgs paramtgs)
   {
     super(2);
   }
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    BridgeModule localBridgeModule = this.this$0.a();
-    if (paramJSONObject != null) {}
-    for (paramJSONObject = paramJSONObject.optString("text");; paramJSONObject = null)
-    {
-      localBridgeModule.setClipboard(paramJSONObject, paramString);
-      return;
-    }
+    this.this$0.a().getPerformance(paramString);
   }
 }
 

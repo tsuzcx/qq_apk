@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import afur;
-import afxj;
+import agej;
+import aghd;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.ViewGroup;
-import bdaf;
-import bdaj;
+import bdsy;
+import bdtc;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class StructMsgItemPAAudio$3
   implements Runnable
 {
-  public StructMsgItemPAAudio$3(bdaf parambdaf, View paramView, bdaj parambdaj) {}
+  public StructMsgItemPAAudio$3(bdsy parambdsy, View paramView, bdtc parambdtc) {}
   
   public void run()
   {
@@ -26,10 +26,10 @@ public class StructMsgItemPAAudio$3
       if ((localObject1 instanceof ViewGroup))
       {
         localObject2 = (ViewGroup)localObject1;
-        if (((ViewGroup)localObject2).getId() != 2131377946) {
+        if (((ViewGroup)localObject2).getId() != 2131378101) {
           break label64;
         }
-        localObject2 = (StructMsgForGeneralShare)((ViewGroup)localObject2).getTag(2131377946);
+        localObject2 = (StructMsgForGeneralShare)((ViewGroup)localObject2).getTag(2131378101);
       }
     }
     if (localObject2 == null) {}
@@ -43,18 +43,18 @@ public class StructMsgItemPAAudio$3
         break;
         this.this$0.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject1);
       } while (this.this$0.jdField_a_of_type_AndroidViewViewGroup == null);
-      localObject1 = (afxj)afur.a(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+      localObject1 = (aghd)agej.a(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     } while (localObject1 == null);
-    long l = ((afxj)localObject1).a.uniseq;
-    this.this$0.ae = ((StructMsgForGeneralShare)localObject2).uin;
+    long l = ((aghd)localObject1).a.uniseq;
+    this.this$0.ag = ((StructMsgForGeneralShare)localObject2).uin;
     this.this$0.jdField_a_of_type_Boolean = this.this$0.a(l);
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bdaj.c.setBackgroundResource(2130841775);
+      this.jdField_a_of_type_Bdtc.c.setBackgroundResource(2130841785);
       return;
     }
-    this.jdField_a_of_type_Bdaj.c.setBackgroundResource(2130772123);
-    ((AnimationDrawable)this.jdField_a_of_type_Bdaj.c.getBackground()).start();
+    this.jdField_a_of_type_Bdtc.c.setBackgroundResource(2130772123);
+    ((AnimationDrawable)this.jdField_a_of_type_Bdtc.c.getBackground()).start();
   }
 }
 

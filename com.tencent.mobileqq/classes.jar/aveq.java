@@ -1,32 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-class aveq
-  extends ayeu
+public class aveq
+  implements ayuh
 {
-  aveq(avep paramavep, ayeu paramayeu) {}
+  public aveq(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(Dialog paramDialog, View paramView, ayug paramayug)
   {
-    QLog.d("FaceContext", 1, new Object[] { "refreshIpState onFailedResponse : ", paramString2 });
-    avep.a(this.jdField_a_of_type_Avep, 11);
-    if (this.jdField_a_of_type_Ayeu != null) {
-      this.jdField_a_of_type_Ayeu.a(paramString1, paramInt, paramString2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    avep localavep = this.jdField_a_of_type_Avep;
-    if (paramBoolean) {}
-    for (int i = 11;; i = 10)
-    {
-      avep.a(localavep, i);
-      QLog.d("FaceContext", 1, new Object[] { "ipJudgeSuccess ", Boolean.valueOf(paramBoolean), paramString });
-      if (this.jdField_a_of_type_Ayeu != null) {
-        this.jdField_a_of_type_Ayeu.a(paramBoolean, paramString);
-      }
-      return;
-    }
+    ayui.a(this.a.a, paramayug, "home");
+    paramDialog.dismiss();
   }
 }
 

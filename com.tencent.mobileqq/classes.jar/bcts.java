@@ -1,129 +1,106 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TroopNotificationCache;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBFixed32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0x4e.Submsgtype0x4e.GroupBulletin;
+import tencent.im.s2c.msgtype0x210.submsgtype0x4e.Submsgtype0x4e.GroupBulletin.Content;
+import tencent.im.s2c.msgtype0x210.submsgtype0x4e.Submsgtype0x4e.MsgBody;
 
 public class bcts
+  implements bctr
 {
-  public static bcts a;
-  private String a;
-  public Map<String, Boolean> a;
-  public Map<String, Boolean> b = new ConcurrentHashMap();
-  
-  static
+  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    jdField_a_of_type_Bcts = new bcts("qzone");
-  }
-  
-  public bcts(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangString = ("StatisticHitRateCollector_" + paramString);
-  }
-  
-  public static bcts a()
-  {
-    return jdField_a_of_type_Bcts;
-  }
-  
-  public static String a()
-  {
-    AppRuntime localAppRuntime = null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
-    }
-    if (localAppRuntime == null) {
-      return "0";
-    }
-    if (localAppRuntime.getAccount() == null) {
-      return "0";
-    }
-    return localAppRuntime.getAccount();
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, "actQZLoadHitRateRed");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-    if ((localBoolean == null) || (!localBoolean.booleanValue()))
+    Object localObject = new Submsgtype0x4e.MsgBody();
+    for (;;)
     {
-      localBoolean = (Boolean)this.b.get(paramString2);
-      if ((localBoolean != null) && (localBoolean.booleanValue()))
+      int i;
+      long l1;
+      long l2;
+      long l3;
+      String str;
+      int j;
+      try
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd sucess action = " + paramString2 + " , hit = true, uin = " + paramString1);
+        paramArrayOfByte = (Submsgtype0x4e.MsgBody)((Submsgtype0x4e.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+        i = paramArrayOfByte.uint32_appid.get();
+        l1 = paramArrayOfByte.uint64_group_id.get();
+        l2 = paramArrayOfByte.uint64_group_code.get();
+        if (paramArrayOfByte.msg_group_bulletin.has())
+        {
+          l3 = (int)bcrg.a();
+          localObject = paramArrayOfByte.msg_group_bulletin.rpt_msg_content.get();
+          new ArrayList();
+          paramArrayOfByte = paramQQAppInterface.a().createEntityManager();
+          localObject = ((List)localObject).iterator();
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          Submsgtype0x4e.GroupBulletin.Content localContent = (Submsgtype0x4e.GroupBulletin.Content)((Iterator)localObject).next();
+          l3 = localContent.uint64_uin.get();
+          str = localContent.bytes_feedid.get().toStringUtf8();
+          j = localContent.uint32_time.get();
+          if (bgts.b(str))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("TroopNotificationHelper", 2, "notice is loading");
+            continue;
+          }
         }
-        bctj.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, null, null);
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
-        this.b.remove(paramString2);
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopAnnouncementDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : fail to parse SubMsgType0x4e.");
+        }
+      }
+      if ((TroopNotificationCache)paramArrayOfByte.find(TroopNotificationCache.class, "troopUin=? and feedsId=?", new String[] { String.valueOf(l2), str }) != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopAnnouncementDecoder", 2, "notice has exist!");
+        }
+      }
+      else {
+        bgts.a(paramQQAppInterface, i, l1, l2, l3, str, j, "OidbSvc.0x852_35", (short)23, false, false);
       }
     }
+    paramArrayOfByte.close();
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "preloadMark preloadAction = " + paramString + " , flag = " + paramBoolean);
+      QLog.d("TroopNotificationHelper", 2, "get notice from decodeC2CMsgPkg_MsgType0x210");
     }
-    if (paramBoolean) {
-      b(a(), paramString);
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(false));
-    this.b.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public void b(String paramString)
-  {
-    a(paramString, "actQZLoadHitRateLeba");
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (paramString2 != null)
-    {
-      Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-      if ((localBoolean == null) || (!localBoolean.booleanValue()))
-      {
-        localBoolean = (Boolean)this.b.get(paramString2);
-        if ((localBoolean != null) && (localBoolean.booleanValue()))
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd action = " + paramString2 + " , hit = false, uin = " + paramString1);
-          }
-          bctj.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, false, 0L, 0L, null, null);
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
-          this.b.remove(paramString2);
-        }
-      }
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    a(paramString, "actQZLoadHitRateProfile");
-  }
-  
-  public void d(String paramString)
-  {
-    Iterator localIterator = new ArrayList(this.b.keySet()).iterator();
-    while (localIterator.hasNext()) {
-      b(paramString, (String)localIterator.next());
-    }
+    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+    a(paramMessageHandler.app, paramMsgType0x210);
+    bcrw.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcts
  * JD-Core Version:    0.7.0.1
  */

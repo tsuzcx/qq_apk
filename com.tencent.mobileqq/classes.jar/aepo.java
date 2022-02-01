@@ -1,24 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aepo
-  implements View.OnTouchListener
+public final class aepo
+  implements DialogInterface.OnClickListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      FrameHelperActivity.c(false);
-      return false;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    FrameHelperActivity.c(true);
-    return false;
   }
 }
 

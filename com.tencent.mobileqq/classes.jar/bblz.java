@@ -1,51 +1,103 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeTask;
 
 public class bblz
-  implements bbmx
 {
-  private aitt jdField_a_of_type_Aitt;
-  private String jdField_a_of_type_JavaLangString;
-  private List<bbmy> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int;
+  private VideoFlowDecodeTask jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+  private Thread jdField_a_of_type_JavaLangThread;
   
-  public bblz(aitt paramaitt, List<bbmy> paramList, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aitt = paramaitt;
+    if (this.jdField_a_of_type_JavaLangThread != null) {
+      this.jdField_a_of_type_JavaLangThread.interrupt();
+    }
+    this.jdField_a_of_type_JavaLangThread = null;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = null;
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return 1;
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.a(paramInt);
+      yuk.b("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt);
+      return;
+    }
+    yuk.d("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt + " failed, can not find DecodeRunnable");
   }
   
-  public String a()
+  public void a(long paramLong1, long paramLong2)
   {
-    return anni.a(2131704137);
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      yuk.d("FlowEdit_VideoFlowDecoder", "setPlayRange [" + paramLong1 + " ms, " + paramLong2 + " ms]");
+      localVideoFlowDecodeTask.a(paramLong1, paramLong2);
+      return;
+    }
+    yuk.d("FlowEdit_VideoFlowDecoder", "setPlayRange failed, can not find DecodeRunnable");
   }
   
-  public List<bbmy> a()
+  public void a(bbkx parambbkx, bbkr parambbkr, bbky parambbky)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    Thread localThread;
+    if (this.jdField_a_of_type_JavaLangThread != null)
+    {
+      yuk.b("FlowEdit_VideoFlowDecoder", "stopDecode before startDecode, current thread : %s", this.jdField_a_of_type_JavaLangThread.getName());
+      localThread = this.jdField_a_of_type_JavaLangThread;
+      a();
+    }
+    try
+    {
+      localThread.join();
+      yuk.c("FlowEdit_VideoFlowDecoder", "startDecode, create decode runnable");
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = new VideoFlowDecodeTask(parambbkx.a, parambbkr, parambbky);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask.a(parambbkx);
+      parambbkx = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+      parambbkr = new StringBuilder().append("HWVideoDecoder-Thread-");
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(parambbkx, i, 8);
+      this.jdField_a_of_type_JavaLangThread.start();
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
   }
   
-  public void a(View paramView)
+  public void b()
   {
-    bbup.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("from_key", 0);
-    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Aitt);
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = true;
+      yuk.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
+      return;
+    }
+    yuk.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
   
-  public String b()
+  public void c()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = false;
+      synchronized (localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject)
+      {
+        localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject.notifyAll();
+        yuk.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
+        return;
+      }
+    }
+    yuk.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
 }
 

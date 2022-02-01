@@ -1,103 +1,89 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.content.res.Resources;
 import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade.17;
-import com.tencent.mobileqq.activity.ChatActivityFacade.17.1.1;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloMessage;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.4.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class adrn
-  implements bkhw
+  implements View.OnClickListener
 {
-  public adrn(ChatActivityFacade.17 param17) {}
+  public adrn(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
+    if (!this.a.b) {}
     for (;;)
     {
-      if (adrm.a != null) {
-        adrm.a.dismiss();
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      adrm.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      if ((((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))) && (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() != null) && (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a() != null))
+      Object localObject = this.a;
+      boolean bool;
+      label111:
+      int i;
+      if (!this.a.jdField_a_of_type_Boolean)
       {
-        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForArkApp)) {
-          appj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+        bool = true;
+        ((AccountManageActivity)localObject).jdField_a_of_type_Boolean = bool;
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label229;
         }
-        if (((StructLongMessageDownloadProcessor.b(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || (StructLongMessageDownloadProcessor.d(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) && ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)))
+        this.a.rightViewText.setVisibility(8);
+        this.a.rightHighLView.setVisibility(0);
+        this.a.rightViewText.setText(2131692262);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131167076));
+        if (AccountManageActivity.a(this.a) != null)
         {
-          paramView = (MessageForStructing)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-          StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.uniseq);
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo))
-        {
-          paramView = (MessageForApollo)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-          if (paramView != null)
-          {
-            amuf.a(paramView.uniseq, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "del_msg");
-            if ((paramView.mApolloMessage != null) && ((this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
-            {
-              BaseChatPie localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-              if ((localBaseChatPie != null) && (localBaseChatPie.a != null)) {
-                VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "del_success", ApolloUtil.b(localBaseChatPie.a.a), 0, new String[] { Integer.toString(paramView.mApolloMessage.id) });
-              }
-            }
+          localObject = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+          if ((localObject instanceof ShaderAnimLayout)) {
+            ((ShaderAnimLayout)localObject).f();
           }
+          AccountManageActivity.a(this.a).a();
+          AccountManageActivity.a(this.a, null);
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForFile))
-        {
-          paramView = atvo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView.nSessionId);
-          bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "6", "", "", "");
+        int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+        i = 0;
+        label185:
+        if (i >= j) {
+          break label341;
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForLightVideo)) {
-          avsn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if ((localObject != null) && (((View)localObject).getTag() != null)) {
+          break label289;
         }
-        paramView = this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("tim_aio_gary_uniseq");
-        if (QLog.isDebugVersion()) {
-          QLog.i("AIOMessageSpreadManager", 1, "del garyTips id[" + paramView + "],targetId[" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msgUid + "], hashCode:" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.hashCode());
-        }
-        if (TextUtils.isEmpty(paramView)) {}
       }
-      try
+      for (;;)
       {
-        long l = Long.parseLong(paramView);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, l, true);
-        ((bgzk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-        continue;
-        ThreadManager.post(new ChatActivityFacade.17.1.1(this), 8, null, true);
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
+        i += 1;
+        break label185;
+        bool = false;
+        break;
+        label229:
+        this.a.rightViewText.setVisibility(0);
+        this.a.rightHighLView.setVisibility(8);
+        this.a.rightViewText.setText(2131691682);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166998));
+        break label111;
+        label289:
+        localObject = ((View)localObject).findViewById(2131371650);
+        if (localObject != null)
         {
-          paramView.printStackTrace();
-          QLog.e("ChatActivityFacade", 1, paramView.toString());
+          ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
+          localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
+          ((View)localObject).setLayoutParams(localLayoutParams);
         }
       }
+      label341:
+      this.a.b();
+      this.a.a(this.a.jdField_a_of_type_Boolean);
+      this.a.b = false;
+      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.4.1(this), 400L);
     }
   }
 }

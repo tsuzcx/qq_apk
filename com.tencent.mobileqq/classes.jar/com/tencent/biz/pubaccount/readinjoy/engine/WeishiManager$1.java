@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import adrm;
+import aean;
 import android.app.Activity;
-import anhk;
+import antf;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import pnp;
+import pgj;
 
 public class WeishiManager$1
   implements Runnable
 {
-  public WeishiManager$1(pnp parampnp, Activity paramActivity) {}
+  public WeishiManager$1(pgj parampgj, Activity paramActivity) {}
   
   public void run()
   {
-    if (pnp.a(this.this$0) == null) {}
+    if (pgj.a(this.this$0) == null) {}
     do
     {
       return;
       SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_JavaLangString = anhk.aP;
+      localSessionInfo.jdField_a_of_type_JavaLangString = antf.aP;
       localSessionInfo.jdField_a_of_type_Int = 1008;
-      adrm.a(pnp.a(this.this$0), localSessionInfo);
-      pnp.a(this.this$0).a().c(anhk.aP, 1008);
+      aean.a(pgj.a(this.this$0), localSessionInfo);
+      pgj.a(this.this$0).a().c(antf.aP, 1008);
     } while (!(this.a instanceof ReadInJoyChannelActivity));
     ((ReadInJoyChannelActivity)this.a).b();
   }

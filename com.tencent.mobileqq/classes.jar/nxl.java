@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-class nxl
-  implements View.OnClickListener
+public class nxl
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  nxl(nxk paramnxk) {}
+  public nxl(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.a.a.d();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_Int = 7;
+    nwp.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
+    this.a.g();
+    return false;
   }
 }
 

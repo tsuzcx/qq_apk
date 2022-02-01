@@ -1,12 +1,11 @@
 class bdya
+  implements bdxo
 {
-  int jdField_a_of_type_Int;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  bdya(bdxx parambdxx) {}
   
-  bdya(int paramInt, String[] paramArrayOfString)
+  public void a()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Int = paramInt;
+    bdxx.a(this.a).a();
   }
 }
 

@@ -1,8 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface syo
+public class syo
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(BaseData paramBaseData);
+  public syo(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.a) != null)) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+  }
 }
 
 

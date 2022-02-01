@@ -2,11 +2,11 @@ package com.tencent.mobileqq.microapp.appbrand.ui;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import bbuu;
+import bcnn;
 import com.tencent.mobileqq.microapp.app.b;
 
 final class a
-  implements bbuu
+  implements bcnn
 {
   a(AppBrandUI paramAppBrandUI) {}
   

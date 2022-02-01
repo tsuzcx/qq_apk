@@ -1,14 +1,15 @@
 class atxa
-  implements atve
+  extends atxl
 {
-  atxa(atwz paramatwz) {}
-  
-  public void a()
+  public atxa(atwy paramatwy)
   {
-    dc.b(this.a.a, 0);
+    super(paramatwy);
   }
   
-  public void b() {}
+  protected String a()
+  {
+    return "StateAcceptByPC";
+  }
 }
 
 

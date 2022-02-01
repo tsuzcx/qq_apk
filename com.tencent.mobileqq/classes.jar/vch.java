@@ -1,16 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vch
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
   vch(vcb paramvcb) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    vcb.a(this.a, false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,22 +1,68 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.common.app.BaseApplicationImpl;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
-public class aagv
-  extends aqce
+class aagv
+  implements aaav<CertifiedAccountRead.StGetFeedListRsp>
 {
-  public aagv(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  aagv(aagu paramaagu, aabu paramaabu) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    aqfv.a(BaseApplicationImpl.getContext(), 2, true);
-    if (this.a.getActivity() != null)
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      this.jdField_a_of_type_Aagu.getLoadInfo().d(paramStGetFeedListRsp.livePageInfo.get());
+      if ((this.jdField_a_of_type_Aabu.c()) || (this.jdField_a_of_type_Aabu.d())) {
+        if ((paramStGetFeedListRsp.hotLive.get() == null) || (paramStGetFeedListRsp.hotLive.get().size() == 0)) {
+          if (aagu.a(this.jdField_a_of_type_Aagu) != null)
+          {
+            this.jdField_a_of_type_Aagu.clearData();
+            aagu.a(this.jdField_a_of_type_Aagu).b(true);
+          }
+        }
+      }
     }
+    label189:
+    do
+    {
+      do
+      {
+        break label189;
+        break label189;
+        paramString = this.jdField_a_of_type_Aagu;
+        localList = paramStGetFeedListRsp.hotLive.get();
+        localStCommonExt = paramStGetFeedListRsp.extInfo;
+        if (paramStGetFeedListRsp.isFinish.get() == 1) {}
+        for (paramBoolean = bool1;; paramBoolean = false)
+        {
+          paramString.a(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
+          this.jdField_a_of_type_Aagu.setShareData("share_key_continue_feeds", new aabn(paramStGetFeedListRsp.hotLive.get()));
+          return;
+          if (aagu.a(this.jdField_a_of_type_Aagu) == null) {
+            break;
+          }
+          aagu.a(this.jdField_a_of_type_Aagu).b(false);
+          break;
+        }
+      } while (!this.jdField_a_of_type_Aabu.e());
+      paramString = this.jdField_a_of_type_Aagu;
+      List localList = paramStGetFeedListRsp.hotLive.get();
+      COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
+      if (paramStGetFeedListRsp.isFinish.get() == 1) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        paramString.b(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
+        return;
+      }
+      this.jdField_a_of_type_Aagu.notifyLoadingComplete(false);
+    } while (((!this.jdField_a_of_type_Aabu.c()) && (!this.jdField_a_of_type_Aabu.d())) || (aagu.a(this.jdField_a_of_type_Aagu) == null));
+    aagu.a(this.jdField_a_of_type_Aagu).b(true);
   }
 }
 

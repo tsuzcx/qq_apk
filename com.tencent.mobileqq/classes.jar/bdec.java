@@ -1,13 +1,6 @@
-class bdec
+public class bdec
 {
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
-  
-  public bdec(String paramString, Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
+  public int[] a = new int[5];
 }
 
 

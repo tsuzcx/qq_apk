@@ -1,21 +1,39 @@
 public class bdxt
-  extends bdxu
+  extends bdxn
 {
-  private int a = 420000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 15000;
-  private int e = 30000;
-  private int f = 4000;
+  private int f;
+  private int g;
   
-  public int a()
+  public bdxt(int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.d;
+    super(paramInt1, 4, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
   }
   
-  public int b()
+  public bdxt(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return this.e;
+    super(paramInt1, 4, paramInt4);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
+    if (this.g - this.f > 0) {
+      if (this.a >= this.g) {
+        this.a = this.g;
+      }
+    }
+    for (;;)
+    {
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.a <= this.g) {
+        this.a = this.g;
+      }
+    }
   }
 }
 

@@ -1,48 +1,15 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aymy
-  extends anvp
+  implements DialogInterface.OnClickListener
 {
-  aymy(aymu paramaymu) {}
+  aymy(aymj paramaymj) {}
   
-  protected void a(boolean paramBoolean, bdei parambdei)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null) || (parambdei == null)) {
-      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      aymu.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
-  
-  protected void b(boolean paramBoolean, bdei parambdei)
-  {
-    if ((!paramBoolean) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null) || (parambdei == null)) {
-      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      aymu.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
-  
-  protected void c(boolean paramBoolean, bdei parambdei)
-  {
-    if ((!paramBoolean) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null) || (parambdei == null)) {
-      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      aymu.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    this.a.d(true);
+    bdll.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 

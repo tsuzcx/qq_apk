@@ -1,9 +1,26 @@
-final class ujo
-  extends bmgv<ujn, Void>
+class ujo
+  implements uiw
 {
-  protected ujn a(Void paramVoid)
+  ujo(ujn paramujn) {}
+  
+  public void a()
   {
-    return new ujn();
+    ujn.a(this.a, ujn.a(this.a), 1000003);
+  }
+  
+  public void b()
+  {
+    ujn.a(this.a, ujn.a(this.a), 1000007);
+  }
+  
+  public void c()
+  {
+    ujn.a(this.a, ujn.a(this.a), 1000004);
+  }
+  
+  public void d()
+  {
+    ujn.a(this.a, ujn.a(this.a), 1000002);
   }
 }
 

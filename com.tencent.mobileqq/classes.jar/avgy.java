@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-
-public final class avgy
-  implements Parcelable.Creator<IVPluginInfo>
+class avgy
+  implements beuq
 {
-  public IVPluginInfo a(Parcel paramParcel)
-  {
-    return new IVPluginInfo(paramParcel);
-  }
+  avgy(avgx paramavgx) {}
   
-  public IVPluginInfo[] a(int paramInt)
-  {
-    return new IVPluginInfo[paramInt];
-  }
+  public void onResp(bevm parambevm) {}
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

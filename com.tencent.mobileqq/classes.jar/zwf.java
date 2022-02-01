@@ -1,44 +1,16 @@
-import com.tencent.biz.richframework.download.RFWDownloader.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class zwf
-  implements bdvw
+  implements DialogInterface.OnClickListener
 {
-  public zwf(RFWDownloader.2 param2) {}
+  public zwf(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    zwe.a(this.a.this$0).remove(this.a.a);
-    QLog.i("RFWDownloader", 1, "download  onResp url:  resultcode: " + parambdwt.c);
-    QLog.i("RFWDownloader", 1, "downloadFinish downloadSavePath" + this.a.b);
-    if (zwe.a(this.a.this$0, this.a.a)) {
-      try
-      {
-        parambdwt = this.a.this$0.b(this.a.a);
-        File localFile = new File(this.a.b);
-        QLog.d("RFWDownloader", 4, "start unzip file to folderPath:" + parambdwt);
-        nmk.a(localFile, parambdwt);
-        bgmg.a(localFile);
-        QLog.i("RFWDownloader", 1, "unzip success");
-        zwe.a(this.a.this$0, this.a.a, this.a.c);
-        zwe.a(this.a.this$0, this.a.a, true, parambdwt);
-        return;
-      }
-      catch (Exception parambdwt)
-      {
-        zwe.a(this.a.this$0, this.a.a, false, "");
-        QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambdwt);
-        return;
-      }
-    }
-    QLog.i("RFWDownloader", 1, "is not zip file, not need upzip");
-    zwe.a(this.a.this$0, this.a.a, this.a.c);
-    zwe.a(this.a.this$0, this.a.a, true, this.a.b);
+    this.a.finish();
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

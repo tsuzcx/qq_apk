@@ -1,99 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class awqi
-  extends awqa
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"MAX_SHOWN_AVATAR_COUNT", "", "TAG", "", "getHalfAlphaDrawableList", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "d", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class awqi
 {
-  private static final String b = bedk.a(awqo.jdField_a_of_type_JavaLangString + "shortvideo" + File.separator);
-  private String c = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
-  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("thumbMd5");
-  
-  public awqi(MsgBackupResEntity paramMsgBackupResEntity)
+  @NotNull
+  public static final Drawable a(@NotNull Context paramContext, @NotNull Drawable paramDrawable)
   {
-    super(paramMsgBackupResEntity);
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.d))) {
-      a("md5:" + this.c + " mThumbMD5:" + this.d);
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    return ShortVideoUtils.a(paramString, "jpg");
-  }
-  
-  public static String b(String paramString)
-  {
-    paramString = ShortVideoUtils.a(paramString);
-    return paramString + "MsgBackUp";
-  }
-  
-  private String c(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(b);
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  private String d(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(b);
-    localStringBuilder.append("thumbs");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public awnz a()
-  {
-    MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    int i = localMsgBackupResEntity.msgSubType;
-    awnz localawnz = new awnz();
-    String str1 = a();
-    String str2 = b();
-    boolean bool1 = a(str1);
-    boolean bool2 = a(str2);
-    if (QLog.isColorLevel()) {
-      a("getResDownloadObject,entity:" + localMsgBackupResEntity.toLogString() + " tempPath:" + str1 + " exist:" + bool1 + " realPath:" + str2 + " exist:" + bool2);
-    }
-    localawnz.jdField_a_of_type_JavaLangString = str1;
-    if ((!bool1) && (!bool2)) {}
-    for (bool1 = true;; bool1 = false)
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "d");
+    Drawable localDrawable;
+    Object localObject;
+    Bitmap localBitmap;
+    Resources localResources;
+    if (!(paramDrawable instanceof SkinnableBitmapDrawable))
     {
-      localawnz.jdField_a_of_type_Boolean = bool1;
-      return localawnz;
+      localDrawable = paramDrawable;
+      if (!(paramDrawable instanceof BitmapDrawable)) {}
     }
-  }
-  
-  public String a()
-  {
-    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
+    else
     {
-    default: 
-      return null;
-    case 4: 
-    case 5: 
-    case 6: 
-      return c(this.c);
+      localObject = (Bitmap)null;
+      if (!(paramDrawable instanceof SkinnableBitmapDrawable)) {
+        break label175;
+      }
+      localObject = ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+      localBitmap = Bitmap.createBitmap((Bitmap)localObject);
+      localResources = paramContext.getResources();
+      localDrawable = paramDrawable;
+      if (localResources != null) {
+        if ((localObject == null) || (localBitmap != null)) {
+          break label193;
+        }
+      }
     }
-    return d(this.d);
-  }
-  
-  public String b()
-  {
-    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
+    label175:
+    label193:
+    label204:
+    for (paramContext = (Context)localObject;; paramContext = localBitmap)
     {
-    default: 
-      return null;
-    case 4: 
-    case 5: 
-    case 6: 
-      return b(this.c);
+      paramDrawable = new BitmapDrawable(localResources, (Bitmap)localObject);
+      localObject = new BitmapDrawable(localResources, paramContext);
+      ((BitmapDrawable)localObject).setAlpha(127);
+      paramContext = new StateListDrawable();
+      localObject = (Drawable)localObject;
+      paramContext.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
+      localObject = (Drawable)paramDrawable;
+      paramContext.addState(new int[] { 16842908 }, (Drawable)localObject);
+      paramDrawable = (Drawable)paramDrawable;
+      paramContext.addState(new int[0], paramDrawable);
+      localDrawable = (Drawable)paramContext;
+      do
+      {
+        return localDrawable;
+        if (!(paramDrawable instanceof BitmapDrawable)) {
+          break;
+        }
+        localObject = ((BitmapDrawable)paramDrawable).getBitmap();
+        break;
+        if (localObject != null) {
+          break label204;
+        }
+        localDrawable = paramDrawable;
+      } while (localBitmap == null);
     }
-    return a(this.d);
   }
 }
 

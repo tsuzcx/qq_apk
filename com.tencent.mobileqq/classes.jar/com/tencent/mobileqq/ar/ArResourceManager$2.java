@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar;
 
-import aovz;
-import aowd;
+import apjp;
+import apjt;
 import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
 public class ArResourceManager$2
   implements Runnable
 {
-  public ArResourceManager$2(aowd paramaowd, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ArResourceManager$2(apjt paramapjt, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {

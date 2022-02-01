@@ -1,35 +1,32 @@
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.im.oidb.articlesummary.articlesummary.ArticleBasicInfo;
-import tencent.im.oidb.articlesummary.articlesummary.LongContentInfo;
-import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
-import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
+import android.content.Context;
+import android.view.View;
+import android.widget.CheckBox;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import java.util.List;
+import java.util.Map;
 
 public class rhg
+  extends rhf
 {
-  public int a;
-  public rgw a;
-  public rhm a;
-  public rhp a;
-  
-  public rhg() {}
-  
-  public rhg(articlesummary.LongContentInfo paramLongContentInfo)
+  public rhg(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Int = paramLongContentInfo.enum_long_content_card_type.get();
-    this.jdField_a_of_type_Rgw = new rgw(paramLongContentInfo.msg_article_basic_ingo);
-    this.jdField_a_of_type_Rhm = new rhm(paramLongContentInfo.msg_outside_link_info);
-    this.jdField_a_of_type_Rhp = new rhp(paramLongContentInfo.msg_pgc_video_info);
+    super(paramContext, paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
   }
   
-  public articlesummary.LongContentInfo a()
+  protected void a(View paramView, ResultRecord paramResultRecord)
   {
-    articlesummary.LongContentInfo localLongContentInfo = new articlesummary.LongContentInfo();
-    localLongContentInfo.enum_long_content_card_type.set(this.jdField_a_of_type_Int);
-    localLongContentInfo.msg_article_basic_ingo.set(this.jdField_a_of_type_Rgw.a());
-    localLongContentInfo.msg_outside_link_info.set(this.jdField_a_of_type_Rhm.a());
-    localLongContentInfo.msg_pgc_video_info.set(this.jdField_a_of_type_Rhp.a());
-    localLongContentInfo.setHasFlag(true);
-    return localLongContentInfo;
+    if ((paramView == null) || (FollowingListFragment.a(this.b) == null) || (FollowingListFragment.a(this.b).a() == null) || (FollowingListFragment.a(this.b).a().isEmpty())) {
+      return;
+    }
+    paramView = (CheckBox)paramView.findViewById(2131364511);
+    paramView.setBackgroundResource(2130849409);
+    if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
+    {
+      paramView.setEnabled(false);
+      return;
+    }
+    paramView.setEnabled(true);
   }
 }
 

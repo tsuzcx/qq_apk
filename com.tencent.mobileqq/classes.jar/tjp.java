@@ -1,6 +1,12 @@
 public abstract interface tjp
 {
+  public abstract void a();
+  
   public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

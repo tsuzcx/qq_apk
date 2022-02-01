@@ -1,38 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.List;
 
-public class ylu
-  extends wlf<ylv>
+class ylu
+  implements yfe
 {
-  public static final String a = wjz.a("StorySvc.get_user_guide");
+  ylu(ylt paramylt, JobContext paramJobContext, ylv paramylv) {}
   
-  public String a()
+  public void a(yff paramyff)
   {
-    return a;
-  }
-  
-  public ylv a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
-    try
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
-      return new ylv(localRspGetUserGuide);
+      yuk.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_Ylv });
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    ylt.a(this.jdField_a_of_type_Ylt);
+    yuk.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(ylt.b(this.jdField_a_of_type_Ylt)), paramyff);
+    if (paramyff.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      for (;;)
+      ylt.a(this.jdField_a_of_type_Ylt).addAll(paramyff.jdField_a_of_type_JavaUtilList);
+      if ((!paramyff.jdField_a_of_type_Boolean) && (ylt.b(this.jdField_a_of_type_Ylt) < 10))
       {
-        paramArrayOfByte.printStackTrace();
-        yqp.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+        yuk.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(ylt.b(this.jdField_a_of_type_Ylt)));
+        ylt.a(this.jdField_a_of_type_Ylt).c();
+        return;
       }
+      paramyff.jdField_a_of_type_JavaUtilList = ylt.a(this.jdField_a_of_type_Ylt);
+      yuk.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(ylt.a(this.jdField_a_of_type_Ylt).size()));
+      ylt.a(this.jdField_a_of_type_Ylt, paramyff);
+      return;
     }
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetUserGuide().toByteArray();
+    paramyff.jdField_a_of_type_JavaUtilList = ylt.a(this.jdField_a_of_type_Ylt);
+    yuk.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(ylt.a(this.jdField_a_of_type_Ylt).size()));
+    ylt.b(this.jdField_a_of_type_Ylt, paramyff);
   }
 }
 

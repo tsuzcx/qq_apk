@@ -1,6 +1,8 @@
 public abstract interface bewf
 {
-  public abstract void a(boolean paramBoolean, besl parambesl);
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 

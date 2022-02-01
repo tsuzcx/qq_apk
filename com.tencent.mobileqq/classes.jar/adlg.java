@@ -1,69 +1,52 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qapmsdk.common.logger.ILogProxy;
+import com.tencent.qapmsdk.common.logger.LogState;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
 public class adlg
-  implements View.OnClickListener
+  implements ILogProxy
 {
-  public adlg(AddRequestActivity paramAddRequestActivity) {}
+  int a;
   
-  public void onClick(View paramView)
+  public adlg(int paramInt)
   {
-    int j = 0;
-    bcst.b(this.a.app, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
-    Object localObject1 = this.a;
-    int i;
-    if (AddRequestActivity.a(this.a) == 3999)
-    {
-      i = 3041;
-      AddRequestActivity.a((AddRequestActivity)localObject1, i);
-      Object localObject2 = (anmw)this.a.app.getManager(51);
-      boolean bool = ((anmw)localObject2).b(this.a.a);
-      localObject1 = afur.a(new Intent(this.a, SplashActivity.class), null);
-      ((Intent)localObject1).putExtra("uin", this.a.a);
-      ((Intent)localObject1).putExtra("add_friend_source_id", AddRequestActivity.a(this.a));
-      if (!bool) {
-        break label236;
-      }
-      localObject2 = ((anmw)localObject2).e(this.a.a);
-      if (localObject2 != null)
-      {
-        ((Intent)localObject1).putExtra("cSpecialFlag", ((Friends)localObject2).cSpecialFlag);
-        ((Intent)localObject1).putExtra("uinname", bglf.a((Friends)localObject2));
-      }
-      label192:
-      if (!bool) {
-        break label269;
-      }
-      i = j;
-    }
-    for (;;)
-    {
-      ((Intent)localObject1).putExtra("uintype", i);
-      this.a.startActivity((Intent)localObject1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = AddRequestActivity.a(this.a);
-      break;
-      label236:
-      ((Intent)localObject1).putExtra("uinname", this.a.b);
-      ((Intent)localObject1).putExtra("param_wzry_data", AddRequestActivity.a(this.a));
-      break label192;
-      label269:
-      if ((AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 4007)) {
-        i = 1001;
-      } else if ((AddRequestActivity.a(this.a) == 2019) || (AddRequestActivity.a(this.a) == 3019)) {
-        i = 1010;
-      } else {
-        i = 1022;
-      }
-    }
+    this.a = paramInt;
   }
+  
+  public void doLog(@NotNull LogState paramLogState, @NotNull String... paramVarArgs)
+  {
+    if (paramLogState.getValue() > this.a) {}
+    while ((paramVarArgs == null) || (paramVarArgs.length <= 1)) {
+      return;
+    }
+    Object localObject = paramVarArgs[0];
+    localObject = new StringBuilder(256);
+    int i = 1;
+    while (i < paramVarArgs.length)
+    {
+      ((StringBuilder)localObject).append(paramVarArgs[i]);
+      i += 1;
+    }
+    switch (adlh.a[paramLogState.ordinal()])
+    {
+    default: 
+      return;
+    case 1: 
+      QLog.d(paramVarArgs[0], 2, ((StringBuilder)localObject).toString());
+    case 2: 
+      QLog.d(paramVarArgs[0], 2, ((StringBuilder)localObject).toString());
+      return;
+    case 3: 
+      QLog.i(paramVarArgs[0], 1, ((StringBuilder)localObject).toString());
+      return;
+    case 4: 
+      QLog.w(paramVarArgs[0], 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    QLog.e(paramVarArgs[0], 1, ((StringBuilder)localObject).toString());
+  }
+  
+  public void flush(@NotNull String paramString) {}
 }
 
 

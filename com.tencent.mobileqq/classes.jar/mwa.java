@@ -1,9 +1,6 @@
-import android.media.MediaCodec;
-
-class mwa
+public abstract interface mwa
 {
-  public int a = 1;
-  public MediaCodec a;
+  public abstract void a(Object paramObject, int paramInt);
 }
 
 

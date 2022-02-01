@@ -1,17 +1,27 @@
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public abstract class ayyr
-  implements ayyq
+public class ayyr
+  extends behl
 {
-  public final void a(int paramInt) {}
+  public ayyr(OCRResultActivity paramOCRResultActivity) {}
   
-  public final void a(int paramInt, ArrayList<ayxy> paramArrayList) {}
-  
-  public final void b(int paramInt, ayxy paramayxy) {}
-  
-  public final void c(int paramInt, ayxy paramayxy) {}
-  
-  public final void d(int paramInt, ayxy paramayxy) {}
+  protected void a(boolean paramBoolean, List<String> paramList)
+  {
+    super.a(paramBoolean, paramList);
+    OCRResultActivity.c(this.a);
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.setParticipleItems(paramList);
+      this.a.a.a();
+      OCRResultActivity.d(this.a);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131706702), 0).a();
+  }
 }
 
 

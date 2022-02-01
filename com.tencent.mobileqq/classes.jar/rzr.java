@@ -1,33 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
-
-class rzr
-  implements View.OnClickListener
+public abstract interface rzr
 {
-  rzr(rzp paramrzp) {}
-  
-  public void onClick(View paramView)
-  {
-    ryx.a(rzp.a(this.a), rzp.a(this.a).a);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uin", rzp.a(this.a).getCurrentAccountUin());
-      label45:
-      oat.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", och.a(null, null, rzp.a(this.a).a.a.a, rzp.a(this.a).a.a.g, localJSONObject), false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label45;
-    }
-  }
+  public abstract void a(qwv paramqwv);
 }
 
 

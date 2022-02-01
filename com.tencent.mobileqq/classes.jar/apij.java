@@ -1,18 +1,25 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class apij
-  implements ArkAppCacheMgr.OnGetAppIcon
+  extends aphs
 {
-  public apij(ArkAppModuleBase.APIAuthority.1 param1, bgpa parambgpa) {}
+  public ArCloudConfigInfo a;
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public apij(String paramString, int paramInt1, int paramInt2, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_Bgpa.findViewById(2131365434)).setImageBitmap(paramBitmap);
-    }
+    super(paramString, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MultiFragmentAnimARResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.b);
+    localStringBuilder.append(", arResourceInfo=").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

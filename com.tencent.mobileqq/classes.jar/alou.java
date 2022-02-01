@@ -1,8 +1,20 @@
-public abstract interface alou
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class alou
+  implements Animation.AnimationListener
 {
-  public abstract void a(float paramFloat);
+  alou(View paramView, Animation paramAnimation) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

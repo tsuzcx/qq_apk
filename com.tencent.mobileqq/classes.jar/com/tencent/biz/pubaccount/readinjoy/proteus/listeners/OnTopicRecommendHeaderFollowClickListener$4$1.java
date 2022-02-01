@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.listeners;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pmh;
-import qho;
-import qhs;
+import pfa;
+import pzz;
+import qad;
 
 public class OnTopicRecommendHeaderFollowClickListener$4$1
   implements Runnable
 {
-  public OnTopicRecommendHeaderFollowClickListener$4$1(qhs paramqhs) {}
+  public OnTopicRecommendHeaderFollowClickListener$4$1(qad paramqad) {}
   
   public void run()
   {
-    pmh.a().a((int)qho.a(this.a.a).businessId, 0);
+    pfa.a().a((int)pzz.a(this.a.a).businessId, 0);
   }
 }
 

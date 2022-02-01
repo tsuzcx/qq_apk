@@ -1,8 +1,46 @@
-class agaj
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.widget.XListView;
+
+public class agaj
+  implements bbst
 {
-  public int a;
-  public String a;
-  public String b = "";
+  public agaj(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      paramBitmap = this.a.a;
+      if (paramBitmap == null) {
+        break label108;
+      }
+      paramInt2 = paramBitmap.getChildCount();
+    }
+    for (;;)
+    {
+      if (i < paramInt2)
+      {
+        Object localObject = paramBitmap.getChildAt(i).getTag();
+        if ((localObject != null) && ((localObject instanceof agba)))
+        {
+          localObject = (agba)localObject;
+          if ((((agba)localObject).b == paramInt1) && (((agba)localObject).e != null)) {
+            VisitorsActivity.a(this.a, ((agba)localObject).e, paramInt1);
+          }
+        }
+        i += 1;
+      }
+      else
+      {
+        return;
+        label108:
+        paramInt2 = 0;
+      }
+    }
+  }
 }
 
 

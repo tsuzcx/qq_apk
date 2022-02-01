@@ -1,64 +1,14 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class aqxz
-  extends aqwr<aqxy>
+public abstract interface aqxz
 {
-  public static aqxy a()
-  {
-    return (aqxy)aqlk.a().a(413);
-  }
+  public abstract int a();
   
-  @NonNull
-  public aqxy a(@NonNull aqlg[] paramArrayOfaqlg)
-  {
-    aqxy localaqxy = new aqxy();
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (paramArrayOfaqlg != null) {}
-    try
-    {
-      if (!"".equals(paramArrayOfaqlg))
-      {
-        paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg);
-        localaqxy.a(paramArrayOfaqlg.getString("url"));
-        localaqxy.a(paramArrayOfaqlg.getBoolean("isEnable"));
-        localaqxy.b(paramArrayOfaqlg.getBoolean("hideHotValue"));
-      }
-      return localaqxy;
-    }
-    catch (JSONException paramArrayOfaqlg)
-    {
-      paramArrayOfaqlg.printStackTrace();
-    }
-    return localaqxy;
-  }
+  public abstract int a(int paramInt);
   
-  @NonNull
-  public aqxy b()
-  {
-    return new aqxy();
-  }
-  
-  @NonNull
-  public aqxy c()
-  {
-    return new aqxy();
-  }
-  
-  public Class<aqxy> clazz()
-  {
-    return aqxy.class;
-  }
-  
-  public int type()
-  {
-    return 413;
-  }
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxz
  * JD-Core Version:    0.7.0.1
  */

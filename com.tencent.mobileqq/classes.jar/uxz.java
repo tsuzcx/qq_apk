@@ -1,19 +1,12 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.widget.GridView;
 
 public class uxz
-  extends FlingGestureHandler
 {
-  public uxz(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
-  
-  public void flingLToR()
-  {
-    vrf.a("", 22, 10);
-    super.flingLToR();
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public VideoFeedsAlphaMaskView a;
+  GridView jdField_a_of_type_ComTencentWidgetGridView;
 }
 
 

@@ -1,70 +1,47 @@
 import android.view.View;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 
 public class xmc
-  implements xpc
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = zlx.d(BaseApplication.getContext());
-  private int b = -1;
-  private int c = -1;
+  private xmq jdField_a_of_type_Xmq;
+  private xms jdField_a_of_type_Xms;
+  private xmu jdField_a_of_type_Xmu = new xmd(this);
+  public xno a;
+  private xzt jdField_a_of_type_Xzt;
+  private xmu b = new xme(this);
   
-  public xmc(xma paramxma) {}
-  
-  public void a(int paramInt)
+  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    if (this.jdField_a_of_type_Xma.a() != 0) {
-      return;
-    }
-    this.c = paramInt;
+    this.jdField_a_of_type_Xno = new xno(new xnf(paramMsgTabPlayInfo));
+    this.jdField_a_of_type_Xzt = new xzt(this.jdField_a_of_type_Xno);
+    this.jdField_a_of_type_Xzt.b();
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    if (this.jdField_a_of_type_Xma.a() != 0) {
-      return;
-    }
-    if (this.b == -1) {
-      this.b = paramInt1;
-    }
-    if (this.b != paramInt1)
-    {
-      this.b = paramInt1;
-      this.jdField_a_of_type_Float = paramFloat;
-    }
-    if (this.jdField_a_of_type_Float > 0.5D)
-    {
-      this.jdField_a_of_type_Xma.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
-      return;
-    }
-    this.jdField_a_of_type_Xma.a.setTranslationY(-paramInt2);
+    this.jdField_a_of_type_Xno = new xno(new xml(paramHomeFeedPlayInfo));
+    this.jdField_a_of_type_Xzt = new xzt(this.jdField_a_of_type_Xno);
   }
   
-  public void b(int paramInt)
+  public void onClickTestDown(View paramView)
   {
-    yqp.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Xma.a()));
-    if (this.jdField_a_of_type_Xma.a() != 0) {}
-    do
+    if (this.jdField_a_of_type_Xno != null)
     {
-      do
-      {
-        return;
-        if (paramInt == 1)
-        {
-          this.jdField_a_of_type_Float = -1.0F;
-          this.b = -1;
-          this.c = -1;
-          this.jdField_a_of_type_Xma.a.clearAnimation();
-          return;
-        }
-      } while (paramInt != 0);
-      if (this.jdField_a_of_type_Float < 0.5D)
-      {
-        this.jdField_a_of_type_Xma.a.setTranslationY(0.0F);
-        return;
-      }
-    } while (this.c == -1);
-    this.jdField_a_of_type_Xma.a.setTranslationY(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Xno.a(this.b);
+      this.jdField_a_of_type_Xno.b(this.jdField_a_of_type_Xmu);
+      this.jdField_a_of_type_Xno.a(this.jdField_a_of_type_Xms, 2, 1, null);
+    }
+  }
+  
+  public void onClickTestUp(View paramView)
+  {
+    if (this.jdField_a_of_type_Xno != null)
+    {
+      this.jdField_a_of_type_Xno.b(this.b);
+      this.jdField_a_of_type_Xno.a(this.jdField_a_of_type_Xmu);
+      this.jdField_a_of_type_Xno.a(this.jdField_a_of_type_Xms, 0, 1, null);
+    }
   }
 }
 

@@ -1,35 +1,75 @@
+import android.os.Handler;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.widget.FilterRelativeLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar.4.1;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auqh
-  extends afwr
+  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FilterRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView c;
-  private ImageView d;
-  private int e;
+  public auqh(SendBottomBar paramSendBottomBar) {}
   
-  private void a(View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout = ((FilterRelativeLayout)paramView.findViewById(2131367250));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367244));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367248));
-    this.c = ((ImageView)paramView.findViewById(2131367249));
-    this.d = ((ImageView)paramView.findViewById(2131367245));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367251));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367252));
-  }
-  
-  private void a(MessageForFuDai paramMessageForFuDai)
-  {
-    this.e = paramMessageForFuDai.themeId;
+    if (SendBottomBar.b(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      SendBottomBar.a(this.a, true);
+      new Handler().postDelayed(new SendBottomBar.4.1(this), 800L);
+      SendBottomBar.b(this.a);
+      switch (SendBottomBar.a(this.a).b())
+      {
+      case 2: 
+      case 3: 
+      case 4: 
+      case 6: 
+      default: 
+        if (!AppNetConnInfo.isNetSupport()) {
+          auna.a(2131693936);
+        }
+        break;
+      case 7: 
+        SendBottomBar.c(this.a);
+        break;
+      case 10: 
+        SendBottomBar.d(this.a);
+        break;
+      case 1: 
+        SendBottomBar.e(this.a);
+        break;
+      case 5: 
+        SendBottomBar.f(this.a);
+        break;
+      case 8: 
+        SendBottomBar.g(this.a);
+        break;
+      case 9: 
+        this.a.b();
+        continue;
+        int j = SendBottomBar.a(this.a).a();
+        if (j == 1) {}
+        for (int i = 1;; i = 0)
+        {
+          if (j != 5) {
+            break label232;
+          }
+          this.a.c();
+          break;
+        }
+        label232:
+        if (i != 0) {
+          SendBottomBar.a(this.a, true);
+        } else {
+          SendBottomBar.h(this.a);
+        }
+        break;
+      }
+    }
   }
 }
 

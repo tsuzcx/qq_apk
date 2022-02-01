@@ -1,35 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class azxh
-  implements anil
 {
-  public final String a = "QuickLoginObserver";
+  public float a;
+  public int a;
+  public int b;
+  public int c;
   
-  private void a(boolean paramBoolean, Object paramObject)
+  public azxh(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
-    if (a(paramObject))
-    {
-      a(paramBoolean, ((Long)((Object[])(Object[])paramObject)[0]).longValue());
-      return;
-    }
-    QLog.e("QuickLoginObserver", 2, "onUpdateSetPCVerify error");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  private boolean a(Object paramObject)
+  public String toString()
   {
-    return (paramObject != null) && ((paramObject instanceof Object[])) && (((Object[])paramObject).length == 1);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramObject);
+    return super.toString();
   }
 }
 

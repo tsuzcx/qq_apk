@@ -1,25 +1,16 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
-@TargetApi(21)
-public class bpdq
-  extends ViewOutlineProvider
+class bpdq
+  implements bpdn
 {
-  private float a;
+  bpdq(bpdp parambpdp, int paramInt) {}
   
-  public bpdq(float paramFloat)
+  public void a(String paramString)
   {
-    this.a = paramFloat;
-  }
-  
-  public void getOutline(View paramView, Outline paramOutline)
-  {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("effect_group_json_path", paramString);
+    this.jdField_a_of_type_Bpdp.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

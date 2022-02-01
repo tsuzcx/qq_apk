@@ -1,9 +1,28 @@
-final class afus
-  extends ThreadLocal<char[]>
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afus
+  implements View.OnClickListener
 {
-  protected char[] a()
+  public afus(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return new char[1024];
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Afwg != null) {
+      this.a.jdField_a_of_type_Afwg.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

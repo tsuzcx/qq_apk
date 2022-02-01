@@ -2,20 +2,20 @@ package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.app.Activity;
 import android.content.Intent;
-import bndy;
-import bnjl;
+import bofh;
+import bokv;
 
 public class VideoStoryAIScenePart$20
   implements Runnable
 {
-  public VideoStoryAIScenePart$20(bnjl parambnjl) {}
+  public VideoStoryAIScenePart$20(bokv parambokv) {}
   
   public void run()
   {
     Intent localIntent = new Intent();
     localIntent.setAction("ae_editor_bottom_tab_show_hide");
     localIntent.putExtra("is_show", true);
-    bnjl.a(this.this$0).a().sendBroadcast(localIntent);
+    bokv.a(this.this$0).a().sendBroadcast(localIntent);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aezk
-  extends ayes
+  implements DialogInterface.OnClickListener
 {
-  public aezk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public aezk(NotificationActivity paramNotificationActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQSettingSettingActivity.a(this.a);
-    QQSettingSettingActivity.b(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aezk
  * JD-Core Version:    0.7.0.1
  */

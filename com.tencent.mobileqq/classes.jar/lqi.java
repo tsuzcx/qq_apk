@@ -1,66 +1,35 @@
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.internal.FrameBufferCache;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public class lqi
-  extends lqm
 {
-  private final String jdField_a_of_type_JavaLangString = "MultipleTextureSource-" + Integer.toHexString(hashCode());
-  private List<Frame> jdField_a_of_type_JavaUtilList = new LinkedList();
+  lpc jdField_a_of_type_Lpc;
+  short jdField_a_of_type_Short;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  short jdField_b_of_type_Short;
+  byte[] jdField_b_of_type_ArrayOfByte;
+  byte[] c;
   
-  protected void a() {}
-  
-  public void a(List<lqj> paramList, long paramLong)
+  lqi()
   {
-    ArrayList localArrayList1 = new ArrayList(paramList.size());
-    int i = 0;
-    if (i < paramList.size())
-    {
-      lqj locallqj = (lqj)paramList.get(i);
-      label131:
-      ArrayList localArrayList2;
-      if (i >= this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = new Frame();
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "render: create cached frame#" + Integer.toHexString(localObject.hashCode()));
-        ((Frame)localObject).setSizedTexture(locallqj.jdField_a_of_type_Int, locallqj.b, locallqj.c);
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        if (!locallqj.a()) {
-          break label257;
-        }
-        localArrayList2 = new ArrayList(1);
-        lqq locallqq = new lqq();
-        locallqq.jdField_a_of_type_JavaUtilList = locallqj.jdField_a_of_type_JavaUtilList;
-        localArrayList2.add(locallqq);
-      }
-      label257:
-      for (Object localObject = lqp.a((Frame)localObject, localArrayList2);; localObject = lqp.a((Frame)localObject))
-      {
-        localArrayList1.add(localObject);
-        i += 1;
-        break;
-        localObject = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
-        ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).setSizedTexture(locallqj.jdField_a_of_type_Int, locallqj.b, locallqj.c);
-        break label131;
-      }
-    }
-    b(localArrayList1, paramLong);
+    a();
   }
   
-  protected void b()
+  public void a()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).clear();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: cached frame#" + Integer.toHexString(((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).hashCode()));
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    FrameBufferCache.getInstance().destroy();
+    this.jdField_a_of_type_Lpc = null;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.c = null;
+    this.jdField_a_of_type_Short = 0;
+    this.jdField_b_of_type_Short = 0;
+  }
+  
+  public void a(lpc paramlpc, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2)
+  {
+    this.jdField_a_of_type_Lpc = paramlpc;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.c = paramArrayOfByte3;
+    this.jdField_a_of_type_Short = paramShort1;
+    this.jdField_b_of_type_Short = paramShort2;
   }
 }
 

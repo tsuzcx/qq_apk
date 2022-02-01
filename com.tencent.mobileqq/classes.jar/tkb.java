@@ -1,16 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tkb
-  extends pmn
 {
-  public tkb(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void a(tkf paramtkf)
+  public static void a()
   {
-    ColorBandVideoEntranceButton.a(this.a, paramtkf);
-    this.a.a(ColorBandVideoEntranceButton.a(this.a));
-    QLog.d("ColorBandVideoEntranceButton", 1, "onHandle0x6cfResp reddot,data=" + paramtkf);
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
+  }
+  
+  public static void a(String paramString1, String paramString2, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
+  
+  private static boolean a(double paramDouble)
+  {
+    return false;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_JavaUtilList != null) {
+      jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    ocd.a(ozs.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
   }
 }
 

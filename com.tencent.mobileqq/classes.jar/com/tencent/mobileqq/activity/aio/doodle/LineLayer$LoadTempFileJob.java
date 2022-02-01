@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aghg;
+import agqh;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
@@ -17,17 +17,17 @@ class LineLayer$LoadTempFileJob
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private WeakReference<aghg> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<agqh> jdField_a_of_type_JavaLangRefWeakReference;
   private Map<Integer, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   private int b = -1;
   
-  public LineLayer$LoadTempFileJob(int paramInt1, Map<Integer, String> paramMap, int paramInt2, aghg paramaghg)
+  public LineLayer$LoadTempFileJob(int paramInt1, Map<Integer, String> paramMap, int paramInt2, agqh paramagqh)
   {
     Object localObject;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
     this.jdField_a_of_type_Int = paramMap;
     this.jdField_a_of_type_JavaUtilMap.putAll(paramInt2);
-    this.b = paramaghg;
+    this.b = paramagqh;
   }
   
   public void run()

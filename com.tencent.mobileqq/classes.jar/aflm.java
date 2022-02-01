@@ -1,18 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class aflm
-  implements View.OnClickListener
+  extends RecyclerView.Adapter<afln>
 {
-  public aflm(TroopMemberListActivity paramTroopMemberListActivity) {}
+  aflk jdField_a_of_type_Aflk;
   
-  public void onClick(View paramView)
+  public aflm(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public afln a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a.g();
-    new bcsy(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new afln(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559770, paramViewGroup, false), this.jdField_a_of_type_Aflk);
+  }
+  
+  public void a(aflk paramaflk)
+  {
+    this.jdField_a_of_type_Aflk = paramaflk;
+  }
+  
+  public void a(afln paramafln, int paramInt)
+  {
+    paramafln.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt)) {
+      paramafln.a.setSelected(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramafln, paramInt, getItemId(paramInt));
+      return;
+      paramafln.a.setSelected(false);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

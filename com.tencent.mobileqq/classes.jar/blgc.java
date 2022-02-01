@@ -1,14 +1,13 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 
-class blgc
-  implements FilenameFilter
+public class blgc
+  implements SpecialAVFilterResource
 {
-  blgc(blgb paramblgb, String paramString) {}
+  public static final String a = antf.aZ + "/tencent/qq/music/";
   
-  public boolean accept(File paramFile, String paramString)
+  public String getMusicResPath()
   {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
+    return a;
   }
 }
 

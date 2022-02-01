@@ -1,14 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery;
 
-class qlz
-  extends RecyclerView.OnScrollListener
+public class qlz
+  extends qma
 {
-  qlz(qly paramqly) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public qlz(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    super(paramContext, paramaoof, paramsel);
+  }
+  
+  public qjh g()
+  {
+    this.jdField_a_of_type_Qjg = new ComponentContentSmallGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

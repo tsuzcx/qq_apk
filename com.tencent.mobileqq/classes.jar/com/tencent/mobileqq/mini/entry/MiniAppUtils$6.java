@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bgku;
-import bhru;
+import bhkv;
+import bisp;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import org.json.JSONException;
@@ -21,37 +21,37 @@ final class MiniAppUtils$6
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    bhru localbhru;
-    if ((paramMessage.obj instanceof bhru))
+    bisp localbisp;
+    if ((paramMessage.obj instanceof bisp))
     {
-      localbhru = (bhru)paramMessage.obj;
-      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbhru });
-      if (localbhru.jdField_c_of_type_Int == 0) {
+      localbisp = (bisp)paramMessage.obj;
+      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbisp });
+      if (localbisp.jdField_c_of_type_Int == 0) {
         for (;;)
         {
           JSONObject localJSONObject;
           try
           {
             localJSONObject = new JSONObject();
-            if (localbhru.d == null) {
+            if (localbisp.d == null) {
               break label194;
             }
             if (this.val$returnAsJSON)
             {
-              localJSONObject.put("data", new JSONObject(localbhru.d));
-              localJSONObject.put("statusCode", localbhru.b);
-              localJSONObject.put("wnsCode", localbhru.jdField_c_of_type_Int);
-              localJSONObject.put("header", localbhru.jdField_c_of_type_JavaLangString);
+              localJSONObject.put("data", new JSONObject(localbisp.d));
+              localJSONObject.put("statusCode", localbisp.b);
+              localJSONObject.put("wnsCode", localbisp.jdField_c_of_type_Int);
+              localJSONObject.put("header", localbisp.jdField_c_of_type_JavaLangString);
               this.val$listener.onReceiveResult(true, localJSONObject);
               return;
             }
-            if (localbhru.a)
+            if (localbisp.a)
             {
-              paramMessage = bgku.encodeToString(localbhru.d.getBytes(), 0);
+              paramMessage = bhkv.encodeToString(localbisp.d.getBytes(), 0);
               localJSONObject.put("data", paramMessage);
               continue;
             }
-            paramMessage = localbhru.d;
+            paramMessage = localbisp.d;
           }
           catch (JSONException paramMessage)
           {
@@ -68,7 +68,7 @@ final class MiniAppUtils$6
     }
     try
     {
-      paramMessage.put("wnsCode", localbhru.jdField_c_of_type_Int);
+      paramMessage.put("wnsCode", localbisp.jdField_c_of_type_Int);
       label225:
       this.val$listener.onReceiveResult(false, paramMessage);
       return;

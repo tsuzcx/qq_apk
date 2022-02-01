@@ -1,32 +1,29 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.List;
 
-class ajnl
-  extends AsyncTask<Void, Void, ArrayList<String>>
+public class ajnl
 {
-  ajnl(ajnk paramajnk, List paramList) {}
+  public int a;
+  public Runnable a;
+  public List<String> a;
+  public int b;
+  public Runnable b;
   
-  protected ArrayList<String> a(Void... paramVarArgs)
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Ajnk.a(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  protected void a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
-    {
-      QLog.e("SDKEmotionSettingManager", 1, " openSetEmotion error pathList = " + paramArrayList);
-      ajnk.a(this.jdField_a_of_type_Ajnk, ajnk.a(this.jdField_a_of_type_Ajnk), Long.valueOf(ajnk.a(this.jdField_a_of_type_Ajnk)).longValue(), false, "");
-      ajnk.a(this.jdField_a_of_type_Ajnk);
+    if (a()) {
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
+    }
+    while (this.jdField_b_of_type_JavaLangRunnable == null) {
       return;
     }
-    int i = paramArrayList.size();
-    bcst.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
-    ajnk.a(this.jdField_a_of_type_Ajnk).clear();
-    ajnk.a(this.jdField_a_of_type_Ajnk).addAll(paramArrayList);
-    this.jdField_a_of_type_Ajnk.a(paramArrayList);
+    this.jdField_b_of_type_JavaLangRunnable.run();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int & this.jdField_a_of_type_Int) == this.jdField_a_of_type_Int;
   }
 }
 

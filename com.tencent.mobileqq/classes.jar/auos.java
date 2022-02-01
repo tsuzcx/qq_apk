@@ -1,14 +1,18 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
 
-public class auos
+final class auos
+  implements aumz
 {
-  public static boolean a(String paramString)
+  auos(Activity paramActivity, Intent paramIntent) {}
+  
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.startsWith("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
+    auxu.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, ForwardRecentTranslucentActivity.class, 103);
   }
+  
+  public void b() {}
 }
 
 

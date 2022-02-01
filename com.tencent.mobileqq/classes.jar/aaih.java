@@ -1,40 +1,19 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.util.Property;
-import android.widget.ImageView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-final class aaih
-  extends Property<ImageView, Matrix>
+class aaih
+  implements aaav<CertifiedAccountWrite.StDoCommentRsp>
 {
-  aaih(Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aaih(aaid paramaaid, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public Matrix a(ImageView paramImageView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
   {
-    return null;
-  }
-  
-  public void a(ImageView paramImageView, Matrix paramMatrix)
-  {
-    Drawable localDrawable = paramImageView.getDrawable();
-    if (localDrawable == null) {
-      return;
+    if ((paramStDoCommentRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment != null)) {
+      paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get());
     }
-    if (paramMatrix == null) {
-      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
-    }
-    for (;;)
-    {
-      paramImageView.invalidate();
-      return;
-      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (paramImageView.getImageMatrix() == null) {
-        paramImageView.setImageMatrix(new Matrix());
-      }
-      paramImageView.setImageMatrix(paramMatrix);
-    }
+    wjj.a().dispatch(this.jdField_a_of_type_Aaid.a(new Object[] { Integer.valueOf(5), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, Integer.valueOf(this.jdField_a_of_type_Aaid.hashCode()) }));
   }
 }
 

@@ -8,11 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import anni;
-import arpd;
-import arph;
-import arui;
-import bhod;
+import anzj;
+import aser;
+import asev;
+import asjw;
+import bioy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -48,7 +48,7 @@ public class MiniAppPlugin
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "https://mqqapi//microapp/open?";
   private static final String URL_PREFIX_MINIGAME_PAY_BY_H5 = "https://h5.qzone.qq.com/miniapp/act/midasPay";
   private static final int canOpenApp = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  private arpd remoteRespObserver = new MiniAppPlugin.3(this);
+  private aser remoteRespObserver = new MiniAppPlugin.3(this);
   
   public MiniAppPlugin()
   {
@@ -243,7 +243,7 @@ public class MiniAppPlugin
         paramJsBridgeListener.putString("miniapp_appid", paramString1);
         paramJsBridgeListener.putString("miniapp_type", paramString2);
         paramJsBridgeListener.putString("miniapp_via", paramString3);
-        sendRemoteReq(arph.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
+        sendRemoteReq(asev.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
       }
       catch (Throwable paramJsBridgeListener)
       {
@@ -411,30 +411,30 @@ public class MiniAppPlugin
   public void onCreate()
   {
     super.onCreate();
-    arui.a().a(this.remoteRespObserver);
+    asjw.a().a(this.remoteRespObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    arui.a().b(this.remoteRespObserver);
+    asjw.a().b(this.remoteRespObserver);
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!arui.a().a())
+    if (!asjw.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), anni.a(2131705615), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), anzj.a(2131705722), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      arui.a().b(paramBundle);
+      asjw.a().b(paramBundle);
       return;
     }
-    arui.a().a(paramBundle);
+    asjw.a().a(paramBundle);
   }
 }
 

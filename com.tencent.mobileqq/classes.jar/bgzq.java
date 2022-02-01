@@ -1,6 +1,16 @@
-public abstract interface bgzq<E>
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+
+public class bgzq
+  implements bdyi
 {
-  public abstract void a(E paramE, Object paramObject);
+  public bgzq(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, bdyi parambdyi) {}
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bdyi != null) {
+      this.jdField_a_of_type_Bdyi.a();
+    }
+  }
 }
 
 

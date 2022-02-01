@@ -1,81 +1,70 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.Looper;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.QZoneConnectProcessor.1;
-import cooperation.qzone.plugin.QZonePatchService;
-import java.util.LinkedList;
+import cooperation.comic.utils.QQComicPluginBridge.1;
 
 public class bmcy
+  implements OnPluginInstallListener
 {
-  private static bmcy jdField_a_of_type_Bmcy;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private LinkedList<bmcz> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public bmcy(QQComicPluginBridge.1 param1) {}
   
-  public static bmcy a()
+  public IBinder asBinder()
   {
-    if (jdField_a_of_type_Bmcy == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bmcy == null) {
-        jdField_a_of_type_Bmcy = new bmcy();
-      }
-      return jdField_a_of_type_Bmcy;
-    }
-    finally {}
+    return null;
   }
   
-  private void a(bmcz parambmcz)
+  public void onInstallBegin(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "processInner, " + parambmcz + ", " + QZonePatchService.class);
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Bmcz != null)) {
+      this.a.a.jdField_a_of_type_Bmcz.a(98, "载入中,（我会越来越快的>_<）");
     }
-    if (QZonePatchService.class == null) {}
-    do
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
     {
-      return;
-      Context localContext = bmcz.a(parambmcz).getApplicationContext();
-      Intent localIntent = new Intent(localContext, QZonePatchService.class);
-      try
+      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (this.a.a.jdField_a_of_type_Bmcz != null)
       {
-        localContext.bindService(localIntent, parambmcz, 1);
-        return;
+        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
+        this.a.a.jdField_a_of_type_Bmcz.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
       }
-      catch (SecurityException parambmcz) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("QZonePluginManger", 2, "processInner", parambmcz);
+    }
   }
   
-  private void a(bmcz parambmcz, int paramInt)
+  public void onInstallError(String arg1, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "processInnerDelay. " + paramInt + ", " + parambmcz);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QZoneConnectProcessor.1(this, parambmcz), paramInt);
-  }
-  
-  public void a(Context arg1, ServiceConnection paramServiceConnection, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "PluginRemoteProcessor.process, " + paramInt);
-    }
-    paramServiceConnection = new bmcz(this, paramServiceConnection, ???, paramInt);
-    if (this.jdField_a_of_type_Boolean)
+    synchronized ()
     {
+      bmcx.a().notifyAll();
+      if (this.a.a != null) {
+        this.a.a.jdField_a_of_type_Int = paramInt;
+      }
       if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "queue");
+        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
       }
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.offer(paramServiceConnection);
-        return;
-      }
+      return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    a(paramServiceConnection);
+  }
+  
+  public void onInstallFinish(String arg1)
+  {
+    synchronized ()
+    {
+      bmcx.a().notifyAll();
+      if (this.a.a != null)
+      {
+        this.a.a.b = System.currentTimeMillis();
+        if (this.a.a.jdField_a_of_type_Bmcz != null) {
+          this.a.a.jdField_a_of_type_Bmcz.a(99, "载入中,（我会越来越快的>_<）");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
+      }
+      return;
+    }
   }
 }
 

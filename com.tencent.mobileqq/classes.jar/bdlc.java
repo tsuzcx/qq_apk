@@ -1,8 +1,28 @@
-public class bdlc
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public final class bdlc
 {
-  public bdmc a;
+  public boolean a;
   
-  public bdlc(bdlb parambdlb) {}
+  private void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgReporterSwitchConfigProcessor", 2, "MsgReporterSwitch configText : " + paramString);
+      }
+    }
+    try
+    {
+      this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
+    }
+  }
 }
 
 

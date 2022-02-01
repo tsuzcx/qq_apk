@@ -1,61 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
 
-class awqx
-  implements awxg
+public class awqx
+  implements DialogInterface.OnClickListener
 {
-  awqx(awqv paramawqv, awwz paramawwz, awxi paramawxi, List paramList) {}
+  public awqx(LocationDialogUtil.5 param5) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Awwz.a(new awqy(this));
-    this.jdField_a_of_type_Awwz.show();
-  }
-  
-  public void a(awxe paramawxe)
-  {
-    if ((paramawxe != null) && (awqv.a(this.jdField_a_of_type_Awqv) != null) && (awqv.a(this.jdField_a_of_type_Awqv).v())) {
-      switch (paramawxe.a)
-      {
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Awwz.isShowing()) {
-        this.jdField_a_of_type_Awwz.dismiss();
-      }
-      if (awqv.a(this.jdField_a_of_type_Awqv) != null) {
-        awqv.a(this.jdField_a_of_type_Awqv).a(false, null, false);
-      }
-      this.jdField_a_of_type_Awxi.b();
-      return;
-      awxf.a(awqv.a(this.jdField_a_of_type_Awqv));
-      continue;
-      awxf.b(awqv.a(this.jdField_a_of_type_Awqv));
-      continue;
-      awxf.c(awqv.a(this.jdField_a_of_type_Awqv));
-    }
-  }
-  
-  public void a(awxe paramawxe, int paramInt)
-  {
-    this.jdField_a_of_type_Awwz.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Awwz.isShowing()) {
-      this.jdField_a_of_type_Awwz.dismiss();
-    }
-    if (awqv.a(this.jdField_a_of_type_Awqv) != null) {
-      awqv.a(this.jdField_a_of_type_Awqv).a(false, null, false);
-    }
-    this.jdField_a_of_type_Awxi.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Awxi.a(awqv.a(this.jdField_a_of_type_Awqv), this.jdField_a_of_type_JavaUtilList);
+    this.a.a.finish();
   }
 }
 

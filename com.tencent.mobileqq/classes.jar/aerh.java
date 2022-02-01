@@ -1,48 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aerh
-  implements DialogInterface.OnClickListener
+  implements anvi
 {
-  public aerh(NotificationActivity paramNotificationActivity) {}
+  public aerh(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.app.logout(true);
-    bgsg.a(this.a.app.getApp(), this.a.app.getCurrentAccountUin(), false);
-    paramDialogInterface = (bdeh)this.a.app.getManager(61);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
+    if ((this.a.a == 1) || (this.a.a == 2))
     {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
-      {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
-        {
-          String str = (String)paramDialogInterface.next();
-          if (!aywm.a().a(this.a.app, str))
-          {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
-          }
-        }
+      if (paramBoolean) {
+        break label55;
       }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
-      this.a.finish();
+      FriendProfileMoreInfoActivity.a(this.a);
+      QQToast.a(this.a, 2131690905, 0).b(this.a.getTitleBarHeight());
+    }
+    label55:
+    while (paramInt != 2) {
       return;
     }
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerh
  * JD-Core Version:    0.7.0.1
  */

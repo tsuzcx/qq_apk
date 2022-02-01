@@ -1,24 +1,32 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.graphics.drawable.Drawable;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
 
 public class bnwu
-  extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int;
+  public static bnwu a;
   
-  public bnwu(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, int paramInt)
+  public static bnwu a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bnwu();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
   {
-    super.getItemOffsets(paramRect, paramInt, paramRecyclerView);
-    if (paramInt == 0) {
-      paramRect.left = this.jdField_a_of_type_Int;
-    }
+    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
+  }
+  
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
+  {
+    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 

@@ -1,40 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.videoplatform.api.IThreadMgr;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
 
-public class azwz
-  implements IThreadMgr
+public final class azwz
+  implements Parcelable.Creator<PersonalityLabelPhoto>
 {
-  public void postOnSubThread(Runnable paramRunnable)
+  public PersonalityLabelPhoto a(Parcel paramParcel)
   {
-    ThreadManager.getSubThreadHandler().post(paramRunnable);
+    return new PersonalityLabelPhoto(paramParcel);
   }
   
-  public void postOnSubThreadDelayed(Runnable paramRunnable, long paramLong)
+  public PersonalityLabelPhoto[] a(int paramInt)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void postOnUIThread(Runnable paramRunnable)
-  {
-    ThreadManager.getUIHandler().post(paramRunnable);
-  }
-  
-  public void postOnUIThreadDelayed(Runnable paramRunnable, long paramLong)
-  {
-    ThreadManager.getUIHandler().postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void quitSubThread() {}
-  
-  public void removeCallbackOnSubHandler(Runnable paramRunnable)
-  {
-    ThreadManager.getSubThreadHandler().removeCallbacks(paramRunnable);
-  }
-  
-  public void removeCallbackOnUIHandler(Runnable paramRunnable)
-  {
-    ThreadManager.getUIHandler().removeCallbacks(paramRunnable);
+    return new PersonalityLabelPhoto[paramInt];
   }
 }
 

@@ -1,36 +1,13 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahyq
-  implements Handler.Callback
+public class ahyq
+  implements ahyf
 {
-  ahyq(ahyk paramahyk) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[handleMessage] handle message mStoped = " + ahyk.a(this.a));
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      Object localObject = (amhd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-      paramMessage = (String)paramMessage.obj;
-      if (!ahyk.a(this.a)) {
-        ((amhd)localObject).a().e(paramMessage);
-      }
-      localObject = Message.obtain();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = paramMessage;
-      ahyk.a(this.a).removeMessages(1);
-      ahyk.a(this.a).sendMessageDelayed((Message)localObject, 30000L);
-    }
+    paramahed.e(paramagjk, paramahfq, paramString);
   }
 }
 

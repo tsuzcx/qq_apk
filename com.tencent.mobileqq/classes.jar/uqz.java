@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class uqz
-  implements DialogInterface.OnDismissListener
+final class uqz
+  implements Animation.AnimationListener
 {
-  public uqz(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  uqz(View paramView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (WSVerticalPageFragment.a(this.a) != null) {
-      WSVerticalPageFragment.a(this.a).e();
+    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
+    {
+      this.a.clearAnimation();
+      this.a.setVisibility(8);
+      this.a.setTag(-1, null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

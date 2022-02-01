@@ -1,29 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class uiv
-  implements Animator.AnimatorListener
+public abstract class uiv
 {
-  uiv(uiu paramuiu, DiniFlyAnimationView paramDiniFlyAnimationView) {}
+  private WeakReference<uix> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public uiv(uix paramuix)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
+    this.a = new WeakReference(paramuix);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a()
   {
-    uiu.a(this.jdField_a_of_type_Uiu).removeView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
-    uiu.a(this.jdField_a_of_type_Uiu).remove(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+    if ((this.a == null) || (this.a.get() == null)) {
+      return false;
+    }
+    return a((uix)this.a.get());
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract boolean a(uix paramuix);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import alvs;
+import amhk;
 
 class PhotoListPanel$2
   implements Runnable
 {
-  PhotoListPanel$2(PhotoListPanel paramPhotoListPanel, alvs paramalvs) {}
+  PhotoListPanel$2(PhotoListPanel paramPhotoListPanel, amhk paramamhk) {}
   
   public void run()
   {

@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.annotation.TargetApi;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
-final class blfj
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class blfj
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public blfj(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
+  
+  @TargetApi(8)
+  public void onAudioFocusChange(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
+      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.this$0.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.this$0.jdField_a_of_type_Int);
     }
-    blfh.a(paramPluginManagerClient);
-    blfh.a(null);
-    while (!blfh.a().isEmpty())
-    {
-      paramPluginManagerClient = (blfr)blfh.a().poll();
-      if (paramPluginManagerClient != null) {
-        blfh.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_Blfq, paramPluginManagerClient.jdField_a_of_type_Blfo);
-      }
+    if (paramInt == -1) {}
+    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
+      return;
     }
   }
 }

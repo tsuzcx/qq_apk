@@ -1,6 +1,13 @@
 package com.tencent.biz.qqcircle.fragments.main;
 
+import aaak;
+import aaam;
+import aabd;
+import aabe;
+import aabj;
+import aabp;
 import android.arch.lifecycle.MutableLiveData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -14,9 +21,13 @@ import com.tencent.biz.qqcircle.events.QCircleFeedListRefreshEvent;
 import com.tencent.biz.qqcircle.events.QCircleLazyLoadTabEvent;
 import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
 import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.launchbean.QCircleFolderBean;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hippy.qq.update.HippyQQLibraryManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
@@ -24,49 +35,61 @@ import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
-import tlg;
-import uxx;
-import uya;
-import uyk;
-import uym;
-import vee;
-import vly;
-import vlz;
-import vma;
-import vmb;
-import vqu;
-import vrf;
-import vri;
-import vrr;
-import vrt;
-import vtz;
+import qqcircle.QQCircleCounter.RedPointInfo;
+import uzg;
+import uzj;
+import uzt;
+import uzw;
+import vbe;
+import vgi;
+import voc;
+import vod;
+import voe;
+import vtd;
+import vtf;
+import vtq;
+import vtt;
 import vud;
-import vup;
-import zwp;
-import zwr;
-import zxi;
-import zxj;
-import zxo;
-import zxu;
+import vuf;
+import vwy;
+import vxq;
+import vzy;
 
 public class QCircleFolderFollowTabFragment
   extends QCircleBaseTabFragment
-  implements zwr
+  implements aaam
 {
-  public static String i = "QCircleFolderFollowTabFragment";
-  private uya jdField_a_of_type_Uya;
-  private uym jdField_a_of_type_Uym;
-  private vee jdField_a_of_type_Vee;
-  private vud jdField_a_of_type_Vud;
-  private boolean b;
+  public static String e;
+  private uzj jdField_a_of_type_Uzj;
+  private vgi jdField_a_of_type_Vgi;
+  private vzy jdField_a_of_type_Vzy;
+  private boolean g;
+  private boolean h;
+  
+  static
+  {
+    jdField_e_of_type_JavaLangString = "QCircleFolderFollowTabFragment";
+  }
   
   @NotNull
   private View a(@Nullable ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560725, null);
-    paramViewGroup.setOnClickListener(new vlz(this));
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560746, null);
+    paramViewGroup.setOnClickListener(new vod(this));
     return paramViewGroup;
+  }
+  
+  private void a(long paramLong)
+  {
+    if (!d())
+    {
+      QLog.d("QCircleEeveeRedPoint_" + jdField_e_of_type_JavaLangString, 1, "[sendClearFollowTabRedPointRequest] return. isRealVisibleToUser = false");
+      return;
+    }
+    QLog.d("QCircleEeveeRedPoint_" + jdField_e_of_type_JavaLangString, 1, "[sendClearFollowTabRedPointRequest]");
+    ThreadManager.getSubThreadHandler().post(new QCircleFolderFollowTabFragment.5(this, paramLong));
   }
   
   private void a(String paramString)
@@ -79,77 +102,145 @@ public class QCircleFolderFollowTabFragment
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Uyk != null)
+      if (this.jdField_a_of_type_Uzt != null)
       {
-        ArrayList localArrayList = this.jdField_a_of_type_Uyk.getDataList();
+        ArrayList localArrayList = this.jdField_a_of_type_Uzt.getDataList();
         if (localArrayList == null) {
           break;
         }
-        int j = localArrayList.size() - 1;
+        int i = localArrayList.size() - 1;
         for (;;)
         {
-          if (j < 0) {
+          if (i < 0) {
             break label94;
           }
-          FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)localArrayList.get(j);
+          FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)localArrayList.get(i);
           if (paramString.equals(localStFeed.poster.id.get()))
           {
-            if (this.jdField_a_of_type_Vtz == null) {
+            if (this.jdField_a_of_type_Vwy == null) {
               break;
             }
-            this.jdField_a_of_type_Vtz.b(localStFeed.id.get());
+            this.jdField_a_of_type_Vwy.c(localStFeed.id.get());
             return;
           }
-          j -= 1;
+          i -= 1;
         }
       }
     }
   }
   
-  private void m()
+  private boolean d()
   {
-    uxx.b();
-    uxx.a();
-    uxx.a(getActivity());
-    if (this.jdField_a_of_type_Uyk != null) {
-      this.jdField_a_of_type_Uyk.b();
-    }
-    tlg.a();
+    return this.h;
   }
   
   private void n()
   {
-    ((vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance", null);
+    if ((this.f) && (!c()))
+    {
+      this.jdField_a_of_type_Vzy = a();
+      if (this.jdField_a_of_type_Vzy != null)
+      {
+        this.f = false;
+        this.jdField_a_of_type_Vzy.a();
+        QLog.d(jdField_e_of_type_JavaLangString, 1, "checkNeedShowRedDot result:true");
+      }
+    }
+  }
+  
+  private void o()
+  {
+    uzg.b();
+    uzg.a();
+    uzg.a(getActivity());
+    if (this.jdField_a_of_type_Uzt != null) {
+      this.jdField_a_of_type_Uzt.b();
+    }
+    HippyQQLibraryManager.getInstance().preDownload();
+  }
+  
+  private void p()
+  {
+    if (!d())
+    {
+      QLog.d("QCircleEeveeRedPoint_" + jdField_e_of_type_JavaLangString, 1, "[clearLocalRedPoint] return. isRealVisibleToUser = false");
+      return;
+    }
+    QLog.d("QCircleEeveeRedPoint_" + jdField_e_of_type_JavaLangString, 1, "[clearLocalRedPoint]");
+    ThreadManager.getSubThreadHandler().post(new QCircleFolderFollowTabFragment.4(this));
+  }
+  
+  private void q()
+  {
+    if (!d())
+    {
+      QLog.d("QCircleEeveeRedPoint_" + jdField_e_of_type_JavaLangString, 1, "[sendClearOuterEntranceRedPointRequest] return. isRealVisibleToUser = false");
+      return;
+    }
+    QLog.d("QCircleEeveeRedPoint_" + jdField_e_of_type_JavaLangString, 1, "[sendClearOuterEntranceRedPointRequest] ");
+    ThreadManager.getSubThreadHandler().post(new QCircleFolderFollowTabFragment.6(this));
   }
   
   public void a(int paramInt)
   {
+    this.h = true;
     super.a(paramInt);
+    if (this.jdField_a_of_type_Vzy != null) {
+      this.jdField_a_of_type_Vzy.a(false);
+    }
+    long l1 = vtd.c();
+    long l2 = vtd.b();
+    if (l1 > l2) {
+      a(l1);
+    }
+    QLog.d(jdField_e_of_type_JavaLangString, 1, "[onPageSelected] followTabFeedListLastPreRspTimestamp: " + l1 + ", followTabFeedListLastRspTimestamp: " + l2);
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Zxi.a().a().a(a(paramViewGroup));
-    this.jdField_a_of_type_Zxi.a().a().addOnScrollListener(new vly(this));
-    zwp.a().a(this);
+    this.jdField_a_of_type_Aabd.a().a().a(a(paramViewGroup));
+    this.jdField_a_of_type_Aabd.a().a().addOnScrollListener(new voc(this));
+    aaak.a().a(this);
   }
   
-  public void a(List<zxj> paramList)
+  public void a(List<aabe> paramList)
   {
     super.a(paramList);
-    this.jdField_a_of_type_Vee = new vee();
-    this.jdField_a_of_type_Vee.a(a());
-    paramList.add(this.jdField_a_of_type_Vee);
+    this.jdField_a_of_type_Vgi = new vgi();
+    this.jdField_a_of_type_Vgi.a(a());
+    paramList.add(this.jdField_a_of_type_Vgi);
   }
   
-  public void a(vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public void a(vbe paramvbe)
   {
-    super.a(paramvup);
-    if ((paramvup != null) && (!paramvup.b()))
+    super.a(paramvbe);
+    this.h = c();
+  }
+  
+  public void a(vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  {
+    super.a(paramvxq);
+    if ((paramvxq != null) && (!paramvxq.b()))
     {
-      QLog.d(i, 1, "handleFeedDataRsp is refresh reportRedPoint");
-      n();
+      QLog.d(jdField_e_of_type_JavaLangString, 1, "handleFeedDataRsp is refresh clearLocalRedPoint");
+      p();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int i = 1;
+    boolean bool = d();
+    QLog.d(jdField_e_of_type_JavaLangString, 1, "[refreshData] isRealVisibleToUser : " + bool);
+    g();
+    if (this.jdField_a_of_type_Vwy != null)
+    {
+      vwy localvwy = this.jdField_a_of_type_Vwy;
+      if (bool) {
+        i = 0;
+      }
+      localvwy.a(paramBoolean, i);
     }
   }
   
@@ -158,22 +249,23 @@ public class QCircleFolderFollowTabFragment
     return jdField_b_of_type_JavaLangString;
   }
   
-  public List<zxu> b()
+  public List<aabp> b()
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Uya = new uya(new Bundle());
-    this.jdField_a_of_type_Uya.a(false);
-    this.jdField_a_of_type_Uya.a(a());
-    this.jdField_a_of_type_Uym = new uym(new Bundle());
-    this.jdField_a_of_type_Uym.a(false);
-    this.jdField_a_of_type_Uym.a(a());
-    localArrayList.add(this.jdField_a_of_type_Uya);
-    localArrayList.add(this.jdField_a_of_type_Uym);
+    this.jdField_a_of_type_Uzj = new uzj(new Bundle());
+    this.jdField_a_of_type_Uzj.a(false);
+    this.jdField_a_of_type_Uzj.a(a());
+    this.jdField_a_of_type_Uzw = new uzw(new Bundle());
+    this.jdField_a_of_type_Uzw.a(false);
+    this.jdField_a_of_type_Uzw.a(a());
+    localArrayList.add(this.jdField_a_of_type_Uzj);
+    localArrayList.add(this.jdField_a_of_type_Uzw);
     return localArrayList;
   }
   
   public void b()
   {
+    this.h = false;
     super.b();
   }
   
@@ -184,7 +276,7 @@ public class QCircleFolderFollowTabFragment
   
   public String c()
   {
-    return i;
+    return jdField_e_of_type_JavaLangString;
   }
   
   public String d()
@@ -195,25 +287,29 @@ public class QCircleFolderFollowTabFragment
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_Vud = ((vud)a(vud.class));
-    this.jdField_a_of_type_Vud.a().observe(this, new vma(this));
-    this.jdField_a_of_type_Vtz.c().observe(this, new vmb(this));
+    this.jdField_a_of_type_Vwy.b().observe(this, new voe(this));
   }
   
   public void e()
   {
     super.e();
-    n();
+    p();
+    q();
+    if (d())
+    {
+      long l1 = vtd.c();
+      long l2 = vtd.b();
+      if (l1 > l2) {
+        a(l1);
+      }
+      QLog.d(jdField_e_of_type_JavaLangString, 1, "[setUserVisibleHint] followTabFeedListLastPreRspTimestamp: " + l1 + ", followTabFeedListLastRspTimestamp: " + l2);
+    }
   }
   
   public void g()
   {
-    QLog.d(i, 1, "customRefreshData");
-    if (this.jdField_a_of_type_Vud != null)
-    {
-      QLog.d(i, 1, "mMessageNoticeViewModel pullLastestInfo");
-      this.jdField_a_of_type_Vud.a(getActivity());
-    }
+    super.g();
+    n();
   }
   
   public ArrayList<Class> getEventClass()
@@ -226,27 +322,80 @@ public class QCircleFolderFollowTabFragment
     return localArrayList;
   }
   
+  public void m()
+  {
+    boolean bool2 = true;
+    if ((getActivity() != null) && (getActivity().getIntent() != null))
+    {
+      Object localObject = (QCircleFolderBean)getActivity().getIntent().getSerializableExtra("key_bundle_common_init_bean");
+      if ((((QCircleFolderBean)localObject).getQQCircleUnreadRedNum() <= 0) || (!c())) {
+        break label192;
+      }
+      bool1 = true;
+      this.c = bool1;
+      if (this.c)
+      {
+        if (((QCircleFolderBean)localObject).getQQCircleUnreadRedNum() <= vtd.a()) {
+          break label197;
+        }
+        bool1 = true;
+        label76:
+        this.d = bool1;
+      }
+      localObject = ((vtf)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).b("circle_entrance");
+      if (localObject == null) {
+        break label207;
+      }
+      localObject = ((QQCircleCounter.RedPointInfo)localObject).rptRedInfo.get();
+      if ((localObject == null) || (((List)localObject).size() <= 0)) {
+        break label207;
+      }
+    }
+    label192:
+    label197:
+    label207:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      this.jdField_e_of_type_Boolean = bool1;
+      this.f = bool1;
+      if ((!this.jdField_e_of_type_Boolean) && (!this.d)) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        this.jdField_b_of_type_Boolean = bool1;
+        QLog.d(jdField_e_of_type_JavaLangString, 4, "enableMemCache:" + this.jdField_b_of_type_Boolean);
+        return;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label76;
+      }
+    }
+  }
+  
   public void onDestroy()
   {
-    uxx.c();
-    uxx.b(getActivity());
+    uzg.c();
+    uzg.b(getActivity());
     super.onDestroy();
-    zwp.a().b(this);
-    uxb.a = false;
+    aaak.a().b(this);
+    uym.a = false;
+    if (this.jdField_a_of_type_Vzy != null) {
+      this.jdField_a_of_type_Vzy.c();
+    }
   }
   
   public void onDetach()
   {
-    QLog.d(i, 1, "QCircleFolderFollowTabFragment->onDetach");
+    QLog.d(jdField_e_of_type_JavaLangString, 1, "QCircleFolderFollowTabFragment->onDetach");
     super.onDetach();
-    vri.a().b(c());
+    vtt.a().b(c());
   }
   
   public void onPause()
   {
     super.onPause();
-    if (getUserVisibleHint()) {
-      vri.a().d(c());
+    if (this.jdField_a_of_type_Vzy != null) {
+      this.jdField_a_of_type_Vzy.d();
     }
   }
   
@@ -257,8 +406,8 @@ public class QCircleFolderFollowTabFragment
     {
       localQCircleFeedEvent = (QCircleFeedEvent)paramSimpleBaseEvent;
       if (localQCircleFeedEvent.mState == 3) {
-        if (this.jdField_a_of_type_Vtz != null) {
-          this.jdField_a_of_type_Vtz.b(((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId);
+        if (this.jdField_a_of_type_Vwy != null) {
+          this.jdField_a_of_type_Vwy.c(((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId);
         }
       }
     }
@@ -279,48 +428,36 @@ public class QCircleFolderFollowTabFragment
           if (!(paramSimpleBaseEvent instanceof QCircleCloseBannerEvent)) {
             break;
           }
-        } while (this.jdField_a_of_type_Vtz == null);
-        this.jdField_a_of_type_Vtz.c().removeObservers(this);
-        this.jdField_a_of_type_Vtz.c().postValue(null);
+        } while (this.jdField_a_of_type_Vwy == null);
+        this.jdField_a_of_type_Vwy.b().removeObservers(this);
+        this.jdField_a_of_type_Vwy.b().postValue(null);
         return;
         if (!(paramSimpleBaseEvent instanceof QCircleLazyLoadTabEvent)) {
           break;
         }
         c();
-      } while (this.jdField_b_of_type_Boolean);
-      m();
-      this.jdField_b_of_type_Boolean = true;
+      } while (this.g);
+      o();
+      this.g = true;
       return;
     } while ((!(paramSimpleBaseEvent instanceof QCircleFeedListRefreshEvent)) || (((QCircleFeedListRefreshEvent)paramSimpleBaseEvent).mPageType != 1));
     a(false);
   }
   
-  public void onResume()
-  {
-    super.onResume();
-    if (getUserVisibleHint()) {
-      vri.a().c(c());
-    }
-    g();
-  }
-  
   public void setUserVisibleHint(boolean paramBoolean)
   {
-    QLog.d(i, 1, "QCircleFolderFollowTabFragment->setUserVisibleHint:" + paramBoolean);
+    QLog.d(jdField_e_of_type_JavaLangString, 1, "QCircleFolderFollowTabFragment->setUserVisibleHint:" + paramBoolean);
     super.setUserVisibleHint(paramBoolean);
     if (paramBoolean)
     {
-      if (vri.a().d()) {
-        vri.a().a(c(), getActivity().getIntent());
-      }
-      vri.a().a(c());
-      vri.a().c(c());
-      vrf.a("", 22, 1);
-      vrr.a().a(new vrt().a("main").b("impression").a(a()));
+      vtt.a().a(c());
+      vtt.a().c(c());
+      vtq.a("", 22, 1);
+      vud.a().a(new vuf().a("main").b("impression").a(a()));
       return;
     }
-    vri.a().d(c());
-    vri.a().b(c());
+    vtt.a().d(c());
+    vtt.a().b(c());
   }
 }
 

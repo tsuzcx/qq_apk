@@ -1,17 +1,68 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class akny
-  extends BroadcastReceiver
+  extends azov
 {
-  public akny(SendHbActivity paramSendHbActivity) {}
+  public akny(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
+    }
+    this.a.b();
+    int i;
+    if (paramBoolean)
+    {
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0)) {
+        this.a.b();
+      }
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
+      return;
+      if (i == 107)
+      {
+        this.a.a(paramBundle);
+      }
+      else if (i == 106)
+      {
+        this.a.a();
+        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
+          bdll.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
+        }
+      }
+      else
+      {
+        this.a.a(1, a(i));
+        continue;
+        this.a.a(1, this.a.getString(2131717454));
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
+    }
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
+      return;
+      this.a.a(1, this.a.getString(2131717454));
     }
   }
 }

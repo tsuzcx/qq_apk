@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bqit;
-import bqiu;
+import brkf;
+import brkg;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -85,7 +85,7 @@ public abstract class AbstractPhotoPreviewActivity
   
   public String getExceedMaxSelectNumStr()
   {
-    return getResources().getString(2131694275, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
+    return getResources().getString(2131694317, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
   }
   
   public LocalMediaInfo getMediaInfo(String paramString)
@@ -101,8 +101,8 @@ public abstract class AbstractPhotoPreviewActivity
         Object localObject;
         if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
         {
-          localObject = new bqiu();
-          bqit.a(paramString, (bqiu)localObject);
+          localObject = new brkg();
+          brkf.a(paramString, (brkg)localObject);
           localLocalMediaInfo.mediaWidth = localObject.a[0];
           localLocalMediaInfo.mediaHeight = localObject.a[1];
           localLocalMediaInfo.rotation = localObject.a[2];
@@ -173,7 +173,7 @@ public abstract class AbstractPhotoPreviewActivity
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
     this.gallery.setOnItemSelectedListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297079));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297091));
     this.gallery.setOnItemClickListener(this.adapter);
   }
   
@@ -193,7 +193,7 @@ public abstract class AbstractPhotoPreviewActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int i = paramCompoundButton.getId();
-    if (i == 2131374690) {
+    if (i == 2131374827) {
       this.mPhotoPreviewLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
     for (;;)
@@ -205,7 +205,7 @@ public abstract class AbstractPhotoPreviewActivity
       }
       EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      if (i == 2131366739) {
+      if (i == 2131366790) {
         this.mPhotoPreviewLogic.mOnCheckedChangedCallback.flashPicCheckedChanged(paramBoolean);
       }
     }
@@ -221,24 +221,24 @@ public abstract class AbstractPhotoPreviewActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559566);
-    this.mSurfaceView = ((SurfaceView)findViewById(2131367297));
+    super.setContentView(2131559571);
+    this.mSurfaceView = ((SurfaceView)findViewById(2131367351));
     this.mSurfaceView.setVisibility(8);
-    this.rootLayout = ((RelativeLayout)findViewById(2131376789));
-    this.topBar = findViewById(2131378990);
-    this.bottomBar = ((RelativeLayout)findViewById(2131363570));
-    this.magicStickBtn = ((Button)findViewById(2131370435));
-    this.flashPicCb = ((CheckBox)findViewById(2131366739));
-    this.flashTv = ((TextView)findViewById(2131366740));
-    this.qualityCheckBox = ((CheckBox)findViewById(2131374690));
-    this.qualityTv = ((TextView)findViewById(2131374696));
-    this.cancelTv = ((TextView)findViewById(2131372464));
-    this.sendBtn = ((Button)findViewById(2131377184));
-    this.selectedBox = ((NumberCheckBox)findViewById(2131377161));
-    this.selectLayout = findViewById(2131377140);
-    this.titleView = ((TextView)findViewById(2131378776));
-    this.backToPhotoListBtn = ((TextView)findViewById(2131363216));
-    this.gallery = ((DragGallery)findViewById(2131367288));
+    this.rootLayout = ((RelativeLayout)findViewById(2131376926));
+    this.topBar = findViewById(2131379154);
+    this.bottomBar = ((RelativeLayout)findViewById(2131363594));
+    this.magicStickBtn = ((Button)findViewById(2131370537));
+    this.flashPicCb = ((CheckBox)findViewById(2131366790));
+    this.flashTv = ((TextView)findViewById(2131366791));
+    this.qualityCheckBox = ((CheckBox)findViewById(2131374827));
+    this.qualityTv = ((TextView)findViewById(2131374833));
+    this.cancelTv = ((TextView)findViewById(2131372576));
+    this.sendBtn = ((Button)findViewById(2131377324));
+    this.selectedBox = ((NumberCheckBox)findViewById(2131377301));
+    this.selectLayout = findViewById(2131377280);
+    this.titleView = ((TextView)findViewById(2131378936));
+    this.backToPhotoListBtn = ((TextView)findViewById(2131363240));
+    this.gallery = ((DragGallery)findViewById(2131367342));
     this.flashPicCb.setVisibility(8);
     this.flashTv.setVisibility(8);
     this.qualityCheckBox.setVisibility(8);

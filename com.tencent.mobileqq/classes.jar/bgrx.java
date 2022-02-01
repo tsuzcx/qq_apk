@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class bgrx
-  implements View.OnClickListener
+  implements FilenameFilter
 {
-  public bgrx(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
+  public bgrx(TroopFileTransferManager.1 param1) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+    if (paramString == null) {
+      return false;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramString.startsWith("[Thumb]");
   }
 }
 

@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import java.io.IOException;
 
-public class zrg
-  implements ValueAnimator.AnimatorUpdateListener
+class zrg
 {
-  public zrg(RotateCircleImageView paramRotateCircleImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  Process a(String[] paramArrayOfString)
   {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    try
+    {
+      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
+      return localProcess;
+    }
+    catch (IOException localIOException)
+    {
+      yuk.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
+    }
+    return null;
   }
 }
 

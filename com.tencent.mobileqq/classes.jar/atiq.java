@@ -1,14 +1,33 @@
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class atiq
-  implements atix
+public class atiq
+  implements TextWatcher
 {
-  atiq(atip paramatip) {}
+  public atiq(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    FileSelectorSearchGroupFragment.a(this.a.a).a();
+    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
+      auna.a(BaseApplicationImpl.getContext().getString(2131693824));
+    }
+    while (TextUtils.isEmpty(paramEditable)) {
+      return;
+    }
+    MPFileVerifyPwdView.b(this.a).setEnabled(true);
+    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

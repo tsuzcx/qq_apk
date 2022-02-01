@@ -1,8 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+
 public class awqo
+  implements DialogInterface.OnClickListener
 {
-  public static final String a = bhgg.a(anhk.ba + "msgbackup/");
-  public static final String b = a + "multimsg/";
-  public static final String c = a + "db/";
+  public awqo(LocationDialogUtil.11 param11) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = awpq.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
+    paramDialogInterface.c(new awpk(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString));
+    paramDialogInterface.a(true);
+    paramDialogInterface.a(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString);
+    LocationShareFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_Int);
+  }
 }
 
 

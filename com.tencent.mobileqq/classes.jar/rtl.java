@@ -1,8 +1,21 @@
-public abstract interface rtl
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+
+class rtl
+  extends sbh
 {
-  public abstract void a(float paramFloat);
+  rtl(rsx paramrsx) {}
   
-  public abstract void a(int paramInt, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3);
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    if (paramVideoInfo != null)
+    {
+      rab.b(rsx.a(this.a), paramVideoInfo.g, 1);
+      return;
+    }
+    QLog.e("VideoFeedsShareController", 1, "add to topic failed, mPlayingVideoInfo = null");
+  }
 }
 
 

@@ -3,13 +3,13 @@ package com.tencent.mobileqq.apollo.view;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import angs;
-import angt;
+import ansn;
+import anso;
 
 public class ApolloPanelListAdapter$1$1$1
   implements Runnable
 {
-  public ApolloPanelListAdapter$1$1$1(angs paramangs) {}
+  public ApolloPanelListAdapter$1$1$1(ansn paramansn) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ApolloPanelListAdapter$1$1$1
     localTranslateAnimation.setDuration(400L);
     localTranslateAnimation.setRepeatCount(1);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new angt(this));
+    localTranslateAnimation.setAnimationListener(new anso(this));
     this.a.a.a.setVisibility(0);
     this.a.a.a.startAnimation(localTranslateAnimation);
   }

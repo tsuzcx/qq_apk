@@ -1,58 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.image.URLImageView;
 
 public class pih
-  implements AladdinConfigHandler
+  extends pij
 {
-  private static final boolean a;
-  private static boolean b;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  static
+  pih(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
-    if (((Integer)bmqa.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      b = true;
-      return;
-    }
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return b;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("ChannelModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("ChannelModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "channel_mode")) {
-        bmqa.a("readinjoy_channel_mode", Integer.valueOf(Integer.valueOf(str2).intValue()));
-      }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("ChannelModeConfigHandler", 1, "[onWipeConfig]");
-    bmqa.a("readinjoy_channel_mode", Integer.valueOf(-1));
+    super(paramReadInJoyPicWaterFallFragment, paramView);
+    this.b = ((URLImageView)paramView.findViewById(2131365145));
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362662));
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
+    agej.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362004));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378936));
+    paramView.setOnClickListener(new pii(this, paramReadInJoyPicWaterFallFragment));
   }
 }
 

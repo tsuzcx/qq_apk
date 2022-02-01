@@ -1,22 +1,34 @@
-import android.app.PendingIntent;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/DefaultJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayce
-  extends aybw
+public class ayce
+  implements ayeu
 {
-  @NotNull
-  protected PendingIntent a(@NotNull ayca paramayca)
-  {
-    Intrinsics.checkParameterIsNotNull(paramayca, "pushComponent");
-    return d(paramayca);
-  }
+  public ayce(StoryPlayController paramStoryPlayController) {}
   
-  protected boolean a()
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    return true;
+    int j = 1;
+    int i = 1;
+    if (paramInt1 != 100)
+    {
+      paramString1 = this.a.jdField_a_of_type_Ayet.a.a;
+      if (this.a.jdField_a_of_type_Ayet.c()) {}
+      for (;;)
+      {
+        ayel.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
+        return;
+        i = 2;
+      }
+    }
+    ayel.e();
+    paramString1 = StoryPlayController.a(this.a);
+    if (this.a.jdField_a_of_type_Ayet.c()) {}
+    for (paramInt1 = j;; paramInt1 = 2)
+    {
+      ayel.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
+      return;
+    }
   }
 }
 

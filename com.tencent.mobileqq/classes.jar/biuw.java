@@ -1,17 +1,56 @@
-import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.widget.ADView;
+import com.tencent.mobileqq.widget.WorkSpaceView;
+import java.lang.ref.WeakReference;
 
 public class biuw
+  extends Handler
 {
-  protected static bive a;
+  private ADView jdField_a_of_type_ComTencentMobileqqWidgetADView;
+  private WeakReference<ADView> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static bive a()
+  public biuw(ADView paramADView)
   {
-    return a;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADView);
   }
   
-  public static void a(Context paramContext)
+  public void handleMessage(Message paramMessage)
   {
-    a = bive.a(paramContext);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetADView = ((ADView)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a == null));
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getWidth() > 0)) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a() + 1);
+      }
+      try
+      {
+        bdof localbdof = (bdof)this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a()).getTag();
+        i = localbdof.a;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.setContentDescription(localbdof.n);
+        i *= 1000;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          int i = 5000;
+        }
+      }
+      sendEmptyMessageDelayed(0, i);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetADView = null;
+      continue;
+      removeMessages(0);
+    }
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.emoticon;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -18,14 +17,8 @@ public class EmojiStickerManager$StickerFrameLayout
   
   public ImageView a()
   {
-    if ((this.a == null) && (getChildCount() >= 1))
-    {
-      View localView = getChildAt(0);
-      if ((localView instanceof ImageView))
-      {
-        this.a = ((ImageView)localView);
-        return this.a;
-      }
+    if (this.a == null) {
+      this.a = ((ImageView)findViewById(2131362359));
     }
     return this.a;
   }

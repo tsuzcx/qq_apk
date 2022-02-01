@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import amhd;
+import amsx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloManager$14
   implements Runnable
 {
-  public ApolloManager$14(amhd paramamhd, QQAppInterface paramQQAppInterface) {}
+  public ApolloManager$14(amsx paramamsx, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (amhd.a(this.jdField_a_of_type_Amhd) == null) {
-      amhd.a(this.jdField_a_of_type_Amhd, this.jdField_a_of_type_Amhd.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+    if (amsx.a(this.jdField_a_of_type_Amsx) == null) {
+      amsx.a(this.jdField_a_of_type_Amsx, this.jdField_a_of_type_Amsx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
     }
   }
 }

@@ -1,18 +1,6 @@
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
-
-public class vya
-  implements apyj
+public abstract interface vya
 {
-  public vya(QCircleRecommendImageView paramQCircleRecommendImageView) {}
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    QCircleRecommendImageView.a(this.a);
-  }
+  public abstract void a();
 }
 
 

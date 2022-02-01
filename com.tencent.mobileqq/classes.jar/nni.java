@@ -1,22 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.game.SensorAPIJavaScript;
-
-public class nni
-  extends Handler
+public abstract interface nni
 {
-  public nni(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 5) {
-      this.a.a((String)paramMessage.obj);
-    }
-    while (paramMessage.what != 291) {
-      return;
-    }
-    this.a.updateMicStatus((String)paramMessage.obj);
-  }
+  public abstract void a(String paramString);
 }
 
 

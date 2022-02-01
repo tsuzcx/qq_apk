@@ -1,20 +1,36 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import common.config.service.QzoneConfig;
-import common.config.service.QzoneConfig.2.1;
+import android.app.Activity;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.microapp.ext.GameProxy;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.app.MiniAppStateManager;
+import com.tencent.qqmini.proxyimpl.NavigationProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.NavigationProxy;
+import org.json.JSONObject;
 
+@ProxyService(proxy=NavigationProxy.class)
 public class bkza
-  extends ContentObserver
+  extends NavigationProxy
 {
-  public bkza(QzoneConfig paramQzoneConfig, Handler paramHandler)
+  private void a(MiniAppInfo paramMiniAppInfo)
   {
-    super(paramHandler);
+    ThreadManagerV2.excute(new NavigationProxyImpl.1(this, paramMiniAppInfo), 32, null, true);
   }
   
-  public void onChange(boolean paramBoolean)
+  public boolean launchByAppType(int paramInt1, Activity paramActivity, String paramString, int paramInt2, JSONObject paramJSONObject, ResultReceiver paramResultReceiver)
   {
-    ThreadManager.post(new QzoneConfig.2.1(this, paramBoolean), 5, null, false);
+    return GameProxy.startGameByMiniApp(paramActivity, paramString, paramJSONObject);
+  }
+  
+  public void onAfterLaunchByAppInfo(JSONObject paramJSONObject)
+  {
+    a(MiniAppInfo.createMiniAppInfo(paramJSONObject));
+  }
+  
+  public void onBeforeNavigateToMiniProgram()
+  {
+    MiniAppStateManager.getInstance().notifyChange("hideInput");
   }
 }
 

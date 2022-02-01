@@ -4,6 +4,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
 
 class VideoGestureRelativeLayout$1
   implements View.OnTouchListener
@@ -12,6 +13,7 @@ class VideoGestureRelativeLayout$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    QLog.d("gesturetest", 4, "onTouch: event:" + paramMotionEvent.toString());
     if ((paramMotionEvent.getAction() == 1) && (VideoGestureRelativeLayout.access$000(this.this$0)))
     {
       if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
@@ -19,7 +21,9 @@ class VideoGestureRelativeLayout$1
       }
       VideoGestureRelativeLayout.access$002(this.this$0, false);
     }
-    return VideoGestureRelativeLayout.access$200(this.this$0).onTouchEvent(paramMotionEvent);
+    boolean bool = VideoGestureRelativeLayout.access$200(this.this$0).onTouchEvent(paramMotionEvent);
+    QLog.d("gesturetest", 4, "mGestureDetector.onTouchEvent(event) return " + paramMotionEvent.toString());
+    return bool;
   }
 }
 

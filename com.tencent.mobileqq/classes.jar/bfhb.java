@@ -1,29 +1,35 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
 
 public class bfhb
-  implements URLDrawable.URLDrawableListener
+  implements bljo
 {
-  public bfhb(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
+  public bfhb(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (paramView == null) {}
+    for (;;)
+    {
+      return;
+      this.a.jdField_a_of_type_Int = paramInt;
+      if (this.a.jdField_a_of_type_Aksb != null) {
+        this.a.jdField_a_of_type_Aksb.b(paramInt);
+      }
+      if (!this.a.c) {
+        bdll.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
+      }
+      while (TroopAvatarWallEditActivity.a(this.a) != null)
+      {
+        TroopAvatarWallEditActivity.a(this.a).a(paramInt);
+        return;
+        bdll.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
+      }
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

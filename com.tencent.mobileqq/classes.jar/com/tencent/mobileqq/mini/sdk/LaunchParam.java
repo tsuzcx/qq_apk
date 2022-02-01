@@ -33,6 +33,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_ARK_SEARCH_OPEN_CARD = 2075;
   public static final int LAUNCH_SCENE_ARK_UNKNOWN = 2059;
   public static final int LAUNCH_SCENE_BIGINSERTPAGE = 4005;
+  public static final int LAUNCH_SCENE_C2C_AIO_SHORTCUT_PANEL = 4016;
   public static final int LAUNCH_SCENE_COLOR_NOTE = 1131;
   public static final int LAUNCH_SCENE_CONTACTS = 2006;
   public static final int LAUNCH_SCENE_DESKTOP_BOUTIQUE_RECOMMEND = 3008;
@@ -44,8 +45,10 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PLAYING_MORE = 3004;
   public static final int LAUNCH_SCENE_DESKTOP_MORE = 3005;
   public static final int LAUNCH_SCENE_DESKTOP_MY_APP = 3003;
+  public static final int LAUNCH_SCENE_DESKTOP_MY_APP_RED_DOT = 3021;
   public static final int LAUNCH_SCENE_DESKTOP_POPULARITY_LIST = 3010;
   public static final int LAUNCH_SCENE_DESKTOP_RECENT_APP = 3001;
+  public static final int LAUNCH_SCENE_DESKTOP_RECENT_APP_RED_DOT = 3020;
   public static final int LAUNCH_SCENE_DESKTOP_RECOMMEND_APP = 3002;
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_APP = 2077;
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_BAR = 3006;
@@ -60,6 +63,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_KD_SMALL_GAME_AD_CARD = 2086;
   public static final int LAUNCH_SCENE_KD_SMALL_GAME_CARD = 2103;
   public static final int LAUNCH_SCENE_KUOLIE_RECOMM = 2065;
+  public static final int LAUNCH_SCENE_KUO_LIE_AIO_SHORTCUT_PANEL = 4017;
   public static final int LAUNCH_SCENE_LEBA = 2007;
   public static final int LAUNCH_SCENE_LEBA_MINIAPP = 2050;
   public static final int LAUNCH_SCENE_LEFT_PANEL = 4007;
@@ -70,7 +74,9 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_MINI_APP_ONCE_SUBSCRIBE = 2105;
   public static final int LAUNCH_SCENE_MINI_APP_PHONE_NUMBER_SEARCH = 2111;
   public static final int LAUNCH_SCENE_MINI_APP_PROFILE = 1024;
+  public static final int LAUNCH_SCENE_MINI_APP_ROBOT = 2112;
   public static final int LAUNCH_SCENE_MINI_APP_SUBSCRIBE = 2085;
+  public static final int LAUNCH_SCENE_MINI_APP_SYSTEM_SUBSCRIBE = 2114;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_ALBUM = 1049;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_LONG_PRESS = 1048;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;

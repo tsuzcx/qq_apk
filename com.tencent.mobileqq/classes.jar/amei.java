@@ -1,15 +1,18 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-class amei
-  implements bbaa
+public class amei
+  implements aebz
 {
-  amei(ameh paramameh) {}
+  public amei(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c()
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
+    this.a.e = 2;
+    this.a.finish();
   }
 }
 

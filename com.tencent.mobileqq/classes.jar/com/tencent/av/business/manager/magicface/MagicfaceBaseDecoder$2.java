@@ -1,19 +1,19 @@
 package com.tencent.av.business.manager.magicface;
 
 import java.lang.ref.WeakReference;
-import lgx;
-import lgy;
+import lhf;
+import lhg;
 
 public class MagicfaceBaseDecoder$2
   implements Runnable
 {
-  public MagicfaceBaseDecoder$2(lgx paramlgx, String paramString) {}
+  public MagicfaceBaseDecoder$2(lhf paramlhf, String paramString) {}
   
   public void run()
   {
-    lgy locallgy = (lgy)this.this$0.a.get();
-    if (locallgy != null) {
-      locallgy.a(-1037L, this.a);
+    lhg locallhg = (lhg)this.this$0.a.get();
+    if (locallhg != null) {
+      locallhg.a(-1037L, this.a);
     }
   }
 }

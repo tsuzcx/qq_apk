@@ -1,19 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
-
-public final class azeo
-  implements Parcelable.Creator<PersonalityLabelZan>
+public abstract interface azeo
 {
-  public PersonalityLabelZan a(Parcel paramParcel)
-  {
-    return new PersonalityLabelZan(paramParcel);
-  }
+  public abstract void a(apfz paramapfz);
   
-  public PersonalityLabelZan[] a(int paramInt)
-  {
-    return new PersonalityLabelZan[paramInt];
-  }
+  public abstract void a(apfz paramapfz, boolean paramBoolean);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

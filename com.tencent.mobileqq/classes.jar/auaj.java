@@ -1,32 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import java.util.List;
 
-class auaj
-  extends asyw
+public class auaj
+  extends bcbi<bcfr, bcnz>
 {
-  auaj(auai paramauai) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
+  public auaj(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment, aual paramaual)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + atgz.a + "]");
-    }
-    if (atgz.a)
+    try
     {
-      paramString4 = "183.61.37.13";
-      paramString5 = "443";
-      if (this.a.jdField_a_of_type_Asrx != null) {}
-    }
-    else
-    {
-      if ((paramString4 != null) && (paramString4.length() > 0)) {}
-      for (;;)
-      {
-        paramString5 = String.valueOf(paramInt2);
-        break;
-        paramString4 = paramString5;
+      paramFileSelectorSearchGroupFragment = paramaual.a(paramFileSelectorSearchGroupFragment.getActivity().app, paramFileSelectorSearchGroupFragment.getActivity());
+      if ((paramFileSelectorSearchGroupFragment != null) && (!paramFileSelectorSearchGroupFragment.isEmpty())) {
+        a(paramFileSelectorSearchGroupFragment);
       }
+      return;
     }
-    this.a.jdField_a_of_type_Asrx.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
+    catch (Exception paramFileSelectorSearchGroupFragment) {}
+  }
+  
+  protected bcil<bcfr, bcnz> a(int paramInt)
+  {
+    auam localauam = new auam();
+    localauam.a(new auak(this));
+    return localauam;
+  }
+  
+  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new auap(paramViewGroup);
   }
 }
 

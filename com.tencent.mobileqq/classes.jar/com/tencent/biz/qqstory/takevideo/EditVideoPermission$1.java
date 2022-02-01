@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import yqp;
-import yty;
-import yug;
+import yuk;
+import yxt;
+import yyb;
 
 public class EditVideoPermission$1
   implements Runnable
 {
-  public EditVideoPermission$1(yug paramyug) {}
+  public EditVideoPermission$1(yyb paramyyb) {}
   
   public void run()
   {
-    if (yug.a(this.this$0))
+    if (yyb.a(this.this$0))
     {
-      yqp.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
+      yuk.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
       this.this$0.a.a(0);
-      yug.a(this.this$0, false);
+      yyb.a(this.this$0, false);
     }
   }
 }

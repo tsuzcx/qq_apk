@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.Window;
-import blpv;
+import bmqx;
 
 public class ActivityWrapper
 {
@@ -14,7 +14,7 @@ public class ActivityWrapper
   
   public ActivityWrapper(Context paramContext)
   {
-    this.a = blpv.a(paramContext);
+    this.a = bmqx.a(paramContext);
   }
   
   public void finish()

@@ -1,16 +1,43 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 
-public abstract interface bowl
+public class bowl
+  extends ViewModel
 {
-  public abstract Activity a();
+  private MutableLiveData<Boolean> a = new MutableLiveData();
+  private MutableLiveData<Boolean> b = new MutableLiveData();
+  private MutableLiveData<Boolean> c = new MutableLiveData();
   
-  public abstract SessionInfo a();
+  public MutableLiveData<Boolean> a()
+  {
+    return this.a;
+  }
   
-  public abstract QQAppInterface a();
+  public boolean a()
+  {
+    if (this.b.getValue() != null) {
+      return ((Boolean)this.b.getValue()).booleanValue();
+    }
+    return false;
+  }
   
-  public abstract boolean a();
+  public MutableLiveData<Boolean> b()
+  {
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    if (this.c.getValue() != null) {
+      return ((Boolean)this.c.getValue()).booleanValue();
+    }
+    return false;
+  }
+  
+  public MutableLiveData<Boolean> c()
+  {
+    return this.c;
+  }
 }
 
 

@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.7.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class ajfk
-  implements ThreadExcutor.IThreadListener
+class ajfk
+  extends RecyclerView.ViewHolder
 {
-  public ajfk(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public ajfk(ajfh paramajfh, View paramView)
   {
-    ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.7.1(this));
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376963));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371647));
   }
-  
-  public void onPreRun() {}
 }
 
 

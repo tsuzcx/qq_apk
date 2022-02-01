@@ -1,73 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhx
-  implements View.OnClickListener
+  extends adic
 {
-  public adhx(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!(paramView instanceof RotateSwitchImageView)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      View localView1 = AccountManageActivity.a(this.a, paramView);
-      View localView2 = AccountManageActivity.b(this.a, paramView);
-      ViewGroup.LayoutParams localLayoutParams;
-      if (AccountManageActivity.a(this.a) == null)
-      {
-        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
-        ((RotateSwitchImageView)paramView).b();
-        localLayoutParams = localView2.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
-        localView2.setLayoutParams(localLayoutParams);
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).b();
-        }
-        if (AppSetting.c) {
-          paramView.setContentDescription(this.a.getString(2131690963));
-        }
-      }
-      else if (AccountManageActivity.a(this.a) == paramView)
-      {
-        AccountManageActivity.a(this.a).a();
-        localLayoutParams = localView2.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
-        localView2.setLayoutParams(localLayoutParams);
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).f();
-        }
-        AccountManageActivity.a(this.a, null);
-        if (AppSetting.c) {
-          paramView.setContentDescription(this.a.getString(2131690975));
-        }
-      }
-      else
-      {
-        AccountManageActivity.a(this.a).a();
-        ((RotateSwitchImageView)paramView).b();
-        AccountManageActivity.b(this.a, AccountManageActivity.a(this.a)).getLayoutParams().width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
-        localLayoutParams = localView2.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
-        localView2.setLayoutParams(localLayoutParams);
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).b();
-        }
-        localView1 = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).f();
-        }
-        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
-      }
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().c(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (5 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

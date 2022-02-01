@@ -1,91 +1,109 @@
-import com.tencent.qg.sdk.log.IQLog;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 
 public class bjeo
-  implements IQLog
+  extends RecyclerView.Adapter<bjep>
+  implements bjeq
 {
-  private static String a(String paramString, Object... paramVarArgs)
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final TypedArray jdField_a_of_type_AndroidContentResTypedArray;
+  private final bjen jdField_a_of_type_Bjen;
+  private CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+  private HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public bjeo(Context paramContext, bjen parambjen, TypedArray paramTypedArray)
   {
-    return String.format(null, paramString, paramVarArgs);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bjen = parambjen;
+    this.jdField_a_of_type_AndroidContentResTypedArray = paramTypedArray;
+    if (this.jdField_a_of_type_AndroidContentResTypedArray.getBoolean(8, false)) {
+      a(new CalendarDay(System.currentTimeMillis()));
+    }
   }
   
-  public void a(String paramString1, String paramString2)
+  public bjep a(ViewGroup paramViewGroup, int paramInt)
   {
-    yqp.c(paramString1, paramString2);
+    return new bjep(new SimpleMonthView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentResTypedArray), this);
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    yqp.b(paramString1, paramString2, paramThrowable);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramInt1 + "-" + paramInt2, paramArrayList);
+    notifyDataSetChanged();
   }
   
-  public void d(String paramString1, String paramString2)
+  public void a(bjep parambjep, int paramInt)
   {
-    yqp.b(paramString1, paramString2);
+    SimpleMonthView localSimpleMonthView = parambjep.a;
+    HashMap localHashMap = new HashMap();
+    CalendarDay localCalendarDay1 = this.jdField_a_of_type_Bjen.a();
+    CalendarDay localCalendarDay2 = new CalendarDay(System.currentTimeMillis());
+    CalendarDay localCalendarDay3 = new CalendarDay(localCalendarDay2.year, localCalendarDay2.month, 1);
+    if (localCalendarDay1.getTimeInMillis() > localCalendarDay3.getTimeInMillis()) {
+      localCalendarDay1 = new CalendarDay(localCalendarDay2.year, localCalendarDay2.month - 1, 1);
+    }
+    for (;;)
+    {
+      int i = (localCalendarDay1.month + paramInt) % 12;
+      int j = localCalendarDay1.year;
+      j = (localCalendarDay1.month + paramInt) / 12 + j;
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay != null)
+      {
+        localHashMap.put("selected_begin_year", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year));
+        localHashMap.put("selected_begin_month", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month));
+        localHashMap.put("selected_begin_day", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.day));
+      }
+      localSimpleMonthView.b();
+      localHashMap.put("year", Integer.valueOf(j));
+      localHashMap.put("month", Integer.valueOf(i));
+      localHashMap.put("week_start", Integer.valueOf(Calendar.getInstance().getFirstDayOfWeek()));
+      localSimpleMonthView.setMonthParams(localHashMap);
+      localSimpleMonthView.setMessageRecords((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(j + "-" + i));
+      localSimpleMonthView.setStartAndEndDate(localCalendarDay1, localCalendarDay2);
+      localSimpleMonthView.invalidate();
+      this.jdField_a_of_type_Bjen.a(localSimpleMonthView, j, i);
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambjep, paramInt, getItemId(paramInt));
+      return;
+    }
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  protected void a(CalendarDay paramCalendarDay)
   {
-    yqp.a(paramString1, paramString2, paramThrowable);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay;
+    notifyDataSetChanged();
   }
   
-  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  public void a(SimpleMonthView paramSimpleMonthView, CalendarDay paramCalendarDay, Object paramObject)
   {
-    yqp.b(paramString1, a(paramString2, paramVarArgs));
+    if ((paramCalendarDay != null) && (paramObject != null) && ((paramObject instanceof MessageRecord)))
+    {
+      a(paramCalendarDay);
+      this.jdField_a_of_type_Bjen.a(paramCalendarDay, (MessageRecord)paramObject);
+    }
   }
   
-  public void e(String paramString1, String paramString2)
+  public int getItemCount()
   {
-    yqp.e(paramString1, paramString2);
+    int i = this.jdField_a_of_type_Bjen.a().year * 12 + this.jdField_a_of_type_Bjen.a().month;
+    int j = this.jdField_a_of_type_Bjen.b().year * 12 + this.jdField_a_of_type_Bjen.b().month;
+    if (i == j) {
+      return 2;
+    }
+    return j - i + 1;
   }
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public long getItemId(int paramInt)
   {
-    yqp.c(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    yqp.c(paramString1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yqp.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    yqp.c(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    yqp.a(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yqp.a(paramString1, paramString2, new Object[] { paramThrowable });
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    yqp.c(paramString1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yqp.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    yqp.d(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void w(String paramString, Throwable paramThrowable)
-  {
-    yqp.b(paramString, "", paramThrowable);
+    return paramInt;
   }
 }
 

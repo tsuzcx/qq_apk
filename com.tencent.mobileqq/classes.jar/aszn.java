@@ -1,38 +1,156 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchHistoryManager.1;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class aszn
+  implements Handler.Callback
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b = "";
-  public short b;
-  public boolean b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public byte[] c;
-  public int d;
-  public String d = "";
-  public byte[] d;
-  public String e = "";
-  public byte[] e;
-  public String f = "";
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private int jdField_a_of_type_Int;
+  private blha jdField_a_of_type_Blha = new blha(ThreadManager.getFileThreadLooper(), this);
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  WeakReference<aszo> b;
   
-  public aszn(aszj paramaszj)
+  public aszn(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
+    ThreadManager.postImmediately(new ExtendFriendSearchHistoryManager.1(this), null, true);
+  }
+  
+  private void b()
+  {
+    ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (??? == null) {}
+    do
+    {
+      return;
+      ??? = bhmi.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), ((QQAppInterface)???).getCurrentAccountUin() }));
+    } while (this.jdField_a_of_type_Boolean);
+    if ((??? != null) && ((??? instanceof List))) {}
+    for (??? = (List)???;; ??? = null)
+    {
+      Object localObject2 = ???;
+      if (??? == null) {
+        localObject2 = new ArrayList();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          break label201;
+        }
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+      }
+      this.jdField_a_of_type_Boolean = true;
+      label201:
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) || (this.b == null) || (this.b.get() == null)) {
+          break;
+        }
+        ((aszo)this.b.get()).b();
+        return;
+      }
+    }
+  }
+  
+  private void c()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    bhmi.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), localQQAppInterface.getCurrentAccountUin() }), this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Boolean = true;
+      if ((this.b != null) && (this.b.get() != null)) {
+        ((aszo)this.b.get()).b();
+      }
+      if (!this.jdField_a_of_type_Blha.hasMessages(0)) {
+        this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(0, 300L);
+      }
+      return;
+    }
+  }
+  
+  public void a(aszo paramaszo)
+  {
+    if (paramaszo != null)
+    {
+      this.b = new WeakReference(paramaszo);
+      return;
+    }
+    this.b = null;
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      if (!this.jdField_a_of_type_Boolean) {
+        b();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramString);
+        }
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+        if ((this.b != null) && (this.b.get() != null)) {
+          ((aszo)this.b.get()).b();
+        }
+        if (this.jdField_a_of_type_Blha.hasMessages(0)) {
+          continue;
+        }
+        this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(0, 300L);
+        return;
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszn
  * JD-Core Version:    0.7.0.1
  */

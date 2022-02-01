@@ -1,19 +1,23 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
-import com.tencent.biz.qqcircle.fragments.main.QCircleAggregationFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.FrameLayout;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
 
 public class vlx
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public vlx(QCircleAggregationFragment paramQCircleAggregationFragment) {}
+  QCircleContentVideo jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo;
   
-  public void onClick(View paramView)
+  public vlx(vlr paramvlr, View paramView)
   {
-    vrf.a("", 22, 13);
-    zwp.a().a(new QCircleSelectTabEvent(6));
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+    paramvlr = ((FrameLayout)paramView).getChildAt(0);
+    if ((paramvlr instanceof QCircleContentVideo))
+    {
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo = ((QCircleContentVideo)paramvlr);
+      return;
+    }
+    ((FrameLayout)paramView).removeAllViews();
   }
 }
 

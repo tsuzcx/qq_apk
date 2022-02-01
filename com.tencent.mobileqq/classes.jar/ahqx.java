@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahqx
-  implements View.OnLongClickListener
+class ahqx
+  implements bizc
 {
-  public ahqx(PanelIconLinearLayout paramPanelIconLinearLayout) {}
+  ahqx(ahqw paramahqw, ahrh paramahrh) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(String paramString)
   {
-    paramView = ((agju)this.a.a.a(62)).a;
-    if (paramView != null) {
-      paramView.a(1);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setDrawStatus(2);
     }
-    return true;
   }
 }
 

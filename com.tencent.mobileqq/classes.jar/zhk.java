@@ -1,41 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class zhk
-  extends wle<wzq, xbd>
+  implements DialogInterface.OnClickListener
 {
-  zhk(zhj paramzhj) {}
+  public zhk(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void a(@NonNull wzq paramwzq, @Nullable xbd paramxbd, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    yqp.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramxbd != null))
-    {
-      yqp.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramxbd.toString());
-      paramwzq = paramxbd.jdField_a_of_type_JavaUtilList;
-      if (paramwzq.contains(zhj.a(this.a)))
-      {
-        int i = paramwzq.indexOf(zhj.a(this.a));
-        zhj.a(this.a, (zhp)paramwzq.get(i));
-        zhj.a(this.a).clear();
-        zhj.a(this.a).addAll(paramwzq);
-        zhj.a(this.a, paramxbd.jdField_a_of_type_JavaLangString);
-        zhj.a(this.a, paramxbd.b);
-        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
-      }
-    }
-    for (;;)
-    {
-      zhj.a(this.a).a(paramErrorMessage.errorCode, zhj.a(this.a), this.a.a());
-      return;
-      zhj.a(this.a, null);
-      break;
-      yqp.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqcircle.adapter;
 
 import java.util.ArrayList;
-import uyc;
+import uzl;
 
 public class QCircleCommentPanelBlock$3
   implements Runnable
 {
-  public QCircleCommentPanelBlock$3(uyc paramuyc, int paramInt) {}
+  public QCircleCommentPanelBlock$3(uzl paramuzl, int paramInt) {}
   
   public void run()
   {
-    uyc.b(this.this$0);
+    uzl.b(this.this$0);
     this.this$0.notifyItemRemoved(this.a);
-    this.this$0.notifyItemRangeChanged(this.a, uyc.b(this.this$0).size() - this.a);
+    this.this$0.notifyItemRangeChanged(this.a, uzl.b(this.this$0).size() - this.a);
   }
 }
 

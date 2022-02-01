@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.animation;
 
-import aabq;
+import aafv;
 import android.graphics.drawable.AnimationDrawable;
 import mqq.util.WeakReference;
 
@@ -17,16 +17,16 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
   public void run()
   {
     Object localObject = (PopViewAnimationDrawableHelper)this.a.get();
-    aabq localaabq;
+    aafv localaafv;
     if (localObject != null)
     {
-      localaabq = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
-      if (localaabq != null)
+      localaafv = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
+      if (localaafv != null)
       {
         if (PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject) <= 0) {
           break label38;
         }
-        localaabq.a();
+        localaafv.a();
       }
     }
     return;
@@ -34,10 +34,10 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
     localObject = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
     if ((localObject != null) && (((AnimationDrawable)localObject).getFrame(((AnimationDrawable)localObject).getNumberOfFrames() - 1) != ((AnimationDrawable)localObject).getCurrent()))
     {
-      localaabq.b();
+      localaafv.b();
       return;
     }
-    localaabq.a();
+    localaafv.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.avgame.gameresult;
 
-import mzr;
+import nau;
 
 class GameResultFragment$4$1$1
   implements Runnable

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.widget;
 
-import adrm;
-import adrt;
-import ahxp;
+import aean;
+import aeau;
+import aihd;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,18 +16,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bfmd;
-import bftx;
-import bfug;
-import bfwe;
-import bfwf;
-import bfwg;
-import bfwh;
-import bfwi;
-import bfwj;
-import bfwk;
-import bfwl;
-import bggq;
+import bgme;
+import bgty;
+import bguh;
+import bgwf;
+import bgwg;
+import bgwh;
+import bgwi;
+import bgwj;
+import bgwk;
+import bgwl;
+import bgwm;
+import bhgr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
@@ -46,14 +46,14 @@ import tencent.im.oidb.cmd0x934.cmd0x934.List;
 import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class RobotPanelLayoutBase
-  extends RDBaseListLayout<bfwi, bfwh>
-  implements View.OnClickListener, bfug
+  extends RDBaseListLayout<bgwj, bgwi>
+  implements View.OnClickListener, bguh
 {
   protected int a;
-  public bftx a;
+  public bgty a;
   protected BaseChatPie a;
   public String a;
-  private WeakReference<bfwk> a;
+  private WeakReference<bgwl> a;
   public String b;
   
   public RobotPanelLayoutBase(Context paramContext)
@@ -74,11 +74,11 @@ public class RobotPanelLayoutBase
     a(1);
   }
   
-  public static bftx a()
+  public static bgty a()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (bftx)((QQAppInterface)localAppRuntime).getManager(203);
+      return (bgty)((QQAppInterface)localAppRuntime).getManager(203);
     }
     return null;
   }
@@ -88,34 +88,34 @@ public class RobotPanelLayoutBase
     int i = paramContext.getResources().getInteger(2131427342);
     if (paramString1.length() > i)
     {
-      ChatActivityUtils.a(paramContext, 2131717764, 1);
+      ChatActivityUtils.a(paramContext, 2131717895, 1);
       return;
     }
-    boolean bool = paramBaseChatPie instanceof ahxp;
-    adrt localadrt = new adrt();
-    localadrt.i = paramBoolean;
+    boolean bool = paramBaseChatPie instanceof aihd;
+    aeau localaeau = new aeau();
+    localaeau.i = paramBoolean;
     if (bool)
     {
-      paramString3 = bfmd.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramString2, paramString2, paramString3, false, true);
+      paramString3 = bgme.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramString2, paramString2, paramString3, false, true);
       paramString2 = new ArrayList();
-      paramString3 = bfmd.a(paramString3, paramString2);
+      paramString3 = bgme.a(paramString3, paramString2);
       paramString1 = paramString3 + " " + paramString1;
-      adrm.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString1, paramString2, localadrt);
+      aean.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString1, paramString2, localaeau);
       return;
     }
-    adrm.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString1, null, localadrt);
+    aean.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString1, null, localaeau);
   }
   
-  public bfwh a(int paramInt, bfwi parambfwi)
+  public bgwi a(int paramInt, bgwj parambgwj)
   {
-    parambfwi = new bfwh();
-    View localView = LayoutInflater.from(getContext()).inflate(2131560655, null, false);
+    parambgwj = new bgwi();
+    View localView = LayoutInflater.from(getContext()).inflate(2131560670, null, false);
     localView.setOnClickListener(this);
-    parambfwi.a(localView);
-    parambfwi.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368791);
-    parambfwi.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378460));
-    localView.setTag(parambfwi);
-    return parambfwi;
+    parambgwj.a(localView);
+    parambgwj.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368866);
+    parambgwj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378618));
+    localView.setTag(parambgwj);
+    return parambgwj;
   }
   
   public String a()
@@ -123,12 +123,12 @@ public class RobotPanelLayoutBase
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public String a(bfwi parambfwi)
+  public String a(bgwj parambgwj)
   {
     return null;
   }
   
-  public ArrayList<bfwi> a(cmd0x934.RspBody paramRspBody)
+  public ArrayList<bgwj> a(cmd0x934.RspBody paramRspBody)
   {
     if (paramRspBody == null) {
       return null;
@@ -137,13 +137,13 @@ public class RobotPanelLayoutBase
     int i = 0;
     while (i < paramRspBody.lists.size())
     {
-      ((ArrayList)localObject).add(bfwl.a((cmd0x934.List)paramRspBody.lists.get(i)));
+      ((ArrayList)localObject).add(bgwm.a((cmd0x934.List)paramRspBody.lists.get(i)));
       i += 1;
     }
     paramRspBody = new ArrayList();
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      paramRspBody.addAll(((bfwl)((Iterator)localObject).next()).a);
+      paramRspBody.addAll(((bgwm)((Iterator)localObject).next()).a);
     }
     return paramRspBody;
   }
@@ -151,48 +151,48 @@ public class RobotPanelLayoutBase
   public void a()
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_Bftx != null) {
-      this.jdField_a_of_type_Bftx.a(null);
+    if (this.jdField_a_of_type_Bgty != null) {
+      this.jdField_a_of_type_Bgty.a(null);
     }
   }
   
-  public void a(int paramInt, bfwi parambfwi) {}
+  public void a(int paramInt, bgwj parambgwj) {}
   
-  public void a(int paramInt, bfwi parambfwi, bfwh parambfwh)
+  public void a(int paramInt, bgwj parambgwj, bgwi parambgwi)
   {
-    if (parambfwi.a())
+    if (parambgwj.a())
     {
-      bftx localbftx = a();
-      if (localbftx == null)
+      bgty localbgty = a();
+      if (localbgty == null)
       {
         if (QLog.isColorLevel()) {
           QLog.e("RobotPanelLayoutBase", 2, "troopRobotManager = null");
         }
         return;
       }
-      parambfwi.jdField_b_of_type_Boolean = localbftx.a();
+      parambgwj.jdField_b_of_type_Boolean = localbgty.a();
     }
-    if (parambfwi.jdField_b_of_type_Boolean) {}
-    for (parambfwi = parambfwi.jdField_b_of_type_Bfwj;; parambfwi = parambfwi.a)
+    if (parambgwj.jdField_b_of_type_Boolean) {}
+    for (parambgwj = parambgwj.jdField_b_of_type_Bgwk;; parambgwj = parambgwj.a)
     {
-      parambfwh.jdField_a_of_type_AndroidWidgetTextView.setText(parambfwi.jdField_a_of_type_JavaLangString);
-      a(parambfwh);
+      parambgwi.jdField_a_of_type_AndroidWidgetTextView.setText(parambgwj.jdField_a_of_type_JavaLangString);
+      a(parambgwi);
       return;
     }
   }
   
-  protected void a(bfwh parambfwh)
+  protected void a(bgwi parambgwi)
   {
-    int i = bggq.a(getContext(), 0.5F);
+    int i = bhgr.a(getContext(), 0.5F);
     GradientDrawable localGradientDrawable1 = new GradientDrawable();
     localGradientDrawable1.setShape(0);
-    localGradientDrawable1.setCornerRadius(bggq.a(getContext(), 20.0F));
+    localGradientDrawable1.setCornerRadius(bhgr.a(getContext(), 20.0F));
     GradientDrawable localGradientDrawable2 = new GradientDrawable();
     localGradientDrawable2.setShape(0);
-    localGradientDrawable2.setCornerRadius(bggq.a(getContext(), 20.0F));
+    localGradientDrawable2.setCornerRadius(bhgr.a(getContext(), 20.0F));
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      parambfwh.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      parambgwi.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
       localGradientDrawable1.setColor(Color.parseColor("#1F1F1F"));
       localGradientDrawable1.setStroke(i, Color.parseColor("#1F1F1F"));
       localGradientDrawable2.setColor(Color.parseColor("#1F1F1F"));
@@ -204,9 +204,9 @@ public class RobotPanelLayoutBase
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
       localStateListDrawable.addState(new int[0], localGradientDrawable1);
-      parambfwh.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
+      parambgwi.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
       return;
-      parambfwh.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#03081A"));
+      parambgwi.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#03081A"));
       localGradientDrawable1.setColor(Color.parseColor("#FFFFFF"));
       localGradientDrawable1.setStroke(i, Color.parseColor("#D4D8E7"));
       localGradientDrawable2.setColor(Color.parseColor("#FFFFFF"));
@@ -215,9 +215,9 @@ public class RobotPanelLayoutBase
     }
   }
   
-  public void a(bfwi parambfwi) {}
+  public void a(bgwj parambgwj) {}
   
-  public void a(bfwi parambfwi, String paramString) {}
+  public void a(bgwj parambgwj, String paramString) {}
   
   public void a(BaseChatPie paramBaseChatPie, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
@@ -231,10 +231,10 @@ public class RobotPanelLayoutBase
     } while (!QLog.isColorLevel());
     QLog.e("RobotPanelLayoutBase", 2, "troopRobotManager = null");
     return;
-    paramString5 = bfwi.a(paramString7, paramString6, paramString5, paramString4);
+    paramString5 = bgwj.a(paramString7, paramString6, paramString5, paramString4);
     paramString6 = paramString5.a.jdField_a_of_type_JavaLangString;
     c(paramString5, paramString6);
-    if (!TextUtils.isEmpty(paramString5.jdField_b_of_type_Bfwj.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty(paramString5.jdField_b_of_type_Bgwk.jdField_a_of_type_JavaLangString)) {
       if (QLog.isColorLevel()) {
         QLog.d("RobotPanelLayoutBase", 2, "talking: " + paramString6);
       }
@@ -283,21 +283,21 @@ public class RobotPanelLayoutBase
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bfwk localbfwk = (bfwk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbfwk != null) {
-        localbfwk.a(paramString);
+      bgwl localbgwl = (bgwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbgwl != null) {
+        localbgwl.a(paramString);
       }
     }
   }
   
-  public void a(String paramString1, String paramString2, BaseChatPie paramBaseChatPie, bfwg parambfwg)
+  public void a(String paramString1, String paramString2, BaseChatPie paramBaseChatPie, bgwh parambgwh)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  protected void a(String paramString1, String paramString2, String paramString3, bfwi parambfwi)
+  protected void a(String paramString1, String paramString2, String paramString3, bgwj parambgwj)
   {
-    if ((parambfwi == null) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (this.jdField_a_of_type_Bftx == null)) {}
+    if ((parambgwj == null) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (this.jdField_a_of_type_Bgty == null)) {}
     for (;;)
     {
       return;
@@ -307,10 +307,10 @@ public class RobotPanelLayoutBase
         l2 = Long.valueOf(paramString2).longValue();
         if ((l1 != -1L) && (l2 != -1L))
         {
-          paramString2 = new bfwe(this, parambfwi);
+          paramString2 = new bgwf(this, parambgwj);
           if ("1".equals(paramString1))
           {
-            this.jdField_a_of_type_Bftx.a(l2, paramString3, paramString2);
+            this.jdField_a_of_type_Bgty.a(l2, paramString3, paramString2);
             return;
           }
         }
@@ -325,7 +325,7 @@ public class RobotPanelLayoutBase
           l2 = -1L;
           l1 = -1L;
         }
-        this.jdField_a_of_type_Bftx.a(l1, l2, paramString3, paramString2);
+        this.jdField_a_of_type_Bgty.a(l1, l2, paramString3, paramString2);
       }
     }
   }
@@ -339,11 +339,11 @@ public class RobotPanelLayoutBase
   {
     d();
     setOverScrollMode(0);
-    int i = 2130850027;
+    int i = 2130850039;
     try
     {
       if (ThemeUtil.isNowThemeIsDefault(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-        i = 2130849831;
+        i = 2130849842;
       }
       setBackgroundResource(i);
     }
@@ -357,13 +357,13 @@ public class RobotPanelLayoutBase
     return true;
   }
   
-  public void b(bfwi parambfwi) {}
+  public void b(bgwj parambgwj) {}
   
-  public void b(bfwi parambfwi, String paramString) {}
+  public void b(bgwj parambgwj, String paramString) {}
   
-  protected void b(String paramString1, String paramString2, String paramString3, bfwi parambfwi)
+  protected void b(String paramString1, String paramString2, String paramString3, bgwj parambgwj)
   {
-    if ((this.jdField_a_of_type_Bftx == null) || (TextUtils.isEmpty(paramString3)) || (parambfwi == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {}
+    if ((this.jdField_a_of_type_Bgty == null) || (TextUtils.isEmpty(paramString3)) || (parambgwj == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {}
     for (;;)
     {
       return;
@@ -373,10 +373,10 @@ public class RobotPanelLayoutBase
         l2 = Long.valueOf(paramString2).longValue();
         if ((l1 != -1L) && (l2 != -1L))
         {
-          paramString2 = new bfwf(this, parambfwi);
+          paramString2 = new bgwg(this, parambgwj);
           if ("1".equals(paramString1))
           {
-            this.jdField_a_of_type_Bftx.b(l2, paramString3, paramString2);
+            this.jdField_a_of_type_Bgty.b(l2, paramString3, paramString2);
             return;
           }
         }
@@ -391,7 +391,7 @@ public class RobotPanelLayoutBase
           l2 = -1L;
           l1 = -1L;
         }
-        this.jdField_a_of_type_Bftx.b(l1, l2, paramString3, paramString2);
+        this.jdField_a_of_type_Bgty.b(l1, l2, paramString3, paramString2);
       }
     }
   }
@@ -401,13 +401,13 @@ public class RobotPanelLayoutBase
     return this.jdField_a_of_type_Int;
   }
   
-  public void c(bfwi parambfwi, String paramString) {}
+  public void c(bgwj parambgwj, String paramString) {}
   
   public void d()
   {
-    this.jdField_a_of_type_Bftx = a();
-    if (this.jdField_a_of_type_Bftx != null) {
-      this.jdField_a_of_type_Bftx.a(this);
+    this.jdField_a_of_type_Bgty = a();
+    if (this.jdField_a_of_type_Bgty != null) {
+      this.jdField_a_of_type_Bgty.a(this);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -415,7 +415,7 @@ public class RobotPanelLayoutBase
     QLog.e("RobotPanelLayoutBase", 2, "troopRobotManager = null");
   }
   
-  public void d(bfwi parambfwi, String paramString) {}
+  public void d(bgwj parambgwj, String paramString) {}
   
   public void e()
   {
@@ -424,41 +424,41 @@ public class RobotPanelLayoutBase
   
   public void onClick(View paramView)
   {
-    bfwi localbfwi = (bfwi)a(a(paramView));
-    if (localbfwi == null) {}
+    bgwj localbgwj = (bgwj)a(a(paramView));
+    if (localbgwj == null) {}
     while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    String str = localbfwi.a.jdField_a_of_type_JavaLangString;
-    a(localbfwi, str);
+    String str = localbgwj.a.jdField_a_of_type_JavaLangString;
+    a(localbgwj, str);
     Object localObject;
-    if (!TextUtils.isEmpty(localbfwi.jdField_b_of_type_Bfwj.jdField_a_of_type_JavaLangString)) {
-      localObject = a(localbfwi);
+    if (!TextUtils.isEmpty(localbgwj.jdField_b_of_type_Bgwk.jdField_a_of_type_JavaLangString)) {
+      localObject = a(localbgwj);
     }
     for (;;)
     {
-      b(localbfwi, (String)localObject);
+      b(localbgwj, (String)localObject);
       a((String)localObject);
       break;
-      if (localbfwi.a.c.startsWith("inputKeyOp://sendToRobot"))
+      if (localbgwj.a.c.startsWith("inputKeyOp://sendToRobot"))
       {
-        a(localbfwi);
+        a(localbgwj);
         localObject = str;
       }
-      else if (localbfwi.a.c.startsWith("inputKeyOp://sendToBackEnd"))
+      else if (localbgwj.a.c.startsWith("inputKeyOp://sendToBackEnd"))
       {
-        b(localbfwi);
+        b(localbgwj);
         localObject = str;
       }
       else
       {
         localObject = str;
-        if (localbfwi.a.c.startsWith("http"))
+        if (localbgwj.a.c.startsWith("http"))
         {
           localObject = new Intent(getContext(), QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("url", localbfwi.a.c);
+          ((Intent)localObject).putExtra("url", localbgwj.a.c);
           getContext().startActivity((Intent)localObject);
           localObject = str;
         }
@@ -471,14 +471,14 @@ public class RobotPanelLayoutBase
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setListener(bfwk parambfwk)
+  public void setListener(bgwl parambgwl)
   {
-    if (parambfwk == null)
+    if (parambgwl == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambfwk);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambgwl);
   }
   
   public void setVisibility(int paramInt)

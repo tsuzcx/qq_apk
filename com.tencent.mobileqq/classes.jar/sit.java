@@ -1,7 +1,19 @@
-import kotlin.Metadata;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Companion;", "", "()V", "PLAYER_VIDEO_FULL_CACHED", "", "PLAYER_VIDEO_NO_CACHED", "PLAYER_VIDEO_PARTIAL_CACHED", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sit {}
+public class sit
+  implements Function1<Canvas, Unit>
+{
+  public sit(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  
+  public Unit a(Canvas paramCanvas)
+  {
+    ReadInJoyListViewGroup.a(this.a, paramCanvas);
+    return null;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

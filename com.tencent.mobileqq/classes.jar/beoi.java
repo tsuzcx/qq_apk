@@ -1,32 +1,19 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
 
-public class beoi
-  implements View.OnKeyListener
+class beoi
+  extends aojs
 {
-  public beoi(NewTroopContactView paramNewTroopContactView) {}
+  beoi(beoh parambeoh) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(String paramString, long paramLong)
   {
-    if (paramInt == 67)
+    if ((0x40000000 & paramLong) != 0L)
     {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
-      }
-      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
+      beoh.a(this.a).a(EditorState.CLOSED_BY_ADMIN, beoh.a(this.a).getString(2131719380));
+      return;
     }
-    for (;;)
-    {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_Beol.a();
-      }
-    }
+    beoh.a(this.a).a(EditorState.OPEN_BY_ADMIN);
   }
 }
 

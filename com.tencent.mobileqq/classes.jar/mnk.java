@@ -1,6 +1,30 @@
-public abstract interface mnk
+import java.util.Observable;
+import java.util.Observer;
+import mqq.util.WeakReference;
+
+class mnk
+  implements Observer
 {
-  public abstract void e(int paramInt);
+  private final WeakReference<mng> a;
+  
+  mnk(mng parammng)
+  {
+    this.a = new WeakReference(parammng);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = (Object[])paramObject;
+    switch (((Integer)paramObservable[0]).intValue())
+    {
+    }
+    do
+    {
+      return;
+      paramObject = (mng)this.a.get();
+    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
+    paramObject.a();
+  }
 }
 
 

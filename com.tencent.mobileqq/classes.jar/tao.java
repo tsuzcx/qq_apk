@@ -1,26 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemView;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
 
-class tao
-  extends syj
+public class tao
+  implements tar
 {
-  private boolean jdField_a_of_type_Boolean;
+  public tao(ChannelTopBanner paramChannelTopBanner) {}
   
-  private tao(tam paramtam, PTSItemView paramPTSItemView, BaseData paramBaseData)
+  public void a(int paramInt)
   {
-    super(paramPTSItemView, paramBaseData);
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = tam.a(this.jdField_a_of_type_Tam, paramBaseData2);
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView instanceof PTSItemView))) {
-      ((ProteusItemData)paramBaseData2).a.layoutToView((PTSItemView)this.jdField_a_of_type_AndroidViewView, tam.a(this.jdField_a_of_type_Tam), true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    tam.a(this.jdField_a_of_type_Tam, paramBaseData1);
+    this.a.d();
   }
 }
 

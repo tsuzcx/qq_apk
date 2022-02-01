@@ -1,11 +1,26 @@
-import android.media.MediaPlayer;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
-public abstract interface bpzd
+public class bpzd
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  public bpzd(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner 140ms translate end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner lockView begin");
+    }
+  }
 }
 
 

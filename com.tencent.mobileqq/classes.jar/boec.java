@@ -1,45 +1,59 @@
-import android.widget.TextView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class boec
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  public static int a;
+  private static QQFilterRenderManager a;
+  public static int b;
+  private static QQFilterRenderManager b;
+  public static int c = 2;
+  private static int d;
   
-  private String a()
+  static
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("调试信息：\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localStringBuilder.append(str + "：" + (String)this.jdField_a_of_type_JavaUtilHashMap.get(str) + "\n");
-    }
-    return localStringBuilder.toString();
+    boem.a();
+    bbgg.a(false);
+    jdField_b_of_type_Int = 1;
   }
   
-  public void a(String paramString1, String paramString2)
+  public static int a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
-    }
+    return d;
   }
   
-  public void a(String[] paramArrayOfString)
+  public static QQFilterRenderManager a()
   {
-    int i = 0;
-    while (i < paramArrayOfString.length / 2)
+    return new QQFilterRenderManager(new int[] { 70, 80, 90, 184 });
+  }
+  
+  public static QQFilterRenderManager a(int paramInt)
+  {
+    if (paramInt == c) {
+      return a;
+    }
+    return EffectsCameraCaptureView.b();
+  }
+  
+  public static void a(QQFilterRenderManager paramQQFilterRenderManager)
+  {
+    a = paramQQFilterRenderManager;
+  }
+  
+  public static QQFilterRenderManager b()
+  {
+    try
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramArrayOfString[(i * 2)], paramArrayOfString[(i * 2 + 1)]);
-      i += 1;
+      if ((jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.isSurfaceDestroyed())) {
+        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
+      }
+      if (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
+        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = a();
+      }
+      QQFilterRenderManager localQQFilterRenderManager = jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+      return localQQFilterRenderManager;
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
-    }
+    finally {}
   }
 }
 

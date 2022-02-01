@@ -1,23 +1,68 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.feeds_info.ShareWebPageInfo;
 
 public class qyk
-  implements View.OnClickListener
 {
-  public qyk(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public static qyk a(feeds_info.ShareWebPageInfo paramShareWebPageInfo)
   {
-    pha.a = ComponentTopicItemMulti.a(this.a);
-    pha.a(this.a.getContext(), this.a.a.b);
-    String str1 = ube.b(ComponentTopicItemMulti.a(this.a));
-    String str2 = pha.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, pha.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, bgnt.h(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
-    oat.a(null, ComponentTopicItemMulti.a(this.a).mSubscribeID, str1, str1, 0, 0, ComponentTopicItemMulti.a(this.a).mFeedId + "", String.valueOf(this.a.a.a), String.valueOf(ComponentTopicItemMulti.a(this.a).mAlgorithmID), str2, false);
-    pha.a(ComponentTopicItemMulti.a(this.a), ComponentTopicItemMulti.a(this.a));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramShareWebPageInfo == null) {}
+    qyk localqyk;
+    do
+    {
+      return null;
+      localqyk = new qyk();
+      if (paramShareWebPageInfo.bytes_desc.has()) {
+        localqyk.e = paramShareWebPageInfo.bytes_desc.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_pic_url.has()) {
+        localqyk.c = paramShareWebPageInfo.bytes_pic_url.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_title.has()) {
+        localqyk.b = paramShareWebPageInfo.bytes_title.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_source.has()) {
+        localqyk.d = paramShareWebPageInfo.bytes_source.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_web_url.has()) {
+        localqyk.a = paramShareWebPageInfo.bytes_web_url.get().toStringUtf8();
+      }
+      if ((!TextUtils.isEmpty(localqyk.d)) && (!TextUtils.isEmpty(localqyk.a))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SocializeFeedsInfo", 2, "WebSharePageInfo core info is empty!");
+    return null;
+    return localqyk;
+  }
+  
+  public feeds_info.ShareWebPageInfo a()
+  {
+    feeds_info.ShareWebPageInfo localShareWebPageInfo = new feeds_info.ShareWebPageInfo();
+    if (!TextUtils.isEmpty(this.a)) {
+      localShareWebPageInfo.bytes_web_url.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localShareWebPageInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localShareWebPageInfo.bytes_title.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localShareWebPageInfo.bytes_source.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.e)) {
+      localShareWebPageInfo.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.e));
+    }
+    return localShareWebPageInfo;
   }
 }
 

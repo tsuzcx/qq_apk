@@ -1,44 +1,55 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class ygb
-  extends QQUIEventReceiver<yfw, wii>
+  extends wpa<xeo>
 {
-  public ygb(yfw paramyfw)
+  public String a;
+  public boolean a;
+  public int c = -1;
+  
+  public String a()
   {
-    super(paramyfw);
+    return wnu.a("StorySvc.feed_like_list_715");
   }
   
-  public void a(@NonNull yfw paramyfw, @NonNull wii paramwii)
+  public wov a(byte[] paramArrayOfByte)
   {
-    if (paramwii.a.isSuccess())
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
     {
-      if (!paramwii.a()) {
-        break label25;
-      }
-      yqp.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new ygc(localRspFeedLikeList);
     }
-    label25:
-    do
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      do
-      {
-        return;
-        if (paramwii.c())
-        {
-          yqp.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramwii.toString());
-          return;
-        }
-      } while (!paramwii.b());
-      yqp.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramwii.toString());
-    } while (paramwii.b == null);
-    yfw.a(paramyfw, true);
+      yuk.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return wii.class;
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localReqFeedLikeList.source.set(i);
+      if (this.c != -1) {
+        localReqFeedLikeList.type.set(this.c);
+      }
+      return localReqFeedLikeList.toByteArray();
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
   }
 }
 

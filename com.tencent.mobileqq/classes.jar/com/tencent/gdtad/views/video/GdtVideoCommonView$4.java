@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.video;
 
-import acsj;
+import acwn;
 import android.widget.TextView;
 
 class GdtVideoCommonView$4
@@ -10,7 +10,7 @@ class GdtVideoCommonView$4
   
   public void run()
   {
-    GdtVideoCommonView.a(this.this$0).setText(acsj.a(GdtVideoCommonView.a(this.this$0)));
+    GdtVideoCommonView.a(this.this$0).setText(acwn.a(GdtVideoCommonView.a(this.this$0)));
   }
 }
 

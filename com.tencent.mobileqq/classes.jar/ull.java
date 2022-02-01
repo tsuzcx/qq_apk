@@ -1,23 +1,17 @@
-import UserGrowth.stFeed;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
-
-public abstract interface ull
-  extends uln<List<stFeed>>
+public class ull
 {
-  public abstract XRecyclerView a();
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public abstract ucp a();
-  
-  public abstract void a(List<stFeed> paramList, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, List<stFeed> paramList, boolean paramBoolean3);
-  
-  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
+  public ull(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

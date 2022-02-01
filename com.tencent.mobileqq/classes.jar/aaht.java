@@ -1,15 +1,16 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aaht
-  implements zxa<CertifiedAccountRead.StGetFeedDetailRsp>
+  implements View.OnClickListener
 {
-  aaht(aahs paramaahs, zzp paramzzp) {}
+  aaht(aahs paramaahs) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Zzp != null) {
-      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp });
-    }
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

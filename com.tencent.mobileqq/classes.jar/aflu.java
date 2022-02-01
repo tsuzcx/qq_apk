@@ -1,22 +1,18 @@
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aflu
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aflu(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aflu(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
-    }
-    return true;
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

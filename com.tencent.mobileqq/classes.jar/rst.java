@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
 
 class rst
-  implements rsi<String>
+  implements seg
 {
-  rst(rsn paramrsn) {}
+  rst(rsr paramrsr) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void a(View paramView)
   {
-    QQToast.a(rsn.a(this.a), paramString, 1).a();
+    paramView.setTag(new ros(paramView));
   }
 }
 

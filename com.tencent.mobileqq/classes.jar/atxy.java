@@ -1,33 +1,29 @@
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-import com.tencent.mobileqq.widget.TabBarView2;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
 
-public class atxy
-  implements bics
+class atxy
+  extends atxd
 {
-  public atxy(QfileTabBarView paramQfileTabBarView) {}
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public atxy(atwy paramatwy)
   {
-    if (this.a.a(paramInt2) == null) {}
-    do
+    super(paramatwy);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setSelected(true);
-      this.a.b(paramInt2);
-    } while (!this.a.jdField_a_of_type_Boolean);
-    try
-    {
-      SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      localEditor.putInt("last_select_tab_view", ((Integer)this.a.c.get(Integer.valueOf(paramInt2))).intValue());
-      localEditor.commit();
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    catch (Exception localException) {}
+    atwy.b(this.jdField_a_of_type_Atwy, 11, 7);
+    atwy.c(this.jdField_a_of_type_Atwy, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Atxd = new atxx(this.jdField_a_of_type_Atwy);
   }
 }
 

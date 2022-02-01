@@ -1,36 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.GuardProcessExitListener;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
 
-class bdcu
-  extends BroadcastReceiver
+public class bdcu
 {
-  bdcu(bdcs parambdcs) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      return;
-      if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.LOGOUT")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("studyroom.StudyRoomManager", 2, "***exitProcexx*** receive broacast action=" + paramIntent.getAction());
-        }
-        bdcs.a(this.a).a(false);
-        return;
-      }
-    } while (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getContext().getPackageName()));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("crashKind", "" + paramInt);
+    bdmc.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("time", "" + paramLong);
+    localHashMap.put("filter_id", bdcv.jdField_a_of_type_JavaLangString);
+    localHashMap.put("front_camera", String.valueOf(bdcv.jdField_a_of_type_Boolean));
+    bdmc.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, bczp.c, localHashMap, "");
     if (QLog.isColorLevel()) {
-      QLog.e("studyroom.StudyRoomManager", 2, "***exitProcexx*** receive broacast action=" + paramIntent.getAction());
+      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + bdcv.jdField_a_of_type_JavaLangString + " ; front_camera = " + bdcv.jdField_a_of_type_Boolean);
     }
-    bdcs.a(this.a).a(true);
   }
 }
 

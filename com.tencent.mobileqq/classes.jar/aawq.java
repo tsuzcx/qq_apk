@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
 
-class aawq
-  implements Animation.AnimationListener
+public class aawq
 {
-  aawq(aawn paramaawn) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aawq(Oidb_0xcd1.EmptyPackagePage paramEmptyPackagePage)
   {
-    if (aawn.a(this.a) != null) {
-      aawn.a(this.a).setVisibility(4);
-    }
-    if (aawn.a(this.a) != null) {
-      aawn.a(this.a).setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_Int = paramEmptyPackagePage.enable.get();
+    this.jdField_a_of_type_JavaLangString = paramEmptyPackagePage.wording.get();
+    this.b = paramEmptyPackagePage.jump_wording.get();
+    this.c = paramEmptyPackagePage.jump_url.get();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

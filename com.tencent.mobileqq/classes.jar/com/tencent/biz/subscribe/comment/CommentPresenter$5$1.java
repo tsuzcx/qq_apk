@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaet;
-import aaew;
+import aaiu;
+import aaix;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
 public class CommentPresenter$5$1
   implements Runnable
 {
-  public CommentPresenter$5$1(aaew paramaaew) {}
+  public CommentPresenter$5$1(aaix paramaaix) {}
   
   public void run()
   {
-    aaet.a(this.a.a, 0, aaet.a(this.a.a).getReplyId());
-    aaet.b(this.a.a, false);
+    aaiu.a(this.a.a, 0, aaiu.a(this.a.a).getReplyId());
+    aaiu.b(this.a.a, false);
   }
 }
 

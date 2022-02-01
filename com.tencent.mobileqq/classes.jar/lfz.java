@@ -1,34 +1,103 @@
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class lfz<T1 extends MessageMicro, T2 extends MessageMicro>
+public class lfz
+  extends lfy
 {
-  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  static long b;
+  
+  public lfz(AppInterface paramAppInterface)
   {
-    Object localObject = lfw.a(this);
-    ((lfy)localObject).a("QAVMessageHandler", paramLong);
-    if ((((lfy)localObject).a != null) && (((lfy)localObject).b != null)) {}
-    try
+    super(paramAppInterface);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString1, long paramLong, String paramString2, boolean paramBoolean)
+  {
+    int i;
+    long l1;
+    if (((lih)paramVideoAppInterface.a(5)).a(0, "750") == 1)
     {
-      MessageMicro localMessageMicro = (MessageMicro)((lfy)localObject).a.newInstance();
-      localObject = (MessageMicro)((lfy)localObject).b.newInstance();
-      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
-        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+      i = 1;
+      l1 = AudioHelper.a();
+      if (i == 0) {
+        break label214;
       }
-      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
-      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
-      return;
+      i = 12;
+      localObject = (lfy)paramVideoAppInterface.a(1);
     }
-    catch (Exception paramToServiceMsg)
+    for (Object localObject = paramString2 + "|" + ((lfy)localObject).a() + "|" + paramLong + "|" + l1;; localObject = paramString2)
     {
-      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
+      long l2 = b;
+      b = l1;
+      QLog.w("AudioTransClientInfoHandler", 1, "sendZimuCmd, id[" + paramString2 + "], cmdInfo[" + (String)localObject + "], autoDetect[" + true + "], from[" + paramString1 + "], seq[" + paramLong + "], sendTime[" + l1 + "], sendInterval[" + (l1 - l2) + "]");
+      paramVideoAppInterface.a().a(i, (String)localObject);
+      return;
+      i = 0;
+      break;
+      label214:
+      i = 7;
     }
   }
   
-  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
+  int a()
+  {
+    int i = 100;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 2;
+    }
+    while (!AppNetConnInfo.isMobileConn()) {
+      return i;
+    }
+    switch (AppNetConnInfo.getMobileInfo())
+    {
+    default: 
+      return 100;
+    case 1: 
+      return 4;
+    case 2: 
+      return 3;
+    }
+    return 5;
+  }
+  
+  void a(long paramLong1, long paramLong2)
+  {
+    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.mApp;
+    ZimuItem localZimuItem = (ZimuItem)((lix)localVideoAppInterface.a(0)).a();
+    if ((localZimuItem != null) && (!TextUtils.isEmpty(localZimuItem.getId()))) {
+      a(localVideoAppInterface, "sendToPeer", paramLong1, localZimuItem.getId(), true);
+    }
+  }
+  
+  int b()
+  {
+    return mvd.b();
+  }
+  
+  String b()
+  {
+    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
+    if ((localVideoController != null) && (localVideoController.a() != null)) {
+      return localVideoController.a().d;
+    }
+    return "";
+  }
+  
+  boolean b()
+  {
+    return ((lix)((VideoAppInterface)this.mApp).a(0)).b();
+  }
+  
+  boolean c()
+  {
+    return ((lgb)this.mApp.getBusinessHandler(0)).a();
+  }
 }
 
 

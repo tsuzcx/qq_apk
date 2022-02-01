@@ -1,18 +1,15 @@
-class axbc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+
+public class axbc
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
+  public axbc(MedalGuideView paramMedalGuideView) {}
   
-  public axbc(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
+    MedalGuideView.a(this.a);
   }
 }
 

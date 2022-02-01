@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import org.json.JSONObject;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
 
 public class avpp
-  implements tol
 {
-  public avpp(UiApiPlugin paramUiApiPlugin) {}
+  JefsClass.CancelableRunnable a;
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public avpp(JefsClass.CancelableRunnable paramCancelableRunnable)
   {
-    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
+    this.a = paramCancelableRunnable;
+  }
+  
+  public void a()
+  {
+    this.a.a = true;
   }
 }
 

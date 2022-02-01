@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-class aetp
-  implements DialogInterface.OnClickListener
+public class aetp
+  implements Animation.AnimationListener
 {
-  aetp(aetm paramaetm) {}
+  public aetp(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.setResult(4004);
-    this.a.a.finish();
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

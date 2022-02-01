@@ -1,13 +1,60 @@
-class auer
-  implements ankk
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class auer
+  implements aqrn
 {
-  auer(aueq paramaueq) {}
+  private DataLineMsgRecord a;
   
-  public void a(boolean paramBoolean)
+  public auer(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if (paramBoolean) {
-      this.a.a();
+    this.a = paramDataLineMsgRecord;
+  }
+  
+  private String a()
+  {
+    String str = "";
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
+      {
+        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
+        str = localJSONObject.toString();
+      }
+      return str;
     }
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (this.a == null)
+    {
+      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
+    }
+    aqrv localaqrv = new aqrv();
+    localaqrv.a(17039360);
+    String str = auoo.b(6, this.a.sessionid + "");
+    if (QLog.isColorLevel()) {
+      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localaqrv.a(str);
+    localaqrv.b(this.a.filename);
+    localaqrv.c(auog.a(this.a.filesize));
+    int i = aunj.a(aunj.a(this.a.filename));
+    localaqrv.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqrv.a(str.getBytes());
+    }
+    return localaqrv.a();
   }
 }
 

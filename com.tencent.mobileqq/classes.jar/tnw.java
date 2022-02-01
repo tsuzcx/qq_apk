@@ -1,30 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.RspBody;
+import tencent.im.oidb.cmd0x885.oidb_0x885.RspBody;
 
-public class tnw
-  implements rqc
+class tnw
+  extends nkq
 {
-  public tnw(BridgeModule paramBridgeModule) {}
+  tnw(tnv paramtnv) {}
   
-  public void a(UgcVideo paramUgcVideo)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = pha.a();
-    QLog.i(BridgeModule.TAG, 1, "onPublish, title =" + paramUgcVideo.title);
-    if (localQQAppInterface == null) {}
-    String str;
-    do
-    {
-      return;
-      str = (String)BridgeModule.access$1600(this.a).get(Long.valueOf(0L));
-      if ((str != null) && (!str.isEmpty())) {
-        rps.a(localQQAppInterface).a(0L, new tnx(this, str));
+    for (boolean bool = true;; bool = false) {
+      try
+      {
+        paramBundle = new oidb_0x6cf.RspBody();
+        if (paramArrayOfByte != null) {
+          paramBundle.mergeFrom(paramArrayOfByte);
+        }
+        paramBundle = (oidb_0x885.RspBody)paramBundle.msg_ad_rsp.get();
+        if ((paramInt == 0) && (paramArrayOfByte != null)) {
+          paramBundle.mergeFrom(paramArrayOfByte);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info.has = " + paramBundle.bytes_ad_user_info.has());
+        }
+        if ((paramBundle != null) && (paramBundle.bytes_ad_user_info.has()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info = " + paramBundle.bytes_ad_user_info.get().toStringUtf8());
+          }
+          paramArrayOfByte = this.a;
+          if (paramInt == 0)
+          {
+            paramArrayOfByte.notifyUI(1, bool, paramBundle.bytes_ad_user_info.get().toStringUtf8());
+            tny.a(null, true, "no error", paramBundle.bytes_ad_user_info.get().toStringUtf8());
+          }
+        }
+        else
+        {
+          tny.a(null, false, "error with errorcode: " + paramInt, null);
+          return;
+        }
       }
-      str = (String)BridgeModule.access$1600(this.a).get(Long.valueOf(paramUgcVideo.columnId));
-    } while ((str == null) || (str.isEmpty()));
-    rps.a(localQQAppInterface).a(paramUgcVideo.columnId, new tny(this, paramUgcVideo, str));
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(paramArrayOfByte));
+        }
+        return;
+      }
+    }
   }
 }
 

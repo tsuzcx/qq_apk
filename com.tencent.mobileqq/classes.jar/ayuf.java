@@ -1,16 +1,20 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayuf
-  implements BusinessObserver
+class ayuf
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  ayuf(ayue paramayue) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1) {
-      a(paramBoolean, paramBundle);
+    if (((paramView.getTag() instanceof ayug)) && (this.a.a != null))
+    {
+      ayug localayug = (ayug)paramView.getTag();
+      this.a.a.a(this.a, paramView, localayug);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

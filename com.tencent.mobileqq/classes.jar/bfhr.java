@@ -1,57 +1,32 @@
-class bfhr
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bfhr
+  implements View.OnClickListener
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Object jdField_b_of_type_JavaLangObject;
-  private String jdField_b_of_type_JavaLangString;
+  public bfhr(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public bfhr(boolean paramBoolean, String paramString1, Object paramObject, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangObject = null;
-  }
-  
-  public bfhr(boolean paramBoolean, String paramString1, Object paramObject1, String paramString2, Object paramObject2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangObject = paramObject1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangObject = paramObject2;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public Object b()
-  {
-    return this.jdField_b_of_type_JavaLangObject;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    return "Entity{show=" + this.jdField_a_of_type_Boolean + ", wording='" + this.jdField_a_of_type_JavaLangString + ", senderUin='" + this.jdField_b_of_type_JavaLangString + '}';
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      blir localblir = (blir)blji.a(this.a, null);
+      localblir.a(2131692959, 3);
+      localblir.c(2131690580);
+      localblir.a(new bfhs(this, localblir));
+      localblir.show();
+      continue;
+      TroopAvatarWallPreviewActivity.c(this.a);
+      continue;
+      TroopAvatarWallPreviewActivity.i(this.a);
+    }
   }
 }
 

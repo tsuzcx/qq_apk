@@ -1,30 +1,16 @@
-import android.util.Log;
-import com.tencent.qg.qq.GameDemoFragment;
-import com.tencent.qg.sdk.QGGLSurfaceView;
-import com.tencent.qg.sdk.QGRenderer.QGEventListener;
-import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.StateListDrawable;
 
 public class bjfa
-  implements QGRenderer.QGEventListener
+  extends StateListDrawable
 {
-  public bjfa(GameDemoFragment paramGameDemoFragment) {}
-  
-  public void onCanvasCreated()
+  public bjfa(int paramInt1, int paramInt2)
   {
-    Log.d("ejecta", "Event: Canvas was created");
-    this.a.a.init();
-    String[] arrayOfString = GameDemoFragment.a(this.a);
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      GameDemoFragment.a(this.a).loadJavaScriptFileFromSDCard(str);
-      i += 1;
-    }
+    ColorDrawable localColorDrawable = new ColorDrawable(paramInt1);
+    addState(new int[] { 16842919 }, localColorDrawable);
+    localColorDrawable = new ColorDrawable(paramInt2);
+    addState(new int[] { 16842921 }, localColorDrawable);
   }
-  
-  public void onDrawFrame() {}
 }
 
 

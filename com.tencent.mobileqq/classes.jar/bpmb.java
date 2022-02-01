@@ -1,14 +1,39 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.1;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.2;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.3;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import mqq.os.MqqHandler;
 
 public class bpmb
-  implements Comparator<bpio>
+  implements brhk
 {
-  public bpmb(DoodleView paramDoodleView) {}
+  bpmb(bplz parambplz) {}
   
-  public int a(bpio parambpio1, bpio parambpio2)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    return parambpio2.k_() - parambpio1.k_();
+    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.3(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    if (paramPtvTemplateInfo.usable)
+    {
+      bpvy.a(paramPtvTemplateInfo).b();
+      if ((!(bplz.a(this.a) instanceof bplj)) || (((bplj)bplz.a(this.a)).e())) {
+        break label54;
+      }
+    }
+    label54:
+    do
+    {
+      return;
+      bpvy.a(paramPtvTemplateInfo).c();
+      break;
+      ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
+    } while (paramBoolean);
+    bqyg.a("", "0X80075BB", "", "", "", "");
+    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.2(this));
   }
 }
 

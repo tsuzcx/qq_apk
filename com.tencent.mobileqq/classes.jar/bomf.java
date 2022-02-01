@@ -1,54 +1,64 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView.ScrollStateListener.1;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView.ScrollStateListener.2;
 
 public class bomf
+  implements boma
 {
-  public static int a(int paramInt)
+  private bomf(AEBottomListScrollView paramAEBottomListScrollView) {}
+  
+  public void a()
   {
-    switch (paramInt)
+    if (AEBottomListScrollView.a(this.a) == null) {}
+    int i;
+    RecyclerView.ViewHolder localViewHolder;
+    do
     {
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    case 3: 
-      return 2;
-    case 4: 
-      return 5;
-    }
-    return 10;
+      return;
+      i = AEBottomListScrollView.a(this.a).b();
+      localViewHolder = this.a.a(i);
+    } while (localViewHolder == null);
+    AEBottomListScrollView.a(this.a, localViewHolder, i);
   }
   
-  public static bomd a(int paramInt, CaptureModeController paramCaptureModeController)
+  public void a(float paramFloat)
   {
-    switch (paramInt)
+    if (AEBottomListScrollView.a(this.a) == null) {}
+    int i;
+    int j;
+    do
     {
-    case 3: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    default: 
-      return new bomg(paramCaptureModeController);
-    case 1: 
-      return new bomh(paramCaptureModeController);
-    case 4: 
-      return new bomp(paramCaptureModeController);
-    case 2: 
-      return new boml(paramCaptureModeController);
-    case 5: 
-      return new boza(paramCaptureModeController);
-    case 10: 
-      return new bomo(paramCaptureModeController);
-    }
-    if ((paramCaptureModeController.a instanceof bncn)) {
-      return new bomh(paramCaptureModeController);
-    }
-    return new bomg(paramCaptureModeController);
+      return;
+      i = this.a.a();
+      j = AEBottomListScrollView.a(this.a).a();
+    } while (i == j);
+    AEBottomListScrollView.a(this.a, paramFloat, i, j, this.a.a(i), this.a.a(j));
+  }
+  
+  public void b()
+  {
+    if ((AEBottomListScrollView.a(this.a) == null) && (AEBottomListScrollView.a(this.a) == null)) {}
+    int i;
+    RecyclerView.ViewHolder localViewHolder;
+    do
+    {
+      return;
+      i = AEBottomListScrollView.a(this.a).b();
+      localViewHolder = this.a.a(i);
+    } while (localViewHolder == null);
+    AEBottomListScrollView.b(this.a, localViewHolder, i);
+    AEBottomListScrollView.c(this.a, localViewHolder, i);
+  }
+  
+  public void c()
+  {
+    this.a.post(new AEBottomListScrollView.ScrollStateListener.1(this));
+  }
+  
+  public void d()
+  {
+    this.a.post(new AEBottomListScrollView.ScrollStateListener.2(this));
   }
 }
 

@@ -1,45 +1,41 @@
-import PayMQQ.UniPayRequest;
-import PayMQQ.UniPayResponse;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bcbq
-  extends aber
+class bcbq
+  implements View.OnClickListener
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  bcbq(bcbo parambcbo, ViewGroup paramViewGroup) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
+    bcni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidViewViewGroup.getContext(), this.jdField_a_of_type_Bcbo.jdField_a_of_type_Bcgf.m);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
-      return paramToServiceMsg;
+      localJSONObject.put("project", bcjy.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("get_src", "web");
+      bcjy.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("clk_more").obj1(this.jdField_a_of_type_Bcbo.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(bcjy.a(this.jdField_a_of_type_Bcbo.jdField_a_of_type_Int)).ver3("right").ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbzx.jdField_a_of_type_Long));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    catch (RuntimeException paramToServiceMsg)
+    catch (JSONException localJSONException)
     {
-      return null;
+      for (;;)
+      {
+        QLog.e(bcbo.jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
     }
-    catch (Exception paramToServiceMsg) {}
-    return null;
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("MQQ.VipSTCheckServer.VipSTCheckObj");
-    paramUniPacket.setFuncName("mobileUniPayCheck");
-    paramUniPacket.put("stRequest", (UniPayRequest)paramToServiceMsg.extraData.getSerializable("UniPayRequest"));
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return new String[] { "VipSTCheckServer" };
   }
 }
 

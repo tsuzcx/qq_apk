@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
 public class bfcj
-  implements DialogInterface.OnClickListener
 {
-  public bfcj(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(String paramString)
   {
-    ReciteFragment.a(this.a);
+    return bigv.a(paramString);
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    return bigv.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfcj
  * JD-Core Version:    0.7.0.1
  */

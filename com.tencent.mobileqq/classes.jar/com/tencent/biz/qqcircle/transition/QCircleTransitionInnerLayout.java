@@ -44,10 +44,15 @@ public class QCircleTransitionInnerLayout
     {
       return super.dispatchTouchEvent(paramMotionEvent);
       QLog.d("QCircleTransitionInnerLayout", 1, paramMotionEvent.getAction() + ":dispatchTouchEvent mDisallowIntercept:" + true);
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      QLog.d("QCircleTransitionInnerLayout", 1, paramMotionEvent.getAction() + ":dispatchTouchEvent mDisallowIntercept:" + this.a);
-      getParent().requestDisallowInterceptTouchEvent(this.a);
+      if (getParent() != null)
+      {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        continue;
+        QLog.d("QCircleTransitionInnerLayout", 1, paramMotionEvent.getAction() + ":dispatchTouchEvent mDisallowIntercept:" + this.a);
+        if (getParent() != null) {
+          getParent().requestDisallowInterceptTouchEvent(this.a);
+        }
+      }
     }
   }
   

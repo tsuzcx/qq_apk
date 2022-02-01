@@ -1,39 +1,79 @@
-import android.os.SystemClock;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class aztd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/PlusPanelRedPointAppIdInterface;", "Lcom/tencent/mobileqq/app/BusinessInfoCheckUpdateItem$DynamicRedPointPathInterface;", "()V", "getAioPanelRedDotIds", "", "", "getRedPointPaths", "appInterface", "Lcom/tencent/common/app/AppInterface;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aztd
+  implements anuh
 {
-  public long a;
-  private int[] a;
-  
-  public aztd()
+  private final List<String> a()
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 500, 700, 1000, 1500, 2100, 2800, 3500, 4200, 4800, 5000 };
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    Set localSet = (Set)new HashSet();
+    Object localObject2;
+    int i;
+    try
     {
-      if (paramInt < this.jdField_a_of_type_ArrayOfInt[i]) {
-        return i;
+      Object localObject1 = azte.a(false);
+      if (localObject1 != null)
+      {
+        localObject2 = (Iterable)localObject1;
+        localObject1 = (Collection)new ArrayList();
+        localObject2 = ((Iterable)localObject2).iterator();
+        for (;;)
+        {
+          if (!((Iterator)localObject2).hasNext()) {
+            break label140;
+          }
+          Object localObject3 = ((Iterator)localObject2).next();
+          String str = ((TroopAIOAppInfo)localObject3).redDotID;
+          Intrinsics.checkExpressionValueIsNotNull(str, "it.redDotID");
+          if (Integer.parseInt(str) <= 0) {
+            break;
+          }
+          i = 1;
+          if (i != 0) {
+            ((Collection)localObject1).add(localObject3);
+          }
+        }
       }
-      i += 1;
+      return (List)new ArrayList((Collection)localSet);
     }
-    return 1;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("PlusPanelRedPointAppIdInterface", 1, localThrowable, new Object[0]);
+    }
+    for (;;)
+    {
+      i = 0;
+      break;
+      label140:
+      Iterator localIterator = ((Iterable)localThrowable).iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = ((TroopAIOAppInfo)localIterator.next()).redDotID;
+        Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.redDotID");
+        localSet.add(localObject2);
+      }
+    }
   }
   
-  public boolean a()
+  @NotNull
+  public List<String> a(@NotNull AppInterface paramAppInterface)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    Intrinsics.checkParameterIsNotNull(paramAppInterface, "appInterface");
+    if (QLog.isColorLevel()) {
+      QLog.d("PlusPanelRedPointAppIdInterface", 2, "getRedPointPaths");
     }
-    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= 75L)
-    {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      return true;
-    }
-    return false;
+    return a();
   }
 }
 

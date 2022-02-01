@@ -1,14 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-class pli
-  implements riz<DynamicChannelDataModel>
+public class pli
 {
-  pli(plh paramplh, long paramLong) {}
-  
-  public boolean a(DynamicChannelDataModel paramDynamicChannelDataModel)
-  {
-    return paramDynamicChannelDataModel.recommendSeq > this.jdField_a_of_type_Long;
-  }
+  public int a;
+  public AdvertisementInfo a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

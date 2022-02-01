@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bnsz
-  implements View.OnClickListener
+public class bnsz
 {
-  bnsz(bnss parambnss) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public bnsz(String paramString1, String paramString2, String paramString3)
   {
-    bnss.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

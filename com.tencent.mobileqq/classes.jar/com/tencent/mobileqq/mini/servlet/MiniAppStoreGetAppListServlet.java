@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import avnn;
-import bguc;
+import awfy;
+import bhuf;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import mqq.app.Packet;
 import org.json.JSONArray;
@@ -23,7 +23,7 @@ public class MiniAppStoreGetAppListServlet
   {
     MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
     localStGetFirstPageByTypeRsp.mergeFrom(paramArrayOfByte);
-    paramBundle.putString("data", avnn.a(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
+    paramBundle.putString("data", awfy.a(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
     notifyObserver(paramIntent, 1022, true, paramBundle, MiniAppObserver.class);
   }
   
@@ -35,7 +35,7 @@ public class MiniAppStoreGetAppListServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.store_app_client.GetFirstPageByType");
-    paramPacket.putSendData(bguc.a(arrayOfByte1));
+    paramPacket.putSendData(bhuf.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

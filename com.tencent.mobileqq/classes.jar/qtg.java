@@ -1,28 +1,7 @@
-import android.content.Context;
+import kotlin.Metadata;
 
-public class qtg
-  extends qqt
-{
-  public qtg(Context paramContext, aobu paramaobu, snh paramsnh)
-  {
-    super(paramContext, paramaobu, paramsnh);
-  }
-  
-  public qqt a()
-  {
-    return this;
-  }
-  
-  public qqt d()
-  {
-    return this;
-  }
-  
-  public qqt e()
-  {
-    return null;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qtg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,40 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class ykj
-  extends zoo<ykm>
 {
-  private LruCache<ykm, Drawable> a = new ykk(this, 5242880);
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public boolean b = true;
   
-  public LruCache<ykm, Drawable> a()
+  public ykj(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
   
-  public zop a(ImageView paramImageView, ykm paramykm)
+  public boolean equals(Object paramObject)
   {
-    return new ykn(paramImageView, paramykm);
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-  }
-  
-  public void b()
-  {
-    super.b();
-    try
-    {
-      this.a.evictAll();
-      return;
+    if ((paramObject instanceof ykj)) {
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((ykj)paramObject).jdField_a_of_type_JavaLangString);
     }
-    catch (Exception localException)
-    {
-      this.a = new ykl(this, 5242880);
-    }
+    return false;
   }
 }
 

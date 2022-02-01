@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqcircle.widgets.QCircleBaseVideoView;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudMeta.StVideo;
 
-public class aaao
-  implements View.OnClickListener
+class aaao
+  implements vqj
 {
-  public aaao(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  aaao(aaan paramaaan, FeedCloudMeta.StVideo paramStVideo) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong, String paramString)
   {
-    FollowedRecommendBannerView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!VSNetworkHelper.a((int)paramLong)) {
+      this.jdField_a_of_type_Aaan.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo.fileId.get(), QCircleBaseVideoView.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo.duration.get());
+    }
+  }
+  
+  public void a(FeedCloudMeta.StVideo paramStVideo, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Aaan.a(paramStVideo.fileId.get(), QCircleBaseVideoView.a(paramStVideo), paramStVideo.duration.get());
   }
 }
 

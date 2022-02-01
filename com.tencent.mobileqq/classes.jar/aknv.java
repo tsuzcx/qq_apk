@@ -1,16 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class aknv
   implements DialogInterface.OnClickListener
 {
-  public aknv(SendHbActivity paramSendHbActivity) {}
+  public aknv(BindNumberActivity paramBindNumberActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    SendHbActivity.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.setText("");
+    }
   }
 }
 

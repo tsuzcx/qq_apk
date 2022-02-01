@@ -1,39 +1,16 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class balj
-  extends Handler
+public class balj
+  implements Animation.AnimationListener
 {
-  public balj(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public void a(Animation paramAnimation, float paramFloat) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    baln.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      baln.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
-    }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    baln.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

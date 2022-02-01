@@ -1,10 +1,11 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
-import bctj;
+import bdmc;
 import com.google.gson.Gson;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
-import upe;
+import uqf;
 
 class WSStatisticsReporter$1
   implements Runnable
@@ -20,9 +21,16 @@ class WSStatisticsReporter$1
     WSStatisticsReporter.access$500(this.this$0).setExtendInfo(str);
     WSStatisticsReporter.access$900(this.this$0).putAll(WSStatisticsReporter.Builder.access$800(WSStatisticsReporter.access$600(this.this$0)));
     WSStatisticsReporter.access$900(this.this$0).putAll(WSStatisticsReporter.access$500(this.this$0).getBaseParams());
-    bctj.a(BaseApplication.getContext()).a(null, WSStatisticsReporter.access$1000(this.this$0), true, 0L, 0L, WSStatisticsReporter.access$900(this.this$0), "", WSStatisticsReporter.access$1100(this.this$0), WSStatisticsReporter.access$1200(this.this$0));
-    WSStatisticsReporter.access$1300(this.this$0);
-    upe.b("WSStatisticsReporter", "event report: " + WSStatisticsReporter.access$1000(this.this$0) + ", position: " + (String)WSStatisticsReporter.access$900(this.this$0).get("position") + ", isImmediately: " + WSStatisticsReporter.access$1200(this.this$0) + ",params:" + WSStatisticsReporter.access$900(this.this$0).toString() + " isFlush: " + WSStatisticsReporter.access$1100(this.this$0));
+    if (WSStatisticsReporter.access$1000(this.this$0)) {
+      UserAction.onUserAction(WSStatisticsReporter.access$1100(this.this$0), true, -1L, -1L, WSStatisticsReporter.access$900(this.this$0), true);
+    }
+    for (;;)
+    {
+      WSStatisticsReporter.access$1300(this.this$0);
+      uqf.b("WSStatisticsReporter", "event report: " + WSStatisticsReporter.access$1100(this.this$0) + ", position: " + (String)WSStatisticsReporter.access$900(this.this$0).get("position") + ", isImmediately: " + WSStatisticsReporter.access$1000(this.this$0) + ",params:" + WSStatisticsReporter.access$900(this.this$0).toString() + " isFlush: " + WSStatisticsReporter.access$1200(this.this$0));
+      return;
+      bdmc.a(BaseApplication.getContext()).a(null, WSStatisticsReporter.access$1100(this.this$0), true, 0L, 0L, WSStatisticsReporter.access$900(this.this$0), "", WSStatisticsReporter.access$1200(this.this$0));
+    }
   }
 }
 

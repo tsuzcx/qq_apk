@@ -1,17 +1,42 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
 
 class ahbh
-  extends ahbl
+  implements bliz
 {
-  ahbh(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  ahbh(ahbe paramahbe, MessageForPic paramMessageForPic, blir paramblir) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new ahnf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    switch (paramInt)
+    {
+    }
+    label144:
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_Ahbe.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+      if ((paramView != null) && ((paramView instanceof berp)))
+      {
+        paramView = (berp)paramView;
+        if ((paramView.c()) && (paramView.d()))
+        {
+          paramInt = 1;
+          this.jdField_a_of_type_Ahbe.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
+        }
+      }
+      for (;;)
+      {
+        if (paramInt != 0) {
+          break label144;
+        }
+        this.jdField_a_of_type_Ahbe.e(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        break;
+        paramInt = 0;
+      }
+    }
   }
 }
 

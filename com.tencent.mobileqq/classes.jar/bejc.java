@@ -1,31 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
 
 public class bejc
-  implements View.OnClickListener
 {
-  public bejc(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopAvatarWallPreviewActivity.e(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.f(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.g(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.h(this.a);
-    }
-  }
+  public Drawable a;
+  public String a;
+  public int[] a;
+  public String b;
 }
 
 

@@ -1,12 +1,6 @@
-import android.view.animation.Interpolator;
-
-public class bhwv
-  implements Interpolator
+public abstract interface bhwv
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(1.0D - Math.pow(1.0F - paramFloat, 4.0D));
-  }
+  public abstract void a(bhws parambhws);
 }
 
 

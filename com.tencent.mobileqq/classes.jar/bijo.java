@@ -1,47 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Parcelable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.model.AppInfo;
+import android.os.Looper;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.Locale;
 
 public class bijo
-  extends biyb
+  implements bijt
 {
-  public bijo(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  public bijo(RegisterLHAssistant.2 param2) {}
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityControlAppDetailsActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    if (QLog.isDevelopLevel()) {
+      QLog.i(bijm.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = anni.a(2131699613) + AuthorityControlAppDetailsFragment.a(this.a).b() + anni.a(2131699611);
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 2, (CharSequence)localObject, 0).a();
-      localObject = new Intent();
-      if ((paramList != null) && (paramList.size() == 1))
-      {
-        ((Intent)localObject).putExtra("KEY_DELETED_INFO", (Parcelable)paramList.get(0));
-        AuthorityControlAppDetailsFragment.a(this.a).setResult(-1, (Intent)localObject);
-      }
-      AuthorityControlAppDetailsFragment.a(this.a).finish();
-      localObject = AuthorityControlAppDetailsFragment.a(this.a);
-      if (!paramBoolean) {
-        break label236;
-      }
-    }
-    label236:
-    for (paramList = "0";; paramList = "1")
-    {
-      bcst.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009E1C", "0X8009E1C", 0, 0, paramList, "", String.valueOf(AuthorityControlAppDetailsFragment.a(this.a).a()), "");
-      return;
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 1, anni.a(2131699612), 0).a();
-      break;
+    bijm.a(this.a.this$0, paramBoolean);
+    if ((bijm.a(this.a.this$0)) && (bijm.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (bijm.a(this.a.this$0).getVisibility() == 8)) {
+      this.a.this$0.b(true);
     }
   }
 }

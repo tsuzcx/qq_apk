@@ -1,17 +1,41 @@
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+
 public class bhji
+  implements DownloadParams.DecodeHandler
 {
-  public String a;
-  public String b;
+  private DownloadParams.DecodeHandler a;
+  private DownloadParams.DecodeHandler b;
   
-  public bhji(String paramString1, String paramString2)
+  public bhji(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.a = paramDecodeHandler1;
+    this.b = paramDecodeHandler2;
   }
   
-  public String toString()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
+    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
+    DownloadParams localDownloadParams = null;
+    if (localBitmap != null)
+    {
+      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
+      localDownloadParams = paramDownloadParams;
+      if (localBitmap != paramDownloadParams)
+      {
+        localDownloadParams = paramDownloadParams;
+        if (localBitmap != paramBitmap)
+        {
+          localBitmap.recycle();
+          localDownloadParams = paramDownloadParams;
+        }
+      }
+    }
+    if (localDownloadParams != null) {
+      paramBitmap = localDownloadParams;
+    }
+    return paramBitmap;
   }
 }
 

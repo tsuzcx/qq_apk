@@ -1,227 +1,47 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.1;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-@TargetApi(16)
 public class boos
-  extends bojn
+  extends bojt
 {
-  private static File jdField_a_of_type_JavaIoFile = new File(bosu.a(), "information_paster");
-  private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public boow a;
-  private WeakReference<RelativeLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentLinkedQueue<bpnf> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boos()
+  public boos(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_Boow = null;
-    this.jdField_a_of_type_Boow = new boow(this);
+    super(paramViewStub);
   }
   
-  public static String a()
+  protected void a(View paramView)
   {
-    return jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366228);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366230));
   }
   
-  public static String a(bpnf parambpnf)
+  public void b()
   {
-    parambpnf = parambpnf.g + "_" + parambpnf.f + ".zip";
-    return new File(jdField_a_of_type_JavaIoFile, parambpnf).getPath();
-  }
-  
-  public static String b(bpnf parambpnf)
-  {
-    return jdField_a_of_type_JavaLangString + parambpnf.g + "_" + parambpnf.f + File.separator + parambpnf.g;
-  }
-  
-  private boolean d(bpnf parambpnf)
-  {
-    if (jdField_a_of_type_JavaIoFile != null)
-    {
-      int i;
-      boolean bool1;
-      label44:
-      String str;
-      if (!jdField_a_of_type_JavaIoFile.exists())
-      {
-        jdField_a_of_type_JavaIoFile.mkdirs();
-        String[] arrayOfString = jdField_a_of_type_JavaIoFile.list();
-        if (arrayOfString == null) {
-          break label229;
-        }
-        int j = arrayOfString.length;
-        i = 0;
-        bool1 = false;
-        bool2 = bool1;
-        if (i >= j) {
-          break label232;
-        }
-        str = arrayOfString[i];
-        bool2 = bool1;
-        if (str.startsWith(parambpnf.g))
-        {
-          if (!str.endsWith(".zip")) {
-            break label151;
-          }
-          bgmg.a(jdField_a_of_type_JavaIoFile + str, false);
-          bool2 = bool1;
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        bool1 = bool2;
-        break label44;
-        if (jdField_a_of_type_JavaIoFile.isDirectory()) {
-          break;
-        }
-        jdField_a_of_type_JavaIoFile.delete();
-        jdField_a_of_type_JavaIoFile.mkdirs();
-        break;
-        label151:
-        if (str.endsWith(parambpnf.f))
-        {
-          bool2 = true;
-        }
-        else
-        {
-          bool2 = bool1;
-          if (!str.endsWith("png"))
-          {
-            bool2 = bool1;
-            if (!str.endsWith("tmp"))
-            {
-              bgmg.a(jdField_a_of_type_JavaLangString + str, false);
-              bool2 = bool1;
-            }
-          }
-        }
-      }
-      label229:
-      boolean bool2 = false;
-      label232:
-      return bool2;
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  }
-  
-  public void a(bpnf parambpnf, boov paramboov)
-  {
-    if (!bgnt.g(this.jdField_a_of_type_AndroidContentContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
-      }
-      return;
-    }
-    ThreadManager.postImmediately(new QIMInformationPasterManager.1(this, parambpnf, paramboov), null, true);
-  }
-  
-  public void a(DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    paramDoodleEmojiItem = paramDoodleEmojiItem.mInfoItemList.iterator();
-    while (paramDoodleEmojiItem.hasNext())
-    {
-      bpnf localbpnf = (bpnf)paramDoodleEmojiItem.next();
-      if ((localbpnf.b == 1) && (!a(localbpnf))) {
-        a(localbpnf, new boou(this));
-      }
-    }
-  }
-  
-  public void a(List<bpnf> paramList)
-  {
-    ThreadManager.postImmediately(new QIMInformationPasterManager.2(this, paramList), null, true);
-  }
-  
-  public boolean a(bpnf parambpnf)
-  {
-    if (TextUtils.isEmpty(parambpnf.e)) {
-      if (parambpnf.a != 7) {}
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          return true;
-        } while (!d(parambpnf));
-        localObject = b(parambpnf);
-        if (QLog.isColorLevel()) {
-          QLog.d("QIMInformationPasterManager", 2, "checkDir:" + (String)localObject);
-        }
-        localObject = new File((String)localObject);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      localObject = ((File)localObject).list();
-    } while ((localObject == null) || (localObject.length != bpng.a(parambpnf)));
-    return true;
-  }
-  
-  public void b() {}
-  
-  public boolean b(bpnf parambpnf)
-  {
-    return this.jdField_a_of_type_Boow.a(parambpnf.e);
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692285);
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if (a())
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localRelativeLayout != null)
-      {
-        localRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  public boolean c(bpnf parambpnf)
+  public void d()
   {
-    boolean bool = false;
-    try
-    {
-      File localFile = new File(jdField_a_of_type_JavaLangString + parambpnf.g + "_" + parambpnf.f);
-      if (!localFile.exists()) {
-        localFile.mkdir();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "unzipDir:" + localFile.getAbsolutePath());
-      }
-      nmk.a(new File(a(parambpnf)), localFile.getAbsolutePath() + File.separator);
-      bool = true;
+    if (!a()) {
+      return;
     }
-    catch (Exception parambpnf)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIMInformationPasterManager", 2, parambpnf, new Object[0]);
-    }
-    return bool;
-    return false;
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

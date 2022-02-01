@@ -1,6 +1,6 @@
 package cooperation.ilive;
 
-import akws;
+import alih;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,21 +16,22 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import azwq;
-import bhak;
-import bldv;
-import bldw;
-import bldy;
-import bldz;
-import blec;
-import bler;
-import bles;
-import blet;
-import bleu;
-import blev;
-import blew;
+import bapg;
+import biaq;
+import bmey;
+import bmez;
+import bmfb;
+import bmfc;
+import bmff;
+import bmfu;
+import bmfv;
+import bmfw;
+import bmfx;
+import bmfy;
+import bmfz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivityForTool;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -44,18 +45,21 @@ import cooperation.ilive.share.IliveShareHelper;
 import eipc.EIPCClient;
 import java.util.HashMap;
 import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class IliveLaunchFragment
   extends PublicBaseFragment
-  implements bldv, blew, IlivePluginCallback
+  implements bmey, bmfz, IlivePluginCallback
 {
   private static final String TAG = "IliveLaunchActivity";
   private boolean isPreloadModel;
+  private IliveShareHelper mIliveShareHelper;
   private volatile boolean mIsPluginFileExist;
   private volatile boolean mIsSoLoadSuccess;
   private ProgressBar mLoadingProgressBar;
   private TextView mLoadingText;
   private FrameLayout mParentLayout;
+  private long mStartTimeMillis;
   
   private void cancelPreDownload()
   {
@@ -64,24 +68,24 @@ public class IliveLaunchFragment
   
   private void cancelPreload()
   {
-    if (blev.a)
+    if (bmfy.a)
     {
       QLog.i("IliveLaunchActivity", 1, "preload cancle", new Throwable());
-      blev.a = false;
-      blev.a();
+      bmfy.a = false;
+      bmfy.a();
     }
   }
   
   private void downloadPlugin()
   {
-    bles.a().b("PLUGIN_DOWNLOAD");
+    bmfv.a().b("PLUGIN_DOWNLOAD");
     cancelPreDownload();
-    bldz.a().c();
+    bmfc.a().c();
   }
   
   private void initData()
   {
-    blet.a("IliveLaunch initData");
+    bmfw.a("IliveLaunch initData");
     if (getActivity() == null) {}
     Object localObject1;
     Object localObject2;
@@ -103,7 +107,7 @@ public class IliveLaunchFragment
       if (i != 1) {
         break label138;
       }
-      bles.a().b("ANCHOR_ENTER_ROOM");
+      bmfv.a().b("ANCHOR_ENTER_ROOM");
     }
     for (;;)
     {
@@ -111,12 +115,12 @@ public class IliveLaunchFragment
       localObject2 = new HashMap();
       ((HashMap)localObject2).put("source", localObject1);
       ((HashMap)localObject2).put("process_start_time", String.valueOf(l));
-      bhak.a("launcher", (Map)localObject2, l);
-      blet.b("IliveLaunch initData");
+      biaq.a("launcher", (Map)localObject2, l);
+      bmfw.b("IliveLaunch initData");
       return;
       label138:
       if (i == 3) {
-        bles.a().b("WATCH_ENTER_ROOM");
+        bmfv.a().b("WATCH_ENTER_ROOM");
       }
     }
   }
@@ -127,7 +131,7 @@ public class IliveLaunchFragment
     {
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        if ((Build.VERSION.SDK_INT >= 21) && (!akws.d()))
+        if ((Build.VERSION.SDK_INT >= 21) && (!alih.d()))
         {
           paramActivity.getWindow().clearFlags(67108864);
           paramActivity.getWindow().addFlags(-2147483648);
@@ -146,14 +150,24 @@ public class IliveLaunchFragment
   
   private void initVideoSDK()
   {
-    blet.a("IliveLaunch initVideoSDK");
+    bmfw.a("IliveLaunch initVideoSDK");
     long l = System.currentTimeMillis();
-    this.mIsSoLoadSuccess = azwq.b();
+    this.mIsSoLoadSuccess = bapg.b();
     if (!this.mIsSoLoadSuccess)
     {
-      azwq.a();
-      LoadSoUtil.loadSo(new bldw(this, l));
+      bapg.a();
+      LoadSoUtil.loadSo(new bmez(this, l));
     }
+  }
+  
+  private void preloadEnd()
+  {
+    QLog.i("IliveLaunchActivity", 1, "preload end");
+    bmfy.a = false;
+    bmfy.a();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.mStartTimeMillis;
+    ThreadManager.getFileThreadHandler().post(new IliveLaunchFragment.8(this, l1 - l2));
   }
   
   private void runOnUiThread(Runnable paramRunnable)
@@ -166,12 +180,19 @@ public class IliveLaunchFragment
   
   private void showLoadingUI()
   {
-    runOnUiThread(new IliveLaunchFragment.5(this));
+    runOnUiThread(new IliveLaunchFragment.6(this));
+  }
+  
+  private void startPreloadRecord()
+  {
+    this.isPreloadModel = true;
+    this.mStartTimeMillis = System.currentTimeMillis();
+    ThreadManager.getFileThreadHandler().post(new IliveLaunchFragment.4(this));
   }
   
   public static void startSelf(Context paramContext, Intent paramIntent)
   {
-    if (!bleu.b()) {
+    if (!bmfx.b()) {
       ThreadManagerV2.getUIHandlerV2().post(new IliveLaunchFragment.1());
     }
     Intent localIntent;
@@ -182,8 +203,8 @@ public class IliveLaunchFragment
       if (paramIntent == null) {
         localIntent = new Intent();
       }
-    } while (!bleu.a(localIntent.getBooleanExtra("KEY_IS_START_LIVE", false)));
-    if (!bleu.a(500))
+    } while (!bmfx.a(localIntent.getBooleanExtra("KEY_IS_START_LIVE", false)));
+    if (!bmfx.a(500))
     {
       QLog.e("IliveLaunchActivity", 1, "startSelf isClickEnable = false");
       return;
@@ -200,7 +221,7 @@ public class IliveLaunchFragment
     {
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        if ((Build.VERSION.SDK_INT >= 21) && (!akws.d()))
+        if ((Build.VERSION.SDK_INT >= 21) && (!alih.d()))
         {
           paramActivity.getWindow().clearFlags(67108864);
           paramActivity.getWindow().addFlags(-2147483648);
@@ -220,9 +241,9 @@ public class IliveLaunchFragment
   public void doLoading(boolean paramBoolean, Context paramContext)
   {
     int i = 0;
-    blet.a("IliveLaunch doLoading");
+    bmfw.a("IliveLaunch doLoading");
     if (paramBoolean) {
-      this.isPreloadModel = true;
+      startPreloadRecord();
     }
     IliveAppInterface.a();
     Bundle localBundle = getArguments();
@@ -230,19 +251,19 @@ public class IliveLaunchFragment
       i = localBundle.getInt("source", 0);
     }
     IlivePluginManager.getInstance().refreshToken(i);
-    blev.b = true;
+    bmfy.b = true;
     initVideoSDK();
     IlivePluginManager.getInstance().setIlivePluginCallback(this);
-    QLog.i("IliveLaunchActivity", 1, "doLoading isPreload = " + paramBoolean + " sPreload = " + blev.a);
-    if ((!paramBoolean) && (blev.a))
+    QLog.i("IliveLaunchActivity", 1, "doLoading isPreload = " + paramBoolean + " sPreload = " + bmfy.a);
+    if ((!paramBoolean) && (bmfy.a))
     {
       QLog.i("IliveLaunchActivity", 1, "wait fo preload");
-      blev.a(this);
+      bmfy.a(this);
       showLoadingUI();
       return;
     }
     ThreadManagerV2.executeOnSubThread(new IliveLaunchFragment.3(this, paramContext, paramBoolean));
-    blet.b("IliveLaunch doLoading");
+    bmfw.b("IliveLaunch doLoading");
   }
   
   public void enterPlugin(Context paramContext, Intent paramIntent)
@@ -261,21 +282,21 @@ public class IliveLaunchFragment
     if (paramIntent != null) {
       paramIntent.putExtra("KEY_EXTRAS", paramIntent.getBundleExtra("KEY_EXTRAS"));
     }
-    bles.a().b("PLUGIN_LOAD");
-    String str = "com.tencent.ilivesdk.demo.LauncherActivity";
-    if (blev.a)
+    bmfv.a().b("PLUGIN_LOAD");
+    paramContext = "com.tencent.ilivesdk.demo.LauncherActivity";
+    if (bmfy.a)
     {
       QLog.i("IliveLaunchActivity", 1, "preload shadow");
-      str = "preload";
+      paramContext = "preload";
     }
-    blec.a(paramContext, paramIntent, str, new bldy(this));
+    bmff.a(BaseApplicationImpl.getContext(), paramIntent, paramContext, new bmfb(this));
   }
   
   protected void finalize()
   {
     if (this.isPreloadModel)
     {
-      blev.a = false;
+      bmfy.a = false;
       QLog.e("IliveLaunchActivity", 1, "finalize and reset  sIsPrelad");
     }
     super.finalize();
@@ -285,7 +306,7 @@ public class IliveLaunchFragment
   {
     paramLayoutInflater = null;
     QLog.e("IliveLaunchActivity", 1, "onCreateView");
-    blet.a("IliveLaunch totalLaunch");
+    bmfw.a("IliveLaunch totalLaunch");
     paramViewGroup = getActivity();
     if (paramViewGroup == null) {}
     for (;;)
@@ -299,17 +320,18 @@ public class IliveLaunchFragment
       }
       ThreadManagerV2.executeOnSubThread(new IliveLaunchFragment.2(this));
       initTransparentStateBar(paramViewGroup);
-      blet.a("IliveLaunchActivity");
+      bmfw.a("IliveLaunchActivity");
       if (paramViewGroup.getIntent().getIntExtra("share", 0) == 1)
       {
-        new IliveShareHelper(paramViewGroup, paramViewGroup.getIntent().getExtras()).showActionSheet();
+        this.mIliveShareHelper = new IliveShareHelper(paramViewGroup, paramViewGroup.getIntent().getExtras());
+        this.mIliveShareHelper.showActionSheet();
       }
       else
       {
-        bles.a().b("PLUGIN_ENTER_TOTAL_TIME");
+        bmfv.a().b("PLUGIN_ENTER_TOTAL_TIME");
         this.mParentLayout = new FrameLayout(paramViewGroup);
         doLoading(false, getActivity());
-        blet.b("IliveLaunchActivity");
+        bmfw.b("IliveLaunchActivity");
         paramLayoutInflater = this.mParentLayout;
       }
     }
@@ -317,9 +339,12 @@ public class IliveLaunchFragment
   
   public void onDestroyView()
   {
-    bldz.a().a(null);
-    bldz.a().a();
+    bmfc.a().a(null);
+    bmfc.a().a();
     IlivePluginManager.getInstance().onDestory();
+    if (this.mIliveShareHelper != null) {
+      this.mIliveShareHelper.onDestroy();
+    }
     super.onDestroyView();
   }
   
@@ -333,17 +358,17 @@ public class IliveLaunchFragment
     paramString = new HashMap();
     paramString.put("status", "fail");
     paramString.put("errorCode", paramInt + str);
-    bles.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", paramString);
+    bmfv.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", paramString);
     QLog.e("IliveLaunchActivity", 1, "onFail code = " + paramInt + " msg = " + str);
-    runOnUiThread(new IliveLaunchFragment.8(this, paramInt, str));
+    runOnUiThread(new IliveLaunchFragment.10(this, paramInt, str));
   }
   
   public void onPluginActivityCreate()
   {
-    blet.b("IliveLaunch onPluginLaunch");
+    bmfw.b("IliveLaunch onPluginLaunch");
     QLog.e("IliveLaunchActivity", 1, "onPluginActivityCreate");
-    bles.a().a("PLUGIN_ENTER_TOTAL_TIME").a("ilive_plugin_launch_total_time");
-    blet.b("IliveLaunch totalLaunch");
+    bmfv.a().a("PLUGIN_ENTER_TOTAL_TIME").a("ilive_plugin_launch_total_time");
+    bmfw.b("IliveLaunch totalLaunch");
     if (getActivity() != null) {
       getActivity().finish();
     }
@@ -359,7 +384,7 @@ public class IliveLaunchFragment
     {
       cancelPreload();
       QLog.e("IliveLaunchActivity", 1, "onPluginLoginFail code = " + paramInt + " msg = " + str);
-      runOnUiThread(new IliveLaunchFragment.11(this, paramInt));
+      runOnUiThread(new IliveLaunchFragment.13(this, paramInt));
       return;
     }
     catch (Throwable paramString)
@@ -374,14 +399,14 @@ public class IliveLaunchFragment
     if (IlivePluginManager.sIsFastStart) {
       return;
     }
-    runOnUiThread(new IliveLaunchFragment.9(this));
+    runOnUiThread(new IliveLaunchFragment.11(this));
   }
   
   public void onPluginLoginSuccess()
   {
     QLog.e("IliveLaunchActivity", 1, "onPluginLoginSuccess login success");
-    blet.a("IliveLaunch onPluginLaunch");
-    runOnUiThread(new IliveLaunchFragment.10(this));
+    bmfw.a("IliveLaunch onPluginLaunch");
+    runOnUiThread(new IliveLaunchFragment.12(this));
   }
   
   public void onPreloadEnd()
@@ -396,30 +421,30 @@ public class IliveLaunchFragment
   
   public void onProgress(float paramFloat)
   {
-    runOnUiThread(new IliveLaunchFragment.7(this, paramFloat));
+    runOnUiThread(new IliveLaunchFragment.9(this, paramFloat));
   }
   
   public void onSuccess()
   {
-    QLog.e("IliveLaunchActivity", 1, "shadow onSuccess sPreload = " + blev.a);
+    QLog.e("IliveLaunchActivity", 1, "shadow onSuccess sPreload = " + bmfy.a);
     HashMap localHashMap = new HashMap();
     localHashMap.put("status", "success");
-    bles.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", localHashMap);
-    if (!bldz.a().b())
+    bmfv.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", localHashMap);
+    if (!bmfc.a().b())
     {
       onFail(101, "download success but local apk file is not exist");
       return;
     }
-    blet.a("enterPlugin");
+    bmfw.a("enterPlugin");
     this.mIsPluginFileExist = true;
     if (getActivity() != null) {
       enterPlugin(getActivity(), getActivity().getIntent());
     }
     for (;;)
     {
-      blet.b("enterPlugin");
+      bmfw.b("enterPlugin");
       return;
-      if (blev.a) {
+      if (bmfy.a) {
         enterPlugin(BaseApplicationImpl.getContext(), new Intent());
       }
     }

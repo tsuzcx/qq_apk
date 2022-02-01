@@ -1,8 +1,22 @@
-public abstract interface akyf
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+
+public class akyf
+  extends beyr
 {
-  public abstract void a(int paramInt);
+  public akyf(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public abstract void b(int paramInt);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+    this.a.b();
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    super.onLoadSuccessed(paramURLDrawable);
+    this.a.d();
+  }
 }
 
 

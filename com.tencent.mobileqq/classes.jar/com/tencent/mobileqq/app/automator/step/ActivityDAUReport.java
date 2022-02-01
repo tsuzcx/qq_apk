@@ -124,7 +124,7 @@ public class ActivityDAUReport
     //   265: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   268: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   271: invokestatic 157	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   274: invokestatic 162	bctj:a	(Landroid/content/Context;)Lbctj;
+    //   274: invokestatic 162	bdmc:a	(Landroid/content/Context;)Lbdmc;
     //   277: aconst_null
     //   278: ldc 164
     //   280: iconst_1
@@ -135,7 +135,7 @@ public class ActivityDAUReport
     //   289: getfield 136	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   292: aload 6
     //   294: aconst_null
-    //   295: invokevirtual 167	bctj:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   295: invokevirtual 167	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   298: goto -253 -> 45
     //   301: astore_2
     //   302: ldc 36

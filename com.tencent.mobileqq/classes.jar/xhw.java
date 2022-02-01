@@ -1,21 +1,10 @@
-import java.io.File;
-
-final class xhw
-  implements wgi
+public class xhw
+  extends xhu
 {
-  xhw(File paramFile, String paramString) {}
-  
-  public void a(wgg paramwgg)
-  {
-    String str = paramwgg.b;
-    if (str != null)
-    {
-      if ((paramwgg.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!wgw.a(this.jdField_a_of_type_JavaIoFile))) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-      xht.a(new xhz(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
-    }
-  }
+  public String a;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

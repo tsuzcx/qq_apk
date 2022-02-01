@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.aioapp.data;
 
-import bend;
+import bfmb;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -25,7 +25,7 @@ public class GrayGroupAppEntity
   public void postRead()
   {
     super.postRead();
-    Object localObject = bend.a(this.troopAIOAppInfosData);
+    Object localObject = bfmb.a(this.troopAIOAppInfosData);
     if (localObject != null) {}
     try
     {
@@ -42,7 +42,7 @@ public class GrayGroupAppEntity
   public void prewrite()
   {
     super.prewrite();
-    this.troopAIOAppInfosData = bend.a(this.troopAIOAppInfos);
+    this.troopAIOAppInfosData = bfmb.a(this.troopAIOAppInfos);
   }
 }
 

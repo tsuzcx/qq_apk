@@ -1,178 +1,67 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bblu
-  extends bbmu
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public final int a;
+  public final long a;
+  private List<bbku> a;
+  private int b;
+  public final long b;
+  private int c;
   
-  public bblu(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo)
+  public bblu(int paramInt, long paramLong1, long paramLong2)
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = paramTroopMemberInfo;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
   private void a()
   {
-    switch (this.jdField_a_of_type_Int)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bbku)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  private void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bbku)localIterator.next()).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public int a(float paramFloat)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i >= 6)
     {
-    default: 
-      return;
-    case 2: 
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick;
-      this.c = bbup.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin });
-      return;
-    case 3: 
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark;
-      this.c = bbup.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin });
-      return;
-    case 1: 
-      this.jdField_b_of_type_JavaLangString = bbup.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark });
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-      {
-        this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick;
-        return;
+      bbku localbbku1 = (bbku)this.jdField_a_of_type_JavaUtilList.get(0);
+      bbku localbbku2 = (bbku)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      float f = (float)(localbbku2.b() - localbbku1.b()) * 1000.0F / (i - 1);
+      paramFloat = (float)(Math.abs(localbbku2.a()) - Math.abs(localbbku1.a())) / ((i - 1) * paramFloat);
+      f = 1.1F * f;
+      if (f < paramFloat) {
+        return 1;
       }
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick;
-      this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-      return;
+      i = (int)Math.floor(f / (f - paramFloat));
+      yuk.a("FlowEdit_VideoFlowDecodeTask", "averageDecodeTime = %.1f us, averagePlayTime = %.1f us, dropRate = %d", Float.valueOf(f), Float.valueOf(paramFloat), Integer.valueOf(i));
+      return Math.min(8, i);
     }
-    this.jdField_b_of_type_JavaLangString = bbup.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick });
-    this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  protected long a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    long l = bbup.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, bbgl.g);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 2;
-    }
-    l = bbup.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark, bbgl.k);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 3;
-    }
-    l = bbup.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, bbgl.l);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 1;
-    }
-    l = bbup.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, bbgl.o, false);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 0;
-    }
-    if (this.jdField_a_of_type_Long != -9223372036854775808L)
-    {
-      this.jdField_a_of_type_Long += bbgl.z;
-      a();
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    if (bbup.a(this.jdField_b_of_type_Int))
-    {
-      aldk.a = true;
-      aldk.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin, 1000, c(), false);
-      bbup.a(this.jdField_a_of_type_JavaLangString, 20, 1, paramView);
-      bbup.a(this.jdField_a_of_type_JavaLangString, 20, paramView, false);
-      bbup.a(this, paramView);
-      if (SearchConfigManager.needSeparate) {
-        bbup.a("search", "contact", "contacts", 0, 0, new String[] { bbup.a(this.jdField_b_of_type_Int) });
-      }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        bbup.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
-          bbrf.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
-        }
-      }
-      else {
-        return;
-      }
-      bbrf.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
-      return;
-    }
-    bbup.a(paramView, this);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  public int c()
-  {
     return 1;
   }
   
-  public CharSequence c()
+  public String toString()
   {
-    if (bbup.a(this.jdField_b_of_type_Int)) {
-      return anni.a(2131701339);
-    }
-    return anni.a(2131701330);
-  }
-  
-  public String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return 1000;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public int e()
-  {
-    return 1;
+    return "DecodeSegmentInfo{Index=" + this.jdField_a_of_type_Int + ", StartUs=" + this.jdField_a_of_type_Long + ", EndUs=" + this.jdField_b_of_type_Long + ", Size=" + this.jdField_a_of_type_JavaUtilList.size() + ", Decoding=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

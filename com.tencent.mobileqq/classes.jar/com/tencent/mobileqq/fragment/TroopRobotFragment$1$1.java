@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.fragment;
 
-import auok;
-import bftv;
+import avgk;
+import bgtw;
 
 public class TroopRobotFragment$1$1
   implements Runnable
 {
-  public TroopRobotFragment$1$1(auok paramauok, bftv parambftv) {}
+  public TroopRobotFragment$1$1(avgk paramavgk, bgtw parambgtw) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Auok.a.a(this.jdField_a_of_type_Bftv.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bftv.b, this.jdField_a_of_type_Bftv.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Avgk.a.a(this.jdField_a_of_type_Bgtw.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bgtw.b, this.jdField_a_of_type_Bgtw.jdField_a_of_type_Int);
   }
 }
 

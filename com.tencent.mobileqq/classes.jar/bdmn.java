@@ -1,42 +1,69 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class bdmn
-  extends bdlb
 {
-  protected int a;
-  
-  public bdmn(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Int = 0;
+    bdmo localbdmo = new bdmo();
+    localbdmo.jdField_c_of_type_JavaLangString = paramString1;
+    localbdmo.jdField_d_of_type_JavaLangString = paramString2;
+    localbdmo.jdField_e_of_type_JavaLangString = paramString3;
+    localbdmo.f = paramString4;
+    localbdmo.jdField_c_of_type_Long = paramInt1;
+    localbdmo.jdField_d_of_type_Long = paramInt2;
+    localbdmo.jdField_e_of_type_Long = paramInt3;
+    localbdmo.g = paramString5;
+    localbdmo.h = paramString6;
+    localbdmo.i = paramString7;
+    localbdmo.j = paramString8;
+    paramString1 = localbdmo.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("SubscribeReportController", 1, "getReportingDetail=" + paramString1);
+    }
+    return paramString1;
   }
   
-  public View a(int paramInt1, bdmc parambdmc, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    if (paramView == null)
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559250, null);
-      parambdmc = new bdmp(null);
-      parambdmc.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367674));
-      parambdmc.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367675));
-      paramView.setTag(parambdmc);
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
     }
-    for (;;)
+    if (localQQAppInterface == null)
     {
-      parambdmc.jdField_a_of_type_AndroidWidgetTextView.setText(2131692813);
-      parambdmc.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840254);
-      return paramView;
-      parambdmc = (bdmp)paramView.getTag();
+      paramQQAppInterface = a("${uin_unknown}", paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7);
+      paramString1 = new Intent();
+      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramString1.putExtra("reporting_tag", "dc05263");
+      paramString1.putExtra("reporting_detail", paramQQAppInterface);
+      paramString1.putExtra("reporting_count", paramInt2);
+      paramString1.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
+      return;
     }
+    bdll.b(localQQAppInterface, "dc05263", a(localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, 1, paramInt2, paramString4, paramString5, paramString6, paramString7);
   }
 }
 

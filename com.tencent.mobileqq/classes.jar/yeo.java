@@ -1,15 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
 class yeo
-  implements bhye
+  implements yer
 {
-  yeo(yen paramyen, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
+  yeo(yen paramyen, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    yqp.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    wik.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+    yuk.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    yen.a(this.jdField_a_of_type_Yen, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void b()
+  {
+    yuk.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    yen.a(this.jdField_a_of_type_Yen).finish();
+    yen.a(this.jdField_a_of_type_Yen).overridePendingTransition(0, 0);
   }
 }
 

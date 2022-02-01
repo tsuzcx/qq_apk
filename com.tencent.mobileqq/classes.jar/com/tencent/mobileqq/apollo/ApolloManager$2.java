@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo;
 
-import akws;
-import amhd;
-import amjl;
-import ammy;
-import amtx;
-import anaw;
-import anaz;
-import anbx;
-import anca;
-import ancb;
+import alih;
+import amsx;
+import amvf;
+import amys;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bgmg;
+import anfr;
+import anmq;
+import anmt;
+import annr;
+import annu;
+import annv;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
@@ -25,7 +25,7 @@ import java.util.Timer;
 public class ApolloManager$2
   implements Runnable
 {
-  public ApolloManager$2(amhd paramamhd) {}
+  public ApolloManager$2(amsx paramamsx) {}
   
   public void run()
   {
@@ -38,25 +38,25 @@ public class ApolloManager$2
       if (QLog.isColorLevel()) {
         l = System.currentTimeMillis();
       }
-      amhd.a(this.this$0);
-      amhd.b(this.this$0);
-      bgmg.c(ancb.a + "/.nomedia");
+      amsx.a(this.this$0);
+      amsx.b(this.this$0);
+      bhmi.c(annv.a + "/.nomedia");
       this.this$0.a();
-      anaw.a(new anaz().a(1).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).a());
-      new amtx(0, null);
-      amhd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-      amhd.b(false);
+      anmq.a(new anmt().a(1).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).a());
+      new anfr(0, null);
+      amsx.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
+      amsx.b(false);
       localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_pet_sp", 0);
       this.this$0.j = ((SharedPreferences)localObject).getString("pet_config", null);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "init apollo data from db done cost: " + (System.currentTimeMillis() - l) + ", mApp: " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      ammy.a();
-      anbx.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      amhd.b = true;
+      amys.a();
+      annr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      amsx.b = true;
       this.this$0.k();
       ApolloUtil.a();
-      amjl.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, false);
+      amvf.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, false);
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
         localObject = this.this$0.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
@@ -68,14 +68,14 @@ public class ApolloManager$2
         }
       }
       CmGameCmdChannel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      new File(ancb.i).mkdirs();
-      localObject = akws.b();
+      new File(annv.i).mkdirs();
+      localObject = alih.b();
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         if (!((String)localObject).contains("EmotionUI ")) {
           break label422;
         }
-        if (anca.a(((String)localObject).substring("EmotionUI ".length()), "10") < 0) {
+        if (annu.a(((String)localObject).substring("EmotionUI ".length()), "10") < 0) {
           break label459;
         }
         bool1 = true;
@@ -93,7 +93,7 @@ public class ApolloManager$2
       if (((String)localObject).contains("EmotionUI_"))
       {
         bool1 = bool2;
-        if (anca.a(((String)localObject).substring("EmotionUI ".length()), "10") >= 0)
+        if (annu.a(((String)localObject).substring("EmotionUI ".length()), "10") >= 0)
         {
           bool1 = true;
           continue;

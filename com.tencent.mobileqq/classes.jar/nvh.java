@@ -1,16 +1,37 @@
 import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import java.util.List;
 
-public abstract interface nvh
+class nvh
+  implements bliz
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  nvh(nvg paramnvg) {}
   
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void OnClick(View paramView, int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= nvg.a(this.a).size()))
+    {
+      nvg.a(this.a).dismiss();
+      return;
+    }
+    switch (((Integer)nvg.a(this.a).get(paramInt)).intValue())
+    {
+    }
+    for (;;)
+    {
+      nvg.a(this.a).dismiss();
+      return;
+      this.a.a.q();
+      continue;
+      this.a.a.F();
+      continue;
+      this.a.a.H();
+      continue;
+      AccountDetailActivity.d(this.a.a);
+      continue;
+      AccountDetailActivity.a(this.a.a, this.a.a.e);
+    }
+  }
 }
 
 

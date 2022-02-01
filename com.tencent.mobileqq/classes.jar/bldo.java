@@ -1,56 +1,53 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginInstallActivity;
 
-public class bldo
-  implements OnPluginInstallListener
+class bldo
 {
-  public bldo(HcePluginInstallActivity paramHcePluginInstallActivity) {}
+  protected boolean a;
   
-  public IBinder asBinder()
-  {
-    return null;
-  }
+  private bldo(bldg parambldg) {}
   
-  public void onInstallBegin(String paramString)
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallBegin, pluginId:" + paramString);
+    if (this.a) {
+      bldg.a(this.b).a();
     }
   }
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallDownloadProgress, pluginId:" + paramString + " offset:" + paramInt1 + " total: " + paramInt2);
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    QQToast.a(this.a.getApplicationContext(), 2131694345, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    if (HcePluginInstallActivity.a(this.a).isPlugininstalled("vfc_plugin.apk"))
+    if (TextUtils.isEmpty(paramString2)) {}
+    blcz localblcz2;
+    do
     {
-      HcePluginInstallActivity.a(this.a);
       return;
+      localblcz2 = bldg.a(this.b).a(paramInt1);
+    } while ((localblcz2 != null) && (paramString1.equals(localblcz2.jdField_b_of_type_JavaLangString)) && (paramString2.equals(localblcz2.jdField_a_of_type_JavaLangString)) && (paramInt2 == localblcz2.jdField_b_of_type_Int) && (paramInt3 == localblcz2.c));
+    blcz localblcz1;
+    if (localblcz2 == null) {
+      localblcz1 = new blcz();
     }
-    QQToast.a(this.a.getApplicationContext(), 2131694345, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    for (;;)
+    {
+      localblcz1.jdField_a_of_type_Int = paramInt1;
+      localblcz1.jdField_b_of_type_Int = paramInt2;
+      localblcz1.c = paramInt3;
+      localblcz1.jdField_b_of_type_JavaLangString = paramString1;
+      localblcz1.jdField_a_of_type_JavaLangString = paramString2;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QSec", 2, String.format("Add lost lib: %d,%d,%d,%s", new Object[] { Integer.valueOf(localblcz1.jdField_a_of_type_Int), Integer.valueOf(localblcz1.jdField_b_of_type_Int), Integer.valueOf(localblcz1.c), localblcz1.jdField_b_of_type_JavaLangString }));
+      }
+      bldg.a(this.b).a(localblcz1, false);
+      this.a = true;
+      return;
+      bldg.a(this.b).a(paramInt1, false);
+      localblcz1 = localblcz2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QQProtect.QSec", 2, String.format("Database info mismatch for lib: %d", new Object[] { Integer.valueOf(paramInt1) }));
+        localblcz1 = localblcz2;
+      }
+    }
   }
 }
 

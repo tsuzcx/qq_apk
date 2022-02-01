@@ -19,12 +19,12 @@ import android.view.animation.Animation;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import avap;
-import avar;
-import avat;
-import avau;
-import avav;
-import azhm;
+import avsr;
+import avst;
+import avsv;
+import avsw;
+import avsx;
+import azzy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,7 +38,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class HeartLayout
   extends RelativeLayout
-  implements avat
+  implements avsv
 {
   public static final int[] a;
   public static Bitmap[] a;
@@ -46,8 +46,8 @@ public class HeartLayout
   public float a;
   public int a;
   public Rect a;
-  public avap a;
-  public avau a;
+  public avsr a;
+  public avsw a;
   public Random a;
   public AtomicInteger a;
   public boolean a;
@@ -89,20 +89,20 @@ public class HeartLayout
   private void a(float paramFloat1, float paramFloat2)
   {
     if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-      if (this.jdField_a_of_type_Avau != null) {
-        this.jdField_a_of_type_Avau.a(this, paramFloat1, paramFloat2);
+      if (this.jdField_a_of_type_Avsw != null) {
+        this.jdField_a_of_type_Avsw.a(this, paramFloat1, paramFloat2);
       }
     }
-    while ((paramFloat1 < this.jdField_a_of_type_AndroidGraphicsRect.left) || (paramFloat1 > this.jdField_a_of_type_AndroidGraphicsRect.right) || (paramFloat2 < this.jdField_a_of_type_AndroidGraphicsRect.top) || (paramFloat2 > this.jdField_a_of_type_AndroidGraphicsRect.bottom) || (this.jdField_a_of_type_Avau == null)) {
+    while ((paramFloat1 < this.jdField_a_of_type_AndroidGraphicsRect.left) || (paramFloat1 > this.jdField_a_of_type_AndroidGraphicsRect.right) || (paramFloat2 < this.jdField_a_of_type_AndroidGraphicsRect.top) || (paramFloat2 > this.jdField_a_of_type_AndroidGraphicsRect.bottom) || (this.jdField_a_of_type_Avsw == null)) {
       return;
     }
-    this.jdField_a_of_type_Avau.a(this, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Avsw.a(this, paramFloat1, paramFloat2);
   }
   
-  public avar a()
+  public avst a()
   {
-    if (this.jdField_a_of_type_Avap != null) {
-      return this.jdField_a_of_type_Avap.a();
+    if (this.jdField_a_of_type_Avsr != null) {
+      return this.jdField_a_of_type_Avsr.a();
     }
     return null;
   }
@@ -116,8 +116,8 @@ public class HeartLayout
     }
     this.jdField_c_of_type_Float = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * 5);
     this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_Avap = new avap(this);
-    this.jdField_a_of_type_Avap.a(this);
+    this.jdField_a_of_type_Avsr = new avsr(this);
+    this.jdField_a_of_type_Avsr.a(this);
   }
   
   public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2)
@@ -125,44 +125,44 @@ public class HeartLayout
     a(null, paramBitmap, paramFloat1, paramFloat2, -1L, 0);
   }
   
-  public void a(Bitmap paramBitmap, QQAppInterface paramQQAppInterface, avav paramavav, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  public void a(Bitmap paramBitmap, QQAppInterface paramQQAppInterface, avsx paramavsx, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    a(null, paramBitmap, paramQQAppInterface, paramavav, paramFloat1, paramFloat2, paramInt1, paramInt2);
+    a(null, paramBitmap, paramQQAppInterface, paramavsx, paramFloat1, paramFloat2, paramInt1, paramInt2);
   }
   
   public void a(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Avau != null) {
-      this.jdField_a_of_type_Avau.a(paramAnimation);
+    if (this.jdField_a_of_type_Avsw != null) {
+      this.jdField_a_of_type_Avsw.a(paramAnimation);
     }
   }
   
-  public void a(azhm paramazhm, Bitmap paramBitmap, float paramFloat1, float paramFloat2)
+  public void a(azzy paramazzy, Bitmap paramBitmap, float paramFloat1, float paramFloat2)
   {
-    a(paramazhm, paramBitmap, paramFloat1, paramFloat2, -1L, 0);
+    a(paramazzy, paramBitmap, paramFloat1, paramFloat2, -1L, 0);
   }
   
-  public void a(azhm paramazhm, Bitmap paramBitmap, float paramFloat1, float paramFloat2, long paramLong, int paramInt)
+  public void a(azzy paramazzy, Bitmap paramBitmap, float paramFloat1, float paramFloat2, long paramLong, int paramInt)
   {
     if (!this.jdField_a_of_type_Boolean) {}
-    while ((this.jdField_a_of_type_Avap == null) || (paramBitmap == null)) {
+    while ((this.jdField_a_of_type_Avsr == null) || (paramBitmap == null)) {
       return;
     }
     String str = null;
     Bundle localBundle = null;
     Object localObject2 = localBundle;
     Object localObject1 = str;
-    if (paramazhm != null)
+    if (paramazzy != null)
     {
-      if (paramBitmap == paramazhm.c)
+      if (paramBitmap == paramazzy.c)
       {
-        localObject1 = paramazhm.g;
-        localObject2 = paramazhm.c;
+        localObject1 = paramazzy.g;
+        localObject2 = paramazzy.c;
       }
     }
     else
     {
-      paramazhm = new URLImageView(getContext());
+      paramazzy = new URLImageView(getContext());
       if (localObject1 == null) {
         break label255;
       }
@@ -174,54 +174,54 @@ public class HeartLayout
       if (localObject1 == null) {
         break label239;
       }
-      paramazhm.setImageDrawable((Drawable)localObject1);
+      paramazzy.setImageDrawable((Drawable)localObject1);
     }
     for (;;)
     {
-      paramazhm.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      this.jdField_a_of_type_Avap.a(paramazhm, paramFloat1, paramFloat2, this, paramLong, paramInt);
+      paramazzy.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      this.jdField_a_of_type_Avsr.a(paramazzy, paramFloat1, paramFloat2, this, paramLong, paramInt);
       return;
       localObject2 = localBundle;
       localObject1 = str;
-      if (paramBitmap != paramazhm.b) {
+      if (paramBitmap != paramazzy.b) {
         break;
       }
-      localObject1 = paramazhm.f;
-      localObject2 = paramazhm.b;
+      localObject1 = paramazzy.f;
+      localObject2 = paramazzy.b;
       break;
       label239:
       QLog.e("HeartLayout", 1, "addHeartWithDrawable apng.so load fail.");
-      paramazhm.setImageBitmap(paramBitmap);
+      paramazzy.setImageBitmap(paramBitmap);
       continue;
       label255:
-      paramazhm.setImageBitmap(paramBitmap);
+      paramazzy.setImageBitmap(paramBitmap);
     }
   }
   
-  public void a(azhm paramazhm, Bitmap paramBitmap, QQAppInterface paramQQAppInterface, avav paramavav, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  public void a(azzy paramazzy, Bitmap paramBitmap, QQAppInterface paramQQAppInterface, avsx paramavsx, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Avap == null)) {
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Avsr == null)) {
       return;
     }
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    paramQQAppInterface = new PayLikeFloatViewBuilder.AnimationView(getContext(), paramQQAppInterface, paramavav);
+    paramQQAppInterface = new PayLikeFloatViewBuilder.AnimationView(getContext(), paramQQAppInterface, paramavsx);
     URLImageView localURLImageView = new URLImageView(getContext());
-    paramavav = new RelativeLayout.LayoutParams(-2, -2);
-    paramavav.addRule(13);
+    paramavsx = new RelativeLayout.LayoutParams(-2, -2);
+    paramavsx.addRule(13);
     Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
     ((RelativeLayout.LayoutParams)localObject1).addRule(13);
-    localRelativeLayout.addView(localURLImageView, paramavav);
+    localRelativeLayout.addView(localURLImageView, paramavsx);
     localRelativeLayout.addView(paramQQAppInterface, (ViewGroup.LayoutParams)localObject1);
     localObject1 = null;
     Object localObject2 = null;
-    paramavav = localObject2;
+    paramavsx = localObject2;
     paramQQAppInterface = (QQAppInterface)localObject1;
-    if (paramazhm != null)
+    if (paramazzy != null)
     {
-      if (paramBitmap == paramazhm.c)
+      if (paramBitmap == paramazzy.c)
       {
-        paramQQAppInterface = paramazhm.g;
-        paramavav = paramazhm.c;
+        paramQQAppInterface = paramazzy.g;
+        paramavsx = paramazzy.c;
       }
     }
     else
@@ -229,28 +229,28 @@ public class HeartLayout
       if (paramQQAppInterface == null) {
         break label333;
       }
-      paramazhm = "praise?seed=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      paramavav = new BitmapDrawable(getResources(), paramavav);
+      paramazzy = "praise?seed=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      paramavsx = new BitmapDrawable(getResources(), paramavsx);
       localObject1 = new Bundle();
       ((Bundle)localObject1).getBoolean("key_use_cache", false);
-      paramazhm = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), paramQQAppInterface, paramazhm, paramavav, new int[] { 14, 9, 15 }, "-praise-", (Bundle)localObject1);
-      if (paramazhm == null) {
+      paramazzy = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), paramQQAppInterface, paramazzy, paramavsx, new int[] { 14, 9, 15 }, "-praise-", (Bundle)localObject1);
+      if (paramazzy == null) {
         break label316;
       }
-      localURLImageView.setImageDrawable(paramazhm);
+      localURLImageView.setImageDrawable(paramazzy);
     }
     for (;;)
     {
       localURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      this.jdField_a_of_type_Avap.a(localRelativeLayout, paramFloat1, paramFloat2, paramInt1, paramInt2, this, -1L, 0);
+      this.jdField_a_of_type_Avsr.a(localRelativeLayout, paramFloat1, paramFloat2, paramInt1, paramInt2, this, -1L, 0);
       return;
-      paramavav = localObject2;
+      paramavsx = localObject2;
       paramQQAppInterface = (QQAppInterface)localObject1;
-      if (paramBitmap != paramazhm.b) {
+      if (paramBitmap != paramazzy.b) {
         break;
       }
-      paramQQAppInterface = paramazhm.f;
-      paramavav = paramazhm.b;
+      paramQQAppInterface = paramazzy.f;
+      paramavsx = paramazzy.b;
       break;
       label316:
       QLog.e("HeartLayout", 1, "addHeartWithDrawable apng.so load fail.");
@@ -263,8 +263,8 @@ public class HeartLayout
   
   public void b(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Avau != null) {
-      this.jdField_a_of_type_Avau.b(paramAnimation);
+    if (this.jdField_a_of_type_Avsw != null) {
+      this.jdField_a_of_type_Avsw.b(paramAnimation);
     }
   }
   
@@ -346,7 +346,7 @@ public class HeartLayout
         {
           i -= 1;
           break;
-          Boolean localBoolean = (Boolean)localView.getTag(2131374209);
+          Boolean localBoolean = (Boolean)localView.getTag(2131374348);
           if ((localBoolean != null) && (localBoolean.booleanValue()))
           {
             localView.clearAnimation();
@@ -357,9 +357,9 @@ public class HeartLayout
     }
   }
   
-  public void setHeartListener(avau paramavau)
+  public void setHeartListener(avsw paramavsw)
   {
-    this.jdField_a_of_type_Avau = paramavau;
+    this.jdField_a_of_type_Avsw = paramavsw;
   }
   
   public void setListenTouchEvent(boolean paramBoolean)

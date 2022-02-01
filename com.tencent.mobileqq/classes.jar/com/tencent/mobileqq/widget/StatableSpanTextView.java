@@ -9,15 +9,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bbdo;
-import bhvb;
+import bbwh;
+import bivw;
 import java.util.ArrayList;
 
 public class StatableSpanTextView
   extends TextView
 {
   private long jdField_a_of_type_Long;
-  bbdo jdField_a_of_type_Bbdo;
+  bbwh jdField_a_of_type_Bbwh;
   private ImageSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   
@@ -95,15 +95,15 @@ public class StatableSpanTextView
           int i2 = getScrollY();
           localObject2 = getLayout();
           j = ((Layout)localObject2).getOffsetForHorizontal(((Layout)localObject2).getLineForVertical(k - n + i2), j - m + i1);
-          localObject1 = (bbdo[])((Spannable)localObject1).getSpans(j, j, bbdo.class);
+          localObject1 = (bbwh[])((Spannable)localObject1).getSpans(j, j, bbwh.class);
           if (localObject1.length != 0)
           {
             localObject1 = localObject1[0];
             if (i == 1)
             {
-              ((bbdo)localObject1).a(this, false);
+              ((bbwh)localObject1).a(this, false);
               if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-                ((bbdo)localObject1).onClick(this);
+                ((bbwh)localObject1).onClick(this);
               }
             }
             for (;;)
@@ -112,17 +112,17 @@ public class StatableSpanTextView
               return super.onTouchEvent(paramMotionEvent);
               if (i == 0)
               {
-                ((bbdo)localObject1).a(this, true);
-                this.jdField_a_of_type_Bbdo = ((bbdo)localObject1);
+                ((bbwh)localObject1).a(this, true);
+                this.jdField_a_of_type_Bbwh = ((bbwh)localObject1);
               }
               else
               {
-                ((bbdo)localObject1).a(this, false);
+                ((bbwh)localObject1).a(this, false);
               }
             }
           }
-          if (this.jdField_a_of_type_Bbdo != null) {
-            this.jdField_a_of_type_Bbdo.a(this, false);
+          if (this.jdField_a_of_type_Bbwh != null) {
+            this.jdField_a_of_type_Bbwh.a(this, false);
           }
         }
       }
@@ -146,7 +146,7 @@ public class StatableSpanTextView
         while (i < j)
         {
           ImageSpan localImageSpan = arrayOfImageSpan[i];
-          if (!(localImageSpan instanceof bhvb)) {
+          if (!(localImageSpan instanceof bivw)) {
             localArrayList.add(localImageSpan);
           }
           i += 1;

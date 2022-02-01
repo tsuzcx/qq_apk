@@ -1,12 +1,22 @@
-public class aucm
+public final class aucm
 {
-  public long a;
-  public String a;
+  private final Class jdField_a_of_type_JavaLangClass;
+  private final Object jdField_a_of_type_JavaLangObject;
   
-  public aucm(String paramString, long paramLong)
+  public aucm(Object paramObject, Class paramClass)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  public Class a()
+  {
+    return this.jdField_a_of_type_JavaLangClass;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
   }
 }
 

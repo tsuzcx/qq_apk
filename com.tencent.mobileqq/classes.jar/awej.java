@@ -1,20 +1,14 @@
-public abstract class awej<T, P>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class awej
+  implements DialogInterface.OnClickListener
 {
-  private volatile T a;
+  awej(aweh paramaweh, bhpc parambhpc) {}
   
-  protected abstract T a(P paramP);
-  
-  public final T b(P paramP)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a == null) {}
-    try
-    {
-      if (this.a == null) {
-        this.a = a(paramP);
-      }
-      return this.a;
-    }
-    finally {}
+    this.jdField_a_of_type_Bhpc.dismiss();
   }
 }
 

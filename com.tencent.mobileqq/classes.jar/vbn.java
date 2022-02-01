@@ -1,17 +1,38 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 
-class vbn
-  implements MediaPlayer.OnErrorListener
+public abstract class vbn
+  extends aacq
+  implements aabg<QCircleReportBean>
 {
-  vbn(vbk paramvbk) {}
+  protected QCircleReportBean a;
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public vbn(Bundle paramBundle)
   {
-    vbk.a(this.a);
-    QLog.e("QCircleFolderSplashPart", 1, "play splash video error!what:" + paramInt1 + ",extra:" + paramInt2);
-    return true;
+    super(paramBundle);
+  }
+  
+  public QCircleReportBean a()
+  {
+    if (this.a == null) {
+      this.a = new QCircleReportBean();
+    }
+    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
+  }
+  
+  protected abstract String a();
+  
+  public void a(QCircleReportBean paramQCircleReportBean)
+  {
+    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+  }
+  
+  protected String b()
+  {
+    if (this.a != null) {
+      return this.a.getModuleIdStr();
+    }
+    return null;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akgq;
+import aksb;
 import java.util.List;
 
 public class TroopPhotoController$7
   implements Runnable
 {
-  public TroopPhotoController$7(akgq paramakgq, List paramList) {}
+  public TroopPhotoController$7(aksb paramaksb, List paramList) {}
   
   public void run()
   {
     this.this$0.a.clear();
     this.this$0.a.addAll(this.a);
-    akgq.b(this.this$0);
+    aksb.b(this.this$0);
     this.this$0.b();
   }
 }

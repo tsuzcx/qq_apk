@@ -1,169 +1,64 @@
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.1;
-import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.ColorNickTextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import android.content.res.AssetManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
+@SuppressLint({"UseSparseArrays"})
 public class ajuv
-  extends ajwt
 {
-  public Object a;
-  private SimpleDateFormat a;
-  public List<ajyc> a;
-  public Set<Long> a;
+  private static ajuv jdField_a_of_type_Ajuv;
+  HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public ajuv(Context paramContext, bkfv parambkfv, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  private ajuv(Context paramContext)
   {
-    super(paramContext, parambkfv, paramSessionInfo, paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
+    a(paramContext);
   }
   
-  public void a()
+  public static ajuv a()
   {
-    this.b.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void a(long paramLong, String paramString, int paramInt)
-  {
-    ThreadManager.post(new TroopAllMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
-  }
-  
-  public void a(List<ajyc> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    Object localObject;
-    int i;
-    if (QLog.isColorLevel())
+    try
     {
-      localObject = new StringBuilder().append("setMessageItems loadType: ").append(paramInt1).append(", searchMode: ").append(paramInt2).append(", cloudGetCompleted: ").append(paramBoolean).append(", messageItems size: ");
-      if (paramList == null)
-      {
-        i = 0;
-        QLog.d("LinkMessageResultAdapter", 2, i);
+      if (jdField_a_of_type_Ajuv == null) {
+        jdField_a_of_type_Ajuv = new ajuv(BaseApplicationImpl.getContext());
       }
+      return jdField_a_of_type_Ajuv;
     }
-    else
-    {
-      if ((paramInt1 != 1) || (paramInt2 != 0)) {
-        break label98;
-      }
-      this.b = paramList;
-    }
-    label98:
-    do
-    {
-      do
-      {
-        return;
-        i = paramList.size();
-        break;
-        if ((paramInt1 == 2) && (paramInt2 == 0))
-        {
-          this.b.addAll(paramList);
-          return;
-        }
-      } while ((paramInt1 != 4) || (paramList == null) || (paramList.size() == 0) || (paramInt2 != 1));
-      if ((this.b.size() <= 0) || (paramList.size() <= 0)) {
-        break label237;
-      }
-      localObject = (ajyc)paramList.get(0);
-      ajyc localajyc = (ajyc)this.b.get(this.b.size() - 1);
-      if (((ajyc)localObject).a.time <= localajyc.a.time) {
-        break label237;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("LinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
-    return;
-    label237:
-    this.b.addAll(paramList);
+    finally {}
   }
   
-  public void a(List<ajyc> paramList, String paramString, long paramLong)
+  private void a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkMessageResultAdapter", 2, "displayCloudMessages...");
-    }
-    ThreadManager.post(new TroopAllMessageResultAdapter.2(this, paramString, paramLong, paramList), 8, null, false);
-  }
-  
-  public void a(List<ajyc> paramList, boolean paramBoolean)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
+    try
+    {
+      SAXParser localSAXParser = SAXParserFactory.newInstance().newSAXParser();
+      ajuw localajuw = new ajuw(this);
+      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localajuw);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkMessageResultAdapter", 2, "mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: " + paramBoolean);
-    }
-    this.b.clear();
-    this.b.addAll(paramList);
+    catch (Exception paramContext) {}
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public int a(int paramInt)
   {
-    ajyc localajyc = (ajyc)getItem(paramInt);
-    View localView;
-    Object localObject1;
-    Object localObject2;
-    if (paramView == null)
-    {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559344, null);
-      paramView = new ajwu();
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)localView.findViewById(2131378446));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378448));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368138));
-      paramView.b = ((TextView)localView.findViewById(2131369522));
-      localView.setTag(paramView);
-      localObject1 = localajyc.a;
-      localObject2 = bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((MessageRecord)localObject1).isSend(), ((MessageRecord)localObject1).senderuin);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localajyc.a(((MessageRecord)localObject1).msg, -11353092));
-      if (!((MessageRecord)localObject1).isSend()) {
-        break label288;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      label161:
-      if (!njo.a((MessageRecord)localObject1)) {
-        break label300;
-      }
-      localObject2 = njo.a((MessageRecord)localObject1);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696514) + ((njp)localObject2).jdField_b_of_type_JavaLangString);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(njo.a(((njp)localObject2).jdField_b_of_type_Int)));
+    return a(paramInt, 1);
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localInteger == null) {
+      return paramInt2;
     }
-    for (;;)
-    {
-      paramView.b.setText(localajyc.a(((MessageRecord)localObject1).time));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject1 = (ajwu)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject1;
-      break;
-      label288:
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      break label161;
-      label300:
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(localajyc.a((String)localObject2, -11353092));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, ((MessageRecord)localObject1).senderuin));
-    }
+    return localInteger.intValue();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    paramInt = a(paramInt);
+    return (paramInt == 3) || (paramInt == 2);
   }
 }
 

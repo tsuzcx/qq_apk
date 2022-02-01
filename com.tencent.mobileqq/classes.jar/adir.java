@@ -1,17 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.BsnsTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adir
-  implements View.OnClickListener
+  implements adbw
 {
-  public adir(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    this.a.h();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 1021;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.BsnsTmp localBsnsTmp = new msg_svc.BsnsTmp();
+    localBsnsTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.a().g(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CircleGroupRoutingType", 2, "circleGroup------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localBsnsTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    }
+    paramRoutingHead.bsns_tmp.set(localBsnsTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 6012;
   }
 }
 

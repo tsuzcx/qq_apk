@@ -1,32 +1,66 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback"}, k=3, mv={1, 1, 16})
-final class avle
-  implements aaob
+class avle
+  extends avlo
 {
-  avle(avjq paramavjq, String paramString) {}
+  avle(avld paramavld) {}
   
-  public final void callback(Bundle paramBundle)
+  protected void a(Object paramObject)
   {
-    int i = 1;
-    boolean bool = paramBundle.getBoolean("enable");
-    QLog.i("AudioRoomSettingHandler", 1, "handleGetTmpMsgPushSetting: nowStatus=" + bool);
-    paramBundle = this.jdField_a_of_type_Avjq;
-    String str = this.jdField_a_of_type_JavaLangString;
-    JSONObject localJSONObject1 = new JSONObject();
-    localJSONObject1.put("result", "success");
-    JSONObject localJSONObject2 = new JSONObject();
-    if (bool) {}
-    for (;;)
+    super.a(paramObject);
+    if ((paramObject instanceof ArrayList))
     {
-      localJSONObject2.put("pushSwitch", i);
-      localJSONObject1.put("data", localJSONObject2);
-      paramBundle.callJs(str, new String[] { localJSONObject1.toString() });
-      return;
-      i = 0;
+      paramObject = (ArrayList)paramObject;
+      int j = paramObject.size();
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject;
+        GameCenterSessionInfo localGameCenterSessionInfo;
+        if ((paramObject.get(i) instanceof avlc))
+        {
+          localObject = (avlc)paramObject.get(i);
+          localGameCenterSessionInfo = this.a.b(((avlc)localObject).jdField_b_of_type_JavaLangString);
+          if (localGameCenterSessionInfo != null)
+          {
+            localGameCenterSessionInfo.f(((avlc)localObject).c);
+            localGameCenterSessionInfo.g(((avlc)localObject).i);
+            localGameCenterSessionInfo.i(((avlc)localObject).e);
+            localGameCenterSessionInfo.d(((avlc)localObject).jdField_b_of_type_Int);
+            localGameCenterSessionInfo.c(((avlc)localObject).k);
+            localGameCenterSessionInfo.h(((avlc)localObject).d);
+            localGameCenterSessionInfo.a(((avlc)localObject).j);
+            if (j <= 30) {
+              break label178;
+            }
+            if (i == j - 1) {
+              this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 3, this.a.a());
+            }
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label178:
+          if (localGameCenterSessionInfo.a() == 0)
+          {
+            localObject = this.a.c(localGameCenterSessionInfo.e());
+            if (QLog.isColorLevel()) {
+              QLog.d(avld.e(), 2, "[onGameUserInfoChangedNotify] folder session:" + localObject);
+            }
+            if ((localObject != null) && (((GameCenterSessionInfo)localObject).d().equals(localGameCenterSessionInfo.d()))) {
+              this.a.a("action_qgame_messgae_change", (GameCenterSessionInfo)localObject, 2, this.a.a());
+            }
+          }
+          else
+          {
+            this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 2, this.a.a());
+          }
+        }
+      }
     }
   }
 }

@@ -1,46 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.gdtad.api.GdtAd;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import org.json.JSONObject;
 
 public class toh
-  implements acko
+  implements pye
 {
-  public toh(BridgeModule paramBridgeModule, String paramString) {}
-  
-  public void onAdClicked(GdtAd paramGdtAd) {}
-  
-  public void onAdClosed(GdtAd paramGdtAd) {}
-  
-  public void onAdFailedToLoad(GdtAd paramGdtAd, ackn paramackn)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramackn.a());
+    return null;
   }
   
-  public void onAdImpression(GdtAd paramGdtAd) {}
-  
-  public void onAdLoaded(GdtAd paramGdtAd)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    Object localObject = oql.a(paramGdtAd);
-    paramGdtAd = new JSONObject();
-    for (;;)
+    return pub.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject;
+    if ((paramppu != null) && (paramppu.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramppu.a())))
     {
-      try
+      localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
+      TemplateBean localTemplateBean = paramppu.a().mProteusTemplateBean;
+      paramContainer = null;
+      if (localTemplateBean != null) {
+        paramContainer = localTemplateBean.findViewById("id_top_left_mask");
+      }
+      if ((localObject instanceof try))
       {
-        paramGdtAd.put("adInfo", localObject);
-        if (localObject != null) {
-          continue;
+        localObject = (try)localObject;
+        ((try)localObject).a(paramppu);
+        if (paramContainer == null) {
+          break label96;
         }
-        paramGdtAd.put("retCode", -1);
+        ((try)localObject).a(true);
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramGdtAd);
-      return;
-      paramGdtAd.put("retCode", 0);
     }
+    return;
+    label96:
+    ((try)localObject).a(false);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

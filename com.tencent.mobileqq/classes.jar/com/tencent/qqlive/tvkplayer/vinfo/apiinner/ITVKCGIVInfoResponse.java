@@ -4,9 +4,9 @@ import org.w3c.dom.Document;
 
 public abstract interface ITVKCGIVInfoResponse
 {
-  public abstract void OnVInfoFailure(String paramString1, String paramString2, int paramInt);
+  public abstract void onVInfoFailure(String paramString1, String paramString2, int paramInt);
   
-  public abstract void OnVInfoSuccess(String paramString1, String paramString2, Document paramDocument);
+  public abstract void onVInfoSuccess(String paramString1, String paramString2, Document paramDocument);
 }
 
 

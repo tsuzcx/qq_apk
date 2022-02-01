@@ -1,52 +1,17 @@
-import android.app.Activity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplate1;
-import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.animation.AnimatorSet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bhiq
-  extends bhil
+final class bhiq
+  implements DialogInterface.OnDismissListener
 {
-  public bhiq(Activity paramActivity, JSONObject paramJSONObject, azfe paramazfe)
-  {
-    super(paramActivity, paramJSONObject, paramazfe);
-    this.d = zlx.a(paramActivity, 4.0F);
-  }
+  bhiq(AnimatorSet paramAnimatorSet) {}
   
-  public View a(JSONObject paramJSONObject, View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = (QZoneLayoutTemplate1)paramView.findViewById(2131368608);
-    if (localObject != null)
-    {
-      ((QZoneLayoutTemplate1)localObject).setBorderWidth(b(paramJSONObject));
-      ((QZoneLayoutTemplate1)localObject).setItemBg(a(paramJSONObject, a(100.0F), a(100.0F)), a(paramJSONObject));
-      ((QZoneLayoutTemplate1)localObject).setLeftView(paramJSONObject.optString("ph"));
-      ((QZoneLayoutTemplate1)localObject).setRightView(paramJSONObject.optString("ph"));
+    if (this.a.isRunning()) {
+      this.a.end();
     }
-    localObject = paramView.findViewById(2131368138);
-    TextView localTextView = (TextView)paramView.findViewById(2131378600);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368286);
-    String str = localTextView.getText().toString();
-    if ((this.jdField_a_of_type_Azfe.a.a != 0) && (str.length() > 4) && (str.substring(str.length() - 4, str.length()).equals("QQ空间"))) {
-      localTextView.setText(str.substring(0, str.length() - 4) + anni.a(2131713507));
-    }
-    a(paramJSONObject, (View)localObject, localTextView, localImageView);
-    return paramView;
-  }
-  
-  public ProfileCardFavorShowView a(Activity paramActivity)
-  {
-    return new ProfileCardFavorShowView(paramActivity, null, 2131562050);
-  }
-  
-  public void b(HashMap<String, View> paramHashMap)
-  {
-    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562059, null));
   }
 }
 

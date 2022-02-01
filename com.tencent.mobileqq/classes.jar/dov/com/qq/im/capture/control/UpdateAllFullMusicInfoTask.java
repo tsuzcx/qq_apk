@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.control;
 
-import bojv;
+import bplq;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.automator.ParallGroup;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UpdateAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bojv.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bplq.a(2);
   private ArrayList<FlowMusic> jdField_a_of_type_JavaUtilArrayList;
   private List<FlowMusic> jdField_a_of_type_JavaUtilList = new ArrayList();
   private ArrayList<FlowMusic> b = new ArrayList();
@@ -44,7 +44,7 @@ public class UpdateAllFullMusicInfoTask
     }
   }
   
-  private void b()
+  private void d()
   {
     if (!this.b.isEmpty())
     {
@@ -92,7 +92,7 @@ public class UpdateAllFullMusicInfoTask
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b((AsyncStep)localObject);
       }
     }
-    b();
+    d();
     return 7;
   }
   
@@ -116,7 +116,7 @@ public class UpdateAllFullMusicInfoTask
       this.d = paramInt;
       if (paramInt == 0)
       {
-        b();
+        d();
         a(7);
         this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = null;
       }
@@ -126,7 +126,7 @@ public class UpdateAllFullMusicInfoTask
     finally {}
   }
   
-  public void c()
+  public void b()
   {
     a();
   }

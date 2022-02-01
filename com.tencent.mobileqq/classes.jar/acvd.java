@@ -1,197 +1,160 @@
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.gdtad.ipc.AppInstallerReceiver;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class acvd
+  extends anud
 {
-  private int jdField_a_of_type_Int;
-  private acuy jdField_a_of_type_Acuy;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
-  
-  public acvd(JSONObject paramJSONObject)
+  public acvd(AppInterface paramAppInterface)
   {
-    a(paramJSONObject);
+    super(paramAppInterface);
   }
   
-  private void a(JSONObject paramJSONObject)
+  private void b(Context paramContext, GdtBaseAdItem paramGdtBaseAdItem)
   {
-    int i = 0;
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("enable", false);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchType", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchVersion", 0);
-    this.b = paramJSONObject.optString("appVersion", null);
-    this.c = paramJSONObject.optString("revision", null);
-    paramJSONObject = paramJSONObject.optJSONArray("patchItemConfigs");
-    if (paramJSONObject != null) {}
-    for (;;)
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramGdtBaseAdItem.c)))
     {
-      try
+      AppInstallerReceiver.a().a(paramContext);
+      AppInstallerReceiver.a().a(paramGdtBaseAdItem);
+    }
+  }
+  
+  @Deprecated
+  public void a(Context paramContext, GdtBaseAdItem paramGdtBaseAdItem)
+  {
+    if ((paramContext == null) || (paramGdtBaseAdItem == null)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramGdtBaseAdItem.f)) {
+      paramGdtBaseAdItem.g(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
+    }
+    if (arta.a(paramGdtBaseAdItem.jdField_a_of_type_JavaLangString, paramContext))
+    {
+      acvk.a(paramGdtBaseAdItem.f);
+      if (QLog.isColorLevel()) {
+        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
+      }
+      if (paramGdtBaseAdItem.jdField_b_of_type_Boolean)
       {
-        if (i < paramJSONObject.length())
-        {
-          acuy localacuy = acuy.a(this.jdField_a_of_type_JavaLangString, paramJSONObject.getJSONObject(i));
-          if (localacuy != null) {
-            this.jdField_a_of_type_Acuy = localacuy;
-          }
+        acwa.b(paramContext, paramGdtBaseAdItem);
+        return;
+      }
+      acwa.a(paramContext, paramGdtBaseAdItem);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString))
+    {
+      b(paramContext, paramGdtBaseAdItem);
+      label133:
+      String str;
+      if ((acwa.a()) && (paramGdtBaseAdItem.jdField_a_of_type_Boolean))
+      {
+        localObject = "1";
+        if (QLog.isColorLevel()) {
+          QLog.d("GdtAdHandler", 2, "doAppJump autoDownload  " + (String)localObject);
         }
-        else
-        {
-          return;
+        if (!acwa.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString)) {
+          break label576;
+        }
+        if (("1".equals(localObject)) && (TextUtils.isEmpty((String)acwa.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("acttype")))) {
+          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString += "&acttype=42";
+        }
+        if (TextUtils.isEmpty((String)acwa.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("wv"))) {
+          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString += "&wv=1";
+        }
+        str = (String)acwa.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("_autodownload");
+        if (TextUtils.isEmpty(str)) {
+          break label516;
+        }
+        if (!"1".equals(localObject)) {
+          break label480;
+        }
+        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("_autodownload=" + str, "_autodownload=" + (String)localObject);
+        label361:
+        if (paramGdtBaseAdItem.jdField_a_of_type_JavaLangClass != null) {
+          break label568;
         }
       }
-      catch (JSONException paramJSONObject)
+      label516:
+      label568:
+      for (Object localObject = QQBrowserActivity.class;; localObject = paramGdtBaseAdItem.jdField_a_of_type_JavaLangClass)
       {
+        localObject = new Intent(paramContext, (Class)localObject);
+        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+        ((Intent)localObject).putExtra("url", paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
+        ((Intent)localObject).addFlags(268435456);
+        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_ads");
+        if (paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle != null) {
+          ((Intent)localObject).putExtras(paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle);
+        }
+        paramContext.startActivity((Intent)localObject);
         if (!QLog.isColorLevel()) {
-          continue;
+          break;
         }
-        QLog.e("PatchLogTag", 2, "PatchConfig readFromJsonString", paramJSONObject);
+        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled not : custom H5 " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
+        return;
+        localObject = "0";
+        break label133;
+        label480:
+        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("&_autodownload=" + str, "");
+        break label361;
+        if (!"1".equals(localObject)) {
+          break label361;
+        }
+        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = (paramGdtBaseAdItem.jdField_b_of_type_JavaLangString + "&" + "_autodownload" + "=" + (String)localObject);
+        break label361;
       }
-      i += 1;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public acuy a()
-  {
-    return this.jdField_a_of_type_Acuy;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(Context paramContext, String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("PatchLogTag", 1, "PatchConfig isValidConfig enable is false");
-      return false;
-    }
-    if (!"2703aac4".equals(this.c))
-    {
-      QLog.d("PatchLogTag", 1, "PatchConfig isValidConfig revision not match expect: 2703aac4");
-      return false;
-    }
-    if ((TextUtils.isEmpty(this.b)) || (!this.b.equals(ardl.a(paramContext) + "." + ardl.a(paramContext))))
-    {
-      QLog.d("PatchLogTag", 1, "PatchConfig isValidConfig app version not match expect: " + ardl.a(paramContext) + "." + ardl.a(paramContext));
-      return false;
-    }
-    if ((this.jdField_a_of_type_Acuy == null) || (!this.jdField_a_of_type_Acuy.a(paramString)))
-    {
-      QLog.d("PatchLogTag", 1, "PatchConfig isValidConfig patchItemConfig null or invalid");
-      return false;
-    }
-    QLog.d("PatchLogTag", 1, "PatchConfig isValidConfig return true");
-    return true;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Acuy != null) {
-      return this.jdField_a_of_type_Acuy.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public String b()
-  {
-    if (this.jdField_a_of_type_Acuy != null) {
-      return this.jdField_a_of_type_Acuy.jdField_a_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Acuy != null) && (this.jdField_a_of_type_Acuy.a());
-  }
-  
-  public int c()
-  {
-    if ((!b()) && (PatchCommonUtil.isArtGeN()) && (this.jdField_a_of_type_Acuy != null)) {
-      return ((acuz)this.jdField_a_of_type_Acuy).a();
-    }
-    return b();
-  }
-  
-  public String c()
-  {
-    String str = b();
-    if (b()) {}
-    do
-    {
-      return str;
-      if (PatchCommonUtil.isArtGeO()) {
-        return "androidO7z_" + str;
+      label576:
+      acvk.a(paramGdtBaseAdItem.f);
+      paramContext = (String)bjrc.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("auto_download");
+      if (!TextUtils.isEmpty(paramContext)) {
+        if ("1".equals(localObject)) {
+          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("auto_download=" + paramContext, "auto_download=" + (String)localObject);
+        }
       }
-    } while (!PatchCommonUtil.isArtGeN());
-    return "androidN7z_" + str;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Acuy != null) && (this.jdField_a_of_type_Acuy.b());
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_Acuy != null) {
-      return this.jdField_a_of_type_Acuy.b;
-    }
-    return null;
-  }
-  
-  public String e()
-  {
-    Object localObject1 = null;
-    try
-    {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("enable", this.jdField_a_of_type_Boolean);
-      ((JSONObject)localObject2).put("patchType", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject2).put("patchVersion", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject2).put("appVersion", this.b);
-      ((JSONObject)localObject2).put("revision", this.c);
-      if (this.jdField_a_of_type_Acuy != null)
+      for (;;)
       {
-        String str = this.jdField_a_of_type_Acuy.a();
-        JSONArray localJSONArray = new JSONArray();
-        localJSONArray.put(0, new JSONObject(str));
-        ((JSONObject)localObject2).put("patchItemConfigs", localJSONArray);
+        paramContext = new Bundle();
+        paramContext.putInt("process_id", 1);
+        paramContext.putString("schemaUrl", paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
+        paramContext.putBoolean("is_can_open_yyb_native", false);
+        paramContext.putString("big_brother_source_key", "biz_src_ads");
+        paramContext.putAll(paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle);
+        acwa.a(paramContext);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled not : yingyongbao H5 " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
+        return;
+        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("&auto_download=" + paramContext, "");
+        continue;
+        if ("1".equals(localObject)) {
+          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = (paramGdtBaseAdItem.jdField_b_of_type_JavaLangString + "&" + "auto_download" + "=" + (String)localObject);
+        }
       }
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
     }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PatchLogTag", 2, "PatchConfig writeToJsonString", localJSONException);
-    }
-    return localObject1;
+    QLog.e("GdtAdHandler", 1, "doAppJump download_url null " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
     return null;
   }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvd
  * JD-Core Version:    0.7.0.1
  */

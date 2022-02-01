@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
-public class beea
-  implements DialogInterface.OnDismissListener
+class beea
+  implements URLDrawable.DownloadListener
 {
-  public beea(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  beea(bedz parambedz, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onFileDownloadFailed(int paramInt)
   {
-    TribeVideoListPlayerFragment.a(this.a);
+    if (!bedz.a(this.jdField_a_of_type_Bedz).contains(this.jdField_a_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
+      }
+      bedz.a(this.jdField_a_of_type_Bedz).add(this.jdField_a_of_type_JavaLangString);
+    }
   }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

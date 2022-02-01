@@ -1,35 +1,55 @@
-import android.os.Bundle;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.apollo.sdk.CmShowTest.4;
+import com.tencent.mobileqq.apollo.sdk.CmShowTest.5;
+import com.tencent.mobileqq.apollo.sdk.CmShowTest.6;
+import com.tencent.mobileqq.apollo.sdk.CmShowTest.7;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
-class anho
-  implements EIPCResultCallback
+public class anho
 {
-  anho(anhm paramanhm) {}
+  private static int a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private static void b(RelativeLayout paramRelativeLayout)
   {
-    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
-      }
-      return;
-    }
-    boolean bool = paramEIPCResult.isSuccess();
-    String str2 = paramEIPCResult.data.getString("key_method_action");
-    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
-    if (QLog.isColorLevel()) {
-      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
-    }
-    String str1 = "";
-    if ("setFriendGrouping".equals(str2))
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
-      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
-    }
-    anhm.a(this.a, str3, str1, str2);
+    QLog.i("CmShowTest", 1, "init relativeLayout:" + paramRelativeLayout);
+    CmShowRenderView localCmShowRenderView = new CmShowRenderView(paramRelativeLayout.getContext());
+    paramRelativeLayout.addView(localCmShowRenderView, new RelativeLayout.LayoutParams(-1, -1));
+    localCmShowRenderView.a(new anhq(localCmShowRenderView), "1725000451", "1174992642", 0);
+  }
+  
+  private static void d(CmShowRenderView paramCmShowRenderView)
+  {
+    QLog.i("CmShowTest", 1, "testMainAction");
+    CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
+    localPlayActionConfig.a = 3000272;
+    localPlayActionConfig.jdField_b_of_type_Int = 101;
+    localPlayActionConfig.c = 2;
+    localPlayActionConfig.jdField_b_of_type_Boolean = false;
+    paramCmShowRenderView.a(localPlayActionConfig);
+  }
+  
+  private static void e(CmShowRenderView paramCmShowRenderView)
+  {
+    QLog.i("CmShowTest", 1, "testPostAction");
+    CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
+    localPlayActionConfig.a = 3000272;
+    localPlayActionConfig.jdField_b_of_type_Int = 102;
+    localPlayActionConfig.jdField_b_of_type_Boolean = false;
+    localPlayActionConfig.c = 3;
+    paramCmShowRenderView.a(localPlayActionConfig);
+  }
+  
+  private static void f(CmShowRenderView paramCmShowRenderView)
+  {
+    ThreadManager.getUIHandler().postDelayed(new CmShowTest.4(paramCmShowRenderView), 5000L);
+    ThreadManager.getUIHandler().postDelayed(new CmShowTest.5(paramCmShowRenderView), 10000L);
+    ThreadManager.getUIHandler().postDelayed(new CmShowTest.6(paramCmShowRenderView), 15000L);
+    ThreadManager.getUIHandler().postDelayed(new CmShowTest.7(paramCmShowRenderView), 20000L);
   }
 }
 

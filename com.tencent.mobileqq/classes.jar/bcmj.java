@@ -1,29 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bcmj
+  extends anyu
 {
-  private static boolean a;
+  public bcmj(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
   
-  public static boolean a()
+  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong, int paramInt3, List<bcfq> paramList)
   {
-    boolean bool = false;
-    if (a) {
-      return true;
+    if (this.a.a != null) {
+      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
     }
-    String str = bcls.c();
-    if (str == null) {
-      return false;
-    }
-    if (!bgmg.a(str + "libObjectTracker.so")) {}
-    for (;;)
+    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
-      }
-      a = bool;
-      return a;
-      bool = true;
-    }
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt1 != 88) || (paramBoolean2));
+        if (!paramBoolean1) {
+          break;
+        }
+      } while (!(paramObject instanceof ArrayList));
+      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
+      return;
+    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
+    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
   }
 }
 

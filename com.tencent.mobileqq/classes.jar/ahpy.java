@@ -1,13 +1,25 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
-public class ahpy
-  implements ahor
+class ahpy
+  implements agjk
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahpy(ahpx paramahpx) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    paramagup.g(paramMessageRecord, paramagwc);
+    paramView = (ahqh)((View)paramView.getParent().getParent().getParent()).getTag();
+    if (paramView != null) {
+      paramView.a.performLongClick();
+    }
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

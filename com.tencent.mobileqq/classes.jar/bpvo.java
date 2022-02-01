@@ -1,32 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.SmoothScroller;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.NestedScrollingParentLayout;
 
 public class bpvo
-  extends wle<wzq, xbd>
+  extends RecyclerView.OnScrollListener
 {
-  bpvo(bpvm parambpvm) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(@NonNull wzq paramwzq, @Nullable xbd paramxbd, @NonNull ErrorMessage paramErrorMessage)
+  public bpvo(NestedScrollingParentLayout paramNestedScrollingParentLayout) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    yqp.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramxbd != null))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
+    do
     {
-      yqp.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramxbd.toString());
-      bpvm.a(this.a).addAll(paramxbd.jdField_a_of_type_JavaUtilList);
-      bpvm.a(this.a, paramxbd.jdField_a_of_type_JavaLangString);
-      bpvm.a(this.a, paramxbd.b);
-      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
+      do
+      {
+        return;
+      } while ((paramInt != 0) || (!this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_Boolean = false;
+      paramRecyclerView = NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager();
+      paramRecyclerView = NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(paramRecyclerView);
+      NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout, NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getChildAdapterPosition(paramRecyclerView));
+    } while (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) < 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("NestedScrollingParentLayout", 2, "mVideoItemListener onScrollStateChanged onScrolled dx " + paramInt);
     }
-    for (;;)
-    {
-      bpvm.a(this.a).b(paramErrorMessage.errorCode, bpvm.a(this.a), this.a.a());
+    paramRecyclerView = NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager());
+    paramRecyclerView.setTargetPosition(NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
+    NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager().startSmoothScroll(paramRecyclerView);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NestedScrollingParentLayout", 2, "mVideoItemListener onScrolled dx +=" + paramInt1);
+    }
+    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
+    while ((NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) >= 0) || ((paramInt1 == 0) && (paramInt2 == 0))) {
       return;
-      yqp.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
+    paramInt1 = (int)(paramInt1 / NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
+    NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).scrollBy(paramInt1, paramInt2);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

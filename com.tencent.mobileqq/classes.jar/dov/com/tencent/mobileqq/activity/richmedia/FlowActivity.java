@@ -34,7 +34,7 @@ public abstract class FlowActivity
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297022));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297034));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
@@ -82,11 +82,11 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297022));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297034));
     }
     a(paramBundle);
     setContentView(2131558449);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366870));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366921));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }

@@ -1,25 +1,41 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afob
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afob(TroopRequestActivity paramTroopRequestActivity) {}
+  public afob(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.a, AccountDetailActivity.class);
-    localIntent.putExtra("uin", this.a.a.req_uin.get() + "");
-    localIntent.putExtra("source", 112);
-    this.a.startActivity(localIntent);
-    bcst.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (NotifyPushSettingActivity.a())
+    {
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setChecked(false);
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131717560), "qqsetting_notify_showcontent_key", paramBoolean);
+      if (!paramBoolean) {
+        break label132;
+      }
+    }
+    label132:
+    for (int i = 1;; i = 0)
+    {
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      if (paramBoolean)
+      {
+        SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(0);
+        break;
+      }
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      break;
+    }
   }
 }
 

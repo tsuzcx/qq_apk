@@ -1,6 +1,8 @@
 public abstract interface aajs
 {
-  public abstract void a(int paramInt);
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
 }
 
 

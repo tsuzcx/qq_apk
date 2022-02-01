@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bggs;
+import bhgt;
 import com.tencent.qphone.base.util.QLog;
-import tse;
-import tsf;
+import tjb;
+import tjc;
 
 public class ViolaBaseView$10$1
   implements Runnable
 {
-  public ViolaBaseView$10$1(tse paramtse) {}
+  public ViolaBaseView$10$1(tjb paramtjb) {}
   
   public void run()
   {
     try
     {
-      ViolaBaseView.a(this.a.a, new tsf(this));
-      bggs.a().a(ViolaBaseView.a(this.a.a));
+      ViolaBaseView.a(this.a.a, new tjc(this));
+      bhgt.a().a(ViolaBaseView.a(this.a.a));
       return;
     }
     catch (Exception localException)

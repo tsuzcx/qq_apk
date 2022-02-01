@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import armt;
+import ascj;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ComboResource$2
@@ -8,7 +8,7 @@ public final class ComboResource$2
 {
   public void run()
   {
-    armt.a(BaseApplicationImpl.getApplication().getBaseContext());
+    ascj.a(BaseApplicationImpl.getApplication().getBaseContext());
   }
 }
 

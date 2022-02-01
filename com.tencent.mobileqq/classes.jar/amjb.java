@@ -1,18 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import java.util.ArrayList;
+
 public class amjb
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public float[] a;
-  public int[] a;
-  public float[] b;
-  public int[] b;
+  public amjb(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public amjb()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    this.jdField_b_of_type_ArrayOfFloat = new float[4];
-    this.jdField_a_of_type_ArrayOfInt = new int[4];
-    this.jdField_b_of_type_ArrayOfInt = new int[4];
-    this.jdField_a_of_type_Int = 0;
+    PhotoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
   }
 }
 

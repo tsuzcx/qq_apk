@@ -1,24 +1,10 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
-
 public class wmw
-  extends wno
+  extends wmv
 {
-  qqstory_service.RspLikeFeed a;
-  
-  public wmw() {}
-  
-  public wmw(qqstory_service.RspLikeFeed paramRspLikeFeed)
+  public wmw(wms paramwms)
   {
-    super(paramRspLikeFeed.result);
-    this.a = paramRspLikeFeed;
+    super(paramwms);
   }
-  
-  public void a() {}
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString) {}
 }
 
 

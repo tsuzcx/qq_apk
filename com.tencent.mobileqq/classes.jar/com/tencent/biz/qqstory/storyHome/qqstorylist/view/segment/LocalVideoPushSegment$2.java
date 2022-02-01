@@ -2,22 +2,22 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import yor;
-import yow;
-import yqp;
+import ysm;
+import ysr;
+import yuk;
 
 public class LocalVideoPushSegment$2
   implements Runnable
 {
-  public LocalVideoPushSegment$2(yor paramyor) {}
+  public LocalVideoPushSegment$2(ysm paramysm) {}
   
   public void run()
   {
-    yqp.b("Q.qqstory.home.LocalVideoPushSegment", "loadPhotos..");
-    yow localyow = yor.a(this.this$0);
-    if (localyow != null)
+    yuk.b("Q.qqstory.home.LocalVideoPushSegment", "loadPhotos..");
+    ysr localysr = ysm.a(this.this$0);
+    if (localysr != null)
     {
-      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.2.1(this, localyow));
+      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.2.1(this, localysr));
       return;
     }
     ThreadManager.getUIHandler().post(new LocalVideoPushSegment.2.2(this));

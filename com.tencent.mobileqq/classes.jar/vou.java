@@ -1,174 +1,51 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class vou
+  extends von
 {
-  public static int a;
-  public static int b;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846601);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public Long a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844002);
-  public Long b;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  public int c;
-  public Long c;
-  private String c;
-  public int d = 2;
-  public int e;
-  private int f;
-  private int g;
-  private int h = jdField_a_of_type_Int;
+  private QCircleFollowView a;
   
-  static
+  public vou(int paramInt)
   {
-    jdField_b_of_type_Int = 1;
+    super(paramInt);
   }
   
-  public int a()
+  protected String a()
   {
-    return this.e;
+    return "QCircleFollowMessagePresenter";
   }
   
-  public Drawable a()
+  void a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public vou a(int paramInt)
-  {
-    this.e = paramInt;
-    return this;
-  }
-  
-  public vou a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    return this;
-  }
-  
-  public vou a(ImageView paramImageView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramImageView.setTag(2131373863, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+    {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView != null) {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
     }
-    return this;
   }
   
-  public vou a(String paramString)
+  void b(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131373863, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131373929));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowStateChangeListener(new vov(this));
+  }
+  
+  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
+  {
+    paramStNotice = (FeedCloudMeta.StUser)paramStNotice.operation.opUser.get();
+    if (paramStNotice != null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUserData(paramStNotice);
     }
-    return this;
-  }
-  
-  public vou a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.f;
-  }
-  
-  public Drawable b()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public vou b(int paramInt)
-  {
-    this.f = paramInt;
-    return this;
-  }
-  
-  public vou b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vou b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.g;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public vou c(int paramInt)
-  {
-    this.g = paramInt;
-    return this;
-  }
-  
-  public vou c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public boolean c()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && ((this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131373863) instanceof String))) {
-      return this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131373863).equals(this.jdField_a_of_type_JavaLangString);
-    }
-    return false;
-  }
-  
-  public int d()
-  {
-    return this.h;
-  }
-  
-  public vou d(int paramInt)
-  {
-    this.h = paramInt;
-    return this;
   }
 }
 

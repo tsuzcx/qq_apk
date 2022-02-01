@@ -7,7 +7,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetExpandAppListRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -103,7 +103,7 @@ public class MiniAppGetKuolieApplistServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetExpandAppList");
-      paramPacket.putSendData(bguc.a((byte[])localObject));
+      paramPacket.putSendData(bhuf.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

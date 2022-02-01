@@ -1,16 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
 
 class zlw
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  zlw(zlv paramzlv) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    zlv.a(this.a, f);
-  }
+  zlw(zlv paramzlv) {}
 }
 
 

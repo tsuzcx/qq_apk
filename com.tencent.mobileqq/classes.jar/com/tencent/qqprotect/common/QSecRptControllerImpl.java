@@ -2,11 +2,11 @@ package com.tencent.qqprotect.common;
 
 import android.os.Handler.Callback;
 import android.os.Message;
-import bgnt;
-import bkac;
-import bkae;
-import bkag;
-import bkfv;
+import bhnv;
+import blbg;
+import blbi;
+import blbk;
+import blha;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.SafeReport.ReqBody;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,52 +15,52 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
 import mqq.app.MobileQQ;
-import nir;
+import nkm;
 
 public class QSecRptControllerImpl
-  extends bkac
+  extends blbg
   implements Handler.Callback
 {
-  private static volatile bkac jdField_a_of_type_Bkac;
+  private static volatile blbg jdField_a_of_type_Blbg;
   private final long jdField_a_of_type_Long = 300000L;
-  private bkfv jdField_a_of_type_Bkfv = new bkfv(ThreadManager.getSubThreadLooper(), this);
+  private blha jdField_a_of_type_Blha = new blha(ThreadManager.getSubThreadLooper(), this);
   private QSecRptControllerImpl.ReportRunnable jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable;
-  private final Vector<bkag> jdField_a_of_type_JavaUtilVector = new Vector();
+  private final Vector<blbk> jdField_a_of_type_JavaUtilVector = new Vector();
   
   private QSecRptControllerImpl()
   {
-    this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(12315, 300000L);
+    this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(12315, 300000L);
   }
   
-  public static bkac a()
+  public static blbg a()
   {
-    if (jdField_a_of_type_Bkac == null) {}
+    if (jdField_a_of_type_Blbg == null) {}
     try
     {
-      if (jdField_a_of_type_Bkac == null) {
-        jdField_a_of_type_Bkac = new QSecRptControllerImpl();
+      if (jdField_a_of_type_Blbg == null) {
+        jdField_a_of_type_Blbg = new QSecRptControllerImpl();
       }
-      return jdField_a_of_type_Bkac;
+      return jdField_a_of_type_Blbg;
     }
     finally {}
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Bkfv.removeMessages(12315);
+    this.jdField_a_of_type_Blha.removeMessages(12315);
     b();
-    this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
   }
   
-  private void a(bkag parambkag)
+  private void a(blbk paramblbk)
   {
     synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
-      this.jdField_a_of_type_JavaUtilVector.add(parambkag);
+      this.jdField_a_of_type_JavaUtilVector.add(paramblbk);
       if (QLog.isColorLevel()) {
         QLog.d("QSRPT", 2, String.format("add report: totally %d items in cache", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size()) }));
       }
-      if ((parambkag.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
+      if ((paramblbk.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
         b();
       }
       return;
@@ -75,12 +75,12 @@ public class QSecRptControllerImpl
     if (QLog.isColorLevel()) {
       QLog.d("QSRPT", 2, String.format("totally sending report: %d items", new Object[] { Integer.valueOf(paramReqBody.LogItem_reportdata.size()) }));
     }
-    nir.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new bkae(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
+    nkm.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new blbi(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
   }
   
   private void b()
   {
-    if (!bgnt.d(BaseApplicationImpl.sApplication)) {}
+    if (!bhnv.d(BaseApplicationImpl.sApplication)) {}
     do
     {
       return;
@@ -97,18 +97,18 @@ public class QSecRptControllerImpl
   
   public void b(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    bkag localbkag = new bkag();
-    localbkag.jdField_a_of_type_Int = paramInt1;
-    localbkag.b = paramInt2;
-    localbkag.jdField_a_of_type_JavaLangString = paramString;
-    localbkag.c = paramInt3;
-    this.jdField_a_of_type_Bkfv.obtainMessage(12316, localbkag).sendToTarget();
+    blbk localblbk = new blbk();
+    localblbk.jdField_a_of_type_Int = paramInt1;
+    localblbk.b = paramInt2;
+    localblbk.jdField_a_of_type_JavaLangString = paramString;
+    localblbk.c = paramInt3;
+    this.jdField_a_of_type_Blha.obtainMessage(12316, localblbk).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 12316) {
-      a((bkag)paramMessage.obj);
+      a((blbk)paramMessage.obj);
     }
     for (;;)
     {

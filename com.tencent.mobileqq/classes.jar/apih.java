@@ -1,311 +1,266 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ModuleCallbackWrapper;
-import com.tencent.ark.ark.VariantWrapper;
+import android.content.Context;
+import android.opengl.GLSurfaceView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.QzoneMainRuntime;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.miniaio.MiniChatFragment;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARNativeBridge.ActionCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.1;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.10;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.11;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.util.WeakReference;
+import java.util.Locale;
 
-public abstract class apih
-  implements ark.ModuleCallbackWrapper
+public class apih
+  implements apho, ARNativeBridge.ActionCallback
 {
-  public static boolean a;
-  protected long a;
-  protected ark.Application a;
-  public String a;
-  private HashMap<Long, ark.VariantWrapper> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private Map<String, Set<aplw>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private long jdField_b_of_type_Long = 1L;
-  public String b;
-  private final HashMap<String, apin> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  public String c;
+  private volatile int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private apfb jdField_a_of_type_Apfb;
+  private aphq jdField_a_of_type_Aphq;
+  private apii jdField_a_of_type_Apii;
+  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int b;
+  private volatile int c = 1;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   
-  static
+  public apih(aphq paramaphq, apii paramapii, GLSurfaceView paramGLSurfaceView)
   {
-    jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Aphq = paramaphq;
+    this.jdField_a_of_type_Apii = paramapii;
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_Aphq.a();
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = ((ARNativeBridge)this.jdField_a_of_type_Aphq.a(0));
   }
   
-  protected apih(ark.Application paramApplication, long paramLong)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentArkArk$Application = paramApplication;
-    this.jdField_a_of_type_JavaLangString = paramApplication.GetSpecific("appName");
-    this.c = paramApplication.GetSpecific("appPath");
-    this.jdField_b_of_type_JavaLangString = paramApplication.GetID();
-    this.jdField_a_of_type_Long = paramLong;
-    a();
-  }
-  
-  public static Activity a()
-  {
-    if (BaseActivity.sTopActivity != null) {
-      return BaseActivity.sTopActivity;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "setNativeState, mCurState=" + this.jdField_a_of_type_Int + ", new State=" + paramInt);
     }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QzoneMainRuntime))
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
     {
-      localObject = ((AppRuntime)localObject).getApplication().getResumeActivity();
-      if (localObject != null) {
-        return (Activity)((WeakReference)localObject).get();
-      }
+    case 3: 
+    case 4: 
+    case 5: 
+    case 11: 
+    default: 
+      return;
+    case 2: 
+      ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
+      this.b = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeCreateEngineBusiness(this.b, this.jdField_a_of_type_Apii.b, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getAssets(), this.jdField_a_of_type_Apii.c, this.d, this.e, 100);
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(this);
+      a(7);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeonSurfaceChanged(this.b, this.d, this.e);
+      return;
+    case 7: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.b);
+      this.c = 0;
+      a(11);
+      return;
+    case 9: 
+      this.jdField_a_of_type_Aphq.a(new Interactive3DRenderable.1(this));
+      return;
+    case 8: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.b);
+      return;
     }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.b);
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
+    this.b = 0;
+    if (this.jdField_a_of_type_Apfb != null)
+    {
+      this.jdField_a_of_type_Apfb.b();
+      this.jdField_a_of_type_Apfb.c();
+    }
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public static SessionInfo a()
+  public void a(int paramInt1, int paramInt2)
   {
-    SessionInfo localSessionInfo = null;
-    Object localObject2 = a();
-    Object localObject1 = localSessionInfo;
-    if ((localObject2 instanceof FragmentActivity))
+    this.d = paramInt1;
+    this.e = paramInt2;
+  }
+  
+  public void a(aphw paramaphw)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeOnDrawFrame(this.b, paramaphw.a, (float[])paramaphw.a("CAMERA_POSITION"));
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "playEffectMusic, " + paramString);
+    }
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.10(this, paramString));
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d;
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "playBgMusic, " + paramString);
+    }
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.11(this, paramString));
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_Apii.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "init");
+    }
+  }
+  
+  public void callback(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "fNativeDoActionCallback action=" + paramInt1 + ", params=" + paramString1 + ", callbackId=" + paramInt2 + ", result=" + paramString2);
+    }
+    if (this.jdField_a_of_type_Aphq == null) {}
+    do
     {
-      localObject2 = (FragmentActivity)localObject2;
-      localObject1 = (ChatFragment)((FragmentActivity)localObject2).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject1 == null) {
-        break label91;
-      }
-      localObject1 = ((ChatFragment)localObject1).a();
-      if (localObject1 == null) {
-        break label157;
-      }
-      localSessionInfo = ((BaseChatPie)localObject1).a();
-      localObject1 = localSessionInfo;
-      if (QLog.isColorLevel())
+      return;
+      switch (paramInt1)
       {
-        QLog.d("ArkApp.ArkAppModuleBase", 2, new Object[] { "multiAio.getTopChatSessionInfo form baseChatPie=", a(localSessionInfo) });
-        localObject1 = localSessionInfo;
+      case 57: 
+      default: 
+        this.jdField_a_of_type_Aphq.a(this, this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramInt1, 0, paramString2);
+        return;
+      }
+    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 300L);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a("res/music/fudai_click.mp3");
+    return;
+    a("res/music/fudai_explode.mp3");
+    return;
+    a("res/music/fudai_appear.mp3");
+    b("res/music/fudai_background.mp3");
+    return;
+    b("res/music/gameing_background.mp3");
+    return;
+    b("res/music/gameend_background.mp3");
+    return;
+    a("res/music/redpack_get.mp3");
+    return;
+    a("res/music/aimed.mp3");
+    return;
+    this.g += 1;
+    this.f += paramInt2;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "start");
+    }
+    if (1 == this.jdField_a_of_type_Int)
+    {
+      String str = this.jdField_a_of_type_Apii.c;
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_ArrayOfJavaLangString = new String[8];
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = (str + "res/music/loading.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[1] = (str + "res/music/321ready.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[2] = (str + "res/music/redpack_open.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[3] = (str + "res/music/fudai_click.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[4] = (str + "res/music/fudai_explode.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[5] = (str + "res/music/fudai_appear.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[6] = (str + "res/music/redpack_get.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[7] = (str + "res/music/aimed.mp3");
+      this.jdField_a_of_type_Apfb = new apfb(1, this.jdField_a_of_type_ArrayOfJavaLangString);
+      a(2);
+      this.g = 0;
+      this.f = 0;
+    }
+    if (this.jdField_a_of_type_Aphq != null) {
+      this.jdField_a_of_type_Aphq.a(this, this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 100, 0, null);
+    }
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_a_of_type_Int == 9) && (this.b != 0);
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Int == 11)
+    {
+      int i = this.c + 1;
+      this.c = i;
+      if (i >= 2) {
+        a(9);
       }
     }
-    for (;;)
-    {
-      return localObject1;
-      label91:
-      localObject1 = localSessionInfo;
-      if ((localObject2 instanceof MiniChatActivity))
-      {
-        localObject2 = ((MiniChatActivity)localObject2).a();
-        localObject1 = localSessionInfo;
-        if ((localObject2 instanceof MiniChatFragment))
-        {
-          localSessionInfo = ((MiniChatFragment)localObject2).a();
-          localObject1 = localSessionInfo;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArkApp.ArkAppModuleBase", 2, new Object[] { "multiAio.getTopChatSessionInfo form miniChatPie=", a(localSessionInfo) });
-            return localSessionInfo;
-            label157:
-            localObject1 = null;
-          }
-        }
-      }
-    }
   }
   
-  public static QQAppInterface a()
+  public boolean e()
   {
-    return apkd.a();
-  }
-  
-  public static String a(SessionInfo paramSessionInfo)
-  {
-    return apkd.a(paramSessionInfo);
-  }
-  
-  private void a()
-  {
-    apin[] arrayOfapin = a();
-    if (arrayOfapin != null)
-    {
-      int j = arrayOfapin.length;
-      int i = 0;
-      while (i < j)
-      {
-        apin localapin = arrayOfapin[i];
-        this.jdField_b_of_type_JavaUtilHashMap.put(localapin.a(), localapin);
-        i += 1;
-      }
-    }
-  }
-  
-  private static boolean a()
-  {
-    return a() != null;
-  }
-  
-  private boolean a(apin paramapin)
-  {
-    if (paramapin.a()) {}
-    while (this.jdField_a_of_type_Long == 0L) {
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean b(apin paramapin)
-  {
-    if (a()) {
-      return true;
-    }
-    return paramapin.b();
-  }
-  
-  private boolean c(apin paramapin)
-  {
-    return apgt.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentArkArk$Application, paramapin.b());
-  }
-  
-  public void Destruct()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((ark.VariantWrapper)((Map.Entry)localIterator.next()).getValue()).Reset();
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    paramString = (apin)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    if (!a(paramString))
-    {
-      QLog.i("ArkApp.ArkAppModuleBase", 1, "HasMethod, method not support app type, method=" + paramString);
-      return false;
-    }
-    if (!b(paramString))
-    {
-      QLog.i("ArkApp.ArkAppModuleBase", 1, "HasMethod, method not support multi process, method=" + paramString);
-      return false;
-    }
     return true;
   }
   
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void f()
   {
-    apin localapin = (apin)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
-    if (localapin == null) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, " + this);
     }
-    if (!a(paramString))
-    {
-      QLog.i("ArkApp.ArkAppModuleBase", 1, "Invoke, check frequency fail, method=" + paramString);
-      return false;
-    }
-    if (!c(localapin))
-    {
-      QLog.i("ArkApp.ArkAppModuleBase", 1, "Invoke, no permission, method=" + paramString);
-      return false;
-    }
-    if ((a()) || (localapin.b()))
-    {
-      localapin.a(this, paramArrayOfVariantWrapper, paramVariantWrapper);
-      return true;
-    }
-    QLog.i("ArkApp.ArkAppModuleBase", 1, "Invoke, method not support multiprocess, method=" + localapin);
-    return false;
-  }
-  
-  long a(ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((paramVariantWrapper == null) || (!paramVariantWrapper.IsFunction())) {
-      return 0L;
-    }
-    this.jdField_b_of_type_Long += 1L;
-    if (this.jdField_b_of_type_Long == 0L) {
-      this.jdField_b_of_type_Long = 1L;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_b_of_type_Long), paramVariantWrapper);
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public ark.VariantWrapper a(long paramLong)
-  {
-    ark.VariantWrapper localVariantWrapper = (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-    return localVariantWrapper;
-  }
-  
-  protected void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramLong2 > 0L))
+    if (this.jdField_a_of_type_Int == 9)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("ArkApp", 2, String.format("ModuleBase.addTokenBucket.api:%s,times:%d,period:%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, queueEvent, " + this);
       }
-      Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      Object localObject = localSet;
-      if (localSet == null)
+      if ((this.jdField_a_of_type_Aphq != null) && (this.jdField_a_of_type_Boolean == true))
       {
-        localObject = new HashSet();
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+        this.jdField_a_of_type_Aphq.b(1, 0);
+        this.jdField_a_of_type_Boolean = false;
       }
-      ((Set)localObject).add(new aplw(paramLong1, paramLong2));
+      if (this.jdField_a_of_type_Aphq != null)
+      {
+        this.jdField_a_of_type_Aphq.a(this.jdField_a_of_type_Apii.jdField_a_of_type_JavaLangString);
+        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, remove hsRender here, " + this);
+        this.jdField_a_of_type_Aphq.a(this, this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 101, 0, null);
+      }
+      if (this.jdField_a_of_type_Int == 9) {
+        a(10);
+      }
     }
-  }
-  
-  public void a(List<apmf> paramList)
-  {
-    if (paramList != null)
+    if (this.g > 0)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        apmf localapmf = (apmf)paramList.next();
-        a(localapmf.jdField_a_of_type_JavaLangString, localapmf.jdField_a_of_type_Long, localapmf.jdField_b_of_type_Long);
-      }
+      float f1 = this.f * 1.0F / this.g;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("fps_total", String.valueOf(this.f));
+      localHashMap.put("fps_count", String.valueOf(this.g));
+      localHashMap.put("fps_avg", String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(f1) }));
+      bdmc.a(BaseApplicationImpl.getContext()).a(BaseActivity.sTopActivity.getCurrentAccountUin(), "binhai_fps", true, 0L, 0L, localHashMap, "", false);
     }
-  }
-  
-  protected boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (localObject == null) {
-        return true;
-      }
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        aplw localaplw = (aplw)((Iterator)localObject).next();
-        if (!localaplw.a())
-        {
-          QLog.i("ArkApp", 2, String.format("ModuleBase.checkFrequency.Refuse:%s,%s ", new Object[] { paramString, localaplw.toString() }));
-          return false;
-        }
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  protected abstract apin[] a();
-  
-  public ark.VariantWrapper b(long paramLong)
-  {
-    return (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
   }
 }
 

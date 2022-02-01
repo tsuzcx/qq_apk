@@ -10,12 +10,12 @@ class TVKVideoInfoRequest$1
 {
   TVKVideoInfoRequest$1(TVKVideoInfoRequest paramTVKVideoInfoRequest) {}
   
-  public void OnVInfoFailure(String paramString1, String paramString2, int paramInt)
+  public void onVInfoFailure(String paramString1, String paramString2, int paramInt)
   {
     TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), 101, paramString2, paramInt, null);
   }
   
-  public void OnVInfoSuccess(String paramString1, String paramString2, Document paramDocument)
+  public void onVInfoSuccess(String paramString1, String paramString2, Document paramDocument)
   {
     TVKVideoInfoRequest.access$202(this.this$0, TVKVideoInfoRequest.access$300(this.this$0).parseVinfo(paramDocument));
     TVKVideoInfoRequest.access$300(this.this$0).setVinfoXml(paramString2);
@@ -33,7 +33,7 @@ class TVKVideoInfoRequest$1
     TVKVideoInfoRequest.access$300(this.this$0).buildCdnUrl(TVKVideoInfoRequest.access$500(this.this$0).getUpc());
     TVKVideoInfoRequest.access$200(this.this$0).setUrl(TVKVideoInfoRequest.access$300(this.this$0).getUrl());
     TVKVideoInfoRequest.access$200(this.this$0).setVinfoXml(TVKVideoInfoRequest.access$300(this.this$0).getVinfoXml());
-    TVKVideoInfoRequest.access$100(this.this$0).OnSuccess(TVKVideoInfoRequest.access$000(this.this$0), TVKVideoInfoTransfer.transfer(TVKVideoInfoRequest.access$200(this.this$0), TVKVideoInfoRequest.access$500(this.this$0)));
+    TVKVideoInfoRequest.access$100(this.this$0).onSuccess(TVKVideoInfoRequest.access$000(this.this$0), TVKVideoInfoTransfer.transfer(TVKVideoInfoRequest.access$200(this.this$0), TVKVideoInfoRequest.access$500(this.this$0)));
   }
 }
 

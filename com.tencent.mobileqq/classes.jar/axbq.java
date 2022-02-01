@@ -1,41 +1,60 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.ImgDownloadListener.1;
-import com.tencent.mobileqq.nearby.ImgDownloadListener.2;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axbq
-  implements URLDrawable.DownloadListener
+class axbq
+  implements AdapterView.OnItemClickListener
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
+  axbq(axbp paramaxbp) {}
   
-  public axbq(Context paramContext)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public axbq(Context paramContext, String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    ThreadManager.postImmediately(new ImgDownloadListener.2(this, paramInt), null, true);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    ThreadManager.postImmediately(new ImgDownloadListener.1(this, paramLong), null, true);
+    if (this.a.a.getActionSheet().isShowing()) {
+      this.a.a.getActionSheet().dismiss();
+    }
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131719399;
+      }
+    }
+    for (;;)
+    {
+      if (i != -1) {
+        zyx.a(1, i);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+        return;
+        if (WXShareHelper.a().b()) {
+          break label175;
+        }
+        i = 2131719400;
+        break;
+        switch ((int)paramLong)
+        {
+        default: 
+          break;
+        case 0: 
+          axbp.a(this.a);
+          break;
+        case 1: 
+          axbp.b(this.a);
+          break;
+        case 2: 
+          axbp.c(this.a);
+          break;
+        case 3: 
+          axbp.d(this.a);
+        }
+      }
+      label175:
+      i = -1;
+    }
   }
 }
 

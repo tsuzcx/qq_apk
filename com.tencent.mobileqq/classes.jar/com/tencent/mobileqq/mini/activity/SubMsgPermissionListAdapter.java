@@ -88,9 +88,9 @@ public class SubMsgPermissionListAdapter
       return localObject;
       localObject = new SubMsgPermissionListAdapter.ViewHolder(null);
       paramView = this.mInflater.inflate(2131559402, null);
-      ((SubMsgPermissionListAdapter.ViewHolder)localObject).tvAuthTitle = ((TextView)paramView.findViewById(2131379519));
-      ((SubMsgPermissionListAdapter.ViewHolder)localObject).ivAuthDetail = ((ImageView)paramView.findViewById(2131369031));
-      ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher = ((Switch)paramView.findViewById(2131378114));
+      ((SubMsgPermissionListAdapter.ViewHolder)localObject).tvAuthTitle = ((TextView)paramView.findViewById(2131379688));
+      ((SubMsgPermissionListAdapter.ViewHolder)localObject).ivAuthDetail = ((ImageView)paramView.findViewById(2131369125));
+      ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher = ((Switch)paramView.findViewById(2131378271));
       paramView.setTag(localObject);
       break;
     }

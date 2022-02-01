@@ -1,36 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.Switch;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import mqq.app.QQPermissionCallback;
 
-class amde
-  implements View.OnClickListener
+public class amde
+  implements QQPermissionCallback
 {
-  amde(amdc paramamdc, RedTouch paramRedTouch, arcs paramarcs) {}
+  public amde(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Switch localSwitch;
-    if (AppSetting.c)
-    {
-      localSwitch = (Switch)paramView.findViewById(2131363933);
-      if (localSwitch != null) {
-        if (localSwitch.isChecked()) {
-          break label66;
-        }
-      }
-    }
-    label66:
-    for (boolean bool = true;; bool = false)
-    {
-      localSwitch.setChecked(bool);
-      amdc.a(this.jdField_a_of_type_Amdc, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Arcs, localSwitch.isChecked());
-      paramView.sendAccessibilityEvent(1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.a.obtainMessage(2);
+    paramArrayOfString.arg1 = 1;
+    paramArrayOfString.arg2 = 2131698135;
+    paramArrayOfString.sendToTarget();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CreateFaceToFaceDiscussionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, this.jdField_a_of_type_Int);
   }
 }
 

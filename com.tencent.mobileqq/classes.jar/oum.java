@@ -1,6 +1,17 @@
+import java.util.List;
+
 class oum
+  extends ovd
 {
-  private static final ouj a = new ouj(null);
+  oum(otv paramotv, boolean paramBoolean, List paramList)
+  {
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    paramovg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.b(this.jdField_a_of_type_Otv), 3, 3);
+  }
 }
 
 

@@ -1,29 +1,47 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class akaz
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public akaz(AvatarPendantActivity paramAvatarPendantActivity, int paramInt, String paramString1, String paramString2) {}
+  public akaz(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    bgzo.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
-    String str = "0";
-    if (!TextUtils.isEmpty(this.b)) {
-      if (!"QQ会员".equals(this.b)) {
-        break label91;
+    int i = 1;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      long l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo == null)
+      {
+        bool = true;
+        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
       }
     }
-    label91:
-    for (str = "0";; str = "1")
+    else
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, str, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
+      paramWUserSigInfo.arg1 = paramInt;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label135;
+      }
+    }
+    label135:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramWUserSigInfo.arg2 = paramInt;
+      paramWUserSigInfo.obj = paramDevlockInfo;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
       return;
+      bool = false;
+      break;
     }
   }
 }

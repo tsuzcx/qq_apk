@@ -19,6 +19,7 @@ import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.launcher.widget.Switch;
 import com.tencent.qqmini.sdk.utils.ImmersiveUtils;

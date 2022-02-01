@@ -1,8 +1,11 @@
-public class avwg
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+
+class avwg
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public int a;
-  public String a;
-  public String b;
+  avwg(avvx paramavvx) {}
+  
+  public void OnDownloadCallback(String paramString) {}
 }
 
 

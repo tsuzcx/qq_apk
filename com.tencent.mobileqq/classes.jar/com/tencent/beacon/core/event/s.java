@@ -5,7 +5,6 @@ import com.tencent.beacon.core.d.k;
 import com.tencent.beacon.core.d.l;
 import com.tencent.beacon.core.e.b;
 import com.tencent.beacon.core.e.d;
-import com.tencent.beacon.core.info.IccIdJNI;
 import com.tencent.beacon.core.info.a;
 import com.tencent.beacon.core.info.g;
 import com.tencent.beacon.core.protocol.event.EventRecord;
@@ -65,7 +64,6 @@ public class s
         if ((localObject != null) && (!((String)localObject).equals(""))) {
           localHashMap.put("QQ", "" + (String)localObject);
         }
-        localHashMap.put("A32", IccIdJNI.a());
         localHashMap.put("A141", QimeiSDK.getInstance().getBeaconIdInfo(paramContext));
         localHashMap.put("A143", paramMap.j());
         localHashMap.put("A2", "" + paramMap.c());
@@ -83,7 +81,7 @@ public class s
         localHashMap.put("A89", locale.c(paramContext));
         localHashMap.put("A52", "" + locale.n(paramContext));
         if (!locale.i()) {
-          break label888;
+          break label905;
         }
         paramMap = "Y";
         localHashMap.put("A58", paramMap);
@@ -92,14 +90,17 @@ public class s
         localHashMap.put("A20", locale.p(paramContext));
         localHashMap.put("A69", locale.q(paramContext));
         localHashMap.put("A60", locale.o(paramContext));
+        localHashMap.put("A9", locale.d());
+        localHashMap.put("A10", locale.h());
         if (!localHashMap.containsKey("A95")) {
           localHashMap.put("A95", a.a(paramContext));
         }
         if (!paramBoolean2) {
-          break label896;
+          break label913;
         }
       }
-      label896:
+      label905:
+      label913:
       for (paramMap = "Y";; paramMap = "N")
       {
         localHashMap.put("A99", paramMap);
@@ -131,7 +132,6 @@ public class s
         paramContext.setElapse(paramLong1);
         paramContext.setSize(paramLong2);
         return paramContext;
-        label888:
         paramMap = "N";
         break;
       }

@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class afef
-  implements adsx
+  extends aoeg
 {
-  public afef(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public afef(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void a()
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a.finish();
+    if (paramInt == 0) {
+      this.a.c();
+    }
   }
   
-  public void b() {}
-  
-  public void c()
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a.finish();
+    if (paramInt == 0) {
+      this.a.c();
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
   }
 }
 

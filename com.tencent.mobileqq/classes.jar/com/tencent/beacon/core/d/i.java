@@ -59,7 +59,7 @@ public class i
         if (bool) {
           return;
         }
-        if (j.c((String)b.get("uin")))
+        if (j.b((String)b.get("uin")))
         {
           com.tencent.beacon.core.a.f localf = com.tencent.beacon.core.a.f.a(this.c);
           String str2 = localf.a("QIMEI_DENGTA", "");
@@ -297,7 +297,7 @@ public class i
         if (!this.e) {
           c();
         }
-        if (j.c(paramString1))
+        if (j.b(paramString1))
         {
           d.b("[upload error] errorCode isn't valid value!", new Object[0]);
           continue;

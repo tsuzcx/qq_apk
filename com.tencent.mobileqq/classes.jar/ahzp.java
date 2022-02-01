@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahzp
-  implements View.OnClickListener
+public class ahzp
+  implements ahyf
 {
-  ahzp(ahzo paramahzo) {}
-  
-  public void onClick(View paramView)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    ahny.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramahed.f(paramahfq, paramString);
   }
 }
 

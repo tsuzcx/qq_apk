@@ -1,15 +1,14 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
-
-class rdm
-  extends rcs
+public final class rdm
 {
-  rdm(rdd paramrdd, AppInterface paramAppInterface) {}
+  int a;
+  int b;
+  int c;
+  int d;
+  int e = -16777216;
   
-  public Drawable a()
+  public String toString()
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
+    return "Decoration{left=" + this.a + ", right=" + this.b + ", top=" + this.c + ", bottom=" + this.d + ", decorationColor=" + this.e + "}";
   }
 }
 

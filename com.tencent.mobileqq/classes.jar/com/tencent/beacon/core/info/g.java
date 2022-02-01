@@ -40,22 +40,22 @@ public class g
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokestatic 44	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   3: invokestatic 43	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   6: ifne +40 -> 46
     //   9: aload_0
     //   10: getfield 24	com/tencent/beacon/core/info/g:s	Ljava/util/Map;
     //   13: aload_1
-    //   14: invokeinterface 50 2 0
-    //   19: checkcast 52	com/tencent/beacon/upload/TunnelInfo
+    //   14: invokeinterface 49 2 0
+    //   19: checkcast 51	com/tencent/beacon/upload/TunnelInfo
     //   22: astore_2
     //   23: aload_2
     //   24: ifnull +22 -> 46
     //   27: aload_2
-    //   28: getfield 55	com/tencent/beacon/upload/TunnelInfo:version	Ljava/lang/String;
-    //   31: invokestatic 44	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   28: getfield 54	com/tencent/beacon/upload/TunnelInfo:version	Ljava/lang/String;
+    //   31: invokestatic 43	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   34: ifne +12 -> 46
     //   37: aload_2
-    //   38: getfield 55	com/tencent/beacon/upload/TunnelInfo:version	Ljava/lang/String;
+    //   38: getfield 54	com/tencent/beacon/upload/TunnelInfo:version	Ljava/lang/String;
     //   41: astore_1
     //   42: aload_0
     //   43: monitorexit
@@ -63,9 +63,9 @@ public class g
     //   45: areturn
     //   46: aload_0
     //   47: getfield 30	com/tencent/beacon/core/info/g:r	Landroid/content/Context;
-    //   50: invokestatic 58	com/tencent/beacon/core/info/b:b	(Landroid/content/Context;)Lcom/tencent/beacon/core/info/b;
+    //   50: invokestatic 57	com/tencent/beacon/core/info/b:b	(Landroid/content/Context;)Lcom/tencent/beacon/core/info/b;
     //   53: aload_1
-    //   54: invokevirtual 60	com/tencent/beacon/core/info/b:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   54: invokevirtual 59	com/tencent/beacon/core/info/b:a	(Ljava/lang/String;)Ljava/lang/String;
     //   57: astore_1
     //   58: goto -16 -> 42
     //   61: astore_1
@@ -106,22 +106,22 @@ public class g
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokestatic 44	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   3: invokestatic 43	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   6: ifne +40 -> 46
     //   9: aload_0
     //   10: getfield 24	com/tencent/beacon/core/info/g:s	Ljava/util/Map;
     //   13: aload_1
-    //   14: invokeinterface 50 2 0
-    //   19: checkcast 52	com/tencent/beacon/upload/TunnelInfo
+    //   14: invokeinterface 49 2 0
+    //   19: checkcast 51	com/tencent/beacon/upload/TunnelInfo
     //   22: astore_2
     //   23: aload_2
     //   24: ifnull +22 -> 46
     //   27: aload_2
-    //   28: getfield 68	com/tencent/beacon/upload/TunnelInfo:channel	Ljava/lang/String;
-    //   31: invokestatic 44	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   28: getfield 67	com/tencent/beacon/upload/TunnelInfo:channel	Ljava/lang/String;
+    //   31: invokestatic 43	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   34: ifne +12 -> 46
     //   37: aload_2
-    //   38: getfield 68	com/tencent/beacon/upload/TunnelInfo:channel	Ljava/lang/String;
+    //   38: getfield 67	com/tencent/beacon/upload/TunnelInfo:channel	Ljava/lang/String;
     //   41: astore_1
     //   42: aload_0
     //   43: monitorexit
@@ -129,9 +129,9 @@ public class g
     //   45: areturn
     //   46: aload_0
     //   47: getfield 30	com/tencent/beacon/core/info/g:r	Landroid/content/Context;
-    //   50: invokestatic 58	com/tencent/beacon/core/info/b:b	(Landroid/content/Context;)Lcom/tencent/beacon/core/info/b;
+    //   50: invokestatic 57	com/tencent/beacon/core/info/b:b	(Landroid/content/Context;)Lcom/tencent/beacon/core/info/b;
     //   53: aload_1
-    //   54: invokevirtual 70	com/tencent/beacon/core/info/b:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   54: invokevirtual 69	com/tencent/beacon/core/info/b:b	(Ljava/lang/String;)Ljava/lang/String;
     //   57: astore_1
     //   58: goto -16 -> 42
     //   61: astore_1

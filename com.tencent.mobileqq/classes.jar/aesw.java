@@ -1,28 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aesw
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  WeakReference<PayBridgeActivity> a;
+  public aesw(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public aesw(PayBridgeActivity paramPayBridgeActivity)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramPayBridgeActivity);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
-    {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
-      }
-    }
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

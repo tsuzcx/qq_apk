@@ -1,24 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.avgame.ipc.UserInfo;
 
-class nfj
-  implements View.OnTouchListener
+public final class nfj
+  implements Parcelable.Creator<UserInfo>
 {
-  nfj(nfh paramnfh) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public UserInfo a(Parcel paramParcel)
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    return new UserInfo(paramParcel);
+  }
+  
+  public UserInfo[] a(int paramInt)
+  {
+    return new UserInfo[paramInt];
   }
 }
 

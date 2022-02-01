@@ -8,20 +8,20 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import anhk;
-import anuk;
-import aqlk;
-import aqlu;
-import aqor;
-import audl;
-import audm;
-import audn;
-import audo;
-import audt;
-import auea;
-import bcst;
-import bgmg;
-import bhgg;
+import antf;
+import aogu;
+import aran;
+import arax;
+import ardz;
+import auvg;
+import auvh;
+import auvi;
+import auvj;
+import auvo;
+import auvv;
+import bdll;
+import bhmi;
+import bigv;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -50,7 +50,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
-import tzo;
+import tzq;
 
 public class FlashChatManager
   implements Manager
@@ -58,8 +58,8 @@ public class FlashChatManager
   public static SparseArray<Integer> b;
   public static SparseArray<Long> c;
   public SparseArray<String> a;
-  aqlu jdField_a_of_type_Aqlu = aqlu.a("flashchat");
-  public audn a;
+  arax jdField_a_of_type_Arax = arax.a("flashchat");
+  public auvi a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   MessageForArkFlashChat jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
   String jdField_a_of_type_JavaLangString;
@@ -79,7 +79,7 @@ public class FlashChatManager
   public FlashChatManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Audn = new audn();
+    this.jdField_a_of_type_Auvi = new auvi();
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -114,7 +114,7 @@ public class FlashChatManager
   public static String a(QQAppInterface paramQQAppInterface, FlashChatItem paramFlashChatItem)
   {
     int i = 0;
-    int j = ((anuk)paramQQAppInterface.a(13)).g();
+    int j = ((aogu)paramQQAppInterface.a(13)).g();
     switch (paramFlashChatItem.feedType)
     {
     default: 
@@ -461,11 +461,11 @@ public class FlashChatManager
     //   638: astore 6
     //   640: aload 9
     //   642: aload 11
-    //   644: invokestatic 269	bgmg:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   644: invokestatic 269	bhmi:b	(Ljava/io/File;Ljava/io/File;)Z
     //   647: ifne +94 -> 741
     //   650: aload 9
     //   652: aload 11
-    //   654: invokestatic 271	bgmg:a	(Ljava/io/File;Ljava/io/File;)Z
+    //   654: invokestatic 271	bhmi:a	(Ljava/io/File;Ljava/io/File;)Z
     //   657: pop
     //   658: aload 7
     //   660: astore_1
@@ -587,8 +587,8 @@ public class FlashChatManager
     paramContext.startActivity(localIntent);
     if (paramMessageRecord != null)
     {
-      tzo.a(paramMessageRecord, localIntent, paramString1);
-      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
+      tzq.a(paramMessageRecord, localIntent, paramString1);
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
     }
     return true;
   }
@@ -660,8 +660,8 @@ public class FlashChatManager
     //   115: pop
     //   116: aload 4
     //   118: bipush 23
-    //   120: invokevirtual 120	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lanii;
-    //   123: checkcast 379	anvf
+    //   120: invokevirtual 120	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lanud;
+    //   123: checkcast 379	aohr
     //   126: astore_3
     //   127: aload_2
     //   128: ldc_w 381
@@ -697,7 +697,7 @@ public class FlashChatManager
     //   190: invokevirtual 405	java/lang/String:trim	()Ljava/lang/String;
     //   193: aload_0
     //   194: aload_2
-    //   195: invokevirtual 408	anvf:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
+    //   195: invokevirtual 408	aohr:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
     //   198: iconst_1
     //   199: ireturn
     //   200: astore_1
@@ -915,7 +915,7 @@ public class FlashChatManager
     localStringBuilder = new StringBuilder();
     if (i != 0)
     {
-      localObject = bhgg.a(anhk.ba);
+      localObject = bigv.a(antf.ba);
       this.jdField_a_of_type_JavaLangString = ((String)localObject + File.separator + "flashchat" + File.separator);
       new File(this.jdField_a_of_type_JavaLangString).mkdirs();
       return this.jdField_a_of_type_JavaLangString;
@@ -931,7 +931,7 @@ public class FlashChatManager
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "getAppPathByNameFromLocal " + paramInt + " path " + (String)localObject1 + " version" + paramString2 + " name" + paramString1);
     }
-    localObject1 = audm.a(bgmg.a(new File(a("flashchat." + paramInt + ".cfg"))));
+    localObject1 = auvh.a(bhmi.a(new File(a("flashchat." + paramInt + ".cfg"))));
     if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
@@ -939,7 +939,7 @@ public class FlashChatManager
       }
       return null;
     }
-    Object localObject2 = a() + c(((audm)localObject1).jdField_b_of_type_JavaLangString) + File.separator + paramString1;
+    Object localObject2 = a() + c(((auvh)localObject1).jdField_b_of_type_JavaLangString) + File.separator + paramString1;
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "getAppPathByNameFromLocal installPath: " + (String)localObject2 + "cfg info : " + localObject1);
     }
@@ -1013,7 +1013,7 @@ public class FlashChatManager
     this.jdField_a_of_type_Boolean = true;
     b();
     if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "initAndGetSwitch " + this.jdField_a_of_type_Audn.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
+      QLog.d("FlashChat", 2, "initAndGetSwitch " + this.jdField_a_of_type_Auvi.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
     }
     if ((jdField_b_of_type_AndroidUtilSparseArray == null) || (jdField_c_of_type_AndroidUtilSparseArray == null))
     {
@@ -1035,7 +1035,7 @@ public class FlashChatManager
       jdField_b_of_type_AndroidUtilSparseArray = localSparseArray1;
       jdField_c_of_type_AndroidUtilSparseArray = localSparseArray2;
     }
-    ((audl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(109)).a();
+    ((auvg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(109)).a();
   }
   
   public void a(int paramInt)
@@ -1048,15 +1048,15 @@ public class FlashChatManager
   
   public void a(Context paramContext, MessageRecord paramMessageRecord)
   {
-    audn localaudn = this.jdField_a_of_type_Audn;
-    String str1 = localaudn.jdField_c_of_type_JavaLangString;
-    String str2 = localaudn.jdField_f_of_type_JavaLangString;
-    String str3 = localaudn.jdField_g_of_type_JavaLangString;
+    auvi localauvi = this.jdField_a_of_type_Auvi;
+    String str1 = localauvi.jdField_c_of_type_JavaLangString;
+    String str2 = localauvi.jdField_f_of_type_JavaLangString;
+    String str3 = localauvi.jdField_g_of_type_JavaLangString;
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "clickQIMSource clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3 + paramMessageRecord);
     }
     if (a(paramContext, str1, str2, str3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    while (!a(paramContext, str1, localaudn.jdField_b_of_type_JavaLangString, paramMessageRecord)) {
+    while (!a(paramContext, str1, localauvi.jdField_b_of_type_JavaLangString, paramMessageRecord)) {
       return;
     }
   }
@@ -1115,14 +1115,15 @@ public class FlashChatManager
   
   public void a(String arg1, int paramInt)
   {
-    int i = -1;
+    int j = -1;
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "parseJson isMainThread scid " + ??? + " errCode " + paramInt);
     }
+    int i;
     if (??? != null)
     {
       if (!???.endsWith(".cfg")) {
-        break label227;
+        break label228;
       }
       str1 = (String)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(???);
       if (paramInt == 0) {}
@@ -1144,15 +1145,15 @@ public class FlashChatManager
       }
       ??? = new Bundle();
       ???.putInt("resourceId", paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(audo.class, 968, false, ???);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(auvj.class, 968, false, ???);
     }
-    label227:
+    label228:
     while (!???.endsWith(".zip"))
     {
       do
       {
         return;
-        ??? = audm.a(bgmg.a(new File(a(???))));
+        ??? = auvh.a(bhmi.a(new File(a(???))));
       } while ((??? == null) || (???.jdField_b_of_type_JavaLangString == null) || (str1 == null));
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(???.jdField_b_of_type_JavaLangString, str1);
       ((VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184)).downloadItem(1002L, ???.jdField_b_of_type_JavaLangString, "FlashChatManager");
@@ -1163,20 +1164,20 @@ public class FlashChatManager
     {
       try
       {
-        int j = Integer.valueOf((String)localObject3).intValue();
-        paramInt = j;
+        i = Integer.valueOf((String)localObject3).intValue();
+        paramInt = i;
       }
       catch (Exception ???)
       {
         for (;;)
         {
           QLog.e("FlashChat", 2, "onCompleteDownload" + paramInt, ???);
-          paramInt = i;
+          paramInt = j;
         }
       }
       ??? = new Bundle();
       ???.putInt("resourceId", paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(audo.class, 968, false, ???);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(auvj.class, 968, false, ???);
       return;
     }
     String str1 = a(???);
@@ -1192,7 +1193,7 @@ public class FlashChatManager
         paramInt = Integer.valueOf((String)localObject3).intValue();
         localObject3 = new Bundle();
         ((Bundle)localObject3).putInt("resourceId", paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(audo.class, 968, true, (Bundle)localObject3);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(auvj.class, 968, true, (Bundle)localObject3);
         new File(str1).delete();
       }
       catch (Exception localException)
@@ -1225,7 +1226,7 @@ public class FlashChatManager
     if (paramArrayList != null)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_Aqlu.a("FlashItems", paramArrayList);
+        this.jdField_a_of_type_Arax.a("FlashItems", paramArrayList);
       }
       paramArrayList.add(0, FlashChatItem.sDefaultItem);
       this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
@@ -1247,7 +1248,7 @@ public class FlashChatManager
   {
     b();
     if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "isSwitchUser g " + this.jdField_a_of_type_Audn.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
+      QLog.d("FlashChat", 2, "isSwitchUser g " + this.jdField_a_of_type_Auvi.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
     }
     return this.jdField_a_of_type_Boolean;
   }
@@ -1312,26 +1313,26 @@ public class FlashChatManager
           localSparseArray2.put(paramInt, Integer.valueOf(j + 1));
           localSparseArray1.put(paramInt, Long.valueOf(l1));
           paramMessageRecord.saveExtInfoToExtStr("qim_source", "1");
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008278", "0X8008278", paramInt, 0, "", "", "", "");
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008278", "0X8008278", paramInt, 0, "", "", "", "");
         }
         jdField_b_of_type_AndroidUtilSparseArray = localSparseArray2;
         jdField_c_of_type_AndroidUtilSparseArray = localSparseArray1;
         return bool;
-        i = this.jdField_a_of_type_Audn.jdField_b_of_type_Int;
+        i = this.jdField_a_of_type_Auvi.jdField_b_of_type_Int;
         l1 = 0L;
         break;
-        i = this.jdField_a_of_type_Audn.jdField_c_of_type_Int;
+        i = this.jdField_a_of_type_Auvi.jdField_c_of_type_Int;
         l1 = 0L;
         break;
-        i = this.jdField_a_of_type_Audn.jdField_a_of_type_Int;
+        i = this.jdField_a_of_type_Auvi.jdField_a_of_type_Int;
         l1 = 0L;
         break;
-        i = this.jdField_a_of_type_Audn.d;
-        l1 = this.jdField_a_of_type_Audn.jdField_f_of_type_Int;
+        i = this.jdField_a_of_type_Auvi.d;
+        l1 = this.jdField_a_of_type_Auvi.jdField_f_of_type_Int;
         l1 *= 1000L;
         break;
-        i = this.jdField_a_of_type_Audn.e;
-        l1 = this.jdField_a_of_type_Audn.jdField_g_of_type_Int;
+        i = this.jdField_a_of_type_Auvi.e;
+        l1 = this.jdField_a_of_type_Auvi.jdField_g_of_type_Int;
         l1 *= 1000L;
         break;
       }
@@ -1340,11 +1341,11 @@ public class FlashChatManager
   
   public boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (!auea.a(paramQQAppInterface).b(paramQQAppInterface)) {}
+    if (!auvv.a(paramQQAppInterface).b(paramQQAppInterface)) {}
     do
     {
       return false;
-      paramQQAppInterface = auea.a(paramQQAppInterface).a(paramQQAppInterface);
+      paramQQAppInterface = auvv.a(paramQQAppInterface).a(paramQQAppInterface);
     } while ((paramQQAppInterface == null) || (paramQQAppInterface.size() <= 0));
     paramQQAppInterface = paramQQAppInterface.iterator();
     boolean bool = false;
@@ -1385,7 +1386,7 @@ public class FlashChatManager
     {
       return;
       this.d = true;
-      Object localObject1 = (aqor)aqlk.a().a(168);
+      Object localObject1 = (ardz)aran.a().a(168);
       if (localObject1 == null)
       {
         localObject1 = "";
@@ -1393,7 +1394,7 @@ public class FlashChatManager
       }
       try
       {
-        localObject1 = (ArrayList)this.jdField_a_of_type_Aqlu.a("FlashItems", ArrayList.class, 0);
+        localObject1 = (ArrayList)this.jdField_a_of_type_Arax.a("FlashItems", ArrayList.class, 0);
         a((ArrayList)localObject1, false, null);
         if (!QLog.isColorLevel()) {
           continue;
@@ -1404,7 +1405,7 @@ public class FlashChatManager
           localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
           QLog.i("FlashChat", 2, localObject1);
           return;
-          localObject1 = ((aqor)localObject1).jdField_a_of_type_JavaLangString;
+          localObject1 = ((ardz)localObject1).jdField_a_of_type_JavaLangString;
         }
       }
       catch (QStorageInstantiateException localQStorageInstantiateException)
@@ -1443,9 +1444,9 @@ public class FlashChatManager
     }
     try
     {
-      this.jdField_a_of_type_Audn = ((audn)aqlu.a(paramString, audn.class));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(audo.class, 969, true, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(audo.class, 970, true, null);
+      this.jdField_a_of_type_Auvi = ((auvi)arax.a(paramString, auvi.class));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(auvj.class, 969, true, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(auvj.class, 970, true, null);
       return;
     }
     catch (QStorageInstantiateException localQStorageInstantiateException)
@@ -1460,12 +1461,12 @@ public class FlashChatManager
   public boolean b()
   {
     boolean bool2 = false;
-    audn localaudn = this.jdField_a_of_type_Audn;
+    auvi localauvi = this.jdField_a_of_type_Auvi;
     boolean bool1 = bool2;
-    if (localaudn != null)
+    if (localauvi != null)
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(localaudn.jdField_g_of_type_JavaLangString)) {
+      if (!TextUtils.isEmpty(localauvi.jdField_g_of_type_JavaLangString)) {
         bool1 = true;
       }
     }
@@ -1480,9 +1481,9 @@ public class FlashChatManager
   
   public String c()
   {
-    audn localaudn = this.jdField_a_of_type_Audn;
-    if (localaudn != null) {
-      return localaudn.i;
+    auvi localauvi = this.jdField_a_of_type_Auvi;
+    if (localauvi != null) {
+      return localauvi.i;
     }
     return "";
   }
@@ -1492,16 +1493,16 @@ public class FlashChatManager
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "requestAIOFlashItems");
     }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), audt.class);
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), auvo.class);
     localNewIntent.putExtra("req_type", 1);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
   
   public boolean c()
   {
-    audn localaudn = this.jdField_a_of_type_Audn;
-    if (localaudn != null) {
-      return localaudn.jdField_a_of_type_Boolean;
+    auvi localauvi = this.jdField_a_of_type_Auvi;
+    if (localauvi != null) {
+      return localauvi.jdField_a_of_type_Boolean;
     }
     return false;
   }
@@ -1519,9 +1520,9 @@ public class FlashChatManager
   
   public boolean d()
   {
-    audn localaudn = this.jdField_a_of_type_Audn;
-    if (localaudn != null) {
-      return localaudn.jdField_b_of_type_Boolean;
+    auvi localauvi = this.jdField_a_of_type_Auvi;
+    if (localauvi != null) {
+      return localauvi.jdField_b_of_type_Boolean;
     }
     return false;
   }

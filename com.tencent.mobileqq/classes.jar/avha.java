@@ -1,225 +1,63 @@
-import android.content.Context;
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
+import java.io.File;
 
-public class avha
+class avha
+  implements bezu
 {
-  long jdField_a_of_type_Long = 0L;
-  avhd jdField_a_of_type_Avhd = new avhd(this);
-  List<avhe> jdField_a_of_type_JavaUtilList = new ArrayList();
-  WtloginHelper jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper;
-  boolean jdField_a_of_type_Boolean;
+  avha(avgx paramavgx) {}
   
-  private void a(String paramString, boolean paramBoolean, int paramInt)
+  public void a(bezt parambezt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      avhe localavhe = (avhe)localIterator.next();
-      if (localavhe != null) {
-        localavhe.a(paramString, paramBoolean, paramInt);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onPreDownloadStart url=%s", new Object[] { parambezt.a.a }));
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  public avhd a()
+  public void onResp(bevm parambevm)
   {
-    return this.jdField_a_of_type_Avhd;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Avhd = new avhd(this);
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString1, Context paramContext, String paramString2, avhe paramavhe)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Avhd.b))
-    {
-      if (paramavhe != null) {
-        paramavhe.a(paramString1, true, 0);
-      }
-      return;
+    Object localObject = ((beum)parambevm.jdField_a_of_type_Bevl).a;
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(parambevm.jdField_a_of_type_Int) }));
     }
-    avhc localavhc = new avhc(this, paramavhe, paramString1);
-    FastAuthorize.AuthorizeRequest localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
-    localAuthorizeRequest.uin.set(Long.parseLong(paramAppInterface.getCurrentAccountUin()));
-    localAuthorizeRequest.client_id.set(Long.parseLong(paramString2));
-    localAuthorizeRequest.pf.set("");
-    paramString2 = biub.a(paramContext);
-    localAuthorizeRequest.qqv.set(paramString2);
-    localAuthorizeRequest.sdkp.set("a");
-    paramString2 = Build.DISPLAY;
-    localAuthorizeRequest.os.set(paramString2);
-    paramString2 = ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount());
-    localAuthorizeRequest.skey.set(paramString2);
-    paramString2 = "";
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      paramString2 = ((QQAppInterface)paramAppInterface).a();
-    }
-    for (;;)
+    switch (parambevm.jdField_a_of_type_Int)
     {
-      String str = paramString2;
-      if (paramString2 == null) {
-        str = "";
-      }
-      localAuthorizeRequest.vkey.set(str);
-      localAuthorizeRequest.flags.set(7);
-      paramContext = new NewIntent(paramContext, niq.class);
-      localAuthorizeRequest.apk_sign.set("");
-      paramContext.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
-      try
+    }
+    do
+    {
+      boolean bool1;
+      boolean bool2;
+      do
       {
-        paramContext.putExtra("data", localAuthorizeRequest.toByteArray());
-        paramContext.setObserver(localavhc);
-        paramAppInterface.startServlet(paramContext);
         return;
-        if (!(paramAppInterface instanceof BrowserAppInterface)) {
-          continue;
+        if (avgx.a(this.a) != null) {
+          avgx.a(this.a).a((String)localObject, parambevm.jdField_a_of_type_Long);
         }
-        paramString2 = ((BrowserAppInterface)paramAppInterface).a();
-      }
-      catch (Exception paramString2)
-      {
-        for (;;)
-        {
-          paramavhe.a(paramString1, false, -10001);
+        parambevm = (beum)parambevm.jdField_a_of_type_Bevl;
+        if (!avgx.a(this.a, parambevm.c, avgx.a(this.a))) {
+          break;
         }
+        localObject = new File(avgx.a());
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        bool1 = avgx.b(this.a, parambevm.c, avgx.a());
+        bool2 = avgx.a(this.a);
+      } while (!QLog.isColorLevel());
+      QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
       }
-    }
+      avgx.a(this.a, parambevm.c);
+      return;
+    } while (avgx.a(this.a) == null);
+    avgx.a(this.a).a((String)localObject, -1L);
   }
   
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, avhe paramavhe, boolean paramBoolean, String paramString5)
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
   {
-    QLog.i("XProxy", 2, "开始拉取A1，uin = " + paramString1 + " appid = " + paramString4);
-    if ((this.jdField_a_of_type_Avhd.a != null) && (!paramBoolean) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 43200000L))
-    {
-      if (paramavhe != null) {
-        paramavhe.a(paramString2, true, 0);
-      }
-      return true;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramavhe);
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper == null)
-    {
-      QLog.i("XProxy", 2, "new WtloginHelper");
-      this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper = new WtloginHelper(BaseApplicationImpl.getContext());
-    }
-    if (paramString3.equals("com.tencent.huayang"))
-    {
-      paramString5 = new byte[16];
-      String tmp155_153 = paramString5;
-      tmp155_153[0] = -33;
-      String tmp161_155 = tmp155_153;
-      tmp161_155[1] = 11;
-      String tmp167_161 = tmp161_155;
-      tmp167_161[2] = -29;
-      String tmp173_167 = tmp167_161;
-      tmp173_167[3] = -119;
-      String tmp179_173 = tmp173_167;
-      tmp179_173[4] = 66;
-      String tmp185_179 = tmp179_173;
-      tmp185_179[5] = 110;
-      String tmp191_185 = tmp185_179;
-      tmp191_185[6] = 87;
-      String tmp198_191 = tmp191_185;
-      tmp198_191[7] = 53;
-      String tmp205_198 = tmp198_191;
-      tmp205_198[8] = -16;
-      String tmp212_205 = tmp205_198;
-      tmp212_205[9] = -77;
-      String tmp219_212 = tmp212_205;
-      tmp219_212[10] = -121;
-      String tmp226_219 = tmp219_212;
-      tmp226_219[11] = -112;
-      String tmp233_226 = tmp226_219;
-      tmp233_226[12] = 46;
-      String tmp240_233 = tmp233_226;
-      tmp240_233[13] = 51;
-      String tmp247_240 = tmp240_233;
-      tmp247_240[14] = -96;
-      String tmp254_247 = tmp247_240;
-      tmp254_247[15] = 62;
-      tmp254_247;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.SetListener(new avhb(this, paramString2));
-      this.jdField_a_of_type_JavaUtilList.add(paramavhe);
-      int i = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.GetA1WithA1(paramString1, 16L, 16L, paramString3.getBytes(), 1L, Long.valueOf(paramString4).longValue(), 1L, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
-      if (i != -1001)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("XProxy", 2, "获取Now结合版A1票据失败，retCode = " + i);
-        }
-        a(paramString2, false, i);
-      }
-      return true;
-      if (paramString3.equals("com.tencent.now"))
-      {
-        paramString5 = new byte[16];
-        String tmp412_410 = paramString5;
-        tmp412_410[0] = -51;
-        String tmp418_412 = tmp412_410;
-        tmp418_412[1] = 50;
-        String tmp424_418 = tmp418_412;
-        tmp424_418[2] = 114;
-        String tmp430_424 = tmp424_418;
-        tmp430_424[3] = -105;
-        String tmp436_430 = tmp430_424;
-        tmp436_430[4] = -54;
-        String tmp442_436 = tmp436_430;
-        tmp442_436[5] = -19;
-        String tmp448_442 = tmp442_436;
-        tmp448_442[6] = 112;
-        String tmp455_448 = tmp448_442;
-        tmp455_448[7] = -124;
-        String tmp462_455 = tmp455_448;
-        tmp462_455[8] = -125;
-        String tmp469_462 = tmp462_455;
-        tmp469_462[9] = -52;
-        String tmp476_469 = tmp469_462;
-        tmp476_469[10] = -72;
-        String tmp483_476 = tmp476_469;
-        tmp483_476[11] = -101;
-        String tmp490_483 = tmp483_476;
-        tmp490_483[12] = -27;
-        String tmp497_490 = tmp490_483;
-        tmp497_490[13] = 33;
-        String tmp504_497 = tmp497_490;
-        tmp504_497[14] = 65;
-        String tmp511_504 = tmp504_497;
-        tmp511_504[15] = -128;
-        tmp511_504;
-      }
-      else
-      {
-        paramString5 = bgmj.a(paramString5);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((beum)parambevl).a, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
     }
   }
 }

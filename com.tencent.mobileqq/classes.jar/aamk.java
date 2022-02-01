@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
 
-public class aamk
-  implements View.OnClickListener
+final class aamk
+  implements TypeEvaluator<Matrix>
 {
-  public aamk(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
-  
-  public void onClick(View paramView)
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    aaxb.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
-    aaje.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131718336, new aaml(this));
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
   }
 }
 

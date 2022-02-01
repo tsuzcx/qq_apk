@@ -5,14 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bojv;
-import bokw;
-import boky;
-import bolb;
-import boli;
-import bolj;
-import boly;
-import bpye;
+import bplq;
+import bpmr;
+import bpmt;
+import bpmw;
+import bpnd;
+import bpne;
+import bpnt;
+import bqzz;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new boly();
+  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new bpnt();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -78,7 +78,7 @@ public class QIMFilterCategoryItem
     while (paramQIMFilterCategoryItem.hasNext())
     {
       Object localObject = (String)paramQIMFilterCategoryItem.next();
-      localObject = bpye.a().a((String)localObject);
+      localObject = bqzz.a().a((String)localObject);
       if ((localObject != null) && (((FilterDesc)localObject).id == 9)) {
         return true;
       }
@@ -94,7 +94,7 @@ public class QIMFilterCategoryItem
       while (paramQIMFilterCategoryItem.hasNext())
       {
         Object localObject = (String)paramQIMFilterCategoryItem.next();
-        localObject = bpye.a().a((String)localObject);
+        localObject = bqzz.a().a((String)localObject);
         if ((localObject != null) && (((FilterDesc)localObject).id == 1011)) {
           return true;
         }
@@ -106,14 +106,14 @@ public class QIMFilterCategoryItem
   public int a()
   {
     int j = -1;
-    Iterator localIterator = ((bolb)bojv.a(5)).a(this).b.iterator();
+    Iterator localIterator = ((bpmw)bplq.a(5)).a(this).b.iterator();
     if (localIterator.hasNext())
     {
-      bokw localbokw = (bokw)localIterator.next();
-      if (!(localbokw instanceof boky)) {
+      bpmr localbpmr = (bpmr)localIterator.next();
+      if (!(localbpmr instanceof bpmt)) {
         break label93;
       }
-      j = ((boky)localbokw).a.id;
+      j = ((bpmt)localbpmr).a.id;
     }
     label93:
     for (;;)
@@ -187,7 +187,7 @@ public class QIMFilterCategoryItem
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      String[] arrayOfString = boli.a;
+      String[] arrayOfString = bpnd.a;
       int k = arrayOfString.length;
       int j = 0;
       while (j < k)
@@ -222,7 +222,7 @@ public class QIMFilterCategoryItem
     while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
       return false;
     }
-    if (QQAVImageFilterConstants.getFilterType(bpye.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
+    if (QQAVImageFilterConstants.getFilterType(bqzz.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

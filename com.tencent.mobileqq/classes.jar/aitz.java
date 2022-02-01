@@ -1,30 +1,33 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aitz
-  implements aobv
+public class aitz
+  extends aiub
 {
-  aitz(aity paramaity) {}
+  int a = 100;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public aitz(aiuc paramaiuc)
   {
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    super(paramaiuc);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.has("moneylimit"))) {}
+    try
     {
-      paramInt2 = aity.a(this.a).getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
+      this.a = paramJSONObject.getInt("moneylimit");
+      BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ HONGBAO_SCENESRECOMMEND_INFO", 4).edit().putInt("HONGBAO_SCENES_MONEY_LIMIT", this.a).apply();
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
       {
-        Object localObject = aity.a(this.a).getChildViewHolder(aity.a(this.a).getChildAt(paramInt1));
-        if ((localObject instanceof aiua))
-        {
-          localObject = (aiua)localObject;
-          if (((aiua)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-            ((aiua)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-          }
-        }
-        paramInt1 += 1;
+        paramJSONObject.printStackTrace();
       }
     }
   }

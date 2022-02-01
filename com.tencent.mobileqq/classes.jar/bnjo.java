@@ -1,20 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.concurrent.CountDownLatch;
 
-class bnjo
-  implements Animation.AnimationListener
+public final class bnjo
+  implements Downloader.DownloadListener
 {
-  bnjo(bnjl parambnjl) {}
+  public bnjo(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDownloadCanceled(String paramString)
   {
-    bnjl.b(this.a).setVisibility(8);
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
 }
 
 

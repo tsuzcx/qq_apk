@@ -3,12 +3,12 @@ package cooperation.qzone.feed;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blxt;
+import bmyv;
 
 public class CertifiedFakeFeed
   implements Parcelable
 {
-  public static final Parcelable.Creator<CertifiedFakeFeed> CREATOR = new blxt();
+  public static final Parcelable.Creator<CertifiedFakeFeed> CREATOR = new bmyv();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atrw;
+import aujr;
 
 public class ZipFilePresenter$2
   implements Runnable
 {
-  public ZipFilePresenter$2(atrw paramatrw) {}
+  public ZipFilePresenter$2(aujr paramaujr) {}
   
   public void run()
   {
-    if (atrw.a(this.this$0)) {
+    if (aujr.a(this.this$0)) {
       this.this$0.a(-1000L);
     }
   }

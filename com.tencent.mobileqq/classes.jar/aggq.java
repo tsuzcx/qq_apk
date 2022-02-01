@@ -1,26 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aggq
-  implements DialogInterface.OnClickListener
+public abstract interface aggq
 {
-  public aggq(DoodlePanel paramDoodlePanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    if (DoodlePanel.a(this.a) != null) {
-      DoodlePanel.a(this.a).a(false, false);
-    }
-    DoodlePanel.a(this.a);
-  }
+  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 

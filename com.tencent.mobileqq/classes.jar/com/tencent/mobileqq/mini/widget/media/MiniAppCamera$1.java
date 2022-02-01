@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
@@ -16,7 +16,7 @@ class MiniAppCamera$1
   
   public void onGetPhoto(String paramString)
   {
-    if (bgsp.a(paramString))
+    if (bhsr.a(paramString))
     {
       paramString = ApiUtil.wrapCallbackFail(this.val$event, null);
       if (paramString != null) {}

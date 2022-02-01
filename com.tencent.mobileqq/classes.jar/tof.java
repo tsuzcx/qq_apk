@@ -1,68 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import org.json.JSONObject;
 
 public class tof
-  implements pyb
+  implements pye
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-  private List<ReadInJoyUserInfo> b = new ArrayList();
-  
-  public tof(BridgeModule paramBridgeModule, List paramList, String paramString) {}
-  
-  private void a(String paramString)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int -= 1;
-    if (this.jdField_a_of_type_Int == 0) {
-      b(paramString);
-    }
+    return null;
   }
   
-  private void b(String paramString)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    try
+    return pud.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((paramppu != null) && (paramppu.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramppu.a())))
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)localIterator.next();
-        String str = ReadInJoyUserInfoModule.a(localReadInJoyUserInfo);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("headUrl", str).put("nickName", localReadInJoyUserInfo.nick).put("uin", localReadInJoyUserInfo.uin);
-        localJSONArray.put(localJSONObject2);
-        continue;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(paramString, localJSONObject1);
+      ViewBase localViewBase = paramContainer.findViewBaseByName("id_view_AdDownloadView");
+      if ((localViewBase != null) && ((localViewBase instanceof tse))) {
+        ((tse)localViewBase).a(paramppu, true);
+      }
+      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
+      if ((paramContainer != null) && ((paramContainer instanceof tti))) {
+        ((tti)paramContainer).a(paramppu);
       }
     }
-    catch (Exception localException)
-    {
-      QLog.e(BridgeModule.TAG, 1, localException.getMessage());
-    }
-    for (;;)
-    {
-      return;
-      localJSONObject1.put("list", localException);
-    }
   }
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
   {
-    a(this.jdField_a_of_type_JavaLangString);
-    QLog.e(BridgeModule.TAG, 1, "[onLoadUserInfoFailed]: " + paramString2 + ", uin: " + paramString1);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    this.b.add(paramReadInJoyUserInfo);
-    a(this.jdField_a_of_type_JavaLangString);
+    return false;
   }
 }
 

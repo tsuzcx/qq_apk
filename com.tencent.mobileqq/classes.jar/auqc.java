@@ -1,17 +1,28 @@
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auqc
+  implements View.OnClickListener
 {
-  public static void a(File paramFile)
+  public auqc(SendBottomBar paramSendBottomBar) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramFile == null) || (paramFile.exists())) {}
-    do
+    if (SendBottomBar.a(this.a).isChecked())
     {
+      SendBottomBar.b(this.a, true);
+      aunh.a("0X800942B");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramFile = paramFile.getParentFile();
-    } while ((paramFile == null) || (paramFile.exists()));
-    a(paramFile);
-    paramFile.mkdirs();
+      SendBottomBar.c(this.a, false);
+      SendBottomBar.b(this.a, false);
+    }
   }
 }
 

@@ -1,25 +1,12 @@
-import com.tencent.TMG.utils.QLog;
-import feedcloud.FeedCloudWrite.StDoLikeRsp;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-final class uxy
-  implements zxa<FeedCloudWrite.StDoLikeRsp>
+class uxy
 {
-  uxy(zxa paramzxa) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
-  {
-    if ((paramBoolean) && (paramLong == 0L)) {
-      QLog.d("doubleclicklike", 3, " success");
-    }
-    for (;;)
-    {
-      if (this.a != null) {
-        this.a.onReceive(paramBoolean, paramLong, paramString, paramStDoLikeRsp);
-      }
-      return;
-      QLog.d("doubleclicklike", 3, " failed：" + paramLong);
-    }
-  }
+  uxy(uxx paramuxx) {}
 }
 
 

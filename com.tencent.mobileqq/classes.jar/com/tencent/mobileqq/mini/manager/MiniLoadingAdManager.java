@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import bgmg;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -63,10 +63,10 @@ public class MiniLoadingAdManager
   
   private static void checkCacheFolder()
   {
-    if (bgmg.b(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
+    if (bhmi.b(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
     {
       QLog.d("MiniLoadingAdManager", 1, "checkCacheFolder size > maxAdCachedSize ");
-      bgmg.b(MiniAppFileManager.getLoadingAdCacheFolder());
+      bhmi.b(MiniAppFileManager.getLoadingAdCacheFolder());
     }
   }
   
@@ -399,11 +399,13 @@ public class MiniLoadingAdManager
   
   public MiniLoadingAdLayout getLoadingAdLayout(MiniAppConfig paramMiniAppConfig, Context paramContext, boolean paramBoolean, String paramString, GdtAd paramGdtAd)
   {
-    paramContext = new MiniLoadingAdLayout(paramContext);
-    if (paramContext.setupUI(paramMiniAppConfig, paramBoolean, paramString, paramGdtAd)) {
-      return paramContext;
-    }
-    return null;
+    if (paramContext == null) {}
+    do
+    {
+      return null;
+      paramContext = new MiniLoadingAdLayout(paramContext);
+    } while (!paramContext.setupUI(paramMiniAppConfig, paramBoolean, paramString, paramGdtAd));
+    return paramContext;
   }
   
   public void preloadLoadingAd(MiniAppConfig paramMiniAppConfig, String paramString)

@@ -1,26 +1,21 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.Observable;
+import rx.functions.Func1;
 
 public class uwc
-  implements URLDrawable.URLDrawableListener
+  implements Func1<Drawable, Bitmap>
 {
-  public uwc(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity, URLDrawable paramURLDrawable) {}
+  public uwc(RoundImageView paramRoundImageView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Bitmap a(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a = paramURLDrawable.getBitmap();
+    paramDrawable = RoundImageView.a(this.a, paramDrawable);
+    if (paramDrawable == null) {
+      Observable.error(new Throwable("bitmap is null"));
     }
+    return paramDrawable;
   }
 }
 

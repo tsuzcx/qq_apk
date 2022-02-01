@@ -1,260 +1,89 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenMgr.1;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.UUID;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.sharpP.SharpPUtil;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AppRuntime;
+import org.apache.http.Header;
 
 public class bexo
-  implements bexp
+  extends beqz
 {
-  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<String, TroopFileThumbnailGenTask> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private LinkedList<TroopFileThumbnailGenTask> b = new LinkedList();
-  private LinkedList<TroopFileThumbnailGenTask> c = new LinkedList();
-  
-  private String a()
-  {
-    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " PRS:" + this.c.size() + " RS:" + this.b.size();
-  }
-  
-  public static String a(UUID paramUUID, int paramInt)
-  {
-    return paramUUID.toString() + "_" + paramInt;
-  }
-  
-  private LinkedList<TroopFileThumbnailGenTask> a(String paramString, int paramInt)
+  private static String a(int paramInt, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    TroopFileThumbnailGenTask localTroopFileThumbnailGenTask;
-    while (localIterator.hasNext())
-    {
-      localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)((Map.Entry)localIterator.next()).getValue();
-      if ((paramInt == localTroopFileThumbnailGenTask.a()) && (paramString.equalsIgnoreCase(localTroopFileThumbnailGenTask.b())))
-      {
-        localLinkedList.add(localTroopFileThumbnailGenTask);
-        localIterator.remove();
-      }
-    }
-    localIterator = this.c.iterator();
-    while (localIterator.hasNext())
-    {
-      localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)localIterator.next();
-      if ((paramInt == localTroopFileThumbnailGenTask.a()) && (paramString.equalsIgnoreCase(localTroopFileThumbnailGenTask.b())))
-      {
-        localLinkedList.add(localTroopFileThumbnailGenTask);
-        localIterator.remove();
-      }
-    }
-    return localLinkedList;
+    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
-  private boolean a(String paramString, int paramInt)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    paramURLDrawableHandler = paramDownloadParams.url.getFile();
+    paramOutputStream = paramURLDrawableHandler;
+    if (paramURLDrawableHandler.startsWith(File.separator)) {
+      paramOutputStream = paramURLDrawableHandler.substring(1);
     }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
+    String str = paramDownloadParams.url.getHost();
+    Object localObject = paramDownloadParams.getHeader("my_uin");
+    paramURLDrawableHandler = null;
+    if (localObject != null) {
+      paramURLDrawableHandler = ((Header)localObject).getValue();
+    }
+    paramURLDrawableHandler = BaseApplicationImpl.sApplication.getAppRuntime(paramURLDrawableHandler);
+    localObject = new File(bhzb.a(paramOutputStream, str));
+    if (((File)localObject).exists()) {
+      return localObject;
+    }
+    if (paramDownloadParams.useSharpPImage)
     {
-      TroopFileThumbnailGenTask localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)localIterator.next();
-      if ((paramInt == localTroopFileThumbnailGenTask.a()) && (paramString.equalsIgnoreCase(localTroopFileThumbnailGenTask.b()))) {
-        return true;
+      localObject = new File(blem.a((File)localObject));
+      if (((File)localObject).exists()) {
+        return localObject;
       }
     }
-    return false;
+    return a(paramURLDrawableHandler, paramOutputStream, str, paramDownloadParams.useSharpPImage);
   }
   
-  private void d()
+  public File a(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (this.b.size() >= 4) {}
-    label179:
+    String str = a(Integer.parseInt(paramString1), paramString2);
+    paramString2 = new File(bhzb.a(paramString1, paramString2));
+    bihu localbihu = new bihu(str, paramString2);
+    localbihu.k = paramBoolean;
+    if (paramAppRuntime != null)
+    {
+      if (bihw.a(localbihu, paramAppRuntime) != 0) {
+        break label102;
+      }
+      if ((!paramString2.exists()) || (SignatureManager.a(paramString2.getAbsolutePath()))) {
+        break label88;
+      }
+      paramString2.delete();
+    }
     for (;;)
     {
-      return;
-      for (;;)
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-          break label179;
-        }
-        Object localObject = (String)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localObject = (TroopFileThumbnailGenTask)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        if (localObject != null) {
-          if (a(((TroopFileThumbnailGenTask)localObject).b(), ((TroopFileThumbnailGenTask)localObject).a()))
-          {
-            bevx.b("TroopFileThumbnailGenMgr", bevx.a, "[" + ((TroopFileThumbnailGenTask)localObject).a() + "] has same task gening. add WD task");
-            this.c.add(localObject);
-            ((TroopFileThumbnailGenTask)localObject).b();
-          }
-          else
-          {
-            this.b.add(localObject);
-            if (((TroopFileThumbnailGenTask)localObject).a()) {
-              break;
-            }
-            bevx.a("TroopFileThumbnailGenMgr", bevx.a, "[" + ((TroopFileThumbnailGenTask)localObject).a() + "] start failed!!");
-            this.b.remove(localObject);
-          }
-        }
+      return new File(antf.ba);
+      label88:
+      if (SharpPUtil.isSharpPFile(paramString2)) {
+        return blem.a(paramString2);
       }
+      return paramString2;
+      label102:
+      biaa.a(null, "individual_v2_signature_download_fail", "" + localbihu.a, "error code = " + localbihu.a + " errorMsg = " + localbihu.b + "url = " + str, null, 0.0F);
+      bhzz.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localbihu.a + " errMsg:" + localbihu.b);
     }
-  }
-  
-  public int a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return -1;
-    }
-    if (paramItem.Id == null) {
-      return -2;
-    }
-    if (paramInt == 0) {
-      return -5;
-    }
-    String str = a(paramItem.Id, paramInt);
-    if (a(str))
-    {
-      bevx.c("TroopFileThumbnailGenMgr", bevx.a, "[" + str + "] genFileThumbnail task exsited. ");
-      return -4;
-    }
-    paramString = TroopFileThumbnailGenTask.a(paramLong, paramItem, paramInt, paramString, this);
-    if (paramString == null) {
-      return -3;
-    }
-    bexq.a(paramItem, paramInt);
-    this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(str);
-    bevx.c("TroopFileThumbnailGenMgr", bevx.a, "[" + str + "] genFileThumbnail filePath:" + paramItem.LocalFile + a());
-    d();
-    return 0;
-  }
-  
-  public int a(UUID paramUUID, int paramInt)
-  {
-    if (paramUUID == null) {
-      return -2;
-    }
-    String str = a(paramUUID, paramInt);
-    Object localObject = this.b.iterator();
-    TroopFileThumbnailGenTask localTroopFileThumbnailGenTask;
-    while (((Iterator)localObject).hasNext())
-    {
-      localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)((Iterator)localObject).next();
-      if (str.equalsIgnoreCase(localTroopFileThumbnailGenTask.a()))
-      {
-        localTroopFileThumbnailGenTask.a();
-        ((Iterator)localObject).remove();
-      }
-    }
-    for (paramInt = 1;; paramInt = 0)
-    {
-      int i = paramInt;
-      if (paramInt == 0)
-      {
-        localObject = this.c.iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)((Iterator)localObject).next();
-          if (!str.equalsIgnoreCase(localTroopFileThumbnailGenTask.a())) {
-            break label231;
-          }
-          localTroopFileThumbnailGenTask.a();
-          ((Iterator)localObject).remove();
-          paramInt = 1;
-        }
-      }
-      label231:
-      for (;;)
-      {
-        break;
-        localObject = (TroopFileThumbnailGenTask)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
-        i = paramInt;
-        if (localObject != null)
-        {
-          ((TroopFileThumbnailGenTask)localObject).a();
-          i = paramInt | 0x1;
-        }
-        boolean bool = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | i;
-        if (bool) {
-          bevx.c("TroopFileThumbnailGenMgr", bevx.a, "[" + str + "] stopGen." + a());
-        }
-        d();
-        return 0;
-      }
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask)
-  {
-    bevn.a(new TroopFileThumbnailGenMgr.1(this, paramString, paramBoolean, paramInt, paramTroopFileThumbnailGenTask), false);
-  }
-  
-  protected boolean a(String paramString)
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase(((TroopFileThumbnailGenTask)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    localIterator = this.c.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase(((TroopFileThumbnailGenTask)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void b(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask)
-  {
-    this.b.remove(paramTroopFileThumbnailGenTask);
-    this.c.remove(paramTroopFileThumbnailGenTask);
-    bevx.c("TroopFileThumbnailGenMgr", bevx.a, "[" + paramString + "] onTaskDoneInter.  bSuc:" + paramBoolean + " errCode:" + paramInt + a());
-    LinkedList localLinkedList = a(paramTroopFileThumbnailGenTask.b(), paramTroopFileThumbnailGenTask.a());
-    if ((localLinkedList != null) && (localLinkedList.size() > 0))
-    {
-      bevx.b("TroopFileThumbnailGenMgr", bevx.a, "[" + paramString + "] onTaskDoneInter. " + localLinkedList.size() + " same task passive complete. " + a());
-      paramString = localLinkedList.iterator();
-      while (paramString.hasNext()) {
-        ((TroopFileThumbnailGenTask)paramString.next()).a(paramBoolean, paramInt, paramTroopFileThumbnailGenTask.c());
-      }
-    }
-    d();
-  }
-  
-  protected void c()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((TroopFileThumbnailGenTask)localIterator.next()).a();
-    }
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    this.c.clear();
-    bevx.c("TroopFileThumbnailGenMgr", bevx.a, "stopAllInter");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bexo
  * JD-Core Version:    0.7.0.1
  */

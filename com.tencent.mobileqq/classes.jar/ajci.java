@@ -1,22 +1,17 @@
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.mobileqq.widget.FolderTextView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 
 public class ajci
 {
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
-  TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
-  FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ColorNickTextView a;
+  public TextView b;
 }
 
 

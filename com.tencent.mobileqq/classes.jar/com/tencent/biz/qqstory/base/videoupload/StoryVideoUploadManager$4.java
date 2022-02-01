@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import com.tribe.async.dispatch.Dispatcher;
-import wfo;
-import why;
-import wif;
-import wii;
-import wjr;
-import yqp;
+import wjj;
+import wlt;
+import wma;
+import wmd;
+import wnm;
+import yuk;
 
 public class StoryVideoUploadManager$4
   implements Runnable
 {
-  public StoryVideoUploadManager$4(why paramwhy, wjr paramwjr, wii paramwii) {}
+  public StoryVideoUploadManager$4(wlt paramwlt, wnm paramwnm, wmd paramwmd) {}
   
   public void run()
   {
-    yqp.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Wjr });
-    wfo.a().dispatch(this.jdField_a_of_type_Wii);
-    wfo.a().dispatch(new wif());
+    yuk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Wnm });
+    wjj.a().dispatch(this.jdField_a_of_type_Wmd);
+    wjj.a().dispatch(new wma());
   }
 }
 

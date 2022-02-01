@@ -1,16 +1,41 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.mobileqq.widget.DropdownView.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bixp
-  extends bixz
+  implements View.OnClickListener
 {
-  public bixp(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  public bixp(DropdownView paramDropdownView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
+    this.a.jdField_a_of_type_Bixq.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bixq.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Bixq.getAdapter() != null) && (this.a.jdField_a_of_type_Bixq.getAdapter().getCount() > 0))
+    {
+      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
+        break label167;
+      }
+      DropdownView.a(this.a).postDelayed(new DropdownView.1.1(this, paramView), 250L);
+      Context localContext = paramView.getContext();
+      if ((localContext != null) && ((localContext instanceof LoginActivity))) {
+        bdll.a(((LoginActivity)localContext).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label167:
+      this.a.jdField_a_of_type_Bixq.dismissDropDown();
+    }
   }
 }
 

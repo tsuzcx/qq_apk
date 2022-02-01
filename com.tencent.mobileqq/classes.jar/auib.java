@@ -1,23 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class auib
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  auib(auhv paramauhv, int paramInt) {}
+  auib(auhz paramauhz) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if ((auhv.a(this.jdField_a_of_type_Auhv).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      auhv.a(this.jdField_a_of_type_Auhv).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      auhv.a(this.jdField_a_of_type_Auhv).setSelection(this.jdField_a_of_type_Int - 1);
+    int i = auoo.b(this.a.a.e());
+    bdll.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+    auey localauey = this.a.a.a();
+    if (localauey != null) {
+      localauey.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

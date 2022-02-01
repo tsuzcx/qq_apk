@@ -1,29 +1,44 @@
-import java.util.Observable;
-import java.util.Observer;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import io.flutter.embedding.android.SplashScreen;
 
 public class auwq
-  implements Observer
+  implements SplashScreen
 {
-  protected void a() {}
+  private auwr a;
   
-  protected void b() {}
-  
-  protected void c() {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public auwq(auwr paramauwr)
   {
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    case 1: 
-      a();
-      return;
-    case 2: 
-      b();
-      return;
+    this.a = paramauwr;
+  }
+  
+  @Nullable
+  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131560944, null);
+  }
+  
+  public boolean doesSplashViewRememberItsTransition()
+  {
+    return false;
+  }
+  
+  @Nullable
+  public Bundle saveSplashScreenState()
+  {
+    return null;
+  }
+  
+  public void transitionToFlutter(@NonNull Runnable paramRunnable)
+  {
+    paramRunnable.run();
+    if (this.a != null) {
+      this.a.b();
     }
-    c();
   }
 }
 

@@ -1,26 +1,65 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
-import com.tencent.biz.widgets.TabLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ogj
-  implements Animator.AnimatorListener
+  extends BroadcastReceiver
 {
-  public ogj(ReadInJoyChannelViewPagerController.10 param10) {}
+  public ogj(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ogh.b(this.a.this$0, false);
-    ogh.a(this.a.this$0, ogh.a, 0.0F, 0);
-    ogh.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
+    int i = 0;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if (!"com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramContext)) {
+        break label41;
+      }
+      if (this.a.getActivity() != null) {
+        this.a.getActivity().finish();
+      }
+    }
+    label41:
+    int j;
+    int k;
+    do
+    {
+      do
+      {
+        return;
+      } while (!"action_notify_view_update".equals(paramContext));
+      j = paramIntent.getIntExtra("businessId", 0);
+      k = paramIntent.getIntExtra("viewId", 0);
+    } while ((25 != j) || (k != 1));
+    for (;;)
+    {
+      try
+      {
+        paramContext = new JSONObject(paramIntent.getStringExtra("extstr"));
+        if (EcshopNewPageFragment.a(this.a) == null) {
+          break;
+        }
+        paramIntent = EcshopNewPageFragment.a(this.a);
+        if (paramContext.optInt("isShow") == 1)
+        {
+          paramIntent.setVisibility(i);
+          return;
+        }
+      }
+      catch (JSONException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      i = 8;
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,20 +1,13 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
 public class bgzt
+  implements bdxo
 {
-  public static void a(String paramString, int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("authResult", String.valueOf(paramInt));
-    bctj.a(BaseApplication.getContext()).a("", paramString, false, 0L, -1L, localHashMap, "", true);
-  }
+  public bgzt(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public static void a(String paramString1, String paramString2)
+  public void a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errCode", paramString2);
-    bctj.a(BaseApplication.getContext()).a("", paramString1, false, 0L, -1L, localHashMap, "", true);
+    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
   }
 }
 

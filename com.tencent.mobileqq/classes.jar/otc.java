@@ -1,28 +1,20 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import java.util.List;
 
 public class otc
-  implements TVK_SDKMgr.InstallListener
+  implements ovf
 {
-  public otc(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  public otc(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   
-  public void onInstallProgress(float paramFloat)
-  {
-    acqy.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
-  }
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<otp> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
   
-  public void onInstalledFailed(int paramInt)
+  public void onCommentStateError(int paramInt)
   {
-    acqy.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    acqy.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
-    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
-      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
+    if (paramInt == 1002) {
+      ReadInJoySecondCommentListFragment.a(this.a, true);
+    }
+    if (paramInt == 1003) {
+      zyx.a(1, 2131717046);
     }
   }
 }

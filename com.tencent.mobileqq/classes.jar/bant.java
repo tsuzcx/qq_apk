@@ -1,31 +1,36 @@
-class bant
-  implements alkz
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+final class bant
+  extends bezs
 {
-  bant(bans parambans, int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a()
+  bant(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      bcst.b(null, "dc00898", "", "", "0X80085A1", "0X80085A1", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Bans.a.dismiss();
-      this.jdField_a_of_type_Bans.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
-      return;
-    }
+    super(paramQQAppInterface, paramString1);
   }
   
-  public void b()
+  protected void realCancel()
   {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      bcst.b(null, "dc00898", "", "", "0X80085A2", "0X80085A2", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Bans.a.dismiss();
-      return;
+    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
+  }
+  
+  protected void realStart()
+  {
+    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
+    banv.a(this.b + ".splashtemp");
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
+    bans.a("qbossSplashrequest", (HashMap)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
     }
+    localObject = new beum();
+    ((beum)localObject).jdField_a_of_type_Beuq = new banu(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
+    ((beum)localObject).jdField_a_of_type_JavaLangString = this.d;
+    ((beum)localObject).jdField_a_of_type_Int = 0;
+    ((beum)localObject).c = (this.b + ".splashtemp");
+    ((bevo)this.app.getNetEngine(0)).a((bevl)localObject);
   }
 }
 

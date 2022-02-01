@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.qphone.base.util.QLog;
 
-public class atxv
-  implements atve
+class atxv
+  extends atxd
 {
-  public atxv(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a()
+  public atxv(atwy paramatwy)
   {
-    QfileEditBottomBar.a(this.a);
+    super(paramatwy);
   }
   
-  public void b() {}
+  protected String a()
+  {
+    return "StateRefuseByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atwy.b(this.jdField_a_of_type_Atwy, 11, 6);
+    atwy.c(this.jdField_a_of_type_Atwy, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Atxd = new atxt(this.jdField_a_of_type_Atwy);
+  }
 }
 
 

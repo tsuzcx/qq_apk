@@ -1,26 +1,41 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public abstract interface yaq
+public class yaq
 {
-  public abstract View a();
+  public static void a(String paramString1, String paramString2)
+  {
+    yuk.b(paramString1, paramString2);
+  }
   
-  public abstract ImageView a();
+  public static void a(String paramString1, String paramString2, Object paramObject)
+  {
+    yuk.a(paramString1, paramString2, paramObject);
+  }
   
-  public abstract TextView a();
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
   
-  public abstract void a();
+  public static void b(String paramString1, String paramString2)
+  {
+    yuk.d(paramString1, paramString2);
+  }
   
-  public abstract void a(String paramString);
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    yuk.a(paramString1, paramString2, paramObject);
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    yuk.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
   
-  public abstract void b();
+  public static void c(String paramString1, String paramString2)
+  {
+    yuk.e(paramString1, paramString2);
+  }
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
+  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    yuk.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
 }
 
 

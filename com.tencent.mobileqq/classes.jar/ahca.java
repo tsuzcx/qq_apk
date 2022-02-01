@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ahca
-  implements DialogInterface.OnClickListener
+public abstract interface ahca
 {
-  ahca(ahbx paramahbx) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a();
 }
 
 

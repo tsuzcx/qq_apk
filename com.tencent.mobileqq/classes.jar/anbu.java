@@ -1,89 +1,25 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anbu
-  implements Handler.Callback
+class anbu
+  implements SoundPool.OnLoadCompleteListener
 {
-  private int jdField_a_of_type_Int;
-  private final anbv jdField_a_of_type_Anbv;
-  private anbw jdField_a_of_type_Anbw;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  anbu(anbs paramanbs, float paramFloat, int paramInt, String paramString, amwx paramamwx, long paramLong) {}
   
-  public anbu(anbv paramanbv)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Anbv = paramanbv;
-    this.jdField_a_of_type_AndroidOsHandler = new bkgm(ThreadManager.getSubThreadLooper(), this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(int paramInt, anbw paramanbw)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Anbw = paramanbw;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.b = false;
-    do
+    if (-1.0F == this.jdField_a_of_type_Float) {}
+    for (float f = 1.0F;; f = this.jdField_a_of_type_Float)
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Anbv.a(paramBundle))
-        {
-        case 0: 
-        default: 
-          break;
-        case -1: 
-          if (this.jdField_a_of_type_Anbw != null)
-          {
-            paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
-          }
-          break;
-        }
+      paramInt1 = anbs.a(this.jdField_a_of_type_Anbs).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
+      if (paramInt1 != 0) {
+        break;
       }
+      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
       return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.b = true;
-    this.jdField_a_of_type_Anbw = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
     }
-    for (;;)
-    {
-      return false;
-      if (!this.b) {
-        a(paramMessage.getData());
-      }
-      return true;
-      if (this.jdField_a_of_type_Anbw != null)
-      {
-        this.jdField_a_of_type_Anbw.b();
-        this.jdField_a_of_type_Anbw = null;
-      }
-    }
+    anbs.a(this.jdField_a_of_type_Anbs, this.jdField_a_of_type_Amwx, paramInt1, this.jdField_a_of_type_Long);
   }
 }
 

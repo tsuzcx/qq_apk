@@ -1,56 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class arbh
-  extends aqkz<arbg>
 {
-  public static arbg a()
-  {
-    return (arbg)aqlk.a().a(437);
-  }
+  private boolean a;
   
-  @NonNull
-  public arbg a(int paramInt)
+  public static arbh a(String paramString)
   {
-    return new arbg();
-  }
-  
-  @Nullable
-  public arbg a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arbg.a(paramArrayOfaqlg);
+    if (paramString == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        arbh localarbh = new arbh();
+        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localarbh.a = bool;
+          return localarbh;
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramString) {}
     }
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public void a(arbg paramarbg) {}
-  
-  public Class<arbg> clazz()
+  public boolean a()
   {
-    return arbg.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 437;
+    return this.a;
   }
 }
 

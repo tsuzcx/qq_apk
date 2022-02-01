@@ -23,15 +23,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import bclx;
-import bmjz;
-import bqcd;
+import bdep;
+import bnlc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.json.JSONException;
@@ -167,8 +167,8 @@ public class DisplayUtil
     int j;
     if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
     {
-      Rect localRect = bmjz.a(paramActivity.getWindow().getDecorView());
-      localRect.top = bmjz.a(paramActivity, paramActivity);
+      Rect localRect = bnlc.a(paramActivity.getWindow().getDecorView());
+      localRect.top = bnlc.a(paramActivity, paramActivity);
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       if (Build.VERSION.SDK_INT >= 17)
       {
@@ -338,7 +338,7 @@ public class DisplayUtil
       k = i;
       if (m != 0)
       {
-        j = bclx.c(BaseApplication.getContext());
+        j = bdep.c(BaseApplication.getContext());
         k = 0;
       }
       i = j;
@@ -603,8 +603,8 @@ public class DisplayUtil
       paramBaseActivity.getWindow().clearFlags(512);
       return;
     }
-    bqcd.a(paramBaseActivity);
-    if (bqcd.b())
+    LiuHaiUtils.a(paramBaseActivity);
+    if (LiuHaiUtils.b())
     {
       if ((!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) || ((Build.VERSION.SDK_INT != 26) && (Build.VERSION.SDK_INT != 27))) {
         break label100;
@@ -616,7 +616,7 @@ public class DisplayUtil
       paramBaseActivity.getWindow().setFlags(1024, 1024);
       return;
       label100:
-      bqcd.c(paramBaseActivity);
+      LiuHaiUtils.enableNotch(paramBaseActivity);
     }
   }
   

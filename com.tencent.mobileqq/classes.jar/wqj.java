@@ -1,9 +1,21 @@
-public class wqj
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+
+class wqj
+  extends xfp
 {
-  @zkv(a="type")
-  public int a;
-  @zkv(a="content")
-  public wqi a;
+  wqj(wqh paramwqh) {}
+  
+  public void a()
+  {
+    super.a();
+    wqg.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    yup.a("home_page", "suc_share", 1, paramInt, new String[] { yup.b(this.a.a.a) + "", yup.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
 }
 
 

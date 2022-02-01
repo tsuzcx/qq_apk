@@ -1,6 +1,6 @@
 package com.tencent.biz.videostory.video;
 
-import aaxn;
+import abbq;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.ttpic.baseutils.gles.EglCore;
@@ -9,13 +9,13 @@ import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
 public class SimpleGLThread$3
   implements Runnable
 {
-  public SimpleGLThread$3(aaxn paramaaxn) {}
+  public SimpleGLThread$3(abbq paramabbq) {}
   
   public void run()
   {
-    aaxn.a(this.this$0).release();
-    aaxn.a(this.this$0).release();
-    aaxn.a(this.this$0).getLooper().quit();
+    abbq.a(this.this$0).release();
+    abbq.a(this.this$0).release();
+    abbq.a(this.this$0).getLooper().quit();
   }
 }
 

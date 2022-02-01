@@ -1,69 +1,55 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedReq;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bmua
-  extends bmuf
+  extends QzoneExternalRequest
 {
-  public bmua(String paramString, View paramView)
+  public JceStruct a;
+  
+  public bmua(long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString, int paramInt)
   {
-    super(paramString, paramView);
+    super.setRefer(paramString);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    paramString = new AIONewestFeedReq();
+    paramString.uOpUin = paramLong1;
+    paramString.uHostUin = paramArrayList;
+    paramString.uLastTime = paramLong2;
+    paramString.src = paramInt;
+    this.a = paramString;
   }
   
-  private ImageView.ScaleType a(String paramString)
+  public static AIONewestFeedRsp a(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface, int[] paramArrayOfInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    if ("center_crop".equals(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
-    }
-    if ("fit_center".equals(paramString)) {
-      return ImageView.ScaleType.FIT_CENTER;
-    }
-    return ImageView.ScaleType.CENTER_CROP;
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!bkgj.a(paramString)) {}
     do
     {
-      return;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
-      {
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-        localURLDrawableOptions.mRequestHeight = this.b;
-      }
-      localURLDrawableOptions.mPlayGifImage = false;
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    } while (paramString == null);
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
+      return paramArrayOfByte;
+      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
+      paramArrayOfByte = paramQQAppInterface;
+    } while (paramQQAppInterface != null);
+    return null;
   }
   
-  protected void a(String paramString1, String paramString2)
+  public String getCmdString()
   {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
-    do
-    {
-      return;
-      if ("content".equals(paramString1))
-      {
-        a(paramString2);
-        return;
-      }
-    } while (!"scale_type".equals(paramString1));
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
+    return "QzoneNewService.getAIONewestFeed";
   }
   
-  protected void b()
+  public JceStruct getReq()
   {
-    super.b();
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getAIONewestFeed";
   }
 }
 

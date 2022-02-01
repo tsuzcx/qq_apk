@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import uke;
+import ulc;
 
 public class WSPlayerWrapper$2
   implements Runnable
 {
-  public WSPlayerWrapper$2(uke paramuke, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public WSPlayerWrapper$2(ulc paramulc, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {

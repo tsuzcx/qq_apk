@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class adoz
-  implements DialogInterface.OnClickListener
+  extends adnc
 {
-  public adoz(BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy)
   {
-    this.a.b.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 31: 
+      adqf.a(paramadmy, null);
+    }
+    for (;;)
+    {
+      return true;
+      adqf.a(paramadmy, null);
+      continue;
+      adqf.a(paramadmy, null);
+    }
   }
 }
 

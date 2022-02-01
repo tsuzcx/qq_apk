@@ -1,21 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
-final class adqz
-  implements DialogInterface.OnClickListener
+public class adqz
+  extends AccountObserver
 {
-  adqz(adsy paramadsy, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, adsx paramadsx) {}
+  public adqz(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Adsy.d = false;
-    this.jdField_a_of_type_Adsy.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_Adsy);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
     }
   }
 }

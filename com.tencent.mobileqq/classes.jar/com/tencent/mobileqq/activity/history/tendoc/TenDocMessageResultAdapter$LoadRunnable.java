@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.history.tendoc;
 
 import android.os.Bundle;
 import android.os.Message;
-import bkfv;
+import blha;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;

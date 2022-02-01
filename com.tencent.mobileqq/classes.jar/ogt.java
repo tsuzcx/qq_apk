@@ -1,64 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ogt
-  implements pwe
+  implements View.OnClickListener
 {
-  ogt(ogr paramogr, pwb parampwb) {}
+  ogt(ogs paramogs) {}
   
-  private long a(List<ArticleInfo> paramList)
+  public void onClick(View paramView)
   {
-    paramList = paramList.iterator();
-    long l = 0L;
-    if (paramList.hasNext())
-    {
-      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-      if (l >= localArticleInfo.mRecommendSeq) {
-        break label50;
-      }
-      l = localArticleInfo.mRecommendSeq;
-    }
-    label50:
-    for (;;)
-    {
-      break;
-      return l;
-    }
-  }
-  
-  public List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2)
-  {
-    if ((!pil.c(paramInt)) || (paramList2 == null) || (paramList1 == null) || (paramList2.isEmpty())) {
-      return null;
-    }
-    long l = a(paramList2);
-    if (l < 1000L)
-    {
-      QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l);
-      return null;
-    }
-    paramList2 = new ArrayList();
-    if (!ogr.a())
-    {
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
-        if ((localArticleInfo.mRecommendSeq > 0L) && (localArticleInfo.mRecommendSeq < 1000L))
-        {
-          localArticleInfo.mRecommendSeq += l;
-          paramList2.add(localArticleInfo);
-          QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l + "  seq: " + localArticleInfo.mRecommendSeq);
-        }
-      }
-    }
-    bmqa.a(ogr.a(), Boolean.valueOf(true));
-    ogr.a(true);
-    this.jdField_a_of_type_Pwb.a(null);
-    return paramList2;
+    ((Activity)paramView.getContext()).onBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

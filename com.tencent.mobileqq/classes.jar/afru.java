@@ -1,54 +1,47 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afru
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public afru(VisitorsActivity paramVisitorsActivity) {}
+  public afru(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {}
     for (;;)
     {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
+      try
       {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-        this.a.b.setAlpha(127);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
+        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        int i = paramView.getId();
+        switch (i)
         {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
-        }
-        bcst.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
-        paramView = new Intent(this.a, LikeRankingListActivity.class);
-        this.a.startActivity(paramView);
-        this.a.d.setVisibility(8);
-        this.a.f.clearAnimation();
-        this.a.c = 0;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
         }
       }
+      catch (Exception localException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + localException.toString());
+        continue;
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopStoryMainActivity.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:https://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      yup.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
     }
   }
 }

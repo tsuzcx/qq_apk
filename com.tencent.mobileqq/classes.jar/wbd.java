@@ -1,4 +1,4 @@
-public abstract interface wbd {}
+public class wbd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

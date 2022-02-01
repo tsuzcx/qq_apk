@@ -1,23 +1,27 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axhq
   implements View.OnClickListener
 {
-  public axhq(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public axhq(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      axjk.a("0X800A236");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      this.a.onBackEvent();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (axgj.c) {
+        axjk.a("0X800A25B");
+      }
+    }
   }
 }
 

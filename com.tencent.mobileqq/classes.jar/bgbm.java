@@ -1,18 +1,50 @@
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Rect;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+
 public class bgbm
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  private bgbm(InputMethodGuard paramInputMethodGuard) {}
   
-  public bgbm(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
+  private int a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = ("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_item_" + paramInt1 + ".png");
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (bdep.b > 0) {
+      return bdep.b;
+    }
+    return ((WindowManager)this.a.getContext().getSystemService("window")).getDefaultDisplay().getHeight();
+  }
+  
+  public void onGlobalLayout()
+  {
+    boolean bool = InputMethodGuard.a(this.a);
+    Rect localRect = new Rect();
+    ((Activity)this.a.getContext()).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    int i = a();
+    int j = i - localRect.bottom;
+    if (Math.abs(j) > i / 5)
+    {
+      InputMethodGuard.a(this.a, true);
+      InputMethodGuard.a(this.a, j);
+    }
+    for (;;)
+    {
+      if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
+        InputMethodGuard.a(this.a).b(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
+      }
+      if (InputMethodGuard.b(this.a)) {
+        InputMethodGuard.b(this.a, false);
+      }
+      return;
+      InputMethodGuard.a(this.a, false);
+      InputMethodGuard.a(this.a, 0);
+    }
   }
 }
 

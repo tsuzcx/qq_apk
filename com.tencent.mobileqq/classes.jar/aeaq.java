@@ -1,60 +1,38 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ChatActivityFacade.3;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import feedcloud.FeedCloudRead.StGetC2CFeedRsp;
+import java.util.Locale;
 
 public class aeaq
-  extends bdzm
+  implements aaav<FeedCloudRead.StGetC2CFeedRsp>
 {
-  final WeakReference<Conversation> a;
+  public aeaq(ChatActivityFacade.3 param3) {}
   
-  public aeaq(Conversation paramConversation)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetC2CFeedRsp paramStGetC2CFeedRsp)
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int j = 0;
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation == null) {}
-    do
+    if (paramBoolean) {
+      if (paramStGetC2CFeedRsp != null)
+      {
+        if ((QLog.isColorLevel()) && (paramStGetC2CFeedRsp.attchInfo != null) && (paramStGetC2CFeedRsp.attchInfo.get() != null)) {
+          QLog.d("ChatActivityFacade.QCircleFeeds", 2, "QCircleStGetC2CFeedRequest: response.attchInfo==" + paramStGetC2CFeedRsp.attchInfo.get());
+        }
+        aean.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramStGetC2CFeedRsp, this.a.jdField_a_of_type_Boolean);
+        if ((paramStGetC2CFeedRsp.attchInfo != null) && (!bhsr.a(paramStGetC2CFeedRsp.attchInfo.get()))) {
+          aean.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramStGetC2CFeedRsp.attchInfo.get());
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
     {
-      bduk localbduk;
-      int k;
-      int i;
       do
       {
-        do
-        {
-          return;
-          localbduk = (bduk)paramMessage.obj;
-        } while ((Conversation.a(localConversation) == null) || (localbduk == null) || (TextUtils.isEmpty(localbduk.p)));
-        k = paramMessage.what;
-        if (localbduk.b != 1)
-        {
-          i = j;
-          if (localbduk.b != 2) {}
-        }
-        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
-        {
-          i = j;
-          if (k != 1003) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localbduk.b != 2) && (!localConversation.f))));
-      localConversation.a(8, localbduk.p, -2147483648);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ChatActivityFacade.QCircleFeeds", 2, "QCircleStGetC2CFeedRequest failed: response==null");
+      return;
+    }
+    QLog.e("ChatActivityFacade.QCircleFeeds", 2, String.format(Locale.getDefault(), "QCircleStGetC2CFeedRequest failed: retCode=%d,errMsg=%s", new Object[] { Long.valueOf(paramLong), paramString }));
   }
 }
 

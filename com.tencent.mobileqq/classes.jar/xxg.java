@@ -1,18 +1,6 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
-
-class xxg
-  implements xxb<Bitmap>
+public abstract interface xxg
 {
-  xxg(xxe paramxxe, List paramList, String paramString) {}
-  
-  @NonNull
-  public Stream<Bitmap> a(xwx paramxwx)
-  {
-    return xxe.a(this.jdField_a_of_type_Xxe, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a();
 }
 
 

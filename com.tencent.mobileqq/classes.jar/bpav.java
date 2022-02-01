@@ -1,28 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.view.AECircleCaptureProgressView;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
 
 public class bpav
-  implements ThreadExcutor.IThreadListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bpav(bpau parambpau) {}
+  public bpav(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.a.jdField_a_of_type_Bpfx == null) || (this.a.jdField_a_of_type_Bpfx.getActivity() == null)) {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (!AEPituCameraCaptureButtonLayout.a(this.a))
+    {
+      this.a.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setCenterScaleValue(f);
       return;
     }
-    this.a.jdField_a_of_type_Bpfx.a().postDelayed(new EditPicSave.1.1(this), 500L);
-  }
-  
-  public void onPreRun()
-  {
-    if (this.a.jdField_a_of_type_Bpep.a.a() == 14) {
-      bpau.a(this.a, false);
-    }
+    this.a.jdField_a_of_type_DovComQqImAeViewAECircleCaptureProgressView.setCenterScaleValue(f);
   }
 }
 

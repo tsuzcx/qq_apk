@@ -1,20 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahvw
-  implements View.OnTouchListener
+  extends ahvs
 {
-  ahvw(ahvv paramahvv, ahvq paramahvq) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ahvw(QQAppInterface paramQQAppInterface)
   {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
-    }
-    return false;
+    super(paramQQAppInterface);
   }
 }
 

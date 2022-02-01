@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.studyroom.ui;
 
-import aevv;
+import afez;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import anni;
-import bddg;
-import bddh;
-import bddr;
-import biau;
+import anzj;
+import bdwb;
+import bdwc;
+import bdwm;
+import bjbs;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ import java.util.concurrent.Future;
 public class StudyRoomLoadingFragment
   extends PublicBaseFragment
 {
-  private biau jdField_a_of_type_Biau;
+  private bjbs jdField_a_of_type_Bjbs;
   private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture;
   
   public static void a(Map<String, String> paramMap)
@@ -39,26 +39,26 @@ public class StudyRoomLoadingFragment
     for (paramMap = new HashMap();; paramMap = new HashMap(paramMap))
     {
       localIntent.putExtra("param", paramMap);
-      aevv.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
+      afez.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
       return;
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Biau == null)
+    if (this.jdField_a_of_type_Bjbs == null)
     {
-      this.jdField_a_of_type_Biau = new biau(getActivity(), 40);
-      this.jdField_a_of_type_Biau.a(anni.a(2131706597));
-      this.jdField_a_of_type_Biau.setOnCancelListener(new bddg(this));
+      this.jdField_a_of_type_Bjbs = new bjbs(getActivity(), 40);
+      this.jdField_a_of_type_Bjbs.a(anzj.a(2131706704));
+      this.jdField_a_of_type_Bjbs.setOnCancelListener(new bdwb(this));
     }
-    this.jdField_a_of_type_Biau.show();
+    this.jdField_a_of_type_Bjbs.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Biau != null) {
-      this.jdField_a_of_type_Biau.dismiss();
+    if (this.jdField_a_of_type_Bjbs != null) {
+      this.jdField_a_of_type_Bjbs.dismiss();
     }
   }
   
@@ -135,7 +135,7 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = bddr.a(getActivity().getApplicationContext(), paramView, false, new bddh(this));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = bdwm.a(getActivity().getApplicationContext(), paramView, false, new bdwc(this));
   }
 }
 

@@ -6,8 +6,9 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 public final class qq_common$DeviceExt
   extends MessageMicro<DeviceExt>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "app_status" }, new Object[] { null }, DeviceExt.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "app_status", "attri_info" }, new Object[] { null, null }, DeviceExt.class);
   public qq_common.DeviceExt.AppStatus app_status = new qq_common.DeviceExt.AppStatus();
+  public qq_common.DeviceExt.AttriDeviceInfo attri_info = new qq_common.DeviceExt.AttriDeviceInfo();
 }
 
 

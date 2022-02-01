@@ -1,21 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class avnt
-  implements aaob
+public class avnt
+  implements bjey
 {
-  avnt(avns paramavns, String paramString) {}
+  public avnt(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void callback(Bundle paramBundle)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Avns.isDestroy) {}
-    do
+    if (paramInt == 5)
     {
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      paramView.putExtra("fromQGamePub", true);
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
       return;
-      paramBundle = String.format("{\"result\":%d, \"errMsg\":\"%s\", \"uin\":\"%s\"}", new Object[] { Integer.valueOf(paramBundle.getInt("result", -1)), paramBundle.getString("errMsg"), paramBundle.getString("retUin") });
-      this.jdField_a_of_type_Avns.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    } while (!QLog.isColorLevel());
-    QLog.e("ConnectApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
+    }
+    QQGameFeedWebFragment.a(this.a, this.a.a);
+    this.a.getActivity().finish();
   }
 }
 

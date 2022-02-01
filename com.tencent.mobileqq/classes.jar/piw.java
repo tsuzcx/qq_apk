@@ -1,60 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class piw
-  implements AladdinConfigHandler
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    Map localMap = phv.a(paramString);
-    Object localObject2 = localMap.keySet();
-    Object localObject1 = "";
-    paramString = "";
-    Iterator localIterator = ((Set)localObject2).iterator();
-    String str;
-    if (localIterator.hasNext())
-    {
-      str = (String)localIterator.next();
-      localObject2 = (String)localMap.get(str);
-      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
-      if (TextUtils.equals(str, "native_article"))
-      {
-        bmqa.a("native_proteus_offline_bid", (String)localObject2);
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-      break;
-      if (TextUtils.equals(str, "native_article_cdn_url"))
-      {
-        localObject1 = paramString;
-        paramString = (String)localObject2;
-        continue;
-        tfc.a(paramString, (String)localObject1);
-        return true;
-      }
-      else
-      {
-        localObject2 = paramString;
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-      }
-    }
-  }
+  public piw(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onClick(View paramView)
   {
-    bmqa.a("native_proteus_offline_bid", "0");
+    if (ReadInJoyProteusFamilyFragment.a(this.a) != null) {
+      ReadInJoyProteusFamilyFragment.a(this.a).a(true);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

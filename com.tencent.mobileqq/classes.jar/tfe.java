@@ -1,6 +1,18 @@
-public abstract interface tfe
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+
+public class tfe
+  extends tfp
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public tfe(BridgeModule paramBridgeModule)
+  {
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$1100(this.a, paramInt2, paramIntent);
+  }
 }
 
 

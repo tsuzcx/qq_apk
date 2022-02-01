@@ -1,39 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class xog
-  implements DialogInterface.OnDismissListener
+class xog
+  implements wrk
 {
-  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  xog(xof paramxof, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  public xog(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    a(-1, anzj.a(2131701091));
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, String paramString)
   {
-    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDialogInterface != null)
-    {
-      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
-        break label40;
-      }
-      yqp.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
-    }
-    label40:
-    while (paramDialogInterface.e()) {
-      return;
-    }
-    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
-    paramDialogInterface.d();
-    paramDialogInterface.a = null;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131701088), 0).a();
+    yuk.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
   }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!xoa.b(this.jdField_a_of_type_Xof.a)) {
+      xoa.a(this.jdField_a_of_type_Xof.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

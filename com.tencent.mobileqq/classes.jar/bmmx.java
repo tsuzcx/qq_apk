@@ -1,15 +1,23 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bmmx
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public bmmx(QzoneQunFeedJsPlugin.2.1 param1) {}
+  public bmmx(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a)
+    {
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    }
   }
 }
 

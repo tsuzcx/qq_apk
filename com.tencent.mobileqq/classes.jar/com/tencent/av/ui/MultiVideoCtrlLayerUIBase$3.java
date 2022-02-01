@@ -11,15 +11,15 @@ class MultiVideoCtrlLayerUIBase$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_AndroidViewViewGroup == null) || (this.this$0.jdField_d_of_type_AndroidWidgetTextView == null) || (this.this$0.jdField_a_of_type_AndroidContentResResources == null))
+    if ((this.this$0.jdField_a_of_type_AndroidViewViewGroup == null) || (this.this$0.e == null) || (this.this$0.jdField_a_of_type_AndroidContentResResources == null))
     {
       if (QLog.isColorLevel()) {
-        QLog.e(this.this$0.jdField_d_of_type_JavaLangString, 2, "SetTitleMaxWidth Failed --> RootView Or TitleView Or Resource is NULL");
+        QLog.e(this.this$0.d, 2, "SetTitleMaxWidth Failed --> RootView Or TitleView Or Resource is NULL");
       }
       return;
     }
-    int i = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131299096);
-    this.this$0.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(i);
+    int i = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131299109);
+    this.this$0.e.setMaxWidth(i);
   }
 }
 

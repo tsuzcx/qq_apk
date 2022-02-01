@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfsg;
+import bgsh;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TroopFileTransferManager$TaskPool$1
   implements Runnable
 {
-  public TroopFileTransferManager$TaskPool$1(bfsg parambfsg) {}
+  public TroopFileTransferManager$TaskPool$1(bgsh parambgsh) {}
   
   public void run()
   {

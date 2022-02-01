@@ -2,9 +2,9 @@ package com.tencent.mobileqq.highway;
 
 public final class R$string
 {
-  public static final int action_settings = 2131689513;
-  public static final int app_name = 2131690054;
-  public static final int hello_world = 2131692867;
+  public static final int action_settings = 2131689514;
+  public static final int app_name = 2131690062;
+  public static final int hello_world = 2131692875;
 }
 
 

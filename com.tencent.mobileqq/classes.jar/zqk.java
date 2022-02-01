@@ -1,49 +1,47 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import java.io.File;
+import java.util.ArrayList;
 
 class zqk
-  extends RecyclerView.AdapterDataObserver
+  extends zqh
 {
-  zqk(zqj paramzqj) {}
+  zqk(zqi paramzqi, zqq paramzqq, File paramFile) {}
   
-  public void onChanged()
+  public void onFailure(String paramString)
   {
-    this.a.notifyDataSetChanged();
-    if (zqj.a(this.a) != null) {
-      zqj.a(this.a).a(zqj.a(this.a));
-    }
+    this.jdField_a_of_type_Zqq.onFailure(paramString);
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public void onFinish(boolean paramBoolean)
   {
-    this.a.notifyItemRangeChanged(zqj.a(this.a).size() + paramInt1, paramInt2);
-    if (zqj.a(this.a) != null) {
-      zqj.a(this.a).a(zqj.a(this.a));
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      this.jdField_a_of_type_JavaIoFile.delete();
     }
+    int i = 0;
+    while (i < this.jdField_a_of_type_Zqi.b.size())
+    {
+      File localFile = new File((String)this.jdField_a_of_type_Zqi.b.get(i));
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Zqi.b = new ArrayList();
+    this.jdField_a_of_type_Zqq.onFinish(paramBoolean);
   }
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public void onProgress(String paramString)
   {
-    this.a.notifyItemRangeInserted(zqj.a(this.a).size() + paramInt1, paramInt2);
-    if (zqj.a(this.a) != null) {
-      zqj.a(this.a).a(zqj.a(this.a));
-    }
+    this.jdField_a_of_type_Zqq.onProgress(paramString);
   }
   
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  public void onStart()
   {
-    this.a.notifyItemMoved(zqj.a(this.a).size() + paramInt1, zqj.a(this.a).size() + paramInt2);
-    if (zqj.a(this.a) != null) {
-      zqj.a(this.a).a(zqj.a(this.a));
-    }
+    this.jdField_a_of_type_Zqq.onStart();
   }
   
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  public void onSuccess(String paramString)
   {
-    this.a.notifyItemRangeRemoved(zqj.a(this.a).size() + paramInt1, paramInt2);
-    if (zqj.a(this.a) != null) {
-      zqj.a(this.a).a(zqj.a(this.a));
-    }
+    this.jdField_a_of_type_Zqq.onSuccess(paramString);
   }
 }
 

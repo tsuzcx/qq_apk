@@ -1,37 +1,63 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.SVIPHandler.1;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class aogv
-  implements PermissionMonitor.Listener
+public class aogv
+  implements anui
 {
-  static
+  public aogv(SVIPHandler.1 param1, aqkr paramaqkr) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!aogs.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      jdField_a_of_type_Boolean = bool;
+      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Object localObject = (BubbleDiyEntity)paramObject.next();
+            String str2;
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
+              this.jdField_a_of_type_Aqkr.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
+              this.jdField_a_of_type_Aqkr.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
+              this.jdField_a_of_type_Aqkr.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
+            {
+              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
+              this.jdField_a_of_type_Aqkr.b.add(localObject);
+            }
+          }
+        }
+      }
       return;
     }
-  }
-  
-  aogv(aogs paramaogs) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
-    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 2)) {
-      return;
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
     }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
-      throw new AssertionError();
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Double.class)) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)aogs.a(this.jdField_a_of_type_Aogs), ((Double)paramArrayOfObject[1]).doubleValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+    this.jdField_a_of_type_Aqkr.b();
   }
 }
 

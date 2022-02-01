@@ -1,29 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import android.content.SharedPreferences;
+import com.tencent.gamecenter.activities.GameCenterActivity;
+import java.util.HashMap;
+import java.util.List;
 
 public class biqz
-  extends Handler
 {
-  public void handleMessage(Message paramMessage)
+  public static HashMap<String, Integer> a;
+  public static List<String> a;
+  public static int d = -1;
+  public int a;
+  public long a;
+  public SharedPreferences a;
+  public boolean a;
+  public int b;
+  public int c = 6;
+  
+  static
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (biqy)paramMessage.obj;
-    } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
-    try
-    {
-      paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+  }
+  
+  public biqz()
+  {
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(String paramString)
+  {
+    GameCenterActivity.a(paramString, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
   }
 }
 

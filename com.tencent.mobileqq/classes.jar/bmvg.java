@@ -1,10 +1,15 @@
-import java.util.HashMap;
+import cooperation.qzone.QzoneIPCModule;
 
 public class bmvg
 {
   public int a;
-  public HashMap<String, String> a;
-  public int b;
+  public long a;
+  public String a;
+  public String b = "";
+  public String c;
+  public String d;
+  
+  bmvg(QzoneIPCModule paramQzoneIPCModule) {}
 }
 
 

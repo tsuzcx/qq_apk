@@ -1,20 +1,83 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class agjs
-  implements View.OnClickListener
+public class agjs
+  extends BaseAdapter
 {
-  agjs(agjr paramagjr) {}
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  ArrayList<agjr> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(View paramView)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    agjr.a(this.a).dismissDialog(230);
-    abao.a(agjr.a(this.a), agjr.a(this.a).jdField_a_of_type_Int, agjr.a(this.a).jdField_a_of_type_JavaLangString, agjr.a(this.a).getAccount());
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(ArrayList<agjr> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1 = BaseApplication.getContext();
+    Object localObject2;
+    if (paramView == null)
+    {
+      localObject1 = LayoutInflater.from((Context)localObject1).inflate(2131558868, null);
+      paramView = new agjt();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131368344));
+      paramView.b = ((ImageView)((View)localObject1).findViewById(2131366785));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131378618));
+      ((View)localObject1).setTag(paramView);
+      localObject2 = (agjr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((agjr)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((agjr)localObject2).jdField_a_of_type_JavaLangString);
+      if (!((agjr)localObject2).jdField_a_of_type_Boolean) {
+        break label195;
+      }
+      paramView.b.setVisibility(0);
+    }
+    for (;;)
+    {
+      paramView.jdField_a_of_type_Int = ((agjr)localObject2).jdField_a_of_type_Int;
+      ((View)localObject1).setContentDescription(((agjr)localObject2).b);
+      ((View)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject2 = (agjt)paramView.getTag();
+      localObject1 = paramView;
+      paramView = (View)localObject2;
+      break;
+      label195:
+      paramView.b.setVisibility(8);
+    }
   }
 }
 

@@ -2,36 +2,36 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import biau;
-import bmqa;
+import bjbs;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
 import mqq.app.MobileQQ;
-import pha;
-import tbm;
-import tcc;
+import ozs;
+import ssi;
+import ssy;
 
 public class FastWebShareUtils$2
   implements Runnable
 {
-  public FastWebShareUtils$2(tbm paramtbm, Map paramMap, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AppInterface paramAppInterface, String paramString6, ArticleInfo paramArticleInfo, int paramInt) {}
+  public FastWebShareUtils$2(ssi paramssi, Map paramMap, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AppInterface paramAppInterface, String paramString6, ArticleInfo paramArticleInfo, int paramInt) {}
   
   public void run()
   {
     int j = 1;
     int i = 1;
-    if (tbm.a(this.this$0).isShowing()) {
-      tbm.a(this.this$0).dismiss();
+    if (ssi.a(this.this$0).isShowing()) {
+      ssi.a(this.this$0).dismiss();
     }
-    tbm.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+    ssi.a(this.this$0, String.valueOf(System.currentTimeMillis()));
     Object localObject1 = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
     Object localObject2;
     if (this.jdField_a_of_type_Boolean)
     {
-      WxShareHelperFromReadInjoy.a().a(tbm.a(this.this$0), this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1, this.b, this.c, this.d);
+      WxShareHelperFromReadInjoy.a().a(ssi.a(this.this$0), this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1, this.b, this.c, this.d);
       localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext();
       localObject2 = this.f;
       if (!"2".equals(this.e)) {
@@ -41,13 +41,13 @@ public class FastWebShareUtils$2
     label303:
     for (i = 4;; i = 5)
     {
-      tbm.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      tcc.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false);
+      ssi.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      ssy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false);
       return;
-      if (bmqa.t(pha.a()) == 1)
+      if (bnrf.r(ozs.a()) == 1)
       {
         localObject2 = WXShareHelper.a();
-        str1 = tbm.a(this.this$0);
+        str1 = ssi.a(this.this$0);
         str2 = this.jdField_a_of_type_JavaLangString;
         str3 = this.b;
         str4 = this.c;
@@ -58,7 +58,7 @@ public class FastWebShareUtils$2
         break;
       }
       localObject2 = WxShareHelperFromReadInjoy.a();
-      String str1 = tbm.a(this.this$0);
+      String str1 = ssi.a(this.this$0);
       String str2 = this.jdField_a_of_type_JavaLangString;
       String str3 = this.b;
       String str4 = this.c;

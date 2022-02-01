@@ -1,19 +1,34 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
-public class aagx
-  implements aqga
+class aagx
+  extends RecyclerView.OnScrollListener
 {
-  public aagx(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  aagx(aagu paramaagu) {}
   
-  public void onColorNoteAnimFinish()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a.getActivity() != null)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((this.a.a instanceof StaggeredGridLayoutManager))
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
+      paramRecyclerView.computeVerticalScrollExtent(new RecyclerView.State());
+      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
+      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
+      if ((this.a.getLocalPosition(arrayOfInt[0]) <= 0) && (!aagu.b(this.a)))
+      {
+        aagu.a(this.a, true);
+        paramRecyclerView.invalidateSpanAssignments();
+      }
+      if (arrayOfInt[0] > 2) {
+        aagu.a(this.a, false);
+      }
     }
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,72 +1,44 @@
-import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
-import com.tencent.mobileqq.widget.QQTabHost;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class aeph
-  implements biap
+  implements bcie
 {
-  private Map<View, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public aeph(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public aeph(MainFragment paramMainFragment) {}
-  
-  private void a(View paramView, ArrayList<View> paramArrayList)
+  public void a(View paramView)
   {
-    if ((paramView == null) || (!(paramView instanceof ViewGroup))) {}
+    int i = 1;
+    bcfn localbcfn = (bcfn)paramView.getTag(2131381109);
+    if (localbcfn == null) {}
     for (;;)
     {
       return;
-      paramView = (ViewGroup)paramView;
-      if ((((paramView instanceof FPSXListView)) || ((paramView instanceof FPSSwipListView))) && (!paramArrayList.contains(paramView))) {
-        paramArrayList.add(paramView);
-      }
-      int i = 0;
-      while (i < paramView.getChildCount())
+      String str1 = localbcfn.b();
+      String str2 = localbcfn.a().toString();
+      paramView = "-1";
+      if ((localbcfn instanceof bceb))
       {
-        a(paramView.getChildAt(i), paramArrayList);
-        i += 1;
+        paramView = ((bceb)localbcfn).e();
+        i = 3000;
+      }
+      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        if ((localbcfn instanceof bceh)) {
+          paramView = ((bceh)localbcfn).a;
+        } else if ((localbcfn instanceof bcem)) {
+          paramView = ((bcem)localbcfn).a().troopuin;
+        } else if ((localbcfn instanceof bcec)) {
+          i = 0;
+        } else {
+          i = -1;
+        }
       }
     }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    View localView = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentView();
-    Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(localView);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = new ArrayList();
-      a(localView, (ArrayList)localObject1);
-      this.jdField_a_of_type_JavaUtilMap.put(localView, localObject1);
-    }
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (View)((Iterator)localObject1).next();
-      if ((localObject2 instanceof FPSXListView)) {
-        ((FPSXListView)localObject2).b(paramBoolean);
-      } else if ((localObject2 instanceof FPSSwipListView)) {
-        ((FPSSwipListView)localObject2).a(paramBoolean);
-      }
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    a(false);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    a(true);
   }
 }
 

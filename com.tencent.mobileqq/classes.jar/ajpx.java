@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.content.Context;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class ajpx
-  implements bkkk
+  extends ajoo
 {
-  public ajpx(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public String a;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
   
-  public void a(int paramInt)
+  public ajpx(Context paramContext, View paramView)
   {
-    bcst.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "1", "", "");
+    super(paramContext, paramView);
   }
 }
 

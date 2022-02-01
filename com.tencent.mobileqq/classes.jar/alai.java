@@ -1,32 +1,37 @@
-import android.os.Message;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
 
-class alai
-  implements View.OnClickListener
+public class alai
+  extends RecyclerView.ItemDecoration
 {
-  private alah jdField_a_of_type_Alah;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private int a;
+  private int b;
   
-  alai(alah paramalah, MqqHandler paramMqqHandler)
+  private alai(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Alah = paramalah;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void onClick(View paramView)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Alah.jdField_a_of_type_JavaLangString + " on close");
+    int i = paramRecyclerView.getChildPosition(paramView);
+    if (i == 0)
+    {
+      paramRect.left = this.a;
+      return;
     }
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
-    localMessage.obj = this.jdField_a_of_type_Alah;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-    this.jdField_a_of_type_Alah.jdField_a_of_type_Alaf.onClose();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
+    {
+      paramRect.left = this.b;
+      paramRect.right = this.a;
+      return;
+    }
+    paramRect.left = this.b;
   }
 }
 

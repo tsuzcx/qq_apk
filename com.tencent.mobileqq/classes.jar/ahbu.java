@@ -1,37 +1,93 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.ExtendFriendUserInfo;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.mobileqq.limitchat.TopicTextView;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
 
-public class ahbu
-  extends afuv
+class ahbu
+  implements View.OnClickListener
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
-  public ExtendFriendUserInfo a;
-  ExtendFriendVoiceView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView;
-  TopicTextView jdField_a_of_type_ComTencentMobileqqLimitchatTopicTextView;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  String jdField_c_of_type_JavaLangString;
-  View jdField_d_of_type_AndroidViewView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  TextView e;
+  private long jdField_a_of_type_Long;
+  
+  ahbu(ahbt paramahbt) {}
+  
+  public void onClick(View paramView)
+  {
+    Resources localResources = paramView.getContext().getResources();
+    long l = SystemClock.uptimeMillis();
+    if (l - this.jdField_a_of_type_Long >= 500L)
+    {
+      this.jdField_a_of_type_Long = l;
+      if ((paramView.getTag() != null) && ((paramView.getTag() instanceof JSONObject))) {
+        break label56;
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label56:
+      Object localObject2 = (JSONObject)paramView.getTag();
+      String str2;
+      Context localContext;
+      try
+      {
+        String str1 = ((JSONObject)localObject2).getString("url");
+        str2 = ((JSONObject)localObject2).getString("name");
+        localContext = paramView.getContext();
+        if (this.jdField_a_of_type_Ahbt.a != null) {
+          MediaPlayerManager.a(this.jdField_a_of_type_Ahbt.a).a(true);
+        }
+        if (!QQPlayerService.a(this.jdField_a_of_type_Ahbt)) {
+          break label164;
+        }
+        QQPlayerService.c(localContext);
+        paramView.setContentDescription(localResources.getString(2131690167));
+      }
+      catch (Exception localException) {}
+      if (QLog.isColorLevel())
+      {
+        QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(localException));
+        continue;
+        label164:
+        if ((this.jdField_a_of_type_Ahbt.a != null) && (this.jdField_a_of_type_Ahbt.a.d()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("CommonHobbyForAIOShowItemBuilder", 0, "Video Chatting is going on, don't play music.");
+          }
+        }
+        else
+        {
+          SongInfo localSongInfo = new SongInfo();
+          localSongInfo.jdField_b_of_type_JavaLangString = localException;
+          localSongInfo.jdField_b_of_type_Int = 4;
+          QQPlayerService.a(new Intent(localContext, MusicPlayerActivity.class));
+          localObject2 = QQPlayerService.a();
+          Object localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            localObject1 = new Bundle();
+            QQPlayerService.a((Bundle)localObject1);
+          }
+          ((Bundle)localObject1).putString("KEY_SOURCE_NAME", str2);
+          QQPlayerService.a(this.jdField_a_of_type_Ahbt);
+          QQPlayerService.a(localContext, this.jdField_a_of_type_Ahbt.getToken(), localSongInfo);
+          paramView.setContentDescription(localResources.getString(2131690165));
+        }
+      }
+    }
+  }
 }
 
 

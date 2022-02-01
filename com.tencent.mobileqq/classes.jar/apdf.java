@@ -1,268 +1,105 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.codeEngine.MiniResDownloadManager.1;
-import com.tencent.mobileqq.ar.codeEngine.MiniResDownloadManager.2;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class apdf
 {
-  public static Handler a;
-  private static ArrayList<apdg> a;
+  private static final Map<String, Integer> a = new HashMap();
   
-  static
+  public static int a(String arg0, String paramString2)
   {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_JavaUtilArrayList != null) {
-      jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.ResDownloadManager", 2, "clearCallback");
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    for (;;)
+    paramString2 = ??? + "_" + paramString2;
+    synchronized (a)
     {
-      try
+      if (a.containsKey(paramString2))
       {
-        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
-        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
-          return;
-        }
+        i = ((Integer)a.get(paramString2)).intValue();
+        return i;
       }
-      finally {}
-      int i = 0;
-      while (i < localObject.length)
-      {
-        apdg localapdg = (apdg)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new MiniResDownloadManager.1(localapdg, paramInt1, paramInt2));
-        i += 1;
-      }
+      int i = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
+      a.put(paramString2, Integer.valueOf(i));
     }
   }
   
-  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  public static String a(String paramString)
   {
-    if (paramQQAppInterface == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.ResDownloadManager", 2, "downloadFaceRes app is null");
+    String str = paramString;
+    if (paramString.length() > 4)
+    {
+      str = paramString.substring(4);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("DiySecureFileHelper", 4, paramString + " -> " + str);
       }
     }
-    do
-    {
-      return;
-      paramQQAppInterface = (arno)paramQQAppInterface.getManager(77);
-    } while (paramQQAppInterface == null);
-    boolean bool;
-    switch (paramInt)
-    {
-    default: 
-      bool = false;
-      paramQQAppInterface = null;
-    }
-    while (paramQQAppInterface != null)
-    {
-      paramInt = paramQQAppInterface.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.ResDownloadManager", 2, "initAr version=" + paramQQAppInterface.b());
-      }
-      if ((bool) && (paramQQAppInterface.g()) && (paramInt > 1)) {
-        break;
-      }
-      paramQQAppInterface.a(true);
-      return;
-      paramQQAppInterface = paramQQAppInterface.a("qq.android.minidecode.so_v8.2.0");
-      bool = apdh.a();
-      continue;
-      paramQQAppInterface = paramQQAppInterface.a("qq.android.minidetect.so_v8.2.0");
-      bool = apdj.a();
-      continue;
-      paramQQAppInterface = paramQQAppInterface.a("qq.android.minidetect.model_v8.2.0");
-      bool = apdi.a();
-    }
+    return str;
   }
   
-  public static void a(int paramInt, boolean paramBoolean)
+  public static void a(String arg0, String paramString2, int paramInt)
   {
-    for (;;)
+    int i = -1;
+    paramString2 = ??? + "_" + paramString2;
+    synchronized (a)
     {
-      try
-      {
-        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
-        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
-          return;
-        }
+      if (a.containsKey(paramString2)) {
+        i = ((Integer)a.get(paramString2)).intValue();
       }
-      finally {}
-      int i = 0;
-      while (i < localObject.length)
+      if (i != paramInt)
       {
-        apdg localapdg = (apdg)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new MiniResDownloadManager.2(localapdg, paramInt, paramBoolean));
-        i += 1;
-      }
-    }
-  }
-  
-  public static void a(apdg paramapdg)
-  {
-    if (paramapdg != null) {}
-    try
-    {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramapdg))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MiniRecog.ResDownloadManager", 2, "addDownloadCallback");
-        }
-        jdField_a_of_type_JavaUtilArrayList.add(paramapdg);
+        BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
+        a.put(paramString2, Integer.valueOf(paramInt));
       }
       return;
     }
-    finally {}
   }
   
-  public static void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  private static void b(String paramString1, String paramString2)
   {
-    if (paramQQAppInterface == null) {}
-    do
+    Object localObject1 = new File(paramString1);
+    int i;
+    if (((File)localObject1).exists())
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              paramQQAppInterface = (arno)paramQQAppInterface.getManager(77);
-            } while (paramQQAppInterface == null);
-            if (!paramBoolean) {
-              break;
-            }
-            paramQQAppInterface = (aroe)paramQQAppInterface.a("qq.android.minidecode.so_v8.2.0");
-          } while ((paramQQAppInterface == null) || (!paramQQAppInterface.g()) || (apdh.a()));
-          paramQQAppInterface.g();
-        } while (!QLog.isColorLevel());
-        QLog.d("MiniRecog.ResDownloadManager", 2, "reset decode so download state");
-        return;
-        arog localarog = (arog)paramQQAppInterface.a("qq.android.minidetect.so_v8.2.0");
-        if ((localarog != null) && (localarog.g()) && (!apdj.a()))
-        {
-          localarog.g();
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniRecog.ResDownloadManager", 2, "reset detect so download state");
-          }
-        }
-        paramQQAppInterface = (arof)paramQQAppInterface.a("qq.android.minidetect.model_v8.2.0");
-      } while ((paramQQAppInterface == null) || (!paramQQAppInterface.g()) || (apdi.a()));
-      paramQQAppInterface.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniRecog.ResDownloadManager", 2, "reset model so download state");
-  }
-  
-  private static boolean a(arnz paramarnz)
-  {
-    if (paramarnz == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramarnz = paramarnz.a();
-      } while (paramarnz == null);
-      if ((!TextUtils.isEmpty(paramarnz.strPkgName)) && (!TextUtils.isEmpty(paramarnz.strResURL_big))) {
-        break;
+      if (!((File)localObject1).isFile()) {
+        break label75;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniRecog.ResDownloadManager", 2, "strPkgName is empty:" + TextUtils.isEmpty(paramarnz.strPkgName) + " strResURL_big is empty:" + TextUtils.isEmpty(paramarnz.strResURL_big) + " loadState :" + paramarnz.loadState);
-    return false;
-    return true;
-  }
-  
-  public static boolean a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = true;
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return false;
-      paramQQAppInterface = (arno)paramQQAppInterface.getManager(77);
-    } while (paramQQAppInterface == null);
-    if (paramBoolean)
-    {
-      paramQQAppInterface = (aroe)paramQQAppInterface.a("qq.android.minidecode.so_v8.2.0");
-      bool1 = a(paramQQAppInterface);
-      paramBoolean = bool1;
-      if (!bool1)
-      {
-        paramBoolean = bool1;
-        if (paramQQAppInterface != null)
-        {
-          paramBoolean = bool1;
-          if (paramQQAppInterface.g())
-          {
-            paramBoolean = bool1;
-            if (apdh.a()) {
-              paramBoolean = true;
-            }
-          }
-        }
+      i = bhmi.a(paramString1, paramString2);
+      if (i != 0) {
+        QLog.d("DiySecureFileHelper", 1, "Move [" + paramString1 + "] errorcode = " + i);
       }
-      if (paramBoolean) {
-        paramQQAppInterface.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.ResDownloadManager", 2, String.format("isMiniResConfigReady config exist [decode]=[%b]", new Object[] { Boolean.valueOf(paramBoolean) }));
-      }
-      return paramBoolean;
-    }
-    arog localarog = (arog)paramQQAppInterface.a("qq.android.minidetect.so_v8.2.0");
-    boolean bool1 = a(localarog);
-    paramBoolean = bool1;
-    if (!bool1)
-    {
-      paramBoolean = bool1;
-      if (localarog != null)
-      {
-        paramBoolean = bool1;
-        if (localarog.g())
-        {
-          paramBoolean = bool1;
-          if (apdj.a()) {
-            paramBoolean = true;
-          }
-        }
-      }
-    }
-    if (paramBoolean) {
-      localarog.a();
-    }
-    paramQQAppInterface = (arof)paramQQAppInterface.a("qq.android.minidetect.model_v8.2.0");
-    bool1 = a(paramQQAppInterface);
-    if ((!bool1) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (apdi.a())) {
-      bool1 = true;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.ResDownloadManager", 2, String.format("isMiniResConfigReady config exist [detect,model]=[%b,%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1) }));
-      }
-      if ((paramBoolean) && (bool1)) {}
-      for (paramBoolean = bool2;; paramBoolean = false) {
-        return paramBoolean;
+      bhmi.a(paramString1);
+      return;
+      label75:
+      if (((File)localObject1).isDirectory())
+      {
+        localObject1 = b((File)localObject1);
+        int j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          b(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
+          i += 1;
+        }
       }
     }
+  }
+  
+  private static File[] b(File paramFile)
+  {
+    File[] arrayOfFile = paramFile.listFiles();
+    paramFile = arrayOfFile;
+    if (arrayOfFile == null)
+    {
+      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
+      paramFile = new File[0];
+    }
+    return paramFile;
   }
 }
 

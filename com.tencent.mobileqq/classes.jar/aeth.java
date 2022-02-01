@@ -1,36 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class aeth
-  implements CompoundButton.OnCheckedChangeListener
+  extends WebViewClient
 {
-  public aeth(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aeth(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    boolean bool = true;
-    if (!bgnt.g(this.a))
-    {
-      QQToast.a(BaseApplication.getContext(), 1, 2131693992, 0).b(this.a.getTitleBarHeight());
-      FormSwitchItem localFormSwitchItem = this.a.j;
-      if (!paramBoolean) {
-        localFormSwitchItem.setChecked(bool);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      ((anip)this.a.app.a(2)).g(paramBoolean);
-    }
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (this.a.a(paramString)) {}
+    return true;
   }
 }
 

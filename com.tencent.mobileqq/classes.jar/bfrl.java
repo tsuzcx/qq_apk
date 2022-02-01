@@ -1,53 +1,64 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfrl
-  extends anif
+  extends bfrg
 {
-  int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private bfrk jdField_a_of_type_Bfrk;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public bfrl(Context paramContext, long paramLong, QQAppInterface paramQQAppInterface)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public bfrl(Context paramContext, bfrk parambfrk, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Bfrk = parambfrk;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  protected void b(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bfrj))) {}
-    Context localContext;
-    long l1;
-    do
+    int j = 0;
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
+    }
+    localTroopFeedItem.type = 12;
+    for (;;)
     {
-      return;
-      paramObject = (bfrj)paramObject;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      long l2 = this.jdField_a_of_type_Long;
-      l1 = l2;
-      if (l2 == 0L)
+      int i;
+      try
       {
-        l1 = l2;
-        if (this.jdField_a_of_type_Bfrk != null) {
-          l1 = this.jdField_a_of_type_Bfrk.a();
+        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+        paramJSONObject = paramJSONObject.getJSONObject("vote");
+        if (paramJSONObject != null)
+        {
+          JSONArray localJSONArray = paramJSONObject.getJSONArray("opts");
+          i = 0;
+          if ((i >= localJSONArray.length()) || (j > 1))
+          {
+            paramJSONObject = paramJSONObject.getJSONArray("title");
+            if (paramJSONObject.length() > 0) {
+              localTroopFeedItem.title = paramJSONObject.getJSONObject(0).getString("value");
+            }
+          }
+          else
+          {
+            Object localObject = localJSONArray.getJSONArray(i);
+            k = j;
+            if (((JSONArray)localObject).length() <= 0) {
+              break label177;
+            }
+            localObject = ((JSONArray)localObject).getJSONObject(0);
+            if (j == 0) {
+              localTroopFeedItem.content = ((JSONObject)localObject).getString("value");
+            } else {
+              localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("value");
+            }
+          }
         }
       }
-    } while (localContext == null);
-    bfrh.a(paramObject, l1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
+      return localTroopFeedItem;
+      int k = j + 1;
+      label177:
+      i += 1;
+      j = k;
+    }
   }
 }
 

@@ -1,110 +1,167 @@
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 public class bius
+  implements Handler.Callback
 {
-  public static int a()
+  public static int a;
+  public static boolean c;
+  blhq jdField_a_of_type_Blhq;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public boolean a;
+  int b;
+  public volatile boolean b;
+  
+  static
   {
-    int j = biug.a(biip.a().a(), null).a("Common_BusinessReportMaxcount");
-    int i = j;
-    if (j == 0) {
-      i = 20;
-    }
-    return i;
+    jdField_a_of_type_Int = 42080;
   }
   
-  public static int a(int paramInt)
+  public bius(QQAppInterface paramQQAppInterface)
   {
-    int i;
-    if (paramInt == 0)
-    {
-      i = biug.a(biip.a().a(), null).a("Common_ViaSuccessRatioFrequencySuccess");
-      paramInt = i;
-      if (i == 0) {
-        paramInt = 20;
-      }
-    }
+    this.jdField_b_of_type_Int = 0;
+    if (paramQQAppInterface == null) {}
     do
     {
-      return paramInt;
-      i = biug.a(biip.a().a(), null).a("Common_ViaSuccessRatioFrequencyFail");
-      paramInt = i;
-    } while (i != 0);
-    return 50;
-  }
-  
-  public static int a(String paramString)
-  {
-    int j = biug.a(biip.a().a(), paramString).a("Common_BusinessReportFrequency");
-    int i = j;
-    if (j == 0) {
-      i = 100;
-    }
-    return i;
-  }
-  
-  public static long a()
-  {
-    return biip.a().a().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
-  }
-  
-  protected static SharedPreferences a()
-  {
-    return biip.a().a().getSharedPreferences("reportConfig", 0);
-  }
-  
-  public static String a()
-  {
-    if (biip.a().a() == null) {
-      return "";
-    }
-    return a().getString("uin", "");
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (biip.a().a() == null) {
       return;
-    }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putLong("lastTime", paramLong);
-    localEditor.commit();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      this.jdField_a_of_type_Blhq = new blhq(ThreadManager.getSubThreadLooper(), this);
+      this.jdField_a_of_type_Boolean = paramQQAppInterface.getPreferences().getBoolean(paramQQAppInterface.getCurrentAccountUin() + "whole_people_vote_switch", false);
+      if (QLog.isColorLevel()) {
+        QLog.i("WholePeopleLebaEntryChecker", 2, "WholePeopleLebaEntryChecker init switch:" + this.jdField_a_of_type_Boolean);
+      }
+    } while (!c);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static void a(String paramString)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (biip.a().a() == null) {
+    boolean bool2 = true;
+    Object localObject = paramQQAppInterface.a();
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, list is null, return false");
+      }
+      return false;
+    }
+    int i = 0;
+    if (i < ((List)localObject).size())
+    {
+      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)((List)localObject).get(i);
+      if ((localLebaPluginInfo == null) || (localLebaPluginInfo.uiResId != 770L)) {}
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, is=770, find=" + bool1);
+      }
+      if (!bool1) {
+        break;
+      }
+      localObject = paramQQAppInterface.a().a;
+      if (localObject == null) {
+        if (QLog.isColorLevel()) {
+          QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, campusLebaEntryChecker is null");
+        }
+      }
+      while (((bius)localObject).jdField_b_of_type_Boolean)
+      {
+        paramQQAppInterface = ((bbav)paramQQAppInterface.getManager(36)).a().iterator();
+        do
+        {
+          bool1 = bool2;
+          if (!paramQQAppInterface.hasNext()) {
+            break;
+          }
+          localObject = (BusinessInfoCheckUpdate.AppSetting)paramQQAppInterface.next();
+        } while (((BusinessInfoCheckUpdate.AppSetting)localObject).appid.get() != 770);
+        bool2 = ((BusinessInfoCheckUpdate.AppSetting)localObject).setting.get();
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow find appid 770");
+          bool1 = bool2;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow return " + bool1);
+        }
+        return bool1;
+        i += 1;
+        break;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, switch is off, return false");
+      return false;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Blhq.hasMessages(0)) {
+      this.jdField_a_of_type_Blhq.removeMessages(0);
+    }
+    this.jdField_b_of_type_Int += 1;
+    this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(0, 2000L);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
       return;
-    }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putString("uin", paramString);
-    localEditor.commit();
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (c) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      paramQQAppInterface.getPreferences().edit().putBoolean(paramQQAppInterface.getCurrentAccountUin() + "whole_people_vote_switch", paramBoolean).apply();
+    } while (!QLog.isColorLevel());
+    QLog.i("WholePeopleLebaEntryChecker", 2, String.format(Locale.getDefault(), "update show: %b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
   }
   
-  public static int b()
+  public void a(boolean paramBoolean)
   {
-    int j = biug.a(biip.a().a(), null).a("Common_HttpRetryCount");
-    int i = j;
-    if (j == 0) {
-      i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.i("WholePeopleLebaEntryChecker", 2, "setEntryIsOn " + paramBoolean);
     }
-    return i;
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      aogf.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
+    }
   }
   
-  public static long b()
+  public boolean handleMessage(Message paramMessage)
   {
-    long l2 = biug.a(biip.a().a(), null).a("Common_BusinessReportTimeinterval");
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = 3600L;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-    return l1;
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008824", "0X8008824", 0, this.jdField_b_of_type_Int, 0, "", "", "", "");
+    this.jdField_b_of_type_Int = 0;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bius
  * JD-Core Version:    0.7.0.1
  */

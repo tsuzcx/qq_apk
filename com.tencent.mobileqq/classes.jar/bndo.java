@@ -1,8 +1,18 @@
-import java.io.File;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-public class bndo
+final class bndo
+  implements bndq
 {
-  public static final String a = bndq.f + File.separator + "camera_emo_default_template.json";
+  public void a(boolean paramBoolean, Context paramContext, bndr parambndr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bndl.c(paramContext, parambndr);
+    }
+  }
 }
 
 

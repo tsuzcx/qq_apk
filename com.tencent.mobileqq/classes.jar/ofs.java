@@ -1,25 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-class ofs
-  extends pmn
+public abstract interface ofs
 {
-  ofs(ofk paramofk) {}
+  public abstract void a(Context paramContext);
   
-  public void a(boolean paramBoolean)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
-    if (!paramBoolean)
-    {
-      if ((ofk.a(this.a) == -1) || (ofk.a(this.a) == 0))
-      {
-        ofk.a(this.a, 0);
-        return;
-      }
-      ofk.a(this.a, 4);
-      return;
-    }
-    ofk.a(this.a, 1);
-  }
+  public abstract void a(MessageRecord paramMessageRecord);
+  
+  public abstract void a(List<ChatMessage> paramList, oft paramoft);
+  
+  public abstract boolean a(Context paramContext, RelativeLayout paramRelativeLayout);
+  
+  public abstract boolean a(RelativeLayout paramRelativeLayout);
 }
 
 

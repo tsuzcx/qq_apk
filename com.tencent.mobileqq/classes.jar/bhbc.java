@@ -1,17 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.theme.TextHook;
+import java.util.List;
 
-class bhbc
-  extends BroadcastReceiver
+public class bhbc
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent.getBooleanExtra("isFont", false)) {
-      TextHook.getInstance().checkTypeface(paramContext);
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public List<bhbd> a;
+  public int b;
+  public long b;
 }
 
 

@@ -8,10 +8,10 @@ import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lcu;
+import ldb;
 import mqq.app.AccountNotMatchException;
 import mqq.app.MobileQQ;
-import mtl;
+import muk;
 
 public class VideoMsgBroadcastReceiver
   extends BroadcastReceiver
@@ -153,7 +153,7 @@ public class VideoMsgBroadcastReceiver
     } while (!str3.equals("tencent.video.q2v.sendQueryRoomInfoRequest"));
     long l1 = paramIntent.getLongExtra("roomId", 0L);
     long l2 = paramIntent.getLongExtra("peerUin", 0L);
-    long l3 = mtl.a(paramIntent);
+    long l3 = muk.a(paramIntent);
     QLog.w("VideoMsgBroadcastReceiver", 1, "QueryRoomInfo.receive, roomId[" + l1 + "], peerUin[" + l2 + "], seq[" + l3 + "]");
     ((VideoController)localObject).c(l1, l2);
   }

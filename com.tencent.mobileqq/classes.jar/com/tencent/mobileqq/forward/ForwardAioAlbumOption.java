@@ -3,11 +3,11 @@ package com.tencent.mobileqq.forward;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import aufw;
-import aufz;
-import bdzx;
-import bgjw;
-import bgpa;
+import auxr;
+import auxu;
+import beyq;
+import bhjx;
+import bhpc;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nmp;
+import nok;
 
 public class ForwardAioAlbumOption
-  extends aufz
+  extends auxu
 {
   public ForwardAioAlbumOption(Intent paramIntent)
   {
@@ -33,7 +33,7 @@ public class ForwardAioAlbumOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bgjw.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aufw.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nmp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+      if ((localRecentUser != null) && (!bhjx.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(auxr.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -86,21 +86,21 @@ public class ForwardAioAlbumOption
       if (this.jdField_a_of_type_JavaLangString == null) {
         break label33;
       }
-      bdzx.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      beyq.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
     }
     while (paramDrawable == null)
     {
       return;
       label33:
-      bdzx.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+      beyq.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
     }
     paramDrawable.setBounds(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Bgpa.setMessage(null);
-    this.jdField_a_of_type_Bgpa.setMessageCount(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bhpc.setMessage(null);
+    this.jdField_a_of_type_Bhpc.setMessageCount(this.jdField_a_of_type_JavaLangString);
   }
 }
 

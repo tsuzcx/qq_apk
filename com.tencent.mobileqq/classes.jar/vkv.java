@@ -1,19 +1,13 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
 
-class vkv
-  extends RecyclerView.OnScrollListener
+public class vkv
+  implements vxz
 {
-  vkv(vks paramvks) {}
+  public vkv(QCircleReplyItemView paramQCircleReplyItemView) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(String paramString)
   {
-    if (paramInt == 0)
-    {
-      adcd.a().a("qcircle_content_page", false);
-      return;
-    }
-    adcd.a().a("qcircle_content_page");
+    QCircleReplyItemView.a(this.a, paramString);
   }
 }
 

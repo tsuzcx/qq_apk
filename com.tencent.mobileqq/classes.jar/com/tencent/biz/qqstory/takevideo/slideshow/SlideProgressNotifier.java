@@ -6,21 +6,21 @@ import android.content.DialogInterface.OnKeyListener;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
-import biau;
-import biax;
+import bjbs;
+import bjbv;
 import com.tencent.qphone.base.util.QLog;
-import zfz;
-import zgc;
-import zgl;
+import zju;
+import zjx;
+import zkg;
 
 public class SlideProgressNotifier
-  extends biax
-  implements DialogInterface.OnKeyListener, zfz
+  extends bjbv
+  implements DialogInterface.OnKeyListener, zju
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   Handler jdField_a_of_type_AndroidOsHandler;
   SlideProgressNotifier.RefreshProgressThread jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-  private zgc jdField_a_of_type_Zgc;
+  private zjx jdField_a_of_type_Zjx;
   
   public SlideProgressNotifier(Activity paramActivity, int paramInt)
   {
@@ -60,9 +60,9 @@ public class SlideProgressNotifier
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131698357) + "0%", 0);
-    if (this.jdField_a_of_type_Biau != null) {
-      this.jdField_a_of_type_Biau.setOnKeyListener(this);
+    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131698459) + "0%", 0);
+    if (this.jdField_a_of_type_Bjbs != null) {
+      this.jdField_a_of_type_Bjbs.setOnKeyListener(this);
     }
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a()))
     {
@@ -76,18 +76,18 @@ public class SlideProgressNotifier
     }
   }
   
-  public void a(zgc paramzgc)
+  public void a(zjx paramzjx)
   {
-    this.jdField_a_of_type_Zgc = paramzgc;
+    this.jdField_a_of_type_Zjx = paramzjx;
   }
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 4)
     {
-      zgl.a().f();
-      if (this.jdField_a_of_type_Zgc != null) {
-        this.jdField_a_of_type_Zgc.a();
+      zkg.a().f();
+      if (this.jdField_a_of_type_Zjx != null) {
+        this.jdField_a_of_type_Zjx.a();
       }
     }
     return false;

@@ -1,16 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
-class bpfs
+public class bpfs
   implements DialogInterface.OnClickListener
 {
-  bpfs(bpfp parambpfp) {}
+  public bpfs(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bpfp.a(this.a);
-    paramDialogInterface.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

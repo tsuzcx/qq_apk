@@ -1,34 +1,53 @@
-import android.content.Context;
+import android.os.Handler;
+import com.tencent.qav.QavDef.MultiUserInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface nbl
+class nbl
+  extends mxw
 {
-  public abstract String a(Context paramContext, myc parammyc);
+  nbl(nbk paramnbk) {}
   
-  public abstract String a(Context paramContext, boolean paramBoolean);
+  public void a()
+  {
+    int i = lev.b();
+    if (myk.a().a()) {
+      this.a.a.sendEmptyMessageDelayed(8, 0L);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GameRoomPresenterImp", 2, "onEnterRoomSucess, curNetType[" + i + "]");
+      }
+      return;
+      this.a.a.sendEmptyMessageDelayed(8, 3000L);
+      this.a.a.sendEmptyMessageDelayed(9, 6000L);
+    }
+  }
   
-  public abstract nbn a();
+  public void a(int paramInt1, int paramInt2)
+  {
+    nbk.a(this.a);
+  }
   
-  public abstract void a(mxq parammxq);
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
+  {
+    nbk.a(this.a);
+  }
   
-  public abstract void a(myc parammyc);
+  public void a(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 1, "onMemberVideoInOrOut userUin:" + paramLong + "  videoIn:" + paramBoolean + "  videoSrcType:" + paramInt);
+    }
+    this.a.a.sendEmptyMessage(2);
+    nbk.a(this.a);
+    this.a.a(250);
+  }
   
-  public abstract void a(nbn paramnbn);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean);
-  
-  public abstract void b(myc parammyc);
-  
-  public abstract void c(myc parammyc);
-  
-  public abstract void d(myc parammyc);
-  
-  public abstract void e(myc parammyc);
-  
-  public abstract void f(myc parammyc);
+  public void b(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    this.a.a(250);
+  }
 }
 
 

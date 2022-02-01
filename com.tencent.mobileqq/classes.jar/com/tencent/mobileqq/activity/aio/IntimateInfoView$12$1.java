@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afys;
-import afyw;
+import agim;
+import agiq;
 
 class IntimateInfoView$12$1
   implements Runnable
@@ -10,7 +10,7 @@ class IntimateInfoView$12$1
   
   public void run()
   {
-    afyw.a(this.a.this$0).a();
+    agiq.a(this.a.this$0).a();
   }
 }
 

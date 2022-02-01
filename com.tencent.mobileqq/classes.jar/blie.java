@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.annotation.SuppressLint;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
 
-public class blie
-  implements DialogInterface.OnClickListener
+@SuppressLint({"NewApi"})
+public abstract interface blie
+  extends ActionMode.Callback
 {
-  public blie(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  public abstract void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean);
 }
 
 

@@ -1,8 +1,16 @@
-public abstract interface ayds
+import android.os.Bundle;
+
+class ayds
+  extends nkp
 {
-  public abstract void a(int paramInt, String paramString);
+  ayds(aydm paramaydm, aydt paramaydt) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Aydt != null) {
+      this.jdField_a_of_type_Aydt.a(paramInt, paramArrayOfByte, paramBundle);
+    }
+  }
 }
 
 

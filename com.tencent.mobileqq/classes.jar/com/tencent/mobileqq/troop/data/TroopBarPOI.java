@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anni;
-import beqw;
+import anzj;
+import bfqd;
 import org.json.JSONObject;
-import yqp;
+import yuk;
 
 public class TroopBarPOI
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopBarPOI> CREATOR = new beqw();
+  public static final Parcelable.Creator<TroopBarPOI> CREATOR = new bfqd();
   public final int a;
   public final String a;
   public final int b;
@@ -59,7 +59,7 @@ public class TroopBarPOI
     Object localObject = null;
     if (TextUtils.isEmpty(paramString))
     {
-      yqp.e("TroopBarPOI", "location is null while spliting location!");
+      yuk.e("TroopBarPOI", "location is null while spliting location!");
       return null;
     }
     String[] arrayOfString = paramString.split("·");
@@ -68,7 +68,7 @@ public class TroopBarPOI
     }
     for (;;)
     {
-      yqp.b("TroopBarPOI", "location name is %s.", paramString);
+      yuk.b("TroopBarPOI", "location name is %s.", paramString);
       return paramString;
       paramString = localObject;
       if (arrayOfString.length > 1) {
@@ -82,7 +82,7 @@ public class TroopBarPOI
     Object localObject1 = null;
     if (TextUtils.isEmpty(paramString))
     {
-      yqp.e("TroopBarPOI", "location is null while spliting location!");
+      yuk.e("TroopBarPOI", "location is null while spliting location!");
       return null;
     }
     Object localObject2 = paramString.split("·");
@@ -90,13 +90,13 @@ public class TroopBarPOI
     {
       localObject2 = localObject2[0];
       localObject1 = localObject2;
-      if (((String)localObject2).endsWith(anni.a(2131713897))) {
+      if (((String)localObject2).endsWith(anzj.a(2131714006))) {
         localObject1 = paramString.substring(0, paramString.length() - 1);
       }
     }
     for (;;)
     {
-      yqp.b("TroopBarPOI", "location name is %s.", localObject1);
+      yuk.b("TroopBarPOI", "location name is %s.", localObject1);
       return localObject1;
       if (localObject2.length > 1) {
         localObject1 = localObject2[0];
@@ -108,17 +108,17 @@ public class TroopBarPOI
   {
     if (TextUtils.isEmpty(this.c))
     {
-      yqp.e("TroopBarPOI", "name is empty while get location string!");
+      yuk.e("TroopBarPOI", "name is empty while get location string!");
       return null;
     }
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      yqp.d("TroopBarPOI", "catelog is empty while get location string!");
+      yuk.d("TroopBarPOI", "catelog is empty while get location string!");
       return this.c;
     }
     String str2 = this.jdField_b_of_type_JavaLangString;
     String str1 = str2;
-    if (str2.endsWith(anni.a(2131713923))) {
+    if (str2.endsWith(anzj.a(2131714032))) {
       str1 = str2.substring(0, str2.length() - 1);
     }
     return str1 + "·" + this.c;

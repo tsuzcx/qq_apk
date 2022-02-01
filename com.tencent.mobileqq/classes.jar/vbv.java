@@ -1,30 +1,12 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
-import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
-
 class vbv
-  implements vtq
+  implements aabr
 {
-  vbv(vbt paramvbt) {}
+  vbv(vbr paramvbr) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b()
+  public void a(aabu paramaabu, Object paramObject)
   {
-    vbt.a(this.a).a().scrollToPosition(0);
-    vbt.a(this.a).a().e();
-    vbt.a(this.a).clearData();
-    this.a.a(true, false, true);
-    if (vbt.a(this.a) == 1) {
-      vrc.a(87, 6, vbt.a(this.a), this.a.c());
-    }
-    for (;;)
-    {
-      QLog.d("QCircleLightInteractListPart", 3, "dismiss");
-      return;
-      vrc.a(75, 2, vbt.a(this.a), this.a.c());
+    if (paramaabu.e()) {
+      vbr.a(this.a, true);
     }
   }
 }

@@ -1,10 +1,21 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-abstract interface atep
+class atep
+  implements Animation.AnimationListener
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  atep(ateo paramateo) {}
   
-  public abstract void a(String paramString, ateo paramateo);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.c.setVisibility(8);
+    this.a.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,21 @@
-public abstract interface ylt
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
+
+class ylt
+  extends JobSegment<ylv, yff>
 {
-  public abstract void a(ylv paramylv);
+  private int jdField_a_of_type_Int;
+  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private yfc jdField_a_of_type_Yfc;
+  
+  protected void a(JobContext paramJobContext, ylv paramylv)
+  {
+    this.jdField_a_of_type_Yfc = new yfc(paramylv, new ylu(this, paramJobContext, paramylv));
+    this.jdField_a_of_type_Yfc.c();
+  }
 }
 
 

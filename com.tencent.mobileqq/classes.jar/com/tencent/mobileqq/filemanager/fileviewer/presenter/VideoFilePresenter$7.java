@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.Handler;
 import android.os.PowerManager.WakeLock;
-import atoo;
-import atro;
+import augj;
+import aujj;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -12,15 +12,15 @@ import java.util.Map;
 public class VideoFilePresenter$7
   implements Runnable
 {
-  public VideoFilePresenter$7(atro paramatro) {}
+  public VideoFilePresenter$7(aujj paramaujj) {}
   
   public void run()
   {
     int i;
-    if (atro.a(this.this$0) != null)
+    if (aujj.a(this.this$0) != null)
     {
       i = 1;
-      if (atro.a(this.this$0) != null) {
+      if (aujj.a(this.this$0) != null) {
         break label63;
       }
       if (i == 0) {
@@ -37,24 +37,24 @@ public class VideoFilePresenter$7
         return;
         i = 0;
         break;
-      } while (this.this$0.jdField_a_of_type_Atoo.d() != 1);
+      } while (this.this$0.jdField_a_of_type_Augj.d() != 1);
       QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playVideo online video, but mediaplay null!");
       return;
-      atro.a(this.this$0).acquire();
+      aujj.a(this.this$0).acquire();
       this.this$0.c();
-      if (atro.a(this.this$0))
+      if (aujj.a(this.this$0))
       {
-        atro.b(this.this$0, false);
-        atro.a(this.this$0).removeCallbacks(this.this$0.jdField_a_of_type_JavaLangRunnable);
+        aujj.b(this.this$0, false);
+        aujj.a(this.this$0).removeCallbacks(this.this$0.jdField_a_of_type_JavaLangRunnable);
         new HashMap().put("shouq_bus_type", "bus_type_video_file");
       }
-      atro.a(this.this$0).play();
+      aujj.a(this.this$0).play();
       if (i != 0) {
-        atro.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 1000L);
+        aujj.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 1000L);
       }
-      atro.e(this.this$0);
+      aujj.e(this.this$0);
     } while ((i == 0) || (!QLog.isDevelopLevel()));
-    QLog.d("#@#@", 1, "userPos[" + atro.a(this.this$0) + "]");
+    QLog.d("#@#@", 1, "userPos[" + aujj.a(this.this$0) + "]");
   }
 }
 

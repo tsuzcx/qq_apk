@@ -1,35 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem.1;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem.2;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
 
 public class bpwh
+  extends bpop
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private volatile boolean jdField_a_of_type_Boolean;
+  public bpwh(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
   
-  public void a(bpim parambpim, View paramView, boolean paramBoolean, int paramInt1, int paramInt2, Runnable paramRunnable)
+  public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
     }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a.g();
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
     }
-    int i;
-    for (;;)
-    {
-      i = 0;
-      while (i < paramInt1 - paramInt2)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VoteDashItem.1(this, parambpim, paramView), i);
-        i += paramInt2;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VoteDashItem.2(this, parambpim, paramBoolean, paramView, paramRunnable), i);
+    this.a.a(false);
   }
 }
 

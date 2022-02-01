@@ -1,12 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bgiy
-  implements View.OnClickListener
+public class bgiy
 {
-  bgiy(bgit parambgit) {}
-  
-  public void onClick(View paramView) {}
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 17) || (paramInt == 11) || (paramInt == 100);
+  }
 }
 
 

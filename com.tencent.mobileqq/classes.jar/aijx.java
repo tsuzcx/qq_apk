@@ -1,16 +1,16 @@
-import java.util.List;
-
-public class aijx
+class aijx
+  extends bebs
 {
-  public int a;
-  public List<aikd> a;
-  public boolean a;
+  aijx(aijm paramaijm) {}
   
-  public aijx(boolean paramBoolean, int paramInt, List<aikd> paramList)
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    becb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aijm.e(this.a), paramBoolean, paramArrayOfObject);
+  }
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    becb.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aijm.f(this.a), paramBoolean, paramArrayOfObject);
   }
 }
 

@@ -3,18 +3,18 @@ package com.tencent.mobileqq.musicgene;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
-import awyp;
-import awys;
+import axri;
+import axrl;
 import java.io.File;
 
 public class MusicGeneWebViewPlugin$5
   implements Runnable
 {
-  public MusicGeneWebViewPlugin$5(awys paramawys, String paramString, int paramInt, File paramFile) {}
+  public MusicGeneWebViewPlugin$5(axrl paramaxrl, String paramString, int paramInt, File paramFile) {}
   
   public void run()
   {
-    Object localObject1 = awys.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = axrl.a(this.jdField_a_of_type_JavaLangString);
     if (localObject1 != null) {
       if (this.jdField_a_of_type_Int <= 0) {
         break label87;
@@ -23,9 +23,9 @@ public class MusicGeneWebViewPlugin$5
     label87:
     for (int i = this.jdField_a_of_type_Int;; i = 5)
     {
-      Object localObject2 = awyp.a((Bitmap)localObject1, 3, i, i);
-      awys.a(this.this$0, (Bitmap)localObject2);
-      localObject1 = Message.obtain(awys.a(this.this$0));
+      Object localObject2 = axri.a((Bitmap)localObject1, 3, i, i);
+      axrl.a(this.this$0, (Bitmap)localObject2);
+      localObject1 = Message.obtain(axrl.a(this.this$0));
       ((Message)localObject1).obj = localObject2;
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("BUNDLE_KEY_FILE_PATH", this.jdField_a_of_type_JavaIoFile.getPath());

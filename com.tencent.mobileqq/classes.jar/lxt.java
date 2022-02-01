@@ -1,24 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import java.lang.ref.WeakReference;
 
-class lxt
-  implements DialogInterface.OnClickListener
+public class lxt
+  implements anvi
 {
-  lxt(lxs paramlxs, long paramLong) {}
+  private WeakReference<lxw> a;
+  private WeakReference<anve> b;
+  private WeakReference<lxd> c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public lxt(lxw paramlxw, anve paramanve, lxd paramlxd)
   {
-    if (this.jdField_a_of_type_Lxs.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
-      return;
+    this.a = new WeakReference(paramlxw);
+    this.b = new WeakReference(paramanve);
+    this.c = new WeakReference(paramlxd);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject = (anve)this.b.get();
+    if (localObject != null) {
+      ((anve)localObject).d(this);
     }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Lxs.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lxs.jdField_a_of_type_JavaLangString);
-      return;
+    localObject = (lxw)this.a.get();
+    lxd locallxd = (lxd)this.c.get();
+    if ((localObject != null) && (locallxd != null)) {
+      ((lxw)localObject).a(paramBoolean, locallxd);
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Lxs.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lxu(this));
+  }
+  
+  public void a(lxd paramlxd)
+  {
+    this.c = new WeakReference(paramlxd);
   }
 }
 

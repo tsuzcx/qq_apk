@@ -1,60 +1,27 @@
-import android.content.Intent;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDanceMachine;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class yra
-  extends anqd
+  implements zsr
 {
-  public yra(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
-  
-  public void a(MessageForDanceMachine paramMessageForDanceMachine)
+  public void a(SegmentList paramSegmentList)
   {
-    super.a(paramMessageForDanceMachine);
-    if (!DanceMachineUploadVideoFragment.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadDanceMachineVideo", 2, "do not need callback");
-      }
+    if (!(paramSegmentList instanceof MystoryListView)) {
+      throw new IllegalArgumentException("arg should match type!");
     }
-    do
-    {
-      return;
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      if (paramMessageForDanceMachine != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("UploadDanceMachineVideo", 2, "mfd is null");
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadDanceMachineVideo", 2, "uuid : " + paramMessageForDanceMachine.uuid + "  md5 : " + paramMessageForDanceMachine.md5 + " thumbFilePath : " + paramMessageForDanceMachine.mThumbFilePath);
-    }
-    if (paramMessageForDanceMachine.errorCode == 0)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("upload_result", true);
-      localIntent.putExtra("upload_video_uuid", paramMessageForDanceMachine.uuid);
-      localIntent.putExtra("upload_video_md5", paramMessageForDanceMachine.md5);
-      localIntent.putExtra("upload_video_thumb", paramMessageForDanceMachine.mThumbFilePath);
-      localIntent.putExtra("share_method", DanceMachineUploadVideoFragment.a(this.a));
-      localIntent.putExtra("current_nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-      localIntent.putExtra("current_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      if (DanceMachineUploadVideoFragment.a(this.a) != -1L) {
-        localIntent.putExtra("upload_time_cost", SystemClock.elapsedRealtime() - DanceMachineUploadVideoFragment.a(this.a));
-      }
-      paramMessageForDanceMachine = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      BaseActivity localBaseActivity = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      paramMessageForDanceMachine.setResult(-1, localIntent);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
-    }
+    paramSegmentList = (MystoryListView)paramSegmentList;
+    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = paramSegmentList.jdField_a_of_type_Yqx;
+    boolean bool = paramSegmentList.a();
+    paramSegmentList.a(wnu.a(localActivity, 5));
+    paramSegmentList.a(new ysw(localActivity, (yqx)localObject));
+    paramSegmentList.a(new ysv(localActivity));
+    paramSegmentList.a(new ysm(localActivity));
+    localObject = new yrh(localActivity, localActivity, 10, (yqx)localObject, bool);
+    paramSegmentList.a((zsv)localObject);
+    paramSegmentList.a(new ytp(localActivity, "FeedSegment", anzj.a(2131705946) + win.a + "\n拍摄一段视频，分享眼前的世界", 2130846612, 2130846613));
+    ((yrh)localObject).e_(true);
   }
 }
 

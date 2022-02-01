@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
-import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager.PREPARE_FROM;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.minigame.report.MiniGameBeaconReport;
+import com.tencent.mobileqq.triton.statistic.GetTraceInfoCallback;
+import com.tencent.mobileqq.triton.statistic.TraceStatistics;
+import org.jetbrains.annotations.NotNull;
 
 class GameActivity$30
-  implements Runnable
+  implements GetTraceInfoCallback
 {
-  GameActivity$30(GameActivity paramGameActivity) {}
+  GameActivity$30(GameActivity paramGameActivity, boolean paramBoolean) {}
   
-  public void run()
+  public void onGetTraceInfo(@NotNull TraceStatistics paramTraceStatistics)
   {
-    GameRuntimeLoaderManager.g().prepare(BaseApplicationImpl.getApplication(), GameRuntimeLoaderManager.PREPARE_FROM.FIRST_FRAME);
+    MiniGameBeaconReport.reportJankTraceRecords(paramTraceStatistics, this.this$0.mGameAppConfig.config.appId, false, this.val$isFirstFrame);
   }
 }
 

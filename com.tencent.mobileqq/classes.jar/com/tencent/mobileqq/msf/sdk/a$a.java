@@ -98,7 +98,7 @@ class a$a
           {
             if ((j == 0) || (j == 6))
             {
-              ((INetInfoHandler)localObject1).onNetNone2Mobile(a.i);
+              ((INetInfoHandler)localObject1).onNetNone2Mobile(a.j);
               continue;
               if (!a.e()) {
                 break;
@@ -109,12 +109,12 @@ class a$a
             if (j != 1) {
               break label1273;
             }
-            ((INetInfoHandler)localObject1).onNetWifi2Mobile(a.i);
+            ((INetInfoHandler)localObject1).onNetWifi2Mobile(a.j);
             continue;
-            ((INetInfoHandler)localObject1).onNetNone2Wifi(a.k);
+            ((INetInfoHandler)localObject1).onNetNone2Wifi(a.l);
             continue;
             if (j == 3) {
-              ((INetInfoHandler)localObject1).onNetMobile2Wifi(a.k);
+              ((INetInfoHandler)localObject1).onNetMobile2Wifi(a.l);
             } else if (j == 4) {
               ((INetInfoHandler)localObject1).onNetMobile2None();
             } else if (j == 5) {
@@ -150,7 +150,7 @@ class a$a
         case 8: 
         case 9: 
         case 13: 
-          a.h = -1;
+          a.i = -1;
           QLog.d(a.i(), 1, "Unexcepted Mobile Type:" + j);
           return false;
         case 0: 
@@ -176,18 +176,18 @@ class a$a
     }
     for (;;)
     {
-      a.h = g.a(paramMessage, j);
-      QLog.d(a.i(), 1, "Unexcepted networkType:" + j + " ,mobileInfo:" + a.h);
+      a.i = g.a(paramMessage, j);
+      QLog.d(a.i(), 1, "Unexcepted networkType:" + j + " ,mobileInfo:" + a.i);
       return false;
-      a.h = 4;
+      a.i = 4;
       return false;
-      a.h = 3;
+      a.i = 3;
       return false;
-      a.h = 2;
+      a.i = 2;
       return false;
-      a.h = 1;
+      a.i = 1;
       return false;
-      a.h = 0;
+      a.i = 0;
       return false;
       paramMessage = (INetInfoHandler)paramMessage.obj;
       Object localObject2;

@@ -1,70 +1,144 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.NewFileUploader.1;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.Executor;
 
-class atrq
-  implements View.OnClickListener
+public class atrq
+  implements atvi, aubc
 {
-  atrq(atro paramatro) {}
+  private long jdField_a_of_type_Long;
+  private atrr jdField_a_of_type_Atrr;
+  private atvg jdField_a_of_type_Atvg;
+  private final VFSFile jdField_a_of_type_ComTencentMmVfsVFSFile;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean = true;
+  private long b = aunj.a().longValue();
   
-  public void onClick(View paramView)
+  public atrq(QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, atrr paramatrr)
   {
-    boolean bool1 = true;
-    switch (paramView.getId())
-    {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMmVfsVFSFile = new VFSFile(paramString1);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Atvg = atvg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, 0, 0, paramString1, paramString2, paramString3, paramString4, paramBoolean, paramString5);
+    if (this.jdField_a_of_type_Atvg != null) {
+      this.jdField_a_of_type_Atvg.a(this);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (atro.a(this.a) != null)
-      {
-        boolean bool2 = atro.a(this.a).isPlaying();
-        if (bool2)
-        {
-          atro.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-          atvm.a("0X8004BE5");
-          this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(atro.a(this.a));
-          atro.a(this.a);
-          label130:
-          localObject = this.a.jdField_a_of_type_Atsu;
-          if (bool2) {
-            break label171;
-          }
-        }
-        for (;;)
-        {
-          ((atsu)localObject).d(bool1);
-          break;
-          atro.b(this.a);
-          atro.c(this.a);
-          break label130;
-          label171:
-          bool1 = false;
-        }
-        Object localObject = this.a.jdField_a_of_type_Atoo.b();
-        atro.a(this.a, (ArrayList[])localObject);
-        String str = this.a.a() + "(" + atwl.a(this.a.jdField_a_of_type_Atoo.c()) + ")";
-        this.a.a((ArrayList[])localObject, str);
-        continue;
-        this.a.n();
-        continue;
-        int i = this.a.jdField_a_of_type_Atoo.i();
-        int j = this.a.jdField_a_of_type_Atoo.h();
-        if ((i == 6) && (j == 1) && (this.a.jdField_a_of_type_Atoo.a() != null)) {
-          this.a.jdField_a_of_type_Atoo.a().a();
-        }
-      }
-    }
+    this.jdField_a_of_type_Atrr = paramatrr;
   }
+  
+  public int a()
+  {
+    return 41;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public FileManagerEntity a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("FileMultiMsg", 1, "sendBuddyFile NotifyUIError:" + paramInt);
+    this.jdField_a_of_type_Atrr.a(false);
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    QLog.i("FileMultiMsg", 1, "sendBuddyFile onError bFinished[" + paramBoolean + "], errCode[" + paramInt + "], errMsg[" + paramString1 + "]");
+    this.jdField_a_of_type_Atrr.a(false);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2) {}
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public byte[] a(Bundle paramBundle)
+  {
+    return null;
+  }
+  
+  public void aE_()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    aunu.a().execute(new NewFileUploader.1(this));
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("FileMultiMsg", 1, "sendBuddyFile networkBroken");
+    this.jdField_a_of_type_Atrr.a(false);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("FileMultiMsg", 1, "sendBuddyFile userCancel");
+    this.jdField_a_of_type_Atrr.a(false);
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("FileMultiMsg", 1, "sendBuddyFile exceptBroken");
+    this.jdField_a_of_type_Atrr.a(false);
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_Atrr.a(true);
+    QLog.i("FileMultiMsg", 1, "sendBuddyFile upload onHit");
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Atrr.a(true);
+    QLog.i("FileMultiMsg", 1, "sendBuddyFile upload success");
+  }
+  
+  public void h() {}
+  
+  public void i() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atrq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aduu
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aduu(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public aduu(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

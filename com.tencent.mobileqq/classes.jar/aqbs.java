@@ -1,6 +1,19 @@
-public abstract interface aqbs
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+
+public final class aqbs
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public abstract void a(int paramInt);
+  public boolean Load()
+  {
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
+  }
+  
+  public boolean isLibraryLoad()
+  {
+    return ArkAppCenter.b;
+  }
 }
 
 

@@ -1,18 +1,16 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class ajaz
-  extends ajax
+  implements DialogInterface.OnClickListener
 {
-  public ArrayList<aixh> a;
+  public ajaz(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public ajaz(ArrayList<aixh> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramArrayList;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    paramDialogInterface.dismiss();
+    BlessSelectMemberActivity.a(this.a, null);
   }
 }
 

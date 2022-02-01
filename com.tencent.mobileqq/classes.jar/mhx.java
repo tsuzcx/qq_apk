@@ -1,29 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class mhx
-  implements mho
+class mhx
+  implements DialogInterface.OnClickListener
 {
-  public mhx(QavPanel paramQavPanel) {}
+  mhx(mhr parammhr) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.a(paramInt);
-    if ((paramView instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramView).f();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    long l = AudioHelper.b();
-    this.a.a(l, paramInt, true);
-  }
-  
-  public void a(View paramView1, View paramView2)
-  {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView2);
+    mhr.a(this.a, false);
+    if (paramInt == 1)
+    {
+      bdll.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.c();
+      if (!mvd.a(mhr.a(this.a))) {
+        mhr.a(this.a).a(mhr.a(this.a));
+      }
     }
+    while (paramInt != 0)
+    {
+      return;
+      mhr.a(this.a).b(mhr.a(this.a));
+      return;
+    }
+    mhr.a(this.a, mhr.a(this.a).a().w);
   }
 }
 

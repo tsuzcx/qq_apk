@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout android:gravity="bottom" android:id="@id/n33" android:layout_width="fill_parent" android:layout_height="fill_parent" app:umanoDragView="@id/n3_" app:umanoOverlay="true" app:umanoPanelHeight="@dimen/b_l" app:umanoParallaxOffset="100.0dip" app:umanoScrollableView="@id/n3c" app:umanoShadowHeight="4.0dip"
+<dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll android:id="@id/l37" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="vertical" android:id="@id/n3a" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/n3_" android:layout_width="fill_parent" android:layout_height="@dimen/b_l">
-            <ImageView android:layout_gravity="center" android:id="@id/n3b" android:layout_width="45.0dip" android:layout_height="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bi5" android:scaleType="fitCenter" />
-            <dov.com.qq.im.aeeditor.lyric.widget.LyricViewSingleLine android:layout_gravity="center" android:id="@id/n3d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" app:aelvLyricHilightColor="@color/e3" app:aelvLyricHilightSize="14.0dip" app:aelvLyricHilightThinColor="@color/e3" app:aelvLyricLineHeight="14.0dip" app:aelvLyricLineMargin="14.0dip" app:aelvLyricLiteratim="false" app:aelvLyricScrollable="false" app:aelvLyricTextColor="@color/e3" app:aelvLyricTextFakeBold="false" app:aelvLyricTextSize="14.0dip" app:aelvLyricTextThinColor="@color/e3" />
-        </LinearLayout>
-        <dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView android:layout_gravity="center_horizontal" android:id="@id/n3c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="25.0dip" />
-    </LinearLayout>
-</dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalDetail android:id="@id/l36" android:layout_width="fill_parent" android:layout_height="wrap_content" app:aelvLyricHilightColor="@color/e6" app:aelvLyricHilightSize="18.0sp" app:aelvLyricHilightThinColor="@color/e6" app:aelvLyricLineHeight="18.0dip" app:aelvLyricLineMargin="20.0dip" app:aelvLyricScoreHighColor="@color/fc" app:aelvLyricScoreLowColor="@color/fc" app:aelvLyricScoreMiddleColor="@color/fc" app:aelvLyricTextColor="@color/fc" app:aelvLyricTextSize="18.0sp" app:aelvLyricTextThinColor="@color/fc" />
+    </FrameLayout>
+</dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll>

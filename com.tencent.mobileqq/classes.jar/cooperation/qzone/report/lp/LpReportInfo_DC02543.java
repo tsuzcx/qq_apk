@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import blru;
+import bmsw;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;

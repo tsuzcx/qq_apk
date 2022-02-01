@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class awaf
-  implements View.OnClickListener
+  implements INetEventHandler
 {
-  awaf(awac paramawac, avzs paramavzs) {}
+  awaf(awaa paramawaa) {}
   
-  public void onClick(View paramView)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs.a()) {}
-    for (;;)
+    if (awaa.a(this.a) == null) {}
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (!paramView.isSelected())
-      {
-        this.jdField_a_of_type_Awac.a(paramView);
-        this.jdField_a_of_type_Awac.jdField_a_of_type_Int = 1;
-        avzs.a(this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs, Integer.valueOf(1));
-        bcst.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 2, 0, "0", "0", "0", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + awaa.a(this.a).e);
       }
-    }
+    } while (!paramBoolean);
+    this.a.a(false);
   }
 }
 

@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import bhll;
-import bkgm;
+import bimg;
+import blhq;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -30,6 +30,7 @@ public class NearbyBaseFragment
   public NearbyAppInterface a;
   public NearbyTabInfo a;
   int c = 5000;
+  private boolean d;
   boolean e;
   boolean f;
   public boolean g;
@@ -37,31 +38,36 @@ public class NearbyBaseFragment
   public NearbyBaseFragment()
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new blhq(Looper.getMainLooper(), this);
   }
   
-  public bhll a()
+  public bimg a()
   {
     return null;
   }
   
+  protected NearbyAppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  }
+  
   public void a()
   {
-    bhll localbhll = a();
-    if ((localbhll == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+    bimg localbimg = a();
+    if ((localbimg == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
     try
     {
-      int i = localbhll.mWebview.getWebScrollY();
-      int j = localbhll.mWebview.getHeight();
+      int i = localbimg.mWebview.getWebScrollY();
+      int j = localbimg.mWebview.getHeight();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyBaseFragment", 2, "gotoFragmentHead, scrollY=" + i + ", webH=" + j + ", maxV=" + this.c);
       }
       if (i > j)
       {
-        localbhll.mWebview.getView().scrollTo(0, j);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbhll), 60L);
+        localbimg.mWebview.getView().scrollTo(0, j);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbimg), 60L);
         return;
       }
     }
@@ -79,11 +85,6 @@ public class NearbyBaseFragment
     this.jdField_a_of_type_Int = paramNearbyTabInfo.tabIndex;
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.g = paramBoolean;
-  }
-  
   public void aP_()
   {
     super.aP_();
@@ -94,6 +95,11 @@ public class NearbyBaseFragment
       }
       this.e = true;
     }
+  }
+  
+  public boolean b()
+  {
+    return this.d;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -193,6 +199,15 @@ public class NearbyBaseFragment
       bool1 = false;
       break;
     }
+  }
+  
+  public void setUserVisibleHint(boolean paramBoolean)
+  {
+    super.setUserVisibleHint(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyBaseFragment", 2, "setUserVisibleHint: isVisibleToUser=" + paramBoolean);
+    }
+    this.d = paramBoolean;
   }
 }
 

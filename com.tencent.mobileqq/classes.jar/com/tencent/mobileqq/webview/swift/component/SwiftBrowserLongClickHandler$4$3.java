@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bhpf;
-import bkho;
+import biqa;
+import blir;
 import com.tencent.qphone.base.util.QLog;
-import zuc;
+import zxx;
 
 class SwiftBrowserLongClickHandler$4$3
   implements Runnable
@@ -15,11 +15,11 @@ class SwiftBrowserLongClickHandler$4$3
     if (QLog.isColorLevel()) {
       QLog.d("SwiftBrowserLongClickHandler", 2, "showQR Button");
     }
-    if (zuc.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131692957);
+    if (zxx.a(this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131692966);
     }
-    if (zuc.b(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131692956);
+    if (zxx.b(this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131692965);
     }
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b();
   }

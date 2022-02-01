@@ -1,20 +1,49 @@
+import android.support.v4.util.SparseArrayCompat;
+
 public class aqjx
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  private static final aqjx jdField_a_of_type_Aqjx = new aqjx();
+  private int jdField_a_of_type_Int;
+  private final SparseArrayCompat<aqjj> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
   
-  public aqjx(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
+  public static aqjx a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramFloat;
+    return jdField_a_of_type_Aqjx;
+  }
+  
+  public int a(aqjj paramaqjj)
+  {
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    {
+      do
+      {
+        this.jdField_a_of_type_Int += 1;
+      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramaqjj);
+      int i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    {
+      aqjj localaqjj = (aqjj)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
+      if (localaqjj != null) {
+        localaqjj.a(paramInt1, paramInt2);
+      }
+      return;
+    }
   }
 }
 

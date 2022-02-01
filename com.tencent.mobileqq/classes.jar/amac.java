@@ -1,35 +1,54 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper$initArkView$1", "Lcom/tencent/ark/ArkViewImplement$LoadCallback;", "onLoadFailed", "", "state", "", "errCode", "msg", "", "canRetry", "", "onLoadState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class amac
-  implements ArkViewImplement.LoadCallback
+public class amac
 {
-  public void onLoadFailed(int paramInt1, int paramInt2, @Nullable String paramString, boolean paramBoolean)
+  private amad jdField_a_of_type_Amad;
+  private ConcurrentHashMap<Integer, amah> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public amac(amad paramamad)
   {
-    onLoadState(paramInt1);
+    this.jdField_a_of_type_Amad = paramamad;
   }
   
-  public void onLoadState(int paramInt)
+  public amah a(int paramInt)
+  {
+    return (amah)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      amah localamah = (amah)localIterator.next();
+      localamah.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      localamah.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public void a(amah paramamah)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WeatherWebArkWrapper", 2, "initArkView onLoadState : state -> " + paramInt);
+      QLog.d("FrameAdapter", 2, "addFrame, index=" + paramamah.jdField_a_of_type_Int);
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      WeatherArkViewWrapper.a(this.a);
-      return;
-    case -1: 
-      WeatherArkViewWrapper.b(this.a);
-      return;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramamah.jdField_a_of_type_Int), paramamah);
+    if (this.jdField_a_of_type_Amad != null) {
+      this.jdField_a_of_type_Amad.a();
     }
-    WeatherArkViewWrapper.c(this.a);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

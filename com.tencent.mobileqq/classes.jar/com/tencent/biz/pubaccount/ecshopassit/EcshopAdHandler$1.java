@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import acsb;
-import acsc;
+import acwf;
+import acwg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
-import odh;
+import oer;
 
 public class EcshopAdHandler$1
   implements Runnable
 {
-  public EcshopAdHandler$1(odh paramodh) {}
+  public EcshopAdHandler$1(oer paramoer) {}
   
   public void run()
   {
     MiniLog.init();
-    acsb.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new acsc());
+    acwf.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new acwg());
   }
 }
 

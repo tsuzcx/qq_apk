@@ -1,31 +1,52 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 
 public class azdd
-  extends RecyclerView.ItemDecoration
+  implements INetInfoHandler
 {
-  private int jdField_a_of_type_Int;
+  private azdd(OlympicToolAppInterface paramOlympicToolAppInterface) {}
   
-  public azdd(CustomCoverFragment paramCustomCoverFragment, int paramInt)
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (OlympicToolAppInterface.i(this.a) != null) {
+      OlympicToolAppInterface.j(this.a).onNetMobile2None();
+    }
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (!(paramView.getTag() instanceof azda))
-    {
-      paramRect.left = 0;
-      return;
+    if (OlympicToolAppInterface.g(this.a) != null) {
+      OlympicToolAppInterface.h(this.a).onNetMobile2Wifi(paramString);
     }
-    int i = paramRecyclerView.getChildLayoutPosition(paramView) - 1;
-    float f = this.jdField_a_of_type_Int * 2 * 1.0F / 3.0F;
-    paramRect.left = ((int)(i % 3 * (this.jdField_a_of_type_Int - f)));
-    paramRect.right = ((int)(f - i % 3 * (this.jdField_a_of_type_Int - f)));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.a(this.a) != null) {
+      OlympicToolAppInterface.b(this.a).onNetNone2Mobile(paramString);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (OlympicToolAppInterface.e(this.a) != null) {
+      OlympicToolAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.c(this.a) != null) {
+      OlympicToolAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (OlympicToolAppInterface.k(this.a) != null) {
+      OlympicToolAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

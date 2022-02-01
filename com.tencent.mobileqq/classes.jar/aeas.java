@@ -1,26 +1,52 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aeas
-  extends annz
+public class aeas
+  extends ayxo
 {
-  aeas(aear paramaear, BaseActivity paramBaseActivity) {}
+  public SessionInfo a;
+  public WeakReference<QQAppInterface> a;
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_Aear.a != null) && (this.jdField_a_of_type_Aear.a.isShowing())) {
-        this.jdField_a_of_type_Aear.a.dismiss();
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
       }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, anni.a(2131701394), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
+    return;
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
+      if (paramBundle != null)
+      {
+        paramBundle = aaax.a(bhuf.b(paramBundle.getWupBuffer()));
+        if (paramBundle != null) {
+          aean.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
       return;
     }
-    if ((this.jdField_a_of_type_Aear.a != null) && (this.jdField_a_of_type_Aear.a.isShowing())) {
-      this.jdField_a_of_type_Aear.a.dismiss();
+    catch (Exception paramBundle)
+    {
+      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, anni.a(2131701395), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

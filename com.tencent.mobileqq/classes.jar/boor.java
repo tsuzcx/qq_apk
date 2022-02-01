@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.paster.PasterParcelData;
+import android.os.Handler;
+import android.os.Message;
 
-public final class boor
-  implements Parcelable.Creator<PasterParcelData>
+class boor
+  extends Handler
 {
-  public PasterParcelData a(Parcel paramParcel)
-  {
-    return new PasterParcelData(paramParcel);
-  }
+  private boor(boop paramboop) {}
   
-  public PasterParcelData[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new PasterParcelData[paramInt];
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1004: 
+    case 1009: 
+      boop.a(this.a);
+      return;
+    }
+    this.a.a();
   }
 }
 

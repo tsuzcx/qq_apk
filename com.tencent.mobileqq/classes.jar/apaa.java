@@ -1,10 +1,16 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class apaa
+  extends aoxh
 {
-  public int a = 3000;
-  
-  public String toString()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
+    paramQQAppInterface = new aozz(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "teamwork";
+    paramQQAppInterface.c = "opendoclist";
+    return paramQQAppInterface;
   }
 }
 

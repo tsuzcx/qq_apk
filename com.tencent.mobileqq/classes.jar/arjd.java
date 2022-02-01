@@ -1,28 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import mqq.app.MobileQQ;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class arjd
-  implements DialogInterface.OnClickListener
+public class arjd
+  extends arac<arje>
 {
-  arjd(ariy paramariy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public arje a(int paramInt)
   {
-    paramDialogInterface.cancel();
-    ariy.a(this.a).b();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().remove(this.a.jdField_a_of_type_JavaLangString + DBFixManager.g).commit();
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, ariy.f, ariy.f, 0, 0, "", "", "", "");
-    ariy.a(this.a).c();
+    return new arje();
+  }
+  
+  @Nullable
+  public arje a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      arje localarje = arje.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfaraj[0].a);
+      }
+      return localarje;
+    }
+    return null;
+  }
+  
+  public void a(arje paramarje)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramarje });
+    }
+  }
+  
+  public Class<arje> clazz()
+  {
+    return arje.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 362;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjd
  * JD-Core Version:    0.7.0.1
  */

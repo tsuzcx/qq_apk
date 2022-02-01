@@ -1,133 +1,16 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.http.AvatarUpdateService.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bitk
-  implements bitw
+public abstract interface bitk
+  extends biod
 {
-  private static bitk a;
-  public SharedPreferences a;
-  public HashMap<String, bitl> a;
+  public abstract View a(int paramInt);
   
-  protected bitk()
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("uin_avatarurl", 0);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public static bitk a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bitk == null) {
-        jdField_a_of_type_Bitk = new bitk();
-      }
-      return jdField_a_of_type_Bitk;
-    }
-    finally {}
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, int paramInt3);
   
-  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, bitw parambitw)
-  {
-    QLog.d("AvatarUpdateService", 1, "-->updateAvatar--uin = " + bipr.a(paramString1));
-    String str2 = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + paramString1;
-    for (String str1 = paramString1; str1.length() < 10; str1 = "0" + str1) {}
-    str1 = "o" + str1;
-    ThreadManager.post(new AvatarUpdateService.1(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, parambitw), 5, null, true);
-  }
-  
-  protected void a(Bitmap paramBitmap, String paramString)
-  {
-    if (paramBitmap == null) {}
-    do
-    {
-      return;
-      paramString = bgmo.a(paramString);
-    } while (paramString == null);
-    paramString = new FileOutputStream(paramString);
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
-    paramString.flush();
-    paramString.close();
-  }
-  
-  public void a(String paramString, Bitmap arg2)
-  {
-    boolean bool2 = true;
-    Object localObject1;
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        localObject1 = (bitl)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (QLog.isColorLevel())
-        {
-          ??? = new StringBuilder().append("-->onTaskCompleted--identifier = ").append(paramString).append(", bitmap = null ? ");
-          if (??? == null)
-          {
-            bool1 = true;
-            ??? = ((StringBuilder)???).append(bool1).append(", task = null ? ");
-            if (localObject1 != null) {
-              break label116;
-            }
-            bool1 = bool2;
-            QLog.d("AvatarUpdateService", 2, bool1);
-          }
-        }
-        else
-        {
-          if (localObject1 != null) {
-            break;
-          }
-          return;
-        }
-      }
-      boolean bool1 = false;
-      continue;
-      label116:
-      bool1 = false;
-    }
-    ??? = (Context)((bitl)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((??? != null) && (??? != null))
-    {
-      ??? = bipr.a((Context)???, ???, 63, 63);
-      if (??? == null) {}
-    }
-    try
-    {
-      a(???, ((bitl)localObject1).jdField_b_of_type_JavaLangString);
-      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)???).putString(((bitl)localObject1).jdField_a_of_type_JavaLangString, ((bitl)localObject1).c);
-      ((SharedPreferences.Editor)???).commit();
-      label205:
-      localObject1 = (bitw)((bitl)localObject1).jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (localObject1 != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarUpdateService", 2, "-->onTaskCompleted--callback not null, invoke it");
-        }
-        ((bitw)localObject1).a(paramString, ???);
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        return;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      break label205;
-    }
-  }
+  public abstract void a(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt4);
 }
 
 

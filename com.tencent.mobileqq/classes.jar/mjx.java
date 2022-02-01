@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class mjx
-  implements DialogInterface.OnClickListener
+public class mjx
+  implements View.OnClickListener
 {
-  mjx(mjw parammjw) {}
+  public mjx(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
+    mru.c(paramView.getId());
+    AVActivity localAVActivity = this.a.a();
+    if (localAVActivity != null) {
+      localAVActivity.BtnOnClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

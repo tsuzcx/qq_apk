@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahsd;
+import aibr;
 import android.app.Dialog;
 
 public class AIOGalleryScene$27
   implements Runnable
 {
-  public AIOGalleryScene$27(ahsd paramahsd) {}
+  public AIOGalleryScene$27(aibr paramaibr) {}
   
   public void run()
   {
-    ahsd.a(this.this$0).show();
+    aibr.a(this.this$0).show();
   }
 }
 

@@ -1,8 +1,36 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public abstract interface aqck
+public class aqck
 {
-  public abstract ColorNote getColorNote();
+  java.lang.ref.WeakReference<QQAppInterface> a;
+  
+  public aqck(QQAppInterface paramQQAppInterface)
+  {
+    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2, anui paramanui)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
+      return false;
+    }
+    return ((aqcd)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramanui);
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, anui paramanui)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      return false;
+    }
+    return ((aqcd)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramanui);
+  }
 }
 
 

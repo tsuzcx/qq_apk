@@ -1,29 +1,104 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 
 public class adkj
-  implements View.OnClickListener
 {
-  public adkj(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private FileChannel jdField_a_of_type_JavaNioChannelsFileChannel;
+  private FileLock jdField_a_of_type_JavaNioChannelsFileLock;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onClick(View paramView)
+  public adkj(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
+    this.jdField_a_of_type_JavaLangString = paramString;
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
-      label58:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramString)
     {
-      break label58;
+      adjv.a("KingKongUtils", "Initial FileChannel exception : " + paramString);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a()
+  {
+    if (!this.b) {
+      return;
+    }
+    adjv.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaNioChannelsFileLock != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel == null) {}
+    }
+    catch (IOException localIOException1)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        this.b = false;
+        return;
+        localIOException1 = localIOException1;
+        adjv.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException1);
+        localIOException1.printStackTrace();
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          adjv.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException2);
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {
+      return false;
+    }
+    adjv.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileChannel = new RandomAccessFile(new File(this.jdField_a_of_type_JavaLangString), "rw").getChannel();
+      this.jdField_a_of_type_JavaNioChannelsFileLock = this.jdField_a_of_type_JavaNioChannelsFileChannel.lock();
+      this.b = true;
+      adjv.a("KingKongUtils", "Do Inter-Process Lock OK " + this.jdField_a_of_type_JavaLangString);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      adjv.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localException);
+      if (this.jdField_a_of_type_JavaNioChannelsFileLock == null) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      label166:
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        label180:
+        adjv.a("KingKongUtils", "Do Inter-Process Lock failed " + this.jdField_a_of_type_JavaLangString);
+        return false;
+      }
+      catch (IOException localIOException1)
+      {
+        break label180;
+      }
+    }
+    catch (IOException localIOException2)
+    {
+      break label166;
     }
   }
 }

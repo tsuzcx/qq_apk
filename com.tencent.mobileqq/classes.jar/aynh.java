@@ -1,24 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime.Status;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aynh
-  extends ayuf
+  implements View.OnClickListener
 {
-  aynh(aymu paramaymu) {}
+  aynh(aymj paramaymj) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramBundle);
-    paramBundle = aymu.a(this.a).getOnlineStatus();
-    long l = ayox.a().a(aymu.a(this.a));
-    if ((paramBoolean) && (paramBundle == AppRuntime.Status.online) && (l == 1030L))
-    {
-      if (aymu.a(this.a) != null) {
-        aymu.a(this.a).a(paramBundle);
-      }
-      this.a.c();
-    }
+    aymj.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

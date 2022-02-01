@@ -1,49 +1,23 @@
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StrikethroughSpan;
-import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-class tbu
+public class tbu
+  implements Animation.AnimationListener
 {
-  int a;
-  private int b;
-  private int c;
+  public tbu(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt1, int paramInt2) {}
   
-  public static tbu a(int paramInt, Object... paramVarArgs)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    tbu localtbu = new tbu();
-    localtbu.a = paramInt;
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      return localtbu;
-    case 1: 
-    case 2: 
-      localtbu.b = ((Integer)paramVarArgs[0]).intValue();
-      return localtbu;
-    }
-    localtbu.c = ((Integer)paramVarArgs[0]).intValue();
-    return localtbu;
+    CommonSuspensionGestureLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).setVisibility(8);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(true, this.jdField_a_of_type_Int, this.b);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, this.b);
   }
   
-  public Object a()
-  {
-    switch (this.a)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new tbt(this.b);
-    case 2: 
-      return new ForegroundColorSpan(this.b);
-    case 5: 
-      return new StrikethroughSpan();
-    case 4: 
-      return new StyleSpan(this.c);
-    }
-    return new UnderlineSpan();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

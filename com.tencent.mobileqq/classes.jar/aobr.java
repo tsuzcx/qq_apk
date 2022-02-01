@@ -1,12 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.face.FaceInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public abstract interface aobr
+class aobr
+  implements BusinessObserver
 {
-  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
+  aobr(aobl paramaobl, String paramString) {}
   
-  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
+    }
+  }
 }
 
 

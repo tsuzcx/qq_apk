@@ -1,11 +1,25 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.ClickableToastView;
 
-public abstract interface bivy
+public class bivy
+  extends Handler
 {
-  public abstract void a(int paramInt, String paramString);
+  public bivy(ClickableToastView paramClickableToastView, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(List<DownloadInfo> paramList);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.b();
+  }
 }
 
 

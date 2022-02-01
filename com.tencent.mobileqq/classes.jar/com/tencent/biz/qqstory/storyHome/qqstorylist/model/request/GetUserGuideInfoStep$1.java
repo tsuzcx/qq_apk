@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.model.request;
 
-import ylr;
-import ylt;
-import ylv;
+import ypm;
+import ypo;
+import ypq;
 
 public class GetUserGuideInfoStep$1
   implements Runnable
 {
-  public GetUserGuideInfoStep$1(ylr paramylr, ylv paramylv) {}
+  public GetUserGuideInfoStep$1(ypm paramypm, ypq paramypq) {}
   
   public void run()
   {
-    if (ylr.a(this.this$0) != null) {
-      ylr.a(this.this$0).a(this.a);
+    if (ypm.a(this.this$0) != null) {
+      ypm.a(this.this$0).a(this.a);
     }
   }
 }

@@ -1,110 +1,113 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class aqug
 {
-  public int a;
-  public List<Long> a;
-  public int b;
-  public int c;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private aqrf jdField_a_of_type_Aqrf;
+  private aqrn jdField_a_of_type_Aqrn;
   
-  public aqug()
+  public aqug(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aqrf = new aqrf();
+    this.jdField_a_of_type_Aqrf.a(new aqrh());
   }
   
-  public static aqug a(aqlg[] paramArrayOfaqlg)
+  private ColorNote b()
   {
-    aqug localaqug = new aqug();
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    if (this.jdField_a_of_type_Aqrn != null) {
+      return this.jdField_a_of_type_Aqrn.getColorNote();
+    }
+    return null;
+  }
+  
+  public aqrn a()
+  {
+    return this.jdField_a_of_type_Aqrn;
+  }
+  
+  public ColorNote a()
+  {
+    if (this.jdField_a_of_type_Aqrn != null) {
+      return this.jdField_a_of_type_Aqrn.getColorNote();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    ColorNote localColorNote = b();
+    if (localColorNote != null)
     {
-      int j = paramArrayOfaqlg.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramArrayOfaqlg[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((aqlg)localObject).a;
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            if (((JSONObject)localObject).has("gtcSwitch")) {
-              localaqug.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gtcSwitch");
-            }
-            if (((JSONObject)localObject).has("groupMemberCount")) {
-              localaqug.b = ((JSONObject)localObject).optInt("groupMemberCount");
-            }
-            if (((JSONObject)localObject).has("allGroupTypesEnable")) {
-              localaqug.c = ((JSONObject)localObject).optInt("allGroupTypesEnable");
-            }
-            if (((JSONObject)localObject).has("enabledGroupTypes"))
-            {
-              localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
-              localaqug.jdField_a_of_type_JavaUtilList.addAll(a((JSONArray)localObject));
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberRecommend.ConfBean", 2, "parse: " + localaqug.toString());
-          }
-        }
+      this.jdField_a_of_type_Aqrf.a(localColorNote.parseBundle());
+      if (localColorNote.getServiceType() != 16973824) {
+        bdll.b(null, "dc00898", "", "", "0X800A743", "0X800A743", aqrd.a(this.jdField_a_of_type_Aqrn.getColorNote().mServiceType), 0, "", "", "", "");
       }
     }
-    return localaqug;
   }
   
-  private static List<Long> a(JSONArray paramJSONArray)
+  public void a(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(aqrh paramaqrh)
+  {
+    this.jdField_a_of_type_Aqrf.a(paramaqrh);
+  }
+  
+  public void a(aqrn paramaqrn)
+  {
+    this.jdField_a_of_type_Aqrn = paramaqrn;
+  }
+  
+  public void a(ColorNote paramColorNote)
+  {
+    this.jdField_a_of_type_Aqrf.a(paramColorNote);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Aqrf.a();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aqrn != null)
     {
-      int j = paramJSONArray.length();
-      int i = 0;
-      for (;;)
+      ColorNote localColorNote = this.jdField_a_of_type_Aqrn.getColorNote();
+      if (localColorNote != null)
       {
-        if (i < j) {
-          try
-          {
-            localArrayList.add(Long.valueOf(paramJSONArray.getLong(i)));
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("TroopMemberRecommend.ConfBean", 2, "TroopMemRecommendConfBean processJsonArray error", localException);
-            }
-          }
-        }
+        this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType());
+        bdll.b(null, "dc00898", "", "", "0X800A748", "0X800A748", aqrd.a(this.jdField_a_of_type_Aqrn.getColorNote().mServiceType), 0, "", "", "", "");
       }
     }
-    return localArrayList;
   }
   
-  public String toString()
+  public boolean b()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ").append(this.jdField_a_of_type_Int).append(", groupMemberCount: ").append(this.b).append(", allGroupTypesEnable: ").append(this.c).append(", enabledGroupTypes: ").append(this.jdField_a_of_type_JavaUtilList.toString()).append("]");
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Aqrn != null)
+    {
+      ColorNote localColorNote = this.jdField_a_of_type_Aqrn.getColorNote();
+      if (localColorNote != null) {
+        return this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType());
+      }
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    aqsd.a(this.jdField_a_of_type_AndroidContentContext);
+    bdll.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqug
  * JD-Core Version:    0.7.0.1
  */

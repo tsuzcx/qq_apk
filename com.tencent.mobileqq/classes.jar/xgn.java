@@ -1,30 +1,93 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 
-public class xgn
-  extends GestureDetector.SimpleOnGestureListener
+public abstract class xgn
+  extends xgp
 {
-  public xgn(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  protected int a;
+  protected boolean a;
+  protected int b = -1;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h = QQStoryContext.a().b();
+  protected String i;
+  protected String j;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public xgn()
   {
-    return true;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public final void a(xht paramxht)
   {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
+    super.a(paramxht);
+    paramxht.jdField_a_of_type_JavaLangString = a(6);
+    a(paramxht);
+  }
+  
+  protected void a(xhu paramxhu) {}
+  
+  public void a(xhv paramxhv)
+  {
+    super.a(paramxhv);
+    paramxhv.b = 1;
+    paramxhv.m = this.g;
+    paramxhv.jdField_d_of_type_JavaLangString = this.f;
+    paramxhv.l = this.e;
+    paramxhv.k = this.jdField_d_of_type_JavaLangString;
+    paramxhv.jdField_a_of_type_JavaLangString = this.i;
+    paramxhv.h = a(1);
+    if (this.jdField_a_of_type_Int != -1) {
+      paramxhv.jdField_d_of_type_Int = this.jdField_a_of_type_Int;
     }
-    return false;
+    if (this.b != -1) {
+      paramxhv.e = this.b;
+    }
+    a(paramxhv);
+  }
+  
+  public void a(xhw paramxhw)
+  {
+    super.a(paramxhw);
+    paramxhw.c = this.jdField_d_of_type_JavaLangString;
+    paramxhw.jdField_d_of_type_JavaLangString = this.e;
+    paramxhw.jdField_a_of_type_JavaLangString = this.i;
+    paramxhw.e = a(2);
+    a(paramxhw);
+  }
+  
+  public void a(xhx paramxhx)
+  {
+    super.a(paramxhx);
+    paramxhx.jdField_a_of_type_JavaLangString = this.j;
+    paramxhx.e = this.i;
+    paramxhx.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramxhx.jdField_d_of_type_JavaLangString = xif.a(this.i);
+    paramxhx.c = a(5);
+    a(paramxhx);
+  }
+  
+  public void a(xhy paramxhy)
+  {
+    super.a(paramxhy);
+    paramxhy.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramxhy.c = this.e;
+    paramxhy.jdField_d_of_type_JavaLangString = a(3);
+    paramxhy.e = this.i;
+    paramxhy.b = true;
+    a(paramxhy);
+  }
+  
+  public void b(xhy paramxhy)
+  {
+    super.b(paramxhy);
+    paramxhy.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramxhy.c = this.e;
+    paramxhy.jdField_d_of_type_JavaLangString = a(4);
+    paramxhy.e = this.i;
+    paramxhy.b = true;
+    a(paramxhy);
   }
 }
 

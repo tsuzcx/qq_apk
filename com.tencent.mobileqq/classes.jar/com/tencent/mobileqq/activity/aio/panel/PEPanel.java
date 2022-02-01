@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.panel;
 
-import afur;
-import agal;
-import aheh;
-import ahqu;
-import ahqv;
-import ahqw;
-import aihx;
+import agej;
+import agkf;
+import ahnt;
+import aiai;
+import aiaj;
+import aiak;
+import airq;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -16,7 +16,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bcst;
+import bdll;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
@@ -34,8 +34,8 @@ public class PEPanel
   extends FrameLayout
 {
   private long jdField_a_of_type_Long;
-  private agal jdField_a_of_type_Agal;
-  private ahqw jdField_a_of_type_Ahqw;
+  private agkf jdField_a_of_type_Agkf;
+  private aiak jdField_a_of_type_Aiak;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
@@ -76,8 +76,8 @@ public class PEPanel
     int i;
     if (this.jdField_a_of_type_Boolean)
     {
-      k = aheh.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 4);
-      m = aheh.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 1);
+      k = ahnt.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 4);
+      m = ahnt.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 1);
       if ((k != 1) || (m <= 0)) {
         break label227;
       }
@@ -87,11 +87,11 @@ public class PEPanel
     {
       for (;;)
       {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X8009221", "0X8009221", i, 0, "", "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X8009221", "0X8009221", i, 0, "", "", "", "");
         return;
         try
         {
-          localObject = new ahqv(this, (DiniFlyAnimationView)localObject);
+          localObject = new aiaj(this, (DiniFlyAnimationView)localObject);
           LottieComposition.Factory.fromInputStream(getContext(), new FileInputStream(str), (OnCompositionLoadedListener)localObject);
           this.jdField_a_of_type_Boolean = true;
         }
@@ -134,12 +134,12 @@ public class PEPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     paramBaseChatPie = new DiniFlyAnimationView(getContext());
-    paramSessionInfo = new FrameLayout.LayoutParams(-1, XPanelContainer.a - afur.a(40.0F, getResources()));
+    paramSessionInfo = new FrameLayout.LayoutParams(-1, XPanelContainer.a - agej.a(40.0F, getResources()));
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = paramBaseChatPie;
     addView(paramBaseChatPie, paramSessionInfo);
     this.jdField_a_of_type_ComTencentWidgetListView = new StickerBubbleListView(getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
     paramBaseChatPie = new FrameLayout.LayoutParams(-1, -1);
-    paramBaseChatPie.topMargin = afur.a(30.0F, getResources());
+    paramBaseChatPie.topMargin = agej.a(30.0F, getResources());
     this.jdField_a_of_type_ComTencentWidgetListView.setLayoutParams(paramBaseChatPie);
     this.jdField_a_of_type_ComTencentWidgetListView.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
@@ -147,9 +147,9 @@ public class PEPanel
     this.jdField_a_of_type_ComTencentWidgetListView.setVerticalFadingEdgeEnabled(true);
     this.jdField_a_of_type_ComTencentWidgetListView.setSelector(new ColorDrawable(0));
     addView(this.jdField_a_of_type_ComTencentWidgetListView, paramBaseChatPie);
-    this.jdField_a_of_type_Ahqw = new ahqw(this);
-    this.jdField_a_of_type_JavaLangString = (aihx.c + "aio_panel_pe_ani.json");
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.myLooper(), new ahqu(this));
+    this.jdField_a_of_type_Aiak = new aiak(this);
+    this.jdField_a_of_type_JavaLangString = (airq.c + "aio_panel_pe_ani.json");
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.myLooper(), new aiai(this));
   }
   
   public void a(String paramString)
@@ -157,10 +157,10 @@ public class PEPanel
     if (QLog.isColorLevel()) {
       QLog.d("PokeEmo.PEPanel", 2, String.format(" reload..reload = %s", new Object[] { paramString }));
     }
-    paramString = aihx.a(paramString);
-    this.jdField_a_of_type_Agal = new agal(BaseApplication.getContext());
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Agal);
-    this.jdField_a_of_type_Agal.a(paramString);
+    paramString = airq.a(paramString);
+    this.jdField_a_of_type_Agkf = new agkf(BaseApplication.getContext());
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Agkf);
+    this.jdField_a_of_type_Agkf.a(paramString);
     this.jdField_a_of_type_ComTencentWidgetListView.setSelection(0);
   }
   

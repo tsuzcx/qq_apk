@@ -1,21 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
 
-class bgqx
-  implements View.OnClickListener
+public class bgqx
 {
-  bgqx(bgqu parambgqu, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgqu, 0);
-    }
-    this.jdField_a_of_type_Bgqu.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public AudioInfo a;
+  public TroopBarPOI a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public ArrayList<TroopBarPOI> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
 }
 
 

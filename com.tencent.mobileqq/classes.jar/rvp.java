@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class rvp
-  implements View.OnClickListener
+  extends Handler
 {
-  rvp(rvn paramrvn) {}
-  
-  public void onClick(View paramView)
+  rvp(rvo paramrvo, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    if (rvn.a(this.a).isShowing()) {
-      rvn.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + rvo.a(this.a));
+      }
+    } while (!rvo.a(this.a));
+    this.a.a(1);
   }
 }
 

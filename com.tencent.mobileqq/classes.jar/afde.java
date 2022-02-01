@@ -1,74 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
 
-class afde
-  extends asyw
+public class afde
+  implements bliz
 {
-  afde(afdc paramafdc) {}
+  public afde(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramInt = 0;
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label232;
-      }
-      if (((afdj)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
+    this.a.jdField_a_of_type_Blir.cancel();
+    if (this.a.jdField_a_of_type_Bhpc == null) {
+      this.a.jdField_a_of_type_Bhpc = bhlq.a(this.a, 230, anzj.a(2131706920), anzj.a(2131706910), anzj.a(2131706898), anzj.a(2131706901), new afdf(this), new afdg(this));
     }
-    for (;;)
-    {
-      if (paramInt != -1) {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-        {
-          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-          if (paramString.uniseq != paramLong1) {
-            break label202;
-          }
-          if (this.a.jdField_a_of_type_Bgpa != null) {
-            this.a.jdField_a_of_type_Bgpa.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
-          }
-        }
-        return;
-        paramInt += 1;
-        break;
-        label202:
-        paramInt += 1;
-      }
-      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
-      return;
-      label232:
-      paramInt = -1;
+    if ((this.a.jdField_a_of_type_Bhpc != null) && (!this.a.jdField_a_of_type_Bhpc.isShowing()) && (!this.a.isFinishing())) {
+      this.a.jdField_a_of_type_Bhpc.show();
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
-  {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
-    if (!this.a.jdField_b_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.a.a();
-        return;
-      }
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
-    if (this.a.jdField_a_of_type_Bgpa != null) {
-      this.a.jdField_a_of_type_Bgpa.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
-    }
-    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
   }
 }
 

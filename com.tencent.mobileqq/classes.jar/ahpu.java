@@ -1,13 +1,29 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneClickReport;
 
-public class ahpu
-  implements ahor
+class ahpu
+  implements View.OnClickListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahpu(ahps paramahps) {}
+  
+  public void onClick(View paramView)
   {
-    paramagup.b(paramMessageRecord, paramLinearLayout, paramafzq, paramagwc, paramString);
+    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      Object localObject = new bmsx();
+      ((bmsx)localObject).c = "330";
+      ((bmsx)localObject).d = "3";
+      ((bmsx)localObject).e = "2";
+      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (bmsx)localObject);
+      localObject = bmtk.a();
+      bmtd.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (bmtk)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, 0, 0);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

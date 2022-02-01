@@ -1,28 +1,82 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
+import com.tencent.TMG.channel.KSAppChannel;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
 public class anmh
-  implements View.OnClickListener
+  extends KSAppChannel
 {
-  public anmh(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity) {}
+  public static String a;
+  public AVContext.StartParam a;
   
-  public void onClick(View paramView)
+  static
   {
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
-    if (SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+    jdField_a_of_type_JavaLangString = "SSOChannel";
+  }
+  
+  public long getTinyId()
+  {
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier).longValue();
+      return l;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
-      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 0L;
+  }
+  
+  public boolean loginWithParam(AVContext.StartParam paramStartParam)
+  {
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam = paramStartParam;
+    return true;
+  }
+  
+  public boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    try
+    {
+      com.tencent.qphone.base.util.QLog.e(jdField_a_of_type_JavaLangString, 1, "requestAppCmd enter");
+      if ((this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam instanceof anlt))
+      {
+        bktj.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((anlt)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((anlt)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new anmi(this, paramArrayOfByte, paramCsCmdCallback));
+        return true;
+      }
+      return false;
+    }
+    catch (NumberFormatException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean requestAppCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    return requestCmd("0", paramArrayOfByte, paramCsCmdCallback);
+  }
+  
+  public boolean requestCmd(String paramString, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    if (paramString.equals("VideoCCSvc.opensdk")) {
+      return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
+    }
+    return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
+  }
+  
+  public boolean requestInfoCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    return requestCmd("1", paramArrayOfByte, paramCsCmdCallback);
+  }
+  
+  public boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    if (paramArrayOfByte.length >= 0) {
+      return requestCmd("3", nativeConvertToIMReportData(paramArrayOfByte, paramInt, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, getTinyId(), (int)System.currentTimeMillis() / 1000), paramCsCmdCallback);
+    }
+    com.tencent.TMG.utils.QLog.e(jdField_a_of_type_JavaLangString, 0, "requestReportCmd reportData == NULL");
+    return false;
   }
 }
 

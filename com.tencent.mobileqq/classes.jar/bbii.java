@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class bbii
-  implements View.OnClickListener
+public final class bbii
+  extends BroadcastReceiver
 {
-  public bbii(UniteSearchActivity paramUniteSearchActivity) {}
+  private bbii(FilterProviderView paramFilterProviderView) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.e();
-    UniteSearchActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      bbfg.a().b();
+      FilterProviderView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
+      }
+    }
   }
 }
 

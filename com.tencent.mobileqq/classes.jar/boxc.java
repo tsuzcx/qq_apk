@@ -1,16 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.support.v4.view.ViewPager;
 
-public class boxc
-  extends AnimatorListenerAdapter
+class boxc
+  implements bpwl
 {
-  public boxc(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  boxc(boxb paramboxb) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void b(int paramInt)
   {
-    this.a.b.setTranslationX(0.0F);
+    boxb.a(this.a).setCurrentItem(paramInt);
   }
 }
 

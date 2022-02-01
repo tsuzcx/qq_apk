@@ -1,17 +1,17 @@
 package com.tencent.qqmini.minigame.ui;
 
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.triton.sdk.ITTEngine.OnGetTraceRecordCallback;
-import com.tencent.mobileqq.triton.sdk.statics.TraceStatistics;
+import com.tencent.mobileqq.triton.statistic.GetTraceInfoCallback;
+import com.tencent.mobileqq.triton.statistic.TraceStatistics;
 import com.tencent.qqmini.minigame.report.MiniGameBeaconReport;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import org.jetbrains.annotations.NotNull;
 
 class GameRuntimeStateObserver$6
-  implements ITTEngine.OnGetTraceRecordCallback
+  implements GetTraceInfoCallback
 {
   GameRuntimeStateObserver$6(GameRuntimeStateObserver paramGameRuntimeStateObserver, boolean paramBoolean) {}
   
-  public void onGetTraceRecord(@NonNull TraceStatistics paramTraceStatistics)
+  public void onGetTraceInfo(@NotNull TraceStatistics paramTraceStatistics)
   {
     if (GameRuntimeStateObserver.access$400(this.this$0) != null) {}
     for (String str = GameRuntimeStateObserver.access$400(this.this$0).appId;; str = "")

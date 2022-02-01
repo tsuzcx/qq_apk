@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.flashchat;
 
-import audy;
+import auvt;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 final class FlashChatTextEffectView$2
   implements Runnable
 {
-  FlashChatTextEffectView$2(audy paramaudy) {}
+  FlashChatTextEffectView$2(auvt paramauvt) {}
   
   public void run()
   {

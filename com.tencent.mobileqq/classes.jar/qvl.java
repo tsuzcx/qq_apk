@@ -1,39 +1,28 @@
-import android.view.View;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.persistence.notColumn;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class qvl
-  implements bkij
 {
-  public qvl(ComponentContentGridImage paramComponentContentGridImage) {}
+  @notColumn
+  public AtomicBoolean a;
+  @notColumn
+  public AtomicInteger a;
+  @notColumn
+  public AtomicBoolean b;
+  @notColumn
+  public AtomicInteger b;
+  @notColumn
+  public AtomicBoolean c = new AtomicBoolean(false);
+  @notColumn
+  public AtomicBoolean d = new AtomicBoolean(false);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public qvl()
   {
-    if ((ComponentContentGridImage.a(this.a) == 62) || (ComponentContentGridImage.a(this.a) == 63) || (ComponentContentGridImage.a(this.a) == 64) || (ComponentContentGridImage.a(this.a) == 65))
-    {
-      if (ComponentContentGridImage.a(this.a) != null) {
-        ComponentContentGridImage.a(this.a).a(paramInt);
-      }
-      return;
-    }
-    if ((Aladdin.getConfig(192).getIntegerFromString("picture_click_jumptype", 0) == 1) && (((pya)this.a.a).a().mSocialFeedInfo != null) && (((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhn != null) && (((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhn.a) && (((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhg != null)) {
-      try
-      {
-        pha.a(this.a.getContext(), ((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhg.a.c, null);
-        return;
-      }
-      catch (Exception paramAdapterView)
-      {
-        QLog.e("ComponentContentGridImage", 1, paramAdapterView.getLocalizedMessage());
-        return;
-      }
-    }
-    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

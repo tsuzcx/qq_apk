@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.soload;
 
-import bcof;
+import bdgx;
 
 public class SoLoadManager$1
   implements Runnable
 {
-  public SoLoadManager$1(bcof parambcof, LoadParam paramLoadParam) {}
+  public SoLoadManager$1(bdgx parambdgx, LoadParam paramLoadParam) {}
   
   public void run()
   {
-    bcof.a(this.this$0, this.a, null);
+    bdgx.a(this.this$0, this.a, null);
   }
 }
 

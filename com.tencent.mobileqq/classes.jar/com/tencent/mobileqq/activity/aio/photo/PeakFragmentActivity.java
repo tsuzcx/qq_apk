@@ -7,7 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
-import bcnj;
+import bdgb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
@@ -24,7 +24,7 @@ public class PeakFragmentActivity
   
   protected void adjustStatusBar()
   {
-    bcnj.a(this.mSystemBarComp, getWindow());
+    bdgb.a(this.mSystemBarComp, getWindow());
   }
   
   @Override

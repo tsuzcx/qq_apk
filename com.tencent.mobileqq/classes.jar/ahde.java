@@ -1,22 +1,19 @@
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class ahde
-  extends afwr
+  extends aggl
 {
-  private long jdField_a_of_type_Long;
-  public alqf a;
+  public ImageView a;
   public TextView a;
-  public ETTextView a;
-  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
+  public URLDrawable a;
+  public FlashPicItemBuilder.FlashPicAIOThumbView a;
+  public BubbleImageView a;
   public boolean a;
-  public TextView b;
-  public ETTextView b;
-  private String b = "0";
-  public int e = -1;
-  
-  public ahde(ahda paramahda) {}
+  public boolean b;
 }
 
 

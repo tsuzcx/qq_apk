@@ -1,35 +1,32 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberAQFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class rqo
-  extends pmn
+class rqo
+  implements View.OnClickListener
 {
-  public rqo(ReadInJoySelectMemberAQFragment paramReadInJoySelectMemberAQFragment) {}
+  rqo(rqm paramrqm) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (("OidbSvc.0xbd4_1".equals(paramString)) && (this.a.getActivity() != null))
+    rpt.a(rqm.a(this.a), rqm.a(this.a).a);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.a.a = true;
-      this.a.a();
-      if (paramInt == 0)
-      {
-        ReadInJoySelectMemberAQFragment.a(this.a, 0);
-        ReadInJoySelectMemberAQFragment.a(this.a, false);
-        this.a.c();
-        this.a.getActivity().finish();
-        ReadInJoySelectMemberAQFragment.a(this.a, true);
-      }
-    }
-    else
-    {
+      localJSONObject.put("uin", rqm.a(this.a).getCurrentAccountUin());
+      label45:
+      ocd.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", odr.a(null, null, rqm.a(this.a).a.a.a, rqm.a(this.a).a.a.g, localJSONObject), false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    ReadInJoySelectMemberAQFragment.a(this.a, true);
-    ReadInJoySelectMemberAQFragment.a(this.a, 2);
-    ReadInJoySelectMemberAQFragment.a(this.a, anni.a(2131711520) + paramInt);
-    QQToast.a(this.a.getActivity(), 1, this.a.getString(2131717146), 0).b(ReadInJoySelectMemberAQFragment.a(this.a));
+    catch (Exception localException)
+    {
+      break label45;
+    }
   }
 }
 

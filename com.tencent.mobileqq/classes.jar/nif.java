@@ -1,21 +1,39 @@
-import com.tencent.biz.PoiMapActivity;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.widget.TextView;
 
 public class nif
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  public static int a()
+  {
+    return (int)(0.64F * bhtq.a());
+  }
   
-  public nif(PoiMapActivity paramPoiMapActivity) {}
+  public static int a(TextView paramTextView)
+  {
+    if ((paramTextView != null) && (paramTextView.getText() != null))
+    {
+      TextPaint localTextPaint = paramTextView.getPaint();
+      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramTextView.getWidth() - paramTextView.getPaddingLeft() - paramTextView.getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
+    }
+    return -1;
+  }
+  
+  public static int b()
+  {
+    return (int)(bhtq.a() * 0.045F);
+  }
+  
+  public static int c()
+  {
+    return (int)(bhtq.a() * 0.058F);
+  }
+  
+  public static int d()
+  {
+    return (int)(bhtq.a() * 0.048F);
+  }
 }
 
 

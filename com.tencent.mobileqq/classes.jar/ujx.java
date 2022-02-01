@@ -1,81 +1,152 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import NS_KING_SOCIALIZE_META.stMetaUgcImage;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stFloatingLayerCardStyle;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
+import org.json.JSONObject;
 
-public abstract class ujx
+public class ujx
 {
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, uke paramuke)
+  private stSimpleMetaFeed a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate onTencentVideoDefnInfo:" + paramTVK_NetVideoInfo);
+    if (paramJSONObject != null)
+    {
+      Gson localGson = new Gson();
+      stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
+      localstSimpleMetaFeed.id = paramJSONObject.optString("id");
+      localstSimpleMetaFeed.ding_count = paramJSONObject.optInt("dingCount");
+      localstSimpleMetaFeed.is_ding = paramJSONObject.optInt("isDing");
+      localstSimpleMetaFeed.total_comment_num = paramJSONObject.optInt("commentNum");
+      localstSimpleMetaFeed.material_desc = paramJSONObject.optString("materialDesc");
+      localstSimpleMetaFeed.material_thumburl = paramJSONObject.optString("materialThumburl");
+      localstSimpleMetaFeed.feed_desc = paramJSONObject.optString("feedDesc");
+      localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramJSONObject.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
+      localstSimpleMetaFeed.video_url = paramJSONObject.optString("videoUrl");
+      ArrayList localArrayList = new ArrayList();
+      stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
+      localstMetaUgcImage.url = paramJSONObject.optString("coverUrl");
+      localstMetaUgcImage.height = paramJSONObject.optInt("coverHeight");
+      localstMetaUgcImage.width = paramJSONObject.optInt("coverWidth");
+      localArrayList.add(localstMetaUgcImage);
+      localstSimpleMetaFeed.images = localArrayList;
+      localstSimpleMetaFeed.poster_id = paramJSONObject.optString("posterId");
+      localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramJSONObject.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
+      paramJSONObject = new stFloatingLayerCardStyle();
+      paramJSONObject.cardType = 1;
+      localstSimpleMetaFeed.floatingLayerCardStyle = paramJSONObject;
+      return localstSimpleMetaFeed;
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    String str = "_ct=" + System.currentTimeMillis();
+    if (paramString.contains("?")) {}
+    for (paramString = paramString + "&" + str;; paramString = paramString + "?" + str) {
+      return paramString;
     }
   }
   
-  public void a(uke paramuke)
+  private ArrayList<stSimpleMetaFeed> a(HashMap<String, String> paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onCompletion videoPlayer:" + paramuke);
+    if (paramHashMap == null) {
+      return null;
     }
+    Object localObject = (String)paramHashMap.get("feeds");
+    paramHashMap = (String)paramHashMap.get("scene");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramHashMap)) {
+      uqt.d(paramHashMap);
+    }
+    try
+    {
+      paramHashMap = URLDecoder.decode((String)localObject, "UTF-8");
+      uqf.b("WSMiniAppHelper", "小程序传过来的feed： " + paramHashMap);
+    }
+    catch (UnsupportedEncodingException paramHashMap)
+    {
+      for (;;)
+      {
+        try
+        {
+          localObject = new ArrayList();
+          paramHashMap = a(new JSONObject(paramHashMap));
+          if (paramHashMap != null) {
+            ((ArrayList)localObject).add(paramHashMap);
+          }
+          return localObject;
+        }
+        catch (Exception paramHashMap)
+        {
+          paramHashMap.printStackTrace();
+          uqf.d("WSMiniAppHelper", "parse json error: " + paramHashMap.getMessage());
+        }
+        paramHashMap = paramHashMap;
+        paramHashMap.printStackTrace();
+        paramHashMap = (HashMap<String, String>)localObject;
+      }
+    }
+    return null;
   }
   
-  public void a(uke paramuke, long paramLong)
+  public static ujx a()
   {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate videoBitRate:" + paramLong);
-    }
+    return ujz.a();
   }
   
-  public abstract void a(uke paramuke, Object paramObject);
-  
-  public void a(uke paramuke, String paramString)
+  public void a(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "OnDownloadCallback state:" + paramString + ", videoPlayer:" + paramuke);
-    }
+    ueg.a(paramContext, paramString, new ujy(this));
   }
   
-  public void a(uke paramuke, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean a(Context paramContext, HashMap<String, String> paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onCaptureImage result:" + paramBoolean + ", errCode:" + paramInt1 + ", id:" + paramInt2 + ", bitmap:" + paramBitmap + ", videoPlayer:" + paramuke);
+    if (paramContext == null) {
+      return false;
     }
-  }
-  
-  public boolean a(uke paramuke, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onError model:" + paramInt1 + ", what:" + paramInt2 + ", extra:" + paramInt3 + ", detailInfo:" + paramString + ", info:" + paramObject);
+    ArrayList localArrayList = a(paramHashMap);
+    String str2 = "mini_app_personal_guest";
+    String str3 = "homepage_guest";
+    String str1 = str2;
+    paramHashMap = str3;
+    if (localArrayList != null)
+    {
+      str1 = str2;
+      paramHashMap = str3;
+      if (localArrayList.size() > 0)
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localArrayList.get(0);
+        str1 = str2;
+        paramHashMap = str3;
+        if (localstSimpleMetaFeed.poster != null)
+        {
+          str1 = str2;
+          paramHashMap = str3;
+          if (TextUtils.equals(localstSimpleMetaFeed.poster.id, uqt.f()))
+          {
+            str1 = "mini_app_personal_main";
+            paramHashMap = "homepage_main";
+          }
+        }
+      }
     }
-    return false;
-  }
-  
-  public boolean a(uke paramuke, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onInfo what:" + paramInt + ", extra:" + paramObject + ", videoPlayer:" + paramuke);
-    }
-    return false;
-  }
-  
-  public void b(uke paramuke)
-  {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onSeekComplete videoPlayer:" + paramuke);
-    }
-  }
-  
-  public void b(uke paramuke, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      upe.d("WSPlayerListenerAdapter", 2, "onConnectQualityCallback json:" + paramString);
-    }
-  }
-  
-  public void c(uke paramuke)
-  {
-    if (QLog.isColorLevel()) {
-      upe.b("WSPlayerListenerAdapter", 2, "onDownloadFinish videoPlayer:" + paramuke);
-    }
+    WSVerticalPageFragment.a(paramContext, str1, paramHashMap, localArrayList, 0, true);
+    return true;
   }
 }
 

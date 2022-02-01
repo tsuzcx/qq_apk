@@ -1,16 +1,17 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahha
-  implements bbab
+  extends ahkx
 {
-  public WeakReference<ahgy> a;
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
+  ahha(ahgk paramahgk)
   {
-    if (this.a.get() != null) {
-      ahgy.a((ahgy)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
-    }
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahuv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

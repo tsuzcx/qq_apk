@@ -1,14 +1,10 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
-
-public class bmce
-  implements bmbl
+public abstract interface bmce
 {
-  public bmce(PanoramaView paramPanoramaView) {}
+  public abstract void a();
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.a.a(paramFloat1, paramFloat2);
-  }
+  public abstract void a(bmcd parambmcd);
+  
+  public abstract void b(bmcd parambmcd);
 }
 
 

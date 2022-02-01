@@ -1,75 +1,60 @@
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.common.app.AppInterface;
 
-public class wkm
+class wkm
+  implements wkp
 {
-  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
+  protected beup a;
   
-  static
+  private wkm(wkh paramwkh)
   {
-    a.put(xwg.class, wkj.class);
-    b.put(wpb.class, wkk.class);
+    this.jdField_a_of_type_Beup = new wko(this);
   }
   
-  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
+  protected beuo a()
   {
-    try
-    {
-      if (paramClass.equals(xwg.class))
-      {
-        Object localObject = paramClass1.cast(new wkj());
-        return localObject;
-      }
+    AppInterface localAppInterface = bplq.a();
+    if (localAppInterface != null) {
+      return localAppInterface.getNetEngine(0);
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      yqp.e("ExtensionFactoryImplement", "parse int exception");
-      try
-      {
-        paramClass = (Class)a.get(paramClass);
-        if (paramClass != null)
-        {
-          if (wjy.class.isAssignableFrom(paramClass)) {
-            break label110;
-          }
-          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-        }
-      }
-      catch (Exception paramClass)
-      {
-        yqp.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-      }
-      return wkn.a(paramClass1);
-    }
-    label110:
-    paramClass = wkn.a(paramClass, paramVarArgs);
-    return paramClass;
+    return null;
   }
   
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  public void a(wkq paramwkq)
   {
-    if (!wjy.class.isAssignableFrom(paramClass)) {
-      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+    paramwkq.jdField_d_of_type_Int = 0;
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_JavaLangString = paramwkq.jdField_d_of_type_JavaLangString;
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = paramwkq.e;
+    localbeum.jdField_d_of_type_JavaLangString = paramwkq.f;
+    localbeum.jdField_d_of_type_Int = paramwkq.g;
+    localbeum.b = 3;
+    localbeum.a(paramwkq);
+    localbeum.jdField_a_of_type_Beup = this.jdField_a_of_type_Beup;
+    paramwkq.a = localbeum;
+    localbeum.jdField_a_of_type_Beuq = new wkn(this);
+    beuo localbeuo = a();
+    if (localbeuo != null) {
+      localbeuo.a(localbeum);
     }
-    try
+    yuk.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramwkq);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b(wkq paramwkq)
+  {
+    beum localbeum = paramwkq.a;
+    if (localbeum != null)
     {
-      Class localClass = (Class)b.get(paramClass);
-      if (localClass != null)
-      {
-        if (wjy.class.isAssignableFrom(localClass)) {
-          break label124;
-        }
-        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
+      if (a() != null) {
+        a().b(localbeum);
       }
+      yuk.b("AsyncFileDownloader", String.format("cancel task with base downloader, task = %s", new Object[] { paramwkq }));
     }
-    catch (Exception localException)
-    {
-      yqp.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-    }
-    return wkn.a(paramClass, paramVarArgs);
-    label124:
-    Object localObject = wkn.a(localException, paramVarArgs);
-    return localObject;
   }
 }
 

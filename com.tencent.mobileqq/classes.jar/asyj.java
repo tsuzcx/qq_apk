@@ -1,39 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class asyj
-  extends atwn
+  extends aogi
 {
-  public asyj(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
+  public asyj(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendFragment", 2, String.format("onDataChange success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    ExtendFriendFragment.a(this.a);
   }
 }
 

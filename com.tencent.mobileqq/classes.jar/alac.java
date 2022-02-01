@@ -1,45 +1,47 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import Wallet.RedPackGrapInfo;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
-class alac
-  implements View.OnClickListener
+public class alac
+  implements IRedPacket.OnGetAvailableListListener
 {
-  alac(akyh paramakyh, ajbx paramajbx) {}
+  public alac(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(View paramView)
+  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
   {
-    bcst.b(akyh.a(this.jdField_a_of_type_Akyh).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    Intent localIntent;
-    if (localBaseActivity != null)
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      if (!URLUtil.isValidUrl(this.jdField_a_of_type_Ajbx.a)) {
-        break label151;
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
       }
-      localIntent = new Intent(localBaseActivity, QQBrowserActivity.class);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", this.jdField_a_of_type_Ajbx.a);
-      localIntent.putExtra("hideRightButton", true);
-      localBaseActivity.startActivity(localIntent);
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+        TroopUnAccalimedRedPacketList.a(this.a).setText(anzj.a(2131714581));
+      }
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Akyh.a(7, 0);
-      bcst.a(akyh.a(this.jdField_a_of_type_Akyh).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label151:
-      localIntent = new Intent(localBaseActivity, PhoneUnityBindInfoActivity.class);
-      localIntent.putExtra("kSrouce", 0);
-      localBaseActivity.startActivity(localIntent);
-    }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
+      }
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 

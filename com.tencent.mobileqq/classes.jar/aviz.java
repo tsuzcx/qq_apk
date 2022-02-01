@@ -1,97 +1,43 @@
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.hydevteam.common.progress.ProgressFuture;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 import java.util.Map;
 
 class aviz
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  aviz(aviy paramaviy) {}
+  aviz(aviu paramaviu, String paramString1, String paramString2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    HashMap localHashMap = new HashMap();
+    acik.a(localHashMap, this.jdField_a_of_type_JavaLangString);
+    localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
+    localHashMap.put(Integer.valueOf(10), "1");
+    localHashMap.put(Integer.valueOf(12), this.b);
+    Intent localIntent = new Intent(aviu.a(this.jdField_a_of_type_Aviu), QQBrowserActivity.class);
+    if (TextUtils.isEmpty(this.b))
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 5: 
-    case 6: 
-    case 4: 
-      label461:
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              int i;
-              do
-              {
-                do
-                {
-                  return false;
-                } while (aviy.a(this.a) == null);
-                aviy.a(this.a).a(0, new Object[] { paramMessage.obj });
-                return false;
-                i = paramMessage.arg1;
-              } while ((i <= aviy.a(this.a)) || (aviy.a(this.a) == null));
-              aviy.a(this.a).a(1, new Object[] { Integer.valueOf(paramMessage.arg1), Long.valueOf(aviy.a(this.a)) });
-              aviy.a(this.a, i);
-              return false;
-              if (aviy.a(this.a) != null) {
-                aviy.a(this.a).a(2, new Object[] { paramMessage.obj });
-              }
-            } while (avjc.a.get(aviy.a(this.a)) == null);
-            avjb.b(String.valueOf(((avjc)avjc.a.get(aviy.a(this.a))).b));
-            return false;
-            if (aviy.a(this.a) != null) {
-              aviy.a(this.a).a(3, new Object[] { paramMessage.obj });
-            }
-          } while (avjc.a.get(aviy.a(this.a)) == null);
-          avjb.b(String.valueOf(((avjc)avjc.a.get(aviy.a(this.a))).c));
-          return false;
-          InstalledPlugin localInstalledPlugin;
-          avja localavja;
-          if (aviy.a(this.a) != null)
-          {
-            localInstalledPlugin = (InstalledPlugin)paramMessage.obj;
-            localavja = aviy.a(this.a);
-            if (paramMessage.arg1 != 1) {
-              break label461;
-            }
-          }
-          for (boolean bool = true;; bool = false)
-          {
-            localavja.a(4, new Object[] { localInstalledPlugin, Boolean.valueOf(bool), Long.valueOf(aviy.b(this.a)) });
-            aviy.a(this.a, "HuayangPluginNewDownloader", anni.a(2131704434) + (System.currentTimeMillis() - aviy.c(this.a)));
-            aviy.a(this.a, false);
-            return false;
-          }
-        } while (aviy.a(this.a) == null);
-        aviy.a(this.a).a(5, new Object[] { paramMessage.obj });
-        return false;
-      } while (!(paramMessage.obj instanceof ProgressFuture));
-      double d = ((ProgressFuture)paramMessage.obj).getProgress();
-      aviy.a(this.a, "HuayangPluginNewDownloader", "收到读取进度的MSG, progress = " + d);
-      aviy.a(this.a).sendMessage(Message.obtain(aviy.a(this.a), 1, (int)(d * 100.0D), 0));
-      aviy.a(this.a).sendMessageDelayed(Message.obtain(aviy.a(this.a), 4, paramMessage.obj), 300L);
-      return false;
+      localIntent.putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
+      localHashMap.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuezq");
     }
-    paramMessage = new Intent(aviy.a(this.a), HuayangLoadbackgroudActivity.class);
-    paramMessage.putExtra("isPreload", true);
-    paramMessage.setFlags(268435456);
-    aviy.a(this.a).startActivity(paramMessage);
-    return false;
+    for (;;)
+    {
+      acik.a(anbd.a(), "769", "205711", this.jdField_a_of_type_Aviu.a().gameAppId, "76905", "1", "160", localHashMap);
+      aviu.a(this.jdField_a_of_type_Aviu).startActivity(localIntent);
+      aviu.a(this.jdField_a_of_type_Aviu).dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localIntent.putExtra("url", this.b);
+      localHashMap.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuebl");
+    }
   }
 }
 

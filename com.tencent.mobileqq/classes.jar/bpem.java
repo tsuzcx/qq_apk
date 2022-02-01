@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-public final class bpem
-  implements Parcelable.Creator<EditVideoParams>
+public class bpem
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public bpem(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public EditVideoParams[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new EditVideoParams[paramInt];
+    int i = (int)(AEEditorAILoadingView.a(1000.0F, paramValueAnimator.getAnimatedFraction(), 0.0F, 1.0F) * -90.0F + 90.0F);
+    AEEditorAILoadingView.a(this.a).setPadding(0, i, 0, 0);
   }
 }
 

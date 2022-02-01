@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playmode.util;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import xfe;
+import xiz;
 
 public final class PlayModeUtils$2
   implements Runnable
@@ -10,7 +10,7 @@ public final class PlayModeUtils$2
   
   public void run()
   {
-    xfe.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    xiz.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import java.lang.ref.WeakReference;
 
-public class oip
-  implements TopGestureLayout.OnGestureListener
+class oip
+  implements sej
 {
-  public oip(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  private WeakReference<oio> a;
   
-  public void flingLToR()
+  public oip(oio paramoio)
   {
-    ReadInJoyChannelActivity.a(this.a, true);
-    this.a.finish();
+    this.a = new WeakReference(paramoio);
   }
   
-  public void flingRToL() {}
+  public void a()
+  {
+    oio localoio = (oio)this.a.get();
+    if ((localoio == null) || (!localoio.b())) {
+      return;
+    }
+    oio.a(localoio).sendEmptyMessage(1);
+  }
 }
 
 

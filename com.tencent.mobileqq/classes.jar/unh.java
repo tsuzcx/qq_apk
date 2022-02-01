@@ -1,169 +1,157 @@
-import com.tencent.component.network.module.common.NetworkState;
-import java.util.HashMap;
-import java.util.Map;
-import org.jetbrains.annotations.NotNull;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.trooponline.widget.RoundTextView;
+import java.util.ArrayList;
 
 public class unh
+  extends blsy<uho>
 {
-  private static ung a;
+  private static final int jdField_a_of_type_Int = upw.a(5.0F);
+  private static final int b = upw.a(2.0F);
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView;
+  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
+  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  private RoundTextView jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView;
+  private uho jdField_a_of_type_Uho;
+  private int c;
   
-  @NotNull
-  public static Map<String, String> a(ukb paramukb, boolean paramBoolean)
+  private unh(ViewGroup paramViewGroup)
   {
-    Object localObject = paramukb.jdField_a_of_type_Uke;
-    HashMap localHashMap;
-    if (localObject == null)
+    super(paramViewGroup, 2131560391);
+    c();
+  }
+  
+  public static unh a(ViewGroup paramViewGroup)
+  {
+    return new unh(paramViewGroup);
+  }
+  
+  private void a(int paramInt)
+  {
+    if (paramInt <= 1)
     {
-      localObject = "0";
-      paramukb = paramukb.jdField_a_of_type_Ukf;
-      localHashMap = new HashMap();
-      localHashMap.put("video_total_time", String.valueOf(paramukb.c));
-      localHashMap.put("video_play_time", localObject);
-      localHashMap.put("videoid", paramukb.a);
-      localHashMap.put("feedid", paramukb.a);
-      localHashMap.put("author_uin", paramukb.jdField_e_of_type_JavaLangString);
-      if (NetworkState.g().getNetworkType() != 1) {
-        break label154;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setVisibility(8);
+      return;
     }
-    label154:
-    for (int i = 1;; i = 2)
+    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setText(String.valueOf(paramInt));
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)a(2131381479));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131381481));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131381504));
+    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView = ((RoundTextView)a(2131381485));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131381469));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new uni(this));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/followbtn.json");
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.setCorner(jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderInnerPadding(5);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderWidth(b);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderColor(Color.parseColor("#D9D9D9"));
+    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setRoundBgColor(a().getResources().getColor(2131167302));
+  }
+  
+  private void d()
+  {
+    if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster == null) || (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()))
     {
-      localHashMap.put("network", String.valueOf(i));
-      localHashMap.put("video_type", String.valueOf(paramukb.jdField_e_of_type_Int));
-      return localHashMap;
-      localObject = String.valueOf(((uke)localObject).b(paramBoolean));
-      break;
-    }
-  }
-  
-  public static void a()
-  {
-    if (a == null) {
+      uqf.b("WSFollowFriendFeedHolder", "[showFollowAction] is null");
       return;
     }
-    a.d();
+    stSimpleMetaPerson localstSimpleMetaPerson = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster;
+    ugp.a().b(localstSimpleMetaPerson.id, 1);
   }
   
-  public static void a(int paramInt)
+  private void e()
   {
-    if (a == null) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new unj(this));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+  }
+  
+  public stSimpleMetaPerson a()
+  {
+    if (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) {
+      return this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster;
     }
-    a.a(paramInt);
+    return null;
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  public void a()
   {
-    if (a == null) {
-      return;
-    }
-    a.a(paramInt1, paramInt2);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (a == null) {
-      return;
-    }
-    a.c(paramString);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (a == null) {
-      return;
-    }
-    a.a(paramString, paramInt1, paramInt2);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (a != null)
+    if (this.jdField_a_of_type_Uho == null)
     {
-      a.b(paramString2);
-      a.a(paramString1);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    a = new ung(une.a(paramString1));
-    a(paramString2, paramString3);
-  }
-  
-  public static void a(ukb paramukb, boolean paramBoolean)
-  {
-    if (a == null) {}
-    while ((paramukb == null) || (paramukb.jdField_a_of_type_Ukf == null)) {
+      uqf.b("WSFollowFriendFeedHolder", "[reportExposure] mCurrentItemData is null");
       return;
     }
-    paramukb = a(paramukb, paramBoolean);
-    a.a(paramukb);
+    uns.a(this.c + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_Uho.a(), this.jdField_a_of_type_Uho.a());
   }
   
-  public static void b()
+  public void a(uho paramuho, int paramInt)
   {
-    if (a == null) {
-      return;
+    if ((paramuho == null) || (((ArrayList)paramuho.a()).size() < 1)) {}
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_Uho = paramuho;
+        this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((ArrayList)paramuho.a()).get(0));
+      } while (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null);
+      this.c = paramInt;
+      a(paramuho.a());
+      a(paramuho.a());
+      paramuho = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster;
+    } while (paramuho == null);
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
     }
-    a.a();
+    if (upw.a(paramuho.followStatus)) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    }
+    for (;;)
+    {
+      uqt.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, true, "focus");
+      uqt.a(a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, paramuho.avatar);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramuho.nick);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setFrame(1);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+    }
   }
   
-  public static void b(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (a == null) {
+    if (paramBoolean) {}
+    for (int i = Color.parseColor("#67FFFFFF");; i = Color.parseColor("#FF7A46FF"))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderColor(i);
       return;
     }
-    a.b(paramInt);
   }
   
-  public static void b(String paramString, int paramInt1, int paramInt2)
+  public void b()
   {
-    if (a == null) {
+    if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster == null)) {
       return;
     }
-    a.b(paramString, paramInt1, paramInt2);
-  }
-  
-  public static void c()
-  {
-    if (a == null) {
+    if (upw.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.followStatus))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
       return;
     }
-    a.b();
-  }
-  
-  public static void c(String paramString, int paramInt1, int paramInt2)
-  {
-    if (a == null) {
-      return;
-    }
-    a.c(paramString, paramInt1, paramInt2);
-  }
-  
-  public static void d()
-  {
-    if (a == null) {
-      return;
-    }
-    a.c();
-  }
-  
-  public static void e()
-  {
-    if (a == null) {
-      return;
-    }
-    a.e();
-  }
-  
-  public static void f()
-  {
-    if (a == null) {
-      return;
-    }
-    a.f();
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
   }
 }
 

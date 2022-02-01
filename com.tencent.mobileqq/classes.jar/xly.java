@@ -1,25 +1,59 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class xly
-  extends QQUIEventReceiver<xlv, wxr>
+  extends BaseAdapter
 {
-  public xly(@NonNull xlv paramxlv)
+  private xly(VideoCoverListBar paramVideoCoverListBar) {}
+  
+  public String a(int paramInt)
   {
-    super(paramxlv);
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
   }
   
-  public void a(@NonNull xlv paramxlv, @NonNull wxr paramwxr)
+  public int getCount()
   {
-    yqp.b("InteractWidgetPageHolder", "receive send vid rate data result event.");
-    if (paramxlv.d()) {
-      paramxlv.a(paramxlv.jdField_a_of_type_Int, paramxlv.b, paramxlv.jdField_a_of_type_Xne, paramxlv.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
+    return VideoCoverListBar.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561813, null);
+      paramView = new xlz(this, localView);
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.a(paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      xlz localxlz = (xlz)paramView.getTag();
+      localView = paramView;
+      paramView = localxlz;
     }
   }
   
-  public Class acceptEventClass()
+  public int getViewTypeCount()
   {
-    return wxr.class;
+    return 1;
   }
 }
 

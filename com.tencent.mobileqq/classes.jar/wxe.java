@@ -1,39 +1,61 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class wxe
-  extends QQUIEventReceiver<wxc, wxb>
+class wxe
+  extends SimpleObserver<List<xiw>>
 {
-  public wxe(wxc paramwxc)
-  {
-    super(paramwxc);
-  }
+  wxe(wxd paramwxd, wxh paramwxh, wvn paramwvn) {}
   
-  public void a(@NonNull wxc paramwxc, @NonNull wxb paramwxb)
+  public void a(List<xiw> paramList)
   {
-    if (paramwxc.a()) {}
-    do
+    super.onNext(paramList);
+    ArrayList localArrayList;
+    int i;
+    xiw localxiw;
+    if (this.jdField_a_of_type_Wxh != null)
+    {
+      localArrayList = new ArrayList();
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        Collections.sort(paramList, new wxf(this));
+        paramList = paramList.iterator();
+        i = 0;
+        if (paramList.hasNext())
+        {
+          localxiw = (xiw)paramList.next();
+          if (i < wxd.a(this.jdField_a_of_type_Wxd)) {
+            break label100;
+          }
+        }
+      }
+      this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wvn, localArrayList);
+    }
+    else
     {
       return;
-      if (paramwxb.jdField_a_of_type_Boolean)
-      {
-        wxc.a(paramwxc);
-        return;
-      }
-      if ((paramwxb.a() != null) && (!paramwxb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramwxb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    return;
-    wxc.a(paramwxc);
+    }
+    label100:
+    if ((localxiw != null) && (!localxiw.jdField_a_of_type_Boolean) && (localxiw.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+    {
+      localArrayList.add(localxiw.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      i += 1;
+    }
+    for (;;)
+    {
+      break;
+    }
   }
   
-  public Class acceptEventClass()
+  public void onError(@NonNull Error paramError)
   {
-    return wxb.class;
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Wxh != null) {
+      this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wvn, paramError);
+    }
   }
 }
 

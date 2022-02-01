@@ -1,32 +1,35 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 class aogk
-  implements bdxd
+  extends Handler
 {
-  aogk(aogd paramaogd, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(bdxf parambdxf, bdxe parambdxe)
+  aogk(aogj paramaogj, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      parambdxf = parambdxf.a.getWupBuffer();
-      parambdxe = new structmsg.RspSystemMsgRead();
-      parambdxe.mergeFrom(parambdxf);
-      int i = parambdxe.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
-      }
+    }
+    do
+    {
       return;
+      this.a.b();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(aogj.a(this.a)), " ,devStatus:", Integer.valueOf(aogj.b(this.a)), " ,clientType:", Long.valueOf(aogj.a(this.a)), " ,appid:", Long.valueOf(aogj.b(this.a)) });
+      }
+      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(aogj.b(this.a)) });
+    } while (aogj.b(this.a) != 0);
+    if (!this.a.a.hasMessages(101)) {
+      this.a.a.sendEmptyMessageDelayed(101, 3000L);
     }
-    catch (Exception parambdxf)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambdxf);
-    }
+    bhhv.a(false);
   }
 }
 

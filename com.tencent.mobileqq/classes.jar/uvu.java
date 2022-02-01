@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class uvu
-  implements View.OnClickListener
 {
-  public uvu(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramBuilder.build(paramString).report();
+  }
+  
+  public static void a(String paramString, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    paramstSimpleMetaFeed = new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName("chat_page").setTestId(uqt.a(2)).setPushId("").setFlush(true).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("content", paramInt, paramstSimpleMetaFeed)).setOperationId("").setImmediatelyUpload(uqt.c());
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("qq_group_num", paramString);
+    localHashMap.put("card_type", "1");
+    paramstSimpleMetaFeed.addExtParams(localHashMap);
+    a(paramstSimpleMetaFeed, "gzh_click");
   }
 }
 

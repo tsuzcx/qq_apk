@@ -1,64 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
-public class adnc
-  extends aniz
+public abstract class adnc
 {
-  public adnc(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  protected adnb a;
   
-  protected void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
+  protected void a() {}
+  
+  public final void a(adnb paramadnb)
   {
-    boolean bool1 = true;
-    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
-    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
-    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
-    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
-    int i;
-    if (paramBoolean)
-    {
-      i = 2;
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label134;
-      }
-      if (!bool2) {
-        break label128;
-      }
-      i = 2131698322;
-    }
-    for (;;)
-    {
-      ((Message)localObject).arg2 = i;
-      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label151;
-      }
-      AssociatedAccountManageActivity.a(this.a);
-      bddy.a(this.a.app, bool2);
-      return;
-      i = 1;
-      break;
-      label128:
-      i = 2131698321;
-      continue;
-      label134:
-      if (bool2) {
-        i = 2131718283;
-      } else {
-        i = 2131718282;
-      }
-    }
-    label151:
-    localObject = this.a;
-    if (!bool2) {}
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
-      return;
-    }
+    this.a = paramadnb;
+    a();
   }
+  
+  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy);
+  
+  public void b() {}
 }
 
 

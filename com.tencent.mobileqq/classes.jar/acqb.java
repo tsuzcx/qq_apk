@@ -1,36 +1,19 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
 
 class acqb
-  implements aaob
+  implements AdIPCManager.Callback
 {
-  acqb(acqa paramacqa, acpp paramacpp, String paramString, String[] paramArrayOfString, aanz paramaanz) {}
+  acqb(acqa paramacqa) {}
   
-  public void callback(Bundle paramBundle)
+  public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
   {
-    String str1 = paramBundle.getString("phone");
-    String str2 = paramBundle.getString("name");
-    String str3 = paramBundle.getString("city");
-    String str4 = paramBundle.getString("area");
-    paramBundle = new JSONObject();
-    try
+    if (paramResult != null) {}
+    for (boolean bool = paramResult.success;; bool = false)
     {
-      paramBundle.put("phone", str1);
-      paramBundle.put("name", str2);
-      paramBundle.put("city", str3);
-      paramBundle.put("area", str4);
-      paramBundle = paramBundle.toString();
-      acqy.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Acpp + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
-      this.jdField_a_of_type_Acpp.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      this.jdField_a_of_type_Aanz.b();
+      acvc.b("GdtInterstitialAd", String.format("close.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
       return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        acqy.d("GdtGetUserInfoHandler", localException.toString());
-      }
     }
   }
 }

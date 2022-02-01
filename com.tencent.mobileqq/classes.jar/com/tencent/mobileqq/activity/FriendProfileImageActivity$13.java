@@ -16,7 +16,7 @@ class FriendProfileImageActivity$13
     if (!this.this$0.jdField_c_of_type_Boolean) {
       this.this$0.b.setVisibility(0);
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.this$0.getResources().getDimension(2131297483), 0.0F);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.this$0.getResources().getDimension(2131297495), 0.0F);
     localTranslateAnimation.setDuration(300L);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
     this.this$0.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);

@@ -1,80 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class aqta
-  extends aqkz<aqtb>
+class aqta
+  extends GestureDetector.SimpleOnGestureListener
 {
-  @NonNull
-  public aqtb a(int paramInt)
-  {
-    return new aqtb();
-  }
+  aqta(aqsy paramaqsy) {}
   
-  @Nullable
-  public aqtb a(aqlg[] paramArrayOfaqlg)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      aqtb localaqtb = new aqtb();
-      localaqtb.a(paramArrayOfaqlg);
-      return localaqtb;
-    }
-    return new aqtb();
-  }
-  
-  public void a(aqtb paramaqtb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
-    }
-  }
-  
-  public Class<aqtb> clazz()
-  {
-    return aqtb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
-    if (localQQAppInterface != null)
-    {
-      String str = localQQAppInterface.c();
-      return bgsg.N(localQQAppInterface.getApp(), str);
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 368;
+    aqsy.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqta
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.tablequery;
 
-import bdgq;
+import bdzl;
 
 public class TableQueryController$1
   implements Runnable
 {
-  public TableQueryController$1(bdgq parambdgq) {}
+  public TableQueryController$1(bdzl parambdzl) {}
   
   public void run()
   {
-    bdgq.a(false);
+    bdzl.a(false);
   }
 }
 

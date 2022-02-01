@@ -1,23 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Handler;
 
 class ytf
-  implements wld<wza, xau>
+  implements ype
 {
-  ytf(ytd paramytd) {}
+  ytf(yte paramyte) {}
   
-  public void a(@NonNull wza paramwza, @Nullable xau paramxau, @NonNull ErrorMessage paramErrorMessage)
+  public void a(yoj paramyoj)
   {
-    yqp.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramxau != null))
-    {
-      yqp.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramxau.toString());
-      paramwza = new woh(paramxau.a, paramxau.c, paramxau.d, paramxau.e, paramxau.f, paramwza.d, paramwza.e);
-      this.a.a(0, paramwza);
-      return;
-    }
-    yqp.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    ysw.a(this.a.a).sendMessage(ysw.a(this.a.a).obtainMessage(0, paramyoj));
   }
 }
 

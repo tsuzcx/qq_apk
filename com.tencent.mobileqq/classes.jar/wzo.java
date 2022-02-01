@@ -1,57 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wzo
-  extends wlf<xbc>
+class wzo
+  extends SimpleJob<Object>
 {
-  public final List<String> a;
-  
-  public wzo(List<String> paramList)
+  wzo(wzn paramwzn, String paramString)
   {
-    this.a = paramList;
+    super(paramString);
   }
   
-  public String a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return "StorySvc.get_video_tag_778";
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
-    try
-    {
-      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
-      return new xbc(localRspStoryPlayerTagInfo);
+    if (this.a.jdField_a_of_type_Wzq == null) {
+      this.a.jdField_a_of_type_Wzq = new wzq(this.a, this.a.d);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        yqp.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.4.1"));
-    return localReqStoryPlayerTagInfo.toByteArray();
+    this.a.jdField_a_of_type_JavaLangString = "";
+    wzn.a(this.a);
+    return null;
   }
 }
 

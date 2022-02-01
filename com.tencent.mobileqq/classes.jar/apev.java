@@ -1,57 +1,145 @@
-import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.Renderer;
-import android.util.Size;
-import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
-import java.nio.FloatBuffer;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ARClassifyLBSCheckReq;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ARClassifyLBSCheckRsp;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.LBSPoint;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ReqBody;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.RspBody;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface apev
-  extends GLSurfaceView.Renderer
+public class apev
+  extends anud
 {
-  public abstract int a();
+  public apev(AppInterface paramAppInterface)
+  {
+    super(paramAppInterface);
+  }
   
-  public abstract long a();
+  private static apnc a(oidb_cmd0xb49.LBSPoint paramLBSPoint)
+  {
+    int j = 0;
+    apnc localapnc = new apnc();
+    int i;
+    if (paramLBSPoint.int32_lat.has())
+    {
+      i = paramLBSPoint.int32_lat.get();
+      localapnc.jdField_a_of_type_Int = i;
+      if (!paramLBSPoint.int32_lon.has()) {
+        break label141;
+      }
+      i = paramLBSPoint.int32_lon.get();
+      label53:
+      localapnc.jdField_b_of_type_Int = i;
+      if (!paramLBSPoint.str_name.has()) {
+        break label146;
+      }
+      str = paramLBSPoint.str_name.get();
+      label77:
+      localapnc.jdField_a_of_type_JavaLangString = str;
+      if (!paramLBSPoint.str_addr.has()) {
+        break label152;
+      }
+    }
+    label141:
+    label146:
+    label152:
+    for (String str = paramLBSPoint.str_addr.get();; str = "")
+    {
+      localapnc.jdField_b_of_type_JavaLangString = str;
+      i = j;
+      if (paramLBSPoint.uint32_dist.has()) {
+        i = paramLBSPoint.uint32_dist.get();
+      }
+      localapnc.c = i;
+      return localapnc;
+      i = 0;
+      break;
+      i = 0;
+      break label53;
+      str = "";
+      break label77;
+    }
+  }
   
-  public abstract void a();
+  public boolean a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("ARLBSHandler", 1, "requestToCheckLBSLocation. imageId = " + paramString + ", latitude = " + paramInt1 + ", longitude = " + paramInt2);
+    Object localObject = new oidb_cmd0xb49.ReqBody();
+    ((oidb_cmd0xb49.ReqBody)localObject).int32_lat.set(paramInt1);
+    ((oidb_cmd0xb49.ReqBody)localObject).int32_lon.set(paramInt2);
+    oidb_cmd0xb49.ARClassifyLBSCheckReq localARClassifyLBSCheckReq = new oidb_cmd0xb49.ARClassifyLBSCheckReq();
+    localARClassifyLBSCheckReq.str_id.set(paramString);
+    ((oidb_cmd0xb49.ReqBody)localObject).msg_ar_classify_req.set(localARClassifyLBSCheckReq);
+    localObject = makeOIDBPkg("OidbSvc.0xb49", 2889, 10, ((oidb_cmd0xb49.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("imageId", paramString);
+    sendPbReq((ToServiceMsg)localObject);
+    return true;
+  }
   
-  public abstract void a(int paramInt);
+  protected Class<? extends anui> observerClass()
+  {
+    return apew.class;
+  }
   
-  public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
-  
-  public abstract void a(int paramInt, Object paramObject);
-  
-  public abstract void a(int paramInt, float[] paramArrayOfFloat);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(aotz paramaotz);
-  
-  public abstract void a(aoud paramaoud);
-  
-  public abstract void a(apgc paramapgc);
-  
-  public abstract void a(VideoRecordController paramVideoRecordController);
-  
-  public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
-  
-  public abstract boolean a(aouc paramaouc);
-  
-  public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    while (!"OidbSvc.0xb49".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    apnb localapnb = new apnb();
+    String str = (String)paramToServiceMsg.getAttribute("imageId", "");
+    QLog.i("ARLBSHandler", 1, "req.getAttribute id imageIdSend:" + str);
+    int i;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramToServiceMsg = new oidb_cmd0xb49.RspBody();
+      parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+      paramFromServiceMsg.extraData.getString("str_error_msg");
+      if (paramToServiceMsg.msg_ar_classify_rsp.has())
+      {
+        paramFromServiceMsg = (oidb_cmd0xb49.ARClassifyLBSCheckRsp)paramToServiceMsg.msg_ar_classify_rsp.get();
+        if (paramFromServiceMsg.str_id.has()) {}
+        for (paramToServiceMsg = paramFromServiceMsg.str_id.get(); !paramToServiceMsg.equalsIgnoreCase(str); paramToServiceMsg = "")
+        {
+          QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is success. err: image id is not equals. req image id = " + str + ", rsp image id = " + paramToServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.uint32_lbs_result.has())
+        {
+          i = paramFromServiceMsg.uint32_lbs_result.get();
+          localapnb.jdField_a_of_type_Int = i;
+          localapnb.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+          if (!paramFromServiceMsg.msg_nearest_point.has()) {
+            break label291;
+          }
+          paramToServiceMsg = a(paramFromServiceMsg.msg_nearest_point);
+          label241:
+          localapnb.jdField_a_of_type_Apnc = paramToServiceMsg;
+        }
+      }
+      else
+      {
+        QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is success. retCode = " + localapnb.jdField_a_of_type_Int);
+      }
+    }
+    for (;;)
+    {
+      notifyUI(1, true, localapnb);
+      return;
+      i = -1;
+      break;
+      label291:
+      paramToServiceMsg = null;
+      break label241;
+      QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is failed. ");
+    }
+  }
 }
 
 

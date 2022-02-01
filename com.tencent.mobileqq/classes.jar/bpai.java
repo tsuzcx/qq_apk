@@ -1,26 +1,30 @@
 class bpai
-  implements bpqw<Boolean, bprb>
+  implements beuq
 {
-  bpai(bpag parambpag) {}
+  private bpah jdField_a_of_type_Bpah;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public Void a(Boolean paramBoolean, bprb parambprb)
+  bpai(String paramString1, String paramString2, bpah parambpah)
   {
-    if ((!paramBoolean.booleanValue()) || (parambprb == null) || (parambprb.jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      yqp.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Bpah = parambpah;
+  }
+  
+  public void onResp(bevm parambevm)
+  {
+    bpam.b("AEDownloader", "onResp url: " + this.jdField_a_of_type_JavaLangString + " resultcode: " + parambevm.a);
+    if (this.jdField_a_of_type_Bpah != null) {
+      this.jdField_a_of_type_Bpah.a(parambevm);
     }
-    yqp.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(parambprb.jdField_a_of_type_Int));
-    if (parambprb.jdField_a_of_type_Int >= this.a.a.length)
-    {
-      yqp.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(parambprb.jdField_a_of_type_Int) });
-      return null;
+  }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bpah != null) {
+      this.jdField_a_of_type_Bpah.a((int)((float)paramLong1 / (float)paramLong2 * 100.0F));
     }
-    yqp.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(parambprb.jdField_a_of_type_Int));
-    this.a.a[parambprb.jdField_a_of_type_Int] = bpaj.a(this.a.a[parambprb.jdField_a_of_type_Int], parambprb.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.a.a[parambprb.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = parambprb.jdField_a_of_type_JavaLangString;
-    this.a.j();
-    return null;
   }
 }
 

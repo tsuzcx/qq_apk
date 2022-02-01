@@ -1,44 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class aatb
-  implements DialogInterface.OnClickListener
+class aatb
+  implements aoag
 {
-  public aatb(TroopGiftPanel paramTroopGiftPanel, int paramInt) {}
+  aatb(aast paramaast, Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(aoal paramaoal)
   {
-    if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aasj != null) && (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aasj.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aasj.a.c)))
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c();
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 2) {
-        bcst.b(null, "dc00899", "Grp_flower", "", "C2C", "Clk_topay", 0, 0, "", "", "", "");
-      }
+    Bundle localBundle = new Bundle();
+    aoal localaoal = paramaoal;
+    if (paramaoal == null) {
+      localaoal = this.jdField_a_of_type_Aast.a.a.jdField_a_of_type_Aoah.a(this.jdField_a_of_type_Aast.a.a.jdField_a_of_type_JavaLangString, 1, aoaf.a());
     }
-    else
+    if (localaoal != null)
     {
-      return;
+      localBundle.putString("url", localaoal.b);
+      localBundle.putString("content", localaoal.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 6)
+    for (;;)
     {
-      bcst.b(null, "dc00899", "Grp_flower", "", "discuss_grp", "Clk_topay", 0, 0, "", "", "", "");
-      return;
+      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
+      this.jdField_a_of_type_Aast.a.a(101, localBundle);
+      return false;
+      localBundle.putString("url", "");
+      localBundle.putString("content", "");
     }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 7)
-    {
-      bcst.b(null, "dc00899", "Grp_flower", "", "temp_c2c", "Clk_topay", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
-    {
-      anqt.a("gift_store", "pay_tip", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-      return;
-    }
-    bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_topay", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

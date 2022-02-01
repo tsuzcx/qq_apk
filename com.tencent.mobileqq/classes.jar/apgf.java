@@ -1,29 +1,70 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.util.TreeMap;
 
 public class apgf
-  extends AnimatorListenerAdapter
 {
-  public apgf(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
+  static String a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static String a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if (a == null) {
+      if (!bhjr.a()) {
+        break label56;
       }
+    }
+    label56:
+    for (String str = bigv.a(antf.ba) + "pddata/prd/" + "ar_promotion" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_promotion" + File.separator)
+    {
+      a = str;
+      return a;
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public static String a(apfz paramapfz)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (paramapfz == null) {
+      return null;
     }
+    paramapfz = (apga)paramapfz.a().get(Integer.valueOf(0));
+    if (paramapfz == null) {
+      return null;
+    }
+    return a(paramapfz);
+  }
+  
+  public static String a(apga paramapga)
+  {
+    return paramapga.d + "entry" + File.separator;
+  }
+  
+  private static String a(String paramString, int paramInt)
+  {
+    return a() + paramString + File.separator + paramInt + File.separator;
+  }
+  
+  public static String a(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + ".zip";
+  }
+  
+  public static String b(apfz paramapfz)
+  {
+    paramapfz = (apga)paramapfz.a().get(Integer.valueOf(0));
+    if (paramapfz == null) {
+      return null;
+    }
+    return b(paramapfz);
+  }
+  
+  public static String b(apga paramapga)
+  {
+    return paramapga.d + "guide" + File.separator;
+  }
+  
+  public static final String b(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + File.separator;
   }
 }
 

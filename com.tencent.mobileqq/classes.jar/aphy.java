@@ -1,35 +1,13 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.1;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.2.1;
 
 public class aphy
-  extends aopa
+  extends aqgz
 {
-  aphy(aphx paramaphx, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aphy(aphx paramaphx) {}
   
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
-    }
-    if (paramInt2 < 3) {
-      return;
-    }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.1.2(this));
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
-    }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.1.1(this, paramSosoLbsInfo, paramInt));
+    aphx.a(this.a).a(new ARTransferPromotionRenderable.2.1(this, paramArrayOfFloat));
   }
 }
 

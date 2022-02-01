@@ -1,25 +1,9 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-
-public class ahnq
-  implements agsm
+class ahnq
 {
-  public ahnq(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  int jdField_a_of_type_Int = -1;
+  ahns[] jdField_a_of_type_ArrayOfAhns;
   
-  public void a()
-  {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a, 0);
-      }
-    }
-  }
+  ahnq(ahnp paramahnp) {}
 }
 
 

@@ -1,20 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import org.jetbrains.annotations.NotNull;
 
 public class bfdb
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  public bfdb(ReciteRecordLayout paramReciteRecordLayout) {}
+  public bfdb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, bfeg parambfeg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(@NotNull View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", String.format("https://buluo.qq.com/mobile/topic_video_group.html?themeid=%d&_bid=128&_wwv=1024&_wv=1027&webview=1", new Object[] { Integer.valueOf(this.jdField_a_of_type_Bfeg.h) }));
+    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity(paramView);
+    if (this.jdField_a_of_type_Bfeg.c == 31) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      bdll.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_theme", 0, 0, this.jdField_a_of_type_Bfeg.d, this.jdField_a_of_type_Bfeg.b + "", "", paramView);
+      return;
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-18432);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfdb
  * JD-Core Version:    0.7.0.1
  */

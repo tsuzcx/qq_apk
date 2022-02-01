@@ -1,13 +1,42 @@
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-class bnkm
-  implements aavk
+public class bnkm
 {
-  bnkm(bnkd parambnkd) {}
+  private static Field a;
   
-  public void a()
+  private static void a(Throwable paramThrowable)
   {
-    bnkd.a(this.a).setVisibility(0);
+    try
+    {
+      if (a == null) {
+        a = Throwable.class.getDeclaredField("detailMessage");
+      }
+      a.setAccessible(true);
+      a.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
+      return;
+    }
+    catch (Throwable paramThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
+    }
+  }
+  
+  public static final void a(Throwable paramThrowable, String paramString)
+  {
+    if (paramThrowable == null) {
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = Log.getStackTraceString(paramThrowable);
+    }
+    a(paramThrowable);
+    QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
+    bdkh.a(paramThrowable, str);
   }
 }
 

@@ -42,9 +42,9 @@ public class StoryImageToastView
   
   protected void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560943, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378960));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378956));
+    LayoutInflater.from(paramContext).inflate(2131560974, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379124));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379120));
   }
 }
 

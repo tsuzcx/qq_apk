@@ -1,16 +1,37 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Spanned;
+import android.text.method.NumberKeyListener;
+import com.tencent.widget.TCWNumberPicker;
 
-class blqh
-  implements RadioGroup.OnCheckedChangeListener
+public class blqh
+  extends NumberKeyListener
 {
-  blqh(blqf paramblqf) {}
+  private blqh(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    blqf.a(this.a, paramInt);
-    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    CharSequence localCharSequence1 = localCharSequence2;
+    if (localCharSequence2 == null) {
+      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
+    }
+    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
+    if ("".equals(paramCharSequence)) {
+      localCharSequence1 = paramCharSequence;
+    }
+    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
+      return localCharSequence1;
+    }
+    return "";
+  }
+  
+  protected char[] getAcceptedChars()
+  {
+    return TCWNumberPicker.a();
+  }
+  
+  public int getInputType()
+  {
+    return 2;
   }
 }
 

@@ -2,33 +2,33 @@ package dov.com.qq.im.story.mode;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import boza;
-import bozo;
+import bqav;
+import bqbj;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import yxm;
-import yyb;
+import zbh;
+import zbw;
 
 public class StoryEffectTextMode$EditDialogListener$1
   implements Runnable
 {
-  public StoryEffectTextMode$EditDialogListener$1(bozo parambozo) {}
+  public StoryEffectTextMode$EditDialogListener$1(bqbj parambqbj) {}
   
   public void run()
   {
-    ((yxm)boza.a(this.a.jdField_a_of_type_Boza).a("TextLayer")).a(this.a.jdField_a_of_type_Yyb);
-    if (boza.a(this.a.jdField_a_of_type_Boza))
+    ((zbh)bqav.a(this.a.jdField_a_of_type_Bqav).a("TextLayer")).a(this.a.jdField_a_of_type_Zbw);
+    if (bqav.a(this.a.jdField_a_of_type_Bqav))
     {
-      boza.a(this.a.jdField_a_of_type_Boza).setVisibility(8);
-      boza.a(this.a.jdField_a_of_type_Boza).setVisibility(8);
+      bqav.a(this.a.jdField_a_of_type_Bqav).setVisibility(8);
+      bqav.a(this.a.jdField_a_of_type_Bqav).setVisibility(8);
     }
-    boza.a(this.a.jdField_a_of_type_Boza, boza.a(this.a.jdField_a_of_type_Boza), this.a.jdField_a_of_type_Yyb.a, boza.c(this.a.jdField_a_of_type_Boza), boza.d(this.a.jdField_a_of_type_Boza), 8, null);
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Yyb.a)) || (boza.a(this.a.jdField_a_of_type_Boza)))
+    bqav.a(this.a.jdField_a_of_type_Bqav, bqav.a(this.a.jdField_a_of_type_Bqav), this.a.jdField_a_of_type_Zbw.a, bqav.c(this.a.jdField_a_of_type_Bqav), bqav.d(this.a.jdField_a_of_type_Bqav), 8, null);
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Zbw.a)) || (bqav.a(this.a.jdField_a_of_type_Bqav)))
     {
-      boza.b(this.a.jdField_a_of_type_Boza).setVisibility(8);
+      bqav.b(this.a.jdField_a_of_type_Bqav).setVisibility(8);
       return;
     }
-    boza.b(this.a.jdField_a_of_type_Boza).setVisibility(0);
+    bqav.b(this.a.jdField_a_of_type_Bqav).setVisibility(0);
   }
 }
 

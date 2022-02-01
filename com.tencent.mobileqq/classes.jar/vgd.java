@@ -1,21 +1,43 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.MultiHashMap;
+import android.view.View;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
 
 class vgd
-  implements blxz
+  extends var
 {
-  vgd(vgc paramvgc, int paramInt) {}
+  vgd(vfx paramvfx) {}
   
-  public void a(int paramInt, String paramString1, String arg3)
+  public int a()
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    synchronized (vgc.a())
-    {
-      vgc.a(this.jdField_a_of_type_Vgc).remove(Integer.valueOf(this.jdField_a_of_type_Int));
-      vgc.a(this.jdField_a_of_type_Vgc, null);
-      vgc.a(this.jdField_a_of_type_Vgc, paramInt, paramString1);
-      return;
+    return 0;
+  }
+  
+  public QCircleInitBean a()
+  {
+    return vfx.a(this.a);
+  }
+  
+  public QCirclePolyLikeAniView a()
+  {
+    if (vfx.a(this.a) != null) {
+      return (QCirclePolyLikeAniView)vfx.a(this.a).findViewById(2131374004);
     }
+    return null;
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.a.b("share_action_show_share_sheet", paramObject);
+  }
+  
+  public void a(String paramString, vas paramvas)
+  {
+    this.a.a().a(paramString, paramvas);
+  }
+  
+  public void a(vdq paramvdq)
+  {
+    this.a.a().a("light_interact_list_show", paramvdq);
   }
 }
 

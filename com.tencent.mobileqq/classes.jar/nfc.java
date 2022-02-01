@@ -1,16 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.util.WeakReference;
 
 class nfc
-  implements View.OnClickListener
+  extends anyu
 {
-  nfc(nfb paramnfb, myi parammyi) {}
+  private final WeakReference<nez> a;
+  private final WeakReference<QQAppInterface> b;
   
-  public void onClick(View paramView)
+  public nfc(nez paramnez, QQAppInterface paramQQAppInterface)
   {
-    new.a(this.jdField_a_of_type_Nfb.a, this.jdField_a_of_type_Myi.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramnez);
+    this.b = new WeakReference(paramQQAppInterface);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    nez localnez = (nez)this.a.get();
+    if ((paramBoolean) && (localnez != null) && (nez.a(localnez, paramString, 0))) {
+      localnez.a(1, paramString, 200);
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    nez localnez = (nez)this.a.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramBoolean) && (localnez != null) && (nez.a(localnez, paramString, 1))) {
+      localnez.a(0, paramString, nez.a(localnez, 0, paramString, localQQAppInterface));
+    }
   }
 }
 

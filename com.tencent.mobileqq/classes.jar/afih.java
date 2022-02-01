@@ -1,32 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.36.1;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class afih
-  implements View.OnClickListener
+  extends aobk
 {
-  public afih(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public afih(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    if (this.a.isFinishing()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.c = false;
-      if (this.a.a != null)
-      {
-        this.a.a.a(4);
-        this.a.d();
-        this.a.c();
-      }
-      if (awhv.a().c()) {
-        awhv.a().f(this.a.app);
-      }
-      TroopAssistantActivity.b(this.a);
-    }
+    this.a.a.runOnUiThread(new QQSettingMe.36.1(this));
   }
 }
 

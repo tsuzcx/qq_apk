@@ -1,27 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alkd
-  implements Animation.AnimationListener
+class alkd
+  implements View.OnClickListener
 {
-  public alkd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  alkd(aljw paramaljw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    NewFlowCameraActivity.a(this.a).setVisibility(4);
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-    this.a.e.setVisibility(4);
-    alio.a("", "0X8007C05", this.a.c + "", "", "", "");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    andl localandl = andl.a();
+    if (localandl != null)
+    {
+      localandl.a(aljw.a(this.a));
+      localandl.a();
+      andl.i();
+    }
+    bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

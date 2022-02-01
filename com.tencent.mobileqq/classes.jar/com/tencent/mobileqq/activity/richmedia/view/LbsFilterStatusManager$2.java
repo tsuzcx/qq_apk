@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import alps;
+import ambk;
 import java.util.ArrayList;
 
 public class LbsFilterStatusManager$2
   implements Runnable
 {
-  public LbsFilterStatusManager$2(alps paramalps, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public LbsFilterStatusManager$2(ambk paramambk, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void run()
   {
-    alps.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    ambk.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

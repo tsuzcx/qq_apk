@@ -1,12 +1,12 @@
 package com.tencent.gamecenter.appointment;
 
-import aceg;
+import acii;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import bmxq;
+import bnyy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -20,7 +20,7 @@ public class GameCenterReceiver
   private static GameCenterReceiver jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver;
   private static volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  List<aceg> jdField_a_of_type_JavaUtilList = null;
+  List<acii> jdField_a_of_type_JavaUtilList = null;
   
   public static GameCenterReceiver a()
   {
@@ -77,16 +77,19 @@ public class GameCenterReceiver
     finally {}
   }
   
-  public static void a(aceg paramaceg)
+  public static void a(acii paramacii)
   {
-    if (paramaceg == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterReceiver", 2, "addListener listener=" + paramacii);
+    }
+    if (paramacii == null) {
       return;
     }
     GameCenterReceiver localGameCenterReceiver = a();
     synchronized (localGameCenterReceiver.jdField_a_of_type_JavaUtilList)
     {
-      if (!localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramaceg)) {
-        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramaceg);
+      if (!localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramacii)) {
+        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramacii);
       }
       return;
     }
@@ -112,7 +115,7 @@ public class GameCenterReceiver
       return;
       paramIntent = paramIntent.split(":");
     } while (paramIntent.length < 2);
-    ThreadManagerV2.excute(new GameCenterReceiver.1(this, paramIntent[1], paramString), 16, null, true);
+    ThreadManagerV2.excute(new GameCenterReceiver.1(this, paramString, paramIntent[1]), 16, null, true);
   }
   
   /* Error */
@@ -125,13 +128,13 @@ public class GameCenterReceiver
     //   6: ifeq +11 -> 17
     //   9: ldc 44
     //   11: iconst_2
-    //   12: ldc 175
+    //   12: ldc 180
     //   14: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   17: invokestatic 80	com/tencent/gamecenter/appointment/GameCenterReceiver:a	()Lcom/tencent/gamecenter/appointment/GameCenterReceiver;
     //   20: astore_0
     //   21: invokestatic 104	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   24: aload_0
-    //   25: invokevirtual 179	com/tencent/qphone/base/util/BaseApplication:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
+    //   25: invokevirtual 184	com/tencent/qphone/base/util/BaseApplication:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   28: getstatic 22	com/tencent/gamecenter/appointment/GameCenterReceiver:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   31: iconst_0
     //   32: invokevirtual 113	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
@@ -143,7 +146,7 @@ public class GameCenterReceiver
     //   43: ifeq -15 -> 28
     //   46: ldc 44
     //   48: iconst_2
-    //   49: ldc 181
+    //   49: ldc 186
     //   51: aload_0
     //   52: invokestatic 122	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   55: goto -27 -> 28
@@ -179,7 +182,7 @@ public class GameCenterReceiver
       }
       if ("android.intent.action.SCREEN_OFF".equals(paramContext))
       {
-        bmxq.a().a(false, -1L);
+        bnyy.a().a(false, -1L);
         return;
       }
       if (("android.intent.action.PACKAGE_ADDED".equals(paramContext)) || ("android.intent.action.PACKAGE_REMOVED".equals(paramContext)))

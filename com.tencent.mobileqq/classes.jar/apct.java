@@ -1,14 +1,18 @@
-public class apct
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+
+public final class apct
+  implements Parcelable.Creator<SosoInterface.SosoLbsInfo>
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
+  public SosoInterface.SosoLbsInfo a(Parcel paramParcel)
   {
-    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
+    return new SosoInterface.SosoLbsInfo(paramParcel);
+  }
+  
+  public SosoInterface.SosoLbsInfo[] a(int paramInt)
+  {
+    return new SosoInterface.SosoLbsInfo[paramInt];
   }
 }
 

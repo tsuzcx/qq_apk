@@ -1,14 +1,8 @@
-import android.support.v7.widget.RecyclerView;
-
-class bnqs
-  implements aavk
+public abstract interface bnqs
 {
-  bnqs(bnqm parambnqm) {}
+  public abstract void onAnimationFinished();
   
-  public void a()
-  {
-    bnqm.a(this.a).setVisibility(0);
-  }
+  public abstract void onDrawableLoaded();
 }
 
 

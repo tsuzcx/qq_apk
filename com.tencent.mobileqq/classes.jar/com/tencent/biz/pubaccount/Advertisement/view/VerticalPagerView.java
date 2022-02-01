@@ -6,9 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
-import bggq;
-import nvk;
-import nvl;
+import bhgr;
+import nxe;
+import nxf;
 
 public class VerticalPagerView
   extends ViewGroup
@@ -16,8 +16,8 @@ public class VerticalPagerView
   protected float a;
   protected int a;
   protected Scroller a;
-  protected nvk a;
-  protected nvl a;
+  protected nxe a;
+  protected nxf a;
   protected boolean a;
   protected float b;
   protected int b;
@@ -44,8 +44,8 @@ public class VerticalPagerView
   
   public void a()
   {
-    this.jdField_a_of_type_Nvl = null;
-    this.jdField_a_of_type_Nvk = null;
+    this.jdField_a_of_type_Nxf = null;
+    this.jdField_a_of_type_Nxe = null;
   }
   
   public void a(int paramInt) {}
@@ -90,8 +90,8 @@ public class VerticalPagerView
       if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != this.jdField_c_of_type_Int))
       {
         a(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Nvl != null) {
-          this.jdField_a_of_type_Nvl.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Nxf != null) {
+          this.jdField_a_of_type_Nxf.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
         }
         this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
       }
@@ -121,7 +121,7 @@ public class VerticalPagerView
       } while (i != 2);
       float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
       float f2 = Math.abs(this.d - this.jdField_b_of_type_Float);
-      if ((f2 < bggq.a(super.getContext(), 10.0F)) || (f2 < f1))
+      if ((f2 < bhgr.a(super.getContext(), 10.0F)) || (f2 < f1))
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
         return false;
@@ -129,14 +129,14 @@ public class VerticalPagerView
       i = (int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int);
       if (i > 0)
       {
-        if (this.jdField_a_of_type_Nvk != null) {
-          return this.jdField_a_of_type_Nvk.b(this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Nxe != null) {
+          return this.jdField_a_of_type_Nxe.b(this.jdField_c_of_type_Int);
         }
         return b(this.jdField_c_of_type_Int);
       }
     } while (i >= 0);
-    if (this.jdField_a_of_type_Nvk != null) {
-      return this.jdField_a_of_type_Nvk.a(this.jdField_c_of_type_Int);
+    if (this.jdField_a_of_type_Nxe != null) {
+      return this.jdField_a_of_type_Nxe.a(this.jdField_c_of_type_Int);
     }
     return a(this.jdField_c_of_type_Int);
   }
@@ -185,7 +185,7 @@ public class VerticalPagerView
     {
       this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int));
       i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-      if (Math.abs(this.d - this.jdField_b_of_type_Float) < bggq.a(super.getContext(), 10.0F))
+      if (Math.abs(this.d - this.jdField_b_of_type_Float) < bhgr.a(super.getContext(), 10.0F))
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
         this.f = (this.d - this.e);
@@ -195,8 +195,8 @@ public class VerticalPagerView
       if (i < 0)
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_Nvl != null) {
-          this.jdField_a_of_type_Nvl.a(false, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Nxf != null) {
+          this.jdField_a_of_type_Nxf.a(false, this.jdField_c_of_type_Int);
         }
         this.f = (this.d - this.e);
         this.e = this.d;
@@ -205,8 +205,8 @@ public class VerticalPagerView
       if (i > (super.getChildCount() - 1) * super.getHeight())
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_Nvl != null) {
-          this.jdField_a_of_type_Nvl.a(false, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Nxf != null) {
+          this.jdField_a_of_type_Nxf.a(false, this.jdField_c_of_type_Int);
         }
         this.f = (this.d - this.e);
         this.e = this.d;
@@ -215,8 +215,8 @@ public class VerticalPagerView
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, this.jdField_a_of_type_AndroidWidgetScroller.getFinalY(), 0, -this.jdField_a_of_type_Int, 0);
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       super.invalidate();
-      if (this.jdField_a_of_type_Nvl != null) {
-        this.jdField_a_of_type_Nvl.a(true, this.jdField_c_of_type_Int);
+      if (this.jdField_a_of_type_Nxf != null) {
+        this.jdField_a_of_type_Nxf.a(true, this.jdField_c_of_type_Int);
       }
     }
     while ((i != 1) && (i != 3))
@@ -228,7 +228,7 @@ public class VerticalPagerView
     float f1 = Math.abs(this.f);
     this.e = this.d;
     i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() - this.jdField_c_of_type_Int * super.getHeight();
-    if ((i > super.getHeight() / 4) || ((i > 0) && (f1 > bggq.a(super.getContext(), 7.0F))))
+    if ((i > super.getHeight() / 4) || ((i > 0) && (f1 > bhgr.a(super.getContext(), 7.0F))))
     {
       this.jdField_c_of_type_Int += 1;
       if (this.jdField_c_of_type_Int >= super.getChildCount()) {
@@ -240,12 +240,12 @@ public class VerticalPagerView
       a(0, this.jdField_c_of_type_Int * super.getHeight());
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Nvl == null) {
+      if (this.jdField_a_of_type_Nxf == null) {
         break;
       }
-      this.jdField_a_of_type_Nvl.a(false, this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Nxf.a(false, this.jdField_c_of_type_Int);
       break;
-      if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > bggq.a(super.getContext(), 5.0F))))
+      if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > bhgr.a(super.getContext(), 5.0F))))
       {
         this.jdField_c_of_type_Int -= 1;
         if (this.jdField_c_of_type_Int < 0) {
@@ -272,14 +272,14 @@ public class VerticalPagerView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnInterceptTouchListener(nvk paramnvk)
+  public void setOnInterceptTouchListener(nxe paramnxe)
   {
-    this.jdField_a_of_type_Nvk = paramnvk;
+    this.jdField_a_of_type_Nxe = paramnxe;
   }
   
-  public void setOnPagerChangedListener(nvl paramnvl)
+  public void setOnPagerChangedListener(nxf paramnxf)
   {
-    this.jdField_a_of_type_Nvl = paramnvl;
+    this.jdField_a_of_type_Nxf = paramnxf;
   }
 }
 

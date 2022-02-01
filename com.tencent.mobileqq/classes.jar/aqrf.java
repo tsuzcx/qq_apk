@@ -1,95 +1,213 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.1;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.2;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.3;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.4;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.5;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.util.Pair;
 
 public class aqrf
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c = "分享给你1张图片";
-  public String d = "";
+  private Handler jdField_a_of_type_AndroidOsHandler = new aqrg(this);
+  private aqrh jdField_a_of_type_Aqrh;
+  private aqri jdField_a_of_type_Aqri = new aqri();
   
   public aqrf()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 10485760L;
-    this.jdField_a_of_type_JavaLangString = "gh_0fc5d8395610";
-    this.jdField_b_of_type_JavaLangString = "/pages/gallery/gallery?";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static aqrf a(String paramString)
-  {
-    boolean bool2 = false;
-    if (paramString == null)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    if ((localObject instanceof QQAppInterface))
     {
-      paramString = null;
-      return paramString;
+      localQQAppInterface = (QQAppInterface)localObject;
+      if (localQQAppInterface != null) {
+        break label74;
+      }
+      localObject = null;
     }
-    aqrf localaqrf = new aqrf();
     for (;;)
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (localJSONObject.has("picShareToWeChatEnable"))
-        {
-          if (localJSONObject.getInt("picShareToWeChatEnable") == 1)
-          {
-            bool1 = true;
-            localaqrf.jdField_a_of_type_Boolean = bool1;
-          }
-        }
-        else
-        {
-          if (localJSONObject.has("picShareToWeChatSize")) {
-            localaqrf.jdField_a_of_type_Long = localJSONObject.getLong("picShareToWeChatSize");
-          }
-          if (localJSONObject.has("PicShareToWeChatUserName")) {
-            localaqrf.jdField_a_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatUserName");
-          }
-          if (localJSONObject.has("PicShareToWeChatPath")) {
-            localaqrf.jdField_b_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatPath");
-          }
-          if (localJSONObject.has("PicShareToWeChatShareTicket"))
-          {
-            bool1 = bool2;
-            if (localJSONObject.getInt("PicShareToWeChatShareTicket") == 1) {
-              bool1 = true;
-            }
-            localaqrf.jdField_b_of_type_Boolean = bool1;
-          }
-          if (localJSONObject.has("PicShareToWeChatMiniType")) {
-            localaqrf.jdField_a_of_type_Int = localJSONObject.getInt("PicShareToWeChatMiniType");
-          }
-          if (localJSONObject.has("PicShareToWeChatTitle")) {
-            localaqrf.c = localJSONObject.getString("PicShareToWeChatTitle");
-          }
-          paramString = localaqrf;
-          if (!localJSONObject.has("PicShareToWeChatDescription")) {
-            break;
-          }
-          localaqrf.d = localJSONObject.getString("PicShareToWeChatDescription");
-          return localaqrf;
-        }
+      this.jdField_a_of_type_Aqri.a(localQQAppInterface);
+      this.jdField_a_of_type_Aqri.a((aqry)localObject);
+      return;
+      localQQAppInterface = null;
+      break;
+      label74:
+      if (localQQAppInterface.a() == null) {
+        localObject = null;
+      } else {
+        localObject = localQQAppInterface.a().a();
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("PicShareToWXConfigProcessor", 1, "parse error.", paramString);
-        return localaqrf;
-      }
-      boolean bool1 = false;
     }
+  }
+  
+  private boolean c()
+  {
+    return Looper.getMainLooper() == Looper.myLooper();
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, 0);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.2(this, paramInt1, paramString, paramInt2), 32, null, true);
+      return;
+    }
+    b(paramInt1, paramString, paramInt2);
+  }
+  
+  public void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.3(this, paramInt, paramString, paramBoolean), 32, null, true);
+      return;
+    }
+    b(paramInt, paramString, paramBoolean);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.1(this, paramBundle), 32, null, true);
+      return;
+    }
+    b(paramBundle);
+  }
+  
+  public void a(aqrh paramaqrh)
+  {
+    this.jdField_a_of_type_Aqrh = paramaqrh;
+  }
+  
+  public void a(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.4(this, paramColorNote), 32, null, true);
+      return;
+    }
+    b(paramColorNote);
+  }
+  
+  public boolean a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1) {
+      return this.jdField_a_of_type_Aqri.c();
+    }
+    return aqsf.a().c();
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return aqsf.a().a(paramInt, paramString);
+  }
+  
+  public void b(int paramInt1, String paramString, int paramInt2)
+  {
+    boolean bool = aqri.b(paramInt1, paramString, paramInt2);
+    Message localMessage = Message.obtain();
+    localMessage.obj = new Pair(Integer.valueOf(paramInt1), paramString);
+    if (bool) {}
+    for (localMessage.what = 5;; localMessage.what = 6)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  public void b(int paramInt, String paramString, boolean paramBoolean)
+  {
+    Bundle localBundle = aqri.a(paramInt, paramString, paramBoolean);
+    if (localBundle == null) {
+      return;
+    }
+    localBundle.putInt("key_service_type", paramInt);
+    localBundle.putString("key_sub_type", paramString);
+    paramString = Message.obtain();
+    paramString.what = 9;
+    paramString.obj = localBundle;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    boolean bool = this.jdField_a_of_type_Aqri.a(paramBundle);
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramBundle;
+    if (bool) {}
+    for (localMessage.what = 3;; localMessage.what = 4)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  public void b(ColorNote paramColorNote)
+  {
+    Object localObject = paramColorNote.getUniKey();
+    if (paramColorNote.mMainTitle != null) {}
+    for (boolean bool2 = aqri.a((String)localObject, "mMainTitle", paramColorNote.mMainTitle);; bool2 = true)
+    {
+      boolean bool1 = bool2;
+      if (paramColorNote.mSubTitle != null) {
+        bool1 = bool2 & aqri.a((String)localObject, "mSubTitle", paramColorNote.mSubTitle);
+      }
+      bool2 = bool1;
+      if (paramColorNote.mPicUrl != null) {
+        bool2 = bool1 & aqri.a((String)localObject, "mPicUrl", paramColorNote.mPicUrl);
+      }
+      bool1 = bool2;
+      if (paramColorNote.mReserve != null) {
+        bool1 = bool2 & aqri.a((String)localObject, "mReserve", paramColorNote.mReserve, 1);
+      }
+      localObject = Message.obtain();
+      if (bool1) {}
+      for (((Message)localObject).what = 10;; ((Message)localObject).what = 11)
+      {
+        ((Message)localObject).obj = paramColorNote;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+        return;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    return aqsf.a().b();
+  }
+  
+  public void c(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.5(this, paramColorNote), 32, null, true);
+      return;
+    }
+    d(paramColorNote);
+  }
+  
+  public void d(ColorNote paramColorNote)
+  {
+    aqri.a(paramColorNote);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrf
  * JD-Core Version:    0.7.0.1
  */

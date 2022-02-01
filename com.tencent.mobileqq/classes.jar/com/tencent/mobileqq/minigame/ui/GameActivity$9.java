@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.widget.Toast;
-import anni;
+import anzj;
 
 class GameActivity$9
   implements Runnable
@@ -15,7 +15,7 @@ class GameActivity$9
       GameActivity.access$1600(this.this$0);
       return;
     }
-    Toast.makeText(this.this$0, anni.a(2131703794) + this.val$retCode + ")", 0).show();
+    Toast.makeText(this.this$0, anzj.a(2131703901) + this.val$retCode + ")", 0).show();
   }
 }
 

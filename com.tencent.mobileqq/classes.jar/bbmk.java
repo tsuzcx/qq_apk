@@ -1,66 +1,66 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bbmk
-  implements bbmx
+class bbmk
+  extends Handler
 {
-  public static final String a;
-  private int a;
-  public List<bbmy> a;
-  private String b;
+  protected WeakReference<bbmj> a;
   
-  static
+  public bbmk(bbmj parambbmj1, Looper paramLooper, bbmj parambbmj2)
   {
-    jdField_a_of_type_JavaLangString = anni.a(2131704175);
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbmj2);
   }
   
-  public bbmk(List<bbmy> paramList, String paramString, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return bbgu.a("fts_native_contactor_maxnum", 3);
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<bbmy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, 2);
-    bbup.a(this.b, 20, 0, paramView);
-    if ((paramView.getContext() instanceof UniteSearchActivity))
+    bbmj localbbmj = (bbmj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbbmj == null)
     {
-      bbup.a("all_result", "more_contact", new String[] { "" + this.b });
-      if (SearchConfigManager.needSeparate) {
-        bbup.a("search", "group", "more", 0, 0, new String[] { bbup.a(this.jdField_a_of_type_Int) });
+      if (QLog.isColorLevel()) {
+        QLog.w("HWAudioEncoder", 2, "AudioEncodeHandler.handleMessage: encoder is null");
       }
-      bbrf.a(null, 0, this.jdField_a_of_type_Int, "0X8009D3D", 0, 0, null, null);
+      return;
     }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    int i = paramMessage.what;
+    switch (i)
+    {
+    default: 
+      throw new RuntimeException("Unhandled msg what=" + i);
+    case 1: 
+      paramMessage = (Object[])paramMessage.obj;
+      try
+      {
+        localbbmj.a((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        bbmj.a(this.jdField_a_of_type_Bbmj);
+        return;
+      }
+    case 2: 
+      this.jdField_a_of_type_Bbmj.a();
+      return;
+    case 3: 
+      paramMessage = (String)paramMessage.obj;
+      try
+      {
+        bbmj.a(this.jdField_a_of_type_Bbmj, paramMessage);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
+        bbmj.a(this.jdField_a_of_type_Bbmj);
+        return;
+      }
+    }
+    this.jdField_a_of_type_Bbmj.b();
   }
 }
 

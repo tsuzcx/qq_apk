@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api;
 
-import acko;
-import acqy;
+import acos;
+import acvc;
 import java.lang.ref.WeakReference;
 
 class GdtAd$2
@@ -13,11 +13,11 @@ class GdtAd$2
   {
     if ((this.a == null) || (this.a.get() == null) || (GdtAd.access$000((GdtAd)this.a.get()) == null) || (GdtAd.access$000((GdtAd)this.a.get()).get() == null))
     {
-      acqy.d("GdtAd", "notifyLoaded error");
+      acvc.d("GdtAd", "notifyLoaded error");
       return;
     }
-    acqy.b("GdtAd", "notifyLoaded");
-    ((acko)GdtAd.access$000((GdtAd)this.a.get()).get()).onAdLoaded((GdtAd)this.a.get());
+    acvc.b("GdtAd", "notifyLoaded");
+    ((acos)GdtAd.access$000((GdtAd)this.a.get()).get()).onAdLoaded((GdtAd)this.a.get());
   }
 }
 

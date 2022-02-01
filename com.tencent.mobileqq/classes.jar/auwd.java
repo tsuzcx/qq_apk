@@ -1,95 +1,47 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.HashMap;
 
-public class auwd
-  extends WebViewPlugin
+public abstract class auwd
+  implements MethodChannel.MethodCallHandler
 {
-  public static String a = "qqgame_api";
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public auwd()
-  {
-    this.mPluginNameSpace = a;
-  }
+  protected abstract void a(String paramString, MethodChannel.Result paramResult);
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    super.handleEvent(paramString, paramLong, paramMap);
-    if (paramLong == 8589934621L)
+    String str = paramMethodCall.method;
+    if ("reportException".equals(str))
     {
-      paramString = new JSONObject();
-      if (paramMap != null) {}
-      try
-      {
-        paramString.put("action", paramMap.get("action"));
-        if (paramMap.containsKey("height")) {
-          paramString.put("height", paramMap.get("height"));
-        }
-        if (paramMap.containsKey("index")) {
-          paramString.put("index", paramMap.get("index"));
-        }
-        if (paramMap.containsKey("gameData")) {
-          paramString.put("gameData", paramMap.get("gameData"));
-        }
-      }
-      catch (ClassCastException paramMap)
-      {
-        for (;;)
-        {
-          paramMap.printStackTrace();
-        }
-      }
-      catch (JSONException paramMap)
-      {
-        for (;;)
-        {
-          paramMap.printStackTrace();
-        }
-      }
-      dispatchJsEvent("gameFeedsEvent", paramString, null);
-      return true;
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("category"), (String)paramMethodCall.argument("errorType"), (String)paramMethodCall.argument("errorMsg"), (String)paramMethodCall.argument("stack"), (HashMap)paramMethodCall.argument("extraInfo"), paramResult);
+      return;
     }
-    if (paramLong == 8589934625L) {
-      dispatchJsEvent("gameFeedsPause", new JSONObject(), null);
-    }
-    return super.handleEvent(paramString, paramLong, paramMap);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (a.equals(paramString2))
+    if ("recordPageView".equals(str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGameWebViewJsPlugin", 1, "pkgName:" + paramString2 + " method:" + paramString3);
-      }
-      if ("notifyWebLoaded".equals(paramString3))
-      {
-        paramJsBridgeListener = new Intent("action_qgame_jaspi_webloaded");
-        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
-        return true;
-      }
-      if ("playVideo".equals(paramString3))
-      {
-        paramJsBridgeListener = new Intent("action_qgame_h5_video_play");
-        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
-        return true;
-      }
-      if ("videoPause".equals(paramString3))
-      {
-        paramJsBridgeListener = new Intent("action_qgame_h5_video_pause");
-        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
-        return true;
-      }
+      a((String)paramMethodCall.argument("pagePath"), paramResult);
+      return;
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    if ("reportScrollPerfomance".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("FPS"), (Double)paramMethodCall.argument("dropRate"), paramResult);
+      return;
+    }
+    if ("reportPageLoadTime".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("loadTime"), paramResult);
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 

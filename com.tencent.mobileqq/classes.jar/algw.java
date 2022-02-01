@@ -1,18 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
-@TargetApi(11)
 public class algw
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public algw(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
+    }
+  }
 }
 
 

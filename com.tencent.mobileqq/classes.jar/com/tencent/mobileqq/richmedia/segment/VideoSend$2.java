@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.richmedia.segment;
 
-import bavp;
-import bavq;
-import bdwd;
+import bboi;
+import bboj;
+import beuw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class VideoSend$2
   implements Runnable
 {
-  public VideoSend$2(bavq parambavq, bavp parambavp) {}
+  public VideoSend$2(bboj parambboj, bboi parambboi) {}
   
   public void run()
   {

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
 class aihi
-  implements Comparator<MessageRecord>
+  extends Handler
 {
-  aihi(aihe paramaihe) {}
+  aihi(aihh paramaihh) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void handleMessage(Message paramMessage)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    super.handleMessage(paramMessage);
+    if (this.a.o.isShown()) {
+      this.a.o.setVisibility(8);
+    }
   }
 }
 

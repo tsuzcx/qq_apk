@@ -1,38 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.qqwallet.QWalletPubAdReport.ReportRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class akmm
-  implements BusinessObserver
+public class akmm
+  implements DialogInterface.OnClickListener
 {
-  akmm(akml paramakml) {}
+  public akmm(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletGdtAdManager", 2, "onReceive:type:" + paramInt + ",isSuccess:" + paramBoolean + ",bundle:" + paramBundle + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.a.a));
+    if (!this.a.a()) {
+      ((VasExtensionHandler)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bhwj.a, -1);
     }
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if ((paramBundle != null) && (paramBoolean))
-      {
-        QWalletPubAdReport.ReportRsp localReportRsp = new QWalletPubAdReport.ReportRsp();
-        localReportRsp.mergeFrom(paramBundle);
-        if (QLog.isColorLevel()) {
-          QLog.i("QWalletGdtAdManager", 2, "doReqAdsStatistics onReceive: retCode:" + localReportRsp.ret.get() + ",msg:" + localReportRsp.msg.get());
-        }
-      }
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("QWalletGdtAdManager", 1, paramBundle, new Object[0]);
-    }
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
+    bdll.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.upgrade;
 
-import bgdl;
-import bgdq;
+import bhdm;
+import bhdr;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class NewUpgradeDialog$YYBDownloadListener$3
   implements Runnable
 {
-  public NewUpgradeDialog$YYBDownloadListener$3(bgdq parambgdq, DownloadInfo paramDownloadInfo) {}
+  public NewUpgradeDialog$YYBDownloadListener$3(bhdr parambhdr, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bgdq.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
+    this.jdField_a_of_type_Bhdr.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
   }
 }
 

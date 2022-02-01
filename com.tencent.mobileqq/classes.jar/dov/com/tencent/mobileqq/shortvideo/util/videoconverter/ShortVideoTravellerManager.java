@@ -1,9 +1,11 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
-import alkn;
+import alwf;
 import android.os.Bundle;
-import bgsg;
+import bhsi;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
@@ -22,17 +24,30 @@ public class ShortVideoTravellerManager
   implements Manager
 {
   public static final String a;
-  Bundle jdField_a_of_type_AndroidOsBundle;
+  Bundle jdField_a_of_type_AndroidOsBundle = null;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Object jdField_a_of_type_JavaLangObject;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
   ArrayList<ShortVideoTravellerManager.TravellerVideoItem> jdField_a_of_type_JavaUtilArrayList;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
   static
   {
-    jdField_a_of_type_JavaLangString = alkn.jdField_a_of_type_JavaLangString + "/tencent/qim/travellervideos/";
+    jdField_a_of_type_JavaLangString = alwf.jdField_a_of_type_JavaLangString + "/tencent/qim/travellervideos/";
+  }
+  
+  public ShortVideoTravellerManager(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    a();
+  }
+  
+  private void a()
+  {
+    ThreadManager.postImmediately(new ShortVideoTravellerManager.2(this), null, false);
   }
   
   private void a(List<ShortVideoTravellerManager.TravellerVideoItem> paramList)
@@ -94,7 +109,7 @@ public class ShortVideoTravellerManager
         paramString = finally;
         throw paramString;
       }
-      bgsg.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+      bhsi.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
         this.jdField_a_of_type_JavaUtilArrayList.clear();
       }

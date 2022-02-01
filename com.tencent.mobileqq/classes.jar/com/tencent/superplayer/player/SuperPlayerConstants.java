@@ -9,7 +9,8 @@ public class SuperPlayerConstants
   public static final int TVIDEO_TYPE_ONLINE_VOD = 1;
   public static final int TVIDEO_VOD_FORMAT_HLS = 302;
   public static final int TVIDEO_VOD_FORMAT_MP4 = 301;
-  public static final int TVIDEO_VOD_FORMAT_UNKNOWN = 303;
+  public static final int TVIDEO_VOD_FORMAT_MP4_ASSET = 303;
+  public static final int TVIDEO_VOD_FORMAT_UNKNOWN = 304;
 }
 
 

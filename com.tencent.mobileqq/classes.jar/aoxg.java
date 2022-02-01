@@ -1,41 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
-class aoxg
-  extends aoyn
+public abstract class aoxg
+  extends bhmr
 {
-  aoxg(aoxb paramaoxb) {}
-  
-  public void a()
+  public aoxg(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
-    }
-    Message localMessage = aoxb.a(this.a).obtainMessage();
-    localMessage.what = 100;
-    localMessage.sendToTarget();
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
+    HashMap localHashMap = new HashMap(1);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    Message localMessage = aoxb.a(this.a).obtainMessage();
-    localMessage.what = 102;
-    localMessage.arg1 = paramInt;
-    localMessage.sendToTarget();
+    if (this.a == null) {
+      this.a = "";
+    }
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append(str).append("source:").append(this.a).append("server_name:").append(this.b).append("action_name:").append(this.c);
+    localHashMap.put("keyJumpParserUtilDoActionErrorInfo", paramString.toString());
+    bdmc.a(BaseApplicationImpl.getApplication()).a("", "keyJumpParserUtil", true, 0L, 0L, localHashMap, "", false);
   }
   
-  public void b()
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
-    }
-    Message localMessage = aoxb.a(this.a).obtainMessage();
-    localMessage.what = 101;
-    localMessage.sendToTarget();
+    return false;
   }
 }
 

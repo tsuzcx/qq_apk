@@ -1,29 +1,37 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.graphics.Bitmap;
+import android.util.Log;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
 
-public class bcda
-  extends MSFServlet
+class bcda
+  extends nye
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  bcda(bccz parambccz, WebViewPluginEngine paramWebViewPluginEngine)
   {
-    if (paramIntent == null) {
-      return;
+    super(paramWebViewPluginEngine);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    this.a.onPageFinished(paramWebView, paramString);
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    this.a.onPageStarted(paramWebView, paramString, paramBitmap);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    Log.d("KDSearchResultBuilder", "shouldOverrideUrlLoading: setWebViewClient");
+    if (this.a.shouldOverrideUrlLoading(paramWebView, paramString)) {
+      return true;
     }
-    long l = paramIntent.getLongExtra("timestamp", 0L);
-    byte[] arrayOfByte = new blsr(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
-    paramPacket.putSendData(paramIntent);
-    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

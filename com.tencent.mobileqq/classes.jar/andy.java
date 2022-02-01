@@ -1,12 +1,19 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import java.util.Comparator;
 
-public final class andy
-  implements FilenameFilter
+class andy
+  implements Comparator<andz>
 {
-  public boolean accept(File paramFile, String paramString)
+  andy(andx paramandx) {}
+  
+  public int a(andz paramandz1, andz paramandz2)
   {
-    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
+    if (paramandz1.a == paramandz2.a) {
+      return 0;
+    }
+    if (paramandz1.a > paramandz2.a) {
+      return -1;
+    }
+    return 1;
   }
 }
 

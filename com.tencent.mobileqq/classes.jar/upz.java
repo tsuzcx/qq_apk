@@ -1,12 +1,22 @@
-public abstract interface upz
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+
+final class upz
+  extends ClickableSpan
 {
-  public abstract void a(String paramString, int paramInt);
+  upz(String paramString) {}
   
-  public abstract void b(String paramString, int paramInt);
+  public void onClick(@NonNull View paramView)
+  {
+    uqh.a(upw.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
+  }
   
-  public abstract void c(String paramString, int paramInt);
-  
-  public abstract void d(String paramString, int paramInt);
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

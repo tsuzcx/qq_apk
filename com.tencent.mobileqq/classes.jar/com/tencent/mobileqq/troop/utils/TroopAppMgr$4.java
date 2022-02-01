@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfql;
+import bgqm;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 
 public class TroopAppMgr$4
   implements Runnable
 {
-  public TroopAppMgr$4(bfql parambfql, EntityManager paramEntityManager, TroopAIOAppInfo paramTroopAIOAppInfo) {}
+  public TroopAppMgr$4(bgqm parambgqm, EntityManager paramEntityManager, TroopAIOAppInfo paramTroopAIOAppInfo) {}
   
   public void run()
   {

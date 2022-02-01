@@ -1,16 +1,11 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.content.DialogInterface;
 
-class onx
-  implements ViewFactory.FoundClickableViewListener
+final class onx
+  extends bhme
 {
-  onx(onw paramonw, BaseData paramBaseData, Context paramContext) {}
-  
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramViewBase.setOnClickListener(new ony(this));
+    paramDialogInterface.dismiss();
   }
 }
 

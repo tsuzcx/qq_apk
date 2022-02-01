@@ -1,8 +1,15 @@
-public abstract interface bpqu
+public class bpqu
 {
-  public abstract void a(bpqt parambpqt);
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void a(bpqt parambpqt, int paramInt);
+  public bpqu(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

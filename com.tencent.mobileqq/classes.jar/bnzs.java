@@ -1,12 +1,6 @@
-import java.io.File;
-
-public class bnzs
+public abstract interface bnzs
 {
-  public static final String a = bndv.a + File.separator + "ae_editor" + File.separator + "lottie/aiscene";
-  public static final String b = a + File.separator + "res";
-  public static final String c = b + File.separator + "AutoAISceneAni";
-  public static final String d = c + File.separator + "AILottie";
-  public static final String e = c + File.separator + "AILottie" + File.separator + "ProcessAnimation.zip";
+  public abstract void a(int paramInt);
 }
 
 

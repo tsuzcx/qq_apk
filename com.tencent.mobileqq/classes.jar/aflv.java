@@ -1,42 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class aflv
-  extends niv
+  implements ampo
 {
-  public aflv(TroopMemberListActivity.20 param20) {}
+  public aflv(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
-            TroopMemberListActivity.c(this.a.this$0);
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(List<MayKnowRecommend> paramList) {}
+  
+  public void b()
+  {
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bkfq;
+import blgu;
 import com.tencent.mobileqq.data.Card;
 
 class FrameHelperActivity$7$3
@@ -12,7 +12,7 @@ class FrameHelperActivity$7$3
   {
     if (FrameHelperActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.this$0) >= 0)
     {
-      bkfq.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+      blgu.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
       FrameHelperActivity.c(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.this$0);
     }
   }

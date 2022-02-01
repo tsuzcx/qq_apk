@@ -1,63 +1,49 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashSet;
 
-public class aqgj
-  implements InvocationHandler
+class aqgj
+  extends BroadcastReceiver
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private List<aqgk> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  aqgj(aqgi paramaqgi) {}
   
-  public aqgj(Activity paramActivity, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    if ((!this.b) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int)) {}
+    ArrayList localArrayList;
+    do
     {
-      this.b = true;
-      aqge.a(this.jdField_a_of_type_AndroidAppActivity, this);
+      return;
+      paramContext = paramIntent.getStringArrayListExtra("uinList");
+      localArrayList = paramIntent.getStringArrayListExtra("headPathList");
+    } while ((paramContext == null) || (localArrayList == null));
+    int j = paramContext.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("NonMainAppHeadLoader", 2, "onReceive, uinListSize:" + j + " reqSize:" + this.a.jdField_a_of_type_JavaUtilHashSet.size());
     }
-  }
-  
-  public void a(aqgk paramaqgk)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramaqgk);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-  {
-    if ((paramMethod.getName().equalsIgnoreCase("onTranslucentConversionComplete")) && (paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
+    paramIntent = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
+    int i = 0;
+    while (i < j)
     {
-      this.jdField_a_of_type_Boolean = true;
-      paramMethod = paramArrayOfObject[0];
-      if (QLog.isColorLevel()) {
-        QLog.d("TranslucentConvertor", 2, "onTranslucentConversionComplete: " + paramMethod);
+      String str = (String)paramContext.get(i);
+      if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
+      {
+        this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
+        paramIntent.add(str);
       }
-      paramObject = Boolean.valueOf(false);
-      if ((paramMethod instanceof Boolean)) {
-        paramObject = (Boolean)paramMethod;
-      }
-      paramMethod = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramMethod.hasNext()) {
-        ((aqgk)paramMethod.next()).d_(paramObject.booleanValue());
-      }
+      this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, localArrayList.get(i));
+      i += 1;
     }
-    return null;
+    paramContext = Message.obtain();
+    paramContext.obj = paramIntent;
+    paramContext.what = 1001;
+    this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
   }
 }
 

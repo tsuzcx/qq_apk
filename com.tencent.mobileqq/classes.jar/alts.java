@@ -1,31 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import java.io.File;
 
-class alts
+public class alts
   implements View.OnClickListener
 {
-  alts(altr paramaltr) {}
+  public alts(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
   public void onClick(View paramView)
   {
-    altt localaltt = (altt)paramView.getTag();
-    if (this.a.a.a.contains(localaltt.jdField_a_of_type_ComTencentMobileqqDataGroups))
-    {
-      this.a.a.a.remove(localaltt.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      localaltt.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      this.a.a.a(localaltt.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
+    if (((!QLog.isColorLevel()) || (!bhmi.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (aluf.a == 1)) {
+      alug.b("", "0X8005F5B", "0");
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.a.a.add(localaltt.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      localaltt.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      this.a.a.a(localaltt.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
+      alug.b("", "0X8005F5B", "1");
     }
   }
 }

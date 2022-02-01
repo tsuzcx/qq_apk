@@ -3,10 +3,10 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import anni;
-import bcst;
-import bdia;
-import bdit;
+import anzj;
+import bdll;
+import beav;
+import bebo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class TeamWorkFileImportHandler$10
   implements Runnable
 {
-  public TeamWorkFileImportHandler$10(bdia parambdia, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$10(beav parambeav, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class TeamWorkFileImportHandler$10
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = bdit.c(this.a, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = bebo.c(this.a, this.this$0.app.getCurrentAccountUin());
     long l2 = System.currentTimeMillis();
     Object localObject2 = "";
     if (localObject1 != null) {}
@@ -58,7 +58,7 @@ public class TeamWorkFileImportHandler$10
           }
         }
       }
-      localObject1 = anni.a(2131713501);
+      localObject1 = anzj.a(2131713610);
       if (this.a.e == 3)
       {
         localObject1 = "word";
@@ -67,13 +67,13 @@ public class TeamWorkFileImportHandler$10
           continue;
         }
         i = 1;
-        bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
-        if ((bool) || (bdia.a(this.this$0) == null)) {
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
+        if ((bool) || (beav.a(this.this$0) == null)) {
           break;
         }
-        localObject1 = bdia.a(this.this$0).obtainMessage(8002);
+        localObject1 = beav.a(this.this$0).obtainMessage(8002);
         ((Message)localObject1).obj = this.a;
-        bdia.a(this.this$0).sendMessage((Message)localObject1);
+        beav.a(this.this$0).sendMessage((Message)localObject1);
         return;
       }
     }

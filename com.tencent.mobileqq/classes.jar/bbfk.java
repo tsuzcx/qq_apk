@@ -1,17 +1,40 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
 class bbfk
-  implements Comparator<bblw>
+  implements beuq
 {
-  bbfk(bbfi parambbfi) {}
-  
-  public int a(bblw parambblw1, bblw parambblw2)
+  public void onResp(bevm parambevm)
   {
-    parambblw1 = parambblw1.c;
-    parambblw2 = parambblw2.c;
-    return ChnToSpell.a(parambblw1, 2).compareTo(ChnToSpell.a(parambblw2, 2));
+    Object localObject = (bbfn)parambevm.jdField_a_of_type_Bevl.a();
+    lbj.c("CaptureVideoFilterManager", "download file call back. file = " + ((bbfn)localObject).a);
+    if (parambevm.jdField_a_of_type_Int != 0)
+    {
+      lbj.c("CaptureVideoFilterManager", "download file faild. errcode = " + parambevm.b);
+      return;
+    }
+    if (!((bbfn)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambevm.jdField_a_of_type_Bevl.c)))
+    {
+      lbj.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
+      bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+      return;
+    }
+    lbj.c("CaptureVideoFilterManager", "download file successed.");
+    try
+    {
+      localObject = bbfg.a();
+      bhmi.a(parambevm.jdField_a_of_type_Bevl.c, (String)localObject, false);
+      bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+      return;
+    }
+    catch (IOException parambevm)
+    {
+      parambevm.printStackTrace();
+      lbj.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
+    }
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

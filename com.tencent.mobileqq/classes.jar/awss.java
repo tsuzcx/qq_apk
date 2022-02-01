@@ -1,12 +1,26 @@
-import android.view.animation.Interpolator;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public final class awss
-  implements Interpolator
+class awss
+  implements INetInfoHandler
 {
-  public float getInterpolation(float paramFloat)
+  awss(awsk paramawsk) {}
+  
+  public void onNetMobile2None()
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    awsk.c(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    awsk.c(this.a);
   }
 }
 

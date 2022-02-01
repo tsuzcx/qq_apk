@@ -3,8 +3,8 @@ package com.tencent.mobileqq.msgbackup.fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.LinearLayout;
-import awng;
-import awqs;
+import axfy;
+import axjk;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.FormSimpleItem;
@@ -17,7 +17,7 @@ public class MsgBackupWelcomeFragment
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131690413));
+    setTitle(getActivity().getString(2131690408));
   }
   
   protected void c()
@@ -33,9 +33,9 @@ public class MsgBackupWelcomeFragment
     this.b.setOnClickListener(this);
     if (AppSetting.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131690409));
-      this.b.setContentDescription(getString(2131690410));
-      this.vg.setLeftViewName(2131690444);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131690404));
+      this.b.setContentDescription(getString(2131690405));
+      this.vg.setLeftViewName(2131690439);
     }
   }
   
@@ -48,11 +48,11 @@ public class MsgBackupWelcomeFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      awqs.a("0X800A22E");
+      axjk.a("0X800A22E");
       PublicFragmentActivity.a(getActivity(), MsgBackupMigrateFragment.class, 1000);
       continue;
-      awqs.a("0X800A268");
-      awng.a().a(1);
+      axjk.a("0X800A268");
+      axfy.a().a(1);
       PublicFragmentActivity.a(getActivity(), MsgBackupPCAuthFragment.class, 1000);
     }
   }

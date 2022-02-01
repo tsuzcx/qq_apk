@@ -1,112 +1,132 @@
-import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.biuAndCommentMix.RIJBiuAndCommentRequestData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.CommentInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ContentInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ParamInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ReqBody;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.RspBody;
 
 public class onq
-  extends syj
+  extends pqj
 {
-  protected ProteusItemData a;
-  public Container a;
-  protected WeakReference<Context> a;
+  private onr a;
   
-  public onq(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
+  public onq(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qfo paramqfo, Handler paramHandler)
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqfo, paramHandler);
   }
   
-  protected void a() {}
-  
-  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject) {}
-  
-  protected void a(BaseData paramBaseData1, BaseData paramBaseData2) {}
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  private oidb_cmd0xe16.ReqBody a(RIJBiuAndCommentRequestData paramRIJBiuAndCommentRequestData, ArticleInfo paramArticleInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
-    TemplateBean localTemplateBean;
+    oidb_cmd0xe16.ContentInfo localContentInfo = new oidb_cmd0xe16.ContentInfo();
+    localContentInfo.str_rowkey.set(paramRIJBiuAndCommentRequestData.getRowKey());
+    localContentInfo.uint32_src.set(paramRIJBiuAndCommentRequestData.getContentSrc());
+    oidb_cmd0xe16.CommentInfo localCommentInfo = new oidb_cmd0xe16.CommentInfo();
+    if (!TextUtils.isEmpty(paramRIJBiuAndCommentRequestData.getContentString()))
+    {
+      localCommentInfo.str_comment.set(new String(bhkv.decode(paramRIJBiuAndCommentRequestData.getContentString().getBytes(), 0)));
+      if (paramRIJBiuAndCommentRequestData.getCommentType() == 2)
+      {
+        if (!TextUtils.isEmpty(paramRIJBiuAndCommentRequestData.getReplyUin())) {
+          localCommentInfo.uint64_sub_author.set(Long.parseLong(paramRIJBiuAndCommentRequestData.getReplyUin()));
+        }
+        localCommentInfo.str_sub_comment_id.set(paramRIJBiuAndCommentRequestData.getReplyCommentId());
+        if (TextUtils.isEmpty(paramRIJBiuAndCommentRequestData.getReplyParentCommentId())) {
+          break label235;
+        }
+        localCommentInfo.str_comment_id.set(paramRIJBiuAndCommentRequestData.getReplyParentCommentId());
+      }
+    }
+    for (;;)
+    {
+      paramArticleInfo = new oidb_cmd0xe16.ParamInfo();
+      paramArticleInfo.bool_diffuse_to_friends.set(paramRIJBiuAndCommentRequestData.isDiffuseToFriends());
+      paramArticleInfo.bool_with_biu.set(paramRIJBiuAndCommentRequestData.isBiu());
+      paramRIJBiuAndCommentRequestData = new oidb_cmd0xe16.ReqBody();
+      paramRIJBiuAndCommentRequestData.msg_comment_info.set(localCommentInfo);
+      paramRIJBiuAndCommentRequestData.msg_content_info.set(localContentInfo);
+      paramRIJBiuAndCommentRequestData.msg_param_info.set(paramArticleInfo);
+      QLog.d("RIJBiuAndCommentMixPBModule", 1, "get0xe16ReqBody :" + paramRIJBiuAndCommentRequestData.toString());
+      return paramRIJBiuAndCommentRequestData;
+      label235:
+      paramArticleInfo = otv.a(paramArticleInfo);
+      if (paramArticleInfo != null)
+      {
+        paramArticleInfo = paramArticleInfo.a(paramRIJBiuAndCommentRequestData.getReplyCommentId());
+        paramRIJBiuAndCommentRequestData.setReplyParentCommentId(paramArticleInfo);
+        localCommentInfo.str_comment_id.set(paramArticleInfo);
+      }
+    }
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (this.a != null) {
+      this.a.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    ubg.a(qfq.a(paramFromServiceMsg, paramObject, new oidb_cmd0xe16.RspBody()), paramToServiceMsg, 2, null);
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, RIJBiuAndCommentRequestData paramRIJBiuAndCommentRequestData)
+  {
+    if ((paramArticleInfo == null) || (paramRIJBiuAndCommentRequestData == null)) {
+      QLog.d("RIJBiuAndCommentMixPBModule", 1, "requestCreateBiuAndCommentMixComment someThing is NULL");
+    }
+    ToServiceMsg localToServiceMsg;
     do
     {
-      do
-      {
-        return;
-      } while (!(paramBaseData2 instanceof ProteusItemData));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
-      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-    } while (localTemplateBean == null);
-    if (a(paramBaseData1, paramBaseData2)) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
-    }
-    if (paramBaseData1 != paramBaseData2) {}
-    try
-    {
-      localTemplateBean.bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
-      pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-      a(paramBaseData2, paramBaseData1);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        a(paramBaseData2, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
-      }
-      this.jdField_a_of_type_AndroidViewView.setTag(2131362093, paramBaseData2);
-      a();
       return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      QLog.d("RIJBiuAndCommentMixPBModule", 1, "start request 0xe16 " + paramRIJBiuAndCommentRequestData.toString());
+      localToServiceMsg = qfq.a("OidbSvc.0xe16", 3606, 1, a(paramRIJBiuAndCommentRequestData, paramArticleInfo).toByteArray());
+      if ((localToServiceMsg != null) && (localToServiceMsg.getAttributes() != null))
       {
-        localException.printStackTrace();
+        localToServiceMsg.getAttributes().put("request_data_entry", paramRIJBiuAndCommentRequestData);
+        localToServiceMsg.getAttributes().put("article_attributes", paramArticleInfo);
+        localToServiceMsg.getAttributes().put("service_type", Integer.valueOf(1));
+      }
+    } while (localToServiceMsg == null);
+    a(localToServiceMsg);
+    QLog.d("RIJBiuAndCommentMixPBModule", 1, "0xe16 request :" + localToServiceMsg.toString());
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xe16"))
+    {
+      Object localObject = paramToServiceMsg.getAttributes().get("service_type");
+      if (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 1))
+      {
+        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
     }
   }
   
-  protected void a(Container paramContainer, ProteusItemData paramProteusItemData)
+  public void a(onr paramonr)
   {
-    ViewBase localViewBase2;
-    if (paramContainer != null)
-    {
-      localViewBase2 = paramContainer.getVirtualView();
-      if ((!(paramProteusItemData instanceof ProteusInnerData)) && (!(paramProteusItemData instanceof RecommendAdData))) {
-        break label147;
-      }
-    }
-    label147:
-    for (ViewBase localViewBase1 = localViewBase2.findViewBaseByName("id_view_AdDownloadView");; localViewBase1 = localViewBase2.findViewBaseByName(olk.a(Aladdin.getConfig(341).getIntegerFromString("bottom_ad_style", 0))))
-    {
-      if ((localViewBase1 instanceof osm)) {
-        ((osm)localViewBase1).a(null, true);
-      }
-      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (opz.a((AdData)paramProteusItemData)))
-      {
-        localViewBase1 = localViewBase2.findViewBaseByName("id_game_small_img");
-        if ((localViewBase1 != null) && ((localViewBase1 instanceof qkl)) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).J)))
-        {
-          int i = afur.a(40.0F, paramContainer.getContext().getResources());
-          opz.a(paramContainer.getContext(), localViewBase1, ((AdData)paramProteusItemData).J, 10, i, i);
-        }
-      }
-      return;
-    }
-  }
-  
-  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
-  {
-    return false;
+    this.a = paramonr;
   }
 }
 

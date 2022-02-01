@@ -1,32 +1,32 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aeeb
-  implements View.OnClickListener
+  implements aumz
 {
-  public aeeb(EmosmActivity paramEmosmActivity) {}
+  public aeeb(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, atqx paramatqx) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    for (;;)
+    auna.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692445));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (arpm.a(this.a))
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
-        bcst.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bhmi.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Atqx.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Atqx.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
       }
     }
   }
+  
+  public void b() {}
 }
 
 

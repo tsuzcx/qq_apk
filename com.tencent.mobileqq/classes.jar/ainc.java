@@ -1,66 +1,24 @@
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public abstract class ainc
+class ainc
+  implements aaxw
 {
-  protected QQAppInterface a;
+  ainc(aimx paramaimx) {}
   
-  protected String a(SessionInfo paramSessionInfo, String paramString)
+  public void a()
   {
-    if ((paramSessionInfo != null) && (paramSessionInfo.a != 0) && (1 != paramSessionInfo.a) && (3000 != paramSessionInfo.a)) {
-      return paramString;
-    }
-    return "";
-  }
-  
-  protected boolean a(List<MessageRecord> paramList)
-  {
-    boolean bool2;
-    if (paramList != null)
+    axzy localaxzy = this.a.jdField_a_of_type_Axzy;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
+    for (int i = 8;; i = 6)
     {
-      paramList = paramList.iterator();
-      boolean bool1 = true;
-      bool2 = bool1;
-      if (!paramList.hasNext()) {
-        break label46;
-      }
-      if (((MessageRecord)paramList.next()).isSend()) {
-        break label48;
-      }
-      bool1 = false;
-    }
-    label46:
-    label48:
-    for (;;)
-    {
-      break;
-      bool2 = true;
-      return bool2;
+      localaxzy.a(false, true, i);
+      return;
     }
   }
   
-  protected byte[] a(List<MessageRecord> paramList, int paramInt, String paramString1, String paramString2)
+  public void b()
   {
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((MessageRecord)localIterator.next()).uniseq));
-    }
-    int j = 8;
-    int i = j;
-    if (paramList.size() == 1)
-    {
-      i = j;
-      if (paramInt == 1) {
-        i = aini.a((MessageRecord)paramList.get(0));
-      }
-    }
-    return new UpComingMsgModel(((MessageRecord)paramList.get(0)).frienduin, paramString2, localArrayList, ((MessageRecord)paramList.get(0)).istroop, paramInt, i, paramString1).toJson().getBytes();
+    this.a.jdField_a_of_type_Axzy.a();
   }
 }
 

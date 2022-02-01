@@ -1,20 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
-class uqq
-  implements View.OnClickListener
+final class uqq
+  implements DialogInterface.OnShowListener
 {
-  uqq(uqp paramuqp) {}
+  uqq(upd paramupd) {}
   
-  public void onClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (uqp.a(this.a).getActivity() != null) {
-      uqp.a(this.a).getActivity().doOnBackPressed();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    uqi.a(this.a);
   }
 }
 

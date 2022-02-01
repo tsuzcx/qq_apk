@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
-import blbb;
-import blbu;
-import blby;
+import bmce;
+import bmcx;
+import bmdb;
 import com.tencent.qphone.base.util.QLog;
 
 class QQComicTabBarView$6
@@ -12,11 +12,11 @@ class QQComicTabBarView$6
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Blby != null) {
-      this.this$0.jdField_a_of_type_Blby.deleteObserver(this.this$0.jdField_a_of_type_Blca);
+    if (this.this$0.jdField_a_of_type_Bmdb != null) {
+      this.this$0.jdField_a_of_type_Bmdb.deleteObserver(this.this$0.jdField_a_of_type_Bmdd);
     }
-    if (blbu.a != null) {
-      blbu.a.b(this.this$0.jdField_a_of_type_Blba);
+    if (bmcx.a != null) {
+      bmcx.a.b(this.this$0.jdField_a_of_type_Bmcd);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "unregister observers");

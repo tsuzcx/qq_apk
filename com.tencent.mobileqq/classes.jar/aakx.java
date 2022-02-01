@@ -1,55 +1,41 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class aakx
-  implements ShareActionSheet.OnItemClickListener
+public class aakx
+  implements aqrn
 {
-  aakx(aakt paramaakt) {}
+  public aakx(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public ColorNote getColorNote()
   {
-    int i = paramActionSheetItem.action;
-    if ((aakt.a(this.a) == null) || (aakt.a(this.a) == null)) {}
+    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
+      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
+    }
+    byte[] arrayOfByte;
+    Object localObject;
+    String str1;
+    String str2;
+    String str3;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (i)
-              {
-              default: 
-                return;
-              case 2: 
-                aakt.a(this.a);
-              }
-            } while ((aakt.a(this.a) == null) || (aakt.a(this.a).a() == null));
-            aaxb.a(aakt.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, aakt.a(this.a).f(), aakt.a(this.a).c() });
-            return;
-            aakt.b(this.a);
-          } while ((aakt.a(this.a) == null) || (aakt.a(this.a).a() == null));
-          aaxb.a(aakt.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, aakt.a(this.a).f(), aakt.a(this.a).c() });
-          return;
-          aakt.a(this.a, 0);
-        } while ((aakt.a(this.a) == null) || (aakt.a(this.a).a() == null));
-        aaxb.a(aakt.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, aakt.a(this.a).f(), aakt.a(this.a).c() });
-        return;
-        aakt.a(this.a, 1);
-      } while ((aakt.a(this.a) == null) || (aakt.a(this.a).a() == null));
-      aaxb.a(aakt.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, aakt.a(this.a).f(), aakt.a(this.a).c() });
-      return;
-      aakt.c(this.a);
-    } while ((aakt.a(this.a) == null) || (aakt.a(this.a).a() == null));
-    aaxb.a(aakt.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, aakt.a(this.a).f(), aakt.a(this.a).c() });
+      return null;
+      arrayOfByte = aanc.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
+      localObject = new aagc();
+      ((aagc)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
+      ((aagc)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
+      str1 = SubscribeHybirdFragment.a(this.a).id.get();
+      str2 = ((aagc)localObject).c();
+      ((aagc)localObject).d();
+      str3 = ((aagc)localObject).e();
+      localObject = ((aagc)localObject).f();
+    } while (TextUtils.isEmpty(str1));
+    return new aqrv().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
   }
 }
 

@@ -2,6 +2,8 @@ package com.tencent.qqmini.miniapp.widget;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
@@ -13,6 +15,7 @@ import com.tencent.qqmini.sdk.core.BaseRuntimeImpl.BaselibProvider;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.FileUtils;
+import com.tencent.qqmini.sdk.core.utils.ImageUtil;
 import com.tencent.qqmini.sdk.core.utils.ShortVideoUtil;
 import com.tencent.qqmini.sdk.core.utils.StringUtil;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
@@ -139,15 +142,6 @@ public class InnerWebView
     }
   }
   
-  private void WebViewEvaluteJs(String paramString, int paramInt)
-  {
-    paramString = String.format("__WeixinJSBridge__.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (QMLog.isColorLevel()) {
-      QMLog.d("InnerWebView", "[evaluateCallbackJs] callbackStr=" + paramString);
-    }
-    AppBrandTask.runTaskOnUiThread(new InnerWebView.8(this, paramString));
-  }
-  
   private boolean checkEnableIPV6Only()
   {
     return WnsConfig.getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1;
@@ -198,13 +192,30 @@ public class InnerWebView
     return paramWebView;
   }
   
+  private String getImageFileType(String paramString)
+  {
+    try
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramString, localOptions);
+      paramString = ImageUtil.getType(localOptions);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QMLog.e("InnerWebView", "decodeFile error", paramString);
+    }
+    return "";
+  }
+  
   private void handleCallbackFail(String paramString1, JSONObject paramJSONObject, String paramString2, int paramInt)
   {
     paramString1 = ApiUtil.wrapCallbackFail(paramString1, null, paramString2);
     if (paramString1 != null) {}
     for (paramString1 = paramString1.toString();; paramString1 = "")
     {
-      WebViewEvaluteJs(paramString1, paramInt);
+      webViewEvaluteJs(paramString1, paramInt);
       return;
     }
   }
@@ -215,7 +226,7 @@ public class InnerWebView
     if (paramString != null) {}
     for (paramString = paramString.toString();; paramString = "")
     {
-      WebViewEvaluteJs(paramString, paramInt);
+      webViewEvaluteJs(paramString, paramInt);
       return;
     }
   }
@@ -451,7 +462,7 @@ public class InnerWebView
     //   0: iconst_0
     //   1: istore_2
     //   2: aload_1
-    //   3: invokestatic 551	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 546	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: ifeq +5 -> 11
     //   9: iload_2
     //   10: ireturn
@@ -461,37 +472,37 @@ public class InnerWebView
     //   15: astore 4
     //   17: aload 5
     //   19: astore_3
-    //   20: new 730	java/io/File
+    //   20: new 732	java/io/File
     //   23: dup
     //   24: aload_1
-    //   25: invokespecial 731	java/io/File:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 733	java/io/File:<init>	(Ljava/lang/String;)V
     //   28: astore_1
     //   29: aload 5
     //   31: astore_3
     //   32: aload_1
-    //   33: invokevirtual 734	java/io/File:exists	()Z
+    //   33: invokevirtual 736	java/io/File:exists	()Z
     //   36: ifne +11 -> 47
     //   39: aload 5
     //   41: astore_3
     //   42: aload_1
-    //   43: invokevirtual 737	java/io/File:createNewFile	()Z
+    //   43: invokevirtual 739	java/io/File:createNewFile	()Z
     //   46: pop
     //   47: aload 5
     //   49: astore_3
-    //   50: new 739	java/io/FileOutputStream
+    //   50: new 741	java/io/FileOutputStream
     //   53: dup
     //   54: aload_1
-    //   55: invokespecial 742	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   55: invokespecial 744	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   58: astore_1
     //   59: aload_1
     //   60: aload_0
-    //   61: invokevirtual 746	java/io/FileOutputStream:write	([B)V
+    //   61: invokevirtual 748	java/io/FileOutputStream:write	([B)V
     //   64: iconst_1
     //   65: istore_2
     //   66: aload_1
     //   67: ifnull -58 -> 9
     //   70: aload_1
-    //   71: invokevirtual 749	java/io/FileOutputStream:close	()V
+    //   71: invokevirtual 751	java/io/FileOutputStream:close	()V
     //   74: iconst_1
     //   75: ireturn
     //   76: astore_0
@@ -499,12 +510,12 @@ public class InnerWebView
     //   79: new 140	java/lang/StringBuilder
     //   82: dup
     //   83: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   86: ldc_w 751
+    //   86: ldc_w 753
     //   89: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   92: aload_0
-    //   93: invokevirtual 754	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   93: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   96: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 283	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   99: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   102: iconst_1
     //   103: ireturn
     //   104: astore_1
@@ -516,16 +527,16 @@ public class InnerWebView
     //   112: new 140	java/lang/StringBuilder
     //   115: dup
     //   116: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   119: ldc_w 756
+    //   119: ldc_w 758
     //   122: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: aload_1
-    //   126: invokevirtual 754	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   129: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 283	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   132: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   135: aload_0
     //   136: ifnull -127 -> 9
     //   139: aload_0
-    //   140: invokevirtual 749	java/io/FileOutputStream:close	()V
+    //   140: invokevirtual 751	java/io/FileOutputStream:close	()V
     //   143: iconst_0
     //   144: ireturn
     //   145: astore_0
@@ -533,19 +544,19 @@ public class InnerWebView
     //   148: new 140	java/lang/StringBuilder
     //   151: dup
     //   152: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   155: ldc_w 751
+    //   155: ldc_w 753
     //   158: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   161: aload_0
-    //   162: invokevirtual 754	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   165: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   168: invokestatic 283	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   168: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   171: iconst_0
     //   172: ireturn
     //   173: astore_0
     //   174: aload_3
     //   175: ifnull +7 -> 182
     //   178: aload_3
-    //   179: invokevirtual 749	java/io/FileOutputStream:close	()V
+    //   179: invokevirtual 751	java/io/FileOutputStream:close	()V
     //   182: aload_0
     //   183: athrow
     //   184: astore_1
@@ -553,12 +564,12 @@ public class InnerWebView
     //   187: new 140	java/lang/StringBuilder
     //   190: dup
     //   191: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   194: ldc_w 751
+    //   194: ldc_w 753
     //   197: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   200: aload_1
-    //   201: invokevirtual 754	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   204: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: invokestatic 283	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   207: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   210: goto -28 -> 182
     //   213: astore_0
     //   214: aload_1
@@ -601,10 +612,17 @@ public class InnerWebView
   {
     if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
     {
+      String str = MiniAppFileManager.getLocalPathSuffix(paramString);
       Object localObject = new File(paramString);
-      localObject = ShortVideoUtil.getCameraPath() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-      if (FileUtils.saveVideoToAlbum(this.mActivity, paramString, (String)localObject))
+      localObject = new StringBuilder().append(ShortVideoUtil.getCameraPath()).append(System.currentTimeMillis() / 1000L).append("_").append(((File)localObject).getName());
+      if (TextUtils.isEmpty(str)) {}
+      for (str = "." + getImageFileType(paramString);; str = "")
       {
+        str = str;
+        QMLog.d("InnerWebView", "saveImageToAlbum savePath : " + str);
+        if (!FileUtils.saveVideoToAlbum(this.mActivity, paramString, str)) {
+          break;
+        }
         if (QMLog.isColorLevel()) {
           QMLog.d("InnerWebView", "savaPicToAlbum success.");
         }
@@ -698,20 +716,31 @@ public class InnerWebView
     return false;
   }
   
-  public void evaluateCallbackJs(int paramInt, String paramString)
+  private void webViewEvaluteJs(String paramString, int paramInt)
   {
-    QMLog.i("InnerWebView", "evaluateCallbackJs 1 callbackId : " + paramInt + "; result : " + paramString);
-    WebViewEvaluteJs(paramString, paramInt);
+    AppBrandTask.runTaskOnUiThread(new InnerWebView.8(this, String.format("__WeixinJSBridge__.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramString })));
   }
   
-  public void evaluateJs(String paramString, ValueCallback paramValueCallback)
+  public int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    QMLog.i("InnerWebView", "evaluateJs :  " + paramString);
+    return 0;
   }
+  
+  public void evaluateCallbackJs(int paramInt, String paramString)
+  {
+    webViewEvaluteJs(paramString, paramInt);
+  }
+  
+  public void evaluateJs(String paramString, ValueCallback paramValueCallback) {}
   
   public void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
     QMLog.i("InnerWebView", "evaluateSubcribeJS : eventName " + paramString1 + "; data : " + paramString2 + "; webviweId : " + paramInt);
+  }
+  
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return new byte[0];
   }
   
   public void init(IMiniAppContext paramIMiniAppContext)

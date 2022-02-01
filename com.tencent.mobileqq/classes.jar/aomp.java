@@ -1,49 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.GetSig;
 
 public class aomp
-  extends aojs
+  extends aocj
 {
-  public aomp(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private aomp(GetSig paramGetSig) {}
   
-  private void d()
+  protected void j(boolean paramBoolean)
   {
-    String str = b("buddyuin");
-    if (!str.isEmpty())
+    GetSig localGetSig = this.a;
+    if (paramBoolean) {}
+    for (int i = 7;; i = 6)
     {
-      long l = Long.parseLong(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopOneWayAction", 2, "grayTip,openTroopWithCommonFriendsFragment:" + l);
-      }
-      TroopWithCommonFriendsFragment.a(str);
-      TroopWithCommonFriendsFragment.a(this.a, 1);
-      bcst.b(null, "dc00898", "", "", "0X800AD20", "0X800AD20", 0, 0, "0", "0", "", "");
+      localGetSig.a(i);
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      d();
-      return true;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TroopOneWayAction", 1, "doAction error: " + localException.getMessage());
-      a("TroopOneWayAction");
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomp
  * JD-Core Version:    0.7.0.1
  */

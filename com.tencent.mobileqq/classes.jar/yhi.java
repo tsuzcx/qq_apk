@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-
-public class yhi
-  implements DialogInterface.OnClickListener
+public abstract interface yhi
 {
-  public yhi(StoryMessageListActivity paramStoryMessageListActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    yqu.a(this.a.a(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
-  }
+  public abstract void a(int paramInt);
 }
 
 

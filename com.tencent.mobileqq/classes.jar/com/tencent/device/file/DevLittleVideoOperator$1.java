@@ -1,15 +1,15 @@
 package com.tencent.device.file;
 
-import abqn;
-import abrs;
-import abrv;
-import abux;
-import ahzf;
-import anni;
-import ayxi;
-import bbyp;
-import bcfn;
-import bgnt;
+import abur;
+import abvw;
+import abvz;
+import abzb;
+import aiit;
+import anzj;
+import azpw;
+import bcrg;
+import bcyf;
+import bhnv;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ import mqq.app.MobileQQ;
 public class DevLittleVideoOperator$1
   implements Runnable
 {
-  public DevLittleVideoOperator$1(abrs paramabrs, bcfn parambcfn) {}
+  public DevLittleVideoOperator$1(abvw paramabvw, bcyf parambcyf) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class DevLittleVideoOperator$1
       {
         return;
       } while (!(localMessageRecord instanceof MessageForDevLittleVideo));
-      boolean bool1 = bgnt.g(this.this$0.a.getApplication().getApplicationContext());
+      boolean bool1 = bhnv.g(this.this$0.a.getApplication().getApplicationContext());
       localObject = (MessageForDevLittleVideo)localMessageRecord;
       int i;
       long l;
@@ -57,33 +57,33 @@ public class DevLittleVideoOperator$1
         if (!this.this$0.a(localMessageRecord.frienduin)) {
           break label322;
         }
-        i = ((abqn)this.this$0.a.a(51)).a(Long.parseLong(((MessageForDevLittleVideo)localObject).frienduin), ((MessageForDevLittleVideo)localObject).videoFileName, ((MessageForDevLittleVideo)localObject).videoFileSize, ((MessageForDevLittleVideo)localObject).videoFileTime, ((MessageForDevLittleVideo)localObject).mThumbFilePath);
+        i = ((abur)this.this$0.a.a(51)).a(Long.parseLong(((MessageForDevLittleVideo)localObject).frienduin), ((MessageForDevLittleVideo)localObject).videoFileName, ((MessageForDevLittleVideo)localObject).videoFileSize, ((MessageForDevLittleVideo)localObject).videoFileTime, ((MessageForDevLittleVideo)localObject).mThumbFilePath);
         if (i == 0) {
           break label300;
         }
-        ayxi.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
-        ahzf.a(i, (MessageRecord)localObject);
+        azpw.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        aiit.a(i, (MessageRecord)localObject);
       }
       for (;;)
       {
-        ayxi.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        azpw.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
         return;
         i = 1005;
         break;
-        ayxi.a(this.this$0.g, this.this$0.f, "doSendShortVideo failed");
+        azpw.a(this.this$0.g, this.this$0.f, "doSendShortVideo failed");
         continue;
-        ((abux)this.this$0.a.a(49)).a().a(abux.e, ((MessageForDevLittleVideo)localObject).videoFileName, Long.parseLong(((MessageForDevLittleVideo)localObject).frienduin), localMessageRecord.uniseq, localMessageRecord.istroop, 0);
-        bool1 = ((abqn)this.this$0.a.a(51)).a(Long.parseLong(localMessageRecord.frienduin)).booleanValue();
+        ((abzb)this.this$0.a.a(49)).a().a(abzb.e, ((MessageForDevLittleVideo)localObject).videoFileName, Long.parseLong(((MessageForDevLittleVideo)localObject).frienduin), localMessageRecord.uniseq, localMessageRecord.istroop, 0);
+        bool1 = ((abur)this.this$0.a.a(51)).a(Long.parseLong(localMessageRecord.frienduin)).booleanValue();
         boolean bool2 = SettingCloneUtil.readValue(this.this$0.a.getApp(), localMessageRecord.frienduin, null, "devicemsg_showvideotips_first", true);
         if ((bool1) && (bool2))
         {
-          ((abux)this.this$0.a.a(49)).a(localMessageRecord.frienduin, anni.a(2131702032), bbyp.a(), true, false, true);
+          ((abzb)this.this$0.a.a(49)).a(localMessageRecord.frienduin, anzj.a(2131702139), bcrg.a(), true, false, true);
           SettingCloneUtil.writeValue(this.this$0.a.getApp(), localMessageRecord.frienduin, null, "devicemsg_showvideotips_first", false);
         }
       }
-      localObject = ((abux)this.this$0.a.a(49)).a();
+      localObject = ((abzb)this.this$0.a.a(49)).a();
     } while (localObject == null);
-    ((abrv)localObject).a(localMessageRecord, Boolean.valueOf(false));
+    ((abvz)localObject).a(localMessageRecord, Boolean.valueOf(false));
   }
 }
 

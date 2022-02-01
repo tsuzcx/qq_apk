@@ -1,59 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avgf
-  extends aqkz<avgg>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  @NonNull
-  public avgg a(int paramInt)
+  public avgf(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new avgg();
-  }
-  
-  @Nullable
-  public avgg a(aqlg[] paramArrayOfaqlg)
-  {
-    avgg localavgg = new avgg();
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
-      avgg.a(localavgg, paramArrayOfaqlg[0].a);
-    }
-    return localavgg;
-  }
-  
-  public void a(avgg paramavgg) {}
-  
-  public Class<avgg> clazz()
-  {
-    return avgg.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public void onReqNoReceive() {}
-  
-  public int type()
-  {
-    return 445;
+    ((axae)this.a.a.getManager(303)).a((short)-23309, paramBoolean, true);
+    bdll.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 5, 5, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

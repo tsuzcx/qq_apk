@@ -1,20 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 
-class bhzp
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bhzp
 {
-  bhzp(bhzm parambhzm) {}
+  public abstract boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (bhzm.a(this.a) != null)
-    {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      bhzm.a(this.a).setAlpha(f);
-    }
-  }
+  public abstract boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo);
 }
 
 

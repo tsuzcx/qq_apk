@@ -1,14 +1,14 @@
-import android.widget.Toast;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.36;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.OverlayView;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
 
-class swy
-  implements qzc
+public class swy
+  implements sxa
 {
-  swy(swx paramswx) {}
+  public swy(UCropView paramUCropView) {}
   
-  public void a(String paramString)
+  public void a(float paramFloat)
   {
-    tti.a(this.a.a.a.this$0, paramString, 0).show();
+    UCropView.a(this.a).setTargetAspectRatio(paramFloat);
   }
 }
 

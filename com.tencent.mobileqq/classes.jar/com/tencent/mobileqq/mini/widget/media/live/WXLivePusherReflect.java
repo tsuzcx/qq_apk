@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.widget.media.live;
 
 import android.content.Context;
 import android.view.Surface;
-import bmio;
+import bnjq;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -15,7 +15,7 @@ public class WXLivePusherReflect
   
   public static boolean isPushing(Object paramObject)
   {
-    paramObject = (Boolean)bmio.a(paramObject, "isPushing", false, null, new Object[0]);
+    paramObject = (Boolean)bnjq.a(paramObject, "isPushing", false, null, new Object[0]);
     if (paramObject != null) {
       return paramObject.booleanValue();
     }
@@ -24,40 +24,40 @@ public class WXLivePusherReflect
   
   public static Object newInstance(Context paramContext)
   {
-    return bmio.a("com.tencent.rtmp.WXLivePusher", bmio.a(new Class[] { Context.class }), new Object[] { paramContext });
+    return bnjq.a("com.tencent.rtmp.WXLivePusher", bnjq.a(new Class[] { Context.class }), new Object[] { paramContext });
   }
   
   public static boolean pauseBGM(Object paramObject)
   {
-    paramObject = bmio.a(paramObject, "pauseBGM", false, null, new Object[0]);
+    paramObject = bnjq.a(paramObject, "pauseBGM", false, null, new Object[0]);
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void pausePusher(Object paramObject)
   {
-    bmio.a(paramObject, "pausePusher", false, null, new Object[0]);
+    bnjq.a(paramObject, "pausePusher", false, null, new Object[0]);
   }
   
   public static boolean playBGM(String paramString, Object paramObject)
   {
-    paramString = bmio.a(paramObject, "playBGM", false, bmio.a(new Class[] { String.class }), new Object[] { paramString });
+    paramString = bnjq.a(paramObject, "playBGM", false, bnjq.a(new Class[] { String.class }), new Object[] { paramString });
     return ((paramString instanceof Boolean)) && (((Boolean)paramString).booleanValue());
   }
   
   public static boolean resumeBGM(Object paramObject)
   {
-    paramObject = bmio.a(paramObject, "resumeBGM", false, null, new Object[0]);
+    paramObject = bnjq.a(paramObject, "resumeBGM", false, null, new Object[0]);
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void resumePusher(Object paramObject)
   {
-    bmio.a(paramObject, "resumePusher", false, null, new Object[0]);
+    bnjq.a(paramObject, "resumePusher", false, null, new Object[0]);
   }
   
   public static boolean sendMessageEx(byte[] paramArrayOfByte, Object paramObject)
   {
-    paramArrayOfByte = (Boolean)bmio.a(paramObject, "sendMessageEx", false, bmio.a(new Class[] { [B.class }), new Object[] { paramArrayOfByte });
+    paramArrayOfByte = (Boolean)bnjq.a(paramObject, "sendMessageEx", false, bnjq.a(new Class[] { [B.class }), new Object[] { paramArrayOfByte });
     if (paramArrayOfByte != null) {
       return paramArrayOfByte.booleanValue();
     }
@@ -68,7 +68,7 @@ public class WXLivePusherReflect
   {
     try
     {
-      bmio.a(paramObject2, "setBGMNofify", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify") }), new Object[] { paramObject1 });
+      bnjq.a(paramObject2, "setBGMNofify", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -79,25 +79,25 @@ public class WXLivePusherReflect
   
   public static void setBGMPosition(int paramInt, Object paramObject)
   {
-    bmio.a(paramObject, "setBGMPosition", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bnjq.a(paramObject, "setBGMPosition", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static boolean setBGMVolume(float paramFloat, Object paramObject)
   {
-    paramObject = bmio.a(paramObject, "setBGMVolume", false, bmio.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    paramObject = bnjq.a(paramObject, "setBGMVolume", false, bnjq.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void setBeautyFilter(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject)
   {
-    bmio.a(paramObject, "setBeautyFilter", false, bmio.a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    bnjq.a(paramObject, "setBeautyFilter", false, bnjq.a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
   }
   
   public static void setConfig(Object paramObject1, Object paramObject2)
   {
     try
     {
-      bmio.a(paramObject2, "setConfig", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePushConfig") }), new Object[] { paramObject1 });
+      bnjq.a(paramObject2, "setConfig", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePushConfig") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -109,23 +109,23 @@ public class WXLivePusherReflect
   public static void setEnableCamera(JSONObject paramJSONObject, Object paramObject1, Object paramObject2)
   {
     if ((paramJSONObject != null) && (paramJSONObject.optBoolean("enable-camera", true))) {
-      bmio.a(paramObject1, "startCameraPreview", false, bmio.a(new Class[] { paramObject2.getClass() }), new Object[] { paramObject2 });
+      bnjq.a(paramObject1, "startCameraPreview", false, bnjq.a(new Class[] { paramObject2.getClass() }), new Object[] { paramObject2 });
     }
   }
   
   public static void setLocalVideoMirrorType(int paramInt, Object paramObject)
   {
-    bmio.a(paramObject, "setLocalVideoMirrorType", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bnjq.a(paramObject, "setLocalVideoMirrorType", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static void setMicVolume(float paramFloat, Object paramObject)
   {
-    bmio.a(paramObject, "setMicVolume", false, bmio.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bnjq.a(paramObject, "setMicVolume", false, bnjq.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   public static void setMirror(boolean paramBoolean, Object paramObject)
   {
-    bmio.a(paramObject, "setMirror", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bnjq.a(paramObject, "setMirror", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void setMode(JSONObject paramJSONObject, Object paramObject)
@@ -142,9 +142,9 @@ public class WXLivePusherReflect
     }
     for (;;)
     {
-      paramJSONObject = bmio.a("com.tencent.rtmp.TXLiveConstants", paramJSONObject);
+      paramJSONObject = bnjq.a("com.tencent.rtmp.TXLiveConstants", paramJSONObject);
       if ((paramJSONObject instanceof Integer)) {
-        bmio.a(paramObject, "setVideoQuality", false, bmio.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { paramJSONObject, Boolean.valueOf(true), Boolean.valueOf(true) });
+        bnjq.a(paramObject, "setVideoQuality", false, bnjq.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { paramJSONObject, Boolean.valueOf(true), Boolean.valueOf(true) });
       }
       return;
       label98:
@@ -160,14 +160,14 @@ public class WXLivePusherReflect
   
   public static void setMuted(boolean paramBoolean, Object paramObject)
   {
-    bmio.a(paramObject, "setMute", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bnjq.a(paramObject, "setMute", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void setPushListener(Object paramObject1, Object paramObject2)
   {
     try
     {
-      bmio.a(paramObject2, "setPushListener", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePushListener") }), new Object[] { paramObject1 });
+      bnjq.a(paramObject2, "setPushListener", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePushListener") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -178,44 +178,44 @@ public class WXLivePusherReflect
   
   public static void setPusherUrl(String paramString, Object paramObject)
   {
-    bmio.a(paramObject, "setPusherUrl", false, bmio.a(new Class[] { String.class }), new Object[] { paramString });
+    bnjq.a(paramObject, "setPusherUrl", false, bnjq.a(new Class[] { String.class }), new Object[] { paramString });
   }
   
   public static void setRenderRotation(int paramInt, Object paramObject)
   {
-    bmio.a(paramObject, "setRenderRotation", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bnjq.a(paramObject, "setRenderRotation", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static void setReverb(int paramInt, Object paramObject)
   {
-    bmio.a(paramObject, "setReverb", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bnjq.a(paramObject, "setReverb", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static void setSurface(Surface paramSurface, Object paramObject)
   {
-    bmio.a(paramObject, "setSurface", false, bmio.a(new Class[] { Surface.class }), new Object[] { paramSurface });
+    bnjq.a(paramObject, "setSurface", false, bnjq.a(new Class[] { Surface.class }), new Object[] { paramSurface });
   }
   
   public static void setSurfaceSize(int paramInt1, int paramInt2, Object paramObject)
   {
-    bmio.a(paramObject, "setSurfaceSize", false, bmio.a(new Class[] { Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    bnjq.a(paramObject, "setSurfaceSize", false, bnjq.a(new Class[] { Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
   public static void setVideoQuality(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    bmio.a(paramObject, "setVideoQuality", false, bmio.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    bnjq.a(paramObject, "setVideoQuality", false, bnjq.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
   }
   
   public static void showDebugLog(boolean paramBoolean, Object paramObject)
   {
-    bmio.a(paramObject, "showDebugLog", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bnjq.a(paramObject, "showDebugLog", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void snapshot(Object paramObject1, Object paramObject2)
   {
     try
     {
-      bmio.a(paramObject2, "snapshot", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener") }), new Object[] { paramObject1 });
+      bnjq.a(paramObject2, "snapshot", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -226,14 +226,14 @@ public class WXLivePusherReflect
   
   public static void startAudioRecord(Object paramObject)
   {
-    bmio.a(paramObject, "startAudioRecord", false, null, new Object[0]);
+    bnjq.a(paramObject, "startAudioRecord", false, null, new Object[0]);
   }
   
   public static void startCameraPreview(Object paramObject1, Object paramObject2)
   {
     try
     {
-      bmio.a(paramObject2, "startCameraPreview", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject1 });
+      bnjq.a(paramObject2, "startCameraPreview", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -244,7 +244,7 @@ public class WXLivePusherReflect
   
   public static int startDumpAudioData(String paramString, Object paramObject)
   {
-    paramString = (Integer)bmio.a(paramObject, "startDumpAudioData", false, bmio.a(new Class[] { String.class }), new Object[] { paramString });
+    paramString = (Integer)bnjq.a(paramObject, "startDumpAudioData", false, bnjq.a(new Class[] { String.class }), new Object[] { paramString });
     if (paramString != null) {
       return paramString.intValue();
     }
@@ -253,39 +253,39 @@ public class WXLivePusherReflect
   
   public static boolean startPusher(String paramString, Object paramObject)
   {
-    paramString = bmio.a(paramObject, "startPusher", false, bmio.a(new Class[] { String.class }), new Object[] { paramString });
+    paramString = bnjq.a(paramObject, "startPusher", false, bnjq.a(new Class[] { String.class }), new Object[] { paramString });
     return ((paramString instanceof Integer)) && (((Integer)paramString).intValue() == 0);
   }
   
   public static void stopAudioRecord(Object paramObject)
   {
-    bmio.a(paramObject, "stopAudioRecord", false, null, new Object[0]);
+    bnjq.a(paramObject, "stopAudioRecord", false, null, new Object[0]);
   }
   
   public static boolean stopBGM(Object paramObject)
   {
-    paramObject = bmio.a(paramObject, "stopBGM", false, null, new Object[0]);
+    paramObject = bnjq.a(paramObject, "stopBGM", false, null, new Object[0]);
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void stopCameraPreview(boolean paramBoolean, Object paramObject)
   {
-    bmio.a(paramObject, "stopCameraPreview", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bnjq.a(paramObject, "stopCameraPreview", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void stopDumpAudioData(Object paramObject)
   {
-    bmio.a(paramObject, "stopDumpAudioData", false, null, new Object[0]);
+    bnjq.a(paramObject, "stopDumpAudioData", false, null, new Object[0]);
   }
   
   public static void stopPusher(Object paramObject)
   {
-    bmio.a(paramObject, "stopPusher", false, null, new Object[0]);
+    bnjq.a(paramObject, "stopPusher", false, null, new Object[0]);
   }
   
   public static void switchCamera(Object paramObject)
   {
-    bmio.a(paramObject, "switchCamera", false, null, new Object[0]);
+    bnjq.a(paramObject, "switchCamera", false, null, new Object[0]);
   }
   
   public static void toggleTorch(Object paramObject)
@@ -295,7 +295,7 @@ public class WXLivePusherReflect
   
   public static boolean turnOnFlashLight(boolean paramBoolean, Object paramObject)
   {
-    paramObject = (Boolean)bmio.a(paramObject, "turnOnFlashLight", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    paramObject = (Boolean)bnjq.a(paramObject, "turnOnFlashLight", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramObject != null) {
       return paramObject.booleanValue();
     }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aquj;
-import blsb;
+import arjv;
+import bmtd;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 class ChatSettingForTroop$3
@@ -11,8 +11,8 @@ class ChatSettingForTroop$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Aqui = aquj.a();
-    blsb.b(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    this.this$0.jdField_a_of_type_Arju = arjv.a();
+    bmtd.b(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
   }
 }
 

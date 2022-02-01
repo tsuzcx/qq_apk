@@ -1,8 +1,23 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awtb
+class awtb
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, float paramFloat);
+  awtb(awta paramawta) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdll.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
+      awql.a(awsk.a(this.a.a), this.a.a);
+    }
+  }
 }
 
 

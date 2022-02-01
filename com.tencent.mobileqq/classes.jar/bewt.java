@@ -1,40 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
-
-public class bewt
-  implements Observer
+class bewt
 {
-  private final void a(Object paramObject)
-  {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    paramObject = (Object[])paramObject[1];
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a((Set)paramObject[0]);
-  }
+  int jdField_a_of_type_Int;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  protected void a(Set<Long> paramSet) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  bewt(int paramInt, String[] paramArrayOfString)
   {
-    if (paramObject == null) {
-      return;
-    }
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
-      return;
-    }
-    a(paramObject);
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

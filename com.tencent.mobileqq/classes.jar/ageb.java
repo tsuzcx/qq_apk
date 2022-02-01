@@ -1,10 +1,72 @@
-public abstract interface ageb
+public class ageb
 {
-  public abstract boolean a();
+  private static ageb a;
+  public int a;
+  private int b = -1;
   
-  public abstract void b();
+  private ageb()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
   
-  public abstract void c();
+  /* Error */
+  public static ageb a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	ageb:jdField_a_of_type_Ageb	Lageb;
+    //   6: ifnonnull +22 -> 28
+    //   9: new 2	ageb
+    //   12: dup
+    //   13: invokespecial 21	ageb:<init>	()V
+    //   16: putstatic 20	ageb:jdField_a_of_type_Ageb	Lageb;
+    //   19: getstatic 20	ageb:jdField_a_of_type_Ageb	Lageb;
+    //   22: astore_0
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: getstatic 20	ageb:jdField_a_of_type_Ageb	Lageb;
+    //   31: iconst_1
+    //   32: putfield 14	ageb:jdField_a_of_type_Int	I
+    //   35: goto -16 -> 19
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   22	5	0	localageb	ageb
+    //   38	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	19	38	finally
+    //   19	23	38	finally
+    //   28	35	38	finally
+  }
+  
+  public int a()
+  {
+    if (-1 == this.b)
+    {
+      if ((bhlo.d() >>> 20 <= 1390L) || (bhlo.b() <= 3) || (bhlo.a() <= 1433L)) {
+        break label48;
+      }
+      this.b = 1;
+    }
+    for (;;)
+    {
+      return this.b;
+      label48:
+      if ((bhlo.d() >>> 20 > 926L) && (bhlo.b() > 1) && (bhlo.a() > 961L)) {
+        this.b = 2;
+      } else {
+        this.b = 3;
+      }
+    }
+  }
 }
 
 

@@ -1,19 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import Wallet.AcsMsg;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class agbl
-  extends AnimatorListenerAdapter
+public class agbl
+  implements agdq
 {
-  agbl(agbk paramagbk) {}
+  public agbl(ActivateFriendActivity paramActivateFriendActivity, ArrayList paramArrayList, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(List<AcsMsg> paramList)
   {
-    this.a.d();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
+    Object localObject = new CopyOnWriteArrayList(paramList);
+    paramList = new Bundle();
+    paramList.putSerializable("list", (Serializable)localObject);
+    paramList.putSerializable("models", this.jdField_a_of_type_JavaUtilArrayList);
+    paramList.putInt("count", this.jdField_a_of_type_Int);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.a.obtainMessage();
+    ((Message)localObject).obj = paramList;
+    ((Message)localObject).what = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.a.sendMessage((Message)localObject);
   }
 }
 

@@ -1,54 +1,44 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.CountDownProgressBar;
 
 public class blki
-  implements bbps<bbmx, bbvg>
+  extends Handler
 {
-  public void a(bbmx parambbmx, bbvg parambbvg)
+  public blki(CountDownProgressBar paramCountDownProgressBar) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    blkm localblkm;
-    int i;
-    if (((parambbmx instanceof blkm)) && ((parambbvg instanceof bbww)))
+    switch (paramMessage.what)
     {
-      localblkm = (blkm)parambbmx;
-      parambbvg = (bbww)parambbvg;
-      parambbmx = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", URLDrawable.URLDrawableOptions.obtain());
-      if ((parambbmx != null) && (parambbmx.getStatus() == 2)) {
-        parambbmx.restartDownload();
-      }
-      parambbvg.b().setImageDrawable(parambbmx);
-      parambbvg.a().setText(blkm.b);
-      if (localblkm.a() != null) {
-        break label204;
-      }
-      i = 0;
-      if (i > 10) {
-        break label218;
-      }
     }
-    label204:
-    label218:
-    for (parambbmx = String.valueOf(i);; parambbmx = "10+")
+    do
     {
-      ((TextView)parambbvg.a().findViewById(2131365363)).setText(String.format("%s条与\"", new Object[] { parambbmx }));
-      parambbmx = (TextView)parambbvg.a().findViewById(2131365357);
-      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        parambbmx.setTextColor(Color.parseColor("#004080"));
-      }
-      parambbmx.setText(localblkm.b());
-      ((TextView)parambbvg.a().findViewById(2131365364)).setText("\"相关收藏");
-      parambbvg.a().setVisibility(8);
-      parambbvg.a().setOnClickListener(new blkj(this, localblkm));
       return;
-      i = localblkm.a().size();
-      break;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
+        break;
+      }
+      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+      this.a.invalidate();
+    } while (CountDownProgressBar.a(this.a) == null);
+    CountDownProgressBar.a(this.a).a();
+    return;
+    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
+    {
+      CountDownProgressBar.b(this.a, 0.0F);
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
+    }
+    for (;;)
+    {
+      this.a.invalidate();
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
     }
   }
 }

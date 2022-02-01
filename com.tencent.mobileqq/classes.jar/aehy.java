@@ -1,26 +1,63 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aehy
-  implements aqiv
+  implements anyl
 {
-  public aehy(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aehy(Conversation paramConversation) {}
+  
+  public ViewGroup a()
+  {
+    return this.a.a.a;
+  }
+  
+  public blqp a(String paramString)
+  {
+    return this.a.a.a(paramString);
+  }
   
   public void a()
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
+    this.a.a.a();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
-    }
+    this.a.a.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    this.a.a.a(paramConfiguration);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.a.a.a(paramQQAppInterface);
+  }
+  
+  public void a(String paramString, blqp paramblqp)
+  {
+    this.a.a.a(paramString, paramblqp);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a.a(paramBoolean);
+  }
+  
+  public void b()
+  {
+    this.a.a.c();
+  }
+  
+  public void c()
+  {
+    this.a.a.d();
   }
 }
 

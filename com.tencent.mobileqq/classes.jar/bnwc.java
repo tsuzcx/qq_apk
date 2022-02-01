@@ -1,21 +1,41 @@
-import android.graphics.Bitmap;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_byebye_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-public class bnwc
-  implements bnxp
+class bnwc
+  extends QzoneExternalRequest
 {
-  public bnwc(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
+  bnwc(bnwb parambnwb, Intent paramIntent) {}
   
-  public void a(int paramInt)
+  public String getCmdString()
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    return "SweetQzoneService.sweet_pair_byebye";
   }
   
-  public void a(Bitmap paramBitmap)
+  public JceStruct getReq()
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
+    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l1;
+      localsweet_req_comm.uin = l1;
+      localsweet_req_comm.loveuin = l2;
+      localsweet_req_comm.qua = bmsw.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
+    }
+    return localsweet_pair_byebye_req;
+  }
+  
+  public String uniKey()
+  {
+    return "sweet_pair_byebye";
   }
 }
 

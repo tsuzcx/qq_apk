@@ -1,10 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import java.util.List;
 
-public abstract interface wld<Request extends wlf, Respond extends wla>
+@TargetApi(14)
+public class wld
+  implements wlc
 {
-  public abstract void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
+  public wld(wlb paramwlb) {}
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt + 1;
+    if (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      PreloadQueue localPreloadQueue = (PreloadQueue)this.a.jdField_a_of_type_JavaUtilList.get(i);
+      yuk.b("Q.qqstory.download.preload.PreloadDownloaderManager", "queue " + paramInt + " download completed , turn to " + localPreloadQueue.getId());
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
+    }
+  }
 }
 
 

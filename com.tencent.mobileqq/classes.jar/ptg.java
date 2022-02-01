@@ -1,24 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ptg
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+class ptg
+  implements View.OnClickListener
 {
-  public ptg(VideoView paramVideoView) {}
+  ptg(ptf paramptf, ppu paramppu, skg paramskg) {}
   
-  public void OnDownloadCallback(String paramString)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      paramString.getInt("callBackType");
-      int i = paramString.getInt("fileSize");
-      this.a.setFileSize(i);
-      return;
+    if (ptf.a(this.jdField_a_of_type_Ptf) == null) {
+      ptf.a(this.jdField_a_of_type_Ptf, new blmm(ptf.a(this.jdField_a_of_type_Ptf)));
     }
-    catch (JSONException paramString) {}
+    ptf.a(this.jdField_a_of_type_Ptf).a((pqk)this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Ppu.a().mDislikeInfos);
+    ptf.a(this.jdField_a_of_type_Ptf).a(paramView, new pth(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

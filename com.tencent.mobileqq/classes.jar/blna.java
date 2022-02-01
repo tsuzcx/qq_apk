@@ -1,31 +1,10 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class blna
+public abstract interface blna
 {
-  public static long a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if (paramString2 == null) {
-      return;
-    }
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
-  }
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

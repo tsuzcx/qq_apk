@@ -1,102 +1,91 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BlurMaskFilter;
-import android.graphics.BlurMaskFilter.Blur;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.qg.sdk.log.IQLog;
 
 public class bkfo
+  implements IQLog
 {
-  public static Bitmap a(Bitmap paramBitmap)
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    Paint localPaint = new Paint();
-    localPaint.setMaskFilter(new BlurMaskFilter(1.0F, BlurMaskFilter.Blur.NORMAL));
-    int[] arrayOfInt = new int[2];
-    Bitmap localBitmap1 = paramBitmap.extractAlpha(localPaint, arrayOfInt);
-    Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth(), localBitmap1.getHeight(), Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas();
-    localCanvas.setBitmap(localBitmap2);
-    localCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, localPaint);
-    localCanvas.drawBitmap(paramBitmap, -arrayOfInt[0], -arrayOfInt[1], null);
-    localBitmap1.recycle();
-    return localBitmap2;
+    return String.format(null, paramString, paramVarArgs);
   }
   
-  public static Bitmap a(View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    a(paramView);
-    for (;;)
-    {
-      try
-      {
-        int i = paramView.getWidth();
-        int j = paramView.getHeight();
-        if ((i != 0) && (j != 0))
-        {
-          Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          paramView.draw(new Canvas(localBitmap));
-          paramView = localBitmap;
-          return paramView;
-        }
-      }
-      catch (OutOfMemoryError paramView)
-      {
-        return null;
-      }
-      catch (Exception paramView)
-      {
-        return null;
-      }
-      paramView = null;
-    }
+    yuk.c(paramString1, paramString2);
   }
   
-  public static StateListDrawable a(Resources paramResources, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    Object localObject = null;
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    if (paramBitmap1 != null)
-    {
-      BitmapDrawable localBitmapDrawable = new BitmapDrawable(paramResources, paramBitmap1);
-      paramBitmap1 = localObject;
-      if (paramBitmap2 != null) {
-        paramBitmap1 = new BitmapDrawable(paramResources, paramBitmap2);
-      }
-      if (paramBitmap1 != null) {
-        localStateListDrawable.addState(new int[] { 16842919, 16842910 }, paramBitmap1);
-      }
-      localStateListDrawable.addState(new int[] { 16842908 }, localBitmapDrawable);
-      localStateListDrawable.addState(new int[0], localBitmapDrawable);
-      return localStateListDrawable;
-    }
-    return null;
+    yuk.b(paramString1, paramString2, paramThrowable);
   }
   
-  private static void a(View paramView)
+  public void d(String paramString1, String paramString2)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      return;
-      if (!(paramView instanceof ViewGroup)) {
-        break;
-      }
-      paramView.destroyDrawingCache();
-      paramView.invalidate();
-      int i = 0;
-      while (i < ((ViewGroup)paramView).getChildCount())
-      {
-        a(((ViewGroup)paramView).getChildAt(i));
-        i += 1;
-      }
-    }
-    paramView.destroyDrawingCache();
-    paramView.invalidate();
+    yuk.b(paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yuk.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    yuk.b(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    yuk.e(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yuk.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    yuk.c(paramString1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yuk.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    yuk.c(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    yuk.a(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yuk.a(paramString1, paramString2, new Object[] { paramThrowable });
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    yuk.c(paramString1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yuk.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    yuk.d(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void w(String paramString, Throwable paramThrowable)
+  {
+    yuk.b(paramString, "", paramThrowable);
   }
 }
 

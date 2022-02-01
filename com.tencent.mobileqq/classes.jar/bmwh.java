@@ -1,18 +1,15 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.TranslucentActivity;
 
-class bmwh
-  implements View.OnKeyListener
+public class bmwh
+  implements DialogInterface.OnDismissListener
 {
-  bmwh(bmwe parambmwe) {}
+  public bmwh(TranslucentActivity paramTranslucentActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
-      this.a.d();
-    }
-    return false;
+    this.a.finish();
   }
 }
 

@@ -1,83 +1,34 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adqn
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public adqn(BaseChatPie paramBaseChatPie) {}
+  public adqn(AboutActivity paramAboutActivity, ResourcePluginInfo paramResourcePluginInfo, FormSimpleItem paramFormSimpleItem) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.a.a(paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-    ((agml)this.a.a(26)).a();
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((BaseChatPie.i() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
+    aqzq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tencent.Feedback_5_8")) {
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005742", "0X8005742", 0, 0, "", "", "", "");
     }
-    do
+    for (;;)
     {
-      return false;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
-      {
-        paramMotionEvent1 = new int[2];
-        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
-        int i = paramMotionEvent1[1];
-        if (BaseChatPie.g(this.a) == i)
-        {
-          this.a.w(1);
-          BaseChatPie.a(this.a, Boolean.valueOf(true));
-          BaseChatPie.e(this.a, -1);
-        }
-        BaseChatPie.e(this.a, i);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tencent.help_5_8")) {
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005741", "0X8005741", 0, 0, "", "", "", "");
+      } else if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tx.aboutfunction_8_0_3")) {
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005744", "0X8005744", 0, 0, "", "", "", "");
+      } else if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tx.aboutimage")) {
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005743", "0X8005743", 0, 0, "", "", "", "");
       }
-      if (BaseChatPie.a(this.a)) {
-        this.a.i(true);
-      }
-    } while (paramFloat2 >= 0.0F);
-    this.a.G = false;
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onShowPress");
     }
-    this.a.j(false);
-    this.a.i(true);
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (apyb)this.a.a(50);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(true);
-    }
-    this.a.j(false);
-    this.a.i(true);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(false);
-    }
-    return false;
   }
 }
 

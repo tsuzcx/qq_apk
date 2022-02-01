@@ -1,42 +1,42 @@
 package com.tencent.biz.richframework.part.extendsblock;
 
+import aace;
+import aacn;
+import aacp;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 import java.util.ArrayList;
-import zyi;
-import zyr;
-import zyt;
 
 public class HorizontalRvInnerView
   extends RecyclerViewCompat
 {
+  private aacn jdField_a_of_type_Aacn;
+  private aacp jdField_a_of_type_Aacp;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private zyr jdField_a_of_type_Zyr;
-  private zyt jdField_a_of_type_Zyt;
+  
+  public HorizontalRvInnerView(Context paramContext, aacn paramaacn)
+  {
+    super(paramContext);
+    this.jdField_a_of_type_Aacn = paramaacn;
+    setDescendantFocusability(393216);
+    this.jdField_a_of_type_Aacp = new aacp(this);
+    setAdapter(this.jdField_a_of_type_Aacp);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new aace(getContext(), 0, false);
+    setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    setOverScrollMode(2);
+  }
   
   public HorizontalRvInnerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public HorizontalRvInnerView(Context paramContext, zyr paramzyr)
-  {
-    super(paramContext);
-    this.jdField_a_of_type_Zyr = paramzyr;
-    setDescendantFocusability(393216);
-    this.jdField_a_of_type_Zyt = new zyt(this);
-    setAdapter(this.jdField_a_of_type_Zyt);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new zyi(getContext(), 0, false);
-    setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    setOverScrollMode(2);
-  }
-  
   public void setData(ArrayList paramArrayList)
   {
-    if (this.jdField_a_of_type_Zyt != null) {
-      this.jdField_a_of_type_Zyt.setDatas(paramArrayList);
+    if (this.jdField_a_of_type_Aacp != null) {
+      this.jdField_a_of_type_Aacp.setDatas(paramArrayList);
     }
   }
   

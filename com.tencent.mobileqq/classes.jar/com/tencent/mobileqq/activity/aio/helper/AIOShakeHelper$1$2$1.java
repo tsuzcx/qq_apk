@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agkt;
-import agkv;
+import agtu;
+import agtw;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class AIOShakeHelper$1$2$1
   implements Runnable
 {
-  public AIOShakeHelper$1$2$1(agkv paramagkv) {}
+  public AIOShakeHelper$1$2$1(agtw paramagtw) {}
   
   public void run()
   {
-    if ((agkt.a(this.a.a.this$0) != null) && (agkt.a(this.a.a.this$0).getParent() != null)) {
-      ((ViewGroup)agkt.a(this.a.a.this$0).getParent()).removeView(agkt.a(this.a.a.this$0));
+    if ((agtu.a(this.a.a.this$0) != null) && (agtu.a(this.a.a.this$0).getParent() != null)) {
+      ((ViewGroup)agtu.a(this.a.a.this$0).getParent()).removeView(agtu.a(this.a.a.this$0));
     }
-    agkt.a(this.a.a.this$0, null);
+    agtu.a(this.a.a.this$0, null);
   }
 }
 

@@ -1,145 +1,56 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.RichNativeText;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class peh
-  extends RichNativeText
-  implements View.OnClickListener, View.OnLongClickListener
+  implements pql
 {
-  private static final int jdField_a_of_type_Int = Color.parseColor("#262626");
-  private static final int b = Utils.dp2px(16.0D);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private pan jdField_a_of_type_Pan;
-  private pay jdField_a_of_type_Pay;
-  private int c = -1;
+  public peh(KandianDailyManager paramKandianDailyManager) {}
   
-  public peh(VafContext paramVafContext)
-  {
-    super(paramVafContext);
-    this.jdField_a_of_type_AndroidContentContext = paramVafContext.getContext();
-  }
+  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
   
-  private void a()
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    QLog.d("CommentRichTextView", 2, "showAnchorAniation");
-    if ((this.jdField_a_of_type_Pay == null) || (this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
-    View localView;
+    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
+    if (localQQAppInterface == null) {}
+    QQMessageFacade localQQMessageFacade;
+    MessageForStructing localMessageForStructing;
+    String str1;
+    String str2;
     do
     {
       do
       {
-        return;
-      } while (!this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-15550475);
-      }
-      localView = this.jdField_a_of_type_AndroidViewView;
-    } while (localView == null);
-    QLog.d("CommentRichTextView", 2, "showAnchorAniation start");
-    this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor = false;
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 26, 0, 26, 0 });
-    localValueAnimator.setDuration(2400L);
-    localValueAnimator.setStartDelay(600L);
-    localValueAnimator.addUpdateListener(new pej(this, localView));
-    localValueAnimator.start();
-  }
-  
-  private void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable.setAlpha(0);
-    paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
-  }
-  
-  public void a(pan parampan, View paramView)
-  {
-    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (parampan == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Pan = parampan;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
-  
-  public void a(pay parampay)
-  {
-    this.jdField_a_of_type_Pay = parampay;
-    if ((this.jdField_a_of_type_Pay == null) || (this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null) || (this.mNative == null)) {
-      return;
-    }
-    this.mNative.setMaxLines(100);
-    setText(this.jdField_a_of_type_Pay.jdField_a_of_type_JavaLangCharSequence);
-    this.mNative.setOnClickListener(this);
-    this.mNative.setOnLongClickListener(this);
-    a();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_Pan == null) || (this.mNative == null)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.mNative.getSelectionStart() == -1) && (this.mNative.getSelectionEnd() == -1)) {
-        if (this.c == -1)
+        do
         {
-          this.mNative.setBackgroundResource(2130849353);
-          this.jdField_a_of_type_Pan.a(this.jdField_a_of_type_Pay);
+          return;
+          localQQMessageFacade = localQQAppInterface.a();
+          localMessageForStructing = (MessageForStructing)localQQMessageFacade.b(antf.aR, 1008);
+        } while (localMessageForStructing == null);
+        if (!localMessageForStructing.mIsParsed) {
+          localMessageForStructing.parse();
         }
-        else
-        {
-          ((ozh)this.jdField_a_of_type_Pan).a(this.jdField_a_of_type_Pay, oyk.a(this.jdField_a_of_type_Pay, this.c), 2);
-        }
-      }
+      } while (localMessageForStructing.structingMsg == null);
+      str1 = localMessageForStructing.getExtInfoFromExtStr("puin");
+      str2 = localMessageForStructing.structingMsg.mMsgBrief;
+    } while ((!localMessageForStructing.isread) || (TextUtils.isEmpty(str2)) || (!str2.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(str1, paramString)));
+    localMessageForStructing.structingMsg.mMsgBrief = str2.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
+    localMessageForStructing.createMessageUniseq();
+    localMessageForStructing.doPrewrite();
+    localQQMessageFacade.a(localMessageForStructing.frienduin, localMessageForStructing.istroop, localMessageForStructing.uniseq, localMessageForStructing.msgData);
+    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
+    if (paramReadInJoyUserInfo != null) {
+      paramReadInJoyUserInfo.sendEmptyMessage(1009);
     }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Pan == null)) {
-      return false;
-    }
-    if (this.c == -1)
-    {
-      setBackgroundColor(Color.parseColor("#EDEDED"));
-      this.jdField_a_of_type_Pan.a(this.jdField_a_of_type_Pan.a(), this.mNative, this.jdField_a_of_type_Pay, new pei(this));
-    }
-    return true;
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.mNative.setTextSize(0, b);
-    this.mNative.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
-    this.mNative.setIncludeFontPadding(false);
-    this.mNative.setTextColor(jdField_a_of_type_Int);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return super.setAttribute(paramInt, paramObject);
-    } while (!(paramObject instanceof pay));
-    a((pay)paramObject);
-    return true;
+    QLog.d("KandianDailyManager", 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageForStructing);
   }
 }
 

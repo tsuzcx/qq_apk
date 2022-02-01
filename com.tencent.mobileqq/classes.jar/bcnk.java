@@ -1,35 +1,21 @@
-import QC.GetConciseThemeRsp;
-import QC.ItemDisDetail;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
-import java.util.List;
-
-final class bcnk
-  implements anil
+class bcnk
 {
-  bcnk(String paramString, AppInterface paramAppInterface, boolean paramBoolean) {}
+  int jdField_a_of_type_Int;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  int b;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bcnk(CharSequence paramCharSequence)
   {
-    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
-    {
-      paramObject = (GetConciseThemeRsp)paramObject;
-      bcnj.a.clear();
-      paramInt = 0;
-      while (paramInt < paramObject.vItems.size())
-      {
-        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
-        bcnj.a.add(localItemDisDetail.itemId + "");
-        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
-          bcnj.c = paramInt;
-        }
-        paramInt += 1;
-      }
-      paramInt = bcnj.a(this.jdField_a_of_type_JavaLangString);
-      bcnj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Boolean, 1);
-      bcnj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt, 1);
-    }
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = -1;
+    this.b = 0;
+  }
+  
+  public bcnk(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

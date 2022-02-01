@@ -1,58 +1,25 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tfz
-  extends Drawable
+  extends tgb
 {
-  private Bitmap a;
-  
-  public tfz(Bitmap paramBitmap)
+  tfz(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    this.a = paramBitmap;
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
   }
   
-  public Bitmap a()
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if ((this.a != null) && (!this.a.isRecycled())) {
-      paramCanvas.drawBitmap(this.a, 0.0F, 0.0F, null);
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidAppActivity, 1, paramString3, null, 3096, 1, this.jdField_a_of_type_OrgJsonJSONObject.optString("nick_name"), null, null, null, null);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
     }
   }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.a.getHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.a.getWidth();
-  }
-  
-  public int getMinimumHeight()
-  {
-    return this.a.getHeight();
-  }
-  
-  public int getMinimumWidth()
-  {
-    return this.a.getWidth();
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

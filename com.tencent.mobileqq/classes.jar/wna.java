@@ -1,57 +1,68 @@
-import android.view.View;
+import android.annotation.TargetApi;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+import java.io.IOException;
 
+@TargetApi(14)
 public class wna
-  extends wlz
+  extends wnf
 {
-  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  private final beyb jdField_a_of_type_Beyb;
+  public String a;
+  private final boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  public wna(wmf paramwmf, ShareGroupItem paramShareGroupItem)
+  public wna(boolean paramBoolean)
   {
-    super(paramwmf);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
-    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    QQStoryContext.a();
+    this.jdField_a_of_type_Beyb = QQStoryContext.a().a();
   }
   
-  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
+  private void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
-      super.a(paramView, paramCommentEntry, paramInt);
+    beyg localbeyg = new beyg();
+    localbeyg.jdField_a_of_type_Azrg = new wnb(this);
+    localbeyg.i = this.jdField_a_of_type_JavaLangString;
+    localbeyg.jdField_a_of_type_Boolean = true;
+    localbeyg.jdField_b_of_type_Int = 196610;
+    QQStoryContext.a();
+    localbeyg.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localbeyg.c = "";
+    localbeyg.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    this.jdField_a_of_type_Beyb.a(localbeyg);
+  }
+  
+  protected void a()
+  {
+    File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
+    if ((!localFile2.exists()) || (localFile2.length() == 0L)) {
+      yuk.e("Q.qqstory.publish.upload:ImageFileObject", "file not exit %s", new Object[] { this.jdField_a_of_type_JavaLangString });
     }
-    paramView = QQStoryContext.a().b();
-    bkho localbkho = bkho.a(this.jdField_a_of_type_Wmf.a);
-    if (paramCommentEntry.authorUnionId.equals(paramView)) {
-      if (paramCommentEntry.status == 2)
-      {
-        localbkho.c(anni.a(2131712697));
-        localbkho.a(anni.a(2131712691), 3);
-      }
+    Object localObject;
+    if ((this.jdField_a_of_type_Boolean) && (PngQuantUtils.a())) {
+      localObject = null;
     }
-    for (;;)
+    try
     {
-      localbkho.d(anni.a(2131712673));
-      localbkho.a(new wmc(this, localbkho, paramCommentEntry, paramInt));
-      localbkho.show();
-      return;
-      localbkho.c(anni.a(2131712674));
-      break;
-      if ((this.b) && (this.jdField_a_of_type_Boolean))
+      File localFile1 = File.createTempFile("temp", "png", localFile2.getParentFile());
+      localObject = localFile1;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
       {
-        localbkho.c(anni.a(2131712685));
-        localbkho.a(anni.a(2131712694), 3);
-        localbkho.c(anni.a(2131712701));
-      }
-      else
-      {
-        localbkho.c(anni.a(2131712684));
-        localbkho.c(anni.a(2131712692));
+        yuk.b("Q.qqstory.publish.upload:ImageFileObject", "create file", localIOException);
       }
     }
+    if (PngQuantUtils.a(localFile2, localObject))
+    {
+      localFile2.delete();
+      localObject.renameTo(localFile2);
+    }
+    c();
   }
 }
 

@@ -1,30 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class alqb
-  extends alqj
+public abstract class alqb
+  implements alqd
 {
-  protected final BaseChatPie a;
+  public int a;
+  public long a;
+  public bfoz a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
   
-  public alqb(BaseChatPie paramBaseChatPie)
+  public alqb()
   {
-    this.a = paramBaseChatPie;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Bfoz = new bfoz();
   }
   
-  void a(bguh parambguh, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  @Nullable
+  public abstract Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
+  
+  public boolean a()
   {
-    if ((parambguh != null) && (parambguh.a() > 0))
-    {
-      if (this.a == null) {
-        break label43;
-      }
-      if (this.a.h() < 8) {
-        a(paramView, paramInt1, paramInt2, parambguh, paramInt3, false);
-      }
-    }
-    return;
-    label43:
-    a(paramView, paramInt1, paramInt2, parambguh, paramInt3, false);
+    return true;
   }
 }
 

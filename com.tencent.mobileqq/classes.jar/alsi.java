@@ -1,65 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class alsi
-  implements View.OnClickListener
+public class alsi
+  implements DialogInterface.OnClickListener
 {
-  alsi(alsh paramalsh) {}
+  public alsi(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView.getId() == 2131365544) {}
-    also localalso;
-    for (;;)
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramDialogInterface.dismiss();
       return;
-      localalso = (also)paramView.getTag();
-      if ((localalso != null) && (localalso.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localalso.jdField_a_of_type_ComTencentMobileqqDataPhoneContact != null))
-      {
-        PhoneContact localPhoneContact = localalso.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
-        if (localalso.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
-        {
-          if (localalso.jdField_a_of_type_JavaLangString.startsWith("+")) {}
-          for (boolean bool = this.a.a.a.a(localalso.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.a(localalso.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
-          {
-            localalso.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-            if (!AppSetting.c) {
-              break;
-            }
-            if (!localalso.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-              break label266;
-            }
-            if (!localalso.jdField_a_of_type_Boolean) {
-              break label225;
-            }
-            paramView.setContentDescription(localalso.b.getText() + this.a.a.a.getString(2131717726));
-            break;
-          }
-          label225:
-          paramView.setContentDescription(localalso.b.getText().toString() + anni.a(2131706767));
-        }
-      }
     }
-    label266:
-    if (localalso.jdField_a_of_type_Boolean) {}
-    for (int i = this.a.a.a.a(localalso.jdField_a_of_type_JavaLangString);; i = 0)
-    {
-      if ((localalso.jdField_a_of_type_Boolean) && (i != 0))
-      {
-        paramView.setContentDescription(localalso.b.getText() + this.a.a.a.getString(i));
-        break;
-      }
-      paramView.setContentDescription(localalso.b.getText().toString() + anni.a(2131706764));
-      break;
-    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

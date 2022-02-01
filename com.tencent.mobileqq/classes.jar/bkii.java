@@ -1,59 +1,34 @@
-import android.database.DataSetObserver;
-import android.os.Parcelable;
-import android.widget.Adapter;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qidian.proto.mobileqq_qidian.ConfigGroupInfo;
+import com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bkii
-  extends DataSetObserver
 {
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
+  public List<bkij> a;
   
-  public bkii(AdapterView paramAdapterView) {}
+  public bkii() {}
   
-  public void a()
+  public bkii(mobileqq_qidian.ConfigGroupInfo paramConfigGroupInfo)
   {
-    this.jdField_a_of_type_AndroidOsParcelable = null;
-  }
-  
-  public void onChanged()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().getCount();
-    if ((this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) && (this.jdField_a_of_type_AndroidOsParcelable != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount == 0) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount > 0))
+    if (paramConfigGroupInfo.rpt_msg_config_info.has())
     {
-      AdapterView.access$000(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidOsParcelable);
-      this.jdField_a_of_type_AndroidOsParcelable = null;
+      paramConfigGroupInfo = paramConfigGroupInfo.rpt_msg_config_info.get();
+      this.a = new ArrayList(paramConfigGroupInfo.size());
+      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
+      while (paramConfigGroupInfo.hasNext())
+      {
+        mobileqq_qidian.ConfigInfo localConfigInfo = (mobileqq_qidian.ConfigInfo)paramConfigGroupInfo.next();
+        this.a.add(new bkij(localConfigInfo));
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
-      return;
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.rememberSyncState();
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) {
-      this.jdField_a_of_type_AndroidOsParcelable = AdapterView.access$100(this.jdField_a_of_type_ComTencentWidgetAdapterView);
-    }
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = 0;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNeedSync = false;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkii
  * JD-Core Version:    0.7.0.1
  */

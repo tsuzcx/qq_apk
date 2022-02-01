@@ -1,13 +1,16 @@
-public class bqhn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bqhn
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c;
+  bqhn(bqhk parambqhk) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bqhk.a(this.a);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

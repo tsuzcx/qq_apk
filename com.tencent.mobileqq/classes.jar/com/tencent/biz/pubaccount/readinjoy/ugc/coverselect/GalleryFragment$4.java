@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.coverselect;
 
 import android.graphics.Bitmap;
-import zkh;
+import zoc;
 
 class GalleryFragment$4
   implements Runnable
@@ -10,7 +10,7 @@ class GalleryFragment$4
   
   public void run()
   {
-    Bitmap localBitmap = zkh.a(this.a);
+    Bitmap localBitmap = zoc.a(this.a);
     GalleryFragment.a(this.this$0, localBitmap);
   }
 }

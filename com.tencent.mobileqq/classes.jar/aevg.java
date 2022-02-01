@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class aevg
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
-  public aevg(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public aevg(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
     {
-      this.a.a();
-      oat.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
+      return;
     }
-    return true;
+    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

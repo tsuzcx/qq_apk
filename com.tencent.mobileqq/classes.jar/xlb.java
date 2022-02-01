@@ -1,33 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.lang.ref.WeakReference;
-
-public class xlb
-  implements yck
+class xlb
+  implements xmu
 {
-  private WeakReference<xla> a;
+  xlb(xla paramxla) {}
   
-  public xlb(xla paramxla)
+  public void a()
   {
-    this.a = new WeakReference(paramxla);
+    xla.a(this.a);
   }
   
-  public void a(String paramString, int paramInt)
+  public void a(xms paramxms, String paramString, boolean paramBoolean)
   {
-    yqp.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
-    xla localxla = (xla)this.a.get();
-    if ((localxla == null) || (paramInt == 1002) || (paramInt == 1003)) {}
-    do
-    {
-      return;
-      wjz.a(xla.a(localxla), 12, paramString);
-    } while ((localxla.a == null) || (localxla.a.a == null));
-    paramInt = yqu.a(localxla.a.a);
-    if (localxla.a.a.getOwner().isMe()) {}
-    for (paramString = "1";; paramString = "2")
-    {
-      yqu.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, yqu.a(4444), "", localxla.a.a.feedId });
-      return;
-    }
+    yuk.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramxms.a, paramString });
+    xla.a(this.a).a(paramxms, paramString, paramBoolean);
   }
 }
 

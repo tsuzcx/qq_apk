@@ -1,29 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLDrawable.DownloadListener;
-import kotlin.Metadata;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$saveBitmapAndUpload$1", "Lcom/tencent/image/URLDrawable$DownloadListener;", "onFileDownloadFailed", "", "p0", "", "onFileDownloadStarted", "onFileDownloadSucceed", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sjx
-  implements URLDrawable.DownloadListener
+public class sjx
+  extends Handler
 {
-  sjx(String paramString, rtb paramrtb, Bitmap paramBitmap) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public sjx(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
   {
-    rtb localrtb = this.jdField_a_of_type_Rtb;
-    if (localrtb != null) {
-      localrtb.a(2, "");
-    }
+    super(paramLooper);
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    sjs.a(this.jdField_a_of_type_Sjs, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rtb);
-    if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    super.handleMessage(paramMessage);
+    if (this.a.a != null)
+    {
+      if (paramMessage.obj != null) {
+        this.a.a.a((String)paramMessage.obj);
+      }
     }
+    else {
+      return;
+    }
+    this.a.a.a(null);
   }
 }
 

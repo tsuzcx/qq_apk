@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.ClassLoaderCreator;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
 
-class axlw
-  implements View.OnClickListener
+public final class axlw
+  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
 {
-  axlw(axlu paramaxlu) {}
-  
-  public void onClick(View paramView)
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
   {
-    axlu.a(this.a).a.clear();
-    axlu.a(this.a).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  {
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
+  {
+    return new MultiAIOBaseViewPager.SavedState[paramInt];
   }
 }
 

@@ -1,31 +1,31 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel;
 
-import biti;
-import bpoj;
-import bpok;
+import bjuh;
+import bqqe;
+import bqqf;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager;
 
 public class EditTextPanel$2$2
   implements Runnable
 {
-  public EditTextPanel$2$2(bpok parambpok, boolean paramBoolean, bpoj parambpoj, DynamicTextConfigManager paramDynamicTextConfigManager) {}
+  public EditTextPanel$2$2(bqqf parambqqf, boolean paramBoolean, bqqe parambqqe, DynamicTextConfigManager paramDynamicTextConfigManager) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bpoj.a(this.jdField_a_of_type_Boolean);
-      biti.a().a(2131697497);
+      this.jdField_a_of_type_Bqqe.a(this.jdField_a_of_type_Boolean);
+      bjuh.a().a(2131697579);
     }
     do
     {
       do
       {
         return;
-      } while (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_Bpoj.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean));
-      this.jdField_a_of_type_Bpoj.a(this.jdField_a_of_type_Boolean);
-    } while (this.jdField_a_of_type_Bpoj.jdField_a_of_type_Int != this.jdField_a_of_type_Bpok.a.d);
-    this.jdField_a_of_type_Bpok.a.a(-1, this.jdField_a_of_type_Bpok.a.d);
+      } while (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_Bqqe.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean));
+      this.jdField_a_of_type_Bqqe.a(this.jdField_a_of_type_Boolean);
+    } while (this.jdField_a_of_type_Bqqe.jdField_a_of_type_Int != this.jdField_a_of_type_Bqqf.a.d);
+    this.jdField_a_of_type_Bqqf.a.a(-1, this.jdField_a_of_type_Bqqf.a.d);
   }
 }
 

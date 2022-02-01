@@ -1,56 +1,124 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
 
 public class awzb
-  implements ServiceConnection
 {
-  public awzb(MusicPlayerActivity paramMusicPlayerActivity) {}
+  private awyk jdField_a_of_type_Awyk;
+  private awyl jdField_a_of_type_Awyl;
+  private awyn jdField_a_of_type_Awyn;
+  private awyq jdField_a_of_type_Awyq;
+  private awzc jdField_a_of_type_Awzc;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a()
   {
-    MusicPlayerActivity.a(this.a, awya.a(paramIBinder));
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfacePlayManager", 2, "func init begins, magicfaceDecoder:" + this.jdField_a_of_type_Awyl);
+    }
+    if (this.jdField_a_of_type_Awyl == null)
     {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
-      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
-      if (paramComponentName != null)
-      {
-        String str = MusicPlayerActivity.a(this.a, paramComponentName);
-        if (MusicPlayerActivity.b().containsKey(str)) {
-          MusicPlayerActivity.a(this.a, (awzi)MusicPlayerActivity.b().get(str), paramIBinder);
-        }
-        for (;;)
-        {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
-          return;
-          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
-        }
+      boolean bool = bhlo.d();
+      long l = Math.min(bhlo.g(), bhlo.h());
+      if ((!bool) || (l < 720L)) {
+        break label118;
+      }
+      this.jdField_a_of_type_Awyl = new awyi();
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfacePlayManager", 2, "func init, use [SuperBigDecoder]");
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Awyl.a(this.jdField_a_of_type_Awyn);
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfacePlayManager", 2, "func init ends.");
       }
       return;
+      label118:
+      if ("xbig".equalsIgnoreCase(awyq.a()))
+      {
+        this.jdField_a_of_type_Awyl = new awyr();
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicfacePlayManager", 2, "func init, use [XBigDecoder]");
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Awyl = new awyo();
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicfacePlayManager", 2, "func init, use [FFMepgDecoder]");
+        }
+      }
     }
-    catch (Exception paramComponentName) {}
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(int paramInt)
   {
-    paramComponentName = MusicPlayerActivity.a(this.a);
-    if (paramComponentName != null) {}
-    try
-    {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
-      return;
+    if (this.jdField_a_of_type_Awyl != null) {
+      this.jdField_a_of_type_Awyl.a(paramInt);
     }
-    catch (RemoteException paramComponentName) {}
+  }
+  
+  public void a(awym paramawym)
+  {
+    if (this.jdField_a_of_type_Awyl != null) {
+      this.jdField_a_of_type_Awyl.a(paramawym);
+    }
+  }
+  
+  public void a(awyn paramawyn)
+  {
+    this.jdField_a_of_type_Awyn = paramawyn;
+  }
+  
+  public void a(awyp paramawyp)
+  {
+    if ((this.jdField_a_of_type_Awyk != null) && (paramawyp.a.equalsIgnoreCase(this.jdField_a_of_type_Awyk.a))) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Awyl.a(this.jdField_a_of_type_Awyk);
+      this.jdField_a_of_type_Awyl.d();
+      return;
+      this.jdField_a_of_type_Awyk = this.jdField_a_of_type_Awyq.a(paramawyp.a, paramawyp.b);
+      this.jdField_a_of_type_Awyk.a = paramawyp.a;
+      this.jdField_a_of_type_Awyk.b = paramawyp.b;
+    }
+  }
+  
+  public void a(awyq paramawyq)
+  {
+    this.jdField_a_of_type_Awyq = paramawyq;
+  }
+  
+  public void a(awzc paramawzc)
+  {
+    this.jdField_a_of_type_Awzc = paramawzc;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Awzc != null) {
+      this.jdField_a_of_type_Awzc.a(this.jdField_a_of_type_Awyq.b(paramString));
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Awzc != null) {
+      this.jdField_a_of_type_Awzc.a(this.jdField_a_of_type_Awyq.b(paramString), paramInt, 3);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Awyl != null) {
+      this.jdField_a_of_type_Awyl.e();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Awyl != null) {
+      this.jdField_a_of_type_Awyl.c();
+    }
   }
 }
 

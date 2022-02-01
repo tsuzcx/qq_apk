@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class alxq
-  extends antn
+public abstract interface alxq
 {
-  public alxq(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  public abstract zhr a();
   
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
-    }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    }
-    QQSpecialCareSettingActivity.a(this.a);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(zhr paramzhr);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract void d();
 }
 
 

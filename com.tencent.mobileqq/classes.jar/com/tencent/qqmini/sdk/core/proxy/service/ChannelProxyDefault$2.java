@@ -1,30 +1,23 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import java.util.List;
-import java.util.Map;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
 class ChannelProxyDefault$2
-  implements RequestProxy.RequestListener
+  implements AsyncResult
 {
-  ChannelProxyDefault$2(ChannelProxyDefault paramChannelProxyDefault) {}
+  ChannelProxyDefault$2(ChannelProxyDefault paramChannelProxyDefault, AsyncResult paramAsyncResult) {}
   
-  public void onRequestFailed(int paramInt, String paramString)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.e("ChannelProxyDefault", "httpReport onRequestFailed code = " + paramInt);
-  }
-  
-  public void onRequestHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onRequestSucceed(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
-  {
-    QMLog.d("ChannelProxyDefault", "httpReport onRequestSucceed");
+    if (this.val$asyncResult != null) {
+      this.val$asyncResult.onReceiveResult(paramBoolean, paramJSONObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.2
  * JD-Core Version:    0.7.0.1
  */

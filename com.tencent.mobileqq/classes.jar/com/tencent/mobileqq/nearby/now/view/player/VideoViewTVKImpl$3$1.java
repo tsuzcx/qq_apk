@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.now.view.player;
 
-import axnw;
-import axny;
-import axob;
+import aygq;
+import aygs;
+import aygv;
 
 public class VideoViewTVKImpl$3$1
   implements Runnable
 {
-  public VideoViewTVKImpl$3$1(axob paramaxob, int paramInt, Object paramObject) {}
+  public VideoViewTVKImpl$3$1(aygv paramaygv, int paramInt, Object paramObject) {}
   
   public void run()
   {
     int i;
-    if (this.jdField_a_of_type_Axob.a.a != null)
+    if (this.jdField_a_of_type_Aygv.a.a != null)
     {
       i = this.jdField_a_of_type_Int;
       if (this.jdField_a_of_type_Int != 21) {
@@ -22,7 +22,7 @@ public class VideoViewTVKImpl$3$1
     }
     for (;;)
     {
-      this.jdField_a_of_type_Axob.a.a.a(this.jdField_a_of_type_Axob.a, i, this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_Aygv.a.a.a(this.jdField_a_of_type_Aygv.a, i, this.jdField_a_of_type_JavaLangObject);
       return;
       label58:
       if (this.jdField_a_of_type_Int == 22) {

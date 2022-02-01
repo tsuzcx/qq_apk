@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import atxd;
+import auoy;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -13,7 +13,7 @@ class QfileRecentTDocFileTabView$1
   
   public void run()
   {
-    Object localObject = atxd.a(this.a.srvTime);
+    Object localObject = auoy.a(this.a.srvTime);
     if (!this.this$0.a.containsKey(localObject)) {
       this.this$0.a.put(localObject, new ArrayList());
     }

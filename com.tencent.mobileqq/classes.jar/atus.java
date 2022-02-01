@@ -1,16 +1,35 @@
-public abstract interface atus
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
+class atus
+  extends MqqHandler
 {
-  public abstract void a();
+  atus(atur paramatur, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
+    }
+    this.a.a.a().a(true);
+    this.a.a.a().b(-1);
+    atvk.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atus
  * JD-Core Version:    0.7.0.1
  */

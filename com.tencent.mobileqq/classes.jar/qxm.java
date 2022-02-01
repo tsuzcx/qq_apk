@@ -1,22 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import tencent.im.oidb.articlesummary.feeds_info.VisibleShowInfo;
 
-public class qxm
-  implements uwv
+public final class qxm
+  implements pno<feeds_info.VisibleShowInfo, qyj>
 {
-  public qxm(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
-  
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, tds paramtds)
+  public qyj a(feeds_info.VisibleShowInfo paramVisibleShowInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
-    }
-    ComponentHeaderTopicRecommend.a(this.a, paramtds.a());
+    return qyj.a(paramVisibleShowInfo);
   }
 }
 

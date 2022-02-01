@@ -1,18 +1,18 @@
 package dov.com.qq.im.aeeditor.util;
 
-import boiw;
-import boiz;
+import bpkr;
+import bpku;
 import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
 import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
 public final class AEEditorPagStickerUtil$2
   implements Runnable
 {
-  public AEEditorPagStickerUtil$2(AEEditorDownloadResBean paramAEEditorDownloadResBean, AEEditorTextBean paramAEEditorTextBean, boiz paramboiz) {}
+  public AEEditorPagStickerUtil$2(AEEditorDownloadResBean paramAEEditorDownloadResBean, AEEditorTextBean paramAEEditorTextBean, bpku parambpku) {}
   
   public void run()
   {
-    boiw.a(this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Boiz);
+    bpkr.a(this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bpku);
   }
 }
 

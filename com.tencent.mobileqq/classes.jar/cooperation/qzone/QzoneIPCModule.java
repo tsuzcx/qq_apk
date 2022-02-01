@@ -1,35 +1,36 @@
 package cooperation.qzone;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import ahth;
-import aiit;
-import aijj;
-import aijp;
-import aijw;
-import amhd;
+import aaak;
+import aicv;
+import aism;
+import aitc;
+import aiti;
+import aitp;
+import amsx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anmw;
-import aqbt;
-import aqqf;
-import aqqg;
-import arno;
-import arnz;
-import aroo;
-import ayxj;
-import bltx;
-import blty;
-import bltz;
-import blua;
-import blub;
-import bluc;
-import blud;
-import blue;
-import bluf;
-import blvu;
-import bmjq;
+import anyw;
+import aqqv;
+import arfn;
+import arfo;
+import asde;
+import asdn;
+import asec;
+import azpx;
+import bmuz;
+import bmva;
+import bmvb;
+import bmvc;
+import bmvd;
+import bmve;
+import bmvf;
+import bmvg;
+import bmvh;
+import bmww;
+import bnkt;
 import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
 import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
 import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
@@ -82,25 +83,24 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
-import lkw;
+import llk;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tzo;
-import uxc;
-import vrb;
-import vrf;
-import vrh;
-import vri;
-import zwp;
+import tzq;
+import uyn;
+import vtm;
+import vtq;
+import vts;
+import vtt;
 
 public class QzoneIPCModule
   extends QIPCModule
 {
   private static QzoneIPCModule jdField_a_of_type_CooperationQzoneQzoneIPCModule;
-  private final AtomicReference<bluf> jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference();
+  private final AtomicReference<bmvh> jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference();
   
   public QzoneIPCModule(String paramString)
   {
@@ -120,7 +120,7 @@ public class QzoneIPCModule
     finally {}
   }
   
-  private static List<aijj> a(String paramString1, String paramString2, int paramInt)
+  private static List<aitc> a(String paramString1, String paramString2, int paramInt)
   {
     LinkedList localLinkedList = new LinkedList();
     JSONArray localJSONArray;
@@ -160,26 +160,26 @@ public class QzoneIPCModule
       paramString1 = localJSONArray.optJSONObject(i);
       String str = paramString1.optString("url");
       paramString1 = paramString1.optString("md5");
-      aijj localaijj = new aijj();
-      localaijj.b(str);
-      localaijj.d(paramString1);
+      aitc localaitc = new aitc();
+      localaitc.b(str);
+      localaitc.d(paramString1);
       paramString1 = paramString2;
       if (paramString2 != null)
       {
         paramString1 = paramString2;
         if (paramString2.equals(str))
         {
-          localaijj.b(true);
+          localaitc.b(true);
           paramString1 = null;
         }
       }
-      localLinkedList.add(localaijj);
+      localLinkedList.add(localaitc);
       i += 1;
       paramString2 = paramString1;
     }
   }
   
-  public static JSONObject a(List<aiit> paramList)
+  public static JSONObject a(List<aism> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty()))
     {
@@ -196,14 +196,14 @@ public class QzoneIPCModule
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      Object localObject2 = (aiit)paramList.next();
-      if ((localObject2 != null) && ((localObject2 instanceof aijj)))
+      Object localObject2 = (aism)paramList.next();
+      if ((localObject2 != null) && ((localObject2 instanceof aitc)))
       {
-        localObject2 = (aijj)localObject2;
+        localObject2 = (aitc)localObject2;
         try
         {
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("url", ((aijj)localObject2).a()).put("thumbUrl", ((aijj)localObject2).b()).put("md5", ((aijj)localObject2).c());
+          localJSONObject.put("url", ((aitc)localObject2).a()).put("thumbUrl", ((aitc)localObject2).b()).put("md5", ((aitc)localObject2).c());
           localJSONArray.put(localJSONObject);
         }
         catch (JSONException localJSONException)
@@ -235,7 +235,7 @@ public class QzoneIPCModule
       {
         return;
       } while ((paramQQAppInterface == null) || (!(paramQQAppInterface instanceof QQAppInterface)));
-      paramBundle = (amhd)paramQQAppInterface.getManager(153);
+      paramBundle = (amsx)paramQQAppInterface.getManager(153);
       paramQQAppInterface = (VasExtensionHandler)paramQQAppInterface.a(71);
       localArrayList = new ArrayList();
       localObject = ((ArrayList)localObject).iterator();
@@ -259,21 +259,42 @@ public class QzoneIPCModule
     paramQQAppInterface.a(paramBundle);
   }
   
-  private void a(blue paramblue)
+  private void a(bmvg parambmvg)
   {
     QLog.d("[QzoneIPCModule_upload2]QCircle", 1, "processPublishData... notify qzone");
     Bundle localBundle = new Bundle();
-    localBundle.putLong("key_return_code", paramblue.jdField_a_of_type_Long);
-    localBundle.putString("key_error_msg", paramblue.jdField_a_of_type_JavaLangString);
-    localBundle.putString("key_stfeed_id", paramblue.b);
-    localBundle.putString("key_trace_id", paramblue.d);
-    localBundle.putString("key_clientkey", paramblue.c);
-    callbackResult(paramblue.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
+    localBundle.putLong("key_return_code", parambmvg.jdField_a_of_type_Long);
+    localBundle.putString("key_error_msg", parambmvg.jdField_a_of_type_JavaLangString);
+    localBundle.putString("key_stfeed_id", parambmvg.b);
+    localBundle.putString("key_trace_id", parambmvg.d);
+    localBundle.putString("key_clientkey", parambmvg.c);
+    callbackResult(parambmvg.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
   }
   
-  private void a(QCircleFakeFeed paramQCircleFakeFeed, int paramInt, blue paramblue)
+  private void a(QCircleFakeFeed paramQCircleFakeFeed, int paramInt, bmvg parambmvg)
   {
-    VSNetworkHelper.a().a(new QCircleGetFeedDetailRequest(paramQCircleFakeFeed.a(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramQCircleFakeFeed.a(), true), new blub(this, paramQCircleFakeFeed, paramblue, paramInt));
+    VSNetworkHelper.a().a(new QCircleGetFeedDetailRequest(paramQCircleFakeFeed.a(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramQCircleFakeFeed.a(), true), new bmvd(this, paramQCircleFakeFeed, parambmvg, paramInt));
+  }
+  
+  private void a(QCircleTaskReportInfo paramQCircleTaskReportInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("vid:").append(paramQCircleTaskReportInfo.vid).append(",");
+    localStringBuilder.append("trace_id:").append(paramQCircleTaskReportInfo.traceId).append(",");
+    localStringBuilder.append("orig_video_width:").append(paramQCircleTaskReportInfo.origPicWidth).append(",");
+    localStringBuilder.append("orig_video_height:").append(paramQCircleTaskReportInfo.origPicHeight).append(",");
+    localStringBuilder.append("orig_video_size:").append(paramQCircleTaskReportInfo.origPicSize).append(",");
+    localStringBuilder.append("orig_video_bitrate:").append(paramQCircleTaskReportInfo.mediaOriginBitrate).append(",");
+    localStringBuilder.append("edited_video_width:").append(paramQCircleTaskReportInfo.edited_pic_width).append(",");
+    localStringBuilder.append("edited_video_height:").append(paramQCircleTaskReportInfo.edited_pic_height).append(",");
+    localStringBuilder.append("edited_video_size:").append(paramQCircleTaskReportInfo.edited_pic_size).append(",");
+    localStringBuilder.append("edited_video_bitrate:").append(paramQCircleTaskReportInfo.edited_video_mediaBitrate).append(",");
+    localStringBuilder.append("client_compress_video_width:").append(paramQCircleTaskReportInfo.client_compress_pic_width).append(",");
+    localStringBuilder.append("client_compress_video_height:").append(paramQCircleTaskReportInfo.client_compress_pic_height).append(",");
+    localStringBuilder.append("client_compress_video_size:").append(paramQCircleTaskReportInfo.client_compress_pic_size).append(",");
+    localStringBuilder.append("client_compress_video_bitrate:").append(paramQCircleTaskReportInfo.client_compress_mediaBitrate);
+    QLog.i("[QzoneIPCModule_upload2]QCircle", 1, "reportPicQuality video quality:" + localStringBuilder.toString());
+    vts.a(5530, "video_publish_full_link", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("attach_info", localStringBuilder.toString()) }), false);
   }
   
   private void a(ArrayList<QCircleTaskReportInfo> paramArrayList)
@@ -282,26 +303,12 @@ public class QzoneIPCModule
     while (paramArrayList.hasNext())
     {
       QCircleTaskReportInfo localQCircleTaskReportInfo = (QCircleTaskReportInfo)paramArrayList.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((localQCircleTaskReportInfo != null) && (localQCircleTaskReportInfo.is_video == 0))
-      {
-        localStringBuilder.append("album_id:").append(localQCircleTaskReportInfo.albumId).append(",");
-        localStringBuilder.append("photo_id:").append(localQCircleTaskReportInfo.lloc).append(",");
-        localStringBuilder.append("trace_id:").append(localQCircleTaskReportInfo.traceId).append(",");
-        localStringBuilder.append("orig_pic_width:").append(localQCircleTaskReportInfo.origPicWidth).append(",");
-        localStringBuilder.append("orig_pic_height:").append(localQCircleTaskReportInfo.origPicHeight).append(",");
-        localStringBuilder.append("orig_pic_size:").append(localQCircleTaskReportInfo.origPicSize).append(",");
-        localStringBuilder.append("edited_pic_width:").append(localQCircleTaskReportInfo.edited_pic_width).append(",");
-        localStringBuilder.append("edited_pic_height:").append(localQCircleTaskReportInfo.edited_pic_height).append(",");
-        localStringBuilder.append("edited_pic_size:").append(localQCircleTaskReportInfo.edited_pic_size).append(",");
-        localStringBuilder.append("client_compress_pic_width:").append(localQCircleTaskReportInfo.client_compress_pic_width).append(",");
-        localStringBuilder.append("client_compress_pic_height:").append(localQCircleTaskReportInfo.client_compress_pic_height).append(",");
-        localStringBuilder.append("client_compress_pic_size:").append(localQCircleTaskReportInfo.client_compress_pic_size).append(",");
-        localStringBuilder.append("backend_pic_width:").append(localQCircleTaskReportInfo.backendPicWidth).append(",");
-        localStringBuilder.append("backend_pic_height:").append(localQCircleTaskReportInfo.backendPicHeight).append(",");
-        localStringBuilder.append("hasCompress:").append(localQCircleTaskReportInfo.hasCompress);
-        QLog.i("[QzoneIPCModule_upload2]QCircle", 1, "reportPicQuality pic quality:" + localStringBuilder.toString());
-        vrh.a("image_publish_full_link", Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("attach_info", localStringBuilder.toString()) }), false);
+      if (localQCircleTaskReportInfo != null) {
+        if (localQCircleTaskReportInfo.is_video == 0) {
+          b(localQCircleTaskReportInfo);
+        } else if (localQCircleTaskReportInfo.is_video == 1) {
+          a(localQCircleTaskReportInfo);
+        }
       }
     }
   }
@@ -334,7 +341,7 @@ public class QzoneIPCModule
           while (((Iterator)localObject2).hasNext())
           {
             Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-            localStExifInfo.kvs.add(vri.a(localEntry));
+            localStExifInfo.kvs.add(vtt.a(localEntry));
             QLog.i("QzoneIPCModule", 2, "getQCircleRecommendTag  exif key:" + (String)localEntry.getKey() + " value:" + (String)localEntry.getValue());
           }
           localPicRecomEntry.exifInfo.set(localStExifInfo);
@@ -351,7 +358,7 @@ public class QzoneIPCModule
       {
         paramBundle = (FeedCloudMeta.StGPSV2)((FeedCloudMeta.StGPSV2)localObject1).mergeFrom(paramBundle);
         paramBundle = new QCircleGetRecommendTagRequest(paramBundle, localArrayList);
-        VSNetworkHelper.a().a(paramBundle, new bltz(this, paramInt));
+        VSNetworkHelper.a().a(paramBundle, new bmvb(this, paramInt));
         return;
       }
       catch (Exception paramBundle)
@@ -363,9 +370,31 @@ public class QzoneIPCModule
     }
   }
   
+  private void b(QCircleTaskReportInfo paramQCircleTaskReportInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("album_id:").append(paramQCircleTaskReportInfo.albumId).append(",");
+    localStringBuilder.append("photo_id:").append(paramQCircleTaskReportInfo.lloc).append(",");
+    localStringBuilder.append("trace_id:").append(paramQCircleTaskReportInfo.traceId).append(",");
+    localStringBuilder.append("orig_pic_width:").append(paramQCircleTaskReportInfo.origPicWidth).append(",");
+    localStringBuilder.append("orig_pic_height:").append(paramQCircleTaskReportInfo.origPicHeight).append(",");
+    localStringBuilder.append("orig_pic_size:").append(paramQCircleTaskReportInfo.origPicSize).append(",");
+    localStringBuilder.append("edited_pic_width:").append(paramQCircleTaskReportInfo.edited_pic_width).append(",");
+    localStringBuilder.append("edited_pic_height:").append(paramQCircleTaskReportInfo.edited_pic_height).append(",");
+    localStringBuilder.append("edited_pic_size:").append(paramQCircleTaskReportInfo.edited_pic_size).append(",");
+    localStringBuilder.append("client_compress_pic_width:").append(paramQCircleTaskReportInfo.client_compress_pic_width).append(",");
+    localStringBuilder.append("client_compress_pic_height:").append(paramQCircleTaskReportInfo.client_compress_pic_height).append(",");
+    localStringBuilder.append("client_compress_pic_size:").append(paramQCircleTaskReportInfo.client_compress_pic_size).append(",");
+    localStringBuilder.append("backend_pic_width:").append(paramQCircleTaskReportInfo.backendPicWidth).append(",");
+    localStringBuilder.append("backend_pic_height:").append(paramQCircleTaskReportInfo.backendPicHeight).append(",");
+    localStringBuilder.append("hasCompress:").append(paramQCircleTaskReportInfo.hasCompress);
+    QLog.i("[QzoneIPCModule_upload2]QCircle", 1, "reportPicQuality pic quality:" + localStringBuilder.toString());
+    vts.a("image_publish_full_link", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("attach_info", localStringBuilder.toString()) }), false);
+  }
+  
   public void a()
   {
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:qzone", "QQCirCleClientIPCModule", "cooperation.qzone.ACTION_QCIRCLE_GET_TASK_LIST", null, new bluc(this));
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:qzone", "QQCirCleClientIPCModule", "cooperation.qzone.ACTION_QCIRCLE_GET_TASK_LIST", null, new bmve(this));
   }
   
   public void a(Bundle paramBundle, int paramInt)
@@ -387,7 +416,7 @@ public class QzoneIPCModule
         {
           paramBundle = paramBundle.entrySet().iterator();
           while (paramBundle.hasNext()) {
-            ((FeedCloudCommon.StCommonExt)localObject2).mapInfo.add(vri.a((Map.Entry)paramBundle.next()));
+            ((FeedCloudCommon.StCommonExt)localObject2).mapInfo.add(vtt.a((Map.Entry)paramBundle.next()));
           }
         }
       }
@@ -402,39 +431,39 @@ public class QzoneIPCModule
     }
     paramBundle = new QCirclePublishFeedRequest((FeedCloudCommon.StCommonExt)localObject2, (FeedCloudMeta.StFeed)localObject1);
     QLog.d("[QzoneIPCModule_upload2]QCircle", 1, "ACTION_QCIRCLE_PULISH_FEED publishFeed id:" + ((FeedCloudMeta.StFeed)localObject1).id.get());
-    VSNetworkHelper.a().a(paramBundle, new blua(this, paramBundle, str, paramInt));
+    VSNetworkHelper.a().a(paramBundle, new bmvc(this, paramBundle, str, paramInt));
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    bluf localbluf;
+    bmvh localbmvh;
     do
     {
       return;
       QLog.i("QzoneIPCModule", 1, "onGetStickerRecResp: " + paramString1 + " " + paramString2);
-      localbluf = (bluf)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
-    } while ((localbluf == null) || (!paramString1.equals(bluf.b(localbluf))) || (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.compareAndSet(localbluf, null)));
-    bluf.a(localbluf, paramString2);
-    bluf.b(localbluf, paramString3);
-    bluf.a(localbluf).countDown();
+      localbmvh = (bmvh)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    } while ((localbmvh == null) || (!paramString1.equals(bmvh.b(localbmvh))) || (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.compareAndSet(localbmvh, null)));
+    bmvh.a(localbmvh, paramString2);
+    bmvh.b(localbmvh, paramString3);
+    bmvh.a(localbmvh).countDown();
   }
   
-  public boolean a(QCircleFakeFeed paramQCircleFakeFeed, int paramInt, blue paramblue)
+  public boolean a(QCircleFakeFeed paramQCircleFakeFeed, int paramInt, bmvg parambmvg)
   {
     if (paramInt >= 3)
     {
       QLog.e("[QzoneIPCModule_upload2]QCircle", 1, "retryCount >= QCircleFakeAdapter.MAX_RETYR_COUNT");
       return false;
     }
-    paramQCircleFakeFeed = new QzoneIPCModule.RetryRequestFeed(this, paramQCircleFakeFeed, paramInt + 1, paramblue);
+    paramQCircleFakeFeed = new QzoneIPCModule.RetryRequestFeed(this, paramQCircleFakeFeed, paramInt + 1, parambmvg);
     ThreadManager.getSubThreadHandler().postDelayed(paramQCircleFakeFeed, 2000 * paramInt);
     return true;
   }
   
   public void b()
   {
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:qzone", "PubAccountIPCModule", "cooperation.qzone.ACTION_PUBLIC_ACCOUNT_GET_TASK_LIST", null, new blud(this));
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:qzone", "PubAccountIPCModule", "cooperation.qzone.ACTION_PUBLIC_ACCOUNT_GET_TASK_LIST", null, new bmvf(this));
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -454,7 +483,7 @@ public class QzoneIPCModule
     if ("getHostInfo".equals(paramString)) {
       try
       {
-        paramString = ((anmw)localQQAppInterface.getManager(51)).c(localQQAppInterface.getCurrentAccountUin());
+        paramString = ((anyw)localQQAppInterface.getManager(51)).c(localQQAppInterface.getCurrentAccountUin());
         paramBundle = new Bundle();
         paramBundle.putLong("age", paramString.age);
         paramBundle.putLong("gender", paramString.shGender);
@@ -481,7 +510,7 @@ public class QzoneIPCModule
         try
         {
           l = paramBundle.getLong("uin");
-          bool1 = ((anmw)localQQAppInterface.getManager(51)).b(String.valueOf(l));
+          bool1 = ((anyw)localQQAppInterface.getManager(51)).b(String.valueOf(l));
           paramString = new Bundle();
           paramString.putBoolean("isFriend", bool1);
           paramString = EIPCResult.createResult(0, paramString);
@@ -499,7 +528,7 @@ public class QzoneIPCModule
           {
             try
             {
-              paramInt = lkw.f();
+              paramInt = llk.f();
               if (paramInt > 2) {
                 continue;
               }
@@ -513,7 +542,7 @@ public class QzoneIPCModule
             }
             try
             {
-              paramString = ((arno)localQQAppInterface.getManager(77)).a(aroo.e());
+              paramString = ((asde)localQQAppInterface.getManager(77)).a(asec.e());
               if (paramString == null) {
                 continue;
               }
@@ -532,7 +561,7 @@ public class QzoneIPCModule
         {
           try
           {
-            ayxj.a(localQQAppInterface, paramBundle);
+            azpx.a(localQQAppInterface, paramBundle);
             paramString = new Bundle();
             paramString.putBoolean("qzone_pre_send_result", true);
             paramString = EIPCResult.createResult(0, paramString);
@@ -560,24 +589,24 @@ public class QzoneIPCModule
               QLog.w("QzoneIPCModule", 1, "empty text or unit " + (String)localObject1 + " , " + paramString);
               return null;
             }
-            localObject2 = aijp.a(localQQAppInterface);
-            ((aijp)localObject2).a();
-            if (!((aijp)localObject2).b())
+            localObject2 = aiti.a(localQQAppInterface);
+            ((aiti)localObject2).a();
+            if (!((aiti)localObject2).b())
             {
               QLog.i("QzoneIPCModule", 1, "emo rec is not open");
               return null;
             }
-            paramBundle = new bluf((String)localObject1, null);
+            paramBundle = new bmvh((String)localObject1, null);
             this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.set(paramBundle);
-            if (!((aijp)localObject2).a((String)localObject1, 0, paramString))
+            if (!((aiti)localObject2).a((String)localObject1, 0, paramString))
             {
               this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.compareAndSet(paramBundle, null);
               return null;
             }
             try
             {
-              bluf.a(paramBundle).await(2L, TimeUnit.SECONDS);
-              if (TextUtils.isEmpty(bluf.a(paramBundle)))
+              bmvh.a(paramBundle).await(2L, TimeUnit.SECONDS);
+              if (TextUtils.isEmpty(bmvh.a(paramBundle)))
               {
                 QLog.i("QzoneIPCModule", 1, "empty sticker rec resp list");
                 return EIPCResult.createResult(-102, null);
@@ -590,9 +619,9 @@ public class QzoneIPCModule
                 QLog.w("QzoneIPCModule", 1, "waiting req interrupted ", paramString);
               }
               paramString = new Bundle();
-              paramString.putString("analyze_text", bluf.b(paramBundle));
-              paramString.putString("resp_data", bluf.a(paramBundle));
-              paramString.putString("resp_pass", bluf.c(paramBundle));
+              paramString.putString("analyze_text", bmvh.b(paramBundle));
+              paramString.putString("resp_data", bmvh.a(paramBundle));
+              paramString.putString("resp_pass", bmvh.c(paramBundle));
               return EIPCResult.createSuccessResult(paramString);
             }
           }
@@ -617,13 +646,13 @@ public class QzoneIPCModule
             if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (paramInt < 1)) {
               return null;
             }
-            paramBundle = new aijw();
+            paramBundle = new aitp();
             paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
             paramBundle.b = ((String)localObject2);
             paramBundle.jdField_a_of_type_JavaUtilList = a(str, (String)localObject3, paramInt);
-            localObject1 = aijp.a(localQQAppInterface);
-            ((aijp)localObject1).a();
-            ((aijp)localObject1).a(Collections.singletonList(paramBundle), true, 11000, paramString);
+            localObject1 = aiti.a(localQQAppInterface);
+            ((aiti)localObject1).a();
+            ((aiti)localObject1).a(Collections.singletonList(paramBundle), true, 11000, paramString);
             return EIPCResult.createSuccessResult(null);
           }
           if ("action_save_customenotion".equals(paramString))
@@ -633,7 +662,7 @@ public class QzoneIPCModule
               paramString = paramBundle.getString("pic_path");
               if (!TextUtils.isEmpty(paramString))
               {
-                paramInt = ahth.a(localQQAppInterface, paramString);
+                paramInt = aicv.a(localQQAppInterface, paramString);
                 paramString = new Bundle();
                 paramString.putInt("resultCode", paramInt);
                 return EIPCResult.createSuccessResult(paramString);
@@ -648,7 +677,7 @@ public class QzoneIPCModule
               paramString = paramBundle.getString("miniapp_preload_link");
               paramInt = paramBundle.getInt("miniapp_preload_link_type");
               bool1 = paramBundle.getBoolean("miniapp_repload_with_package_and_cache_preload", false);
-              MiniAppPrePullManager.getInstance().prePullAppinfoByLink(paramString, paramInt, bool1, new bltx(this));
+              MiniAppPrePullManager.getInstance().prePullAppinfoByLink(paramString, paramInt, bool1, new bmuz(this));
             }
           }
           else if ("cooperation.qzone.ACTION_PUBLIC_ACCOUNT_FAKE_FEED_CREATE".equalsIgnoreCase(paramString))
@@ -659,7 +688,7 @@ public class QzoneIPCModule
             if ((paramString instanceof CertifiedFakeFeed))
             {
               paramString = (CertifiedFakeFeed)paramString;
-              zwp.a().a(new SubscribeFeedsEvent(paramString, 1));
+              aaak.a().a(new SubscribeFeedsEvent(paramString, 1));
             }
           }
           else if ("cooperation.qzone.ACTION_PUBLIC_ACCOUNT_FAKE_FEED_UPDATE".equalsIgnoreCase(paramString))
@@ -670,7 +699,7 @@ public class QzoneIPCModule
             if ((paramString instanceof CertifiedFakeFeed))
             {
               paramString = (CertifiedFakeFeed)paramString;
-              zwp.a().a(new SubscribeFeedsEvent(paramString, 2));
+              aaak.a().a(new SubscribeFeedsEvent(paramString, 2));
             }
           }
           else if ("cooperation.qzone.ACTION_PUBLIC_ACCOUNT_FAKE_FEED_DELETE".equalsIgnoreCase(paramString))
@@ -681,14 +710,14 @@ public class QzoneIPCModule
             if ((paramString instanceof CertifiedFakeFeed))
             {
               paramString = (CertifiedFakeFeed)paramString;
-              zwp.a().a(new SubscribeFeedsEvent(paramString, 3));
+              aaak.a().a(new SubscribeFeedsEvent(paramString, 3));
             }
           }
           else if ("cooperation.qzone.ACTION_PUBLIC_ACCOUNT_QUEUE_CHANGED".equalsIgnoreCase(paramString))
           {
             QLog.d("QzoneIPCModule", 4, "ACTION_PUBLIC_ACCOUNT_QUEUE_CHANGED to qq_process by QzoneIPCModule");
-            zwp.a().a(new PublishBoxStatusEvent(paramBundle));
-            zwp.a().a(new SubscribeFeedsEvent(4));
+            aaak.a().a(new PublishBoxStatusEvent(paramBundle));
+            aaak.a().a(new SubscribeFeedsEvent(4));
           }
           else if ("action_qzone_get_themeid".equalsIgnoreCase(paramString))
           {
@@ -711,8 +740,8 @@ public class QzoneIPCModule
               paramString = paramBundle.getString("uin", null);
               if (paramString != null)
               {
-                tzo.a(localQQAppInterface, localQQAppInterface.getApp().getApplicationContext(), paramString, false, null, true);
-                bmjq.a(localQQAppInterface.getApp().getApplicationContext(), paramString, 0);
+                tzq.a(localQQAppInterface, localQQAppInterface.getApp().getApplicationContext(), paramString, false, null, true);
+                bnkt.a(localQQAppInterface.getApp().getApplicationContext(), paramString, 0);
               }
             }
           }
@@ -747,7 +776,7 @@ public class QzoneIPCModule
           {
             if ("action_qzone_send_event".equalsIgnoreCase(paramString))
             {
-              if (blvu.d()) {
+              if (bmww.d()) {
                 return EIPCResult.createResult(-1, null);
               }
               if (paramBundle != null)
@@ -776,7 +805,7 @@ public class QzoneIPCModule
                 }
                 paramString = (CertifiedAccountMeta.StFeed)paramBundle.mergeFrom(paramString);
                 QLog.d("QzoneIPCModule", 4, "ACTION_PUBLIC_ACCOUNT_FEED_PUBLISH publishFeed" + paramString.id.get());
-                zwp.a().a(new SubscribePublishFeedsEvent(paramString, 1));
+                aaak.a().a(new SubscribePublishFeedsEvent(paramString, 1));
               }
               catch (Exception paramString)
               {
@@ -789,7 +818,7 @@ public class QzoneIPCModule
               if ("action_qzone_show_push_setting_banner".equalsIgnoreCase(paramString))
               {
                 paramString = new Bundle();
-                paramBundle = aqbt.a(localQQAppInterface);
+                paramBundle = aqqv.a(localQQAppInterface);
                 if (paramBundle == null)
                 {
                   QLog.d("QzoneIPCModule", 1, "ACTION_SHOW_PUSH_SETTING_BANNER null mgr");
@@ -799,12 +828,12 @@ public class QzoneIPCModule
                 paramString.putBoolean("visible", bool1);
                 if (bool1)
                 {
-                  localObject1 = aqqg.a();
+                  localObject1 = arfo.a();
                   if (localObject1 == null) {
                     break label1876;
                   }
-                  paramBundle = ((aqqf)localObject1).a();
-                  localObject1 = ((aqqf)localObject1).b();
+                  paramBundle = ((arfn)localObject1).a();
+                  localObject1 = ((arfn)localObject1).b();
                   paramString.putString("msg", paramBundle);
                   paramString.putString("setting", (String)localObject1);
                 }
@@ -817,7 +846,7 @@ public class QzoneIPCModule
               }
               if ("action_qzone_close_push_setting_banner".equalsIgnoreCase(paramString))
               {
-                paramString = aqbt.a(localQQAppInterface);
+                paramString = aqqv.a(localQQAppInterface);
                 if (paramString == null)
                 {
                   QLog.d("QzoneIPCModule", 1, "ACTION_CLOSE_PUSH_SETTING_BANNER null mgr");
@@ -841,7 +870,7 @@ public class QzoneIPCModule
                   for (paramInt = paramString.size();; paramInt = 0)
                   {
                     QLog.d("[QzoneIPCModule_upload2]QCircle", 4, new Object[] { "ACTION_QCIRCLE_PUBLISH_COMPLETE_REPORT size:", Integer.valueOf(paramInt) });
-                    vrb.a(paramString);
+                    vtm.a(paramString);
                     a(paramString);
                     break;
                   }
@@ -854,8 +883,8 @@ public class QzoneIPCModule
                   if ((paramString instanceof QCircleFakeFeed))
                   {
                     paramString = (QCircleFakeFeed)paramString;
-                    zwp.a().a(new QCircleFeedEvent(paramString, 1));
-                    zwp.a().a(new QCircleSelectTabEvent(1).needScrollTop());
+                    aaak.a().a(new QCircleFeedEvent(paramString, 1));
+                    aaak.a().a(new QCircleSelectTabEvent(1).needScrollTop());
                   }
                   else
                   {
@@ -875,7 +904,7 @@ public class QzoneIPCModule
                   if ((paramString instanceof QCircleFakeFeed))
                   {
                     paramString = (QCircleFakeFeed)paramString;
-                    zwp.a().a(new QCircleFeedEvent(paramString, 3));
+                    aaak.a().a(new QCircleFeedEvent(paramString, 3));
                   }
                 }
                 else if ("cooperation.qzone.ACTION_QCIRCLE_PUBLISH_FAKE_FEED_COMPOSITE_SUCCESS".equals(paramString))
@@ -886,7 +915,7 @@ public class QzoneIPCModule
                   if ((paramString instanceof QCircleFakeFeed))
                   {
                     paramString = (QCircleFakeFeed)paramString;
-                    zwp.a().a(new QCircleFeedEvent(paramString.a(), 5));
+                    aaak.a().a(new QCircleFeedEvent(paramString.a(), 5));
                   }
                 }
                 else
@@ -914,7 +943,7 @@ public class QzoneIPCModule
                     if (bool1) {}
                     for (paramInt = 1;; paramInt = 0)
                     {
-                      ((VSNetworkHelper)localObject3).a(new QCircleDoFollowRequest(paramBundle, paramInt, null), new blty(this, (boolean[])localObject1, (CountDownLatch)localObject2));
+                      ((VSNetworkHelper)localObject3).a(new QCircleDoFollowRequest(paramBundle, paramInt, null), new bmva(this, (boolean[])localObject1, (CountDownLatch)localObject2));
                       bool1 = false;
                       try
                       {
@@ -958,7 +987,7 @@ public class QzoneIPCModule
                   }
                   else if ("cooperation.qzone.ACTION_QCIRCLE_PUBLISH_GET_BUSI_INFO".equalsIgnoreCase(paramString))
                   {
-                    uxc.c();
+                    uyn.b();
                   }
                   else if (("cooperation.qzone.ACTION_QCIRCLE_PUBLISH_REPORT".equalsIgnoreCase(paramString)) && (paramBundle != null))
                   {
@@ -967,7 +996,7 @@ public class QzoneIPCModule
                     int j = paramBundle.getInt("key_qcircle_report_thr_action_type");
                     paramString = paramBundle.getString("key_qcircle_report_ext1");
                     paramBundle = paramBundle.getString("key_qcircle_report_ext6");
-                    vrf.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramInt, i, j, paramString, "", paramBundle, "", "", vri.a().a());
+                    vtq.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramInt, i, j, paramString, "", paramBundle, "", "", vtt.a().a());
                   }
                 }
               }

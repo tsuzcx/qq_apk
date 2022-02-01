@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class oin
-  implements View.OnClickListener
+class oin
+  implements sja
 {
-  public oin(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  private WeakReference<oii> a;
   
-  public void onClick(View paramView)
+  oin(oii paramoii)
   {
-    ReadInJoyChannelActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramoii);
+  }
+  
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  {
+    oii localoii = (oii)this.a.get();
+    if (((localoii == null) || (oii.a(localoii).a())) && (QLog.isColorLevel()))
+    {
+      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+      return;
+    }
+    localoii.a(paramChannelCoverInfo);
   }
 }
 

@@ -1,86 +1,54 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.widget.BubblePopupWindow;
 
 public class biwo
-  extends bixc
+  implements View.OnLongClickListener, View.OnTouchListener
 {
-  biwp jdField_a_of_type_Biwp;
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
   
-  public biwo(biwe parambiwe, Activity paramActivity, biwp parambiwp)
+  private biwo(ContextMenuTextView paramContextMenuTextView) {}
+  
+  protected void a(View paramView)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Biwp = parambiwp;
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
   }
   
-  protected void a(Boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    a();
-    if (paramBoolean.booleanValue())
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
     {
-      if (bixb.a())
-      {
-        this.jdField_a_of_type_Biwe.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Biwe.jdField_b_of_type_Boolean = false;
-        long l = -1L;
-        switch (this.jdField_a_of_type_Biwp.jdField_a_of_type_Int)
-        {
-        case 1: 
-        default: 
-          l = this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean, this.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Biwe.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_Biwe.jdField_b_of_type_Long = System.currentTimeMillis();
-          if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle != null))
-          {
-            paramBoolean = biuh.a(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle.getString(bivp.i), "NEWYYB");
-            biuh.a("311", paramBoolean, this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle.getString(bivp.b));
-            Context localContext = biip.a().a();
-            if (localContext != null) {
-              biuh.a(localContext, "312", paramBoolean, this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle.getString(bivp.b));
-            }
-          }
-          if ((this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws != null) && (this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.isShowing())) {
-            this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.dismiss();
-          }
-          return;
-          this.jdField_a_of_type_Biwe.e = true;
-          if (this.jdField_a_of_type_Biwe.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
-          {
-            l = this.jdField_a_of_type_Biwe.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_Biwe.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-          }
-          else
-          {
-            bisy.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
-            continue;
-            l = this.jdField_a_of_type_Biwe.b(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean, this.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean);
-            continue;
-            l = this.jdField_a_of_type_Biwe.b(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle);
-          }
-        }
-      }
-      if (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      }
-      this.jdField_a_of_type_Biwe.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      return;
+      a(paramView);
+      return false;
     }
-    if (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    bhuk localbhuk = new bhuk();
+    localbhuk.a(2131365191, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131691140), 2130838930);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhkx.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, (int)this.jdField_a_of_type_AndroidGraphicsPointF.y, localbhuk, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new biwn(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView));
     }
-    this.jdField_a_of_type_Biwe.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+    a(paramView);
+    return true;
   }
   
-  protected void onCancelled()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onCancelled();
-    if (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
     }
+    return false;
   }
 }
 

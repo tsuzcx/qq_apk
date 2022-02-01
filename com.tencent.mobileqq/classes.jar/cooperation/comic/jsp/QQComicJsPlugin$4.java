@@ -1,6 +1,6 @@
 package cooperation.comic.jsp;
 
-import blbd;
+import bmcg;
 import com.tencent.qphone.base.util.QLog;
 import fd;
 import java.io.File;
@@ -10,11 +10,11 @@ import org.json.JSONObject;
 public class QQComicJsPlugin$4
   implements Runnable
 {
-  public QQComicJsPlugin$4(blbd paramblbd) {}
+  public QQComicJsPlugin$4(bmcg parambmcg) {}
   
   public void run()
   {
-    Object localObject = blbd.a();
+    Object localObject = bmcg.a();
     if (localObject != null)
     {
       long l1 = System.currentTimeMillis();
@@ -24,7 +24,7 @@ public class QQComicJsPlugin$4
         QLog.d("QQComicJsPlugin", 2, "clean cache cost " + (l2 - l1) + " ms");
       }
     }
-    blbd.a().set(false);
+    bmcg.a().set(false);
     localObject = new JSONObject();
     try
     {
@@ -34,7 +34,7 @@ public class QQComicJsPlugin$4
       localJSONObject.put("size", this.this$0.a());
       ((JSONObject)localObject).put("data", localJSONObject);
       label137:
-      this.this$0.callJs(blbd.b(), new String[] { ((JSONObject)localObject).toString() });
+      this.this$0.callJs(bmcg.b(), new String[] { ((JSONObject)localObject).toString() });
       return;
     }
     catch (Exception localException)

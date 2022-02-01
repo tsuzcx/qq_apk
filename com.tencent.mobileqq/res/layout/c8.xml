@@ -24,7 +24,7 @@
         </RelativeLayout>
         <RelativeLayout android:id="@id/lif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
             <ImageView android:id="@id/llh" android:background="@drawable/hh4" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0sp" android:textColor="#ff00cafc" android:id="@id/nke" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/vt0" android:layout_below="@id/llh" android:layout_centerHorizontal="true" android:contentDescription="@string/vt0" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff00cafc" android:id="@id/npx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/vt0" android:layout_below="@id/llh" android:layout_centerHorizontal="true" android:contentDescription="@string/vt0" />
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/acj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="159.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentBottom="true">

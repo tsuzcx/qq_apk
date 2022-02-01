@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aozi
-  implements QQPermissionCallback
+public class aozi
+  extends aoxh
 {
-  aozi(aozd paramaozd) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    paramArrayOfString = new aozl();
-    paramArrayOfString.a = 2;
-    apad.a(this.a.a.recognitions, aozd.a(this.a), paramArrayOfString);
-    if (aozd.a(this.a) != null) {
-      aozd.a(this.a).a(0, aozd.a(this.a));
+    paramQQAppInterface = new aozh(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "open_homepage";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    aozd.a(this.a, null);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.grant();
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

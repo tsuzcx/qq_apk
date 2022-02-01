@@ -1,43 +1,53 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.comic.ui.QQComicTabBarView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import mqq.app.MobileQQ;
 
 public class blbl
-  extends Handler
+  implements blcl, IRuntimeInterface
 {
-  public blbl(QQComicTabBarView paramQQComicTabBarView, Looper paramLooper)
+  private static volatile blbl a;
+  
+  private blbl()
   {
-    super(paramLooper);
+    QSecFramework.a(4L, new blbm(this));
   }
   
-  public void handleMessage(Message paramMessage)
+  public static blbl a()
   {
-    switch (paramMessage.what)
+    if (a == null) {}
+    try
     {
-    default: 
-      return;
-    case 0: 
-      this.a.b = 0.0F;
-      QQComicTabBarView.a(this.a);
-      super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
-      return;
-    case 1: 
-      if (this.a.b < 1.0F)
+      if (a == null) {
+        a = new blbl();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, blcm paramblcm)
+  {
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (paramblcm != null)
       {
-        paramMessage = this.a;
-        paramMessage.b += 0.05F;
-        QQComicTabBarView.b(this.a);
-        super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
+        nkm.a(localQQAppInterface, new blbo(paramArrayOfByte, paramblcm), paramArrayOfByte, paramString);
         return;
       }
-      super.sendMessageDelayed(this.a.a.obtainMessage(2), 16L);
+      nkm.a(localQQAppInterface, new blbn(this), paramArrayOfByte, paramString);
       return;
     }
-    this.a.b = 1.0F;
-    this.a.a(this.a.i, this.a.h);
-    this.a.i = this.a.h;
-    QQComicTabBarView.c(this.a);
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public String getInterfaceName()
+  {
+    return "CSP";
   }
 }
 

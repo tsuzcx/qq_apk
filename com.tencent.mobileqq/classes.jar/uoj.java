@@ -1,23 +1,18 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import UserGrowth.stWeishiDengtaReportReq;
+import UserGrowth.stWeishiDengtaReportRsp;
+import java.util.Map;
 
-final class uoj
-  extends ClickableSpan
+public class uoj
+  extends ukl<stWeishiDengtaReportRsp>
 {
-  uoj(uoh paramuoh, String paramString) {}
-  
-  public void onClick(@NonNull View paramView)
+  public uoj(String paramString, Map<String, String> paramMap)
   {
-    if (this.jdField_a_of_type_Uoh != null) {
-      this.jdField_a_of_type_Uoh.a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
+    super("WeishiDengtaReport");
+    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
+    localstWeishiDengtaReportReq.eventName = paramString;
+    localstWeishiDengtaReportReq.params = paramMap;
+    this.a = localstWeishiDengtaReportReq;
+    uqf.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
   }
 }
 

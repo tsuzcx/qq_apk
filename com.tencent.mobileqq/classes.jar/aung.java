@@ -1,55 +1,21 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public class aung
-  implements bknm
+  implements Comparator<FileInfo>
 {
-  public aung(NowLiveFragment paramNowLiveFragment) {}
-  
-  public void a(bknl parambknl)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    switch (parambknl.a)
+    if (paramFileInfo1.c())
     {
-    default: 
-      return;
-    case 0: 
-      parambknl = this.a.getActivity().getIntent().getStringExtra("big_brother_source_key");
-      if (avju.a())
-      {
-        localObject = new Bundle();
-        if (!TextUtils.isEmpty(parambknl)) {
-          ((Bundle)localObject).putString("big_brother_source_key", parambknl);
-        }
-        avju.b((Bundle)localObject);
-        return;
+      if (!paramFileInfo2.c()) {
+        return -1000;
       }
-      localObject = "" + this.a.c;
-      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      if (!TextUtils.isEmpty(parambknl)) {
-        localIntent.putExtra("big_brother_source_key", parambknl);
-      }
-      localIntent.putExtra("reqType", 1);
-      this.a.startActivity(localIntent);
-      return;
-    case 1: 
-      parambknl = "" + this.a.d;
-      localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", parambknl);
-      ((Intent)localObject).putExtra("reqType", 1);
-      this.a.startActivity((Intent)localObject);
-      return;
     }
-    parambknl = "" + this.a.e;
-    Object localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", parambknl);
-    ((Intent)localObject).putExtra("reqType", 1);
-    ((Intent)localObject).putExtra("title", anni.a(2131706442));
-    this.a.startActivity((Intent)localObject);
+    else if (paramFileInfo2.c()) {
+      return 1000;
+    }
+    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
   }
 }
 

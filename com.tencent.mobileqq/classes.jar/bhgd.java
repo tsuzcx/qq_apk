@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class bhgd
-  extends QWalletPayJsPlugin
+final class bhgd
+  extends View.AccessibilityDelegate
 {
-  public bhgd()
+  bhgd(bhgf parambhgf) {}
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    this.mPluginNameSpace = "qw_pay";
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.a != null)) {
+      this.a.onClick(paramView);
+    }
   }
 }
 

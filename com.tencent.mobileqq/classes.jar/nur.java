@@ -1,45 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
 public class nur
-  extends URLDrawableDownListener.Adapter
+  implements DialogInterface.OnClickListener
 {
-  public nur(VideoCoverFragment paramVideoCoverFragment) {}
+  public nur(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    while (!(paramView instanceof ImageView)) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
+      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
       return;
     }
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = paramURLDrawable.getIntrinsicWidth();
-    int j = paramURLDrawable.getIntrinsicHeight();
-    localLayoutParams.width = (i * afur.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
-    paramView.setLayoutParams(localLayoutParams);
-    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-    paramView.requestLayout();
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
+    paramDialogInterface.dismiss();
   }
 }
 

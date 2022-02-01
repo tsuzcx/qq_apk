@@ -1,96 +1,94 @@
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.c2s.imax.IMaxService.RspBody;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class avft
-  extends nis
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  nuk jdField_a_of_type_Nuk;
-  WeakReference<QQAppInterface> c;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public List<String> a;
   
-  public avft(avfs paramavfs, int paramInt)
+  public avft(SDKSetEmotionPreviewFragment paramSDKSetEmotionPreviewFragment)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getActivity().getLayoutInflater();
   }
   
-  public avft(avfs paramavfs, nuk paramnuk, QQAppInterface paramQQAppInterface)
+  public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_Nuk = paramnuk;
-    this.c = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    paramBundle = new IMaxService.RspBody();
-    if (QLog.isColorLevel()) {
-      QLog.i("ImaxAdNetPresenter", 2, "errorCode == " + paramInt);
-    }
-    if (paramInt == 0)
+    if (paramList == null)
     {
-      try
+      if (this.jdField_a_of_type_JavaUtilList.size() != 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("ImaxAdNetPresenter", 2, "request service success");
-        }
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.has()) || (paramBundle.int32_ret.get() != 0)) {
-          return;
-        }
-        paramInt = paramBundle.int32_type.get();
-        if ((paramInt == 2) && (this.jdField_a_of_type_Int == 3))
-        {
-          Toast.makeText(BaseApplication.getContext(), anni.a(2131704533), 0).show();
-          return;
-        }
-        if (paramInt != 1) {
-          return;
-        }
-        if (paramBundle.int32_exposure_flag.get() != 1) {
-          break label264;
-        }
-        paramArrayOfByte = (QQAppInterface)this.c.get();
-        if (paramArrayOfByte == null)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("ImaxAdNetPresenter", 2, "request EXPOSURE succ ,but app == null");
-          return;
-        }
+        this.jdField_a_of_type_JavaUtilList.clear();
+        notifyDataSetChanged();
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      nuu.a().a(paramArrayOfByte, 1, this.jdField_a_of_type_Nuk);
-      this.jdField_a_of_type_Nuk.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdNetPresenter", 2, "do exposure Report");
-      }
-      this.jdField_a_of_type_Avfs.a(this.jdField_a_of_type_Nuk);
-      bcst.a(paramArrayOfByte, "dc00898", "", this.jdField_a_of_type_Nuk.jdField_a_of_type_Nun.a, "0X8009129", "0X8009129", 0, 0, this.jdField_a_of_type_Nuk.jdField_a_of_type_Nun.c, "", nve.a(), this.jdField_a_of_type_Nuk.jdField_a_of_type_Nun.b);
       return;
-      label264:
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdNetPresenter", 2, "exposure already limited");
-      }
     }
-    else
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ImaxAdNetPresenter", 2, "request service fail");
-      }
-      if (this.jdField_a_of_type_Int == 3) {
-        Toast.makeText(BaseApplication.getContext(), anni.a(2131704532), 0).show();
-      }
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559125, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment), SDKSetEmotionPreviewFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment)));
+      paramView = new avfv(this);
+      paramView.a = ((URLImageView)localView.findViewById(2131365933));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = beyq.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = beyq.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = azru.a((String)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
+      localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+      paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      paramView.a.setImageDrawable((Drawable)localObject2);
+      localObject2 = paramView.a;
+      paramView.a.setOnClickListener(new avfu(this, (String)localObject1, (View)localObject2));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject1 = (avfv)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
     }
   }
 }

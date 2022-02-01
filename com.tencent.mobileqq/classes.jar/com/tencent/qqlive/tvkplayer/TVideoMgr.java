@@ -57,8 +57,10 @@ public class TVideoMgr
     }
     catch (Throwable localThrowable)
     {
-      label149:
-      break label149;
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
     if (TextUtils.isEmpty(mStaGuid)) {
       mStaGuid = "wtfguidisemptyhehehe";

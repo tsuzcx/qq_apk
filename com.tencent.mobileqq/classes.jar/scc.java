@@ -1,42 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.net.URL;
+import java.util.ArrayList;
 
-public class scc
-  extends bbxe
+class scc
+  extends sbh
 {
-  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  scc(sbi paramsbi) {}
   
-  public scc(VideoFeedsAppInterface paramVideoFeedsAppInterface)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
+    sbi.a(this.a, false);
+    paramActionSheetItem = new Bundle();
+    paramActionSheetItem.putString("title", paramBaseArticleInfo.mTitle);
+    paramActionSheetItem.putString("desc", paramBaseArticleInfo.mSummary);
+    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
     {
-      super.a();
+      paramActionSheetItem.putString("detail_url", paramBaseArticleInfo.qzoneShareUrl);
+      paramString = new ArrayList(1);
+      if (paramBaseArticleInfo.getVideoCoverURL() != null) {
+        break label164;
+      }
+    }
+    label164:
+    for (paramBaseArticleInfo = null;; paramBaseArticleInfo = paramBaseArticleInfo.getVideoCoverURL().getFile())
+    {
+      paramString.add(paramBaseArticleInfo);
+      paramActionSheetItem.putStringArrayList("image_url", paramString);
+      paramActionSheetItem.putLong("req_share_id", 0L);
+      bmud.a(sbi.a(this.a), sbi.a(this.a), paramActionSheetItem, null, 19202);
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      paramActionSheetItem.putString("detail_url", paramString + "&sourcefrom=1");
+      break;
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
+  public int b()
   {
-    super.b(paramToServiceMsg, null, scd.class);
+    return 1;
+  }
+  
+  public int c()
+  {
+    return 2;
   }
 }
 

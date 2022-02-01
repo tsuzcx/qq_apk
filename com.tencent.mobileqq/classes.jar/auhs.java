@@ -1,36 +1,44 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import java.util.ArrayList;
 
 public class auhs
-  implements ayyt
+  extends auhw
 {
-  public auhs(ForwardMultServerShare.2 param2) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean d;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public auhs(Context paramContext, FileManagerEntity paramFileManagerEntity)
   {
-    return null;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.d = false;
   }
   
-  public void a(ayyu paramayyu)
+  public Intent a()
   {
-    if (paramayyu != null) {
-      QLog.d(auhq.a(), 1, "requestImageShare updateMsg info =" + paramayyu);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return null;
     }
+    ForwardFileInfo localForwardFileInfo = ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localForwardFileInfo.b(10009);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileinfo", localForwardFileInfo);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    localIntent.putExtra("_from_aio_", this.d);
+    return localIntent;
   }
   
-  public void b(ayyu paramayyu)
+  public void a(ArrayList<String> paramArrayList)
   {
-    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramayyu);
-    QLog.d(auhq.a(), 1, new Object[] { "requestImageShare onSend result =", paramayyu, ", isTimeOut=", Boolean.valueOf(auhq.a(this.a.this$0)) });
-    if (this.a.jdField_a_of_type_JavaUtilMap.size() == auhq.a(this.a.this$0).size())
-    {
-      aukw.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-      auhq.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

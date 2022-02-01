@@ -1,29 +1,24 @@
 public class aqmr
-  extends aqmp
 {
-  private aqni jdField_a_of_type_Aqni;
-  private aqns jdField_a_of_type_Aqns;
+  public int a;
+  long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "0";
   
-  public aqmr(String paramString, aqni paramaqni, aqns paramaqns)
+  public aqmr()
   {
-    super(paramString);
-    this.jdField_a_of_type_Aqni = paramaqni;
-    this.jdField_a_of_type_Aqns = paramaqns;
-  }
-  
-  public aqni a()
-  {
-    return this.jdField_a_of_type_Aqni;
-  }
-  
-  public aqns a()
-  {
-    return this.jdField_a_of_type_Aqns;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_JavaLangString = "0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmr
  * JD-Core Version:    0.7.0.1
  */

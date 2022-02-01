@@ -1,24 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.WifiInfo;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class blrq
-  implements Parcelable.Creator<LbsDataV2.WifiInfo>
+public class blrq
+  extends BaseAdapter
+  implements blre
 {
-  public LbsDataV2.WifiInfo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  
+  public blrq(View paramView)
   {
-    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
-    if (paramParcel != null)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    if (paramView == null)
     {
-      localWifiInfo.mac = paramParcel.readString();
-      localWifiInfo.rssi = paramParcel.readInt();
+      this.jdField_a_of_type_Int = 0;
+      return;
     }
-    return localWifiInfo;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public LbsDataV2.WifiInfo[] a(int paramInt)
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
   {
     return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

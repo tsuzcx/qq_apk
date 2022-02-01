@@ -1,125 +1,42 @@
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.util.SparseArray;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture.SystemCaptureProxy.1;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture.SystemCaptureProxy.2;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture.SystemCaptureProxy.3;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class rni
-  implements rnd
+final class rni
+  implements sct
 {
-  private int jdField_a_of_type_Int;
-  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
-  private SparseArray<rnb> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private String jdField_a_of_type_JavaLangString;
-  private Set<rmy> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private int c;
+  rni(rnk paramrnk, HashMap paramHashMap) {}
   
-  private int a(int paramInt)
+  public void a(scv paramscv)
   {
-    return Integer.parseInt(this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.extractMetadata(paramInt));
-  }
-  
-  private Bitmap a(MediaMetadataRetriever paramMediaMetadataRetriever, rmz paramrmz)
-  {
-    try
-    {
-      paramMediaMetadataRetriever = paramMediaMetadataRetriever.getFrameAtTime(paramrmz.c * 1000, 0);
-      return paramMediaMetadataRetriever;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoExtractFrame", 2, "换链回包 mHasDestory = " + rnh.a().get() + ", vid = " + paramscv.jdField_b_of_type_JavaLangString);
     }
-    catch (Throwable paramMediaMetadataRetriever)
+    if ((rnh.a().get()) || (!this.jdField_a_of_type_Rnk.jdField_a_of_type_JavaLangString.equals(paramscv.jdField_b_of_type_JavaLangString))) {}
+    for (;;)
     {
-      QLog.e("SystemCaptureProxy", 1, "getFrameAtTime failed for captureTask" + paramrmz.c, paramMediaMetadataRetriever);
-    }
-    return null;
-  }
-  
-  private void d()
-  {
-    try
-    {
-      QLog.d("SystemCaptureProxy", 1, "prepare...");
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(this.jdField_a_of_type_JavaLangString);
-      QLog.d("SystemCaptureProxy", 1, "prepare after...");
-      this.jdField_a_of_type_Int = a(9);
-      this.jdField_b_of_type_Int = a(18);
-      this.c = a(19);
-      ThreadManager.getUIHandler().post(new SystemCaptureProxy.3(this));
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  private void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
-    {
-      rmy localrmy = (rmy)localIterator.next();
-      if (localrmy != null) {
-        localrmy.a(this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
+      paramscv = paramscv.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramscv.hasNext())
+      {
+        scv localscv = (scv)paramscv.next();
+        if ((localscv.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(localscv.jdField_c_of_type_JavaLangString)) && (localscv.jdField_c_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_Rnk.jdField_a_of_type_Long))))
+        {
+          this.jdField_a_of_type_Rnk.jdField_b_of_type_Int = localscv.jdField_b_of_type_Int;
+          this.jdField_a_of_type_Rnk.jdField_c_of_type_Int = localscv.jdField_c_of_type_Int;
+          rnh.a(this.jdField_a_of_type_Rnk, localscv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Rnk.jdField_b_of_type_Long);
+        }
+      }
+      for (int i = 1; (i == 0) && (QLog.isColorLevel()); i = 0)
+      {
+        QLog.d("VideoExtractFrame", 2, "no found videoInfo.tag = " + this.jdField_a_of_type_Rnk.jdField_b_of_type_JavaLangString);
+        return;
       }
     }
   }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever != null) {
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.release();
-    }
-  }
-  
-  public void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
-  
-  public void a(String paramString, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    QLog.d("SystemCaptureProxy", 1, "prepare before...");
-    ThreadManager.excute(new SystemCaptureProxy.1(this), 16, null, true);
-  }
-  
-  public void a(rmy paramrmy)
-  {
-    this.jdField_a_of_type_JavaUtilSet.add(paramrmy);
-  }
-  
-  public void a(rmz paramrmz, rnb paramrnb)
-  {
-    try
-    {
-      ThreadManager.excute(new SystemCaptureProxy.2(this, paramrmz, paramrnb), 16, null, true);
-      return;
-    }
-    finally
-    {
-      paramrmz = finally;
-      throw paramrmz;
-    }
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

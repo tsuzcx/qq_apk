@@ -1,31 +1,23 @@
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-final class aykh
-  implements bdvv
+public class aykh
+  extends aoaa
 {
-  public void a(bdws parambdws, bdwt parambdwt)
+  public aykh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if ((parambdws == null) || (parambdwt == null)) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
+    }
+    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
     {
-      do
-      {
-        return;
-      } while (!(parambdws instanceof bdvs));
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.c;
-      parambdwt.c = 0L;
-      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
-      if (parambdwt.contains("range="))
-      {
-        String str = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-        parambdws.jdField_a_of_type_JavaLangString = (str + "range=" + parambdws.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("OlympicResources", 2, "IBreakDownFix, " + parambdwt);
+      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
+      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
+    }
   }
 }
 

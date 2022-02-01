@@ -1,92 +1,23 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import java.util.Calendar;
+import android.view.ViewGroup;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
 
-public class rdy
+public abstract interface rdy
 {
-  public static int a;
-  private static rdy jdField_a_of_type_Rdy;
-  private SparseArray<rdz> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public abstract long a();
   
-  static
-  {
-    jdField_a_of_type_Int = 1;
-  }
+  public abstract void a();
   
-  public static String a()
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    if (localCalendar == null) {
-      return "";
-    }
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    return String.valueOf(i) + j + k;
-  }
+  public abstract void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
   
-  public static rdy a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Rdy == null) {
-        jdField_a_of_type_Rdy = new rdy();
-      }
-      rdy localrdy = jdField_a_of_type_Rdy;
-      return localrdy;
-    }
-    finally {}
-  }
+  public abstract void a(String paramString, ViewGroup paramViewGroup);
   
-  private rdz a(int paramInt)
-  {
-    rdz localrdz2 = (rdz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    rdz localrdz1 = localrdz2;
-    if (localrdz2 == null)
-    {
-      localrdz1 = rea.a(paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localrdz1);
-    }
-    return localrdz1;
-  }
+  public abstract void a(rdt paramrdt);
   
-  public String a(BaseArticleInfo paramBaseArticleInfo, int paramInt, TemplateBean paramTemplateBean, ViewBase paramViewBase)
-  {
-    rdz localrdz = a(paramInt);
-    if (localrdz == null) {
-      return "";
-    }
-    return localrdz.a(paramBaseArticleInfo, paramTemplateBean, paramViewBase);
-  }
+  public abstract void a(rdu paramrdu, rdw paramrdw);
   
-  public void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    rdz localrdz = a(paramInt);
-    if (localrdz == null) {
-      return;
-    }
-    localrdz.a(paramBaseArticleInfo, paramBoolean1, paramBoolean2);
-  }
+  public abstract void b();
   
-  public void a(Object paramObject, int paramInt)
-  {
-    rdz localrdz = a(paramInt);
-    if (localrdz == null) {
-      return;
-    }
-    localrdz.a(paramObject);
-  }
-  
-  public boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean, int paramInt)
-  {
-    rdz localrdz = a(paramInt);
-    if (localrdz == null) {
-      return false;
-    }
-    return localrdz.a(paramBaseArticleInfo, paramBoolean);
-  }
+  public abstract void c();
 }
 
 

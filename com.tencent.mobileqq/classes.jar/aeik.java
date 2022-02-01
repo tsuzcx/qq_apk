@@ -1,14 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
 
-class aeik
-  implements Handler.Callback
+public class aeik
+  extends atpa
 {
-  aeik(aeij paramaeij) {}
+  public aeik(Conversation paramConversation) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    return true;
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 

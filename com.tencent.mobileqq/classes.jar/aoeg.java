@@ -1,163 +1,146 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aoeg
-  extends aods
+  implements anui
 {
-  public aoeg(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
-  {
-    super(paramQQAppInterface, paramFriendListHandler);
-  }
+  public static final int TYPE_ACCOUNT_DETAIL_DYNAMIC_LIST = 107;
+  public static final int TYPE_ACCOUNT_DETAIL_FUNCTION_FLAG = 109;
+  public static final int TYPE_DOWN_PUBLIC_ACCOUNT = 103;
+  public static final int TYPE_FOLLOW_PUBLIC_ACCOUNT = 101;
+  public static final int TYPE_GET_GUIDE_FRIENDS = 110;
+  public static final int TYPE_GET_HISTORY_MESSAGE = 105;
+  public static final int TYPE_GET_PUBLIC_NOTIFICATION = 106;
+  public static final int TYPE_GET_RECOMMEND_LIST = 104;
+  public static final int TYPE_GET_SUBSCRIBE_STATUS = 111;
+  public static final int TYPE_GET_USER_FOLLOW_LIST = 100;
+  public static final int TYPE_SET_KANDIAN_SUBSCRIBE = 108;
+  public static final int TYPE_SET_RECVMSG_STATUS = 112;
+  public static final int TYPE_UNFOLLOW_PUBLIC_ACCOUNT = 102;
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1;
-    boolean bool2;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool1 = true;
-      bool2 = paramToServiceMsg.extraData.getBoolean("key_show_to_friends", true);
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "set network switch isSuccess = " + bool1 + "; isShowedToFriends = " + bool2);
-      }
-      if (!bool1) {
-        break label188;
-      }
-    }
-    label188:
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg.uint32_result.get() != 0) {
-          continue;
-        }
-        bool1 = true;
-        if (bool1) {
-          this.a.c(bool2, false);
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("handleSetShowNetworkToFriendResp", 2, paramToServiceMsg.getMessage());
-        bool1 = false;
-        continue;
-        continue;
-      }
-      if (!bool1)
-      {
-        bool2 = this.a.c(false);
-        a(76, bool1, Boolean.valueOf(bool2));
-        return;
-        bool1 = false;
-        break;
-        bool1 = false;
-        continue;
-      }
-    }
-  }
+  public void onDownPublicAccount() {}
   
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onDynamicListGet(boolean paramBoolean, int paramInt) {}
+  
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void onFollowPublicAccount(boolean paramBoolean, int paramInt) {}
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString) {}
+  
+  public void onGetGuideFriends(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
+  
+  public void onGetHistoryMsgRet(int paramInt) {}
+  
+  public void onGetPublicAccountSubscribeStatus(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void onPublicAccountNotification(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onSetPublicAccountSubscribeStatus(boolean paramBoolean, int paramInt, long paramLong) {}
+  
+  public void onSetRecvMsgState(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp) {}
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool5 = true;
-    boolean bool6 = true;
-    boolean bool4 = true;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    if (100 == paramInt)
     {
-      bool3 = true;
-      bool1 = bool5;
-      bool2 = bool3;
-      if (bool3) {
-        bool2 = bool6;
-      }
+      paramObject = (aoei)paramObject;
+      onUpdateUserFollowList(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
-    for (;;)
+    do
     {
-      try
+      return;
+      if (101 == paramInt)
       {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        bool2 = bool6;
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        bool2 = bool6;
-        if (paramToServiceMsg.uint32_result.get() != 0) {
-          continue;
-        }
-        bool3 = true;
-        bool1 = bool5;
-        bool2 = bool3;
-        if (bool3)
+        if ((paramObject instanceof aoeh))
         {
-          bool2 = bool6;
-          paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          bool2 = bool6;
-          long l = paramToServiceMsg.getInt();
-          bool2 = bool6;
-          if (paramToServiceMsg.get() != 0) {
-            continue;
-          }
-          bool1 = bool4;
-          bool2 = bool1;
-          this.a.c(bool1, false);
-          bool2 = bool3;
+          paramObject = (aoeh)paramObject;
+          onFollowPublicAccount(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
         }
+        if ((paramObject instanceof Integer))
+        {
+          onFollowPublicAccount(paramBoolean, ((Integer)paramObject).intValue());
+          return;
+        }
+        onFollowPublicAccount(paramBoolean, String.valueOf(paramObject));
+        return;
       }
-      catch (Exception paramToServiceMsg)
+      if (102 == paramInt)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if ((paramObject instanceof aoeh))
+        {
+          paramObject = (aoeh)paramObject;
+          onUnfollowPublicAccount(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
         }
-        QLog.d("handleGetShowNetworkToFriendResp", 2, paramToServiceMsg.getMessage());
-        bool3 = false;
-        bool1 = bool2;
-        bool2 = bool3;
-        continue;
+        onUnfollowPublicAccount(paramBoolean, String.valueOf(paramObject));
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "get network switch isSuccess = " + bool2 + "; isShowedToFriends = " + bool1);
+      if (103 == paramInt)
+      {
+        onDownPublicAccount();
+        return;
       }
-      if (!bool2) {
-        bool1 = this.a.c(false);
+      if (104 == paramInt)
+      {
+        onUpdateRecommendList(paramBoolean);
+        return;
       }
-      a(77, bool2, Boolean.valueOf(bool1));
-      return;
-      bool3 = false;
-      break;
-      bool3 = false;
-      continue;
-      bool1 = false;
-    }
+      if (105 == paramInt)
+      {
+        onGetHistoryMsgRet(((Integer)paramObject).intValue());
+        return;
+      }
+      if (106 == paramInt)
+      {
+        onPublicAccountNotification(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+      if (109 == paramInt)
+      {
+        onUpdateFunctionFlag(paramBoolean, (oag)paramObject);
+        return;
+      }
+      if (108 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        onSetPublicAccountSubscribeStatus(paramBoolean, ((Integer)paramObject.get("seq")).intValue(), ((Long)paramObject.get("uin")).longValue());
+        return;
+      }
+      if (110 == paramInt)
+      {
+        onGetGuideFriends(paramBoolean, (ArrayList)paramObject);
+        return;
+      }
+      if (111 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        long l = 0L;
+        paramInt = 0;
+        if (paramObject != null)
+        {
+          l = ((Long)paramObject.get("uin")).longValue();
+          paramInt = ((Integer)paramObject.get("status")).intValue();
+        }
+        onGetPublicAccountSubscribeStatus(paramBoolean, l, paramInt);
+        return;
+      }
+    } while ((112 != paramInt) || (!(paramObject instanceof SetRecvMsgStateRsp)));
+    onSetRecvMsgState(paramBoolean, (SetRecvMsgStateRsp)paramObject);
   }
   
-  public boolean a(String paramString)
-  {
-    return ("OidbSvc.0x491_107".equals(paramString)) || ("OidbSvc.0x490_107".equals(paramString));
-  }
+  public void onUpdateFunctionFlag(boolean paramBoolean, oag paramoag) {}
   
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.0x491_107".equals(str)) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!"OidbSvc.0x490_107".equals(str)) {
-      return;
-    }
-    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-  }
+  public void onUpdateRecommendList(boolean paramBoolean) {}
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean) {}
 }
 
 

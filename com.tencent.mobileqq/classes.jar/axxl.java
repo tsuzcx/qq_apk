@@ -1,21 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 class axxl
-  implements View.OnClickListener
+  implements aydl
 {
-  axxl(axxk paramaxxk) {}
+  axxl(axxj paramaxxj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    Intent localIntent = new Intent(axxk.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://nearby.qq.com/nearby-topic/topicTags.html");
-    axxk.a(this.a).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
   }
 }
 

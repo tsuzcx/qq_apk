@@ -1,19 +1,25 @@
-import java.util.Comparator;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class bcvf
-  implements Comparator
+final class bcvf
+  implements bcvi
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  bcvf(BusinessObserver paramBusinessObserver) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    paramObject1 = (bcvb)paramObject1;
-    paramObject2 = (bcvb)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
-    }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dataErrorMsg", paramString);
+    localBundle.putInt("dataErrorCode", paramInt);
+    this.a.onReceive(0, false, localBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("data", paramString.getBytes());
+    localBundle.putString("cmd", "isIpForeign");
+    this.a.onReceive(0, true, localBundle);
   }
 }
 

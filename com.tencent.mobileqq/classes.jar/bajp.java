@@ -1,31 +1,23 @@
-import androidx.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 
 public class bajp
+  extends AnimatorListenerAdapter
 {
-  public bajq a;
-  public bajs a;
-  public bajt a;
-  public List<String> a;
-  public List<bajr> b = new ArrayList();
+  public bajp(VasProfileTagView paramVasProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
   
-  public bajp()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("baseProfile").append("=").append(this.jdField_a_of_type_Bajq).append("|\n");
-    localStringBuilder.append("personalLabels").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|\n");
-    localStringBuilder.append("qZoneInfo").append("=").append(this.jdField_a_of_type_Bajs).append("|\n");
-    localStringBuilder.append("nicePics").append("=").append(Arrays.toString(this.b.toArray())).append("|\n");
-    localStringBuilder.append("sign").append("=").append(this.jdField_a_of_type_Bajt).append("|\n");
-    return localStringBuilder.toString();
+    if ((this.jdField_a_of_type_Boolean) && (VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375036) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375036).equals(Boolean.valueOf(true))))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131375036, Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375038)).longValue());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
   }
 }
 

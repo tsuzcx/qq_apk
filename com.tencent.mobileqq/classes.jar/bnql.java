@@ -1,6 +1,17 @@
-public abstract interface bnql
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class bnql
+  implements View.OnTouchListener
 {
-  public abstract void a(bnrb parambnrb);
+  bnql(bnqk parambnqk) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.a();
+    return false;
+  }
 }
 
 

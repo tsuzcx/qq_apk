@@ -1,18 +1,21 @@
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
+
 class beov
+  extends beow
 {
-  final float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  float b = 0.0F;
-  
-  public beov(beos parambeos, float paramFloat)
+  public beov(EditorState paramEditorState, List<EditorState> paramList)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    super(paramEditorState, paramList, localList);
   }
   
-  public float a()
+  public void a(EditorState paramEditorState)
   {
-    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
+    super.a(paramEditorState);
+    beoh.a(this.jdField_a_of_type_Beoh).a(false, false);
+    beoh.a(this.jdField_a_of_type_Beoh).b(false);
+    QQToast.a(beoh.a(this.jdField_a_of_type_Beoh), this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

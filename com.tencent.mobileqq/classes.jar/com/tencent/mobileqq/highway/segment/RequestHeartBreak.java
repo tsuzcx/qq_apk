@@ -9,7 +9,7 @@ public class RequestHeartBreak
   extends HwRequest
 {
   public int connId;
-  public boolean isUrgent;
+  public boolean isUrgent = false;
   
   public RequestHeartBreak(String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean)
   {

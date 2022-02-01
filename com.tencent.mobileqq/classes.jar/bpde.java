@@ -1,19 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalBase;
 
-class bpde
-  extends QQUIEventReceiver<bpcv, bpjh>
+public class bpde
+  extends Handler
 {
-  public bpde(@NonNull bpcv parambpcv)
+  public bpde(LyricViewInternalBase paramLyricViewInternalBase, Looper paramLooper)
   {
-    super(parambpcv);
+    super(paramLooper);
   }
   
-  public void a(@NonNull bpcv parambpcv, @NonNull bpjh parambpjh) {}
-  
-  public Class acceptEventClass()
+  public void handleMessage(Message paramMessage)
   {
-    return bpjh.class;
+    Log.d("ModuleLyricViewInternal", "mRefreshHandler -> handleMessage begin, mState:" + this.a.l);
+    this.a.requestLayout();
+    this.a.invalidate();
   }
 }
 

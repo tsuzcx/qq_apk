@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.List;
+import mqq.app.QQPermissionCallback;
 
 class aksd
-  implements akse
+  implements QQPermissionCallback
 {
   aksd(aksc paramaksc) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i = 1;
-    aksc localaksc = this.a;
-    localaksc.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Aksf != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Aksf;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
-      }
-    }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
-      return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
-    }
+    bhlq.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aksb.a(this.a.a);
   }
 }
 

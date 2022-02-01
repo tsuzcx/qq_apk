@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cv;
@@ -16,10 +16,10 @@ public class PrinterDefaultActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131368947)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131368979);
+    ((TextView)findViewById(2131369042)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131369073);
     localTextView.setVisibility(0);
-    localTextView.setText(anni.a(2131707193));
+    localTextView.setText(anzj.a(2131707302));
     localTextView.setOnClickListener(new cv(this));
   }
   
@@ -34,9 +34,9 @@ public class PrinterDefaultActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165431);
-    setContentView(2131559049);
-    setTitle(2131691192);
+    super.getWindow().setBackgroundDrawableResource(2131165429);
+    setContentView(2131559048);
+    setTitle(2131691195);
     super.getWindow().setBackgroundDrawable(null);
     a();
     return true;

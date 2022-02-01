@@ -1,28 +1,11 @@
-public abstract class attu
+class attu
+  implements bjhv
 {
-  private attt a;
+  attu(atts paramatts) {}
   
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString3);
-    return localStringBuilder.toString();
-  }
-  
-  public attt a()
-  {
-    return this.a;
-  }
-  
-  public abstract String a();
-  
-  public void a(attt paramattt)
-  {
-    this.a = paramattt;
+    aunj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atts.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

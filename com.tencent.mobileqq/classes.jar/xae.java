@@ -1,71 +1,58 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class xae
-  extends wlf<xbn>
 {
-  public static final String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  static
+  @Nullable
+  public static xdk a(String paramString, List<xdk> paramList)
   {
-    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.video_watch_no_expired");
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public xbn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspWatchVideo localRspWatchVideo = new qqstory_service.RspWatchVideo();
-    try
-    {
-      localRspWatchVideo.mergeFrom(paramArrayOfByte);
-      return new xbn(localRspWatchVideo);
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
+      return null;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramArrayOfByte.printStackTrace();
+      xdk localxdk = (xdk)paramList.next();
+      if (paramString.equals(localxdk.a)) {
+        return localxdk;
+      }
     }
     return null;
   }
   
-  protected byte[] a()
+  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
   {
-    qqstory_service.ReqWatchVideo localReqWatchVideo = new qqstory_service.ReqWatchVideo();
-    localReqWatchVideo.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqWatchVideo.to_union_id.set(ByteStringMicro.copyFromUtf8(a(this.jdField_c_of_type_JavaLangString)));
-    PBUInt32Field localPBUInt32Field = localReqWatchVideo.is_live_video;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
+    yuk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
+    if (paramBoolean)
     {
-      localPBUInt32Field.set(i);
-      localReqWatchVideo.source.set(this.jdField_c_of_type_Int);
-      if (this.jdField_b_of_type_Long > 0L) {
-        localReqWatchVideo.create_time.set(this.jdField_b_of_type_Long / 1000L);
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        Long localLong = (Long)a.get(str);
+        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
+        {
+          ((Iterator)localObject).remove();
+          yuk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
+        }
+        else
+        {
+          a.put(str, Long.valueOf(System.currentTimeMillis()));
+        }
       }
-      if (this.d > 0) {
-        localReqWatchVideo.vid_type.set(this.d);
-      }
-      return localReqWatchVideo.toByteArray();
     }
-  }
-  
-  public String toString()
-  {
-    return "WatchVideoRequest{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoUid=" + this.jdField_c_of_type_JavaLangString + '}';
+    if (paramList.size() == 0) {
+      return;
+    }
+    yuk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
+    Object localObject = new xdj(paramList);
+    wow.a().a((wpa)localObject, new xaf(paramList));
   }
 }
 

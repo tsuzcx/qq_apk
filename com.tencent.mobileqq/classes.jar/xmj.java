@@ -1,15 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.util.List;
 
 class xmj
-  implements View.OnTouchListener
+  implements ygj
 {
-  private xmj(xmg paramxmg) {}
+  xmj(xmi paramxmi, List paramList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(ygk paramygk)
   {
-    return xmg.a(this.a).a(paramMotionEvent);
+    xmi.a(this.jdField_a_of_type_Xmi, this.jdField_a_of_type_JavaUtilList, paramygk);
   }
 }
 

@@ -1,21 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public final class ahhf
-  implements bial
+final class ahhf
+  implements ahky
 {
-  public ahhf(Handler paramHandler) {}
-  
-  public void a(biaj parambiaj)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
+    if ((paramChatMessage instanceof MessageForLightVideo)) {
+      return 103;
     }
-    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambiaj), 100L);
+    switch (((MessageForShortVideo)paramChatMessage).busiType)
+    {
+    default: 
+      return 29;
+    case 1: 
+      return 38;
+    case 2: 
+      return 46;
+    case 1007: 
+      return 40;
+    }
+    return 41;
   }
-  
-  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
 }
 
 

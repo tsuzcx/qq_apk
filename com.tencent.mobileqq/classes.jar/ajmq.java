@@ -1,21 +1,30 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
 
 public class ajmq
-  extends anun
+  extends ajmf
 {
-  public ajmq(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public QIMNotifyAddFriend a;
   
-  public void a()
+  public ajmq(QIMNotifyAddFriend paramQIMNotifyAddFriend)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
-    }
-    arrp localarrp = (arrp)EmoticonGroupStoreFragment.a(this.a).getManager(103);
-    if (localarrp != null) {
-      localarrp.b();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
+    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
+  }
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
   }
 }
 

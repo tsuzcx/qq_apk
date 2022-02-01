@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import amtk;
+import anfe;
 import com.tencent.superplayer.api.ISuperPlayer;
 
 public class CmGameGdtVideoPlayer$3
   implements Runnable
 {
-  public CmGameGdtVideoPlayer$3(amtk paramamtk) {}
+  public CmGameGdtVideoPlayer$3(anfe paramanfe) {}
   
   public void run()
   {
-    if (amtk.a(this.this$0) != null)
+    if (anfe.a(this.this$0) != null)
     {
-      amtk.a(this.this$0).stop();
-      amtk.a(this.this$0).release();
-      amtk.a(this.this$0, null);
-      amtk.a(this.this$0, 6);
+      anfe.a(this.this$0).stop();
+      anfe.a(this.this$0).release();
+      anfe.a(this.this$0, null);
+      anfe.a(this.this$0, 6);
     }
   }
 }

@@ -1,33 +1,20 @@
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import java.util.Hashtable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-final class zzt
-  implements zwi
+public class zzt
 {
-  zzt(String paramString, Paint paramPaint) {}
+  public int a;
+  public RecyclerView.ViewHolder a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void a(boolean paramBoolean, String paramString)
+  private zzt(RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < 3) {}
-      try
-      {
-        Typeface localTypeface = Typeface.createFromFile(paramString);
-        zzr.a().put(this.jdField_a_of_type_JavaLangString, localTypeface);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(localTypeface);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 

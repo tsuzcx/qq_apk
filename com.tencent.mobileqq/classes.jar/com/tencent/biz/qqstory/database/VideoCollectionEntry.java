@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.database;
 
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
-import yqp;
+import yuk;
 
 public class VideoCollectionEntry
   extends Entity
@@ -34,7 +34,7 @@ public class VideoCollectionEntry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      yqp.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
+      yuk.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
     }
     return -1;
   }

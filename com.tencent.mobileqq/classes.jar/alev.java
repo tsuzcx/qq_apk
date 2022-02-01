@@ -1,122 +1,278 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class alev
-  extends alej
 {
-  public alev(Context paramContext)
+  public static int a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131696692);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    int i = 0;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    paramInt = i;
+    if (localSharedPreferences != null)
+    {
+      paramInt = i;
+      if (!TextUtils.isEmpty(paramString)) {
+        paramInt = localSharedPreferences.getInt("url_abnormal_retry_times" + paramString, 0);
+      }
+    }
+    return paramInt;
   }
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public static long a(int paramInt)
   {
-    if (paramMessageRecord == null) {
-      return null;
+    long l = 0L;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("check_surplus_res_time", 0L);
     }
-    boolean bool = axci.a(paramMessageRecord);
-    if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool)) {
-      return null;
-    }
-    if (bool)
+    return l;
+  }
+  
+  public static long a(String paramString, int paramInt)
+  {
+    long l2 = 0L;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    long l1 = l2;
+    if (localSharedPreferences != null)
     {
-      if ((paramObject instanceof alev))
-      {
-        paramObject = (alev)paramObject;
-        paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-        return paramObject;
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString)) {
+        l1 = localSharedPreferences.getLong("url_abnormal_retry_last_time" + paramString, 0L);
       }
-      paramObject = new alev(BaseApplication.getContext());
-      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
     }
-    if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
+    return l1;
+  }
+  
+  public static long a(String paramString, long paramLong, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    long l = paramLong;
+    if (localSharedPreferences != null)
     {
-      paramMessageRecord = (MessageForDeliverGiftTips)paramMessageRecord;
-      if (!(paramObject instanceof alev)) {
-        break label253;
+      l = paramLong;
+      if (!TextUtils.isEmpty(paramString)) {
+        l = localSharedPreferences.getLong("url_doneTime" + paramString, paramLong);
       }
-      paramObject = (alev)paramObject;
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
     }
-    for (parambepr = paramObject;; parambepr = paramObject)
+    return l;
+  }
+  
+  private static SharedPreferences a(int paramInt)
+  {
+    if (BaseApplicationImpl.getApplication() != null)
     {
-      if (!TextUtils.isEmpty(paramMessageRecord.remindBrief))
+      if (paramInt == 1) {
+        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_utilinner", 4);
+      }
+      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_util", 4);
+    }
+    return null;
+  }
+  
+  public static ResourceInfo a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    ResourceInfo localResourceInfo = new ResourceInfo();
+    localResourceInfo.url = paramString;
+    String str = alds.a(paramString, paramInt2);
+    if (!TextUtils.isEmpty(str))
+    {
+      localResourceInfo.filePath = str;
+      localResourceInfo.fileMd5 = b(paramString, str, paramInt2);
+      localResourceInfo.doneTime = a(paramString, 0L, paramInt2);
+      if ((paramBoolean) || (PreloadResource.isNeedAutoUnzip(paramString, paramInt1)))
       {
-        paramObject = paramMessageRecord.remindBrief.split("#");
-        if (paramObject.length > 1) {
-          parambepr.jdField_a_of_type_JavaLangString = ("[" + paramObject[1] + "]");
+        paramString = PreloadResource.getFolderPathByMD5AndUrl(localResourceInfo.fileMd5, paramString, paramInt2);
+        if (PreloadResource.checkFolderAndUnzip(localResourceInfo.filePath, paramString)) {
+          localResourceInfo.folderPath = paramString;
         }
       }
-      paramObject = (bfos)paramQQAppInterface.getManager(223);
-      if (!paramObject.a(false)) {
+    }
+    return localResourceInfo;
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    String str = paramString2;
+    if (localSharedPreferences != null)
+    {
+      str = paramString2;
+      if (!TextUtils.isEmpty(paramString1)) {
+        str = localSharedPreferences.getString("url_md5" + paramString1, paramString2);
+      }
+    }
+    return str;
+  }
+  
+  public static List<alew> a(int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = a(paramInt);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).getAll().entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        String str = (String)localEntry.getKey();
+        if (str.startsWith("url_last_use_time")) {
+          localArrayList.add(new alew(str.substring("url_last_use_time".length(), str.length()), ((Long)localEntry.getValue()).longValue(), paramInt));
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void a(int paramInt, PreloadConfig paramPreloadConfig)
+  {
+    if (paramPreloadConfig == null) {}
+    long l1;
+    do
+    {
+      return;
+      l1 = NetConnInfoCenter.getServerTimeMillis();
+      if (l1 - a(paramInt) >= 86400000L) {
         break;
       }
-      return null;
-      bcst.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_HAS_GIFT_IN_TROOP, MessageRecord cast to GiftTips error", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
-      return null;
-      label253:
-      paramObject = new alev(BaseApplication.getContext());
-      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+    } while (!QLog.isColorLevel());
+    QLog.d("ResUtil", 2, "removeSurplusRes already Check Today:" + paramInt);
+    return;
+    Object localObject = alds.a(paramInt);
+    long l2 = System.currentTimeMillis();
+    long l3 = bhmi.b((String)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ResUtil", 2, "resFolderPathSize:" + l3 + "|" + 209715200L + "|" + (System.currentTimeMillis() - l2));
     }
-    paramObject.a = 1;
-    return parambepr;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if (l3 > 209715200L)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Beps == null) {
-        this.jdField_a_of_type_Beps = new beps();
-      }
-      this.jdField_a_of_type_Beps.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Beps != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Beps.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      localObject = a(paramInt).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localJSONException.printStackTrace();
+        alew localalew = (alew)((Iterator)localObject).next();
+        if ((localalew != null) && (!TextUtils.isEmpty(localalew.jdField_a_of_type_JavaLangString)) && (l1 - localalew.jdField_a_of_type_Long > 2592000000L) && (!paramPreloadConfig.isUrlInConfig(localalew.jdField_a_of_type_JavaLangString)))
+        {
+          ResourceInfo localResourceInfo = a(localalew.jdField_a_of_type_JavaLangString, false, 0, localalew.jdField_a_of_type_Int);
+          if (localResourceInfo != null)
+          {
+            b(localalew.jdField_a_of_type_JavaLangString, localalew.jdField_a_of_type_Int);
+            alil.a(localResourceInfo.filePath);
+            alil.a(localResourceInfo.folderPath);
+            aleu.a(localalew.jdField_a_of_type_JavaLangString, 8, localalew.jdField_a_of_type_Int);
+          }
+        }
       }
+    }
+    a(l1, paramInt);
+  }
+  
+  public static void a(long paramLong, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong("check_surplus_res_time", paramLong).apply();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    int i = a(paramString, paramInt);
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().putInt("url_abnormal_retry_times" + paramString, i + 1).putLong("url_abnormal_retry_last_time" + paramString, NetConnInfoCenter.getServerTimeMillis()).apply();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().putLong("url_last_use_time" + paramString, paramLong).apply();
+    }
+  }
+  
+  public static void a(String paramString, long paramLong, int paramInt)
+  {
+    int i = 1;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if (localSharedPreferences != null)
+    {
+      paramInt = 1;
+      if (TextUtils.isEmpty(paramString)) {
+        break label73;
+      }
+    }
+    for (;;)
+    {
+      if ((paramInt & i) != 0) {
+        localSharedPreferences.edit().putLong("url_doneTime" + paramString, paramLong).apply();
+      }
+      return;
+      paramInt = 0;
+      break;
+      label73:
+      i = 0;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      localSharedPreferences.edit().putString("url_md5" + paramString1, paramString2).apply();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong, int paramInt)
+  {
+    a(paramString1, paramString2, paramInt);
+    a(paramString1, paramLong, paramInt);
+    a(paramString1, paramInt, NetConnInfoCenter.getServerTimeMillis());
+  }
+  
+  public static String b(String paramString1, String paramString2, int paramInt)
+  {
+    String str2 = a(paramString1, "", paramInt);
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        str1 = str2;
+        if (new File(paramString2).exists())
+        {
+          str1 = MD5Coding.encodeFile2HexStr(paramString2);
+          a(paramString1, str1, paramInt);
+        }
+      }
+    }
+    return str1;
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localSharedPreferences.edit().remove("url_doneTime" + paramString);
+      localSharedPreferences.edit().remove("url_md5" + paramString);
+      localSharedPreferences.edit().remove("url_last_use_time" + paramString);
+      localSharedPreferences.edit().remove("url_abnormal_retry_times" + paramString).apply();
     }
   }
 }

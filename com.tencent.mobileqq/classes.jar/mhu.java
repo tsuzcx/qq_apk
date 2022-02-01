@@ -1,36 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavPanel;
 
-public class mhu
-  implements Animator.AnimatorListener
+class mhu
+  implements DialogInterface.OnClickListener
 {
-  public mhu(QavPanel paramQavPanel) {}
+  mhu(mht parammht) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QavPanel.a(this.a))
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mhr.a(this.a.a, false);
+    if (paramInt == 1)
     {
-      paramAnimator = this.a.a.a().a();
-      paramAnimator.a("tryPlayBtnMuteAnimation onAnimationEnd", true);
-      paramAnimator.b("tryPlayBtnMuteAnimation onAnimationEnd", 1);
-      this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
+      bdll.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.a.c();
+      if (!mvd.a(mhr.a(this.a.a))) {
+        mhr.a(this.a.a).a(mhr.a(this.a.a));
+      }
+    }
+    while (paramInt != 0)
+    {
+      return;
+      mhr.a(this.a.a).b(mhr.a(this.a.a));
       return;
     }
-    this.a.a.a().h("tryPlayBtnMuteAnimation onAnimationEnd", 1);
-    this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
-    QavPanel.a(this.a).a(false, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    QavPanel.a(this.a).a(false);
+    mhr.a(this.a.a, mhr.a(this.a.a).a().w);
   }
 }
 

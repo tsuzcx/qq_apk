@@ -1,16 +1,23 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import android.content.Intent;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
-public class augv
+class augv
   implements DialogInterface.OnClickListener
 {
-  public augv(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  augv(augr paramaugr) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.finish();
+    this.a.b();
+    this.a.a.removeObserver(augr.a(this.a));
+    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
+    localIntent.addFlags(67108864);
+    this.a.a.getApplication().startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,9 +1,4 @@
-public abstract interface pmt
-{
-  public abstract void onError(int paramInt);
-  
-  public abstract void onFinish(int paramInt);
-}
+class pmt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

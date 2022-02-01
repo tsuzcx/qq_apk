@@ -1,12 +1,16 @@
-final class bcjm
-  extends bcjo
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bcjm
+  implements View.OnClickListener
 {
-  public double a(int paramInt1, int paramInt2)
+  bcjm(bcjk parambcjk, bcfw parambcfw) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramInt1 > paramInt2) {
-      return paramInt2 / (paramInt1 + paramInt2);
-    }
-    return paramInt1 / (paramInt1 + paramInt2);
+    this.jdField_a_of_type_Bcfw.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

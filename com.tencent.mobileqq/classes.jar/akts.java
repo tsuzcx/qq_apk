@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akts
-  implements afxp
+class akts
+  implements View.OnClickListener
 {
-  public akts(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
+  akts(aktq paramaktq) {}
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
+    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

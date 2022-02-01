@@ -1,25 +1,47 @@
-import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 
 class abbg
-  implements bhpp
+  implements zqq
 {
-  abbg(abbc paramabbc, long paramLong, String paramString) {}
+  abbg(abbf paramabbf, abbh paramabbh, abbi paramabbi) {}
   
-  public void onCheckOfflineFinish(int paramInt)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_Abbc.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_Abbc.c + ", url: " + nmj.b(this.jdField_a_of_type_JavaLangString, new String[0]));
-    }
-    this.jdField_a_of_type_Abbc.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    CustomWebView localCustomWebView = this.jdField_a_of_type_Abbc.mRuntime.a();
-    if (localCustomWebView != null)
+    if (this.jdField_a_of_type_Abbh != null)
     {
-      localCustomWebView.loadUrlOriginal(this.jdField_a_of_type_JavaLangString);
-      return;
+      this.jdField_a_of_type_Abbi.a(943004);
+      this.jdField_a_of_type_Abbi.a(paramString);
+      this.jdField_a_of_type_Abbh.b(this.jdField_a_of_type_Abbi);
     }
-    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
+    }
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo start");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (this.jdField_a_of_type_Abbh != null) {
+      this.jdField_a_of_type_Abbh.a(this.jdField_a_of_type_Abbi);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
+    }
   }
 }
 

@@ -1,12 +1,17 @@
-public abstract interface blmy
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+
+class blmy
+  implements View.OnKeyListener
 {
-  public abstract void a();
+  blmy(blmw paramblmw) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    this.a.c();
+    return true;
+  }
 }
 
 

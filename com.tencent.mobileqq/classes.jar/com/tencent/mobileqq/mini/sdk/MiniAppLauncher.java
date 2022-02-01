@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-import aqpv;
+import arfd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -451,7 +451,7 @@ public class MiniAppLauncher
   
   private static boolean verifyAppid_Scence_Fakeurl_Model(String paramString1, int paramInt, String paramString2)
   {
-    String str1 = aqpv.a("mini_app_outsite_black_list", "");
+    String str1 = arfd.a("mini_app_outsite_black_list", "");
     QLog.i("MiniAppLauncher", 1, "verifyAppid_Scence_Fakeurl_Model appid:" + paramString1 + ", scene:" + paramInt + ", fakeUrl:" + paramString2 + ", blackList:" + str1);
     for (;;)
     {

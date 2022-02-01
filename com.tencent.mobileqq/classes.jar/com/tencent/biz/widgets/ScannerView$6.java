@@ -1,6 +1,6 @@
 package com.tencent.biz.widgets;
 
-import abek;
+import abin;
 
 class ScannerView$6
   implements Runnable

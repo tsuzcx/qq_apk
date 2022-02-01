@@ -10,8 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class AvGameCommon$GuessPictureQuestionInfo
   extends MessageMicro<GuessPictureQuestionInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32 }, new String[] { "url", "answer", "tip_list", "size" }, new Object[] { "", "", null, Integer.valueOf(0) }, GuessPictureQuestionInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 50, 58 }, new String[] { "url", "answer", "tip_list", "size", "reward_type", "extra_reward", "reward_stroke_color" }, new Object[] { "", "", null, Integer.valueOf(0), "", "", "" }, GuessPictureQuestionInfo.class);
   public final PBStringField answer = PBField.initString("");
+  public final PBStringField extra_reward = PBField.initString("");
+  public final PBStringField reward_stroke_color = PBField.initString("");
+  public final PBStringField reward_type = PBField.initString("");
   public final PBUInt32Field size = PBField.initUInt32(0);
   public final PBRepeatMessageField<AvGameCommon.GuessPictureTipsInfo> tip_list = PBField.initRepeatMessage(AvGameCommon.GuessPictureTipsInfo.class);
   public final PBStringField url = PBField.initString("");

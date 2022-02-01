@@ -1,106 +1,130 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.ResultInfo;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.RspOpenStart;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.observer.BusinessObserver;
-import mqq.util.WeakReference;
+import com.tencent.util.Pair;
+import java.net.URL;
 
 public class avmb
-  implements BusinessObserver
+  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<QIPCModule> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public avmb(QIPCModule paramQIPCModule, int paramInt)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQIPCModule);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a(Bundle paramBundle, TogetherBusinessServlet.RspOpenStart paramRspOpenStart)
-  {
-    int i;
-    long l;
-    String str;
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherObserver", 2, "handleStartPackage TogetherControlManager");
-      }
-      i = paramBundle.getInt("session_type", -1);
-      l = paramBundle.getLong("uin", -1L);
-      int j = paramBundle.getInt("business_type", 0);
-      str = paramBundle.getString("appid", "");
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (j == 2) {
-        if (i != 2) {
-          break label154;
-        }
-      }
-    }
-    label154:
-    for (paramBundle = "c2c_AIO";; paramBundle = "Grp_AIO")
-    {
-      bcst.b(localQQAppInterface, "dc00899", paramBundle, "", "video_tab", "clk_share_suc", 0, 0, l + "", str, "", "");
-      bdro.a(localQQAppInterface, paramRspOpenStart.jumpType, paramRspOpenStart.jumpUrl, null, new Bundle(), i);
-      return;
-    }
-  }
-  
-  private boolean a(TogetherBusinessServlet.RspOpenStart paramRspOpenStart)
-  {
-    if ((paramRspOpenStart.resultInfo != null) && (paramRspOpenStart.resultInfo.showErrorMsg) && (!TextUtils.isEmpty(paramRspOpenStart.resultInfo.errorMsg))) {}
-    while (((paramRspOpenStart.jumpType != 1) && (paramRspOpenStart.jumpType != 2)) || (TextUtils.isEmpty(paramRspOpenStart.jumpUrl))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public avmb()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TogetherObserver", 2, "type:" + paramInt + " isSuccess:" + paramBoolean);
+      QLog.d("GameCenterInterruptPlugin", 2, "GameCenterInterruptPlugin init");
     }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherObserver", 2, " mRef is empty");
-      }
-    }
-    Object localObject;
-    do
+    this.mPluginNameSpace = "gameCenter";
+  }
+  
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    if (paramString1 != null) {}
+    for (;;)
     {
-      do
+      try
       {
-        do
-        {
-          return;
-          localObject = (QIPCModule)this.jdField_a_of_type_MqqUtilWeakReference.get();
-          if ((12 == paramInt) && (paramBoolean))
-          {
-            ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-            return;
-          }
-        } while ((13 != paramInt) || (!paramBoolean));
-        ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-        localObject = (TogetherBusinessServlet.RspOpenStart)paramBundle.getSerializable("QQAIOMediaSvc.open_start");
-        paramBundle = paramBundle.getBundle("bundle");
-        if ((paramBundle != null) && (localObject != null)) {
-          break;
+        if (!paramString1.contains("apk")) {
+          break label591;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("TogetherObserver", 2, "bundleExtra is null or rspOpenStart is null");
-      return;
-    } while (!a((TogetherBusinessServlet.RspOpenStart)localObject));
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherObserver", 2, "handleStartPackage jumpToTogetherBusiness");
+        localObject4 = (bkaf)bkag.a().a("comminfo");
+        if (localObject4 == null) {
+          break label593;
+        }
+        paramString2 = ((bkaf)localObject4).a(paramString1);
+        if (QLog.isColorLevel()) {
+          QLog.d("GameCenterInterruptPlugin", 1, "handleSchemaRequest url=" + paramString1 + " apkInfo=" + paramString2);
+        }
+        if ((paramString2 == null) || (bhny.a(BaseApplication.getContext(), paramString2.c)))
+        {
+          localObject3 = bkar.a();
+          paramString2 = null;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        Object localObject4;
+        Object localObject3;
+        Object localObject1;
+        Pair localPair;
+        QLog.e("GameCenterInterruptPlugin", 1, "handleSchemaRequest error =" + paramString1.toString());
+      }
+      try
+      {
+        localObject1 = new URL(paramString1).getHost();
+        paramString2 = (String)localObject1;
+      }
+      catch (Throwable localThrowable)
+      {
+        continue;
+        continue;
+        paramString1 = null;
+        Object localObject2 = null;
+        continue;
+      }
+      ((bkar)localObject3).g = paramString1;
+      ((bkar)localObject3).h = paramString2;
+      bnyy.a().a("205925", "20", (bkar)localObject3, "dc05076");
+      return false;
+      QLog.i("GameCenterInterruptPlugin", 1, "interrupt url downLoad apk channelId=" + paramString2.d + " pkgName=" + paramString2.c + ", appid=" + paramString2.a + ",gameName=" + paramString2.b + ",url=" + paramString1);
+      if (this.mRuntime != null)
+      {
+        paramString1 = this.mRuntime.a();
+        localObject1 = this.mRuntime.a();
+        if (localObject1 != null)
+        {
+          localObject3 = null;
+          if (paramString1 != null) {
+            localObject3 = paramString1.getIntent();
+          }
+          localPair = acik.a((Intent)localObject3);
+          QLog.i("GameCenterInterruptPlugin", 1, "originalUrl=" + ((CustomWebView)localObject1).getOriginalUrl() + ",sessionInfo=" + localPair + ",url=" + ((CustomWebView)localObject1).getUrl());
+          paramString1 = new Bundle();
+          paramString1.putInt("from", 6);
+          paramString1.putInt("flags", 7);
+          paramString1.putString("packageName", paramString2.c);
+          paramString1.putString("apkChannel", paramString2.d);
+          paramString1.putString("appName", paramString2.b);
+          paramString1.putString("apkUrl", paramString2.e);
+          paramString1.putString("via", "GameCenterIntterup");
+          localObject3 = ((CustomWebView)localObject1).getUrl();
+          if (TextUtils.isEmpty((CharSequence)localObject3))
+          {
+            localObject3 = ((CustomWebView)localObject1).getOriginalUrl();
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              paramString1.putString("ext", (String)localObject3);
+              paramString1.putString("fromWebUrl", (String)localObject3);
+            }
+            avmc.a(paramString1, paramString2.a, false, 0);
+            if (localObject4 != null)
+            {
+              paramString1 = ((bkaf)localObject4).c;
+              localObject4 = paramString1;
+              if (TextUtils.isEmpty(paramString1)) {
+                localObject4 = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
+              }
+              ((CustomWebView)localObject1).loadUrl((String)localObject4);
+              acik.a(null, "558", "205758", paramString2.a, "55801", "4", "430", new String[] { String.valueOf(localPair.first), (String)localPair.second, paramString2.d, paramString2.e, localObject3 });
+              return true;
+            }
+            paramString1 = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
+            continue;
+          }
+        }
+        else
+        {
+          return false;
+        }
+      }
+      label591:
+      return false;
+      label593:
+      paramString2 = null;
     }
-    a(paramBundle, (TogetherBusinessServlet.RspOpenStart)localObject);
   }
 }
 

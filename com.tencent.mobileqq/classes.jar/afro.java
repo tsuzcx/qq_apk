@@ -1,16 +1,28 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class afro
-  extends bkfi
+  implements ThreadExcutor.IThreadListener
 {
-  public afro(VisitorsActivity paramVisitorsActivity) {}
+  public afro(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onAdded()
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
+  }
+  
+  public void onPostRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
 }
 

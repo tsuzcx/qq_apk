@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class auyw
-  implements awnc<List<FontBubble>>
+  implements TextWatcher
 {
-  public auyw(FontBubblePanelView paramFontBubblePanelView) {}
+  public auyw(ForwardFileOption paramForwardFileOption, EditText paramEditText) {}
   
-  public void a(List<FontBubble> paramList)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    FontBubblePanelView.a(this.a, paramList);
-    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+    if (paramCharSequence.toString().trim().length() > 36)
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString().substring(0, 36));
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(36);
+      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, -4);
+    }
   }
 }
 

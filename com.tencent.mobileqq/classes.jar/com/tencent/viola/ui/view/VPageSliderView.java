@@ -237,29 +237,39 @@ public class VPageSliderView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.mScrollEnable.booleanValue()) {
-      return false;
-    }
-    if (this.mFlexDirection.equals("vertical"))
-    {
-      super.onInterceptTouchEvent(swapXY(paramMotionEvent));
-      if ((shouldOptimizingExperience()) && (paramMotionEvent.getAction() == 0)) {
-        this.mStartX = paramMotionEvent.getX();
-      }
-      swapXY(paramMotionEvent);
-      return this.mGestureDetector.onTouchEvent(paramMotionEvent);
-    }
-    if (!this.mBouncesEnable) {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-    }
-    int i = paramMotionEvent.getAction();
-    ViewParent localViewParent = getParent();
-    switch (i)
-    {
-    }
     for (;;)
     {
-      return super.onInterceptTouchEvent(paramMotionEvent);
+      ViewParent localViewParent;
+      try
+      {
+        if (!this.mScrollEnable.booleanValue()) {
+          return false;
+        }
+        if (this.mFlexDirection.equals("vertical"))
+        {
+          super.onInterceptTouchEvent(swapXY(paramMotionEvent));
+          if ((shouldOptimizingExperience()) && (paramMotionEvent.getAction() == 0)) {
+            this.mStartX = paramMotionEvent.getX();
+          }
+          swapXY(paramMotionEvent);
+          return this.mGestureDetector.onTouchEvent(paramMotionEvent);
+        }
+        if (!this.mBouncesEnable) {
+          return super.onInterceptTouchEvent(paramMotionEvent);
+        }
+        int i = paramMotionEvent.getAction();
+        localViewParent = getParent();
+        switch (i)
+        {
+        case 0: 
+          return super.onInterceptTouchEvent(paramMotionEvent);
+        }
+      }
+      catch (IllegalArgumentException paramMotionEvent)
+      {
+        ViolaLogUtils.e("VSliderViewPager", "onInterceptTouchEvent IllegalArgumentException error:" + paramMotionEvent.getMessage());
+        return false;
+      }
       if (localViewParent != null) {
         localViewParent.requestDisallowInterceptTouchEvent(true);
       }
@@ -300,49 +310,59 @@ public class VPageSliderView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.mScrollEnable.booleanValue()) {}
-    do
+    try
     {
+      if (!this.mScrollEnable.booleanValue()) {
+        return false;
+      }
+      if (this.mFlexDirection.equals("vertical"))
+      {
+        if (shouldOptimizingExperience())
+        {
+          if (getAdapter() == null) {
+            break label955;
+          }
+          if ((getCurrentItem() >= 0) || (getCurrentItem() < getAdapter().getCount()))
+          {
+            if (this.mVelocityTracker == null) {
+              this.mVelocityTracker = VelocityTracker.obtain();
+            }
+            this.mVelocityTracker.addMovement(paramMotionEvent);
+            swapXY(paramMotionEvent);
+          }
+        }
+        switch (paramMotionEvent.getAction() & 0xFF)
+        {
+        case 2: 
+        case 1: 
+          for (;;)
+          {
+            swapXY(paramMotionEvent);
+            return super.onTouchEvent(swapXY(paramMotionEvent));
+            this.mVelocityTracker.computeCurrentVelocity(1000, this.mMaximumVelocity);
+            this.mStartDragX = paramMotionEvent.getX();
+            if ((this.mStartX < this.mStartDragX) && ((this.mStartDragX - this.mStartX > 450.0F) || (this.mVelocityTracker.getYVelocity() > this.mMinimumVelocity)) && (getCurrentItem() > 0))
+            {
+              setCurrentItem(getCurrentItem() - 1, true);
+              return true;
+            }
+            if ((this.mStartX > this.mStartDragX) && ((this.mStartX - this.mStartDragX > 450.0F) || (this.mVelocityTracker.getYVelocity() < -this.mMinimumVelocity)) && (getCurrentItem() < getAdapter().getCount() - 1))
+            {
+              this.mStartDragX = 0.0F;
+              setCurrentItem(getCurrentItem() + 1, true);
+              return true;
+              this.mStartDragX = 0.0F;
+            }
+          }
+          return super.onTouchEvent(swapXY(paramMotionEvent));
+        }
+      }
+    }
+    catch (IllegalArgumentException paramMotionEvent)
+    {
+      ViolaLogUtils.e("VSliderViewPager", "onTouchEvent IllegalArgumentException error:" + paramMotionEvent.getMessage());
       return false;
-      if (!this.mFlexDirection.equals("vertical")) {
-        break label314;
-      }
-      if (!shouldOptimizingExperience()) {
-        break;
-      }
-    } while (getAdapter() == null);
-    if ((getCurrentItem() >= 0) || (getCurrentItem() < getAdapter().getCount()))
-    {
-      if (this.mVelocityTracker == null) {
-        this.mVelocityTracker = VelocityTracker.obtain();
-      }
-      this.mVelocityTracker.addMovement(paramMotionEvent);
-      swapXY(paramMotionEvent);
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      }
     }
-    for (;;)
-    {
-      swapXY(paramMotionEvent);
-      return super.onTouchEvent(swapXY(paramMotionEvent));
-      this.mVelocityTracker.computeCurrentVelocity(1000, this.mMaximumVelocity);
-      this.mStartDragX = paramMotionEvent.getX();
-      if ((this.mStartX < this.mStartDragX) && ((this.mStartDragX - this.mStartX > 450.0F) || (this.mVelocityTracker.getYVelocity() > this.mMinimumVelocity)) && (getCurrentItem() > 0))
-      {
-        setCurrentItem(getCurrentItem() - 1, true);
-        return true;
-      }
-      if ((this.mStartX > this.mStartDragX) && ((this.mStartX - this.mStartDragX > 450.0F) || (this.mVelocityTracker.getYVelocity() < -this.mMinimumVelocity)) && (getCurrentItem() < getAdapter().getCount() - 1))
-      {
-        this.mStartDragX = 0.0F;
-        setCurrentItem(getCurrentItem() + 1, true);
-        return true;
-        this.mStartDragX = 0.0F;
-      }
-    }
-    return super.onTouchEvent(swapXY(paramMotionEvent));
-    label314:
     if (!this.mBouncesEnable) {
       return super.onTouchEvent(paramMotionEvent);
     }
@@ -379,7 +399,7 @@ public class VPageSliderView
           if (f2 > 10.0F)
           {
             whetherConditionIsRight(f2);
-            label531:
+            label563:
             fireOverScrollEvent(getLeft() + f2 * 0.5F);
           }
         }
@@ -389,13 +409,13 @@ public class VPageSliderView
           if (f2 < -10.0F)
           {
             whetherConditionIsRight(f2);
-            break label531;
+            break label563;
           }
           if ((this.mHandleDefault) || (getLeft() + (int)(f2 * 0.5F) == this.mRect.left)) {
-            break label531;
+            break label563;
           }
           layout(getLeft() + (int)(f2 * 0.5F), getTop(), getRight() + (int)(f2 * 0.5F), getBottom());
-          break label531;
+          break label563;
           if ((this.mCurrentPosition == 0) || (this.mCurrentPosition == getAdapter().getCount() - 1))
           {
             f1 = paramMotionEvent.getX();
@@ -441,6 +461,10 @@ public class VPageSliderView
         }
         this.mStartRawY = ((int)paramMotionEvent.getRawY());
         this.mStartRawX = ((int)paramMotionEvent.getRawX());
+        continue;
+        label955:
+        return false;
+        break;
       }
     }
   }

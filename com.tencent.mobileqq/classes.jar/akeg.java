@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akeg
-  extends aywi
+class akeg
+  implements View.OnClickListener
 {
-  public akeg(SettingActivity2.3 param3) {}
+  akeg(akef paramakef) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.this$0.c != null)
-    {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-      this.a.this$0.c = null;
+    this.a.a.g = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.a.jdField_d_of_type_Int != 22) {
+      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    this.a.this$0.b();
-    if (paramBoolean)
-    {
-      if (this.a.this$0.c != null)
-      {
-        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-        this.a.this$0.c = null;
-      }
-      this.a.this$0.a();
-      this.a.this$0.setResult(-1);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131369042));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (this.a.a.jdField_a_of_type_Akfe != null) {
+      this.a.a.jdField_a_of_type_Akfe.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

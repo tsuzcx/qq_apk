@@ -1,26 +1,16 @@
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
 
-class pcl
-  extends pcm
+public class pcl
+  extends AnimatorListenerAdapter
 {
-  pcl(pbe parampbe, int paramInt)
-  {
-    super(parampbe, null);
-  }
+  public pcl(DailyTipsFoldUtils.1 param1, View paramView) {}
   
-  void a(pcp parampcp)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (parampcp == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        parampcp.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    parampcp.onCommentLoadMore(1, false, new ArrayList(), false, 2);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
   }
 }
 

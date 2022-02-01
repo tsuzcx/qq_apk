@@ -1,38 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class afeb
-  implements CompoundButton.OnCheckedChangeListener
+class afeb
+  implements View.OnClickListener
 {
-  public afeb(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  afeb(afea paramafea) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!bgnt.d(this.a.getActivity())))
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof afdz))
     {
-      this.a.a(2131693992, 0);
-      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      if (!paramBoolean) {
-        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, bool);
+      localObject = (afdz)localObject;
+      if ((((afdz)localObject).a >= 0) && (((afdz)localObject).a < this.a.a.a.size()))
+      {
+        localObject = (ProfileLabelInfo)this.a.a.a.remove(((afdz)localObject).a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        afea.a(this.a, (ProfileLabelInfo)localObject);
+        bdll.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      if (paramCompoundButton == this.a.a.a()) {
-        this.a.app.f(paramBoolean, true);
-      } else if (paramCompoundButton == this.a.b.a()) {
-        this.a.app.g(paramBoolean, true);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

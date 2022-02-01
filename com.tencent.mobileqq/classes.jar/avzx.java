@@ -1,78 +1,59 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.2.1;
 
-class avzx
-  implements awax
+public class avzx
+  implements awal
 {
-  avzx(avzs paramavzs, Activity paramActivity) {}
+  public avzx(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public void a(LocationRoom.Venue paramVenue)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if (paramVenue != null)
-    {
-      avzs.a(this.jdField_a_of_type_Avzs);
-      return;
-    }
-    avzs.b(this.jdField_a_of_type_Avzs);
-  }
-  
-  public void a(LatLng paramLatLng) {}
-  
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
-  {
-    if (paramList != null)
-    {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
-      {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.jdField_a_of_type_Avzs.a(paramList);
-        if (localBitmap != null)
-        {
-          localBitmap = bgmo.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-          avzs.a(this.jdField_a_of_type_Avzs).a(paramList, localBitmap);
-        }
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, Point paramPoint)
-  {
-    if (paramBoolean)
-    {
-      avzs.a(this.jdField_a_of_type_Avzs).setClickable(false);
-      if (bkpg.a()) {
-        avzs.a(this.jdField_a_of_type_Avzs).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840541));
-      }
-    }
-    Rect localRect;
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
     do
     {
       return;
-      avzs.a(this.jdField_a_of_type_Avzs).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840540));
-      return;
-      if (paramPoint == null) {
-        break;
+      GroupVideoLoadingFragment.a(this.a, paramInt);
+      switch (paramInt)
+      {
+      case 4: 
+      case 8: 
+      default: 
+        return;
       }
-      localRect = new Rect();
-      avzs.a(this.jdField_a_of_type_Avzs).getGlobalVisibleRect(localRect);
-    } while (localRect.contains(paramPoint.x, paramPoint.y));
-    avzs.a(this.jdField_a_of_type_Avzs).setClickable(true);
-    avzs.a(this.jdField_a_of_type_Avzs).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840542));
-  }
-  
-  public void a(boolean paramBoolean, away paramaway)
-  {
-    avzs.a(this.jdField_a_of_type_Avzs, paramBoolean, paramaway);
+    } while (!GroupVideoLoadingFragment.a(this.a));
+    long l = paramBundle.getLong("key_totalSize", 0L);
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704294), anzj.a(2131704309));
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704305) + avzr.a(l) + ")", new avzz(this.a, null));
+    return;
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704307), anzj.a(2131704308));
+    paramInt = paramBundle.getInt("key_progress", 0);
+    l = paramBundle.getLong("key_totalSize", 0L);
+    GroupVideoLoadingFragment.a(this.a).a(paramInt, l);
+    GroupVideoLoadingFragment.a(this.a).b();
+    return;
+    GroupVideoLoadingFragment.a(this.a).a();
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704306), anzj.a(2131704300));
+    paramBundle = Message.obtain();
+    paramBundle.arg1 = 10;
+    GroupVideoLoadingFragment.a(this.a).sendMessage(paramBundle);
+    return;
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704303), anzj.a(2131704299));
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704304), new avzz(this.a, null));
+    return;
+    GroupVideoLoadingFragment.a(this.a).b();
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704295), "");
+    GroupVideoLoadingFragment.a(this.a).a(anzj.a(2131704296), new avzz(this.a, null));
+    return;
+    GroupVideoLoadingFragment.b(this.a, 90);
+    GroupVideoLoadingFragment.a(this.a).a(90, 0L);
+    return;
+    GroupVideoLoadingFragment.b(this.a, 100);
+    GroupVideoLoadingFragment.a(this.a).a(100, 0L);
+    GroupVideoLoadingFragment.a(this.a).postDelayed(new GroupVideoLoadingFragment.2.1(this), 1500L);
   }
 }
 

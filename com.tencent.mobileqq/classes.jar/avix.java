@@ -1,8 +1,24 @@
-public abstract interface avix
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class avix
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(int paramInt);
+  avix(aviu paramaviu, String paramString) {}
   
-  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    bnyy localbnyy = bnyy.a();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localbnyy.b(str, i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
+  }
 }
 
 

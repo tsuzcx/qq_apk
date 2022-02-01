@@ -6,19 +6,20 @@ import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
+import java.lang.ref.WeakReference;
 
 class PageBodyStatistician$BodyInfoHandler
 {
   private PageBodyInfo mPageBodyInfo = new PageBodyInfo();
   private PageInfo mPageInfo;
-  private IScrollReader mScrollReader;
-  private View mView;
+  private WeakReference<IScrollReader> mScrollReader;
+  private WeakReference<View> mView;
   
   PageBodyStatistician$BodyInfoHandler(View paramView, IScrollReader paramIScrollReader)
   {
-    this.mView = paramView;
-    this.mScrollReader = ((IScrollReader)BaseUtils.nullAs(paramIScrollReader, ScrollReader.getScrollReader(paramView)));
-    ScrollReader.injectScrollListener(this.mView, new PageBodyStatistician.BodyInfoHandler.1(this));
+    this.mView = new WeakReference(paramView);
+    this.mScrollReader = new WeakReference((IScrollReader)BaseUtils.nullAs(paramIScrollReader, ScrollReader.getScrollReader(paramView)));
+    ScrollReader.injectScrollListener(paramView, new PageBodyStatistician.BodyInfoHandler.1(this));
   }
   
   private void readInitScroll()
@@ -40,8 +41,9 @@ class PageBodyStatistician$BodyInfoHandler
   
   private void tryGetPageInfo()
   {
-    if (this.mPageInfo == null) {
-      this.mPageInfo = PageFinder.findOwnerPage(this.mView);
+    View localView = (View)this.mView.get();
+    if ((localView != null) && (this.mPageInfo == null)) {
+      this.mPageInfo = PageFinder.findOwnerPage(localView);
     }
   }
   
@@ -59,6 +61,15 @@ class PageBodyStatistician$BodyInfoHandler
       return true;
     }
     return false;
+  }
+  
+  private void updateScroll()
+  {
+    IScrollReader localIScrollReader = (IScrollReader)this.mScrollReader.get();
+    View localView = (View)this.mView.get();
+    if ((localIScrollReader != null) && (localView != null)) {
+      onScrolled(localIScrollReader.readScroll(localView));
+    }
   }
   
   public void onScrolled(int paramInt)

@@ -1,29 +1,17 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahmj
-  extends ahmb
+class ahmj
+  implements View.OnClickListener
 {
-  public ahmj(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-  }
+  ahmj(ahmi paramahmi) {}
   
-  public afwr a()
+  public void onClick(View paramView)
   {
-    return new ahml(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562993, paramBaseChatItemLayout, false);
+    ahmi.a(this.a, true, this.a.a.getCurrentAccountUin());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,23 @@
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
 public class alxb
-  extends MqqHandler
 {
-  public alxb(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private static int a = 10000;
   
-  public void handleMessage(Message paramMessage)
+  public static void a(int paramInt)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    a = paramInt;
+  }
+  
+  public static void a(String paramString, Properties paramProperties)
+  {
+    Properties localProperties = paramProperties;
+    if (paramProperties == null) {
+      localProperties = new Properties();
+    }
+    localProperties.setProperty("shortvideo_business_type", "" + a);
+    bdla.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
   }
 }
 

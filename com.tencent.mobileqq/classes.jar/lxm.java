@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.share.AVSchema;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class lxm
-  implements DialogInterface.OnDismissListener
+  extends aocj
 {
-  public lxm(AVSchema paramAVSchema) {}
+  public lxm(QQServiceForAV paramQQServiceForAV) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (localQQAppInterface != null) {
+      new bmen(localQQAppInterface).a(new lxn(this));
     }
-    this.a.b();
   }
 }
 

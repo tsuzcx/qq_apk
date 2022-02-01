@@ -2,34 +2,34 @@ package com.tencent.avgame.gameroom.stage;
 
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mxl;
-import myc;
-import nal;
-import nbo;
+import myk;
+import mze;
 import nbp;
-import nbq;
+import ndb;
+import ndc;
+import ndd;
 
 public class StagePresenterImp$1
   implements Runnable
 {
-  public StagePresenterImp$1(nbq paramnbq) {}
+  public StagePresenterImp$1(ndd paramndd) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("StagePresenterImp", 2, "realStartRunnale");
     }
-    myc localmyc = mxl.a().a();
-    if (!localmyc.a()) {
+    mze localmze = myk.a().a();
+    if (!localmze.a()) {
       return;
     }
-    nbq.a(this.this$0, localmyc);
-    if (localmyc.d(mxl.a().a().getAccount()))
+    ndd.a(this.this$0, localmze);
+    if (localmze.d(myk.a().a().getAccount()))
     {
-      this.this$0.jdField_a_of_type_Nal.a().a();
-      this.this$0.jdField_a_of_type_Nal.a().b(this.this$0.jdField_a_of_type_Nbp.a());
+      this.this$0.jdField_a_of_type_Nbp.a().a();
+      this.this$0.jdField_a_of_type_Nbp.a().b(this.this$0.jdField_a_of_type_Ndc.a());
     }
-    this.this$0.jdField_a_of_type_Nal.a().f();
+    this.this$0.jdField_a_of_type_Nbp.a().f();
   }
 }
 

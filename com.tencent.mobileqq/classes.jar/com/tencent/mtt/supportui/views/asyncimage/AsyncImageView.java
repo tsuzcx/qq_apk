@@ -302,7 +302,7 @@ public class AsyncImageView
     fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
   }
   
-  protected void performSetContent()
+  public void performSetContent()
   {
     setContent(SOURCE_TYPE_SRC);
   }

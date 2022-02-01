@@ -1,36 +1,37 @@
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.text.TextPaint;
 
 public class bptj
-  implements Comparator<RecentUser>
+  extends bprt
 {
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  protected float a;
+  protected String a;
+  
+  public bptj(int paramInt1, int paramInt2, TextPaint paramTextPaint, String paramString, RectF paramRectF, float paramFloat)
   {
-    long l2 = Math.max(paramRecentUser1.lastmsgtime, paramRecentUser1.lastmsgdrafttime);
-    long l3 = Math.max(paramRecentUser2.lastmsgtime, paramRecentUser2.lastmsgdrafttime);
-    long l1 = l2;
-    if (paramRecentUser1.lastmsgtime <= 0L)
-    {
-      l1 = l2;
-      if (paramRecentUser1.lastmsgdrafttime <= 0L) {
-        l1 = Math.max(l2, paramRecentUser1.opTime);
-      }
+    super(paramInt1, paramInt2, paramTextPaint, paramRectF);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  {
+    if (paramCanvas == null) {
+      return;
     }
-    l2 = l3;
-    if (paramRecentUser2.lastmsgtime <= 0L)
-    {
-      l2 = l3;
-      if (paramRecentUser2.lastmsgdrafttime <= 0L) {
-        l2 = Math.max(l3, paramRecentUser2.opTime);
-      }
-    }
-    if (l1 > l2) {
-      return -1;
-    }
-    if (l1 < l2) {
-      return 1;
-    }
-    return 0;
+    String str = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_JavaLangString.length();
+    float f1 = paramInt1;
+    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
+    float f3 = paramInt2;
+    float f4 = this.jdField_a_of_type_Float;
+    paramCanvas.drawText(str, 0, i, f2 + f1, this.jdField_a_of_type_AndroidGraphicsRectF.top + (f3 + f4), this.jdField_a_of_type_AndroidTextTextPaint);
+  }
+  
+  public void a(Canvas paramCanvas, bprr parambprr, int paramInt1, int paramInt2)
+  {
+    parambprr.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF, paramInt1, paramInt2);
   }
 }
 

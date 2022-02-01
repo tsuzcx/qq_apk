@@ -1,6 +1,19 @@
-public abstract interface apiu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARScanAR;
+
+public final class apiu
+  implements Parcelable.Creator<ARScanAR>
 {
-  public abstract boolean notify(String paramString1, String paramString2, String paramString3);
+  public ARScanAR a(Parcel paramParcel)
+  {
+    return new ARScanAR(paramParcel);
+  }
+  
+  public ARScanAR[] a(int paramInt)
+  {
+    return new ARScanAR[paramInt];
+  }
 }
 
 

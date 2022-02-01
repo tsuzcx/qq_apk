@@ -2,14 +2,14 @@ package com.tencent.mobileqq.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import anus;
+import aohe;
 import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class SecSvcHandler$1
   implements Runnable
 {
-  public SecSvcHandler$1(anus paramanus, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3) {}
+  public SecSvcHandler$1(aohe paramaohe, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class SecSvcHandler$1
       localBundle.putInt("dlg_seccmd", this.jdField_c_of_type_Int);
       localIntent.putExtras(localBundle);
       localIntent.setFlags(872415232);
-      if (!this.this$0.app.isBackground_Stop) {
+      if (!this.this$0.app.isBackgroundStop) {
         this.this$0.app.getApp().startActivity(localIntent);
       }
       return;

@@ -1,42 +1,47 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
 
 public class apam
+  extends aoxh
 {
-  public float a;
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c = -1;
-  
-  public apam()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-  }
-  
-  public String toString()
-  {
-    try
-    {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    paramQQAppInterface = new apal(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wsgzh";
+    paramQQAppInterface.c = "miniapp_player";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    catch (Exception localException)
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    for (;;)
     {
-      for (;;)
+      if (i < paramContext.length)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ARCloudSceneRecogResult", 2, "toString error, msg:" + localException.getMessage());
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {}
+        try
+        {
+          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+          i += 1;
         }
-        String str2 = "";
+        catch (Exception paramaoxk)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("WeishiPublicAccountVideoParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramaoxk);
+            }
+          }
+        }
       }
     }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,204 +1,43 @@
-import android.media.AudioManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afvv
+  implements View.OnClickListener
 {
-  private volatile afvw jdField_a_of_type_Afvw;
-  private boolean jdField_a_of_type_Boolean = true;
-  bgkk[] jdField_a_of_type_ArrayOfBgkk;
-  private volatile boolean b;
-  private volatile boolean c;
-  private volatile boolean d;
-  private volatile boolean e;
-  private boolean f;
+  public afvv(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
   
-  private bgkk a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ArrayOfBgkk == null) {
-      this.jdField_a_of_type_ArrayOfBgkk = AudioHelper.a();
-    }
-    bgkk localbgkk2 = this.jdField_a_of_type_ArrayOfBgkk[0];
-    bgkk localbgkk1 = localbgkk2;
-    if (paramInt >= 0)
-    {
-      localbgkk1 = localbgkk2;
-      if (paramInt < this.jdField_a_of_type_ArrayOfBgkk.length) {
-        localbgkk1 = this.jdField_a_of_type_ArrayOfBgkk[paramInt];
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.f) && (!TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))) {
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 3))
+      {
+        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
+        localIntent.putExtra("member_uin", "0");
+        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, localIntent);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) {
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
+        }
       }
-    }
-    return localbgkk1;
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    avsn.a().a(paramBoolean);
-    c();
-  }
-  
-  private void c()
-  {
-    afvw localafvw1 = a();
-    int i = 0;
-    if ((AudioPlayerBase.jdField_a_of_type_Boolean) && (this.e)) {
-      i = 4;
     }
     for (;;)
     {
-      afvw localafvw2 = new afvw(a(i), i, true);
-      if (!localafvw1.a(localafvw2)) {
-        this.jdField_a_of_type_Afvw = localafvw2;
-      }
-      a("updateCurrentStatus end nextStatusType = " + i);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.b) {
-        i = 2;
-      } else if (this.c) {
-        i = 3;
-      } else if ((!this.jdField_a_of_type_Boolean) || (this.d)) {
-        i = 1;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, anzj.a(2131714409), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      continue;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, anzj.a(2131714405), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
       }
     }
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    if (this.d != paramBoolean) {
-      this.d = paramBoolean;
-    }
-    c();
-  }
-  
-  private void d(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-    c();
-  }
-  
-  private void e(boolean paramBoolean)
-  {
-    this.c = AudioHelper.a(BaseApplicationImpl.getContext());
-    this.e = AudioHelper.c(BaseApplicationImpl.getContext());
-    c();
-  }
-  
-  public int a()
-  {
-    return 31;
-  }
-  
-  public afvw a()
-  {
-    if (this.jdField_a_of_type_Afvw == null) {
-      new afvw(a(0), 0);
-    }
-    return this.jdField_a_of_type_Afvw;
-  }
-  
-  public afvw a(int paramInt, boolean paramBoolean)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      a("onAudioDeviceStatusChanged changeType = " + paramInt + "|" + paramBoolean);
-      return this.jdField_a_of_type_Afvw;
-      b(paramBoolean);
-      continue;
-      c(paramBoolean);
-      continue;
-      d(paramBoolean);
-      continue;
-      e(paramBoolean);
-    }
-  }
-  
-  public bgkk a()
-  {
-    if ((this.jdField_a_of_type_Afvw == null) || (this.jdField_a_of_type_Afvw.a() == null)) {
-      return a(0);
-    }
-    a("getCurrentProperParam");
-    return this.jdField_a_of_type_Afvw.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Afvw = new afvw(a(0), 0);
-    this.b = lff.a(BaseApplicationImpl.getContext());
-    this.c = AudioHelper.a(BaseApplicationImpl.getContext());
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_Boolean = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).z();
-    }
-    this.e = AudioHelper.c(BaseApplicationImpl.getContext());
-    c();
-    a("init ");
-  }
-  
-  public void a(AudioManager paramAudioManager)
-  {
-    a("doOnBluetoothSCODisconnected isBluetoothA2dpOn = " + paramAudioManager.isBluetoothA2dpOn());
-    if ((this.c) && (!paramAudioManager.isBluetoothA2dpOn())) {
-      this.c = false;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (!bgsp.a(paramString)) {
-        localStringBuilder.append(paramString);
-      }
-      localStringBuilder.append("\n mCurDeviceStatus = " + this.jdField_a_of_type_Afvw.a);
-      localStringBuilder.append("\n  userLoudSpeakerStatus = " + this.jdField_a_of_type_Boolean);
-      localStringBuilder.append("\n  mNearToEar = " + this.d);
-      localStringBuilder.append("\n  wiredHeadsetConnect = " + this.b);
-      localStringBuilder.append("\n  blueHeadsetConnect = " + this.c);
-      localStringBuilder.append("\n  mblueHeadsetSCOConnect = " + this.e);
-      QLog.d("AudioPlayer_DeviceStatus", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.e = paramBoolean;
-    c();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (!this.f)
-    {
-      a(AudioHelper.c(BaseApplicationImpl.getContext()));
-      this.f = true;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
-  }
-  
-  public boolean d()
-  {
-    return this.d;
   }
 }
 

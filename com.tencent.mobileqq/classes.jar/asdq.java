@@ -1,16 +1,73 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.image.URLImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class asdq
-  extends RecyclerView.ViewHolder
+public class asdq
+  extends asdn
 {
-  public URLImageView[] a;
-  
-  public asdq(@NonNull View paramView)
+  public asdq(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
+    super("qq.android.hotfriend.res", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10042;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return HotFriendResData.class;
+  }
+  
+  public String a()
+  {
+    return "HotFriendResHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
+    }
+    if (!new File(paramString).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
+      }
+      return;
+    }
+    try
+    {
+      String str = axtp.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
+      }
+      if (!TextUtils.isEmpty(str)) {
+        bhmi.a(paramString, str, false);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    super.a(paramString);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

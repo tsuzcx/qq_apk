@@ -1,26 +1,47 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class asqq
-  implements Animation.AnimationListener
+class asqq
+  implements URLDrawableDownListener
 {
-  public asqq(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  asqq(asqo paramasqo, asmu paramasmu, URLImageView paramURLImageView1, URLImageView paramURLImageView2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
-    {
-      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
-      return;
-    }
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
+    asqo.a(this.jdField_a_of_type_Asqo, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
+    asqo.a(this.jdField_a_of_type_Asqo, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Asmu.toString());
+    asqo.a(this.jdField_a_of_type_Asqo, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.jdField_a_of_type_Asmu.toString());
+    }
+    asqo.a(this.jdField_a_of_type_Asqo, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccess: " + this.jdField_a_of_type_Asmu.toString());
+    }
+    asqo.a(this.jdField_a_of_type_Asqo, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
 }
 
 

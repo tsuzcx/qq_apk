@@ -7,7 +7,7 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StPushList;
 import feedcloud.FeedCloudWrite.StDoPushReq;
 import feedcloud.FeedCloudWrite.StDoPushRsp;
-import uxx;
+import uzg;
 
 public class QCircleDoRecommendRequest
   extends QCircleBaseRequest
@@ -22,7 +22,7 @@ public class QCircleDoRecommendRequest
       return;
     }
     this.mReq = new FeedCloudWrite.StDoPushReq();
-    this.mReq.feed.set(uxx.a(paramStFeed));
+    this.mReq.feed.set(uzg.a(paramStFeed));
     this.mReq.comboCount.set(paramInt1);
     if (paramStPushList != null) {
       this.mReq.push.set(paramStPushList);
@@ -42,9 +42,19 @@ public class QCircleDoRecommendRequest
     return "FeedCloudSvr.trpc.feedcloud.commwriter.ComWriter.DoPush";
   }
   
+  public FeedCloudWrite.StDoPushReq getReq()
+  {
+    return this.mReq;
+  }
+  
   public byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
+  }
+  
+  public void setReq(FeedCloudWrite.StDoPushReq paramStDoPushReq)
+  {
+    this.mReq = paramStDoPushReq;
   }
 }
 

@@ -1,6 +1,6 @@
 public abstract interface aaym
 {
-  public abstract void a(aavc paramaavc);
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

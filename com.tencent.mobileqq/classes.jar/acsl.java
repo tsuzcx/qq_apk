@@ -1,124 +1,22 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
-import com.tencent.ad.tangram.util.AdHexUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.security.MessageDigest;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
 
 public class acsl
-  implements AdRefreshCallback
 {
-  private static volatile acsl jdField_a_of_type_Acsl;
-  private AdAppBtnData jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData;
-  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new acsm(this);
-  private final String jdField_a_of_type_JavaLangString = "GdtDownloadReportManager";
-  private ConcurrentHashMap<String, GdtAd> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, GdtAd> b = new ConcurrentHashMap();
+  public float a;
+  public float b;
+  public View f;
+  public View g;
+  public View h;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
   
-  private acsl()
+  public String toString()
   {
-    a();
-  }
-  
-  public static acsl a()
-  {
-    if (jdField_a_of_type_Acsl == null) {}
-    try
-    {
-      if (jdField_a_of_type_Acsl == null) {
-        jdField_a_of_type_Acsl = new acsl();
-      }
-      return jdField_a_of_type_Acsl;
-    }
-    finally {}
-  }
-  
-  private String a(String paramString)
-  {
-    Object localObject1 = null;
-    try
-    {
-      paramString = BaseApplicationImpl.getApplication().getApplicationContext().getPackageManager().getPackageInfo(paramString, 64).signatures;
-      Object localObject2 = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject2).update(paramString[0].toByteArray());
-      localObject2 = AdHexUtil.bytes2HexString(((MessageDigest)localObject2).digest());
-      paramString = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        paramString = ((String)localObject2).toUpperCase();
-      }
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  private void a()
-  {
-    acqy.a("GdtDownloadReportManager", "registerDownloadListener: ");
-    bisa.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    this.b.remove(paramString);
-  }
-  
-  private boolean a(DownloadInfo paramDownloadInfo, GdtAd paramGdtAd)
-  {
-    if ((paramDownloadInfo == null) || (paramGdtAd == null) || (TextUtils.isEmpty(paramDownloadInfo.e)) || (TextUtils.isEmpty(paramGdtAd.getAppPackageName())) || (TextUtils.isEmpty(paramDownloadInfo.c)) || (TextUtils.isEmpty(paramGdtAd.getAppId()))) {}
-    while ((!paramDownloadInfo.e.equals(paramGdtAd.getAppPackageName())) || (!paramDownloadInfo.c.equals(paramGdtAd.getAppId()))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void a(GdtAd paramGdtAd, int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == 0)
-    {
-      if (!paramBoolean) {
-        break label23;
-      }
-      acrm.a(paramGdtAd, 269);
-    }
-    for (;;)
-    {
-      acrm.a(paramGdtAd, 272);
-      return;
-      label23:
-      acrm.a(paramGdtAd, 268);
-    }
-  }
-  
-  public void a(String paramString, GdtAd paramGdtAd, AdAppBtnData paramAdAppBtnData)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      acqy.d("GdtDownloadReportManager", "appId isEmpty");
-      return;
-    }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramGdtAd);
-    }
-    this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData = paramAdAppBtnData;
-  }
-  
-  public void onAdRefresh(Ad paramAd)
-  {
-    if ((paramAd instanceof GdtAd)) {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramAd);
-    }
+    return " \nvideoViewScaleXby " + this.a + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
   }
 }
 

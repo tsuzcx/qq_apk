@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import android.os.Bundle;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class beix
-  implements DialogInterface.OnClickListener
+class beix
+  implements bhza
 {
-  public beix(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Bundle paramBundle, int paramInt) {}
+  beix(beiw parambeiw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    long l1 = this.jdField_a_of_type_AndroidOsBundle.getLong("label_id", 0L);
-    long l2 = Long.valueOf((String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b.get(this.jdField_a_of_type_Int)).longValue();
-    ((azej)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.a(112)).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getCurrentAccountUin(), l1, l2);
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getResources().getString(2131691345));
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a);
+    QLog.e("TintManager", 1, "tint config download onCompleted");
+    this.a.loadConfig(BaseApplicationImpl.getApplication().getResources(), beiw.a(this.a));
+    paramQQAppInterface = new Intent("com.tencent.qplus.THEME_UPDATE");
+    BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface, "com.tencent.msg.permission.pushnotify");
   }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

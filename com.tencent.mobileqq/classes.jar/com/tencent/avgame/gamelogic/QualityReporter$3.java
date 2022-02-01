@@ -1,6 +1,6 @@
 package com.tencent.avgame.gamelogic;
 
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -11,7 +11,7 @@ public final class QualityReporter$3
   
   public void run()
   {
-    bctj.a(BaseApplication.getContext()).a("", "actAVGameHeartBeat", true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "actAVGameHeartBeat", true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
   }
 }
 

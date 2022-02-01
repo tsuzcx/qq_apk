@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afur;
+import agej;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
-import aufw;
-import aufz;
-import auie;
-import bcst;
+import auxr;
+import auxu;
+import avad;
+import bdll;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -21,13 +21,13 @@ public class BaseForwardSelectionActivity
   extends FragmentActivity
 {
   protected Bundle a;
-  public aufz a;
+  public auxu a;
   public boolean a;
   public boolean b;
   
   private void a()
   {
-    Intent localIntent = afur.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = agej.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -66,7 +66,7 @@ public class BaseForwardSelectionActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_Aufz.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Auxu.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -78,8 +78,8 @@ public class BaseForwardSelectionActivity
       this.b = getIntent().getBooleanExtra("call_by_forward", false);
       if (this.b)
       {
-        this.jdField_a_of_type_Aufz = auie.a(paramBundle, this.app, this);
-        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Aufz.a();
+        this.jdField_a_of_type_Auxu = avad.a(paramBundle, this.app, this);
+        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Auxu.a();
       }
     }
     return true;
@@ -87,8 +87,8 @@ public class BaseForwardSelectionActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aufz != null) {
-      this.jdField_a_of_type_Aufz.x();
+    if (this.jdField_a_of_type_Auxu != null) {
+      this.jdField_a_of_type_Auxu.y();
     }
     super.doOnDestroy();
   }
@@ -111,14 +111,14 @@ public class BaseForwardSelectionActivity
     paramIntent = (String)paramIntent.get(0);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type", 0);
-    if ((i == aufw.f.intValue()) || (i == aufw.k.intValue()))
+    if ((i == auxr.f.intValue()) || (i == auxr.k.intValue()))
     {
-      this.jdField_a_of_type_Aufz.b(i);
+      this.jdField_a_of_type_Auxu.b(i);
       return;
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     a();
-    bcst.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    bdll.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void finish()

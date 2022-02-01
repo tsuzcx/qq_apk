@@ -1,27 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import dov.com.qq.im.ae.play.AEPlayShowPageView;
 
 public class boxa
-  extends AnimatorListenerAdapter
+  extends RecyclerView.ItemDecoration
 {
-  public boxa(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
+  public boxa(AEPlayShowPageView paramAEPlayShowPageView, bowu parambowu) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+    if (AEPlayShowPageView.a(this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView) != 1)
+    {
+      paramRect.left = this.jdField_a_of_type_Bowu.c;
+      paramRect.right = this.jdField_a_of_type_Bowu.c;
+      paramRect.top = this.jdField_a_of_type_Bowu.d;
+      paramRect.bottom = this.jdField_a_of_type_Bowu.d;
+      return;
     }
-    this.a.jdField_a_of_type_Boxu.d = 1;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
-    }
+    paramRect.bottom = this.jdField_a_of_type_Bowu.d;
   }
 }
 

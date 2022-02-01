@@ -1,51 +1,21 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
-class agbm
-  extends Animation
+public class agbm
+  implements Comparator<agdh>
 {
-  private float jdField_a_of_type_Float;
-  private float b;
+  public agbm(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  agbm(agbk paramagbk) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public int a(agdh paramagdh1, agdh paramagdh2)
   {
-    float f2 = 1.0F;
-    float f1;
-    if (paramFloat < this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 11.0F)
-    {
-      f1 = paramFloat / (this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 11.0F);
-      if (paramFloat >= this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 6.0F) {
-        break label139;
-      }
-      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 6.0F) * 0.5F;
+    long l = paramagdh2.a - paramagdh1.a;
+    if (l > 0L) {
+      return 1;
     }
-    for (;;)
-    {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
-      return;
-      if (paramFloat < this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 20.0F)
-      {
-        f1 = 1.0F;
-        break;
-      }
-      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_Agbk.jdField_a_of_type_Float);
-      break;
-      label139:
-      if (paramFloat < this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 11.0F) {
-        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_Agbk.jdField_a_of_type_Float);
-      }
+    if (l < 0L) {
+      return -1;
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
+    return 0;
   }
 }
 

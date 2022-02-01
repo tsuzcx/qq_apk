@@ -24,8 +24,7 @@ public abstract class ShellCode
   {
     byte[] arrayOfByte = new byte[sizeOfCallOrigin()];
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, sizeOfDirectJump());
-    paramArrayOfByte = createDirectJump(toPC(sizeOfDirectJump() + paramLong));
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, sizeOfDirectJump(), paramArrayOfByte.length);
+    System.arraycopy(createDirectJump(toPC(sizeOfDirectJump() + paramLong)), 0, arrayOfByte, sizeOfDirectJump(), sizeOfDirectJump());
     return arrayOfByte;
   }
   

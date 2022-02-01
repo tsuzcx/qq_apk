@@ -1,27 +1,64 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-public class toc
-  implements qzc
+class toc
+  implements blna
 {
-  public toc(BridgeModule paramBridgeModule, String paramString) {}
+  toc(toa paramtoa, int paramInt, VideoInfo paramVideoInfo) {}
   
-  public void a(String paramString)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    int i = 0;
+    if (paramInt == this.jdField_a_of_type_Int)
     {
-      localJSONObject.put("wording", paramString);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-      return;
+      QQToast.a(toa.a(this.jdField_a_of_type_Toa), 0, 2131694621, 0).a();
+      if (toa.a(this.jdField_a_of_type_Toa) != null) {
+        toa.a(this.jdField_a_of_type_Toa).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      }
+      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
+        break label359;
+      }
     }
-    catch (JSONException paramString)
+    label356:
+    label359:
+    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
     {
+      paramView = "";
+      paramInt = i;
+      if (paramInt < paramArrayList.size())
+      {
+        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
+        if (paramObject == null) {
+          break label356;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (paramInt != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
+        }
+      }
       for (;;)
       {
-        QLog.e(BridgeModule.TAG, 1, "onClickBubbleTips error: " + paramString.toString());
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
+          paramArrayList = nzq.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(toa.a(this.jdField_a_of_type_Toa))) {
+            nzq.a(new tlx().a(toa.a(this.jdField_a_of_type_Toa)).a(nzq.c).b(nzq.R).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
+          }
+        }
+        else
+        {
+          return;
+        }
+        nzq.a(new tlx().a(toa.a(this.jdField_a_of_type_Toa)).a(nzq.c).b(nzq.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
+        return;
       }
     }
   }

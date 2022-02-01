@@ -1,59 +1,26 @@
-import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mcl
-  implements mhj
 {
-  public mcl(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, String paramString) {}
-  
-  public void a()
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.j = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.L();
-    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
-    if (localEffectOperateManager != null) {
-      localEffectOperateManager.b(false);
-    }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.N();
+    bdll.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
-  public void b()
+  public static void b(String paramString)
   {
-    ley localley = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a();
-    mts.a().b(this.jdField_a_of_type_Long);
-    localley.f = false;
-    if (localley.z != -1) {}
-    for (;;)
+    int i = 0;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof VideoAppInterface)) {
+      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
+    }
+    if (i > 0) {}
+    for (localObject = "0X80076B4";; localObject = "0X80076B3")
     {
-      localley.t = true;
-      mqw.d(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
-      if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b) {
-        mqw.r(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
-      }
-      if ((localley.l()) && (localley.d == 2) && (!localley.j)) {
-        mqw.e();
-      }
-      lbc.c(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, "DataReport onClose: ");
-      lhq.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      liq.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      lgo.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      mbp.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-      mll.a(localley);
-      String str = localley.b() + "";
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 237);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(237);
-      lgs.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str);
-      lgs.a(2, str);
-      lgs.a(2);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_JavaLangString, localley.z);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_Boolean = true;
-      localley.a("onClick_HangeUP", false);
-      localley.b("onClick_HangeUP", 0);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.j = false;
+      a((String)localObject);
+      lbj.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
       return;
-      localley.z = 0;
     }
   }
 }

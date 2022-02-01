@@ -1,17 +1,125 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.URLThemeImageView;
 
-class agxn
-  extends ahbl
+public class agxn
 {
-  agxn(agwz paramagwz)
+  private agxp jdField_a_of_type_Agxp;
+  private View jdField_a_of_type_AndroidViewView;
+  private IntimateInfo.MemoryDayInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo;
+  
+  public agxn(agxl paramagxl, Context paramContext)
   {
-    super(paramagwz, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559274, null);
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public View a()
   {
-    return new ahlj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(agxp paramagxp)
+  {
+    this.jdField_a_of_type_Agxp = paramagxp;
+  }
+  
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  {
+    if (paramMemoryDayInfo != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo = paramMemoryDayInfo;
+      if (this.jdField_a_of_type_AndroidViewView != null) {}
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setTag(paramMemoryDayInfo);
+    URLThemeImageView localURLThemeImageView = (URLThemeImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368212);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381435);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369993);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370705);
+    Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363237);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = 686;
+    localURLDrawableOptions.mRequestHeight = 124;
+    localURLDrawableOptions.mRetryCount = 3;
+    localURLDrawableOptions.mPlayGifImage = true;
+    Object localObject1 = this.jdField_a_of_type_Agxl.jdField_a_of_type_JavaLangString;
+    if (localURLThemeImageView != null)
+    {
+      if (localURLThemeImageView.a != null) {
+        localURLThemeImageView.a.a(blqj.c);
+      }
+      if (paramMemoryDayInfo.iconUrl != null) {
+        localURLThemeImageView.setBackgroundURL(paramMemoryDayInfo.iconUrl);
+      }
+    }
+    if ((localRelativeLayout != null) && (ThemeUtil.isNowThemeIsNight(null, false, null))) {
+      localObject1 = this.jdField_a_of_type_Agxl.b;
+    }
+    for (;;)
+    {
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null)) {
+        ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions));
+      }
+      for (;;)
+      {
+        if ((localTextView2 != null) && (paramMemoryDayInfo.wording != null))
+        {
+          localTextView2.setText(paramMemoryDayInfo.wording);
+          localObject2 = "";
+          localObject1 = localObject2;
+          if (localTextView1 != null)
+          {
+            localObject1 = localObject2;
+            if (paramMemoryDayInfo.linkWording != null) {
+              localObject1 = paramMemoryDayInfo.linkWording;
+            }
+          }
+          int i = agej.a(95.0F, this.jdField_a_of_type_Agxl.jdField_a_of_type_AndroidContentContext.getResources());
+          i = agxl.a(this.jdField_a_of_type_Agxl, (String)localObject1, 14.0F, i + 80);
+          if (i > 200) {
+            localTextView2.setMaxWidth(i);
+          }
+        }
+        else
+        {
+          if ((localTextView1 == null) || (paramMemoryDayInfo.linkWording == null)) {
+            break;
+          }
+          localTextView1.setText(paramMemoryDayInfo.linkWording);
+          if (TextUtils.isEmpty(paramMemoryDayInfo.linkColor)) {}
+        }
+        try
+        {
+          localTextView1.setTextColor(Color.parseColor(paramMemoryDayInfo.linkColor));
+          localTextView1.setOnClickListener(new agxo(this));
+          return;
+          QLog.e("intimate_relationship", 2, " url is empty");
+          continue;
+          localTextView2.setMaxWidth(200);
+        }
+        catch (IllegalArgumentException paramMemoryDayInfo)
+        {
+          for (;;)
+          {
+            QLog.e("intimate_relationship", 2, " color parse err");
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,17 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.MyGridView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 
-public class aldn
-  extends alcf
+public abstract class aldn
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public MyGridView a;
-  public SingleLineTextView a;
+  public abstract void a(PreloadManager paramPreloadManager);
 }
 
 

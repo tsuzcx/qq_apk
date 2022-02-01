@@ -1,11 +1,20 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wkw
+class wkw
+  extends SimpleJob
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  wkw(wkv paramwkv, String paramString, boolean paramBoolean)
   {
-    return false;
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.jdField_a_of_type_Wkv.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 

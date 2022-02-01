@@ -1,18 +1,47 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextUtils;
 
-class ahai
-  extends ahbl
+abstract class ahai
 {
-  ahai(agwz paramagwz)
+  protected int a;
+  protected ahaj a;
+  protected String a;
+  protected int b;
+  protected String b;
+  
+  public int a()
   {
-    super(paramagwz, null);
+    return this.jdField_b_of_type_Int;
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public String a()
   {
-    return new agsw(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return this.jdField_b_of_type_JavaLangString;
   }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(ahaj paramahaj)
+  {
+    this.jdField_a_of_type_Ahaj = paramahaj;
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 

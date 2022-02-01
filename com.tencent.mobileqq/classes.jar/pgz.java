@@ -1,170 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJSkinOperationPopupStep.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class pgz
+  extends qtv
 {
-  public static final String a = anni.a(2131711503);
-  public static final String b = anni.a(2131711707);
-  public static final String c = anni.a(2131711742);
-  public static final String d = anni.a(2131711487);
-  public static final String e = anni.a(2131711858);
-  public static final String f = anni.a(2131711757);
-  public static final String g = anni.a(2131711599);
-  public static final String h = anni.a(2131711523);
-  public static final String i = anni.a(2131711517);
-  public static final String j = anni.a(2131711836);
-  public static final String k = anni.a(2131711748);
-  public static final String l = anni.a(2131711537);
-  public static final String m = anni.a(2131711553);
-  public static final String n = anni.a(2131711559);
-  public static final String o = anni.a(2131711534);
-  public static final String p = anni.a(2131711702);
+  pgz(pgw parampgw) {}
   
-  public static long a()
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
   {
-    return NetConnInfoCenter.getServerTime();
-  }
-  
-  public static String a(long paramLong)
-  {
-    paramLong *= 1000L;
-    Object localObject1 = null;
-    try
-    {
-      Object localObject2 = new Date(paramLong);
-      localObject2 = new SimpleDateFormat("yyyy-MM-dd").format((Date)localObject2);
-      localObject1 = localObject2;
+    if ((paramBoolean) && (paramInt == 0)) {
+      ThreadManager.excute(new RIJSkinOperationPopupStep.5.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 16, null, true);
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ReadInJoyTimeUtils", 2, "getDateTimeString() ERROR millisTime=" + paramLong);
-    }
-    return localObject1;
-    return null;
-  }
-  
-  public static String a(long paramLong, boolean paramBoolean)
-  {
-    return b(paramLong, paramBoolean);
-  }
-  
-  public static String a(Calendar paramCalendar)
-  {
-    return new SimpleDateFormat("HH:mm").format(paramCalendar.getTime());
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong1);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong2);
-    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
-  }
-  
-  private static String b(long paramLong, boolean paramBoolean)
-  {
-    long l1 = paramLong * 1000L;
-    Calendar localCalendar1 = Calendar.getInstance();
-    Calendar localCalendar2 = Calendar.getInstance();
-    long l2;
-    Object localObject2;
-    Object localObject1;
-    if (paramBoolean)
-    {
-      paramLong = a() * 1000L;
-      if (paramLong != localCalendar1.getTimeInMillis()) {
-        localCalendar1.setTimeInMillis(paramLong);
-      }
-      localCalendar2.setTimeInMillis(l1);
-      l2 = (paramLong - l1) / 1000L;
-      localObject2 = c(localCalendar2);
-      localObject1 = "";
-      if (l2 < 0L) {
-        localObject1 = localObject2;
-      }
-      if (!a(l1, paramLong)) {
-        break label254;
-      }
-      if (l2 >= 60L) {
-        break label176;
-      }
-      localObject1 = a;
-      label103:
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label321;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyTimeUtils", 2, new Object[] { "getRelativeDisplayTimeString = ", localObject2, ", now = ", c(localCalendar1), ", publish = ", c(localCalendar2) });
-      }
-      return localObject2;
-      paramLong = localCalendar1.getTimeInMillis();
-      break;
-      label176:
-      if (l2 < 3600L)
-      {
-        localObject1 = l2 / 60L + b;
-        break label103;
-      }
-      if (l2 >= 86400L) {
-        break label103;
-      }
-      localObject1 = l2 / 3600L + c;
-      break label103;
-      label254:
-      if (c(l1, paramLong))
-      {
-        localObject1 = e + " " + a(localCalendar2);
-        break label103;
-      }
-      if (b(l1, paramLong))
-      {
-        localObject1 = b(localCalendar2);
-        break label103;
-      }
-      localObject1 = localObject2;
-      break label103;
-      label321:
-      localObject2 = localObject1;
-    }
-  }
-  
-  public static String b(Calendar paramCalendar)
-  {
-    return new SimpleDateFormat("MM-dd HH:mm").format(paramCalendar.getTime());
-  }
-  
-  public static boolean b(long paramLong1, long paramLong2)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong1);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong2);
-    return localCalendar1.get(1) == localCalendar2.get(1);
-  }
-  
-  public static String c(Calendar paramCalendar)
-  {
-    return new SimpleDateFormat("yy-MM-dd HH:mm").format(paramCalendar.getTime());
-  }
-  
-  public static boolean c(long paramLong1, long paramLong2)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong2);
-    localCalendar1.add(6, -1);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong1);
-    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
   }
 }
 

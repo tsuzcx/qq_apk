@@ -1,14 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class amiv
+public class amiv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public amiv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  amiv(amis paramamis) {}
+  public void onGlobalLayout()
+  {
+    ThreadManager.post(this.a, 8, null, false);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 

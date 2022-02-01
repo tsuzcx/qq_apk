@@ -1,59 +1,18 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 
-class bifa
-  implements biev
+public class bifa
+  implements TouchWebView.OnScrollChangedListener
 {
-  bifa(biez parambiez) {}
+  public bifa(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void a()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (biez.a(this.a) != null)
-    {
-      biez.a(this.a).notifyVideoStop();
-      biez.a(this.a, 1);
+    if (this.a.a != null) {
+      this.a.a.scrollBy(0, paramInt2 - paramInt4);
     }
-    this.a.a(true, new View[] { biez.a(this.a) });
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.a.a != null) && (this.a.a.getVisibility() != 0))
-    {
-      this.a.a(true, new View[] { this.a.a });
-      if ((paramBoolean) && (biez.a(this.a) != null) && (biez.a(this.a) == 0))
-      {
-        biez.a(this.a).notifyVideoStart();
-        this.a.a(false, new View[] { biez.a(this.a) });
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((biez.a(this.a) != null) && (biez.a(this.a).getVisibility() == 0))
-    {
-      this.a.a(false, new View[] { biez.a(this.a) });
-      return;
-    }
-    this.a.a(true, new View[] { biez.a(this.a) });
-    biez.a(this.a, 1);
-  }
-  
-  public void b()
-  {
-    if (biez.a(this.a) != null) {
-      biez.a(this.a).notifyVideoStop();
-    }
-    this.a.a(true, new View[] { biez.a(this.a) });
-    this.a.a(false, new View[] { this.a.a });
-  }
-  
-  public void c()
-  {
-    this.a.b(5);
   }
 }
 

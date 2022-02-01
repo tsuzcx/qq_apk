@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,9 +13,13 @@ class SensorJsPlugin$GyroscopeSensorJsPlugin
 {
   private final float NS2S = 1.0E-009F;
   private float[] angle = new float[3];
+  private JsRuntime runtime;
   private float timestamp;
   
-  private SensorJsPlugin$GyroscopeSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin) {}
+  SensorJsPlugin$GyroscopeSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin, @NonNull JsRuntime paramJsRuntime)
+  {
+    this.runtime = paramJsRuntime;
+  }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
@@ -46,7 +51,7 @@ class SensorJsPlugin$GyroscopeSensorJsPlugin
       ((JSONObject)localObject).put("x", f1);
       ((JSONObject)localObject).put("y", f2);
       ((JSONObject)localObject).put("z", f3);
-      this.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onGyroscopeChange", ((JSONObject)localObject).toString(), 0);
+      this.runtime.evaluateSubcribeJS("onGyroscopeChange", ((JSONObject)localObject).toString(), 0);
       this.timestamp = ((float)paramSensorEvent.timestamp);
       return;
     }

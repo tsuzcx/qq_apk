@@ -1,18 +1,59 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class abbb
-  implements Parcelable.Creator<NewerGuidePlugin.RecommendedListResp>
+public class abbb
 {
-  public NewerGuidePlugin.RecommendedListResp a(Parcel paramParcel)
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  
+  public abbb(abay paramabay, String paramString, JSONObject paramJSONObject)
   {
-    return new NewerGuidePlugin.RecommendedListResp(paramParcel);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      this.b = paramJSONObject.getString("title");
+      this.c = paramJSONObject.getString("title_color");
+      this.d = paramJSONObject.getString("bg_color");
+      this.e = paramJSONObject.getString("bg_border_color");
+      return;
+    }
+    catch (JSONException paramabay)
+    {
+      paramabay.printStackTrace();
+    }
   }
   
-  public NewerGuidePlugin.RecommendedListResp[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new NewerGuidePlugin.RecommendedListResp[paramInt];
+    paramString = paramString + "/" + this.jdField_a_of_type_JavaLangString;
+    Object localObject = new File(paramString);
+    if (((File)localObject).exists())
+    {
+      localObject = Arrays.asList(((File)localObject).list());
+      if (((List)localObject).contains("take_video@2x.png"))
+      {
+        String str = paramString + "/" + "take_video@2x.png";
+        if (new File(str).exists()) {
+          this.f = str;
+        }
+      }
+      if (((List)localObject).contains("take_video_no_bg@2x.png"))
+      {
+        paramString = paramString + "/" + "take_video_no_bg@2x.png";
+        if (new File(paramString).exists()) {
+          this.g = paramString;
+        }
+      }
+    }
   }
 }
 

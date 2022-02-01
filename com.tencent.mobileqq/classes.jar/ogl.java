@@ -1,16 +1,34 @@
-class ogl
-  implements pnh
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopTabFragment;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.smtt.sdk.WebView;
+
+public class ogl
+  extends ogk
 {
-  ogl(ogh paramogh) {}
-  
-  public void l()
+  public ogl(EcshopTabFragment paramEcshopTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
   {
-    ogh.d(this.a);
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView, paramString);
   }
   
-  public void m()
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    ogh.e(this.a);
+    super.onPageFinished(paramWebView, paramString);
+    EcshopTabFragment.a(this.a).setVisibility(0);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

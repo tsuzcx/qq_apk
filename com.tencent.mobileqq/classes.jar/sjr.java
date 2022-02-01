@@ -1,25 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
-
-public abstract class sjr
+class sjr
+  extends pmr
 {
-  public int a;
-  public BaseArticleInfo a;
-  public HashMap<String, String> a;
-  public int b;
-  
-  public sjr(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map<String, String> paramMap)
+  sjr(sjq paramsjq, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilHashMap.putAll(paramMap);
+    super(paramString);
   }
   
-  public abstract void a(JSONObject paramJSONObject);
+  public void a(pmk parampmk)
+  {
+    parampmk.f();
+  }
 }
 
 

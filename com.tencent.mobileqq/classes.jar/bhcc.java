@@ -1,36 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bhcc
-  extends bhbw
+class bhcc
+  implements bhcf
 {
-  public static bhcc a = new bhcc();
+  bhcc(bhbx parambhbx) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bgyv parambgyv, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString)
   {
-    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambgyv, paramBoolean);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    String str = "qqVipLevel." + paramInt;
-    return new File(a.getDir(paramContext, str)).exists();
-  }
-  
-  public long getBID()
-  {
-    return 41L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "qqlevel_icon";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "qqVipLevel.";
+    if (paramBoolean)
+    {
+      this.a.d = paramString;
+      bhbx.f(this.a);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131714565), 0).a();
   }
 }
 

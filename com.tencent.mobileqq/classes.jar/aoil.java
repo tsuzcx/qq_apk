@@ -1,72 +1,78 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.parser.AVGameShareJoinRoomAction.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.JobReporter;
+import com.tencent.mobileqq.app.ThreadWrapContext;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import mqq.os.MqqHandler;
 
 public class aoil
-  extends aojs
+  implements ThreadWrapContext
 {
-  public aoil(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private static boolean a;
+  private static volatile boolean b;
   
-  public boolean a()
+  public static void a(long paramLong)
   {
-    try
+    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
     {
-      if (TextUtils.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("key"))) {
-        return c();
+      a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
       }
-      boolean bool = b();
-      return bool;
+      if (paramLong > 0L)
+      {
+        b = JobReporter.ramdomReport((int)paramLong);
+        if (QLog.isColorLevel()) {
+          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
+        }
+      }
     }
-    catch (Exception localException)
-    {
-      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: " + localException.getMessage());
-      a("AVGameShareJoinRoomAction");
-    }
-    return true;
   }
   
-  protected boolean b()
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    QLog.d("AVGameShareJoinRoomAction", 1, "doAction getRoomInfoAndJoinRoom");
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("key");
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: key is empty");
-      return true;
-    }
-    aobd.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, new aoim(this));
-    return false;
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  protected boolean c()
+  public long getMainProccessThreadMonitorTime()
   {
-    QLog.d("AVGameShareJoinRoomAction", 1, "doAction directJoinRoom");
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("room");
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: data is empty");
-    }
-    mwd localmwd;
-    do
-    {
-      return true;
-      localmwd = (mwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
-    } while (localmwd == null);
-    ThreadManager.getUIHandler().post(new AVGameShareJoinRoomAction.2(this, localmwd, str2, str1));
-    return true;
+    return bhsi.d();
+  }
+  
+  public long getMainProccessThreadPeakCounts()
+  {
+    return bhsi.c();
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isShotReportRejectedError()
+  {
+    return b;
+  }
+  
+  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
+  {
+    bdmc.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
+  }
+  
+  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
+  
+  public void setMainProccessThreadMonitorTime(long paramLong)
+  {
+    bhsi.b(paramLong);
+  }
+  
+  public void setMainProccessThreadPeakCounts(long paramLong)
+  {
+    bhsi.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoil
  * JD-Core Version:    0.7.0.1
  */

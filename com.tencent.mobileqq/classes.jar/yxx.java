@@ -1,19 +1,20 @@
-public class yxx
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class yxx
+  extends SimpleJob<Object>
 {
-  public int a;
-  public yxv a;
-  public int b;
-  
-  private yxx(yxz paramyxz)
+  yxx(yxt paramyxt, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_Yxv = yxz.a(paramyxz);
-    this.jdField_a_of_type_Int = yxz.a(paramyxz);
-    this.b = yxz.b(paramyxz);
+    super(paramString1);
   }
   
-  public String toString()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Yxv + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
+    yup.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

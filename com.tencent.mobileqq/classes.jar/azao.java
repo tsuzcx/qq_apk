@@ -1,7 +1,18 @@
-import kotlin.Metadata;
+import java.util.Comparator;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azao {}
+class azao
+  implements Comparator<String>
+{
+  azao(azan paramazan) {}
+  
+  public int a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
+    }
+    return paramString2.length() - paramString1.length();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

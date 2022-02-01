@@ -1,38 +1,38 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public final class anec
+class anec
+  extends biht
 {
-  private static HashMap<String, Long> a = new HashMap();
-  private static HashMap<String, Long> b = new HashMap();
+  anec(anea paramanea) {}
   
-  public static void a()
+  public void onDone(bihu parambihu)
   {
-    a.clear();
-    b.clear();
+    super.onDone(parambihu);
+    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambihu.a());
   }
   
-  public static void a(String paramString)
+  public void onDoneFile(bihu parambihu)
   {
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString))) {
-      a.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
+    if ((parambihu == null) || (anea.a(this.a) == null)) {
+      return;
     }
+    if (parambihu.a() != 3)
+    {
+      anea.a(this.a, 2);
+      if (anea.a(this.a) != null) {
+        anea.a(this.a).c(-1005, anea.a(this.a).jdField_b_of_type_JavaLangString);
+      }
+      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambihu.a());
+      return;
+    }
+    anea.a(this.a);
   }
   
-  public static void b(String paramString)
+  public void onProgress(bihu parambihu)
   {
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (a.containsKey(paramString)))
-    {
-      Long localLong = (Long)a.get(paramString);
-      if (localLong != null)
-      {
-        long l1 = localLong.longValue();
-        long l2 = SystemClock.uptimeMillis();
-        b.put(paramString, Long.valueOf(l2));
-        QLog.d("TraceReport_CmShowStatUtil", 1, new Object[] { "eventName=", paramString, ", cost=", Long.valueOf(l2 - l1) });
-      }
+    int i = (int)parambihu.a;
+    if (anea.a(this.a) != null) {
+      anea.a(this.a).a(i, anea.a(this.a).jdField_b_of_type_Int, anea.a(this.a).jdField_b_of_type_JavaLangString);
     }
   }
 }

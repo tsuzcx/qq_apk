@@ -1,44 +1,71 @@
-import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
 public class asee
-  implements View.OnTouchListener
+  extends asdn
 {
-  public asee(AIOEmotionFragment paramAIOEmotionFragment, int paramInt, MessageForPic paramMessageForPic) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public asee(QQAppInterface paramQQAppInterface)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
-      }
+    super("qq.android.qav.video", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10049;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavVideoData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadVideoDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
     }
-    while (paramMotionEvent.getAction() != 0)
+    try
     {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity().startActivity(paramView);
-      return false;
+      bhmi.a(paramString, msq.c(), false);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-    return false;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QavVideoData localQavVideoData = (QavVideoData)a();
+    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
+    {
+      localQavVideoData.autoDownload = true;
+      asdd.a(localQavVideoData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavVideoData)a()).autoDownload;
   }
 }
 

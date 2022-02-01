@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.location.ui;
 
-import avxq;
-import bgpa;
+import awql;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public final class LocationDialogUtil$14
   implements Runnable
 {
-  public LocationDialogUtil$14(BaseActivity paramBaseActivity, bgpa parambgpa) {}
+  public LocationDialogUtil$14(BaseActivity paramBaseActivity, bhpc parambhpc) {}
   
   public void run()
   {
-    avxq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Bgpa);
+    awql.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Bhpc);
   }
 }
 

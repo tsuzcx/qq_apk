@@ -1,10 +1,22 @@
+import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aefw
+public class aefw
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView);
+  public aefw(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public abstract boolean a(String paramString, int paramInt);
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

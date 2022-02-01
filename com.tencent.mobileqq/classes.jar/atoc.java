@@ -1,16 +1,39 @@
-class atoc
-  implements atnd
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+
+public class atoc
+  extends auoi
 {
-  atoc(atny paramatny) {}
+  public atoc(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
   
   public void a()
   {
-    this.a.a(false, atul.a(this.a.a.a()), this.a.c(), new atod(this));
+    this.a.a.a().b();
   }
   
   public void b()
   {
-    atny.b(this.a);
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 

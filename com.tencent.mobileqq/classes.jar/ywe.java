@@ -1,67 +1,62 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import java.io.File;
-import java.util.Locale;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ywe
+  extends Handler
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public ywe(EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public ywe(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void dispatchMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-  }
-  
-  public String a()
-  {
-    return this.c + File.separator + this.jdField_a_of_type_Int + ".zip";
-  }
-  
-  public JSONObject a()
-  {
-    try
+    super.dispatchMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("thumbPath", ArtFilterManager.jdField_b_of_type_JavaLangString + b() + c());
-      localJSONObject.put("priority", this.jdField_b_of_type_Int);
-      localJSONObject.put("name", this.c);
-      localJSONObject.put("pron", this.e);
-      return localJSONObject;
     }
-    catch (JSONException localJSONException)
+    do
     {
-      localJSONException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String b()
-  {
-    return this.c + File.separator + this.jdField_a_of_type_Int + File.separator;
-  }
-  
-  public String c()
-  {
-    return this.c + "_thumb" + ".png";
-  }
-  
-  public String toString()
-  {
-    return String.format(Locale.CHINA, "ArtFilter: id=%s, version=%d, priority=%d, url=%s, name=%s, md5=%s, pron=%s", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e });
+      do
+      {
+        return;
+        EditVideoArtFilter.a(this.a, false);
+        localObject = (String)paramMessage.obj;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER SUCCESS,fileOutputPath:" + (String)localObject);
+        }
+        this.a.a((String)localObject, paramMessage.arg1);
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(0, true);
+        return;
+        EditVideoArtFilter.a(this.a, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER ERROR");
+        }
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a();
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690136), 0).a();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER TIMEOUT,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.obj + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+        }
+      } while ((!this.a.jdField_a_of_type_Boolean) || (((Integer)paramMessage.obj).intValue() != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+      EditVideoArtFilter.a(this.a, false);
+      this.a.f();
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690136), 0).a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "UPDATE_FILTER_PROGRESS,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.arg1 + ",updateCount:" + paramMessage.arg2 + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a.getVisibility() != 0) || (paramMessage.arg1 != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(paramMessage.arg2, false);
+    Object localObject = EditVideoArtFilter.a(this.a).obtainMessage(38);
+    ((Message)localObject).arg1 = paramMessage.arg1;
+    ((Message)localObject).arg2 = (paramMessage.arg2 + 1);
+    EditVideoArtFilter.a(this.a).sendMessageDelayed((Message)localObject, 100L);
   }
 }
 

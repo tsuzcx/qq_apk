@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import tty;
-import ttz;
-import tue;
+import tua;
+import tub;
+import tug;
 
 public class ServiceAccountFolderFeedAdapter$7
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$7(ttz paramttz, tty paramtty) {}
+  public ServiceAccountFolderFeedAdapter$7(tub paramtub, tua paramtua) {}
   
   public void run()
   {
-    tue.a().a(ttz.a(this.this$0), this.a, true);
+    tug.a().a(tub.a(this.this$0), this.a, true);
   }
 }
 

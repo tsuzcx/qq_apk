@@ -1,65 +1,58 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public class aslr
-  implements aslq
+class aslr
+  extends biht
 {
-  private final HashSet<LoadingLayoutBase> a = new HashSet();
+  aslr(aslq paramaslq) {}
   
-  public void a(LoadingLayoutBase paramLoadingLayoutBase)
+  public void onDone(bihu parambihu)
   {
-    if (paramLoadingLayoutBase != null) {
-      this.a.add(paramLoadingLayoutBase);
+    super.onDone(parambihu);
+    askd localaskd = this.a.a();
+    Bundle localBundle = parambihu.a();
+    if (parambihu.a() != 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = localBundle.getLong("vas_download_start");
+      localaskd.a(localBundle, parambihu, bool, parambihu.a, parambihu.d, l1 - l2, 0);
+      return;
     }
   }
   
-  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  public void onDoneFile(bihu parambihu)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
+    Object localObject = parambihu.a();
+    int i = ((Bundle)localObject).getInt(parambihu.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambihu);
     }
-  }
-  
-  public void setLoadingDrawable(Drawable paramDrawable)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
+    if (parambihu.a != 0)
+    {
+      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambihu.a);
+      if (askd.a(i)) {
+        askd.a.a((EmoticonPackage)localObject, i, -1, parambihu.a);
+      }
+      biah.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambihu.a + "", "", "", "");
     }
-  }
-  
-  public void setPullLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
-    }
-  }
-  
-  public void setRefreshResultLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
-    }
-  }
-  
-  public void setRefreshingLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
-    }
-  }
-  
-  public void setReleaseLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
+    for (;;)
+    {
+      return;
+      askd localaskd = this.a.a();
+      if (askd.a(i)) {
+        askd.a.a((EmoticonPackage)localObject, i, 0, 0);
+      }
+      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
+      {
+        localaskd.b(parambihu);
+        return;
+        if (i == 7) {
+          localaskd.a(parambihu);
+        }
+      }
     }
   }
 }

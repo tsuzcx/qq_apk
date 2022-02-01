@@ -1,14 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class zxq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class zxq
+  implements DialogInterface.OnClickListener
 {
-  zxq(zxo paramzxo) {}
+  public zxq(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void onGlobalLayout()
-  {
-    zxo.a(this.a, this.a.e());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

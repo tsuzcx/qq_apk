@@ -1,20 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.4.1;
-
-public class beux
-  implements bdfn
+class beux
+  extends aocj
 {
-  public beux(TroopEnterEffectController.3 param3) {}
+  beux(beuw parambeuw) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, aock paramaock)
   {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramaock);
+    if (paramBoolean)
     {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
-      this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.4.1(this));
+      this.a.e();
+      return;
     }
+    this.a.d();
   }
 }
 

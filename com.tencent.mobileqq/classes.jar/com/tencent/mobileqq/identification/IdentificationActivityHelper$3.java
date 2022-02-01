@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.identification;
 
-import avez;
+import avxc;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class IdentificationActivityHelper$3
   implements Runnable
 {
-  public IdentificationActivityHelper$3(avez paramavez, boolean paramBoolean) {}
+  public IdentificationActivityHelper$3(avxc paramavxc, boolean paramBoolean) {}
   
   public void run()
   {
-    QQIdentiferActivity localQQIdentiferActivity = avez.a(this.this$0);
+    QQIdentiferActivity localQQIdentiferActivity = avxc.a(this.this$0);
     boolean bool = this.a;
     if (this.a) {}
     for (int i = 0;; i = 207)

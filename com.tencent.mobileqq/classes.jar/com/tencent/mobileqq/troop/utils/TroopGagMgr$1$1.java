@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import anie;
-import bfsn;
+import antz;
+import bgso;
 import java.util.ArrayList;
 
 class TroopGagMgr$1$1
@@ -11,7 +11,7 @@ class TroopGagMgr$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_Anie.d(new bfsn(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList));
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_Antz.d(new bgso(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList));
   }
 }
 

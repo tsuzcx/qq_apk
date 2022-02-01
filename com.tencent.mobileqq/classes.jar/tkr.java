@@ -1,17 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+import org.jetbrains.annotations.NotNull;
 
 public class tkr
-  extends AnimatorListenerAdapter
 {
-  public tkr(TickerView paramTickerView) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c = true;
+  public boolean d;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public tkr()
   {
-    TickerView.a(this.a).a();
-    TickerView.a(this.a);
-    this.a.invalidate();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "jumpType = " + this.jdField_a_of_type_Int + "reportForClick = " + this.jdField_a_of_type_Boolean + "autoDownload = " + this.jdField_b_of_type_Boolean + "videoStartPositionMillis = " + this.jdField_a_of_type_Long + "isAutoPlaying = " + this.c + "filterVideoCeiling = " + this.d + "position = " + this.jdField_b_of_type_Int;
   }
 }
 

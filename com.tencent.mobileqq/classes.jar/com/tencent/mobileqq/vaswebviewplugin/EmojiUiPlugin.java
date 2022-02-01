@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import afur;
+import agej;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -9,17 +9,17 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import arpd;
-import arpi;
-import arpj;
-import arui;
-import bglp;
-import bgpp;
-import bgyg;
-import bhmv;
-import bhod;
-import bhql;
-import biau;
+import aser;
+import asew;
+import asex;
+import asjw;
+import bhlq;
+import bhpr;
+import bhyk;
+import binq;
+import bioy;
+import birg;
+import bjbs;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -44,7 +44,7 @@ public abstract class EmojiUiPlugin
   EmojiUiPlugin.HomePageLoadInfo homePageUrlInfo = new EmojiUiPlugin.HomePageLoadInfo(this);
   protected int loadmode;
   protected int mActivityType = 2;
-  arpd mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
+  aser mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
   protected int mEmomallNewTimeFlag = -1;
   protected String mSelfUin;
   String mSid = "";
@@ -53,7 +53,7 @@ public abstract class EmojiUiPlugin
   long openToOncreateGap = -1L;
   long openTogetKeyTimeGap = -1L;
   int processStep = 1;
-  biau progressDialog;
+  bjbs progressDialog;
   
   private void dismissProgressDialog()
   {
@@ -119,10 +119,10 @@ public abstract class EmojiUiPlugin
   
   private void showGetKeyErrorDialog()
   {
-    bgpp localbgpp = bglp.a(this.activity, 230).a(this.activity.getString(2131691732)).b(this.activity.getString(2131691731)).a(this.activity.getString(2131694081), new EmojiUiPlugin.3(this));
-    localbgpp.setOnDismissListener(this);
-    localbgpp.setCanceledOnTouchOutside(false);
-    localbgpp.show();
+    bhpr localbhpr = bhlq.a(this.activity, 230).a(this.activity.getString(2131691735)).b(this.activity.getString(2131691734)).a(this.activity.getString(2131694098), new EmojiUiPlugin.3(this));
+    localbhpr.setOnDismissListener(this);
+    localbhpr.setCanceledOnTouchOutside(false);
+    localbhpr.show();
   }
   
   private void showProgressDialog()
@@ -142,13 +142,13 @@ public abstract class EmojiUiPlugin
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "emojiactivity oncreate");
     }
-    arui.a().a(this.mEmojiKeygetOnRemoteResp);
+    asjw.a().a(this.mEmojiKeygetOnRemoteResp);
   }
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    arui.a().b(this.mEmojiKeygetOnRemoteResp);
+    asjw.a().b(this.mEmojiKeygetOnRemoteResp);
   }
   
   protected void OnActivityPause()
@@ -199,7 +199,7 @@ public abstract class EmojiUiPlugin
       localIntent.addFlags(536870912);
       localIntent.putExtra("back_from_emojimall", true);
       localIntent.setClass(this.activity, SplashActivity.class);
-      localIntent = afur.a(localIntent, null);
+      localIntent = agej.a(localIntent, null);
       this.activity.startActivity(localIntent);
       if (QLog.isDevelopLevel()) {
         QLog.d("Q.emoji.web.EmojiUiPlugin", 4, "emojimallbaseactivity closeAllPage to chatactivity");
@@ -249,9 +249,9 @@ public abstract class EmojiUiPlugin
   {
     if (paramInt == 6)
     {
-      this.configUrl.index = bgyg.a(this.activity, "magicPlus", "");
+      this.configUrl.index = bhyk.a(this.activity, "magicPlus", "");
       if (this.configUrl.index == null) {
-        this.configUrl.index = bgyg.a(this.activity, "emoji", "");
+        this.configUrl.index = bhyk.a(this.activity, "emoji", "");
       }
       this.configUrl.indexSession = VasWebviewConstants.LOCAL_URL_NEED_KEY_SWITCHER.booleanValue();
     }
@@ -267,9 +267,9 @@ public abstract class EmojiUiPlugin
     }
     if ((paramInt1 == 1) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      arpj localarpj = arpj.a(paramIntent.getExtras());
-      paramIntent = arpi.a(paramIntent.getExtras());
-      onPayResultCallback(localarpj.jdField_a_of_type_JavaLangString, localarpj.jdField_a_of_type_Int, localarpj.b, localarpj.c, localarpj.d, localarpj.e, paramIntent.jdField_a_of_type_JavaLangString);
+      asex localasex = asex.a(paramIntent.getExtras());
+      paramIntent = asew.a(paramIntent.getExtras());
+      onPayResultCallback(localasex.jdField_a_of_type_JavaLangString, localasex.jdField_a_of_type_Int, localasex.b, localasex.c, localasex.d, localasex.e, paramIntent.jdField_a_of_type_JavaLangString);
     }
     do
     {

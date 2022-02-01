@@ -1,22 +1,98 @@
-public class bddw
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+class bddw
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b = 0;
-  public String b;
-  public boolean b;
-  public int c = 0;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
+  public Process a;
   
-  public bddw()
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_JavaLangProcess != null)
+    {
+      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
+      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
+      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangProcess != null) {}
+    try
+    {
+      for (;;)
+      {
+        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
+        if (str == null) {
+          break;
+        }
+        bddu.a("[@] compressVideo log:" + str, null);
+      }
+      label177:
+      return;
+    }
+    catch (IOException localIOException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+            this.jdField_a_of_type_JavaIoBufferedReader.close();
+          }
+          return;
+        }
+        catch (IOException localIOException3) {}
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+          return;
+        }
+        catch (IOException localIOException2)
+        {
+          return;
+        }
+      }
+    }
+    finally
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoInputStream != null) {
+          this.jdField_a_of_type_JavaIoInputStream.close();
+        }
+        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+          this.jdField_a_of_type_JavaIoInputStreamReader.close();
+        }
+        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+        }
+      }
+      catch (IOException localIOException4)
+      {
+        break label177;
+      }
+    }
   }
 }
 

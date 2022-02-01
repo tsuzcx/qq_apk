@@ -1,12 +1,12 @@
 package cooperation.comic;
 
-import blag;
+import bmbj;
 import com.tencent.webbundle.sdk.WebBundleManager;
 
 public class VipComicHelper$3$1
   implements Runnable
 {
-  public VipComicHelper$3$1(blag paramblag) {}
+  public VipComicHelper$3$1(bmbj parambmbj) {}
   
   public void run()
   {

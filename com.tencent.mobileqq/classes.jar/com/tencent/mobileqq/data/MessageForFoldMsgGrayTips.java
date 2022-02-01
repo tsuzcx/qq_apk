@@ -4,9 +4,9 @@ import android.content.Context;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import anni;
-import arho;
-import bglf;
+import anzj;
+import arxd;
+import bhlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,8 +45,8 @@ public class MessageForFoldMsgGrayTips
     int i = (int)Long.parseLong("E62555", 16);
     if (this.clickSpan == null)
     {
-      this.clickSpan = new SpannableString(anni.a(2131705366));
-      this.clickSpan.setSpan(new arho(this, paramQQAppInterface, paramContext, i | 0xFF000000), 0, this.clickSpan.length(), 33);
+      this.clickSpan = new SpannableString(anzj.a(2131705473));
+      this.clickSpan.setSpan(new arxd(this, paramQQAppInterface, paramContext, i | 0xFF000000), 0, this.clickSpan.length(), 33);
     }
     this.msg = "";
     paramQQAppInterface = new SpannableStringBuilder();
@@ -85,14 +85,14 @@ public class MessageForFoldMsgGrayTips
     this.redBagId = paramString2;
     this.redBagIndex = paramString3;
     this.redBagSenderUin = String.valueOf(paramLong);
-    this.redBagSenderNick = bglf.b(paramQQAppInterface, paramString1, this.redBagSenderUin);
+    this.redBagSenderNick = bhlg.b(paramQQAppInterface, paramString1, this.redBagSenderUin);
     this.foldUinList = paramLinkedHashSet;
     if (!paramLinkedHashSet.isEmpty())
     {
       paramString3 = this.foldUinList.iterator();
       while (paramString3.hasNext())
       {
-        paramString2 = bglf.b(paramQQAppInterface, paramString1, (String)paramString3.next());
+        paramString2 = bhlg.b(paramQQAppInterface, paramString1, (String)paramString3.next());
         paramLinkedHashSet = paramString2;
         if (paramString2.length() > PASSWD_REDBAG_FOLD_STORE_NICK_LEN) {
           paramLinkedHashSet = paramString2.substring(0, PASSWD_REDBAG_FOLD_STORE_NICK_LEN) + "...";
@@ -117,7 +117,7 @@ public class MessageForFoldMsgGrayTips
       paramLinkedHashSet = (String)paramString3.next();
       if ((this.foldUinList.add(paramLinkedHashSet)) && (this.foldUinNickList.size() < PASSWD_REDBAG_FOLD_NICK_NUM))
       {
-        paramString2 = bglf.b(paramQQAppInterface, paramString1, paramLinkedHashSet);
+        paramString2 = bhlg.b(paramQQAppInterface, paramString1, paramLinkedHashSet);
         paramLinkedHashSet = paramString2;
         if (paramString2.length() > PASSWD_REDBAG_FOLD_STORE_NICK_LEN) {
           paramLinkedHashSet = paramString2.substring(0, PASSWD_REDBAG_FOLD_STORE_NICK_LEN) + "...";
@@ -129,7 +129,7 @@ public class MessageForFoldMsgGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFoldMsgGrayTips
  * JD-Core Version:    0.7.0.1
  */

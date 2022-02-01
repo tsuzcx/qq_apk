@@ -1,20 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 
-class qzf
-  implements qzb
+public final class qzf
+  implements Parcelable.Creator<UgcVideo>
 {
-  qzf(qze paramqze, sey paramsey, sfb paramsfb) {}
-  
-  public void a(boolean paramBoolean)
+  public UgcVideo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJVideoRedPacketManager", 2, "onShouldDoTaskTimingCallback: shouldDoTaskTiming=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      qze.a(this.jdField_a_of_type_Qze).a(this.jdField_a_of_type_Sey.a.innerUniqueID, (int)this.jdField_a_of_type_Sfb.b(), 2, 1);
-    }
+    return new UgcVideo(paramParcel);
+  }
+  
+  public UgcVideo[] a(int paramInt)
+  {
+    return new UgcVideo[paramInt];
   }
 }
 

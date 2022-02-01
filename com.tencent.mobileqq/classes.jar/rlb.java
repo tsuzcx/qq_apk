@@ -1,18 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
 
-public class rlb
-  implements View.OnTouchListener
+public abstract interface rlb
 {
-  public rlb(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public abstract void a(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ReadInJoyUgcSearchTopicFragment.a(this.a);
-    return false;
-  }
+  public abstract void b(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
 }
 
 

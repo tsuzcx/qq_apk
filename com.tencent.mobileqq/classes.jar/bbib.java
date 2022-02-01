@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.3;
 
 public class bbib
-  implements View.OnClickListener
+  implements bbgo
 {
-  public bbib(MixSearchWebFragment paramMixSearchWebFragment) {}
+  public bbib(EffectsCameraCaptureView.3 param3) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a(3);
-    this.a.doOnBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    bopi.a().a();
   }
 }
 

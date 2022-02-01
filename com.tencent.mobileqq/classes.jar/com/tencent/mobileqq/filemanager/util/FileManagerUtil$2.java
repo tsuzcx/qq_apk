@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
-import anni;
-import atvf;
-import atvo;
-import atwe;
-import bgjw;
+import anzj;
+import auna;
+import aunj;
+import aunz;
+import bhjx;
 
 public final class FileManagerUtil$2
   implements Runnable
@@ -16,24 +16,24 @@ public final class FileManagerUtil$2
   {
     try
     {
-      long l = atvo.a(this.jdField_a_of_type_JavaLangString);
-      if (bgjw.b() < l)
+      long l = aunj.a(this.jdField_a_of_type_JavaLangString);
+      if (bhjx.b() < l)
       {
-        atvf.a(anni.a(2131703313));
+        auna.a(anzj.a(2131703420));
         return;
       }
-      atwe.b(this.jdField_a_of_type_JavaLangString);
-      atvf.a(this.jdField_a_of_type_AndroidContentContext, 2, 2131692488);
+      aunz.b(this.jdField_a_of_type_JavaLangString);
+      auna.a(this.jdField_a_of_type_AndroidContentContext, 2, 2131692494);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      atvf.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131703313);
+      auna.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131703420);
       return;
     }
     catch (Exception localException)
     {
-      atvf.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131692487);
+      auna.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131692493);
     }
   }
 }

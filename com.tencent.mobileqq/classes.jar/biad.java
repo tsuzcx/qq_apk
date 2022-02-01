@@ -1,25 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ProfileNameView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Color;
+import android.util.SparseArray;
 
 public class biad
-  implements View.OnClickListener
 {
-  public biad(ProfileNameView paramProfileNameView, azfe paramazfe) {}
+  public byte a;
+  public int a;
+  public long a;
+  public SparseArray<biad> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
   
-  public void onClick(View paramView)
+  public static biad a()
   {
-    String str = bfti.a().a(this.jdField_a_of_type_Azfe.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramView.getContext().startActivity(localIntent);
-    bcst.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new biad();
+  }
+  
+  public static biad a(int paramInt, byte paramByte)
+  {
+    biad localbiad = new biad();
+    localbiad.jdField_b_of_type_Int = paramInt;
+    localbiad.jdField_a_of_type_Byte = paramByte;
+    return localbiad;
+  }
+  
+  public int a()
+  {
+    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
   }
 }
 

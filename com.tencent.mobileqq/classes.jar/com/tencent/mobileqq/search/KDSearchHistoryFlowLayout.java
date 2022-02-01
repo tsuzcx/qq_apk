@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search;
 
-import afur;
+import agej;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,11 +11,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Adapter;
 import android.widget.TextView;
-import bbgn;
-import bbgo;
-import bbgq;
-import bclx;
-import bkii;
+import bbzh;
+import bbzi;
+import bbzk;
+import bdep;
+import bljl;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.widget.AdapterView;
@@ -25,11 +25,11 @@ public class KDSearchHistoryFlowLayout
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private bbgo jdField_a_of_type_Bbgo;
-  private bkii jdField_a_of_type_Bkii = new bbgn(this);
+  private bbzi jdField_a_of_type_Bbzi;
+  private bljl jdField_a_of_type_Bljl = new bbzh(this);
   public boolean a;
   private float jdField_b_of_type_Float;
-  private final int jdField_b_of_type_Int = afur.a(8.0F, getResources());
+  private final int jdField_b_of_type_Int = agej.a(8.0F, getResources());
   
   public KDSearchHistoryFlowLayout(Context paramContext)
   {
@@ -55,13 +55,13 @@ public class KDSearchHistoryFlowLayout
   private void a()
   {
     removeAllViewsInLayout();
-    if (this.jdField_a_of_type_Bbgo != null)
+    if (this.jdField_a_of_type_Bbzi != null)
     {
-      int j = this.jdField_a_of_type_Bbgo.getCount();
+      int j = this.jdField_a_of_type_Bbzi.getCount();
       int i = 0;
       while (i < j)
       {
-        View localView = this.jdField_a_of_type_Bbgo.getView(i, null, this);
+        View localView = this.jdField_a_of_type_Bbzi.getView(i, null, this);
         addViewInLayout(localView, i, localView.getLayoutParams());
         i += 1;
       }
@@ -86,7 +86,7 @@ public class KDSearchHistoryFlowLayout
   
   public Adapter getAdapter()
   {
-    return this.jdField_a_of_type_Bbgo;
+    return this.jdField_a_of_type_Bbzi;
   }
   
   public View getSelectedView()
@@ -131,7 +131,7 @@ public class KDSearchHistoryFlowLayout
       if (i4 < getCount())
       {
         localView = a(i4);
-        ((TextView)localView.findViewById(2131367987)).setMaxWidth((int)(bclx.jdField_a_of_type_Int - 40.0F * bclx.a()) / 2);
+        ((TextView)localView.findViewById(2131368059)).setMaxWidth((int)(bdep.jdField_a_of_type_Int - 40.0F * bdep.a()) / 2);
         if (localView.getVisibility() == 8)
         {
           n = k;
@@ -265,7 +265,7 @@ public class KDSearchHistoryFlowLayout
         break label281;
       }
       localView = a(n);
-      ((TextView)localView.findViewById(2131367987)).setMaxWidth((int)(bclx.jdField_a_of_type_Int - 40.0F * bclx.a()) / 2);
+      ((TextView)localView.findViewById(2131368059)).setMaxWidth((int)(bdep.jdField_a_of_type_Int - 40.0F * bdep.a()) / 2);
       if (localView.getVisibility() != 8) {
         break;
       }
@@ -309,12 +309,12 @@ public class KDSearchHistoryFlowLayout
       paramInt1 = i3;
       label291:
       setMeasuredDimension(i4, paramInt1);
-      if ((this.jdField_a_of_type_Bbgo != null) && (this.jdField_a_of_type_Bbgo.a != null))
+      if ((this.jdField_a_of_type_Bbzi != null) && (this.jdField_a_of_type_Bbzi.a != null))
       {
         if (i1 < this.jdField_a_of_type_Int) {
           break label407;
         }
-        this.jdField_a_of_type_Bbgo.a.a(true);
+        this.jdField_a_of_type_Bbzi.a.a(true);
       }
       return;
       measureChild(localView, paramInt1, paramInt2);
@@ -336,7 +336,7 @@ public class KDSearchHistoryFlowLayout
         paramInt1 = m + j + i7;
         break label291;
         label407:
-        this.jdField_a_of_type_Bbgo.a.a(false);
+        this.jdField_a_of_type_Bbzi.a.a(false);
         return;
       }
       label427:
@@ -416,28 +416,28 @@ public class KDSearchHistoryFlowLayout
     if (localAladdinConfig != null) {
       this.jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("SearchPage_HistoryRow", 2);
     }
-    if ((this.jdField_a_of_type_Bbgo != null) && (this.jdField_a_of_type_Bkii != null)) {
-      this.jdField_a_of_type_Bbgo.unregisterDataSetObserver(this.jdField_a_of_type_Bkii);
+    if ((this.jdField_a_of_type_Bbzi != null) && (this.jdField_a_of_type_Bljl != null)) {
+      this.jdField_a_of_type_Bbzi.unregisterDataSetObserver(this.jdField_a_of_type_Bljl);
     }
-    this.jdField_a_of_type_Bbgo = ((bbgo)paramAdapter);
+    this.jdField_a_of_type_Bbzi = ((bbzi)paramAdapter);
     int i = 0;
     while (i < getCount())
     {
-      ((TextView)a(i)).setMaxWidth((int)(bclx.jdField_a_of_type_Int - 40.0F * bclx.a()) / 2);
+      ((TextView)a(i)).setMaxWidth((int)(bdep.jdField_a_of_type_Int - 40.0F * bdep.a()) / 2);
       i += 1;
     }
-    if (this.jdField_a_of_type_Bbgo != null)
+    if (this.jdField_a_of_type_Bbzi != null)
     {
-      this.mItemCount = this.jdField_a_of_type_Bbgo.getCount();
-      this.jdField_a_of_type_Bbgo.registerDataSetObserver(this.jdField_a_of_type_Bkii);
+      this.mItemCount = this.jdField_a_of_type_Bbzi.getCount();
+      this.jdField_a_of_type_Bbzi.registerDataSetObserver(this.jdField_a_of_type_Bljl);
       a();
     }
   }
   
-  public void setAdapter(bbgo parambbgo, boolean paramBoolean)
+  public void setAdapter(bbzi parambbzi, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    setAdapter(parambbgo);
+    setAdapter(parambbzi);
   }
   
   public void setSelection(int paramInt)

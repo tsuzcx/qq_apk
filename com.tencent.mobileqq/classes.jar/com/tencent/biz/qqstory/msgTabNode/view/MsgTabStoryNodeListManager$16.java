@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import wui;
+import wyd;
 
 public class MsgTabStoryNodeListManager$16
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$16(wui paramwui) {}
+  public MsgTabStoryNodeListManager$16(wyd paramwyd) {}
   
   public void run()
   {

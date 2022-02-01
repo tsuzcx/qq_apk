@@ -1,28 +1,15 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import java.lang.ref.WeakReference;
 
 class acns
-  extends acuc
+  implements acxq
 {
-  acns(acnr paramacnr, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  acns(acnq paramacnq, AdImageViewAdapter.Params paramParams) {}
   
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
-    this.a.a();
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
+    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
   }
 }
 

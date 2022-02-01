@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import UserGrowth.stSimpleMetaComment;
 import UserGrowth.stSimpleMetaReply;
-import aaga;
+import aakb;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -12,7 +12,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.subscribe.comment.ReplyActionView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class WsReplyContainer
 {
   private int jdField_a_of_type_Int;
   private stSimpleMetaComment jdField_a_of_type_UserGrowthStSimpleMetaComment;
-  private aaga jdField_a_of_type_Aaga;
+  private aakb jdField_a_of_type_Aakb;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
   private int b;
   private int c;
@@ -72,7 +72,7 @@ public class WsReplyContainer
         stSimpleMetaReply localstSimpleMetaReply = (stSimpleMetaReply)localArrayList.get(i);
         WsReplyView localWsReplyView = new WsReplyView(getContext());
         localWsReplyView.setPosition(i);
-        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Aaga);
+        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Aakb);
         localWsReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localWsReplyView.setClickable(true);
         localWsReplyView.setFocusable(true);
@@ -104,7 +104,7 @@ public class WsReplyContainer
         setVisibility(0);
         return;
         label278:
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anni.a(2131712169));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anzj.a(2131712278));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
         continue;
@@ -114,7 +114,7 @@ public class WsReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anni.a(2131712167) + paramInt + anni.a(2131712168));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anzj.a(2131712276) + paramInt + anzj.a(2131712277));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -137,15 +137,15 @@ public class WsReplyContainer
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Aaga != null)
+      if (this.jdField_a_of_type_Aakb != null)
       {
-        this.jdField_a_of_type_Aaga.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
+        this.jdField_a_of_type_Aakb.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
         continue;
-        if (this.jdField_a_of_type_Aaga != null)
+        if (this.jdField_a_of_type_Aakb != null)
         {
           stSimpleMetaComment localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
           int i = getHeight() / this.c;
-          this.jdField_a_of_type_Aaga.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, Integer.valueOf(i) });
+          this.jdField_a_of_type_Aakb.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, Integer.valueOf(i) });
         }
       }
     }
@@ -161,9 +161,9 @@ public class WsReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(aaga paramaaga)
+  public void setOnCommentElementClickListener(aakb paramaakb)
   {
-    this.jdField_a_of_type_Aaga = paramaaga;
+    this.jdField_a_of_type_Aakb = paramaakb;
   }
   
   public void setPosition(int paramInt)

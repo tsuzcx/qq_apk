@@ -1,69 +1,39 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class bgrb
 {
-  private float jdField_a_of_type_Float;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  public SensorEventListener a;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bgrd(this, Looper.getMainLooper());
-  private bgre jdField_a_of_type_Bgre;
-  public boolean a;
-  private boolean b;
-  
-  public bgrb(Context paramContext, bgre parambgre)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nkq paramnkq)
   {
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bgrc(this);
-    this.jdField_a_of_type_Bgre = parambgre;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "LSSensor open=====");
-    }
-    this.b = false;
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
-    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
-    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
-      if (this.jdField_a_of_type_Float > 10.0F) {
-        this.jdField_a_of_type_Float = 10.0F;
-      }
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 2);
+    if (paramLong <= 0L) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bgre.a(this.b);
+    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.5,3,4745");
+    localGetPublicAccountDetailInfoRequest.version.set(1);
+    localGetPublicAccountDetailInfoRequest.seqno.set(0);
+    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramLong);
+    nkm.a(paramQQAppInterface, paramnkq, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
   }
   
-  public void b()
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nkq paramnkq, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
+    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
+    localFollowRequest.luin.set(paramLong);
+    localFollowRequest.ext.set("0");
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
-    {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-    }
-    try
-    {
-      this.jdField_a_of_type_Bgre = null;
-      this.jdField_a_of_type_AndroidHardwareSensor = null;
-      return;
-    }
-    finally {}
+    nkm.a(paramQQAppInterface, paramnkq, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
+    ocd.a(paramQQAppInterface, "" + paramLong, 0);
   }
 }
 

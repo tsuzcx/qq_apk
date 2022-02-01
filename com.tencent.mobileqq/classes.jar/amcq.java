@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.data.RecentUser;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import java.lang.ref.WeakReference;
 
 public class amcq
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public RecentUser a;
-  public String a;
-  public String b;
+  private final WeakReference<Activity> a;
+  
+  public amcq(Activity paramActivity)
+  {
+    this.a = new WeakReference(paramActivity);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    Activity localActivity = (Activity)this.a.get();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amcq
  * JD-Core Version:    0.7.0.1
  */

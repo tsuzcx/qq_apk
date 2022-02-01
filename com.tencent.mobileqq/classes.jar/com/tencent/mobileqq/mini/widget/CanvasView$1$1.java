@@ -183,7 +183,7 @@ class CanvasView$1$1
     //   327: ldc 116
     //   329: aload 14
     //   331: aconst_null
-    //   332: invokestatic 120	com/tencent/mobileqq/minigame/utils/NativeBuffer:packNativeBuffer	([BILjava/lang/String;Lorg/json/JSONObject;Lcom/tencent/mobileqq/triton/sdk/bridge/ITNativeBufferPool;)V
+    //   332: invokestatic 120	com/tencent/mobileqq/minigame/utils/NativeBuffer:packNativeBuffer	([BILjava/lang/String;Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;)V
     //   335: aload_0
     //   336: getfield 14	com/tencent/mobileqq/mini/widget/CanvasView$1$1:this$1	Lcom/tencent/mobileqq/mini/widget/CanvasView$1;
     //   339: getfield 29	com/tencent/mobileqq/mini/widget/CanvasView$1:this$0	Lcom/tencent/mobileqq/mini/widget/CanvasView;

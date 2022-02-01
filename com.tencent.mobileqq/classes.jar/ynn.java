@@ -1,13 +1,25 @@
-class ynn
-  extends zpq
+import android.support.annotation.NonNull;
+
+public class ynn
+  extends wjm<ymx, wsm>
 {
-  ynn(ynm paramynm) {}
-  
-  public boolean a(boolean paramBoolean)
+  public ynn(ymx paramymx)
   {
-    ynm.a(this.a);
-    return true;
+    super(paramymx);
   }
+  
+  public void a(@NonNull ymx paramymx, @NonNull wsm paramwsm)
+  {
+    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramwsm);
+    ymx.a(paramymx, paramwsm.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsm.class;
+  }
+  
+  public void b(@NonNull ymx paramymx, @NonNull wsm paramwsm) {}
 }
 
 

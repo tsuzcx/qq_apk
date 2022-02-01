@@ -1,23 +1,24 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 class qfi
-  extends ComponentPGCShortContentBig
+  implements Drawable.Callback
 {
-  qfi(qfa paramqfa, Context paramContext, ArticleInfo paramArticleInfo)
+  qfi(qfh paramqfh, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
+  
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    super(paramContext);
+    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public int a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
-    }
-    return super.a();
-  }
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

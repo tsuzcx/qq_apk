@@ -1,78 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class aqsv
-  extends aqkz<aqsu>
+class aqsv
+  implements View.OnClickListener
 {
-  @NonNull
-  public aqsu a(int paramInt)
+  aqst jdField_a_of_type_Aqst;
+  aqsx jdField_a_of_type_Aqsx;
+  
+  aqsv(aqst paramaqst, aqsx paramaqsx)
   {
-    return new aqsu();
+    this.jdField_a_of_type_Aqst = paramaqst;
+    this.jdField_a_of_type_Aqsx = paramaqsx;
   }
   
-  @Nullable
-  public aqsu a(aqlg[] paramArrayOfaqlg)
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
-    {
-      aqsu localaqsu = aqsu.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqsu;
+    aqre.a(paramView.getContext(), (ColorNote)aqst.a(this.jdField_a_of_type_Aqst).get(this.jdField_a_of_type_Aqsx.getAdapterPosition()));
+    if (aqst.a(this.jdField_a_of_type_Aqst) != null) {
+      aqst.a(this.jdField_a_of_type_Aqst).b();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqsu paramaqsu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramaqsu.toString());
-    }
-  }
-  
-  public Class<aqsu> clazz()
-  {
-    return aqsu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 546;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,18 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
-class xun
-  implements bkhw
+public class xun
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  xun(xui paramxui, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bkho parambkho) {}
+  xun(xuk paramxuk) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      xui.a(this.jdField_a_of_type_Xui, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 

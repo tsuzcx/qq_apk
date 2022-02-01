@@ -50,7 +50,7 @@ public class ConfigManager
   private CopyOnWriteArrayList<String> mHcDomainCandicateList;
   private HwEngine mHwEngine;
   private Map<Integer, ServiceIpProvider> mIPProviders = new HashMap();
-  private boolean mIsGettingConfg;
+  private boolean mIsGettingConfg = false;
   private IpContainer mPushIpContainer;
   
   static
@@ -123,13 +123,13 @@ public class ConfigManager
       j = paramHwConfig.fmtIpv6Policy.get();
       i = 1;
       if (paramHwConfig.bdhIpv6Policy == null) {
-        break label94;
+        break label91;
       }
       k = paramHwConfig.bdhIpv6Policy.get();
       i = 1;
       label42:
       if (paramHwConfig.connAttemptDelay == null) {
-        break label107;
+        break label104;
       }
       m = paramHwConfig.connAttemptDelay.get();
       i = n;
@@ -137,18 +137,18 @@ public class ConfigManager
     for (;;)
     {
       if (i != 0) {
-        Ipv6Config.getInstance().updateCfgFromSrv(paramContext, j, k, m);
+        Ipv6Config.updateCfgFromSrv(paramContext, j, k, m);
       }
       return;
       BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.fmtIpv6Policy is null ");
       i = 0;
       j = 0;
       break;
-      label94:
+      label91:
       BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.bdhIpv6Policy is null ");
       k = 0;
       break label42;
-      label107:
+      label104:
       BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.connAttemptDelay is null ");
     }
   }
@@ -288,116 +288,116 @@ public class ConfigManager
     //   0: new 79	java/io/File
     //   3: dup
     //   4: getstatic 94	com/tencent/mobileqq/highway/config/ConfigManager:BDH_FILE_DIR	Ljava/lang/String;
-    //   7: invokespecial 414	java/io/File:<init>	(Ljava/lang/String;)V
+    //   7: invokespecial 413	java/io/File:<init>	(Ljava/lang/String;)V
     //   10: astore 4
     //   12: aload_0
-    //   13: invokestatic 420	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   13: invokestatic 419	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   16: ifeq +24 -> 40
     //   19: aload_1
-    //   20: invokestatic 420	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   20: invokestatic 419	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   23: ifeq +17 -> 40
     //   26: aload_2
-    //   27: invokestatic 420	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   27: invokestatic 419	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   30: ifeq +10 -> 40
     //   33: aload 4
-    //   35: invokevirtual 423	java/io/File:delete	()Z
+    //   35: invokevirtual 422	java/io/File:delete	()Z
     //   38: pop
     //   39: return
     //   40: aload 4
-    //   42: invokevirtual 231	java/io/File:exists	()Z
+    //   42: invokevirtual 230	java/io/File:exists	()Z
     //   45: ifne +42 -> 87
     //   48: aload 4
-    //   50: invokevirtual 426	java/io/File:mkdirs	()Z
+    //   50: invokevirtual 425	java/io/File:mkdirs	()Z
     //   53: ifne +34 -> 87
     //   56: ldc 26
     //   58: iconst_2
     //   59: new 60	java/lang/StringBuilder
     //   62: dup
     //   63: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   66: ldc_w 428
+    //   66: ldc_w 427
     //   69: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: aload 4
-    //   74: invokevirtual 431	java/io/File:getPath	()Ljava/lang/String;
+    //   74: invokevirtual 430	java/io/File:getPath	()Ljava/lang/String;
     //   77: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 437	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   83: invokestatic 436	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   86: return
     //   87: new 79	java/io/File
     //   90: dup
     //   91: aload 4
     //   93: ldc 11
-    //   95: invokespecial 440	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   95: invokespecial 439	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   98: astore 6
     //   100: aload 6
-    //   102: invokevirtual 423	java/io/File:delete	()Z
+    //   102: invokevirtual 422	java/io/File:delete	()Z
     //   105: pop
     //   106: aload 6
-    //   108: invokevirtual 443	java/io/File:createNewFile	()Z
+    //   108: invokevirtual 442	java/io/File:createNewFile	()Z
     //   111: ifeq +214 -> 325
-    //   114: new 445	java/io/FileOutputStream
+    //   114: new 444	java/io/FileOutputStream
     //   117: dup
     //   118: aload 6
-    //   120: invokespecial 446	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   120: invokespecial 445	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   123: astore 5
     //   125: aload 5
     //   127: astore 4
-    //   129: new 238	java/util/Properties
+    //   129: new 237	java/util/Properties
     //   132: dup
-    //   133: invokespecial 239	java/util/Properties:<init>	()V
+    //   133: invokespecial 238	java/util/Properties:<init>	()V
     //   136: astore 7
     //   138: aload 5
     //   140: astore 4
     //   142: aload_0
-    //   143: invokestatic 420	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   143: invokestatic 419	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   146: ifne +16 -> 162
     //   149: aload 5
     //   151: astore 4
     //   153: aload 7
     //   155: ldc 21
     //   157: aload_0
-    //   158: invokevirtual 450	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   158: invokevirtual 449	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   161: pop
     //   162: aload 5
     //   164: astore 4
     //   166: aload_1
-    //   167: invokestatic 420	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   167: invokestatic 419	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   170: ifne +16 -> 186
     //   173: aload 5
     //   175: astore 4
     //   177: aload 7
     //   179: ldc 23
     //   181: aload_1
-    //   182: invokevirtual 450	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   182: invokevirtual 449	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   185: pop
     //   186: aload 5
     //   188: astore 4
     //   190: aload_2
-    //   191: invokestatic 420	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   191: invokestatic 419	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   194: istore_3
     //   195: iload_3
     //   196: ifne +27 -> 223
     //   199: aload 5
     //   201: astore 4
     //   203: aload_2
-    //   204: invokestatic 253	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   204: invokestatic 252	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   207: ifle +16 -> 223
     //   210: aload 5
     //   212: astore 4
     //   214: aload 7
     //   216: ldc 19
     //   218: aload_2
-    //   219: invokevirtual 450	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   219: invokevirtual 449	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   222: pop
     //   223: aload 5
     //   225: astore 4
     //   227: aload 7
     //   229: aload 5
-    //   231: ldc_w 452
-    //   234: invokevirtual 456	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   231: ldc_w 451
+    //   234: invokevirtual 455	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   237: aload 5
     //   239: ifnull -200 -> 39
     //   242: aload 5
-    //   244: invokevirtual 459	java/io/FileOutputStream:close	()V
+    //   244: invokevirtual 458	java/io/FileOutputStream:close	()V
     //   247: return
     //   248: astore_0
     //   249: return
@@ -405,22 +405,22 @@ public class ConfigManager
     //   251: aload 5
     //   253: astore 4
     //   255: aload_0
-    //   256: invokevirtual 460	java/lang/NumberFormatException:printStackTrace	()V
+    //   256: invokevirtual 459	java/lang/NumberFormatException:printStackTrace	()V
     //   259: goto -36 -> 223
     //   262: astore_0
     //   263: aload 5
     //   265: astore 4
     //   267: aload_0
-    //   268: invokevirtual 461	java/io/IOException:printStackTrace	()V
+    //   268: invokevirtual 460	java/io/IOException:printStackTrace	()V
     //   271: aload 5
     //   273: astore 4
     //   275: aload 6
-    //   277: invokevirtual 423	java/io/File:delete	()Z
+    //   277: invokevirtual 422	java/io/File:delete	()Z
     //   280: pop
     //   281: aload 5
     //   283: ifnull -244 -> 39
     //   286: aload 5
-    //   288: invokevirtual 459	java/io/FileOutputStream:close	()V
+    //   288: invokevirtual 458	java/io/FileOutputStream:close	()V
     //   291: return
     //   292: astore_0
     //   293: return
@@ -430,7 +430,7 @@ public class ConfigManager
     //   298: aload 4
     //   300: ifnull +8 -> 308
     //   303: aload 4
-    //   305: invokevirtual 459	java/io/FileOutputStream:close	()V
+    //   305: invokevirtual 458	java/io/FileOutputStream:close	()V
     //   308: aload_0
     //   309: athrow
     //   310: astore_1

@@ -1,36 +1,34 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileFilter;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
-class aopi
-  implements FileFilter
+public class aopi
+  implements anui
 {
-  aopi(aoph paramaoph, SparseArray paramSparseArray) {}
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
   
-  public boolean accept(File paramFile)
+  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = new File(paramFile, "config.json");
-    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
-      localObject = bgmg.a((File)localObject);
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (paramObject == null)
+      {
+        paramObject = null;
+        a(paramBoolean, paramObject);
+      }
     }
-    try
-    {
-      int i = Integer.parseInt(paramFile.getName());
-      long l = new JSONObject((String)localObject).optLong("version");
-      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
-      QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: " + i + ", ver: " + l / 1000L);
-      return false;
-    }
-    catch (Exception localException)
-    {
+    while (paramInt != 1) {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo failed role: " + paramFile.getAbsolutePath());
-        }
+        return;
+        paramObject = (FaceInfo)paramObject;
       }
+    }
+    if (paramObject == null) {}
+    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
+    {
+      b(paramBoolean, paramObject);
+      return;
     }
   }
 }

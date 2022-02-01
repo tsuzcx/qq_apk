@@ -1,14 +1,14 @@
 package dov.com.qq.im.ae.play;
 
-import bnxl;
-import bnxo;
+import boyv;
+import boyy;
 
 public final class FaceChangeUtils$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Bnxo.a(bnxl.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Boyy.a(boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
   }
 }
 

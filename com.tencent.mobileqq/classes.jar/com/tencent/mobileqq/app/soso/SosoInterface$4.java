@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.soso;
 
-import aopa;
+import apcq;
 
 final class SosoInterface$4
   implements Runnable
 {
-  SosoInterface$4(aopa paramaopa) {}
+  SosoInterface$4(apcq paramapcq) {}
   
   public void run()
   {
-    if (!aopa.access$1900(this.a)) {
+    if (!apcq.access$1900(this.a)) {
       SosoInterface.a(this.a);
     }
   }

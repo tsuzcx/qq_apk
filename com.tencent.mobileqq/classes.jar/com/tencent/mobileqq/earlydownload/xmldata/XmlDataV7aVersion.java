@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public abstract class XmlDataV7aVersion
   extends XmlData
 {
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public int VideoVersion;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String v7a_MD5;
 }
 

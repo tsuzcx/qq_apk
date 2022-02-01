@@ -2,7 +2,7 @@ package com.tencent.mobileqq.search.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bkpg;
+import blqj;
 import com.tencent.widget.FixSizeImageView;
 
 public class ThemeFixSizeImageView
@@ -26,7 +26,7 @@ public class ThemeFixSizeImageView
   public void a()
   {
     setSupportMaskView(true);
-    setMaskShape(bkpg.c);
+    setMaskShape(blqj.c);
   }
 }
 

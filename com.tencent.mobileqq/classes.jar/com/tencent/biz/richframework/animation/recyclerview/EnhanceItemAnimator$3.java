@@ -3,12 +3,12 @@ package com.tencent.biz.richframework.animation.recyclerview;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import java.util.ArrayList;
 import java.util.Iterator;
-import zvq;
+import zzl;
 
 public class EnhanceItemAnimator$3
   implements Runnable
 {
-  public EnhanceItemAnimator$3(zvq paramzvq, ArrayList paramArrayList) {}
+  public EnhanceItemAnimator$3(zzl paramzzl, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -16,10 +16,10 @@ public class EnhanceItemAnimator$3
     while (localIterator.hasNext())
     {
       RecyclerView.ViewHolder localViewHolder = (RecyclerView.ViewHolder)localIterator.next();
-      zvq.a(this.this$0, localViewHolder);
+      zzl.a(this.this$0, localViewHolder);
     }
     this.a.clear();
-    zvq.c(this.this$0).remove(this.a);
+    zzl.c(this.this$0).remove(this.a);
   }
 }
 

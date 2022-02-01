@@ -2,11 +2,14 @@ package com.tencent.mobileqq.minigame.utils;
 
 import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.ITLog;
+import com.tencent.mobileqq.triton.utils.LogDelegate;
+import com.tencent.mobileqq.triton.utils.LogDelegate.Level;
 import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class GameLog
-  implements ITLog
+  implements LogDelegate
 {
   public static final String MINIAPP_TAG = "[miniapp] ";
   public static final String MINIGAME_DEBUGGER_TAG = "[debugger].";
@@ -95,6 +98,37 @@ public class GameLog
     return 0;
   }
   
+  public String getLogMessage(String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(mPreLogInfo))
+    {
+      if (!mPreLogInfo.equals(paramString)) {
+        break label100;
+      }
+      mRepeatLogInfoNumber += 1L;
+      if (mRepeatLogInfoNumber >= 9223372036854775807L) {
+        mRepeatLogInfoNumber = 0L;
+      }
+    }
+    for (;;)
+    {
+      str = paramString;
+      if (mRepeatLogInfoNumber > 10L)
+      {
+        if (mRepeatLogInfoNumber % 10L != 0L) {
+          break;
+        }
+        str = paramString + "[ repeat " + mRepeatLogInfoNumber + "]";
+      }
+      return str;
+      label100:
+      mRepeatLogInfoNumber = 0L;
+      mPreLogInfo = paramString;
+    }
+    return null;
+  }
+  
   public int i(String paramString1, String paramString2)
   {
     if (enableLog()) {
@@ -111,74 +145,55 @@ public class GameLog
     return 0;
   }
   
-  public void printNativeLog(int paramInt, String paramString1, String paramString2)
+  public void printConsoleLog(@NotNull LogDelegate.Level paramLevel, @NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
   {
-    if (getInstance() == null)
+    printLog(paramLevel, paramString1, paramString2, paramThrowable);
+    switch (GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()])
     {
-      QLog.i("[minigame] ", 1, "g_printNativeLog getLog null");
-      QLog.i("[minigame] " + paramString1, 1, paramString2);
+    case 2: 
+    case 3: 
+    default: 
+      paramLevel = "log";
     }
-    label273:
     for (;;)
     {
+      printVconsoleLog(paramLevel, paramString2);
       return;
-      String str = paramString2;
-      if (!TextUtils.isEmpty(mPreLogInfo))
-      {
-        if (!mPreLogInfo.equals(paramString2)) {
-          break label200;
-        }
-        mRepeatLogInfoNumber += 1L;
-        if (mRepeatLogInfoNumber >= 9223372036854775807L) {
-          mRepeatLogInfoNumber = 0L;
-        }
-        label83:
-        str = paramString2;
-        if (mRepeatLogInfoNumber > 10L)
-        {
-          if (mRepeatLogInfoNumber % 10L != 0L) {
-            continue;
-          }
-          str = paramString2 + "[ repeat " + mRepeatLogInfoNumber + "]";
-        }
-      }
-      int i;
-      if (paramInt >= 100)
-      {
-        i = paramInt - 100 + 3;
-        label154:
-        if (i > 3) {
-          break label217;
-        }
-        getInstance().d(paramString1, str);
-      }
-      for (;;)
-      {
-        if (paramInt < 100) {
-          break label273;
-        }
-        paramInt -= 100;
-        if (paramInt >= VCONSOLE_LOG_ARRAY.length) {
-          break;
-        }
-        printVconsoleLog(VCONSOLE_LOG_ARRAY[paramInt], str);
-        return;
-        label200:
-        mRepeatLogInfoNumber = 0L;
-        mPreLogInfo = paramString2;
-        break label83;
-        i = paramInt;
-        break label154;
-        label217:
-        if (i == 4) {
-          getInstance().i(paramString1, str);
-        } else if (i == 5) {
-          getInstance().w(paramString1, str);
-        } else if (i == 6) {
-          getInstance().e(paramString1, str);
-        }
-      }
+      paramLevel = "info";
+      continue;
+      paramLevel = "warn";
+      continue;
+      paramLevel = "error";
     }
+  }
+  
+  public void printLog(@NotNull LogDelegate.Level paramLevel, @NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
+  {
+    if (enableLog())
+    {
+      paramString2 = getLogMessage(paramString2);
+      if (paramString2 != null) {}
+    }
+    else
+    {
+      return;
+    }
+    switch (GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()])
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      QLog.i("[minigame] " + paramString1, 1, paramString2, paramThrowable);
+      return;
+    case 3: 
+      QLog.d("[minigame] " + paramString1, 1, paramString2, paramThrowable);
+      return;
+    case 4: 
+      QLog.w("[minigame] " + paramString1, 1, paramString2, paramThrowable);
+      return;
+    }
+    QLog.e("[minigame] " + paramString1, 1, paramString2, paramThrowable);
   }
   
   public int w(String paramString1, String paramString2)

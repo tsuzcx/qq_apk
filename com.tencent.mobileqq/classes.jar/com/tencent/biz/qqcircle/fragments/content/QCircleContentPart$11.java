@@ -1,17 +1,17 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
 import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
-import vks;
+import vmw;
 
 public class QCircleContentPart$11
   implements Runnable
 {
-  public QCircleContentPart$11(vks paramvks) {}
+  public QCircleContentPart$11(vmw paramvmw) {}
   
   public void run()
   {
-    if (vks.a(this.this$0) != null) {
-      vks.a(this.this$0).b(true);
+    if (vmw.a(this.this$0) != null) {
+      vmw.a(this.this$0).b(true);
     }
   }
 }

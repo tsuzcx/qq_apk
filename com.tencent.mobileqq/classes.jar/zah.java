@@ -1,25 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Arrays;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class zah
-  implements yxv
+  extends JobSegment<Bitmap, Bitmap>
 {
-  @NonNull
-  private final yxs[] a;
+  public final float a;
+  public final boolean a;
   
-  public zah(yxs... paramVarArgs)
+  public zah(float paramFloat, boolean paramBoolean)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = paramVarArgs;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(List<yxs> paramList, DoodleView paramDoodleView)
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
   {
-    paramList.addAll(Arrays.asList(this.a));
+    paramJobContext = zoc.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
+    if (paramJobContext == null)
+    {
+      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
+      return;
+    }
+    super.notifyResult(paramJobContext);
   }
 }
 

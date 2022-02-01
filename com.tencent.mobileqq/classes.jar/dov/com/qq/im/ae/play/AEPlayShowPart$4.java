@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import bnvr;
+import boxb;
 
 public class AEPlayShowPart$4
   implements Runnable
 {
-  public AEPlayShowPart$4(bnvr parambnvr, String paramString1, String paramString2) {}
+  public AEPlayShowPart$4(boxb paramboxb, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bnvr.a(this.this$0, this.a, this.b);
+    boxb.a(this.this$0, this.a, this.b);
   }
 }
 

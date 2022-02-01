@@ -1,25 +1,11 @@
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
 public class ajrh
-  extends ajqq
+  implements ajon
 {
-  public static final int[] a = { 2131690664 };
-  public static final int[] b = { 2131364367 };
+  public ajrh(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public ajrh(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
-  }
+  public void a() {}
 }
 
 

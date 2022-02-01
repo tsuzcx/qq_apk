@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
 
-public class avyf
-  implements DialogInterface.OnClickListener
+class avyf
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  public avyf(LocationDialogUtil.7 param7) {}
+  private avyf(avya paramavya) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onComplete(String paramString1, String paramString2)
   {
-    this.a.a.finish();
+    synchronized (avya.a(this.a))
+    {
+      String str = avya.a(paramString1);
+      avxz.b("onComplete path:" + str);
+      avxz.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
+      avya.a(this.a, paramString1);
+      paramString2 = new File(avya.b(paramString1));
+      if (paramString2.exists()) {
+        paramString2.renameTo(new File(str));
+      }
+      avya.b(this.a, paramString1);
+      avya.b(this.a, avya.a(this.a));
+      avya.b(this.a);
+      return;
+    }
   }
 }
 

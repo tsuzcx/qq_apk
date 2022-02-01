@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bcpe
-  implements QQPermissionCallback
+class bcpe
+  implements View.OnClickListener
 {
-  public bcpe(bcpg parambcpg, AppActivity paramAppActivity) {}
+  bcpe(bcpc parambcpc) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Bcpg);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Bcpg != null) {
-      this.jdField_a_of_type_Bcpg.a();
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpe
  * JD-Core Version:    0.7.0.1
  */

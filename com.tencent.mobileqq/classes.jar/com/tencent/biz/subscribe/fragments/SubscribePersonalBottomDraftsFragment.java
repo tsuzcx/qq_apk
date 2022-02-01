@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.fragments;
 
-import aadf;
-import aagr;
+import aaak;
+import aabn;
+import aahg;
+import aaks;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import zwp;
-import zxs;
 
 public class SubscribePersonalBottomDraftsFragment
   extends SubscribeBaseBottomPersonalFragment
 {
-  private aadf jdField_a_of_type_Aadf;
+  private aahg jdField_a_of_type_Aahg;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   
   ExtraTypeInfo a()
@@ -37,24 +37,24 @@ public class SubscribePersonalBottomDraftsFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Aadf = new aadf(null);
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aadf);
+    this.jdField_a_of_type_Aahg = new aahg(null);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aahg);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
-    this.jdField_a_of_type_Aadf.a();
-    if (this.jdField_a_of_type_Aagr != null) {
-      this.jdField_a_of_type_Aadf.setShareData("share_key_subscribe_opus", new zxs(this.jdField_a_of_type_Aagr));
+    this.jdField_a_of_type_Aahg.a();
+    if (this.jdField_a_of_type_Aaks != null) {
+      this.jdField_a_of_type_Aahg.setShareData("share_key_subscribe_opus", new aabn(this.jdField_a_of_type_Aaks));
     }
   }
   
   public void a(int paramInt) {}
   
-  public void a(String paramString, aagr paramaagr)
+  public void a(String paramString, aaks paramaaks)
   {
     if ("share_key_subscribe_opus".equals(paramString))
     {
-      this.jdField_a_of_type_Aagr = paramaagr;
-      if (this.jdField_a_of_type_Aadf != null) {
-        this.jdField_a_of_type_Aadf.setShareData("share_key_subscribe_opus", new zxs(this.jdField_a_of_type_Aagr));
+      this.jdField_a_of_type_Aaks = paramaaks;
+      if (this.jdField_a_of_type_Aahg != null) {
+        this.jdField_a_of_type_Aahg.setShareData("share_key_subscribe_opus", new aabn(this.jdField_a_of_type_Aaks));
       }
     }
   }
@@ -62,7 +62,7 @@ public class SubscribePersonalBottomDraftsFragment
   public void onResume()
   {
     super.onResume();
-    zwp.a().a(new SubDraftChangeEvent());
+    aaak.a().a(new SubDraftChangeEvent());
   }
 }
 

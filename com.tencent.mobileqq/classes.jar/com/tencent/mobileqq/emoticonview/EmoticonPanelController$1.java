@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aryv;
+import asoj;
 
 class EmoticonPanelController$1
   implements Runnable

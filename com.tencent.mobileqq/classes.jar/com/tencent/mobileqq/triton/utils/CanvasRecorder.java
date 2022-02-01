@@ -5,40 +5,27 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.util.Base64;
 import com.tencent.mobileqq.triton.engine.TTEngine;
-import com.tencent.mobileqq.triton.engine.TTLog;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
+import com.tencent.mobileqq.triton.filesystem.GameDataFileSystem;
+import com.tencent.mobileqq.triton.filesystem.TemporaryFile;
+import com.tencent.mobileqq.triton.internal.engine.EngineContext;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 
+@TritonKeep
 public class CanvasRecorder
 {
-  private TTEngine a;
+  public static final String TAG = "CanvasRecorder";
+  private TTEngine mTritonEngine;
   
   public CanvasRecorder(TTEngine paramTTEngine)
   {
-    this.a = paramTTEngine;
+    this.mTritonEngine = paramTTEngine;
   }
   
-  private static String a(Bitmap paramBitmap, String paramString, int paramInt)
-  {
-    if (paramBitmap != null)
-    {
-      paramString = new ByteArrayOutputStream();
-      if (paramBitmap.compress(Bitmap.CompressFormat.PNG, paramInt, paramString))
-      {
-        paramBitmap = Base64.encodeToString(paramString.toByteArray(), 2);
-        TTLog.a("CanvasRecorder", "convertBitmapToBase64String: success, base64 png format");
-        return paramBitmap;
-      }
-      TTLog.b("CanvasRecorder", "convertBitmapToBase64String: fail");
-    }
-    return null;
-  }
-  
-  @TTNativeCall
+  @TritonKeep
   public String canvasToTempFilePathSync(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, boolean paramBoolean)
   {
     if (paramArrayOfByte != null) {}
@@ -48,55 +35,61 @@ public class CanvasRecorder
       {
         localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
         ((Bitmap)localObject).copyPixelsFromBuffer(ByteBuffer.wrap(paramArrayOfByte));
-        paramArrayOfByte = (byte[])localObject;
-        if (paramInt3 > 0)
-        {
-          paramArrayOfByte = (byte[])localObject;
-          if (paramInt4 > 0)
-          {
-            paramArrayOfByte = Bitmap.createScaledBitmap((Bitmap)localObject, paramInt3, paramInt4, false);
-            ((Bitmap)localObject).recycle();
-          }
+        if ((paramInt3 <= 0) || (paramInt4 <= 0)) {
+          continue;
         }
+        paramArrayOfByte = Bitmap.createScaledBitmap((Bitmap)localObject, paramInt3, paramInt4, false);
+        ((Bitmap)localObject).recycle();
       }
-      finally
+      catch (Throwable paramArrayOfByte)
       {
-        TTLog.b("CanvasRecorder", "canvasToTempFilePathSync: ", paramArrayOfByte);
+        Logger.e("CanvasRecorder", "canvasToTempFilePathSync: ", paramArrayOfByte);
         paramArrayOfByte = null;
         continue;
       }
       if (paramArrayOfByte == null) {
-        break label260;
+        break label291;
       }
       if (!paramBoolean) {
+        break label171;
+      }
+      if (paramArrayOfByte == null) {
+        break label169;
+      }
+      paramString = new ByteArrayOutputStream();
+      if (!paramArrayOfByte.compress(Bitmap.CompressFormat.PNG, paramInt5, paramString)) {
         break;
       }
-      return a(paramArrayOfByte, paramString, paramInt5);
-      TTLog.b("CanvasRecorder", "canvasToTempFilePathSync: invalid parameter originalWidth = " + paramInt1 + " originalHeight = " + paramInt2);
+      paramArrayOfByte = Base64.encodeToString(paramString.toByteArray(), 2);
+      Logger.d("CanvasRecorder", "convertBitmapToBase64String: success, base64 png format");
+      return paramArrayOfByte;
+      paramArrayOfByte = (byte[])localObject;
+      continue;
+      Logger.e("CanvasRecorder", "canvasToTempFilePathSync: invalid parameter originalWidth = " + paramInt1 + " originalHeight = " + paramInt2);
       paramArrayOfByte = null;
     }
-    Object localObject = this.a.l().getTmpFilePath(this.a.j(), paramString);
+    Logger.e("CanvasRecorder", "convertBitmapToBase64String: fail");
+    label169:
+    return null;
+    label171:
+    Object localObject = this.mTritonEngine.getEngineContext().getDataFileSystem().newTempFile(null);
     try
     {
       if ("jpg".equalsIgnoreCase(paramString)) {}
-      for (paramString = Bitmap.CompressFormat.JPEG;; paramString = Bitmap.CompressFormat.PNG)
+      for (paramString = Bitmap.CompressFormat.JPEG; paramArrayOfByte.compress(paramString, paramInt5, new FileOutputStream(((TemporaryFile)localObject).getFile())); paramString = Bitmap.CompressFormat.PNG)
       {
-        paramBoolean = paramArrayOfByte.compress(paramString, paramInt5, new FileOutputStream((String)localObject));
-        if (!paramBoolean) {
-          break;
-        }
-        TTLog.a("CanvasRecorder", "canvasToTempFilePathSync: save to file " + (String)localObject);
-        return this.a.l().getWxFilePath((String)localObject);
+        Logger.d("CanvasRecorder", "canvasToTempFilePathSync: save to file " + ((TemporaryFile)localObject).getFile());
+        return ((TemporaryFile)localObject).getPathInGame();
       }
-      TTLog.b("CanvasRecorder", "canvasToTempFilePathSync: save to file fail");
+      Logger.e("CanvasRecorder", "canvasToTempFilePathSync: save to file fail");
       return null;
     }
     catch (FileNotFoundException paramArrayOfByte)
     {
-      TTLog.b("CanvasRecorder", "canvasToTempFilePathSync: ", paramArrayOfByte);
+      Logger.e("CanvasRecorder", "canvasToTempFilePathSync: ", paramArrayOfByte);
       return null;
     }
-    label260:
+    label291:
     return null;
   }
 }

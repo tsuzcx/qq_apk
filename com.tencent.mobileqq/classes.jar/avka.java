@@ -1,14 +1,8 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
-
-class avka
-  implements CustomizedDns
+public class avka
 {
-  avka(avju paramavju) {}
-  
-  public String getip(String paramString)
-  {
-    return avkt.a().a(paramString);
-  }
+  public long a;
+  public String a;
+  public long b;
 }
 
 

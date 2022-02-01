@@ -1,14 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
 class qew
-  implements qvq
+  implements ViewBase.OnClickListener
 {
-  qew(qet paramqet, pxk parampxk) {}
+  qew(qev paramqev) {}
   
-  public void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    spb localspb = this.jdField_a_of_type_Pxk.a().a();
-    if (localspb != null) {
-      localspb.a(null, this.jdField_a_of_type_Pxk.a(), 1);
-    }
+    qeu.a(this.a.jdField_a_of_type_Qeu).a(this.a.jdField_a_of_type_Int, paramViewBase, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
   }
 }
 

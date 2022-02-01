@@ -1,33 +1,15 @@
-import android.app.Activity;
-import java.util.Map;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adgd
-  extends adek
+  implements adci
 {
-  public boolean b;
-  protected String c;
-  public String d;
-  public String e;
-  
-  public adgd(Activity paramActivity, int paramInt, String paramString1, String paramString2)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    super(paramActivity, paramInt, paramString1);
-    this.c = paramString2;
-  }
-  
-  protected Map<String, adeb> a()
-  {
-    return adgn.a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Int == 2;
-  }
-  
-  protected void c()
-  {
-    adep.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new adge(this));
+    ((wja)paramadan.a().a(98)).b(paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

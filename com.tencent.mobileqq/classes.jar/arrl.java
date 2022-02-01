@@ -1,56 +1,78 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule.1;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
 
 public class arrl
-  extends QIPCModule
+  extends arac<String>
 {
-  private static arrl a;
-  
-  private arrl(String paramString)
+  @NonNull
+  public String a(int paramInt)
   {
-    super(paramString);
+    return "";
   }
   
-  public static arrl a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new arrl("EmoticonIPCModule");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  @Nullable
+  public String a(araj[] paramArrayOfaraj)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EmoticonIPCModule", 2, "onCall action = " + paramString);
+      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
+      paramArrayOfaraj = null;
+    }
+    String str;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonIPCModule", 2, "cannot get QQAppInterface.");
-      }
-      return null;
+      return paramArrayOfaraj;
+      str = paramArrayOfaraj[0].a;
+      paramArrayOfaraj = str;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
+    return str;
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
     }
-    ThreadManager.post(new EmoticonIPCModule.1(this, paramBundle, paramString, ((bgzk)((QQAppInterface)localAppRuntime).getManager(235)).a, paramInt), 5, null, true);
-    return null;
+  }
+  
+  public Class<String> clazz()
+  {
+    return String.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 462;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arrl
  * JD-Core Version:    0.7.0.1
  */

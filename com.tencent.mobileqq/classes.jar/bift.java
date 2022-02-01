@@ -1,199 +1,91 @@
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.DialogInterface.OnShowListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class bift
-  extends bifs
+class bift
+  implements SensorEventListener
 {
-  private bigg jdField_a_of_type_Bigg;
-  private ShareActionSheetV2 jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  private float d;
   
-  public bift(ShareActionSheetV2 paramShareActionSheetV2)
+  private void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2 = paramShareActionSheetV2;
-    this.jdField_a_of_type_Bigg = new bigg(paramShareActionSheetV2);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.c = 0.0F;
+    this.d = 0.0F;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void dismiss()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.dismiss();
+    bifp.b = 1;
+    bifp.a = true;
   }
   
-  public void dismissImmediately()
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.dismissImmediately();
+    bifp.b = 3;
+    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
   }
   
-  public View findViewById(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.findViewById(paramInt);
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public bkho getActionSheet()
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    throw new IllegalStateException("not impl in ShareActionSheetImplV2");
-  }
-  
-  public int getActionSheetPanelViewHeight()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getActionSheetPanelViewHeight();
-  }
-  
-  public int getIconWidth()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getIconWidth();
-  }
-  
-  public String getOpenSource()
-  {
-    throw new IllegalStateException("not impl in ShareActionSheetImplV2");
-  }
-  
-  public Window getWindow()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getWindow();
-  }
-  
-  public void hideTitle()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.hideTitle();
-  }
-  
-  public boolean isShowing()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.isShowing();
-  }
-  
-  public void onConfigurationChanged()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.onConfigurationChanged();
-  }
-  
-  public void refresh()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.refresh();
-  }
-  
-  public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem> paramList1, List<ShareActionSheetBuilder.ActionSheetItem> paramList2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setActionSheetItems(paramList1, paramList2);
-  }
-  
-  public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setActionSheetItems(paramArrayOfList);
-  }
-  
-  public void setActionSheetTitle(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setActionSheetTitle(paramCharSequence);
-  }
-  
-  public void setAdvBgColor(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setAdvBgColor(paramInt);
-  }
-  
-  public void setAdvView(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setAdvView(paramView, paramLayoutParams);
-  }
-  
-  public void setBottomBarInterface(bifr parambifr)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setBottomBarInterface(parambifr);
-  }
-  
-  public void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setCancelListener(paramOnCancelListener);
-  }
-  
-  public void setEnableNotTriggerVirtualNavigationBar(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setEnableNotTriggerVirtualNavigationBar(paramBoolean);
-  }
-  
-  public void setExtras(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setExtras(paramBundle);
-  }
-  
-  public void setIconMarginLeftRight(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setIconMarginLeftRight(paramInt);
-  }
-  
-  public void setIntentForStartForwardRecentActivity(Intent paramIntent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setIntentForStartForwardRecentActivity(paramIntent);
-  }
-  
-  public void setItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setItemClickListener(paramOnItemClickListener);
-  }
-  
-  public void setItemClickListenerV2(ShareActionSheet.OnItemClickListener paramOnItemClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setItemClickListenerV2(paramOnItemClickListener);
-  }
-  
-  public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setOnDismissListener(paramOnDismissListener);
-  }
-  
-  public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setOnShowListener(paramOnShowListener);
-  }
-  
-  public void setOpenSource(String paramString)
-  {
-    throw new IllegalStateException("not impl in ShareActionSheetImplV2");
-  }
-  
-  public void setRowMarginLeftRight(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setRowMarginLeftRight(paramInt);
-  }
-  
-  public void setRowVisibility(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setRowVisibility(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void show()
-  {
-    if (this.jdField_a_of_type_Bigg.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.show();
+    float f1 = 0.0F;
+    float f2;
+    float f3;
+    float f4;
+    long l1;
+    long l2;
+    if (paramSensorEvent.sensor.getType() == 1)
+    {
+      f2 = paramSensorEvent.values[0];
+      f3 = paramSensorEvent.values[1];
+      f4 = paramSensorEvent.values[2];
+      l1 = System.currentTimeMillis();
+      l2 = l1 - this.jdField_a_of_type_Long;
+      if (l2 <= 5000L) {
+        break label66;
+      }
+      a(l1);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ShareActionSheetImplV2", 2, "show() called 参数无效");
-  }
-  
-  public void updateUI()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.refresh();
-  }
-  
-  public void updateUIIfShowing()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.refresh();
+    label66:
+    do
+    {
+      do
+      {
+        return;
+      } while (l2 <= 80L);
+      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
+        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
+      }
+      this.d = (f1 + this.d);
+      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+      {
+        a();
+        a(l1);
+        return;
+      }
+      if (this.jdField_a_of_type_Int < 10)
+      {
+        this.jdField_a_of_type_Int += 1;
+        this.jdField_a_of_type_Float = f2;
+        this.b = f3;
+        this.c = f4;
+        this.jdField_a_of_type_Long = l1;
+        return;
+      }
+      a(l1);
+    } while (bifp.b >= 3);
+    b();
   }
 }
 

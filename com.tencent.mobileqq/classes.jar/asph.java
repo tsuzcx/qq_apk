@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
-public class asph
-  implements DialogInterface.OnClickListener
+public abstract interface asph
 {
-  public asph(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a = false;
-    this.a.doOnBackPressed();
-    bcst.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
-  }
+  public abstract void a(int paramInt);
 }
 
 

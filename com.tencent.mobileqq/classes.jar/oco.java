@@ -1,127 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.1;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.2;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import mqq.os.MqqHandler;
 
 public class oco
-  implements aqlb<String>
+  implements pre
 {
   private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private ocp jdField_a_of_type_Ocp;
   
-  public static oco a(int paramInt, String paramString, boolean paramBoolean)
+  public oco(QQAppInterface paramQQAppInterface, String paramString, Context paramContext)
   {
-    oco localoco = new oco();
-    localoco.jdField_a_of_type_Int = paramInt;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localoco.b = paramInt;
-      localoco.jdField_a_of_type_JavaLangString = paramString;
-      return localoco;
-    }
+    this(paramQQAppInterface, paramString, paramContext, null);
   }
   
-  public static oco a(String paramString)
+  public oco(QQAppInterface paramQQAppInterface, String paramString, Context paramContext, ocp paramocp)
   {
-    try
-    {
-      oco localoco = (oco)aqlu.a(paramString, oco.class);
-      return localoco;
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
-    }
-    return null;
-  }
-  
-  public static oco a(aqlg[] paramArrayOfaqlg)
-  {
-    oco localoco = null;
-    int i = 0;
-    while (i < paramArrayOfaqlg.length)
-    {
-      localoco = a(paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
-      i += 1;
-    }
-    return localoco;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ocp = paramocp;
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
   }
   
   public void a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    if ((this.jdField_a_of_type_Int >= 3) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null))
     {
-      localObject = (QQAppInterface)localObject;
-      int i = tvx.a((QQAppInterface)localObject);
-      if (this.jdField_a_of_type_Int != i) {
-        break label47;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
-      }
-    }
-    label47:
-    do
-    {
+      QLog.d("PublicAccountUnfollowTask", 2, "retry count reach max value or app = null ! retryCount : " + this.jdField_a_of_type_Int);
       return;
-      tvx.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
-      tvx.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
-    } while (localObject == null);
-    ((WebProcessManager)localObject).e();
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.1(this));
   }
   
-  public void a(String paramString)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
-    }
-    try
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 3)
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-        NodeList localNodeList = paramString.getElementsByTagName("version");
-        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject instanceof QQAppInterface))
-        {
-          localObject = (QQAppInterface)localObject;
-          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
-          paramString = paramString.getElementsByTagName("public-account-folder");
-          if (paramString.getLength() > 0)
-          {
-            paramString = (Element)paramString.item(0);
-            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
-          }
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml is empty");
-        return;
-      }
+      QLog.d("PublicAccountUnfollowTask", 2, "unfollow account fail ! uin : " + this.jdField_a_of_type_JavaLangString + " , errCode : " + paramInt + ", retry : " + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.2(this));
     }
-    catch (Exception paramString)
+    while (this.jdField_a_of_type_Ocp == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ocp.a(false, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig error", paramString);
+      QLog.d("PublicAccountUnfollowTask", 2, "unfollow account success ! uin : " + paramString + ",retry : " + this.jdField_a_of_type_Int);
+      paramInt = tzq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      alpb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, 1008);
+      ((pfg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(163)).a().e();
+      if (this.jdField_a_of_type_Ocp != null) {
+        this.jdField_a_of_type_Ocp.a(true, paramString);
       }
-      paramString.printStackTrace();
+      return;
     }
+    a(-1, null);
   }
 }
 

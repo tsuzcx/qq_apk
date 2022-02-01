@@ -1,33 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class adxq
-  implements DialogInterface.OnClickListener
+class adxq
+  extends WtloginObserver
 {
-  public adxq(ChatSettingForTroop paramChatSettingForTroop) {}
+  adxq(adxp paramadxp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if (paramInt == 1)
+    if (QLog.isColorLevel())
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.a.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
-    while (paramInt != 0) {
+    if (paramInt2 == 0) {}
+    do
+    {
       return;
-    }
-    this.a.finish();
+      adxp.a(this.a);
+    } while (adxp.a(this.a) == null);
+    paramString = new Intent(adxp.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", adxp.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    adxp.a(this.a).startActivity(paramString);
+    adxp.a(this.a).finish();
   }
 }
 

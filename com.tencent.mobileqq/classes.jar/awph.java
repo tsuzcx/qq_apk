@@ -1,20 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class awph
-  implements biea
+class awph
+  implements DialogInterface.OnClickListener
 {
-  public awph(MsgBackupMigrateFragment paramMsgBackupMigrateFragment) {}
+  awph(awpf paramawpf, bhpc parambhpc) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    awqs.a("0X800A242", 1);
-    this.a.onBackEvent();
+    this.jdField_a_of_type_Bhpc.dismiss();
   }
 }
 

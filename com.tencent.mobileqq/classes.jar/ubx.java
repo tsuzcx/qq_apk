@@ -1,39 +1,17 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
 
 public class ubx
-  extends Handler
+  implements bdhy
 {
-  public ubx(SwipeBackLayout paramSwipeBackLayout) {}
+  public ubx(ShareImageUtils.2 param2) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(this.a.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    this.a.c = true;
-    ((Activity)this.a.a).finish();
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubx
  * JD-Core Version:    0.7.0.1
  */

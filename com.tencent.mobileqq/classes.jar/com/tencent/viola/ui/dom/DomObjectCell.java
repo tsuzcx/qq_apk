@@ -2,7 +2,6 @@ package com.tencent.viola.ui.dom;
 
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
-import android.view.View;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.core.dispatch.ComponentAppearEvent;
 import com.tencent.viola.core.dispatch.ViolaDispatchManager;
@@ -271,24 +270,29 @@ public class DomObjectCell
     return this.mRegisterDidAppearComponentStateMap.containsKey(paramString);
   }
   
-  public void resetComponentState(String paramString, int paramInt, View paramView, boolean paramBoolean)
+  public boolean needFireNextStateWhenWillAppear(String paramString, Boolean paramBoolean)
+  {
+    return ((getTouchUpComptState(paramString) == null) || (DomObjectCell.ComponentState.WILLAPPEAR.equals(getTouchUpComptState(paramString)))) && (paramBoolean == this.mTouchDirectionDown);
+  }
+  
+  public void resetComponentState(String paramString, boolean paramBoolean)
   {
     if (this.mRegisterDidAppearComponentStateMap.size() >= 0)
     {
-      paramView = this.mRegisterDidAppearComponentStateMap.keySet().iterator();
-      if (paramView.hasNext())
+      Iterator localIterator = this.mRegisterDidAppearComponentStateMap.keySet().iterator();
+      if (localIterator.hasNext())
       {
-        String str = (String)paramView.next();
+        String str = (String)localIterator.next();
         if ((getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) || (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR))) {
           if (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR))
           {
-            if (((DomObjectCell.ComponentState.WILLAPPEAR.equals(getTouchUpComptState(str))) || (getTouchUpComptState(str) == null)) && (isComponentRegisterEvent("didAppear", str))) {
+            if ((needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean))) && (isComponentRegisterEvent("didAppear", str))) {
               fireEvent(paramString, "didAppear", str);
             }
             if (isComponentRegisterEvent("didDisappear", str)) {
               fireEvent(paramString, "didDisappear", str);
             }
-            label152:
+            label141:
             dispatchAppearEvent("didDisappear", str);
           }
         }
@@ -297,11 +301,11 @@ public class DomObjectCell
           this.mRegisterDidAppearComponentStateMap.put(str, DomObjectCell.ComponentState.DIDDISAPPEAR);
           break;
           if ((!getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) || (!isComponentRegisterEvent("didDisappear", str))) {
-            break label152;
+            break label141;
           }
           fireEvent(paramString, "didDisappear", str);
-          break label152;
-          if (((getTouchUpComptState(str) == null) || (DomObjectCell.ComponentState.WILLAPPEAR.equals(getTouchUpComptState(str)))) && (paramBoolean == this.mTouchDirectionDown.booleanValue()))
+          break label141;
+          if (needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean)))
           {
             if (isComponentRegisterEvent("willAppear", str)) {
               fireEvent(paramString, "willAppear", str);
@@ -328,7 +332,7 @@ public class DomObjectCell
     this.mTouchDirectionDown = Boolean.valueOf(paramBoolean);
   }
   
-  public void setTouchUpComptState(String paramString, DomObjectCell.ComponentState paramComponentState, int paramInt1, int paramInt2)
+  public void setTouchUpComptState(String paramString, DomObjectCell.ComponentState paramComponentState)
   {
     this.mBeforeTouchUpStateMap.put(paramString, paramComponentState);
   }

@@ -1,116 +1,22 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
 
 public class alxp
-  extends anmu
+  implements wsh<wsc>
 {
-  public alxp(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  public alxp(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void a(boolean paramBoolean, wsc paramwsc)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean);
-    }
-    Object localObject;
-    boolean bool;
-    if (!paramBoolean)
+    yuk.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
+    if ((paramBoolean) && (paramwsc != null))
     {
-      localObject = this.a;
-      FormSwitchItem localFormSwitchItem = QQSpecialCareSettingActivity.a(this.a);
-      if (!QQSpecialCareSettingActivity.a(this.a).a())
-      {
-        bool = true;
-        ((QQSpecialCareSettingActivity)localObject).a(localFormSwitchItem, bool);
-      }
-    }
-    else
-    {
-      this.a.a.sendEmptyMessage(8194);
-      localObject = this.a.a.obtainMessage(8195);
-      if (paramBoolean) {
-        i = 2;
-      }
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label194;
-      }
-      if (!Boolean.valueOf(((boolean[])(boolean[])paramArrayOfObject[2])[0]).booleanValue()) {
-        break label188;
-      }
-      i = 2131698322;
-    }
-    for (;;)
-    {
-      ((Message)localObject).arg2 = i;
-      this.a.a.sendMessage((Message)localObject);
-      QQSpecialCareSettingActivity.b(this.a);
-      bddy.c(this.a.app);
-      return;
-      bool = false;
-      break;
-      label188:
-      i = 2131698321;
-      continue;
-      label194:
-      if (((boolean[])(boolean[])paramArrayOfObject[2])[0] != 0) {
-        i = 2131698325;
-      } else {
-        i = 2131698317;
-      }
-    }
-  }
-  
-  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
-    }
-    FormSwitchItem localFormSwitchItem;
-    if (!paramBoolean)
-    {
-      paramArrayOfObject = this.a;
-      localFormSwitchItem = QQSpecialCareSettingActivity.b(this.a);
-      if (QQSpecialCareSettingActivity.b(this.a).a()) {
-        break label77;
-      }
-    }
-    label77:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
-      QQSpecialCareSettingActivity.b(this.a);
+      yuk.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramwsc);
+      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramwsc));
       return;
     }
-  }
-  
-  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
-  }
-  
-  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
+    yuk.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
   }
 }
 

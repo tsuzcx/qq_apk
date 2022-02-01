@@ -1,10 +1,7 @@
-public abstract interface aofv
+public class aofv
+  implements anui
 {
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3);
-  
-  public abstract void b(int paramInt, boolean paramBoolean, Object paramObject);
-  
-  public abstract void c(int paramInt, boolean paramBoolean, Object paramObject);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

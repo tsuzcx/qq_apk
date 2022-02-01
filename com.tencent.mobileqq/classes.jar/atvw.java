@@ -1,23 +1,16 @@
-import android.app.Activity;
-import android.os.Bundle;
-
-class atvw
-  implements atve
+public abstract interface atvw
 {
-  atvw(atvv paramatvv, Activity paramActivity) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a()
-  {
-    bcst.b(null, "dc00898", "", "", "0X800AE48", "0X800AE48", 0, 0, "", "", "", "");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_open_with_qq_browser_", this.jdField_a_of_type_Atvv.a);
-    atvo.a(this.jdField_a_of_type_AndroidAppActivity, "https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386", localBundle);
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public void b()
-  {
-    bcst.b(null, "dc00898", "", "", "0X800AE49", "0X800AE49", 0, 0, "", "", "", "");
-  }
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(bhva parambhva);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

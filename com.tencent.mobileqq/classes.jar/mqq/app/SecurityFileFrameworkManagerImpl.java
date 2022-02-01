@@ -46,7 +46,7 @@ public class SecurityFileFrameworkManagerImpl
   private static final String SP_KEY_FILE_KEY = "FILE_KEY";
   private static final String SP_KEY_UIN_IS_FIRST = "UIN_IS_FIRST_";
   public static final String TAG = "SecurityFileFrameworkManagerImpl";
-  private static boolean enable;
+  private static boolean enable = false;
   private static File sRootFile;
   private ConcurrentHashMap<String, File> businessRootFiles = new ConcurrentHashMap();
   private AppRuntime mApp;

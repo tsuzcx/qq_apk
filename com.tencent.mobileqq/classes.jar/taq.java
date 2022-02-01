@@ -1,6 +1,6 @@
 public abstract interface taq
 {
-  public abstract void a(tar paramtar);
+  public abstract int a();
 }
 
 

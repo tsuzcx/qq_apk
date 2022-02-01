@@ -1,24 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.apollo.ApolloManager.21;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class amhj
-  implements nkl
+final class amhj
+  implements DialogInterface.OnClickListener
 {
-  public amhj(ApolloManager.21 param21) {}
+  amhj(Context paramContext) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ApolloManager", 1, new Object[] { "[predownloadForGameCenter] offline pkg bid:", this.a.jdField_a_of_type_JavaLangString, " loaded, param=", paramString, ", code=", Integer.valueOf(paramInt) });
-    if (paramInt == 0) {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(this.a.b, this.a.jdField_a_of_type_Int).commit();
-    }
-    VipUtils.a(this.a.this$0.a, "cmshow", "Apollo", "gamecenter_preload_res_android", 0, paramInt, new String[] { this.a.jdField_a_of_type_JavaLangString, String.valueOf(this.a.jdField_a_of_type_Int) });
+    ((Activity)this.a).finish();
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

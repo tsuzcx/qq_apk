@@ -1,26 +1,12 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import android.view.animation.Interpolator;
 
-public class blsm
-  implements URLDrawable.URLDrawableListener
+final class blsm
+  implements Interpolator
 {
-  public blsm(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public float getInterpolation(float paramFloat)
   {
-    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

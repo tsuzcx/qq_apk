@@ -1,17 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agtd
-  extends afuv
+public class agtd
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
-  TextView e;
+  public agtd(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  agtd(agta paramagta) {}
+  public void onClick(View paramView)
+  {
+    AIOLongShotHelper.a(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE6");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

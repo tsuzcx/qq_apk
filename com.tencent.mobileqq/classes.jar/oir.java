@@ -1,19 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.widget.ListView;
+import java.util.List;
+import java.util.Map;
 
 public class oir
-  implements View.OnClickListener
+  extends stf
 {
-  public oir(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  protected pfh a;
+  private ske jdField_a_of_type_Ske;
   
-  public void onClick(View paramView)
+  protected void a() {}
+  
+  public void a(ListView paramListView)
   {
-    if ((this.a.a instanceof oge)) {
-      ((oge)this.a.a).p();
+    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
+  }
+  
+  public void a(Map<Integer, qvp> paramMap)
+  {
+    if (this.jdField_a_of_type_Ske != null) {
+      this.jdField_a_of_type_Ske.a(paramMap);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    pfd.a().b(this.jdField_a_of_type_Pfh);
   }
 }
 

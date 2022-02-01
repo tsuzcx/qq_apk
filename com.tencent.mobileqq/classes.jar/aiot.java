@@ -1,19 +1,14 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
-public class aiot
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aiot
+  implements oft
 {
-  public aiot(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
+  aiot(ainh paramainh, CharSequence paramCharSequence, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void a(List<ChatMessage> paramList)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
-    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
+    ainh.b(this.jdField_a_of_type_Ainh, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
   }
 }
 

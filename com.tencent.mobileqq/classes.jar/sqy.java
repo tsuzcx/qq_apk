@@ -1,16 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class sqy
-  extends pue
+class sqy
+  implements View.OnClickListener
 {
-  public sqy(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  sqy(sqx paramsqx) {}
   
-  public void a(ptx paramptx)
+  public void onClick(View paramView)
   {
-    paramptx.a(ReadInJoyListViewGroup.a(this.a), this.a.a);
+    try
+    {
+      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(this.a.a.c.getString("id_attribute_text"));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("WebProteusViewCreator", 1, "showAsDropDown error,msg:" + localException.toString());
+      }
+    }
   }
 }
 

@@ -1,146 +1,128 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qapmsdk.QAPM;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/base/component/AbsProfileComponent;", "Landroid/widget/FrameLayout;", "TAG", "", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Ljava/lang/String;Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "getTAG", "()Ljava/lang/String;", "isBackgroundShow", "", "()Z", "setBackgroundShow", "(Z)V", "buildVasProfileData", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "info", "getComponentName", "getComponentType", "", "getContainerView", "getDefaultResourceID", "onDataUpdate", "data", "onVasDataUpdate", "setAbFactor", "", "type", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class azpm
-  extends azkq<FrameLayout>
+public class azpm
 {
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public static azpn a;
+  public static boolean a;
+  public static long c = 0L;
+  protected long a;
+  protected QQAppInterface a;
+  protected long b;
+  protected long d = 524288000L;
+  protected long e = 31457280L;
+  protected long f = 31457280L;
+  protected long g = 31457280L;
   
-  public azpm(@NotNull String paramString, @Nullable azlw paramazlw, @Nullable azfe paramazfe)
+  static
   {
-    super(paramazlw, paramazfe);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Boolean = true;
   }
   
-  public final int a()
+  public static final void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return 1003;
+    c();
+    jdField_a_of_type_Azpn.a(paramLong, paramBoolean1, paramBoolean2);
   }
   
-  @NotNull
-  public FrameLayout a()
+  public static final void b()
   {
-    Object localObject = super.a();
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    return (FrameLayout)localObject;
+    c();
+    jdField_a_of_type_Azpn.b();
   }
   
-  @NotNull
-  public final azpj a(@Nullable azfe paramazfe)
+  public static final void c()
   {
-    if (paramazfe != null) {}
-    for (Object localObject1 = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard; localObject1 == null; localObject1 = null) {
-      return new azpj(0L, 0L, null, null, null, null, 63, null);
-    }
-    Card localCard = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard;
-    long l1 = localCard.lCurrentStyleId;
-    long l2 = localCard.lCurrentBgId;
-    String str2 = localCard.backgroundUrl;
-    Intrinsics.checkExpressionValueIsNotNull(str2, "backgroundUrl");
-    long l3 = localCard.backgroundColor;
-    int i = localCard.dynamicCardFlag;
-    localObject1 = localCard.strZipUrl;
-    Object localObject2;
-    label108:
-    String str1;
-    if (localObject1 != null)
-    {
-      localObject2 = localCard.strActiveUrl;
-      if (localObject2 == null) {
-        break label274;
+    if (jdField_a_of_type_Azpn == null) {
+      try
+      {
+        if (jdField_a_of_type_Azpn == null) {
+          jdField_a_of_type_Azpn = new azpn();
+        }
+        return;
       }
-      str1 = localCard.strDrawerCardUrl;
-      if (str1 == null) {
-        break label281;
-      }
-    }
-    for (;;)
-    {
-      String str3 = localCard.strWzryHeroUrl;
-      Intrinsics.checkExpressionValueIsNotNull(str3, "strWzryHeroUrl");
-      localObject1 = new azpg(l1, l2, str2, l3, i, (String)localObject1, (String)localObject2, str1, str3, localCard.wzryHonorInfo, localCard.strExtInfo, localCard.strCurrentBgUrl);
-      localObject2 = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard;
-      localObject2 = new azpi(((Card)localObject2).diyText, ((Card)localObject2).diyTextFontId, ((Card)localObject2).diyTextWidth, ((Card)localObject2).diyTextHeight, ((Card)localObject2).diyTextLocX, ((Card)localObject2).diyTextLocY, ((Card)localObject2).diyTextDegree, ((Card)localObject2).diyTextScale, ((Card)localObject2).diyTextTransparency, ((Card)localObject2).diyDefaultText);
-      return new azpj(paramazfe.jdField_a_of_type_Long, paramazfe.b, paramazfe.jdField_a_of_type_Azfl, (azpg)localObject1, paramazfe.jdField_a_of_type_Azph, (azpi)localObject2);
-      localObject1 = "";
-      break;
-      label274:
-      localObject2 = "";
-      break label108;
-      label281:
-      str1 = "";
+      finally {}
     }
   }
   
-  @NotNull
-  public final String a()
+  public int a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final void a(@Nullable String paramString)
-  {
-    CharSequence localCharSequence = (CharSequence)paramString;
-    int i;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0))
-    {
-      i = 1;
-      if (i == 0) {
-        break label30;
-      }
-    }
-    label30:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      QAPM.setAbFactor("资料卡背景", paramString, adbt.class);
-    } while (!QLog.isColorLevel());
-    QLog.d("AbsVasProfileBackgroundComponent", 2, "updateTheme cardType=" + paramString);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean a(@Nullable azfe paramazfe)
-  {
-    azpj localazpj = a(paramazfe);
+    d();
+    paramBoolean = a();
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "vasdata = " + localazpj);
+      azpw.a("PIC_TAG_PRELOAD", "isOverLimit", "isInDPCWhiteList:" + paramBoolean);
     }
-    return a(localazpj) | super.a(paramazfe);
+    if ((paramInt2 == 0) || ((paramBoolean) && (paramInt2 != 3)))
+    {
+      if (this.b >= this.d)
+      {
+        azqj.a(paramInt2, this.d);
+        azpw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowWIFI:" + this.b);
+        return -8;
+      }
+    }
+    else if (paramInt2 == 1)
+    {
+      if (this.jdField_a_of_type_Long >= this.e)
+      {
+        azqj.a(paramInt2, this.e);
+        azpw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax4GFlow:" + this.e);
+        return -8;
+      }
+    }
+    else if (paramInt2 == 2)
+    {
+      if (this.jdField_a_of_type_Long >= this.f)
+      {
+        azqj.a(paramInt2, this.f);
+        azpw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax3GFlow:" + this.f);
+        return -8;
+      }
+    }
+    else if ((paramInt2 == 3) && (this.jdField_a_of_type_Long >= this.g))
+    {
+      azqj.a(paramInt2, this.g);
+      azpw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax2GFlow:" + this.g);
+      return -8;
+    }
+    return 0;
   }
   
-  public abstract boolean a(@NotNull azpj paramazpj);
-  
-  public final int b()
+  public void a()
   {
-    return 2130845755;
+    jdField_a_of_type_Boolean = azqi.a("PicPreDownSwitchNew", Boolean.valueOf(true)).booleanValue();
+    c = azqi.a("PicAuDownTimePoint", 0L);
+    this.d = azqi.a("MaxWifiFlow", 524288000L);
+    this.e = azqi.a("Max4GFlow", 31457280L);
+    this.f = azqi.a("Max3GFlow", 31457280L);
+    this.g = azqi.a("Max2GFlow", 31457280L);
+    if (QLog.isColorLevel()) {
+      QLog.d("PIC_TAG_PRELOAD.BaseStrategy", 2, "initConfig(): PreDownUseLocalFlowSet=" + jdField_a_of_type_Boolean + " PicAuDownTimePoint=" + c + " PreDownMaxWifiFlow=" + this.d + " PreDownMax4GFlow=" + this.e + " PreDownMax3GFlow=" + this.f + " PreDownMax2GFlow=" + this.g);
+    }
   }
   
-  @NotNull
-  public final String b()
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
   }
   
-  public final boolean b()
+  public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name());
+  }
+  
+  public void d()
+  {
+    c();
+    long[] arrayOfLong = jdField_a_of_type_Azpn.a();
+    this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
+    this.b = (arrayOfLong[2] + arrayOfLong[3]);
+    if (QLog.isColorLevel()) {
+      azpw.a("PIC_TAG_PRELOAD", "", "updateTrafficData ", "picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",C2CPicDownFlowXG:" + arrayOfLong[0] + ",Group/DiscussPicDownFlowXG:" + arrayOfLong[1] + ",picTrafficFlowWIFI:" + this.b + ",C2CPicDownFlowWIFI:" + arrayOfLong[2] + ",Group/DiscussPicDownFlowWIFI:" + arrayOfLong[3]);
+    }
   }
 }
 

@@ -4,20 +4,20 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URLEncoder;
-import pha;
-import tpl;
+import ozs;
+import tgg;
 
 public class SheetItemClickProcessor$JuBaoAction$1
   implements Runnable
 {
-  public SheetItemClickProcessor$JuBaoAction$1(tpl paramtpl, String paramString) {}
+  public SheetItemClickProcessor$JuBaoAction$1(tgg paramtgg, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      localObject = (QQAppInterface)pha.a();
+      localObject = (QQAppInterface)ozs.a();
       if (localObject == null) {
         break label87;
       }
@@ -34,7 +34,7 @@ public class SheetItemClickProcessor$JuBaoAction$1
       }
     }
     if (BaseActivity.sTopActivity != null) {
-      pha.a(BaseActivity.sTopActivity, (String)localObject);
+      ozs.a(BaseActivity.sTopActivity, (String)localObject);
     }
   }
 }

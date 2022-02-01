@@ -1,17 +1,17 @@
 package com.tencent.open.business.viareport;
 
-import bisy;
-import biuu;
+import bjtx;
+import bjvt;
 
 public class ReportManager$2
   implements Runnable
 {
-  public ReportManager$2(biuu parambiuu, String paramString) {}
+  public ReportManager$2(bjvt parambjvt, String paramString) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      bisy.b("viareport", "isUploading ---return");
+      bjtx.b("viareport", "isUploading ---return");
     }
     while (!this.this$0.a(this.a)) {
       return;

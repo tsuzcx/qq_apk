@@ -1,44 +1,24 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import dov.com.qq.im.capture.data.LockedCategory;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bolo
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  bolo(boln paramboln, Context paramContext) {}
+  bolo(boll paramboll) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boln.b(this.jdField_a_of_type_Boln.a.a);
-    this.jdField_a_of_type_Boln.a = null;
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Boln.c = true;
-      if ((BaseActivity.sTopActivity instanceof SplashActivity))
-      {
-        paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
-        Intent localIntent = new Intent();
-        localIntent.putExtra("main_tab_id", 8);
-        localIntent.putExtra("fragment_id", 1);
-        localIntent.putExtra("switch_anim", true);
-        paramDialogInterface.b(localIntent);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AEBottomListPart", 2, "Watermark panel down");
     }
-    else
-    {
-      return;
-    }
-    paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

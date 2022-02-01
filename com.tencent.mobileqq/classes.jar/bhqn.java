@@ -1,36 +1,107 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput.3;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import java.lang.ref.SoftReference;
+import java.util.Timer;
 
-class bhqn
-  implements TouchWebView.OnScrollChangedListener
+public class bhqn
+  extends bhpc
 {
-  bhqn(bhql parambhql) {}
+  private long jdField_a_of_type_Long;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
+  private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
+  private SoftReference<Context> jdField_a_of_type_JavaLangRefSoftReference;
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public bhqn(Context paramContext, int paramInt)
   {
-    if (System.currentTimeMillis() - this.a.a > 1000L)
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
+  }
+  
+  private boolean a()
+  {
+    if ("VIVO".equalsIgnoreCase(Build.MANUFACTURER))
     {
-      paramInt1 = paramInt2 - paramInt4;
-      if (paramInt1 <= 0) {
-        break label55;
-      }
-      if (Math.abs(paramInt1) > 50)
-      {
-        this.a.b(false);
-        this.a.a = System.currentTimeMillis();
+      if ((!Build.MODEL.toUpperCase().contains("Y8")) && (!Build.MODEL.toUpperCase().contains("V18"))) {}
+    }
+    else {
+      while (("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.MODEL.toUpperCase().contains("VOG-AL10"))) {
+        return true;
       }
     }
-    label55:
-    while (Math.abs(paramInt1) <= 50) {
-      return;
+    return false;
+  }
+  
+  public EditText a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
+  }
+  
+  public void a(TextWatcher paramTextWatcher)
+  {
+    if (paramTextWatcher != null)
+    {
+      this.jdField_a_of_type_AndroidTextTextWatcher = paramTextWatcher;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(paramTextWatcher);
     }
-    this.a.b(true);
-    this.a.a = System.currentTimeMillis();
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramString);
+    }
+  }
+  
+  public String getInputValue()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368725));
+  }
+  
+  public bhpc setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.rBtn.setVisibility(8);
+      return this;
+    }
+    this.rBtn.setText(paramInt);
+    this.rBtn.setVisibility(0);
+    this.rBtn.setOnClickListener(new bhqo(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
+  }
+  
+  public void show()
+  {
+    super.show();
+    Editable localEditable = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+    if ((localEditable instanceof Spannable)) {
+      Selection.setSelection((Spannable)localEditable, localEditable.length());
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusable()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusableInTouchMode())) {
+      new Timer().schedule(new QQCustomDialogWtihInput.3(this), 200L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqn
  * JD-Core Version:    0.7.0.1
  */

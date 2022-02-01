@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aepq
-  extends anmu
+  implements aojk
 {
-  public aepq(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public aepq(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public void a(Object paramObject)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131693749), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
+    if ((paramObject instanceof String))
     {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131693751), 0).b(this.a.getTitleBarHeight());
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
   }
 }

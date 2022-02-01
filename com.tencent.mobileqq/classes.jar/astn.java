@@ -1,11 +1,8 @@
-import android.widget.CheckBox;
-import com.tencent.widget.SingleLineTextView;
-
-public class astn
+public abstract interface astn
 {
-  public int a;
-  public CheckBox a;
-  public SingleLineTextView a;
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
 }
 
 

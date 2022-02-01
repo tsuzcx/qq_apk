@@ -1,60 +1,84 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-class wgs
-  implements bdvw
+public class wgs
+  extends JobSegment<Integer, List<wgh>>
 {
-  wgs(wgr paramwgr) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private wgu jdField_a_of_type_Wgu;
   
-  public void onResp(bdwt parambdwt)
+  public wgs(Context paramContext, wgu paramwgu)
   {
-    if (parambdwt.jdField_a_of_type_Int == 3) {}
-    wgv localwgv;
-    do
-    {
-      do
-      {
-        return;
-        localObject = ((bdvs)parambdwt.jdField_a_of_type_Bdws).a();
-      } while ((localObject == null) || (!(localObject instanceof wgv)));
-      localwgv = (wgv)localObject;
-      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((wgv)localObject).jdField_a_of_type_JavaLangString);
-      localwgv.jdField_b_of_type_Long = (System.currentTimeMillis() - localwgv.jdField_a_of_type_Long);
-    } while (localwgv.jdField_a_of_type_Wgo == null);
-    Object localObject = localwgv.jdField_a_of_type_Wgo;
-    if (parambdwt.jdField_a_of_type_Int == 0) {}
-    for (parambdwt = new ErrorMessage(0, "");; parambdwt = new ErrorMessage(parambdwt.b, parambdwt.jdField_a_of_type_JavaLangString))
-    {
-      ((wgo)localObject).a(localwgv, parambdwt);
-      return;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Wgu = paramwgu;
   }
   
-  public void onUpdateProgeress(bdws arg1, long paramLong1, long paramLong2)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    ??? = ???.a();
-    if ((??? != null) && ((??? instanceof wgv)))
+    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "start GalleryScanSegment");
+    paramInteger = (wta)wth.a(10);
+    paramJobContext = new wfm();
+    long l2 = ((Long)paramInteger.b("key_last_pic_scan_time", Long.valueOf(-1L))).longValue();
+    long l1 = ((Long)paramInteger.b("key_last_date_album_time", Long.valueOf(-1L))).longValue();
+    if ((l2 != -1L) && (l1 != -1L))
     {
-      wgv localwgv = (wgv)???;
-      int i = (int)(paramLong1 / paramLong2 * 100.0D);
-      synchronized (PreloadDownloader.a)
+      this.jdField_a_of_type_Wgu.a(true);
+      paramInteger = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, 1L + l2, true, 10);
+      if (paramInteger.isEmpty())
       {
-        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
-        {
-          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
-          while (localIterator.hasNext())
-          {
-            wgz localwgz = (wgz)((WeakReference)localIterator.next()).get();
-            if (localwgz != null) {
-              localwgz.a(localwgv.jdField_b_of_type_JavaLangString, localwgv.jdField_a_of_type_Int, i, localwgv);
-            }
-          }
-        }
+        yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No new picture scanned.");
+        notifyResult(paramInteger);
+        return;
       }
+      paramInteger = ((wfv)wth.a(30)).a();
+      if (!this.jdField_a_of_type_Wgu.a()) {
+        break label255;
+      }
+    }
+    label255:
+    for (paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1 + 1L, true, paramInteger.a(true));; paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1, false, paramInteger.a(false)))
+    {
+      if ((paramJobContext != null) && (!paramJobContext.isEmpty())) {
+        break label275;
+      }
+      yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No picture scanned in your phone");
+      notifyResult(paramJobContext);
+      return;
+      yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "It is not inc scan :" + true + ",lastPicScanTime" + l2 + " ,lastDateAlbumTime=" + l1);
+      this.jdField_a_of_type_Wgu.a(false);
+      l1 = -1L;
+      break;
+    }
+    label275:
+    wfv.b(paramJobContext);
+    this.jdField_a_of_type_Wgu.b(((wgh)paramJobContext.get(paramJobContext.size() - 1)).d);
+    paramInteger = paramJobContext.iterator();
+    while (paramInteger.hasNext()) {
+      yuk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "scan pic result=%s", (wgh)paramInteger.next());
+    }
+    paramInteger = new ArrayList();
+    int i = 0;
+    while (i < paramJobContext.size() - 1)
+    {
+      if (((wgh)paramJobContext.get(i + 1)).b - ((wgh)paramJobContext.get(i)).b > 2L) {
+        paramInteger.add(paramJobContext.get(i));
+      }
+      i += 1;
+    }
+    paramInteger.add(paramJobContext.get(paramJobContext.size() - 1));
+    i = paramJobContext.size() - paramInteger.size();
+    l2 = ((wgh)paramJobContext.get(0)).b;
+    if (paramJobContext.size() > 1) {}
+    for (l1 = ((wgh)paramJobContext.get(paramJobContext.size() - 1)).b;; l1 = l2)
+    {
+      yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "filter the similar last=%d repeatPicCount=%d time span=%d", new Object[] { Integer.valueOf(paramInteger.size()), Integer.valueOf(i), Long.valueOf(l1 - l2) });
+      yup.a("video_shoot_slides", "same_reject", 0, 0, new String[] { "" + i, l1 - l2 + "" });
+      notifyResult(paramInteger);
+      return;
     }
   }
 }

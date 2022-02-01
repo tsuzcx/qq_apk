@@ -1,20 +1,14 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Spanned;
+import java.util.Comparator;
 
-class bgqw
-  implements View.OnClickListener
+final class bgqw
+  implements Comparator<Object>
 {
-  bgqw(bgqu parambgqu, DialogInterface.OnClickListener paramOnClickListener) {}
+  bgqw(Spanned paramSpanned) {}
   
-  public void onClick(View paramView)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgqu, 1);
-    }
-    this.jdField_a_of_type_Bgqu.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

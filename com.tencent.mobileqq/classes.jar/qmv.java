@@ -1,54 +1,62 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qmv
-  extends VafContext
+  extends qjh
 {
-  private static void a()
+  public qmv(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    DrawableUtil.setDrawableHelper(new qmw());
+    super(paramContext, paramaoof, paramsel);
   }
   
-  private void b()
+  public qjh a()
   {
-    LogUtil.setProteusLog(new qia());
+    this.jdField_a_of_type_Boolean = true;
+    return f(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).q().l().n();
   }
   
-  private void c()
+  public qjh d()
   {
-    CustomMethodsRegister.registerCustomMethod(new qid());
-  }
-  
-  private void d() {}
-  
-  public void setContext(Context paramContext)
-  {
-    super.setContext(paramContext);
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    float f2 = anll.a() / 16.0F;
-    float f1 = f2;
-    if (f2 == 0.0F) {
-      f1 = 1.0F;
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("layoutComponent() must after buildComponent()!");
     }
-    f1 = paramContext.density / f1;
-    int i = paramContext.widthPixels;
-    if (Aladdin.getConfig(353).getIntegerFromString("enable_use_min_screen_size", 1) == 1) {
-      i = Math.min(paramContext.widthPixels, paramContext.heightPixels);
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
     }
-    Utils.init(f1, i);
-    a();
-    b();
-    d();
-    tez.a();
-    c();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qjh e()
+  {
+    return null;
+  }
+  
+  public qjh o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
 }
 

@@ -1,57 +1,125 @@
 import android.app.Activity;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.os.Build;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
 
-class tvs
-  implements View.OnClickListener
+public class tvs
+  extends BaseAdapter
+  implements aoog
 {
-  tvs(tvr paramtvr, tvq paramtvq) {}
+  Activity jdField_a_of_type_AndroidAppActivity;
+  public aoof a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  protected List<tvr> a;
+  private tvn jdField_a_of_type_Tvn;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public void onClick(View paramView)
+  public tvs(Activity paramActivity, QQAppInterface paramQQAppInterface, tvn paramtvn)
   {
-    bcst.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
-    bcst.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Long), "", "", "");
-    String str;
-    if (this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp != null)
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(11);
+    this.jdField_a_of_type_Aoof = new aoof(paramActivity, paramQQAppInterface);
+    this.jdField_a_of_type_Aoof.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Tvn = paramtvn;
+    this.jdField_a_of_type_Boolean = ThemeUtil.isInNightMode(paramQQAppInterface);
+    if (Build.MANUFACTURER.toUpperCase().equals("XIAOMI")) {
+      this.b = true;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(List<tvr> paramList)
+  {
+    if (paramList != null)
     {
-      str = String.valueOf(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Long);
-      if (!TextUtils.isEmpty(str)) {
-        break label116;
+      if (paramList.size() >= 10) {}
+      for (int i = 10;; i = paramList.size())
+      {
+        int j = 0;
+        while (j < i)
+        {
+          a((tvr)paramList.get(j));
+          j += 1;
+        }
       }
+      paramList = new tvr();
+      paramList.a = -1L;
+      a(paramList);
+    }
+  }
+  
+  public void a(tvr paramtvr)
+  {
+    if (paramtvr != null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramtvr);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aoof.a(null);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt > getCount()) || (paramInt < 0)) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131560380, null);
+      paramView = new tvt(this, localView, this.jdField_a_of_type_Boolean);
+      localView.setVisibility(0);
+      localView.setFocusable(false);
+      localView.setTag(paramView);
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label116:
-      if (this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Int == 0)
-      {
-        if (!bgnt.d(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
-        {
-          QQToast.a(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity, 2131693948, 0).b(((BaseActivity)this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
-        }
-        else
-        {
-          this.jdField_a_of_type_Tvr.a(2);
-          this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Int = 2;
-          MqqHandler localMqqHandler = this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-          if ((localMqqHandler != null) && (this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
-            localMqqHandler.sendEmptyMessage(1007);
-          }
-          tzo.a(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity, str, new tvw(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq, this.jdField_a_of_type_Tvr));
-        }
-      }
-      else {
-        tvr.a(this.jdField_a_of_type_Tvr);
-      }
+      paramView.a((tvr)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      tvt localtvt = (tvt)paramView.getTag();
+      localView = paramView;
+      paramView = localtvt;
     }
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    notifyDataSetChanged();
   }
 }
 

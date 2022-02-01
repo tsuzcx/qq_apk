@@ -1,33 +1,30 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
 public class xxw
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wvw>
+  extends wjm<xxn, xag>
 {
-  public xxw(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public xxw(xxn paramxxn)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramxxn);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wvw paramwvw)
+  public void a(@NonNull xxn paramxxn, @NonNull xag paramxag)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwvw.jdField_a_of_type_JavaLangString)) {}
-    while ((paramwvw.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
-      return;
+    if ((paramxxn.a != null) && (paramxag.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxag.jdField_a_of_type_JavaUtilList.contains(paramxxn.a.a)))
+    {
+      yuk.a(this.TAG, "receive tag info change event. %s", paramxag.toString());
+      paramxxn.i();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramwvw.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramwvw.toString());
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwvw);
   }
   
   public Class acceptEventClass()
   {
-    return wvw.class;
+    return xag.class;
   }
+  
+  public void b(@NonNull xxn paramxxn, @NonNull xag paramxag) {}
 }
 
 

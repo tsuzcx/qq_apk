@@ -1,102 +1,35 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.BytesEntry;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import java.util.ArrayList;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class vrp
+class vrp
+  implements aaaj
 {
-  private int a;
+  vrp(vrn paramvrn) {}
   
-  private vrp(int paramInt)
+  public void a(boolean paramBoolean, Map<String, aaah> paramMap)
   {
-    this.a = paramInt;
-  }
-  
-  private FeedCloudCommon.BytesEntry a(String paramString, byte[] paramArrayOfByte)
-  {
-    FeedCloudCommon.BytesEntry localBytesEntry = new FeedCloudCommon.BytesEntry();
-    localBytesEntry.key.set(paramString);
-    localBytesEntry.value.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    return localBytesEntry;
-  }
-  
-  private FeedCloudCommon.StCommonExt a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    FeedCloudCommon.StCommonExt localStCommonExt = new FeedCloudCommon.StCommonExt();
-    ArrayList localArrayList = new ArrayList();
-    if (paramArrayOfByte1 != null) {
-      localArrayList.add(a("SessionID", paramArrayOfByte1));
-    }
-    if (paramArrayOfByte2 != null) {
-      localArrayList.add(a("SubSessionID", paramArrayOfByte2));
-    }
-    if (localArrayList.size() > 0)
+    if ((paramBoolean) && (paramMap != null))
     {
-      localStCommonExt.mapBytesInfo.set(localArrayList);
-      QLog.d("QCircleReporterAgent", 2, "buildSessionCommonExt() valid session and subsession!scene:" + this.a);
-      return localStCommonExt;
-    }
-    QLog.e("QCircleReporterAgent", 2, "buildSessionCommonExt() no session and subsession!scene:" + this.a);
-    return localStCommonExt;
-  }
-  
-  public static vrp a(int paramInt)
-  {
-    return new vrp(paramInt);
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    vri.a().a(this.a, paramArrayOfByte);
-  }
-  
-  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
-  {
-    byte[] arrayOfByte1 = null;
-    byte[] arrayOfByte2 = vri.a().a();
-    if (!paramBoolean) {
-      arrayOfByte1 = vri.a().a(this.a);
-    }
-    return a(arrayOfByte2, arrayOfByte1);
-  }
-  
-  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
-  {
-    QLog.d("QCircleReporterAgent", 1, "updateSubSession,scene:" + this.a);
-    int i;
-    if ((paramStCommonExt != null) && (paramStCommonExt.has()) && (paramStCommonExt.mapBytesInfo.has()))
-    {
-      paramStCommonExt = paramStCommonExt.mapBytesInfo.get().iterator();
-      while (paramStCommonExt.hasNext())
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        FeedCloudCommon.BytesEntry localBytesEntry = (FeedCloudCommon.BytesEntry)paramStCommonExt.next();
-        if ((localBytesEntry != null) && ("SubSessionID".equals(localBytesEntry.key.get())))
+        String str = (String)localIterator.next();
+        Object localObject = (aaah)paramMap.get(str);
+        if (!vry.a.containsKey(str))
         {
-          paramStCommonExt = localBytesEntry.value.get().toByteArray();
-          i = 1;
+          localObject = AnimationView.AnimationInfo.loadFromFolder(((aaah)localObject).b);
+          if (localObject != null)
+          {
+            ((AnimationView.AnimationInfo)localObject).mInterval = 50;
+            ((AnimationView.AnimationInfo)localObject).mCycle = 2147483647;
+            vry.a.put(str, localObject);
+          }
         }
       }
-    }
-    for (;;)
-    {
-      if (paramStCommonExt != null) {
-        a(paramStCommonExt);
-      }
-      if (i != 0)
-      {
-        QLog.d("QCircleReporterAgent", 1, "find subsession!");
-        return;
-      }
-      QLog.e("QCircleReporterAgent", 1, "can't find subsession!");
-      return;
-      i = 0;
-      paramStCommonExt = null;
+      vrn.a(this.a);
     }
   }
 }

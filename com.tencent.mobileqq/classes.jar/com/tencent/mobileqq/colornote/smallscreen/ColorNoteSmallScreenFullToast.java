@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -14,7 +14,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqfe;
+import aquh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -27,15 +27,15 @@ public class ColorNoteSmallScreenFullToast
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private aqfe jdField_a_of_type_Aqfe;
+  private aquh jdField_a_of_type_Aquh;
   public boolean a;
   
-  public ColorNoteSmallScreenFullToast(Context paramContext, aqfe paramaqfe)
+  public ColorNoteSmallScreenFullToast(Context paramContext, aquh paramaquh)
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aqfe = paramaqfe;
+    this.jdField_a_of_type_Aquh = paramaquh;
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -1;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
@@ -49,9 +49,9 @@ public class ColorNoteSmallScreenFullToast
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131690756));
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839262);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839270);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(afur.a(24.0F, paramContext.getResources()), afur.a(24.0F, paramContext.getResources()));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(agej.a(24.0F, paramContext.getResources()), agej.a(24.0F, paramContext.getResources()));
       addView(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -101,10 +101,10 @@ public class ColorNoteSmallScreenFullToast
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = (paramInt1 - afur.a(12.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = (paramInt1 - agej.a(12.0F, getResources()));
       int[] arrayOfInt = new int[2];
       getLocationOnScreen(arrayOfInt);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = (paramInt2 - afur.a(5.5F, getResources()) - arrayOfInt[1]);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = (paramInt2 - agej.a(5.5F, getResources()) - arrayOfInt[1]);
       this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8) {
@@ -160,7 +160,7 @@ public class ColorNoteSmallScreenFullToast
     //   75: ifeq +248 -> 323
     //   78: aload_0
     //   79: getfield 30	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   82: invokestatic 237	aqfh:a	(Landroid/content/Context;)Z
+    //   82: invokestatic 237	aquk:a	(Landroid/content/Context;)Z
     //   85: istore_1
     //   86: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   89: ifeq +56 -> 145
@@ -326,8 +326,8 @@ public class ColorNoteSmallScreenFullToast
   {
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      if (this.jdField_a_of_type_Aqfe != null) {
-        this.jdField_a_of_type_Aqfe.a();
+      if (this.jdField_a_of_type_Aquh != null) {
+        this.jdField_a_of_type_Aquh.a();
       }
       a();
       return true;
@@ -339,16 +339,16 @@ public class ColorNoteSmallScreenFullToast
   {
     a();
     if (paramView == this) {
-      if (this.jdField_a_of_type_Aqfe != null) {
-        this.jdField_a_of_type_Aqfe.c();
+      if (this.jdField_a_of_type_Aquh != null) {
+        this.jdField_a_of_type_Aquh.c();
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramView == this.jdField_a_of_type_AndroidWidgetImageView) && (this.jdField_a_of_type_Aqfe != null)) {
-        this.jdField_a_of_type_Aqfe.d();
+      if ((paramView == this.jdField_a_of_type_AndroidWidgetImageView) && (this.jdField_a_of_type_Aquh != null)) {
+        this.jdField_a_of_type_Aquh.d();
       }
     }
   }

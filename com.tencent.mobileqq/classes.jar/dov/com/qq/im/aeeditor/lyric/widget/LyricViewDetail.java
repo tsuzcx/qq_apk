@@ -11,10 +11,10 @@ public class LyricViewDetail
   public LyricViewDetail(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131558554, this);
-    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll = ((LyricViewScroll)paramContext.findViewById(2131381203));
-    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewInternalBase = ((LyricViewInternalDetail)paramContext.findViewById(2131381202));
-    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewInternalBase.a(this.jdField_a_of_type_Bobd);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131558556, this);
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll = ((LyricViewScroll)paramContext.findViewById(2131381376));
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewInternalBase = ((LyricViewInternalDetail)paramContext.findViewById(2131381375));
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewInternalBase.a(this.jdField_a_of_type_Bpcy);
     this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.setScrollEnable(this.jdField_a_of_type_Boolean);
   }
 }

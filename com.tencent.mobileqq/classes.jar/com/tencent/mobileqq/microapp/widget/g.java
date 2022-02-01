@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.microapp.R.drawable;
 import com.tencent.mobileqq.microapp.R.id;
 import com.tencent.mobileqq.microapp.R.layout;
@@ -116,7 +116,7 @@ public final class g
   
   public String a(String paramString)
   {
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       return "";
     }
     String str2 = c.n(paramString);

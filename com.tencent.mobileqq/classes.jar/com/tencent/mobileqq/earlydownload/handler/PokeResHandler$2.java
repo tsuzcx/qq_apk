@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import aheh;
-import aroh;
+import ahnt;
+import asdv;
 
 public class PokeResHandler$2
   implements Runnable
 {
-  public PokeResHandler$2(aroh paramaroh) {}
+  public PokeResHandler$2(asdv paramasdv) {}
   
   public void run()
   {
-    aheh.a(this.this$0.a, null);
+    ahnt.a(this.this$0.a, null);
   }
 }
 

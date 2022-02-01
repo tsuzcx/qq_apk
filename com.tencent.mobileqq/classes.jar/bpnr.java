@@ -1,20 +1,18 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.LockedCategory;
 
-class bpnr
-  extends SoftReference<V>
+public final class bpnr
+  implements Parcelable.Creator<LockedCategory>
 {
-  private K jdField_a_of_type_JavaLangObject;
-  
-  public bpnr(K paramK, V paramV, ReferenceQueue<? super V> paramReferenceQueue)
+  public LockedCategory a(Parcel paramParcel)
   {
-    super(paramReferenceQueue, localReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramV;
+    return new LockedCategory(paramParcel);
   }
   
-  public K a()
+  public LockedCategory[] a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return new LockedCategory[paramInt];
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.comment;
 
-import yog;
+import ysb;
 
 class StoryInputBarView$5
   implements Runnable

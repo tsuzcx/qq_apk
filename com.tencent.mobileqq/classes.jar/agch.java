@@ -1,35 +1,31 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
 public class agch
-  extends AsyncTask<String, Void, Bitmap>
+  implements View.OnClickListener
 {
-  public agch(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
+  public agch(PositionActivatePage paramPositionActivatePage) {}
   
-  protected Bitmap a(String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
     {
-      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
-      }
-      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
+      Intent localIntent = new Intent((Context)PositionActivatePage.a(this.a).get(), NearbyActivity.class);
+      localIntent.putExtra("ENTER_TIME", System.currentTimeMillis());
+      localIntent.putExtra("FROM_WHERE", 1002);
+      localIntent.putExtra("is_skip_nearby_guide", true);
+      localIntent.setFlags(67108864);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivity(localIntent);
+      bdll.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E07", "0X8004E07", 0, 0, "", "", "", "");
     }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
-    this.a.invalidate();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

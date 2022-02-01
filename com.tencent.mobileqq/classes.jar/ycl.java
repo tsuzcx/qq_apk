@@ -1,68 +1,24 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ycl
-  implements yck
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public ycl(MyMemoriesListView paramMyMemoriesListView) {}
   
-  public ycl(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    yqp.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
-    if ((paramInt == 1002) || (paramInt == 1003)) {}
-    Object localObject;
-    do
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
     {
-      return;
-      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        wjz.a((Context)localObject, 12, paramString);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
+      if (this.a.jdField_a_of_type_Ycm != null) {
+        this.a.jdField_a_of_type_Ycm.c();
       }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject = "clk_reply_nick";
-      paramString = "2";
-      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
-        break label157;
-      }
-      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-      paramInt = yqu.a(paramString);
-      if (!paramString.getOwner().isMe()) {
-        break label151;
-      }
-      paramString = "1";
     }
-    for (;;)
-    {
-      yqu.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, yqu.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      localObject = "clk_like_name";
-      break;
-      label151:
-      paramString = "2";
-      continue;
-      label157:
-      paramInt = 4;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

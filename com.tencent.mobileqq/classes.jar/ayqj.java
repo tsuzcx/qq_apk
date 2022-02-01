@@ -1,62 +1,67 @@
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
-import java.util.ArrayList;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ayqj
-  extends ayoo
+class ayqj
+  implements bliz
 {
-  private ayqb a;
+  ayqj(ayqg paramayqg, ayqn paramayqn, aysk paramaysk, blir paramblir) {}
   
-  public ayqj(long paramLong, ayop paramayop, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramLong, paramayop, paramQQAppInterface, paramBaseActivity);
-    this.jdField_a_of_type_Ayqb = ((aypj)paramQQAppInterface.getManager(369)).a();
-    this.jdField_a_of_type_Ayqb.a(new ayqk(this));
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131697647);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ayqb.a(null);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
-  {
-    ArrayList localArrayList;
-    QQAppInterface localQQAppInterface;
-    if (this.jdField_a_of_type_Ayop == null)
+    switch (paramInt)
     {
-      localArrayList = null;
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (paramBoolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ayps.a(localQQAppInterface, paramOnlineStatusPermissionItem, localArrayList, paramBoolean);
+    default: 
       return;
-      localArrayList = this.jdField_a_of_type_Ayop.a();
-      break;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void d()
-  {
-    super.d();
-    this.jdField_a_of_type_Ayqb.a(null);
+    ayek localayek = new ayek().h("data_card").i("feed_inform").d("2").a(this.jdField_a_of_type_Ayqg.a(this.jdField_a_of_type_Ayqn)).b(this.jdField_a_of_type_Aysk.c).c(String.valueOf(this.jdField_a_of_type_Ayqg.a(this.jdField_a_of_type_Ayqn)));
+    if (this.jdField_a_of_type_Ayqg.jdField_a_of_type_Boolean)
+    {
+      paramView = "1";
+      localayek.e(paramView).b(this.jdField_a_of_type_Ayqg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_Aysk.e)) || (!(this.jdField_a_of_type_Ayqg.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))) {
+        break label341;
+      }
+      paramView = new bhia();
+      if (!(this.jdField_a_of_type_Aysk instanceof aysh)) {
+        break label231;
+      }
+      paramView.b(((aysh)this.jdField_a_of_type_Aysk).b);
+      label172:
+      paramView.a(this.jdField_a_of_type_Aysk.n);
+      paramView = paramView.a();
+      bhhz.a((BaseActivity)this.jdField_a_of_type_Ayqg.jdField_a_of_type_AndroidContentContext, 0L, this.jdField_a_of_type_Aysk.e, null, 20006, "", paramView);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      paramView = "2";
+      break;
+      label231:
+      if ((this.jdField_a_of_type_Aysk instanceof aysj))
+      {
+        paramView.d(((aysj)this.jdField_a_of_type_Aysk).b).b(((aysj)this.jdField_a_of_type_Aysk).a);
+        break label172;
+      }
+      if ((this.jdField_a_of_type_Aysk instanceof aysl))
+      {
+        paramView.b(((aysl)this.jdField_a_of_type_Aysk).a);
+        break label172;
+      }
+      if ((this.jdField_a_of_type_Aysk instanceof aysn))
+      {
+        paramView.b(((aysn)this.jdField_a_of_type_Aysk).a);
+        break label172;
+      }
+      if (!(this.jdField_a_of_type_Aysk instanceof ayso)) {
+        break label172;
+      }
+      break label172;
+      label341:
+      QQToast.a(this.jdField_a_of_type_Ayqg.jdField_a_of_type_AndroidContentContext, 2, anzj.a(2131699947), 0).a();
+    }
   }
 }
 

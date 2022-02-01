@@ -1,25 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-public class awdp
-  implements Drawable.Callback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback"}, k=3, mv={1, 1, 16})
+final class awdp
+  implements aasd
 {
-  public awdp(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
+  awdp(awby paramawby, String paramString) {}
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public final void callback(Bundle paramBundle)
   {
-    this.a.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
+    int i = 1;
+    boolean bool = paramBundle.getBoolean("enable");
+    QLog.i("AudioRoomSettingHandler", 1, "handleGetTmpMsgPushSetting: nowStatus=" + bool);
+    paramBundle = this.jdField_a_of_type_Awby;
+    String str = this.jdField_a_of_type_JavaLangString;
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("result", "success");
+    JSONObject localJSONObject2 = new JSONObject();
+    if (bool) {}
+    for (;;)
+    {
+      localJSONObject2.put("pushSwitch", i);
+      localJSONObject1.put("data", localJSONObject2);
+      paramBundle.callJs(str, new String[] { localJSONObject1.toString() });
+      return;
+      i = 0;
+    }
   }
 }
 

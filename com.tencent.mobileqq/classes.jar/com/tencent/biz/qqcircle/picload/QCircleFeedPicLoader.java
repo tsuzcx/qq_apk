@@ -6,13 +6,14 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import bgjb;
-import bgmg;
-import bita;
+import bhjc;
+import bhmi;
+import bjtz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -27,13 +28,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
-import uxb;
-import vou;
-import vov;
-import vow;
-import voy;
-import voz;
+import uym;
+import vrd;
+import vre;
+import vrf;
 import vrh;
+import vri;
+import vts;
 
 public class QCircleFeedPicLoader
 {
@@ -42,7 +43,7 @@ public class QCircleFeedPicLoader
   public static String a;
   private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   public static int b;
-  private static final String jdField_b_of_type_JavaLangString = uxb.e + "feed_pic/";
+  private static final String jdField_b_of_type_JavaLangString = uym.e + "feed_pic/";
   public static int c;
   public static int d;
   public static int e;
@@ -50,6 +51,7 @@ public class QCircleFeedPicLoader
   public static int g;
   public static int h;
   private static int i;
+  private Handler jdField_a_of_type_AndroidOsHandler;
   private MQLruCache<String, Object> jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
   private ConcurrentHashMap<String, QCircleFeedPicLoader.PicDownLoadTask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
@@ -101,10 +103,11 @@ public class QCircleFeedPicLoader
     if (jdField_a_of_type_JavaUtilHashMap == null) {
       jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     ThreadManager.getFileThreadHandler().post(new QCircleFeedPicLoader.1(this));
   }
   
-  private Drawable a(vou paramvou, Bitmap paramBitmap)
+  private Drawable a(vrd paramvrd, Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
       return new BitmapDrawable(BaseApplicationImpl.getContext().getResources());
@@ -113,7 +116,7 @@ public class QCircleFeedPicLoader
     if (NinePatch.isNinePatchChunk(arrayOfByte))
     {
       paramBitmap = new NinePatchDrawable(BaseApplicationImpl.getContext().getResources(), paramBitmap, arrayOfByte, new Rect(), null);
-      paramvou.jdField_c_of_type_Int = 2;
+      paramvrd.jdField_c_of_type_Int = 2;
       return paramBitmap;
     }
     return new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), paramBitmap);
@@ -185,7 +188,7 @@ public class QCircleFeedPicLoader
   
   private ThreadPoolExecutor a(int paramInt1, int paramInt2)
   {
-    return new ThreadPoolExecutor(paramInt1, paramInt2, 120L, TimeUnit.SECONDS, new PriorityBlockingQueue(200, new vov(this)), Executors.defaultThreadFactory(), new vow(this));
+    return new ThreadPoolExecutor(paramInt1, paramInt2, 120L, TimeUnit.SECONDS, new PriorityBlockingQueue(200, new vre(this)), Executors.defaultThreadFactory(), new vrf(this));
   }
   
   private void a(String paramString, Bitmap paramBitmap)
@@ -199,70 +202,88 @@ public class QCircleFeedPicLoader
     }
   }
   
-  private void a(vou paramvou, int paramInt)
+  private void a(vrd paramvrd, int paramInt)
   {
-    if (paramvou != null)
+    if (paramvrd != null)
     {
       double d1 = -1.0D;
-      if (paramvou.a != null) {
-        d1 = (float)(System.currentTimeMillis() - paramvou.a.longValue()) / 1000.0F;
+      if (paramvrd.a != null) {
+        d1 = (float)(System.currentTimeMillis() - paramvrd.a.longValue()) / 1000.0F;
       }
-      vrh.a("image_load_ret", String.valueOf(d1), String.valueOf(paramInt), paramvou.a(), paramvou.jdField_d_of_type_Int);
+      vts.a("image_load_ret", String.valueOf(d1), String.valueOf(paramInt), paramvrd.a(), paramvrd.jdField_d_of_type_Int);
     }
   }
   
-  private void a(vou paramvou, Bitmap paramBitmap)
+  private void a(vrd paramvrd, Bitmap paramBitmap)
   {
-    if ((paramvou != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((paramvrd != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      paramBitmap = a(paramvou, paramBitmap);
+      paramBitmap = a(paramvrd, paramBitmap);
       if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label61;
+        break label207;
       }
-      if (paramvou.c())
+      if (paramvrd.c())
       {
-        paramvou.a().setImageDrawable(null);
-        paramvou.a().setImageDrawable(paramBitmap);
-        a(paramvou, 0);
+        if (paramvrd.a() != null)
+        {
+          paramvrd.a().setImageDrawable(null);
+          paramvrd.a().setImageDrawable(paramBitmap);
+        }
+        a(paramvrd, 0);
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvrd.a() + " cacheKey = " + paramvrd.b() + " the total time " + (System.currentTimeMillis() - paramvrd.a.longValue()) + " pic is valid");
       }
     }
+    else
+    {
+      return;
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvrd.a() + " cacheKey = " + paramvrd.b() + " the total time " + (System.currentTimeMillis() - paramvrd.a.longValue()) + " pic is unValid");
     return;
-    label61:
-    ThreadManager.getUIHandler().post(new QCircleFeedPicLoader.5(this, paramvou, paramBitmap));
+    label207:
+    this.jdField_a_of_type_AndroidOsHandler.post(new QCircleFeedPicLoader.5(this, paramvrd, paramBitmap));
   }
   
-  private void a(vou paramvou, Drawable paramDrawable)
+  private void a(vrd paramvrd, Drawable paramDrawable)
   {
-    if ((paramvou != null) && (paramDrawable != null))
+    if ((paramvrd != null) && (paramDrawable != null))
     {
       if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label41;
+        break label187;
       }
-      if (paramvou.c())
+      if (paramvrd.c())
       {
-        paramvou.a().setImageDrawable(null);
-        paramvou.a().setImageDrawable(paramDrawable);
+        if (paramvrd.a() != null)
+        {
+          paramvrd.a().setImageDrawable(null);
+          paramvrd.a().setImageDrawable(paramDrawable);
+        }
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvrd.a() + " cacheKey = " + paramvrd.b() + " showDrawable time " + (System.currentTimeMillis() - paramvrd.a.longValue()) + "pic is valid");
       }
     }
+    else
+    {
+      return;
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvrd.a() + " cacheKey = " + paramvrd.b() + " showDrawable time " + (System.currentTimeMillis() - paramvrd.a.longValue()) + "pic is unValid");
     return;
-    label41:
-    ThreadManager.getUIHandler().post(new QCircleFeedPicLoader.6(this, paramvou, paramDrawable));
+    label187:
+    this.jdField_a_of_type_AndroidOsHandler.post(new QCircleFeedPicLoader.6(this, paramvrd, paramDrawable));
   }
   
-  private void a(@NotNull vou paramvou, voy paramvoy)
+  private void a(@NotNull vrd paramvrd, vrh paramvrh)
   {
-    String str = a(paramvou);
-    if ((paramvou.b()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))) {}
+    String str = a(paramvrd);
+    if ((paramvrd.b()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))) {}
     do
     {
       return;
       localPicDownLoadTask = (QCircleFeedPicLoader.PicDownLoadTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-    } while ((localPicDownLoadTask != null) && (localPicDownLoadTask.a.a() == paramvou.a()));
-    paramvou.b = Long.valueOf(System.currentTimeMillis());
-    QCircleFeedPicLoader.PicDownLoadTask localPicDownLoadTask = new QCircleFeedPicLoader.PicDownLoadTask(this, paramvou);
-    localPicDownLoadTask.a(paramvoy);
+    } while ((localPicDownLoadTask != null) && (localPicDownLoadTask.a.a() == paramvrd.a()));
+    paramvrd.b = Long.valueOf(System.currentTimeMillis());
+    QCircleFeedPicLoader.PicDownLoadTask localPicDownLoadTask = new QCircleFeedPicLoader.PicDownLoadTask(this, paramvrd);
+    localPicDownLoadTask.a(paramvrh);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localPicDownLoadTask);
-    if (paramvou.b())
+    if (paramvrd.b())
     {
       this.jdField_c_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(localPicDownLoadTask);
       return;
@@ -285,32 +306,32 @@ public class QCircleFeedPicLoader
     }
   }
   
-  private void b(vou paramvou, int paramInt)
+  private void b(vrd paramvrd, int paramInt)
   {
-    if (paramvou != null)
+    if (paramvrd != null)
     {
       double d1 = -1.0D;
-      if (paramvou.b != null) {
-        d1 = (float)(System.currentTimeMillis() - paramvou.b.longValue()) / 1000.0F;
+      if (paramvrd.b != null) {
+        d1 = (float)(System.currentTimeMillis() - paramvrd.b.longValue()) / 1000.0F;
       }
-      vrh.a("image_download_ret", String.valueOf(d1), String.valueOf(paramInt), paramvou.a(), paramvou.jdField_c_of_type_Int);
+      vts.a("image_download_ret", String.valueOf(d1), String.valueOf(paramInt), paramvrd.a(), paramvrd.jdField_c_of_type_Int);
     }
   }
   
-  private void b(@NotNull vou paramvou, voy paramvoy)
+  private void b(@NotNull vrd paramvrd, vrh paramvrh)
   {
-    String str = a(paramvou);
-    if ((paramvou.b()) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))) {}
+    String str = a(paramvrd);
+    if ((paramvrd.b()) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))) {}
     do
     {
       return;
       localPicDeCodeTask = (QCircleFeedPicLoader.PicDeCodeTask)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-    } while ((localPicDeCodeTask != null) && (localPicDeCodeTask.a.a() == paramvou.a()));
-    paramvou.jdField_c_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-    QCircleFeedPicLoader.PicDeCodeTask localPicDeCodeTask = new QCircleFeedPicLoader.PicDeCodeTask(this, paramvou);
-    localPicDeCodeTask.a(paramvoy);
+    } while ((localPicDeCodeTask != null) && (localPicDeCodeTask.a.a() == paramvrd.a()));
+    paramvrd.jdField_c_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+    QCircleFeedPicLoader.PicDeCodeTask localPicDeCodeTask = new QCircleFeedPicLoader.PicDeCodeTask(this, paramvrd);
+    localPicDeCodeTask.a(paramvrh);
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localPicDeCodeTask);
-    if (paramvou.b())
+    if (paramvrd.b())
     {
       this.jdField_d_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(localPicDeCodeTask);
       return;
@@ -321,17 +342,17 @@ public class QCircleFeedPicLoader
   private void c()
   {
     long l = System.currentTimeMillis();
-    String str = bgjb.a(BaseApplicationImpl.getApplication(), "qcircle_pic_cache_time");
+    String str = bhjc.a(BaseApplicationImpl.getApplication(), "qcircle_pic_cache_time");
     if (!TextUtils.isEmpty(str))
     {
       if (l - Long.valueOf(str).longValue() >= i)
       {
-        bgmg.a(jdField_b_of_type_JavaLangString);
-        bgjb.a(BaseApplicationImpl.getApplication(), "qcircle_pic_cache_time", String.valueOf(l));
+        bhmi.a(jdField_b_of_type_JavaLangString);
+        bhjc.a(BaseApplicationImpl.getApplication(), "qcircle_pic_cache_time", String.valueOf(l));
       }
       return;
     }
-    bgjb.a(BaseApplicationImpl.getApplication(), "qcircle_pic_cache_time", String.valueOf(l));
+    bhjc.a(BaseApplicationImpl.getApplication(), "qcircle_pic_cache_time", String.valueOf(l));
   }
   
   private void c(String paramString)
@@ -349,58 +370,58 @@ public class QCircleFeedPicLoader
     }
   }
   
-  private void c(vou paramvou, int paramInt)
+  private void c(vrd paramvrd, int paramInt)
   {
-    if (paramvou != null)
+    if (paramvrd != null)
     {
       double d1 = -1.0D;
-      if (paramvou.jdField_c_of_type_JavaLangLong != null) {
-        d1 = (float)(System.currentTimeMillis() - paramvou.jdField_c_of_type_JavaLangLong.longValue()) / 1000.0F;
+      if (paramvrd.jdField_c_of_type_JavaLangLong != null) {
+        d1 = (float)(System.currentTimeMillis() - paramvrd.jdField_c_of_type_JavaLangLong.longValue()) / 1000.0F;
       }
-      vrh.a("image_decode_ret", String.valueOf(d1), String.valueOf(paramInt), paramvou.a(), paramvou.jdField_c_of_type_Int);
+      vts.a("image_decode_ret", String.valueOf(d1), String.valueOf(paramInt), paramvrd.a(), paramvrd.jdField_c_of_type_Int);
     }
   }
   
-  public String a(vou paramvou)
+  public String a(vrd paramvrd)
   {
-    if (!TextUtils.isEmpty(paramvou.a()))
+    if (!TextUtils.isEmpty(paramvrd.a()))
     {
-      Object localObject2 = bita.b(a(paramvou.a()));
+      Object localObject2 = bjtz.b(a(paramvrd.a()));
       Object localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = bita.a(paramvou.a());
+        localObject1 = bjtz.a(paramvrd.a());
       }
       localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = paramvou.a();
+        localObject2 = paramvrd.a();
       }
       localObject1 = new StringBuilder((String)localObject2);
-      ((StringBuilder)localObject1).append("#").append(paramvou.c()).append("_").append(paramvou.b());
-      paramvou.b(((StringBuilder)localObject1).toString());
+      ((StringBuilder)localObject1).append("#").append(paramvrd.c()).append("_").append(paramvrd.b());
+      paramvrd.b(((StringBuilder)localObject1).toString());
       return ((StringBuilder)localObject1).toString();
     }
     return "";
   }
   
-  public String a(@NotNull vou paramvou, voy paramvoy)
+  public String a(@NotNull vrd paramvrd, vrh paramvrh)
   {
-    String str = a(paramvou);
+    String str = a(paramvrd);
     Object localObject = a(str);
-    paramvou.a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
-    paramvou.a = Long.valueOf(System.currentTimeMillis());
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvou.a() + " cacheKey = " + paramvou.b() + " url = " + paramvou.a());
+    paramvrd.a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    paramvrd.a = Long.valueOf(System.currentTimeMillis());
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvrd.a() + " cacheKey = " + paramvrd.b() + " url = " + paramvrd.a());
     if ((localObject instanceof Bitmap))
     {
       long l = System.currentTimeMillis();
-      paramvou.jdField_d_of_type_Int = 0;
-      a(paramvou, (Bitmap)localObject);
-      if (paramvoy != null) {
-        paramvoy.a(f, paramvou);
+      paramvrd.jdField_d_of_type_Int = 0;
+      a(paramvrd, (Bitmap)localObject);
+      if (paramvrh != null) {
+        paramvrh.a(f, paramvrd);
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvou.a() + " ,return in cache:  " + paramvou.b() + "  costTime:" + (System.currentTimeMillis() - l));
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "seq = " + paramvrd.a() + " cacheKey = " + paramvrd.b() + " return in cache: " + paramvrd.b() + " costTime:" + (System.currentTimeMillis() - l));
       return str;
     }
-    this.jdField_b_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new QCircleFeedPicLoader.4(this, paramvou, paramvoy));
+    this.jdField_b_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new QCircleFeedPicLoader.4(this, paramvrd, paramvrh));
     return str;
   }
   
@@ -415,25 +436,25 @@ public class QCircleFeedPicLoader
     b(paramString);
   }
   
-  public String b(vou paramvou)
+  public String b(vrd paramvrd)
   {
-    if (bgmg.c(paramvou.a()))
+    if (bhmi.c(paramvrd.a()))
     {
-      localObject1 = paramvou.a();
-      paramvou.c((String)localObject1);
+      localObject1 = paramvrd.a();
+      paramvrd.c((String)localObject1);
       return localObject1;
     }
-    Object localObject2 = bita.b(a(paramvou.a()));
+    Object localObject2 = bjtz.b(a(paramvrd.a()));
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = bita.a(paramvou.a());
+      localObject1 = bjtz.a(paramvrd.a());
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = paramvou.a();
+      localObject2 = paramvrd.a();
     }
     localObject1 = jdField_b_of_type_JavaLangString + (String)localObject2 + ".suf";
-    paramvou.c((String)localObject1);
+    paramvrd.c((String)localObject1);
     return localObject1;
   }
   
@@ -446,7 +467,8 @@ public class QCircleFeedPicLoader
     this.jdField_d_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().clear();
     this.jdField_c_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().clear();
     jdField_a_of_type_JavaUtilHashMap.clear();
-    voz.a().a();
+    vri.a().a();
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "feed pic release");
   }
 }
 

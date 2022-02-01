@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
-class aial
-  implements bajx
+public class aial
+  implements View.OnLongClickListener
 {
-  aial(ahzy paramahzy) {}
+  public aial(PanelIconLinearLayout paramPanelIconLinearLayout) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    ahzy.c(this.a, paramBoolean);
-    this.a.m();
-    paramString = (PlusPanel)ahzy.b(this.a).b(8);
-    if (paramString != null) {
-      paramString.setOneWayFriend(ahzy.a(this.a));
+    paramView = ((agsv)this.a.a.a(62)).a;
+    if (paramView != null) {
+      paramView.a(1);
     }
-    if (ahzy.a(this.a)) {
-      adrm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
+    return true;
   }
 }
 

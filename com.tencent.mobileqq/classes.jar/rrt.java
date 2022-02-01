@@ -1,7 +1,20 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rrt {}
+public class rrt
+  extends oam
+{
+  private rrt(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

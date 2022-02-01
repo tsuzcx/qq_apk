@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar;
 
-import aovm;
+import apjc;
 
 public class ArConfigService$5$1
   implements Runnable
 {
-  public ArConfigService$5$1(aovm paramaovm, int paramInt) {}
+  public ArConfigService$5$1(apjc paramapjc, int paramInt) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_Aovm.a, this.jdField_a_of_type_Int);
+    ArConfigService.a(this.jdField_a_of_type_Apjc.a, this.jdField_a_of_type_Int);
   }
 }
 

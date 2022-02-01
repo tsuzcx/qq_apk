@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
 import android.os.SystemClock;
-import aotn;
+import aphd;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -9,7 +9,7 @@ public class PcmRecordController
   extends AudioRecordController
 {
   private long jdField_a_of_type_Long;
-  private aotn jdField_a_of_type_Aotn;
+  private aphd jdField_a_of_type_Aphd;
   private String jdField_a_of_type_JavaLangString;
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
@@ -24,11 +24,11 @@ public class PcmRecordController
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     while (this.jdField_a_of_type_Boolean) {
-      if ((this.jdField_a_of_type_Aotn != null) && (this.jdField_a_of_type_Long > 0L) && (!this.b)) {
+      if ((this.jdField_a_of_type_Aphd != null) && (this.jdField_a_of_type_Long > 0L) && (!this.b)) {
         try
         {
           long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-          byte[] arrayOfByte = this.jdField_a_of_type_Aotn.a(l);
+          byte[] arrayOfByte = this.jdField_a_of_type_Aphd.a(l);
           VideoRecordController localVideoRecordController = (VideoRecordController)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           if (localVideoRecordController != null) {
             localVideoRecordController.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
@@ -52,8 +52,8 @@ public class PcmRecordController
   {
     try
     {
-      if (this.jdField_a_of_type_Aotn == null) {
-        this.jdField_a_of_type_Aotn = new aotn(this.jdField_a_of_type_JavaLangString, 48000, 1, 16);
+      if (this.jdField_a_of_type_Aphd == null) {
+        this.jdField_a_of_type_Aphd = new aphd(this.jdField_a_of_type_JavaLangString, 48000, 1, 16);
       }
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -78,10 +78,10 @@ public class PcmRecordController
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Aotn != null)
+      if (this.jdField_a_of_type_Aphd != null)
       {
-        this.jdField_a_of_type_Aotn.a();
-        this.jdField_a_of_type_Aotn = null;
+        this.jdField_a_of_type_Aphd.a();
+        this.jdField_a_of_type_Aphd = null;
       }
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Long = 0L;

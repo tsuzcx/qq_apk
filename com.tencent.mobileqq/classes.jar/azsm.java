@@ -1,9 +1,10 @@
-import kotlin.Metadata;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileSettingUtils;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class azsm
+  extends azsa
 {
-  public static final azsn a = new azsn(null);
+  protected int a()
+  {
+    return 506;
+  }
 }
 
 

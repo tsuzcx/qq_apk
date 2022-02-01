@@ -1,32 +1,65 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.BaseFragment;
 
-class avgj
-  implements TextWatcher
+public class avgj
 {
-  avgj(avgi paramavgi) {}
+  public int a;
+  public View.OnClickListener a;
+  public BaseFragment a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public String c;
+  public boolean c = false;
+  public String d;
+  public String e;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public avgj(BaseFragment paramBaseFragment)
   {
-    if (avgi.a(this.a) != null)
-    {
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        break label45;
-      }
-      if (!avgi.b(this.a))
-      {
-        avgi.b(this.a, true);
-        avgi.a(this.a, 1);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
+  }
+  
+  public avgj a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public avgj a(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public avgj a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
     }
-    return;
-    label45:
-    this.a.c();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public avgj b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public avgj b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

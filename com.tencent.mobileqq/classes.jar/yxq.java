@@ -1,15 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-class yxq
-  implements ValueAnimator.AnimatorUpdateListener
+public final class yxq
+  implements Parcelable.Creator<EditVideoParams>
 {
-  yxq(yxo paramyxo) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public EditVideoParams a(Parcel paramParcel)
   {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.g();
+    return new EditVideoParams(paramParcel);
+  }
+  
+  public EditVideoParams[] a(int paramInt)
+  {
+    return new EditVideoParams[paramInt];
   }
 }
 

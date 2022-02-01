@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aeyz;
+import afie;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.data.Card;
 
 public class QQSettingMe$33$3
   implements Runnable
 {
-  public QQSettingMe$33$3(aeyz paramaeyz) {}
+  public QQSettingMe$33$3(afie paramafie, Card paramCard) {}
   
   public void run()
   {
-    this.a.a.z();
+    if (QQSettingMe.a(this.jdField_a_of_type_Afie.a) != null) {
+      QQSettingMe.a(this.jdField_a_of_type_Afie.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    }
   }
 }
 

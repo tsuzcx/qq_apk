@@ -6,19 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Process;
-import aqfz;
+import aqvc;
 import com.tencent.qphone.base.util.QLog;
 
 public class SkinnableServiceProcesser
   extends BroadcastReceiver
 {
   private final Service jdField_a_of_type_AndroidAppService;
-  private final aqfz jdField_a_of_type_Aqfz;
+  private final aqvc jdField_a_of_type_Aqvc;
   
-  public SkinnableServiceProcesser(Service paramService, aqfz paramaqfz)
+  public SkinnableServiceProcesser(Service paramService, aqvc paramaqvc)
   {
     this.jdField_a_of_type_AndroidAppService = paramService;
-    this.jdField_a_of_type_Aqfz = paramaqfz;
+    this.jdField_a_of_type_Aqvc = paramaqvc;
     try
     {
       this.jdField_a_of_type_AndroidAppService.registerReceiver(this, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
@@ -43,8 +43,8 @@ public class SkinnableServiceProcesser
       return;
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
-    if (this.jdField_a_of_type_Aqfz != null) {
-      this.jdField_a_of_type_Aqfz.e();
+    if (this.jdField_a_of_type_Aqvc != null) {
+      this.jdField_a_of_type_Aqvc.e();
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
   }

@@ -1,16 +1,53 @@
-import com.tencent.qq.effect.engine.QEffectEngine.JsonConvert;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bcpo
-  implements QEffectEngine.JsonConvert
+  implements bcny
 {
-  public <T> T parseArray(String paramString, Class paramClass)
+  private TextView a;
+  protected List<bcnz> a;
+  protected View b;
+  protected TextView c;
+  
+  public bcpo() {}
+  
+  public bcpo(ViewGroup paramViewGroup, int paramInt)
   {
-    return avnn.a(paramString, new bcpp(this).getClass().getGenericSuperclass());
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.c = ((TextView)this.b.findViewById(2131371384));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368825)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368831)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368837)));
+    if ((paramInt == 2131559638) || (paramInt == 2131562864))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368843)));
+      this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368844)));
+    }
   }
   
-  public <T> T parseObject(String paramString, Class paramClass)
+  public View a()
   {
-    return avnn.a(paramString, paramClass);
+    return this.b;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<bcnz> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.c;
   }
 }
 

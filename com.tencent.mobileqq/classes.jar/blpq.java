@@ -1,18 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qqreader.ui.ReaderHomeTabFragment;
-import cooperation.qqreader.view.ReaderTabBarView;
+import android.view.animation.Interpolator;
 
 public class blpq
-  extends BroadcastReceiver
+  implements Interpolator
 {
-  public blpq(ReaderHomeTabFragment paramReaderHomeTabFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public float getInterpolation(float paramFloat)
   {
-    blps.c(this.a.getActivity());
-    ReaderHomeTabFragment.a(this.a).setUnReadMsg(1, 20);
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 

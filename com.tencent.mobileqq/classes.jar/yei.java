@@ -1,26 +1,31 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class yei
-  extends xbu
+public class yei
+  extends ayxm
 {
-  yei(yeh paramyeh) {}
+  public yei(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a()
+  protected void a(Object paramObject)
   {
-    super.a();
-    yeh.a(this.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    yqu.a("home_page", "suc_share", 2, paramInt, new String[] { yqu.b(yeh.a(this.a).a) + "", yqu.a(yeh.a(this.a).a) + "", yeh.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    yqu.a("home_page", "share_chanel", 2, paramInt, new String[] { yqu.b(yeh.a(this.a).a) + "", yqu.a(yeh.a(this.a).a) + "", yeh.a(this.a).a.feedId });
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    yst localyst;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
+      }
+      paramObject = ((nlb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + nlb.a(paramObject));
+      }
+      localyst = (yst)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
+    } while (localyst == null);
+    localyst.a(paramObject);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
   }
 }
 

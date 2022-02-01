@@ -1,28 +1,67 @@
-public class aihu
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.List;
+
+class aihu
+  extends aohi
 {
-  public double a;
-  public double b;
+  aihu(aihh paramaihh) {}
   
-  public aihu(double paramDouble1, double paramDouble2)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.bo();
   }
   
-  public aihu(aihu paramaihu)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    a(paramaihu);
-  }
-  
-  public void a(aihu paramaihu)
-  {
-    this.a = paramaihu.a;
-    this.b = paramaihu.b;
-  }
-  
-  public String toString()
-  {
-    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
+    int k = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, true);
+    } while (!paramBoolean);
+    this.a.bo();
   }
 }
 

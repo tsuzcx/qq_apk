@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.os.Handler;
 import android.os.Message;
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -29,7 +29,7 @@ class AppLoadingUI$13
             this.this$0.uiHandler.postDelayed(new AppLoadingUI.13.1(this), 1000L);
             return;
           }
-          str = anni.a(2131699429);
+          str = anzj.a(2131699536);
           continue;
         }
         Object localObject = null;

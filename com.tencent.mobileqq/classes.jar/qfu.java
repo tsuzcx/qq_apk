@@ -1,16 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import java.util.Map;
-
 public class qfu
-  implements qrb
 {
-  public qfu(ProteusItemView paramProteusItemView, spa paramspa) {}
-  
-  public void a(View paramView, Map<String, Object> paramMap)
-  {
-    this.jdField_a_of_type_Spa.c();
-  }
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
 }
 
 

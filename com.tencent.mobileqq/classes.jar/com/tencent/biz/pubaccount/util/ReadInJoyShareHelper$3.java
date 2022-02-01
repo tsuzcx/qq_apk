@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.os.Message;
-import bkgm;
-import tce;
-import uae;
+import blhq;
+import sta;
+import uag;
 
 public class ReadInJoyShareHelper$3
   implements Runnable
 {
   public void run()
   {
-    String str = tce.a(this.a, "ShotCache_");
+    String str = sta.a(this.a, "ShotCache_");
     Message localMessage = Message.obtain();
     localMessage.what = 101;
     localMessage.obj = str;
-    uae.a(this.this$0).sendMessage(localMessage);
+    uag.a(this.this$0).sendMessage(localMessage);
   }
 }
 

@@ -1,16 +1,10 @@
-public class bfnh
+import android.view.View;
+
+class bfnh
+  extends bfni
 {
-  public int a;
-  public String a;
-  public String b = "";
-  
-  public bfnh(int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
+  public long a;
+  public View a;
 }
 
 

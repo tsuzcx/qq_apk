@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import akqh;
+import albs;
 
 public class ThemeHbFragment$3$1
   implements Runnable
 {
-  public ThemeHbFragment$3$1(akqh paramakqh, Object paramObject) {}
+  public ThemeHbFragment$3$1(albs paramalbs, Object paramObject) {}
   
   public void run()
   {
-    ThemeHbFragment.a(this.jdField_a_of_type_Akqh.a, (String)this.jdField_a_of_type_JavaLangObject);
+    ThemeHbFragment.a(this.jdField_a_of_type_Albs.a, (String)this.jdField_a_of_type_JavaLangObject);
   }
 }
 

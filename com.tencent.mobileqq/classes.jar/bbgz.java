@@ -1,64 +1,49 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Callable;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bbgz
-  implements Callable<List<bbgm>>
+public class bbgz
+  extends AnimatorListenerAdapter
 {
-  bbgz(bbgx parambbgx, int paramInt1, int paramInt2) {}
+  public bbgz(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public List<bbgm> a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Object localObject = bbgx.a(this.jdField_a_of_type_Bbgx).subList(this.jdField_a_of_type_Int, this.b);
-    ArrayList localArrayList = new ArrayList();
-    bbgm localbbgm;
-    if (localObject != null)
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
+    }
+    if (!this.a.b.get())
     {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localbbgm = (bbgm)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_Bbgx.isCancelled()) {
-          break label141;
-        }
-      }
-      if (!bbgx.a(this.jdField_a_of_type_Bbgx).equals(bbgx.b(this.jdField_a_of_type_Bbgx))) {
-        localObject = localArrayList.iterator();
-      }
+      this.a.a.set(true);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
+      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
     }
     for (;;)
     {
-      if (((Iterator)localObject).hasNext())
-      {
-        localbbgm = (bbgm)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_Bbgx.isCancelled()) {}
-      }
-      else
-      {
-        return localArrayList;
-        label141:
-        localbbgm.a(bbgx.a(this.jdField_a_of_type_Bbgx));
-        if (localbbgm.c() == -9223372036854775808L) {
-          break;
-        }
-        int i = localArrayList.indexOf(localbbgm);
-        if (-1 == i)
-        {
-          localArrayList.add(localbbgm);
-          break;
-        }
-        if (((bbgm)localArrayList.get(i)).c() >= localbbgm.c()) {
-          break;
-        }
-        localArrayList.set(i, localbbgm);
-        break;
-      }
-      long l = localbbgm.c();
-      localbbgm.a(bbgx.b(this.jdField_a_of_type_Bbgx));
-      if (localbbgm.c() == -9223372036854775808L) {
-        localbbgm.a(l);
-      }
+      this.a.b.set(false);
+      return;
+      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
+      CameraCaptureButtonLayout.a(this.a);
+      CameraCaptureButtonLayout.a(this.a, 1.0F);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
     }
   }
 }

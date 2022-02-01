@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ayhm
-  implements Parcelable.Creator<OcrConfig>
+class ayhm
+  implements View.OnClickListener
 {
-  public OcrConfig a(Parcel paramParcel)
-  {
-    return new OcrConfig(paramParcel);
-  }
+  ayhm(ayhj paramayhj) {}
   
-  public OcrConfig[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new OcrConfig[paramInt];
+    this.a.h(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,29 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class akaf
-  implements Animation.AnimationListener
+public class akaf
+  implements Cloneable
 {
-  akaf(akae paramakae, Activity paramActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((this.jdField_a_of_type_Akae.a.a.getCount() == 1) && (!MiniMsgTabFragment.b(this.jdField_a_of_type_Akae.a)))
-    {
-      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Akae.a);
-      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Akae.a));
-      paramAnimation.putExtra("clickID", -1);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public CheckBox a;
+  public TextView a;
+  public TencentDocItem a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

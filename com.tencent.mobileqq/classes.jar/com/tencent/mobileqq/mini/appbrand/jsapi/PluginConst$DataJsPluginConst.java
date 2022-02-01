@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi;
 public class PluginConst$DataJsPluginConst
 {
   public static final String API_AUTHORIZE = "authorize";
+  public static final String API_BOOKSHELF_INSERT = "insertBookshelf";
   public static final String API_GET_GROUP_INFO = "getGroupInfo";
   public static final String API_GET_GROUP_INFO_EXTRA = "getGroupInfoExtra";
   public static final String API_GET_NATIVE_USER_INFO = "getNativeUserInfo";

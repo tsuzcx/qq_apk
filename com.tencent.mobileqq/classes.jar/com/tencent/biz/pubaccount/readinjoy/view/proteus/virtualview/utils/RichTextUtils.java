@@ -1,0 +1,131 @@
+package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils;
+
+import android.text.Layout;
+import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.StyleSpan;
+import android.view.ViewTreeObserver;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.TruncateAttr;
+
+public class RichTextUtils
+{
+  private static final String TAG = "RichNativeText";
+  private static final String ellipsis = "…";
+  
+  public static void addClickSpan(TextView paramTextView, SpannableStringBuilder paramSpannableStringBuilder, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramSpannableStringBuilder.setSpan(new RichTextUtils.ClickSpan(paramString, paramInt1), paramInt2, paramInt3, 33);
+    paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
+  }
+  
+  public static void addEllipsis2Text(TextView paramTextView, TruncateAttr paramTruncateAttr)
+  {
+    addEllipsis2Text(paramTextView, paramTextView.getText(), paramTruncateAttr);
+  }
+  
+  private static void addEllipsis2Text(TextView paramTextView, CharSequence paramCharSequence, TruncateAttr paramTruncateAttr)
+  {
+    for (;;)
+    {
+      int j;
+      try
+      {
+        int k = paramTruncateAttr.maxLines;
+        SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramTruncateAttr.text);
+        addMoreTextSpan(paramTextView, localSpannableStringBuilder, paramTruncateAttr, 0, localSpannableStringBuilder.length());
+        if (paramTextView.getLineCount() > k)
+        {
+          int i = paramTextView.getLayout().getLineEnd(k - 1);
+          j = i;
+          if (isBeyondMaxLines(paramTextView, k, paramCharSequence, localSpannableStringBuilder, 0, i))
+          {
+            j = i;
+            if (isBeyondMaxLines(paramTextView, k, paramCharSequence, localSpannableStringBuilder, 0, i))
+            {
+              i -= 1;
+              continue;
+            }
+          }
+          else
+          {
+            if (isBeyondMaxLines(paramTextView, k, paramCharSequence, localSpannableStringBuilder, 0, j)) {
+              break label167;
+            }
+            j += 1;
+            continue;
+          }
+          localSpannableStringBuilder.clear();
+          addMoreText(paramTextView, localSpannableStringBuilder, paramCharSequence, j, paramTruncateAttr);
+          paramTextView.setText(localSpannableStringBuilder);
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramTextView)
+      {
+        LogUtil.QLog.e("RichNativeText", 1, "getBlockText error! msg=" + paramTextView);
+        return;
+      }
+      label167:
+      j -= 1;
+    }
+  }
+  
+  public static void addFontSizeSpan(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramSpannableStringBuilder.setSpan(new AbsoluteSizeSpan(paramInt1), paramInt2, paramInt3, 33);
+  }
+  
+  public static void addFontWeightSpan(SpannableStringBuilder paramSpannableStringBuilder, String paramString, int paramInt1, int paramInt2)
+  {
+    if ("bold".equals(paramString)) {
+      paramSpannableStringBuilder.setSpan(new StyleSpan(1), paramInt1, paramInt2, 33);
+    }
+  }
+  
+  public static void addMore2Text(TextView paramTextView, TruncateAttr paramTruncateAttr)
+  {
+    if (paramTextView == null) {
+      return;
+    }
+    paramTextView.getViewTreeObserver().addOnPreDrawListener(new RichTextUtils.1(paramTextView, paramTruncateAttr));
+  }
+  
+  private static void addMoreText(TextView paramTextView, SpannableStringBuilder paramSpannableStringBuilder, CharSequence paramCharSequence, int paramInt, TruncateAttr paramTruncateAttr)
+  {
+    paramSpannableStringBuilder.append(paramCharSequence.subSequence(0, paramInt)).append("…");
+    paramInt = paramSpannableStringBuilder.length();
+    paramSpannableStringBuilder.append(paramTruncateAttr.text);
+    addMoreTextSpan(paramTextView, paramSpannableStringBuilder, paramTruncateAttr, paramInt, paramSpannableStringBuilder.length());
+  }
+  
+  private static void addMoreTextSpan(TextView paramTextView, SpannableStringBuilder paramSpannableStringBuilder, TruncateAttr paramTruncateAttr, int paramInt1, int paramInt2)
+  {
+    addClickSpan(paramTextView, paramSpannableStringBuilder, paramTruncateAttr.href, paramTruncateAttr.color, paramInt1, paramInt2);
+    addFontSizeSpan(paramSpannableStringBuilder, (int)(paramTruncateAttr.fontSize * paramTruncateAttr.nodeRatio), paramInt1, paramInt2);
+    addFontWeightSpan(paramSpannableStringBuilder, paramTruncateAttr.fontWeight, paramInt1, paramInt2);
+  }
+  
+  private static boolean isBeyondMaxLines(TextView paramTextView, int paramInt1, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt2, int paramInt3)
+  {
+    paramCharSequence1 = paramCharSequence1.subSequence(paramInt2, paramInt3);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    localSpannableStringBuilder.append(paramCharSequence1).append("…").append(paramCharSequence2);
+    boolean bool = false;
+    paramTextView.setText(localSpannableStringBuilder);
+    if (paramTextView.getLineCount() > paramInt1) {
+      bool = true;
+    }
+    return bool;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.RichTextUtils
+ * JD-Core Version:    0.7.0.1
+ */

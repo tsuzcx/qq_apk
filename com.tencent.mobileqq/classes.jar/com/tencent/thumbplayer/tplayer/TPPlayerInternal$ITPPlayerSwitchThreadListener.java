@@ -29,6 +29,8 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract long handleGetDurationMs();
   
+  public abstract long handleGetFileSizeBytes();
+  
   public abstract Object handleGetPlayInfo(long paramLong);
   
   public abstract Object handleGetPlayInfo(String paramString);

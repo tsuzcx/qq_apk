@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acvy;
+import adab;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import anjx;
-import aofa;
-import atvo;
-import bdnt;
+import anvu;
+import aosf;
+import aunj;
+import begp;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -19,9 +19,9 @@ import com.tencent.mobileqq.data.RecentUser;
 public class RecentItemPcDataLine
   extends AbsRecentUserBusinessBaseData
 {
-  CharSequence MsgDescreption;
-  int dev_type;
+  int devType;
   String mTitle;
+  CharSequence msgDescreption;
   
   public RecentItemPcDataLine(RecentUser paramRecentUser)
   {
@@ -38,7 +38,7 @@ public class RecentItemPcDataLine
       }
       for (;;)
       {
-        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new bdnt(paramMessage, 1, 16), paramMsgSummary);
+        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new begp(paramMessage, 1, 16), paramMsgSummary);
         return;
         paramMessage = localCharSequence;
         if (paramBoolean2) {
@@ -60,7 +60,7 @@ public class RecentItemPcDataLine
       localStringBuffer.append(paramMessage);
       try
       {
-        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new bdnt(localStringBuffer, 1, 16), paramMsgSummary);
+        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new begp(localStringBuffer, 1, 16), paramMsgSummary);
         return;
       }
       catch (Exception paramMessage)
@@ -130,16 +130,16 @@ public class RecentItemPcDataLine
   
   protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    paramContext = (anjx)paramQQAppInterface.a(8);
-    if ((paramContext != null) && (paramContext.a(this.dev_type)))
+    paramContext = (anvu)paramQQAppInterface.a(8);
+    if ((paramContext != null) && (paramContext.a(this.devType)))
     {
-      this.mDisplayTime = paramContext.a(this.dev_type);
-      paramMsgSummary.strContent = this.MsgDescreption;
+      this.mDisplayTime = paramContext.a(this.devType);
+      paramMsgSummary.strContent = this.msgDescreption;
       return;
     }
     if ((paramMessage != null) && (paramMessage.msg != null))
     {
-      paramContext = paramQQAppInterface.a().a(this.dev_type).a(paramMessage.msgId);
+      paramContext = paramQQAppInterface.a().a(this.devType).a(paramMessage.msgId);
       boolean bool2 = b(paramContext);
       boolean bool3 = a(paramContext);
       boolean bool1 = bool2;
@@ -166,7 +166,7 @@ public class RecentItemPcDataLine
       case -1000: 
         a(paramMessage, paramMsgSummary, bool1, bool3);
         return;
-        paramMsgSummary.strContent = a(atvo.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool3, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(aunj.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool3, null, paramMsgSummary);
         return;
       }
       paramMsgSummary.strContent = "";
@@ -186,9 +186,9 @@ public class RecentItemPcDataLine
       if (this.mUser.getType() != 6000) {
         break;
       }
-      this.mTitle = paramContext.getString(2131693379);
-      this.MsgDescreption = paramContext.getString(2131693363);
-      this.dev_type = 0;
+      this.mTitle = paramContext.getString(2131693391);
+      this.msgDescreption = paramContext.getString(2131693375);
+      this.devType = 0;
       QQMessageFacade.Message localMessage = null;
       Object localObject = paramQQAppInterface.a();
       if (localObject != null) {
@@ -202,7 +202,7 @@ public class RecentItemPcDataLine
       if (localObject == null) {
         break label328;
       }
-      this.mUnreadNum = ((acvy)localObject).a(localMessage.frienduin, localMessage.istroop);
+      this.mUnreadNum = ((adab)localObject).a(localMessage.frienduin, localMessage.istroop);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mTitle;
       }
@@ -226,9 +226,9 @@ public class RecentItemPcDataLine
       if (this.mUser.getType() != 6003) {
         break;
       }
-      this.mTitle = paramContext.getString(2131693380);
-      this.MsgDescreption = paramContext.getString(2131693362);
-      this.dev_type = 1;
+      this.mTitle = paramContext.getString(2131693392);
+      this.msgDescreption = paramContext.getString(2131693374);
+      this.devType = 1;
       break;
       label328:
       this.mUnreadNum = 0;

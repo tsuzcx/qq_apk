@@ -1,17 +1,17 @@
 package com.tencent.biz.qqcircle.eevee;
 
 import feedcloud.FeedCloudEeveeUndealmsg.FcUndealMsgsRsp;
-import viy;
-import viz;
+import vlc;
+import vld;
 
 public class QCircleEeveeMananger$1$1
   implements Runnable
 {
-  public QCircleEeveeMananger$1$1(viz paramviz, FeedCloudEeveeUndealmsg.FcUndealMsgsRsp paramFcUndealMsgsRsp) {}
+  public QCircleEeveeMananger$1$1(vld paramvld, FeedCloudEeveeUndealmsg.FcUndealMsgsRsp paramFcUndealMsgsRsp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Viz.jdField_a_of_type_Viy.a(this.jdField_a_of_type_FeedcloudFeedCloudEeveeUndealmsg$FcUndealMsgsRsp, this.jdField_a_of_type_Viz.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Vld.jdField_a_of_type_Vlc.a(this.jdField_a_of_type_FeedcloudFeedCloudEeveeUndealmsg$FcUndealMsgsRsp, this.jdField_a_of_type_Vld.jdField_a_of_type_Int);
   }
 }
 

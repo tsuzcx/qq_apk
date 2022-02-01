@@ -1,24 +1,8 @@
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
+import java.util.List;
 
-class vtg
-  implements vhq
+public abstract interface vtg
 {
-  vtg(vtd paramvtd, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
-  
-  public void a()
-  {
-    if (vtd.a(this.jdField_a_of_type_Vtd) != null)
-    {
-      vtd.a(this.jdField_a_of_type_Vtd).b("");
-      vtd.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, vtd.a(this.jdField_a_of_type_Vtd).a());
-      vtd.a(this.jdField_a_of_type_Vtd).a("");
-      vtd.a(this.jdField_a_of_type_Vtd).b(this.jdField_a_of_type_Vtd.a(null, null));
-    }
-    vtd.a(this.jdField_a_of_type_Vtd, null);
-    vtd.a(this.jdField_a_of_type_Vtd, null);
-  }
+  public abstract void a(List<String> paramList, int paramInt);
 }
 
 

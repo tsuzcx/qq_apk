@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import afur;
+import agej;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -20,29 +20,29 @@ import android.view.WindowManager.LayoutParams;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-import apyb;
-import aryx;
-import bgsg;
-import bgso;
-import bgtn;
-import bgvd;
-import bkfh;
-import bkqe;
-import bkqf;
-import bkqg;
-import bkqh;
-import bkqi;
-import bkqj;
-import bkqk;
-import bkql;
-import bkqm;
-import bkqv;
+import aqmb;
+import asol;
+import bhsi;
+import bhsq;
+import bhtq;
+import bhvg;
+import blgl;
+import blrh;
+import blri;
+import blrj;
+import blrk;
+import blrl;
+import blrm;
+import blrn;
+import blro;
+import blrp;
+import blry;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
 import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -65,10 +65,10 @@ public class XPanelContainer
   private long jdField_a_of_type_Long = -1L;
   private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
   private View jdField_a_of_type_AndroidViewView;
-  public bkqi a;
-  private bkqk jdField_a_of_type_Bkqk;
-  private bkql jdField_a_of_type_Bkql;
-  public WeakReference<bkqj> a;
+  public blrl a;
+  private blrn jdField_a_of_type_Blrn;
+  private blro jdField_a_of_type_Blro;
+  public WeakReference<blrm> a;
   public boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private View b;
@@ -112,10 +112,10 @@ public class XPanelContainer
     {
       jdField_b_of_type_Int = (int)(b() * paramContext.getResources().getDisplayMetrics().density);
       jdField_a_of_type_Int = d();
-      if (!bkqv.a(paramContext)) {
+      if (!blry.a(paramContext)) {
         break label313;
       }
-      i1 = bkqv.a(paramContext);
+      i1 = blry.a(paramContext);
     }
     label313:
     for (jdField_c_of_type_Int = (int)((paramContext.getResources().getDisplayMetrics().heightPixels + i1) * 0.5D);; jdField_c_of_type_Int = (int)(paramContext.getResources().getDisplayMetrics().heightPixels * 0.5D))
@@ -127,8 +127,8 @@ public class XPanelContainer
         QLog.d("XPanelContainer", 2, " mDefaultExternalPanelheight = " + jdField_b_of_type_Int + "mMAXExternalPanelheight=" + jdField_c_of_type_Int + "density=" + paramContext.getResources().getDisplayMetrics().density + "mNavigationBarHeight=" + i1);
       }
       this.m = ImmersiveUtils.getStatusBarHeight(getContext());
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!bgvd.a())) {
-        setOnSystemUiVisibilityChangeListener(new bkqe(this));
+      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!bhvg.a())) {
+        setOnSystemUiVisibilityChangeListener(new blrh(this));
       }
       return;
     }
@@ -137,10 +137,10 @@ public class XPanelContainer
   private void a(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (bkqj localbkqj = null;; localbkqj = (bkqj)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    for (blrm localblrm = null;; localblrm = (blrm)this.jdField_a_of_type_JavaLangRefWeakReference.get())
     {
-      if (localbkqj != null) {
-        localbkqj.b(paramInt1, paramInt2);
+      if (localblrm != null) {
+        localblrm.b(paramInt1, paramInt2);
       }
       return;
     }
@@ -164,8 +164,8 @@ public class XPanelContainer
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bkql != null) {
-      this.jdField_a_of_type_Bkql.a(paramBoolean);
+    if (this.jdField_a_of_type_Blro != null) {
+      this.jdField_a_of_type_Blro.a(paramBoolean);
     }
   }
   
@@ -183,17 +183,17 @@ public class XPanelContainer
     {
       int i1 = this.jdField_g_of_type_Int;
       this.jdField_g_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Bkqk != null) {
-        this.jdField_a_of_type_Bkqk.a(i1, this.jdField_g_of_type_Int);
+      if (this.jdField_a_of_type_Blrn != null) {
+        this.jdField_a_of_type_Blrn.a(i1, this.jdField_g_of_type_Int);
       }
       URLDrawable.resume();
       ApngImage.playByTag(0);
-      if ((this.jdField_b_of_type_AndroidViewView != null) && (paramInt <= 1) && ((!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) || (paramInt != 1)))
+      if ((this.jdField_b_of_type_AndroidViewView != null) && (paramInt <= 1) && ((!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel)) || (paramInt != 1)))
       {
         if ((!this.jdField_k_of_type_Boolean) || (this.jdField_j_of_type_Boolean)) {
           break label171;
         }
-        if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
+        if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel)) {
           this.jdField_g_of_type_Int = 36;
         }
       }
@@ -212,8 +212,8 @@ public class XPanelContainer
   
   private int c()
   {
-    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof bkqm))) {
-      return ((bkqm)this.jdField_b_of_type_AndroidViewView).a();
+    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof blrp))) {
+      return ((blrp)this.jdField_b_of_type_AndroidViewView).a();
     }
     return jdField_b_of_type_Int;
   }
@@ -223,7 +223,7 @@ public class XPanelContainer
     if (jdField_e_of_type_Int > 0) {
       return jdField_e_of_type_Int;
     }
-    return bgtn.a(196.0F);
+    return bhtq.a(196.0F);
   }
   
   @TargetApi(11)
@@ -251,7 +251,7 @@ public class XPanelContainer
       return;
     }
     float f1 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) / 0.0F;
-    this.o = ((int)(jdField_a_of_type_Int - bkfh.a(f1) * jdField_a_of_type_Int));
+    this.o = ((int)(jdField_a_of_type_Int - blgl.a(f1) * jdField_a_of_type_Int));
   }
   
   private void g()
@@ -259,7 +259,7 @@ public class XPanelContainer
     int i1 = jdField_e_of_type_Int;
     if (i1 > 0)
     {
-      bgsg.a(BaseApplication.getContext(), "", true, "sp_key_input_height", Integer.valueOf(i1));
+      bhsi.a(BaseApplication.getContext(), "", true, "sp_key_input_height", Integer.valueOf(i1));
       if (QLog.isColorLevel()) {
         QLog.i("XPanelContainer", 2, "saveInputMethodPanelHeight.height = " + i1);
       }
@@ -269,7 +269,7 @@ public class XPanelContainer
   private void h()
   {
     if (jdField_e_of_type_Int == 0) {
-      jdField_e_of_type_Int = ((Integer)bgsg.a(getContext(), "", "sp_key_input_height", Integer.valueOf(0))).intValue();
+      jdField_e_of_type_Int = ((Integer)bhsi.a(getContext(), "", "sp_key_input_height", Integer.valueOf(0))).intValue();
     }
     if (QLog.isColorLevel()) {
       QLog.i("XPanelContainer", 2, "initInputMethodPanelHeight.height = " + jdField_e_of_type_Int);
@@ -323,7 +323,7 @@ public class XPanelContainer
                 if (QLog.isColorLevel()) {
                   QLog.d("Q.aio.XPanelContainer", 2, " requestFocusFromTouch success ");
                 }
-                afur.a(this.jdField_a_of_type_AndroidViewView);
+                agej.a(this.jdField_a_of_type_AndroidViewView);
                 if (this.jdField_b_of_type_AndroidViewView != null) {
                   this.jdField_b_of_type_AndroidViewView.setVisibility(8);
                 }
@@ -351,7 +351,7 @@ public class XPanelContainer
                   if (localObject2 != null)
                   {
                     localObject1 = localObject2;
-                    if (this.jdField_a_of_type_Bkqk.a(paramInt))
+                    if (this.jdField_a_of_type_Blrn.a(paramInt))
                     {
                       this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
                       removeView((View)localObject2);
@@ -363,7 +363,7 @@ public class XPanelContainer
                   if (localObject1 == null) {}
                   try
                   {
-                    localObject2 = this.jdField_a_of_type_Bkqk.a(paramInt);
+                    localObject2 = this.jdField_a_of_type_Blrn.a(paramInt);
                     if (localObject2 == null) {
                       break;
                     }
@@ -397,7 +397,7 @@ public class XPanelContainer
           }
           if (paramInt == 1)
           {
-            afur.a(this.jdField_a_of_type_AndroidViewView);
+            agej.a(this.jdField_a_of_type_AndroidViewView);
             return;
           }
           if (paramInt <= 1) {
@@ -407,13 +407,13 @@ public class XPanelContainer
           if (paramInt == 3)
           {
             EmoticonMainPanel.jdField_a_of_type_Long = System.currentTimeMillis();
-            bgso.a(null, "AIO_EmoticonPanel_OpenDuration");
+            bhsq.a(null, "AIO_EmoticonPanel_OpenDuration");
             localObject2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
             localObject1 = localObject2;
             if (localObject2 != null)
             {
               localObject1 = localObject2;
-              if (this.jdField_a_of_type_Bkqk.a(paramInt))
+              if (this.jdField_a_of_type_Blrn.a(paramInt))
               {
                 this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
                 removeView((View)localObject2);
@@ -426,7 +426,7 @@ public class XPanelContainer
           }
           try
           {
-            localObject2 = this.jdField_a_of_type_Bkqk.a(paramInt);
+            localObject2 = this.jdField_a_of_type_Blrn.a(paramInt);
             if (localObject2 != null)
             {
               addView((View)localObject2);
@@ -458,13 +458,13 @@ public class XPanelContainer
                   int i1 = jdField_a_of_type_Int;
                   localObject1 = ValueAnimator.ofInt(new int[] { paramInt, paramInt - jdField_a_of_type_Int });
                   ((ValueAnimator)localObject1).setDuration(150L);
-                  ((ValueAnimator)localObject1).addUpdateListener(new bkqg(this, paramInt));
+                  ((ValueAnimator)localObject1).addUpdateListener(new blrj(this, paramInt));
                   ((ValueAnimator)localObject1).start();
                   return;
                   if (paramInt != 21) {
                     break label409;
                   }
-                  bgso.a(null, "apollo_panel_open");
+                  bhsq.a(null, "apollo_panel_open");
                 }
               }
             }
@@ -522,7 +522,7 @@ public class XPanelContainer
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (paramView.getOnFocusChangeListener() == null) {
-      paramView.setOnFocusChangeListener(new bkqf(this));
+      paramView.setOnFocusChangeListener(new blri(this));
     }
     if ((paramBoolean) && (paramView.getParent() != null) && ((paramView.getParent() instanceof ViewGroup)))
     {
@@ -552,8 +552,8 @@ public class XPanelContainer
       EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)this.jdField_b_of_type_AndroidViewView;
       localEmoticonMainPanel.removeView(localEmoticonMainPanel.jdField_a_of_type_AndroidViewView);
     }
-    if (this.jdField_a_of_type_Bkqk != null) {
-      this.jdField_a_of_type_Bkqk.s();
+    if (this.jdField_a_of_type_Blrn != null) {
+      this.jdField_a_of_type_Blrn.s();
     }
     boolean bool;
     if (this.jdField_g_of_type_Int > 0)
@@ -621,7 +621,7 @@ public class XPanelContainer
       i1 = getHeight();
       ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i1 - jdField_a_of_type_Int, i1 });
       localValueAnimator.setDuration(150L);
-      localValueAnimator.addUpdateListener(new bkqh(this, i1));
+      localValueAnimator.addUpdateListener(new blrk(this, i1));
       localValueAnimator.start();
       return bool;
     }
@@ -631,13 +631,13 @@ public class XPanelContainer
   
   public void b()
   {
-    apyb localapyb;
-    if ((this.jdField_a_of_type_Bkqk instanceof BaseChatPie))
+    aqmb localaqmb;
+    if ((this.jdField_a_of_type_Blrn instanceof BaseChatPie))
     {
-      localapyb = (apyb)((BaseChatPie)this.jdField_a_of_type_Bkqk).a(50);
-      if (localapyb == null) {}
+      localaqmb = (aqmb)((BaseChatPie)this.jdField_a_of_type_Blrn).a(50);
+      if (localaqmb == null) {}
     }
-    for (boolean bool = localapyb.a();; bool = true)
+    for (boolean bool = localaqmb.a();; bool = true)
     {
       if (bool)
       {
@@ -680,7 +680,7 @@ public class XPanelContainer
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.XPanelContainer", 2, " clearAllPanel ");
     }
-    if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
+    if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel)) {
       return;
     }
     int i1 = 0;
@@ -700,20 +700,20 @@ public class XPanelContainer
     {
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
       this.jdField_b_of_type_AndroidViewView = null;
-      aryx.b();
+      asol.b();
     }
   }
   
   public boolean d()
   {
-    return (this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel));
+    return (this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel));
   }
   
   public void e()
   {
     if (jdField_b_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Bkqk != null) {}
+      if (this.jdField_a_of_type_Blrn != null) {}
       this.jdField_g_of_type_Int = 1;
       this.n = 1;
       this.jdField_h_of_type_Int = 0;
@@ -794,16 +794,16 @@ public class XPanelContainer
     {
       if (this.jdField_c_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Bkqi != null) {
-          this.jdField_a_of_type_Bkqi.m(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Blrl != null) {
+          this.jdField_a_of_type_Blrl.m(jdField_b_of_type_Boolean);
         }
         this.jdField_c_of_type_Boolean = false;
       }
       if (this.jdField_h_of_type_Boolean)
       {
         this.jdField_h_of_type_Boolean = false;
-        if (this.jdField_a_of_type_Bkqi != null) {
-          this.jdField_a_of_type_Bkqi.m(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Blrl != null) {
+          this.jdField_a_of_type_Blrl.m(jdField_b_of_type_Boolean);
         }
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
@@ -970,12 +970,12 @@ public class XPanelContainer
       jdField_a_of_type_Int = c();
     }
     if ((bool) && (this.jdField_g_of_type_Int != 1)) {
-      if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel))
+      if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel))
       {
-        ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(true);
+        ((VoiceTextPanel)this.jdField_b_of_type_AndroidViewView).a(true);
         ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
         ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
-        ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, i3, paramInt3, paramInt2, bool);
+        ((VoiceTextPanel)this.jdField_b_of_type_AndroidViewView).a(i2, i3, paramInt3, paramInt2, bool);
         label1681:
         paramInt1 = this.jdField_f_of_type_Int - paramInt2;
         if (QLog.isColorLevel()) {
@@ -1029,10 +1029,10 @@ public class XPanelContainer
         if (QLog.isColorLevel()) {
           QLog.d("Q.aio.XPanelContainer", 2, new Object[] { " onLayout after finalStatus = ", Integer.valueOf(paramInt1), " softInputShowing = ", Boolean.valueOf(bool), " mStatus = ", Integer.valueOf(this.jdField_g_of_type_Int), " changed = ", Boolean.valueOf(paramBoolean), " mPendingStatus = ", Integer.valueOf(this.jdField_h_of_type_Int) });
         }
-        if (!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
+        if (!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel)) {
           break;
         }
-        ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).f();
+        ((VoiceTextPanel)this.jdField_b_of_type_AndroidViewView).a();
         return;
         ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
         ((View)localObject).layout(i2, i3, paramInt3, paramInt2);
@@ -1075,8 +1075,8 @@ public class XPanelContainer
             }
             paramInt1 = jdField_a_of_type_Int - this.o;
           }
-          if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
-            ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - paramInt1, paramInt3, paramInt2 - paramInt1 + jdField_a_of_type_Int, bool);
+          if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel)) {
+            ((VoiceTextPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - paramInt1, paramInt3, paramInt2 - paramInt1 + jdField_a_of_type_Int, bool);
           }
           for (;;)
           {
@@ -1118,8 +1118,8 @@ public class XPanelContainer
             requestLayout();
             return;
           }
-          if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
-            ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - this.o, paramInt3, paramInt2 - this.o + jdField_a_of_type_Int, bool);
+          if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel)) {
+            ((VoiceTextPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - this.o, paramInt3, paramInt2 - this.o + jdField_a_of_type_Int, bool);
           }
           for (;;)
           {
@@ -1168,23 +1168,23 @@ public class XPanelContainer
           }
           ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
           ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
-          if (!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel))
+          if (!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel))
           {
             this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
             this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - jdField_a_of_type_Int, paramInt3, paramInt2);
             break label1983;
           }
-          ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - jdField_a_of_type_Int, paramInt3, paramInt2, bool);
+          ((VoiceTextPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - jdField_a_of_type_Int, paramInt3, paramInt2, bool);
           break label1983;
         }
         if (QLog.isDevelopLevel()) {
           QLog.d("Q.aio.XPanelContainer", 4, " onLayout use default layout = ");
         }
-        if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel))
+        if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextPanel))
         {
           ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
           ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
-          ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, i3, paramInt3, paramInt2, bool);
+          ((VoiceTextPanel)this.jdField_b_of_type_AndroidViewView).a(i2, i3, paramInt3, paramInt2, bool);
           break label1983;
         }
         ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
@@ -1241,19 +1241,19 @@ public class XPanelContainer
     }
   }
   
-  public void setOnChangeMultiScreenListener(bkqi parambkqi)
+  public void setOnChangeMultiScreenListener(blrl paramblrl)
   {
-    this.jdField_a_of_type_Bkqi = parambkqi;
+    this.jdField_a_of_type_Blrl = paramblrl;
   }
   
-  public void setOnGoingToShowPanelListener(bkqj parambkqj)
+  public void setOnGoingToShowPanelListener(blrm paramblrm)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambkqj);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramblrm);
   }
   
-  public void setOnPanelChangeListener(bkqk parambkqk)
+  public void setOnPanelChangeListener(blrn paramblrn)
   {
-    this.jdField_a_of_type_Bkqk = parambkqk;
+    this.jdField_a_of_type_Blrn = paramblrn;
   }
   
   public void setReadyToShow(boolean paramBoolean)
@@ -1268,9 +1268,9 @@ public class XPanelContainer
     }
   }
   
-  public void setReadyToShowChangeListener(bkql parambkql)
+  public void setReadyToShowChangeListener(blro paramblro)
   {
-    this.jdField_a_of_type_Bkql = parambkql;
+    this.jdField_a_of_type_Blro = paramblro;
   }
 }
 

@@ -1,10 +1,37 @@
+import android.os.Handler;
+import android.os.Message;
+
 public class aoft
+  implements anui
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  private Handler a;
+  
+  public aoft(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 0)) {
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
+  }
 }
 
 

@@ -1,24 +1,34 @@
 import android.content.Context;
-import android.util.Size;
-import java.nio.FloatBuffer;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aoyx
+public class aoyx
+  extends aoxh
 {
-  public abstract Size a();
-  
-  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  {
+    paramQQAppInterface = new aoyw(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wallet";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
+  }
 }
 
 

@@ -9,9 +9,10 @@ import feedcloud.FeedCloudCommon.StCommonExt;
 public final class QQCircleRight$VerifyCircleUnCareRsp
   extends MessageMicro<VerifyCircleUnCareRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "extInfo", "isBlack" }, new Object[] { null, Integer.valueOf(0) }, VerifyCircleUnCareRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "extInfo", "isBlack", "isReverseBlack" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0) }, VerifyCircleUnCareRsp.class);
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
   public final PBInt32Field isBlack = PBField.initInt32(0);
+  public final PBInt32Field isReverseBlack = PBField.initInt32(0);
 }
 
 

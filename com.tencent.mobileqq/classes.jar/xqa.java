@@ -1,18 +1,22 @@
-import android.util.SparseArray;
+import android.support.annotation.Nullable;
 
-final class xqa
-  extends SparseArray<String>
+public class xqa
+  extends wip
 {
-  xqa()
+  public String a;
+  public xms a;
+  public String b;
+  
+  public xqa(@Nullable String paramString1, xms paramxms, String paramString2)
   {
-    put(31, "PLAYER_INFO_PLAYER_TYPE");
-    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
-    put(33, "PLAYER_INFO_START_GET_VINFO");
-    put(21, anni.a(2131713243));
-    put(34, "PLAYER_INFO_END_GET_VINFO");
-    put(22, anni.a(2131713247));
-    put(23, "PLAYER_INFO_START_RENDERING");
-    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Xms = paramxms;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "PlayVideoChangeEvent{openPlayerSessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", groupId=" + this.jdField_a_of_type_Xms + ", vid='" + this.b + '\'' + '}';
   }
 }
 

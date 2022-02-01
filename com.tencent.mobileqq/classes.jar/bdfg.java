@@ -1,8 +1,6 @@
-import org.json.JSONObject;
-
 public abstract interface bdfg
 {
-  public abstract bder[] a(JSONObject paramJSONObject1, JSONObject paramJSONObject2, float paramFloat);
+  public abstract void a(int paramInt, String paramString);
 }
 
 

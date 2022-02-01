@@ -1,100 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.Pair;
-import kotlin.TuplesKt;
-import kotlin.collections.MapsKt;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "", "()V", "feedsInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo;", "getFeedsInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo;", "setFeedsInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo;)V", "info", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "getInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "setInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)V", "longContentInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$LongContentInfo;", "getLongContentInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$LongContentInfo;", "setLongContentInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$LongContentInfo;)V", "pgcFeedsInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$PGCFeedsInfo;", "getPgcFeedsInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$PGCFeedsInfo;", "setPgcFeedsInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$PGCFeedsInfo;)V", "process", "", "update", "articleInfo", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class reh
+final class reh
+  extends ref<rek, rej, rei>
 {
-  private static final Map<Integer, reh> jdField_a_of_type_JavaUtilMap = (Map)MapsKt.hashMapOf(new Pair[] { TuplesKt.to(Integer.valueOf(1), new rej()), TuplesKt.to(Integer.valueOf(3), new ren()), TuplesKt.to(Integer.valueOf(4), new rel()), TuplesKt.to(Integer.valueOf(2), new rem()), TuplesKt.to(Integer.valueOf(5), new rek()) });
-  public static final rei a;
-  @NotNull
-  protected BaseArticleInfo a;
-  @Nullable
-  private SocializeFeedsInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
-  @Nullable
-  private rhg jdField_a_of_type_Rhg;
-  @Nullable
-  private rhn jdField_a_of_type_Rhn;
-  
-  static
+  public void a(rek paramrek, rej paramrej, int paramInt, rei paramrei)
   {
-    jdField_a_of_type_Rei = new rei(null);
-  }
-  
-  @JvmStatic
-  @Nullable
-  public static final reh a(@NotNull BaseArticleInfo paramBaseArticleInfo)
-  {
-    return jdField_a_of_type_Rei.a(paramBaseArticleInfo);
-  }
-  
-  @NotNull
-  protected final BaseArticleInfo a()
-  {
-    BaseArticleInfo localBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localBaseArticleInfo == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("info");
-    }
-    return localBaseArticleInfo;
-  }
-  
-  @Nullable
-  protected final SocializeFeedsInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
-  }
-  
-  @Nullable
-  protected final rhg a()
-  {
-    return this.jdField_a_of_type_Rhg;
-  }
-  
-  @Nullable
-  protected final rhn a()
-  {
-    return this.jdField_a_of_type_Rhn;
-  }
-  
-  protected abstract void a();
-  
-  public final void a(@NotNull BaseArticleInfo paramBaseArticleInfo)
-  {
-    Object localObject = null;
-    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "articleInfo");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    paramBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (paramBaseArticleInfo == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("info");
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo = paramBaseArticleInfo.mSocialFeedInfo;
-    paramBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
-    if (paramBaseArticleInfo != null) {}
-    for (paramBaseArticleInfo = paramBaseArticleInfo.jdField_a_of_type_Rhg; paramBaseArticleInfo == null; paramBaseArticleInfo = null) {
-      return;
-    }
-    paramBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
-    if (paramBaseArticleInfo != null) {}
-    for (paramBaseArticleInfo = paramBaseArticleInfo.jdField_a_of_type_Rhg;; paramBaseArticleInfo = null)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Rhg = paramBaseArticleInfo;
-      SocializeFeedsInfo localSocializeFeedsInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
-      paramBaseArticleInfo = localObject;
-      if (localSocializeFeedsInfo != null) {
-        paramBaseArticleInfo = localSocializeFeedsInfo.jdField_a_of_type_Rhn;
-      }
-      this.jdField_a_of_type_Rhn = paramBaseArticleInfo;
-      a();
+    default: 
+      paramrek.a(paramrej);
+      return;
+    case 1: 
+      paramrek.a(paramrej, paramrei.a, paramrei.b);
+      return;
+    case 2: 
+      paramrek.b(paramrej, paramrei.a, paramrei.b);
+      return;
+    case 3: 
+      paramrek.a(paramrej, paramrei.a, paramrei.c, paramrei.b);
       return;
     }
+    paramrek.c(paramrej, paramrei.a, paramrei.b);
   }
 }
 

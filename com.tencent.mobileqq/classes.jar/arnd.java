@@ -1,31 +1,18 @@
 public class arnd
 {
-  public int a;
   public String a;
   public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
   
-  public arnd(String paramString, int paramInt)
+  public arnd()
   {
-    this(paramString, paramInt, true);
-  }
-  
-  public arnd(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
-    return localStringBuffer.toString();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131710144);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnd
  * JD-Core Version:    0.7.0.1
  */

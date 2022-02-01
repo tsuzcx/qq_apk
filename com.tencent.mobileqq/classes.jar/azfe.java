@@ -1,40 +1,17 @@
-import android.view.View.OnClickListener;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
 public class azfe
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public View.OnClickListener a;
-  public azfl a;
-  @Nullable
-  public azph a;
-  public bgdg a;
-  public biab a;
-  public ProfileActivity.AllInOne a;
-  public Card a;
-  public ContactCard a;
-  public TroopMemberCard a;
-  public RichStatus a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b = -1;
-  public long b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public azfe(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public azfe()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    azir.a("0X800AF9C", 2);
+    paramDialogInterface.dismiss();
+    AccountOnlineStateActivity.b(this.a);
   }
 }
 

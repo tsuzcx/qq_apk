@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgsp;
-import bgtn;
+import bhsr;
+import bhtq;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.R.styleable;
@@ -33,11 +33,11 @@ import org.jetbrains.annotations.NotNull;
 import qqcircle.QQCircleDitto.StButton;
 import qqcircle.QQCircleDitto.StItemContainer;
 import qqcircle.QQCircleDitto.StItemInfo;
-import uxh;
-import uxn;
-import vrf;
-import vxs;
-import vxt;
+import uys;
+import uyw;
+import vtq;
+import wbm;
+import wbn;
 
 public class QCirclePushRankItemView
   extends QCircleBaseWidgetView<QQCircleDitto.StItemContainer>
@@ -91,7 +91,7 @@ public class QCirclePushRankItemView
   
   public int a()
   {
-    return 2131560769;
+    return 2131560794;
   }
   
   protected String a()
@@ -112,15 +112,15 @@ public class QCirclePushRankItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369315));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131373181));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131369094));
-    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131369096));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379785));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379828));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369208));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373904));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131373989));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369404));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131373310));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131369184));
+    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131369186));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379964));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380008));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369299));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374039));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131374128));
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowedShowToast(true);
     setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setOnClickListener(this);
@@ -135,8 +135,8 @@ public class QCirclePushRankItemView
     this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo = ((QQCircleDitto.StItemInfo)paramStItemContainer.items.get(this.jdField_a_of_type_Int - 1));
     FeedCloudMeta.StUser localStUser = a(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setUser(((BaseActivity)getContext()).app, localStUser);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setItemPreClickListener(new vxs(this));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowStateChangeListener(new vxt(this, paramStItemContainer));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setItemPreClickListener(new wbm(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowStateChangeListener(new wbn(this, paramStItemContainer));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(localStUser.nick.get());
     if (this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo.des.size() > 0) {
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo.des.get(0));
@@ -152,10 +152,11 @@ public class QCirclePushRankItemView
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowedDrawable(2130843931);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowedDismiss(true);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowedDrawable(2130843949);
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUserData(localStUser);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bgtn.b(8.0F));
-      this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bgtn.b(8.0F));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bhtq.b(8.0F));
+      this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bhtq.b(8.0F));
       if ((this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo.images.get() == null) || (this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo.images.get().size() <= 0)) {
         break;
       }
@@ -163,23 +164,23 @@ public class QCirclePushRankItemView
       if ((paramStItemContainer == null) || (paramStItemContainer.picUrl.get() == null)) {
         break;
       }
-      uxh.a(paramStItemContainer.picUrl.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, getResources().getDrawable(2130844019));
+      uys.a(paramStItemContainer.picUrl.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, getResources().getDrawable(2130844038));
       return;
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUnFollowDrawable(2130844070);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844073);
-      uxh.a("https://sola.gtimg.cn/aoi/sola/20200623154422_w42NLL8ijc.png", this.jdField_a_of_type_ComTencentImageURLImageView, new ColorDrawable(getResources().getColor(2131166233)));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUnFollowDrawable(2130844087);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844090);
+      uys.a("https://sola.gtimg.cn/aoi/sola/20200623154422_w42NLL8ijc.png", this.jdField_a_of_type_ComTencentImageURLImageView, new ColorDrawable(getResources().getColor(2131166234)));
       break label184;
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUnFollowDrawable(2130844070);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844072);
-      uxh.a("https://sola.gtimg.cn/aoi/sola/20200623154420_cLrwyWNcQ2.png", this.jdField_a_of_type_ComTencentImageURLImageView, new ColorDrawable(getResources().getColor(2131166233)));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUnFollowDrawable(2130844087);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844088);
+      uys.a("https://sola.gtimg.cn/aoi/sola/20200623154420_cLrwyWNcQ2.png", this.jdField_a_of_type_ComTencentImageURLImageView, new ColorDrawable(getResources().getColor(2131166234)));
       break label184;
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUnFollowDrawable(2130844070);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844074);
-      uxh.a("https://sola.gtimg.cn/aoi/sola/20200623154424_iTsZYrPgUW.png", this.jdField_a_of_type_ComTencentImageURLImageView, new ColorDrawable(getResources().getColor(2131166233)));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUnFollowDrawable(2130844087);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844092);
+      uys.a("https://sola.gtimg.cn/aoi/sola/20200623154424_iTsZYrPgUW.png", this.jdField_a_of_type_ComTencentImageURLImageView, new ColorDrawable(getResources().getColor(2131166234)));
       break label184;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844068));
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844086));
       continue;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130843916));
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130843937));
     }
   }
   
@@ -187,15 +188,15 @@ public class QCirclePushRankItemView
   {
     try
     {
-      String str = uxn.a(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo.urlInfo.get(), "RankItemUrl");
-      if (bgsp.a(str)) {
+      String str = uyw.a(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemInfo.urlInfo.get(), "RankItemUrl");
+      if (bhsr.a(str)) {
         QLog.w("QCirclePushRankItemView", 1, "rank item url is empty");
       }
       Intent localIntent = new Intent(getContext(), JumpActivity.class);
       localIntent.setData(Uri.parse(str));
       getContext().startActivity(localIntent);
       if (a() != null) {
-        vrf.a("", 9, 2, 0, ((QQCircleDitto.StItemContainer)a()).containerType.get() + "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
+        vtq.a("", 9, 2, 0, ((QQCircleDitto.StItemContainer)a()).containerType.get() + "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
       }
     }
     catch (Exception localException)

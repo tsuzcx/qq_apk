@@ -1,16 +1,16 @@
 package com.tencent.device.msg.data;
 
-import abur;
-import atvf;
+import abyv;
+import auna;
 
 public class DevSingleStructMsgProcessor$1
   implements Runnable
 {
-  public DevSingleStructMsgProcessor$1(abur paramabur) {}
+  public DevSingleStructMsgProcessor$1(abyv paramabyv) {}
   
   public void run()
   {
-    atvf.a(2131693359);
+    auna.a(2131693371);
   }
 }
 

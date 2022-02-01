@@ -1,9 +1,9 @@
-import android.os.IInterface;
+import android.view.MotionEvent;
+import android.view.View;
 
 public abstract interface rbi
-  extends IInterface
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

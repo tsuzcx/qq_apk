@@ -17,7 +17,6 @@ import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniCacheFreeManager;
 import com.tencent.qqmini.sdk.launcher.utils.MD5Utils;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
-import com.tencent.qqmini.sdk.manager.ApkgManager;
 import com.tencent.qqmini.sdk.manager.ApkgManager.RootPath;
 import java.io.File;
 
@@ -61,13 +60,6 @@ public class MiniCacheFreeManager
     QMLog.i("MiniCacheFreeManager", "clearAuthSp finish. " + paramMiniAppInfo.appId);
   }
   
-  private static void clearAuthSp(String paramString1, String paramString2)
-  {
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)) && (AppLoaderFactory.g().getContext().getSharedPreferences(paramString2 + "_" + paramString1, 4).edit().clear().commit())) {
-      QMLog.i("MiniCacheFreeManager", "clearAuthSp finish. " + paramString2);
-    }
-  }
-  
   private static void clearDebugSp()
   {
     StorageUtil.getPreference().edit().clear().commit();
@@ -80,13 +72,6 @@ public class MiniCacheFreeManager
       return;
     }
     QMLog.i("MiniCacheFreeManager", "clearDebugSp finish. " + paramMiniAppInfo.appId);
-  }
-  
-  private static void clearDebugSp(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (StorageUtil.getPreference().edit().putBoolean(paramString + "_debug", false).commit())) {
-      QMLog.i("MiniCacheFreeManager", "clearDebugSp finish. " + paramString);
-    }
   }
   
   private static void clearFileCache(MiniAppInfo paramMiniAppInfo)
@@ -102,70 +87,33 @@ public class MiniCacheFreeManager
     QMLog.i("MiniCacheFreeManager", "clearFileCache finish. " + paramMiniAppInfo.appId);
   }
   
-  private static void clearFileCache(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      MiniAppFileManager localMiniAppFileManager = MiniAppFileManager.getMiniAppFileManager(paramString);
-      if (localMiniAppFileManager != null)
-      {
-        localMiniAppFileManager.clearFileCache(paramString);
-        QMLog.i("MiniCacheFreeManager", "clearFileCache finish. " + paramString);
-      }
-    }
-  }
-  
   private static void clearPkg(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    String str;
-    do
-    {
+    if (paramMiniAppInfo == null) {
       return;
-      str = ApkgManager.getApkgFolderPath(paramMiniAppInfo);
-    } while (!new File(str).exists());
-    FileUtils.delete(str, false);
-    QMLog.i("MiniCacheFreeManager", "clearPkg finish: " + paramMiniAppInfo.appId);
+    }
+    clearPkg(paramMiniAppInfo.appId, paramMiniAppInfo.isEngineTypeMiniGame());
   }
   
-  private static void clearPkg(String paramString)
+  private static void clearPkg(String paramString, boolean paramBoolean)
   {
-    String str1 = ApkgManager.RootPath.getGamePkgRoot();
+    String str1 = ApkgManager.RootPath.getAppPkgRoot();
+    if (paramBoolean) {
+      str1 = ApkgManager.RootPath.getGamePkgRoot();
+    }
     String str2 = MD5Utils.toMD5(paramString);
     Object localObject = new File(str1);
-    int j;
-    int i;
-    CharSequence localCharSequence;
     if (((File)localObject).isDirectory())
     {
       localObject = ((File)localObject).list();
-      j = localObject.length;
-      i = 0;
+      int j = localObject.length;
+      int i = 0;
       while (i < j)
       {
-        localCharSequence = localObject[i];
+        CharSequence localCharSequence = localObject[i];
         if ((!TextUtils.isEmpty(localCharSequence)) && (localCharSequence.startsWith(str2)))
         {
-          QMLog.i("MiniCacheFreeManager", "clearGamePkg finish. " + paramString);
-          FileUtils.delete(str1 + localCharSequence, false);
-        }
-        i += 1;
-      }
-    }
-    str1 = ApkgManager.RootPath.getAppPkgRoot();
-    str2 = MD5Utils.toMD5(paramString);
-    localObject = new File(str1);
-    if (((File)localObject).isDirectory())
-    {
-      localObject = ((File)localObject).list();
-      j = localObject.length;
-      i = 0;
-      while (i < j)
-      {
-        localCharSequence = localObject[i];
-        if ((!TextUtils.isEmpty(localCharSequence)) && (localCharSequence.startsWith(str2)))
-        {
-          QMLog.i("MiniCacheFreeManager", "clearAppPkg finish. " + paramString);
+          QMLog.i("MiniCacheFreeManager", "clear Pkg finish. " + paramString + " dir:" + str1);
           FileUtils.delete(str1 + localCharSequence, false);
         }
         i += 1;
@@ -183,29 +131,6 @@ public class MiniCacheFreeManager
     } while (!new File(paramString).exists());
     FileUtils.delete(paramString, false);
     QMLog.i("MiniCacheFreeManager", "clearStorageCache finish. " + paramMiniAppInfo.appId);
-  }
-  
-  private static void clearStorageCache(String paramString1, String paramString2)
-  {
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
-    {
-      paramString1 = Storage.getCacheDir(AppLoaderFactory.g().getContext().getCacheDir().getAbsolutePath(), paramString1, paramString2);
-      if (new File(paramString1).exists())
-      {
-        FileUtils.delete(paramString1, false);
-        QMLog.i("MiniCacheFreeManager", "clearStorageCache finish. " + paramString2);
-      }
-    }
-  }
-  
-  public static void freeCache(String paramString, MiniAppInfo paramMiniAppInfo)
-  {
-    freeCache(paramString, paramMiniAppInfo, true);
-  }
-  
-  public static void freeCache(String paramString, MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
-  {
-    freeCache(paramString, paramMiniAppInfo, paramBoolean, null);
   }
   
   public static void freeCache(String paramString, MiniAppInfo paramMiniAppInfo, boolean paramBoolean, Runnable paramRunnable)
@@ -227,23 +152,14 @@ public class MiniCacheFreeManager
     QMLog.i("MiniCacheFreeManager", "kill process. " + paramMiniAppInfo.appId);
   }
   
-  private static void killSelf(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      AppLoaderFactory.g().getAppBrandProxy().stopMiniApp(paramString);
-      QMLog.i("MiniCacheFreeManager", "kill process. " + paramString);
-    }
-  }
-  
   public void freeCache()
   {
-    ThreadManager.executeOnDiskIOThreadPool(new MiniCacheFreeManager.4(this));
+    ThreadManager.executeOnDiskIOThreadPool(new MiniCacheFreeManager.3(this));
   }
   
-  public void freeCache(String paramString1, String paramString2, boolean paramBoolean)
+  public void freeCache(String paramString, MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
   {
-    ThreadManager.executeOnDiskIOThreadPool(new MiniCacheFreeManager.3(this, paramString2, paramString1, paramBoolean));
+    freeCache(paramString, paramMiniAppInfo, paramBoolean, null);
   }
 }
 

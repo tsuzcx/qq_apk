@@ -12,7 +12,7 @@ class c
   
   public void a()
   {
-    if ((k.a(e.a(this.a)).f()) && (j.c(a.a(e.a(this.a)).c()))) {
+    if ((k.a(e.a(this.a)).f()) && (j.b(a.a(e.a(this.a)).c()))) {
       d.a().a(e.b(this.a));
     }
   }

@@ -1,79 +1,56 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class aihr
+  implements View.OnClickListener
 {
-  boolean a;
+  aihr(aihh paramaihh) {}
   
-  void a()
+  public void onClick(View paramView)
   {
-    try
+    boolean bool = true;
+    Object localObject1 = paramView.getTag();
+    if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {}
+    for (;;)
     {
-      this.a = false;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      switch (((Integer)localObject1).intValue())
+      {
+      default: 
+        break;
+      case 1: 
+        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
+        break;
+      case 2: 
+        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
+        break;
+      case 3: 
+        if (this.a.jdField_a_of_type_Bkgt.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        {
+          localObject1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+          String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690559);
+          if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
+          for (;;)
+          {
+            ChatActivityUtils.a((Activity)localObject1, (SessionInfo)localObject2, str, bool);
+            break;
+            bool = false;
+          }
+        }
+        this.a.br();
+      }
     }
-    finally {}
-  }
-  
-  boolean a()
-  {
-    return a(0L);
-  }
-  
-  /* Error */
-  boolean a(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	aihr:a	Z
-    //   6: ifeq +7 -> 13
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: iconst_1
-    //   12: ireturn
-    //   13: aload_0
-    //   14: lload_1
-    //   15: invokevirtual 25	java/lang/Object:wait	(J)V
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iconst_1
-    //   21: ireturn
-    //   22: astore_3
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_3
-    //   26: athrow
-    //   27: astore_3
-    //   28: aload_3
-    //   29: invokevirtual 28	java/lang/InterruptedException:printStackTrace	()V
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iconst_0
-    //   35: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	aihr
-    //   0	36	1	paramLong	long
-    //   22	4	3	localObject	Object
-    //   27	2	3	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	22	finally
-    //   13	18	22	finally
-    //   18	20	22	finally
-    //   23	25	22	finally
-    //   28	34	22	finally
-    //   13	18	27	java/lang/InterruptedException
-  }
-  
-  void b()
-  {
-    try
-    {
-      this.a = true;
-      notify();
-      return;
-    }
-    finally {}
   }
 }
 

@@ -1,0 +1,47 @@
+{
+  "easyGoVersion": "1.0",
+  "client": "com.tencent.mobileqq",
+  "logicEntities": [
+    {
+      "head": {
+        "function": "magicwindow",
+        "required": "true"
+      },
+      "body": {
+        "mode":"1",
+        "activityPairs":[
+          {
+            "from":"com.tencent.mobileqq.activity.SplashActivity",
+            "to":"*"
+          }
+        ],
+        "Activities":[
+          {
+            "name": "com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity",
+            "defaultFullScreen": "true"
+          },
+          {
+            "name": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity",
+            "defaultFullScreen": "true"
+          },
+          {
+            "name": "cooperation.qqfav.QfavPluginProxyActivity$SingleTop",
+            "defaultFullScreen": "true"
+          },
+          {
+            "name": "cooperation.qqfav.QfavPluginProxyActivity$ImageViewer",
+            "defaultFullScreen": "true"
+          },
+          {
+            "name": "com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity",
+            "defaultFullScreen": "true"
+          }
+        ],
+        "UX": {
+          "supportRotationUxCompat": "false",
+          "isDraggable": "true"
+        }
+      }
+    }
+  ]
+}

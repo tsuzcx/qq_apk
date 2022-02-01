@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class avuc
-  implements DialogInterface.OnClickListener
+class avuc
+  implements Animation.AnimationListener
 {
-  public avuc(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  avuc(avub paramavub) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ListenTogetherOverlayFragment.a(this.a).finish();
+    if (this.a.a == 3) {
+      this.a.d.setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

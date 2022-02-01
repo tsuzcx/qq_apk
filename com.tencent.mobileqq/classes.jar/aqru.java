@@ -1,92 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class aqru
-  extends aqkz<Object>
 {
-  public Class<Object> clazz()
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    return Object.class;
+    paramView.setPivotX(paramView.getWidth());
+    paramView.setPivotY(paramView.getHeight() / 2);
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
+    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
+    localAnimatorSet.start();
   }
   
-  public boolean isNeedCompressed()
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  @NonNull
-  public Object migrateOldOrDefaultContent(int paramInt)
-  {
-    return new Object();
-  }
-  
-  public int migrateOldVersion()
-  {
-    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    if (!PtvTemplateManager.a()) {
-      return 0;
-    }
-    return bgsg.k(BaseApplicationImpl.getContext());
-  }
-  
-  @Nullable
-  public Object onParsed(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      return null;
-    }
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onParsed, content:" + paramArrayOfaqlg);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    PtvTemplateManager.a(localQQAppInterface).a(paramArrayOfaqlg, localQQAppInterface);
-    return new Object();
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onReqFailed");
-    }
-  }
-  
-  public int onSend(int paramInt)
-  {
-    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    if (!PtvTemplateManager.a())
-    {
-      QLog.i("QIMDoodleConfigProcessor", 1, "config file not exist");
-      aqlk.a().a(310, 0);
-      return 0;
-    }
-    return super.onSend(paramInt);
-  }
-  
-  public void onUpdate(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onUpdate");
-    }
-  }
-  
-  public int type()
-  {
-    return 310;
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
+    localAnimatorSet.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqru
  * JD-Core Version:    0.7.0.1
  */

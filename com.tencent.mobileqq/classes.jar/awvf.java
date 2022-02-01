@@ -1,32 +1,51 @@
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class awvf
-  extends awvz
+class awvf
+  extends Handler
 {
-  public awvf(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
+  public awvf(Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
-    }
-    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      MultiCardRecommendFragment.a(this.a).a.clear();
-      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
-      this.a.a.removeMessages(1);
-      this.a.a.sendEmptyMessage(1);
+    default: 
+      return;
+    case 1: 
+      try
+      {
+        awve.a(System.currentTimeMillis());
+        awve.a.removeMessages(1);
+        awve.a.sendEmptyMessageDelayed(1, 300000L);
+        return;
+      }
+      catch (Throwable paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      awve.b(System.currentTimeMillis());
+      awve.a.removeMessages(2);
+      awve.a.sendEmptyMessageDelayed(2, 300000L);
+      return;
+    }
+    catch (Throwable paramMessage)
+    {
+      paramMessage.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awvf
  * JD-Core Version:    0.7.0.1
  */

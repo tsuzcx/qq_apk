@@ -1,25 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.superplayer.api.ISuperPlayer;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aakl
-  implements View.OnClickListener
+class aakl
+  implements Animation.AnimationListener
 {
-  public aakl(VideoPlayerView paramVideoPlayerView) {}
+  aakl(aakh paramaakh) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (aauy.a("mLLSkipForwardWrapper", 500L))
-    {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, VideoPlayerView.c(this.a), 0, 1, true);
-      if (this.a.a() != null) {
-        this.a.a(this.a.a().getCurrentPositionMs() + 10000L);
-      }
+    if (this.a.a != null) {
+      this.a.a.setVisibility(0);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

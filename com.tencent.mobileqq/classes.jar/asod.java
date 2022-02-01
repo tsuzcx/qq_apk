@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class asod
-  implements View.OnClickListener
+public class asod
+  implements bimf
 {
-  asod(asnz paramasnz) {}
+  public asod(EmoticonPanelMallHelper.3 param3) {}
   
-  public final void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      bcst.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
+    if (paramBoolean) {
+      this.a.this$0.a.a.a();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

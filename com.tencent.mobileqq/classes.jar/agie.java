@@ -1,6 +1,18 @@
-public abstract interface agie
+import android.os.Looper;
+import android.os.Message;
+
+class agie
+  extends beyf
 {
-  public abstract void a(agid paramagid);
+  agie(agid paramagid, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+  }
 }
 
 

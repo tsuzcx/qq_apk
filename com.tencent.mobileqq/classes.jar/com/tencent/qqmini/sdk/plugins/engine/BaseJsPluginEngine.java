@@ -58,16 +58,35 @@ import org.json.JSONObject;
 public abstract class BaseJsPluginEngine
   implements IJsPluginEngine
 {
+  public static final String APP_IN_BACKGROUND_HINT = "Cannot show subscribe message UI";
+  public static final String APP_IS_BANNED_HINT = "This mini program was banned from subscribing messages";
+  public static final String EMPTY_PARAM_LIST_HINT = "msgTypeList can't be empty";
+  public static final int ERROR_APP_IN_BACKGROUND = 10005;
+  public static final int ERROR_APP_IS_BANNED = 20005;
+  public static final int ERROR_EMPTY_PARAM_LIST = 10001;
+  public static final int ERROR_INVALID_TEMPLATE_ID = 10004;
+  public static final int ERROR_MAIN_SWITCH_OFF = 20004;
+  public static final int ERROR_REQUEST_LIST_FAIL = 10002;
+  public static final int ERROR_REQUEST_SUBSCRIBE_FAIL = 10003;
   private static final String EVENT_AUTHORIZE = "authorize";
   private static final String EVENT_OPERATE_WXDATA = "operateWXData";
   private static final String EVENT_SUBSCRIBE_APP_MSG = "subscribeAppMsg";
   private static final String EVENT_SUBSCRIBE_ONCE_APP_MSG = "subscribeOnceAppMsg";
+  private static final String EVENT_SUBSCRIBE_SYS_MSG = "requestSubscribeSystemMessage";
+  public static final String INVALID_TEMPLATE_ID_HINT = "Invalid template id";
   public static final String KEY_APPID = "key_appid";
   private static final String KEY_CALLBACK_ID = "key_callback_id";
   private static final String KEY_EVENT_NAME = "key_event_name";
   public static final String KEY_ONCE_SUB_RSP_DATA = "key_once_sub_rsp_data";
   private static final String KEY_PARAMS = "key_params";
   private static final String KEY_SCOPE_NAME = "key_scope_name";
+  private static final String KEY_SETTING_ITEM = "key_setting_item";
+  public static final String MAIN_SWITCH_OFF_HINT = "The main switch is switched off";
+  public static final String REQUEST_LIST_FAIL_HINT = "Request list fail";
+  public static final String REQUEST_SUBSCRIBE_FAIL_HINT = "Request subscribe fail";
+  public static final String SETTING_APP_MSG_SUBSCRIBED = "setting.appMsgSubscribed";
+  public static final String SETTING_APP_ONCE_MSG_SUBSCRIBED = "setting.onceMsgSubscribed";
+  public static final String SETTING_SYS_MSG_SUBSCRIBED = "setting.sysMsgSubscribed";
   private static final String TAG = "JsPluginEngine[AuthGuard]";
   private static final int WHAT_NOTIFY_SCOPE_PERMISSION_QUEUE = 1;
   private static final int WHAT_SHOW_AUTH_DIALOG = 2;
@@ -102,6 +121,11 @@ public abstract class BaseJsPluginEngine
     if ("subscribeOnceAppMsg".equals(str1))
     {
       reqGrantOnceSubscribeApiPermission(paramRequestEvent);
+      return "";
+    }
+    if ("requestSubscribeSystemMessage".equals(str1))
+    {
+      reqGrantSystemSubscribeApiPermission(paramRequestEvent);
       return "";
     }
     String str3 = getAppId();
@@ -303,6 +327,7 @@ public abstract class BaseJsPluginEngine
     if (paramBoolean) {}
     for (;;)
     {
+      Object localObject1;
       Object localObject2;
       ArrayList localArrayList1;
       ArrayList localArrayList2;
@@ -311,12 +336,8 @@ public abstract class BaseJsPluginEngine
       Object localObject3;
       try
       {
-        if (!"setting.onceMsgSubscribed".equals(paramJSONObject.optString("settingItem")))
-        {
-          QMLog.e("JsPluginEngine[AuthGuard]", "handleOnceSubscribeResponse settingItem is no 'setting.onceMsgSubscribed'!");
-          return;
-        }
-        Object localObject1 = paramJSONObject.opt("originalData");
+        String str = paramJSONObject.optString("settingItem");
+        localObject1 = paramJSONObject.opt("originalData");
         localObject2 = new INTERFACE.StGetUserSettingRsp();
         if ((localObject1 instanceof byte[]))
         {
@@ -328,7 +349,7 @@ public abstract class BaseJsPluginEngine
           localArrayList3 = new ArrayList();
           i = 0;
           if (i >= ((List)localObject2).size()) {
-            break label235;
+            break label219;
           }
           localObject3 = (INTERFACE.StSubscribeMessage)((List)localObject2).get(i);
           if (((INTERFACE.StSubscribeMessage)localObject3).authState.get() == 0) {
@@ -347,26 +368,34 @@ public abstract class BaseJsPluginEngine
       if (((INTERFACE.StSubscribeMessage)localObject3).authState.get() == 2)
       {
         localArrayList3.add(localObject3);
-        break label340;
-        label235:
+        break label367;
+        label219:
         localObject3 = MiniAppEnv.g().getAuthSate(getAppId());
-        if ((localArrayList2.size() > 0) || (localArrayList3.size() > 0)) {
-          ((AuthState)localObject3).updateIsOnceSubMsgMaintain(true);
-        }
-        if ((localArrayList1.size() > 0) && (localArrayList1.size() <= 3))
+        if ((localArrayList2.size() > 0) || (localArrayList3.size() > 0))
         {
-          showOnceSubMsgReqDialog(paramRequestEvent, localThrowable);
+          if (!"setting.sysMsgSubscribed".equals(localThrowable)) {
+            break label298;
+          }
+          ((AuthState)localObject3).updateIsSysSubMsgMaintain(true);
+        }
+        while ((localArrayList1.size() > 0) && (localArrayList1.size() <= 3))
+        {
+          showOnceSubMsgReqDialog(localThrowable, paramRequestEvent, (byte[])localObject1);
           return;
+          label298:
+          if ("setting.onceMsgSubscribed".equals(localThrowable)) {
+            ((AuthState)localObject3).updateIsOnceSubMsgMaintain(true);
+          }
         }
-        if (localArrayList2.size() > 0)
+        if (("setting.onceMsgSubscribed".equals(localThrowable)) && (localArrayList2.size() > 0))
         {
-          ((AuthState)localObject3).updateOnceSubMsgSetting(true, localArrayList2, new BaseJsPluginEngine.8(this, paramRequestEvent, (List)localObject2));
+          ((AuthState)localObject3).updateOnceSubMsgSetting(localThrowable, true, localArrayList2, new BaseJsPluginEngine.9(this, paramRequestEvent, (List)localObject2));
           return;
         }
         onceSubMsgCallbackSuc(paramRequestEvent, (List)localObject2);
         return;
       }
-      label340:
+      label367:
       i += 1;
     }
   }
@@ -452,7 +481,7 @@ public abstract class BaseJsPluginEngine
     paramList2.add(localStSubscribeMessage3);
   }
   
-  private void handleSubMsgDialogDismiss(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, INTERFACE.StGetUserSettingRsp paramStGetUserSettingRsp)
+  private void handleSubMsgDialogDismiss(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, INTERFACE.StGetUserSettingRsp paramStGetUserSettingRsp)
   {
     Object localObject1 = paramStGetUserSettingRsp.setting.subItems.get();
     paramStGetUserSettingRsp = new ArrayList();
@@ -482,11 +511,17 @@ public abstract class BaseJsPluginEngine
       localArrayList2 = new ArrayList();
       localArrayList2.addAll(paramStGetUserSettingRsp);
       localArrayList2.addAll(localArrayList1);
-      ((AuthState)localObject2).updateOnceSubMsgSetting(true, localArrayList2, (AsyncResult)localObject1);
-      return;
+      ((AuthState)localObject2).updateOnceSubMsgSetting(paramString, true, localArrayList2, (AsyncResult)localObject1);
+      if ((localArrayList2.size() > 0) && ("setting.sysMsgSubscribed".equals(paramString))) {
+        ((AuthState)localObject2).updateIsSysSubMsgMaintain(true);
+      }
     }
-    if (paramBoolean6)
+    for (;;)
     {
+      return;
+      if (!paramBoolean6) {
+        break;
+      }
       if (paramBoolean1)
       {
         i = 0;
@@ -495,11 +530,14 @@ public abstract class BaseJsPluginEngine
           ((INTERFACE.StSubscribeMessage)paramStGetUserSettingRsp.get(i)).authState.set(4);
           i += 1;
         }
-        ((AuthState)localObject2).updateOnceSubMsgSetting(false, paramStGetUserSettingRsp, (AsyncResult)localObject1);
-        return;
+        ((AuthState)localObject2).updateOnceSubMsgSetting(paramString, false, paramStGetUserSettingRsp, (AsyncResult)localObject1);
       }
-      ((AsyncResult)localObject1).onReceiveResult(true, null);
-      return;
+      while ("setting.sysMsgSubscribed".equals(paramString))
+      {
+        ((AuthState)localObject2).updateIsSysSubMsgMaintain(true);
+        return;
+        ((AsyncResult)localObject1).onReceiveResult(true, null);
+      }
     }
     ((AsyncResult)localObject1).onReceiveResult(true, null);
   }
@@ -607,39 +645,42 @@ public abstract class BaseJsPluginEngine
   
   private void notifyScopePermissionQueue(Message paramMessage)
   {
-    Iterator localIterator = this.scopePermissionQueue.iterator();
+    Object localObject = this.scopePermissionQueue.iterator();
     if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
     {
-      paramMessage = (String)paramMessage.obj;
-      if ((!TextUtils.isEmpty(paramMessage)) && (!paramMessage.equals("setting.appMsgSubscribed")))
+      String str = (String)paramMessage.obj;
+      if ((!TextUtils.isEmpty(str)) && (!str.equals("setting.appMsgSubscribed")))
       {
-        if (paramMessage.equals("scope.camera")) {
+        if (str.equals("scope.camera")) {
           this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onCameraNeedAuthCancel", null, 0));
         }
-        while (localIterator.hasNext())
+        while (((Iterator)localObject).hasNext())
         {
-          RequestEvent localRequestEvent = (RequestEvent)localIterator.next();
-          if (paramMessage.equals(getRequestScopePermission(localRequestEvent.event, localRequestEvent.jsonParams)))
+          RequestEvent localRequestEvent = (RequestEvent)((Iterator)localObject).next();
+          if (str.equals(getRequestScopePermission(localRequestEvent.event, localRequestEvent.jsonParams)))
           {
-            localIterator.remove();
+            ((Iterator)localObject).remove();
             localRequestEvent.fail("auth deny");
           }
         }
       }
     }
-    paramMessage = (RequestEvent)this.scopePermissionQueue.peek();
-    if (paramMessage != null)
+    localObject = (RequestEvent)this.scopePermissionQueue.peek();
+    if (localObject != null)
     {
-      this.scopePermissionQueue.remove(paramMessage);
-      if ("subscribeAppMsg".equals(paramMessage.event)) {
-        reqGrantSubscribeApiPermission(paramMessage);
+      if (paramMessage.arg1 == 1) {
+        ((RequestEvent)localObject).ok();
+      }
+      this.scopePermissionQueue.remove(localObject);
+      if ("subscribeAppMsg".equals(((RequestEvent)localObject).event)) {
+        reqGrantSubscribeApiPermission((RequestEvent)localObject);
       }
     }
     else
     {
       return;
     }
-    dispatchRequestEvent(paramMessage);
+    dispatchRequestEvent((RequestEvent)localObject);
   }
   
   private void removeAllMessage()
@@ -656,7 +697,7 @@ public abstract class BaseJsPluginEngine
     {
       localJSONArray = new JSONObject(paramRequestEvent.jsonParams).optJSONArray("tmplIds");
       if (localJSONArray == null) {
-        break label160;
+        break label159;
       }
       localArrayList = new ArrayList();
       if (localJSONArray.length() > 3)
@@ -681,9 +722,9 @@ public abstract class BaseJsPluginEngine
       localArrayList.add(localJSONArray.getString(i));
       i += 1;
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(getAppId(), "", "setting.onceMsgSubscribed", localArrayList, new BaseJsPluginEngine.7(this, paramRequestEvent));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(getAppId(), "", "setting.onceMsgSubscribed", localArrayList, new BaseJsPluginEngine.8(this, paramRequestEvent));
     return;
-    label160:
+    label159:
     QMLog.e("JsPluginEngine[AuthGuard]", "reqGrantOnceSubscribeApiPermission: tmplIdJsonArr is null!");
     onceSubMsgCallbackFail(paramRequestEvent, "TmplIds can't be empty", 10001);
   }
@@ -763,6 +804,39 @@ public abstract class BaseJsPluginEngine
     }
   }
   
+  private void reqGrantSystemSubscribeApiPermission(RequestEvent paramRequestEvent)
+  {
+    QMLog.i("JsPluginEngine[AuthGuard]", "reqGrantSystemSubscribeApiPermission jsonParams: " + paramRequestEvent.jsonParams);
+    try
+    {
+      JSONArray localJSONArray = new JSONObject(paramRequestEvent.jsonParams).optJSONArray("msgTypeList");
+      if ((localJSONArray == null) || (localJSONArray.length() > 3))
+      {
+        onceSubMsgCallbackFail(paramRequestEvent, "Invalid template id", 10004);
+        return;
+      }
+      if (localJSONArray.length() == 0)
+      {
+        onceSubMsgCallbackFail(paramRequestEvent, "msgTypeList can't be empty", 10001);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QMLog.e("JsPluginEngine[AuthGuard]", "reqGrantSystemSubscribeApiPermission get an Exception:" + localException);
+      onceSubMsgCallbackFail(paramRequestEvent, "Invalid template id", 10004);
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localException.length())
+    {
+      localArrayList.add(localException.getString(i));
+      i += 1;
+    }
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(getAppId(), "", "setting.sysMsgSubscribed", localArrayList, new BaseJsPluginEngine.7(this, paramRequestEvent));
+  }
+  
   private void sendShowAuthDialogMessage(RequestEvent paramRequestEvent, String paramString)
   {
     sendShowAuthDialogMessage(paramRequestEvent, paramString, true);
@@ -809,7 +883,7 @@ public abstract class BaseJsPluginEngine
     Object localObject2;
     int i;
     label65:
-    label101:
+    label106:
     Object localObject4;
     do
     {
@@ -824,45 +898,53 @@ public abstract class BaseJsPluginEngine
       if (this.authDialog == null)
       {
         this.authDialog = new AuthDialog((Activity)localObject1, i);
-        if (i != 3) {
-          break label280;
+        if ((i != 3) && (i != 4)) {
+          break label318;
         }
         this.authDialog.setOnDismissListener(this.onceSubDismissListener);
       }
       this.authDialog.bindData(paramBundle);
       localObject4 = paramBundle.getString("key_scope_name", "");
     } while (localObject4 == null);
-    paramBundle = PermissionManager.g().getScopePermission((String)localObject4);
+    Object localObject5 = PermissionManager.g().getScopePermission((String)localObject4);
     localObject1 = "";
     String str1 = "";
-    if (paramBundle != null)
+    String str2 = "";
+    if (localObject5 != null)
     {
-      localObject1 = paramBundle.name;
-      str1 = paramBundle.description;
+      localObject1 = ((PermissionInfo)localObject5).name;
+      str1 = ((PermissionInfo)localObject5).description;
+      paramBundle = ((PermissionInfo)localObject5).rejectDescription;
+      str2 = ((PermissionInfo)localObject5).reportSubAction;
     }
-    for (paramBundle = paramBundle.rejectDescription;; paramBundle = "")
+    for (;;)
     {
-      Context localContext = this.mMiniAppContext.getContext();
-      Object localObject5 = getApkgInfo();
+      localObject5 = this.mMiniAppContext.getContext();
+      Object localObject6 = getApkgInfo();
       ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
       MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      if (localObject5 == null) {
+      if (localObject6 == null) {
         break;
       }
-      String str2 = ((ApkgInfo)localObject5).iconUrl;
-      String str3 = ((ApkgInfo)localObject5).apkgName;
+      String str3 = ((ApkgInfo)localObject6).iconUrl;
+      String str4 = ((ApkgInfo)localObject6).apkgName;
       if ("scope.userInfo".equals(localObject4))
       {
-        localChannelProxy.getUserInfo(((ApkgInfo)localObject5).appId, false, "en", new BaseJsPluginEngine.9(this, localMiniAppProxy, localContext, str2, str3, (String)localObject1, str1));
+        localChannelProxy.getUserInfo(((ApkgInfo)localObject6).appId, false, "en", new BaseJsPluginEngine.10(this, localMiniAppProxy, (Context)localObject5, str3, str4, (String)localObject1, str1, str2));
         return;
-        if (!"subscribeOnceAppMsg".equals(str1)) {
+        if ("subscribeOnceAppMsg".equals(str1))
+        {
+          i = 3;
           break label65;
         }
-        i = 3;
+        if (!"requestSubscribeSystemMessage".equals(str1)) {
+          break label65;
+        }
+        i = 4;
         break label65;
-        label280:
+        label318:
         this.authDialog.setOnDismissListener(this.dismissListener);
-        break label101;
+        break label106;
       }
       if (this.authDialog == null) {
         break;
@@ -870,13 +952,13 @@ public abstract class BaseJsPluginEngine
       localObject4 = null;
       try
       {
-        localObject5 = new JSONObject((String)localObject2).optJSONObject("getPhoneNumber");
+        localObject6 = new JSONObject((String)localObject2).optJSONObject("getPhoneNumber");
         localObject2 = localObject4;
-        if (localObject5 != null)
+        if (localObject6 != null)
         {
           localObject2 = localObject4;
-          if (((JSONObject)localObject5).has("phoneLists")) {
-            localObject2 = ((JSONObject)localObject5).optJSONArray("phoneLists");
+          if (((JSONObject)localObject6).has("phoneLists")) {
+            localObject2 = ((JSONObject)localObject6).optJSONArray("phoneLists");
           }
         }
       }
@@ -889,23 +971,25 @@ public abstract class BaseJsPluginEngine
         }
       }
       localObject4 = new AuthDialog.AuthDialogResBuilder();
-      ((AuthDialog.AuthDialogResBuilder)localObject4).setMiniAppIconUrl(localMiniAppProxy.getDrawable(localContext, str2, 0, 0, null)).setMiniAppName(str3).setAuthTitle((String)localObject1).setAuthDesc(str1).setLeftBtnText(paramBundle).setLeftBtnClickListener(new BaseJsPluginEngine.11(this)).setRightBtnText("允许").setRightBtnClickListener(new BaseJsPluginEngine.10(this));
+      ((AuthDialog.AuthDialogResBuilder)localObject4).setMiniAppIconUrl(localMiniAppProxy.getDrawable((Context)localObject5, str3, 0, 0, null)).setMiniAppName(str4).setAuthTitle((String)localObject1).setAuthDesc(str1).setReportSubAction(str2).setMiniAppInfo(this.mMiniAppContext.getMiniAppInfo()).setLeftBtnText(paramBundle).setLeftBtnClickListener(new BaseJsPluginEngine.12(this)).setRightBtnText("允许").setRightBtnClickListener(new BaseJsPluginEngine.11(this));
       if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
         ((AuthDialog.AuthDialogResBuilder)localObject4).setPhoneNumberList((JSONArray)localObject2);
       }
       this.authDialog.show((AuthDialog.AuthDialogResBuilder)localObject4);
       return;
+      paramBundle = "";
     }
   }
   
-  private void showOnceSubMsgReqDialog(RequestEvent paramRequestEvent, byte[] paramArrayOfByte)
+  private void showOnceSubMsgReqDialog(String paramString, RequestEvent paramRequestEvent, byte[] paramArrayOfByte)
   {
     if ((this.authDialog == null) || (!this.authDialog.isShowing()))
     {
       this.onceSubMsgReq = paramRequestEvent;
       Message localMessage = this.mHandler.obtainMessage(2);
       Bundle localBundle = new Bundle();
-      localBundle.putString("key_event_name", "subscribeOnceAppMsg");
+      localBundle.putString("key_event_name", paramRequestEvent.event);
+      localBundle.putString("key_setting_item", paramString);
       localBundle.putString("key_params", paramRequestEvent.jsonParams);
       localBundle.putString("key_appid", getAppId());
       localBundle.putByteArray("key_once_sub_rsp_data", paramArrayOfByte);
@@ -1053,6 +1137,7 @@ public abstract class BaseJsPluginEngine
     if (this.mMiniAppContext == null) {
       return "";
     }
+    QMLog.d("JsPluginEngine[AuthGuard]", "handleNativeRequest: eventName:" + paramString1 + "  callbackId:" + paramInt);
     return checkAuthorization(createRequestEvent(paramString1, paramString2, paramIJsService, paramInt));
   }
   
@@ -1130,10 +1215,9 @@ public abstract class BaseJsPluginEngine
   public void onceSubMsgCallbackSuc(RequestEvent paramRequestEvent, List<INTERFACE.StSubscribeMessage> paramList)
   {
     JSONObject localJSONObject = new JSONObject();
+    int i = 0;
     try
     {
-      localJSONObject.put("errMsg", "subscribeOnceAppMsg:ok");
-      int i = 0;
       if (i < paramList.size())
       {
         Object localObject = (INTERFACE.StSubscribeMessage)paramList.get(i);
@@ -1162,77 +1246,76 @@ public abstract class BaseJsPluginEngine
     int k = 0;
     int i = 0;
     JSONObject localJSONObject = new JSONObject();
-    label97:
+    label85:
     Object localObject;
-    try
-    {
-      localJSONObject.put("errMsg", "subscribeOnceAppMsg:ok");
-      if (!paramBoolean) {
-        break label334;
-      }
-      while (i < paramList1.size())
-      {
-        paramList2 = (INTERFACE.StSubscribeMessage)paramList1.get(i);
-        paramList3 = paramList2.templateId.get();
-        if (paramList2.authState.get() != 1) {
-          break label327;
-        }
-        paramList2 = "accept";
-        localJSONObject.put(paramList3, paramList2);
-        i += 1;
-        continue;
-        if (i >= paramList1.size()) {
-          break label207;
-        }
-        localObject = (INTERFACE.StSubscribeMessage)paramList1.get(i);
-        if (((INTERFACE.StSubscribeMessage)localObject).authState.get() == 1) {
-          localJSONObject.put(((INTERFACE.StSubscribeMessage)localObject).templateId.get(), "accept");
-        } else if (((INTERFACE.StSubscribeMessage)localObject).authState.get() == 2) {
-          localJSONObject.put(((INTERFACE.StSubscribeMessage)localObject).templateId.get(), "reject");
-        }
-      }
-    }
-    catch (Exception paramList1)
-    {
-      QMLog.e("JsPluginEngine[AuthGuard]", "onceSubMsgCallbackSuc get a Exception:", paramList1);
-    }
+    label183:
     label195:
-    if (paramRequestEvent != null) {
-      paramRequestEvent.ok(localJSONObject);
-    }
-    return;
-    label207:
-    i = 0;
-    label210:
-    int j = k;
-    if (i < paramList2.size())
+    label198:
+    int j;
+    if (paramBoolean)
     {
-      paramList1 = (INTERFACE.StSubscribeMessage)paramList2.get(i);
-      localObject = paramList1.templateId.get();
-      if (paramList1.authState.get() != 2) {
-        break label349;
+      try
+      {
+        while (i < paramList1.size())
+        {
+          paramList2 = (INTERFACE.StSubscribeMessage)paramList1.get(i);
+          paramList3 = paramList2.templateId.get();
+          if (paramList2.authState.get() != 1) {
+            break label315;
+          }
+          paramList2 = "accept";
+          localJSONObject.put(paramList3, paramList2);
+          i += 1;
+          continue;
+          if (i >= paramList1.size()) {
+            break label195;
+          }
+          localObject = (INTERFACE.StSubscribeMessage)paramList1.get(i);
+          if (((INTERFACE.StSubscribeMessage)localObject).authState.get() == 1) {
+            localJSONObject.put(((INTERFACE.StSubscribeMessage)localObject).templateId.get(), "accept");
+          } else if (((INTERFACE.StSubscribeMessage)localObject).authState.get() == 2) {
+            localJSONObject.put(((INTERFACE.StSubscribeMessage)localObject).templateId.get(), "reject");
+          }
+        }
+      }
+      catch (Exception paramList1)
+      {
+        QMLog.e("JsPluginEngine[AuthGuard]", "onceSubMsgCallbackSuc get a Exception:", paramList1);
+      }
+      if (paramRequestEvent != null) {
+        paramRequestEvent.ok(localJSONObject);
+      }
+      return;
+      i = 0;
+      j = k;
+      if (i < paramList2.size())
+      {
+        paramList1 = (INTERFACE.StSubscribeMessage)paramList2.get(i);
+        localObject = paramList1.templateId.get();
+        if (paramList1.authState.get() != 2) {
+          break label337;
+        }
       }
     }
-    label327:
-    label334:
-    label349:
+    label315:
+    label337:
     for (paramList1 = "reject";; paramList1 = "accept")
     {
       localJSONObject.put((String)localObject, paramList1);
       i += 1;
-      break label210;
+      break label198;
       while (j < paramList3.size())
       {
         localJSONObject.put(((INTERFACE.StSubscribeMessage)paramList3.get(j)).templateId.get(), "reject");
         j += 1;
       }
-      break label195;
+      break label183;
       paramList2 = "reject";
       break;
       i = 0;
-      break label97;
+      break label85;
       i += 1;
-      break label97;
+      break label85;
     }
   }
   

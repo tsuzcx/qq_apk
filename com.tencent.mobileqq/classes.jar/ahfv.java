@@ -1,45 +1,64 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
-public class ahfv
-  extends ahfx
+class ahfv
+  extends ClickableSpan
 {
-  public ahfv(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  ahfv(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryItemBuilder", 2, "get video download finish,vid=" + paramString1);
-    }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Context)this.b.get();
+    if ((paramView == null) || (localObject == null)) {}
+    boolean bool;
     do
     {
+      do
+      {
+        do
+        {
+          return;
+          bdll.b(paramView, "dc00898", "", "", "0X800906D", "0X800906D", 0, 0, "", "", "", "");
+        } while (!(localObject instanceof Activity));
+        if (!bhnv.d((Context)localObject))
+        {
+          QQToast.a((Context)localObject, 2131691989, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299011));
+          return;
+        }
+      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.b.get() == null));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
+      bool = Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", (String)localObject);
+    localBundle.putString("tdsourcetag", "s_qq_aio_grey");
+    TeamWorkDocEditBrowserActivity.a((Context)this.b.get(), localBundle, false);
+    if (!bool)
+    {
+      bdll.b(paramView, "CliOper", "", "", "0X8008A35", "0X8008A35", 0, 0, "", "", "", "");
       return;
-      paramString1 = ((wpj)wpm.a(5)).a(paramString1);
-      if (paramString1 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahfy, this.jdField_a_of_type_Long, paramString1, false);
-  }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video failed,vid=" + paramString1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahfy, this.jdField_a_of_type_Long);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video onPause,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahfy, this.jdField_a_of_type_Long);
+    bdll.b(paramView, "CliOper", "", "", "0X8009075", "0X8009075", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,83 +1,54 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class tzb
-  implements aaob
+  implements aasd
 {
-  tzb(tym paramtym, boolean paramBoolean, String paramString1, String paramString2) {}
+  tzb(tyo paramtyo, String paramString, boolean paramBoolean) {}
   
   public void callback(Bundle paramBundle)
   {
-    String str2;
-    JSONObject localJSONObject;
     if (paramBundle != null)
     {
-      if (this.jdField_a_of_type_Tym.a != null) {
-        this.jdField_a_of_type_Tym.l();
+      if (this.jdField_a_of_type_Tyo.a != null) {
+        this.jdField_a_of_type_Tyo.l();
       }
-      str2 = paramBundle.getString("pic_local_id");
-      localJSONObject = new JSONObject();
+      String str = paramBundle.getString("pic_server_id");
+      this.jdField_a_of_type_Tyo.a(paramBundle);
+      if ("-1".equals(str)) {
+        paramBundle = new JSONObject();
+      }
     }
-    for (;;)
+    else
     {
       try
       {
-        if (!"-1".equals(str2)) {
-          continue;
+        paramBundle.put("retCode", -1);
+        paramBundle.put("msg", "fail");
+        this.jdField_a_of_type_Tyo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
+          return;
         }
-        localJSONObject.put("retCode", -1);
-        localJSONObject.put("msg", "fail");
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
         }
-        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-        paramBundle = str2;
-        localJSONObject.put("localId", paramBundle);
-      }
-      catch (JSONException paramBundle)
-      {
-        String str1;
-        paramBundle.printStackTrace();
-        continue;
-      }
-      this.jdField_a_of_type_Tym.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Tym.c(this.b);
-      }
-      return;
-      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-      paramBundle = str2;
-      continue;
-      str1 = str2;
-      if (this.jdField_a_of_type_Boolean) {
-        str1 = "mqqpa://resourceid/" + str2;
-      }
-      paramBundle = paramBundle.getString("pic_local_path");
-      tym.b.put(str1, paramBundle);
-      localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", anni.a(2131707539) + str1);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
-        paramBundle = str1;
-      }
-      else
-      {
-        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
-        paramBundle = str1;
+        bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
+        return;
       }
     }
+    this.jdField_a_of_type_Tyo.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzb
  * JD-Core Version:    0.7.0.1
  */

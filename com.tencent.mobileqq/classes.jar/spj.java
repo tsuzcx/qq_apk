@@ -1,12 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public abstract interface spj
 {
-  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
+  public abstract int a(BaseData paramBaseData);
   
-  public abstract void b();
+  public abstract spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
   
-  public abstract void b(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
+  public abstract boolean a(BaseData paramBaseData);
 }
 
 

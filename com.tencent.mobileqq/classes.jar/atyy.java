@@ -1,17 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 
-public class atyy
-  implements CompoundButton.OnCheckedChangeListener
+public final class atyy
+  implements Parcelable.Creator<FavFileInfo>
 {
-  public atyy(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public FavFileInfo a(Parcel paramParcel)
   {
-    atcq.a().c(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    return new FavFileInfo(paramParcel);
+  }
+  
+  public FavFileInfo[] a(int paramInt)
+  {
+    return new FavFileInfo[paramInt];
   }
 }
 

@@ -1,21 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
 class qme
-  implements bksj
+  implements View.OnTouchListener
 {
-  qme(qly paramqly) {}
+  qme(qmb paramqmb, RelativeLayout paramRelativeLayout) {}
   
-  public void a() {}
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = qly.a(this.a).a(qly.a(this.a).b());
-    paramViewHolder = qly.a(this.a).getEventCallback();
-    if (paramViewHolder != null) {
-      paramViewHolder.onPagerChange(i);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
     }
-    this.a.a(i);
+    return false;
   }
 }
 

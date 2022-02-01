@@ -1,89 +1,73 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
-public class bfxz
+class bfxz
+  extends aavr
 {
-  private int a;
-  private int b;
+  bfxz(bfxy parambfxy) {}
   
-  private int a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle)
   {
-    int i = bglj.a(paramQQAppInterface.getCurrentAccountUin(), "troop_game_feed", paramSessionInfo.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "read game feed red dot, num=" + i);
-    }
-    if (i > 0) {
-      return 1;
-    }
-    i = bglj.a(paramQQAppInterface.getCurrentAccountUin(), "troop_album_feed", paramSessionInfo.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "read album feed red dot, num=" + i);
-    }
-    if (i > 0) {
-      return 6;
-    }
-    boolean bool = bfpx.c(paramQQAppInterface, paramSessionInfo.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "needShowRobotRedDot:" + bool);
-    }
-    if (bool) {
-      return 2;
-    }
-    if (bdro.a(paramQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_SETTING_RED_DOT_SHOW", true, false))
+    bfxy.a(this.a, null);
+    if (bfxy.a(this.a))
     {
-      paramQQAppInterface = (aqtz)aqlk.a().a(535);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.a)) {
-        return 3;
+      bfvr.b("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult.but stoped");
+      return;
+    }
+    if ((paramUploadFileRspBody == null) || (!paramBoolean))
+    {
+      bfvr.a("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult isSuccess:false  errCode:" + paramInt);
+      bfxy.a(this.a, bguk.A);
+      bfxy.a(this.a, true);
+      return;
+    }
+    int i = paramUploadFileRspBody.int32_ret_code.get();
+    bfvr.c("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
+    if (i < 0)
+    {
+      bfxy.a(this.a, false);
+      paramInt = 207;
+      switch (i)
+      {
       }
-      paramQQAppInterface = ((aqtp)aqlk.a().a(551)).a(4);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.b)) {
-        return 4;
+      for (;;)
+      {
+        bfxy.a(this.a, paramInt);
+        return;
+        paramInt = 202;
+        continue;
+        paramInt = 208;
+        continue;
+        paramInt = 210;
+        continue;
+        if (bfxy.a(this.a) != 104)
+        {
+          bfxy.a(this.a, 104);
+          bfxy.a(this.a);
+          return;
+          paramInt = 209;
+          continue;
+          paramInt = -136;
+          continue;
+          paramInt = -138;
+          continue;
+          bfxy.a(this.a, paramUploadFileRspBody.str_client_wording.get());
+          paramInt = 704;
+        }
       }
     }
-    return 0;
-  }
-  
-  public static bfxz a(View paramView)
-  {
-    bfxz localbfxz2 = (bfxz)paramView.getTag();
-    bfxz localbfxz1 = localbfxz2;
-    if (localbfxz2 == null)
-    {
-      localbfxz1 = new bfxz();
-      paramView.setTag(localbfxz1);
-    }
-    return localbfxz1;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    this.a = a(paramQQAppInterface, paramSessionInfo);
-    switch (this.a)
-    {
-    default: 
-      return;
-    case 2: 
-      bfpx.c(paramQQAppInterface, false);
-      return;
-    case 3: 
-    case 4: 
-      bdro.a(paramQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_SETTING_RED_DOT_SHOW", false, false);
-      return;
-    case 5: 
-      bcst.b(null, "dc00898", "", paramSessionInfo.a, "qq_vip", "0X800A8F5", this.b, 1, 0, "", "", "", "");
-    }
-    bglj.a(paramQQAppInterface.getCurrentAccountUin(), "troop_album_feed", paramSessionInfo.b, 0);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    this.a = a(paramQQAppInterface, paramSessionInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "needShow: " + this.a);
-    }
-    return this.a != 0;
+    bfxy.b(this.a, paramUploadFileRspBody.str_file_id.get());
+    bfxy.c(this.a, paramUploadFileRspBody.str_upload_ip.get());
+    bfxy.d(this.a, paramUploadFileRspBody.str_server_dns.get());
+    bfxy.a(this.a, paramUploadFileRspBody.bytes_check_key.get().toByteArray());
+    bfxy.a(this.a, paramUploadFileRspBody.uint32_bus_id.get());
+    bfvr.c("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult fileid:" + bfxy.b(this.a) + " UploadIp:" + bfxy.c(this.a) + " ServerDns:" + bfxy.d(this.a) + " busId:" + bfxy.a(this.a));
+    this.a.a(false);
   }
 }
 

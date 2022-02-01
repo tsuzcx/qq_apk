@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae;
 
 import android.os.Process;
-import bndy;
-import bnzb;
+import bofh;
+import bpam;
 import java.util.concurrent.CountDownLatch;
 
 public class AEPituCameraUnit$1
   implements Runnable
 {
-  public AEPituCameraUnit$1(bndy parambndy) {}
+  public AEPituCameraUnit$1(bofh parambofh) {}
   
   public void run()
   {
     try
     {
-      bnzb.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init ENTER");
+      bpam.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init ENTER");
       Process.setThreadPriority(-2);
     }
     catch (Exception localException)
@@ -23,17 +23,17 @@ public class AEPituCameraUnit$1
       {
         try
         {
-          bnzb.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init BEGIN");
-          bndy.a(this.this$0);
-          bnzb.b("AEPituCameraUnit", "[AEPituCameraUnit] initAEKitReport-end");
+          bpam.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init BEGIN");
+          bofh.a(this.this$0);
+          bpam.b("AEPituCameraUnit", "[AEPituCameraUnit] initAEKitReport-end");
           return;
         }
         finally
         {
-          bndy.a(this.this$0).countDown();
+          bofh.a(this.this$0).countDown();
         }
         localException = localException;
-        bnzb.d("AEPituCameraUnit", "[UnitAsyncInit] setThreadPriority exception: " + localException.getMessage());
+        bpam.d("AEPituCameraUnit", "[UnitAsyncInit] setThreadPriority exception: " + localException.getMessage());
       }
     }
   }

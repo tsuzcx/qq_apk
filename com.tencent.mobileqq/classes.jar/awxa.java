@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import java.util.Comparator;
 
 class awxa
-  implements DialogInterface.OnKeyListener
+  implements Comparator<awwo>
 {
-  awxa(awwz paramawwz) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public int a(awwo paramawwo1, awwo paramawwo2)
   {
-    return paramInt == 4;
+    if (paramawwo1.a >= paramawwo2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 

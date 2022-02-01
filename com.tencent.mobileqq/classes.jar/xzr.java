@@ -1,39 +1,27 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
 
 public class xzr
-  extends QQUIEventReceiver<StoryPickerFragment, wxy>
+  extends QQUIEventReceiver<xzp, xas>
 {
-  public xzr(@NonNull StoryPickerFragment paramStoryPickerFragment)
+  public xzr(@NonNull xzp paramxzp)
   {
-    super(paramStoryPickerFragment);
+    super(paramxzp);
   }
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull wxy paramwxy)
+  public void a(@NonNull xzp paramxzp, @NonNull xas paramxas)
   {
-    yqp.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramwxy.toString());
-    if ((paramwxy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwxy.jdField_a_of_type_JavaUtilList != null) && (!paramwxy.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if (paramxas.a.isSuccess())
     {
-      Iterator localIterator = paramwxy.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ygo localygo = (ygo)localIterator.next();
-        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localygo.jdField_a_of_type_JavaLangString)) {
-          localygo.jdField_a_of_type_Boolean = true;
-        }
-      }
-      paramStoryPickerFragment.jdField_a_of_type_Xzz.a(paramwxy.jdField_a_of_type_JavaLangString, paramwxy.jdField_a_of_type_JavaUtilList);
+      yuk.a(this.TAG, "receive user info event. %s.", paramxas.toString());
+      paramxzp.i();
     }
   }
   
   public Class acceptEventClass()
   {
-    return wxy.class;
+    return xas.class;
   }
 }
 

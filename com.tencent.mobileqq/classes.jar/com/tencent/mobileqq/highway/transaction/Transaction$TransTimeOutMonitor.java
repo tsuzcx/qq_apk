@@ -5,8 +5,8 @@ import android.os.SystemClock;
 class Transaction$TransTimeOutMonitor
   implements Runnable
 {
-  public volatile boolean isKilled;
-  public long mStartTime = SystemClock.uptimeMillis();
+  public volatile boolean isKilled = false;
+  public long mStartTime = 0L;
   
   public Transaction$TransTimeOutMonitor(Transaction paramTransaction) {}
   

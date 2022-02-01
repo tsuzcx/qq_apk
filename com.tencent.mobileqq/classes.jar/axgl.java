@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime.InterceptKickListener;
+import mqq.app.AppRuntime.KickParams;
 
 class axgl
-  implements DialogInterface.OnClickListener
+  implements AppRuntime.InterceptKickListener
 {
-  axgl(axgk paramaxgk, oidb_0x8e4.RspBody paramRspBody) {}
+  axgl(axgj paramaxgj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInterceptKicked(AppRuntime.KickParams paramKickParams)
   {
-    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
-    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
-    axgp.a(this.jdField_a_of_type_Axgk.a, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
+    if (axgj.a(this.a).get()) {
+      axgj.a(this.a, paramKickParams);
+    }
   }
 }
 

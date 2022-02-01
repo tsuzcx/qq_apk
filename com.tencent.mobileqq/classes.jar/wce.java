@@ -1,10 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView;
 
 public class wce
-  extends weu
+  implements waf
 {
-  public List<wcl> a = new ArrayList();
+  public wce(QCircleTagPageHeaderView paramQCircleTagPageHeaderView) {}
+  
+  public void a()
+  {
+    vtq.a("", 6, 2, 3, this.a.d());
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt > 0) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      vtq.a("", 6, 2, paramInt, this.a.d());
+      return;
+    }
+  }
 }
 
 

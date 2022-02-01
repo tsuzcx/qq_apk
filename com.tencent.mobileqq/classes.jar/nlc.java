@@ -1,11 +1,30 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import java.util.Map;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface nlc
+class nlc
+  extends BroadcastReceiver
 {
-  public abstract int a(Context paramContext, String paramString);
+  nlc(nlb paramnlb) {}
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, nkl paramnkl, Map<String, String> paramMap);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("request_type", 0);
+    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    paramContext = new Intent();
+    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
+    paramContext.putExtra("command_type", 1);
+    paramContext.putExtra("data", nlb.a(this.a));
+    this.a.a.getApp().sendBroadcast(paramContext);
+  }
 }
 
 

@@ -1,76 +1,57 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.1;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import mqq.os.MqqHandler;
 
-class yfr
-  extends SimpleJob<Object>
+public class yfr
 {
-  yfr(yfq paramyfq, String paramString)
+  private Stream<yfw> jdField_a_of_type_ComTribeAsyncReactiveStream;
+  private String jdField_a_of_type_JavaLangString;
+  private yfu jdField_a_of_type_Yfu;
+  private yfw jdField_a_of_type_Yfw = new yfw();
+  public boolean a;
+  private boolean b = true;
+  
+  public yfr(@NonNull String paramString, @NonNull yfu paramyfu, boolean paramBoolean)
   {
-    super(paramString);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Yfu = paramyfu;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  private void a(yfw paramyfw, boolean paramBoolean, ErrorMessage paramErrorMessage)
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (woz)wpm.a(19);
-    paramVarArgs = paramJobContext.a(wvs.a(this.a.jdField_b_of_type_JavaLangString));
-    boolean bool;
-    wvw localwvw;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
-    {
-      bool = true;
-      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
-      localwvw = new wvw(this.a.c, new ErrorMessage());
-      localwvw.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      localwvw.jdField_b_of_type_Boolean = true;
-      localwvw.c = true;
-      localwvw.e = true;
-      localwvw.jdField_a_of_type_Boolean = false;
-      localwvw.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label246;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label156:
-      if (paramJobContext != null) {
-        break label251;
-      }
-      localwvw.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Boolean = true;
-      label174:
-      wfo.a().dispatch(localwvw);
-      this.a.a(localList, false);
-      if (!localwvw.jdField_a_of_type_Boolean) {
-        break label294;
-      }
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPuller.2(this, paramyfw, paramBoolean, paramErrorMessage));
+  }
+  
+  public void a()
+  {
+    Bosses.get().postLightWeightJob(new DetailFeedAllInfoPuller.1(this), 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
-    label294:
-    for (paramJobContext = "true";; paramJobContext = "false")
-    {
-      yqp.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      this.a.d();
-      return null;
-      bool = false;
-      break;
-      label246:
-      paramJobContext = null;
-      break label156;
-      label251:
-      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
-      {
-        localwvw.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_b_of_type_Boolean = true;
-        break label174;
-      }
-      localwvw.jdField_a_of_type_Boolean = false;
-      break label174;
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new yfs(this, this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new yfh());
+    }
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new yfv(this));
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
   }
 }

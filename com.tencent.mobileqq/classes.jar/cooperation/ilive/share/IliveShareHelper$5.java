@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 import java.util.Map;
-import nlw;
+import nnr;
 
 class IliveShareHelper$5
   implements Runnable
@@ -18,7 +18,7 @@ class IliveShareHelper$5
     label153:
     try
     {
-      localObject = nlw.a(BaseApplicationImpl.getContext(), IliveShareHelper.access$700(this.this$0), "GET", null, null);
+      localObject = nnr.a(BaseApplicationImpl.getContext(), IliveShareHelper.access$700(this.this$0), "GET", null, null);
       if (localObject == null) {
         break label118;
       }

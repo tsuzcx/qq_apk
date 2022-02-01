@@ -21,7 +21,7 @@ public class b
   public static String a(boolean paramBoolean, String paramString)
   {
     d.a("[event url] getStrategyUrl, isHttpMode: %s, httpUrl: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
-    if (j.c(paramString))
+    if (j.b(paramString))
     {
       if (paramBoolean) {
         return b;
@@ -44,7 +44,7 @@ public class b
       }
       return "183.36.108.226";
     }
-    if (j.c(paramString))
+    if (j.b(paramString))
     {
       if (paramBoolean1) {
         return a;

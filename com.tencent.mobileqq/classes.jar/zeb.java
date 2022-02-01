@@ -1,8 +1,24 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+
 class zeb
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int;
-  zdz jdField_a_of_type_Zdz;
-  zea jdField_a_of_type_Zea;
+  zeb(zdz paramzdz) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_Zdu != null) {
+      this.a.a.jdField_a_of_type_Zdu.a(null);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

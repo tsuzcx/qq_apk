@@ -1,18 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
 
-class vze
-  implements View.OnClickListener
+public class vze
+  extends Animation
 {
-  vze(vzd paramvzd, long paramLong) {}
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
   
-  public void onClick(View paramView)
+  private vze(QCircleExpandableTextView paramQCircleExpandableTextView, int paramInt1, int paramInt2)
   {
-    if (vyz.a(this.jdField_a_of_type_Vzd.a.a) != null) {
-      vyz.a(this.jdField_a_of_type_Vzd.a.a).b(this.jdField_a_of_type_Long);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    setDuration(paramQCircleExpandableTextView.b);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    int i = (int)((this.b - this.jdField_a_of_type_Int) * paramFloat + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.a.setMaxHeight(i - this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.e);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.getLayoutParams().height = i;
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.requestLayout();
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

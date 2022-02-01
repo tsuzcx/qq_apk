@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.highway.netprobe.WeakNetLearner;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
-public class bdta
+class bdta
+  extends URLDrawableDownListener.Adapter
 {
-  protected static bdxv a;
-  public static WeakNetLearner a;
+  bdta(bdsy parambdsy) {}
   
-  static
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    jdField_a_of_type_Bdxv = new bdxv();
-    jdField_a_of_type_ComTencentMobileqqHighwayNetprobeWeakNetLearner = new WeakNetLearner(BaseApplication.getContext(), new bdtb());
+    super.onLoadCancelled(paramView, paramURLDrawable);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(paramURLDrawable);
   }
 }
 

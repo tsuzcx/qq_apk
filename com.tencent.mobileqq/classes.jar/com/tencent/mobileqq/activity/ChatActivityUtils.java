@@ -1,44 +1,45 @@
 package com.tencent.mobileqq.activity;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import acwh;
-import addy;
-import adqu;
-import adru;
-import adrv;
-import adrw;
-import adrx;
-import adry;
-import adrz;
-import adsa;
-import adsb;
-import adsc;
-import adsd;
-import adse;
-import adsf;
-import adsg;
-import adsh;
-import adsi;
-import adsj;
-import adsk;
-import adsl;
-import adsm;
-import adsn;
-import adso;
-import adsp;
-import adsq;
-import adsr;
-import adss;
-import adst;
-import adsu;
-import adsv;
-import adsx;
-import adsy;
-import afur;
-import agaa;
-import ahgl;
-import ahvz;
-import aikr;
+import adak;
+import admw;
+import adzv;
+import aeav;
+import aeaw;
+import aeax;
+import aeay;
+import aeaz;
+import aeba;
+import aebb;
+import aebc;
+import aebd;
+import aebe;
+import aebf;
+import aebg;
+import aebh;
+import aebi;
+import aebj;
+import aebk;
+import aebl;
+import aebm;
+import aebn;
+import aebo;
+import aebp;
+import aebq;
+import aebr;
+import aebs;
+import aebt;
+import aebu;
+import aebv;
+import aebw;
+import aebx;
+import aebz;
+import aeca;
+import agej;
+import agju;
+import ahpx;
+import aifn;
+import aiuk;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -66,54 +67,56 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
-import ankw;
-import anlk;
-import anmw;
-import anni;
-import anos;
-import anuk;
-import arkw;
-import askk;
-import avhx;
-import avjb;
-import awhl;
-import awmz;
-import axdm;
-import azwe;
-import azwm;
-import bbyw;
-import bbzj;
-import bcst;
-import bctj;
-import bcvp;
-import bcvs;
-import bcvt;
-import bcwc;
-import bdnt;
-import bfre;
-import bfrf;
-import bgkb;
-import bgkh;
-import bglf;
-import bglp;
-import bgmg;
-import bgmj;
-import bgmo;
-import bgnt;
-import bgnw;
-import bgoh;
-import bgoo;
-import bgpa;
-import bgsu;
-import bgxe;
-import bhhb;
-import bhjt;
-import bhke;
-import biau;
-import bibh;
-import bjft;
-import blsb;
-import blsi;
+import anws;
+import anxg;
+import anyw;
+import anzj;
+import aoat;
+import aogu;
+import asam;
+import atag;
+import awaa;
+import awan;
+import awbj;
+import awcc;
+import axad;
+import axfr;
+import axwf;
+import baou;
+import bapc;
+import bcrn;
+import bcsa;
+import bdll;
+import bdmc;
+import bdoi;
+import bdol;
+import bdom;
+import bdov;
+import begp;
+import bgrf;
+import bgrg;
+import bhkc;
+import bhki;
+import bhlg;
+import bhlq;
+import bhmi;
+import bhml;
+import bhmq;
+import bhnv;
+import bhny;
+import bhoj;
+import bhoq;
+import bhpc;
+import bhsw;
+import bhxi;
+import bihq;
+import biki;
+import bikt;
+import bjbs;
+import bjcf;
+import bkgt;
+import bmtd;
+import bmtk;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.av.VideoController;
 import com.tencent.av.gaudio.AVNotifyCenter;
@@ -125,6 +128,7 @@ import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.jungle.videohub.proto.GroupRoomManageProto.GetGameStatusByGroupCodeReq;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
@@ -158,6 +162,7 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -180,30 +185,30 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import lkl;
 import lkw;
-import lmm;
-import mal;
-import mmo;
+import llk;
+import lna;
+import mbh;
+import mnl;
 import mqq.app.AppRuntime;
 import mqq.app.AppRuntime.Status;
-import mqw;
-import mro;
-import mrs;
-import mtl;
-import muc;
-import mue;
-import njo;
-import nko;
-import nmp;
+import mru;
+import msm;
+import msq;
+import muk;
+import mvb;
+import mvd;
+import nlj;
+import nmj;
+import nok;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ChatActivityUtils
 {
-  static bgpa jdField_a_of_type_Bgpa;
-  private static biau jdField_a_of_type_Biau;
+  static bhpc jdField_a_of_type_Bhpc;
+  private static bjbs jdField_a_of_type_Bjbs;
   private static ChatActivityUtils.AddFriendSpan jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan;
   public static Queue<String> a;
   private static ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
@@ -366,22 +371,22 @@ public class ChatActivityUtils
   public static Toast a(Context paramContext, String paramString)
   {
     Toast localToast = new Toast(paramContext);
-    View localView = LayoutInflater.from(paramContext).inflate(2131558643, null);
+    View localView = LayoutInflater.from(paramContext).inflate(2131558645, null);
     localToast.setView(localView);
-    localToast.setGravity(55, 0, paramContext.getResources().getDimensionPixelSize(2131298998));
+    localToast.setGravity(55, 0, paramContext.getResources().getDimensionPixelSize(2131299011));
     localToast.setDuration(1);
-    ((TextView)localView.findViewById(2131362477)).setText(paramString);
-    localView.setOnClickListener(new adsh(localToast));
+    ((TextView)localView.findViewById(2131362492)).setText(paramString);
+    localView.setOnClickListener(new aebj(localToast));
     return localToast;
   }
   
-  public static bgpa a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public static bhpc a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     if ((paramContext instanceof Activity)) {}
     for (paramQQAppInterface = paramContext;; paramQQAppInterface = com.tencent.mobileqq.app.BaseActivity.sTopActivity)
     {
       paramQQAppInterface = (Activity)paramQQAppInterface;
-      if ((paramQQAppInterface != null) && (!bhhb.a(paramQQAppInterface, 4, new adsk(paramOnClickListener1, paramOnClickListener2), "qav"))) {
+      if ((paramQQAppInterface != null) && (!bihq.a(paramQQAppInterface, 4, new aebm(paramOnClickListener1, paramOnClickListener2), "qav"))) {
         break;
       }
       return PopupDialog.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
@@ -414,14 +419,14 @@ public class ChatActivityUtils
   {
     int i = paramMessageRecord.msgtype;
     MessageRecord localMessageRecord;
-    if ((i == -1003) || (i == -1031) || (i == -1032) || (i == -3001) || (acwh.a(paramMessageRecord.istroop) == 1032)) {
+    if ((i == -1003) || (i == -1031) || (i == -1032) || (i == -3001) || (adak.a(paramMessageRecord.istroop) == 1032)) {
       localMessageRecord = null;
     }
     do
     {
       return localMessageRecord;
       localMessageRecord = paramMessageRecord;
-    } while (!((anmw)paramQQAppInterface.getManager(51)).b(paramMessageRecord.frienduin));
+    } while (!((anyw)paramQQAppInterface.getManager(51)).b(paramMessageRecord.frienduin));
     return null;
   }
   
@@ -447,7 +452,7 @@ public class ChatActivityUtils
         break label140;
       }
       paramSessionInfo = (MessageRecord)paramList.get(j);
-      if (((i != 0) && (paramSessionInfo.isSend())) || (acwh.h(paramSessionInfo.msgtype))) {
+      if (((i != 0) && (paramSessionInfo.isSend())) || (adak.h(paramSessionInfo.msgtype))) {
         break label131;
       }
     }
@@ -478,7 +483,7 @@ public class ChatActivityUtils
       localObject1 = paramMessageRecord.senderuin;
       String str = paramMessageRecord.frienduin;
       i = paramMessageRecord.istroop;
-      if ((paramMessageRecord.isSend()) || (bbzj.a(paramMessageRecord.msgtype))) {
+      if ((paramMessageRecord.isSend()) || (bcsa.a(paramMessageRecord.msgtype))) {
         break label498;
       }
       if (1000 != i) {
@@ -505,14 +510,14 @@ public class ChatActivityUtils
       paramQQAppInterface = paramQQAppInterface.name;
     }
     label603:
-    for (paramQQAppInterface = String.format(paramContext.getString(2131692420), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString, paramQQAppInterface });; paramQQAppInterface = null)
+    for (paramQQAppInterface = String.format(paramContext.getString(2131692426), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString, paramQQAppInterface });; paramQQAppInterface = null)
     {
       paramMessageRecord = paramQQAppInterface;
       break;
       if (1004 == i)
       {
-        paramQQAppInterface = bglf.b(paramQQAppInterface, (String)localObject1, 3000);
-        paramQQAppInterface = String.format(paramContext.getString(2131692418), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString, paramQQAppInterface });
+        paramQQAppInterface = bhlg.b(paramQQAppInterface, (String)localObject1, 3000);
+        paramQQAppInterface = String.format(paramContext.getString(2131692424), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString, paramQQAppInterface });
         a(paramSessionInfo, paramMessageRecord, paramLong);
         paramMessageRecord = paramQQAppInterface;
         break;
@@ -527,7 +532,7 @@ public class ChatActivityUtils
       }
       if (10004 == i)
       {
-        paramMessageRecord = String.format(paramContext.getString(2131692421), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
+        paramMessageRecord = String.format(paramContext.getString(2131692427), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
         break;
       }
       paramMessageRecord = localObject2;
@@ -536,7 +541,7 @@ public class ChatActivityUtils
       }
       if (1009 == i)
       {
-        paramMessageRecord = String.format(paramContext.getString(2131692423), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
+        paramMessageRecord = String.format(paramContext.getString(2131692429), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
         break;
       }
       paramMessageRecord = localObject2;
@@ -545,17 +550,17 @@ public class ChatActivityUtils
       }
       if (1021 == i)
       {
-        paramMessageRecord = String.format(paramContext.getString(2131692415), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
+        paramMessageRecord = String.format(paramContext.getString(2131692421), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
         break;
       }
       if (1022 == i)
       {
-        paramMessageRecord = String.format(paramContext.getString(2131692419), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
+        paramMessageRecord = String.format(paramContext.getString(2131692425), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
         break;
       }
       if (1023 == i)
       {
-        paramMessageRecord = String.format(paramContext.getString(2131692422), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
+        paramMessageRecord = String.format(paramContext.getString(2131692428), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
         break;
       }
       if (1010 == i)
@@ -567,17 +572,17 @@ public class ChatActivityUtils
       if (i != 10010) {
         break;
       }
-      paramMessageRecord = String.format(paramContext.getString(2131692414), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
+      paramMessageRecord = String.format(paramContext.getString(2131692420), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
       break;
       label498:
       localObject1 = localObject3;
       if (1006 != i) {
         break label106;
       }
-      paramSessionInfo = String.format(paramContext.getString(2131692417), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
-      paramQQAppInterface = paramContext.getString(2131692416);
+      paramSessionInfo = String.format(paramContext.getString(2131692423), new Object[] { paramSessionInfo.jdField_d_of_type_JavaLangString });
+      paramQQAppInterface = paramContext.getString(2131692422);
       if (jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan = new ChatActivityUtils.AddFriendSpan(paramQQAppInterface, paramContext.getResources().getColor(2131166308));
+        jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan = new ChatActivityUtils.AddFriendSpan(paramQQAppInterface, paramContext.getResources().getColor(2131166312));
       }
       i = paramSessionInfo.lastIndexOf(paramQQAppInterface);
       paramContext = new SpannableStringBuilder(paramSessionInfo);
@@ -621,19 +626,19 @@ public class ChatActivityUtils
     {
       paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
       if (paramQQAppInterface == null) {
-        return paramContext.getString(2131697761);
+        return paramContext.getString(2131697845);
       }
       if (TextUtils.isEmpty(paramQQAppInterface.getTroopName())) {
-        return paramContext.getString(2131697761);
+        return paramContext.getString(2131697845);
       }
-      paramQQAppInterface = String.format(paramContext.getString(2131697762), new Object[] { paramQQAppInterface.getTroopName() });
+      paramQQAppInterface = String.format(paramContext.getString(2131697846), new Object[] { paramQQAppInterface.getTroopName() });
       return paramQQAppInterface;
     }
     catch (Exception paramQQAppInterface)
     {
       paramQQAppInterface.printStackTrace();
     }
-    return paramContext.getString(2131697761);
+    return paramContext.getString(2131697845);
   }
   
   public static String a(Context paramContext, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -661,24 +666,24 @@ public class ChatActivityUtils
               paramMessageRecord = paramQQAppInterface.b(paramQQAppInterface.c(paramMessageRecord.senderuin));
               if (paramMessageRecord == null)
               {
-                paramMessageRecord = paramContext.getString(2131697761);
+                paramMessageRecord = paramContext.getString(2131697845);
                 paramContext = paramMessageRecord;
               }
               else if (TextUtils.isEmpty(paramMessageRecord.getTroopName()))
               {
-                paramMessageRecord = paramContext.getString(2131697761);
+                paramMessageRecord = paramContext.getString(2131697845);
                 paramContext = paramMessageRecord;
               }
               else
               {
-                paramMessageRecord = String.format(paramContext.getString(2131697762), new Object[] { paramMessageRecord.getTroopName() });
+                paramMessageRecord = String.format(paramContext.getString(2131697846), new Object[] { paramMessageRecord.getTroopName() });
                 paramContext = paramMessageRecord;
               }
             }
             catch (Exception paramMessageRecord)
             {
               paramMessageRecord.printStackTrace();
-              paramContext = paramContext.getString(2131697761);
+              paramContext = paramContext.getString(2131697845);
               localObject1 = paramContext;
             }
           } while (!QLog.isColorLevel());
@@ -693,35 +698,35 @@ public class ChatActivityUtils
       if (paramQQAppInterface != null)
       {
         localObject1 = (HotChatManager)paramQQAppInterface.getManager(60);
-        paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
+        paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
         if (TextUtils.isEmpty(((HotChatManager)localObject1).a(paramMessageRecord.senderuin))) {
           break;
         }
       }
       break;
     }
-    for (paramContext = paramContext.getString(2131697754);; paramContext = null)
+    for (paramContext = paramContext.getString(2131697838);; paramContext = null)
     {
       return paramContext;
-      return paramContext.getString(2131697751);
-      return paramContext.getString(2131697755);
-      return paramContext.getString(2131693831);
-      return paramContext.getString(2131697756);
-      return paramContext.getString(2131697750);
-      return paramContext.getString(2131697749);
-      return paramContext.getString(2131697760);
-      return paramContext.getString(2131697763);
-      return paramContext.getString(2131697748);
-      return paramContext.getString(2131697752);
-      return paramContext.getString(2131697757);
-      return paramContext.getString(2131693830);
+      return paramContext.getString(2131697835);
+      return paramContext.getString(2131697839);
+      return paramContext.getString(2131693848);
+      return paramContext.getString(2131697840);
+      return paramContext.getString(2131697834);
+      return paramContext.getString(2131697833);
+      return paramContext.getString(2131697844);
+      return paramContext.getString(2131697847);
+      return paramContext.getString(2131697832);
+      return paramContext.getString(2131697836);
+      return paramContext.getString(2131697841);
+      return paramContext.getString(2131693847);
     }
     return paramContext;
   }
   
   public static String a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    paramQQAppInterface = (bjft)paramQQAppInterface.getManager(165);
+    paramQQAppInterface = (bkgt)paramQQAppInterface.getManager(165);
     if (paramQQAppInterface.b(paramString, false)) {
       return paramQQAppInterface.a(paramContext, paramString);
     }
@@ -741,7 +746,7 @@ public class ChatActivityUtils
       String str1;
       if (localSourceMsgInfo != null)
       {
-        String str2 = bgsu.a(paramContext, 3, localSourceMsgInfo.mSourceMsgTime * 1000L).toString();
+        String str2 = bhsw.a(paramContext, 3, localSourceMsgInfo.mSourceMsgTime * 1000L).toString();
         str1 = "";
         if (!TextUtils.isEmpty(localSourceMsgInfo.mAnonymousNickName))
         {
@@ -763,7 +768,7 @@ public class ChatActivityUtils
             break label478;
           }
           localStringBuilder2.append(paramQQAppInterface.msg).append("\r\n");
-          localStringBuilder1.append(new bdnt(paramQQAppInterface.msg, 13, 32));
+          localStringBuilder1.append(new begp(paramQQAppInterface.msg, 13, 32));
           label226:
           MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "doubleClk", paramChatMessage.frienduin, paramChatMessage);
         }
@@ -782,7 +787,7 @@ public class ChatActivityUtils
       {
         localStringBuilder2.append(paramQQAppInterface);
         paramQQAppInterface = localStringBuilder2.toString();
-        if ((paramView.getId() != 2131371338) || (!(paramView instanceof ETTextView))) {
+        if ((paramView.getId() != 2131371445) || (!(paramView instanceof ETTextView))) {
           break label623;
         }
         return localStringBuilder1.toString();
@@ -793,26 +798,26 @@ public class ChatActivityUtils
         break;
         if (localSourceMsgInfo.mSourceMsgSenderUin == 50000000L)
         {
-          Object localObject = ahgl.a(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.istroop, localSourceMsgInfo.mSourceMsgSeq);
+          Object localObject = ahpx.a(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.istroop, localSourceMsgInfo.mSourceMsgSeq);
           paramContext = str1;
           if (localObject == null) {
             break label82;
           }
-          localObject = bfre.a((MessageRecord)localObject);
+          localObject = bgrf.a((MessageRecord)localObject);
           paramContext = str1;
           if (localObject == null) {
             break label82;
           }
-          localSourceMsgInfo.mAnonymousNickName = ((bfrf)localObject).jdField_c_of_type_JavaLangString;
+          localSourceMsgInfo.mAnonymousNickName = ((bgrg)localObject).jdField_c_of_type_JavaLangString;
           paramContext = str1;
           break label82;
         }
         if (paramChatMessage.istroop == 0)
         {
-          paramContext = bglf.m(paramQQAppInterface, localSourceMsgInfo.mSourceMsgSenderUin + "");
+          paramContext = bhlg.m(paramQQAppInterface, localSourceMsgInfo.mSourceMsgSenderUin + "");
           break label82;
         }
-        paramContext = bglf.a(paramQQAppInterface, paramChatMessage.istroop, paramChatMessage.frienduin, localSourceMsgInfo.mSourceMsgSenderUin + "");
+        paramContext = bhlg.a(paramQQAppInterface, paramChatMessage.istroop, paramChatMessage.frienduin, localSourceMsgInfo.mSourceMsgSenderUin + "");
         break label82;
         paramQQAppInterface = paramQQAppInterface.a().a(paramChatMessage.frienduin, 1, localSourceMsgInfo.mSourceMsgSeq, 0L);
         break label158;
@@ -821,21 +826,21 @@ public class ChatActivityUtils
         if (localSourceMsgInfo.mSourceSummaryFlag == 1)
         {
           localStringBuilder2.append(localSourceMsgInfo.mSourceMsgText).append("\r\n");
-          localStringBuilder1.append(new bdnt(localSourceMsgInfo.mSourceMsgText, 13, 32));
+          localStringBuilder1.append(new begp(localSourceMsgInfo.mSourceMsgText, 13, 32));
           break label226;
         }
         if (paramQQAppInterface != null)
         {
           localStringBuilder2.append(paramQQAppInterface.msg).append("\r\n");
-          localStringBuilder1.append(new bdnt(paramQQAppInterface.msg, 13, 32));
+          localStringBuilder1.append(new begp(paramQQAppInterface.msg, 13, 32));
           break label226;
         }
         localStringBuilder2.append(localSourceMsgInfo.mSourceMsgText).append("\r\n");
-        localStringBuilder1.append(new bdnt(localSourceMsgInfo.mSourceMsgText, 13, 32));
+        localStringBuilder1.append(new begp(localSourceMsgInfo.mSourceMsgText, 13, 32));
         break label226;
       }
       label623:
-      if ((paramView.getId() == 2131364407) && ((ETTextView)paramView.findViewById(2131371338) != null)) {
+      if ((paramView.getId() == 2131364451) && ((ETTextView)paramView.findViewById(2131371445) != null)) {
         return localStringBuilder1.toString();
       }
       return paramQQAppInterface;
@@ -937,10 +942,45 @@ public class ChatActivityUtils
   
   public static void a()
   {
-    if ((jdField_a_of_type_Bgpa != null) && (jdField_a_of_type_Bgpa.isShowing())) {
-      jdField_a_of_type_Bgpa.dismiss();
+    if ((jdField_a_of_type_Bhpc != null) && (jdField_a_of_type_Bhpc.isShowing())) {
+      jdField_a_of_type_Bhpc.dismiss();
     }
-    jdField_a_of_type_Bgpa = null;
+    jdField_a_of_type_Bhpc = null;
+  }
+  
+  public static void a(int paramInt1, long paramLong, int paramInt2, int paramInt3)
+  {
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder(100);
+      ((StringBuilder)localObject).append("startGroupVoice, uinType[").append(paramInt1).append("], groupUin[").append(paramLong).append("], roomId[").append(paramInt2).append("], gameId[").append(paramInt3).append("]");
+      QLog.i("ChatActivityUtils", 4, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("roomid", String.valueOf(paramInt2));
+    ((Bundle)localObject).putString("gameId", String.valueOf(paramInt3));
+    ((Bundle)localObject).putString("groupUin", String.valueOf(paramLong));
+    ((Bundle)localObject).putString("uinType", String.valueOf(paramInt1));
+    ((Bundle)localObject).putString("fromid", "10032");
+    ((Bundle)localObject).putString("first", "2");
+    ((Bundle)localObject).putString("roomtype", "10001");
+    ((Bundle)localObject).putString("is_record", "0");
+    ((Bundle)localObject).putString("enter_record_if_finish", "0");
+    ((Bundle)localObject).putString("first_jump_mode", "plugin");
+    ((Bundle)localObject).putString("startsrc", "group");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqqapi://now/openroom?");
+    Iterator localIterator = ((Bundle)localObject).keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localStringBuilder.append(str).append("=").append(((Bundle)localObject).getString(str)).append("&");
+    }
+    ((Bundle)localObject).putString("mqqScheme", localStringBuilder.toString());
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ChatActivityUtils", 4, ((Bundle)localObject).toString());
+    }
+    ((awcc)awcc.a().getManager(306)).a((Bundle)localObject);
   }
   
   public static void a(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2)
@@ -961,7 +1001,7 @@ public class ChatActivityUtils
       return;
     }
     paramQQAppInterface = new Intent("com.tencent.av.EXIT_VIDEO_PROCESS");
-    mtl.a(paramQQAppInterface, paramLong);
+    muk.a(paramQQAppInterface, paramLong);
     paramContext.sendBroadcast(paramQQAppInterface);
   }
   
@@ -973,18 +1013,18 @@ public class ChatActivityUtils
       return;
       try
       {
-        if (jdField_a_of_type_Biau == null)
+        if (jdField_a_of_type_Bjbs == null)
         {
-          jdField_a_of_type_Biau = new biau(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298998));
-          jdField_a_of_type_Biau.c(2131717771);
+          jdField_a_of_type_Bjbs = new bjbs(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299011));
+          jdField_a_of_type_Bjbs.c(2131717902);
         }
-        jdField_a_of_type_Biau.show();
+        jdField_a_of_type_Bjbs.show();
         return;
       }
       catch (Exception paramActivity) {}finally
       {
-        if ((jdField_a_of_type_Biau != null) && (!jdField_a_of_type_Biau.isShowing())) {
-          jdField_a_of_type_Biau = null;
+        if ((jdField_a_of_type_Bjbs != null) && (!jdField_a_of_type_Bjbs.isShowing())) {
+          jdField_a_of_type_Bjbs = null;
         }
       }
     }
@@ -1008,10 +1048,10 @@ public class ChatActivityUtils
         break label393;
       }
       localFragmentActivity = (FragmentActivity)paramActivity;
-      if (anos.a(localFragmentActivity.getChatFragment().a(), paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (aoat.a(localFragmentActivity.getChatFragment().a(), paramSessionInfo.jdField_a_of_type_JavaLangString)) {
         break label459;
       }
-      localFragmentActivity.getChatFragment().a().e(localFragmentActivity.getString(2131693925));
+      localFragmentActivity.getChatFragment().a().e(localFragmentActivity.getString(2131693942));
     }
     label393:
     label459:
@@ -1083,9 +1123,9 @@ public class ChatActivityUtils
         if ((i == 3019) && (((paramActivity instanceof SplashActivity)) || ((paramActivity instanceof ChatActivity))))
         {
           localFragmentActivity = (FragmentActivity)paramActivity;
-          if (!arkw.a(localFragmentActivity.getChatFragment().a(), paramSessionInfo.jdField_a_of_type_JavaLangString))
+          if (!asam.a(localFragmentActivity.getChatFragment().a(), paramSessionInfo.jdField_a_of_type_JavaLangString))
           {
-            localFragmentActivity.getChatFragment().a().e(localFragmentActivity.getString(2131693925));
+            localFragmentActivity.getChatFragment().a().e(localFragmentActivity.getString(2131693942));
             return;
           }
         }
@@ -1152,12 +1192,12 @@ public class ChatActivityUtils
       for (;;)
       {
         if ((i != 0) && (j != 0)) {
-          localObject1 = anni.a(2131700376);
+          localObject1 = anzj.a(2131700483);
         }
         for (;;)
         {
-          localObject2 = new adsl(paramActivity, paramOnClickListener);
-          bglp.a(paramActivity, null, (String)localObject1, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject2, new adsm(paramOnClickListener));
+          localObject2 = new aebn(paramActivity, paramOnClickListener);
+          bhlq.a(paramActivity, null, (String)localObject1, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject2, new aebo(paramOnClickListener));
           return;
           i = 0;
           break;
@@ -1179,9 +1219,9 @@ public class ChatActivityUtils
             break;
           }
           if (i != 0) {
-            localObject1 = anni.a(2131700354);
+            localObject1 = anzj.a(2131700461);
           } else {
-            localObject1 = anni.a(2131700361);
+            localObject1 = anzj.a(2131700468);
           }
         }
       }
@@ -1198,44 +1238,44 @@ public class ChatActivityUtils
     }
     if (paramBoolean2)
     {
-      b(paramActivity, 2131718043, 1);
+      b(paramActivity, 2131718176, 1);
       return;
     }
-    b(paramActivity, 2131718045, 1);
+    b(paramActivity, 2131718178, 1);
   }
   
   public static void a(Context paramContext)
   {
-    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131697667));
+    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131697751));
     localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131165608), paramContext.getResources().getColor(2131165613)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    bglp.a(paramContext, paramContext.getString(2131697666), localSpannableString, 0, 2131690566, null, null, new adsi(paramContext)).show();
+    bhlq.a(paramContext, paramContext.getString(2131697750), localSpannableString, 0, 2131690562, null, null, new aebk(paramContext)).show();
   }
   
   public static void a(Context paramContext, int paramInt)
   {
-    new bibh(paramContext).a(paramInt, paramContext.getResources().getDimensionPixelSize(2131298998), 0, 0);
+    new bjcf(paramContext).a(paramInt, paramContext.getResources().getDimensionPixelSize(2131299011), 0, 0);
   }
   
   public static void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    QQToast.a(paramContext, paramInt1, paramInt2).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+    QQToast.a(paramContext, paramInt1, paramInt2).b(paramContext.getResources().getDimensionPixelSize(2131299011));
   }
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt)
   {
-    Object localObject2 = paramQQAppInterface.a().a(bgkh.a(paramLong));
+    Object localObject2 = paramQQAppInterface.a().a(bhki.a(paramLong));
     if ((localObject2 != null) && (QLog.isColorLevel())) {
       QLog.d("gameShareOnClick", 2, "<--gameShareOnClick appShareID.bundleid" + ((AppShareID)localObject2).bundleid);
     }
-    if ((localObject2 != null) && (((AppShareID)localObject2).bundleid != null) && (bgnw.a(paramContext, ((AppShareID)localObject2).bundleid)))
+    if ((localObject2 != null) && (((AppShareID)localObject2).bundleid != null) && (bhny.a(paramContext, ((AppShareID)localObject2).bundleid)))
     {
-      long l = bgkh.b(paramLong);
+      long l = bhki.b(paramLong);
       Object localObject1 = paramQQAppInterface.a().a(String.valueOf(l));
       localObject2 = ((AppShareID)localObject2).bundleid;
       if (localObject1 == null)
       {
         localObject1 = null;
-        bgnw.a(paramContext, (String)localObject2, (String)localObject1);
+        bhny.a(paramContext, (String)localObject2, (String)localObject1);
         if ((paramInt != -3005) && (paramInt != -3004) && ((paramString == null) || (!paramString.startsWith("https://gamecenter.qq.com")))) {
           break label206;
         }
@@ -1244,7 +1284,7 @@ public class ChatActivityUtils
       for (paramInt = 1;; paramInt = 0)
       {
         if (paramInt != 0) {
-          bctj.a(BaseApplication.getContext()).a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "Game_center", "Launch_game", 0, 1, null, String.valueOf(bgkh.b(paramLong)), null, null, null);
+          bdmc.a(BaseApplication.getContext()).a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "Game_center", "Launch_game", 0, 1, null, String.valueOf(bhki.b(paramLong)), null, null, null);
         }
         return;
         localObject1 = ((OpenID)localObject1).openID;
@@ -1269,28 +1309,28 @@ public class ChatActivityUtils
       if (55901189L != paramLong) {
         break label181;
       }
-      paramString = blsi.a();
+      paramString = bmtk.a();
       paramString.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
       paramString.jdField_b_of_type_JavaLangString = paramQQAppInterface.getCurrentNickname();
-      blsb.a((Activity)paramContext, paramString, str, "mqqChat", -1);
+      bmtd.a((Activity)paramContext, paramString, str, "mqqChat", -1);
     }
     for (;;)
     {
       if (paramInt == 0) {
         break label333;
       }
-      bctj.a(BaseApplication.getContext()).a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "Game_center", "Clk_game_in", 0, 1, null, String.valueOf(bgkh.b(paramLong)), null, null, null);
+      bdmc.a(BaseApplication.getContext()).a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "Game_center", "Clk_game_in", 0, 1, null, String.valueOf(bhki.b(paramLong)), null, null, null);
       return;
       paramInt = 0;
       break;
       label181:
       b(str);
       Intent localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
-      paramString = nko.a(str, "from=androidqq");
+      paramString = nmj.a(str, "from=androidqq");
       if (paramInt != 0)
       {
         localIntent.putExtra("param_force_internal_browser", true);
-        paramString = nko.a(str, "platformId=qq_m");
+        paramString = nmj.a(str, "platformId=qq_m");
       }
       localIntent.putExtra("injectrecommend", false);
       localIntent.putExtra("url", paramString.trim());
@@ -1308,7 +1348,7 @@ public class ChatActivityUtils
       paramContext.startActivity(localIntent);
     }
     label333:
-    bctj.a(BaseApplication.getContext()).a(paramQQAppInterface, "sha_click", 1, "", "", String.valueOf(bgkh.b(paramLong)));
+    bdmc.a(BaseApplication.getContext()).a(paramQQAppInterface, "sha_click", 1, "", "", String.valueOf(bhki.b(paramLong)));
   }
   
   public static void a(SessionInfo paramSessionInfo, Intent paramIntent)
@@ -1350,7 +1390,7 @@ public class ChatActivityUtils
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = true;
-    if (bgnt.d(BaseApplication.getContext())) {
+    if (bhnv.d(BaseApplication.getContext())) {
       if (paramInt == 0)
       {
         paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
@@ -1389,9 +1429,9 @@ public class ChatActivityUtils
           }
         }
       } while (paramInt == 25);
-      awhl localawhl = (awhl)paramQQAppInterface.getManager(16);
+      axad localaxad = (axad)paramQQAppInterface.getManager(16);
       String str = paramString1;
-      if (localawhl != null)
+      if (localaxad != null)
       {
         str = paramString1;
         if (paramInt == 1006)
@@ -1404,7 +1444,7 @@ public class ChatActivityUtils
       {
         try
         {
-          str = bglf.e(paramQQAppInterface, paramString2);
+          str = bhlg.e(paramQQAppInterface, paramString2);
           paramString1 = str;
           l = Long.parseLong(str);
           paramString1 = str;
@@ -1414,7 +1454,7 @@ public class ChatActivityUtils
           if (paramBoolean1)
           {
             paramString1 = str;
-            localawhl.b(paramInt, paramString2);
+            localaxad.b(paramInt, paramString2);
             i = 1;
             if ((paramInt == 1001) || (paramInt == 10002))
             {
@@ -1448,7 +1488,7 @@ public class ChatActivityUtils
             jdField_a_of_type_JavaUtilQueue.offer(str);
           }
           paramString1 = str;
-          localawhl.a(paramInt, paramString2);
+          localaxad.a(paramInt, paramString2);
           continue;
           int i = 0;
         }
@@ -1466,13 +1506,13 @@ public class ChatActivityUtils
       }
       if (paramBoolean1)
       {
-        b(paramActivity, 2131718043, 1);
+        b(paramActivity, 2131718176, 1);
         return;
       }
-      b(paramActivity, 2131718045, 1);
+      b(paramActivity, 2131718178, 1);
       return;
     }
-    b(paramActivity, 2131693919, 1);
+    b(paramActivity, 2131693936, 1);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, int paramInt1, Intent paramIntent, int paramInt2)
@@ -1507,19 +1547,19 @@ public class ChatActivityUtils
         }
         return;
       }
-      str = bgmo.b(paramActivity, (Uri)localObject);
+      str = bhmq.b(paramActivity, (Uri)localObject);
       if (str == null) {
         break label836;
       }
-      bgmo.a(paramActivity, str);
-      if (!bgmg.e(str))
+      bhmq.a(paramActivity, str);
+      if (!bhmi.e(str))
       {
-        QQToast.a(paramActivity, paramActivity.getString(2131692205), 0).b(paramActivity.getResources().getDimensionPixelSize(2131298998));
+        QQToast.a(paramActivity, paramActivity.getString(2131692210), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299011));
         return;
       }
       if (!new File(str).exists())
       {
-        QQToast.a(paramActivity, paramActivity.getString(2131694324), 0).b(paramActivity.getResources().getDimensionPixelSize(2131298998));
+        QQToast.a(paramActivity, paramActivity.getString(2131694366), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299011));
         return;
       }
     }
@@ -1527,14 +1567,14 @@ public class ChatActivityUtils
     if (paramQQAppInterface != null)
     {
       localObject = paramQQAppInterface.getAccount();
-      Friends localFriends = ((anmw)paramQQAppInterface.getManager(51)).e((String)localObject);
+      Friends localFriends = ((anyw)paramQQAppInterface.getManager(51)).e((String)localObject);
       localIntent.putExtra("PhotoConst.MY_UIN", (String)localObject);
       if (localFriends != null) {
         localIntent.putExtra("PhotoConst.MY_NICK", localFriends.name);
       }
       localObject = (HotChatManager)paramQQAppInterface.getManager(60);
       if (localObject != null) {
-        localIntent.putExtra("showFlashPic", anlk.a(paramSessionInfo.jdField_a_of_type_Int, (HotChatManager)localObject, paramSessionInfo.jdField_b_of_type_JavaLangString));
+        localIntent.putExtra("showFlashPic", anxg.a(paramSessionInfo.jdField_a_of_type_Int, (HotChatManager)localObject, paramSessionInfo.jdField_b_of_type_JavaLangString));
       }
     }
     localIntent.putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
@@ -1543,7 +1583,7 @@ public class ChatActivityUtils
     localIntent.putExtra("uinname", paramSessionInfo.jdField_d_of_type_JavaLangString);
     localIntent.putExtra("entrance", paramSessionInfo.c);
     localIntent.putExtra("key_confess_topicid", paramSessionInfo.jdField_e_of_type_Int);
-    localIntent.putExtra("is_anonymous", njo.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString));
+    localIntent.putExtra("is_anonymous", nlj.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString));
     int j = 0;
     int k = -1;
     int i = k;
@@ -1577,7 +1617,7 @@ public class ChatActivityUtils
           break label1072;
         }
         if (paramQQAppInterface != null) {
-          agaa.a((Intent)localObject, paramSessionInfo, paramQQAppInterface);
+          agju.a((Intent)localObject, paramSessionInfo, paramQQAppInterface);
         }
         ((Intent)localObject).putExtra("callFromFastImage", true);
         ((Intent)localObject).putExtra("FROM_WHERE", "FromFastImage");
@@ -1613,12 +1653,12 @@ public class ChatActivityUtils
       paramActivity.startActivityForResult((Intent)localObject, i);
       return;
       label836:
-      QQToast.a(paramActivity, paramActivity.getString(2131694324), 0).b(paramActivity.getResources().getDimensionPixelSize(2131298998));
+      QQToast.a(paramActivity, paramActivity.getString(2131694366), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299011));
       return;
       if ((paramActivity instanceof SplashActivity))
       {
         localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-        localObject = afur.a(localIntent, null);
+        localObject = agej.a(localIntent, null);
         label893:
         ((Intent)localObject).putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
         if (paramSessionInfo.jdField_a_of_type_Int != 9501) {
@@ -1628,11 +1668,11 @@ public class ChatActivityUtils
           break label1014;
         }
         ((Intent)localObject).putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-        localObject = afur.a((Intent)localObject, null);
+        localObject = agej.a((Intent)localObject, null);
       }
       for (;;)
       {
-        ((Intent)localObject).putExtra(bgkb.h, 82);
+        ((Intent)localObject).putExtra(bhkc.h, 82);
         ((Intent)localObject).putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
         ((Intent)localObject).putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", false);
         break;
@@ -1655,7 +1695,7 @@ public class ChatActivityUtils
       if (paramInt2 == 1)
       {
         if (paramQQAppInterface != null) {
-          agaa.a((Intent)localObject, paramSessionInfo, paramQQAppInterface);
+          agju.a((Intent)localObject, paramSessionInfo, paramQQAppInterface);
         }
         ((Intent)localObject).putExtra("FROM_WHERE", "FromCamera");
         ((Intent)localObject).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1008);
@@ -1667,13 +1707,13 @@ public class ChatActivityUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, String paramString5, Map<String, String> paramMap, boolean paramBoolean2)
   {
-    int n = addy.a().a(0, 1, 1, 0, 3000, 101, 4L, Process.myTid(), "bootVideo");
+    int n = admw.a().a(0, 1, 1, 0, 3000, 101, 4L, Process.myTid(), "bootVideo");
     Object localObject1 = paramString1;
     Object localObject2;
     if (paramInt == 1011)
     {
-      if (!mrs.a("random_talk_bg_2.png")) {
-        mrs.a(paramQQAppInterface);
+      if (!msq.a("random_talk_bg_2.png")) {
+        msq.a(paramQQAppInterface);
       }
       localObject1 = paramString1;
       if (paramMap != null)
@@ -1723,11 +1763,11 @@ public class ChatActivityUtils
         }
         if (paramInt == 0)
         {
-          paramString1 = ((anmw)paramQQAppInterface.getManager(51)).e((String)localObject1);
+          paramString1 = ((anyw)paramQQAppInterface.getManager(51)).e((String)localObject1);
           if (paramString1 != null)
           {
             if (QLog.isColorLevel()) {
-              QLog.d("ChatActivityUtils", 2, "enterVideo terminal: " + bglf.b(paramString1) + ", abilityBits: " + paramString1.abilityBits + ", _eSupportVoice: " + 1);
+              QLog.d("ChatActivityUtils", 2, "enterVideo terminal: " + bhlg.b(paramString1) + ", abilityBits: " + paramString1.abilityBits + ", _eSupportVoice: " + 1);
             }
             if (paramString1.getNetWorkType() != 2)
             {
@@ -1752,7 +1792,7 @@ public class ChatActivityUtils
         {
           paramString1.printStackTrace();
           continue;
-          Object localObject5 = ((awmz)paramQQAppInterface.getManager(11)).a();
+          Object localObject5 = ((axfr)paramQQAppInterface.getManager(11)).a();
           Object localObject3;
           if (localObject5 != null)
           {
@@ -1768,7 +1808,7 @@ public class ChatActivityUtils
             }
             while (((paramInt == 24) || (paramInt == 25)) && ((localObject5 == null) || (((RespondQueryQQBindingStat)localObject5).nationCode.equals("")) || (((RespondQueryQQBindingStat)localObject5).mobileNo.equals(""))))
             {
-              QQToast.a(paramContext, 2131695063, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+              QQToast.a(paramContext, 2131695106, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
               return;
               localObject2 = localObject1;
               localObject4 = paramString3;
@@ -1804,7 +1844,7 @@ public class ChatActivityUtils
               return;
               if (TextUtils.isEmpty(paramString3))
               {
-                paramString1 = ((awmz)paramQQAppInterface.getManager(11)).a((String)localObject1);
+                paramString1 = ((axfr)paramQQAppInterface.getManager(11)).a((String)localObject1);
                 if (paramString1 != null)
                 {
                   paramString3 = paramString1.mobileNo;
@@ -1903,14 +1943,14 @@ public class ChatActivityUtils
               {
                 if (paramBoolean1)
                 {
-                  paramQQAppInterface = paramContext.getString(2131697483);
+                  paramQQAppInterface = paramContext.getString(2131697565);
                   if (!(paramContext instanceof Activity)) {
                     break label1245;
                   }
                 }
                 for (;;)
                 {
-                  bglp.a(paramContext, 230, null, paramQQAppInterface, null, paramContext.getString(2131694081), new adso(), null).show();
+                  bhlq.a(paramContext, 230, null, paramQQAppInterface, null, paramContext.getString(2131694098), new aebq(), null).show();
                   return;
                   if (!QLog.isColorLevel()) {
                     break;
@@ -1920,7 +1960,7 @@ public class ChatActivityUtils
                   paramString4 = VideoMsgTools.a(paramQQAppInterface, paramInt, paramString1);
                   j = 0;
                   break label1128;
-                  paramQQAppInterface = paramContext.getString(2131697484);
+                  paramQQAppInterface = paramContext.getString(2131697566);
                   break label1167;
                   paramContext = com.tencent.mobileqq.app.BaseActivity.sTopActivity;
                 }
@@ -1928,32 +1968,32 @@ public class ChatActivityUtils
               label1245:
               localStatus = paramQQAppInterface.getOnlineStatus();
               bool2 = a(paramQQAppInterface, paramString1);
-              localObject5 = ((anmw)paramQQAppInterface.getManager(51)).b(paramString1);
+              localObject5 = ((anyw)paramQQAppInterface.getManager(51)).b(paramString1);
               int k;
               int m;
               if (localObject5 != null)
               {
-                k = bglf.a((Friends)localObject5, paramQQAppInterface);
-                m = bglf.a(((Friends)localObject5).detalStatusFlag, ((Friends)localObject5).iTermType);
-                i = ((anuk)paramQQAppInterface.a(13)).g();
+                k = bhlg.a((Friends)localObject5, paramQQAppInterface);
+                m = bhlg.a(((Friends)localObject5).detalStatusFlag, ((Friends)localObject5).iTermType);
+                i = ((aogu)paramQQAppInterface.a(13)).g();
                 if (i == 2)
                 {
                   i = 0;
-                  i1 = bhjt.a(paramQQAppInterface, paramString1, 3, true, null);
+                  i1 = biki.a(paramQQAppInterface, paramString1, 3, true, null);
                   if ((i1 != 0) && ((paramInt == 0) || (paramInt == 1004) || (paramInt == 1000) || (paramInt == 1003)))
                   {
-                    localObject5 = (bgxe)paramQQAppInterface.getManager(45);
-                    if ((!new File(bgxe.a(i1, 3)).exists()) && (bhjt.b())) {
-                      ((bgxe)localObject5).a(i1, 3, false, 0, "colorring");
+                    localObject5 = (bhxi)paramQQAppInterface.getManager(45);
+                    if ((!new File(bhxi.a(i1, 3)).exists()) && (biki.b())) {
+                      ((bhxi)localObject5).a(i1, 3, false, 0, "colorring");
                     }
                   }
-                  i2 = mmo.a(paramQQAppInterface, paramString1, true, true);
+                  i2 = mnl.a(paramQQAppInterface, paramString1, true, true);
                   if (i2 != 0)
                   {
-                    i3 = bhjt.a();
-                    localObject5 = bhjt.a(paramQQAppInterface, i2, i3, null);
-                    if ((!TextUtils.isEmpty((CharSequence)localObject5)) && (!new File((String)localObject5).exists()) && (bhjt.b())) {
-                      ((bhjt)paramQQAppInterface.getManager(84)).a(i2, i3, false, 0);
+                    i3 = biki.a();
+                    localObject5 = biki.a(paramQQAppInterface, i2, i3, null);
+                    if ((!TextUtils.isEmpty((CharSequence)localObject5)) && (!new File((String)localObject5).exists()) && (biki.b())) {
+                      ((biki)paramQQAppInterface.getManager(84)).a(i2, i3, false, 0);
                     }
                   }
                 }
@@ -1963,11 +2003,11 @@ public class ChatActivityUtils
                   {
                     for (;;)
                     {
-                      localObject5 = (bhke)paramQQAppInterface.a(46);
+                      localObject5 = (bikt)paramQQAppInterface.a(46);
                       Bundle localBundle = new Bundle();
                       localBundle.putLong("uin", Long.parseLong(paramString1));
                       localBundle.putString("phone", "");
-                      ((bhke)localObject5).a(2, localBundle);
+                      ((bikt)localObject5).a(2, localBundle);
                       localObject5 = new Intent(paramContext, AVActivity.class);
                       ((Intent)localObject5).addFlags(262144);
                       ((Intent)localObject5).addFlags(268435456);
@@ -2020,8 +2060,8 @@ public class ChatActivityUtils
                       label2630:
                       try
                       {
-                        paramString2 = bgmj.a(paramString2);
-                        bgmj.a("ChatActivityUtils", paramString2);
+                        paramString2 = bhml.a(paramString2);
+                        bhml.a("ChatActivityUtils", paramString2);
                         label2012:
                         paramString4 = (String)paramMap.get("actid");
                         ((Intent)localObject5).putExtra("actId", paramString4);
@@ -2147,42 +2187,12 @@ public class ChatActivityUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, Map<String, String> paramMap)
   {
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append("startGroupVideo, uinType[").append(paramInt).append("], uin[").append(paramString).append("], chatSession[").append(paramQQAppInterface.a().a(paramString, false)).append("]");
-      QLog.i("ChatActivityUtils", 4, localStringBuilder.toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "uinType = " + paramInt + " groupUin = " + paramString);
     }
-    avjb.b("3236166");
-    a(paramQQAppInterface, paramContext, paramInt, paramString, true, true, paramMap);
-    paramContext = (String)paramMap.get("from");
-    new IVPluginDataReporter().opDepartment("group_video").opName("startGroupVideo").opType(paramContext).report();
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      paramInt = Integer.valueOf((String)paramMap.get("MultiAVType")).intValue();
-      paramString = paramQQAppInterface.a().a(l, paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityUtils", 2, String.format("startGroupVideo from=%s groupId=%s avType=%s roomInfo=%s", new Object[] { paramContext, Long.valueOf(l), Integer.valueOf(paramInt), paramString }));
-      }
-      if (paramString.a())
-      {
-        if ("tipBar".equals(paramContext))
-        {
-          bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800ABD4", "0X800ABD4", 0, 0, "", "", "", "");
-          return;
-        }
-        if ("itemBuilder".equals(paramContext))
-        {
-          bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800ABD5", "0X800ABD5", 0, 0, "", "", "", "");
-          return;
-        }
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ChatActivityUtils", 1, "startGroupVideo education report fail.", paramQQAppInterface);
-    }
+    GroupRoomManageProto.GetGameStatusByGroupCodeReq localGetGameStatusByGroupCodeReq = new GroupRoomManageProto.GetGameStatusByGroupCodeReq();
+    localGetGameStatusByGroupCodeReq.group_code.set(Long.valueOf(paramString).longValue());
+    new awan(paramQQAppInterface, Long.valueOf(paramString).longValue()).a(93113, localGetGameStatusByGroupCodeReq.toByteArray(), false, new aebe(paramQQAppInterface, paramContext, paramInt, paramString, paramMap));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, Map<String, String> paramMap)
@@ -2200,33 +2210,33 @@ public class ChatActivityUtils
       do
       {
         return;
-        if (!bgnt.d(BaseApplication.getContext()))
+        if (!bhnv.d(BaseApplication.getContext()))
         {
-          QQToast.a(paramContext, 2131693919, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-          bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005767", "0X8005767", 0, 0, "", "", "", "");
+          QQToast.a(paramContext, 2131693936, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+          bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005767", "0X8005767", 0, 0, "", "", "", "");
           return;
         }
-        bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005768", "0X8005768", 0, 0, "", "", "", "");
+        bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005768", "0X8005768", 0, 0, "", "", "", "");
         if ((paramQQAppInterface.a().a()) && (!paramQQAppInterface.d()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("ChatActivityUtils", 2, "enterNewGroupVideo phone is calling!");
           }
-          paramQQAppInterface = paramContext.getString(2131695058);
-          bglp.a(paramContext, 230, paramContext.getString(2131695038), paramQQAppInterface, 2131690582, 2131694081, new adrx(), null).show();
-          mqw.a();
+          paramQQAppInterface = paramContext.getString(2131695101);
+          bhlq.a(paramContext, 230, paramContext.getString(2131695081), paramQQAppInterface, 2131690580, 2131694098, new aeay(), null).show();
+          mru.a();
           return;
         }
-        if (!lkw.e())
+        if (!llk.e())
         {
           if (QLog.isColorLevel()) {
             QLog.d("ChatActivityUtils", 2, "enterNewGroupVideo old engine!");
           }
           if (paramInt == 1011)
           {
-            paramString = paramContext.getString(2131695239);
-            bglp.a(paramContext, 230, paramContext.getString(2131695038), paramString, 2131690582, 2131694970, new adry(), null).show();
-            bcst.b(paramQQAppInterface, "CliOper", "", "", "0X80053BD", "0X80053BD", 0, 0, "", "", "", "");
+            paramString = paramContext.getString(2131695282);
+            bhlq.a(paramContext, 230, paramContext.getString(2131695081), paramString, 2131690580, 2131695013, new aeaz(), null).show();
+            bdll.b(paramQQAppInterface, "CliOper", "", "", "0X80053BD", "0X80053BD", 0, 0, "", "", "", "");
             return;
           }
         }
@@ -2237,8 +2247,8 @@ public class ChatActivityUtils
       QLog.d("ChatActivityUtils", 2, "invalid discussId: " + paramString);
       return;
     } while (paramQQAppInterface.a().a(paramContext, paramString));
-    long l1 = azwm.b(paramString);
-    int m = mue.b(paramInt);
+    long l1 = bapc.b(paramString);
+    int m = mvd.b(paramInt);
     int k = 0;
     int j = 0;
     int i = k;
@@ -2278,17 +2288,17 @@ public class ChatActivityUtils
       if (!paramQQAppInterface.a().c()) {
         break;
       }
-      QQToast.a(paramContext, 2131694869, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+      QQToast.a(paramContext, 2131694911, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
       return;
       paramQQAppInterface.a().a(-1034L, false);
     }
-    QQToast.a(paramContext, 2131694871, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+    QQToast.a(paramContext, 2131694913, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
     return;
     label677:
     Object localObject2;
     Object localObject3;
     if (!paramQQAppInterface.a().a(m, l1, i)) {
-      if ((paramBoolean1) && (!bgnt.h(BaseApplication.getContext())) && (!bgnt.f(BaseApplication.getContext())))
+      if ((paramBoolean1) && (!bhnv.h(BaseApplication.getContext())) && (!bhnv.f(BaseApplication.getContext())))
       {
         if (VideoController.d(VideoController.jdField_b_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin()) > 0)
         {
@@ -2297,18 +2307,18 @@ public class ChatActivityUtils
         }
         localObject1 = null;
         localObject2 = null;
-        if (bgnt.b(BaseApplication.getContext()))
+        if (bhnv.b(BaseApplication.getContext()))
         {
-          localObject1 = paramContext.getString(2131695038);
-          localObject2 = paramContext.getString(2131695034);
+          localObject1 = paramContext.getString(2131695081);
+          localObject2 = paramContext.getString(2131695077);
         }
-        if (!bgnt.c(BaseApplication.getContext())) {
+        if (!bhnv.c(BaseApplication.getContext())) {
           break label1497;
         }
-        localObject1 = paramContext.getString(2131695038);
+        localObject1 = paramContext.getString(2131695081);
         if ((paramMap != null) && (TextUtils.equals((CharSequence)paramMap.get("isVideo"), "true")))
         {
-          localObject3 = paramContext.getString(2131695035);
+          localObject3 = paramContext.getString(2131695078);
           localObject2 = localObject1;
           localObject1 = localObject3;
         }
@@ -2323,12 +2333,12 @@ public class ChatActivityUtils
         }
         QLog.e("ChatActivityUtils", 2, "enterNewGroupVideo title or content is empty");
         return;
-        localObject3 = paramContext.getString(2131695036);
+        localObject3 = paramContext.getString(2131695079);
         localObject2 = localObject1;
         localObject1 = localObject3;
         continue;
       }
-      a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131694772, 2131694784, new adrz(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramMap), new adsa());
+      a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131694814, 2131694826, new aeba(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramMap), new aebb());
       return;
       if ((paramBoolean2) && (paramQQAppInterface.d()))
       {
@@ -2336,8 +2346,8 @@ public class ChatActivityUtils
         k = paramQQAppInterface.a().c();
         if (((k != 1) && (k != 2)) || (((j >= 1) && (j <= 5)) || (paramQQAppInterface.a().e() == 1) || (paramQQAppInterface.a().e() == 2)))
         {
-          QQToast.a(paramContext, 2131695235, 1).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-          bgoo.a(paramQQAppInterface, Long.valueOf(paramString).longValue(), null);
+          QQToast.a(paramContext, 2131695278, 1).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+          bhoq.a(paramQQAppInterface, Long.valueOf(paramString).longValue(), null);
           return;
         }
         if (((k != 3) && (k != 4)) || (((j >= 1) && (j <= 5)) || (paramQQAppInterface.a().e() == 3) || (paramQQAppInterface.a().e() == 4)))
@@ -2355,10 +2365,10 @@ public class ChatActivityUtils
             if (QLog.isColorLevel()) {
               QLog.d("ChatActivityUtils", 2, "enterNewGroupVideo is multi calling!");
             }
-            localObject1 = paramContext.getString(2131694870);
-            j = muc.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString + "");
-            PopupDialog.a(paramContext, 230, null, (String)localObject1, 2131694772, 2131694784, new adsb(paramQQAppInterface, paramContext, m, i, paramInt, paramString, paramBoolean1, paramMap), new adsc(paramQQAppInterface, paramString));
-            bcst.b(null, "dc00899", "Grp_video", "", "video_jump", "exp_jump", 0, 0, paramString + "", j + "", "", "");
+            localObject1 = paramContext.getString(2131694912);
+            j = mvb.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString + "");
+            PopupDialog.a(paramContext, 230, null, (String)localObject1, 2131694814, 2131694826, new aebc(paramQQAppInterface, paramContext, m, i, paramInt, paramString, paramBoolean1, paramMap), new aebd(paramQQAppInterface, paramString));
+            bdll.b(null, "dc00899", "Grp_video", "", "video_jump", "exp_jump", 0, 0, paramString + "", j + "", "", "");
             return;
           }
         }
@@ -2381,7 +2391,7 @@ public class ChatActivityUtils
       }
       for (;;)
       {
-        ((avhx)paramQQAppInterface.getManager(236)).a(paramContext, paramQQAppInterface.getCurrentAccountUin(), paramString, (String)localObject2, (String)localObject1);
+        ((awaa)paramQQAppInterface.getManager(236)).a(paramContext, paramQQAppInterface.getCurrentAccountUin(), paramString, (String)localObject2, (String)localObject1);
         paramQQAppInterface.a().b(8, l1, i);
         return;
         label1427:
@@ -2438,7 +2448,7 @@ public class ChatActivityUtils
           QLog.d("ChatItemBuilder", 2, "chatActivity current focus is null");
         }
       }
-      localChatMessage = afur.a(paramView);
+      localChatMessage = agej.a(paramView);
     } while ((localChatMessage == null) || (ApolloUtil.a(localChatMessage)));
     Object localObject1 = null;
     boolean bool2 = true;
@@ -2480,10 +2490,10 @@ public class ChatActivityUtils
         bool2 = true;
         label209:
         localObject1 = (MessageForText)localChatMessage;
-        if (!(((MessageForText)localObject1).sb instanceof bdnt)) {
+        if (!(((MessageForText)localObject1).sb instanceof begp)) {
           break label284;
         }
-        localObject1 = ((bdnt)((MessageForText)localObject1).sb).jdField_d_of_type_JavaLangString;
+        localObject1 = ((begp)((MessageForText)localObject1).sb).jdField_d_of_type_JavaLangString;
       }
     }
     for (;;)
@@ -2497,7 +2507,7 @@ public class ChatActivityUtils
       label278:
       label284:
       label310:
-      for (localObject1 = localContext.getString(2131717664);; localObject1 = localContext.getString(2131717663))
+      for (localObject1 = localContext.getString(2131717795);; localObject1 = localContext.getString(2131717794))
       {
         break;
         bool1 = false;
@@ -2530,7 +2540,7 @@ public class ChatActivityUtils
         localObject2 = (MessageForMixedMsg)localChatMessage;
         localMessageForReplyText = ((MessageForMixedMsg)localObject2).getReplyMessage(paramQQAppInterface);
         localObject1 = "";
-        if ((paramView.getId() == 2131371338) && ((paramView instanceof ETTextView)))
+        if ((paramView.getId() == 2131371445) && ((paramView instanceof ETTextView)))
         {
           if (localMessageForReplyText != null) {
             localObject1 = a(paramQQAppInterface, localMessageForReplyText, localContext, paramView, false);
@@ -2539,8 +2549,8 @@ public class ChatActivityUtils
           bool1 = true;
           break;
         }
-        if (paramView.getId() == 2131364407) {
-          if (((ETTextView)paramView.findViewById(2131371338) == null) || (localMessageForReplyText == null)) {
+        if (paramView.getId() == 2131364451) {
+          if (((ETTextView)paramView.findViewById(2131371445) == null) || (localMessageForReplyText == null)) {
             break label1147;
           }
         }
@@ -2571,7 +2581,7 @@ public class ChatActivityUtils
             ((Intent)localObject2).putExtra("bubbleId", localChatMessage.vipBubbleID);
             ((Intent)localObject2).putExtra("bubbleDiyId", localChatMessage.vipBubbleDiyTextId);
             ((Intent)localObject2).putExtra("fontId", localChatMessage.getExtInfoFromExtStr("vip_font_id"));
-            ((Intent)localObject2).putExtra("troop_at_info", localChatMessage.getExtInfoFromExtStr(bbyw.i));
+            ((Intent)localObject2).putExtra("troop_at_info", localChatMessage.getExtInfoFromExtStr(bcrn.i));
             ((Intent)localObject2).putExtra("origin_merge_structing_msg_uniseq", a(localChatMessage, paramActivity));
             ((Intent)localObject2).putExtra("senderUin", localChatMessage.senderuin);
             ((Intent)localObject2).putExtra("sessionType", paramInt);
@@ -2601,14 +2611,14 @@ public class ChatActivityUtils
               if (1 == localChatMessage.istroop)
               {
                 paramInt = i;
-                if (njo.a(localChatMessage)) {
+                if (nlj.a(localChatMessage)) {
                   paramInt = 0;
                 }
               }
             }
             ((Intent)localObject2).putExtra("fontEffectId", paramInt);
-            ((Intent)localObject2).putExtra(ahvz.jdField_a_of_type_JavaLangString, bool1);
-            ((Intent)localObject2).putExtra(aikr.jdField_a_of_type_JavaLangString, bool2);
+            ((Intent)localObject2).putExtra(aifn.jdField_a_of_type_JavaLangString, bool1);
+            ((Intent)localObject2).putExtra(aiuk.jdField_a_of_type_JavaLangString, bool2);
             if ((localChatMessage instanceof MessageForHiBoom))
             {
               paramActivity = (MessageForHiBoom)localChatMessage;
@@ -2626,7 +2636,7 @@ public class ChatActivityUtils
               ((Intent)localObject2).putExtra("real_msg_sender_uin", paramQQAppInterface);
               ((Activity)localContext).startActivityForResult((Intent)localObject2, 14001);
               ((Activity)localContext).overridePendingTransition(2130772009, 0);
-              VasWebviewUtil.reportCommercialDrainage(paramQQAppInterface, "long_msg", "long_msg_double", "", 1, 0, 0, "", String.valueOf(anuk.a(localChatMessage.vipBubbleID)), "");
+              VasWebviewUtil.reportCommercialDrainage(paramQQAppInterface, "long_msg", "long_msg_double", "", 1, 0, 0, "", String.valueOf(aogu.a(localChatMessage.vipBubbleID)), "");
               return;
               if ((localChatMessage.istroop == 1000) || (localChatMessage.istroop == 1020) || (localChatMessage.istroop == 1004)) {
                 paramQQAppInterface = localChatMessage.frienduin;
@@ -2681,7 +2691,7 @@ public class ChatActivityUtils
       if (i != 0) {}
       for (paramInteger = "0";; paramInteger = "1")
       {
-        bcst.b(paramQQAppInterface, "P_CliOper", "Grp_set", "", "AIOchat", "Exp_dataEntry_new", 0, 0, paramString, paramInteger, "", "");
+        bdll.b(paramQQAppInterface, "P_CliOper", "Grp_set", "", "AIOchat", "Exp_dataEntry_new", 0, 0, paramString, paramInteger, "", "");
         return;
         i = 0;
         break;
@@ -2728,12 +2738,12 @@ public class ChatActivityUtils
     return (paramInt == 1001) || (paramInt == 10002) || (paramInt == 10004) || (paramInt == 1005) || (paramInt == 1009) || (paramInt == 1006) || (paramInt == 1000) || (paramInt == 1004) || (paramInt == 1021) || (paramInt == 1022) || (paramInt == 1023) || (paramInt == 1020) || (paramInt == 1025) || (paramInt == 1010) || (paramInt == 10008) || (paramInt == 10009) || (paramInt == 10010);
   }
   
-  public static boolean a(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, adsx paramadsx, adsy paramadsy)
+  public static boolean a(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz, aeca paramaeca)
   {
     if (AudioHelper.a(13) == 1)
     {
       QLog.d("ChatActivityUtils", 1, "音视频进程在等待调试器连接(界面会无响应)");
-      AudioHelper.c(anni.a(2131700385));
+      AudioHelper.c(anzj.a(2131700492));
     }
     if (!paramQQAppInterface.d())
     {
@@ -2742,95 +2752,95 @@ public class ChatActivityUtils
       }
       for (;;)
       {
-        bool = paramadsy.jdField_a_of_type_Boolean;
-        if (a((Activity)localObject, bool, new adru(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy, (com.tencent.mobileqq.app.BaseActivity)localObject, bool))) {
+        bool = paramaeca.jdField_a_of_type_Boolean;
+        if (a((Activity)localObject, bool, new aeav(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca, (com.tencent.mobileqq.app.BaseActivity)localObject, bool))) {
           break;
         }
         return false;
         localObject = com.tencent.mobileqq.app.BaseActivity.sTopActivity;
         QLog.w("ChatActivityUtils", 1, "startVideoCheck, Context[" + paramContext + "], seq[" + paramLong + "]", new Throwable("打印调用栈"));
       }
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005757", "0X8005757", 0, 0, "", "", "", "");
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800575B", "0X800575B", 0, 0, "", "", "", "");
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800575F", "0X800575F", 0, 0, "", "", "", "");
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005757", "0X8005757", 0, 0, "", "", "", "");
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X800575B", "0X800575B", 0, 0, "", "", "", "");
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X800575F", "0X800575F", 0, 0, "", "", "", "");
       if (paramQQAppInterface.a().a()) {
-        return adqu.a(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy).booleanValue();
+        return adzv.a(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca).booleanValue();
       }
       Boolean localBoolean;
-      if (((paramadsy.jdField_a_of_type_Int == 1006) && (!a(paramQQAppInterface, paramadsy.jdField_a_of_type_JavaLangString))) || (paramadsy.jdField_a_of_type_Int == 1024) || (paramadsy.jdField_a_of_type_Int == 1011))
+      if (((paramaeca.jdField_a_of_type_Int == 1006) && (!a(paramQQAppInterface, paramaeca.jdField_a_of_type_JavaLangString))) || (paramaeca.jdField_a_of_type_Int == 1024) || (paramaeca.jdField_a_of_type_Int == 1011))
       {
-        localBoolean = adqu.b(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy);
+        localBoolean = adzv.b(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca);
         if (localBoolean != null) {
           return localBoolean.booleanValue();
         }
       }
-      if ((paramadsy.jdField_a_of_type_Boolean) && (!lkl.a(paramContext))) {
-        return adqu.c(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy).booleanValue();
+      if ((paramaeca.jdField_a_of_type_Boolean) && (!lkw.a(paramContext))) {
+        return adzv.c(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca).booleanValue();
       }
-      if (paramadsy.jdField_a_of_type_Int == 1010)
+      if (paramaeca.jdField_a_of_type_Int == 1010)
       {
-        localBoolean = adqu.d(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy);
+        localBoolean = adzv.d(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca);
         if (localBoolean != null) {
           return localBoolean.booleanValue();
         }
       }
-      if ((paramadsy.jdField_a_of_type_Int == 1044) && (((askk)paramQQAppInterface.getManager(292)).a((Context)localObject))) {
+      if ((paramaeca.jdField_a_of_type_Int == 1044) && (((atag)paramQQAppInterface.getManager(292)).a((Context)localObject))) {
         return false;
       }
-      if ((paramadsy.jdField_b_of_type_Boolean) && (a(paramQQAppInterface, paramadsy.jdField_a_of_type_Int, paramadsy.jdField_a_of_type_JavaLangString, paramadsy.jdField_c_of_type_JavaLangString)) && (paramadsy.jdField_a_of_type_Int != 1024)) {
-        return adqu.e(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy).booleanValue();
+      if ((paramaeca.jdField_b_of_type_Boolean) && (a(paramQQAppInterface, paramaeca.jdField_a_of_type_Int, paramaeca.jdField_a_of_type_JavaLangString, paramaeca.jdField_c_of_type_JavaLangString)) && (paramaeca.jdField_a_of_type_Int != 1024)) {
+        return adzv.e(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca).booleanValue();
       }
-      if (!bgnt.d(paramContext)) {
-        return adqu.f(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy).booleanValue();
+      if (!bhnv.d(paramContext)) {
+        return adzv.f(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca).booleanValue();
       }
-      boolean bool = bgnt.h(paramContext);
-      if ((paramadsy.jdField_a_of_type_Int == 1024) && (!bool) && (bgnt.a(paramContext) == 2))
+      boolean bool = bhnv.h(paramContext);
+      if ((paramaeca.jdField_a_of_type_Int == 1024) && (!bool) && (bhnv.a(paramContext) == 2))
       {
-        bcst.b(null, "CliOper", "", "", "Two_call", "Out_of_wifi_tips", 0, 0, "1", "", "", "");
-        QQToast.a(paramContext, 2131694789, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-        bcst.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+        bdll.b(null, "CliOper", "", "", "Two_call", "Out_of_wifi_tips", 0, 0, "1", "", "", "");
+        QQToast.a(paramContext, 2131694831, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+        bdll.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
         return false;
       }
-      if ((paramadsy.jdField_c_of_type_Boolean) && (!bool) && (!bgnt.f(paramContext))) {
-        return adqu.g(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy).booleanValue();
+      if ((paramaeca.jdField_c_of_type_Boolean) && (!bool) && (!bhnv.f(paramContext))) {
+        return adzv.g(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca).booleanValue();
       }
     }
     else
     {
-      localObject = adqu.h(paramLong, paramQQAppInterface, paramContext, paramadsx, paramadsy);
+      localObject = adzv.h(paramLong, paramQQAppInterface, paramContext, paramaebz, paramaeca);
       if (localObject != null) {
         return ((Boolean)localObject).booleanValue();
       }
     }
-    Object localObject = (anmw)paramQQAppInterface.getManager(51);
-    if ((paramadsy.jdField_a_of_type_Int == 0) && (!((anmw)localObject).b(paramadsy.jdField_a_of_type_JavaLangString)))
+    Object localObject = (anyw)paramQQAppInterface.getManager(51);
+    if ((paramaeca.jdField_a_of_type_Int == 0) && (!((anyw)localObject).b(paramaeca.jdField_a_of_type_JavaLangString)))
     {
       if (AudioHelper.a(16) == 1) {
-        AudioHelper.a(anni.a(2131700360));
+        AudioHelper.a(anzj.a(2131700467));
       }
     }
     else
     {
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005766", "0X8005766", 0, 0, "", "", "", "");
-      if (paramadsx != null) {
-        paramadsx.b();
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005766", "0X8005766", 0, 0, "", "", "", "");
+      if (paramaebz != null) {
+        paramaebz.b();
       }
-      a(paramQQAppInterface, paramContext, paramadsy.jdField_a_of_type_Int, paramadsy.jdField_a_of_type_JavaLangString, paramadsy.jdField_b_of_type_JavaLangString, paramadsy.jdField_c_of_type_JavaLangString, paramadsy.jdField_a_of_type_Boolean, paramadsy.jdField_d_of_type_JavaLangString, paramadsy.jdField_e_of_type_JavaLangString, paramadsy.jdField_a_of_type_JavaUtilMap, paramadsy.jdField_e_of_type_Boolean);
-      if (paramadsx != null) {
-        paramadsx.c();
+      a(paramQQAppInterface, paramContext, paramaeca.jdField_a_of_type_Int, paramaeca.jdField_a_of_type_JavaLangString, paramaeca.jdField_b_of_type_JavaLangString, paramaeca.jdField_c_of_type_JavaLangString, paramaeca.jdField_a_of_type_Boolean, paramaeca.jdField_d_of_type_JavaLangString, paramaeca.jdField_e_of_type_JavaLangString, paramaeca.jdField_a_of_type_JavaUtilMap, paramaeca.jdField_e_of_type_Boolean);
+      if (paramaebz != null) {
+        paramaebz.c();
       }
       return true;
     }
-    if (paramadsy.jdField_a_of_type_Boolean) {}
-    for (int i = 2131694765;; i = 2131694766)
+    if (paramaeca.jdField_a_of_type_Boolean) {}
+    for (int i = 2131694807;; i = 2131694808)
     {
       paramQQAppInterface = paramContext.getString(i);
-      PopupDialog.a(paramContext, 230, paramContext.getString(2131695038), paramQQAppInterface, 2131690582, 2131694918, new adsf(), null);
+      PopupDialog.a(paramContext, 230, paramContext.getString(2131695081), paramQQAppInterface, 2131690580, 2131694960, new aebg(), null);
       return false;
     }
   }
   
-  static boolean a(long paramLong1, QQAppInterface paramQQAppInterface, Context paramContext, adsx paramadsx, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean, String paramString, int paramInt1, long paramLong2, int paramInt2)
+  static boolean a(long paramLong1, QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean, String paramString, int paramInt1, long paramLong2, int paramInt2)
   {
     if ((paramBoolean) && (paramQQAppInterface.d()))
     {
@@ -2839,8 +2849,8 @@ public class ChatActivityUtils
       int k = paramQQAppInterface.a().e();
       if (((j != 1) && (j != 2)) || (((i >= 1) && (i <= 5)) || (k == 1) || (k == 2)))
       {
-        QQToast.a(paramContext, 2131695235, 1).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-        bgoo.a(paramQQAppInterface, Long.valueOf(paramString).longValue(), null);
+        QQToast.a(paramContext, 2131695278, 1).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+        bhoq.a(paramQQAppInterface, Long.valueOf(paramString).longValue(), null);
         return true;
       }
       if (((j != 3) && (j != 4)) || (((i >= 1) && (i <= 5)) || (k == 3) || (k == 4)))
@@ -2865,10 +2875,10 @@ public class ChatActivityUtils
     }
     return false;
     label297:
-    String str = paramContext.getString(2131694870);
-    int i = muc.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString + "");
-    PopupDialog.a(paramContext, 230, null, str, 2131694772, 2131694784, new adss(paramLong1, paramQQAppInterface, paramContext, paramInt1, paramInt2, paramOnClickListener, paramString, i), new adst(paramadsx, paramString, i, paramQQAppInterface));
-    bcst.b(null, "dc00899", "Grp_video", "", "video_jump", "exp_jump", 0, 0, paramString + "", i + "", "", "");
+    String str = paramContext.getString(2131694912);
+    int i = mvb.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString + "");
+    PopupDialog.a(paramContext, 230, null, str, 2131694814, 2131694826, new aebu(paramLong1, paramQQAppInterface, paramContext, paramInt1, paramInt2, paramOnClickListener, paramString, i), new aebv(paramaebz, paramString, i, paramQQAppInterface));
+    bdll.b(null, "dc00899", "Grp_video", "", "video_jump", "exp_jump", 0, 0, paramString + "", i + "", "", "");
     return true;
   }
   
@@ -2956,7 +2966,7 @@ public class ChatActivityUtils
       paramOnClickListener.onClick(null, -1);
       return false;
     }
-    paramActivity = new adsn(paramOnClickListener);
+    paramActivity = new aebp(paramOnClickListener);
     if ((!bool2) && (!bool1)) {
       if (localBaseActivity != null) {
         localBaseActivity.requestPermissions(paramActivity, 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO" });
@@ -3009,7 +3019,7 @@ public class ChatActivityUtils
           {
             int j = paramString.getInt("type");
             paramString = paramString.getString("uin");
-            if ((j == paramSessionInfo.jdField_a_of_type_Int) && (paramString.equals(acwh.a(paramSessionInfo.jdField_a_of_type_JavaLangString))))
+            if ((j == paramSessionInfo.jdField_a_of_type_Int) && (paramString.equals(adak.a(paramSessionInfo.jdField_a_of_type_JavaLangString))))
             {
               if (QLog.isDevelopLevel()) {
                 QLog.d("ChatActivityUtils", 4, "isSingleWayFriendTipsBefore true");
@@ -3053,7 +3063,7 @@ public class ChatActivityUtils
           }
           int j = localJSONObject.getInt("type");
           String str = localJSONObject.getString("uin");
-          if ((j == paramInt) && (str.equals(acwh.a(paramString1)))) {
+          if ((j == paramInt) && (str.equals(adak.a(paramString1)))) {
             break label234;
           }
           ((JSONArray)localObject).put(localJSONObject);
@@ -3075,10 +3085,10 @@ public class ChatActivityUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    if ((1024 == paramInt) && (nmp.a(paramQQAppInterface, paramString))) {
+    if ((1024 == paramInt) && (nok.a(paramQQAppInterface, paramString))) {
       return false;
     }
-    paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
+    paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
     if ((paramInt == 0) && (!paramQQAppInterface.b(paramString)))
     {
       if (QLog.isDevelopLevel()) {
@@ -3096,11 +3106,11 @@ public class ChatActivityUtils
     if (QLog.isColorLevel()) {
       QLog.d("ChatActivityUtils", 2, "isMsgShielded() ==== uinType = " + paramInt);
     }
-    awhl localawhl = (awhl)paramQQAppInterface.getManager(16);
+    axad localaxad = (axad)paramQQAppInterface.getManager(16);
     boolean bool1;
     if (paramInt == 0)
     {
-      if (!((anmw)paramQQAppInterface.getManager(51)).e(paramString1)) {
+      if (!((anyw)paramQQAppInterface.getManager(51)).e(paramString1)) {
         break label261;
       }
       bool1 = true;
@@ -3113,13 +3123,13 @@ public class ChatActivityUtils
       return bool1;
       if ((paramInt == 1001) || (paramInt == 10002) || (paramInt == 10010))
       {
-        paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
-        if (localawhl == null) {
+        paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
+        if (localaxad == null) {
           break label255;
         }
       }
       label255:
-      for (bool1 = localawhl.a(paramString1);; bool1 = false)
+      for (bool1 = localaxad.a(paramString1);; bool1 = false)
       {
         if (!bool1)
         {
@@ -3136,7 +3146,7 @@ public class ChatActivityUtils
             break;
           }
           bool1 = bool3;
-          if (localawhl == null) {
+          if (localaxad == null) {
             break;
           }
           String str = paramString1;
@@ -3144,14 +3154,14 @@ public class ChatActivityUtils
           {
             str = paramString1;
             if (paramString1 == null) {
-              str = bglf.e(paramQQAppInterface, paramString2);
+              str = bhlg.e(paramQQAppInterface, paramString2);
             }
           }
           bool1 = bool3;
           if (TextUtils.isEmpty(str)) {
             break;
           }
-          bool1 = localawhl.a(str);
+          bool1 = localaxad.a(str);
           break;
         }
       }
@@ -3175,23 +3185,23 @@ public class ChatActivityUtils
         if ((paramInt1 == 10) && (paramInt3 == 2))
         {
           if (paramQQAppInterface.a().c()) {
-            QQToast.a(paramContext, 2131694869, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+            QQToast.a(paramContext, 2131694911, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
           }
           for (;;)
           {
             return true;
-            QQToast.a(paramContext, 2131694871, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+            QQToast.a(paramContext, 2131694913, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
           }
         }
         if ((paramInt1 == 2) && (paramInt3 == 10))
         {
           if (paramQQAppInterface.a().c()) {
-            QQToast.a(paramContext, 2131694872, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+            QQToast.a(paramContext, 2131694914, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
           }
           for (;;)
           {
             return true;
-            QQToast.a(paramContext, 2131694868, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+            QQToast.a(paramContext, 2131694910, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
           }
         }
       }
@@ -3199,7 +3209,7 @@ public class ChatActivityUtils
         break label274;
       }
       paramQQAppInterface = new Intent("com.tencent.av.EXIT_VIDEO_PROCESS");
-      mtl.a(paramQQAppInterface, paramLong);
+      muk.a(paramQQAppInterface, paramLong);
       paramContext.sendBroadcast(paramQQAppInterface);
     }
     for (;;)
@@ -3210,43 +3220,43 @@ public class ChatActivityUtils
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, boolean paramBoolean3, adsx paramadsx, String paramString5)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, boolean paramBoolean3, aebz paramaebz, String paramString5)
   {
-    return a(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramadsx, paramString5, null);
+    return a(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramaebz, paramString5, null);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, boolean paramBoolean3, adsx paramadsx, String paramString5, Map<String, String> paramMap)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, boolean paramBoolean3, aebz paramaebz, String paramString5, Map<String, String> paramMap)
   {
     if (QLog.isDevelopLevel()) {}
     for (Object localObject = new Throwable("打印调用栈");; localObject = null)
     {
       long l = AudioHelper.b();
       QLog.w("ChatActivityUtils", 1, "startVideo, uinType[" + paramInt + "], peerUin[" + paramString1 + "], name[" + paramString2 + "], phoneNum[" + paramString3 + "], onlyAudio[" + paramBoolean1 + "], extraUin[" + paramString4 + "], checkShieldMsg[" + paramBoolean2 + "], checkWifi[" + paramBoolean3 + "], from[" + paramString5 + "], seq[" + l + "]", (Throwable)localObject);
-      localObject = new adsy();
-      ((adsy)localObject).jdField_a_of_type_Int = paramInt;
-      ((adsy)localObject).jdField_a_of_type_JavaLangString = paramString1;
-      ((adsy)localObject).jdField_b_of_type_JavaLangString = paramString2;
-      ((adsy)localObject).jdField_c_of_type_JavaLangString = paramString3;
-      ((adsy)localObject).jdField_a_of_type_Boolean = paramBoolean1;
-      ((adsy)localObject).jdField_d_of_type_JavaLangString = paramString4;
-      ((adsy)localObject).jdField_b_of_type_Boolean = paramBoolean2;
-      ((adsy)localObject).jdField_c_of_type_Boolean = paramBoolean3;
-      ((adsy)localObject).jdField_e_of_type_JavaLangString = paramString5;
-      ((adsy)localObject).jdField_a_of_type_JavaUtilMap = paramMap;
-      ((adsy)localObject).jdField_d_of_type_Boolean = true;
-      ((adsy)localObject).jdField_e_of_type_Boolean = false;
-      return a(l, paramQQAppInterface, paramContext, paramadsx, (adsy)localObject);
+      localObject = new aeca();
+      ((aeca)localObject).jdField_a_of_type_Int = paramInt;
+      ((aeca)localObject).jdField_a_of_type_JavaLangString = paramString1;
+      ((aeca)localObject).jdField_b_of_type_JavaLangString = paramString2;
+      ((aeca)localObject).jdField_c_of_type_JavaLangString = paramString3;
+      ((aeca)localObject).jdField_a_of_type_Boolean = paramBoolean1;
+      ((aeca)localObject).jdField_d_of_type_JavaLangString = paramString4;
+      ((aeca)localObject).jdField_b_of_type_Boolean = paramBoolean2;
+      ((aeca)localObject).jdField_c_of_type_Boolean = paramBoolean3;
+      ((aeca)localObject).jdField_e_of_type_JavaLangString = paramString5;
+      ((aeca)localObject).jdField_a_of_type_JavaUtilMap = paramMap;
+      ((aeca)localObject).jdField_d_of_type_Boolean = true;
+      ((aeca)localObject).jdField_e_of_type_Boolean = false;
+      return a(l, paramQQAppInterface, paramContext, paramaebz, (aeca)localObject);
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, adsx paramadsx, Bundle paramBundle)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, aebz paramaebz, Bundle paramBundle)
   {
     long l1 = AudioHelper.b();
     Object localObject = new StringBuilder().append("startGroupAudioEx, uinType[").append(paramInt).append("], uin[").append(paramString).append("], checkWifi[").append(paramBoolean1).append("], checkMutex[").append(paramBoolean2).append("], StartVideoListener[");
     boolean bool1;
     label93:
     StringBuilder localStringBuilder;
-    if (paramadsx != null)
+    if (paramaebz != null)
     {
       bool1 = true;
       localObject = ((StringBuilder)localObject).append(bool1).append("], extroBundle[");
@@ -3265,7 +3275,7 @@ public class ChatActivityUtils
     {
       QLog.w("ChatActivityUtils", 1, (String)localObject + "], seq[" + l1 + "]");
       AudioHelper.a("ChatActivityUtils.startGroupAudioEx", paramBundle, true);
-      if (a(paramQQAppInterface, paramContext, paramadsx, paramInt, paramString)) {
+      if (a(paramQQAppInterface, paramContext, paramaebz, paramInt, paramString)) {
         break label197;
       }
       return true;
@@ -3276,22 +3286,22 @@ public class ChatActivityUtils
     }
     label197:
     long l2 = Long.valueOf(paramString).longValue();
-    int j = mue.b(paramInt);
+    int j = mvd.b(paramInt);
     if (paramBundle == null) {
       paramBundle = new Bundle();
     }
     for (;;)
     {
-      mtl.a(paramBundle, l1);
+      muk.a(paramBundle, l1);
       boolean bool2 = paramBundle.getBoolean("isVideo", false);
       localObject = a(l1, paramContext);
       if (!bool2) {}
-      for (bool1 = true; !a((Activity)localObject, bool1, new adsu(l1, paramContext, paramQQAppInterface, paramInt, paramString, paramBoolean2, paramadsx, paramBundle, bool2)); bool1 = false) {
+      for (bool1 = true; !a((Activity)localObject, bool1, new aebw(l1, paramContext, paramQQAppInterface, paramInt, paramString, paramBoolean2, paramaebz, paramBundle, bool2)); bool1 = false) {
         return true;
       }
       int i = paramBundle.getInt("MultiAVType", 0);
       if (i == 10) {
-        bgoh.a("startGroupAudioEx", paramQQAppInterface, paramString);
+        bhoj.a("startGroupAudioEx", paramQQAppInterface, paramString);
       }
       if (j == 2) {
         i = 1;
@@ -3304,27 +3314,27 @@ public class ChatActivityUtils
       }
       if (!paramQQAppInterface.a().a(j, l2, i))
       {
-        if (!a(paramQQAppInterface, paramContext, paramadsx, new adrv(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramadsx, paramBundle), paramBoolean1, bool2)) {
+        if (!a(paramQQAppInterface, paramContext, paramaebz, new aeaw(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramaebz, paramBundle), paramBoolean1, bool2)) {
           return true;
         }
-        if (a(l1, paramQQAppInterface, paramContext, paramadsx, new adrw(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean1, paramadsx, paramBundle), paramBoolean2, paramString, j, l2, i)) {
+        if (a(l1, paramQQAppInterface, paramContext, paramaebz, new aeax(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean1, paramaebz, paramBundle), paramBoolean2, paramString, j, l2, i)) {
           return true;
         }
       }
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005776", "0X8005776", 0, 0, "", "", "", "");
-      if (paramadsx != null) {
-        paramadsx.b();
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005776", "0X8005776", 0, 0, "", "", "", "");
+      if (paramaebz != null) {
+        paramaebz.b();
       }
       b(paramQQAppInterface, paramContext, paramInt, paramString, paramBundle);
-      if (paramadsx != null) {
-        paramadsx.c();
+      if (paramaebz != null) {
+        paramaebz.c();
       }
       paramQQAppInterface.a().b(7, l2, i);
       return true;
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, adsx paramadsx, Map<String, String> paramMap)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, aebz paramaebz, Map<String, String> paramMap)
   {
     int i;
     if ((paramMap != null) && ("true".equals(paramMap.get("isVideo"))))
@@ -3345,57 +3355,57 @@ public class ChatActivityUtils
       break;
     }
     label73:
-    return a(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean1, paramBoolean2, paramadsx, a(paramMap));
+    return a(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean1, paramBoolean2, paramaebz, a(paramMap));
   }
   
-  static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, adsx paramadsx, int paramInt, String paramString)
+  static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz, int paramInt, String paramString)
   {
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
     {
       QLog.d("ChatActivityUtils", 1, "startGroupAudio, Activity isDestroyed!");
       return false;
     }
-    if (!bgnt.d(BaseApplication.getContext()))
+    if (!bhnv.d(BaseApplication.getContext()))
     {
       QLog.d("ChatActivityUtils", 1, "startGroupAudio, 当前网络不可用");
-      QQToast.a(paramContext, 2131693919, 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005767", "0X8005767", 0, 0, "", "", "", "");
+      QQToast.a(paramContext, 2131693936, 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005767", "0X8005767", 0, 0, "", "", "", "");
       return false;
     }
-    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005768", "0X8005768", 0, 0, "", "", "", "");
-    if (!lkw.c())
+    bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005768", "0X8005768", 0, 0, "", "", "", "");
+    if (!llk.c())
     {
-      QQToast.a(paramContext, 2131694858, 1).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8005769", "0X8005769", 0, 0, "", "", "", "");
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800576B", "0X800576B", 0, 0, "", "", lkw.e(), "");
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800576C", "0X800576C", 0, 0, "", "", lkw.f(), "");
+      QQToast.a(paramContext, 2131694900, 1).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8005769", "0X8005769", 0, 0, "", "", "", "");
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X800576B", "0X800576B", 0, 0, "", "", llk.e(), "");
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X800576C", "0X800576C", 0, 0, "", "", llk.f(), "");
       return false;
     }
-    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800576A", "0X800576A", 0, 0, "", "", "", "");
-    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800576E", "0X800576E", 0, 0, "", "", "", "");
+    bdll.b(paramQQAppInterface, "CliOper", "", "", "0X800576A", "0X800576A", 0, 0, "", "", "", "");
+    bdll.b(paramQQAppInterface, "CliOper", "", "", "0X800576E", "0X800576E", 0, 0, "", "", "", "");
     if ((paramQQAppInterface.a().a()) && (!paramQQAppInterface.d()))
     {
       QLog.d("ChatActivityUtils", 1, "startGroupAudio, 有系统电话");
-      mqw.e(true, true);
-      paramQQAppInterface = paramContext.getString(2131695058);
-      paramString = paramContext.getString(2131695038);
+      mru.e(true, true);
+      paramQQAppInterface = paramContext.getString(2131695101);
+      paramString = paramContext.getString(2131695081);
       if ((paramContext instanceof Activity)) {}
       for (;;)
       {
-        bglp.a(paramContext, 230, paramString, paramQQAppInterface, 2131690582, 2131694081, new adsp(paramadsx), null).show();
-        mqw.a();
+        bhlq.a(paramContext, 230, paramString, paramQQAppInterface, 2131690580, 2131694098, new aebr(paramaebz), null).show();
+        mru.a();
         return false;
         paramContext = com.tencent.mobileqq.app.BaseActivity.sTopActivity;
       }
     }
-    if (!lkw.e())
+    if (!llk.e())
     {
       QLog.d("ChatActivityUtils", 1, "startGroupAudio, old engine");
       if (paramInt == 1011)
       {
-        paramString = paramContext.getString(2131695239);
-        bglp.a(paramContext, 230, paramContext.getString(2131695038), paramString, 2131690582, 2131694970, new adsq(paramadsx), null).show();
-        bcst.b(paramQQAppInterface, "CliOper", "", "", "0X80053BD", "0X80053BD", 0, 0, "", "", "", "");
+        paramString = paramContext.getString(2131695282);
+        bhlq.a(paramContext, 230, paramContext.getString(2131695081), paramString, 2131690580, 2131695013, new aebs(paramaebz), null).show();
+        bdll.b(paramQQAppInterface, "CliOper", "", "", "0X80053BD", "0X80053BD", 0, 0, "", "", "", "");
         return false;
       }
     }
@@ -3407,25 +3417,25 @@ public class ChatActivityUtils
     return true;
   }
   
-  static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, adsx paramadsx, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean1, boolean paramBoolean2)
+  static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean1, boolean paramBoolean2)
   {
     Object localObject2 = null;
     Object localObject1;
-    if ((paramBoolean1) && (!bgnt.h(BaseApplication.getContext())) && (!bgnt.f(BaseApplication.getContext())) && (VideoController.d(VideoController.jdField_b_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin()) <= 0))
+    if ((paramBoolean1) && (!bhnv.h(BaseApplication.getContext())) && (!bhnv.f(BaseApplication.getContext())) && (VideoController.d(VideoController.jdField_b_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin()) <= 0))
     {
-      if (!bgnt.b(BaseApplication.getContext())) {
+      if (!bhnv.b(BaseApplication.getContext())) {
         break label206;
       }
-      localObject1 = paramContext.getString(2131695038);
-      localObject2 = paramContext.getString(2131695034);
+      localObject1 = paramContext.getString(2131695081);
+      localObject2 = paramContext.getString(2131695077);
     }
     for (;;)
     {
-      if (bgnt.c(BaseApplication.getContext()))
+      if (bhnv.c(BaseApplication.getContext()))
       {
-        localObject2 = paramContext.getString(2131695038);
+        localObject2 = paramContext.getString(2131695081);
         if (paramBoolean2) {
-          localObject1 = paramContext.getString(2131695035);
+          localObject1 = paramContext.getString(2131695078);
         }
       }
       for (;;)
@@ -3436,11 +3446,11 @@ public class ChatActivityUtils
             QLog.e("ChatActivityUtils", 2, "startGAudio title or content is empty");
           }
           return false;
-          localObject1 = paramContext.getString(2131695036);
+          localObject1 = paramContext.getString(2131695079);
         }
         else
         {
-          a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131694772, 2131694784, paramOnClickListener, new adsr(paramadsx));
+          a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131694814, 2131694826, paramOnClickListener, new aebt(paramaebz));
           return false;
           return true;
           Object localObject3 = localObject2;
@@ -3460,7 +3470,7 @@ public class ChatActivityUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return ((anmw)paramQQAppInterface.getManager(51)).b(paramString);
+    return ((anyw)paramQQAppInterface.getManager(51)).b(paramString);
   }
   
   public static boolean a(TroopMemberInfo paramTroopMemberInfo)
@@ -3628,22 +3638,22 @@ public class ChatActivityUtils
               break label666;
             }
             paramJSONObject = paramJSONObject.getString("appid");
-            localObject2 = new bcvp(StructMsgForGeneralShare.class).c(41).a((String)localObject2).a(7);
+            localObject2 = new bdoi(StructMsgForGeneralShare.class).c(41).a((String)localObject2).a(7);
             if (TextUtils.isEmpty(paramJSONObject)) {
               break label672;
             }
             l = Long.parseLong(paramJSONObject);
-            paramJSONObject = ((bcvp)localObject2).a(l).a(str9, (String)localObject1, null, null, null).a(str4, str7).b(str8, null, null, str10, str11).d((String)localObject1).a();
-            localObject1 = bcwc.a(i);
-            ((bcvt)localObject1).a(str1, str2, str3, str5, str6, 0);
-            paramJSONObject.addItem((bcvs)localObject1);
+            paramJSONObject = ((bdoi)localObject2).a(l).a(str9, (String)localObject1, null, null, null).a(str4, str7).b(str8, null, null, str10, str11).d((String)localObject1).a();
+            localObject1 = bdov.a(i);
+            ((bdom)localObject1).a(str1, str2, str3, str5, str6, 0);
+            paramJSONObject.addItem((bdol)localObject1);
             return paramJSONObject.getBytes();
           }
           paramJSONObject = paramJSONObject.getString("puin");
-          paramJSONObject = new bcvp(StructMsgForGeneralShare.class).c(21).a((String)localObject2).e((String)localObject1).a(str4, null).b("plugin", null, null, "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=" + paramJSONObject, "mqqapi://card/show_pslcard?src_type=app&card_type=public_account&version=1&uin=" + paramJSONObject).a();
-          localObject1 = bcwc.a(2);
-          ((bcvt)localObject1).a(str1, str2, str3);
-          paramJSONObject.addItem((bcvs)localObject1);
+          paramJSONObject = new bdoi(StructMsgForGeneralShare.class).c(21).a((String)localObject2).e((String)localObject1).a(str4, null).b("plugin", null, null, "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=" + paramJSONObject, "mqqapi://card/show_pslcard?src_type=app&card_type=public_account&version=1&uin=" + paramJSONObject).a();
+          localObject1 = bdov.a(2);
+          ((bdom)localObject1).a(str1, str2, str3);
+          paramJSONObject.addItem((bdol)localObject1);
           paramJSONObject = paramJSONObject.getBytes();
           return paramJSONObject;
         }
@@ -3744,7 +3754,7 @@ public class ChatActivityUtils
     if (i >= 0)
     {
       paramSessionInfo = (MessageRecord)paramList.get(i);
-      if (acwh.h(paramSessionInfo.msgtype)) {}
+      if (adak.h(paramSessionInfo.msgtype)) {}
     }
     for (paramList = paramSessionInfo;; paramList = null)
     {
@@ -3846,11 +3856,11 @@ public class ChatActivityUtils
   
   public static void b()
   {
-    if ((jdField_a_of_type_Biau != null) && (jdField_a_of_type_Biau.isShowing())) {}
+    if ((jdField_a_of_type_Bjbs != null) && (jdField_a_of_type_Bjbs.isShowing())) {}
     try
     {
-      jdField_a_of_type_Biau.cancel();
-      jdField_a_of_type_Biau = null;
+      jdField_a_of_type_Bjbs.cancel();
+      jdField_a_of_type_Bjbs = null;
       return;
     }
     catch (Exception localException)
@@ -3864,12 +3874,12 @@ public class ChatActivityUtils
   
   public static void b(Context paramContext)
   {
-    bglp.a(paramContext, 230, paramContext.getString(2131697656), paramContext.getString(2131697657), new adsj(), null).show();
+    bhlq.a(paramContext, 230, paramContext.getString(2131697740), paramContext.getString(2131697741), new aebl(), null).show();
   }
   
   public static void b(Context paramContext, int paramInt1, int paramInt2)
   {
-    new bibh(paramContext).a(paramInt1, paramContext.getResources().getDimensionPixelSize(2131298998), 0, paramInt2);
+    new bjcf(paramContext).a(paramInt1, paramContext.getResources().getDimensionPixelSize(2131299011), 0, paramInt2);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, Bundle paramBundle)
@@ -3878,12 +3888,12 @@ public class ChatActivityUtils
     int i;
     if (paramInt == 3000)
     {
-      localDiscussionInfo = ((ankw)paramQQAppInterface.getManager(53)).a(paramString);
+      localDiscussionInfo = ((anws)paramQQAppInterface.getManager(53)).a(paramString);
       if (localDiscussionInfo != null) {
         if (localDiscussionInfo.isPSTNConf())
         {
           AudioHelper.b("发起音视频_获取会议id");
-          adsv.a("ChatActivityUtils", localDiscussionInfo.uin, new adsd(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
+          aebx.a("ChatActivityUtils", localDiscussionInfo.uin, new aebf(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
           i = 1;
         }
       }
@@ -3897,7 +3907,7 @@ public class ChatActivityUtils
       if ((localDiscussionInfo.isDiscussHrMeeting()) && ((paramBundle == null) || (!paramBundle.containsKey("MeetingStasks"))))
       {
         AudioHelper.b("发起音视频_获取hr信息");
-        bgoo.a(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin(), new adse(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
+        bhoq.a(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin(), new aebh(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
         i = 1;
       }
       else
@@ -3907,13 +3917,61 @@ public class ChatActivityUtils
     }
   }
   
+  public static void b(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, Map<String, String> paramMap)
+  {
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder(100);
+      localStringBuilder.append("startGroupVideo, uinType[").append(paramInt).append("], uin[").append(paramString).append("], chatSession[").append(paramQQAppInterface.a().a(paramString, false)).append("]");
+      QLog.i("ChatActivityUtils", 4, localStringBuilder.toString());
+    }
+    awbj.b("3236166");
+    a(paramQQAppInterface, paramContext, paramInt, paramString, true, true, paramMap);
+    paramContext = (String)paramMap.get("from");
+    new IVPluginDataReporter().opDepartment("group_video").opName("startGroupVideo").opType(paramContext).report();
+    try
+    {
+      long l = Long.valueOf(paramString).longValue();
+      paramInt = Integer.valueOf((String)paramMap.get("MultiAVType")).intValue();
+      paramString = paramQQAppInterface.a().a(l, paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityUtils", 2, String.format("startGroupVideo from=%s groupId=%s avType=%s roomInfo=%s", new Object[] { paramContext, Long.valueOf(l), Integer.valueOf(paramInt), paramString }));
+      }
+      if ((paramString != null) && (paramString.a()))
+      {
+        if ("tipBar".equals(paramContext))
+        {
+          bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800ABD4", "0X800ABD4", 0, 0, "", "", "", "");
+          return;
+        }
+        if ("itemBuilder".equals(paramContext))
+        {
+          bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800ABD5", "0X800ABD5", 0, 0, "", "", "", "");
+          return;
+        }
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ChatActivityUtils", 1, "startGroupVideo education report fail.", paramQQAppInterface);
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+    if (paramQQAppInterface.h(String.valueOf(paramString))) {
+      paramQQAppInterface.j(String.valueOf(paramString));
+    }
+  }
+  
   public static boolean b(Context paramContext, SessionInfo paramSessionInfo, String paramString)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("type", paramSessionInfo.jdField_a_of_type_Int);
-      localJSONObject.put("uin", acwh.a(paramSessionInfo.jdField_a_of_type_JavaLangString));
+      localJSONObject.put("uin", adak.a(paramSessionInfo.jdField_a_of_type_JavaLangString));
       if (QLog.isDevelopLevel()) {
         QLog.d("ChatActivityUtils", 4, "isSingleWayFriendTipsBefore curFriendUin:" + paramSessionInfo.jdField_a_of_type_JavaLangString + "  curType" + paramSessionInfo.jdField_a_of_type_Int);
       }
@@ -3940,7 +3998,7 @@ public class ChatActivityUtils
     boolean bool2 = false;
     int i = paramSessionInfo.jdField_a_of_type_Int;
     boolean bool1 = bool2;
-    if (mal.a().a(paramQQAppInterface.getCurrentAccountUin())) {
+    if (mbh.a().a(paramQQAppInterface.getCurrentAccountUin())) {
       if ((i != 0) && (i != 1000) && (i != 1004) && (i != 3000) && (i != 1006) && (i != 1021) && (i != 1010))
       {
         bool1 = bool2;
@@ -3983,7 +4041,7 @@ public class ChatActivityUtils
   
   private static void c(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, Bundle paramBundle)
   {
-    long l1 = mtl.a(paramBundle);
+    long l1 = muk.a(paramBundle);
     QLog.w("ChatActivityUtils", 1, "createOrEnterGroupAudio, uinType[" + paramInt + "], uin[" + paramString + "], seq[" + l1 + "]");
     AudioHelper.a("ChatActivityUtils", paramBundle, true);
     Bundle localBundle = paramBundle;
@@ -3998,7 +4056,7 @@ public class ChatActivityUtils
     localIntent.addFlags(268435456);
     localIntent.addFlags(67108864);
     l1 = Long.parseLong(paramString);
-    int i = mue.b(paramInt);
+    int i = mvd.b(paramInt);
     int j = localBundle.getInt("MultiAVType", 0);
     String str2 = localBundle.getString("Fromwhere");
     if (i == 2) {
@@ -4040,7 +4098,7 @@ public class ChatActivityUtils
         if (j != 2) {
           localIntent.setClass(paramContext, AVActivity.class);
         }
-        mro.a(paramContext, paramString, j, new adsg(i, paramInt, paramQQAppInterface, (azwe)paramQQAppInterface.getManager(38), l1, localIntent, l1, "start_group_audio_time" + paramQQAppInterface.getCurrentAccountUin()));
+        msm.a(paramContext, paramString, j, new aebi(i, paramInt, paramQQAppInterface, (baou)paramQQAppInterface.getManager(38), l1, localIntent, l1, "start_group_audio_time" + paramQQAppInterface.getCurrentAccountUin()));
         return;
         long l2 = paramQQAppInterface.a().a(i, l1);
         paramBundle = "memberNum[" + l2;
@@ -4083,14 +4141,14 @@ public class ChatActivityUtils
             i = k;
             if (j == 2)
             {
-              lmm locallmm = paramQQAppInterface.a().a(l1, 2);
+              lna locallna = paramQQAppInterface.a().a(l1, 2);
               paramBundle = str1;
               i = k;
-              if (locallmm != null)
+              if (locallna != null)
               {
                 paramBundle = str1;
                 i = k;
-                if (locallmm.jdField_a_of_type_Int > 0)
+                if (locallna.jdField_a_of_type_Int > 0)
                 {
                   i = 1;
                   paramBundle = str1 + "], 6.TYPE_GAUDIO_STATUS_CREATE";

@@ -1,12 +1,12 @@
 package com.tencent.biz.richframework.part.block.base;
 
+import aabx;
 import android.support.v7.widget.RecyclerView;
-import zyb;
 
 public class PullLoadMoreAdapter$4
   implements Runnable
 {
-  public PullLoadMoreAdapter$4(zyb paramzyb) {}
+  public PullLoadMoreAdapter$4(aabx paramaabx) {}
   
   public void run()
   {

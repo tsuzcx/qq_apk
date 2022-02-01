@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import aklt;
+import akxe;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,18 +14,18 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import anvf;
-import bcst;
-import bglp;
-import bgme;
-import bgnt;
-import bgpa;
-import bhmv;
-import bhos;
-import bhpv;
-import bhql;
-import bhqo;
+import anzj;
+import aohr;
+import bdll;
+import bhlq;
+import bhmg;
+import bhnv;
+import bhpc;
+import binq;
+import bipn;
+import biqq;
+import birg;
+import birj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -33,15 +33,15 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import nhe;
-import nmj;
-import nzh;
-import nzi;
-import nzj;
-import nzk;
+import niz;
+import noe;
+import oar;
+import oas;
 import oat;
-import tzo;
-import zvc;
+import oau;
+import ocd;
+import tzq;
+import zyx;
 
 public class PublicAccountBrowser$PublicAccountBrowserFragment
   extends WebViewFragment
@@ -123,7 +123,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       } while (paramString.startsWith("https://"));
       localObject1 = localObject2;
     } while (paramString.indexOf("://") == -1);
-    return "即将离开\"QQ\"\r\n打开" + anni.a(2131707553);
+    return "即将离开\"QQ\"\r\n打开" + anzj.a(2131707662);
   }
   
   private void a()
@@ -145,7 +145,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       localObject1 = "";
     }
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "get a url:" + nmj.b((String)localObject1, new String[0]));
+      QLog.d("WebLog_WebViewFragment", 2, "get a url:" + noe.b((String)localObject1, new String[0]));
     }
     localObject2 = localObject1;
     if (((String)localObject1).startsWith("http://browserApp.p.qq.com/"))
@@ -216,13 +216,13 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
           bool1 = true;
         }
         this.c = bool1;
-        localObject1 = (bhpv)this.mComponentsProvider.a(4);
-        if ((!this.c) && ((this.mUIStyle.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((bhpv)localObject1).a())) {
+        localObject1 = (biqq)this.mComponentsProvider.a(4);
+        if ((!this.c) && ((this.mUIStyle.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((biqq)localObject1).a())) {
           this.c = true;
         }
         localObject1 = localObject2;
-        if (tzo.f((String)localObject2)) {
-          localObject1 = tzo.a((String)localObject2);
+        if (tzq.f((String)localObject2)) {
+          localObject1 = tzq.a((String)localObject2);
         }
         if (QLog.isColorLevel()) {
           QLog.d("WebLog_WebViewFragment", 1, "initParams url = " + (String)localObject1);
@@ -256,8 +256,8 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   
   private void a(Bundle paramBundle)
   {
-    if ((this.mApp != null) && (!bgnt.d(this.mApp.getApplication()))) {
-      QQToast.a(this.mApp.getApplication(), 2131693946, 0).b(super.getTitleBarHeight());
+    if ((this.mApp != null) && (!bhnv.d(this.mApp.getApplication()))) {
+      QQToast.a(this.mApp.getApplication(), 2131693963, 0).b(super.getTitleBarHeight());
     }
     if (!this.mUIStyleHandler.a.jdField_a_of_type_Boolean)
     {
@@ -269,8 +269,8 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
         break label206;
       }
       this.mSwiftTitleUI.c.setText("");
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840285);
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131692389));
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840295);
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131692394));
     }
     for (;;)
     {
@@ -278,7 +278,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       {
         this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.mSwiftTitleUI.c.setText(anni.a(2131707509));
+        this.mSwiftTitleUI.c.setText(anzj.a(2131707618));
         this.mSwiftTitleUI.c.setOnClickListener(this);
         this.mSwiftTitleUI.c.setVisibility(0);
       }
@@ -286,7 +286,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       label206:
       this.mSwiftTitleUI.c.setVisibility(8);
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = (int)bgme.a(BaseApplicationImpl.getApplication(), 8.0F);
+      int i = (int)bhmg.a(BaseApplicationImpl.getApplication(), 8.0F);
       if (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
         ((RelativeLayout.LayoutParams)this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).setMargins(i, 0, i, 0);
       }
@@ -316,7 +316,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       {
         localException.printStackTrace();
       }
-      bcst.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
+      bdll.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
     }
     localObject3 = localObject1;
     if (localObject1 == null) {
@@ -326,7 +326,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     {
     default: 
     case 7: 
-      oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X800572A", "0X800572A", 1010, 0, this.publicUin, (String)localObject2, this.msgid, (String)localObject3, false);
+      ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X800572A", "0X800572A", 1010, 0, this.publicUin, (String)localObject2, this.msgid, (String)localObject3, false);
       return;
     }
   }
@@ -342,7 +342,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       if (localActivityInfo != null) {
         paramUri = localActivityInfo.packageName;
       }
-      anvf.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
+      aohr.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
       paramContext.startActivity(localIntent);
       return;
     }
@@ -356,7 +356,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     try
     {
-      paramContext = bglp.a(paramContext, 230, null, paramString3, anni.a(2131707551), anni.a(2131707530), new nzj(this, paramContext, paramUri, paramString1, paramString4), new nzk(this, paramString4));
+      paramContext = bhlq.a(paramContext, 230, null, paramString3, anzj.a(2131707660), anzj.a(2131707639), new oat(this, paramContext, paramUri, paramString1, paramString4), new oau(this, paramString4));
       paramContext.show();
       paramContext.setCancelable(false);
       return;
@@ -372,13 +372,13 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     paramDialogInterface.dismiss();
     if (!paramBoolean) {
       if (this.mApp != null) {
-        bcst.b(null, "dc01160", "Pb_account_lifeservice", this.mApp.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
+        bdll.b(null, "dc01160", "Pb_account_lifeservice", this.mApp.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
       }
     }
     while (this.mApp == null) {
       return;
     }
-    bcst.b(null, "dc01160", "Pb_account_lifeservice", this.mApp.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
+    bdll.b(null, "dc01160", "Pb_account_lifeservice", this.mApp.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
   }
   
   public void a(String paramString)
@@ -411,7 +411,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     if ((super.getActivity().isResume()) && ((System.currentTimeMillis() - this.mLastTouchTime < 1000L) || (this.authConfig.a(paramWebView.getUrl(), str).booleanValue())))
     {
       long l = System.currentTimeMillis();
-      boolean bool = aklt.a().a(paramString, this);
+      boolean bool = akxe.a().a(paramString, this);
       QLog.i("WebLog_WebViewFragment", 1, "TryPayIntercept result:" + bool + " cost:" + (System.currentTimeMillis() - l) + " ms.");
       if (!bool) {}
     }
@@ -433,9 +433,9 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     return true;
   }
   
-  public bhos createComponentsProvider()
+  public bipn createComponentsProvider()
   {
-    return new bhos(this, 127, new nzi(this));
+    return new bipn(this, 127, new oas(this));
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
@@ -443,10 +443,10 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     int i = super.doCreateLoopStep_Final(paramBundle);
     if ((this.intent.getIntExtra("reqType", -1) == 5) && (!this.mUIStyleHandler.a.jdField_a_of_type_Boolean))
     {
-      nzh localnzh = new nzh(this);
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localnzh);
-      this.mSwiftTitleUI.c.setText(2131691697);
-      this.mSwiftTitleUI.c.setOnClickListener(localnzh);
+      oar localoar = new oar(this);
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localoar);
+      this.mSwiftTitleUI.c.setText(2131691700);
+      this.mSwiftTitleUI.c.setOnClickListener(localoar);
     }
     a(paramBundle);
     return i;
@@ -473,7 +473,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     if (paramInt == -8) {
-      zvc.a(1, 2131694612);
+      zyx.a(1, 2131694654);
     }
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
   }
@@ -484,7 +484,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       return super.shouldOverrideUrlLoading(paramWebView, paramString);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "shouldOverride: " + nmj.b(paramString, new String[0]));
+      QLog.d("WebLog_WebViewFragment", 2, "shouldOverride: " + noe.b(paramString, new String[0]));
     }
     Object localObject = paramWebView.getUrl();
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).startsWith("http://s.p.qq.com/pub/jump"))) {}

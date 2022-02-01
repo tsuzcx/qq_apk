@@ -1,126 +1,170 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.SendPhotoTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.lang.reflect.Field;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class asdi
-  extends arxg
+  extends DefaultHandler
 {
-  static long jdField_a_of_type_Long;
-  public int a;
-  public asdv a;
-  private String jdField_a_of_type_JavaLangString = "";
-  public int b;
-  private int h;
+  private XmlData jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData;
+  private Class<? extends XmlData> jdField_a_of_type_JavaLangClass;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   
-  public asdi(asdv paramasdv, int paramInt)
+  public asdi(Class<? extends XmlData> paramClass)
   {
-    this.jdField_a_of_type_Asdv = paramasdv;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
   }
   
-  public Drawable a(Context paramContext, float paramFloat)
+  public XmlData a()
   {
-    paramContext = URLDrawable.URLDrawableOptions.obtain();
-    paramContext.mLoadingDrawable = HotPicPageView.a;
-    paramContext.mFailedDrawable = HotPicPageView.a;
-    paramContext.mPlayGifImage = true;
-    return URLDrawable.getDrawable(this.jdField_a_of_type_Asdv.b, paramContext);
+    return this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1000L) {
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramArrayOfChar, paramInt1, paramInt2);
+  }
+  
+  public void endDocument()
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder = null;
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData == null) {
       if (QLog.isColorLevel()) {
-        QLog.e("HotPicSearchEmoticonInfo", 2, "send to offen,please try it later");
+        QLog.e("EarlyDown", 2, "endElement() return. data is null.");
       }
     }
+    label21:
+    label278:
     do
     {
       do
       {
-        return;
-        jdField_a_of_type_Long = l;
-        if (((paramContext instanceof BaseActivity)) && (axbp.a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)))
+        break label21;
+        for (;;)
         {
-          paramContext = (BaseActivity)paramContext;
-          QQToast.a(paramQQAppInterface.getApp(), anni.a(2131700113), 0).b(paramContext.getTitleBarHeight());
           return;
-        }
-      } while (!(paramContext instanceof BaseActivity));
-      Object localObject1 = null;
-      Object localObject2 = bdsh.a(this.jdField_a_of_type_Asdv.b);
-      paramEditText = (EditText)localObject1;
-      if (localObject2 != null)
-      {
-        paramEditText = (EditText)localObject1;
-        if (bgmg.b(((File)localObject2).getAbsolutePath()))
-        {
-          localObject1 = ((File)localObject2).getAbsolutePath();
-          paramEditText = (EditText)localObject1;
-          if (QLog.isColorLevel())
+          if (!this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2))
           {
-            QLog.d("HotPicSearchEmoticonInfo", 2, "senHotPic, urlHotPicOringinal = " + this.jdField_a_of_type_Asdv.b + ", paths = " + (String)localObject1);
-            paramEditText = (EditText)localObject1;
+            paramString1 = asdd.a(this.jdField_a_of_type_JavaLangClass, paramString2);
+            if (paramString1 == null)
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.e("EarlyDown", 2, "endElement() return.can't find 'Field:" + paramString2);
+              return;
+            }
+            if (!paramString1.isAccessible()) {
+              paramString1.setAccessible(true);
+            }
+            paramString2 = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+            try
+            {
+              paramString3 = paramString1.getType();
+              if (paramString3 == String.class)
+              {
+                paramString1.set(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, paramString2);
+                return;
+              }
+            }
+            catch (NumberFormatException paramString1)
+            {
+              if (QLog.isColorLevel())
+              {
+                QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
+                return;
+                if (paramString3 == Long.TYPE)
+                {
+                  long l = Long.parseLong(paramString2);
+                  paramString1.setLong(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, l);
+                  return;
+                }
+              }
+            }
+            catch (IllegalArgumentException paramString1)
+            {
+              if (QLog.isColorLevel())
+              {
+                QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
+                return;
+                if (paramString3 != Double.TYPE) {
+                  break label278;
+                }
+                double d = Double.parseDouble(paramString2);
+                paramString1.setDouble(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, d);
+                return;
+              }
+            }
+            catch (IllegalAccessException paramString1) {}
           }
         }
-      }
-      if ((paramEditText == null) && (paramSessionInfo.jdField_a_of_type_Int != 1008))
+      } while (!QLog.isColorLevel());
+      QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
+      return;
+      if (paramString3 == Integer.TYPE)
       {
-        QQToast.a(paramContext, 2131698028, 0).a();
+        int i = Integer.parseInt(paramString2);
+        paramString1.setInt(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, i);
         return;
       }
-      localObject1 = new Intent();
-      localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(paramEditText);
-      ((Intent)localObject1).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject2);
-      ((Intent)localObject1).putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
-      ((Intent)localObject1).putExtra("troop_uin", paramSessionInfo.b);
-      ((Intent)localObject1).putExtra("key_confess_topicid", paramSessionInfo.e);
-      ((Intent)localObject1).putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-      ((Intent)localObject1).putExtra("send_in_background", true);
-      ((Intent)localObject1).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (Serializable)localObject2);
-      ((Intent)localObject1).putExtra("PicContants.NEED_COMPRESS", false);
-      ((Intent)localObject1).putExtra("quick_send_original_md5", this.jdField_a_of_type_Asdv.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("quick_send_original_size", this.jdField_a_of_type_Asdv.jdField_a_of_type_Long);
-      ((Intent)localObject1).putExtra("HOT_PIC_HAS_EXTRA", true);
-      ((Intent)localObject1).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1054);
-      ThreadManager.post(new SendPhotoTask((BaseActivity)paramContext, (Intent)localObject1, null), 8, null, false);
-      bcst.b(paramQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B117", "0X800B117", arze.a(this.h), 0, "", this.b + 1 + "", this.jdField_a_of_type_Asdv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asdv.b);
-    } while (this.jdField_a_of_type_Int <= 0);
-    bcst.b(paramQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B11E", "0X800B11E", this.jdField_a_of_type_Int, 0, "", this.b + 1 + "", this.jdField_a_of_type_Asdv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asdv.b);
+      if (paramString3 == Float.TYPE)
+      {
+        float f = Float.parseFloat(paramString2);
+        paramString1.setFloat(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, f);
+        return;
+      }
+      if (paramString3 == Short.TYPE)
+      {
+        short s = Short.parseShort(paramString2);
+        paramString1.setShort(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, s);
+        return;
+      }
+      if (paramString3 == Byte.TYPE)
+      {
+        byte b = Byte.parseByte(paramString2);
+        paramString1.setByte(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, b);
+        return;
+      }
+      if (paramString3 == Boolean.TYPE)
+      {
+        boolean bool = Boolean.parseBoolean(paramString2);
+        paramString1.setBoolean(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, bool);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("EarlyDown", 2, "endElement() return. Type:" + paramString3.toString() + " is NOT SUPPORT!");
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void startDocument()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.h = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
   }
   
-  public Drawable b(Context paramContext, float paramFloat)
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    return a(paramContext, paramFloat);
-  }
-  
-  public String toString()
-  {
-    return String.format("RelatedEmoSearchEmoticonInfo, SearchItem %s", new Object[] { this.jdField_a_of_type_Asdv.toString() });
+    this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+    if (this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2)) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData = ((XmlData)this.jdField_a_of_type_JavaLangClass.newInstance());
+      return;
+    }
+    catch (InstantiationException paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("EarlyDown", 2, "startElement() throw exceptin:" + paramString1.getMessage());
+      return;
+    }
+    catch (IllegalAccessException paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("EarlyDown", 2, "startElement() throw exceptin:" + paramString1.getMessage());
+    }
   }
 }
 

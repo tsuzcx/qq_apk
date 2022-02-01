@@ -1,36 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afwo
-  implements anwz
+  extends Handler
 {
-  public BaseChatItemLayout a;
-  public String a;
+  public afwo(TroopRequestActivity paramTroopRequestActivity) {}
   
-  private afwo(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin)))
+    switch (paramMessage.what)
     {
-      paramTroopMemberInfo = ((bfgp)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.getManager(346)).a(paramTroopMemberInfo.honorList);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setHonorList(paramTroopMemberInfo);
-        if ((paramTroopMemberInfo == null) || (paramTroopMemberInfo.size() <= 0)) {
-          break label108;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
-      }
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131717888), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131717877), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    return;
-    label108:
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(null);
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
 }
 

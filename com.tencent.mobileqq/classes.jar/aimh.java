@@ -1,11 +1,17 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aimh
-  extends aiml
+class aimh
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  aimh(aimd paramaimd) {}
   
-  public abstract View a(Object... paramVarArgs);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    agej.n = true;
+    agju.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+  }
 }
 
 

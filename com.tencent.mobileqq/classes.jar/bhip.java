@@ -1,34 +1,15 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Card;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bhip
+final class bhip
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static bhil a(Activity paramActivity, @NonNull JSONObject paramJSONObject, azfe paramazfe, String paramString)
+  bhip(azbu paramazbu) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramazfe == null) || (paramazfe.a == null)) {
-      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal card info is null");
-    }
-    long l1 = paramazfe.a.lCurrentStyleId;
-    if (l1 < 0L) {
-      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id=" + l1);
-    }
-    long l2 = paramJSONObject.optLong("id");
-    if (l2 != l1) {
-      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id(" + l1 + ") and json id(" + l2 + ") not match");
-    }
-    if (l2 == azfl.l) {}
-    for (paramActivity = new bhiq(paramActivity, paramJSONObject, paramazfe);; paramActivity = new bhir(paramActivity, paramJSONObject, paramazfe))
-    {
-      paramActivity.a(paramString);
-      return paramActivity;
-      if (l2 != azfl.m) {
-        break;
-      }
-    }
-    throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal id=" + l2);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.a.a(paramValueAnimator.intValue());
   }
 }
 

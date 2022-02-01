@@ -1,24 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeqm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aeqm(NotificationActivity paramNotificationActivity) {}
+  public aeqm(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
-    this.a.finish();
+    if (paramView.getId() == 2131365346)
+    {
+      aeqz localaeqz = this.a.jdField_a_of_type_Aeqx.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (localaeqz != null))
+      {
+        blir localblir = (blir)blji.a(this.a, null);
+        localblir.a(2131692959, 3);
+        localblir.c(2131690580);
+        localblir.a(new aeqn(this, localaeqz, localblir));
+        localblir.show();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqm
  * JD-Core Version:    0.7.0.1
  */

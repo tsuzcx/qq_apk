@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/n4w" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fmg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="18.0dip" android:layout_marginRight="10.0dip" android:text="@string/wmy" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="18.0dip">
-        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="18.0dip" android:text="@string/wmw" />
-    </LinearLayout>
-</LinearLayout>
+<DateTimeView android:textAppearance="@style/zg" android:id="@id/jl7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

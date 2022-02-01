@@ -1,63 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import feedcloud.FeedCloudWrite.StDoLikeRsp;
 
-public class uzh
+final class uzh
+  implements aaav<FeedCloudWrite.StDoLikeRsp>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  uzh(aaav paramaaav) {}
   
-  public String a()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(this.a)) {
-      localStringBuilder.append("feed_id=").append(this.a).append("|");
+    if ((paramBoolean) && (paramLong == 0L)) {
+      QLog.d("doubleclicklike", 3, " success");
     }
-    if (!TextUtils.isEmpty(this.d)) {
-      localStringBuilder.append("ctim=").append(this.d).append("|");
+    for (;;)
+    {
+      if (this.a != null) {
+        this.a.onReceive(paramBoolean, paramLong, paramString, paramStDoLikeRsp);
+      }
+      return;
+      QLog.d("doubleclicklike", 3, " failed：" + paramLong);
     }
-    if (!TextUtils.isEmpty(this.e)) {
-      localStringBuilder.append("poster_id=").append(this.e).append("|");
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localStringBuilder.append("comment_id=").append(this.b).append("|");
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localStringBuilder.append("reply_id=").append(this.c).append("|");
-    }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    return localStringBuilder.toString();
-  }
-  
-  public uzh a(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public uzh b(String paramString)
-  {
-    this.a = paramString;
-    return this;
-  }
-  
-  public uzh c(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public uzh d(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public uzh e(String paramString)
-  {
-    this.d = paramString;
-    return this;
   }
 }
 

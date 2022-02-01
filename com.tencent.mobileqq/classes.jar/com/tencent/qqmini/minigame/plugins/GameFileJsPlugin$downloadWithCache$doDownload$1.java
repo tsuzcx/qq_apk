@@ -1,5 +1,6 @@
 package com.tencent.qqmini.minigame.plugins;
 
+import com.tencent.mobileqq.triton.script.ScriptContextType;
 import com.tencent.qqmini.minigame.GameJsService;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -34,7 +35,7 @@ final class GameFileJsPlugin$downloadWithCache$doDownload$1
         return;
       }
       if (!GameFileJsPlugin.access$getMIsMiniGame$p(this.this$0)) {
-        break label123;
+        break label125;
       }
       localObject2 = this.$req.jsService;
       if (localObject2 == null) {
@@ -46,12 +47,12 @@ final class GameFileJsPlugin$downloadWithCache$doDownload$1
       this.$req.fail("downloadWithCache exception");
       return;
     }
-    if ((((GameJsService)localObject2).getTargetContextType() == 2) && (!OpenDataDomainUtil.getInstance().isDomainValid(localJSONException)))
+    if ((((GameJsService)localObject2).getContextType() == ScriptContextType.OPEN_DATA) && (!OpenDataDomainUtil.getInstance().isDomainValid(localJSONException)))
     {
       this.$req.fail("invalid url");
       return;
     }
-    label123:
+    label125:
     Object localObject2 = GameFileJsPlugin.access$getFileManager$p(this.this$0);
     if (localObject2 == null) {
       Intrinsics.throwNpe();

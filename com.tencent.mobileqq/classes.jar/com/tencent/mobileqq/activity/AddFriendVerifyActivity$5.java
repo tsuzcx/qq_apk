@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anmw;
+import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -12,7 +12,7 @@ class AddFriendVerifyActivity$5
   
   public void run()
   {
-    String str = ((anmw)this.this$0.app.getManager(51)).a(AddFriendVerifyActivity.a(this.this$0));
+    String str = ((anyw)this.this$0.app.getManager(51)).a(AddFriendVerifyActivity.a(this.this$0));
     ThreadManager.getUIHandler().post(new AddFriendVerifyActivity.5.1(this, str));
   }
 }

@@ -1,32 +1,21 @@
 package dov.com.qq.im.ae;
 
-import bndy;
-import bnip;
-import bnpc;
-import bojv;
-import com.tencent.qphone.base.util.QLog;
+import bofh;
+import bojx;
 import dov.com.qq.im.ae.mode.AECaptureMode;
 
 public class AEPituCameraUnit$24
   implements Runnable
 {
-  public AEPituCameraUnit$24(bndy parambndy) {}
+  public AEPituCameraUnit$24(bofh parambofh) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager begin");
-    }
-    Object localObject = bndy.a(this.this$0);
-    if (bndy.b(this.this$0) == AECaptureMode.NORMAL) {}
+    bojx localbojx = bofh.a(this.this$0);
+    if (bofh.b(this.this$0) == AECaptureMode.NORMAL) {}
     for (boolean bool = true;; bool = false)
     {
-      ((bnip)localObject).c(bool);
-      localObject = (bnpc)bojv.a(18);
-      boke.c = 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager end");
-      }
+      localbojx.c(bool);
       return;
     }
   }

@@ -1,13 +1,17 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 class bjwr
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnSeekCompleteListener
+  implements bjux
 {
-  bjwr(bjwn parambjwn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  bjwr(bjwq parambjwq, DownloadInfo paramDownloadInfo) {}
   
-  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
+  public void a(String paramString1, String paramString2, String paramString3) {}
+  
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bjwn);
+    bjtx.d("DownloadManager_", ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", bjtv.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
   }
 }
 

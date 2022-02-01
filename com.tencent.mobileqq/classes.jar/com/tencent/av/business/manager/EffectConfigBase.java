@@ -6,11 +6,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bdvs;
-import bdwu;
-import bghp;
-import bgmg;
-import bgnt;
+import beum;
+import bevn;
+import bhhq;
+import bhmi;
+import bhnv;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -24,23 +24,23 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lbc;
-import lbf;
-import lbp;
-import lbq;
-import ley;
-import lgb;
-import lgf;
-import lgh;
-import lgi;
+import lbj;
+import lbm;
+import lbw;
+import lbx;
+import lff;
 import lgj;
-import lgk;
-import mue;
+import lgn;
+import lgp;
+import lgq;
+import lgr;
+import lgs;
+import mvd;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public abstract class EffectConfigBase<T extends lgj>
-  extends lgb
+public abstract class EffectConfigBase<T extends lgr>
+  extends lgj
 {
   public static String b;
   public static String c;
@@ -49,11 +49,11 @@ public abstract class EffectConfigBase<T extends lgj>
   public int a;
   public Handler a;
   protected List<T> a;
-  protected final lgf a;
+  protected final lgn a;
   public T a;
   protected List<T> b;
   protected List<T> c;
-  protected List<WeakReference<lgi<T>>> d;
+  protected List<WeakReference<lgq<T>>> d;
   
   static
   {
@@ -66,9 +66,9 @@ public abstract class EffectConfigBase<T extends lgj>
   public EffectConfigBase(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Lgf = new lgf();
+    this.jdField_a_of_type_Lgn = new lgn();
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new lgk(this.jdField_a_of_type_JavaLangString, this);
+    this.jdField_a_of_type_AndroidOsHandler = new lgs(this.jdField_a_of_type_JavaLangString, this);
     this.jdField_d_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -86,14 +86,14 @@ public abstract class EffectConfigBase<T extends lgj>
     return jdField_d_of_type_JavaLangString + paramInt + "_" + paramString;
   }
   
-  private WeakReference<lgi<T>> a(lgi<T> paramlgi)
+  private WeakReference<lgq<T>> a(lgq<T> paramlgq)
   {
     int j = this.jdField_d_of_type_JavaUtilList.size();
     int i = 0;
     while (i < j)
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
-      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((lgi)localWeakReference.get()).equals(paramlgi))) {
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((lgq)localWeakReference.get()).equals(paramlgq))) {
         return localWeakReference;
       }
       i += 1;
@@ -138,7 +138,7 @@ public abstract class EffectConfigBase<T extends lgj>
     {
       localObject = a(paramT.getId());
       if (localObject != null) {
-        ((lgj)localObject).setUsable(true);
+        ((lgr)localObject).setUsable(true);
       }
     }
     int j = this.jdField_d_of_type_JavaUtilList.size();
@@ -147,7 +147,7 @@ public abstract class EffectConfigBase<T extends lgj>
     {
       localObject = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-        ((lgi)((WeakReference)localObject).get()).onDownloadFinish(paramLong, paramT, paramBoolean);
+        ((lgq)((WeakReference)localObject).get()).onDownloadFinish(paramLong, paramT, paramBoolean);
       }
       i += 1;
     }
@@ -161,7 +161,7 @@ public abstract class EffectConfigBase<T extends lgj>
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((lgi)localWeakReference.get()).onProgressUpdate(paramT, paramInt);
+        ((lgq)localWeakReference.get()).onProgressUpdate(paramT, paramInt);
       }
       i += 1;
     }
@@ -196,7 +196,7 @@ public abstract class EffectConfigBase<T extends lgj>
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((lgi)localWeakReference.get()).onItemSelectedChanged(paramLong, paramT);
+        ((lgq)localWeakReference.get()).onItemSelectedChanged(paramLong, paramT);
       }
       i += 1;
     }
@@ -219,16 +219,16 @@ public abstract class EffectConfigBase<T extends lgj>
   protected String a()
   {
     String str = null;
-    lbp locallbp = lbq.b(a());
-    if (locallbp != null) {
-      str = locallbp.jdField_a_of_type_JavaLangString;
+    lbw locallbw = lbx.b(a());
+    if (locallbw != null) {
+      str = locallbw.jdField_a_of_type_JavaLangString;
     }
     return str;
   }
   
   public String a(T paramT)
   {
-    return lbf.a() + paramT.cid + File.separator + "temp" + File.separator + paramT.getId() + ".zip";
+    return lbm.a() + paramT.cid + File.separator + "temp" + File.separator + paramT.getId() + ".zip";
   }
   
   protected List<T> a(int paramInt, String paramString)
@@ -238,7 +238,7 @@ public abstract class EffectConfigBase<T extends lgj>
     int i;
     int j;
     label68:
-    lgj locallgj;
+    lgr locallgr;
     int m;
     boolean bool1;
     if (!TextUtils.isEmpty(paramString))
@@ -246,7 +246,7 @@ public abstract class EffectConfigBase<T extends lgj>
       try
       {
         localObject = new JSONObject(paramString);
-        k = mue.b();
+        k = mvd.b();
         if (paramInt != 543) {
           break label432;
         }
@@ -269,19 +269,19 @@ public abstract class EffectConfigBase<T extends lgj>
         j = 0;
         if (j < paramString.length())
         {
-          locallgj = (lgj)bghp.a((JSONObject)paramString.get(j), (Class)localObject);
-          if ((locallgj == null) || (TextUtils.isEmpty(locallgj.getId()))) {
+          locallgr = (lgr)bhhq.a((JSONObject)paramString.get(j), (Class)localObject);
+          if ((locallgr == null) || (TextUtils.isEmpty(locallgr.getId()))) {
             break label423;
           }
-          locallgj.cid = paramInt;
-          m = locallgj.getPlatform();
-          lbc.c(this.jdField_a_of_type_JavaLangString, "cid = " + locallgj.cid + ", item: " + locallgj.toString() + "|" + k + "|" + m);
-          bool2 = a(locallgj);
+          locallgr.cid = paramInt;
+          m = locallgr.getPlatform();
+          lbj.c(this.jdField_a_of_type_JavaLangString, "cid = " + locallgr.cid + ", item: " + locallgr.toString() + "|" + k + "|" + m);
+          bool2 = a(locallgr);
           bool1 = bool2;
           if (bool2)
           {
-            str1 = a(locallgj);
-            str2 = b(locallgj);
+            str1 = a(locallgr);
+            str2 = b(locallgr);
             localFile = new File(str2);
             bool1 = localFile.exists();
             if (bool1) {}
@@ -296,27 +296,27 @@ public abstract class EffectConfigBase<T extends lgj>
     {
       try
       {
-        bgmg.a(str1, str2, false);
+        bhmi.a(str1, str2, false);
         bool1 = localFile.exists();
         if (i == 0) {
           break label382;
         }
-        locallgj.setUsable(bool1);
-        localArrayList.add(locallgj);
+        locallgr.setUsable(bool1);
+        localArrayList.add(locallgr);
         break label423;
         paramString = b();
       }
       catch (Throwable localThrowable)
       {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "parse item fail, item[" + locallgj + "]", localThrowable);
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "parse item fail, item[" + locallgr + "]", localThrowable);
         continue;
       }
       return localArrayList;
       label382:
       if ((m == 0) || (k >= m))
       {
-        locallgj.setUsable(bool1);
-        localArrayList.add(locallgj);
+        locallgr.setUsable(bool1);
+        localArrayList.add(locallgr);
       }
       for (;;)
       {
@@ -346,22 +346,22 @@ public abstract class EffectConfigBase<T extends lgj>
   
   public T a()
   {
-    return this.jdField_a_of_type_Lgj;
+    return this.jdField_a_of_type_Lgr;
   }
   
   public T a(String paramString)
   {
     b();
     Iterator localIterator;
-    lgj locallgj;
+    lgr locallgr;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
     {
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        locallgj = (lgj)localIterator.next();
-        if (paramString.equals(locallgj.getId())) {
-          return locallgj;
+        locallgr = (lgr)localIterator.next();
+        if (paramString.equals(locallgr.getId())) {
+          return locallgr;
         }
       }
     }
@@ -370,9 +370,9 @@ public abstract class EffectConfigBase<T extends lgj>
       localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        locallgj = (lgj)localIterator.next();
-        if (paramString.equals(locallgj.getId())) {
-          return locallgj;
+        locallgr = (lgr)localIterator.next();
+        if (paramString.equals(locallgr.getId())) {
+          return locallgr;
         }
       }
     }
@@ -381,9 +381,9 @@ public abstract class EffectConfigBase<T extends lgj>
       localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        locallgj = (lgj)localIterator.next();
-        if (paramString.equals(locallgj.getId())) {
-          return locallgj;
+        locallgr = (lgr)localIterator.next();
+        if (paramString.equals(locallgr.getId())) {
+          return locallgr;
         }
       }
     }
@@ -392,17 +392,17 @@ public abstract class EffectConfigBase<T extends lgj>
   
   public void a() {}
   
-  public void a(long paramLong, lgi<T> paramlgi)
+  public void a(long paramLong, lgq<T> paramlgq)
   {
-    if (paramlgi != null)
+    if (paramlgq != null)
     {
-      if (a(paramlgi) == null)
+      if (a(paramlgq) == null)
       {
-        WeakReference localWeakReference = new WeakReference(paramlgi);
+        WeakReference localWeakReference = new WeakReference(paramlgq);
         this.jdField_d_of_type_JavaUtilList.add(localWeakReference);
       }
       if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "addCallback, callback[" + paramlgi.getClass().getSimpleName() + "], callback[" + paramlgi + "], seq[" + paramLong + "]");
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "addCallback, callback[" + paramlgq.getClass().getSimpleName() + "], callback[" + paramlgq + "], seq[" + paramLong + "]");
       }
     }
   }
@@ -416,16 +416,16 @@ public abstract class EffectConfigBase<T extends lgj>
       this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, 1, (int)paramLong, paramT).sendToTarget();
       return;
     }
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = new lgh(this, paramLong, paramT);
-    localbdvs.jdField_a_of_type_JavaLangString = paramT.getResurl();
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.jdField_c_of_type_JavaLangString = a(paramT);
-    localbdvs.b = bgnt.a(bdwu.a().a());
-    localbdvs.a(paramT);
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = new lgp(this, paramLong, paramT);
+    localbeum.jdField_a_of_type_JavaLangString = paramT.getResurl();
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.jdField_c_of_type_JavaLangString = a(paramT);
+    localbeum.b = bhnv.a(bevn.a().a());
+    localbeum.a(paramT);
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownload, item[" + paramT + "], seq[" + paramLong + "]");
     paramT.isDownloading = true;
-    ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, localbdvs), 5, null, true);
+    ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, localbeum), 5, null, true);
   }
   
   public void a(Message paramMessage) {}
@@ -455,18 +455,18 @@ public abstract class EffectConfigBase<T extends lgj>
   
   public boolean a(long paramLong, T paramT)
   {
-    lgj locallgj = null;
+    lgr locallgr = null;
     Object localObject = null;
-    if (!a(this.jdField_a_of_type_Lgj, paramT))
+    if (!a(this.jdField_a_of_type_Lgr, paramT))
     {
-      locallgj = this.jdField_a_of_type_Lgj;
-      this.jdField_a_of_type_Lgj = paramT;
+      locallgr = this.jdField_a_of_type_Lgr;
+      this.jdField_a_of_type_Lgr = paramT;
       if (AudioHelper.f())
       {
         if (QLog.isDevelopLevel()) {
           localObject = new Throwable("打印调用栈");
         }
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, notify MSG_ON_ITEM_SELECT_CHANGED, seq[" + paramLong + "], count_MSG[" + this.jdField_a_of_type_Int + "], \nlast[" + locallgj + "], \nnew[" + this.jdField_a_of_type_Lgj + "]", (Throwable)localObject);
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, notify MSG_ON_ITEM_SELECT_CHANGED, seq[" + paramLong + "], count_MSG[" + this.jdField_a_of_type_Int + "], \nlast[" + locallgr + "], \nnew[" + this.jdField_a_of_type_Lgr + "]", (Throwable)localObject);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
       this.jdField_a_of_type_Int = 1;
@@ -477,7 +477,7 @@ public abstract class EffectConfigBase<T extends lgj>
     }
     if (QLog.isDevelopLevel())
     {
-      localObject = locallgj;
+      localObject = locallgr;
       if (QLog.isDevelopLevel()) {
         localObject = new Throwable("打印调用栈");
       }
@@ -495,7 +495,7 @@ public abstract class EffectConfigBase<T extends lgj>
       if (paramT != null) {}
       for (paramT = Integer.valueOf(paramT.cid);; paramT = "item == null")
       {
-        lbc.e(str, paramT + "|");
+        lbj.e(str, paramT + "|");
         return false;
       }
     }
@@ -510,13 +510,13 @@ public abstract class EffectConfigBase<T extends lgj>
     str = SecUtil.getFileMd5(str);
     long l2 = SystemClock.elapsedRealtime();
     paramT = paramT.getMd5();
-    lbc.c(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + str + "|" + paramT + "|" + (l2 - l1));
+    lbj.c(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + str + "|" + paramT + "|" + (l2 - l1));
     return paramT.equalsIgnoreCase(str);
   }
   
   public int b(int paramInt, String paramString)
   {
-    lbc.c(this.jdField_a_of_type_JavaLangString, "onSendMessageToPeer :" + paramInt + "|" + paramString);
+    lbj.c(this.jdField_a_of_type_JavaLangString, "onSendMessageToPeer :" + paramInt + "|" + paramString);
     return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(paramInt, paramString);
   }
   
@@ -527,7 +527,7 @@ public abstract class EffectConfigBase<T extends lgj>
   
   public String b(T paramT)
   {
-    return lbf.a() + paramT.cid + File.separator + paramT.getId() + File.separator;
+    return lbm.a() + paramT.cid + File.separator + paramT.getId() + File.separator;
   }
   
   public void b()
@@ -540,30 +540,30 @@ public abstract class EffectConfigBase<T extends lgj>
     if (a() == 176)
     {
       if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() == 0)) {
-        this.jdField_b_of_type_JavaUtilList = a(370, lbq.b(370).jdField_a_of_type_JavaLangString);
+        this.jdField_b_of_type_JavaUtilList = a(370, lbx.b(370).jdField_a_of_type_JavaLangString);
       }
       if ((this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.size() == 0)) {
-        this.jdField_c_of_type_JavaUtilList = a(543, lbq.b(543).jdField_a_of_type_JavaLangString);
+        this.jdField_c_of_type_JavaUtilList = a(543, lbx.b(543).jdField_a_of_type_JavaLangString);
       }
     }
   }
   
-  public void b(long paramLong, lgi<T> paramlgi)
+  public void b(long paramLong, lgq<T> paramlgq)
   {
-    if (paramlgi != null)
+    if (paramlgq != null)
     {
-      if (a(paramlgi) != null) {
-        this.jdField_d_of_type_JavaUtilList.remove(paramlgi);
+      if (a(paramlgq) != null) {
+        this.jdField_d_of_type_JavaUtilList.remove(paramlgq);
       }
       if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "removeCallback, callback[" + paramlgi.getClass().getSimpleName() + "], callback[" + paramlgi + "], seq[" + paramLong + "]");
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "removeCallback, callback[" + paramlgq.getClass().getSimpleName() + "], callback[" + paramlgq + "], seq[" + paramLong + "]");
       }
     }
   }
   
   public String c(T paramT)
   {
-    return lbf.a() + paramT.cid + File.separator + paramT.getId();
+    return lbm.a() + paramT.cid + File.separator + paramT.getId();
   }
 }
 

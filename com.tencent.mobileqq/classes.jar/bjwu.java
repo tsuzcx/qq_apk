@@ -1,13 +1,19 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.os.Bundle;
 
 class bjwu
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnInfoListener
+  implements bjwh
 {
-  bjwu(bjwn parambjwn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnInfoListener paramOnInfoListener) {}
+  bjwu(bjwq parambjwq) {}
   
-  public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bjwn, paramInt1, paramInt2);
+    bjtx.c("DownloadManager_", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    paramBundle = new Bundle();
+    paramBundle.putString("PackageName", paramString1);
+    paramBundle.putString("Code", paramString2);
+    paramBundle.putInt("VersionCode", paramInt);
+    paramBundle.putBoolean("IsSuccess", paramBoolean);
+    bjwq.a(this.a, paramBundle);
   }
 }
 

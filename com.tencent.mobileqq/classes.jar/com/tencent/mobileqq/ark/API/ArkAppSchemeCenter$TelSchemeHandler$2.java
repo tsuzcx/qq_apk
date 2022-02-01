@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.text.TextUtils;
-import apgt;
-import apjm;
-import apjt;
+import apuj;
+import apxc;
+import apxj;
 import com.tencent.ark.ark.Application;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class ArkAppSchemeCenter$TelSchemeHandler$2
   implements Runnable
 {
-  public ArkAppSchemeCenter$TelSchemeHandler$2(apjt paramapjt, String paramString1, String paramString2, long paramLong, String paramString3) {}
+  public ArkAppSchemeCenter$TelSchemeHandler$2(apxj paramapxj, String paramString1, String paramString2, long paramLong, String paramString3) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class ArkAppSchemeCenter$TelSchemeHandler$2
       QLog.i("ArkApp", 1, "ArkAppSchemeCenter.navigate create application error");
       return;
     }
-    if (!apgt.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, (ark.Application)localObject1, "permission.TELEPHONE"))
+    if (!apuj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, (ark.Application)localObject1, "permission.TELEPHONE"))
     {
       ((ark.Application)localObject1).Release();
       QLog.i("ArkApp", 1, "ArkAppSchemeCenter.navigate check Permission fail");
@@ -35,7 +35,7 @@ public class ArkAppSchemeCenter$TelSchemeHandler$2
     if (TextUtils.isEmpty(str)) {}
     try
     {
-      Object localObject3 = apjm.a(new JSONObject(this.c)).get("number");
+      Object localObject3 = apxc.a(new JSONObject(this.c)).get("number");
       localObject1 = str;
       if (localObject3 != null) {
         localObject1 = localObject3.toString();

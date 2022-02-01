@@ -1,29 +1,40 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class wne
-  implements View.OnFocusChangeListener
+class wne
+  implements azrg
 {
-  public wne(StoryInputBarView paramStoryInputBarView) {}
+  wne(wnd paramwnd) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (!paramBoolean) {
-      this.a.a();
-    }
-    while (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Ybd.jdField_a_of_type_Boolean);
-    this.a.jdField_a_of_type_Ybd.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-    paramView = this.a;
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    return null;
+  }
+  
+  public void a(azrh paramazrh) {}
+  
+  public void b(azrh paramazrh)
+  {
+    if (paramazrh.jdField_b_of_type_Int == 0)
     {
-      paramView.jdField_a_of_type_Boolean = paramBoolean;
+      this.a.jdField_a_of_type_Wmj.c = paramazrh.jdField_b_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Wmj.a = paramazrh.c;
+      this.a.b();
+      wnd.a(this.a, new ErrorMessage());
       return;
     }
+    if ((paramazrh.jdField_b_of_type_Int == bext.a(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    {
+      wnd.a(this.a);
+      yuk.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
+      return;
+    }
+    this.a.b();
+    paramazrh = new ErrorMessage(paramazrh.jdField_b_of_type_Int, paramazrh.a);
+    paramazrh.extraMsg = "upload";
+    wnd.a(this.a, paramazrh);
   }
 }
 

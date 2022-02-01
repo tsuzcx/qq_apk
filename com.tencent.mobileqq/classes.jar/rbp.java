@@ -1,17 +1,22 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlClientRedPacketModule$reportTaskProgress$1", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IReportTaskProgressCallback$Stub;", "onRedPacketTaskFinish", "", "isFinish", "", "wording", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rbp
-  extends rbj
+public class rbp
+  extends pfh
 {
-  rbp(qza paramqza) {}
+  public rbp(ReadInJoyTopicSelectionFragment paramReadInJoyTopicSelectionFragment) {}
   
-  public void a(boolean paramBoolean, @Nullable String paramString)
+  public void a(List<String> paramList, List<TopicInfo> paramList1)
   {
-    qza localqza = this.a;
-    if (localqza != null) {
-      localqza.a(paramBoolean, paramString);
+    if (paramList.size() == 0)
+    {
+      ReadInJoyTopicSelectionFragment.a(this.a).clear();
+      ReadInJoyTopicSelectionFragment.a(this.a).addAll(paramList1);
+      this.a.a.clear();
+      this.a.a.addAll(ReadInJoyTopicSelectionFragment.a(paramList1));
+      ReadInJoyTopicSelectionFragment.a(this.a).notifyDataSetChanged();
+      ozs.a(ReadInJoyTopicSelectionFragment.a(this.a), ReadInJoyTopicSelectionFragment.a(this.a), "0");
     }
   }
 }

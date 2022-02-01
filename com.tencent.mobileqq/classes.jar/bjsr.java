@@ -1,28 +1,19 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjsr
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public bjsr(Login paramLogin) {}
+  public bjsr(CommonTitleBar paramCommonTitleBar) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
-    {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
-      }
-      if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
     }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

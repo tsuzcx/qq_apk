@@ -1,25 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.FloatRange;
 
-class bomk
-  implements View.OnClickListener
+public class bomk
 {
-  bomk(bomh parambomh) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private bomj jdField_a_of_type_Bomj = new bomj();
   
-  public void onClick(View paramView)
+  public bomj a()
   {
-    if (bomh.a(this.a)) {
-      this.a.a.y();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131712465), 0).a();
-    }
+    bomj.b(this.jdField_a_of_type_Bomj, this.jdField_a_of_type_Float - bomj.a(this.jdField_a_of_type_Bomj));
+    return this.jdField_a_of_type_Bomj;
+  }
+  
+  public bomk a(@FloatRange(from=0.01D) float paramFloat)
+  {
+    bomj.a(this.jdField_a_of_type_Bomj, paramFloat);
+    return this;
+  }
+  
+  public bomk b(@FloatRange(from=0.01D) float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    return this;
   }
 }
 

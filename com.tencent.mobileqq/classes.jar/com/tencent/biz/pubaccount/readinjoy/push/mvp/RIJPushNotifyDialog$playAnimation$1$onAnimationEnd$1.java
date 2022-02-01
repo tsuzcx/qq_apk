@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.push.mvp;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
-import qqj;
+import qix;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJPushNotifyDialog$playAnimation$1$onAnimationEnd$1
   implements Runnable
 {
-  public RIJPushNotifyDialog$playAnimation$1$onAnimationEnd$1(qqj paramqqj) {}
+  public RIJPushNotifyDialog$playAnimation$1$onAnimationEnd$1(qix paramqix) {}
   
   public final void run()
   {

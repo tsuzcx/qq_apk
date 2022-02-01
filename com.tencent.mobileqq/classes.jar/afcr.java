@@ -1,29 +1,13 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class afcr
-  implements amdu
+  implements DialogInterface.OnClickListener
 {
-  public afcr(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public afcr(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void a()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(List<MayKnowRecommend> paramList) {}
-  
-  public void b()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

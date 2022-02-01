@@ -1,11 +1,16 @@
-public class axzn
-  extends axzq
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class axzn
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  axzn(Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    axzi.a(this.a, 10);
+  }
 }
 
 

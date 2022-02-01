@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ojf
-  implements nkl
+  implements View.OnClickListener
 {
-  public ojf(ReadInJoyNewFeedsActivity.2 param2) {}
+  public ojf(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
-    }
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -1,37 +1,10 @@
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class blmq
-  implements blmy
+public abstract interface blmq
 {
-  public blmq(QQPimBridgeActivity paramQQPimBridgeActivity) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(blmr.a, 2, "QQPimBridgeActivity.hasInstalled()");
-    }
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(blmr.a, 2, "QQPimBridgeActivity.downloadError()");
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.arg1 = paramInt;
-    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
-  }
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

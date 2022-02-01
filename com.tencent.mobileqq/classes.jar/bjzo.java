@@ -1,309 +1,599 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.open.model.AccountManage;
+import com.tencent.open.model.AccountManage.RefreshReason;
+import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.open.model.VirtualInfo;
+import com.tencent.open.virtual.OpenSdkVirtualManager.1;
+import com.tencent.open.virtual.OpenSdkVirtualManager.2;
+import com.tencent.open.virtual.OpenSdkVirtualManager.4;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeRequest;
+import com.tencent.qconn.protofile.appType.AndroidInfo;
+import com.tencent.qconn.protofile.appType.AuthItem;
+import com.tencent.qconn.protofile.preAuth.PreAuthProxyRequest;
+import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
+import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import com.tencent.qconn.protofile.preAuth.VirtualProfile;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import mqq.observer.SSOAccountObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjzo
-  extends BroadcastReceiver
+public class bjzo
 {
-  bjzo(bjzk parambjzk) {}
+  private int jdField_a_of_type_Int;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new CopyOnWriteArraySet();
+  private ConcurrentHashMap<String, GetVirtualListResult> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private int jdField_b_of_type_Int;
+  private ConcurrentHashMap<String, bjzb> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Bundle> c = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<bjlv>> d = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, auxp> e = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, preAuth.PreAuthResponse> f = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> g = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> h = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> i = new ConcurrentHashMap();
   
-  /* Error */
-  public void onReceive(android.content.Context paramContext, android.content.Intent paramIntent)
+  private void a(bjzb parambjzb, String paramString, JSONObject paramJSONObject, bjpq parambjpq)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: iconst_0
-    //   3: istore 5
-    //   5: iconst_0
-    //   6: istore 6
-    //   8: aload_0
-    //   9: getfield 10	bjzo:a	Lbjzk;
-    //   12: invokestatic 23	bjzk:a	(Lbjzk;)Z
-    //   15: ifne +4 -> 19
-    //   18: return
-    //   19: aload_0
-    //   20: getfield 10	bjzo:a	Lbjzk;
-    //   23: iconst_0
-    //   24: invokestatic 26	bjzk:a	(Lbjzk;Z)Z
-    //   27: pop
-    //   28: aload_2
-    //   29: invokevirtual 32	android/content/Intent:getAction	()Ljava/lang/String;
-    //   32: astore 8
-    //   34: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   37: ifeq +23 -> 60
-    //   40: ldc 40
-    //   42: iconst_2
-    //   43: ldc 42
-    //   45: iconst_1
-    //   46: anewarray 44	java/lang/Object
-    //   49: dup
-    //   50: iconst_0
-    //   51: aload 8
-    //   53: aastore
-    //   54: invokestatic 50	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   57: invokestatic 54	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   60: ldc 56
-    //   62: aload 8
-    //   64: invokevirtual 60	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   67: ifeq -49 -> 18
-    //   70: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   73: ifeq +17 -> 90
-    //   76: ldc 40
-    //   78: iconst_2
-    //   79: iconst_1
-    //   80: anewarray 44	java/lang/Object
-    //   83: dup
-    //   84: iconst_0
-    //   85: aload_2
-    //   86: aastore
-    //   87: invokestatic 63	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   90: aload_2
-    //   91: ldc 65
-    //   93: invokevirtual 69	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   96: checkcast 71	com/tencent/mobileqq/activity/photo/LocalMediaInfo
-    //   99: astore 11
-    //   101: aload 11
-    //   103: ifnonnull +21 -> 124
-    //   106: aload_0
-    //   107: getfield 10	bjzo:a	Lbjzk;
-    //   110: aload_0
-    //   111: getfield 10	bjzo:a	Lbjzk;
-    //   114: invokestatic 74	bjzk:a	(Lbjzk;)I
-    //   117: ldc 76
-    //   119: aconst_null
-    //   120: invokestatic 79	bjzk:a	(Lbjzk;ILjava/lang/String;Lorg/json/JSONObject;)V
-    //   123: return
-    //   124: iload 5
-    //   126: istore 4
-    //   128: getstatic 85	android/os/Build$VERSION:SDK_INT	I
-    //   131: bipush 15
-    //   133: if_icmple +105 -> 238
-    //   136: new 87	java/io/FileInputStream
-    //   139: dup
-    //   140: aload 11
-    //   142: getfield 91	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   145: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   148: astore 8
-    //   150: new 96	android/media/MediaExtractor
-    //   153: dup
-    //   154: invokespecial 97	android/media/MediaExtractor:<init>	()V
-    //   157: astore 9
-    //   159: aload 9
-    //   161: aload 8
-    //   163: invokevirtual 101	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   166: invokevirtual 105	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   169: aload 9
-    //   171: invokestatic 108	bjzk:a	(Landroid/media/MediaExtractor;)I
-    //   174: istore 4
-    //   176: iload 6
-    //   178: istore_3
-    //   179: iload 4
-    //   181: iconst_m1
-    //   182: if_icmple +30 -> 212
-    //   185: aload 9
-    //   187: iload 4
-    //   189: invokevirtual 112	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   192: astore_1
-    //   193: iload 6
-    //   195: istore_3
-    //   196: aload_1
-    //   197: ldc 114
-    //   199: invokevirtual 120	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
-    //   202: ifeq +10 -> 212
-    //   205: aload_1
-    //   206: ldc 114
-    //   208: invokevirtual 124	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   211: istore_3
-    //   212: aload 8
-    //   214: ifnull +8 -> 222
-    //   217: aload 8
-    //   219: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   222: iload_3
-    //   223: istore 4
-    //   225: aload 9
-    //   227: ifnull +11 -> 238
-    //   230: aload 9
-    //   232: invokevirtual 130	android/media/MediaExtractor:release	()V
-    //   235: iload_3
-    //   236: istore 4
-    //   238: ldc 40
-    //   240: iconst_2
-    //   241: new 132	java/lang/StringBuilder
-    //   244: dup
-    //   245: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   248: ldc 135
-    //   250: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   253: iload 4
-    //   255: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   258: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 148	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   264: iload 4
-    //   266: bipush 90
-    //   268: if_icmpeq +11 -> 279
-    //   271: iload 4
-    //   273: sipush 270
-    //   276: if_icmpne +25 -> 301
-    //   279: aload 11
-    //   281: getfield 151	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
-    //   284: istore_3
-    //   285: aload 11
-    //   287: aload 11
-    //   289: getfield 154	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   292: putfield 151	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
-    //   295: aload 11
-    //   297: iload_3
-    //   298: putfield 154	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   301: ldc 156
-    //   303: aload_2
-    //   304: ldc 158
-    //   306: invokevirtual 162	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   309: invokevirtual 60	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   312: istore 7
-    //   314: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   317: ifeq +29 -> 346
-    //   320: ldc 40
-    //   322: iconst_2
-    //   323: new 132	java/lang/StringBuilder
-    //   326: dup
-    //   327: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   330: ldc 164
-    //   332: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: iload 7
-    //   337: invokevirtual 167	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   340: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   343: invokestatic 54	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   346: iload 7
-    //   348: ifeq +84 -> 432
-    //   351: aload_0
-    //   352: getfield 10	bjzo:a	Lbjzk;
-    //   355: aload 11
-    //   357: iconst_1
-    //   358: invokestatic 170	bjzk:a	(Lbjzk;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;Z)V
-    //   361: return
-    //   362: astore 9
-    //   364: aconst_null
-    //   365: astore 8
-    //   367: ldc 40
-    //   369: iconst_1
-    //   370: ldc 172
-    //   372: aload 9
-    //   374: invokestatic 176	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   377: aload 8
-    //   379: ifnull +8 -> 387
-    //   382: aload 8
-    //   384: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   387: iload 5
-    //   389: istore 4
-    //   391: aload_1
-    //   392: ifnull -154 -> 238
-    //   395: aload_1
-    //   396: invokevirtual 130	android/media/MediaExtractor:release	()V
-    //   399: iload 5
-    //   401: istore 4
-    //   403: goto -165 -> 238
-    //   406: astore_1
-    //   407: aconst_null
-    //   408: astore 8
-    //   410: aconst_null
-    //   411: astore_2
-    //   412: aload 8
-    //   414: ifnull +8 -> 422
-    //   417: aload 8
-    //   419: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   422: aload_2
-    //   423: ifnull +7 -> 430
-    //   426: aload_2
-    //   427: invokevirtual 130	android/media/MediaExtractor:release	()V
-    //   430: aload_1
-    //   431: athrow
-    //   432: aload 11
-    //   434: getfield 91	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   437: astore_1
-    //   438: aload_0
-    //   439: getfield 10	bjzo:a	Lbjzk;
-    //   442: invokestatic 179	bjzk:a	(Lbjzk;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   445: ldc 181
-    //   447: invokeinterface 187 2 0
-    //   452: checkcast 181	com/tencent/qqmini/sdk/launcher/shell/IMiniAppFileManager
-    //   455: aload_1
-    //   456: invokeinterface 190 2 0
-    //   461: astore_1
-    //   462: aload_0
-    //   463: getfield 10	bjzo:a	Lbjzk;
-    //   466: aload_1
-    //   467: aload 11
-    //   469: getfield 194	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
-    //   472: aload 11
-    //   474: invokestatic 197	bjzk:a	(Lbjzk;Ljava/lang/String;JLcom/tencent/mobileqq/activity/photo/LocalMediaInfo;)V
-    //   477: return
-    //   478: astore_1
-    //   479: goto -257 -> 222
-    //   482: astore 8
-    //   484: goto -97 -> 387
-    //   487: astore 8
-    //   489: goto -67 -> 422
-    //   492: astore_1
-    //   493: aconst_null
-    //   494: astore_2
-    //   495: goto -83 -> 412
-    //   498: astore_1
-    //   499: aload 9
-    //   501: astore_2
-    //   502: goto -90 -> 412
-    //   505: astore 9
-    //   507: aload_1
-    //   508: astore_2
-    //   509: aload 9
-    //   511: astore_1
-    //   512: goto -100 -> 412
-    //   515: astore 9
-    //   517: goto -150 -> 367
-    //   520: astore 10
-    //   522: aload 9
-    //   524: astore_1
-    //   525: aload 10
-    //   527: astore 9
-    //   529: goto -162 -> 367
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	532	0	this	bjzo
-    //   0	532	1	paramContext	android.content.Context
-    //   0	532	2	paramIntent	android.content.Intent
-    //   178	120	3	i	int
-    //   126	276	4	j	int
-    //   3	397	5	k	int
-    //   6	188	6	m	int
-    //   312	35	7	bool	boolean
-    //   32	386	8	localObject1	java.lang.Object
-    //   482	1	8	localIOException1	java.io.IOException
-    //   487	1	8	localIOException2	java.io.IOException
-    //   157	74	9	localMediaExtractor	android.media.MediaExtractor
-    //   362	138	9	localIOException3	java.io.IOException
-    //   505	5	9	localObject2	java.lang.Object
-    //   515	8	9	localIOException4	java.io.IOException
-    //   527	1	9	localObject3	java.lang.Object
-    //   520	6	10	localIOException5	java.io.IOException
-    //   99	374	11	localLocalMediaInfo	com.tencent.mobileqq.activity.photo.LocalMediaInfo
-    // Exception table:
-    //   from	to	target	type
-    //   136	150	362	java/io/IOException
-    //   136	150	406	finally
-    //   217	222	478	java/io/IOException
-    //   382	387	482	java/io/IOException
-    //   417	422	487	java/io/IOException
-    //   150	159	492	finally
-    //   159	176	498	finally
-    //   185	193	498	finally
-    //   196	212	498	finally
-    //   367	377	505	finally
-    //   150	159	515	java/io/IOException
-    //   159	176	520	java/io/IOException
-    //   185	193	520	java/io/IOException
-    //   196	212	520	java/io/IOException
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.handleUploadAvatar.count:", Integer.valueOf(this.jdField_a_of_type_Int), ",imagePath:", paramString });
+    paramString = new bjzs(this, parambjzb, parambjpq, paramString, paramJSONObject);
+    bjzy.a("oidb_0xc7f_25", parambjzb, paramJSONObject.toString(), paramString);
+  }
+  
+  private void a(preAuth.PreAuthResponse paramPreAuthResponse)
+  {
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "onPreAuthResponse");
+    if (!paramPreAuthResponse.appid.has()) {
+      return;
+    }
+    String str = Long.toString(paramPreAuthResponse.appid.get());
+    this.f.put(str, paramPreAuthResponse);
+    Object localObject1 = new ArrayList();
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    if (paramPreAuthResponse.auth_items.has())
+    {
+      localObject2 = paramPreAuthResponse.auth_items.get().iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (appType.AuthItem)((Iterator)localObject2).next();
+        localObject4 = new bjlv();
+        ((bjlv)localObject4).jdField_b_of_type_JavaLangString = ((appType.AuthItem)localObject3).api_list.get();
+        ((bjlv)localObject4).jdField_a_of_type_Int = ((appType.AuthItem)localObject3).default_flag.get();
+        ((bjlv)localObject4).jdField_b_of_type_Int = ((appType.AuthItem)localObject3).id.get();
+        if (((appType.AuthItem)localObject3).is_new.get() != 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          ((bjlv)localObject4).jdField_a_of_type_Boolean = bool;
+          ((bjlv)localObject4).jdField_a_of_type_JavaLangString = ((appType.AuthItem)localObject3).title.get();
+          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "onPreAuthResponse Permission=", ((bjlv)localObject4).toString() });
+          ((List)localObject1).add(localObject4);
+          break;
+        }
+      }
+    }
+    this.d.put(str, localObject1);
+    if (paramPreAuthResponse.android_info.has()) {
+      this.e.put(str, auxp.a(paramPreAuthResponse, paramPreAuthResponse.android_info));
+    }
+    localObject1 = new GetVirtualListResult();
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "onPreAuthResponse response.profiles.has()=", Boolean.valueOf(paramPreAuthResponse.profiles.has()) });
+    if (paramPreAuthResponse.profiles.has())
+    {
+      localObject2 = new ArrayList();
+      localObject3 = paramPreAuthResponse.profiles.get().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (preAuth.VirtualProfile)((Iterator)localObject3).next();
+        VirtualInfo localVirtualInfo = new VirtualInfo();
+        localVirtualInfo.jdField_a_of_type_Long = ((preAuth.VirtualProfile)localObject4).vid.get();
+        localVirtualInfo.jdField_a_of_type_JavaLangString = ((preAuth.VirtualProfile)localObject4).nick_name.get();
+        localVirtualInfo.jdField_b_of_type_JavaLangString = ((preAuth.VirtualProfile)localObject4).avatar_url.get();
+        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "onPreAuthResponse nickName=", localVirtualInfo.jdField_a_of_type_JavaLangString + ", avatarUrl=", localVirtualInfo.jdField_b_of_type_JavaLangString });
+        ((ArrayList)localObject2).add(localVirtualInfo);
+      }
+      ((GetVirtualListResult)localObject1).jdField_a_of_type_Long = paramPreAuthResponse.vid.get();
+      ((GetVirtualListResult)localObject1).jdField_a_of_type_Int = paramPreAuthResponse.ret.get();
+      ((GetVirtualListResult)localObject1).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject1);
+  }
+  
+  private void b(String paramString)
+  {
+    TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+    if (localTicketManager == null)
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "preAuthWithRetry manager==null");
+      return;
+    }
+    String str1;
+    if (TextUtils.isEmpty(localTicketManager.getA2(paramString)))
+    {
+      str1 = "empty";
+      if (!TextUtils.isEmpty(localTicketManager.getSkey(paramString))) {
+        break label126;
+      }
+    }
+    label126:
+    for (String str2 = "empty";; str2 = "valid")
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry a=", str1, ", s=", str2 });
+      paramString = localTicketManager.getDA2(paramString);
+      if (paramString != null) {
+        break label133;
+      }
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "preAuthWithRetry d==null");
+      return;
+      str1 = "valid";
+      break;
+    }
+    label133:
+    if (paramString.length == 0) {}
+    for (paramString = "empty";; paramString = "valid")
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry d ", paramString });
+      return;
+    }
+  }
+  
+  public auxp a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (auxp)this.e.get(paramString);
+  }
+  
+  public bjzb a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (bjzb)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public GetVirtualListResult a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (GetVirtualListResult)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public preAuth.PreAuthRequest a(bjzb parambjzb, String paramString, long paramLong1, long paramLong2, Bundle paramBundle)
+  {
+    preAuth.PreAuthRequest localPreAuthRequest = new preAuth.PreAuthRequest();
+    localPreAuthRequest.appid.set(paramLong1);
+    localPreAuthRequest.sdkp.set(bjqq.a(paramBundle, "sdkp", "android"));
+    localPreAuthRequest.sdkv.set(bjqq.a(paramBundle, "sdkv", "1.5.9"));
+    localPreAuthRequest.qqv.set(bjjo.a().d());
+    PBStringField localPBStringField = localPreAuthRequest.os;
+    String str;
+    if (Build.VERSION.RELEASE == null)
+    {
+      str = "";
+      localPBStringField.set(str);
+      localPreAuthRequest.scope.set(bjqq.a(paramBundle, "scope", ""));
+      localPreAuthRequest.skey.set(parambjzb.jdField_b_of_type_JavaLangString);
+      localPreAuthRequest.app_type.set(1);
+      if (!TextUtils.isEmpty(paramString)) {
+        localPreAuthRequest.appUniqueIdentifier.set(paramString);
+      }
+      if (!paramBundle.getBoolean("key_login_by_qr_scan", false)) {
+        break label264;
+      }
+      localPreAuthRequest.referer.set(4);
+    }
+    for (;;)
+    {
+      if (paramLong2 != 0L)
+      {
+        parambjzb = new preAuth.PreAuthProxyRequest();
+        parambjzb.appid.set(paramLong2);
+        localPreAuthRequest.proxy_req.set(parambjzb);
+      }
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "-->createPreAuthRequest pkgName=", paramString, ", hostAppId=", Long.valueOf(paramLong1), ", proxyAppId=", Long.valueOf(paramLong2) });
+      return localPreAuthRequest;
+      str = Build.VERSION.RELEASE;
+      break;
+      label264:
+      localPreAuthRequest.referer.set(1);
+    }
+  }
+  
+  public preAuth.PreAuthResponse a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (preAuth.PreAuthResponse)this.f.get(paramString);
+  }
+  
+  public List<bjlv> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (List)this.d.get(paramString);
+  }
+  
+  public SSOAccountObserver a(OpenSDKAppInterface paramOpenSDKAppInterface, String paramString1, String paramString2, AccountManage.RefreshReason paramRefreshReason, bjzw parambjzw)
+  {
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "getTicketNoPasswd uin=" + bjqq.a(paramString1));
+    new bjzb().jdField_a_of_type_JavaLangString = paramString1;
+    paramOpenSDKAppInterface = new bjzu(this, paramOpenSDKAppInterface, parambjzw);
+    AccountManage.a().a(paramString1, paramOpenSDKAppInterface, paramString2, paramRefreshReason);
+    return paramOpenSDKAppInterface;
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2, bjpq parambjpq)
+  {
+    bjzb localbjzb = (bjzb)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramLong));
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (localbjzb == null))
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.createVirtual.return for params error");
+      if (parambjpq != null) {
+        parambjpq.a(false, null, -1);
+      }
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uint64_appid", paramLong);
+      localJSONObject.put("str_nick", paramString1);
+      localJSONObject.put("str_head_id", paramString2);
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.createVirtual.start:", bjzy.a(localJSONObject.toString(), localbjzb.jdField_a_of_type_JavaLangString) });
+      ThreadManagerV2.executeOnSubThread(new OpenSdkVirtualManager.1(this, localbjzb, localJSONObject, parambjpq));
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.createVirtual.e:", paramString1);
+      }
+    }
+  }
+  
+  public void a(preAuth.PreAuthRequest paramPreAuthRequest, Activity paramActivity, bjzb parambjzb, bjzx parambjzx, int paramInt)
+  {
+    if (paramActivity == null)
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry activity==null, preAuthCallback=", parambjzx });
+      if (parambjzx != null) {
+        parambjzx.a(-1, "");
+      }
+      return;
+    }
+    if (!TextUtils.isEmpty(paramPreAuthRequest.appUniqueIdentifier.get()))
+    {
+      localObject = bjzy.a(paramActivity, paramPreAuthRequest.appUniqueIdentifier.get());
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry.getAuthorizeSign sign=", localObject[1], ", timestr=", localObject[2] });
+      if (!TextUtils.isEmpty(localObject[1]))
+      {
+        paramPreAuthRequest.sign.set(localObject[1]);
+        if (!TextUtils.isEmpty(localObject[2])) {
+          paramPreAuthRequest.md5time.set(Long.parseLong(localObject[2]));
+        }
+      }
+    }
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bjre.class);
+    localNewIntent.putExtra("uin", parambjzb.jdField_a_of_type_JavaLangString);
+    String str = bjqq.a(BaseApplicationImpl.getApplication().getRuntime(), parambjzb, paramPreAuthRequest.login_sig, "QQConnectLogin.pre_auth", "QQConnectLogin.pre_auth_emp");
+    boolean bool = "QQConnectLogin.pre_auth_emp".equals(str);
+    byte[] arrayOfByte = paramPreAuthRequest.toByteArray();
+    Object localObject = arrayOfByte;
+    if (bool) {
+      localObject = bjzy.a(arrayOfByte, parambjzb);
+    }
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry cmd=", str });
+    b(parambjzb.jdField_a_of_type_JavaLangString);
+    localNewIntent.putExtra("data", (byte[])localObject);
+    localNewIntent.putExtra("cmd", str);
+    localNewIntent.putExtra("timeout", 15000L);
+    localNewIntent.putExtra("key_support_retry", true);
+    localNewIntent.setWithouLogin(true);
+    avcw.a("KEY_PRE_AUTH");
+    localNewIntent.setObserver(new bjzv(this, parambjzb, bool, parambjzx, paramInt, paramPreAuthRequest, paramActivity));
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "addForce540Account uin=" + bjqq.a(paramString));
+    this.jdField_a_of_type_JavaUtilSet.add(paramString);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.h.put(paramString, Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(String paramString, long paramLong, bjpq parambjpq)
+  {
+    bjzb localbjzb = (bjzb)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramString));
+    if (localbjzb == null)
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.deleteVirtual.return for account is null");
+      if (parambjpq != null) {
+        parambjpq.a(false, -1);
+      }
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uint64_vuid", paramLong);
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.start.realAppId=", paramString, ",body:", localJSONObject.toString() });
+      ThreadManagerV2.executeOnSubThread(new OpenSdkVirtualManager.2(this, localbjzb, localJSONObject, parambjpq));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.deleteVirtual.e:", localJSONException);
+      }
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramBundle != null)) {
+      this.c.put(paramString, paramBundle);
+    }
+  }
+  
+  public void a(String paramString, bjzb parambjzb)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (parambjzb != null)) {
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, parambjzb);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Activity paramActivity, String paramString3, Bundle paramBundle, bjzx parambjzx)
+  {
+    paramString2 = (bjzb)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramString2));
+    if ((paramString2 == null) || (paramActivity == null))
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "updatePreAuthFromServer account=", paramString2, ", context=", paramActivity });
+      if (parambjzx != null) {
+        parambjzx.a(-1, "");
+      }
+      return;
+    }
+    long l = ForwardUtils.a(paramBundle.getString("key_proxy_appid"));
+    a(a(paramString2, paramString3, ForwardUtils.a(paramString1), l, paramBundle), paramActivity, paramString2, new bjzr(this, parambjzx), 2);
+  }
+  
+  public void a(String paramString1, String paramString2, bjpq parambjpq)
+  {
+    bjzb localbjzb = (bjzb)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramString1));
+    if ((TextUtils.isEmpty(paramString2)) || (localbjzb == null))
+    {
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.uploadAvatarImage.return for params error");
+      if (parambjpq != null) {
+        parambjpq.a(false, paramString2, null, -1);
+      }
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new OpenSdkVirtualManager.4(this, paramString2, paramString1, localbjzb, parambjpq));
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, List<bjlv> paramList, long paramLong, bjpq parambjpq, String paramString3, Activity paramActivity)
+  {
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "doAuthorize");
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (TextUtils.isEmpty(paramString2)) {}
+    bjzb localbjzb;
+    for (Object localObject1 = paramString1;; localObject1 = paramString2)
+    {
+      localbjzb = (bjzb)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
+      localObject1 = (Bundle)this.c.get(localObject1);
+      if ((localAppRuntime != null) && (localObject1 != null) && (localbjzb != null)) {
+        break;
+      }
+      QLog.e("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.doAuthorize return for param is null.");
+      if (parambjpq != null) {
+        parambjpq.a(false, -1, null);
+      }
+      return;
+    }
+    Object localObject3 = new Bundle((Bundle)localObject1);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      new bjpv().a(paramBoolean, paramString1, paramString2, paramList, paramLong, parambjpq, paramString3, paramActivity, localbjzb, (Bundle)localObject1);
+      return;
+    }
+    ((Bundle)localObject3).putString("openapi", "");
+    ((Bundle)localObject3).putBoolean("doAuthorize", true);
+    ((Bundle)localObject3).putString("need_pay", "1");
+    ((Bundle)localObject3).putString("appid_for_getting_config", ((Bundle)localObject3).getString("client_id") + "");
+    long l = Long.parseLong(paramString1);
+    SdkAuthorize.AuthorizeRequest localAuthorizeRequest = new SdkAuthorize.AuthorizeRequest();
+    localAuthorizeRequest.client_id.set(l);
+    localAuthorizeRequest.need_pay.set(1);
+    localObject1 = new StringBuilder("OpenVirtual.doAuthorize.appid:");
+    ((StringBuilder)localObject1).append(paramString1).append(", virtual id =").append(paramLong).append(", checked api id [");
+    Object localObject2;
+    Object localObject4;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      localObject2 = paramList.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = (bjlv)((Iterator)localObject2).next();
+        if (((bjlv)localObject4).jdField_b_of_type_Boolean)
+        {
+          localAuthorizeRequest.openapi.add(Integer.valueOf(((bjlv)localObject4).jdField_b_of_type_Int));
+          ((StringBuilder)localObject1).append(((bjlv)localObject4).jdField_b_of_type_Int).append(",");
+        }
+      }
+    }
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("SDK_LOGIN.OpenSdkVirtualManager", 1, ((StringBuilder)localObject1).toString());
+    label498:
+    String str;
+    if (Build.VERSION.RELEASE == null)
+    {
+      localObject1 = "";
+      localAuthorizeRequest.os.set((String)localObject1);
+      localAuthorizeRequest.qqv.set(bjjo.a().d());
+      localAuthorizeRequest.app_type.set(1);
+      localObject2 = ((Bundle)localObject3).getString("pf");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "openmobile_android";
+      }
+      localAuthorizeRequest.pf.set((String)localObject1);
+      localObject1 = ((Bundle)localObject3).getString("sdkp");
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label776;
+      }
+      localAuthorizeRequest.sdkp.set("android");
+      localObject1 = ((Bundle)localObject3).getString("sdkv");
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label789;
+      }
+      localAuthorizeRequest.sdkv.set("1.5.9");
+      label527:
+      localAuthorizeRequest.response_type.set("token");
+      localObject1 = ((Bundle)localObject3).getString("sign");
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label802;
+      }
+      localAuthorizeRequest.sign.set((String)localObject1);
+      localObject1 = ((Bundle)localObject3).getString("time");
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        l = Long.parseLong((String)localObject1);
+        localAuthorizeRequest.time.set(l);
+      }
+      label601:
+      localObject1 = ((Bundle)localObject3).keySet();
+      ((Set)localObject1).remove("sdkp");
+      ((Set)localObject1).remove("sign");
+      ((Set)localObject1).remove("sdkv");
+      ((Set)localObject1).remove("sign");
+      ((Set)localObject1).remove("time");
+      localObject2 = new StringBuffer();
+      localObject4 = ((Set)localObject1).iterator();
+      label681:
+      if (!((Iterator)localObject4).hasNext()) {
+        break label898;
+      }
+      str = (String)((Iterator)localObject4).next();
+      localObject1 = ((Bundle)localObject3).get(str);
+      if (localObject1 == null) {
+        break label890;
+      }
+    }
+    label776:
+    label789:
+    label802:
+    label890:
+    for (localObject1 = localObject1.toString();; localObject1 = "")
+    {
+      ((StringBuffer)localObject2).append(str + "=" + URLEncoder.encode((String)localObject1) + "&");
+      break label681;
+      localObject1 = Build.VERSION.RELEASE;
+      break;
+      localAuthorizeRequest.sdkp.set((String)localObject1);
+      break label498;
+      localAuthorizeRequest.sdkv.set((String)localObject1);
+      break label527;
+      localObject2 = bjzy.a(paramActivity, paramString3);
+      localObject1 = localObject2[1];
+      localObject2 = localObject2[2];
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.doAuthorize.getAuthorizeSign again");
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.doAuthorize.getAuthorizeSign sign is null");
+        break label601;
+      }
+      localAuthorizeRequest.sign.set((String)localObject1);
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        break label601;
+      }
+      l = Long.parseLong((String)localObject2);
+      localAuthorizeRequest.time.set(l);
+      break label601;
+    }
+    label898:
+    if (((StringBuffer)localObject2).length() > 0)
+    {
+      ((StringBuffer)localObject2).delete(((StringBuffer)localObject2).length() - 1, ((StringBuffer)localObject2).length());
+      localAuthorizeRequest.passData.set(((StringBuffer)localObject2).toString());
+    }
+    localAuthorizeRequest.skey.set(localbjzb.jdField_b_of_type_JavaLangString);
+    if (paramBoolean) {
+      localAuthorizeRequest.referer.set(4);
+    }
+    localAuthorizeRequest.vID.set(paramLong);
+    if (!TextUtils.isEmpty(paramString3)) {
+      localAuthorizeRequest.appUniqueIdentifier.set(paramString3);
+    }
+    for (;;)
+    {
+      localObject3 = new NewIntent(BaseApplicationImpl.getApplication(), bjre.class);
+      ((NewIntent)localObject3).setWithouLogin(true);
+      ((NewIntent)localObject3).putExtra("uin", localbjzb.jdField_a_of_type_JavaLangString);
+      localObject4 = bjqq.a(localAppRuntime, localbjzb, localAuthorizeRequest.login_sig, "ConnAuthSvr.sdk_auth_api", "ConnAuthSvr.sdk_auth_api_emp");
+      boolean bool = "ConnAuthSvr.sdk_auth_api_emp".equals(localObject4);
+      localObject2 = localAuthorizeRequest.toByteArray();
+      localObject1 = localObject2;
+      if (bool) {
+        localObject1 = bjzy.a((byte[])localObject2, localbjzb);
+      }
+      ((NewIntent)localObject3).putExtra("data", (byte[])localObject1);
+      ((NewIntent)localObject3).putExtra("cmd", (String)localObject4);
+      ((NewIntent)localObject3).setObserver(new bjzt(this, System.currentTimeMillis(), localbjzb, parambjpq, paramString1, bool, (String)localObject4, paramBoolean, paramString2, paramList, paramLong, paramString3, paramActivity));
+      localAppRuntime.startServlet((NewIntent)localObject3);
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.doAuthorize.send | cmd: " + (String)localObject4, " | uin : *" + bjqq.a(localbjzb.jdField_a_of_type_JavaLangString) });
+      return;
+      QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.doAuthorize.appUniqueIdentifier is null");
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = this.jdField_a_of_type_JavaUtilSet.contains(paramString);
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "isForceTo540 uin=" + bjqq.a(paramString) + ", force540=" + bool);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjzo
  * JD-Core Version:    0.7.0.1
  */

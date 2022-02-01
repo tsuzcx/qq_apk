@@ -1,6 +1,21 @@
-public abstract interface astg
+class astg
+  extends aogm
 {
-  public abstract void a();
+  astg(astf paramastf) {}
+  
+  protected void a(int paramInt)
+  {
+    if (astf.a(this.a) != null) {
+      astf.a(this.a).a(paramInt);
+    }
+  }
+  
+  protected void a(asti paramasti)
+  {
+    if (astf.a(this.a) != null) {
+      astf.a(this.a).a(paramasti);
+    }
+  }
 }
 
 

@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 class ahci
-  implements awnc<EmoticonPackage>
+  extends aggl
 {
-  ahci(ahch paramahch, ahcu paramahcu, biau parambiau) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
-  {
-    bcst.b(this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Ahcu.a.a.eId, "");
-    if (paramEmoticonPackage == null)
-    {
-      this.jdField_a_of_type_Ahch.jdField_a_of_type_Ahct.a(107, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahch.b, this.jdField_a_of_type_Ahcu.a, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ahch.a(this.jdField_a_of_type_Ahch));
-      aruo.a().a(this.jdField_a_of_type_Ahch.jdField_a_of_type_Ahct);
-      this.jdField_a_of_type_Ahch.jdField_a_of_type_Arup.a(this.jdField_a_of_type_Ahcu.a.a.epId, arup.c);
-      return;
-    }
-    ahch.a(107, this.jdField_a_of_type_Ahch.b, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Ahcu.a, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Biau);
-  }
+  ahci(ahcf paramahcf) {}
 }
 
 

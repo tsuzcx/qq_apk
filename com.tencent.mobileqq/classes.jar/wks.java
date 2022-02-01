@@ -1,22 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
-
 public class wks
+  implements wiq
 {
-  public static Intent a(Context paramContext, int paramInt, String paramString)
-  {
-    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
-  }
+  public String a;
   
-  public static void a(Context paramContext, int paramInt, long paramLong)
+  public void copy(Object paramObject)
   {
-    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    paramContext.startActivity(a(paramContext, paramInt, paramString));
+    if ((paramObject instanceof wks)) {
+      this.a = ((wks)paramObject).a;
+    }
   }
 }
 

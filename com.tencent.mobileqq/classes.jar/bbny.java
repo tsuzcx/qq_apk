@@ -1,10 +1,6 @@
-public class bbny
+public abstract interface bbny
 {
-  public int a;
-  public CharSequence a;
-  public String a;
-  
-  public bbny(bbnx parambbnx) {}
+  public abstract void a(String paramString);
 }
 
 

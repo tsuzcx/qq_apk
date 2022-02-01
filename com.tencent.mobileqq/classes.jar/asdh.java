@@ -1,87 +1,14 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.image.NativeGifIndex8;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 
-public class asdh
-  extends NativeGifIndex8
+public abstract interface asdh
 {
-  private boolean a = true;
-  private boolean b;
-  private boolean c;
+  public abstract void a(XmlData paramXmlData);
   
-  public asdh(File paramFile, int paramInt, boolean paramBoolean)
-  {
-    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
-  }
+  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
   
-  public void a()
-  {
-    this.a = true;
-  }
+  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
   
-  public void b()
-  {
-    this.a = false;
-    this.b = true;
-  }
-  
-  public void doApplyNextFrame()
-  {
-    super.doApplyNextFrame();
-    if (this.c)
-    {
-      this.c = false;
-      this.b = false;
-    }
-  }
-  
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
-  {
-    initHandlerAndRunnable();
-    if ((!this.a) && (this.mFirstFrameBitmap != null)) {
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-      }
-    }
-    do
-    {
-      return;
-      if (!this.b) {
-        break;
-      }
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-      }
-      if (!sPaused)
-      {
-        executeNewTask();
-        return;
-      }
-    } while (this.mIsInPendingAction);
-    sPendingActions.add(new WeakReference(this));
-    this.mIsInPendingAction = true;
-    return;
-    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-  }
-  
-  public void getNextFrame()
-  {
-    try
-    {
-      if (this.b)
-      {
-        this.c = true;
-        super.reset();
-      }
-      super.getNextFrame();
-      return;
-    }
-    finally {}
-  }
+  public abstract void b(XmlData paramXmlData);
 }
 
 

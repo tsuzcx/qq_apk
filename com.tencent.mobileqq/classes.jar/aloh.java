@@ -1,23 +1,9 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-
-public class aloh
-  implements MediaPlayer.OnCompletionListener
+class aloh
+  implements bloq
 {
-  public aloh(FixedSizeVideoView paramFixedSizeVideoView) {}
+  aloh(alof paramalof) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
-    }
-  }
+  public void a() {}
 }
 
 

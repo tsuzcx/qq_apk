@@ -1,91 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-final class axyv
-  implements axkq
+class axyv
+  implements biug<oidb_0x8e4.RspBody>
 {
-  axyv(int paramInt, axzb paramaxzb) {}
+  axyv(axyu paramaxyu) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    boolean bool3 = false;
-    bool2 = false;
-    bool1 = true;
-    paramBundle = new ArrayList();
-    int i = this.jdField_a_of_type_Int;
-    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
-    if (paramInt == 0) {
-      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
-    }
-    for (;;)
+    if (paramInt == 0)
     {
-      try
-      {
-        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
-        if (!localReadNearUserFeedsRsp.result.has())
-        {
-          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
-          paramInt = i;
-          if (this.jdField_a_of_type_Axzb != null) {
-            this.jdField_a_of_type_Axzb.a(bool2, paramBundle, bool1, paramInt);
-          }
-          return;
-        }
-        if (localReadNearUserFeedsRsp.result.get() == 0) {
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = false;
-        bool1 = true;
-      }
-      try
-      {
-        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
-        paramInt = localReadNearUserFeedsRsp.end_flag.get();
-        bool1 = bool3;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          bool2 = true;
-          bool1 = true;
-        }
-      }
-      try
-      {
-        paramInt = localReadNearUserFeedsRsp.pos.get();
-        bool2 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = true;
-        break label281;
-      }
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
-      paramInt = i;
-      continue;
-      label281:
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
-      paramInt = i;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-      paramInt = i;
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
     }
+    do
+    {
+      return;
+      this.a.a.a(paramInt, paramRspBody, anzj.a(2131703960));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 

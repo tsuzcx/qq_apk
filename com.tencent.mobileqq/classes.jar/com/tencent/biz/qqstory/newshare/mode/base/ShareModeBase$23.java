@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import xcu;
+import xgp;
 
 public class ShareModeBase$23
   implements Runnable
 {
-  public ShareModeBase$23(xcu paramxcu) {}
+  public ShareModeBase$23(xgp paramxgp) {}
   
   public void run()
   {
-    xcu.a(this.this$0, xcu.a(this.this$0));
+    xgp.a(this.this$0, xgp.a(this.this$0));
   }
 }
 

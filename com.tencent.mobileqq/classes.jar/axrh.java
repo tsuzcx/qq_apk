@@ -1,30 +1,6 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-
-public class axrh
-  implements bkhw
+public abstract interface axrh
 {
-  public axrh(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      axek.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
-      continue;
-      paramView = (axeq)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.a(60);
-      if (paramView != null) {
-        paramView.a("", 0, false);
-      }
-    }
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, Object paramObject);
 }
 
 

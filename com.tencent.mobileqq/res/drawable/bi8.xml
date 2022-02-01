@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="9.5dip" android:insetRight="9.5dip" android:insetTop="6.5dip" android:insetBottom="6.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:drawable="@drawable/eng" />
-    <item android:state_enabled="false" android:drawable="@drawable/emx" />
-</selector>
+    <shape>
+        <corners android:radius="3.0dip" />
+        <size android:height="3.0dip" android:width="26.0dip" />
+        <solid android:color="@color/al3" />
+    </shape>
+</inset>

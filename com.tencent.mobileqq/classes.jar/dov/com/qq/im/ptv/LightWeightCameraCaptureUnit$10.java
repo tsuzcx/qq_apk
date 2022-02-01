@@ -1,21 +1,21 @@
 package dov.com.qq.im.ptv;
 
-import bgpa;
-import bows;
-import bowu;
-import bowv;
-import boyn;
+import bhpc;
+import bpyn;
+import bpyp;
+import bpyq;
+import bqai;
 
 public class LightWeightCameraCaptureUnit$10
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$10(bows parambows, String paramString) {}
+  public LightWeightCameraCaptureUnit$10(bpyn parambpyn, String paramString) {}
   
   public void run()
   {
-    bowu localbowu = new bowu(this);
-    bowv localbowv = new bowv(this);
-    bgpa.showPermissionSettingDialog(this.this$0.a.a(), null, this.a, localbowu, localbowu, localbowv);
+    bpyp localbpyp = new bpyp(this);
+    bpyq localbpyq = new bpyq(this);
+    bhpc.showPermissionSettingDialog(this.this$0.a.a(), null, this.a, localbpyp, localbpyp, localbpyq);
   }
 }
 

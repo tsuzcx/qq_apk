@@ -1,26 +1,69 @@
-import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajgv
-  extends aniz
+  extends aojs
 {
-  private ajgv(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  public ajgv(TroopView paramTroopView) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void d(boolean paramBoolean, ArrayList<ajgb> paramArrayList)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("addContacts.TroopView", 2, "onGetAddContactFindTroopClassify isSuccess = " + paramBoolean + ",dataList = " + paramArrayList);
     }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    Object localObject;
+    int i;
+    if ((TroopView.a(this.a) != null) && (TroopView.a(this.a).b()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      localObject = TroopView.a(this.a);
+      if (paramBoolean)
+      {
+        i = 1;
+        localObject = ((ajhe)localObject).obtainMessage(14, 0, i);
+        TroopView.a(this.a).sendMessage((Message)localObject);
       }
-      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
+    else
+    {
+      if (!paramBoolean) {
+        break label223;
+      }
+      TroopView.a(this.a).sendEmptyMessage(4);
+    }
+    label223:
+    for (;;)
+    {
+      label118:
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        this.a.a.clear();
+        this.a.a.addAll(paramArrayList);
+        TroopView.a(this.a).notifyDataSetChanged();
+        localObject = new ArrayList();
+        i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size())
+          {
+            ajgb localajgb = (ajgb)paramArrayList.get(i);
+            localajgb.c = (i + 100);
+            ((ArrayList)localObject).add(localajgb);
+            i += 1;
+            continue;
+            i = 0;
+            break;
+            TroopView.a(this.a).sendEmptyMessage(5);
+            break label118;
+          }
+        }
+        TroopView.a(this.a).a((ArrayList)localObject);
+        TroopView.a(this.a, 0);
+      }
     }
   }
 }

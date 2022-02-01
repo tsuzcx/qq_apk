@@ -13,6 +13,9 @@ public class VideoGestureRelativeLayout
   private static final int NONE = 0;
   private static final String TAG = "gesturetest";
   private static final int VOLUME = 1;
+  private boolean enablePageGesture;
+  private boolean enablePlayGesture;
+  private boolean enableProgressGesture = true;
   private boolean hasFF_REW;
   private GestureDetector mGestureDetector;
   private VideoGestureRelativeLayout.VideoPlayerOnGestureListener mOnGestureListener;
@@ -38,6 +41,21 @@ public class VideoGestureRelativeLayout
     this.mGestureDetector = new GestureDetector(paramContext, this.mOnGestureListener);
     this.mGestureDetector.setIsLongpressEnabled(false);
     setOnTouchListener(new VideoGestureRelativeLayout.1(this));
+  }
+  
+  public void setEnablePageGesture(boolean paramBoolean)
+  {
+    this.enablePageGesture = paramBoolean;
+  }
+  
+  public void setEnablePlayGesture(boolean paramBoolean)
+  {
+    this.enablePlayGesture = paramBoolean;
+  }
+  
+  public void setEnableProgressGesture(boolean paramBoolean)
+  {
+    this.enableProgressGesture = paramBoolean;
   }
   
   public void setVideoGestureListener(VideoGestureRelativeLayout.VideoGestureListener paramVideoGestureListener)

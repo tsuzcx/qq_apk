@@ -1,14 +1,16 @@
+import java.util.ArrayList;
+
 public class bezr
+  extends bezo
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public String c;
+  protected ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  {
+    return b(paramArrayList1, paramArrayList2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bezr
  * JD-Core Version:    0.7.0.1
  */

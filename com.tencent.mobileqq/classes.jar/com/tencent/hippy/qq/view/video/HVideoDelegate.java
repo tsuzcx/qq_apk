@@ -10,16 +10,16 @@ import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ryx;
-import sgg;
-import sgh;
-import sij;
-import sik;
-import sim;
-import trl;
+import rpt;
+import rxk;
+import rxl;
+import rzn;
+import rzo;
+import rzq;
+import tih;
 
 public class HVideoDelegate
-  implements HippyQQVideoView.OnVideoViewControlListener, sgh, sij
+  implements HippyQQVideoView.OnVideoViewControlListener, rxl, rzn
 {
   private static final int CODE_VIDEO_ERROR = 101;
   private static final String RESIZE_CONTAIN = "contain";
@@ -30,19 +30,19 @@ public class HVideoDelegate
   private boolean mIsShowingFull;
   private int mMaxVolume = -1;
   private int mOriginSystemUIVisibility;
-  sik mPlayer;
+  rzo mPlayer;
   private long mStartPosition;
   @Nullable
-  private trl mVideoInfo;
+  private tih mVideoInfo;
   protected HippyQQVideoView mVideoView;
   
   public HVideoDelegate(Activity paramActivity, HippyQQVideoView paramHippyQQVideoView, int paramInt)
   {
-    this.mPlayer = new sik(paramInt);
+    this.mPlayer = new rzo(paramInt);
     this.mVideoView = paramHippyQQVideoView;
     this.mActivity = paramActivity;
-    sgg.a().a(paramActivity);
-    sgg.a().a(this);
+    rxk.a().a(paramActivity);
+    rxk.a().a(this);
     this.mPlayer.a(this);
     this.mPlayer.a(paramHippyQQVideoView);
   }
@@ -141,7 +141,7 @@ public class HVideoDelegate
         break label125;
       }
       localWindow.setFlags(1024, 1024);
-      ryx.b(this.mActivity);
+      rpt.b(this.mActivity);
     }
     for (;;)
     {
@@ -156,7 +156,7 @@ public class HVideoDelegate
       this.mActivity.setRequestedOrientation(8);
       break;
       label125:
-      ryx.a(paramHippyQQVideoView);
+      rpt.a(paramHippyQQVideoView);
     }
   }
   
@@ -206,21 +206,21 @@ public class HVideoDelegate
   public void onActivityDestroy()
   {
     this.mPlayer.m();
-    sgg.a().b(this.mActivity);
-    sgg.a().b(this);
+    rxk.a().b(this.mActivity);
+    rxk.a().b(this);
     this.mActivity = null;
   }
   
   public void onActivityPause()
   {
     this.mPlayer.k();
-    sgg.a().a(false, "viola video");
+    rxk.a().a(false, "viola video");
   }
   
   public void onActivityResume()
   {
     this.mPlayer.l();
-    sgg.a().a(true, "viola video");
+    rxk.a().a(true, "viola video");
   }
   
   public void onActivityStart() {}
@@ -294,7 +294,7 @@ public class HVideoDelegate
       {
         HippyMap localHippyMap = new HippyMap();
         if (this.mMaxVolume == -1) {
-          this.mMaxVolume = sgg.a().a(3);
+          this.mMaxVolume = rxk.a().a(3);
         }
         localHippyMap.pushObject("value", Float.valueOf(paramInt / this.mMaxVolume));
         this.mVideoView.videoViewFireEvent("volumeChange", localHippyMap);
@@ -365,7 +365,7 @@ public class HVideoDelegate
       setEndWithLastFrame(paramJSONObject.optBoolean("endWithLastFrame"));
       this.mCoverFrame = paramJSONObject.optBoolean("cover_frame", false);
       this.mStartPosition = (paramJSONObject.optLong("start_position", 0L) * 1000L);
-      this.mVideoInfo = new trl(paramJSONObject.getJSONObject("video_info"));
+      this.mVideoInfo = new tih(paramJSONObject.getJSONObject("video_info"));
       this.mPlayer.e(paramJSONObject.optBoolean("muted", false));
       if (bool1)
       {
@@ -413,7 +413,7 @@ public class HVideoDelegate
   {
     if ((this.mVideoInfo != null) && (!this.mPlayer.a()))
     {
-      this.mPlayer.a(this.mCoverFrame);
+      this.mPlayer.b(this.mCoverFrame);
       this.mPlayer.a(this.mVideoInfo.jdField_a_of_type_Int, this.mVideoInfo.jdField_a_of_type_JavaLangString, this.mVideoInfo.jdField_d_of_type_JavaLangString, this.mStartPosition, this.mVideoInfo.jdField_d_of_type_Int);
     }
   }
@@ -442,7 +442,7 @@ public class HVideoDelegate
   
   public void setEndWithLastFrame(boolean paramBoolean)
   {
-    this.mPlayer.b(paramBoolean);
+    this.mPlayer.c(paramBoolean);
   }
   
   public void setLoopBack(boolean paramBoolean)

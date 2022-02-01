@@ -1,41 +1,14 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
 public class amlg
-  extends amle
+  implements bjbu
 {
-  public void a(amli paramamli, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramamli == null) || (TextUtils.isEmpty(paramamli.jdField_a_of_type_JavaLangCharSequence))) {
-      return;
-    }
-    String str2 = paramamli.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramamli = str1 + paramamli.jdField_a_of_type_JavaLangCharSequence;
-    this.a.put(paramamli, new WeakReference(paramBitmap));
-  }
+  public amlg(SessionClearFragment paramSessionClearFragment) {}
   
-  public Bitmap b(amli paramamli)
+  public void a()
   {
-    if ((paramamli == null) || (TextUtils.isEmpty(paramamli.jdField_a_of_type_JavaLangCharSequence))) {
-      return null;
-    }
-    String str2 = paramamli.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramamli = str1 + paramamli.jdField_a_of_type_JavaLangCharSequence;
-    paramamli = (WeakReference)this.a.get(paramamli);
-    if (paramamli != null) {
-      return (Bitmap)paramamli.get();
-    }
-    return null;
+    SessionClearFragment.a(this.a).onBackPressed();
   }
 }
 

@@ -1,29 +1,37 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class bpnv
-  implements URLDrawable.URLDrawableListener
+public class bpnv
+  implements Cloneable
 {
-  bpnv(bpnu parambpnu, String paramString, bpnf parambpnf) {}
+  public int a;
+  public String a;
+  public List<PtvTemplateManager.PtvTemplateInfo> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public bpnv() {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bpnv(String paramString)
   {
-    yqp.b("InformationFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
-    bpnu.a(this.jdField_a_of_type_Bpnu, this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setURLDrawableListener(null);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public bpnv a()
   {
-    yqp.b("InformationFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    bpnu.a(this.jdField_a_of_type_Bpnu).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    bpnu.a(this.jdField_a_of_type_Bpnu, paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bpnf.b, 1);
-    paramURLDrawable.setURLDrawableListener(null);
+    bpnv localbpnv = new bpnv();
+    localbpnv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localbpnv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localbpnv.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localbpnv.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localbpnv.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localbpnv.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    localbpnv.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localbpnv.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    return localbpnv;
   }
 }
 

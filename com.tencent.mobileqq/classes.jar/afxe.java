@@ -1,8 +1,22 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public abstract interface afxe
+public class afxe
+  extends bgrd
 {
-  public abstract void a(MessageRecord paramMessageRecord);
+  public afxe(TroopRequestActivity paramTroopRequestActivity) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  {
+    if ((paramBoolean) && (paramAccountDetail != null))
+    {
+      this.a.j.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.e();
+    }
+  }
 }
 
 

@@ -1,42 +1,293 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.TMG.utils.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bnuz
-  extends ViewModel
 {
-  private MutableLiveData<Boolean> a = new MutableLiveData();
-  private MutableLiveData<Boolean> b = new MutableLiveData();
-  private MutableLiveData<Boolean> c = new MutableLiveData();
+  private bnvo jdField_a_of_type_Bnvo;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public MutableLiveData<Boolean> a()
+  private bnuz(Context paramContext)
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
   }
   
-  public boolean a()
+  private ViewGroup.LayoutParams a(View paramView, bnvn parambnvn, JSONObject paramJSONObject)
   {
-    if (this.b.getValue() != null) {
-      return ((Boolean)this.b.getValue()).booleanValue();
+    if ((paramView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0) || (parambnvn == null)) {
+      return null;
     }
-    return false;
+    return this.jdField_a_of_type_Bnvo.a(paramView).a(paramJSONObject, parambnvn);
   }
   
-  public MutableLiveData<Boolean> b()
+  public static bnuz a(@NonNull Context paramContext)
   {
-    return this.b;
+    return new bnuz(paramContext);
   }
   
-  public boolean b()
+  private final bnvn a(String paramString, Context paramContext, JSONObject paramJSONObject)
   {
-    if (this.c.getValue() != null) {
-      return ((Boolean)this.c.getValue()).booleanValue();
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      for (;;)
+      {
+        return null;
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("JsonInflater", 0, "createViewModel：" + paramString);
+          }
+          paramContext = this.jdField_a_of_type_Bnvo.a(paramContext, paramString);
+          if (paramContext != null)
+          {
+            paramContext = this.jdField_a_of_type_Bnvo.a(paramString, paramContext);
+            a(paramContext, paramJSONObject);
+            return paramContext;
+          }
+        }
+        catch (Exception paramContext)
+        {
+          paramContext.printStackTrace();
+          QLog.e("JsonInflater", 1, "Error inflating type : " + paramString);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("JsonInflater", 0, "createViewModel fail finish");
+    return null;
+  }
+  
+  private bnvn a(JSONObject paramJSONObject, ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    boolean bool = false;
+    if (paramJSONObject == null) {}
+    label103:
+    do
+    {
+      return null;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("JsonInflater", 0, "inflate: ");
+        }
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+          break label103;
+        }
+        paramJSONObject = new StringBuilder().append("inflate: weakContext == null ： ");
+        paramBoolean = bool;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          paramBoolean = true;
+        }
+        QLog.e("JsonInflater", 1, paramBoolean + " || weakContext.get() == null ");
+        return null;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        QLog.e("JsonInflater", 1, "inflate: exception");
+        paramJSONObject = null;
+      }
+      return paramJSONObject;
+      localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localObject1 == null);
+    Object localObject2 = paramJSONObject.optString("type");
+    if (QLog.isColorLevel()) {
+      QLog.i("JsonInflater", 0, "Creating root view:");
     }
-    return false;
+    localObject2 = a((String)localObject2, (Context)localObject1, paramJSONObject);
+    if (localObject2 == null)
+    {
+      QLog.e("JsonInflater", 1, "inflate: createViewModel error null return");
+      return null;
+    }
+    View localView = ((bnvn)localObject2).a();
+    if (localView == null)
+    {
+      QLog.e("JsonInflater", 1, "inflate: tempView error null return");
+      return null;
+    }
+    ViewGroup.LayoutParams localLayoutParams;
+    if (paramViewGroup != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "generateLayoutParams");
+      }
+      localLayoutParams = a(paramViewGroup, (bnvn)localObject2, paramJSONObject);
+      localObject1 = localLayoutParams;
+      if (!paramBoolean)
+      {
+        localObject1 = localLayoutParams;
+        if (localLayoutParams != null) {
+          localView.setLayoutParams(localLayoutParams);
+        }
+      }
+    }
+    for (Object localObject1 = localLayoutParams;; localObject1 = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "-----> start inflating children");
+      }
+      a((bnvn)localObject2, localView.getContext(), paramJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "-----> done inflating children");
+      }
+      paramJSONObject = (JSONObject)localObject2;
+      if (paramViewGroup == null) {
+        break;
+      }
+      paramJSONObject = (JSONObject)localObject2;
+      if (!paramBoolean) {
+        break;
+      }
+      paramViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject1);
+      ((bnvn)localObject2).a();
+      paramJSONObject = (JSONObject)localObject2;
+      break;
+    }
   }
   
-  public MutableLiveData<Boolean> c()
+  public bnvn a(String paramString, ViewGroup paramViewGroup, boolean paramBoolean, bnvo parambnvo)
   {
-    return this.c;
+    Object localObject3 = null;
+    for (;;)
+    {
+      Object localObject2;
+      try
+      {
+        Object localObject1 = new JSONObject(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = a((JSONObject)localObject1, paramViewGroup, paramBoolean, parambnvo);
+          return localObject1;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        localObject2 = null;
+        continue;
+      }
+      try
+      {
+        paramString = new JSONArray(paramString);
+        localObject2 = localObject3;
+        if (paramString == null) {
+          continue;
+        }
+        return a(paramString, paramViewGroup, paramBoolean, parambnvo);
+      }
+      catch (JSONException paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          paramString = null;
+        }
+      }
+    }
+  }
+  
+  public bnvn a(String paramString, bnvo parambnvo)
+  {
+    return a(paramString, null, true, parambnvo);
+  }
+  
+  public bnvn a(@NonNull JSONArray paramJSONArray, ViewGroup paramViewGroup, boolean paramBoolean, bnvo parambnvo)
+  {
+    this.jdField_a_of_type_Bnvo = parambnvo;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
+    {
+      paramJSONArray = new StringBuilder().append("inflate: weakContext == null ： ");
+      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        QLog.e("JsonInflater", 1, paramBoolean + " || weakContext.get() == null ");
+        return null;
+      }
+    }
+    paramViewGroup = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramViewGroup == null) {
+      return null;
+    }
+    paramViewGroup = new RelativeLayout(paramViewGroup);
+    parambnvo = this.jdField_a_of_type_Bnvo.a(paramViewGroup);
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      bnvn localbnvn = a(paramJSONArray.optJSONObject(i), paramViewGroup, false);
+      if (localbnvn != null)
+      {
+        paramViewGroup.addView(localbnvn.a());
+        localbnvn.a();
+        parambnvo.a(localbnvn);
+      }
+      i += 1;
+    }
+    return parambnvo;
+  }
+  
+  public bnvn a(@NonNull JSONObject paramJSONObject, ViewGroup paramViewGroup, boolean paramBoolean, bnvo parambnvo)
+  {
+    znw.a();
+    this.jdField_a_of_type_Bnvo = parambnvo;
+    return a(paramJSONObject, paramViewGroup, paramBoolean);
+  }
+  
+  void a(bnvn parambnvn, Context paramContext, JSONObject paramJSONObject)
+  {
+    if ((parambnvn == null) || (paramContext == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {}
+    do
+    {
+      return;
+      paramJSONObject = paramJSONObject.optJSONArray("child");
+    } while (paramJSONObject == null);
+    int i = 0;
+    label34:
+    if (i < paramJSONObject.length())
+    {
+      JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+      if (localJSONObject == null) {
+        break label147;
+      }
+      bnvn localbnvn = a(localJSONObject.optString("type"), paramContext, localJSONObject);
+      ViewGroup localViewGroup = (ViewGroup)parambnvn.a();
+      ViewGroup.LayoutParams localLayoutParams = a(localViewGroup, localbnvn, localJSONObject);
+      a(localbnvn, paramContext, localJSONObject);
+      if ((localbnvn != null) && (localbnvn.a() != null))
+      {
+        localViewGroup.addView(localbnvn.a(), localLayoutParams);
+        localbnvn.a();
+        parambnvn.a(localbnvn);
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label34;
+      break;
+      label147:
+      QLog.e("JsonInflater", 1, "rInflateChildren error: object = null");
+    }
+  }
+  
+  protected void a(bnvn parambnvn, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {
+      return;
+    }
+    if (parambnvn != null) {
+      parambnvn.a(paramJSONObject);
+    }
+    this.jdField_a_of_type_Bnvo.a(parambnvn, paramJSONObject);
   }
 }
 

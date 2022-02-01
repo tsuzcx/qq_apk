@@ -1,15 +1,21 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
 class atgl
-  extends atfq
+  implements Animation.AnimationListener
 {
-  public atgl(atfe paramatfe)
+  atgl(atgi paramatgi, int paramInt, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramatfe);
+    this.jdField_a_of_type_Atgi.jdField_a_of_type_Float = this.jdField_a_of_type_Atgi.b;
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Atgi.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
   
-  protected String a()
-  {
-    return "StateUploadoneWhenChangeToOff";
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

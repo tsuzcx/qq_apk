@@ -1,60 +1,34 @@
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class biue
+class biue
+  extends nkq
 {
-  protected static biue a;
-  protected ArrayList<biud> a;
+  biue(bitz parambitz, biug parambiug) {}
   
-  public static biue a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
+    if (this.jdField_a_of_type_Biug != null)
+    {
+      paramBundle = new oidb_0x8ed.RspBody();
+      if (paramArrayOfByte == null) {}
+    }
     try
     {
-      if (jdField_a_of_type_Biue == null)
-      {
-        jdField_a_of_type_Biue = new biue();
-        jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      biue localbiue = jdField_a_of_type_Biue;
-      return localbiue;
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Biug.a(paramInt, paramBundle);
+      return;
     }
-    finally {}
-  }
-  
-  public ArrayList<biud> a()
-  {
-    return jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(biud parambiud)
-  {
-    int j = jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      if ((biud)jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList.get(i) == parambiud) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList.add(parambiud);
-  }
-  
-  public void b(biud parambiud)
-  {
-    int j = jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
+      for (;;)
       {
-        if ((biud)jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList.get(i) == parambiud) {
-          jdField_a_of_type_Biue.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        if (QLog.isColorLevel()) {
+          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
         }
       }
-      else {
-        return;
-      }
-      i += 1;
     }
   }
 }

@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidp;
-import aiei;
-import com.tencent.biz.ui.CustomMenuBar;
+import ainh;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 
-public class PublicAccountChatPie$29$1
+class PublicAccountChatPie$29$1
   implements Runnable
 {
-  public PublicAccountChatPie$29$1(aiei paramaiei) {}
+  PublicAccountChatPie$29$1(PublicAccountChatPie.29 param29) {}
   
   public void run()
   {
-    this.a.a.a.clearAnimation();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isNeedFinish", true);
+    this.a.this$0.a.setResult(-1, localIntent);
+    this.a.this$0.I();
   }
 }
 

@@ -1,66 +1,15 @@
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
-
-public class smz
+public abstract class smz
 {
-  public int a;
-  public long a;
-  public View.OnClickListener a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private static int a = 7;
   
-  public smz()
+  public static int a()
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Int = -1;
+    return a;
   }
   
-  public boolean equals(Object paramObject)
+  public static void a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof smz))
-    {
-      paramObject = (smz)paramObject;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
-      {
-        bool1 = bool2;
-        if (this.d == paramObject.d)
-        {
-          bool1 = bool2;
-          if (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int)
-          {
-            bool1 = bool2;
-            if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
-            {
-              bool1 = bool2;
-              if (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int)
-              {
-                bool1 = bool2;
-                if (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString))
-                {
-                  bool1 = bool2;
-                  if (TextUtils.equals(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString))
-                  {
-                    bool1 = bool2;
-                    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
-                      bool1 = true;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return bool1;
+    a = paramInt;
   }
 }
 

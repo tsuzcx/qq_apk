@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.store;
 
 import Override;
-import amnl;
-import ampj;
-import amrk;
+import amzf;
+import anbd;
+import ande;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import arui;
+import asjw;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.emosm.Client;
@@ -87,17 +87,17 @@ public class ApolloFloatActivity
     if (localIntent != null)
     {
       this.e = localIntent.getIntExtra("extra_key_gameid", -1);
-      amrk localamrk = ampj.a(this.e);
+      ande localande = anbd.a(this.e);
       i = localIntent.getIntExtra("extra_key_taskid", 0);
-      if (localamrk != null)
+      if (localande != null)
       {
-        localamrk.a(this, i);
+        localande.a(this, i);
         this.c = localIntent.getIntExtra("extra_key_from", -1);
         if (this.c != 1) {
           break label478;
         }
         getWindow().getDecorView().setSystemUiVisibility(5894);
-        i = ampj.a(localIntent.getIntExtra("extra_key_entratation", 1));
+        i = anbd.a(localIntent.getIntExtra("extra_key_entratation", 1));
         setRequestedOrientation(i);
         localIntent.getIntExtra("extra_key_transparent", 1);
         this.d = 0;
@@ -130,7 +130,7 @@ public class ApolloFloatActivity
       localObject = super.getResources();
       if (this.mSystemBarComp != null)
       {
-        i = ((Resources)localObject).getColor(2131167224);
+        i = ((Resources)localObject).getColor(2131167247);
         this.mSystemBarComp.setStatusColor(i);
         this.mSystemBarComp.setStatusBarColor(i);
       }
@@ -141,8 +141,8 @@ public class ApolloFloatActivity
       if (!this.jdField_a_of_type_Boolean) {
         super.hideTitleBar();
       }
-      if (!arui.a().a()) {
-        arui.a().a().doBindService(paramBundle.getContext().getApplicationContext());
+      if (!asjw.a().a()) {
+        asjw.a().a().doBindService(paramBundle.getContext().getApplicationContext());
       }
       this.h = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
       return false;
@@ -174,7 +174,7 @@ public class ApolloFloatActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     if (this.c == 1) {
-      amnl.a(this);
+      amzf.a(this);
     }
     super.doOnWindowFocusChanged(paramBoolean);
   }

@@ -1,15 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.net.URL;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.ReSendCmd;
 
-class bead
-  implements beai
+public final class bead
+  implements Parcelable.Creator<ReSendCmd>
 {
-  bead(beac parambeac) {}
-  
-  public Bitmap getBitmap(URL paramURL)
+  public ReSendCmd a(Parcel paramParcel)
   {
-    return ShortVideoUtils.a(null, paramURL.getPath());
+    return new ReSendCmd(paramParcel);
+  }
+  
+  public ReSendCmd[] a(int paramInt)
+  {
+    return new ReSendCmd[paramInt];
   }
 }
 

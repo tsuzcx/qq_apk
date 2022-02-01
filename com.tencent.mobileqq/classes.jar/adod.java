@@ -1,95 +1,35 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class adod
-  implements InputFilter
+abstract class adod
+  extends apcq
 {
-  private int jdField_a_of_type_Int = 32;
+  long jdField_a_of_type_Long;
+  admy jdField_a_of_type_Admy;
+  boolean jdField_a_of_type_Boolean;
+  long b;
   
-  public adod(AuthDevRenameActivity paramAuthDevRenameActivity) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public adod(admy paramadmy, int paramInt, long paramLong)
   {
-    int j = paramInt1;
-    int k = 0;
-    if (j < paramInt2)
-    {
-      i = paramCharSequence.charAt(j);
-      if (i < 128) {
-        i = 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        k += i;
-        break;
-        if (i < 2048) {
-          i = 2;
-        } else {
-          i = 3;
-        }
-      }
+    super(paramInt, true, true, paramLong, true, false, "Doraemon");
+    this.jdField_a_of_type_Admy = paramadmy;
+    this.b = 10000L;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
     }
-    int n = paramSpanned.length();
-    int i = 0;
-    int m = 0;
-    if (m < n)
-    {
-      if ((m >= paramInt3) && (m < paramInt4)) {
-        break label272;
-      }
-      j = paramSpanned.charAt(m);
-      if (j < 128)
-      {
-        j = 1;
-        label127:
-        i = j + i;
-      }
+    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
+      return;
     }
-    label272:
-    for (;;)
-    {
-      m += 1;
-      break;
-      if (j < 2048)
-      {
-        j = 2;
-        break label127;
-      }
-      j = 3;
-      break label127;
-      i = this.jdField_a_of_type_Int - i;
-      if (i <= 0) {
-        return "";
-      }
-      if (i >= k) {
-        return null;
-      }
-      paramInt4 = paramInt1;
-      while (paramInt4 < paramInt2)
-      {
-        paramInt3 = paramCharSequence.charAt(paramInt4);
-        if (paramInt3 < 128) {
-          paramInt3 = 1;
-        }
-        for (;;)
-        {
-          i -= paramInt3;
-          if (i >= 0) {
-            break;
-          }
-          return paramCharSequence.subSequence(paramInt1, paramInt4);
-          if (paramInt3 < 2048) {
-            paramInt3 = 2;
-          } else {
-            paramInt3 = 3;
-          }
-        }
-        paramInt4 += 1;
-      }
-      return null;
-    }
+    this.jdField_a_of_type_Boolean = false;
+    adqf.a(this.jdField_a_of_type_Admy, paramInt1, "error " + paramInt1);
+    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    SosoInterface.b(this);
   }
 }
 

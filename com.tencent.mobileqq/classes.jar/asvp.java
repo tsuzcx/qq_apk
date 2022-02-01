@@ -1,30 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class asvp
-  implements View.OnClickListener
+class asvp
+  extends apck
 {
-  public asvp(QfileFavFileTabView paramQfileFavFileTabView) {}
-  
-  public void onClick(View paramView)
+  asvp(asvi paramasvi, String paramString, boolean paramBoolean, atcg paramatcg)
   {
-    if (!QfileFavFileTabView.a(this.a)) {}
-    for (;;)
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendManager", 2, "getExtendFriendLocationInfoAsync onLocationFinish " + paramInt);
+    }
+    asvi localasvi;
+    if (this.jdField_a_of_type_Atcg != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QfileFavFileTabView.a(this.a);
-      this.a.a();
-      if (this.a.jdField_a_of_type_Asti.getGroupCount() > 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Asti.getGroupCount() - 1);
+      localasvi = this.jdField_a_of_type_Asvi;
+      if (paramInt != 0) {
+        break label62;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
-      QfileFavFileTabView.a(this.a, false);
-      this.a.g();
+    }
+    label62:
+    for (boolean bool = true;; bool = false)
+    {
+      asvi.a(localasvi, bool, paramSosoLbsInfo, this.jdField_a_of_type_Atcg);
+      return;
     }
   }
 }

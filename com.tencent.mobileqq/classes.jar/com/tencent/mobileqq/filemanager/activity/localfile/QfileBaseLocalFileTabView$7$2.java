@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import aswx;
-import atcz;
-import atvo;
-import bnaz;
+import atnb;
+import atut;
+import aunj;
+import boch;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QfileBaseLocalFileTabView$7$2
   implements Runnable
 {
-  public QfileBaseLocalFileTabView$7$2(aswx paramaswx, long paramLong, boolean paramBoolean, int paramInt, String paramString) {}
+  public QfileBaseLocalFileTabView$7$2(atnb paramatnb, long paramLong, boolean paramBoolean, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aswx.a.f();
-    QfileBaseLocalFileTabView.d(this.jdField_a_of_type_Aswx.a).a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Atnb.a.f();
+    QfileBaseLocalFileTabView.d(this.jdField_a_of_type_Atnb.a).a().a(this.jdField_a_of_type_Long);
     if (!this.jdField_a_of_type_Boolean)
     {
-      atvo.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      bnaz.a(this.jdField_a_of_type_Aswx.a.a, this.jdField_a_of_type_Int);
+      aunj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      boch.a(this.jdField_a_of_type_Atnb.a.a, this.jdField_a_of_type_Int);
       return;
     }
-    atvo.a(this.jdField_a_of_type_Long);
+    aunj.a(this.jdField_a_of_type_Long);
   }
 }
 

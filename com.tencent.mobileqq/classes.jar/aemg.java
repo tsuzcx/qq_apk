@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
 public class aemg
-  extends ResourcePluginListener
+  extends anuw
 {
-  public aemg(Leba paramLeba) {}
+  public aemg(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a(byte paramByte)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
-    }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
+    if (!this.a.j) {}
+    do
+    {
+      return;
+      this.a.j = false;
+      this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramCard, paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
 }
 

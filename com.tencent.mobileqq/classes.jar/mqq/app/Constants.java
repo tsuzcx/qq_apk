@@ -3,6 +3,8 @@ package mqq.app;
 public abstract interface Constants
 {
   public static final String FILE_INSTANCE_STATE = "savedInstanceState";
+  public static final String KEY_SEQ = "seq";
+  public static final String KEY_TICKET = "ticket";
   public static final String OPEN_SDK = "com.tencent.mobileqq:openSdk";
 }
 

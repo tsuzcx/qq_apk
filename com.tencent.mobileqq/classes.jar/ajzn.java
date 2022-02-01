@@ -1,22 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajzn
+class ajzn
+  implements View.OnClickListener
 {
-  public static void a(String paramString)
-  {
-    a(paramString, "");
-  }
+  ajzn(ajzm paramajzm, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static void a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    bcst.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d(akax.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajzm, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Ajzm.isShowing()) {
+        this.jdField_a_of_type_Ajzm.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label38;
     }
   }
 }

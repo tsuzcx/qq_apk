@@ -1,134 +1,65 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.wx.voice.vad.WXVadSeg;
-import java.io.OutputStream;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tablequery.ReportData.ReqBody;
+import com.tencent.mobileqq.tablequery.ReportData.ReqMqqParam;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class bdzn
+  implements Manager
 {
-  public int a;
-  public long a;
-  public ayxc a;
-  public ayyt a;
-  public bdzu a;
-  public URLDrawableHandler a;
-  public PhotoSendParams a;
-  public MessageRecord a;
-  public WXVadSeg a;
-  public OutputStream a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public Object b;
-  public String b;
-  public boolean b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public String g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public boolean j;
-  public int k;
-  public String k;
-  public boolean k;
-  public int l;
-  public String l;
-  public boolean l;
-  public int m;
-  public String m;
-  public boolean m;
-  public int n;
-  public String n;
-  public boolean n;
-  public int o;
-  private String o;
-  public boolean o;
-  public int p;
-  public boolean p;
-  public int q;
-  public boolean q;
-  public int r;
+  private bdzo a;
   
-  public bdzn()
+  public void a(QQAppInterface paramQQAppInterface, ReportData.ReqBody paramReqBody)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 5;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_f_of_type_Int = 1;
-    this.jdField_f_of_type_Boolean = true;
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), bdzp.class);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3380);
+    localOIDBSSOPkg.uint32_service_type.set(2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramReqBody.toByteArray()));
+    localNewIntent.setObserver(this.a);
+    localNewIntent.putExtra("RequestBytes", localOIDBSSOPkg.toByteArray());
+    paramQQAppInterface.startServlet(localNewIntent);
   }
   
-  public String a()
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    return this.jdField_c_of_type_JavaLangString + this.jdField_a_of_type_Long;
-  }
-  
-  public String b()
-  {
-    if (this.o == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_b_of_type_Long);
-      return localStringBuilder.toString();
+    ReportData.ReqMqqParam localReqMqqParam = new ReportData.ReqMqqParam();
+    localReqMqqParam.department.set(paramString2);
+    localReqMqqParam.opername.set(paramString3);
+    localReqMqqParam.action.set(paramString4);
+    if (this.a == null) {
+      this.a = new bdzo();
     }
-    return this.o;
+    try
+    {
+      paramString2 = new ReportData.ReqBody();
+      paramString3 = new ArrayList();
+      paramString3.add(paramString1);
+      paramString2.reportId.set(paramString3);
+      paramString2.type.set(paramInt);
+      paramString1 = new ArrayList();
+      paramString1.add(localReqMqqParam);
+      paramString2.params.set(paramString1);
+      a(paramQQAppInterface, paramString2);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("TableQueryManager", 1, paramQQAppInterface.toString());
+    }
   }
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("TransferRequest\n");
-    localStringBuilder.append("mUniseq=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mMd5=" + this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append(",mIsIp=" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",mUinType=" + this.jdField_a_of_type_Int);
-    localStringBuilder.append(",mFileType=" + this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mSelfUin=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(",mPeerUin=" + this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(",mSecondId=" + this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(",mServerPath=" + this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append(",mLocalPath=" + this.i);
-    localStringBuilder.append(",mBusiType=" + this.jdField_e_of_type_Int);
-    localStringBuilder.append(",mGroupFileID=" + this.jdField_c_of_type_Long);
-    localStringBuilder.append(",mExtraObj={" + this.jdField_a_of_type_JavaLangObject + "}");
-    localStringBuilder.append(",mPrioty=" + this.jdField_f_of_type_Int);
-    localStringBuilder.append(",mLogicCallBack=" + this.jdField_a_of_type_Ayyt);
-    localStringBuilder.append(",bEnableEnc=" + this.m);
-    localStringBuilder.append(",isQzonePic=" + this.p);
-    localStringBuilder.append(",pcmForVadPath=" + this.n);
-    return localStringBuilder.toString();
-  }
+  public void onDestroy() {}
 }
 
 

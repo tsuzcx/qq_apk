@@ -1,22 +1,27 @@
+import android.text.TextUtils;
+import com.tencent.avgame.gameresult.GameResultFragment;
+import com.tencent.avgame.gameresult.GameResultFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
 public class nan
+  implements aonu
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public int e = 1;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  public nan(GameResultFragment paramGameResultFragment) {}
   
-  public String toString()
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    return "MemberVideoDisplayInfo{uin=" + this.jdField_a_of_type_Long + ", x=" + this.jdField_a_of_type_Int + ", y=" + this.jdField_b_of_type_Int + ", width=" + this.jdField_c_of_type_Int + ", height=" + this.d + ", showCameraVideo=" + this.jdField_a_of_type_Boolean + ", isCameraBigger=" + this.jdField_b_of_type_Boolean + ", [showStarVideo=" + this.jdField_c_of_type_Boolean + ", starX=" + this.f + ", starY=" + this.g + ", starWidth=" + this.h + ", starHeight=" + this.i + "]}";
+    QLog.d("GameResultFragment", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      ThreadManager.getUIHandler().post(new GameResultFragment.3.1(this, paramString));
+      return;
+    }
+    QQToast.a(this.a.a(), 1, 2131690382, 0).a();
   }
 }
 

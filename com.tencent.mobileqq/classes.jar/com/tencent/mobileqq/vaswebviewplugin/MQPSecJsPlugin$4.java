@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bhni;
-import bhod;
-import bhsw;
+import biod;
+import bioy;
+import bitr;
 import com.tencent.mobileqq.widget.QQToast;
 
 class MQPSecJsPlugin$4
@@ -13,9 +13,9 @@ class MQPSecJsPlugin$4
   
   public void run()
   {
-    bhni localbhni = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbhni != null) && ((localbhni instanceof bhsw))) {
-      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131691985), 0).b(((bhsw)localbhni).getTitleBarHeight());
+    biod localbiod = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbiod != null) && ((localbiod instanceof bitr))) {
+      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131691989), 0).b(((bitr)localbiod).getTitleBarHeight());
     }
   }
 }

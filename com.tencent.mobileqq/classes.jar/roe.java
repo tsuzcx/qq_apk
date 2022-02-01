@@ -1,20 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class roe
-  extends rpj
-  implements rnt
+class roe
+  implements View.OnClickListener
 {
-  private QQAppInterface a;
+  roe(rob paramrob, VideoInfo paramVideoInfo) {}
   
-  public roe(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(UgcVideo paramUgcVideo, rns paramrns)
-  {
-    ((rps)this.a.getManager(356)).a(paramUgcVideo, false);
+    AdvertisementInfo localAdvertisementInfo = tqm.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    tqa.a(localAdvertisementInfo, 2005, rnu.a(this.jdField_a_of_type_Rob.a));
+    rnu.a(this.jdField_a_of_type_Rob.a, rob.a(this.jdField_a_of_type_Rob), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, localAdvertisementInfo, 2005);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,21 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-class bgsf
-  implements View.OnClickListener
+public class bgsf
 {
-  bgsf(bgse parambgse) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public bgsf(TroopFileTransferManager paramTroopFileTransferManager) {}
 }
 
 

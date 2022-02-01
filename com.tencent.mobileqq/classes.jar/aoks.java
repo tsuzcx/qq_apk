@@ -1,30 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
-class aoks
-  implements xep
+public class aoks
+  implements DialogInterface.OnClickListener
 {
-  aoks(aokr paramaokr) {}
+  public aoks(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
   
-  public void a(xab paramxab, biau parambiau)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((parambiau != null) && (parambiau.isShowing())) {
-      parambiau.dismiss();
-    }
-    xen.a(this.a.a);
-    if ((paramxab != null) && (paramxab.jdField_a_of_type_Int == 0))
-    {
-      xen.a(paramxab.jdField_a_of_type_JavaLangString, this.a.a);
-      aokr.a(this.a);
-      return;
-    }
-    if (!bgnt.g(BaseApplicationImpl.getContext()))
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131693949, 1).a();
-      return;
-    }
-    this.a.c = "open";
-    aokr.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

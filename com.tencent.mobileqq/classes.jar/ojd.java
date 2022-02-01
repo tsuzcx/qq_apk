@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2;
 
 public class ojd
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public ojd(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
+  public ojd(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2 param2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.this$0.a.setVisibility(8);
   }
 }
 

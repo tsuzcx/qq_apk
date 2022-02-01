@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import akms;
-import akrn;
-import akro;
-import akrp;
-import akrq;
-import akww;
+import akyd;
+import alcy;
+import alcz;
+import alda;
+import aldb;
+import alil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -22,18 +22,18 @@ public final class NotifyMsgManager$1
     long l2;
     do
     {
-      synchronized (akrp.jdField_a_of_type_JavaLangObject)
+      synchronized (alda.jdField_a_of_type_JavaLangObject)
       {
-        if (akrp.jdField_a_of_type_Akrn == null) {
-          akrp.jdField_a_of_type_Akrn = new akrn(BaseApplicationImpl.getContext());
+        if (alda.jdField_a_of_type_Alcy == null) {
+          alda.jdField_a_of_type_Alcy = new alcy(BaseApplicationImpl.getContext());
         }
-        ??? = akww.a();
+        ??? = alil.a();
         if (??? == null) {
           return;
         }
       }
-      if (akrp.jdField_a_of_type_Akrn != null) {
-        akrp.jdField_a_of_type_Akrn.a(((QQAppInterface)???).c(), akrp.c);
+      if (alda.jdField_a_of_type_Alcy != null) {
+        alda.jdField_a_of_type_Alcy.a(((QQAppInterface)???).c(), alda.c);
       }
       if (QLog.isColorLevel()) {
         QLog.i("NotifyMsgManager", 2, "loadFromDb completed");
@@ -41,52 +41,52 @@ public final class NotifyMsgManager$1
       Object localObject3 = new ArrayList();
       Object localObject4 = new ArrayList();
       int i = 0;
-      if (i < akrp.b.size())
+      if (i < alda.b.size())
       {
-        akro localakro1 = (akro)akrp.b.get(i);
-        if (localakro1 == null) {}
+        alcz localalcz1 = (alcz)alda.b.get(i);
+        if (localalcz1 == null) {}
         for (;;)
         {
           i += 1;
           break;
-          akro localakro2 = akrp.a(akrp.c, localakro1.b, localakro1.a);
-          if (localakro2 != null)
+          alcz localalcz2 = alda.a(alda.c, localalcz1.b, localalcz1.a);
+          if (localalcz2 != null)
           {
-            ((ArrayList)localObject4).add(akrp.a(localakro1, localakro2));
+            ((ArrayList)localObject4).add(alda.a(localalcz1, localalcz2));
           }
           else
           {
-            akrp.c.add(localakro1);
-            ((ArrayList)localObject3).add(localakro1);
+            alda.c.add(localalcz1);
+            ((ArrayList)localObject3).add(localalcz1);
           }
         }
       }
-      akrp.b.clear();
+      alda.b.clear();
       if (((ArrayList)localObject3).size() > 0) {
-        akrp.a((ArrayList)localObject3, true);
+        alda.a((ArrayList)localObject3, true);
       }
       if (((ArrayList)localObject4).size() > 0) {
-        akrp.a((ArrayList)localObject4, false);
+        alda.a((ArrayList)localObject4, false);
       }
-      akrp.jdField_a_of_type_Int = 2;
-      akrp.a(akrp.jdField_a_of_type_JavaUtilArrayList);
-      localObject3 = akrp.jdField_a_of_type_JavaUtilArrayList.iterator();
+      alda.jdField_a_of_type_Int = 2;
+      alda.a(alda.jdField_a_of_type_JavaUtilArrayList);
+      localObject3 = alda.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (akrq)((Iterator)localObject3).next();
+        localObject4 = (aldb)((Iterator)localObject3).next();
         if (localObject4 != null) {
-          akrp.a((akrq)localObject4);
+          alda.a((aldb)localObject4);
         }
       }
-      akrp.jdField_a_of_type_JavaUtilArrayList.clear();
-      l1 = akms.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", 0L);
+      alda.jdField_a_of_type_JavaUtilArrayList.clear();
+      l1 = akyd.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", 0L);
       l2 = NetConnInfoCenter.getServerTime();
-    } while ((akrp.jdField_a_of_type_Akrn == null) || ((l1 <= l2) && (l2 - l1 <= 172800L)));
-    akrp.jdField_a_of_type_Akrn.a(2592000L, null);
-    if (akrp.jdField_a_of_type_Akrn != null) {
-      akrp.jdField_a_of_type_Akrn.a(172800L, new int[] { 2 });
+    } while ((alda.jdField_a_of_type_Alcy == null) || ((l1 <= l2) && (l2 - l1 <= 172800L)));
+    alda.jdField_a_of_type_Alcy.a(2592000L, null);
+    if (alda.jdField_a_of_type_Alcy != null) {
+      alda.jdField_a_of_type_Alcy.a(172800L, new int[] { 2 });
     }
-    akms.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", l2);
+    akyd.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", l2);
   }
 }
 

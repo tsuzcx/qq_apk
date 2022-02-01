@@ -1,26 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.data.QCallRecord;
+import java.util.Comparator;
 
-public final class baoz
-  extends BroadcastReceiver
+class baoz
+  implements Comparator<QCallRecord>
 {
-  private baoz(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  baoz(baoy parambaoy) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      bamn.a().b();
-      bamn.a().a(new bapa(this));
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
+      return 0;
     }
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
   }
 }
 

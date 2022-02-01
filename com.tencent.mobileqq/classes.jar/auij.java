@@ -1,69 +1,60 @@
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class auij
+  implements audo
 {
-  public View a;
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  auij(auih paramauih) {}
   
-  public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public View a()
   {
-    if (paramDrawable == null) {
+    return null;
+  }
+  
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Aueg != null) {
+      this.a.jdField_a_of_type_Aueg.a(paramBoolean);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
       return;
     }
-    if (paramBoolean1)
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Augj.a());
+  }
+  
+  public boolean a()
+  {
+    if (this.a.jdField_a_of_type_Auef != null) {
+      return this.a.jdField_a_of_type_Auef.b();
+    }
+    return false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Aueg != null)) {
+      this.a.jdField_a_of_type_Aueg.a();
+    }
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(13);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      if (!paramBoolean2)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bgtn.a(140.0F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-        if (paramInt >= 2) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-        this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(bgtn.a(120.0F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bgtn.a(120.0F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      }
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840132);
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840133);
-      return;
+      audj.a().b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Augj.d(), this);
+      this.a.jdField_a_of_type_Boolean = false;
+      QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 2, 2131692082, 1).a();
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
-    if (paramDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

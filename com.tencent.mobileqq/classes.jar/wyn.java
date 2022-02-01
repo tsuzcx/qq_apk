@@ -1,54 +1,55 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
 
 public class wyn
-  extends wlf<xal>
 {
-  private static final String b = wjz.a("StorySvc.video_show_delete");
+  public int a;
   public String a;
+  public int b;
   
-  public wyn(String paramString)
+  public wyn()
   {
-    this.a = paramString;
-  }
-  
-  public String a()
-  {
-    return b;
-  }
-  
-  public xal a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
-    try
+    this.jdField_a_of_type_JavaLangString = "";
+    wta localwta = (wta)wth.a(10);
+    String str = zof.a();
+    this.jdField_a_of_type_JavaLangString = ((String)localwta.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Int = ((Integer)localwta.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
+    this.b = ((Integer)localwta.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
     {
-      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
-      return new xal(localRspDeleteVideo);
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localwta.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localwta.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    yuk.a(wyd.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a()
+  {
+    b();
+    this.jdField_a_of_type_Int += 1;
+    ((wta)wth.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    yuk.a(wyd.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a()
+  {
+    b();
+    yuk.a(wyd.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_Int < this.b;
+  }
+  
+  public void b()
+  {
+    String str = zof.a();
+    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
     {
-      paramArrayOfByte.printStackTrace();
+      wta localwta = (wta)wth.a(10);
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localwta.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localwta.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
-    localReqDeleteVideo.vid_list.addAll(localArrayList);
-    return localReqDeleteVideo.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
   }
 }
 

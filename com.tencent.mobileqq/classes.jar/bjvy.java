@@ -1,32 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import org.json.JSONObject;
-
-class bjvy
-  implements bmvh
+public class bjvy
 {
-  bjvy(bjvo parambjvo, AsyncResult paramAsyncResult) {}
+  protected String a;
+  protected String b;
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public bjvy(String paramString1, String paramString2)
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("response", paramGetAdsRsp);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
-      return;
-    }
-    catch (Throwable paramGetAdsRsp)
-    {
-      for (;;)
-      {
-        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramGetAdsRsp);
-      }
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

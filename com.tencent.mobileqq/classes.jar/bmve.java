@@ -1,48 +1,41 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.biz.qqcircle.events.QCirclePublishBoxStatusEvent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneIPCModule;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.List;
 
-class bmve
-  extends alax
+public class bmve
+  implements EIPCResultCallback
 {
-  private bmve(bmvc parambmvc) {}
+  public bmve(QzoneIPCModule paramQzoneIPCModule) {}
   
-  public void a(boolean paramBoolean)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super.a(paramBoolean);
-    if ((paramBoolean) && (atwl.a(this.c)))
+    ArrayList localArrayList;
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
     {
-      String str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-      File localFile = new File(this.c);
-      QzoneZipCacheHelper.unzipFile(localFile.getAbsolutePath(), str);
-      if (localFile.exists()) {
-        atwl.a(localFile);
+      paramEIPCResult = paramEIPCResult.data;
+      paramEIPCResult.setClassLoader(QCircleFakeFeed.class.getClassLoader());
+      localArrayList = paramEIPCResult.getParcelableArrayList("KEY_CERTIFIED_FAKE_FEED_LIST");
+      if (localArrayList != null) {
+        aaak.a().a(new QCircleFeedEvent(localArrayList));
       }
-      this.c = str;
-      if (QZLog.isColorLevel()) {
-        QZLog.i("QbossADBannerConfigInfo", 2, "zip success = pathDir = " + str);
+      aaak.a().a(new QCirclePublishBoxStatusEvent(paramEIPCResult));
+      if (localArrayList != null) {
+        break label93;
       }
     }
-  }
-  
-  public boolean a()
-  {
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.a.f))) {}
-    String str;
-    Object localObject;
-    do
+    label93:
+    for (int i = 0;; i = localArrayList.size())
     {
-      do
-      {
-        return false;
-        str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-        localObject = new File(str);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      localObject = ((File)localObject).listFiles();
-    } while ((localObject == null) || (localObject.length <= 0));
-    this.c = str;
-    return true;
+      QLog.d("QzoneIPCModule", 4, String.format("Get QCircleFakeFeed task list %b", new Object[] { Integer.valueOf(i) }));
+      return;
+    }
   }
 }
 

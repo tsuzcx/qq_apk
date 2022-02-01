@@ -1,29 +1,36 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import java.util.List;
 
-public class aymi
-  implements Animator.AnimatorListener
+class aymi
+  extends FragmentPagerAdapter
 {
-  public aymi(ScanIconAnimateView paramScanIconAnimateView) {}
+  private List<Fragment> jdField_a_of_type_JavaUtilList;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  aymi(FragmentManager paramFragmentManager, List<Fragment> paramList)
   {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    super(paramList);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  Fragment a(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    return 2;
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 

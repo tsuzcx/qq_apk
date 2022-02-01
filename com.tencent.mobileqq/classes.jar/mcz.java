@@ -1,27 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-
 public class mcz
-  implements View.OnClickListener
+  extends mcu
 {
-  public mcz(EffectSettingUi paramEffectSettingUi) {}
+  public int a;
+  public String b;
   
-  public void onClick(View paramView)
+  public mcz(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
-    this.a.b(-1007L, true);
-    mbd.b();
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localAVActivity.a.a(-1007L, localAVActivity, 99, 0);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(6005);
+    a(paramLong, paramString1);
+    this.a = paramInt;
+    this.b = paramString2;
   }
 }
 

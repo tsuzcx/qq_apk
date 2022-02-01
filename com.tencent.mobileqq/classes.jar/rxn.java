@@ -1,14 +1,6 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-
-public abstract interface rxn
+class rxn
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
-  
-  public abstract void a(rxy paramrxy);
-  
-  public abstract void d();
+  private static final rxk a = new rxk(null);
 }
 
 

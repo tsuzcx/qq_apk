@@ -1,30 +1,29 @@
 package com.tencent.biz.qqcircle.fragments.message.item;
 
+import aabd;
 import android.content.Context;
 import android.view.View;
 import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
 import feedcloud.FeedCloudMeta.StNotice;
-import vmh;
-import vmk;
-import vmq;
-import vmz;
-import vnb;
-import zxi;
+import von;
+import voq;
+import vpd;
+import vpf;
 
 public class QCircleDefaultMessageItemView
   extends QCircleBaseWidgetView<FeedCloudMeta.StNotice>
 {
-  private vmh a;
+  private von a;
   
-  public QCircleDefaultMessageItemView(Context paramContext, int paramInt, zxi paramzxi)
+  public QCircleDefaultMessageItemView(Context paramContext, int paramInt, aabd paramaabd)
   {
     super(paramContext, paramInt);
-    this.a.a(paramzxi);
+    this.a.a(paramaabd);
   }
   
   public int a()
   {
-    return 2131560728;
+    return 2131560749;
   }
   
   public String a()
@@ -32,18 +31,15 @@ public class QCircleDefaultMessageItemView
     return "QCircleDefaultMessageWidget";
   }
   
-  protected vmh a(int paramInt)
+  protected von a(int paramInt)
   {
     if (paramInt == 3) {
-      return new vmz(paramInt);
-    }
-    if ((paramInt == 7) || (paramInt == 6) || (paramInt == 0) || (paramInt == 13)) {
-      return new vmq(paramInt);
+      return new vpd(paramInt);
     }
     if ((paramInt == 10) || (paramInt == 11)) {
-      return new vnb(paramInt);
+      return new vpf(paramInt);
     }
-    return new vmk(paramInt);
+    return new voq(paramInt);
   }
   
   public void a(Context paramContext, int paramInt)

@@ -1,254 +1,185 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class anhg
-  implements Handler.Callback
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  protected anhi a;
-  protected anhj a;
-  private bkgm jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
-  String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  public float a;
+  public int a;
+  public SharedPreferences a;
+  private anhm jdField_a_of_type_Anhm;
+  public String a;
+  public WeakReference<BaseChatPie> a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public String b;
+  public WeakReference<amwa> b;
+  public AtomicBoolean b;
+  public boolean b;
+  public int c;
+  private WeakReference<angl> jdField_c_of_type_JavaLangRefWeakReference;
+  private AtomicBoolean jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public int d = -1;
+  public int e = 3;
+  private int f;
   
-  public anhg(anhi paramanhi, anhj paramanhj)
+  public anhg()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Anhi = paramanhi;
-    this.jdField_a_of_type_Anhj = paramanhj;
-  }
-  
-  private void a(boolean paramBoolean, File paramFile, String paramString)
-  {
-    int i = 0;
-    if (paramBoolean) {}
-    try
-    {
-      a(paramFile, paramString);
-      this.jdField_a_of_type_ArrayOfJavaLangString = new File(paramString).list();
-      this.jdField_a_of_type_Int = 3;
-      if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0)) {
-        while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-        {
-          this.jdField_a_of_type_ArrayOfJavaLangString[i] = (paramString + this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-          i += 1;
-        }
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        b();
-        if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
-        {
-          this.jdField_c_of_type_Int = 0;
-          this.jdField_b_of_type_Boolean = true;
-          new anhh(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
-        }
-      }
-      return;
-    }
-    catch (Exception paramFile)
-    {
-      QLog.e("SimpleFrameZipDecoder", 2, paramFile.getMessage());
-      this.jdField_a_of_type_Int = 2;
-      return;
-    }
-    catch (OutOfMemoryError paramFile)
-    {
-      QLog.e("SimpleFrameZipDecoder", 2, paramFile.getMessage());
-      this.jdField_a_of_type_Int = 2;
-    }
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaLangString = ApolloUtil.a();
+    a();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    b();
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.f;
   }
   
-  public void a()
+  public amwa a()
   {
-    if (this.jdField_a_of_type_Int == 3) {
-      b();
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    try
-    {
-      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
-      {
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_b_of_type_Boolean = true;
-        new anhh(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
-      }
-      return;
+    return (amwa)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public angl a()
+  {
+    if (this.jdField_c_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    catch (Exception localException)
-    {
-      QLog.e("SimpleFrameZipDecoder", 2, localException, new Object[0]);
+    return (angl)this.jdField_c_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public BaseChatPie a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public IPCSpriteContext a()
+  {
+    IPCSpriteContext localIPCSpriteContext = new IPCSpriteContext();
+    localIPCSpriteContext.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localIPCSpriteContext.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localIPCSpriteContext.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localIPCSpriteContext.jdField_b_of_type_Int = this.e;
+    localIPCSpriteContext.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
+    localIPCSpriteContext.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    return localIPCSpriteContext;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    amwa localamwa = a();
+    if (localamwa != null) {
+      localamwa.setBubbleType(paramInt);
     }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
+    this.jdField_a_of_type_Int = paramInt1;
+    this.e = paramInt2;
+    if (this.e == 0)
     {
-      return;
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (!paramString2.equals(this.jdField_b_of_type_JavaLangString))
-      {
-        this.jdField_b_of_type_JavaLangString = paramString2;
-        this.jdField_a_of_type_Int = 0;
-        b();
-        this.jdField_a_of_type_ArrayOfJavaLangString = null;
+      if ((1 != paramInt1) && (3000 != paramInt1)) {
+        break label43;
       }
-    } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 0));
-    paramString2 = b(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    Object localObject = new File(paramString2);
-    ((File)localObject).mkdirs();
-    localObject = ((File)localObject).list();
-    File localFile = new File(this.jdField_b_of_type_JavaLangString);
-    if ((localObject != null) && (localObject.length > 0))
-    {
-      a(false, localFile, paramString2);
-      return;
-    }
-    if (localFile.exists())
-    {
-      a(true, localFile, paramString2);
-      return;
-    }
-    if (this.jdField_a_of_type_Anhi != null)
-    {
-      this.jdField_a_of_type_Anhi.a(this, paramString1, this.jdField_b_of_type_JavaLangString, paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void a(Bitmap paramBitmap, int paramInt)
-  {
-    long l2;
-    if ((this.jdField_b_of_type_Boolean) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
-    {
-      long l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      if (l2 <= this.jdField_b_of_type_Int) {
-        break label77;
-      }
-      this.jdField_a_of_type_Long = l1;
-      this.jdField_a_of_type_Bkgm.obtainMessage(255, this.jdField_c_of_type_Int, 0).sendToTarget();
+      this.jdField_c_of_type_Int = 1;
     }
     for (;;)
     {
-      this.jdField_c_of_type_Int = (paramInt + 1);
+      a(this.jdField_c_of_type_Int);
       return;
-      label77:
-      paramBitmap = this.jdField_a_of_type_Bkgm.obtainMessage(255, this.jdField_c_of_type_Int, 0);
-      this.jdField_a_of_type_Bkgm.sendMessageDelayed(paramBitmap, this.jdField_b_of_type_Int - l2);
+      label43:
+      if (paramInt1 == 0) {
+        this.jdField_c_of_type_Int = 0;
+      }
     }
   }
   
-  protected void a(File paramFile, String paramString)
+  public void a(amwa paramamwa)
   {
-    if ((paramFile.exists()) && (!TextUtils.isEmpty(paramString))) {
-      nmk.a(paramFile, paramString);
-    }
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramamwa);
+  }
+  
+  public void a(anhm paramanhm)
+  {
+    this.jdField_a_of_type_Anhm = paramanhm;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleFrameZipDecoder", 2, "onDownloadFinish，result:" + paramBoolean + " url:" + paramString1 + " zipFile:" + paramString2 + " folder:" + paramString3);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null) {
+      return false;
     }
-    if ((this.jdField_b_of_type_JavaLangString != null) && (!this.jdField_b_of_type_JavaLangString.equals(paramString2)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "onDownloadFinish，zipFile unEqual mLocalZipPath:" + this.jdField_b_of_type_JavaLangString);
-      }
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramString1 = new File(paramString2);
-      if (paramString1.exists())
-      {
-        a(true, paramString1, paramString3);
-        return;
-      }
-      this.jdField_a_of_type_Int = 2;
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  protected String b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      int i = paramString.lastIndexOf(".zip");
-      String str = paramString;
-      if (i > 0) {
-        str = paramString.substring(0, i);
-      }
-      return str + File.separator;
-    }
-    return "";
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.d = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sprite_hide_key" + this.jdField_b_of_type_JavaLangString, -1);
+    }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void b(int paramInt)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
-    {
-    default: 
-      bool = false;
+    this.f = paramInt;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
     }
-    do
-    {
-      return bool;
-    } while (!this.jdField_b_of_type_Boolean);
-    if (this.jdField_a_of_type_Anhj == null) {
-      return false;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    this.jdField_a_of_type_Anhj.a(paramMessage.arg1, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_c_of_type_Int >= this.jdField_a_of_type_ArrayOfJavaLangString.length) && (this.jdField_a_of_type_ArrayOfJavaLangString.length != 1)) {
-      this.jdField_c_of_type_Int = 0;
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > this.jdField_c_of_type_Int)) {
-      new anhh(this, this.jdField_c_of_type_Int).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      break;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Anhj.a();
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilSet.clear();
   }
 }
 

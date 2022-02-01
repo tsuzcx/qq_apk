@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agko
-  implements DialogInterface.OnClickListener
+public class agko
 {
-  agko(agki paramagki) {}
+  private static ArraySet<Long> a = new ArraySet();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a()
   {
-    paramDialogInterface.dismiss();
+    a.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
+    {
+      a.add(Long.valueOf(paramMessageRecord.uniseq));
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a.add(Long.valueOf(paramMessageRecord.uniseq));
   }
 }
 

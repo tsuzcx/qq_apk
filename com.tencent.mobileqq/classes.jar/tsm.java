@@ -1,17 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaEnvironment;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class tsm
-  implements tsq
+class tsm
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public tsm(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
+  tsm(tsl paramtsl) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4866;; paramInt = 771)
+    {
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      return;
     }
   }
 }

@@ -1,42 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 
 class bbqu
-  implements View.OnClickListener
+  implements IGalleryImageListener
 {
-  bbqu(bbqr parambbqr, bbns parambbns, Context paramContext) {}
+  bbqu(bbqq parambbqq, RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, AIOFilePictureData paramAIOFilePictureData) {}
   
-  public void onClick(View paramView)
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    bbrf.a(null, 0, this.jdField_a_of_type_Bbns.c, "0X8009D5D", 0, 0, null, null);
-    bbrf.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Bbns.g).ver2(bbrf.a(UniteSearchActivity.d)).ver5("1").ver6("1").ver7("{experiment_id:" + bbrf.b + "}"));
-    String str;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Bbns.l))
+    this.jdField_a_of_type_Bbqq.b.setVisibility(8);
+    if (paramBoolean)
     {
-      str = bbum.a(this.jdField_a_of_type_Bbns.c);
-      str = bbum.a(this.jdField_a_of_type_Bbns.a(), 0, str);
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, "open Browser append suffix url = " + str);
-      }
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      bbqq.a(this.jdField_a_of_type_Bbqq, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
-      str = bbum.a(bbum.a(this.jdField_a_of_type_Bbns.l, this.jdField_a_of_type_Bbns.a(), 0, bbrf.a(this.jdField_a_of_type_Bbns.c)), this.jdField_a_of_type_Bbns.c);
-      bbup.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bbns.a(), str);
     }
+    if ((!bbqq.a(this.jdField_a_of_type_Bbqq, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bbqq.a)) && (!bbqq.b(this.jdField_a_of_type_Bbqq, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bbqq.a))) {
+      bbqq.a(this.jdField_a_of_type_Bbqq, this.jdField_a_of_type_Bbqq.a);
+    }
+    bbqq.a(this.jdField_a_of_type_Bbqq, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 18);
   }
 }
 

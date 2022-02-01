@@ -5,12 +5,12 @@ import android.widget.TextView;
 class IliveLaunchFragment$10
   implements Runnable
 {
-  IliveLaunchFragment$10(IliveLaunchFragment paramIliveLaunchFragment) {}
+  IliveLaunchFragment$10(IliveLaunchFragment paramIliveLaunchFragment, int paramInt, String paramString) {}
   
   public void run()
   {
     if (IliveLaunchFragment.access$600(this.this$0) != null) {
-      IliveLaunchFragment.access$600(this.this$0).setText("直播加载成功");
+      IliveLaunchFragment.access$600(this.this$0).setText("直播加载失败\ncode = " + this.jdField_a_of_type_Int);
     }
   }
 }

@@ -6,12 +6,7 @@ public class HexUtil
 {
   private static final String TAG = "HexUtil";
   private static final char[] digits = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  public static final byte[] emptybytes = new byte[0];
-  
-  public static String String2HexString(String paramString)
-  {
-    return bytes2HexStr(paramString.getBytes());
-  }
+  public static final byte[] emptyBytes = new byte[0];
   
   public static String byte2HexStr(byte paramByte)
   {
@@ -78,7 +73,7 @@ public class HexUtil
   {
     Object localObject;
     if ((paramString == null) || (paramString.equals(""))) {
-      localObject = emptybytes;
+      localObject = emptyBytes;
     }
     for (;;)
     {
@@ -101,24 +96,12 @@ public class HexUtil
         QMLog.d("HexUtil", " === hexStr2Bytes error === " + paramString.toString());
       }
     }
-    return emptybytes;
+    return emptyBytes;
   }
   
   public static String hexString2String(String paramString)
   {
     return new String(hexStr2Bytes(paramString));
-  }
-  
-  public static void main(String[] paramArrayOfString)
-  {
-    System.currentTimeMillis();
-    int i = 0;
-    while (i < 1000000)
-    {
-      paramArrayOfString = "234" + i;
-      if (!new String(hexStr2Bytes(bytes2HexStr(paramArrayOfString.getBytes()))).equals(paramArrayOfString)) {}
-      i += 1;
-    }
   }
   
   public static void printHexString(String paramString, byte[] paramArrayOfByte)
@@ -180,6 +163,11 @@ public class HexUtil
       label291:
       j += 1;
     }
+  }
+  
+  public static String string2HexString(String paramString)
+  {
+    return bytes2HexStr(paramString.getBytes());
   }
 }
 

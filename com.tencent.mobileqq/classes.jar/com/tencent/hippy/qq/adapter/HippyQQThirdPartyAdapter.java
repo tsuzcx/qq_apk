@@ -18,7 +18,7 @@ public class HippyQQThirdPartyAdapter
   
   public String getAppVersion()
   {
-    return "8.4.1";
+    return "8.4.5";
   }
   
   public String getPackageName()

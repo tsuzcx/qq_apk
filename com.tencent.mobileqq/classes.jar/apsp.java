@@ -1,26 +1,14 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-class apsp
-  implements ValueAnimator.AnimatorUpdateListener
+public class apsp
+  extends apsq
 {
-  apsp(apsl paramapsl, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public String a = "10001";
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-this.jdField_a_of_type_Apsl.a * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Apsl.e);
-    this.b.setAlpha(f);
+    this.a = paramBundle.getString("PromotionDescription");
   }
 }
 

@@ -1,30 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class zct
-  implements TextWatcher
+class zct
+  implements View.OnClickListener
 {
-  public zct(zcr paramzcr) {}
+  zct(zcn paramzcn) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    String str = zkn.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
+    this.a.dismiss();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 4);
     }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    yqp.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Zcu != null) {
-      this.a.jdField_a_of_type_Zcu.a(this.a.jdField_a_of_type_JavaLangString);
-    }
+    yuq.a("0X80076C6");
+    yuq.b("0X80075DA");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

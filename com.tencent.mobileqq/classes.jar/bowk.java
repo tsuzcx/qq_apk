@@ -1,17 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-final class bowk
-  implements View.OnClickListener
+public class bowk
+  extends ViewModel
 {
-  bowk(AIOLongCaptureCtrl paramAIOLongCaptureCtrl) {}
+  public final MutableLiveData<bowc> a;
+  private boolean a;
+  public final MutableLiveData<AECaptureMode[]> b = new MutableLiveData();
+  public final MutableLiveData<Boolean> c = new MutableLiveData();
   
-  public void onClick(View paramView)
+  public bowk()
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bowc)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.GIF);
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bowc)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.NORMAL);
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bowc)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.PLAY);
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

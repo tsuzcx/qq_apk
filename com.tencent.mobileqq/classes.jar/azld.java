@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import org.jetbrains.annotations.NotNull;
 
-class azld
-  extends bgtm
+public class azld
 {
-  azld(azla paramazla, int paramInt)
+  public final float a;
+  public final long a;
+  public final LatLng a;
+  public final String a;
+  
+  public azld(LatLng paramLatLng, String paramString, float paramFloat, long paramLong)
   {
-    super(paramInt);
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a()
+  public boolean a()
   {
-    bghy.a(azla.a(this.a), azla.c(this.a).getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
-    bcst.b(azla.d(this.a), "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
-    VasWebviewUtil.reportCommercialDrainage(azla.e(this.a).getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
-    azla.a(this.a, 2);
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= azjb.N;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "Location{latLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", provider='" + this.jdField_a_of_type_JavaLangString + ", accuracy=" + this.jdField_a_of_type_Float + ", time=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
   }
 }
 

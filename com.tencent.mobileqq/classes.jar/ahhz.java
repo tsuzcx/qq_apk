@@ -1,26 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahhz
-  implements bkhw
+  extends ahkx
 {
-  ahhz(ahhy paramahhy, MessageForShortVideo paramMessageForShortVideo, ahie paramahie, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  ahhz(ahgk paramahgk)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
-        this.jdField_a_of_type_Ahhy.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahie);
-      } else {
-        this.jdField_a_of_type_Ahhy.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahie);
-      }
-    }
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahwt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

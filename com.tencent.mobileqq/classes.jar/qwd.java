@@ -1,27 +1,43 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
 public class qwd
-  implements pyu
 {
-  public qwd(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public List<qwe> a;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public static qwd a(articlesummary.HotWordInfo paramHotWordInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    qwd localqwd = new qwd();
+    if ((paramHotWordInfo != null) && (paramHotWordInfo.rpt_hot_word_item.has()))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
-      return;
+      localqwd.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
+      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
+      while (paramHotWordInfo.hasNext())
+      {
+        qwe localqwe = qwe.a((articlesummary.HotWordItem)paramHotWordInfo.next());
+        localqwd.a.add(localqwe);
+      }
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131717086, 0).a();
+    return localqwd;
+  }
+  
+  public byte[] a()
+  {
+    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
+    if ((this.a != null) && (this.a.size() > 0))
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((qwe)localIterator.next()).a());
+      }
+      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
+    }
+    return localHotWordInfo.toByteArray();
   }
 }
 

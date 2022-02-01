@@ -2,10 +2,10 @@ package dov.com.qq.im;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bctj;
-import bnyh;
+import bdmc;
+import bozr;
 import com.tencent.common.app.BaseApplicationImpl;
-import yqu;
+import yup;
 
 class QIMCameraCaptureActivity$1
   implements Runnable
@@ -15,13 +15,13 @@ class QIMCameraCaptureActivity$1
   public void run()
   {
     boolean bool = true;
-    bctj.a(BaseApplicationImpl.getContext()).a(null, "enter_story_capture_count", true, 0L, 0L, null, "");
-    yqu.a("video_shoot_new", "shoot_exp", yqu.b(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
+    bdmc.a(BaseApplicationImpl.getContext()).a(null, "enter_story_capture_count", true, 0L, 0L, null, "");
+    yup.a("video_shoot_new", "shoot_exp", yup.b(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
     if (!TextUtils.isEmpty(this.this$0.getIntent().getStringExtra("KEY_ISENTER_SO_DOWNLOAD"))) {}
     for (;;)
     {
-      bnyh.a().a(bool);
-      bnyh.a().X();
+      bozr.a().a(bool);
+      bozr.a().Z();
       return;
       bool = false;
     }

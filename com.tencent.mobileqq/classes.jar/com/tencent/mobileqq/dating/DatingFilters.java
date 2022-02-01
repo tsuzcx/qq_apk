@@ -3,16 +3,16 @@ package com.tencent.mobileqq.dating;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anni;
+import anzj;
 import appoint.define.appoint_define.LocaleInfo;
-import arks;
+import asai;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.io.UnsupportedEncodingException;
 
 public class DatingFilters
   implements Parcelable
 {
-  public static final Parcelable.Creator<DatingFilters> CREATOR = new arks();
+  public static final Parcelable.Creator<DatingFilters> CREATOR = new asai();
   public static final int[] a;
   public static final String[] a;
   public static final int[] b;
@@ -29,11 +29,11 @@ public class DatingFilters
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { anni.a(2131701647), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { anzj.a(2131701754), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 22, 26, 35, 120 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 18, 23, 27, 36 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { anni.a(2131701645), anni.a(2131701651), anni.a(2131701650), anni.a(2131701648), anni.a(2131701646) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { anni.a(2131701653), anni.a(2131701655), anni.a(2131701652), anni.a(2131701649), anni.a(2131701644), anni.a(2131701654) };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { anzj.a(2131701752), anzj.a(2131701758), anzj.a(2131701757), anzj.a(2131701755), anzj.a(2131701753) };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { anzj.a(2131701760), anzj.a(2131701762), anzj.a(2131701759), anzj.a(2131701756), anzj.a(2131701751), anzj.a(2131701761) };
   }
   
   private DatingFilters(Parcel paramParcel)

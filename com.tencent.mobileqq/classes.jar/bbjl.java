@@ -1,8 +1,29 @@
-public abstract interface bbjl
+public class bbjl
+  implements Cloneable
 {
-  public abstract void a(String paramString, int paramInt);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public abstract void c(String paramString);
+  public bbjl(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public bbjl a()
+  {
+    return (bbjl)super.clone();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.b;
+  }
 }
 
 

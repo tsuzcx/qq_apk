@@ -1,20 +1,20 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class prx
+class prx
+  implements prk<BEAN>
 {
-  public RelativeLayout a;
-  public URLImageView a;
-  public DragTextView a;
-  public DragTextView b;
+  prx(prw paramprw) {}
   
-  public prx(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
+  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
-    this.b = paramDragTextView2;
+    if (paramBoolean)
+    {
+      prw.a(this.a, paramBoolean1.booleanValue(), paramInt1, paramList);
+      return;
+    }
+    QLog.i("ListPresenter", 2, "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
+    prw.a(this.a, paramBoolean1.booleanValue(), paramList, paramInt2, paramString);
   }
 }
 

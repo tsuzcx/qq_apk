@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aorw;
-import aosa;
-import aoua;
-import aouh;
-import aouj;
+import apfm;
+import apfq;
+import aphq;
+import aphx;
+import aphz;
 
 public class ARTransferPromotionRenderable$11
   implements Runnable
 {
-  public ARTransferPromotionRenderable$11(aouh paramaouh) {}
+  public ARTransferPromotionRenderable$11(aphx paramaphx) {}
   
   public void run()
   {
-    if (aouh.a(this.this$0) == 6)
+    if (aphx.a(this.this$0) == 6)
     {
-      if ((aouh.a(this.this$0) != null) && (!aouh.a(this.this$0).a.booleanValue())) {
-        aouh.a(this.this$0).b(0, 1);
+      if ((aphx.a(this.this$0) != null) && (!aphx.a(this.this$0).a.booleanValue())) {
+        aphx.a(this.this$0).b(0, 1);
       }
-      if (((aouh.a(this.this$0).a() != 0) && (aouh.c(this.this$0))) || (aouh.a(this.this$0).a.booleanValue())) {
+      if (((aphx.a(this.this$0).a() != 0) && (aphx.c(this.this$0))) || (aphx.a(this.this$0).a.booleanValue())) {
         break label124;
       }
       this.this$0.a();
     }
     for (;;)
     {
-      if (aouh.a(this.this$0) == null) {
-        aouh.a(this.this$0, new aorw());
+      if (aphx.a(this.this$0) == null) {
+        aphx.a(this.this$0, new apfm());
       }
       return;
       label124:
-      if (!aouh.a(this.this$0).a.booleanValue()) {
-        aouh.a(this.this$0).c(1);
+      if (!aphx.a(this.this$0).a.booleanValue()) {
+        aphx.a(this.this$0).c(1);
       }
     }
   }

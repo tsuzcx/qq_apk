@@ -1,127 +1,101 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class bbiq<M extends bbmv, V extends bbve>
-  extends bbip<M, V>
+public class bbiq
+  implements View.OnClickListener
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
-  private String jdField_a_of_type_JavaLangString;
-  private List<bbnb> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
-  private int e;
+  public bbiq(ProviderContainerView paramProviderContainerView) {}
   
-  public bbiq(ListView paramListView, aobu paramaobu, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    super(paramListView, paramaobu);
-    try
+    int i = ProviderContainerView.a(this.a).a(((Integer)paramView.getTag()).intValue());
+    if (i == 102)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
-      this.jdField_a_of_type_JavaLangString = paramSearchResultItem.user.uin;
-      this.e = paramSearchResultItem.user.getType();
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
-    }
-    catch (NullPointerException paramListView)
-    {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "BaseMvpMessageAdapter init e:", paramListView.toString() });
+      bbgf.b();
+      if (!bork.b(borf.b)) {
+        QQToast.a(this.a.getContext(), anzj.a(2131707401), 0).a();
       }
     }
-  }
-  
-  private void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.msgtype == -2011)
-    {
-      AbsStructMsg localAbsStructMsg = bcwd.a(paramMessageRecord.msgData);
-      if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg)))
-      {
-        paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mContentTitle;
-        if ((TextUtils.isEmpty(paramMessageRecord.msg)) && ((localAbsStructMsg instanceof AbsStructMsg))) {
-          paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mMsgBrief;
-        }
-      }
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
-      a();
-    }
-  }
-  
-  public void a()
-  {
-    label177:
     for (;;)
     {
-      try
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (bbgg.a == 0)
       {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        int i;
-        if (j + 50 < this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size())
+        QQToast.a(this.a.getContext(), anzj.a(2131707407), 0).a();
+      }
+      else if (bbgg.a == -1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded");
+        }
+      }
+      else
+      {
+        boolean bool;
+        if (bbgg.a == 2)
         {
-          i = j + 50;
-          if (j < i)
-          {
-            MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.e, ((Long)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.get(j)).longValue());
-            if (localMessageRecord == null) {
-              break label177;
-            }
-            a(localMessageRecord);
-            if (localMessageRecord.msg == null) {
-              break label177;
-            }
-            this.jdField_a_of_type_JavaUtilList.add(new bbnb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user, localMessageRecord));
-            break label177;
+          bool = bbgg.a(true);
+          if (QLog.isColorLevel()) {
+            QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck soLoaded=" + bool);
+          }
+          if (ProviderContainerView.a(this.a) != null) {
+            ProviderContainerView.a(this.a).y();
           }
         }
-        else
+        if (i == 103)
         {
-          i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
-          continue;
+          bbgf.e();
+          bbgf.b();
+          if (!bork.b(borf.b))
+          {
+            QQToast.a(this.a.getContext(), anzj.a(2131707406), 0).a();
+            continue;
+          }
+          if (bbgg.a == 0)
+          {
+            QQToast.a(this.a.getContext(), anzj.a(2131707405), 0).a();
+            continue;
+          }
+          if (bbgg.a == -1)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded for beauty");
+            continue;
+          }
+          if (bbgg.a == 2)
+          {
+            bool = bbgg.a(true);
+            if (QLog.isColorLevel()) {
+              QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck beauty soLoaded=" + bool);
+            }
+            if (ProviderContainerView.a(this.a) != null) {
+              ProviderContainerView.a(this.a).y();
+            }
+          }
         }
-        j += 1;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "initData e:", localNullPointerException.toString() });
-        super.a(this.jdField_a_of_type_JavaUtilList);
-        return;
+        if (i == 101) {
+          bbgf.d();
+        }
+        if (i == 104)
+        {
+          bdll.b(null, "dc00898", "", "", "0X8008756", "0X8008756", 0, 0, "", "", "", "");
+          bbgf.c();
+        }
+        if (ProviderContainerView.a(this.a) != null) {
+          ProviderContainerView.a(this.a).a();
+        }
+        ProviderContainerView.a(this.a, paramView, i);
       }
     }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    b();
   }
 }
 

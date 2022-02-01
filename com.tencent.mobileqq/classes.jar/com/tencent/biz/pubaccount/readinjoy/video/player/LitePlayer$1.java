@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import sif;
+import rzj;
 
 public class LitePlayer$1
   implements Runnable
 {
-  public LitePlayer$1(sif paramsif, String paramString, int paramInt, long paramLong) {}
+  public LitePlayer$1(rzj paramrzj, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
-    sif.a(this.this$0, false, this.jdField_a_of_type_JavaLangString, null, null, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 0);
+    rzj.a(this.this$0, false, this.jdField_a_of_type_JavaLangString, null, null, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 0);
   }
 }
 

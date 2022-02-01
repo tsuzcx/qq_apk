@@ -1,6 +1,21 @@
-public abstract interface axnd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class axnd
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public axnd(MultiCardFragment paramMultiCardFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

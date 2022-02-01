@@ -1,32 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
 
 class lyb
-  implements bkhw
+  implements ServiceConnection
 {
-  lyb(lya paramlya, long paramLong, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, bkho parambkho) {}
+  lyb(lxz paramlxz) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Lya.a + "]");
+      QLog.d("QavWrapper", 2, "Qav Service connected!");
     }
-    if (this.jdField_a_of_type_Lya.a == null) {
+    this.a.jdField_a_of_type_Lwu = lwv.a(paramIBinder);
+    if ((this.a.jdField_a_of_type_Lwu != null) && (this.a.jdField_a_of_type_Lya != null)) {
+      this.a.jdField_a_of_type_Lya.a(this.a);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    paramView = paramView.getContext();
-    switch (paramInt)
-    {
+    QLog.d("QavWrapper", 2, "mQavProxy == null or mOnReadyListener == null");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavWrapper", 2, "Qav Service disconnected!");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Lya.b(this.jdField_a_of_type_Long, paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
-      continue;
-      this.jdField_a_of_type_Lya.a(this.jdField_a_of_type_Long, paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
-    }
+    this.a.jdField_a_of_type_Lwu = null;
   }
 }
 

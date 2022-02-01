@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.webview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import bgln;
-import blrt;
+import bhlo;
+import bmsv;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -98,7 +98,7 @@ public class BaseAppBrandWebview
       paramContext.setMixedContentMode(0);
     }
     paramContext.setMediaPlaybackRequiresUserGesture(false);
-    this.userAgent = (paramContext.getUserAgentString() + " QQ/MiniApp QQ/" + bgln.c());
+    this.userAgent = (paramContext.getUserAgentString() + " QQ/MiniApp QQ/" + bhlo.c());
     paramContext.setUserAgent(this.userAgent);
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -190,6 +190,11 @@ public class BaseAppBrandWebview
   
   public void clearUp() {}
   
+  public int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
   public void destroy()
   {
     super.destroy();
@@ -260,6 +265,11 @@ public class BaseAppBrandWebview
     return "";
   }
   
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return new byte[0];
+  }
+  
   public int getPageWebViewId()
   {
     return this.pageWebviewId;
@@ -310,7 +320,7 @@ public class BaseAppBrandWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + blrt.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bmsv.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(this.apkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";

@@ -1,31 +1,27 @@
-import android.media.MediaPlayer;
-import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
-
-public class lcf
-  extends lcp
+class lcf
 {
-  public lcf(VideoController paramVideoController)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  long b;
+  long c;
+  long d;
+  long e;
+  long f;
+  
+  lcf(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
   {
-    super(paramVideoController);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.d = paramLong4;
+    this.e = paramLong5;
+    this.f = paramLong6;
   }
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  boolean a()
   {
-    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().p())
-    {
-      lbc.d(VideoController.a, "onCompletion onClose is not Closing2");
-      this.jdField_a_of_type_Long = 0L;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().z);
-    this.jdField_a_of_type_Long = 0L;
+    return (this.jdField_a_of_type_Long > 0L) && (this.b > 0L) && (this.c > 0L);
   }
 }
 

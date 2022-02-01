@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import nak;
+import nbo;
 
 public class EmptyMemberItemView
   extends RelativeLayout
@@ -30,10 +30,10 @@ public class EmptyMemberItemView
   
   public void a()
   {
-    this.a = findViewById(2131366009);
+    this.a = findViewById(2131366055);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-    localLayoutParams.width = nak.s;
-    localLayoutParams.height = nak.s;
+    localLayoutParams.width = nbo.w;
+    localLayoutParams.height = nbo.w;
     this.a.setLayoutParams(localLayoutParams);
     this.a.setBackgroundColor(getContext().getResources().getColor(2131165334));
   }

@@ -1,82 +1,19 @@
-public final class allk
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class allk
+  implements View.OnClickListener
 {
-  public final int a;
-  public final int b;
+  allk(aljw paramaljw) {}
   
-  public allk(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static allk a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    int i = paramString.indexOf('*');
-    if (i < 0) {
-      i = paramString.indexOf('x');
-    }
-    for (;;)
-    {
-      if (i < 0) {
-        throw a(paramString);
-      }
-      try
-      {
-        allk localallk = new allk(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
-        return localallk;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        throw a(paramString);
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        throw a(paramString);
-      }
-    }
-  }
-  
-  private static NumberFormatException a(String paramString)
-  {
-    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof allk));
-    paramObject = (allk)paramObject;
-    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.a + "x" + this.b;
+    this.a.a(23, 0);
+    this.a.a(-1, null);
+    bdll.b(aljw.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

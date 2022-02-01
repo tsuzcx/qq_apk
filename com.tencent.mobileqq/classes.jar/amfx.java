@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 
 public class amfx
-  implements Comparator<TroopInfo>
+  extends aocj
 {
-  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
+  public amfx(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  
+  protected void a()
   {
-    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
-      return -1;
-    }
-    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
-      return 1;
-    }
-    return anjs.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
+    this.a.c();
   }
 }
 

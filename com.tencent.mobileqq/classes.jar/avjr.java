@@ -1,24 +1,49 @@
-import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.anim.FullPopAnimWithLOLLIPOP.5;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
-class avjr
-  implements aaob
+public class avjr
+  extends avjo
+  implements avmj
 {
-  avjr(avjq paramavjq) {}
+  private int jdField_a_of_type_Int;
+  @SuppressLint({"HandlerLeak"})
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private avkj jdField_a_of_type_Avkj;
+  private int b;
   
-  public void callback(Bundle paramBundle)
+  @SuppressLint({"NewApi"})
+  private void b()
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 90)
+    if (this.jdField_a_of_type_Avkj != null)
     {
-      avjq.a(this.a, paramBundle.getInt("state"));
-      avjq.a(this.a, avjq.a(this.a), avjq.b(this.a));
+      avkj localavkj = this.jdField_a_of_type_Avkj;
+      localavkj.jdField_a_of_type_Int += this.jdField_a_of_type_Int;
+      localavkj = this.jdField_a_of_type_Avkj;
+      localavkj.b -= this.b;
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOutlineProvider(this.jdField_a_of_type_Avkj);
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setClipToOutline(true);
+      if (this.jdField_a_of_type_Avkj.jdField_a_of_type_Int > this.jdField_a_of_type_Avkj.b)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+        this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      }
     }
-    while (i != 91) {
+    else
+    {
       return;
     }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    avjq.a(this.a, i, paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 5L);
+  }
+  
+  public void a()
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new FullPopAnimWithLOLLIPOP.5(this));
+    a(false);
   }
 }
 

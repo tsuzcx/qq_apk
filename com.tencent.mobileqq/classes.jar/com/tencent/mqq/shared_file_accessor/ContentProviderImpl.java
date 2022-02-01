@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.mqq.shared_file_accessor.a.a;
+import com.tencent.mqq.shared_file_accessor.test.AccessRecorder;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -16,9 +16,10 @@ import java.util.Set;
 public class ContentProviderImpl
   extends ContentProvider
 {
-  private static final String[] a = { "value" };
+  private static final String LOG_TAG = "ContentProviderImpl";
+  private static final String[] sMockColums = { "value" };
   
-  private static String a(Uri paramUri, String paramString)
+  private String getParam(Uri paramUri, String paramString)
   {
     try
     {
@@ -38,13 +39,13 @@ public class ContentProviderImpl
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    paramUri = a(paramUri, "file");
+    paramUri = getParam(paramUri, "file");
     if ("*".equals(paramString))
     {
-      SharedPreferencesProxyManager.getInstance().a(paramUri, 0, false).edit().clear();
+      SharedPreferencesProxyManager.getInstance().getProxyInner(paramUri, 0, false).edit().clear();
       return 0;
     }
-    SharedPreferencesProxyManager.getInstance().a(paramUri, 0, false).edit().remove(paramString);
+    SharedPreferencesProxyManager.getInstance().getProxyInner(paramUri, 0, false).edit().remove(paramString);
     return 0;
   }
   
@@ -55,14 +56,14 @@ public class ContentProviderImpl
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    Object localObject1 = a(paramUri, "file");
+    Object localObject1 = getParam(paramUri, "file");
     Object localObject2 = (Map.Entry)paramContentValues.valueSet().iterator().next();
     if (localObject2 == null) {
       return null;
     }
     paramContentValues = (String)((Map.Entry)localObject2).getKey();
     localObject2 = ((Map.Entry)localObject2).getValue();
-    localObject1 = SharedPreferencesProxyManager.getInstance().a((String)localObject1, 0, false).edit();
+    localObject1 = SharedPreferencesProxyManager.getInstance().getProxyInner((String)localObject1, 0, false).edit();
     if ((localObject2 instanceof Integer))
     {
       ((SharedPreferences.Editor)localObject1).putInt(paramContentValues, ((Integer)localObject2).intValue());
@@ -93,15 +94,13 @@ public class ContentProviderImpl
   
   public boolean onCreate()
   {
-    d locald = LogUtil.timeLogBegin();
-    SharedPreferencesProxyManager.getInstance().init(getContext());
-    LogUtil.timeLogEnd("ContentProviderImpl's init", locald);
+    LogUtil.timeLogEnd("ContentProviderImpl's init", LogUtil.timeLogBegin());
     return true;
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    String str = a(paramUri, "file");
+    String str = getParam(paramUri, "file");
     paramString1 = "0";
     int i = 0;
     int j = paramArrayOfString1.length;
@@ -119,7 +118,7 @@ public class ContentProviderImpl
         if (!"5".equals(paramUri)) {
           break;
         }
-        ((j)((i)SharedPreferencesProxyManager.getInstance().a(str, 0, false)).edit()).a(false);
+        ((SharedPreferencesProxy.EditorImpl)((SharedPreferencesProxy)SharedPreferencesProxyManager.getInstance().getProxyInner(str, 0, false)).edit()).commit(false);
         return null;
       }
       i = i + 1 + 1;
@@ -141,8 +140,8 @@ public class ContentProviderImpl
           i = j + 1;
           paramUri = paramArrayOfString2;
           break;
-          paramArrayOfString2 = paramUri;
           j = i;
+          paramArrayOfString2 = paramUri;
           if ("log".equals(paramArrayOfString1[i]))
           {
             j = i + 1;
@@ -151,10 +150,8 @@ public class ContentProviderImpl
           }
         }
       }
-      if ((!TextUtils.isEmpty(paramUri)) && (!TextUtils.isEmpty(paramString1)))
-      {
-        SharedPreferencesProxyManager.getInstance();
-        SharedPreferencesProxyManager.a(str, paramUri, paramString1);
+      if ((!TextUtils.isEmpty(paramUri)) && (!TextUtils.isEmpty(paramString1))) {
+        SharedPreferencesProxyManager.getInstance().onModifySp(str, paramUri, paramString1);
       }
       return null;
     }
@@ -170,58 +167,58 @@ public class ContentProviderImpl
       {
         j += 1;
         i = j;
+        paramArrayOfString2 = paramUri;
         m = k;
-        paramArrayOfString2 = paramString1;
-        paramString2 = paramUri;
+        paramString2 = paramString1;
         if (j < n)
         {
-          paramArrayOfString2 = paramArrayOfString1[j];
-          paramString2 = paramUri;
+          paramString2 = paramArrayOfString1[j];
           m = k;
+          paramArrayOfString2 = paramUri;
           i = j;
         }
       }
       for (;;)
       {
         j = i + 1;
+        paramUri = paramArrayOfString2;
         k = m;
-        paramString1 = paramArrayOfString2;
-        paramUri = paramString2;
+        paramString1 = paramString2;
         break;
         if ("value_type".equals(paramArrayOfString1[j]))
         {
           j += 1;
           i = j;
+          paramArrayOfString2 = paramUri;
           m = k;
-          paramArrayOfString2 = paramString1;
-          paramString2 = paramUri;
+          paramString2 = paramString1;
           if (j < n)
           {
             m = Integer.parseInt(paramArrayOfString1[j]);
             i = j;
-            paramArrayOfString2 = paramString1;
-            paramString2 = paramUri;
+            paramArrayOfString2 = paramUri;
+            paramString2 = paramString1;
           }
         }
         else
         {
           i = j;
+          paramArrayOfString2 = paramUri;
           m = k;
-          paramArrayOfString2 = paramString1;
-          paramString2 = paramUri;
+          paramString2 = paramString1;
           if ("default".equals(paramArrayOfString1[j]))
           {
             j += 1;
             i = j;
+            paramArrayOfString2 = paramUri;
             m = k;
-            paramArrayOfString2 = paramString1;
-            paramString2 = paramUri;
+            paramString2 = paramString1;
             if (j < n)
             {
-              paramString2 = paramArrayOfString1[j];
+              paramArrayOfString2 = paramArrayOfString1[j];
               i = j;
               m = k;
-              paramArrayOfString2 = paramString1;
+              paramString2 = paramString1;
             }
           }
         }
@@ -230,8 +227,8 @@ public class ContentProviderImpl
     if (("NO_SUCH_KEY".equals(paramString1)) || (k == -1)) {
       return null;
     }
-    paramArrayOfString2 = new MatrixCursor(a);
-    paramString2 = SharedPreferencesProxyManager.getInstance().a(str, 0, false);
+    paramArrayOfString2 = new MatrixCursor(sMockColums);
+    paramString2 = SharedPreferencesProxyManager.getInstance().getProxyInner(str, 0, false);
     switch (k)
     {
     default: 
@@ -296,7 +293,7 @@ public class ContentProviderImpl
       return -1;
     }
     if (paramUri.equals("log")) {
-      a.a().a(paramArrayOfString);
+      AccessRecorder.getInstance().log(paramArrayOfString);
     }
     return 0;
   }

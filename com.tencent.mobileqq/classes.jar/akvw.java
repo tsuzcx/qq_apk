@@ -1,29 +1,32 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import java.util.ArrayList;
 
 class akvw
-  implements bdfn
+  extends aktq
 {
-  boolean jdField_a_of_type_Boolean = false;
-  
-  akvw(akvv paramakvv, bdfn parambdfn) {}
-  
-  public void a()
+  protected akvw(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
-    }
-    if ((this.jdField_a_of_type_Boolean) || (akvv.a(this.jdField_a_of_type_Akvv))) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (akvv.a(this.jdField_a_of_type_Akvv) != null) {
-        ThreadManager.getUIHandler().removeCallbacks(akvv.a(this.jdField_a_of_type_Akvv));
-      }
-    } while (this.jdField_a_of_type_Bdfn == null);
-    this.jdField_a_of_type_Bdfn.a();
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694346);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akvx(this));
+  }
+  
+  public boolean needShowMultiPhoto()
+  {
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
   }
 }
 

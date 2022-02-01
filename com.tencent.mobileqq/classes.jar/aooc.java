@@ -1,22 +1,12 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
-public class aooc
-  implements ArkViewImplement.LoadCallback
+public abstract interface aooc
 {
-  public aooc(QQDailyArkView paramQQDailyArkView) {}
+  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    if (paramInt != 1) {
-      QQDailyArkView.a(this.a);
-    }
-  }
+  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
 }
 
 

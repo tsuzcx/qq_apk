@@ -1,11 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PreloadWebService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import nmd;
 
 class AfterSyncMsg$3
   implements Runnable
@@ -14,18 +11,8 @@ class AfterSyncMsg$3
   
   public void run()
   {
-    QLog.e("QQInitHandler", 1, "VipInfoHandler PreloadWebService AfterSyncMsg");
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    Intent localIntent = new Intent(localBaseApplication, PreloadWebService.class);
-    try
-    {
-      localBaseApplication.startService(localIntent);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQInitHandler", 2, "PreloadWebService", localThrowable);
+    if (!nmd.a.get()) {
+      nmd.a(BaseApplicationImpl.getContext());
     }
   }
 }

@@ -1,64 +1,57 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
 
 public class awjc
-  extends QIPCModule
+  implements aasd
 {
-  public static boolean a;
-  private String a;
-  private boolean b;
+  public awjc(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString) {}
   
-  private awjc()
+  public void callback(Bundle paramBundle)
   {
-    super("MediaFocusModuleClient");
-    b();
-  }
-  
-  public static awjc a()
-  {
-    return awjf.a();
-  }
-  
-  public static void a()
-  {
-    awjc localawjc = a();
-    if (!jdField_a_of_type_Boolean)
+    if (paramBundle.getBoolean("isSuccess", false))
     {
-      QIPCClientHelper.getInstance().register(localawjc);
-      jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  private void b()
-  {
-    QIPCClientHelper.getInstance().getClient().connect(new awjd(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new awje(this));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("actionCheckItemExist".equals(paramString))
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
-      boolean bool = false;
-      if (paramString != null) {
-        bool = awjg.a().a(paramString.a(), paramString.b());
+      int i = paramBundle.getInt("appid");
+      Object localObject = paramBundle.getString("openId");
+      if ((i != this.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString))) {
+        break label178;
       }
-      localBundle.putBoolean("isItemExist", bool);
-      localBundle.putBoolean("isConnected", this.b);
-      localBundle.putParcelable("focusItem", paramString);
+      str1 = paramBundle.getString("uin");
+      bool = paramBundle.getBoolean("isFriend", false);
+      localObject = paramBundle.getString("nickName");
+      str2 = paramBundle.getString("remark");
+      if (!TextUtils.isEmpty(str1))
+      {
+        if (!bool) {
+          break label163;
+        }
+        paramBundle = new ProfileActivity.AllInOne(str1, 1);
+        paramBundle.h = ((String)localObject);
+        paramBundle.i = str2;
+        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("AllInOne", paramBundle);
+        ((Intent)localObject).addFlags(536870912);
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+      }
     }
-    return EIPCResult.createSuccessResult(localBundle);
+    label163:
+    label178:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        String str1;
+        boolean bool;
+        String str2;
+        return;
+        paramBundle = new ProfileActivity.AllInOne(str1, 105);
+      }
+    }
+    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 

@@ -1,39 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
 
 public class sxe
-  implements INetInfoHandler
 {
-  public sxe(FastWebActivity paramFastWebActivity) {}
+  private float jdField_a_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private float jdField_b_of_type_Float;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF;
   
-  public void onNetMobile2None()
+  public sxe(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
   {
-    FastWebActivity.o(this.a);
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF1;
+    this.jdField_b_of_type_AndroidGraphicsRectF = paramRectF2;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public float a()
   {
-    FastWebActivity.o(this.a);
+    return this.jdField_a_of_type_Float;
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public RectF a()
   {
-    FastWebActivity.o(this.a);
+    return this.jdField_a_of_type_AndroidGraphicsRectF;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public RectF b()
   {
-    FastWebActivity.o(this.a);
+    return this.jdField_b_of_type_AndroidGraphicsRectF;
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  @NonNull
+  public String toString()
   {
-    FastWebActivity.o(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    FastWebActivity.o(this.a);
+    return "cropRect:" + this.jdField_a_of_type_AndroidGraphicsRectF + " ,imageRect:" + this.jdField_b_of_type_AndroidGraphicsRectF + " ,scale:" + this.jdField_a_of_type_Float + " ,angle:" + this.jdField_b_of_type_Float;
   }
 }
 

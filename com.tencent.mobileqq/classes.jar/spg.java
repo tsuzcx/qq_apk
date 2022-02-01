@@ -1,33 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class spg
-  implements spc
+  implements Comparable<spg>
 {
-  public spg(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
+  public float a;
+  public int a;
+  public long a;
+  public AdvertisementInfo a;
+  public long b;
   
-  public void a()
+  public int a(spg paramspg)
   {
-    if (pgs.a(pgs.a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-      if ((this.a.c == 0) && ((!ube.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
+    if (this.jdField_a_of_type_Int < paramspg.jdField_a_of_type_Int) {
+      return -1;
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-    } while ((ube.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
-    this.a.a(4);
-    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
+    if (this.jdField_a_of_type_Int > paramspg.jdField_a_of_type_Int) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((!(paramObject instanceof spg)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (((spg)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null)) {
+      return false;
+    }
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == ((spg)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo) && (this.jdField_a_of_type_Int == ((spg)paramObject).jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    int i = 17;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.hashCode() + 527;
+    }
+    return i * 31 + this.jdField_a_of_type_Int;
   }
 }
 

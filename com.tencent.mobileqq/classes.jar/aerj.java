@@ -1,22 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity.7.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class aerj
   implements DialogInterface.OnClickListener
 {
-  aerj(aeri paramaeri) {}
+  public aerj(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getSubThreadHandler().post(new NotificationActivity.7.1.1(this));
+    bdll.b(this.a.app, "dc00898", "", "", "0X800A0D8", "0X800A0D8", 0, 0, "", "", "", "");
+    FriendProfileMoreInfoActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerj
  * JD-Core Version:    0.7.0.1
  */

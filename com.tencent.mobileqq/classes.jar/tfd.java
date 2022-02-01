@@ -1,76 +1,18 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-public abstract class tfd
-  implements ste
+public class tfd
+  implements DialogInterface.OnCancelListener
 {
-  private static final String a;
-  protected int a;
-  public aaul a;
-  protected Context a;
-  protected SlideActiveAnimController a;
-  protected tfe a;
-  protected tff a;
+  public tfd(BridgeModule paramBridgeModule, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5) {}
   
-  static
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    jdField_a_of_type_JavaLangString = tfd.class.getSimpleName();
-  }
-  
-  public tfd(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    if (this.jdField_a_of_type_Tfe != null) {
-      this.jdField_a_of_type_Tfe.a(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 11)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.reportVideoShareClick(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, -1, -1, true, this.jdField_a_of_type_Int, this.c, this.d, this.e);
     }
   }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "onPullRefreshing percent:" + paramInt + " isTopRefreshing:" + paramBoolean);
-    }
-  }
-  
-  public void a(SlideActiveAnimController paramSlideActiveAnimController)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = paramSlideActiveAnimController;
-  }
-  
-  public void a(tfe paramtfe)
-  {
-    this.jdField_a_of_type_Tfe = paramtfe;
-  }
-  
-  public void a(tff paramtff)
-  {
-    this.jdField_a_of_type_Tff = paramtff;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Tff != null) {
-      this.jdField_a_of_type_Tff.a(paramBoolean);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
 }
 
 

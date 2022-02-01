@@ -1,657 +1,727 @@
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
+@SuppressLint({"HandlerLeak"})
 public class lnx
+  extends Handler
 {
-  private static String jdField_a_of_type_JavaLangString = "hwcodec_new2";
-  private static String b = "sharp/hwcodec_new/";
-  private static String c = "sharp/hwcodec_new2/";
-  private static String d = "avc_decoder/";
-  private static String e = "avc_encoder/";
-  private static String f = "hevc_decoder/";
-  private static String g = "hevc_encoder/";
-  private static String h = "test/";
-  private static String i = "white_list/";
-  private static String j = "black_list/";
-  private static String k = "min_sdk";
-  private static String l = "min_version";
-  private static String m = "max_w";
-  private static String n = "max_h";
-  private static String o = "model";
-  private static String p = "product";
-  private static String q = "fingerprint";
-  private static String r = "sdk";
-  private static String s = "version";
-  private static String t = "codec";
-  private static String u = "disable_sdk";
-  private static String v = "async/";
-  private static String w = "min_sdk";
-  private static String x = "codec";
-  private static String y = "async_min_sdk";
-  private String A;
-  private String B;
-  private String C;
-  private String D;
-  private String E;
-  private String F;
-  private String G;
-  private String H;
-  private String I;
-  private String J;
-  private String K;
-  private String L;
-  private String M;
-  private String N;
-  private String O;
-  private String P;
-  private String Q;
-  private String R;
-  private String S;
-  private String T;
-  private String U;
-  private String V;
-  private String W;
-  private String X;
-  private String Y;
-  private String Z;
-  private int jdField_a_of_type_Int = 1;
-  private ljz jdField_a_of_type_Ljz;
-  private String aa;
-  private String ab;
-  private String ac;
-  private String ad;
-  private String ae;
-  private String af;
-  private String ag;
-  private String ah;
-  private String ai;
-  private String aj;
-  private String ak;
-  private String al;
-  private String am;
-  private String an;
-  private String ao;
-  private String ap;
-  private String aq = b;
-  private String z;
-  
-  public lnx(ljz paramljz)
+  public lnx(QQGAudioCtrl paramQQGAudioCtrl, Looper paramLooper)
   {
-    if ((paramljz != null) && (!paramljz.a()) && (paramljz.a().contains(jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Int = 2;
-    }
-    this.jdField_a_of_type_Ljz = paramljz;
-    if (this.jdField_a_of_type_Int == 2) {}
-    for (paramljz = c;; paramljz = b)
-    {
-      this.aq = paramljz;
-      QLog.i("CodecConfigParser", 1, "ver = " + this.jdField_a_of_type_Int + ", root = " + this.aq);
-      this.z = (this.aq + h + k);
-      this.A = (this.aq + h + u);
-      this.B = (this.aq + h + t);
-      this.C = (this.aq + h + y);
-      this.D = (this.aq + h + l);
-      this.E = (this.aq + d + i + k);
-      this.F = (this.aq + d + i + l);
-      this.G = (this.aq + d + j + o);
-      this.H = (this.aq + d + j + p);
-      this.I = (this.aq + d + j + q);
-      this.J = (this.aq + d + j + r);
-      this.K = (this.aq + d + j + s);
-      this.L = (this.aq + d + i + m);
-      this.M = (this.aq + d + i + n);
-      this.N = (this.aq + e + i + k);
-      this.O = (this.aq + e + i + l);
-      this.P = (this.aq + e + j + o);
-      this.Q = (this.aq + e + j + p);
-      this.R = (this.aq + e + j + q);
-      this.S = (this.aq + e + j + r);
-      this.T = (this.aq + e + j + s);
-      this.U = (this.aq + e + i + m);
-      this.V = (this.aq + e + i + n);
-      this.W = (this.aq + f + i + k);
-      this.X = (this.aq + f + i + l);
-      this.Y = (this.aq + f + j + o);
-      this.Z = (this.aq + f + j + p);
-      this.aa = (this.aq + f + j + q);
-      this.ab = (this.aq + f + j + r);
-      this.ac = (this.aq + f + j + s);
-      this.ad = (this.aq + f + i + m);
-      this.ae = (this.aq + f + i + n);
-      this.af = (this.aq + g + i + k);
-      this.ag = (this.aq + g + i + l);
-      this.ah = (this.aq + g + j + o);
-      this.ai = (this.aq + g + j + p);
-      this.aj = (this.aq + g + j + q);
-      this.ak = (this.aq + g + j + r);
-      this.al = (this.aq + g + j + s);
-      this.am = (this.aq + g + i + m);
-      this.an = (this.aq + g + i + n);
-      this.ao = (this.aq + v + w);
-      this.ap = (this.aq + v + x);
-      return;
-    }
+    super(paramLooper);
   }
   
-  public static int a(lbl paramlbl)
+  public void handleMessage(Message paramMessage)
   {
-    if (Build.VERSION.SDK_INT < 16) {}
-    while ((paramlbl == null) || (Build.VERSION.SDK_INT < paramlbl.c) || (!a(paramlbl.jdField_a_of_type_JavaLangString, null)) || (mqp.a(paramlbl.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT)))) {
-      return 0;
-    }
-    if ((paramlbl.d != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramlbl.d)) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  static boolean a(String paramString, String[] paramArrayOfString)
-  {
-    int i2 = mue.b();
-    if (mue.a(paramString) > i2) {
-      return false;
-    }
-    if ((paramArrayOfString != null) && (paramArrayOfString != null))
-    {
-      int i3 = paramArrayOfString.length;
-      int i1 = 0;
-      for (;;)
-      {
-        if (i1 >= i3) {
-          break label51;
-        }
-        if (mue.a(paramArrayOfString[i1]) == i2) {
-          break;
-        }
-        i1 += 1;
-      }
-    }
-    label51:
-    return true;
-  }
-  
-  public lnt a()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Ljz == null) {}
+    if (paramMessage == null) {}
+    int n;
+    Object localObject1;
+    long l3;
+    long l1;
+    int k;
+    int m;
+    int i2;
+    int j;
+    int i;
+    label274:
+    label576:
+    label750:
+    boolean bool;
     for (;;)
     {
-      return null;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        lnt locallnt = new lnt(4, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Ljz, this.W);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Ljz, this.X, this.ac)))
-          {
-            localObject = a(this.jdField_a_of_type_Ljz, this.ab);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Ljz, this.Y);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Ljz, this.Z);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Ljz, this.aa);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Ljz, this.ad);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallnt.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Ljz, this.ae);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallnt.c = localObject[0];
-            }
-            return locallnt;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
-    return null;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Ljz == null) {}
-    for (;;)
-    {
-      return false;
       try
       {
-        int[] arrayOfInt = a(this.jdField_a_of_type_Ljz, this.ao);
-        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
-        {
-          arrayOfInt = a(this.jdField_a_of_type_Ljz, this.ap);
-          if (arrayOfInt != null)
-          {
-            boolean bool = mqp.a(arrayOfInt, paramInt);
-            if (bool) {
-              return true;
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("QQGAudioCtrl", 2, "handleMessage-->Message is empty!");
         }
+        return;
       }
-      catch (Exception localException) {}
-    }
-    return false;
-  }
-  
-  boolean a(ljz paramljz, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Int != 2) {}
-    for (;;)
-    {
-      return true;
-      int i2 = mue.b();
-      if (mue.a(paramljz.a(paramString1, "")) > i2) {
-        return false;
-      }
-      if (paramString2 != null)
+      finally {}
+      if (this.a.mVideoController == null)
       {
-        paramljz = paramljz.a(paramString2);
-        if (paramljz != null)
-        {
-          int i3 = paramljz.length;
-          int i1 = 0;
-          while (i1 < i3)
-          {
-            if (mue.a(paramljz[i1]) == i2) {
-              return false;
-            }
-            i1 += 1;
-          }
-        }
-      }
-    }
-  }
-  
-  int[] a(ljz paramljz, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramljz.a(paramString);
-  }
-  
-  String[] a(ljz paramljz, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramljz.a(paramString);
-  }
-  
-  public lnt b()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Ljz == null) {
-      return null;
-    }
-    if (Build.VERSION.SDK_INT < 19)
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < 19.");
-      return null;
-    }
-    lnt locallnt = new lnt(8, true);
-    try
-    {
-      localObject = a(this.jdField_a_of_type_Ljz, this.af);
-      if (localObject == null)
-      {
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. minsdk == null.");
-        return null;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. err msg = " + localException.getMessage());
-      return null;
-    }
-    if (Build.VERSION.SDK_INT < localObject[0])
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < minsdk[0]. minsdk[0] = " + localObject[0]);
-      return null;
-    }
-    if (!a(this.jdField_a_of_type_Ljz, this.ag, this.al))
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. checkQQVer failed.");
-      return null;
-    }
-    Object localObject = a(this.jdField_a_of_type_Ljz, this.ak);
-    int i1;
-    if (localObject != null)
-    {
-      i1 = 0;
-      if (i1 < localObject.length)
-      {
-        if (Build.VERSION.SDK_INT != localObject[i1]) {
-          break label453;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT == disablesdk[i].");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Ljz, this.ah);
-    if (localObject != null)
-    {
-      i1 = 0;
-      label248:
-      if (i1 < localObject.length)
-      {
-        if (!Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-          break label460;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.MODEL.equalsIgnoreCase(models[i]).");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Ljz, this.ai);
-    if (localObject != null)
-    {
-      i1 = 0;
-      label300:
-      if (i1 < localObject.length)
-      {
-        if (!Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-          break label467;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(products[i]).");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Ljz, this.aj);
-    if (localObject != null) {
-      i1 = i2;
-    }
-    for (;;)
-    {
-      if (i1 < localObject.length)
-      {
-        if (Build.PRODUCT.equalsIgnoreCase(localObject[i1]))
-        {
-          QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(fingerprints[i].");
-          return null;
+        if (QLog.isColorLevel()) {
+          QLog.e("QQGAudioCtrl", 2, "handleMessage-->mVideoControl = null");
         }
       }
       else
       {
-        localObject = a(this.jdField_a_of_type_Ljz, this.am);
-        if ((localObject != null) && (localObject[0] > 0)) {
-          localException.b = localObject[0];
+        n = paramMessage.what;
+        paramMessage = (lny)paramMessage.obj;
+        if (paramMessage == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("QQGAudioCtrl", 2, "handleMessage-->NativeEventParams is null");
+          }
         }
-        localObject = a(this.jdField_a_of_type_Ljz, this.an);
-        if ((localObject != null) && (localObject[0] > 0)) {
-          localException.c = localObject[0];
+        else
+        {
+          localObject1 = paramMessage.jdField_a_of_type_ArrayOfByte;
+          l3 = paramMessage.jdField_a_of_type_Long;
+          l1 = paramMessage.jdField_b_of_type_Long;
+          k = paramMessage.jdField_a_of_type_Int;
+          int i1 = paramMessage.jdField_b_of_type_Int;
+          m = paramMessage.c;
+          i2 = paramMessage.d;
+          j = paramMessage.e;
+          if (n == 61)
+          {
+            QQGAudioCtrl.mEventCountLog_EM_SDK_EVENT_ID_VIDEO_DEC_FRAME_DATA.a();
+            break label2696;
+            if (QLog.isColorLevel()) {
+              QLog.e("QQGAudioCtrl", 2, "Wrong type of eventid=" + n);
+            }
+          }
+          else
+          {
+            if ((n == 43) || (!AudioHelper.f())) {
+              break label2696;
+            }
+            Object localObject2 = new StringBuilder().append("handleMessage, groupId[").append(l1).append("], multiAVType[").append(k).append("], multiSubType[").append(i1).append("], relationType[").append(m).append("], info[").append(l3).append("], detail[");
+            if (localObject1 == null) {
+              break label3407;
+            }
+            i = localObject1.length;
+            QLog.w("QQGAudioCtrl", 1, i + "], eventId[" + n + "], buflen[" + i2 + "], flag[" + j + "]");
+            break label2696;
+            if (localObject1 != null)
+            {
+              paramMessage = this.a.getAVInfoFromByte((byte[])localObject1, i2);
+              if (paramMessage == null)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("QQGAudioCtrl", 2, "handleMessage, fail, empty userInfo");
+                }
+              }
+              else if ((paramMessage.jdField_a_of_type_Int == 0) || ((paramMessage.jdField_a_of_type_Int == 1) && (paramMessage.jdField_b_of_type_Int == 3) && (n == 70)) || ((paramMessage.jdField_a_of_type_Int == 1) && (n == 71)))
+              {
+                this.a.mVideoController.a(paramMessage, l1, n, m, l3, new int[] { k });
+                continue;
+                if ((localObject1 != null) && (localObject1.length >= 8))
+                {
+                  paramMessage = QQGAudioCtrl.access$000(this.a, (byte[])localObject1);
+                  if (paramMessage == null)
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.e("QQGAudioCtrl", 2, "handleMessage, fail, empty uinList");
+                    }
+                  }
+                  else
+                  {
+                    if (!QLog.isColorLevel()) {
+                      break label3412;
+                    }
+                    localObject1 = new StringBuilder();
+                    j = paramMessage.length;
+                    i = 0;
+                    long l2;
+                    while (i < j)
+                    {
+                      l2 = paramMessage[i];
+                      ((StringBuilder)localObject1).append("UserUin = ");
+                      ((StringBuilder)localObject1).append(l2);
+                      ((StringBuilder)localObject1).append(", ");
+                      i += 1;
+                    }
+                    ((StringBuilder)localObject1).append("eventid = ");
+                    ((StringBuilder)localObject1).append(n);
+                    QLog.d("QQGAudioCtrl", 2, ((StringBuilder)localObject1).toString());
+                    break label3412;
+                    this.a.mVideoController.a(l1, paramMessage, n, m, l3, k, i);
+                    continue;
+                    this.a.mVideoController.d(l1, m, n);
+                    continue;
+                    if ((localObject1 != null) && (localObject1.length >= 8) && (m == 1))
+                    {
+                      l2 = this.a.getLongFromByte((byte[])localObject1);
+                      label1664:
+                      if (k != 10)
+                      {
+                        this.a.mVideoController.a((int)l3, m, l2, l1);
+                        continue;
+                        label1412:
+                        if ((localObject1 != null) && (localObject1.length >= 8))
+                        {
+                          l2 = this.a.getLongFromByte((byte[])localObject1);
+                          this.a.mVideoController.a(l1, l2, m, (int)l3);
+                          continue;
+                          for (;;)
+                          {
+                            this.a.mVideoController.a(l1, l3, paramMessage);
+                            if (i == 0) {
+                              break;
+                            }
+                            this.a.mVideoController.b(m, l1, i, k);
+                            break;
+                            label776:
+                            paramMessage = new String((byte[])localObject1);
+                          }
+                          label959:
+                          if ((paramMessage.jdField_a_of_type_ArrayOfByte != null) && (paramMessage.jdField_a_of_type_ArrayOfByte.length >= 16))
+                          {
+                            paramMessage = this.a.getAVInfoFromByte(paramMessage.jdField_a_of_type_ArrayOfByte, paramMessage.jdField_a_of_type_ArrayOfByte.length);
+                            if (n != 140) {
+                              break label3610;
+                            }
+                            bool = true;
+                            label834:
+                            if (paramMessage != null)
+                            {
+                              if (QLog.isColorLevel()) {
+                                QLog.w("QQGAudioCtrl", 1, "MemberAudioChange, uin[" + paramMessage.jdField_a_of_type_Long + "], accountType[" + paramMessage.jdField_a_of_type_Int + "], isMicOff[" + bool + "]");
+                              }
+                              this.a.mVideoController.a(paramMessage.jdField_a_of_type_Long, paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Int, bool);
+                              continue;
+                              l2 = 0L;
+                              l1 = l2;
+                              if (paramMessage.jdField_a_of_type_ArrayOfByte == null) {
+                                break label3616;
+                              }
+                              if (paramMessage.jdField_a_of_type_ArrayOfByte.length != 8)
+                              {
+                                l1 = l2;
+                                break label3616;
+                                this.a.mVideoController.a(l1, bool, false);
+                              }
+                              else
+                              {
+                                l1 = this.a.getLongFromByte(paramMessage.jdField_a_of_type_ArrayOfByte);
+                                break label3616;
+                                i = (int)l3;
+                                if (paramMessage.jdField_a_of_type_ArrayOfByte == null) {
+                                  break;
+                                }
+                                if (paramMessage.jdField_a_of_type_ArrayOfByte.length != 8) {}
+                                for (l1 = 0L;; l1 = this.a.getLongFromByte(paramMessage.jdField_a_of_type_ArrayOfByte))
+                                {
+                                  label1019:
+                                  if (QLog.isColorLevel()) {
+                                    QLog.e("QQGAudioCtrl", 2, "SetMicByAdmin : uin = " + l1 + ", micAuthByAdmin = " + i);
+                                  }
+                                  this.a.mVideoController.a(l1, i);
+                                  break;
+                                }
+                                j = (int)l3;
+                                if ((paramMessage.jdField_a_of_type_ArrayOfByte != null) && (j != 0))
+                                {
+                                  localObject2 = this.a;
+                                  byte[] arrayOfByte = paramMessage.jdField_a_of_type_ArrayOfByte;
+                                  if (paramMessage.jdField_a_of_type_ArrayOfByte == null) {
+                                    break label3635;
+                                  }
+                                  i = localObject1.length / j;
+                                  label1134:
+                                  paramMessage = QQGAudioCtrl.access$100((QQGAudioCtrl)localObject2, arrayOfByte, i);
+                                  if ((paramMessage != null) && (paramMessage.size() == j))
+                                  {
+                                    this.a.mVideoController.a(j, paramMessage);
+                                    continue;
+                                    if ((paramMessage.jdField_a_of_type_ArrayOfByte != null) && (paramMessage.jdField_a_of_type_ArrayOfByte.length == 16))
+                                    {
+                                      l1 = this.a.getLongFromByte(paramMessage.jdField_a_of_type_ArrayOfByte);
+                                      localObject1 = new byte[4];
+                                      System.arraycopy(paramMessage.jdField_a_of_type_ArrayOfByte, 12, localObject1, 0, 4);
+                                      i = QQGAudioCtrl.access$200(this.a, (byte[])localObject1);
+                                      if (l3 != 1L) {
+                                        break label3640;
+                                      }
+                                      bool = true;
+                                      label1240:
+                                      if (QLog.isColorLevel()) {
+                                        QLog.e("QQGAudioCtrl", 2, "onGAudioUserAudioSuspectNoisy : uin = " + l1 + ", isSuspectNoisy = " + bool + ",validDuration = " + i);
+                                      }
+                                      this.a.mVideoController.a(l1, bool, i);
+                                      continue;
+                                      this.a.mVideoController.e(m, l1, k);
+                                      this.a.processMicAuthAfterEnterRoom(paramMessage.jdField_a_of_type_ArrayOfByte);
+                                      if (mrn.a())
+                                      {
+                                        mrn.a().a(null, this.a);
+                                        continue;
+                                        paramMessage = QQGAudioCtrl.access$000(this.a, (byte[])localObject1);
+                                        if (m == 2) {
+                                          break label3646;
+                                        }
+                                        if (m == 1)
+                                        {
+                                          break label3646;
+                                          for (;;)
+                                          {
+                                            label1387:
+                                            this.a.onRecvUserList(6, m, l1, paramMessage, l3, k, i1, i, j);
+                                            break;
+                                            i = paramMessage.length;
+                                          }
+                                        }
+                                        if (m == 3)
+                                        {
+                                          this.a.onRecvDoubleVideoMeeting(n, m, l3, k, i1);
+                                          continue;
+                                          this.a.mVideoController.a(m, l1, new int[] { k });
+                                          continue;
+                                          this.a.mVideoController.b(m, l1);
+                                          continue;
+                                          this.a.mVideoController.a(m, l1, 17, (int)paramMessage.jdField_a_of_type_Long);
+                                          continue;
+                                          this.a.mVideoController.a(m, l1, 16, (int)paramMessage.jdField_a_of_type_Long);
+                                          continue;
+                                          this.a.mVideoController.a(m, l1, 15, (int)paramMessage.jdField_a_of_type_Long);
+                                          continue;
+                                          paramMessage = QQGAudioCtrl.access$000(this.a, (byte[])localObject1);
+                                          if (paramMessage == null) {}
+                                          for (i = 0;; i = paramMessage.length)
+                                          {
+                                            this.a.onRecvUserList(44, m, l1, paramMessage, 0L, k, 0, i, j);
+                                            break;
+                                          }
+                                          this.a.mVideoController.c(l1, m, k);
+                                          continue;
+                                          j = (int)l3;
+                                          if (j >= 0)
+                                          {
+                                            paramMessage = null;
+                                            if (j > 0)
+                                            {
+                                              paramMessage = this.a;
+                                              if (localObject1 == null) {
+                                                break label3655;
+                                              }
+                                              i = localObject1.length / j;
+                                              paramMessage = QQGAudioCtrl.access$100(paramMessage, (byte[])localObject1, i);
+                                            }
+                                            if (paramMessage != null) {
+                                              this.a.onRecvUserList(44, m, l1, paramMessage, 0L, 0, k, j);
+                                            } else {
+                                              this.a.onRecvUserListFail(m, l1, -99L);
+                                            }
+                                          }
+                                          else
+                                          {
+                                            this.a.onRecvUserListFail(m, l1, j);
+                                            continue;
+                                            this.a.mVideoController.e(l1, m, k);
+                                            this.a.processMicAuthAfterEnterRoom(paramMessage.jdField_a_of_type_ArrayOfByte);
+                                            if (mrn.a())
+                                            {
+                                              mrn.a().a(null, this.a);
+                                              continue;
+                                              if (QLog.isColorLevel()) {
+                                                QLog.d("QQGAudioCtrl", 2, "EM_SDK_EVENT_ID_VIDEO_DEC_FRAME_DATA-->Uin=" + l3 + " ,VideoSrcType=" + m);
+                                              }
+                                              this.a.mVideoController.b(61, l3, m);
+                                              continue;
+                                              this.a.mVideoController.a(n, l3, l1, m);
+                                              continue;
+                                              this.a.mVideoController.b(n, l3, l1, m);
+                                              continue;
+                                              this.a.mVideoController.a(84, (int)l3, m, l1, k, i1);
+                                              continue;
+                                              this.a.mVideoController.a(85, (int)l3, m, l1, k, i1);
+                                              continue;
+                                              this.a.mVideoController.a(86, (int)l3, m, l1, k, i1);
+                                              continue;
+                                              this.a.mVideoController.a(87, (int)l3, m, l1, k, i1);
+                                              continue;
+                                              this.a.mVideoController.a(88, (int)l3, m, l1, k, i1);
+                                              continue;
+                                              this.a.mVideoController.a(89, (int)l3, m, l1, k, i1);
+                                              continue;
+                                              this.a.mVideoController.c(n, l3, l1, m);
+                                              continue;
+                                              this.a.mVideoController.h(3);
+                                              continue;
+                                              this.a.mVideoController.h(4);
+                                              continue;
+                                              i = (int)paramMessage.jdField_a_of_type_Long;
+                                              BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD").putExtra("version", i));
+                                              lwd.a().a("load", i);
+                                              continue;
+                                              if (l3 != 0L) {
+                                                break label3660;
+                                              }
+                                              localObject1 = lms.a((byte[])localObject1, i2);
+                                              this.a.mVideoController.c((ArrayList)localObject1);
+                                              if (((k == 10) || (k == 1)) && (localObject1 != null))
+                                              {
+                                                l2 = this.a.mVideoController.a(m, k, l1);
+                                                paramMessage = new ArrayList(((ArrayList)localObject1).size());
+                                                l3 = AudioHelper.a() / 1000L;
+                                                localObject1 = ((ArrayList)localObject1).iterator();
+                                                while (((Iterator)localObject1).hasNext()) {
+                                                  paramMessage.add(new lnv(((lms)((Iterator)localObject1).next()).jdField_a_of_type_Long, l3));
+                                                }
+                                                this.a.mVideoController.a(l1, l2, paramMessage);
+                                                if (QLog.isColorLevel()) {
+                                                  QLog.i("QQGAudioCtrl", 2, "EM_SDK_EVENT_ID_PBInvite_Rsp = MULTIAV_GROUP_AUDIO saveInviteMembers");
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-        return localException;
-        label453:
-        i1 += 1;
+      }
+    }
+    for (;;)
+    {
+      this.a.mVideoController.b(l1, l3, paramMessage);
+      break;
+      label2349:
+      paramMessage = new String((byte[])localObject1);
+    }
+    for (;;)
+    {
+      label2362:
+      this.a.mVideoController.a(l1, m, k, (int)l3, paramMessage);
+      break;
+      label2387:
+      paramMessage = new String((byte[])localObject1);
+    }
+    for (;;)
+    {
+      label2400:
+      this.a.mVideoController.b(l1, m, k, (int)l3, paramMessage);
+      break;
+      label2696:
+      label3407:
+      label3412:
+      do
+      {
+        paramMessage = new String((byte[])localObject1);
+        break label2400;
+        this.a.mVideoController.y();
         break;
-        label460:
-        i1 += 1;
-        break label248;
-        label467:
-        i1 += 1;
-        break label300;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public lnt c()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Ljz == null) {}
-    for (;;)
-    {
-      return null;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        lnt locallnt = new lnt(1, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Ljz, this.E);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Ljz, this.F, this.K)))
-          {
-            localObject = a(this.jdField_a_of_type_Ljz, this.J);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Ljz, this.G);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Ljz, this.H);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Ljz, this.I);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Ljz, this.L);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallnt.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Ljz, this.M);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallnt.c = localObject[0];
-            }
-            return locallnt;
-          }
+        this.a.mVideoController.z();
+        break;
+        if (localObject1 == null) {
+          break;
         }
-        catch (Exception localException) {}
-      }
-    }
-    return null;
-  }
-  
-  public lnt d()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Ljz == null) {}
-    for (;;)
-    {
-      return null;
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        lnt locallnt = new lnt(2, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Ljz, this.N);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Ljz, this.O, this.T)))
-          {
-            localObject = a(this.jdField_a_of_type_Ljz, this.S);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Ljz, this.P);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Ljz, this.Q);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Ljz, this.R);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Ljz, this.U);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallnt.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Ljz, this.V);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallnt.c = localObject[0];
-            }
-            return locallnt;
-          }
+        this.a.mVideoController.e(this.a.getLongFromByte((byte[])localObject1));
+        break;
+        if (l3 == 0L) {
+          break;
         }
-        catch (Exception localException) {}
-      }
+        i = (int)l3;
+        this.a.mVideoController.f(i);
+        break;
+        if (localObject1 == null) {
+          break;
+        }
+        this.a.mVideoController.f((byte[])localObject1);
+        break;
+        paramMessage = QQGAudioCtrl.access$300(this.a, (byte[])localObject1, i2);
+        if (paramMessage == null) {
+          break;
+        }
+        this.a.mVideoController.b(l1, paramMessage);
+        break;
+        bdll.b(null, "CliOper", "", "", "0X800A7A6", "0X800A7A6", 0, (int)l3, "", "", "", "");
+        break;
+        bdll.b(null, "CliOper", "", "", "0X800A7A7", "0X800A7A7", 0, (int)l3, "", "", "", "");
+        break;
+        this.a.mVideoController.f(l3);
+        break;
+        QQGAudioCtrl.access$400(this.a, m, l1, l3, j);
+        break;
+        l1 = 0L;
+        break label1019;
+        switch (n)
+        {
+        case 7: 
+        case 13: 
+        case 36: 
+        case 37: 
+        case 38: 
+        case 9: 
+        case 10: 
+        case 14: 
+        case 15: 
+        case 16: 
+        case 17: 
+        case 18: 
+        case 19: 
+        case 23: 
+        case 24: 
+        case 25: 
+        case 26: 
+        case 27: 
+        case 28: 
+        case 29: 
+        case 40: 
+        case 41: 
+        case 46: 
+        case 47: 
+        case 48: 
+        case 49: 
+        case 50: 
+        case 51: 
+        case 52: 
+        case 53: 
+        case 54: 
+        case 55: 
+        case 56: 
+        case 57: 
+        case 58: 
+        case 59: 
+        case 60: 
+        case 62: 
+        case 63: 
+        case 64: 
+        case 65: 
+        case 66: 
+        case 67: 
+        case 68: 
+        case 69: 
+        case 81: 
+        case 82: 
+        case 83: 
+        case 99: 
+        case 100: 
+        case 105: 
+        case 106: 
+        case 111: 
+        case 112: 
+        case 113: 
+        case 114: 
+        case 115: 
+        case 116: 
+        case 117: 
+        case 118: 
+        case 119: 
+        case 120: 
+        case 124: 
+        case 125: 
+        case 126: 
+        case 127: 
+        case 128: 
+        case 129: 
+        case 130: 
+        case 131: 
+        case 132: 
+        case 133: 
+        case 134: 
+        case 135: 
+        case 136: 
+        case 137: 
+        case 146: 
+        case 147: 
+        case 148: 
+        case 149: 
+        case 150: 
+        case 151: 
+        case 152: 
+        case 154: 
+        case 155: 
+        case 156: 
+        case 159: 
+        case 160: 
+        case 161: 
+        case 162: 
+        case 163: 
+        case 164: 
+        case 165: 
+        case 166: 
+        case 167: 
+        case 168: 
+        case 169: 
+        case 170: 
+        case 173: 
+        case 70: 
+        case 71: 
+        case 42: 
+        case 43: 
+        case 72: 
+        case 73: 
+        case 74: 
+        case 75: 
+        case 76: 
+        case 77: 
+        case 78: 
+        case 79: 
+        case 101: 
+        case 102: 
+        case 103: 
+        case 104: 
+        case 107: 
+        case 108: 
+        case 109: 
+        case 110: 
+        case 140: 
+        case 141: 
+        case 142: 
+        case 143: 
+        case 144: 
+        case 145: 
+        case 30: 
+        case 5: 
+        case 6: 
+        case 12: 
+        case 11: 
+        case 31: 
+        case 32: 
+        case 34: 
+        case 35: 
+        case 39: 
+        case 44: 
+        case 45: 
+        case 8: 
+        case 33: 
+        case 61: 
+        case 90: 
+        case 91: 
+        case 92: 
+        case 93: 
+        case 94: 
+        case 95: 
+        case 84: 
+        case 85: 
+        case 86: 
+        case 87: 
+        case 88: 
+        case 89: 
+        case 96: 
+        case 97: 
+        case 98: 
+        case 121: 
+        case 122: 
+        case 123: 
+        case 20: 
+        case 153: 
+        case 158: 
+        case 157: 
+        case 171: 
+        case 172: 
+        case 80: 
+        case 174: 
+        case 175: 
+        case 176: 
+        case 177: 
+        default: 
+          break;
+          i = -1;
+          break label274;
+          i = 0;
+          if (n != 42) {
+            break label576;
+          }
+          j = (int)l3;
+          if (j > 100)
+          {
+            i = 100;
+            break label576;
+          }
+          i = j;
+          if (j >= 0) {
+            break label576;
+          }
+          i = 0;
+          break;
+        case 138: 
+        case 139: 
+          i = 0;
+          switch ((int)l3)
+          {
+          default: 
+            if ((l3 > 200L) && (l3 < 300L))
+            {
+              if (localObject1 != null) {
+                break label776;
+              }
+              paramMessage = "";
+            }
+            break;
+          case 8: 
+            if (m != 1) {
+              break label750;
+            }
+            i = 1;
+            break;
+          case 7: 
+            i = 2;
+            break;
+          case 32: 
+            i = 7;
+            break;
+          case 35: 
+            i = 35;
+            break;
+          case 42: 
+            i = 42;
+            break;
+          case 43: 
+            i = 43;
+            break;
+          case 3: 
+          case 15: 
+            i = 3;
+            break label750;
+            i = (int)l3;
+            break label750;
+            bool = false;
+            break label834;
+            if (l3 == 0L)
+            {
+              bool = false;
+              break label959;
+            }
+            bool = true;
+            break label959;
+            i = 0;
+            break label1134;
+            bool = false;
+            break label1240;
+            if (paramMessage != null) {
+              break label1412;
+            }
+            i = 0;
+            break label1387;
+            i = 0;
+            break label1664;
+            if (localObject1 != null) {
+              break label2349;
+            }
+            paramMessage = "";
+          }
+          break;
+        case 21: 
+          if (localObject1 != null) {
+            break label2387;
+          }
+          paramMessage = "";
+          break label2362;
+        }
+      } while (localObject1 != null);
+      label3610:
+      label3616:
+      label3635:
+      label3640:
+      label3646:
+      label3655:
+      label3660:
+      paramMessage = "";
     }
-    return null;
   }
 }
 

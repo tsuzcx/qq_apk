@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aoxw
-  implements Parcelable.Creator<ArEffectConfig>
+public class aoxw
+  extends aoxh
 {
-  public ArEffectConfig a(Parcel paramParcel)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    return new ArEffectConfig(paramParcel);
-  }
-  
-  public ArEffectConfig[] a(int paramInt)
-  {
-    return new ArEffectConfig[paramInt];
+    paramQQAppInterface = new aoxv(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qwerewolf";
+    paramQQAppInterface.c = "enterHomePage";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

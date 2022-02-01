@@ -1,82 +1,109 @@
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.os.SystemClock;
+import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bgvk
+public class bgvk
+  implements bgyh
 {
-  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
+  private long jdField_a_of_type_Long;
+  private UsingTimeReportManager jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  public String b;
+  private boolean jdField_b_of_type_Boolean;
+  public String c;
+  
+  public bgvk(String paramString1, String paramString2, String paramString3)
   {
-    paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
-    paramString.setAccessible(true);
-    return paramString.invoke(paramObject, paramArrayOfObject);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
   }
   
-  public static Object a(Object paramObject, String paramString, Object[] paramArrayOfObject)
+  private void f()
   {
-    return a(paramObject, paramString, a(paramArrayOfObject), paramArrayOfObject);
-  }
-  
-  public static Object a(String paramString1, Object paramObject, String paramString2)
-  {
-    paramString1 = Class.forName(paramString1).getDeclaredField(paramString2);
-    paramString1.setAccessible(true);
-    return paramString1.get(paramObject);
-  }
-  
-  public static Object a(String paramString1, String paramString2)
-  {
-    return a(paramString1, paramString2, (Object[])null);
-  }
-  
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject)
-  {
-    return a(paramString1, paramString2, paramArrayOfObject, a(paramArrayOfObject));
-  }
-  
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
-  {
-    paramString1 = Class.forName(paramString1);
-    return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
-  }
-  
-  private static Class<?>[] a(Object[] paramArrayOfObject)
-  {
-    Object localObject = (Class[])null;
-    if (paramArrayOfObject != null)
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
     {
-      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
-      int i = 0;
-      int j = paramArrayOfObject.length;
-      localObject = arrayOfClass;
-      if (i < j)
-      {
-        if (paramArrayOfObject[i] != null)
-        {
-          arrayOfClass[i] = paramArrayOfObject[i].getClass();
-          label45:
-          if (arrayOfClass[i] != Integer.class) {
-            break label77;
-          }
-          arrayOfClass[i] = Integer.TYPE;
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          arrayOfClass[i] = String.class;
-          break label45;
-          label77:
-          if (arrayOfClass[i] == Boolean.class) {
-            arrayOfClass[i] = Boolean.TYPE;
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.a(this);
+      this.jdField_b_of_type_Boolean = true;
     }
-    return localObject;
+  }
+  
+  private void g()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.b(this);
+      this.jdField_b_of_type_Boolean = false;
+    }
+  }
+  
+  private void h()
+  {
+    if (!this.jdField_b_of_type_Boolean) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.i("BaseUsingTimeReport", 2, "stop,usingTime=" + l);
+    }
+    if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
+      a(l);
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public UsingTimeReportManager a()
+  {
+    return null;
+  }
+  
+  public void a()
+  {
+    f();
+    if (!this.jdField_b_of_type_Boolean) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_Boolean = true;
+    } while (!QLog.isColorLevel());
+    QLog.i("BaseUsingTimeReport", 2, "start(), mStartTime=" + this.jdField_a_of_type_Long);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void b()
+  {
+    h();
+    g();
+  }
+  
+  public void c()
+  {
+    h();
+  }
+  
+  public void d()
+  {
+    a();
+  }
+  
+  public void e()
+  {
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgvk
  * JD-Core Version:    0.7.0.1
  */

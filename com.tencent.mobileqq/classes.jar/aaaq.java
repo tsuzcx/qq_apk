@@ -1,16 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
+import java.io.InputStream;
 
 public class aaaq
-  extends AnimatorListenerAdapter
 {
-  public aaaq(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public aaaq(aaap paramaaap) {}
+  
+  public InputStream a()
   {
-    this.a.clearAnimation();
-    this.a.setVisibility(8);
+    return this.jdField_a_of_type_JavaIoInputStream;
+  }
+  
+  public void a(DiskLruCache.Snapshot paramSnapshot)
+  {
+    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
+  }
+  
+  public void a(InputStream paramInputStream)
+  {
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
   }
 }
 

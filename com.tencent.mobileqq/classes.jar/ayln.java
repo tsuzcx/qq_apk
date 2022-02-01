@@ -1,23 +1,12 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-
 class ayln
-  implements OnCompositionLoadedListener
+  implements axvz
 {
-  ayln(aylm paramaylm, String paramString, int paramInt1, int paramInt2) {}
+  ayln(aykx paramaykx) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void a(String paramString, boolean paramBoolean)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setImageAssetDelegate(new aylo(this));
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    aylm.a(this.jdField_a_of_type_Aylm).setImageDrawable(localLottieDrawable);
-    aylm.a(this.jdField_a_of_type_Aylm, localLottieDrawable);
+    this.a.c(paramBoolean);
+    this.a.t = paramBoolean;
   }
 }
 

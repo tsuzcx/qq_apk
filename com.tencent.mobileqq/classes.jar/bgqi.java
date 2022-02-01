@@ -1,46 +1,13 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bgqi
-  implements View.OnClickListener
+public class bgqi
 {
-  bgqi(bgqg parambgqg, int paramInt, QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
   {
-    long l2 = System.currentTimeMillis();
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Long)) {}
-    for (long l1 = ((Long)localObject).longValue();; l1 = 0L)
-    {
-      if (l2 - l1 < 300L)
-      {
-        QLog.i("QQCustomDialogWithForwardAvatar", 2, "click in 300ms clickTime: " + l1 + " newTime :" + l2);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
-      paramView.setTag(Long.valueOf(l2));
-      if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000)) {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE8", "0X8009BE8", 0, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Bgqg.hideSoftInputFromWindow();
-        MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 0.86F, this.jdField_a_of_type_Bgqg.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
-        break;
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE6", "0X8009BE6", 0, 0, "", "", "", "");
-      }
-    }
+    new bdlq(null).a("dc00899").b("Grp_tribe").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqi
  * JD-Core Version:    0.7.0.1
  */

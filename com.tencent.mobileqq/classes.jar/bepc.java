@@ -1,18 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
 class bepc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bepm<UserState>
 {
-  bepc(bepb parambepb, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bepc(beoy parambeoy, UserState paramUserState, List paramList)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    super.a(paramUserState);
+    beoy.a(this.jdField_a_of_type_Beoy).b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

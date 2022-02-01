@@ -1,21 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class awak
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  awak(awai paramawai) {}
+  awak(awaj paramawaj) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a.a()) {}
-    for (;;)
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    if (awaj.a(this.a)) {
+      awaj.a(this.a, j);
+    }
+    if (paramContext.equals(awax.a(awaj.a(this.a))))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      avzs.a(this.a.a, null);
-      bcst.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
+      paramContext = (awal)awaj.a(this.a).get();
+      if (paramContext != null) {
+        paramContext.a(j, paramIntent.getExtras());
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
+        }
+        paramContext = awaj.jdField_a_of_type_ArrayOfInt;
+        int k = paramContext.length;
+        int i = 0;
+        while (i < k)
+        {
+          if ((j == paramContext[i]) && (awaj.b(this.a)))
+          {
+            awaj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+            awaj.a(this.a, false);
+          }
+          i += 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
+        }
+      }
+      if ((awaj.c(this.a)) && (j == 4))
+      {
+        awaj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        awaj.a(this.a, false);
+      }
     }
   }
 }

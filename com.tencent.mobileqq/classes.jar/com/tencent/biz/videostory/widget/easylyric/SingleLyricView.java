@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.widget.easylyric;
 
-import aaxs;
-import aaxt;
-import aaxw;
-import aaxy;
-import aaya;
-import aayb;
-import aayc;
-import aayd;
-import aaye;
-import aayf;
-import aayg;
+import abbv;
+import abbw;
+import abbz;
+import abcb;
+import abcd;
+import abce;
+import abcf;
+import abcg;
+import abch;
+import abci;
+import abcj;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -27,25 +27,25 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awdu;
-import awdw;
+import awwm;
+import awwo;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class SingleLyricView
   extends RelativeLayout
-  implements aaxs
+  implements abbv
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private final aaxt jdField_a_of_type_Aaxt;
-  private final aaxy jdField_a_of_type_Aaxy;
+  private final abbw jdField_a_of_type_Abbw;
+  private final abcb jdField_a_of_type_Abcb;
   private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private volatile awdu jdField_a_of_type_Awdu;
-  private awdw jdField_a_of_type_Awdw;
+  private volatile awwm jdField_a_of_type_Awwm;
+  private awwo jdField_a_of_type_Awwo;
   private final String jdField_a_of_type_JavaLangString = "SingleLyricView";
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -66,12 +66,12 @@ public class SingleLyricView
   public SingleLyricView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131563050, this, true);
+    LayoutInflater.from(paramContext).inflate(2131563085, this, true);
     a(paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377609));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377763));
     if (this.jdField_b_of_type_Int == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377610));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377764));
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       }
@@ -81,11 +81,11 @@ public class SingleLyricView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aaxt = new aaxt();
-      this.jdField_a_of_type_Aaxy = new aaya(this);
+      this.jdField_a_of_type_Abbw = new abbw();
+      this.jdField_a_of_type_Abcb = new abcd(this);
       this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378011));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378166));
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       }
@@ -118,14 +118,14 @@ public class SingleLyricView
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.3F });
     localValueAnimator.setDuration(500L);
     localValueAnimator.setInterpolator(new AccelerateInterpolator());
-    localValueAnimator.addUpdateListener(new aayb(this));
-    localValueAnimator.addListener(new aayc(this, paramString));
+    localValueAnimator.addUpdateListener(new abce(this));
+    localValueAnimator.addListener(new abcf(this, paramString));
     paramString = ValueAnimator.ofFloat(new float[] { 0.3F, 1.0F });
     paramString.setDuration(500L);
-    paramString.addUpdateListener(new aayd(this));
-    paramString.addListener(new aaye(this));
+    paramString.addUpdateListener(new abcg(this));
+    paramString.addListener(new abch(this));
     paramString.setInterpolator(new DecelerateInterpolator());
-    paramString.addListener(new aayf(this));
+    paramString.addListener(new abci(this));
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { localValueAnimator, paramString });
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
@@ -134,7 +134,7 @@ public class SingleLyricView
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Awdu = null;
+    this.jdField_a_of_type_Awwm = null;
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
@@ -150,15 +150,15 @@ public class SingleLyricView
   public void a(long paramLong)
   {
     int j = 1;
-    if (this.jdField_a_of_type_Awdu == null) {}
+    if (this.jdField_a_of_type_Awwm == null) {}
     label100:
     label106:
     do
     {
       return;
-      awdw localawdw = aaxw.a().a(this.jdField_a_of_type_Awdu, this.jdField_a_of_type_Long + paramLong);
+      awwo localawwo = abbz.a().a(this.jdField_a_of_type_Awwm, this.jdField_a_of_type_Long + paramLong);
       int i;
-      if (this.jdField_a_of_type_Awdw != localawdw)
+      if (this.jdField_a_of_type_Awwo != localawwo)
       {
         i = 1;
         if ((!this.jdField_a_of_type_Boolean) || (paramLong >= this.jdField_b_of_type_Long)) {
@@ -167,12 +167,12 @@ public class SingleLyricView
       }
       for (;;)
       {
-        if ((localawdw == null) || (i == 0) || (j != 0)) {
+        if ((localawwo == null) || (i == 0) || (j != 0)) {
           break label106;
         }
-        this.jdField_a_of_type_Awdw = localawdw;
-        a(localawdw.jdField_a_of_type_JavaLangString);
-        this.c = localawdw.jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_Awwo = localawwo;
+        a(localawwo.jdField_a_of_type_JavaLangString);
+        this.c = localawwo.jdField_a_of_type_JavaLangString;
         return;
         i = 0;
         break;
@@ -181,21 +181,21 @@ public class SingleLyricView
     } while ((j == 0) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaLangString.equals(this.c)) || (this.jdField_a_of_type_AndroidWidgetTextView == null));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
     this.c = this.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Awdw = null;
+    this.jdField_a_of_type_Awwo = null;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_Aaxt.a(this);
-    aayg.a().a(this.jdField_a_of_type_Aaxy);
+    this.jdField_a_of_type_Abbw.a(this);
+    abcj.a().a(this.jdField_a_of_type_Abcb);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    aayg.a().b(this.jdField_a_of_type_Aaxy);
-    this.jdField_a_of_type_Aaxt.a();
+    abcj.a().b(this.jdField_a_of_type_Abcb);
+    this.jdField_a_of_type_Abbw.a();
     if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
     }
@@ -204,7 +204,7 @@ public class SingleLyricView
   
   public void setData(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Awdu = null;
+    this.jdField_a_of_type_Awwm = null;
     this.jdField_a_of_type_AndroidOsHandler.post(new SingleLyricView.7(this, paramString1, paramString2));
     this.jdField_a_of_type_Long = 0L;
   }

@@ -1,20 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
-
 public class aulz
-  extends BroadcastReceiver
 {
-  public aulz(HotChatFragment paramHotChatFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
-      this.a.a.refresh();
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public byte[] c;
+  public long d;
+  public byte[] d;
 }
 
 

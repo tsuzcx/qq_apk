@@ -1,55 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class pip
-  implements AladdinConfigHandler
+class pip
+  implements View.OnClickListener
 {
-  private static long a(String paramString, long paramLong)
+  pip(pin parampin, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  
+  public void onClick(View paramView)
   {
+    ReadInJoyPicWaterFallFragment.a(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment).a(paramView, this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pin.a());
+    JSONObject localJSONObject = oxw.a(this.jdField_a_of_type_Pin.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Pin.a(), (ArticleInfo)this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
     try
     {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
-    }
-    return paramLong;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("switch", str1)) {
-        bmqa.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      } else if (TextUtils.equals("preload_interval", str1)) {
-        bmqa.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
-      } else if (TextUtils.equals("last_enter_kandian", str1)) {
-        bmqa.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
-      } else if (TextUtils.equals("preload_time_limit", str1)) {
-        bmqa.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
-      } else if (TextUtils.equals("loading_time", str1)) {
-        bmqa.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
+      localJSONObject.put("card_type", 8);
+      oxy localoxy = new oxy(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      localoxy.e = String.valueOf(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+      localoxy.f = String.valueOf(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+      localoxy.g = localJSONObject.toString();
+      if (this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localoxy.a = String.valueOf(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
       }
+      localoxy.b = "0X8009A78";
+      localoxy.c = "0X8009A78";
+      oxw.a(localoxy);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("channel_id", this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a());
+      localJSONObject.put("folder_status", ozs.d);
+      localJSONObject.put("kandian_mode", ozs.e());
+      localJSONObject.put("feeds_type", "1008");
+      localJSONObject.put("rowkey", ubg.a(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
+      ocd.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", localJSONObject.toString(), false);
     }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bmqa.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
+    catch (Exception localException)
+    {
+      label296:
+      break label296;
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

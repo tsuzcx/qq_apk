@@ -1,11 +1,22 @@
-import java.util.Comparator;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
 
-final class akqx
-  implements Comparator<akqw>
+public class akqx
+  implements bljm
 {
-  public int a(akqw paramakqw1, akqw paramakqw2)
+  public akqx(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return paramakqw1.a - paramakqw2.a;
+    if (QzonePhotoPreviewActivity.a(this.a))
+    {
+      this.a.getActivity().finish();
+      bhkd.anim(this.a.getActivity(), true, false);
+      return;
+    }
+    this.a.a();
   }
 }
 

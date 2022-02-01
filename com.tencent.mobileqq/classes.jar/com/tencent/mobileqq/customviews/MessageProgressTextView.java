@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.customviews;
 
-import agor;
+import agxx;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import ardv;
-import bdsx;
+import artk;
+import berp;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageProgressTextView
   extends TextView
 {
-  private ardv jdField_a_of_type_Ardv;
-  private bdsx jdField_a_of_type_Bdsx;
+  private artk jdField_a_of_type_Artk;
+  private berp jdField_a_of_type_Berp;
   MessageProgressTextView.RefreshProgressRunnable jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable;
   private boolean jdField_a_of_type_Boolean = true;
   public boolean b;
@@ -42,7 +42,7 @@ public class MessageProgressTextView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bdsx == null) {}
+    if (this.jdField_a_of_type_Berp == null) {}
     label222:
     do
     {
@@ -50,22 +50,22 @@ public class MessageProgressTextView
       do
       {
         return;
-        if ((this.jdField_a_of_type_Bdsx.e() < 100) && (paramInt1 >= 100)) {
+        if ((this.jdField_a_of_type_Berp.e() < 100) && (paramInt1 >= 100)) {
           i = 100;
         }
         do
         {
-          this.jdField_a_of_type_Bdsx.a(i);
-          paramInt1 = Math.max(this.jdField_a_of_type_Bdsx.g(), 0);
+          this.jdField_a_of_type_Berp.a(i);
+          paramInt1 = Math.max(this.jdField_a_of_type_Berp.g(), 0);
           long l = 25L;
-          if (this.jdField_a_of_type_Bdsx.g() < 0) {
+          if (this.jdField_a_of_type_Berp.g() < 0) {
             l = 1000L;
           }
-          if (this.jdField_a_of_type_Bdsx.e() > paramInt1) {
+          if (this.jdField_a_of_type_Berp.e() > paramInt1) {
             break label222;
           }
           if (QLog.isColorLevel()) {
-            QLog.d("ProgressTextView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Bdsx.b() + " processor " + this.jdField_a_of_type_Bdsx);
+            QLog.d("ProgressTextView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Berp.b() + " processor " + this.jdField_a_of_type_Berp);
           }
           setProgress(i);
           if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable != null) {
@@ -76,13 +76,13 @@ public class MessageProgressTextView
           return;
           i = paramInt1;
         } while (paramInt1 < 100);
-        this.jdField_a_of_type_Bdsx = null;
+        this.jdField_a_of_type_Berp = null;
         return;
       } while (paramInt2 == 1);
       this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable.a(paramInt2);
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("ProgressTextView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Bdsx.b() + " processor " + this.jdField_a_of_type_Bdsx);
+        QLog.d("ProgressTextView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Berp.b() + " processor " + this.jdField_a_of_type_Berp);
       }
     } while (paramInt1 < this.e);
     setProgress(paramInt1);
@@ -91,10 +91,10 @@ public class MessageProgressTextView
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProgressTextView", 2, "updateProgress processor:" + this.jdField_a_of_type_Bdsx);
+      QLog.d("ProgressTextView", 2, "updateProgress processor:" + this.jdField_a_of_type_Berp);
     }
-    if (this.jdField_a_of_type_Bdsx != null) {
-      a(this.jdField_a_of_type_Bdsx.e(), 1);
+    if (this.jdField_a_of_type_Berp != null) {
+      a(this.jdField_a_of_type_Berp.e(), 1);
     }
   }
   
@@ -105,9 +105,9 @@ public class MessageProgressTextView
     this.d = paramInt2;
   }
   
-  public void setProcessor(bdsx parambdsx)
+  public void setProcessor(berp paramberp)
   {
-    if (this.jdField_a_of_type_Bdsx == parambdsx) {
+    if (this.jdField_a_of_type_Berp == paramberp) {
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable != null)
@@ -115,14 +115,14 @@ public class MessageProgressTextView
       removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable);
       this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable = null;
     }
-    this.jdField_a_of_type_Bdsx = parambdsx;
+    this.jdField_a_of_type_Berp = paramberp;
   }
   
   public void setProgress(int paramInt)
   {
     this.e = paramInt;
-    if (this.jdField_a_of_type_Ardv != null) {
-      this.jdField_a_of_type_Ardv.a(paramInt);
+    if (this.jdField_a_of_type_Artk != null) {
+      this.jdField_a_of_type_Artk.a(paramInt);
     }
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean)) {
       setText(paramInt + "%");
@@ -133,8 +133,8 @@ public class MessageProgressTextView
       if (localDrawable != null)
       {
         localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof agor)) && (!this.jdField_c_of_type_Boolean)) {
-          ((agor)localDrawable).a(this.jdField_c_of_type_Int, this.d);
+        if (((localDrawable instanceof agxx)) && (!this.jdField_c_of_type_Boolean)) {
+          ((agxx)localDrawable).a(this.jdField_c_of_type_Int, this.d);
         }
       }
       return;
@@ -142,9 +142,9 @@ public class MessageProgressTextView
     }
   }
   
-  public void setProgressListener(ardv paramardv, boolean paramBoolean)
+  public void setProgressListener(artk paramartk, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ardv = paramardv;
+    this.jdField_a_of_type_Artk = paramartk;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }

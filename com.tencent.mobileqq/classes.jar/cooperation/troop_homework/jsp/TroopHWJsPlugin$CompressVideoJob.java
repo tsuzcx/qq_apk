@@ -5,11 +5,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.text.TextUtils;
-import bhgg;
-import bhod;
-import bmri;
-import bmru;
-import bmrv;
+import bigv;
+import bioy;
+import bnsn;
+import bnsz;
+import bnta;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -21,14 +21,14 @@ import java.util.Set;
 class TroopHWJsPlugin$CompressVideoJob
   implements Runnable
 {
-  private bmru jdField_a_of_type_Bmru;
+  private bnsz jdField_a_of_type_Bnsz;
   private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
   
-  public TroopHWJsPlugin$CompressVideoJob(bmru parambmru, HashMap<Integer, String> paramHashMap)
+  public TroopHWJsPlugin$CompressVideoJob(bnsz parambnsz, HashMap<Integer, String> paramHashMap)
   {
     Object localObject;
     this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.jdField_a_of_type_Bmru = paramHashMap;
+    this.jdField_a_of_type_Bnsz = paramHashMap;
   }
   
   public void run()
@@ -55,16 +55,16 @@ class TroopHWJsPlugin$CompressVideoJob
         try
         {
           localBitmap = TroopHWJsPlugin.a(this.this$0, i, (String)localObject);
-          str = bhgg.a(localVFSFile.getAbsolutePath() + "/" + new File((String)localObject).getName());
+          str = bigv.a(localVFSFile.getAbsolutePath() + "/" + new File((String)localObject).getName());
           this.this$0.a(i, 0.05F);
-          j = bmri.a(localContext, (String)localObject, str);
+          j = bnsn.a(localContext, (String)localObject, str);
           this.this$0.a(i, 0.1F);
           if (j != 1) {
             break label306;
           }
-          localObject = this.this$0.a(this.this$0, i, (String)localObject, localBitmap, this.jdField_a_of_type_Bmru, 2);
+          localObject = this.this$0.a(this.this$0, i, (String)localObject, localBitmap, this.jdField_a_of_type_Bnsz, 2);
           this.this$0.b.put(Integer.valueOf(i), localObject);
-          ((bmrv)localObject).a();
+          ((bnta)localObject).a();
         }
         catch (Exception localException)
         {
@@ -73,21 +73,21 @@ class TroopHWJsPlugin$CompressVideoJob
         }
         continue;
         label306:
-        bmrv localbmrv;
+        bnta localbnta;
         if ((j == 0) && (new File(str).exists()))
         {
-          localbmrv = this.this$0.a(this.this$0, i, str, localBitmap, this.jdField_a_of_type_Bmru, 2);
-          this.this$0.b.put(Integer.valueOf(i), localbmrv);
-          localbmrv.a();
+          localbnta = this.this$0.a(this.this$0, i, str, localBitmap, this.jdField_a_of_type_Bnsz, 2);
+          this.this$0.b.put(Integer.valueOf(i), localbnta);
+          localbnta.a();
         }
         else
         {
           if (QLog.isColorLevel()) {
             QLog.w("TroopHWJsPlugin", 2, "CompressVideoJob failed:" + j);
           }
-          localbmrv = this.this$0.a(this.this$0, i, localbmrv, localBitmap, this.jdField_a_of_type_Bmru, 2);
-          this.this$0.b.put(Integer.valueOf(i), localbmrv);
-          localbmrv.a();
+          localbnta = this.this$0.a(this.this$0, i, localbnta, localBitmap, this.jdField_a_of_type_Bnsz, 2);
+          this.this$0.b.put(Integer.valueOf(i), localbnta);
+          localbnta.a();
         }
       }
       else

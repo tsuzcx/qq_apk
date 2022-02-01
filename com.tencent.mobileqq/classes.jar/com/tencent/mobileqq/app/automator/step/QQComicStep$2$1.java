@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import blan;
-import blat;
+import bmbq;
+import bmbw;
 import com.tencent.mobileqq.app.automator.Automator;
 
 class QQComicStep$2$1
@@ -11,8 +11,8 @@ class QQComicStep$2$1
   
   public void run()
   {
-    blan.a(this.a.this$0.a.app);
-    blat.a(this.a.this$0.a.app);
+    bmbq.a(this.a.this$0.a.app);
+    bmbw.a(this.a.this$0.a.app);
   }
 }
 

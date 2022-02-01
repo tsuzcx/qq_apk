@@ -1,20 +1,37 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.config.ConfigInfo;
 
-public class mcs
-  implements mhj
+class mcs
+  extends BroadcastReceiver
 {
-  public mcs(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong, int paramInt) {}
+  mcs(mcr parammcr) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.L();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
+    {
+      if (!mcr.a(this.a))
+      {
+        mcr.a(this.a, true);
+        if (mcr.b(this.a)) {
+          mcr.a(this.a);
+        }
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      lwd.a().a("update", i);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mcr.b(this.a)));
+      mcr.b(this.a, true);
+    } while (!mcr.a(this.a));
+    mcr.a(this.a);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import java.util.Collections;
-import ysm;
-import yyr;
+import ywh;
+import zcm;
 
 public class EditVideoDoodle$4
   implements Runnable
 {
-  public EditVideoDoodle$4(ysm paramysm) {}
+  public EditVideoDoodle$4(ywh paramywh) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_Yyr.a(1, Collections.EMPTY_LIST);
+      this.this$0.jdField_a_of_type_Zcm.a(1, Collections.EMPTY_LIST);
     }
   }
 }

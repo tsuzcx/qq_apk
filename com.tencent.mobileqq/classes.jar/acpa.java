@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class acpa
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  acpa(acow paramacow) {}
+  acpa(acox paramacox) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
+    this.a.jdField_a_of_type_Acpg.a(this.a.jdField_a_of_type_AndroidAppActivity, paramView, this.a.a(paramView), acox.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

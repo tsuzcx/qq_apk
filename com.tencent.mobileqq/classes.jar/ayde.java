@@ -1,95 +1,74 @@
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
+import com.tencent.pb.now.FeedsProtocol.MediaInfo;
+import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
+import com.tencent.pb.now.FeedsProtocol.ShortVideoInfo;
+import com.tencent.pb.now.FeedsProtocol.TextFeed;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+
 public class ayde
+  extends aycq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
+  
+  public ayde()
+  {
+    this.jdField_a_of_type_JavaLangString = "PlayListDataModel";
+  }
+  
+  private void a(FeedsProtocol.GetMediaDetailRsp paramGetMediaDetailRsp)
+  {
+    paramGetMediaDetailRsp = paramGetMediaDetailRsp.media_list.get().iterator();
+    while (paramGetMediaDetailRsp.hasNext())
+    {
+      FeedsProtocol.MediaInfo localMediaInfo = (FeedsProtocol.MediaInfo)paramGetMediaDetailRsp.next();
+      if ((localMediaInfo.type.get() != 1) && (localMediaInfo.type.get() != 2)) {
+        if (localMediaInfo.type.get() == 3) {
+          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
+        } else if (localMediaInfo.type.get() == 5) {
+          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
+        } else if (localMediaInfo.type.get() == 6) {
+          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
+        }
+      }
+    }
+  }
   
   public int a()
   {
     return this.jdField_a_of_type_Int;
   }
   
-  public long a()
+  public void a()
   {
-    return this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    new aydm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_b_of_type_JavaLangString + "&start=" + this.jdField_b_of_type_Int + "&num=" + 10, new aydf(this));
   }
   
-  public String a()
+  public void a(Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ("1".equals(paramBundle.getString("isLocal"))) {}
+    do
+    {
+      return;
+      paramBundle = paramBundle.getString("raw_url");
+      this.jdField_b_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "PlayListDataModel, url=" + paramBundle);
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void e(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

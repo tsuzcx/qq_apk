@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
 import android.text.TextUtils;
-import bgzu;
+import biaa;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class VasMonitorHandler$2
   implements Runnable
 {
-  public VasMonitorHandler$2(bgzu parambgzu, AppRuntime paramAppRuntime, boolean paramBoolean) {}
+  public VasMonitorHandler$2(biaa parambiaa, AppRuntime paramAppRuntime, boolean paramBoolean) {}
   
   public void run()
   {

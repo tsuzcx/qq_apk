@@ -1,47 +1,85 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.1;
+import cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.2;
+import mqq.os.MqqHandler;
 
 public class bnnh
-  extends bnil
+  extends bnnn
+  implements bngj
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private static final String a;
   
-  public bnnh(ViewStub paramViewStub)
+  static
   {
-    super(paramViewStub);
+    jdField_a_of_type_JavaLangString = bnnf.class.getSimpleName();
   }
   
-  protected void a(View paramView)
+  private static void a(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366179);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366181));
+    parambioy.a().getHandler(bnnh.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
   }
   
-  public void b()
+  private static void b(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
   {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692280);
+    parambioy.a().getHandler(bnnh.class).post(new QzoneDeviceTagJsPlugin.2());
   }
   
-  public void c()
+  public void a()
   {
-    if (a())
+    super.a();
+    bngf.a().b(this);
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if ("GetDeviceInfo".equalsIgnoreCase(paramString3))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      bngf.a().a(this);
+      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
+      return true;
     }
+    if ("SetUserTail".equalsIgnoreCase(paramString3))
+    {
+      bngf.a().a(this);
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
+      return true;
+    }
+    return false;
   }
   
-  public void d()
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if (!a()) {
+    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramBundle = paramBundle.getBundle("data");
+          if (paramBundle != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "call js function,bundle is empty");
+        return;
+        if (!"cmd.getDeviceInfos".equals(paramString)) {
+          break;
+        }
+        paramString = paramBundle.getString("param.DeviceInfos");
+      } while (TextUtils.isEmpty(paramString));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZPhoneTagJSInterface.onReceive({code:0,data:" + paramString + "})");
       return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    } while (!"cmd.setUserTail".equals(paramString));
   }
 }
 

@@ -1,18 +1,4 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class bpho
-  implements ValueAnimator.AnimatorUpdateListener
-{
-  bpho(bphn parambphn) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bpho

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.lifeachivement;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,17 +11,17 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import anip;
-import azfe;
-import azgv;
-import azgy;
-import azha;
-import azhb;
-import azhd;
-import azhe;
-import azhf;
-import azhg;
-import azhh;
+import anum;
+import azxr;
+import azzh;
+import azzk;
+import azzm;
+import azzn;
+import azzp;
+import azzq;
+import azzr;
+import azzs;
+import azzt;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.data.Card;
@@ -36,9 +36,9 @@ public class LifeAchivementPanelView
   RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   Button jdField_a_of_type_AndroidWidgetButton;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public anip a;
-  public azgv a;
-  azha jdField_a_of_type_Azha;
+  public anum a;
+  public azzh a;
+  azzm jdField_a_of_type_Azzm;
   public String a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -53,21 +53,21 @@ public class LifeAchivementPanelView
     super(paramContext, paramAttributeSet);
   }
   
-  private void a(azhb paramazhb, int paramInt1, int paramInt2)
+  private void a(azzn paramazzn, int paramInt1, int paramInt2)
   {
     if (paramInt2 == 1)
     {
-      paramazhb.jdField_a_of_type_Boolean = true;
-      paramazhb.c += 1;
+      paramazzn.jdField_a_of_type_Boolean = true;
+      paramazzn.c += 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Azgv.notifyItemChanged(paramInt1);
+      this.jdField_a_of_type_Azzh.notifyItemChanged(paramInt1);
       return;
       if (paramInt2 == 2)
       {
-        paramazhb.jdField_a_of_type_Boolean = false;
-        paramazhb.c -= 1;
+        paramazzn.jdField_a_of_type_Boolean = false;
+        paramazzn.c -= 1;
       }
     }
   }
@@ -75,47 +75,47 @@ public class LifeAchivementPanelView
   private void d()
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(getContext());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new azhf(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new azhg(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new azzr(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new azzs(this));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getContext());
     localLinearLayoutManager.setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    int i = afur.a(5.0F, getResources());
-    int j = afur.a(0.0F, getResources());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new azgy(i, j));
-    this.jdField_a_of_type_Azha = new azhh(this);
+    int i = agej.a(5.0F, getResources());
+    int j = agej.a(0.0F, getResources());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new azzk(i, j));
+    this.jdField_a_of_type_Azzm = new azzt(this);
     if (QLog.isColorLevel()) {
       QLog.i("LifeAchivementPanelView", 2, "init ");
     }
-    this.jdField_a_of_type_Azgv = new azgv(getContext(), null, this.jdField_a_of_type_Azha);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azgv);
+    this.jdField_a_of_type_Azzh = new azzh(getContext(), null, this.jdField_a_of_type_Azzm);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azzh);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561414, this, false));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369503));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new azhd(this));
-    URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369502);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561455, this, false));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369596));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new azzp(this));
+    URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369595);
     if (localURLImageView != null)
     {
       localURLImageView.setImageURL("https://downv6.qq.com/qq_relation/life_achivement/lifeachivement_empty_bg.png");
       localURLImageView.setVisibility(0);
     }
     d();
-    this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new azhe(this));
+    this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new azzq(this));
     this.jdField_b_of_type_AndroidViewViewGroup.setContentDescription(getResources().getString(2131691032));
   }
   
-  public void a(Card paramCard, azfe paramazfe)
+  public void a(Card paramCard, azxr paramazxr)
   {
     bool1 = true;
     String str = "";
     if (!TextUtils.isEmpty(paramCard.lifeAchievementOpenId)) {
       str = paramCard.lifeAchievementOpenId;
     }
-    boolean bool2 = ProfileActivity.AllInOne.b(paramazfe.a);
+    boolean bool2 = ProfileActivity.AllInOne.b(paramazxr.a);
     long l1 = 0L;
     try
     {
@@ -131,7 +131,7 @@ public class LifeAchivementPanelView
         bool1 = false;
       }
     }
-    if (paramazfe.a.a == 0)
+    if (paramazxr.a.a == 0)
     {
       this.jdField_b_of_type_Boolean = bool2;
       this.jdField_a_of_type_JavaLangString = str;
@@ -141,7 +141,7 @@ public class LifeAchivementPanelView
     }
   }
   
-  public void a(ArrayList<azhb> paramArrayList, int paramInt)
+  public void a(ArrayList<azzn> paramArrayList, int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("LifeAchivementPanelView", 2, "showAchivementList dataArrayList.size() = " + paramArrayList.size() + ",totalCount = " + paramInt);
@@ -149,7 +149,7 @@ public class LifeAchivementPanelView
     c();
     a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     boolean bool = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Azgv.a(paramArrayList, paramInt, bool);
+    this.jdField_a_of_type_Azzh.a(paramArrayList, paramInt, bool);
   }
   
   public void b()
@@ -161,9 +161,9 @@ public class LifeAchivementPanelView
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
-  public void setCardHandler(anip paramanip)
+  public void setCardHandler(anum paramanum)
   {
-    this.jdField_a_of_type_Anip = paramanip;
+    this.jdField_a_of_type_Anum = paramanum;
   }
 }
 

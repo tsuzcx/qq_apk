@@ -1,22 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-class biwt
-  implements View.OnClickListener
+final class biwt
+  implements bivd
 {
-  biwt(biws parambiws, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Biws, this.jdField_a_of_type_Int);
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Biws.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    float f = Math.max(paramInt1 / i, paramInt2 / j);
+    localMatrix.setScale(f, f);
+    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    return localMatrix;
   }
 }
 

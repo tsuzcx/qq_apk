@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqcircle.requests.QCircleBaseRequest;
 
-public class vvc
-  implements View.OnClickListener
+class vvc
+  implements aaav<Object>
 {
-  public vvc(QCircleCommentListView paramQCircleCommentListView) {}
+  vvc(vvb paramvvb, vuz paramvuz, QCircleBaseRequest paramQCircleBaseRequest) {}
   
-  public void onClick(View paramView)
+  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject)
   {
-    if (QCircleCommentListView.a(this.a) != null) {
-      QCircleCommentListView.a(this.a).setClickable(false);
-    }
-    QCircleCommentListView.a(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Vuz.a(paramBoolean, paramLong, paramString, this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleBaseRequest, paramObject);
   }
 }
 

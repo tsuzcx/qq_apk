@@ -1,10 +1,14 @@
-public abstract interface bfji
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class bfji
 {
-  public abstract void a(int paramInt);
+  protected ImageView a;
+  protected TextView a;
+  protected ImageView b;
+  protected TextView b;
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void c();
+  protected bfji(bfjh parambfjh) {}
 }
 
 

@@ -1,21 +1,19 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajtr
   implements View.OnClickListener
 {
-  public ajtr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ajtr(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
-    if (this.a.d == 11) {
-      bcst.b(this.a.getActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator) != null)) {
+      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

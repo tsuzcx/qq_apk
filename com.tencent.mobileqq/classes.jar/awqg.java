@@ -1,85 +1,70 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class awqg<T extends MessageRecord>
-  extends awpz
+public class awqg
 {
-  protected T a;
-  protected MessageRecord b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public awqg(T paramT)
+  public awqg(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
-    this.a = paramT;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    b();
   }
   
-  protected abstract int a();
-  
-  protected MsgBackupResEntity a()
+  private void b()
   {
-    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
-    localMsgBackupResEntity.msgType = a();
-    if (this.b != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
     {
-      awqu.a(this.b, localMsgBackupResEntity);
-      return localMsgBackupResEntity;
+      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
     }
-    awqu.a(this.a, localMsgBackupResEntity);
-    return localMsgBackupResEntity;
   }
   
-  protected String a(Map paramMap)
+  private void c()
   {
-    try
-    {
-      paramMap = new JSONObject(paramMap).toString();
-      return paramMap;
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
+    bdll.b(null, "CliOper", "", "", "0X800A763", "0X800A763", 0, 0, "", "0", "0", "");
+  }
+  
+  private void d()
+  {
+    agju.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().setCanLock(false);
     }
-    catch (Exception paramMap) {}
-    return null;
+    aiaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
   }
   
-  protected HashMap<String, String> a(int paramInt)
+  public void a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("msgType", String.valueOf(a()));
-    localHashMap.put("msgSubType", String.valueOf(paramInt));
-    return localHashMap;
-  }
-  
-  public abstract List<MsgBackupResEntity> a();
-  
-  public abstract void a();
-  
-  protected void a(MessageRecord paramMessageRecord)
-  {
-    this.b = paramMessageRecord;
-  }
-  
-  protected void a(String paramString, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    try
-    {
-      new File(paramString);
-      paramMsgBackupResEntity.fileSize = new File(paramString).length();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
+    }
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
       return;
     }
-    catch (Exception paramString)
+    Object localObject = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aijc)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (!((anyw)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
     {
-      paramString.printStackTrace();
+      d();
+      return;
     }
+    localObject = blir.a(this.jdField_a_of_type_AndroidContentContext);
+    ((blir)localObject).a(2131717882, 0);
+    ((blir)localObject).a(2131718151, 0);
+    ((blir)localObject).c(2131690580);
+    ((blir)localObject).a(new awqh(this, (blir)localObject));
+    ((blir)localObject).show();
   }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b() {}
 }
 
 

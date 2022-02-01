@@ -1,15 +1,44 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import java.util.Iterator;
+import java.util.List;
 
-class tag
-  implements tal
+public class tag
+  implements ViewPager.OnPageChangeListener
 {
-  tag(szv paramszv) {}
+  private tag(ViewPagerCompat paramViewPagerCompat) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    tax.a(paramProteusItemData.b, paramProteusItemData.a);
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
   }
 }
 

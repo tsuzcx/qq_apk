@@ -1,88 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
-import java.util.List;
+import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
+import java.util.Comparator;
 
-public class avjt
-  extends anuw
+public final class avjt
+  implements Comparator<GameNoticeInfo>
 {
-  public avjt(ShareToQQActivity paramShareToQQActivity) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
   {
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
+    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
+      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
+    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
+      return -1;
     }
-    for (;;)
-    {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", false);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", true);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
+    return 1;
   }
 }
 

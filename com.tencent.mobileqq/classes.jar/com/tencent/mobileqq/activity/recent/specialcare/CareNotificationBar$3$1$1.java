@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import alfn;
+import alrf;
 import android.animation.ValueAnimator;
 
 public class CareNotificationBar$3$1$1
   implements Runnable
 {
-  public CareNotificationBar$3$1$1(alfn paramalfn) {}
+  public CareNotificationBar$3$1$1(alrf paramalrf) {}
   
   public void run()
   {

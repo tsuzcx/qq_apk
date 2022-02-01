@@ -1,13 +1,39 @@
+import android.app.Activity;
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahqc
-  implements ahor
+class ahqc
+  implements View.OnClickListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahqc(ahpx paramahpx) {}
+  
+  public void onClick(View paramView)
   {
-    paramagup.d(paramMessageRecord, paramagwc, paramString);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = (String)paramView.getTag();
+      if (!TextUtils.isEmpty(str))
+      {
+        Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("hide_more_button", true);
+        localIntent.putExtra("hide_operation_bar", true);
+        localIntent.putExtra("url", str);
+        this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130771997, 0);
+      }
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    }
   }
 }
 

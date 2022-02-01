@@ -1,24 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public class afad
-  implements bkom
+class afad
+  implements DialogInterface.OnDismissListener
 {
-  public afad(RecommendFriendActivity paramRecommendFriendActivity) {}
+  afad(afac paramafac) {}
   
-  public void a(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    RecommendFriendActivity.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    RecommendFriendActivity.a(this.a, true);
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afad
  * JD-Core Version:    0.7.0.1
  */

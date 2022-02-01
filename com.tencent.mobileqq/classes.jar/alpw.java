@@ -1,15 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class alpw
-  implements ValueAnimator.AnimatorUpdateListener
+  extends TouchDelegate
 {
-  public alpw(RotationSeekBar paramRotationSeekBar) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public alpw(DragTextView paramDragTextView, Rect paramRect, View paramView)
   {
-    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    super(paramRect, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.getVisibility() != 0) {
+      return false;
+    }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    paramMotionEvent.setLocation(f1, f2);
+    return bool;
   }
 }
 

@@ -1,49 +1,15 @@
-import android.os.Handler;
-import com.tencent.av.opengl.ui.GLRootView;
+import com.tencent.avgame.ui.AVGameRoomListFragment.AVGameRoomListAdapter.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class nhc
-  implements nea
+public class nhc
+  extends mxp
 {
-  nhc(nha paramnha) {}
+  nhc(nhb paramnhb) {}
   
-  public void a()
+  public void a(int paramInt, String paramString, mxq parammxq)
   {
-    bjcq.c(this.a.a, "notifyCameraNoData ");
-  }
-  
-  public void a(long paramLong)
-  {
-    bjcq.c(this.a.a, "onBeforeCloseCamera ");
-    if (this.a.d()) {
-      this.a.a(true);
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    bjcq.c(this.a.a, "onBeforeOpenCamera ");
-  }
-  
-  public void b(long paramLong) {}
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    bjcq.c(this.a.a, "onAfterOpenCamera ");
-    nha.a(this.a, true);
-    if (this.a.d()) {
-      nha.a(this.a).sendEmptyMessageDelayed(6, 200L);
-    }
-  }
-  
-  public void c(long paramLong, boolean paramBoolean)
-  {
-    bjcq.c(this.a.a, "onAfterCloseCamera ");
-    nha.a(this.a, false);
-    if ((this.a.d()) && (nha.a(this.a) != null) && (nha.a(this.a).a() != null))
-    {
-      nha.a(this.a).a().requestRender();
-      nha.a(this.a).sendEmptyMessageDelayed(3, 50L);
-    }
+    ThreadManager.getUIHandler().post(new AVGameRoomListFragment.AVGameRoomListAdapter.1.1(this, parammxq));
   }
 }
 

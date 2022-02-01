@@ -1,18 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ysa
-  implements bial
+public class ysa
+  extends QQUIEventReceiver<yrh, xbq>
 {
-  ysa(yrx paramyrx) {}
-  
-  public void a(biaj parambiaj)
+  public ysa(@NonNull yrh paramyrh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
-    }
+    super(paramyrh);
   }
   
-  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
+  public void a(@NonNull yrh paramyrh, @NonNull xbq paramxbq)
+  {
+    if ((paramxbq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramxbq.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    paramyrh.a(paramxbq);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xbq.class;
+  }
 }
 
 

@@ -1,15 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class qff
-  implements ViewBase.OnClickListener
+public class qff
+  extends RecyclerView.ItemDecoration
 {
-  qff(qfa paramqfa, pxk parampxk) {}
+  private int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
+  private int d;
   
-  public void onClick(ViewBase paramViewBase)
+  public qff(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    qfa.a(this.jdField_a_of_type_Qfa, this.jdField_a_of_type_Pxk, paramViewBase);
-    qfa.a(this.jdField_a_of_type_Qfa, this.jdField_a_of_type_Pxk.a());
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.c = paramInt4;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramRect.top = this.jdField_a_of_type_Int;
+      paramRect.bottom = this.c;
+      if (i == 0) {
+        paramRect.left = this.b;
+      }
+      if (i == paramState.getItemCount() - 1) {
+        paramRect.right = this.d;
+      }
+    }
+    do
+    {
+      return;
+      paramRect.left = this.b;
+      paramRect.right = this.d;
+      if (i == 0) {
+        paramRect.top = this.jdField_a_of_type_Int;
+      }
+    } while (i != paramState.getItemCount() - 1);
+    paramRect.bottom = this.c;
   }
 }
 

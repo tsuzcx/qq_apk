@@ -1,32 +1,55 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.aio.AudioSenorManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class agfv
-  implements aaob
+public class agfv
+  implements SensorEventListener
 {
-  agfv(agfu paramagfu) {}
+  public agfv(AudioSenorManager paramAudioSenorManager) {}
   
-  public void callback(Bundle paramBundle)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
-    {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed)) {}
-    }
-    else
+    int i = 1;
+    if (agej.b()) {}
+    label141:
+    label144:
+    for (;;)
     {
       return;
+      boolean bool;
+      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
+      {
+        bool = true;
+        label28:
+        QLog.d("AudioPlayer_SenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
+        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
+          continue;
+        }
+        if (!bool) {
+          break label141;
+        }
+      }
+      for (;;)
+      {
+        if (i == AudioSenorManager.a(this.a)) {
+          break label144;
+        }
+        AudioSenorManager.a(this.a, i);
+        if (AudioSenorManager.a(this.a) == null) {
+          break;
+        }
+        AudioSenorManager.a(this.a).a(i);
+        return;
+        bool = false;
+        break label28;
+        i = 0;
+      }
     }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131718680, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131718677, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
   }
 }
 

@@ -1,14 +1,27 @@
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class bbsa
+public class bbsa
 {
-  int jdField_a_of_type_Int = -1;
-  WeakReference<bbrr> jdField_a_of_type_JavaLangRefWeakReference;
+  public int a;
+  public String a;
+  public ArrayList<bbsa> a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public bbsa(int paramInt, bbrr parambbrr)
+  public bbsa(int paramInt)
   {
+    this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbrr);
   }
 }
 

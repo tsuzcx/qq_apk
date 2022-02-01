@@ -1,13 +1,24 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahpm
-  implements ahor
+class ahpm
+  implements View.OnClickListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahpm(ahpl paramahpl) {}
+  
+  public void onClick(View paramView)
   {
-    paramagup.b(paramMessageRecord, paramLinearLayout, paramagwc);
+    String str = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(str))
+    {
+      alik.b(this.a.jdField_a_of_type_AndroidContentContext, str);
+      if ((this.a.m > 0) && ((this.a.n == 2) || (this.a.n == 3))) {
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aiotail.click", 0, 0, "" + this.a.m, "", "", "");
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

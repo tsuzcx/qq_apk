@@ -1,23 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel;
 
 public class assz
-  implements URLDrawable.URLDrawableListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public assz(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
+  public assz(RelatedEmoSlideBottomPanel paramRelatedEmoSlideBottomPanel, boolean paramBoolean, float[] paramArrayOfFloat) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if ((RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel) != null) && (this.jdField_a_of_type_Boolean))
+    {
+      Float localFloat = (Float)paramValueAnimator.getAnimatedValue();
+      RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel).a(localFloat.floatValue() - this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel.a());
+    }
+    if ((RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel) > 0) && (paramValueAnimator.getAnimatedFraction() == 1.0F) && (this.jdField_a_of_type_ArrayOfFloat[1] == this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel.getMeasuredHeight()) && (RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel) != null)) {
+      RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel).a(RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel));
+    }
   }
 }
 

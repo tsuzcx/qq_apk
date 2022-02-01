@@ -1,25 +1,16 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aebt
-  implements bihh
+public final class aebt
+  implements DialogInterface.OnClickListener
 {
-  public aebt(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aebt(aebz paramaebz) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
+    if (this.a != null) {
+      this.a.a();
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      zvc.a(1, 2131718007);
-      return;
-    }
-    zvc.a(2, 2131718025);
   }
 }
 

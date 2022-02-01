@@ -1,6 +1,8 @@
-public class blqy
+import android.view.KeyEvent;
+
+public abstract interface blqy
 {
-  public static blqx a = new blqx(null);
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 

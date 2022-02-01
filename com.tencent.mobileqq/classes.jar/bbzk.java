@@ -1,8 +1,8 @@
-public class bbzk
+public abstract interface bbzk
 {
-  public int e;
-  public long e;
-  public int f;
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,45 +1,30 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tribe.async.async.JobContext;
 
-public class yiz
-  extends yid<yiy>
+class yiz
+  implements woy<xcy, xcz>
 {
-  public yiz(@Nullable yih paramyih)
-  {
-    super(paramyih);
-  }
+  yiz(yiy paramyiy, JobContext paramJobContext, Integer paramInteger) {}
   
-  protected JobSegment<yig, yiy> a()
+  public void a(@NonNull xcy paramxcy, @Nullable xcz paramxcz, @NonNull ErrorMessage paramErrorMessage)
   {
-    return new yit();
-  }
-  
-  protected JobSegment<Integer, yig> a(yif paramyif)
-  {
-    return new yja(paramyif, this.a);
-  }
-  
-  protected yiy a()
-  {
-    yij localyij = (yij)wpm.a(11);
-    List localList = localyij.a();
-    yiy localyiy = new yiy(new ErrorMessage());
-    localyiy.jdField_b_of_type_JavaUtilList = localyij.b(localList);
-    localyiy.jdField_b_of_type_Boolean = true;
-    localyiy.a = localyiy.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localyiy;
-  }
-  
-  protected yiy a(ErrorMessage paramErrorMessage)
-  {
-    return new yiy(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((yij)wpm.a(11)).a(paramList, paramBoolean);
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      yuk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+      return;
+    }
+    if ((paramErrorMessage.isFail()) || (paramxcz == null))
+    {
+      yuk.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      yiy.a(this.jdField_a_of_type_Yiy, paramErrorMessage);
+      return;
+    }
+    yiy.a(this.jdField_a_of_type_Yiy).a(paramxcz.jdField_a_of_type_JavaUtilList, paramxcz.jdField_a_of_type_JavaLangString, paramxcz.jdField_a_of_type_Boolean);
+    ((yme)wth.a(11)).a(paramxcz.jdField_a_of_type_JavaUtilList);
+    paramxcy = yiy.a(this.jdField_a_of_type_Yiy).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    yiy.a(this.jdField_a_of_type_Yiy, paramxcy);
   }
 }
 

@@ -1,35 +1,33 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class bimn
-  implements bina
 {
-  public bimn(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void a()
+  public static binq a(birg parambirg)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
-    localIntent.putExtra("key_req_src", 1);
-    localIntent.putExtra("is_first_login", true);
-    localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
-    OpenAuthorityFragment.a(this.a, null);
-    this.a.getActivity().startActivityForResult(localIntent, 1);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramString, paramBoolean);
-  }
-  
-  public void b()
-  {
-    this.a.c(OpenAuthorityFragment.b(this.a));
-    if (OpenAuthorityFragment.a(this.a) != null) {
-      OpenAuthorityFragment.a(this.a).b();
+    int j = 0;
+    int i = j;
+    if (parambirg.a != null)
+    {
+      i = j;
+      if (parambirg.a.getIntent() != null) {
+        i = parambirg.a.getIntent().getIntExtra("titleBarStyle", 0);
+      }
     }
+    bmqw.d("SwiftWebTitleBuilder", "title bar style is" + i);
+    if (i == 1) {
+      return new bmct(parambirg);
+    }
+    if (i == 2) {
+      return new bioa(parambirg);
+    }
+    if (i == 3) {
+      return new bmrh(parambirg);
+    }
+    if (i == 4) {
+      return new vnz(parambirg);
+    }
+    return new binq(parambirg);
   }
 }
 

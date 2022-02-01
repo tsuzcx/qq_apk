@@ -1,8 +1,17 @@
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-public abstract interface zuz
+public class zuz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(ArrayList<zuw> paramArrayList);
+  public zuz(RotateCircleImageView paramRotateCircleImageView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
+  }
 }
 
 

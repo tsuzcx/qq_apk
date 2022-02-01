@@ -1,27 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aeuy
-  implements Handler.Callback
+  extends aeuk
 {
-  public aeuy(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public aeuy(JumpActivity paramJumpActivity)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.c();
-    }
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeuy
  * JD-Core Version:    0.7.0.1
  */

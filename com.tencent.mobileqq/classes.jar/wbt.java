@@ -1,16 +1,20 @@
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
 
 public class wbt
+  implements aqmj
 {
-  public int a;
-  public String a;
-  public List<wbv> a;
-  public boolean a;
-  public int b = 500;
-  public String b;
-  public List<wbu> b;
-  public int c = 100;
-  public int d = 15;
+  public wbt(QCircleRecommendImageView paramQCircleRecommendImageView) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b()
+  {
+    QCircleRecommendImageView.a(this.a);
+    QCircleRecommendImageView.a(this.a, true);
+    this.a.setPadding(0, 0, 0, 0);
+  }
 }
 
 

@@ -1,34 +1,10 @@
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceInputStream;
+
 public class ukf
+  extends UniAttribute
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  
-  public int a()
-  {
-    if ((this.a > 0) && (this.b > 0) && (this.b / this.a > 1.33F)) {
-      return 2;
-    }
-    return 0;
-  }
-  
-  public int b()
-  {
-    if ((this.a > 0) && (this.b > 0)) {
-      return 0;
-    }
-    return 2;
-  }
+  JceInputStream a = new JceInputStream();
 }
 
 

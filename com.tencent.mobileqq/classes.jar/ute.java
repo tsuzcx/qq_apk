@@ -1,77 +1,68 @@
+import UserGrowth.stNewIconStyle;
 import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewStub;
 
 public class ute
-  extends ueh<uru>
-  implements View.OnClickListener
+  extends uej<usv>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private utf jdField_a_of_type_Utf;
+  private uuy jdField_a_of_type_Uuy;
   
-  public ute(Context paramContext, utw paramutw)
+  public ute(Context paramContext, uuy paramuuy)
   {
     super(paramContext);
-    if (paramutw != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramutw.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    this.jdField_a_of_type_Uuy = paramuuy;
+  }
+  
+  private stSimpleMetaFeed a()
+  {
+    usv localusv = (usv)a();
+    if ((localusv != null) && ((localusv.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)localusv.a();
+    }
+    return null;
+  }
+  
+  private void b(usv paramusv)
+  {
+    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    {
+      if (this.jdField_a_of_type_Utf == null)
+      {
+        this.jdField_a_of_type_Utf = new utf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uuy);
+        this.jdField_a_of_type_Utf.a(this.jdField_a_of_type_AndroidViewViewStub);
+      }
+      this.jdField_a_of_type_Utf.a(paramusv);
     }
   }
   
-  protected void a()
+  protected void a() {}
+  
+  public void a(usv paramusv)
   {
-    if ((a() != null) && ((((uru)a()).a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((uru)a()).a());
-    }
+    super.a(paramusv);
+    b(paramusv);
   }
   
   protected int b()
   {
-    return 2131560017;
+    return 2131560035;
   }
   
-  protected void b()
+  protected void b() {}
+  
+  protected void c()
   {
-    Object localObject = (uru)a();
-    if (localObject == null) {}
-    while (!(((uru)localObject).a() instanceof stSimpleMetaFeed)) {
-      return;
+    if (this.jdField_a_of_type_Utf != null) {
+      this.jdField_a_of_type_Utf.c();
     }
-    localObject = ((stSimpleMetaFeed)((uru)localObject).a()).poster;
-    if ((localObject != null) && (!TextUtils.isEmpty(((stSimpleMetaPerson)localObject).nick)))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("@%s", new Object[] { ((stSimpleMetaPerson)localObject).nick }));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
-  
-  protected void c() {}
   
   protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380498));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == 2131380498) {
-        uqd.a("nickname", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380704));
   }
 }
 

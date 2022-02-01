@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahin;
+import ahrx;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import java.lang.ref.WeakReference;
 
@@ -12,7 +12,7 @@ class ShortVideoRealItemBuilder$2
   public void run()
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null)) {
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, (ahin)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, true);
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, (ahrx)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, true);
     }
   }
 }

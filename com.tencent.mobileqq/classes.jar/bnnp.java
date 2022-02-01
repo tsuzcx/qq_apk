@@ -1,18 +1,13 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.view.AECompoundButton;
+import java.util.HashMap;
 
-class bnnp
-  implements Observer<Boolean>
+public class bnnp
 {
-  bnnp(bnnl parambnnl) {}
+  public String a;
+  public HashMap<String, String> a;
   
-  public void a(@Nullable Boolean paramBoolean)
+  public bnnp(bnno parambnno)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    bnnl.g(this.a).setSelected(paramBoolean.booleanValue());
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 

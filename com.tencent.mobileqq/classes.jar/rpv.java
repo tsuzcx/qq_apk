@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 
-class rpv
-  implements DialogInterface.OnDismissListener
+final class rpv
+  extends ClickableSpan
 {
-  rpv(rps paramrps) {}
+  rpv(TextView paramTextView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    rps.b(this.a, false);
+    this.a.performClick();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
   }
 }
 

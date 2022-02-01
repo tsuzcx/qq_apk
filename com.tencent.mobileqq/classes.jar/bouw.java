@@ -1,17 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
 
 public class bouw
-  extends bomu
+  implements View.OnClickListener
 {
-  public bouw(StaticStickerProviderView paramStaticStickerProviderView) {}
+  bouw(boun paramboun) {}
   
-  public void d()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
-    }
-    this.a.g();
+    bozr.a().al();
+    boun.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

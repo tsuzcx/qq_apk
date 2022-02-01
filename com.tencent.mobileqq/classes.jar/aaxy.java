@@ -1,10 +1,24 @@
-public abstract interface aaxy
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+
+public class aaxy
+  implements nmg
 {
-  public abstract void a();
+  public aaxy(PluginJumpManager paramPluginJumpManager) {}
   
-  public abstract void a(long paramLong);
+  public void loaded(String paramString, int paramInt)
+  {
+    if (paramInt == 0) {
+      nmj.a("urlplugin.cfg", this.a.mContext, "1007", new aaxz(this));
+    }
+    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
+      return;
+    }
+    this.a.loadConfigFromFile();
+  }
   
-  public abstract void b();
+  public void progress(int paramInt) {}
 }
 
 

@@ -9,8 +9,8 @@ class AudioJsPlugin$InnerAudioManager$3
   
   public void run()
   {
-    if (AudioJsPlugin.InnerAudioManager.access$3400(this.this$1) != null) {
-      AudioJsPlugin.InnerAudioManager.access$3400(this.this$1).seekTo(this.val$mSec);
+    if (AudioJsPlugin.InnerAudioManager.access$3300(this.this$1) != null) {
+      AudioJsPlugin.InnerAudioManager.access$3300(this.this$1).seekTo(this.val$mSec);
     }
   }
 }

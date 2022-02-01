@@ -1,59 +1,42 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Locale;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adiz
-  implements bkhw
+  implements adbw
 {
-  public adiz(AddAccountActivity paramAddAccountActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public int a()
   {
-    if (AddAccountActivity.a(this.a)) {
-      return;
+    return 10009;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(168);
+    paramQQAppInterface = paramQQAppInterface.a().e(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (paramQQAppInterface != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
     }
-    if (paramInt == 0)
-    {
-      bcst.a(this.a.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
-      paramView = null;
-      if (this.a.a != null) {
-        paramView = this.a.a.getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label304;
-      }
-    }
-    label304:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
-      {
-        AddAccountActivity.c(this.a, true);
-        AddAccountActivity.a(this.a).dismiss();
-        return;
-        if (paramInt == 1)
-        {
-          bcst.a(this.a.app, "dc00898", "", "", "0X800AFD8", "0X800AFD8", 0, 0, "", "", "", "");
-          bcst.b(this.a.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
-          boolean bool = this.a.getIntent().getBooleanExtra("login_from_account_change", false);
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("login_from_account_change", bool);
-          paramView.putExtra("entrance", AddAccountActivity.class.getName());
-          this.a.startActivity(paramView);
-        }
-      }
-    }
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8044;
   }
 }
 

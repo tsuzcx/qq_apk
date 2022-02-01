@@ -1,18 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForStructing;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aikm
-  implements aiko
+class aikm
+  implements DialogInterface.OnClickListener
 {
-  public void a(MessageForStructing paramMessageForStructing, afwr paramafwr, View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 2130838316;; i = 2130838300)
-    {
-      paramView.setBackgroundResource(i);
-      return;
-    }
-  }
+  aikm(aikg paramaikg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

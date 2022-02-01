@@ -106,6 +106,7 @@ public class EmbeddedLivePusherJsPlugin
           }
         }
       }
+      label498:
       do
       {
         for (;;)
@@ -117,14 +118,12 @@ public class EmbeddedLivePusherJsPlugin
             continue;
             if ("updateXWebLivePusher".equals(paramString1))
             {
-              if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "updateXWebLivePusher", paramString2, paramInt)))
-              {
-                if (this.jsPluginEngine != null) {
+              if (this.jsPluginEngine != null) {
+                if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "updateXWebLivePusher", paramString2, paramInt, this.jsPluginEngine.appBrandRuntime))) {
                   this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+                } else {
+                  this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
                 }
-              }
-              else if (this.jsPluginEngine != null) {
-                this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
               }
             }
             else
@@ -132,7 +131,7 @@ public class EmbeddedLivePusherJsPlugin
               if (!"operateXWebLivePusher".equals(paramString1)) {
                 break;
               }
-              if (((localEmbeddedWidgetClientFactory == null) || (!localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "operateXWebLivePusher", paramString2, paramInt))) && (this.jsPluginEngine != null)) {
+              if ((this.jsPluginEngine != null) && ((localEmbeddedWidgetClientFactory == null) || (!localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "operateXWebLivePusher", paramString2, paramInt, this.jsPluginEngine.appBrandRuntime)))) {
                 this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
               }
             }
@@ -140,18 +139,18 @@ public class EmbeddedLivePusherJsPlugin
         }
         if ("removeXWebLivePusher".equals(paramString1))
         {
-          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "removeXWebLivePusher", paramString2, paramInt))) {
-            if (this.jsPluginEngine != null) {
-              this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+          if (this.jsPluginEngine != null)
+          {
+            if ((localEmbeddedWidgetClientFactory == null) || (!localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "removeXWebLivePusher", paramString2, paramInt, this.jsPluginEngine.appBrandRuntime))) {
+              break label498;
             }
+            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
           }
           for (;;)
           {
             QLog.e("EmbeddedLivePusherJsPlugin", 1, "handleNativeRequest-removeXWebLivePusher ,jsonParams=" + paramString2 + ",callbackId=" + paramInt + ",webview=" + paramJsRuntime);
             break;
-            if (this.jsPluginEngine != null) {
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-            }
+            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
           }
         }
       } while (!"setDisplayOrientation".equals(paramString1));
@@ -163,7 +162,7 @@ public class EmbeddedLivePusherJsPlugin
         {
           j = new JSONObject(paramString2).optInt("orientation", 0);
           if (j != 90) {
-            break label628;
+            break label635;
           }
           i = 0;
           if (i != this.jsPluginEngine.appBrandRuntime.activity.getRequestedOrientation())
@@ -178,7 +177,7 @@ public class EmbeddedLivePusherJsPlugin
           QLog.e("EmbeddedLivePusherJsPlugin", 1, "setDisplayOrientation get an ");
         }
         break;
-        label628:
+        label635:
         if (j == -90) {
           i = 8;
         } else {

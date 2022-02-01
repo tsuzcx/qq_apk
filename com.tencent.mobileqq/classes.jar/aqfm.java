@@ -1,45 +1,52 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.Point;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class aqfm
-  implements Animator.AnimatorListener
 {
-  public aqfm(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<String, aqfn> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aqfm(QQAppInterface paramQQAppInterface)
   {
-    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
-    if (!this.a.a())
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public aqfn a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      paramAnimator.leftMargin = bggq.a(this.a.getContext(), 14.5F);
-      paramAnimator.rightMargin = 0;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
+      }
+      return null;
     }
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
-    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = bggq.a(this.a.getContext(), 13.5F);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
-    paramAnimator = this.a;
-    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
-    for (int i = 0;; i = 1)
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
-      ColorNoteSmallScreenRelativeLayout.d(this.a, false);
-      return;
+      paramString = (aqfn)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return paramString;
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(String paramString, aqfn paramaqfn)
   {
-    ColorNoteSmallScreenRelativeLayout.d(this.a, true);
+    if ((TextUtils.isEmpty(paramString)) || (paramaqfn == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramaqfn);
+      return;
+    }
   }
 }
 

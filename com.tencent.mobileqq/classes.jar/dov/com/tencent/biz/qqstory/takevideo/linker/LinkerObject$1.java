@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.linker;
 
-import bpqt;
+import bqso;
 
 public class LinkerObject$1
   implements Runnable
 {
-  public LinkerObject$1(bpqt parambpqt, String paramString) {}
+  public LinkerObject$1(bqso parambqso, String paramString) {}
   
   public void run()
   {
-    bpqt localbpqt = bpqt.a(this.a);
-    this.this$0.b = localbpqt.b;
-    this.this$0.c = localbpqt.c;
-    this.this$0.a = localbpqt.a;
+    bqso localbqso = bqso.a(this.a);
+    this.this$0.b = localbqso.b;
+    this.this$0.c = localbqso.c;
+    this.this$0.a = localbqso.a;
   }
 }
 

@@ -1,8 +1,34 @@
-import java.util.List;
+import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public abstract interface aaqv
+public class aaqv
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract void a(List<atsc> paramList);
+  private WeakReference<AsyncRichTextView> a;
+  
+  public aaqv(AsyncRichTextView paramAsyncRichTextView)
+  {
+    this.a = new WeakReference(paramAsyncRichTextView);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AsyncRichTextView", 4, "onLoadSuccessed ");
+    }
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AsyncRichTextView)this.a.get()).invalidate();
+    }
+  }
 }
 
 

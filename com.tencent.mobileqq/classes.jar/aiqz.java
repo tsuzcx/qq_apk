@@ -1,17 +1,14 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ColorNickTextView;
 
-public class aiqz
+class aiqz
+  implements bliz
 {
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ColorNickTextView a;
-  public TextView b;
+  aiqz(aiqx paramaiqx, blir paramblir) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    aiqx.a(this.jdField_a_of_type_Aiqx, paramView, paramInt, this.jdField_a_of_type_Blir);
+  }
 }
 
 

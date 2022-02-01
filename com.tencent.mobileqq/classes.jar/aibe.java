@@ -1,12 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aibe
-  implements DialogInterface.OnClickListener
+public class aibe
+  extends BroadcastReceiver
 {
-  aibe(aiay paramaiay) {}
+  public aibe(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
+      }
+      this.a.finish();
+    }
+  }
 }
 
 

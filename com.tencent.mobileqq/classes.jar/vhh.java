@@ -1,128 +1,56 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.util.DisplayMetrics;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
+import java.util.List;
 
-public class vhh
+public class vhh<T>
 {
-  private final int jdField_a_of_type_Int;
-  private final LinkedList<Bitmap> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private int b;
-  private int c;
-  private int d;
+  private int jdField_a_of_type_Int;
+  private final Comparator<T> jdField_a_of_type_JavaUtilComparator;
+  private final vhi<T> jdField_a_of_type_Vhi = new vhi();
   
-  public vhh(Context paramContext)
+  public vhh(Comparator<T> paramComparator)
   {
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    int i = paramContext.widthPixels;
-    this.jdField_a_of_type_Int = (paramContext.heightPixels * i * 8);
+    this.jdField_a_of_type_JavaUtilComparator = paramComparator;
   }
   
-  private void b(Bitmap paramBitmap)
+  public List<T> a(T paramT, List<T> paramList)
   {
-    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBitmap);
-    if (paramBitmap != null)
+    for (vhi localvhi = this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi; (localvhi != this.jdField_a_of_type_Vhi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localvhi.jdField_a_of_type_JavaLangObject, paramT) <= 0); localvhi = localvhi.jdField_a_of_type_Vhi)
     {
-      this.b -= paramBitmap.getRowBytes() * paramBitmap.getHeight();
-      if (!paramBitmap.isRecycled()) {
-        paramBitmap.recycle();
-      }
+      QLog.d("PhotoDanmakuDataSource", 2, "befor removeLessThanData - mDrawingDanmakuList - added");
+      paramList.add(localvhi.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_Int -= 1;
     }
-  }
-  
-  public Bitmap a(int paramInt1, int paramInt2)
-  {
-    this.c += 1;
-    Object localObject1 = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    Object localObject2;
-    if (localIterator.hasNext())
-    {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if ((localBitmap.getWidth() >= paramInt1) && (localBitmap.getHeight() >= paramInt2)) {
-        if (localObject1 == null) {
-          localObject2 = localBitmap;
-        }
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        break;
-        localObject2 = localBitmap;
-        if (localObject1.getHeight() * localObject1.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()) {
-          localObject2 = localObject1;
-        }
-      }
-    }
-    if (localObject1 != null)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject1);
-      this.b -= localObject1.getRowBytes() * localObject1.getHeight();
-      return localObject1;
-    }
-    try
-    {
-      this.d += 1;
-      localObject2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      return localObject2;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return localObject1;
+    this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi = localvhi;
+    localvhi.b = this.jdField_a_of_type_Vhi;
+    return paramList;
   }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    while (localIterator.hasNext())
-    {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-        localBitmap.recycle();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
+    this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi = this.jdField_a_of_type_Vhi;
+    this.jdField_a_of_type_Vhi.b = this.jdField_a_of_type_Vhi;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(Bitmap paramBitmap)
+  public boolean a(T paramT)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
-    for (;;)
-    {
-      return;
-      this.b += paramBitmap.getRowBytes() * paramBitmap.getHeight();
-      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramBitmap);
-      while (this.b > this.jdField_a_of_type_Int)
-      {
-        paramBitmap = null;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
-        {
-          Bitmap localBitmap2 = (Bitmap)localIterator.next();
-          Bitmap localBitmap1;
-          if (paramBitmap == null) {
-            localBitmap1 = localBitmap2;
-          }
-          for (;;)
-          {
-            paramBitmap = localBitmap1;
-            break;
-            localBitmap1 = localBitmap2;
-            if (paramBitmap.getHeight() * paramBitmap.getWidth() < localBitmap2.getHeight() * localBitmap2.getWidth()) {
-              localBitmap1 = paramBitmap;
-            }
-          }
-        }
-        if (paramBitmap != null) {
-          b(paramBitmap);
-        }
-      }
-    }
+    for (vhi localvhi = this.jdField_a_of_type_Vhi.b; (localvhi != this.jdField_a_of_type_Vhi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localvhi.jdField_a_of_type_JavaLangObject, paramT) > 0); localvhi = localvhi.b) {}
+    paramT = new vhi(paramT, localvhi.jdField_a_of_type_Vhi, localvhi);
+    localvhi.jdField_a_of_type_Vhi.b = paramT;
+    localvhi.jdField_a_of_type_Vhi = paramT;
+    this.jdField_a_of_type_Int += 1;
+    return true;
+  }
+  
+  public boolean b(T paramT)
+  {
+    for (vhi localvhi = this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi; (localvhi != this.jdField_a_of_type_Vhi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localvhi.jdField_a_of_type_JavaLangObject, paramT) < 0); localvhi = localvhi.jdField_a_of_type_Vhi) {}
+    paramT = new vhi(paramT, localvhi, localvhi.b);
+    localvhi.b.jdField_a_of_type_Vhi = paramT;
+    localvhi.b = paramT;
+    this.jdField_a_of_type_Int += 1;
+    return true;
   }
 }
 

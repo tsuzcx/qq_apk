@@ -1,9 +1,12 @@
-class bkdh
+public abstract interface bkdh
 {
-  public int a;
-  public byte[] a;
-  public int b;
-  public int c;
+  public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
+  
+  public abstract void a(bkdf parambkdf);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

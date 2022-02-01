@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import bctj;
+import bdmc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -31,7 +31,7 @@ public final class AIOOpenWebMonitor$1
       } while (localObject == null);
       HashMap localHashMap = new HashMap(3);
       localHashMap.put("m_num", ((TroopInfo)localObject).wMemberNum + "");
-      bctj.a(BaseApplication.getContext()).a(null, "AIOWebTC", false, 0L, 0L, localHashMap, "", false);
+      bdmc.a(BaseApplication.getContext()).a(null, "AIOWebTC", false, 0L, 0L, localHashMap, "", false);
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     } while (localObject == null);
     Object localObject = ((List)localObject).iterator();
@@ -45,7 +45,7 @@ public final class AIOOpenWebMonitor$1
     {
       localObject = new HashMap(3);
       ((HashMap)localObject).put("m_i", i + "");
-      bctj.a(BaseApplication.getContext()).a(null, "AIOWebmsgposition", false, 0L, 0L, (HashMap)localObject, "", false);
+      bdmc.a(BaseApplication.getContext()).a(null, "AIOWebmsgposition", false, 0L, 0L, (HashMap)localObject, "", false);
       return;
     }
   }

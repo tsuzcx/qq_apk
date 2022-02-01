@@ -1,45 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-public class bqcf
-  extends AnimatorListenerAdapter
+public final class bqcf
+  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  public bqcf(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    bnzb.b("CameraCaptureLayout", "scaleAnimator cancel!");
+    return new EditLocalVideoSource(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public EditLocalVideoSource[] a(int paramInt)
   {
-    bnzb.b("CameraCaptureLayout", "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
-    if (!this.a.b.get())
-    {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.a.d();
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
-      return;
-      this.a.e();
-      this.a.a(1.0F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    bnzb.b("CameraCaptureLayout", "scaleAnimator start!");
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    return new EditLocalVideoSource[paramInt];
   }
 }
 

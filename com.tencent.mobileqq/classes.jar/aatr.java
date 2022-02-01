@@ -1,10 +1,29 @@
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract interface aatr
+class aatr
+  implements aatl
 {
-  public abstract void a(int paramInt);
+  aatr(aatq paramaatq, long paramLong) {}
   
-  public abstract void a(List<bftd> paramList);
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Aatq.a.jdField_a_of_type_Aatn.e = paramString1;
+      this.jdField_a_of_type_Aatq.a.jdField_a_of_type_Aato.a.b(this.jdField_a_of_type_Aatq.a.jdField_a_of_type_Aato);
+      this.jdField_a_of_type_Aatq.a.jdField_a_of_type_Aato.b();
+      return;
+    }
+    this.jdField_a_of_type_Aatq.a.jdField_a_of_type_Aato.d = paramString2;
+    this.jdField_a_of_type_Aatq.a.jdField_a_of_type_Aato.a.a(this.jdField_a_of_type_Aatq.a.jdField_a_of_type_Aato);
+  }
 }
 
 

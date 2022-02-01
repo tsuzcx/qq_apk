@@ -1,21 +1,11 @@
-import android.graphics.Rect;
-import android.hardware.Camera.Size;
-import java.io.File;
+import android.graphics.Bitmap;
 
-public class bcik
+public abstract interface bcik<M extends bcfo, V extends bcnx>
+  extends bcil<M, V>
 {
-  public int a;
-  public alox a;
-  public Rect a;
-  public Camera.Size a;
-  public File a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract void a(M paramM, V paramV);
   
-  private bcik(bcig parambcig) {}
+  public abstract void a(M paramM, V paramV, Bitmap paramBitmap);
 }
 
 

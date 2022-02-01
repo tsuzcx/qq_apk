@@ -1,9 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adqi
-  implements ahvo
+  implements View.OnClickListener
 {
-  public adqi(BaseChatPie paramBaseChatPie) {}
+  public adqi(AboutActivity paramAboutActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(localIntent.putExtra("url", AboutActivity.a(this.a)));
+    bdll.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

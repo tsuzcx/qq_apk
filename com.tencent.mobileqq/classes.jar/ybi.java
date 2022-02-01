@@ -1,24 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.graphics.Bitmap;
 
-class ybi
-  extends SimpleJob
+public abstract interface ybi
 {
-  ybi(ybh paramybh, String paramString, ybk paramybk, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  public abstract void a(String paramString, Bitmap paramBitmap);
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.jdField_a_of_type_Ybh.a();
-    this.jdField_a_of_type_Ybh.b();
-    ((woj)wpm.a(17)).a(this.jdField_a_of_type_Ybk.a, ybh.a(this.jdField_a_of_type_Ybh).a, ybh.a(this.jdField_a_of_type_Ybh).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Ybh.a("Q.qqstory.detail:CommentListPageLoader");
-    return null;
-  }
+  public abstract void a(String paramString, Throwable paramThrowable);
 }
 
 

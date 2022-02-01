@@ -1,56 +1,30 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class npq
-  extends URLDrawableDownListener.Adapter
+final class npq
+  implements BusinessObserver
 {
-  npq(npm paramnpm) {}
+  npq(QQAppInterface paramQQAppInterface, nps paramnps) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (!this.a.f) {
-      this.a.l();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
+    if ((paramBoolean) && (paramBundle != null))
     {
-      return;
-      this.a.k();
-      if ((paramView instanceof ImageView))
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
+        npo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nps);
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
+      if (QLog.isColorLevel()) {
+        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+      }
+      this.jdField_a_of_type_Nps.a("");
+      return;
+    }
+    this.jdField_a_of_type_Nps.a("");
   }
 }
 

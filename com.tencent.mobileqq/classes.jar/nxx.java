@@ -1,29 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-final class nxx
-  implements BusinessObserver
+class nxx
+  implements DialogInterface.OnCancelListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  nxx(nxo paramnxo, JsResult paramJsResult, Context paramContext) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "doAdReport success!");
-        }
-      }
-      return;
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nxo.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
-    catch (Exception paramBundle) {}
   }
 }
 

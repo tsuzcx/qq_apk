@@ -1,16 +1,33 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.util.SparseArray;
 
 public class ajnh
-  extends RecyclerView.ViewHolder
 {
-  TextView a;
+  public int a;
+  public SparseArray<byte[]> a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
   
-  ajnh(View paramView)
+  public ajnh()
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131380066));
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.d = null;
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import asrw;
+import atia;
 import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
 
 public class FilePreviewActivity$9$1
   implements Runnable
 {
-  public FilePreviewActivity$9$1(asrw paramasrw) {}
+  public FilePreviewActivity$9$1(atia paramatia) {}
   
   public void run()
   {

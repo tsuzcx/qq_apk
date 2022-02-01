@@ -1,54 +1,24 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
 
-class ahmq
-  implements ahms
+public class ahmq
+  extends aggl
 {
-  ahmq(ahmp paramahmp) {}
+  private long jdField_a_of_type_Long;
+  public ambx a;
+  public TextView a;
+  public ETTextView a;
+  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
+  public boolean a;
+  public TextView b;
+  public ETTextView b;
+  private String b = "0";
+  public View c;
+  public int e = -1;
   
-  public void a(View paramView)
-  {
-    paramView = (ahmt)afur.a(paramView);
-    ahmp.jdField_a_of_type_JavaLangString = paramView.a.senderuin;
-    Object localObject = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
-    anwy localanwy = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a();
-    if ((localObject != null) && (((ChatFragment)localObject).a() != null))
-    {
-      localObject = (TroopChatPie)((ChatFragment)localObject).a();
-      ((agnj)((TroopChatPie)localObject).a(41)).b(1);
-      localanwy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ((TroopChatPie)localObject).a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 0, paramView.a);
-    }
-    new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_welcome").a(new String[] { paramView.a.frienduin, "", "" + bfup.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.a.frienduin) }).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPobingItemBuilder", 2, "点击欢迎");
-    }
-    ahmp.c = 1;
-  }
-  
-  public void b(View paramView)
-  {
-    paramView = (ahmt)afur.a(paramView);
-    ahmp.jdField_a_of_type_JavaLangString = paramView.a.senderuin;
-    anwy localanwy = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a();
-    Object localObject = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
-    if ((localObject != null) && (((ChatFragment)localObject).a() != null))
-    {
-      localObject = (TroopChatPie)((ChatFragment)localObject).a();
-      localanwy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ((TroopChatPie)localObject).a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1, paramView.a);
-    }
-    new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_play").a(new String[] { paramView.a.frienduin }).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPobingItemBuilder", 2, "点击撩一下");
-    }
-    ahmp.c = 2;
-  }
+  public ahmq(ahmm paramahmm) {}
 }
 
 

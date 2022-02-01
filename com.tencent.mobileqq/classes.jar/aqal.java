@@ -1,22 +1,15 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aqal
-  implements TextWatcher
+class aqal
+  implements aqau
 {
-  public aqal(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  aqal(aqai paramaqai, aqas paramaqas, aqau paramaqau) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean)
   {
-    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
-      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
-    }
-    ClearEllipsisEditText.a(this.a, false);
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aqas.a }));
+    if (paramBoolean) {}
+    this.jdField_a_of_type_Aqau.a(paramBoolean);
   }
 }
 

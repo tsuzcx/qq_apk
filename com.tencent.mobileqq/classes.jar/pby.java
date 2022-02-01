@@ -1,16 +1,56 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pby
-  extends pcm
+public class pby
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pby(pbe parampbe, boolean paramBoolean, List paramList)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampbe, null);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoDynamicBufferConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pan.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
+    {
+      String str1;
+      String str2;
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "dynamic_buffer_switch")) {
+            bnrf.k(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "dynamic_buffer_config_json")) {
+        bnrf.f(str2);
+      }
+    }
   }
   
-  void a(pcp parampcp)
+  public void onWipeConfig(int paramInt)
   {
-    parampcp.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, pbe.c(this.jdField_a_of_type_Pbe), 6);
+    super.onWipeConfig(paramInt);
+    bnrf.k(0);
+    bnrf.f("");
   }
 }
 

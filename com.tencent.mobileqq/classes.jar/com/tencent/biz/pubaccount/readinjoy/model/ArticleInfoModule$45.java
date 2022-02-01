@@ -1,25 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pmk;
-import pwb;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import oyj;
 
-public class ArticleInfoModule$45
+public final class ArticleInfoModule$45
   implements Runnable
 {
-  public ArticleInfoModule$45(pwb parampwb, int paramInt1, int paramInt2) {}
+  public ArticleInfoModule$45(ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    boolean bool = true;
-    pmk localpmk = pmk.a();
-    long l = this.a;
-    if (this.b == 1) {}
-    for (;;)
-    {
-      localpmk.a(l, bool);
-      return;
-      bool = false;
-    }
+    oyj.a(this.a);
   }
 }
 

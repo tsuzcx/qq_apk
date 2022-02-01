@@ -1,37 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class ayfm
-  extends bdjl
+  implements View.OnTouchListener
 {
-  public ayfm(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public ayfm(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

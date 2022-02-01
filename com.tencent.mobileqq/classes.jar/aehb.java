@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aehb
-  implements bkhy
+public class aehb
+  implements View.OnClickListener
 {
-  aehb(aegy paramaegy) {}
+  public aehb(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    bcst.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
+    ChatSettingForTroop.e(this.a);
+    bhju.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.a.a.troopUin, bhju.a(this.a.a) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

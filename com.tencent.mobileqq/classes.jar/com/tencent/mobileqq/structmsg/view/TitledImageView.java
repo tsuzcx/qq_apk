@@ -14,7 +14,7 @@ import android.text.TextUtils.TruncateAt;
 import android.text.method.SingleLineTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
-import bdnt;
+import begp;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 public class TitledImageView
@@ -128,12 +128,12 @@ public class TitledImageView
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof bdnt))
+    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof begp))
     {
       this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
       return;
     }
-    this.jdField_a_of_type_JavaLangCharSequence = new bdnt(paramCharSequence, 1, 16);
+    this.jdField_a_of_type_JavaLangCharSequence = new begp(paramCharSequence, 1, 16);
   }
   
   public void settextBgRadius(int paramInt)

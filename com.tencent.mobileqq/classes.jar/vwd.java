@@ -1,17 +1,11 @@
-import com.tencent.biz.qqcircle.events.QCircleFeedCommentEllipseEvent;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
-public class vwd
-  implements aamu
+public abstract interface vwd
 {
-  public vwd(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
+  public abstract void a(FeedCloudMeta.StComment paramStComment);
   
-  public void a()
-  {
-    if (QCircleFeedCommentWidget.a(this.a) != null) {
-      zwp.a().a(new QCircleFeedCommentEllipseEvent(QCircleFeedCommentWidget.a(this.a)));
-    }
-  }
+  public abstract void a(FeedCloudMeta.StReply paramStReply);
 }
 
 

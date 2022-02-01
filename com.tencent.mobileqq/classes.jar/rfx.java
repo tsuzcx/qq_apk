@@ -1,24 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class rfx
-  implements Cloneable
+public abstract interface rfx
 {
-  public String a;
-  public String b;
+  public abstract void a();
   
-  protected Object clone()
-  {
-    try
-    {
-      rfx localrfx = (rfx)super.clone();
-      return localrfx;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
-    }
-    return null;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(@Nullable ColumnInfo paramColumnInfo);
+  
+  public abstract void a(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
+  
+  public abstract void a(@NotNull String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void b(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,42 +1,57 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.support.v4.util.SparseArrayCompat;
 
 public class akkv
-  extends akif
 {
-  akkv(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  private SparseArrayCompat<SparseArrayCompat<agvc>> a = new SparseArrayCompat(17);
+  private SparseArrayCompat<agvb> b = new SparseArrayCompat();
+  
+  public akkv(aklt paramaklt)
   {
-    super(paramNewPhotoPreviewActivity);
+    a(1, new akmh(paramaklt));
+    a(2, new akls(paramaklt));
+    a(3, new akkz(paramaklt));
   }
   
-  protected void d()
+  private void a(int paramInt, agvc paramagvc)
   {
-    Object localObject = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
-    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
-    if (localObject != null)
+    this.b.put(paramInt, paramagvc);
+    int[] arrayOfInt = paramagvc.a();
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      akgm.a(((ArrayList)localObject).size(), this.a.totalPicCount);
-      akgm.a(localIntent, ((ArrayList)localObject).size(), this.mPhotoCommonData.currentQualityType);
+      int k = arrayOfInt[i];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
+      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
+      if (localSparseArrayCompat2 == null)
+      {
+        localSparseArrayCompat1 = new SparseArrayCompat();
+        this.a.put(k, localSparseArrayCompat1);
+      }
+      localSparseArrayCompat1.put(paramInt, paramagvc);
+      i += 1;
     }
-    localObject = (NewPhotoPreviewActivity)this.mActivity;
-    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
-      return;
-    }
-    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)localObject).finish();
   }
   
-  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public <T extends agvb> T a(int paramInt)
   {
-    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    paramAdapterView = (NewPhotoPreviewActivity)this.mActivity;
-    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
-      paramAdapterView.titleView.setText(anni.a(2131706912));
+    return (agvb)this.b.get(paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
+    if (localSparseArrayCompat == null) {}
+    for (;;)
+    {
+      return;
+      int j = localSparseArrayCompat.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((agvc)localSparseArrayCompat.valueAt(i)).a(paramInt);
+        i += 1;
+      }
     }
   }
 }

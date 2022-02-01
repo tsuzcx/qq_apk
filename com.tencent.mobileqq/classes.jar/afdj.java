@@ -1,9 +1,15 @@
-public class afdj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class afdj
+  implements DialogInterface.OnClickListener
 {
-  public volatile long a;
-  public String a;
+  afdj(afdi paramafdi) {}
   
-  protected afdj(afdc paramafdc) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

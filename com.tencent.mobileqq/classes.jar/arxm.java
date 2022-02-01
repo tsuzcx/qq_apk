@@ -1,8 +1,19 @@
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface arxm
+public class arxm
+  implements View.OnClickListener
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  public arxm(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

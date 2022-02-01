@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahhs
-  implements DialogInterface.OnClickListener
+  extends ahkx
 {
-  ahhs(ahhm paramahhm, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ahhs(ahgk paramahgk)
   {
-    this.jdField_a_of_type_Ahhm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-    bcec.jdField_a_of_type_Boolean = true;
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return attw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 3, paramChatMessage);
   }
 }
 

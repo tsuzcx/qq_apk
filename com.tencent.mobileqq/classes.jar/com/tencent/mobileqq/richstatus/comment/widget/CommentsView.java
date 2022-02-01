@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.widget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -16,16 +16,16 @@ import android.view.ViewGroup.OnHierarchyChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbcs;
-import bbct;
-import bbcv;
-import bbcw;
-import bbcx;
-import bbcy;
-import bbcz;
-import bbda;
-import bbdb;
-import bdnt;
+import bbvl;
+import bbvm;
+import bbvo;
+import bbvp;
+import bbvq;
+import bbvr;
+import bbvs;
+import bbvt;
+import bbvu;
+import begp;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
 import com.tencent.qphone.base.util.QLog;
@@ -38,10 +38,10 @@ public class CommentsView
 {
   private int jdField_a_of_type_Int;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bbcv<View> jdField_a_of_type_Bbcv;
-  private bbcz jdField_a_of_type_Bbcz;
-  private bbda jdField_a_of_type_Bbda;
-  private bbdb jdField_a_of_type_Bbdb;
+  private bbvo<View> jdField_a_of_type_Bbvo;
+  private bbvs jdField_a_of_type_Bbvs;
+  private bbvt jdField_a_of_type_Bbvt;
+  private bbvu jdField_a_of_type_Bbvu;
   private String jdField_a_of_type_JavaLangString = "CommentsView";
   private List<CommentItem> jdField_a_of_type_JavaUtilList;
   private int b;
@@ -70,20 +70,20 @@ public class CommentsView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new bbcy(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new bbvr(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
   private View a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_Bbcv.a();
+    View localView2 = (View)this.jdField_a_of_type_Bbvo.a();
     View localView1 = localView2;
     if (localView2 == null)
     {
       if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
         this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562088, null, false);
+      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562128, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -92,7 +92,7 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    bbct localbbct = new bbct(this.b, this.b);
+    bbvm localbbvm = new bbvm(this.b, this.b);
     CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     String str = localCommentItem.user.b;
     paramView = "";
@@ -104,7 +104,7 @@ public class CommentsView
     if (!TextUtils.isEmpty(paramView))
     {
       localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(getContext().getString(2131717319));
+      localSpannableStringBuilder.append(getContext().getString(2131717447));
       localSpannableStringBuilder.append(" ");
       localSpannableStringBuilder.append(a(paramView, localCommentItem.toReplyUser.jdField_a_of_type_JavaLangString));
     }
@@ -113,18 +113,18 @@ public class CommentsView
     if (!TextUtils.isEmpty(paramView)) {
       localSpannableStringBuilder.append(paramView);
     }
-    localTextView.setText(new bdnt(localSpannableStringBuilder, 3, 16));
+    localTextView.setText(new begp(localSpannableStringBuilder, 3, 16));
     localTextView.setTextColor(this.c);
-    localTextView.setMovementMethod(localbbct);
-    localTextView.setOnClickListener(new bbcw(this, localbbct, paramInt));
-    localTextView.setOnLongClickListener(new bbcx(this, localbbct, paramInt));
+    localTextView.setMovementMethod(localbbvm);
+    localTextView.setOnClickListener(new bbvp(this, localbbvm, paramInt));
+    localTextView.setOnLongClickListener(new bbvq(this, localbbvm, paramInt));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Bbcv = new bbcv();
+    this.jdField_a_of_type_Bbvo = new bbvo();
     setOnHierarchyChangeListener(this);
-    this.c = getResources().getColor(2131167171);
+    this.c = getResources().getColor(2131167183);
   }
   
   public void a()
@@ -138,7 +138,7 @@ public class CommentsView
       return;
       setVisibility(0);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.topMargin = afur.a(2.0F, getResources());
+      localLayoutParams.topMargin = agej.a(2.0F, getResources());
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         if (getChildCount() > i) {
@@ -166,8 +166,8 @@ public class CommentsView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.CommentsView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166445));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166915));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166449));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166919));
       return;
     }
     finally
@@ -190,7 +190,7 @@ public class CommentsView
   
   public void onChildViewRemoved(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Bbcv.a(paramView2);
+    this.jdField_a_of_type_Bbvo.a(paramView2);
   }
   
   public void setItemColor(int paramInt)
@@ -203,19 +203,19 @@ public class CommentsView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(bbcz parambbcz)
+  public void setOnItemClickListener(bbvs parambbvs)
   {
-    this.jdField_a_of_type_Bbcz = parambbcz;
+    this.jdField_a_of_type_Bbvs = parambbvs;
   }
   
-  public void setOnItemLongClickListener(bbda parambbda)
+  public void setOnItemLongClickListener(bbvt parambbvt)
   {
-    this.jdField_a_of_type_Bbda = parambbda;
+    this.jdField_a_of_type_Bbvt = parambbvt;
   }
   
-  public void setOnSpanItemClick(bbdb parambbdb)
+  public void setOnSpanItemClick(bbvu parambbvu)
   {
-    this.jdField_a_of_type_Bbdb = parambbdb;
+    this.jdField_a_of_type_Bbvu = parambbvu;
   }
 }
 

@@ -1,58 +1,20 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.View;
+import android.view.Window;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
 
-public class rtf
-  implements rtc
+class rtf
+  implements DialogInterface.OnShowListener
 {
-  public static String a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private rtb jdField_a_of_type_Rtb;
-  private rtr jdField_a_of_type_Rtr;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
+  rtf(rsx paramrsx) {}
   
-  static
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    jdField_a_of_type_JavaLangString = "RIJUGC.RIJUgcImageUploader";
-  }
-  
-  public rtf(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "upload, path=" + this.jdField_b_of_type_JavaLangString);
-    this.jdField_b_of_type_Boolean = true;
-    ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1(this));
-  }
-  
-  public void a(rtb paramrtb)
-  {
-    this.jdField_a_of_type_Rtb = paramrtb;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "cancel, path=" + this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Rtr != null)
-      {
-        this.jdField_a_of_type_Rtr.a();
-        this.jdField_a_of_type_Rtr.b();
-      }
-    }
+    rsx.a(this.a, "mShareActionSheet onShow()");
+    this.a.a.a().getWindow().getDecorView().setSystemUiVisibility(rsx.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
+    this.a.a.a().getWindow().clearFlags(8);
   }
 }
 

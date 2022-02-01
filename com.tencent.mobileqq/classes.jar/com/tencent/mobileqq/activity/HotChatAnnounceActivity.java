@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aeko;
-import aekp;
-import aekq;
+import aetr;
+import aets;
+import aett;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,12 +14,12 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import anni;
-import anno;
-import annz;
-import bcst;
-import bgnt;
-import biau;
+import anzj;
+import anzp;
+import aoaa;
+import bdll;
+import bhnv;
+import bjbs;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,8 +35,8 @@ public class HotChatAnnounceActivity
 {
   View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  annz jdField_a_of_type_Annz = new aeko(this);
-  biau jdField_a_of_type_Biau;
+  aoaa jdField_a_of_type_Aoaa = new aetr(this);
+  bjbs jdField_a_of_type_Bjbs;
   BlockableEditTextView jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView;
   public String a;
   boolean jdField_a_of_type_Boolean;
@@ -51,13 +51,13 @@ public class HotChatAnnounceActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Biau == null) && (!isFinishing()))
+      if ((this.jdField_a_of_type_Bjbs == null) && (!isFinishing()))
       {
-        this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
-        this.jdField_a_of_type_Biau.c(2131694158);
+        this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bjbs.c(2131694176);
       }
-      if ((this.jdField_a_of_type_Biau != null) && (!this.jdField_a_of_type_Biau.isShowing())) {
-        this.jdField_a_of_type_Biau.show();
+      if ((this.jdField_a_of_type_Bjbs != null) && (!this.jdField_a_of_type_Bjbs.isShowing())) {
+        this.jdField_a_of_type_Bjbs.show();
       }
       return;
     }
@@ -74,12 +74,12 @@ public class HotChatAnnounceActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing()))
+      if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()))
       {
-        this.jdField_a_of_type_Biau.dismiss();
-        this.jdField_a_of_type_Biau.cancel();
+        this.jdField_a_of_type_Bjbs.dismiss();
+        this.jdField_a_of_type_Bjbs.cancel();
       }
-      this.jdField_a_of_type_Biau = null;
+      this.jdField_a_of_type_Bjbs = null;
       return;
     }
     catch (Throwable localThrowable)
@@ -102,18 +102,18 @@ public class HotChatAnnounceActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561203);
-    setTitle(anni.a(2131704320));
-    setRightButton(2131693206, this);
-    setLeftViewName(2131690389);
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131362681));
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new aekp(this));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131369903));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new aekq(this));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131381017);
+    super.setContentView(2131561240);
+    setTitle(anzj.a(2131704427));
+    setRightButton(2131693218, this);
+    setLeftViewName(2131690384);
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131362697));
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new aets(this));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131370001));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new aett(this));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131381197);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369785));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131369913);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369883));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370011);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("TROOPUIN");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("CANADDLINK", false);
@@ -129,7 +129,7 @@ public class HotChatAnnounceActivity
       if ((this.c != null) && (this.c.trim().length() > 0)) {
         this.jdField_b_of_type_AndroidViewView.setEnabled(true);
       }
-      this.app.addObserver(this.jdField_a_of_type_Annz);
+      this.app.addObserver(this.jdField_a_of_type_Aoaa);
       return true;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
@@ -138,8 +138,8 @@ public class HotChatAnnounceActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Annz != null) {
-      this.app.removeObserver(this.jdField_a_of_type_Annz);
+    if (this.jdField_a_of_type_Aoaa != null) {
+      this.app.removeObserver(this.jdField_a_of_type_Aoaa);
     }
   }
   
@@ -159,8 +159,8 @@ public class HotChatAnnounceActivity
     Object localObject1;
     if (paramView == this.rightViewText)
     {
-      if (!bgnt.d(this)) {
-        QQToast.a(this, 0, 2131691985, 0).b(getTitleBarHeight());
+      if (!bhnv.d(this)) {
+        QQToast.a(this, 0, 2131691989, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -170,14 +170,14 @@ public class HotChatAnnounceActivity
         localObject1 = this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getText().toString();
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          QQToast.a(this, 0, anni.a(2131704325), 0).b(getTitleBarHeight());
+          QQToast.a(this, 0, anzj.a(2131704432), 0).b(getTitleBarHeight());
         }
         else
         {
           if (((String)localObject2).getBytes().length / 3 <= 40) {
             break;
           }
-          QQToast.a(this, 0, anni.a(2131704319), 0).b(getTitleBarHeight());
+          QQToast.a(this, 0, anzj.a(2131704426), 0).b(getTitleBarHeight());
         }
       }
       if ((localObject1 != null) && (!TextUtils.isEmpty(((String)localObject1).trim()))) {
@@ -190,18 +190,18 @@ public class HotChatAnnounceActivity
     {
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).length() > 1024))
       {
-        QQToast.a(this, 0, anni.a(2131704327), 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, anzj.a(2131704434), 0).b(getTitleBarHeight());
         break;
       }
-      anno localanno = (anno)this.app.a(35);
+      anzp localanzp = (anzp)this.app.a(35);
       HotChatInfo localHotChatInfo = ((HotChatManager)this.app.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
       a();
       if (QLog.isColorLevel()) {
         QLog.i("HotChatAnnounceActivity", 2, "onClick.contnet=" + (String)localObject2 + ",link=" + (String)localObject1);
       }
-      bcst.b(this.app, "CliOper", "", "", "0X8005D54", "0X8005D54", 0, 0, "", "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X8005D54", "0X8005D54", 0, 0, "", "", "", "");
       if (localHotChatInfo.userCreate == 1) {}
-      for (boolean bool = localanno.a(localHotChatInfo.troopUin, (String)localObject2);; bool = localanno.a(localHotChatInfo.uuid.getBytes(), (String)localObject2, (String)localObject1))
+      for (boolean bool = localanzp.a(localHotChatInfo.troopUin, (String)localObject2);; bool = localanzp.a(localHotChatInfo.uuid.getBytes(), (String)localObject2, (String)localObject1))
       {
         this.d = ((String)localObject2);
         this.e = ((String)localObject1);
@@ -209,7 +209,7 @@ public class HotChatAnnounceActivity
           break;
         }
         b();
-        QQToast.a(this, 0, anni.a(2131704323), 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, anzj.a(2131704430), 0).b(getTitleBarHeight());
         break;
       }
       if (paramView != this.jdField_b_of_type_AndroidViewView) {

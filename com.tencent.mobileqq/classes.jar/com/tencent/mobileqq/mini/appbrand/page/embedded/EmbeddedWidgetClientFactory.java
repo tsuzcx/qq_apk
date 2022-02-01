@@ -17,6 +17,20 @@ public class EmbeddedWidgetClientFactory
   private ConcurrentHashMap<Long, EmbeddedWidgetClientHolder> embeddedWidgetClientHolderMap = new ConcurrentHashMap();
   private ConcurrentHashMap<Integer, Long> mappingTableMap = new ConcurrentHashMap();
   
+  private boolean doEventByWidgetId(JsRuntime paramJsRuntime, String paramString, int paramInt, BaseAppBrandRuntime paramBaseAppBrandRuntime, JSONObject paramJSONObject, long paramLong)
+  {
+    if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(paramLong))))
+    {
+      EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(paramLong));
+      if (localEmbeddedWidgetClientHolder != null)
+      {
+        localEmbeddedWidgetClientHolder.handleEmbeddedWidgetEvent(paramJsRuntime, paramString, paramJSONObject, paramInt, paramBaseAppBrandRuntime);
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public IEmbeddedWidgetClient createWidgetClient(String paramString, Map<String, String> paramMap, IEmbeddedWidget paramIEmbeddedWidget)
   {
     try
@@ -41,24 +55,30 @@ public class EmbeddedWidgetClientFactory
     return this.embeddedWidgetClientHolderMap;
   }
   
-  public boolean handleEmbeddedWidgetEvent(JsRuntime paramJsRuntime, String paramString1, String paramString2, int paramInt)
+  public boolean handleEmbeddedWidgetDestory(long paramLong)
+  {
+    if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(paramLong))))
+    {
+      QLog.d("miniapp-embedded", 1, "embeddedWidgetClientHolderMap remove " + paramLong);
+      this.embeddedWidgetClientHolderMap.remove(Long.valueOf(paramLong));
+    }
+    return true;
+  }
+  
+  public boolean handleEmbeddedWidgetEvent(JsRuntime paramJsRuntime, String paramString1, String paramString2, int paramInt, BaseAppBrandRuntime paramBaseAppBrandRuntime)
   {
     try
     {
       paramString2 = new JSONObject(paramString2);
       int i = paramString2.optInt("viewId", -1);
+      long l = paramString2.optLong("x5WidgetId", -1L);
+      if (l != -1L) {
+        return doEventByWidgetId(paramJsRuntime, paramString1, paramInt, paramBaseAppBrandRuntime, paramString2, l);
+      }
       if ((this.mappingTableMap != null) && (this.mappingTableMap.containsKey(Integer.valueOf(i))))
       {
-        Object localObject = (Long)this.mappingTableMap.get(Integer.valueOf(i));
-        if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(localObject)))
-        {
-          localObject = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(localObject);
-          if (localObject != null)
-          {
-            ((EmbeddedWidgetClientHolder)localObject).handleEmbeddedWidgetEvent(paramJsRuntime, paramString1, paramString2, paramInt);
-            return true;
-          }
-        }
+        boolean bool = doEventByWidgetId(paramJsRuntime, paramString1, paramInt, paramBaseAppBrandRuntime, paramString2, ((Long)this.mappingTableMap.get(Integer.valueOf(i))).longValue());
+        return bool;
       }
     }
     catch (Throwable paramJsRuntime)

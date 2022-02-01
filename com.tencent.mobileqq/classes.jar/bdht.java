@@ -1,60 +1,27 @@
-public class bdht
-  implements anil
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+
+public final class bdht
+  implements QQPermissionCallback
 {
-  public void a(int paramInt) {}
+  public bdht(bdhy parambdhy, AppActivity paramAppActivity) {}
   
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramInt)
-    {
+    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Bdhy);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Bdhy != null) {
+      this.jdField_a_of_type_Bdhy.a();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 2);
-                a((String)paramObject[0], (String)paramObject[1]);
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 4);
-            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdht
  * JD-Core Version:    0.7.0.1
  */

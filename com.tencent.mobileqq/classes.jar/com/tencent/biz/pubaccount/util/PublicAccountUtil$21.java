@@ -5,9 +5,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pmy;
-import pyq;
-import qnd;
+import pfs;
+import pra;
+import qfo;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class PublicAccountUtil$21
@@ -19,8 +19,8 @@ public final class PublicAccountUtil$21
   {
     try
     {
-      pyq localpyq = new pyq(null, null, null, qnd.a(), null);
-      this.jdField_a_of_type_JavaUtilList.addAll(pmy.a().a(this.jdField_a_of_type_Int));
+      pra localpra = new pra(null, null, null, qfo.a(), null);
+      this.jdField_a_of_type_JavaUtilList.addAll(pfs.a().a(this.jdField_a_of_type_Int));
       String str = "KDreportPushEffectEvent info : eventId:" + Integer.toString(this.jdField_a_of_type_Int) + "; AttributeList:[";
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
@@ -31,7 +31,7 @@ public final class PublicAccountUtil$21
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountUtil", 2, str);
       }
-      localpyq.a(this.jdField_a_of_type_Int, "", this.b, this.jdField_a_of_type_JavaUtilList, "OidbSvc.0xc22", 3106);
+      localpra.a(this.jdField_a_of_type_Int, "", this.b, this.jdField_a_of_type_JavaUtilList, "OidbSvc.0xc22", 3106);
       return;
     }
     catch (Exception localException)

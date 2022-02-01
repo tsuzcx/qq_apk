@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agqk;
-import agql;
-import agqn;
-import agqo;
-import aphx;
+import agzq;
+import agzr;
+import agzt;
+import agzu;
+import apvn;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -15,7 +15,7 @@ import java.util.Iterator;
 public class ArkAppLocationManager$1$1
   implements Runnable
 {
-  public ArkAppLocationManager$1$1(agql paramagql, boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public ArkAppLocationManager$1$1(agzr paramagzr, boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
@@ -30,26 +30,26 @@ public class ArkAppLocationManager$1$1
     }
     for (;;)
     {
-      synchronized (agqk.a(this.jdField_a_of_type_Agql.a))
+      synchronized (agzq.a(this.jdField_a_of_type_Agzr.a))
       {
-        Object localObject2 = new ArrayList(agqk.a(this.jdField_a_of_type_Agql.a));
+        Object localObject2 = new ArrayList(agzq.a(this.jdField_a_of_type_Agzr.a));
         if (((ArrayList)localObject2).size() == 0) {
-          SosoInterface.b(agqk.a(this.jdField_a_of_type_Agql.a));
+          SosoInterface.b(agzq.a(this.jdField_a_of_type_Agzr.a));
         }
         ??? = ((ArrayList)localObject2).iterator();
         if (((Iterator)???).hasNext())
         {
-          localObject2 = (agqo)((Iterator)???).next();
-          ((agqo)localObject2).a(this.jdField_a_of_type_Boolean, d1, d2);
+          localObject2 = (agzu)((Iterator)???).next();
+          ((agzu)localObject2).a(this.jdField_a_of_type_Boolean, d1, d2);
           if (this.jdField_a_of_type_Boolean) {
             continue;
           }
-          ((agqo)localObject2).a();
+          ((agzu)localObject2).a();
           continue;
           if ((Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a) <= 1.0E-006D) || (Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b) <= 1.0E-006D)) {
             break label567;
           }
-          ??? = aphx.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a);
+          ??? = apvn.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a);
           d2 = ???[0];
           d1 = ???[1];
           this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c = d1;
@@ -57,33 +57,33 @@ public class ArkAppLocationManager$1$1
         }
       }
       if (!this.jdField_a_of_type_Boolean) {
-        synchronized (agqk.a(this.jdField_a_of_type_Agql.a))
+        synchronized (agzq.a(this.jdField_a_of_type_Agzr.a))
         {
-          agqk.a(this.jdField_a_of_type_Agql.a).clear();
+          agzq.a(this.jdField_a_of_type_Agzr.a).clear();
         }
       }
-      synchronized (agqk.b(this.jdField_a_of_type_Agql.a))
+      synchronized (agzq.b(this.jdField_a_of_type_Agzr.a))
       {
-        Object localObject4 = new ArrayList(agqk.b(this.jdField_a_of_type_Agql.a));
-        agqk.b(this.jdField_a_of_type_Agql.a).removeAll((Collection)localObject4);
+        Object localObject4 = new ArrayList(agzq.b(this.jdField_a_of_type_Agzr.a));
+        agzq.b(this.jdField_a_of_type_Agzr.a).removeAll((Collection)localObject4);
         ??? = ((ArrayList)localObject4).iterator();
         while (((Iterator)???).hasNext())
         {
-          localObject4 = (agqo)((Iterator)???).next();
-          ((agqo)localObject4).a(this.jdField_a_of_type_Boolean, d1, d2);
-          ((agqo)localObject4).a();
+          localObject4 = (agzu)((Iterator)???).next();
+          ((agzu)localObject4).a(this.jdField_a_of_type_Boolean, d1, d2);
+          ((agzu)localObject4).a();
           continue;
           localObject5 = finally;
           throw localObject5;
         }
       }
-      synchronized (agqk.c(this.jdField_a_of_type_Agql.a))
+      synchronized (agzq.c(this.jdField_a_of_type_Agzr.a))
       {
-        ArrayList localArrayList = new ArrayList(agqk.c(this.jdField_a_of_type_Agql.a));
-        agqk.c(this.jdField_a_of_type_Agql.a).removeAll(localArrayList);
+        ArrayList localArrayList = new ArrayList(agzq.c(this.jdField_a_of_type_Agzr.a));
+        agzq.c(this.jdField_a_of_type_Agzr.a).removeAll(localArrayList);
         ??? = localArrayList.iterator();
         if (((Iterator)???).hasNext()) {
-          ((agqn)((Iterator)???).next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+          ((agzt)((Iterator)???).next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
         }
       }
       return;

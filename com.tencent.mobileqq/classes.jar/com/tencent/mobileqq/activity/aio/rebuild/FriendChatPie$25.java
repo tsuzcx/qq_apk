@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahzy;
+import aijm;
 import android.widget.TextView;
-import anmw;
-import ayox;
-import bazp;
+import anyw;
+import azhq;
+import bbsi;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
@@ -12,21 +12,21 @@ import com.tencent.mobileqq.data.Friends;
 public class FriendChatPie$25
   implements Runnable
 {
-  public FriendChatPie$25(ahzy paramahzy, String paramString, boolean paramBoolean) {}
+  public FriendChatPie$25(aijm paramaijm, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
     this.this$0.f.setText(this.jdField_a_of_type_JavaLangString);
-    Object localObject = (bazp)this.this$0.a(45);
-    if (((bazp)localObject).c()) {
+    Object localObject = (bbsi)this.this$0.a(45);
+    if (((bbsi)localObject).c()) {
       return;
     }
     boolean bool = true;
-    if ((this.jdField_a_of_type_Boolean) || (((bazp)localObject).b()) || (!this.this$0.P)) {
+    if ((this.jdField_a_of_type_Boolean) || (((bbsi)localObject).b()) || (!this.this$0.P)) {
       bool = false;
     }
-    localObject = ((anmw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    ayox.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Friends)localObject, this.this$0.f, bool);
+    localObject = ((anyw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    azhq.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Friends)localObject, this.this$0.f, bool);
   }
 }
 

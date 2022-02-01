@@ -1,26 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 
 public class akub
-  implements View.OnClickListener
+  extends aksu
 {
-  public akub(ChooseItemView paramChooseItemView) {}
-  
-  public void onClick(View paramView)
+  protected akub(AlbumListFragment paramAlbumListFragment)
   {
-    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
-    {
-      Collections.shuffle(ChooseItemView.a(this.a));
-      this.a.a.a(ChooseItemView.b(this.a));
-    }
-    if (ChooseItemView.a(this.a) != null) {
-      ChooseItemView.a(this.a).onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramAlbumListFragment);
   }
 }
 

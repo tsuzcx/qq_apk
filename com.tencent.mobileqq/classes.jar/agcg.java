@@ -1,64 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
 public class agcg
-  extends Drawable
+  implements View.OnClickListener
 {
-  public int a;
-  public Bitmap a;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  boolean jdField_a_of_type_Boolean;
+  public agcg(PositionActivatePage paramPositionActivatePage) {}
   
-  public void a(Bitmap paramBitmap, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt, paramBitmap.getHeight());
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      QLog.e("VoicePrintView", 1, "onDraw(), bmp==null");
-    }
-    int i;
-    do
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
     {
-      return;
-      i = 0;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = paramCanvas.save();
-        paramCanvas.scale(-1.0F, 1.0F, this.jdField_a_of_type_Int / 2.0F, getBounds().exactCenterY());
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while (!this.jdField_a_of_type_Boolean);
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
+      Intent localIntent = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
+      localIntent.putExtra("key_msg_type", 1);
+      localIntent.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
+      localIntent.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(localIntent, 1000);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
+      bdll.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
     }
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,21 +1,6 @@
-class ajwc
-  extends aniz
+public abstract interface ajwc
 {
-  ajwc(ajvr paramajvr) {}
-  
-  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.e();
-    }
-  }
-  
-  protected void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.e();
-    }
-  }
+  public abstract long a();
 }
 
 

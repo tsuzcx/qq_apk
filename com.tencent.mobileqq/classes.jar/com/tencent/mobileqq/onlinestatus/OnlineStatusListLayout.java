@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,7 +9,7 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import aypi;
+import azib;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,7 @@ public class OnlineStatusListLayout
   private int f;
   private int g;
   private int h;
+  private int i = -1;
   
   public OnlineStatusListLayout(Context paramContext)
   {
@@ -50,50 +51,55 @@ public class OnlineStatusListLayout
   
   private int a(int paramInt)
   {
-    int i = (paramInt + 1) / 4;
+    int j = (paramInt + 1) / 4;
     if ((paramInt + 1) % 4 == 0) {}
     for (paramInt = 0;; paramInt = 1) {
-      return paramInt + i;
+      return paramInt + j;
     }
   }
   
   private View a()
   {
-    int i = getChildCount() - 1;
-    while (i >= 0)
+    int j = getChildCount() - 1;
+    while (j >= 0)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(j);
       if (localView.getVisibility() == 0) {
         return localView;
       }
-      i -= 1;
+      j -= 1;
     }
     return null;
   }
   
   private void a()
   {
-    this.d = afur.a(14.0F, getResources());
-    this.e = afur.a(9.0F, getResources());
-    this.f = afur.a(39.0F, getResources());
+    this.d = agej.a(14.0F, getResources());
+    this.e = agej.a(9.0F, getResources());
+    this.f = agej.a(39.0F, getResources());
     setPadding(this.d, this.e, this.d, this.f);
-    this.jdField_b_of_type_Int = afur.a(9.0F, getResources());
-    this.jdField_c_of_type_Int = afur.a(9.0F, getResources());
+    this.jdField_b_of_type_Int = agej.a(9.0F, getResources());
+    this.jdField_c_of_type_Int = agej.a(9.0F, getResources());
   }
   
-  public static boolean a(aypi paramaypi1, aypi paramaypi2)
+  public static boolean a(azib paramazib1, azib paramazib2)
   {
-    if ((paramaypi1 == null) || (paramaypi2 == null) || (paramaypi1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramaypi2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
-    while (paramaypi1.jdField_a_of_type_Long != paramaypi2.jdField_a_of_type_Long) {
+    if ((paramazib1 == null) || (paramazib2 == null) || (paramazib1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramazib2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
+    while (paramazib1.jdField_a_of_type_Long != paramazib2.jdField_a_of_type_Long) {
       return false;
     }
     return true;
   }
   
+  public int a()
+  {
+    return this.i;
+  }
+  
   public void a(int paramInt, View.OnClickListener paramOnClickListener)
   {
-    int i = 0;
-    while (i < paramInt)
+    int j = 0;
+    while (j < paramInt)
     {
       OnlineStatusItemView localOnlineStatusItemView = new OnlineStatusItemView(getContext());
       localOnlineStatusItemView.setMultiMode(this.jdField_b_of_type_Boolean);
@@ -103,25 +109,25 @@ public class OnlineStatusListLayout
       localOnlineStatusItemView.setOnClickListener(paramOnClickListener);
       localOnlineStatusItemView.setVisibility(4);
       addView(localOnlineStatusItemView, new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
-      i += 1;
+      j += 1;
     }
   }
   
-  public void a(List<aypi> paramList, ArrayList<aypi> paramArrayList)
+  public void a(List<azib> paramList, ArrayList<azib> paramArrayList)
   {
-    int i = 0;
-    while (i < getChildCount())
+    int j = 0;
+    while (j < getChildCount())
     {
-      localObject = getChildAt(i);
+      localObject = getChildAt(j);
       ((View)localObject).setVisibility(4);
       ((OnlineStatusItemView)localObject).a(false);
-      i += 1;
+      j += 1;
     }
-    int k = paramList.size();
-    i = 0;
-    if (i < k)
+    int m = paramList.size();
+    j = 0;
+    if (j < m)
     {
-      localObject = getChildAt(i);
+      localObject = getChildAt(j);
       if ((localObject != null) && ((localObject instanceof OnlineStatusItemView))) {}
     }
     else
@@ -130,24 +136,24 @@ public class OnlineStatusListLayout
     }
     Object localObject = (OnlineStatusItemView)localObject;
     ((OnlineStatusItemView)localObject).setVisibility(0);
-    aypi localaypi = (aypi)paramList.get(i);
-    ((OnlineStatusItemView)localObject).a(localaypi);
-    ((OnlineStatusItemView)localObject).setTag(localaypi);
-    int j = 0;
+    azib localazib = (azib)paramList.get(j);
+    ((OnlineStatusItemView)localObject).a(localazib);
+    ((OnlineStatusItemView)localObject).setTag(localazib);
+    int k = 0;
     for (;;)
     {
-      if (j < paramArrayList.size())
+      if (k < paramArrayList.size())
       {
-        if (a(localaypi, (aypi)paramArrayList.get(j))) {
+        if (a(localazib, (azib)paramArrayList.get(k))) {
           ((OnlineStatusItemView)localObject).a(true);
         }
       }
       else
       {
-        i += 1;
+        j += 1;
         break;
       }
-      j += 1;
+      k += 1;
     }
   }
   
@@ -160,14 +166,14 @@ public class OnlineStatusListLayout
       View localView = a();
       if (localView != null)
       {
-        int j = localView.getBottom();
-        int k = localView.getRight();
-        int m = localView.getTop();
-        int n = this.jdField_c_of_type_Int;
-        int i1 = this.g;
-        int i2 = this.h;
-        if (this.jdField_a_of_type_Int + k >= getRight()) {}
-        for (int i = 1; (i2 > j) || ((i1 > k) && (i == 0) && (i2 > m - n)); i = 0) {
+        int k = localView.getBottom();
+        int m = localView.getRight();
+        int n = localView.getTop();
+        int i1 = this.jdField_c_of_type_Int;
+        int i2 = this.g;
+        int i3 = this.h;
+        if (this.jdField_a_of_type_Int + m >= getRight()) {}
+        for (int j = 1; (i3 > k) || ((i2 > m) && (j == 0) && (i3 > n - i1)); j = 0) {
           return true;
         }
       }
@@ -192,12 +198,12 @@ public class OnlineStatusListLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i = getChildCount();
+    int j = getChildCount();
     if (View.MeasureSpec.getMode(paramInt2) == 1073741824) {}
-    for (i = View.MeasureSpec.getSize(paramInt2);; i = a(i - 1) * (this.jdField_a_of_type_Int + this.jdField_c_of_type_Int) - this.jdField_c_of_type_Int)
+    for (j = View.MeasureSpec.getSize(paramInt2);; j = a(j - 1) * (this.jdField_a_of_type_Int + this.jdField_c_of_type_Int) - this.jdField_c_of_type_Int)
     {
-      setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), paramInt1), i);
-      measureChildren(paramInt1, View.MeasureSpec.makeMeasureSpec(i, View.MeasureSpec.getMode(paramInt2)));
+      setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), paramInt1), j);
+      measureChildren(paramInt1, View.MeasureSpec.makeMeasureSpec(j, View.MeasureSpec.getMode(paramInt2)));
       return;
     }
   }
@@ -226,6 +232,11 @@ public class OnlineStatusListLayout
   public void setMultiMode(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setPageIndex(int paramInt)
+  {
+    this.i = paramInt;
   }
   
   public void setUseLightNightBg(boolean paramBoolean)

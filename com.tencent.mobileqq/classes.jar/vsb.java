@@ -1,17 +1,18 @@
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.biz.qqcircle.scrollers.QCircleFeedPicPreloadScroller.4;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikePayView;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 
 public class vsb
-  extends voy
+  implements DialogInterface.OnClickListener
 {
-  public vsb(QCircleFeedPicPreloadScroller.4 param4) {}
+  public vsb(QCirclePolyLikePayView paramQCirclePolyLikePayView) {}
   
-  public void a(int paramInt, vou paramvou)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == QCircleFeedPicLoader.f) || (paramInt == QCircleFeedPicLoader.c)) {
-      vrx.a(this.a.this$0).put(paramvou.b(), Boolean.valueOf(true));
-    }
+    QCirclePolyLikePayView.a(this.a).cancel();
+    vtr.a(95, 2, this.a.a(), this.a.a().getPageId());
+    vtn.a(String.valueOf(uzg.a()), 95, 2, QCirclePolyLikePayView.a(this.a), this.a.a(), null, this.a.a().getPageId());
   }
 }
 

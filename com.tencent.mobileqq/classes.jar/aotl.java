@@ -1,188 +1,189 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.1;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.3;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.4;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.5;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.6;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor.11.1;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import mqq.os.MqqHandler;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspNextSystemMsg;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class aotl
-  implements aotj
+  implements bevw
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aotk jdField_a_of_type_Aotk;
-  private ARVideoRecordButtonView jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ARVideoRecordViewProxy.1(this);
-  private final String jdField_a_of_type_JavaLangString = anni.a(2131699569);
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5000;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final String jdField_b_of_type_JavaLangString = "0.00M";
-  private View c;
+  aotl(aoti paramaoti) {}
   
-  public aotl(View paramView)
+  public void a(bevy parambevy, bevx parambevx)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView = ((ARVideoRecordButtonView)paramView.findViewById(2131370377));
-    this.c = paramView.findViewById(2131364161);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131362863);
-    this.jdField_a_of_type_Boolean = aotc.a();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    if (parambevy.a.getResultCode() != 1000) {
+      this.a.a(4006, false, null);
     }
-    this.c.setOnClickListener(null);
-    this.c.setOnTouchListener(new aotm(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362865));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362864));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "init self");
-    }
-  }
-  
-  private void a(View paramView, int paramInt1, int paramInt2)
-  {
-    TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, paramInt2);
-    localTranslateAnimation1.setInterpolator(new AccelerateInterpolator());
-    localTranslateAnimation1.setDuration(paramInt1 / 2);
-    int i = 0 + paramInt1 / 2;
-    TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - paramInt2);
-    localTranslateAnimation2.setDuration(paramInt1 / 2);
-    localTranslateAnimation2.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation2.setStartOffset(i);
-    i += paramInt1 / 2;
-    TranslateAnimation localTranslateAnimation3 = new TranslateAnimation(0.0F, 0.0F, 0.0F, paramInt2 * 2 / 3);
-    localTranslateAnimation3.setInterpolator(new AccelerateInterpolator());
-    localTranslateAnimation3.setDuration(paramInt1 / 2);
-    localTranslateAnimation3.setStartOffset(i);
-    i += paramInt1 / 2;
-    TranslateAnimation localTranslateAnimation4 = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - paramInt2 * 2 / 3);
-    localTranslateAnimation4.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation4.setDuration(paramInt1 / 2);
-    localTranslateAnimation4.setStartOffset(i);
-    paramInt1 /= 2;
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localTranslateAnimation1);
-    localAnimationSet.addAnimation(localTranslateAnimation2);
-    localAnimationSet.addAnimation(localTranslateAnimation3);
-    localAnimationSet.addAnimation(localTranslateAnimation4);
-    if (paramView != null) {
-      paramView.startAnimation(localAnimationSet);
-    }
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "resetToInnerTipsStatus");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.setShowState(2);
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("0.00M");
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.clearAnimation();
-    }
+    label54:
+    Object localObject2;
     do
     {
       return;
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      a(this.jdField_b_of_type_AndroidViewView, 600, -40);
-      aotc.a(true);
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "ARButtonTips resetToInnerTipsStatus start animation");
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "show");
-    }
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      c();
-      return;
-    }
-    ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.3(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode" + paramInt);
-    }
-    if (this.jdField_a_of_type_Int == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode mCurrentUIDisplayMode equal");
+      try
+      {
+        if ((parambevx.a == null) || (!(parambevx.a instanceof Integer))) {
+          break label1101;
+        }
+        i = ((Integer)parambevx.a).intValue();
+        parambevx = aoti.o(this.a).getAccount();
+        localObject2 = new structmsg.RspNextSystemMsg();
+        ((structmsg.RspNextSystemMsg)localObject2).mergeFrom((byte[])parambevy.a.getWupBuffer());
+        new StringBuilder();
+        if ((localObject2 == null) || (((structmsg.RspNextSystemMsg)localObject2).head.result.get() != 0)) {
+          this.a.a(4006, false, null);
+        }
+        if (i != 3) {
+          break;
+        }
+        ajrj.a(this.a, aoti.p(this.a), (structmsg.RspNextSystemMsg)localObject2, parambevx);
+        return;
       }
-      return;
-    }
-    ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.6(this, paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.setProgress(paramInt1, 60000L);
-    }
-    ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.5(this, paramInt1, paramInt2));
-  }
-  
-  public void a(aotk paramaotk)
-  {
-    this.jdField_a_of_type_Aotk = paramaotk;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
-  }
-  
-  public void b()
-  {
+      catch (Exception parambevy) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", parambevy);
+    return;
+    ArrayList localArrayList = new ArrayList();
+    parambevy = ((structmsg.RspNextSystemMsg)localObject2).msgs.get();
+    int j = parambevy.size();
     if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "hide");
+      QLog.e("Q.systemmsg.", 2, "<---sendGetNextGroupSystemMsg Resp : decode pb size = " + j);
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
+    Object localObject1 = new HashSet();
+    int i = 0;
+    label238:
+    if (i < j)
+    {
+      Object localObject3 = (structmsg.StructMsg)((structmsg.StructMsg)parambevy.get(i)).get();
+      if ((localObject3 == null) || (!((structmsg.StructMsg)localObject3).msg_seq.has()) || (!((Set)localObject1).contains(Long.valueOf(((structmsg.StructMsg)localObject3).msg_seq.get()))))
+      {
+        MessageRecord localMessageRecord = bcry.a(-2018);
+        localMessageRecord.msgtype = -2018;
+        localMessageRecord.selfuin = parambevx;
+        localMessageRecord.frienduin = antf.N;
+        localMessageRecord.senderuin = (((structmsg.StructMsg)parambevy.get(i)).req_uin.get() + "");
+        localMessageRecord.istroop = 0;
+        MessageForSystemMsg localMessageForSystemMsg = (MessageForSystemMsg)localMessageRecord;
+        localMessageForSystemMsg.structMsg = ((structmsg.StructMsg)((structmsg.StructMsg)parambevy.get(i)).get());
+        localMessageRecord.msgData = localMessageForSystemMsg.structMsg.toByteArray();
+        localArrayList.add(localMessageForSystemMsg);
+        if ((localObject3 != null) && (((structmsg.StructMsg)localObject3).msg_seq.has())) {
+          ((Set)localObject1).add(Long.valueOf(((structmsg.StructMsg)localObject3).msg_seq.get()));
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(" type:").append(localMessageRecord.msgtype);
+          ((StringBuilder)localObject3).append(" selfuin:").append(localMessageRecord.selfuin);
+          ((StringBuilder)localObject3).append(" frienduin:").append(localMessageRecord.frienduin);
+          ((StringBuilder)localObject3).append(" senderuin:").append(localMessageRecord.senderuin);
+          ((StringBuilder)localObject3).append(" istroop:").append(localMessageRecord.istroop);
+          QLog.d("SystemMessageProcessor", 2, "sendGetNextGroupSystemMsg-->" + ((StringBuilder)localObject3).toString());
+        }
+      }
     }
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    else
+    {
+      localObject1 = (axfw)aoti.q(this.a).getManager(37);
+      if (localArrayList.size() > 0)
+      {
+        if (localArrayList.size() < 100)
+        {
+          bdzi.a().a(true, aoti.r(this.a));
+          if (localObject1 != null) {
+            ((axfw)localObject1).a(true);
+          }
+        }
+        long l2 = ((structmsg.RspNextSystemMsg)localObject2).following_group_seq.get();
+        long l1 = l2;
+        if (l2 <= 0L) {
+          l1 = aoti.s(this.a).a().e("following_group_seq");
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.systemmsg.", 2, "<---sendGetNextGroupSystemMsg : decode pb following_group_seq" + l1);
+        }
+        aoti.t(this.a).a().e("following_group_seq", l1);
+        localObject2 = ajqw.d();
+        if (localObject2 == null) {
+          break label1096;
+        }
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      return;
-      ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.4(this));
+      boolean bool;
+      try
+      {
+        parambevy = this.a.a((List)localObject2, localArrayList);
+        if (QLog.isColorLevel())
+        {
+          i = localArrayList.size();
+          QLog.e("Q.systemmsg.", 2, "<---sendGetNextGroupSystemMsg Resp : save db size = " + i);
+        }
+        if (QLog.isColorLevel())
+        {
+          i = localArrayList.size();
+          QLog.e("Q.systemmsg.", 2, "<---sendGetNextGroupSystemMsg Resp : save cache size = " + i);
+        }
+        i = bdzi.a().a(aoti.u(this.a));
+        ThreadManager.getUIHandler().post(new SystemMessageProcessor.11.1(this, localArrayList, i));
+        if ((parambevy != null) && (parambevy.size() > 0))
+        {
+          localObject2 = aoti.w(this.a).a();
+          parambevx = String.valueOf(parambevx);
+          if ((!aoci.a(localArrayList)) || (!aoti.v(this.a).isBackgroundStop)) {
+            break label1113;
+          }
+          bool = true;
+          ((QQMessageFacade)localObject2).a(parambevy, parambevx, bool);
+        }
+        this.a.a("handleGetSystemMsgResp", true, localArrayList.size(), false, false);
+        this.a.a(4005, true, localArrayList);
+        parambevy = (arbc)aran.a().a(634);
+        if (parambevy == null) {
+          break;
+        }
+        i = parambevy.d;
+        parambevx = aoti.y(this.a).a().a(antf.N, 0, null);
+        if ((((axfw)localObject1).a()) || (parambevx == null) || (parambevx.size() >= i) || (!parambevy.a)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SystemMessageProcessor", 2, "Auto Get Msg Continue");
+        }
+        this.a.c(0);
+        return;
+      }
+      finally {}
+      bdzi.a().a(true, aoti.x(this.a));
+      if (localObject1 != null)
+      {
+        ((axfw)localObject1).a(true);
+        continue;
+        label1096:
+        parambevy = null;
+        continue;
+        label1101:
+        i = 0;
+        break label54;
+        i += 1;
+        break label238;
+        label1113:
+        bool = false;
+      }
     }
   }
 }

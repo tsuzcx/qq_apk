@@ -1,28 +1,53 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.async.JobContext;
+import java.util.List;
 
 class xoq
-  implements xpo
+  implements woy<xce, xcf>
 {
-  xoq(xol paramxol, StoryVideoItem paramStoryVideoItem) {}
+  xoq(xop paramxop, JobContext paramJobContext, yfw paramyfw) {}
   
-  public boolean a(xpl paramxpl, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(@NonNull xce paramxce, @Nullable xcf paramxcf, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_Xol.isCanceled()) {
-      return true;
-    }
-    yqp.e(this.jdField_a_of_type_Xol.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
-    if (paramInt2 == 102)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      paramxpl.d();
-      return true;
+      yuk.d("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem cancel on net respond");
+      return;
     }
-    VideoViewVideoHolder.c(this.jdField_a_of_type_Xol.a, 7);
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xol.a, false);
-    VideoViewVideoHolder.b(this.jdField_a_of_type_Xol.a, paramInt2);
-    xol.b(this.jdField_a_of_type_Xol, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Xol.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
-    return true;
+    if ((paramErrorMessage.isFail()) || (paramxcf == null))
+    {
+      yuk.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
+      xop.a(this.jdField_a_of_type_Xop, paramErrorMessage);
+      return;
+    }
+    paramxce = (yme)wth.a(11);
+    if (paramxcf.a.size() < 1)
+    {
+      yuk.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
+      paramxce.a(xoj.a(this.jdField_a_of_type_Xop.a));
+      paramxce = new ErrorMessage(2222, "no feed data back.");
+      xop.b(this.jdField_a_of_type_Xop, paramxce);
+      return;
+    }
+    paramxcf = (ylo)paramxcf.a.get(0);
+    if ((paramxcf instanceof ynv))
+    {
+      paramErrorMessage = (ynv)paramxcf;
+      this.jdField_a_of_type_Yfw.a = paramxcf.a();
+      this.jdField_a_of_type_Yfw.a(paramxce.a(xoj.a(this.jdField_a_of_type_Xop.a), paramErrorMessage.a(), true), true);
+      ((ymk)wth.a(12)).a(2, this.jdField_a_of_type_Yfw.a.feedId, this.jdField_a_of_type_Yfw.a().mVideoSeq, this.jdField_a_of_type_Yfw.a(), this.jdField_a_of_type_Yfw.a().mVideoNextCookie, this.jdField_a_of_type_Yfw.a().mIsVideoEnd, this.jdField_a_of_type_Yfw.a().mVideoPullType, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Yfw.a = ((CommentLikeFeedItem)paramxce.a(xoj.a(this.jdField_a_of_type_Xop.a).a));
+      xop.a(this.jdField_a_of_type_Xop, this.jdField_a_of_type_Yfw);
+      return;
+      this.jdField_a_of_type_Yfw.a = paramxcf.a();
+    }
   }
 }
 

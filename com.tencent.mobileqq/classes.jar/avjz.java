@@ -1,15 +1,18 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.WebCallHandler;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import java.util.Comparator;
 
-class avjz
-  implements CustomizedWebView
+final class avjz
+  implements Comparator<PadFaceAd>
 {
-  avjz(avju paramavju) {}
-  
-  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
+  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
   {
-    avkt.a().a(paramBundle);
+    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
+      return -1;
+    }
+    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
+      return 0;
+    }
+    return 1;
   }
 }
 

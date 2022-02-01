@@ -1,54 +1,27 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.biz.qqcircle.bizparts.danmaku.model.QzoneBarrageEffectData;
-import com.tencent.component.app.common.ParcelableWrapper;
-import cooperation.qzone.util.QZLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.mobileqq.widget.QQToast;
+import qqcircle.QQCircleRight.SetCircleUnCareRsp;
 
-public final class vfk
-  implements biuy<QzoneBarrageEffectData>
+class vfk
+  implements aaav<QQCircleRight.SetCircleUnCareRsp>
 {
-  public int a()
-  {
-    return 1;
-  }
+  vfk(vfi paramvfi, boolean paramBoolean) {}
   
-  public QzoneBarrageEffectData a(Cursor paramCursor)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRight.SetCircleUnCareRsp paramSetCircleUnCareRsp)
   {
-    Object localObject1 = paramCursor.getBlob(paramCursor.getColumnIndex("barrage_effect_data"));
-    paramCursor = Parcel.obtain();
-    try
-    {
-      paramCursor.unmarshall((byte[])localObject1, 0, localObject1.length);
-      paramCursor.setDataPosition(0);
-      localObject1 = (QzoneBarrageEffectData)ParcelableWrapper.createDataFromParcel(paramCursor);
-      return localObject1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleSharePart", 1, "uncare person: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      QZLog.w("QzoneBarrageEffectData", "QzoneBarrageEffectData createFromCursor Error");
-      return null;
-    }
-    catch (Exception localException)
-    {
-      return null;
-    }
-    finally
-    {
-      if (paramCursor != null) {
-        paramCursor.recycle();
+      if (this.jdField_a_of_type_Boolean) {
+        QQToast.a(this.jdField_a_of_type_Vfi.a(), 2, 2131697195, 0).a();
       }
+      aaak.a().a(new QCircleFeedEvent("", 6));
+      return;
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public biuz[] a()
-  {
-    return new biuz[] { new biuz("uin", "INTEGER UNIQUE"), new biuz("barrage_effect_data", "BLOB") };
+    QQToast.a(this.jdField_a_of_type_Vfi.a(), 1, 2131697280, 0).a();
   }
 }
 

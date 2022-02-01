@@ -1,16 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSReportTo1160;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class qox
-  implements PTSNativeModuleRegistry.IPTSReportTo1160
+  extends pfh
 {
-  public void reportTo1160(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
+  public qox(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  
+  public void b(long paramLong, boolean paramBoolean)
   {
-    QLog.i("PTSReportTo1160Module", 1, "[reportTo1160], event = " + paramString1 + ", toUin = " + paramString2 + ", r2 = " + paramLong + ", r3 = " + paramInt + ", r4 = " + paramString3 + ", r5 = " + paramString4);
-    if (!TextUtils.isEmpty(paramString1)) {
-      qpk.a(paramString1, "" + paramLong, "" + paramInt, paramString3, new qpl(paramString4).a());
+    ComponentContentRecommendFollowGroup.4.1 local1 = new ComponentContentRecommendFollowGroup.4.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(local1);
+      return;
     }
+    local1.run();
   }
 }
 

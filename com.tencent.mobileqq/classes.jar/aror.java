@@ -1,192 +1,47 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.SystemFaceData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
 
 public class aror
-  extends arnz
-  implements Handler.Callback
+  extends armf<aroq>
 {
-  public static final String c = SystemFaceData.class.getSimpleName();
-  private Handler a = new Handler(Looper.getMainLooper(), this);
-  private ArrayList<String> b;
-  
-  public aror(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public aroq a()
   {
-    super("qq.android.system.face.gifv14", paramQQAppInterface);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    gc.a();
+    bhsi.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", "reset");
+    return new aroq();
   }
   
-  private void c(String paramString)
+  @NonNull
+  public aroq a(araj[] paramArrayOfaraj)
   {
-    int j = 0;
-    int i = j;
-    try
-    {
-      int m = Integer.parseInt(paramString);
-      i = j;
-      int k = bdnh.a[m];
-      i = j;
-      j = bdnh.b[m];
-      i = j;
-      localURL = new URL("emotion", BaseApplicationImpl.getContext().getResources().getResourceEntryName(k), "");
-      i = j;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      Object localObject;
-      do
-      {
-        for (;;)
-        {
-          URL localURL;
-          if (QLog.isColorLevel()) {
-            QLog.d(c, 2, "reloadFaceOnUI() ", localMalformedURLException);
-          }
-          localObject = null;
-        }
-        Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(i);
-        localObject = URLDrawable.getDrawable((URL)localObject, localDrawable, localDrawable, true);
-        if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status!=successed||loading. go to restartDownload");
-          }
-          ((URLDrawable)localObject).addHeader("faceIdx", paramString);
-          ((URLDrawable)localObject).restartDownload();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status=" + ((URLDrawable)localObject).getStatus() + " do nothing..");
-    }
-    if (localURL == null) {
-      return;
-    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    gc.a(paramArrayOfaraj[0].a);
+    bhsi.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", paramArrayOfaraj[0].a);
+    return new aroq();
   }
   
-  public int a()
+  @NonNull
+  public aroq b()
   {
-    return 10055;
+    return new aroq();
   }
   
-  public Class<? extends XmlData> a()
+  public Class<aroq> clazz()
   {
-    return SystemFaceData.class;
+    return aroq.class;
   }
   
-  public String a()
+  public int type()
   {
-    return "actEarlySysFaceGif";
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      File localFile = BaseApplicationImpl.getContext().getDir("systemface", 0);
-      bgmg.a(paramString, localFile.getAbsolutePath(), true);
-      if (QLog.isColorLevel()) {
-        QLog.d(c, 2, "doOnDownloadFinish() uncompressZip to:" + localFile.getAbsolutePath());
-      }
-      super.a(paramString);
-      this.a.sendEmptyMessage(196864);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public void b(String paramString)
-  {
-    arno.a.lock();
-    try
-    {
-      if (this.b == null) {
-        this.b = new ArrayList();
-      }
-      if (!this.b.contains(paramString))
-      {
-        this.b.add(0, paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 2, "addWaittingFace idx=" + paramString);
-        }
-      }
-      return;
-    }
-    finally
-    {
-      arno.a.unlock();
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramMessage = null;
-      if ((this.b == null) || (this.b.size() <= 0)) {
-        continue;
-      }
-      arno.a.lock();
-      try
-      {
-        if (this.b.size() > 0) {
-          paramMessage = (String)this.b.remove(0);
-        }
-        arno.a.unlock();
-        if ((paramMessage == null) || (paramMessage.length() <= 0)) {
-          continue;
-        }
-        c(paramMessage);
-        if (this.b.size() <= 0) {
-          continue;
-        }
-        this.a.sendEmptyMessageDelayed(196864, 2000L);
-        return false;
-      }
-      finally
-      {
-        arno.a.unlock();
-      }
-    }
+    return 359;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aror
  * JD-Core Version:    0.7.0.1
  */

@@ -1,176 +1,225 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bdlh
-  extends BaseAdapter
-  implements bdla
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected Handler a;
-  protected View.OnClickListener a;
-  protected View.OnLongClickListener a;
-  private bdhg jdField_a_of_type_Bdhg;
-  private bdld jdField_a_of_type_Bdld = new bdld();
-  private bdmj jdField_a_of_type_Bdmj;
-  private bdmn jdField_a_of_type_Bdmn;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected List<Object> a;
-  protected boolean a;
-  public int b;
-  protected View.OnClickListener b;
-  protected boolean b;
-  
-  public bdlh(QQAppInterface paramQQAppInterface, Activity paramActivity, bdhg parambdhg, Handler paramHandler)
+  private static String a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new bdli(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Bdhg = parambdhg;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Long = (bbyp.a() * 1000L);
+    switch (bhnv.b(paramQQAppInterface.getApp()))
+    {
+    default: 
+      return "unknown";
+    case 0: 
+      return "none";
+    case 1: 
+      return "Wi-Fi";
+    case 2: 
+      return "2G";
+    case 3: 
+      return "3G";
+    case 4: 
+      return "4G";
+    }
+    return "5G";
   }
   
-  public void a()
+  private static String a(QQAppInterface paramQQAppInterface, bdnq parambdnq, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    if (parambdnq == null) {
+      return null;
+    }
+    parambdnq.a = bhlo.d();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
+      parambdnq.c = localSosoLbsInfo.a.e;
+    }
+    if (paramQQAppInterface == null) {}
+    for (parambdnq.b = "${network_unknown}";; parambdnq.b = a(paramQQAppInterface)) {
+      return parambdnq.a(paramInt);
     }
   }
   
-  public void a(int paramInt, bdmc parambdmc)
+  public static void a(QQAppInterface paramQQAppInterface, bdnr parambdnr)
   {
-    parambdmc = (PadInfo)parambdmc;
-    switch (paramInt)
+    a("dc01982", paramQQAppInterface, parambdnr);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, bdnt parambdnt)
+  {
+    b("dc01983", paramQQAppInterface, parambdnt);
+  }
+  
+  private static void a(String paramString, QQAppInterface paramQQAppInterface, bdnq parambdnq)
+  {
+    if (parambdnq == null)
     {
+      ExceptionTracker.trackException("QIMReportController", "[QIM Report runtime] Tag(" + paramString + ") report item is null");
+      if (!QLog.isColorLevel()) {}
     }
     do
     {
-      do
+      return;
+      if (!TextUtils.isEmpty(parambdnq.d)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    return;
+    if (QLog.isColorLevel()) {}
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localObject = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
       {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localObject = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localObject = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localObject = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localObject == null)
+    {
+      paramQQAppInterface = a((QQAppInterface)localObject, parambdnq, 1);
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      ((Intent)localObject).putExtra("reporting_tag", paramString);
+      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
+      if ((parambdnq instanceof bdns)) {
+        ((Intent)localObject).putExtra("reporting_count", 0);
+      }
+      for (;;)
+      {
+        ((Intent)localObject).putExtra("is_runtime", 1);
+        BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
         return;
-      } while (this.jdField_a_of_type_Bdhg == null);
-      this.jdField_a_of_type_Bdhg.b(parambdmc);
-      return;
-    } while (this.jdField_a_of_type_Bdhg == null);
-    this.jdField_a_of_type_Bdhg.a(parambdmc);
+        if ((parambdnq instanceof bdnr)) {
+          ((Intent)localObject).putExtra("reporting_count", ((bdnr)parambdnq).a);
+        } else if ((parambdnq instanceof bdnt)) {
+          ((Intent)localObject).putExtra("reporting_count", ((bdnt)parambdnq).a);
+        }
+      }
+    }
+    a(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, parambdnq, 1));
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  protected void a(bdlb parambdlb)
-  {
-    if ((parambdlb instanceof bdkw)) {
-      ((bdkw)parambdlb).a(this);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      Object localObject = paramString2;
+      if (paramQQAppInterface != null)
+      {
+        localObject = paramString2;
+        if (paramString2.contains("${network_unknown}")) {
+          localObject = paramString2.replace("${network_unknown}", a(paramQQAppInterface));
+        }
+      }
+      paramString2 = (String)localObject;
+      if (((String)localObject).contains("${count_unknown}")) {
+        paramString2 = ((String)localObject).replace("${count_unknown}", "1");
+      }
+      localObject = new NewIntent(paramQQAppInterface.getApplication(), bcvz.class);
+      ((NewIntent)localObject).putExtra("sendType", 2);
+      ((NewIntent)localObject).putExtra("tag", paramString1);
+      ((NewIntent)localObject).putExtra("content", paramString2);
+      ((NewIntent)localObject).setWithouLogin(true);
+      paramQQAppInterface.startServlet((NewIntent)localObject);
     }
   }
   
-  public void a(List<? extends Object> paramList)
+  public static void b(QQAppInterface paramQQAppInterface, bdnr parambdnr)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMReportController", 2, "1982:" + parambdnr);
+    }
+    a(paramQQAppInterface, parambdnr);
+  }
+  
+  private static void b(String paramString, QQAppInterface paramQQAppInterface, bdnq parambdnq)
+  {
+    if (parambdnq == null)
     {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      }
-      notifyDataSetChanged();
+      ExceptionTracker.trackException("QIMReportController", "QIM Report not runtime Tag(" + paramString + ") report item is null");
+      if (!QLog.isColorLevel()) {}
     }
     do
     {
       return;
-      a();
-    } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
-  
-  public void b(List<? extends Object> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
+      if (!TextUtils.isEmpty(parambdnq.d)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    return;
+    if (QLog.isColorLevel()) {}
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
     {
-      notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bdld);
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return ((bdmc)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getCloudFileType();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bdmc localbdmc = (bdmc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject2;
-    Object localObject1;
-    if (localbdmc.getCloudFileType() == 10)
-    {
-      localObject2 = this.jdField_a_of_type_Bdmn;
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      localObject = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
       {
-        localObject1 = new bdmn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Bdmn = ((bdmn)localObject1);
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localObject = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localObject = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localObject = (QQAppInterface)localAppRuntime;
+          }
+        }
       }
     }
-    for (;;)
+    if (localObject == null)
     {
-      a((bdlb)localObject1);
-      paramView = ((bdlb)localObject1).a(paramInt, localbdmc, paramView, paramViewGroup, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject2 = this.jdField_a_of_type_Bdmj;
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      paramQQAppInterface = a((QQAppInterface)localObject, parambdnq, 0);
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      ((Intent)localObject).putExtra("reporting_tag", paramString);
+      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
+      if ((parambdnq instanceof bdns)) {
+        ((Intent)localObject).putExtra("reporting_count", 0);
+      }
+      for (;;)
       {
-        localObject1 = new bdmj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Bdmj = ((bdmj)localObject1);
+        ((Intent)localObject).putExtra("is_runtime", 0);
+        BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
+        return;
+        if ((parambdnq instanceof bdnr)) {
+          ((Intent)localObject).putExtra("reporting_count", ((bdnr)parambdnq).a);
+        } else if ((parambdnq instanceof bdnt)) {
+          ((Intent)localObject).putExtra("reporting_count", ((bdnt)parambdnq).a);
+        }
       }
     }
+    b(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, parambdnq, 0));
   }
   
-  public int getViewTypeCount()
+  public static void b(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    return 12;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramQQAppInterface != null))
+    {
+      String str = paramString2;
+      if (paramString2.contains("${network_unknown}")) {
+        str = paramString2.replace("${network_unknown}", a(paramQQAppInterface));
+      }
+      paramQQAppInterface = paramQQAppInterface.a();
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(paramString1, str, 1);
+      }
+    }
   }
 }
 

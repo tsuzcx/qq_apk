@@ -1,11 +1,18 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
 
-final class aweb
-  extends awej<TimerTaskManager, Void>
+public final class aweb
+  implements Parcelable.Creator<SingTogetherSession>
 {
-  protected TimerTaskManager a(Void paramVoid)
+  public SingTogetherSession a(Parcel paramParcel)
   {
-    return new TimerTaskManager();
+    return new SingTogetherSession(paramParcel, null);
+  }
+  
+  public SingTogetherSession[] a(int paramInt)
+  {
+    return new SingTogetherSession[paramInt];
   }
 }
 

@@ -1,8 +1,13 @@
+import java.util.List;
+
 public class qxa
+  implements Cloneable
 {
   public int a;
   public long a;
+  public List<Long> a;
   public int b;
+  public long b;
 }
 
 

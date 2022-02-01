@@ -1,53 +1,34 @@
-import android.os.Handler;
-import com.tencent.qav.QavDef.MultiUserInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class nah
-  extends mwx
+public abstract interface nah
 {
-  nah(nag paramnag) {}
+  public abstract void a(long paramLong, int paramInt, String paramString1, String paramString2);
   
-  public void a()
-  {
-    int i = leo.b();
-    if (mxl.a().a()) {
-      this.a.a.sendEmptyMessageDelayed(8, 0L);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("GameRoomPresenterImp", 2, "onEnterRoomSucess, curNetType[" + i + "]");
-      }
-      return;
-      this.a.a.sendEmptyMessageDelayed(8, 3000L);
-      this.a.a.sendEmptyMessageDelayed(9, 6000L);
-    }
-  }
+  public abstract void a(long paramLong, String paramString1, String paramString2);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    nag.a(this.a);
-  }
+  public abstract void a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2);
   
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    nag.a(this.a);
-  }
+  public abstract void a(mze parammze, String paramString);
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameRoomPresenterImp", 1, "onMemberVideoInOrOut userUin:" + paramLong + "  videoIn:" + paramBoolean + "  videoSrcType:" + paramInt);
-    }
-    this.a.a.sendEmptyMessage(2);
-    nag.a(this.a);
-    this.a.a(250);
-  }
+  public abstract void a(mze parammze, boolean paramBoolean);
   
-  public void b(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    this.a.a(250);
-  }
+  public abstract void b(long paramLong, String paramString1, String paramString2);
+  
+  public abstract void b(mze parammze, int paramInt);
+  
+  public abstract void c(String paramString, mze parammze);
+  
+  public abstract void c(mze parammze);
+  
+  public abstract void d(String paramString, mze parammze);
+  
+  public abstract void d(mze parammze);
+  
+  public abstract void e(mze parammze);
+  
+  public abstract void f(mze parammze);
+  
+  public abstract void g(mze parammze);
+  
+  public abstract void h(mze parammze);
 }
 
 

@@ -1,40 +1,32 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener2;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
-
-final class bbgi
-  implements URLDrawable.URLDrawableListener2
+class bbgi
 {
-  bbgi(SoftReference paramSoftReference, URLDrawable paramURLDrawable, bbgk parambbgk) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public bbgi(bbgh parambbgh, String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
-      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
-      localAbstractGifImage.reset();
-      localAbstractGifImage.setStrongGIFPlayOnceListener(new bbgj(this, localAbstractGifImage));
-      paramURLDrawable.setVisibility(0);
-      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    } while (this.jdField_a_of_type_Bbgk == null);
-    this.jdField_a_of_type_Bbgk.a();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.b * 100 / this.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    this.b += 1;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int += 1;
   }
 }
 

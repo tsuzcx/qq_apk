@@ -1,82 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.view.ApolloPanelListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class angv
-  extends angy
-  implements View.OnClickListener
+public final class angv
+  implements EIPCResultCallback
 {
-  public angv(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext);
-    this.c = 4;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.f = 2;
-  }
+  public angv(String paramString1, String paramString2, anha paramanha) {}
   
-  public View a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setDivider(null);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setVerticalScrollBarEnabled(true);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setEdgeEffectEnabled(false);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setSelector(2130850667);
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("selfUinStatus");
+    int j = paramEIPCResult.getInt("friendUinStatus");
+    angt.a(this.jdField_a_of_type_JavaLangString, i);
+    angt.a(this.b, j);
+    if (this.jdField_a_of_type_Anha != null) {
+      this.jdField_a_of_type_Anha.a(true);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView;
+    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
   }
-  
-  public anff a(String paramString)
-  {
-    return new anfl(paramString);
-  }
-  
-  public ArrayList<anff> a(int paramInt)
-  {
-    if ((this.b != 9) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    do
-    {
-      return null;
-      i = a();
-    } while ((paramInt < 0) || (paramInt >= i) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null));
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getFirstVisiblePosition() * this.f;
-    int i = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getLastVisiblePosition();
-    int j = this.f;
-    ArrayList localArrayList = new ArrayList();
-    while ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt <= (i + 1) * j - 1))
-    {
-      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      paramInt += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList = null;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    c(paramView);
-  }
-  
-  public void a(BaseChatPie paramBaseChatPie)
-  {
-    super.a(paramBaseChatPie);
-    if (this.jdField_a_of_type_Angr != null) {
-      this.jdField_a_of_type_Angr.a(paramBaseChatPie);
-    }
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

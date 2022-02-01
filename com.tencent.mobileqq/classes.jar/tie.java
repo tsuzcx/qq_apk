@@ -1,21 +1,42 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tie
-  implements tin
+  implements View.OnLayoutChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public tie(VVideoView paramVVideoView) {}
   
-  public tie(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new tif(this, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView), paramInt1, paramInt2));
+    JSONObject localJSONObject;
+    if ((VVideoView.a(this.a)) && (this.a.a() != null) && (paramView != null) && (paramView.getWidth() >= paramView.getHeight())) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("left", paramInt1);
+      localJSONObject.put("top", paramInt2);
+      localJSONObject.put("right", paramInt3);
+      localJSONObject.put("bottom", paramInt4);
+      localJSONObject.put("width", paramView.getWidth());
+      localJSONObject.put("height", paramView.getHeight());
+      this.a.a("onFullScreenSizeChange", localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("VVideoView", 2, "test video onLayoutChange left:" + paramInt1 + ",top:" + paramInt2 + ",right:" + paramInt3 + ",bottom:" + paramInt4 + ",oldLeft:" + paramInt5 + ",oldTop:" + paramInt6 + ",oldRight:" + paramInt7 + ",oldBottom:" + paramInt8);
+      }
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
   }
 }
 

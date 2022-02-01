@@ -1,18 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-class nxi
-  implements View.OnClickListener
+public class nxi
+  extends AnimatorListenerAdapter
 {
-  nxi(nxe paramnxe) {}
+  public nxi(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.dismiss();
-    nxe.c(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onAnimationEnd(paramAnimator);
+    VideoCoverView.a(this.a, true);
   }
 }
 

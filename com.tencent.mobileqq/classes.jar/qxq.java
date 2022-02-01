@@ -1,16 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 
-public class qxq
-  implements pyu
+public final class qxq
+  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
 {
-  public qxq(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
   {
-    if ((paramBoolean) && (paramInt == 1)) {
-      pmh.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
-    }
+    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
+  }
+  
+  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
+  {
+    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
   }
 }
 

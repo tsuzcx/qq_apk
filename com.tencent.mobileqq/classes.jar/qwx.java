@@ -1,18 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
 
-public class qwx
-  implements View.OnClickListener
+public final class qwx
+  implements Parcelable.Creator<RecommendFollowInfoTitle>
 {
-  public qwx(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, List paramList, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public RecommendFollowInfoTitle a(Parcel paramParcel)
   {
-    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend, ((Long)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).longValue());
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool = true;
+    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
+    localRecommendFollowInfoTitle.title = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localRecommendFollowInfoTitle.isAllFollowed = bool;
+      return localRecommendFollowInfoTitle;
+      bool = false;
+    }
+  }
+  
+  public RecommendFollowInfoTitle[] a(int paramInt)
+  {
+    return new RecommendFollowInfoTitle[paramInt];
   }
 }
 

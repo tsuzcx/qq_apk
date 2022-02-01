@@ -2,8 +2,8 @@ package com.tencent.qidian.controller;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import auxc;
-import bjhb;
+import avpd;
+import bkib;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class QidianHandler$1
   implements Runnable
 {
-  public QidianHandler$1(bjhb parambjhb, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
+  public QidianHandler$1(bkib parambkib, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ public class QidianHandler$1
     catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d(bjhb.a(), 2, "handleBlockBulkMsg ", localException);
+      QLog.d(bkib.a(), 2, "handleBlockBulkMsg ", localException);
     }
   }
 }

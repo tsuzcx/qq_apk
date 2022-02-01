@@ -1,16 +1,94 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class anel
-  implements biea
+  implements SensorEventListener
 {
-  public anel(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onItemSelect(View paramView, int paramInt)
+  public anel(Context paramContext, long paramLong, int paramInt)
   {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null)
+    {
+      QLog.e("ApolloRender", 1, "SensorManager is null");
+      anbd.a().callbackFromRequest(this.jdField_a_of_type_Long, 1, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+    if (localObject == null)
+    {
+      QLog.e("ApolloRender", 1, "Sensor gyro is null");
+      anbd.a().callbackFromRequest(this.jdField_a_of_type_Long, 2, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+    boolean bool = this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, (Sensor)localObject, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Boolean = true;
+    localObject = anbd.a();
+    long l = this.jdField_a_of_type_Long;
+    if (bool) {}
+    for (int i = 0;; i = 5)
+    {
+      ((ApolloCmdChannel)localObject).callbackFromRequest(l, i, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null)
+    {
+      QLog.e("ApolloRender", 1, "SensorManager is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
+    this.jdField_a_of_type_Boolean = false;
+    QLog.e("ApolloRender", 1, "Sensor unRegister");
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    try
+    {
+      paramSensorEvent = paramSensorEvent.values;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("gyroX", paramSensorEvent[0]);
+      localJSONObject.put("gyroY", paramSensorEvent[1]);
+      localJSONObject.put("gyroZ", paramSensorEvent[2]);
+      anbd.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_device_gyro_sensor_scope_update.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable paramSensorEvent)
+    {
+      QLog.e("ApolloRender", 1, paramSensorEvent, new Object[0]);
     }
   }
 }

@@ -19,10 +19,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import wut;
-import wuu;
-import wuv;
-import yqp;
+import wyo;
+import wyp;
+import wyq;
+import yuk;
 
 public class MsgTabStoryNodeView
   extends FrameLayout
@@ -49,16 +49,16 @@ public class MsgTabStoryNodeView
     super(paramContext);
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    inflate(paramContext, 2131561743, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376265));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new wuv(paramContext));
+    inflate(paramContext, 2131561784, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376405));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new wyq(paramContext));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378569));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369674);
-    findViewById(2131378566).setOnClickListener(new wut(this));
-    int i = paramContext.getResources().getColor(2131166993);
-    ((ImageView)findViewById(2131368286)).getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new wuu(this, paramContext));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378728));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369768);
+    findViewById(2131378725).setOnClickListener(new wyo(this));
+    int i = paramContext.getResources().getColor(2131166997);
+    ((ImageView)findViewById(2131368360)).getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new wyp(this, paramContext));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setAutoMeasureEnabled(true);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
@@ -66,11 +66,11 @@ public class MsgTabStoryNodeView
   
   public void a()
   {
-    Drawable localDrawable = getContext().getResources().getDrawable(2130846048);
-    yqp.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "newDrawable %s", String.valueOf(localDrawable));
+    Drawable localDrawable = getContext().getResources().getDrawable(2130846063);
+    yuk.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "newDrawable %s", String.valueOf(localDrawable));
     if ((localDrawable instanceof SkinnableBitmapDrawable))
     {
-      ImageView localImageView = (ImageView)findViewById(2131368351);
+      ImageView localImageView = (ImageView)findViewById(2131368424);
       Matrix localMatrix = localImageView.getImageMatrix();
       float f = localImageView.getWidth() * 1.0F / localDrawable.getIntrinsicWidth();
       localMatrix.setScale(f, f, 0.0F, 0.0F);
@@ -80,15 +80,15 @@ public class MsgTabStoryNodeView
     }
     for (;;)
     {
-      setBackgroundDrawable(getResources().getDrawable(2130839394));
+      setBackgroundDrawable(getResources().getDrawable(2130839402));
       return;
-      ((ImageView)findViewById(2131368351)).setVisibility(8);
+      ((ImageView)findViewById(2131368424)).setVisibility(8);
     }
   }
   
   public void a(int paramInt)
   {
-    yqp.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "updateRedPoint " + paramInt);
+    yuk.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "updateRedPoint " + paramInt);
     if (paramInt > 99) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("99+");
     }
@@ -147,21 +147,21 @@ public class MsgTabStoryNodeView
   
   public void b()
   {
-    int i = getContext().getResources().getColor(2131166993);
-    Object localObject = (ImageView)findViewById(2131368286);
+    int i = getContext().getResources().getColor(2131166997);
+    Object localObject = (ImageView)findViewById(2131368360);
     if (localObject != null)
     {
       ((ImageView)localObject).getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
       ((ImageView)localObject).invalidate();
     }
-    ((TextView)findViewById(2131378566)).setTextColor(i);
-    ((TextView)findViewById(2131378565)).setTextColor(i);
-    getContext().getResources().getColor(2131167044);
-    getContext().getResources().getDrawable(2130850014);
+    ((TextView)findViewById(2131378725)).setTextColor(i);
+    ((TextView)findViewById(2131378724)).setTextColor(i);
+    getContext().getResources().getColor(2131167050);
+    getContext().getResources().getDrawable(2130850026);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundDrawable(null);
     for (localObject = this;; localObject = (View)localObject)
     {
-      yqp.b("Q.qqstory.msgTab.MsgTabStoryNodeViewVASH", "Debug %s -> back: %s", String.valueOf(localObject), String.valueOf(((View)localObject).getBackground()));
+      yuk.b("Q.qqstory.msgTab.MsgTabStoryNodeViewVASH", "Debug %s -> back: %s", String.valueOf(localObject), String.valueOf(((View)localObject).getBackground()));
       localObject = ((View)localObject).getParent();
       if ((localObject == null) || (!(localObject instanceof View)))
       {
@@ -175,11 +175,11 @@ public class MsgTabStoryNodeView
   {
     super.onAttachedToWindow();
     this.jdField_b_of_type_Boolean = false;
-    yqp.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "onAttachedToWindow");
+    yuk.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "onAttachedToWindow");
     a();
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager().getChildCount() != this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount())
     {
-      yqp.e("Q.qqstory.msgTab.MsgTabStoryNodeView", "onAttachedToWindow recyclerView count not match! reset!");
+      yuk.e("Q.qqstory.msgTab.MsgTabStoryNodeView", "onAttachedToWindow recyclerView count not match! reset!");
       this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
       this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setAutoMeasureEnabled(true);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
@@ -191,7 +191,7 @@ public class MsgTabStoryNodeView
   {
     super.onDetachedFromWindow();
     this.jdField_b_of_type_Boolean = true;
-    yqp.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "onDetachedFromWindow");
+    yuk.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "onDetachedFromWindow");
   }
 }
 

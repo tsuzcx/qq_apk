@@ -1,9 +1,32 @@
-public final class ayzx
-  extends ayzn
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+
+public class ayzx
+  implements View.OnTouchListener
 {
-  protected int a()
+  public ayzx(ScanOcrActivity paramScanOcrActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 505;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (paramView == ScanOcrActivity.a(this.a))
+      {
+        paramView.setAlpha(0.7F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

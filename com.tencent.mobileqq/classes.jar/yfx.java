@@ -1,36 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.Comparator;
 
-class yfx
-  implements wld<wzf, wzg>
+public class yfx
+  implements Comparator<CommentEntry>
 {
-  yfx(yfw paramyfw, boolean paramBoolean) {}
+  public yfx(yfw paramyfw) {}
   
-  public void a(@NonNull wzf paramwzf, @Nullable wzg arg2, @NonNull ErrorMessage paramErrorMessage)
+  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
   {
-    if (yfw.a(this.jdField_a_of_type_Yfw).get())
-    {
-      yqp.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
-      return;
+    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
+      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
     }
-    yqp.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
-    paramwzf = new yfz(this.jdField_a_of_type_Yfw, paramErrorMessage);
-    paramwzf.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
     {
-      wfo.a().dispatch(paramwzf);
-      return;
+      return -1;
+      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
+        return 1;
+      }
+      return 0;
     }
-    paramwzf.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    ((woz)wpm.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
-    synchronized (this.jdField_a_of_type_Yfw)
-    {
-      wfo.a().dispatch(paramwzf);
-      return;
-    }
+    return 1;
   }
 }
 

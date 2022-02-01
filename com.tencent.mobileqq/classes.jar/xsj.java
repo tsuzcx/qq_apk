@@ -1,14 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class xsj
-  implements MediaPlayer.OnErrorListener
+  implements xtl
 {
-  xsj(xsd paramxsd, xrw paramxrw) {}
+  xsj(xsg paramxsg, StoryVideoItem paramStoryVideoItem) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(xtg paramxtg)
   {
-    return this.jdField_a_of_type_Xrw.a(this.jdField_a_of_type_Xsd, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Xsg.isCanceled()) {
+      return;
+    }
+    yuk.a(this.jdField_a_of_type_Xsg.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramxtg)));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, "VP", SystemClock.uptimeMillis());
+    this.jdField_a_of_type_Xsg.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
   }
 }
 

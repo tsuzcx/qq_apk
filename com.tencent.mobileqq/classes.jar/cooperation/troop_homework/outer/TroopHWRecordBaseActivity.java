@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import bmse;
+import bntj;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
@@ -31,12 +31,12 @@ public class TroopHWRecordBaseActivity
   
   public TroopHWRecordBaseActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bmse(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bntj(this);
   }
   
   private void a(Resources paramResources, View paramView)
   {
-    paramResources = paramResources.getDrawable(2130850256);
+    paramResources = paramResources.getDrawable(2130850268);
     if ((paramResources instanceof BitmapDrawable)) {
       paramResources = ((BitmapDrawable)paramResources).getBitmap();
     }
@@ -57,10 +57,10 @@ public class TroopHWRecordBaseActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379095);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379259);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(1291845632);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376233));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376373));
     a(getResources(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     a();
   }
@@ -79,7 +79,7 @@ public class TroopHWRecordBaseActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131560620);
+    setContentView(2131560635);
     b();
     return true;
   }
@@ -87,7 +87,7 @@ public class TroopHWRecordBaseActivity
   public void finish()
   {
     super.finish();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130850667);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130850683);
   }
   
   public boolean onBackEvent()

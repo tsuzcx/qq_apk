@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
-public abstract interface alfp
+public class alfp
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  public alfp(ChooseItemView paramChooseItemView) {}
   
-  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

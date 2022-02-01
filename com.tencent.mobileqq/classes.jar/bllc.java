@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.widget.DynamicGridView;
 
-class bllc
-  implements ShareActionSheet.OnItemClickListener
+public class bllc
+  implements blld
 {
-  bllc(bllb parambllb) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public bllc(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    this.a.a.dismiss();
-    int i = paramActionSheetItem.action;
-    this.a.a(i, paramActionSheetItem);
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
+    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
   }
 }
 

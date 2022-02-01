@@ -2,7 +2,7 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.content.Context;
-import bncl;
+import bodt;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -22,7 +22,7 @@ class ForwardPhotoOption$PhotoRunnable
       QLog.d("ForwardOption.ForwardPhotoOption", 2, "preload peak");
     }
     if (((this.a.get() instanceof Activity)) && (!((Activity)this.a.get()).isFinishing())) {
-      bncl.a((Context)this.a.get());
+      bodt.a((Context)this.a.get());
     }
   }
 }

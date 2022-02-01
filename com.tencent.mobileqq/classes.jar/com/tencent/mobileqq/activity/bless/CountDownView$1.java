@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aiqa;
+import ajbj;
 
 class CountDownView$1
   implements Runnable

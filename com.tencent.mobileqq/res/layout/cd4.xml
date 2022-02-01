@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/eoh" android:layout_width="@dimen/b_y" android:layout_height="@dimen/b_y"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mhv" android:layout_width="@dimen/b_z" android:layout_height="@dimen/b_z" android:layout_centerInParent="true" app:qqArMapGuideRadius="6">
-        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
-        <ImageView android:id="@id/nhg" android:background="@color/mk" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/efu" android:scaleType="center" />
-        <ImageView android:layout_gravity="right" android:id="@id/nr3" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/ega" />
-        <ImageView android:layout_gravity="right" android:id="@id/nr4" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/egb" />
-        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
-    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+<RelativeLayout android:id="@id/n1c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView android:id="@id/mjj" android:paddingLeft="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/nk7" />
+    <RelativeLayout android:id="@id/nk7" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b94" android:layout_marginTop="8.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/muv" android:layout_width="120.0dip" android:layout_height="16.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/eou" android:layout_centerHorizontal="true" />
+        <android.support.v7.widget.RecyclerView android:id="@id/no2" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ba4" android:layout_marginTop="0.0dip" android:layout_marginRight="@dimen/ba4" android:layout_below="@id/muv" />
+    </RelativeLayout>
 </RelativeLayout>

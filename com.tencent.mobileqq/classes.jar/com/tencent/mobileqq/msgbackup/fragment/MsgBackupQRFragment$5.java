@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.graphics.Bitmap;
-import awof;
+import axgx;
 
 class MsgBackupQRFragment$5
   implements Runnable
 {
-  MsgBackupQRFragment$5(MsgBackupQRFragment paramMsgBackupQRFragment, awof paramawof) {}
+  MsgBackupQRFragment$5(MsgBackupQRFragment paramMsgBackupQRFragment, axgx paramaxgx) {}
   
   public void run()
   {

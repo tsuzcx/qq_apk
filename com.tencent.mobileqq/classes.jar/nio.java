@@ -1,16 +1,10 @@
-import com.tencent.biz.PoiMapActivity;
+import java.util.ArrayList;
 
-public abstract class nio
+public abstract interface nio
 {
-  public int a;
-  public int b;
-  public int c;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public abstract ArrayList<nih> a();
   
-  public nio(PoiMapActivity paramPoiMapActivity) {}
+  public abstract boolean a();
 }
 
 

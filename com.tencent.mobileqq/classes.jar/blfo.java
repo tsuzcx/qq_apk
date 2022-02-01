@@ -1,8 +1,6 @@
-import android.content.Context;
-
 public abstract interface blfo
 {
-  public abstract void a(boolean paramBoolean, Context paramContext, blfq paramblfq);
+  public abstract void a(long paramLong);
 }
 
 

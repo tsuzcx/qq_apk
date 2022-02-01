@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahxp;
+import aihd;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
 
 public class BaseTroopChatPie$4
   implements Runnable
 {
-  public BaseTroopChatPie$4(ahxp paramahxp) {}
+  public BaseTroopChatPie$4(aihd paramaihd) {}
   
   public void run()
   {

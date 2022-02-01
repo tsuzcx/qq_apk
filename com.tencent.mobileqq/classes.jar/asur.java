@@ -1,71 +1,186 @@
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
 public class asur
-  extends asyw
+  extends asug
 {
-  public asur(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public MessageRecord a;
+  private boolean a;
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public asur(MessageRecord paramMessageRecord)
   {
-    super.a(paramInt, paramString1, paramString2);
-    this.a.c(false);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
   
-  protected void a(Integer paramInteger, long paramLong, String paramString)
+  public int a(List<asug> paramList)
   {
-    atvo.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, List<WeiYunFileInfo> paramList, int paramInt2)
-  {
-    QfileCloudFileTabView.b(this.a, true);
-    QfileCloudFileTabView.c(this.a, paramBoolean);
-    this.a.jdField_c_of_type_Int = paramInt2;
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      paramInt1 = atvo.a(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
-      String str;
-      if (paramInt1 == 0)
+      asug localasug = (asug)localIterator.next();
+      if ((localasug instanceof asur))
       {
-        str = QfileCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
+        MessageRecord localMessageRecord = ((asur)localasug).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        if (localMessageRecord.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) {
+          if (((localMessageRecord instanceof MessageForPic)) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)localMessageRecord).md5 != null))
+          {
+            if (((MessageForPic)localMessageRecord).md5.equals(((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).md5)) {
+              return paramList.indexOf(localasug);
+            }
+          }
+          else {
+            return paramList.indexOf(localasug);
+          }
         }
       }
-      else if (2 == paramInt1)
-      {
-        str = QfileCloudFileTabView.b(this.a).a().b(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
     }
-    if (!paramString1.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (QfileCloudFileTabView.b(this.a)) {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    if (!this.a.jdField_a_of_type_JavaLangString.equalsIgnoreCase("picture")) {
-      this.a.setListFooter();
-    }
-    this.a.jdField_c_of_type_JavaLangString = paramString2;
-    this.a.jdField_c_of_type_Boolean = true;
-    this.a.g();
-    this.a.a();
+    return paramList.size() - 1;
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public long a()
   {
-    this.a.jdField_a_of_type_Asti.notifyDataSetChanged();
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+  }
+  
+  public Drawable a(Context paramContext)
+  {
+    asuo localasuo = new asuo(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    paramContext = asui.a(paramContext, localasuo);
+    this.jdField_a_of_type_Boolean = localasuo.c;
+    return paramContext;
+  }
+  
+  public asmu a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMarketFace)) {
+      return asui.a((MessageForMarketFace)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+    return null;
+  }
+  
+  public CustomEmotionData a()
+  {
+    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).md5 != null))
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = ((ashc)((QQAppInterface)localObject).getManager(149)).a();
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
+            if (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).md5.equalsIgnoreCase(localCustomEmotionData.md5)) {
+              return localCustomEmotionData;
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData != null)) {
+      return ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData.mTemplateId;
+    }
+    return null;
+  }
+  
+  public void a(Bundle paramBundle, int paramInt)
+  {
+    super.a(paramBundle, paramInt);
+    paramBundle.putString("cur_msg_uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
+    paramBundle.putInt("cur_msg_uin_type", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop);
+    paramBundle.putLong("cur_msg_uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMarketFace;
+  }
+  
+  public boolean a(asug paramasug)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramasug instanceof asur))
+    {
+      paramasug = ((asur)paramasug).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      bool1 = bool2;
+      if (paramasug != null)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+        {
+          bool1 = bool2;
+          if (paramasug.shmsgseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq)
+          {
+            bool1 = bool2;
+            if (paramasug.msgUid == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public asug b(Bundle paramBundle)
+  {
+    if (paramBundle.containsKey("cur_msg_uniseq"))
+    {
+      QLog.d("MsgEmoticonPreviewData", 1, "doRestoreSaveInstanceState");
+      String str = paramBundle.getString("cur_msg_uin");
+      int i = paramBundle.getInt("cur_msg_uin_type");
+      long l = paramBundle.getLong("cur_msg_uniseq");
+      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramBundle instanceof QQAppInterface)) {
+        return new asur(((QQAppInterface)paramBundle).a().b(str, i, l));
+      }
+    }
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean c()
+  {
+    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData != null))
+    {
+      int i = ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData.from;
+      if ((i == 1) || (i == 2)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean d()
+  {
+    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData != null)) {
+      return ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData.isSelfieFace();
+    }
+    return false;
   }
 }
 

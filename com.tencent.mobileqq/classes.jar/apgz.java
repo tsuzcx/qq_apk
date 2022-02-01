@@ -1,22 +1,16 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-class apgz
-  implements apif
+public abstract interface apgz
 {
-  apgz(apgx paramapgx, long paramLong) {}
+  public abstract int a();
   
-  public void a(long paramLong)
-  {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apgx.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
+  public abstract void a();
   
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    apgu.a(this.jdField_a_of_type_Apgx.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(apha paramapha);
+  
+  public abstract void b();
 }
 
 

@@ -1,16 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class vjs
-  extends RecyclerView.ViewHolder
+class vjs
+  implements Animation.AnimationListener
 {
-  public QCircleContentImage a;
+  vjs(vjp paramvjp) {}
   
-  public vjs(vjn paramvjn, View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage = ((QCircleContentImage)paramView);
+    if (this.a.a != null) {
+      this.a.a.setVisibility(0);
+    }
   }
 }
 

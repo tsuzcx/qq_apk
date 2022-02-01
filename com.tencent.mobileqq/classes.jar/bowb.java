@@ -1,33 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-
-class bowb
-  implements EIPCOnGetConnectionListener
+public class bowb
 {
-  bowb(bovz parambovz) {}
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d;
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bovz.a(this.a, paramEIPCConnection.procName);
-    }
-    bovz.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bovz.a(this.a, paramEIPCConnection.procName);
-    }
-    bovz.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bovz.a(this.a));
-    }
-  }
+  public bowb(bovy parambovy) {}
 }
 
 

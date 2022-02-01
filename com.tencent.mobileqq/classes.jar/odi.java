@@ -1,10 +1,19 @@
-import com.google.gson.reflect.TypeToken;
-import java.util.Set;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
 
-class odi
-  extends TypeToken<Set<Long>>
+public final class odi
+  implements Parcelable.Creator<VideoInfo.RichTitleInfo>
 {
-  odi(odh paramodh) {}
+  public VideoInfo.RichTitleInfo a(Parcel paramParcel)
+  {
+    return new VideoInfo.RichTitleInfo(paramParcel);
+  }
+  
+  public VideoInfo.RichTitleInfo[] a(int paramInt)
+  {
+    return new VideoInfo.RichTitleInfo[paramInt];
+  }
 }
 
 

@@ -1,54 +1,10 @@
 public class ayxq
-  extends ayxp
 {
-  public ayxp a()
-  {
-    return this;
-  }
+  public String a = "auto";
   
-  public void a(int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    return "ARCloudReqOcrInfo{language = " + this.a + '}';
   }
 }
 

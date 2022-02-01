@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import ajvi;
+import akgr;
 import android.os.SystemClock;
-import bctj;
-import bgrj;
-import bkfv;
+import bdmc;
+import bhrl;
+import blha;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.List;
 
@@ -15,14 +15,14 @@ class Leba$10
   
   public void run()
   {
-    List localList = ajvi.a().a(this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.this$0.jdField_a_of_type_Bkfv.post(new Leba.10.1(this, localList));
+    List localList = akgr.a().a(this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.this$0.jdField_a_of_type_Blha.post(new Leba.10.1(this, localList));
     if (Leba.a(this.this$0))
     {
       Leba.b(this.this$0, false);
       long l1 = SystemClock.uptimeMillis();
       long l2 = Leba.a(this.this$0);
-      bctj.a(BaseApplication.getContext()).a(bgrj.a(), "actLebaShowTime", true, l1 - l2, 0L, null, null);
+      bdmc.a(BaseApplication.getContext()).a(bhrl.a(), "actLebaShowTime", true, l1 - l2, 0L, null, null);
     }
   }
 }

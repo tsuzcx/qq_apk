@@ -1,17 +1,41 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class xdm
-  extends xby
+public class xdm
+  extends wpa
 {
-  xdm(xcu paramxcu, StoryVideoItem paramStoryVideoItem, xed paramxed)
+  public String a;
+  
+  public String a()
   {
-    super(paramStoryVideoItem);
+    return wnu.a("StoryGroupSvc.get_dynamic_group_feedid_list");
   }
   
-  public boolean b()
+  public wov a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Xed.e = ((String)a("result"));
-    return true;
+    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
+    try
+    {
+      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new xdn(localRspGroupStoryFeedIdList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
+    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGroupStoryFeedIdList.toByteArray();
   }
 }
 

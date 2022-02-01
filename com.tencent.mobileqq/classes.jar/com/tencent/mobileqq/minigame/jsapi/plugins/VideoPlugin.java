@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
-import bgsp;
+import bhsr;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
@@ -108,7 +108,7 @@ public class VideoPlugin
         ((CoverVideoView)localCoverView).setVisibility(0);
       }
       paramJSONObject = paramJSONObject.optString("src");
-      if (!bgsp.a(paramJSONObject)) {
+      if (!bhsr.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }

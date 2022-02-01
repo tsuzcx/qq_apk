@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public final class MiniScanReport$6
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("report_key_aio_scan_recog_type", String.valueOf(this.a));
-    bctj.a(BaseApplication.getContext()).a("", "report_tag_aio_scan_recog_type", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "report_tag_aio_scan_recog_type", true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel()) {
       QLog.i("MiniRecog.MiniScanReport", 2, String.format("onAIOScanRecogTypeReport %d", new Object[] { Integer.valueOf(this.a) }));
     }

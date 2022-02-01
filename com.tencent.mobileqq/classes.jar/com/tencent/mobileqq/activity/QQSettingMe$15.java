@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import aoch;
+import aoot;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.qphone.base.util.QLog;
@@ -13,8 +13,8 @@ class QQSettingMe$15
   
   public void run()
   {
-    aoch localaoch = aoch.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, (byte)3);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setFaceDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaoch, 1, this.a, 200, true, true, 6);
+    aoot localaoot = aoot.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, (byte)3);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setFaceDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaoot, 1, this.a, 200, true, true, 6);
     this.this$0.b.setVisibility(VasFaceManager.a(this.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     this.this$0.y();
     if (QLog.isDevelopLevel()) {

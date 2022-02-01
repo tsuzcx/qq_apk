@@ -1,40 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class nfn
-  implements View.OnClickListener
+class nfn
+  extends BroadcastReceiver
 {
-  public nfn(AvGameLoadingActivity paramAvGameLoadingActivity) {}
+  nfn(nfm paramnfm) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.e("AvGameManagerAvGameLoadingActivity", 2, "mExitBtn " + AvGameLoadingActivity.a(this.a) + " bExitEnable " + AvGameLoadingActivity.a(this.a) + "mExit" + AvGameLoadingActivity.b(this.a));
-    if (AvGameLoadingActivity.b(this.a) != null)
-    {
-      long l = nga.a(AvGameLoadingActivity.b(this.a));
-      AvGameLoadingActivity.a(this.a, l);
-    }
-    bcst.b(null, "dc00898", "", "", "0X800B042", "0X800B042", 0, 0, "", "", "", "");
-    if (AvGameLoadingActivity.a(this.a))
-    {
-      AVGameNodeReportUtil.b(1);
-      this.a.a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "mExitBtn click but not enabled");
-    }
+    nfm.a(this.a, paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nfn
  * JD-Core Version:    0.7.0.1
  */

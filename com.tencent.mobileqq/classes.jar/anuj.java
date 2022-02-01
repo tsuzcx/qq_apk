@@ -1,463 +1,593 @@
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.commonsdk.cache.QQHashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.CameraEmoRoamingHandler.1;
+import com.tencent.mobileqq.app.CameraEmoRoamingHandler.2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RoamSettingManager.1;
-import com.tencent.mobileqq.app.RoamSettingManager.2;
-import com.tencent.mobileqq.app.RoamSettingManager.3;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.RoamSetting;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.manager.Manager;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.DelReq;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.DelRet;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.DelRsp;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.GetListReq;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.GetListRsp;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.ImgInfo;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.ReqBody;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.RspBody;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadReq;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadRsp;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadState;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadStateReq;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadStateRet;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadStateRsp;
+import tencent.im.selfgif.CameraEmotionRoaming_sso.UploadImgInfo;
 
 public class anuj
-  implements Manager
+  extends anvt<CameraEmotionData>
 {
-  public QQHashMap<String, RoamSetting> a;
-  RoamSetting a;
-  public EntityManager a;
-  public Lock a;
-  public boolean a;
-  public QQHashMap<String, RoamSetting> b;
+  private ConcurrentHashMap<Integer, CameraEmotionData> a = new ConcurrentHashMap();
   
-  public anuj(QQAppInterface paramQQAppInterface)
+  protected anuj(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new QQHashMap(1003, 0, 60);
-    this.b = new QQHashMap(1004, 0, 60);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-    a();
+    super(paramQQAppInterface);
   }
   
-  private boolean a(String paramString)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool = false;
-    try
+    int j = paramToServiceMsg.extraData.getInt("camera_emo_upload_id");
+    QLog.d("CameraEmoRoamingHandler", 1, new Object[] { "timtest handlePrepareUploadInfo start, ", Integer.valueOf(j) });
+    CameraEmotionData localCameraEmotionData = (CameraEmotionData)this.a.get(Integer.valueOf(j));
+    if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
     {
-      int i = Integer.parseInt(paramString);
-      if ((i == -2) || (i == -1) || (i == 1) || (i == 2) || (i == 3) || (i == 4)) {
-        bool = true;
-      }
-      return bool;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      QLog.e("RoamSettingManager", 1, paramString + "");
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(RoamSetting.class, "setting_revision"));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = null;
-      return 0;
-    }
-    try
-    {
-      i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      paramObject = new StringBuilder().append("fail to  handlePrepareUploadInfo error code is ");
+      if (paramFromServiceMsg == null) {}
+      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RoamSetting", 2, "parse revision.value exception, revision.value=" + this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
-        }
-        int i = 0;
+        QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
+        a(1, false, Integer.valueOf(12), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(j));
+        return;
       }
     }
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    RoamSetting localRoamSetting2 = a(paramString);
-    RoamSetting localRoamSetting1 = localRoamSetting2;
-    if (localRoamSetting2 == null)
-    {
-      localRoamSetting1 = localRoamSetting2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localRoamSetting1 = new RoamSetting(paramString, Integer.toString(paramInt));
-        a(localRoamSetting1);
-      }
-    }
-    return RoamSetting.getIntValue(localRoamSetting1, paramInt);
-  }
-  
-  /* Error */
-  public RoamSetting a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: aload_0
-    //   7: getfield 48	anuj:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   10: invokeinterface 139 1 0
-    //   15: aload_1
-    //   16: invokestatic 143	bgrs:a	(Ljava/lang/String;)I
-    //   19: istore_2
-    //   20: iload_2
-    //   21: iconst_1
-    //   22: if_icmpne +106 -> 128
-    //   25: aload_0
-    //   26: getfield 43	anuj:b	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   29: aload_1
-    //   30: invokevirtual 147	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   33: checkcast 88	com/tencent/mobileqq/data/RoamSetting
-    //   36: astore_3
-    //   37: aload_3
-    //   38: astore 4
-    //   40: aload_3
-    //   41: ifnonnull +75 -> 116
-    //   44: aload_3
-    //   45: astore 4
-    //   47: aload_0
-    //   48: getfield 21	anuj:jdField_a_of_type_Boolean	Z
-    //   51: ifne +65 -> 116
-    //   54: aload_0
-    //   55: getfield 34	anuj:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   58: ldc 88
-    //   60: aload_1
-    //   61: invokevirtual 96	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   64: checkcast 88	com/tencent/mobileqq/data/RoamSetting
-    //   67: astore_1
-    //   68: aload_1
-    //   69: astore 4
-    //   71: aload_1
-    //   72: ifnull +44 -> 116
-    //   75: aload_1
-    //   76: astore 4
-    //   78: aload_1
-    //   79: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   82: ifnull +34 -> 116
-    //   85: aload_1
-    //   86: astore 4
-    //   88: aload_1
-    //   89: getfield 100	com/tencent/mobileqq/data/RoamSetting:value	Ljava/lang/String;
-    //   92: ifnull +24 -> 116
-    //   95: iload_2
-    //   96: iconst_1
-    //   97: if_icmpne +46 -> 143
-    //   100: aload_0
-    //   101: getfield 43	anuj:b	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   104: aload_1
-    //   105: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   108: aload_1
-    //   109: invokevirtual 154	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   112: pop
-    //   113: aload_1
-    //   114: astore 4
-    //   116: aload_0
-    //   117: getfield 48	anuj:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   120: invokeinterface 157 1 0
-    //   125: aload 4
-    //   127: areturn
-    //   128: aload_0
-    //   129: getfield 41	anuj:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   132: aload_1
-    //   133: invokevirtual 147	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   136: checkcast 88	com/tencent/mobileqq/data/RoamSetting
-    //   139: astore_3
-    //   140: goto -103 -> 37
-    //   143: aload_0
-    //   144: getfield 41	anuj:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   147: aload_1
-    //   148: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   151: aload_1
-    //   152: invokevirtual 154	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   155: pop
-    //   156: aload_1
-    //   157: astore 4
-    //   159: goto -43 -> 116
-    //   162: astore_1
-    //   163: aload_0
-    //   164: getfield 48	anuj:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   167: invokeinterface 157 1 0
-    //   172: aload_1
-    //   173: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	174	0	this	anuj
-    //   0	174	1	paramString	String
-    //   19	79	2	i	int
-    //   36	104	3	localRoamSetting	RoamSetting
-    //   38	120	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	20	162	finally
-    //   25	37	162	finally
-    //   47	68	162	finally
-    //   78	85	162	finally
-    //   88	95	162	finally
-    //   100	113	162	finally
-    //   128	140	162	finally
-    //   143	156	162	finally
-  }
-  
-  public RoamSetting a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return null;
-    }
-    RoamSetting localRoamSetting = a(paramString1);
-    if (localRoamSetting == null)
-    {
-      localRoamSetting = new RoamSetting(paramString1, paramString2);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
+    paramToServiceMsg = new CameraEmotionRoaming_sso.RspBody();
     for (;;)
     {
+      int i;
+      boolean bool;
       try
       {
-        if (bgrs.a(paramString1) == 1)
-        {
-          if (a(paramString2))
-          {
-            this.b.put(localRoamSetting.path, localRoamSetting);
-            return localRoamSetting;
-            if (paramString2.equals(localRoamSetting.value)) {
-              return null;
-            }
-            localRoamSetting.value = paramString2;
-            break;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramString1 + ", value:" + paramString2);
-          continue;
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        paramFromServiceMsg = paramToServiceMsg.bytes_fail_msg.get().toStringUtf8();
+        if (!paramToServiceMsg.upLoad_rsp.has()) {
+          break label588;
         }
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);
+        paramToServiceMsg = (CameraEmotionRoaming_sso.UpLoadRsp)paramToServiceMsg.upLoad_rsp.get();
+        i = paramToServiceMsg.int32_is_upload.get();
+        if (i == 0)
+        {
+          localCameraEmotionData.resid = paramToServiceMsg.bytes_resource_id.get().toStringUtf8();
+          QLog.d("CameraEmoRoamingHandler", 1, "timtest handlePrepareUploadInfo success md5 = " + localCameraEmotionData.md5 + "| resid=" + localCameraEmotionData.resid + " | msg = " + paramFromServiceMsg + ", templateId:" + localCameraEmotionData.templateId);
+          ((asfy)this.app.getManager(334)).a(localCameraEmotionData);
+          paramObject = new HashMap();
+          if (i != 0) {
+            break label645;
+          }
+          paramToServiceMsg = "1";
+          paramObject.put("sucFlag", paramToServiceMsg);
+          paramObject.put("retCode", String.valueOf(i));
+          if (paramFromServiceMsg != null) {
+            break label651;
+          }
+          paramToServiceMsg = "";
+          paramObject.put("errMsg", paramToServiceMsg);
+          paramToServiceMsg = bdmc.a(BaseApplication.getContext());
+          if (i != 0) {
+            break label656;
+          }
+          bool = true;
+          paramToServiceMsg.a(null, "CamEmoPrepareUpload", bool, 0L, 0L, paramObject, null);
+          return;
+        }
       }
-      finally
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        QLog.e("CameraEmoRoamingHandler", 1, "func handlePrepareUploadInfo ends, errInfo:" + paramToServiceMsg.getMessage());
+        a(1, false, Integer.valueOf(100), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(j));
+        return;
       }
+      catch (OutOfMemoryError paramToServiceMsg)
+      {
+        QLog.e("CameraEmoRoamingHandler", 1, "handlePrepareUploadInfo oom");
+        a(1, false, Integer.valueOf(100), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(j));
+        return;
+      }
+      if (i == 1)
+      {
+        a(1, false, Integer.valueOf(2), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(j));
+        QLog.e("CameraEmoRoamingHandler", 1, "func handlePrepareUploadInfo fail, nCanupload:" + i);
+      }
+      else
+      {
+        a(1, false, Integer.valueOf(13), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(j));
+        QLog.e("CameraEmoRoamingHandler", 1, "func handlePrepareUploadInfo fail, nCanupload:" + i);
+        continue;
+        label588:
+        QLog.d("CameraEmoRoamingHandler", 1, "timtest handlePrepareUploadInfo end rspBody.upLoad_rsp no value msg = " + paramFromServiceMsg);
+        a(1, false, Integer.valueOf(13), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(j));
+        i = -1;
+        continue;
+        label645:
+        paramToServiceMsg = "0";
+        continue;
+        label651:
+        paramToServiceMsg = paramFromServiceMsg;
+        continue;
+        label656:
+        bool = false;
+      }
+    }
+  }
+  
+  private void a(List<CameraEmotionRoaming_sso.ImgInfo> paramList, List<anuk> paramList1, List<String> paramList2)
+  {
+    if ((paramList == null) || (paramList1 == null) || (paramList2 == null))
+    {
+      QLog.e("CameraEmoRoamingHandler", 1, "readSSoImgInfoList param error");
+      return;
+    }
+    Iterator localIterator = paramList.iterator();
+    label29:
+    String str4;
+    String str1;
+    String str2;
+    String str3;
+    String str5;
+    anuk localanuk;
+    while (localIterator.hasNext())
+    {
+      paramList = (CameraEmotionRoaming_sso.ImgInfo)localIterator.next();
+      str4 = paramList.bytes_resource_id.get().toStringUtf8();
+      str1 = ((ByteStringMicro)paramList.bytes_text.get(0)).toStringUtf8();
+      str2 = paramList.url.get().toStringUtf8();
+      str3 = paramList.bytes_md5.get().toStringUtf8();
+      str5 = paramList.bytes_widget_id.get().toStringUtf8();
+      if (!bhsr.a(str4))
+      {
+        localanuk = new anuk();
+        localanuk.a = str4;
+        if (str1 != null) {
+          break label256;
+        }
+        paramList = "";
+        label146:
+        localanuk.b = paramList;
+        if (str2 != null) {
+          break label262;
+        }
+        paramList = "";
+        label160:
+        localanuk.c = paramList;
+        if (str3 != null) {
+          break label268;
+        }
+      }
+    }
+    label256:
+    label262:
+    label268:
+    for (paramList = "";; paramList = str3)
+    {
+      localanuk.d = paramList;
+      localanuk.e = str5;
+      QLog.e("CameraEmoRoamingHandler", 1, "readSSoImgInfoList get CameraEmoImg content = " + str1 + "| url = " + str2 + ", templateId:" + str5);
+      paramList2.add(str4);
+      paramList1.add(localanuk);
+      break label29;
+      break;
+      paramList = str1;
+      break label146;
+      paramList = str2;
+      break label160;
+    }
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool = true;
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleNotifyServerUploadStatus start");
+    int i = paramToServiceMsg.extraData.getInt("camera_emo_upload_id");
+    CameraEmotionData localCameraEmotionData = (CameraEmotionData)this.a.get(Integer.valueOf(i));
+    if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
+    {
+      paramObject = new StringBuilder().append("fail to  handlePrepareUploadInfo error code is ");
+      if (paramFromServiceMsg == null) {}
+      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
+      {
+        QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
+        a(1, false, Integer.valueOf(12), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(i));
+        return;
+      }
+    }
+    paramToServiceMsg = new CameraEmotionRoaming_sso.RspBody();
+    for (;;)
+    {
+      int j;
+      try
+      {
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        paramToServiceMsg = (CameraEmotionRoaming_sso.UpLoadStateRet)((CameraEmotionRoaming_sso.UpLoadStateRsp)paramToServiceMsg.upLoad_state_rsp.get()).upload_state_ret.get(0);
+        j = paramToServiceMsg.int32_upload_state_ret.get();
+        if (j == 0)
+        {
+          localCameraEmotionData.url = paramToServiceMsg.img_info.url.get().toStringUtf8();
+          a(1, true, Integer.valueOf(0), localCameraEmotionData);
+          this.a.remove(Integer.valueOf(i));
+          QLog.e("CameraEmoRoamingHandler", 1, "func handleNotifyServerUploadStatus suc");
+          paramFromServiceMsg = new HashMap();
+          if (j != 0) {
+            break label444;
+          }
+          paramToServiceMsg = "1";
+          paramFromServiceMsg.put("sucFlag", paramToServiceMsg);
+          paramFromServiceMsg.put("retCode", String.valueOf(j));
+          paramToServiceMsg = bdmc.a(BaseApplication.getContext());
+          if (j != 0) {
+            break label450;
+          }
+          paramToServiceMsg.a(null, "CamEmoUpdateStat", bool, 0L, 0L, paramFromServiceMsg, null);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        QLog.e("CameraEmoRoamingHandler", 1, "func handleNotifyServerUploadStatus ends, errInfo:" + paramToServiceMsg.getMessage());
+        a(1, false, Integer.valueOf(100), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(i));
+        return;
+      }
+      catch (OutOfMemoryError paramToServiceMsg)
+      {
+        QLog.e("CameraEmoRoamingHandler", 1, "handleNotifyServerUploadStatus oom");
+        a(1, false, Integer.valueOf(100), localCameraEmotionData);
+        this.a.remove(Integer.valueOf(i));
+        return;
+      }
+      a(1, false, Integer.valueOf(13), localCameraEmotionData);
+      this.a.remove(Integer.valueOf(i));
+      QLog.e("CameraEmoRoamingHandler", 1, new Object[] { "func handleNotifyServerUploadStatus fail, result:", Integer.valueOf(j) });
+      continue;
+      label444:
+      paramToServiceMsg = "0";
+      continue;
+      label450:
+      bool = false;
     }
   }
   
   public void a()
   {
-    ThreadManager.post(new RoamSettingManager.1(this), 8, null, false);
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest queryUserEmoRoamingReq  start");
+    String str = ((asfy)this.app.getManager(334)).a();
+    Object localObject = new CameraEmotionRoaming_sso.GetListReq();
+    ((CameraEmotionRoaming_sso.GetListReq)localObject).client_timestamp_version.set(ByteStringMicro.copyFrom(str.getBytes()));
+    CameraEmotionRoaming_sso.ReqBody localReqBody = new CameraEmotionRoaming_sso.ReqBody();
+    localReqBody.uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
+    localReqBody.uint32_cmd_type.set(3);
+    localReqBody.uint32_src_term.set(3);
+    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("8.4.5".getBytes()));
+    localReqBody.get_list_req.set((MessageMicro)localObject);
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
+    ((ToServiceMsg)localObject).extraData.putInt("cmd_camera_emo_subcmd", 3);
+    ((ToServiceMsg)localObject).extraData.putString("cmd_param_data_version", str);
+    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
+    super.sendPbReq((ToServiceMsg)localObject);
   }
   
-  public void a(int paramInt)
+  public final void a(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting != null)
+    notifyUI(paramInt1, paramBoolean, Integer.valueOf(paramInt2), false);
+  }
+  
+  public final void a(int paramInt, boolean paramBoolean, Object paramObject, CameraEmotionData paramCameraEmotionData)
+  {
+    notifyUI(paramInt, paramBoolean, new Object[] { paramObject, paramCameraEmotionData }, false);
+  }
+  
+  public void a(CameraEmotionData paramCameraEmotionData, int paramInt1, int paramInt2, long paramLong)
+  {
+    if (paramCameraEmotionData == null)
     {
-      localObject = Integer.toString(paramInt);
-      if (((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value = ((String)localObject);
-    }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting);
+      QLog.d("CameraEmoRoamingHandler", 1, "timtest prepareUploadEmoReq start, data is null");
+      a(1, false, Integer.valueOf(10), paramCameraEmotionData);
       return;
-      localObject = new RoamSetting();
-      ((RoamSetting)localObject).path = "setting_revision";
-      ((RoamSetting)localObject).value = Integer.toString(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)localObject);
+    }
+    QLog.d("CameraEmoRoamingHandler", 1, new Object[] { "timtest prepareUploadEmoReq start, md5:", paramCameraEmotionData.md5, ", size:", Long.valueOf(paramLong), ", emoId:", Integer.valueOf(paramCameraEmotionData.emoId) });
+    this.a.put(Integer.valueOf(paramCameraEmotionData.emoId), paramCameraEmotionData);
+    Object localObject1 = new CameraEmotionRoaming_sso.UpLoadReq();
+    Object localObject2 = new CameraEmotionRoaming_sso.UploadImgInfo();
+    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).bytes_img_md5.set(ByteStringMicro.copyFrom(paramCameraEmotionData.md5.getBytes()));
+    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).uint32_img_height.set(paramInt2);
+    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).uint32_img_width.set(paramInt1);
+    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).uint64_img_size.set(paramLong);
+    ((CameraEmotionRoaming_sso.UpLoadReq)localObject1).img_info.set((MessageMicro)localObject2);
+    localObject2 = new CameraEmotionRoaming_sso.ReqBody();
+    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
+    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint32_cmd_type.set(1);
+    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint32_src_term.set(3);
+    ((CameraEmotionRoaming_sso.ReqBody)localObject2).bytes_version.set(ByteStringMicro.copyFrom("8.4.5".getBytes()));
+    ((CameraEmotionRoaming_sso.ReqBody)localObject2).upLoad_req.set((MessageMicro)localObject1);
+    localObject1 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
+    ((ToServiceMsg)localObject1).extraData.putInt("cmd_camera_emo_subcmd", 1);
+    ((ToServiceMsg)localObject1).extraData.putInt("camera_emo_upload_id", paramCameraEmotionData.emoId);
+    ((ToServiceMsg)localObject1).putWupBuffer(((CameraEmotionRoaming_sso.ReqBody)localObject2).toByteArray());
+    super.sendPbReq((ToServiceMsg)localObject1);
+  }
+  
+  public void a(CameraEmotionData paramCameraEmotionData, boolean paramBoolean)
+  {
+    if (paramCameraEmotionData == null)
+    {
+      QLog.d("CameraEmoRoamingHandler", 1, "timtest notifyServerUploadStatusReq start, data is null");
+      a(1, false, Integer.valueOf(10), paramCameraEmotionData);
+      return;
+    }
+    if (!bhnv.d(BaseApplication.getContext()))
+    {
+      QLog.d("CameraEmoRoamingHandler", 1, "timtest notifyServerUploadStatusReq start, net not support");
+      a(1, false, Integer.valueOf(12), paramCameraEmotionData);
+      return;
+    }
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest notifyServerUploadStatusReq start");
+    Object localObject2 = new CameraEmotionRoaming_sso.UpLoadStateReq();
+    CameraEmotionRoaming_sso.UpLoadState localUpLoadState = new CameraEmotionRoaming_sso.UpLoadState();
+    localUpLoadState.bytes_resource_id.set(ByteStringMicro.copyFrom(paramCameraEmotionData.resid.getBytes()));
+    Object localObject3 = localUpLoadState.bytes_text;
+    int i;
+    if (paramCameraEmotionData.strContext == null)
+    {
+      localObject1 = "";
+      ((PBRepeatField)localObject3).add(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
+      localObject1 = localUpLoadState.int32_upload_state;
+      if (!paramBoolean) {
+        break label339;
+      }
+      i = 0;
+      label146:
+      ((PBInt32Field)localObject1).set(i);
+      localObject3 = localUpLoadState.bytes_widget_id;
+      if (paramCameraEmotionData.templateId != null) {
+        break label344;
+      }
+    }
+    label339:
+    label344:
+    for (Object localObject1 = "";; localObject1 = paramCameraEmotionData.templateId)
+    {
+      ((PBBytesField)localObject3).set(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
+      ((CameraEmotionRoaming_sso.UpLoadStateReq)localObject2).upload_state.add(localUpLoadState);
+      localObject1 = new CameraEmotionRoaming_sso.ReqBody();
+      ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
+      ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint32_cmd_type.set(2);
+      ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint32_src_term.set(3);
+      ((CameraEmotionRoaming_sso.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom("8.4.5".getBytes()));
+      ((CameraEmotionRoaming_sso.ReqBody)localObject1).upLoad_state_req.set((MessageMicro)localObject2);
+      localObject2 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
+      ((ToServiceMsg)localObject2).extraData.putInt("cmd_camera_emo_subcmd", 2);
+      ((ToServiceMsg)localObject2).extraData.putInt("camera_emo_upload_id", paramCameraEmotionData.emoId);
+      ((ToServiceMsg)localObject2).putWupBuffer(((CameraEmotionRoaming_sso.ReqBody)localObject1).toByteArray());
+      super.sendPbReq((ToServiceMsg)localObject2);
+      return;
+      localObject1 = paramCameraEmotionData.strContext;
+      break;
+      i = 1;
+      break label146;
     }
   }
   
-  public void a(RoamSetting paramRoamSetting)
+  protected void a(Object paramObject, String paramString)
   {
-    if ((paramRoamSetting == null) || (paramRoamSetting.path == null) || (paramRoamSetting.value == null)) {
-      return;
-    }
-    int j = bgrs.a(paramRoamSetting.path);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    if (j == 1) {}
-    for (;;)
-    {
-      try
-      {
-        if (a(paramRoamSetting.value))
-        {
-          this.b.put(paramRoamSetting.path, paramRoamSetting);
-          i = 1;
-          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-          if ((j == 1) && (i == 0)) {
-            break;
-          }
-          if (Looper.myLooper() == Looper.getMainLooper()) {
-            break label182;
-          }
-          a(paramRoamSetting);
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          break label199;
-        }
-        QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramRoamSetting.path + ", value:" + paramRoamSetting.value);
-        i = 0;
-        continue;
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(paramRoamSetting.path, paramRoamSetting);
-        i = 1;
-        continue;
-        ThreadManagerV2.excute(new RoamSettingManager.2(this, paramRoamSetting), 32, null, false);
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      label182:
-      return;
-      label199:
-      int i = 0;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    RoamSetting localRoamSetting = a(paramString);
-    if ((localRoamSetting == null) || (localRoamSetting.path == null) || (localRoamSetting.value == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleUserInfoGet start");
+    Object localObject = new CameraEmotionRoaming_sso.RspBody();
     try
     {
-      if (bgrs.a(paramString) == 1) {
-        this.b.remove(localRoamSetting.path);
+      ((CameraEmotionRoaming_sso.RspBody)localObject).mergeFrom((byte[])paramObject);
+      ((CameraEmotionRoaming_sso.RspBody)localObject).bytes_fail_msg.get().toStringUtf8();
+      if (((CameraEmotionRoaming_sso.RspBody)localObject).get_list_rsp.has())
+      {
+        paramObject = (CameraEmotionRoaming_sso.GetListRsp)((CameraEmotionRoaming_sso.RspBody)localObject).get_list_rsp.get();
+        localObject = paramObject.server_timestamp_version.get().toStringUtf8();
+        if (paramString.equals(localObject))
+        {
+          QLog.d("CameraEmoRoamingHandler", 1, "timtest handleUserInfoGet same version = " + (String)localObject);
+          a(2, true, 0);
+        }
       }
+      else
+      {
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramObject)
+    {
+      QLog.e("CameraEmoRoamingHandler", 1, "func handleUserInfoGet ends, errInfo:" + paramObject.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramObject)
+    {
+      QLog.e("CameraEmoRoamingHandler", 1, "handleUserInfoGet oom");
+      return;
+    }
+    paramString = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    if (paramObject.rpt_img_info.has()) {
+      a(paramObject.rpt_img_info.get(), paramString, localArrayList);
+    }
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleUserInfoGet cameraEmoImgs.size = " + paramString.size());
+    ThreadManagerV2.excute(new CameraEmoRoamingHandler.2(this, (String)localObject, paramString, localArrayList), 32, null, true);
+  }
+  
+  protected void a(Object paramObject, boolean paramBoolean)
+  {
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleDelMessage start ");
+    Object localObject1 = new CameraEmotionRoaming_sso.RspBody();
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    try
+    {
+      ((CameraEmotionRoaming_sso.RspBody)localObject1).mergeFrom((byte[])paramObject);
+      ((CameraEmotionRoaming_sso.RspBody)localObject1).bytes_fail_msg.get().toStringUtf8();
+      if (((CameraEmotionRoaming_sso.RspBody)localObject1).del_rsp.has())
+      {
+        Object localObject2 = (CameraEmotionRoaming_sso.DelRsp)((CameraEmotionRoaming_sso.RspBody)localObject1).del_rsp.get();
+        paramObject = ((CameraEmotionRoaming_sso.DelRsp)localObject2).client_timestamp_version.get().toStringUtf8();
+        localObject1 = new ArrayList();
+        localArrayList1 = new ArrayList();
+        localArrayList2 = new ArrayList();
+        if (((CameraEmotionRoaming_sso.DelRsp)localObject2).rpt_img_info.has()) {
+          a(((CameraEmotionRoaming_sso.DelRsp)localObject2).rpt_img_info.get(), (List)localObject1, localArrayList2);
+        }
+        if (!((CameraEmotionRoaming_sso.DelRsp)localObject2).del_ret.has()) {
+          break label249;
+        }
+        localObject2 = ((CameraEmotionRoaming_sso.DelRsp)localObject2).del_ret.get().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          CameraEmotionRoaming_sso.DelRet localDelRet = (CameraEmotionRoaming_sso.DelRet)((Iterator)localObject2).next();
+          if (localDelRet.int32_del_ret.get() == 0) {
+            localArrayList1.add(localDelRet.bytes_resource_id.get().toStringUtf8());
+          }
+        }
+      }
+      QLog.d("CameraEmoRoamingHandler", 1, "timtest handleDelMessage delResIDList.size = " + localArrayList1.size() + "| cameraEmoImgs.size = " + ((List)localObject1).size());
+    }
+    catch (InvalidProtocolBufferMicroException paramObject)
+    {
+      QLog.e("CameraEmoRoamingHandler", 1, "func handleDelMessage ends, errInfo:" + paramObject.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramObject)
+    {
+      QLog.e("CameraEmoRoamingHandler", 1, "handleDelMessage oom");
+      return;
+    }
+    label249:
+    ThreadManagerV2.excute(new CameraEmoRoamingHandler.1(this, paramObject, (List)localObject1, localArrayList2, localArrayList1), 32, null, true);
+  }
+  
+  public void a(List<String> paramList, boolean paramBoolean)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest delUserEmoRoamingReq start size = " + paramList.size());
+    Object localObject = new CameraEmotionRoaming_sso.DelReq();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      String str = (String)paramList.get(i);
+      if (str == null) {}
       for (;;)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
-          break;
-        }
-        ThreadManager.post(new RoamSettingManager.3(this, localRoamSetting), 5, null, false);
-        return;
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.remove(localRoamSetting.path);
+        i += 1;
+        break;
+        ((CameraEmotionRoaming_sso.DelReq)localObject).bytes_resource_id.get().add(ByteStringMicro.copyFrom(str.getBytes()));
       }
-      b(localRoamSetting);
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
+    paramList = new CameraEmotionRoaming_sso.ReqBody();
+    paramList.uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
+    paramList.uint32_cmd_type.set(4);
+    paramList.uint32_src_term.set(3);
+    paramList.bytes_version.set(ByteStringMicro.copyFrom("8.4.5".getBytes()));
+    paramList.del_req.set((MessageMicro)localObject);
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
+    ((ToServiceMsg)localObject).extraData.putInt("cmd_camera_emo_subcmd", 4);
+    ((ToServiceMsg)localObject).extraData.putBoolean("cmd_param_need_sync", paramBoolean);
+    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
+    super.sendPbReq((ToServiceMsg)localObject);
   }
   
-  public void a(List<RoamSetting> paramList)
+  protected Class<? extends anui> observerClass()
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    try
+    return anul.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramToServiceMsg == null)
     {
-      EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-      localObject1 = localEntityTransaction;
-      localObject2 = localEntityTransaction;
-      localEntityTransaction.begin();
-      if (paramList != null)
+      QLog.e("CameraEmoRoamingHandler", 1, "timtest onReceive error : ToServiceMsg is null");
+      return;
+    }
+    QLog.d("CameraEmoRoamingHandler", 1, "timtest onReceive start");
+    switch (paramToServiceMsg.extraData.getInt("cmd_camera_emo_subcmd"))
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    case 2: 
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    case 3: 
+      if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
       {
-        int i = 0;
-        for (;;)
+        paramObject = new StringBuilder().append("fail to  handleUserInfoGet error code is ");
+        if (paramFromServiceMsg == null) {}
+        for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
         {
-          localObject1 = localEntityTransaction;
-          localObject2 = localEntityTransaction;
-          if (i >= paramList.size()) {
+          QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
+          if ((paramFromServiceMsg == null) || (paramFromServiceMsg.isSuccess())) {
             break;
           }
-          localObject1 = localEntityTransaction;
-          localObject2 = localEntityTransaction;
-          a((Entity)paramList.get(i));
-          i += 1;
+          axfj.e(String.valueOf(paramFromServiceMsg.getResultCode()), 2);
+          return;
         }
+        axfj.d("3002", 2);
+        return;
       }
-      localObject1 = localEntityTransaction;
-      localObject2 = localEntityTransaction;
-      localEntityTransaction.commit();
+      a(paramObject, paramToServiceMsg.extraData.getString("cmd_param_data_version", ""));
       return;
     }
-    catch (Exception paramList)
+    if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
     {
-      localObject2 = localObject1;
-      paramList.printStackTrace();
-      localObject2 = localObject1;
-      if (QLog.isColorLevel())
+      paramObject = new StringBuilder().append("fail to  handleDelMessage error code is ");
+      if (paramFromServiceMsg == null) {}
+      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
       {
-        localObject2 = localObject1;
-        QLog.w("RoamSettingManager", 2, "insert write exception: " + paramList.getMessage());
+        QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
+        if ((paramFromServiceMsg == null) || (paramFromServiceMsg.isSuccess())) {
+          break;
+        }
+        axfj.d(String.valueOf(paramFromServiceMsg.getResultCode()), 2);
+        return;
       }
+      axfj.d("3003", 2);
       return;
     }
-    finally
-    {
-      if (localObject2 != null) {
-        localObject2.end();
-      }
-    }
-  }
-  
-  public boolean a(Entity paramEntity)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
-    {
-      if (paramEntity.getStatus() != 1000) {
-        break label48;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      bool1 = bool2;
-      if (paramEntity.getStatus() == 1001) {
-        bool1 = true;
-      }
-    }
-    label48:
-    do
-    {
-      return bool1;
-      if (paramEntity.getStatus() == 1001) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramEntity.getStatus() != 1002);
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
-  }
-  
-  public boolean b(Entity paramEntity)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()) {
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramEntity);
-    }
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.b != null) {
-      this.b.clear();
-    }
-    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap != null) {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.clear();
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    }
+    a(paramObject, paramToServiceMsg.extraData.getBoolean("cmd_param_need_sync"));
   }
 }
 

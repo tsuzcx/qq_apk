@@ -1,39 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidp;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import nzz;
-import tzo;
+import ainh;
 
 public class PublicAccountChatPie$28
   implements Runnable
 {
-  public PublicAccountChatPie$28(aidp paramaidp, AccountDetail paramAccountDetail) {}
+  public PublicAccountChatPie$28(ainh paramainh, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "updateUnfollowInfo");
+    if (ainh.d(this.this$0) > 0) {
+      this.this$0.z(this.a);
     }
-    if (this.this$0.Z)
-    {
-      int i = tzo.a(this.a.accountFlag);
-      if ((i == -3) || (i == -4)) {
-        nzz.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.uin);
-      }
-    }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.a);
-    }
-    aidp.b(this.this$0, this.a);
-    aidp.a(this.this$0).post(new PublicAccountChatPie.28.1(this));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

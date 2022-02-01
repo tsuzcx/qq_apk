@@ -10,9 +10,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import gb;
 import gc;
 import gf;
-import yqp;
-import zkb;
-import zlx;
+import yuk;
+import znw;
+import zps;
 
 public class ETTextViewPlus
   extends ETTextView
@@ -30,7 +30,7 @@ public class ETTextViewPlus
     this.jdField_a_of_type_Gc = ((gc)localQQAppInterface.getManager(42));
     this.jdField_a_of_type_JavaLangString = localQQAppInterface.c();
     super.setSingleLine(true);
-    setMaxWidth(zlx.a(getContext()) - zlx.a(paramContext, 24.0F));
+    setMaxWidth(zps.a(getContext()) - zps.a(paramContext, 24.0F));
   }
   
   public ETTextViewPlus(Context paramContext, AttributeSet paramAttributeSet)
@@ -40,16 +40,16 @@ public class ETTextViewPlus
     this.jdField_a_of_type_Gc = ((gc)paramAttributeSet.getManager(42));
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.c();
     super.setSingleLine(true);
-    setMaxWidth(zlx.a(getContext()) - zlx.a(paramContext, 24.0F));
+    setMaxWidth(zps.a(getContext()) - zps.a(paramContext, 24.0F));
   }
   
   public void a()
   {
-    yqp.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync download completed");
+    yuk.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync download completed");
     gb localgb = this.jdField_a_of_type_Gc.a(this.jdField_a_of_type_Int, this.b, false, this.jdField_a_of_type_JavaLangString, 0);
     if ((localgb != null) && (localgb.a != null))
     {
-      yqp.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync [" + this.jdField_a_of_type_Int + "] download completed");
+      yuk.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync [" + this.jdField_a_of_type_Int + "] download completed");
       setFont(localgb.a, System.currentTimeMillis());
       setText(getText());
       this.jdField_a_of_type_Gc.b(this);
@@ -59,7 +59,7 @@ public class ETTextViewPlus
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yqp.d("DIYProfileTemplate.ETTextViewPlus", "onDetachedFromWindow");
+    yuk.d("DIYProfileTemplate.ETTextViewPlus", "onDetachedFromWindow");
     this.jdField_a_of_type_Gc.b(this);
   }
   
@@ -73,8 +73,8 @@ public class ETTextViewPlus
   {
     if (this.jdField_a_of_type_Int > 0)
     {
-      zkb.a("DIYProfileTemplate.ETTextViewPluserror: it is not allow set font id multiple time! orig=" + this.jdField_a_of_type_Int + " set " + paramInt1, new Object[0]);
-      yqp.e("DIYProfileTemplate.ETTextViewPlus", "error: it is not allow set font id multiple time! orig=" + this.jdField_a_of_type_Int + " set " + paramInt1);
+      znw.a("DIYProfileTemplate.ETTextViewPluserror: it is not allow set font id multiple time! orig=" + this.jdField_a_of_type_Int + " set " + paramInt1, new Object[0]);
+      yuk.e("DIYProfileTemplate.ETTextViewPlus", "error: it is not allow set font id multiple time! orig=" + this.jdField_a_of_type_Int + " set " + paramInt1);
       return;
     }
     this.jdField_a_of_type_Int = paramInt1;
@@ -82,11 +82,11 @@ public class ETTextViewPlus
     gb localgb = this.jdField_a_of_type_Gc.a(this.jdField_a_of_type_Int, this.b, false, this.jdField_a_of_type_JavaLangString, 0);
     if (localgb != null)
     {
-      yqp.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync [" + paramInt1 + "] success");
+      yuk.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync [" + paramInt1 + "] success");
       setFont(localgb.a, System.currentTimeMillis());
       return;
     }
-    yqp.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync [" + paramInt1 + "] need download");
+    yuk.d("DIYProfileTemplate.ETTextViewPlus", "setFontAsync [" + paramInt1 + "] need download");
     this.jdField_a_of_type_Gc.a(this);
   }
   

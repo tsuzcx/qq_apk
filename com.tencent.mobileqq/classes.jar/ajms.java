@@ -1,38 +1,55 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import java.nio.ByteBuffer;
+import oicq.wlogin_sdk.tools.MD5;
 
 public class ajms
-  implements AdapterView.OnItemClickListener
 {
-  public ajms(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static String a(String paramString)
   {
-    ajmy localajmy = (ajmy)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-    boolean bool = localajmy.jdField_a_of_type_Boolean;
-    if (bool)
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return paramString;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramString.length());
+    int i = 0;
+    if (i < paramString.length())
     {
-      if (EmoticonGroupStoreFragment.b(this.a).contains(localajmy.jdField_a_of_type_JavaLangString)) {
-        EmoticonGroupStoreFragment.b(this.a).remove(localajmy.jdField_a_of_type_JavaLangString);
-      }
-      localajmy = (ajmy)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-      if (bool) {
-        break label144;
+      char c = paramString.charAt(i);
+      if ((c == ' ') || (c == '-') || (c == ')') || (c == '(') || (c == '_')) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuffer.append(c);
       }
     }
-    label144:
-    for (bool = true;; bool = false)
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    paramString1 = paramString1.getBytes();
+    byte[] arrayOfByte = paramString2.getBytes();
+    if (paramString1.length > 10)
     {
-      localajmy.jdField_a_of_type_Boolean = bool;
-      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      EmoticonGroupStoreFragment.b(this.a).add(localajmy.jdField_a_of_type_JavaLangString);
-      break;
+      paramString2 = new byte[10];
+      System.arraycopy(paramString1, 0, paramString2, 0, 10);
+      paramString1 = paramString2;
+    }
+    for (;;)
+    {
+      return MD5.toMD5(ByteBuffer.allocate(paramString1.length + arrayOfByte.length).put(paramString1).put(arrayOfByte).array());
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    for (paramString = "#";; paramString = String.valueOf(paramString.charAt(0)).toUpperCase())
+    {
+      String str = paramString;
+      if (!bhsr.b(paramString.charAt(0))) {
+        str = "#";
+      }
+      return str;
     }
   }
 }

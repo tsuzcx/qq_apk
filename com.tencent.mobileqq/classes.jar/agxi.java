@@ -1,18 +1,8 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class agxi
-  extends ahbl
+public abstract interface agxi
 {
-  agxi(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public abstract void a(String paramString);
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agos(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public abstract void l();
 }
 
 

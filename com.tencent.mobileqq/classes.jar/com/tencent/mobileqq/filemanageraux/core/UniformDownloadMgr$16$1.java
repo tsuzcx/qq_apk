@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
-import atzl;
-import auck;
+import aurg;
+import auuf;
 
 public class UniformDownloadMgr$16$1
   implements Runnable
 {
-  public UniformDownloadMgr$16$1(atzl paramatzl, String paramString) {}
+  public UniformDownloadMgr$16$1(aurg paramaurg, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      auck.a(this.jdField_a_of_type_Atzl.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atzl.b);
+      auuf.a(this.jdField_a_of_type_Aurg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aurg.b);
       return;
     }
-    auck.b(this.jdField_a_of_type_Atzl.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atzl.b);
+    auuf.b(this.jdField_a_of_type_Aurg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aurg.b);
   }
 }
 

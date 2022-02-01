@@ -1,27 +1,55 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajdo
   implements View.OnClickListener
 {
-  public ajdo(NotificationView paramNotificationView) {}
+  public ajdo(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
   public void onClick(View paramView)
   {
-    ajdm localajdm = (ajdm)paramView.getTag();
-    if (localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    Object localObject;
+    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText())) || (this.a.f == ClassificationSearchActivity.c))
     {
-      this.a.a(localajdm);
-      if (localajdm.jdField_a_of_type_Int == 82) {
-        bcst.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      localObject = (InputMethodManager)this.a.getSystemService("input_method");
+      if ((localObject != null) && (((InputMethodManager)localObject).isActive())) {
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+      }
+      this.a.setResult(0);
+      this.a.finish();
+      if ((this.a.f == ClassificationSearchActivity.d) || (this.a.f == ClassificationSearchActivity.e)) {
+        this.a.sendBroadcast(new Intent("com.tencent.mobileqq.search.cancel"));
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(((String)localObject).trim())))
+      {
+        this.a.a((String)localObject);
+        ClassificationSearchActivity.a(this.a, (String)localObject);
+        ocd.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", (String)localObject, "", true);
+      }
+      else if (this.a.f == ClassificationSearchActivity.d)
+      {
+        ocd.a(null, "", "0X800742D", "0X800742D", 0, 0, (String)localObject, "", "", "");
+        ClassificationSearchActivity.a(this.a, (String)localObject);
+      }
+      else
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a((String)localObject, false);
+      }
+    }
   }
 }
 

@@ -1,14 +1,15 @@
-import java.util.ArrayList;
+import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
 
 public class mpe
 {
-  public static ArrayList<lco> a;
-  public String a = "20000005011710261000100000426100";
-  public boolean a;
-  public String b = "0";
-  public boolean b;
-  public String c = "0";
-  public boolean c;
+  public int a;
+  public int b;
+  
+  public mpe(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

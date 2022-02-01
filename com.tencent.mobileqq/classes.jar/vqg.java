@@ -1,22 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleFlowLayoutItemView;
-import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleTagFlowLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.biz.subscribe.comment.CommentEditText;
 
-public class vqg
-  implements View.OnClickListener
+class vqg
+  implements TextWatcher
 {
-  public vqg(QCircleTagFlowLayout paramQCircleTagFlowLayout, QCircleFlowLayoutItemView paramQCircleFlowLayoutItemView, int paramInt) {}
+  vqg(vqe paramvqe) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleFlowLayoutItemView, this.jdField_a_of_type_Int);
-    if (QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout) != null) {
-      QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout).a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleFlowLayoutItemView, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout);
+    if (paramEditable == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    vqe.a(this.a).removeTextChangedListener(this);
+    if (vqe.b(this.a).getText().toString().isEmpty()) {
+      if (vqe.a(this.a) != null) {
+        vqe.b(this.a).setBackgroundResource(2130843912);
+      }
+    }
+    for (;;)
+    {
+      vqe.c(this.a).addTextChangedListener(this);
+      return;
+      vqe.c(this.a).setBackgroundResource(2130843913);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

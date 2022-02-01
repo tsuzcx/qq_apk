@@ -3,12 +3,12 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blrp;
+import bmsr;
 
 public class LbsDataV2$PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PoiInfo> CREATOR = new blrp();
+  public static final Parcelable.Creator<PoiInfo> CREATOR = new bmsr();
   public String address;
   public String city = "";
   public String country = "";
@@ -18,6 +18,7 @@ public class LbsDataV2$PoiInfo
   public int districtCode;
   public LbsDataV2.GpsInfo gpsInfo = new LbsDataV2.GpsInfo();
   public int hotValue;
+  public boolean isRecomm;
   public String phoneNumber = "";
   public String poiDefaultName;
   public String poiId;
@@ -58,6 +59,7 @@ public class LbsDataV2$PoiInfo
     localPoiInfo.province = paramPoiInfo.province;
     localPoiInfo.country = paramPoiInfo.country;
     localPoiInfo.district = paramPoiInfo.district;
+    localPoiInfo.isRecomm = paramPoiInfo.isRecomm;
     return localPoiInfo;
   }
   
@@ -106,6 +108,12 @@ public class LbsDataV2$PoiInfo
     paramParcel.writeString(this.province);
     paramParcel.writeString(this.city);
     paramParcel.writeString(this.district);
+    if (this.isRecomm) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      return;
+    }
   }
 }
 

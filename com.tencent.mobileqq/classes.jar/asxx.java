@@ -1,39 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
 
 public class asxx
-  extends atwn
+  implements atdp
 {
-  public asxx(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  public asxx(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public void a()
+  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    this.a.a.a().b();
+    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
   }
   
-  public void b()
+  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    atcb.a(ExtendFriendCampusFragment.a(this.a), false);
+    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
   }
 }
 

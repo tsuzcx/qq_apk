@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import alvy;
+import amhq;
 
 public class ShortVideoPlayActivity$13$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$13$1(alvy paramalvy) {}
+  public ShortVideoPlayActivity$13$1(amhq paramamhq) {}
   
   public void run()
   {

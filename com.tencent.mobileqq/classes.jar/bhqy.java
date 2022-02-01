@@ -1,61 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhqy
-  extends bhqx
+class bhqy
+  implements View.OnClickListener
 {
-  public bhqy(int paramInt)
-  {
-    super(paramInt);
-  }
+  bhqy(bhqw parambhqw, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    if (WebAccelerateHelper.preloadBrowserView == null)
-    {
-      WebAccelerateHelper.preInflaterBrowserView();
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhqw, 1);
     }
-    do
-    {
-      return 2;
-      if (SwiftReuseTouchWebView.c != 0) {
-        break;
-      }
-      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
-    return 2;
-    long l;
-    if (bhqu.a() < 5)
-    {
-      l = System.currentTimeMillis();
-      if (System.currentTimeMillis() > bhqu.a() + 10000L)
-      {
-        bhqu.a();
-        bhqu.b();
-        bhqu.a(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
-        }
-      }
-    }
-    for (;;)
-    {
-      return 1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + bhqu.a() + " < 10s.");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + bhqu.a() + ">=" + 5 + ".");
-        }
-      }
-    }
+    this.jdField_a_of_type_Bhqw.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

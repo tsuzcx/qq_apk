@@ -6,7 +6,7 @@ import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lkw;
+import llk;
 
 public class TxLibSoLoader
 {
@@ -16,7 +16,7 @@ public class TxLibSoLoader
   {
     try
     {
-      if (lkw.f() > 2) {}
+      if (llk.f() > 2) {}
       for (paramString = "/txlib/lib" + paramString + "-v7a.so";; paramString = "/txlib/lib" + paramString + "-armeabi.so")
       {
         paramString = BaseApplicationImpl.getContext().getFilesDir().getParent() + paramString;

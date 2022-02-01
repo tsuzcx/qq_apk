@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adgz
-  extends adhb
+  extends adic
 {
-  public adgz(TestAppFragment paramTestAppFragment) {}
-  
-  public void onSuccess(JSONObject paramJSONObject)
+  public int a()
   {
-    super.onSuccess(paramJSONObject);
-    paramJSONObject.optString("openid", "");
-    this.a.a.a("getAppFriends", null, new adha(this));
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().b(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (19 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

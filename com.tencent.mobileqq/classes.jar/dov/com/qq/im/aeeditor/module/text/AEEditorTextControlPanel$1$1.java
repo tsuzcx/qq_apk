@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnzb;
-import boik;
+import bpam;
+import bpkf;
 
 class AEEditorTextControlPanel$1$1
   implements Runnable
@@ -14,7 +14,7 @@ class AEEditorTextControlPanel$1$1
     {
       try
       {
-        bnzb.d("AEEditorTextControlPanel", "[createImageAndUpdate] notifyAll File exist");
+        bpam.d("AEEditorTextControlPanel", "[createImageAndUpdate] notifyAll File exist");
         AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel$1.this$0).notifyItemChanged(this.jdField_a_of_type_Int);
         return;
       }
@@ -22,7 +22,7 @@ class AEEditorTextControlPanel$1$1
       {
         for (;;)
         {
-          bnzb.d("AEEditorTextControlPanel", "[createImageAndUpdate]IllegalMonitorStateException File exist");
+          bpam.d("AEEditorTextControlPanel", "[createImageAndUpdate]IllegalMonitorStateException File exist");
         }
       }
     }

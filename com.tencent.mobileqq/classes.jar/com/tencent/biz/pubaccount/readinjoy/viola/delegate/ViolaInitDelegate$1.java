@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.delegate;
 
 import android.view.ViewGroup;
-import tmk;
+import tdi;
 
 public class ViolaInitDelegate$1
   implements Runnable
 {
-  public ViolaInitDelegate$1(tmk paramtmk) {}
+  public ViolaInitDelegate$1(tdi paramtdi) {}
   
   public void run()
   {
-    tmk.a(this.this$0).addView(tmk.a(this.this$0));
+    tdi.a(this.this$0).addView(tdi.a(this.this$0));
   }
 }
 

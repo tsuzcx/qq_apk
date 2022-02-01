@@ -1,57 +1,104 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
+import android.os.Bundle;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppWordings;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.Appconf.AppConfResponse;
+import face.qqlogin.Appconf.Wording;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
-public class awgp
-  extends GestureDetector.SimpleOnGestureListener
+final class awgp
+  extends ayxn
 {
-  public awgp(MagicfaceContainerView paramMagicfaceContainerView) {}
+  awgp(int paramInt, BusinessObserver paramBusinessObserver) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (this.a.a != null) {
-      this.a.a.a(5);
-    }
-    return false;
+    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, false, null);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(byte[] paramArrayOfByte)
   {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (this.a.a != null) {
-        this.a.a.a(0);
+    for (;;)
+    {
+      Object localObject2;
+      int i;
+      String str1;
+      String str2;
+      int j;
+      String str3;
+      String str4;
+      try
+      {
+        localObject2 = new Appconf.AppConfResponse();
+        ((Appconf.AppConfResponse)localObject2).mergeFrom(paramArrayOfByte);
+        localObject1 = ((Appconf.AppConfResponse)localObject2).AppName.get();
+        i = ((Appconf.AppConfResponse)localObject2).Mode.get();
+        str1 = ((Appconf.AppConfResponse)localObject2).ColorSeq.get().toStringUtf8();
+        str2 = ((Appconf.AppConfResponse)localObject2).Session.get();
+        j = ((Appconf.AppConfResponse)localObject2).Ret.get();
+        str3 = ((Appconf.AppConfResponse)localObject2).ErrMsg.get();
+        str4 = ((Appconf.AppConfResponse)localObject2).ActionSeq.get().toStringUtf8();
+        if (!QLog.isDevelopLevel()) {
+          break label396;
+        }
+        paramArrayOfByte = ((Appconf.AppConfResponse)localObject2).Debug.get();
+        Object localObject3 = ((Appconf.AppConfResponse)localObject2).Wordings.get();
+        localObject2 = new ArrayList(3);
+        if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
+        {
+          localObject3 = ((List)localObject3).iterator();
+          if (!((Iterator)localObject3).hasNext()) {
+            break label267;
+          }
+          Appconf.Wording localWording = (Appconf.Wording)((Iterator)localObject3).next();
+          ((List)localObject2).add(new FaceDetectForThirdPartyManager.AppWordings(localWording.serviceType.get(), localWording.Text.get()));
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          break label267;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, false, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse error=", paramArrayOfByte);
+        }
+        return;
+      }
+      QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse list is null appName =" + (String)localObject1);
+      label267:
+      Object localObject1 = new FaceDetectForThirdPartyManager.AppConf((String)localObject1, (List)localObject2, i);
+      ((FaceDetectForThirdPartyManager.AppConf)localObject1).colorSequence = str1;
+      ((FaceDetectForThirdPartyManager.AppConf)localObject1).actionReq = awgo.a(str4);
+      ((FaceDetectForThirdPartyManager.AppConf)localObject1).session = str2;
+      ((FaceDetectForThirdPartyManager.AppConf)localObject1).ret = j;
+      ((FaceDetectForThirdPartyManager.AppConf)localObject1).errMsg = str3;
+      ((FaceDetectForThirdPartyManager.AppConf)localObject1).debug = paramArrayOfByte;
+      paramArrayOfByte = new Bundle();
+      paramArrayOfByte.putInt("app_id", this.jdField_a_of_type_Int);
+      paramArrayOfByte.putSerializable("FaceRecognition.AppConf", (Serializable)localObject1);
+      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, true, paramArrayOfByte);
+      if ((QLog.isColorLevel()) && (QLog.isColorLevel()))
+      {
+        QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", localObject1 });
+        return;
+        label396:
+        paramArrayOfByte = null;
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (this.a.a == null);
-        this.a.a.a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
-    this.a.a.a(3);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(4);
-    }
-    return false;
   }
 }
 

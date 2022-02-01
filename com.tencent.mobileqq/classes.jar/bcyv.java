@@ -1,24 +1,9 @@
-import android.view.View;
-import android.widget.TextView;
-
-class bcyv
+public class bcyv
 {
-  public View a;
-  public TextView a;
-  public TextView b;
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    if (this.b != null) {
-      this.b.setVisibility(8);
-    }
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

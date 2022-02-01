@@ -1,384 +1,102 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.QQStoryFollowCaptureResManager.1;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView;
 
-public class bqgf
+class bqgf
+  implements MessageQueue.IdleHandler
 {
-  private static bqgf jdField_a_of_type_Bqgf;
-  private static File jdField_a_of_type_JavaIoFile;
-  private static String jdField_a_of_type_JavaLangString = "QQStoryFollowCaptureResManager";
-  private static File jdField_b_of_type_JavaIoFile = a(jdField_a_of_type_JavaIoFile, "follow_capture_template");
-  private static File c = a(jdField_a_of_type_JavaIoFile, "follow_capture_original_video");
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  private String jdField_b_of_type_JavaLangString;
+  bqgf(bqge parambqge) {}
   
-  static
+  public boolean queueIdle()
   {
-    jdField_a_of_type_JavaIoFile = a(new File(alkn.d), "qqstroy_follow_capture");
-    d();
-  }
-  
-  public static bqgf a()
-  {
-    if (jdField_a_of_type_Bqgf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bqgf == null) {
-        jdField_a_of_type_Bqgf = new bqgf();
-      }
-      return jdField_a_of_type_Bqgf;
-    }
-    finally {}
-  }
-  
-  public static File a()
-  {
-    if (!c.exists()) {
-      c.mkdirs();
-    }
-    return c;
-  }
-  
-  private static File a(File paramFile, String paramString)
-  {
-    paramFile = new File(paramFile, paramString);
-    if (!paramFile.exists()) {
-      paramFile.mkdirs();
-    }
-    return paramFile;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "template url is null");
-      return null;
-    }
-    int i = paramString.lastIndexOf("/");
-    int j = paramString.lastIndexOf(".");
-    if ((i == -1) || (j == -1) || (i + 1 > j))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "template url is :" + paramString);
-      return null;
-    }
-    return paramString.substring(i + 1, j);
-  }
-  
-  private static List<File> a(File paramFile)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    if ((paramFile != null) && (paramFile.exists()))
-    {
-      if (paramFile.isFile()) {
-        return localArrayList1;
-      }
-      ArrayList localArrayList2 = new ArrayList();
-      paramFile = paramFile.listFiles();
-      int i;
-      if ((paramFile != null) && (paramFile.length != 0))
-      {
-        int j = paramFile.length;
-        i = 0;
-        while (i < j)
-        {
-          localArrayList2.add(paramFile[i]);
-          i += 1;
-        }
-      }
-      while (localArrayList2.size() > 0)
-      {
-        paramFile = (File)localArrayList2.remove(0);
-        localArrayList1.add(paramFile);
-        if (paramFile.isDirectory())
-        {
-          paramFile = paramFile.listFiles();
-          i = 0;
-          while (i < paramFile.length)
-          {
-            localArrayList2.add(paramFile[i]);
-            i += 1;
-          }
-        }
-      }
-    }
-    return localArrayList1;
-  }
-  
-  private static void a(File paramFile, boolean paramBoolean)
-  {
-    List localList = a(paramFile);
-    int i = localList.size() - 1;
-    while (i >= 0)
-    {
-      ((File)localList.get(i)).delete();
-      i -= 1;
-    }
-    if (paramBoolean) {
-      paramFile.delete();
-    }
-  }
-  
-  public static void a(String paramString, bqgh parambqgh)
-  {
-    String str1 = a(paramString);
-    if (str1 == null) {}
-    for (;;)
-    {
-      return;
-      if (!jdField_b_of_type_JavaIoFile.exists()) {
-        jdField_b_of_type_JavaIoFile.mkdirs();
-      }
-      String str2 = jdField_b_of_type_JavaIoFile.getPath() + File.separator + str1 + ".zip";
-      if (!b(str2, str1))
-      {
-        bdvs localbdvs = new bdvs();
-        localbdvs.jdField_a_of_type_Bdvw = new bqgg(str2, str1, parambqgh);
-        localbdvs.jdField_a_of_type_JavaLangString = paramString;
-        localbdvs.jdField_a_of_type_Int = 0;
-        localbdvs.c = str2;
-        localbdvs.b = bgnt.a(bdwu.a().a());
-        try
-        {
-          parambqgh = BaseApplicationImpl.getApplication().getRuntime();
-          if (QQAppInterface.class.isInstance(parambqgh))
-          {
-            ((QQAppInterface)parambqgh).getNetEngine(0).a(localbdvs);
-            if (QLog.isColorLevel())
-            {
-              QLog.i(jdField_a_of_type_JavaLangString, 2, "start download follow capture template, url: " + paramString);
-              return;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "download follow capture template error", paramString);
-        }
-      }
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      bool = false;
-    }
-    while (new File(jdField_b_of_type_JavaIoFile.getPath() + File.separator + paramString + File.separator + "complete").exists()) {
-      return bool;
-    }
-    File localFile = new File(jdField_b_of_type_JavaIoFile.getPath() + File.separator + paramString + ".zip");
-    bool = b(localFile, paramString);
-    if (bool) {
-      ThreadManagerV2.excute(new QQStoryFollowCaptureResManager.1(localFile, paramString), 16, null, true);
-    }
-    return bool;
-  }
-  
-  public static String[] a(String paramString)
-  {
-    paramString = jdField_b_of_type_JavaIoFile.getPath() + File.separator + paramString + File.separator;
-    return new String[] { paramString + "background.png", paramString + "foreground" };
-  }
-  
-  public static void b()
-  {
-    a(c, false);
-    a(jdField_b_of_type_JavaIoFile, false);
-  }
-  
-  private static boolean b(File paramFile, String paramString)
-  {
-    boolean bool = true;
-    if (!paramFile.exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "template zip file not exists");
-      }
+    bqge.a(this.a, true);
+    if ((this.a.jdField_a_of_type_Bqhs == null) || (this.a.jdField_a_of_type_Bqhs.getActivity() == null) || (this.a.jdField_a_of_type_Bqhs.getActivity().getIntent() == null) || (this.a.jdField_a_of_type_Bqhs.getActivity().getIntent().getExtras() == null)) {
       return false;
     }
-    for (;;)
+    Object localObject = this.a.jdField_a_of_type_Bqhs.getActivity().getIntent().getExtras();
+    String str4 = ((Bundle)localObject).getString("share_url_target_url");
+    String str1 = ((Bundle)localObject).getString("share_url_name");
+    String str2 = ((Bundle)localObject).getString("share_url_text");
+    String str3 = ((Bundle)localObject).getString("share_url_thumb_url");
+    String str5 = ((Bundle)localObject).getString("struct_share_key_source_name");
+    String str6 = ((Bundle)localObject).getString("struct_share_key_source_icon");
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      try
-      {
-        paramFile = bgmg.c(paramFile.getPath());
-        if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(paramFile))) {
-          break label72;
-        }
-        return bool;
+      localStringBuilder = new StringBuilder().append("onResume : url = ");
+      if (str4 != null) {
+        break label424;
       }
-      catch (UnsatisfiedLinkError paramFile) {}
-      if (!QLog.isColorLevel()) {
+      localObject = "null";
+      label168:
+      localStringBuilder = localStringBuilder.append((String)localObject).append(" , name = ");
+      if (str1 != null) {
+        break label430;
+      }
+      localObject = "null";
+      label188:
+      localStringBuilder = localStringBuilder.append((String)localObject).append(" , text = ");
+      if (str2 != null) {
+        break label435;
+      }
+      localObject = "null";
+      label208:
+      localStringBuilder = localStringBuilder.append((String)localObject).append(" , thumUrl = ");
+      if (str3 != null) {
+        break label440;
+      }
+      localObject = "null";
+      label229:
+      localStringBuilder = localStringBuilder.append((String)localObject).append(" , sourceName = ");
+      if (str5 != null) {
+        break label446;
+      }
+      localObject = "null";
+      label250:
+      localStringBuilder = localStringBuilder.append((String)localObject).append(" , sourceIconUrl = ");
+      if (str6 != null) {
+        break label452;
+      }
+    }
+    label424:
+    label430:
+    label435:
+    label440:
+    label446:
+    label452:
+    for (localObject = "null";; localObject = str6)
+    {
+      QLog.d("Q.qqstory.publish.editEditVideoLinker", 2, (String)localObject);
+      if (str4 == null) {
         break;
       }
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "calculate follow capture template zip md5 error", paramFile);
+      this.a.d();
+      yup.a("video_shoot", "exp_linkbar", 1, 0, new String[] { "", "", "", "" });
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setShowShare(true);
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.b = str5;
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.a = str6;
+      localObject = new bqso(str4);
+      ((bqso)localObject).b = str1;
+      ((bqso)localObject).c = str2;
+      ((bqso)localObject).d = str3;
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setLinkerObject((bqso)localObject);
+      this.a.jdField_a_of_type_Bqgk.a(Message.obtain(null, 15, 1, 0));
       return false;
-      label72:
-      bool = false;
+      localObject = str4;
+      break label168;
+      localObject = str1;
+      break label188;
+      localObject = str2;
+      break label208;
+      localObject = str3;
+      break label229;
+      localObject = str5;
+      break label250;
     }
-  }
-  
-  private boolean b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "parse config: " + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramString.optBoolean("enableFollowCapture"));
-        this.jdField_b_of_type_JavaLangString = paramString.optString("guideVideoUrl");
-        return true;
-      }
-      catch (JSONException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "parse follow capture config error", paramString);
-        }
-        return false;
-      }
-      finally
-      {
-        if (this.jdField_a_of_type_JavaLangBoolean == null) {
-          this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-        }
-      }
-    }
-  }
-  
-  private static boolean b(String paramString1, String paramString2)
-  {
-    paramString1 = new File(paramString1);
-    if (b(paramString1, paramString2)) {
-      return c(paramString1, paramString2);
-    }
-    paramString1.delete();
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "template zip md5 is wrong");
-    }
-    return false;
-  }
-  
-  public static void c()
-  {
-    if (jdField_a_of_type_JavaIoFile != null)
-    {
-      List localList = a(jdField_a_of_type_JavaIoFile);
-      Iterator localIterator = localList.iterator();
-      for (long l = 0L; localIterator.hasNext(); l = ((File)localIterator.next()).length() + l) {}
-      if (l > 209715200L)
-      {
-        int i = localList.size() - 1;
-        while (i >= 0)
-        {
-          ((File)localList.get(i)).delete();
-          i -= 1;
-        }
-      }
-      d();
-    }
-  }
-  
-  private static boolean c(File paramFile, String paramString)
-  {
-    try
-    {
-      paramString = jdField_b_of_type_JavaIoFile.getPath() + File.separator + paramString + File.separator;
-      a(new File(paramString), true);
-      File localFile = new File(paramString + "complete");
-      if (localFile.exists()) {
-        return true;
-      }
-      nmk.a(paramFile, paramString);
-      localFile.createNewFile();
-      return true;
-    }
-    catch (Exception paramFile)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "uncompress template zip file error", paramFile);
-      }
-    }
-    return false;
-  }
-  
-  private static void d()
-  {
-    File localFile = new File(jdField_a_of_type_JavaIoFile, ".nomedia");
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "create .nomedia file error");
-    }
-  }
-  
-  private void e()
-  {
-    b(wpf.d());
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      e();
-    }
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      wpf.e();
-      return;
-    }
-    finally {}
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(wpf.d());
-  }
-  
-  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if (!b(paramString)) {
-      return false;
-    }
-    wpf.f(paramString);
-    return true;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_JavaLangBoolean == null) {
-      e();
-    }
-    if (this.jdField_a_of_type_JavaLangBoolean != null) {
-      return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
-    }
-    return false;
   }
 }
 

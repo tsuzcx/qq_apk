@@ -1,49 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.IBaseActionListener.Stub;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-class aqwp
-  implements aqvn
+@Deprecated
+public abstract class aqwp
+  extends IBaseActionListener.Stub
 {
-  aqwp(aqwl paramaqwl) {}
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
   
-  public void a(Context paramContext)
+  public void onActionResult(FromServiceMsg paramFromServiceMsg) {}
+  
+  public void onRecvFromMsg(FromServiceMsg paramFromServiceMsg)
   {
-    try
-    {
-      Intent localIntent;
-      if (new JSONObject(aqwl.a(this.a)).getInt("showlocalfile") == 1)
-      {
-        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
-        if (localIntent != null) {}
-      }
-      else
-      {
-        return;
-      }
-      try
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("category", 23);
-        localIntent.putExtra("bundle", localBundle);
-        localIntent.putExtra("localSdCardfile", 0);
-        paramContext.startActivity(localIntent);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    a((ToServiceMsg)paramFromServiceMsg.attributes.get(FromServiceMsg.class.getSimpleName()), paramFromServiceMsg);
   }
 }
 

@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-class afzf
-  implements agok
+public class afzf
+  extends azov
 {
-  afzf(afyw paramafyw) {}
+  public afzf(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  protected void b(boolean paramBoolean)
   {
-    afyw.a(this.a);
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

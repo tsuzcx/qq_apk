@@ -1,12 +1,16 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public abstract interface bnpi
+class bnpi
+  extends BroadcastReceiver
 {
-  public abstract void a(MetaMaterial paramMetaMaterial);
+  bnpi(bnpe parambnpe) {}
   
-  public abstract void a(MetaMaterial paramMetaMaterial, int paramInt);
-  
-  public abstract void b(MetaMaterial paramMetaMaterial);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    bnpe.a(this.a, paramIntent);
+  }
 }
 
 

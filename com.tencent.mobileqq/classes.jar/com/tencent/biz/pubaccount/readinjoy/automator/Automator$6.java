@@ -1,31 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import oua;
-import oub;
-import ouc;
-import ouf;
-import oug;
+import omn;
+import omo;
+import omp;
+import oms;
+import omt;
 
 public class Automator$6
   implements Runnable
 {
-  public Automator$6(oub paramoub, ouc paramouc) {}
+  public Automator$6(omo paramomo, omp paramomp) {}
   
   public void run()
   {
     this.a.c();
-    ouf localouf = this.a.a();
-    if ((localouf instanceof oua))
+    oms localoms = this.a.a();
+    if ((localoms instanceof omn))
     {
-      ((oua)localouf).b();
+      ((omn)localoms).b();
       return;
     }
-    if ((localouf instanceof oug))
+    if ((localoms instanceof omt))
     {
-      ((oug)localouf).b();
+      ((omt)localoms).b();
       return;
     }
-    oub.a(this.this$0);
+    omo.a(this.this$0);
   }
 }
 

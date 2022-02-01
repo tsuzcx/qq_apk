@@ -1,39 +1,13 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import android.text.TextUtils;
 
-public final class avgs
-  implements PluginManagerUpdater
+public class avgs
 {
-  private final File a;
-  
-  public avgs(String paramString)
+  public static boolean a(String paramString)
   {
-    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
-  }
-  
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    return anvy.a(16).submit(new avgu(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return anvy.a(16).submit(new avgt(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    return paramString.startsWith("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
   }
 }
 

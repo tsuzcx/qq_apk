@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akgk;
-import akgm;
+import akrv;
+import akrx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SendPhotoActivity$MyHandler$1
   implements Runnable
 {
-  public SendPhotoActivity$MyHandler$1(akgk paramakgk, boolean paramBoolean, String[] paramArrayOfString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public SendPhotoActivity$MyHandler$1(akrv paramakrv, boolean paramBoolean, String[] paramArrayOfString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     
     if (this.jdField_a_of_type_Boolean) {
-      akgm.e();
+      akrx.e();
     }
     try
     {
-      akgm.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int, false, false, -1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      akrx.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int, false, false, -1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
     }
     catch (Exception localException) {}

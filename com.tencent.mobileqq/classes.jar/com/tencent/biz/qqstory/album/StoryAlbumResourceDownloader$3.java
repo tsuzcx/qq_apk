@@ -3,18 +3,18 @@ package com.tencent.biz.qqstory.album;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import nkt;
-import wbw;
-import wbz;
+import nmo;
+import wfr;
+import wfu;
 
 public class StoryAlbumResourceDownloader$3
   implements Runnable
 {
-  public StoryAlbumResourceDownloader$3(wbw paramwbw) {}
+  public StoryAlbumResourceDownloader$3(wfr paramwfr) {}
   
   public void run()
   {
-    new nkt(QQStoryContext.a().getApp().getBaseContext(), "https://3408?_bid=3408", new wbz(this)).a();
+    new nmo(QQStoryContext.a().getApp().getBaseContext(), "https://3408?_bid=3408", new wfu(this)).a();
   }
 }
 

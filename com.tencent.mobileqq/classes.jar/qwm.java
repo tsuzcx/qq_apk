@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 
-public class qwm
-  implements View.OnClickListener
+public final class qwm
+  implements Parcelable.Creator<MultiBiuSameContent>
 {
-  public qwm(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
-  
-  public void onClick(View paramView)
+  public MultiBiuSameContent a(Parcel paramParcel)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new MultiBiuSameContent(paramParcel);
+  }
+  
+  public MultiBiuSameContent[] a(int paramInt)
+  {
+    return new MultiBiuSameContent[paramInt];
   }
 }
 

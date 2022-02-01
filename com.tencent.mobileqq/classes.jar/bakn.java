@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class bakn
-  implements bkpo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$2$1"}, k=3, mv={1, 1, 16})
+final class bakn
+  implements View.OnClickListener
 {
-  public bakn(IosTimepicker paramIosTimepicker) {}
+  bakn(bakg parambakg, bakf parambakf, bakj parambakj, int paramInt) {}
   
-  public void b(VerticalGallery paramVerticalGallery)
+  public final void onClick(View paramView)
   {
-    IosTimepicker.a(this.a);
+    bakg localbakg = this.jdField_a_of_type_Bakg;
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
+    Object localObject = bakf.a(this.jdField_a_of_type_Bakf).get(this.jdField_a_of_type_Int);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
+    localbakg.b(paramView, (bakz)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

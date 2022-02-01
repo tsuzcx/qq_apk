@@ -1,22 +1,61 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ajal
-  extends aniz
+class ajal
+  extends BroadcastReceiver
 {
-  public ajal(SystemMsgListView paramSystemMsgListView) {}
+  ajal(ajak paramajak) {}
   
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean)
+    String str1 = paramIntent.getStringExtra("callback");
+    int i = paramIntent.getIntExtra("bless_type", 0);
+    int j = paramIntent.getIntExtra("bless_num", 0);
+    paramContext = new JSONObject();
+    try
     {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
+      paramContext.put("bless_type", i);
+      paramContext.put("bless_num", j);
+      if (QLog.isColorLevel()) {
+        QLog.i("BlessJsApiPlugin", 2, String.format("call blessWebView, blesstype:%d, member:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
       }
-      QQToast.a(this.a.getContext(), 2131698107, 3000).a();
-      return;
+      if (i != 2) {}
     }
-    QQToast.a(this.a.getContext(), 2131698106, 1).a();
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        str1 = paramIntent.getStringExtra("bless_ptv_url");
+        String str2 = paramIntent.getStringExtra("bless_ptv_uuid");
+        String str3 = paramIntent.getStringExtra("bless_ptv_md5");
+        paramIntent = paramIntent.getStringExtra("bless_ptv_nick");
+        paramContext.put("bless_ptv_url", str1);
+        paramContext.put("bless_ptv_uuid", str2);
+        paramContext.put("bless_ptv_md5", str3);
+        paramContext.put("bless_ptv_nick", paramIntent);
+        this.a.callJs(ajak.a(), new String[] { paramContext.toString() });
+        return;
+        localJSONException = localJSONException;
+        localJSONException.printStackTrace();
+      }
+      catch (JSONException paramIntent)
+      {
+        for (;;)
+        {
+          paramIntent.printStackTrace();
+        }
+      }
+      if (i == 3)
+      {
+        this.a.callJs(ajak.a(), new String[] { paramContext.toString() });
+        return;
+      }
+      this.a.callJs(str1, new String[] { paramContext.toString() });
+    }
   }
 }
 

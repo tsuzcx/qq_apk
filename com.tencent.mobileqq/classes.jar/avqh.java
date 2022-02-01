@@ -1,15 +1,75 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-
 public class avqh
-  implements DialogInterface.OnCancelListener
 {
-  public avqh(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public final avqj a = new avqj();
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public static avqh a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
+    return avqk.a();
+  }
+  
+  public String a()
+  {
+    return this.a.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.a.d.a();
+  }
+  
+  public String b()
+  {
+    return this.a.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.a.c.a();
+  }
+  
+  public boolean c()
+  {
+    return this.a.jdField_a_of_type_Avql.a();
+  }
+  
+  public boolean d()
+  {
+    return this.a.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean e()
+  {
+    return this.a.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean f()
+  {
+    return this.a.e.a();
+  }
+  
+  public boolean g()
+  {
+    return this.a.g.a();
+  }
+  
+  public boolean h()
+  {
+    return this.a.f.a();
+  }
+  
+  public boolean i()
+  {
+    return this.a.h.a();
+  }
+  
+  public boolean j()
+  {
+    return this.a.i.a();
+  }
+  
+  public boolean k()
+  {
+    return this.a.j.a();
   }
 }
 

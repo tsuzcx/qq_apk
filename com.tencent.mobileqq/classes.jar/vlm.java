@@ -1,34 +1,21 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
-class vlm
-  extends RecyclerView.OnScrollListener
+public class vlm
+  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  vlm(vll paramvll, String paramString1, String paramString2) {}
+  public vlm(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
   {
-    TextView localTextView;
-    if ((this.jdField_a_of_type_Vll.a().a() instanceof zyi))
-    {
-      paramInt1 = ((zyi)this.jdField_a_of_type_Vll.a().a()).findFirstVisibleItemPosition();
-      if ((vll.a(this.jdField_a_of_type_Vll) != paramInt1) && (vll.a(this.jdField_a_of_type_Vll) != null))
-      {
-        localTextView = vll.a(this.jdField_a_of_type_Vll);
-        if (paramInt1 <= 1) {
-          break label89;
-        }
-      }
+    if (paramvxq != null) {
+      QLog.d(QCircleBaseTabFragment.a, 4, "initViewData:getFeedListRequestRsp_" + this.a.a() + ",state:" + paramvxq.a());
     }
-    label89:
-    for (paramRecyclerView = this.jdField_a_of_type_JavaLangString;; paramRecyclerView = this.b)
-    {
-      localTextView.setText(paramRecyclerView);
-      vll.a(this.jdField_a_of_type_Vll, paramInt1);
-      return;
-    }
+    this.a.a(paramvxq);
   }
 }
 

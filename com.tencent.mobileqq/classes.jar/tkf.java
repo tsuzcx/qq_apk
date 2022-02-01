@@ -1,18 +1,32 @@
-public abstract interface tkf
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+
+public class tkf
+  implements TextWatcher
 {
-  public abstract void a(String paramString);
+  public tkf(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  public abstract boolean b();
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public abstract String c();
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public abstract boolean c();
-  
-  public abstract String d();
-  
-  public abstract boolean d();
-  
-  public abstract String e();
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramCharSequence == null)
+    {
+      if (LimitWordCountEditText.a(this.a) != null) {
+        LimitWordCountEditText.a(this.a).a(0);
+      }
+      LimitWordCountEditText.a(this.a).setText(LimitWordCountEditText.a(this.a));
+      return;
+    }
+    if (LimitWordCountEditText.a(this.a) != null) {
+      LimitWordCountEditText.a(this.a).a(paramCharSequence.length());
+    }
+    LimitWordCountEditText.a(this.a).setText(String.valueOf(LimitWordCountEditText.a(this.a) - paramCharSequence.length()));
+  }
 }
 
 

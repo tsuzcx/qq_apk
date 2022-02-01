@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import mqq.util.WeakReference;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
 public class aets
-  extends WtloginObserver
+  implements TextWatcher
 {
-  public aets(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, WeakReference paramWeakReference) {}
+  public aets(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super.OnCheckDevLockStatus(paramWUserSigInfo, paramDevlockInfo, paramInt, paramErrMsg);
-    paramWUserSigInfo = (PhoneUnityBindInfoActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramWUserSigInfo == null)
-    {
-      QLog.i("IphoneTitleBarActivity", 1, "fetchSecurePhoneNum, activity destroyed");
-      return;
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
     }
-    PhoneUnityBindInfoActivity.a(paramWUserSigInfo, paramDevlockInfo);
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131167070));
+    }
+    for (;;)
+    {
+      this.a.a.setText("" + (40 - i));
+      return;
+      this.a.a.setTextColor(-65536);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

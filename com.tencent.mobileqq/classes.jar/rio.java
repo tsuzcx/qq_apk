@@ -1,31 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rio
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView$onScrollListener$1", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rio
+  implements AbsListView.OnScrollListener
 {
-  private static rfm a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onScroll(@Nullable AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(@Nullable AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramInt)
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if ((paramAbsListView != null) && (paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!BaseSelectView.a(this.a))) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-    default: 
-      return null;
-    case 0: 
-      return new rez(paramBaseArticleInfo);
+      if (paramInt != 0) {
+        BaseSelectView.a(this.a).c();
+      }
+      return;
     }
-    return new ril(paramBaseArticleInfo);
-  }
-  
-  public static rfm a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if (a(paramBaseArticleInfo)) {
-      return a(1, paramBaseArticleInfo);
-    }
-    return a(0, paramBaseArticleInfo);
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return ((paramBaseArticleInfo instanceof ArticleInfo)) && (!snh.q((ArticleInfo)paramBaseArticleInfo));
   }
 }
 

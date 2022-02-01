@@ -1,14 +1,18 @@
-import java.util.ArrayList;
+import android.view.View;
+import java.util.List;
 
 public abstract interface bcfq
+  extends bcfp
 {
-  public abstract void a(int paramInt);
+  public abstract int a();
   
-  public abstract void a(int paramInt, bcfj parambcfj);
+  public abstract String a();
   
-  public abstract void a(int paramInt, ArrayList<bcfj> paramArrayList);
+  public abstract List<bcfr> a();
   
-  public abstract void b(int paramInt, bcfj parambcfj);
+  public abstract void a(View paramView);
+  
+  public abstract String b();
 }
 
 

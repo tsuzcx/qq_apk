@@ -1,15 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class amwg
-  implements DialogInterface.OnClickListener
+  extends anyu
 {
-  public amwg(ApolloGameActivity paramApolloGameActivity) {}
+  public amwg(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    paramDialogInterface.dismiss();
+    if (!paramString.equals(HotChatCenterFragment.a(this.a).getAccount())) {}
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    while ((HotChatCenterFragment.a(this.a).getCurrentAccountUin() == null) || (!HotChatCenterFragment.a(this.a).getCurrentAccountUin().equals(paramString))) {
+      return;
+    }
+    ThreadManager.post(new HotChatCenterFragment.1.1(this, paramString), 8, null, true);
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString) {}
+  
+  protected void onUpdateRecentList()
+  {
+    this.a.b();
   }
 }
 

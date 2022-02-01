@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.aidl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aoxr;
+import aplh;
 
 public class ARScanStarFaceActInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new aoxr();
+  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new aplh();
   public long a;
   public String a;
   public long b;

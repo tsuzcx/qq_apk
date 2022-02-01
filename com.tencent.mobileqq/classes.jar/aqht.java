@@ -1,88 +1,100 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
-public class aqht
-  implements DialogInterface.OnDismissListener
+class aqht
+  implements beuq
 {
-  public aqht(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  aqht(aqhs paramaqhs) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onResp(bevm arg1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|pickerType : " + this.a.i);
-    }
-    if (this.a.i == 0)
+    Object localObject1;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-      this.a.jdField_a_of_type_Anjh.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-      paramDialogInterface = this.a.jdField_a_of_type_Anjh.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-      if (AppSetting.c)
+      localObject1 = new StringBuilder().append("onResp reqUrl: resp is null: ");
+      if (??? == null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anni.a(2131701158) + paramDialogInterface);
-        bgfz.a(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, anni.a(2131701161) + paramDialogInterface);
+        bool = true;
+        QLog.i("Q.dynamicAvatar", 2, bool);
       }
+    }
+    else
+    {
+      if (??? != null) {
+        break label51;
+      }
+    }
+    label51:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      localObject1 = ((beum)???.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString;
+      int i = ???.jdField_a_of_type_Int;
       if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|mCurAgeIndex1 : " + this.a.f + ", mCurAgeIndex2 : " + this.a.g + ", mAgeSelectIndex1 : " + this.a.jdField_b_of_type_Int + ", mAgeSelectIndex2 : " + this.a.jdField_c_of_type_Int);
+        QLog.i("Q.dynamicAvatar", 2, "onResp reqUrl: " + (String)localObject1 + " mResult: " + i + ",httpCode:" + ???.c + ",errDesc:" + ???.jdField_a_of_type_JavaLangString);
       }
-      bcst.b(this.a.app, "CliOper", "", "", "0X8004243", "0X8004243", 0, 0, this.a.jdField_b_of_type_Int + "", this.a.jdField_c_of_type_Int + "", "", "");
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
-      if (ConditionSearchFriendActivity.a(this.a) > 0)
+      for (;;)
       {
-        this.a.jdField_e_of_type_AndroidViewView.scrollBy(0, -ConditionSearchFriendActivity.a(this.a));
-        ConditionSearchFriendActivity.c(this.a, 0);
+        synchronized (aqhs.a(this.a))
+        {
+          if (aqhs.a(this.a).isEmpty()) {
+            break;
+          }
+          Iterator localIterator = aqhs.a(this.a).iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Object localObject3 = (WeakReference)localIterator.next();
+          if ((localObject3 == null) || (((WeakReference)localObject3).get() == null)) {
+            continue;
+          }
+          localObject3 = (aqhu)((WeakReference)localObject3).get();
+          if (i == 0)
+          {
+            bool = true;
+            ((aqhu)localObject3).a((String)localObject1, bool, false);
+          }
+        }
+        bool = false;
+      }
+      aqhs.a(this.a).remove(localObject2);
+    } while ((!bhnv.g(BaseApplicationImpl.getContext())) || (bhnv.h(BaseApplicationImpl.getContext())));
+    aqhs.a(this.a);
+  }
+  
+  public void onUpdateProgeress(bevl arg1, long paramLong1, long paramLong2)
+  {
+    if ((!aqhs.a(this.a).isEmpty()) && ((??? instanceof beum))) {
+      if (paramLong2 <= 0L) {
+        break label148;
+      }
+    }
+    label148:
+    for (int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);; i = 0)
+    {
+      String str = ((beum)???).jdField_a_of_type_JavaLangString;
+      synchronized (aqhs.a(this.a))
+      {
+        if (!aqhs.a(this.a).isEmpty())
+        {
+          Iterator localIterator = aqhs.a(this.a).iterator();
+          while (localIterator.hasNext())
+          {
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((aqhu)localWeakReference.get()).a(str, i);
+            }
+          }
+        }
       }
       return;
-      if (this.a.i == 3)
-      {
-        this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-        this.a.jdField_a_of_type_Anjh.b(this.a.jdField_d_of_type_Int);
-        if (AppSetting.c)
-        {
-          this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anni.a(2131701160) + anjh.c[this.a.jdField_d_of_type_Int]);
-          bgfz.a(this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem, anni.a(2131701171) + anjh.c[this.a.jdField_d_of_type_Int]);
-        }
-        bcst.b(this.a.app, "CliOper", "", "", "0X8006F0B", "0X8006F0B", 0, 0, this.a.jdField_d_of_type_Int + "", "", "", "");
-      }
-      else
-      {
-        this.a.jdField_d_of_type_AndroidWidgetTextView = null;
-        paramDialogInterface = ConditionSearchFriendActivity.a(this.a);
-        String[] arrayOfString = new String[4];
-        arrayOfString[0] = this.a.jdField_b_of_type_JavaLangString;
-        arrayOfString[1] = this.a.jdField_a_of_type_ArrayOfJavaLangString[0];
-        arrayOfString[2] = this.a.jdField_a_of_type_ArrayOfJavaLangString[1];
-        arrayOfString[3] = this.a.jdField_a_of_type_ArrayOfJavaLangString[2];
-        if (this.a.i == 1)
-        {
-          this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-          this.a.jdField_a_of_type_Anjh.a(0, paramDialogInterface);
-          this.a.jdField_a_of_type_Anjh.b(arrayOfString);
-          if (AppSetting.c)
-          {
-            this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anni.a(2131701157) + paramDialogInterface);
-            bgfz.a(this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, anni.a(2131701156) + paramDialogInterface);
-          }
-        }
-        else if (this.a.i == 2)
-        {
-          this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-          this.a.jdField_a_of_type_Anjh.a(1, paramDialogInterface);
-          this.a.jdField_a_of_type_Anjh.c(arrayOfString);
-          if (AppSetting.c)
-          {
-            this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anni.a(2131701167) + paramDialogInterface);
-            bgfz.a(this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, anni.a(2131701168) + paramDialogInterface);
-          }
-        }
-      }
     }
   }
 }

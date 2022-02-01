@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aipa;
+import ajaj;
 import android.graphics.drawable.AnimationDrawable;
 
 public class BlessActivity$AnimationDrawable2
   extends AnimationDrawable
 {
-  private aipa jdField_a_of_type_Aipa;
+  private ajaj jdField_a_of_type_Ajaj;
   private boolean jdField_a_of_type_Boolean;
   
   public BlessActivity$AnimationDrawable2(BlessActivity paramBlessActivity) {}
@@ -17,9 +17,9 @@ public class BlessActivity$AnimationDrawable2
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(aipa paramaipa)
+  public void a(ajaj paramajaj)
   {
-    this.jdField_a_of_type_Aipa = paramaipa;
+    this.jdField_a_of_type_Ajaj = paramajaj;
   }
   
   public boolean selectDrawable(int paramInt)
@@ -28,8 +28,8 @@ public class BlessActivity$AnimationDrawable2
     if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Aipa != null) {
-        this.jdField_a_of_type_Aipa.a();
+      if (this.jdField_a_of_type_Ajaj != null) {
+        this.jdField_a_of_type_Ajaj.a();
       }
     }
     return bool;

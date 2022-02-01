@@ -1,57 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.util.FluencyOptUtils.addUrlStrToCache.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.net.URL;
-import org.json.JSONObject;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class txb
-  extends tyc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/FluencyOptUtils;", "", "()V", "config", "Lcom/tencent/aladdin/config/AladdinConfig;", "urlStrToObjMap", "", "", "Ljava/net/URL;", "addUrlObjToCache", "", "url", "addUrlStrToCache", "getUrlObjFromCache", "isEnableCardCreateCostReport", "", "isEnableGestureDataReport", "isEnablePreloadProteusView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class txb
 {
-  final int a = 3;
+  private static final AladdinConfig jdField_a_of_type_ComTencentAladdinConfigAladdinConfig;
+  private static final Map<String, URL> jdField_a_of_type_JavaUtilMap;
+  public static final txb a;
   
-  public txb(BaseApplicationImpl paramBaseApplicationImpl)
+  static
   {
-    super(paramBaseApplicationImpl);
+    jdField_a_of_type_Txb = new txb();
+    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(330);
+    Intrinsics.checkExpressionValueIsNotNull(localAladdinConfig, "Aladdin.getConfig(QQAlad…ONFIG_FLUENCY_OPT_SWITCH)");
+    jdField_a_of_type_ComTencentAladdinConfigAladdinConfig = localAladdinConfig;
   }
   
-  public static URL a(String paramString)
+  @Nullable
+  public final URL a(@Nullable String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    if (paramString == null) {
       return null;
     }
-    try
-    {
-      paramString = new URL("pubaccountimage_gifplaytime", null, paramString);
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
-        paramString = null;
-      }
+    return (URL)jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public final void a(@Nullable String paramString)
+  {
+    if ((paramString != null) && (!jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      ThreadManager.executeOnSubThread((Runnable)new FluencyOptUtils.addUrlStrToCache.1(paramString));
     }
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public final void a(@NotNull URL paramURL)
   {
-    if (GifDrawable.isGifFile(paramFile)) {
-      if (!(paramDownloadParams.mExtraInfo instanceof JSONObject)) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);; i = 3)
-    {
-      return new txc(paramFile, true, i);
-      return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
-    }
+    Intrinsics.checkParameterIsNotNull(paramURL, "url");
+    Map localMap = jdField_a_of_type_JavaUtilMap;
+    String str = paramURL.toString();
+    Intrinsics.checkExpressionValueIsNotNull(str, "url.toString()");
+    localMap.put(str, paramURL);
+  }
+  
+  public final boolean a()
+  {
+    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("card_create_cost_report_switch", 0) == 1;
+  }
+  
+  public final boolean b()
+  {
+    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("asynce_create_view_switch", 0) == 1;
+  }
+  
+  public final boolean c()
+  {
+    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("gesture_data_switch", 0) == 1;
   }
 }
 

@@ -1,37 +1,43 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-class aavp
-  implements Animator.AnimatorListener
+public abstract class aavp
+  extends nkq
 {
-  aavp(aavn paramaavn) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (aavn.a(this.a) != null) {
-      aavn.a(this.a).a();
-    }
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.ResendRspBody paramResendRspBody, Bundle paramBundle);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (aavn.a(this.a) != null) {
-      aavn.a(this.a).a();
-    }
-    if (aavn.a(this.a) != null)
+    if (paramInt != 0)
     {
-      aavn.a(aavn.a(this.a), null);
-      aavn.a(this.a).a();
+      a(false, paramInt, null, paramBundle);
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (aavn.a(this.a) != null) {
-      aavn.a(this.a).a();
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.ResendRspBody)localRspBody.resend_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
 }
 

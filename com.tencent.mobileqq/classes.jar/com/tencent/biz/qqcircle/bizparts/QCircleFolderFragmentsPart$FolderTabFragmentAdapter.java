@@ -16,17 +16,17 @@ public class QCircleFolderFragmentsPart$FolderTabFragmentAdapter
   
   public int getCount()
   {
-    return QCircleFolderFragmentsPart.a(this.a).size();
+    return QCircleFolderFragmentsPart.b(this.a).size();
   }
   
   public Fragment getItem(int paramInt)
   {
-    return (Fragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt);
+    return (Fragment)QCircleFolderFragmentsPart.b(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
   {
-    return ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt)).hashCode();
+    return ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.b(this.a).get(paramInt)).hashCode();
   }
   
   public int getItemPosition(Object paramObject)
@@ -36,7 +36,7 @@ public class QCircleFolderFragmentsPart$FolderTabFragmentAdapter
   
   public CharSequence getPageTitle(int paramInt)
   {
-    return (CharSequence)QCircleFolderFragmentsPart.b(this.a).get(paramInt);
+    return (CharSequence)QCircleFolderFragmentsPart.c(this.a).get(paramInt);
   }
 }
 

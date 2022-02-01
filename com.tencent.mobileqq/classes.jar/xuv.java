@@ -1,29 +1,14 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class xuv
-  extends wfr<xui, wmr>
+class xuv
+  implements xvr
 {
-  public xuv(xui paramxui)
-  {
-    super(paramxui);
-  }
+  xuv(xut paramxut, xtj paramxtj, Object paramObject) {}
   
-  public void a(@NonNull xui paramxui, @NonNull wmr paramwmr)
+  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
   {
-    if ((paramxui.a != null) && (TextUtils.equals(paramxui.a.b, paramwmr.a)))
-    {
-      yqp.a(this.TAG, "receive feed info change event. %s.", paramwmr.toString());
-      paramxui.i();
-    }
+    return this.jdField_a_of_type_Xtj.a(this.jdField_a_of_type_Xut, 0, paramInt1, this.jdField_a_of_type_Xut.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
-  
-  public Class acceptEventClass()
-  {
-    return wmr.class;
-  }
-  
-  public void b(@NonNull xui paramxui, @NonNull wmr paramwmr) {}
 }
 
 

@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aeyt
-  implements bazy
+  extends anyu
 {
-  public aeyt(QQSettingMe paramQQSettingMe) {}
+  public aeyt(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.z();
+    if (this.a.isFinishing()) {
+      return;
+    }
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131693766), 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
+    {
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      QQToast.a(this.a, 2, this.a.getString(2131693768), 0).b(this.a.getTitleBarHeight());
     }
   }
 }

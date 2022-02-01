@@ -5,7 +5,7 @@
         <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
             <ImageView android:id="@id/ars" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="392.0dip" android:scaleType="fitXY" />
             <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.tencent.mobileqq.gamecenter.web.view.GameContentView android:id="@id/mvs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <com.tencent.mobileqq.gamecenter.web.view.GameContentView android:id="@id/mys" android:layout_width="fill_parent" android:layout_height="wrap_content" />
                 <RelativeLayout android:orientation="vertical" android:id="@id/bho" android:layout_width="fill_parent" android:layout_height="392.0dip">
                     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="392.0dip" android:layout_alignParentTop="true">
                         <com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager android:layout_gravity="center" android:id="@id/c9m" android:layout_width="wrap_content" android:layout_height="373.0dip" android:layout_marginTop="6.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
@@ -16,18 +16,18 @@
                         </RelativeLayout>
                     </LinearLayout>
                     <FrameLayout android:layout_width="104.0dip" android:layout_height="28.0dip" android:layout_marginTop="36.0dip" android:layout_alignParentRight="true">
-                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/mvv" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                            <TextView android:textSize="10.0sp" android:textColor="#ffff8b01" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nq8" android:background="@drawable/shortvideo_seekbar_thumb" android:layout_width="14.0dip" android:layout_height="14.0dip" android:text="6" />
+                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/myv" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                            <TextView android:textSize="10.0sp" android:textColor="#ffff8b01" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nwh" android:background="@drawable/shortvideo_seekbar_thumb" android:layout_width="14.0dip" android:layout_height="14.0dip" android:text="6" />
                             <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="下一条消息" android:singleLine="true" />
-                            <ImageView android:id="@id/mpw" android:layout_width="6.0dip" android:layout_height="8.0dip" android:src="@drawable/gja" />
+                            <ImageView android:id="@id/ms_" android:layout_width="6.0dip" android:layout_height="8.0dip" android:src="@drawable/gja" />
                         </LinearLayout>
                         <ImageView android:layout_gravity="center|right" android:id="@id/icq" android:visibility="invisible" android:layout_width="88.0dip" android:layout_height="34.0dip" android:scaleType="fitXY" />
                     </FrameLayout>
                 </RelativeLayout>
             </LinearLayout>
         </FrameLayout>
-        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/eet" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/mpv" android:layout_width="60.0dip" android:layout_height="55.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/eet" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/ms9" android:layout_width="60.0dip" android:layout_height="55.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

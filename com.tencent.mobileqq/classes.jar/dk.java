@@ -6,8 +6,8 @@ import java.util.List;
 
 public class dk
 {
-  private abqm jdField_a_of_type_Abqm;
-  private anke jdField_a_of_type_Anke;
+  private abuq jdField_a_of_type_Abuq;
+  private anwb jdField_a_of_type_Anwb;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public dj a;
   private dn jdField_a_of_type_Dn;
@@ -17,15 +17,15 @@ public class dk
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Anke = new dl(this);
-    this.jdField_a_of_type_Abqm = new dm(this);
+    this.jdField_a_of_type_Anwb = new dl(this);
+    this.jdField_a_of_type_Abuq = new dm(this);
   }
   
   public static DeviceInfo a(QQAppInterface paramQQAppInterface, long paramLong)
   {
     if (paramLong != 0L)
     {
-      paramQQAppInterface = (abqn)paramQQAppInterface.a(51);
+      paramQQAppInterface = (abur)paramQQAppInterface.a(51);
       if (paramQQAppInterface.a())
       {
         DeviceInfo[] arrayOfDeviceInfo = paramQQAppInterface.a();
@@ -58,7 +58,7 @@ public class dk
   public dj a()
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    str = bgjb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer");
+    str = bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer");
     a();
     return b(str);
   }
@@ -98,10 +98,10 @@ public class dk
   public List<dj> a()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = (anjx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-    if (((anjx)localObject).a.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = (anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+    if (((anvu)localObject).a.jdField_a_of_type_JavaUtilList != null)
     {
-      localObject = ((anjx)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = ((anvu)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
         dj localdj = a((String)((Iterator)localObject).next());
@@ -115,8 +115,8 @@ public class dk
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anke);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Abqm);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anwb);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Abuq);
     }
     this.jdField_a_of_type_Dn = null;
   }
@@ -125,8 +125,8 @@ public class dk
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anke);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Abqm);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anwb);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Abuq);
     }
     this.jdField_a_of_type_Dn = paramdn;
   }
@@ -137,12 +137,12 @@ public class dk
       return;
     }
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    bgjb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer", paramString);
+    bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer", paramString);
   }
   
   public boolean a()
   {
-    return ((antz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10)).a() != 0;
+    return ((aogj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10)).a() != 0;
   }
   
   public boolean a(String paramString)
@@ -151,7 +151,7 @@ public class dk
     boolean bool1 = bool2;
     if (paramString != null)
     {
-      int i = atvo.a(paramString);
+      int i = aunj.a(paramString);
       if ((i != 3) && (i != 0) && (i != 7) && (i != 6) && (i != 9))
       {
         bool1 = bool2;

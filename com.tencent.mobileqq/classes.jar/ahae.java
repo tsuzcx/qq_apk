@@ -1,18 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopSign;
+import android.view.View;
 
-final class ahae
-  implements ahbm
+public class ahae
+  extends aggl
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
-      return 71;
-    }
-    return 84;
-  }
+  public String b;
+  public View c;
 }
 
 

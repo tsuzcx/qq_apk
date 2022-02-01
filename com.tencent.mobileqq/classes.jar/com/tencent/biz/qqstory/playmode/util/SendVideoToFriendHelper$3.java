@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playmode.util;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import xfe;
-import xfs;
+import xiz;
+import xjn;
 
 public class SendVideoToFriendHelper$3
   implements Runnable
 {
-  public SendVideoToFriendHelper$3(xfs paramxfs, StoryVideoItem paramStoryVideoItem) {}
+  public SendVideoToFriendHelper$3(xjn paramxjn, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    xfe.b(this.a, this.a.mStoryType, "SendVideoToFriendHelper");
+    xiz.b(this.a, this.a.mStoryType, "SendVideoToFriendHelper");
   }
 }
 

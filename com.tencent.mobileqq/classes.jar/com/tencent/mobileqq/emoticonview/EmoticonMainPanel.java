@@ -10,14 +10,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import anlb;
-import arvg;
-import arxd;
-import arxk;
-import arxl;
-import arxm;
-import arxn;
-import asag;
+import anwx;
+import asku;
+import asmr;
+import asmy;
+import asmz;
+import asna;
+import asnb;
+import aspu;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -27,12 +27,12 @@ import mqq.app.MobileQQ;
 
 public class EmoticonMainPanel
   extends RelativeLayout
-  implements asag
+  implements aspu
 {
   public static long a;
   public int a;
   public View a;
-  private arxm jdField_a_of_type_Arxm;
+  private asna jdField_a_of_type_Asna;
   private EmoticonPanelController jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController = new EmoticonPanelController(paramContext, this);
   public HorizontalListViewEx a;
   @Deprecated
@@ -80,7 +80,7 @@ public class EmoticonMainPanel
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "sendRecommendSSORequest send req to recommend");
     }
-    ((anlb)paramQQAppInterface.a(12)).a();
+    ((anwx)paramQQAppInterface.a(12)).a();
     localSharedPreferences.edit().putLong("last_get_recommendemotion_time_" + paramQQAppInterface.c(), System.currentTimeMillis()).apply();
   }
   
@@ -111,30 +111,30 @@ public class EmoticonMainPanel
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, int paramInt3, BaseChatPie paramBaseChatPie)
   {
-    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, paramInt3, paramBaseChatPie, false, new arxl(this, null));
+    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, paramInt3, paramBaseChatPie, false, new asmz(this, null));
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, int paramInt3, BaseChatPie paramBaseChatPie, boolean paramBoolean, arxk paramarxk)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, int paramInt3, BaseChatPie paramBaseChatPie, boolean paramBoolean, asmy paramasmy)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "init");
     }
-    new arxn(this, paramQQAppInterface, paramBaseChatPie, paramInt1).a(paramarxk).b(paramBoolean).a(paramString).b(paramInt3).a(paramInt2).a(this.f).c(this.jdField_a_of_type_Boolean).d(this.jdField_b_of_type_Boolean).e(this.c).f(this.d).g(this.e).h(a()).a();
+    new asnb(this, paramQQAppInterface, paramBaseChatPie, paramInt1).a(paramasmy).b(paramBoolean).a(paramString).b(paramInt3).a(paramInt2).a(this.f).c(this.jdField_a_of_type_Boolean).d(this.jdField_b_of_type_Boolean).e(this.c).f(this.d).g(this.e).h(a()).a();
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, BaseChatPie paramBaseChatPie)
   {
-    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, -1, paramBaseChatPie, false, new arxl(this, null));
+    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, -1, paramBaseChatPie, false, new asmz(this, null));
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, BaseChatPie paramBaseChatPie, boolean paramBoolean)
   {
-    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, -1, paramBaseChatPie, paramBoolean, new arxl(this, null));
+    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, -1, paramBaseChatPie, paramBoolean, new asmz(this, null));
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, BaseChatPie paramBaseChatPie, boolean paramBoolean, arxk paramarxk)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, BaseChatPie paramBaseChatPie, boolean paramBoolean, asmy paramasmy)
   {
-    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, -1, paramBaseChatPie, paramBoolean, paramarxk);
+    a(paramQQAppInterface, paramInt1, paramContext, paramInt2, paramString, -1, paramBaseChatPie, paramBoolean, paramasmy);
   }
   
   public void a(String paramString)
@@ -179,7 +179,7 @@ public class EmoticonMainPanel
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "func doAutoDownload begins.");
     }
-    arvg.a().a(paramInt);
+    asku.a().a(paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "func doAutoDownload ends.");
     }
@@ -211,7 +211,7 @@ public class EmoticonMainPanel
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Arxm != null) && (this.jdField_a_of_type_Arxm.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Asna != null) && (this.jdField_a_of_type_Asna.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -307,14 +307,14 @@ public class EmoticonMainPanel
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.p();
   }
   
-  public void setCallBack(arxd paramarxd)
+  public void setCallBack(asmr paramasmr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a(paramarxd);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a(paramasmr);
   }
   
-  public void setDispatchKeyEventListener(arxm paramarxm)
+  public void setDispatchKeyEventListener(asna paramasna)
   {
-    this.jdField_a_of_type_Arxm = paramarxm;
+    this.jdField_a_of_type_Asna = paramasna;
   }
   
   @Deprecated

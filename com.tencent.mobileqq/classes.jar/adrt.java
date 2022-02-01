@@ -1,36 +1,45 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class adrt
+  extends AccountObserver
 {
-  public int a;
-  public long a;
-  public MessageForReplyText.SourceMsgInfo a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g = -1;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public adrt(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDeleteAccount(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity;
+    if (Build.VERSION.SDK_INT > 10) {}
+    for (int i = 4;; i = 0)
+    {
+      localObject = ((AccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
+      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        ((SharedPreferences)localObject).edit().remove("uin").commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("Switch_Account", 2, "delete Last_Login");
+        }
+      }
+      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
+  }
 }
 
 

@@ -5,8 +5,8 @@ import com.tencent.avgame.session.AVGameSession;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import ndt;
-import nfv;
+import nfm;
+import nhq;
 
 class AVGameControlUIImpl$CheckCameraTask
   implements Runnable
@@ -14,7 +14,7 @@ class AVGameControlUIImpl$CheckCameraTask
   public void run()
   {
     boolean bool1 = true;
-    Object localObject = ndt.b();
+    Object localObject = nfm.b();
     if (localObject == null) {
       if (QLog.isColorLevel()) {
         QLog.i("AVGameControlUIImpl", 2, "CheckCameraTask ctrl is null.");
@@ -23,7 +23,7 @@ class AVGameControlUIImpl$CheckCameraTask
     for (;;)
     {
       return;
-      localObject = ((ndt)localObject).a();
+      localObject = ((nfm)localObject).a();
       if (localObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -40,7 +40,7 @@ class AVGameControlUIImpl$CheckCameraTask
           if ((!((CameraUtils)localObject).b(l)) && (!((CameraUtils)localObject).a(l)))
           {
             ((CameraUtils)localObject).a(l);
-            nfv.a(4);
+            nhq.a(4);
           }
         }
         while (QLog.isColorLevel())

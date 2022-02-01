@@ -4,12 +4,12 @@ import android.animation.ObjectAnimator;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.animation.PathInterpolator;
-import vog;
+import vqo;
 
 public class QCircleFuelAnimationManager$2
   implements Runnable
 {
-  public QCircleFuelAnimationManager$2(vog paramvog, View paramView) {}
+  public QCircleFuelAnimationManager$2(vqo paramvqo, View paramView) {}
   
   public void run()
   {

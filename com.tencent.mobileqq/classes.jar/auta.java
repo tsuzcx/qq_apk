@@ -1,10 +1,7 @@
-public abstract interface auta
+public final class auta
+  implements bhvb
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void b(boolean paramBoolean, int paramInt);
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

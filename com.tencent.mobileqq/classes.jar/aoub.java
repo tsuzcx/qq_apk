@@ -1,22 +1,34 @@
-public class aoub
-  extends aoud
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
+
+class aoub
+  implements PermissionMonitor.Listener
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  float[] jdField_a_of_type_ArrayOfFloat;
-  float jdField_b_of_type_Float;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  float c;
-  
-  public aoub(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  static
   {
-    super(0);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
+    if (!aotx.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  aoub(aotx paramaotx) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
+    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 4)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aotx.a(this.jdField_a_of_type_Aotx), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

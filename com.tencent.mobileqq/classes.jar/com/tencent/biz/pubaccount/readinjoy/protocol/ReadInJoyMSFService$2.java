@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.protocol;
 
 import android.os.Bundle;
-import bgva;
+import bhvd;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import pha;
-import qnd;
-import qne;
+import ozs;
+import qfo;
+import qfp;
 
 public class ReadInJoyMSFService$2
   implements Runnable
 {
-  public ReadInJoyMSFService$2(qnd paramqnd, ToServiceMsg paramToServiceMsg) {}
+  public ReadInJoyMSFService$2(qfo paramqfo, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -30,12 +30,12 @@ public class ReadInJoyMSFService$2
         if ((!this.a.extraData.getBoolean("req_pb_protocol_flag", false)) || (this.a.getWupBuffer() == null)) {
           break label441;
         }
-        if (!qnd.a(this.this$0, this.a))
+        if (!qfo.a(this.this$0, this.a))
         {
           long l = this.a.getWupBuffer().length;
           localObject = new byte[(int)l + 4];
-          bgva.a((byte[])localObject, 0, 4L + l);
-          bgva.a((byte[])localObject, 4, this.a.getWupBuffer(), (int)l);
+          bhvd.a((byte[])localObject, 0, 4L + l);
+          bhvd.a((byte[])localObject, 4, this.a.getWupBuffer(), (int)l);
           this.a.putWupBuffer((byte[])localObject);
           i = j;
           if (QLog.isColorLevel())
@@ -46,7 +46,7 @@ public class ReadInJoyMSFService$2
           if (i == 0) {
             break;
           }
-          localObject = new NewIntent(pha.a().getApplication(), qne.class);
+          localObject = new NewIntent(ozs.a().getApplication(), qfp.class);
           ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), this.a);
           if (this.a.getAttributes().get("req_enable_msf_retry") != null)
           {
@@ -58,7 +58,7 @@ public class ReadInJoyMSFService$2
               ((NewIntent)localObject).putExtra("quickSendStrategy", 0);
               QLog.d("ReadInJoyMSFService", 2, "handleRequest | MSF retry enabled");
             }
-            pha.a().startServlet((NewIntent)localObject);
+            ozs.a().startServlet((NewIntent)localObject);
             l = System.currentTimeMillis();
             this.a.extraData.putLong("sendtimekey", l);
           }

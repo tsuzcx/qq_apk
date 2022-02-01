@@ -1,24 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 public class ajcs
-  implements ajdd
+  implements ajhf
 {
-  public ajcs(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
+  public ajcs(AddContactsActivity paramAddContactsActivity) {}
   
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (!(paramViewHolder instanceof ajcd)) {
+    AddContactsActivity.a(this.a, paramBoolean);
+    ImageView localImageView = AddContactsActivity.a(this.a);
+    if (AddContactsActivity.a(this.a)) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
       return;
     }
-    paramView = ((ajcd)paramViewHolder).a;
-    bfup.a(TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a), paramView.a, TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a));
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
   }
 }
 

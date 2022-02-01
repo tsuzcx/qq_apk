@@ -1,83 +1,56 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.Layout;
-import android.text.TextPaint;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class bghx
-  extends Drawable
+  extends bghr
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bghx(Context paramContext, String paramString)
+  public bghx(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bggl.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130842050);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 20;
   }
   
-  public void draw(Canvas paramCanvas)
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    Rect localRect = getBounds();
-    float f1 = localRect.width() / this.jdField_a_of_type_Int;
-    float f2 = this.jdField_a_of_type_Int / 2;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f1 * f2);
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label172;
-      }
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    if (((paramList instanceof MessageForArkApp)) && (a(paramList, paramLong2, paramLong3))) {
+      return new bghs(true, aqcz.a((MessageForArkApp)paramList), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
-    label172:
-    for (int i = 0;; i = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint))
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    if (!(paramObject instanceof bfpe)) {}
+    do
     {
-      int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
-      j = localRect.left;
-      i = (localRect.width() - i) / 2;
-      f1 = localRect.top;
-      int k = (int)(localRect.height() / 2.0F + f1 - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + j, k, this.jdField_a_of_type_AndroidTextTextPaint);
-      return;
-    }
+      do
+      {
+        return;
+        paramObject = (bfpe)paramObject;
+        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramObject.b);
+      } while (!(paramObject instanceof MessageForArkApp));
+      paramObject = ((MessageForArkApp)paramObject).ark_app_message;
+    } while (paramObject == null);
+    aqca.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.appName, "AIOMsgRemindShow", 0, 0, 0L, 0L, 0L, "", "");
   }
   
-  public int getIntrinsicHeight()
+  public boolean a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    return false;
   }
   
-  public int getIntrinsicWidth()
+  public void b(int paramInt, Object paramObject, String paramString)
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA11", "0X800AA11", 0, 0, "", "", "", "");
   }
 }
 

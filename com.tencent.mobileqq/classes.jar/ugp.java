@@ -1,49 +1,55 @@
-import UserGrowth.stFollowRsp;
+import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
 
-class ugp
-  implements ujj
+public class ugp
 {
-  ugp(ugn paramugn, int paramInt, String paramString) {}
-  
-  public void a(uju paramuju)
+  public static ugp a()
   {
-    if (!(paramuju.a instanceof stFollowRsp))
-    {
-      if (this.jdField_a_of_type_Int == 2) {
-        ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 1);
-      }
-      for (;;)
-      {
-        upe.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramuju.a);
-        return;
-        ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 2);
-      }
+    return new ugp();
+  }
+  
+  private ukd a(String paramString, int paramInt)
+  {
+    return new ugr(this, paramInt, paramString);
+  }
+  
+  private void c(String paramString, int paramInt)
+  {
+    FollowEvent localFollowEvent = new FollowEvent();
+    localFollowEvent.setPersonId(paramString);
+    if (paramInt == 1) {
+      localFollowEvent.setIsFollow(1);
     }
-    int i = ((stFollowRsp)paramuju.a).isFollow;
-    upe.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
-    if (this.jdField_a_of_type_Int == 1)
+    for (;;)
     {
-      if (i == 1)
-      {
-        biti.a().a(2131719186);
-        return;
-      }
-      biti.a().a(2131719184);
-      ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 2);
+      uhf.a().a(localFollowEvent);
       return;
+      localFollowEvent.setIsFollow(2);
     }
-    if (i == 0)
-    {
-      biti.a().a(2131719188);
-      return;
-    }
-    biti.a().a(2131719189);
-    ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 1);
+  }
+  
+  public void a(String paramString)
+  {
+    uqf.b("WSUserBusiness", "[actionBlockRecommendPerson] personID : " + paramString);
+    paramString = new uko(new uok(paramString), null, new ugq(this), 4006);
+    ukh.a().a(paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    b(paramString, paramInt);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    uqf.b("WSUserBusiness", "[actionChangeFollow] personID : " + paramString + "  followStatus:" + paramInt);
+    c(paramString, paramInt);
+    paramString = new uko(new uol(paramString, paramInt), null, a(paramString, paramInt), 4005);
+    ukh.a().a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ugp
  * JD-Core Version:    0.7.0.1
  */

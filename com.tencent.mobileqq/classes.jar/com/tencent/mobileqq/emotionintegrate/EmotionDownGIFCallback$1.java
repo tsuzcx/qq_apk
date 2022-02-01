@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import asex;
-import ayxd;
-import ayxt;
-import ayxy;
+import asul;
+import azpq;
+import azqh;
+import azql;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmotionDownGIFCallback$1
   implements Runnable
 {
-  public EmotionDownGIFCallback$1(asex paramasex, ayxd paramayxd) {}
+  public EmotionDownGIFCallback$1(asul paramasul, azpq paramazpq) {}
   
   public void run()
   {
@@ -18,22 +18,22 @@ public class EmotionDownGIFCallback$1
     }
     if ((this.a != null) && (this.a.jdField_b_of_type_JavaLangString != null))
     {
-      ayxy localayxy = new ayxy();
-      localayxy.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localayxy.jdField_a_of_type_JavaLangObject = this.a;
-      localayxy.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_Boolean;
+      azql localazql = new azql();
+      localazql.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
+      localazql.jdField_a_of_type_JavaLangObject = this.a;
+      localazql.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_Boolean;
       if (this.a.jdField_a_of_type_Int != 0)
       {
-        if (this.a.jdField_a_of_type_Ayxt == null)
+        if (this.a.jdField_a_of_type_Azqh == null)
         {
-          ayxt localayxt = new ayxt();
-          localayxt.jdField_b_of_type_JavaLangString = (this.a.jdField_b_of_type_Int + "_" + this.a.jdField_a_of_type_JavaLangString);
-          localayxt.jdField_a_of_type_JavaLangString = "onDownload";
-          this.a.jdField_a_of_type_Ayxt = localayxt;
+          azqh localazqh = new azqh();
+          localazqh.jdField_b_of_type_JavaLangString = (this.a.jdField_b_of_type_Int + "_" + this.a.jdField_a_of_type_JavaLangString);
+          localazqh.jdField_a_of_type_JavaLangString = "onDownload";
+          this.a.jdField_a_of_type_Azqh = localazqh;
         }
-        localayxy.jdField_a_of_type_Ayxt = this.a.jdField_a_of_type_Ayxt;
+        localazql.jdField_a_of_type_Azqh = this.a.jdField_a_of_type_Azqh;
       }
-      this.this$0.a(this.a.jdField_a_of_type_Int, localayxy);
+      this.this$0.a(this.a.jdField_a_of_type_Int, localazql);
     }
   }
 }

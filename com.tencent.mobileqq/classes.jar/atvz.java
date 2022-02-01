@@ -1,8 +1,19 @@
-import android.graphics.Bitmap;
+import android.os.Bundle;
 
-public abstract interface atvz
+class atvz
+  implements atwj
 {
-  public abstract void a(Bitmap paramBitmap);
+  atvz(atvy paramatvy) {}
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    atvy.a(this.a, paramString);
+  }
+  
+  public void a(String paramString, atwi paramatwi)
+  {
+    atvy.a(this.a, paramString, paramatwi);
+  }
 }
 
 

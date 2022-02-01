@@ -19,14 +19,14 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import arxd;
-import arxg;
-import arxh;
-import arxi;
-import arxj;
-import arze;
-import asbq;
-import bcst;
+import asmr;
+import asmu;
+import asmv;
+import asmw;
+import asmx;
+import asos;
+import asre;
+import bdll;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.data.Emoticon;
@@ -44,10 +44,10 @@ public class EmoticonLinearLayout
   View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  arxd jdField_a_of_type_Arxd;
-  private arxg jdField_a_of_type_Arxg;
-  arxi jdField_a_of_type_Arxi = new arxh(this);
-  public arxj a;
+  asmr jdField_a_of_type_Asmr;
+  private asmu jdField_a_of_type_Asmu;
+  asmw jdField_a_of_type_Asmw = new asmv(this);
+  public asmx a;
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
   private EmoticonLinearLayout.CheckForLongPress jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$CheckForLongPress;
   Runnable jdField_a_of_type_JavaLangRunnable = new EmoticonLinearLayout.2(this);
@@ -63,7 +63,7 @@ public class EmoticonLinearLayout
     this.jdField_a_of_type_Int = 6;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_Int = super.getResources().getColor(2131166500);
+    this.jdField_b_of_type_Int = super.getResources().getColor(2131166504);
     setOrientation(1);
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     super.setClickable(true);
@@ -99,14 +99,14 @@ public class EmoticonLinearLayout
   
   private void a(View paramView)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof arxg)))
+    if ((paramView != null) && ((paramView.getTag() instanceof asmu)))
     {
-      paramView = (arxg)paramView.getTag();
+      paramView = (asmu)paramView.getTag();
       if (paramView != null)
       {
         super.sendAccessibilityEvent(1);
         super.playSoundEffect(0);
-        this.jdField_a_of_type_Arxd.a(paramView);
+        this.jdField_a_of_type_Asmr.a(paramView);
       }
     }
   }
@@ -132,21 +132,21 @@ public class EmoticonLinearLayout
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
       }
-      if (this.jdField_a_of_type_Arxd != null) {
-        this.jdField_a_of_type_Arxd.b(this.jdField_a_of_type_Arxg);
+      if (this.jdField_a_of_type_Asmr != null) {
+        this.jdField_a_of_type_Asmr.b(this.jdField_a_of_type_Asmu);
       }
       this.jdField_b_of_type_Boolean = false;
     }
   }
   
-  void a(View paramView, arxg paramarxg)
+  void a(View paramView, asmu paramasmu)
   {
-    Drawable localDrawable = paramarxg.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float);
+    Drawable localDrawable = paramasmu.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float);
     if (localDrawable == null) {
       return;
     }
     paramView.getGlobalVisibleRect(jdField_a_of_type_AndroidGraphicsRect);
-    int i = paramarxg.c;
+    int i = paramasmu.c;
     if (this.jdField_b_of_type_AndroidWidgetFrameLayout == null)
     {
       this.jdField_b_of_type_AndroidWidgetFrameLayout = new FrameLayout(getContext());
@@ -166,7 +166,7 @@ public class EmoticonLinearLayout
     {
       j = (int)(64.0F * f);
       i = (int)(71.0F * f);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130838007);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130838016);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(k, k, k, k);
       paramView.width = ((int)(28.0F * f));
       paramView.height = ((int)(28.0F * f));
@@ -186,40 +186,40 @@ public class EmoticonLinearLayout
     }
     for (;;)
     {
-      paramView = this.jdField_a_of_type_Arxg;
-      this.jdField_a_of_type_Arxg = paramarxg;
-      if ((paramView != null) && (paramView.c == 6) && ((paramView instanceof asbq)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)) {
+      paramView = this.jdField_a_of_type_Asmu;
+      this.jdField_a_of_type_Asmu = paramasmu;
+      if ((paramView != null) && (paramView.c == 6) && ((paramView instanceof asre)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
       }
-      if ((paramarxg.c == 6) && ((paramarxg instanceof asbq)) && ((localDrawable instanceof URLDrawable)))
+      if ((paramasmu.c == 6) && ((paramasmu instanceof asre)) && ((localDrawable instanceof URLDrawable)))
       {
-        localObject = (asbq)paramarxg;
-        if (((asbq)localObject).b())
+        localObject = (asre)paramasmu;
+        if (((asre)localObject).b())
         {
-          String str = arze.o.replace("[epId]", ((asbq)localObject).a.epId).replace("[eId]", ((asbq)localObject).a.eId);
+          String str = asos.o.replace("[epId]", ((asre)localObject).a.epId).replace("[eId]", ((asre)localObject).a.eId);
           if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null) {
             this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(getContext(), null);
           }
           this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(str);
-          asbq.a((URLDrawable)localDrawable);
+          asre.a((URLDrawable)localDrawable);
         }
-        if (2 == ((asbq)localObject).a.jobType) {
-          bcst.b(null, "CliOper", "", "", "MbYulan", "MbChangan", 0, 0, ((asbq)localObject).a.epId, "", "", "");
+        if (2 == ((asre)localObject).a.jobType) {
+          bdll.b(null, "CliOper", "", "", "MbYulan", "MbChangan", 0, 0, ((asre)localObject).a.epId, "", "", "");
         }
       }
-      if (this.jdField_a_of_type_Arxd == null) {
+      if (this.jdField_a_of_type_Asmr == null) {
         break;
       }
-      this.jdField_a_of_type_Arxd.a(paramView, paramarxg, localDrawable);
+      this.jdField_a_of_type_Asmr.a(paramView, paramasmu, localDrawable);
       return;
       j = (int)(110.0F * f);
       i = (int)(110.0F * f);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130838006);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130838015);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(k, k, k, k);
       paramView.bottomMargin = 0;
       paramView.width = ((int)(100.0F * f));
       paramView.height = ((int)(100.0F * f));
-      bcst.b(null, "CliOper", "", "", "ep_mall", "ep_preview", 0, 0, "", "", "", "");
+      bdll.b(null, "CliOper", "", "", "ep_mall", "ep_preview", 0, 0, "", "", "", "");
       break label267;
       label681:
       paramView = (WindowManager)getContext().getSystemService("window");
@@ -265,10 +265,10 @@ public class EmoticonLinearLayout
         }
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$CheckForLongPress.a();
         postDelayed(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$CheckForLongPress, ViewConfiguration.getLongPressTimeout());
-        paramMotionEvent = (arxg)this.jdField_a_of_type_AndroidViewView.getTag();
-        if ((paramMotionEvent != null) && (this.jdField_a_of_type_Arxd != null) && ("delete".equals(paramMotionEvent.i)))
+        paramMotionEvent = (asmu)this.jdField_a_of_type_AndroidViewView.getTag();
+        if ((paramMotionEvent != null) && (this.jdField_a_of_type_Asmr != null) && ("delete".equals(paramMotionEvent.i)))
         {
-          this.jdField_a_of_type_Arxd.b();
+          this.jdField_a_of_type_Asmr.b();
           continue;
           setPressed(false);
           if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$CheckForLongPress != null) {
@@ -283,9 +283,9 @@ public class EmoticonLinearLayout
             this.jdField_a_of_type_AndroidViewView = a(paramMotionEvent.getX(), paramMotionEvent.getY());
             if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getTag() != null))
             {
-              paramMotionEvent = (arxg)this.jdField_a_of_type_AndroidViewView.getTag();
+              paramMotionEvent = (asmu)this.jdField_a_of_type_AndroidViewView.getTag();
               if ((paramMotionEvent != null) && (!"delete".equals(paramMotionEvent.i)) && (!"add".equals(paramMotionEvent.i)) && (!"setting".equals(paramMotionEvent.i))) {
-                a(this.jdField_a_of_type_AndroidViewView, (arxg)this.jdField_a_of_type_AndroidViewView.getTag());
+                a(this.jdField_a_of_type_AndroidViewView, (asmu)this.jdField_a_of_type_AndroidViewView.getTag());
               }
             }
             else
@@ -302,15 +302,15 @@ public class EmoticonLinearLayout
     }
   }
   
-  public void setAdapter(arxj paramarxj)
+  public void setAdapter(asmx paramasmx)
   {
-    this.jdField_a_of_type_Arxj = paramarxj;
-    this.jdField_a_of_type_Arxj.a(this.jdField_a_of_type_Arxi);
+    this.jdField_a_of_type_Asmx = paramasmx;
+    this.jdField_a_of_type_Asmx.a(this.jdField_a_of_type_Asmw);
   }
   
-  public void setCallBack(arxd paramarxd)
+  public void setCallBack(asmr paramasmr)
   {
-    this.jdField_a_of_type_Arxd = paramarxd;
+    this.jdField_a_of_type_Asmr = paramasmr;
   }
   
   public void setPanelViewType(int paramInt)

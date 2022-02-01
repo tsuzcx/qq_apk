@@ -1,16 +1,15 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import qqcircle.QQCircleFeedBase.StBusiInfoCommentListData;
 
 class vkd
-  implements zxa<FeedCloudRead.StGetFeedListRsp>
+  implements aaav<FeedCloudRead.StGetCommentListRsp>
 {
-  vkd(vkb paramvkb, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
+  vkd(vjy paramvjy, int paramInt, FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StBusiInfoCommentListData paramStBusiInfoCommentListData) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    QLog.d("QCircleContentModel", 1, "requestTagPageData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean);
-    vkb.a(this.jdField_a_of_type_Vkb, paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
+    vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_Int, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, false, true, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StBusiInfoCommentListData);
   }
 }
 

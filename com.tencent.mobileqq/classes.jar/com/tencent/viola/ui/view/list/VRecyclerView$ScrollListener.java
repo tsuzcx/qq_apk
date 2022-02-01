@@ -18,44 +18,46 @@ class VRecyclerView$ScrollListener
     int j;
     if (paramInt == 0)
     {
-      if ((VRecyclerView.access$200(this.this$0) != null) && (!VRecyclerView.access$200(this.this$0).isSnapping())) {
-        VRecyclerView.access$302(this.this$0, 0);
-      }
-      boolean bool = VRecyclerView.access$400(this.this$0);
+      boolean bool = VRecyclerView.access$300(this.this$0);
       this.this$0.calAndSetContentOffset(bool, 0.0F, 0.0F);
       i = this.this$0.getLastVisibleItemPosition();
-      if ((this.this$0.getAdapter() != null) && (i != -1) && (i == this.this$0.getAdapter().getItemCount() - 1) && (!VRecyclerView.access$500(this.this$0)) && (VRecyclerView.access$600(this.this$0) != null))
+      if ((this.this$0.getAdapter() != null) && (i != -1) && (i == this.this$0.getAdapter().getItemCount() - 1) && (!VRecyclerView.access$400(this.this$0)) && (VRecyclerView.access$500(this.this$0) != null))
       {
-        VRecyclerView.access$502(this.this$0, true);
-        VRecyclerView.access$600(this.this$0).onLoadMore(this.this$0, 0, VRecyclerView.access$700(this.this$0));
+        VRecyclerView.access$402(this.this$0, true);
+        VRecyclerView.access$500(this.this$0).onLoadMore(this.this$0, 0, VRecyclerView.access$600(this.this$0));
         ViolaLogUtils.d("VRecyclerView", "hit load more in onScrollStateChanged");
       }
-      VRecyclerView.access$800(this.this$0, false);
-      if (VRecyclerView.access$600(this.this$0) != null)
+      VRecyclerView.access$700(this.this$0, false);
+      if (VRecyclerView.access$500(this.this$0) != null)
       {
-        paramRecyclerView = VRecyclerView.access$600(this.this$0);
+        paramRecyclerView = VRecyclerView.access$500(this.this$0);
         localVRecyclerView = this.this$0;
         if (bool)
         {
           i = 0;
           if (!bool) {
-            break label289;
+            break label296;
           }
-          j = VRecyclerView.access$700(this.this$0);
-          label211:
+          j = VRecyclerView.access$600(this.this$0);
+          label179:
           paramRecyclerView.onScrollEnd(localVRecyclerView, i, j);
         }
       }
       else
       {
-        VRecyclerView.access$1002(this.this$0, false);
-        label231:
-        if (VRecyclerView.access$600(this.this$0) != null)
+        if ((VRecyclerView.access$900(this.this$0) != null) && (!VRecyclerView.access$900(this.this$0).isSnapping()))
         {
-          paramRecyclerView = VRecyclerView.access$600(this.this$0);
+          this.this$0.calculateItemPreState();
+          VRecyclerView.access$1002(this.this$0, 0);
+        }
+        VRecyclerView.access$1102(this.this$0, false);
+        label238:
+        if (VRecyclerView.access$500(this.this$0) != null)
+        {
+          paramRecyclerView = VRecyclerView.access$500(this.this$0);
           localVRecyclerView = this.this$0;
           if (this.this$0.canChildPullDown()) {
-            break label317;
+            break label324;
           }
           i = 1;
         }
@@ -65,17 +67,17 @@ class VRecyclerView$ScrollListener
     {
       paramRecyclerView.onScrollStateChanged(localVRecyclerView, paramInt, i);
       return;
-      i = VRecyclerView.access$900(this.this$0);
+      i = VRecyclerView.access$800(this.this$0);
       break;
-      label289:
+      label296:
       j = 0;
-      break label211;
+      break label179;
       if ((paramInt != 2) && (paramInt != 1)) {
-        break label231;
+        break label238;
       }
-      VRecyclerView.access$1002(this.this$0, true);
-      break label231;
-      label317:
+      VRecyclerView.access$1102(this.this$0, true);
+      break label238;
+      label324:
       i = k;
       if (!this.this$0.canChildPullUp()) {
         i = 2;
@@ -86,7 +88,7 @@ class VRecyclerView$ScrollListener
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     this.this$0.performOnScroll(paramInt1, paramInt2);
-    VRecyclerView.access$1100(this.this$0);
+    VRecyclerView.access$1200(this.this$0);
   }
 }
 

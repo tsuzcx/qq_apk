@@ -1,16 +1,8 @@
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-
-class aglp
-  implements View.OnDragListener
+public abstract interface aglp
 {
-  aglp(aglj paramaglj) {}
+  public abstract void a();
   
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    return true;
-  }
+  public abstract void b();
 }
 
 

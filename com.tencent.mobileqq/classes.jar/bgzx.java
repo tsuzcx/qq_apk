@@ -1,33 +1,13 @@
-import android.graphics.Color;
-import android.util.SparseArray;
-
-public class bgzx
+class bgzx
+  implements bdxo
 {
-  public byte a;
-  public int a;
-  public long a;
-  public SparseArray<bgzx> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  bgzx(bgzw parambgzw) {}
   
-  public static bgzx a()
+  public void a()
   {
-    return new bgzx();
-  }
-  
-  public static bgzx a(int paramInt, byte paramByte)
-  {
-    bgzx localbgzx = new bgzx();
-    localbgzx.jdField_b_of_type_Int = paramInt;
-    localbgzx.jdField_a_of_type_Byte = paramByte;
-    return localbgzx;
-  }
-  
-  public int a()
-  {
-    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 

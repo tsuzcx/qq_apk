@@ -1,19 +1,12 @@
-import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.requests.CommandReportRequest;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class vro
-  implements zxa<APP_REPORT_TRANSFER.StDataReportRsp>
+  implements View.OnClickListener
 {
-  vro(vrl paramvrl, CommandReportRequest paramCommandReportRequest) {}
+  vro(vrn paramvrn) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, APP_REPORT_TRANSFER.StDataReportRsp paramStDataReportRsp)
-  {
-    if (((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null)) && (!TextUtils.isEmpty(paramString))) {
-      QLog.e("QCircleReporter", 1, "performCommandReport error:" + paramString + ",traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsCommandReportRequest.getTraceId());
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

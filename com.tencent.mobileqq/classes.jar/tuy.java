@@ -1,30 +1,40 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class tuy
-  implements View.OnFocusChangeListener
+  extends tvm
 {
   public tuy(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
-      {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
     }
+    if (!paramBoolean) {}
+    do
+    {
+      do
+      {
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      return;
+    } while (this.a.a == null);
+    Message localMessage = new Message();
+    localMessage.what = 1003;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
+    localMessage.setData(localBundle);
+    this.a.a.removeMessages(1003);
   }
 }
 

@@ -4,24 +4,24 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
-import lya;
-import lyf;
+import lyw;
+import lzb;
 
 public class ShareChat$SharePanel$4
   extends ResultReceiver
 {
-  public ShareChat$SharePanel$4(lya paramlya, Handler paramHandler, long paramLong, int paramInt)
+  public ShareChat$SharePanel$4(lyw paramlyw, Handler paramHandler, long paramLong, int paramInt)
   {
     super(paramHandler);
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    QLog.w("ShareChat", 1, "startTroop2DCode.PARAM_QRForwardReceiver, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Lya.a + "]");
+    QLog.w("ShareChat", 1, "startTroop2DCode.PARAM_QRForwardReceiver, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Lyw.a + "]");
     int i;
-    if (this.jdField_a_of_type_Lya.a != null)
+    if (this.jdField_a_of_type_Lyw.a != null)
     {
-      paramBundle = this.jdField_a_of_type_Lya.a;
+      paramBundle = this.jdField_a_of_type_Lyw.a;
       i = this.jdField_a_of_type_Int;
       if (paramInt != -1) {
         break label97;

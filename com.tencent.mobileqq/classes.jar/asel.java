@@ -1,64 +1,215 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.text.TextUtils;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.CameraRoamingStrategy.3;
+import com.tencent.mobileqq.emosm.CameraRoamingStrategy.5;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class asel
-  extends arvd
+  extends asek
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private asbq jdField_a_of_type_Asbq;
-  private biau jdField_a_of_type_Biau;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  anul jdField_a_of_type_Anul = new aseo(this);
+  private asgf jdField_a_of_type_Asgf;
+  private List<asmg> b = new ArrayList();
+  private volatile boolean c;
   
-  public asel(AIOEmotionFragment paramAIOEmotionFragment) {}
-  
-  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, asbq paramasbq, SessionInfo paramSessionInfo, biau parambiau)
+  public asel(QQAppInterface paramQQAppInterface, asfd paramasfd)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Asbq = paramasbq;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Biau = parambiau;
+    super(paramQQAppInterface, paramasfd);
   }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  private List<? extends asmu> a()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOEmotionFragment", 2, "onJsonComplete:" + paramEmoticonPackage.epId + " ,currEpid:" + this.jdField_a_of_type_Asbq.a.epId);
+    return this.b;
+  }
+  
+  private void i()
+  {
+    this.jdField_a_of_type_Asfd.c.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Asfd.b.getLayoutParams();
+    localLayoutParams.addRule(9, -1);
+    localLayoutParams.addRule(15, -1);
+    localLayoutParams.leftMargin = agej.a(16.0F, this.jdField_a_of_type_Asfd.b.getContext().getResources());
+  }
+  
+  private void j()
+  {
+    a(new asem(this));
+  }
+  
+  public int a()
+  {
+    return 2131691709;
+  }
+  
+  public ases<CameraEmotionData> a()
+  {
+    if (this.jdField_a_of_type_Asgf == null) {
+      this.jdField_a_of_type_Asgf = ((asgf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333));
     }
-    if (this.jdField_a_of_type_Int == 32) {
-      if ((paramInt == 0) && (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Asbq.a.epId))) {
-        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, bool);
-      }
-    }
-    do
+    return this.jdField_a_of_type_Asgf;
+  }
+  
+  public String a(asmu paramasmu)
+  {
+    if ((paramasmu instanceof asmg))
     {
-      return;
-      bool = false;
-      break;
-      if (paramInt != 0) {
-        break label233;
+      String str = ((asmg)paramasmu).jdField_a_of_type_JavaLangString;
+      paramasmu = str;
+      if (TextUtils.isEmpty(str)) {
+        paramasmu = "";
       }
-    } while (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Asbq.a.epId));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-    ahch.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Asbq, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Biau, true);
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.obtainMessage(1000);
-    paramBundle.obj = paramEmoticonPackage.name;
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.sendMessage(paramBundle);
-    return;
-    label233:
-    ahch.a(this.jdField_a_of_type_Int + 1000, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Asbq, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Biau, true);
+      return String.format(BaseApplicationImpl.getApplication().getString(2131691708), new Object[] { paramasmu });
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anul);
+    this.jdField_a_of_type_Asfd.b(2131691707);
+    this.c = false;
+    if (this.jdField_a_of_type_Asgf == null) {
+      this.jdField_a_of_type_Asgf = ((asgf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333));
+    }
+    i();
+    j();
+  }
+  
+  public void a(aset paramaset)
+  {
+    a().a(new asen(this, paramaset));
+  }
+  
+  public void a(GridView paramGridView, int paramInt, asqv paramasqv)
+  {
+    Object localObject = ((asgf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333)).a();
+    int i = paramasqv.a();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
+      if (localCameraEmotionData.emoId == i)
+      {
+        QLog.d("CameraRoamingStrategy", 1, new Object[] { "resend, emoId:", Integer.valueOf(localCameraEmotionData.emoId) });
+        localCameraEmotionData.RomaingType = "needUpload";
+        ((asmg)paramasqv).h = "needUpload";
+        if (this.jdField_a_of_type_Asfd != null) {
+          this.jdField_a_of_type_Asfd.a(paramGridView, paramInt);
+        }
+        com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
+        ThreadManager.excute(new CameraEmoSingleSend(localCameraEmotionData, true), 64, null, false);
+      }
+    }
+  }
+  
+  public void a(List<asmu> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      this.b.clear();
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      asmu localasmu = (asmu)paramList.next();
+      if ((localasmu instanceof asmg))
+      {
+        ((asmg)localasmu).jdField_a_of_type_Boolean = false;
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext())
+        {
+          asmg localasmg = (asmg)localIterator.next();
+          if (((asmg)localasmu).g == localasmg.g) {
+            ((asmg)localasmu).jdField_a_of_type_Boolean = localasmg.jdField_a_of_type_Boolean;
+          }
+        }
+        localArrayList.add((asmg)localasmu);
+      }
+    }
+    this.b = localArrayList;
+  }
+  
+  public void d()
+  {
+    super.d();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anul);
+    this.c = false;
+  }
+  
+  public void e()
+  {
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AC", 0, 0, "", "", "", "");
+  }
+  
+  public void f()
+  {
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AD", 0, 0, "", "", "", "");
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraRoamingStrategy", 2, "doSyncEmotion");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    ThreadManager.excute(new CameraRoamingStrategy.5(this), 128, null, false);
+  }
+  
+  public void h()
+  {
+    if (this.c)
+    {
+      QLog.e("CameraRoamingStrategy", 1, "doDelEmotion,  camera data deleting");
+      return;
+    }
+    this.c = true;
+    ArrayList localArrayList = new ArrayList();
+    List localList = a().a();
+    Object localObject1 = a();
+    if (localList != null)
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (asmu)((Iterator)localObject1).next();
+        if ((localObject2 instanceof asmg))
+        {
+          localObject2 = (asmg)localObject2;
+          Iterator localIterator = localList.iterator();
+          while (localIterator.hasNext())
+          {
+            CameraEmotionData localCameraEmotionData = (CameraEmotionData)localIterator.next();
+            if ((localCameraEmotionData != null) && (((asmg)localObject2).g == localCameraEmotionData.emoId) && (((asmg)localObject2).jdField_a_of_type_Boolean))
+            {
+              ((asmg)localObject2).jdField_a_of_type_Boolean = false;
+              localArrayList.add(localCameraEmotionData);
+            }
+          }
+        }
+      }
+    }
+    if (localArrayList.size() > 0)
+    {
+      ThreadManager.post(new CameraRoamingStrategy.3(this, localArrayList), 5, null, false);
+      return;
+    }
+    this.c = false;
   }
 }
 

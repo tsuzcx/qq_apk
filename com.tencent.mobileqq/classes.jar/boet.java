@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import java.io.File;
 
 public class boet
-  implements View.OnClickListener
 {
-  public boet(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.f();
-    this.a.j();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public static final String a = boev.f + File.separator + "camera_story_default_template.json";
 }
 
 

@@ -1,26 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class bhol
-  extends bhon
+final class bhol
+  extends aojs
 {
-  bhol(bhoi parambhoi)
-  {
-    super(parambhoi);
-  }
+  bhol(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
+    if (paramBoolean) {
+      bhon.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 

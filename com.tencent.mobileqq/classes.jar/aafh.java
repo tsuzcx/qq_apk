@@ -1,26 +1,37 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aafh
-  implements View.OnClickListener
+  implements aamv
 {
-  aafh(aafd paramaafd, CertifiedAccountMeta.StReply paramStReply) {}
+  aafh(aaff paramaaff) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    ClipboardManager localClipboardManager = (ClipboardManager)aaet.i(this.jdField_a_of_type_Aafd.a).getSystemService("clipboard");
-    if (localClipboardManager != null)
+    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean)
     {
-      localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
-      aaet.a(this.jdField_a_of_type_Aafd.a).dismiss();
+      str1 = "cancel";
+      abbe.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
+      if (RecommendBannerItemView.a(this.a.a))
+      {
+        str2 = RecommendBannerItemView.a(this.a.a).id.get();
+        localStringBuilder = new StringBuilder().append("reco_");
+        if (!paramBoolean) {
+          break label252;
+        }
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label252:
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      abbe.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
+      return;
+      str1 = "dislike";
+      break;
+    }
   }
 }
 

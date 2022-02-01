@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import bnip;
+import bojx;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class FilterPagerViewStubHolder$5
   implements Runnable
 {
-  public FilterPagerViewStubHolder$5(bnip parambnip, int paramInt) {}
+  public FilterPagerViewStubHolder$5(bojx parambojx, int paramInt) {}
   
   public void run()
   {
-    bnip.a(this.this$0).a(this.a);
+    bojx.a(this.this$0).a(this.a);
   }
 }
 

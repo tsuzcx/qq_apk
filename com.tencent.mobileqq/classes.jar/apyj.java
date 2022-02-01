@@ -1,10 +1,61 @@
-public abstract interface apyj
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+
+public class apyj
+  implements apyw
 {
-  public abstract void a();
+  private String a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject = null;
+    String str = null;
+    SessionInfo localSessionInfo = apvx.a();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (localSessionInfo != null) {
+        str = bhlg.a(paramQQAppInterface, localSessionInfo, paramString.equals(paramQQAppInterface.c()), paramString);
+      }
+      if (str != null)
+      {
+        localObject = str;
+        if (!TextUtils.equals(str, paramString)) {}
+      }
+      else
+      {
+        str = bhlg.q(paramQQAppInterface, paramString);
+        localObject = str;
+        if (TextUtils.isEmpty(str)) {
+          localObject = bhlg.a(paramQQAppInterface, paramString, 0);
+        }
+      }
+    }
+    return localObject;
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public EIPCResult a(Bundle paramBundle)
+  {
+    Object localObject = apxv.a();
+    if (localObject == null)
+    {
+      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    paramBundle = a((QQAppInterface)localObject, paramBundle.getString("Uin", ((QQAppInterface)localObject).getCurrentAccountUin()));
+    localObject = new Bundle();
+    if (TextUtils.isEmpty(paramBundle))
+    {
+      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, nickname is empty");
+      ((Bundle)localObject).putString("Nickname", "");
+    }
+    for (;;)
+    {
+      return EIPCResult.createResult(0, (Bundle)localObject);
+      ((Bundle)localObject).putString("Nickname", paramBundle);
+    }
+  }
 }
 
 

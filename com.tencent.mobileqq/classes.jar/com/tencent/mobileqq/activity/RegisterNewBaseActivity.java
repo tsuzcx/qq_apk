@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afav;
-import afax;
+import afjy;
+import afka;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -16,7 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bibh;
+import bjcf;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,22 +27,23 @@ public class RegisterNewBaseActivity
   extends BaseActivity
   implements DialogInterface.OnClickListener
 {
+  public int a;
   protected Dialog a;
   public Handler a;
   protected View.OnClickListener a;
   public String a;
-  public int b;
+  public boolean a;
   public String b;
   public boolean b;
   public String c;
-  public boolean c = true;
   
   public RegisterNewBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new afav(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new afax(this);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidOsHandler = new afjy(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new afka(this);
   }
   
   public String a()
@@ -52,12 +53,12 @@ public class RegisterNewBaseActivity
   
   protected void a(int paramInt)
   {
-    ((ProgressBar)findViewById(2131376347)).setProgress(paramInt);
+    ((ProgressBar)findViewById(2131376479)).setProgress(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    new bibh(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new bjcf(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -69,7 +70,7 @@ public class RegisterNewBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new bibh(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new bjcf(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)
@@ -87,7 +88,7 @@ public class RegisterNewBaseActivity
   
   protected void a(boolean paramBoolean)
   {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376347);
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376479);
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
@@ -98,10 +99,10 @@ public class RegisterNewBaseActivity
   
   protected void b()
   {
-    TextView localTextView = (TextView)findViewById(2131364039);
+    TextView localTextView = (TextView)findViewById(2131364065);
     localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     if (AppSetting.c) {
-      localTextView.setContentDescription(getResources().getString(2131690563));
+      localTextView.setContentDescription(getResources().getString(2131690559));
     }
   }
   
@@ -120,7 +121,7 @@ public class RegisterNewBaseActivity
   
   protected void b(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131380079);
+    TextView localTextView = (TextView)findViewById(2131380264);
     localTextView.setText(paramString);
     if (AppSetting.c) {
       localTextView.setContentDescription(paramString);
@@ -129,11 +130,7 @@ public class RegisterNewBaseActivity
   
   public void b(boolean paramBoolean)
   {
-    MqqHandler localMqqHandler = this.app.getHandler(RegisterChooseLoginActivity.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.sendEmptyMessage(105);
-    }
-    localMqqHandler = this.app.getHandler(RegisterSendUpSms.class);
+    MqqHandler localMqqHandler = this.app.getHandler(RegisterSendUpSms.class);
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(107);
     }
@@ -165,7 +162,7 @@ public class RegisterNewBaseActivity
   
   protected void c(int paramInt)
   {
-    TextView localTextView = (TextView)findViewById(2131380079);
+    TextView localTextView = (TextView)findViewById(2131380264);
     String str = getResources().getString(paramInt);
     localTextView.setText(str);
     if (AppSetting.c) {
@@ -187,7 +184,7 @@ public class RegisterNewBaseActivity
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     getWindow().addFlags(1024);
-    this.jdField_b_of_type_Int = getIntent().getIntExtra("key_register_from", -1);
+    this.jdField_a_of_type_Int = getIntent().getIntExtra("key_register_from", -1);
     return true;
   }
   

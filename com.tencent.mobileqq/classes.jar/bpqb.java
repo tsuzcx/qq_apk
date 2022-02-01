@@ -1,35 +1,33 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class bpqb
-  implements yde
+final class bpqb
+  implements URLDrawable.URLDrawableListener
 {
-  bpqb(bpqa parambpqa) {}
+  bpqb(String paramString1, String paramString2, bqpg parambqpg, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bpnq parambpnq, int paramInt3) {}
   
-  public void b(boolean paramBoolean)
-  {
-    if (bpqa.a(this.a).b())
-    {
-      yqu.a("video_edit", "repost_comment", 0, 0, new String[] { "", "", "", bpqa.a(this.a).a.a("vip_forward_vid") });
-      return;
-    }
-    yqu.a("video_edit", "repost_emoji", 0, 0, new String[] { "", "", "", bpqa.a(this.a).a.a("vip_forward_vid") });
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public boolean b()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return false;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if ((!bpqa.a(this.a).a()) && (!bpqa.a(this.a).c())) {
-      this.a.dismiss();
+    bpqa.a.remove(this.jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
     }
   }
   
-  public void d()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "urlDrawableListener onLoadSuccessed");
+    }
+    bpqa.a(paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bqpg, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, this.jdField_a_of_type_Bpnq, this.jdField_c_of_type_Int);
+    bpqa.a.remove(this.jdField_b_of_type_JavaLangString);
   }
 }
 

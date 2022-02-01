@@ -1,40 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 class ayef
-  implements ayds
+  implements bjig
 {
-  ayef(ayee paramayee, int paramInt, ayeg paramayeg) {}
+  ayef(ayed paramayed) {}
   
-  public void a(int paramInt, String paramString)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    ayee.a(this.jdField_a_of_type_Ayee, false);
-    if (ayee.a(this.jdField_a_of_type_Ayee).size() == 0) {
-      this.jdField_a_of_type_Ayee.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ayeg, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(ayee.a(this.jdField_a_of_type_Ayee), 2, "Focus cmd:20736 sub cmd:100 errCode:" + paramInt + " msg:" + paramString);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    ayee.a(this.jdField_a_of_type_Ayee, false);
-    try
+    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
-      ayee.a(this.jdField_a_of_type_Ayee, 0);
-      if ((this.jdField_a_of_type_Ayee.a(this.jdField_a_of_type_Int, paramArrayOfByte) == -1) && (ayee.a(this.jdField_a_of_type_Ayee).size() == 0)) {
-        this.jdField_a_of_type_Ayee.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ayeg, true);
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label59;
       }
-      this.jdField_a_of_type_Ayeg.a(ayee.a(this.jdField_a_of_type_Ayee));
-      ayee.a(this.jdField_a_of_type_Ayee, System.currentTimeMillis());
+      if (this.a.jdField_a_of_type_Ayeg != null) {
+        this.a.jdField_a_of_type_Ayeg.a(true);
+      }
+    }
+    label59:
+    while (this.a.jdField_a_of_type_Ayeg == null) {
       return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(ayee.a(this.jdField_a_of_type_Ayee), 2, "Focus cmd:20736 sub cmd:100 Exception:" + paramArrayOfByte.getMessage());
-    }
+    this.a.jdField_a_of_type_Ayeg.a(false);
   }
 }
 

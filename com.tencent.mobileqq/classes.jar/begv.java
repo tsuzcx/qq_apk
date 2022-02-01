@@ -1,35 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
 
-class begv
-  extends BroadcastReceiver
+final class begv
+  implements bliz
 {
-  begv(begt parambegt) {}
+  begv(blhl paramblhl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
-    switch (paramIntent.getIntExtra("ret_action", 1000))
-    {
-    default: 
-      begt.a(this.a, begt.a(this.a).troopUin, 2);
-      return;
-    case 1000: 
-      begt.a(this.a, begt.a(this.a).troopUin, 2);
-      return;
-    case 1001: 
-      begt.a(this.a, begt.a(this.a).troopUin, 2);
-      return;
-    case 1002: 
-      begt.a(this.a, begt.a(this.a).troopUin, 2);
-      return;
-    case 1003: 
-      begt.a(this.a, begt.a(this.a).troopUin, 1);
-      return;
-    }
-    begt.a(this.a, begt.a(this.a).troopUin, 3);
+    this.a.a(Integer.valueOf(paramInt));
   }
 }
 

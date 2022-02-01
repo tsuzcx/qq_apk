@@ -1,65 +1,33 @@
-import android.content.res.Resources;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aaoo
-  extends axeu
+  implements beuq
 {
-  public aaoo(TroopMemberApiService paramTroopMemberApiService) {}
+  public aaoo(AbsSubscribeShareCardView.2 param2) {}
   
-  protected void a(boolean paramBoolean)
+  public void onResp(bevm parambevm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberApiService", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
-    }
-    ((axby)TroopMemberApiService.f(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.g(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean)
+    if (parambevm.jdField_a_of_type_Int == 0)
     {
-      bgsg.a(BaseApplication.getContext(), false);
-      QQToast.a(BaseApplication.getContext(), 2, anni.a(2131714230), 0).b(this.a.getResources().getDimensionPixelSize(2131298998));
-      if (!paramBoolean) {
-        break label163;
+      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
+      AbsSubscribeShareCardView.a(this.a.this$0);
+      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
+        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
       }
-    }
-    label163:
-    for (String str = "1";; str = "2")
-    {
-      axek.a("clk_del_video", new String[] { str });
       return;
-      QQToast.a(BaseApplication.getContext(), 1, anni.a(2131714307), 0).b(this.a.getResources().getDimensionPixelSize(2131298998));
-      break;
     }
+    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
   }
   
-  protected void a(boolean paramBoolean, UpdatePhotoList.HeadInfo paramHeadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberApiService", 2, "onUpdateNearbyPeopleAuthVideo + HeadInfo = " + paramHeadInfo.toString());
-    }
-    ((axby)TroopMemberApiService.h(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.i(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean)
-    {
-      bgsg.a(BaseApplication.getContext(), true);
-      QQToast.a(BaseApplication.getContext(), 2, anni.a(2131714308), 0).b(this.a.getResources().getDimensionPixelSize(2131298998));
-      if (!paramBoolean) {
-        break label166;
-      }
-    }
-    label166:
-    for (paramHeadInfo = "1";; paramHeadInfo = "2")
-    {
-      axek.a("clk_upload_video", new String[] { paramHeadInfo });
-      return;
-      QQToast.a(BaseApplication.getContext(), 1, anni.a(2131714236), 0).b(this.a.getResources().getDimensionPixelSize(2131298998));
-      break;
-    }
-  }
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abcr;
-import bdhj;
-import bdiq;
+import abgu;
+import beae;
+import bebl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
@@ -41,7 +41,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
       if (this.jdField_a_of_type_Int == 3000) {
         localList3 = this.jdField_a_of_type_JavaUtilList;
       }
-      bool = bdiq.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
+      bool = bebl.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
       ThreadManager.getUIHandler().postDelayed(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13.1(this, i, bool), 3000L);
       return;
       bool = false;

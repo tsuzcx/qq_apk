@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import wix;
-import wiy;
-import wiz;
+import wms;
+import wmt;
+import wmu;
 
 public class VideoCompositeManager$1$1$1
   implements Runnable
 {
-  public VideoCompositeManager$1$1$1(wiz paramwiz, int paramInt, String paramString1, String paramString2) {}
+  public VideoCompositeManager$1$1$1(wmu paramwmu, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wiz.jdField_a_of_type_Wiy.jdField_a_of_type_Wix.a(this.jdField_a_of_type_Wiz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Wiz.jdField_a_of_type_Wiy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Wiz.jdField_a_of_type_Wiy.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Wmu.jdField_a_of_type_Wmt.jdField_a_of_type_Wms.a(this.jdField_a_of_type_Wmu.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Wmu.jdField_a_of_type_Wmt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Wmu.jdField_a_of_type_Wmt.jdField_a_of_type_Long);
   }
 }
 

@@ -1,165 +1,166 @@
-import android.graphics.Color;
-import com.google.gson.Gson;
-import com.tencent.lbssearch.httpresponse.HttpResponseListener;
-import com.tencent.lbssearch.object.result.DrivingResultObject;
-import com.tencent.lbssearch.object.result.DrivingResultObject.Result;
-import com.tencent.lbssearch.object.result.DrivingResultObject.Route;
-import com.tencent.lbssearch.object.result.TransitResultObject;
-import com.tencent.lbssearch.object.result.TransitResultObject.Line;
-import com.tencent.lbssearch.object.result.TransitResultObject.Result;
-import com.tencent.lbssearch.object.result.TransitResultObject.Route;
-import com.tencent.lbssearch.object.result.TransitResultObject.Segment;
-import com.tencent.lbssearch.object.result.TransitResultObject.Transit;
-import com.tencent.lbssearch.object.result.TransitResultObject.Walking;
-import com.tencent.lbssearch.object.result.WalkingResultObject;
-import com.tencent.lbssearch.object.result.WalkingResultObject.Result;
-import com.tencent.lbssearch.object.result.WalkingResultObject.Route;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller;
+import com.tencent.proxyinner.plugin.loader.QTProxyService;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import mqq.app.MobileQQ;
 
 public class awat
-  implements HttpResponseListener
+  implements PluginProcessKiller
 {
-  public awat(MapWidget paramMapWidget, int paramInt, away paramaway) {}
+  private static HashMap<String, awat> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private avzd jdField_a_of_type_Avzd = new avzd();
+  private awbg jdField_a_of_type_Awbg;
+  private awbi jdField_a_of_type_Awbi = new awau(this);
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
+  private String jdField_a_of_type_JavaLangString;
+  private List<awaw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, IVPluginInfo> jdField_a_of_type_JavaUtilMap;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
+  private String e;
   
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  private awat(Context paramContext, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.d = paramString1;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment(paramString2);
+    this.jdField_a_of_type_Awbg = awbg.a(paramContext, paramString1, paramString2);
+  }
+  
+  public static awat a(Context paramContext, String paramString1, String paramString2)
+  {
+    try
     {
-      if (paramThrowable != null) {
-        paramThrowable.printStackTrace();
+      String str = paramString2 + paramString1;
+      awat localawat2 = (awat)jdField_a_of_type_JavaUtilHashMap.get(str);
+      awat localawat1 = localawat2;
+      if (localawat2 == null)
+      {
+        localawat1 = new awat(paramContext, paramString1, paramString2);
+        jdField_a_of_type_JavaUtilHashMap.put(str, localawat1);
       }
-      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onFailure invoked. error code: " + paramInt + " msg: " + paramString);
+      return localawat1;
     }
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, this.jdField_a_of_type_Away);
+    finally {}
+  }
+  
+  private void a(InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
+  {
+    IVPluginInfo localIVPluginInfo = (IVPluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramInstalledPlugin.pluginPackageName);
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginNewDownloader", 2, "开始拉取AI票据：" + localIVPluginInfo.jdField_a_of_type_Int);
+    }
+    paramInstalledPlugin = new awaw(this, this.d, localIVPluginInfo, paramInstalledPlugin, paramBoolean, paramLong);
+    this.jdField_a_of_type_JavaUtilList.add(paramInstalledPlugin);
+    if (localIVPluginInfo.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Avzd.a(this.jdField_a_of_type_JavaLangString, localIVPluginInfo.jdField_a_of_type_JavaLangString, localIVPluginInfo.c, localIVPluginInfo.jdField_b_of_type_JavaLangString, paramInstalledPlugin, true, localIVPluginInfo.k);
+    }
+    while (localIVPluginInfo.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    AppInterface localAppInterface = (AppInterface)((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
+    this.jdField_a_of_type_Avzd.a(localAppInterface, localIVPluginInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext, localIVPluginInfo.jdField_b_of_type_JavaLangString, paramInstalledPlugin);
+  }
+  
+  private void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((awaw)localIterator.next()).a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginNewDownloader", 2, "setStop");
     }
   }
   
-  public void onSuccess(int paramInt, Object paramObject)
+  public void a()
   {
-    Object localObject1 = new Gson().toJson(paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. routeType: " + this.jdField_a_of_type_Int + " result: " + (String)localObject1);
+    this.jdField_a_of_type_Awbg.a(null);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.c = null;
+    if (!bhnv.a(this.jdField_a_of_type_AndroidContentContext)) {
+      this.jdField_a_of_type_Awbg.a();
     }
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      paramObject = null;
+    this.jdField_a_of_type_Awbg.b();
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, Map<String, IVPluginInfo> paramMap)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Awbg.jdField_a_of_type_JavaLangString = paramString2;
+    if (!paramString2.equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Avzd.a();
     }
-    label90:
-    label739:
-    label744:
+    awbj.jdField_a_of_type_Boolean = TextUtils.equals(paramString1, "hy_sixgod");
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.c = paramString4;
+    this.e = paramString1;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Awbg.a(this.jdField_a_of_type_Awbi);
+    this.jdField_a_of_type_Awbg.a(paramString1, paramString4, this.d, paramMap);
+  }
+  
+  public void onKillPluginProcess()
+  {
+    int i = 1;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      throw new RuntimeException(anzj.a(2131704529));
+    }
+    this.jdField_a_of_type_Boolean = true;
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QTProxyService.class);
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    long l = System.currentTimeMillis();
+    QLog.i("HuayangPluginNewDownloader", 2, "bindService ");
+    this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, new awav(this, localCountDownLatch), 1);
     for (;;)
     {
-      if (paramObject != null)
+      try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.c(false);
+        if (localCountDownLatch.await(3L, TimeUnit.SECONDS)) {
+          continue;
         }
-        if (bkpg.a())
+        if (i != 0)
         {
-          paramInt = Color.parseColor("#0071FF");
-          label124:
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addPolyline(new PolylineOptions().addAll(paramObject).color(paramInt).width(bggq.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getContext(), 5.0F)));
-          if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
-            if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_Int == 0) {
-              MapWidget.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
-            }
-          }
-          if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)
-          {
-            localObject1 = MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
-            if ((paramObject == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null)) {
-              break label739;
-            }
-          }
+          QLog.e("HuayangPluginNewDownloader", 2, "onKillPluginProcess timeout");
+          awbc.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getPackageName() + ":troophomework");
         }
       }
-      for (boolean bool = true;; bool = false)
+      catch (InterruptedException localInterruptedException)
       {
-        ((awax)localObject1).a(bool, this.jdField_a_of_type_Away);
-        return;
-        paramObject = (DrivingResultObject)paramObject;
-        if ((paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_DRIVE");
-          paramObject = null;
-          break label90;
-        }
-        paramObject = (DrivingResultObject.Route)paramObject.result.routes.get(0);
-        this.jdField_a_of_type_Away.a = paramObject.duration;
-        this.jdField_a_of_type_Away.b = paramObject.distance;
-        paramObject = paramObject.polyline;
-        break label90;
-        localObject1 = (TransitResultObject)paramObject;
-        if ((((TransitResultObject)localObject1).result == null) || (((TransitResultObject)localObject1).result.routes == null) || (((TransitResultObject)localObject1).result.routes.isEmpty()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_BUS");
-          paramObject = null;
-          break label90;
-        }
-        paramObject = new ArrayList();
-        localObject1 = (TransitResultObject.Route)((TransitResultObject)localObject1).result.routes.get(0);
-        Iterator localIterator = ((TransitResultObject.Route)localObject1).steps.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject2 = (TransitResultObject.Segment)localIterator.next();
-          if ((localObject2 instanceof TransitResultObject.Walking))
-          {
-            paramObject.addAll(((TransitResultObject.Walking)localObject2).polyline);
-          }
-          else if ((localObject2 instanceof TransitResultObject.Transit))
-          {
-            localObject2 = (TransitResultObject.Transit)localObject2;
-            if ((((TransitResultObject.Transit)localObject2).lines != null) && (!((TransitResultObject.Transit)localObject2).lines.isEmpty())) {
-              paramObject.addAll(((TransitResultObject.Line)((TransitResultObject.Transit)localObject2).lines.get(0)).polyline);
-            }
-          }
-        }
-        this.jdField_a_of_type_Away.a = ((float)((TransitResultObject.Route)localObject1).duration);
-        this.jdField_a_of_type_Away.b = ((TransitResultObject.Route)localObject1).distance;
-        if (!paramObject.isEmpty()) {
-          break label744;
-        }
-        paramObject = null;
-        break label90;
-        paramObject = (WalkingResultObject)paramObject;
-        if ((paramObject == null) || (paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_WALK");
-          paramObject = null;
-          break label90;
-        }
-        paramObject = (WalkingResultObject.Route)paramObject.result.routes.get(0);
-        this.jdField_a_of_type_Away.a = paramObject.duration;
-        this.jdField_a_of_type_Away.b = paramObject.distance;
-        paramObject = paramObject.polyline;
-        break label90;
-        paramInt = Color.parseColor("#4D94FF");
-        break label124;
-        if (!QLog.isColorLevel()) {
-          break label206;
-        }
-        QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error polyline: null");
-        break label206;
+        localInterruptedException.printStackTrace();
+        continue;
       }
+      QLog.i("HuayangPluginNewDownloader", 2, "onKillPluginProcess end costTime:" + (System.currentTimeMillis() - l));
+      return;
+      i = 0;
     }
   }
 }

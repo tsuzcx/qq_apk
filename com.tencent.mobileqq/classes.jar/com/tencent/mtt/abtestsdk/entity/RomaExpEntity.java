@@ -54,13 +54,16 @@ public class RomaExpEntity
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject != null) && ((paramObject instanceof RomaExpEntity)))
+    if (this == paramObject) {
+      return true;
+    }
+    if ((paramObject instanceof RomaExpEntity))
     {
       paramObject = (RomaExpEntity)paramObject;
-      if (this.grayId == null) {
+      if (TextUtils.isEmpty(this.grayId)) {
         return false;
       }
-      return paramObject.grayId.equals(this.grayId);
+      return this.grayId.equals(paramObject.grayId);
     }
     return super.equals(paramObject);
   }

@@ -1,11 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class adrq
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public long c;
+  public adrq(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

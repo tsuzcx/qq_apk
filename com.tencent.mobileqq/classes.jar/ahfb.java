@@ -1,25 +1,23 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class ahfb
-  extends ahfe
+class ahfb
+  implements bliz
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public View c;
-  public int e;
-  public int f;
+  ahfb(ahex paramahex, blir paramblir) {}
   
-  public ahfb(ahfa paramahfa)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramahfa);
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Blir.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Ahex.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
+    bdll.b(this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

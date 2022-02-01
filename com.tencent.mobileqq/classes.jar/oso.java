@@ -1,16 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdDownloadView.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class oso
-  implements old
+public abstract interface oso
 {
-  oso(osm paramosm) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.2.1(this, paramBoolean));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

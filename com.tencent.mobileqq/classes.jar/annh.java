@@ -1,74 +1,75 @@
-import com.tencent.mobileqq.app.GuardManager;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class annh
+  extends MSFServlet
 {
-  public static final String[] a;
-  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
-  public int a;
-  public GuardManager a;
-  protected long c;
-  protected long d;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
-  }
-  
-  public void a()
-  {
-    this.c += 1L;
-    this.d += 1L;
-  }
-  
-  public final void a(int paramInt, Object paramObject)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
+      QLog.d("TraceReport", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
     }
-    switch (paramInt)
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-    default: 
-      return;
-    case 2: 
-      a();
-      return;
-    case 0: 
-      b();
-      return;
-    case 3: 
-      a((String)paramObject);
-      return;
-    case 4: 
-      d((String)paramObject);
-      return;
-    case 5: 
-      b((String)paramObject);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
-      return;
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    c((String)paramObject);
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
+      localBundle.putInt("retryTime", paramIntent.getIntExtra("retryTime", 0));
+      localBundle.putByteArray("request_data", paramIntent.getByteArrayExtra("data"));
+      localBundle.putSerializable("serializable", paramIntent.getSerializableExtra("serializable"));
+      localBundle.putBundle("extra_bundle_key", paramIntent.getBundleExtra("extra_bundle_key"));
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+      arrayOfByte = null;
+    }
   }
   
-  protected void a(String paramString) {}
-  
-  protected void b() {}
-  
-  protected void b(String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.d = 0L;
-    this.c = 0L;
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getIntExtra("timeout", 30000);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label118;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
+      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TraceReport", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label118:
+      paramIntent = new byte[4];
+      bhvd.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
+    }
   }
-  
-  protected void c(String paramString) {}
-  
-  protected void d(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annh
  * JD-Core Version:    0.7.0.1
  */

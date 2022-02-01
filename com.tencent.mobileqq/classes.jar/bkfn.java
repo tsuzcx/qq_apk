@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import com.tencent.image.URLDrawableHandler;
 
-public final class bkfn
-  implements Parcelable.Creator<BinderWarpper>
+class bkfn
+  implements URLDrawableHandler
 {
-  public BinderWarpper a(Parcel paramParcel)
+  bkfn(bkfm parambkfm) {}
+  
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    return new BinderWarpper(paramParcel.readStrongBinder());
+    return false;
   }
   
-  public BinderWarpper[] a(int paramInt)
-  {
-    return new BinderWarpper[paramInt];
-  }
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

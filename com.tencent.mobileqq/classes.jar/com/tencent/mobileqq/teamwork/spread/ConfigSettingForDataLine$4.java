@@ -2,9 +2,9 @@ package com.tencent.mobileqq.teamwork.spread;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anni;
-import atvf;
-import bdkq;
+import anzj;
+import auna;
+import bedl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -13,8 +13,8 @@ public class ConfigSettingForDataLine$4
 {
   public void run()
   {
-    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0).edit().putInt("file_str_key_max_count_local", bdkq.a(this.this$0)).commit();
-    atvf.d(anni.a(2131701234));
+    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0).edit().putInt("file_str_key_max_count_local", bedl.a(this.this$0)).commit();
+    auna.d(anzj.a(2131701341));
   }
 }
 

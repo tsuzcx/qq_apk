@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public class QavImageData
   extends XmlData
 {
-  @arov(a=false, b=true)
+  @asej(a=false, b=true)
   public boolean autoDownload;
   
   public String getSharedPreferencesName()

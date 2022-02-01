@@ -1,18 +1,23 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-class mly
-  extends AccessibilityDelegateCompat
+public class mly
+  implements lsi
 {
-  mly(mlx parammlx, mmh parammmh) {}
+  private WeakReference<mlx> a;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public mly(mlx parammlx)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramView = bdol.e(this.jdField_a_of_type_Mmh.a().toString());
-    paramAccessibilityNodeInfoCompat.setText(paramView);
-    paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
+    this.a = new WeakReference(parammlx);
+  }
+  
+  public boolean a(lsh paramlsh, MotionEvent paramMotionEvent)
+  {
+    mlx localmlx = (mlx)this.a.get();
+    if (localmlx != null) {
+      return localmlx.a(paramlsh, paramMotionEvent);
+    }
+    return false;
   }
 }
 

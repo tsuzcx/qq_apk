@@ -1,18 +1,15 @@
 package com.tencent.qqmini.sdk.receiver;
 
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader;
-import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader.OnAppRuntimeLoadListener;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 
 class MainReceiverProxy$1
-  implements BaseRuntimeLoader.OnAppRuntimeLoadListener
+  implements Runnable
 {
-  MainReceiverProxy$1(MainReceiverProxy paramMainReceiverProxy, MiniAppInfo paramMiniAppInfo) {}
+  MainReceiverProxy$1(MainReceiverProxy paramMainReceiverProxy) {}
   
-  public void onResult(int paramInt, String paramString, BaseRuntimeLoader paramBaseRuntimeLoader)
+  public void run()
   {
-    QMLog.w("minisdk-start", "预加载Runtime完成 " + this.val$appInfo);
+    QUAUtil.getSystemUA();
   }
 }
 

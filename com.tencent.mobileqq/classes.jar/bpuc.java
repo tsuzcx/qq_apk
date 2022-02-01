@@ -1,33 +1,6 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-
-public class bpuc
+public abstract interface bpuc
 {
-  TroopInfo a;
-  public boolean a;
-  
-  public bpuc(boolean paramBoolean, TroopInfo paramTroopInfo)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-  }
-  
-  public static ArrayList<bpuc> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
-  {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      bpuc localbpuc = new bpuc(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localbpuc.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localbpuc);
-      i += 1;
-    }
-    return localArrayList;
-  }
+  public abstract void a(String paramString);
 }
 
 

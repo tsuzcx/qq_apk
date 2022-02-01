@@ -1,9 +1,15 @@
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+
 public class auci
+  implements aqvd
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
+  public auci(FileBrowserActivity paramFileBrowserActivity) {}
+  
+  public void onColorNoteAnimFinish()
+  {
+    FileBrowserActivity.a(this.a);
+    this.a.overridePendingTransition(0, 0);
+  }
 }
 
 

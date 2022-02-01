@@ -1,6 +1,21 @@
-public abstract interface zxw<T>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+
+public abstract class zxw
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  public abstract void a(zxz paramzxz, T paramT);
+  public abstract void a();
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    a();
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    a();
+  }
 }
 
 

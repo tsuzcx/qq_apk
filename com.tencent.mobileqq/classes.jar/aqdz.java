@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class aqdz
-  implements aqdt
+  implements DialogInterface.OnDismissListener
 {
-  aqdz(aqdv paramaqdv) {}
+  aqdz(aqdy paramaqdy, blir paramblir) {}
   
-  public void a(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aqdv.a(this.a, aqdv.a(this.a).inflate());
-    aqdv.a(this.a).setOnClickListener(new aqea(this));
-    ((TextView)aqdv.a(this.a).findViewById(2131365498)).setOnClickListener(new aqeb(this));
-    bcst.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Blir.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
   }
 }
 

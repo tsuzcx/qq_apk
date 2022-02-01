@@ -1,21 +1,44 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
+
 public class bixe
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  private bixe(DraggableGridView paramDraggableGridView) {}
   
-  public bixe(bixd parambixd)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    int i = 0;
+    while (i < DraggableGridView.a(this.a).getChildCount())
+    {
+      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
+      if ((paramAnimation instanceof GridView))
+      {
+        paramAnimation = (GridView)paramAnimation;
+        int j = 0;
+        while (j < paramAnimation.getChildCount())
+        {
+          paramAnimation.getChildAt(j).clearAnimation();
+          paramAnimation.getChildAt(j).setPressed(false);
+          paramAnimation.getChildAt(j).setVisibility(0);
+          j += 1;
+        }
+      }
+      i += 1;
+    }
+    this.a.a();
+    DraggableGridView.b(this.a, false);
+    DraggableGridView.c(this.a, false);
+    DraggableGridView.a(this.a).notifyDataSetChanged();
   }
   
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_JavaLangString + "," + this.jdField_b_of_type_Int + "," + this.jdField_a_of_type_JavaLangString;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class ygp
-  implements bkle
+public abstract interface ygp
 {
-  public ygp(MemoriesInnerListView paramMemoriesInnerListView) {}
+  public abstract void P_();
   
-  public void onScrollStateChanged(int paramInt)
-  {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(CommentEntry paramCommentEntry);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void g_(int paramInt);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import bfsk;
+import bgsl;
 
 public class TroopGagActivity$1
   implements Runnable
 {
-  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, bfsk parambfsk) {}
+  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, bgsl parambgsl) {}
   
   public void run()
   {

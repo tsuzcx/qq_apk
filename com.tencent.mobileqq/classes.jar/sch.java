@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class sch
-  implements DialogInterface.OnShowListener
+  extends sbh
 {
-  sch(sce paramsce) {}
+  sch(sbi paramsbi) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    sce.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    sce.a(this.a).getWindow().clearFlags(8);
+    sbi.a(this.a, paramInt, paramBaseArticleInfo, paramString);
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return 3;
   }
 }
 

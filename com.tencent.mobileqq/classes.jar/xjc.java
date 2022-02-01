@@ -1,9 +1,17 @@
-public abstract class xjc
-  implements xjb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+final class xjc
+  implements DialogInterface.OnClickListener
 {
-  public boolean a(xiy paramxiy)
+  xjc(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    yuk.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
+    wlt.a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 

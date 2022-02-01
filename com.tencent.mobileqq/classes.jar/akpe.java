@@ -1,39 +1,132 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class akpe
-  implements BusinessObserver
+public class akpe
+  extends BaseAdapter
 {
-  akpe(akpd paramakpd, long paramLong, akpg paramakpg, WeakReference paramWeakReference) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<bhof> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_JavaUtilArrayList;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private akpe(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  
+  private int a(bhof parambhof)
   {
-    if ((paramInt != 10) || (!paramBoolean)) {}
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
-      }
-      akpd.a(this.jdField_a_of_type_Akpd, -1L);
-      return;
+    if (parambhof.a) {
+      return 0;
     }
-    catch (Throwable paramBundle)
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
+      return 0;
+    }
+    String str2 = parambhof.c;
+    String str3 = parambhof.b;
+    String str1 = parambhof.d;
+    parambhof = str1;
+    if (str1 != null) {
+      parambhof = str1.toLowerCase();
+    }
+    str1 = ChnToSpell.a(str3, 1);
+    String str4 = ChnToSpell.a(str3, 2);
+    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((parambhof != null) && (parambhof.equals(this.jdField_a_of_type_JavaLangString)))) {
+      return 3;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((parambhof != null) && (parambhof.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
+      return 2;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    Object localObject = paramString.toLowerCase();
+    paramString = (String)localObject;
+    if (((String)localObject).equals("hk")) {
+      paramString = "xianggang";
+    }
+    localObject = paramString;
+    if (paramString.equals("uk")) {
+      localObject = "united kingdom";
+    }
+    int i;
+    label81:
+    bhof localbhof;
+    int k;
+    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
     {
-      for (;;)
+      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localObject = new ArrayList(8);
+      paramString = paramString.iterator();
+      i = 0;
+      if (!paramString.hasNext()) {
+        break label181;
+      }
+      localbhof = (bhof)paramString.next();
+      k = a(localbhof);
+      if (k != 3) {
+        break label141;
+      }
+      ((ArrayList)localObject).add(j, localbhof);
+      j += 1;
+    }
+    for (;;)
+    {
+      break label81;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+      break;
+      label141:
+      if (k == 2)
       {
-        paramBundle.printStackTrace();
+        ((ArrayList)localObject).add(i + j, localbhof);
+        i += 1;
+      }
+      else if (k == 1)
+      {
+        ((ArrayList)localObject).add(localbhof);
       }
     }
-    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
+    label181:
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = NewStyleCountryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity, paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.getLayoutInflater(), true);
+      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity);
     }
-    akpd.a(this.jdField_a_of_type_Akpd).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Akpg, (akpd)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    akpd.a(this.jdField_a_of_type_Akpd, -1L);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.a(paramView, (bhof)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

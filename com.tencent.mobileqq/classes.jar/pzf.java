@@ -1,107 +1,40 @@
-import android.support.annotation.Nullable;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class pzf<BEAN, COOKIE>
-  implements pzb<BEAN>
+public class pzf
+  implements ViewBase.OnClickListener
 {
-  protected int a;
-  @Nullable
-  private COOKIE jdField_a_of_type_JavaLangObject = null;
-  private String jdField_a_of_type_JavaLangString = "";
-  protected CopyOnWriteArrayList<BEAN> a;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public pzf()
+  public pzf(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
   }
   
-  private void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt1, List<BEAN> paramList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString, pza<BEAN> parampza)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if ((paramBoolean2) && (paramInt1 >= 0)) {
-      this.jdField_a_of_type_Int = paramInt1;
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      if (paramBoolean2)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
-        a(paramList);
-        this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
-        if (!paramBoolean3)
-        {
-          paramBoolean1 = true;
-          this.d = paramBoolean1;
-        }
-      }
-      else
-      {
-        parampza.a(paramBoolean2, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
-      }
-    }
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a == null)) {}
     do
     {
-      return;
-      paramBoolean1 = false;
-      break;
-      if (paramBoolean2)
+      do
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
-        this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
-        if (!paramBoolean3) {}
-        for (paramBoolean1 = true;; paramBoolean1 = false)
-        {
-          this.d = paramBoolean1;
-          parampza.a(true, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
-          return;
-        }
-      }
-      this.c = true;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_JavaLangString = paramString;
-    } while (paramBoolean1);
-    parampza.a(false, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
-  }
-  
-  public abstract void a(@Nullable COOKIE paramCOOKIE, pzk<BEAN, COOKIE> parampzk);
-  
-  public abstract void a(List<BEAN> paramList);
-  
-  public void a(pze<BEAN> parampze)
-  {
-    a(this.jdField_a_of_type_JavaLangObject, new pzi(this, parampze));
-  }
-  
-  public abstract void a(pzj<BEAN> parampzj);
-  
-  public void a(boolean paramBoolean, pza<BEAN> parampza)
-  {
-    a();
-    if (paramBoolean) {
-      a(new pzg(this, parampza));
-    }
-    a(null, new pzh(this, paramBoolean, parampza));
-  }
-  
-  public boolean a()
-  {
-    return this.d;
+        return;
+        paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a;
+      } while (ozs.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long);
+      QLog.d("OnPivacyClickListener", 2, "privacy type is  " + paramViewBase.jdField_a_of_type_Int + "| feedsid is " + paramViewBase.b);
+    } while (paramViewBase.jdField_a_of_type_Int != 1);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("feeds_id", paramViewBase.b);
+    PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyPrivacyListFragment.class);
   }
 }
 

@@ -1,38 +1,32 @@
-import NearbyGroup.GroupInfo;
-import NearbyGroup.GroupLabel;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.together.writetogether.view.SavingAnimView;
 
 public class bepv
-  extends amcl
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public GroupInfo a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public ArrayList<GroupLabel> a;
-  public boolean a;
-  public int b = 2;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public TroopLabelLayout b;
-  public String b;
-  public TextView c;
-  public int d;
-  public TextView d;
-  public TextView e;
+  public bepv(SavingAnimView paramSavingAnimView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SavingAnimView.a(this.a, 0);
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SavingAnimView.c(this.a, SavingAnimView.a(this.a));
+    SavingAnimView.d(this.a, SavingAnimView.d(this.a));
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).d();
+    }
+  }
 }
 
 

@@ -1,37 +1,52 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class aldj
+  extends biht
 {
-  private BaseActivity a;
-  public QQAppInterface a;
+  public aldj(PreloadManager paramPreloadManager, String paramString, aldl paramaldl) {}
   
-  public aldj(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void onDoneFile(bihu parambihu)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(RecentBaseData paramRecentBaseData, boolean paramBoolean)
-  {
-    if (paramRecentBaseData == null) {
-      return;
+    int i = -5;
+    super.onDoneFile(parambihu);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "downloadModule|done" + parambihu.jdField_a_of_type_JavaLangString);
     }
-    awhv.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = paramRecentBaseData.getRecentUserUin();
-    if (paramBoolean) {}
-    for (paramRecentBaseData = "1";; paramRecentBaseData = "0")
+    Object localObject = parambihu.a();
+    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
+    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
+    if (alil.c(localPreloadModule.mid, this.jdField_a_of_type_JavaLangString))
     {
-      bcst.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadManager", 2, "downloadModule|done code" + parambihu.jdField_a_of_type_Int);
+      }
+      if (parambihu.jdField_a_of_type_Int != 0) {
+        break label168;
+      }
+      i = 0;
+      if (localObject != null) {
+        break label183;
+      }
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    label168:
+    label183:
+    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
+    {
+      this.jdField_a_of_type_Aldl.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      return;
+      if (parambihu.jdField_a_of_type_Int == -5) {
+        break;
+      }
+      i = -6;
+      break;
+    }
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.activity.selectmember;
 
 import QQService.AddDiscussMemberInfo;
 import android.text.TextUtils;
-import anks;
-import ankw;
-import anmw;
-import bglf;
-import bglj;
+import anwo;
+import anws;
+import anyw;
+import bhlg;
+import bhlk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.Friends;
@@ -17,13 +17,13 @@ import java.util.ArrayList;
 class SelectMemberActivity$12
   extends Thread
 {
-  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, anmw paramanmw) {}
+  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, anyw paramanyw) {}
   
   public void run()
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject1 = bglf.h(this.this$0.app, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = bhlg.h(this.this$0.app, this.this$0.app.getCurrentAccountUin());
     int i = this.this$0.e.size() - 1;
     ResultRecord localResultRecord;
     Object localObject2;
@@ -86,7 +86,7 @@ class SelectMemberActivity$12
         Object localObject5;
         if (localResultRecord.jdField_a_of_type_Int == 1)
         {
-          localObject5 = bglj.a().a(this.this$0.app, localResultRecord.jdField_c_of_type_JavaLangString, localResultRecord.jdField_a_of_type_JavaLangString);
+          localObject5 = bhlk.a().a(this.this$0.app, localResultRecord.jdField_c_of_type_JavaLangString, localResultRecord.jdField_a_of_type_JavaLangString);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -106,7 +106,7 @@ class SelectMemberActivity$12
         }
         if (localResultRecord.jdField_a_of_type_Int == 2)
         {
-          localObject5 = ((ankw)this.this$0.app.getManager(53)).a(localResultRecord.jdField_c_of_type_JavaLangString, localResultRecord.jdField_a_of_type_JavaLangString);
+          localObject5 = ((anws)this.this$0.app.getManager(53)).a(localResultRecord.jdField_c_of_type_JavaLangString, localResultRecord.jdField_a_of_type_JavaLangString);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -166,10 +166,10 @@ class SelectMemberActivity$12
             continue;
           }
           QLog.d("SelectMemberActivity", 2, "add discussion member: groupCode: " + this.this$0.jdField_c_of_type_JavaLangString + " member count: " + localArrayList1.size());
-          ((anks)localObject1).b(Long.valueOf(this.this$0.jdField_c_of_type_JavaLangString).longValue(), localArrayList1);
+          ((anwo)localObject1).b(Long.valueOf(this.this$0.jdField_c_of_type_JavaLangString).longValue(), localArrayList1);
           return;
         }
-        localObject1 = (anks)this.this$0.app.a(6);
+        localObject1 = (anwo)this.this$0.app.a(6);
         if (this.this$0.jdField_c_of_type_JavaLangString != null) {
           continue;
         }
@@ -177,7 +177,7 @@ class SelectMemberActivity$12
           QLog.d("SelectMemberActivity", 2, "create discussion: " + (String)localObject3 + " member count: " + localArrayList1.size());
         }
         SelectMemberActivity.b = false;
-        ((anks)localObject1).a((String)localObject3, localArrayList1, this.this$0.jdField_c_of_type_Int);
+        ((anwo)localObject1).a((String)localObject3, localArrayList1, this.this$0.jdField_c_of_type_Int);
         return;
         i += 1;
       }

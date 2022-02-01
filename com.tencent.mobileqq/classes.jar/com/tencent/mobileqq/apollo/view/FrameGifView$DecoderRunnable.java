@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo.view;
 
-import anhe;
+import ansz;
 
 class FrameGifView$DecoderRunnable
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private anhe jdField_a_of_type_Anhe;
+  private ansz jdField_a_of_type_Ansz;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b;
   
-  public void a(anhe paramanhe, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public void a(ansz paramansz, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Anhe = paramanhe;
+    this.jdField_a_of_type_Ansz = paramansz;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Anhe != null) {
-      this.jdField_a_of_type_Anhe.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Ansz != null) {
+      this.jdField_a_of_type_Ansz.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
     }
   }
 }

@@ -1,164 +1,97 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
-import java.io.File;
-import java.util.HashMap;
+import NS_MOBILE_COMM_CONF.MobileCommConf;
+import NS_MOBILE_COMM_CONF.NewMobileGlobalConf;
+import NS_MOBILE_COMM_CONF.NewMobileUserConf;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bnxy
-  extends RecyclerView.Adapter<bnyb>
 {
-  private static long jdField_a_of_type_Long;
-  private static final String jdField_a_of_type_JavaLangString = bnxy.class.getSimpleName();
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bnya jdField_a_of_type_Bnya;
-  private HashMap<Integer, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<ShelfNode> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int c;
+  private static bnxy jdField_a_of_type_Bnxy;
+  private long jdField_a_of_type_Long = -1L;
   
-  public bnxy(Context paramContext, List<ShelfNode> paramList, int paramInt1, int paramInt2)
+  public static bnxy a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    if (this.c != 0)
+    if (jdField_a_of_type_Bnxy == null) {}
+    try
     {
-      this.jdField_a_of_type_Double = (this.jdField_b_of_type_Int / this.c);
-      if (this.jdField_a_of_type_Double < 1.0D) {
-        break label83;
+      if (jdField_a_of_type_Bnxy == null) {
+        jdField_a_of_type_Bnxy = new bnxy();
       }
+      return jdField_a_of_type_Bnxy;
     }
-    label83:
-    for (boolean bool = true;; bool = false)
+    finally {}
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (paramLong > 0L)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_report", 0).edit();
+      localEditor.putLong("lastReportTime", paramLong);
+      localEditor.apply();
     }
   }
   
-  public static boolean a()
+  public void a(MobileCommConf paramMobileCommConf)
   {
-    boolean bool = false;
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long >= 200L) {
-      bool = true;
-    }
-    jdField_a_of_type_Long = l;
-    return bool;
-  }
-  
-  public bnyb a(@NonNull ViewGroup paramViewGroup, int paramInt)
-  {
-    return new bnyb(this, LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558498, paramViewGroup, false));
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Integer)localIterator.next()).intValue();
-      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-        localBitmap.recycle();
-      }
-    }
-  }
-  
-  public void a(int paramInt, Bitmap paramBitmap)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      if (BitmapUtils.isLegal(paramBitmap)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramBitmap);
-      }
-    }
-    Bitmap localBitmap;
+    if ((paramMobileCommConf == null) || (paramMobileCommConf.new_mobile_global_conf == null) || (paramMobileCommConf.new_mobile_user_conf == null) || (paramMobileCommConf.vecAppList == null) || (paramMobileCommConf.maxScanNum <= 0)) {}
+    long l;
+    ArrayList localArrayList;
     do
     {
       do
       {
-        return;
-        localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      } while (!BitmapUtils.isLegal(paramBitmap));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramBitmap);
-    } while ((!BitmapUtils.isLegal(localBitmap)) || (localBitmap == paramBitmap));
-    localBitmap.recycle();
-  }
-  
-  public void a(bnya parambnya)
-  {
-    this.jdField_a_of_type_Bnya = parambnya;
-  }
-  
-  @TargetApi(21)
-  public void a(@NonNull bnyb parambnyb, int paramInt)
-  {
-    Object localObject = (ShelfNode)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localObject == null)
+        do
+        {
+          return;
+          l = paramMobileCommConf.new_mobile_global_conf.version;
+        } while (paramMobileCommConf.new_mobile_user_conf.version < l);
+        if (QLog.isColorLevel()) {
+          QLog.d("YYBInstallPackageManager", 1, "invokeReport");
+        }
+        l = System.currentTimeMillis() / 1000L;
+      } while (((this.jdField_a_of_type_Long >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (this.jdField_a_of_type_Long <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) || (l < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (l > paramMobileCommConf.new_mobile_user_conf.uEndTime));
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMobileCommConf.vecAppList.iterator();
+      do
+      {
+        String str;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          str = (String)localIterator.next();
+        } while (blhx.a(BaseApplicationImpl.getApplication(), str));
+        localArrayList.add(str);
+      } while (localArrayList.size() < paramMobileCommConf.maxScanNum);
+    } while (localArrayList.size() <= 0);
+    this.jdField_a_of_type_Long = l;
+    a(this.jdField_a_of_type_Long);
+    paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), bnya.class);
+    try
     {
-      Log.e(jdField_a_of_type_JavaLangString, "onBindViewHolder contain null data item");
-      EventCollector.getInstance().onRecyclerBindViewHolder(parambnyb, paramInt, getItemId(paramInt));
+      l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
+      paramMobileCommConf.putExtra("selfuin", l);
+      paramMobileCommConf.putStringArrayListExtra("uninstall_app_list", localArrayList);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMobileCommConf);
       return;
     }
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))
+    catch (Exception localException)
     {
-      localObject = BitmapUtils.decodeSampleBitmap(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString + File.separator + ((ShelfNode)localObject).getCoverUri(), 1);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
+      for (;;)
+      {
+        QLog.e("YYBInstallPackageManager", 1, "get uin error " + localException);
+        l = 0L;
+      }
     }
-    parambnyb.c.setImageBitmap((Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
-    localObject = "0" + (paramInt + 1);
-    parambnyb.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    parambnyb.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    if (this.jdField_a_of_type_Int == paramInt)
-    {
-      parambnyb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      parambnyb.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      parambnyb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      parambnyb.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
-    {
-      parambnyb.itemView.setOnClickListener(new bnxz(this, paramInt));
-      break;
-      parambnyb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      parambnyb.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      parambnyb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      parambnyb.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void b()
-  {
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

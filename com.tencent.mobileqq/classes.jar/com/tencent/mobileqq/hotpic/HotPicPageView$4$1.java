@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.hotpic;
 
-import avbr;
+import avtt;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class HotPicPageView$4$1
   implements Runnable
 {
-  public HotPicPageView$4$1(avbr paramavbr) {}
+  public HotPicPageView$4$1(avtt paramavtt) {}
   
   public void run()
   {

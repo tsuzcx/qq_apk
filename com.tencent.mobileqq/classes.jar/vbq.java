@@ -1,25 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 class vbq
-  implements View.OnClickListener
+  implements vye
 {
-  vbq(vbk paramvbk) {}
+  vbq(vbo paramvbo) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    QLog.d("QCircleFolderSplashPart", 4, "btn onClick");
-    vrf.a("", 20, vbk.a(this.a));
-    if (vbk.c(this.a)) {}
-    for (String str = "1";; str = "2")
-    {
-      vrf.a("", 19, 4, 0, str);
-      uxp.a().a(false);
-      vbk.a(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (vbo.a(this.a) != null) {
+      vbo.a(this.a, uyw.a(vbo.a(this.a).a.urlInfo.get(), "authCampanyUrl"));
+    }
+  }
+  
+  public void b()
+  {
+    if (vbo.a(this.a) != null) {
+      vbo.a(this.a, uyw.a(vbo.a(this.a).a.urlInfo.get(), "authSchoolUrl"));
     }
   }
 }

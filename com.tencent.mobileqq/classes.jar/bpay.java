@@ -1,11 +1,16 @@
 public abstract interface bpay
-  extends bpeo
 {
-  public abstract void b();
-  
   public abstract void c();
   
-  public abstract void d();
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

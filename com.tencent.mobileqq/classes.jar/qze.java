@@ -1,100 +1,109 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class qze
-  implements sew
+  extends qvt
 {
-  @Nullable
-  private RIJRedPacketProgressView jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView;
-  private qzg jdField_a_of_type_Qzg;
-  private rar jdField_a_of_type_Rar;
+  private String a;
   
-  public qze()
+  public qze(BaseArticleInfo paramBaseArticleInfo)
   {
-    this(null);
+    super(paramBaseArticleInfo);
   }
   
-  public qze(@Nullable RIJRedPacketProgressView paramRIJRedPacketProgressView)
+  public int getCommentCount()
   {
-    if (paramRIJRedPacketProgressView == null)
-    {
-      paramRIJRedPacketProgressView = pha.a(BaseActivity.sTopActivity);
-      if (paramRIJRedPacketProgressView == null) {}
+    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) && (!sel.q((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.d;
     }
-    for (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView = paramRIJRedPacketProgressView.a();; this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView = paramRIJRedPacketProgressView)
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCommentCount;
+  }
+  
+  public String getInnerUniqueID()
+  {
+    return ((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).g;
+  }
+  
+  public String getShareUrl()
+  {
+    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) && (!sel.q((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))) {
+      return ((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).h;
+    }
+    return super.getShareUrl();
+  }
+  
+  public String getSubscribeName()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Qzg = new qzg(this, null);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.a();
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label59;
       }
-      return;
     }
-  }
-  
-  private void a(sey paramsey, sfb paramsfb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJVideoRedPacketManager", 2, "startRedPacketTiming:view=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView + ", title=" + paramsey.a);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
-      RIJRedPacketManager.a().a(new qzf(this, paramsey, paramsfb));
-    }
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJVideoRedPacketManager", 2, "stopRedPacketTiming: ");
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null)
+    label59:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.b();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.c();
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.a();
-    }
-    pmk.a().a(this.jdField_a_of_type_Qzg);
-  }
-  
-  public void a(sey paramsey, sfb paramsfb, int paramInt1, int paramInt2, Object paramObject)
-  {
-    if ((paramsey == null) || (paramsey.b)) {
-      d();
-    }
-    do
-    {
-      return;
-      if (paramInt2 == 3)
+      if (localObject != null) {}
+      for (localObject = bhlg.b((QQAppInterface)localObject, getSubscribeUin(), true);; localObject = "")
       {
-        a(paramsey, paramsfb);
-        return;
+        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+        return this.jdField_a_of_type_JavaLangString;
       }
-    } while (paramInt1 != 3);
-    d();
+    }
   }
   
-  public boolean a()
+  public String getSubscribeUin()
   {
-    return (this.jdField_a_of_type_Rar != null) && (this.jdField_a_of_type_Rar.isShowing());
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxt != null) {
+      return String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxt.jdField_a_of_type_Long);
+    }
+    return "";
   }
   
-  public void b()
+  public URL getVideoCoverURL()
   {
-    pmk.a().b(this.jdField_a_of_type_Qzg);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.size() > 0)) {
+      return ozs.a(((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).d, true, true);
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
   }
   
-  public void c()
+  public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
   {
-    pmk.a().b(this.jdField_a_of_type_Qzg);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.size() > 0)) {
+      return ozs.a(ozs.a(((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).d, paramInt1, paramInt2));
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+  }
+  
+  public int getVideoDuration()
+  {
+    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) && (!sel.q((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))) {
+      return (int)(((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).jdField_a_of_type_Long / 1000L);
+    }
+    return super.getVideoDuration();
+  }
+  
+  public int getVideoHeight()
+  {
+    return ((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).b;
+  }
+  
+  public String getVideoVid()
+  {
+    return ((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).i;
+  }
+  
+  public int getVideoWidth()
+  {
+    return ((qyn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).jdField_a_of_type_Int;
   }
 }
 

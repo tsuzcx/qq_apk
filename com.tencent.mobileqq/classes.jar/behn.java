@@ -1,26 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class behn
-  extends anmu
+final class behn
+  implements DialogInterface.OnClickListener
 {
-  public behn(TroopAdminList paramTroopAdminList) {}
+  behn(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.a.c();
-    }
-  }
-  
-  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
-  {
+    behm.a("0X800A5B5");
     if (QLog.isColorLevel()) {
-      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+      QLog.d("DarkModeManager", 2, "showDarkModeTips systemDarMode  = " + this.a);
     }
-    this.a.c();
+    behm.a(true);
+    behm.a(this.a, this.b, null);
   }
 }
 

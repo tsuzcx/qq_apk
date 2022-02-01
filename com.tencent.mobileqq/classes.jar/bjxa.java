@@ -1,70 +1,41 @@
-import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import com.tencent.mobileqq.mini.report.InnerAppReportDc4239;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.13.1;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bjxa
-  implements DownloadListener
 {
-  bjxa(bjww parambjww) {}
+  private static bjxa jdField_a_of_type_Bjxa;
+  private bjxc jdField_a_of_type_Bjxc = new bjxc(this, null);
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bjxb(this, "Module_DownloaderGetCodeServer");
+  private Map<String, Bundle> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
   
-  public void installSucceed(String paramString1, String paramString2)
+  public static bjxa a()
   {
-    if ((bjww.b(this.a) != null) && (bjww.c(this.a) != null) && (bjww.b(this.a).equals(paramString1)) && (bjww.c(this.a).equals(paramString2)))
+    if (jdField_a_of_type_Bjxa == null) {}
+    try
     {
-      QLog.d("MiniAppProxyImpl", 1, "installSucceed: " + paramString1 + "; pkgname : " + paramString2);
-      InnerAppReportDc4239.innerAppReport(bjww.a(this.a), null, "launchapp", "installapp", "qqdownload");
+      jdField_a_of_type_Bjxa = new bjxa();
+      return jdField_a_of_type_Bjxa;
     }
+    finally {}
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  private QQAppInterface a()
   {
-    if ((bjww.a(this.a) != null) && (paramDownloadInfo != null) && (bjww.a(this.a).equals(paramDownloadInfo.d))) {
-      QLog.d("MiniAppProxyImpl", 1, "onDownloadCancel");
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
+    return null;
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public QIPCModule a()
   {
-    if ((bjww.a(this.a) != null) && (paramDownloadInfo != null) && (bjww.a(this.a).equals(paramDownloadInfo.d))) {
-      QLog.d("MiniAppProxyImpl", 1, "onDownloadError");
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if ((bjww.a(this.a) != null) && (paramDownloadInfo != null) && (bjww.a(this.a).equals(paramDownloadInfo.d)))
-    {
-      QLog.d("MiniAppProxyImpl", 1, "onDownloadFinish");
-      AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.13.1(this));
-      InnerAppReportDc4239.innerAppReport(bjww.a(this.a), null, "launchapp", "downloadappfinish", "qqdownload");
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((bjww.a(this.a) != null) && (paramDownloadInfo != null) && (bjww.a(this.a).equals(paramDownloadInfo.d)))
-    {
-      QLog.d("MiniAppProxyImpl", 1, "onDownloadPause");
-      InnerAppReportDc4239.innerAppReport(bjww.a(this.a), null, "launchapp", "downloadapppause", "qqdownload");
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((bjww.a(this.a) != null) && (paramDownloadInfo != null) && (bjww.a(this.a).equals(paramDownloadInfo.d))) {
-      QLog.d("MiniAppProxyImpl", 1, "onDownloadWait");
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

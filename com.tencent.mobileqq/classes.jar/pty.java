@@ -1,54 +1,38 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.ListView;
-import java.util.Map;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class pty
-  extends ptx
 {
-  public int a()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    return 3;
-  }
-  
-  public void a(View paramView, ListView paramListView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (ArticleInfo)a((int)paramLong);
-    if (pil.c(b())) {
-      if (!pha.a(paramAdapterView)) {
-        break label35;
-      }
-    }
-    label35:
-    for (paramInt = 4;; paramInt = 2)
+    String str = null;
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2;
+    if ((paramBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() != 0))
     {
-      pfk.a(paramInt);
-      return;
+      localObject1 = (qzd)paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0);
+      localObject2 = BaseApplicationImpl.getApplication().getResources();
+      str = ((qzd)localObject1).d;
     }
-  }
-  
-  public void a(Map<Long, rev> paramMap, boolean paramBoolean)
-  {
-    super.a(paramMap, paramBoolean);
-    if (pil.c(b()))
+    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131717310), new Object[] { bnrf.a(((qzd)localObject1).b) });; localObject1 = null)
     {
-      paramMap = a();
-      if (bmqa.w()) {
-        break label36;
-      }
-      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("participant_title_text", localObject1);
+      localJSONObject.put("id_participant_title", localObject2);
+      puo.a(paramBaseArticleInfo, localJSONObject, false);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("participant_pic_url", str);
+      localJSONObject.put("id_participant_imge", localObject1);
+      localJSONObject.put("id_view_cover", new JSONObject());
+      puo.b(paramBaseArticleInfo, localJSONObject);
+      puo.l(paramBaseArticleInfo, localJSONObject);
+      localJSONObject.put("style_ID", "ReadInjoy_single_topic_cell");
+      puo.a(localJSONObject, paramBaseArticleInfo);
+      return localJSONObject;
     }
-    label36:
-    while (paramMap == null) {
-      return;
-    }
-    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
   }
 }
 

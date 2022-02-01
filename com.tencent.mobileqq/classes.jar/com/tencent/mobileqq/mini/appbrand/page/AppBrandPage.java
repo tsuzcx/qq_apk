@@ -13,8 +13,8 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqck;
-import bgtn;
+import aqrn;
+import bhtq;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -93,12 +93,12 @@ public class AppBrandPage
   
   private int getDefaultNaviBarHeight()
   {
-    return bgtn.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
+    return bhtq.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
   }
   
   private int getDefaultTabBarHeight()
   {
-    return bgtn.b(54.0F);
+    return bhtq.b(54.0F);
   }
   
   private String getLoadedUrl(String paramString1, String paramString2)
@@ -256,14 +256,14 @@ public class AppBrandPage
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, DisplayUtil.getRealHeight(getContext())));
     this.centerLayout = new FrameLayout(getContext());
-    this.centerLayout.setId(2131365009);
+    this.centerLayout.setId(2131365056);
     this.centerLayout.setBackgroundColor(-1);
     this.tabView = new TabBarView(getContext());
-    this.tabView.setId(2131378184);
+    this.tabView.setId(2131378341);
     this.tabView.setOnTabItemClickListener(this.appBrandPageContainer);
     this.tabView.setVisibility(8);
     this.navBar = new NavigationBar(getContext());
-    this.navBar.setId(2131371561);
+    this.navBar.setId(2131371669);
     return localRelativeLayout;
   }
   
@@ -519,7 +519,7 @@ public class AppBrandPage
         {
           paramString1 = (AppBrandUI)this.appBrandRuntime.activity;
           localObject2 = paramString1.getFakeBrandUI().getAppUIProxy();
-          setServiceInfo((aqck)localObject2);
+          setServiceInfo((aqrn)localObject2);
           if ((localObject2 instanceof AppUIProxy)) {
             setPostTab(((AppUIProxy)localObject2).mPostTable);
           }

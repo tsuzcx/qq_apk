@@ -1,23 +1,32 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.QLog;
+
 public class awoo
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
+  private awoo(QQMusicPlayService paramQQMusicPlayService) {}
   
-  public awoo()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public String toString()
-  {
-    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
+    if (paramIntent != null)
+    {
+      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
+      {
+        if (QQMusicPlayService.a(this.a) == null) {
+          break label150;
+        }
+        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
+      }
+    }
+    return;
+    label150:
+    this.a.stopSelf();
   }
 }
 

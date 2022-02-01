@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import java.util.List;
-import plf;
-import pll;
+import pdy;
+import pee;
 
 public class DynamicChannelHeaderModule$3
   implements Runnable
 {
-  public DynamicChannelHeaderModule$3(pll parampll, int paramInt1, boolean paramBoolean, List paramList, int paramInt2) {}
+  public DynamicChannelHeaderModule$3(pee parampee, int paramInt1, boolean paramBoolean, List paramList, int paramInt2) {}
   
   public void run()
   {
-    plf.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b);
+    pdy.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

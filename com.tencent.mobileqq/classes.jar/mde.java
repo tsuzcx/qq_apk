@@ -1,87 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.FaceToolbar;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.QavPanel;
 import com.tencent.qphone.base.util.QLog;
 
 public class mde
-  implements mgs
+  implements Animation.AnimationListener
 {
-  public mde(FaceToolbar paramFaceToolbar) {}
+  public mde(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
   
-  public void a(long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
+    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
+    {
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
+    }
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    if (paramAnimation != null) {
+      paramAnimation.g(this.jdField_a_of_type_Long);
+    }
   }
   
-  public void a(long paramLong, mhm parammhm)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    boolean bool = false;
-    int j = 1;
-    if (AudioHelper.f()) {
-      QLog.w(FaceToolbar.TAG, 1, "onEffectClick, seq[" + paramLong + "], id[" + parammhm.jdField_a_of_type_JavaLangString + "]");
-    }
-    EffectSettingUi.a(this.a.mApp, paramLong);
-    Object localObject = this.a.mApp.a();
-    if (this.a.checkDimmStatus(parammhm)) {}
-    do
-    {
-      return;
-      localObject = ((VideoController)localObject).a(this.a.mApp.a().a().d) + "";
-      VoiceRecogTips.a(this.a.mApp, parammhm);
-      if (!parammhm.jdField_a_of_type_JavaLangString.equals("0")) {
-        break;
-      }
-      this.a.notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-      lgs.a(2, (String)localObject);
-      lgs.a(2);
-    } while (!this.a.mApp.a(13));
-    ((lhe)this.a.mApp.a(13)).a(paramLong, "onEffectClick2");
-    return;
-    AudioHelper.a(parammhm.jdField_a_of_type_JavaLangString, false);
-    if ((parammhm.jdField_a_of_type_Int == 1) && (!mcc.c) && (mcc.b == 4) && (TextUtils.equals(mcc.d, parammhm.jdField_a_of_type_JavaLangString)) && (this.a.mAdapterPendant.a() != parammhm)) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(FaceToolbar.TAG, 2, "onEffectClick_Check, type[" + parammhm.jdField_a_of_type_Int + "], sLastSenderFlag[" + mcc.c + "], sLastItemId[" + mcc.d + "], sLastFrom[" + mcc.b + "], id[" + parammhm.jdField_a_of_type_JavaLangString + "], isSender[" + bool + "], click[" + this.a.mAdapterPendant.a() + "], info[" + parammhm + "]");
-      }
-      new mcc(paramLong, parammhm.jdField_a_of_type_JavaLangString, bool, 1).a(this.a.mApp);
-      FaceItem localFaceItem = (FaceItem)this.a.mFaceManager.a(parammhm.jdField_a_of_type_JavaLangString);
-      int i = j;
-      if (localFaceItem != null)
-      {
-        if (!localFaceItem.getType().equalsIgnoreCase("face")) {
-          break label488;
-        }
-        i = j;
-      }
-      for (;;)
-      {
-        lgs.a(parammhm.jdField_a_of_type_JavaLangString, i, (String)localObject);
-        lgs.a(parammhm.jdField_a_of_type_JavaLangString, i);
-        return;
-        label488:
-        if (localFaceItem.getType().equalsIgnoreCase("pendant"))
-        {
-          i = 2;
-        }
-        else if (localFaceItem.getType().equalsIgnoreCase("voicesticker"))
-        {
-          i = 3;
-        }
-        else
-        {
-          i = j;
-          if (localFaceItem.getType().equalsIgnoreCase("creativecop")) {
-            i = 4;
-          }
-        }
-      }
-      bool = true;
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    if (paramAnimation != null) {
+      paramAnimation.g(this.jdField_a_of_type_Long);
     }
   }
 }

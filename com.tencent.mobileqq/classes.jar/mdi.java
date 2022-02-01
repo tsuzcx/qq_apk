@@ -1,21 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-final class mdi
+public class mdi
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e = true;
+  public mdi(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  private mdi(mdf parammdf) {}
+  public void onClick(View paramView)
+  {
+    QLog.d(this.a.d, 1, "quit double screen from reset clicker");
+    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
+      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

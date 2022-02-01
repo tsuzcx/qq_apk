@@ -1,38 +1,14 @@
-public class bihx
+final class bihx
+  extends biht
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  
-  public bihx() {}
-  
-  public bihx(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public void onDone(bihu parambihu)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    super.onDone(parambihu);
   }
   
-  public int a()
+  public boolean onStart(bihu parambihu)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return true;
   }
 }
 

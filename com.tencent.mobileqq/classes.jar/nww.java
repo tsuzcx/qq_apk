@@ -1,55 +1,48 @@
-import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
 import org.json.JSONObject;
 
-public class nww
+class nww
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  private nww(nws paramnws) {}
   
-  public static nww a(String paramString)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    synchronized (nws.a(this.a))
     {
-      nww localnww = new nww();
-      paramString = new JSONObject(paramString);
-      localnww.jdField_a_of_type_Int = paramString.optInt("bannerType");
-      localnww.jdField_a_of_type_JavaLangString = paramString.optString("iconUrl");
-      localnww.jdField_b_of_type_JavaLangString = paramString.optString("abstractText");
-      localnww.jdField_b_of_type_Int = paramString.optInt("jumpType");
-      localnww.c = paramString.optString("linkUrl");
-      localnww.d = paramString.optString("appid");
-      localnww.e = paramString.optString("scheme");
-      localnww.f = paramString.optString("packagename");
-      localnww.g = paramString.optString("androidDownloadUrl");
-      localnww.h = paramString.optString("iOSDownloadUrl");
-      localnww.i = paramString.optString("appName");
-      localnww.j = paramString.optString("apkUrl");
-      return localnww;
+      nws.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      nws.a(this.a, nws.a(this.a));
+      return;
     }
-    catch (Exception paramString) {}
-    return null;
   }
   
-  public boolean a()
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
-    while (((this.jdField_a_of_type_Int == 2) && (TextUtils.isEmpty(this.c))) || ((this.jdField_a_of_type_Int == 1) && ((TextUtils.isEmpty(this.f)) || (TextUtils.isEmpty(this.j))))) {
-      return false;
+    synchronized (nws.a(this.a))
+    {
+      nws.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = new File(nws.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(nws.a(paramString1)));
+          }
+          nws.a(this.a, nws.a(this.a));
+        }
+      }
+      catch (Exception paramString1)
+      {
+        label136:
+        break label136;
+      }
+      return;
     }
-    return true;
   }
 }
 

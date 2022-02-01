@@ -1,23 +1,18 @@
-import UserGrowth.stSimpleMetaPerson;
 import android.view.View;
-import android.widget.TextView;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
 class utl
-  implements bkhw
+  implements AdExposureChecker.ExposureCallback
 {
-  utl(utk paramutk, stSimpleMetaPerson paramstSimpleMetaPerson) {}
+  utl(uth paramuth) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    if (!nmd.a(utk.a(this.jdField_a_of_type_Utk)))
-    {
-      biti.a().a(2131719196);
-      return;
-    }
-    utk.a(this.jdField_a_of_type_Utk).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    utk.a(this.jdField_a_of_type_Utk).setText("关注");
-    utk.a(this.jdField_a_of_type_Utk).setVisibility(0);
+    FLog.e("AdExposureChecker", "onExposure");
+    usw.a(BaseApplicationImpl.getContext(), uth.a(this.a));
   }
 }
 

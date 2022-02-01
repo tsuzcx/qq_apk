@@ -1,6 +1,19 @@
-public abstract interface yvz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+
+public final class yvz
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public abstract void a();
+  public EditTakePhotoSource a(Parcel paramParcel)
+  {
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
+  }
 }
 
 

@@ -1,21 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager.1;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class tju
-  implements tjx
+  implements bdgt
 {
-  public tju(ChannelTopBanner paramChannelTopBanner) {}
+  public tju(NativeVueLoaderManager.1 param1) {}
   
-  public void a(int paramInt)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    QLog.e("NativeVueLoaderManager", 1, "preload NativeVue: " + paramInt);
   }
 }
 

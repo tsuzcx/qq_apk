@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.weiyun.utils.Utils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiBottomButton;
 
-public class bnau
+public final class bnau
+  implements Parcelable.Creator<WeishiBottomButton>
 {
-  public static ByteStringMicro a(String paramString)
+  public WeishiBottomButton a(Parcel paramParcel)
   {
-    return ByteStringMicro.copyFrom(Utils.hexStr2Bytes(paramString));
+    return new WeishiBottomButton(paramParcel);
   }
   
-  public static String a(ByteStringMicro paramByteStringMicro)
+  public WeishiBottomButton[] a(int paramInt)
   {
-    return Utils.bytes2HexStr(paramByteStringMicro.toByteArray());
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    int j = paramString.length();
-    byte[] arrayOfByte = new byte[j / 2];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
-      i += 2;
-    }
-    return arrayOfByte;
+    return new WeishiBottomButton[paramInt];
   }
 }
 

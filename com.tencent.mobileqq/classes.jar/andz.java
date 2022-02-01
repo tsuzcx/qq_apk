@@ -1,19 +1,43 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-public final class andz
-  implements Comparator<File>
+public class andz
 {
-  public int a(File paramFile1, File paramFile2)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public String a()
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.d == 0) {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
     }
-    return 0;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      }
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
+    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mActivityId=").append(this.b);
+    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mAIOType=").append(this.c);
+    localStringBuffer.append(", mShareTo=").append(this.d);
+    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mShareRet=").append(this.e);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

@@ -7,7 +7,7 @@ import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRReq;
 import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.ReqBody;
 
 public class ho
-  extends anii
+  extends anud
 {
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private hn jdField_a_of_type_Hn;
@@ -32,10 +32,10 @@ public class ho
     localIMMRReq.str_url.set(paramString);
     paramString = new oidb_0xa4d.ReqBody();
     paramString.msg_immr_req.set(localIMMRReq);
-    nir.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new hp(false, this.jdField_a_of_type_Hn), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
+    nkm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new hp(false, this.jdField_a_of_type_Hn), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
   
-  protected Class<? extends anil> observerClass()
+  protected Class<? extends anui> observerClass()
   {
     return null;
   }

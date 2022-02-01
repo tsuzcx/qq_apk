@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.redtouch;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -23,10 +23,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aoch;
-import baid;
-import bdzx;
-import bgmo;
+import aoot;
+import bbat;
+import beyq;
+import bhmq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -134,7 +134,7 @@ public class RedTouch
     paramImageView.setLayoutParams(localLayoutParams);
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130850388);
+    paramImageView.setImageResource(2130850400);
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 49;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -167,7 +167,7 @@ public class RedTouch
   
   private void a(int paramInt)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380207);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380393);
     if (localImageView != null) {
       localImageView.setVisibility(0);
     }
@@ -260,15 +260,14 @@ public class RedTouch
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
     localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredHeight();
-    localURLDrawableOptions.mFailedDrawable = bdzx.a;
-    localURLDrawableOptions.mLoadingDrawable = bdzx.a;
+    localURLDrawableOptions.mFailedDrawable = beyq.a;
+    localURLDrawableOptions.mLoadingDrawable = beyq.a;
     QLog.i("RedTouch", 1, "leba show waterMark url = " + paramString + " width = " + localURLDrawableOptions.mRequestWidth + " height = " + localURLDrawableOptions.mRequestHeight);
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramString.setTargetDensity(getResources().getDisplayMetrics().densityDpi);
     if (paramString.getStatus() == 2) {
       paramString.restartDownload();
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
   }
   
@@ -324,7 +323,7 @@ public class RedTouch
   
   private View b(String paramString)
   {
-    Object localObject = getResources().getDrawable(2130840264);
+    Object localObject = getResources().getDrawable(2130840274);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
@@ -360,7 +359,7 @@ public class RedTouch
     paramImageView.setPadding(a(i1), a(i1), a(i1), a(i1));
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130850388);
+    paramImageView.setImageResource(2130850400);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 53;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -608,16 +607,16 @@ public class RedTouch
           }
           if (paramString1 != null)
           {
-            paramString1 = aoch.a(paramString1, 1, 4, paramString2);
+            paramString1 = aoot.a(paramString1, 1, 4, paramString2);
             if (paramString1 != null) {
               localURLImageView.setImageDrawable(paramString1);
             } else {
-              localURLImageView.setImageBitmap(bgmo.a(true));
+              localURLImageView.setImageBitmap(bhmq.a(true));
             }
           }
           else
           {
-            localURLImageView.setImageBitmap(bgmo.a(true));
+            localURLImageView.setImageBitmap(bhmq.a(true));
           }
         }
         else
@@ -650,7 +649,7 @@ public class RedTouch
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     try
     {
-      localImageView.setImageResource(2130850388);
+      localImageView.setImageResource(2130850400);
       localImageView.setBackgroundColor(paramInt);
       a();
       localImageView.setLayoutParams(a());
@@ -693,7 +692,7 @@ public class RedTouch
           break;
         }
         localTextView.setIncludeFontPadding(false);
-        localTextView.setBackgroundResource(2130850394);
+        localTextView.setBackgroundResource(2130850406);
         if (this.x == 10) {
           localTextView.setTextSize(1, 17.0F);
         }
@@ -714,7 +713,7 @@ public class RedTouch
       {
         localTextView.setText(paramString.trim());
         continue;
-        localTextView.setBackgroundResource(2130850392);
+        localTextView.setBackgroundResource(2130850404);
         continue;
         label197:
         localTextView.setTextSize(13.0F);
@@ -877,7 +876,7 @@ public class RedTouch
     do
     {
       return;
-      Object localObject = getResources().getDrawable(2130840264);
+      Object localObject = getResources().getDrawable(2130840274);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
@@ -918,29 +917,29 @@ public class RedTouch
       {
         this.jdField_g_of_type_Boolean = paramBoolean;
         Object localObject2 = (ViewGroup)getParent();
-        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131378613);
+        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131378772);
         if ((localObject1 != null) && ((localObject2 instanceof LinearLayout)))
         {
           removeView(this.jdField_a_of_type_AndroidViewView);
           ((ViewGroup)localObject2).removeAllViews();
-          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298730));
+          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298743));
           RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
           ((ViewGroup)localObject2).addView(localRelativeLayout, localLayoutParams);
-          localObject2 = new RelativeLayout.LayoutParams(afur.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+          localObject2 = new RelativeLayout.LayoutParams(agej.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
           ((RelativeLayout.LayoutParams)localObject2).addRule(9);
           ((RelativeLayout.LayoutParams)localObject2).addRule(15);
           localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject2);
           localObject2 = new RelativeLayout.LayoutParams(((TextView)localObject1).getLayoutParams());
           ((RelativeLayout.LayoutParams)localObject2).addRule(1, this.jdField_a_of_type_AndroidViewView.getId());
-          ((RelativeLayout.LayoutParams)localObject2).leftMargin = afur.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((RelativeLayout.LayoutParams)localObject2).leftMargin = agej.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           localObject1 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject1).addRule(1, this.jdField_a_of_type_AndroidViewView.getId());
           ((RelativeLayout.LayoutParams)localObject1).addRule(6, this.jdField_a_of_type_AndroidViewView.getId());
-          ((RelativeLayout.LayoutParams)localObject1).leftMargin = afur.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ((RelativeLayout.LayoutParams)localObject1).topMargin = afur.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = agej.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((RelativeLayout.LayoutParams)localObject1).topMargin = agej.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849747);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849758);
           localRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
           return;
         }
@@ -999,12 +998,13 @@ public class RedTouch
       QLog.i("RedTouch", 1, "leba show waterMark", localException);
       return;
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     if (this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredHeight() > 0)
     {
       a(localException);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new baid(this, localException));
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new bbat(this, localException));
   }
   
   public void b(BusinessInfoCheckUpdate.AppInfo paramAppInfo)

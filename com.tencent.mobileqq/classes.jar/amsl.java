@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
-
-public class amsl
-  implements DialogInterface.OnClickListener
+class amsl
 {
-  public amsl(CmGameSubRscHandler.2 param2) {}
+  public int a;
+  public long a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(null);
-    }
-  }
+  amsl(amsk paramamsk) {}
 }
 
 

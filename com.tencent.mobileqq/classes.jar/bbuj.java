@@ -1,17 +1,41 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.util.PAOfflineSearchManager.1.1;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bbuj
-  implements nkl
+  implements TextWatcher
 {
-  public void loaded(String paramString, int paramInt)
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
+  
+  public bbuj(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramInt == 0) {
-      ThreadManager.post(new PAOfflineSearchManager.1.1(this), 0, null, true);
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (behh.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690196, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
+    if ((paramEditable == null) || (paramEditable.length() == 0))
+    {
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
+      return;
+    }
+    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
   }
   
-  public void progress(int paramInt) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
+  }
 }
 
 

@@ -1,61 +1,27 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+
 public class bmjc
+  extends apap
 {
-  private static int jdField_a_of_type_Int;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static bmjc b;
-  private bmjc jdField_a_of_type_Bmjc;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
-  
-  public static bmjc a()
+  public bmjc(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (b != null)
-      {
-        bmjc localbmjc = b;
-        b = localbmjc.jdField_a_of_type_Bmjc;
-        localbmjc.jdField_a_of_type_Bmjc = null;
-        jdField_a_of_type_Int -= 1;
-        return localbmjc;
-      }
-      return new bmjc();
-    }
+    super(paramQQAppInterface, paramProxyManager);
   }
   
-  private void b()
+  protected void a()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+    bmja.a().c();
   }
   
-  public bmjc a(Object paramObject)
+  protected void b()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
-    return this;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Int < 50)
-      {
-        this.jdField_a_of_type_Bmjc = b;
-        b = this;
-        jdField_a_of_type_Int += 1;
-      }
-      return;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    bmja.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmjc
  * JD-Core Version:    0.7.0.1
  */

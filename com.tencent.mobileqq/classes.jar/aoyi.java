@@ -1,78 +1,33 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aoyi
-  implements aoyg
+public class aoyi
+  extends aoxh
 {
-  private IBinder a;
-  
-  aoyi(IBinder paramIBinder)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    paramQQAppInterface = new aoyf(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qstory";
+    paramQQAppInterface.c = "opencontent";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    finally
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    return paramQQAppInterface;
   }
 }
 

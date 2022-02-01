@@ -1,98 +1,35 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-
-public class alea
-  extends AbsRecentStatus
+public abstract class alea
+  extends biht
 {
-  public int[] declareStatus()
+  private biht a;
+  
+  public alea(biht parambiht)
   {
-    return new int[] { 2, 3, 1, 5 };
+    this.a = parambiht;
   }
   
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void onDoneFile(bihu parambihu)
   {
-    return true;
-  }
-  
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
-  {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
-    int k;
-    long l;
-    int m;
-    Object localObject;
-    for (;;)
-    {
-      return false;
-      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
-      k = paramRecentBaseData.getRecentUserType();
-      if ((k == 3000) || (k == 1)) {
-        try
-        {
-          l = Long.parseLong(paramRecentBaseData.getRecentUserUin());
-          m = mue.b(k);
-          if (paramIMCoreAppRuntime.a().a(m, l) > 0L) {
-            if (paramIMCoreAppRuntime.a().a(m, l))
-            {
-              paramRecentBaseData.mStatus = 2;
-              if ((k != 0) || (!paramIMCoreAppRuntime.a().d(paramRecentBaseData.getRecentUserUin()))) {
-                continue;
-              }
-              paramRecentBaseData.mStatus = 5;
-              return false;
-            }
-          }
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          for (;;)
-          {
-            l = 0L;
-            continue;
-            paramRecentBaseData.mStatus = 3;
-          }
-          localObject = paramIMCoreAppRuntime.a().a(l, 2);
-          if (localObject == null) {}
-        }
-      }
-    }
-    for (int i = ((lmm)localObject).a + 0;; i = 0)
-    {
-      localObject = paramIMCoreAppRuntime.a().a(l, 10);
-      int j = i;
-      if (localObject != null) {
-        j = i + ((lmm)localObject).a;
-      }
-      if (j <= 0) {
-        break;
-      }
-      if (paramIMCoreAppRuntime.a().a(m, l))
-      {
-        paramRecentBaseData.mStatus = 2;
-        break;
-      }
-      paramRecentBaseData.mStatus = 3;
-      break;
-      if ((!paramIMCoreAppRuntime.d()) || ((paramIMCoreAppRuntime.a().e() != 1) && (paramIMCoreAppRuntime.a().e() != 2))) {
-        break;
-      }
-      i = paramIMCoreAppRuntime.a().f();
-      localObject = paramIMCoreAppRuntime.a().c();
-      String str = paramIMCoreAppRuntime.a().d();
-      if ((k != i) || ((!paramRecentBaseData.getRecentUserUin().equals(localObject)) && (!paramRecentBaseData.getRecentUserUin().equals(str)))) {
-        break;
-      }
-      paramRecentBaseData.mStatus = 1;
-      break;
+    super.onDoneFile(parambihu);
+    if (this.a != null) {
+      this.a.onDoneFile(parambihu);
     }
   }
   
-  public int priority()
+  public void onProgress(bihu parambihu)
   {
-    return AbsRecentStatus.PRIORITY_VIDEO;
+    super.onProgress(parambihu);
+    if (this.a != null) {
+      this.a.onProgress(parambihu);
+    }
+  }
+  
+  public boolean onStart(bihu parambihu)
+  {
+    if (this.a != null) {
+      this.a.onStart(parambihu);
+    }
+    return super.onStart(parambihu);
   }
 }
 

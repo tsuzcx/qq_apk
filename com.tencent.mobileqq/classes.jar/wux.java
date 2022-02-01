@@ -1,47 +1,21 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class wux
-  extends wva
 {
-  public wux(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561744);
-  }
+  @zoq(a="unionID")
+  public String a;
+  @zoq(a="feedID")
+  public String b;
+  @zoq(a="vid")
+  public String c;
+  @zoq(a="fwReason")
+  public String d;
+  @zoq(a="isNewFw")
+  public String e;
+  public String f;
+  public String g;
   
-  public void a(wrs paramwrs)
+  public boolean a()
   {
-    yqp.a("FriendNodeViewHolder", "bindData %s", paramwrs);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((localObject instanceof QQAppInterface))
-    {
-      localQQAppInterface = (QQAppInterface)localObject;
-      str = String.valueOf(paramwrs.b);
-      b(zlu.b(paramwrs.g));
-      if (!wui.h) {
-        break label180;
-      }
-    }
-    label180:
-    for (localObject = bglf.m(localQQAppInterface, str);; localObject = str)
-    {
-      this.a.setNodeName((String)localObject, false);
-      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
-      if (QLog.isColorLevel())
-      {
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramwrs.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramwrs.a) });
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramwrs) });
-      }
-      super.a(paramwrs);
-      return;
-    }
+    return "1".equals(this.e);
   }
 }
 

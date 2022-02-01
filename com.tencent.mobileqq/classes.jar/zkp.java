@@ -1,55 +1,39 @@
-public class zkp
+import com.tencent.qphone.base.util.QLog;
+
+class zkp
+  implements bbmo
 {
-  public static String a(int paramInt)
+  zkp(zko paramzko) {}
+  
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    for (;;)
+    synchronized (zko.a(this.a))
     {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label69;
-        }
-        i = localObject.length;
+      zko.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(zko.a, 2, "onEncodeFinish, filePath= " + paramString);
       }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append(localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label69:
-        paramInt = 2;
-      }
+      zko.a(this.a).notifyAll();
+      return;
     }
   }
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public void a_(int paramInt, Throwable arg2)
   {
-    if (paramLong <= 0L)
+    synchronized (zko.a(this.a))
     {
-      zkb.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
+      zko.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(zko.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      zko.a(this.a).notifyAll();
       return;
     }
-    zkq localzkq = new zkq();
-    localzkq.jdField_b_of_type_JavaLangString = paramString;
-    localzkq.c = paramInt;
-    localzkq.jdField_b_of_type_Long = paramLong;
-    localzkq.d = 1;
-    wlb.a().a(localzkq, null);
   }
+  
+  public void b() {}
 }
 
 

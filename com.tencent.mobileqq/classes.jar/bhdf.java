@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
-import java.lang.ref.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-public abstract interface bhdf
+public class bhdf
 {
-  public abstract void cancelDwonloadItem(long paramLong, String paramString);
+  public float a;
+  public int a;
+  public String a;
+  public String b;
   
-  public abstract void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2);
+  public bhdf(bhde parambhde, String paramString, float paramFloat)
+  {
+    this.b = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
+  }
   
-  public abstract void downloadItem(long paramLong, String paramString1, String paramString2);
-  
-  public abstract void onDestory();
-  
-  public abstract void onPbMsgRecv(int paramInt, String paramString1, String paramString2);
-  
-  public abstract void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback);
-  
-  public abstract void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference);
-  
-  public abstract void startUpdateAllItem();
+  public JSONArray a()
+  {
+    JSONArray localJSONArray = new JSONArray();
+    try
+    {
+      localJSONArray.put(this.b);
+      localJSONArray.put(this.jdField_a_of_type_Float);
+      return localJSONArray;
+    }
+    catch (JSONException localJSONException) {}
+    return localJSONArray;
+  }
 }
 
 

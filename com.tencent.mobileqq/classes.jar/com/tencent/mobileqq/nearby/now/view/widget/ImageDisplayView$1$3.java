@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
 import android.graphics.Bitmap;
-import axmx;
+import ayfr;
 
 class ImageDisplayView$1$3
   implements Runnable

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.minigame.report;
 
-import com.tencent.mobileqq.triton.sdk.statics.TraceStatistics.Record;
+import com.tencent.mobileqq.triton.statistic.TraceStatistics.Record;
 import java.util.Comparator;
 import kotlin.Metadata;
 import kotlin.comparisons.ComparisonsKt;
@@ -11,7 +11,7 @@ public final class MiniGameBeaconReport$reportJankTraceRecords$1$$special$$inlin
 {
   public final int compare(T paramT1, T paramT2)
   {
-    return ComparisonsKt.compareValues((Comparable)Long.valueOf(((TraceStatistics.Record)paramT2).timeUs), (Comparable)Long.valueOf(((TraceStatistics.Record)paramT1).timeUs));
+    return ComparisonsKt.compareValues((Comparable)Long.valueOf(((TraceStatistics.Record)paramT2).getTimeUs()), (Comparable)Long.valueOf(((TraceStatistics.Record)paramT1).getTimeUs()));
   }
 }
 

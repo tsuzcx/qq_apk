@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
-
-public class auww
+public abstract interface auww
 {
-  public void a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(auxd.a, 2, "onPreAddedMsg");
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 

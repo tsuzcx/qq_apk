@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
-class aszm
+public class aszm
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  long jdField_a_of_type_Long = 0L;
-  ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
-  String jdField_a_of_type_JavaLangString = null;
-  List<String> jdField_a_of_type_JavaUtilList = null;
-  short jdField_a_of_type_Short = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  List<String> jdField_b_of_type_JavaUtilList = null;
-  short jdField_b_of_type_Short = 0;
-  String c = null;
-  String d = null;
-  String e = null;
-  String f = null;
-  String g = null;
-  String h = null;
-  String i = null;
+  public aszm(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
   
-  private aszm(aszj paramaszj) {}
+  public void onGlobalLayout()
+  {
+    Object localObject = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
+    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
+    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszm
  * JD-Core Version:    0.7.0.1
  */

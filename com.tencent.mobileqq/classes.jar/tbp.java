@@ -1,345 +1,370 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
+import org.jetbrains.annotations.NotNull;
 
 public class tbp
 {
-  private static Bundle a(sey paramsey, BaseArticleInfo paramBaseArticleInfo)
+  static CharSequence a(int paramInt, BaseArticleInfo paramBaseArticleInfo, pql parampql)
   {
-    Bundle localBundle1 = new Bundle();
-    label107:
-    boolean bool;
-    label278:
-    label288:
+    if (paramBaseArticleInfo == null) {
+      return "";
+    }
+    Object localObject2;
+    Object localObject1;
     int i;
-    label372:
-    Bundle localBundle2;
-    if (paramsey.jdField_f_of_type_Int == 1)
+    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null))
     {
-      localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", paramBaseArticleInfo.mSubscribeID);
-      localBundle1.putString("VIDEO_PUB_ACCOUNT_NAME", paramBaseArticleInfo.mSubscribeName);
-      if (paramsey.jdField_f_of_type_Int != 6) {
-        break label878;
-      }
-      localBundle1.putString("VIDEO_H5_URL", ((rhu)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaUtilArrayList.get(0)).h);
-      localBundle1.putString("VIDEO_CREATE_TIME", pgz.a(((rhu)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_e_of_type_Int, true));
-      localBundle1.putString("VIDEO_TIME", String.valueOf(paramsey.jdField_b_of_type_Int));
-      localBundle1.putString("VIDEO_WIDTH", String.valueOf(paramsey.jdField_c_of_type_Int));
-      localBundle1.putString("VIDEO_HEIGHT", String.valueOf(paramsey.jdField_d_of_type_Int));
-      localBundle1.putString("VIDEO_VID", paramsey.jdField_c_of_type_JavaLangString);
-      localBundle1.putString("VIDEO_COVER", paramsey.jdField_b_of_type_JavaLangString);
-      localBundle1.putString("VIDEO_TITLE", paramBaseArticleInfo.mTitle);
-      localBundle1.putString("VIDEO_SUMMARY", paramBaseArticleInfo.mTitle);
-      if (paramsey.jdField_f_of_type_Int != 6) {
-        break label907;
-      }
-      localBundle1.putString("VIDEO_ARTICLE_ID", ((rhu)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_g_of_type_JavaLangString);
-      localBundle1.putLong("VIDEO_FEED_ID", paramBaseArticleInfo.mFeedId);
-      localBundle1.putInt("VIDEO_FEED_TYPE", paramBaseArticleInfo.mFeedType);
-      localBundle1.putString("VIDEO_TITLE", ((rhu)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_e_of_type_JavaLangString);
-      if (paramsey.jdField_f_of_type_Int != 1) {
-        break label932;
-      }
-      bool = true;
-      localBundle1.putBoolean("VIDEO_IS_FROM_PUBLIC_ACCOUNT", bool);
-      localBundle1.putString("VIDEO_RECOMMEND_REASON", paramBaseArticleInfo.mRecommentdReason);
-      localBundle1.putBoolean("isFromKandian", true);
-      localBundle1.putLong("channelID", paramBaseArticleInfo.mChannelID);
-      localBundle1.putLong("algorithmID", paramBaseArticleInfo.mAlgorithmID);
-      localBundle1.putString("innderId", paramBaseArticleInfo.innerUniqueID);
-      localBundle1.putLong("strategyId", paramBaseArticleInfo.mStrategyId);
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleFriendLikeText)) {
-        break label937;
-      }
-      i = 0;
-      localBundle1.putInt("interactionType", i);
-      localBundle1.putString("VIDEO_THIRD_ICON", paramsey.jdField_d_of_type_JavaLangString);
-      localBundle1.putString("VIDEO_THIRD_NAME", paramsey.jdField_e_of_type_JavaLangString);
-      localBundle1.putString("VIDEO_THIRD_ACTION", paramsey.jdField_f_of_type_JavaLangString);
-      localBundle1.putString("VIDEO_THIRD_URL", paramsey.jdField_g_of_type_JavaLangString);
-      localBundle1.putInt("VIDEO_ARTICLE_BUSITYPE", paramsey.jdField_f_of_type_Int);
-      localBundle2 = new Bundle();
-      localBundle2.putString("VINFO", paramsey.jdField_c_of_type_JavaLangString);
-      localBundle2.putString("TINFO", paramsey.jdField_c_of_type_JavaLangString);
-      localBundle2.putInt("PREVIEW_VIDEO_TIME", paramsey.jdField_b_of_type_Int);
-      localBundle2.putInt("PREVIEW_START_POSI", sfa.a(0, paramsey.jdField_b_of_type_Int));
-      localBundle2.putInt("PREVIEW_VIDEO_WIDTH", paramsey.jdField_c_of_type_Int);
-      localBundle2.putInt("PREVIEW_VIDEO_HEIGHT", paramsey.jdField_d_of_type_Int);
-      localBundle2.putInt("FULL_VIDEO_TIME", paramsey.jdField_b_of_type_Int);
-      localBundle2.putString("source_puin", paramBaseArticleInfo.mSubscribeID);
-      if (paramsey.jdField_f_of_type_Int != 1) {
-        break label942;
-      }
-      localBundle2.putString("ACCOUNT_UIN", paramBaseArticleInfo.mSubscribeID);
-      localBundle2.putString("ACCOUNT_NAME", paramBaseArticleInfo.mSubscribeName);
-    }
-    for (;;)
-    {
-      localBundle2.putInt("TYPE", paramsey.jdField_f_of_type_Int);
-      localBundle2.putString("ARTICLE_ID", paramBaseArticleInfo.innerUniqueID);
-      localBundle2.putInt("layout_item", 5);
-      localBundle2.putBoolean("video_url_load", false);
-      localBundle2.putString("image_url_remote", paramsey.jdField_b_of_type_JavaLangString);
-      localBundle2.putString("detail_url", paramBaseArticleInfo.mArticleContentUrl);
-      localBundle2.putString("video_url", paramsey.jdField_c_of_type_JavaLangString);
-      localBundle2.putString("title", paramBaseArticleInfo.mTitle);
-      localBundle2.putString("req_create_time", pgz.a(paramBaseArticleInfo.mTime));
-      localBundle2.putString("brief_key", paramBaseArticleInfo.mTitle);
-      localBundle2.putInt("req_type", 140);
-      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)bcwd.a(localBundle2)).getBytes());
-      return localBundle1;
-      if (paramsey.jdField_f_of_type_Int == 6)
+      localObject2 = paramBaseArticleInfo.mSocialFeedInfo;
+      if ((((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr != null) && (((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr.a != null) && (((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr.a.size() > 0) && ((((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr.a.size() != 1) || ((!TextUtils.isEmpty(((SocializeFeedsInfo.BiuCommentInfo)((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr.a.get(0)).jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr.a.get(0)).jdField_a_of_type_JavaLangString, ":")) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr.a.get(0)).jdField_a_of_type_JavaLangString, "：")))))
       {
-        if (snh.g(paramBaseArticleInfo)) {
-          localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", "" + paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rha.a);
+        localObject1 = new SpannableStringBuilder();
+        localObject2 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_Qxr.a(paramInt, (ArticleInfo)paramBaseArticleInfo, "5", parampql);
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2);
         }
-        for (;;)
-        {
-          localBundle1.putString("VIDEO_PUB_ACCOUNT_NAME", paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaLangString);
-          if (snh.q((ArticleInfo)paramBaseArticleInfo)) {
-            break;
-          }
-          localBundle1.putString("VIDEO_URL", ((rhu)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString);
-          break;
-          localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", "" + paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.a);
-        }
-      }
-      localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", paramBaseArticleInfo.thirdUin);
-      localBundle1.putString("VIDEO_PUB_ACCOUNT_NAME", paramBaseArticleInfo.thirdUinName);
-      break;
-      label878:
-      localBundle1.putString("VIDEO_H5_URL", paramBaseArticleInfo.mArticleContentUrl);
-      localBundle1.putString("VIDEO_CREATE_TIME", pgz.a(paramBaseArticleInfo.mTime, true));
-      break label107;
-      label907:
-      localBundle1.putString("VIDEO_ARTICLE_ID", paramBaseArticleInfo.innerUniqueID);
-      localBundle1.putString("VIDEO_TITLE", paramBaseArticleInfo.mTitle);
-      break label278;
-      label932:
-      bool = false;
-      break label288;
-      label937:
-      i = 1;
-      break label372;
-      label942:
-      localBundle2.putString("ACCOUNT_UIN", paramBaseArticleInfo.thirdUin);
-      localBundle2.putString("ACCOUNT_NAME", paramBaseArticleInfo.thirdUinName);
-    }
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    String str = "https://puui.qpic.cn/qqvideo_ori/0/" + paramString1 + "_496_280/0";
-    pha.a(paramString1, paramString3, paramString2, paramString4, new tbq());
-    return str;
-  }
-  
-  public static void a(Activity paramActivity, ArticleInfo paramArticleInfo)
-  {
-    sey localsey = new sey();
-    localsey.jdField_c_of_type_Long = paramArticleInfo.mArticleID;
-    localsey.jdField_e_of_type_Long = paramArticleInfo.mXGFileSize;
-    localsey.h = paramArticleInfo.thirdUin;
-    localsey.i = paramArticleInfo.thirdUinName;
-    localsey.k = paramArticleInfo.mSubscribeID;
-    localsey.jdField_g_of_type_Int = paramArticleInfo.mStrategyId;
-    localsey.jdField_g_of_type_Long = paramArticleInfo.mAlgorithmID;
-    rgc localrgc = new rgc();
-    localrgc.jdField_a_of_type_JavaLangLong = Long.valueOf(paramArticleInfo.mArticleID);
-    localrgc.jdField_a_of_type_JavaLangString = paramArticleInfo.innerUniqueID;
-    localsey.jdField_c_of_type_JavaLangString = paramArticleInfo.mVideoVid;
-    localsey.jdField_f_of_type_Int = paramArticleInfo.busiType;
-    localsey.jdField_c_of_type_Int = paramArticleInfo.mVideoJsonWidth;
-    localsey.jdField_d_of_type_Int = paramArticleInfo.mVideoJsonHeight;
-    localrgc.jdField_a_of_type_Int = paramArticleInfo.busiType;
-    localsey.jdField_b_of_type_Int = paramArticleInfo.mVideoDuration;
-    if (paramArticleInfo.mVideoCoverUrl == null) {}
-    for (String str = null;; str = paramArticleInfo.mVideoCoverUrl.getFile())
-    {
-      localsey.jdField_b_of_type_JavaLangString = str;
-      localsey.j = paramArticleInfo.innerUniqueID;
-      localrgc.jdField_b_of_type_JavaLangString = paramArticleInfo.mVideoVid;
-      localsey.a = localrgc;
-      localsey.jdField_d_of_type_JavaLangString = paramArticleInfo.thirdIcon;
-      localsey.jdField_e_of_type_JavaLangString = paramArticleInfo.thirdName;
-      localsey.jdField_f_of_type_JavaLangString = paramArticleInfo.thirdAction;
-      new rgi().jdField_a_of_type_Int = 409409;
-      a(paramActivity, localsey, paramArticleInfo);
-      return;
-    }
-  }
-  
-  public static void a(Activity paramActivity, sey paramsey, BaseArticleInfo paramBaseArticleInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "open full play activity, articleID : " + paramBaseArticleInfo.mArticleID + ", playPosition : " + paramsey.jdField_d_of_type_Long + ",vid : " + paramsey.jdField_c_of_type_JavaLangString);
-    }
-    Bundle localBundle = a(paramsey, paramBaseArticleInfo);
-    if (paramsey.jdField_f_of_type_Int == 2)
-    {
-      localObject = slm.a(paramsey.jdField_c_of_type_JavaLangString);
-      if (localObject != null)
-      {
-        localBundle.putString("VIDEO_THIRD_VID_URL", ((slr)localObject).jdField_a_of_type_JavaLangString);
-        localBundle.putLong("VIDEO_THIRD_VID_URL_TIME", ((slr)localObject).b);
-      }
-    }
-    localBundle.putBoolean("VIDEO_LIST_SCROLL_EXIT", true);
-    localBundle.putInt("REPORT_VIDEO_FEEDS_JUMP_FROM", 3);
-    localBundle.putInt("VIDEO_FROM_TYPE", 10);
-    Object localObject = new Intent(paramActivity, VideoFeedsPlayActivity.class);
-    ((Intent)localObject).addFlags(536870912);
-    if (BaseApplicationImpl.sProcessId != 1)
-    {
-      localBundle.putBoolean("param_needSmooth", sgc.a().d());
-      sgc.a().e(true);
-      localBundle.putBoolean("param_needAlertInXg", rvr.d());
-    }
-    if (paramsey.jdField_f_of_type_Int == 6) {
-      localBundle.putParcelable("VIDEO_ARTICLE_INFO_FOR_BIU", (ArticleInfo)paramBaseArticleInfo);
-    }
-    ((Intent)localObject).putExtras(localBundle);
-    int i = 9091;
-    if (1 == paramBaseArticleInfo.mVideoType) {
-      i = 1;
-    }
-    for (;;)
-    {
-      localBundle.putString("KEY_VIDEO_JSON_LIST", paramBaseArticleInfo.mJsonVideoList);
-      int j = 0;
-      try
-      {
-        boolean bool = piv.a(localBundle.getInt("VIDEO_FROM_TYPE", -1), Integer.valueOf(localBundle.getString("VIDEO_WIDTH")).intValue(), Integer.valueOf(localBundle.getString("VIDEO_HEIGHT")).intValue(), Integer.valueOf(localBundle.getString("VIDEO_TIME")).intValue());
-        j = bool;
-      }
-      catch (Exception paramsey)
-      {
-        label321:
-        break label321;
-      }
-      if (j == 0) {
-        break;
-      }
-      paramsey = new Intent();
-      paramsey.putExtras(localBundle);
-      sia.a(paramActivity, paramsey, i);
-      paramActivity.overridePendingTransition(2130772011, 2130772012);
-      return;
-      if (0L == paramBaseArticleInfo.mChannelID) {
         i = 1;
       }
     }
-    paramActivity.startActivityForResult((Intent)localObject, i);
-    paramActivity.overridePendingTransition(2130772068, 2130772069);
-  }
-  
-  public static void a(List<BaseData> paramList, String paramString, int paramInt1, int paramInt2)
-  {
-    if (paramList == null) {}
-    Object localObject;
-    do
+    for (;;)
     {
-      do
+      parampql = a(paramInt, (CharSequence)localObject1, paramBaseArticleInfo, parampql);
+      QLog.d("Utils", 2, "makeBiuComment: " + paramBaseArticleInfo.rawkey + " ssb: " + parampql + " condition flag: " + i + ", linkTextColor " + paramInt);
+      return parampql;
+      if (!TextUtils.isEmpty(((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString))
       {
-        do
-        {
-          ;;
-          while (TextUtils.isEmpty(paramString)) {}
-          paramList = paramList.iterator();
-        } while (!paramList.hasNext());
-        localObject = (BaseData)paramList.next();
-      } while (!(localObject instanceof ProteusItemData));
-      localObject = (ProteusItemData)localObject;
-    } while (((ProteusItemData)localObject).w != 3);
-    a(((ProteusItemData)localObject).c, paramString, paramInt1, paramInt2);
-  }
-  
-  public static void a(JSONObject paramJSONObject, Activity paramActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    try
-    {
-      int i = paramJSONObject.getInt("mVideoJsonWidth");
-      int j = paramJSONObject.getInt("mVideoJsonHeight");
-      String str = paramJSONObject.getString("mVideoVid");
-      int k = paramJSONObject.getInt("busiType");
-      paramJSONObject = paramJSONObject.getString("mVideoCoverUrl");
-      ArticleInfo localArticleInfo = new ArticleInfo();
-      localArticleInfo.mVideoJsonWidth = i;
-      localArticleInfo.mVideoJsonHeight = j;
-      localArticleInfo.mVideoVid = str;
-      localArticleInfo.busiType = k;
-      localArticleInfo.mVideoCoverUrl = pha.a(paramJSONObject);
-      localArticleInfo.mArticleContentUrl = paramArticleInfo.mArticleContentUrl;
-      localArticleInfo.mTitle = paramArticleInfo.mTitle;
-      if (paramFastWebArticleInfo.c()) {}
-      for (paramJSONObject = "2";; paramJSONObject = "1")
-      {
-        paramJSONObject = pha.a(paramActivity, paramArticleInfo, 0, paramJSONObject);
-        paramJSONObject.put("vedio_rowkey", str);
-        tcc.a(paramArticleInfo, "0X800898F", paramJSONObject.toString());
-        a(paramActivity, localArticleInfo);
-        return;
+        if (((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString.length() >= 100) {
+          ((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString = (((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString.substring(0, 99) + '…');
+        }
+        localObject1 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString;
+        i = 1;
       }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("FastWebVideoItemUtils", 1, "handleVideoClick error! msg=" + paramJSONObject);
-    }
-  }
-  
-  private static void a(JSONObject paramJSONObject, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    try
-    {
-      paramJSONObject.put("mVideoJsonWidth", paramInt1);
-      paramJSONObject.put("mVideoJsonHeight", paramInt2);
-      paramJSONObject.put("mVideoCoverUrl", paramString);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("FastWebVideoItemUtils", 1, "updateVideoInfo error! msg=" + paramJSONObject);
+      else
+      {
+        i = 0;
+        localObject1 = "";
+      }
     }
   }
   
-  public static void a(JSONObject paramJSONObject, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3)
+  public static CharSequence a(int paramInt, CharSequence paramCharSequence, long paramLong, BaseArticleInfo paramBaseArticleInfo, pql parampql)
   {
-    try
+    Object localObject = new StringBuilder().append(ReadInJoyUserInfoModule.a(paramLong, parampql, ReadInJoyUserInfoModule.a()));
+    if (!TextUtils.isEmpty(paramBaseArticleInfo.articleViewModel.jdField_a_of_type_JavaLangString)) {}
+    for (parampql = " ";; parampql = "：")
     {
-      paramJSONObject.put("articleImageUrl", paramString1);
-      paramJSONObject.put("play_icon", "video_play_icon");
-      paramJSONObject.put("style_ID", "ReadInjoy_article_video_cell");
-      paramJSONObject.put("lineup", "0");
-      paramJSONObject.put("vedio_rowkey", paramString2);
-      paramJSONObject.put("mVideoVid", paramString2);
-      paramJSONObject.put("busiType", paramInt3);
-      a(paramJSONObject, paramString1, paramInt1, paramInt2);
-      return;
+      parampql = parampql;
+      localObject = new SpannableStringBuilder(parampql);
+      ((SpannableStringBuilder)localObject).append(paramCharSequence);
+      ((SpannableStringBuilder)localObject).setSpan(new sws(paramLong, "2", (ArticleInfo)paramBaseArticleInfo, paramInt), 0, parampql.length(), 18);
+      QLog.d("Utils", 1, "addPreAuthor: " + localObject + ", linkTextColor: " + paramInt);
+      return localObject;
     }
-    catch (Exception paramJSONObject)
+  }
+  
+  public static CharSequence a(int paramInt, CharSequence paramCharSequence, BaseArticleInfo paramBaseArticleInfo, pql parampql)
+  {
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramBaseArticleInfo != null)
     {
-      QLog.d("FastWebVideoItemUtils", 1, "insertDynamicData error! msg=" + paramJSONObject);
+      localCharSequence = paramCharSequence;
+      if (paramBaseArticleInfo.articleViewModel != null)
+      {
+        if (TextUtils.isEmpty(paramBaseArticleInfo.articleViewModel.jdField_a_of_type_JavaLangString)) {
+          break label113;
+        }
+        paramCharSequence = a(paramCharSequence, paramBaseArticleInfo.articleViewModel.jdField_a_of_type_JavaLangString);
+      }
     }
+    label113:
+    for (;;)
+    {
+      localCharSequence = paramCharSequence;
+      if (paramBaseArticleInfo.articleViewModel.jdField_a_of_type_Long != 0L) {
+        localCharSequence = a(paramInt, paramCharSequence, paramBaseArticleInfo.articleViewModel.jdField_a_of_type_Long, paramBaseArticleInfo, parampql);
+      }
+      if (paramBaseArticleInfo.articleViewModel.jdField_a_of_type_Int != 0) {
+        localCharSequence = a(localCharSequence, paramBaseArticleInfo.articleViewModel.jdField_a_of_type_Int);
+      }
+      for (;;)
+      {
+        return new begp(localCharSequence, 3, 16);
+      }
+    }
+  }
+  
+  @NotNull
+  private static CharSequence a(ArticleInfo paramArticleInfo)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString != null))
+    {
+      localSpannableStringBuilder.append(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.ui", 2, "Comment String: " + paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString);
+      }
+    }
+    while (paramArticleInfo.mTitle == null) {
+      return localSpannableStringBuilder;
+    }
+    localSpannableStringBuilder.append(paramArticleInfo.mTitle);
+    return localSpannableStringBuilder;
+  }
+  
+  private static CharSequence a(ArticleInfo paramArticleInfo, CharSequence paramCharSequence)
+  {
+    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg != null) && (!TextUtils.isEmpty(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString)))
+    {
+      if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 19191924) {
+        try
+        {
+          paramArticleInfo = swp.a(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString, paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxz.a.b, paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxz.a.jdField_a_of_type_JavaLangString, paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxz.a.c, paramArticleInfo);
+          return paramArticleInfo;
+        }
+        catch (NullPointerException paramArticleInfo)
+        {
+          QLog.e("Utils", 2, paramArticleInfo.toString());
+          return paramCharSequence;
+        }
+      }
+      return paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString;
+    }
+    if ((paramArticleInfo != null) && (!TextUtils.isEmpty(paramArticleInfo.mTitle))) {
+      return paramArticleInfo.mTitle;
+    }
+    return "";
+  }
+  
+  @NotNull
+  private static CharSequence a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder(anzj.a(2131714810));
+    qzd localqzd;
+    StringBuilder localStringBuilder2;
+    if (!sel.l(paramBaseArticleInfo))
+    {
+      localqzd = (qzd)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qzb.a.get(0);
+      localStringBuilder2 = localStringBuilder1.append("“");
+      if (!TextUtils.isEmpty(localqzd.c)) {
+        break label92;
+      }
+      paramBaseArticleInfo = "";
+      localStringBuilder2 = localStringBuilder2.append(paramBaseArticleInfo);
+      if (!TextUtils.isEmpty(localqzd.jdField_a_of_type_JavaLangString)) {
+        break label100;
+      }
+    }
+    label92:
+    label100:
+    for (paramBaseArticleInfo = "";; paramBaseArticleInfo = localqzd.jdField_a_of_type_JavaLangString)
+    {
+      localStringBuilder2.append(paramBaseArticleInfo).append("”");
+      return localStringBuilder1;
+      paramBaseArticleInfo = localqzd.c;
+      break;
+    }
+  }
+  
+  static CharSequence a(BaseArticleInfo paramBaseArticleInfo, pql parampql)
+  {
+    return a(-15504151, paramBaseArticleInfo, parampql);
+  }
+  
+  public static CharSequence a(CharSequence paramCharSequence, int paramInt)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    int i = 0;
+    while (i < paramInt)
+    {
+      localSpannableStringBuilder.append(" ");
+      i += 1;
+    }
+    localSpannableStringBuilder.append(paramCharSequence);
+    QLog.d("Utils", 1, "addPreBlank: " + localSpannableStringBuilder);
+    return localSpannableStringBuilder;
+  }
+  
+  public static CharSequence a(CharSequence paramCharSequence, BaseArticleInfo paramBaseArticleInfo, pql parampql)
+  {
+    return a(-15504151, paramCharSequence, paramBaseArticleInfo, parampql);
+  }
+  
+  public static CharSequence a(CharSequence paramCharSequence, String paramString)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramString);
+    localSpannableStringBuilder.append(paramCharSequence);
+    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-6908266), 0, paramString.length(), 18);
+    QLog.d("Utils", 1, "addPreCommentText: " + localSpannableStringBuilder);
+    return localSpannableStringBuilder;
+  }
+  
+  @NotNull
+  private static CharSequence a(String paramString)
+  {
+    String str2 = ozc.a(paramString);
+    String str1 = str2;
+    if (TextUtils.equals(str2, paramString)) {
+      str1 = bcsa.b(paramString);
+    }
+    return new begp(str1, 3, 16);
+  }
+  
+  public static ppu a(ArticleInfo paramArticleInfo)
+  {
+    return new pqk(null, paramArticleInfo, sel.c(paramArticleInfo), (int)paramArticleInfo.mChannelID, 0, 0, false, 0, null, null);
+  }
+  
+  public static CharSequence b(int paramInt, BaseArticleInfo paramBaseArticleInfo, pql parampql)
+  {
+    QLog.d("Utils", 1, "makeSummaryText: " + paramInt);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    paramBaseArticleInfo = a((ArticleInfo)paramBaseArticleInfo);
+    NativeSummaryView.a(paramInt, paramBaseArticleInfo, localSpannableStringBuilder, parampql);
+    NativeSummaryView.a(paramBaseArticleInfo, localSpannableStringBuilder, parampql);
+    return localSpannableStringBuilder;
+  }
+  
+  static CharSequence b(BaseArticleInfo paramBaseArticleInfo, pql parampql)
+  {
+    int i1 = 0;
+    int n = 0;
+    ArticleInfo localArticleInfo = (ArticleInfo)paramBaseArticleInfo;
+    if (localArticleInfo == null) {
+      return "";
+    }
+    String str = "";
+    int j;
+    int k;
+    int m;
+    Object localObject;
+    switch (sel.c(localArticleInfo))
+    {
+    default: 
+      j = 0;
+      k = 0;
+      m = 0;
+      i = n;
+      localObject = str;
+      if (paramBaseArticleInfo.mSocialFeedInfo != null)
+      {
+        if (paramBaseArticleInfo.isPGCShortContent())
+        {
+          i = 9;
+          localObject = a(localArticleInfo, "");
+        }
+      }
+      else
+      {
+        label177:
+        parampql = a((CharSequence)localObject, paramBaseArticleInfo, parampql);
+        QLog.d("Utils", 2, "makeNonBiuComment: " + paramBaseArticleInfo.rawkey + " ssb: " + parampql + " condition flag: " + i);
+        return parampql;
+      }
+      break;
+    }
+    for (int i = 1;; i = 0)
+    {
+      k = 0;
+      j = 1;
+      m = i;
+      break;
+      j = 0;
+      k = 1;
+      m = 0;
+      break;
+      if (k != 0)
+      {
+        localObject = localArticleInfo.mTitle;
+        i = 1;
+        break label177;
+      }
+      if ((sel.a(localArticleInfo)) || (sel.i(localArticleInfo)) || (sel.h(localArticleInfo)))
+      {
+        if (m != 0)
+        {
+          localObject = a(localArticleInfo);
+          i = 2;
+          break label177;
+        }
+        if (j != 0)
+        {
+          if (!TextUtils.isEmpty(localArticleInfo.mTitle)) {}
+          for (localObject = localArticleInfo.mTitle;; localObject = localArticleInfo.mSummary)
+          {
+            i = 3;
+            break;
+          }
+        }
+        if (sel.i(localArticleInfo))
+        {
+          localObject = a(paramBaseArticleInfo);
+          i = 4;
+          break label177;
+        }
+        localObject = localArticleInfo.mSummary;
+        i = 5;
+        break label177;
+      }
+      i = n;
+      localObject = str;
+      if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl == null) {
+        break label177;
+      }
+      qyl localqyl = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl;
+      if (ozs.a(localqyl))
+      {
+        localObject = localqyl.jdField_a_of_type_Qxr.a(localArticleInfo, "3", parampql);
+        i = 6;
+        break label177;
+      }
+      if ((qno.c(localArticleInfo)) && (!sel.q(localArticleInfo)))
+      {
+        localObject = ((qyn)localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.b.get(0)).e;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label562;
+        }
+        localObject = a((String)localObject);
+      }
+      for (i = 7;; i = i1)
+      {
+        break;
+        i = n;
+        localObject = str;
+        if (TextUtils.isEmpty(localqyl.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+        localObject = null;
+        try
+        {
+          str = bcsa.b(localqyl.jdField_a_of_type_JavaLangString);
+          localObject = str;
+        }
+        catch (Exception localException)
+        {
+          label537:
+          break label537;
+        }
+        localObject = new begp((CharSequence)localObject, 3, 16);
+        i = 8;
+        break;
+        label562:
+        localObject = "";
+      }
+    }
+  }
+  
+  public static CharSequence c(BaseArticleInfo paramBaseArticleInfo, pql parampql)
+  {
+    return b(-15504151, paramBaseArticleInfo, parampql);
   }
 }
 

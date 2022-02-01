@@ -62,7 +62,9 @@ public class AdAppDownloadManager
     int i = 0;
     while (i < this.adRefreshCallbacks.size())
     {
-      ((AdRefreshCallback)this.adRefreshCallbacks.get(i)).onAdRefresh(this.ad);
+      if (this.adRefreshCallbacks.get(i) != null) {
+        ((AdRefreshCallback)this.adRefreshCallbacks.get(i)).onAdRefresh(this.ad);
+      }
       i += 1;
     }
   }
@@ -383,7 +385,6 @@ public class AdAppDownloadManager
   {
     AdLog.i("AdCanvasAppBtnUIAdapter", "onDestroy resetStaticVariables");
     unregisterDownloadListener();
-    this.mContext = null;
     this.isLoadingAppData = false;
     this.mStartedDownload = false;
     if (this.mBtnUIPresenterList != null) {
@@ -486,28 +487,45 @@ public class AdAppDownloadManager
   
   public void startDownload()
   {
+    boolean bool = true;
     if (this.mCgdtAppBtnData == null) {
       return;
     }
     this.mStartedDownload = true;
-    AdAppBtnData localAdAppBtnData = this.mCgdtAppBtnData;
-    if (this.ad != null) {}
-    for (String str = this.ad.getVia();; str = null)
+    Object localObject2 = this.mCgdtAppBtnData;
+    Object localObject1;
+    AdAppBtnData localAdAppBtnData;
+    if (this.ad != null)
     {
-      localAdAppBtnData.via = str;
-      if ((this.downloaderWrapper != null) && (this.mContext != null) && ((this.mContext.get() instanceof Activity))) {
-        this.downloaderWrapper.startRealDownload((Activity)this.mContext.get(), this.mCgdtAppBtnData);
+      localObject1 = this.ad.getVia();
+      ((AdAppBtnData)localObject2).via = ((String)localObject1);
+      if ((this.downloaderWrapper != null) && (this.mContext != null) && ((this.mContext.get() instanceof Activity)))
+      {
+        localObject1 = this.downloaderWrapper;
+        localObject2 = (Activity)this.mContext.get();
+        localAdAppBtnData = this.mCgdtAppBtnData;
+        if ((this.ad == null) || (!this.ad.isHitWithoutInstallSuccessPage()) || (TextUtils.isEmpty(this.ad.getAppDeeplink()))) {
+          break label168;
+        }
       }
+    }
+    for (;;)
+    {
+      ((g)localObject1).startRealDownload((Activity)localObject2, localAdAppBtnData, bool);
       AdReport.downloadReport(this.ad, this.mCgdtAppBtnData.mGdtAd_appId, this.mCgdtAppBtnData.cProgerss, this.autodownload, this.mCgdtAppBtnData);
       return;
+      localObject1 = null;
+      break;
+      label168:
+      bool = false;
     }
   }
   
-  public void startRealDownload(Activity paramActivity, AdAppBtnData paramAdAppBtnData)
+  public void startRealDownload(Activity paramActivity, AdAppBtnData paramAdAppBtnData, boolean paramBoolean)
   {
     this.mStartedDownload = true;
     if (this.downloaderWrapper != null) {
-      this.downloaderWrapper.startRealDownload(paramActivity, paramAdAppBtnData);
+      this.downloaderWrapper.startRealDownload(paramActivity, paramAdAppBtnData, paramBoolean);
     }
   }
   

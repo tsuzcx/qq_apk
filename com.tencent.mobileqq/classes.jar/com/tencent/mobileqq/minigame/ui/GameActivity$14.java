@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.ui;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.OnDismissListener;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.TritonEngine;
 
 class GameActivity$14
   implements MiniLoadingAdLayout.OnDismissListener
@@ -16,9 +16,9 @@ class GameActivity$14
       MiniProgramLpReportDC04239.reportMiniAppEvent(this.this$0.mGameAppConfig, MiniProgramLpReportDC04239.getAppType(this.this$0.mGameAppConfig), null, "ad", "ad_loading", "skip", null);
     }
     GameActivity.access$2900(this.this$0, 3);
-    ITTEngine localITTEngine = GameActivity.access$1500(this.this$0).getGameEngine();
-    if (localITTEngine != null) {
-      localITTEngine.onResume();
+    TritonEngine localTritonEngine = GameActivity.access$000(this.this$0).getGameEngine();
+    if (localTritonEngine != null) {
+      localTritonEngine.start();
     }
     GameActivity.access$3000(this.this$0);
   }

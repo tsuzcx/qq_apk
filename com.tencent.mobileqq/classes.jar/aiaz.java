@@ -1,41 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class aiaz
-  implements View.OnTouchListener
+  implements URLDrawable.URLDrawableListener
 {
-  aiaz(aiay paramaiay) {}
+  aiaz(aiay paramaiay, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bhtu.a();
-    if (i == 0) {
-      if ((paramView != null) && (paramView.d()))
-      {
-        this.a.l.setText(anni.a(2131703880));
-        this.a.l.setPressed(true);
-        this.a.jdField_a_of_type_Axey.b();
-        paramView.a(true);
-      }
+    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
     }
-    do
-    {
-      return true;
-      this.a.v(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
-      }
-      this.a.l.setText(anni.a(2131703876));
-      this.a.l.setPressed(false);
-      this.a.jdField_a_of_type_Axey.c();
-    } while (paramView == null);
-    paramView.a(false);
-    return true;
-    return false;
+    aiay.a(this.jdField_a_of_type_Aiay).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 

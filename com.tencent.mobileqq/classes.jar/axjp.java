@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface axjp
+class axjp
+  implements bjig
 {
-  public abstract void a(Comments.Comment paramComment, int paramInt);
+  axjp(axjo paramaxjo) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
+  {
+    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
+    WXShareHelper.a().b(this);
+  }
 }
 
 

@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class bhtr
-  extends anxg
+public final class bhtr
+  implements DialogInterface.OnClickListener
 {
-  public bhtr(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
+  public bhtr(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", String.format(aius.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
+      paramDialogInterface.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    }
+    for (;;)
+    {
+      bdll.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
+      return;
+      aojn.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
+    }
   }
 }
 

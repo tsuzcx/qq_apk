@@ -1,266 +1,100 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.GamePlayView;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.ui.funchat.zimu.ZimuView;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class moi
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  ZimuView jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
-  lij jdField_a_of_type_Lij = null;
-  lip jdField_a_of_type_Lip = null;
+  private static moi a;
+  public int a;
+  public String a;
+  public int b = 4;
+  public int c = 2000;
+  public int d = 4;
+  public int e = 2150;
+  public int f = 720;
+  public int g = 1;
+  public int h = 5;
+  public int i = 120000;
+  public int j = 1;
+  public int k = 1;
+  public int l = 0;
+  public int m = 0;
+  public int n = 5000;
+  public int o = 0;
+  public int p = 25000;
+  public int q = 1;
+  public int r;
+  public int s;
   
-  public moi(VideoAppInterface paramVideoAppInterface, Context paramContext)
+  public moi()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  private boolean a(long paramLong, ViewGroup paramViewGroup)
+  private static int a(String[] paramArrayOfString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
+    if ((paramArrayOfString == null) || (paramInt1 >= paramArrayOfString.length)) {
+      return paramInt2;
+    }
+    try
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.h();
-      paramViewGroup.removeView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView);
-      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
-      return true;
+      paramInt1 = Integer.parseInt(paramArrayOfString[paramInt1]);
+      return paramInt1;
     }
-    if (this.jdField_a_of_type_Lij != null)
+    catch (Exception paramArrayOfString)
     {
-      this.jdField_a_of_type_Lij.b();
-      lim locallim = this.jdField_a_of_type_Lij.a();
-      if (locallim != null) {
-        paramViewGroup.removeView((View)locallim);
-      }
-      this.jdField_a_of_type_Lij = null;
-      return true;
+      paramArrayOfString.printStackTrace();
     }
-    return false;
+    return paramInt2;
   }
   
-  private boolean a(long paramLong, ViewGroup paramViewGroup, String paramString)
+  public static moi a()
   {
-    this.jdField_a_of_type_Lij = null;
-    this.jdField_a_of_type_Lij = lin.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559697, null);
-    if (this.jdField_a_of_type_Lij == null)
+    if (jdField_a_of_type_Moi == null) {
+      jdField_a_of_type_Moi = b();
+    }
+    return jdField_a_of_type_Moi;
+  }
+  
+  private static moi b()
+  {
+    moi localmoi = new moi();
+    Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.qavDpc.name());
+    localmoi.jdField_a_of_type_JavaLangString = ((String)localObject);
+    if (!TextUtils.isEmpty(localmoi.jdField_a_of_type_JavaLangString))
     {
-      QLog.w("ZimuViewProxy", 1, "creatARZimuTask, fail");
-      return false;
+      localObject = ((String)localObject).split("\\|");
+      localmoi.jdField_a_of_type_Int = a((String[])localObject, 0, 1);
+      localmoi.b = a((String[])localObject, 1, 4);
+      localmoi.c = a((String[])localObject, 2, 2000);
+      localmoi.d = a((String[])localObject, 3, 4);
+      localmoi.e = a((String[])localObject, 4, 2150);
+      localmoi.f = a((String[])localObject, 5, 720);
+      localmoi.g = a((String[])localObject, 6, 1);
+      localmoi.h = a((String[])localObject, 7, 5);
+      localmoi.i = a((String[])localObject, 8, 120000);
+      localmoi.j = a((String[])localObject, 9, 1);
+      localmoi.k = a((String[])localObject, 10, 1);
+      localmoi.l = a((String[])localObject, 11, 0);
+      localmoi.m = a((String[])localObject, 12, 0);
+      localmoi.n = a((String[])localObject, 13, 5000);
+      localmoi.o = a((String[])localObject, 14, 0);
+      localmoi.p = a((String[])localObject, 15, 25000);
+      localmoi.q = a((String[])localObject, 16, 1);
     }
-    int i = this.jdField_a_of_type_Lij.a();
-    String str = this.jdField_a_of_type_Lij.c();
-    paramString.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (AVActivity)this.jdField_a_of_type_AndroidContentContext, str, i);
-    this.jdField_a_of_type_Lij.a(paramString);
-    paramViewGroup.addView(paramString);
-    this.jdField_a_of_type_Lij.a();
-    return true;
+    localmoi.r = bhlo.b();
+    localmoi.s = ((int)(bhlo.b() / 1000L));
+    if (QLog.isColorLevel()) {
+      QLog.d("QavRecordDpc", 2, "init=" + localmoi);
+    }
+    return localmoi;
   }
   
-  private boolean c(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
+  public String toString()
   {
-    float f2 = 0.0F;
-    this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = mof.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    float f1;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
-    {
-      f1 = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a();
-      Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)f1);
-      if (!paramString.equals("film")) {
-        break label121;
-      }
-      f1 = paramInt2 - localResources.getDimension(2131297649);
-      localLayoutParams.addRule(12);
-    }
-    for (;;)
-    {
-      localLayoutParams.setMargins(0, (int)f2, 0, (int)f1);
-      paramViewGroup.addView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView, localLayoutParams);
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView == null) {
-        break;
-      }
-      return true;
-      label121:
-      f2 = paramInt1;
-      f1 = 0.0F;
-    }
-    return false;
-  }
-  
-  public ZimuItem a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
-    {
-      a();
-      return (ZimuItem)this.jdField_a_of_type_Lip.a();
-    }
-    return null;
-  }
-  
-  public lip a()
-  {
-    if (this.jdField_a_of_type_Lip == null) {
-      this.jdField_a_of_type_Lip = ((lip)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
-    }
-    return this.jdField_a_of_type_Lip;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
-    {
-      Object localObject = a();
-      if (localObject != null)
-      {
-        localObject = (ZimuItem)((lip)localObject).a();
-        if (localObject != null)
-        {
-          localObject = ((ZimuItem)localObject).getId();
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            new mcd(AudioHelper.b(), "maybeShowZimu", 1, (String)localObject).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    a(false);
-    if (this.jdField_a_of_type_Lij != null)
-    {
-      this.jdField_a_of_type_Lip.a(paramLong, null);
-      this.jdField_a_of_type_Lip.a("DisableARZimu", paramLong);
-      this.jdField_a_of_type_Lij.b();
-      this.jdField_a_of_type_Lij = null;
-    }
-  }
-  
-  public void a(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2)
-  {
-    RelativeLayout.LayoutParams localLayoutParams;
-    Resources localResources;
-    float f;
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
-    {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.getLayoutParams();
-      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      if (!this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals("film")) {
-        break label110;
-      }
-      if (!paramVideoLayerUI.i()) {
-        break label91;
-      }
-      f = paramVideoLayerUI.c() - mio.b(paramVideoLayerUI.b());
-      localLayoutParams.bottomMargin = ((int)(localResources.getDimension(2131297545) + f));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.setLayoutParams(localLayoutParams);
-      return;
-      label91:
-      localLayoutParams.bottomMargin = ((int)(paramInt2 - localResources.getDimension(2131297649)));
-      continue;
-      label110:
-      f = paramInt1;
-      localLayoutParams.topMargin = ((int)(localResources.getDimension(2131297663) + f));
-    }
-  }
-  
-  public void a(lga paramlga)
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
-      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a(paramlga);
-    }
-    while (this.jdField_a_of_type_Lij == null) {
-      return;
-    }
-    this.jdField_a_of_type_Lij.a(paramlga);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    a();
-    lio.a(paramBoolean);
-    this.jdField_a_of_type_Lip.a(paramBoolean);
-  }
-  
-  public boolean a(long paramLong, ViewGroup paramViewGroup, boolean paramBoolean)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("ZimuViewProxy", 1, "hideZimuView, exchangeItem[" + paramBoolean + "], seq[" + paramLong + "]");
-    }
-    a();
-    if (paramBoolean) {
-      this.jdField_a_of_type_Lip.a(paramLong, null);
-    }
-    return a(paramLong, paramViewGroup);
-  }
-  
-  public boolean a(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Lij != null) {
-      a(paramLong, paramViewGroup);
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView == null) {
-      return c(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
-    }
-    if (!this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals(paramString))
-    {
-      a(paramLong, paramViewGroup);
-      return c(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
-    }
-    return true;
-  }
-  
-  public boolean a(ViewGroup paramViewGroup, long paramLong)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("ZimuViewProxy", 1, "stopZimuView, seq[" + paramLong + "]");
-    }
-    a();
-    a(paramLong, paramViewGroup);
-    this.jdField_a_of_type_Lip.a(paramLong, null);
-    this.jdField_a_of_type_Lip.a("stopZimuView", paramLong);
-    return true;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
-      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a(paramBoolean);
-    }
-    if (this.jdField_a_of_type_Lij != null) {
-      this.jdField_a_of_type_Lij.b();
-    }
-  }
-  
-  public boolean b(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
-      a(paramLong, paramViewGroup);
-    }
-    if (!lio.a()) {
-      return false;
-    }
-    if (this.jdField_a_of_type_Lij == null) {
-      return a(paramLong, paramViewGroup, paramString);
-    }
-    a(paramLong, paramViewGroup);
-    return a(paramLong, paramViewGroup, paramString);
+    return String.format(Locale.getDefault(), "QavRecordDpc:dpc=%s, default=%d|%d|%d|%d|%d|%d, value=%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%s|%s|%s, system=%d|%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2000), Integer.valueOf(4), Integer.valueOf(2150), Integer.valueOf(720), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.k), Integer.valueOf(this.l), Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o), Integer.valueOf(this.p), Integer.valueOf(this.q), Integer.valueOf(this.r), Integer.valueOf(this.s) });
   }
 }
 

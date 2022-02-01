@@ -1,305 +1,258 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.weiyun.WeiyunAIOUtils.4;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.MsgCardView;
+import cooperation.qzone.contentbox.model.MQLikeCell;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQMsgBody;
+import cooperation.qzone.contentbox.model.MQMsgInteractData;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class bmyc
+  extends BaseAdapter
 {
-  public static void a(Activity paramActivity)
+  private bmwv jdField_a_of_type_Bmwv;
+  private bmyd jdField_a_of_type_Bmyd;
+  private bmyo jdField_a_of_type_Bmyo;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private ArrayList<MQMsg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  
+  public bmyc(BaseActivity paramBaseActivity)
   {
-    String str = String.format("https://jump.weiyun.com?from=3092&aid=%s", new Object[] { "qq_an_wyshouxian" });
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramActivity.startActivityForResult(localIntent, 21);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, List<ChatMessage> paramList, MqqHandler paramMqqHandler)
+  public MQMsg a()
   {
-    Object localObject2 = new ArrayList();
-    Object localObject1 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ChatMessage localChatMessage = (ChatMessage)paramList.get(0);
-    bmxr.a(localChatMessage.frienduin, localChatMessage.senderuin, localChatMessage.istroop);
-    int i = 0;
-    if (i < paramList.size())
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = null;
+    if (localIterator.hasNext())
     {
-      localChatMessage = (ChatMessage)paramList.get(i);
-      if ((localChatMessage instanceof MessageForTroopFile)) {
-        ((ArrayList)localObject2).add(localChatMessage);
+      MQMsg localMQMsg = (MQMsg)localIterator.next();
+      Object localObject2;
+      if (localObject1 == null) {
+        localObject2 = localMQMsg;
       }
       for (;;)
       {
-        i += 1;
+        localObject1 = localObject2;
         break;
-        if ((localChatMessage instanceof MessageForFile)) {
-          ((ArrayList)localObject1).add((MessageForFile)localChatMessage);
-        } else if ((localChatMessage instanceof MessageForPic)) {
-          localArrayList1.add((MessageForPic)localChatMessage);
-        } else if ((localChatMessage instanceof MessageForShortVideo))
-        {
-          if (!(localChatMessage instanceof MessageForLightVideo)) {
-            localArrayList2.add((MessageForShortVideo)localChatMessage);
-          }
-        }
-        else if (aofo.b(localChatMessage)) {
-          localArrayList3.add((StructMsgForImageShare)((MessageForStructing)localChatMessage).structingMsg);
+        localObject2 = localMQMsg;
+        if (localObject1.pushTime > localMQMsg.pushTime) {
+          localObject2 = localObject1;
         }
       }
     }
-    if (((ArrayList)localObject2).size() > 0)
-    {
-      paramList = (ChatMessage)((ArrayList)localObject2).get(0);
-      if (TroopFileTransferManager.a(paramQQAppInterface, Long.parseLong(paramList.frienduin)) == null) {
-        return false;
-      }
-      paramList = bfsj.a(paramQQAppInterface, (MessageForTroopFile)paramList);
-      if ((paramList == null) || (paramList.e == null)) {
-        return false;
-      }
-      bfsj.a(paramActivity, paramQQAppInterface, (List)localObject2);
-    }
-    boolean bool = false;
-    if (((ArrayList)localObject1).size() > 0)
-    {
-      paramActivity = new ArrayList();
-      paramList = ((ArrayList)localObject1).iterator();
-      label320:
-      int j;
-      for (i = 0; paramList.hasNext(); i = j)
-      {
-        localObject1 = (MessageForFile)paramList.next();
-        localObject2 = atvo.a(paramQQAppInterface, (MessageForFile)localObject1);
-        if ((((FileManagerEntity)localObject2).cloudType == 0) || (((FileManagerEntity)localObject2).status == 16)) {
-          break label320;
-        }
-        j = i;
-        if (i == 0)
-        {
-          j = i;
-          if (atul.a((FileManagerEntity)localObject2).a(false)) {
-            j = 1;
-          }
-        }
-        paramActivity.add(localObject1);
-      }
-      if (paramActivity.size() == 0)
-      {
-        atvf.a(2131692317);
-        return false;
-      }
-      if (i != 0) {
-        atvb.a(BaseActivity.sTopActivity, 2131692321, 2131692326, new bmyd(paramActivity, paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt));
-      }
-    }
-    while (bool)
-    {
-      QQToast.a(paramQQAppInterface.getApp(), 2131692439, 0).b(paramInt);
-      return true;
-      paramActivity = paramActivity.iterator();
-      for (bool = false; paramActivity.hasNext(); bool = atvo.a(paramQQAppInterface, (MessageForFile)paramActivity.next(), BaseActivity.sTopActivity, true)) {}
-      bool |= a(paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt);
-      continue;
-      bool = a(paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt);
-    }
-    QQToast.a(paramQQAppInterface.getApp(), 2131692491, 0).b(paramInt);
-    return false;
+    return localObject1;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, MqqHandler paramMqqHandler)
+  public void a(long paramLong, boolean paramBoolean)
   {
-    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X80067F8", "0X80067F8", 0, 0, "", "", "", "");
-    if (!bgnt.d(paramActivity))
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131691985, 0).b(paramInt);
-      return false;
-    }
-    List localList = awwm.a().a();
-    if (localList.size() == 0)
-    {
-      QQToast.a(paramQQAppInterface.getApp(), 2131697668, 0).b(paramInt);
-      return false;
-    }
-    if (localList.size() == 1) {
-      return b(paramQQAppInterface, paramActivity, paramInt, localList, paramMqqHandler);
-    }
-    return a(paramQQAppInterface, paramActivity, paramInt, localList, paramMqqHandler);
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, ArrayList<MessageForPic> paramArrayList, ArrayList<MessageForShortVideo> paramArrayList1, ArrayList<StructMsgForImageShare> paramArrayList2, MqqHandler paramMqqHandler, int paramInt)
-  {
-    if (((paramArrayList != null) && (paramArrayList.size() > 0)) || ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) || ((paramArrayList2 != null) && (paramArrayList2.size() > 0)))
-    {
-      ArrayList localArrayList = new ArrayList();
-      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0))
+      Object localObject = (MQMsg)localIterator.next();
+      if ((localObject != null) && (((MQMsg)localObject).pushTime == paramLong) && (((MQMsg)localObject).msgInteractData != null) && (((MQMsg)localObject).msgInteractData.likeCell != null) && (((MQMsg)localObject).msgInteractData.likeCell.liked != paramBoolean))
       {
-        paramArrayList2 = paramArrayList2.iterator();
-        label58:
-        if (paramArrayList2.hasNext())
+        ((MQMsg)localObject).msgInteractData.likeCell.liked = paramBoolean;
+        if (paramBoolean)
         {
-          Iterator localIterator = ((StructMsgForImageShare)paramArrayList2.next()).mStructMsgItemLists.iterator();
-          for (;;)
-          {
-            if (!localIterator.hasNext()) {
-              break label58;
-            }
-            Object localObject1 = (bcvs)localIterator.next();
-            if (!bcvt.class.isInstance(localObject1)) {
-              break;
-            }
-            localObject1 = ((bcvt)localObject1).a.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              Object localObject2 = (bcvs)((Iterator)localObject1).next();
-              if (bcxy.class.isInstance(localObject2))
-              {
-                localObject2 = (bcxy)localObject2;
-                if ((!a(((bcxy)localObject2).a)) && (!ains.a(((bcxy)localObject2).a))) {
-                  localArrayList.add(((bcxy)localObject2).a);
-                }
-              }
-            }
-          }
-        }
-      }
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
-        {
-          paramArrayList2 = (MessageForPic)paramArrayList.next();
-          if ((!a(paramArrayList2)) && (!ains.a(paramArrayList2))) {
-            localArrayList.add(paramArrayList2);
-          }
-        }
-      }
-      if ((localArrayList.size() == 0) && ((paramArrayList1 == null) || (paramArrayList1.size() == 0))) {
-        return false;
-      }
-      paramQQAppInterface.a().a().a(localArrayList, paramArrayList1, new bmyg(paramMqqHandler, paramQQAppInterface.getApp(), paramQQAppInterface, paramInt));
-      return true;
-    }
-    return false;
-  }
-  
-  private static boolean a(ChatMessage paramChatMessage)
-  {
-    return (annq.a(paramChatMessage)) || (anlk.a(paramChatMessage));
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, List<ChatMessage> paramList, MqqHandler paramMqqHandler)
-  {
-    paramList = (ChatMessage)paramList.get(0);
-    bmxr.a(paramList.frienduin, paramList.senderuin, paramList.istroop);
-    if ((paramList instanceof MessageForTroopFile)) {
-      bfsj.b(paramActivity, paramQQAppInterface, paramList);
-    }
-    for (;;)
-    {
-      return true;
-      if ((paramList instanceof MessageForFile))
-      {
-        paramActivity = atvo.a(paramQQAppInterface, (MessageForFile)paramList);
-        if (paramActivity.cloudType == 0)
-        {
-          atvf.a(2131692317);
-          return false;
-        }
-        if (paramActivity.status == 16)
-        {
-          atvf.a(2131692466);
-          return false;
-        }
-        if (atul.a((MessageForFile)paramList).a(false))
-        {
-          if (bigl.a(BaseActivity.sTopActivity, 5, new bmye(paramQQAppInterface, paramList))) {
-            atvb.a(BaseActivity.sTopActivity, 2131692321, 2131692324, new bmyf(paramQQAppInterface, paramList));
-          }
-        }
-        else {
-          atvo.a(paramQQAppInterface, paramList, BaseActivity.sTopActivity);
-        }
-      }
-      else if (((paramList instanceof MessageForPic)) || ((paramList instanceof MessageForShortVideo)))
-      {
-        if (a(paramList))
-        {
-          atvf.a(2131692317);
-          return false;
-        }
-        if (((paramList instanceof MessageForPic)) && (ains.a((MessageForPic)paramList)))
-        {
-          atvf.a(2131692317);
-          return false;
-        }
-        paramQQAppInterface.a().a().a(paramList, new bmyg(paramMqqHandler, paramActivity, paramQQAppInterface, paramInt));
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-          ThreadManager.getUIHandler().post(new WeiyunAIOUtils.4(paramQQAppInterface, paramInt));
-        } else {
-          QQToast.a(paramQQAppInterface.getApp(), 2131692439, 0).b(paramInt);
-        }
-      }
-      else
-      {
-        if (!aofo.b(paramList)) {
-          break;
-        }
-        paramList = (StructMsgForImageShare)((MessageForStructing)paramList).structingMsg;
-        paramActivity = new ArrayList();
-        paramList = paramList.mStructMsgItemLists.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject1 = (bcvs)paramList.next();
-          if (bcvt.class.isInstance(localObject1))
-          {
-            localObject1 = ((bcvt)localObject1).a.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              Object localObject2 = (bcvs)((Iterator)localObject1).next();
-              if (bcxy.class.isInstance(localObject2))
-              {
-                localObject2 = (bcxy)localObject2;
-                if (!a(((bcxy)localObject2).a)) {
-                  paramActivity.add(((bcxy)localObject2).a);
-                }
-              }
-            }
-          }
-        }
-        if (paramActivity.size() > 0)
-        {
-          a(paramQQAppInterface, paramActivity, null, null, paramMqqHandler, paramInt);
-          QQToast.a(paramQQAppInterface.getApp(), 2131692439, 0).b(paramInt);
+          localObject = ((MQMsg)localObject).msgInteractData.likeCell;
+          ((MQLikeCell)localObject).totalLike += 1;
         }
         else
         {
-          QQToast.a(paramQQAppInterface.getApp(), 2131692491, 0).b(paramInt);
+          localObject = ((MQMsg)localObject).msgInteractData.likeCell;
+          ((MQLikeCell)localObject).totalLike -= 1;
         }
       }
     }
-    QQToast.a(paramQQAppInterface.getApp(), 2131692491, 0).b(paramInt);
+    notifyDataSetChanged();
+  }
+  
+  public void a(bmwv parambmwv, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Bmwv = parambmwv;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public void a(bmyd parambmyd)
+  {
+    this.jdField_a_of_type_Bmyd = parambmyd;
+  }
+  
+  public void a(bmyo parambmyo)
+  {
+    this.jdField_a_of_type_Bmyo = parambmyo;
+  }
+  
+  public void a(MQMsg paramMQMsg)
+  {
+    int i;
+    MQMsg localMQMsg;
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramMQMsg != null))
+    {
+      i = 0;
+      if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label131;
+      }
+      localMQMsg = (MQMsg)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localMQMsg == null) || (localMQMsg.pushTime != paramMQMsg.pushTime)) {
+        break label86;
+      }
+    }
+    for (;;)
+    {
+      if (i < 0)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, paramMQMsg);
+        if (this.jdField_a_of_type_Bmwv != null) {
+          this.jdField_a_of_type_Bmwv.d();
+        }
+      }
+      for (;;)
+      {
+        notifyDataSetChanged();
+        return;
+        label86:
+        i += 1;
+        break;
+        if (paramMQMsg != localMQMsg)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.set(i, paramMQMsg);
+          if ((i == 0) && (this.jdField_a_of_type_Bmwv != null)) {
+            this.jdField_a_of_type_Bmwv.d();
+          }
+        }
+      }
+      label131:
+      localMQMsg = null;
+      i = -1;
+    }
+  }
+  
+  public void a(ArrayList<MQMsg> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Bmwv != null) {
+      this.jdField_a_of_type_Bmwv.d();
+    }
+    if (paramArrayList != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      notifyDataSetChanged();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    MQMsg localMQMsg = a();
+    if ((localMQMsg.msgBody.photolist == null) || (localMQMsg.msgBody.photolist.isEmpty()))
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.remove(localMQMsg);
+      if ((bool) && (this.jdField_a_of_type_Bmwv != null)) {
+        this.jdField_a_of_type_Bmwv.d();
+      }
+      return bool;
+    }
     return false;
+  }
+  
+  public void b(ArrayList<MQMsg> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = 0;
+    int i;
+    if (paramView == null)
+    {
+      paramView = new MsgCardView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+      paramView.setMsgOnClickListener(this.jdField_a_of_type_Bmyo);
+      paramView.setData(paramInt, (MQMsg)getItem(paramInt), this.c, this.b);
+      if ((paramInt != 0) || (this.jdField_a_of_type_Bmwv == null)) {
+        break label228;
+      }
+      boolean bool = this.jdField_a_of_type_Bmwv.a(((MsgCardView)paramView).a(), (MQMsg)getItem(paramInt));
+      Object localObject = ((MsgCardView)paramView).a();
+      if (!bool) {
+        break label214;
+      }
+      i = 0;
+      label109:
+      ((TextView)localObject).setVisibility(i);
+      localObject = ((MsgCardView)paramView).a();
+      if (!bool) {
+        break label221;
+      }
+      i = j;
+      label134:
+      ((LinearLayout)localObject).setVisibility(i);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bmyd != null) {
+        this.jdField_a_of_type_Bmyd.a(paramInt, paramView, paramViewGroup);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      ((MsgCardView)paramView).setMsgOnClickListener(this.jdField_a_of_type_Bmyo);
+      ((MsgCardView)paramView).setData(paramInt, (MQMsg)getItem(paramInt), this.c, this.b);
+      break;
+      label214:
+      i = 8;
+      break label109;
+      label221:
+      i = 8;
+      break label134;
+      label228:
+      ((MsgCardView)paramView).a().setVisibility(8);
+      ((MsgCardView)paramView).a().setVisibility(8);
+    }
   }
 }
 

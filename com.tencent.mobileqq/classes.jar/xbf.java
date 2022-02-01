@@ -1,27 +1,19 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class xbf
-  extends wla
+  implements woy<xbg, xbh>
 {
-  public long a;
-  public List<qqstory_struct.UserSimpleInfo> a;
-  public long b;
-  
-  public xbf(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
+  public void a(String paramString)
   {
-    super(paramRspGetFeedVisitor.result);
-    this.b = paramRspGetFeedVisitor.view_total_num.get();
-    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
+    paramString = new xbg(this, paramString);
+    wow.a().a(paramString, this);
   }
   
-  public String toString()
+  public void a(@NonNull xbg paramxbg, @Nullable xbh paramxbh, @NonNull ErrorMessage paramErrorMessage)
   {
-    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    new xbi(paramErrorMessage, paramxbg.b);
   }
 }
 

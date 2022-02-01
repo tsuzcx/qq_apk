@@ -21,7 +21,7 @@ public class WeakNetLearner
   public static Context mContext;
   private WeakNetCallback cb;
   private AtomicInteger doneNum = new AtomicInteger(0);
-  private volatile boolean isDestroy;
+  private volatile boolean isDestroy = false;
   public long lastReportTime = -1L;
   private WeakNetLearner.ProbeHandler probeHandler;
   private HandlerThread probeThread;

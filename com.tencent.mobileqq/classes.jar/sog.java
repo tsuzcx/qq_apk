@@ -1,30 +1,25 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class sog
-  implements sow
+public class sog
+  implements aqvj
 {
-  sog(snh paramsnh) {}
+  public sog(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (articlesummary.ChannelInfo)paramView.getTag();
-    if (paramView != null)
+    FastWebActivity.b(this.a, true);
+    QLog.d("FastWebActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    if (FastWebActivity.a(this.a) == 0L)
     {
-      if ((!paramView.bytes_channel_url.has()) || (paramView.bytes_channel_url.get() == null)) {
-        break label69;
-      }
-      if (!TextUtils.isEmpty(paramView.bytes_channel_url.get().toStringUtf8())) {
-        pha.a(this.a.a, paramView.bytes_channel_url.get().toStringUtf8());
-      }
+      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
+      QLog.d("FastWebActivity", 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
     }
-    return;
-    label69:
-    ohp.b(this.a.a, paramView.uint32_channel_id.get(), pha.a(paramView), paramView.uint32_channel_type.get(), 6, null);
   }
 }
 

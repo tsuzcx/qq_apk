@@ -1,16 +1,33 @@
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class vkn
-  implements aabv
+class vkn
+  implements TextView.OnEditorActionListener
 {
-  public vkn(QCircleContentOperationView paramQCircleContentOperationView) {}
+  vkn(vkl paramvkl) {}
   
-  public void a()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.a() != null) {
-      vrg.a(17, 2, (FeedCloudMeta.StFeed)this.a.a(), QCircleContentOperationView.a(this.a), 0, QCircleContentOperationView.b(this.a));
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      bool1 = false;
     }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this.a.a());
+      bool1 = bool2;
+    } while (this.a.a == null);
+    this.a.a.a();
+    return true;
   }
 }
 

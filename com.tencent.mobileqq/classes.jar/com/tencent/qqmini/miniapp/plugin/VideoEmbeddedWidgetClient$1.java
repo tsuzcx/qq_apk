@@ -11,7 +11,7 @@ class VideoEmbeddedWidgetClient$1
   public void onLoopStart(IMediaPlayer paramIMediaPlayer)
   {
     VideoEmbeddedWidgetClient.access$002(this.this$0, false);
-    VideoEmbeddedWidgetClient.access$100(this.this$0, 400L);
+    VideoEmbeddedWidgetClient.access$100(this.this$0, 250L);
   }
 }
 

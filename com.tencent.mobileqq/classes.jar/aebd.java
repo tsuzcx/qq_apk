@@ -1,39 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aebd
-  implements azxf
+public final class aebd
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<BaseActivity> a;
-  private WeakReference<TextView> b;
+  public aebd(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public aebd(WeakReference<BaseActivity> paramWeakReference, WeakReference<TextView> paramWeakReference1)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramWeakReference == null) || (paramWeakReference1 == null)) {
-      return;
+    bhoq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a = paramWeakReference;
-    this.b = paramWeakReference1;
-  }
-  
-  private boolean a()
-  {
-    if ((this.a == null) || (this.b == null) || (this.a.get() == null) || (this.b.get() == null))
-    {
-      QLog.e("DevlockQuickLoginActivity", 1, "sanityCheckPCVerifyWrong(): params empty");
-      return true;
-    }
-    return false;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.1(this, paramBoolean));
   }
 }
 

@@ -1,16 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class agir
-  implements ankk
+class agir
+  implements URLDrawable.URLDrawableListener
 {
-  public void a(boolean paramBoolean)
+  agir(agiq paramagiq) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramBoolean) {
-      agiq.a(true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
+    agiq.d(this.a);
+    QQToast.a(this.a.a, 0, 2131693118, 1).a();
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    agiq.d(this.a);
+    QQToast.a(this.a.a, 0, 2131693118, 1).a();
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    agiq.d(this.a);
+    agiq.a(this.a, agiq.a(this.a));
   }
 }
 

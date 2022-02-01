@@ -1,7 +1,6 @@
-public class apxs
-  extends apxp
+abstract interface apxs
 {
-  public String e = "";
+  public abstract void a(String paramString);
 }
 
 

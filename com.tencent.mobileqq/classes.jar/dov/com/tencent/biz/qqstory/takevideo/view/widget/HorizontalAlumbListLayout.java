@@ -10,27 +10,27 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bpfx;
-import bpvs;
-import bpvt;
-import bpvu;
+import bqhs;
+import bqxn;
+import bqxo;
+import bqxp;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import zgl;
-import zgr;
+import zkg;
+import zkm;
 
 public class HorizontalAlumbListLayout
   extends RelativeLayout
-  implements View.OnClickListener, zgr
+  implements View.OnClickListener, zkm
 {
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bpfx a;
-  private bpvu jdField_a_of_type_Bpvu;
+  public bqhs a;
+  private bqxp jdField_a_of_type_Bqxp;
   
   public HorizontalAlumbListLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,14 +47,14 @@ public class HorizontalAlumbListLayout
   private void b()
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561765, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374559));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561806, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374696));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Bpvu = new bpvu(this, getContext(), this, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bpvu);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bpvs(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374558));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bpvt(this));
+    this.jdField_a_of_type_Bqxp = new bqxp(this, getContext(), this, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bqxp);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bqxn(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374695));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bqxo(this));
   }
   
   public void a() {}
@@ -70,24 +70,24 @@ public class HorizontalAlumbListLayout
     if (QLog.isColorLevel()) {
       QLog.d("HorizontalAlumbListLayout", 2, "updateData size=" + paramList.size());
     }
-    if ((this.jdField_a_of_type_Bpvu != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_Bpvu.a(paramList);
+    if ((this.jdField_a_of_type_Bqxp != null) && (paramList.size() > 0)) {
+      this.jdField_a_of_type_Bqxp.a(paramList);
     }
   }
   
   public void onClick(View paramView) {}
   
-  public void setEditVideoUI(bpfx parambpfx)
+  public void setEditVideoUI(bqhs parambqhs)
   {
-    this.jdField_a_of_type_Bpfx = parambpfx;
+    this.jdField_a_of_type_Bqhs = parambqhs;
   }
   
   public void setTipsContent(TextView paramTextView)
   {
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    if (zgl.a().a() == 13)
+    if (zkg.a().a() == 13)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131691680), new Object[] { zgl.a().a().size() + "" }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131691683), new Object[] { zkg.a().a().size() + "" }));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }

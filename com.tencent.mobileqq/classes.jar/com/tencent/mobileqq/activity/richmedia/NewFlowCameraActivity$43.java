@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import afur;
+import agej;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import bclx;
-import ykh;
-import yqp;
-import zkh;
+import bdep;
+import yoc;
+import yuk;
+import zoc;
 
 class NewFlowCameraActivity$43
   implements Runnable
@@ -15,30 +15,30 @@ class NewFlowCameraActivity$43
   
   public void run()
   {
-    int i = afur.a(47.0F, this.this$0.getResources());
-    int j = afur.a(75.0F, this.this$0.getResources());
-    Bitmap localBitmap1 = zkh.a(this.a, i, j, false);
+    int i = agej.a(47.0F, this.this$0.getResources());
+    int j = agej.a(75.0F, this.this$0.getResources());
+    Bitmap localBitmap1 = zoc.a(this.a, i, j, false);
     if (localBitmap1 == null) {
-      yqp.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
+      yuk.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
     }
     Bitmap localBitmap2;
     do
     {
       return;
-      localBitmap2 = new ykh(afur.a(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
+      localBitmap2 = new yoc(agej.a(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
       if (localBitmap2 == null)
       {
-        yqp.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
+        yuk.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
         return;
       }
       i = this.a.getWidth();
       j = this.a.getHeight();
-      float f1 = bclx.a;
-      float f2 = bclx.a(this.this$0.getApplicationContext());
+      float f1 = bdep.a;
+      float f2 = bdep.a(this.this$0.getApplicationContext());
       if (i / j > f1 / f2) {}
-      for (localBitmap1 = zkh.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = zkh.a(this.a, i, (int)(f2 / f1 * i), true))
+      for (localBitmap1 = zoc.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = zoc.a(this.a, i, (int)(f2 / f1 * i), true))
       {
-        yqp.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
+        yuk.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
         return;
       }
     } while (this.this$0.a == null);

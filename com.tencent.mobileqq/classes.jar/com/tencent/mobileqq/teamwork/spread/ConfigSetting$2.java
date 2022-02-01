@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import arbo;
-import bdko;
+import arrd;
+import bedj;
 
 public class ConfigSetting$2
   implements Runnable
 {
-  public ConfigSetting$2(bdko parambdko, arbo paramarbo) {}
+  public ConfigSetting$2(bedj parambedj, arrd paramarrd) {}
   
   public void run()
   {
-    bdko.a(this.this$0, this.a);
+    bedj.a(this.this$0, this.a);
   }
 }
 

@@ -1,48 +1,30 @@
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
 
-class vil
-  implements aagf
+public class vil
+  extends ClickableSpan
 {
-  vil(vih paramvih) {}
+  public vil(TextCell paramTextCell) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
-    if (vih.a(this.a))
+    if (this.a.clickable())
     {
-      vih.a(this.a, false);
-      if (vih.a(this.a) != null) {
-        vih.a(this.a).setVisibility(0);
-      }
-      if (vih.a(this.a) != null) {
-        vih.a(this.a).setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      this.a.b = false;
-      return;
-      if (!this.a.c) {
-        this.a.dismiss();
+      Intent localIntent = this.a.getIntent();
+      if (localIntent != null) {
+        paramView.getContext().startActivity(localIntent);
       }
     }
   }
   
-  public void a(int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
-    if (this.a.jdField_a_of_type_Int != paramInt)
-    {
-      this.a.jdField_a_of_type_Int = paramInt;
-      vih.c(this.a);
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("GroupSoftKeyboardHeight", paramInt);
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-    }
-    this.a.e();
-    this.a.b = true;
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

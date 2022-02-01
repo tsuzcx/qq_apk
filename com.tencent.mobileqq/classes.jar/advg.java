@@ -1,32 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class advg
-  implements View.OnClickListener
+public class advg
+  implements CompoundButton.OnCheckedChangeListener
 {
-  advg(adve paramadve) {}
+  public advg(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramView.getTag() instanceof String)) {}
+    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
+    if (paramBoolean) {
+      bdll.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      Object localObject = (ambt)paramView.getTag();
-      if ((((ambt)localObject).a instanceof FileManagerEntity))
-      {
-        localObject = (FileManagerEntity)((ambt)localObject).a;
-        this.a.a((FileManagerEntity)localObject);
-      }
-      else if ((((ambt)localObject).a instanceof TencentDocData))
-      {
-        localObject = (TencentDocData)((ambt)localObject).a;
-        this.a.a((TencentDocData)localObject);
-      }
+      bdll.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
     }
   }
 }

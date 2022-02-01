@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.weishi_new.view;
 import android.app.Activity;
 import android.os.Handler;
 import android.view.View;
-import bgtn;
-import upe;
+import bhtq;
+import uqf;
 
 class RedDotBubblePopupWindow$1
   implements Runnable
@@ -24,12 +24,12 @@ class RedDotBubblePopupWindow$1
       RedDotBubblePopupWindow.a(this.this$0).measure(0, 0);
       i = RedDotBubblePopupWindow.a(this.this$0).getMeasuredWidth();
       int j = RedDotBubblePopupWindow.a(this.this$0).getMeasuredHeight();
-      upe.d("RedDotBubblePopupWindow", "popupWidth:" + i + " popupHeight:" + j + "   location[0]:" + arrayOfInt[0] + " location[1]:" + arrayOfInt[1] + " getWidth:" + this.a.getWidth() + " getHeight:" + this.a.getHeight());
+      uqf.d("RedDotBubblePopupWindow", "popupWidth:" + i + " popupHeight:" + j + "   location[0]:" + arrayOfInt[0] + " location[1]:" + arrayOfInt[1] + " getWidth:" + this.a.getWidth() + " getHeight:" + this.a.getHeight());
     } while ((RedDotBubblePopupWindow.a(this.this$0) == null) || (RedDotBubblePopupWindow.a(this.this$0).isFinishing()));
     if (RedDotBubblePopupWindow.a(this.this$0) == null) {
       RedDotBubblePopupWindow.a(this.this$0, new RedDotBubblePopupWindow.DisPopupRunnable(this.this$0, this.this$0));
     }
-    this.this$0.showAtLocation(this.a, 0, arrayOfInt[0] + this.a.getWidth() / 2 - i / 2, arrayOfInt[1] + this.a.getHeight() + bgtn.a(2.0F));
+    this.this$0.showAtLocation(this.a, 0, arrayOfInt[0] + this.a.getWidth() / 2 - i / 2, arrayOfInt[1] + this.a.getHeight() + bhtq.a(2.0F));
     this.this$0.a.postDelayed(RedDotBubblePopupWindow.a(this.this$0), 3000L);
   }
 }

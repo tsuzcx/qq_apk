@@ -1,150 +1,75 @@
-import android.content.Context;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import java.io.File;
+import mqq.app.ISecurityFileHelper;
 
 public class apdj
-  extends apcv
+  extends apdh
+  implements ISecurityFileHelper
 {
-  private static final Object a;
-  public static boolean a;
-  
-  static
+  public apdj()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    super(null);
   }
   
-  public static byte a(String paramString)
+  protected String a()
   {
-    return apcv.a(1, paramString);
+    return "QQFavoriteMigration";
   }
   
-  public static Object a()
+  public String declareBusinessFileName()
   {
-    return jdField_a_of_type_JavaLangObject;
+    return "QQ_Favorite";
   }
   
-  public static String a()
+  public boolean doMigrate(File paramFile)
   {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
+    File localFile = new File(antf.bl);
+    if ((localFile.exists()) && (paramFile.isDirectory()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getFilesDir is null");
+      paramFile = apdf.a(localFile);
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        localFile = paramFile[i];
+        String str = localFile.getName();
+        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
+          bhmi.a(localFile.getAbsolutePath(), antf.bl + apdf.a(str));
+        }
+        i += 1;
       }
-      localObject = "";
     }
-    String str;
-    do
+    a();
+    return true;
+  }
+  
+  public boolean needMigration()
+  {
+    if (a())
     {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidetect.so_v8.2.0";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public static String a(String paramString)
-  {
-    return "lib" + paramString + ".so";
-  }
-  
-  protected static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = true;
-    if ((!apcv.a(1, jdField_a_of_type_Boolean, "QMCF_qr")) || (!apcv.a(1, jdField_a_of_type_Boolean, "yuvutil")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "native so is not exist!");
-      }
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramHashMap)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MiniRecog.MiniScanDetectSoLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      break label222;
-      String str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("QMCF_qr"))
-      {
-        paramHashMap.put("QMCF_qr", localXmlPullParser.nextText());
-        continue;
-      }
-      else
-      {
-        if (str.equalsIgnoreCase("yuvutil"))
-        {
-          paramHashMap.put("yuvutil", localXmlPullParser.nextText());
-          continue;
-        }
-        if (str.equalsIgnoreCase("QMCF_qr_64"))
-        {
-          paramHashMap.put("QMCF_qr_64", localXmlPullParser.nextText());
-          continue;
-        }
-        if (!str.equalsIgnoreCase("yuvutil_64")) {
-          continue;
-        }
-        paramHashMap.put("yuvutil_64", localXmlPullParser.nextText());
-        continue;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "parseConfig success|config=" + paramHashMap);
+      File localFile = new File(antf.bl);
+      if ((localFile.exists()) && (localFile.isDirectory())) {
         return true;
-        label222:
-        if (i != 1) {
-          switch (i)
-          {
-          }
-        }
       }
+      a();
     }
+    return false;
   }
   
-  public static byte b(String paramString)
+  public File oldBusinessDir(String paramString)
   {
-    return apcv.a(1, jdField_a_of_type_Boolean, paramString);
+    return null;
   }
   
-  public static String b(String paramString)
+  public boolean oldBusinessDirExist(String paramString)
   {
-    return "lib" + paramString + ".so";
+    return false;
   }
   
-  public static String c(String paramString)
+  public String[] reportHistoryFileInfo()
   {
-    return apcv.a(1, paramString);
+    return new String[] { "0", "0" };
   }
 }
 

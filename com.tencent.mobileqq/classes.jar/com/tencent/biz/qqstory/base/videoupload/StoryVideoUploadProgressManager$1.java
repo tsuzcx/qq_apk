@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import wik;
+import wmf;
 
 public class StoryVideoUploadProgressManager$1
   implements Runnable
 {
-  public StoryVideoUploadProgressManager$1(wik paramwik, String paramString, int paramInt) {}
+  public StoryVideoUploadProgressManager$1(wmf paramwmf, String paramString, int paramInt) {}
   
   public void run()
   {
-    wik.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    wmf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

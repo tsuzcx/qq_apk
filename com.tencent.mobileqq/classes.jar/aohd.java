@@ -1,16 +1,6 @@
-import android.graphics.Bitmap;
-
-public class aohd
+public abstract interface aohd
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void onHistoryChanged();
 }
 
 

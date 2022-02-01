@@ -1,36 +1,173 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.RemoteException;
+import com.tencent.av.service.AVPbInfo;
+import com.tencent.av.service.AVServiceForQQ;
 import com.tencent.qphone.base.util.QLog;
 
-class lxz
-  extends anxg
+public class lxz
 {
-  String jdField_a_of_type_JavaLangString;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  lwu jdField_a_of_type_Lwu = null;
+  lya jdField_a_of_type_Lya = null;
+  lyb jdField_a_of_type_Lyb = new lyb(this);
   
-  private lxz(lxv paramlxv) {}
-  
-  protected void a(boolean paramBoolean)
+  public lxz(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Lwu == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return 0;
+      try
+      {
+        paramInt = this.jdField_a_of_type_Lwu.a(paramLong, paramInt);
+        return paramInt;
+      }
+      catch (RemoteException localRemoteException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "RemoteException", localRemoteException);
+    return 0;
+  }
+  
+  public AVPbInfo a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lwu == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return null;
+      try
+      {
+        paramArrayOfByte = this.jdField_a_of_type_Lwu.a(paramArrayOfByte);
+        return paramArrayOfByte;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
+    return null;
+  }
+  
+  public void a()
+  {
+    b(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Lya = null;
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Lwu == null)
+    {
+      Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
+      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Lyb, 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "bindService result == " + bool);
+      }
     }
   }
   
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  public void a(String paramString)
   {
-    if (paramTroopInfo == null) {}
+    if (this.jdField_a_of_type_Lwu == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
     do
     {
       return;
-      paramTroopInfo = paramTroopInfo.troopuin;
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
-    this.jdField_a_of_type_Lxv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    if (this == this.jdField_a_of_type_Lxv.jdField_a_of_type_Lxz) {
-      this.jdField_a_of_type_Lxv.jdField_a_of_type_Lxz = null;
+      try
+      {
+        this.jdField_a_of_type_Lwu.a(paramString);
+        return;
+      }
+      catch (RemoteException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "onGetQCallNickName RemoteException", paramString);
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_Lwu == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
     }
-    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
-    this.jdField_a_of_type_Lxv.a();
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lwu.a(paramString, paramBitmap);
+        return;
+      }
+      catch (RemoteException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "pushStrangeFace RemoteException", paramString);
+  }
+  
+  public void a(lya paramlya)
+  {
+    this.jdField_a_of_type_Lya = paramlya;
+    a(this.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lwu == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lwu.a(paramArrayOfByte);
+        return;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
+  }
+  
+  public void b(Context paramContext)
+  {
+    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Lyb);
+    this.jdField_a_of_type_Lwu = null;
+  }
+  
+  public void b(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lwu == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lwu.c(paramArrayOfByte);
+        return;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
   }
 }
 

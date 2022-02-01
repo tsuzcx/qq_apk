@@ -1,9 +1,22 @@
-public class ogy
-  extends bmqk
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
+
+class ogy
+  implements QQPermissionCallback
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  ogy(ogx paramogx, BaseActivity paramBaseActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ogv.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    ogs.a(this.jdField_a_of_type_Ogx.a, 5);
   }
 }
 

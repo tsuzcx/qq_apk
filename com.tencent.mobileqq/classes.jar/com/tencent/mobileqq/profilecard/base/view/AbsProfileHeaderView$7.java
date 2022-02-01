@@ -1,0 +1,32 @@
+package com.tencent.mobileqq.profilecard.base.view;
+
+import android.os.Message;
+import anyw;
+import azxr;
+import bhkt;
+import blha;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+
+class AbsProfileHeaderView$7
+  implements Runnable
+{
+  AbsProfileHeaderView$7(AbsProfileHeaderView paramAbsProfileHeaderView, azxr paramazxr, boolean paramBoolean) {}
+  
+  public void run()
+  {
+    ExtensionInfo localExtensionInfo = ((anyw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Azxr.a.a);
+    Message localMessage = this.this$0.jdField_a_of_type_Blha.obtainMessage(1003, localExtensionInfo);
+    this.this$0.jdField_a_of_type_Blha.sendMessage(localMessage);
+    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bhkt.b(localExtensionInfo.pendantId))) {
+      bhkt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azxr.a.a);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.7
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bgeq
-  implements DialogInterface.OnClickListener
+public abstract class bgeq
+  extends bgeg
 {
-  public bgeq(UpgradeActivity paramUpgradeActivity) {}
+  public List<Integer> b = new ArrayList();
+  public int g = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bgeq()
   {
-    bcst.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bgds.b(), String.valueOf(0), bgdt.a(), "0");
-    this.a.finish();
+    this.b.add(Integer.valueOf(0));
+    this.b.add(Integer.valueOf(3));
+    this.b.add(Integer.valueOf(1));
+    this.b.add(Integer.valueOf(2));
+  }
+  
+  public int e()
+  {
+    return this.g;
   }
 }
 

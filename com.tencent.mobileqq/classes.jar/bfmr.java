@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.18;
+import android.view.View;
 
-public class bfmr
-  implements DialogInterface.OnClickListener
+class bfmr
+  implements bliz
 {
-  public bfmr(VisitorTroopCardFragment.18 param18) {}
+  bfmr(bfmn parambfmn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      this.a.this$0.getActivity().finish();
+    bfmn.a(this.a);
+    if (paramInt == 0) {
+      bfmn.a(this.a, "");
     }
   }
 }

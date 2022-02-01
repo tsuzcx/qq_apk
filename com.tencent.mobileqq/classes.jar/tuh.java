@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class tuh
-  implements zxw<aacp>
+class tuh
+  extends aocj
 {
-  public tuh(FolderFollowTabFragment paramFolderFollowTabFragment) {}
+  tuh(tug paramtug) {}
   
-  public void a(zxz paramzxz, aacp paramaacp)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (paramzxz.e()) {
-      FolderFollowTabFragment.a(this.a, paramaacp);
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderManager", 2, "onUpdateSendMsgError->uin:" + paramString1 + ", type:" + paramInt1 + ", uniseq:" + paramLong2 + ", errorCode:" + paramInt2);
     }
-    while ((!paramzxz.d()) && (!paramzxz.c())) {
-      return;
+    tug.a(this.a, paramString1);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderManager", 2, "onSendResult->puin:" + paramString + ", isSuccess:" + paramBoolean);
     }
-    FolderFollowTabFragment.b(this.a, paramaacp);
+    tug.a(this.a, paramString);
   }
 }
 

@@ -1,29 +1,49 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.qwallet.plugin.QWalletHelper;
+import mqq.app.AppRuntime;
 
-class bmou
-  implements bmoy
+public class bmou
+  extends RemoteCommand
 {
-  bmou(bmot parambmot, IWebviewListener paramIWebviewListener) {}
-  
-  public void a()
+  public bmou()
   {
-    if (bmot.a(this.jdField_a_of_type_Bmot) == null) {}
-    do
-    {
-      return;
-      if (bmot.a(this.jdField_a_of_type_Bmot).getVisibility() != 0) {
-        bmot.a(this.jdField_a_of_type_Bmot).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
+    super("qqreader_plugin_asyn_cmd");
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  private QQAppInterface a()
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
     }
+    return null;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    switch (paramBundle.getInt("CommondType"))
+    {
+    }
+    for (;;)
+    {
+      return null;
+      if (a() != null)
+      {
+        paramBundle = paramBundle.getString("publicaccount_uin");
+        tzq.a(a(), a().getApp(), paramBundle, new bmov(this, paramOnInvokeFinishLinstener));
+        continue;
+        QWalletHelper.preloadQWallet(a());
+      }
+    }
+  }
+  
+  public boolean isSynchronized()
+  {
+    return false;
   }
 }
 

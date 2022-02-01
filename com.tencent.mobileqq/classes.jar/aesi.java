@@ -1,45 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
+import mqq.util.WeakReference;
 
 public class aesi
-  extends BroadcastReceiver
+  extends beit
 {
-  public aesi(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  WeakReference<afnr> a;
+  WeakReference<View> b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  aesi(afnr paramafnr, View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
-    {
-      paramContext = paramIntent.getStringExtra("uin");
-      NotifyPushSettingActivity.a(this.a, paramContext);
+    this.a = new WeakReference(paramafnr);
+    this.b = new WeakReference(paramView);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    afnr localafnr = (afnr)this.a.get();
+    View localView = (View)this.b.get();
+    if ((localafnr != null) && (localView != null)) {
+      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localafnr, localView));
     }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
-        return;
-      }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
+    return super.a(paramInt);
   }
 }
 

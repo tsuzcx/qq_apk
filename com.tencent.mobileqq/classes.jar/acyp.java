@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
 public class acyp
-  extends aczg
+  extends AnimatorListenerAdapter
 {
-  public int a()
+  public acyp(TransitionContext paramTransitionContext) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return -1000;
+    super.onAnimationCancel(paramAnimator);
+    this.a.a();
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return (paramElem.common_elem.has()) && (18 == paramElem.common_elem.uint32_service_type.get());
+    super.onAnimationEnd(paramAnimator);
+    this.a.a();
   }
 }
 

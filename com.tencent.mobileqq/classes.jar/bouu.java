@@ -1,6 +1,15 @@
-public abstract interface bouu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bouu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  bouu(boun paramboun) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    boun.a(this.a).dismiss();
+  }
 }
 
 

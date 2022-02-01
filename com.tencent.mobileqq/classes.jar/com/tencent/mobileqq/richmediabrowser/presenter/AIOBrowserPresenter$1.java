@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmediabrowser.presenter;
 
-import arvq;
-import bawx;
+import asle;
+import bbpq;
 
 public class AIOBrowserPresenter$1
   implements Runnable
 {
-  public AIOBrowserPresenter$1(bawx parambawx) {}
+  public AIOBrowserPresenter$1(bbpq parambbpq) {}
   
   public void run() {}
 }

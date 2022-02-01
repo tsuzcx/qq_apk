@@ -1,42 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.8.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class ajwr
-  implements anqk
+class ajwr
+  extends anyu
 {
-  ajwr(ajvr paramajvr) {}
+  ajwr(ajwm paramajwm) {}
   
-  public void a(int paramInt)
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    this.a.a(32, 16, Integer.valueOf(paramInt));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    pmy.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((!paramBoolean) && (paramInt >= 0))
+    if (paramBoolean)
     {
-      a(paramInt);
-      return;
+      ajwm.a(this.a, true);
+      ajwm.a(this.a);
     }
-    ThreadManager.executeOnSubThread(new MainAssistObserver.8.1(this));
   }
 }
 

@@ -1,109 +1,60 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
-@TargetApi(14)
 public class bqjp
-  implements SurfaceTexture.OnFrameAvailableListener
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  public Surface a;
-  bqjr jdField_a_of_type_Bqjr;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  boolean jdField_a_of_type_Boolean;
+  public float a;
+  public final int a;
+  public final PointF a;
+  public final String a;
+  public final float b;
+  public final int b;
+  public final float c;
+  public final int c;
+  public final float d;
+  public final int d;
   
-  public bqjp()
+  public bqjp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2)
   {
-    a();
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  void a()
+  public bqjp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Bqjr = new bqjr();
-    this.jdField_a_of_type_Bqjr.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Bqjr.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static bqjp a(@NonNull bqjp parambqjp)
   {
-    this.jdField_a_of_type_Bqjr.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8);
+    return new bqjp(parambqjp.jdField_a_of_type_AndroidGraphicsPointF.x, parambqjp.jdField_a_of_type_AndroidGraphicsPointF.y, parambqjp.jdField_a_of_type_Float, parambqjp.jdField_b_of_type_Float, parambqjp.jdField_c_of_type_Float, parambqjp.jdField_d_of_type_Float, parambqjp.jdField_a_of_type_Int, parambqjp.jdField_b_of_type_Int, parambqjp.jdField_a_of_type_JavaLangString, parambqjp.jdField_c_of_type_Int, parambqjp.jdField_d_of_type_Int);
   }
   
-  public void b()
+  public static bqjp a(@NonNull bqrk parambqrk, @NonNull bqjp parambqjp)
   {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
-    {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-    }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-    this.jdField_a_of_type_Bqjr = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    return new bqjp(parambqrk.b.x, parambqrk.b.y, parambqjp.jdField_a_of_type_Float, parambqrk.r, parambqrk.s, parambqrk.t, parambqjp.jdField_a_of_type_Int, parambqjp.jdField_b_of_type_Int, parambqjp.jdField_a_of_type_JavaLangString, parambqjp.jdField_c_of_type_Int, parambqjp.jdField_d_of_type_Int);
   }
   
-  @SuppressLint({"NewApi"})
-  public void c()
+  public String toString()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("Surface frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bqjr.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Bqjr.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void onFrameAvailable(SurfaceTexture arg1)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_c_of_type_Int + ", textSize=" + this.jdField_d_of_type_Int + '}';
   }
 }
 

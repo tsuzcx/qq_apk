@@ -1,21 +1,8 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-
-public class wke
+public abstract interface wke
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
-  {
-    return wkx.a(paramQQUserUIItem);
-  }
+  public abstract int a(String paramString1, String paramString2, long paramLong);
   
-  public static boolean a()
-  {
-    return true;
-  }
-  
-  public static String b(QQUserUIItem paramQQUserUIItem)
-  {
-    return wkx.b(paramQQUserUIItem);
-  }
+  public abstract void a(wjs paramwjs);
 }
 
 

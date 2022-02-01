@@ -2,12 +2,12 @@ package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 public class ExcitingTransferDef$Recv$ReceiveResultType
 {
-  public static final int ReceiveResultType_CS = 2;
-  public static final int ReceiveResultType_Http = 4;
-  public static final int ReceiveResultType_IO = 3;
-  public static final int ReceiveResultType_Internal = 5;
-  public static final int ReceiveResultType_Suc = 0;
-  public static final int ReceiveResultType_User = 1;
+  public static final int RECEIVE_RESULT_TYPE_CS = 2;
+  public static final int RECEIVE_RESULT_TYPE_HTTP = 4;
+  public static final int RECEIVE_RESULT_TYPE_INTERNAL = 5;
+  public static final int RECEIVE_RESULT_TYPE_IO = 3;
+  public static final int RECEIVE_RESULT_TYPE_SUC = 0;
+  public static final int RECEIVE_RESULT_TYPE_USER = 1;
 }
 
 

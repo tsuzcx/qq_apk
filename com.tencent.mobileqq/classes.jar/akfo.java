@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class akfo
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public TextView b;
   
-  public akfo(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  public akfo(akfn paramakfn) {}
 }
 
 

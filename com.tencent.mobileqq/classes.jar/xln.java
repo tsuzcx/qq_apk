@@ -1,55 +1,66 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.TextureView;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-final class xln
-  implements ValueAnimator.AnimatorUpdateListener
+public class xln
 {
-  xln(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static TextureView a(View paramView)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
-    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-    float f3;
-    if (f1 < f2)
+    if ((paramView instanceof ViewGroup))
     {
-      f1 = f2 / f1;
-      f2 = i;
-      f3 = i;
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
-    }
-    for (;;)
-    {
-      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
-      return;
-      if (f2 < f1)
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-        f1 /= f2;
-        f2 = j;
-        f3 = j;
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
+        TextureView localTextureView = a(paramView.getChildAt(i));
+        if (localTextureView != null) {
+          return localTextureView;
+        }
+        i += 1;
       }
     }
+    if ((paramView instanceof TextureView)) {
+      return (TextureView)paramView;
+    }
+    return null;
+  }
+  
+  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
+    {
+      znw.a(false, "bitmap is not ARGB_8888");
+      return false;
+    }
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int m = j / paramInt1;
+    int n = k / paramInt1;
+    paramInt1 = 0;
+    for (;;)
+    {
+      if (paramInt1 >= j) {
+        break label118;
+      }
+      int i = 0;
+      for (;;)
+      {
+        if (i >= k) {
+          break label110;
+        }
+        int i1 = paramBitmap.getPixel(paramInt1, i);
+        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
+          break;
+        }
+        i += n;
+      }
+      label110:
+      paramInt1 += m;
+    }
+    label118:
+    return true;
   }
 }
 

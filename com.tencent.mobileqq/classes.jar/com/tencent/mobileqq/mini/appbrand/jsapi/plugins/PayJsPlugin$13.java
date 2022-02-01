@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ class PayJsPlugin$13
       try
       {
         paramJSONObject.put("resultCode", -4);
-        paramJSONObject.put("resultMsg", anni.a(2131706675));
+        paramJSONObject.put("resultMsg", anzj.a(2131706784));
         PayJsPlugin.access$200(this.this$0, this.val$seq, this.val$event, paramJSONObject, "");
         return;
       }

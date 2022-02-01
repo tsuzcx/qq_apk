@@ -1,34 +1,73 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bhkj
-  implements nkl
+public class bhkj
 {
-  bhkj(bhkg parambhkg, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public static MessageForArkApp a(Bundle paramBundle, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    ArkAppMessage localArkAppMessage = new ArkAppMessage();
+    localArkAppMessage.appMinVersion = "0.0.0.1";
+    localArkAppMessage.appName = "com.tencent.structmsg";
+    localArkAppMessage.appView = a(paramBundle.getInt("req_type"));
+    Object localObject = ArkAppCacheMgr.getApplicationFromManifest(localArkAppMessage.appName, localArkAppMessage.appMinVersion);
+    if (localObject != null)
+    {
+      localArkAppMessage.appDesc = ((String)((Map)localObject).get("desc"));
+      localArkAppMessage.appMinVersion = ((String)((Map)localObject).get("version"));
     }
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
-      this.jdField_a_of_type_Bhkg.a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+    if (TextUtils.isEmpty(localArkAppMessage.appDesc)) {
+      localArkAppMessage.appDesc = localArkAppMessage.appName;
     }
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
-      if (this.jdField_a_of_type_Bhkg.a(2L, this.jdField_b_of_type_Long)) {
-        this.jdField_a_of_type_Bhkg.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
-      }
+    String str = paramBundle.getString("title");
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = localArkAppMessage.appDesc;
     }
-    while ((!this.jdField_a_of_type_Bhkg.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Bhkg.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
+    localArkAppMessage.promptText = String.format(anzj.a(2131699574), new Object[] { localObject });
+    localArkAppMessage.metaList = bhot.a(paramBundle, localArkAppMessage.appName);
+    localArkAppMessage.config = a();
+    paramBundle = bcry.a(paramQQAppInterface, paramString1, paramString2, paramInt, localArkAppMessage);
+    paramBundle.msgData = localArkAppMessage.toBytes();
+    paramBundle.parse();
+    return paramBundle;
   }
   
-  public void progress(int paramInt)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("forward", 1);
+      localJSONObject.put("autosize", 1);
+      localJSONObject.put("type", "normal");
+      return localJSONObject.toString();
     }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("ArkMessageBuilder", 1, "getConfigValue", localJSONException);
+      }
+    }
+  }
+  
+  public static String a(int paramInt)
+  {
+    if (paramInt == 2) {
+      return "music";
+    }
+    if (paramInt == 4) {
+      return "video";
+    }
+    return "news";
   }
 }
 

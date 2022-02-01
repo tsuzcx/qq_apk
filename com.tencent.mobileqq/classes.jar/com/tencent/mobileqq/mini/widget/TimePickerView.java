@@ -39,13 +39,13 @@ public class TimePickerView
   
   public TimePickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755379);
+    super(paramContext, 2131755380);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559085, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559084, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     if (localObject != null)
@@ -57,12 +57,12 @@ public class TimePickerView
       ((Window)localObject).setAttributes(localLayoutParams);
       ((Window)localObject).setGravity(80);
     }
-    localObject = (FrameLayout)paramContext.findViewById(2131372563);
+    localObject = (FrameLayout)paramContext.findViewById(2131372674);
     this.mTimePicker = new TimePicker(new ContextThemeWrapper(getContext(), 16973934));
     ((FrameLayout)localObject).addView(this.mTimePicker);
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131379547));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131379719));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131379586));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131379759));
     this.mConfirmTextView.setOnClickListener(this);
     int i = Resources.getSystem().getIdentifier("hour", "id", "android");
     int j = Resources.getSystem().getIdentifier("minute", "id", "android");
@@ -147,7 +147,7 @@ public class TimePickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131379547)
+    if (paramView.getId() == 2131379719)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onTimeCancel();
@@ -158,7 +158,7 @@ public class TimePickerView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView.getId() == 2131379586)
+      if (paramView.getId() == 2131379759)
       {
         if (this.mOnConfirmListener != null)
         {

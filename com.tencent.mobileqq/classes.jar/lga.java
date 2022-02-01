@@ -1,27 +1,27 @@
+import com.tencent.av.business.handler.NetAddr;
+import java.util.List;
+
 public class lga
 {
+  private static lga a;
   public int a;
-  public CharSequence a;
-  public String a;
-  public boolean a;
-  public CharSequence b;
+  public long a;
+  public List<NetAddr> a;
+  public int b;
   
-  public lga(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
-    this.b = paramCharSequence2;
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_Lga = new lga();
   }
   
-  public boolean a()
+  public static lga a()
   {
-    return this.jdField_a_of_type_Int == 2;
+    return jdField_a_of_type_Lga;
   }
   
   public String toString()
   {
-    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
+    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
   }
 }
 

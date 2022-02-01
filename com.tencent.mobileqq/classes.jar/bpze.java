@@ -1,35 +1,27 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
 public class bpze
+  extends AnimatorListenerAdapter
 {
-  private bpzf jdField_a_of_type_Bpzf;
-  private ConcurrentHashMap<Integer, bpzi> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public bpze(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public bpzi a(int paramInt)
-  {
-    return (bpzi)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a(bpzi parambpzi)
+  public void onAnimationEnd(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FrameAdapter", 2, "addFrame, index=" + parambpzi.a);
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(parambpzi.a), parambpzi);
-    if (this.jdField_a_of_type_Bpzf != null) {
-      this.jdField_a_of_type_Bpzf.a();
-    }
+    this.a.jdField_a_of_type_Bpzp.d = 1;
   }
   
-  public boolean a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+    }
   }
 }
 

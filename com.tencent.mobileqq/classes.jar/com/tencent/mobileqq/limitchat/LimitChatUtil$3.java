@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.limitchat;
 
-import asfs;
+import asvg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 
@@ -11,9 +11,9 @@ public final class LimitChatUtil$3
   
   public void run()
   {
-    asfs localasfs = (asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
-    if (localasfs != null) {
-      localasfs.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    asvg localasvg = (asvg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
+    if (localasvg != null) {
+      localasvg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
   }
 }

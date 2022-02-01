@@ -1,26 +1,30 @@
-public class apbr
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+class apbr
+  extends BroadcastReceiver
 {
-  public double a;
-  public int a;
-  public String a;
-  public apbs[] a;
-  public int b;
+  apbr(apbp paramapbp) {}
   
-  public String toString()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int i;
-    if ((this.jdField_a_of_type_ArrayOfApbs != null) && (this.jdField_a_of_type_ArrayOfApbs.length > 0)) {
-      i = 0;
-    }
-    while (i < this.jdField_a_of_type_ArrayOfApbs.length)
+    if (paramIntent != null)
     {
-      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfApbs[i].toString()).append('\n');
-      i += 1;
-      continue;
-      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
+      paramContext = paramIntent.getAction();
+      if (paramContext != null)
+      {
+        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+          break label57;
+        }
+        apbp.a(this.a);
+      }
     }
-    return localStringBuilder.toString();
+    label57:
+    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
+      return;
+    }
+    apbp.b(this.a);
   }
 }
 

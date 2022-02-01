@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.util.QZLog;
-import nko;
+import nmj;
 
 public class GdtPreLoadOfflinePackageService
   extends Service
@@ -29,8 +29,8 @@ public class GdtPreLoadOfflinePackageService
         try
         {
           BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          nko.a();
-          nko.a(str, localBaseApplicationImpl.getRuntime());
+          nmj.a();
+          nmj.a(str, localBaseApplicationImpl.getRuntime());
         }
         catch (Exception localException)
         {

@@ -1,46 +1,22 @@
-public final class bkdu
-  implements Cloneable
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+
+class bkdu
+  implements ServiceConnection
 {
-  private int a;
+  bkdu(bkds parambkds) {}
   
-  public bkdu(int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a = paramInt;
+    bkdp.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
+    bkds.a(this.a, lxb.a(paramIBinder));
   }
   
-  public bkdu(byte[] paramArrayOfByte)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    this(paramArrayOfByte, 0);
-  }
-  
-  public bkdu(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.a = (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bkdu))) {}
-    while (this.a != ((bkdu)paramObject).a()) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.a;
+    bkdp.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
+    bkds.a(this.a, null);
   }
 }
 

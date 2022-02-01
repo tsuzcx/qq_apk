@@ -1,38 +1,22 @@
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraManager.8;
 
-final class boiy
-  implements bocb
+public class boiy
+  implements bdbl
 {
-  boiy(boiz paramboiz, AEEditorTextBean paramAEEditorTextBean) {}
+  public boiy(AECameraManager.8 param8) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Boiz != null) {
-      this.jdField_a_of_type_Boiz.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(66.0D + 0.34D * paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_Boiz != null)) {
-      this.jdField_a_of_type_Boiz.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, 100);
-    }
-    boiz localboiz;
-    AEEditorTextBean localAEEditorTextBean;
-    if (this.jdField_a_of_type_Boiz != null)
+    if (paramBoolean1)
     {
-      localboiz = this.jdField_a_of_type_Boiz;
-      localAEEditorTextBean = this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean;
-      if (!paramBoolean) {
-        break label62;
-      }
-    }
-    label62:
-    for (String str = "SUCCESS_FONT_DOWNLOAD_SUCCEEDED";; str = "ERROR_FONT_DOWNLOAD_FAILED")
-    {
-      localboiz.a(localAEEditorTextBean, paramBoolean, str);
+      boiw.a(this.a.this$0, true);
       return;
     }
+    boiw.a(this.a.this$0).g();
   }
 }
 

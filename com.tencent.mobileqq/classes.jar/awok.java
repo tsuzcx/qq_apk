@@ -1,23 +1,23 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
+
 public class awok
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public awoi a()
+  public static void a(int paramInt1, int paramInt2)
   {
-    return new awoi(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null);
+    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
   }
   
-  public awok a(int paramInt)
+  public static void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
   }
   
-  public awok a(String paramString)
+  public static void b(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bhnv.b(null), paramInt), 5, null, false);
   }
 }
 

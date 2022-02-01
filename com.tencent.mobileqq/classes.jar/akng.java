@@ -1,65 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class akng
-  extends BroadcastReceiver
 {
-  public akng(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public static List<aknh> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a(JSONObject paramJSONObject)
   {
-    int i;
-    if (paramIntent != null)
+    int i = 2;
+    if ((paramJSONObject != null) && (paramJSONObject.has("entryList")))
     {
-      paramContext = paramIntent.getAction();
-      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-        break label79;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RedPacketKSongFragment", 2, "receive action_recv_video_request");
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0)
+      paramJSONObject = paramJSONObject.optJSONArray("entryList");
+      ArrayList localArrayList = new ArrayList();
+      if (paramJSONObject.length() > 2) {}
+      for (;;)
       {
-        if ((!this.a.b) || (!this.a.c) || (this.a.a.getVisibility() != 0)) {
-          break label151;
+        int j = 0;
+        while (j < i)
+        {
+          JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
+          aknh localaknh = new aknh();
+          localaknh.jdField_a_of_type_Int = localJSONObject.optInt("id");
+          Object localObject = localJSONObject.optJSONObject("image");
+          if (localObject != null)
+          {
+            localObject = ((JSONObject)localObject).optString("src");
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              localaknh.jdField_a_of_type_JavaLangString = ("https://gxh.vip.qq.com/xydata" + (String)localObject);
+            }
+          }
+          localaknh.c = localJSONObject.optString("name");
+          localaknh.d = localJSONObject.optString("desc");
+          localaknh.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
+          localaknh.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
+          localaknh.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
+          localArrayList.add(localaknh);
+          j += 1;
         }
-        this.a.a();
+        i = paramJSONObject.length();
       }
-      label79:
-      while (!this.a.d)
-      {
-        return;
-        if (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
-          break label188;
-        }
-        paramContext = (TelephonyManager)this.a.getActivity().getSystemService("phone");
-        if (QLog.isColorLevel()) {
-          QLog.d("RedPacketKSongFragment", 2, "receive action_phone_state_changed|call_state_ringing" + paramContext.getCallState());
-        }
-        if (paramContext.getCallState() != 1) {
-          break label188;
-        }
-        i = 1;
-        break;
-      }
-      label151:
-      if (QLog.isColorLevel()) {
-        QLog.d("RedPacketKSongFragment", 2, "receive pause action");
-      }
-      this.a.b(anni.a(2131712098));
-      return;
-      label188:
-      i = 0;
+      a = localArrayList;
     }
   }
 }

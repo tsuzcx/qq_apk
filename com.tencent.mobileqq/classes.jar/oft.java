@@ -1,22 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
-class oft
-  implements QQPermissionCallback
+public abstract interface oft
 {
-  oft(ofk paramofk, Runnable paramRunnable) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    ofk.a(this.jdField_a_of_type_Ofk, 3);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
+  public abstract void a(List<ChatMessage> paramList);
 }
 
 

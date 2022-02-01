@@ -1,52 +1,16 @@
-import android.view.View;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.widget.AbsListView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/tvk/TVKVideoView;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "videoView", "Lcom/tencent/qqlive/mediaplayer/view/IVideoViewBase;", "(Lcom/tencent/qqlive/mediaplayer/view/IVideoViewBase;)V", "doCacheSurfaceTexture", "", "doRecoverSurfaceTexture", "getOriginView", "Landroid/view/View;", "setFixedSize", "videoWidth", "", "videoHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sjm
-  implements six
+class sjm
+  extends pmr
 {
-  private final IVideoViewBase a;
-  
-  public sjm(@Nullable IVideoViewBase paramIVideoViewBase)
+  sjm(sjk paramsjk, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a = paramIVideoViewBase;
+    super(paramString);
   }
   
-  @Nullable
-  public View a()
+  public void a(pmk parampmk)
   {
-    IVideoViewBase localIVideoViewBase2 = this.a;
-    IVideoViewBase localIVideoViewBase1 = localIVideoViewBase2;
-    if (!(localIVideoViewBase2 instanceof View)) {
-      localIVideoViewBase1 = null;
-    }
-    return (View)localIVideoViewBase1;
-  }
-  
-  public void a()
-  {
-    IVideoViewBase localIVideoViewBase = this.a;
-    if (localIVideoViewBase != null) {
-      localIVideoViewBase.doCacheSurfaceTexture();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    IVideoViewBase localIVideoViewBase = this.a;
-    if (localIVideoViewBase != null) {
-      localIVideoViewBase.setFixedSize(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    IVideoViewBase localIVideoViewBase = this.a;
-    if (localIVideoViewBase != null) {
-      localIVideoViewBase.doRecoverSurfaceTexture();
-    }
+    parampmk.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

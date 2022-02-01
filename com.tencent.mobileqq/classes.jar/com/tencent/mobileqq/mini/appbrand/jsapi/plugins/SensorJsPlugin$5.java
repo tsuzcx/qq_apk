@@ -17,17 +17,17 @@ class SensorJsPlugin$5
       int j;
       try
       {
-        SensorJsPlugin.access$300(this.this$0);
+        SensorJsPlugin.access$000(this.this$0);
         JSONObject localJSONObject1 = new JSONObject(this.val$jsonParams);
         if (localJSONObject1.optBoolean("enable"))
         {
           j = localJSONObject1.optInt("interval");
           if (j != 20) {
-            break label254;
+            break label258;
           }
-          if (this.this$0.startRotationListening(i))
+          if (this.this$0.startRotationListening(this.val$webview, i))
           {
-            SensorJsPlugin.access$602(this.this$0, true);
+            SensorJsPlugin.access$302(this.this$0, true);
             this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, null, this.val$callbackId);
             return;
           }
@@ -41,7 +41,7 @@ class SensorJsPlugin$5
         return;
       }
       this.this$0.stopRotationListening();
-      if (!SensorJsPlugin.access$600(this.this$0)) {
+      if (!SensorJsPlugin.access$300(this.this$0)) {
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, ":fail to disable, not enable?", this.val$callbackId);
       }
       for (;;)
@@ -50,10 +50,10 @@ class SensorJsPlugin$5
         localJSONObject2.put("errMsg", this.val$eventName + ":cancel");
         this.val$webview.evaluateCallbackJs(this.val$callbackId, localJSONObject2.toString());
         return;
-        SensorJsPlugin.access$602(this.this$0, false);
+        SensorJsPlugin.access$302(this.this$0, false);
         this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, null, this.val$callbackId);
       }
-      label254:
+      label258:
       while (j != 60)
       {
         JSONObject localJSONObject2;

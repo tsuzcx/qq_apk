@@ -1,19 +1,15 @@
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 class bdtm
-  extends anqd
 {
-  bdtm(bdtl parambdtl) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  ImageView b = null;
   
-  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
-  {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramanqe);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
-  }
+  bdtm(bdtl parambdtl) {}
 }
 
 

@@ -1,30 +1,208 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface yuk
-  extends ytx
+public class yuk
 {
-  public abstract long a(int paramInt);
+  private static yui a = ;
   
-  public abstract Bitmap a(int paramInt);
+  private static String a(String paramString, Object... paramVarArgs)
+  {
+    return String.format(null, paramString, paramVarArgs);
+  }
   
-  public abstract List<? extends ywd> a();
+  public static void a(String paramString1, String paramString2)
+  {
+    if (a.a(2)) {
+      a.a(paramString1, paramString2);
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
+  public static void a(String paramString1, String paramString2, Object paramObject)
+  {
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject }));
+    }
+  }
   
-  public abstract void a(int paramInt, byte[] paramArrayOfByte);
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
+    }
+  }
   
-  public abstract void a(Bitmap paramBitmap);
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
+  {
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
+    }
+  }
   
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
+    }
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a.a(3)) {
+      a.a(paramString1, paramString2, paramThrowable);
+    }
+  }
   
-  public abstract void b(int paramInt);
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(2)) {
+      a.a(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
   
-  public abstract void j();
+  public static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(3)) {
+      a(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
   
-  public abstract void k();
+  public static void a(yui paramyui)
+  {
+    if (paramyui == null) {
+      throw new IllegalArgumentException();
+    }
+    a = paramyui;
+  }
+  
+  public static boolean a()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    if (a.a(3)) {
+      a.b(paramString1, paramString2);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a.a(5)) {
+      a.c(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(3)) {
+      b(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void b(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(4)) {
+      a.b(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, paramString2);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a.a(6)) {
+      a.d(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void c(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(5)) {
+      a.c(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    if (a.a(5)) {
+      a.d(paramString1, paramString2);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(5)) {
+      a.d(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void d(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(6)) {
+      a.d(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    if (a.a(6)) {
+      a.e(paramString1, paramString2);
+    }
+  }
+  
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(6)) {
+      a.e(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void f(String paramString1, String paramString2)
+  {
+    if (a.a(6)) {
+      a.e(paramString1, paramString2);
+    }
+  }
 }
 
 

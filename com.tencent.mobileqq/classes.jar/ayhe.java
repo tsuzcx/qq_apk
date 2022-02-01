@@ -1,33 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class ayhe
-  implements View.OnTouchListener
+public abstract interface ayhe
 {
-  public ayhe(ScanOcrActivity paramScanOcrActivity) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramView == ScanOcrActivity.a(this.a))
-      {
-        paramView.setAlpha(0.7F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        paramView.setAlpha(1.0F);
-      }
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(Comments.Comment paramComment);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

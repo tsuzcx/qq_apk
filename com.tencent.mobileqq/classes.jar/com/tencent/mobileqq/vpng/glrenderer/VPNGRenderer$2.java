@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vpng.glrenderer;
 
 import android.opengl.GLES20;
-import bhky;
+import biln;
 
 public class VPNGRenderer$2
   implements Runnable
 {
-  public VPNGRenderer$2(bhky parambhky) {}
+  public VPNGRenderer$2(biln parambiln) {}
   
   public void run()
   {
-    GLES20.glDeleteTextures(bhky.a(this.this$0).length, bhky.a(this.this$0), 0);
-    GLES20.glDeleteProgram(bhky.a(this.this$0));
+    GLES20.glDeleteTextures(biln.a(this.this$0).length, biln.a(this.this$0), 0);
+    GLES20.glDeleteProgram(biln.a(this.this$0));
     GLES20.glFlush();
   }
 }

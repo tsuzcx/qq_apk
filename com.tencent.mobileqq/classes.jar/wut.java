@@ -1,13 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
-
 public class wut
-  implements View.OnClickListener
 {
-  public wut(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
+  @zoq(a="oa_task_id")
+  public int a;
+  @zoq(a="bg_url")
+  public String a;
+  @zoq(a="is_comp_able")
+  public boolean a;
+  @zoq(a="comp_vid")
+  public String b;
+  @zoq(a="icon_url")
+  public String c;
   
-  public void onClick(View paramView) {}
+  public String toString()
+  {
+    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
+  }
 }
 
 

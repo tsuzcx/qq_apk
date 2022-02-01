@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import MQQ.PayRuleCfg;
-import acux;
-import acvg;
-import acwg;
-import adcd;
-import afuf;
-import ahrk;
-import aijp;
-import aipe;
-import aiyr;
-import ajby;
-import aklj;
-import akme;
-import akpd;
-import akwd;
-import albs;
-import android.app.Activity;
+import aczb;
+import aczk;
+import adaj;
+import adlb;
+import agdx;
+import aiay;
+import aiti;
+import ajan;
+import ajka;
+import ajng;
+import ajwm;
+import akwu;
+import akxp;
+import alao;
+import alhs;
+import alni;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -24,62 +24,64 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
 import android.view.accessibility.AccessibilityManager;
-import anhk;
-import anip;
-import anjo;
-import anks;
-import anlf;
-import anmw;
-import anpk;
-import anrs;
-import anuk;
-import anwd;
-import anyj;
-import anyr;
-import anyv;
-import anzf;
-import aohy;
-import aone;
-import aong;
-import aonn;
-import aopm;
-import aost;
-import aowd;
-import apex;
-import apop;
-import aqct;
-import aqfv;
-import arcj;
-import avfx;
-import awbj;
-import awhq;
-import azcg;
-import bcbv;
-import bcow;
-import bcrq;
-import bcrv;
-import bcsb;
-import bcst;
-import bcuq;
-import bdch;
-import bdjh;
-import beap;
-import beba;
-import bemy;
-import bfiv;
-import bfuk;
-import bgjq;
-import bgmg;
-import bgnt;
-import bguq;
-import bhgh;
-import bigl;
-import bihl;
-import biii;
-import bisv;
-import bkgt;
-import blsb;
-import bmuh;
+import antf;
+import anum;
+import anvl;
+import anwo;
+import anxb;
+import anyw;
+import aobl;
+import aody;
+import aogu;
+import aoip;
+import aokv;
+import aold;
+import aolf;
+import aolp;
+import aovm;
+import apau;
+import apaw;
+import apbd;
+import apbp;
+import apdc;
+import apgj;
+import apjt;
+import apsn;
+import aqcf;
+import aqrw;
+import aquy;
+import arry;
+import avya;
+import awub;
+import axai;
+import azut;
+import bcun;
+import bdho;
+import bdki;
+import bdkn;
+import bdkt;
+import bdll;
+import bdnj;
+import bduy;
+import becc;
+import bezi;
+import bezz;
+import bflw;
+import bfmf;
+import bgiw;
+import bgul;
+import bhjr;
+import bhmi;
+import bhnv;
+import bhut;
+import bigw;
+import bjhk;
+import bjik;
+import bjjh;
+import bjtu;
+import blhw;
+import bmtd;
+import bnvp;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.NotificationReportUtil;
@@ -128,452 +130,40 @@ import java.util.List;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import nqq;
-import nuk;
-import nuu;
-import nuy;
-import nve;
-import oau;
-import otw;
-import pmh;
-import pmo;
-import pmy;
-import pyq;
-import tez;
-import txq;
-import tyg;
-import wff;
+import nso;
+import nwf;
+import nwo;
+import nws;
+import nwy;
+import oce;
+import omj;
+import pfa;
+import pfi;
+import pfs;
+import pra;
+import svr;
+import txs;
+import tyi;
+import vvw;
+import wja;
 
 public class AfterSyncMsg
   extends AsyncStep
 {
-  private void a()
+  private void A()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      ((anwd)this.a.app.a(20)).b();
-    }
-    ((FriendListHandler)this.a.app.a(1)).d();
-    b(23);
-    Object localObject1 = (azcg)this.a.app.getManager(179);
-    if (localObject1 != null)
-    {
-      if (((azcg)localObject1).a()) {
-        arcj.f(this.a.app, this.a.app.getCurrentAccountUin());
-      }
-    }
-    else
-    {
-      localObject1 = (aowd)this.a.app.getManager(168);
-      if (localObject1 != null) {
-        ((aowd)localObject1).a(true, false);
-      }
-      aost.a(this.a.app);
-      apex.a(BaseApplicationImpl.getContext(), this.a.app);
-      this.a.app.a().m();
-      ((txq)this.a.app.getManager(101)).a();
-      localObject1 = (aklj)this.a.app.getManager(125);
-      ((aklj)localObject1).b();
-      ((aklj)localObject1).a();
-      akme.a(this.a.app);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.del_abnormal_troop_local_msg", 2, "checkDelAbnormalLocalTroopMsg onReconnect");
-      }
-      this.a.app.a().q();
-      int i = bgnt.a(BaseApplicationImpl.getApplication());
-      switch (i)
-      {
-      case 2: 
-      default: 
-        label280:
-        if (i == 1) {
-          ((PhotoPlusManager)this.a.app.getManager(169)).a(false);
-        }
-        acvg.a(this.a.app, this.a.app.getCurrentAccountUin(), -1, "doOnReconnect");
-        QWalletHelper.getPayCode(this.a.app);
-        if (Math.abs(System.currentTimeMillis() - ShortVideoResourceManager.a) > 3600000L) {
-          ShortVideoResourceManager.a(this.a.app, 2);
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      localObject1 = (anip)this.a.app.a(2);
-      Object localObject2 = (aopm)this.a.app.getManager(199);
-      if ((localObject1 != null) && (localObject2 != null) && (((aopm)localObject2).a())) {
-        ((anip)localObject1).e();
-      }
-      localObject2 = (akpd)this.a.app.getManager(245);
-      if (localObject2 != null) {
-        ((akpd)localObject2).a(2);
-      }
-      QQAppInterface.J();
-      if (localObject1 != null)
-      {
-        ((anip)localObject1).t();
-        ((anip)localObject1).s();
-        ((anip)localObject1).q();
-        ((anip)localObject1).r();
-        ((anip)localObject1).C();
-      }
-      aijp.a(this.a.app).c();
-      pmo.a();
-      ThreadManager.executeOnSubThread(new AfterSyncMsg.1(this));
-      bdch.a();
-      return;
-      ((azcg)localObject1).a();
-      break;
-      ((aipe)this.a.app.getManager(138)).g();
-      break label280;
-      QLog.d("ShortVideoResourceManager", 1, "[network]not need get config...");
+    PayRuleCfg localPayRuleCfg = aokv.a(this.a.app.c());
+    if (aokv.a(this.a.app, localPayRuleCfg, true)) {
+      ThreadManagerV2.getUIHandlerV2().post(new AfterSyncMsg.6(this));
     }
   }
   
-  private void b()
+  private void B()
   {
-    if (bcow.f) {}
-    try
+    if (bhjr.a())
     {
-      Thread.sleep(1500L);
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      localInterruptedException.printStackTrace();
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    Object localObject = (FriendListHandler)this.a.app.a(1);
-    this.a.app.a().i();
-    this.a.app.a().j();
-    f();
-    ((anks)this.a.app.a(6)).b();
-    ((anmw)this.a.app.getManager(51)).c();
-    ((FriendListHandler)localObject).f();
-    ((FriendListHandler)localObject).c();
-    localObject = this.a.app.a();
-    boolean bool2;
-    if (!this.a.b)
-    {
-      bool1 = true;
-      if (this.a.c) {
-        break label395;
-      }
-      bool2 = true;
-      label128:
-      ((MessageHandler)localObject).a(bool1, bool2);
-      this.a.app.a().m();
-      this.a.app.a().m();
-      if (!blsb.p()) {
-        break label400;
-      }
-      QLog.i("QQInitHandler", 2, "updateQzoneFeeds 下发配置隐藏新动态");
-      label177:
-      pmy.d(this.b);
-      localObject = (PhoneContactManagerImp)this.a.app.getManager(11);
-      if (paramInt != 22) {
-        break label422;
-      }
-    }
-    label395:
-    label400:
-    label422:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ((PhoneContactManagerImp)localObject).a(bool1);
-      try
-      {
-        localObject = (AccessibilityManager)this.a.app.getApp().getSystemService("accessibility");
-        bool1 = ((AccessibilityManager)localObject).isEnabled();
-        bool2 = ((AccessibilityManager)localObject).isTouchExplorationEnabled();
-        if ((bool1) && (bool2))
-        {
-          localObject = BaseApplicationImpl.getApplication().getSharedPreferences("Talkback" + this.a.app.getCurrentAccountUin(), 0);
-          long l = ((SharedPreferences)localObject).getLong("ReportTime", 0L);
-          if (System.currentTimeMillis() - l > 86400000L)
-          {
-            bcst.b(this.a.app, "dc00898", "", "", "0X800A4C7", "0X800A4C7", 0, 0, "", "0", "", "");
-            ((SharedPreferences)localObject).edit().putLong("ReportTime", System.currentTimeMillis()).commit();
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("QQInitHandler", 1, localThrowable, new Object[0]);
-        }
-      }
-      bcuq.a(BaseApplicationImpl.getApplication());
-      return;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label128;
-      ((FeedsManager)this.a.app.getManager(275)).updateQzoneFeeds();
-      break label177;
-    }
-  }
-  
-  private void e()
-  {
-    bhgh.a().b(BaseApplicationImpl.sApplication);
-    bhgh.a().a(this.a.app);
-    ThreadManager.getSubThreadHandler().post(new AfterSyncMsg.2(this));
-    UnifiedMonitor.a(SQLiteOpenHelper.WAL_ENABLE);
-    adcd.a();
-    this.a.app.a().a().c();
-    this.a.app.a().a();
-    this.a.app.a().initLazy();
-    this.a.app.K();
-    this.a.app.a().a(0, false);
-    ((wff)this.a.app.a(98)).a();
-    ((wff)this.a.app.a(98)).b();
-    ((FlashChatManager)this.a.app.getManager(217)).a();
-    ((wff)this.a.app.a(98)).c();
-    Object localObject1 = this.a.app.getApplication().getApplicationContext().getSharedPreferences(this.a.app.getAccount(), 0);
-    long l1 = ((SharedPreferences)localObject1).getLong("sp_vip_info_request_time", 0L);
-    int i = ((SharedPreferences)localObject1).getInt("sp_vip_info_update_freq", 10);
-    if (NetConnInfoCenter.getServerTime() - l1 > i * 60)
-    {
-      localObject1 = this.a.app.getCurrentAccountUin();
-      localObject2 = ((TicketManager)this.a.app.getManager(2)).getSkey((String)localObject1);
-      ((anyj)this.a.app.a(27)).a((String)localObject2, (String)localObject1);
-    }
-    localObject1 = anyj.a(this.a.app.c());
-    if (anyj.a(this.a.app, (PayRuleCfg)localObject1, true)) {
-      ThreadManagerV2.getUIHandlerV2().post(new AfterSyncMsg.3(this));
-    }
-    b();
-    ((anuk)this.a.app.a(13)).a();
-    this.a.app.m = true;
-    this.a.app.B();
-    this.a.app.a(false);
-    if (this.a.jdField_a_of_type_Boolean) {
-      ((anwd)this.a.app.a(20)).b();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, new Object[] { "AfterSyncMsg sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send, ", Boolean.valueOf(this.a.b()) });
-    }
-    localObject1 = this.a.app.getHandler(Conversation.class);
-    ((MqqHandler)localObject1).sendEmptyMessage(1055);
-    ((MqqHandler)localObject1).sendEmptyMessage(1059);
-    ((MqqHandler)localObject1).sendEmptyMessage(1061);
-    if (biii.a(this.a.app.getApp()) != 2) {
-      MiniAppController.preloadMiniProcess();
-    }
-    b(22);
-    ((anlf)this.a.app.getManager(69)).a();
-    ThreadManager.getSubThreadHandler().post(new AfterSyncMsg.4(this));
-    ((anrs)this.a.app.getManager(56)).a();
-    oau.a().a(this.a.app);
-    this.a.app.getManager(237);
-    localObject1 = (nuy)this.a.app.getManager(238);
-    if (localObject1 != null)
-    {
-      if (!"5.0.2".equals(Build.VERSION.RELEASE)) {
-        ((nuy)localObject1).a();
-      }
-      ((nuy)localObject1).a(this.a.app.c());
-    }
-    Object localObject2 = (avfx)this.a.app.getManager(268);
-    if (localObject1 != null) {
-      ((avfx)localObject2).a(this.a.app, this.a.app.c());
-    }
-    localObject1 = (nqq)this.a.app.getManager(173);
-    localObject1 = (anyr)this.a.app.getManager(85);
-    if (localObject1 != null) {
-      ((anyr)localObject1).a();
-    }
-    b();
-    tyg.a(this.a.app);
-    tyg.a(this.a.app, tyg.a(this.a.app));
-    this.a.app.a().o();
-    this.a.app.a().m();
-    bguq.b();
-    ((txq)this.a.app.getManager(101)).a();
-    localObject1 = (ajby)this.a.app.getManager(102);
-    ((ajby)localObject1).b();
-    ((ajby)localObject1).c();
-    localObject2 = (aklj)this.a.app.getManager(125);
-    ((aklj)localObject2).a(false);
-    ((aklj)localObject2).d();
-    ((aklj)localObject2).b();
-    ((aklj)localObject2).a();
-    ((bfuk)this.a.app.getManager(81)).a(this.a.app);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.del_abnormal_troop_local_msg", 2, "checkDelAbnormalLocalTroopMsg afterLogin");
-    }
-    this.a.app.a().q();
-    this.a.app.I();
-    SearchConfigManager.a(this.a.app);
-    afuf.a(this.a.app);
-    bcsb.a();
-    bcsb.b();
-    bcsb.e();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.fts", 2, "troopMemberUpdateConfigStr=" + SearchConfigManager.troopMemberUpdateConfigStr);
-    }
-    if (!bcow.c)
-    {
-      ((aonn)this.a.app.a().a(2)).f();
-      bcrv.a().a();
-      bcrq.a();
-      akme.a(this.a.app);
-      QWalletHelper.getPayCode(this.a.app);
-      localObject2 = (aopm)this.a.app.getManager(199);
-      if ((localObject2 != null) && (((aopm)localObject2).a()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 4, " QQ 18 handle actionB cached stranger head update in AfterSyncMsg doAfterLogin");
-        }
-        ((aopm)localObject2).b();
-      }
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler_PushOpenNotify", 2, "doafterlogin");
-        }
-        new aohy(this.a.app).execute(new Void[0]);
-      }
-      b();
-      ((anmw)this.a.app.getManager(51)).a(true);
-      ((aiyr)this.a.app.getManager(34)).i();
-      ((KandianMergeManager)this.a.app.getManager(162)).a();
-      ((anjo)this.a.app.a(4)).f();
-      localObject2 = pmh.a().a();
-      if (localObject2 != null) {
-        ((pyq)localObject2).a(this.a.app.c());
-      }
-      localObject2 = ((ProxyManager)this.a.app.getManager(18)).a().getRecentList(true);
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= ((List)localObject2).size()) {
-        break label1490;
-      }
-      if (((RecentUser)((List)localObject2).get(i)).lFlag == 16L)
-      {
-        Iterator localIterator = this.a.app.a().b(((RecentUser)((List)localObject2).get(i)).uin, ((RecentUser)((List)localObject2).get(i)).getType()).iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            Object localObject3 = (MessageRecord)localIterator.next();
-            localObject3 = nve.a(this.a.app, (MessageRecord)localObject3, true);
-            if (localObject3 != null)
-            {
-              nuu.a().a((nuk)localObject3);
-              continue;
-              bcow.g = System.currentTimeMillis();
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("Perf", 2, "delay checkTroopTimeStamp");
-              break;
-            }
-          }
-        }
-      }
-      i += 1;
-    }
-    label1490:
-    this.a.app.a().a();
-    this.a.app.getManager(358);
-    ((FlashChatManager)this.a.app.getManager(217)).c();
-    DeviceProfileManager.a(new anzf());
-    bemy.a(this.a.app).a();
-    bkgt.a(this.a.app).b();
-    localObject2 = (akpd)this.a.app.getManager(245);
-    if (localObject2 != null) {
-      ((akpd)localObject2).a(1);
-    }
-    akwd.a();
-    ((beba)this.a.app.getManager(233)).a();
-    QuicResDownload.a(this.a.app);
-    ((awhq)this.a.app.getManager(242)).a();
-    localObject2 = (anip)this.a.app.a(2);
-    ((anip)localObject2).w();
-    otw.a();
-    tez.a(false);
-    ThreadManager.executeOnSubThread(new AfterSyncMsg.5(this));
-    SosoInterface.b();
-    bigl.a(this.a.app);
-    bihl.a();
-    QQAppInterface.J();
-    albs.a().a(this.a.app, BaseApplicationImpl.sApplication, true, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "doAfterLogin call MayknowRecommendManager.getMayKnowRecommendRemote ");
-    }
-    ((anpk)this.a.app.getManager(159)).a(1);
-    ahrk.a(((ajby)localObject1).a).a();
-    if (localObject2 != null)
-    {
-      ((anip)localObject2).t();
-      ((anip)localObject2).s();
-      ((anip)localObject2).q();
-      ((anip)localObject2).r();
-      ((anip)localObject2).C();
-    }
-    localObject1 = (ArkAppCenter)this.a.app.getManager(121);
-    if (localObject1 != null)
-    {
-      localObject1 = ((ArkAppCenter)localObject1).a();
-      if (localObject1 != null) {
-        ((apop)localObject1).b();
-      }
-    }
-    aijp.a(this.a.app).c();
-    aijp.a(this.a.app).e();
-    MiniArkShareAsyncManager.registerMiniArkShareMessageProcessorAfterProcessRestart();
-    NotificationReportUtil.reportAll();
-    b();
-    awbj.c();
-    ((bfiv)this.a.app.getManager(363)).a();
-    localObject1 = this.a.app.getHandler(Conversation.class);
-    if (localObject1 != null) {
-      ((MqqHandler)localObject1).obtainMessage(1134064).sendToTarget();
-    }
-    if (bcbv.a(1, BaseApplicationImpl.processName)) {}
-    try
-    {
-      l1 = System.currentTimeMillis();
-      localObject1 = BaseActivity.sTopActivity;
-      RecordManager.getInstance().setRecentActivityName((Activity)localObject1);
-      RecordTracer.a().step();
-      long l2 = System.currentTimeMillis();
-      QLog.d("RecordTracer", 2, "conversation time " + (l2 - l1));
-      bdjh.a(this.a.app).a();
-      ThreadManager.executeOnSubThread(new AfterSyncMsg.6(this));
-      ThreadManager.getFileThreadHandler().post(new AfterSyncMsg.7(this));
-      g();
-      aqfv.b(true);
-      this.a.app.L();
-      ((aqct)this.a.app.a(168)).a();
-      acux.a(this.a.app);
-      DtSdkInitStep.a();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RecordTracer", 2, "EventCon setUserId failed:" + localException.getMessage());
-        }
-      }
-    }
-  }
-  
-  private void f()
-  {
-    if (bgjq.a())
-    {
-      bgmg.c(anhk.bL + ".nomedia");
-      bgmg.c(anhk.bM + ".nomedia");
+      bhmi.c(antf.bL + ".nomedia");
+      bhmi.c(antf.bM + ".nomedia");
     }
     if (this.a.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isConvertOldQQHeadOK", false)) {
       return;
@@ -590,20 +180,20 @@ public class AfterSyncMsg
         if ((((Setting)localObject2).uin != null) && (((Setting)localObject2).uin.length() > 0))
         {
           if (((Setting)localObject2).bUsrType != 4) {
-            break label382;
+            break label372;
           }
           if ((((Setting)localObject2).bHeadType != 0) || (((Setting)localObject2).systemHeadID != 0)) {
-            break label242;
+            break label234;
           }
         }
         for (;;)
         {
           i += 1;
           break;
-          label242:
+          label234:
           int j;
-          label267:
-          label269:
+          label258:
+          label260:
           String str1;
           String str2;
           if (((Setting)localObject2).uin.startsWith("troop_"))
@@ -613,15 +203,16 @@ public class AfterSyncMsg
             str1 = this.a.app.a(j, (String)localObject1);
             str2 = this.a.app.a((Setting)localObject2, j, (String)localObject1, 0);
             if (((Setting)localObject2).bHeadType != 0) {
-              break label393;
+              break label383;
             }
           }
-          label393:
+          label372:
+          label383:
           for (localObject1 = "sys_" + String.valueOf(((Setting)localObject2).systemHeadID);; localObject1 = ((Setting)localObject2).uin)
           {
             localObject2 = new File(str1);
             if (!localHashtable.containsKey(localObject1)) {
-              break label402;
+              break label392;
             }
             if (!((File)localObject2).exists()) {
               break;
@@ -629,16 +220,15 @@ public class AfterSyncMsg
             ((File)localObject2).delete();
             break;
             localObject1 = ((Setting)localObject2).uin;
-            break label267;
-            label382:
+            break label258;
             localObject1 = ((Setting)localObject2).uin;
             j = 1;
-            break label269;
+            break label260;
           }
-          label402:
+          label392:
           if (((File)localObject2).exists())
           {
-            beap.a(str1, str2);
+            bezi.a(str1, str2);
             ((File)localObject2).delete();
             localHashtable.put(localObject1, Boolean.valueOf(true));
           }
@@ -646,25 +236,536 @@ public class AfterSyncMsg
       }
     }
     localEntityManager.close();
-    Object localObject1 = new File(anhk.bL + "_thd/");
+    Object localObject1 = new File(antf.bL + "_thd/");
     if (((File)localObject1).exists()) {
-      bisv.a((File)localObject1);
+      bjtu.a((File)localObject1);
     }
     localObject1 = new File("/data/data/com.tencent.mobileqq/files/head/_thd/");
     if (((File)localObject1).exists()) {
-      bisv.a((File)localObject1);
+      bjtu.a((File)localObject1);
     }
     this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("isConvertOldQQHeadOK", true).commit();
   }
   
-  private void g()
+  private void C()
   {
     if ((this.a != null) && (this.a.app != null))
     {
-      new bmuh().a(Long.parseLong(this.a.app.getCurrentAccountUin()));
+      new bnvp().a(Long.parseLong(this.a.app.getCurrentAccountUin()));
       return;
     }
     QLog.i("QQInitHandler", 1, "ChkeckLoveStateRequest diden`t send");
+  }
+  
+  private void a()
+  {
+    z();
+    ((FriendListHandler)this.a.app.a(1)).d();
+    c(23);
+    e();
+    d();
+    apgj.a(this.a.app);
+    apsn.a(BaseApplicationImpl.getContext(), this.a.app);
+    this.a.app.a().m();
+    ((txs)this.a.app.getManager(101)).a();
+    Object localObject = (akwu)this.a.app.getManager(125);
+    ((akwu)localObject).b();
+    ((akwu)localObject).a();
+    akxp.a(this.a.app);
+    a("checkDelAbnormalLocalTroopMsg onReconnect");
+    int i = bhnv.a(BaseApplicationImpl.getApplication());
+    switch (i)
+    {
+    case 2: 
+    default: 
+      if (i == 1) {
+        ((PhotoPlusManager)this.a.app.getManager(169)).a(false);
+      }
+      aczk.a(this.a.app, this.a.app.getCurrentAccountUin(), -1, "doOnReconnect");
+      QWalletHelper.getPayCode(this.a.app);
+      if (Math.abs(System.currentTimeMillis() - ShortVideoResourceManager.a) > 3600000L) {
+        ShortVideoResourceManager.a(this.a.app, 2);
+      }
+      break;
+    }
+    for (;;)
+    {
+      localObject = (anum)this.a.app.a(2);
+      apdc localapdc = (apdc)this.a.app.getManager(199);
+      if ((localObject != null) && (localapdc != null) && (localapdc.a())) {
+        ((anum)localObject).e();
+      }
+      b(2);
+      QQAppInterface.J();
+      a((anum)localObject);
+      aiti.a(this.a.app).c();
+      pfi.a();
+      r();
+      bduy.a();
+      return;
+      ((ajan)this.a.app.getManager(138)).g();
+      break;
+      QLog.d("ShortVideoResourceManager", 1, "[network]not need get config...");
+    }
+  }
+  
+  private void a(anum paramanum)
+  {
+    if (paramanum != null)
+    {
+      paramanum.t();
+      paramanum.s();
+      paramanum.q();
+      paramanum.r();
+      paramanum.C();
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.del_abnormal_troop_local_msg", 2, paramString);
+    }
+    this.a.app.a().q();
+  }
+  
+  private void b(int paramInt)
+  {
+    alao localalao = (alao)this.a.app.getManager(245);
+    if (localalao != null) {
+      localalao.a(paramInt);
+    }
+  }
+  
+  private void c(int paramInt)
+  {
+    Object localObject = (FriendListHandler)this.a.app.a(1);
+    this.a.app.a().i();
+    this.a.app.a().j();
+    B();
+    ((anwo)this.a.app.a(6)).b();
+    ((anyw)this.a.app.getManager(51)).c();
+    ((FriendListHandler)localObject).f();
+    ((FriendListHandler)localObject).c();
+    localObject = this.a.app.a();
+    boolean bool2;
+    if (!this.a.b)
+    {
+      bool1 = true;
+      if (this.a.c) {
+        break label393;
+      }
+      bool2 = true;
+      label128:
+      ((MessageHandler)localObject).a(bool1, bool2);
+      this.a.app.a().m();
+      this.a.app.a().m();
+      if (!bmtd.p()) {
+        break label398;
+      }
+      QLog.i("QQInitHandler", 2, "updateQzoneFeeds 下发配置隐藏新动态");
+      label176:
+      pfs.d(this.b);
+      localObject = (PhoneContactManagerImp)this.a.app.getManager(11);
+      if (paramInt != 22) {
+        break label420;
+      }
+    }
+    label393:
+    label398:
+    label420:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      ((PhoneContactManagerImp)localObject).a(bool1);
+      try
+      {
+        localObject = (AccessibilityManager)this.a.app.getApp().getSystemService("accessibility");
+        bool1 = ((AccessibilityManager)localObject).isEnabled();
+        bool2 = ((AccessibilityManager)localObject).isTouchExplorationEnabled();
+        if ((bool1) && (bool2))
+        {
+          localObject = BaseApplicationImpl.getApplication().getSharedPreferences("Talkback" + this.a.app.getCurrentAccountUin(), 0);
+          long l = ((SharedPreferences)localObject).getLong("ReportTime", 0L);
+          if (System.currentTimeMillis() - l > 86400000L)
+          {
+            bdll.b(this.a.app, "dc00898", "", "", "0X800A4C7", "0X800A4C7", 0, 0, "", "0", "", "");
+            ((SharedPreferences)localObject).edit().putLong("ReportTime", System.currentTimeMillis()).commit();
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QLog.e("QQInitHandler", 1, localThrowable, new Object[0]);
+        }
+      }
+      bdnj.a(BaseApplicationImpl.getApplication());
+      return;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label128;
+      ((FeedsManager)this.a.app.getManager(275)).updateQzoneFeeds();
+      break label176;
+    }
+  }
+  
+  private void d()
+  {
+    apjt localapjt = (apjt)this.a.app.getManager(168);
+    if (localapjt != null) {
+      localapjt.a(true, false);
+    }
+  }
+  
+  private void e()
+  {
+    azut localazut = (azut)this.a.app.getManager(179);
+    if (localazut != null)
+    {
+      if (localazut.a()) {
+        arry.f(this.a.app, this.a.app.getCurrentAccountUin());
+      }
+    }
+    else {
+      return;
+    }
+    localazut.a();
+  }
+  
+  private void f()
+  {
+    if (bdho.f) {}
+    try
+    {
+      Thread.sleep(1500L);
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      localInterruptedException.printStackTrace();
+    }
+  }
+  
+  private void g()
+  {
+    bigw.a().b(BaseApplicationImpl.sApplication);
+    bigw.a().a(this.a.app);
+    ThreadManager.getSubThreadHandler().post(new AfterSyncMsg.1(this));
+    UnifiedMonitor.a(SQLiteOpenHelper.WAL_ENABLE);
+    adlb.a();
+    this.a.app.a().a().c();
+    this.a.app.a().a();
+    this.a.app.a().initLazy();
+    this.a.app.K();
+    this.a.app.a().a(0, false);
+    ((wja)this.a.app.a(98)).a();
+    ((wja)this.a.app.a(98)).b();
+    ((FlashChatManager)this.a.app.getManager(217)).a();
+    ((wja)this.a.app.a(98)).c();
+    q();
+    A();
+    f();
+    ((aogu)this.a.app.a(13)).a();
+    this.a.app.m = true;
+    this.a.app.B();
+    this.a.app.a(false);
+    z();
+    p();
+    y();
+    c(22);
+    ((anxb)this.a.app.getManager(69)).a();
+    n();
+    ((aody)this.a.app.getManager(56)).a();
+    oce.a().a(this.a.app);
+    this.a.app.getManager(237);
+    o();
+    Object localObject1 = (nso)this.a.app.getManager(173);
+    m();
+    f();
+    tyi.a(this.a.app);
+    tyi.a(this.a.app, tyi.a(this.a.app));
+    this.a.app.a().o();
+    this.a.app.a().m();
+    bhut.b();
+    ((txs)this.a.app.getManager(101)).a();
+    localObject1 = (ajng)this.a.app.getManager(102);
+    ((ajng)localObject1).b();
+    Object localObject2 = (akwu)this.a.app.getManager(125);
+    ((akwu)localObject2).a(false);
+    ((akwu)localObject2).d();
+    ((akwu)localObject2).b();
+    ((akwu)localObject2).a();
+    ((bgul)this.a.app.getManager(81)).a(this.a.app);
+    a("checkDelAbnormalLocalTroopMsg afterLogin");
+    this.a.app.I();
+    agdx.a(this.a.app);
+    bdkt.a();
+    bdkt.b();
+    bdkt.e();
+    i();
+    h();
+    bdkn.a().a();
+    bdki.a();
+    akxp.a(this.a.app);
+    QWalletHelper.getPayCode(this.a.app);
+    l();
+    k();
+    f();
+    ((anyw)this.a.app.getManager(51)).a(true);
+    ((ajka)this.a.app.getManager(34)).i();
+    ((KandianMergeManager)this.a.app.getManager(162)).a();
+    ((anvl)this.a.app.a(4)).f();
+    j();
+    u();
+    this.a.app.a().a();
+    this.a.app.getManager(358);
+    ((FlashChatManager)this.a.app.getManager(217)).c();
+    DeviceProfileManager.a(new aolp());
+    bflw.a(this.a.app).a();
+    blhw.a(this.a.app).b();
+    b(1);
+    alhs.a();
+    ((bezz)this.a.app.getManager(233)).a();
+    QuicResDownload.a(this.a.app);
+    ((axai)this.a.app.getManager(242)).a();
+    localObject2 = (anum)this.a.app.a(2);
+    ((anum)localObject2).w();
+    omj.a();
+    svr.a(false);
+    t();
+    SosoInterface.b();
+    bjhk.a(this.a.app);
+    bjik.a();
+    QQAppInterface.J();
+    s();
+    aiay.a(((ajng)localObject1).a).a();
+    a((anum)localObject2);
+    v();
+    aiti.a(this.a.app).c();
+    aiti.a(this.a.app).e();
+    MiniArkShareAsyncManager.registerMiniArkShareMessageProcessorAfterProcessRestart();
+    NotificationReportUtil.reportAll();
+    f();
+    awub.b();
+    w();
+    x();
+    becc.a(this.a.app).a();
+    r();
+    ThreadManager.getFileThreadHandler().post(new AfterSyncMsg.2(this));
+    C();
+    aquy.b(true);
+    this.a.app.L();
+    ((aqrw)this.a.app.a(168)).a();
+    ajwm.a(this.a.app);
+    aczb.a(this.a.app);
+    apbp.a(true);
+    vvw.a();
+    DtSdkInitStep.a();
+    vvw.a();
+    bfmf.a(this.a.app);
+  }
+  
+  private void h()
+  {
+    if (!bdho.c) {
+      ((apbd)this.a.app.a().a(2)).g();
+    }
+    do
+    {
+      return;
+      bdho.g = System.currentTimeMillis();
+    } while (!QLog.isColorLevel());
+    QLog.d("Perf", 2, "delay checkTroopTimeStamp");
+  }
+  
+  private void i()
+  {
+    SearchConfigManager.a(this.a.app);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.fts", 2, "troopMemberUpdateConfigStr=" + SearchConfigManager.troopMemberUpdateConfigStr);
+    }
+  }
+  
+  private void j()
+  {
+    pra localpra = pfa.a().a();
+    if (localpra != null) {
+      localpra.a(this.a.app.c());
+    }
+  }
+  
+  private void k()
+  {
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler_PushOpenNotify", 2, "doafterlogin");
+      }
+      new aovm(this.a.app).execute(new Void[0]);
+    }
+  }
+  
+  private void l()
+  {
+    apdc localapdc = (apdc)this.a.app.getManager(199);
+    if ((localapdc != null) && (localapdc.a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler", 4, " QQ 18 handle actionB cached stranger head update in AfterSyncMsg doAfterLogin");
+      }
+      localapdc.b();
+    }
+  }
+  
+  private void m()
+  {
+    aold localaold = (aold)this.a.app.getManager(85);
+    if (localaold != null) {
+      localaold.a();
+    }
+  }
+  
+  private void n()
+  {
+    ThreadManager.getSubThreadHandler().post(new AfterSyncMsg.3(this));
+  }
+  
+  private void o()
+  {
+    nws localnws = (nws)this.a.app.getManager(238);
+    if (localnws != null)
+    {
+      if (!"5.0.2".equals(Build.VERSION.RELEASE)) {
+        localnws.a();
+      }
+      localnws.a(this.a.app.c());
+    }
+    avya localavya = (avya)this.a.app.getManager(268);
+    if (localnws != null) {
+      localavya.a(this.a.app, this.a.app.c());
+    }
+  }
+  
+  private void p()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, new Object[] { "AfterSyncMsg sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send, ", Boolean.valueOf(this.a.b()) });
+    }
+    MqqHandler localMqqHandler = this.a.app.getHandler(Conversation.class);
+    localMqqHandler.sendEmptyMessage(1055);
+    localMqqHandler.sendEmptyMessage(1059);
+    localMqqHandler.sendEmptyMessage(1061);
+  }
+  
+  private void q()
+  {
+    Object localObject = this.a.app.getApplication().getApplicationContext().getSharedPreferences(this.a.app.getAccount(), 0);
+    long l = ((SharedPreferences)localObject).getLong("sp_vip_info_request_time", 0L);
+    int i = ((SharedPreferences)localObject).getInt("sp_vip_info_update_freq", 10);
+    if (NetConnInfoCenter.getServerTime() - l > i * 60)
+    {
+      localObject = this.a.app.getCurrentAccountUin();
+      String str = ((TicketManager)this.a.app.getManager(2)).getSkey((String)localObject);
+      ((aokv)this.a.app.a(27)).a(str, (String)localObject);
+    }
+  }
+  
+  private void r()
+  {
+    ThreadManager.executeOnSubThread(new AfterSyncMsg.4(this));
+  }
+  
+  private void s()
+  {
+    alni.a().a(this.a.app, BaseApplicationImpl.sApplication, true, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "doAfterLogin call MayknowRecommendManager.getMayKnowRecommendRemote ");
+    }
+    ((aobl)this.a.app.getManager(159)).a(1);
+  }
+  
+  private void t()
+  {
+    ThreadManager.executeOnSubThread(new AfterSyncMsg.5(this));
+  }
+  
+  private void u()
+  {
+    List localList = ((ProxyManager)this.a.app.getManager(18)).a().getRecentList(true);
+    int i = 0;
+    while (i < localList.size())
+    {
+      if (((RecentUser)localList.get(i)).lFlag == 16L)
+      {
+        Iterator localIterator = this.a.app.a().b(((RecentUser)localList.get(i)).uin, ((RecentUser)localList.get(i)).getType()).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (MessageRecord)localIterator.next();
+          localObject = nwy.a(this.a.app, (MessageRecord)localObject, true);
+          if (localObject != null) {
+            nwo.a().a((nwf)localObject);
+          }
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  private void v()
+  {
+    Object localObject = (ArkAppCenter)this.a.app.getManager(121);
+    if (localObject != null)
+    {
+      localObject = ((ArkAppCenter)localObject).a();
+      if (localObject != null) {
+        ((aqcf)localObject).b();
+      }
+    }
+  }
+  
+  private void w()
+  {
+    ((bgiw)this.a.app.getManager(363)).a();
+    MqqHandler localMqqHandler = this.a.app.getHandler(Conversation.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.obtainMessage(1134064).sendToTarget();
+    }
+  }
+  
+  private void x()
+  {
+    if (bcun.a(1, BaseApplicationImpl.processName)) {}
+    try
+    {
+      long l1 = System.currentTimeMillis();
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      RecordManager.getInstance().setRecentActivityName(localBaseActivity);
+      RecordTracer.a().step();
+      long l2 = System.currentTimeMillis();
+      QLog.d("RecordTracer", 2, "conversation time " + (l2 - l1));
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("RecordTracer", 2, "EventCon setUserId failed:" + localException.getMessage());
+    }
+  }
+  
+  private void y()
+  {
+    if (bjjh.a(this.a.app.getApp()) != 2) {
+      MiniAppController.preloadMiniProcess();
+    }
+  }
+  
+  private void z()
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      ((aoip)this.a.app.a(20)).b();
+    }
   }
   
   public int a()
@@ -678,13 +779,13 @@ public class AfterSyncMsg
     for (;;)
     {
       return 7;
-      e();
+      g();
       ReporterMachine.a().a();
       UnifiedMonitor.a().c();
       continue;
       a();
       continue;
-      b(this.b);
+      c(this.b);
     }
   }
 }

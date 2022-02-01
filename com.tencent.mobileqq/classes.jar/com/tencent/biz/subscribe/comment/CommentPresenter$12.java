@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaet;
+import aaiu;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class CommentPresenter$12
   implements Runnable
 {
-  public CommentPresenter$12(aaet paramaaet) {}
+  public CommentPresenter$12(aaiu paramaaiu) {}
   
   public void run()
   {
-    QQToast.a(aaet.s(this.this$0), "评论已被删除", 0).a();
+    QQToast.a(aaiu.s(this.this$0), "评论已被删除", 0).a();
   }
 }
 

@@ -1,32 +1,41 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class afba
-  extends MqqHandler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afba(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public afba(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131717556) + this.a.a, paramBoolean);
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(anzj.a(2131706537));
     }
-    do
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
-        return;
+      i = 1;
+      if (!paramBoolean) {
+        break label119;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+    }
+    label119:
+    for (String str = "1";; str = "0")
+    {
+      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, str, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

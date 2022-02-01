@@ -1,14 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.AccostTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-class adjd
-  implements DialogInterface.OnClickListener
+public class adjd
+  implements adbw
 {
-  adjd(adjb paramadjb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    paramDialogInterface.dismiss();
+    return 1001;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.AccostTmp localAccostTmp = new msg_svc.AccostTmp();
+    localAccostTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramMessageRecord.frienduin, 1001);
+    localAccostTmp.reply.set(localMessage.hasReply);
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSFriendRoutingType", 2, "LBS_FRIEND------>reply=" + localMessage.hasReply);
+    }
+    paramMessageRecord = paramQQAppInterface.a().n(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("fight_accost", 4, "发送附近人临时会消息 有keyLBSFriend------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localAccostTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    }
+    paramRoutingHead.accost_tmp.set(localAccostTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 6010;
   }
 }
 

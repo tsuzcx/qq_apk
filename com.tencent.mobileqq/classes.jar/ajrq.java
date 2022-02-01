@@ -1,65 +1,37 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
 public class ajrq
-  implements bkmq
+  extends ajoe<ajoq>
 {
-  public ajrq(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
-  
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public ajrq(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment, Context paramContext, int paramInt)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
+    super(paramContext, paramInt);
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  protected ajoo a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.a(l);
-      if (!bgnt.g(this.a.getActivity())) {
-        break;
-      }
-      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
-      return true;
-    }
-    ChatHistoryTroopFileFragment.a(this.a, 1);
-    bfsj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
-    return true;
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new ajpx(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373680));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373670));
+    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373677));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373675));
+    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373681));
+    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373679));
+    return paramContext;
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  protected void a(ajoo paramajoo, ajoq paramajoq, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
-    }
+    TroopWithCommonFriendsFragment.a(this.a, paramajoo, paramajoq, paramInt);
   }
 }
 

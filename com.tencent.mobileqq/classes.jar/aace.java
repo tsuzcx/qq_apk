@@ -1,19 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
-class aace
-  implements View.OnClickListener
+public class aace
+  extends LinearLayoutManager
 {
-  aace(aacd paramaacd) {}
-  
-  public void onClick(View paramView)
+  public aace(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if ((this.a.getParentFragment() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)this.a.getParentFragment()).a(this.a.a(2));
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 

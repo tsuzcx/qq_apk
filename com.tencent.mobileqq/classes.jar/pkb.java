@@ -1,14 +1,13 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class pkb
-  implements FileFilter
+public class pkb
+  implements pks
 {
-  pkb(pka parampka) {}
+  public pkb(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public boolean accept(File paramFile)
+  public void a()
   {
-    return paramFile.getName().endsWith(".json");
+    ReadInJoySelfFragment.j(this.a);
   }
 }
 

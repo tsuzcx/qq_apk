@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aqkt;
-import arcj;
-import arcv;
+import aqzw;
+import arry;
+import arsk;
 
 public class ConfigServlet$4
   implements Runnable
 {
-  public ConfigServlet$4(arcj paramarcj, String paramString) {}
+  public ConfigServlet$4(arry paramarry, String paramString) {}
   
   public void run()
   {
-    aqkt.a.c(this.a);
+    aqzw.a.c(this.a);
   }
 }
 

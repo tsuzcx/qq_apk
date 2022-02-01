@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -17,7 +17,7 @@ import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import nmp;
+import nok;
 
 public class EqqDetail
   extends Entity
@@ -25,7 +25,7 @@ public class EqqDetail
   public byte[] accountData;
   public String address = "";
   @notColumn
-  public String certifiedDescription = anni.a(2131702978);
+  public String certifiedDescription = anzj.a(2131703085);
   public int certifiedGrade;
   public String displayNumber = "";
   public long eqqAccountFlag;
@@ -39,11 +39,11 @@ public class EqqDetail
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
   public int mShowMsgFlag = -1;
-  public String name = anni.a(2131702979);
+  public String name = anzj.a(2131703086);
   public String phoneNumber = "";
   public String realSummary = "";
   public int seqno;
-  public String summary = anni.a(2131702977);
+  public String summary = anzj.a(2131703084);
   @unique
   public String uin;
   
@@ -225,7 +225,7 @@ public class EqqDetail
   
   public boolean hasIvrAbility()
   {
-    if (!nmp.a) {
+    if (!nok.a) {
       if (QLog.isDevelopLevel()) {
         QLog.d("EqqDetail", 4, "Don't support sharp");
       }

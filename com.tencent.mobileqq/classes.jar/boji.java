@@ -1,10 +1,8 @@
-import android.content.Context;
-
 public abstract interface boji
 {
-  public abstract Context a();
+  public abstract void a(String paramString);
   
-  public abstract void a();
+  public abstract void b(String paramString);
 }
 
 

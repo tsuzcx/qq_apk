@@ -1,23 +1,34 @@
-import android.support.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class yjd
-  implements wri
+public class yjd
+  extends QQUIEventReceiver<yja, ykd>
 {
-  yjd(yjc paramyjc, wrf paramwrf) {}
-  
-  public void a(boolean paramBoolean, @Nullable wre paramwre)
+  public yjd(@NonNull yja paramyja)
   {
-    yqp.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramwre });
-    this.jdField_a_of_type_Wrf.b(this);
-    if (this.jdField_a_of_type_Yjc.a.get())
+    super(paramyja);
+  }
+  
+  public void a(@NonNull yja paramyja, @NonNull ykd paramykd)
+  {
+    if (paramykd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
-      return;
+      yuk.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramykd.jdField_a_of_type_Int));
+      yja.b(paramyja, paramykd.jdField_a_of_type_Int);
+      if (paramyja.a != null)
+      {
+        paramyja.a.shareGroupCount = yja.b(paramyja);
+        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramyja), 5, null, false);
+      }
     }
-    yjc.a(this.jdField_a_of_type_Yjc).a = paramwre;
-    yjc.a(this.jdField_a_of_type_Yjc).a(null, 0);
-    ((yij)wpm.a(11)).a = paramwre;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ykd.class;
   }
 }
 

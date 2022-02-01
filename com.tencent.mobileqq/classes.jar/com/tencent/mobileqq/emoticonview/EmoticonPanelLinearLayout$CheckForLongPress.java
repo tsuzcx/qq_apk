@@ -4,9 +4,9 @@ import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import arxd;
-import arxg;
-import bcst;
+import asmr;
+import asmu;
+import bdll;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 class EmoticonPanelLinearLayout$CheckForLongPress
@@ -31,16 +31,16 @@ class EmoticonPanelLinearLayout$CheckForLongPress
     this.jdField_a_of_type_AndroidUtilSparseIntArray.put(10, 5);
   }
   
-  private void a(arxg paramarxg)
+  private void a(asmu paramasmu)
   {
     if (EmoticonPanelLinearLayout.a(this.this$0) == null) {}
     int i;
     do
     {
       return;
-      i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramarxg.c, -1);
+      i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramasmu.c, -1);
     } while (i == -1);
-    bcst.b(EmoticonPanelLinearLayout.a(this.this$0).a, "dc00898", "", "", "0X800AEEC", "0X800AEEC", i, 0, "", "", "", "");
+    bdll.b(EmoticonPanelLinearLayout.a(this.this$0).a, "dc00898", "", "", "0X800AEEC", "0X800AEEC", i, 0, "", "", "", "");
   }
   
   public void a()
@@ -52,19 +52,19 @@ class EmoticonPanelLinearLayout$CheckForLongPress
   {
     if ((this.this$0.getParent() != null) && (this.jdField_a_of_type_Int == EmoticonPanelLinearLayout.a(this.this$0)) && (this.this$0.jdField_a_of_type_AndroidViewView != null))
     {
-      arxg localarxg = (arxg)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
-      if (localarxg != null)
+      asmu localasmu = (asmu)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
+      if (localasmu != null)
       {
-        if ((this.this$0.jdField_a_of_type_Arxd != null) && (this.this$0.jdField_a_of_type_Arxd.a(localarxg))) {
+        if ((this.this$0.jdField_a_of_type_Asmr != null) && (this.this$0.jdField_a_of_type_Asmr.a(localasmu))) {
           break label139;
         }
         this.this$0.d = true;
         this.this$0.getParent().requestDisallowInterceptTouchEvent(true);
         this.this$0.sendAccessibilityEvent(2);
-        if (EmoticonPanelLinearLayout.a(this.this$0, localarxg))
+        if (EmoticonPanelLinearLayout.a(this.this$0, localasmu))
         {
-          this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localarxg);
-          a(localarxg);
+          this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localasmu);
+          a(localasmu);
         }
       }
     }

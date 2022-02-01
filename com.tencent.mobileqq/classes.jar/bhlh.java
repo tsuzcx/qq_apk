@@ -1,35 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class bhlh
-  extends BroadcastReceiver
 {
-  public bhlh(WebProcessManager paramWebProcessManager) {}
+  public String a;
+  public boolean a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  bhlh(String paramString, boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessManager", 2, "action=" + paramContext);
-        }
-        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
-          break;
-        }
-        this.a.f();
-      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
-      this.a.i();
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
-    this.a.i();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

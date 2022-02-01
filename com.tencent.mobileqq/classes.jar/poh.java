@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class poh
-  implements View.OnClickListener
+class poh
+  implements Comparator<AdvertisementInfo>
 {
-  public poh(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  poh(pog parampog) {}
   
-  public void onClick(View paramView)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.store;
 
-import amxo;
+import anji;
 
 public class ApolloViewController$2
   implements Runnable
 {
-  public ApolloViewController$2(amxo paramamxo, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
+  public ApolloViewController$2(anji paramanji, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
   
   public void run()
   {
-    amxo.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
+    anji.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
   }
 }
 

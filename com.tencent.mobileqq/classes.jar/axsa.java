@@ -1,24 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class axsa
-  implements View.OnClickListener
 {
-  public axsa(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
   
-  public void onClick(View paramView)
+  public axsa(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
-    {
-      this.a.b.dismiss();
-      this.a.b = null;
-    }
-    this.a.a(300L);
-    bcst.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
   }
 }
 

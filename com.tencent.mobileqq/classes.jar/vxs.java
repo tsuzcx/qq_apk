@@ -1,16 +1,14 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import qqcircle.QQCircleDitto.StItemContainer;
+import com.tencent.biz.qqcircle.widgets.FrameAnimationView;
 
 public class vxs
-  implements aabv
+  implements aaad
 {
-  public vxs(QCirclePushRankItemView paramQCirclePushRankItemView) {}
+  public vxs(FrameAnimationView paramFrameAnimationView, int paramInt, boolean paramBoolean) {}
   
-  public void a()
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.a() != null) {
-      vrf.a("", 9, 3, 0, ((QQCircleDitto.StItemContainer)this.a.a()).containerType.get() + "", "", "", "", "", QCirclePushRankItemView.a(this.a), this.a.d(), -1);
+    if ((paramBoolean) && (FrameAnimationView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFrameAnimationView))) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFrameAnimationView.setAnimationFile(paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
     }
   }
 }

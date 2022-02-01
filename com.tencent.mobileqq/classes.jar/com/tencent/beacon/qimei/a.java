@@ -52,7 +52,7 @@ public class a
     {
       this.c = new Qimei();
       localObject = i.c(paramContext);
-      if (!j.c((String)localObject)) {
+      if (!j.b((String)localObject)) {
         this.b = ((String)localObject);
       }
       localObject = new StringBuilder();

@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aahc
-  implements View.OnClickListener
+class aahc
+  implements aamw
 {
-  public aahc(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  aahc(aahb paramaahb) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_Aagz.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
   }
 }
 

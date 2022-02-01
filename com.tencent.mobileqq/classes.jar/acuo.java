@@ -1,36 +1,101 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher;
+import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Params;
+import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Result;
+import com.tencent.ad.tangram.util.AdAppUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acuo
-  implements ViewPager.PageTransformer
+class acuo
+  implements acun
 {
-  @TargetApi(11)
-  public void transformPage(View paramView, float paramFloat)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    if (Build.VERSION.SDK_INT >= 11)
+    if (paramacts != null) {}
+    for (localActivity = paramacts.a(); (paramacts == null) || (localActivity == null); localActivity = null)
     {
-      if (paramFloat < -1.0F) {
-        paramView.setAlpha(0.0F);
+      acvc.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    try
+    {
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      acvc.b("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", paramVarArgs.toString());
+      str1 = paramVarArgs.getString("deeplink");
+      str2 = paramVarArgs.optString("packageName");
+      if ((TextUtils.isEmpty(str2)) || (AdAppUtil.isInstalled(localActivity, str2))) {
+        break label160;
       }
+      i = 12;
     }
-    else {
-      return;
-    }
-    if (paramFloat <= 1.0F)
+    catch (Throwable localJSONException)
     {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      if (paramFloat > 0.0F) {}
-      for (int i = 1;; i = -1)
+      try
       {
-        paramFloat = (float)(Math.cos((Math.abs(paramFloat) + 1.0F) * 3.141592653589793D) / 2.0D);
-        paramView.setTranslationY(i * (paramFloat + 0.5F) * paramView.getHeight());
-        return;
+        paramVarArgs.put("error", i);
+      }
+      catch (JSONException localJSONException)
+      {
+        try
+        {
+          for (;;)
+          {
+            String str1;
+            String str2;
+            paramacts.callJs(paramString, new String[] { paramVarArgs.toString() });
+            if (paramacts == null) {
+              break;
+            }
+            paramacts = paramacts.a();
+            AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "launchAppWithDeeplink", paramacts);
+            return true;
+            paramVarArgs = paramVarArgs;
+            acvc.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest", paramVarArgs);
+            int i = 4;
+            continue;
+            Bundle localBundle = new Bundle();
+            localBundle.putString("big_brother_source_key", "biz_src_ads");
+            if (localActivity.getIntent() != null) {
+              if (!TextUtils.isEmpty(localActivity.getIntent().getStringExtra("big_brother_ref_source_key"))) {
+                break label267;
+              }
+            }
+            for (paramVarArgs = localActivity.getIntent().getStringExtra("big_brother_source_key");; paramVarArgs = localActivity.getIntent().getStringExtra("big_brother_ref_source_key"))
+            {
+              localBundle.putString("big_brother_ref_source_key", paramVarArgs);
+              paramVarArgs = new AdAppDeeplinkLauncher.Params();
+              paramVarArgs.deeplink = str1;
+              paramVarArgs.packageName = str2;
+              paramVarArgs.extrasForIntent = localBundle;
+              paramVarArgs = AdAppDeeplinkLauncher.launch(localActivity, paramVarArgs);
+              if (paramVarArgs == null) {
+                break label281;
+              }
+              i = paramVarArgs.getErrorCode();
+              break;
+            }
+            i = 1;
+            continue;
+            localJSONException = localJSONException;
+            acvc.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest error", localJSONException);
+          }
+        }
+        catch (Throwable paramString)
+        {
+          for (;;)
+          {
+            acvc.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest error", paramString);
+            continue;
+            paramacts = null;
+          }
+        }
       }
     }
-    paramView.setAlpha(0.0F);
+    paramVarArgs = new JSONObject();
   }
 }
 

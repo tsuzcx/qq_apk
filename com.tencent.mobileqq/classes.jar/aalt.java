@@ -1,8 +1,26 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
 
-public abstract interface aalt
+public class aalt
+  extends aadf
 {
-  public abstract void b(CertifiedAccountMeta.StFeed paramStFeed);
+  private CertifiedAccountMeta.StFeed a;
+  
+  public aalt(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    this.a = paramStFeed;
+  }
+  
+  public void a() {}
+  
+  public void a(aadl paramaadl)
+  {
+    GetSubscribeFeedDetailRequest localGetSubscribeFeedDetailRequest = new GetSubscribeFeedDetailRequest(this.a, null);
+    paramaadl = new aalu(this, paramaadl);
+    localGetSubscribeFeedDetailRequest.setEnableCache(false);
+    VSNetworkHelper.a().a(localGetSubscribeFeedDetailRequest, paramaadl);
+  }
 }
 
 

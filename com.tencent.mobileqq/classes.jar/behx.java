@@ -1,16 +1,84 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class behx
-  implements bkik
+class behx
+  implements behv
 {
-  public behx(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  private IBinder a;
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  behx(IBinder paramIBinder)
   {
-    TroopAvatarWallEditActivity.a(this.a);
-    return true;
+    this.a = paramIBinder;
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void beginSwitch()
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void doSwitch(String paramString1, String paramString2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeString(paramString1);
+      localParcel.writeString(paramString2);
+      this.a.transact(3, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void onProgress(long paramLong1, long paramLong2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeLong(paramLong1);
+      localParcel.writeLong(paramLong2);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void postSwitch(int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeInt(paramInt);
+      this.a.transact(4, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
   }
 }
 

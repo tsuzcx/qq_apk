@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class axfm
-  implements bhtd
+  implements axfv<Pair<String, Integer>, EmoticonPackage>
 {
-  axfm(axfl paramaxfl) {}
+  axfm(axfj paramaxfj) {}
   
-  public void a()
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.a(true);
+    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 

@@ -13,8 +13,8 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.annotation.RequiresApi;
-import anni;
-import bgmo;
+import anzj;
+import bhmq;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -67,11 +67,11 @@ public class ShortcutUtils
       if (hasRightsToShortCutInVIVO(paramBaseActivity)) {
         break;
       }
-      paramBaseActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramBaseActivity, anni.a(2131712771), anni.a(2131712784), anni.a(2131712786), new ShortcutUtils.1(paramBaseActivity), new ShortcutUtils.2());
+      paramBaseActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramBaseActivity, anzj.a(2131712880), anzj.a(2131712893), anzj.a(2131712895), new ShortcutUtils.1(paramBaseActivity), new ShortcutUtils.2());
       paramBaseActivity.showCheckbox(false);
       paramBaseActivity.show();
     } while (paramAddShortcutCallback == null);
-    paramAddShortcutCallback.onAddResult(2, anni.a(2131712765));
+    paramAddShortcutCallback.onAddResult(2, anzj.a(2131712874));
     return;
     doAddShortcut(paramBaseActivity, paramApkgInfo, paramAddShortcutCallback);
   }
@@ -91,7 +91,7 @@ public class ShortcutUtils
     }
     for (;;)
     {
-      return bgmo.a(getResizedBitmap(paramApkgInfo, i, i), (int)(i * 0.15D));
+      return bhmq.a(getResizedBitmap(paramApkgInfo, i, i), (int)(i * 0.15D));
     }
   }
   

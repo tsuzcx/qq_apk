@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aeyh;
-import bcst;
+import afhm;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 
 public class QQSettingCleanActivity$2$1
   implements Runnable
 {
-  public QQSettingCleanActivity$2$1(aeyh paramaeyh) {}
+  public QQSettingCleanActivity$2$1(afhm paramafhm) {}
   
   public void run()
   {
-    bcst.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
+    bdll.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
     HttpDownloadUtil.a("https://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", this.a.a);
   }
 }

@@ -1,32 +1,18 @@
-import com.tencent.av.widget.stageview.StageEffectView;
-import com.tencent.av.widget.stageview.StageMemberView;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
 
-public class mvl
-  implements Comparator<StageMemberView>
+class mvl
+  extends Handler
 {
-  public mvl(StageEffectView paramStageEffectView) {}
-  
-  public int a(StageMemberView paramStageMemberView1, StageMemberView paramStageMemberView2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramStageMemberView1 == null) && (paramStageMemberView2 == null)) {
-      return 0;
+    mvk localmvk = (mvk)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    if (paramStageMemberView2 == null) {
-      return -1;
-    }
-    if (paramStageMemberView1 == null) {
-      return 1;
-    }
-    paramStageMemberView1 = (mvr)paramStageMemberView1.getTag();
-    paramStageMemberView2 = (mvr)paramStageMemberView2.getTag();
-    if (paramStageMemberView1.a == paramStageMemberView2.a) {
-      return 0;
-    }
-    if (mvg.a(paramStageMemberView1.a - 10000, 20000) < mvg.a(paramStageMemberView2.a - 10000, 20000)) {
-      return -1;
-    }
-    return 1;
+    localmvk.jdField_a_of_type_Mvj.a(((mvm[])localmvk.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
 }
 

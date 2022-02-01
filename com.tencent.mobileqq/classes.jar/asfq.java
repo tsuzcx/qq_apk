@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
 class asfq
-  extends WtloginObserver
+  extends anxe
 {
-  asfq(asfo paramasfo) {}
+  asfq(asfn paramasfn) {}
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
+    asfn.a(this.a).clear();
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.e();
     }
-    if (paramInt == 0)
-    {
-      asfo.c(this.a, true);
-      if (asfo.a(this.a) != null)
-      {
-        paramWUserSigInfo = (QQAppInterface)asfo.a(this.a).get();
-        if ((paramWUserSigInfo != null) && (asfr.a().a(paramWUserSigInfo))) {}
-      }
-      else
-      {
-        asfo.a(this.a, false);
-        asfo.b(this.a, false);
-      }
-      return;
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Integer)) && (asfn.a(this.a) != null)) {
+      asfn.a(this.a).obtainMessage(208, paramObject).sendToTarget();
     }
-    asfo.a(this.a, false);
-    asfo.c(this.a, false);
+    if ((this.a.a != null) && (paramBoolean)) {
+      this.a.a.e();
+    }
   }
 }
 

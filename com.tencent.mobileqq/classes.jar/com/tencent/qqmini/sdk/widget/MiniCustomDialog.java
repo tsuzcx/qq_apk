@@ -299,15 +299,16 @@ public class MiniCustomDialog
   
   public String getEditString()
   {
-    Object localObject;
-    if (this.dialogEdit == null) {
-      localObject = null;
-    }
-    String str;
+    String str = null;
+    Object localObject = null;
+    if (this.dialogEdit == null) {}
     do
     {
       return localObject;
-      str = this.dialogEdit.getText().toString();
+      localObject = this.dialogEdit.getText();
+      if (localObject != null) {
+        str = localObject.toString();
+      }
       localObject = str;
     } while (!TextUtils.isEmpty(str));
     return this.dialogEdit.getHint().toString();
@@ -668,20 +669,14 @@ public class MiniCustomDialog
     if (this.operateImage != null)
     {
       this.operateImage.setImageDrawable(paramDrawable);
-      if (paramDrawable == null) {
-        break label45;
-      }
-      this.operateImage.setVisibility(0);
-      if (this.operateImage != null) {
+      if (paramDrawable != null) {
         this.operateImage.setVisibility(8);
       }
     }
-    label45:
-    do
+    else
     {
       return this;
-      this.operateImage.setVisibility(8);
-    } while (this.operateImage == null);
+    }
     this.operateImage.setVisibility(0);
     return this;
   }

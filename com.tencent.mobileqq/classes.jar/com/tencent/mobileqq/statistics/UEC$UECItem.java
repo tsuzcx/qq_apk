@@ -3,12 +3,12 @@ package com.tencent.mobileqq.statistics;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bctz;
+import bdms;
 
 public class UEC$UECItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<UECItem> CREATOR = new bctz();
+  public static final Parcelable.Creator<UECItem> CREATOR = new bdms();
   public int a;
   public long a;
   public String a;

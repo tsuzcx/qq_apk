@@ -1,27 +1,42 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.io.File;
+import java.util.Locale;
 
-final class aqak
-  implements URLDrawableDownListener
+class aqak
+  implements aqau
 {
-  aqak(URLImageView paramURLImageView) {}
+  aqak(aqai paramaqai, aqaw paramaqaw, aqas paramaqas, String paramString1, aqau paramaqau, String paramString2) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(boolean paramBoolean)
   {
-    this.a.setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.setVisibility(0);
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean = false;
+    }
+    synchronized (this.jdField_a_of_type_Aqaw)
+    {
+      aqaw localaqaw2 = this.jdField_a_of_type_Aqaw;
+      int i = localaqaw2.jdField_a_of_type_Int - 1;
+      localaqaw2.jdField_a_of_type_Int = i;
+      if (i > 0)
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
+        return;
+      }
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean) }));
+      if (!this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean)
+      {
+        bhmi.a(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Aqau.a(false);
+        return;
+      }
+    }
+    if (!aqai.a(aqaf.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
+      this.jdField_a_of_type_Aqau.a(false);
+      return;
+    }
+    this.jdField_a_of_type_Aqau.a(true);
   }
 }
 

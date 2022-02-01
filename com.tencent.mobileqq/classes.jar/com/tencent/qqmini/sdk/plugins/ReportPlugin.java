@@ -33,14 +33,14 @@ public class ReportPlugin
   public static final String KEY_SUB_ACTION_TYPE = "sub_actiontype";
   public static final String KEY_TABLE_DATA = "args";
   public static final String KEY_TABLE_NAME = "tableName";
-  public static final int REPORT_EVENT_Display = 15496;
+  public static final int REPORT_EVENT_DISPLAY = 15496;
   public static final int REPORT_EVENT_JS_EXCEPTION = 13582;
-  public static final int REPORT_EVENT_Speed = 13544;
-  public static final int REPORT_EVENT_Speed_newPage2pageReady = 9;
-  public static final int REPORT_EVENT_Speed_reRenderTime = 6;
+  public static final int REPORT_EVENT_SPEED = 13544;
+  public static final int REPORT_EVENT_SPEED_NEW_PAGE_2_PAGE_READY = 9;
+  public static final int REPORT_EVENT_SPEED_RE_RENDER_TIME = 6;
   public static final String TABLE_DC04239 = "dc04239";
   public static final String TABLE_DC04682 = "dc04682";
-  private final String TAG = "ReportPlugin";
+  private static final String TAG = "ReportPlugin";
   
   private void doReportBy898(String paramString, JSONArray paramJSONArray)
   {

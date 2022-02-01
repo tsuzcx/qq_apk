@@ -1,53 +1,44 @@
-import android.os.Bundle;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.widget.WaveView;
 
 public class blqu
-  extends blqs
+  implements Handler.Callback
 {
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  public blqu(WaveView paramWaveView) {}
   
-  public String a()
+  public boolean handleMessage(Message paramMessage)
   {
-    try
-    {
-      Object localObject = new JSONObject();
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject1.put("name", "pay");
-      localJSONObject1.put("identifier", this.i);
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("code", this.jdField_c_of_type_Int);
-      localJSONObject2.put("message", this.a);
-      ((JSONObject)localObject).put("action", localJSONObject1);
-      ((JSONObject)localObject).put("params", localJSONObject2);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+    if (paramMessage == null) {
+      return false;
     }
-    catch (JSONException localJSONException)
+    switch (paramMessage.what)
     {
-      localJSONException.printStackTrace();
     }
-    return "";
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    paramBundle.putString("_mqqpay_payresp_paychanneltype", this.jdField_c_of_type_JavaLangString);
-    paramBundle.putString("_mqqpay_payresp_transactionid", this.d);
-    paramBundle.putString("_mqqpay_payresp_paytime", this.e);
-    paramBundle.putString("_mqqpay_payresp_totalfee", this.f);
-    paramBundle.putString("_mqqpay_payresp_callbackurl", this.g);
-    paramBundle.putString("_mqqpay_payresp_spdata", this.h);
-    paramBundle.putString("_mqqpay_payapi_serialnumber", this.i);
-    paramBundle.putString("_mqqpay_payapi_openid", this.j);
+    for (;;)
+    {
+      return true;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).removeMessages(1002);
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      WaveView.a(this.a).removeMessages(1001);
+      WaveView.a(this.a).removeMessages(1002);
+    }
   }
 }
 

@@ -1,12 +1,16 @@
-public abstract interface akhd
+class akhd
+  extends asvt
 {
-  public abstract void a(long paramLong, float paramFloat, String paramString);
+  akhd(akha paramakha) {}
   
-  public abstract void b(long paramLong);
+  protected void l_(int paramInt)
+  {
+    this.a.g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,22 @@
-public abstract interface addo
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class addo
+  implements adci
 {
-  public abstract void a(int paramInt);
+  public static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  {
+    ((PublicAccountHandler)paramQQAppInterface.a(11)).a(paramMsgType0x210.uSubMsgType, paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
+  }
 }
 
 

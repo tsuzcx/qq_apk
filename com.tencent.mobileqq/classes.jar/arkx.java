@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.dating.DatingUtil.1;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
 
-public class arkx
-  implements DialogInterface.OnClickListener
+public abstract interface arkx
 {
-  public arkx(DatingUtil.1 param1) {}
+  public abstract long a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract ExcitingTransferUploadChnConfigInfo a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkx
  * JD-Core Version:    0.7.0.1
  */

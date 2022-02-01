@@ -1,48 +1,27 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import java.util.concurrent.ExecutorService;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
 public class avkr
-  implements IShadow
+  implements bjey
 {
-  private avgz a;
+  public avkr(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  private void a(String paramString)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    try
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      avkt.a().a().b("enter_shadow_err").c(paramString).b();
-      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.a.getActivity().finish();
   }
-  
-  public avgz a(Context paramContext, String paramString1, String paramString2)
-  {
-    return avhi.a(paramContext, paramString1, paramString2);
-  }
-  
-  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
-  {
-    anvy.b(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
-  }
-  
-  public boolean hasPluginManager()
-  {
-    return this.a != null;
-  }
-  
-  public void setILoggerFactory() {}
 }
 
 

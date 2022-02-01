@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.utils;
 
-import aajr;
-import aajs;
+import aans;
+import aant;
 import android.content.Context;
 import java.util.TimerTask;
 
 public class TimeAndCountHelper$1
   extends TimerTask
 {
-  public TimeAndCountHelper$1(aajr paramaajr, Context paramContext, String paramString, aajs paramaajs) {}
+  public TimeAndCountHelper$1(aans paramaans, Context paramContext, String paramString, aant paramaant) {}
   
   public void run()
   {
-    aajr.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aajs);
+    aans.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aant);
   }
 }
 

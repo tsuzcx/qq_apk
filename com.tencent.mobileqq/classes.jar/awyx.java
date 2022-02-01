@@ -1,27 +1,8 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-
-public class awyx
+public abstract interface awyx
 {
-  public static String a = "";
+  public abstract void a(awyb paramawyb);
   
-  public static String a()
-  {
-    if (TextUtils.isEmpty(a)) {}
-    try
-    {
-      a = QQPlayerService.a(6, "MusicPendantUtil");
-      return a;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
-      }
-    }
-  }
+  public abstract void b(awyb paramawyb);
 }
 
 

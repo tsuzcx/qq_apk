@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webprocess;
 
-import bhlf;
+import bima;
 import com.tencent.common.app.AppInterface;
 
 public class PreloadService$PreloadImpl$1
   implements Runnable
 {
-  public PreloadService$PreloadImpl$1(bhlf parambhlf, AppInterface paramAppInterface) {}
+  public PreloadService$PreloadImpl$1(bima parambima, AppInterface paramAppInterface) {}
   
   public void run()
   {

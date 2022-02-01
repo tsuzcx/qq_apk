@@ -1,33 +1,45 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-
-class vij
-  implements TextView.OnEditorActionListener
+public class vij<F, S>
 {
-  vij(vih paramvih) {}
+  public F a;
+  public S b;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public vij(F paramF, S paramS)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
+    this.a = paramF;
+    this.b = paramS;
+  }
+  
+  public vij<F, S> a(F paramF, S paramS)
+  {
+    this.a = paramF;
+    this.b = paramS;
+    return this;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    for (;;)
     {
-    case 5: 
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
+      return true;
+      if (!(paramObject instanceof vij)) {
+        return false;
+      }
+      try
       {
-        return bool1;
-        bool1 = bool2;
-      } while (this.a.a());
-      bool1 = bool2;
-    } while (this.a.a == null);
-    this.a.a.a();
-    return true;
+        paramObject = (vij)paramObject;
+        if ((!this.a.equals(paramObject.a)) || (!this.b.equals(paramObject.b))) {
+          return false;
+        }
+      }
+      catch (ClassCastException paramObject) {}
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (this.a.hashCode() + 527) * 31 + this.b.hashCode();
   }
 }
 

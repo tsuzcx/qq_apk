@@ -1,45 +1,301 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.StateSet;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
 
-class bdsm
-  implements ITransactionCallback
+public class bdsm
+  extends bdom
 {
-  bdsm(bdsl parambdsl) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  private StateListDrawable a(Resources paramResources, int paramInt, float[] paramArrayOfFloat)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
-    }
-    this.a.jdField_a_of_type_Bduk.a = paramArrayOfByte;
-    if (this.a.b != -1) {
-      this.a.a(paramInt, "uploadImgError");
-    }
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
-    }
-    if (this.a.jdField_a_of_type_Ywj.b.equals(this.a.jdField_a_of_type_Ywl.a))
+    GradientDrawable[] arrayOfGradientDrawable = new GradientDrawable[2];
+    int k = Color.red(paramInt);
+    int i = Color.green(paramInt);
+    int j = Color.blue(paramInt);
+    paramInt = k;
+    k = 0;
+    if (k < arrayOfGradientDrawable.length)
     {
-      this.a.jdField_a_of_type_Ywj.a = this.a.d;
-      if (this.a.b != -1) {
-        this.a.aM_();
+      arrayOfGradientDrawable[k] = new GradientDrawable();
+      arrayOfGradientDrawable[k].setShape(0);
+      int m = paramInt - (k << 5);
+      paramInt = m;
+      if (m < 0) {
+        paramInt = 0;
+      }
+      m = i - (k << 5);
+      i = m;
+      if (m < 0) {
+        i = 0;
+      }
+      m = j - (k << 5);
+      j = m;
+      if (m < 0) {
+        j = 0;
+      }
+      arrayOfGradientDrawable[k].setColor(Color.rgb(paramInt, i, j));
+      if (paramArrayOfFloat != null) {
+        arrayOfGradientDrawable[k].setCornerRadii(paramArrayOfFloat);
+      }
+      for (;;)
+      {
+        k += 1;
+        break;
+        arrayOfGradientDrawable[k].setCornerRadius(agej.a(4.0F, paramResources));
       }
     }
+    paramResources = new StateListDrawable();
+    paramArrayOfFloat = arrayOfGradientDrawable[1];
+    paramResources.addState(new int[] { 16842919, 16842910 }, paramArrayOfFloat);
+    paramResources.addState(StateSet.WILD_CARD, arrayOfGradientDrawable[0]);
+    return paramResources;
   }
   
-  public void onSwitch2BackupChannel() {}
+  @TargetApi(16)
+  public void a(View paramView)
+  {
+    if (paramView != null)
+    {
+      if (this.p == 0) {
+        super.a(paramView);
+      }
+    }
+    else {
+      return;
+    }
+    int i = agej.a(4.0F, paramView.getResources());
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    switch (a())
+    {
+    default: 
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      localObject1 = a(paramView.getResources(), this.p, (float[])localObject1);
+      if (Build.VERSION.SDK_INT >= 16) {
+        break;
+      }
+      paramView.setBackgroundDrawable((Drawable)localObject1);
+      return;
+      localObject1 = new float[8];
+      continue;
+      localObject1 = new float[8];
+      localObject1[0] = i;
+      localObject1[1] = i;
+      localObject1[2] = i;
+      localObject1[3] = i;
+      localObject1[4] = 0.0F;
+      localObject1[5] = 0.0F;
+      localObject1[6] = 0.0F;
+      localObject1[7] = 0.0F;
+      continue;
+      localObject1 = new float[8];
+      localObject1[0] = 0.0F;
+      localObject1[1] = 0.0F;
+      localObject1[2] = 0.0F;
+      localObject1[3] = 0.0F;
+      localObject1[4] = i;
+      localObject1[5] = i;
+      localObject1[6] = i;
+      localObject1[7] = i;
+    }
+    paramView.setBackground((Drawable)localObject1);
+  }
   
-  public void onTransStart() {}
+  protected int b()
+  {
+    return 8;
+  }
   
-  public void onUpdateProgress(int paramInt) {}
+  @TargetApi(16)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Resources localResources = paramContext.getResources();
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    RelativeLayout localRelativeLayout;
+    int i;
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
+    {
+      localRelativeLayout = (RelativeLayout)paramView;
+      paramView = localRelativeLayout;
+      if (j == localRelativeLayout.getChildCount())
+      {
+        i = 0;
+        paramView = localRelativeLayout;
+        if (i < j)
+        {
+          if (i <= 2) {
+            break label175;
+          }
+          paramView = localRelativeLayout;
+        }
+      }
+      label67:
+      paramContext = paramView.findViewById(2);
+      if (paramContext != null)
+      {
+        paramBundle = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
+        paramBundle.addRule(0, 3);
+        paramBundle.rightMargin = agej.a(7.5F, localResources);
+        if (paramView.findViewById(1) == null) {
+          break label873;
+        }
+        paramBundle.addRule(1, 1);
+        paramContext.setPadding(agej.a(7.5F, localResources), 0, 0, 0);
+        label130:
+        paramContext.setLayoutParams(paramBundle);
+      }
+      if (Build.VERSION.SDK_INT >= 16) {
+        break label891;
+      }
+      paramView.setBackgroundDrawable(null);
+    }
+    for (;;)
+    {
+      a(paramView);
+      paramView.setPadding(agej.a(11.0F, localResources), 0, agej.a(11.0F, localResources), 0);
+      return paramView;
+      label175:
+      paramView = (bdol)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = paramView.jdField_a_of_type_JavaLangString;
+      if ("picture".equals(localObject))
+      {
+        paramView = (ImageView)paramView.a(paramContext, localRelativeLayout.findViewById(1), paramBundle);
+        localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).addRule(9, -1);
+        ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      label353:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (!"title".equals(localObject)) {
+            break label353;
+          }
+          ((StructMsgItemTitle)paramView).c("30");
+          ((StructMsgItemTitle)paramView).a(true);
+          ((StructMsgItemTitle)paramView).a(a(), this.p);
+          paramView = paramView.a(paramContext, localRelativeLayout.findViewById(2), paramBundle);
+          localObject = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+          paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      } while (!"summary".equals(localObject));
+      ((bdtj)paramView).c("28");
+      ((bdtj)paramView).a(true);
+      if (this.p != 0) {
+        ((bdtj)paramView).a(a(), this.p);
+      }
+      for (;;)
+      {
+        paramView = paramView.a(paramContext, localRelativeLayout.findViewById(3), paramBundle);
+        localObject = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
+        ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        break;
+        ((bdtj)paramView).b("black");
+      }
+      localRelativeLayout = new RelativeLayout(paramContext);
+      localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, agej.a(40.0F, localResources)));
+      i = 0;
+      paramView = localRelativeLayout;
+      if (i >= j) {
+        break label67;
+      }
+      paramView = localRelativeLayout;
+      if (i > 2) {
+        break label67;
+      }
+      paramView = (bdol)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject = paramView.jdField_a_of_type_JavaLangString;
+      if ("picture".equals(localObject))
+      {
+        paramView = (ImageView)paramView.a(paramContext, null, paramBundle);
+        paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        paramView.setId(1);
+        localObject = new RelativeLayout.LayoutParams(agej.a(40.0F, localResources), agej.a(30.0F, localResources));
+        ((RelativeLayout.LayoutParams)localObject).addRule(9, -1);
+        ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+        localRelativeLayout.addView(paramView, (ViewGroup.LayoutParams)localObject);
+      }
+      label720:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (!"title".equals(localObject)) {
+            break label720;
+          }
+          ((StructMsgItemTitle)paramView).c("30");
+          ((StructMsgItemTitle)paramView).a(true);
+          ((StructMsgItemTitle)paramView).a(a(), this.p);
+          paramView = paramView.a(paramContext, null, paramBundle);
+          paramView.setId(2);
+          localObject = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+          localRelativeLayout.addView(paramView, (ViewGroup.LayoutParams)localObject);
+        }
+      } while (!"summary".equals(localObject));
+      ((bdtj)paramView).c("28");
+      ((bdtj)paramView).a(true);
+      if (this.p != 0) {
+        ((bdtj)paramView).a(a(), this.p);
+      }
+      for (;;)
+      {
+        paramView = paramView.a(paramContext, null, paramBundle);
+        int k = localResources.getDisplayMetrics().widthPixels;
+        int m = agej.a(89.5F, localResources);
+        ((TextView)paramView).setMaxWidth(k - m);
+        ((TextView)paramView).setSingleLine(true);
+        paramView.setId(3);
+        localObject = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
+        ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+        localRelativeLayout.addView(paramView, (ViewGroup.LayoutParams)localObject);
+        break;
+        ((bdtj)paramView).b("black");
+      }
+      label873:
+      paramBundle.addRule(9, -1);
+      paramContext.setPadding(0, 0, 0, 0);
+      break label130;
+      label891:
+      paramView.setBackground(null);
+    }
+  }
+  
+  public String b()
+  {
+    return "Layout8";
+  }
 }
 
 

@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ark;
 
-import apms;
-import apnb;
-import apnd;
-import apnf;
-import apni;
+import aqai;
+import aqar;
+import aqat;
+import aqav;
+import aqay;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
 public class ArkAiDictUpdateMgr$8
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$8(apms paramapms, String paramString, apnf paramapnf, apnd paramapnd) {}
+  public ArkAiDictUpdateMgr$8(aqai paramaqai, String paramString, aqav paramaqav, aqat paramaqat) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)apms.a(this.this$0).get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)aqai.a(this.this$0).get();
     if (localQQAppInterface == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return from task");
       return;
     }
-    ((ArkAppCenter)localQQAppInterface.getManager(121)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new apnb(this));
+    ((ArkAppCenter)localQQAppInterface.getManager(121)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new aqar(this));
   }
 }
 

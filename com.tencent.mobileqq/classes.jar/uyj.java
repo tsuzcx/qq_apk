@@ -1,26 +1,8 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-
-class uyj
-  extends RecyclerView.ViewHolder
+public abstract interface uyj
 {
-  public uyj(BaseWidgetView paramBaseWidgetView)
-  {
-    super(paramBaseWidgetView);
-  }
+  public abstract void a();
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, uzb paramuzb)
-  {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramuzb);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
-    }
-  }
+  public abstract void b();
 }
 
 

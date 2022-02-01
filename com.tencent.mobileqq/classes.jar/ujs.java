@@ -1,6 +1,6 @@
-public abstract interface ujs<T extends ujh>
+class ujs
 {
-  public abstract void a(T paramT);
+  private static final ujq a = new ujq();
 }
 
 

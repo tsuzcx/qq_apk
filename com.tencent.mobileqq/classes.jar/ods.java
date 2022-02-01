@@ -1,52 +1,116 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.HashMap;
 
 public class ods
-  extends QIPCModule
 {
-  private static volatile ods a;
-  
-  public ods(String paramString)
+  private static Bitmap a(Bitmap paramBitmap)
   {
-    super(paramString);
-  }
-  
-  public static ods a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ods("EcshopIPCModule");
-      }
-      return a;
+    if (paramBitmap == null) {
+      return null;
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
     try
     {
-      if (!(BaseApplicationImpl.getApplication().peekAppRuntime() instanceof QQAppInterface)) {
-        return null;
-      }
-      if (paramString.equals("reportToBeacon"))
+      int i = paramBitmap.getWidth();
+      int j = paramBitmap.getHeight();
+      localBitmap = paramBitmap;
+      if (i * j > 8000)
       {
-        oev.a(paramBundle.getString("key_report_event"), (HashMap)paramBundle.getSerializable("key_report_params"));
-        return null;
+        double d = Math.sqrt(8000.0D / (i * j));
+        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
       }
     }
-    catch (Throwable paramString)
+    catch (OutOfMemoryError paramBitmap)
     {
-      QLog.e("EcshopIPCModule", 1, paramString, new Object[0]);
+      for (;;)
+      {
+        System.gc();
+        paramBitmap.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
+        }
+        localBitmap = null;
+      }
     }
-    return null;
+    catch (Exception paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
+        }
+        Bitmap localBitmap = null;
+      }
+    }
+    return localBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, boolean paramBoolean1, String paramString4, boolean paramBoolean2, uap paramuap)
+  {
+    int k = 0;
+    int j = 0;
+    if (paramString1 == null) {}
+    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
+    {
+      if (paramString2 == null) {}
+      for (paramString1 = "";; paramString1 = paramString2)
+      {
+        int i;
+        if (!WXShareHelper.a().a()) {
+          i = 2131719399;
+        }
+        for (;;)
+        {
+          if (i != -1) {
+            zyx.a(0, i);
+          }
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoShareUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", toWeChat=" + paramBoolean1);
+            }
+            return;
+            if (WXShareHelper.a().b()) {
+              break label279;
+            }
+            i = 2131719400;
+            break;
+            paramString2 = String.valueOf(System.currentTimeMillis());
+            paramuap = new odt(paramString2, paramuap);
+            WXShareHelper.a().a(paramuap);
+            if ((!paramBoolean1) || (TextUtils.isEmpty(paramString4)) || (paramBoolean2)) {
+              break label183;
+            }
+            WxShareHelperFromReadInjoy.a().b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
+          }
+          label183:
+          if (bnrf.r(ozs.a()) == 1)
+          {
+            paramString4 = WXShareHelper.a();
+            paramBitmap = a(paramBitmap);
+            if (paramBoolean1) {}
+            for (i = j;; i = 1)
+            {
+              paramString4.c(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
+              break;
+            }
+          }
+          paramString4 = WxShareHelperFromReadInjoy.a();
+          paramBitmap = a(paramBitmap);
+          if (paramBoolean1) {}
+          for (i = k;; i = 1)
+          {
+            paramString4.b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
+            break;
+          }
+          label279:
+          i = -1;
+        }
+      }
+    }
   }
 }
 

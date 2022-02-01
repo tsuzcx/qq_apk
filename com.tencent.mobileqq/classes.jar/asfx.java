@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-final class asfx
-  implements DialogInterface.OnClickListener
+class asfx
 {
-  asfx(BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  private static asfw a = new asfw();
 }
 
 

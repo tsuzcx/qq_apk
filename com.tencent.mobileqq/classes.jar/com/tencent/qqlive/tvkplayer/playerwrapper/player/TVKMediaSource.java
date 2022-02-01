@@ -11,7 +11,7 @@ import java.util.Map;
 public class TVKMediaSource
 {
   public static final int TYPE_FD = 2;
-  public static final int TYPE_MediaAsset = 3;
+  public static final int TYPE_MEDIA_ASSET = 3;
   public static final int TYPE_URL = 1;
   public static final int TYPE_VID = 0;
   private String[] mBackupUrls;

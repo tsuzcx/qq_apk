@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class atyn
-  implements DialogInterface.OnClickListener
+  implements atvq
 {
-  atyn(atyl paramatyl) {}
+  atyn(atym paramatym) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
   {
-    if (this.a.a.a.isShowing()) {
-      this.a.a.a.dismiss();
-    }
+    atym.c(this.a, paramString1);
+    atym.a(this.a).a().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
+    atym.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atyn
  * JD-Core Version:    0.7.0.1
  */

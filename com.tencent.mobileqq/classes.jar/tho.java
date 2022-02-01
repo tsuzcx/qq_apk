@@ -1,52 +1,7 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.widget.QQToast;
+import kotlin.Metadata;
 
-class tho
-  implements tht
-{
-  tho(thn paramthn) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (thn.a(this.a) != null)
-      {
-        paramString = (Animation)thn.a(this.a).getTag(2131369412);
-        paramString.setAnimationListener(new thp(this));
-        thn.a(this.a).startAnimation(paramString);
-      }
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131717023, 0).a();
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    if (paramBoolean)
-    {
-      thn.a(this.a).a(thn.a(this.a), thn.a(this.a, paramInt), this.a.a, "", "", paramString2, "", 0, "");
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131717027, 0).a();
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (thn.a(this.a) != null)
-      {
-        paramString = (Animation)thn.a(this.a).getTag(2131369412);
-        paramString.setAnimationListener(new thq(this));
-        thn.a(this.a).startAnimation(paramString);
-      }
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131717029, 0).a();
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/RIJBridgeInvokeHandler$Companion;", "", "()V", "CLEAR_MESSAGE_BOX_DATA", "", "FEEDS_REFRESH_MESSAGE", "GET_ALDCONFIG_PARAMS", "GET_BIU_TRIGGER_TYPE", "HAS_RED_PACKET_PERMISSION", "HAS_RED_PACKET_SHARE_PERMISSION", "HIDE_FOLLOW_ALERTVIEW", "IS_IN_KAN_DIAN_TAB", "NS_RIJ", "OPEN_ACCOUNT_PAGE_MORE", "OPEN_PRIVATE_LETTER", "OPEN_VIDEO", "Q_REPORT", "REQUEST_RED_PACKET_CONTENT_SHARE_TOAST", "SELECT_AND_INVITE_FRIEND", "SELECT_AND_UPLOAD_AVATAR", "SHOW_COMMENT_EDITOR", "SHOW_COMMENT_EDITOR_NATIVE", "SHOW_FOLLOW_ALERTVIEW", "SHOW_MULTI_BIU_EDIT_PAGE", "SHOW_PICTURE", "SHOW_RIJ_SHARE_MENU", "SHOW_UGC_EDIT_PAGE", "SHOW_UGC_VIDEO_RECORD_PAGE", "SHOW_VISIBLE_USER_LIST", "SOCIALIZE_FEEDS_UPDATE", "UPDATE_ACCOUNT_CARD_FOLLOW_INFO", "UPDATE_RED_PACKET_SHARE_TIME", "UPDATE_TOPIC_CARD_FOLLOW_INFO", "UPLOAD_TOPIC_PIC", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tho {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

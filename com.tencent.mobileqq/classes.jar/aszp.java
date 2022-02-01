@@ -1,108 +1,60 @@
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
 public class aszp
+  extends asvt
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aszq jdField_a_of_type_Aszq;
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private byte[] c;
+  public aszp(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  aszp(aszj paramaszj)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    a(false, 0L, null, null, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
+    if ((paramBoolean) && (paramInt == 1)) {
+      ExtendFriendSquareFragment.b(this.a);
+    }
+    if (paramBoolean) {
+      ExtendFriendSquareFragment.a(this.a);
+    }
   }
   
-  aszp(aszj paramaszj, long paramLong, aszq paramaszq)
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, aswv paramaswv, int paramInt3)
   {
-    a(false, paramLong, null, paramaszq, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onMatchResponse success=%s match_op=%s retCode=%s info=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramaswv }));
+    }
   }
   
-  aszp(aszj paramaszj, aszq paramaszq)
+  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<asxh> paramList, aswu paramaswu)
   {
-    a(false, 0L, null, paramaszq, 0);
+    if (this.a.b != paramLong) {
+      return;
+    }
+    try
+    {
+      ExtendFriendSquareFragment.a(this.a, 1);
+      ExtendFriendSquareFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramaswu);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramString);
+    }
   }
   
-  aszp(aszj paramaszj, String paramString)
+  protected void d(boolean paramBoolean)
   {
-    a(false, 0L, paramString, null, 0);
-  }
-  
-  aszp(aszj paramaszj, boolean paramBoolean, long paramLong)
-  {
-    a(paramBoolean, paramLong, null, null, 0);
-  }
-  
-  aszp(aszj paramaszj, boolean paramBoolean, long paramLong, aszq paramaszq, int paramInt)
-  {
-    a(paramBoolean, paramLong, null, paramaszq, paramInt);
-  }
-  
-  aszp(aszj paramaszj, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, aszq paramaszq)
-  {
-    a(false, 0L, null, paramaszq, 0);
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.c = paramArrayOfByte3;
-  }
-  
-  private void a(boolean paramBoolean, long paramLong, String paramString, aszq paramaszq, int paramInt)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aszq = paramaszq;
-    this.jdField_a_of_type_JavaLangObject = null;
-  }
-  
-  int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  aszq a()
-  {
-    return this.jdField_a_of_type_Aszq;
-  }
-  
-  Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  int b()
-  {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, "onLimitChatResourceStateUpdate, isReady = " + paramBoolean);
+    }
+    ExtendFriendSquareFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszp
  * JD-Core Version:    0.7.0.1
  */

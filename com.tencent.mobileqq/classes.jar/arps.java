@@ -1,74 +1,59 @@
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arps
-  implements arqg
+public class arps
 {
-  arps(arpp paramarpp, awwz paramawwz) {}
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public static arps a(araj[] paramArrayOfaraj)
   {
-    if (this.jdField_a_of_type_Awwz.isShowing()) {
-      this.jdField_a_of_type_Awwz.dismiss();
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+      return null;
     }
-    arpp.a(this.jdField_a_of_type_Arpp);
-    arpp.a(this.jdField_a_of_type_Arpp).a().b();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Awwz.a(paramInt);
-  }
-  
-  public void a(arpo paramarpo)
-  {
-    if ((paramarpo != null) && (!this.jdField_a_of_type_Arpp.a.isFinishing())) {
-      switch (paramarpo.a)
-      {
-      }
-    }
-    for (;;)
+    arps localarps = new arps();
+    try
     {
-      if (this.jdField_a_of_type_Awwz.isShowing()) {
-        this.jdField_a_of_type_Awwz.dismiss();
-      }
-      arpp.a(this.jdField_a_of_type_Arpp);
-      arpp.a(this.jdField_a_of_type_Arpp).a().b();
+      a(localarps, new JSONObject(paramArrayOfaraj[0].a));
+      return localarps;
+    }
+    catch (JSONException paramArrayOfaraj)
+    {
+      paramArrayOfaraj.printStackTrace();
+    }
+    return localarps;
+  }
+  
+  public static void a(arps paramarps, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramarps == null)) {}
+    do
+    {
       return;
-      QQToast.a(this.jdField_a_of_type_Arpp.a.getApplicationContext(), this.jdField_a_of_type_Arpp.a.getString(2131717408), 0).a();
-      continue;
-      if (paramarpo.b == 10006)
-      {
-        QQToast.a(this.jdField_a_of_type_Arpp.a.getApplicationContext(), this.jdField_a_of_type_Arpp.a.getString(2131717399), 0).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocAIOShowGuideDialogBean", 2, "handleTencentDocUniversalEntry call after " + paramJSONObject.toString());
       }
-      else
-      {
-        QQToast.a(this.jdField_a_of_type_Arpp.a.getApplicationContext(), this.jdField_a_of_type_Arpp.a.getString(2131717403), 0).a();
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.i("MultiEmotionSaveManager", 2, "onSaveComplete " + this.jdField_a_of_type_Arpp.a.isFinishing());
-        }
+      if (paramJSONObject.has("aioGuiderDialogEnable")) {
+        paramarps.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("aioGuiderDialogEnable");
       }
-    }
+    } while (!paramJSONObject.has("dialogShowMaxTimes"));
+    paramarps.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
   }
   
-  public void b()
+  public int a()
   {
-    if (!this.jdField_a_of_type_Awwz.isShowing())
-    {
-      this.jdField_a_of_type_Awwz.a(0);
-      this.jdField_a_of_type_Awwz.a(new arpt(this));
-      if (QLog.isColorLevel()) {
-        QLog.i("MultiEmotionSaveManager", 2, "onSaveBegin");
-      }
-      this.jdField_a_of_type_Awwz.show();
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arps
  * JD-Core Version:    0.7.0.1
  */

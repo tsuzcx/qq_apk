@@ -1,9 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-
-public abstract interface lgz
+public class lgz
 {
-  public abstract void a(Bitmap paramBitmap1, Bitmap paramBitmap2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Rect paramRect);
+  public int a;
+  public String a;
+  public int b = 2;
+  public int c = 2;
+  public int d = 5000;
+  
+  public lgz()
+  {
+    this.jdField_a_of_type_Int = 5000;
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131702873);
+  }
+  
+  public String a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaLangString.replace("voicesticker", paramString);
+  }
 }
 
 

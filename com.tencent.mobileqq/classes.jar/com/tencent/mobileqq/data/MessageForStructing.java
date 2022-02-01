@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import acwh;
+import adak;
 import android.text.TextUtils;
-import aodi;
-import bcwd;
+import aopu;
+import bdow;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -79,13 +79,13 @@ public class MessageForStructing
     this.time = paramMessageRecord.time;
     this.versionCode = paramMessageRecord.versionCode;
     this.vipBubbleID = paramMessageRecord.vipBubbleID;
-    this.structingMsg = bcwd.a(this.msgData);
+    this.structingMsg = bdow.a(this.msgData);
   }
   
   protected void doParse()
   {
     if (!this.bDynicMsg) {
-      this.structingMsg = bcwd.a(this.msgData);
+      this.structingMsg = bdow.a(this.msgData);
     }
   }
   
@@ -100,7 +100,7 @@ public class MessageForStructing
     String str1 = str2;
     if (this.structingMsg != null)
     {
-      boolean bool = aodi.a(String.valueOf(this.structingMsg.mMsgServiceID));
+      boolean bool = aopu.a(String.valueOf(this.structingMsg.mMsgServiceID));
       str1 = str2;
       if ((this.structingMsg instanceof AbsShareMsg))
       {
@@ -144,7 +144,7 @@ public class MessageForStructing
   
   public boolean isSupportFTS()
   {
-    return acwh.x(this.istroop);
+    return adak.x(this.istroop);
   }
   
   public boolean isSupportReply()

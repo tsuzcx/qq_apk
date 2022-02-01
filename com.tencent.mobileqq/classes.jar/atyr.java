@@ -1,22 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class atyr
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface atyr
 {
-  public atyr(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public abstract List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public abstract void a(long paramLong, int paramInt, atyq paramatyq);
+  
+  public abstract void a(long paramLong, atyq paramatyq);
+  
+  public abstract void a(long paramLong, bhva parambhva);
+  
+  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, atyq paramatyq);
+  
+  public abstract boolean a(long paramLong, atyq paramatyq);
+  
+  public abstract void b(long paramLong, atyq paramatyq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atyr
  * JD-Core Version:    0.7.0.1
  */

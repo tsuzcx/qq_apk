@@ -1,10 +1,23 @@
-public abstract interface aink
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+
+class aink
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  aink(ainh paramainh, View paramView, int paramInt1, int paramInt2) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if ((paramValueAnimator == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return;
+    }
+    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    float f2 = this.jdField_a_of_type_Int;
+    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+  }
 }
 
 

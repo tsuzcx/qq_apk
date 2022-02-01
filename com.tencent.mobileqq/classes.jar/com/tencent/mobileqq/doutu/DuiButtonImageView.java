@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.doutu;
 
-import agsn;
+import ahcb;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.widget.ImageView;
-import armt;
-import bgmo;
+import ascj;
+import bhmq;
 import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -50,7 +50,7 @@ public class DuiButtonImageView
   
   public static boolean a()
   {
-    Object localObject1 = new File(armt.jdField_a_of_type_JavaLangString + "dui_icon");
+    Object localObject1 = new File(ascj.jdField_a_of_type_JavaLangString + "dui_icon");
     if (((File)localObject1).exists()) {}
     for (;;)
     {
@@ -151,17 +151,17 @@ public class DuiButtonImageView
       ((BitmapFactory.Options)localObject).inMutable = true;
       if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() > 0))
       {
-        localObject = bgmo.a(((File)jdField_a_of_type_JavaUtilList.get(0)).getAbsolutePath(), (BitmapFactory.Options)localObject);
+        localObject = bhmq.a(((File)jdField_a_of_type_JavaUtilList.get(0)).getAbsolutePath(), (BitmapFactory.Options)localObject);
         if (localObject == null)
         {
           jdField_a_of_type_Boolean = false;
-          armt.a(this.jdField_a_of_type_AndroidContentContext);
+          ascj.a(this.jdField_a_of_type_AndroidContentContext);
         }
-        armt localarmt = (armt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(214);
-        if (localarmt == null) {
+        ascj localascj = (ascj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(214);
+        if (localascj == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject, localarmt.jdField_a_of_type_MqqOsMqqHandler);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject, localascj.jdField_a_of_type_MqqOsMqqHandler);
         while (i < jdField_a_of_type_JavaUtilList.size())
         {
           localObject = (File)jdField_a_of_type_JavaUtilList.get(i);
@@ -213,11 +213,11 @@ public class DuiButtonImageView
           ((BitmapFactory.Options)localObject).inMutable = true;
           if (jdField_a_of_type_JavaUtilList.size() > 0)
           {
-            localObject = bgmo.a(((File)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1)).getAbsolutePath(), (BitmapFactory.Options)localObject);
+            localObject = bhmq.a(((File)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1)).getAbsolutePath(), (BitmapFactory.Options)localObject);
             if (localObject == null)
             {
               jdField_a_of_type_Boolean = false;
-              armt.a(this.jdField_a_of_type_AndroidContentContext);
+              ascj.a(this.jdField_a_of_type_AndroidContentContext);
             }
             setImageBitmap((Bitmap)localObject);
             return;

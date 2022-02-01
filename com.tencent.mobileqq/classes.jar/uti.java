@@ -1,26 +1,16 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+
 class uti
-  implements uih
+  extends GestureDetector.SimpleOnGestureListener
 {
-  uti(uth paramuth, String paramString1, String paramString2) {}
+  uti(uth paramuth) {}
   
-  public void a()
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    uut.a(1000003, uth.a(this.jdField_a_of_type_Uth), this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void b()
-  {
-    uut.a(1000007, uth.a(this.jdField_a_of_type_Uth), this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void c()
-  {
-    uut.a(1000004, uth.a(this.jdField_a_of_type_Uth), this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void d()
-  {
-    uut.a(1000002, uth.a(this.jdField_a_of_type_Uth), this.jdField_a_of_type_JavaLangString, this.b);
+    uqf.b("GdtAdWSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    uth.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

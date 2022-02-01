@@ -4,20 +4,20 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import ogv;
-import ogx;
+import oid;
+import oif;
 
 public class ReadInJoyDropFrameHelper$1
   implements Runnable
 {
   public void run()
   {
-    Iterator localIterator = ((List)ogv.a(this.this$0).get(Integer.valueOf(ogv.a(this.this$0, this.a)))).iterator();
+    Iterator localIterator = ((List)oid.a(this.this$0).get(Integer.valueOf(oid.a(this.this$0, this.a)))).iterator();
     while (localIterator.hasNext())
     {
-      ogx localogx = (ogx)localIterator.next();
+      oif localoif = (oif)localIterator.next();
       QLog.d("ReadInJoyDropFrameHelper", 2, "updateFeedsFluency UI FluencyVal : " + this.b);
-      localogx.a(this.b);
+      localoif.a(this.b);
     }
   }
 }

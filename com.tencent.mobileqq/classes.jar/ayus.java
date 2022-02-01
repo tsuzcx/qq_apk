@@ -1,22 +1,127 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Looper;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.notification.modularize.OnlineModulePushReceiverKt.sam.java_lang_Runnable.0;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.Unit;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime.Status;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"TAG", "", "cachedNotifyIdMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "cancelAllPush", "", "isAppBackground", "", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "joinProcessesAsString", "processes", "", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "needShieldPush", "runAsync", "run", "Lkotlin/Function0;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
 public final class ayus
 {
-  public int a;
-  public String a;
-  public int b;
+  private static final ConcurrentHashMap<Integer, Integer> a = new ConcurrentHashMap();
   
-  public ayus(int paramInt1, int paramInt2, String paramString)
+  @NotNull
+  public static final String a(@NotNull List<? extends ActivityManager.RunningAppProcessInfo> paramList)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    Intrinsics.checkParameterIsNotNull(paramList, "processes");
+    Object localObject = (Iterable)paramList;
+    paramList = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject, 10));
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+      paramList.add("name: " + localRunningAppProcessInfo.processName + " imp: " + localRunningAppProcessInfo.importance + " pid: " + localRunningAppProcessInfo.pid);
+    }
+    return CollectionsKt.joinToString$default((Iterable)paramList, null, null, null, 0, null, null, 63, null);
   }
   
-  public ayus(int paramInt, String paramString)
+  public static final void a()
   {
-    this.jdField_a_of_type_Int = 100;
-    this.b = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    Object localObject = a.keySet();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "cachedNotifyIdMap.keys");
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Integer localInteger = (Integer)((Iterator)localObject).next();
+      QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
+      Intrinsics.checkExpressionValueIsNotNull(localInteger, "it");
+      localQQNotificationManager.cancel("OnlineModulePushReceiver", localInteger.intValue());
+    }
+    a.clear();
+  }
+  
+  public static final void a(@NotNull Function0<Unit> paramFunction0)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "run");
+    if (Intrinsics.areEqual(Looper.myLooper(), Looper.getMainLooper()))
+    {
+      ThreadManagerV2.executeOnSubThread((Runnable)new OnlineModulePushReceiverKt.sam.java_lang_Runnable.0(paramFunction0));
+      return;
+    }
+    paramFunction0.invoke();
+  }
+  
+  public static final boolean a(@NotNull QQAppInterface paramQQAppInterface)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    if (Build.VERSION.SDK_INT > 19)
+    {
+      BaseApplication localBaseApplication = BaseApplication.context;
+      Object localObject1 = localBaseApplication.getSystemService("activity");
+      if (localObject1 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
+      }
+      localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "procList");
+      Object localObject2 = (Iterable)localObject1;
+      localObject1 = (Collection)new ArrayList();
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        Object localObject3 = ((Iterator)localObject2).next();
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localObject3;
+        if (paramQQAppInterface.isAppOnForeground((Context)localBaseApplication, localRunningAppProcessInfo.processName)) {
+          ((Collection)localObject1).add(localObject3);
+        }
+      }
+      paramQQAppInterface = (List)localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineModulePushReceiver", 2, new Object[] { "isAppBackground: called. ", "foreProcesses: " + a(paramQQAppInterface) });
+      }
+      return paramQQAppInterface.isEmpty();
+    }
+    boolean bool = xin.a(paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineModulePushReceiver", 2, new Object[] { "isAppBackground: kitkat called. ", "foreground: " + bool });
+    }
+    return !bool;
+  }
+  
+  public static final boolean b(@NotNull QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    boolean bool3 = FriendsStatusUtil.a((Context)paramQQAppInterface.getApp());
+    if (paramQQAppInterface.getOnlineStatus() == AppRuntime.Status.dnd) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineModulePushReceiver", 2, new Object[] { "needShieldPush: called. ", "canNotDisturb: " + bool3 + "  dndStatus: " + bool1 });
+      }
+      if ((bool3) || (bool1)) {
+        bool2 = true;
+      }
+      return bool2;
+    }
   }
 }
 

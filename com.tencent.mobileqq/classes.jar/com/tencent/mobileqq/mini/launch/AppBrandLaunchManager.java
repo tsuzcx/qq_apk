@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.launch;
 
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import addy;
+import admw;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -26,10 +26,10 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.LruCache;
-import anni;
-import aqpv;
-import bgsg;
-import bjxn;
+import anzj;
+import arfd;
+import bhsi;
+import bkyr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -142,7 +142,7 @@ public class AppBrandLaunchManager
   private long mMiniAppLastUseTimeStamp;
   private ConcurrentHashMap<String, String> mPreloadingTask = new ConcurrentHashMap();
   private int mProcessGameMaxCount;
-  private int mProcessMaxCount = bgsg.a(this.mContext, 6);
+  private int mProcessMaxCount = bhsi.a(this.mContext, 6);
   private int mProcessPreloadCount;
   private LruCache<String, AppBrandLaunchManager.MiniAppSubProcessorInfo> mProcessStack;
   private int mStartTimeInterval = 1500;
@@ -202,14 +202,14 @@ public class AppBrandLaunchManager
       }
       label267:
       subProcessorInfoMap.put(sInternalProcessInfo.processName, sInternalProcessInfo);
-      this.mProcessPreloadCount = bgsg.c(this.mContext, 2);
+      this.mProcessPreloadCount = bhsi.c(this.mContext, 2);
       if (this.mProcessPreloadCount < 0) {
         this.mProcessPreloadCount = 2;
       }
       if (this.mProcessPreloadCount > this.mProcessMaxCount) {
         this.mProcessPreloadCount = this.mProcessMaxCount;
       }
-      this.mProcessGameMaxCount = bgsg.b(this.mContext, 3);
+      this.mProcessGameMaxCount = bhsi.b(this.mContext, 3);
       if (this.mProcessGameMaxCount <= 0) {
         this.mProcessGameMaxCount = 3;
       }
@@ -219,8 +219,8 @@ public class AppBrandLaunchManager
       if (this.mProcessGameMaxCount > subGameProcessorInfoMap.size()) {
         this.mProcessGameMaxCount = subGameProcessorInfoMap.size();
       }
-      this.appProcessRecycleTime = bgsg.b(this.mContext, "mini_app_process_recycle_time", 1800000);
-      this.gameProcessRecycleTime = bgsg.b(this.mContext, "mini_game_process_recycle_time", 900000);
+      this.appProcessRecycleTime = bhsi.b(this.mContext, "mini_app_process_recycle_time", 1800000);
+      this.gameProcessRecycleTime = bhsi.b(this.mContext, "mini_game_process_recycle_time", 900000);
     }
     try
     {
@@ -445,7 +445,7 @@ public class AppBrandLaunchManager
       i += 1;
       break;
     }
-    QQToast.a(this.mContext, anni.a(2131699411), 0).a();
+    QQToast.a(this.mContext, anzj.a(2131699518), 0).a();
   }
   
   private void checkPreload()
@@ -516,7 +516,7 @@ public class AppBrandLaunchManager
         if (!((MiniAppConfig)localObject3).isEngineTypeMiniGame())
         {
           bool = true;
-          if (!bjxn.a(bool)) {
+          if (!bkyr.a(bool)) {
             break label184;
           }
           localObject2 = MiniSdkLauncher.convert((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2);
@@ -542,7 +542,7 @@ public class AppBrandLaunchManager
     if ((paramMiniAppSubProcessorInfo == null) || ((!paramBoolean2) && (!canPreloadApp(paramMiniAppSubProcessorInfo)))) {
       return;
     }
-    if (bjxn.a(paramBoolean1))
+    if (bkyr.a(paramBoolean1))
     {
       QLog.i("miniapp-process_AppBrandLaunchManager", 1, "doPreloadApp needJumpToMiniSDK");
       MiniSdkLauncher.preloadMiniApp(BaseApplicationImpl.getContext(), paramBoolean1);
@@ -580,7 +580,7 @@ public class AppBrandLaunchManager
     int i;
     if (WnsConfig.getConfig("qqminiapp", "mini_app_hard_coder_enabled", true))
     {
-      i = addy.a().a(0, 1, 1, Process.myTid(), this.hardCoderTimeout, 601, 1L, Process.myTid(), "miniLaunch");
+      i = admw.a().a(0, 1, 1, Process.myTid(), this.hardCoderTimeout, 601, 1L, Process.myTid(), "miniLaunch");
       QMLog.w("miniapp-process_AppBrandLaunchManager", "hard coder started, reqId: " + i);
       if (paramMiniAppConfig.isEngineTypeMiniGame()) {
         break label203;
@@ -589,7 +589,7 @@ public class AppBrandLaunchManager
     label203:
     for (boolean bool = true;; bool = false)
     {
-      if ((paramMiniAppConfig.config.renderInfo == null) || (paramMiniAppConfig.config.renderInfo.renderMode != 1) || (paramMiniAppConfig.config.renderInfo.renderMaterialMap.get(Integer.valueOf(1)) == null) || (!enableFlutter()) || (!bjxn.a(bool))) {
+      if ((paramMiniAppConfig.config.renderInfo == null) || (paramMiniAppConfig.config.renderInfo.renderMode != 1) || (paramMiniAppConfig.config.renderInfo.renderMaterialMap.get(Integer.valueOf(1)) == null) || (!enableFlutter()) || (!bkyr.a(bool))) {
         break label209;
       }
       paramMiniAppConfig.isSdkMode = true;
@@ -607,7 +607,7 @@ public class AppBrandLaunchManager
     if (paramMiniAppConfig.config != null) {
       this.startAppIdMap.put(paramMiniAppConfig.config.appId, Long.valueOf(System.currentTimeMillis()));
     }
-    if (bjxn.a(bool))
+    if (bkyr.a(bool))
     {
       if (!bool) {
         break label1127;
@@ -1347,10 +1347,10 @@ public class AppBrandLaunchManager
     {
       try
       {
-        if (!bjxn.a(true)) {
+        if (!bkyr.a(true)) {
           return;
         }
-        if (aqpv.a("mini_sdk_prelaunch_all_enable", 1) == 1)
+        if (arfd.a("mini_sdk_prelaunch_all_enable", 1) == 1)
         {
           i = 1;
           if (i != 0) {
@@ -1610,7 +1610,7 @@ public class AppBrandLaunchManager
       if (!paramMiniAppConfig.isEngineTypeMiniGame())
       {
         bool = true;
-        if (!bjxn.a(bool)) {
+        if (!bkyr.a(bool)) {
           break label42;
         }
       }
@@ -1724,7 +1724,7 @@ public class AppBrandLaunchManager
       if (!paramMiniAppConfig.isEngineTypeMiniGame())
       {
         bool1 = true;
-        if (!bjxn.a(bool1)) {
+        if (!bkyr.a(bool1)) {
           break label46;
         }
       }
@@ -1868,7 +1868,7 @@ public class AppBrandLaunchManager
       if (!paramMiniAppConfig.isEngineTypeMiniGame())
       {
         bool = true;
-        if (!bjxn.a(bool)) {
+        if (!bkyr.a(bool)) {
           break label35;
         }
       }
@@ -1977,7 +1977,7 @@ public class AppBrandLaunchManager
       if (!paramMiniAppConfig.isEngineTypeMiniGame())
       {
         bool = true;
-        if (!bjxn.a(bool)) {
+        if (!bkyr.a(bool)) {
           break label29;
         }
       }
@@ -2052,7 +2052,7 @@ public class AppBrandLaunchManager
     {
       return;
       if (!paramMiniAppConfig.isEngineTypeMiniGame()) {}
-      for (boolean bool = true; (bool) && (bjxn.a(bool)); bool = false)
+      for (boolean bool = true; (bool) && (bkyr.a(bool)); bool = false)
       {
         MiniSdkLauncher.preLaunchMiniApp(paramContext, paramMiniAppConfig);
         return;

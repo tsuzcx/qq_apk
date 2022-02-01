@@ -1,61 +1,27 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yjx
-  extends yka<ShareGroupFeedItem>
+  extends QQUIEventReceiver<yjr, wsm>
 {
-  public yjx(@NonNull ShareGroupFeedItem paramShareGroupFeedItem)
+  public yjx(yjr paramyjr)
   {
-    super(paramShareGroupFeedItem);
+    super(paramyjr);
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void a(@NonNull yjr paramyjr, @NonNull wsm paramwsm)
   {
-    super.a(paramStoryVideoItem);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount -= 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
-  {
-    super.a(paramStoryVideoItem, paramBoolean);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount += 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
-    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    if (paramwsm.a.isSuccess())
     {
-      qqstory_struct.ShareGroupVideoInfo localShareGroupVideoInfo = (qqstory_struct.ShareGroupVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localShareGroupVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      yuk.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramwsm.toString());
+      yjr.a(paramyjr, true);
     }
-    c(paramStoryFeed, true);
-    return true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsm.class;
   }
 }
 

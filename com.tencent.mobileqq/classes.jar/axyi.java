@@ -1,30 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class axyi
-  implements URLDrawable.URLDrawableListener
+  implements biug<oidb_0x8e4.RspBody>
 {
-  public axyi(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public axyi(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (NearbyMomentFragment.a(this.a) == 2) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 2)
+    GameRoomInviteActivity localGameRoomInviteActivity;
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-      NearbyMomentFragment.a(this.a).setVisibility(0);
+      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
+        break label94;
+      }
+    }
+    label94:
+    for (boolean bool = true;; bool = false)
+    {
+      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
+      return;
     }
   }
 }

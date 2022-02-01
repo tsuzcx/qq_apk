@@ -1,147 +1,20 @@
-import android.app.ActivityManager;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Debug.MemoryInfo;
-import android.os.Process;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.config.APMModuleConfig;
-import com.tencent.mobileqq.startup.step.HackVm;
-import com.tencent.qapmsdk.QAPM;
-import com.tencent.qapmsdk.base.meta.DumpResult;
-import com.tencent.qapmsdk.memory.MemoryCeilingMonitor;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class addd
-  extends adcg
-  implements adby
+  implements adci
 {
-  private long jdField_a_of_type_Long;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  
-  static void a()
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (QLog.getUIN_REPORTLOG_LEVEL() < 2) {
-      QLog.setUIN_REPORTLOG_LEVEL(2);
-    }
-  }
-  
-  public DumpResult a(String paramString, adcb paramadcb)
-  {
-    return MemoryCeilingMonitor.dumpHprof(paramString, new adde(this, paramadcb));
-  }
-  
-  public String a()
-  {
-    return b().getOldStrategy("0|1;15|1|0|1|1|0.00001|0.1|1;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|2|0|0.5|1|0.00001|0.1|1;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|3|0|0.25|0|0.00001|0.1|3;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|4|0|0.5|0|0.00001|0.1|4;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7");
-  }
-  
-  public void a(adbw paramadbw)
-  {
-    addc.a().a(paramadbw);
-  }
-  
-  public void a(DumpResult paramDumpResult)
-  {
-    MemoryCeilingMonitor.reportHprofFile(paramDumpResult);
-  }
-  
-  public String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("RAM Info:all=");
-    Object localObject = new DecimalFormat();
-    ((DecimalFormat)localObject).applyPattern("0.0");
-    try
+    paramadan = paramadan.a();
+    paramArrayOfByte = paramMsgType0x210.vProtobuf;
+    if (paramMsgType0x210.uSubMsgType == 290L) {}
+    for (boolean bool = true;; bool = false)
     {
-      long l1 = bgln.d() / 1024L / 1024L;
-      long l2 = bgln.e() / 1024L / 1024L;
-      Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
-      float f2 = -1.0F;
-      float f1 = f2;
-      if (arrayOfMemoryInfo != null)
-      {
-        f1 = f2;
-        if (arrayOfMemoryInfo.length > 0) {
-          f1 = arrayOfMemoryInfo[0].getTotalPss() / 1024.0F;
-        }
-      }
-      f2 = (float)Runtime.getRuntime().freeMemory() / 1024.0F / 1024.0F;
-      float f3 = (float)Runtime.getRuntime().totalMemory() / 1024.0F / 1024.0F;
-      float f4 = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
-      long l3 = HackVm.jdField_a_of_type_Long / 1024L / 1024L;
-      localStringBuilder.append(l1).append("M,avaiable:").append(l2).append("M used:").append(((DecimalFormat)localObject).format(f1)).append("M freeMemory:").append(f2).append("M,appTotalMemory:").append(f3).append("M,orgMaxMemory:").append(l3).append("M,maxMemory:").append(f4).append("M, ImgCache:").append(BaseApplicationImpl.sImageCache.size() / 1024 / 1024).append("M,SkinCache:").append(SkinEngine.dumpDrawableCacheMemSize() / 1024L / 1024L).append("M,LeakMonitor=").append(MagnifierSDK.a().a().c());
-      localObject = (ArrayList)addc.jdField_a_of_type_JavaUtilArrayList.clone();
-      if (((ArrayList)localObject).size() > 0)
-      {
-        localStringBuilder.append(",Leaked=[");
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localStringBuilder.append((String)((Iterator)localObject).next());
-          localStringBuilder.append(",");
-        }
-      }
-      return localStringBuilder.toString();
+      avpe.a(paramadan, paramArrayOfByte, paramMsgInfo, bool);
+      return null;
     }
-    catch (Throwable localThrowable) {}
-    for (;;)
-    {
-      localStringBuilder.append("]");
-    }
-  }
-  
-  protected void b()
-  {
-    QAPM.setProperty(108, new addj());
-  }
-  
-  public void b(adbw paramadbw)
-  {
-    addc.a().b(paramadbw);
-  }
-  
-  public String c()
-  {
-    return "ceilinghprof";
-  }
-  
-  protected void c()
-  {
-    super.c();
-    addc.a().a();
-  }
-  
-  public boolean c()
-  {
-    return addc.a().jdField_a_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("memory_reporter_" + BaseApplicationImpl.sProcessId, 0);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_key_last_shot_time", 0L);
-    if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) >= 86400000L)
-    {
-      if (b().canOpenPlugin())
-      {
-        a();
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("sp_key_last_shot_time", this.jdField_a_of_type_Long).putBoolean("key_need_report", true).commit();
-        return true;
-      }
-    }
-    else
-    {
-      a();
-      return true;
-    }
-    return false;
   }
 }
 

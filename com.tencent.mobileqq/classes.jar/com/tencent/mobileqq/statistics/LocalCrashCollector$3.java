@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.statistics;
 
 import android.support.v4.app.FragmentActivity;
-import anni;
-import bcsg;
-import bcsh;
-import bglp;
-import bgpa;
+import anzj;
+import bdky;
+import bdkz;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
@@ -24,7 +24,7 @@ public class LocalCrashCollector$3
       String str;
       if (LocalCrashCollector.a(this.this$0) > 0)
       {
-        localObject = anni.a(2131705056) + localSessionInfo.d;
+        localObject = anzj.a(2131705163) + localSessionInfo.d;
         if (LocalCrashCollector.a(this.this$0) <= 0) {
           break label183;
         }
@@ -36,14 +36,14 @@ public class LocalCrashCollector$3
       }
       label183:
       label188:
-      for (int i = 2131690671;; i = 2131694081)
+      for (int i = 2131690669;; i = 2131694098)
       {
-        localObject = bglp.a(localFragmentActivity, 230, (String)localObject, str, 2131690582, i, new bcsg(this, localSessionInfo), new bcsh(this));
-        ((bgpa)localObject).adjustTitle();
+        localObject = bhlq.a(localFragmentActivity, 230, (String)localObject, str, 2131690580, i, new bdky(this, localSessionInfo), new bdkz(this));
+        ((bhpc)localObject).adjustTitle();
         if (LocalCrashCollector.a(this.this$0).a.isFinishing()) {
           return;
         }
-        ((bgpa)localObject).show();
+        ((bhpc)localObject).show();
         return;
         localObject = "0 Crash";
         break;

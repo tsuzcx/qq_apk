@@ -1,7 +1,7 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import com.tencent.qphone.base.util.QLog;
-import vvv;
+import vyy;
 
 class QCircleDoubleClickLayout$1
   implements Runnable

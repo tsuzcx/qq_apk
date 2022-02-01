@@ -1,6 +1,16 @@
-public abstract interface bmiv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bmiv
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onNetworkConnect(boolean paramBoolean);
+  bmiv(bmim parambmim, zyf paramzyf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Zyf.a();
+    paramDialogInterface.dismiss();
+  }
 }
 
 

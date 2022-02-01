@@ -1,16 +1,23 @@
-public class asqy
-  extends asqw
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class asqy
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
+  asqy(asqw paramasqw, IPSiteModel.Goods paramGoods) {}
   
-  public asqy(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    super(1, paramString1);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
+    Intent localIntent = new Intent(asqw.a(this.jdField_a_of_type_Asqw), QQBrowserActivity.class);
+    localIntent.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(asqw.a(this.jdField_a_of_type_Asqw), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, localIntent, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(asqw.a(this.jdField_a_of_type_Asqw), "IP", "aio_productmore", "", 0, 0, 0, asqw.b(this.jdField_a_of_type_Asqw), asqw.c(this.jdField_a_of_type_Asqw), "", "", "", "", "", 0, 0, 0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,27 +1,52 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
-class xdf
-  extends xby
+public class xdf
+  extends wpa<xev>
 {
-  xdf(xcu paramxcu, StoryVideoItem paramStoryVideoItem, xec paramxec)
+  private final String a;
+  public List<String> a;
+  
+  public xdf()
   {
-    super(paramStoryVideoItem);
+    this.jdField_a_of_type_JavaLangString = wnu.a("StoryGroupSvc.datacard_batch_get_video_info");
   }
   
-  public boolean b()
+  public String a()
   {
-    String str = (String)a("result");
-    zkb.a(str);
-    zkb.a(this.jdField_a_of_type_Xec.d);
-    if (this.jdField_a_of_type_Xec.d == null)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
+    try
     {
-      this.jdField_a_of_type_Xec.d = "";
-      yqp.c(this.b, "imageLocalPath is null", new Throwable());
+      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
+      return new xev(localRspBatchGetVideoInfo);
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Xec.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Xec.a));
-    return true;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqBatchGetVideoInfo.toByteArray();
   }
 }
 

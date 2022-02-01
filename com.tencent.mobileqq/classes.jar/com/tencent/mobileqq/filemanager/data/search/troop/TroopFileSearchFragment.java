@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anif;
-import atih;
-import atiz;
-import atjb;
-import atjc;
-import bbio;
-import bbmy;
-import bbtj;
-import bkhe;
+import anua;
+import auab;
+import auat;
+import auav;
+import auaw;
+import bcbi;
+import bcfr;
+import bcmc;
+import blih;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.widget.QFileListPullMoreLayout;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -23,21 +23,21 @@ import com.tencent.widget.ListView;
 import java.util.List;
 
 public class TroopFileSearchFragment
-  extends BaseSearchFragment<bbmy>
-  implements atih, bkhe
+  extends BaseSearchFragment<bcfr>
+  implements auab, blih
 {
   public int a;
   public long a;
-  protected anif a;
-  private atiz jdField_a_of_type_Atiz;
-  private atjc jdField_a_of_type_Atjc;
+  protected anua a;
+  private auat jdField_a_of_type_Auat;
+  private auaw jdField_a_of_type_Auaw;
   private QFileListPullMoreLayout jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout;
   private int b;
   private int c;
   
   public TroopFileSearchFragment()
   {
-    this.jdField_a_of_type_Anif = new atjb(this);
+    this.jdField_a_of_type_Anua = new auav(this);
   }
   
   private void d(boolean paramBoolean)
@@ -45,24 +45,24 @@ public class TroopFileSearchFragment
     if (paramBoolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setTextLeftDrawable(2130839402);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setTextLeftDrawable(2130839410);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.a();
   }
   
-  public bbio a()
+  public bcbi a()
   {
-    this.jdField_a_of_type_Atjc = new atjc(this);
-    return this.jdField_a_of_type_Atjc;
+    this.jdField_a_of_type_Auaw = new auaw(this);
+    return this.jdField_a_of_type_Auaw;
   }
   
-  public bbtj a()
+  public bcmc a()
   {
-    this.jdField_a_of_type_Atiz = new atiz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this);
-    this.jdField_a_of_type_Atiz.a(1);
-    return this.jdField_a_of_type_Atiz;
+    this.jdField_a_of_type_Auat = new auat(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this);
+    this.jdField_a_of_type_Auat.a(1);
+    return this.jdField_a_of_type_Auat;
   }
   
   public String b()
@@ -72,7 +72,7 @@ public class TroopFileSearchFragment
   
   public void f_(boolean paramBoolean)
   {
-    if ((!this.jdField_a_of_type_Atiz.a(this.jdField_c_of_type_JavaLangString)) && (paramBoolean))
+    if ((!this.jdField_a_of_type_Auat.a(this.jdField_c_of_type_JavaLangString)) && (paramBoolean))
     {
       d(true);
       return;
@@ -90,11 +90,11 @@ public class TroopFileSearchFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131367877).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131367946).setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout = new QFileListPullMoreLayout(getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setBackgroundResource(2130838758);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setTextColor(getResources().getColor(2131166986));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setBackgroundResource(2130838778);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setTextColor(getResources().getColor(2131166990));
     this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setVisibility(8);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -104,33 +104,33 @@ public class TroopFileSearchFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Atiz != null) {
-      this.jdField_a_of_type_Atiz.e();
+    if (this.jdField_a_of_type_Auat != null) {
+      this.jdField_a_of_type_Auat.e();
     }
-    if (this.jdField_a_of_type_Anif != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anif);
+    if (this.jdField_a_of_type_Anua != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anua);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Atiz != null) {
-      this.jdField_a_of_type_Atiz.c();
+    if (this.jdField_a_of_type_Auat != null) {
+      this.jdField_a_of_type_Auat.c();
     }
-    if (this.jdField_a_of_type_Anif != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anif);
+    if (this.jdField_a_of_type_Anua != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anua);
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Atiz != null) {
-      this.jdField_a_of_type_Atiz.d();
+    if (this.jdField_a_of_type_Auat != null) {
+      this.jdField_a_of_type_Auat.d();
     }
-    if (this.jdField_a_of_type_Anif != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anif);
+    if (this.jdField_a_of_type_Anua != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anua);
     }
   }
   
@@ -142,10 +142,10 @@ public class TroopFileSearchFragment
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt != 0) || (this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.isEmpty()) || (this.b != this.jdField_c_of_type_Int - 2) || (this.jdField_a_of_type_Atiz.a(this.jdField_c_of_type_JavaLangString))) {
+    if ((paramInt != 0) || (this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.isEmpty()) || (this.b != this.jdField_c_of_type_Int - 2) || (this.jdField_a_of_type_Auat.a(this.jdField_c_of_type_JavaLangString))) {
       return;
     }
-    this.jdField_a_of_type_Atiz.a(this.jdField_c_of_type_JavaLangString);
+    this.jdField_a_of_type_Auat.a(this.jdField_c_of_type_JavaLangString);
   }
 }
 

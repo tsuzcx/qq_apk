@@ -1,103 +1,41 @@
-public class pgy
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
+
+class pgy
+  implements View.OnClickListener
 {
-  private static String[][] a;
+  pgy(pgw parampgw, QQAppInterface paramQQAppInterface, FrameLayout paramFrameLayout, GuideData paramGuideData) {}
   
-  static
+  public void onClick(View paramView)
   {
-    String[] arrayOfString1 = { "&lt;", "<" };
-    String[] arrayOfString2 = { "&Eacute;", "É" };
-    String[] arrayOfString3 = { "&euml;", "ë" };
-    String[] arrayOfString4 = { "&Oslash;", "Ø" };
-    a = new String[][] { arrayOfString1, { "&gt;", ">" }, { "&amp;", "&" }, { "&quot;", "\"" }, { "&agrave;", "à" }, { "&Agrave;", "À" }, { "&acirc;", "â" }, { "&auml;", "ä" }, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, { "&aring;", "å" }, { "&Aring;", "Å" }, { "&aelig;", "æ" }, { "&AElig;", "Æ" }, { "&ccedil;", "ç" }, { "&Ccedil;", "Ç" }, { "&eacute;", "é" }, arrayOfString2, { "&egrave;", "è" }, { "&Egrave;", "È" }, { "&ecirc;", "ê" }, { "&Ecirc;", "Ê" }, arrayOfString3, { "&Euml;", "Ë" }, { "&iuml;", "ï" }, { "&Iuml;", "Ï" }, { "&ocirc;", "ô" }, { "&Ocirc;", "Ô" }, { "&ouml;", "ö" }, { "&Ouml;", "Ö" }, { "&oslash;", "ø" }, arrayOfString4, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, { "&Ugrave;", "Ù" }, { "&ucirc;", "û" }, { "&Ucirc;", "Û" }, { "&uuml;", "ü" }, { "&Uuml;", "Ü" }, { "&nbsp;", " " }, { "&copy;", "©" }, { "&reg;", "®" }, { "&euro;", "₠" } };
-  }
-  
-  public static String a(String paramString)
-  {
-    return a(paramString, 0);
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    int i = paramString.indexOf("&", paramInt);
-    String str = paramString;
-    int j;
-    if (i > -1)
+    Object localObject = (qtq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(270);
+    if (((qtq)localObject).a() == 1)
     {
-      j = paramString.indexOf(";", i);
-      str = paramString;
-      if (j > i)
+      ((qtq)localObject).a(false);
+      localObject = ((qtq)localObject).a(pgw.a(this.jdField_a_of_type_Pgw), 0);
+      if (localObject != null)
       {
-        str = paramString.substring(i, j + 1);
-        paramInt = 0;
+        ((RefreshData)localObject).isShown = false;
+        bhsi.f(pgw.a(this.jdField_a_of_type_Pgw), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
       }
     }
-    for (;;)
-    {
-      if ((paramInt >= a.length) || (a[paramInt][0].equals(str)))
-      {
-        str = paramString;
-        if (paramInt < a.length) {
-          str = a(paramString.substring(0, i) + a[paramInt][1] + paramString.substring(j + 1), i);
-        }
-        return str;
-      }
-      paramInt += 1;
+    pgw.a(this.jdField_a_of_type_Pgw).a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(pgw.a(this.jdField_a_of_type_Pgw));
+    pgw.a(this.jdField_a_of_type_Pgw, null);
+    bhsi.s(pgw.a(this.jdField_a_of_type_Pgw), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJSkinOperationPopupStep", 2, "set skin: id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
     }
-  }
-  
-  public static String a(String paramString1, String paramString2, char paramChar)
-  {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString2.isEmpty())) {
-      return paramString1;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int k = paramString1.length();
-    paramString1 = paramString1.toCharArray();
-    int i = 0;
-    if (i < k) {
-      if (k - i >= paramString2.length())
-      {
-        j = 0;
-        label59:
-        if (j >= paramString2.length()) {
-          break label153;
-        }
-        if (paramString1[(i + j)] == paramString2.charAt(j)) {}
-      }
-    }
-    label153:
-    for (int j = 0;; j = 1)
-    {
-      if (j != 0)
-      {
-        localStringBuilder.append(paramChar);
-        i = paramString2.length() - 1 + i;
-        i += 1;
-        break;
-        j += 1;
-        break label59;
-      }
-      localStringBuilder.append(paramString1[i]);
-      for (;;)
-      {
-        break;
-        localStringBuilder.append(paramString1[i]);
-      }
-      return localStringBuilder.toString();
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    int i = paramString.length();
-    while ((i < 0) && (paramString.charAt(i - 1) <= ' ')) {
-      i -= 1;
-    }
-    String str = paramString;
-    if (i < paramString.length()) {
-      str = paramString.substring(0, i);
-    }
-    return str;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acvy;
+import adab;
 import android.content.Context;
-import anhk;
+import antf;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -30,9 +30,9 @@ public class RecentItemNearbyLiveTipData
     {
       long l1 = Long.valueOf(str2).longValue();
       String str1 = str2;
-      if (l1 > anhk.g)
+      if (l1 > antf.g)
       {
-        long l2 = anhk.g;
+        long l2 = antf.g;
         str1 = l1 - l2 + "";
       }
       return str1;
@@ -47,7 +47,7 @@ public class RecentItemNearbyLiveTipData
       return;
     }
     Object localObject = paramQQAppInterface.a();
-    acvy localacvy = paramQQAppInterface.a();
+    adab localadab = paramQQAppInterface.a();
     if (localObject != null) {}
     for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
     {
@@ -73,9 +73,9 @@ public class RecentItemNearbyLiveTipData
       this.nearbyLiveTipMsg.parse();
       this.mTitleName = this.nearbyLiveTipMsg.nickName;
       localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
-      if (localacvy != null)
+      if (localadab != null)
       {
-        this.mUnreadNum = localacvy.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        this.mUnreadNum = localadab.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
         if (a().equals("1822701914")) {
           this.mUnreadFlag = 3;
         }

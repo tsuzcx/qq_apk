@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.widget.AbsListView;
+import java.util.Iterator;
+import java.util.List;
 
 public class aept
-  implements QQPermissionCallback
+  implements blih
 {
-  public aept(NearbyActivity paramNearbyActivity) {}
+  public aept(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
+    if (FriendProfileCardActivity.a(this.a) != null)
+    {
+      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((blih)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.a();
+    if (paramInt == 0) {
+      adlb.a().a("vas_profilecard_list", false);
+    }
+    while (FriendProfileCardActivity.a(this.a) != null)
+    {
+      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((blih)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      adlb.a().a("vas_profilecard_list");
+    }
   }
 }
 

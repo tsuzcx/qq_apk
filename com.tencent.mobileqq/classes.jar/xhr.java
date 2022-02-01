@@ -1,35 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-
-final class xhr
-  implements xfp
+public abstract interface xhr
 {
-  xhr(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
+  public abstract void a();
   
-  public void a(int paramInt)
-  {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
-    {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      xho.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

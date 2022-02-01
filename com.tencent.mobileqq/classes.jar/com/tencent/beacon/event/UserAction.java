@@ -285,7 +285,7 @@ public class UserAction
   
   public static void setAppKey(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.c(paramString))
+    if (!com.tencent.beacon.core.e.j.b(paramString))
     {
       com.tencent.beacon.core.info.b.b = paramString;
       TunnelModule localTunnelModule = TunnelModule.getInstance();
@@ -297,7 +297,7 @@ public class UserAction
   
   public static void setAppVersion(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.c(paramString)) {
+    if (!com.tencent.beacon.core.e.j.b(paramString)) {
       com.tencent.beacon.core.info.b.c = paramString;
     }
   }
@@ -307,7 +307,7 @@ public class UserAction
   
   public static void setChannelID(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.c(paramString)) {
+    if (!com.tencent.beacon.core.e.j.b(paramString)) {
       com.tencent.beacon.core.info.b.d = com.tencent.beacon.core.e.c.a(paramString);
     }
   }
@@ -336,14 +336,14 @@ public class UserAction
   
   public static void setOAID(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.c(paramString)) {
+    if (!com.tencent.beacon.core.e.j.b(paramString)) {
       com.tencent.beacon.core.info.c.b = paramString;
     }
   }
   
   public static void setOmgId(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.c(paramString)) {
+    if (!com.tencent.beacon.core.e.j.b(paramString)) {
       com.tencent.beacon.core.info.c.c = paramString;
     }
   }

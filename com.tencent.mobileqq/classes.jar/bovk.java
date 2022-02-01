@@ -1,18 +1,8 @@
-import android.graphics.PointF;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-
-public class bovk
-  extends lpw
+public abstract interface bovk
 {
-  public bovk(CropVideoActivity paramCropVideoActivity) {}
+  public abstract void a();
   
-  public boolean a(lpu paramlpu)
-  {
-    float f1 = paramlpu.a().x;
-    float f2 = paramlpu.a().y;
-    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
-    return true;
-  }
+  public abstract void a(String paramString);
 }
 
 

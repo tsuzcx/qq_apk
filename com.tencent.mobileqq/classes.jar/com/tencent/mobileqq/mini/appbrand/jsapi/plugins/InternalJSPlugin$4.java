@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class InternalJSPlugin$4
@@ -14,7 +14,7 @@ class InternalJSPlugin$4
   
   public void run()
   {
-    bglp.a(this.val$activity, 230, null, String.format(anni.a(2131704594), new Object[] { this.val$appName }), anni.a(2131704601), anni.a(2131704602), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
+    bhlq.a(this.val$activity, 230, null, String.format(anzj.a(2131704701), new Object[] { this.val$appName }), anzj.a(2131704708), anzj.a(2131704709), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
   }
 }
 

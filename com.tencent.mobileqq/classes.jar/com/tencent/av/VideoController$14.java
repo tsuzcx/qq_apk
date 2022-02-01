@@ -2,8 +2,8 @@ package com.tencent.av;
 
 import android.graphics.Bitmap;
 import com.tencent.av.app.VideoAppInterface;
-import ley;
-import msp;
+import lff;
+import mtn;
 
 class VideoController$14
   implements Runnable
@@ -14,7 +14,7 @@ class VideoController$14
   {
     String str = this.this$0.a.getDisplayName(this.this$0.a().j, String.valueOf(this.this$0.a().g), null);
     Bitmap localBitmap = this.this$0.a.a(this.this$0.a().j, String.valueOf(this.this$0.a().g), null, true, true);
-    msp.a(this.this$0.a).a(this.this$0.a().c, str, localBitmap, String.valueOf(this.this$0.a().g), 44, this.this$0.a().j, this.this$0.a().d);
+    mtn.a(this.this$0.a).a(this.this$0.a().c, str, localBitmap, String.valueOf(this.this$0.a().g), 44, this.this$0.a().j, this.this$0.a().d);
   }
 }
 

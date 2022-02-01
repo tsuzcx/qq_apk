@@ -1,16 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pwb;
+import pfd;
+import pon;
 
 public class ArticleInfoModule$44
   implements Runnable
 {
-  public ArticleInfoModule$44(pwb parampwb, ArticleInfo paramArticleInfo) {}
+  public ArticleInfoModule$44(pon parampon, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.this$0.a(this.a);
+    boolean bool = true;
+    pfd localpfd = pfd.a();
+    long l = this.a;
+    if (this.b == 1) {}
+    for (;;)
+    {
+      localpfd.a(l, bool);
+      return;
+      bool = false;
+    }
   }
 }
 

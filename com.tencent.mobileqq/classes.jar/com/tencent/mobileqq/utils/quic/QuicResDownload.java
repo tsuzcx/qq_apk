@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
-import anni;
-import bcfg;
-import bgnt;
+import anzj;
+import bcxy;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QuicResDownload
-  implements bcfg
+  implements bcxy
 {
   private static final String jdField_a_of_type_JavaLangString = Environment.getDataDirectory() + "/data/" + BaseApplicationImpl.sApplication.getBaseContext().getPackageName() + "/app_lib/quic/";
   public static boolean a;
@@ -41,14 +41,14 @@ public class QuicResDownload
   
   private boolean a()
   {
-    boolean bool = bgnt.h(null);
+    boolean bool = bhnv.h(null);
     if (bool)
     {
       VideoEnvironment.a("QuicResDownload", "QUIC配置下载中...", null);
       ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
       return bool;
     }
-    VideoEnvironment.a("QuicResDownload", anni.a(2131710010), null);
+    VideoEnvironment.a("QuicResDownload", anzj.a(2131710119), null);
     return bool;
   }
   

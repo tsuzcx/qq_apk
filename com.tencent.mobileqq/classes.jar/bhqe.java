@@ -1,38 +1,30 @@
-import android.content.SharedPreferences;
-import com.tencent.gamecenter.activities.GameCenterActivity;
-import java.util.HashMap;
-import java.util.List;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class bhqe
+class bhqe
+  implements assq
 {
-  public static HashMap<String, Integer> a;
-  public static List<String> a;
-  public static int d = -1;
-  public int a;
-  public long a;
-  public SharedPreferences a;
-  public boolean a;
-  public int b;
-  public int c = 6;
+  bhqe(bhpy parambhpy) {}
   
-  static
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  }
-  
-  public bhqe()
-  {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(String paramString)
-  {
-    GameCenterActivity.a(paramString, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    {
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      bhpy.a(this.a);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqe
  * JD-Core Version:    0.7.0.1
  */

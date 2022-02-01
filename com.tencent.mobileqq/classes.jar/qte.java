@@ -1,55 +1,26 @@
-import android.content.Context;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class qte
-  extends qqt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWatchWordJumpDialog$dismiss$1", "Lcom/tencent/util/AnimateUtils$AnimationAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qte
+  extends blgm
 {
-  public qte(Context paramContext, aobu paramaobu, snh paramsnh)
+  public void onAnimationEnd(@NotNull Animation paramAnimation)
   {
-    super(paramContext, paramaobu, paramsnh);
-  }
-  
-  public qqt a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return g();
-  }
-  
-  public qqt d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Qqs;
-    Pair localPair;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pya)))
+    Intrinsics.checkParameterIsNotNull(paramAnimation, "animation");
+    try
     {
-      localPair = pgk.a(((pya)this.jdField_a_of_type_JavaLangObject).g(), ((pya)this.jdField_a_of_type_JavaLangObject).e());
-      if (!pha.s(((pya)this.jdField_a_of_type_JavaLangObject).a())) {
-        break label105;
-      }
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
+      this.a.a().removeView(this.a.a());
+      return;
     }
-    for (;;)
+    catch (Exception paramAnimation)
     {
-      a(localComponentContentVerticalSmallVideo);
-      return this;
-      label105:
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
+      QLog.d("RIJWatchWordJumpDialog", 2, QLog.getStackTraceString((Throwable)paramAnimation));
     }
-  }
-  
-  public qqt e()
-  {
-    return null;
-  }
-  
-  public qqt g()
-  {
-    this.jdField_a_of_type_Qqs = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
   }
 }
 

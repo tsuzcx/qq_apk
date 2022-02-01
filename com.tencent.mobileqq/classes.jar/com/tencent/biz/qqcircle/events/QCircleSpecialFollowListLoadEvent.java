@@ -1,17 +1,17 @@
 package com.tencent.biz.qqcircle.events;
 
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import vos;
+import vrb;
 
 public class QCircleSpecialFollowListLoadEvent
   extends SimpleBaseEvent
 {
   public final boolean isRefresh;
-  public final vos resp;
+  public final vrb resp;
   
-  public QCircleSpecialFollowListLoadEvent(vos paramvos, boolean paramBoolean)
+  public QCircleSpecialFollowListLoadEvent(vrb paramvrb, boolean paramBoolean)
   {
-    this.resp = paramvos;
+    this.resp = paramvrb;
     this.isRefresh = paramBoolean;
   }
 }

@@ -1,31 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bonk
-  extends bomw
+class bonk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bonk(HummingActivity paramHummingActivity) {}
+  bonk(bonf parambonf) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    biti.a().a(anni.a(2131704459) + HummingActivity.a(this.a), 0);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (paramString != null) && (HummingActivity.a(this.a).getLocalPath().equals(paramString)))
+    RecyclerView localRecyclerView = bonf.d(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      paramString = new Intent();
-      paramString.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramString);
-      this.a.finish();
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
   }
 }

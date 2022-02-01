@@ -1,104 +1,135 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.PopupWindow;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
+import java.lang.reflect.Method;
 
 public class aqki
-  extends BaseBubbleBuilder
+  extends PopupWindow
+  implements View.OnClickListener, bgjj
 {
-  private int c;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private AtPanelTouchController jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController;
+  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  private Button b;
   
-  public aqki(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  private aqki(View paramView, int paramInt1, int paramInt2)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.c = (BaseChatItemLayout.B + afur.a(20.0F, paramContext.getResources()));
+    super(paramView, paramInt1, paramInt2);
   }
   
-  public int a(ChatMessage paramChatMessage)
+  public static aqki a(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    return 0;
-  }
-  
-  public afwr a()
-  {
-    return new aqkk();
-  }
-  
-  public View a(ChatMessage paramChatMessage, afwr paramafwr, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afzq paramafzq)
-  {
-    paramBaseChatItemLayout = (MessageForTroopConfess)paramChatMessage;
-    aqkk localaqkk = (aqkk)paramafwr;
-    paramChatMessage = paramView;
-    if (paramView == null)
-    {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558865, null);
-      paramChatMessage.setLayoutParams(new ViewGroup.LayoutParams(this.c, -2));
-      aqkk.a(localaqkk, (TextView)paramChatMessage.findViewById(2131380124));
-      aqkk.b(localaqkk, (TextView)paramChatMessage.findViewById(2131380115));
-      aqkk.c(localaqkk, (TextView)paramChatMessage.findViewById(2131380139));
-      aqkk.a(localaqkk, (ConfessNewsBgView)paramChatMessage.findViewById(2131380411));
-      aqkk.a(localaqkk).setPressMask(true);
-      aqkk.a(localaqkk, paramChatMessage.findViewById(2131370115));
+    aqki localaqki = new aqki(LayoutInflater.from(paramActivity).inflate(2131561411, null), paramInt1, paramInt2);
+    localaqki.a(localaqki, paramActivity);
+    localaqki.setFocusable(true);
+    localaqki.setInputMethodMode(1);
+    localaqki.setSoftInputMode(16);
+    localaqki.setClippingEnabled(false);
+    localaqki.getContentView().setOnKeyListener(new aqkj(localaqki));
+    localaqki.setOutsideTouchable(true);
+    if (AppSetting.c) {
+      a(localaqki);
     }
-    aqkk.a(localaqkk).setBgType(paramBaseChatItemLayout.getConfessTopicId() % 4);
-    aqkk.a(localaqkk).setOnLongClickListener(paramafzq);
-    aqkk.a(localaqkk).setOnTouchListener(paramafzq);
-    localaqkk.a(paramBaseChatItemLayout.mTroopConfessMsg);
-    paramChatMessage.setOnClickListener(new aqkj(this, paramBaseChatItemLayout));
-    if (e)
+    return localaqki;
+  }
+  
+  public static void a(PopupWindow paramPopupWindow)
+  {
+    int i = 0;
+    Method[] arrayOfMethod = PopupWindow.class.getMethods();
+    int j = arrayOfMethod.length;
+    for (;;)
     {
-      ((aqkk)paramafwr).b.append(aqkk.b(localaqkk).getText()).append(aqkk.a(localaqkk).getText());
-      if (aqkk.c(localaqkk).getVisibility() == 0) {
-        ((aqkk)paramafwr).b.append(aqkk.c(localaqkk).getText());
+      Method localMethod;
+      if (i < j)
+      {
+        localMethod = arrayOfMethod[i];
+        if (!localMethod.getName().equals("setTouchModal")) {}
       }
-      paramChatMessage.setContentDescription(((aqkk)paramafwr).b.toString());
+      else
+      {
+        try
+        {
+          localMethod.invoke(paramPopupWindow, new Object[] { Boolean.valueOf(false) });
+          return;
+        }
+        catch (Exception paramPopupWindow)
+        {
+          paramPopupWindow.printStackTrace();
+          return;
+        }
+      }
+      i += 1;
     }
-    return paramChatMessage;
   }
   
-  public String a(ChatMessage paramChatMessage)
+  private void a(aqki paramaqki, Activity paramActivity)
   {
-    return null;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage == null) || (!(paramChatMessage instanceof MessageForTroopConfess))) {
-      return;
-    }
-    MessageForTroopConfess localMessageForTroopConfess = (MessageForTroopConfess)paramChatMessage;
-    switch (paramInt)
+    View localView = paramaqki.getContentView();
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController = ((AtPanelTouchController)localView.findViewById(2131365046));
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController.setDisableMinScrollY(true);
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController.setControlLitTongue(true);
+    int i = bhtq.b(24.0F);
+    int j = beme.a(paramActivity);
+    localView.findViewById(2131379249).setOnClickListener(this);
+    localView.findViewById(2131369649).setBackgroundColor(localView.getResources().getColor(2131166964));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131365066));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController.setAtPanelTouchListener(paramaqki);
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController.setMode(2);
+    paramaqki = localView.findViewById(2131364499);
+    if (paramaqki != null)
     {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
+      paramaqki.setVisibility(0);
+      paramaqki.setPadding(paramaqki.getPaddingLeft(), paramaqki.getPaddingTop(), paramaqki.getPaddingRight(), j + i);
     }
-    adrm.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131362667));
+    this.b = ((Button)localView.findViewById(2131372046));
   }
   
-  public void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, int paramInt1, int paramInt2) {}
-  
-  public bguj[] a(View paramView)
+  public Button a()
   {
-    paramView = new bguh();
-    adrm.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
+    return this.jdField_a_of_type_AndroidWidgetButton;
   }
   
-  public void b(View paramView)
+  public XListView a()
   {
-    super.b(paramView);
+    return this.jdField_a_of_type_ComTencentWidgetXListView;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    dismiss();
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public Button b()
+  {
+    return this.b;
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131379249) {
+      dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

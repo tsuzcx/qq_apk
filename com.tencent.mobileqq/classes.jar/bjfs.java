@@ -1,6 +1,6 @@
 public abstract interface bjfs
 {
-  public abstract void a(bjhe parambjhe);
+  public abstract void a();
 }
 
 

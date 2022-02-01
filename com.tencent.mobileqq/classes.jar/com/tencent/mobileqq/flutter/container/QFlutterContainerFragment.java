@@ -6,16 +6,16 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aues;
-import auet;
+import auwn;
+import auwo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class QFlutterContainerFragment
   extends PublicBaseFragment
-  implements aues
+  implements auwn
 {
-  private auet a;
+  private auwo a;
   
   public Activity a()
   {
@@ -35,7 +35,7 @@ public class QFlutterContainerFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.a = new auet(this);
+    this.a = new auwo(this);
     this.a.a(paramBundle);
   }
   

@@ -1,62 +1,40 @@
-import android.graphics.Color;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
 public class alpz
-  extends Animation
+  implements alpu
 {
-  private int jdField_a_of_type_Int;
-  private alqa jdField_a_of_type_Alqa;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  public View a;
+  public TabDragAnimationView a;
+  private boolean a;
   
-  public alpz(ArrayList<Integer> paramArrayList)
+  public alpz(TabDragAnimationView paramTabDragAnimationView)
   {
-    a(paramArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
   }
   
-  public int a()
+  public void a(float paramFloat1, float paramFloat2, int paramInt, View paramView)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(ArrayList<Integer> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return;
-    }
-    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    int i = (int)(paramFloat / f);
-    f = (paramFloat - i * f) / f;
-    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView == null) || (this.jdField_a_of_type_AndroidViewView == null) || (!this.jdField_a_of_type_AndroidViewView.equals(paramView))) {}
+    do
     {
-      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
-      i = j;
-      if (paramFloat < 1.0F)
-      {
-        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
-        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
-        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
-        paramFloat = Color.blue(k);
-        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
-      }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Alqa == null) {
-        break;
-      }
-      this.jdField_a_of_type_Alqa.a(i);
       return;
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("TabDragListener", 2, "drag detect x=" + paramFloat1 + ",y=" + paramFloat2 + ",dragType=" + paramInt);
+      }
+      if ((paramInt == 1) || (paramInt == 2))
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(paramFloat1, paramFloat2, false);
+        return;
+      }
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.b();
   }
 }
 

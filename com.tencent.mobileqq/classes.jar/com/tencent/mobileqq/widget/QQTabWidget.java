@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TabWidget;
-import biaz;
+import bjbx;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQTabWidget
   extends TabWidget
 {
   private float jdField_a_of_type_Float;
-  private biaz jdField_a_of_type_Biaz;
+  private bjbx jdField_a_of_type_Bjbx;
   private boolean jdField_a_of_type_Boolean;
   private float b;
   
@@ -53,10 +53,10 @@ public class QQTabWidget
       continue;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      if ((f2 < this.b) && (this.b - f2 > 50.0F) && (this.b - f2 > Math.abs(this.jdField_a_of_type_Float - f1)) && (this.jdField_a_of_type_Biaz != null) && (!this.jdField_a_of_type_Boolean))
+      if ((f2 < this.b) && (this.b - f2 > 50.0F) && (this.b - f2 > Math.abs(this.jdField_a_of_type_Float - f1)) && (this.jdField_a_of_type_Bjbx != null) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Biaz.a();
+        this.jdField_a_of_type_Bjbx.a();
       }
     }
   }
@@ -66,9 +66,9 @@ public class QQTabWidget
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setTabWidgetMoveListener(biaz parambiaz)
+  public void setTabWidgetMoveListener(bjbx parambjbx)
   {
-    this.jdField_a_of_type_Biaz = parambiaz;
+    this.jdField_a_of_type_Bjbx = parambjbx;
   }
 }
 

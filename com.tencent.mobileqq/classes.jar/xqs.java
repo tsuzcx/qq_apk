@@ -1,19 +1,28 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class xqs
-  implements TVK_IMediaPlayer.OnErrorListener
+class xqs
+  implements xsn
 {
-  xqs(xqp paramxqp) {}
+  private xqs(xqp paramxqp) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
+  
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg) {}
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, int paramInt, Object paramObject)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
     return false;
   }
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, boolean paramBoolean)
+  {
+    return this.a.a.a(paramVideoViewVideoHolder, paramxtg, paramBoolean);
+  }
+  
+  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg) {}
+  
+  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg) {}
 }
 
 

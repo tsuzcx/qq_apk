@@ -1,64 +1,29 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.1;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.2;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-
 public class bekg
-  implements bkmq
+  implements anui
 {
-  public bekg(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  protected void a() {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  protected void a(bekj parambekj, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, bekj parambekj, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    switch (paramInt)
     {
-      paramView.c(l);
+    }
+    do
+    {
       return;
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.jdField_a_of_type_Long == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!bgnt.g(this.a.getActivity())) {
-        break label97;
-      }
-      this.a.a(0, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.1(this), 300L);
-    }
-    for (;;)
-    {
-      ((ajhj)paramView.getTag()).a = true;
-      return true;
-      l = this.a.jdField_a_of_type_Long;
-      break;
-      label97:
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.2(this), 300L);
-    }
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (bekj)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
       return;
-    }
+      paramObject = (Object[])paramObject;
+      a((bekj)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
+      return;
+    } while (!paramBoolean);
+    a();
   }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

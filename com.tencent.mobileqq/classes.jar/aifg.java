@@ -1,42 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 class aifg
-  implements BusinessObserver
+  implements Animation.AnimationListener
 {
-  aifg(aidp paramaidp) {}
+  aifg(aiff paramaiff, float paramFloat) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.ao = true;
-          this.a.bE();
-          this.a.bp();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
-    this.a.A(2131694617);
-    this.a.bp();
+    azpw.a("PhotoListPanel", "DragHandler", " flyOutAnimation End fAnimLayout:" + this.jdField_a_of_type_Aiff.jdField_a_of_type_AndroidWidgetRelativeLayout + ",## dy = " + (this.jdField_a_of_type_Float - this.jdField_a_of_type_Aiff.jdField_a_of_type_Aife.b));
+    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Aiff.c.getLayoutParams();
+    paramAnimation.topMargin = this.jdField_a_of_type_Aiff.d.topMargin;
+    this.jdField_a_of_type_Aiff.c.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Aiff.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramAnimation = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.jdField_a_of_type_Aiff.c.getWidth() / 2, this.jdField_a_of_type_Aiff.c.getHeight() / 2);
+    paramAnimation.addAnimation(this.jdField_a_of_type_Aiff.b);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.setDuration(200L);
+    this.jdField_a_of_type_Aiff.c.startAnimation(paramAnimation);
+    azpw.a("PhotoListPanel", "DragHandler", "startReemergeAnimation fAnimLayout:" + this.jdField_a_of_type_Aiff.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    paramAnimation.setAnimationListener(this.jdField_a_of_type_Aiff.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    azpw.a("PhotoListPanel", "DragHandler", "@#flyOutAnimation, onAnimationStart ");
   }
 }
 

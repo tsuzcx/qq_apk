@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import bgpp;
-import bhod;
+import bhpr;
+import bioy;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 class EmojiJsPlugin$7
   implements DialogInterface.OnKeyListener
 {
-  EmojiJsPlugin$7(EmojiJsPlugin paramEmojiJsPlugin, bgpp parambgpp, String paramString) {}
+  EmojiJsPlugin$7(EmojiJsPlugin paramEmojiJsPlugin, bhpr parambhpr, String paramString) {}
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
@@ -24,7 +24,7 @@ class EmojiJsPlugin$7
       try
       {
         paramDialogInterface.put("result", 2);
-        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131691740));
+        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131691743));
         if (QLog.isColorLevel()) {
           QLog.i(EmojiJsPlugin.TAG, 2, "startDownloadEmoji resp to js:" + paramDialogInterface.toString());
         }

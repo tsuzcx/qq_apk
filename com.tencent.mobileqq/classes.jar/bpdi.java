@@ -1,12 +1,21 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
+
 public class bpdi
+  extends Handler
 {
-  public final bpfb a;
-  public final String a;
-  
-  public bpdi(bpfb parambpfb, String paramString)
+  public bpdi(LyricWithBuoyView paramLyricWithBuoyView, Looper paramLooper)
   {
-    this.jdField_a_of_type_Bpfb = parambpfb;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a();
+    }
   }
 }
 

@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aali
-  implements Parcelable.Creator<ContentElement>
+public class aali
+  implements View.OnClickListener
 {
-  public ContentElement a(Parcel paramParcel)
-  {
-    return new ContentElement();
-  }
+  public aali(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, aaks paramaaks) {}
   
-  public ContentElement[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ContentElement[paramInt];
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aaks.a.poster.registerCertifiedAccountUrl.get()))
+    {
+      aaej.a(this.jdField_a_of_type_Aaks.a.poster.registerCertifiedAccountUrl.get());
+      abbe.b(this.jdField_a_of_type_Aaks.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

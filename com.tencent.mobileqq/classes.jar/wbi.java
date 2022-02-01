@@ -1,8 +1,28 @@
-import android.view.MotionEvent;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
 
-public abstract interface wbi
+public class wbi
+  extends ClickableSpan
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public wbi(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
+  
+  public void onClick(@NonNull View paramView)
+  {
+    if (QCirclePushAsyncTextView.a(this.a) != null) {
+      QCirclePushAsyncTextView.a(this.a).a();
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setTextSize(bdep.a(12.0F));
+  }
 }
 
 

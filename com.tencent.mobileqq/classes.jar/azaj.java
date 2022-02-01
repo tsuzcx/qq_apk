@@ -1,9 +1,18 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+
 public final class azaj
-  extends ayzn
+  implements Parcelable.Creator<TranslateResult>
 {
-  protected int a()
+  public TranslateResult a(Parcel paramParcel)
   {
-    return 515;
+    return new TranslateResult(paramParcel);
+  }
+  
+  public TranslateResult[] a(int paramInt)
+  {
+    return new TranslateResult[paramInt];
   }
 }
 

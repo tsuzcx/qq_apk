@@ -1,59 +1,26 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-public class bntt
+class bntt
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private bnrc jdField_a_of_type_Bnrc = new bnrc();
-  private bntu jdField_a_of_type_Bntu;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
+  bntt(bntq parambntq, String paramString) {}
   
-  public Frame a(Frame paramFrame, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
+    bntq.a(this.jdField_a_of_type_Bntq);
+    if ((bntq.a(this.jdField_a_of_type_Bntq) != null) && (bntq.a(this.jdField_a_of_type_Bntq).a() != null) && (bntq.a(this.jdField_a_of_type_Bntq).a().app != null) && (bntq.a(this.jdField_a_of_type_Bntq) != null))
     {
-      this.jdField_a_of_type_Bnrc.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+      bntp.a(bntq.a(this.jdField_a_of_type_Bntq).a().app, bntq.a(this.jdField_a_of_type_Bntq).a(), this.jdField_a_of_type_JavaLangString, 4005);
+      bntp.a(bntq.a(this.jdField_a_of_type_Bntq).a().app, 102, String.valueOf(bntq.a(this.jdField_a_of_type_Bntq).iAdId.get()), bntq.a(this.jdField_a_of_type_Bntq).traceinfo.get());
     }
-    if (this.jdField_a_of_type_Bntu != null) {
-      this.jdField_a_of_type_Bntu.a(localFrame);
-    }
-    return localFrame;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bnrc.apply();
-    if (this.jdField_a_of_type_Bntu != null) {
-      this.jdField_a_of_type_Bntu.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(bntu parambntu)
-  {
-    this.jdField_a_of_type_Bntu = parambntu;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bnrc.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    if (this.jdField_a_of_type_Bntu != null) {
-      this.jdField_a_of_type_Bntu.b();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

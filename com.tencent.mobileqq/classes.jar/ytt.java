@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ytt
-  implements DialogInterface.OnDismissListener
+class ytt
+  implements View.OnClickListener
 {
-  public ytt(EditVideoMusic paramEditVideoMusic) {}
+  ytt(ytq paramytq) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a.a(0);
-    yqv.a("0X80076DD");
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

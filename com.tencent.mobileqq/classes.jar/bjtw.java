@@ -1,85 +1,53 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.widget.EditText;
 
-class bjtw
-  extends BroadcastReceiver
+public class bjtw
+  implements InputFilter
 {
-  bjtw(bjtv parambjtv) {}
+  protected int a;
+  protected EditText a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bjtw(EditText paramEditText, int paramInt)
   {
-    if ("troop_upload".equals(paramIntent.getAction())) {
-      if (bjtv.a(this.a).getAttachedActivity() == null) {
-        QMLog.e("TroopAlbumPlugin", "Failed to handle troop_upload, activity is null");
-      }
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
+    paramInt4 = this.jdField_a_of_type_Int - bjud.a(paramSpanned.toString());
+    paramInt3 = bjud.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
+    if (paramInt4 <= 0) {
+      return "";
     }
-    while (!"troop_select".equals(paramIntent.getAction()))
+    if (paramInt4 >= paramInt3) {
+      return null;
+    }
+    paramInt3 = paramInt1;
+    if (paramInt3 < paramInt2)
     {
-      return;
-      paramContext = bjtv.b(this.a).getAttachedActivity().getSharedPreferences("troop_album" + BaseApplicationImpl.sApplication.getRuntime().getAccount(), 0).edit();
-      localObject = new JSONObject();
-      i = paramIntent.getIntExtra("count", 0);
-      boolean bool = paramIntent.getBooleanExtra("fail", false);
-      for (;;)
+      int j;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
+        j = bjud.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+      }
+      for (int i = 2;; i = 1)
       {
-        try
-        {
-          ((JSONObject)localObject).put("count", i);
-          ((JSONObject)localObject).put("isFail", bool);
-          if (QLog.isColorLevel()) {
-            QLog.w("TroopAlbumPlugin", 2, "troopAlbumReceiver" + i + ",isfail" + bool);
-          }
-          if (!bool) {
-            continue;
-          }
-          paramContext.putBoolean("is_exit_fail_misson", true).apply();
+        paramInt4 -= j;
+        if (paramInt4 < 0) {
+          break label161;
         }
-        catch (JSONException paramIntent)
-        {
-          paramIntent.printStackTrace();
-          continue;
-        }
-        bjtv.a(this.a, "groupAlbum_onGroupAlbumUpload", ((JSONObject)localObject).toString());
-        if (i != 0) {
-          break;
-        }
-        paramContext.putBoolean("is_exit_fail_misson", false).apply();
-        bjtv.c(this.a).getAttachedActivity().unregisterReceiver(bjtv.a(this.a));
-        bjtv.a(this.a, null);
-        return;
-        paramContext.putBoolean("is_exit_fail_misson", false).apply();
+        paramInt3 = i + paramInt3;
+        break;
+        j = bjud.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
       }
     }
-    QLog.w("TroopAlbumPlugin", 2, "troop_select recive");
-    paramContext = paramIntent.getStringExtra("key_selected_albuminfo.id");
-    Object localObject = paramIntent.getStringExtra("key_selected_albuminfo.name");
-    String str = paramIntent.getStringExtra("key_selected_albuminfo.cover");
-    int i = paramIntent.getIntExtra("key_selected_albuminfo.permission", 0);
-    paramIntent = new StringBuilder();
-    paramIntent.append("{albumid:\"").append(paramContext).append("\",albumname:\"").append((String)localObject).append("\",albumcover:\"").append(str).append("\",albumpermission:").append(i).append("}");
-    try
-    {
-      paramContext = new JSONObject(paramIntent.toString());
-      bjtv.a(this.a).ok(paramContext);
-      bjtv.d(this.a).getAttachedActivity().unregisterReceiver(bjtv.a(this.a));
-      return;
+    label161:
+    if (paramInt3 == paramInt1) {
+      return "";
     }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

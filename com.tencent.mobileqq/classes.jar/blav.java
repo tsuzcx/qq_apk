@@ -1,78 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import mqq.manager.Manager;
-import org.json.JSONObject;
-import tencent.im.cs.cmd0x388.cmd0x388.ExtensionCommPicTryUp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.oskplayer.OskPlayerCore;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VideoPlayerProviderProxy;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer;
 
+@ProxyService(proxy=VideoPlayerProviderProxy.class)
 public class blav
-  implements Manager
+  implements VideoPlayerProviderProxy
 {
-  private ayyt jdField_a_of_type_Ayyt = new blaw(this);
-  private bdzi jdField_a_of_type_Bdzi;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public RemoteCommand.OnInvokeFinishLinstener a;
-  private String jdField_a_of_type_JavaLangString;
+  private boolean a;
   
-  public blav(QQAppInterface paramQQAppInterface)
+  public String getUrl(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bdzi = paramQQAppInterface.a();
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
+    return OskPlayerCore.getInstance().getUrl(MiniAppFileManager.getInstance().getAbsolutePath(paramString));
   }
   
-  public void a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public ReliableVideoPlayer getVideoPlayer()
   {
-    if (paramBundle == null) {}
-    for (;;)
+    if (!this.a)
     {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = paramOnInvokeFinishLinstener;
-      paramOnInvokeFinishLinstener = new bdzn();
-      paramOnInvokeFinishLinstener.jdField_b_of_type_Int = 24;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_Int = 20;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_JavaLangString = "actQqComicPicUpload";
-      paramOnInvokeFinishLinstener.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Boolean = true;
-      paramOnInvokeFinishLinstener.i = paramBundle.getString("localPath");
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Ayyt = this.jdField_a_of_type_Ayyt;
-      Object localObject = paramBundle.getString("comicId");
-      String str1 = paramBundle.getString("picMd5");
-      String str2 = paramBundle.getString("actionData");
-      paramBundle = new JSONObject();
-      try
-      {
-        paramBundle.put("comicId", localObject);
-        paramBundle.put("picMd5", str1);
-        paramBundle.put("actionData", str2);
-        localObject = new cmd0x388.ExtensionCommPicTryUp();
-        ((cmd0x388.ExtensionCommPicTryUp)localObject).rpt_bytes_extinfo.add(ByteStringMicro.copyFrom(paramBundle.toString().getBytes()));
-        paramOnInvokeFinishLinstener.jdField_a_of_type_ArrayOfByte = ((cmd0x388.ExtensionCommPicTryUp)localObject).toByteArray();
-        if (this.jdField_a_of_type_Bdzi == null) {
-          continue;
-        }
-        this.jdField_a_of_type_Bdzi.a(paramOnInvokeFinishLinstener);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+      VideoEmbeddedWidgetClient.initOskOnce(BaseApplicationImpl.getContext());
+      this.a = true;
     }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Bdzi = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    return new bkzb();
   }
 }
 

@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public final class shu
-  implements Parcelable.Creator<DiscoveryInfo>
+public class shu
+  extends pmr
 {
-  public DiscoveryInfo a(Parcel paramParcel)
+  public shu(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return new DiscoveryInfo(paramParcel);
+    super(paramString);
   }
   
-  public DiscoveryInfo[] a(int paramInt)
+  public void a(pmk parampmk)
   {
-    return new DiscoveryInfo[paramInt];
+    parampmk.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

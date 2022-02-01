@@ -1,19 +1,14 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ayns
-  extends Editable.Factory
+  implements DialogInterface.OnClickListener
 {
-  ayns(aynq paramaynq, TextView paramTextView) {}
+  ayns(aynp paramaynp, bhpc parambhpc) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramCharSequence instanceof bdod)) {
-      return (Editable)paramCharSequence;
-    }
-    return new bdod(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
+    this.jdField_a_of_type_Bhpc.dismiss();
   }
 }
 

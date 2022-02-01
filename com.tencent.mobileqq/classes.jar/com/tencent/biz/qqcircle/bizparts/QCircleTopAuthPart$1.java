@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import vee;
+import vgi;
 
 public class QCircleTopAuthPart$1
   implements Runnable
 {
-  public QCircleTopAuthPart$1(vee paramvee) {}
+  public QCircleTopAuthPart$1(vgi paramvgi) {}
   
   public void run()
   {
-    vee.a(this.this$0, false);
+    vgi.a(this.this$0, false);
   }
 }
 

@@ -1,11 +1,20 @@
-import android.view.animation.Animation;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-class azbb
-  extends bkfi
+public class azbb
+  extends azay
 {
-  azbb(azav paramazav) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, azau paramazau, azaw paramazaw)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if ((paramView != null) && (((azaw)paramView.getTag()).a == paramazaw.a)) {
+      return paramView;
+    }
+    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559810, null);
+    paramView.setTag(paramazaw);
+    return paramView;
+  }
 }
 
 

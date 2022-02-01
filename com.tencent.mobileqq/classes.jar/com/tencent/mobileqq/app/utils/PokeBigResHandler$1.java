@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app.utils;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import bdvs;
-import bdwv;
+import beum;
+import bevo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -16,7 +16,7 @@ class PokeBigResHandler$1
   public void run()
   {
     PokeBigResHandler.a(true);
-    bdvs localbdvs = new bdvs();
+    beum localbeum = new beum();
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.this$0.app.getApp());
     String str = this.this$0.app.getAccount();
     PokeBigResHandler.a(localSharedPreferences.getString(str + "_" + "aio_poke_res_url", ""));
@@ -26,11 +26,11 @@ class PokeBigResHandler$1
       PokeBigResHandler.a(false);
       return;
     }
-    localbdvs.jdField_a_of_type_Bdvw = PokeBigResHandler.a(this.this$0);
-    localbdvs.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = (PokeBigResHandler.b() + "poke.zip");
-    ((bdwv)this.this$0.mApp.getNetEngine(0)).a(localbdvs);
+    localbeum.jdField_a_of_type_Beuq = PokeBigResHandler.a(this.this$0);
+    localbeum.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = (PokeBigResHandler.b() + "poke.zip");
+    ((bevo)this.this$0.mApp.getNetEngine(0)).a(localbeum);
   }
 }
 

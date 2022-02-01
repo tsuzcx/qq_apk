@@ -1,54 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.commonsdk.cache.Sizeable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiia
-  implements Sizeable
+class aiia
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  private int b;
+  aiia(aihy paramaihy) {}
   
-  public aiia(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = paramArrayOfBitmapDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-  }
-  
-  private void a()
-  {
-    int i = 0;
-    this.b = 0;
-    BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-    int j = arrayOfBitmapDrawable.length;
-    while (i < j)
-    {
-      BitmapDrawable localBitmapDrawable = arrayOfBitmapDrawable[i];
-      if ((localBitmapDrawable != null) && (localBitmapDrawable.getBitmap() != null))
-      {
-        int k = this.b;
-        this.b = (localBitmapDrawable.getBitmap().getByteCount() + k);
-      }
-      i += 1;
+    if (!anbd.e()) {
+      ((amsx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.a.a(), 319);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public BitmapDrawable[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  }
-  
-  public int getByteSize()
-  {
-    return this.b;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[onClick] click audio button too fast.");
+      }
+    }
   }
 }
 

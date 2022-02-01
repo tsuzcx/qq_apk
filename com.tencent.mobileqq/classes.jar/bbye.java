@@ -1,44 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.List;
 
-class bbye
-  extends WtloginListener
+public class bbye
 {
-  bbye(bbyc parambbyc, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public String b;
+  public String c;
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public bbye(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
-    }
-    bbyc.a = false;
-    this.jdField_a_of_type_Bbyc.b.removeMessages(0);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public bbye(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
   {
-    this.jdField_a_of_type_Bbyc.b.removeMessages(0);
-    bbyc.a = false;
-    if (paramInt2 != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
-      }
-      return;
-    }
-    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

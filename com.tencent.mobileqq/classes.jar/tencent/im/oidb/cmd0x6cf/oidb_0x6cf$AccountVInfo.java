@@ -12,12 +12,14 @@ public final class oidb_0x6cf$AccountVInfo
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_v_icon_url = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field uint32_follow_count = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_is_show_follow = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_unowned = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "bytes_v_icon_url", "uint32_is_unowned" }, new Object[] { localByteStringMicro, Integer.valueOf(0) }, AccountVInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "bytes_v_icon_url", "uint32_is_unowned", "uint32_follow_count", "uint32_is_show_follow" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, AccountVInfo.class);
   }
 }
 

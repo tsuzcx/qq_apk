@@ -1,27 +1,8 @@
-import com.tencent.tavcut.bean.TextEditorData;
-import com.tencent.tavcut.session.TAVCutSession;
-
-class boih
-  implements boif
+public abstract interface boih
 {
-  boih(boig paramboig, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession) {}
+  public abstract boolean a();
   
-  public void a(TextEditorData paramTextEditorData)
-  {
-    if (paramTextEditorData != null)
-    {
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(paramTextEditorData.getContent());
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramTextEditorData.getTextColor());
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutSession.updateTextSticker(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
-      if (boig.a(this.jdField_a_of_type_Boig) != null)
-      {
-        boig.a(this.jdField_a_of_type_Boig).a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
-        bnzb.a("AEEditorTextPart", "[stickerInfo] update");
-      }
-      return;
-    }
-    bnzb.d("AEEditorTextPart", "update sticker back null.");
-  }
+  public abstract boolean b();
 }
 
 

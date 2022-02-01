@@ -1,38 +1,68 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableHelper;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 
-class qfh
-  implements ViewBase.OnClickListener
+final class qfh
+  implements DrawableUtil.DrawableHelper
 {
-  qfh(qfa paramqfa, pxk parampxk, ViewBase paramViewBase) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public Drawable getDrawable(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    try
+    if (paramString == null) {
+      return null;
+    }
+    if (paramString.startsWith("http"))
     {
-      if ((this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.jdField_a_of_type_Rhn.a) && (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.jdField_a_of_type_Rhg != null))
+      paramContext = URLDrawable.URLDrawableOptions.obtain();
+      paramContext.mLoadingDrawable = paramDrawable1;
+      paramContext.mFailedDrawable = paramDrawable2;
+      return URLDrawable.getDrawable(tye.a(paramString, 3), paramContext);
+    }
+    paramDrawable1 = ImageCommon.getDrawableResourceId(paramString);
+    if (paramDrawable1 != null) {
+      try
       {
-        String str = this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.jdField_a_of_type_Rhg.a.h;
-        paramViewBase = paramViewBase.getNativeView();
-        qfa.a(this.jdField_a_of_type_Qfa, paramViewBase, str);
-        paramViewBase = this.jdField_a_of_type_Pxk.a();
-        if ((paramViewBase != null) && (paramViewBase.isPGCShortContent()))
-        {
-          paramViewBase.clickArea = 11;
-          paramViewBase.clickJumpTarget = qib.a(str, "-1");
-          pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
-        }
+        paramContext = paramContext.getResources().getDrawable(paramDrawable1.intValue());
+        return paramContext;
       }
-      return;
+      catch (Exception paramContext)
+      {
+        QLog.d("Q.readinjoy.proteus", 2, "getDrawable: cant find in resources dir, do nothing");
+        QLog.e("Q.readinjoy.proteus", 1, paramContext, new Object[0]);
+      }
     }
-    catch (NullPointerException paramViewBase)
+    QLog.e("Q.readinjoy.proteus", 2, "getDrawable: cant find path :" + paramString);
+    return null;
+  }
+  
+  public Drawable getDrawableFromNet(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, DrawableUtil.DrawableCallBack paramDrawableCallBack)
+  {
+    if (paramString.startsWith("http"))
     {
-      QLog.e("PgcShortContentProteusItem", 1, paramViewBase.getLocalizedMessage());
+      paramContext = URLDrawable.URLDrawableOptions.obtain();
+      paramContext.mLoadingDrawable = paramDrawable1;
+      paramContext.mFailedDrawable = paramDrawable2;
+      paramContext.mRequestWidth = paramInt1;
+      paramContext.mRequestHeight = paramInt2;
+      paramContext = URLDrawable.getDrawable(tye.a(paramString, 3), paramContext);
+      paramContext.setCallback(new qfi(this, paramDrawableCallBack, paramContext));
+      paramContext.setURLDrawableListener(new qfj(this, paramString, paramDrawableCallBack));
+      paramContext.setDownloadListener(new qfk(this, paramString, paramDrawableCallBack, paramContext));
+      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: :" + paramString);
+      paramDrawableCallBack.onCallBack(true, paramContext);
+      if (paramContext.getStatus() != 1)
+      {
+        paramContext.startDownload();
+        QLog.i("Q.readinjoy.proteus", 1, "getDrawable: :" + paramString + "  startDownload ");
+      }
+      return paramContext;
     }
+    return getDrawable(paramContext, paramString, paramDrawable1, paramDrawable2);
   }
 }
 

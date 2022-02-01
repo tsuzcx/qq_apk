@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import amrk;
+import ande;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class CmGameLauncher$2
   implements Runnable
 {
-  public CmGameLauncher$2(amrk paramamrk) {}
+  public CmGameLauncher$2(ande paramande) {}
   
   public void run()
   {
-    if (amrk.a(this.this$0) != null) {
-      amrk.a(this.this$0).onResume();
+    if (ande.a(this.this$0) != null) {
+      ande.a(this.this$0).onResume();
     }
   }
 }

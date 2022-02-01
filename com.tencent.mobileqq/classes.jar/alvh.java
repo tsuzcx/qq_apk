@@ -1,59 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class alvh
-  implements alvi
+  extends apcq
 {
-  alvh(alvf paramalvf) {}
-  
-  public void a(int paramInt)
+  public alvh(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (alvf.a(this.a) != null) {
-      alvf.a(this.a).a(paramInt);
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
-      alvf.a(this.a).a(paramPublishVideoEntry, paramString2);
-    }
-    for (;;)
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
-      return;
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
       if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", alvf.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
+        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
       }
-      alvf.a(this.a).a(paramInt);
+      if (NewFlowCameraActivity.a(this.a) != null) {
+        NewFlowCameraActivity.d(this.a);
+      }
     }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
-    }
-    if (alvf.b(this.a))
+    do
     {
-      b(paramPublishVideoEntry, paramString);
       return;
-    }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bgmg.b(paramPublishVideoEntry.doodlePath)))
-    {
-      alvf.a(paramString, paramPublishVideoEntry, alvf.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
+      this.a.a = 0.0D;
+      this.a.b = 0.0D;
+    } while (!QLog.isColorLevel());
+    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.album.view;
 
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier;
-import wef;
-import wei;
-import wej;
+import wia;
+import wid;
+import wie;
 
 public class AlbumGalleryCapturePart$12$1$1$1
   implements Runnable
 {
-  public AlbumGalleryCapturePart$12$1$1$1(wej paramwej) {}
+  public AlbumGalleryCapturePart$12$1$1$1(wie paramwie) {}
   
   public void run()
   {
-    wef.a(this.a.a.a.a).b();
+    wia.a(this.a.a.a.a).b();
   }
 }
 

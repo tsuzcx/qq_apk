@@ -1,6 +1,20 @@
-public abstract interface zcw<ERROR_TYPE, DATA_TYPE>
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+
+class zcw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
+  private zcw(zcn paramzcn) {}
+  
+  public void onGlobalLayout()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
+    }
+    this.a.jdField_a_of_type_Zcu.a(this.a.a());
+  }
 }
 
 

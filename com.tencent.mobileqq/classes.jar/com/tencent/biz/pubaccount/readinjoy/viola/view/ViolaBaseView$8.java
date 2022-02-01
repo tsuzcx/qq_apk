@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import nko;
-import pha;
+import nmj;
+import ozs;
 
 class ViolaBaseView$8
   implements Runnable
@@ -10,7 +10,7 @@ class ViolaBaseView$8
   
   public void run()
   {
-    nko.a(this.a, pha.a());
+    nmj.a(this.a, ozs.a());
   }
 }
 

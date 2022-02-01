@@ -1,19 +1,17 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akik
-  implements atve
+  implements View.OnClickListener
 {
-  akik(akij paramakij) {}
+  akik(akih paramakih) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.d();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).sendBtn.setClickable(true);
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

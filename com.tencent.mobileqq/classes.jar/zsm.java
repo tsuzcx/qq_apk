@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class zsm
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
-  public zsm(QRDisplayActivity paramQRDisplayActivity) {}
+  public zsm(SegmentList paramSegmentList) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.h = false;
+    return SegmentList.a(this.a, paramMessage);
   }
 }
 

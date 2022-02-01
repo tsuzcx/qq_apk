@@ -1,19 +1,19 @@
 package com.tencent.open.agent.report;
 
-import bipi;
+import bjqh;
 
 public class ReportCenter$5
   implements Runnable
 {
-  public ReportCenter$5(bipi parambipi) {}
+  public ReportCenter$5(bjqh parambjqh) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbipi;
-    //   4: invokevirtual 37	bipi:b	()Landroid/os/Bundle;
+    //   1: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbjqh;
+    //   4: invokevirtual 37	bjqh:b	()Landroid/os/Bundle;
     //   7: astore 29
     //   9: aload 29
     //   11: ifnonnull +4 -> 15
@@ -32,7 +32,7 @@ public class ReportCenter$5
     //   41: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   47: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   50: invokestatic 70	bius:b	()I
+    //   50: invokestatic 70	bjvr:b	()I
     //   53: istore 8
     //   55: iconst_0
     //   56: istore 4
@@ -73,7 +73,7 @@ public class ReportCenter$5
     //   115: ldc 78
     //   117: ldc 80
     //   119: aload 29
-    //   121: invokestatic 86	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Lbitp;
+    //   121: invokestatic 86	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Lbjuo;
     //   124: astore 30
     //   126: iload 10
     //   128: istore 11
@@ -96,7 +96,7 @@ public class ReportCenter$5
     //   158: iload 10
     //   160: istore 16
     //   162: aload 30
-    //   164: getfield 91	bitp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   164: getfield 91	bjuo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   167: invokestatic 94	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   170: astore 31
     //   172: iload 10
@@ -146,7 +146,7 @@ public class ReportCenter$5
     //   251: iload 10
     //   253: istore 16
     //   255: aload 30
-    //   257: getfield 91	bitp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   257: getfield 91	bjuo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   260: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   263: ifne +6 -> 269
     //   266: goto +458 -> 724
@@ -171,7 +171,7 @@ public class ReportCenter$5
     //   301: iload 9
     //   303: istore 16
     //   305: aload 30
-    //   307: getfield 111	bitp:jdField_a_of_type_Long	J
+    //   307: getfield 111	bjuo:jdField_a_of_type_Long	J
     //   310: lstore 17
     //   312: iload 9
     //   314: istore 11
@@ -192,7 +192,7 @@ public class ReportCenter$5
     //   340: iload 9
     //   342: istore 16
     //   344: aload 30
-    //   346: getfield 113	bitp:b	J
+    //   346: getfield 113	bjuo:b	J
     //   349: lstore 27
     //   351: iload_1
     //   352: istore_2
@@ -222,31 +222,31 @@ public class ReportCenter$5
     //   394: lload 17
     //   396: lstore 25
     //   398: aload_0
-    //   399: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbipi;
+    //   399: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbjqh;
     //   402: ldc 78
     //   404: lload 21
     //   406: lload 19
     //   408: lload 25
     //   410: iload_1
-    //   411: invokestatic 118	biip:a	()Lbiip;
-    //   414: invokevirtual 120	biip:a	()J
+    //   411: invokestatic 118	bjjo:a	()Lbjjo;
+    //   414: invokevirtual 120	bjjo:a	()J
     //   417: ldc 122
     //   419: aconst_null
     //   420: iconst_0
-    //   421: invokevirtual 125	bipi:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;Z)V
+    //   421: invokevirtual 125	bjqh:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;Z)V
     //   424: iload 9
     //   426: ifeq +257 -> 683
-    //   429: invokestatic 130	bipk:a	()Lbipk;
+    //   429: invokestatic 130	bjqj:a	()Lbjqj;
     //   432: ldc 132
-    //   434: invokevirtual 135	bipk:a	(Ljava/lang/String;)V
+    //   434: invokevirtual 135	bjqj:a	(Ljava/lang/String;)V
     //   437: aload_0
-    //   438: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbipi;
+    //   438: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbjqh;
     //   441: astore 29
     //   443: aload 29
     //   445: monitorenter
     //   446: aload_0
-    //   447: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbipi;
-    //   450: getfield 138	bipi:b	Ljava/util/ArrayList;
+    //   447: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbjqh;
+    //   450: getfield 138	bjqh:b	Ljava/util/ArrayList;
     //   453: invokevirtual 143	java/util/ArrayList:clear	()V
     //   456: aload 29
     //   458: monitorexit
@@ -307,13 +307,13 @@ public class ReportCenter$5
     //   568: goto -201 -> 367
     //   571: astore 29
     //   573: aload_0
-    //   574: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbipi;
+    //   574: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbjqh;
     //   577: astore 29
     //   579: aload 29
     //   581: monitorenter
     //   582: aload_0
-    //   583: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbipi;
-    //   586: getfield 138	bipi:b	Ljava/util/ArrayList;
+    //   583: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbjqh;
+    //   586: getfield 138	bjqh:b	Ljava/util/ArrayList;
     //   589: invokevirtual 143	java/util/ArrayList:clear	()V
     //   592: aload 29
     //   594: monitorexit
@@ -354,7 +354,7 @@ public class ReportCenter$5
     //   660: lconst_0
     //   661: lstore 17
     //   663: aload 30
-    //   665: invokestatic 178	bitt:a	(Ljava/io/IOException;)I
+    //   665: invokestatic 178	bjus:a	(Ljava/io/IOException;)I
     //   668: istore_1
     //   669: iload 14
     //   671: istore 9
@@ -363,12 +363,12 @@ public class ReportCenter$5
     //   677: iload 5
     //   679: istore_2
     //   680: goto -313 -> 367
-    //   683: invokestatic 130	bipk:a	()Lbipk;
+    //   683: invokestatic 130	bjqj:a	()Lbjqj;
     //   686: ldc 132
     //   688: aload_0
-    //   689: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbipi;
-    //   692: getfield 138	bipi:b	Ljava/util/ArrayList;
-    //   695: invokevirtual 181	bipk:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   689: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbjqh;
+    //   692: getfield 138	bjqh:b	Ljava/util/ArrayList;
+    //   695: invokevirtual 181	bjqj:a	(Ljava/lang/String;Ljava/util/List;)V
     //   698: goto -261 -> 437
     //   701: astore 30
     //   703: aload 29
@@ -445,7 +445,7 @@ public class ReportCenter$5
     //   618	86	29	localHttpStatusException1	com.tencent.open.base.http.HttpBaseUtil.HttpStatusException
     //   709	1	29	localException2	java.lang.Exception
     //   714	1	29	localHttpStatusException2	com.tencent.open.base.http.HttpBaseUtil.HttpStatusException
-    //   124	221	30	localbitp	bitp
+    //   124	221	30	localbjuo	bjuo
     //   519	1	30	localConnectTimeoutException	org.apache.http.conn.ConnectTimeoutException
     //   545	1	30	localSocketTimeoutException	java.net.SocketTimeoutException
     //   610	6	30	localObject2	Object

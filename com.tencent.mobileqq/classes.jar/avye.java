@@ -1,15 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
 
-public class avye
-  implements DialogInterface.OnClickListener
+class avye
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public avye(LocationDialogUtil.6 param6) {}
+  private avye(avya paramavya) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    avxq.a(this.a.b, "0X800A76A");
+    synchronized (avya.a(this.a))
+    {
+      avxz.b("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      avya.b(this.a, avya.a(this.a));
+      return;
+    }
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    synchronized (avya.a(this.a))
+    {
+      avxz.b("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = avya.a(paramString1);
+          avxz.b("onPreLoadSucess path:" + paramString2);
+          avya.a(this.a, paramString1);
+          File localFile = new File(avya.b(paramString1));
+          if (localFile.exists()) {
+            localFile.renameTo(new File(paramString2));
+          }
+          avya.b(this.a, paramString1);
+          avya.b(this.a, avya.a(this.a));
+          avya.b(this.a);
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          QLog.d("ImaxAdvertisement", 1, "onPreLoadSucess", paramString1);
+        }
+      }
+      return;
+    }
   }
 }
 

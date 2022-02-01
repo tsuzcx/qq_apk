@@ -1,147 +1,183 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewCompat;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bgnt
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public static int a(int paramInt)
+  public ArrayList<String> a;
+  public boolean a;
+  
+  public bgnt(BulkSendMessageFragment paramBulkSendMessageFragment)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return 2;
-    case 1: 
-    case 4: 
-    case 5: 
-      return 4;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public int getCount()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0) {
+      return i + j;
     }
-    return 3;
   }
   
-  public static int a(Context paramContext)
+  public Object getItem(int paramInt)
   {
-    int j = nlw.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    return i;
+    return Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size());
   }
   
-  public static String a(int paramInt)
+  public long getItemId(int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF).append(".").append(paramInt >> 8 & 0xFF).append(".").append(paramInt >> 16 & 0xFF).append(".").append(paramInt >> 24 & 0xFF);
-    return localStringBuffer.toString();
+    return paramInt;
   }
   
-  public static String a(Context paramContext)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return NetworkState.getAPN();
-  }
-  
-  public static boolean a()
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return AppNetConnInfo.isWifiConn();
-  }
-  
-  public static boolean a(NetworkInfo paramNetworkInfo)
-  {
-    return HwNetworkUtil.isMobileNetworkInfo(paramNetworkInfo);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    int j = -1;
-    int i = j;
-    if (AppNetConnInfo.isNetSupport())
+    View localView;
+    bgnu localbgnu;
+    TextView localTextView;
+    ImageView localImageView;
+    Object localObject3;
+    String str;
+    Object localObject2;
+    Object localObject1;
+    if (paramView == null)
     {
-      paramContext = AppNetConnInfo.getRecentNetworkInfo();
-      i = j;
-      if (paramContext != null) {
-        i = paramContext.getType();
+      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity()).inflate(2131558867, null);
+      localbgnu = new bgnu(localView);
+      localbgnu.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368212));
+      localbgnu.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371647));
+      localView.setTag(localbgnu);
+      localView.setVisibility(0);
+      localView.setFocusable(false);
+      localTextView = localbgnu.jdField_a_of_type_AndroidWidgetTextView;
+      localImageView = localbgnu.jdField_a_of_type_AndroidWidgetImageView;
+      localObject3 = (anyw)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label430;
       }
+      localImageView.setImageResource(2130844964);
+      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColor(2131167084));
+      str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) + "";
+      localbgnu.jdField_a_of_type_JavaLangString = str;
+      localObject2 = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, str);
+      if (!TextUtils.isEmpty(str)) {
+        break label310;
+      }
+      if (localObject2 != null) {
+        break label303;
+      }
+      localObject1 = "";
+      label224:
+      localTextView.setText((CharSequence)localObject1);
+      localImageView.setImageDrawable(bhmq.b());
+      label239:
+      localbgnu.jdField_a_of_type_AndroidViewView.setTag(2131378398, null);
+      localbgnu.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
     }
-    return i;
-  }
-  
-  public static String b(Context paramContext)
-  {
-    try
+    for (;;)
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if ((paramContext != null) && (paramContext.getSSID() != null))
+      if (AppSetting.c) {
+        ViewCompat.setImportantForAccessibility(localImageView, 2);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localbgnu = (bgnu)paramView.getTag();
+      localView = paramView;
+      break;
+      label303:
+      localObject1 = localObject2;
+      break label224;
+      label310:
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
-        paramContext = paramContext.getSSID().replaceAll("\"", "");
-        boolean bool = paramContext.equals("<unknown ssid>");
-        if (!bool) {
-          return paramContext;
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = ((anyw)localObject3).e(str);
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            localObject1 = localObject2;
+            if (((Friends)localObject3).isFriend()) {
+              localObject1 = bhlg.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+            }
+          }
         }
-        return null;
+      }
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = anzj.a(2131700145);
+      }
+      localTextView.setText((CharSequence)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.a(localbgnu, null, true);
+      localImageView.setTag(2131378424, str);
+      localImageView.setTag(null);
+      break label239;
+      label430:
+      localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getString(2131689551));
+      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColorStateList(2131166454));
+      localImageView.setBackgroundDrawable(null);
+      localImageView.setImageResource(2130839186);
+      localImageView.setEnabled(true);
+      localImageView.setTag(Integer.valueOf(0));
+      localbgnu.jdField_a_of_type_AndroidViewView.setTag(2131378398, Integer.valueOf(0));
+      localbgnu.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = (Integer)paramView.getTag(2131378398);
+    if (localObject == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (((Integer)localObject).intValue() == 0)
+      {
+        localObject = TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, 20);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((Intent)localObject).putStringArrayListExtra("param_pick_selected_list", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Bgnt.jdField_a_of_type_JavaUtilArrayList);
+        ((Intent)localObject).putStringArrayListExtra("param_hide_filter_member_list", localArrayList);
+        ((Intent)localObject).putExtra("param_pick_max_num", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Int);
+        ((Intent)localObject).putExtra("param_pick_max_num_exceeds_wording", 2131696909);
+        ((Intent)localObject).putExtra("param_pick_title_string", anzj.a(2131700138));
+        this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.startActivityForResult((Intent)localObject, 1);
+        this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity().overridePendingTransition(2130772302, 2130771990);
       }
     }
-    catch (Throwable paramContext)
-    {
-      QLog.e("NetworkUtil", 1, "fail to get active network info", paramContext);
-      return null;
-    }
-    paramContext = null;
-    return paramContext;
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return AppNetConnInfo.isMobileConn();
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    int i = biii.a(paramContext);
-    return (i == 4) || (i == 3);
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    return HwNetworkUtil.isNetSupport(paramContext);
-  }
-  
-  @TargetApi(13)
-  public static boolean f(Context paramContext)
-  {
-    return (Build.VERSION.SDK_INT >= 13) && (b(paramContext) == 7);
-  }
-  
-  public static boolean g(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean h(Context paramContext)
-  {
-    return NetworkState.isWifiConn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnt
  * JD-Core Version:    0.7.0.1
  */

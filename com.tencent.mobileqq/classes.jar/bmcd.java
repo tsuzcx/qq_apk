@@ -1,28 +1,6 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
-
-public class bmcd
-  implements bmbj
+public abstract interface bmcd
 {
-  public bmcd(PanoramaView paramPanoramaView) {}
-  
-  public void a()
-  {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).onPanoramaClick();
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).a(paramFloat);
-    }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.a.a(paramFloat1, paramFloat2);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

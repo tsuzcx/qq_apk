@@ -1,58 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajpk
-  extends asyw
+  extends aojs
 {
-  public ajpk(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public ajpk(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  protected void a(athr paramathr)
+  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
   {
-    if ((TextUtils.isEmpty(paramathr.a)) || (TextUtils.isEmpty(paramathr.b))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.history.C2CAllFragment", 2, "OnThumbDownLoad error : [fileId] = " + paramathr.a + " [path] = " + paramathr.b);
+    this.a.b = false;
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
+    {
+      this.a.jdField_a_of_type_Int = 0;
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+        ShowExternalTroopListActivity.a(this.a);
       }
-    }
-    while (this.a.a == null) {
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        paramList = new ArrayList();
+        this.a.jdField_a_of_type_Amqr.a(paramList);
+        paramInt = this.a.getTitleBarHeight();
+        QQToast.a(this.a, 1, this.a.getString(2131695520), 0).b(paramInt);
+        return;
+      }
+      this.a.a();
       return;
     }
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+      ShowExternalTroopListActivity.a(this.a);
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    this.a.c.setVisibility(0);
+    if (this.a.jdField_a_of_type_Amqr != null)
+    {
+      this.a.jdField_a_of_type_Int = paramList.size();
+      this.a.jdField_a_of_type_Amqr.a(paramList);
     }
-  }
-  
-  protected void b()
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void d()
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.a(paramList1, true);
   }
 }
 

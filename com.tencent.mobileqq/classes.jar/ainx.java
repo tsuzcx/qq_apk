@@ -1,55 +1,59 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ainx
-  extends Handler
+  implements BusinessObserver
 {
-  ainx(ains paramains, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ainx(ainh paramainh, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_Ainh.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
-    int i;
-    do
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Ainh.A(2131694659);
+    }
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (aioj)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, ains.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
-          }
-          this.a.e(paramMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
-          }
-        } while (this.a.jdField_a_of_type_Aioe == null);
-        this.a.jdField_a_of_type_Aioe.a(paramMessage);
-        return;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        if (paramMessage.equals(this.a.a())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituManager", 2, ains.a(paramMessage, "main handler", "reqKey is outdated, skip"));
-      return;
-      if (this.a.jdField_a_of_type_Aioh != null) {
-        this.a.jdField_a_of_type_Aioh.a(i, paramMessage);
+      ainh.c(this.jdField_a_of_type_Ainh);
+      if (ainh.d(this.jdField_a_of_type_Ainh) == 0) {
+        this.jdField_a_of_type_Ainh.bp();
       }
-    } while (this.a.jdField_a_of_type_Aioe == null);
-    this.a.jdField_a_of_type_Aioe.a(i, paramMessage);
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
+          localUnFollowResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(this.jdField_a_of_type_Ainh.jdField_a_of_type_JavaLangString, 2, "unfollow success");
+            }
+            ainh.a(this.jdField_a_of_type_Ainh, ainh.a(this.jdField_a_of_type_Ainh));
+            ocd.a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+            StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+            ((bgre)this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+            ainh.b(this.jdField_a_of_type_Ainh, false);
+          }
+          else
+          {
+            this.jdField_a_of_type_Ainh.A(2131694659);
+          }
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
   }
 }
 

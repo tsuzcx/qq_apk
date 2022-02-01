@@ -1,27 +1,40 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.NearByMessageType;
 
 public class adhs
-  implements View.OnClickListener
+  extends adic
 {
-  public adhs(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    bcst.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
-    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
-      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
+    return -1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (a((im_msg_body.Elem)paramList.next()))
+      {
+        if (!paramList1.isEmpty()) {
+          ((MessageRecord)paramList1.get(0)).saveExtInfoToExtStr("identify_flag", "true");
+        }
+        if (QLog.isColorLevel()) {
+          paramStringBuilder.append("elemType: near_by_msg has identify;\n");
+        }
+      }
     }
-    AccountManageActivity.a(this.a.getActivity(), this.a.app);
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.near_by_msg.has()) && (paramElem.near_by_msg.uint32_identify_type.has()) && (paramElem.near_by_msg.uint32_identify_type.get() == 1);
   }
 }
 

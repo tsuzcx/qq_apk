@@ -1,45 +1,32 @@
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.media.ThumbnailUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.image.DownloadParams;
 
 class bdty
-  implements beai
+  extends bhez
 {
-  bdty(bdtx parambdtx) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
   
-  public Bitmap getBitmap(URL paramURL)
+  public bdty(bdts parambdts, int paramInt1, int paramInt2, int paramInt3)
   {
-    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
-    if (localLocalMediaInfo == null) {}
-    for (;;)
-    {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
       return null;
-      paramURL = new BitmapFactory.Options();
-      paramURL.inDensity = 160;
-      paramURL.inTargetDensity = 160;
-      paramURL.inScreenDensity = 160;
-      try
-      {
-        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
-        if (paramURL == null) {
-          continue;
-        }
-        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
-      }
-      catch (OutOfMemoryError paramURL)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
-          }
-          paramURL = null;
-        }
-      }
+    }
+    int j = this.c;
+    int k = paramBitmap.getWidth();
+    if (paramBitmap.getHeight() != 0) {}
+    for (int i = paramBitmap.getHeight();; i = this.c)
+    {
+      i = k * j / i;
+      return bhmq.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
     }
   }
 }

@@ -1,16 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
 
-class bpwk
-  implements CompoundButton.OnCheckedChangeListener
+public class bpwk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bpwk(bpwj parambpwj) {}
+  public bpwk(QIMSlidingTabView paramQIMSlidingTabView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bpwj.a(this.a).g = paramBoolean;
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

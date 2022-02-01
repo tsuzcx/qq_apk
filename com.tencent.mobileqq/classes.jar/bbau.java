@@ -1,28 +1,37 @@
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentName;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager;
 
 public class bbau
-  implements QQPermissionCallback
+  implements Application.ActivityLifecycleCallbacks
 {
-  public bbau(SignTextEditFragment paramSignTextEditFragment, AppActivity paramAppActivity) {}
+  public bbau(RedTouchLifeTimeManager paramRedTouchLifeTimeManager) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity) {}
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
+    if (paramActivity.getComponentName() != null)
+    {
+      RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
+      if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
+        RedTouchLifeTimeManager.a(this.a);
+      }
     }
-    bglp.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
-  }
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

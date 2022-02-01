@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class ayfb
-  extends ayfc
+public class ayfb
+  implements bliz
 {
-  ayfb(ayfa paramayfa) {}
+  public ayfb(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, blir paramblir) {}
   
-  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramList = this.a.a(paramList);
-    ayey localayey = (ayey)this.a.a.a(113);
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    switch (paramInt)
     {
-      localayey.notifyUI(3, paramBoolean, new Object[] { Integer.valueOf(i), paramString, paramList });
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Blir != null) {
+        this.jdField_a_of_type_Blir.dismiss();
+      }
       return;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      continue;
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
     }
   }
 }

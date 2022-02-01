@@ -1,18 +1,24 @@
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
+
 class agnv
-  implements bfwg
+  implements TypeEvaluator
 {
-  agnv(agnt paramagnt, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ((ahxp)agnt.a(this.jdField_a_of_type_Agnt)).W = true;
-      this.jdField_a_of_type_Agnt.a(true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
     }
-    ((ahxp)agnt.a(this.jdField_a_of_type_Agnt)).W = false;
-    this.jdField_a_of_type_Agnt.a(false);
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    }
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
+    }
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 

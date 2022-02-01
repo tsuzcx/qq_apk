@@ -1,13 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-
-public class bejw
-  implements DialogInterface.OnClickListener
+public final class bejw
 {
-  public bejw(TroopBarPublishActivity paramTroopBarPublishActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static final String a = anzj.a(2131713801);
+  public static final String b = anzj.a(2131713815);
 }
 
 

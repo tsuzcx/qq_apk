@@ -1,4 +1,9 @@
-public abstract interface rnr {}
+import java.util.HashMap;
+
+abstract interface rnr
+{
+  public abstract void a(int paramInt, String paramString, HashMap<Integer, rns> paramHashMap, long paramLong);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

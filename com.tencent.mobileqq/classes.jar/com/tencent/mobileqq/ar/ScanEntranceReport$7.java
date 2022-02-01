@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -11,7 +11,7 @@ public class ScanEntranceReport$7
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("select_image_avg_time", String.valueOf(this.jdField_a_of_type_Long));
-    bctj.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_upload_count", true, this.jdField_a_of_type_Int, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_upload_count", true, this.jdField_a_of_type_Int, 0L, localHashMap, "");
   }
 }
 

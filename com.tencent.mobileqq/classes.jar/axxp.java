@@ -1,67 +1,70 @@
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class axxp
-  implements bkhw
+public class axxp
+  extends BaseAdapter
 {
-  axxp(axxm paramaxxm, axxt paramaxxt, axzq paramaxzq, bkho parambkho) {}
+  protected int a;
   
-  public void OnClick(View paramView, int paramInt)
+  public axxp(GameQuickWordsPanel paramGameQuickWordsPanel)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-    default: 
-      return;
-    }
-    axlq localaxlq = new axlq().h("data_card").i("feed_inform").d("2").a(this.jdField_a_of_type_Axxm.a(this.jdField_a_of_type_Axxt)).b(this.jdField_a_of_type_Axzq.c).c(String.valueOf(this.jdField_a_of_type_Axxm.a(this.jdField_a_of_type_Axxt)));
-    if (this.jdField_a_of_type_Axxm.jdField_a_of_type_Boolean)
-    {
-      paramView = "1";
-      localaxlq.e(paramView).b(this.jdField_a_of_type_Axxm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_Axzq.e)) || (!(this.jdField_a_of_type_Axxm.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))) {
-        break label341;
-      }
-      paramView = new bghz();
-      if (!(this.jdField_a_of_type_Axzq instanceof axzn)) {
-        break label231;
-      }
-      paramView.b(((axzn)this.jdField_a_of_type_Axzq).b);
-      label172:
-      paramView.a(this.jdField_a_of_type_Axzq.n);
-      paramView = paramView.a();
-      bghy.a((BaseActivity)this.jdField_a_of_type_Axxm.jdField_a_of_type_AndroidContentContext, 0L, this.jdField_a_of_type_Axzq.e, null, 20006, "", paramView);
+      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2131558607, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(-1, agej.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
+      paramView = new axxq(this);
+      paramView.a = ((TextView)localView.findViewById(2131374856));
+      localView.setTag(paramView);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      paramView = "2";
-      break;
-      label231:
-      if ((this.jdField_a_of_type_Axzq instanceof axzp))
-      {
-        paramView.d(((axzp)this.jdField_a_of_type_Axzq).b).b(((axzp)this.jdField_a_of_type_Axzq).a);
-        break label172;
-      }
-      if ((this.jdField_a_of_type_Axzq instanceof axzr))
-      {
-        paramView.b(((axzr)this.jdField_a_of_type_Axzq).a);
-        break label172;
-      }
-      if ((this.jdField_a_of_type_Axzq instanceof axzt))
-      {
-        paramView.b(((axzt)this.jdField_a_of_type_Axzq).a);
-        break label172;
-      }
-      if (!(this.jdField_a_of_type_Axzq instanceof axzu)) {
-        break label172;
-      }
-      break label172;
-      label341:
-      QQToast.a(this.jdField_a_of_type_Axxm.jdField_a_of_type_AndroidContentContext, 2, anni.a(2131699840), 0).a();
+      Object localObject = (String)getItem(paramInt);
+      paramView.a.setText((CharSequence)localObject);
+      paramView.a.setTextColor(this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (axxq)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
     }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_Aikq.a();
+    if (localHashMap.containsKey("quickWordColor")) {
+      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
+    }
+    super.notifyDataSetChanged();
   }
 }
 

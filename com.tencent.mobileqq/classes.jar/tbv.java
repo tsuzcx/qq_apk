@@ -1,57 +1,21 @@
-import android.util.SparseArray;
-import java.util.Stack;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-class tbv
+public class tbv
+  implements Animation.AnimationListener
 {
-  SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  Stack<String> jdField_a_of_type_JavaUtilStack = new Stack();
-  SparseArray<Object> b = new SparseArray();
+  public tbv(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
   
-  public int a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int j = -1;
-    int i = 3;
-    int k = 0;
-    if (k < this.jdField_a_of_type_AndroidUtilSparseArray.size())
-    {
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k) <= j) {
-        break label72;
-      }
-      i = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k);
-      j = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k)).intValue();
-    }
-    for (;;)
-    {
-      int m = k + 1;
-      k = j;
-      j = i;
-      i = k;
-      k = m;
-      break;
-      return i;
-      label72:
-      m = j;
-      j = i;
-      i = m;
-    }
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
   }
   
-  public int b()
-  {
-    int i = this.jdField_a_of_type_JavaUtilStack.size() - 1;
-    while (i >= 0)
-    {
-      String str = (String)this.jdField_a_of_type_JavaUtilStack.get(i);
-      if (tbr.a().equals(str)) {
-        return 3;
-      }
-      if (tbr.b().equals(str)) {
-        return 2;
-      }
-      i -= 1;
-    }
-    return 1;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -10,13 +10,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class HwNetworkCenter
 {
   public static final String Tag = "NetworkCenter";
-  public static HwNetworkCenter sNC;
+  public static HwNetworkCenter sNC = null;
   private Runnable checkRun = new HwNetworkCenter.1(this);
   private String mApnType = "";
   private Context mContext;
   private Handler mHandler;
   private AtomicInteger mNetworkType = new AtomicInteger(0);
-  private HandlerThread mUpdateThread;
+  private HandlerThread mUpdateThread = null;
   
   protected HwNetworkCenter(Context paramContext)
   {

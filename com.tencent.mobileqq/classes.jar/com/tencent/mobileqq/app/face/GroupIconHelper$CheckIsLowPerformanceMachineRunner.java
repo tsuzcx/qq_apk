@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.face;
 
-import bgln;
+import bhlo;
 
 class GroupIconHelper$CheckIsLowPerformanceMachineRunner
   implements Runnable
@@ -9,8 +9,8 @@ class GroupIconHelper$CheckIsLowPerformanceMachineRunner
   
   public void run()
   {
-    long l = bgln.a();
-    int i = bgln.b();
+    long l = bhlo.a();
+    int i = bhlo.b();
     if ((l != 0L) && (l < 1024L) && (i <= 1)) {
       GroupIconHelper.a(true);
     }

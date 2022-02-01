@@ -1,8 +1,8 @@
 package com.tencent.mfsdk.reporter;
 
-import addo;
+import admm;
 import android.text.TextUtils;
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ public class QCloudFileUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private addo jdField_a_of_type_Addo;
+  private admm jdField_a_of_type_Admm;
   private File jdField_a_of_type_JavaIoFile;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -30,12 +30,12 @@ public class QCloudFileUploadRunnable
   private String d;
   private String e;
   
-  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, addo paramaddo, int paramInt, MqqHandler paramMqqHandler)
+  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, admm paramadmm, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Addo = paramaddo;
+    this.jdField_a_of_type_Admm = paramadmm;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -104,7 +104,7 @@ public class QCloudFileUploadRunnable
       l = System.currentTimeMillis();
       str = "out_" + String.valueOf(l) + ".zip";
       localObject = (String)localObject + "/" + str;
-      bgmg.e(this.jdField_a_of_type_JavaLangString, (String)localObject);
+      bhmi.e(this.jdField_a_of_type_JavaLangString, (String)localObject);
     }
     return false;
     return false;
@@ -362,14 +362,14 @@ public class QCloudFileUploadRunnable
     //   464: aload 6
     //   466: astore 5
     //   468: aload_0
-    //   469: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   469: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   472: ifnull +24 -> 496
     //   475: iload_3
     //   476: ifeq +20 -> 496
     //   479: aload 6
     //   481: astore 5
     //   483: aload_0
-    //   484: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   484: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   487: aload_0
     //   488: getfield 27	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_c_of_type_Int	I
     //   491: invokeinterface 319 2 0

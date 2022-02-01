@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.storyHome;
 
 import Override;
-import abdx;
+import abia;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
-import bgno;
-import bncl;
+import bhnq;
+import bodt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
@@ -18,34 +18,34 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Subscriber;
 import java.util.Map;
 import mqq.app.MobileQQ;
-import wes;
-import wnb;
-import wpf;
-import wpm;
-import yag;
-import yah;
-import yqo;
-import yqp;
+import win;
+import wqw;
+import wta;
+import wth;
+import yeb;
+import yec;
+import yuj;
+import yuk;
 
 public class QQStoryMainActivity
   extends QQStoryBaseActivity
 {
   public static long a;
-  private abdx jdField_a_of_type_Abdx;
+  private abia jdField_a_of_type_Abia;
   protected QQStoryMainController a;
   NavBarCommon jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
   
   public QQStoryMainActivity()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new yag(this), QQStoryMainController.c);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new yeb(this), QQStoryMainController.c);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(this);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131376599));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131376731));
     this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnItemSelectListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a);
-    a(wes.a);
+    a(win.a);
   }
   
   private void a(Intent paramIntent)
@@ -64,18 +64,18 @@ public class QQStoryMainActivity
   
   private void a(Intent paramIntent, String paramString)
   {
-    if (this.jdField_a_of_type_Abdx == null) {
-      this.jdField_a_of_type_Abdx = new abdx(this);
+    if (this.jdField_a_of_type_Abia == null) {
+      this.jdField_a_of_type_Abia = new abia(this);
     }
-    String str2 = this.app.getApplication().getString(2131717865);
+    String str2 = this.app.getApplication().getString(2131717997);
     String str1 = str2;
     if (paramString != null) {
       str1 = str2 + paramString;
     }
-    paramIntent = new yah(this, paramIntent);
-    this.jdField_a_of_type_Abdx.a(str1, paramIntent);
-    this.jdField_a_of_type_Abdx.a(paramIntent);
-    this.jdField_a_of_type_Abdx.show();
+    paramIntent = new yec(this, paramIntent);
+    this.jdField_a_of_type_Abia.a(str1, paramIntent);
+    this.jdField_a_of_type_Abia.a(paramIntent);
+    this.jdField_a_of_type_Abia.show();
   }
   
   private void a(@NonNull String paramString)
@@ -121,16 +121,16 @@ public class QQStoryMainActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, " doOnCreate");
     }
-    yqp.d("Q.qqstory.home.QQStoryMainActivity", "QQStoryMainActivity start");
+    yuk.d("Q.qqstory.home.QQStoryMainActivity", "QQStoryMainActivity start");
     this.mUseOptimizMode = true;
     jdField_a_of_type_Long = System.currentTimeMillis();
     super.doOnCreate(paramBundle);
-    setContentView(2131561725);
+    setContentView(2131561766);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(paramBundle);
     a();
-    int i = ((Integer)((wpf)wpm.a(10)).b("string_story_global_log_level", Integer.valueOf(-1))).intValue();
-    yqo.a().a(i);
-    bncl.a(BaseApplicationImpl.getContext(), new QQStoryMainActivity.2(this), null);
+    int i = ((Integer)((wta)wth.a(10)).b("string_story_global_log_level", Integer.valueOf(-1))).intValue();
+    yuj.a().a(i);
+    bodt.a(BaseApplicationImpl.getContext(), new QQStoryMainActivity.2(this), null);
     a(getIntent());
     return true;
   }
@@ -143,14 +143,14 @@ public class QQStoryMainActivity
     super.doOnDestroy();
     jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.d(this);
-    yqo.a().a(-1);
-    wnb.a().b();
-    if (this.jdField_a_of_type_Abdx != null)
+    yuj.a().a(-1);
+    wqw.a().b();
+    if (this.jdField_a_of_type_Abia != null)
     {
-      this.jdField_a_of_type_Abdx.dismiss();
-      this.jdField_a_of_type_Abdx = null;
+      this.jdField_a_of_type_Abia.dismiss();
+      this.jdField_a_of_type_Abia = null;
     }
-    bgno.a().a();
+    bhnq.a().a();
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -191,7 +191,7 @@ public class QQStoryMainActivity
     }
     super.doOnStop();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.c(this);
-    bgno.a().a();
+    bhnq.a().a();
   }
   
   public void finish()

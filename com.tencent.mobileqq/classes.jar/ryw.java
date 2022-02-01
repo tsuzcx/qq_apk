@@ -1,26 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.view.View;
 
-public class ryw
-  implements ValueAnimator.AnimatorUpdateListener
+class ryw
+  extends View
 {
-  private ryw(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  private int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  private int b;
+  private int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ryw(ryv paramryv, Context paramContext)
   {
-    if (VideoFeedsGuideView.a(this.a) == 1)
-    {
-      VideoFeedsGuideView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.b(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.c(this.a));
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      VideoFeedsGuideView.c(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.d(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.d(this.a));
-    }
+    super(paramContext);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    localPath.reset();
+    localPath.moveTo(this.c, 0.0F);
+    localPath.lineTo(0.0F, getHeight());
+    localPath.lineTo(getWidth(), getHeight());
+    localPath.close();
+    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    setMeasuredDimension(this.jdField_a_of_type_Int, this.b);
   }
 }
 

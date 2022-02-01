@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
 import android.graphics.drawable.Drawable;
-import bhbg;
-import bhbn;
+import bibn;
+import bibw;
 import kotlin.Metadata;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class DynamicDrawable$updateDrawableState$1
   implements Runnable
 {
-  public DynamicDrawable$updateDrawableState$1(bhbg parambhbg) {}
+  public DynamicDrawable$updateDrawableState$1(bibn parambibn) {}
   
   public final void run()
   {
     Drawable localDrawable = this.this$0.a();
     if (localDrawable != null)
     {
-      bhbg.b(this.this$0, localDrawable);
-      if (bhbn.a(localDrawable)) {
-        bhbg.c(this.this$0, localDrawable);
+      bibn.b(this.this$0, localDrawable);
+      if (bibw.a(localDrawable)) {
+        bibn.c(this.this$0, localDrawable);
       }
       this.this$0.invalidateSelf();
     }

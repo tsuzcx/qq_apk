@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class afqt
-  extends azjf
+  implements azbw
 {
-  public afqt(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  public afqt(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void a(int paramInt, azbx paramazbx)
   {
-    switch (paramInt)
+    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramazbx.b)))
     {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
-      return;
+      TextPreviewTranslateActivity.a(this.a, paramazbx.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 

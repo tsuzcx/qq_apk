@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.os.Handler;
-import asrl;
+import athp;
 
 public class FilePreviewActivity$10$1
   implements Runnable
 {
-  public FilePreviewActivity$10$1(asrl paramasrl) {}
+  public FilePreviewActivity$10$1(athp paramathp) {}
   
   public void run()
   {

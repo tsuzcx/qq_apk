@@ -1,12 +1,10 @@
-import java.nio.charset.Charset;
-
-final class nmy
-  extends ThreadLocal<Charset>
+public abstract interface nmy
 {
-  protected Charset a()
-  {
-    return Charset.forName("UTF-8");
-  }
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void b(Runnable paramRunnable);
+  
+  public abstract void c(Runnable paramRunnable);
 }
 
 

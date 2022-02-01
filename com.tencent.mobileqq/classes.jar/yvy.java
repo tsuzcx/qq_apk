@@ -1,41 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-public class yvy
-  implements View.OnClickListener
+public final class yvy
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  protected long a;
-  protected View a;
-  public yvz a;
-  
-  public yvy(yvz paramyvz, View paramView)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Yvz = paramyvz;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setOnClickListener(this);
+    return new EditTakeGifSource(paramParcel);
   }
   
-  private boolean a()
+  public EditTakeGifSource[] a(int paramInt)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if ((l2 > 0L) && (l2 < 2000L)) {
-      return true;
-    }
-    this.jdField_a_of_type_Long = l1;
-    return false;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!a())
-    {
-      yqu.a("home_page", "clk_shoot", 0, 0, new String[0]);
-      this.jdField_a_of_type_Yvz.a();
-    }
-    bdza.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new EditTakeGifSource[paramInt];
   }
 }
 

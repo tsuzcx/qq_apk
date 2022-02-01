@@ -1,18 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahip
-  implements ValueAnimator.AnimatorUpdateListener
+class ahip
+  extends ahkx
 {
-  public ahip(SixCombolEffectView paramSixCombolEffectView, ahje paramahje) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  ahip(ahgk paramahgk)
   {
-    this.jdField_a_of_type_Ahje.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Ahje.b) && (this.jdField_a_of_type_Ahje.a < 0.52F)) {
-      this.jdField_a_of_type_Ahje.b = true;
-    }
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahmm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

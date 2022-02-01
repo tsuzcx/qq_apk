@@ -1,156 +1,63 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.GdtAdWsVideoReport.1;
-import com.tencent.mobileqq.pb.PBStringField;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import java.net.URLEncoder;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout;
 
-public class uur
+class uur
+  implements use
 {
-  private static String jdField_a_of_type_JavaLangString = "GdtAdWsVideoReport";
-  private static boolean jdField_a_of_type_Boolean;
+  uur(uuq paramuuq, Runnable paramRunnable) {}
   
-  private static String a(stSimpleMetaFeed paramstSimpleMetaFeed, ukb paramukb)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramstSimpleMetaFeed != null)
+    float f1 = 0.0F;
+    Object localObject;
+    float f3;
+    float f4;
+    float f2;
+    if (uuq.a(this.jdField_a_of_type_Uuq) != null)
     {
-      str1 = str2;
-      if (paramstSimpleMetaFeed.gdt_ad_type == 1)
+      localObject = new Rect();
+      uuq.a(this.jdField_a_of_type_Uuq).a((Rect)localObject);
+      if ((uuq.a(this.jdField_a_of_type_Uuq)) || ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getX() > ((Rect)localObject).left) && (paramMotionEvent.getX() < ((Rect)localObject).right) && (paramMotionEvent.getY() >= ((Rect)localObject).top - bdep.a(10.0F)) && (paramMotionEvent.getY() <= ((Rect)localObject).bottom + bdep.a(10.0F))))
       {
-        str1 = str2;
-        if (paramstSimpleMetaFeed.gdt_ad_info != null)
+        if (!uuq.a(this.jdField_a_of_type_Uuq))
         {
-          paramstSimpleMetaFeed = urv.a(paramstSimpleMetaFeed).report_info;
-          str1 = str2;
-          if (paramstSimpleMetaFeed != null)
-          {
-            str1 = str2;
-            if (paramstSimpleMetaFeed.exposure_url != null)
-            {
-              str1 = str2;
-              if (paramukb != null)
-              {
-                str1 = str2;
-                if (paramukb.jdField_a_of_type_Uke != null) {
-                  str1 = paramstSimpleMetaFeed.exposure_url.get();
-                }
-              }
-            }
-          }
+          uuq.a(this.jdField_a_of_type_Uuq, true);
+          uuq.a(this.jdField_a_of_type_Uuq).a(this.jdField_a_of_type_JavaLangRunnable);
+          uuq.a(this.jdField_a_of_type_Uuq).setSeekBarActivated(true);
+          uuq.a(this.jdField_a_of_type_Uuq).setThumb(uuq.b(this.jdField_a_of_type_Uuq).getDrawable(2130841792));
+          uuq.a(this.jdField_a_of_type_Uuq).requestDisallowInterceptTouchEvent(true);
         }
+        f3 = ((Rect)localObject).top;
+        f4 = ((Rect)localObject).height() / 2.0F;
+        f2 = paramMotionEvent.getX() - ((Rect)localObject).left;
+        if (f2 >= 0.0F) {}
       }
     }
-    return str1;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    try
+    for (;;)
     {
-      StringBuffer localStringBuffer = new StringBuffer();
-      if (!TextUtils.isEmpty(paramString1)) {
-        localStringBuffer.append(paramString1);
-      }
-      if (!TextUtils.isEmpty(paramString2))
+      localObject = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f3 + f4, paramMotionEvent.getMetaState());
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
-        localStringBuffer.append("&video=");
-        localStringBuffer.append(URLEncoder.encode(paramString2));
+        uuq.a(this.jdField_a_of_type_Uuq).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
+        uuq.a(this.jdField_a_of_type_Uuq, false);
+        uuq.a(this.jdField_a_of_type_Uuq).requestDisallowInterceptTouchEvent(false);
       }
-      paramString1 = localStringBuffer.toString();
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      upe.a(jdField_a_of_type_JavaLangString, " @getGdtInfo getHttpVideoPlayUrl" + paramString1.toString());
-    }
-    return "";
-  }
-  
-  public static String a(usl paramusl)
-  {
-    if (paramusl == null) {
-      return "";
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("bt", paramusl.jdField_a_of_type_Long);
-      localJSONObject.put("et", paramusl.jdField_b_of_type_Long + "");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramusl.jdField_a_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
+      uuq.a(this.jdField_a_of_type_Uuq).a((MotionEvent)localObject);
+      return true;
+      if (f2 > ((Rect)localObject).width())
       {
-        localJSONObject.put("ef", i + "");
-        localJSONObject.put("pp", "11");
-        if (paramusl.jdField_b_of_type_Int != 0) {
-          localJSONObject.put("ps", paramusl.jdField_b_of_type_Int + "");
-        }
-        paramusl = localJSONObject.toString();
-        return paramusl;
+        f1 = ((Rect)localObject).width();
+        continue;
+        return false;
       }
-      return null;
+      else
+      {
+        f1 = f2;
+      }
     }
-    catch (Exception paramusl)
-    {
-      upe.a(jdField_a_of_type_JavaLangString, " @getGdtInfo createGDTVideoAttachment" + paramusl.toString());
-    }
-  }
-  
-  public static void a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    usm localusm = new usm();
-    localusm.a(paramLong1).a(paramBoolean).b(paramLong2).b(paramInt2).a(paramInt1);
-    a(localusm.a(), paramString);
-  }
-  
-  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, ukb paramukb)
-  {
-    if ((paramstSimpleMetaFeed == null) || (paramukb == null)) {}
-    do
-    {
-      return;
-      paramstSimpleMetaFeed = a(paramstSimpleMetaFeed, paramukb);
-    } while ((paramukb.jdField_a_of_type_Uke == null) || (TextUtils.isEmpty(paramstSimpleMetaFeed)));
-    long l = paramukb.jdField_a_of_type_Uke.a();
-    if (l == paramukb.jdField_a_of_type_Ukf.c) {}
-    for (jdField_a_of_type_Boolean = true;; jdField_a_of_type_Boolean = false)
-    {
-      a(paramukb.jdField_a_of_type_Long, l, jdField_a_of_type_Boolean, 11, 0, paramstSimpleMetaFeed);
-      return;
-    }
-  }
-  
-  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, ukb paramukb, int paramInt)
-  {
-    if ((paramstSimpleMetaFeed == null) || (paramukb == null)) {}
-    do
-    {
-      return;
-      paramstSimpleMetaFeed = a(paramstSimpleMetaFeed, paramukb);
-    } while (TextUtils.isEmpty(paramstSimpleMetaFeed));
-    a(paramukb.jdField_a_of_type_Long, paramInt, true, 11, 0, paramstSimpleMetaFeed);
-  }
-  
-  private static void a(String paramString)
-  {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").postDelayed(new GdtAdWsVideoReport.1(paramString), 0L);
-  }
-  
-  private static void a(usl paramusl, String paramString)
-  {
-    if ((paramusl == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    paramusl = a(paramusl);
-    paramString = a(paramString, paramusl);
-    upe.a(jdField_a_of_type_JavaLangString, 2, "reportHttpVideoUrl = " + paramusl);
-    a(paramString);
   }
 }
 

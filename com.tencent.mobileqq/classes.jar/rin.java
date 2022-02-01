@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "<anonymous parameter 0>", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "position", "", "<anonymous parameter 3>", "", "onItemClick"}, k=3, mv={1, 1, 16})
 public final class rin
-  implements Parcelable.Creator<UrlJumpInfo>
+  implements AdapterView.OnItemClickListener
 {
-  public UrlJumpInfo a(Parcel paramParcel)
-  {
-    return new UrlJumpInfo(paramParcel);
-  }
+  public rin(BaseSelectView paramBaseSelectView) {}
   
-  public UrlJumpInfo[] a(int paramInt)
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new UrlJumpInfo[paramInt];
+    Object localObject = this.a.a();
+    if (localObject != null) {
+      localObject = (Unit)((Function1)localObject).invoke(this.a.a().a().get(paramInt));
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

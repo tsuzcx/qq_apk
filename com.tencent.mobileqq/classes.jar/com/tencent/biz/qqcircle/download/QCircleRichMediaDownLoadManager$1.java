@@ -1,36 +1,36 @@
 package com.tencent.biz.qqcircle.download;
 
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
-import vit;
-import viw;
-import vix;
+import vkx;
+import vla;
+import vlb;
 
 public class QCircleRichMediaDownLoadManager$1
   implements Runnable
 {
-  public QCircleRichMediaDownLoadManager$1(vit paramvit, viw paramviw) {}
+  public QCircleRichMediaDownLoadManager$1(vkx paramvkx, vla paramvla) {}
   
   public void run()
   {
-    bgmg.c(vit.a() + ".nomedia");
-    if (bgmg.a(this.a.b()))
+    bhmi.c(vkx.a() + ".nomedia");
+    if (bhmi.a(this.a.b()))
     {
-      if (viw.a(this.a) != null) {
-        viw.a(this.a).a(true);
+      if (vla.a(this.a) != null) {
+        vla.a(this.a).a(true);
       }
-      QLog.d(vit.b(), 1, this.a.a() + ",download file is existed ");
+      QLog.d(vkx.b(), 1, this.a.a() + ",download file is existed ");
     }
     do
     {
       return;
-      if (!bgmg.a(this.a.c())) {
+      if (!bhmi.a(this.a.c())) {
         break;
       }
-    } while (vit.a(this.this$0, this.a));
-    vit.a(this.this$0, this.a);
+    } while (vkx.a(this.this$0, this.a));
+    vkx.a(this.this$0, this.a);
     return;
-    vit.a(this.this$0, this.a);
+    vkx.a(this.this$0, this.a);
   }
 }
 

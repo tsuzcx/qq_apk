@@ -1,13 +1,13 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnzb;
-import boik;
+import bpam;
+import bpkf;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
 
 public class AETextStickerAdapter$4
   implements Runnable
 {
-  public AETextStickerAdapter$4(boik paramboik, boolean paramBoolean, AEEditorPagStickerConfig paramAEEditorPagStickerConfig, AEEditorTextBean paramAEEditorTextBean) {}
+  public AETextStickerAdapter$4(bpkf parambpkf, boolean paramBoolean, AEEditorPagStickerConfig paramAEEditorPagStickerConfig, AEEditorTextBean paramAEEditorTextBean) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AETextStickerAdapter$4
       }
       return;
     }
-    bnzb.d("AETextStickerAdapter", "[onGetPagStickerConfig] succeeded failed");
+    bpam.d("AETextStickerAdapter", "[onGetPagStickerConfig] succeeded failed");
   }
 }
 

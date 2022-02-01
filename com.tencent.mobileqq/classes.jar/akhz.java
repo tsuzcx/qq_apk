@@ -1,19 +1,36 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class akhz
-  implements atve
+  extends ayxl
 {
-  akhz(akhu paramakhu) {}
+  akhz(akha paramakha) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.b();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
+      }
+    }
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      return;
+    case 1: 
+      this.a.g();
+      return;
+    case 4: 
+      this.a.g();
+      return;
+    }
+    this.a.g();
+    this.a.e();
+    this.a.f();
   }
 }
 

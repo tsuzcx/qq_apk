@@ -1,28 +1,23 @@
-class xkp
-  implements ydn
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+
+public class xkp
+  extends yop
 {
-  xkp(xko paramxko) {}
+  public xkp(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, View paramView, Object paramObject, yqw paramyqw)
   {
-    if ((paramInt == 1) && (xko.a(this.a) != null) && (xko.a(this.a).a != null))
+    if ((paramObject instanceof QQUserUIItem))
     {
-      if (xko.a(this.a).a()) {
-        break label66;
-      }
-      if (xko.a(this.a).a(true)) {
-        xko.a(this.a).c();
+      paramView = (QQUserUIItem)paramObject;
+      wnu.a(this.a, 10, paramView.uid);
+      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
+        yup.a("home_page", "clk_head_list", yup.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", yup.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
       }
     }
-    label66:
-    do
-    {
-      return;
-      if (xko.a(this.a).a(false)) {
-        xko.b(this.a).c();
-      }
-    } while (!xko.a(this.a).a(true));
-    xko.a(this.a).c();
   }
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="115.0dip" android:layout_height="115.0dip"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.story.view.AnimationQIMCircleProgress android:layout_gravity="center" android:id="@id/kuj" android:visibility="visible" android:layout_width="86.0dip" android:layout_height="86.0dip" />
-    <ImageView android:layout_gravity="center" android:id="@id/mtg" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
-    <ImageView android:layout_gravity="center" android:id="@id/mt7" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
+    <dov.com.qq.im.story.view.AEAnimationQIMCircleProgress android:layout_gravity="center" android:id="@id/l7s" android:visibility="visible" android:layout_width="86.0dip" android:layout_height="86.0dip" android:scaleType="fitCenter" />
+    <ImageView android:layout_gravity="center" android:id="@id/mwb" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
+    <ImageView android:layout_gravity="center" android:id="@id/mw1" android:layout_width="@dimen/b69" android:layout_height="@dimen/b69" android:scaleType="fitXY" />
 </merge>

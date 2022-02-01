@@ -1,17 +1,15 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class mfh
-  extends lem
+  implements DialogInterface.OnDismissListener
 {
-  public mfh(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mfh(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lco> paramArrayList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
+    this.a.b("onDismiss");
   }
 }
 

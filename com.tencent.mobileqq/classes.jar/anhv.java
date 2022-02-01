@@ -1,180 +1,60 @@
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
-import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
-import com.tencent.mobileqq.startup.step.SetSplash;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 
 public class anhv
-  extends annh
 {
-  private String a;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
   
-  private void a(float paramFloat)
+  private anhv(Activity paramActivity)
   {
-    float f;
-    if (MagnifierSDK.a().a().d > 0.0F)
+    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new anhw(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
+  }
+  
+  private int a()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    int j;
+    int k;
+    if (i != this.jdField_a_of_type_Int)
     {
-      f = MagnifierSDK.a().a().d;
-      if (MagnifierSDK.a().a().jdField_b_of_type_Long <= 0L) {
-        break label94;
+      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      k = j - i;
+      if (k <= j / 4) {
+        break label58;
       }
     }
-    label94:
-    for (long l = MagnifierSDK.a().a().jdField_b_of_type_Long;; l = 50L)
+    label58:
+    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
     {
-      if ((MagnifierSDK.a().a().jdField_b_of_type_Boolean) && (paramFloat >= f) && (this.c >= l)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
-      }
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      this.jdField_a_of_type_Int = i;
       return;
-      f = 0.95F;
-      break;
     }
   }
   
-  private void a(acvd paramacvd)
+  public static void a(Activity paramActivity)
   {
-    if (!paramacvd.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName)) {}
-    do
-    {
-      return;
-      paramacvd = paramacvd.b();
-    } while ((!PatchSharedPreUtil.getPatchVerifyStatus(BaseApplicationImpl.sApplication, paramacvd)) || (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null) || (acut.jdField_a_of_type_Int != 0) || (acut.jdField_a_of_type_JavaLangString.equals(paramacvd)));
-    QLog.d("PatchLogTag", 1, "GuardManager exit Main Process to install patch, target patchName=" + paramacvd + ", installed patchName=" + acut.jdField_a_of_type_JavaLangString + ", installStatus=" + acut.jdField_a_of_type_Int);
-    System.exit(-1);
-  }
-  
-  private void b(acvd paramacvd)
-  {
-    String str1 = BaseApplicationImpl.sApplication.getPackageName() + ":MSF";
-    if (!paramacvd.a(BaseApplicationImpl.sApplication, str1)) {}
-    String str2;
-    do
-    {
-      do
-      {
-        return;
-        paramacvd = paramacvd.b();
-      } while ((!PatchSharedPreUtil.getPatchVerifyStatus(BaseApplicationImpl.sApplication, paramacvd)) || (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null));
-      str2 = PatchSharedPreUtil.getInstalledPatchName(BaseApplicationImpl.sApplication, str1);
-    } while ((!TextUtils.isEmpty(str2)) && (str2.equals(paramacvd)));
-    PatchSharedPreUtil.saveInstalledPatchName(BaseApplicationImpl.sApplication, str1, paramacvd);
-    QLog.d("PatchLogTag", 1, "GuardManager exit MSF Process to install patch, target patchName=" + paramacvd + ", installed patchName=" + acut.jdField_a_of_type_JavaLangString + ", installStatus=" + acut.jdField_a_of_type_Int);
-    MsfServiceSdk.get().onKillProcess();
-  }
-  
-  private void c()
-  {
-    acvd localacvd = acve.a(BaseApplicationImpl.sApplication, "dex");
-    if (localacvd != null)
-    {
-      b(localacvd);
-      a(localacvd);
-    }
-  }
-  
-  private void d()
-  {
-    if ((this.d == GuardManager.e) || (this.d == GuardManager.e + 1))
-    {
-      if (!"com.tencent.mobileqq:qzone".equals(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, "com.tencent.mobileqq:qzone");
-      }
-      GuardManager.b(false);
-    }
-  }
-  
-  private void e()
-  {
-    if (((this.d == GuardManager.d) || (this.d == GuardManager.d + 1)) && (!"com.tencent.mobileqq:tool".equals(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, "com.tencent.mobileqq:tool");
-    }
-  }
-  
-  private void f()
-  {
-    if ((this.d == 1L) && (SetSplash.a()) && (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("setsplash", 2, "needshowsplashtoday , kill myself");
-      }
-      bcst.a(null, "CliOper", "", "", "0X800483B", "0X800483B", 0, 0, "", "", "", "");
-      System.exit(-1);
-    }
-  }
-  
-  protected void a()
-  {
-    this.c += 1L;
-    this.d += 1L;
-    f();
-    a(MemoryManager.a().a());
-    int i = annf.a().a(MemoryManager.a(Process.myPid()));
-    int j = annf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b);
-    long l = annf.a().b[(i + j)] / 12000;
-    if (this.c >= l) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
-    }
-    while ((this.d == 50L) || (this.d == 51L))
-    {
-      GuardManager.b(true);
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[0]);
-      c();
-      return;
-      if (this.d == 1L)
-      {
-        MemoryManager.a().a(1L);
-        MemoryManager.a().a("BG_GUARD");
-      }
-      else if ((this.d == 3L) || (this.d == 4L))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[] { "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", "com.tencent.mobileqq:tool", this.jdField_a_of_type_JavaLangString });
-      }
-    }
-    d();
-    e();
-  }
-  
-  protected void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-    if ("com.tencent.mobileqq".equals(paramString)) {
-      appb.a();
-    }
-  }
-  
-  protected void b()
-  {
-    if (this.c > 2L) {
-      this.c -= 2L;
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if ("fake_p_msg".equals(paramString)) {
-      this.c = (annf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b, MemoryManager.a(Process.myPid())) / 12000L - 2L);
-    }
-    CoreService.startCoreService(annf.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
-    apvq.a();
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(1, 0L, 0L);
-    if ("com.tencent.mobileqq".equals(paramString)) {
-      appb.b();
-    }
+    new anhv(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhv
  * JD-Core Version:    0.7.0.1
  */

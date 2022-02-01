@@ -1,61 +1,291 @@
 import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class vut
-  extends bkif
+  extends RecyclerView.OnScrollListener
 {
-  public static vus a(Context paramContext, View paramView)
+  public static float a;
+  public static int a;
+  public static String a;
+  public static float b;
+  public static int b;
+  public static int c = 1;
+  private long jdField_a_of_type_Long;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private List<vui> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private vbl jdField_a_of_type_Vbl;
+  private boolean jdField_a_of_type_Boolean;
+  private int d;
+  private int e;
+  
+  static
   {
-    paramContext = vus.a(paramContext);
-    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
-    return paramContext;
+    jdField_a_of_type_JavaLangString = "QCircleFeedScrollHelper";
+    jdField_a_of_type_Float = 200.0F;
+    jdField_b_of_type_Float = 3.0F;
+    jdField_a_of_type_Int = -1;
   }
   
-  public static vus a(Context paramContext, List<bkhn> paramList, bkhw parambkhw)
+  public vut(Context paramContext, RecyclerView paramRecyclerView, vbl paramvbl)
   {
-    return a(paramContext, null, paramList, parambkhw);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_Vbl = paramvbl;
   }
   
-  public static vus a(Context paramContext, vus paramvus, List<bkhn> paramList, bkhw parambkhw)
+  private void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
-      return null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a(paramRecyclerView, paramInt1, paramInt2, paramBoolean);
     }
-    int i;
-    if (paramvus == null)
-    {
-      paramvus = a(paramContext, null);
-      i = 0;
-      label32:
-      if (i >= paramList.size()) {
-        break label113;
-      }
-      paramContext = (bkhn)paramList.get(i);
-      if (paramContext.d == 0)
-      {
-        if (paramContext.a != 1) {
-          break label96;
-        }
-        paramvus.a(paramContext, 1);
-      }
+  }
+  
+  private void a(RecyclerView paramRecyclerView, int paramInt1, RecyclerView.LayoutManager paramLayoutManager, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a(paramRecyclerView, paramInt1, paramLayoutManager, paramInt2, paramInt3, paramInt4, paramInt5, this.jdField_a_of_type_Boolean);
     }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    int[] arrayOfInt = a();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a(arrayOfInt[0], arrayOfInt[1], arrayOfInt[2], arrayOfInt[3], paramBoolean);
+    }
+  }
+  
+  private int[] a()
+  {
+    int[] arrayOfInt1 = new int[4];
     for (;;)
     {
-      i += 1;
-      break label32;
-      paramvus.c();
-      paramvus.a();
-      break;
-      label96:
-      if (paramContext.a == 2) {
-        paramvus.a(paramContext, 3);
+      try
+      {
+        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) {
+          break;
+        }
+        Object localObject1;
+        if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager() instanceof aacf))
+        {
+          Object localObject2 = (aacf)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+          localObject1 = ((aacf)localObject2).findFirstVisibleItemPositions(null);
+          int[] arrayOfInt2 = ((aacf)localObject2).findLastVisibleItemPositions(null);
+          int[] arrayOfInt3 = ((aacf)localObject2).findFirstCompletelyVisibleItemPositions(null);
+          localObject2 = ((aacf)localObject2).findLastCompletelyVisibleItemPositions(null);
+          arrayOfInt1[0] = localObject1[0];
+          arrayOfInt1[1] = arrayOfInt2[0];
+          arrayOfInt1[2] = arrayOfInt3[0];
+          arrayOfInt1[3] = localObject2[0];
+          QLog.d(jdField_a_of_type_JavaLangString, 4, "computePosition result: " + arrayOfInt1[0] + " " + arrayOfInt1[1] + "  " + arrayOfInt1[2] + "  " + arrayOfInt1[3]);
+          return arrayOfInt1;
+        }
+        if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager() instanceof aacd))
+        {
+          localObject1 = (aacd)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+          arrayOfInt1[0] = ((aacd)localObject1).findFirstVisibleItemPosition();
+          arrayOfInt1[1] = ((aacd)localObject1).findLastVisibleItemPosition();
+          arrayOfInt1[2] = ((aacd)localObject1).findFirstCompletelyVisibleItemPosition();
+          arrayOfInt1[3] = ((aacd)localObject1).findLastCompletelyVisibleItemPosition();
+          continue;
+        }
+        if (!(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager() instanceof aace)) {
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return arrayOfInt1;
+      }
+      aace localaace = (aace)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+      arrayOfInt1[0] = localaace.findFirstVisibleItemPosition();
+      arrayOfInt1[1] = localaace.findLastVisibleItemPosition();
+      arrayOfInt1[2] = localaace.findFirstCompletelyVisibleItemPosition();
+      arrayOfInt1[3] = localaace.findLastCompletelyVisibleItemPosition();
+    }
+    return arrayOfInt1;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a(paramInt);
+    }
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a(paramViewHolder);
+    }
+  }
+  
+  public void a(RecyclerView paramRecyclerView)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a(paramRecyclerView);
+    }
+  }
+  
+  public void a(ExtraTypeInfo paramExtraTypeInfo)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).a(paramExtraTypeInfo);
+    }
+  }
+  
+  public void a(vui paramvui)
+  {
+    if (paramvui != null)
+    {
+      paramvui.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_Vbl, this);
+      this.jdField_a_of_type_JavaUtilList.add(paramvui);
+    }
+  }
+  
+  public void b()
+  {
+    this.d = jdField_a_of_type_Int;
+    this.e = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public void b(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).b(paramInt);
+    }
+  }
+  
+  public void b(RecyclerView.ViewHolder paramViewHolder)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).b(paramViewHolder);
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).b();
+    }
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).c();
+    }
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).e();
+    }
+  }
+  
+  public void f()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vui)localIterator.next()).d();
+    }
+  }
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    RecyclerView.LayoutManager localLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+    int[] arrayOfInt = a();
+    a(paramRecyclerView, paramInt, localLayoutManager, arrayOfInt[0], arrayOfInt[1], arrayOfInt[2], arrayOfInt[3]);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    boolean bool2 = true;
+    if (paramInt2 >= 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      if ((this.d != jdField_b_of_type_Int) && (this.d != jdField_a_of_type_Int))
+      {
+        b();
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "change orient to up:" + this.d);
+      }
+      if (this.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      }
+      this.e += paramInt2;
+      this.d = jdField_b_of_type_Int;
+      float f = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if (f > jdField_a_of_type_Float)
+      {
+        b();
+        if (Math.abs(this.e / f) < jdField_b_of_type_Float)
+        {
+          if (paramInt2 < 0) {
+            break label265;
+          }
+          bool1 = true;
+          label147:
+          a(bool1);
+        }
+      }
+      if (paramInt2 < 0) {
+        break label271;
       }
     }
-    label113:
-    paramvus.a(parambkhw);
-    return paramvus;
+    label265:
+    label271:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      a(paramRecyclerView, paramInt1, paramInt2, bool1);
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      if ((this.d != c) && (this.d != jdField_a_of_type_Int))
+      {
+        b();
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "change orient to down:" + this.d);
+      }
+      if (this.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      }
+      this.e += paramInt2;
+      this.d = c;
+      break;
+      bool1 = false;
+      break label147;
+    }
   }
 }
 

@@ -1,25 +1,21 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import android.app.Activity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tgb
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private tgb(GestureCropImageView paramGestureCropImageView) {}
+  public Activity a;
+  public JSONObject a;
+  public tfy b;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  tgb(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    if (GestureCropImageView.a(this.a)) {
-      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
-    }
-    return super.onDoubleTap(paramMotionEvent);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramtfy2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.a.a(-paramFloat1, -paramFloat2);
-    return true;
-  }
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt) {}
 }
 
 

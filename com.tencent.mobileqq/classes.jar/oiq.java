@@ -1,17 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class oiq
-  implements View.OnClickListener
+class oiq
+  extends Handler
 {
-  public oiq(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  private WeakReference<oio> a;
   
-  public void onClick(View paramView)
+  public oiq(oio paramoio)
   {
-    ReadInJoyChannelActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramoio);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    oio localoio = (oio)this.a.get();
+    if ((localoio == null) || (!localoio.b())) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localoio.b();
   }
 }
 

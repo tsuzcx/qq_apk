@@ -1,47 +1,24 @@
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class advf
-  implements Comparator<Object>
+public class advf
+  extends aqpd
 {
-  advf(adve paramadve) {}
+  public advf(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramObject1 instanceof FileManagerEntity)) {
-      if ((paramObject2 instanceof FileManagerEntity)) {
-        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
-      }
-    }
-    do
+    if (paramBoolean1)
     {
-      do
+      if ((this.a.f != null) && (paramBoolean2 != this.a.f.a()))
       {
-        do
-        {
-          return -1;
-          return 1;
-          if (!(paramObject2 instanceof TencentDocData)) {
-            break;
-          }
-        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
-        return 1;
-        if (!(paramObject1 instanceof TencentDocData)) {
-          break label124;
-        }
-        if (!(paramObject2 instanceof FileManagerEntity)) {
-          break;
-        }
-      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
-      return 1;
-      if (!(paramObject2 instanceof TencentDocData)) {
-        break;
+        this.a.f.setOnCheckedChangeListener(null);
+        this.a.f.setChecked(paramBoolean2);
+        this.a.f.setOnCheckedChangeListener(this.a);
       }
-    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
-    return 1;
-    label124:
-    return 0;
+      return;
+    }
+    AssistantSettingActivity.a(this.a, 2131690565, 1);
   }
 }
 

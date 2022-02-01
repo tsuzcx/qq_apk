@@ -1,18 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bovj
-  extends GestureDetector.SimpleOnGestureListener
+class bovj
+  implements FilenameFilter
 {
-  public bovj(CropVideoActivity paramCropVideoActivity) {}
+  bovj(bovi parambovi) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public boolean accept(File paramFile, String paramString)
   {
-    paramMotionEvent.getX();
-    paramMotionEvent.getY();
-    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
-    return true;
+    return paramString.startsWith("frame");
   }
 }
 

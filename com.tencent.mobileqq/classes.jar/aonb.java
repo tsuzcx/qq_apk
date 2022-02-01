@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.qphone.base.util.QLog;
 
 public class aonb
-  extends aonc
+  extends anwt
 {
-  public aonb(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  private aonb(UpdateDiscuss paramUpdateDiscuss) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(6);
+      return;
+    }
+    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(3));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonb
  * JD-Core Version:    0.7.0.1
  */

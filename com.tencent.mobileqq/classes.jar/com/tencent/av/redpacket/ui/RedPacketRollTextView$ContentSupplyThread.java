@@ -2,8 +2,8 @@ package com.tencent.av.redpacket.ui;
 
 import android.os.Bundle;
 import android.os.Message;
-import lva;
-import lvb;
+import lvw;
+import lvx;
 
 class RedPacketRollTextView$ContentSupplyThread
   implements Runnable

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richstatus;
 
-import anmw;
-import bazp;
+import anyw;
+import bbsi;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,11 +9,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class AioFriendTitleHelper$4
   implements Runnable
 {
-  public AioFriendTitleHelper$4(bazp parambazp) {}
+  public AioFriendTitleHelper$4(bbsi parambbsi) {}
   
   public void run()
   {
-    ((anmw)bazp.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(bazp.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((anyw)bbsi.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(bbsi.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

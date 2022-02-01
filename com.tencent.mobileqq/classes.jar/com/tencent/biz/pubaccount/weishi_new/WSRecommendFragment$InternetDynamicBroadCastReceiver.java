@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.weishi_new;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import udo;
+import udq;
 
 public class WSRecommendFragment$InternetDynamicBroadCastReceiver
   extends BroadcastReceiver

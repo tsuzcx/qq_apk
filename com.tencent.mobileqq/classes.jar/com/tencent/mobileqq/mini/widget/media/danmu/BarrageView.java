@@ -11,7 +11,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgtn;
+import bhtq;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -75,7 +75,7 @@ public class BarrageView
   
   private Animation createBarrageAnim(int paramInt, Animation.AnimationListener paramAnimationListener)
   {
-    Animation localAnimation = AnimationHelper.createTranslateAnim(getContext(), paramInt, -bgtn.a());
+    Animation localAnimation = AnimationHelper.createTranslateAnim(getContext(), paramInt, -bhtq.a());
     localAnimation.setAnimationListener(paramAnimationListener);
     localAnimation.setDuration(3000L);
     return localAnimation;

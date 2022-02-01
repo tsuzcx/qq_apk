@@ -1,24 +1,69 @@
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.avgame.gameresult.GameResultFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import trpc.qq_vgame.game_list.AvGameList.QuestionClassInfoItem;
 
 public class mzl
-  extends ClickableSpan
 {
-  public mzl(GameResultFragment paramGameResultFragment) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public mzl a()
   {
-    GameResultFragment.a(this.a);
+    mzl localmzl = new mzl();
+    localmzl.a(this);
+    return localmzl;
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public void a(mzl parammzl)
   {
-    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
-    paramTextPaint.setUnderlineText(false);
+    if (parammzl == null) {
+      return;
+    }
+    this.a = parammzl.a;
+    this.b = parammzl.b;
+    this.c = parammzl.c;
+  }
+  
+  public final void a(AvGameList.QuestionClassInfoItem paramQuestionClassInfoItem)
+  {
+    if (paramQuestionClassInfoItem == null) {
+      return;
+    }
+    String str;
+    if (paramQuestionClassInfoItem.question_class.has())
+    {
+      str = paramQuestionClassInfoItem.question_class.get();
+      this.a = str;
+      if (!paramQuestionClassInfoItem.question_class_name_url.has()) {
+        break label81;
+      }
+      str = paramQuestionClassInfoItem.question_class_name_url.get();
+      label46:
+      this.b = str;
+      if (!paramQuestionClassInfoItem.question_class_bg_url.has()) {
+        break label87;
+      }
+    }
+    label81:
+    label87:
+    for (paramQuestionClassInfoItem = paramQuestionClassInfoItem.question_class_bg_url.get();; paramQuestionClassInfoItem = "")
+    {
+      this.c = paramQuestionClassInfoItem;
+      return;
+      str = "";
+      break;
+      str = "";
+      break label46;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("name").append("=").append(this.a).append("|");
+    localStringBuilder.append("nameImageUrl").append("=").append(this.b).append("|");
+    localStringBuilder.append("backgroundImageUrl").append("=").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

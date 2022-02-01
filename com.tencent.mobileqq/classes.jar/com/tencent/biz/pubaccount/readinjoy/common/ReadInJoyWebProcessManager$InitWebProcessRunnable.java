@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.os.Build.VERSION;
-import bctj;
-import bgln;
+import bdmc;
+import bhlo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import pha;
+import ozs;
 
 class ReadInJoyWebProcessManager$InitWebProcessRunnable
   implements Runnable
@@ -25,15 +25,15 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(bgln.d()));
-      localHashMap.put("param_availableMem", String.valueOf(bgln.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(bgln.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(bgln.a()));
+      localHashMap.put("param_totalMem", String.valueOf(bhlo.d()));
+      localHashMap.put("param_availableMem", String.valueOf(bhlo.e()));
+      localHashMap.put("param_cpuNum", String.valueOf(bhlo.b()));
+      localHashMap.put("param_cpuFreq", String.valueOf(bhlo.a()));
       localHashMap.put("param_preloadLevel", String.valueOf(paramInt));
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ReadInJoyWebProcessManager", 2, "preloadToolProcessReport:" + localHashMap.toString());
       }
-      bctj.a(this.a.getApp()).a(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+      bdmc.a(this.a.getApp()).a(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Exception localException)
@@ -52,8 +52,8 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
       WebProcessManager localWebProcessManager = (WebProcessManager)this.a.getManager(13);
       if (localWebProcessManager != null)
       {
-        int i = pha.f();
-        if (pha.h()) {
+        int i = ozs.f();
+        if (ozs.h()) {
           a(i);
         }
         if (i == 1) {

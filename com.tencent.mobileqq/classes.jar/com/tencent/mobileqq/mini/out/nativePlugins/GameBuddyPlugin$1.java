@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
-import ausx;
+import avkx;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
@@ -39,7 +39,7 @@ class GameBuddyPlugin$1
           i = 1;
           localJSONObject.put("type", i);
           if ("invokeGameBuddyAio".equals(this.val$apiName)) {
-            ausx.a(this.val$jsContext.getActivity(), this.val$uin, j);
+            avkx.a(this.val$jsContext.getActivity(), this.val$uin, j);
           }
           this.val$jsContext.evaluateCallback(true, localJSONObject, "");
           return;

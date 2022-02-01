@@ -11,18 +11,17 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.Drawable;
 import android.service.wallpaper.WallpaperService;
 import android.service.wallpaper.WallpaperService.Engine;
-import bhdv;
-import bhdw;
-import bhdx;
+import bief;
+import bieg;
+import bieh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class VipWallpaperService
   extends WallpaperService
 {
-  private bhdw a = new bhdw(null);
+  private bieg a = new bieg(null);
   
   static SharedPreferences a(Context paramContext)
   {
@@ -41,32 +40,32 @@ public final class VipWallpaperService
     return null;
   }
   
-  public static bhdx a(Context paramContext, boolean paramBoolean)
+  public static bieh a(Context paramContext, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (bhdw.a(paramContext))) {
+    if ((!paramBoolean) || (bieg.a(paramContext))) {
       return a(a(paramContext));
     }
-    return new bhdx();
+    return new bieh();
   }
   
-  public static bhdx a(SharedPreferences paramSharedPreferences)
+  public static bieh a(SharedPreferences paramSharedPreferences)
   {
-    return new bhdx(paramSharedPreferences.getString("wallpaper_item_id", ""), paramSharedPreferences.getString("wallpaper_path_img", ""), paramSharedPreferences.getString("wallpaper_path_video", ""));
+    return new bieh(paramSharedPreferences.getString("wallpaper_item_id", ""), paramSharedPreferences.getString("wallpaper_path_img", ""), paramSharedPreferences.getString("wallpaper_path_video", ""));
   }
   
   @SuppressLint({"ApplySharedPref"})
-  public static void a(Activity paramActivity, bhdx parambhdx, AtomicBoolean paramAtomicBoolean)
+  public static void a(Activity paramActivity, bieh parambieh, AtomicBoolean paramAtomicBoolean)
   {
-    QLog.i("VipWallpaper", 1, "set wallpaper = " + parambhdx.toString());
-    a(paramActivity).edit().putString("wallpaper_item_id", parambhdx.a).putString("wallpaper_path_img", parambhdx.b).putString("wallpaper_path_video", parambhdx.c).commit();
-    if ((parambhdx.a != null) && (!parambhdx.a.equals("0"))) {
+    QLog.i("VipWallpaper", 1, "set wallpaper = " + parambieh.toString());
+    a(paramActivity).edit().putString("wallpaper_item_id", parambieh.a).putString("wallpaper_path_img", parambieh.b).putString("wallpaper_path_video", parambieh.c).commit();
+    if ((parambieh.a != null) && (!parambieh.a.equals("0"))) {
       a(paramActivity, paramAtomicBoolean);
     }
   }
   
   private static void a(Activity paramActivity, AtomicBoolean paramAtomicBoolean)
   {
-    if (!bhdw.a(paramActivity))
+    if (!bieg.a(paramActivity))
     {
       localIntent = new Intent("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
       localIntent.putExtra("android.service.wallpaper.extra.LIVE_WALLPAPER_COMPONENT", new ComponentName(paramActivity, VipWallpaperService.class));
@@ -84,31 +83,20 @@ public final class VipWallpaperService
     paramAtomicBoolean.set(false);
   }
   
-  private static File b(Context paramContext)
-  {
-    paramContext = new File(paramContext.getFilesDir(), "vas/wallpaper");
-    if (!paramContext.exists()) {
-      paramContext.mkdirs();
-    }
-    return paramContext;
-  }
-  
   public void onCreate()
   {
     super.onCreate();
-    this.a.a(getBaseContext());
     QLog.i("VipWallpaper", 1, "onCreate");
   }
   
   public WallpaperService.Engine onCreateEngine()
   {
-    return new bhdv(this, null);
+    return new bief(this, null);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.a.a();
     QLog.i("VipWallpaper", 1, "onDestroy");
   }
 }

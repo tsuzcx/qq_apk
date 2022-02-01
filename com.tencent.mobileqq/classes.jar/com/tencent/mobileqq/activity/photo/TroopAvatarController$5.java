@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akgn;
-import akgq;
-import bfqt;
+import akry;
+import aksb;
+import bgqu;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class TroopAvatarController$5
   implements Runnable
 {
-  public TroopAvatarController$5(akgn paramakgn, String paramString) {}
+  public TroopAvatarController$5(akry paramakry, String paramString) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bfqt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-    akgn.b(this.this$0, null);
+    this.this$0.jdField_a_of_type_Bgqu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+    akry.b(this.this$0, null);
     this.this$0.b();
-    akgq.a(this.a);
+    aksb.a(this.a);
   }
 }
 

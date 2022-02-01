@@ -1,26 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class afhy
-  extends Handler
+  implements bbsr
 {
-  public afhy(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afhy(QQSettingMe paramQQSettingMe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.z();
     }
-    this.a.jdField_a_of_type_Amfu.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Amfu.notifyDataSetChanged();
-    this.a.b();
   }
 }
 

@@ -1,9 +1,21 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
-public abstract interface amgc
+public class amgc
+  implements Comparator<CommonlyUsedTroop>
 {
-  public abstract void a(Canvas paramCanvas, Paint paramPaint);
+  protected amgc(amfz paramamfz) {}
+  
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  {
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
+    }
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

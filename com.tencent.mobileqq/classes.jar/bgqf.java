@@ -1,100 +1,140 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1;
+import com.tencent.qphone.base.util.QLog;
+import java.text.MessageFormat;
 
-class bgqf
-  implements arxd
+public class bgqf
+  extends ClickableSpan
+  implements bliz
 {
-  bgqf(bgpw parambgpw) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final bgqe jdField_a_of_type_Bgqe;
+  private blir jdField_a_of_type_Blir;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(arxg paramarxg)
+  public bgqf(QQAppInterface paramQQAppInterface, Context paramContext, bgqe parambgqe)
   {
-    int i;
-    int j;
-    if ((paramarxg instanceof asdb))
-    {
-      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    ascv localascv;
-    int k;
-    int m;
-    do
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, bdol.b(((asdb)paramarxg).a));
-      do
-      {
-        return;
-      } while (!(paramarxg instanceof ascv));
-      localascv = (ascv)paramarxg;
-      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      k = localascv.a;
-      m = localascv.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramarxg = bdol.b(m);; paramarxg = bdol.a(m))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramarxg);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      if (this.a.jdField_a_of_type_Boolean) {
-        localascv.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      }
-      arvk.a().a(k).a(m, 5);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bgqe = parambgqe;
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Show", 0, 0);
   }
   
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
-  
-  public boolean a(arxg paramarxg)
+  private void a()
   {
-    return true;
+    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
+      this.jdField_a_of_type_Blir.dismiss();
+    }
+    this.jdField_a_of_type_Blir = ((blir)blji.a(this.jdField_a_of_type_AndroidContentContext, null));
+    Object localObject2 = this.jdField_a_of_type_Bgqe.b();
+    Object localObject1 = localObject2;
+    if (((String)localObject2).length() > 10) {
+      localObject1 = ((String)localObject2).substring(0, 5) + "…" + ((String)localObject2).substring(((String)localObject2).length() - 5, ((String)localObject2).length());
+    }
+    localObject1 = MessageFormat.format(bgqd.a()[this.jdField_a_of_type_Bgqe.jdField_b_of_type_Int], new Object[] { localObject1 });
+    localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558440, null);
+    ((View)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837572));
+    ((View)localObject2).setOnClickListener(new bgqg(this));
+    TextView localTextView = (TextView)((View)localObject2).findViewById(2131361984);
+    localTextView.setVisibility(0);
+    localTextView.setText((CharSequence)localObject1);
+    localTextView.setContentDescription((CharSequence)localObject1);
+    localTextView.setGravity(17);
+    localTextView.setPadding(zps.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, zps.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0);
+    this.jdField_a_of_type_Blir.b((View)localObject2);
+    this.jdField_a_of_type_Blir.c(bgqd.b()[this.jdField_a_of_type_Bgqe.jdField_b_of_type_Int]);
+    this.jdField_a_of_type_Blir.d(anzj.a(2131712448));
+    this.jdField_a_of_type_Blir.a(this);
+    this.jdField_a_of_type_Blir.show();
   }
   
-  public void b()
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart() == 0) {}
+    ThreadManager.excute(new SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1(this, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2), 32, null, true);
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    Object localObject;
+    bgtj localbgtj;
+    if (paramInt == 0)
+    {
+      localObject = null;
+      localbgtj = bgtj.a();
+      if (this.jdField_a_of_type_Bgqe.jdField_b_of_type_Int != 1) {
+        break label201;
+      }
+      paramView = localbgtj.a("troop_homework_create_notice");
+    }
     for (;;)
     {
-      return;
-      try
+      if (!TextUtils.isEmpty(paramView))
       {
-        Editable localEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-        int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
+        localObject = new bgtk();
+        ((bgtk)localObject).a = this.jdField_a_of_type_Bgqe.a;
+        ((bgtk)localObject).c = "aio_keyword";
+        ((bgtk)localObject).h = this.jdField_a_of_type_Bgqe.jdField_b_of_type_JavaLangString;
+        ((bgtk)localObject).i = this.jdField_a_of_type_Bgqe.b();
+        paramView = localbgtj.a(paramView, (bgtk)localObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.i(bgqd.a, 2, "do action '" + this.jdField_a_of_type_Bgqe.jdField_b_of_type_Int + "', open url: " + paramView);
         }
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
       }
-      catch (Exception localException)
+      a("Grp_edu", "", "Grp_AIO", "GuideActionsheet_Clk", 0, 0);
+      if (this.jdField_a_of_type_Blir != null) {
+        this.jdField_a_of_type_Blir.dismiss();
+      }
+      return;
+      label201:
+      if (this.jdField_a_of_type_Bgqe.jdField_b_of_type_Int == 2)
       {
-        localException.printStackTrace();
+        paramView = localbgtj.a("troop_create_homework");
+      }
+      else
+      {
+        paramView = (View)localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(bgqd.a, 2, "I don't know this action '" + this.jdField_a_of_type_Bgqe.jdField_b_of_type_Int + "'");
+          paramView = (View)localObject;
+        }
       }
     }
   }
   
-  public void b(arxg paramarxg) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public void onClick(View paramView)
+  {
+    if (bhkx.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(bgqd.a, 2, "SchoolTroopHighlightSpan onCLick is invoked by LongClick misstake");
+      }
+      return;
+    }
+    if ((paramView instanceof ETTextView)) {
+      ((ETTextView)paramView).mHasClickedArkSpan = true;
+    }
+    a();
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Clk", 0, 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,19 @@
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class aayg
+class aayg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static final aayi jdField_a_of_type_Aayi = new aayi(null);
-  private CopyOnWriteArrayList<aaxy> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  aayg(aaye paramaaye, Container paramContainer) {}
   
-  public static aayg a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return (aayg)jdField_a_of_type_Aayi.getInstance();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((aaxy)localIterator.next()).b();
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((aaxy)localIterator.next()).a(paramLong);
-      }
-    }
-  }
-  
-  public void a(aaxy paramaaxy)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaaxy);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((aaxy)localIterator.next()).a();
-      }
-    }
-  }
-  
-  public void b(aaxy paramaaxy)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramaaxy);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
+    localLayoutParams.topMargin = paramValueAnimator.intValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
   }
 }
 

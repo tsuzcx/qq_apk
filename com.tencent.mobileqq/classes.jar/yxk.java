@@ -1,224 +1,136 @@
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
 import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class yxk
-  extends yxs
-  implements Drawable.Callback
+  extends yxr
+  implements View.OnClickListener
 {
-  public static final String a;
-  public int a;
-  public yxl a;
-  public zca a;
-  public zcb a;
-  public boolean a;
+  protected ViewStub a;
+  protected TextView a;
+  protected String a;
+  protected zgm a;
   
-  static
+  public yxk(@NonNull yxt paramyxt)
   {
-    jdField_a_of_type_JavaLangString = yxk.class.getSimpleName();
+    super(paramyxt);
   }
   
-  public yxk(DoodleView paramDoodleView)
+  private void f()
   {
-    super(paramDoodleView);
-    this.jdField_a_of_type_Zca = new zca();
-    this.jdField_a_of_type_Zca.a(false);
-    this.jdField_a_of_type_Zca.a(6.0F);
-    this.jdField_a_of_type_Zca.b(0.2F);
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_Zca.b(this.jdField_a_of_type_Zcb, f1, f2)) {
-      if (this.jdField_a_of_type_Yxl != null) {
-        this.jdField_a_of_type_Yxl.a(this.jdField_a_of_type_Zcb);
-      }
+    i();
+    if (this.jdField_a_of_type_Zgm.a() != 0)
+    {
+      this.jdField_a_of_type_Zgm.a(0);
+      this.jdField_a_of_type_Zgm.a.requestFocus();
+      blgx.a(this.jdField_a_of_type_Zgm.a);
     }
-    while ((this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, f1, f2)) || (!this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, f1, f2, true)) || (this.jdField_a_of_type_Yxl == null) || (this.jdField_a_of_type_Zcb == null)) {
-      return;
-    }
-    yqp.b(jdField_a_of_type_JavaLangString, "click the item:" + this.jdField_a_of_type_Zcb);
-    this.jdField_a_of_type_Yxl.a(this.jdField_a_of_type_Zcb, 0, 0);
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
+  private void g()
   {
-    return this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, paramFloat1, paramFloat2, true);
+    if ((this.jdField_a_of_type_Zgm != null) && (this.jdField_a_of_type_Zgm.a() == 0))
+    {
+      this.jdField_a_of_type_Zgm.a(4);
+      blgx.b(this.jdField_a_of_type_Zgm.a);
+      this.jdField_a_of_type_Zgm.a.clearFocus();
+    }
   }
   
+  private void i()
+  {
+    if (this.jdField_a_of_type_Zgm == null)
+    {
+      this.jdField_a_of_type_Zgm = new zgm(this.jdField_a_of_type_AndroidViewViewStub.inflate());
+      this.jdField_a_of_type_Zgm.a(new yxm(this));
+      this.jdField_a_of_type_Zgm.b(new yxn(this));
+    }
+  }
+  
+  @Nullable
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public zcb a()
-  {
-    return this.jdField_a_of_type_Zcb;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Zcb = null;
-    this.jdField_a_of_type_Zca.a();
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131362180));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new yxl(this));
   }
   
-  protected void a(Canvas paramCanvas)
+  public void a(int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_Zcb == null) {
+    switch (paramInt)
+    {
+    default: 
+      g();
+      return;
+    case 0: 
+      g();
       return;
     }
-    paramCanvas.save();
-    this.jdField_a_of_type_Zcb.a(paramCanvas);
-    paramCanvas.restore();
+    f();
   }
   
-  public void a(yxl paramyxl)
+  public void a(int paramInt, @NonNull zih paramzih)
   {
-    this.jdField_a_of_type_Yxl = paramyxl;
-  }
-  
-  public void a(zcb paramzcb)
-  {
-    this.jdField_a_of_type_Zcb = paramzcb;
-    if (this.jdField_a_of_type_Zcb == null) {}
-    do
+    super.a(paramInt, paramzih);
+    paramzih.a.videoLabel = a();
+    yxt localyxt;
+    String str;
+    if (!TextUtils.isEmpty(a()))
     {
-      return;
-      if ((this.jdField_a_of_type_Zcb instanceof yxo))
+      paramInt = 1;
+      if (paramInt != 0)
       {
-        this.jdField_a_of_type_Zca.a(6.0F);
-        this.jdField_a_of_type_Zca.b(0.2F);
-        return;
+        localyxt = this.jdField_a_of_type_Yxt;
+        str = a();
+        if (!this.jdField_a_of_type_Yxt.a()) {
+          break label89;
+        }
       }
-    } while (!(this.jdField_a_of_type_Zcb instanceof yxc));
-    this.jdField_a_of_type_Zca.a(18.0F);
-    this.jdField_a_of_type_Zca.b(0.2F);
+    }
+    label89:
+    for (paramzih = "2";; paramzih = "1")
+    {
+      localyxt.a("pub_tag", 0, 0, new String[] { "1", str, paramzih });
+      return;
+      paramInt = 0;
+      break;
+    }
   }
   
   public boolean a()
   {
-    return false;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Zcb = null;
-    g();
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    throw new IllegalStateException("TextFaceEditLayer should not save");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Zcb != null;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, f1, f2, true))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Zgm != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "accept inside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "accept outside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
-    }
-    return false;
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean e(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Yxt != null) {
-      this.jdField_a_of_type_Yxt.a(this, paramMotionEvent);
-    }
-    int i = (int)paramMotionEvent.getY();
-    int j = Math.abs(i - this.jdField_a_of_type_Int);
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Zca.a(paramMotionEvent, true);
-      if (this.jdField_a_of_type_Zcb == null) {
-        break;
-      }
-      this.jdField_a_of_type_Yxl.a(this.jdField_a_of_type_Zcb.f, this.jdField_a_of_type_Zcb.k, (int)this.jdField_a_of_type_Zcb.l, (int)this.jdField_a_of_type_Zcb.m, this.jdField_a_of_type_Zcb.a, this.jdField_a_of_type_Zcb.e, 2);
-      return true;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Zcb != null)
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Zgm.a() == 0)
       {
-        this.jdField_a_of_type_Zcb.e = false;
-        this.jdField_a_of_type_Zcb.f = false;
-      }
-      a(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
-      if (this.jdField_a_of_type_Zcb != null)
-      {
-        this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb);
-        continue;
-        if (this.jdField_a_of_type_Zcb != null) {
-          this.jdField_a_of_type_Zcb.f = true;
-        }
-        if (j > 10)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          continue;
-          if (this.jdField_a_of_type_Zcb != null)
-          {
-            this.jdField_a_of_type_Zcb.e = false;
-            this.jdField_a_of_type_Zcb.f = false;
-          }
-          if (!this.jdField_a_of_type_Boolean) {
-            a(paramMotionEvent);
-          }
-          this.jdField_a_of_type_Zca.a();
-          continue;
-          if (this.jdField_a_of_type_Zcb != null)
-          {
-            this.jdField_a_of_type_Zcb.e = true;
-            continue;
-            if (this.jdField_a_of_type_Zcb != null) {
-              this.jdField_a_of_type_Zcb.e = false;
-            }
-          }
-        }
+        this.jdField_a_of_type_Yxt.a(0);
+        bool1 = true;
       }
     }
-    this.jdField_a_of_type_Yxl.a(false, 0.0F, 0, 0, null, false, 2);
-    return true;
+    return bool1;
   }
   
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  public void d() {}
+  
+  public void onClick(View paramView)
   {
-    g();
+    paramView.getId();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

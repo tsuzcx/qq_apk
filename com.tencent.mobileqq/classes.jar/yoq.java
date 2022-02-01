@@ -1,12 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface yoq
+public class yoq
 {
-  public abstract void a(String paramString1, String paramString2);
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    yuk.e(paramString, yos.a(paramVarArgs));
+  }
   
-  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, yos.a(paramVarArgs));
+    }
+  }
   
-  public abstract void b(String paramString1, String paramString2);
+  public static void c(String paramString, Object... paramVarArgs)
+  {
+    yuk.d(paramString, yos.a(paramVarArgs));
+  }
 }
 
 

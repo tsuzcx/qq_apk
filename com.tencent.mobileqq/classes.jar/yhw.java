@@ -1,25 +1,29 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import java.lang.ref.WeakReference;
 
 public class yhw
-  extends wez<yia>
+  implements ygf
 {
-  private Stream<ybk> a;
+  private int jdField_a_of_type_Int;
+  private WeakReference<yfg> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(yia paramyia)
+  public yhw(int paramInt)
   {
-    this.a = Stream.of(paramyia).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new yhy(null));
-    this.a.subscribe(new yhx(this));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void c()
+  public void a(String paramString, int paramInt)
   {
-    yqp.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
-    if (this.a != null)
-    {
-      this.a.cancel();
-      this.a = null;
+    yuk.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
     }
+    ((yfg)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void a(yfg paramyfg)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyfg);
   }
 }
 

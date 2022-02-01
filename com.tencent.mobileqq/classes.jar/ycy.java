@@ -1,49 +1,25 @@
 import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class ycy
-  implements bkhw
+class ycy
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final bkho jdField_a_of_type_Bkho;
-  private final CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  private WeakReference<ycx> jdField_a_of_type_JavaLangRefWeakReference;
+  ycy(ycx paramycx) {}
   
-  public ycy(bkho parambkho, CommentEntry paramCommentEntry, int paramInt, ycx paramycx)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bkho = parambkho;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramycx);
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    paramView = this.jdField_a_of_type_Bkho.a(paramInt);
-    yqp.a("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on action sheet item click. item is %s.", paramView);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)
-    {
-      yqp.e("Q.qqstory.detail.DetailGeneralCommentEventProxy", "callback is null when action sheet item click.");
-      return;
+    ycr localycr = new ycr();
+    if (this.a.a.a) {
+      this.a.a.a = false;
     }
-    ycx localycx = (ycx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (ycw.a.equals(paramView)) {
-      localycx.a(this.jdField_a_of_type_Int);
-    }
-    for (;;)
+    for (localycr.a = 0;; localycr.a = 1)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
+      wjj.a().dispatch(localycr);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (ycw.b.equals(paramView)) {
-        localycx.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
-      } else if (ycw.c.equals(paramView)) {
-        localycx.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (ycw.d.equals(paramView)) {
-        localycx.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (ycw.e.equals(paramView)) {
-        localycx.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
+      this.a.a.a = true;
     }
   }
 }

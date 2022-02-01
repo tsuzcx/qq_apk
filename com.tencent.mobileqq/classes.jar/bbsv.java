@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import PersonalState.UserProfile;
 import java.util.List;
 
-public class bbsv
-  extends bbti
+public abstract interface bbsv
 {
-  public bbsv(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
-  }
-  
-  public bbmx a(List<bbmy> paramList, String paramString)
-  {
-    return new bbkq(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<UserProfile> paramList, boolean paramBoolean3);
 }
 
 

@@ -1,26 +1,687 @@
+import android.app.Activity;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.BubblePopupWindow;
+import java.util.List;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.Ref.BooleanRef;
+import kotlin.jvm.internal.Ref.ObjectRef;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oxi
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/RIJCommentBubbleView;", "Landroid/view/View$OnClickListener;", "activity", "Landroid/app/Activity;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "(Landroid/app/Activity;Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;)V", "mActivity", "mAdapter", "mAnchor", "Landroid/view/View;", "mArticleInfo", "mBubbleFirstPageView", "mBubbleSecondPageView", "mCommentViewItem", "mDismisListener", "Lcom/tencent/widget/BubblePopupWindow$OnDismissListener;", "mFirstPagePop", "Lcom/tencent/widget/BubblePopupWindow;", "mLabel", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/ReadInJoyCommentPBModule$Label;", "mSecondPagePop", "misNeedBiu", "", "buildBubbleView", "", "isNeedBiu", "anchor", "dismissListener", "clickAuthorDelete", "", "clickBiu", "clickCopy", "v", "clickDislike", "clickNextPage", "clickPreviousPage", "clickReportOrDelete", "clickSinkButton", "clickStickyButton", "initFirstPageView", "initSecondPageView", "onClick", "reportMenuItemClick", "action", "showAuthorDeleteOption", "showSecondPage", "showSinkOption", "showStickyOption", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxi
+  implements View.OnClickListener
 {
-  oxi(pay parampay, pan parampan) {}
+  public static final oxj a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private blkc jdField_a_of_type_Blkc;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  private otd jdField_a_of_type_Otd;
+  private otp jdField_a_of_type_Otp;
+  private ovj jdField_a_of_type_Ovj;
+  private boolean jdField_a_of_type_Boolean;
+  private View jdField_b_of_type_AndroidViewView;
+  private BubblePopupWindow jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+  private View c;
   
-  public final void onClick(ViewBase paramViewBase)
+  static
   {
-    if (this.jdField_a_of_type_Pay.a != null)
+    jdField_a_of_type_Oxj = new oxj(null);
+  }
+  
+  public oxi(@NotNull Activity paramActivity, @NotNull otd paramotd, @NotNull otp paramotp, @NotNull ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_Otp = paramotp;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Otd = paramotd;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Ovj = new ovj();
+    paramActivity = LayoutInflater.from((Context)this.jdField_a_of_type_AndroidAppActivity).inflate(2131560092, null);
+    Intrinsics.checkExpressionValueIsNotNull(paramActivity, "LayoutInflater.from(mAct…omment_bubble_view, null)");
+    this.jdField_a_of_type_AndroidViewView = paramActivity;
+    paramActivity = LayoutInflater.from((Context)this.jdField_a_of_type_AndroidAppActivity).inflate(2131562790, null);
+    Intrinsics.checkExpressionValueIsNotNull(paramActivity, "LayoutInflater.from(mAct…ble_view_next_page, null)");
+    this.jdField_b_of_type_AndroidViewView = paramActivity;
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+  }
+  
+  private final int a()
+  {
+    blir localblir = blir.a((Context)this.jdField_a_of_type_AndroidAppActivity);
+    localblir.a(2131717471);
+    localblir.a(2131717474, 3);
+    localblir.c(2131690580);
+    localblir.a((bliz)new oxk(this, localblir));
+    localblir.show();
+    return 4;
+  }
+  
+  private final void a()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    ((BubblePopupWindow)localObject1).b();
+    localObject1 = this.jdField_b_of_type_AndroidViewView;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+    }
+    if (((View)localObject1).getParent() != null)
     {
-      paramViewBase = this.jdField_a_of_type_Pan.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      pha.a(paramViewBase.getContext(), this.jdField_a_of_type_Pay.a.activityJumpUrl);
-      if (this.jdField_a_of_type_Pan.a() != null) {
-        this.jdField_a_of_type_Pan.a().e(this.jdField_a_of_type_Pay);
+      localObject1 = this.jdField_b_of_type_AndroidViewView;
+      if (localObject1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
       }
+      localObject1 = ((View)localObject1).getParent();
+      if (localObject1 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+      }
+      localObject1 = (ViewGroup)localObject1;
+      localObject2 = this.jdField_b_of_type_AndroidViewView;
+      if (localObject2 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+      }
+      localObject2 = ((View)localObject2).getParent();
+      if (localObject2 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+      }
+      localObject2 = (ViewGroup)localObject2;
+      localObject2 = this.jdField_b_of_type_AndroidViewView;
+      if (localObject2 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+      }
+      ((ViewGroup)localObject1).removeView((View)localObject2);
+    }
+    localObject1 = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+    }
+    Object localObject2 = this.jdField_b_of_type_AndroidViewView;
+    if (localObject2 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+    }
+    ((BubblePopupWindow)localObject1).a((View)localObject2);
+    localObject1 = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+    }
+    ((BubblePopupWindow)localObject1).c(true);
+    localObject1 = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+    }
+    ((BubblePopupWindow)localObject1).a(true);
+    localObject1 = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+    }
+    localObject2 = this.jdField_a_of_type_Blkc;
+    if (localObject2 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mDismisListener");
+    }
+    ((BubblePopupWindow)localObject1).a((blkc)localObject2);
+    localObject1 = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+    }
+    localObject2 = this.c;
+    if (localObject2 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mAnchor");
+    }
+    ((BubblePopupWindow)localObject1).b((View)localObject2);
+  }
+  
+  private final void a(int paramInt)
+  {
+    if (paramInt < 0) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Otd instanceof orv)) {}
+    for (int i = 1;; i = 2)
+    {
+      osm localosm = this.jdField_a_of_type_Otd.a();
+      if (localosm == null) {
+        break;
+      }
+      localosm.a(i, paramInt, this.jdField_a_of_type_Otp);
+      return;
+    }
+  }
+  
+  private final void a(@NonNull View paramView)
+  {
+    paramView = paramView.getContext().getSystemService("clipboard");
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.content.ClipboardManager");
+    }
+    paramView = (ClipboardManager)paramView;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Otp.jdField_a_of_type_JavaLangCharSequence)) {
+      paramView.setText(this.jdField_a_of_type_Otp.jdField_a_of_type_JavaLangCharSequence);
+    }
+    paramView = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramView == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    paramView.b();
+  }
+  
+  private final boolean a()
+  {
+    return (d()) || (c()) || (b());
+  }
+  
+  private final int b()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    ((BubblePopupWindow)localObject).b();
+    localObject = this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mCommentViewItem.commentData");
+    if (((BaseCommentData)localObject).isMyself())
+    {
+      this.jdField_a_of_type_Otd.c(this.jdField_a_of_type_Otp);
+      return 4;
+    }
+    this.jdField_a_of_type_Otd.a((Context)this.jdField_a_of_type_AndroidAppActivity, (osv)new oxl(this));
+    return 3;
+  }
+  
+  private final void b()
+  {
+    Object localObject1 = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+    }
+    ((BubblePopupWindow)localObject1).b();
+    localObject1 = this.jdField_a_of_type_AndroidViewView;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+    }
+    if (((View)localObject1).getParent() != null)
+    {
+      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+      }
+      localObject1 = ((View)localObject1).getParent();
+      if (localObject1 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+      }
+      localObject1 = (ViewGroup)localObject1;
+      localObject2 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject2 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+      }
+      localObject2 = ((View)localObject2).getParent();
+      if (localObject2 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+      }
+      localObject2 = (ViewGroup)localObject2;
+      localObject2 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject2 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+      }
+      ((ViewGroup)localObject1).removeView((View)localObject2);
+    }
+    boolean bool = this.jdField_a_of_type_Boolean;
+    localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    Object localObject2 = this.c;
+    if (localObject2 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mAnchor");
+    }
+    blkc localblkc = this.jdField_a_of_type_Blkc;
+    if (localblkc == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mDismisListener");
+    }
+    b(bool, (ArticleInfo)localObject1, (View)localObject2, localblkc);
+  }
+  
+  private final void b(boolean paramBoolean, ArticleInfo paramArticleInfo, View paramView, blkc paramblkc)
+  {
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+    }
+    localObject = ((View)localObject).findViewById(2131379763);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mBubbleFirstPageView.findViewById(R.id.tv_copy)");
+    ((TextView)localObject).setOnClickListener((View.OnClickListener)this);
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+    }
+    localObject = ((View)localObject).findViewById(2131379709);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mBubbleFirstPageView.findViewById(R.id.tv_biu)");
+    localObject = (TextView)localObject;
+    if ((this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.mediaDataList != null) && (this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.mediaDataList.size() > 0))
+    {
+      if (((oto)this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.mediaDataList.get(0)).e > 0) {
+        ((TextView)localObject).setVisibility(8);
+      }
+    }
+    else
+    {
+      ((TextView)localObject).setOnClickListener((View.OnClickListener)this);
+      if (!paramBoolean) {
+        ((TextView)localObject).setVisibility(8);
+      }
+      paramArticleInfo = paramArticleInfo.mSocialFeedInfo;
+      if (paramArticleInfo != null)
+      {
+        paramArticleInfo = paramArticleInfo.a;
+        if ((paramArticleInfo != null) && (paramArticleInfo.jdField_a_of_type_Boolean == true)) {
+          ((TextView)localObject).setVisibility(8);
+        }
+      }
+      paramArticleInfo = this.jdField_a_of_type_AndroidViewView;
+      if (paramArticleInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+      }
+      paramArticleInfo = paramArticleInfo.findViewById(2131380051);
+      Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mBubbleFirstPageView.fin…R.id.tv_report_or_delete)");
+      localObject = (TextView)paramArticleInfo;
+      paramArticleInfo = this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+      Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mCommentViewItem.commentData");
+      if (!paramArticleInfo.isMyself()) {
+        break label462;
+      }
+      paramArticleInfo = (CharSequence)"删除";
+      label270:
+      ((TextView)localObject).setText(paramArticleInfo);
+      ((TextView)localObject).setOnClickListener((View.OnClickListener)this);
+      paramArticleInfo = this.jdField_a_of_type_AndroidViewView;
+      if (paramArticleInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+      }
+      paramArticleInfo = paramArticleInfo.findViewById(2131379791);
+      Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mBubbleFirstPageView.findViewById(R.id.tv_dislike)");
+      localObject = (TextView)paramArticleInfo;
+      paramArticleInfo = this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+      Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mCommentViewItem.commentData");
+      if (!paramArticleInfo.isDisliked()) {
+        break label472;
+      }
+    }
+    label462:
+    label472:
+    for (paramArticleInfo = (CharSequence)anzj.a(2131711815);; paramArticleInfo = (CharSequence)anzj.a(2131711937))
+    {
+      ((TextView)localObject).setText(paramArticleInfo);
+      ((TextView)localObject).setOnClickListener((View.OnClickListener)this);
+      if (a())
+      {
+        paramArticleInfo = this.jdField_a_of_type_AndroidViewView;
+        if (paramArticleInfo == null) {
+          Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+        }
+        paramArticleInfo = paramArticleInfo.findViewById(2131369358);
+        Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mBubbleFirstPageView.findViewById(R.id.iv_right)");
+        paramArticleInfo = (ImageView)paramArticleInfo;
+        paramArticleInfo.setVisibility(0);
+        paramArticleInfo.setOnClickListener((View.OnClickListener)this);
+      }
+      if (!(this.jdField_a_of_type_AndroidAppActivity instanceof FastWebActivity)) {
+        break label512;
+      }
+      paramArticleInfo = this.jdField_a_of_type_AndroidAppActivity;
+      if (paramArticleInfo != null) {
+        break label485;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity");
+      ((TextView)localObject).setVisibility(0);
+      break;
+      paramArticleInfo = (CharSequence)"举报";
+      break label270;
+    }
+    label485:
+    paramArticleInfo = (FastWebActivity)paramArticleInfo;
+    localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    paramArticleInfo.a((BubblePopupWindow)localObject);
+    label512:
+    paramArticleInfo = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+    }
+    paramArticleInfo.a((View)localObject);
+    paramArticleInfo = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    paramArticleInfo.c(true);
+    paramArticleInfo = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    paramArticleInfo.b(paramView);
+    paramArticleInfo = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    paramArticleInfo.a(true);
+    paramArticleInfo = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    paramArticleInfo.a(paramblkc);
+  }
+  
+  private final boolean b()
+  {
+    return (this.jdField_a_of_type_Otd.a()) && (this.jdField_a_of_type_Otd.b() == 3) && (this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.level == 1) && (this.jdField_a_of_type_Ovj.c);
+  }
+  
+  private final int c()
+  {
+    this.jdField_a_of_type_Otd.e(this.jdField_a_of_type_Otp);
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleFirstPageView");
+    }
+    localObject = ((View)localObject).findViewById(2131379791);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mBubbleFirstPageView.findViewById(R.id.tv_dislike)");
+    TextView localTextView = (TextView)localObject;
+    localObject = this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mCommentViewItem.commentData");
+    if (((BaseCommentData)localObject).isDisliked()) {}
+    for (localObject = (CharSequence)anzj.a(2131711606);; localObject = (CharSequence)anzj.a(2131711671))
+    {
+      localTextView.setText((CharSequence)localObject);
+      localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+      }
+      ((BubblePopupWindow)localObject).b();
+      return 5;
+    }
+  }
+  
+  private final void c()
+  {
+    Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
+    localObjectRef.element = this.jdField_a_of_type_Otd.a();
+    blir localblir = blir.a((Context)this.jdField_a_of_type_AndroidAppActivity);
+    localblir.a(2131717476);
+    localblir.a(2131717480, 3);
+    localblir.c(2131690580);
+    localblir.a((bliz)new oxm(this, localObjectRef, localblir));
+    localblir.show();
+  }
+  
+  private final void c(boolean paramBoolean, ArticleInfo paramArticleInfo, View paramView, blkc paramblkc)
+  {
+    paramArticleInfo = this.jdField_b_of_type_AndroidViewView;
+    if (paramArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+    }
+    paramArticleInfo = paramArticleInfo.findViewById(2131379690);
+    Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mBubbleSecondPageView.fi…Id(R.id.tv_author_delete)");
+    paramArticleInfo = (TextView)paramArticleInfo;
+    if (d())
+    {
+      paramView = this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+      Intrinsics.checkExpressionValueIsNotNull(paramView, "mCommentViewItem.commentData");
+      if (paramView.isMyself())
+      {
+        paramArticleInfo.setVisibility(8);
+        paramArticleInfo.setOnClickListener(null);
+        paramArticleInfo = this.jdField_b_of_type_AndroidViewView;
+        if (paramArticleInfo == null) {
+          Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+        }
+        paramArticleInfo = paramArticleInfo.findViewById(2131379713);
+        Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mBubbleSecondPageView.findViewById(R.id.tv_bottom)");
+        paramArticleInfo = (TextView)paramArticleInfo;
+        if (!c()) {
+          break label383;
+        }
+        paramArticleInfo.setText((CharSequence)"沉底");
+        paramArticleInfo.setVisibility(0);
+        paramArticleInfo.setOnClickListener((View.OnClickListener)this);
+        label138:
+        paramArticleInfo = this.jdField_b_of_type_AndroidViewView;
+        if (paramArticleInfo == null) {
+          Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+        }
+        paramArticleInfo = paramArticleInfo.findViewById(2131380152);
+        Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mBubbleSecondPageView.findViewById(R.id.tv_top)");
+        paramView = (TextView)paramArticleInfo;
+        if (!b()) {
+          break label407;
+        }
+        paramView.setVisibility(0);
+        if (!this.jdField_a_of_type_Otp.jdField_a_of_type_Boolean) {
+          break label397;
+        }
+        paramArticleInfo = (CharSequence)"取消置顶";
+        label201:
+        paramView.setText(paramArticleInfo);
+        paramView.setOnClickListener((View.OnClickListener)this);
+      }
+    }
+    for (;;)
+    {
+      paramArticleInfo = this.jdField_b_of_type_AndroidViewView;
+      if (paramArticleInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+      }
+      paramArticleInfo = paramArticleInfo.findViewById(2131369259);
+      Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mBubbleSecondPageView.findViewById(R.id.iv_left)");
+      paramArticleInfo = (ImageView)paramArticleInfo;
+      paramArticleInfo.setVisibility(0);
+      paramArticleInfo.setOnClickListener((View.OnClickListener)this);
+      paramArticleInfo = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+      if (paramArticleInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+      }
+      paramView = this.jdField_b_of_type_AndroidViewView;
+      if (paramView == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mBubbleSecondPageView");
+      }
+      paramArticleInfo.a(paramView);
+      paramArticleInfo = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+      if (paramArticleInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+      }
+      paramArticleInfo.c(true);
+      paramArticleInfo = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+      if (paramArticleInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+      }
+      paramArticleInfo.a(true);
+      paramArticleInfo = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+      if (paramArticleInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+      }
+      paramArticleInfo.a(paramblkc);
+      return;
+      paramArticleInfo.setVisibility(0);
+      paramArticleInfo.setOnClickListener((View.OnClickListener)this);
+      break;
+      paramArticleInfo.setVisibility(8);
+      paramArticleInfo.setOnClickListener(null);
+      break;
+      label383:
+      paramArticleInfo.setVisibility(8);
+      paramArticleInfo.setOnClickListener(null);
+      break label138;
+      label397:
+      paramArticleInfo = (CharSequence)"置顶";
+      break label201;
+      label407:
+      paramView.setVisibility(8);
+      paramView.setOnClickListener(null);
+    }
+  }
+  
+  private final boolean c()
+  {
+    return (this.jdField_a_of_type_Otd.a()) && (this.jdField_a_of_type_Otd.b() == 3) && (this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.level == 1) && (this.jdField_a_of_type_Ovj.b);
+  }
+  
+  private final int d()
+  {
+    this.jdField_a_of_type_Otd.d(this.jdField_a_of_type_Otp);
+    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (localBubblePopupWindow == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mFirstPagePop");
+    }
+    localBubblePopupWindow.b();
+    return 1;
+  }
+  
+  private final boolean d()
+  {
+    return (this.jdField_a_of_type_Otd.a()) && (this.jdField_a_of_type_Ovj.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply());
+  }
+  
+  private final int e()
+  {
+    Ref.BooleanRef localBooleanRef = new Ref.BooleanRef();
+    boolean bool;
+    if (!this.jdField_a_of_type_Otp.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      localBooleanRef.element = bool;
+      localObject1 = new Ref.ObjectRef();
+      ((Ref.ObjectRef)localObject1).element = this.jdField_a_of_type_Otd.a();
+      if (localBooleanRef.element) {
+        break label100;
+      }
+      localObject2 = (otv)((Ref.ObjectRef)localObject1).element;
+      localObject1 = this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+      if (localObject1 == null) {
+        break label95;
+      }
+    }
+    label95:
+    for (Object localObject1 = ((BaseCommentData)localObject1).commentId;; localObject1 = null)
+    {
+      ((otv)localObject2).a((String)localObject1, localBooleanRef.element);
+      return 7;
+      bool = false;
+      break;
+    }
+    label100:
+    Object localObject2 = blir.a((Context)this.jdField_a_of_type_AndroidAppActivity);
+    ((blir)localObject2).a(2131717481);
+    ((blir)localObject2).a(2131717485, 3);
+    ((blir)localObject2).c(2131690580);
+    ((blir)localObject2).a((bliz)new oxn(this, (Ref.ObjectRef)localObject1, localBooleanRef, (blir)localObject2));
+    ((blir)localObject2).show();
+    return -1;
+  }
+  
+  public final void a(boolean paramBoolean, @NotNull ArticleInfo paramArticleInfo, @NotNull View paramView, @NotNull blkc paramblkc)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArticleInfo, "articleInfo");
+    Intrinsics.checkParameterIsNotNull(paramView, "anchor");
+    Intrinsics.checkParameterIsNotNull(paramblkc, "dismissListener");
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramView;
+    this.jdField_a_of_type_Blkc = paramblkc;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    paramArticleInfo = this.jdField_a_of_type_Otd.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mAdapter.commentDataManager");
+    paramArticleInfo = paramArticleInfo.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramArticleInfo, "mAdapter.commentDataManager.commentBubbleLabel");
+    this.jdField_a_of_type_Ovj = paramArticleInfo;
+    LogUtil.QLog.d("RIJCommentBubbleView", 2, "buildBubbleView  | mLabel " + this.jdField_a_of_type_Ovj);
+    paramBoolean = this.jdField_a_of_type_Boolean;
+    paramArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    paramView = this.c;
+    if (paramView == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mAnchor");
+    }
+    paramblkc = this.jdField_a_of_type_Blkc;
+    if (paramblkc == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mDismisListener");
+    }
+    b(paramBoolean, paramArticleInfo, paramView, paramblkc);
+    if (a())
+    {
+      paramBoolean = this.jdField_a_of_type_Boolean;
+      paramArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      paramView = this.c;
+      if (paramView == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mAnchor");
+      }
+      paramblkc = this.jdField_a_of_type_Blkc;
+      if (paramblkc == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mDismisListener");
+      }
+      c(paramBoolean, paramArticleInfo, paramView, paramblkc);
+      LogUtil.QLog.d("RIJCommentBubbleView", 2, "showSecondPage");
+    }
+  }
+  
+  public void onClick(@NotNull View paramView)
+  {
+    Intrinsics.checkParameterIsNotNull(paramView, "v");
+    int i = -1;
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      a(i);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      a(paramView);
+      continue;
+      i = d();
+      continue;
+      i = c();
+      continue;
+      i = b();
+      continue;
+      b();
+      continue;
+      a();
+      continue;
+      i = a();
+      continue;
+      i = e();
+      BubblePopupWindow localBubblePopupWindow = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+      if (localBubblePopupWindow == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+      }
+      localBubblePopupWindow.b();
+      continue;
+      c();
+      localBubblePopupWindow = this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow;
+      if (localBubblePopupWindow == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mSecondPagePop");
+      }
+      localBubblePopupWindow.b();
     }
   }
 }

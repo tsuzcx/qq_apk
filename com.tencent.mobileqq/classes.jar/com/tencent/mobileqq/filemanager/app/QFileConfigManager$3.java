@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import atam;
+import atsh;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileConfigManager$3
   implements Runnable
 {
-  public QFileConfigManager$3(atam paramatam, Bundle paramBundle) {}
+  public QFileConfigManager$3(atsh paramatsh, Bundle paramBundle) {}
   
   public void run()
   {
@@ -17,22 +17,22 @@ public class QFileConfigManager$3
       return;
       QLog.i("QFileConfigManager", 1, "setFileIPv6Config[" + this.a.toString() + "]");
       if (this.a.containsKey("ipv6_all_switch")) {
-        atam.e(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
+        atsh.e(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
       }
       if (this.a.containsKey("ipv6_c2c_switch")) {
-        atam.f(this.this$0, this.a.getBoolean("ipv6_c2c_switch", false));
+        atsh.f(this.this$0, this.a.getBoolean("ipv6_c2c_switch", false));
       }
       if (this.a.containsKey("ipv6_group_switch")) {
-        atam.g(this.this$0, this.a.getBoolean("ipv6_group_switch", false));
+        atsh.g(this.this$0, this.a.getBoolean("ipv6_group_switch", false));
       }
       if (this.a.containsKey("ipv6_disc_switch")) {
-        atam.h(this.this$0, this.a.getBoolean("ipv6_disc_switch", false));
+        atsh.h(this.this$0, this.a.getBoolean("ipv6_disc_switch", false));
       }
       if (this.a.containsKey("ipv6_dataline_switch")) {
-        atam.i(this.this$0, this.a.getBoolean("ipv6_dataline_switch", false));
+        atsh.i(this.this$0, this.a.getBoolean("ipv6_dataline_switch", false));
       }
     } while (!this.a.containsKey("ipv6_strategy"));
-    atam.a(this.this$0, this.a.getInt("ipv6_strategy", 0));
+    atsh.a(this.this$0, this.a.getInt("ipv6_strategy", 0));
   }
 }
 

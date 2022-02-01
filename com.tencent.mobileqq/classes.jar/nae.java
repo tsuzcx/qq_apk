@@ -1,30 +1,156 @@
-import android.os.CountDownTimer;
-import android.widget.TextView;
-import com.tencent.avgame.gameroom.GameRoomFragment;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import tencent.im.oidb.submsgtype0x138.Submsgtype0x138.MsgBody;
+import trpc.qq_vgame.nofity.AvGameNotify.NotifyMsg;
 
 public class nae
-  extends CountDownTimer
+  extends mxl
 {
-  public nae(GameRoomFragment paramGameRoomFragment, long paramLong1, long paramLong2)
+  public nae(AppInterface paramAppInterface)
   {
-    super(paramLong1, paramLong2);
+    super(paramAppInterface);
   }
   
-  public void onFinish() {}
-  
-  public void onTick(long paramLong)
+  private AvGameNotify.NotifyMsg a(MsgType0x210 paramMsgType0x210)
   {
-    int i = (int)(paramLong / 1000L);
-    this.a.d.setText(i + "s");
-    if (QLog.isColorLevel()) {
-      QLog.d("GameRoomFragment", 2, "CountDownTimer remainSeconds = " + i);
+    localObject3 = null;
+    localObject2 = null;
+    Object localObject1 = new Submsgtype0x138.MsgBody();
+    try
+    {
+      ((Submsgtype0x138.MsgBody)localObject1).mergeFrom(paramMsgType0x210.vProtobuf);
+      if ((((Submsgtype0x138.MsgBody)localObject1).uint32_bussi_type.get() == 1) && (((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get() != null)) {
+        paramMsgType0x210 = new AvGameNotify.NotifyMsg();
+      }
     }
-    if ((i <= 10) && (i > 0)) {
-      this.a.a();
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+    {
+      paramMsgType0x210 = localObject2;
+      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "parseNotifyMsg ex=", localInvalidProtocolBufferMicroException1.getMessage(), localInvalidProtocolBufferMicroException1 });
+      return paramMsgType0x210;
     }
-    if (i == 0) {
-      GameRoomFragment.b(this.a);
+    catch (Exception localException1)
+    {
+      paramMsgType0x210 = localObject3;
+      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "parseNotifyMsg ex=", localException1.getMessage(), localException1 });
+      return paramMsgType0x210;
+    }
+    try
+    {
+      localObject1 = (AvGameNotify.NotifyMsg)paramMsgType0x210.mergeFrom(((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get().toByteArray());
+      return localObject1;
+    }
+    catch (Exception localException2)
+    {
+      break label146;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+    {
+      break label114;
+    }
+    QLog.d("avgame_logic.GameRoomPushHandler", 1, String.format("parseNotifyMsg err %d %s", new Object[] { Integer.valueOf(((Submsgtype0x138.MsgBody)localObject1).uint32_bussi_type.get()), ((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get() }));
+    return null;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramObject = (SvcReqPushMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "req", new SvcReqPushMsg());
+    if (paramObject == null)
+    {
+      paramToServiceMsg = null;
+      if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
+        break label63;
+      }
+    }
+    label63:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        break label69;
+      }
+      QLog.d("avgame_logic.GameRoomPushHandler", 1, "handleOnlinePush doesn't has msgInfos return");
+      return;
+      paramToServiceMsg = paramObject.vMsgInfos;
+      break;
+    }
+    label69:
+    Iterator localIterator = paramToServiceMsg.iterator();
+    label75:
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (MsgInfo)localIterator.next();
+      i = ((MsgInfo)localObject).shMsgType;
+      long l = paramObject.lUin;
+      if (paramFromServiceMsg.getUin() != null) {
+        break label231;
+      }
+      paramToServiceMsg = Long.valueOf(this.app.getAccount());
+      label128:
+      paramToServiceMsg.longValue();
+      if (528 == i)
+      {
+        paramToServiceMsg = adan.a(((MsgInfo)localObject).vMsg);
+        if ((paramToServiceMsg.vProtobuf != null) && (paramToServiceMsg.uSubMsgType == 312L))
+        {
+          localObject = a(paramToServiceMsg);
+          if (localObject == null) {
+            break label242;
+          }
+        }
+      }
+    }
+    label231:
+    label242:
+    for (paramToServiceMsg = myn.a(((AvGameNotify.NotifyMsg)localObject).type.get());; paramToServiceMsg = "null")
+    {
+      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "handleOnlinePush type=", paramToServiceMsg });
+      if (localObject == null) {
+        break label75;
+      }
+      myr.a((AVGameAppInterface)this.mApp, (AvGameNotify.NotifyMsg)localObject);
+      break label75;
+      break;
+      paramToServiceMsg = Long.valueOf(paramFromServiceMsg.getUin());
+      break label128;
+    }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OnlinePush.ReqPush");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("OnlinePush.ReqPush".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }

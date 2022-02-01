@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import pha;
+import ozs;
 
 class MainFragment$18
   implements Runnable
@@ -11,7 +11,7 @@ class MainFragment$18
   {
     try
     {
-      pha.d();
+      ozs.d();
       return;
     }
     catch (Exception localException)

@@ -1,15 +1,16 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class lyh
-  extends PhoneStateListener
+  implements DialogInterface.OnClickListener
 {
-  public lyh(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public lyh(AVSchema paramAVSchema, String paramString) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
+    mrw.d();
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

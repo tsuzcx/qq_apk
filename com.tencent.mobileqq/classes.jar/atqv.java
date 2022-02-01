@@ -1,41 +1,21 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class atqv
-  implements SeekBar.OnSeekBarChangeListener
+  extends atrt
 {
-  atqv(atqu paramatqu) {}
+  atqv(atqr paramatqr, atqw paramatqw) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
   {
-    if ((paramBoolean) && (this.a.a != null))
+    if (paramBoolean)
     {
-      this.a.a.a(paramInt);
-      this.a.b(paramInt);
+      this.jdField_a_of_type_Atqw.a(paramString2, paramString3);
+      return;
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    atqu.a(this.a, false);
-    if ((this.a.a != null) && (!this.a.a.b(atqu.a(this.a)))) {
-      this.a.a.d();
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    atqu.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    this.jdField_a_of_type_Atqw.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atqv
  * JD-Core Version:    0.7.0.1
  */

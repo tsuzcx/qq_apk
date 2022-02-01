@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ptq;
+import pmd;
 
 class ReadInJoyListViewGroup$21
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyListViewGroup$21
   public void run()
   {
     if ((this.this$0.a != null) && (!this.this$0.a.a())) {
-      ptq.a(this.this$0.a, true);
+      pmd.a(this.this$0.a, true);
     }
   }
 }

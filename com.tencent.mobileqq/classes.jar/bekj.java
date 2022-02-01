@@ -1,107 +1,82 @@
-import android.content.Context;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bekj
-  extends bkps
+public abstract class bekj
+  implements Cloneable
 {
-  protected LayoutInflater a;
-  protected boolean a;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  @Nullable
+  public String g;
+  public int h;
+  public String h = "";
+  public int i;
+  public int j;
+  public int k = 0;
   
-  public bekj(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, Context paramContext, boolean paramBoolean)
+  public bekj()
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_f_of_type_JavaLangString = "";
   }
   
-  public int getCount()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
+    return blqj.b;
   }
   
-  public Object getItem(int paramInt)
+  public String a()
   {
-    return null;
+    return "";
   }
   
-  public long getItemId(int paramInt)
+  public String a(QQAppInterface paramQQAppInterface)
   {
-    return 0L;
+    return "";
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    View localView;
-    Object localObject;
-    int i;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562250, null);
-      paramView = new bekk(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369718));
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377165));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369707));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369702));
-      localView.setTag(paramView);
-      localObject = (TroopBarPOI)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopBarPOI)localObject).c);
-      ImageView localImageView = paramView.jdField_b_of_type_AndroidWidgetImageView;
-      if (!((TroopBarPOI)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.c)) {
-        break label261;
-      }
-      i = 0;
-      label139:
-      localImageView.setVisibility(i);
-      if (TextUtils.isEmpty(((TroopBarPOI)localObject).d)) {
-        break label268;
-      }
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((TroopBarPOI)localObject).d);
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      label177:
-      if (paramInt != 0) {
-        break label280;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      label189:
-      if (!this.jdField_a_of_type_Boolean) {
-        break label291;
-      }
-      localView.setBackgroundResource(17170445);
-    }
-    for (;;)
-    {
-      localView.setContentDescription(((TroopBarPOI)localObject).c);
-      localView.setFocusable(true);
-      localView.setFocusableInTouchMode(true);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bekk)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label261:
-      i = 8;
-      break label139;
-      label268:
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label177;
-      label280:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break label189;
-      label291:
-      localView.setBackgroundResource(2130848349);
-    }
+    return bhlg.p(paramQQAppInterface, paramString);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    return bhlg.h(paramQQAppInterface, paramString1, paramString2);
+  }
+  
+  public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  {
+    return "";
+  }
+  
+  public boolean a()
+  {
+    return ((this.jdField_e_of_type_Int == 2) || (this.jdField_e_of_type_Int == 1)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString));
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b(QQAppInterface paramQQAppInterface)
+  {
+    return "";
+  }
+  
+  public int d()
+  {
+    return 2131698506;
   }
 }
 

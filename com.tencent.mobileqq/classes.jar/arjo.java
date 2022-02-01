@@ -1,35 +1,78 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class arjo
-  implements DialogInterface.OnClickListener
+public class arjo
+  extends arac<arjm>
 {
-  arjo(arjn paramarjn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public arjm a(int paramInt)
   {
-    EditText localEditText = (EditText)((bgpa)paramDialogInterface).findViewById(2131371546);
-    paramDialogInterface = (EditText)((bgpa)paramDialogInterface).findViewById(2131361952);
-    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
+    return new arjm();
+  }
+  
+  @Nullable
+  public arjm a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
     {
-      QQToast.a(this.a.a.getActivity(), 1, anni.a(2131701568), 0).a();
-      return;
+      arjm localarjm = arjm.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherEntryConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      }
+      return localarjm;
     }
-    arkl localarkl = new arkl();
-    localarkl.a = localEditText.getText().toString();
-    localarkl.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
-    localarkl.jdField_b_of_type_Boolean = true;
-    arki.a().a(localarkl);
-    this.a.a.a.notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public void a(arjm paramarjm)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "onUpdate " + paramarjm.toString());
+    }
+  }
+  
+  public Class<arjm> clazz()
+  {
+    return arjm.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 553;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjo
  * JD-Core Version:    0.7.0.1
  */

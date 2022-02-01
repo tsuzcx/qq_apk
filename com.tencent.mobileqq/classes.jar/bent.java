@@ -1,19 +1,11 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bent
-  implements View.OnClickListener
+public class bent
 {
-  bent(bens parambens) {}
-  
-  public void onClick(View paramView)
-  {
-    GroupManagerActivity.a((Activity)bens.a(this.a));
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

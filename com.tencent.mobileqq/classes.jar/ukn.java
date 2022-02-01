@@ -1,16 +1,64 @@
+import android.content.Intent;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
 public class ukn
+  extends MSFServlet
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  
-  public ukn(String paramString, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramIntent == null) {
+      Log.e("weishi", "***onReceive request is null");
+    }
+    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
+      return;
+    }
+    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null)
+    {
+      Log.e("weishi", "onSend request is null");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if ((paramIntent instanceof WeishiIntent))
+        {
+          uko localuko = ((WeishiIntent)paramIntent).a;
+          ukl localukl = localuko.a;
+          byte[] arrayOfByte2 = localukl.encode();
+          byte[] arrayOfByte1 = arrayOfByte2;
+          if (arrayOfByte2 == null)
+          {
+            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localuko.a.uniKey());
+            arrayOfByte1 = new byte[4];
+          }
+          paramPacket.setTimeout(30000L);
+          Log.e("timeout", "timeout:30000");
+          paramPacket.setSSOCommand("SQQzoneSvc." + localuko.a.c());
+          Log.i("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localuko.a.c());
+          localukl.d = arrayOfByte1.length;
+          paramPacket.putSendData(arrayOfByte1);
+          Log.i("weishi-Servlet", "onSend request cmd=" + localuko.a.uniKey() + " is correct");
+          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
+        return;
+      }
+      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
+    }
   }
 }
 

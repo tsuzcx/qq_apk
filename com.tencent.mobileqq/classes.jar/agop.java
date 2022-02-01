@@ -1,75 +1,32 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class agop
-  extends aupb
+public class agop
+  implements Animation.AnimationListener
 {
-  agop(agol paramagol) {}
+  public agop(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
     }
-    if ((this.a.jdField_a_of_type_Awuc != null) && (this.a.jdField_a_of_type_Awuc.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
-      }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
     }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Awuc != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + agol.a(this.a));
-      }
-    } while (agol.a(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      long l1 = 0L;
-      try
-      {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
-        }
-      }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
-    {
-      if (paramHashMap == null) {
-        break label272;
-      }
-      paramObject = agol.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      agol.a(this.a).removeMessages(0);
-      agol.a(this.a).sendMessage(paramObject);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Awuc.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
-    }
-    label272:
-    paramHashMap = agol.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693081);
-    agol.a(this.a).sendMessage(paramHashMap);
   }
 }
 

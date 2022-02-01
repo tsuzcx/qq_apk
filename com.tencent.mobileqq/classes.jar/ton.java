@@ -1,17 +1,91 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ton
-  extends tou
+  implements pye
 {
-  public ton(BridgeModule paramBridgeModule)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramBridgeModule);
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    BridgeModule.access$700(this.a, paramInt2, paramIntent);
+    return ptn.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    boolean bool = true;
+    paramContainer = paramContainer.getVirtualView();
+    ViewBase localViewBase = paramContainer.findViewBaseByName("id_large_video_icon");
+    if (localViewBase != null) {
+      localViewBase.setVisibility(0);
+    }
+    if (tqa.f(paramppu.a()))
+    {
+      paramppu = paramContainer.findViewBaseByName("id_video_bg");
+      if (paramppu != null) {
+        paramppu.setVisibility(8);
+      }
+      paramContainer = (NativeText)paramContainer.findViewBaseByName("id_video_paly_text");
+      if (paramContainer != null) {
+        paramContainer.setVisibility(8);
+      }
+      if (localViewBase != null) {
+        localViewBase.setVisibility(8);
+      }
+    }
+    label241:
+    do
+    {
+      do
+      {
+        return;
+      } while (!tqa.d(paramppu.a()));
+      if (Aladdin.getConfig(318).getIntegerFromString("small_game_large_card_new_style", 0) == 1) {}
+      for (;;)
+      {
+        QLog.d("AdQQMiniGameVideoProteusItem", 2, "small game card is new style:" + bool);
+        if ((!bool) || (paramppu.a() == null) || (paramppu.a().mSmallMiniGameInfo == null) || (TextUtils.isEmpty(paramppu.a().mSmallMiniGameInfo.d))) {
+          break label241;
+        }
+        if (localViewBase != null) {
+          localViewBase.setVisibility(8);
+        }
+        paramppu = paramContainer.findViewBaseByName("id_video_bg");
+        if (paramppu != null) {
+          paramppu.setVisibility(0);
+        }
+        paramContainer = (NativeText)paramContainer.findViewBaseByName("id_video_paly_text");
+        if (paramContainer == null) {
+          break;
+        }
+        paramContainer.setVisibility(0);
+        return;
+        bool = false;
+      }
+      paramppu = paramContainer.findViewBaseByName("id_video_bg");
+      if (paramppu != null) {
+        paramppu.setVisibility(8);
+      }
+      paramContainer = (NativeText)paramContainer.findViewBaseByName("id_video_paly_text");
+    } while (paramContainer == null);
+    paramContainer.setVisibility(8);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

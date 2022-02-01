@@ -1,14 +1,27 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class vwn
-  implements vuw
+  implements Animator.AnimatorListener
 {
-  public vwn(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
+  public vwn(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void a(String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
+    if (this.a.getContext() != null) {
+      uzg.a((Activity)this.a.getContext(), uzg.b(true));
+    }
+    if (QCircleSlidBottomView.a(this.a) != null) {
+      QCircleSlidBottomView.a(this.a).a();
+    }
   }
 }
 

@@ -1,91 +1,78 @@
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.content.ClipDescription;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
 
 public class ardq
-  implements Manager
+  extends arac<ardp>
 {
-  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public ardq(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public ardp a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return new ardp();
   }
   
-  private ClipboardManager a()
+  @Nullable
+  public ardp a(araj[] paramArrayOfaraj)
   {
-    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
-      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
-    }
-    return this.jdField_a_of_type_AndroidContentClipboardManager;
-  }
-  
-  private SharedPreferences a()
-  {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
-  }
-  
-  public String a()
-  {
-    if (Build.VERSION.SDK_INT >= 26)
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
     {
-      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
-      Object localObject = a().getPrimaryClipDescription();
-      if (localObject != null)
-      {
-        long l2 = ((ClipDescription)localObject).getTimestamp();
-        long l3 = System.currentTimeMillis();
-        if ((l2 != l1) && (l3 - l2 < 180000L))
-        {
-          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
-          if (a().hasPrimaryClip())
-          {
-            localObject = a().getPrimaryClip();
-            if ((localObject != null) && (((ClipData)localObject).getItemCount() > 0))
-            {
-              localObject = ((ClipData)localObject).getItemAt(0);
-              if (QLog.isColorLevel()) {
-                QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
-              }
-              if (localObject != null)
-              {
-                localObject = ((ClipData.Item)localObject).getText();
-                if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-                  return String.valueOf(localObject);
-                }
-              }
-            }
-          }
-        }
+      ardp localardp = ardp.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
       }
+      return localardp;
     }
-    return "";
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
-  public void onDestroy()
+  public void a(ardp paramardp)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramardp.toString());
+    }
+  }
+  
+  public Class<ardp> clazz()
+  {
+    return ardp.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 528;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardq
  * JD-Core Version:    0.7.0.1
  */

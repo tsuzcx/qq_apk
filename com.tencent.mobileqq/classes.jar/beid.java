@@ -1,35 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
-
-public class beid
-  implements bkil
+class beid
+  extends bdga
 {
-  public beid(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  beid(beic parambeic) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_Int = paramInt;
-      if (this.a.jdField_a_of_type_Akgq != null) {
-        this.a.jdField_a_of_type_Akgq.b(paramInt);
-      }
-      if (!this.a.c) {
-        bcst.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
-      }
-      while (TroopAvatarWallEditActivity.a(this.a) != null)
-      {
-        TroopAvatarWallEditActivity.a(this.a).a(paramInt);
-        return;
-        bcst.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
-      }
+    if (beic.a(this.a) != null) {
+      this.a.b(beic.a(this.a));
     }
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

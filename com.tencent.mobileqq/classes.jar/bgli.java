@@ -1,37 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bgli
-  extends MqqHandler
+class bgli
+  implements bglj
 {
-  private final WeakReference<Handler.Callback> a;
+  bgli(bglf parambglf, ArrayList paramArrayList) {}
   
-  public bgli(Handler.Callback paramCallback)
+  public void a(long paramLong, ImportantMsgItem paramImportantMsgItem)
   {
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public bgli(Looper paramLooper, Handler.Callback paramCallback)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
+    if (paramImportantMsgItem == null) {
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
+    paramImportantMsgItem.addMsgInfos(this.jdField_a_of_type_JavaUtilArrayList);
+    if ((bglf.a(this.jdField_a_of_type_Bglf).containsKey(Long.valueOf(paramLong))) && (paramImportantMsgItem.maxImportantMsgSeq >= ((Integer)bglf.a(this.jdField_a_of_type_Bglf).get(Long.valueOf(paramLong))).intValue()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImportantMsgManager", 2, "handlerPushImportantMsg updateMaxMsgSeq: maxImportantMsgSeq:" + paramImportantMsgItem.maxImportantMsgSeq + " registerProxy lastSeq:" + bglf.a(this.jdField_a_of_type_Bglf).get(Long.valueOf(paramLong)));
+      }
+      paramImportantMsgItem.updateMaxMsgSeq();
+    }
+    this.jdField_a_of_type_Bglf.a(paramImportantMsgItem.clone());
+    bglf.a(this.jdField_a_of_type_Bglf, paramLong);
   }
 }
 

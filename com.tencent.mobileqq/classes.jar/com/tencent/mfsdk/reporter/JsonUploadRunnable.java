@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.reporter;
 
-import addo;
+import admm;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
@@ -11,17 +11,17 @@ public class JsonUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private addo jdField_a_of_type_Addo;
+  private admm jdField_a_of_type_Admm;
   private URL jdField_a_of_type_JavaNetURL;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   private int b = -1;
   
-  public JsonUploadRunnable(URL paramURL, JSONObject paramJSONObject, addo paramaddo, int paramInt, MqqHandler paramMqqHandler)
+  public JsonUploadRunnable(URL paramURL, JSONObject paramJSONObject, admm paramadmm, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Addo = paramaddo;
+    this.jdField_a_of_type_Admm = paramadmm;
     this.b = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -233,12 +233,12 @@ public class JsonUploadRunnable
     //   326: aload_3
     //   327: astore 4
     //   329: aload_0
-    //   330: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   330: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   333: ifnull +483 -> 816
     //   336: aload_3
     //   337: astore 4
     //   339: aload_0
-    //   340: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   340: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   343: aload_0
     //   344: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
     //   347: invokeinterface 187 2 0
@@ -328,14 +328,14 @@ public class JsonUploadRunnable
     //   505: aload_3
     //   506: astore 4
     //   508: aload_0
-    //   509: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   509: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   512: ifnull -157 -> 355
     //   515: aload_2
     //   516: astore 5
     //   518: aload_3
     //   519: astore 4
     //   521: aload_0
-    //   522: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   522: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   525: aload_0
     //   526: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
     //   529: invokeinterface 187 2 0
@@ -360,10 +360,10 @@ public class JsonUploadRunnable
     //   566: invokevirtual 190	java/net/HttpURLConnection:disconnect	()V
     //   569: return
     //   570: aload_0
-    //   571: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   571: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   574: ifnull -92 -> 482
     //   577: aload_0
-    //   578: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   578: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Admm	Ladmm;
     //   581: aload_0
     //   582: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
     //   585: invokeinterface 187 2 0

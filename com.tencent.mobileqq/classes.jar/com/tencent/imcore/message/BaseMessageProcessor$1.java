@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import acvl;
-import acvn;
+import aczo;
+import aczq;
 import android.os.Bundle;
 import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -10,11 +10,11 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseMessageProcessor$1
   extends SendMessageHandler.SendMessageRunnable
 {
-  public BaseMessageProcessor$1(acvl paramacvl, acvn paramacvn, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2) {}
+  public BaseMessageProcessor$1(aczo paramaczo, aczq paramaczq, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Acvn.a();
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Aczq.a();
     if (localToServiceMsg == null) {
       return;
     }

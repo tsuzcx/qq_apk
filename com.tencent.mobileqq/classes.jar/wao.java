@@ -1,25 +1,22 @@
-import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFuelTopView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class wao
-  implements vvv
+  implements View.OnClickListener
 {
-  public wao(QCircleInsFeedItemView paramQCircleInsFeedItemView, Object paramObject) {}
+  public wao(QCircleFuelTopView paramQCircleFuelTopView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
-    {
-      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
-      zwp.a().a(new QCircleDoublePraiseAnimationEvent(str, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType, QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)));
-      QLog.d("QCircleDoubleClickLayout", 1, "dispatchEvent id:" + str + " pageType:" + this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType);
-      vrr.a().a(new vrt().a("content").b("like").a((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a()).a(QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)).c(((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).poster.id.get()));
+    if (QCircleFuelTopView.a(this.a) != null) {
+      vtr.a(89, 2, ((vfu)QCircleFuelTopView.a(this.a)).a(), this.a.e());
     }
+    if (QCircleFuelTopView.a(this.a) != null) {
+      uyx.a(this.a.getContext(), uyw.a(QCircleFuelTopView.a(this.a), "tagFuelRankUrl"), null, -1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

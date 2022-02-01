@@ -1,26 +1,21 @@
-import android.util.Property;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Color;
+import android.view.View;
 
-class bpum
-  extends Property<bpuh, Integer>
+final class bpum
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bpum(bpuh parambpuh, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  final int jdField_a_of_type_Int = Color.red(this.d);
+  final int b = Color.green(this.d);
+  final int c = Color.blue(this.d);
   
-  public Integer a(bpuh parambpuh)
-  {
-    if (parambpuh != null) {
-      return Integer.valueOf(bpuh.c(parambpuh));
-    }
-    return Integer.valueOf(0);
-  }
+  bpum(int paramInt, View paramView) {}
   
-  public void a(bpuh parambpuh, Integer paramInteger)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (parambpuh != null) {
-      bpuh.c(parambpuh, paramInteger.intValue());
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
   }
 }
 

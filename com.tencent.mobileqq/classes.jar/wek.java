@@ -1,12 +1,14 @@
+import com.tencent.qphone.base.util.QLog;
+
 class wek
-  implements zgc
+  extends vrh
 {
-  wek(wef paramwef) {}
+  wek(wej paramwej) {}
   
-  public void a()
+  public void a(int paramInt, vrd paramvrd)
   {
-    wef.c(this.a, false);
-    wef.a(this.a, -1L);
+    super.a(paramInt, paramvrd);
+    QLog.d("QCircleTimeLineFeedItemView1", 4, "state callback:" + paramInt);
   }
 }
 

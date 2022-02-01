@@ -38,7 +38,7 @@ class MainService$MyErrorHandler
   {
     AppRuntime localAppRuntime = MainService.access$000(this.this$0).waitAppRuntime(null);
     if ((localAppRuntime != null) && (QLog.isColorLevel())) {
-      QLog.d("mqq", 2, "kicked....kickPC...... in popupNotification isSameDevice = " + paramBoolean + "; runnbackGroud = " + localAppRuntime.isBackground_Stop + ";action = " + paramString1 + "; mApplicaiton.getProcessName() = " + MainService.access$000(this.this$0).getQQProcessName());
+      QLog.d("mqq", 2, "kicked....kickPC...... in popupNotification isSameDevice = " + paramBoolean + "; runnbackGroud = " + localAppRuntime.isBackgroundStop + ";action = " + paramString1 + "; mApplicaiton.getProcessName() = " + MainService.access$000(this.this$0).getQQProcessName());
     }
     localAppRuntime.runOnUiThread(new MainService.MyErrorHandler.3(this, paramString2, localAppRuntime, paramLogoutReason, paramString1, paramString3, paramString4, paramBoolean, paramString5));
   }

@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Map;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahjk
-  implements View.OnClickListener
+class ahjk
+  extends ahkx
 {
-  public ahjk(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
-  
-  public void onClick(View paramView)
+  ahjk(ahgk paramahgk)
   {
-    Map localMap = ((aidp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((aidp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(localMap);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahue(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

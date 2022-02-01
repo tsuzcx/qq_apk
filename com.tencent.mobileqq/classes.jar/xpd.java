@@ -1,9 +1,21 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.content.Intent;
+import android.os.Bundle;
 
 public abstract interface xpd
 {
-  public abstract void a(@NonNull View paramView, int paramInt);
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

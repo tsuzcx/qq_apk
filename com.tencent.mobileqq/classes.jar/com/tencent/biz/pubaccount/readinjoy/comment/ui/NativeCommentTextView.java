@@ -15,12 +15,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import oyk;
-import ozh;
-import pan;
-import pay;
-import pen;
-import peo;
+import oqy;
+import orv;
+import otd;
+import otp;
+import oxf;
+import oxg;
 
 public class NativeCommentTextView
   extends ReadInJoyYAFolderTextView
@@ -30,8 +30,8 @@ public class NativeCommentTextView
   private Context jdField_a_of_type_AndroidContentContext;
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
   private View jdField_a_of_type_AndroidViewView;
-  private pan jdField_a_of_type_Pan;
-  private pay jdField_a_of_type_Pay;
+  private otd jdField_a_of_type_Otd;
+  private otp jdField_a_of_type_Otp;
   
   public NativeCommentTextView(Context paramContext)
   {
@@ -54,25 +54,25 @@ public class NativeCommentTextView
   private void b()
   {
     QLog.d("NativeCommentTextView", 2, "showAnchorAniation");
-    if ((this.jdField_a_of_type_Pay == null) || (this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
+    if ((this.jdField_a_of_type_Otp == null) || (this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
     View localView;
     do
     {
       do
       {
         return;
-      } while (!this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor);
+      } while (!this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable == null) {
         this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-15550475);
       }
       localView = this.jdField_a_of_type_AndroidViewView;
     } while (localView == null);
     QLog.d("NativeCommentTextView", 2, "showAnchorAniation start");
-    this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor = false;
+    this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor = false;
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 26, 0, 26, 0 });
     localValueAnimator.setDuration(2400L);
     localValueAnimator.setStartDelay(600L);
-    localValueAnimator.addUpdateListener(new pen(this, localView));
+    localValueAnimator.addUpdateListener(new oxf(this, localView));
     localValueAnimator.start();
   }
   
@@ -104,19 +104,19 @@ public class NativeCommentTextView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Pan == null) {}
+    if (this.jdField_a_of_type_Otd == null) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       if (this.jdField_a_of_type_Int == -1)
       {
-        setBackgroundResource(2130849353);
-        this.jdField_a_of_type_Pan.a(this.jdField_a_of_type_Pay);
+        setBackgroundResource(2130849372);
+        this.jdField_a_of_type_Otd.a(this.jdField_a_of_type_Otp);
       }
       else
       {
-        ((ozh)this.jdField_a_of_type_Pan).a(this.jdField_a_of_type_Pay, oyk.a(this.jdField_a_of_type_Pay, this.jdField_a_of_type_Int), 2);
+        ((orv)this.jdField_a_of_type_Otd).a(this.jdField_a_of_type_Otp, oqy.a(this.jdField_a_of_type_Otp, this.jdField_a_of_type_Int), 2);
       }
     }
   }
@@ -133,52 +133,52 @@ public class NativeCommentTextView
   
   public boolean onLongClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Pan == null)) {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Otd == null)) {
       return false;
     }
     if (this.jdField_a_of_type_Int == -1)
     {
       setBackgroundColor(Color.parseColor("#EDEDED"));
-      this.jdField_a_of_type_Pan.a(this.jdField_a_of_type_Pan.a(), this, this.jdField_a_of_type_Pay, new peo(this));
+      this.jdField_a_of_type_Otd.a(this.jdField_a_of_type_Otd.a(), this, this.jdField_a_of_type_Otp, new oxg(this));
     }
     return true;
   }
   
-  public void setCommentModel(pay parampay)
+  public void setCommentModel(otp paramotp)
   {
-    this.jdField_a_of_type_Pay = parampay;
-    if ((this.jdField_a_of_type_Pay == null) || (this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {
+    this.jdField_a_of_type_Otp = paramotp;
+    if ((this.jdField_a_of_type_Otp == null) || (this.jdField_a_of_type_Otp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {
       return;
     }
     setShouldCallClick(true);
     setMaxLines(100);
-    setText(this.jdField_a_of_type_Pay.jdField_a_of_type_JavaLangCharSequence);
+    setText(this.jdField_a_of_type_Otp.jdField_a_of_type_JavaLangCharSequence);
     setSpanText("");
     setOnClickListener(this);
     setOnLongClickListener(this);
     b();
   }
   
-  public void setModel(pan parampan, View paramView)
+  public void setModel(otd paramotd, View paramView)
   {
-    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (parampan == null)) {
+    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (paramotd == null)) {
       return;
     }
-    this.jdField_a_of_type_Pan = parampan;
+    this.jdField_a_of_type_Otd = paramotd;
     this.jdField_a_of_type_AndroidViewView = paramView;
     b();
   }
   
-  public void setModel(pan parampan, View paramView, int paramInt)
+  public void setModel(otd paramotd, View paramView, int paramInt)
   {
-    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (parampan == null)) {
+    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (paramotd == null)) {
       return;
     }
     this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_Pay != null) && (this.jdField_a_of_type_Pay.c != null) && (this.jdField_a_of_type_Pay.c.size() > paramInt)) {
-      setText((CharSequence)this.jdField_a_of_type_Pay.c.get(paramInt));
+    if ((this.jdField_a_of_type_Otp != null) && (this.jdField_a_of_type_Otp.c != null) && (this.jdField_a_of_type_Otp.c.size() > paramInt)) {
+      setText((CharSequence)this.jdField_a_of_type_Otp.c.get(paramInt));
     }
-    this.jdField_a_of_type_Pan = parampan;
+    this.jdField_a_of_type_Otd = paramotd;
     this.jdField_a_of_type_AndroidViewView = paramView;
     b();
   }

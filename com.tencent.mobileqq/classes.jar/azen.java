@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupMenu;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azen
-  implements QQPermissionCallback
+class azen
+  implements View.OnClickListener
 {
-  public azen(PersonalityLabelShareActivity paramPersonalityLabelShareActivity) {}
+  azen(azej paramazej) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    PersonalityLabelShareActivity.a(this.a);
+    PopupMenu localPopupMenu = new PopupMenu(azej.a(this.a), paramView);
+    this.a.a(azej.a(this.a).b, localPopupMenu);
+    localPopupMenu.show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

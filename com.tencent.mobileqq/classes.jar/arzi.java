@@ -1,15 +1,17 @@
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
-public class arzi
-  extends arwg
+class arzi
+  implements DialogInterface.OnClickListener
 {
-  public Button a;
-  public LinearLayout a;
-  public TextView a;
-  public EmotionInvalidPanelLinearLayout a;
+  arzi(arzh paramarzh) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    arzx.a().b(this.a.jdField_a_of_type_Aryz);
+    this.a.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.a.notifyDataSetChanged();
+  }
 }
 
 

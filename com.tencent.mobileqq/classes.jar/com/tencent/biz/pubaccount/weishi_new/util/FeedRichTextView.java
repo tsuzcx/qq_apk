@@ -17,19 +17,19 @@ import android.widget.TextView.BufferType;
 import com.tencent.biz.subscribe.widget.textview.SafeTextView;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import uoh;
-import uol;
-import uom;
-import uon;
+import upg;
+import upk;
+import upl;
+import upm;
 
 public class FeedRichTextView
   extends SafeTextView
   implements Handler.Callback
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private ArrayList<uon> jdField_a_of_type_JavaUtilArrayList;
-  private uoh jdField_a_of_type_Uoh;
-  private ArrayList<uom> b;
+  private ArrayList<upm> jdField_a_of_type_JavaUtilArrayList;
+  private upg jdField_a_of_type_Upg;
+  private ArrayList<upl> b;
   
   public FeedRichTextView(Context paramContext)
   {
@@ -51,17 +51,17 @@ public class FeedRichTextView
   
   private void a(AttributeSet paramAttributeSet) {}
   
-  public ArrayList<uon> a()
+  public ArrayList<upm> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  protected void a(CharSequence paramCharSequence, uoh paramuoh, Drawable.Callback paramCallback)
+  protected void a(CharSequence paramCharSequence, upg paramupg, Drawable.Callback paramCallback)
   {
-    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramuoh, paramCallback), 8, null, true);
+    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramupg, paramCallback), 8, null, true);
   }
   
-  public ArrayList<uom> b()
+  public ArrayList<upl> b()
   {
     return this.b;
   }
@@ -74,10 +74,10 @@ public class FeedRichTextView
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage == null) {}
-    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof uol))) {
+    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof upk))) {
       return false;
     }
-    paramMessage = (uol)paramMessage.obj;
+    paramMessage = (upk)paramMessage.obj;
     this.jdField_a_of_type_JavaUtilArrayList = paramMessage.a();
     this.b = paramMessage.b();
     super.setText(paramMessage, null);
@@ -104,19 +104,19 @@ public class FeedRichTextView
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnElementClickListener(uoh paramuoh)
+  public void setOnElementClickListener(upg paramupg)
   {
-    this.jdField_a_of_type_Uoh = paramuoh;
+    this.jdField_a_of_type_Upg = paramupg;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof uol))))
+    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof upk))))
     {
       super.setText(paramCharSequence, paramBufferType);
       return;
     }
-    a(paramCharSequence, this.jdField_a_of_type_Uoh, null);
+    a(paramCharSequence, this.jdField_a_of_type_Upg, null);
   }
 }
 

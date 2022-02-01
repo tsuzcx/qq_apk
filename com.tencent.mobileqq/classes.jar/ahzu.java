@@ -1,31 +1,9 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahzu
-  extends auwq
+public abstract interface ahzu
 {
-  ahzu(ahzo paramahzo) {}
-  
-  protected void a()
-  {
-    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      ahzo.a(this.a).a(this.a.jdField_a_of_type_Ailk, new Object[0]);
-    }
-  }
-  
-  protected void b()
-  {
-    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Ailk.a();
-    }
-  }
-  
-  protected void c()
-  {
-    if ((((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (ahzo.b(this.a).a() == 14)) {
-      ahzo.c(this.a).a();
-    }
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord);
 }
 
 

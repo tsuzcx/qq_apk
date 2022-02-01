@@ -1,28 +1,29 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.graphics.Rect;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaug
-  implements View.OnTouchListener
+class aaug
+  implements bivl
 {
-  public aaug(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
+  aaug(aaud paramaaud) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    switch (paramMotionEvent.getAction())
+    if ((this.a.jdField_a_of_type_Bfrr != null) && (this.a.d))
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
+      Rect localRect = new Rect();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
+      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
       {
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843195);
+        this.a.d = false;
+        bgqv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_Bfrr.a, 0, null, null);
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_Bfrq.a), "8020205751015455", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
+        }
       }
     }
   }

@@ -7,12 +7,12 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import biip;
-import biqt;
-import biqz;
-import bisy;
-import bitt;
-import biuf;
+import bjjo;
+import bjrs;
+import bjry;
+import bjtx;
+import bjus;
+import bjve;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
@@ -29,7 +29,7 @@ public class HttpInterface
   public static final String PLUGIN_NAMESPACE = "qzone_http";
   private static final String TAG = "HttpInterface";
   protected ArrayList<AsyncTask<Bundle, Void, HashMap<String, Object>>> asyncTaskList;
-  public Handler mHandler = new biqz();
+  public Handler mHandler = new bjry();
   protected WeakReference<WebView> mWebViewRef;
   protected WebView webView;
   
@@ -41,15 +41,15 @@ public class HttpInterface
   }
   
   @TargetApi(11)
-  protected void aSyncTaskExecute(bitt parambitt, Bundle paramBundle)
+  protected void aSyncTaskExecute(bjus parambjus, Bundle paramBundle)
   {
     Executor localExecutor = obtainMultiExecutor();
     if (localExecutor != null)
     {
-      parambitt.executeOnExecutor(localExecutor, new Bundle[] { paramBundle });
+      parambjus.executeOnExecutor(localExecutor, new Bundle[] { paramBundle });
       return;
     }
-    parambitt.execute(new Bundle[] { paramBundle });
+    parambjus.execute(new Bundle[] { paramBundle });
   }
   
   public void clearWebViewCache()
@@ -63,7 +63,7 @@ public class HttpInterface
     }
     catch (Exception localException)
     {
-      bisy.a("HttpInterface", "clearWebViewCache>>>", localException);
+      bjtx.a("HttpInterface", "clearWebViewCache>>>", localException);
     }
   }
   
@@ -76,10 +76,10 @@ public class HttpInterface
       AsyncTask localAsyncTask = (AsyncTask)this.asyncTaskList.get(i);
       if ((localAsyncTask != null) && (!localAsyncTask.isCancelled()))
       {
-        bisy.c("HttpInterface", "cancel AsyncTask when onDestory");
+        bjtx.c("HttpInterface", "cancel AsyncTask when onDestory");
         localAsyncTask.cancel(true);
-        if ((localAsyncTask instanceof bitt)) {
-          ((bitt)localAsyncTask).b();
+        if ((localAsyncTask instanceof bjus)) {
+          ((bjus)localAsyncTask).b();
         }
       }
       i += 1;
@@ -101,10 +101,10 @@ public class HttpInterface
     boolean bool = true;
     if (!hasRight())
     {
-      bisy.c("HttpInterface", ">>httpReauest has not right>>");
+      bjtx.c("HttpInterface", ">>httpReauest has not right>>");
       return;
     }
-    bisy.c("HttpInterface", "httpRequest >>> " + paramString.toString());
+    bjtx.c("HttpInterface", "httpRequest >>> " + paramString.toString());
     try
     {
       localJSONObject = new JSONObject(paramString);
@@ -129,7 +129,7 @@ public class HttpInterface
       {
         JSONObject localJSONObject;
         Iterator localIterator;
-        bisy.c("HttpInterface", "httpRequest JSONException", paramString);
+        bjtx.c("HttpInterface", "httpRequest JSONException", paramString);
         return;
         i = 0;
         continue;
@@ -139,25 +139,25 @@ public class HttpInterface
         break label360;
       }
       paramString.putString("needhttpcache", "");
-      bisy.c("HttpInterface", "use supportEtag");
-      bisy.c("HttpInterface", "execute asyncTask url >>> " + str1 + " methodName " + str2);
-      Object localObject1 = new bitt(str1, str2, new biqt(this, (WebView)this.mWebViewRef.get(), (String)localObject1, str3, str4, bool));
-      aSyncTaskExecute((bitt)localObject1, paramString);
+      bjtx.c("HttpInterface", "use supportEtag");
+      bjtx.c("HttpInterface", "execute asyncTask url >>> " + str1 + " methodName " + str2);
+      Object localObject1 = new bjus(str1, str2, new bjrs(this, (WebView)this.mWebViewRef.get(), (String)localObject1, str3, str4, bool));
+      aSyncTaskExecute((bjus)localObject1, paramString);
       this.asyncTaskList.add(localObject1);
       return;
     }
     catch (Exception paramString)
     {
-      bisy.c("HttpInterface", "httpRequest Exception", paramString);
+      bjtx.c("HttpInterface", "httpRequest Exception", paramString);
     }
     if (localJSONObject.optInt("from_h5", 0) == 1)
     {
       paramString = new Bundle();
       paramString.putBoolean("from_h5", bool);
-      paramString.putString("platform", biip.a().g());
-      paramString.putString("keystr", biip.a().a());
-      paramString.putString("uin", String.valueOf(biip.a().a()));
-      paramString.putString("resolution", biuf.e());
+      paramString.putString("platform", bjjo.a().g());
+      paramString.putString("keystr", bjjo.a().a());
+      paramString.putString("uin", String.valueOf(bjjo.a().a()));
+      paramString.putString("resolution", bjve.e());
       paramString.putString("keytype", "256");
       if (!str2.equals("POST")) {
         break label338;
@@ -171,7 +171,7 @@ public class HttpInterface
       {
         String str5 = localIterator.next().toString();
         Object localObject2 = localJSONObject.get(str5);
-        bisy.c("HttpInterface", "key = " + str5 + " value = " + localObject2.toString());
+        bjtx.c("HttpInterface", "key = " + str5 + " value = " + localObject2.toString());
         if (!TextUtils.isEmpty(str5)) {
           paramString.putString(str5, localObject2.toString());
         }

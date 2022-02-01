@@ -1,39 +1,54 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class bfrp
-  extends aara
+public class bfrp
+  extends DefaultHandler
 {
-  bfrp(bfrm parambfrm) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  protected String e;
   
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
+  public bfrp(bfrm parambfrm) {}
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    if (paramBundle == null) {
-      return;
-    }
-    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298998);
-    paramBundle = paramBundle.getString("fileId");
-    bevx.c("TroopFileManager", bevx.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
-    if (paramBoolean)
+    if (this.e != null)
     {
-      this.a.b(paramBundle);
+      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+      if (!this.e.equals("title")) {
+        break label46;
+      }
+      if (bhsr.a(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      }
+    }
+    label46:
+    while (!this.e.equals("summary")) {
       return;
     }
-    switch (paramInt)
+    this.c = paramArrayOfChar;
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    this.e = null;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString2.equals("picture")) {
+      this.b = paramAttributes.getValue("cover");
+    }
+    for (;;)
     {
-    default: 
-      QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131714040), 0).b(i);
+      this.e = paramString2;
       return;
-    case -302: 
-    case -301: 
-    case -103: 
-      QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131714037), 0).b(i);
-      this.a.a(paramBundle);
-      return;
+      if (paramString2.equals("msg")) {
+        this.d = paramAttributes.getValue("url");
+      }
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131714021), 0).b(i);
   }
 }
 

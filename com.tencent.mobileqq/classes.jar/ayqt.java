@@ -1,337 +1,111 @@
-import android.app.Application;
-import android.content.pm.PackageManager;
-import android.os.Build.VERSION;
-import android.os.Handler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.onlinestatus.auto.location.LocationBaseStateDetector.1;
-import com.tencent.mobileqq.onlinestatus.auto.location.LocationBaseStateDetector.2;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.net.URL;
 
 public class ayqt
-  implements ayqn
+  extends ayqg
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper());
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ayqg jdField_a_of_type_Ayqg;
-  private ayqs jdField_a_of_type_Ayqs;
-  private ayqu jdField_a_of_type_Ayqu;
-  private ayre jdField_a_of_type_Ayre;
-  private ayrj jdField_a_of_type_Ayrj;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ayre b;
-  
-  public ayqt(QQAppInterface paramQQAppInterface, ayqg paramayqg)
+  public ayqt(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ayqg = paramayqg;
-    this.jdField_a_of_type_Ayrj = new ayrj();
-    this.jdField_a_of_type_Ayqu = new ayqu(paramayqg);
-    this.jdField_a_of_type_Ayqs = new ayqs();
+    super(paramContext, paramQQAppInterface);
   }
   
-  private void b(Application paramApplication)
+  public int a(ayqn paramayqn)
   {
-    if (Build.VERSION.SDK_INT >= 19)
+    return 4;
+  }
+  
+  public View a(ViewGroup paramViewGroup, ayqn paramayqn)
+  {
+    paramayqn = (ayqu)paramayqn;
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561341, paramViewGroup, false);
+    paramayqn.g = ((TextView)paramViewGroup.findViewById(2131380126));
+    paramayqn.e = ((ImageView)paramViewGroup.findViewById(2131369184));
+    paramayqn.f = ((ImageView)paramViewGroup.findViewById(2131370092));
+    return paramViewGroup;
+  }
+  
+  public ayqu a()
+  {
+    return new ayqu(this);
+  }
+  
+  public boolean a(ayqn paramayqn)
+  {
+    return false;
+  }
+  
+  public void d(ayqn paramayqn)
+  {
+    if (!bhnv.g(this.jdField_a_of_type_AndroidContentContext)) {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, anzj.a(2131705104), 0).a();
+    }
+    do
     {
-      boolean bool1 = paramApplication.getPackageManager().hasSystemFeature("android.hardware.sensor.stepdetector");
-      boolean bool2 = paramApplication.getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter");
-      if (bool1)
-      {
-        this.jdField_a_of_type_Ayre = new ayri();
-        if ((ayqi.jdField_b_of_type_Int == 3) && (bool2)) {
-          this.b = new ayrh();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationBaseStateDetector", 2, "[status][step] initStepDetector mainSensor: " + ayqi.jdField_a_of_type_Int + " secondarySensor: " + ayqi.jdField_b_of_type_Int + " hasDetector: " + bool1 + " hasCounter: " + bool2 + " final sensor: " + this.jdField_a_of_type_Ayre.a());
-        }
+      return;
+      bhmr localbhmr = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramayqn.a.m);
+      if (localbhmr != null) {
+        localbhmr.a();
       }
+    } while (!QLog.isColorLevel());
+    QLog.i("LiveMomentItemBuilder", 2, "handleContentClick, liveUrl=" + paramayqn.a.m);
+  }
+  
+  public void f(ayqn paramayqn)
+  {
+    paramayqn = (ayqu)paramayqn;
+    Object localObject2 = (aysj)paramayqn.a;
+    paramayqn.g.setMovementMethod(LinkMovementMethod.getInstance());
+    if (!TextUtils.isEmpty(((aysj)localObject2).n))
+    {
+      paramayqn.g.setVisibility(0);
+      paramayqn.g.setText(((aysj)localObject2).n);
     }
     for (;;)
     {
-      if (ayqi.jdField_b_of_type_Boolean)
+      Object localObject1 = (String)paramayqn.e.getTag(2131378440);
+      localObject2 = ((aysj)localObject2).a;
+      if (!TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject2)) {}
+      try
       {
-        this.jdField_a_of_type_Ayqs.a(this);
-        this.jdField_a_of_type_Ayre.a(this);
-        if (this.b != null) {
-          this.b.a(this);
-        }
+        localObject1 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845496);
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845496);
+        localObject1 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
+        ((URLDrawable)localObject1).setTag(bhez.b(zps.a(BaseApplicationImpl.getContext(), 180.0F), zps.a(BaseApplicationImpl.getContext(), 180.0F), bhgr.a(paramayqn.e.getContext(), 4.0F)));
+        ((URLDrawable)localObject1).setDecodeHandler(bhez.c);
+        paramayqn.e.setImageDrawable((Drawable)localObject1);
+        localObject1 = bevg.a("https://pub.idqqimg.com/pc/misc/files/20171219/4ed0e5a61d2f4024ac6886ee826ac51c.gif");
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+        localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+        paramayqn.f.setImageDrawable((Drawable)localObject1);
+        return;
+        paramayqn.g.setVisibility(8);
       }
-      return;
-      if (ayqi.jdField_a_of_type_Boolean)
+      catch (Exception localException)
       {
-        this.jdField_a_of_type_Ayre = new ayqm();
-        break;
-      }
-      this.jdField_a_of_type_Ayre = new ayrd();
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationBaseStateDetector", 2, "[status][step] initStepDetector compatibility. API<19 ACCELEROMETER");
-      }
-      if (ayqi.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Ayre = new ayqm();
-      } else {
-        this.jdField_a_of_type_Ayre = new ayrd();
-      }
-    }
-  }
-  
-  public int a()
-  {
-    int i = this.jdField_a_of_type_Ayre.b();
-    int j = this.jdField_a_of_type_Ayqs.a();
-    if ((i == 0) && (j == 0)) {
-      return 0;
-    }
-    return Math.max(j, i);
-  }
-  
-  public void a()
-  {
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getExtOnlineStatus();
-      if ((l < 40001L) || (l == 41042L) || (b() != 41042)) {
-        break label112;
-      }
-      if (!AppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-        break label93;
-      }
-      this.jdField_a_of_type_Ayqg.a();
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][auto] notifyCheckStatus ", Boolean.valueOf(bool1) });
-      }
-      return;
-      label93:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LocationBaseStateDetector", 2, "[status][auto] notifyCheckStatus background");
-        bool1 = false;
-        continue;
-        label112:
-        boolean bool2 = this.jdField_a_of_type_Ayre.a();
-        if ((this.b == null) || (this.b.a())) {}
-        for (bool1 = true;; bool1 = false)
+        do
         {
-          boolean bool3 = this.jdField_a_of_type_Ayqs.b();
-          if (QLog.isColorLevel()) {
-            QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][auto] notifyCheckStatus step1:", Boolean.valueOf(bool2), " step2:", Boolean.valueOf(bool1), " dist:", Boolean.valueOf(bool3) });
-          }
-          if ((!bool2) || (!bool1) || (!bool3)) {
-            break label237;
-          }
-          this.jdField_a_of_type_Ayqg.a();
-          bool1 = true;
-          break;
-        }
-      }
-      else
-      {
-        label237:
-        bool1 = false;
+          paramayqn.e.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845496));
+        } while (!QLog.isColorLevel());
+        QLog.i("LiveMomentItemBuilder", 2, "convertURL, e=" + localException.toString(), localException);
       }
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Ayqu.a(paramLong);
-  }
-  
-  public void a(Application paramApplication)
-  {
-    b(paramApplication);
-    this.jdField_a_of_type_Ayre.a(this.jdField_a_of_type_Ayrj);
-    this.jdField_a_of_type_Ayre.a(paramApplication);
-    if (this.b != null)
-    {
-      this.b.a(this.jdField_a_of_type_Ayrj);
-      this.b.a(paramApplication);
-    }
-    if (ayqi.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Ayqs.a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationBaseStateDetector.1(this), ayqi.i);
-      return;
-      this.jdField_a_of_type_Ayrj.a();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] stopDetector. delay:", Boolean.valueOf(paramBoolean) });
-    }
-    if (ayqi.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Ayqs.b();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ayre.a(paramBoolean);
-      if (this.b != null) {
-        this.b.a(paramBoolean);
-      }
-      this.jdField_a_of_type_Ayqu.a();
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return;
-      this.jdField_a_of_type_Ayrj.b();
-    }
-  }
-  
-  public int b()
-  {
-    int i = this.jdField_a_of_type_Ayre.c();
-    int j;
-    if (this.b != null)
-    {
-      j = this.b.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] getNewMovementStatus mainStatus:", Integer.valueOf(i), " assistStatus:", Integer.valueOf(j) });
-      }
-      if ((i == 40001) && (j == 41042)) {
-        i = j;
-      }
-    }
-    for (;;)
-    {
-      j = this.jdField_a_of_type_Ayqs.a(this.jdField_a_of_type_Ayqg.a());
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] getNewMovementStatus  stepStatus: ", ayqi.a(i), " distanceStatus:", ayqi.a(j) });
-      }
-      if (j == 41042) {
-        i = j;
-      }
-      return i;
-    }
-  }
-  
-  public void b()
-  {
-    Object localObject;
-    int k;
-    int i;
-    if (QLog.isColorLevel())
-    {
-      if (!ayqi.jdField_b_of_type_Boolean) {
-        break label855;
-      }
-      localObject = this.jdField_a_of_type_Ayqs.a();
-      k = this.jdField_a_of_type_Ayrj.b();
-      j = this.jdField_a_of_type_Ayre.a();
-      i = j;
-      if (this.b != null)
-      {
-        int m = this.b.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] mainStatus:", Integer.valueOf(j), " assistStatus:", Integer.valueOf(m) });
-        }
-        i = j;
-        if (j == 40001) {
-          if (m != 41012)
-          {
-            i = j;
-            if (m != 41013) {}
-          }
-          else
-          {
-            i = m;
-          }
-        }
-      }
-      if ((k != 41014) && (k != 41031)) {
-        break label867;
-      }
-    }
-    label855:
-    label867:
-    for (int j = k;; j = i)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("LOC : ").append(localObject).append("\n").append("          ").append(this.jdField_a_of_type_Ayqu.a()).append("\n").append("          updateTime : ").append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Ayrj.a()))).append("\n");
-      localStringBuilder.append("STEP: ").append(ayqi.a(i)).append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_Ayre.a()) })).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_Ayre.b()) })).append("\n");
-      if (this.b != null) {
-        localStringBuilder.append("STEP2: ").append(ayqi.a(i)).append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.b.a()) })).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.b.b()) })).append("\n");
-      }
-      if (ayqi.jdField_b_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_Ayqs.a(this.jdField_a_of_type_Ayqg.a());
-        localStringBuilder.append("DIST: ").append(ayqi.a(i));
-      }
-      localStringBuilder.append("GPS : ").append(ayqi.a(k)).append(" ").append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_Ayrj.a()) })).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_Ayrj.b()) })).append("\n");
-      if ((this.b != null) && (this.b.a() > 0L)) {
-        localStringBuilder.append(" walk-time2: ").append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.b.a()))).append("\n");
-      }
-      if (this.jdField_a_of_type_Ayre.a() > 0L) {
-        localStringBuilder.append(" walk-time: ").append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Ayre.a()))).append("\n");
-      }
-      if (this.jdField_a_of_type_Ayrj.b() > 0L) {
-        localStringBuilder.append(" still-time: ").append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Ayrj.b()))).append("\n");
-      }
-      localStringBuilder.append("LAST: ").append(ayqi.a(j)).append(" at ").append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date())).append("\n");
-      localStringBuilder.append("CATE: ").append(ayqi.a(this.jdField_a_of_type_Ayqu.a()));
-      localObject = localStringBuilder.toString();
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.post(new LocationBaseStateDetector.2(this, (String)localObject));
-      }
-      QLog.d("LocationBaseStateDetector", 2, "[status][autoLoc] detect. " + (String)localObject);
-      return;
-      localObject = this.jdField_a_of_type_Ayrj.a();
-      break;
-    }
-  }
-  
-  public int c()
-  {
-    int j = this.jdField_a_of_type_Ayrj.b();
-    int k = this.jdField_a_of_type_Ayre.a();
-    int i = k;
-    if (this.b != null)
-    {
-      int m = this.b.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] getMovementStatus mainStatus:", Integer.valueOf(k), " assistStatus:", Integer.valueOf(m) });
-      }
-      i = k;
-      if (k == 40001) {
-        if (m != 41012)
-        {
-          i = k;
-          if (m != 41013) {}
-        }
-        else
-        {
-          i = m;
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] getMovementStatus gpsStatus: ", ayqi.a(j), " stepStatus: ", Integer.valueOf(i) });
-    }
-    if ((j == 41014) || (j == 41031)) {
-      i = j;
-    }
-    return i;
-  }
-  
-  public int d()
-  {
-    int i = this.jdField_a_of_type_Ayqu.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationBaseStateDetector", 2, "[status][auto] getCategoryStatus return status: " + i);
-    }
-    return i;
   }
 }
 

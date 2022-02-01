@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class nzk
-  implements DialogInterface.OnClickListener
+  implements tkl
 {
-  public nzk(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
+  public nzk(ADBaseAppDownloadManager.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
+    if (paramBoolean)
+    {
+      this.a.this$0.a(this.a.a, 5, 100);
+      this.a.this$0.d(this.a.a);
+    }
+    do
+    {
+      return;
+      if (this.a.a.a)
+      {
+        nzj.a(this.a.this$0, this.a.a);
+        return;
+      }
+    } while (!bhnv.g(BaseApplicationImpl.getContext()));
+    this.a.this$0.a(this.a.a, 0);
   }
 }
 

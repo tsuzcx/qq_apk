@@ -1,43 +1,71 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class abaf
-  implements aaob
+public class abaf
+  extends arac<abae>
 {
-  abaf(abac paramabac, String paramString) {}
-  
-  public void callback(Bundle paramBundle)
+  @NonNull
+  public abae a(int paramInt)
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
+    return new abae();
+  }
+  
+  @Nullable
+  public abae a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
+      abae localabae = abae.a(paramArrayOfaraj[0].a);
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      a(localabae);
+      return localabae;
     }
-    try
+    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(abae paramabae)
+  {
+    if (paramabae != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_Abac.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      return;
+      abac.a().a("mine_videostory_entrance", paramabae.a());
+      abac.a().a("enable_click_take_picture", paramabae.b());
+      abac.a().a("mine_videostory_drawer_entrance", paramabae.c());
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramabae.toString());
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
-      }
-    }
+  }
+  
+  public Class<abae> clazz()
+  {
+    return abae.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 411;
   }
 }
 

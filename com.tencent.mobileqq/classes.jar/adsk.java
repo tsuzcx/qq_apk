@@ -1,26 +1,15 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-public final class adsk
-  implements bhhd
+public class adsk
+  implements DialogInterface.OnDismissListener
 {
-  public adsk(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  public adsk(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void callback(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.onClick(null, 0);
-      return;
-    }
-    this.b.onClick(null, 0);
+    this.a.finish();
   }
 }
 

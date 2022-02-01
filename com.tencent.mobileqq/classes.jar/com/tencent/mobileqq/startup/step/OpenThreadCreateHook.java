@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.os.Build.VERSION;
-import anvz;
-import ariq;
-import bgsg;
+import aoil;
+import aryf;
+import bhsi;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class OpenThreadCreateHook
@@ -13,10 +13,10 @@ public class OpenThreadCreateHook
   {
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      com.tencent.mobileqq.app.ThreadManager.sThreadWrapContext = new anvz();
-      ariq.a();
-      if ((Build.VERSION.SDK_INT <= 27) || (System.currentTimeMillis() % 10000L < bgsg.z(BaseApplicationImpl.getApplication()))) {
-        ariq.b();
+      com.tencent.mobileqq.app.ThreadManager.sThreadWrapContext = new aoil();
+      aryf.a();
+      if ((Build.VERSION.SDK_INT <= 27) || (System.currentTimeMillis() % 10000L < bhsi.z(BaseApplicationImpl.getApplication()))) {
+        aryf.b();
       }
     }
     return true;

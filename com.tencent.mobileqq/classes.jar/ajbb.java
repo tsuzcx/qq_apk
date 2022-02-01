@@ -1,9 +1,23 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class ajbb
-  extends ajax
+  implements View.OnClickListener
 {
-  public boolean a()
+  public ajbb(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return true;
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

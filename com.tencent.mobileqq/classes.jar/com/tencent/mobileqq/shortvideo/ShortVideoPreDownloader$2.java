@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcen;
+import bcxf;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ShortVideoPreDownloader$2
   implements Runnable
 {
-  public ShortVideoPreDownloader$2(bcen parambcen) {}
+  public ShortVideoPreDownloader$2(bcxf parambcxf) {}
   
   public void run()
   {
     if (!this.this$0.a.get())
     {
       this.this$0.a.set(true);
-      bcen.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
+      bcxf.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
     }
   }
 }

@@ -12,7 +12,7 @@ class LocalCache$Utils
 {
   private static final char mSeparator = ' ';
   
-  private static byte[] Bitmap2Bytes(Bitmap paramBitmap)
+  private static byte[] bitmap2Bytes(Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
       return null;
@@ -22,18 +22,18 @@ class LocalCache$Utils
     return localByteArrayOutputStream.toByteArray();
   }
   
-  private static Bitmap Bytes2Bimap(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte.length == 0) {}
-    return null;
-  }
-  
   private static Drawable bitmap2Drawable(Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
       return null;
     }
     return new BitmapDrawable(paramBitmap);
+  }
+  
+  private static Bitmap bytes2Bitmap(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length == 0) {}
+    return null;
   }
   
   private static String clearDateInfo(String paramString)

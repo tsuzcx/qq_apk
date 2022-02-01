@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.data;
 
-import bnpc;
+import boqr;
 
 public class AEMaterialManager$1
   implements Runnable
 {
-  public AEMaterialManager$1(bnpc parambnpc) {}
+  public AEMaterialManager$1(boqr paramboqr, boolean paramBoolean) {}
   
   public void run()
   {
-    bnpc.a(this.this$0);
+    boqr.a(this.this$0, this.a);
   }
 }
 

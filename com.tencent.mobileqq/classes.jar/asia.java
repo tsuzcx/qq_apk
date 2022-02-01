@@ -1,36 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
+import android.view.View;
 
-public class asia
-  implements asms
+public abstract interface asia
 {
-  public asia(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
+  public abstract View a(int paramInt);
   
-  public void a()
-  {
-    asml.a(this.a.a);
-  }
+  public abstract void a(View paramView);
   
-  public void a(int paramInt)
-  {
-    if (this.a.a == null)
-    {
-      QLog.d("ExtendFriendBaseFragment", 1, "sendMsgDirectly()-> showToast() mActivity is null just return");
-      return;
-    }
-    asml.a(this.a.a, this.a.a.getString(paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    asml.a(this.a.a, paramString1, paramString2);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    asml.a(this.a.a, paramBoolean, paramInt, paramString1, paramString2);
-  }
+  public abstract void a(View paramView, Point paramPoint1, Point paramPoint2);
 }
 
 

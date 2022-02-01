@@ -1,25 +1,31 @@
-import QQService.StreamInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbza
+class bbza
+  implements View.OnClickListener
 {
-  public int a;
-  public StreamInfo a;
-  public String a;
-  public short a;
-  public int b;
+  bbza(bbyy parambbyy, bcfm parambcfm) {}
   
-  public bbza(String paramString, short paramShort, int paramInt1, StreamInfo paramStreamInfo, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Short = paramShort;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_QQServiceStreamInfo = paramStreamInfo;
-    this.b = paramInt2;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcfm.d))
+    {
+      bcni.a(this.jdField_a_of_type_Bbyy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbyy.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bcfm.d);
+      bcni.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_Bbyy.jdField_a_of_type_Int) });
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcni.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_Bbyy.jdField_a_of_type_Int) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbza
  * JD-Core Version:    0.7.0.1
  */

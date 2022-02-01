@@ -1,48 +1,26 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public abstract class uzu
-  extends zxi
-  implements zxl<QCircleReportBean>
+class uzu
+  extends RecyclerView.ViewHolder
 {
-  protected QCircleReportBean a;
-  
-  public uzu() {}
-  
-  public uzu(int paramInt1, List<zxu> paramList, int paramInt2, int paramInt3)
+  public uzu(View paramView)
   {
-    super(paramInt1, paramList, paramInt2, paramInt3);
+    super(paramView);
   }
   
-  public QCircleReportBean a()
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, var paramvar)
   {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setInteractor(paramvar);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+      ((BaseWidgetView)this.itemView).setDataPosInList(paramInt);
     }
-    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
-  }
-  
-  public void a(QCircleReportBean paramQCircleReportBean)
-  {
-    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
-  }
-  
-  protected int b()
-  {
-    return QCircleReportBean.getParentPageId(a(), this.a);
-  }
-  
-  protected String b()
-  {
-    if (this.a != null) {
-      return this.a.getModuleIdStr();
-    }
-    return null;
-  }
-  
-  public int c()
-  {
-    return QCircleReportBean.getPageId(a(), this.a);
   }
 }
 

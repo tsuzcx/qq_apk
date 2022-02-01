@@ -2,10 +2,10 @@ package com.tencent.open.downloadnew;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import biip;
-import bisy;
-import biui;
-import bivr;
+import bjjo;
+import bjtx;
+import bjvh;
+import bjwq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import java.io.File;
@@ -13,11 +13,11 @@ import java.io.File;
 public class DownloadManager$4
   implements Runnable
 {
-  public DownloadManager$4(bivr parambivr) {}
+  public DownloadManager$4(bjwq parambjwq) {}
   
   public void run()
   {
-    Context localContext = biip.a().a();
+    Context localContext = bjjo.a().a();
     boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
     SimpleAccount localSimpleAccount = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
     String str = "";
@@ -26,14 +26,14 @@ public class DownloadManager$4
     }
     if (!bool)
     {
-      bisy.c("DownloadManager_", "getUpdateApp will do full report");
-      biui.a(localContext, null, null, str, true);
+      bjtx.c("DownloadManager_", "getUpdateApp will do full report");
+      bjvh.a(localContext, null, null, str, true);
     }
     while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
       return;
     }
-    bisy.c("DownloadManager_", "getUpdateApp will do incremental report");
-    biui.a(localContext, null, 0, null, null, str);
+    bjtx.c("DownloadManager_", "getUpdateApp will do incremental report");
+    bjvh.a(localContext, null, 0, null, null, str);
   }
 }
 

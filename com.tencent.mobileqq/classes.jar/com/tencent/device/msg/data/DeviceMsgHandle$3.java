@@ -1,7 +1,7 @@
 package com.tencent.device.msg.data;
 
-import abux;
-import bbyp;
+import abzb;
+import bcrg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class DeviceMsgHandle$3
   implements Runnable
 {
-  public DeviceMsgHandle$3(abux paramabux, MessageRecord paramMessageRecord) {}
+  public DeviceMsgHandle$3(abzb paramabzb, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

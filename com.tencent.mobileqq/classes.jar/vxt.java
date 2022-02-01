@@ -1,24 +1,57 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import feedcloud.FeedCloudMeta.StUser;
-import qqcircle.QQCircleDitto.StItemContainer;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.Window;
 
 public class vxt
-  implements vxd
+  extends blir
 {
-  public vxt(QCirclePushRankItemView paramQCirclePushRankItemView, QQCircleDitto.StItemContainer paramStItemContainer) {}
-  
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public vxt(Context paramContext)
   {
-    vrr localvrr = vrr.a();
-    vrt localvrt = new vrt().a("followbutton");
-    if (paramBoolean) {}
-    for (String str = "follow";; str = "unfollow")
-    {
-      localvrr.a(localvrt.b(str).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushRankItemView.a()).c(paramStUser.id.get()).d(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.containerType.get() + ""));
-      return;
+    super(paramContext);
+  }
+  
+  public static vxt a(Context paramContext)
+  {
+    paramContext = new vxt(paramContext);
+    if (Build.VERSION.SDK_INT != 23) {
+      paramContext.getWindow().setWindowAnimations(2131755013);
     }
+    return paramContext;
+  }
+  
+  protected int a()
+  {
+    return super.a();
+  }
+  
+  protected int a(int paramInt)
+  {
+    if ((paramInt == 3) || (paramInt == 8)) {
+      return super.a(paramInt);
+    }
+    return this.a.getColor(2131166775);
+  }
+  
+  public Drawable a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return this.a.getDrawable(2130848953);
+    }
+    return this.a.getDrawable(2130848950);
+  }
+  
+  protected int b()
+  {
+    return super.b();
+  }
+  
+  protected int c()
+  {
+    return 2131562629;
   }
 }
 

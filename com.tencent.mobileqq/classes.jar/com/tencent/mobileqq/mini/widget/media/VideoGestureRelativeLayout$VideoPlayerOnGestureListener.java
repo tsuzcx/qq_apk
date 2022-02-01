@@ -17,16 +17,20 @@ public class VideoGestureRelativeLayout$VideoPlayerOnGestureListener
   public boolean onContextClick(MotionEvent paramMotionEvent)
   {
     Log.d("gesturetest", "onContextClick: ");
-    return true;
+    return (VideoGestureRelativeLayout.access$400(this.this$0)) || (VideoGestureRelativeLayout.access$500(this.this$0)) || (VideoGestureRelativeLayout.access$700(this.this$0));
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     Log.d("gesturetest", "onDoubleTap: ");
-    if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
-      VideoGestureRelativeLayout.access$100(this.this$0).onDoubleTapGesture(paramMotionEvent);
+    if (VideoGestureRelativeLayout.access$700(this.this$0))
+    {
+      if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
+        VideoGestureRelativeLayout.access$100(this.this$0).onDoubleTapGesture(paramMotionEvent);
+      }
+      return super.onDoubleTap(paramMotionEvent);
     }
-    return super.onDoubleTap(paramMotionEvent);
+    return false;
   }
   
   public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
@@ -37,13 +41,18 @@ public class VideoGestureRelativeLayout$VideoPlayerOnGestureListener
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
+    boolean bool = false;
     Log.d("gesturetest", "onDown: ");
     VideoGestureRelativeLayout.access$002(this.this$0, false);
     VideoGestureRelativeLayout.access$302(this.this$0, 0);
-    if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
-      VideoGestureRelativeLayout.access$100(this.this$0).onDown(paramMotionEvent);
+    if ((VideoGestureRelativeLayout.access$400(this.this$0)) || (VideoGestureRelativeLayout.access$500(this.this$0)))
+    {
+      if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
+        VideoGestureRelativeLayout.access$100(this.this$0).onDown(paramMotionEvent);
+      }
+      bool = true;
     }
-    return true;
+    return bool;
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -63,43 +72,47 @@ public class VideoGestureRelativeLayout$VideoPlayerOnGestureListener
     Log.d("gesturetest", "onScroll: e1:" + paramMotionEvent1.getX() + "," + paramMotionEvent1.getY());
     Log.d("gesturetest", "onScroll: e2:" + paramMotionEvent2.getX() + "," + paramMotionEvent2.getY());
     Log.d("gesturetest", "onScroll: X:" + paramFloat1 + "  Y:" + paramFloat2);
-    switch (VideoGestureRelativeLayout.access$300(this.this$0))
+    if ((VideoGestureRelativeLayout.access$400(this.this$0)) || (VideoGestureRelativeLayout.access$500(this.this$0)))
     {
-    default: 
-      return true;
-    case 0: 
-      Log.d("gesturetest", "NONE: ");
-      if (Math.abs(paramFloat1) - Math.abs(paramFloat2) > VideoGestureRelativeLayout.access$400(this.this$0))
+      switch (VideoGestureRelativeLayout.access$300(this.this$0))
       {
-        VideoGestureRelativeLayout.access$302(this.this$0, 3);
+      default: 
+        return true;
+      case 0: 
+        Log.d("gesturetest", "NONE: ");
+        if (Math.abs(paramFloat1) - Math.abs(paramFloat2) > VideoGestureRelativeLayout.access$600(this.this$0))
+        {
+          VideoGestureRelativeLayout.access$302(this.this$0, 3);
+          return true;
+        }
+        if (paramMotionEvent1.getX() < this.this$0.getWidth() / 2)
+        {
+          VideoGestureRelativeLayout.access$302(this.this$0, 2);
+          return true;
+        }
+        VideoGestureRelativeLayout.access$302(this.this$0, 1);
+        return true;
+      case 1: 
+        if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
+          VideoGestureRelativeLayout.access$100(this.this$0).onVolumeGesture(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        }
+        Log.d("gesturetest", "VOLUME: ");
+        return true;
+      case 2: 
+        if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
+          VideoGestureRelativeLayout.access$100(this.this$0).onBrightnessGesture(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        }
+        Log.d("gesturetest", "BRIGHTNESS: ");
         return true;
       }
-      if (paramMotionEvent1.getX() < this.this$0.getWidth() / 2)
-      {
-        VideoGestureRelativeLayout.access$302(this.this$0, 2);
-        return true;
-      }
-      VideoGestureRelativeLayout.access$302(this.this$0, 1);
-      return true;
-    case 1: 
       if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
-        VideoGestureRelativeLayout.access$100(this.this$0).onVolumeGesture(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        VideoGestureRelativeLayout.access$100(this.this$0).onProgressGesture(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
       }
-      Log.d("gesturetest", "VOLUME: ");
-      return true;
-    case 2: 
-      if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
-        VideoGestureRelativeLayout.access$100(this.this$0).onBrightnessGesture(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      }
-      Log.d("gesturetest", "BRIGHTNESS: ");
+      VideoGestureRelativeLayout.access$002(this.this$0, true);
+      Log.d("gesturetest", "FF_REW: ");
       return true;
     }
-    if (VideoGestureRelativeLayout.access$100(this.this$0) != null) {
-      VideoGestureRelativeLayout.access$100(this.this$0).onProgressGesture(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    VideoGestureRelativeLayout.access$002(this.this$0, true);
-    Log.d("gesturetest", "FF_REW: ");
-    return true;
+    return false;
   }
   
   public void onShowPress(MotionEvent paramMotionEvent)

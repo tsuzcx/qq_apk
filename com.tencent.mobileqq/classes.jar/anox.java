@@ -1,26 +1,11 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
-
-public class anox
-  implements anik
+public final class anox
+  implements amth
 {
-  public List<String> a(AppInterface paramAppInterface)
+  public anox(anpe paramanpe) {}
+  
+  public void a()
   {
-    if ((paramAppInterface instanceof QQAppInterface))
-    {
-      boolean bool = ((QQAppInterface)paramAppInterface).a().a();
-      paramAppInterface = aqxw.c();
-      if ((bool) && (paramAppInterface.a()))
-      {
-        paramAppInterface = new ArrayList();
-        paramAppInterface.add("150000");
-        paramAppInterface.add("150000.150100");
-        return paramAppInterface;
-      }
-    }
-    return null;
+    this.a.a(true);
   }
 }
 

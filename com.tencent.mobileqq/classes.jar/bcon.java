@@ -1,25 +1,14 @@
+import android.view.ViewGroup;
+
 public class bcon
+  extends bcol
 {
-  public aqlg[] a = new aqlg[0];
+  public static final String a = bcon.class.getSimpleName();
   
-  public String toString()
+  public bcon(ViewGroup paramViewGroup, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
-    if (this.a != null)
-    {
-      aqlg[] arrayOfaqlg = this.a;
-      int j = arrayOfaqlg.length;
-      int i = 0;
-      while (i < j)
-      {
-        aqlg localaqlg = arrayOfaqlg[i];
-        if (localaqlg != null) {
-          localStringBuilder.append("confItem ").append(localaqlg.jdField_a_of_type_Int).append(":").append(localaqlg.jdField_a_of_type_JavaLangString).append("\n");
-        }
-        i += 1;
-      }
-    }
-    return localStringBuilder.toString();
+    super(paramViewGroup, 2131559826);
+    a(a());
   }
 }
 

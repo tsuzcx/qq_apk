@@ -1,14 +1,14 @@
-public abstract interface bqec
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+
+class bqec
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public abstract void ae();
+  bqec(bqeb parambqeb) {}
   
-  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void d(int paramInt);
-  
-  public abstract int i();
+  public void onScrollChanged()
+  {
+    bqeb.a(this.a);
+  }
 }
 
 

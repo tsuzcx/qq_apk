@@ -1,10 +1,19 @@
-import com.google.gson.reflect.TypeToken;
-import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerGroupWrapper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.ae.SessionWrap;
 
-class boga
-  extends TypeToken<AEEditorPagStickerGroupWrapper>
+public final class boga
+  implements Parcelable.Creator<SessionWrap>
 {
-  boga(bofw parambofw) {}
+  public SessionWrap a(Parcel paramParcel)
+  {
+    return new SessionWrap(paramParcel);
+  }
+  
+  public SessionWrap[] a(int paramInt)
+  {
+    return new SessionWrap[0];
+  }
 }
 
 

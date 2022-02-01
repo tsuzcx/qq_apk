@@ -1,48 +1,36 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-public class botn
-  implements bomz
+class botn
+  implements View.OnClickListener
 {
-  public botn(MusicProviderView paramMusicProviderView) {}
+  botn(botm parambotm, boto paramboto, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Bkgm.sendEmptyMessage(2);
-  }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Boty);
+    if (botm.a(this.jdField_a_of_type_Botm) != this.jdField_a_of_type_Boto.getLayoutPosition()) {
+      bozr.a().j(this.jdField_a_of_type_JavaLangString);
     }
-    if (this.a.jdField_a_of_type_Boty != null)
+    if ((botm.a(this.jdField_a_of_type_Botm) == -1) && (TextUtils.isEmpty(botm.a(this.jdField_a_of_type_Botm).a())))
     {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.jdField_a_of_type_Boty.a(true);
-      }
+      botm.a(this.jdField_a_of_type_Botm).a(this.jdField_a_of_type_JavaLangString, ((bosz)bosy.a.get(0)).jdField_a_of_type_JavaLangString, ((bosz)bosy.a.get(0)).b);
+      botm.a(this.jdField_a_of_type_Botm).a(true, false);
     }
-    else {
+    for (;;)
+    {
+      this.jdField_a_of_type_Botm.a();
+      botm.a(this.jdField_a_of_type_Botm, this.jdField_a_of_type_Boto.getLayoutPosition());
+      ((bosx)botm.a(this.jdField_a_of_type_Botm).get(botm.a(this.jdField_a_of_type_Botm) - 1)).a(true);
+      this.jdField_a_of_type_Boto.a(true);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    this.a.jdField_a_of_type_Boty.a(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).f();
+      botm.a(this.jdField_a_of_type_Botm).a(this.jdField_a_of_type_JavaLangString);
     }
   }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 

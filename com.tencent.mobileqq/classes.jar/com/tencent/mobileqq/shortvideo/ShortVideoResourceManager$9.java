@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bdwt;
+import bevm;
 
 class ShortVideoResourceManager$9
   implements Runnable
 {
-  ShortVideoResourceManager$9(ShortVideoResourceManager paramShortVideoResourceManager, bdwt parambdwt) {}
+  ShortVideoResourceManager$9(ShortVideoResourceManager paramShortVideoResourceManager, bevm parambevm) {}
   
   public void run()
   {

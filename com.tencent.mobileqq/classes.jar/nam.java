@@ -1,46 +1,260 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.gamelogic.data.UserScore;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public abstract interface nam
+public class nam
+  implements anui
 {
-  public abstract Activity a();
+  private void a(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    if (paramBoolean)
+    {
+      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue());
+      return;
+    }
+    b(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue());
+  }
   
-  public abstract void a(int paramInt, String paramString);
+  private void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
+  }
   
-  public abstract void a(long paramLong, int paramInt, String paramString1, String paramString2);
+  private void c(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Object[])) && (((Object[])paramObject).length == 2))
+    {
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], ((Long)paramObject[1]).longValue());
+      return;
+    }
+    QLog.e("GameRoomObserver", 2, "handleGetGameShare 参数个数异常");
+  }
   
-  public abstract void a(long paramLong1, long paramLong2);
+  private void d(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    boolean bool = ((Boolean)paramObject[0]).booleanValue();
+    long l = ((Long)paramObject[1]).longValue();
+    String str1 = (String)paramObject[2];
+    if (paramBoolean)
+    {
+      localObject = (RoomInfo)paramObject[3];
+      myo localmyo = (myo)paramObject[4];
+      List localList1 = (List)paramObject[5];
+      List localList2 = (List)paramObject[6];
+      i = ((Integer)paramObject[7]).intValue();
+      String str2 = (String)paramObject[8];
+      String str3 = (String)paramObject[9];
+      a(str1, bool, ((Integer)paramObject[10]).intValue(), (RoomInfo)localObject, localmyo, localList1, localList2, i, str2, str3);
+      return;
+    }
+    Object localObject = (String)paramObject[3];
+    int i = ((Integer)paramObject[4]).intValue();
+    a(l, str1, bool, ((Integer)paramObject[5]).intValue(), (String)localObject, i);
+  }
   
-  public abstract void a(String paramString);
+  private void e(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (Object[])paramObject;
+      a((List)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3], ((Long)paramObject[4]).longValue());
+      return;
+    }
+    a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+  }
   
-  public abstract void a(String paramString, int paramInt);
+  private void f(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof Object[])) || (((Object[])paramObject).length != 5))
+    {
+      QLog.e("GameRoomObserver", 2, "handleOnGetGameQuestionClass 参数个数异常");
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    a(((Long)paramObject[0]).longValue(), (String)paramObject[1], (List)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+  }
   
-  public abstract void a(String paramString, DialogInterface.OnClickListener paramOnClickListener);
+  private void g(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    long l = ((Long)paramObject[0]).longValue();
+    int i = ((Integer)paramObject[1]).intValue();
+    String str = (String)paramObject[2];
+    if (paramBoolean)
+    {
+      a(l, i, str, (RoomInfo)paramObject[3]);
+      return;
+    }
+    a(l, i, str, (String)paramObject[3]);
+  }
   
-  public abstract void a(List<nan> paramList);
+  private void h(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (Object[])paramObject;
+      a((RoomInfo)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    a(((Long)paramObject[0]).longValue(), (String)paramObject[1], ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+  }
   
-  public abstract void a(boolean paramBoolean);
+  private void i(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), (String)paramObject[3], ((Integer)paramObject[4]).intValue());
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    a((String)paramObject[0], ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
+  }
   
-  public abstract void b();
+  private void j(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3], (String)paramObject[4], (RoomInfo)paramObject[5]);
+  }
   
-  public abstract void b(int paramInt);
+  private void k(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3], (String)paramObject[4], (RoomInfo)paramObject[5], ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), (String)paramObject[8], (String)paramObject[9]);
+  }
   
-  public abstract void b(int paramInt, String paramString);
+  private void l(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    c(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue());
+  }
   
-  public abstract void b(String paramString);
+  private void m(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (RoomInfo)paramObject[4]);
+  }
   
-  public abstract void c();
+  private void n(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+  }
   
-  public abstract void d();
+  public void a(long paramLong) {}
   
-  public abstract void e();
+  public void a(long paramLong, int paramInt) {}
   
-  public abstract void f();
+  public void a(long paramLong1, int paramInt1, long paramLong2, String paramString, int paramInt2) {}
   
-  public abstract void g();
+  public void a(long paramLong, int paramInt, String paramString, RoomInfo paramRoomInfo) {}
   
-  public abstract void h();
+  public void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt, String paramString1, String paramString2, RoomInfo paramRoomInfo) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, String paramString1, String paramString2, RoomInfo paramRoomInfo, int paramInt2, int paramInt3, String paramString3, String paramString4) {}
+  
+  public void a(long paramLong1, long paramLong2, String paramString, int paramInt, RoomInfo paramRoomInfo) {}
+  
+  public void a(long paramLong, String paramString, int paramInt1, int paramInt2) {}
+  
+  public void a(long paramLong, String paramString1, List<mzk> paramList, String paramString2, String paramString3) {}
+  
+  public void a(long paramLong, String paramString1, boolean paramBoolean, int paramInt1, String paramString2, int paramInt2) {}
+  
+  public void a(RoomInfo paramRoomInfo, int paramInt) {}
+  
+  public void a(String paramString1, long paramLong, String paramString2) {}
+  
+  public void a(String paramString1, boolean paramBoolean, int paramInt1, RoomInfo paramRoomInfo, myo parammyo, List<UserScore> paramList, List<mzj> paramList1, int paramInt2, String paramString2, String paramString3) {}
+  
+  public void a(List<mzj> paramList, int paramInt, String paramString1, String paramString2, long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, mzh parammzh) {}
+  
+  public void a(boolean paramBoolean, String paramString, long paramLong) {}
+  
+  public void b(long paramLong1, long paramLong2) {}
+  
+  public void c(long paramLong1, long paramLong2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    default: 
+      return;
+    case 1: 
+      d(paramBoolean, paramObject);
+      return;
+    case 2: 
+      e(paramBoolean, paramObject);
+      return;
+    case 3: 
+      g(paramBoolean, paramObject);
+      return;
+    case 4: 
+      h(paramBoolean, paramObject);
+      return;
+    case 5: 
+      i(paramBoolean, paramObject);
+      return;
+    case 6: 
+      a(paramBoolean, paramObject);
+      return;
+    case 20: 
+      j(paramBoolean, paramObject);
+      return;
+    case 21: 
+      k(paramBoolean, paramObject);
+      return;
+    case 22: 
+      l(paramBoolean, paramObject);
+      return;
+    case 23: 
+      m(paramBoolean, paramObject);
+      return;
+    case 24: 
+      n(paramBoolean, paramObject);
+      return;
+    case 7: 
+      b(paramBoolean, paramObject);
+      return;
+    case 8: 
+      c(paramBoolean, paramObject);
+      return;
+    case 9: 
+      f(paramBoolean, paramObject);
+      return;
+    case 10: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (mzh)paramObject[2]);
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+  }
 }
 
 

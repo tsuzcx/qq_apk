@@ -1,96 +1,24 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleCertifiedDialogView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public class uzy
-  extends uzw
+class uzy
+  extends RecyclerView.ViewHolder
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QCircleCertifiedDialogView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView;
-  private uzo jdField_a_of_type_Uzo;
-  private boolean jdField_a_of_type_Boolean;
-  
-  private void a()
+  public uzy(BaseWidgetView paramBaseWidgetView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
+    super(paramBaseWidgetView);
+  }
+  
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new uzz(this));
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null) {
-        break label98;
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView = new QCircleCertifiedDialogView(a());
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.setCertifiedListener(new vaa(this));
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-      localLayoutParams.gravity = 17;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      return;
-      label98:
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
-      }
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    uxo.a(a(), paramString);
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public String a()
-  {
-    return "QCircleCertifiedPart";
-  }
-  
-  protected void a(View paramView)
-  {
-    super.a(paramView);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373777));
-    if (this.jdField_a_of_type_AndroidViewViewStub != null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373798));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131373797));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    super.a(paramString, paramObject);
-    if ("tag_cetrified_part_show".equals(paramString)) {
-      a();
-    }
-    while (!"tag_cetrified_part_show_gone".equals(paramString)) {
-      return;
-    }
-    b();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

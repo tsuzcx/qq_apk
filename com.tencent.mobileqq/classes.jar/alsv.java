@@ -1,17 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alsv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public alsv(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
+  public alsv(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
-    paramDialogInterface.dismiss();
+    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    {
+      EditLocalVideoActivity.b(this.a, false);
+      EditLocalVideoActivity.a(this.a).pause();
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      EditLocalVideoActivity.b(this.a, true);
+      EditLocalVideoActivity.b(this.a).setVisibility(8);
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.a(this.a).setVisibility(4);
+    }
   }
 }
 

@@ -1,143 +1,143 @@
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.utils.WebStateReporter.1;
+import com.tencent.mobileqq.webview.utils.WebStateReporter.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.notify.DownloadGlobalListener;
-import com.tencent.tmdownloader.notify.DownloadTaskInfo;
+import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bisi
-  implements DownloadGlobalListener
 {
-  private static bisi a;
+  public static HashMap<String, Integer> a;
+  public static int c;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
   
-  private bisi()
+  static
   {
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_c_of_type_Int = 6;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, "TMADownloadMonitor Init");
+      QLog.d("WebStateReporter_report", 2, "Current State = " + paramInt);
     }
   }
   
-  public static bisi a()
+  public void a(long paramLong)
   {
-    if (a != null) {
-      return a;
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void a(Context paramContext)
+  {
+    paramContext = new File(paramContext.getFilesDir(), bhwl.e.jdField_a_of_type_JavaLangString);
+    if (!paramContext.exists()) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = bhmi.a(paramContext);
+      } while (TextUtils.isEmpty(paramContext));
+      try
+      {
+        paramContext = new JSONObject(paramContext);
+        int i = paramContext.getInt("sample_rate");
+        jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i));
+        JSONArray localJSONArray = paramContext.getJSONArray("rules");
+        int j = localJSONArray.length();
+        i = 0;
+        while (i < j)
+        {
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
+          i += 1;
+        }
+        jdField_c_of_type_Int = paramContext.getInt("tail_number");
+        return;
+      }
+      catch (JSONException paramContext) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("WebStateReporter", 2, "" + paramContext);
+  }
+  
+  public void a(Context paramContext, long paramLong, String paramString, boolean paramBoolean)
+  {
+    if ((paramContext == null) || (paramLong <= 0L) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Boolean = false;
     }
     try
     {
-      a = new bisi();
-      bisi localbisi = a;
-      return localbisi;
-    }
-    finally {}
-  }
-  
-  public static void a(Context paramContext, DownloadTaskInfo paramDownloadTaskInfo)
-  {
-    if ((paramDownloadTaskInfo == null) || (paramContext == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("UniformDownloadEvent", 2, "downloadTaskInfo is null or context==null");
+      i = bhnv.a(paramContext);
+      switch (i)
+      {
+      default: 
+        String str1 = "Unknown";
+        ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, str1), 5, null, false);
+        return;
       }
     }
-    label401:
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = 0;
+        continue;
+        String str2 = "2G";
+        continue;
+        str2 = "3G";
+        continue;
+        str2 = "4G";
+        continue;
+        str2 = "wifi";
+      }
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface, String paramString, int paramInt)
+  {
+    if (paramInt == 0) {}
     for (;;)
     {
       return;
-      bcur.a().addDownloadURL(paramDownloadTaskInfo.url);
-      if (!a(paramDownloadTaskInfo.url))
+      if (paramAppInterface == null) {}
+      for (long l = 0L; !TextUtils.isEmpty(paramString); l = paramAppInterface.getLongAccountUin())
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("url", paramDownloadTaskInfo.url);
-        localHashMap.put("NetworkType", bgnt.b(paramContext) + "");
-        localHashMap.put("reportVia", "5");
-        if (paramDownloadTaskInfo.stackInfo.length() < 950)
-        {
-          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo);
-          localHashMap.put("_filesize_from_dlg", "0");
-          localHashMap.put("_filename_from_dlg", paramDownloadTaskInfo.pkgName);
-          if (paramDownloadTaskInfo.versionCode <= 0) {
-            break label364;
-          }
-          localHashMap.put("isAPK", "1");
-          label160:
-          localHashMap.put("VersionCode", paramDownloadTaskInfo.versionCode + "");
-          paramDownloadTaskInfo = paramDownloadTaskInfo.source;
-          if (!TextUtils.isEmpty(paramDownloadTaskInfo)) {
-            break label376;
-          }
-          bctj.a(paramContext).a(null, "UniformDownloadEvent_NO_SOURCE", true, 0L, 0L, localHashMap, "");
-        }
-        for (;;)
-        {
-          if (!QLog.isColorLevel()) {
-            break label401;
-          }
-          paramContext = new StringBuilder();
-          paramDownloadTaskInfo = localHashMap.keySet().iterator();
-          while (paramDownloadTaskInfo.hasNext())
-          {
-            String str = (String)paramDownloadTaskInfo.next();
-            paramContext.append(str).append("=").append((String)localHashMap.get(str)).append("\n");
-          }
-          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo.substring(0, 950));
-          if (paramDownloadTaskInfo.stackInfo.length() < 1901)
-          {
-            localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950));
-            break;
-          }
-          localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950, 1900));
-          break;
-          label364:
-          localHashMap.put("isAPK", "0");
-          break label160;
-          label376:
-          localHashMap.put("DOWNLOAD_BIG_BROTHER_SOURCE", paramDownloadTaskInfo);
-          bctj.a(paramContext).a(null, "UniformDownloadEvent", true, 0L, 0L, localHashMap, "");
-        }
+        ThreadManager.post(new WebStateReporter.2(this, paramString, l, paramInt), 5, null, false);
+        return;
       }
     }
-    QLog.d("UniformDownloadEvent", 2, paramContext.toString());
   }
   
-  private static boolean a(String paramString)
+  public void a(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith("patch")) || (paramString.endsWith("zip")) || (paramString.endsWith("7z")));
-  }
-  
-  public void onTaskCompleted(DownloadTaskInfo paramDownloadTaskInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskCompleted,", paramDownloadTaskInfo });
-    }
-  }
-  
-  public void onTaskFailed(DownloadTaskInfo paramDownloadTaskInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskFailed,", paramDownloadTaskInfo });
-    }
-  }
-  
-  public void onTaskPaused(DownloadTaskInfo paramDownloadTaskInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskPaused,", paramDownloadTaskInfo });
-    }
-  }
-  
-  public void onTaskStarted(DownloadTaskInfo paramDownloadTaskInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskStarted,", paramDownloadTaskInfo });
-    }
-    a(BaseApplicationImpl.getContext(), paramDownloadTaskInfo);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bisi
  * JD-Core Version:    0.7.0.1
  */

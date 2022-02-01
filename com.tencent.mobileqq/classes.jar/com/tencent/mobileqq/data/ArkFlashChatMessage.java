@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import bdol;
+import behh;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -77,7 +77,7 @@ public class ArkFlashChatMessage
   public String getArkDisplay()
   {
     if (this.promptText != null) {
-      return bdol.a(getSummery());
+      return behh.a(getSummery());
     }
     return getSummery();
   }
@@ -115,7 +115,7 @@ public class ArkFlashChatMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return MobileQQ.sMobileQQ.getString(2131690124);
+    return MobileQQ.sMobileQQ.getString(2131690132);
   }
   
   public void reset()

@@ -1,44 +1,65 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.tools.MD5;
+import org.json.JSONObject;
 
 public class aoaj
-  extends anqd
 {
-  public aoaj(QQComicStep paramQQComicStep) {}
+  String a;
+  String b;
+  String c;
   
-  public void a(List<MessageRecord> paramList)
+  public static aoaj a(String paramString)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
+    if ((paramString == null) || (paramString.length() == 0)) {
+      paramString = null;
+    }
     for (;;)
     {
-      return;
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
+      return paramString;
+      try
       {
-        Object localObject = bcwd.a(((MessageRecord)paramList.next()).msgData);
-        if ((localObject instanceof StructMsgForImageShare))
+        aoaj localaoaj = new aoaj();
+        paramString = new JSONObject(paramString);
+        localaoaj.a = paramString.getString("url");
+        if (localaoaj.a != null)
         {
-          localObject = (StructMsgForImageShare)localObject;
-          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
-          {
-            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
-            if (arrayOfString.length >= 8) {
-              blaq.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], ahte.a(((StructMsgForImageShare)localObject).mMsgActionData) });
-            }
-          }
+          localaoaj.a = localaoaj.a.trim();
+          localaoaj.c = MD5.toMD5(localaoaj.a);
+        }
+        localaoaj.b = paramString.getString("md5");
+        if (localaoaj.b != null) {
+          localaoaj.b = localaoaj.b.trim();
+        }
+        paramString = localaoaj;
+        if (QLog.isDevelopLevel())
+        {
+          axxb.a("HotchatSCMng", "parse ConfigData", new Object[] { localaoaj });
+          return localaoaj;
         }
       }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[url:").append(this.a).append(",").append("md5:").append(this.b).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoaj
  * JD-Core Version:    0.7.0.1
  */

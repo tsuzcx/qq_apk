@@ -1,35 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
 final class nnu
-  implements BusinessObserver
+  implements HostnameVerifier
 {
-  nnu(QQAppInterface paramQQAppInterface, nnw paramnnw) {}
+  nnu(String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        nnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nnw);
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
-    }
-    this.jdField_a_of_type_Nnw.a();
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a, paramSSLSession);
+    QLog.d("Q.share.sdk", 1, new Object[] { "uploadImageWithHttps|verify hostname=", paramString, ", host=", this.a, ", verify=", Boolean.valueOf(bool) });
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     nnu
  * JD-Core Version:    0.7.0.1
  */

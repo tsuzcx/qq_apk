@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDianDianEntranceModule.1;
 
 public class pqe
-  extends pmn
+  implements pff
 {
-  public pqe(ReadInJoySelfCenterViolaFragment paramReadInJoySelfCenterViolaFragment) {}
+  public pqe(ReadInJoyDianDianEntranceModule.1 param1) {}
   
-  public void l()
+  public void a(pfh parampfh)
   {
-    ReadInJoySelfCenterViolaFragment.a(this.a);
+    parampfh.a(this.a.a);
   }
 }
 

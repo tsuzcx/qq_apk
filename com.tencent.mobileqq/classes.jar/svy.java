@@ -1,32 +1,90 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
 public class svy
-  implements qzb
+  extends svv
 {
-  public svy(FastWebActivity paramFastWebActivity) {}
+  private RefreshAnimView a;
+  
+  public svy(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298693);
+  }
+  
+  public View a(ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Aayo == null)
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562797, paramViewGroup, false);
+      paramViewGroup.findViewById(2131376444).getLayoutParams().width = -2;
+      this.jdField_a_of_type_Aayo = ((aayo)paramViewGroup);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView = ((RefreshAnimView)((PullRefreshHeader)this.jdField_a_of_type_Aayo).findViewById(2131376436));
+    }
+    return (View)this.jdField_a_of_type_Aayo;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aayo.a(0L);
+    this.jdField_a_of_type_Aayo.aq_();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    super.a(paramInt, paramBoolean);
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
+    }
+    if (paramInt == 100)
+    {
+      this.jdField_a_of_type_Aayo.b(0L);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aayo.aq_();
+      return;
+    }
+    this.jdField_a_of_type_Aayo.c(0L);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / 100.0D);
+  }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)FastWebActivity.a(this.a).getLayoutParams();
-      int i = zby.b(this.a, 144.0F);
-      localLayoutParams.rightMargin = i;
-      localLayoutParams.leftMargin = i;
-      FastWebActivity.a(this.a).setLayoutParams(localLayoutParams);
-      FastWebActivity.a(this.a).setVisibility(0);
-      FastWebActivity.a(this.a).setOnClickListener(new svz(this));
-      FastWebActivity.a(this.a);
-      if (FastWebActivity.b(this.a)) {
-        FastWebActivity.a(this.a).setImageResource(2130849519);
-      }
-      FastWebActivity.a(this.a).a(2, FastWebActivity.a(this.a), this.a.a.innerUniqueID);
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
     }
+    this.jdField_a_of_type_Aayo.a(0L);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
   }
 }
 

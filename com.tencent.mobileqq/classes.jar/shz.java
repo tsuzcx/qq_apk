@@ -1,12 +1,17 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public abstract interface shz
+public class shz
+  extends pmr
 {
-  public abstract void b(VideoInfo paramVideoInfo);
+  public shz(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void b(String paramString);
-  
-  public abstract void d(VideoInfo paramVideoInfo);
+  public void a(pmk parampmk)
+  {
+    parampmk.d();
+  }
 }
 
 

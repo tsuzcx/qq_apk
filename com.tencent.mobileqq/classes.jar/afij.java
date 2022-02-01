@@ -1,27 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class afij
-  extends MqqHandler
+  implements biau
 {
-  public afij(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public afij(QQSettingMe paramQQSettingMe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (this.a.a != null)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+      }
+      this.a.c(this.a.a.getAccount());
     }
-    this.a.c();
   }
 }
 

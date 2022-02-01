@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class akdj
   implements DialogInterface.OnClickListener
 {
-  public akdj(DialogBaseActivity paramDialogBaseActivity) {}
+  public akdj(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    paramDialogInterface.dismiss();
+    this.a.getActivity().setResult(8001);
   }
 }
 

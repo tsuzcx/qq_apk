@@ -19,7 +19,7 @@ public class WebInputHandler$KeyboardHiddenObserver
   
   public void onSoftKeyboardClosed()
   {
-    WebInputHandler.access$002(this.this$0, false);
+    WebInputHandler.access$102(this.this$0, false);
     QMLog.i("WebInputHandler", "onSoftKeyboardClosed");
     InputMethodManager localInputMethodManager = (InputMethodManager)WebInputHandler.access$200(this.this$0).getContext().getSystemService("input_method");
     if (localInputMethodManager == null) {
@@ -29,7 +29,7 @@ public class WebInputHandler$KeyboardHiddenObserver
     if ((WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null)) {
       WebInputHandler.access$400(this.this$0, new float[] { WebInputHandler.access$200(this.this$0).getPageWebviewContainer().getTranslationY(), 0.0F });
     }
-    this.this$0.hideCurrentInput(true);
+    this.this$0.hideCurrentInput();
   }
   
   public void onSoftKeyboardOpened(int paramInt)
@@ -39,9 +39,8 @@ public class WebInputHandler$KeyboardHiddenObserver
     {
       try
       {
-        WebInputHandler.access$002(this.this$0, true);
-        QMLog.i("WebInputHandler", "onSoftKeyboardOpened");
-        WebInputHandler.access$102(this.this$0, paramInt);
+        WebInputHandler.access$002(this.this$0, paramInt);
+        WebInputHandler.access$102(this.this$0, true);
         if ((WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null))
         {
           Object localObject1 = WebInputHandler.access$200(this.this$0).getPageWebviewContainer().getAttachActivity();
@@ -54,7 +53,7 @@ public class WebInputHandler$KeyboardHiddenObserver
             bool1 = DisplayUtil.checkNavigationBarShow((Context)localObject1);
             QMLog.d("WebInputHandler", " hasNavBar : " + bool1 + "; " + Build.BRAND);
             if (bool1) {
-              WebInputHandler.access$102(this.this$0, WebInputHandler.access$100(this.this$0) + DisplayUtil.getNavigationBarHeight(WebInputHandler.access$200(this.this$0).getPageWebviewContainer().getAttachActivity()));
+              WebInputHandler.access$002(this.this$0, WebInputHandler.access$000(this.this$0) + DisplayUtil.getNavigationBarHeight(WebInputHandler.access$200(this.this$0).getPageWebviewContainer().getAttachActivity()));
             }
           }
           localObject1 = new JSONObject();

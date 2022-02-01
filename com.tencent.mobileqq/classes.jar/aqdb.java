@@ -1,18 +1,17 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-final class aqdb
-  implements DialogInterface.OnClickListener
+class aqdb
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  aqdb(bgpa parambgpa, Context paramContext) {}
+  aqdb(aqcz paramaqcz, Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Bgpa.isShowing()) {
-      this.jdField_a_of_type_Bgpa.dismiss();
+    if (paramBitmap != null) {
+      aqcz.a(this.jdField_a_of_type_Aqcz, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
     }
-    aqfv.a(this.jdField_a_of_type_AndroidContentContext, true);
   }
 }
 

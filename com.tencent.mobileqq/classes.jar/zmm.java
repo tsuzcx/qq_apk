@@ -1,20 +1,42 @@
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import java.lang.reflect.Field;
+
 public class zmm
-  implements zmv
 {
-  public long b;
-  
-  public void onFailure(String paramString) {}
-  
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
   {
-    this.b = System.currentTimeMillis();
+    try
+    {
+      paramLayoutInflater.setFactory(paramFactory);
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      zmo.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
+      try
+      {
+        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
+        localField1.setAccessible(true);
+        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
+        localField2.setAccessible(true);
+        localField1.set(paramLayoutInflater, paramFactory);
+        localField2.set(paramLayoutInflater, paramFactory);
+        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
+        {
+          zmo.b("LayoutModifier", "hookLayoutInflaterFactory success");
+          return;
+        }
+      }
+      catch (Exception paramLayoutInflater)
+      {
+        zmo.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
+        return;
+      }
+      zmo.b("LayoutModifier", "hookLayoutInflaterFactory failed");
+    }
   }
-  
-  public void onSuccess(String paramString) {}
 }
 
 

@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Message;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aljp
-  extends aopa
+class aljp
+  extends apec
 {
-  public aljp(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aljp(aljo paramaljo) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if ((paramBoolean) && (paramList != null))
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
       if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
       }
-      if (NewFlowCameraActivity.a(this.a) != null) {
-        NewFlowCameraActivity.d(this.a);
-      }
+      aljo.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
     }
-    do
-    {
-      return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 

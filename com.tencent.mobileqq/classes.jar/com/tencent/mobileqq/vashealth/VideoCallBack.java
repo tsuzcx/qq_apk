@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vashealth;
 
-import alip;
+import aluh;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import bgkc;
-import bhfz;
-import biau;
+import bhkd;
+import bigo;
+import bjbs;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -15,7 +15,7 @@ import mqq.app.AppRuntime;
 import mqq.app.BaseActivity;
 
 public class VideoCallBack
-  implements alip
+  implements aluh
 {
   private String a;
   
@@ -23,39 +23,39 @@ public class VideoCallBack
   {
     int i = paramIntent.getIntExtra("sv_encode_max_bitrate", -1);
     if (i > 0) {
-      bcjb.r = i;
+      bdbt.r = i;
     }
     i = paramIntent.getIntExtra("sv_encode_min_bitrate", -1);
     if (i > 0) {
-      bcjb.s = i;
+      bdbt.s = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmax", -1);
     if (i > 0) {
-      bcjb.t = i;
+      bdbt.t = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmin", -1);
     if (i > 0) {
-      bcjb.u = i;
+      bdbt.u = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmaxdiff", -1);
     if (i > 0) {
-      bcjb.v = i;
+      bdbt.v = i;
     }
     i = paramIntent.getIntExtra("sv_encode_ref_frame", -1);
     if (i > 0) {
-      bcjb.w = i;
+      bdbt.w = i;
     }
     i = paramIntent.getIntExtra("sv_encode_smooth", -1);
     if (i > 0) {
-      bcjb.x = i;
+      bdbt.x = i;
     }
-    bcjb.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
-    bcjb.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
-    bcjb.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
-    bcjb.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
-    bcjb.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
-    bcjb.z = paramIntent.getIntExtra("sv_total_frame_count", 0);
-    bcjb.y = paramIntent.getIntExtra("sv_total_record_time", 0);
+    bdbt.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
+    bdbt.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
+    bdbt.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
+    bdbt.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
+    bdbt.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
+    bdbt.z = paramIntent.getIntExtra("sv_total_frame_count", 0);
+    bdbt.y = paramIntent.getIntExtra("sv_total_record_time", 0);
   }
   
   public String a()
@@ -81,7 +81,7 @@ public class VideoCallBack
     localIntent.putExtra("PhotoConst.MY_UIN", str1);
     localIntent.putExtras(paramActivity.getIntent().getExtras());
     paramActivity.startActivityForResult(localIntent, 4097);
-    bgkc.anim(paramActivity, false, true);
+    bhkd.anim(paramActivity, false, true);
   }
   
   public void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
@@ -104,9 +104,9 @@ public class VideoCallBack
     }
     String str = paramIntent.getStringExtra("file_video_source_dir");
     Object localObject = paramIntent.getStringExtra("thumbfile_send_path");
-    biau localbiau = new biau(paramActivity);
-    localObject = new bhfz(this, localbiau, (String)localObject, paramActivity);
-    paramActivity.runOnUiThread(new VideoCallBack.2(this, localbiau));
+    bjbs localbjbs = new bjbs(paramActivity);
+    localObject = new bigo(this, localbjbs, (String)localObject, paramActivity);
+    paramActivity.runOnUiThread(new VideoCallBack.2(this, localbjbs));
     a(paramIntent);
     paramActivity = new EncodeThread(paramActivity, (Handler)localObject, str, null, null);
     paramActivity.a(false);

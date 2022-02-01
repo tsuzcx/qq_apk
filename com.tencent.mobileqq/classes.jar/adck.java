@@ -1,41 +1,33 @@
-import android.app.PendingIntent;
-import android.location.Criteria;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Looper;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.qapmsdk.battery.BatteryMonitor;
-import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.MsgBody;
 
-class adck
-  extends adcl
+public class adck
+  implements adci
 {
-  public HookMethodCallback a()
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    return BatteryMonitor.getInstance().getGpsHook();
-  }
-  
-  public void a()
-  {
+    SubMsgType0x27.MsgBody localMsgBody = new SubMsgType0x27.MsgBody();
     try
     {
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, PendingIntent.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, PendingIntent.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, PendingIntent.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, PendingIntent.class, this });
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      ((axaa)paramQQAppInterface.getManager(284)).a(localMsgBody, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
+      QLog.e("Q.msg.BaseMessageProcessor", 1, paramQQAppInterface, new Object[0]);
     }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

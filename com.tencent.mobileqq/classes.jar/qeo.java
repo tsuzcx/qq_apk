@@ -1,35 +1,28 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 class qeo
-  implements ViewBase.OnClickListener
+  implements pln
 {
-  qeo(qel paramqel, Container paramContainer) {}
+  qeo(qen paramqen) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a()
   {
-    paramViewBase = BaseApplicationImpl.getContext();
-    int i;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
-      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        i = 1;
-      }
+    QLog.d("RvPolymericContainer", 2, "stopScroll as videoplayer start");
+    qek.b(this.a.a);
+  }
+  
+  public void b()
+  {
+    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer stop");
+    if (qek.a(this.a.a) != null) {
+      qek.a(this.a.a, qek.a(this.a.a).a());
     }
-    for (;;)
-    {
-      if ((i == 0) && (pzo.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
-        qel.a(this.jdField_a_of_type_Qel, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
-      }
-      return;
-      i = 0;
-      continue;
-      i = 1;
-    }
+  }
+  
+  public void c()
+  {
+    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer complete");
+    qek.a(this.a.a, 1000L);
   }
 }
 

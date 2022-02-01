@@ -1,18 +1,33 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
+import java.util.ArrayList;
 
 public class adtw
-  implements View.OnClickListener
+  extends anwt
 {
-  public adtw(ChatHistory paramChatHistory) {}
+  public adtw(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
+      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
+    }
   }
 }
 

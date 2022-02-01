@@ -1,16 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
 public class asil
-  implements DialogInterface.OnClickListener
+  extends askq
 {
-  public asil(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  public asil(MessengerService paramMessengerService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+    int i = 2;
+    if (this.a.a != null) {}
+    try
+    {
+      Message localMessage = Message.obtain(null, 5);
+      int j = Integer.valueOf(paramEmoticonPackage.epId).intValue();
+      if (paramInt == 0) {
+        i = 0;
+      }
+      for (;;)
+      {
+        paramEmoticonPackage = new Bundle();
+        paramEmoticonPackage.putInt("packetid", j);
+        paramEmoticonPackage.putInt("peoriodtype", 1);
+        paramEmoticonPackage.putInt("resultcode", i);
+        localMessage.setData(paramEmoticonPackage);
+        this.a.a.send(localMessage);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
+        }
+        return;
+        if (paramInt != 11007) {
+          if (paramInt == 11001) {
+            i = 1;
+          } else if (paramInt == 11000) {
+            i = 6;
+          } else {
+            i = -1;
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramEmoticonPackage)
+    {
+      return;
+    }
+    catch (RemoteException paramEmoticonPackage) {}
   }
 }
 

@@ -1,18 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 
-public class nnh
-  implements aaob
+final class nnh
+  extends AsyncTask<Void, Void, Void>
 {
-  public nnh(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  String jdField_a_of_type_JavaLangString = "";
   
-  public void callback(Bundle paramBundle)
+  nnh(nni paramnni, String paramString) {}
+  
+  protected Void a(Void... paramVarArgs)
   {
-    if (paramBundle != null)
+    this.jdField_a_of_type_JavaLangString = nng.a(this.b);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    super.onPostExecute(paramVoid);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      paramBundle = paramBundle.getString("music");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.jdField_a_of_type_Nni.a();
+      return;
     }
+    this.jdField_a_of_type_Nni.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

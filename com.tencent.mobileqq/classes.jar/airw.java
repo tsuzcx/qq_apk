@@ -1,48 +1,22 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Point;
 
 public class airw
-  implements ssu
 {
-  public airw(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private int jdField_a_of_type_Int;
+  private airm jdField_a_of_type_Airm;
+  private airn jdField_a_of_type_Airn;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(String paramString)
+  airw(Point paramPoint, String paramString, boolean paramBoolean, airn paramairn, airm paramairm, int paramInt)
   {
-    Object localObject;
-    if (paramString != null)
-    {
-      Iterator localIterator = this.a.c.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (ChannelInfo)localIterator.next();
-      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
-    }
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      if (paramString != null)
-      {
-        if (!TextUtils.isEmpty(paramString.mJumpUrl))
-        {
-          localObject = new Intent(this.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("hide_operation_bar", true);
-          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
-          this.a.startActivity((Intent)localObject);
-        }
-      }
-      else {
-        return;
-      }
-      ohp.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
-      return;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Airn = paramairn;
+    this.jdField_a_of_type_Airm = paramairm;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

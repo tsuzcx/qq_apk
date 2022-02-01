@@ -1,14 +1,24 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-class ader
-  extends JobSegment<awlp, awlp>
+public class ader
+  implements adci
 {
-  ader(adep paramadep, String paramString, int paramInt) {}
-  
-  protected void a(JobContext paramJobContext, awlp paramawlp)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    awlu.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new ades(this, this));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qwallet.push", 2, "receive msg0x210submsg0x7e");
+    }
+    akyb.b(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

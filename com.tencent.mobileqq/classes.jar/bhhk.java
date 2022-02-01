@@ -1,14 +1,8 @@
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 
 public abstract interface bhhk
 {
-  public abstract int a(boolean paramBoolean, String paramString);
-  
-  public abstract bhhf a(String paramString);
-  
-  public abstract void a(bhhf parambhhf, bhhe parambhhe, Bundle paramBundle);
-  
-  public abstract void b();
+  public abstract Drawable a();
 }
 
 

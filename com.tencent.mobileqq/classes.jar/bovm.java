@@ -1,22 +1,11 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import java.util.ArrayList;
 
 public class bovm
-  implements View.OnTouchListener
 {
-  public bovm(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    CropVideoActivity.a(this.a).a(paramMotionEvent);
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
-  }
+  public ArrayList<String> a = new ArrayList();
+  public ArrayList<String> b = new ArrayList();
+  public ArrayList<String> c = new ArrayList();
+  public ArrayList<Integer> d = new ArrayList();
 }
 
 

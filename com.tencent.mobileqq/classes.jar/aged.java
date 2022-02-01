@@ -1,33 +1,77 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.1;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.Set;
 
 public class aged
-  implements OnCompositionLoadedListener
 {
-  public aged(AudioTransitionAnimManager.1 param1) {}
+  public agee a;
+  private ViewGroup a;
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public aged(ViewGroup paramViewGroup)
   {
-    if (paramLottieComposition == null)
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+  }
+  
+  public void a(agee paramagee)
+  {
+    this.jdField_a_of_type_Agee = paramagee;
+  }
+  
+  public void a(aiwf paramaiwf)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramaiwf != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaiwf)))
     {
-      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
+      QLog.d("AIOTipsController", 2, "showHearerTips called object=" + str);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.2(this, paramaiwf));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
+  }
+  
+  public void a(View paramView, aiwf paramaiwf)
+  {
+    int j;
+    if (paramView != null)
+    {
+      j = this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView);
+      if (j == -1) {
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, new ViewGroup.LayoutParams(-1, -2));
+      }
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).setVisibility(8);
+        i += 1;
+      }
+      if (QLog.isColorLevel()) {
+        if (paramaiwf != null) {
+          break label152;
+        }
+      }
     }
-    agec.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    agei localagei = new agei(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImageAssetDelegate(localagei);
-    agec.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
-    agec.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
+    label152:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaiwf)))
+    {
+      QLog.d("AIOTipsController", 2, "showHearerTips called childIndex = " + j + " object=" + str);
+      paramView.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.1(this, paramaiwf));
+      return;
+    }
   }
 }
 

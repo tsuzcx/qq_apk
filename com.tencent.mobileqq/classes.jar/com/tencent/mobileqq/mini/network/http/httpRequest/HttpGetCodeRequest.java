@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetCodeReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetCodeRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.mini.network.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -49,7 +49,7 @@ public class HttpGetCodeRequest
     INTERFACE.StGetCodeRsp localStGetCodeRsp = new INTERFACE.StGetCodeRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bguc.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bhuf.b(paramArrayOfByte));
       localStGetCodeRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       QLog.d("HttpGetCodeRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
       if (localStGetCodeRsp != null)

@@ -1,21 +1,14 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment;
+import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
 
 public class vmc
-  extends RecyclerView.OnScrollListener
+  implements wew
 {
-  public vmc(QCircleFolderRcmdTabFragment paramQCircleFolderRcmdTabFragment) {}
+  public vmc(QCircleContentImage paramQCircleContentImage) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(float paramFloat)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      adcd.a().a("qcircle_all_push_tab_page", false);
-      return;
-    }
-    adcd.a().a("qcircle_all_push_tab_page");
+    aaak.a().a(new QCircleContentImmersiveEvent(3));
   }
 }
 

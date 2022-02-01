@@ -1,31 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class ajcp
-  extends ajcl
+class ajcp
+  implements Animator.AnimatorListener
 {
-  public ajcp(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajco paramajco)
+  ajcp(ajcn paramajcn) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramQQAppInterface, paramContext, paramXListView, paramajco);
+    this.a.a.a = true;
+    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
+    paramAnimator.putExtra("from_key", this.a.a.a());
+    paramAnimator.putExtra("fromType", 13);
+    this.a.a.startActivity(paramAnimator);
+    this.a.a.overridePendingTransition(0, 0);
+    bhjs.a(false);
   }
   
-  protected ajcf a()
-  {
-    return new ajck(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  protected void d()
-  {
-    super.d();
-    bcst.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
-  }
-  
-  public void e()
-  {
-    super.e();
-    bcst.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

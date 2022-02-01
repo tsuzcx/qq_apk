@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.Toast;
-import anni;
-import aqcb;
-import bgpa;
+import anzj;
+import aqre;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -31,7 +31,7 @@ public class AppBrandUI
   public static final String TAG = "miniapp-start_AppBrandUI";
   private boolean enableMemoryDetect = true;
   protected IFakeBrandUI mFakeBrandUI;
-  private bgpa mRestartDialog;
+  private bhpc mRestartDialog;
   
   private void detectMemory()
   {
@@ -91,19 +91,19 @@ public class AppBrandUI
       int i = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_alert_mode", 0);
       if (i == 0)
       {
-        Toast.makeText(this, 2131693692, 0).show();
+        Toast.makeText(this, 2131693709, 0).show();
         return;
       }
       if (i == 1)
       {
         if (this.mRestartDialog == null)
         {
-          this.mRestartDialog = new bgpa(this, 2131755823);
-          this.mRestartDialog.setContentView(2131558985);
-          this.mRestartDialog.setTitle(2131693663);
-          this.mRestartDialog.setMessage(2131693692);
-          this.mRestartDialog.setPositiveButton(anni.a(2131704680), new AppBrandUI.6(this));
-          this.mRestartDialog.setNegativeButton(anni.a(2131704677), new AppBrandUI.7(this));
+          this.mRestartDialog = new bhpc(this, 2131755824);
+          this.mRestartDialog.setContentView(2131558984);
+          this.mRestartDialog.setTitle(2131693675);
+          this.mRestartDialog.setMessage(2131693709);
+          this.mRestartDialog.setPositiveButton(anzj.a(2131704787), new AppBrandUI.6(this));
+          this.mRestartDialog.setNegativeButton(anzj.a(2131704784), new AppBrandUI.7(this));
           this.mRestartDialog.setCanceledOnTouchOutside(true);
         }
         if (!this.mRestartDialog.isShowing())
@@ -228,7 +228,7 @@ public class AppBrandUI
     super.finish();
   }
   
-  public aqcb getColorNoteController()
+  public aqre getColorNoteController()
   {
     IFakeBrandUI localIFakeBrandUI = getFakeBrandUI();
     if ((localIFakeBrandUI instanceof FakeBrandUI)) {

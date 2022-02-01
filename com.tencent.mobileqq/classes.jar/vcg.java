@@ -1,16 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vcg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  vcg(vcb paramvcb) {}
+  vcg(vcb paramvcb, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    vcb.a(this.a).getLayoutParams().width = (((Integer)paramValueAnimator.getAnimatedValue()).intValue() + bgtn.a(50.0F));
-    vcb.a(this.a).requestLayout();
+    vbr.a(this.jdField_a_of_type_Vcb.jdField_a_of_type_Vbr).a(this.jdField_a_of_type_Vcb.jdField_a_of_type_Vbr.a().hashCode(), vbr.a(this.jdField_a_of_type_Vcb.jdField_a_of_type_Vbr), this.jdField_a_of_type_Vcb.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int, vbr.a(this.jdField_a_of_type_Vcb.jdField_a_of_type_Vbr));
   }
 }
 

@@ -1,6 +1,18 @@
-public abstract interface aaes
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aaes
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aaes(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  
+  public void onClick(View paramView)
+  {
+    FollowedRecommendBannerView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,13 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import acqx;
-import acqy;
-import acrx;
-import acry;
-import acrz;
+import acvb;
+import acvc;
+import acwb;
+import acwc;
+import acwd;
 import android.content.Context;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.core.ViolaInstance;
 import org.json.JSONException;
@@ -23,16 +24,17 @@ class BridgeModule$6
     if (BaseActivity.sTopActivity == null) {
       return;
     }
+    QLog.d(BridgeModule.TAG, 2, "getGdtDeviceInfo callback result");
     Object localObject = BaseActivity.sTopActivity.getApplicationContext();
     JSONObject localJSONObject = new JSONObject();
-    acry localacry = new acry();
-    localacry.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
-    localObject = acrx.a((Context)localObject, localacry);
+    acwc localacwc = new acwc();
+    localacwc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
+    localObject = acwb.a((Context)localObject, localacwc);
     if (localObject == null)
     {
       localObject = null;
       if ((localObject == null) || (localObject == JSONObject.NULL)) {
-        break label157;
+        break label166;
       }
     }
     for (;;)
@@ -41,17 +43,17 @@ class BridgeModule$6
       {
         localJSONObject.put("deviceInfo", localObject);
         if (!this.jdField_a_of_type_Boolean) {
-          break label168;
+          break label177;
         }
         this.this$0.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
         return;
-        localObject = ((acrz)localObject).a;
+        localObject = ((acwd)localObject).a;
         if (localObject == null)
         {
           localObject = null;
           break;
         }
-        localObject = acqx.a((PBField)localObject);
+        localObject = acvb.a((PBField)localObject);
         if (localObject == null)
         {
           localObject = null;
@@ -66,13 +68,13 @@ class BridgeModule$6
       }
       catch (JSONException localJSONException)
       {
-        acqy.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
+        acvc.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
         continue;
       }
-      label157:
-      acqy.d(BridgeModule.TAG, "handleJsCallRequest error");
+      label166:
+      acvc.d(BridgeModule.TAG, "handleJsCallRequest error");
     }
-    label168:
+    label177:
     ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), this.this$0.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
   }
 }

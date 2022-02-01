@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afyw;
+import agiq;
 import com.tencent.image.URLDrawable;
 
 public class IntimateInfoView$11
   implements Runnable
 {
-  public IntimateInfoView$11(afyw paramafyw) {}
+  public IntimateInfoView$11(agiq paramagiq) {}
   
   public void run()
   {
-    if (afyw.a(this.this$0).getStatus() == 0)
+    if (agiq.a(this.this$0).getStatus() == 0)
     {
-      afyw.a(this.this$0).downloadImediatly();
+      agiq.a(this.this$0).downloadImediatly();
       return;
     }
-    afyw.a(this.this$0).restartDownload();
+    agiq.a(this.this$0).restartDownload();
   }
 }
 

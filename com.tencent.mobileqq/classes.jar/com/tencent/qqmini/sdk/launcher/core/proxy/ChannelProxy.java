@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.launcher.core.proxy;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import android.app.Activity;
@@ -14,10 +15,12 @@ import com.tencent.qqmini.sdk.launcher.core.auth.UserAuthInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
 import com.tencent.qqmini.sdk.launcher.model.RealTimeLogItem;
+import com.tencent.qqmini.sdk.launcher.model.TouchInfo;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public abstract interface ChannelProxy
@@ -33,6 +36,8 @@ public abstract interface ChannelProxy
   public abstract boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
   public abstract void batchGetContact(ArrayList<String> paramArrayList, AsyncResult paramAsyncResult);
+  
+  public abstract void checkBindingState(String paramString1, String paramString2, int paramInt, AsyncResult paramAsyncResult);
   
   public abstract void checkNavigateRight(String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
@@ -59,6 +64,10 @@ public abstract interface ChannelProxy
   public abstract void getAppInfoByLink(String paramString, int paramInt, AsyncResult paramAsyncResult);
   
   public abstract void getAuthList(String paramString, ChannelProxy.AuthListResult paramAuthListResult);
+  
+  public abstract void getAuthListForSubscribe(String paramString, AsyncResult paramAsyncResult);
+  
+  public abstract JSONArray getChooseMessageTempFilesArray(Intent paramIntent);
   
   public abstract void getContentAccelerate(String paramString1, String paramString2, int paramInt, Map<String, String> paramMap, AsyncResult paramAsyncResult);
   
@@ -124,9 +133,13 @@ public abstract interface ChannelProxy
   
   public abstract void getUserSetting(String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult);
   
+  public abstract String getUserTheme();
+  
   public abstract AbsVideoPlayer getVideoPlayer();
   
   public abstract void httpReport(Bundle paramBundle);
+  
+  public abstract void insertBookShelf(String paramString1, String paramString2, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult);
   
   public abstract boolean isGooglePlayVersion();
   
@@ -140,7 +153,7 @@ public abstract interface ChannelProxy
   
   public abstract void login(String paramString, AsyncResult paramAsyncResult);
   
-  public abstract void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult);
+  public abstract void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, boolean paramBoolean, CloudStorage.StInteractiveTemplate paramStInteractiveTemplate, AsyncResult paramAsyncResult);
   
   public abstract boolean openGroup(Context paramContext, String paramString, AsyncResult paramAsyncResult);
   
@@ -149,6 +162,8 @@ public abstract interface ChannelProxy
   public abstract boolean openQzonePublish(IMiniAppContext paramIMiniAppContext, Activity paramActivity, String paramString, MiniAppInfo paramMiniAppInfo);
   
   public abstract boolean openRobotProfileCard(Context paramContext, String paramString1, String paramString2);
+  
+  public abstract void queryBookShelf(String paramString, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult);
   
   public abstract void queryCurrency(String paramString1, String paramString2, int paramInt1, int paramInt2, AsyncResult paramAsyncResult);
   
@@ -182,6 +197,8 @@ public abstract interface ChannelProxy
   
   public abstract boolean startBrowserSupportHeaderActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt);
   
+  public abstract boolean startChooseMessageFileActivityForResult(Activity paramActivity, int paramInt1, String paramString, int paramInt2);
+  
   public abstract boolean startTransparentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt);
   
   public abstract void syncForceGroundAndRefreshBadge(Activity paramActivity, String paramString1, String paramString2);
@@ -194,7 +211,11 @@ public abstract interface ChannelProxy
   
   public abstract boolean updateBaseLib(String paramString, boolean paramBoolean1, boolean paramBoolean2, AsyncResult paramAsyncResult);
   
+  public abstract void updateBookshelfReadtime(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult);
+  
   public abstract boolean updateEntryList(String paramString);
+  
+  public abstract void updateTouchInfoList(ArrayList<TouchInfo> paramArrayList);
   
   public abstract void updateUserSetting(String paramString, INTERFACE.StUserSettingInfo paramStUserSettingInfo, AsyncResult paramAsyncResult);
   
@@ -208,7 +229,7 @@ public abstract interface ChannelProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy
  * JD-Core Version:    0.7.0.1
  */

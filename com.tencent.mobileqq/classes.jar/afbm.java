@@ -1,139 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class afbm
-  extends AccountObserver
+  extends BroadcastReceiver
 {
-  public afbm(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public afbm(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp isSuccess=" + paramBoolean + ",code=" + paramInt);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      NotifyPushSettingActivity.a(this.a, paramContext);
     }
-    if (this.a.isFinishing()) {}
-    label234:
-    label241:
     do
     {
-      return;
-      this.a.c();
-      try
+      boolean bool;
+      do
       {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        QQAppInterface localQQAppInterface = this.a.app;
-        String str2 = Integer.toString(paramInt);
-        if (TextUtils.isEmpty(this.a.c))
-        {
-          str1 = "2";
-          if (paramArrayOfByte != null) {
-            break label234;
-          }
-          localObject = "";
-          bcst.a(localQQAppInterface, "new_reg", "msg_page", "next_clk", "", 1, "", str2, str1, (String)localObject, "", "", "", "", "");
-          if ((paramBoolean) && (paramInt == 0)) {
-            break label241;
-          }
-          paramString1 = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte)) {
-            paramString1 = this.a.getString(2131715770);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp error=" + paramString1);
-          }
-          this.a.a(paramString1, 1);
+        return;
+        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
+          break;
         }
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte)
+        paramContext = paramIntent.getStringExtra("uin");
+        bool = paramIntent.getBooleanExtra("configPCActive", false);
+      } while (!this.a.app.getAccount().equals(paramContext));
+      if (true == bool)
       {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-          continue;
-          String str1 = "1";
-          continue;
-          Object localObject = paramArrayOfByte;
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          RegisterVerifyCodeActivity.a(this.a, paramString1);
-        }
-        if (!TextUtils.isEmpty(paramString2)) {
-          RegisterVerifyCodeActivity.b(this.a, paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString3)) {
-          RegisterVerifyCodeActivity.c(this.a, paramString3);
-        }
-        this.a.a();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "onRegisterCommitSmsCodeResp code=" + paramInt + " ,uin=" + paramString1 + " ,nick=" + paramString2 + " ,faceUrl=" + paramString3);
-  }
-  
-  public void onRegisterSendResendSmsreqResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp");
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (!paramBoolean) {
-      try
-      {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        localObject = paramArrayOfByte;
-        if (TextUtils.isEmpty(paramArrayOfByte)) {
-          localObject = this.a.getString(2131715770);
-        }
-        this.a.a((String)localObject, 1);
+        NotifyPushSettingActivity.g(this.a).setVisibility(0);
         return;
       }
-      catch (UnsupportedEncodingException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-        }
-      }
-    }
-    if (paramArrayOfByte != null) {}
-    try
-    {
-      localObject = new String(paramArrayOfByte, "utf-8");
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp code = " + paramInt1 + ";strMsg = " + (String)localObject + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        if (paramInt1 == 5)
-        {
-          paramInt1 = paramInt2;
-          if (paramInt2 <= 60) {
-            paramInt1 = 60;
-          }
-          RegisterVerifyCodeActivity.a(this.a, paramInt1);
-        }
-      }
-    }
-    if (paramInt1 == 0)
-    {
-      RegisterVerifyCodeActivity.a(this.a, 60);
-      RegisterVerifyCodeActivity.a(this.a, RegisterVerifyCodeActivity.c(this.a));
+      NotifyPushSettingActivity.g(this.a).setVisibility(8);
       return;
-    }
+    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
+    paramContext = paramIntent.getStringExtra("uin");
+    NotifyPushSettingActivity.b(this.a, paramContext);
   }
 }
 

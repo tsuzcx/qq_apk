@@ -1,17 +1,33 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
-class vqq
-  implements zxa<FeedCloudRead.StGetFeedListRsp>
+final class vqq
+  implements URLDrawable.URLDrawableListener
 {
-  vqq(vqp paramvqp, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, zzp paramzzp) {}
+  vqq(int[] paramArrayOfInt) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.d("QCircleTagPreLoaderTask", 1, "QCircleTagPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if (this.jdField_a_of_type_Zzp != null) {
-      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedListRsp });
+    if (QLog.isColorLevel()) {
+      QLog.d(vqo.a, 2, "applyNormalPaster onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(vqo.a, 2, "urlDrawableListener onLoadSuccessed");
+    }
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
+      ApngImage.playByTag(this.a[0]);
     }
   }
 }

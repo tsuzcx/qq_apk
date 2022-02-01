@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMarkerClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 
 public class afhb
-  implements View.OnClickListener
+  implements TencentMap.OnMarkerClickListener
 {
-  public afhb(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public afhb(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onMarkerClick(Marker paramMarker)
   {
-    this.a.b(this.a.getShareUrl());
-    paramView.setEnabled(false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return true;
   }
 }
 

@@ -1,6 +1,18 @@
-public abstract interface ahqz
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class ahqz
+  implements bizc
 {
-  public abstract void a(Object paramObject);
+  ahqz(ahqw paramahqw, ahrh paramahrh) {}
+  
+  public void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    }
+  }
 }
 
 

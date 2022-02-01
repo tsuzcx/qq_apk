@@ -1,6 +1,13 @@
-public abstract interface ozd
+public class ozd
 {
-  public abstract void onViewState(boolean paramBoolean, String paramString);
+  public String a;
+  public String b;
+  public String c;
+  
+  public String toString()
+  {
+    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
+  }
 }
 
 

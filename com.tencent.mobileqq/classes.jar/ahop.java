@@ -1,13 +1,19 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahop
-  implements ahor
+class ahop
+  implements View.OnClickListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahop(ahoo paramahoo) {}
+  
+  public void onClick(View paramView)
   {
-    paramagup.g(paramagwc, paramString);
+    ChatMessage localChatMessage = this.a.a(paramView);
+    this.a.a.b(localChatMessage);
+    this.a.a.d();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

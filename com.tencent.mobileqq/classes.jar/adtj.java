@@ -1,13 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adtj
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public adtj(ChatHistory paramChatHistory) {}
+  public adtj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onGlobalLayout()
+  {
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    {
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
+      }
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
+      }
+    }
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    ((EditText)localObject).setCursorVisible(true);
+  }
 }
 
 

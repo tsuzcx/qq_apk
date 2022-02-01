@@ -1,11 +1,16 @@
-import android.graphics.Bitmap;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class apxn
+  implements apxs
 {
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  apxn(apxm paramapxm) {}
+  
+  public void a(String paramString)
+  {
+    ArkAppCenter.a().post(this.a.a, new ArkAppYYBDownloadModule.1.1(this, paramString));
+  }
 }
 
 

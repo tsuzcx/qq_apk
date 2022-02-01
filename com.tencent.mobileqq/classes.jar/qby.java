@@ -1,29 +1,91 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class qby
+  extends ViewBase
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new qbz(this);
+  private NativeReadInjoyImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
+  private pcs jdField_a_of_type_Pcs;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public qby(VafContext paramVafContext)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    qcd.a(paramBaseArticleInfo, localJSONObject1, Utils.toLong(paramBaseArticleInfo.mSubscribeID));
-    qcd.q(paramBaseArticleInfo, localJSONObject1);
-    qcd.t(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("id_content_wrapper", new JSONObject());
-    localJSONObject1.put("id_article_wrapper", new JSONObject());
-    localJSONObject1.put("id_multi_image", new JSONObject());
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", anni.a(2131711809));
-    localJSONObject1.put("id_summary", localJSONObject2);
-    localJSONObject2 = new JSONObject();
-    localJSONObject2.put("article_small_imge_url", "https://qqpublic.qpic.cn/qq_public_cover/0/0-1512726317-04871A48D592EB571A29D6F16C134B70_open/320");
-    localJSONObject1.put("id_article_small_imge", localJSONObject2);
-    qcd.a(paramBaseArticleInfo, localJSONObject1, false);
-    qcd.l(paramBaseArticleInfo, localJSONObject1);
-    qcd.C(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("style_ID", "ReadInjoy_pgc_multi_cell");
-    return localJSONObject1;
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver() != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Pcs != null) {
+      this.jdField_a_of_type_Pcs.resumeAnimation();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Pcs != null) {
+      this.jdField_a_of_type_Pcs.pauseAnimation();
+    }
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setBackgroundColor(this.mBackground);
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    }
+    try
+    {
+      this.jdField_a_of_type_Pcs = pcs.a(paramString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_Pcs);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("ReadInJoyLottieView", 1, paramString.getMessage());
+    }
+    return true;
   }
 }
 

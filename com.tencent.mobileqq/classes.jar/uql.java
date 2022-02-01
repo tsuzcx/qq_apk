@@ -1,20 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-class uql
-  implements View.OnClickListener
+final class uql
+  implements ShareActionSheet.OnItemClickListener
 {
-  uql(uqk paramuqk) {}
+  uql(Context paramContext, upd paramupd) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    if (uqk.a(this.a).getActivity() != null) {
-      uqk.a(this.a).getActivity().doOnBackPressed();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    uqi.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Upd);
+    paramShareActionSheet.dismiss();
   }
 }
 

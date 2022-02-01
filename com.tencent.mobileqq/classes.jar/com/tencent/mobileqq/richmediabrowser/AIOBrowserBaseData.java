@@ -2,7 +2,7 @@ package com.tencent.mobileqq.richmediabrowser;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import bavw;
+import bbop;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
@@ -12,7 +12,7 @@ import com.tencent.richmediabrowser.model.RichMediaBaseData;
 public abstract class AIOBrowserBaseData
   extends RichMediaBaseData
 {
-  public static final Parcelable.Creator<AIOBrowserBaseData> CREATOR = new bavw();
+  public static final Parcelable.Creator<AIOBrowserBaseData> CREATOR = new bbop();
   public int a;
   public long a;
   public boolean a;

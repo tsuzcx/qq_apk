@@ -1,6 +1,12 @@
-public abstract interface bqda
+class bqda
+  implements bprd
 {
-  public abstract void m(boolean paramBoolean);
+  bqda(bqcu parambqcu) {}
+  
+  public void aW_()
+  {
+    bqcu.a(this.a).e();
+  }
 }
 
 

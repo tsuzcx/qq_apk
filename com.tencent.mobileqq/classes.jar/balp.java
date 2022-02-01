@@ -1,40 +1,17 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class balp
-  implements ServiceConnection
+public class balp
+  extends balj
 {
-  balp(balo parambalo) {}
+  public balp(LSRecordPanel paramLSRecordPanel) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    baln.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Balk.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
-    {
-      this.a.b.send(paramComponentName);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
     }
-    catch (RemoteException paramComponentName)
-    {
-      baln.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
     this.a.b = null;
   }
 }

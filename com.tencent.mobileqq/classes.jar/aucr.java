@@ -1,22 +1,78 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserMiniAIOHelper.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
-public abstract interface aucr
+public class aucr
+  implements Observer
 {
-  public abstract int a();
+  private View jdField_a_of_type_AndroidViewView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public abstract int a(aucs paramaucs);
+  public aucr(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public abstract int a(String paramString, Bundle paramBundle);
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
   
-  public abstract int b();
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
   
-  public abstract int c();
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
+    }
+  }
   
-  public abstract int d();
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
+    }
+  }
   
-  public abstract int e();
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
+    }
+  }
   
-  public abstract int f();
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((!(paramObject instanceof MessageRecord)) || (!(paramObject instanceof ChatMessage)));
+        paramObservable = (MessageRecord)paramObject;
+      } while (!QLog.isColorLevel());
+      QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, "recv: msgseq[" + paramObservable.msgseq + "] uin[" + paramObservable.frienduin + "]");
+    } while (!paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString));
+    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
+  }
 }
 
 

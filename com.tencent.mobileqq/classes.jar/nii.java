@@ -1,97 +1,50 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.PoiMapNameTask.1;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.qphone.base.util.QLog;
-import org.apache.http.client.HttpClient;
+import android.opengl.GLES20;
+import com.tencent.avgame.videorecord.GameVideoDarkCoverFilter.1;
+import java.nio.FloatBuffer;
 
 public class nii
-  extends AsyncTask<Void, Void, String>
+  extends nig
 {
-  public GeoPoint a;
-  protected HttpClient a;
-  protected GeoPoint b;
+  private int g;
   
-  public nii(PoiMapActivity paramPoiMapActivity) {}
-  
-  protected String a(Void... paramVarArgs)
+  public nii()
   {
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = "Unknown Address";
-    int i = 0;
-    if (i < 3)
-    {
-      if ((isCancelled()) || (this.b.getLatitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i))
-      {
-        localObject = "Unknown Address";
-        label60:
-        return localObject;
-      }
-      paramVarArgs = bgrp.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getApplicationContext(), this.b.getLatitudeE6() / 1000000.0D, this.b.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("rec_locate", "call_googlestation", "", "", "", "");
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
-        if (paramVarArgs != null) {
-          break label187;
-        }
-      }
-      label187:
-      for (Object localObject = "";; localObject = paramVarArgs)
-      {
-        QLog.i("fetch_address", 2, (String)localObject);
-        if (paramVarArgs != null)
-        {
-          localObject = paramVarArgs;
-          if (paramVarArgs.length() > 0) {
-            break label60;
-          }
-        }
-        i += 1;
-        break;
-      }
-    }
-    return "Unknown Address";
+    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}", "precision mediump float;\nuniform vec4 coverColor;\nvoid main()\n{\n\tgl_FragColor = coverColor;\n}");
   }
   
-  public void a(GeoPoint paramGeoPoint)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.b = paramGeoPoint;
+    a(new GameVideoDarkCoverFilter.1(this, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
   }
   
-  protected void a(String paramString)
+  public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    if ((this.b.getLatitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i)) {
-      return;
+    if (!a()) {
+      a();
     }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (String str = "Unknown Address";; str = paramString)
-    {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = paramString;
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.runOnUiThread(new PoiMapActivity.PoiMapNameTask.1(this, str));
-      if (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint == null) {
-        break;
-      }
-      paramString = new nii(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramString.a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a = paramString;
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.execute(new Void[0]);
-      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
-      return;
-    }
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    GLES20.glUseProgram(this.jdField_a_of_type_Int);
+    g();
+    paramFloatBuffer1.position(0);
+    GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 2, 5126, false, 0, paramFloatBuffer1);
+    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(this.jdField_b_of_type_Int);
+    c();
   }
   
-  protected void onCancelled()
+  public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint != null) && (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.i))
-    {
-      nii localnii = new nii(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      localnii.a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a = localnii;
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.execute(new Void[0]);
-      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
-    }
+    super.b();
+    this.g = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "coverColor");
+  }
+  
+  public void h()
+  {
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    a(-1, this.jdField_b_of_type_JavaNioFloatBuffer, this.jdField_a_of_type_JavaNioFloatBuffer);
   }
 }
 

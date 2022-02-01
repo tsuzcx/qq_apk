@@ -1,32 +1,42 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class yhp
-  extends QQUIEventReceiver<StoryMessageListActivity, wpw>
+class yhp
+  extends wjm<yhc, yga>
 {
-  public yhp(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  yhp(yhc paramyhc)
   {
-    super(paramStoryMessageListActivity);
+    super(paramyhc);
   }
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull wpw paramwpw)
+  public void a(@NonNull yhc paramyhc, @NonNull yga paramyga)
   {
-    if (paramwpw.a.isSuccess())
+    if ((!paramyga.jdField_a_of_type_Boolean) || (!paramyga.jdField_a_of_type_JavaLangString.equals(yhc.a(paramyhc))) || (paramyga.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (yhc.a(paramyhc) == null))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
+      yuk.b(this.TAG, "ignore this like list event. %s.", paramyga.toString());
+      return;
+    }
+    yuk.a(this.TAG, "receive like list event. %s.", paramyga.toString());
+    boolean bool2 = yhc.a(paramyhc);
+    if (paramyga.jdField_a_of_type_Int == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      yhc.a(paramyhc).b(bool1, paramyga.b);
+      yhc.a(paramyhc).b(paramyga.jdField_a_of_type_JavaUtilList, true, bool1);
+      if (bool2 != bool1) {
+        break;
       }
-      paramStoryMessageListActivity.g();
+      paramyhc.a();
+      return;
     }
   }
   
   public Class acceptEventClass()
   {
-    return wpw.class;
+    return yga.class;
   }
+  
+  public void b(@NonNull yhc paramyhc, @NonNull yga paramyga) {}
 }
 
 

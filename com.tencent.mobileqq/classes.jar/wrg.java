@@ -1,38 +1,38 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-class wrg
-  extends aopa
+public class wrg
 {
-  wrg(wrf paramwrf, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public static wrg a;
+  
+  public static wrg a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (a == null) {
+      a = new wrg();
+    }
+    return a;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
   {
-    yqp.b("LbsManager", "onLocationFinish.");
-    boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      bool = true;
-      if (!bool) {
-        break label114;
-      }
-      this.a.b = wre.a(paramSosoLbsInfo.a);
-      yqp.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
-    }
-    for (;;)
-    {
-      if (!wrf.a(this.a)) {
-        this.a.a(bool, this.a.b);
-      }
-      this.a.a = false;
-      return;
-      bool = false;
-      break;
-      label114:
-      yqp.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
-    }
+    QQStoryContext.a();
+    AppInterface localAppInterface = QQStoryContext.a();
+    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), nkl.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(wri paramwri, wrj paramwrj)
+  {
+    byte[] arrayOfByte = paramwri.a();
+    String str = paramwri.a();
+    long l = System.currentTimeMillis();
+    a(paramwri.a(), arrayOfByte, new wrh(this, l, paramwri, str, paramwrj));
   }
 }
 

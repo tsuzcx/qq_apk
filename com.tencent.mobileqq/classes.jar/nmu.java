@@ -1,58 +1,19 @@
-import java.nio.ByteBuffer;
-
 public class nmu
-  extends nmw
+  implements nmy
 {
-  public int a;
-  
-  public byte a(int paramInt)
+  public void a(Runnable paramRunnable)
   {
-    paramInt = this.c + paramInt;
-    if (a(paramInt, 1)) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
-    }
-    return 0;
+    new Thread(paramRunnable).start();
   }
   
-  public int a()
+  public void b(Runnable paramRunnable)
   {
-    return this.jdField_a_of_type_Int;
+    new Thread(paramRunnable).start();
   }
   
-  public String a()
+  public void c(Runnable paramRunnable)
   {
-    return a(this.c - 4, true);
-  }
-  
-  public String a(int paramInt)
-  {
-    return b(this.c + paramInt * 4);
-  }
-  
-  public nmu a(int paramInt, ByteBuffer paramByteBuffer)
-  {
-    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
-      return null;
-    }
-    this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
-    this.c = (paramInt + 4);
-    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-    return this;
-  }
-  
-  public nmu a(int paramInt, nmu paramnmu)
-  {
-    return paramnmu.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
-  }
-  
-  public nmv a(int paramInt)
-  {
-    return a(paramInt, new nmv());
-  }
-  
-  public nmv a(int paramInt, nmv paramnmv)
-  {
-    return paramnmv.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+    new Thread(paramRunnable).start();
   }
 }
 

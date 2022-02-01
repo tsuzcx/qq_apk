@@ -1,41 +1,71 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
-class bcex
-  implements bcfg
+public class bcex
+  extends bcfs
 {
-  bcex(bcew parambcew) {}
+  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt1, int paramInt2)
+  public bcex(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("startDownloadConfigNoLogin onConfigResult | result=").append(paramInt1).append("serverError=").append(paramInt2);
-    VideoEnvironment.a(bcew.a(), ((StringBuilder)localObject).toString(), null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| uncompress config error=" + paramInt2, null);
-        bcew.a(this.a);
-        return;
-      }
-      localObject = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(bcew.a(this.a), (List)localObject);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
-        bcew.a(this.a).a();
-        avfb.a().a();
-        return;
-      }
-      VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| check config error=" + paramInt1, null);
-      bcew.a(this.a);
-      return;
-    }
-    VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
-    bcew.a(this.a);
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    Bundle localBundle = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()), 2);
+    localBundle.putInt("exposureSource", 3);
+    bguq.a((Activity)paramView.getContext(), localBundle, 2);
+    bcni.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
+    bcni.a(this.jdField_a_of_type_JavaLangString, 80, paramView, false);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
+  }
+  
+  public int c()
+  {
+    return 4;
+  }
+  
+  public CharSequence c()
+  {
+    return anzj.a(2131704243);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 

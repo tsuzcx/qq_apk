@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mfb;
+import mfx;
 
 public class MultiVideoCtrlLayerUI4Discussion$6$1
   implements Runnable
 {
-  public MultiVideoCtrlLayerUI4Discussion$6$1(mfb parammfb) {}
+  public MultiVideoCtrlLayerUI4Discussion$6$1(mfx parammfx) {}
   
   public void run()
   {

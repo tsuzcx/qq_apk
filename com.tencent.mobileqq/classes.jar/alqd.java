@@ -1,4 +1,9 @@
-class alqd {}
+public abstract interface alqd
+{
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract byte[] a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

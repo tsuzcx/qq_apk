@@ -1,32 +1,20 @@
-import UserGrowth.stCallInfo;
-import UserGrowth.stGlobalConfig;
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import NS_KING_INTERFACE.stGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListRsp;
 
 public class uoo
+  extends ukl<stQQGetFeedCommentListRsp>
 {
-  public static void a(Activity paramActivity, uos paramuos)
+  public uoo()
   {
-    stGlobalConfig localstGlobalConfig = ugb.a().a();
-    if ((localstGlobalConfig != null) && (localstGlobalConfig.callinfo != null) && (localstGlobalConfig.callinfo.switch_call_live))
-    {
-      upe.e("OuterInterceptManager", "stGlobalConfig.callinfo: " + localstGlobalConfig.callinfo);
-      if (paramuos != null) {
-        paramuos.b();
-      }
-      b(paramActivity, paramuos);
-    }
-    while (paramuos == null) {
-      return;
-    }
-    paramuos.a();
+    super("QQGetFeedCommentList");
+    this.a = new stGetFeedCommentListReq("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
   }
   
-  private static void b(Activity paramActivity, uos paramuos)
+  public uoo(String paramString1, String paramString2, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new OuterInterceptManager.1(paramActivity, paramuos));
+    super("QQGetFeedCommentList", 10003);
+    this.a = new stQQGetFeedCommentListReq(new stGetFeedCommentListReq(paramString1, paramString2, "", 0, "", paramInt));
   }
 }
 

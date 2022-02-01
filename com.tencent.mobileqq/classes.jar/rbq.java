@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.service.redpacket.RIJAidlClientRedPacketModule.requestShouldDoTaskTiming.1.onShouldDoTaskTimingCallback.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import kotlin.Metadata;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlClientRedPacketModule$requestShouldDoTaskTiming$1", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IShouldDoTaskTimingCallback$Stub;", "onShouldDoTaskTimingCallback", "", "shouldDoTaskTiming", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rbq
-  extends rbm
+public class rbq
+  extends pfh
 {
-  rbq(qzb paramqzb) {}
+  public rbq(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void a(List<String> paramList, List<TopicInfo> paramList1)
   {
-    ThreadManager.getUIHandler().post((Runnable)new RIJAidlClientRedPacketModule.requestShouldDoTaskTiming.1.onShouldDoTaskTimingCallback.1(this, paramBoolean));
+    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
+    raa.g();
   }
 }
 

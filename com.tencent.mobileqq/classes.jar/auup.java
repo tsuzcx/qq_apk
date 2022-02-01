@@ -1,73 +1,153 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.view.GameSessionView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-public class auup
-  extends auun
+class auup
+  implements auuq
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  TextView b;
-  TextView c;
+  auup(auuo paramauuo) {}
   
-  public auup(View paramView)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131364501));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(afur.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379686));
-    this.b = ((TextView)paramView.findViewById(2131379947));
-    this.c = ((TextView)paramView.findViewById(2131379767));
+    this.a.b(paramInt);
+    if (auuo.a(this.a) != null)
+    {
+      if (paramInt <= 100) {
+        break label45;
+      }
+      auuo.a(this.a).b(this.a.h(), paramBundle);
+    }
+    label45:
+    while (paramInt - this.a.g() <= 0) {
+      return;
+    }
+    this.a.a(paramInt);
+    auuo.a(this.a).b(paramInt, paramBundle);
   }
   
-  public void a(GameCenterSessionInfo paramGameCenterSessionInfo)
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (paramGameCenterSessionInfo == null) {
-      QLog.e(GameSessionView.a, 0, "[updateSession] info is null.");
-    }
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840578);
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840578);
-    try
+    this.a.c(5);
+    QQAppInterface localQQAppInterface = aure.a().a();
+    if (localQQAppInterface != null)
     {
-      if (paramGameCenterSessionInfo.a() == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(URLDrawable.getDrawable(paramGameCenterSessionInfo.a(), (URLDrawable.URLDrawableOptions)localObject));
-      }
-      for (;;)
+      long l1 = -1L;
+      long l2 = -1L;
+      auuu localauuu = auuu.a(paramBundle);
+      if (localauuu != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#80333333"));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText("来自" + paramGameCenterSessionInfo.f());
-        if (paramGameCenterSessionInfo.a() != 0) {
-          break;
+        l1 = localauuu.jdField_a_of_type_Long;
+        l2 = localauuu.b;
+      }
+      aunj.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      aunj.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
+    }
+    for (;;)
+    {
+      if (auuo.a(this.a) != null) {
+        auuo.a(this.a).a(paramInt, paramString, paramBundle);
+      }
+      return;
+      QLog.w(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (auuo.a(this.a) != null) {
+      auuo.a(this.a).a(this.a.h(), null);
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    QLog.i(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
+    this.a.c(4);
+    if (paramString == null)
+    {
+      QLog.e(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
+      a(40, auuk.a(40), paramBundle);
+    }
+    label783:
+    label821:
+    for (;;)
+    {
+      return;
+      if (bhmi.a(this.a.e)) {
+        this.a.e = aunj.b(this.a.e);
+      }
+      QLog.i(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.e);
+      Object localObject;
+      if (!bhmi.b(new File(paramString), new File(this.a.e)))
+      {
+        QLog.e(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.e);
+        localObject = auog.c(paramString);
+        if (!aunj.b().equalsIgnoreCase((String)localObject))
+        {
+          String str = (String)localObject + this.a.d;
+          localObject = str;
+          if (bhmi.a(str)) {
+            localObject = aunj.b(str);
+          }
+          QLog.i(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
+          if (!bhmi.b(new File(paramString), new File((String)localObject)))
+          {
+            QLog.e(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
+            a(7, auuk.a(7), paramBundle);
+            return;
+          }
+          this.a.e = ((String)localObject);
         }
-        localObject = "[" + paramGameCenterSessionInfo.b() + "位好友请求]来自" + paramGameCenterSessionInfo.f();
-        this.c.setText(new bdnt((CharSequence)localObject, 3, 16));
-        this.b.setTextColor(Color.parseColor("#80333333"));
-        this.b.setText(autf.a(paramGameCenterSessionInfo.a() * 1000L));
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(URLDrawable.getDrawable(paramGameCenterSessionInfo.g(), (URLDrawable.URLDrawableOptions)localObject));
       }
-    }
-    catch (Exception localException)
-    {
+      else
+      {
+        QLog.i(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.e);
+        paramString = aure.a().a();
+        if (paramString == null) {
+          break label783;
+        }
+        long l1 = -1L;
+        long l2 = -1L;
+        localObject = auuu.a(paramBundle);
+        if (localObject == null) {
+          break label743;
+        }
+        l1 = ((auuu)localObject).jdField_a_of_type_Long;
+        l2 = ((auuu)localObject).b;
+        aunj.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        aunj.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        bdmb.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_0");
+      }
       for (;;)
       {
-        QLog.e(GameSessionView.a, 1, "[updateSession] " + localException);
-        continue;
-        String str = paramGameCenterSessionInfo.i();
-        this.c.setText(new bdnt(str, 3, 16, -1));
+        if (auuo.a(this.a) == null) {
+          break label821;
+        }
+        auuo.a(this.a).a(this.a.e, this.a.b, paramBundle);
+        return;
+        QLog.e(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
+        a(7, auuk.a(7), paramBundle);
+        return;
+        label743:
+        QLog.w(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
+        break;
+        QLog.i(auuo.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
       }
     }
   }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.c(3);
+    if (auuo.a(this.a) != null) {
+      auuo.a(this.a).c(this.a.h(), null);
+    }
+  }
+  
+  public void c(Bundle paramBundle) {}
 }
 
 

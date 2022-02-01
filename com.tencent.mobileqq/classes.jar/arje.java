@@ -1,20 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class arje
-  implements DialogInterface.OnKeyListener
+public class arje
 {
-  arje(ariy paramariy) {}
+  public String a = "";
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public static arje a(String paramString)
   {
-    return (paramInt == 84) || (paramInt == 4);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        arje localarje = new arje();
+        paramString = new JSONObject(paramString);
+        if (paramString.has("contents")) {
+          localarje.a = paramString.getJSONArray("contents").toString();
+        }
+        return localarje;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arje
  * JD-Core Version:    0.7.0.1
  */

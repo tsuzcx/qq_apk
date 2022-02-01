@@ -1,24 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Handler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
 
-class wvt
-  extends SimpleJob<Object>
+public class wvt
+  implements xar
 {
-  wvt(wvs paramwvs, String paramString)
-  {
-    super(paramString);
-  }
+  wvt(wvs paramwvs) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(xas paramxas)
   {
-    if (this.a.jdField_a_of_type_Wvv == null) {
-      this.a.jdField_a_of_type_Wvv = new wvv(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = "";
-    wvs.a(this.a);
-    return null;
+    yuk.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramxas);
+    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramxas));
   }
 }
 

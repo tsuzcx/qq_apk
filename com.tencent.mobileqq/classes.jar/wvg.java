@@ -1,43 +1,52 @@
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.util.HashSet;
 
 public class wvg
 {
-  private static String a = wvg.class.getSimpleName();
+  final int jdField_a_of_type_Int;
+  public final Bundle a;
+  String jdField_a_of_type_JavaLangString = "";
+  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString = "";
+  boolean jdField_b_of_type_Boolean = true;
   
-  public static wnt a(ViewGroup paramViewGroup, int paramInt)
+  public wvg(int paramInt)
   {
-    yqp.a(a, "create type=%d", Integer.valueOf(paramInt));
-    switch (paramInt)
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static wvg a()
+  {
+    return new wvg(20);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
     {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
-      }
-      return new wnt(paramViewGroup, 2131561745);
-    case 6: 
-      return new wux(paramViewGroup);
-    case 5: 
-      return new wvf(paramViewGroup);
-    case 7: 
-      return new wuw(paramViewGroup);
-    case 8: 
-      return new wvm(paramViewGroup, 2131561745);
-    case 9: 
-      return new wve(paramViewGroup);
-    case 3: 
-      return new wuy(paramViewGroup);
-    case 4: 
-      return new wvc(paramViewGroup, 4);
-    case 2: 
-      return new wvk(paramViewGroup, 2131561747);
-    case 10: 
-    case 11: 
-      return new wvd(paramViewGroup);
-    case 12: 
-      return new wvh(paramViewGroup);
+      this.jdField_b_of_type_JavaLangString = paramString;
+      a();
     }
-    return new wuz(paramViewGroup);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

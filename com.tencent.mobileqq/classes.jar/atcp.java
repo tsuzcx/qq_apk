@@ -1,13 +1,24 @@
-public class atcp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+
+final class atcp
+  implements DialogInterface.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
-  atcs jdField_a_of_type_Atcs;
-  public volatile boolean a;
-  public volatile boolean b = false;
+  atcp(BaseActivity paramBaseActivity, boolean paramBoolean, azyi paramazyi) {}
   
-  atcp(atco paramatco)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
+    String str = atck.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+    if (this.jdField_a_of_type_Boolean) {
+      atcb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azyi.jdField_a_of_type_Int, this.jdField_a_of_type_Azyi.b, this.jdField_a_of_type_Azyi.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      atcb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, str);
+    }
   }
 }
 

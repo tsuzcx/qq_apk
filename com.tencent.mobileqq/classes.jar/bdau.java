@@ -1,171 +1,236 @@
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Bundle;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecList;
+import android.media.MediaFormat;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.mediacodec.DeviceCheck;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
+@SuppressLint({"NewApi"})
 public class bdau
-  extends bdaq
+  extends lof
 {
-  private String aq;
-  private String ar;
-  protected long c;
-  protected long d;
-  protected boolean d;
-  protected long e;
-  protected int q;
-  protected int r;
+  public static String e;
+  public static int f = -1;
   
-  public bdau()
+  static
   {
-    this.a = "timer";
+    jdField_e_of_type_JavaLangString = "ShortVideoCodec";
   }
   
-  private long a()
+  public static int a(Context paramContext)
   {
-    if (!this.jdField_d_of_type_Boolean)
+    if (f >= 0) {
+      return f;
+    }
+    f = 0;
+    if (paramContext == null) {
+      return f;
+    }
+    VcControllerImpl.loadLibrary(paramContext);
+    if (Build.VERSION.SDK_INT < 16) {
+      return f;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      long l1 = bbyp.a();
-      long l2 = this.c + this.q - l1;
-      if (l2 < 0L)
+      a();
+      if (!jdField_b_of_type_Boolean)
       {
-        this.jdField_d_of_type_Boolean = true;
-        l1 = 0L;
-      }
-      do
-      {
-        return l1;
-        if (l2 <= 0L) {
-          break;
-        }
-        l1 = l2;
-      } while (l2 < this.q);
-      return this.q;
-      this.jdField_d_of_type_Boolean = true;
-      return l2;
-    }
-    return 0L;
-  }
-  
-  private SpannableStringBuilder a(long paramLong)
-  {
-    ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-91585);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.aq);
-    localSpannableStringBuilder.append('\n');
-    if (paramLong > 0L)
-    {
-      int i = localSpannableStringBuilder.length();
-      String str = String.valueOf(paramLong) + anni.a(2131713302);
-      localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.append(this.ag);
-      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, str.length() + i, 33);
-      return localSpannableStringBuilder;
-    }
-    localSpannableStringBuilder.append(this.ar);
-    return localSpannableStringBuilder;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if ((paramView != null) && ((paramView instanceof CountdownTextView)))
-    {
-      paramContext = (CountdownTextView)paramView;
-      paramContext.a(a(), new bdav(this, paramContext));
-      paramContext.setTag(this);
-      return paramContext;
-    }
-    paramContext = new CountdownTextView(paramContext);
-    paramContext.setId(2131379593);
-    paramContext.setTag(this);
-    paramContext.setMaxLines(3);
-    paramContext.setTextColor(-10987432);
-    paramContext.setTextSize(2, 12.0F);
-    long l = a();
-    if (this.ag != null) {
-      paramContext.setText(a(l));
-    }
-    paramContext.a(l, new bdaw(this, paramContext));
-    return paramContext;
-  }
-  
-  public String a()
-  {
-    return "Timer";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.aq = bbzj.a(paramObjectInput.readUTF(), false);
-    this.ar = bbzj.a(paramObjectInput.readUTF(), false);
-    this.c = paramObjectInput.readLong();
-    this.q = paramObjectInput.readInt();
-    this.r = paramObjectInput.readInt();
-    this.jdField_d_of_type_Long = paramObjectInput.readLong();
-    this.e = paramObjectInput.readLong();
-    this.jdField_d_of_type_Boolean = paramObjectInput.readBoolean();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.aq == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ar != null) {
-        break label108;
+        f = 0;
+        return f;
       }
     }
-    label108:
-    for (String str = "";; str = this.ar)
+    if (DeviceCheck.b())
     {
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.c);
-      paramObjectOutput.writeInt(this.q);
-      paramObjectOutput.writeInt(this.r);
-      paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
-      paramObjectOutput.writeLong(this.e);
-      paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
-      return;
-      str = this.aq;
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_e_of_type_JavaLangString, 2, "checkSupportMediaCodecFeature device is in white list.");
+      }
+      if (DeviceCheck.e()) {
+        f = 1;
+      }
+      if (!b()) {
+        break label146;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_e_of_type_JavaLangString, 2, "checkSupportMediaCodecFeature device is in white list.");
+      }
+      if (DeviceCheck.f()) {
+        f += 2;
+      }
+    }
+    for (;;)
+    {
+      return f;
+      if (!DeviceCheck.e()) {
+        break;
+      }
+      f = 1;
       break;
+      label146:
+      if (DeviceCheck.f()) {
+        f += 2;
+      }
     }
   }
   
-  public void a(XmlSerializer paramXmlSerializer)
+  @SuppressLint({"NewApi"})
+  public static List<MediaCodecInfo> a(String paramString, boolean paramBoolean)
   {
-    paramXmlSerializer.startTag(null, "timer");
-    paramXmlSerializer.attribute(null, "st", String.valueOf(this.c));
-    paramXmlSerializer.attribute(null, "dr", String.valueOf(this.q));
-    paramXmlSerializer.attribute(null, "index", String.valueOf(this.r));
-    if (!TextUtils.isEmpty(this.aq)) {
-      paramXmlSerializer.attribute(null, "summary", this.aq);
+    ArrayList localArrayList = new ArrayList();
+    int k = MediaCodecList.getCodecCount();
+    int i = 0;
+    if (i < k)
+    {
+      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+      if (localMediaCodecInfo.isEncoder()) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((!paramBoolean) || ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE"))))
+        {
+          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+          int j = 0;
+          while (j < arrayOfString.length)
+          {
+            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+              localArrayList.add(localMediaCodecInfo);
+            }
+            j += 1;
+          }
+        }
+      }
     }
-    if (!TextUtils.isEmpty(this.ar)) {
-      paramXmlSerializer.attribute(null, "ending", this.ar);
-    }
-    paramXmlSerializer.text(this.ag);
-    paramXmlSerializer.endTag(null, "timer");
+    return localArrayList;
   }
   
-  public boolean a(bcxj parambcxj)
+  public static boolean b()
   {
-    if (parambcxj == null) {
-      return true;
+    if (Build.VERSION.SDK_INT < 19) {}
+    do
+    {
+      return false;
+      if ((Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) && (Build.MODEL.equalsIgnoreCase("MI 3")) && (Build.PRODUCT.equalsIgnoreCase("pisces"))) {
+        return DeviceCheck.f();
+      }
+      if ((Build.MANUFACTURER.equalsIgnoreCase("OPPO")) && (Build.MODEL.equalsIgnoreCase("N5207")) && (Build.PRODUCT.equalsIgnoreCase("N5207"))) {
+        return DeviceCheck.f();
+      }
+      if ((Build.MANUFACTURER.equalsIgnoreCase("samsung")) && (Build.MODEL.equalsIgnoreCase("GT-I9500"))) {
+        return DeviceCheck.f();
+      }
+      if ((Build.MANUFACTURER.equalsIgnoreCase("Meizu")) && (Build.MODEL.equalsIgnoreCase("MX4"))) {
+        return DeviceCheck.f();
+      }
+    } while ((!Build.MANUFACTURER.equalsIgnoreCase("Meizu")) || (!Build.MODEL.equalsIgnoreCase("MX4 Pro")));
+    return DeviceCheck.f();
+  }
+  
+  public MediaCodec a()
+  {
+    return this.a;
+  }
+  
+  public log b()
+  {
+    label404:
+    label510:
+    for (;;)
+    {
+      Object localObject1;
+      int i;
+      try
+      {
+        localObject1 = this.a;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          return localObject1;
+        }
+        localObject1 = new log(this);
+        i = this.a.dequeueOutputBuffer(((log)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, jdField_c_of_type_Int);
+        switch (i)
+        {
+        case -3: 
+          if (i < 0) {
+            break label510;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_e_of_type_JavaLangString, 2, "dequeueOutputBuffer ok,index = " + i + ",BufferInfo[flags = " + ((log)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags + ",offset=" + ((log)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + ",size= " + ((log)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size + ",TimeUs=" + ((log)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs + "]");
+          }
+          if (Build.VERSION.SDK_INT > 20) {
+            break label404;
+          }
+          ((log)localObject1).jdField_a_of_type_JavaNioByteBuffer = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
+          ((log)localObject1).jdField_a_of_type_Int = i;
+          ((log)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_e_of_type_JavaLangString, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
+          }
+          this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.a.getOutputBuffers();
+          ((log)localObject1).jdField_a_of_type_Int = -3;
+        }
+      }
+      finally {}
+      ((log)localObject1).jdField_a_of_type_Int = -2;
+      this.jdField_b_of_type_AndroidMediaMediaFormat = this.a.getOutputFormat();
+      if (this.jdField_b_of_type_AndroidMediaMediaFormat != null)
+      {
+        ((log)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
+        if (this.jdField_e_of_type_Int == jdField_b_of_type_Int)
+        {
+          if (this.jdField_b_of_type_AndroidMediaMediaFormat.containsKey("color-format"))
+          {
+            i = this.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("color-format");
+            if (QLog.isColorLevel()) {
+              QLog.e(jdField_e_of_type_JavaLangString, 2, "New color format " + i + "[0x" + Integer.toHexString(i) + "]");
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.e(jdField_e_of_type_JavaLangString, 2, "EncCodec,INFO_OUTPUT_FORMAT_CHANGED");
+          break label510;
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_e_of_type_JavaLangString, 2, "dequeueOutputBuffer timed out!");
+          }
+          localObject2.jdField_a_of_type_Int = -1;
+          continue;
+          localObject2.jdField_a_of_type_Int = i;
+          try
+          {
+            localObject2.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.a, new Object[] { Integer.valueOf(i) }));
+            localObject2.jdField_a_of_type_AndroidMediaMediaFormat = ((MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.a, new Object[] { Integer.valueOf(i) }));
+          }
+          catch (IllegalAccessException localIllegalAccessException)
+          {
+            localIllegalAccessException.printStackTrace();
+            localObject2.jdField_a_of_type_Boolean = false;
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            localIllegalArgumentException.printStackTrace();
+            localObject2.jdField_a_of_type_Boolean = false;
+          }
+          catch (InvocationTargetException localInvocationTargetException)
+          {
+            localInvocationTargetException.printStackTrace();
+            localObject2.jdField_a_of_type_Boolean = false;
+          }
+        }
+      }
     }
-    this.c = bcxm.a(parambcxj.a("st"));
-    this.q = bcxm.a(parambcxj.a("dr"));
-    this.r = bcxm.a(parambcxj.a("index"));
-    this.aq = bbzj.a(parambcxj.a("summary"), false);
-    this.ar = bbzj.a(parambcxj.a("st"), false);
-    this.ag = bbzj.a(bcwd.a(parambcxj), false);
-    return true;
   }
 }
 

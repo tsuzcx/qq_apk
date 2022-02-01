@@ -1,16 +1,17 @@
-public abstract interface aotf
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+
+class aotf
+  implements Comparator<msg_comm.Msg>
 {
-  public abstract void a(long paramLong);
+  aotf(aote paramaote) {}
   
-  public abstract void a(aott paramaott);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean, String paramString);
-  
-  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean b();
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  {
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+  }
 }
 
 

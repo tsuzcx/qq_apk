@@ -1,33 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ojy
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public ojy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ojy(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (paramInt == 4)
-    {
-      ReadInJoySettingActivity.a(this.a, true);
-      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return false;
-      label53:
-      bool = false;
-    }
+    ReadInJoyChannelActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

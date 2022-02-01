@@ -1,15 +1,15 @@
 package dov.com.qq.im.story.mode;
 
-import boza;
+import bqav;
 
 public class StoryEffectTextMode$2
   implements Runnable
 {
-  public StoryEffectTextMode$2(boza paramboza) {}
+  public StoryEffectTextMode$2(bqav parambqav) {}
   
   public void run()
   {
-    boza.a(this.this$0);
+    bqav.a(this.this$0);
   }
 }
 

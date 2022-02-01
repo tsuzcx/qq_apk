@@ -1,6 +1,21 @@
-public abstract interface zwa
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class zwa
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
+  zwa(zvy paramzvy) {}
+  
+  public void onClick(View paramView)
+  {
+    TextView localTextView = (TextView)this.a.a.findViewById(2131365046);
+    if ((localTextView.getText() instanceof String)) {
+      this.a.a((String)localTextView.getText());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

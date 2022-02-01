@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import adea;
+import admy;
 
 public final class DoraemonUtil$2
   implements Runnable
 {
-  public DoraemonUtil$2(adea paramadea, int paramInt, String paramString) {}
+  public DoraemonUtil$2(admy paramadmy, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adea.onFailure(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Adea.onComplete();
+    this.jdField_a_of_type_Admy.onFailure(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Admy.onComplete();
   }
 }
 

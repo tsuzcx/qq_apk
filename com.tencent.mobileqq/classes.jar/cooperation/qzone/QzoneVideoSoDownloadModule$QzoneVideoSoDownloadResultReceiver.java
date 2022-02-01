@@ -2,17 +2,17 @@ package cooperation.qzone;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bluv;
+import bmvx;
 
 public class QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver
   extends ResultReceiver
 {
-  private bluv a;
+  private bmvx a;
   
-  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bluv parambluv)
+  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bmvx parambmvx)
   {
     super(null);
-    this.a = parambluv;
+    this.a = parambmvx;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)

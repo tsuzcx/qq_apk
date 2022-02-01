@@ -38,9 +38,9 @@
             "value": "125"
           },
           "attributes": {
-		  	"setTitle:": "-1",
+              "setTitle:": "-1",
             "setFrameString:": "-1",
-			"setTitleColors:forStates:":[["#262626"],["0"]],
+            "setTitleColors:forStates:":[["#262626"],["0"]],
             "setImages:forStates:": [
               [
                 "comment"
@@ -114,7 +114,7 @@
                 "0"
               ]
             ],
-			"setTitleColors:forStates:":[["#262626"],["0"]],
+            "setTitleColors:forStates:":[["#262626"],["0"]],
             "setInnerMargin:": "8",
             "setFontSizeString:": "14",
             "setAlphaString:":"-1",

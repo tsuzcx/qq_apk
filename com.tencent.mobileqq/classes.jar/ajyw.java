@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ajyw
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ajyw(ajyr paramajyr) {}
+  ajyw(ajyt paramajyt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ajyr.a(this.a, paramView);
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
+    if (paramInt == 1) {
+      ajyt.c(this.a);
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    ajyt.a(this.a);
   }
 }
 

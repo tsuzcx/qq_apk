@@ -6,9 +6,6 @@
         <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:layout_gravity="top" android:id="@id/dm8" android:layout_width="fill_parent" android:layout_height="58.0dip" tencent:mask_mode="9" />
         <FrameLayout android:layout_gravity="top" android:id="@id/eq9" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="58.0dip">
             <ImageView android:layout_gravity="left" android:id="@id/epv" android:background="@null" android:layout_width="36.0dip" android:layout_height="fill_parent" android:src="@drawable/dry" android:scaleType="centerInside" android:contentDescription="@string/pzp" />
-            <com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat android:layout_gravity="center|right" android:id="@id/nst" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent">
-                <com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView android:layout_gravity="center" android:id="@id/nt7" android:visibility="gone" android:layout_width="27.0dip" android:layout_height="27.0dip" />
-            </com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat>
             <ImageView android:layout_gravity="right" android:id="@id/ir3" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent" android:src="@drawable/dt7" android:scaleType="centerInside" android:contentDescription="@string/pv7" />
         </FrameLayout>
     </com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCustomFrameLayout>

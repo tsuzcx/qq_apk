@@ -10,9 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import wjz;
-import yqp;
+import anzj;
+import wnu;
+import yuk;
 
 public class QQStoryVideoPlayerErrorView
   extends RelativeLayout
@@ -37,8 +37,8 @@ public class QQStoryVideoPlayerErrorView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(wjz.a(2131698519));
-      setTipsIcon(2130846400);
+      setTipsText(wnu.a(2131698626));
+      setTipsIcon(2130846417);
       setTipsTextSize(16.0F);
     }
     do
@@ -47,8 +47,8 @@ public class QQStoryVideoPlayerErrorView
       if (paramInt == 1)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        setTipsText(anni.a(2131709861));
-        setTipsIcon(2130846558);
+        setTipsText(anzj.a(2131709970));
+        setTipsIcon(2130846575);
         setTipsTextSize(14.0F);
         return;
       }
@@ -58,9 +58,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561872, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378737));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131369081));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561913, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378898));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131369171));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
@@ -94,7 +94,7 @@ public class QQStoryVideoPlayerErrorView
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      yqp.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
+      yuk.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
     }
   }
   

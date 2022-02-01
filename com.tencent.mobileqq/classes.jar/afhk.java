@@ -1,37 +1,56 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public final class afhk
-  extends FlingGestureHandler
+public class afhk
+  extends BroadcastReceiver
 {
-  private WeakReference<TextPreviewActivity> b;
+  public afhk(QQMapActivity.MapRuntime paramMapRuntime) {}
   
-  private afhk(TextPreviewActivity paramTextPreviewActivity)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramTextPreviewActivity);
-    this.b = new WeakReference(paramTextPreviewActivity);
-  }
-  
-  public void flingLToR()
-  {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
-    int i;
-    if (localTextPreviewActivity != null) {
-      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
-        i = 1;
-      }
-    }
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
     for (;;)
     {
-      if (i == 0) {
-        super.flingLToR();
-      }
       return;
-      i = 0;
-      continue;
-      i = 0;
+      int i;
+      if (paramContext.equals("com.tencent.process.exit"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("mqq", 2, "receive kill map process broadcast");
+        }
+        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!bhgp.a(paramContext, MobileQQ.getContext()))) {
+          break label144;
+        }
+        i = j;
+      }
+      while (i != 0)
+      {
+        Process.killProcess(Process.myPid());
+        return;
+        i = j;
+        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        {
+          i = j;
+          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
+          {
+            i = j;
+            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
+              label144:
+              i = 0;
+            }
+          }
+        }
+      }
     }
   }
 }

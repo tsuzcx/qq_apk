@@ -1,42 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-final class tyq
-  implements EIPCResultCallback
+class tyq
+  implements tfh
 {
-  tyq(tom paramtom, String paramString) {}
+  tyq(tyo paramtyo) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(String paramString1, String paramString2)
   {
-    int j = 0;
-    int i = j;
-    if (paramEIPCResult != null)
-    {
-      i = j;
-      if (paramEIPCResult.data != null) {
-        i = paramEIPCResult.data.getInt("action_get_app_type");
-      }
-    }
-    QLog.e("PublicAccountH5AbilityPlugin", 1, "getAppType is " + i);
-    if (this.jdField_a_of_type_Tom != null) {}
-    try
-    {
-      this.jdField_a_of_type_Tom.a(this.jdField_a_of_type_JavaLangString, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
-      return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.getMessage());
-    }
+    this.a.callJs(paramString1, new String[] { paramString2 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tyq
  * JD-Core Version:    0.7.0.1
  */

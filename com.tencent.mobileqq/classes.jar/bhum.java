@@ -1,51 +1,37 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
-
-public abstract class bhum
+public class bhum
 {
-  public DraggableGridView a;
+  int a;
+  public String a;
+  int b;
   
-  public abstract int a();
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
-  public abstract int a(int paramInt);
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract Object a(int paramInt);
-  
-  public abstract Object a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
   public int b()
   {
-    return 1;
+    return this.b;
   }
   
-  public int b(int paramInt)
+  public void b(int paramInt)
   {
-    return 0;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.a.a(paramInt1, paramInt2);
-  }
-  
-  public void c()
-  {
-    ((bhwi)this.a.a()).notifyDataSetChanged();
+    this.b = paramInt;
   }
 }
 

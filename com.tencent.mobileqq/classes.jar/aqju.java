@@ -1,32 +1,68 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.confess.ConfessPlugin.5;
-import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import java.util.ArrayList;
+import javax.annotation.Nonnull;
 
 public class aqju
-  implements bihh
 {
-  public aqju(ConfessPlugin.5.1 param1) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  @android.support.annotation.Nullable
+  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
-    }
-    switch (paramBaseResp.errCode)
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return aqjp.a(localRockDownloaderTask);
+  }
+  
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable aqjo paramaqjo)
+  {
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setQueryAPKListener(paramaqjo);
+    aqjp.b(localRockDownloaderTask);
+  }
+  
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
+  {
+    if (!bhnv.a(BaseApplicationImpl.context))
     {
-    case -1: 
-    default: 
-      ConfessPlugin.a(this.a.a.this$0, false);
-      ConfessPlugin.a(this.a.a.this$0, 1, 2131718007);
-      return;
-    case 0: 
-      ConfessPlugin.a(this.a.a.this$0, true);
-      ConfessPlugin.a(this.a.a.this$0, 2, 2131718025);
+      if (paramRockDownloadListener != null)
+      {
+        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, anzj.a(2131712373), 10009);
+        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
+      }
       return;
     }
-    ConfessPlugin.a(this.a.a.this$0, false);
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
+    aqjp.a(localRockDownloaderTask);
+  }
+  
+  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  {
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return aqjp.b(localRockDownloaderTask);
+  }
+  
+  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  {
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return aqjp.a(localRockDownloaderTask);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import ains;
-import aioa;
-import aioj;
+import aiyz;
+import aizh;
+import aizq;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -39,19 +39,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import arxd;
-import avbk;
-import avdq;
-import bbzj;
-import bdzi;
-import bdzm;
-import bgku;
-import bgnt;
-import biau;
-import bkfv;
-import bkqk;
-import bmqa;
+import anzj;
+import asmr;
+import avtm;
+import avvs;
+import bcsa;
+import beyb;
+import beyf;
+import bhkv;
+import bhnv;
+import bjbs;
+import blha;
+import blrn;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.biu.AtFriendsSpan;
 import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
 import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
@@ -89,42 +89,41 @@ import java.util.Random;
 import java.util.UUID;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import oat;
-import och;
+import ocd;
+import odr;
+import onn;
+import org;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ova;
-import oys;
-import oyt;
-import oyu;
-import oyv;
-import oyw;
-import oyx;
-import oyy;
-import oyz;
-import oza;
-import ozb;
-import paa;
-import pbe;
-import pfa;
-import pgc;
-import pha;
-import pho;
-import rgy;
-import rhn;
-import rlr;
-import snh;
-import stp;
+import orh;
+import ori;
+import orj;
+import ork;
+import orl;
+import orm;
+import orn;
+import oro;
+import orp;
+import osp;
+import otv;
+import oxs;
+import ozs;
+import pag;
+import qxr;
+import qyg;
+import rcl;
+import sel;
+import skt;
 
 public class ReadInJoyCommentComponentFragment
   extends PublicBaseFragment
-  implements aioa, Handler.Callback, View.OnClickListener
+  implements aizh, Handler.Callback, View.OnClickListener
 {
-  private static final Editable.Factory jdField_a_of_type_AndroidTextEditable$Factory = new oyw();
+  private static final Editable.Factory jdField_a_of_type_AndroidTextEditable$Factory = new ork();
   protected int a;
-  private aioj jdField_a_of_type_Aioj;
+  private aizq jdField_a_of_type_Aizq;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   protected TextWatcher a;
@@ -136,11 +135,11 @@ public class ReadInJoyCommentComponentFragment
   protected LinearLayout a;
   public RelativeLayout a;
   public TextView a;
-  private arxd jdField_a_of_type_Arxd = new oyy(this);
-  private avdq jdField_a_of_type_Avdq = new oyz(this);
-  bdzm jdField_a_of_type_Bdzm = new oyv(this);
-  protected biau a;
-  private bkqk jdField_a_of_type_Bkqk = new oyx(this);
+  private asmr jdField_a_of_type_Asmr = new orm(this);
+  private avvs jdField_a_of_type_Avvs = new orn(this);
+  beyf jdField_a_of_type_Beyf = new orj(this);
+  protected bjbs a;
+  private blrn jdField_a_of_type_Blrn = new orl(this);
   public BiuEditText a;
   private SimpleCommentData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanSimpleCommentData;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
@@ -206,17 +205,17 @@ public class ReadInJoyCommentComponentFragment
   {
     this.jdField_a_of_type_Int = 1;
     this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Int = pgc.jdField_b_of_type_Int;
+    this.jdField_c_of_type_Int = 140;
     this.jdField_g_of_type_Boolean = true;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this, true);
-    this.jdField_a_of_type_AndroidTextTextWatcher = new oys(this);
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new oyt(this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this, true);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new org(this);
+    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new orh(this);
     this.jdField_e_of_type_JavaLangString = "";
   }
   
-  private ains a()
+  private aiyz a()
   {
     if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app == null)) {}
     Object localObject;
@@ -228,9 +227,9 @@ public class ReadInJoyCommentComponentFragment
         return null;
         localObject = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
         localBundle = getArguments();
-      } while (((localBundle != null) && (!localBundle.getBoolean("arg_comment_zhitu_switch", true))) || (bmqa.m((AppRuntime)localObject) != 0));
-      localObject = ains.a((AppInterface)localObject);
-    } while ((localObject == null) || (!((ains)localObject).e()));
+      } while (((localBundle != null) && (!localBundle.getBoolean("arg_comment_zhitu_switch", true))) || (bnrf.l((AppRuntime)localObject) != 0));
+      localObject = aiyz.a((AppInterface)localObject);
+    } while ((localObject == null) || (!((aiyz)localObject).e()));
     return localObject;
   }
   
@@ -239,19 +238,19 @@ public class ReadInJoyCommentComponentFragment
     int i1 = 1;
     Intent localIntent = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
     JSONObject localJSONObject1 = new JSONObject();
-    label976:
+    label975:
     for (;;)
     {
       try
       {
         localJSONObject1.put("isAnonymous", this.jdField_c_of_type_Boolean);
-        localJSONObject1.put("comment", new String(bgku.encode(a().getBytes(), 0)));
+        localJSONObject1.put("comment", new String(bhkv.encode(a().getBytes(), 0)));
         Object localObject1;
         Object localObject3;
         Object localObject4;
-        ozb localozb;
+        orp localorp;
         JSONObject localJSONObject2;
-        if ((this.jdField_a_of_type_Aioj != null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null))
+        if ((this.jdField_a_of_type_Aizq != null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null))
         {
           localJSONObject1.put("biuAfterComment", 0);
           if (this.jdField_l_of_type_Boolean)
@@ -285,31 +284,31 @@ public class ReadInJoyCommentComponentFragment
           if (i1 < 0) {
             continue;
           }
-          localozb = (ozb)((ArrayList)localObject3).get(i1);
+          localorp = (orp)((ArrayList)localObject3).get(i1);
           localJSONObject2 = new JSONObject();
         }
         try
         {
-          localJSONObject2.put("uin", Long.valueOf(localozb.jdField_a_of_type_JavaLangString));
+          localJSONObject2.put("uin", Long.valueOf(localorp.jdField_a_of_type_JavaLangString));
           localObject1 = "";
-          if (TextUtils.isEmpty(localozb.jdField_a_of_type_JavaLangCharSequence)) {
-            localozb.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
+          if (TextUtils.isEmpty(localorp.jdField_a_of_type_JavaLangCharSequence)) {
+            localorp.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
           }
-          if (localozb.jdField_a_of_type_JavaLangCharSequence != null) {
-            localObject1 = localozb.jdField_a_of_type_JavaLangCharSequence.toString();
+          if (localorp.jdField_a_of_type_JavaLangCharSequence != null) {
+            localObject1 = localorp.jdField_a_of_type_JavaLangCharSequence.toString();
           }
-          localJSONObject2.put("nick", new String(bgku.encode(((String)localObject1).getBytes(), 0)));
+          localJSONObject2.put("nick", new String(bhkv.encode(((String)localObject1).getBytes(), 0)));
           localObject1 = "";
-          if (localozb.b != null) {
-            localObject1 = localozb.b.toString();
+          if (localorp.b != null) {
+            localObject1 = localorp.b.toString();
           }
-          localJSONObject2.put("comment", new String(bgku.encode(((String)localObject1).getBytes(), 0)));
-          localJSONObject2.put("op_type", localozb.jdField_a_of_type_Int);
+          localJSONObject2.put("comment", new String(bhkv.encode(((String)localObject1).getBytes(), 0)));
+          localJSONObject2.put("op_type", localorp.jdField_a_of_type_Int);
           ((JSONArray)localObject4).put(localJSONObject2);
           i1 -= 1;
           continue;
           if (!this.jdField_a_of_type_Boolean) {
-            break label976;
+            break label975;
           }
           localJSONObject1.put("biuAfterComment", i1);
           continue;
@@ -337,27 +336,27 @@ public class ReadInJoyCommentComponentFragment
           ((JSONArray)localObject2).put(localObject3);
           localJSONObject1.put("picInfoList", localObject2);
         }
-        if ((this.jdField_a_of_type_Aioj != null) && (this.jdField_a_of_type_Aioj.jdField_c_of_type_Boolean))
+        if ((this.jdField_a_of_type_Aizq != null) && (this.jdField_a_of_type_Aizq.jdField_c_of_type_Boolean))
         {
           localObject2 = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-          BitmapFactory.decodeFile(this.jdField_a_of_type_Aioj.jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject2);
+          BitmapFactory.decodeFile(this.jdField_a_of_type_Aizq.jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject2);
           localObject3 = new JSONArray();
           localObject4 = new JSONObject();
           ((JSONObject)localObject4).put("picType", 3);
-          ((JSONObject)localObject4).put("url", this.jdField_a_of_type_Aioj.jdField_f_of_type_JavaLangString);
-          ((JSONObject)localObject4).put("md5", this.jdField_a_of_type_Aioj.g);
+          ((JSONObject)localObject4).put("url", this.jdField_a_of_type_Aizq.jdField_f_of_type_JavaLangString);
+          ((JSONObject)localObject4).put("md5", this.jdField_a_of_type_Aizq.g);
           ((JSONObject)localObject4).put("width", ((BitmapFactory.Options)localObject2).outWidth);
           ((JSONObject)localObject4).put("height", ((BitmapFactory.Options)localObject2).outHeight);
-          ((JSONObject)localObject4).put("thumbnail_url", this.jdField_a_of_type_Aioj.jdField_f_of_type_JavaLangString);
-          ((JSONObject)localObject4).put("thumbnail_md5", this.jdField_a_of_type_Aioj.g);
+          ((JSONObject)localObject4).put("thumbnail_url", this.jdField_a_of_type_Aizq.jdField_f_of_type_JavaLangString);
+          ((JSONObject)localObject4).put("thumbnail_md5", this.jdField_a_of_type_Aizq.g);
           ((JSONObject)localObject4).put("thumbnail_width", ((BitmapFactory.Options)localObject2).outWidth);
           ((JSONObject)localObject4).put("thumbnail_height", ((BitmapFactory.Options)localObject2).outHeight);
           ((JSONArray)localObject3).put(localObject4);
           localJSONObject1.put("picInfoList", localObject3);
         }
         Object localObject2 = localJSONObject1.toString();
-        ReadInJoyUserInfoModule.a(Long.parseLong(pha.a()), null);
+        ReadInJoyUserInfoModule.a(Long.parseLong(ozs.a()), null);
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyCommentComponentFragment", 2, "finish resultJson=" + (String)localObject2);
         }
@@ -389,7 +388,7 @@ public class ReadInJoyCommentComponentFragment
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("folder_status", pha.jdField_d_of_type_Int);
+        localJSONObject.put("folder_status", ozs.jdField_d_of_type_Int);
         if (paramBoolean)
         {
           if (!this.jdField_a_of_type_Boolean) {
@@ -405,10 +404,10 @@ public class ReadInJoyCommentComponentFragment
           localJSONObject.put("scene", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanSimpleCommentData.b());
           return localJSONObject.toString();
         }
-        Object localObject = pbe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+        Object localObject = otv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
         if (localObject != null)
         {
-          localJSONObject.put("entry", ((pbe)localObject).a());
+          localJSONObject.put("entry", ((otv)localObject).a());
           localJSONObject.put("scene", 0);
           continue;
         }
@@ -452,8 +451,8 @@ public class ReadInJoyCommentComponentFragment
         {
           Object localObject2 = paramBundle.getJSONObject(i1);
           long l1 = ((JSONObject)localObject2).optLong("uin");
-          String str2 = new String(bgku.decode(((JSONObject)localObject2).optString("nick"), 0));
-          String str1 = new String(bgku.decode(((JSONObject)localObject2).optString("comment"), 0));
+          String str2 = new String(bhkv.decode(((JSONObject)localObject2).optString("nick"), 0));
+          String str1 = new String(bhkv.decode(((JSONObject)localObject2).optString("comment"), 0));
           ((JSONObject)localObject2).optString("op_type");
           long l2 = ((JSONObject)localObject2).optLong("feedsId");
           if (i1 != paramBundle.length() - 1)
@@ -484,7 +483,7 @@ public class ReadInJoyCommentComponentFragment
         paramBundle = paramBundle.getString("arg_comment_default_txt", "");
         if (!TextUtils.isEmpty(paramBundle))
         {
-          paramBundle = bbzj.b(paramBundle);
+          paramBundle = bcsa.b(paramBundle);
           if ("@".equals(paramBundle)) {
             this.jdField_f_of_type_Boolean = true;
           }
@@ -502,24 +501,24 @@ public class ReadInJoyCommentComponentFragment
   
   private void a(View paramView)
   {
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363503));
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363506));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363500));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363507));
-    this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363502));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363501));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363504));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363526));
+    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363529));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363523));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363530));
+    this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363525));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363524));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363527));
   }
   
   private void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130842788);
+      this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130842802);
       this.jdField_b_of_type_Boolean = true;
       return;
     }
-    this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130842787);
+    this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130842801);
     this.jdField_b_of_type_Boolean = false;
   }
   
@@ -530,15 +529,15 @@ public class ReadInJoyCommentComponentFragment
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyCommentComponentFragment", 2, "onDeliver overlong!");
       }
-      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, getString(2131716973), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, getString(2131717089), 0).a();
       return false;
     }
-    if (!bgnt.g(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity))
+    if (!bhnv.g(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyCommentComponentFragment", 2, "onDeliver network error!");
       }
-      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, getString(2131716972), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, getString(2131717088), 0).a();
       return false;
     }
     return true;
@@ -548,154 +547,154 @@ public class ReadInJoyCommentComponentFragment
   private Intent b()
   {
     // Byte code:
-    //   0: new 211	java/lang/String
+    //   0: new 208	java/lang/String
     //   3: dup
     //   4: aload_0
-    //   5: invokevirtual 214	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	()Ljava/lang/String;
-    //   8: invokevirtual 218	java/lang/String:getBytes	()[B
+    //   5: invokevirtual 211	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	()Ljava/lang/String;
+    //   8: invokevirtual 215	java/lang/String:getBytes	()[B
     //   11: iconst_0
-    //   12: invokestatic 224	bgku:encode	([BI)[B
-    //   15: invokespecial 227	java/lang/String:<init>	([B)V
+    //   12: invokestatic 221	bhkv:encode	([BI)[B
+    //   15: invokespecial 224	java/lang/String:<init>	([B)V
     //   18: astore 5
     //   20: aload_0
-    //   21: invokespecial 453	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	()Landroid/content/Intent;
+    //   21: invokespecial 450	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	()Landroid/content/Intent;
     //   24: astore 4
-    //   26: new 198	org/json/JSONObject
+    //   26: new 195	org/json/JSONObject
     //   29: dup
-    //   30: invokespecial 199	org/json/JSONObject:<init>	()V
+    //   30: invokespecial 196	org/json/JSONObject:<init>	()V
     //   33: astore_2
     //   34: aload 4
-    //   36: ldc_w 421
-    //   39: invokevirtual 690	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   36: ldc_w 418
+    //   39: invokevirtual 687	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   42: astore_3
     //   43: aload_3
-    //   44: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   47: ifne +203 -> 250
-    //   50: new 198	org/json/JSONObject
+    //   44: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   47: ifne +202 -> 249
+    //   50: new 195	org/json/JSONObject
     //   53: dup
     //   54: aload_3
-    //   55: invokespecial 691	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   55: invokespecial 688	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   58: astore_3
     //   59: aload_3
     //   60: astore_2
     //   61: aload_0
-    //   62: getfield 239	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_l_of_type_Boolean	Z
-    //   65: ifeq +58 -> 123
+    //   62: getfield 236	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_l_of_type_Boolean	Z
+    //   65: ifeq +57 -> 122
     //   68: aload_0
-    //   69: getfield 241	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   72: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   75: ifeq +150 -> 225
-    //   78: ldc 82
+    //   69: getfield 238	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   72: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   75: ifeq +149 -> 224
+    //   78: ldc 79
     //   80: astore_3
     //   81: aload_2
-    //   82: ldc 249
+    //   82: ldc 246
     //   84: aload_3
-    //   85: invokevirtual 230	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   85: invokevirtual 227	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   88: pop
     //   89: aload_2
-    //   90: ldc 251
+    //   90: ldc 248
     //   92: aload_0
-    //   93: getfield 253	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_m_of_type_Boolean	Z
-    //   96: invokevirtual 207	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   93: getfield 250	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_m_of_type_Boolean	Z
+    //   96: invokevirtual 204	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   99: pop
     //   100: aload_2
-    //   101: ldc 255
+    //   101: ldc 252
     //   103: aload_0
-    //   104: getfield 84	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   107: invokevirtual 230	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   104: getfield 81	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   107: invokevirtual 227	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   110: pop
     //   111: aload_2
-    //   112: ldc_w 257
-    //   115: aload_0
-    //   116: getfield 86	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   119: invokevirtual 230	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   122: pop
-    //   123: aload_2
-    //   124: ldc 209
-    //   126: aload 5
-    //   128: invokevirtual 230	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   131: pop
-    //   132: aload_2
-    //   133: ldc_w 693
-    //   136: aload_0
-    //   137: getfield 656	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_b_of_type_Boolean	Z
-    //   140: invokevirtual 207	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-    //   143: pop
-    //   144: aload 4
-    //   146: ldc_w 421
-    //   149: aload_2
-    //   150: invokevirtual 387	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   153: invokevirtual 427	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   156: pop
-    //   157: aload_0
-    //   158: getfield 143	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   161: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   164: ifeq +77 -> 241
-    //   167: iconst_2
-    //   168: istore_1
-    //   169: aload 4
-    //   171: ldc_w 450
-    //   174: iload_1
-    //   175: invokevirtual 448	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   178: pop
-    //   179: aload 4
-    //   181: ldc_w 429
-    //   184: aload_0
-    //   185: getfield 431	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo	Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;
-    //   188: invokevirtual 434	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
-    //   191: pop
-    //   192: ldc_w 406
-    //   195: iconst_1
-    //   196: new 408	java/lang/StringBuilder
-    //   199: dup
-    //   200: invokespecial 409	java/lang/StringBuilder:<init>	()V
-    //   203: ldc_w 695
-    //   206: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: aload_2
-    //   210: invokevirtual 387	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   213: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokestatic 419	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   222: aload 4
-    //   224: areturn
-    //   225: aload_0
-    //   226: getfield 241	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   229: astore_3
-    //   230: goto -149 -> 81
-    //   233: astore_3
-    //   234: aload_3
-    //   235: invokevirtual 492	org/json/JSONException:printStackTrace	()V
-    //   238: goto -94 -> 144
-    //   241: iconst_3
-    //   242: istore_1
-    //   243: goto -74 -> 169
-    //   246: astore_3
-    //   247: goto -13 -> 234
-    //   250: goto -189 -> 61
+    //   112: ldc 254
+    //   114: aload_0
+    //   115: getfield 83	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   118: invokevirtual 227	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   121: pop
+    //   122: aload_2
+    //   123: ldc 206
+    //   125: aload 5
+    //   127: invokevirtual 227	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   130: pop
+    //   131: aload_2
+    //   132: ldc_w 690
+    //   135: aload_0
+    //   136: getfield 653	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_b_of_type_Boolean	Z
+    //   139: invokevirtual 204	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   142: pop
+    //   143: aload 4
+    //   145: ldc_w 418
+    //   148: aload_2
+    //   149: invokevirtual 384	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   152: invokevirtual 424	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   155: pop
+    //   156: aload_0
+    //   157: getfield 140	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   160: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   163: ifeq +77 -> 240
+    //   166: iconst_2
+    //   167: istore_1
+    //   168: aload 4
+    //   170: ldc_w 447
+    //   173: iload_1
+    //   174: invokevirtual 445	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   177: pop
+    //   178: aload 4
+    //   180: ldc_w 426
+    //   183: aload_0
+    //   184: getfield 428	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo	Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;
+    //   187: invokevirtual 431	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    //   190: pop
+    //   191: ldc_w 403
+    //   194: iconst_1
+    //   195: new 405	java/lang/StringBuilder
+    //   198: dup
+    //   199: invokespecial 406	java/lang/StringBuilder:<init>	()V
+    //   202: ldc_w 692
+    //   205: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: aload_2
+    //   209: invokevirtual 384	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   212: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   215: invokevirtual 413	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   218: invokestatic 416	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   221: aload 4
+    //   223: areturn
+    //   224: aload_0
+    //   225: getfield 238	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   228: astore_3
+    //   229: goto -148 -> 81
+    //   232: astore_3
+    //   233: aload_3
+    //   234: invokevirtual 489	org/json/JSONException:printStackTrace	()V
+    //   237: goto -94 -> 143
+    //   240: iconst_3
+    //   241: istore_1
+    //   242: goto -74 -> 168
+    //   245: astore_3
+    //   246: goto -13 -> 233
+    //   249: goto -188 -> 61
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	253	0	this	ReadInJoyCommentComponentFragment
-    //   168	75	1	i1	int
-    //   33	177	2	localObject1	Object
-    //   42	188	3	localObject2	Object
-    //   233	2	3	localJSONException1	JSONException
-    //   246	1	3	localJSONException2	JSONException
-    //   24	199	4	localIntent	Intent
-    //   18	109	5	str	String
+    //   0	252	0	this	ReadInJoyCommentComponentFragment
+    //   167	75	1	i1	int
+    //   33	176	2	localObject1	Object
+    //   42	187	3	localObject2	Object
+    //   232	2	3	localJSONException1	JSONException
+    //   245	1	3	localJSONException2	JSONException
+    //   24	198	4	localIntent	Intent
+    //   18	108	5	str	String
     // Exception table:
     //   from	to	target	type
-    //   34	59	233	org/json/JSONException
-    //   61	78	246	org/json/JSONException
-    //   81	123	246	org/json/JSONException
-    //   123	144	246	org/json/JSONException
-    //   225	230	246	org/json/JSONException
+    //   34	59	232	org/json/JSONException
+    //   61	78	245	org/json/JSONException
+    //   81	122	245	org/json/JSONException
+    //   122	143	245	org/json/JSONException
+    //   224	229	245	org/json/JSONException
   }
   
   private void b(int paramInt)
   {
-    int i3 = 2130849369;
+    int i3 = 2130849388;
     this.jdField_a_of_type_Int = paramInt;
-    int i2 = 2130842903;
+    int i2 = 2130842921;
     int i1;
     if (paramInt == 1)
     {
@@ -703,7 +702,7 @@ public class ReadInJoyCommentComponentFragment
         break label204;
       }
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(1);
-      paramInt = 2130842901;
+      paramInt = 2130842919;
       i1 = i2;
     }
     for (;;)
@@ -738,8 +737,8 @@ public class ReadInJoyCommentComponentFragment
           if ((this.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 24))
           {
             this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(24);
-            i1 = 2130849369;
-            paramInt = 2130842901;
+            i1 = 2130849388;
+            paramInt = 2130842919;
           }
         }
         else
@@ -748,12 +747,12 @@ public class ReadInJoyCommentComponentFragment
             this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
           }
           label204:
-          paramInt = 2130842901;
+          paramInt = 2130842919;
           i1 = i2;
           continue;
         }
-        i1 = 2130849369;
-        paramInt = 2130842901;
+        i1 = 2130849388;
+        paramInt = 2130842919;
       }
     }
   }
@@ -763,7 +762,7 @@ public class ReadInJoyCommentComponentFragment
     if (!paramBundle.getBoolean("arg_comment_gif_switch", true)) {
       this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    while (bmqa.l(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app) != 1) {
+    while (bnrf.k(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app) != 1) {
       return;
     }
     this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -771,7 +770,7 @@ public class ReadInJoyCommentComponentFragment
   
   private boolean b()
   {
-    return bmqa.u(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app) == 1;
+    return bnrf.s(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app) == 1;
   }
   
   private void c(int paramInt)
@@ -788,7 +787,7 @@ public class ReadInJoyCommentComponentFragment
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.setHint(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.setHint(anni.a(2131711711));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.setHint(anzj.a(2131711820));
   }
   
   private void d(@NotNull Bundle paramBundle)
@@ -799,13 +798,16 @@ public class ReadInJoyCommentComponentFragment
     }
     for (;;)
     {
-      if (this.jdField_c_of_type_Int > 1000) {
-        this.jdField_c_of_type_Int = 1000;
+      if (this.jdField_c_of_type_Int > 5000) {
+        this.jdField_c_of_type_Int = 5000;
+      }
+      if (this.jdField_c_of_type_Int < 100) {
+        this.jdField_c_of_type_Int = 100;
       }
       return;
-      i1 = bmqa.k(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
-      if (i1 > 0) {
-        this.jdField_c_of_type_Int = i1;
+      this.jdField_c_of_type_Int = bnrf.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "initData | comment_mMaxCharCount : " + this.jdField_c_of_type_Int);
       }
     }
   }
@@ -815,7 +817,7 @@ public class ReadInJoyCommentComponentFragment
     int i1 = 1;
     int i2 = paramBundle.getInt("arg_comment_open_at", 0);
     boolean bool;
-    if ((bmqa.v(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app) == 0) && (i2 == 1))
+    if ((bnrf.t(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app) == 0) && (i2 == 1))
     {
       bool = true;
       this.jdField_g_of_type_Boolean = bool;
@@ -900,7 +902,7 @@ public class ReadInJoyCommentComponentFragment
   
   private void i()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.contains(getString(2131716933)))) {}
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.contains(getString(2131717049)))) {}
     for (int i1 = 2;; i1 = 1)
     {
       Object localObject1 = "";
@@ -909,9 +911,9 @@ public class ReadInJoyCommentComponentFragment
         try
         {
           localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("folder_status", pha.jdField_d_of_type_Int);
+          ((JSONObject)localObject2).put("folder_status", ozs.jdField_d_of_type_Int);
           if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-            ((JSONObject)localObject2).put("consume_time", pho.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, false) / 1000L);
+            ((JSONObject)localObject2).put("consume_time", pag.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, false) / 1000L);
           }
           ((JSONObject)localObject2).put("os", 1);
           if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanSimpleCommentData == null) {
@@ -925,19 +927,19 @@ public class ReadInJoyCommentComponentFragment
         catch (JSONException localJSONException)
         {
           Object localObject2;
-          pbe localpbe;
+          otv localotv;
           localJSONException.printStackTrace();
           continue;
           localJSONException.put("entry", 0);
           continue;
         }
-        oat.a(null, "", "0X800844A", "0X800844A", 0, 0, String.valueOf(i1), String.valueOf(this.jdField_e_of_type_Int), "", (String)localObject1, false);
+        ocd.a(null, "", "0X800844A", "0X800844A", 0, 0, String.valueOf(i1), String.valueOf(this.jdField_e_of_type_Int), "", (String)localObject1, false);
         return;
-        localpbe = pbe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-        if (localpbe == null) {
+        localotv = otv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+        if (localotv == null) {
           continue;
         }
-        ((JSONObject)localObject2).put("entry", localpbe.a());
+        ((JSONObject)localObject2).put("entry", localotv.a());
         ((JSONObject)localObject2).put("scene", 0);
       }
     }
@@ -955,22 +957,22 @@ public class ReadInJoyCommentComponentFragment
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null) {
-      oat.a(null, "", "0X800844D", "0X800844D", 0, 0, "", "", "", a(false), false);
+      ocd.a(null, "", "0X800844D", "0X800844D", 0, 0, "", "", "", a(false), false);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData = null;
-      this.jdField_a_of_type_Aioj = null;
+      this.jdField_a_of_type_Aizq = null;
       p();
       this.jdField_g_of_type_AndroidWidgetImageView.setClickable(true);
       if (this.jdField_k_of_type_Boolean)
       {
         this.jdField_k_of_type_Boolean = false;
-        this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842788);
+        this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842802);
       }
       return;
-      if (this.jdField_a_of_type_Aioj != null) {
-        oat.a(null, "", "0X8008F5A", "0X8008F5A", 0, 0, "", "", "", a(false), false);
+      if (this.jdField_a_of_type_Aizq != null) {
+        ocd.a(null, "", "0X8008F5A", "0X8008F5A", 0, 0, "", "", "", a(false), false);
       }
     }
   }
@@ -984,10 +986,10 @@ public class ReadInJoyCommentComponentFragment
       if (!this.jdField_c_of_type_Boolean) {
         break;
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130842674);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130842688);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130842673);
+    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130842687);
   }
   
   private void m()
@@ -997,16 +999,16 @@ public class ReadInJoyCommentComponentFragment
     }
     for (;;)
     {
-      ains localains = a();
-      if ((localains != null) && (this.jdField_j_of_type_Boolean))
+      aiyz localaiyz = a();
+      if ((localaiyz != null) && (this.jdField_j_of_type_Boolean))
       {
-        localains.c();
+        localaiyz.c();
         this.jdField_j_of_type_Boolean = false;
         this.jdField_f_of_type_AndroidWidgetImageView.setSelected(false);
       }
       return;
       b(2);
-      oat.a(null, "", "0X800844B", "0X800844B", 0, 0, "", "", "", a(false), false);
+      ocd.a(null, "", "0X800844B", "0X800844B", 0, 0, "", "", "", a(false), false);
     }
   }
   
@@ -1017,16 +1019,16 @@ public class ReadInJoyCommentComponentFragment
     }
     for (;;)
     {
-      ains localains = a();
-      if ((localains != null) && (this.jdField_j_of_type_Boolean))
+      aiyz localaiyz = a();
+      if ((localaiyz != null) && (this.jdField_j_of_type_Boolean))
       {
-        localains.c();
+        localaiyz.c();
         this.jdField_j_of_type_Boolean = false;
         this.jdField_f_of_type_AndroidWidgetImageView.setSelected(false);
       }
       return;
       b(3);
-      oat.a(null, "", "0X800844C", "0X800844C", 0, 0, "", "", "", a(false), false);
+      ocd.a(null, "", "0X800844C", "0X800844C", 0, 0, "", "", "", a(false), false);
     }
   }
   
@@ -1047,20 +1049,20 @@ public class ReadInJoyCommentComponentFragment
         if (this.jdField_h_of_type_Int == 1) {
           str = "0X80094A1";
         }
-        oat.a(null, "", str, str, 0, 0, String.valueOf(this.jdField_d_of_type_Int), String.valueOf(i1), "", a(true), false);
-        if (this.jdField_a_of_type_Aioj == null)
+        ocd.a(null, "", str, str, 0, 0, String.valueOf(this.jdField_d_of_type_Int), String.valueOf(i1), "", a(true), false);
+        if (this.jdField_a_of_type_Aizq == null)
         {
           this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.setResult(-1, a());
           this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
           return;
-          if (this.jdField_a_of_type_Aioj != null) {
+          if (this.jdField_a_of_type_Aizq != null) {
             i1 += 4;
           }
         }
         else
         {
-          a(2131694623);
-          a(this.jdField_a_of_type_Aioj.jdField_b_of_type_JavaLangString);
+          a(2131694665);
+          a(this.jdField_a_of_type_Aizq.jdField_b_of_type_JavaLangString);
           return;
         }
       }
@@ -1073,7 +1075,7 @@ public class ReadInJoyCommentComponentFragment
     boolean bool1 = bool2;
     if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData == null)
     {
-      if (this.jdField_a_of_type_Aioj == null) {
+      if (this.jdField_a_of_type_Aizq == null) {
         break label44;
       }
       bool1 = bool2;
@@ -1095,7 +1097,7 @@ public class ReadInJoyCommentComponentFragment
   
   private void q()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (((!snh.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && (pfa.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b()))) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (((!sel.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && (oxs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b()))) {
       this.jdField_h_of_type_Boolean = false;
     }
     if (!this.jdField_h_of_type_Boolean)
@@ -1107,7 +1109,7 @@ public class ReadInJoyCommentComponentFragment
   
   private void r()
   {
-    if ((ova.a()) && (this.p)) {
+    if ((onn.a()) && (this.p)) {
       this.o = true;
     }
     if (!this.o)
@@ -1133,33 +1135,33 @@ public class ReadInJoyCommentComponentFragment
   
   private void t()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = ova.b().split("\\|");
+    this.jdField_a_of_type_ArrayOfJavaLangString = onn.b().split("\\|");
     if (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0) {
       this.jdField_m_of_type_Int = new Random().nextInt(this.jdField_a_of_type_ArrayOfJavaLangString.length);
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_m_of_type_Int])) {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_m_of_type_Int]);
     }
-    String str = ova.c();
+    String str = onn.c();
     if (!TextUtils.isEmpty(str)) {
       this.jdField_b_of_type_AndroidWidgetButton.setText(str);
     }
-    if (ova.d()) {
+    if (onn.d()) {
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
     do
     {
       return;
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      str = ova.d();
+      str = onn.d();
       if (!TextUtils.isEmpty(str)) {
         this.jdField_d_of_type_AndroidWidgetTextView.setText(str);
       }
-      if (ova.b()) {
+      if (onn.b()) {
         a(true);
       }
-    } while (!ova.c());
-    if (((Boolean)bmqa.a("rij_sp_editor_last_check", Boolean.valueOf(false))).booleanValue())
+    } while (!onn.c());
+    if (((Boolean)bnrf.a("rij_sp_editor_last_check", Boolean.valueOf(false))).booleanValue())
     {
       a(true);
       return;
@@ -1169,10 +1171,10 @@ public class ReadInJoyCommentComponentFragment
   
   private void u()
   {
-    oyu localoyu = new oyu(this);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(localoyu);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(localoyu);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(localoyu);
+    ori localori = new ori(this);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(localori);
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(localori);
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(localori);
   }
   
   private void v()
@@ -1181,8 +1183,8 @@ public class ReadInJoyCommentComponentFragment
     if (!a()) {
       return;
     }
-    if (ova.c()) {
-      bmqa.a("rij_sp_editor_last_check", Boolean.valueOf(this.jdField_b_of_type_Boolean));
+    if (onn.c()) {
+      bnrf.a("rij_sp_editor_last_check", Boolean.valueOf(this.jdField_b_of_type_Boolean));
     }
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.setResult(1699, b());
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
@@ -1201,7 +1203,7 @@ public class ReadInJoyCommentComponentFragment
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("feeds_type", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
       ((JSONObject)localObject2).put("feedsid", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId);
-      ((JSONObject)localObject2).put("version", och.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject2).put("version", odr.jdField_a_of_type_JavaLangString);
       ((JSONObject)localObject2).put("os", "1");
       ((JSONObject)localObject2).put("entry", 1);
       ((JSONObject)localObject2).put("place", 1);
@@ -1215,7 +1217,7 @@ public class ReadInJoyCommentComponentFragment
         QLog.d("ReadInJoyCommentComponentFragment", 2, localJSONException.getMessage());
       }
     }
-    oat.a(null, paa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X800AB7B", "0X800AB7B", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, (String)localObject1, false);
+    ocd.a(null, osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X800AB7B", "0X800AB7B", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, (String)localObject1, false);
   }
   
   private void x()
@@ -1231,7 +1233,7 @@ public class ReadInJoyCommentComponentFragment
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("feeds_type", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
       ((JSONObject)localObject2).put("feedsid", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId);
-      ((JSONObject)localObject2).put("version", och.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject2).put("version", odr.jdField_a_of_type_JavaLangString);
       ((JSONObject)localObject2).put("os", "1");
       ((JSONObject)localObject2).put("entry", 1);
       ((JSONObject)localObject2).put("place", 1);
@@ -1245,7 +1247,7 @@ public class ReadInJoyCommentComponentFragment
         QLog.d("ReadInJoyCommentComponentFragment", 2, localJSONException.getMessage());
       }
     }
-    oat.a(null, paa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X800AB7A", "0X800AB7A", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, (String)localObject1, false);
+    ocd.a(null, osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X800AB7A", "0X800AB7A", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, (String)localObject1, false);
   }
   
   protected String a()
@@ -1262,11 +1264,11 @@ public class ReadInJoyCommentComponentFragment
       }
       return str;
       str = UUID.randomUUID().toString();
-      localObject = rlr.a(localObject.toString(), str).trim();
+      localObject = rcl.a(localObject.toString(), str).trim();
       if (((String)localObject).length() <= 0) {
         str = "";
       } else {
-        str = bbzj.a(rlr.b(((String)localObject).replaceAll("\n|\r\n", ""), str));
+        str = bcsa.a(rcl.b(((String)localObject).replaceAll("\n|\r\n", ""), str));
       }
     }
   }
@@ -1278,11 +1280,11 @@ public class ReadInJoyCommentComponentFragment
       ArrayList localArrayList = new ArrayList();
       b(localArrayList);
       JSONObject localJSONObject1 = new JSONObject();
-      new SocializeFeedsInfo().jdField_a_of_type_Rgy = new rgy();
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rgy != null))
+      new SocializeFeedsInfo().jdField_a_of_type_Qxr = new qxr();
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr != null))
       {
-        localJSONObject1.put("mOriFeedType", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rgy.b);
-        localJSONObject1.put("mOriFeedId", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rgy.jdField_a_of_type_JavaLangLong);
+        localJSONObject1.put("mOriFeedType", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr.b);
+        localJSONObject1.put("mOriFeedId", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr.jdField_a_of_type_JavaLangLong);
       }
       localJSONObject1.put("biuSrc", this.jdField_i_of_type_Int);
       localJSONObject1.put("feedtype", this.jdField_j_of_type_Int);
@@ -1290,13 +1292,13 @@ public class ReadInJoyCommentComponentFragment
       int i1 = 0;
       while (i1 < localArrayList.size())
       {
-        ozb localozb = (ozb)localArrayList.get(i1);
+        orp localorp = (orp)localArrayList.get(i1);
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("biu_info_comment", localozb.b);
-        localJSONObject2.put("biu_feedid", new Long(localozb.jdField_a_of_type_Long));
-        localJSONObject2.put("biu_optype", localozb.jdField_a_of_type_Int);
-        localJSONObject2.put("biu_uin", localozb.jdField_a_of_type_JavaLangString);
-        localJSONObject2.put("biu_nickname", localozb.jdField_a_of_type_JavaLangCharSequence);
+        localJSONObject2.put("biu_info_comment", localorp.b);
+        localJSONObject2.put("biu_feedid", new Long(localorp.jdField_a_of_type_Long));
+        localJSONObject2.put("biu_optype", localorp.jdField_a_of_type_Int);
+        localJSONObject2.put("biu_uin", localorp.jdField_a_of_type_JavaLangString);
+        localJSONObject2.put("biu_nickname", localorp.jdField_a_of_type_JavaLangCharSequence);
         localJSONArray.put(localJSONObject2);
         i1 += 1;
       }
@@ -1323,11 +1325,11 @@ public class ReadInJoyCommentComponentFragment
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Biau != null)
+    if (this.jdField_a_of_type_Bjbs != null)
     {
-      this.jdField_a_of_type_Biau.c(paramInt);
-      if (!this.jdField_a_of_type_Biau.isShowing()) {
-        this.jdField_a_of_type_Biau.show();
+      this.jdField_a_of_type_Bjbs.c(paramInt);
+      if (!this.jdField_a_of_type_Bjbs.isShowing()) {
+        this.jdField_a_of_type_Bjbs.show();
       }
     }
   }
@@ -1382,14 +1384,14 @@ public class ReadInJoyCommentComponentFragment
     QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramInt, paramCharSequence, 0).b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
   
-  public void a(aioj paramaioj)
+  public void a(aizq paramaizq)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentComponentFragment", 2, "onZhituSend:" + paramaioj);
+      QLog.d("ReadInJoyCommentComponentFragment", 2, "onZhituSend:" + paramaizq);
     }
-    this.jdField_a_of_type_Aioj = paramaioj;
+    this.jdField_a_of_type_Aizq = paramaizq;
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData = null;
-    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.9(this, paramaioj));
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.9(this, paramaizq));
   }
   
   public void a(String paramString)
@@ -1400,7 +1402,7 @@ public class ReadInJoyCommentComponentFragment
     if (TextUtils.isEmpty(paramString))
     {
       f();
-      a(1, getString(2131716990));
+      a(1, getString(2131717106));
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyCommentComponentFragment", 2, "startUploadPic empty path!");
       }
@@ -1409,7 +1411,7 @@ public class ReadInJoyCommentComponentFragment
     ThreadManager.executeOnSubThread(new ReadInJoyCommentComponentFragment.3(this, paramString));
   }
   
-  protected boolean a(ArrayList<ozb> paramArrayList)
+  protected boolean a(ArrayList<orp> paramArrayList)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText == null) {
       return true;
@@ -1424,25 +1426,25 @@ public class ReadInJoyCommentComponentFragment
     int i1 = 0;
     if ((localEditable == null) || (TextUtils.isEmpty(localEditable.toString())))
     {
-      paramArrayList.add(new ozb(this, str1, 0L, ""));
+      paramArrayList.add(new orp(this, str1, 0L, ""));
       return false;
     }
     String str3 = UUID.randomUUID().toString();
-    Object localObject3 = rlr.a(localEditable.toString(), str3).trim();
+    Object localObject3 = rcl.a(localEditable.toString(), str3).trim();
     if (TextUtils.isEmpty((CharSequence)localObject3))
     {
-      paramArrayList.add(new ozb(this, str1, 0L, ""));
+      paramArrayList.add(new orp(this, str1, 0L, ""));
       return true;
     }
     localObject1 = (BiuNicknameSpan[])localEditable.getSpans(0, localEditable.length(), BiuNicknameSpan.class);
     if ((localObject1 == null) || (localObject1.length <= 0))
     {
-      paramArrayList.add(new ozb(this, str1, 0L, bbzj.a(rlr.b(((String)localObject3).replaceAll("\n|\r\n", ""), str3))));
+      paramArrayList.add(new orp(this, str1, 0L, bcsa.a(rcl.b(((String)localObject3).replaceAll("\n|\r\n", ""), str3))));
       return true;
     }
     localObject3 = new ArrayList();
     ((ArrayList)localObject3).addAll(Arrays.asList((Object[])localObject1));
-    Collections.sort((List)localObject3, new oza(this, localEditable));
+    Collections.sort((List)localObject3, new oro(this, localEditable));
     long l1 = 0L;
     localObject3 = ((ArrayList)localObject3).iterator();
     BiuNicknameSpan localBiuNicknameSpan;
@@ -1463,12 +1465,12 @@ public class ReadInJoyCommentComponentFragment
         localObject1 = localEditable.subSequence(i2, i4).toString();
         if (localObject1 != null)
         {
-          localObject1 = rlr.a((String)localObject1, str3).replaceAll("\n|\r\n", "");
+          localObject1 = rcl.a((String)localObject1, str3).replaceAll("\n|\r\n", "");
           if (i2 != 0) {
             break label545;
           }
           localObject1 = ((String)localObject1).substring(((String)localObject1).indexOf(((String)localObject1).trim()));
-          paramArrayList.add(new ozb(this, str1, l1, bbzj.a(rlr.b((String)localObject1, str3)), i1));
+          paramArrayList.add(new orp(this, str1, l1, bcsa.a(rcl.b((String)localObject1, str3)), i1));
         }
         if ((localBiuNicknameSpan instanceof AtFriendsSpan))
         {
@@ -1491,8 +1493,8 @@ public class ReadInJoyCommentComponentFragment
         str2 = localEditable.subSequence(i2, localEditable.length()).toString();
         if (str2 != null)
         {
-          str2 = rlr.a(str2, str3).replaceAll("\n|\r\n", "");
-          paramArrayList.add(new ozb(this, str1, l1, bbzj.a(rlr.b(str2.substring(0, str2.indexOf(str2.trim()) + str2.trim().length()), str3)), i1));
+          str2 = rcl.a(str2, str3).replaceAll("\n|\r\n", "");
+          paramArrayList.add(new orp(this, str1, l1, bcsa.a(rcl.b(str2.substring(0, str2.indexOf(str2.trim()) + str2.trim().length()), str3)), i1));
         }
         return false;
       }
@@ -1512,10 +1514,10 @@ public class ReadInJoyCommentComponentFragment
     if (this.jdField_g_of_type_Boolean) {
       b("1");
     }
-    ains localains = a();
-    if ((localains != null) && (this.jdField_j_of_type_Boolean))
+    aiyz localaiyz = a();
+    if ((localaiyz != null) && (this.jdField_j_of_type_Boolean))
     {
-      localains.c();
+      localaiyz.c();
       this.jdField_j_of_type_Boolean = false;
       this.jdField_f_of_type_AndroidWidgetImageView.setSelected(false);
     }
@@ -1529,10 +1531,10 @@ public class ReadInJoyCommentComponentFragment
     localIntent.putExtra("param_min", 1);
     localIntent.putExtra("param_max", 10);
     startActivityForResult(localIntent, 10000);
-    oat.a(null, "", "0X8008660", "0X8008660", 0, 0, paramString, "", "", a(false), false);
+    ocd.a(null, "", "0X8008660", "0X8008660", 0, 0, paramString, "", "", a(false), false);
   }
   
-  protected boolean b(ArrayList<ozb> paramArrayList)
+  protected boolean b(ArrayList<orp> paramArrayList)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText == null) {
       return true;
@@ -1546,7 +1548,7 @@ public class ReadInJoyCommentComponentFragment
     if ((!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {}
     for (int i2 = 1;; i2 = 0)
     {
-      if ((pha.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && (this.jdField_h_of_type_Int == 1)) {}
+      if ((ozs.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && (this.jdField_h_of_type_Int == 1)) {}
       int i4;
       int i1;
       for (int i3 = 1;; i3 = 0)
@@ -1556,25 +1558,25 @@ public class ReadInJoyCommentComponentFragment
         if ((localEditable != null) && (!TextUtils.isEmpty(localEditable.toString()))) {
           break;
         }
-        paramArrayList.add(new ozb(this, (String)localObject1, 0L, ""));
+        paramArrayList.add(new orp(this, (String)localObject1, 0L, ""));
         return false;
       }
       String str2 = UUID.randomUUID().toString();
-      Object localObject4 = rlr.a(localEditable.toString(), str2).trim();
+      Object localObject4 = rcl.a(localEditable.toString(), str2).trim();
       if (TextUtils.isEmpty((CharSequence)localObject4)) {
-        paramArrayList.add(new ozb(this, (String)localObject1, 0L, ""));
+        paramArrayList.add(new orp(this, (String)localObject1, 0L, ""));
       }
       for (boolean bool = true;; bool = true)
       {
         if (i2 != 0)
         {
           this.jdField_e_of_type_JavaLangString = (": " + this.jdField_e_of_type_JavaLangString);
-          paramArrayList.add(new ozb(this, this.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId, this.jdField_e_of_type_JavaLangString, 0));
+          paramArrayList.add(new orp(this, this.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId, this.jdField_e_of_type_JavaLangString, 0));
         }
-        if ((i3 == 0) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rgy == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rgy.jdField_a_of_type_JavaUtilList == null)) {
+        if ((i3 == 0) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr.jdField_a_of_type_JavaUtilList == null)) {
           break label882;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rgy.jdField_a_of_type_JavaUtilList;
+        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr.jdField_a_of_type_JavaUtilList;
         i2 = ((List)localObject1).size();
         i1 = 0;
         for (;;)
@@ -1593,7 +1595,7 @@ public class ReadInJoyCommentComponentFragment
         if ((localObject2 != null) && (localObject2.length > 0)) {
           break;
         }
-        str2 = bbzj.a(rlr.b(((String)localObject4).replaceAll("\n|\r\n", ""), str2));
+        str2 = bcsa.a(rcl.b(((String)localObject4).replaceAll("\n|\r\n", ""), str2));
         if (i2 == 0)
         {
           localObject2 = str2;
@@ -1603,11 +1605,11 @@ public class ReadInJoyCommentComponentFragment
         {
           localObject2 = str2 + "//";
         }
-        paramArrayList.add(new ozb(this, (String)localObject1, 0L, "：" + (String)localObject2));
+        paramArrayList.add(new orp(this, (String)localObject1, 0L, "：" + (String)localObject2));
       }
       localObject4 = new ArrayList();
       ((ArrayList)localObject4).addAll(Arrays.asList((Object[])localObject2));
-      Collections.sort((List)localObject4, new oza(this, localEditable));
+      Collections.sort((List)localObject4, new oro(this, localEditable));
       long l1 = 0L;
       localObject4 = ((ArrayList)localObject4).iterator();
       BiuNicknameSpan localBiuNicknameSpan;
@@ -1632,12 +1634,12 @@ public class ReadInJoyCommentComponentFragment
             localObject2 = localEditable.subSequence(i4, i6).toString();
             if (localObject2 != null)
             {
-              localObject2 = rlr.a((String)localObject2, str2).replaceAll("\n|\r\n", "");
+              localObject2 = rcl.a((String)localObject2, str2).replaceAll("\n|\r\n", "");
               if (i4 != 0) {
                 break label885;
               }
               localObject2 = ((String)localObject2).substring(((String)localObject2).indexOf(((String)localObject2).trim()));
-              paramArrayList.add(new ozb(this, (String)localObject1, l1, bbzj.a(rlr.b((String)localObject2, str2)), i1));
+              paramArrayList.add(new orp(this, (String)localObject1, l1, bcsa.a(rcl.b((String)localObject2, str2)), i1));
             }
             if ((localBiuNicknameSpan instanceof AtFriendsSpan))
             {
@@ -1660,8 +1662,8 @@ public class ReadInJoyCommentComponentFragment
             str1 = localEditable.subSequence(i4, localEditable.length()).toString();
             if (str1 != null)
             {
-              str1 = rlr.a(str1, str2).replaceAll("\n|\r\n", "");
-              paramArrayList.add(new ozb(this, (String)localObject1, l1, bbzj.a(rlr.b(str1.substring(0, str1.indexOf(str1.trim()) + str1.trim().length()), str2)), i1));
+              str1 = rcl.a(str1, str2).replaceAll("\n|\r\n", "");
+              paramArrayList.add(new orp(this, (String)localObject1, l1, bcsa.a(rcl.b(str1.substring(0, str1.indexOf(str1.trim()) + str1.trim().length()), str2)), i1));
             }
             bool = false;
           }
@@ -1674,7 +1676,7 @@ public class ReadInJoyCommentComponentFragment
             }
           }
         }
-        paramArrayList.add(new ozb(this, String.valueOf(localObject3.jdField_a_of_type_JavaLangLong), localObject3.b.longValue(), localObject3.jdField_a_of_type_JavaLangString, localObject3.jdField_c_of_type_Int));
+        paramArrayList.add(new orp(this, String.valueOf(localObject3.jdField_a_of_type_JavaLangLong), localObject3.b.longValue(), localObject3.jdField_a_of_type_JavaLangString, localObject3.jdField_c_of_type_Int));
         break label357;
         return bool;
       }
@@ -1683,14 +1685,14 @@ public class ReadInJoyCommentComponentFragment
   
   protected void c()
   {
-    if ((this.jdField_a_of_type_Aioj != null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null))
+    if ((this.jdField_a_of_type_Aizq != null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null))
     {
-      QQToast.a(this.jdField_g_of_type_AndroidWidgetImageView.getContext(), anni.a(2131711739), 0).a();
+      QQToast.a(this.jdField_g_of_type_AndroidWidgetImageView.getContext(), anzj.a(2131711848), 0).a();
       return;
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842788);
+      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842802);
       this.jdField_a_of_type_Boolean = true;
       if (!this.jdField_a_of_type_Boolean) {
         break label113;
@@ -1699,9 +1701,9 @@ public class ReadInJoyCommentComponentFragment
     label113:
     for (String str = "0";; str = "1")
     {
-      oat.a(null, "", "0X8008F58", "0X8008F58", 0, 0, str, "", "", a(false), false);
+      ocd.a(null, "", "0X8008F58", "0X8008F58", 0, 0, str, "", "", a(false), false);
       return;
-      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842787);
+      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842801);
       this.jdField_a_of_type_Boolean = false;
       break;
     }
@@ -1716,25 +1718,25 @@ public class ReadInJoyCommentComponentFragment
   
   protected void e()
   {
-    ains localains = a();
-    if (localains != null)
+    aiyz localaiyz = a();
+    if (localaiyz != null)
     {
       if (!this.jdField_j_of_type_Boolean) {
         break label60;
       }
-      localains.c();
+      localaiyz.c();
       this.jdField_j_of_type_Boolean = false;
       this.jdField_f_of_type_AndroidWidgetImageView.setSelected(false);
     }
     for (;;)
     {
-      oat.a(null, "", "0X8008F59", "0X8008F59", 0, 0, "", "", "", a(false), false);
+      ocd.a(null, "", "0X8008F59", "0X8008F59", 0, 0, "", "", "", a(false), false);
       return;
       label60:
       Editable localEditable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-      if (!localains.a(localEditable))
+      if (!localaiyz.a(localEditable))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getContext(), anni.a(2131711513), 0).a();
+        QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getContext(), anzj.a(2131711622), 0).a();
         return;
       }
       if (localEditable.length() > 24)
@@ -1742,12 +1744,12 @@ public class ReadInJoyCommentComponentFragment
         QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getContext(), "24个字符以内才支持转为智图。", 0).a();
         return;
       }
-      localains.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_c_of_type_AndroidWidgetRelativeLayout, null, null, false, this.jdField_a_of_type_MqqOsMqqHandler);
-      if (localains.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() > 1) {
-        localains.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(0);
+      localaiyz.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_c_of_type_AndroidWidgetRelativeLayout, null, null, false, this.jdField_a_of_type_MqqOsMqqHandler);
+      if (localaiyz.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() > 1) {
+        localaiyz.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(0);
       }
-      localains.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, localEditable, null, 7220, false);
-      localains.a(this);
+      localaiyz.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, localEditable, null, 7220, false);
+      localaiyz.a(this);
       this.jdField_j_of_type_Boolean = true;
       this.jdField_f_of_type_AndroidWidgetImageView.setSelected(true);
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
@@ -1757,8 +1759,8 @@ public class ReadInJoyCommentComponentFragment
   
   public void f()
   {
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-      this.jdField_a_of_type_Biau.dismiss();
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
+      this.jdField_a_of_type_Bjbs.dismiss();
     }
   }
   
@@ -1848,44 +1850,44 @@ public class ReadInJoyCommentComponentFragment
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560082, paramViewGroup, false);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131363211));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560094, paramViewGroup, false);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131363235));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131368316));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368317));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131368390));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368391));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131368320).setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131362684));
+    paramLayoutInflater.findViewById(2131368394).setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131362700));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131365878));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131365923));
     this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131367482));
-    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368409));
-    if (!avbk.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app).b()) {
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131367544));
+    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368482));
+    if (!avtm.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app).b()) {
       this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131362979));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131362997));
       if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
         this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364328));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131365338));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364372));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131365382));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText = ((BiuEditText)paramLayoutInflater.findViewById(2131368651));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText = ((BiuEditText)paramLayoutInflater.findViewById(2131368725));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.requestFocus();
       try
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.setEditableFactory(jdField_a_of_type_AndroidTextEditable$Factory);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getInputExtras(true).putInt("SOGOU_EXPRESSION", 1);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-        this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)paramLayoutInflater.findViewById(2131376788));
+        this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)paramLayoutInflater.findViewById(2131376925));
         this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText, false);
-        this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setOnPanelChangeListener(this.jdField_a_of_type_Bkqk);
-        this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131381404));
+        this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setOnPanelChangeListener(this.jdField_a_of_type_Blrn);
+        this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131381593));
         this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131381407));
+        this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131381596));
         a(paramLayoutInflater);
         g();
         this.jdField_g_of_type_Int = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
@@ -1893,21 +1895,21 @@ public class ReadInJoyCommentComponentFragment
         {
           bool = true;
           this.jdField_e_of_type_Boolean = bool;
-          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131367058));
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131367109));
           this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
           this.jdField_a_of_type_ComTencentWidgetXPanelContainer.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
           if (ThemeUtil.isInNightMode(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppRuntime()))
           {
-            paramViewGroup = paramLayoutInflater.findViewById(2131371727);
+            paramViewGroup = paramLayoutInflater.findViewById(2131371834);
             if (paramViewGroup != null) {
               paramViewGroup.setVisibility(0);
             }
           }
-          this.jdField_a_of_type_Biau = new biau(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-          this.jdField_a_of_type_Biau.setCanceledOnTouchOutside(true);
-          this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364753));
-          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131365339));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131363510));
+          this.jdField_a_of_type_Bjbs = new bjbs(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+          this.jdField_a_of_type_Bjbs.setCanceledOnTouchOutside(true);
+          this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364800));
+          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131365383));
+          this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131363533));
         }
       }
       catch (Exception paramViewGroup)
@@ -1916,7 +1918,7 @@ public class ReadInJoyCommentComponentFragment
         {
           for (;;)
           {
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhn.jdField_a_of_type_Boolean) {
+            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_Boolean) {
               this.n = false;
             }
             if (this.n) {
@@ -1925,7 +1927,7 @@ public class ReadInJoyCommentComponentFragment
             this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
             if (b())
             {
-              this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842788);
+              this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842802);
               this.jdField_a_of_type_Boolean = true;
             }
             q();
@@ -1981,15 +1983,15 @@ public class ReadInJoyCommentComponentFragment
         this.jdField_a_of_type_ComTencentWidgetXPanelContainer.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
       }
     }
-    ains localains = a();
-    if (localains != null) {
-      localains.a(null);
+    aiyz localaiyz = a();
+    if (localaiyz != null) {
+      localaiyz.a(null);
     }
     if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) {
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
     }
     if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.a().b(this.jdField_a_of_type_Bdzm);
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.a().b(this.jdField_a_of_type_Beyf);
     }
     a();
   }
@@ -2038,7 +2040,7 @@ public class ReadInJoyCommentComponentFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    stp.a(getActivity(), null);
+    skt.a(getActivity(), null);
   }
 }
 

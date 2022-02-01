@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bffb
-  implements bhye
+  implements QQPermissionCallback
 {
-  public bffb(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
+  public bffb(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void a(String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.setVisibility(8);
+    this.a.a(this.a, this.a);
   }
 }
 

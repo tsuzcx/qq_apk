@@ -1,91 +1,86 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aqst
-  extends aqkz<aqsq>
+  extends RecyclerView.Adapter<aqsx>
 {
-  @NonNull
-  public static aqsq a()
+  private aqsw jdField_a_of_type_Aqsw;
+  private aqtk jdField_a_of_type_Aqtk;
+  private List<ColorNote> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public aqsx a(ViewGroup paramViewGroup, int paramInt)
   {
-    aqsq localaqsq2 = (aqsq)aqlk.a().a(630);
-    aqsq localaqsq1 = localaqsq2;
-    if (localaqsq2 == null)
+    return new aqsx(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558912, paramViewGroup, false));
+  }
+  
+  public void a(aqsw paramaqsw)
+  {
+    this.jdField_a_of_type_Aqsw = paramaqsw;
+  }
+  
+  public void a(aqsx paramaqsx, int paramInt)
+  {
+    ColorNote localColorNote = (ColorNote)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    aqre.a(localColorNote).a(paramaqsx, paramInt, this.jdField_a_of_type_Boolean);
+    int j;
+    int i;
+    if (aqsd.d(localColorNote))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QrCodeDisplay.ConfProcessor", 2, "loadConfig(): bean is null then new QrCodeConfBean()");
+      UpComingMsgModel localUpComingMsgModel = aixg.a(localColorNote);
+      j = bhgr.a(paramaqsx.a.getContext(), 200.0F);
+      i = 0;
+      if (aqsd.c(localColorNote)) {
+        i = bhgr.a(paramaqsx.a.getContext(), 27.0F);
       }
-      localaqsq1 = new aqsq();
+      if (localUpComingMsgModel.uniseq.size() <= 1) {
+        break label140;
+      }
+      paramaqsx.a.setMaxWidth(j);
+      behh.a(paramaqsx.a, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.MIDDLE, "的", i);
     }
-    return localaqsq1;
-  }
-  
-  @NonNull
-  public aqsq a(int paramInt)
-  {
-    return new aqsq();
-  }
-  
-  @Nullable
-  public aqsq a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0))
+    for (;;)
     {
-      QLog.d("QrCodeDisplay.ConfProcessor", 1, "QrCodeDisplayConfProcessor onParsed, confFiles is null empty");
-      return null;
-    }
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "QrCodeDisplayConfProcessor onParsed, content:" + paramArrayOfaqlg);
-    }
-    return aqsq.a(paramArrayOfaqlg);
-  }
-  
-  public void a(aqsq paramaqsq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "onUpdate " + paramaqsq.toString());
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramaqsx, paramInt, getItemId(paramInt));
+      return;
+      label140:
+      behh.a(paramaqsx.a, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.END, null, i);
     }
   }
   
-  public Class<aqsq> clazz()
+  public void a(aqtk paramaqtk)
   {
-    return aqsq.class;
+    this.jdField_a_of_type_Aqtk = paramaqtk;
   }
   
-  public boolean isNeedCompressed()
+  void a(List<ColorNote> paramList)
   {
-    return true;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public boolean isNeedStoreLargeFile()
+  public void a(boolean paramBoolean)
   {
-    return false;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int migrateOldVersion()
+  public int getItemCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "migrateOldVersion");
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 630;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqst
  * JD-Core Version:    0.7.0.1
  */

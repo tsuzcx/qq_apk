@@ -1,9 +1,9 @@
-import com.tencent.mobileqq.emosm.web.IPCConstants.1;
-import java.util.HashMap;
-
-public abstract interface arsw
+public class arsw
 {
-  public static final HashMap<String, Integer> a = new IPCConstants.1();
+  public int a;
+  public String a = "";
+  public String b;
+  public String c;
 }
 
 

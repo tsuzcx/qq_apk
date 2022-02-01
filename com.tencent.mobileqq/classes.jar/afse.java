@@ -1,23 +1,13 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class afse
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  public afse(ActivateFriendActivity paramActivateFriendActivity) {}
+  public afse(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.b();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(0, 165, 224));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,38 +1,37 @@
-public class otm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+
+public final class otm
+  implements Parcelable.Creator<AnchorData>
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  
-  public otm(float paramFloat1, float paramFloat2)
+  public AnchorData a(Parcel paramParcel)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
+    boolean bool2 = true;
+    AnchorData localAnchorData = new AnchorData();
+    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localAnchorData.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label67;
+      }
+    }
+    label67:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localAnchorData.jdField_b_of_type_Boolean = bool1;
+      return localAnchorData;
+      bool1 = false;
+      break;
+    }
   }
   
-  public otm(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public AnchorData[] a(int paramInt)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public otm(otm paramotm)
-  {
-    this.a = paramotm.a;
-    this.b = paramotm.b;
-  }
-  
-  public void a(otm paramotm)
-  {
-    float f = this.a;
-    this.a = paramotm.a;
-    paramotm.a = f;
-    f = this.b;
-    this.b = paramotm.b;
-    paramotm.b = f;
+    return new AnchorData[paramInt];
   }
 }
 

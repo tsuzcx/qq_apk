@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import avgw;
+import avyz;
 import com.tencent.shadow.core.common.LoggerFactory;
 
 public class NowliveContainer
@@ -8,7 +8,7 @@ public class NowliveContainer
 {
   protected boolean doStep()
   {
-    LoggerFactory.setILoggerFactory(avgw.a());
+    LoggerFactory.setILoggerFactory(avyz.a());
     return true;
   }
 }

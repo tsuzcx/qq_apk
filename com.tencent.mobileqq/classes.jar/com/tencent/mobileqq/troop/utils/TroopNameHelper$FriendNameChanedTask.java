@@ -20,7 +20,7 @@ public class TroopNameHelper$FriendNameChanedTask
   
   public void a()
   {
-    Object localObject2 = this.this$0.a.a();
+    Object localObject2 = this.this$0.a.b();
     Object localObject1 = new ArrayList();
     localObject2 = ((List)localObject2).iterator();
     label182:

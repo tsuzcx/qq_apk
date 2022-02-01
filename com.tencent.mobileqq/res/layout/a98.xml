@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/iji" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="@dimen/atz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/nha" android:background="@drawable/di3" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_centerVertical="true" />
+    <View android:id="@id/nm3" android:background="@drawable/dit" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_centerVertical="true" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_centerVertical="true">
         <TextView android:textColor="@color/an7" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/mdw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ha5" android:maxLines="1" android:singleLine="true" android:drawableLeft="@drawable/i2f" android:drawablePadding="3.0dip" />
         <TextView android:textColor="@color/an7" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/mdv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ha5" android:maxLines="1" android:singleLine="true" android:drawableLeft="@drawable/i2f" android:drawablePadding="3.0dip" />

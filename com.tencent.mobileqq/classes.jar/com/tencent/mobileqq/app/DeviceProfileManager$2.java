@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import ankm;
-import bgro;
+import anwj;
+import bhrq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
@@ -36,7 +36,7 @@ class DeviceProfileManager$2
     HashMap localHashMap;
     label262:
     Object localObject8;
-    ankm localankm;
+    anwj localanwj;
     Object localObject7;
     SharedPreferences.Editor localEditor1;
     Object localObject6;
@@ -66,8 +66,8 @@ class DeviceProfileManager$2
           break label843;
         }
         Iterator localIterator = ((HashMap)???).entrySet().iterator();
-        localEditor2 = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig").edit();
-        localSharedPreferences = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+        localEditor2 = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig").edit();
+        localSharedPreferences = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
         localEditor3 = localSharedPreferences.edit();
         localObject1 = null;
         localObject7 = DeviceProfileManager.a().b;
@@ -81,7 +81,7 @@ class DeviceProfileManager$2
       ??? = DeviceProfileManager.AccountDpcManager.a(DeviceProfileManager.a(), (String)localObject8);
       localEditor1 = localEditor3;
       localObject6 = localObject3;
-      DeviceProfileManager.a(this.this$0, QLog.isColorLevel(), 1, new Object[] { localObject8, localankm.toString(), Boolean.valueOf(bool1) });
+      DeviceProfileManager.a(this.this$0, QLog.isColorLevel(), 1, new Object[] { localObject8, localanwj.toString(), Boolean.valueOf(bool1) });
       if (localObject6 != null)
       {
         DeviceProfileManager.DPCConfigInfo localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((HashMap)localObject6).get(???);
@@ -98,7 +98,7 @@ class DeviceProfileManager$2
         else
         {
           DeviceProfileManager.a(this.this$0, QLog.isColorLevel(), 3, new Object[] { ???, localObject8, Boolean.valueOf(bool1) });
-          bool2 = DeviceProfileManager.a((DeviceProfileManager.DPCConfigInfo)localObject8, localankm.b.toString().trim());
+          bool2 = DeviceProfileManager.a((DeviceProfileManager.DPCConfigInfo)localObject8, localanwj.b.toString().trim());
           if (!bool1) {
             break label850;
           }
@@ -110,7 +110,7 @@ class DeviceProfileManager$2
     for (;;)
     {
       label631:
-      localEditor1.putString((String)???, localankm.b);
+      localEditor1.putString((String)???, localanwj.b);
       label843:
       label850:
       do

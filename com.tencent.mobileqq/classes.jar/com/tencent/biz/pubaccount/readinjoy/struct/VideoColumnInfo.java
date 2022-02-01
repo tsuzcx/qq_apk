@@ -13,14 +13,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import pha;
-import rip;
+import ozs;
+import qzi;
 import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
 
 public class VideoColumnInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new rip();
+  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new qzi();
   public static final String a;
   public int a;
   public long a;
@@ -95,8 +95,8 @@ public class VideoColumnInfo
         {
           localObject1 = new VideoColumnInfo();
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
-          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_name);
-          ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_icon_url);
+          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = ozs.a(paramVideoColumnInfo.bytes_column_name);
+          ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = ozs.a(paramVideoColumnInfo.bytes_column_icon_url);
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Long = paramVideoColumnInfo.uint64_last_update_time.get();
           ((VideoColumnInfo)localObject1).jdField_b_of_type_Int = paramVideoColumnInfo.uint32_video_count.get();
           ((VideoColumnInfo)localObject1).jdField_c_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
@@ -110,18 +110,18 @@ public class VideoColumnInfo
     for (boolean bool = true;; bool = false)
     {
       ((VideoColumnInfo)localObject1).jdField_a_of_type_Boolean = bool;
-      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_card_bg_url);
-      ((VideoColumnInfo)localObject1).jdField_e_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_card_bg_color);
-      ((VideoColumnInfo)localObject1).jdField_f_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_card_icon_url);
-      ((VideoColumnInfo)localObject1).g = pha.a(paramVideoColumnInfo.bytes_app_name);
-      ((VideoColumnInfo)localObject1).h = pha.a(paramVideoColumnInfo.bytes_app_icon_url);
+      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = ozs.a(paramVideoColumnInfo.bytes_column_card_bg_url);
+      ((VideoColumnInfo)localObject1).jdField_e_of_type_JavaLangString = ozs.a(paramVideoColumnInfo.bytes_column_card_bg_color);
+      ((VideoColumnInfo)localObject1).jdField_f_of_type_JavaLangString = ozs.a(paramVideoColumnInfo.bytes_column_card_icon_url);
+      ((VideoColumnInfo)localObject1).g = ozs.a(paramVideoColumnInfo.bytes_app_name);
+      ((VideoColumnInfo)localObject1).h = ozs.a(paramVideoColumnInfo.bytes_app_icon_url);
       ((VideoColumnInfo)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
       ((VideoColumnInfo)localObject1).jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.video_jump_info);
       ((VideoColumnInfo)localObject1).jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.subscribe_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_Int = paramVideoColumnInfo.uin32_column_card_bg_style.get();
-      ((VideoColumnInfo)localObject1).i = pha.a(paramVideoColumnInfo.bytes_from_txt);
-      ((VideoColumnInfo)localObject1).j = pha.a(paramVideoColumnInfo.bytes_column_name_color);
+      ((VideoColumnInfo)localObject1).i = ozs.a(paramVideoColumnInfo.bytes_from_txt);
+      ((VideoColumnInfo)localObject1).j = ozs.a(paramVideoColumnInfo.bytes_column_name_color);
       return localObject1;
     }
   }

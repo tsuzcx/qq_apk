@@ -1,24 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcja
+class bcja
+  implements View.OnClickListener
 {
-  public final Object a;
-  public final Runnable a;
+  bcja(bciz parambciz, bcez parambcez) {}
   
-  bcja()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
-  }
-  
-  static void a(Message paramMessage)
-  {
-    if (paramMessage == null) {}
-    while (!(paramMessage.obj instanceof bcja)) {
-      return;
-    }
-    ((bcja)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
+    this.jdField_a_of_type_Bcez.b(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,34 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.ColorMatrixColorFilter;
+import android.os.Bundle;
+import java.util.Map;
 
-class avxp
-  implements bkhw
+public abstract interface avxp
 {
-  avxp(avxo paramavxo, bkho parambkho) {}
+  public abstract void a();
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.e();
-      return;
-      avxo.a(this.jdField_a_of_type_Avxo).finish();
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      Object localObject = avxo.a(this.jdField_a_of_type_Avxo).getIntent();
-      String str = ((Intent)localObject).getStringExtra("uin");
-      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
-      avwv.a(paramView).a.a(3, paramInt, str);
-      localObject = new avwp(paramInt, str);
-      avwv.a(paramView).a((avwp)localObject, false);
-      bcst.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
-    }
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(ColorMatrixColorFilter paramColorMatrixColorFilter);
+  
+  public abstract void a(Map<String, Object> paramMap);
 }
 
 

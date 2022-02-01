@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
 import java.util.Iterator;
 import java.util.List;
-import tty;
-import tue;
+import tua;
+import tug;
 
 class FolderFollowTabFragment$7
   implements Runnable
@@ -17,9 +17,9 @@ class FolderFollowTabFragment$7
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        tty localtty = (tty)localIterator.next();
-        if (localtty.b > 0) {
-          tue.a().b(FolderFollowTabFragment.a(this.this$0), localtty, false);
+        tua localtua = (tua)localIterator.next();
+        if (localtua.b > 0) {
+          tug.a().b(FolderFollowTabFragment.a(this.this$0), localtua, false);
         }
       }
     }

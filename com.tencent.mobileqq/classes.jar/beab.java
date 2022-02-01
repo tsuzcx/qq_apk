@@ -1,21 +1,10 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import com.tencent.mobileqq.teamwork.PadInfo;
 
-public class beab
-  extends NativeGifImage
+public abstract interface beab
 {
-  public beab(beaa parambeaa, File paramFile, boolean paramBoolean, float paramFloat)
-  {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
-  }
+  public abstract void a(PadInfo paramPadInfo);
   
-  public void executeNewTask()
-  {
-    if (this.mCurrentFrameIndex >= 1) {
-      return;
-    }
-    super.executeNewTask();
-  }
+  public abstract void b(PadInfo paramPadInfo);
 }
 
 

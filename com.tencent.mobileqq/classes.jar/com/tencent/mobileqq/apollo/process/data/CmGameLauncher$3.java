@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import amrk;
+import ande;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class CmGameLauncher$3
   implements Runnable
 {
-  public CmGameLauncher$3(amrk paramamrk) {}
+  public CmGameLauncher$3(ande paramande) {}
   
   public void run()
   {
-    if (amrk.a(this.this$0) != null)
+    if (ande.a(this.this$0) != null)
     {
-      amrk.a(this.this$0).setPreserveEGLContextOnPause(true);
-      amrk.a(this.this$0).onPause();
+      ande.a(this.this$0).setPreserveEGLContextOnPause(true);
+      ande.a(this.this$0).onPause();
     }
   }
 }

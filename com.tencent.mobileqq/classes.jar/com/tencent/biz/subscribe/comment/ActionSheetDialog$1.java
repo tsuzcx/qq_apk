@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.comment;
 
-import aadr;
+import aahs;
 import android.view.View;
 import android.widget.LinearLayout;
 
 public class ActionSheetDialog$1
   implements Runnable
 {
-  public ActionSheetDialog$1(aadr paramaadr) {}
+  public ActionSheetDialog$1(aahs paramaahs) {}
   
   public void run()
   {
-    aadr.a(this.this$0).setVisibility(0);
-    aadr.a(this.this$0).setVisibility(0);
-    aadr.a(this.this$0);
+    aahs.a(this.this$0).setVisibility(0);
+    aahs.a(this.this$0).setVisibility(0);
+    aahs.a(this.this$0);
   }
 }
 

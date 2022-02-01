@@ -1,15 +1,16 @@
-import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class blbe
-  implements blbc
+public class blbe
 {
-  blbe(blbd paramblbd) {}
-  
-  public void a(String paramString1, String paramString2)
+  public static String a()
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      blbd.a(this.a, paramString1, new String[] { paramString2 });
-    }
+    return BaseApplication.getContext().getDir("qqprotect", 0).toString();
+  }
+  
+  public static String b()
+  {
+    return a() + File.separator + "qseclibs";
   }
 }
 

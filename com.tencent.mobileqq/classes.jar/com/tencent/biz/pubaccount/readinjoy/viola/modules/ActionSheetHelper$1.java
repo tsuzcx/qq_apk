@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import org.json.JSONObject;
-import tmt;
+import tdr;
 
 public class ActionSheetHelper$1
   implements Runnable
 {
-  public ActionSheetHelper$1(tmt paramtmt, JSONObject paramJSONObject, String paramString) {}
+  public ActionSheetHelper$1(tdr paramtdr, JSONObject paramJSONObject, String paramString) {}
   
   public void run()
   {
-    tmt.a(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+    tdr.a(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
   }
 }
 

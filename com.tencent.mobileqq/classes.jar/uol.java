@@ -1,35 +1,13 @@
-import android.text.SpannableStringBuilder;
-import java.util.ArrayList;
+import UserGrowth.stFollowReq;
+import UserGrowth.stFollowRsp;
 
 public class uol
-  extends SpannableStringBuilder
+  extends ukl<stFollowRsp>
 {
-  private ArrayList<uon> a;
-  private ArrayList<uom> b;
-  
-  uol(CharSequence paramCharSequence)
+  public uol(String paramString, int paramInt)
   {
-    super(paramCharSequence);
-  }
-  
-  public ArrayList<uon> a()
-  {
-    return this.a;
-  }
-  
-  public void a(ArrayList<uon> paramArrayList)
-  {
-    this.a = paramArrayList;
-  }
-  
-  public ArrayList<uom> b()
-  {
-    return this.b;
-  }
-  
-  public void b(ArrayList<uom> paramArrayList)
-  {
-    this.b = paramArrayList;
+    super("Follow");
+    this.a = new stFollowReq(paramString, paramInt);
   }
 }
 

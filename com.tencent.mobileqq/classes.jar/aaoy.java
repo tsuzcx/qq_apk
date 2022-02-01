@@ -1,31 +1,55 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
 class aaoy
-  implements anof
+  implements ShareActionSheet.OnItemClickListener
 {
-  aaoy(aaor paramaaor, Bundle paramBundle) {}
+  aaoy(aaou paramaaou) {}
   
-  public boolean a(anok paramanok)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    Bundle localBundle = new Bundle();
-    anok localanok = paramanok;
-    if (paramanok == null) {
-      localanok = this.jdField_a_of_type_Aaor.a.a.jdField_a_of_type_Anog.a(this.jdField_a_of_type_Aaor.a.a.jdField_a_of_type_JavaLangString, 1, anoe.a());
-    }
-    if (localanok != null)
+    int i = paramActionSheetItem.action;
+    if ((aaou.a(this.a) == null) || (aaou.a(this.a) == null)) {}
+    do
     {
-      localBundle.putString("url", localanok.b);
-      localBundle.putString("content", localanok.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Aaor.a.a(101, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              switch (i)
+              {
+              default: 
+                return;
+              case 2: 
+                aaou.a(this.a);
+              }
+            } while ((aaou.a(this.a) == null) || (aaou.a(this.a).a() == null));
+            abbe.a(aaou.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, aaou.a(this.a).f(), aaou.a(this.a).c() });
+            return;
+            aaou.b(this.a);
+          } while ((aaou.a(this.a) == null) || (aaou.a(this.a).a() == null));
+          abbe.a(aaou.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, aaou.a(this.a).f(), aaou.a(this.a).c() });
+          return;
+          aaou.a(this.a, 0);
+        } while ((aaou.a(this.a) == null) || (aaou.a(this.a).a() == null));
+        abbe.a(aaou.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, aaou.a(this.a).f(), aaou.a(this.a).c() });
+        return;
+        aaou.a(this.a, 1);
+      } while ((aaou.a(this.a) == null) || (aaou.a(this.a).a() == null));
+      abbe.a(aaou.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, aaou.a(this.a).f(), aaou.a(this.a).c() });
+      return;
+      aaou.c(this.a);
+    } while ((aaou.a(this.a) == null) || (aaou.a(this.a).a() == null));
+    abbe.a(aaou.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, aaou.a(this.a).f(), aaou.a(this.a).c() });
   }
 }
 

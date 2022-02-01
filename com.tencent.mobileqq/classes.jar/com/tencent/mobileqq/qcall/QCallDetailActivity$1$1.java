@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.qcall;
 
-import azvw;
+import baom;
 
 public class QCallDetailActivity$1$1
   implements Runnable
 {
-  public QCallDetailActivity$1$1(azvw paramazvw) {}
+  public QCallDetailActivity$1$1(baom parambaom) {}
   
   public void run()
   {

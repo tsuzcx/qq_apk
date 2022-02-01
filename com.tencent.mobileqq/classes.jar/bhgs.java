@@ -1,119 +1,72 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import java.lang.ref.WeakReference;
-
 public class bhgs
 {
-  public static int a;
-  private static boolean a;
-  
-  public static void a(Context paramContext)
+  public static int a(byte paramByte)
   {
-    StringBuilder localStringBuilder;
-    String str;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("init video plugin context ");
-      if (paramContext == null) {
-        break label79;
-      }
-      str = "is not null";
-    }
-    for (;;)
-    {
-      QLog.d("VipVideoManager", 2, str);
-      try
-      {
-        label79:
-        try
-        {
-          if (!jdField_a_of_type_Boolean)
-          {
-            TVK_SDKMgr.setOnLogListener(new bhgt());
-            if (paramContext != null)
-            {
-              TVK_SDKMgr.initSdk(paramContext, "ZDJ2DK+QcEksd+C8RIzfwQhjkPCNDsewhQBcxciUfYyphf1ntN4M1sXu5waGVy3CMB36XLopJFqaMtHxKS4BXScewkVRuSfBoAJVDEJHZv+opKWeviyxuUnc4R4MlMmTO2M2de47GRD6te9FtjtFCd1KLUPZuW QBq8aXUxi+IyhmKBZoXWUxLkdfIZ7Gleriirf7ewcykmS64TG7zbV1uMCdIaO9hwDhVJbRlGN2si1sepphKPCuuOoAdZz52edGEfp5oIgA7THflGFidFnsrPksn8nGbr+OYOI8kcixjzblTIjBAqHHFRJnIQhh74pVkqtiqE7iz46FclQB17JJmg==", "");
-              jdField_a_of_type_Boolean = true;
-            }
-          }
-          return;
-        }
-        finally {}
-        str = "is null";
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-      }
-    }
+    return paramByte & 0xFF;
   }
   
-  public static void a(Context paramContext, TVK_SDKMgr.InstallListener paramInstallListener)
+  public static int a(byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    int i = 0;
+    int j = 0;
+    while (i < 4)
     {
-      localStringBuilder = new StringBuilder().append("install video plugin and context=");
-      if (paramContext != null) {
-        break label110;
-      }
-      str = "null";
-      localStringBuilder = localStringBuilder.append(str).append(",mMediaSdkInited").append(jdField_a_of_type_Boolean).append(",listener=");
-      if (paramInstallListener != null) {
-        break label116;
-      }
+      j = j << 8 | a(paramArrayOfByte[i]);
+      i += 1;
     }
-    label110:
-    label116:
-    for (String str = "null";; str = "not null")
-    {
-      QLog.d("VipVideoManager", 2, str);
-      if ((paramContext != null) && (paramInstallListener != null)) {}
-      try
-      {
-        if (!jdField_a_of_type_Boolean) {
-          a(paramContext);
-        }
-        jdField_a_of_type_Int = 0;
-        TVK_SDKMgr.installPlugin(paramContext, (TVK_SDKMgr.InstallListener)new WeakReference(paramInstallListener).get());
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        if (!QLog.isColorLevel()) {
-          break label157;
-        }
-        QLog.d("VipVideoManager", 2, "install video plugin exception msg=" + paramContext.getMessage());
-        paramContext.printStackTrace();
-      }
-      str = "not null";
-      break;
-    }
-    label157:
+    return j;
   }
   
-  public static boolean a(Context paramContext)
+  public static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    int j = 0;
+    int i = paramInt;
+    while (i < paramInt + 4)
     {
-      localStringBuilder = new StringBuilder().append("isInstalled Plugin=").append(TVK_SDKMgr.isInstalled(paramContext)).append(",Context=");
-      if (paramContext != null) {
-        break label65;
-      }
+      j = j << 8 | a(paramArrayOfByte[i]);
+      i += 1;
     }
-    label65:
-    for (String str = "null";; str = "not null")
+    return j;
+  }
+  
+  public static short a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    short s = 0;
+    while (i < 2)
     {
-      QLog.d("VipVideoManager", 2, str);
-      if ((paramContext == null) || (!TVK_SDKMgr.isInstalled(paramContext))) {
-        break;
-      }
-      return true;
+      s = (short)((short)(s << 8) | a(paramArrayOfByte[i]));
+      i += 1;
     }
-    return false;
+    return s;
+  }
+  
+  public static byte[] a(int paramInt)
+  {
+    byte[] arrayOfByte = new byte[4];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 4)
+    {
+      arrayOfByte[paramInt] = Integer.valueOf(i >>> 24).byteValue();
+      i <<= 8;
+      paramInt += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static byte[] a(short paramShort)
+  {
+    return new byte[] { (byte)(paramShort >>> 8), (byte)paramShort };
+  }
+  
+  public static byte[] b(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)((0xFF00 & paramInt) >> 8);
+    int k = (byte)((0xFF0000 & paramInt) >> 16);
+    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
   }
 }
 

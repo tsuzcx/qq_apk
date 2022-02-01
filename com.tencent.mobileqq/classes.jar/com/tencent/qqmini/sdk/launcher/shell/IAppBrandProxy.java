@@ -14,7 +14,7 @@ public abstract interface IAppBrandProxy
   
   public abstract void onAppBackground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
   
-  public abstract void onAppDestroy(Bundle paramBundle);
+  public abstract void onAppDestroy(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
   
   public abstract void onAppForeground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
   
@@ -27,8 +27,6 @@ public abstract interface IAppBrandProxy
   public abstract void stopAllMiniApp();
   
   public abstract void stopMiniApp(MiniAppInfo paramMiniAppInfo);
-  
-  public abstract void stopMiniApp(String paramString);
 }
 
 

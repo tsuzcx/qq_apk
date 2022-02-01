@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.CreateVirtualResult;
 
-class bjzd
-  implements View.OnClickListener
+public final class bjzd
+  implements Parcelable.Creator<CreateVirtualResult>
 {
-  bjzd(bjzc parambjzc) {}
-  
-  public void onClick(View paramView)
+  public CreateVirtualResult a(Parcel paramParcel)
   {
-    CheckBox localCheckBox = bjzc.a(this.a);
-    if (!bjzc.a(this.a).isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    return new CreateVirtualResult(paramParcel);
+  }
+  
+  public CreateVirtualResult[] a(int paramInt)
+  {
+    return new CreateVirtualResult[paramInt];
   }
 }
 

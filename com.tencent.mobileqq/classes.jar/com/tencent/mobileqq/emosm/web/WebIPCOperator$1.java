@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
-import arui;
-import aruk;
+import asjw;
+import asjy;
 
 public class WebIPCOperator$1
   implements Runnable
 {
-  public WebIPCOperator$1(arui paramarui, aruk paramaruk) {}
+  public WebIPCOperator$1(asjw paramasjw, asjy paramasjy) {}
   
   public void run()
   {

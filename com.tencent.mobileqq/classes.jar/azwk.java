@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import java.util.HashSet;
 
-class azwk
-  implements Comparator<QCallRecord>
+public class azwk
+  implements Animator.AnimatorListener
 {
-  azwk(azwi paramazwi) {}
+  public azwk(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, azwn paramazwn, View paramView) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Azwn.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Azwn.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

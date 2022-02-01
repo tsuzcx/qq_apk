@@ -1,19 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ajqc
-  extends atxe
+  implements View.OnClickListener
 {
-  public ajqc(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  public ajqc(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    paramView = (FileManagerEntity)((ajuf)paramView.getTag()).a;
-    this.a.a(paramView);
+    azyo.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.jdField_a_of_type_Ajop.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

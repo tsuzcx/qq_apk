@@ -1,21 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.avgame.ipc.MapParcelable;
-import java.util.HashMap;
+import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ndo
-  implements Parcelable.Creator<MapParcelable>
+public class ndo
+  implements URLDrawable.URLDrawableListener
 {
-  public MapParcelable a(Parcel paramParcel)
+  public ndo(GuessPictureStageView paramGuessPictureStageView, mzp parammzp) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    MapParcelable localMapParcelable = new MapParcelable();
-    localMapParcelable.a = paramParcel.readHashMap(HashMap.class.getClassLoader());
-    return localMapParcelable;
+    if (QLog.isColorLevel()) {
+      QLog.i("GuessPictureStageView", 2, "urlDrawable load failed and throwable" + paramThrowable);
+    }
+    bdll.b(null, "dc00898", "", "", "0X800B0FA", "0X800B0FA", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.b();
   }
   
-  public MapParcelable[] a(int paramInt)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return new MapParcelable[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("GuessPictureStageView", 2, "urlDrawable load success");
+    }
+    bdll.b(null, "dc00898", "", "", "0X800B0F5", "0X800B0F5", 0, 0, "", "", "", "");
+    paramURLDrawable = nic.a(paramURLDrawable.getCurrDrawable());
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a = paramURLDrawable;
+    GuessPictureStageView localGuessPictureStageView = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView;
+    if (this.jdField_a_of_type_Mzp.c == 0) {}
+    for (int i = 10;; i = this.jdField_a_of_type_Mzp.c)
+    {
+      GuessPictureStageView.a(localGuessPictureStageView, paramURLDrawable, i);
+      return;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bhpf;
-import biau;
+import biqa;
+import bjbs;
 
 class SwiftBrowserLongClickHandler$4$2
   implements Runnable

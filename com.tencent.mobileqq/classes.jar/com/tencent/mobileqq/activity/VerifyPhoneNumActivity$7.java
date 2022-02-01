@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import biau;
+import bjbs;
 
 class VerifyPhoneNumActivity$7
   implements Runnable
@@ -13,8 +13,8 @@ class VerifyPhoneNumActivity$7
     {
       if ((VerifyPhoneNumActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        VerifyPhoneNumActivity.a(this.this$0, new biau(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        VerifyPhoneNumActivity.a(this.this$0).c(2131694158);
+        VerifyPhoneNumActivity.a(this.this$0, new bjbs(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        VerifyPhoneNumActivity.a(this.this$0).c(2131694176);
       }
       if ((VerifyPhoneNumActivity.a(this.this$0) != null) && (!VerifyPhoneNumActivity.a(this.this$0).isShowing())) {
         VerifyPhoneNumActivity.a(this.this$0).show();

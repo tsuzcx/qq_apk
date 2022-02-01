@@ -1,14 +1,40 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atko
-  implements aqga
+  implements View.OnClickListener
 {
-  public atko(FileBrowserActivity paramFileBrowserActivity) {}
+  public atko(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onColorNoteAnimFinish()
+  public void onClick(View paramView)
   {
-    FileBrowserActivity.a(this.a);
-    this.a.overridePendingTransition(0, 0);
+    if (paramView == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseCloudFileTabView.b, 2, "qfilebaserecenttabview del error, tag is null");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramView.getTag();
+      if (localWeiYunFileInfo != null)
+      {
+        if (this.a.a != null) {
+          this.a.a.a(null);
+        }
+        QfileBaseCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo);
+      }
+      this.a.a.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.setListFooter();
+      this.a.aw_();
+    }
   }
 }
 

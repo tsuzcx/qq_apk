@@ -1,649 +1,966 @@
-import QQService.PrivilegeInfo;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasApngUtil;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class aznt
-  extends azkr
+  extends OGAbstractDao
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aznu(this);
-  private float b;
-  
-  public aznt(azlw paramazlw, azfe paramazfe)
+  public aznt()
   {
-    super(paramazlw, paramazfe);
+    this.columnLen = 82;
   }
   
-  private int a(List<PrivilegeInfo> paramList, LinearLayout paramLinearLayout, int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3, Drawable paramDrawable, boolean paramBoolean)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    int k = 0;
-    int i = 0;
-    if (k < paramList.size())
+    boolean bool2 = true;
+    boolean bool1 = true;
+    paramEntity = (Friends)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      PrivilegeInfo localPrivilegeInfo = (PrivilegeInfo)paramList.get(k);
-      int j = i;
-      if (!TextUtils.isEmpty(localPrivilegeInfo.strDeluxeIconUrl))
+      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramEntity.remark = paramCursor.getString(paramCursor.getColumnIndex("remark"));
+      paramEntity.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
+      paramEntity.faceid = paramCursor.getShort(paramCursor.getColumnIndex("faceid"));
+      paramEntity.status = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("status")));
+      paramEntity.sqqtype = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("sqqtype")));
+      paramEntity.cSpecialFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cSpecialFlag")));
+      paramEntity.groupid = paramCursor.getInt(paramCursor.getColumnIndex("groupid"));
+      paramEntity.memberLevel = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("memberLevel")));
+      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("isMqqOnLine")))
       {
-        if (i == 0) {}
-        for (j = 0;; j = paramInt1)
-        {
-          i += 1;
-          paramArrayOfInt[0] = (paramArrayOfInt[0] - paramInt2 - j);
-          if (paramArrayOfInt[0] >= 0) {
-            break;
-          }
-          paramInt1 = i;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ProfileDiamondWallComponent", 1, "medal list layout is big =" + localPrivilegeInfo.iIsBig + " icon index=" + i);
-            paramInt1 = i;
-          }
-          return paramInt1;
-        }
-        a(localPrivilegeInfo, localPrivilegeInfo.strDeluxeIconUrl, paramLinearLayout, paramInt2, paramInt3, j, paramDrawable, paramBoolean);
-        j = i;
-      }
-      if (!TextUtils.isEmpty(localPrivilegeInfo.strIconUrl))
-      {
-        if (j == 0) {}
-        for (i = 0;; i = paramInt1)
-        {
-          j += 1;
-          paramArrayOfInt[0] = (paramArrayOfInt[0] - paramInt2 - i);
-          if (paramArrayOfInt[0] >= 0) {
-            break label268;
-          }
-          paramInt1 = j;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ProfileDiamondWallComponent", 1, "medal list layout is big =" + localPrivilegeInfo.iIsBig + " icon index=" + j);
-          return j;
-        }
-        label268:
-        a(localPrivilegeInfo, localPrivilegeInfo.strIconUrl, paramLinearLayout, paramInt2, paramInt3, i, paramDrawable, paramBoolean);
-      }
-      for (i = j;; i = j)
-      {
-        k += 1;
-        break;
-      }
-    }
-    return i;
-  }
-  
-  private ImageView a(String paramString, float paramFloat1, float paramFloat2, float paramFloat3, Drawable paramDrawable)
-  {
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams((int)paramFloat1, (int)paramFloat2);
-    localLayoutParams.leftMargin = ((int)paramFloat3);
-    localLayoutParams.gravity = 16;
-    localURLImageView.setLayoutParams(localLayoutParams);
-    paramDrawable = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, paramDrawable);
-    if (paramDrawable != null)
-    {
-      ProfileActivity.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), localURLImageView);
-      if (paramDrawable.getStatus() == 2)
-      {
-        localURLImageView.setVisibility(8);
-        paramDrawable.restartDownload();
-      }
-      localURLImageView.setImageDrawable(paramDrawable);
-      localURLImageView.setURLDrawableDownListener(new biag(localURLImageView, paramString, "showDiamondImage onLoadFailed iconUrl = "));
-      return localURLImageView;
-    }
-    QLog.e("QVipSettingMe.ProfileDiamondWallComponent", 1, "apn drawable get null!iconUrl:" + paramString);
-    return localURLImageView;
-  }
-  
-  private void a(PrivilegeInfo paramPrivilegeInfo, String paramString, LinearLayout paramLinearLayout, int paramInt1, int paramInt2, int paramInt3, Drawable paramDrawable, boolean paramBoolean)
-  {
-    paramString = a(paramString, paramInt1, paramInt2, paramInt3, paramDrawable);
-    paramLinearLayout.addView(paramString);
-    if (!TextUtils.isEmpty(paramPrivilegeInfo.strJumpUrl))
-    {
-      paramString.setClickable(true);
-      paramString.setTag(new azde(93, paramPrivilegeInfo));
-      paramString.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramLinearLayout = new StringBuilder();
-      a(paramLinearLayout, paramPrivilegeInfo);
-      paramLinearLayout.append("徽章");
-      paramString.setContentDescription(paramLinearLayout);
-      paramString = "";
-      switch (paramPrivilegeInfo.iType)
-      {
-      default: 
-        if ((this.jdField_a_of_type_Int & 0x8) == 0)
-        {
-          if (paramBoolean)
-          {
-            paramString = "0X800A136";
-            label146:
-            this.jdField_a_of_type_Int |= 0x8;
-          }
-        }
-        else {
-          label157:
-          if (!TextUtils.isEmpty(paramString))
-          {
-            if (paramPrivilegeInfo.iIsBig != 1) {
-              break label396;
-            }
-            if (!paramPrivilegeInfo.isOpen) {
-              break label390;
-            }
-            paramInt1 = 1;
-          }
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      paramLinearLayout = "";
-      if (paramPrivilegeInfo.iType != 1)
-      {
-        paramPrivilegeInfo = paramLinearLayout;
-        if (!paramString.equals("0X800A136")) {}
-      }
-      else
-      {
-        paramPrivilegeInfo = String.valueOf(anyj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false));
-      }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", paramString, paramInt1, 0, paramPrivilegeInfo, "", "", "");
-      return;
-      paramString.setTag(null);
-      paramString.setOnClickListener(null);
-      paramString.setClickable(false);
-      break;
-      if ((this.jdField_a_of_type_Int & 0x1) != 0) {
-        break label157;
-      }
-      if (paramBoolean) {}
-      for (paramString = "0X800A132";; paramString = "0X800A12A")
-      {
-        this.jdField_a_of_type_Int |= 0x1;
-        break;
-      }
-      if ((this.jdField_a_of_type_Int & 0x2) != 0) {
-        break label157;
-      }
-      if (paramBoolean) {}
-      for (paramString = "0X800A134";; paramString = "0X800A12C")
-      {
-        this.jdField_a_of_type_Int |= 0x2;
-        break;
-      }
-      if ((this.jdField_a_of_type_Int & 0x4) != 0) {
-        break label157;
-      }
-      if (paramBoolean) {}
-      for (paramString = "0X800A130";; paramString = "0X800A128")
-      {
-        this.jdField_a_of_type_Int |= 0x4;
-        break;
-      }
-      paramString = "0X800A12E";
-      break label146;
-      label390:
-      paramInt1 = 2;
-      continue;
-      label396:
-      if (paramPrivilegeInfo.isOpen) {
-        paramInt1 = 3;
-      } else {
-        paramInt1 = 4;
-      }
-    }
-  }
-  
-  private void a(StringBuilder paramStringBuilder, PrivilegeInfo paramPrivilegeInfo)
-  {
-    if (paramPrivilegeInfo == null) {
-      return;
-    }
-    switch (paramPrivilegeInfo.iType)
-    {
-    default: 
-      return;
-    case 1: 
-      paramStringBuilder.append("会员");
-      return;
-    case 2: 
-      paramStringBuilder.append("超级QQ");
-      return;
-    case 4: 
-      paramStringBuilder.append("好莱坞会员");
-      return;
-    case 3: 
-      paramStringBuilder.append("超级会员");
-      return;
-    case 5: 
-      paramStringBuilder.append("腾讯图书VIP");
-      return;
-    case 104: 
-      paramStringBuilder.append("情侣黄钻");
-      return;
-    case 103: 
-      paramStringBuilder.append("绿钻");
-      return;
-    case 101: 
-      paramStringBuilder.append("红钻");
-      return;
-    case 105: 
-      paramStringBuilder.append("超级星钻");
-      return;
-    case 102: 
-      paramStringBuilder.append("黄钻");
-      return;
-    }
-    paramStringBuilder.append("大会员");
-  }
-  
-  private void a(StringBuilder paramStringBuilder, List<PrivilegeInfo> paramList)
-  {
-    if ((paramStringBuilder == null) || (paramList == null)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramList.size())
-      {
-        a(paramStringBuilder, (PrivilegeInfo)paramList.get(i));
-        i += 1;
-      }
-    }
-  }
-  
-  private void a(List<PrivilegeInfo> paramList, LinearLayout paramLinearLayout, boolean paramBoolean)
-  {
-    float f1 = 20.0F * this.jdField_a_of_type_Float;
-    float f2 = 20.0F * this.jdField_a_of_type_Float;
-    float f3 = 2.0F * this.jdField_a_of_type_Float;
-    float f4 = this.jdField_a_of_type_Float;
-    f4 = 5.0F * this.jdField_a_of_type_Float;
-    float f5 = 6.0F * this.jdField_a_of_type_Float;
-    float f6 = 8.0F * this.jdField_a_of_type_Float;
-    float f7 = this.jdField_a_of_type_Float;
-    f7 = this.jdField_a_of_type_Float;
-    float f8 = 36.0F * this.jdField_a_of_type_Float;
-    if ((paramLinearLayout == null) || (paramList == null) || (paramList.size() < 1)) {}
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    int i;
-    Object localObject;
-    int j;
-    label162:
-    label192:
-    LinearLayout localLinearLayout;
-    LinearLayout.LayoutParams localLayoutParams1;
-    LinearLayout.LayoutParams localLayoutParams2;
-    int[] arrayOfInt;
-    int k;
-    label385:
-    do
-    {
-      return;
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      i = 0;
-      if (i < paramList.size())
-      {
-        localObject = (PrivilegeInfo)paramList.get(i);
-        if (((PrivilegeInfo)localObject).iIsBig == 1)
-        {
-          j = 1;
-          if (j == 0) {
-            break label192;
-          }
-          localArrayList1.add(localObject);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          j = 0;
-          break label162;
-          localArrayList2.add(localObject);
-        }
-      }
-      paramList = new ColorDrawable(16777215);
-      localObject = new LinearLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      localLinearLayout = new LinearLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      localLayoutParams1 = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout)localObject).setOrientation(0);
-      ((LinearLayout)localObject).setLayoutParams(localLayoutParams1);
-      localLinearLayout.setOrientation(0);
-      localLinearLayout.setLayoutParams(localLayoutParams2);
-      arrayOfInt = new int[1];
-      if (QzoneConfig.getInstance().getConfig("qqsetting", "usersummarycardmedalicon", 0) != 0) {
-        break;
-      }
-      i = 1;
-      if (i == 0) {
-        break label500;
-      }
-      arrayOfInt[0] = ((int)(this.jdField_b_of_type_Float - f3));
-      k = a(localArrayList1, localLinearLayout, (int)f3, arrayOfInt, (int)f8, (int)f8, paramList, paramBoolean);
-      if (k > 0) {
-        arrayOfInt[0] -= (int)f5;
-      }
-      if (k <= 0) {
-        break label492;
-      }
-      j = (int)f6;
-      j = a(localArrayList2, (LinearLayout)localObject, j, arrayOfInt, (int)f1, (int)f2, paramList, paramBoolean);
-      paramLinearLayout.setOrientation(0);
-      if (k > 0) {
-        paramLinearLayout.addView(localLinearLayout);
-      }
-    } while (j <= 0);
-    if (k > 0)
-    {
-      if (i != 0) {
-        localLayoutParams1.leftMargin = ((int)f5);
-      }
-    }
-    else
-    {
-      label446:
-      if (i == 0) {
-        break label611;
-      }
-      localLayoutParams2.gravity = 16;
-      localLayoutParams1.gravity = 16;
-    }
-    for (;;)
-    {
-      localLinearLayout.setLayoutParams(localLayoutParams2);
-      ((LinearLayout)localObject).setLayoutParams(localLayoutParams1);
-      paramLinearLayout.addView((View)localObject);
-      return;
-      i = 0;
-      break;
-      label492:
-      j = (int)f4;
-      break label385;
-      label500:
-      arrayOfInt[0] = ((int)(this.jdField_b_of_type_Float - f3));
-      k = a(localArrayList1, localLinearLayout, 0, arrayOfInt, (int)f8, (int)f8, paramList, paramBoolean);
-      arrayOfInt[0] = ((int)(this.jdField_b_of_type_Float - f6 - f3));
-      if (k > 0) {}
-      for (j = (int)(16.0F * f7);; j = (int)f4)
-      {
-        j = a(localArrayList2, (LinearLayout)localObject, j, arrayOfInt, (int)f1, (int)f2, paramList, paramBoolean);
-        paramLinearLayout.setOrientation(1);
-        break;
-      }
-      localLayoutParams1.leftMargin = ((int)f6);
-      break label446;
-      label611:
-      localLayoutParams1.topMargin = ((int)f3);
-    }
-  }
-  
-  public int a()
-  {
-    return 1019;
-  }
-  
-  public String a()
-  {
-    return "ProfileDiamondWallComponent";
-  }
-  
-  public void a(azfe paramazfe, View paramView)
-  {
-    if ((paramazfe == null) || (paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (paramView == null)) {
-      return;
-    }
-    paramView.setVisibility(0);
-    Object localObject3 = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard;
-    Object localObject1 = ((Card)localObject3).getPrivilegeOpenInfo();
-    Object localObject2 = ((Card)localObject3).getPrivilegeCloseInfo();
-    TextView localTextView = (TextView)paramView.findViewById(2131372967);
-    paramView = (LinearLayout)paramView.findViewById(2131365520);
-    paramView.removeAllViews();
-    StringBuilder localStringBuilder = new StringBuilder(24);
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131693004));
-    if ((paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
-    {
-      paramazfe = new ArrayList();
-      localObject3 = new ArrayList();
-      ArrayList localArrayList = new ArrayList();
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        paramView.setVisibility(0);
-        localTextView.setVisibility(8);
-        Iterator localIterator = ((List)localObject1).iterator();
-        if (localIterator.hasNext())
-        {
-          PrivilegeInfo localPrivilegeInfo = (PrivilegeInfo)localIterator.next();
-          if (localPrivilegeInfo.iIsBig == 1) {
-            ((List)localObject3).add(localPrivilegeInfo);
-          }
-          for (;;)
-          {
-            localPrivilegeInfo.isOpen = true;
-            break;
-            localArrayList.add(localPrivilegeInfo);
-          }
-        }
-        localStringBuilder.append("你已开通");
-        a(localStringBuilder, (List)localObject1);
-        if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
-          break label389;
-        }
-        localObject1 = ((List)localObject2).iterator();
-        label289:
-        if (!((Iterator)localObject1).hasNext()) {
-          break label389;
-        }
-        localObject2 = (PrivilegeInfo)((Iterator)localObject1).next();
-        if (((PrivilegeInfo)localObject2).iIsBig != 1) {
-          break label376;
-        }
-        ((List)localObject3).add(localObject2);
-      }
-      for (;;)
-      {
-        ((PrivilegeInfo)localObject2).isOpen = false;
-        break label289;
-        paramView.setVisibility(8);
-        localTextView.setVisibility(0);
-        localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698181));
-        localStringBuilder.append("你未开通特权服务，快去开通vip服务吧！");
-        break;
-        label376:
-        localArrayList.add(localObject2);
-      }
-      label389:
-      paramazfe.addAll((Collection)localObject3);
-      paramazfe.addAll(localArrayList);
-      a(paramazfe, paramView, false);
-    }
-    for (;;)
-    {
-      paramView.setContentDescription(localStringBuilder);
-      a(localTextView, null, null);
-      return;
-      if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-        break;
-      }
-      paramView.setVisibility(0);
-      localTextView.setVisibility(8);
-      a((List)localObject1, paramView, true);
-      localStringBuilder.append("你的好友已开通");
-      a(localStringBuilder, (List)localObject1);
-    }
-    paramazfe = ((Card)localObject3).privilegePromptStr;
-    if (TextUtils.isEmpty(paramazfe)) {
-      localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698180));
-    }
-    for (;;)
-    {
-      localStringBuilder.append("TA还未开通任何服务特权");
-      paramView.setVisibility(8);
-      localTextView.setVisibility(0);
-      break;
-      localTextView.setText(paramazfe);
-    }
-  }
-  
-  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    paramBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    paramBundle = paramBaseActivity.getDisplayMetrics();
-    this.jdField_a_of_type_Float = paramBundle.density;
-    float f1 = Math.min(paramBundle.widthPixels, paramBundle.heightPixels);
-    float f2 = paramBaseActivity.getDimensionPixelSize(2131297164) + paramBaseActivity.getDimensionPixelSize(2131297471) + paramBaseActivity.getDimensionPixelSize(2131297472);
-    float f3 = this.jdField_a_of_type_Float;
-    int i = paramBaseActivity.getDimensionPixelSize(2131297468);
-    int j = paramBaseActivity.getDimensionPixelSize(2131297469);
-    float f4 = i;
-    this.jdField_b_of_type_Float = (f1 - f2 - (j + (7.0F * f3 + f4)));
-  }
-  
-  public boolean a(azfe paramazfe)
-  {
-    boolean bool = super.a(paramazfe);
-    return a((azfe)this.jdField_b_of_type_JavaLangObject, ((azfe)this.jdField_b_of_type_JavaLangObject).d) | bool;
-  }
-  
-  public boolean a(azfe paramazfe, boolean paramBoolean)
-  {
-    paramBoolean = true;
-    boolean bool = true;
-    Object localObject;
-    if (paramazfe == null)
-    {
-      localObject = null;
-      if (localObject != null) {
-        break label46;
-      }
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        break label41;
-      }
-    }
-    label41:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.jdField_a_of_type_JavaLangObject = null;
-      return paramBoolean;
-      localObject = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard;
-      break;
-    }
-    label46:
-    if (!bgjw.b(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard", 2, String.format("makeAccountLineThree, , diamond: %s", new Object[] { Boolean.valueOf(bool) }));
-      }
-      if (bool) {
-        break label119;
-      }
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        break label114;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangObject = null;
-      return paramBoolean;
-      bool = false;
-      break;
-      label114:
-      paramBoolean = false;
-    }
-    label119:
-    if (0 == 0)
-    {
-      localObject = this.jdField_a_of_type_Azqi.a("map_key_diamond");
-      if (localObject != null) {
         paramBoolean = true;
+        paramEntity.isMqqOnLine = paramBoolean;
+        paramEntity.sqqOnLineState = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("sqqOnLineState")));
+        paramEntity.detalStatusFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("detalStatusFlag")));
+        paramEntity.datetime = paramCursor.getLong(paramCursor.getColumnIndex("datetime"));
+        paramEntity.alias = paramCursor.getString(paramCursor.getColumnIndex("alias"));
+        paramEntity.gathtertype = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("gathtertype")));
+        paramEntity.smartRemark = paramCursor.getString(paramCursor.getColumnIndex("smartRemark"));
+        paramEntity.age = paramCursor.getInt(paramCursor.getColumnIndex("age"));
+        paramEntity.gender = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("gender")));
+        paramEntity.recommReason = paramCursor.getString(paramCursor.getColumnIndex("recommReason"));
+        paramEntity.signature = paramCursor.getString(paramCursor.getColumnIndex("signature"));
+        paramEntity.isIphoneOnline = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("isIphoneOnline")));
+        paramEntity.isRemark = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("isRemark")));
+        paramEntity.iTermType = paramCursor.getInt(paramCursor.getColumnIndex("iTermType"));
+        paramEntity.qqVipInfo = paramCursor.getInt(paramCursor.getColumnIndex("qqVipInfo"));
+        paramEntity.superQqInfo = paramCursor.getInt(paramCursor.getColumnIndex("superQqInfo"));
+        paramEntity.superVipInfo = paramCursor.getInt(paramCursor.getColumnIndex("superVipInfo"));
+        paramEntity.hollywoodVipInfo = paramCursor.getInt(paramCursor.getColumnIndex("hollywoodVipInfo"));
+        paramEntity.lastLoginType = paramCursor.getLong(paramCursor.getColumnIndex("lastLoginType"));
+        paramEntity.showLoginClient = paramCursor.getLong(paramCursor.getColumnIndex("showLoginClient"));
+        paramEntity.medalsInfo = paramCursor.getString(paramCursor.getColumnIndex("medalsInfo"));
+        paramEntity.nameplateCfgInfo = paramCursor.getString(paramCursor.getColumnIndex("nameplateCfgInfo"));
+        paramEntity.richTime = paramCursor.getLong(paramCursor.getColumnIndex("richTime"));
+        paramEntity.richBuffer = paramCursor.getBlob(paramCursor.getColumnIndex("richBuffer"));
+        paramEntity.mComparePartInt = paramCursor.getInt(paramCursor.getColumnIndex("mComparePartInt"));
+        paramEntity.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
+        paramEntity.cNetwork = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cNetwork")));
+        paramEntity.eNetwork = paramCursor.getInt(paramCursor.getColumnIndex("eNetwork"));
+        paramEntity.namePlateOfKingGameId = paramCursor.getLong(paramCursor.getColumnIndex("namePlateOfKingGameId"));
+        paramEntity.namePlateOfKingLoginTime = paramCursor.getLong(paramCursor.getColumnIndex("namePlateOfKingLoginTime"));
+        paramEntity.namePlateOfKingDan = paramCursor.getInt(paramCursor.getColumnIndex("namePlateOfKingDan"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("namePlateOfKingDanDisplatSwitch"))) {
+          break label1555;
+        }
       }
+      label1555:
+      for (paramBoolean = bool1;; paramBoolean = false)
+      {
+        paramEntity.namePlateOfKingDanDisplatSwitch = paramBoolean;
+        paramEntity.strMasterUin = paramCursor.getString(paramCursor.getColumnIndex("strMasterUin"));
+        paramEntity.multiFlags = paramCursor.getInt(paramCursor.getColumnIndex("multiFlags"));
+        paramEntity.friendType = paramCursor.getInt(paramCursor.getColumnIndex("friendType"));
+        paramEntity.abilityBits = paramCursor.getLong(paramCursor.getColumnIndex("abilityBits"));
+        paramEntity.bigClubInfo = paramCursor.getInt(paramCursor.getColumnIndex("bigClubInfo"));
+        paramEntity.superVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("superVipTemplateId"));
+        paramEntity.bigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubTemplateId"));
+        paramEntity.bigClubExtTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubExtTemplateId"));
+        paramEntity.nameplateVipType = paramCursor.getInt(paramCursor.getColumnIndex("nameplateVipType"));
+        paramEntity.grayNameplateFlag = paramCursor.getInt(paramCursor.getColumnIndex("grayNameplateFlag"));
+        paramEntity.cNewLoverDiamondFlag = paramCursor.getInt(paramCursor.getColumnIndex("cNewLoverDiamondFlag"));
+        paramEntity.relationIconFlag = paramCursor.getInt(paramCursor.getColumnIndex("relationIconFlag"));
+        paramEntity.uExtOnlineStatus = paramCursor.getLong(paramCursor.getColumnIndex("uExtOnlineStatus"));
+        paramEntity.iBatteryStatus = paramCursor.getInt(paramCursor.getColumnIndex("iBatteryStatus"));
+        paramEntity.customModel = paramCursor.getString(paramCursor.getColumnIndex("customModel"));
+        paramEntity.songId = paramCursor.getString(paramCursor.getColumnIndex("songId"));
+        paramEntity.songName = paramCursor.getString(paramCursor.getColumnIndex("songName"));
+        paramEntity.singerName = paramCursor.getString(paramCursor.getColumnIndex("singerName"));
+        paramEntity.songEndTime = paramCursor.getLong(paramCursor.getColumnIndex("songEndTime"));
+        paramEntity.songSourceType = paramCursor.getInt(paramCursor.getColumnIndex("songSourceType"));
+        paramEntity.poiName = paramCursor.getString(paramCursor.getColumnIndex("poiName"));
+        paramEntity.poiUpdateTime = paramCursor.getLong(paramCursor.getColumnIndex("poiUpdateTime"));
+        paramEntity.latitude = paramCursor.getDouble(paramCursor.getColumnIndex("latitude"));
+        paramEntity.longitude = paramCursor.getDouble(paramCursor.getColumnIndex("longitude"));
+        paramEntity.poiFlag = paramCursor.getInt(paramCursor.getColumnIndex("poiFlag"));
+        paramEntity.temper = paramCursor.getString(paramCursor.getColumnIndex("temper"));
+        paramEntity.weatherType = paramCursor.getString(paramCursor.getColumnIndex("weatherType"));
+        paramEntity.weatherTypeId = paramCursor.getString(paramCursor.getColumnIndex("weatherTypeId"));
+        paramEntity.weatherTip = paramCursor.getString(paramCursor.getColumnIndex("weatherTip"));
+        paramEntity.adCode = paramCursor.getString(paramCursor.getColumnIndex("adCode"));
+        paramEntity.weatherUpdateTime = paramCursor.getLong(paramCursor.getColumnIndex("weatherUpdateTime"));
+        paramEntity.city = paramCursor.getString(paramCursor.getColumnIndex("city"));
+        paramEntity.weatherFlag = paramCursor.getInt(paramCursor.getColumnIndex("weatherFlag"));
+        paramEntity.area = paramCursor.getString(paramCursor.getColumnIndex("area"));
+        paramEntity.constellationTodayTrend = paramCursor.getString(paramCursor.getColumnIndex("constellationTodayTrend"));
+        paramEntity.constellationTomorrowTrend = paramCursor.getString(paramCursor.getColumnIndex("constellationTomorrowTrend"));
+        paramEntity.constellationBgImageUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationBgImageUrl"));
+        paramEntity.constellationIconUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationIconUrl"));
+        paramEntity.constellationJumpUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationJumpUrl"));
+        paramEntity.constellationDateStr = paramCursor.getString(paramCursor.getColumnIndex("constellationDateStr"));
+        paramEntity.autoStatusUpdateSecond = paramCursor.getLong(paramCursor.getColumnIndex("autoStatusUpdateSecond"));
+        return paramEntity;
+        paramBoolean = false;
+        break;
+      }
+    }
+    int i = paramCursor.getColumnIndex("uin");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+      i = paramCursor.getColumnIndex("remark");
+      if (i != -1) {
+        break label4507;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("remark", String.class));
+      label1630:
+      i = paramCursor.getColumnIndex("name");
+      if (i != -1) {
+        break label4522;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("name", String.class));
+      label1665:
+      i = paramCursor.getColumnIndex("faceid");
+      if (i != -1) {
+        break label4537;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("faceid", Short.TYPE));
+      label1700:
+      i = paramCursor.getColumnIndex("status");
+      if (i != -1) {
+        break label4552;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("status", Byte.TYPE));
+      label1735:
+      i = paramCursor.getColumnIndex("sqqtype");
+      if (i != -1) {
+        break label4568;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sqqtype", Byte.TYPE));
+      label1770:
+      i = paramCursor.getColumnIndex("cSpecialFlag");
+      if (i != -1) {
+        break label4584;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cSpecialFlag", Byte.TYPE));
+      label1805:
+      i = paramCursor.getColumnIndex("groupid");
+      if (i != -1) {
+        break label4600;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("groupid", Integer.TYPE));
+      label1840:
+      i = paramCursor.getColumnIndex("memberLevel");
+      if (i != -1) {
+        break label4615;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("memberLevel", Byte.TYPE));
+      label1875:
+      i = paramCursor.getColumnIndex("isMqqOnLine");
+      if (i != -1) {
+        break label4631;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isMqqOnLine", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("sqqOnLineState");
+      if (i != -1) {
+        break label4658;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sqqOnLineState", Byte.TYPE));
+      label1945:
+      i = paramCursor.getColumnIndex("detalStatusFlag");
+      if (i != -1) {
+        break label4674;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("detalStatusFlag", Byte.TYPE));
+      label1980:
+      i = paramCursor.getColumnIndex("datetime");
+      if (i != -1) {
+        break label4690;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("datetime", Long.TYPE));
+      label2015:
+      i = paramCursor.getColumnIndex("alias");
+      if (i != -1) {
+        break label4705;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("alias", String.class));
+      label2050:
+      i = paramCursor.getColumnIndex("gathtertype");
+      if (i != -1) {
+        break label4720;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("gathtertype", Byte.TYPE));
+      label2085:
+      i = paramCursor.getColumnIndex("smartRemark");
+      if (i != -1) {
+        break label4736;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("smartRemark", String.class));
+      label2120:
+      i = paramCursor.getColumnIndex("age");
+      if (i != -1) {
+        break label4751;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("age", Integer.TYPE));
+      label2155:
+      i = paramCursor.getColumnIndex("gender");
+      if (i != -1) {
+        break label4766;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("gender", Byte.TYPE));
+      label2190:
+      i = paramCursor.getColumnIndex("recommReason");
+      if (i != -1) {
+        break label4782;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("recommReason", String.class));
+      label2225:
+      i = paramCursor.getColumnIndex("signature");
+      if (i != -1) {
+        break label4797;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("signature", String.class));
+      label2260:
+      i = paramCursor.getColumnIndex("isIphoneOnline");
+      if (i != -1) {
+        break label4812;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isIphoneOnline", Byte.TYPE));
+      label2295:
+      i = paramCursor.getColumnIndex("isRemark");
+      if (i != -1) {
+        break label4828;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isRemark", Byte.TYPE));
+      label2330:
+      i = paramCursor.getColumnIndex("iTermType");
+      if (i != -1) {
+        break label4844;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("iTermType", Integer.TYPE));
+      label2365:
+      i = paramCursor.getColumnIndex("qqVipInfo");
+      if (i != -1) {
+        break label4859;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("qqVipInfo", Integer.TYPE));
+      label2400:
+      i = paramCursor.getColumnIndex("superQqInfo");
+      if (i != -1) {
+        break label4874;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("superQqInfo", Integer.TYPE));
+      label2435:
+      i = paramCursor.getColumnIndex("superVipInfo");
+      if (i != -1) {
+        break label4889;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("superVipInfo", Integer.TYPE));
+      label2470:
+      i = paramCursor.getColumnIndex("hollywoodVipInfo");
+      if (i != -1) {
+        break label4904;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("hollywoodVipInfo", Integer.TYPE));
+      label2505:
+      i = paramCursor.getColumnIndex("lastLoginType");
+      if (i != -1) {
+        break label4919;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastLoginType", Long.TYPE));
+      label2540:
+      i = paramCursor.getColumnIndex("showLoginClient");
+      if (i != -1) {
+        break label4934;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("showLoginClient", Long.TYPE));
+      label2575:
+      i = paramCursor.getColumnIndex("medalsInfo");
+      if (i != -1) {
+        break label4949;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("medalsInfo", String.class));
+      label2610:
+      i = paramCursor.getColumnIndex("nameplateCfgInfo");
+      if (i != -1) {
+        break label4964;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("nameplateCfgInfo", String.class));
+      label2645:
+      i = paramCursor.getColumnIndex("richTime");
+      if (i != -1) {
+        break label4979;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("richTime", Long.TYPE));
+      label2680:
+      i = paramCursor.getColumnIndex("richBuffer");
+      if (i != -1) {
+        break label4994;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("richBuffer", [B.class));
+      label2715:
+      i = paramCursor.getColumnIndex("mComparePartInt");
+      if (i != -1) {
+        break label5009;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mComparePartInt", Integer.TYPE));
+      label2750:
+      i = paramCursor.getColumnIndex("mCompareSpell");
+      if (i != -1) {
+        break label5024;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mCompareSpell", String.class));
+      label2785:
+      i = paramCursor.getColumnIndex("cNetwork");
+      if (i != -1) {
+        break label5039;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cNetwork", Byte.TYPE));
+      label2820:
+      i = paramCursor.getColumnIndex("eNetwork");
+      if (i != -1) {
+        break label5055;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("eNetwork", Integer.TYPE));
+      label2855:
+      i = paramCursor.getColumnIndex("namePlateOfKingGameId");
+      if (i != -1) {
+        break label5070;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("namePlateOfKingGameId", Long.TYPE));
+      label2890:
+      i = paramCursor.getColumnIndex("namePlateOfKingLoginTime");
+      if (i != -1) {
+        break label5085;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("namePlateOfKingLoginTime", Long.TYPE));
+      label2925:
+      i = paramCursor.getColumnIndex("namePlateOfKingDan");
+      if (i != -1) {
+        break label5100;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("namePlateOfKingDan", Integer.TYPE));
+      label2960:
+      i = paramCursor.getColumnIndex("namePlateOfKingDanDisplatSwitch");
+      if (i != -1) {
+        break label5115;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("namePlateOfKingDanDisplatSwitch", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("strMasterUin");
+      if (i != -1) {
+        break label5143;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strMasterUin", String.class));
+      label3030:
+      i = paramCursor.getColumnIndex("multiFlags");
+      if (i != -1) {
+        break label5158;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("multiFlags", Integer.TYPE));
+      label3065:
+      i = paramCursor.getColumnIndex("friendType");
+      if (i != -1) {
+        break label5173;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("friendType", Integer.TYPE));
+      label3100:
+      i = paramCursor.getColumnIndex("abilityBits");
+      if (i != -1) {
+        break label5188;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("abilityBits", Long.TYPE));
+      label3135:
+      i = paramCursor.getColumnIndex("bigClubInfo");
+      if (i != -1) {
+        break label5203;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bigClubInfo", Integer.TYPE));
+      label3170:
+      i = paramCursor.getColumnIndex("superVipTemplateId");
+      if (i != -1) {
+        break label5218;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("superVipTemplateId", Integer.TYPE));
+      label3205:
+      i = paramCursor.getColumnIndex("bigClubTemplateId");
+      if (i != -1) {
+        break label5233;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bigClubTemplateId", Integer.TYPE));
+      label3240:
+      i = paramCursor.getColumnIndex("bigClubExtTemplateId");
+      if (i != -1) {
+        break label5248;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bigClubExtTemplateId", Integer.TYPE));
+      label3275:
+      i = paramCursor.getColumnIndex("nameplateVipType");
+      if (i != -1) {
+        break label5263;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("nameplateVipType", Integer.TYPE));
+      label3310:
+      i = paramCursor.getColumnIndex("grayNameplateFlag");
+      if (i != -1) {
+        break label5278;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("grayNameplateFlag", Integer.TYPE));
+      label3345:
+      i = paramCursor.getColumnIndex("cNewLoverDiamondFlag");
+      if (i != -1) {
+        break label5293;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cNewLoverDiamondFlag", Integer.TYPE));
+      label3380:
+      i = paramCursor.getColumnIndex("relationIconFlag");
+      if (i != -1) {
+        break label5308;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("relationIconFlag", Integer.TYPE));
+      label3417:
+      i = paramCursor.getColumnIndex("uExtOnlineStatus");
+      if (i != -1) {
+        break label5323;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uExtOnlineStatus", Long.TYPE));
+      label3454:
+      i = paramCursor.getColumnIndex("iBatteryStatus");
+      if (i != -1) {
+        break label5338;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("iBatteryStatus", Integer.TYPE));
+      label3491:
+      i = paramCursor.getColumnIndex("customModel");
+      if (i != -1) {
+        break label5353;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("customModel", String.class));
+      label3528:
+      i = paramCursor.getColumnIndex("songId");
+      if (i != -1) {
+        break label5368;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("songId", String.class));
+      label3565:
+      i = paramCursor.getColumnIndex("songName");
+      if (i != -1) {
+        break label5383;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("songName", String.class));
+      label3602:
+      i = paramCursor.getColumnIndex("singerName");
+      if (i != -1) {
+        break label5398;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("singerName", String.class));
+      label3639:
+      i = paramCursor.getColumnIndex("songEndTime");
+      if (i != -1) {
+        break label5413;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("songEndTime", Long.TYPE));
+      label3676:
+      i = paramCursor.getColumnIndex("songSourceType");
+      if (i != -1) {
+        break label5428;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("songSourceType", Integer.TYPE));
+      label3713:
+      i = paramCursor.getColumnIndex("poiName");
+      if (i != -1) {
+        break label5443;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("poiName", String.class));
+      label3750:
+      i = paramCursor.getColumnIndex("poiUpdateTime");
+      if (i != -1) {
+        break label5458;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("poiUpdateTime", Long.TYPE));
+      label3787:
+      i = paramCursor.getColumnIndex("latitude");
+      if (i != -1) {
+        break label5473;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("latitude", Double.TYPE));
+      label3824:
+      i = paramCursor.getColumnIndex("longitude");
+      if (i != -1) {
+        break label5488;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("longitude", Double.TYPE));
+      label3861:
+      i = paramCursor.getColumnIndex("poiFlag");
+      if (i != -1) {
+        break label5503;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("poiFlag", Integer.TYPE));
+      label3898:
+      i = paramCursor.getColumnIndex("temper");
+      if (i != -1) {
+        break label5518;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("temper", String.class));
+      label3935:
+      i = paramCursor.getColumnIndex("weatherType");
+      if (i != -1) {
+        break label5533;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("weatherType", String.class));
+      label3972:
+      i = paramCursor.getColumnIndex("weatherTypeId");
+      if (i != -1) {
+        break label5548;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("weatherTypeId", String.class));
+      label4009:
+      i = paramCursor.getColumnIndex("weatherTip");
+      if (i != -1) {
+        break label5563;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("weatherTip", String.class));
+      label4046:
+      i = paramCursor.getColumnIndex("adCode");
+      if (i != -1) {
+        break label5578;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("adCode", String.class));
+      label4083:
+      i = paramCursor.getColumnIndex("weatherUpdateTime");
+      if (i != -1) {
+        break label5593;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("weatherUpdateTime", Long.TYPE));
+      label4120:
+      i = paramCursor.getColumnIndex("city");
+      if (i != -1) {
+        break label5608;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("city", String.class));
+      label4157:
+      i = paramCursor.getColumnIndex("weatherFlag");
+      if (i != -1) {
+        break label5623;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("weatherFlag", Integer.TYPE));
+      label4194:
+      i = paramCursor.getColumnIndex("area");
+      if (i != -1) {
+        break label5638;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("area", String.class));
+      label4231:
+      i = paramCursor.getColumnIndex("constellationTodayTrend");
+      if (i != -1) {
+        break label5653;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("constellationTodayTrend", String.class));
+      label4268:
+      i = paramCursor.getColumnIndex("constellationTomorrowTrend");
+      if (i != -1) {
+        break label5668;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("constellationTomorrowTrend", String.class));
+      label4305:
+      i = paramCursor.getColumnIndex("constellationBgImageUrl");
+      if (i != -1) {
+        break label5683;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("constellationBgImageUrl", String.class));
+      label4342:
+      i = paramCursor.getColumnIndex("constellationIconUrl");
+      if (i != -1) {
+        break label5698;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("constellationIconUrl", String.class));
+      label4379:
+      i = paramCursor.getColumnIndex("constellationJumpUrl");
+      if (i != -1) {
+        break label5713;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("constellationJumpUrl", String.class));
+      label4416:
+      i = paramCursor.getColumnIndex("constellationDateStr");
+      if (i != -1) {
+        break label5728;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("constellationDateStr", String.class));
     }
     for (;;)
     {
-      if (localObject == null)
-      {
-        localObject = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561407, null);
-        paramBoolean = true;
+      i = paramCursor.getColumnIndex("autoStatusUpdateSecond");
+      if (i != -1) {
+        break label5743;
       }
-      for (;;)
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("autoStatusUpdateSecond", Long.TYPE));
+      return paramEntity;
+      paramEntity.uin = paramCursor.getString(i);
+      break;
+      label4507:
+      paramEntity.remark = paramCursor.getString(i);
+      break label1630;
+      label4522:
+      paramEntity.name = paramCursor.getString(i);
+      break label1665;
+      label4537:
+      paramEntity.faceid = paramCursor.getShort(i);
+      break label1700;
+      label4552:
+      paramEntity.status = ((byte)paramCursor.getShort(i));
+      break label1735;
+      label4568:
+      paramEntity.sqqtype = ((byte)paramCursor.getShort(i));
+      break label1770;
+      label4584:
+      paramEntity.cSpecialFlag = ((byte)paramCursor.getShort(i));
+      break label1805;
+      label4600:
+      paramEntity.groupid = paramCursor.getInt(i);
+      break label1840;
+      label4615:
+      paramEntity.memberLevel = ((byte)paramCursor.getShort(i));
+      break label1875;
+      label4631:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
       {
-        this.jdField_a_of_type_JavaLangObject = localObject;
-        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131362936);
-        View localView = ((View)localObject).findViewById(2131365519);
-        if (bool)
-        {
-          a(paramazfe, localView);
-          paramazfe = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-          paramazfe.leftMargin = 0;
-          localView.setLayoutParams(paramazfe);
-        }
-        for (;;)
-        {
-          if (bool)
-          {
-            ((View)localObject).setTag(new azde(26, null));
-            ((View)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          }
-          a(null, null, localImageView);
-          return paramBoolean;
-          localView.setVisibility(8);
-          ((View)localObject).setTag(null);
-        }
+        paramEntity.isMqqOnLine = paramBoolean;
+        break;
       }
-      paramBoolean = false;
-      continue;
-      localObject = null;
-      paramBoolean = false;
+      label4658:
+      paramEntity.sqqOnLineState = ((byte)paramCursor.getShort(i));
+      break label1945;
+      label4674:
+      paramEntity.detalStatusFlag = ((byte)paramCursor.getShort(i));
+      break label1980;
+      label4690:
+      paramEntity.datetime = paramCursor.getLong(i);
+      break label2015;
+      label4705:
+      paramEntity.alias = paramCursor.getString(i);
+      break label2050;
+      label4720:
+      paramEntity.gathtertype = ((byte)paramCursor.getShort(i));
+      break label2085;
+      label4736:
+      paramEntity.smartRemark = paramCursor.getString(i);
+      break label2120;
+      label4751:
+      paramEntity.age = paramCursor.getInt(i);
+      break label2155;
+      label4766:
+      paramEntity.gender = ((byte)paramCursor.getShort(i));
+      break label2190;
+      label4782:
+      paramEntity.recommReason = paramCursor.getString(i);
+      break label2225;
+      label4797:
+      paramEntity.signature = paramCursor.getString(i);
+      break label2260;
+      label4812:
+      paramEntity.isIphoneOnline = ((byte)paramCursor.getShort(i));
+      break label2295;
+      label4828:
+      paramEntity.isRemark = ((byte)paramCursor.getShort(i));
+      break label2330;
+      label4844:
+      paramEntity.iTermType = paramCursor.getInt(i);
+      break label2365;
+      label4859:
+      paramEntity.qqVipInfo = paramCursor.getInt(i);
+      break label2400;
+      label4874:
+      paramEntity.superQqInfo = paramCursor.getInt(i);
+      break label2435;
+      label4889:
+      paramEntity.superVipInfo = paramCursor.getInt(i);
+      break label2470;
+      label4904:
+      paramEntity.hollywoodVipInfo = paramCursor.getInt(i);
+      break label2505;
+      label4919:
+      paramEntity.lastLoginType = paramCursor.getLong(i);
+      break label2540;
+      label4934:
+      paramEntity.showLoginClient = paramCursor.getLong(i);
+      break label2575;
+      label4949:
+      paramEntity.medalsInfo = paramCursor.getString(i);
+      break label2610;
+      label4964:
+      paramEntity.nameplateCfgInfo = paramCursor.getString(i);
+      break label2645;
+      label4979:
+      paramEntity.richTime = paramCursor.getLong(i);
+      break label2680;
+      label4994:
+      paramEntity.richBuffer = paramCursor.getBlob(i);
+      break label2715;
+      label5009:
+      paramEntity.mComparePartInt = paramCursor.getInt(i);
+      break label2750;
+      label5024:
+      paramEntity.mCompareSpell = paramCursor.getString(i);
+      break label2785;
+      label5039:
+      paramEntity.cNetwork = ((byte)paramCursor.getShort(i));
+      break label2820;
+      label5055:
+      paramEntity.eNetwork = paramCursor.getInt(i);
+      break label2855;
+      label5070:
+      paramEntity.namePlateOfKingGameId = paramCursor.getLong(i);
+      break label2890;
+      label5085:
+      paramEntity.namePlateOfKingLoginTime = paramCursor.getLong(i);
+      break label2925;
+      label5100:
+      paramEntity.namePlateOfKingDan = paramCursor.getInt(i);
+      break label2960;
+      label5115:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        paramEntity.namePlateOfKingDanDisplatSwitch = paramBoolean;
+        break;
+      }
+      label5143:
+      paramEntity.strMasterUin = paramCursor.getString(i);
+      break label3030;
+      label5158:
+      paramEntity.multiFlags = paramCursor.getInt(i);
+      break label3065;
+      label5173:
+      paramEntity.friendType = paramCursor.getInt(i);
+      break label3100;
+      label5188:
+      paramEntity.abilityBits = paramCursor.getLong(i);
+      break label3135;
+      label5203:
+      paramEntity.bigClubInfo = paramCursor.getInt(i);
+      break label3170;
+      label5218:
+      paramEntity.superVipTemplateId = paramCursor.getInt(i);
+      break label3205;
+      label5233:
+      paramEntity.bigClubTemplateId = paramCursor.getInt(i);
+      break label3240;
+      label5248:
+      paramEntity.bigClubExtTemplateId = paramCursor.getInt(i);
+      break label3275;
+      label5263:
+      paramEntity.nameplateVipType = paramCursor.getInt(i);
+      break label3310;
+      label5278:
+      paramEntity.grayNameplateFlag = paramCursor.getInt(i);
+      break label3345;
+      label5293:
+      paramEntity.cNewLoverDiamondFlag = paramCursor.getInt(i);
+      break label3380;
+      label5308:
+      paramEntity.relationIconFlag = paramCursor.getInt(i);
+      break label3417;
+      label5323:
+      paramEntity.uExtOnlineStatus = paramCursor.getLong(i);
+      break label3454;
+      label5338:
+      paramEntity.iBatteryStatus = paramCursor.getInt(i);
+      break label3491;
+      label5353:
+      paramEntity.customModel = paramCursor.getString(i);
+      break label3528;
+      label5368:
+      paramEntity.songId = paramCursor.getString(i);
+      break label3565;
+      label5383:
+      paramEntity.songName = paramCursor.getString(i);
+      break label3602;
+      label5398:
+      paramEntity.singerName = paramCursor.getString(i);
+      break label3639;
+      label5413:
+      paramEntity.songEndTime = paramCursor.getLong(i);
+      break label3676;
+      label5428:
+      paramEntity.songSourceType = paramCursor.getInt(i);
+      break label3713;
+      label5443:
+      paramEntity.poiName = paramCursor.getString(i);
+      break label3750;
+      label5458:
+      paramEntity.poiUpdateTime = paramCursor.getLong(i);
+      break label3787;
+      label5473:
+      paramEntity.latitude = paramCursor.getDouble(i);
+      break label3824;
+      label5488:
+      paramEntity.longitude = paramCursor.getDouble(i);
+      break label3861;
+      label5503:
+      paramEntity.poiFlag = paramCursor.getInt(i);
+      break label3898;
+      label5518:
+      paramEntity.temper = paramCursor.getString(i);
+      break label3935;
+      label5533:
+      paramEntity.weatherType = paramCursor.getString(i);
+      break label3972;
+      label5548:
+      paramEntity.weatherTypeId = paramCursor.getString(i);
+      break label4009;
+      label5563:
+      paramEntity.weatherTip = paramCursor.getString(i);
+      break label4046;
+      label5578:
+      paramEntity.adCode = paramCursor.getString(i);
+      break label4083;
+      label5593:
+      paramEntity.weatherUpdateTime = paramCursor.getLong(i);
+      break label4120;
+      label5608:
+      paramEntity.city = paramCursor.getString(i);
+      break label4157;
+      label5623:
+      paramEntity.weatherFlag = paramCursor.getInt(i);
+      break label4194;
+      label5638:
+      paramEntity.area = paramCursor.getString(i);
+      break label4231;
+      label5653:
+      paramEntity.constellationTodayTrend = paramCursor.getString(i);
+      break label4268;
+      label5668:
+      paramEntity.constellationTomorrowTrend = paramCursor.getString(i);
+      break label4305;
+      label5683:
+      paramEntity.constellationBgImageUrl = paramCursor.getString(i);
+      break label4342;
+      label5698:
+      paramEntity.constellationIconUrl = paramCursor.getString(i);
+      break label4379;
+      label5713:
+      paramEntity.constellationJumpUrl = paramCursor.getString(i);
+      break label4416;
+      label5728:
+      paramEntity.constellationDateStr = paramCursor.getString(i);
     }
+    label5743:
+    paramEntity.autoStatusUpdateSecond = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public String a_()
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    return "map_key_diamond";
+    paramEntity = (Friends)paramEntity;
+    paramContentValues.put("uin", paramEntity.uin);
+    paramContentValues.put("remark", paramEntity.remark);
+    paramContentValues.put("name", paramEntity.name);
+    paramContentValues.put("faceid", Short.valueOf(paramEntity.faceid));
+    paramContentValues.put("status", Byte.valueOf(paramEntity.status));
+    paramContentValues.put("sqqtype", Byte.valueOf(paramEntity.sqqtype));
+    paramContentValues.put("cSpecialFlag", Byte.valueOf(paramEntity.cSpecialFlag));
+    paramContentValues.put("groupid", Integer.valueOf(paramEntity.groupid));
+    paramContentValues.put("memberLevel", Byte.valueOf(paramEntity.memberLevel));
+    paramContentValues.put("isMqqOnLine", Boolean.valueOf(paramEntity.isMqqOnLine));
+    paramContentValues.put("sqqOnLineState", Byte.valueOf(paramEntity.sqqOnLineState));
+    paramContentValues.put("detalStatusFlag", Byte.valueOf(paramEntity.detalStatusFlag));
+    paramContentValues.put("datetime", Long.valueOf(paramEntity.datetime));
+    paramContentValues.put("alias", paramEntity.alias);
+    paramContentValues.put("gathtertype", Byte.valueOf(paramEntity.gathtertype));
+    paramContentValues.put("smartRemark", paramEntity.smartRemark);
+    paramContentValues.put("age", Integer.valueOf(paramEntity.age));
+    paramContentValues.put("gender", Byte.valueOf(paramEntity.gender));
+    paramContentValues.put("recommReason", paramEntity.recommReason);
+    paramContentValues.put("signature", paramEntity.signature);
+    paramContentValues.put("isIphoneOnline", Byte.valueOf(paramEntity.isIphoneOnline));
+    paramContentValues.put("isRemark", Byte.valueOf(paramEntity.isRemark));
+    paramContentValues.put("iTermType", Integer.valueOf(paramEntity.iTermType));
+    paramContentValues.put("qqVipInfo", Integer.valueOf(paramEntity.qqVipInfo));
+    paramContentValues.put("superQqInfo", Integer.valueOf(paramEntity.superQqInfo));
+    paramContentValues.put("superVipInfo", Integer.valueOf(paramEntity.superVipInfo));
+    paramContentValues.put("hollywoodVipInfo", Integer.valueOf(paramEntity.hollywoodVipInfo));
+    paramContentValues.put("lastLoginType", Long.valueOf(paramEntity.lastLoginType));
+    paramContentValues.put("showLoginClient", Long.valueOf(paramEntity.showLoginClient));
+    paramContentValues.put("medalsInfo", paramEntity.medalsInfo);
+    paramContentValues.put("nameplateCfgInfo", paramEntity.nameplateCfgInfo);
+    paramContentValues.put("richTime", Long.valueOf(paramEntity.richTime));
+    paramContentValues.put("richBuffer", paramEntity.richBuffer);
+    paramContentValues.put("mComparePartInt", Integer.valueOf(paramEntity.mComparePartInt));
+    paramContentValues.put("mCompareSpell", paramEntity.mCompareSpell);
+    paramContentValues.put("cNetwork", Byte.valueOf(paramEntity.cNetwork));
+    paramContentValues.put("eNetwork", Integer.valueOf(paramEntity.eNetwork));
+    paramContentValues.put("namePlateOfKingGameId", Long.valueOf(paramEntity.namePlateOfKingGameId));
+    paramContentValues.put("namePlateOfKingLoginTime", Long.valueOf(paramEntity.namePlateOfKingLoginTime));
+    paramContentValues.put("namePlateOfKingDan", Integer.valueOf(paramEntity.namePlateOfKingDan));
+    paramContentValues.put("namePlateOfKingDanDisplatSwitch", Boolean.valueOf(paramEntity.namePlateOfKingDanDisplatSwitch));
+    paramContentValues.put("strMasterUin", paramEntity.strMasterUin);
+    paramContentValues.put("multiFlags", Integer.valueOf(paramEntity.multiFlags));
+    paramContentValues.put("friendType", Integer.valueOf(paramEntity.friendType));
+    paramContentValues.put("abilityBits", Long.valueOf(paramEntity.abilityBits));
+    paramContentValues.put("bigClubInfo", Integer.valueOf(paramEntity.bigClubInfo));
+    paramContentValues.put("superVipTemplateId", Integer.valueOf(paramEntity.superVipTemplateId));
+    paramContentValues.put("bigClubTemplateId", Integer.valueOf(paramEntity.bigClubTemplateId));
+    paramContentValues.put("bigClubExtTemplateId", Integer.valueOf(paramEntity.bigClubExtTemplateId));
+    paramContentValues.put("nameplateVipType", Integer.valueOf(paramEntity.nameplateVipType));
+    paramContentValues.put("grayNameplateFlag", Integer.valueOf(paramEntity.grayNameplateFlag));
+    paramContentValues.put("cNewLoverDiamondFlag", Integer.valueOf(paramEntity.cNewLoverDiamondFlag));
+    paramContentValues.put("relationIconFlag", Integer.valueOf(paramEntity.relationIconFlag));
+    paramContentValues.put("uExtOnlineStatus", Long.valueOf(paramEntity.uExtOnlineStatus));
+    paramContentValues.put("iBatteryStatus", Integer.valueOf(paramEntity.iBatteryStatus));
+    paramContentValues.put("customModel", paramEntity.customModel);
+    paramContentValues.put("songId", paramEntity.songId);
+    paramContentValues.put("songName", paramEntity.songName);
+    paramContentValues.put("singerName", paramEntity.singerName);
+    paramContentValues.put("songEndTime", Long.valueOf(paramEntity.songEndTime));
+    paramContentValues.put("songSourceType", Integer.valueOf(paramEntity.songSourceType));
+    paramContentValues.put("poiName", paramEntity.poiName);
+    paramContentValues.put("poiUpdateTime", Long.valueOf(paramEntity.poiUpdateTime));
+    paramContentValues.put("latitude", Double.valueOf(paramEntity.latitude));
+    paramContentValues.put("longitude", Double.valueOf(paramEntity.longitude));
+    paramContentValues.put("poiFlag", Integer.valueOf(paramEntity.poiFlag));
+    paramContentValues.put("temper", paramEntity.temper);
+    paramContentValues.put("weatherType", paramEntity.weatherType);
+    paramContentValues.put("weatherTypeId", paramEntity.weatherTypeId);
+    paramContentValues.put("weatherTip", paramEntity.weatherTip);
+    paramContentValues.put("adCode", paramEntity.adCode);
+    paramContentValues.put("weatherUpdateTime", Long.valueOf(paramEntity.weatherUpdateTime));
+    paramContentValues.put("city", paramEntity.city);
+    paramContentValues.put("weatherFlag", Integer.valueOf(paramEntity.weatherFlag));
+    paramContentValues.put("area", paramEntity.area);
+    paramContentValues.put("constellationTodayTrend", paramEntity.constellationTodayTrend);
+    paramContentValues.put("constellationTomorrowTrend", paramEntity.constellationTomorrowTrend);
+    paramContentValues.put("constellationBgImageUrl", paramEntity.constellationBgImageUrl);
+    paramContentValues.put("constellationIconUrl", paramEntity.constellationIconUrl);
+    paramContentValues.put("constellationJumpUrl", paramEntity.constellationJumpUrl);
+    paramContentValues.put("constellationDateStr", paramEntity.constellationDateStr);
+    paramContentValues.put("autoStatusUpdateSecond", Long.valueOf(paramEntity.autoStatusUpdateSecond));
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,remark TEXT ,name TEXT ,faceid INTEGER ,status INTEGER ,sqqtype INTEGER ,cSpecialFlag INTEGER ,groupid INTEGER ,memberLevel INTEGER ,isMqqOnLine INTEGER ,sqqOnLineState INTEGER ,detalStatusFlag INTEGER ,datetime INTEGER ,alias TEXT ,gathtertype INTEGER ,smartRemark TEXT ,age INTEGER ,gender INTEGER ,recommReason TEXT ,signature TEXT ,isIphoneOnline INTEGER ,isRemark INTEGER ,iTermType INTEGER ,qqVipInfo INTEGER ,superQqInfo INTEGER ,superVipInfo INTEGER ,hollywoodVipInfo INTEGER ,lastLoginType INTEGER ,showLoginClient INTEGER ,medalsInfo TEXT ,nameplateCfgInfo TEXT ,richTime INTEGER ,richBuffer BLOB ,mComparePartInt INTEGER ,mCompareSpell TEXT ,cNetwork INTEGER ,eNetwork INTEGER ,namePlateOfKingGameId INTEGER ,namePlateOfKingLoginTime INTEGER ,namePlateOfKingDan INTEGER ,namePlateOfKingDanDisplatSwitch INTEGER ,strMasterUin TEXT ,multiFlags INTEGER ,friendType INTEGER ,abilityBits INTEGER ,bigClubInfo INTEGER ,superVipTemplateId INTEGER ,bigClubTemplateId INTEGER ,bigClubExtTemplateId INTEGER ,nameplateVipType INTEGER ,grayNameplateFlag INTEGER ,cNewLoverDiamondFlag INTEGER ,relationIconFlag INTEGER ,uExtOnlineStatus INTEGER ,iBatteryStatus INTEGER ,customModel TEXT ,songId TEXT ,songName TEXT ,singerName TEXT ,songEndTime INTEGER ,songSourceType INTEGER ,poiName TEXT ,poiUpdateTime INTEGER ,latitude REAL ,longitude REAL ,poiFlag INTEGER ,temper TEXT ,weatherType TEXT ,weatherTypeId TEXT ,weatherTip TEXT ,adCode TEXT ,weatherUpdateTime INTEGER ,city TEXT ,weatherFlag INTEGER ,area TEXT ,constellationTodayTrend TEXT ,constellationTomorrowTrend TEXT ,constellationBgImageUrl TEXT ,constellationIconUrl TEXT ,constellationJumpUrl TEXT ,constellationDateStr TEXT ,autoStatusUpdateSecond INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,37 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
 
-class bbea
-  extends RecyclerView.ViewHolder
+public final class bbea
+  implements Parcelable.Creator<RevokeMsgInfo>
 {
-  bbea(bbdy parambbdy, View paramView)
+  public RevokeMsgInfo a(Parcel paramParcel)
   {
-    super(paramView);
+    boolean bool = true;
+    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
+    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.d = paramParcel.readString();
+    localRevokeMsgInfo.b = paramParcel.readLong();
+    localRevokeMsgInfo.c = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localRevokeMsgInfo.jdField_a_of_type_Boolean = bool;
+      localRevokeMsgInfo.g = paramParcel.readInt();
+      localRevokeMsgInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      return localRevokeMsgInfo;
+      bool = false;
+    }
+  }
+  
+  public RevokeMsgInfo[] a(int paramInt)
+  {
+    return new RevokeMsgInfo[paramInt];
   }
 }
 

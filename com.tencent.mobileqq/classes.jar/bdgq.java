@@ -1,166 +1,67 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.tablequery.TableQueryController.1;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdgq
+  implements bdgn
 {
-  private static bdgq jdField_a_of_type_Bdgq;
-  public static boolean a;
-  public static boolean b = true;
-  public static boolean c;
-  private static boolean e;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bdgr(this);
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  private bdgs jdField_a_of_type_Bdgs = new bdgs();
-  private TableQueryViewer jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
-  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean d;
+  private bdgn jdField_a_of_type_Bdgn;
+  private LoadExtResult jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult;
   
-  /* Error */
-  public static bdgq a()
+  private LoadParam a(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 40	bdgq:jdField_a_of_type_Bdgq	Lbdgq;
-    //   6: ifnonnull +19 -> 25
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: new 2	bdgq
-    //   15: dup
-    //   16: invokespecial 41	bdgq:<init>	()V
-    //   19: putstatic 40	bdgq:jdField_a_of_type_Bdgq	Lbdgq;
-    //   22: ldc 2
-    //   24: monitorexit
-    //   25: ldc 2
-    //   27: monitorexit
-    //   28: getstatic 40	bdgq:jdField_a_of_type_Bdgq	Lbdgq;
-    //   31: areturn
-    //   32: astore_0
-    //   33: ldc 2
-    //   35: monitorexit
-    //   36: aload_0
-    //   37: athrow
-    //   38: astore_0
-    //   39: ldc 2
-    //   41: monitorexit
-    //   42: aload_0
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   32	5	0	localObject1	Object
-    //   38	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	25	32	finally
-    //   33	36	32	finally
-    //   3	12	38	finally
-    //   25	28	38	finally
-    //   36	38	38	finally
-    //   39	42	38	finally
+    LoadParam localLoadParam = new LoadParam();
+    localLoadParam.mLoadItems.add(paramLoadItem);
+    localLoadParam.mReportSeq = paramLoadParam.mReportSeq;
+    localLoadParam.mCallType = paramLoadParam.mCallType;
+    return localLoadParam;
   }
   
-  public int a(bdgp parambdgp)
+  private void a(LoadParam paramLoadParam, bdgt parambdgt, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(parambdgp);
+    LoadParam localLoadParam = a(paramLoadParam, (LoadParam.LoadItem)paramLoadParam.mLoadItems.get(paramInt));
+    this.jdField_a_of_type_Bdgn = new bdgf();
+    this.jdField_a_of_type_Bdgn.a(localLoadParam, new bdgr(this, paramInt, paramLoadParam, parambdgt));
   }
   
-  public void a()
+  public LoadExtResult a(LoadParam paramLoadParam)
   {
-    if (jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a();
-    }
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
+    Object localObject = null;
+    Iterator localIterator = paramLoadParam.mLoadItems.iterator();
+    while (localIterator.hasNext())
     {
-      e = true;
-      if (!c) {
-        a().a();
+      localObject = a(paramLoadParam, (LoadParam.LoadItem)localIterator.next());
+      this.jdField_a_of_type_Bdgn = new bdgf();
+      LoadExtResult localLoadExtResult = LoadExtResult.mergeExtResult(this.jdField_a_of_type_Bdgn.a((LoadParam)localObject), this.jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult);
+      this.jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult = localLoadExtResult;
+      localObject = localLoadExtResult;
+      if (localLoadExtResult.getResultCode() != 0) {
+        localObject = localLoadExtResult;
       }
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return;
-    }
-    paramMotionEvent = new TableQueryController.1(this);
-    ThreadManager.getSubThreadHandler().postDelayed(paramMotionEvent, 400L);
+    return localObject;
   }
   
-  public void a(bdgp parambdgp)
+  public void a(LoadParam paramLoadParam, bdgt parambdgt)
   {
-    if (jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(parambdgp);
-    }
+    a(paramLoadParam, parambdgt, 0);
   }
   
-  public void b()
+  public void a(String paramString)
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null)
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)localBaseApplication.getSystemService("window"));
-      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer = new TableQueryViewer(localBaseApplication);
-    }
-    if (!this.d) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
-      label56:
-      int i;
-      if (Build.VERSION.SDK_INT >= 26) {
-        i = 2038;
-      }
-      for (;;)
-      {
-        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
-        localLayoutParams.gravity = 51;
-        localLayoutParams.x = 0;
-        localLayoutParams.y = bggq.a(localBaseApplication, 72.0F);
-        try
-        {
-          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer, localLayoutParams);
-          this.d = true;
-          return;
-          i = 2003;
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            QQToast.a(localBaseApplication, 1, localBaseApplication.getString(2131690507), 0).a();
-          }
-        }
-      }
-    }
-    catch (Exception localException2)
-    {
-      break label56;
+    if (this.jdField_a_of_type_Bdgn != null) {
+      this.jdField_a_of_type_Bdgn.a(paramString);
     }
   }
   
-  public void c()
+  public boolean a(String paramString)
   {
-    if (this.d) {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+    if (this.jdField_a_of_type_Bdgn != null) {
+      return this.jdField_a_of_type_Bdgn.a(paramString);
     }
-    this.d = false;
+    return false;
   }
 }
 

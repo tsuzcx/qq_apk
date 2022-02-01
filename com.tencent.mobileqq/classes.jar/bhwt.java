@@ -1,44 +1,36 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class bhwt
-  extends bhxv
+public abstract class bhwt
+  extends RecyclerView.OnScrollListener
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-  private int d = -872415232;
-  private int e = 0;
-  private int f;
+  private boolean a;
   
-  public void a(float paramFloat)
+  public abstract void a();
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
+    {
+      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
+      if ((((bhwq)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
+        a();
+      }
+    }
   }
   
-  public void a(int paramInt)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    this.f = paramInt;
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    paramCanvas.save();
-    int i = localRect.centerX();
-    int j = this.f;
-    paramCanvas.clipRect(localRect);
-    paramCanvas.drawColor(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-    paramCanvas.drawCircle(i, this.jdField_a_of_type_Float, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restore();
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.a = bool;
+      return;
+    }
   }
 }
 

@@ -1,25 +1,24 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.widget.XPanelContainer;
 
-public class asnr
-  implements Animator.AnimatorListener
+class asnr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public asnr(ExtendFriendSearchBarView paramExtendFriendSearchBarView) {}
+  asnr(asnp paramasnp, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.c();
+    XPanelContainer.jdField_a_of_type_Int = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (asnp.a(this.jdField_a_of_type_Asnp).getParent() != null) {
+      asnp.a(this.jdField_a_of_type_Asnp).getParent().requestLayout();
+    }
+    if ((this.jdField_a_of_type_Int == asnp.a(this.jdField_a_of_type_Asnp)) && (XPanelContainer.jdField_a_of_type_Int == asnp.a(this.jdField_a_of_type_Asnp))) {
+      this.jdField_a_of_type_Asnp.c();
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.c();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

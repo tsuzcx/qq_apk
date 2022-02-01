@@ -2,16 +2,16 @@ package com.tencent.biz.qqcircle.comment;
 
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import vhl;
+import vjp;
 
 public class QCircleBaseInputPopupWindow$5
   implements Runnable
 {
-  public QCircleBaseInputPopupWindow$5(vhl paramvhl, View paramView) {}
+  public QCircleBaseInputPopupWindow$5(vjp paramvjp, View paramView) {}
   
   public void run()
   {
-    vhl.a(this.this$0).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+    vjp.a(this.this$0).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
   }
 }
 

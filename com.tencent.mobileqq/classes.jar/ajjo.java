@@ -1,14 +1,9 @@
-import java.util.ArrayList;
+import android.widget.TextView;
 
 public class ajjo
+  extends ajjt
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public ArrayList<String> b;
-  public ArrayList<Integer> c;
-  public ArrayList<byte[]> d;
+  public TextView a;
 }
 
 

@@ -1,44 +1,63 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import io.flutter.embedding.android.SplashScreen;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auev
-  implements SplashScreen
+  implements aqrn
 {
-  private auew a;
+  private FileManagerEntity a;
   
-  public auev(auew paramauew)
+  public auev(FileManagerEntity paramFileManagerEntity)
   {
-    this.a = paramauew;
+    this.a = paramFileManagerEntity;
   }
   
-  @Nullable
-  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
+  private String a()
   {
-    return LayoutInflater.from(paramContext).inflate(2131560913, null);
-  }
-  
-  public boolean doesSplashViewRememberItsTransition()
-  {
-    return false;
-  }
-  
-  @Nullable
-  public Bundle saveSplashScreenState()
-  {
-    return null;
-  }
-  
-  public void transitionToFlutter(@NonNull Runnable paramRunnable)
-  {
-    paramRunnable.run();
-    if (this.a != null) {
-      this.a.b();
+    String str = "";
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
+      {
+        localJSONObject.put("file_color_note_peerType", this.a.peerType);
+        localJSONObject.put("file_color_note_peerUin", this.a.peerUin);
+        localJSONObject.put("file_color_note_uniSeq", this.a.uniseq);
+        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
+        str = localJSONObject.toString();
+      }
+      return str;
     }
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (this.a == null)
+    {
+      QLog.i("OfflineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
+    }
+    aqrv localaqrv = new aqrv();
+    localaqrv.a(17039360);
+    String str = auoo.b(1, this.a.nSessionId + "");
+    if (QLog.isColorLevel()) {
+      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
+    }
+    localaqrv.a(str);
+    localaqrv.b(this.a.fileName);
+    localaqrv.c(auog.a(this.a.fileSize));
+    int i = aunj.a(aunj.a(this.a.fileName));
+    localaqrv.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqrv.a(str.getBytes());
+    }
+    return localaqrv.a();
   }
 }
 

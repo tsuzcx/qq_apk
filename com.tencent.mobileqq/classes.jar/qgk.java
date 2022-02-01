@@ -1,27 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import java.util.Map;
+import kotlin.Metadata;
 
-public class qgk
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "retData", "", "", "", "", "onEvent"}, k=3, mv={1, 1, 16})
+public final class qgk
+  implements qjp
 {
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private snh jdField_a_of_type_Snh;
+  public qgk(sel paramsel) {}
   
-  public qgk(ArticleInfo paramArticleInfo, snh paramsnh)
+  public final void a(View paramView, Map<String, Object> paramMap)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_Snh = paramsnh;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    paramViewBase = this.jdField_a_of_type_Snh.a();
-    if (paramViewBase != null) {
-      paramViewBase.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
+    paramView = this.a.a();
+    if (paramView != null) {
+      paramView.c();
     }
   }
 }

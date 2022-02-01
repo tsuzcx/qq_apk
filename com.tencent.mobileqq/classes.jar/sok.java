@@ -1,38 +1,26 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.37.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class sok
-  implements spi
+  implements ssf
 {
-  sok(snh paramsnh) {}
+  private WeakReference<FastWebActivity> a;
   
-  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  public sok(FastWebActivity paramFastWebActivity)
   {
-    snh.d(this.a, false);
-    if (!snh.c(this.a)) {
+    this.a = new WeakReference(paramFastWebActivity);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  {
+    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
+    if (localFastWebActivity == null) {
       return;
     }
-    snh.a(this.a, false);
-    if ((this.a.a()) && (snh.a(this.a) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
-      }
-      if (!snh.a(this.a).b()) {
-        break label122;
-      }
-      snh.a(this.a).postDelayed(new ReadInJoyBaseAdapter.37.1(this, paramReadInJoyBaseListView), 1200L);
-    }
-    for (;;)
-    {
-      snh.a(this.a, this.a.a.getLastVisiblePosition() + 1, snh.c());
-      return;
-      label122:
-      this.a.a(paramReadInJoyBaseListView, snh.b);
-    }
+    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, paramList1, paramList2, localFastWebActivity, paramBoolean, paramString));
   }
 }
 

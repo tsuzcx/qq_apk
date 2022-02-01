@@ -1,43 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aupv
-  implements aupt
+  implements View.OnClickListener
 {
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    a(paramString1, paramString2, paramString3, null);
-  }
+  public aupv(SendBottomBar paramSendBottomBar) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    if ("i".equals(paramString2)) {
-      if (QLog.isColorLevel()) {
-        QLog.i(paramString1, 2, paramString3, paramThrowable);
-      }
+    if (SendBottomBar.a(this.a) != null) {
+      SendBottomBar.a(this.a).a();
     }
-    do
+    if (SendBottomBar.a(this.a)) {
+      aunj.b(SendBottomBar.a(this.a));
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-        if (!"d".equals(paramString2)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(paramString1, 2, paramString3, paramThrowable);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ("w".equals(paramString2))
-      {
-        QLog.w(paramString1, 2, paramString3, paramThrowable);
-        return;
-      }
-      if ("e".equals(paramString2))
-      {
-        QLog.e(paramString1, 2, paramString3, paramThrowable);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(paramString1, 2, paramString3, paramThrowable);
+      aunj.a(SendBottomBar.a(this.a));
+    }
   }
 }
 

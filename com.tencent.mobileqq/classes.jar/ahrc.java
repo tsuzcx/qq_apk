@@ -1,19 +1,17 @@
-import android.content.Context;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public abstract interface ahrc<T extends View>
+class ahrc
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  ahrc(ahqw paramahqw, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public abstract T a();
-  
-  public abstract T a(Context paramContext);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Ahqw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    bcwu.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

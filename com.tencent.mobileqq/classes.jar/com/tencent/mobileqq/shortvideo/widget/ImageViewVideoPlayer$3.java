@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.widget;
 
-import bcmx;
+import bdfp;
 
 class ImageViewVideoPlayer$3
   implements Runnable

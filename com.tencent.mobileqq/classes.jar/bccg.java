@@ -1,745 +1,292 @@
-import KQQ.PluginInfo;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.gamecenter.appointment.GameCenterCheck;
-import com.tencent.gamecenter.appointment.GameCenterReceiver;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.data.GameNoticeCenter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.servlet.GameCenterManagerImp.1;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11c.MsgBody;
 
 public class bccg
-  implements bmxp, Manager
+  extends BaseAdapter
 {
-  public static ConcurrentHashMap<String, Boolean> a;
-  protected static byte[] a;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private aurw jdField_a_of_type_Aurw;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private GameNoticeCenter jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
-  private HashMap<Long, bcci> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, Integer> b;
+  private List<AssociateSearchWordsFragment.AssociateItem> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public bccg(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("gamecenter_prefername", 0);
-    d();
-    a();
-    this.jdField_a_of_type_Aurw = new aurw(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter = new GameNoticeCenter(paramQQAppInterface);
-    bmxq.a().a(this);
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterManagerImp", 2, "loadGameCenterUnread.");
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.b = new HashMap();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    if (!TextUtils.isEmpty(str1))
-    {
-      Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("gc_pluginid" + str1, null);
-      if (localObject != null)
-      {
-        localObject = ((String)localObject).split("&");
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          int i = 0;
-          for (;;)
-          {
-            if (i >= localObject.length) {
-              return;
-            }
-            String str2 = localObject[i];
-            try
-            {
-              long l = Long.parseLong(str2);
-              if (l > 0L)
-              {
-                bcci localbcci = new bcci(this);
-                localbcci.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("gc_unread" + str1 + "_" + str2, 0L);
-                localbcci.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("gc_newmsg" + str1 + "_" + str2, false);
-                localbcci.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("gc_redpoint" + str1 + "_" + str2, false);
-                localbcci.c = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("gc_tab" + str1 + "_" + str2, false);
-                localbcci.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("gc_text" + str1 + "_" + str2, "");
-                localbcci.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("gc_icon" + str1 + "_" + str2, "");
-                localbcci.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("gc_type" + str1 + "_" + str2, -1);
-                this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
-                this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), localbcci);
-              }
-            }
-            catch (Exception localException)
-            {
-              label501:
-              break label501;
-            }
-            i += 1;
-          }
-        }
-      }
-    }
-  }
-  
-  private void e()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilHashMap != null))
-    {
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      String str1 = "";
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        long l = ((Long)localIterator.next()).longValue();
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(l)))
-        {
-          if (str1.length() > 0) {}
-          for (str1 = str1 + "&" + l;; str1 = str1 + l)
-          {
-            bcci localbcci = (bcci)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l));
-            localEditor.putLong("gc_unread" + str2 + "_" + l, localbcci.jdField_a_of_type_Long);
-            localEditor.putBoolean("gc_newmsg" + str2 + "_" + l, localbcci.jdField_a_of_type_Boolean);
-            localEditor.putBoolean("gc_redpoint" + str2 + "_" + l, localbcci.jdField_b_of_type_Boolean);
-            localEditor.putBoolean("gc_tab" + str2 + "_" + l, localbcci.c);
-            localEditor.putString("gc_text" + str2 + "_" + l, localbcci.jdField_a_of_type_JavaLangString);
-            localEditor.putString("gc_icon" + str2 + "_" + l, localbcci.jdField_b_of_type_JavaLangString);
-            localEditor.putInt("gc_type" + str2 + "_" + l, localbcci.jdField_a_of_type_Int);
-            break;
-          }
-        }
-      }
-      localEditor.putString("gc_pluginid" + str2, str1);
-      localEditor.commit();
-    }
-  }
-  
-  public int a(String paramString)
-  {
-    if (this.b.containsKey(paramString)) {
-      return ((Integer)this.b.get(paramString)).intValue();
-    }
-    return -1;
-  }
-  
-  public aurw a()
-  {
-    return this.jdField_a_of_type_Aurw;
-  }
-  
-  public GameNoticeCenter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter;
-  }
-  
-  public void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    Object localObject2 = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir(), "BusinessInfoCheckUpdateItem_new_1_" + (String)localObject1);
-    if ((!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterManagerImp", 2, "BusinessInfoCheckUpdateItem pb file does not exist,uin=" + (String)localObject1);
-      }
-    }
-    for (;;)
-    {
-      return;
-      Boolean localBoolean = (Boolean)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
-      if ((localBoolean == null) || (!localBoolean.booleanValue()))
-      {
-        jdField_a_of_type_ArrayOfByte = null;
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        jdField_a_of_type_ArrayOfByte = bgmg.a((File)localObject2);
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject1, Boolean.valueOf(true));
-      }
-      localObject2 = jdField_a_of_type_ArrayOfByte;
-      if (localObject2 == null)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("GameCenterManagerImp", 2, "Can not translate BusinessInfoCheckUpdateItem pb file to byte");
-        return;
-      }
-      this.b.clear();
-      try
-      {
-        localObject1 = new BusinessInfoCheckUpdate.TimeRspBody();
-        ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).mergeFrom((byte[])localObject2);
-        int i = 0;
-        while (i < ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgAppInfo.size())
-        {
-          localObject2 = (BusinessInfoCheckUpdate.AppInfo)((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgAppInfo.get(i);
-          if (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() != 0) {
-            this.b.put(((BusinessInfoCheckUpdate.AppInfo)localObject2).path.get(), Integer.valueOf(((BusinessInfoCheckUpdate.AppInfo)localObject2).type.get()));
-          }
-          i += 1;
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2)
+  public bccg(List<AssociateSearchWordsFragment.AssociateItem> paramList)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong1)))
-    {
-      localObject = (bcci)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
-      ((bcci)localObject).jdField_a_of_type_Boolean = paramBoolean;
-      ((bcci)localObject).jdField_a_of_type_Long = paramLong2;
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), localObject);
-      e();
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bccj.class);
-      ((NewIntent)localObject).setAction("gc_refresh_ui");
-      if ((paramLong2 <= 0L) && (!paramBoolean)) {
-        break label140;
-      }
-      if (paramLong2 <= 0L) {
-        break label127;
-      }
-      ((NewIntent)localObject).putExtra("gc_notify_type", 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-      label127:
-      ((NewIntent)localObject).putExtra("gc_notify_type", 1);
-      continue;
-      label140:
-      ((NewIntent)localObject).putExtra("gc_notify_type", 3);
-    }
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void a(String paramString)
+  public void a(List<AssociateSearchWordsFragment.AssociateItem> paramList)
   {
-    if (this.b.containsKey(paramString)) {
-      this.b.remove(paramString);
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    super.notifyDataSetChanged();
   }
   
-  public void a(String paramString, JSONArray paramJSONArray)
+  public int getCount()
   {
-    int j = 0;
-    int i;
-    if (paramJSONArray != null)
-    {
-      i = paramJSONArray.length();
-      if (i >= 1) {
-        break label23;
-      }
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    label23:
-    JSONArray localJSONArray;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      localJSONArray = paramJSONArray;
-      if ("APPOINTMENT_TGPA_LIST".equals(paramString))
-      {
-        localJSONArray = new JSONArray();
-        while (j < i)
-        {
-          JSONObject localJSONObject = paramJSONArray.optJSONObject(j);
-          if ((localJSONObject != null) && (localJSONObject.optInt("package_type") == 1)) {
-            localJSONArray.put(localJSONObject);
-          }
-          j += 1;
-        }
-      }
-    } while (localJSONArray.length() <= 0);
-    aceh.a(paramString, localJSONArray.toString());
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void a(JSONArray paramJSONArray)
+  public Object getItem(int paramInt)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() < 1)) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
     }
-    for (;;)
-    {
-      String[] arrayOfString;
-      int i;
-      String str1;
-      try
-      {
-        arrayOfString = aceh.a("APPOINTMENT_DOWNLOAD_LIST").split("\\|");
-        i = 0;
-        if (i >= paramJSONArray.length()) {
-          break;
-        }
-        JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-        if (localJSONObject == null) {
-          break label282;
-        }
-        str1 = localJSONObject.optString("appid");
-        String str2 = localJSONObject.optString("packageName");
-        boolean bool = localJSONObject.optBoolean("isRes");
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-          break label282;
-        }
-        aceh.a("APPID_PKGNAME_" + str1, str2);
-        if (bool)
-        {
-          aceh.c(str1, "APPOINTMENT_RES_LIST");
-          aceh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "426", "202238", str1, "42601", "1", "116");
-        }
-      }
-      catch (Exception paramJSONArray)
-      {
-        paramJSONArray.printStackTrace();
-        return;
-      }
-      int j = 0;
-      if (j < arrayOfString.length) {
-        if ((TextUtils.isEmpty(arrayOfString[j])) || (TextUtils.isEmpty(str1)) || (!arrayOfString[j].equals(str1))) {}
-      }
-      for (j = 1;; j = 0)
-      {
-        if (j != 0) {
-          break label282;
-        }
-        aceh.c(str1, "APPOINTMENT_LIST");
-        aceh.a(str1, paramJSONArray.get(i).toString(), "APPOINT_APPID_DETAIL_");
-        aceh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "426", "202238", str1, "42601", "1", "116");
-        break label282;
-        j += 1;
-        break;
-      }
-      label282:
-      i += 1;
-    }
+    return (AssociateSearchWordsFragment.AssociateItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public void a(MsgBody paramMsgBody)
+  public long getItemId(int paramInt)
   {
-    long l1 = -1L;
-    if (paramMsgBody == null) {}
-    int i;
-    do
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    switch (((AssociateSearchWordsFragment.AssociateItem)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int)
     {
-      return;
-      i = paramMsgBody.uint32_cmd.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterManagerImp", 2, "onReceivePushMsg cmd=" + i);
-      }
-      switch (i)
+    default: 
+      return 0;
+    case 2: 
+    case 4: 
+    case 5: 
+      return 3;
+    case 3: 
+      return 2;
+    case 6: 
+      return 5;
+    case 0: 
+      return 1;
+    }
+    return 4;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AssociateSearchWordsFragment.AssociateItem localAssociateItem = (AssociateSearchWordsFragment.AssociateItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.getActivity();
+    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
+    Object localObject1 = paramView;
+    Object localObject3;
+    if (paramView == null)
+    {
+      localObject3 = new bcci(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment);
+      localObject1 = new LinearLayout((Context)localObject2);
+      ((LinearLayout)localObject1).setPadding(bhgr.a((Context)localObject2, 12.0F), 0, bhgr.a((Context)localObject2, 12.0F), 0);
+      ((LinearLayout)localObject1).setOrientation(1);
+    }
+    switch (getItemViewType(paramInt))
+    {
+    default: 
+      paramView.setTag(localObject3);
+      paramView.setBackgroundResource(2130842305);
+      localObject1 = paramView;
+      paramView = (bcci)((View)localObject1).getTag();
+      switch (getItemViewType(paramInt))
       {
       default: 
-        return;
-      case 1: 
-        c();
-        aceh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "426", "205581", "", "42601", "1", "116");
-        return;
-      case 2: 
-        try
-        {
-          long l2 = new JSONObject(paramMsgBody.bytes_data.get().toStringUtf8()).optLong("version", -1L);
-          l1 = l2;
+        label200:
+        if (bool) {
+          ((View)localObject1).setBackgroundResource(2130839394);
         }
-        catch (JSONException paramMsgBody)
-        {
-          for (;;)
-          {
-            paramMsgBody.printStackTrace();
-          }
-        }
-        bmxq.a().a(true, l1);
-        return;
+        break;
       }
-      try
-      {
-        i = new JSONObject(paramMsgBody.bytes_data.get().toStringUtf8()).optInt("subCmd");
-        paramMsgBody = new bcch(this, i);
-        if (i == 1)
-        {
-          acex.a().a(paramMsgBody);
-          return;
-        }
-      }
-      catch (JSONException paramMsgBody)
-      {
-        QLog.e("GameCenterManagerImp", 1, "onReceivePushMsg screenshot push e=" + paramMsgBody.toString());
-        return;
-      }
-      if (i == 2)
-      {
-        acex.a().b(paramMsgBody);
-        return;
-      }
-    } while (i != 3);
-    acex.a().c(paramMsgBody);
-  }
-  
-  public boolean a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))) {
-      return ((bcci)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Boolean;
+      break;
     }
-    return false;
-  }
-  
-  public boolean a(List<PluginInfo> paramList)
-  {
-    boolean bool1;
-    int i;
-    int j;
-    if ((paramList != null) && (paramList.size() > 0))
+    for (;;)
     {
-      bool1 = false;
-      i = -1;
-      int m = 0;
-      if (m < paramList.size())
+      ((View)localObject1).setTag(2131381110, Integer.valueOf(paramInt));
+      ((View)localObject1).setTag(2131381109, localAssociateItem);
+      paramView = (View)localObject1;
+      for (;;)
       {
-        PluginInfo localPluginInfo = (PluginInfo)paramList.get(m);
-        boolean bool3 = bool1;
-        int k = i;
-        if (localPluginInfo != null) {
-          if (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(localPluginInfo.Id)) != null) {}
-        }
-        bcci localbcci;
-        boolean bool2;
-        label296:
-        do
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return localObject1;
+        paramView = new TextView((Context)localObject2);
+        paramView.setBackgroundColor(Color.parseColor("#F7F7F9"));
+        paramView.setHeight(bhgr.a((Context)localObject2, 10.0F));
+        Object localObject4 = new LinearLayout.LayoutParams(-1, -2);
+        ((bcci)localObject3).c = paramView;
+        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject4);
+        paramView = new TextView((Context)localObject2);
+        paramView.setTextColor(((Context)localObject2).getResources().getColor(2131167070));
+        paramView.setTextSize(1, 15.0F);
+        paramView.setGravity(16);
+        paramView.setIncludeFontPadding(false);
+        paramView.setHeight(((Context)localObject2).getResources().getDimensionPixelSize(2131298396));
+        paramView.setPadding(bhgr.a((Context)localObject2, 12.0F), 0, bhgr.a((Context)localObject2, 12.0F), 0);
+        ((LinearLayout)localObject1).addView(paramView, new LinearLayout.LayoutParams(-1, -2));
+        ((LinearLayout)localObject1).setClickable(false);
+        ((LinearLayout)localObject1).setFocusable(false);
+        ((LinearLayout)localObject1).setPadding(0, 0, 0, 0);
+        ((bcci)localObject3).a = paramView;
+        paramView = (View)localObject1;
+        break;
+        paramView = new TextView((Context)localObject2);
+        paramView.setGravity(19);
+        paramView.setTextColor(((Context)localObject2).getResources().getColor(2131166990));
+        label479:
+        Object localObject5;
+        if (getItemViewType(paramInt) == 5)
         {
-          m += 1;
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.d("GameCenterManagerImp", 2, "setNewUnread.i=" + m + ",plugin:" + localPluginInfo.toString());
+          paramView.setTextSize(1, 16.0F);
+          paramView.setSingleLine();
+          paramView.setEllipsize(TextUtils.TruncateAt.END);
+          paramView.setIncludeFontPadding(false);
+          if (getItemViewType(paramInt) != 5) {
+            break label787;
           }
-          localbcci = (bcci)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(localPluginInfo.Id));
-          if (QLog.isColorLevel()) {
-            QLog.d("GameCenterManagerImp", 2, "setNewUnread.i=" + m + ",before unreaddata:" + localbcci.toString());
+          localObject4 = new LinearLayout((Context)localObject2);
+          ((LinearLayout)localObject4).setOrientation(0);
+          ((LinearLayout)localObject1).addView((View)localObject4, new LinearLayout.LayoutParams(-1, bhgr.a((Context)localObject2, 52.0F)));
+          if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, "")) {
+            break label756;
           }
-          if (localPluginInfo.Count > 0L)
-          {
-            j = i;
-            if (localbcci.jdField_a_of_type_Long != localPluginInfo.Count)
-            {
-              bool2 = true;
-              bool1 = bool2;
-              j = i;
-              if (localPluginInfo.Tab)
-              {
-                j = 0;
-                bool1 = bool2;
-              }
-            }
-            localbcci.jdField_a_of_type_Long = localPluginInfo.Count;
-            localbcci.jdField_a_of_type_JavaLangString = localPluginInfo.Text;
-            localbcci.jdField_a_of_type_Boolean = false;
-            localbcci.jdField_b_of_type_Boolean = false;
-            if (TextUtils.isEmpty(localbcci.jdField_a_of_type_JavaLangString))
-            {
-              localbcci.jdField_a_of_type_Int = 1;
-              localbcci.c = localPluginInfo.Tab;
-              bool2 = bool1;
-            }
+          localObject5 = ((Context)localObject2).getResources().getDrawable(2130850339);
+          ((Drawable)localObject5).setColorFilter(BaseApplicationImpl.sApplication.getResources().getColor(2131166915), PorterDuff.Mode.SRC_ATOP);
+          paramView.setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject5, null, null, null);
+          label598:
+          paramView.setCompoundDrawablePadding(bhgr.a((Context)localObject2, 8.0F));
+          localObject5 = new LinearLayout.LayoutParams(-1, -1);
+          ((LinearLayout.LayoutParams)localObject5).weight = 1.0F;
+          ((LinearLayout)localObject4).addView(paramView, (ViewGroup.LayoutParams)localObject5);
+          localObject5 = new ImageView((Context)localObject2);
+          if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, "")) {
+            break label776;
           }
-          do
-          {
-            bool3 = bool2;
-            k = j;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("GameCenterManagerImp", 2, "setNewUnread.i=" + m + ",unreaddata:" + localbcci.toString());
-              k = j;
-              bool3 = bool2;
-            }
-            bool1 = bool3;
-            i = k;
-            break;
-            localbcci.jdField_a_of_type_Int = 4;
-            break label296;
-            if (localPluginInfo.Flag)
-            {
-              if (localbcci.jdField_a_of_type_Long > 0L) {
-                break;
-              }
-              j = i;
-              if (!localbcci.jdField_a_of_type_Boolean)
-              {
-                bool2 = true;
-                bool1 = bool2;
-                j = i;
-                if (localPluginInfo.Tab) {
-                  if (i != -1)
-                  {
-                    bool1 = bool2;
-                    j = i;
-                    if (i != 4) {}
-                  }
-                  else
-                  {
-                    j = 1;
-                    bool1 = bool2;
-                  }
-                }
-              }
-              localbcci.jdField_a_of_type_Boolean = localPluginInfo.Flag;
-              localbcci.jdField_b_of_type_Boolean = false;
-              localbcci.jdField_a_of_type_Long = 0L;
-              localbcci.jdField_a_of_type_JavaLangString = localPluginInfo.Text;
-              if (TextUtils.isEmpty(localbcci.jdField_a_of_type_JavaLangString)) {}
-              for (localbcci.jdField_a_of_type_Int = 3;; localbcci.jdField_a_of_type_Int = 6)
-              {
-                localbcci.c = localPluginInfo.Tab;
-                bool2 = bool1;
-                break;
-              }
-            }
-            bool2 = bool1;
-            j = i;
-          } while (!localPluginInfo.RedPoint);
-        } while ((localbcci.jdField_a_of_type_Long > 0L) || ((localPluginInfo.Id == 769L) && (localbcci.jdField_a_of_type_Boolean)));
-        j = i;
-        if (!localbcci.jdField_b_of_type_Boolean)
-        {
-          bool2 = true;
-          bool1 = bool2;
-          j = i;
-          if (i == -1)
-          {
-            bool1 = bool2;
-            j = i;
-            if (localPluginInfo.Tab)
-            {
-              j = 4;
-              bool1 = bool2;
-            }
-          }
-        }
-        localbcci.jdField_b_of_type_Boolean = localPluginInfo.RedPoint;
-        localbcci.jdField_a_of_type_Boolean = false;
-        localbcci.jdField_a_of_type_Long = 0L;
-        localbcci.jdField_a_of_type_JavaLangString = localPluginInfo.Text;
-        localbcci.jdField_b_of_type_JavaLangString = localPluginInfo.PicUrl;
-        if (TextUtils.isEmpty(localbcci.jdField_a_of_type_JavaLangString)) {
-          if (TextUtils.isEmpty(localbcci.jdField_b_of_type_JavaLangString)) {
-            localbcci.jdField_a_of_type_Int = 2;
-          }
+          ((ImageView)localObject5).setImageResource(2130850344);
+          ((ImageView)localObject5).setColorFilter(BaseApplicationImpl.sApplication.getResources().getColor(2131166915));
+          label685:
+          ((LinearLayout)localObject4).addView((View)localObject5, new LinearLayout.LayoutParams(-2, -1));
+          ((ImageView)localObject5).setOnClickListener(new bcch(this, localAssociateItem.jdField_a_of_type_JavaLangString, paramInt));
         }
         for (;;)
         {
-          localbcci.c = localPluginInfo.Tab;
-          bool2 = bool1;
+          ((bcci)localObject3).a = paramView;
+          ((View)localObject1).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
+          paramView = (View)localObject1;
           break;
-          localbcci.jdField_a_of_type_Int = 7;
-          continue;
-          localbcci.jdField_a_of_type_Int = 5;
+          paramView.setTextSize(1, 18.0F);
+          break label479;
+          label756:
+          paramView.setCompoundDrawablesWithIntrinsicBounds(((Context)localObject2).getResources().getDrawable(2130850339), null, null, null);
+          break label598;
+          label776:
+          ((ImageView)localObject5).setImageResource(2130850344);
+          break label685;
+          label787:
+          paramView.setCompoundDrawablesWithIntrinsicBounds(((Context)localObject2).getResources().getDrawable(2130850338), null, null, null);
+          paramView.setCompoundDrawablePadding(bhgr.a((Context)localObject2, 4.0F));
+          localObject4 = new LinearLayout.LayoutParams(-1, -2);
+          ((LinearLayout.LayoutParams)localObject4).setMargins(0, bhgr.a((Context)localObject2, 16.0F), 0, bhgr.a((Context)localObject2, 16.0F));
+          ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject4);
         }
-      }
-      e();
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterManagerImp", 2, "setNewUnread.changeType=" + i + ",ischange:" + bool1);
-      }
-      if (i != -1)
-      {
-        paramList = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bccj.class);
-        paramList.setAction("gc_refresh_ui");
-        paramList.putExtra("gc_notify_type", i);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramList);
-        j = i;
-      }
-    }
-    for (;;)
-    {
-      if (j != -1)
-      {
-        return true;
-        j = i;
-        if (bool1)
-        {
-          paramList = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bccj.class);
-          paramList.setAction("gc_refresh_ui");
-          paramList.putExtra("gc_notify_type", 3);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramList);
-          j = i;
-        }
-      }
-      else
-      {
-        return false;
-        j = -1;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("check_update_sp_key", 0);
-    int i = localSharedPreferences.getInt("businessinfo_check_update_interval_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 600);
-    int j = localSharedPreferences.getInt("businessinfo_last_check_update_timestamp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    int k = (int)(System.currentTimeMillis() / 1000L);
-    if ((k - j > i) || (k < j)) {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(true, 2);
-    }
-  }
-  
-  public void c()
-  {
-    ThreadManager.excute(new GameCenterManagerImp.1(this), 192, null, false);
-  }
-  
-  public HashSet<String> getFilterCmds()
-  {
-    HashSet localHashSet = new HashSet();
-    localHashSet.add("13625");
-    localHashSet.add("12942");
-    localHashSet.add("13629");
-    return localHashSet;
-  }
-  
-  public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterManagerImp", 2, "onCmdRsp cmd=" + paramString + ",ret=" + paramLong + ",dataJson=" + paramJSONObject);
-    }
-    if ("13625".equals(paramString)) {
-      if ((paramLong != 0L) || (paramJSONObject == null)) {}
-    }
-    do
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GameCenterManagerImp", 2, "onGetAutoDownloadApk data=" + paramJSONObject.toString());
-        }
-        aceh.a("APPOINTMENT_LASTGET_TIME", NetConnInfoCenter.getServerTime());
-        aceh.a("APPOINTMENT_LOAD_GAP", paramJSONObject.optLong("load_gap"));
-        aceh.a(paramJSONObject.optLong("res_valid") * 1000L);
-        a(paramJSONObject.optJSONArray("pre_download_list"));
-        a("APPOINTMENT_UPDATE_LIST", paramJSONObject.optJSONArray("pre_update_list"));
-        a("APPOINTMENT_TGPA_LIST", paramJSONObject.optJSONArray("tgpa_apk_list"));
-        if (GameCenterCheck.a())
-        {
-          aced.a();
-          GameCenterCheck.b();
-          GameCenterCheck.a();
-        }
-        return;
-      }
-      catch (Throwable paramIntent)
-      {
-        QLog.e("GameCenterManagerImp", 1, "onGetAutoDownloadApk error=" + paramIntent.toString());
-        return;
-      }
-      if (!"12942".equals(paramString)) {
+        paramView = new TextView((Context)localObject2);
+        paramView.setTextColor(((Context)localObject2).getResources().getColor(2131166990));
+        paramView.setTextSize(1, 18.0F);
+        paramView.setIncludeFontPadding(false);
+        ((LinearLayout)localObject1).addView(paramView);
+        ((bcci)localObject3).a = paramView;
+        paramView = new TextView((Context)localObject2);
+        paramView.setTextColor(((Context)localObject2).getResources().getColor(2131167070));
+        paramView.setTextSize(1, 14.0F);
+        paramView.setIncludeFontPadding(false);
+        ((LinearLayout)localObject1).addView(paramView);
+        ((bcci)localObject3).b = paramView;
+        ((View)localObject1).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramView = (View)localObject1;
         break;
+        paramView = new TextView((Context)localObject2);
+        paramView.setHeight(1);
+        ((LinearLayout)localObject1).addView(paramView);
+        ((LinearLayout)localObject1).setPadding(bhgr.a((Context)localObject2, 12.0F), 0, 0, 0);
+        ((bcci)localObject3).c = paramView;
+        ((LinearLayout)localObject1).setClickable(false);
+        ((LinearLayout)localObject1).setFocusable(false);
+        paramView = (View)localObject1;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.uniteSearch.AssociateSearchWordsFragment", 2, "SearchAssociatedWordAdapter.getView() itemType not support. value=" + getItemViewType(paramInt));
+        }
+        localObject1 = null;
       }
-    } while ((paramLong != 0L) || (paramJSONObject == null));
-    for (;;)
-    {
+      if (paramInt == 0) {
+        paramView.c.setVisibility(8);
+      }
       for (;;)
       {
-        try
-        {
-          paramIntent = paramJSONObject.optJSONArray("pkg_list");
-          if (paramIntent == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("GameCenterManagerImp", 2, "onGetAutoDownloadRes data=" + paramIntent.toString());
-          }
-          paramString = new JSONArray();
-          if (i < paramIntent.length())
-          {
-            paramJSONObject = paramIntent.getJSONObject(i);
-            if (aceh.a(0, paramJSONObject.optString("appid"), paramJSONObject.optString("resName"))) {
-              break label547;
-            }
-            aceh.a(paramJSONObject.toString(), false, 1);
-            paramString.put(paramJSONObject.optString("resName"));
-            break label547;
-          }
-          if (paramString.length() <= 0) {
-            break;
-          }
-          bmxq.a().a(null, paramString);
-          return;
-        }
-        catch (Throwable paramIntent)
-        {
-          QLog.e("GameCenterManagerImp", 1, "onGetAutoDownloadRes error =" + paramIntent.toString());
-          return;
-        }
-        if ((!"13629".equals(paramString)) || (paramLong != 0L) || (paramJSONObject == null)) {
-          break;
-        }
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("GameCenterManagerImp", 2, "onGetUnpackApk data=" + paramJSONObject.toString());
-          }
-          a("UNPACK_APK_LIST", paramJSONObject.optJSONArray("tgpa_unpack_list"));
-          if (!GameCenterCheck.a()) {
-            break;
-          }
-          aced.a();
-          GameCenterCheck.a();
-          return;
-        }
-        catch (Throwable paramIntent)
-        {
-          QLog.e("GameCenterManagerImp", 1, "onGetUnpackApk error=" + paramIntent.toString());
-          return;
+        paramView.a.setText(localAssociateItem.jdField_a_of_type_JavaLangString);
+        break;
+        paramView.c.setVisibility(0);
+        if (bool) {
+          paramView.c.setBackgroundColor(((Context)localObject2).getResources().getColor(2131166928));
+        } else {
+          paramView.c.setBackgroundColor(((Context)localObject2).getResources().getColor(2131166927));
         }
       }
-      label547:
-      i += 1;
+      if (this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.b)
+      {
+        if (getItemViewType(paramInt) == 2)
+        {
+          localObject2 = bcni.a(paramView.a, 2.147484E+009F, 1, localAssociateItem.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.jdField_a_of_type_JavaLangString, false, false, true);
+          paramView.a.setText((CharSequence)localObject2);
+          break label200;
+        }
+        localObject2 = bcni.a(localAssociateItem.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.jdField_a_of_type_JavaLangString, false);
+        paramView.a.setText((CharSequence)localObject2);
+        break label200;
+      }
+      paramView.a.setText(localAssociateItem.jdField_a_of_type_JavaLangString);
+      break label200;
+      paramView.a.setText(localAssociateItem.jdField_a_of_type_JavaLangString);
+      paramView.b.setText(localAssociateItem.e);
+      if (TextUtils.isEmpty(localAssociateItem.jdField_a_of_type_JavaLangString))
+      {
+        paramView.a.setVisibility(8);
+        ((LinearLayout.LayoutParams)paramView.b.getLayoutParams()).setMargins(0, bhgr.a((Context)localObject2, 16.0F), 0, bhgr.a((Context)localObject2, 16.0F));
+        break label200;
+      }
+      paramView.a.setVisibility(0);
+      localObject3 = (LinearLayout.LayoutParams)paramView.a.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject3).setMargins(0, bhgr.a((Context)localObject2, 12.0F), 0, 0);
+      paramView.a.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      localObject3 = (LinearLayout.LayoutParams)paramView.b.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject3).setMargins(0, bhgr.a((Context)localObject2, 5.0F), 0, bhgr.a((Context)localObject2, 12.0F));
+      paramView.b.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      break label200;
+      if (bool)
+      {
+        paramView.c.setBackgroundColor(((Context)localObject2).getResources().getColor(2131166928));
+        break label200;
+      }
+      paramView.c.setBackgroundColor(((Context)localObject2).getResources().getColor(2131166927));
+      break label200;
+      ((View)localObject1).setBackgroundResource(2130839393);
     }
   }
   
-  public void onDestroy()
+  public int getViewTypeCount()
   {
-    bmxq.a().b(this);
-    GameCenterReceiver.b();
+    return 6;
   }
 }
 

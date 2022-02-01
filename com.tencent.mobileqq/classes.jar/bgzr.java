@@ -1,14 +1,24 @@
-class bgzr<E>
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+
+public class bgzr
+  implements bdxo
 {
-  public bgzq<E> a;
-  public Object a;
-  public String a;
+  public bgzr(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public bgzr(bgzq<E> parambgzq, Object paramObject, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_Bgzq = parambgzq;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
+      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
+    }
+    for (;;)
+    {
+      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
+        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
+      }
+      return;
+      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
+    }
   }
 }
 

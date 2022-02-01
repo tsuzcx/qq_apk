@@ -1,19 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class plp
-  extends BroadcastReceiver
+  implements rwj
 {
-  public plp(KandianMergeManager paramKandianMergeManager) {}
+  public plp(VideoView paramVideoView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    paramContext = pmh.a().a();
-    if (paramContext != null) {
-      paramContext.a();
+    if (paramBoolean)
+    {
+      QLog.d("gifvideo.VideoView", 1, "install success");
+      VideoView.access$000(this.a, 2);
+      VideoView.access$100(this.a);
+      return;
     }
+    QLog.d("gifvideo.VideoView", 1, "install fail");
+    VideoView.access$000(this.a, -1);
   }
 }
 

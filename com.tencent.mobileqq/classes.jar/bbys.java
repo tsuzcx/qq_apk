@@ -1,25 +1,47 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.KDSearchHistoryFlowLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ThemeImageView;
 
-public class bbys
+class bbys
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
+  bbys(bbyl parambbyl) {}
   
-  public bbys(bbyp parambbyp, String paramString, int paramInt, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Int = MessageHandler.e;
+    boolean bool;
+    if (bbyl.a(this.a) != null)
+    {
+      KDSearchHistoryFlowLayout localKDSearchHistoryFlowLayout = bbyl.a(this.a);
+      if (bbyl.a(this.a).a) {
+        break label111;
+      }
+      bool = true;
+      localKDSearchHistoryFlowLayout.a = bool;
+      if (!bbyl.a(this.a).a) {
+        break label116;
+      }
+      bbyl.a(this.a).setImageResource(2130846033);
+    }
+    for (;;)
+    {
+      bbyl.a(this.a).a(bbyl.a(this.a).a(), bbyl.a(this.a).a);
+      bbyl.a(this.a).notifyDataSetChanged();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label111:
+      bool = false;
+      break;
+      label116:
+      bbyl.a(this.a).setImageResource(2130846034);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbys
  * JD-Core Version:    0.7.0.1
  */

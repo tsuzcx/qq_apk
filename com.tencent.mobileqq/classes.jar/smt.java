@@ -1,12 +1,18 @@
-public abstract interface smt
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+
+public class smt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public smt(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void setIsResume(boolean paramBoolean);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
+  }
 }
 
 

@@ -14,11 +14,11 @@ import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import vsk;
-import vuu;
-import vuv;
-import vuw;
-import vux;
+import vve;
+import vxx;
+import vxy;
+import vxz;
+import vya;
 
 public class QCircleAsyncTextView
   extends AsyncRichTextView
@@ -83,14 +83,14 @@ public class QCircleAsyncTextView
     }
   }
   
-  public void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, vux paramvux)
+  public void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, vya paramvya)
   {
     if ((TextUtils.isEmpty(paramSpannableStringBuilder)) || (paramInt2 < paramInt1) || (paramSpannableStringBuilder.length() < paramInt2)) {
       return;
     }
-    paramvux = new vuu(this, paramvux);
-    setHighlightColor(getResources().getColor(2131167224));
-    paramSpannableStringBuilder.setSpan(paramvux, paramInt1, paramInt2, 33);
+    paramvya = new vxx(this, paramvya);
+    setHighlightColor(getResources().getColor(2131167247));
+    paramSpannableStringBuilder.setSpan(paramvya, paramInt1, paramInt2, 33);
   }
   
   public void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt, Drawable paramDrawable)
@@ -109,7 +109,7 @@ public class QCircleAsyncTextView
   
   public MovementMethod getDefaultMovementMethod()
   {
-    return vsk.a();
+    return vve.a();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -132,7 +132,7 @@ public class QCircleAsyncTextView
     return super.performClick();
   }
   
-  public void setAtSpan(SpannableStringBuilder paramSpannableStringBuilder, vuw paramvuw)
+  public void setAtSpan(SpannableStringBuilder paramSpannableStringBuilder, vxz paramvxz)
   {
     if (TextUtils.isEmpty(paramSpannableStringBuilder)) {}
     for (;;)
@@ -159,7 +159,7 @@ public class QCircleAsyncTextView
           str2 = "@" + localFriend.mName;
           paramSpannableStringBuilder.replace(j, k - i, str2);
           i += str1.length() - str2.length();
-          a(paramSpannableStringBuilder, j, str2.length() + j, new vuv(this, paramvuw, localFriend));
+          a(paramSpannableStringBuilder, j, str2.length() + j, new vxy(this, paramvxz, localFriend));
         }
         return;
       }
@@ -175,10 +175,10 @@ public class QCircleAsyncTextView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setRichText(CharSequence paramCharSequence, vuw paramvuw)
+  public void setRichText(CharSequence paramCharSequence, vxz paramvxz)
   {
     paramCharSequence = new SpannableStringBuilder(paramCharSequence);
-    setAtSpan(paramCharSequence, paramvuw);
+    setAtSpan(paramCharSequence, paramvxz);
     setText(paramCharSequence);
   }
 }

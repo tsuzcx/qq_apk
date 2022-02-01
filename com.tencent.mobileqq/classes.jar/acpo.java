@@ -1,147 +1,38 @@
-public class acpo
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import java.lang.ref.WeakReference;
+
+class acpo
+  extends LinearLayout
 {
-  private static volatile acpo jdField_a_of_type_Acpo;
-  acpr jdField_a_of_type_Acpr;
-  acpv jdField_a_of_type_Acpv;
-  acpw jdField_a_of_type_Acpw;
-  acpx jdField_a_of_type_Acpx;
-  acpy jdField_a_of_type_Acpy;
-  acpz jdField_a_of_type_Acpz;
-  acqa jdField_a_of_type_Acqa;
-  acqc jdField_a_of_type_Acqc;
-  acqd jdField_a_of_type_Acqd;
-  acqi jdField_a_of_type_Acqi;
-  acqk jdField_a_of_type_Acqk;
-  acql jdField_a_of_type_Acql;
-  acqn jdField_a_of_type_Acqn;
-  acqo jdField_a_of_type_Acqo;
-  acqp jdField_a_of_type_Acqp;
-  acqq jdField_a_of_type_Acqq;
-  acqt jdField_a_of_type_Acqt;
-  acqu jdField_a_of_type_Acqu;
-  acqv jdField_a_of_type_Acqv;
-  acqw jdField_a_of_type_Acqw;
+  private acxm jdField_a_of_type_Acxm;
+  private acxo jdField_a_of_type_Acxo = new acpp(this);
   
-  public static acpo a()
+  public acpo(Context paramContext, String paramString)
   {
-    if (jdField_a_of_type_Acpo == null) {}
-    try
+    super(paramContext);
+    setGravity(17);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setStroke(1, Color.parseColor("#EFEFEF"));
+    if (Build.VERSION.SDK_INT >= 16) {
+      setBackground(localGradientDrawable);
+    }
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      if (jdField_a_of_type_Acpo == null) {
-        jdField_a_of_type_Acpo = new acpo();
-      }
-      return jdField_a_of_type_Acpo;
+      acvc.d("GdtBannerImageView", "constructor");
+      return;
     }
-    finally {}
-  }
-  
-  public acqj a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 6: 
-    default: 
-      return null;
-    case 16: 
-      if (this.jdField_a_of_type_Acqv == null) {
-        this.jdField_a_of_type_Acqv = new acqv();
-      }
-      return this.jdField_a_of_type_Acqv;
-    case 17: 
-      if (this.jdField_a_of_type_Acqa == null) {
-        this.jdField_a_of_type_Acqa = new acqa();
-      }
-      return this.jdField_a_of_type_Acqa;
-    case 4: 
-      if (this.jdField_a_of_type_Acqn == null) {
-        this.jdField_a_of_type_Acqn = new acqn();
-      }
-      return this.jdField_a_of_type_Acqn;
-    case 5: 
-      if (this.jdField_a_of_type_Acql == null) {
-        this.jdField_a_of_type_Acql = new acql();
-      }
-      return this.jdField_a_of_type_Acql;
-    case 15: 
-      if (this.jdField_a_of_type_Acpv == null) {
-        this.jdField_a_of_type_Acpv = new acpv();
-      }
-      return this.jdField_a_of_type_Acpv;
-    case 7: 
-      if (this.jdField_a_of_type_Acpy == null) {
-        this.jdField_a_of_type_Acpy = new acpy();
-      }
-      return this.jdField_a_of_type_Acpy;
-    case 8: 
-      if (this.jdField_a_of_type_Acqo == null) {
-        this.jdField_a_of_type_Acqo = new acqo();
-      }
-      return this.jdField_a_of_type_Acqo;
-    case 9: 
-      if (this.jdField_a_of_type_Acpx == null) {
-        this.jdField_a_of_type_Acpx = new acpx();
-      }
-      return this.jdField_a_of_type_Acpx;
-    case 10: 
-      if (this.jdField_a_of_type_Acqt == null) {
-        this.jdField_a_of_type_Acqt = new acqt();
-      }
-      return this.jdField_a_of_type_Acqt;
-    case 11: 
-      if (this.jdField_a_of_type_Acqu == null) {
-        this.jdField_a_of_type_Acqu = new acqu();
-      }
-      return this.jdField_a_of_type_Acqu;
-    case 12: 
-      if (this.jdField_a_of_type_Acqc == null) {
-        this.jdField_a_of_type_Acqc = new acqc();
-      }
-      return this.jdField_a_of_type_Acqc;
-    case 13: 
-      if (this.jdField_a_of_type_Acpr == null) {
-        this.jdField_a_of_type_Acpr = new acpr();
-      }
-      return this.jdField_a_of_type_Acpr;
-    case 14: 
-      if (this.jdField_a_of_type_Acpz == null) {
-        this.jdField_a_of_type_Acpz = new acpz();
-      }
-      return this.jdField_a_of_type_Acpz;
-    case 18: 
-      if (this.jdField_a_of_type_Acqw == null) {
-        this.jdField_a_of_type_Acqw = new acqw();
-      }
-      return this.jdField_a_of_type_Acqw;
-    case 19: 
-      if (this.jdField_a_of_type_Acqi == null) {
-        this.jdField_a_of_type_Acqi = new acqi();
-      }
-      return this.jdField_a_of_type_Acqi;
-    case 20: 
-      if (this.jdField_a_of_type_Acqd == null) {
-        this.jdField_a_of_type_Acqd = new acqd();
-      }
-      return this.jdField_a_of_type_Acqd;
-    case 21: 
-      if (this.jdField_a_of_type_Acpw == null) {
-        this.jdField_a_of_type_Acpw = new acpw();
-      }
-      return this.jdField_a_of_type_Acpw;
-    case 22: 
-      if (this.jdField_a_of_type_Acqq == null) {
-        this.jdField_a_of_type_Acqq = new acqq();
-      }
-      return this.jdField_a_of_type_Acqq;
-    case 23: 
-      if (this.jdField_a_of_type_Acqp == null) {
-        this.jdField_a_of_type_Acqp = new acqp();
-      }
-      return this.jdField_a_of_type_Acqp;
-    }
-    if (this.jdField_a_of_type_Acqk == null) {
-      this.jdField_a_of_type_Acqk = new acqk();
-    }
-    return this.jdField_a_of_type_Acqk;
+    paramContext = new URLImageView(paramContext);
+    addView(paramContext);
+    this.jdField_a_of_type_Acxm = new acxm(paramString, new WeakReference(this.jdField_a_of_type_Acxo));
+    this.jdField_a_of_type_Acxm.a();
+    paramContext.setImageDrawable(this.jdField_a_of_type_Acxm.a());
   }
 }
 

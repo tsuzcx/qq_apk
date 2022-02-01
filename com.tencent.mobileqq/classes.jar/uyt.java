@@ -1,48 +1,35 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import feedcloud.FeedCloudMeta.StDittoFeed;
-import feedcloud.FeedCloudMeta.StFeed;
-import mqq.app.AppRuntime;
-import qqcircle.QQCircleDitto.StCircleDittoDataNew;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-class uyt
-  implements Observer<FeedCloudMeta.StFeed>
+final class uyt
+  implements URLDrawableDownListener
 {
-  uyt(uys paramuys) {}
+  uyt(URLDrawableDownListener paramURLDrawableDownListener, long paramLong, String paramString) {}
   
-  public void a(@Nullable FeedCloudMeta.StFeed paramStFeed)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    boolean bool = true;
-    if (paramStFeed == null)
-    {
-      this.a.a(false);
-      return;
+    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
     }
-    uys.a(this.a, paramStFeed);
-    uys.a(this.a, new QQCircleDitto.StCircleDittoDataNew());
-    vrf.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 1, 0, uys.a(this.a));
-    for (;;)
-    {
-      try
-      {
-        uys.a(this.a).mergeFrom(paramStFeed.dittoFeed.dittoDataNew.get().toByteArray());
-        paramStFeed = this.a;
-        if (uys.a(this.a).multiItemContainter.size() > 0)
-        {
-          paramStFeed.a(bool);
-          return;
-        }
-      }
-      catch (Exception paramStFeed)
-      {
-        paramStFeed.printStackTrace();
-        return;
-      }
-      bool = false;
+    if (this.jdField_a_of_type_Long > 0L) {
+      vts.a("image_load_ret", String.valueOf((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F), "-1", this.jdField_a_of_type_JavaLangString, 5);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramView, paramURLDrawable);
+    }
+    if (this.jdField_a_of_type_Long > 0L) {
+      vts.a("image_load_ret", String.valueOf((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F), "0", this.jdField_a_of_type_JavaLangString, 5);
     }
   }
 }

@@ -1,28 +1,67 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.callback.IVasLog;
 
 public class bieb
+  implements IVasLog
 {
-  public static void a(View paramView)
+  public void d(String paramString1, String paramString2)
   {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.5F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  public static void b(View paramView)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 

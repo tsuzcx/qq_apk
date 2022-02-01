@@ -9,18 +9,18 @@ import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ScrollView;
 import android.widget.Scroller;
-import bobk;
-import bobl;
-import bobm;
+import bpdf;
+import bpdg;
+import bpdh;
 
 public class LyricViewScroll
   extends ScrollView
 {
   public volatile int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bobk(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bpdf(this);
   protected Scroller a;
-  private bobl jdField_a_of_type_Bobl;
-  private bobm jdField_a_of_type_Bobm;
+  private bpdg jdField_a_of_type_Bpdg;
+  private bpdh jdField_a_of_type_Bpdh;
   protected boolean a;
   public int b;
   public volatile boolean b;
@@ -42,8 +42,8 @@ public class LyricViewScroll
       paramInt -= this.jdField_a_of_type_Int;
       if (paramInt != 0)
       {
-        if ((Math.abs(paramInt) > 300) && (this.jdField_a_of_type_Bobl != null)) {
-          this.jdField_a_of_type_Bobl.a();
+        if ((Math.abs(paramInt) > 300) && (this.jdField_a_of_type_Bpdg != null)) {
+          this.jdField_a_of_type_Bpdg.a();
         }
         this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_AndroidWidgetScroller.getFinalX(), this.jdField_a_of_type_Int, 0, paramInt, 600);
         this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY();
@@ -79,17 +79,17 @@ public class LyricViewScroll
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       continue;
       this.d = true;
-      if (this.jdField_a_of_type_Bobm != null)
+      if (this.jdField_a_of_type_Bpdh != null)
       {
-        this.jdField_a_of_type_Bobm.a(getScrollY());
+        this.jdField_a_of_type_Bpdh.a(getScrollY());
         continue;
         Log.v("LyricViewScroll", "onTouchEvent -> ACTION_UP");
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
         continue;
         Log.v("LyricViewScroll", "onTouchEvent -> ACTION_CANCEL");
         this.jdField_a_of_type_Int = getScrollY();
-        if (this.jdField_a_of_type_Bobm != null) {
-          this.jdField_a_of_type_Bobm.b(this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Bpdh != null) {
+          this.jdField_a_of_type_Bpdh.b(this.jdField_a_of_type_Int);
         }
         this.d = false;
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
@@ -115,8 +115,8 @@ public class LyricViewScroll
     {
       smoothScrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
       postInvalidate();
-      if ((this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && (this.jdField_a_of_type_Bobl != null)) {
-        this.jdField_a_of_type_Bobl.b();
+      if ((this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && (this.jdField_a_of_type_Bpdg != null)) {
+        this.jdField_a_of_type_Bpdg.b();
       }
     }
   }
@@ -144,9 +144,9 @@ public class LyricViewScroll
     this.c = paramBoolean;
   }
   
-  public void setScrollListener(bobm parambobm)
+  public void setScrollListener(bpdh parambpdh)
   {
-    this.jdField_a_of_type_Bobm = parambobm;
+    this.jdField_a_of_type_Bpdh = parambpdh;
   }
 }
 

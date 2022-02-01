@@ -1,54 +1,48 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class atuu
-  implements atus
+class atuu
+  extends atpa
 {
-  public atuu(FMSettings.4 param4) {}
+  atuu(atut paramatut) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    synchronized (this.a.this$0)
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
+    }
+    boch.a(null, paramInt2);
+    paramString1 = this.a.a.a().a(paramLong2);
+    Bundle localBundle;
+    if ((paramString1 != null) && (paramString1.nOpType == 50))
     {
-      atut localatut2 = this.a.this$0;
-      localatut2.jdField_a_of_type_Int += 1;
-      atut.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        atut.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Atus.a();
+      localBundle = new Bundle();
+      localBundle.putString("taskId", paramString1.miniAppDownloadId);
+      if (!paramBoolean) {
+        break label163;
       }
+    }
+    label163:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      localBundle.putInt("retCode", paramInt1);
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
+      localBundle.putString("retMsg", paramString1);
+      QIPCServerHelper.getInstance().callClient(ausf.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
+      this.a.a(paramLong2);
       return;
     }
   }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.a.this$0)
-    {
-      atut localatut2 = this.a.this$0;
-      localatut2.jdField_a_of_type_Int += 1;
-      atut.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        atut.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Atus.a(16);
-      }
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    atut localatut = this.a.this$0;
-    localatut.jdField_a_of_type_Long += paramLong1;
-    this.a.jdField_a_of_type_Atus.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atuu
  * JD-Core Version:    0.7.0.1
  */

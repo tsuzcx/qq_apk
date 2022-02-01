@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amud;
-import amut;
+import anfx;
+import angn;
 
 public class SpriteBridge$1
   implements Runnable
 {
-  public SpriteBridge$1(amud paramamud, SpriteTaskParam paramSpriteTaskParam) {}
+  public SpriteBridge$1(anfx paramanfx, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    if (amud.a(this.this$0) != null)
+    if (anfx.a(this.this$0) != null)
     {
-      if (amud.a(this.this$0).a()) {
+      if (anfx.a(this.this$0).a()) {
         this.a.j = 1;
       }
       this.a.a = this.this$0;
-      amud.a(this.this$0).a(this.a);
+      anfx.a(this.this$0).a(this.a);
     }
   }
 }

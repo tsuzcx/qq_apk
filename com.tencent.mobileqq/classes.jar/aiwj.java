@@ -1,6 +1,10 @@
 public abstract interface aiwj
 {
-  public abstract void a(String paramString);
+  public abstract void a(int paramInt, Object... paramVarArgs);
+  
+  public abstract int[] a();
+  
+  public abstract int b();
 }
 
 

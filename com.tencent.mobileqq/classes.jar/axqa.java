@@ -1,25 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class axqa
-  implements View.OnClickListener
+public abstract interface axqa
 {
-  axqa(axpz paramaxpz) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (paramView == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (StartLiveTopicLabelListView.a(this.a.a) != null) {
-        StartLiveTopicLabelListView.a(this.a.a).a();
-      }
-    }
-  }
+  public abstract void a(axpx paramaxpx);
+  
+  public abstract void a(axpx paramaxpx, int paramInt);
+  
+  public abstract void b(axpx paramaxpx);
 }
 
 

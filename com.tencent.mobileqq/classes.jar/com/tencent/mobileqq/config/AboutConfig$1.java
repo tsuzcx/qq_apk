@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config;
 
-import aqkn;
+import aqzq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
@@ -11,12 +11,12 @@ import java.util.List;
 public class AboutConfig$1
   implements Runnable
 {
-  public AboutConfig$1(aqkn paramaqkn, boolean paramBoolean) {}
+  public AboutConfig$1(aqzq paramaqzq, boolean paramBoolean) {}
   
   public void run()
   {
     int i = 0;
-    ??? = aqkn.a(this.this$0).a().createEntityManager();
+    ??? = aqzq.a(this.this$0).a().createEntityManager();
     List localList = ResourcePluginInfo.getAll((EntityManager)???, 32, false);
     ((EntityManager)???).close();
     int j;
@@ -26,16 +26,16 @@ public class AboutConfig$1
       i = j;
       if (j <= 0) {}
     }
-    synchronized (aqkn.a(this.this$0))
+    synchronized (aqzq.a(this.this$0))
     {
-      aqkn.a(this.this$0);
-      aqkn.a(this.this$0, localList);
+      aqzq.a(this.this$0);
+      aqzq.a(this.this$0, localList);
       this.this$0.b();
       i = j;
       if (QLog.isColorLevel()) {
-        QLog.d("AboutConfig", 2, "Load about config from DB = " + aqkn.a(this.this$0) + ",asynchronous=" + this.a + ",size=" + i);
+        QLog.d("AboutConfig", 2, "Load about config from DB = " + aqzq.a(this.this$0) + ",asynchronous=" + this.a + ",size=" + i);
       }
-      aqkn.a(this.this$0, true);
+      aqzq.a(this.this$0, true);
       return;
     }
   }

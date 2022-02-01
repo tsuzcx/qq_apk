@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.soso;
 
 import android.os.SystemClock;
-import aooq;
+import apcg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.LbsReportInfo;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class LbsInfoReportManager$1
   implements Runnable
 {
-  public LbsInfoReportManager$1(aooq paramaooq, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  public LbsInfoReportManager$1(apcg paramapcg, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
@@ -30,15 +30,15 @@ public class LbsInfoReportManager$1
     localLbsReportInfo.city = this.d;
     localLbsReportInfo.district = this.e;
     localLbsReportInfo.createContent();
-    aooq.a(this.this$0).add(localLbsReportInfo);
-    aooq.a(this.this$0, this.jdField_a_of_type_Double);
-    aooq.b(this.this$0, this.jdField_b_of_type_Double);
-    aooq.a(this.this$0, SystemClock.elapsedRealtime());
+    apcg.a(this.this$0).add(localLbsReportInfo);
+    apcg.a(this.this$0, this.jdField_a_of_type_Double);
+    apcg.b(this.this$0, this.jdField_b_of_type_Double);
+    apcg.a(this.this$0, SystemClock.elapsedRealtime());
     if (QLog.isColorLevel()) {
-      QLog.i("LBSReport", 2, "onReceiveLbsInfo cache size : " + aooq.a(this.this$0).size() + " lastReportTime: " + aooq.a(this.this$0) + " currentTime: " + NetConnInfoCenter.getServerTime());
+      QLog.i("LBSReport", 2, "onReceiveLbsInfo cache size : " + apcg.a(this.this$0).size() + " lastReportTime: " + apcg.a(this.this$0) + " currentTime: " + NetConnInfoCenter.getServerTime());
     }
     int i;
-    if ((aooq.a(this.this$0).a != null) && (!aooq.a(this.this$0).a.b()))
+    if ((apcg.a(this.this$0).a != null) && (!apcg.a(this.this$0).a.b()))
     {
       i = 1;
       if (i != 0) {
@@ -51,21 +51,21 @@ public class LbsInfoReportManager$1
       return;
       i = 0;
       break;
-      if (!aooq.a(this.this$0)) {
-        aooq.a(this.this$0);
+      if (!apcg.a(this.this$0)) {
+        apcg.a(this.this$0);
       }
-      if ((aooq.a(this.this$0).size() >= 20) || (NetConnInfoCenter.getServerTime() - aooq.a(this.this$0) >= 1200L))
+      if ((apcg.a(this.this$0).size() >= 20) || (NetConnInfoCenter.getServerTime() - apcg.a(this.this$0) >= 1200L))
       {
-        this.this$0.a(aooq.a(this.this$0), 0);
-        if (!aooq.b(this.this$0)) {
-          this.this$0.a(aooq.a(this.this$0, aooq.a(this.this$0)), LbsReportInfo.convert2StrList(aooq.a(this.this$0)), aooq.a(this.this$0), 0);
+        this.this$0.a(apcg.a(this.this$0), 0);
+        if (!apcg.b(this.this$0)) {
+          this.this$0.a(apcg.a(this.this$0, apcg.a(this.this$0)), LbsReportInfo.convert2StrList(apcg.a(this.this$0)), apcg.a(this.this$0), 0);
         }
-        aooq.a(this.this$0).clear();
-        aooq.a(this.this$0).a().createEntityManager().delete(LbsReportInfo.class.getSimpleName(), null, null);
-        aooq.b(this.this$0, NetConnInfoCenter.getServerTime());
+        apcg.a(this.this$0).clear();
+        apcg.a(this.this$0).a().createEntityManager().delete(LbsReportInfo.class.getSimpleName(), null, null);
+        apcg.b(this.this$0, NetConnInfoCenter.getServerTime());
         return;
       }
-      aooq.a(this.this$0).a().createEntityManager().persist(localLbsReportInfo);
+      apcg.a(this.this$0).a().createEntityManager().persist(localLbsReportInfo);
     } while (!QLog.isColorLevel());
     QLog.d("LBSReport", 2, "update db");
   }

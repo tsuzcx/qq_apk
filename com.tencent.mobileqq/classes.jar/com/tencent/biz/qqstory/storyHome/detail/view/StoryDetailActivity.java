@@ -75,11 +75,11 @@ public class StoryDetailActivity
   
   private void d()
   {
-    setContentView(2131561653);
-    this.leftView.setText(2131690563);
+    setContentView(2131561694);
+    this.leftView.setText(2131690559);
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = StoryDetailFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.d, this.c);
-    localFragmentTransaction.replace(2131364961, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
+    localFragmentTransaction.replace(2131365008, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   

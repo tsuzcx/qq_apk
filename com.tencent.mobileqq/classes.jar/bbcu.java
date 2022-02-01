@@ -1,24 +1,23 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import mqq.util.WeakReference;
 
-public abstract class bbcu
-  extends ClickableSpan
-  implements View.OnClickListener
+public class bbcu
+  implements DialogInterface.OnDismissListener
 {
-  private int a;
+  WeakReference<DialogInterface.OnDismissListener> jdField_a_of_type_MqqUtilWeakReference;
   
-  public bbcu(int paramInt)
+  bbcu(bbct parambbct, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    this.a = paramInt;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnDismissListener);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.a);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
+    }
   }
 }
 

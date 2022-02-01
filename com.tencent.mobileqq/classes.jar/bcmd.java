@@ -1,21 +1,16 @@
-public class bcmd
+import java.util.List;
+
+public abstract interface bcmd<M extends bcfp>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  public long e;
+  public abstract void a(List<M> paramList);
+  
+  public abstract void a(List<M> paramList, int paramInt);
+  
+  public abstract void a(List<M> paramList, bcmr parambcmr);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcmd
  * JD-Core Version:    0.7.0.1
  */

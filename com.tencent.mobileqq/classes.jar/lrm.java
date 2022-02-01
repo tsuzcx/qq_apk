@@ -1,8 +1,9 @@
-import android.view.MotionEvent;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
-public abstract interface lrm
+public class lrm
 {
-  public abstract boolean a(lrl paramlrl, MotionEvent paramMotionEvent);
+  public List<TTFaceOriginDataModel> a;
 }
 
 

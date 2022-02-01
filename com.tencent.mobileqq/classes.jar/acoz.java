@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class acoz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  acoz(acow paramacow) {}
+  acoz(acox paramacox) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.i("GdtMvViewController", 1, " DialogInterface onClick onCancel");
-    acow.a(this.a).a();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

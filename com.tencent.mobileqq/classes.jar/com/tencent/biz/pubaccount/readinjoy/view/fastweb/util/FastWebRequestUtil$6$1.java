@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import tht;
+import syn;
 
 class FastWebRequestUtil$6$1
   implements Runnable
@@ -9,11 +9,11 @@ class FastWebRequestUtil$6$1
   
   public void run()
   {
-    tht localtht = this.this$0.a;
+    syn localsyn = this.this$0.a;
     if (this.jdField_a_of_type_Int == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localtht.a(bool, this.jdField_a_of_type_JavaLangString);
+      localsyn.a(bool, this.jdField_a_of_type_JavaLangString);
       return;
     }
   }

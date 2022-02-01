@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import anhk;
-import bgmg;
+import antf;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class LineLayer$ClearTempFileJob
   implements Runnable
 {
-  public final String a = anhk.cp + "temp" + File.separator;
+  public final String a = antf.cp + "temp" + File.separator;
   
   public LineLayer$ClearTempFileJob(LineLayer paramLineLayer) {}
   
@@ -16,7 +16,7 @@ class LineLayer$ClearTempFileJob
   {
     try
     {
-      bgmg.a(this.a, true);
+      bhmi.a(this.a, true);
       return;
     }
     catch (Exception localException)

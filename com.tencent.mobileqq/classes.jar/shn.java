@@ -1,23 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.widget.AbsListView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$initLottieView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationStart", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shn
-  extends AnimatorListenerAdapter
+class shn
+  extends pmr
 {
-  shn(shi paramshi) {}
-  
-  public void onAnimationStart(@Nullable Animator paramAnimator)
+  shn(shl paramshl, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    shi.b(this.a, true);
-    paramAnimator = shi.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.pauseAnimation();
-    }
-    shi.b(this.a);
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

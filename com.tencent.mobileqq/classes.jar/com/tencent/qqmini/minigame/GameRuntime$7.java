@@ -1,26 +1,23 @@
 package com.tencent.qqmini.minigame;
 
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.triton.sdk.callback.ScreenShotCallback;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
+import com.tencent.mobileqq.triton.TritonPlatform;
+import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
+import com.tencent.qqmini.sdk.report.MiniGamePerformanceStatics;
+import com.tencent.qqmini.sdk.report.MiniReportManager;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 
 class GameRuntime$7
-  implements ScreenShotCallback
+  implements Runnable
 {
-  GameRuntime$7(GameRuntime paramGameRuntime, GetScreenshot.Callback paramCallback) {}
+  GameRuntime$7(GameRuntime paramGameRuntime) {}
   
-  public void onScreenShotCallback(Bitmap paramBitmap)
+  public void run()
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
-    {
-      if (this.val$screenshotCallback != null) {
-        this.val$screenshotCallback.onGetScreenshot(null);
-      }
-      GameRuntime.access$900(this.this$0).isGettingScreenShot = false;
-      return;
-    }
-    ThreadManager.executeOnDiskIOThreadPool(new GameRuntime.7.1(this, paramBitmap));
+    GameRuntime.access$400(this.this$0).recordInitialMemory();
+    SDKMiniProgramLpReportDC04239.reportPageView(GameRuntime.access$300(this.this$0), "1", null, "load", null);
+    MiniAppReportManager2.reportPageView("2load", null, null, GameRuntime.access$300(this.this$0));
+    MiniReportManager.reportEventType(GameRuntime.access$300(this.this$0), 1007, "1");
+    GameRuntime.access$800(this.this$0).launchGame(GameRuntime.access$500(this.this$0), new GameRuntime.7.1(this));
   }
 }
 

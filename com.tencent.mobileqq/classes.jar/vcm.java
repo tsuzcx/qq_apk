@@ -1,36 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqcircle.requests.QCircleSetUserSwitchRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import mqq.app.QQPermissionCallback;
 
 class vcm
-  implements CompoundButton.OnCheckedChangeListener
+  implements QQPermissionCallback
 {
-  vcm(vcl paramvcl) {}
+  vcm(vcl paramvcl, FeedCloudMeta.StTagInfo paramStTagInfo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i;
-    if (paramBoolean)
-    {
-      i = 0;
-      QCircleSetUserSwitchRequest localQCircleSetUserSwitchRequest = new QCircleSetUserSwitchRequest(0, i);
-      VSNetworkHelper.a().a(localQCircleSetUserSwitchRequest, new vcn(this, paramBoolean));
-      if (!paramBoolean) {
-        break label62;
-      }
-      vrf.a("", 11, 23, 3);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 1;
-      break;
-      label62:
-      vrf.a("", 11, 23, 2);
-    }
+    vcl.a(this.jdField_a_of_type_Vcl, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
   }
 }
 

@@ -1,20 +1,32 @@
-import android.graphics.Color;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.Ref.BooleanRef;
+import kotlin.jvm.internal.Ref.ObjectRef;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
 final class oxn
-  implements bkiz
+  implements bliz
 {
-  oxn(oxm paramoxm) {}
+  oxn(oxi paramoxi, Ref.ObjectRef paramObjectRef, Ref.BooleanRef paramBooleanRef, blir paramblir) {}
   
-  public final void a()
+  public final void OnClick(View paramView, int paramInt)
   {
-    ViewBase localViewBase = this.a.a;
-    Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
-    localViewBase.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+    }
+    otv localotv = (otv)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element;
+    paramView = oxi.a(this.jdField_a_of_type_Oxi).a;
+    if (paramView != null) {}
+    for (paramView = paramView.commentId;; paramView = null)
+    {
+      localotv.a(paramView, this.jdField_a_of_type_KotlinJvmInternalRef$BooleanRef.element);
+      oxi.a(this.jdField_a_of_type_Oxi, 6);
+      break;
+    }
   }
 }
 

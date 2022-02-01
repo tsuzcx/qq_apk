@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.Surface;
-import com.tencent.superplayer.api.SuperPlayerAudioInfo;
 import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 
@@ -36,9 +35,6 @@ class SuperPlayerMgrInternal$EventHandler
       return;
     case 6: 
       SuperPlayerMgrInternal.access$100(this.this$0).handleSetSurface((Surface)paramMessage.obj);
-      return;
-    case 8: 
-      SuperPlayerMgrInternal.access$100(this.this$0).handleSetXYaxis(paramMessage.arg1);
       return;
     case 9: 
       SuperPlayerMgrInternal.access$100(this.this$0).handleSetPlaySpeedRatio(((Float)paramMessage.obj).floatValue());
@@ -74,9 +70,6 @@ class SuperPlayerMgrInternal$EventHandler
       paramMessage = (SuperPlayerMgrCommons.LoopbackParams)paramMessage.obj;
       SuperPlayerMgrInternal.access$100(this.this$0).handleSetLoopback(paramMessage.isLoopback, paramMessage.loopStartPositionMs, paramMessage.loopEndPositionMs);
       return;
-    case 31: 
-      SuperPlayerMgrInternal.access$100(this.this$0).handleSetAudioGainRatio(((Float)paramMessage.obj).floatValue());
-      return;
     case 88: 
       SuperPlayerMgrInternal.access$100(this.this$0).handleSwitchDefinition((String)paramMessage.obj);
       return;
@@ -86,13 +79,9 @@ class SuperPlayerMgrInternal$EventHandler
     case 90: 
       SuperPlayerMgrInternal.access$100(this.this$0).handleResumeDownload();
       return;
-    case 92: 
-      paramMessage = (int[])paramMessage.obj;
-      SuperPlayerMgrInternal.access$100(this.this$0).handleSetBusinessDownloadStrategy(paramMessage[0], paramMessage[1], paramMessage[2], paramMessage[3]);
-      return;
     }
-    paramMessage = (SuperPlayerAudioInfo)paramMessage.obj;
-    SuperPlayerMgrInternal.access$100(this.this$0).handlerSetAudioPostFrameOptionInfo(paramMessage);
+    paramMessage = (int[])paramMessage.obj;
+    SuperPlayerMgrInternal.access$100(this.this$0).handleSetBusinessDownloadStrategy(paramMessage[0], paramMessage[1], paramMessage[2], paramMessage[3]);
   }
 }
 

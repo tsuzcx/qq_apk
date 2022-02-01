@@ -1,20 +1,26 @@
-import android.graphics.Bitmap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import dov.com.qq.im.ptv.LightWeightProgress;
 
 public class bpzi
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public Bitmap a;
+  public bpzi(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  protected void finalize()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.finalize();
-    if ((this.a != null) && (!this.a.isRecycled()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Frames", 2, "recycle bitmap");
-      }
-      this.a.recycle();
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView 50ms end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.setStatus(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView begin");
     }
   }
 }

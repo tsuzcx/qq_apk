@@ -15,6 +15,7 @@ public final class oidb_0x6cf$BiuOneLevelItem
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_biu_comments = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField feeds_type = PBField.initEnum(0);
+  public oidb_0x6cf.JumpInfo msg_jump_info = new oidb_0x6cf.JumpInfo();
   public final PBEnumField op_type = PBField.initEnum(0);
   public final PBUInt32Field uint32_biu_time = PBField.initUInt32(0);
   public final PBUInt64Field uint64_feeds_id = PBField.initUInt64(0L);
@@ -23,7 +24,7 @@ public final class oidb_0x6cf$BiuOneLevelItem
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48 }, new String[] { "uint64_feeds_id", "uint64_uin", "uint32_biu_time", "bytes_biu_comments", "feeds_type", "op_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, BiuOneLevelItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58 }, new String[] { "uint64_feeds_id", "uint64_uin", "uint32_biu_time", "bytes_biu_comments", "feeds_type", "op_type", "msg_jump_info" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, BiuOneLevelItem.class);
   }
 }
 

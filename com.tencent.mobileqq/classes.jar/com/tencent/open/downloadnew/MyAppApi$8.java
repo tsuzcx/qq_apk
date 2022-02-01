@@ -1,21 +1,21 @@
 package com.tencent.open.downloadnew;
 
-import aceh;
-import biuh;
-import bivk;
-import biwe;
+import acik;
+import bjvg;
+import bjwj;
+import bjxd;
 
 public class MyAppApi$8
   implements Runnable
 {
-  public MyAppApi$8(biwe parambiwe, String paramString1, String paramString2) {}
+  public MyAppApi$8(bjxd parambjxd, String paramString1, String paramString2) {}
   
   public void run()
   {
-    biuh.a("100", biuh.a(this.a, "NEWYYB"), this.b);
-    bivk.a();
+    bjvg.a("100", bjvg.a(this.a, "NEWYYB"), this.b);
+    bjwj.a();
     if (("ANDROID.QQ.YYBXZGAMECENTER".equals(this.a)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(this.a))) {
-      aceh.a(null, "765", "205008", this.b, "76501", "1", "156");
+      acik.a(null, "765", "205008", this.b, "76501", "1", "156");
     }
   }
 }

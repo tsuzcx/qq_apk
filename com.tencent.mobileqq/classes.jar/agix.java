@@ -1,18 +1,25 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class agix
-  extends afyw
+  implements View.OnClickListener
 {
-  agix(agiw paramagiw, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-  }
+  agix(agiq paramagiq) {}
   
-  public void k()
+  public void onClick(View paramView)
   {
-    this.a.a(true);
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
+      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
+      bdll.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
+    }
   }
 }
 

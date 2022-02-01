@@ -4,9 +4,11 @@ import android.content.IntentFilter;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import vqu;
+import vtf;
 
 public class QCircleGlobalBroadcastHelper
 {
@@ -51,6 +53,8 @@ public class QCircleGlobalBroadcastHelper
       localIntentFilter.addAction("action_receive_message_push");
       localIntentFilter.addAction("action_refresh_feed_list");
       localIntentFilter.addAction("action_refresh_hippy_page");
+      localIntentFilter.addAction("action_update_native_balance");
+      localIntentFilter.addAction("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
       BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentBizQqcircleQCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver, localIntentFilter);
       return;
     }
@@ -79,7 +83,11 @@ public class QCircleGlobalBroadcastHelper
   
   public void c()
   {
-    ((vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance");
+    vtf localvtf = (vtf)BaseApplicationImpl.getApplication().getRuntime().getManager(376);
+    localvtf.b("circle_entrance");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(2));
+    localvtf.a("circle_entrance", localArrayList);
     ThreadManager.getSubThreadHandler().postDelayed(new QCircleGlobalBroadcastHelper.1(this), 1000L);
   }
 }

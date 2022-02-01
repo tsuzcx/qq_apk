@@ -1,32 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afyy
-  implements DialogInterface.OnClickListener
+public class afyy
+  implements TextWatcher
 {
-  afyy(afyw paramafyw) {}
+  private afyy(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    try
-    {
-      if ((afyw.a(this.a) != null) && (afyw.a(this.a).isShowing())) {
-        afyw.a(this.a).dismiss();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "disband cancel");
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

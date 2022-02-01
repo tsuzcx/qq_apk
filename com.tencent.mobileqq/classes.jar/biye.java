@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.CreateVirtualResult;
+import android.graphics.drawable.BitmapDrawable;
 
-public final class biye
-  implements Parcelable.Creator<CreateVirtualResult>
+public class biye
 {
-  public CreateVirtualResult a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public BitmapDrawable a;
+  
+  public biye(int paramInt, long paramLong, BitmapDrawable paramBitmapDrawable)
   {
-    return new CreateVirtualResult(paramParcel);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
   }
   
-  public CreateVirtualResult[] a(int paramInt)
+  public String toString()
   {
-    return new CreateVirtualResult[paramInt];
+    return "Frame{index=" + this.jdField_a_of_type_Int + ", targetTime=" + this.jdField_a_of_type_Long + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable + '}';
   }
 }
 

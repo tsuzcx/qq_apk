@@ -1,12 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 class aqea
-  implements View.OnClickListener
+  implements bliz
 {
-  aqea(aqdz paramaqdz) {}
+  aqea(aqdy paramaqdy, blir paramblir) {}
   
-  public void onClick(View paramView) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Aqdy.a.e();
+    this.jdField_a_of_type_Aqdy.a.b(anzj.a(2131699608));
+    this.jdField_a_of_type_Blir.dismiss();
+  }
 }
 
 

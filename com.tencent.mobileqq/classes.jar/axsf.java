@@ -1,52 +1,116 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axsf
-  implements View.OnClickListener
+public class axsf
 {
-  axsf(axsd paramaxsd, String paramString) {}
+  public static void a(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
   {
-    bcsy localbcsy = new bcsy(this.jdField_a_of_type_Axsd.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("nonlive_clk").e(axsd.a(this.jdField_a_of_type_Axsd).uin);
-    Object localObject;
-    if (axsd.a(this.jdField_a_of_type_Axsd).gender == 0)
+    if (paramMessageForUniteGrayTip != null)
     {
-      localObject = "1";
-      localbcsy.a(new String[] { localObject }).a();
-      if (!this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:")) {
-        break label188;
+      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
+      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("sub_level");
+      String str3 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
+      String str4 = paramMessageForUniteGrayTip.frienduin;
+      if (!TextUtils.isEmpty(str2))
+      {
+        long l1 = axsr.b(str2);
+        long l2 = axsr.a(str2);
+        if ((axsr.b(l1)) && (l2 >= 0L))
+        {
+          String str5 = axsr.a(l1, l2);
+          int i = (int)(l1 * 10L + l2);
+          paramMessageForUniteGrayTip = str1;
+          if (TextUtils.isEmpty(str1)) {
+            paramMessageForUniteGrayTip = "0";
+          }
+          bdll.b(paramQQAppInterface, "dc00898", "", str4, "0X800A7E4", str5, i, 0, paramMessageForUniteGrayTip, "", "", "");
+        }
       }
-      localObject = bgng.a(this.jdField_a_of_type_Axsd.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Axsd.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        break label157;
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipExposure id:" + str2 + " willDowngradeSoon:" + str3 + " grayID:" + paramInt);
       }
-      ((bgmp)localObject).a();
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt, String paramString)
+  {
+    if (paramMessageForUniteGrayTip != null)
+    {
+      paramQQAppInterface = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
+      paramMessageForUniteGrayTip.getExtInfoFromExtStr("sub_level");
+      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClickWebLink id:" + paramQQAppInterface + " willDowngradeSoon:" + paramMessageForUniteGrayTip + " url:" + paramString);
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, axtj paramaxtj)
+  {
+    if (paramaxtj != null)
+    {
+      bdll.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", axsr.a(paramaxtj.a, paramaxtj.b), (int)(paramaxtj.a * 10L + paramaxtj.b), 0, "" + paramaxtj.h, "", "", "");
+      switch ((int)paramaxtj.a)
+      {
+      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      VipUtils.a(paramString, paramaxtj, paramQQAppInterface, "C2C_click");
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X800A1FA", "0X800A1FA", 0, 0, "", "", "", "");
       return;
-      if (axsd.a(this.jdField_a_of_type_Axsd).gender == 1)
+      bdll.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, "" + paramaxtj.h, "", "", "");
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, axtj paramaxtj1, axtj paramaxtj2)
+  {
+    if (paramaxtj1 != null) {
+      bdll.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", axsr.a(paramaxtj1.a, paramaxtj1.b), (int)(paramaxtj1.a * 10L + paramaxtj1.b), 0, "" + paramaxtj1.h, "", "", "");
+    }
+    if (paramaxtj2 != null) {
+      bdll.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", axsr.a(paramaxtj2.a, paramaxtj2.b), (int)(paramaxtj2.a * 10L + paramaxtj2.b), 0, "" + paramaxtj2.h, "", "", "");
+    }
+    bdll.b(null, "dc00898", "", "", "0X800A1F9", "0X800A1F9", 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return false;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
+  {
+    if (paramMessageForUniteGrayTip != null)
+    {
+      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
+      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("sub_level");
+      String str3 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
+      String str4 = paramMessageForUniteGrayTip.frienduin;
+      if (!TextUtils.isEmpty(str2))
       {
-        localObject = "2";
-        break;
+        long l1 = axsr.b(str2);
+        long l2 = axsr.a(str2);
+        if ((axsr.b(l1)) && (l2 >= 0L))
+        {
+          String str5 = axsr.a(l1, l2);
+          int i = (int)(l1 * 10L + l2);
+          paramMessageForUniteGrayTip = str1;
+          if (TextUtils.isEmpty(str1)) {
+            paramMessageForUniteGrayTip = "0";
+          }
+          bdll.b(paramQQAppInterface, "dc00898", "", str4, "0X800A7E5", str5, i, 0, paramMessageForUniteGrayTip, "", "", "");
+        }
       }
-      localObject = "0";
-      break;
-      label157:
-      QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
-      continue;
-      label188:
-      localObject = new Intent(this.jdField_a_of_type_Axsd.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Axsd.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity((Intent)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClick id:" + str2 + " willDowngradeSoon:" + str3 + " grayID:" + paramInt);
+      }
     }
   }
 }

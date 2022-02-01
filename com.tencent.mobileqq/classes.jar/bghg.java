@@ -1,89 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class bghg
+class bghg
+  extends BroadcastReceiver
 {
-  bbck jdField_a_of_type_Bbck;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  bghg(bghf parambghf) {}
   
-  public bghg(QQAppInterface paramQQAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public Bundle a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getStringArrayList("key");
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("key", paramBundle);
-    if ((paramBundle == null) || (paramBundle.size() == 0)) {
-      return localBundle;
-    }
-    if (this.jdField_a_of_type_Bbck == null) {
-      this.jdField_a_of_type_Bbck = ((bbck)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
-    }
-    if (this.jdField_a_of_type_Bbck == null) {
-      return localBundle;
-    }
-    ArrayList localArrayList = new ArrayList(paramBundle.size());
-    Iterator localIterator = paramBundle.iterator();
-    String str1;
-    if (localIterator.hasNext())
-    {
-      String str2 = (String)localIterator.next();
-      str1 = "";
-      Object localObject;
-      if (str2 == null)
-      {
-        localObject = null;
-        label124:
-        paramBundle = str1;
-        if (localObject != null)
-        {
-          paramBundle = str1;
-          if (localObject.length != 3) {}
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          int j = Integer.parseInt(localObject[0]);
-          String str3 = localObject[1];
-          int i = Integer.parseInt(localObject[2]);
-          paramBundle = str1;
-          if (j == 1)
-          {
-            j = Integer.parseInt(str3);
-            localObject = this.jdField_a_of_type_Bbck.a(j);
-            paramBundle = str1;
-            if (localObject != null)
-            {
-              if (i != 201) {
-                continue;
-              }
-              paramBundle = ((bazh)localObject).a;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-          paramBundle = str1;
-          continue;
-        }
-        axei.a("getIconUrl", "getIconUrl", new Object[] { str2, paramBundle });
-        localArrayList.add(paramBundle);
-        break;
-        localObject = str2.split("_s_");
-        break label124;
-        paramBundle = ((bazh)localObject).b;
-      }
-    }
-    localBundle.putStringArrayList("path", localArrayList);
-    return localBundle;
+    paramContext = paramIntent.getStringExtra("callback");
+    QLog.d("TroopReceiver", 4, paramContext);
+    this.a.e(paramContext);
   }
 }
 

@@ -22,7 +22,7 @@ import NS_MINI_INTERFACE.INTERFACE.StResourcePreCacheInfo;
 import NS_MINI_INTERFACE.INTERFACE.StStartExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSubPkgInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import acqx;
+import acvb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -475,7 +475,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(acqx.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(acvb.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)

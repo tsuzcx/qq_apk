@@ -1,63 +1,35 @@
-public abstract class bomw
-  extends bhhe
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
+
+class bomw
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  public abstract void a(int paramInt);
+  bomw(bomp parambomp) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
-  
-  public void onCancel(bhhf parambhhf)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    super.onCancel(parambhhf);
-    a(parambhhf.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(bhhf parambhhf)
-  {
-    String str = parambhhf.jdField_a_of_type_JavaLangString;
-    if (parambhhf.a() == 3) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(str, bool, parambhhf.jdField_a_of_type_Int);
+    bpam.b("VideoStoryCapturePart", "mCurrentRatio---onChanged: ratio=" + paramRatio);
+    if (paramRatio == null) {}
+    while (bomp.a(this.a) == paramRatio) {
       return;
     }
-  }
-  
-  public void onNetMobile2None()
-  {
-    super.onNetMobile2None();
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile()
-  {
-    super.onNetWifi2Mobile();
-    a(1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    super.onNetWifi2None();
-    a(3);
-  }
-  
-  public void onProgress(bhhf parambhhf)
-  {
-    super.onProgress(parambhhf);
-    int i = (int)parambhhf.jdField_a_of_type_Float;
-    a(parambhhf.jdField_a_of_type_JavaLangString, i);
-  }
-  
-  public boolean onStart(bhhf parambhhf)
-  {
-    super.onStart(parambhhf);
-    a(parambhhf.jdField_a_of_type_JavaLangString, true);
-    return true;
+    bomp.a(this.a, paramRatio);
+    int i = 0;
+    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_4_3) {
+      i = bomp.a(this.a);
+    }
+    for (;;)
+    {
+      alxc localalxc = bpal.a();
+      paramRatio = bpal.a(bomp.a(this.a), localalxc, bomp.b(this.a), paramRatio);
+      bomp.a(this.a, i, paramRatio);
+      bomp.a(this.a, localalxc, paramRatio);
+      return;
+      if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {
+        i = bomp.a;
+      }
+    }
   }
 }
 

@@ -1,65 +1,98 @@
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bndx
-  extends bnbm
+class bndx
+  implements bndv
 {
-  private bnfn jdField_a_of_type_Bnfn;
-  private boym jdField_a_of_type_Boym;
-  private boyn jdField_a_of_type_Boyn;
+  private IBinder a;
   
-  public bndx(boyn paramboyn, boym paramboym)
+  bndx(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Boyn = paramboyn;
-    this.jdField_a_of_type_Boym = paramboym;
+    this.a = paramIBinder;
   }
   
-  public View a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Boyn.a().getLayoutInflater().inflate(2131558578, null);
-  }
-  
-  public void a()
-  {
-    Intent localIntent = this.jdField_a_of_type_Boyn.a().getIntent();
-    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 9);
-    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM_VIDEO", 1);
-    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
-    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 7);
-    this.jdField_a_of_type_Bnfn = new bnfn();
-    this.jdField_a_of_type_Boyn.a().getFragmentManager().beginTransaction().add(2131366665, this.jdField_a_of_type_Bnfn).commit();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Boyn == null) {
-      return false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    if ((this.jdField_a_of_type_Bnfn != null) && (this.jdField_a_of_type_Bnfn.a != null)) {
-      this.jdField_a_of_type_Bnfn.a.a(null);
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    return true;
   }
   
-  public void e()
+  public void a(String paramString, float paramFloat, long paramLong)
   {
-    super.e();
-    this.jdField_a_of_type_Boyn.a().finish();
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeFloat(paramFloat);
+      localParcel1.writeLong(paramLong);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public void p()
+  public void a(String paramString, int paramInt)
   {
-    super.p();
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

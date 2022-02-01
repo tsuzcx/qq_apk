@@ -1,17 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 class agur
-  implements atwb
+  implements blrb
 {
-  agur(agup paramagup) {}
+  agur(aguk paramaguk) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    atvo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
-    atvo.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    if (paramBoolean)
+    {
+      aguk.c(this.a);
+      return;
+    }
+    aguk.d(this.a);
   }
 }
 

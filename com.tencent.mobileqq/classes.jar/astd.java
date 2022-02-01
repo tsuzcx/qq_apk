@@ -1,66 +1,34 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class astd
-  implements bkhw
+class astd
+  implements URLDrawableDownListener
 {
-  public astd(UniformDownloadActivity paramUniformDownloadActivity) {}
+  astd(astb paramastb, asmu paramasmu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (this.a.jdField_a_of_type_Bkho == null) {
-      return;
-    }
-    if (paramView != null)
-    {
-      paramView = this.a.jdField_a_of_type_Bkho.a(paramInt);
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if ((!paramView.equals(this.a.getResources().getString(2131691651))) && (!paramView.equals(this.a.getResources().getString(2131691652)))) {
-          break label270;
-        }
-        bcst.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
-        if (!UniformDownloadActivity.a(this.a)) {
-          break label241;
-        }
-        if (!bivk.g()) {
-          break label231;
-        }
-        biur.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
-        paramView = UniformDownloadActivity.a(this.a);
-        UniformDownloadActivity.a(this.a, paramView);
-        paramView = UniformDownloadActivity.a(this.a, paramView);
-        if (QLog.isColorLevel()) {
-          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
-        }
-        UniformDownloadActivity.a(this.a, paramView);
-        UniformDownloadActivity.b(this.a);
-        this.a.finish();
-        this.a.overridePendingTransition(0, 0);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bkho.dismiss();
-      return;
-      label231:
-      UniformDownloadActivity.c(this.a);
-      continue;
-      label241:
-      UniformDownloadActivity.b(this.a).setVisibility(0);
-      ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
-      continue;
-      label270:
-      if ((paramView.equals(this.a.getResources().getString(2131691650))) || (paramView.equals(this.a.getResources().getString(2131690051))) || (paramView.equals(this.a.getResources().getString(2131690050)))) {
-        UniformDownloadActivity.c(this.a);
-      }
+    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Asmu.toString());
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RelatedEmoticonListAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Asmu.toString());
     }
   }
 }

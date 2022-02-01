@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="14.0dip" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/n8g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:maxLines="3" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <FrameLayout android:layout_gravity="center" android:id="@id/mn9" android:layout_width="wrap_content" android:layout_height="18.0dip">
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/agj" android:layout_gravity="center_vertical" android:id="@id/nts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginRight="7.0dip" />
+    </FrameLayout>
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/mw5" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="2.0dip" />
+</FrameLayout>

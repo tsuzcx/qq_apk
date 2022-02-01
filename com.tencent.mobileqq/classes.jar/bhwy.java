@@ -1,24 +1,19 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.FolderTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
 
 public class bhwy
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public bhwy(FolderTextView paramFolderTextView) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
+  public bhwy(View paramView, int paramInt)
   {
-    if (FolderTextView.a(this.a) == 0) {
-      FolderTextView.a(this.a, 1);
-    }
-    for (;;)
-    {
-      FolderTextView.a(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      FolderTextView.a(this.a, 0);
+    super(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364712));
     }
   }
 }

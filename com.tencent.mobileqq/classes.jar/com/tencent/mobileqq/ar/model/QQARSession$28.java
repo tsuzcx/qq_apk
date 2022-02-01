@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.model;
 
-import apar;
-import apeo;
+import apoh;
+import apse;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$28
   implements Runnable
 {
-  public QQARSession$28(apeo paramapeo) {}
+  public QQARSession$28(apse paramapse) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Int != 2) || (!apeo.a(this.this$0)))
+    if ((this.this$0.jdField_a_of_type_Int != 2) || (!apse.a(this.this$0)))
     {
       QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus with error status so return", new Object[0]));
       return;
@@ -19,17 +19,17 @@ public class QQARSession$28
     if (this.this$0.d())
     {
       this.this$0.l();
-      apeo.c(this.this$0, 0L);
-      apeo.a(this.this$0, null);
-      apeo.b(this.this$0, null);
+      apse.c(this.this$0, 0L);
+      apse.a(this.this$0, null);
+      apse.b(this.this$0, null);
     }
     this.this$0.a(5L);
-    apeo.d(this.this$0);
+    apse.d(this.this$0);
     this.this$0.b = false;
-    if (this.this$0.jdField_a_of_type_Apar != null) {
-      this.this$0.jdField_a_of_type_Apar.a(true, apeo.a(this.this$0), apeo.b(this.this$0));
+    if (this.this$0.jdField_a_of_type_Apoh != null) {
+      this.this$0.jdField_a_of_type_Apoh.a(true, apse.a(this.this$0), apse.b(this.this$0));
     }
-    apeo.a(this.this$0, 1);
+    apse.a(this.this$0, 1);
     this.this$0.c = true;
   }
 }

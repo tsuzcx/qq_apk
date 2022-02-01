@@ -1,23 +1,8 @@
-import android.content.Context;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
-
-public class azrn
-  extends LinearLayoutManager
+public abstract class azrn
 {
-  public azrn(InterestSwitchEditActivity paramInterestSwitchEditActivity, Context paramContext)
+  public static boolean a(int paramInt)
   {
-    super(paramContext);
-  }
-  
-  public boolean canScrollHorizontally()
-  {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2);
   }
 }
 

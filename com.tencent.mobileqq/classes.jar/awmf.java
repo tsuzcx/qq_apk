@@ -1,174 +1,131 @@
-import android.content.Intent;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.ArrowKeyMovementMethod;
-import android.text.style.ImageSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import java.util.List;
 
 public class awmf
-  extends ArrowKeyMovementMethod
-  implements bkpw
+  implements anui
 {
-  private static awmf jdField_a_of_type_Awmf;
-  private int jdField_a_of_type_Int;
-  private Class jdField_a_of_type_JavaLangClass;
-  private WeakReference<aglj> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private WeakReference<BaseChatPie> jdField_b_of_type_MqqUtilWeakReference;
-  private int c;
+  protected void a() {}
   
-  public static awmf a(int paramInt, Class<? extends ImageSpan> paramClass)
-  {
-    if (jdField_a_of_type_Awmf == null) {
-      jdField_a_of_type_Awmf = new awmf();
-    }
-    jdField_a_of_type_Awmf.c = paramInt;
-    jdField_a_of_type_Awmf.jdField_a_of_type_JavaLangClass = paramClass;
-    return jdField_a_of_type_Awmf;
-  }
+  protected void a(int paramInt, String paramString) {}
   
-  public static void a()
-  {
-    if (jdField_a_of_type_Awmf != null) {
-      jdField_a_of_type_Awmf.jdField_a_of_type_Boolean = true;
-    }
-  }
+  protected void a(int paramInt, String paramString1, String paramString2) {}
   
-  public static void a(aglj paramaglj)
+  protected void a(int paramInt, String paramString, boolean paramBoolean) {}
+  
+  protected void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void a(ListenTogetherSession paramListenTogetherSession) {}
+  
+  protected void a(ISong paramISong) {}
+  
+  protected void a(String paramString, int paramInt) {}
+  
+  protected void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, ListenTogetherSession paramListenTogetherSession) {}
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList) {}
+  
+  protected void b(int paramInt, String paramString) {}
+  
+  protected void c(int paramInt, String paramString) {}
+  
+  protected void d(int paramInt, String paramString) {}
+  
+  protected void e(int paramInt, String paramString) {}
+  
+  protected void f(int paramInt, String paramString) {}
+  
+  protected void g(int paramInt, String paramString) {}
+  
+  protected void h(int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (jdField_a_of_type_Awmf != null)
+    switch (paramInt)
     {
-      if (paramaglj != null) {
-        jdField_a_of_type_Awmf.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaglj);
-      }
-    }
-    else {
+    default: 
+      return;
+    case 4: 
+      a((ListenTogetherSession)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 5: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
+      return;
+    case 19: 
+      paramObject = (Object[])paramObject;
+      b(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 6: 
+      paramObject = (Object[])paramObject;
+      c(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 7: 
+      paramObject = (Object[])paramObject;
+      d(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 21: 
+      paramObject = (Object[])paramObject;
+      f(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 20: 
+      paramObject = (Object[])paramObject;
+      e(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 8: 
+      paramObject = (Object[])paramObject;
+      g(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 9: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+      return;
+    case 10: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
+      return;
+    case 11: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
+      return;
+    case 12: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 13: 
+      a((ISong)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 14: 
+      paramObject = (Object[])paramObject;
+      h(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 15: 
+      paramObject = (Object[])paramObject;
+      a(((Boolean)paramObject[0]).booleanValue(), (ListenTogetherSession)paramObject[1]);
+      return;
+    case 16: 
+      a();
+      return;
+    case 18: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2]);
+      return;
+    case 22: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
       return;
     }
-    jdField_a_of_type_Awmf.jdField_a_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public static void a(BaseChatPie paramBaseChatPie)
-  {
-    if (jdField_a_of_type_Awmf != null)
+    paramObject = (Object[])paramObject;
+    if (paramBoolean)
     {
-      if (paramBaseChatPie != null) {
-        jdField_a_of_type_Awmf.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramBaseChatPie);
-      }
-    }
-    else {
+      a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
       return;
     }
-    jdField_a_of_type_Awmf.jdField_b_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
-      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getY());
-    }
-    int j;
-    int m;
-    int k;
-    Object[] arrayOfObject;
-    int n;
-    int i1;
-    boolean bool;
-    if (paramMotionEvent.getAction() == 1)
-    {
-      i = (int)paramMotionEvent.getX();
-      j = (int)paramMotionEvent.getY();
-      if ((Math.abs(this.jdField_a_of_type_Int - i) < 10) && (Math.abs(this.jdField_b_of_type_Int - j) < 10))
-      {
-        m = paramTextView.getTotalPaddingLeft();
-        k = paramTextView.getTotalPaddingTop();
-        i = i - m + paramTextView.getScrollX();
-        j = j - k + paramTextView.getScrollY();
-        Layout localLayout = paramTextView.getLayout();
-        m = localLayout.getLineForVertical(j);
-        k = localLayout.getOffsetForHorizontal(m, i);
-        arrayOfObject = paramSpannable.getSpans(k, k, this.jdField_a_of_type_JavaLangClass);
-        if (arrayOfObject.length > 0)
-        {
-          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(arrayOfObject[0]), paramSpannable.getSpanEnd(arrayOfObject[0]));
-          paramSpannable = (BaseChatPie)this.jdField_b_of_type_MqqUtilWeakReference.get();
-          if ((!(arrayOfObject[0] instanceof ImageSpan)) || (paramSpannable == null)) {
-            return false;
-          }
-          k = localLayout.getLineTop(m);
-          m = localLayout.getLineBottom(m);
-          n = paramTextView.getTotalPaddingLeft();
-          paramMotionEvent = ((ImageSpan)arrayOfObject[0]).getDrawable().getBounds();
-          i1 = paramMotionEvent.width();
-          if ((i < this.c) || (i > i1 + this.c)) {
-            return false;
-          }
-          if ((j < k) || (j > m)) {
-            return false;
-          }
-          i1 = m - paramMotionEvent.height() - paramTextView.getScrollY() + paramTextView.getTotalPaddingTop() + bqcd.a(BaseApplicationImpl.getContext());
-          if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (((aglj)this.jdField_a_of_type_MqqUtilWeakReference.get()).a()))
-          {
-            bool = true;
-            if (bool) {
-              break label730;
-            }
-            j = bggq.a(BaseApplicationImpl.getApplication()).jdField_b_of_type_Int;
-          }
-        }
-      }
-    }
-    for (int i = afur.a(50.0F, BaseApplicationImpl.getApplication().getResources());; i = 0)
-    {
-      if (bool) {}
-      for (paramTextView = new Rect(paramMotionEvent.left + n, paramMotionEvent.top + i1, paramMotionEvent.left + n + paramMotionEvent.width(), i1 + (paramMotionEvent.top + paramMotionEvent.height()));; paramTextView = new Rect(paramMotionEvent.left + n, j - paramMotionEvent.height() - i, paramMotionEvent.left + n + paramMotionEvent.width(), j - i))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMovementMethodExt", 2, "fullState:" + bool + ", top:" + k + ", bottom:" + m + ",padLeft:" + n + ", screenH:" + j + ", panelH:" + i + ", bounds:" + paramMotionEvent + ", rect:" + paramTextView);
-        }
-        if (paramSpannable.a != null)
-        {
-          paramMotionEvent = new Intent(paramSpannable.a, NewPhotoPreviewActivity.class);
-          paramMotionEvent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", ((ImageSpan)arrayOfObject[0]).getSource());
-          paramMotionEvent.putExtra("input_full_screen_click", true);
-          paramMotionEvent.putExtra("PhotoConst.SHOW_ALBUM", false);
-          paramMotionEvent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", false);
-          paramMotionEvent.putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", false);
-          paramMotionEvent.putExtra("showFlashPic", false);
-          paramMotionEvent.putExtra("KEY_THUMBNAL_BOUND", paramTextView);
-          paramMotionEvent.putExtra("enter_from", 1);
-          paramMotionEvent.addFlags(603979776);
-          paramSpannable.a.startActivity(paramMotionEvent);
-          paramSpannable.aJ();
-        }
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        bool = false;
-        break;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-      label730:
-      j = 0;
-    }
+    a(true, (String)paramObject[0], 0, null);
   }
 }
 

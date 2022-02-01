@@ -68,7 +68,7 @@ public class AppBrandPageContainer
 {
   public static final String KEY_APPID = "appId";
   public static final String KEY_SCENE = "scene";
-  public static final int MAX_AliveWebViewCount = 10;
+  public static final int MAX_ALIVEWEBVIEWCOUNT = 10;
   public static final String ON_APP_ENTER_BACKGROUND = "onAppEnterBackground";
   public static final String ON_APP_ENTER_FOREGROUND = "onAppEnterForeground";
   public static final String ON_KEYBOARD_HEIGHT_CHANGE = "onKeyboardHeightChange";
@@ -443,7 +443,7 @@ public class AppBrandPageContainer
               j = Integer.parseInt(localObject[7]);
               if (j > 0)
               {
-                QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " REPORT_EVENT_Display: " + j);
+                QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " REPORT_EVENT_DISPLAY: " + j);
                 MiniReportManager.reportEventType(localMiniAppInfo, 638, null, null, null, 0, "0", j, null);
               }
             }
@@ -460,7 +460,7 @@ public class AppBrandPageContainer
             if (l <= 0L) {
               break label416;
             }
-            QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " REPORT_EVENT_Speed: " + l);
+            QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " REPORT_EVENT_SPEED: " + l);
             if (9 == j) {
               MiniReportManager.reportEventType(localMiniAppInfo, 636, null, null, null, 0, "0", l, null);
             }

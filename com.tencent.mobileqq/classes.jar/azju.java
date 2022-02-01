@@ -1,54 +1,51 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
-public class azju
-  implements bkin
+class azju
 {
-  public azju(QzonePhotoView paramQzonePhotoView) {}
+  private int jdField_a_of_type_Int;
+  private azjv jdField_a_of_type_Azjv;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
   
-  public AdapterView a(Context paramContext, int paramInt)
+  azju(int paramInt1, int paramInt2, @NonNull azjv paramazjv)
   {
-    do
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Azjv = paramazjv;
+  }
+  
+  void a()
+  {
+    int i;
+    if (this.jdField_a_of_type_Boolean)
     {
-      try
+      i = this.jdField_a_of_type_Int;
+      int j = this.c;
+      this.c = (j + 1);
+      if (j >= i - 1)
       {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131167224);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
+        this.c = 0;
+        if (this.jdField_a_of_type_Boolean) {
+          break label72;
         }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+    }
+    label72:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Azjv.a(this.jdField_a_of_type_Boolean);
+      return;
+      i = this.b;
+      break;
+    }
+  }
+  
+  void b()
+  {
+    this.c = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

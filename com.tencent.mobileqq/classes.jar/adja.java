@@ -1,18 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.Grp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adja
-  extends BroadcastReceiver
+  implements adbw
 {
-  public adja(AddAccountActivity paramAddAccountActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a()
   {
-    QLog.d("AddAccountActivity", 1, "AutoLoginReceiver onReceive");
-    AddAccountActivity.a(this.a, true);
+    return 1;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.Grp();
+    paramQQAppInterface.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.grp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3002;
   }
 }
 

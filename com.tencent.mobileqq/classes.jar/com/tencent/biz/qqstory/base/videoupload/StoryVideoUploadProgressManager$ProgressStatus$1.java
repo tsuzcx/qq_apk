@@ -1,22 +1,22 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import android.os.Handler;
-import wik;
-import wil;
-import yqp;
+import wmf;
+import wmg;
+import yuk;
 
 public class StoryVideoUploadProgressManager$ProgressStatus$1
   implements Runnable
 {
-  public StoryVideoUploadProgressManager$ProgressStatus$1(wil paramwil) {}
+  public StoryVideoUploadProgressManager$ProgressStatus$1(wmg paramwmg) {}
   
   public void run()
   {
-    yqp.a("StoryVideoUploadProgressManager", "progress running, id=%s", this.a.jdField_a_of_type_JavaLangString);
-    wil.a(this.a);
-    wik.a(this.a.jdField_a_of_type_Wik, this.a.jdField_a_of_type_JavaLangString, this.a.b);
-    if (!wil.a(this.a)) {
-      wik.a(this.a.jdField_a_of_type_Wik).postDelayed(wil.a(this.a), 500L);
+    yuk.a("StoryVideoUploadProgressManager", "progress running, id=%s", this.a.jdField_a_of_type_JavaLangString);
+    wmg.a(this.a);
+    wmf.a(this.a.jdField_a_of_type_Wmf, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    if (!wmg.a(this.a)) {
+      wmf.a(this.a.jdField_a_of_type_Wmf).postDelayed(wmg.a(this.a), 500L);
     }
   }
 }

@@ -1,47 +1,23 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class syj
+class syj
+  extends blgm
 {
-  public static int a;
-  public float a;
-  public View a;
-  public BaseData a;
-  protected syo a;
-  public float b = 14.0F;
-  public int b;
-  public int c = 16;
-  public int d = 18;
+  syj(syi paramsyi) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_Int = 32;
-  }
-  
-  public syj() {}
-  
-  public syj(View paramView, BaseData paramBaseData)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
-  }
-  
-  public abstract void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean);
-  
-  public void a(String paramString, Bitmap paramBitmap) {}
-  
-  public void a(syo paramsyo)
-  {
-    this.jdField_a_of_type_Syo = paramsyo;
-  }
-  
-  public void b() {}
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData2;
-    a(paramBaseData1, paramBaseData2, paramBoolean);
+    super.onAnimationEnd(paramAnimation);
+    if (syh.a(this.a.a) != null)
+    {
+      paramAnimation = new ArrayList();
+      paramAnimation.add(syh.a(this.a.a));
+      syh.a(this.a.a).a(paramAnimation, syh.a(this.a.a));
+      QQToast.a(this.a.a.a, 2, 2131717140, 0).a();
+    }
   }
 }
 

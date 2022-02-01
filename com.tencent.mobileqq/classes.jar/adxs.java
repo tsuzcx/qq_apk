@@ -1,43 +1,63 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
 public class adxs
-  implements bmre
+  extends AccountObserver
 {
-  public adxs(ChatSettingForTroop paramChatSettingForTroop) {}
+  adxs(adxp paramadxp) {}
   
-  public void a(int paramInt)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    int i = 0;
-    boolean bool;
-    Object localObject;
-    if (paramInt == 0)
-    {
-      this.a.b = true;
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
-      if (localObject != null) {
-        if (!bool) {
-          break label88;
-        }
-      }
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), adxp.a(this.a), paramString2, paramString1 }));
     }
-    label88:
-    for (paramInt = 0;; paramInt = 8)
+    this.a.c = false;
+    adxp.a(this.a);
+    if (adxp.a(this.a) != null)
     {
-      ((View)localObject).setVisibility(paramInt);
-      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
-      if (localObject != null)
-      {
-        paramInt = i;
-        if (bool) {
-          paramInt = 3;
-        }
-        ((FormSimpleItem)localObject).setBgType(paramInt);
-      }
-      return;
+      paramString1 = new Intent(adxp.a(this.a), LoginActivity.class);
+      paramString1.putExtra("uin", adxp.a(this.a));
+      paramString1.putExtra("tab_index", MainFragment.b);
+      paramString1.addFlags(131072);
+      adxp.a(this.a).startActivity(paramString1);
+      adxp.a(this.a).finish();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
+    }
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    this.a.c = false;
+    adxp.a(this.a);
+    adxp.a(this.a).a.post(new AutoLoginHelper.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import anjx;
-import anrd;
+import anvu;
+import aodj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.TimerTask;
 public class PrinterHandler$1
   extends TimerTask
 {
-  public PrinterHandler$1(anrd paramanrd, anjx paramanjx, Timer paramTimer) {}
+  public PrinterHandler$1(aodj paramaodj, anvu paramanvu, Timer paramTimer) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class PrinterHandler$1
         if (localIterator.hasNext())
         {
           long l = ((Long)localIterator.next()).longValue();
-          this.jdField_a_of_type_Anjx.a(0, l, true);
+          this.jdField_a_of_type_Anvu.a(0, l, true);
           this.this$0.a(Long.valueOf(l), false);
         }
       }

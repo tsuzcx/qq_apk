@@ -12,9 +12,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import pmy;
+import pfs;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzo;
+import tzq;
 
 public final class ReadinjoySPEventReport$2
   implements Runnable
@@ -23,14 +23,14 @@ public final class ReadinjoySPEventReport$2
   {
     ArrayList localArrayList;
     oidb_cmd0x80a.AttributeList localAttributeList;
-    if (pmy.b(8))
+    if (pfs.b(8))
     {
       localArrayList = new ArrayList();
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(1);
       localAttributeList.att_name.set("DTHasRed");
       PBStringField localPBStringField = localAttributeList.att_value;
-      if (!pmy.b()) {
+      if (!pfs.b()) {
         break label189;
       }
       localObject = String.valueOf(1);
@@ -62,8 +62,8 @@ public final class ReadinjoySPEventReport$2
         localAttributeList.att_name.set("tab");
         localAttributeList.att_value.set((String)localObject);
         localArrayList.add(localAttributeList);
-        tzo.a(8, localArrayList);
-        pmy.b(System.currentTimeMillis());
+        tzq.a(8, localArrayList);
+        pfs.b(System.currentTimeMillis());
         return;
         label189:
         localObject = String.valueOf(0);

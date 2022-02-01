@@ -1,28 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
 
 public class atyl
-  implements View.OnClickListener
+  implements bmlr
 {
-  public atyl(SendBottomBar paramSendBottomBar) {}
+  atyl(atyk paramatyk) {}
   
-  public void onClick(View paramView)
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    String str2 = anni.a(2131712555) + athc.b() + anni.a(2131712561);
-    String str1 = null;
-    String str3 = anni.a(2131712573);
-    if (SendBottomBar.a(this.a).g() != -1)
-    {
-      str2 = anni.a(2131712579);
-      str1 = anni.a(2131712575);
-      str3 = anni.a(2131712572);
-    }
-    this.a.a = bglp.a(SendBottomBar.a(this.a), 230, str1, str2, anni.a(2131712571), str3, new atym(this), new atyn(this));
-    this.a.a.show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
+    return true;
   }
 }
 

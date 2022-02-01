@@ -1,33 +1,18 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class blom
-  extends blpb
+  implements View.OnClickListener
 {
   blom(blol paramblol) {}
   
-  public void a(@NonNull blpa paramblpa)
+  public void onClick(View paramView)
   {
-    paramblpa = paramblpa.a();
-    if (paramblpa == null) {
-      blpu.a("ReaderUrlConfigDataHelper", "Response json is null");
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    do
-    {
-      return;
-      if (paramblpa.length() == 0)
-      {
-        blpu.a("ReaderUrlConfigDataHelper", "后台数据异常");
-        return;
-      }
-    } while (!blol.a(this.a, paramblpa));
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    blol.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_URL_CONFIG_DATA" + str, paramblpa.toString()).apply();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

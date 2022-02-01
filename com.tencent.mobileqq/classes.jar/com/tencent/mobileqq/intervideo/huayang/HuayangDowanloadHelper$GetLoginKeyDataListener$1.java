@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.content.Context;
-import avil;
-import avio;
+import awat;
+import awaw;
 import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 import com.tencent.mobileqq.intervideo.IVPluginInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -10,24 +10,24 @@ import com.tencent.qphone.base.util.QLog;
 public class HuayangDowanloadHelper$GetLoginKeyDataListener$1
   implements Runnable
 {
-  public HuayangDowanloadHelper$GetLoginKeyDataListener$1(avio paramavio, boolean paramBoolean1, boolean paramBoolean2) {}
+  public HuayangDowanloadHelper$GetLoginKeyDataListener$1(awaw paramawaw, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("HuayangPluginNewDownloader", 2, "startLoadingActivity：" + System.currentTimeMillis());
     }
-    if (!avil.a(this.jdField_a_of_type_Avio.a))
+    if (!awat.a(this.jdField_a_of_type_Awaw.a))
     {
-      localContext = avil.a(this.jdField_a_of_type_Avio.a);
-      str2 = avio.a(this.jdField_a_of_type_Avio);
-      localIVPluginInfo = avio.a(this.jdField_a_of_type_Avio);
-      localInstalledPlugin = avio.a(this.jdField_a_of_type_Avio);
-      str3 = avil.d(this.jdField_a_of_type_Avio.a);
+      localContext = awat.a(this.jdField_a_of_type_Awaw.a);
+      str2 = awaw.a(this.jdField_a_of_type_Awaw);
+      localIVPluginInfo = awaw.a(this.jdField_a_of_type_Awaw);
+      localInstalledPlugin = awaw.a(this.jdField_a_of_type_Awaw);
+      str3 = awat.d(this.jdField_a_of_type_Awaw.a);
       if (this.jdField_a_of_type_Boolean)
       {
-        str1 = avil.e(this.jdField_a_of_type_Avio.a);
-        HuayangLoadbackgroudActivity.a(localContext, str2, localIVPluginInfo, localInstalledPlugin, str3, str1, this.b, this.jdField_a_of_type_Boolean, avil.c(this.jdField_a_of_type_Avio.a), avio.a(this.jdField_a_of_type_Avio));
+        str1 = awat.e(this.jdField_a_of_type_Awaw.a);
+        HuayangLoadbackgroudActivity.a(localContext, str2, localIVPluginInfo, localInstalledPlugin, str3, str1, this.b, this.jdField_a_of_type_Boolean, awat.c(this.jdField_a_of_type_Awaw.a), awaw.a(this.jdField_a_of_type_Awaw));
       }
     }
     while (!QLog.isColorLevel()) {

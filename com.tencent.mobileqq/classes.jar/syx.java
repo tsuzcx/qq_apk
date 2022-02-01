@@ -1,25 +1,10 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
-public class syx
-  implements syk
+public abstract interface syx
 {
-  public int a(BaseData paramBaseData)
-  {
-    return 11;
-  }
+  public abstract int a();
   
-  public syj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    return new syy(LayoutInflater.from(paramContext).inflate(2131560160, paramViewGroup, false), paramBaseData);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.t == 11;
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

@@ -1,15 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import java.util.List;
 
 public class aaer
-  implements aaeo
+  implements aaex
 {
-  public void a(View paramView)
+  public aaer(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (this.a.isShowing()) {
-      aaeq.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
+    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
+      return;
     }
+    abbe.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
   }
 }
 

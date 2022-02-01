@@ -1,117 +1,114 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.Comment;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListResp;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class aycn
-  extends RecyclerView.Adapter<ayco>
+class aycn
+  extends nkp
 {
-  private int jdField_a_of_type_Int = 3;
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private aydj jdField_a_of_type_Aydj;
-  private final List<ayeh> jdField_a_of_type_JavaUtilList;
+  aycn(aycm paramaycm, ayck paramayck) {}
   
-  public aycn(FragmentActivity paramFragmentActivity, RecyclerView paramRecyclerView, List<ayeh> paramList)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public ayco a(ViewGroup paramViewGroup, int paramInt)
-  {
-    switch (paramInt)
+    boolean bool = false;
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-    case 2: 
-    default: 
-      return new aycp(LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559531, paramViewGroup, false));
-    case 0: 
-      if (this.jdField_a_of_type_Aydj == null)
+      paramBundle = new oidb_0xada.RspBody();
+      try
       {
-        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559530, paramViewGroup, false);
-        this.jdField_a_of_type_Aydj = new aydj(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, paramViewGroup);
+        paramBundle.mergeFrom(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        if (!paramBundle.busi_buf.has())
+        {
+          QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+          this.jdField_a_of_type_Ayck.a();
+          return;
+        }
+        paramArrayOfByte = new NowNearbyVideoCommentProto.GetCommentListResp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        if (paramArrayOfByte.result.get() != 0L)
+        {
+          QLog.i("CommentsDataSource", 1, "error code :" + paramArrayOfByte.result.get());
+          this.jdField_a_of_type_Ayck.a();
+          return;
+        }
       }
-      return this.jdField_a_of_type_Aydj;
-    case 1: 
-      return new aycs(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559526, paramViewGroup, false));
-    }
-    return new ayea(LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559532, paramViewGroup, false));
-  }
-  
-  public void a()
-  {
-    notifyItemChanged(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(ayco paramayco)
-  {
-    super.onViewAttachedToWindow(paramayco);
-    ViewGroup.LayoutParams localLayoutParams = paramayco.itemView.getLayoutParams();
-    if ((localLayoutParams != null) && ((localLayoutParams instanceof StaggeredGridLayoutManager.LayoutParams)) && (a(paramayco.getLayoutPosition()))) {
-      ((StaggeredGridLayoutManager.LayoutParams)localLayoutParams).setFullSpan(true);
-    }
-  }
-  
-  public void a(ayco paramayco, int paramInt)
-  {
-    switch (getItemViewType(paramInt))
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramayco, paramInt, getItemId(paramInt));
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("CommentsDataSource", 1, "merge data error " + paramArrayOfByte);
+        this.jdField_a_of_type_Ayck.a();
+        return;
+      }
+      paramBundle = new Comments();
+      paramBundle.jdField_a_of_type_Long = paramArrayOfByte.total_num.get();
+      QLog.i("CommentsDataSource", 1, "all comments count is: " + paramBundle.jdField_a_of_type_Long);
+      if (paramArrayOfByte.end_flag.get() == 1L) {
+        bool = true;
+      }
+      paramBundle.jdField_a_of_type_Boolean = bool;
+      paramBundle.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (paramArrayOfByte.lists.has())
+      {
+        Iterator localIterator = paramArrayOfByte.lists.get().iterator();
+        while (localIterator.hasNext())
+        {
+          NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)localIterator.next();
+          Comments.Comment localComment1 = new Comments.Comment();
+          localComment1.jdField_a_of_type_Long = localComment.comment_id.get();
+          localComment1.jdField_b_of_type_Long = localComment.create_time.get();
+          localComment1.jdField_a_of_type_Int = localComment.type.get();
+          if (localComment.publish_info.has())
+          {
+            localComment1.jdField_c_of_type_Long = localComment.publish_info.uid.get();
+            localComment1.jdField_b_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
+            localComment1.jdField_c_of_type_JavaLangString = localComment.publish_info.head_img_url.get().toStringUtf8();
+            localComment1.jdField_b_of_type_Int = localComment.publish_info.user_type.get();
+            localComment1.jdField_d_of_type_Long = localComment.publish_info.now_id.get();
+            if (localComment.reply_info.has())
+            {
+              localComment1.jdField_e_of_type_Long = localComment.reply_info.uid.get();
+              localComment1.jdField_d_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
+              localComment1.jdField_e_of_type_JavaLangString = localComment.reply_info.head_img_url.get().toStringUtf8();
+              localComment1.jdField_c_of_type_Int = localComment.reply_info.user_type.get();
+              localComment1.f = localComment.reply_info.now_id.get();
+            }
+          }
+          if ((localComment.content.has()) && (localComment.content.msgs.has())) {
+            localComment1.jdField_a_of_type_JavaLangString = ((NowNearbyVideoCommentProto.CommentMsg)localComment.content.msgs.get(0)).msg.get().toStringUtf8();
+          }
+          if (!aycm.a(this.jdField_a_of_type_Aycm).contains(Long.valueOf(localComment.comment_id.get()))) {
+            aycm.a(this.jdField_a_of_type_Aycm).add(Long.valueOf(localComment.comment_id.get()));
+          }
+          if (localComment1.jdField_a_of_type_Int == 2) {
+            paramBundle.b.add(localComment1);
+          }
+          paramBundle.jdField_a_of_type_JavaUtilList.add(localComment1);
+        }
+      }
+      QLog.i("CommentsDataSource", 1, "total:" + paramArrayOfByte.total_num.get() + ", ret:" + paramArrayOfByte.result.get());
+      this.jdField_a_of_type_Ayck.a(paramBundle);
       return;
-      this.jdField_a_of_type_Aydj.a();
-      continue;
-      aycr.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramayco);
-      continue;
-      if (paramInt - 2 < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ayeb.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramayco, (ayeh)this.jdField_a_of_type_JavaUtilList.get(paramInt - 2), paramInt);
-        continue;
-        ayeb.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramayco, this.jdField_a_of_type_Int);
-      }
     }
-  }
-  
-  protected boolean a(int paramInt)
-  {
-    return getItemViewType(paramInt) != 2;
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))) {
-      return 3;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size() + 2;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if ((this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))) {
-      return 3;
-    }
-    return 2;
+    QLog.i("CommentsDataSource", 1, "getComments failed");
+    this.jdField_a_of_type_Ayck.a();
   }
 }
 

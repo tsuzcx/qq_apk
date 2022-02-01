@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.portal;
 
-import azav;
+import azti;
 import com.tencent.widget.HongBaoListView;
 
 public class ConversationHongBao$1
   implements Runnable
 {
-  public ConversationHongBao$1(azav paramazav) {}
+  public ConversationHongBao$1(azti paramazti) {}
   
   public void run()
   {

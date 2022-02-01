@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class axha
-  implements View.OnClickListener
 {
-  public axha(RecentUserInvitePanel paramRecentUserInvitePanel) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  private axha(String paramString, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupPushData--");
+    localStringBuilder.append(",sig:").append(this.jdField_a_of_type_JavaLangString).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

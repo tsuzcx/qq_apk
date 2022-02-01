@@ -1,19 +1,11 @@
-import java.util.Comparator;
-
 class amse
-  implements Comparator<amsf>
 {
-  amse(amsd paramamsd) {}
+  public int a;
+  public String a;
   
-  public int a(amsf paramamsf1, amsf paramamsf2)
+  amse(amsb paramamsb)
   {
-    if (paramamsf1.a == paramamsf2.a) {
-      return 0;
-    }
-    if (paramamsf1.a > paramamsf2.a) {
-      return -1;
-    }
-    return 1;
+    this.jdField_a_of_type_JavaLangString = "0";
   }
 }
 

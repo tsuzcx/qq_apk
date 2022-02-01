@@ -1,22 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aymq
-  extends aypr
+class aymq
+  implements View.OnClickListener
 {
-  public aymq(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  aymq(aymj paramaymj) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramBundle);
-    if (paramBoolean)
-    {
-      if (!paramBundle.getBoolean("param_need_switch_online_status")) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
-      }
-      return;
-    }
-    AccountOnlineStateActivity.a(this.a, true, -1);
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
+    localIntent.putExtra("reqType", 1);
+    this.a.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,79 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide;
 
 public class qbi
+  extends ViewBase
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ReadInJoyAdVideoGuide jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide;
+  
+  public qbi(VafContext paramVafContext)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anni.a(2131711741));
-      localJSONObject.put("id_gallery_cnt", localObject1);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject.put("id_gallery_img", localObject1);
-      localJSONObject.put("id_gallery_bg", new JSONObject());
-    }
-    Object localObject2;
-    Object localObject3;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
-    {
-      localObject2 = snh.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
-        return localJSONObject;
-      }
-      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
-      if (localObject1 == null)
-      {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
-        if (localObject2 != null) {
-          break label280;
-        }
-      }
-      label280:
-      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
-      {
-        localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject3);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        qcd.a(paramBaseArticleInfo, localJSONObject, true);
-        qcd.l(paramBaseArticleInfo, localJSONObject);
-        qcd.i(paramBaseArticleInfo, localJSONObject);
-        qcd.a(localJSONObject);
-        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
-        qcd.a(localJSONObject, paramBaseArticleInfo);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-      }
-    }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
-    {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label313:
-      localObject2 = ((URL)localObject1).getFile();
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label363;
-      }
-    }
-    label363:
-    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
-    {
-      localObject3 = ((URL)localObject1).getFile();
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label313;
-    }
+    super(paramVafContext);
+    this.jdField_a_of_type_AndroidContentContext = paramVafContext.getContext();
+    a(paramVafContext);
+  }
+  
+  private void a(VafContext paramVafContext)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide = new ReadInJoyAdVideoGuide(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.setVisibility(8);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.getMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.getMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.measure(paramInt1, paramInt2);
   }
 }
 

@@ -1,11 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.HashMap;
+
 class arzz
-  extends arvf
+  extends BroadcastReceiver
 {
-  arzz(arzy paramarzy) {}
+  arzz(arzx paramarzx) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(paramInt);
+    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
+    paramIntent = (asaa)arzx.a(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.b()))
+    {
+      this.a.a();
+      arzx.a(this.a).a(paramContext);
+    }
   }
 }
 

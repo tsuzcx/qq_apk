@@ -1,20 +1,8 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
 
-public class zsh
-  implements QQPermissionCallback
+public abstract interface zsh
 {
-  public zsh(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.f();
-  }
+  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
 }
 
 

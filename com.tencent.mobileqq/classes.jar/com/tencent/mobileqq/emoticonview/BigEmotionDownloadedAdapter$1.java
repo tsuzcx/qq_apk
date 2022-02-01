@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -13,17 +13,17 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import arwh;
+import aslv;
 
 public class BigEmotionDownloadedAdapter$1
   implements Runnable
 {
-  public BigEmotionDownloadedAdapter$1(arwh paramarwh, Context paramContext) {}
+  public BigEmotionDownloadedAdapter$1(aslv paramaslv, Context paramContext) {}
   
   public void run()
   {
     this.this$0.a = new ColorDrawable(Color.parseColor("#fafafa"));
-    Bitmap localBitmap = Bitmap.createBitmap(afur.a(44.0F, this.a.getResources()), afur.a(44.0F, this.a.getResources()), Bitmap.Config.ARGB_8888);
+    Bitmap localBitmap = Bitmap.createBitmap(agej.a(44.0F, this.a.getResources()), agej.a(44.0F, this.a.getResources()), Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint();
     Rect localRect = new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight());

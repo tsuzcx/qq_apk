@@ -1,99 +1,42 @@
-import android.app.Activity;
 import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Log;
+import com.tencent.biz.pubaccount.readinjoy.KandianUGStatisticUtils.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ohk
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TemplateBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new VafContext();
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private teh jdField_a_of_type_Teh;
+  private static ExecutorService a;
   
-  public ohk(Activity paramActivity, FrameLayout paramFrameLayout)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
-    this.jdField_a_of_type_Teh = teh.a("default_feeds", true);
-    pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setTemplateFactory(this.jdField_a_of_type_Teh);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    a();
+    paramString1 = paramString1.replace("ARTICLE_ID", paramString2).replace("USER_QQ", ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin()).replace("ACTION_TYPE", paramString3);
+    Log.d("DE_KUAIB", paramString2 + "|" + paramString3);
+    return paramString1;
   }
   
-  private void a()
+  public static void a(String paramString)
   {
-    try
-    {
-      String str = (String)bmqa.a("readinjoy_follow_subscribed_list_data_key", "");
-      if (!TextUtils.isEmpty(str)) {
-        a(new JSONObject(str));
-      }
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (a == null) {
+      a = Executors.newFixedThreadPool(1);
     }
+    a.execute(new KandianUGStatisticUtils.1(paramString));
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static String b(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramJSONObject == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
-      return;
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
     }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Teh != null)
-        {
-          localTemplateBean = this.jdField_a_of_type_Teh.getTemplateBean(paramJSONObject);
-          if (localTemplateBean == null)
-          {
-            QLog.d("SubscribedListHeaderController", 1, "templateBean is null");
-            return;
-          }
-          if (this.jdField_a_of_type_OrgJsonJSONObject == null)
-          {
-            Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
-            if (localContainer == null) {
-              break;
-            }
-            localContainer.setBackgroundResource(2130841683);
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localContainer, -1, -1);
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = localContainer;
-          }
-          pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
-          ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new ohl(this, localTemplateBean));
-          pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, localTemplateBean);
-          this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localTemplateBean;
-          pfr.a(localTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), "expose_T");
-          QLog.d("SubscribedListHeaderController", 1, "update subscribed list data : " + this.jdField_a_of_type_OrgJsonJSONObject);
-          return;
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        return;
-      }
-      TemplateBean localTemplateBean = null;
+    if (paramString1.contains("?")) {
+      return paramString1 + "&acttype=" + paramString2 + "&subpos=" + paramString3;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() == 0;
+    return paramString1 + "?acttype=" + paramString2 + "&subpos=" + paramString3;
   }
 }
 

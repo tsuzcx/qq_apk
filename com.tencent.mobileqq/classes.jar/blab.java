@@ -1,15 +1,15 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class blab
-  implements EIPCResultCallback
+  implements DialogInterface.OnClickListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  blab(Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEIPCResult.isSuccess()) {
-      blaa.a(paramEIPCResult.data.getString("config_json"));
-    }
+    mvd.a(this.a);
   }
 }
 

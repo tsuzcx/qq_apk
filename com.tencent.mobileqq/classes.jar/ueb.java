@@ -1,19 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import UserGrowth.stUserConfigRsp;
 
-class ueb
-  implements MiniAppLauncher.MiniAppLaunchListener
+final class ueb
+  implements ukd
 {
-  ueb(uea paramuea) {}
-  
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void a(uko paramuko)
   {
-    upe.a("WSUserAuthDialog", "jump to miniApp result = " + paramBoolean);
+    if (paramuko.a())
+    {
+      if ((paramuko.a instanceof stUserConfigRsp))
+      {
+        paramuko = (stUserConfigRsp)paramuko.a;
+        uqf.a("WSUserAuthDialog", "doTask: UserConfig response :  code = " + paramuko.code);
+        return;
+      }
+      uqf.a("WSUserAuthDialog", "doTask: UserConfig response : response is not instanceof stUserConfigRsp");
+      return;
+    }
+    uqf.a("WSUserAuthDialog", "doTask: UserConfig response : !task.succeeded()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ueb
  * JD-Core Version:    0.7.0.1
  */

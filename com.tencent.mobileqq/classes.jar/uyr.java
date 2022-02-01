@@ -1,69 +1,28 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonInfoWidget;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
-public class uyr
-  extends uzx
+class uyr
+  extends apck
 {
-  private QCirclePersonInfoWidget jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget;
-  private vng jdField_a_of_type_Vng;
-  
-  public uyr(Bundle paramBundle)
+  uyr(uyq paramuyq, String paramString, boolean paramBoolean)
   {
-    super(paramBundle);
+    super(paramString, paramBoolean);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget = new QCirclePersonInfoWidget(getContext());
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget.setReportBean(a());
-    return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget;
-  }
-  
-  protected String a()
-  {
-    return "QCirclePersonalDetailHeaderBlock";
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("personDetail has dataList");
-    boolean bool;
-    if (this.mDataList != null)
+    if (paramInt == 0)
     {
-      bool = true;
-      QLog.d("QCirclePersonalDetailHeaderBlock", 1, String.valueOf(bool));
-      if ((this.mDataList != null) && (this.mDataList.size() > 0))
+      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
       {
-        if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget == null) {
-          break label146;
-        }
-        QLog.d("QCirclePersonalDetailHeaderBlock", 1, "personDetail mHeadPersonalDetailInfoView setData i" + paramInt);
-        this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget.setInteractor(this.mInteractor);
-        this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget.setData(this.mDataList.get(paramInt));
-        this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonInfoWidget.setHeaderClickListener(this.jdField_a_of_type_Vng);
+        uyq.a(this.a, paramSosoLbsInfo);
+        return;
       }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: location is null");
       return;
-      bool = false;
-      break;
-      label146:
-      QLog.e("QCirclePersonalDetailHeaderBlock", 1, "personDetail mHeadPersonalDetailInfoView isnull");
     }
+    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: failed");
   }
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

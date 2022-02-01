@@ -1,20 +1,35 @@
-import android.view.animation.Interpolator;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import java.util.List;
 
 public class smn
-  implements Interpolator
+  extends RecyclerView.RecycledViewPool
 {
-  public smn(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
+  public smn(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
   
-  public float getInterpolation(float paramFloat)
+  public RecyclerView.ViewHolder getRecycledView(int paramInt)
   {
-    if (paramFloat < 0.2F) {
-      return 0.0F;
+    Object localObject = this.a.getAdapter();
+    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
+    if ((localViewHolder != null) && ((localObject instanceof bltq)))
+    {
+      localObject = (bltq)localObject;
+      if (((bltq)localObject).d(paramInt))
+      {
+        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
+        {
+          putRecycledView(localViewHolder);
+          return null;
+        }
+      }
+      else if ((((bltq)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
+      {
+        putRecycledView(localViewHolder);
+        return null;
+      }
     }
-    if (paramFloat < 0.5F) {
-      return (paramFloat - 0.2F) / 0.3F;
-    }
-    return 1.0F;
+    return localViewHolder;
   }
 }
 

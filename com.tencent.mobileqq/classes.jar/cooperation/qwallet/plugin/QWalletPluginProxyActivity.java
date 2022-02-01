@@ -10,7 +10,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anni;
+import anzj;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
@@ -255,7 +255,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          QQToast.a(this, anni.a(2131710212), 0).a();
+          QQToast.a(this, anzj.a(2131710321), 0).a();
         }
         return;
       }

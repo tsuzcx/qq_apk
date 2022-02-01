@@ -215,7 +215,7 @@ public class a
       return paramContext;
       str = paramContext.getPackageName();
       paramContext = str;
-    } while (!j.c(str));
+    } while (!j.b(str));
     return "";
   }
   
@@ -365,7 +365,7 @@ public class a
         str3 = localf.a("APPKEY_DENGTA", null);
         str2 = b.b;
         str1 = str2;
-        if (j.c(str2)) {
+        if (j.b(str2)) {
           str1 = b.a(paramContext);
         }
         if (str3 != null)

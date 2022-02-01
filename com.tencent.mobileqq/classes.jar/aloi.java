@@ -1,22 +1,13 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.content.DialogInterface;
 
-public class aloi
-  implements MediaPlayer.OnCompletionListener
+class aloi
+  extends bhme
 {
-  public aloi(FixedSizeVideoView paramFixedSizeVideoView) {}
+  aloi(alof paramalof) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

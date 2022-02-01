@@ -1,31 +1,22 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import android.os.SystemClock;
-import auuc;
-import bkgj;
-import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
 class QQGameFeedWebFragment$13
   implements Runnable
 {
-  QQGameFeedWebFragment$13(QQGameFeedWebFragment paramQQGameFeedWebFragment, int paramInt) {}
+  QQGameFeedWebFragment$13(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
   public void run()
   {
-    if (QQGameFeedWebFragment.a(this.this$0) != null)
-    {
-      String str = auuc.a();
-      if (bkgj.a(str))
-      {
-        str = QQGameFeedWebFragment.a(this.this$0, str, QQGameFeedWebFragment.a(this.this$0), this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("GameWebPage", 1, "paramUrl = " + str);
-        }
-        this.this$0.d = SystemClock.elapsedRealtime();
-        QQGameFeedWebFragment.a(this.this$0).loadUrl(str);
-      }
-    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 3;
+    localMessage.arg1 = -1;
+    localMessage.arg2 = QQGameFeedWebFragment.a(this.this$0);
+    QLog.e("GameWebPage", 2, "#### height:" + localMessage.arg2);
+    QQGameFeedWebFragment.a(this.this$0).sendMessage(localMessage);
   }
 }
 

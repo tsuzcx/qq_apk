@@ -1,11 +1,17 @@
-import java.io.File;
+import android.os.IInterface;
 
-public class bnds
+public abstract interface bnds
+  extends IInterface
 {
-  public static final String a = bndv.b + File.separator + "playshow";
-  public static final String b = a + File.separator + "crazyface_tmp";
-  public static final String c = a + File.separator + "qudong_tmp";
-  public static final String d = a + File.separator + "web_tmp";
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

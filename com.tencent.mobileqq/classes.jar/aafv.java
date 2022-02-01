@@ -1,10 +1,8 @@
-import android.widget.ImageView;
-
-class aafv
+public abstract interface aafv
 {
-  public ImageView a;
+  public abstract void a();
   
-  private aafv(aaft paramaaft) {}
+  public abstract void b();
 }
 
 

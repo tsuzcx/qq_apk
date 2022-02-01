@@ -1,9 +1,19 @@
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.together.writetogether.data.EditUserHistory;
 
-class benx
+public final class benx
+  implements Parcelable.Creator<EditUserHistory>
 {
-  public int a;
-  public TextView a;
+  public EditUserHistory a(Parcel paramParcel)
+  {
+    return new EditUserHistory(paramParcel);
+  }
+  
+  public EditUserHistory[] a(int paramInt)
+  {
+    return new EditUserHistory[paramInt];
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import afur;
+import agej;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anry;
+import aoeg;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -27,24 +27,24 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SingleLineTextView;
 import java.net.URLDecoder;
-import ocw;
-import ocx;
-import ocy;
-import odu;
-import tzo;
+import oeg;
+import oeh;
+import oei;
+import ofe;
+import tzq;
 
 public class BusinessBrowser$BusinessBrowserFragment
   extends WebViewFragment
   implements Animation.AnimationListener
 {
   int jdField_a_of_type_Int = -1;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ocx(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new oeh(this);
   public View a;
   public Animation a;
   public ImageView a;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
-  anry jdField_a_of_type_Anry = new ocy(this);
+  aoeg jdField_a_of_type_Aoeg = new oei(this);
   public String a;
   public boolean a;
   public int b;
@@ -87,12 +87,12 @@ public class BusinessBrowser$BusinessBrowserFragment
     if (!this.jdField_b_of_type_Boolean) {
       return i;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131381162));
-    this.jdField_b_of_type_AndroidViewView = super.getActivity().findViewById(2131381152);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131381335));
+    this.jdField_b_of_type_AndroidViewView = super.getActivity().findViewById(2131381325);
     if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(super.getActivity(), 2131561939, null);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370529);
+      this.jdField_a_of_type_AndroidViewView = View.inflate(super.getActivity(), 2131561979, null);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370633);
       if (this.jdField_c_of_type_AndroidViewView != null)
       {
         if (!ThemeUtil.isInNightMode(this.mApp)) {
@@ -104,16 +104,16 @@ public class BusinessBrowser$BusinessBrowserFragment
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371539)).setText(String.valueOf(this.jdField_b_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368138));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366895));
+      ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371647)).setText(String.valueOf(this.jdField_b_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368212));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366946));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370198));
-      paramBundle = new RelativeLayout.LayoutParams(-1, afur.a(44.0F, super.getResources()));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370299));
+      paramBundle = new RelativeLayout.LayoutParams(-1, agej.a(44.0F, super.getResources()));
       paramBundle.addRule(10);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, paramBundle);
       a(this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-      this.webView.setOnScrollChangedListener(new ocw(this));
+      this.webView.setOnScrollChangedListener(new oeg(this));
       paramBundle = new Intent("action_get_PA_head");
       paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
       super.getActivity().sendBroadcast(paramBundle);
@@ -128,7 +128,7 @@ public class BusinessBrowser$BusinessBrowserFragment
   {
     this.jdField_a_of_type_Int = this.intent.getIntExtra("jump_from", -1);
     this.jdField_c_of_type_JavaLangString = this.intent.getStringExtra("msg_id");
-    this.jdField_c_of_type_Int = afur.a(44.0F, super.getResources());
+    this.jdField_c_of_type_Int = agej.a(44.0F, super.getResources());
     Object localObject = Uri.parse(super.getUrlFromIntent());
     boolean bool;
     if (((Uri)localObject).isHierarchical())
@@ -207,26 +207,26 @@ public class BusinessBrowser$BusinessBrowserFragment
     super.onClick(paramView);
     int i = paramView.getId();
     Object localObject;
-    if (i == 2131366895)
+    if (i == 2131366946)
     {
-      localObject = (odu)this.mApp.getBusinessHandler(0);
+      localObject = (ofe)this.mApp.getBusinessHandler(0);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_Int == 1) {
-          ((odu)localObject).a(134249256, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, null, 0L, false);
+          ((ofe)localObject).a(134249256, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, null, 0L, false);
         }
       }
       else {
-        tzo.a(this.mApp, super.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anry);
+        tzq.a(this.mApp, super.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aoeg);
       }
     }
-    while (i != 2131364254) {
+    while (i != 2131364299) {
       for (;;)
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
         if (this.jdField_a_of_type_Int == 2) {
-          ((odu)localObject).a(134249251, this.jdField_a_of_type_JavaLangString, null, null, null, 0L, false);
+          ((ofe)localObject).a(134249251, this.jdField_a_of_type_JavaLangString, null, null, null, 0L, false);
         }
       }
     }
@@ -259,7 +259,7 @@ public class BusinessBrowser$BusinessBrowserFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Anry = null;
+    this.jdField_a_of_type_Aoeg = null;
     try
     {
       BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);

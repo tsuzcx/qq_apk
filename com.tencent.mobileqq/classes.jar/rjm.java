@@ -1,14 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class rjm
-  implements rkn
+class rjm
+  implements rjd<qzp>
 {
-  public rjm(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  rjm(rjj paramrjj) {}
   
-  public void a(View paramView, int paramInt)
+  public boolean a(qzp paramqzp)
   {
-    ReadInJoyDeliverUGCActivity.a(this.a, paramInt);
+    try
+    {
+      paramqzp = new File(paramqzp.b);
+      if (paramqzp.isFile())
+      {
+        boolean bool = paramqzp.exists();
+        if (bool) {
+          return true;
+        }
+      }
+      return false;
+    }
+    catch (Throwable paramqzp)
+    {
+      QLog.e("RIJUGC.SelectVideoPresenter", 1, "SelectVideoPresenter check error, file not found", paramqzp);
+    }
+    return false;
   }
 }
 

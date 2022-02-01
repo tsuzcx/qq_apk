@@ -1,54 +1,107 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aabg;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.SeekBar;
+import bhsr;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.richframework.widget.BaseVideoView;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISPBandwidthPredictor;
 import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import common.config.service.QzoneConfig;
 import feedcloud.FeedCloudMeta.StVideo;
 import feedcloud.FeedCloudMeta.StVideoUrl;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import vnz;
-import vri;
-import vva;
-import zxl;
+import vqh;
+import vtt;
+import vxr;
+import vyd;
 
 public abstract class QCircleBaseVideoView
   extends BaseVideoView
-  implements zxl<QCircleReportBean>
+  implements aabg<QCircleReportBean>
 {
-  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("qqcircle", "secondary_video_level_type", 10);
+  private static final long c;
+  private static final boolean d;
   private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
-  private List<FeedCloudMeta.StVideoUrl> jdField_a_of_type_JavaUtilList;
+  private QCircleProgressLoadingView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView;
+  private FeedCloudMeta.StVideo jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo;
+  
+  static
+  {
+    boolean bool = true;
+    if (QzoneConfig.getInstance().getConfig("qqcircle", "secondary_video_enable_rate_bit_pre_select", 1) > 0) {}
+    for (;;)
+    {
+      d = bool;
+      c = QzoneConfig.getInstance().getConfig("qqcircle", "secondary_video_trigger_downgrade_speed", 500);
+      return;
+      bool = false;
+    }
+  }
   
   public QCircleBaseVideoView(@NonNull Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView = new QCircleProgressLoadingView(paramContext);
   }
   
   public QCircleBaseVideoView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView = new QCircleProgressLoadingView(paramContext);
   }
   
   public QCircleBaseVideoView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView = new QCircleProgressLoadingView(paramContext);
+  }
+  
+  public static String a(FeedCloudMeta.StVideo paramStVideo)
+  {
+    if (!d)
+    {
+      QLog.i("BaseVideoView", 1, "selectUrlByDownloadSpeed not enable");
+      return paramStVideo.playUrl.get();
+    }
+    if (a(paramStVideo.playUrl.get(), paramStVideo.fileId.get()))
+    {
+      QLog.i("BaseVideoView", 1, "stop selectUrlByDownloadSpeed because of hit cache");
+      return paramStVideo.playUrl.get();
+    }
+    long l = QCircleBaseFragment.a.getCurrentPrediction();
+    QLog.i("BaseVideoView", 1, String.format("selectUrlByDownloadSpeed start, lastDownloadSpeed:%d, predictDownloadSpeed:%d", new Object[] { Long.valueOf(b), Long.valueOf(l) }));
+    if (l < c)
+    {
+      FeedCloudMeta.StVideoUrl localStVideoUrl = vqh.a(paramStVideo.vecVideoUrl.get());
+      if ((localStVideoUrl != null) && (!bhsr.a(localStVideoUrl.playUrl.get())))
+      {
+        QLog.i("BaseVideoView", 1, "selectUrlByDownloadSpeed hit, url:" + localStVideoUrl.playUrl.get());
+        return localStVideoUrl.playUrl.get();
+      }
+    }
+    QLog.i("BaseVideoView", 1, "selectUrlByDownloadSpeed use original video url");
+    return paramStVideo.playUrl.get();
   }
   
   private void a(FeedCloudMeta.StVideo paramStVideo, int paramInt)
   {
-    a(this, paramStVideo.fileId.get(), paramStVideo.playUrl.get(), paramInt);
-    this.jdField_a_of_type_JavaUtilList = paramStVideo.vecVideoUrl.get();
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo = paramStVideo;
+    String str = a(paramStVideo);
+    super.setVideoPath(paramStVideo.fileId.get(), str, paramInt);
   }
   
   public QCircleReportBean a()
@@ -57,6 +110,36 @@ public abstract class QCircleBaseVideoView
   }
   
   protected abstract String a();
+  
+  public void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
+  {
+    QLog.i("BaseVideoView", 1, "triggerDowngradeVideoUrl start");
+    Object localObject;
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo != null)
+    {
+      localObject = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo.vecVideoUrl.get();
+      localObject = vqh.a((List)localObject);
+      if ((localObject != null) && (!bhsr.a(((FeedCloudMeta.StVideoUrl)localObject).playUrl.get()))) {
+        break label62;
+      }
+      QLog.i("BaseVideoView", 1, "triggerPlayLowResVideoUrl: url is null");
+    }
+    label62:
+    do
+    {
+      return;
+      localObject = null;
+      break;
+      if (paramSuperPlayerVideoInfo.getPlayUrl().equals(((FeedCloudMeta.StVideoUrl)localObject).playUrl.get()))
+      {
+        QLog.i("BaseVideoView", 1, String.format("triggerDowngradeVideoUrl:return url is targetLevelType: %s, levelType:%d", new Object[] { ((FeedCloudMeta.StVideoUrl)localObject).playUrl.get(), Integer.valueOf(((FeedCloudMeta.StVideoUrl)localObject).levelType.get()) }));
+        return;
+      }
+    } while (a() == null);
+    QLog.i("BaseVideoView", 1, String.format("triggerDowngradeVideoUrl:url: %s, startoffset:%d, levelType:%d", new Object[] { ((FeedCloudMeta.StVideoUrl)localObject).playUrl.get(), Integer.valueOf((int)a().getCurrentPositionMs()), Integer.valueOf(((FeedCloudMeta.StVideoUrl)localObject).levelType.get()) }));
+    setVideoPath(null, ((FeedCloudMeta.StVideoUrl)localObject).playUrl.get(), (int)a().getCurrentPositionMs());
+    a(this.jdField_a_of_type_Long, "video_play_downgrade_url", a(), Collections.singletonList(vtt.a("video_url", ((FeedCloudMeta.StVideoUrl)localObject).playUrl.get())));
+  }
   
   protected int b()
   {
@@ -71,24 +154,56 @@ public abstract class QCircleBaseVideoView
   public void g()
   {
     super.g();
-    this.jdField_a_of_type_JavaUtilList = null;
+    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView != null)
+    {
+      View localView = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a();
+      if (localView != null) {
+        localView.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a() != null) {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a().start();
+      }
+    }
   }
   
   public void h()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    super.h();
+    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        FeedCloudMeta.StVideoUrl localStVideoUrl = (FeedCloudMeta.StVideoUrl)localIterator.next();
-        if ((localStVideoUrl != null) && (localStVideoUrl.levelType.get() == jdField_a_of_type_Int) && (a() != null))
-        {
-          QLog.i("QCircleBaseVideoView", 1, String.format("triggerPlayLowResVideoUrl:url: %s, startoffset:%d, levelType:%d", new Object[] { localStVideoUrl.playUrl.get(), Integer.valueOf((int)a().getCurrentPositionMs()), Integer.valueOf(localStVideoUrl.levelType.get()) }));
-          setVideoPath(null, localStVideoUrl.playUrl.get(), (int)a().getCurrentPositionMs());
-          a(this.jdField_a_of_type_Long, "video_play_downgrade_url", a(), Collections.singletonList(vri.a("video_url", localStVideoUrl.playUrl.get())));
-        }
+      View localView = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a();
+      if (localView != null) {
+        localView.setVisibility(8);
       }
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a() != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a().removeAllListeners();
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a().cancel();
+      }
+    }
+    if (a() != null) {
+      a().setOnSeekBarChangeListener(this);
+    }
+    if (this.jdField_a_of_type_Vxr != null) {
+      this.jdField_a_of_type_Vxr.a();
+    }
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    if ((this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a() != null))
+    {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a().cancel();
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.a().removeAllListeners();
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView = null;
+    }
+  }
+  
+  public void setLoadingView(View paramView)
+  {
+    if (paramView != null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleProgressLoadingView.setLoadingView(paramView);
     }
   }
   
@@ -99,7 +214,7 @@ public abstract class QCircleBaseVideoView
   
   public void setVideoPath(FeedCloudMeta.StVideo paramStVideo, int paramInt)
   {
-    vnz.a().a(getContext().hashCode(), paramStVideo, new vva(this, paramInt, paramStVideo));
+    vqh.a().a(getContext().hashCode(), paramStVideo, new vyd(this, paramInt, paramStVideo));
   }
 }
 

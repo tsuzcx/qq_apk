@@ -1,13 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import android.text.TextUtils;
 
 class pmi
-  implements riz<TabChannelCoverInfo>
 {
-  pmi(pmh parampmh, int paramInt) {}
+  public String a;
+  public String b;
   
-  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  pmi(String paramString1, String paramString2)
   {
-    return paramTabChannelCoverInfo.mChannelCoverId == this.jdField_a_of_type_Int;
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
   }
 }
 

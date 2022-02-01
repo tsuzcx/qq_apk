@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class bjgl
-  implements View.OnClickListener
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public bjgl(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bjgl(VideoTextureView paramVideoTextureView) {}
   
-  public void onClick(View paramView)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    bghy.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_Azfe.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (VideoTextureView.a() != null) {
+      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
+    }
   }
 }
 

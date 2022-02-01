@@ -1,31 +1,21 @@
-class wby
-  implements nkl
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
+
+public class wby
+  implements Animation.AnimationListener
 {
-  wby(wbw paramwbw, boolean paramBoolean) {}
+  public wby(QCircleRocketView paramQCircleRocketView, View paramView) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    yqp.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
-    switch (paramInt)
-    {
-    case -1: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      wbw.a(this.jdField_a_of_type_Wbw);
-    }
-    yqp.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

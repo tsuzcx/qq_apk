@@ -1,43 +1,34 @@
-import android.util.SparseArray;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
 public class lzo
+  extends lzj
 {
-  public short a;
-  public byte[] a;
-  public short b = 240;
-  public short c;
-  public short d;
+  protected static int a;
   
-  public lzo(byte[] paramArrayOfByte)
+  static
   {
-    this.jdField_a_of_type_Short = 320;
-    paramArrayOfByte = lob.a(paramArrayOfByte);
-    loa localloa = (loa)paramArrayOfByte.get(4);
-    if (localloa != null) {
-      this.jdField_a_of_type_ArrayOfByte = localloa.a();
-    }
-    if (this.jdField_a_of_type_ArrayOfByte != null)
-    {
-      paramArrayOfByte = (loa)paramArrayOfByte.get(3);
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = paramArrayOfByte.a();
-        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
-        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
-        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
-        int i = paramArrayOfByte[6];
-        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
-      }
-    }
+    jdField_a_of_type_Int = 3;
   }
   
-  public String toString()
+  public lzo(Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
-    if (this.jdField_a_of_type_ArrayOfByte != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
-      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
-    }
+    this.jdField_a_of_type_JavaLangString = "SmallScreenShare";
+    this.i = 2131559774;
+    this.j = paramContext.getResources().getDimensionPixelSize(2131297848);
+    this.k = paramContext.getResources().getDimensionPixelSize(2131297847);
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
+    super.a();
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    super.a(paramBoolean, jdField_a_of_type_Int);
   }
 }
 

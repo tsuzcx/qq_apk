@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bcsn;
-import bgrj;
-import bhqc;
+import bdlf;
+import bhrl;
+import biqx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -10,29 +10,29 @@ import mqq.app.AppRuntime;
 public class SwiftBrowserStatistics$2
   implements Runnable
 {
-  public SwiftBrowserStatistics$2(bhqc parambhqc, AppRuntime paramAppRuntime) {}
+  public SwiftBrowserStatistics$2(biqx parambiqx, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    if (!bcsn.a)
+    if (!bdlf.a)
     {
-      boolean bool = bgrj.a(BaseApplicationImpl.getApplication());
+      boolean bool = bhrl.a(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.a.isBackground_Stop) });
+        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.a.isBackgroundStop) });
       }
-      if ((bool) || (this.a.isBackground_Stop))
+      if ((bool) || (this.a.isBackgroundStop))
       {
         if (!this.this$0.g) {
           break label91;
         }
-        bhqc.a(this.this$0);
+        biqx.a(this.this$0);
       }
     }
     label91:
-    while (!bhqc.a(this.this$0)) {
+    while (!biqx.a(this.this$0)) {
       return;
     }
-    bhqc.b(this.this$0);
+    biqx.b(this.this$0);
   }
 }
 

@@ -1,24 +1,25 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class sbq
-  extends RecyclerView.OnScrollListener
+class sbq
+  extends sbh
 {
-  public sbq(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  sbq(sbi paramsbi) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    paramRecyclerView = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
     {
-      VideoFeedsRecyclerView.a(paramRecyclerView, bool);
+      sbi.a(this.a).a(paramBaseArticleInfo.qzoneShareUrl);
       return;
     }
+    sbi.a(this.a).a(paramString + "&sourcefrom=6");
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public int c()
+  {
+    return 6;
+  }
 }
 
 

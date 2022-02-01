@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#66000000" android:paddingBottom="@dimen/b90" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/mwn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ProgressBar android:id="@id/g1f" android:layout_width="30.0dip" android:layout_height="30.0dip" style="@style/l8" />
-            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/jfb" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="10.0dip" android:text="@string/wa4" android:maxLines="1" android:singleLine="true" />
-        </LinearLayout>
-        <Button android:textSize="14.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/mh5" android:background="@drawable/efi" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cancel" android:layout_below="@id/mwn" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+<RelativeLayout android:background="@drawable/emx" android:layout_width="@dimen/b_f" android:layout_height="@dimen/b_c" android:layout_marginLeft="@dimen/b_d" android:layout_marginRight="@dimen/b_d"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mj9" android:layout_width="@dimen/b_h" android:layout_height="@dimen/b_g" android:layout_centerInParent="true" app:qqArMapGuideRadius="3">
+        <View android:id="@id/nxd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="70.0dip" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/nm_" android:background="@color/mk" android:paddingBottom="20.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/enx" android:scaleType="center" />
+        <TextView android:textSize="@dimen/bcp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom" android:id="@id/jfo" android:layout_width="fill_parent" android:layout_height="20.0dip" android:text="@string/wio" android:layout_alignParentBottom="true" />
+        <ImageView android:layout_gravity="right" android:id="@id/mli" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/env" />
+        <ImageView android:layout_gravity="right" android:id="@id/mlh" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/enu" />
+        <ImageView android:layout_gravity="right" android:id="@id/ef9" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/env" />
+        <ImageView android:layout_gravity="right" android:id="@id/n1m" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/enw" />
+        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
 </RelativeLayout>

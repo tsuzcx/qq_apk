@@ -1,16 +1,8 @@
 public abstract class bnim
 {
-  public static bnim a(int paramInt)
-  {
-    if (paramInt > 0) {
-      return new bnin();
-    }
-    return new bnio();
-  }
+  public static bnim a = new bnin();
   
-  public abstract int a(int paramInt);
-  
-  public abstract boolean a(int paramInt);
+  public abstract int a(String paramString, int paramInt);
 }
 
 

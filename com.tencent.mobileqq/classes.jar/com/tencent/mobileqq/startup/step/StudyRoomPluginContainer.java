@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import avgw;
+import avyz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.dynamic.host.DynamicRuntime;
@@ -13,7 +13,7 @@ public class StudyRoomPluginContainer
   {
     try
     {
-      LoggerFactory.setILoggerFactory(avgw.a());
+      LoggerFactory.setILoggerFactory(avyz.a());
       label6:
       BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
       DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());

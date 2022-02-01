@@ -1,34 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteSwitchManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class qhv
 {
-  public static void a(Container paramContainer, pxk parampxk)
+  private static volatile qhv jdField_a_of_type_Qhv;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b = true;
+  
+  public static qhv a()
   {
-    a(paramContainer, parampxk, "id_nickname");
+    if (jdField_a_of_type_Qhv == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qhv == null) {
+        jdField_a_of_type_Qhv = new qhv();
+      }
+      return jdField_a_of_type_Qhv;
+    }
+    finally {}
   }
   
-  public static void a(Container paramContainer, pxk parampxk, String paramString)
+  private void b()
   {
-    ArticleInfo localArticleInfo = parampxk.a();
-    paramContainer = paramContainer.getVirtualView();
-    qij localqij = (qij)paramContainer.findViewBaseByName("id_partner_info_avator");
-    if (localqij != null) {
-      localqij.a(parampxk);
-    }
-    paramContainer = (qkq)paramContainer.findViewBaseByName(paramString);
-    if (paramContainer != null)
-    {
-      long l = 0L;
-      if (localArticleInfo.mPartnerAccountInfo != null) {
-        l = localArticleInfo.mPartnerAccountInfo.uint64_uin.get();
-      }
-      paramContainer.a(l);
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.b = true;
+    qhq.c();
+  }
+  
+  private boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  private boolean d()
+  {
+    return this.b;
+  }
+  
+  void a()
+  {
+    b();
+    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
+    ThreadManager.getFileThreadHandler().post(local1);
+  }
+  
+  public boolean a()
+  {
+    return (d()) && (qha.a().a());
+  }
+  
+  @Deprecated
+  public boolean b()
+  {
+    return (c()) && (qha.a().a());
   }
 }
 

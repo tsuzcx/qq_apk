@@ -1,9 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public abstract interface shy
+public class shy
+  extends pmr
 {
-  public abstract View a(ViewGroup paramViewGroup);
+  public shy(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.a();
+  }
 }
 
 

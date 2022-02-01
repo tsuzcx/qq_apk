@@ -1,48 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
 
-public class agns
-  implements agma
+class agns
+  implements TypeEvaluator
 {
-  private BaseChatPie a;
-  
-  public agns(BaseChatPie paramBaseChatPie)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
     }
-  }
-  
-  private void b()
-  {
-    if ((this.a != null) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 5: 
-      a();
-      return;
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
     }
-    b();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 5, 10 };
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 

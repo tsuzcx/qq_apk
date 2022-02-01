@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class atcn
-  extends atch
+final class atcn
+  implements DialogInterface.OnClickListener
 {
-  int a;
-  int b;
+  atcn(boolean paramBoolean, BaseActivity paramBaseActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public atcn(FileManagerEntity paramFileManagerEntity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramFileManagerEntity);
+    if (this.jdField_a_of_type_Boolean) {
+      atcb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      atcb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcn
  * JD-Core Version:    0.7.0.1
  */

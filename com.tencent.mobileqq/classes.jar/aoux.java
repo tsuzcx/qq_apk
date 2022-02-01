@@ -1,34 +1,41 @@
 public class aoux
-  extends aouc
+  implements aouy
 {
-  public aoxu a;
-  public apdw a;
-  public String b;
-  public int d;
-  public int e = 1;
-  
-  public aoux(String paramString1, int paramInt1, int paramInt2, int paramInt3, apdw paramapdw, aoxu paramaoxu, String paramString2, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
-    this.d = paramInt3;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.e = paramInt4;
-    this.jdField_a_of_type_Apdw = paramapdw;
-    this.jdField_a_of_type_Aoxu = paramaoxu;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("NormalVideoARResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mRealRenderType=").append(this.d);
-    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Apdw).append('\'');
-    localStringBuilder.append(", mVideoPath='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aoxu).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4019: 
+      paramaocj.i(paramBoolean, paramObject);
+      return;
+    case 4016: 
+      paramaocj.r(paramBoolean);
+      return;
+    case 4017: 
+      paramaocj.s(paramBoolean);
+      return;
+    case 4018: 
+      paramaocj.t(paramBoolean);
+      return;
+    case 5002: 
+      paramaocj.u(paramBoolean);
+      return;
+    case 5003: 
+      paramaocj.a(paramBoolean, paramArrayOfObject, paramaock);
+      return;
+    case 5004: 
+      paramaocj.b(paramBoolean, paramArrayOfObject, paramaock);
+      return;
+    case 5005: 
+      paramaocj.e(paramBoolean, paramArrayOfObject);
+      return;
+    case 4014: 
+      paramaocj.w(paramBoolean);
+      return;
+    }
+    paramaocj.m();
   }
 }
 

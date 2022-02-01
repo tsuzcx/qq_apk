@@ -1,88 +1,60 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.content.SharedPreferences;
+import android.os.Handler.Callback;
 import android.os.Message;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class nty
-  extends Handler
+class nty
+  implements Handler.Callback
 {
-  public nty(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  nty(ntc paramntc) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
+    boolean bool2 = true;
+    boolean bool1;
     switch (paramMessage.what)
     {
+    default: 
+      bool1 = false;
     }
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            int i;
-            do
-            {
-              do
-              {
-                return;
-                i = paramMessage.arg1;
-              } while (PublicAccountAdvertisementActivity.a(this.a) == null);
-              PublicAccountAdvertisementActivity.a(this.a).a(i);
-              if ((i > 0) && (i < 100))
-              {
-                PublicAccountAdvertisementActivity.a(this.a).c(true);
-                return;
-              }
-            } while (i != 100);
-            PublicAccountAdvertisementActivity.a(this.a).c(false);
-            return;
-            switch (paramMessage.arg1)
-            {
-            case 201: 
-            case 202: 
-            case 203: 
-            default: 
-              this.a.a(2131689545);
-              return;
-            case -24: 
-              this.a.b(this.a.getString(2131689543));
-              return;
-            }
-            this.a.a(2131689546);
-            return;
-            this.a.b(this.a.getString(2131689544));
-            return;
-          } while (PublicAccountAdvertisementActivity.a(this.a) == null);
-          VideoCoverFragment localVideoCoverFragment = PublicAccountAdvertisementActivity.a(this.a);
-          if (paramMessage.arg1 == 1) {}
-          for (;;)
-          {
-            localVideoCoverFragment.c(bool);
-            return;
-            bool = false;
-          }
-        } while (!this.a.isResume());
-        paramMessage = this.a.getSupportFragmentManager().beginTransaction();
-        PublicAccountAdvertisementActivity.a(this.a, WebpageFragment.a(this.a.getIntent()));
-        PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
-        paramMessage.add(2131381153, PublicAccountAdvertisementActivity.a(this.a));
-        paramMessage.commit();
-      } while (!ThemeUtil.isInNightMode(this.a.getAppRuntime()));
-      paramMessage = this.a.findViewById(2131371727);
-    } while (paramMessage == null);
-    paramMessage.setVisibility(0);
+        return bool1;
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
+        }
+        bool1 = bool2;
+      } while (!this.a.b);
+      bool1 = bool2;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
+    int i;
+    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    {
+      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
+      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i != 0) {
+        break;
+      }
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int <= -1) {
+        break;
+      }
+      ntc.b(this.a, this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new ntz(this));
+      return true;
+      i = -10000;
+    }
   }
 }
 

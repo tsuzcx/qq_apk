@@ -1,17 +1,25 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public class uzs
-  implements Observer<vup<List<QQCircleFeedBase.StTabInfo>>>
+class uzs
+  extends RecyclerView.ViewHolder
 {
-  public uzs(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
-  
-  public void a(@Nullable vup<List<QQCircleFeedBase.StTabInfo>> paramvup)
+  public uzs(BaseWidgetView paramBaseWidgetView)
   {
-    QCircleAggregationFragmentsPart.a(this.a, paramvup);
+    super(paramBaseWidgetView);
+  }
+  
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, var paramvar)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setInteractor(paramvar);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+    }
   }
 }
 

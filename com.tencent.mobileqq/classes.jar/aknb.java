@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.widget.AbsListView;
 
 public class aknb
-  extends bidv
+  extends aknf
 {
-  public aknb(RedPacketKSongFragment paramRedPacketKSongFragment) {}
-  
-  public void a()
+  public aknb(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    super.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.a();
-    this.a.a(anni.a(2131712094));
-    if (this.a.jdField_a_of_type_Akxm != null) {
-      this.a.jdField_a_of_type_Akxm.b();
+    super(paramAvatarPendantActivity);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
+      return;
     }
+    this.a.b();
   }
 }
 

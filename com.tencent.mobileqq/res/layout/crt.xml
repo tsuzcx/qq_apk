@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/enc" android:layout_width="352.0dip" android:layout_height="303.0dip" android:layout_marginTop="54.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="19.0sp" android:textColor="#ff854a09" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="101.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff814400" android:id="@id/jfb" android:layout_width="302.0dip" android:layout_height="wrap_content" android:layout_marginTop="148.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <Button android:textSize="17.0sp" android:textColor="#ff854a09" android:gravity="center" android:id="@id/bh4" android:background="@drawable/skin_qqvip_pubaccount_button1" android:paddingBottom="5.0dip" android:layout_width="228.0dip" android:layout_height="45.0dip" android:layout_marginBottom="22.0dip" android:text="点击查看" android:layout_alignBottom="@id/enc" android:layout_centerHorizontal="true" />
+    <View android:id="@id/mmp" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="@dimen/bb9" android:layout_height="@dimen/b66" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/nnm" android:layout_width="@dimen/bb_" android:layout_height="@dimen/bb_" android:layout_marginLeft="@dimen/bba" android:scaleType="fitCenter" android:layout_toRightOf="@id/mmp" android:layout_alignTop="@id/mmp" />
+    <ImageView android:id="@id/mgn" android:background="@drawable/gt8" android:visibility="invisible" android:layout_width="@dimen/bbh" android:layout_height="@dimen/bbf" android:layout_marginLeft="@dimen/bbg" android:layout_alignLeft="@id/nnm" android:layout_alignTop="@id/mmp" />
+    <ImageView android:id="@id/nnp" android:layout_width="@dimen/bbe" android:layout_height="@dimen/bbe" android:layout_marginTop="@dimen/bbb" android:layout_marginRight="@dimen/bbd" android:layout_alignRight="@id/mgn" />
+    <View android:id="@id/mmo" android:background="@drawable/gt8" android:visibility="invisible" android:layout_width="@dimen/bbh" android:layout_height="@dimen/bbf" android:layout_marginTop="@dimen/bbc" android:layout_alignTop="@id/nnp" android:layout_alignRight="@id/mgn" />
 </RelativeLayout>

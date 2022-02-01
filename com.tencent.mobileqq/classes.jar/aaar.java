@@ -1,24 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class aaar
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  private View jdField_a_of_type_AndroidViewView;
+  private static volatile aaap jdField_a_of_type_Aaap;
+  private static final String jdField_a_of_type_JavaLangString = aaar.class.getName();
+  private static String b;
+  private static String c;
   
-  private aaar(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
+  public static aaap a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    if (jdField_a_of_type_Aaap == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aaap == null)
+      {
+        if (b == null) {
+          b = BaseApplicationImpl.getApplication().getPackageName();
+        }
+        if (c == null) {
+          c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
+        }
+        jdField_a_of_type_Aaap = new aaas(b, c);
+      }
+      yuk.b(jdField_a_of_type_JavaLangString, "init FileCache");
+      return jdField_a_of_type_Aaap;
+    }
+    finally {}
   }
 }
 

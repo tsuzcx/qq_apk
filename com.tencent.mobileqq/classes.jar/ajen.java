@@ -1,42 +1,37 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.widget.XListView;
 
 public class ajen
-  implements bknm
+  implements bbst
 {
-  public ajen(TroopActivity paramTroopActivity) {}
+  public ajen(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void a(bknl parambknl)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    switch (parambknl.a)
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
-    default: 
-    case 0: 
-      do
+      return;
+      if ((this.a.e == 0) && (this.a.a != null))
       {
-        return;
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
-        bcst.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
-        parambknl = (berf)this.a.app.getManager(32);
-      } while (parambknl == null);
-      parambknl.a(this.a, 0);
-      return;
-    case 1: 
-      bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
-      bcst.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
-      AddContactsActivity.a(this.a, 1);
-      return;
-    case 2: 
-      bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
-      bcst.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
-      parambknl = new Intent(this.a, TroopAssisSettingActivity.class);
-      this.a.startActivity(parambknl);
-      return;
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof ajeq)))
+          {
+            paramBitmap = (ajeq)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
-    TroopActivity.a(this.a);
   }
 }
 

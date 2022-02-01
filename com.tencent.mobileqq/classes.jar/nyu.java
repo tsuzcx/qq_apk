@@ -1,15 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
 public class nyu
-  implements TouchWebView.OnScrollChangedListener
+  implements uyg
 {
-  public nyu(PublicAccountBrowser paramPublicAccountBrowser) {}
+  public nyu(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    PublicAccountBrowser.b(this.a, 0);
+    ReadInJoyNativeAdFragment.b(this.a, 3);
+  }
+  
+  public void a(URL paramURL, suk paramsuk)
+  {
+    ReadInJoyNativeAdFragment.b(this.a, 2);
+    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.a(this.a, null);
   }
 }
 

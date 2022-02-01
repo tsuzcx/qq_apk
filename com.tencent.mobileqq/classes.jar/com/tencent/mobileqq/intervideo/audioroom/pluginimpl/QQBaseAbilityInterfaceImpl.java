@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.audioroom.pluginimpl;
 
-import aanz;
+import aasb;
 import android.content.Context;
 import android.os.Bundle;
-import avkt;
-import bdcv;
-import bdcw;
+import awde;
+import bdvq;
+import bdvr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
@@ -18,15 +18,14 @@ import org.json.JSONObject;
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface, QQConfigAbilityInterface
 {
-  private static final String TAG = "studyroom.QQBaseAbilityInterface";
-  private final avkt impl = avkt.a();
-  private final aanz mClient;
+  private final aasb jdField_a_of_type_Aasb;
+  private final awde jdField_a_of_type_Awde = awde.a();
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.mClient = aanz.a();
-    this.mClient.a();
+    this.jdField_a_of_type_Aasb = aasb.a();
+    this.jdField_a_of_type_Aasb.a();
   }
   
   public void beaconReportData(Bundle paramBundle, int paramInt) {}
@@ -36,7 +35,7 @@ public class QQBaseAbilityInterfaceImpl
   public void download(Bundle paramBundle, DownloadCallback paramDownloadCallback)
   {
     String str = paramBundle.getString("path", "");
-    this.impl.a(paramBundle, new QQBaseAbilityInterfaceImpl.1(this, str, paramDownloadCallback));
+    this.jdField_a_of_type_Awde.a(paramBundle, new QQBaseAbilityInterfaceImpl.1(this, str, paramDownloadCallback));
   }
   
   public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -46,14 +45,14 @@ public class QQBaseAbilityInterfaceImpl
   
   public Future<Bundle> getAccessToken(String paramString1, String paramString2)
   {
-    return this.impl.a(paramString1, paramString2);
+    return this.jdField_a_of_type_Awde.a(paramString1, paramString2);
   }
   
   public JSONObject getConfigFromQQ()
   {
-    bdcv localbdcv = bdcw.a();
-    if (localbdcv != null) {
-      return localbdcv.a;
+    bdvq localbdvq = bdvr.a();
+    if (localbdvq != null) {
+      return localbdvq.a;
     }
     return new JSONObject();
   }
@@ -90,12 +89,12 @@ public class QQBaseAbilityInterfaceImpl
   
   public void printQLog(Bundle paramBundle)
   {
-    this.impl.b(paramBundle);
+    this.jdField_a_of_type_Awde.b(paramBundle);
   }
   
   public void reportData(Bundle paramBundle)
   {
-    this.mClient.b(paramBundle);
+    this.jdField_a_of_type_Aasb.b(paramBundle);
   }
   
   public String reqDns(String paramString)
@@ -108,7 +107,7 @@ public class QQBaseAbilityInterfaceImpl
     if (paramCallback != null) {
       paramCallback.onResult(getConfigFromQQ());
     }
-    bdcw.a();
+    bdvr.a();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}

@@ -1,26 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.widget.ImageView;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 
-public class avud
-  implements bkhw
+class avud
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public avud(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager) {}
+  avud(avub paramavub) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(false);
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-      return;
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    if (this.a.a.getVisibility() == 0) {
+      this.a.a.setAlpha(f);
     }
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment);
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, true);
+    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
+    if (localHotVideoMongoliaRelativeLayout != null) {
+      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
+    }
   }
 }
 

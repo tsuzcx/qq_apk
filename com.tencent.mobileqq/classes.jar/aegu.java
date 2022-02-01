@@ -1,17 +1,33 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class aegu
-  extends aywi
+  implements DialogInterface.OnClickListener
 {
-  public aegu(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aegu(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.b(paramBoolean, paramInt);
-    if ((this.a.g) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.a.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
     }
-    this.a.g = false;
+    while (paramInt != 0) {
+      return;
+    }
+    this.a.finish();
   }
 }
 

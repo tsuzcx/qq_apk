@@ -29,12 +29,12 @@ class MiniAppVideoPlayer$15
       } while (this.this$0.atyRef == null);
       localActivity = (Activity)this.this$0.atyRef.get();
     } while ((localActivity == null) || (MiniAppVideoPlayer.access$000(this.this$0) == null) || (!(this.this$0.getParent() instanceof CoverVideoView)));
-    MiniAppVideoPlayer.access$5402(this.this$0, MiniAppVideoPlayer.access$000(this.this$0).getCurrentPostion());
-    QMLog.d("MiniAppVideoPlayer", "smallScreen current pos is: " + MiniAppVideoPlayer.access$5400(this.this$0));
+    MiniAppVideoPlayer.access$5502(this.this$0, MiniAppVideoPlayer.access$000(this.this$0).getCurrentPostion());
+    QMLog.d("MiniAppVideoPlayer", "smallScreen current pos is: " + MiniAppVideoPlayer.access$5500(this.this$0));
     this.this$0.isFullScreen = false;
-    MiniAppVideoPlayer.access$5500(this.this$0);
-    MiniAppVideoPlayer.access$4300(this.this$0).setVisibility(8);
+    MiniAppVideoPlayer.access$5600(this.this$0);
     MiniAppVideoPlayer.access$4400(this.this$0).setVisibility(8);
+    MiniAppVideoPlayer.access$4500(this.this$0).setVisibility(8);
     if (this.this$0.hideTimeDesc)
     {
       MiniAppVideoPlayer.access$3400(this.this$0).setVisibility(8);
@@ -46,14 +46,14 @@ class MiniAppVideoPlayer$15
     {
       if (localIMiniAppContext != null)
       {
-        SetViewVisibilityAction.obtain(localIMiniAppContext).setNaviBarVisibility(MiniAppVideoPlayer.access$4500(this.this$0));
-        SetViewVisibilityAction.obtain(localIMiniAppContext).setTabBarVisibility(MiniAppVideoPlayer.access$4600(this.this$0));
+        SetViewVisibilityAction.obtain(localIMiniAppContext).setNaviBarVisibility(MiniAppVideoPlayer.access$4600(this.this$0));
+        SetViewVisibilityAction.obtain(localIMiniAppContext).setTabBarVisibility(MiniAppVideoPlayer.access$4700(this.this$0));
       }
       localActivity.getWindow().clearFlags(1024);
       if (localIMiniAppContext != null)
       {
-        MiniAppVideoPlayer.access$5600(this.this$0, localActivity, localIMiniAppContext);
         MiniAppVideoPlayer.access$5700(this.this$0, localActivity, localIMiniAppContext);
+        MiniAppVideoPlayer.access$5800(this.this$0, localActivity, localIMiniAppContext);
       }
       this.this$0.lastSmallScreenTime = System.currentTimeMillis();
       this.this$0.isBusyInChangeScreen = true;

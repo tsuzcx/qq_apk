@@ -11,7 +11,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Process;
 import android.text.TextUtils;
-import auwr;
+import avor;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -409,7 +409,7 @@ public class GesturePWDUtils
     }
   }
   
-  public static String patternToString(List<auwr> paramList)
+  public static String patternToString(List<avor> paramList)
   {
     if (paramList == null) {
       return "";
@@ -419,9 +419,9 @@ public class GesturePWDUtils
     int i = 0;
     while (i < j)
     {
-      auwr localauwr = (auwr)paramList.get(i);
-      int k = localauwr.a();
-      arrayOfByte[i] = ((byte)(localauwr.b() + k * 3));
+      avor localavor = (avor)paramList.get(i);
+      int k = localavor.a();
+      arrayOfByte[i] = ((byte)(localavor.b() + k * 3));
       i += 1;
     }
     return Arrays.toString(arrayOfByte);

@@ -1,41 +1,22 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.SwitchAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class biok
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  public biok(WebViewFragment paramWebViewFragment, Intent paramIntent) {}
   
-  public biok(SwitchAccountActivity paramSwitchAccountActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new biol(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
-    }
-    if (i == 0)
+    try
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
-        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+      return;
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return false;
+    catch (ActivityNotFoundException paramDialogInterface) {}
   }
 }
 

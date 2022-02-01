@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bmqa;
+import bnrf;
 
 class KandianMergeManager$23
   implements Runnable
@@ -11,9 +11,9 @@ class KandianMergeManager$23
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bmqa.a(KandianMergeManager.a(this.this$0), 1).edit();
+    SharedPreferences.Editor localEditor = bnrf.a(KandianMergeManager.a(this.this$0), 1).edit();
     localEditor.putInt("subscribe_push_msg_status", this.a);
-    bmqa.a(localEditor, true);
+    bnrf.a(localEditor, true);
   }
 }
 

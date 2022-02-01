@@ -1,17 +1,19 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
-
-public class wsa
-  implements wld<wsw, wsx>
+class wsa
+  implements wvd
 {
-  wsa(wrx paramwrx) {}
+  wsa(wrz paramwrz) {}
   
-  public void a(@NonNull wsw paramwsw, @Nullable wsx paramwsx, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean, wuz paramwuz)
   {
-    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramwsw, paramwsx, paramErrorMessage));
+    yuk.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramwuz != null))
+    {
+      yuk.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramwuz.b), Integer.valueOf(paramwuz.a));
+      this.a.a(paramwuz.b, paramwuz.a);
+      return;
+    }
+    yuk.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 

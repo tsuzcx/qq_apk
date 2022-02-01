@@ -1,11 +1,11 @@
 package com.tencent.qqprotect.qsec;
 
-import bkbr;
+import blcv;
 
 public class QSecCbMgr$2
   implements Runnable
 {
-  public QSecCbMgr$2(bkbr parambkbr) {}
+  public QSecCbMgr$2(blcv paramblcv) {}
   
   public void run()
   {

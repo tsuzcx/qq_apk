@@ -3,12 +3,12 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdic;
+import beax;
 
 public class TeamWorkFileImportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new bdic();
+  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new beax();
   public int a;
   public long a;
   public String a;
@@ -37,6 +37,7 @@ public class TeamWorkFileImportInfo
   public boolean g;
   public int h;
   public String h;
+  public boolean h;
   public int i;
   public String i;
   public int j;
@@ -77,41 +78,46 @@ public class TeamWorkFileImportInfo
       this.jdField_a_of_type_Boolean = bool1;
       this.jdField_d_of_type_Int = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label363;
+        break label377;
       }
       bool1 = true;
       label128:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label368;
+        break label382;
       }
       bool1 = true;
       label142:
       this.jdField_c_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label373;
+        break label387;
       }
       bool1 = true;
       label156:
       this.jdField_d_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label378;
+        break label392;
       }
       bool1 = true;
       label170:
       this.jdField_e_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label383;
+        break label397;
+      }
+      bool1 = true;
+      label184:
+      this.jdField_f_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label402;
       }
     }
-    label363:
-    label368:
-    label373:
-    label378:
-    label383:
+    label387:
+    label392:
+    label397:
+    label402:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jdField_f_of_type_Boolean = bool1;
+      this.jdField_g_of_type_Boolean = bool1;
       this.jdField_e_of_type_Int = paramParcel.readInt();
       this.jdField_g_of_type_JavaLangString = paramParcel.readString();
       this.jdField_f_of_type_Int = paramParcel.readInt();
@@ -136,14 +142,18 @@ public class TeamWorkFileImportInfo
       return;
       bool1 = false;
       break;
+      label377:
       bool1 = false;
       break label128;
+      label382:
       bool1 = false;
       break label142;
       bool1 = false;
       break label156;
       bool1 = false;
       break label170;
+      bool1 = false;
+      break label184;
     }
   }
   
@@ -196,38 +206,42 @@ public class TeamWorkFileImportInfo
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.jdField_d_of_type_Int);
       if (!this.jdField_b_of_type_Boolean) {
-        break label354;
+        break label369;
       }
       paramInt = 1;
       label114:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_c_of_type_Boolean) {
-        break label359;
+        break label374;
       }
       paramInt = 1;
       label129:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_d_of_type_Boolean) {
-        break label364;
+        break label379;
       }
       paramInt = 1;
       label144:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_e_of_type_Boolean) {
-        break label369;
+        break label384;
       }
       paramInt = 1;
       label159:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_f_of_type_Boolean) {
-        break label374;
+        break label389;
+      }
+      paramInt = 1;
+      label174:
+      paramParcel.writeByte((byte)paramInt);
+      if (!this.jdField_g_of_type_Boolean) {
+        break label394;
       }
     }
-    label354:
-    label359:
-    label364:
-    label369:
-    label374:
+    label384:
+    label389:
+    label394:
     for (paramInt = i1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -255,14 +269,19 @@ public class TeamWorkFileImportInfo
       return;
       paramInt = 0;
       break;
+      label369:
       paramInt = 0;
       break label114;
+      label374:
       paramInt = 0;
       break label129;
+      label379:
       paramInt = 0;
       break label144;
       paramInt = 0;
       break label159;
+      paramInt = 0;
+      break label174;
     }
   }
 }

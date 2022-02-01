@@ -1,20 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
+import android.content.Context;
 
-public class apzt
-  implements bkij
+public abstract interface apzt
 {
-  public apzt(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public abstract void attachArkView(aqcm paramaqcm, aqcq paramaqcq, int paramInt);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (!this.a.isFinishing())
-    {
-      this.a.overridePendingTransition(0, 2130772356);
-      this.a.finish();
-    }
-  }
+  public abstract void clickTail(aqcq paramaqcq, agzk paramagzk, Context paramContext);
+  
+  public abstract void destroyContainerByRemove();
+  
+  public abstract apzt extendArkCardByOpen(agyw paramagyw, String paramString1, String paramString2);
+  
+  public abstract String[] getArkAppNameAndPath();
 }
 
 

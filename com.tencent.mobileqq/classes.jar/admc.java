@@ -1,21 +1,31 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class admc
-  implements View.OnClickListener
+class admc
+  implements IMemoryDumpListener
 {
-  public admc(AssistantSettingActivity paramAssistantSettingActivity) {}
+  admc(admb paramadmb, adkz paramadkz) {}
   
-  public void onClick(View paramView)
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onHprofDumped(@NotNull String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("start_from", 2);
-    ColorNoteSettingFragment.a(paramView.getContext(), ColorNoteSettingFragment.class, localBundle);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Adkz.a();
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    long l1 = Runtime.getRuntime().totalMemory();
+    long l2 = Runtime.getRuntime().freeMemory();
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.addAll(adlr.b());
+    localArrayList.add(adlr.b());
+    localArrayList.add(adlr.a());
+    localArrayList.add(adlr.a(paramString, l1 - l2));
+    return localArrayList;
   }
 }
 

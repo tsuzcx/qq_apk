@@ -1,20 +1,51 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
-import com.tencent.widget.AdapterView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class beis
-  implements bkik
 {
-  public beis(TroopAvatarWallPreviewActivity.2.1 param1) {}
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static Bundle a(QQAppInterface paramQQAppInterface)
   {
-    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
-      TroopAvatarWallPreviewActivity.c(this.a.a.this$0);
+    Bundle localBundle = new Bundle();
+    Object localObject = ThemeUtil.getWeekLoopTheme(paramQQAppInterface);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = paramQQAppInterface.getPreferences();
+      paramQQAppInterface = ((SharedPreferences)localObject).getString("previousThemeId", "1000");
+      localObject = ((SharedPreferences)localObject).getString("previousThemeVersion", "0");
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchUtil", 2, "ThemeSwitchUtil getPreviousThemeIdVersion,themeID=" + paramQQAppInterface + ",version=" + (String)localObject);
+      }
+      localBundle.putString("themeID", paramQQAppInterface);
+      localBundle.putString("version", (String)localObject);
+      return localBundle;
     }
-    return true;
+    localBundle.putString("themeID", (String)localObject);
+    localBundle.putString("version", ThemeUtil.getUserCurrentThemeVersion(paramQQAppInterface));
+    return localBundle;
+  }
+  
+  public static Boolean a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  {
+    String str = paramAppRuntime.getAccount();
+    Object localObject = str;
+    if (str == null) {
+      localObject = "noLogin";
+    }
+    localObject = paramAppRuntime.getApplication().getSharedPreferences((String)localObject, 4);
+    paramAppRuntime = paramAppRuntime.getAccount();
+    str = ((SharedPreferences)localObject).getString("previousThemeId", "1000");
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putString("previousThemeId", paramString1);
+    ((SharedPreferences.Editor)localObject).putString("previousThemeVersion", paramString2);
+    QLog.d("ThemeSwitchUtil", 1, "ThemeSwitchUtil setPreviousThemeIdVersion,uin=" + paramAppRuntime + ",oldPreviousThemeId=" + str + ",set new themeId=" + paramString1);
+    return Boolean.valueOf(((SharedPreferences.Editor)localObject).commit());
   }
 }
 

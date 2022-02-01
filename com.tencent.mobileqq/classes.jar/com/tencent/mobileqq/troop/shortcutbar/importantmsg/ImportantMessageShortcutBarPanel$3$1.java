@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import bfkv;
-import bfkw;
-import bfkz;
+import bgkw;
+import bgkx;
+import bgla;
 
 public class ImportantMessageShortcutBarPanel$3$1
   implements Runnable
 {
-  public ImportantMessageShortcutBarPanel$3$1(bfkz parambfkz) {}
+  public ImportantMessageShortcutBarPanel$3$1(bgla parambgla) {}
   
   public void run()
   {
-    if (bfkw.a(this.a.a) != null) {
-      bfkw.a(this.a.a).b();
+    if (bgkx.a(this.a.a) != null) {
+      bgkx.a(this.a.a).b();
     }
   }
 }

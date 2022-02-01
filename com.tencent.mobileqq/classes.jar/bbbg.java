@@ -1,26 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bbbg
-  implements View.OnTouchListener
+public abstract class bbbg
 {
-  public bbbg(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public RegisterNewBaseActivity a;
+  public QQAppInterface a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected bbbg(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      if (paramMotionEvent.getY() < paramView.findViewById(2131379907).getHeight() + afur.a(30.0F, paramView.getResources())) {
-        SignatureHistoryFragment.a(this.a, true);
-      }
-    }
-    else {
-      return false;
-    }
-    SignatureHistoryFragment.a(this.a, false);
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app;
   }
 }
 

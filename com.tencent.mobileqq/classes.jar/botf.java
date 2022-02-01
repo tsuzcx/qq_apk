@@ -1,122 +1,229 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.RecyclerView.SmoothScroller;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Scroller;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import dov.com.qq.im.ae.gif.giftext.DrawableImageView;
+import java.io.File;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public abstract class botf
-  extends bout
+public class botf
+  extends RecyclerView.Adapter<botl>
 {
-  private final RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new botg(this);
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  SpeedFlexibleRecyclerView jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView;
+  private int jdField_a_of_type_Int;
+  private LifecycleOwner jdField_a_of_type_AndroidArchLifecycleLifecycleOwner;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private botk jdField_a_of_type_Botk;
+  private bove jdField_a_of_type_Bove;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, SoftReference<bova>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<bosw> jdField_a_of_type_JavaUtilList;
+  private Set<Integer> jdField_a_of_type_JavaUtilSet;
   
-  private boolean a(@NonNull RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
+  public botf(Context paramContext, List<bosw> paramList, String paramString)
   {
-    LinearSmoothScroller localLinearSmoothScroller = a(paramLayoutManager);
-    if (localLinearSmoothScroller == null) {}
-    do
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_Int = ((int)(DeviceUtils.getScreenWidth(paramContext) * 0.44F) + 1);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
     {
-      return false;
-      paramInt1 = a(paramLayoutManager, paramInt1, paramInt2);
-    } while (paramInt1 == -1);
-    localLinearSmoothScroller.setTargetPosition(paramInt1);
-    paramLayoutManager.startSmoothScroll(localLinearSmoothScroller);
-    return true;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.a() != null) {
-      throw new IllegalStateException("An instance of OnFlingListener already set.");
+      ((bosw)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
+      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(0));
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
-    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.setOnFlingListener(this);
   }
   
-  private void c()
+  private void a(ImageView paramImageView, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.removeOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
-    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.setOnFlingListener(null);
-  }
-  
-  public abstract int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2);
-  
-  @Nullable
-  public LinearSmoothScroller a(RecyclerView.LayoutManager paramLayoutManager)
-  {
-    return new both(this, this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getContext());
-  }
-  
-  @Nullable
-  public abstract View a(RecyclerView.LayoutManager paramLayoutManager);
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView == null) {}
-    Object localObject;
-    do
+    Object localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localObject1 != null) {}
+    for (localObject1 = (bova)((SoftReference)localObject1).get();; localObject1 = null)
     {
-      View localView;
-      do
+      if (localObject1 == null)
       {
-        do
+        localObject1 = new ArrayList();
+        if (!TextUtils.isEmpty(paramString))
         {
-          return;
-          localObject = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getLayoutManager();
-        } while (localObject == null);
-        localView = a((RecyclerView.LayoutManager)localObject);
-      } while (localView == null);
-      localObject = a((RecyclerView.LayoutManager)localObject, localView);
-    } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.smoothScrollBy(localObject[0], localObject[1]);
+          Object localObject2 = new File(paramString);
+          if (((File)localObject2).exists())
+          {
+            localObject2 = ((File)localObject2).listFiles();
+            if (localObject2.length > 0)
+            {
+              int i = 0;
+              while (i < localObject2.length)
+              {
+                String str = String.format(paramString + "/frame_%03d.png", new Object[] { Integer.valueOf(i) });
+                if (new File(str).exists()) {
+                  ((ArrayList)localObject1).add(str);
+                }
+                i += 1;
+              }
+            }
+          }
+        }
+        localObject1 = new bova(this.jdField_a_of_type_AndroidContentContext, (ArrayList)localObject1, 55L);
+        ((bova)localObject1).a(false);
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject1));
+      }
+      for (paramString = (String)localObject1;; paramString = (String)localObject1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zswp20pro", 2, "playAnimationDrawable, position = " + paramInt);
+        }
+        if ((paramImageView.getDrawable() != null) && (paramImageView.getDrawable() != paramString) && ((paramImageView.getDrawable() instanceof bova)))
+        {
+          ((bova)paramImageView.getDrawable()).stop();
+          paramImageView.setImageDrawable(null);
+        }
+        paramImageView.setImageDrawable(paramString);
+        paramString.start();
+        return;
+      }
+    }
   }
   
-  public void a(@Nullable SpeedFlexibleRecyclerView paramSpeedFlexibleRecyclerView)
+  private void a(AEGIFOutlineTextView paramAEGIFOutlineTextView)
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView == paramSpeedFlexibleRecyclerView) {}
-    do
+    if (this.jdField_a_of_type_Bove != null)
+    {
+      this.jdField_a_of_type_Bove.a().observe(this.jdField_a_of_type_AndroidArchLifecycleLifecycleOwner, new both(this, paramAEGIFOutlineTextView));
+      this.jdField_a_of_type_Bove.b().observe(this.jdField_a_of_type_AndroidArchLifecycleLifecycleOwner, new boti(this, paramAEGIFOutlineTextView));
+    }
+    paramAEGIFOutlineTextView.setOnClickListener(new botj(this));
+    paramAEGIFOutlineTextView.setVisibility(0);
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setEnabled(paramBoolean);
+      if (paramBoolean) {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(anzj.a(2131698879));
+      }
+    }
+    else
     {
       return;
-      if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView != null) {
-        c();
-      }
-      this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView = paramSpeedFlexibleRecyclerView;
-    } while (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView == null);
-    b();
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getContext(), new DecelerateInterpolator());
-    a();
+    }
+    ((TextView)this.jdField_a_of_type_AndroidViewView).setText(anzj.a(2131698889));
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  public botl a(ViewGroup paramViewGroup, int paramInt)
   {
-    RecyclerView.LayoutManager localLayoutManager = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getLayoutManager();
-    if (localLayoutManager == null) {}
-    int i;
-    do
+    return new botl(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558573, paramViewGroup, false), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public Set<Integer> a()
+  {
+    return this.jdField_a_of_type_JavaUtilSet;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(botk parambotk)
+  {
+    this.jdField_a_of_type_Botk = parambotk;
+  }
+  
+  public void a(botl parambotl)
+  {
+    super.onViewRecycled(parambotl);
+    if ((botl.a(parambotl) != null) && (botl.a(parambotl).getDrawable() != null) && ((botl.a(parambotl).getDrawable() instanceof bova)))
     {
-      do
-      {
-        return false;
-      } while (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getAdapter() == null);
-      i = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getMinFlingVelocity();
-    } while (((Math.abs(paramInt2) <= i) && (Math.abs(paramInt1) <= i)) || (!a(localLayoutManager, paramInt1, paramInt2)));
-    return true;
+      ((bova)botl.a(parambotl).getDrawable()).stop();
+      botl.a(parambotl).setImageDrawable(null);
+    }
   }
   
-  public int[] a(int paramInt1, int paramInt2)
+  public void a(botl parambotl, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetScroller.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
-    return new int[] { this.jdField_a_of_type_AndroidWidgetScroller.getFinalX(), this.jdField_a_of_type_AndroidWidgetScroller.getFinalY() };
+    bosw localbosw = (bosw)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837954);
+    localObject = VasApngUtil.getApngURLDrawable("https://qd.myapp.com/myapp/qqteam/QIM/ae_gif_loading.png", new int[] { 0 }, (Drawable)localObject);
+    botl.a(parambotl).setImageDrawable((Drawable)localObject);
+    botl.a(parambotl).setVisibility(4);
+    parambotl.a(localbosw.a());
+    switch (localbosw.jdField_a_of_type_Int)
+    {
+    default: 
+    case 10: 
+    case 11: 
+    case 12: 
+      for (;;)
+      {
+        localObject = parambotl.itemView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = -1;
+        ((ViewGroup.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
+        parambotl.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        parambotl.itemView.setOnClickListener(new botg(this, localbosw, paramInt, parambotl));
+        EventCollector.getInstance().onRecyclerBindViewHolder(parambotl, paramInt, getItemId(paramInt));
+        return;
+        botl.b(parambotl).setVisibility(4);
+        botl.a(parambotl).setVisibility(0);
+      }
+    }
+    botl.a(parambotl).setVisibility(8);
+    if (paramInt == 0)
+    {
+      a(botl.a(parambotl));
+      botl.a(parambotl).setVisibility(0);
+    }
+    botl.b(parambotl).setVisibility(0);
+    if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
+    {
+      parambotl.a(true);
+      a(true);
+    }
+    for (;;)
+    {
+      localObject = localbosw.c;
+      a(botl.a(parambotl), (String)localObject, paramInt);
+      break;
+      parambotl.a(false);
+    }
   }
   
-  @Nullable
-  public abstract int[] a(@NonNull RecyclerView.LayoutManager paramLayoutManager, @NonNull View paramView);
+  public void a(bove parambove, LifecycleOwner paramLifecycleOwner)
+  {
+    this.jdField_a_of_type_Bove = parambove;
+    this.jdField_a_of_type_AndroidArchLifecycleLifecycleOwner = paramLifecycleOwner;
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+  }
 }
 
 

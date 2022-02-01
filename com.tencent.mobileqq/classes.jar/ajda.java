@@ -1,17 +1,17 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
-class ajda
-  extends GridLayoutManager.SpanSizeLookup
+public class ajda
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ajda(ajcz paramajcz, GridLayoutManager paramGridLayoutManager) {}
+  public ajda(AddContactsView paramAddContactsView) {}
   
-  public int getSpanSize(int paramInt)
+  public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_Ajcz.a(paramInt)) || (this.jdField_a_of_type_Ajcz.b(paramInt)) || (this.jdField_a_of_type_Ajcz.c(paramInt)) || (this.jdField_a_of_type_Ajcz.b())) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
-    }
-    return 1;
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.setListViewHeightBasedOnChildren(this.a.a);
   }
 }
 

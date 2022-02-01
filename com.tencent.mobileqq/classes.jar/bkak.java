@@ -1,22 +1,17 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
 
-class bkak
-  extends niv
+public class bkak
+  implements DialogInterface.OnClickListener
 {
-  protected bkbi a;
-  protected byte[] a;
+  public bkak(WadlJsBridgeCallBack.2 param2) {}
   
-  public bkak(byte[] paramArrayOfByte, bkbi parambkbi)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Bkbi = parambkbi;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Bkbi != null) {
-      this.jdField_a_of_type_Bkbi.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.h = 1;
+    bnyp.a().a(this.a.a);
   }
 }
 

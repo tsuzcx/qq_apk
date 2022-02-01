@@ -1,125 +1,26 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.data.MessageForMarketFace;
+import android.content.Intent;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
 
 class ahcv
-  extends URLImageView
+  extends ClickableSpan
 {
-  public ahcv(ahch paramahch, Context paramContext)
-  {
-    super(paramContext);
-  }
+  ahcv(ahcr paramahcr) {}
   
-  private void a(ahcu paramahcu)
+  public void onClick(View paramView)
   {
-    if ((!arze.a()) || (2 != paramahcu.jdField_a_of_type_Asbq.a.jobType) || (this.a.jdField_a_of_type_Arup.f(paramahcu.jdField_a_of_type_Asbq.a.epId)) || (!awgs.a()) || (arze.c()))
+    if (!bhnv.d(this.a.a))
     {
-      float f = this.a.jdField_a_of_type_Arup.a(paramahcu.jdField_a_of_type_Asbq.a.epId);
-      if ((f < 0.0F) || (1.0F == f))
-      {
-        paramahcu.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        paramahcu.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-        if (QLog.isColorLevel()) {
-          QLog.d("MarketFaceItemBuilder", 2, "onLoadSuccessed progressBar gone ");
-        }
-      }
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    paramThrowable = (ahcu)afur.a(this);
-    paramThrowable.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    this.a.a(paramThrowable, paramURLDrawable);
-    if (AppSetting.c) {
-      paramThrowable.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription(anni.a(2131705246));
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    ahcu localahcu = (ahcu)afur.a(this);
-    super.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
-    super.setImageDrawable(paramURLDrawable);
-    if (localahcu == null)
-    {
-      QLog.e("MarketFaceItemBuilder", 1, "onLoadSuccessed  holder == null url=" + paramURLDrawable.getURL());
+      QQToast.a(this.a.a, anzj.a(2131702123), 2000).a();
       return;
     }
-    if (localahcu.jdField_a_of_type_Asbq == null)
-    {
-      paramURLDrawable = localahcu.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if (!(paramURLDrawable instanceof MessageForMarketFace)) {
-        break label433;
-      }
-      paramURLDrawable = ((MessageForMarketFace)paramURLDrawable).mMarkFaceMessage;
-      if (paramURLDrawable == null) {
-        break label433;
-      }
-    }
-    label412:
-    label431:
-    label433:
-    for (int i = paramURLDrawable.dwTabID;; i = -1)
-    {
-      QLog.e("MarketFaceItemBuilder", 1, "onLoadSuccessed  emoticonInfo == null epId = " + i);
-      return;
-      a(localahcu);
-      this.a.a(localahcu, paramURLDrawable);
-      if ((2 == localahcu.jdField_a_of_type_Asbq.a.jobType) && (awgs.a()) && (this.a.jdField_a_of_type_Arup.f(localahcu.jdField_a_of_type_Asbq.a.epId)))
-      {
-        if (awfd.a(localahcu.jdField_a_of_type_Asbq.a.magicValue) == 1) {
-          localahcu.f.setVisibility(8);
-        }
-      }
-      else
-      {
-        if ((4 == localahcu.jdField_a_of_type_Asbq.a.jobType) && (this.a.jdField_a_of_type_Arup.b()) && (this.a.jdField_a_of_type_Arup.a(localahcu.jdField_a_of_type_Asbq.a.epId, true, true)) && (!this.a.jdField_b_of_type_Boolean))
-        {
-          localahcu.f.setImageResource(2130838005);
-          localahcu.f.setVisibility(0);
-        }
-        if ((ahch.c != 0L) && (ahch.c == localahcu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) && (localahcu.jdField_a_of_type_Asbq.b()))
-        {
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.d()) {
-            break label412;
-          }
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131694574, 0).b(this.a.jdField_b_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298998));
-        }
-      }
-      for (;;)
-      {
-        if (!AppSetting.c) {
-          break label431;
-        }
-        localahcu.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription("");
-        return;
-        if (this.a.jdField_b_of_type_Boolean) {
-          break;
-        }
-        localahcu.f.setImageResource(2130838005);
-        localahcu.f.setVisibility(0);
-        break;
-        MediaPlayerManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localahcu.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      }
-      break;
-    }
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
+    paramView.putExtra("hide_more_button", true);
+    this.a.a.startActivity(paramView);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.av.utils;
 
 import android.os.Handler;
-import msu;
-import msv;
+import mts;
+import mtt;
 
 public class QQFrameByFrameAnimation$1
   implements Runnable
 {
-  public QQFrameByFrameAnimation$1(msv parammsv) {}
+  public QQFrameByFrameAnimation$1(mtt parammtt) {}
   
   public void run()
   {
@@ -26,10 +26,10 @@ public class QQFrameByFrameAnimation$1
         }
         this.this$0.a();
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.this$0.jdField_a_of_type_Int);
-      } while (this.this$0.jdField_a_of_type_Msu == null);
-      this.this$0.jdField_a_of_type_Msu.c();
+      } while (this.this$0.jdField_a_of_type_Mts == null);
+      this.this$0.jdField_a_of_type_Mts.c();
     } while ((this.this$0.jdField_a_of_type_ArrayOfInt.length <= 0) || (this.this$0.c % this.this$0.jdField_a_of_type_ArrayOfInt.length != 0));
-    this.this$0.jdField_a_of_type_Msu.b();
+    this.this$0.jdField_a_of_type_Mts.b();
   }
 }
 

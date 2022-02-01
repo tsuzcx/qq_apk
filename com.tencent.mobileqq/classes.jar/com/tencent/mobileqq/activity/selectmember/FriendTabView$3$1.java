@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alry;
+import amdq;
 import android.view.View;
 
 public class FriendTabView$3$1
   implements Runnable
 {
-  public FriendTabView$3$1(alry paramalry, View paramView) {}
+  public FriendTabView$3$1(amdq paramamdq, View paramView) {}
   
   public void run()
   {

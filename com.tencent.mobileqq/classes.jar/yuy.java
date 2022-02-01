@@ -1,18 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class yuy
-  implements bial
+public abstract interface yuy
+  extends yxs
 {
-  yuy(yuv paramyuv) {}
+  public abstract void Z_();
   
-  public void a(biaj parambiaj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
-    }
-  }
+  public abstract int a();
   
-  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
+  public abstract Bitmap a();
+  
+  public abstract Bitmap a(int paramInt);
+  
+  @NonNull
+  public abstract DoodleLayout a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract byte[] a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean g_();
 }
 
 

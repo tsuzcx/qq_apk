@@ -1,42 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public final class amil
-  implements adea
+public class amil
+  implements DialogInterface.OnClickListener
 {
-  public amil(View paramView, aded paramaded, long paramLong, int paramInt) {}
+  public amil(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
+    Object localObject = ShortVideoPreviewActivity.a(this.a);
+    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
+    Intent localIntent = new Intent();
+    localIntent.setClassName((String)localObject, paramDialogInterface);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("file_send_path", this.a.c);
+    localIntent.putExtra("file_send_size", this.a.a);
+    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
+    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
+    this.a.startActivity(localIntent);
+    ShortVideoPreviewActivity.a(this.a);
+    localObject = new Intent("key_video_select_confirm_ok_click");
+    ((Intent)localObject).putExtra("className", paramDialogInterface);
+    this.a.sendBroadcast((Intent)localObject);
   }
-  
-  public void onPermission(int paramInt)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
-    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
-    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
-    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
-    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
-    paramJSONObject.optDouble("accuracy", 0.0D);
-    double d5 = paramJSONObject.optDouble("speed", 0.0D);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
-      return;
-    }
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

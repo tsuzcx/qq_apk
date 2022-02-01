@@ -1,152 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.AVActivity;
 
 public class mbt
-  extends muk
+  extends BroadcastReceiver
 {
-  String jdField_a_of_type_JavaLangString;
+  public mbt(AVActivity paramAVActivity) {}
   
-  public mbt(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
-  }
-  
-  public void a(mun parammun)
-  {
-    mun localmun = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject8 = null;
-    Object localObject2 = "";
-    String str1 = "";
-    String str3 = "";
-    if (parammun.a.jdField_a_of_type_Boolean) {}
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")))
+      {
+        if (this.a.a.a().d == 4)
+        {
+          if (this.a.d != 3000) {
+            break label237;
+          }
+          if (!this.a.a.a().j) {
+            break label210;
+          }
+          bdll.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
+        }
+        if (this.a.g)
+        {
+          if (!this.a.a.a().j) {
+            break label424;
+          }
+          bdll.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
+        }
+      }
+    }
     for (;;)
     {
-      Object localObject5;
-      Object localObject4;
-      try
+      if (AVActivity.a(this.a) != null) {
+        AVActivity.a(this.a).a(this.a.isResume());
+      }
+      this.a.a.a("backgroundReason", "1");
+      lcj.a = "1";
+      return;
+      label210:
+      bdll.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
+      break;
+      label237:
+      if (this.a.d != 1) {
+        break;
+      }
+      if (this.a.a.a().j)
       {
-        parammun = new String(parammun.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
-        if (parammun != null)
+        if (this.a.a.a().D == 10)
         {
-          localObject5 = str1;
-          localObject4 = localObject2;
-          localObject3 = localObject1;
-          try
-          {
-            parammun = new JSONObject(parammun);
-            localObject5 = str1;
-            localObject4 = localObject2;
-            localObject3 = localObject1;
-            i = parammun.getInt("retcode");
-            String str2 = str3;
-            Object localObject7 = str1;
-            Object localObject6 = localObject2;
-            localObject5 = str1;
-            localObject4 = localObject2;
-            localObject3 = localObject1;
-            if (parammun.has("result"))
-            {
-              localObject5 = str1;
-              localObject4 = localObject2;
-              localObject3 = localObject1;
-              JSONObject localJSONObject = parammun.getJSONObject("result");
-              parammun = localObject8;
-              localObject5 = str1;
-              localObject4 = localObject2;
-              localObject3 = localObject1;
-              if (localJSONObject.has("result_code"))
-              {
-                localObject5 = str1;
-                localObject4 = localObject2;
-                localObject3 = localObject1;
-                parammun = localJSONObject.getString("result_code");
-              }
-              localObject1 = localObject2;
-              localObject5 = str1;
-              localObject4 = localObject2;
-              localObject3 = parammun;
-              if (localJSONObject.has("disc_name_card"))
-              {
-                localObject5 = str1;
-                localObject4 = localObject2;
-                localObject3 = parammun;
-                localObject1 = localJSONObject.getString("disc_name_card");
-              }
-              localObject2 = str1;
-              localObject5 = str1;
-              localObject4 = localObject1;
-              localObject3 = parammun;
-              if (localJSONObject.has("name_card_sender_uin"))
-              {
-                localObject5 = str1;
-                localObject4 = localObject1;
-                localObject3 = parammun;
-                localObject2 = localJSONObject.getString("name_card_sender_uin");
-              }
-              str2 = str3;
-              localObject7 = localObject2;
-              localObject6 = localObject1;
-              localmun = parammun;
-              localObject5 = localObject2;
-              localObject4 = localObject1;
-              localObject3 = parammun;
-              if (localJSONObject.has("name_card_sender_name"))
-              {
-                localObject5 = localObject2;
-                localObject4 = localObject1;
-                localObject3 = parammun;
-                str2 = localJSONObject.getString("name_card_sender_name");
-                localmun = parammun;
-                localObject6 = localObject1;
-                localObject7 = localObject2;
-              }
-            }
-            localObject2 = str2;
-            localObject1 = localObject7;
-            parammun = localObject6;
-            localObject3 = localmun;
-          }
-          catch (JSONException parammun)
-          {
-            localObject1 = localObject5;
-            if (!QLog.isColorLevel()) {
-              break label602;
-            }
-            QLog.d(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString, 2, "OnGetDiscNameCardTask.onPostDownloadComplete e = " + parammun.toString());
-            localObject2 = "";
-            i = -2;
-            parammun = localObject4;
-            continue;
-          }
-          QLog.w(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString, 1, "OnGetDiscNameCardTask.onPostDownloadComplete, result_code[" + (String)localObject3 + "], disc_name_card[" + parammun + "], name_card_sender_uin[" + (String)localObject1 + "], name_card_sender_name[" + (String)localObject2 + "], retcode[" + i + "], mDiscID[" + this.jdField_a_of_type_JavaLangString + "]");
-          ConferenceFlyTicketActivity.a(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.app.c(), (String)localObject1, (String)localObject2);
-          if ((i == 0) && (TextUtils.equals((CharSequence)localObject3, "0")) && (!TextUtils.isEmpty(parammun)) && (!parammun.equals("null"))) {
-            this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.a(parammun, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.app.c(), (String)localObject1, (String)localObject2);
-          }
-          return;
+          bdll.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
+          break;
         }
+        bdll.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
+        break;
       }
-      catch (Exception parammun)
+      if (!this.a.a.a().k) {
+        break;
+      }
+      if (this.a.a.a().D == 10)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString, 2, "OnGetDiscNameCardTask.onPostDownloadComplete e = " + parammun.toString());
-        }
-        parammun = null;
-        continue;
+        bdll.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
+        break;
       }
-      label602:
-      localObject2 = "";
-      int i = -1;
-      localObject1 = "";
-      parammun = "";
+      bdll.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
+      break;
+      label424:
+      bdll.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
     }
   }
 }

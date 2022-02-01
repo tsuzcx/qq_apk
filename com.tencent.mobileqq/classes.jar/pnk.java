@@ -1,80 +1,159 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import com.tencent.sharpP.SharpPDecoder;
+import java.net.URL;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class pnk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper;", "", "()V", "SUFFIX_SHARPP", "", "getSUFFIX_SHARPP", "()Ljava/lang/String;", "SUFFIX_WEBP", "getSUFFIX_WEBP", "TAG", "getTAG", "TYPE_SHARPP", "getTYPE_SHARPP", "TYPE_WEBP", "getTYPE_WEBP", "converToOptImageUrl", "", "imageRequest", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "originUrl", "convertBackToOriginUrl", "url", "originType", "convertToOptTypeUrl", "convertUrlToOtherType", "type", "decodeSharpP", "Landroid/graphics/Bitmap;", "filePath", "getTpType", "isSharpP", "", "isWebp", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pnk
 {
-  static int jdField_a_of_type_Int = -1;
-  static long jdField_a_of_type_Long;
-  static int jdField_b_of_type_Int = -1;
-  static long jdField_b_of_type_Long;
-  static int c;
+  @NotNull
+  private static final String a = "RIJImageSharpHelper";
+  public static final pnk a;
+  @NotNull
+  private static final String b = "sharp";
+  @NotNull
+  private static final String c = "webp";
+  @NotNull
+  private static final String d = "tp=sharp";
+  @NotNull
+  private static final String e = "tp=webp";
   
-  public static int a()
+  static
   {
-    return c;
+    jdField_a_of_type_Pnk = new pnk();
+    jdField_a_of_type_JavaLangString = "RIJImageSharpHelper";
   }
   
-  static void a(AbsListView paramAbsListView)
+  @Nullable
+  public final Bitmap a(@NotNull String paramString)
   {
-    pnm localpnm = new pnm();
-    int i = paramAbsListView.getLastVisiblePosition();
-    int j = ((ListAdapter)paramAbsListView.getAdapter()).getCount();
-    localpnm.jdField_a_of_type_Int = b();
-    localpnm.jdField_b_of_type_Int = Math.abs(jdField_b_of_type_Int - jdField_a_of_type_Int);
-    localpnm.jdField_a_of_type_Long = (jdField_b_of_type_Long - jdField_a_of_type_Long);
-    localpnm.c = (j - i);
-    localpnm.jdField_b_of_type_Long = jdField_b_of_type_Long;
-    localpnm.d = j;
-    pnl.a(localpnm);
+    Intrinsics.checkParameterIsNotNull(paramString, "filePath");
+    SharpPDecoder localSharpPDecoder = new SharpPDecoder();
+    int i = localSharpPDecoder.parseHeader(paramString);
+    if (i != 0) {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "status: " + i);
+    }
+    for (;;)
+    {
+      return null;
+      i = localSharpPDecoder.getSharpPType();
+      if ((3 != i) && (4 != i)) {
+        try
+        {
+          paramString = localSharpPDecoder.decodeSharpP2PNG2(paramString, 4, 1000);
+          return paramString;
+        }
+        catch (UnsatisfiedLinkError paramString)
+        {
+          QLog.d(jdField_a_of_type_JavaLangString, 1, "sharpP so link error, missing native method.");
+          paramString.printStackTrace();
+        }
+      }
+    }
   }
   
-  public static void a(AbsListView paramAbsListView, int paramInt)
+  @NotNull
+  public final String a(@NotNull String paramString)
   {
-    if ((paramAbsListView == null) || (paramAbsListView.getChildCount() == 0) || (paramAbsListView.getAdapter() == null)) {}
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    if (StringsKt.contains$default((CharSequence)paramString, (CharSequence)"fmt=gif", false, 2, null)) {}
     do
     {
-      do
-      {
-        return;
-        b(paramAbsListView, paramInt);
-      } while ((pnl.jdField_a_of_type_Long < 0L) || (pnl.jdField_b_of_type_Long < 0L));
-      switch (paramInt)
-      {
-      default: 
-        return;
+      return paramString;
+      if (pnh.a.f()) {
+        return a(paramString, c);
       }
-    } while ((jdField_b_of_type_Int >= 0) || (jdField_b_of_type_Long >= 0L));
-    jdField_b_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-    jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    a(paramAbsListView);
-    return;
-    jdField_a_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-    jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    jdField_b_of_type_Int = -1;
-    jdField_b_of_type_Long = -1L;
+    } while ((!pnh.a.g()) || (!blem.a((Context)BaseApplicationImpl.context)));
+    return a(paramString, b);
   }
   
-  static int b()
+  @NotNull
+  public final String a(@NotNull String paramString1, @NotNull String paramString2)
   {
-    if (jdField_a_of_type_Int > jdField_b_of_type_Int) {
-      return 0;
+    Intrinsics.checkParameterIsNotNull(paramString1, "url");
+    Intrinsics.checkParameterIsNotNull(paramString2, "type");
+    Object localObject = blhn.a(paramString1);
+    if (((Map)localObject).containsKey("tp"))
+    {
+      localObject = (String)((Map)localObject).get("tp");
+      return StringsKt.replace$default(paramString1, "tp=" + (String)localObject, "tp=" + paramString2, false, 4, null);
     }
-    return 1;
+    if (((Map)localObject).size() > 0) {
+      return paramString1 + "&tp=" + paramString2;
+    }
+    return paramString1 + "?tp=" + paramString2;
   }
   
-  private static void b(AbsListView paramAbsListView, int paramInt)
+  public final void a(@NotNull suo paramsuo, @NotNull String paramString)
   {
-    if (paramInt != 0) {
+    Intrinsics.checkParameterIsNotNull(paramsuo, "imageRequest");
+    Intrinsics.checkParameterIsNotNull(paramString, "originUrl");
+    try
+    {
+      paramsuo.c = b(paramString);
+      paramsuo.a = new URL(a(paramString));
       return;
     }
-    c = paramAbsListView.getFirstVisiblePosition() - ((ListView)paramAbsListView).getHeaderViewsCount();
-    if (c < 0) {
-      c = 0;
+    catch (Exception paramsuo)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, paramsuo.getMessage());
     }
-    QLog.d("ReadinjoySPEventReport", 2, new Object[] { "[onScrollStateChanged] record firstItemPos : ", Integer.valueOf(c) });
+  }
+  
+  public final boolean a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    return StringsKt.contains$default((CharSequence)paramString, (CharSequence)d, false, 2, null);
+  }
+  
+  @Nullable
+  public final String b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    paramString = blhn.a(paramString);
+    if (paramString.containsKey("tp")) {
+      return (String)paramString.get("tp");
+    }
+    return "";
+  }
+  
+  @NotNull
+  public final String b(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "url");
+    Intrinsics.checkParameterIsNotNull(paramString2, "originType");
+    Object localObject = blhn.a(paramString1);
+    String str = paramString1;
+    if (((Map)localObject).containsKey("tp"))
+    {
+      localObject = (String)((Map)localObject).get("tp");
+      if (!c.equals(localObject))
+      {
+        str = paramString1;
+        if (!b.equals(localObject)) {}
+      }
+      else
+      {
+        if (TextUtils.isEmpty((CharSequence)paramString2)) {
+          break label129;
+        }
+        str = StringsKt.replace$default(paramString1, "tp=" + (String)localObject, "tp=" + paramString2, false, 4, null);
+      }
+    }
+    return str;
+    label129:
+    paramString1 = blhn.a(paramString1, "tp");
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "URLUtil.deleteParameter(url, \"tp\")");
+    return paramString1;
   }
 }
 

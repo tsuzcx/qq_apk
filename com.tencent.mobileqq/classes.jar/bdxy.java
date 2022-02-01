@@ -1,21 +1,13 @@
-public class bdxy
-  extends bdxu
+class bdxy
+  implements bdym
 {
-  private int a = 360000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 10000;
-  private int e = 20000;
-  private int f = 3000;
+  bdxy(bdxx parambdxx, bdxj parambdxj, String paramString) {}
   
-  public int a()
+  public void a(bdyr parambdyr)
   {
-    return this.d;
-  }
-  
-  public int b()
-  {
-    return this.e;
+    if (bdxx.a(this.jdField_a_of_type_Bdxx) != null) {
+      bdxx.a(this.jdField_a_of_type_Bdxx).a(this.jdField_a_of_type_Bdxj, parambdyr, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

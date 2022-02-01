@@ -1,39 +1,18 @@
-import android.graphics.Point;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-
 public class aqce
 {
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
-  {
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("param_service_type");
-      String str = paramBundle.getString("param_sub_type");
-      if (paramBundle.getInt("param_extra", 1) != 2) {
-        aqdc.a().a(i, str, paramBoolean);
-      }
-      aqdc.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
-    }
-  }
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
-  {
-    aqdc.a().a(paramInt, paramString, paramBoolean);
-  }
+  public aqce() {}
   
-  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
-  
-  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  public aqce(String paramString1, String paramString2, String paramString3)
   {
-    if (paramBundle != null)
-    {
-      aqdc.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
-      aqdc.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
-      aqdc.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
-      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
-      aqdc.a().b(bool);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

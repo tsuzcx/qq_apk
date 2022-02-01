@@ -18,7 +18,7 @@ final class ThemeBackground$3
     if (paramView.getHeight() > 0)
     {
       paramView.removeOnLayoutChangeListener(this);
-      ThemeBackground.access$100(paramView, this.val$bgType, this.val$themeBackground);
+      ThemeBackground.setThemeDrawArea(paramView, this.val$bgType, this.val$themeBackground);
     }
   }
 }

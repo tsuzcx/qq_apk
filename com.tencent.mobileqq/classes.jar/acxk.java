@@ -1,17 +1,67 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
-public abstract interface acxk
+public class acxk
+  extends acyg
 {
-  public abstract int a();
+  public acxk(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  {
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
   
-  public abstract void a(List<acxk> paramList);
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    acvc.b("AbsWebView", "GdtBaseHalfScreenFragment onReceivedTitle" + paramString);
+    if (GdtBaseHalfScreenFragment.a(this.a) != null) {
+      GdtBaseHalfScreenFragment.a(this.a).setText(paramString);
+    }
+  }
   
-  public abstract boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn);
-  
-  public abstract boolean a(im_msg_body.Elem paramElem);
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    for (;;)
+    {
+      return true;
+      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      localObject = AdUriUtil.parse(paramString);
+      if (localObject != null) {}
+      for (paramString = ((Uri)localObject).getScheme(); niz.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return true;
+        }
+        catch (ActivityNotFoundException paramWebView)
+        {
+          acvc.d("AbsWebView", paramWebView.toString());
+          return true;
+        }
+      }
+    }
+  }
 }
 
 

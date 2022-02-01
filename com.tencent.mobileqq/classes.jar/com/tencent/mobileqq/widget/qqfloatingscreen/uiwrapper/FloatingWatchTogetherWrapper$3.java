@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
-import bifd;
+import bjgc;
 
 public class FloatingWatchTogetherWrapper$3
   implements Runnable
 {
-  public FloatingWatchTogetherWrapper$3(bifd parambifd, int paramInt) {}
+  public FloatingWatchTogetherWrapper$3(bjgc parambjgc, int paramInt) {}
   
   public void run()
   {
-    bifd.a(this.this$0, this.a);
+    bjgc.a(this.this$0, this.a);
     this.this$0.e();
   }
 }

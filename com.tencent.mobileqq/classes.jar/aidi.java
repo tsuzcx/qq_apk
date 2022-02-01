@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
 public class aidi
-  extends anxg
+  extends bcyj
 {
-  aidi(aidf paramaidf) {}
+  public aidi(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void a(int paramInt)
   {
-    paramString = this.a;
-    if ((paramBoolean1) && (paramBoolean2)) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+    aiec localaiec = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localaiec != null) {
+      localaiec.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
+    }
+  }
+  
+  public void a(int paramInt, bcyb parambcyb)
+  {
+    aiec localaiec = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (parambcyb.jdField_a_of_type_Int == 0)
     {
-      paramString.Y = paramBoolean1;
-      aidf.a(this.a).post(new NearbyChatPie.12.1(this));
+      parambcyb = (azpq)parambcyb.jdField_a_of_type_JavaLangObject;
+      if (localaiec != null) {
+        localaiec.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, parambcyb.b, false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, parambcyb.b);
       return;
     }
+    if (localaiec != null) {
+      localaiec.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + parambcyb.jdField_a_of_type_Azqh.a + ", desc:" + parambcyb.jdField_a_of_type_Azqh.b, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
   }
 }
 

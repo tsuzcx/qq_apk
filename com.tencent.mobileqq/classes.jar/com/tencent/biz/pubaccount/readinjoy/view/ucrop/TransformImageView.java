@@ -13,9 +13,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import tfz;
-import tgd;
-import tgm;
+import swt;
+import swx;
+import sxg;
 
 public class TransformImageView
   extends ImageView
@@ -23,7 +23,7 @@ public class TransformImageView
   protected float a;
   protected int a;
   protected Matrix a;
-  protected tgd a;
+  protected swx a;
   protected boolean a;
   protected final float[] a;
   protected float b;
@@ -78,8 +78,8 @@ public class TransformImageView
     do
     {
       return null;
-      if ((getDrawable() instanceof tfz)) {
-        return ((tfz)getDrawable()).a();
+      if ((getDrawable() instanceof swt)) {
+        return ((swt)getDrawable()).a();
       }
     } while (!(getDrawable() instanceof BitmapDrawable));
     return ((BitmapDrawable)getDrawable()).getBitmap();
@@ -110,11 +110,11 @@ public class TransformImageView
       float f2 = ((Drawable)localObject).getIntrinsicHeight();
       Log.d("TransformImageView", String.format("Image size: [%d:%d]", new Object[] { Integer.valueOf((int)f1), Integer.valueOf((int)f2) }));
       localObject = new RectF(0.0F, 0.0F, f1, f2);
-      this.d = tgm.a((RectF)localObject);
-      this.e = tgm.b((RectF)localObject);
+      this.d = sxg.a((RectF)localObject);
+      this.e = sxg.b((RectF)localObject);
       this.jdField_b_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Tgd == null);
-    this.jdField_a_of_type_Tgd.a();
+    } while (this.jdField_a_of_type_Swx == null);
+    this.jdField_a_of_type_Swx.a();
   }
   
   protected void c()
@@ -130,8 +130,8 @@ public class TransformImageView
       this.jdField_b_of_type_Float = paramFloat3;
       this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
       setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      if (this.jdField_a_of_type_Tgd != null) {
-        this.jdField_a_of_type_Tgd.b(a(this.jdField_a_of_type_AndroidGraphicsMatrix));
+      if (this.jdField_a_of_type_Swx != null) {
+        this.jdField_a_of_type_Swx.b(a(this.jdField_a_of_type_AndroidGraphicsMatrix));
       }
     }
   }
@@ -165,7 +165,7 @@ public class TransformImageView
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    setImageDrawable(new tfz(paramBitmap));
+    setImageDrawable(new swt(paramBitmap));
   }
   
   public void setImageMatrix(Matrix paramMatrix)
@@ -190,9 +190,9 @@ public class TransformImageView
     Log.w("TransformImageView", "Invalid ScaleType. Only ScaleType.MATRIX can be used");
   }
   
-  public void setTransformImageListener(tgd paramtgd)
+  public void setTransformImageListener(swx paramswx)
   {
-    this.jdField_a_of_type_Tgd = paramtgd;
+    this.jdField_a_of_type_Swx = paramswx;
   }
 }
 

@@ -1,49 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class aniq
-  implements IUploadTaskCallback
+public class aniq
+  implements Animator.AnimatorListener
 {
-  aniq(anip paramanip) {}
+  public aniq(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
-    }
-    this.a.notifyUI(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
+    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
   }
   
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
-  {
-    if (paramLong1 == paramLong2)
-    {
-      this.a.b = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
-      }
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt) {}
-  
-  public void onUploadSucceed(AbstractUploadTask arg1, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
-    }
-    synchronized (anip.a(this.a))
-    {
-      if (anip.a(this.a).size() != 0)
-      {
-        anip.a(this.a);
-        return;
-      }
-      this.a.notifyUI(71, true, new Object[0]);
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

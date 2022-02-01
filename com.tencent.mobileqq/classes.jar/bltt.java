@@ -1,11 +1,12 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
 class bltt
-  implements bltr
+  extends RecyclerView.ViewHolder
 {
-  bltt(blts paramblts, bltp parambltp) {}
-  
-  public void a()
+  bltt(bltq parambltq, View paramView)
   {
-    this.jdField_a_of_type_Bltp.a();
+    super(paramView);
   }
 }
 

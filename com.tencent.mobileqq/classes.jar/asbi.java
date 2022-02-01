@@ -1,135 +1,141 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher.1;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class asbi
-  extends BaseAdapter
+  implements Handler.Callback
 {
-  private static int jdField_a_of_type_Int = 6;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Object> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private String c;
+  public long a;
+  private anyu a;
+  public QQAppInterface a;
+  protected EntityManager a;
+  public Set<String> a;
+  protected ConcurrentHashMap<String, String> a;
+  public MqqHandler a;
+  public boolean a;
   
-  public asbi(Context paramContext, List<Object> paramList, URLDrawable.URLDrawableListener paramURLDrawableListener, Drawable paramDrawable, String paramString1, String paramString2, String paramString3)
+  public asbi(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = paramURLDrawableListener;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.jdField_a_of_type_Anyu = new asbj(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
+    this.jdField_a_of_type_JavaUtilSet = new HashSet(20);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhlj(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public int getCount()
+  public static String a(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      if (i > jdField_a_of_type_Int) {
-        return jdField_a_of_type_Int + 1;
-      }
-      return i + 1;
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    if (paramInt1 == 4) {
+      localStringBuilder.append("troop_").append(paramString);
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject3;
-    Object localObject1;
-    Object localObject2;
-    if (paramInt < getCount() - 1)
+    for (;;)
     {
-      localObject3 = (IPSiteModel.Goods)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (paramView == null)
+      return localStringBuilder.toString();
+      if (paramInt1 == 32) {
+        localStringBuilder.append("stranger_").append(paramInt2).append("_").append(paramString);
+      } else if (paramInt1 == 16) {
+        localStringBuilder.append("qcall_").append(paramInt2).append("_").append(paramString);
+      } else {
+        localStringBuilder.append(paramString);
+      }
+    }
+  }
+  
+  public static String a(int paramInt, String paramString, byte paramByte1, byte paramByte2)
+  {
+    return MsfSdkUtils.insertMtype("QQHeadIcon", paramString + String.valueOf(640));
+  }
+  
+  private void a(String paramString)
+  {
+    localSet = this.jdField_a_of_type_JavaUtilSet;
+    if (paramString == null) {}
+    for (;;)
+    {
+      try
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559130, null, false);
-        localObject1 = new asbl(this, null);
-        ((asbl)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-        ((asbl)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362384));
-        ((asbl)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362385));
-        ((asbl)localObject1).b = ((TextView)paramView.findViewById(2131362383));
-        paramView.setTag(localObject1);
-        localObject2 = paramView;
-        if (localObject3 != null)
+        this.jdField_a_of_type_JavaUtilSet.clear();
+        if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
         {
-          ((asbl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bgtl.a(((IPSiteModel.Goods)localObject3).cover, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-          ((asbl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((IPSiteModel.Goods)localObject3).name);
-          localObject2 = "0";
-          if (!TextUtils.isEmpty(((IPSiteModel.Goods)localObject3).saleNum)) {
-            localObject2 = ((IPSiteModel.Goods)localObject3).saleNum;
-          }
-          ((asbl)localObject1).b.setText((String)localObject2 + anni.a(2131704631));
-          ((asbl)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new asbj(this, (IPSiteModel.Goods)localObject3));
-          localObject2 = paramView;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyu);
+          this.jdField_a_of_type_Boolean = false;
         }
+        return;
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+  }
+  
+  public String a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramString)) || ((paramInt != 200) && (paramInt != 202) && (paramInt != 204)))
+    {
+      asam.a("StrangerHdHeadUrlFetcher", new Object[] { "uinOrMobileNum is null or empty" });
+      return "";
+    }
+    String str2 = a(32, paramInt, paramString);
+    String str1 = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+    if (TextUtils.isEmpty(str1))
+    {
+      ??? = (Setting)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(Setting.class, str2);
+      if ((??? != null) && (!TextUtils.isEmpty(((Setting)???).url)))
+      {
+        str1 = a(32, ((Setting)???).url, ((Setting)???).bHeadType, ((Setting)???).bFaceFlags);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, str1);
       }
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject2, paramViewGroup, getItemId(paramInt));
-      return localObject2;
-      localObject1 = (asbl)paramView.getTag();
-      break;
-      paramView = (IPSiteModel.Goods)this.jdField_a_of_type_JavaUtilList.get(0);
-      localObject2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((RelativeLayout)localObject2).setBackgroundColor(Color.parseColor("#fafafa"));
-      localObject1 = new AbsListView.LayoutParams(afur.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout)localObject2).setMinimumWidth(afur.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout)localObject2).setMinimumHeight(afur.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(14);
-      ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject3).setId(2131362393);
-      ((TextView)localObject3).setTextSize(12.0F);
-      ((TextView)localObject3).setTextColor(Color.parseColor("#777777"));
-      ((TextView)localObject3).setText(anni.a(2131704632));
-      ((TextView)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
-      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localImageView.setImageResource(2130847100);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(1, 2131362393);
-      localLayoutParams.addRule(15);
-      localLayoutParams.leftMargin = afur.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localImageView.setLayoutParams(localLayoutParams);
-      ((RelativeLayout)localObject1).addView((View)localObject3);
-      ((RelativeLayout)localObject1).addView(localImageView);
-      ((RelativeLayout)localObject2).addView((View)localObject1);
-      ((RelativeLayout)localObject2).setOnClickListener(new asbk(this, paramView));
+      synchronized (this.jdField_a_of_type_JavaUtilSet)
+      {
+        this.jdField_a_of_type_JavaUtilSet.remove(str2);
+        ThreadManager.post(new StrangerHdHeadUrlFetcher.1(this, paramString, paramInt, paramBoolean, str2), 8, null, false);
+        return str1;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyu);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      return;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      long l = Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if ((l < 0L) || (l > 60000L)) {
+        a(null);
+      } else if (!this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageAtTime(1, 60000L);
+      }
     }
   }
 }

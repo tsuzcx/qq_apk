@@ -1,14 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class ayof
-  implements arxk
+class ayof
+  implements DialogInterface.OnClickListener
 {
-  public List<asaf> a(boolean paramBoolean1, boolean paramBoolean2)
+  ayof(ayob paramayob, bhpc parambhpc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new asaf(7, 7, null));
-    return localArrayList;
+    this.jdField_a_of_type_Bhpc.dismiss();
   }
 }
 

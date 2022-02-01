@@ -19,7 +19,7 @@ class BlessSelectMemberActivity$4
       int j = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineEnd(3);
       if (j < this.jdField_a_of_type_JavaLangStringBuilder.length())
       {
-        str1 = String.format(this.this$0.getString(2131690531), new Object[] { "...", Integer.valueOf(this.this$0.a.size()) });
+        str1 = String.format(this.this$0.getString(2131690526), new Object[] { "...", Integer.valueOf(this.this$0.a.size()) });
         float f = this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(str1);
         if (i < this.jdField_a_of_type_JavaLangStringBuilder.length())
         {

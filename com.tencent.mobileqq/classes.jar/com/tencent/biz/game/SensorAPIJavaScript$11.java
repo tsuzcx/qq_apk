@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import gp;
 import java.lang.ref.WeakReference;
-import nmj;
+import noe;
 
 class SensorAPIJavaScript$11
   extends Thread
@@ -33,7 +33,7 @@ class SensorAPIJavaScript$11
           break label200;
         }
         int j = this.this$0.a();
-        this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { nmj.a(Integer.toString(i)), nmj.a(str), nmj.a(Integer.toString(j)) });
+        this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { noe.a(Integer.toString(i)), noe.a(str), noe.a(Integer.toString(j)) });
         return;
         if (QLog.isDevelopLevel()) {
           QLog.d("SensorApi", 4, "run check: " + i);
@@ -55,7 +55,7 @@ class SensorAPIJavaScript$11
       }
       continue;
       label200:
-      this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { nmj.a(Integer.toString(i)) });
+      this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { noe.a(Integer.toString(i)) });
       return;
       i = 2;
     }

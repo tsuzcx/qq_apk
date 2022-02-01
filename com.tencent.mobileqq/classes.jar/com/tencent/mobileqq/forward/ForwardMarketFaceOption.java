@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import ahch;
+import ahlt;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -10,11 +10,11 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import asbq;
-import aufz;
-import auho;
-import bgmo;
-import bgtn;
+import asre;
+import auxu;
+import auzm;
+import bhmq;
+import bhtq;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -24,7 +24,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
 public class ForwardMarketFaceOption
-  extends aufz
+  extends auxu
 {
   private ImageView a;
   private boolean i;
@@ -39,13 +39,13 @@ public class ForwardMarketFaceOption
   public View a()
   {
     FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    localFrameLayout.setMinimumHeight(bgtn.a(85.0F));
-    int j = bgtn.a(15.0F);
+    localFrameLayout.setMinimumHeight(bhtq.a(85.0F));
+    int j = bhtq.a(15.0F);
     localFrameLayout.setPadding(0, j, 0, j);
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
     localImageView.setAdjustViewBounds(true);
-    localImageView.setMaxWidth(bgtn.a(120.0F));
-    localImageView.setMaxHeight(bgtn.a(120.0F));
+    localImageView.setMaxWidth(bhtq.a(120.0F));
+    localImageView.setMaxHeight(bhtq.a(120.0F));
     localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     localFrameLayout.addView(localImageView, new FrameLayout.LayoutParams(-2, -2, 17));
     this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
@@ -55,13 +55,13 @@ public class ForwardMarketFaceOption
   
   public void a()
   {
-    if (l()) {
+    if (m()) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if (m()) {
+    if (n()) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if (n()) {
+    if (o()) {
       this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
     }
   }
@@ -98,29 +98,29 @@ public class ForwardMarketFaceOption
       QLog.d("ForwardOption.ForwardMarketFaceOption", 2, "setPreviewImage");
     }
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_emotion_from_preview", false)) {}
-    for (Object localObject = AIOEmotionFragment.a; localObject == null; localObject = ahch.a) {
+    for (Object localObject = AIOEmotionFragment.a; localObject == null; localObject = ahlt.a) {
       return;
     }
-    localObject = ((asbq)localObject).a("fromAIO", false);
-    ((URLDrawable)localObject).setBounds(bgmo.a((Drawable)localObject, 36, 100, this.jdField_a_of_type_Float));
+    localObject = ((asre)localObject).a("fromAIO", false);
+    ((URLDrawable)localObject).setBounds(bhmq.a((Drawable)localObject, 36, 100, this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    ((URLDrawable)localObject).setURLDrawableListener(new auho(this));
+    ((URLDrawable)localObject).setURLDrawableListener(new auzm(this));
   }
   
-  public boolean i()
+  public boolean j()
   {
     return true;
-  }
-  
-  public void j()
-  {
-    super.j();
-    AbstractGifImage.pauseAll();
   }
   
   public void k()
   {
     super.k();
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void l()
+  {
+    super.l();
     AbstractGifImage.resumeAll();
   }
 }

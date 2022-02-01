@@ -1,17 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bjxu
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements View.OnClickListener
 {
-  bjxu(bjxs parambjxs, RequestEvent paramRequestEvent) {}
+  bjxu(bjxr parambjxr, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bjxr, this.jdField_a_of_type_Int);
     }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bjxr.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

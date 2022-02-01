@@ -1,17 +1,35 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.HashMap;
+import java.util.Set;
 
-class vuh
-  implements zxa<FeedCloudRead.StGetFeedListRsp>
+public class vuh
 {
-  vuh(vuf paramvuf, boolean paramBoolean, QCircleGetFeedListRequest paramQCircleGetFeedListRequest) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public static int a()
   {
-    this.jdField_a_of_type_Vuf.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
-    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + VSNetworkHelper.a(paramString));
+    switch ()
+    {
+    default: 
+      return 9;
+    case 0: 
+      switch (AppNetConnInfo.getMobileInfo())
+      {
+      default: 
+        return 9;
+      case 1: 
+        return 2;
+      case 2: 
+        return 3;
+      case 3: 
+        return 4;
+      }
+      return 5;
+    }
+    return 1;
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.keySet().size() == 0)) {}
   }
 }
 

@@ -1,90 +1,89 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qll
+  extends qjh
 {
-  private List<svs> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<URL> b = new ArrayList();
-  
-  public qll(NativeGridImageView paramNativeGridImageView, ArticleInfo paramArticleInfo)
+  public qll(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    int i;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a.size() > 0))
-    {
-      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.a;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramArticleInfo.size()) {}
-      try
-      {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j >= 9)
-        {
-          if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-            ((svs)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-          }
-          return;
-        }
-        if ((((rho)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null) || (((rho)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString != null))
-        {
-          Object localObject;
-          label255:
-          int k;
-          if (((rho)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null)
-          {
-            paramNativeGridImageView = ((rho)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            localObject = new URL(paramNativeGridImageView);
-            if (((rho)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString == null) {
-              break label374;
-            }
-            paramNativeGridImageView = ((rho)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            paramNativeGridImageView = new URL(paramNativeGridImageView);
-            this.b.add(localObject);
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            j = ((rho)paramArticleInfo.get(i)).a;
-            k = ((rho)paramArticleInfo.get(i)).jdField_b_of_type_Int;
-            if (((rho)paramArticleInfo.get(i)).jdField_c_of_type_Int != 1) {
-              break label391;
-            }
-          }
-          label391:
-          for (boolean bool = true;; bool = false)
-          {
-            ((List)localObject).add(new svs(j, k, paramNativeGridImageView, bool));
-            break label410;
-            paramNativeGridImageView = ((rho)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            break;
-            label374:
-            paramNativeGridImageView = ((rho)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            break label255;
-          }
-        }
-      }
-      catch (Exception paramNativeGridImageView)
-      {
-        paramNativeGridImageView.printStackTrace();
-        QLog.d("Proteus.NativeGridImageView", 1, "GridImageModel exception.");
-        label410:
-        i += 1;
-      }
-    }
+    super(paramContext, paramaoof, paramsel);
   }
   
-  public List<svs> a()
+  public qjh a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Boolean = true;
+    return c(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).q().l().n().h().j();
   }
   
-  public List<URL> b()
+  public qjh d()
   {
-    return this.b;
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null)
+    {
+      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localRelativeLayout1.setPadding(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localRelativeLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, agej.a(86.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams.addRule(15);
+      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
+      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      localRelativeLayout2.setBackgroundResource(2130842852);
+      localRelativeLayout2.setOnClickListener(new qlm(this));
+      localRelativeLayout1.addView(localRelativeLayout2);
+      localLinearLayout.addView(localRelativeLayout1);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qjh e()
+  {
+    return null;
+  }
+  
+  public qjh o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
 }
 

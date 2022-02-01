@@ -1,16 +1,20 @@
-import android.net.Uri;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
-public class augw
-  implements auyc
+class augw
+  extends aocj
 {
-  public augw(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  augw(augr paramaugr) {}
   
-  public void a(Uri paramUri) {}
-  
-  public void a(String paramString1, String paramString2, long paramLong)
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.a.a = ForwardFileBaseOption.a(this.a, paramString2, paramLong);
+    if (paramInt1 == 0)
+    {
+      if (augr.a(this.a)) {
+        auna.a(2131693816);
+      }
+      augr.a(this.a, false);
+      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
+    }
   }
 }
 

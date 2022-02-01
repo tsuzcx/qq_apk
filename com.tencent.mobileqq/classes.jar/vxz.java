@@ -1,20 +1,6 @@
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
-
-public class vxz
-  implements apyj
+public abstract interface vxz
 {
-  public vxz(QCircleRecommendImageView paramQCircleRecommendImageView) {}
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    QCircleRecommendImageView.a(this.a);
-    QCircleRecommendImageView.a(this.a, true);
-    this.a.setPadding(0, 0, 0, 0);
-  }
+  public abstract void a(String paramString);
 }
 
 

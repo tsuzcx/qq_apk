@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.NotificationActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aezi
-  implements abfd
+  implements DialogInterface.OnClickListener
 {
-  WeakReference<QQSettingMe> a;
+  public aezi(NotificationActivity paramNotificationActivity) {}
   
-  public aezi(QQSettingMe paramQQSettingMe)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramQQSettingMe);
-  }
-  
-  public int a()
-  {
-    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-    if (localQQSettingMe != null) {
-      return localQQSettingMe.a();
-    }
-    return 0;
+    ThreadManager.getSubThreadHandler().postDelayed(new NotificationActivity.1.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aezi
  * JD-Core Version:    0.7.0.1
  */

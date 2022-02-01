@@ -1,52 +1,23 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class aslg
-  extends asle
 {
-  public aslg(asld paramasld, askk paramaskk)
+  public static Bundle a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super(paramasld, paramaskk);
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.jdField_a_of_type_Askk.a();
-    this.jdField_a_of_type_Askk.a().a(paramInt);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    switch (paramInt1)
-    {
-    default: 
-      return false;
-    case 103: 
-      this.jdField_a_of_type_Askk.a().a();
-    case 104: 
-      this.jdField_a_of_type_Asld.a(0, paramInt2);
-    case 105: 
-      for (;;)
-      {
-        return true;
-        this.jdField_a_of_type_Asld.a(0, paramInt2);
-      }
+    int i = ((aogu)paramQQAppInterface.a(13)).g();
+    if (QLog.isColorLevel()) {
+      QLog.i("EmoticonContentProvider", 2, "call, vipType = " + i);
     }
-    this.jdField_a_of_type_Askk.a().a();
-    this.jdField_a_of_type_Asld.a(0, paramInt2);
-    this.jdField_a_of_type_Asld.b(paramInt1, paramInt2);
-    return false;
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Askk.a().a();
+    paramQQAppInterface = new Bundle();
+    paramQQAppInterface.putInt(paramString, i);
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aslg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.richmedia.ordersend;
 
-import afyl;
+import agif;
 import android.view.View;
-import bavg;
-import bduk;
+import bbnz;
+import bete;
 
 public class OrderMediaMsgStatusCallback$1
   implements Runnable
 {
-  public OrderMediaMsgStatusCallback$1(bavg parambavg, afyl paramafyl, View paramView, bduk parambduk) {}
+  public OrderMediaMsgStatusCallback$1(bbnz parambbnz, agif paramagif, View paramView, bete parambete) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Afyl.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Bduk, this.jdField_a_of_type_Bduk.d, this.jdField_a_of_type_Bduk.g);
+    this.jdField_a_of_type_Agif.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Bete, this.jdField_a_of_type_Bete.d, this.jdField_a_of_type_Bete.g);
   }
 }
 

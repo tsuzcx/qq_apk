@@ -1,16 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nvo
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public nvo(VideoCoverView paramVideoCoverView) {}
+  public nvo(AccountSettingFragment paramAccountSettingFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoCoverView.a(this.a, true);
+    AccountSettingFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

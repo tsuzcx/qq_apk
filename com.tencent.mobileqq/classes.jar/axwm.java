@@ -1,33 +1,39 @@
-class axwm
-  implements aqiw
+import android.animation.ObjectAnimator;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.ArrayList;
+
+public class axwm
 {
-  axwm(axvz paramaxvz) {}
+  public int a;
+  protected Drawable a;
+  public Handler a;
+  protected ImageView a;
+  public ArrayList<String> a;
+  protected int b;
   
-  public int a()
+  public void a(String paramString)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.b;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.b;
+    ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearby_reddot_face";
+    paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+    paramString.setTag(bhez.a(this.b, this.b));
+    paramString.setDecodeHandler(bhez.a);
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)
     {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+      localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.1F });
+      ((ObjectAnimator)localObject).addListener(new axwn(this, paramString));
+      ((ObjectAnimator)localObject).setDuration(1500L).start();
+      return;
     }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return anni.a(2131706050);
-    }
-    return anni.a(2131706151);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
   }
 }
 

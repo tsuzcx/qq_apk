@@ -1,35 +1,26 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
+import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
+import NS_QQ_STORY_META.META.StMusic;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class bpov
-  implements ViewPager.OnPageChangeListener
+  implements aaav<CLIENT.StBatchGetMusicInfoRsp>
 {
-  public bpov(FaceViewPager paramFaceViewPager) {}
+  public bpov(QIMMusicConfigManager paramQIMMusicConfigManager, bpmp parambpmp) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bpow)localIterator.next()).e(paramInt);
+    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
+      this.jdField_a_of_type_Bpmp.a(false, new FlowMusic());
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bpow)localIterator.next()).a(paramInt1, paramFloat, paramInt2);
+    while (this.jdField_a_of_type_Bpmp == null) {
+      return;
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bpow)localIterator.next()).c(paramInt);
-    }
+    paramString = new FlowMusic((META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(0));
+    QLog.i("QIMMusicConfigManager", 1, "getSingleFullMusicInfo from story success flow info:" + paramString.toString());
+    this.jdField_a_of_type_Bpmp.a(true, paramString);
   }
 }
 

@@ -1,18 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class bfnq
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public bfnq(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bfnq(NewTroopContactView paramNewTroopContactView) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    BulkSendMessageFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(0);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
+      }
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(8);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

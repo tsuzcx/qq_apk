@@ -1,16 +1,23 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
 public class rql
-  implements bkkl
 {
-  public rql(FriendListFragment paramFriendListFragment) {}
+  private static rql a;
   
-  public void a(int paramInt)
+  public static rql a()
   {
-    if (FriendListFragment.a(this.a) != null) {
-      FriendListFragment.a(this.a).onClick(null);
+    if (a == null) {}
+    try
+    {
+      a = new rql();
+      return a;
     }
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return null;
   }
 }
 

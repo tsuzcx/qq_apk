@@ -1,255 +1,338 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeyBlackRule;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeywordInfo;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeywordRuleInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.ViewParent;
+import android.view.ViewPropertyAnimator;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.together.writetogether.view.SavingAnimView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class bepz
 {
-  public static TroopAioKeywordTipInfo a(QQAppInterface paramQQAppInterface, String paramString)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private SavingAnimView jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherViewSavingAnimView;
+  private boolean jdField_a_of_type_Boolean;
+  private TextView b;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  
+  public bepz(Context paramContext, View paramView, TextView paramTextView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      paramQQAppInterface = null;
-    }
-    do
-    {
-      return paramQQAppInterface;
-      paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-      paramString = (TroopAioKeywordTipInfo)paramQQAppInterface.find(TroopAioKeywordTipInfo.class, paramString);
-      paramQQAppInterface.close();
-      paramQQAppInterface = paramString;
-    } while (!QLog.isColorLevel());
-    if (paramString == null)
-    {
-      QLog.i("TroopAioKeywordHelper", 2, "getLocalTipInfo, tipInfo = null");
-      return paramString;
-    }
-    QLog.i("TroopAioKeywordHelper", 2, "getLocalTipInfo, tipInfo = " + paramString.toString());
-    return paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.e = paramTextView;
+    a(paramView);
+    k();
   }
   
-  public static oidb_0x496.AioKeyword a()
+  private void a(View paramView)
   {
-    byte[] arrayOfByte = bgmg.a(BaseApplication.getContext().getFileStreamPath("0x496_aio_keyword"));
-    oidb_0x496.AioKeyword localAioKeyword = new oidb_0x496.AioKeyword();
-    if (arrayOfByte == null) {}
-    do
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381513));
+    this.b = ((TextView)paramView.findViewById(2131381515));
+    this.c = ((TextView)paramView.findViewById(2131381517));
+    this.d = ((TextView)paramView.findViewById(2131381514));
+    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherViewSavingAnimView = ((SavingAnimView)paramView.findViewById(2131381518));
+    paramView = paramView.getParent();
+    if ((paramView instanceof RelativeLayout))
     {
-      return localAioKeyword;
-      try
-      {
-        localAioKeyword.mergeFrom(arrayOfByte);
-        return localAioKeyword;
+      paramView = (RelativeLayout)paramView;
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+      localLayoutParams.leftMargin = 0;
+      localLayoutParams.rightMargin = 0;
+      paramView.setLayoutParams(localLayoutParams);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherViewSavingAnimView.setOnAnimationStateListener(new beqa(this));
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6)
+  {
+    int j = 0;
+    Object localObject = this.d;
+    if (paramBoolean1)
+    {
+      i = 0;
+      ((TextView)localObject).setVisibility(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherViewSavingAnimView;
+      if (!paramBoolean2) {
+        break label135;
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordHelper", 2, "get0x496AioKeyword," + localInvalidProtocolBufferMicroException.toString());
-    return localAioKeyword;
-  }
-  
-  public static List<String> a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    Object localObject = paramQQAppInterface.query(TroopAioKeyBlackRule.class);
-    ArrayList localArrayList = new ArrayList();
-    if (localObject == null) {
-      return localArrayList;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(((TroopAioKeyBlackRule)((Iterator)localObject).next()).mBlackUinKeywordRuleId);
-    }
-    paramQQAppInterface.close();
-    return localArrayList;
-  }
-  
-  public static List<TroopAioKeywordTipInfo> a(QQAppInterface paramQQAppInterface, String[] paramArrayOfString)
-  {
-    ArrayList localArrayList = new ArrayList(15);
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      return localArrayList;
-    }
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramQQAppInterface.find(TroopAioKeywordTipInfo.class, paramArrayOfString[i]);
-      if (localTroopAioKeywordTipInfo != null) {
-        localArrayList.add(localTroopAioKeywordTipInfo);
+      i = 0;
+      label36:
+      ((SavingAnimView)localObject).setVisibility(i);
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (!paramBoolean3) {
+        break label142;
       }
-      i += 1;
+      i = 0;
+      label56:
+      ((TextView)localObject).setVisibility(i);
+      localObject = this.b;
+      if (!paramBoolean4) {
+        break label149;
+      }
+      i = 0;
+      label77:
+      ((TextView)localObject).setVisibility(i);
+      localObject = this.c;
+      if (!paramBoolean5) {
+        break label156;
+      }
+      i = 0;
+      label98:
+      ((TextView)localObject).setVisibility(i);
+      localObject = this.e;
+      if (!paramBoolean6) {
+        break label163;
+      }
     }
-    paramQQAppInterface.close();
+    label135:
+    label142:
+    label149:
+    label156:
+    label163:
+    for (int i = j;; i = 8)
+    {
+      ((TextView)localObject).setVisibility(i);
+      return;
+      i = 8;
+      break;
+      i = 8;
+      break label36;
+      i = 8;
+      break label56;
+      i = 8;
+      break label77;
+      i = 8;
+      break label98;
+    }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    a(false, false, true, false, false, paramBoolean);
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool, paramBoolean, false, true, paramBoolean, true);
+      return;
+    }
+  }
+  
+  private void k()
+  {
+    this.jdField_a_of_type_Int = bhgr.a(this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_Int;
+  }
+  
+  private void l()
+  {
+    float f = this.b.getTextSize();
+    this.b.setTranslationY(f);
+    this.c.animate().alpha(0.0F).translationY(-f).setDuration(500L).start();
+    this.b.animate().alpha(1.0F).translationYBy(-f).setDuration(500L).setStartDelay(100L).setListener(new beqb(this)).start();
+  }
+  
+  private void m()
+  {
+    float f = this.b.getTextSize();
+    this.b.animate().setListener(null);
+    this.b.setAlpha(1.0F);
+    this.b.animate().alpha(0.0F).translationY(-f).setDuration(500L).start();
+    this.c.setTranslationY(f);
+    this.c.animate().alpha(1.0F).translationYBy(-f).setDuration(500L).setStartDelay(100L).start();
+  }
+  
+  private void n()
+  {
+    a(false, false, true, false, false, false);
+  }
+  
+  private void o()
+  {
+    a(false, true, false, true, true, true);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299140);
+  }
+  
+  public TextPaint a()
+  {
+    return this.b.getPaint();
+  }
+  
+  public TextView a()
+  {
+    return this.e;
+  }
+  
+  public void a()
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("TroopAioKeywordHelper", 2, "getLocalTipInfo, tipInfos=" + localArrayList.toString());
+      QLog.d("UserStateBar", 1, "[onChangesetCommitting]");
     }
-    return localArrayList;
+    o();
   }
   
-  public static List<beqa> a(oidb_0x496.AioKeyword paramAioKeyword)
+  public void a(String paramString)
   {
-    if ((paramAioKeyword == null) || (!paramAioKeyword.has()) || (!paramAioKeyword.keywords.has())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramAioKeyword = paramAioKeyword.keywords.get().iterator();
-    while (paramAioKeyword.hasNext())
+    this.e.setText(paramString);
+    if (this.e.getCompoundDrawables()[3] == null)
     {
-      oidb_0x496.AioKeywordInfo localAioKeywordInfo = (oidb_0x496.AioKeywordInfo)paramAioKeyword.next();
-      beqa localbeqa = new beqa();
-      localbeqa.jdField_a_of_type_JavaLangString = localAioKeywordInfo.word.get();
-      localbeqa.jdField_a_of_type_JavaUtilList = localAioKeywordInfo.rule_id.get();
-      localArrayList.add(localbeqa);
+      paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
+      Drawable localDrawable = paramString.getDrawable(2130850428);
+      int i = paramString.getDimensionPixelSize(2131299148);
+      localDrawable.setBounds(0, 0, i, i);
+      this.e.setCompoundDrawables(null, null, localDrawable, null);
     }
-    return localArrayList;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, oidb_0x496.AioKeyword paramAioKeyword)
+  public void a(String paramString, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    for (;;)
+    if (paramInt != 1)
     {
-      try
-      {
-        localFileOutputStream = BaseApplication.getContext().openFileOutput("0x496_aio_keyword", 0);
-        localObject1 = localFileOutputStream;
-        localObject2 = localFileOutputStream;
-        localFileOutputStream.write(paramAioKeyword.toByteArray());
-        localObject1 = localFileOutputStream;
-        localObject2 = localFileOutputStream;
-        localFileOutputStream.flush();
-        localObject1 = localFileOutputStream;
-        localObject2 = localFileOutputStream;
-        localFileOutputStream.close();
-        localObject1 = localFileOutputStream;
-        localObject2 = localFileOutputStream;
-        bgsg.P(BaseApplicationImpl.getApplication(), paramQQAppInterface.getCurrentAccountUin(), paramAioKeyword.version.get());
-      }
-      catch (IOException paramQQAppInterface)
-      {
-        FileOutputStream localFileOutputStream;
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject2 = localObject1;
-        QLog.e("TroopAioKeywordHelper", 2, "saveFile=" + paramQQAppInterface.toString());
-        if (localObject1 == null) {
-          continue;
-        }
-        try
-        {
-          localObject1.close();
-          return;
-        }
-        catch (IOException paramQQAppInterface) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("TroopAioKeywordHelper", 2, "saveFile=" + paramQQAppInterface.toString());
-        return;
-      }
-      finally
-      {
-        if (localObject2 == null) {
-          break label215;
-        }
-      }
-      try
-      {
-        localFileOutputStream.close();
-        return;
-      }
-      catch (IOException paramQQAppInterface)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("TroopAioKeywordHelper", 2, "saveFile=" + paramQQAppInterface.toString());
-          return;
-        }
-      }
+      this.b.setText(paramString);
+      this.b.getParent().requestLayout();
+      this.d.setVisibility(8);
+      return;
     }
-    try
+    this.d.setText(paramString);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      localObject2.close();
-      label215:
-      throw paramQQAppInterface;
-    }
-    catch (IOException paramAioKeyword)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopAioKeywordHelper", 2, "saveFile=" + paramAioKeyword.toString());
-        }
-      }
+      a(false, false, true, false, false, paramBoolean);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      return;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public void a(boolean paramBoolean)
+  {
+    b(paramBoolean);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719138);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167155));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    int i = this.jdField_a_of_type_Int - localResources.getDimensionPixelSize(2131299145) * 2 - localResources.getDimensionPixelSize(2131299147);
+    int j = localResources.getDimensionPixelSize(2131299146);
+    if (i < j) {
+      return j;
+    }
+    return i;
+  }
+  
+  public TextPaint b()
+  {
+    return this.e.getPaint();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UserStateBar", 1, "[onChangesetCommitted]");
+    }
+    j();
+  }
+  
+  public void b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    TroopAioKeyBlackRule localTroopAioKeyBlackRule = new TroopAioKeyBlackRule();
-    localTroopAioKeyBlackRule.mBlackUinKeywordRuleId = paramString;
-    paramQQAppInterface.persistOrReplace(localTroopAioKeyBlackRule);
-    paramQQAppInterface.close();
+    b(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167155));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, List<TroopAioKeywordTipInfo> paramList)
+  public int c()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      paramQQAppInterface.persistOrReplace((TroopAioKeywordTipInfo)paramList.next());
-    }
-    paramQQAppInterface.close();
+    return this.jdField_a_of_type_Int - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299141) * 2;
   }
   
-  public static List<beqb> b(oidb_0x496.AioKeyword paramAioKeyword)
+  public void c()
   {
-    if ((paramAioKeyword == null) || (!paramAioKeyword.has()) || (!paramAioKeyword.rules.has())) {
-      return null;
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("UserStateBar", 2, "[startAnimation]");
     }
-    ArrayList localArrayList = new ArrayList();
-    paramAioKeyword = paramAioKeyword.rules.get().iterator();
-    while (paramAioKeyword.hasNext())
-    {
-      oidb_0x496.AioKeywordRuleInfo localAioKeywordRuleInfo = (oidb_0x496.AioKeywordRuleInfo)paramAioKeyword.next();
-      beqb localbeqb = new beqb();
-      localbeqb.jdField_a_of_type_Int = localAioKeywordRuleInfo.rule_id.get();
-      localbeqb.b = localAioKeywordRuleInfo.start_time.get();
-      localbeqb.c = localAioKeywordRuleInfo.end_time.get();
-      localbeqb.d = localAioKeywordRuleInfo.postion_flag.get();
-      localbeqb.jdField_a_of_type_JavaUtilList = localAioKeywordRuleInfo.match_group_class.get();
-      localbeqb.e = localAioKeywordRuleInfo.version.get();
-      localArrayList.add(localbeqb);
+    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherViewSavingAnimView.a();
+    m();
+  }
+  
+  public int d()
+  {
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299139);
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UserStateBar", 2, "[stopAnimation]");
     }
-    return localArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherViewSavingAnimView.b();
+  }
+  
+  public void e()
+  {
+    b(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719154);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167155));
+  }
+  
+  public void f()
+  {
+    b(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719155);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167155));
+  }
+  
+  public void g()
+  {
+    n();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719139);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167153));
+  }
+  
+  public void h()
+  {
+    b(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719395);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167155));
+  }
+  
+  public void i()
+  {
+    c(false);
+  }
+  
+  public void j()
+  {
+    c(true);
   }
 }
 

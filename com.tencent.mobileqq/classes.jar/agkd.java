@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class agkd
-  implements View.OnClickListener
+class agkd
 {
-  public agkd(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void onClick(View paramView)
-  {
-    AIOLongShotHelper.b(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DE7");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public String a;
+  public String b = "";
 }
 
 

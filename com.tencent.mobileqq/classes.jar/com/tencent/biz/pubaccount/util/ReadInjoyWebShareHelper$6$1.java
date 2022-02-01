@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import uat;
+import uav;
 
 class ReadInjoyWebShareHelper$6$1
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInjoyWebShareHelper$6$1
   
   public void run()
   {
-    uat.c(this.a.this$0);
+    uav.c(this.a.this$0);
   }
 }
 

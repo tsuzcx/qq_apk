@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import kotlin.Metadata;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isSuccess", "", "onResult"}, k=3, mv={1, 1, 16})
-final class aman
-  implements bhlk
+public class aman
+  implements Comparable<aman>
 {
-  aman(BaseActivity paramBaseActivity) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public final void a(boolean paramBoolean)
+  public aman(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
   {
-    if (paramBoolean) {}
-    for (String str = "new_folder_prestart_success";; str = "new_folder_prestart_fail")
-    {
-      alzs.a().a(this.a.app, str);
-      return;
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
+    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(aman paramaman)
+  {
+    return -(int)(this.jdField_a_of_type_Long - paramaman.jdField_a_of_type_Long);
   }
 }
 

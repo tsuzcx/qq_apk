@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public final class aqac
-  implements Parcelable.Creator<BusinessCard>
+class aqac
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public BusinessCard a(Parcel paramParcel)
-  {
-    return new BusinessCard(paramParcel);
-  }
+  aqac(aqab paramaqab, aqad paramaqad) {}
   
-  public BusinessCard[] a(int paramInt)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    return new BusinessCard[paramInt];
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_Aqad.a.setImageBitmap(paramBitmap);
+    }
   }
 }
 

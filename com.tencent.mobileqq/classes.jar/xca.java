@@ -1,74 +1,43 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.util.Map;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xca
-  extends xdt
 {
-  private String a;
-  public xxm a;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public int b;
+  public String b;
   
   public xca()
   {
-    this("", null, false);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public xca(String paramString1, String paramString2, boolean paramBoolean)
+  public boolean equals(Object paramObject)
   {
-    a(false, true);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (xca)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    return false;
   }
   
-  public void a()
+  public int hashCode()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      a(this.jdField_a_of_type_JavaLangString);
-      return;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
     }
-    b(false);
-  }
-  
-  public void a(String paramString)
-  {
-    File localFile1 = new File(this.jdField_c_of_type_JavaLangString);
-    try
-    {
-      File localFile2 = localFile1.getParentFile();
-      if ((localFile2 != null) && (!localFile2.exists())) {
-        localFile2.mkdirs();
-      }
-      if (localFile1.exists()) {
-        localFile1.delete();
-      }
-    }
-    catch (Exception localException)
-    {
-      label45:
-      break label45;
-    }
-    this.jdField_a_of_type_Xxm = new xxj();
-    this.jdField_a_of_type_Xxm.a(paramString, 0, 0, new xcb(this, paramString));
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()))
-    {
-      if (paramMap.containsKey("DownloadPic2FileJob_iiu")) {
-        this.jdField_a_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_iiu"));
-      }
-      if (paramMap.containsKey("DownloadPic2FileJob_isfp")) {
-        this.jdField_c_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_isfp"));
-      }
-      if (paramMap.containsKey("DownloadPic2FileJob_IN_ROUND")) {
-        this.jdField_c_of_type_Boolean = ((Boolean)a("DownloadPic2FileJob_IN_ROUND")).booleanValue();
-      }
-    }
+    return 0;
   }
 }
 

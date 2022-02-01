@@ -3,9 +3,9 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import anhk;
-import bddy;
-import bglf;
+import antf;
+import bdwt;
+import bhlg;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -32,12 +32,12 @@ public class RecentItemSubAccount
       return;
       super.a(paramQQAppInterface, paramContext);
       MsgSummary localMsgSummary = getMsgSummaryTemp();
-      if (!anhk.x.equals(this.mUser.uin)) {
+      if (!antf.x.equals(this.mUser.uin)) {
         break;
       }
-      this.mTitleName = paramContext.getString(2131718250);
+      this.mTitleName = paramContext.getString(2131718386);
       this.mUnreadNum = 0;
-      bddy.a(paramQQAppInterface, paramContext, this, localMsgSummary);
+      bdwt.a(paramQQAppInterface, paramContext, this, localMsgSummary);
       if (!TextUtils.isEmpty(localMsgSummary.strContent)) {
         localMsgSummary.mEmojiFlag = 1;
       }
@@ -47,7 +47,7 @@ public class RecentItemSubAccount
       if (TextUtils.isEmpty(this.mMsgExtroInfo)) {
         break label377;
       }
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
       this.mShowTime = "";
       this.mDisplayTime = getLastMsgTime();
       a(paramQQAppInterface);
@@ -64,11 +64,11 @@ public class RecentItemSubAccount
       paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
       this.mContentDesc = paramQQAppInterface.toString();
       return;
-      this.mTitleName = bglf.c(paramQQAppInterface, this.mUser.uin, true);
+      this.mTitleName = bhlg.c(paramQQAppInterface, this.mUser.uin, true);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mUser.uin;
       }
-      this.mTitleName = (paramContext.getString(2131718272) + "（" + this.mTitleName + "）");
+      this.mTitleName = (paramContext.getString(2131718408) + "（" + this.mTitleName + "）");
       break;
       label377:
       this.mMsgExtroInfo = "";

@@ -12,27 +12,27 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anni;
-import avum;
-import bglp;
-import bgpa;
-import bhod;
-import bmae;
-import bmaf;
-import bmag;
-import bmah;
-import bmai;
-import bmaj;
-import bmak;
-import bmal;
-import bmam;
-import bman;
-import bmao;
-import bmap;
-import bmaq;
-import bmar;
-import bmfd;
-import bmfh;
+import anzj;
+import awnh;
+import bhlq;
+import bhpc;
+import bioy;
+import bnbg;
+import bnbh;
+import bnbi;
+import bnbj;
+import bnbk;
+import bnbl;
+import bnbm;
+import bnbn;
+import bnbo;
+import bnbp;
+import bnbq;
+import bnbr;
+import bnbs;
+import bnbt;
+import bngf;
+import bngj;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -52,7 +52,7 @@ import org.json.JSONObject;
 
 public class QzoneWebMusicJsPlugin
   extends WebViewPlugin
-  implements bmfh
+  implements bngj
 {
   public static final String CONFIG_MOBINET_TIPS = "qzbg_music_mobinet_tips";
   public static final String EVENT_BUFFERING = "buffering";
@@ -217,18 +217,18 @@ public class QzoneWebMusicJsPlugin
     }
   }
   
-  private void doPlayMusicOrAudioCommon(bmar parambmar)
+  private void doPlayMusicOrAudioCommon(bnbt parambnbt)
   {
     Activity localActivity = this.mRuntime.a();
     if ((localActivity != null) && (needPlayTips()))
     {
-      showPlayTips(localActivity, new bmam(this, parambmar), new bmao(this));
+      showPlayTips(localActivity, new bnbo(this, parambnbt), new bnbq(this));
       this.isFlowWarningVisible = true;
     }
-    while (parambmar == null) {
+    while (parambnbt == null) {
       return;
     }
-    parambmar.a();
+    parambnbt.a();
   }
   
   private void doSetPlayMode(int paramInt1, int paramInt2, int paramInt3)
@@ -375,21 +375,21 @@ public class QzoneWebMusicJsPlugin
   
   private static final void showAutoPlayTips(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    paramContext = bglp.a(paramContext, 230, null, anni.a(2131711395), anni.a(2131711389), anni.a(2131711391), paramOnClickListener2, paramOnClickListener1);
+    paramContext = bhlq.a(paramContext, 230, null, anzj.a(2131711504), anzj.a(2131711498), anzj.a(2131711500), paramOnClickListener2, paramOnClickListener1);
     paramContext.setOnCancelListener(paramOnCancelListener);
     paramContext.show();
   }
   
   private static final void showPlayTips(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    bglp.a(paramContext, 230, anni.a(2131711396), "你正处于非WiFi环境，继续播放将会消耗流量，运营商可能会收取费用，是否继续\n", anni.a(2131711390), anni.a(2131711397), paramOnClickListener2, paramOnClickListener1).show();
+    bhlq.a(paramContext, 230, anzj.a(2131711505), "你正处于非WiFi环境，继续播放将会消耗流量，运营商可能会收取费用，是否继续\n", anzj.a(2131711499), anzj.a(2131711506), paramOnClickListener2, paramOnClickListener1).show();
   }
   
   public void changeMusicList(String paramString)
   {
     try
     {
-      avum.a(new JSONObject(paramString), "changeMusicList", null);
+      awnh.a(new JSONObject(paramString), "changeMusicList", null);
       return;
     }
     catch (JSONException paramString)
@@ -420,22 +420,22 @@ public class QzoneWebMusicJsPlugin
     }
     if ((paramString3.equals("playMusic")) && (paramVarArgs != null) && (paramVarArgs.length > 0) && (!this.isFlowWarningVisible))
     {
-      doPlayMusicOrAudioCommon(new bmae(this, paramVarArgs[0]));
+      doPlayMusicOrAudioCommon(new bnbg(this, paramVarArgs[0]));
       return true;
     }
     if ((paramString3.equals("playMusicList")) && (paramVarArgs != null) && (paramVarArgs.length > 0) && (!this.isFlowWarningVisible))
     {
-      doPlayMusicOrAudioCommon(new bmag(this, paramVarArgs[0]));
+      doPlayMusicOrAudioCommon(new bnbi(this, paramVarArgs[0]));
       return true;
     }
     if ((paramString3.equals("playAudioList")) && (paramVarArgs != null) && (paramVarArgs.length > 0) && (!this.isFlowWarningVisible))
     {
-      doPlayMusicOrAudioCommon(new bman(this, paramVarArgs[0]));
+      doPlayMusicOrAudioCommon(new bnbp(this, paramVarArgs[0]));
       return true;
     }
     if (("playLiveList".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0) && (!this.isFlowWarningVisible))
     {
-      doPlayMusicOrAudioCommon(new bmap(this, paramVarArgs[0]));
+      doPlayMusicOrAudioCommon(new bnbr(this, paramVarArgs[0]));
       return true;
     }
     if (paramString3.equals("resumePlay"))
@@ -470,7 +470,7 @@ public class QzoneWebMusicJsPlugin
     }
     if (paramString3.equals("getPlayingSongInfo"))
     {
-      bmfd.a().a(this);
+      bngf.a().a(this);
       getPlayingSongInfo();
       return true;
     }
@@ -497,7 +497,7 @@ public class QzoneWebMusicJsPlugin
     }
     if (("playAudioListForBgMusic".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0) && (!this.isFlowWarningVisible))
     {
-      doPlayMusicOrAudioCommon(new bmaq(this, paramVarArgs[0]));
+      doPlayMusicOrAudioCommon(new bnbs(this, paramVarArgs[0]));
       return true;
     }
     if ("FmListChange".equals(paramString3))
@@ -534,7 +534,7 @@ public class QzoneWebMusicJsPlugin
       {
         if (!this.isWebPageListening)
         {
-          bmfd.a().a(this);
+          bngf.a().a(this);
           initUserInfo();
         }
         this.isWebPageListening = true;
@@ -544,7 +544,7 @@ public class QzoneWebMusicJsPlugin
       if (i == 0)
       {
         if (this.isWebPageListening) {
-          bmfd.a().b(this);
+          bngf.a().b(this);
         }
         this.isWebPageListening = false;
         return;
@@ -565,16 +565,16 @@ public class QzoneWebMusicJsPlugin
   {
     super.onCreate();
     if (this.isWebPageListening) {
-      bmfd.a().a(this);
+      bngf.a().a(this);
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    bmfd.a().b(this);
+    bngf.a().b(this);
     if (this.isUseRemoteMusicManager) {
-      bmfd.a().a();
+      bngf.a().a();
     }
   }
   
@@ -605,7 +605,7 @@ public class QzoneWebMusicJsPlugin
         paramString = this.mRuntime.a();
       } while ((paramString == null) || (paramString.isFinishing()) || (this.isShowing) || (!bool) || (!needPlayTips()));
       pausePlay();
-      showPlayTips(paramString, new bmak(this), new bmal(this));
+      showPlayTips(paramString, new bnbm(this), new bnbn(this));
       this.isShowing = true;
       return;
       if (paramString.equals("cmd.getPlayMode"))
@@ -697,8 +697,8 @@ public class QzoneWebMusicJsPlugin
     //   119: iconst_2
     //   120: istore_2
     //   121: aload_0
-    //   122: getfield 143	cooperation/qzone/music/QzoneWebMusicJsPlugin:mRuntime	Lbhod;
-    //   125: invokevirtual 399	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   122: getfield 143	cooperation/qzone/music/QzoneWebMusicJsPlugin:mRuntime	Lbioy;
+    //   125: invokevirtual 399	bioy:a	()Lcom/tencent/common/app/AppInterface;
     //   128: ldc 2
     //   130: invokevirtual 405	com/tencent/common/app/AppInterface:getHandler	(Ljava/lang/Class;)Lmqq/os/MqqHandler;
     //   133: new 776	cooperation/qzone/music/QzoneWebMusicJsPlugin$9
@@ -812,7 +812,7 @@ public class QzoneWebMusicJsPlugin
               paramString = new JSONObject();
               paramString.put("uin", ((SongInfo)localArrayList.get(i)).jdField_b_of_type_Long);
               paramString.put("coverUrl", ((SongInfo)localArrayList.get(i)).e);
-              avum.a(paramString, "showFloatView", null);
+              awnh.a(paramString, "showFloatView", null);
             }
             if (localArrayList.size() <= 0) {
               break;
@@ -902,7 +902,7 @@ public class QzoneWebMusicJsPlugin
       if ((k != 1) || (this.isAutoPlay) || (!bool)) {
         continue;
       }
-      showAutoPlayTips(this.mRuntime.a(), new bmah(this), new bmai(this, i, k, j), new bmaj(this));
+      showAutoPlayTips(this.mRuntime.a(), new bnbj(this), new bnbk(this, i, k, j), new bnbl(this));
       return;
       i = 0;
       continue;
@@ -922,14 +922,14 @@ public class QzoneWebMusicJsPlugin
       boolean bool = ((JSONObject)localObject).getBoolean("visible");
       if ((this.mRuntime.a() instanceof QQBrowserActivity))
       {
-        localObject = (TextView)this.mRuntime.a().findViewById(2131368979);
+        localObject = (TextView)this.mRuntime.a().findViewById(2131369073);
         if (bool) {}
         try
         {
           ((TextView)localObject).setVisibility(0);
           ((TextView)localObject).setTextColor(Color.parseColor("#" + str));
           ((TextView)localObject).setText(paramString);
-          ((TextView)localObject).setOnClickListener(new bmaf(this));
+          ((TextView)localObject).setOnClickListener(new bnbh(this));
           return;
         }
         catch (Exception paramString)

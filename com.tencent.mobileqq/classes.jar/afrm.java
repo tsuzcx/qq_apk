@@ -1,15 +1,32 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class afrm
-  extends bkfi
+  implements blop
 {
-  public afrm(VisitorsActivity paramVisitorsActivity) {}
+  public afrm(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(bloo parambloo)
   {
-    this.a.e.setVisibility(0);
+    boolean bool = false;
+    switch (parambloo.a)
+    {
+    default: 
+      return;
+    case 0: 
+      parambloo = this.a;
+      if (!this.a.d) {
+        bool = true;
+      }
+      parambloo.d = bool;
+      axan.a().b(this.a.app, this.a.d);
+      return;
+    }
+    parambloo = new Intent(this.a, TroopAssisSettingActivity.class);
+    parambloo.setFlags(67108864);
+    this.a.startActivity(parambloo);
+    bdll.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

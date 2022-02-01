@@ -1,16 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class afpm
-  implements DialogInterface.OnClickListener
+public class afpm
+  extends aocj
 {
-  afpm(afpk paramafpk, bgpa parambgpa) {}
+  public afpm(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString, bdxd parambdxd)
   {
-    bcst.b(this.jdField_a_of_type_Afpk.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afpk.a.a, "", "", "");
-    this.jdField_a_of_type_Bgpa.cancel();
+    if (QLog.isColorLevel())
+    {
+      QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() isSuccess=" + paramBoolean + "  subAccount=" + paramString);
+      if (parambdxd != null) {
+        QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() data.errorType=" + parambdxd.jdField_a_of_type_Int + "  errorMsg=" + parambdxd.jdField_a_of_type_JavaLangString + " mainAccount=" + parambdxd.jdField_b_of_type_JavaLangString + "  subAccount=" + parambdxd.c + " isNeedStartGetMsg=" + parambdxd.jdField_b_of_type_Boolean);
+      }
+    }
+    if ((parambdxd == null) || (paramString == null) || (paramString.length() < 5)) {}
+    bdwt localbdwt;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (this.a.isFinishing());
+        localbdwt = (bdwt)this.a.app.getManager(62);
+        if (parambdxd.jdField_a_of_type_Int != 1) {
+          break;
+        }
+      } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
+      SubAccountUgActivity.a(this.a, localbdwt, paramString);
+      return;
+    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
+    localbdwt.a(this.a.jdField_a_of_type_JavaLangString, 1, true);
   }
 }
 

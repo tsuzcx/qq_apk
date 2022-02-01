@@ -1,18 +1,23 @@
-final class atwv
-  implements bhhd
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class atwv
+  extends Handler
 {
-  atwv(atwo paramatwo) {}
-  
-  public void callback(int paramInt)
+  atwv(atws paramatws, Looper paramLooper)
   {
-    if ((paramInt == 1) || (paramInt == 2)) {
-      this.a.a();
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atwv
  * JD-Core Version:    0.7.0.1
  */

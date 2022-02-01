@@ -1,21 +1,27 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class one
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public one(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  one(omz paramomz, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject == null) {
-      return;
+    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1))) {
+      this.a.e(ReadInJoyDeliverBiuActivity.l(this.a));
     }
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
-    this.b = paramJSONObject.optString("sGiftName");
-    this.c = paramJSONObject.optString("sNeedRole");
-    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ocd.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+      this.a.finish();
+      ReadInJoyDeliverBiuActivity.a(this.a, false);
+    }
   }
 }
 

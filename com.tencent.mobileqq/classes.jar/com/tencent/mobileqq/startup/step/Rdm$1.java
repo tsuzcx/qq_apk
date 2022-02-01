@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import acvd;
-import acve;
+import aczh;
+import aczi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.QFixApplicationImpl;
 import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
@@ -13,9 +13,9 @@ class Rdm$1
   
   public void run()
   {
-    acvd localacvd = acve.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localacvd != null) && (localacvd.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localacvd.b(), 0);
+    aczh localaczh = aczi.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localaczh != null) && (localaczh.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
+      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localaczh.b(), 0);
     }
     QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
   }

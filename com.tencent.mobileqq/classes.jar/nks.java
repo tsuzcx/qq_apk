@@ -1,15 +1,6 @@
-import java.io.InputStream;
-
-public class nks
+public abstract interface nks
 {
-  public InputStream a;
-  public String a;
-  
-  public nks(String paramString, InputStream paramInputStream)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

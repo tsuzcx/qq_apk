@@ -1,11 +1,10 @@
-class aaxu
+import java.util.List;
+
+public abstract interface aaxu
 {
-  public long a;
+  public abstract void a(int paramInt);
   
-  public aaxu(long paramLong)
-  {
-    this.a = paramLong;
-  }
+  public abstract void a(List<bgte> paramList);
 }
 
 

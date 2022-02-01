@@ -1,27 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class avbh
-  implements Animator.AnimatorListener
+class avbh
+  implements DialogInterface.OnClickListener
 {
-  public avbh(HotPicMainPanel paramHotPicMainPanel) {}
+  avbh(avbe paramavbe) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    this.a.b.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

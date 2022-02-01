@@ -1,17 +1,18 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.common.NoticeParam;
 
-class bjyi
-  extends aqce
+public final class bjyi
+  implements Parcelable.Creator<NoticeParam>
 {
-  bjyi(bjyg parambjyg, Activity paramActivity) {}
-  
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public NoticeParam a(Parcel paramParcel)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
-    }
+    return new NoticeParam(paramParcel);
+  }
+  
+  public NoticeParam[] a(int paramInt)
+  {
+    return new NoticeParam[paramInt];
   }
 }
 

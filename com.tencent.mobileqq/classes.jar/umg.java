@@ -1,23 +1,12 @@
-import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
-
-public abstract interface umg
-  extends uck<umh>
+class umg
+  implements ukd
 {
-  public abstract long a();
+  umg(umd paramumd, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
+  public void a(uko paramuko)
+  {
+    umd.a(this.jdField_a_of_type_Umd, paramuko, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
+  }
 }
 
 

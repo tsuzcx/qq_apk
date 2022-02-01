@@ -1,17 +1,31 @@
-import UserGrowth.stGetCollectionReq;
-import UserGrowth.stGetCollectionRsp;
+import UserGrowth.stWeishiDengtaReportRsp;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
 
 public class uob
-  extends ujr<stGetCollectionRsp>
+  implements ukd
 {
-  public uob(String paramString1, String paramString2, int paramInt)
+  public uob(WSStatisticsReporter paramWSStatisticsReporter) {}
+  
+  public void a(uko paramuko)
   {
-    super("GetCollection", paramInt);
-    stGetCollectionReq localstGetCollectionReq = new stGetCollectionReq();
-    localstGetCollectionReq.cid = paramString1;
-    localstGetCollectionReq.attachInfo = paramString2;
-    localstGetCollectionReq.scene = paramInt;
-    this.a = localstGetCollectionReq;
+    if (!paramuko.a())
+    {
+      uqf.d("beaconData2Server", "BeaconSendRequest onTaskResponse failed code:" + paramuko.jdField_a_of_type_Int + ", msg:" + paramuko.jdField_a_of_type_JavaLangString);
+      WSStatisticsReporter.access$1400(this.a, String.valueOf(1), String.valueOf(paramuko.jdField_a_of_type_Int), paramuko.jdField_a_of_type_JavaLangString);
+    }
+    do
+    {
+      return;
+      if (!(paramuko.jdField_a_of_type_JavaLangObject instanceof stWeishiDengtaReportRsp)) {
+        break;
+      }
+      paramuko = (stWeishiDengtaReportRsp)paramuko.jdField_a_of_type_JavaLangObject;
+      uqf.b("beaconData2Server", "BeaconSendRequest onTaskResponse succeed: " + paramuko.code + " , " + paramuko.msg);
+    } while (paramuko.code == 0);
+    WSStatisticsReporter.access$1400(this.a, String.valueOf(2), String.valueOf(paramuko.code), paramuko.msg);
+    return;
+    uqf.d("beaconData2Server", "BeaconSendRequest onTaskResponse failed");
+    WSStatisticsReporter.access$1400(this.a, String.valueOf(3), "-1", "数据无法解析");
   }
 }
 

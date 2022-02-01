@@ -1,15 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class apxk
-  extends AnimatorListenerAdapter
+public class apxk
+  implements DialogInterface.OnClickListener
 {
-  apxk(apxi paramapxi, ObjectAnimator paramObjectAnimator) {}
+  public apxk(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bhpc parambhpc) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
+    ArkAppCenter.a(paramDialogInterface);
+    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_Bhpc.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

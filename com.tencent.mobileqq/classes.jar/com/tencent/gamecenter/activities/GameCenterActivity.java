@@ -1,8 +1,6 @@
 package com.tencent.gamecenter.activities;
 
 import Override;
-import acea;
-import anaw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,11 +17,12 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.Toast;
-import ausy;
-import autf;
-import azwq;
-import bhmv;
-import bhqe;
+import anmq;
+import avky;
+import avlf;
+import bapg;
+import binq;
+import biqz;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -31,6 +30,8 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -40,14 +41,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
-import nlw;
+import nnr;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
-import xen;
+import xii;
 
 public class GameCenterActivity
   extends QQBrowserActivity
-  implements Handler.Callback
+  implements Handler.Callback, SDKInitListener
 {
   private static int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -55,9 +56,9 @@ public class GameCenterActivity
   private TouchWebView.OnScrollChangedListener jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener;
   private boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-  private boolean b;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   private boolean c;
-  private int e;
   
   public GameCenterActivity()
   {
@@ -73,7 +74,7 @@ public class GameCenterActivity
     paramString3.putString("Cookie", paramString2);
     try
     {
-      paramContext = nlw.a(paramContext, paramString1, "POST", localBundle, paramString3);
+      paramContext = nnr.a(paramContext, paramString1, "POST", localBundle, paramString3);
       if (QLog.isColorLevel()) {
         QLog.i("GameCenter", 2, "httpRequest: result:" + paramContext);
       }
@@ -109,7 +110,7 @@ public class GameCenterActivity
       }
     }
     localObject = localSharedPreferences.getString("trace_url_keyword" + (String)localObject, "");
-    bhqe.a = new ArrayList();
+    biqz.a = new ArrayList();
     QLog.d("GameCenterActivity", 1, "parseTraceUrl:" + (String)localObject);
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (;;)
@@ -122,7 +123,7 @@ public class GameCenterActivity
         while (i < ((JSONArray)localObject).length())
         {
           str = (String)((JSONArray)localObject).opt(i);
-          bhqe.a.add(str);
+          biqz.a.add(str);
           i += 1;
         }
         return;
@@ -147,7 +148,7 @@ public class GameCenterActivity
       return;
       i = paramString.length();
     }
-    anaw.a(123, paramString, 1, 1213, new Object[] { "current DetectedBlankScreen status:", Integer.valueOf(paramInt) });
+    anmq.a(123, paramString, 1, 1213, new Object[] { "current DetectedBlankScreen status:", Integer.valueOf(paramInt) });
   }
   
   public static void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -164,7 +165,7 @@ public class GameCenterActivity
     if (localObject.length >= 2)
     {
       HashMap localHashMap = new HashMap();
-      xen.a(localObject[1], localHashMap);
+      xii.a(localObject[1], localHashMap);
       localObject = (String)localHashMap.get("ADTAG");
       if ("10001".equals(localObject)) {
         if (paramBoolean2)
@@ -188,14 +189,14 @@ public class GameCenterActivity
       }
       if (paramInt == 1)
       {
-        anaw.a(123, null, paramString);
-        anaw.a(123, paramString, 1);
+        anmq.a(123, null, paramString);
+        anmq.a(123, paramString, 1);
       }
       if (paramInt == 13)
       {
-        anaw.a(123, null, paramString, new int[] { i });
-        anaw.a(123, paramString, 1, 0, new Object[0]);
-        anaw.b(123, paramString);
+        anmq.a(123, null, paramString, new int[] { i });
+        anmq.a(123, paramString, 1, 0, new Object[0]);
+        anmq.b(123, paramString);
         return;
         i = 2;
         break label77;
@@ -212,7 +213,7 @@ public class GameCenterActivity
       }
       for (;;)
       {
-        anaw.a(123, paramString, 1, i, new Object[] { "current step:", Integer.valueOf(paramInt) });
+        anmq.a(123, paramString, 1, i, new Object[] { "current step:", Integer.valueOf(paramInt) });
         return;
         i = 1201;
         continue;
@@ -235,9 +236,9 @@ public class GameCenterActivity
     while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839404);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839412);
     this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = localTextView.getCompoundDrawables();
-    this.e = localTextView.getCompoundDrawablePadding();
+    this.jdField_b_of_type_Int = localTextView.getCompoundDrawablePadding();
     localTextView.setCompoundDrawablePadding(10);
     localTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
     ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
@@ -246,10 +247,10 @@ public class GameCenterActivity
   
   public static boolean a(String paramString)
   {
-    if (bhqe.a == null) {
+    if (biqz.a == null) {
       a();
     }
-    List localList = bhqe.a;
+    List localList = biqz.a;
     if ((TextUtils.isEmpty(paramString)) || (localList == null)) {}
     for (;;)
     {
@@ -274,7 +275,7 @@ public class GameCenterActivity
         QLog.d("GameCenterActivity", 2, "handlePushReport() called");
       }
       localIntent.removeExtra("game_msg_enter_from");
-      autf.a(10004, 2);
+      avlf.a(10004, 2);
     }
   }
   
@@ -288,7 +289,7 @@ public class GameCenterActivity
     {
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      localTextView.setCompoundDrawablePadding(this.e);
+      localTextView.setCompoundDrawablePadding(this.jdField_b_of_type_Int);
       localTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
       return true;
     }
@@ -320,7 +321,7 @@ public class GameCenterActivity
   {
     jdField_a_of_type_Int += 1;
     b();
-    azwq.a(BaseApplicationImpl.getApplication(), new acea(this));
+    bapg.a(BaseApplicationImpl.getApplication(), this);
     return super.doOnCreate(paramBundle);
   }
   
@@ -332,6 +333,7 @@ public class GameCenterActivity
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
+    VideoPlaySDKManager.getInstance().removeSDKInstalledListener(this);
     super.doOnDestroy();
     jdField_a_of_type_Int -= 1;
     if (jdField_a_of_type_Int <= 0) {
@@ -388,7 +390,7 @@ public class GameCenterActivity
     {
       localUri = Uri.parse(localIntent.getStringExtra("url"));
       if (localUri != null) {
-        this.b = "1".equals(localUri.getQueryParameter("gc_mini_floating"));
+        this.jdField_b_of_type_Boolean = "1".equals(localUri.getQueryParameter("gc_mini_floating"));
       }
     }
     catch (Exception localException)
@@ -397,12 +399,12 @@ public class GameCenterActivity
       break label50;
     }
     this.c = true;
-    return this.b;
+    return this.jdField_b_of_type_Boolean;
   }
   
   public boolean onBackEvent()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = ausy.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = avky.a().a();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.a()))
     {
       localGameCenterVideoViewController.c();
@@ -416,6 +418,13 @@ public class GameCenterActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onSDKInited(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterActivity", 1, "QQVideo Inited:" + paramBoolean);
+    }
   }
 }
 

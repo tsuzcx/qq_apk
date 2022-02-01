@@ -1,123 +1,16 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.richframework.part.BasePartFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
 
-public abstract class zxj
-  implements Application.ActivityLifecycleCallbacks
+class zxj
+  implements DialogInterface.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private BasePartFragment jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment;
-  public QQAppInterface a;
-  private zxk jdField_a_of_type_Zxk;
+  zxj(zxh paramzxh, CompoundButton paramCompoundButton) {}
   
-  public Activity a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidAppActivity;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
-  
-  public Context a()
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      return this.jdField_a_of_type_AndroidAppActivity;
-    }
-    return null;
-  }
-  
-  public BasePartFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment;
-  }
-  
-  public Object a(String paramString, Object paramObject)
-  {
-    return null;
-  }
-  
-  public abstract String a();
-  
-  public <T extends zxg> T a(BasePartFragment paramBasePartFragment, String paramString, Class<T> paramClass)
-  {
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment != null) {
-      return this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment.a(paramBasePartFragment, paramString, paramClass);
-    }
-    return null;
-  }
-  
-  public <T extends zxg> T a(Class<T> paramClass)
-  {
-    return a(null, paramClass);
-  }
-  
-  public <T extends zxg> T a(String paramString, Class<T> paramClass)
-  {
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment != null) {
-      return a(this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment, paramString, paramClass);
-    }
-    return null;
-  }
-  
-  public zxk a()
-  {
-    return this.jdField_a_of_type_Zxk;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Configuration paramConfiguration) {}
-  
-  protected void a(View paramView)
-  {
-    QLog.d(a(), 1, a() + "->onInitView");
-  }
-  
-  public void a(BasePartFragment paramBasePartFragment, View paramView, zxk paramzxk)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramBasePartFragment.getActivity();
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment = paramBasePartFragment;
-    this.jdField_a_of_type_Zxk = paramzxk;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBasePartFragment.getActivity().app;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(String paramString, Object paramObject) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public Object b(String paramString, Object paramObject)
-  {
-    return this.jdField_a_of_type_Zxk.a(paramString, paramObject);
-  }
-  
-  public void b(String paramString, Object paramObject)
-  {
-    this.jdField_a_of_type_Zxk.a(paramString, paramObject);
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

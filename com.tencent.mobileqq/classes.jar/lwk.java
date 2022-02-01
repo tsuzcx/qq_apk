@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import com.tencent.av.service.AVRedPacketConfig;
 
 public final class lwk
-  implements Parcelable.Creator<LBSInfo>
+  implements Parcelable.Creator<AVRedPacketConfig>
 {
-  public LBSInfo a(Parcel paramParcel)
+  public AVRedPacketConfig a(Parcel paramParcel)
   {
-    return new LBSInfo(paramParcel);
+    return new AVRedPacketConfig(paramParcel);
   }
   
-  public LBSInfo[] a(int paramInt)
+  public AVRedPacketConfig[] a(int paramInt)
   {
-    return new LBSInfo[paramInt];
+    return new AVRedPacketConfig[paramInt];
   }
 }
 

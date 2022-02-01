@@ -1,16 +1,27 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aahm
-  implements zzq<Object>
+class aahm
+  implements View.OnClickListener
 {
-  public aahm(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, zxa paramzxa) {}
+  aahm(aahk paramaahk) {}
   
-  public void a(Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      this.jdField_a_of_type_Zxa.onReceive(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
+    if (!aagi.b())
+    {
+      CertifiedAccountMeta.StFeed localStFeed = aahk.a(this.a);
+      if (localStFeed != null)
+      {
+        this.a.d(localStFeed);
+        if (this.a.a() != null) {
+          this.a.a().c(localStFeed);
+        }
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

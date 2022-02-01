@@ -1,18 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
 
-public class ojb
-  implements bkqc
+class ojb
+  extends aser
 {
-  public ojb(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  ojb(oja paramoja) {}
   
-  public void a()
+  public void onBindedToClient()
   {
-    if ((!this.a.a) && (this.a.b))
-    {
-      this.a.a = true;
-      uac.a("subscribe_tab_cost", null);
-    }
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

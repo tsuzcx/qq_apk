@@ -1,296 +1,391 @@
-import UserGrowth.stCommentJumpText;
 import UserGrowth.stSimpleMetaComment;
 import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
 import UserGrowth.stSimpleMetaReply;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Context;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentView;
+import com.tencent.biz.subscribe.comment.MoreCommentPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class uez
+  extends BaseAdapter
 {
-  private static final String jdField_a_of_type_JavaLangString = uez.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Map<String, ArrayList<stSimpleMetaComment>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ufp jdField_a_of_type_Ufp;
-  private Map<String, Integer> b = new HashMap();
-  private Map<String, ufg> c = new HashMap();
+  public static int a;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private aakb jdField_a_of_type_Aakb;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private List<stSimpleMetaComment> jdField_a_of_type_JavaUtilList;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private String jdField_b_of_type_JavaLangString = "focus";
+  HashSet<Integer> jdField_b_of_type_JavaUtilHashSet = new HashSet();
+  private String c;
   
-  public uez(ufp paramufp)
+  static
   {
-    this.jdField_a_of_type_Ufp = paramufp;
+    jdField_a_of_type_Int = 1;
   }
   
-  private static ArrayList<stSimpleMetaComment> a(stSimpleMetaComment[] paramArrayOfstSimpleMetaComment)
+  public uez(Context paramContext, aakb paramaakb)
   {
-    paramArrayOfstSimpleMetaComment = Arrays.asList(paramArrayOfstSimpleMetaComment);
-    ArrayList localArrayList = new ArrayList();
-    if (paramArrayOfstSimpleMetaComment.size() > 0)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      int i = 0;
-      if (i < paramArrayOfstSimpleMetaComment.size())
-      {
-        if (paramArrayOfstSimpleMetaComment.get(i) != null)
-        {
-          localArrayList.add(paramArrayOfstSimpleMetaComment.get(i));
-          if (i == 0) {
-            upe.c("weishi-comment", "end, comment word:" + ((stSimpleMetaComment)paramArrayOfstSimpleMetaComment.get(i)).wording + ", id:" + ((stSimpleMetaComment)paramArrayOfstSimpleMetaComment.get(i)).id);
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          upe.d("weishi-comment", "comment is null");
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    paramBoolean2 = true;
-    if (this.c.get(paramString1) == null)
-    {
-      ufg localufg = new ufg();
-      localufg.jdField_a_of_type_JavaLangString = paramString2;
-      if (!paramBoolean1) {}
-      for (paramBoolean1 = true;; paramBoolean1 = false)
-      {
-        localufg.jdField_a_of_type_Boolean = paramBoolean1;
-        this.c.put(paramString1, localufg);
-        return;
-      }
-    }
-    paramString1 = (ufg)this.c.get(paramString1);
-    if (paramString1 != null)
-    {
-      if (!paramBoolean1) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
-      {
-        paramString1.jdField_a_of_type_Boolean = paramBoolean1;
-        paramString1.jdField_a_of_type_JavaLangString = paramString2;
-        return;
-      }
-    }
-    upe.d(jdField_a_of_type_JavaLangString, "updateResponseState, commentResponse is null.");
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    if (this.c.get(paramString) == null)
-    {
-      ufg localufg = new ufg();
-      localufg.b = paramBoolean;
-      this.c.put(paramString, localufg);
-      return;
-    }
-    paramString = (ufg)this.c.get(paramString);
-    if (paramString != null)
-    {
-      paramString.b = paramBoolean;
-      return;
-    }
-    upe.d(jdField_a_of_type_JavaLangString, "updateResponseState, commentResponse is null.");
-  }
-  
-  private static ArrayList<stSimpleMetaComment> b(ArrayList<stSimpleMetaComment> paramArrayList, ArrayList<stCommentJumpText> paramArrayList1, int paramInt)
-  {
-    int m = 0;
-    if (paramArrayList.size() == 0) {
-      return new ArrayList();
-    }
-    HashMap localHashMap = new HashMap();
-    int i;
-    if (paramArrayList1.size() > 0)
-    {
-      i = 0;
-      if (i < paramArrayList1.size())
-      {
-        stCommentJumpText localstCommentJumpText = (stCommentJumpText)paramArrayList1.get(i);
-        stSimpleMetaComment localstSimpleMetaComment = new stSimpleMetaComment();
-        localstSimpleMetaComment.isTempData = true;
-        j = localstCommentJumpText.index;
-        localstSimpleMetaComment.wording = localstCommentJumpText.text;
-        if (j >= paramInt)
-        {
-          localHashMap.put(Integer.valueOf(j), localstSimpleMetaComment);
-          label105:
-          if (j != -1) {
-            break label191;
-          }
-          upe.a("comment", localstCommentJumpText.index + ",尾部拉量入口: " + localstSimpleMetaComment.wording);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          upe.a("comment", "oldsize:" + paramInt + ", index:" + j);
-          break label105;
-          label191:
-          upe.a("comment", localstCommentJumpText.index + ",拉量入口: " + localstSimpleMetaComment.wording);
-        }
-      }
-    }
-    if ((paramArrayList.size() <= 20) && (localHashMap.containsKey(Integer.valueOf(-1))))
-    {
-      localHashMap.remove(Integer.valueOf(-1));
-      upe.d("weishi-comment", "评论小于等于20条，移除尾部拉量入口");
-    }
-    int j = paramArrayList.size() + localHashMap.size();
-    upe.d("weishi-comment", "size1:" + paramArrayList.size() + ",size2:" + localHashMap.size());
-    paramArrayList1 = new stSimpleMetaComment[j];
-    if (localHashMap.keySet().contains(Integer.valueOf(-1)))
-    {
-      j -= 1;
-      paramArrayList1[(paramArrayList1.length - 1)] = ((stSimpleMetaComment)localHashMap.get(Integer.valueOf(-1)));
+      uqf.a("comment", "create mComments ...");
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
     for (;;)
     {
-      int k = 0;
-      i = m;
-      if (k < j)
-      {
-        if (localHashMap.keySet().contains(Integer.valueOf(k + paramInt)))
-        {
-          paramArrayList1[k] = ((stSimpleMetaComment)localHashMap.get(Integer.valueOf(k + paramInt)));
-          i += 1;
-        }
-        for (;;)
-        {
-          k += 1;
-          break;
-          m = k - i;
-          if (m >= paramArrayList.size()) {
-            break label463;
-          }
-          paramArrayList1[k] = ((stSimpleMetaComment)paramArrayList.get(m));
-        }
-        label463:
-        upe.c("weishi-comment", "combineComment end!");
-      }
-      upe.d("weishi-comment", "combineComment success");
-      return a(paramArrayList1);
+      this.jdField_a_of_type_Aakb = paramaakb;
+      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+      return;
+      uqf.a("comment", "复用 mComments ...");
     }
   }
   
-  public int a(String paramString)
+  public int a(stSimpleMetaComment paramstSimpleMetaComment)
   {
-    paramString = (Integer)this.b.get(paramString);
-    if (paramString == null) {
-      return 0;
+    if ((paramstSimpleMetaComment != null) && (!TextUtils.isEmpty(paramstSimpleMetaComment.id)))
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramstSimpleMetaComment.id, Integer.valueOf(3));
+      notifyDataSetChanged();
+      return 3;
     }
-    return paramString.intValue();
+    return -1;
   }
   
-  public long a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment)
+  public String a()
   {
-    paramstSimpleMetaFeed = new unt(paramstSimpleMetaFeed.id, paramstSimpleMetaComment.id, paramstSimpleMetaComment.isDing);
-    ujn.a().a(new uju(paramstSimpleMetaFeed, a(), new ufe(this, paramstSimpleMetaComment), 9));
-    return 0L;
-  }
-  
-  public long a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply)
-  {
-    upe.d(jdField_a_of_type_JavaLangString, "reply.poster_id:" + paramstSimpleMetaReply.poster.id + ",reply.receiver_id:" + paramstSimpleMetaReply.receiver.id + ",reply.beReplyCommendId:" + paramstSimpleMetaReply.beReplyReplyId);
-    paramstSimpleMetaFeed = new unu(paramstSimpleMetaFeed, paramstSimpleMetaComment, paramstSimpleMetaReply);
-    ujn.a().a(new uju(paramstSimpleMetaFeed, a(), new ufd(this, paramstSimpleMetaReply), 6));
-    return 0L;
-  }
-  
-  public Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new ufa(this, Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = (ufg)this.c.get(paramString);
-    if ((paramString != null) && (paramString.b) && (paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_JavaLangString != null)) {
-      return paramString.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public ArrayList<stSimpleMetaComment> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public uhc a(Object... paramVarArgs)
-  {
-    return new uhc(6, paramVarArgs);
+    return this.c;
   }
   
   public void a()
   {
+    this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilMap.clear();
-    this.c.clear();
-    this.b.clear();
   }
   
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment)
+  public void a(int paramInt, stSimpleMetaComment paramstSimpleMetaComment)
   {
-    upe.d(jdField_a_of_type_JavaLangString, "---添加评论，wording:" + paramstSimpleMetaComment.wording + "poster_id:" + paramstSimpleMetaComment.poster_id + ",receiver_id:" + paramstSimpleMetaComment.receiver_id);
-    paramstSimpleMetaFeed = new unv(paramstSimpleMetaFeed, paramstSimpleMetaComment);
-    ujn.a().a(new uju(paramstSimpleMetaFeed, a(), new ufc(this, paramstSimpleMetaComment), 5));
+    uqf.d("comment", "addComment ...2");
+    if ((paramstSimpleMetaComment != null) && (paramInt <= this.jdField_a_of_type_JavaUtilList.size())) {
+      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramstSimpleMetaComment);
+    }
   }
   
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply)
+  public void a(stSimpleMetaComment paramstSimpleMetaComment)
   {
-    paramstSimpleMetaFeed = new unt(paramstSimpleMetaFeed.id, paramstSimpleMetaComment.id, paramstSimpleMetaComment.isDing);
-    ujn.a().a(new uju(paramstSimpleMetaFeed, a(), new uff(this), 9));
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, String paramString, boolean paramBoolean)
-  {
-    upe.a(jdField_a_of_type_JavaLangString, "getComments(final stSimpleMetaFeed feed, String attachInfo, final boolean loadMore)");
-    paramstSimpleMetaFeed = new uju(new uno(paramString, paramstSimpleMetaFeed.id, 1), a(), new ufb(this, paramstSimpleMetaFeed, paramBoolean), 1000);
-    ujn.a().a(paramstSimpleMetaFeed);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
-  {
-    if (paramstSimpleMetaFeed == null)
+    Integer localInteger;
+    if ((paramstSimpleMetaComment != null) && (!TextUtils.isEmpty(paramstSimpleMetaComment.id)))
     {
-      upe.d(jdField_a_of_type_JavaLangString, "getComments , feed is null ");
+      localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramstSimpleMetaComment.id);
+      if (localInteger == null) {
+        break label66;
+      }
+    }
+    label66:
+    for (int i = localInteger.intValue() + 10;; i = 10)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramstSimpleMetaComment.id, Integer.valueOf(i));
+      notifyDataSetChanged();
       return;
     }
-    String str = a(paramstSimpleMetaFeed.id);
-    upe.c(jdField_a_of_type_JavaLangString, "getComments loadMore: " + paramBoolean + ", attachInfo:" + str);
-    if ((paramBoolean) && (TextUtils.isEmpty(str)))
-    {
-      upe.d(jdField_a_of_type_JavaLangString, "getComments and loadMore, attachInfo is empty ");
-      return;
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if (paramstSimpleMetaFeed != null) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
     }
-    if (!paramBoolean)
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, stSimpleMetaReply paramstSimpleMetaReply)
+  {
+    uqf.d("comment", "addCommentReply :" + paramstSimpleMetaReply.wording + ",mComments size:" + this.jdField_a_of_type_JavaUtilList.size());
+    if ((!TextUtils.isEmpty(paramString)) && (paramstSimpleMetaReply != null))
     {
-      str = "";
-      upe.d(jdField_a_of_type_JavaLangString, "first getComments, set attachInfo empty ");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        stSimpleMetaComment localstSimpleMetaComment = (stSimpleMetaComment)localIterator.next();
+        if (paramString.equals(localstSimpleMetaComment.id)) {
+          localstSimpleMetaComment.replyList.add(0, paramstSimpleMetaReply);
+        }
+      }
     }
-    a(paramstSimpleMetaFeed.id, false);
-    a(paramstSimpleMetaFeed, str, paramBoolean);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    uqf.d("comment", "removeComment ...");
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= 0)
+      {
+        if (!paramString.equals(((stSimpleMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id)) {
+          break label95;
+        }
+        if (this.jdField_a_of_type_JavaUtilList.remove(i) == null) {
+          break label90;
+        }
+      }
+      label90:
+      for (bool1 = true;; bool1 = false)
+      {
+        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return bool1;
+      }
+      label95:
+      i -= 1;
+    }
+  }
+  
+  public boolean a(String paramString, stSimpleMetaComment paramstSimpleMetaComment)
+  {
+    boolean bool2 = false;
+    uqf.d("comment", "updateComment ...");
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= 0)
+      {
+        if (!paramString.equals(((stSimpleMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id)) {
+          break label90;
+        }
+        if (this.jdField_a_of_type_JavaUtilList.set(i, paramstSimpleMetaComment) == null) {
+          break label84;
+        }
+      }
+      label84:
+      for (bool1 = true;; bool1 = false) {
+        return bool1;
+      }
+      label90:
+      i -= 1;
+    }
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    uqf.d("comment", "removeCommentReply ...");
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        stSimpleMetaComment localstSimpleMetaComment;
+        do
+        {
+          bool1 = bool2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localstSimpleMetaComment = (stSimpleMetaComment)localIterator.next();
+        } while (!paramString1.equals(localstSimpleMetaComment.id));
+        i = localstSimpleMetaComment.replyList.size() - 1;
+        if (i < 0) {
+          break label149;
+        }
+        if (!paramString2.equals(((stSimpleMetaReply)localstSimpleMetaComment.replyList.get(i)).id)) {
+          break label142;
+        }
+        if (localstSimpleMetaComment.replyList.remove(i) == null) {
+          break label136;
+        }
+        bool1 = true;
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      label136:
+      bool1 = false;
+      continue;
+      label142:
+      i -= 1;
+      break;
+      label149:
+      bool1 = false;
+    }
+  }
+  
+  public boolean a(String paramString1, String paramString2, stSimpleMetaReply paramstSimpleMetaReply)
+  {
+    boolean bool2 = false;
+    uqf.d("comment", "updateCommentReply ............. mComments.size:" + this.jdField_a_of_type_JavaUtilList.size());
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramstSimpleMetaReply.id))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        stSimpleMetaComment localstSimpleMetaComment;
+        do
+        {
+          bool1 = bool2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localstSimpleMetaComment = (stSimpleMetaComment)localIterator.next();
+        } while (!paramString1.equals(localstSimpleMetaComment.id));
+        i = localstSimpleMetaComment.replyList.size() - 1;
+        if (i < 0) {
+          break label184;
+        }
+        if (!paramString2.equals(((stSimpleMetaReply)localstSimpleMetaComment.replyList.get(i)).id)) {
+          break label175;
+        }
+        if (localstSimpleMetaComment.replyList.set(i, paramstSimpleMetaReply) == null) {
+          break label169;
+        }
+        bool1 = true;
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      label169:
+      bool1 = false;
+      continue;
+      label175:
+      i -= 1;
+      break;
+      label184:
+      bool1 = false;
+    }
+  }
+  
+  public boolean a(Collection<stSimpleMetaComment> paramCollection)
+  {
+    boolean bool = false;
+    if (paramCollection != null) {
+      bool = this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
+    }
+    return bool;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashSet != null) {
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    stSimpleMetaComment localstSimpleMetaComment = (stSimpleMetaComment)getItem(paramInt);
+    Object localObject1;
+    if (localstSimpleMetaComment.isTempData)
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(localstSimpleMetaComment.hashCode())))
+      {
+        this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(localstSimpleMetaComment.hashCode()));
+        localObject2 = unr.c(this.jdField_b_of_type_JavaLangString);
+        localObject1 = localObject2;
+        if (!((String)localObject2).equals("comment_tag")) {
+          localObject1 = (String)localObject2 + jdField_a_of_type_Int;
+        }
+        unr.b(this.jdField_b_of_type_JavaLangString, a(), (String)localObject1, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+      }
+      for (;;)
+      {
+        localObject1 = new MoreCommentPanel(this.jdField_a_of_type_AndroidContentContext);
+        ((TextView)((MoreCommentPanel)localObject1).findViewById(2131371397)).setTextColor(-7829368);
+        ((MoreCommentPanel)localObject1).setOnClickListener(new ufa(this, paramInt));
+        ((MoreCommentPanel)localObject1).setHintText(localstSimpleMetaComment.wording);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return localObject1;
+        uqf.b("beacon-comment", "重复的position:" + paramInt + ",不上报");
+      }
+    }
+    if (paramView != null)
+    {
+      localObject1 = paramView;
+      if (!(paramView instanceof MoreCommentPanel)) {}
+    }
+    else
+    {
+      localObject1 = new WsCommentView(this.jdField_a_of_type_AndroidContentContext);
+      ((WsCommentView)localObject1).setOnCommentElementClickListener(this.jdField_a_of_type_Aakb);
+      ((View)localObject1).setTag(localObject1);
+    }
+    paramView = (WsCommentView)((View)localObject1).getTag();
+    paramView.setPosition(paramInt);
+    paramView.setDisplayNum(3);
+    Object localObject2 = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localstSimpleMetaComment.id);
+    if (localObject2 != null) {}
+    for (int i = ((Integer)localObject2).intValue();; i = 3)
+    {
+      paramView.setData(localstSimpleMetaComment, i, this.jdField_a_of_type_JavaLangString);
+      paramView = (View)localObject1;
+      break;
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uez
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.view.View;
 
-public class nxb
-  implements bkhy
+public abstract interface nxb
 {
-  public nxb(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  public void onDismiss()
-  {
-    ReadInJoyNativeAdFragment.a(this.a, false);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

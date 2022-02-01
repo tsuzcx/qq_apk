@@ -1,28 +1,85 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StVideo;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class vuu
-  extends ClickableSpan
+  extends vui
 {
-  public vuu(QCircleAsyncTextView paramQCircleAsyncTextView, vux paramvux) {}
+  private static String jdField_a_of_type_JavaLangString = "QCircleFeedVideoPreloadScroller";
+  private aaan jdField_a_of_type_Aaan;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onClick(@NonNull View paramView)
+  private aaan a()
   {
-    QCircleAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView, true);
-    if (this.jdField_a_of_type_Vux != null) {
-      this.jdField_a_of_type_Vux.a();
+    if (this.jdField_a_of_type_Aaan == null) {
+      if (this.jdField_a_of_type_AndroidContentContext != null) {
+        break label33;
+      }
+    }
+    label33:
+    for (int i = 0;; i = this.jdField_a_of_type_AndroidContentContext.hashCode())
+    {
+      this.jdField_a_of_type_Aaan = new aaan(i);
+      return this.jdField_a_of_type_Aaan;
     }
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  private void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setFakeBoldText(true);
+    if ((!paramBoolean) || (!a())) {
+      break label11;
+    }
+    for (;;)
+    {
+      label11:
+      return;
+      if (paramInt2 > paramInt1)
+      {
+        Object localObject = this.jdField_a_of_type_Vbl.getDataList();
+        if ((localObject == null) || (((List)localObject).size() <= paramInt2)) {
+          break;
+        }
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "feeds size" + ((List)localObject).size());
+        localObject = ((List)localObject).subList(paramInt1, ((List)localObject).size()).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)((Iterator)localObject).next();
+          if ((localStFeed.type.get() == 3) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localStFeed.id.get())))
+          {
+            paramInt1 = a().a(localStFeed.video.fileId.get(), localStFeed.video.playUrl.get(), localStFeed.video.duration.get());
+            this.jdField_a_of_type_JavaUtilHashMap.put(localStFeed.id.get(), Integer.valueOf(paramInt1));
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+  {
+    super.a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean);
+    a(paramBoolean, paramInt1, paramInt2);
+  }
+  
+  public void a(RecyclerView paramRecyclerView, int paramInt1, RecyclerView.LayoutManager paramLayoutManager, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    if (paramInt1 == 0) {
+      a(paramBoolean, paramInt2, paramInt3);
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    a().a();
+    a().b();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
 }
 

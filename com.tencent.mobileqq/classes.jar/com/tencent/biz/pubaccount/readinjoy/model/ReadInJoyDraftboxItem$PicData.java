@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.hotpic.HotPicData;
-import pxw;
+import pqg;
 
 public class ReadInJoyDraftboxItem$PicData
   implements Parcelable
 {
-  public static final Parcelable.Creator<PicData> CREATOR = new pxw();
+  public static final Parcelable.Creator<PicData> CREATOR = new pqg();
   public int a;
   public HotPicData a;
   public String a;

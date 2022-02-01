@@ -1,26 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class mfc
-  implements DialogInterface.OnClickListener
+  extends lef
 {
-  public mfc(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, VideoAppInterface paramVideoAppInterface, int paramInt) {}
+  public mfc(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(long paramLong, ArrayList<lcv> paramArrayList, int paramInt1, int paramInt2)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d, 1, "showConfirmBoxToHangup, yes, mRelationId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b + "]");
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.l(0L);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b));
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(4, 0, 0, paramDialogInterface, null);
-    if (!bgoo.a(this.jdField_a_of_type_Int)) {
-      mpu.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b), 3000, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131694969));
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onUserListALLUpdate");
     }
+    MultiIncomingCallsActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onMembersChange");
+    }
+    if ((paramLong != this.a.a) || (paramBoolean)) {}
+    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
+      return;
+    }
+    MultiIncomingCallsActivity.a(this.a, paramInt);
   }
 }
 

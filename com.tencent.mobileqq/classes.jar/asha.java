@@ -1,27 +1,26 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+import android.text.TextUtils;
 
 public class asha
-  extends RecyclerView.ViewHolder
 {
-  private ExtendFriendCampusVerifyTipsView a;
+  public static int a = 300;
+  public static int b = 300;
   
-  public asha(View paramView, asnl paramasnl)
+  public static String a(String paramString)
   {
-    super(paramView);
-    this.a = ((ExtendFriendCampusVerifyTipsView)paramView);
-    this.a.setOnClickListener(paramasnl);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return antf.bl + apdf.a(paramString);
   }
   
-  public void a(asht paramasht, int paramInt)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramasht instanceof ashb))
-    {
-      paramasht = (ashb)paramasht;
-      this.a.setTipsType(paramasht.a);
-      this.a.setPadding(0, paramInt, 0, 0);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return null;
     }
+    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
+    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
+    return localStringBuilder.toString();
   }
 }
 

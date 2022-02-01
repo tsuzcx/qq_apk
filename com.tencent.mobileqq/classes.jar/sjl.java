@@ -1,151 +1,16 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.widget.AbsListView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/tvk/TVKPreloader;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_ICacheMgr$IPreloadCallback;", "cacheMgr", "Lcom/tencent/qqlive/mediaplayer/api/TVK_ICacheMgr;", "(Lcom/tencent/qqlive/mediaplayer/api/TVK_ICacheMgr;)V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "destory", "", "isVideoCached", "", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "onPreLoadFailed", "p0", "", "p1", "p2", "onPreLoadSucess", "setPreDownloadListener", "startPreDownload", "videoDurationMs", "", "preloadDurationMs", "stopPreDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sjl
-  implements TVK_ICacheMgr.IPreloadCallback, sis
+class sjl
+  extends pmr
 {
-  private final TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-  private siu jdField_a_of_type_Siu;
-  
-  public sjl(@Nullable TVK_ICacheMgr paramTVK_ICacheMgr)
+  sjl(sjk paramsjk, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = paramTVK_ICacheMgr;
+    super(paramString);
   }
   
-  public int a(@NotNull sja paramsja)
+  public void a(pmk parampmk)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    Intrinsics.checkParameterIsNotNull(paramsja, "videoInfo");
-    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    if (localTVK_ICacheMgr != null)
-    {
-      Context localContext = (Context)BaseApplicationImpl.getContext();
-      String[] arrayOfString = paramsja.a();
-      localObject1 = localObject2;
-      if (arrayOfString != null) {
-        localObject1 = arrayOfString[0];
-      }
-      localObject1 = Integer.valueOf(localTVK_ICacheMgr.isVideoCached(localContext, (String)localObject1, sjb.a(paramsja), sjb.a(paramsja), ""));
-    }
-    if (localObject1 == null)
-    {
-      if (localObject1 != null) {
-        break label94;
-      }
-      label79:
-      if (localObject1 != null) {
-        break label104;
-      }
-    }
-    label94:
-    label104:
-    while (((Integer)localObject1).intValue() != 2)
-    {
-      return 0;
-      if (((Integer)localObject1).intValue() != 0) {
-        break;
-      }
-      return 0;
-      if (((Integer)localObject1).intValue() != 1) {
-        break label79;
-      }
-      return 1;
-    }
-    return 2;
-  }
-  
-  public void a()
-  {
-    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    if (localTVK_ICacheMgr != null) {
-      localTVK_ICacheMgr.stopCacheData(20160519);
-    }
-  }
-  
-  public void a(@Nullable siu paramsiu)
-  {
-    this.jdField_a_of_type_Siu = paramsiu;
-    paramsiu = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    if (paramsiu != null) {
-      paramsiu.setPreloadCallback((TVK_ICacheMgr.IPreloadCallback)this);
-    }
-  }
-  
-  public void a(@NotNull sja paramsja, long paramLong1, long paramLong2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramsja, "videoInfo");
-    TVK_UserInfo localTVK_UserInfo = sjb.a(paramsja);
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = sjb.a(paramsja);
-    if (paramsja.a() > 0L) {
-      localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(paramsja.a()));
-    }
-    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(paramLong2 / 1000));
-    Object localObject = paramsja.a();
-    int i;
-    if (localObject != null) {
-      if (localObject.length == 0)
-      {
-        i = 1;
-        if (i != 0) {
-          break label133;
-        }
-        i = 1;
-        label86:
-        if (i != 1) {
-          break label139;
-        }
-        localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-        if (localObject != null) {
-          ((TVK_ICacheMgr)localObject).preLoadVideoByUrl((Context)BaseApplicationImpl.getContext(), paramsja.a()[0], localTVK_UserInfo, localTVK_PlayerVideoInfo);
-        }
-      }
-    }
-    label133:
-    label139:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label86;
-      paramsja = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    } while (paramsja == null);
-    paramsja.preLoadVideoById((Context)BaseApplicationImpl.getContext(), localTVK_UserInfo, localTVK_PlayerVideoInfo, "");
-  }
-  
-  public void b()
-  {
-    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    if (localTVK_ICacheMgr != null) {
-      localTVK_ICacheMgr.releasePreload(20160519);
-    }
-  }
-  
-  public void onPreLoadFailed(@Nullable String paramString1, int paramInt, @Nullable String paramString2)
-  {
-    paramString1 = this.jdField_a_of_type_Siu;
-    if (paramString1 != null) {
-      paramString1.a();
-    }
-  }
-  
-  public void onPreLoadSucess(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    paramString1 = this.jdField_a_of_type_Siu;
-    if (paramString1 != null) {
-      paramString1.b();
-    }
+    parampmk.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,48 +1,98 @@
-import com.tencent.open.virtual.OpenSdkVirtualManager.2;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class biyr
-  extends bizb
+  extends bhpc
+  implements View.OnClickListener
 {
-  public biyr(OpenSdkVirtualManager.2 param2) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public biyr(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
   {
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
-    aukw.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Biyc, paramBoolean);
-    int i = paramInt;
-    if (paramBoolean) {}
+    super(paramContext, 2131755824);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561241, null);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378993);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379001));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365078));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364593));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131696954));
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    setCancelable(true);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.width = ((int)(((DisplayMetrics)localObject).widthPixels - bhmg.a(this.jdField_a_of_type_AndroidContentContext, 30.0F)));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    localObject = getWindow().getAttributes();
+    ((WindowManager.LayoutParams)localObject).gravity = 48;
+    ((WindowManager.LayoutParams)localObject).y = ((int)bhmg.a(this.jdField_a_of_type_AndroidContentContext, 10.0F) + agej.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
     for (;;)
     {
-      try
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      dismiss();
+      continue;
+      Object localObject = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString);
+      if (localObject != null)
       {
-        i = new JSONObject(paramString1).optInt("ErrorCode");
-        paramInt = i;
-        i = paramInt;
-        if (paramInt == 0)
-        {
-          paramBoolean = true;
-          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
-          if (this.a.jdField_a_of_type_Bior != null) {
-            this.a.jdField_a_of_type_Bior.a(paramBoolean, paramInt);
-          }
-          return;
-        }
+        ((bhmr)localObject).a();
       }
-      catch (Exception paramString2)
+      else
       {
-        QLog.e("SDK_LOGIN.OpenSdkVirtualManager", 1, "Exception.e", paramString2);
-        i = paramInt;
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
       }
-      paramBoolean = false;
-      paramInt = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biyr
  * JD-Core Version:    0.7.0.1
  */

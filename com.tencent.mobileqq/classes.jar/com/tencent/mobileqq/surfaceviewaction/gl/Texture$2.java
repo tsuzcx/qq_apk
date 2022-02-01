@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import bdfz;
+import bdyu;
 
 public class Texture$2
   implements Runnable
 {
-  public Texture$2(bdfz parambdfz) {}
+  public Texture$2(bdyu parambdyu) {}
   
   public void run()
   {

@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import bcew;
-import bnpt;
-import bnpu;
+import bcxo;
+import borf;
+import borg;
 
 class ArtFilterBridgeActivity$1
   implements Runnable
@@ -11,8 +11,8 @@ class ArtFilterBridgeActivity$1
   
   public void run()
   {
-    bnpu.a().a(bnpt.b, null, false);
-    bcew.a(this.this$0.app);
+    borg.a().a(borf.b, null, false);
+    bcxo.a(this.this$0.app);
   }
 }
 

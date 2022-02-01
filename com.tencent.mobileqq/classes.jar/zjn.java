@@ -1,19 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
-class zjn
-  implements View.OnClickListener
+public class zjn
 {
-  zjn(zjm paramzjm) {}
+  TroopInfo a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public zjn(boolean paramBoolean, TroopInfo paramTroopInfo)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
+  }
+  
+  public static ArrayList<zjn> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
+  {
+    ArrayList localArrayList = new ArrayList(paramArrayList.size());
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
+      zjn localzjn = new zjn(false, localTroopInfo);
+      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
+        localzjn.jdField_a_of_type_Boolean = true;
+      }
+      localArrayList.add(localzjn);
+      i += 1;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return localArrayList;
   }
 }
 

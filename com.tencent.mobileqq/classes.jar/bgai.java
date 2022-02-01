@@ -1,30 +1,43 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import org.json.JSONObject;
 
 public class bgai
-  implements bdfn
+  implements bgpp
 {
-  public bgai(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject) {}
+  public bgai(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.jdField_a_of_type_Int + this.b)
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
     {
-      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new bgaj(this));
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getActivity(), 2131696767, 0).a();
+        paramJSONObject = agej.a(new Intent(this.a.getActivity(), SplashActivity.class), new int[] { 2 });
+        paramJSONObject.addFlags(268435456);
+        paramJSONObject.putExtra("uin", this.a.b);
+        paramJSONObject.putExtra("uintype", 1);
+        this.a.getActivity().startActivity(paramJSONObject);
+        this.a.getActivity().overridePendingTransition(2130771990, 2130772304);
+      }
+    }
+    else
+    {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bdfn != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bdfn.a();
+    if (paramInt == 111000)
+    {
+      QQToast.a(this.a.getActivity(), 2131696766, 0).a();
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_Int, true);
+    QQToast.a(this.a.getActivity(), 2131696826, 0).a();
   }
 }
 

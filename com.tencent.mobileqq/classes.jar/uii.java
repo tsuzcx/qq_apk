@@ -1,23 +1,25 @@
-import UserGrowth.stSchema;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import UserGrowth.stSimpleMetaFeed;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface uii
+class uii
+  implements blsw
 {
-  public abstract stSchema a();
+  uii(uih paramuih) {}
   
-  public abstract Context a();
-  
-  public abstract WSDownloadParams a();
-  
-  public abstract MiniAppLauncher.MiniAppLaunchListener a();
-  
-  public abstract uih a();
-  
-  public abstract uos a();
-  
-  public abstract boolean a();
+  public void a(View paramView, int paramInt)
+  {
+    if ((uih.a(this.a) == null) || (uih.a(this.a).a() == null) || (paramInt >= uih.a(this.a).a().size())) {}
+    do
+    {
+      return;
+      paramView = (uho)uih.a(this.a).a().get(paramInt);
+    } while (paramView == null);
+    WSVerticalPageFragment.a(uih.a(this.a), "friend_feed", "friend", null, paramView.b() + 1);
+    uns.a(paramInt + 1, 1000001, (stSimpleMetaFeed)((ArrayList)paramView.a()).get(0), paramView.a(), paramView.a());
+  }
 }
 
 

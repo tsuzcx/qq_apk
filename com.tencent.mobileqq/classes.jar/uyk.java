@@ -1,261 +1,410 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleDefaultFeedItemView;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.util.Base64;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StDittoFeed;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.ArrayList;
+import common.config.service.QzoneConfig;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleFeedBase.StBusiInfoData;
 
 public class uyk
-  extends QCircleFakeAdapter
 {
-  private static String jdField_a_of_type_JavaLangString = "QCircleInsFeedAdapter";
-  private final RecyclerView.RecycledViewPool jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool = new RecyclerView.RecycledViewPool();
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private vsc jdField_a_of_type_Vsc;
-  private vse jdField_a_of_type_Vse;
-  private vsg jdField_a_of_type_Vsg;
-  private int b;
+  private static volatile Uri jdField_a_of_type_AndroidNetUri;
+  private static volatile uyk jdField_a_of_type_Uyk;
+  private static vkw jdField_a_of_type_Vkw;
+  private int jdField_a_of_type_Int;
+  private aaad jdField_a_of_type_Aaad;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public uyk(Bundle paramBundle)
+  private uyk()
   {
-    super(paramBundle);
+    i();
   }
   
-  private void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public static SharedPreferences a()
   {
-    if ((this.b != 0) && (paramInt == 0) && ((paramViewHolder.itemView instanceof QCircleInsFeedItemView)) && (((FeedCloudMeta.StFeed)this.mDataList.get(0)).type.get() == 2)) {
-      ((QCircleInsFeedItemView)paramViewHolder.itemView).setPicInitialItemPos(this.b);
-    }
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = "sp_qqcirlce_business" + str;
+    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 0);
   }
   
-  private void a(RecyclerView paramRecyclerView)
+  public static uyk a()
   {
-    this.jdField_a_of_type_Vsg = new vsg(getContext(), paramRecyclerView, this);
-    this.jdField_a_of_type_Vsc = new vsc(a());
-    this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_Vsc);
-    this.jdField_a_of_type_Vse = new vse(a(), a());
-    this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_Vse);
-    this.jdField_a_of_type_Vsg.a(new vrx());
-    this.jdField_a_of_type_Vsg.a(new vsh());
-    this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_Vsg.b(this.jdField_a_of_type_Int);
-    addOnScrollListener(this.jdField_a_of_type_Vsg);
-    this.jdField_a_of_type_Vsg.a(paramRecyclerView);
-  }
-  
-  protected String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public uyl a(ViewGroup paramViewGroup, int paramInt)
-  {
-    switch (paramInt)
+    if (jdField_a_of_type_Uyk == null) {}
+    try
     {
-    default: 
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onCreateViewHolder()  return new QCircleDefaultFeedWidget()");
-      return new uyl(new QCircleDefaultFeedItemView(getParentFragment().getActivity(), paramInt));
-    case 2: 
-    case 3: 
-      paramViewGroup = new QCircleInsFeedItemView(getParentFragment().getActivity(), paramInt);
-      paramViewGroup.setRecyclerView(getParentRecyclerView());
-      paramViewGroup.setReportBean(a());
-      paramViewGroup.setShareRecyclerViewPool(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool);
-      return new uyl(paramViewGroup);
-    case 1001: 
-      paramViewGroup = new QCircleRecommendWidget(paramViewGroup.getContext(), paramInt);
-      paramViewGroup.setReportBean(a());
-      return new uyl(paramViewGroup);
+      if (jdField_a_of_type_Uyk == null) {
+        jdField_a_of_type_Uyk = new uyk();
+      }
+      return jdField_a_of_type_Uyk;
     }
-    paramViewGroup = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131560774, null, false);
-    paramViewGroup.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    return new uyl(paramViewGroup);
+    finally {}
   }
   
-  public vsc a()
+  public static vkw a()
   {
-    return this.jdField_a_of_type_Vsc;
+    if (jdField_a_of_type_Vkw == null) {
+      jdField_a_of_type_Vkw = new vkw();
+    }
+    return jdField_a_of_type_Vkw;
   }
   
-  public void a()
+  public static void a()
   {
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a();
+    QLog.d("QCircleConfig", 4, "release");
+    jdField_a_of_type_Uyk = null;
+  }
+  
+  public static SharedPreferences b()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = "sp_qqcirlce_business" + str;
+    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
+  }
+  
+  private String b()
+  {
+    String str1 = QzoneConfig.getQQCircleSplashGuideVideoDir();
+    String str2 = c();
+    str2 = str1 + str2 + ".zip";
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleConfig", 1, "splashGuideVideoDir: " + str1);
     }
+    return str2;
+  }
+  
+  private int c()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.jdField_a_of_type_Int;
+    }
+    this.jdField_a_of_type_Int = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  private String c()
+  {
+    int i = c();
+    if (i > 720) {
+      return "qcircle_splash2_1080p.mp4";
+    }
+    if (i > 480) {
+      return "qcircle_splash2_720p.mp4";
+    }
+    return "qcircle_splash2_480p.mp4";
+  }
+  
+  private void i()
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null)
+    {
+      this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("show_first_guide", true);
+      this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("key_sp_need_show_consume_toast", true);
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_b_of_type_Int != -1) {
+      return this.jdField_b_of_type_Int;
+    }
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt("qcircle_fuel_count", 2147483647);
+    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    long l = 0L;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("close_banner_time", 0L);
+    }
+    return l;
+  }
+  
+  public Uri a()
+  {
+    return jdField_a_of_type_AndroidNetUri;
+  }
+  
+  public String a()
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString("qcircle_auth_tip_action_url", "");
+    }
+    return "";
+  }
+  
+  public QQCircleFeedBase.StBusiInfoData a()
+  {
+    Object localObject = a();
+    if (localObject != null) {
+      try
+      {
+        localObject = ((SharedPreferences)localObject).getString("tab_busi_info_data", "");
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = Base64.decode(((String)localObject).getBytes(), 0);
+          QQCircleFeedBase.StBusiInfoData localStBusiInfoData = new QQCircleFeedBase.StBusiInfoData();
+          localStBusiInfoData.mergeFrom((byte[])localObject);
+          QLog.d("QCircleConfig", 2, "getBusiInfoData() success!");
+          return localStBusiInfoData;
+        }
+      }
+      catch (Exception localException)
+      {
+        return null;
+      }
+    }
+    return null;
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a(paramInt);
+    this.jdField_b_of_type_Int = paramInt;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("qcircle_fuel_count", paramInt).apply();
     }
   }
   
-  public void a(ExtraTypeInfo paramExtraTypeInfo)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong("sp_last_getfollowuser_time", paramLong).apply();
     }
   }
   
-  public void a(FeedCloudMeta.StFeed paramStFeed)
+  public void a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramStFeed);
-    setDatas(localArrayList);
-  }
-  
-  protected String b()
-  {
-    return "feeds";
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.b(paramInt);
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putString("qcircle_auth_tip_action_url", paramString).apply();
     }
   }
   
-  public void d(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.b = paramInt;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("qcircle_show_publish_feed_guide_bubble", paramBoolean).apply();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleConfig", 1, "setNeedShowPublishGuideBubble: " + paramBoolean);
+    }
   }
   
-  public int getItemCount()
+  public void a(byte[] paramArrayOfByte)
   {
-    return this.mDataList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.mDataList != null) && (this.mDataList.size() > paramInt))
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null)
     {
-      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.mDataList.get(paramInt);
-      if (localStFeed.dittoFeed.dittoId.get() == 1)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getItemViewType()  data.dittoFeed.dittoId.get() = 1");
-        return 1001;
-      }
-      if (localStFeed.dittoFeed.dittoId.get() == 4)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getItemViewType()  data.dittoFeed.dittoId.get() = 4");
-        return 1002;
-      }
-      if (localStFeed.dittoFeed.dittoId.get() == -1) {
-        return 1003;
-      }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getItemViewType()  data.type = " + localStFeed.type.get());
-      return localStFeed.type.get();
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 2, "getItemViewType()  return 0");
-    return 0;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 4;
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    super.onActivityDestroyed(paramActivity);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.e();
+      paramArrayOfByte = new String(Base64.encode(paramArrayOfByte, 0));
+      localSharedPreferences.edit().putString("tab_busi_info_data", paramArrayOfByte).apply();
     }
   }
   
-  public void onActivityPaused(Activity paramActivity)
+  public boolean a()
   {
-    super.onActivityPaused(paramActivity);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.d();
+    return this.c;
+  }
+  
+  public int b()
+  {
+    int i = 0;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt("qcircle_is_authenticated_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    }
+    return i;
+  }
+  
+  public long b()
+  {
+    long l = 0L;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("sp_last_getfollowuser_time", 0L);
+    }
+    return l;
+  }
+  
+  public void b()
+  {
+    this.c = b();
+  }
+  
+  public void b(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("qcircle_is_authenticated_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramInt).apply();
     }
   }
   
-  public void onActivityResumed(Activity paramActivity)
+  public void b(long paramLong)
   {
-    super.onActivityResumed(paramActivity);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.c();
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong("qcircle_fule_count_push_time", paramLong).apply();
     }
   }
   
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  public void b(boolean paramBoolean)
   {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    a(paramRecyclerView);
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("qcircle_show_publish_label_guide_bubble", paramBoolean).apply();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleConfig", 1, "setNeedShowPublishLabelGuideBubble: " + paramBoolean);
+    }
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public boolean b()
   {
-    if (this.mDataList != null)
+    boolean bool = true;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("show_splash_switch", true);
+    }
+    return bool;
+  }
+  
+  public long c()
+  {
+    long l = 0L;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("qcircle_fule_count_push_time", 0L);
+    }
+    return l;
+  }
+  
+  public void c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("tryGetSplashVideoAsync ");
+    if (jdField_a_of_type_AndroidNetUri != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      ((uyl)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo, (uzb)this.mInteractor);
-      if (paramInt == 0)
-      {
-        a(paramViewHolder, paramInt);
-        this.b = 0;
+      QLog.d("QCircleConfig", 1, bool);
+      if (jdField_a_of_type_AndroidNetUri == null) {
+        break;
       }
+      return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "onBindViewHolder:" + paramInt + "  " + paramViewHolder + "  " + this);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.jdField_a_of_type_Vsg != null)
+    try
     {
-      removeOnScrollListener(this.jdField_a_of_type_Vsg);
-      this.jdField_a_of_type_Vsg.e();
+      this.jdField_a_of_type_Aaad = new uyl(this);
+      aaae.a(a()).a(b(), this.jdField_a_of_type_Aaad);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QCircleConfig", 1, "tryGetSplashVideoAsync error:", localException);
     }
   }
   
-  public void onInitBlock(Bundle paramBundle) {}
-  
-  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  public boolean c()
   {
-    super.onViewAttachedToWindow(paramViewHolder);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a(paramViewHolder);
+    boolean bool = false;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("qcircle_show_publish_feed_guide_bubble", true);
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "onViewAttachedToWindow:" + paramViewHolder.getAdapterPosition() + "  " + paramViewHolder + "  " + this);
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleConfig", 1, "isNeedShowPublishGuideBubble: " + bool);
+    }
+    return bool;
   }
   
-  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
+  public void d()
   {
-    super.onViewDetachedFromWindow(paramViewHolder);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.b(paramViewHolder);
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("show_splash_switch", false).apply();
     }
-    this.b = 0;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "onViewDetachedFromWindow:" + paramViewHolder.getAdapterPosition() + "  " + paramViewHolder + "  " + this);
+    this.c = false;
   }
   
-  public void setDatas(ArrayList paramArrayList)
+  public boolean d()
   {
-    super.setDatas(paramArrayList);
+    boolean bool = false;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("qcircle_show_publish_label_guide_bubble", true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleConfig", 1, "isNeedShowPublishLabelGuideBubble: " + bool);
+    }
+    return bool;
+  }
+  
+  public void e()
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("show_top_auth_banner_switch", false).apply();
+    }
+  }
+  
+  public boolean e()
+  {
+    boolean bool = true;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("show_top_auth_banner_switch", true);
+    }
+    return bool;
+  }
+  
+  public void f()
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong("close_banner_time", System.currentTimeMillis()).apply();
+    }
+  }
+  
+  public boolean f()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("show_first_guide", false).apply();
+    }
+  }
+  
+  public boolean g()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void h()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("key_sp_need_show_consume_toast", false).apply();
+    }
   }
 }
 

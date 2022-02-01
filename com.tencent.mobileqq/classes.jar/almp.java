@@ -1,76 +1,59 @@
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class almp
+class almp
+  implements Downloader.DownloadListener
 {
-  public static int a(int paramInt)
+  private volatile int jdField_a_of_type_Int;
+  private almm jdField_a_of_type_Almm;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private volatile int b;
+  private int c;
+  
+  public almp(almo paramalmo, QQAppInterface paramQQAppInterface, almm paramalmm, int paramInt)
   {
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt == 2) {
-      return 2;
-    }
-    if (paramInt == 3) {
-      return 3;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Almm = paramalmm;
+    this.c = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  public static almx a(int paramInt)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("AnimDrawerFactory", 2, "create drawer by type: " + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new almu();
-    case 2: 
-      return new alnk();
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerConfigManager", 2, "diy data download fail url = " + paramString);
     }
-    return new alnh();
+    this.b += 1;
+    almo.a(this.jdField_a_of_type_Almo, this.jdField_a_of_type_Almm, paramString, false);
+    if (this.jdField_a_of_type_Almm != null) {
+      bnfx.a().a(2741, this.jdField_a_of_type_Almm.c, 101, "qboss download resources fail mErrCode = " + paramDownloadResult.getStatus().httpStatus + " resUrl = " + paramString);
+    }
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.b + this.jdField_a_of_type_Int == this.c) {
+      almo.a(this.jdField_a_of_type_Almo, paramString);
+    }
   }
   
-  public static almx a(String paramString, float paramFloat1, float paramFloat2, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = a(Base64.decode(paramString.getBytes(), 0), paramFloat1, paramFloat2, paramInt);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("AnimDrawerFactory", 2, "subtitle base64decode exception:" + paramString.toString());
-    }
-    return null;
-  }
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public static almx a(byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt)
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    Object localObject;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 4)) {
-      localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerConfigManager", 2, "banner resources download success url = " + paramString);
     }
-    almx localalmx;
-    do
-    {
-      return localObject;
-      localalmx = a(aggi.a(paramArrayOfByte, 0));
-      localObject = localalmx;
-    } while (localalmx == null);
-    localalmx.a(BaseApplicationImpl.getApplication(), paramFloat1, paramFloat2, paramInt, paramArrayOfByte, 4, paramArrayOfByte.length - 4, true);
-    return localalmx;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt > 0) && (paramInt < 4);
+    this.jdField_a_of_type_Int += 1;
+    almo.a(this.jdField_a_of_type_Almo, this.jdField_a_of_type_Almm, paramString, true);
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_Int == this.c) {
+      almo.b(this.jdField_a_of_type_Almo, paramString);
+    }
   }
 }
 

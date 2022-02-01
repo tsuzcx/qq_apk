@@ -8,7 +8,7 @@ class PluginSplashDialog$InternalHandler
   extends Handler
 {
   public static final int MSG_DISMISS = 0;
-  private Dialog mDlg;
+  private Dialog mDlg = null;
   
   public PluginSplashDialog$InternalHandler(Dialog paramDialog)
   {

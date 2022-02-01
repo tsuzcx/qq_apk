@@ -1,23 +1,25 @@
-public class bhnc
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bhnc
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String[] a;
-  public int b;
-  public String b;
+  bhnc(bhmr parambhmr) {}
   
-  public bhnc(int paramInt1, int paramInt2, String paramString1, String paramString2, String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
+    if ((bhmr.a(this.a) != null) && (bhmr.a(this.a).isShowing())) {
+      bhmr.a(this.a).dismiss();
+    }
+    bhmr.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhnc
  * JD-Core Version:    0.7.0.1
  */

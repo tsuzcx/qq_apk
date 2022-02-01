@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.factory;
 
 import android.content.Context;
-import bmqa;
+import bnrf;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,16 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import teh;
-import tek;
-import tel;
-import tem;
-import tez;
+import suz;
+import svc;
+import svd;
+import sve;
+import svr;
 
 public class TemplateFactoryCache
-  extends QQHashMap<String, tem>
+  extends QQHashMap<String, sve>
 {
-  private volatile tek mStyleConfigHelper = new tek();
+  private volatile svc mStyleConfigHelper = new svc();
   
   public TemplateFactoryCache()
   {
@@ -42,16 +42,16 @@ public class TemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bmqa.o()) {
+    if (!bnrf.o()) {
       clear();
     }
   }
   
-  public tem get(String paramString)
+  public sve get(String paramString)
   {
     try
     {
-      paramString = (tem)super.get(paramString);
+      paramString = (sve)super.get(paramString);
       return paramString;
     }
     finally
@@ -61,16 +61,16 @@ public class TemplateFactoryCache
     }
   }
   
-  public teh getAutoCreate(Context paramContext, String paramString)
+  public suz getAutoCreate(Context paramContext, String paramString)
   {
-    tem localtem = get(paramString);
-    if ((localtem != null) && (localtem.a != null))
+    sve localsve = get(paramString);
+    if ((localsve != null) && (localsve.a != null))
     {
-      paramContext = tez.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
-      if ((paramContext != null) && (localtem.a.a().equals(paramContext.a())) && (localtem.a.getTemplateId() != paramContext.getTemplateId())) {
+      paramContext = svr.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
+      if ((paramContext != null) && (localsve.a.a().equals(paramContext.a())) && (localsve.a.getTemplateId() != paramContext.getTemplateId())) {
         return paramContext;
       }
-      return localtem.a;
+      return localsve.a;
     }
     paramContext = this.mStyleConfigHelper.a(paramContext, paramString);
     if ((paramContext != null) && (paramContext.a != null))
@@ -82,11 +82,11 @@ public class TemplateFactoryCache
     return null;
   }
   
-  public tem put(String paramString, tem paramtem)
+  public sve put(String paramString, sve paramsve)
   {
     try
     {
-      paramString = (tem)super.put(paramString, paramtem);
+      paramString = (sve)super.put(paramString, paramsve);
       return paramString;
     }
     finally
@@ -96,11 +96,11 @@ public class TemplateFactoryCache
     }
   }
   
-  public tem remove(String paramString)
+  public sve remove(String paramString)
   {
     try
     {
-      paramString = (tem)super.remove(paramString);
+      paramString = (sve)super.remove(paramString);
       return paramString;
     }
     finally
@@ -113,14 +113,14 @@ public class TemplateFactoryCache
   public void reset()
   {
     Object localObject1 = this.mStyleConfigHelper;
-    tek localtek = new tek();
-    Object localObject2 = ((tek)localObject1).a();
+    svc localsvc = new svc();
+    Object localObject2 = ((svc)localObject1).a();
     localObject1 = new ArrayList();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      if (!((tel)localEntry.getValue()).equals(localtek.a((String)localEntry.getKey()))) {
+      if (!((svd)localEntry.getValue()).equals(localsvc.a((String)localEntry.getKey()))) {
         ((List)localObject1).add(localEntry.getKey());
       }
     }
@@ -128,8 +128,8 @@ public class TemplateFactoryCache
     while (((Iterator)localObject1).hasNext()) {
       remove((String)((Iterator)localObject1).next());
     }
-    QLog.d("TemplateFactory", 2, "reset: " + localtek);
-    this.mStyleConfigHelper = localtek;
+    QLog.d("TemplateFactory", 2, "reset: " + localsvc);
+    this.mStyleConfigHelper = localsvc;
   }
 }
 

@@ -1,19 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class axij
-  implements View.OnClickListener
+public class axij
+  implements axgc
 {
-  axij(axii paramaxii) {}
+  public axij(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void onClick(View paramView)
+  public void a(List<RecentBaseData> paramList)
   {
-    if (axii.a(this.a) != null) {
-      axii.a(this.a).a(axii.a(this.a));
+    MsgBackupSelectionFragment.a(this.a, true);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
     }
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
+      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
+      return;
+      if (MsgBackupSelectionFragment.a(this.a) == 0) {
+        axjk.a("0X800A232");
+      } else if (axgj.c) {
+        axjk.a("0X800A257");
+      }
+    }
   }
 }
 

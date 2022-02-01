@@ -1,54 +1,49 @@
-import android.os.SystemClock;
-import android.util.Log;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
 
 public class bgso
 {
-  public static long a;
-  private static ConcurrentHashMap<String, Long> a;
+  public int a;
+  public bgsp a;
+  public bgsq a;
+  public bgsr a;
+  public bgss a;
+  public String a;
+  public ArrayList<aojo> a;
+  public int b = -1;
   
-  static
+  public bgso(String paramString, bgsp parambgsp)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgsp = parambgsp;
+    this.jdField_a_of_type_Int = 5;
   }
   
-  public static void a(String paramString, long paramLong) {}
-  
-  public static void a(String paramString1, String paramString2) {}
-  
-  public static boolean a()
+  public bgso(String paramString, bgsq parambgsq)
   {
-    return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("AIO_Start_cost");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgsq = parambgsq;
+    this.jdField_a_of_type_Int = 4;
   }
   
-  public static final void b(String paramString1, String paramString2)
+  public bgso(String paramString, bgsr parambgsr)
   {
-    long l = SystemClock.uptimeMillis();
-    if (paramString1 != null)
-    {
-      paramString2 = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
-      if (paramString2 != null)
-      {
-        jdField_a_of_type_Long = l - paramString2.longValue();
-        paramString1 = paramString1 + ", cost=" + jdField_a_of_type_Long + "|" + QQAppInterface.b + "|" + afui.a;
-        if (!QLog.isColorLevel()) {
-          break label90;
-        }
-        QLog.i("AutoMonitor", 2, paramString1);
-      }
-    }
-    label90:
-    while (paramString2 == null)
-    {
-      return;
-      Log.i("AutoMonitor", paramString1);
-      return;
-    }
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, Long.valueOf(l));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgsr = parambgsr;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public bgso(String paramString, bgss parambgss)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgss = parambgss;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public bgso(String paramString, ArrayList<aojo> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Int = 3;
   }
 }
 

@@ -1,30 +1,38 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
-import java.util.ArrayList;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 import java.util.List;
 
-public class xjz
-  extends xil<SingleFeedPlayInfo>
+class xjz
+  extends PagerAdapter
 {
-  public xjz(SingleFeedPlayInfo paramSingleFeedPlayInfo)
+  private List<View> jdField_a_of_type_JavaUtilList;
+  
+  public xjz(List<View> paramList)
   {
-    super(paramSingleFeedPlayInfo);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public yib a(String paramString)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramString = new yib(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    return paramString;
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
   
-  public void a(boolean paramBoolean, int paramInt, xjd paramxjd)
+  public int getCount()
   {
-    ArrayList localArrayList = new ArrayList();
-    xim localxim = new xim(((SingleFeedPlayInfo)this.a).mFeedFeedId, new yib(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localxim.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    localArrayList.add(localxim);
-    paramxjd.a(new ErrorMessage(), localArrayList, true);
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

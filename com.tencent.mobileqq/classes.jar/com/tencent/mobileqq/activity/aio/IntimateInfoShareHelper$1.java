@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afys;
-import bgse;
+import agim;
+import bhsg;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class IntimateInfoShareHelper$1
   implements Runnable
 {
-  public IntimateInfoShareHelper$1(afys paramafys) {}
+  public IntimateInfoShareHelper$1(agim paramagim) {}
   
   public void run()
   {
-    afys.a(this.this$0, this.this$0.a(afys.a(this.this$0)));
-    afys.a(this.this$0).a(afys.a(this.this$0));
+    agim.a(this.this$0, this.this$0.a(agim.a(this.this$0)));
+    agim.a(this.this$0).a(agim.a(this.this$0));
     ThreadManager.getUIHandler().post(new IntimateInfoShareHelper.1.1(this));
   }
 }

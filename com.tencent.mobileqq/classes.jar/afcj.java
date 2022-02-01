@@ -1,38 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afcj
-  extends RecyclerView.ViewHolder
+public class afcj
   implements View.OnClickListener
 {
-  afcg jdField_a_of_type_Afcg;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  
-  public afcj(afci paramafci, View paramView, afcg paramafcg)
-  {
-    super(paramView);
-    this.jdField_a_of_type_Afcg = paramafcg;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374702));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-  }
+  public afcj(PermisionPrivacyActivity paramPermisionPrivacyActivity, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Afcg != null) {
-      this.jdField_a_of_type_Afcg.a(paramView, getPosition());
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
-      }
-    }
+    String str = bhyk.a("gameIconSetupH5Url");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), str, -1L, localIntent, false, -1);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app, "CliOper", "", "", "Setting_tab", "0X8009C07", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

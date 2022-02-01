@@ -49,10 +49,12 @@ public abstract class AppRuntime
   public static final int LOGIN_AUTO = 2;
   public static final int LOGIN_MANUAL = 1;
   public static final int LOGIN_UNINIT = 0;
+  public static final String PROCESS = "process";
   public static final int PROXY_IP_MANAGER = 3;
   public static final int PUSH_MANAGER = 5;
   protected static final int SECURE_FILE_FRAMEWORK_MANAGER = 8;
   public static final int SERVER_CONFIG_MANAGER = 4;
+  protected static final String TAG = "mqq";
   public static final int TICKET_MANAGER = 2;
   public static final int TYPE_CREATENEWRUNTIME_CHANGUIN_LOGIN = 4;
   public static final int TYPE_CREATENEWRUNTIME_DIRECT_LOGIN = 1;
@@ -62,21 +64,20 @@ public abstract class AppRuntime
   public static final int VERIFYCODE_MANAGER = 6;
   public static final int VERIFYDEVLOCK_MANAGER = 7;
   public static final int WTLOGIN_MANAGER = 1;
-  protected static final String tag = "mqq";
-  private int batteryCapacity;
+  private int batteryCapacity = 0;
   private ConcurrentHashMap<String, String> businessRootFilePaths = new ConcurrentHashMap();
   private CountDownLatch countDownLatch;
-  public boolean isBackground_Pause;
-  public boolean isBackground_Stop;
-  public boolean isClearTaskBySystem;
+  public boolean isBackgroundPause = false;
+  public boolean isBackgroundStop = false;
+  public boolean isClearTaskBySystem = false;
   protected boolean isLogin;
   private boolean isRunning;
   private long lUin = -1L;
   private SimpleAccount mAccount;
   private MobileQQ mContext;
-  private Intent mDevLockIntent;
+  private Intent mDevLockIntent = null;
   private Handler mHandler;
-  private Intent mKickIntent;
+  private Intent mKickIntent = null;
   private MainService mService;
   public final ServletContainer mServletContainer = new ServletContainer(this);
   private IAppStateChangeListener mStateChangeListener;
@@ -86,7 +87,7 @@ public abstract class AppRuntime
   Bundle modularSaveInstance;
   private final List<Reference<BusinessObserver>> observers = new Vector();
   private AppRuntime.Status onlineStatus = AppRuntime.Status.offline;
-  public AppRuntime parentRuntime;
+  public AppRuntime parentRuntime = null;
   private int powerConnect = -1;
   ConcurrentHashMap<String, AppRuntime> subRuntimeMap = new ConcurrentHashMap();
   private long uExtOnlineStatus = -1L;
@@ -579,6 +580,18 @@ public abstract class AppRuntime
     getServletContainer().forward(this, localNewIntent);
   }
   
+  public void login(byte[] paramArrayOfByte1, String paramString, byte[] paramArrayOfByte2, AccountObserver paramAccountObserver)
+  {
+    getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+    NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
+    localNewIntent.putExtra("to_login_uin_encrypt", paramArrayOfByte1);
+    localNewIntent.putExtra("account", paramString);
+    localNewIntent.putExtra("password", paramArrayOfByte2);
+    localNewIntent.putExtra("action", 1001);
+    localNewIntent.setObserver(paramAccountObserver);
+    getServletContainer().forward(this, localNewIntent);
+  }
+  
   public void loginSubAccount(String paramString1, String paramString2, String paramString3, SubAccountObserver paramSubAccountObserver)
   {
     getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
@@ -741,7 +754,7 @@ public abstract class AppRuntime
   
   protected void onRunningBackground()
   {
-    this.isBackground_Stop = true;
+    this.isBackgroundStop = true;
     if (this.mStateChangeListener != null) {
       this.mStateChangeListener.onRunningBackground();
     }
@@ -749,7 +762,7 @@ public abstract class AppRuntime
   
   protected void onRunningForeground()
   {
-    this.isBackground_Stop = false;
+    this.isBackgroundStop = false;
   }
   
   public void openMsfPCActive(String paramString1, String paramString2, boolean paramBoolean)
@@ -798,7 +811,7 @@ public abstract class AppRuntime
     {
       return;
       paramString = MsfMsgUtil.getAppDataIncermentMsg(this.mService.msfSub.getMsfServiceName(), paramString, paramArrayOfString, paramLong);
-      paramString.setAppSeq(MSFServlet.appSeqFactory.incrementAndGet());
+      paramString.setAppSeq(MSFServlet.APP_SEQ_FACTORY.incrementAndGet());
       try
       {
         this.mService.msfSub.sendMsg(paramString);
@@ -992,8 +1005,8 @@ public abstract class AppRuntime
     this.parentRuntime = paramAppRuntime;
     if (paramAppRuntime != null)
     {
-      this.isBackground_Pause = paramAppRuntime.isBackground_Pause;
-      this.isBackground_Stop = paramAppRuntime.isBackground_Stop;
+      this.isBackgroundPause = paramAppRuntime.isBackgroundPause;
+      this.isBackgroundStop = paramAppRuntime.isBackgroundStop;
     }
   }
   

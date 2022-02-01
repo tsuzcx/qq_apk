@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import affo;
-import affp;
-import affq;
+import afos;
+import afot;
+import afou;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,8 +13,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ import mqq.manager.ServerConfigManager.ConfigType;
 public class SpaceLowNoticeActiviy
   extends BaseActivity
 {
-  private bgpa a;
+  private bhpc a;
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
@@ -75,15 +75,15 @@ public class SpaceLowNoticeActiviy
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559516);
+    super.setContentView(2131559521);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
-    this.a = bglp.a(this, 230);
-    this.a.setContentView(2131558985);
-    this.a.setTitle(getString(2131697873)).setMessage(getString(2131697874)).setPositiveButton(2131698250, new affp(this)).setNegativeButton(2131690582, new affo(this));
-    this.a.setOnKeyListener(new affq(this));
+    this.a = bhlq.a(this, 230);
+    this.a.setContentView(2131558984);
+    this.a.setTitle(getString(2131697957)).setMessage(getString(2131697958)).setPositiveButton(2131698352, new afot(this)).setNegativeButton(2131690580, new afos(this));
+    this.a.setOnKeyListener(new afou(this));
     this.a.show();
     return false;
   }

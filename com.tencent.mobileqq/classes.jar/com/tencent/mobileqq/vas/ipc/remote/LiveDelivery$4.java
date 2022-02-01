@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import anry;
+import aoeg;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
 
 class LiveDelivery$4
-  extends anry
+  extends aoeg
 {
   LiveDelivery$4(LiveDelivery paramLiveDelivery, EIPCModule paramEIPCModule, int paramInt) {}
   

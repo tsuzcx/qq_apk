@@ -1,20 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bhtz
-  implements View.OnClickListener
+public class bhtz
 {
-  bhtz(bhty parambhty, String paramString) {}
+  static final bhtz jdField_a_of_type_Bhtz = new bhtz(0);
+  static final bhtz b = new bhtz(1);
+  static final bhtz c = new bhtz(257);
+  static final bhtz d = new bhtz(2);
+  static final bhtz e = new bhtz(258);
+  static final bhtz f = new bhtz(3);
+  static final bhtz g = new bhtz(259);
+  final int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public bhtz(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bhtz a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return jdField_a_of_type_Bhtz;
+    case 1: 
+      return b;
+    case 2: 
+      return d;
+    case 3: 
+      return f;
+    case 257: 
+      return c;
+    case 258: 
+      return e;
     }
-    this.jdField_a_of_type_Bhty.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    EventCollector.getInstance().onViewClicked(paramView);
+    return g;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int & 0xF) == 1;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Int & 0xF) == 3;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int > 15;
   }
 }
 

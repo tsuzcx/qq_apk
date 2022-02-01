@@ -22,8 +22,8 @@ class RequestJsPlugin$2
   public void onClose(int paramInt1, int paramInt2, String paramString)
   {
     QMLog.d("[mini] http.RequestJsPlugin", "---onClosed---");
-    RequestJsPlugin.access$1302(this.this$0, true);
-    RequestJsPlugin.access$1400(this.this$0, this.val$req, paramInt2, paramString, this.val$websocketRequestTask.mTaskId);
+    RequestJsPlugin.access$1102(this.this$0, true);
+    RequestJsPlugin.access$1200(this.this$0, this.val$req, paramInt2, paramString, this.val$websocketRequestTask.mTaskId);
   }
   
   public void onError(int paramInt1, int paramInt2, String paramString)
@@ -45,13 +45,13 @@ class RequestJsPlugin$2
           paramString.put("state", "close");
           paramString.put("statusCode", paramInt2);
           this.val$req.jsService.evaluateSubscribeJS("onSocketTaskStateChange", paramString.toString(), 0);
-          MiniReportManager.reportEventType(RequestJsPlugin.access$1600(this.this$0), 634, null, null, null, 0, MiniReportManager.getAppType(RequestJsPlugin.access$1700(this.this$0)), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
+          MiniReportManager.reportEventType(RequestJsPlugin.access$1400(this.this$0), 634, null, null, null, 0, MiniReportManager.getAppType(RequestJsPlugin.access$1500(this.this$0)), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
           return;
         }
         localObject = new JSONObject();
         ((JSONObject)localObject).put("socketTaskId", this.val$websocketRequestTask.mTaskId);
         ((JSONObject)localObject).put("state", "error");
-        paramString = ((ConnectivityManager)RequestJsPlugin.access$1500(this.this$0).getSystemService("connectivity")).getActiveNetworkInfo();
+        paramString = ((ConnectivityManager)RequestJsPlugin.access$1300(this.this$0).getSystemService("connectivity")).getActiveNetworkInfo();
         if ((paramString == null) || (!paramString.isConnected()))
         {
           paramString = "network is down";
@@ -126,16 +126,16 @@ class RequestJsPlugin$2
     //   47: pop
     //   48: aload_0
     //   49: getfield 16	com/tencent/qqmini/sdk/plugins/RequestJsPlugin$2:this$0	Lcom/tencent/qqmini/sdk/plugins/RequestJsPlugin;
-    //   52: invokestatic 209	com/tencent/qqmini/sdk/plugins/RequestJsPlugin:access$1800	(Lcom/tencent/qqmini/sdk/plugins/RequestJsPlugin;)Z
+    //   52: invokestatic 209	com/tencent/qqmini/sdk/plugins/RequestJsPlugin:access$1600	(Lcom/tencent/qqmini/sdk/plugins/RequestJsPlugin;)Z
     //   55: ifeq +40 -> 95
     //   58: aload_0
-    //   59: getfield 16	com/tencent/qqmini/sdk/plugins/RequestJsPlugin$2:this$0	Lcom/tencent/qqmini/sdk/plugins/RequestJsPlugin;
-    //   62: invokestatic 213	com/tencent/qqmini/sdk/plugins/RequestJsPlugin:access$1900	(Lcom/tencent/qqmini/sdk/plugins/RequestJsPlugin;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   59: getfield 18	com/tencent/qqmini/sdk/plugins/RequestJsPlugin$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
+    //   62: getfield 112	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsService	Lcom/tencent/qqmini/sdk/launcher/core/IJsService;
     //   65: aload_2
-    //   66: getstatic 218	com/tencent/qqmini/sdk/core/utils/NativeBuffer:TYPE_BUFFER_NATIVE	I
+    //   66: getstatic 214	com/tencent/qqmini/sdk/core/utils/NativeBuffer:TYPE_BUFFER_NATIVE	I
     //   69: ldc 200
     //   71: aload_3
-    //   72: invokestatic 222	com/tencent/qqmini/sdk/core/utils/NativeBuffer:packNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;[BILjava/lang/String;Lorg/json/JSONObject;)V
+    //   72: invokestatic 218	com/tencent/qqmini/sdk/core/utils/NativeBuffer:packNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;[BILjava/lang/String;Lorg/json/JSONObject;)V
     //   75: aload_0
     //   76: getfield 18	com/tencent/qqmini/sdk/plugins/RequestJsPlugin$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
     //   79: getfield 112	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsService	Lcom/tencent/qqmini/sdk/launcher/core/IJsService;
@@ -146,13 +146,13 @@ class RequestJsPlugin$2
     //   89: invokeinterface 121 4 0
     //   94: return
     //   95: aload_0
-    //   96: getfield 16	com/tencent/qqmini/sdk/plugins/RequestJsPlugin$2:this$0	Lcom/tencent/qqmini/sdk/plugins/RequestJsPlugin;
-    //   99: invokestatic 225	com/tencent/qqmini/sdk/plugins/RequestJsPlugin:access$2000	(Lcom/tencent/qqmini/sdk/plugins/RequestJsPlugin;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   96: getfield 18	com/tencent/qqmini/sdk/plugins/RequestJsPlugin$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
+    //   99: getfield 112	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsService	Lcom/tencent/qqmini/sdk/launcher/core/IJsService;
     //   102: aload_2
-    //   103: getstatic 228	com/tencent/qqmini/sdk/core/utils/NativeBuffer:TYPE_BUFFER_BASE64	I
+    //   103: getstatic 221	com/tencent/qqmini/sdk/core/utils/NativeBuffer:TYPE_BUFFER_BASE64	I
     //   106: ldc 200
     //   108: aload_3
-    //   109: invokestatic 222	com/tencent/qqmini/sdk/core/utils/NativeBuffer:packNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;[BILjava/lang/String;Lorg/json/JSONObject;)V
+    //   109: invokestatic 218	com/tencent/qqmini/sdk/core/utils/NativeBuffer:packNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;[BILjava/lang/String;Lorg/json/JSONObject;)V
     //   112: goto -37 -> 75
     //   115: astore_2
     //   116: ldc 28
@@ -190,7 +190,7 @@ class RequestJsPlugin$2
       localJSONObject.put("statusCode", paramInt2);
       localJSONObject.put("header", JSONUtil.headerToJson(paramMap));
       this.val$req.jsService.evaluateSubscribeJS("onSocketTaskStateChange", localJSONObject.toString(), 0);
-      MiniReportManager.reportEventType(RequestJsPlugin.access$2100(this.this$0), 632, null, null, null, 0, MiniReportManager.getAppType(RequestJsPlugin.access$2200(this.this$0)), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
+      MiniReportManager.reportEventType(RequestJsPlugin.access$1700(this.this$0), 632, null, null, null, 0, MiniReportManager.getAppType(RequestJsPlugin.access$1800(this.this$0)), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
       return;
     }
     catch (JSONException paramMap)

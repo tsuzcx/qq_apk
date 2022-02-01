@@ -1,47 +1,134 @@
+import android.content.Context;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public class onk
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  public String a;
+  public ArrayList<SocializeFeedsInfo.BiuCommentInfo> a;
+  pql jdField_a_of_type_Pql = new onl(this);
+  qno jdField_a_of_type_Qno = new qno();
+  long jdField_b_of_type_Long;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  private final String jdField_b_of_type_JavaLangString = "5";
+  TextView c;
+  
+  public onk(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment, Context paramContext)
   {
-    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    a(paramContext);
+    this.jdField_a_of_type_AndroidViewView.setTag(this);
+  }
+  
+  private void a(long paramLong)
+  {
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new onm(this));
+    String str = ReadInJoyUserInfoModule.a();
+    if (localReadInJoyUserInfo != null) {
+      str = localReadInJoyUserInfo.nick;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+  }
+  
+  private void a(ArrayList<SocializeFeedsInfo.BiuCommentInfo> paramArrayList)
+  {
+    paramArrayList = SocializeFeedsInfo.a(null, "5", this.jdField_a_of_type_Pql, paramArrayList);
+    this.c.setSpannableFactory(begp.a);
+    this.c.setText(paramArrayList);
+  }
+  
+  private boolean a(ArrayList<SocializeFeedsInfo.BiuCommentInfo> paramArrayList)
+  {
+    if (paramArrayList != null)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (paramInt1 == 200)
-      {
-        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
-          bmqa.a("sp_key_ad_soft_total_area", str2.trim());
-        }
-        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bmqa.a("sp_key_ad_soft_ad_max", str2.trim());
-        }
-        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bmqa.a("sp_key_ad_soft_kd_max", str2.trim());
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        if (!TextUtils.isEmpty(((SocializeFeedsInfo.BiuCommentInfo)paramArrayList.next()).jdField_a_of_type_JavaLangString)) {
+          return false;
         }
       }
     }
     return true;
   }
   
-  public void onWipeConfig(int paramInt)
+  public View a()
   {
-    if (paramInt == 200)
-    {
-      bmqa.a("sp_key_ad_soft_total_area", "0");
-      bmqa.a("sp_key_ad_soft_ad_max", "25");
-      bmqa.a("sp_key_ad_soft_kd_max", "25");
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560196, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367923));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371813));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364772));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363541));
+  }
+  
+  public void a(MultiBiuSameContent paramMultiBiuSameContent, int paramInt)
+  {
+    a(paramMultiBiuSameContent.jdField_a_of_type_Long);
+    this.c.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    Object localObject = ozr.a(paramMultiBiuSameContent.jdField_b_of_type_Int, true);
+    if (localObject != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(paramMultiBiuSameContent.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Long = paramMultiBiuSameContent.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Int = paramMultiBiuSameContent.c;
+    this.jdField_b_of_type_Long = paramMultiBiuSameContent.jdField_b_of_type_Long;
+    this.c.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    this.jdField_a_of_type_JavaLangString = ReadInjoyFriendsBiuComponentFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, paramMultiBiuSameContent.jdField_a_of_type_Long, paramMultiBiuSameContent.c, paramMultiBiuSameContent.jdField_b_of_type_Long);
+    try
+    {
+      if ((paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList != null) && (!paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList = paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList;
+        if (a(paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList))
+        {
+          this.c.setVisibility(8);
+          return;
+        }
+        a(this.jdField_a_of_type_JavaUtilArrayList);
+        return;
+      }
+    }
+    catch (Exception paramMultiBiuSameContent)
+    {
+      QLog.e("ReadInjoyFriendsBiuComponentFragment", 2, "setData: ", paramMultiBiuSameContent);
+      return;
+    }
+    if (TextUtils.isEmpty(paramMultiBiuSameContent.jdField_a_of_type_JavaLangString))
+    {
+      this.c.setVisibility(8);
+      return;
+    }
+    localObject = new SpannableStringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMultiBiuSameContent.jdField_a_of_type_JavaLangString);
+    ((SpannableStringBuilder)localObject).append(new begp(localStringBuilder, 7, 16));
+    this.c.setText((CharSequence)localObject);
   }
 }
 

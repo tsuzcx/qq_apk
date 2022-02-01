@@ -1,119 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
 
 public class amgq
+  implements amgw
 {
-  private static amgq jdField_a_of_type_Amgq;
-  private Map<Long, amgr> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<Long, Long> b = new HashMap();
+  public amgq(ShoppingFragment paramShoppingFragment) {}
   
-  public static amgq a()
+  public void a()
   {
-    if (jdField_a_of_type_Amgq == null) {
-      jdField_a_of_type_Amgq = new amgq();
-    }
-    return jdField_a_of_type_Amgq;
+    ShoppingFragment.a(this.a, 1, 0);
+    bmzn.a().a("paying", "4", "qq_live", "shopcart_page", "order_paying_btn", 102, 1, System.currentTimeMillis(), "");
   }
   
-  public int a(long paramLong)
+  public void b()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
-    {
-      amgr localamgr = (amgr)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localamgr.jdField_a_of_type_Long < 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
-        }
-        return localamgr.jdField_a_of_type_Int;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-      return 0;
-    }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
-        }
-        return 0;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.b.remove(Long.valueOf(paramLong));
-      return 0;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "use default value, false");
-    }
-    return 0;
+    ShoppingFragment.a(this.a, 1, 1);
+    bmzn.a().a("inqueue", "4", "qq_live", "shopcart_page", "order_inqueue_btn", 102, 1, System.currentTimeMillis(), "");
   }
   
-  public void a(long paramLong)
+  public void c()
   {
-    long l = System.currentTimeMillis();
-    if (this.b.size() > 500) {
-      this.b.clear();
-    }
-    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-    }
+    ShoppingFragment.a(this.a, 1, 2);
+    bmzn.a().a("ship", "4", "qq_live", "shopcart_page", "order_ship_btn", 102, 1, System.currentTimeMillis(), "");
   }
   
-  public void a(long paramLong, int paramInt)
+  public void d()
   {
-    long l = System.currentTimeMillis();
-    amgr localamgr = new amgr(this);
-    localamgr.jdField_a_of_type_Int = paramInt;
-    localamgr.jdField_a_of_type_Long = l;
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localamgr);
-    if (this.b.containsKey(Long.valueOf(paramLong))) {
-      this.b.remove(Long.valueOf(paramLong));
-    }
+    ShoppingFragment.a(this.a, 1, 4);
+    bmzn.a().a("service", "4", "qq_live", "shopcart_page", "order_service_btn", 102, 1, System.currentTimeMillis(), "");
   }
   
-  public boolean a(long paramLong)
+  public void e()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((amgr)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.b.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
-    }
-    return true;
+    ShoppingFragment.a(this.a, 0, 0);
+    bmzn.a().a("all", "4", "qq_live", "shopcart_page", "order_all_btn", 102, 1, System.currentTimeMillis(), "");
   }
 }
 

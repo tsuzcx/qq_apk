@@ -1,19 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.widget.FixSizeImageView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ajjz
-  extends RecyclerView.ViewHolder
+public class ajjz
 {
-  public FixSizeImageView a;
-  public FixSizeImageView b;
-  
-  public ajjz(ajjx paramajjx, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367826));
-    this.b = ((FixSizeImageView)paramView.findViewById(2131370529));
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -1,21 +1,14 @@
-public class anbo
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+
+class anbo
+  implements MediaPlayer.OnCompletionListener
 {
-  public long a;
-  public String a;
-  public long b;
+  anbo(anbl paramanbl) {}
   
-  public anbo(String paramString, long paramLong1, long paramLong2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-    return localStringBuilder.toString();
+    this.a.a(10);
   }
 }
 

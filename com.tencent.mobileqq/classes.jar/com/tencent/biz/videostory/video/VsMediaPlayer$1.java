@@ -1,23 +1,23 @@
 package com.tencent.biz.videostory.video;
 
-import aaxo;
-import aayg;
+import abbr;
+import abcj;
 import android.media.MediaPlayer;
 import java.util.TimerTask;
 
 public class VsMediaPlayer$1
   extends TimerTask
 {
-  public VsMediaPlayer$1(aaxo paramaaxo) {}
+  public VsMediaPlayer$1(abbr paramabbr) {}
   
   public void run()
   {
-    aaxo.a(this.this$0, aaxo.a(this.this$0) + 1000);
-    if (aaxo.a(this.this$0) != null) {
-      aayg.a().a(aaxo.a(this.this$0).getCurrentPosition());
+    abbr.a(this.this$0, abbr.a(this.this$0) + 1000);
+    if (abbr.a(this.this$0) != null) {
+      abcj.a().a(abbr.a(this.this$0).getCurrentPosition());
     }
-    if ((aaxo.a(this.this$0) != null) && (aaxo.b(this.this$0) != -1) && (aaxo.a(this.this$0) >= aaxo.b(this.this$0))) {
-      aaxo.a(this.this$0);
+    if ((abbr.a(this.this$0) != null) && (abbr.b(this.this$0) != -1) && (abbr.a(this.this$0) >= abbr.b(this.this$0))) {
+      abbr.a(this.this$0);
     }
   }
 }

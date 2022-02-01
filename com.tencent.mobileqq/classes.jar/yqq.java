@@ -1,12 +1,13 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+
 public class yqq
+  implements DialogInterface.OnDismissListener
 {
-  public static void a(int paramInt, String paramString)
-  {
-    yqs localyqs = new yqs();
-    localyqs.a(paramInt, 1);
-    localyqs.a = paramString;
-    wlb.a().a(localyqs, new yqr());
-  }
+  public yqq(StoryListPresenter.4.1 param1) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

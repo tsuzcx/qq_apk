@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.multisave;
 
 import android.text.TextUtils;
-import attv;
-import attw;
-import atwe;
+import aulq;
+import aulr;
+import aunz;
 
 public class QFileMultiSaveReq$1
   implements Runnable
 {
-  public QFileMultiSaveReq$1(attv paramattv, String paramString, attw paramattw) {}
+  public QFileMultiSaveReq$1(aulq paramaulq, String paramString, aulr paramaulr) {}
   
   public void run()
   {
@@ -16,25 +16,25 @@ public class QFileMultiSaveReq$1
     {
       try
       {
-        if (TextUtils.isEmpty(atwe.b(this.jdField_a_of_type_JavaLangString))) {
+        if (TextUtils.isEmpty(aunz.b(this.jdField_a_of_type_JavaLangString))) {
           break label97;
         }
         i = 1;
-        if (this.jdField_a_of_type_Attw != null)
+        if (this.jdField_a_of_type_Aulr != null)
         {
           if (i != 0)
           {
-            this.jdField_a_of_type_Attw.a();
+            this.jdField_a_of_type_Aulr.a();
             return;
           }
-          this.jdField_a_of_type_Attw.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
+          this.jdField_a_of_type_Aulr.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
           return;
         }
       }
       catch (Exception localException)
       {
-        if (this.jdField_a_of_type_Attw != null) {
-          this.jdField_a_of_type_Attw.a(-1, localException.getMessage());
+        if (this.jdField_a_of_type_Aulr != null) {
+          this.jdField_a_of_type_Aulr.a(-1, localException.getMessage());
         }
       }
       return;

@@ -1,32 +1,32 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.superplayer.api.ISuperPlayer;
-import nct;
-import ncu;
+import nej;
+import nek;
 
 public class AVGameMediaPlayerWrapper$8
   implements Runnable
 {
-  public AVGameMediaPlayerWrapper$8(nct paramnct) {}
+  public AVGameMediaPlayerWrapper$8(nej paramnej) {}
   
   public void run()
   {
-    if (nct.a(this.this$0) == null) {}
+    if (nej.a(this.this$0) == null) {}
     do
     {
       return;
-      nct.a(this.this$0).start();
-      nct.b(this.this$0, true);
-    } while (nct.a(this.this$0) == null);
-    if (nct.b(this.this$0))
+      nej.a(this.this$0).start();
+      nej.b(this.this$0, true);
+    } while (nej.a(this.this$0) == null);
+    if (nej.b(this.this$0))
     {
-      nct.a(this.this$0).c(nct.a(this.this$0));
+      nej.a(this.this$0).c(nej.a(this.this$0));
       return;
     }
-    nct.a(this.this$0).x = nct.a(this.this$0).getVideoWidth();
-    nct.a(this.this$0).y = nct.a(this.this$0).getVideoHeight();
-    nct.c(this.this$0, true);
-    nct.a(this.this$0).a(nct.a(this.this$0));
+    nej.a(this.this$0).x = nej.a(this.this$0).getVideoWidth();
+    nej.a(this.this$0).y = nej.a(this.this$0).getVideoHeight();
+    nej.c(this.this$0, true);
+    nej.a(this.this$0).a(nej.a(this.this$0));
   }
 }
 

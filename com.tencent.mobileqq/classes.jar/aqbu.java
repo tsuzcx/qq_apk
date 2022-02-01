@@ -1,17 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-class aqbu
-  implements View.OnClickListener
+public class aqbu
 {
-  aqbu(aqbt paramaqbt, akyh paramakyh) {}
+  private static HashMap<String, aqbv> a = new HashMap();
   
-  public void onClick(View paramView)
+  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_Aqbt.a(this.jdField_a_of_type_Akyh);
-    this.jdField_a_of_type_Aqbt.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramString = (aqbv)a.get(paramString);
+    if (paramString != null) {
+      paramObject2 = paramString.a(paramInt, paramObject1);
+    }
+    return paramObject2;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString != null) {
+      a.remove(paramString);
+    }
+  }
+  
+  public static void a(String paramString, aqbv paramaqbv)
+  {
+    if (paramString != null) {
+      a.put(paramString, paramaqbv);
+    }
   }
 }
 

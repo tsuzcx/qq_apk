@@ -1,60 +1,79 @@
-import com.tencent.common.app.AppInterface;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class wgr
-  implements wgu
+public class wgr
+  extends JobSegment<List<wgh>, List<wgg>>
+  implements wgc
 {
-  protected bdvv a;
+  private ArrayList<wgg> jdField_a_of_type_JavaUtilArrayList;
+  private List<wga> jdField_a_of_type_JavaUtilList;
+  private wgu jdField_a_of_type_Wgu;
   
-  private wgr(wgm paramwgm)
+  public wgr(wgu paramwgu)
   {
-    this.jdField_a_of_type_Bdvv = new wgt(this);
+    this.jdField_a_of_type_Wgu = paramwgu;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  protected bdvu a()
+  private List<wga> a(long paramLong1, long paramLong2)
   {
-    AppInterface localAppInterface = bojv.a();
-    if (localAppInterface != null) {
-      return localAppInterface.getNetEngine(0);
+    int i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt("kmeans_interval_txt", 1);
+    ArrayList localArrayList = new ArrayList();
+    List localList = ((wfv)wth.a(30)).a(paramLong1, paramLong2);
+    if (localList != null) {
+      localArrayList.addAll(localList);
     }
-    return null;
+    localArrayList.add(new wge(i, this.jdField_a_of_type_Wgu));
+    return localArrayList;
   }
   
-  public void a(wgv paramwgv)
+  private void a(List<wgh> paramList)
   {
-    paramwgv.jdField_d_of_type_Int = 0;
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_JavaLangString = paramwgv.jdField_d_of_type_JavaLangString;
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = paramwgv.e;
-    localbdvs.jdField_d_of_type_JavaLangString = paramwgv.f;
-    localbdvs.jdField_d_of_type_Int = paramwgv.g;
-    localbdvs.b = 3;
-    localbdvs.a(paramwgv);
-    localbdvs.jdField_a_of_type_Bdvv = this.jdField_a_of_type_Bdvv;
-    paramwgv.a = localbdvs;
-    localbdvs.jdField_a_of_type_Bdvw = new wgs(this);
-    bdvu localbdvu = a();
-    if (localbdvu != null) {
-      localbdvu.a(localbdvs);
-    }
-    yqp.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramwgv);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b(wgv paramwgv)
-  {
-    bdvs localbdvs = paramwgv.a;
-    if (localbdvs != null)
+    if ((paramList != null) && (paramList.size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      if (a() != null) {
-        a().b(localbdvs);
-      }
-      yqp.b("AsyncFileDownloader", String.format("cancel task with base downloader, task = %s", new Object[] { paramwgv }));
+      wga localwga = (wga)this.jdField_a_of_type_JavaUtilList.remove(0);
+      localwga.a(paramList);
+      localwga.a(this);
+      return;
     }
+    paramList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramList.hasNext()) {
+      wfv.a((wgg)paramList.next(), 10);
+    }
+    notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  protected void a(JobContext paramJobContext, List<wgh> paramList)
+  {
+    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
+    {
+      notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+      return;
+    }
+    wfv.b(paramList);
+    this.jdField_a_of_type_JavaUtilList = a(((wgh)paramList.get(0)).b, ((wgh)paramList.get(paramList.size() - 1)).b);
+    a(paramList);
+  }
+  
+  public void a(List<wgg> paramList, List<wgh> paramList1)
+  {
+    if (paramList != null)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        wgg localwgg = (wgg)localIterator.next();
+        yuk.b("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "onFilterFinish album:" + localwgg.toString());
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    }
+    a(paramList1);
   }
 }
 

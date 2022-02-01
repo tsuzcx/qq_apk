@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Rect;
+import android.hardware.Camera.Size;
+import java.io.File;
 
-class bdbc
-  implements DialogInterface.OnClickListener
+public class bdbc
 {
-  bdbc(bdba parambdba) {}
+  public int a;
+  public amap a;
+  public Rect a;
+  public Camera.Size a;
+  public File a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  private bdbc(bday parambday) {}
 }
 
 

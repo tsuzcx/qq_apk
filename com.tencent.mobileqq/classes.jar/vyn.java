@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vyn
-  implements Animation.AnimationListener
+class vyn
+  implements DialogInterface.OnClickListener
 {
-  public vyn(QCircleRocketView paramQCircleRocketView, View paramView) {}
+  vyn(vyl paramvyl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

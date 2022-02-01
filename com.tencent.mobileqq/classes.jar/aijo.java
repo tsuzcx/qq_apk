@@ -1,78 +1,86 @@
-import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-public class aijo
-  extends aiiq
+class aijo
+  extends aocj
 {
-  public aijo(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  aijo(aijm paramaijm) {}
   
-  private List<aijn> a(String paramString)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecLocalEmoticonHandleListener", 2, "local emoticon search start.");
-    }
-    awmr localawmr = (awmr)this.a.getManager(14);
-    List localList = localawmr.b(paramString, true);
-    if ((localList == null) || (localList.isEmpty()))
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons arrEmoticon is null or empty,keyWord: " + bgjw.a(paramString));
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
       }
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < localList.size())
-    {
-      Object localObject = (Emoticon)localList.get(i);
-      EmoticonPackage localEmoticonPackage = localawmr.a(((Emoticon)localObject).epId);
-      if (localEmoticonPackage == null) {
+      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
+      if ((paramString1 != null) && (paramString1.msgtype == -2058) && ((paramString1.extraflag == 32768) || (paramString1.sendFailCode == 41)))
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons emoticonPackage is null.");
+          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError, sticker msg is failed!, now remove!");
         }
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, false);
       }
-      label225:
-      do
-      {
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ((localawmr.a == null) || (!localawmr.a.contains(((Emoticon)localObject).epId)) || (localEmoticonPackage.status != 2)) {
-            break label225;
-          }
-          localArrayList.add(new aijn((Emoticon)localObject));
-        }
-      } while (!QLog.isColorLevel());
-      localObject = new StringBuilder().append("findLocalMatchEmoticons emoticonPackage not match, status: ").append(localEmoticonPackage.status).append(" tabCache.size: ");
-      if (localawmr.a != null) {}
-      for (int j = localawmr.a.size();; j = -1)
-      {
-        QLog.d("StickerRecLocalEmoticonHandleListener", 2, j);
-        break;
-      }
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons stickerRecEmotionList.size:" + localArrayList.size() + ",keyWord: " + bgjw.a(paramString));
-    }
-    return localArrayList;
+    aijm.a(this.a, paramString1, paramInt1, paramLong2);
+    this.a.f(196608);
   }
   
-  public List<aijn> a(String paramString, SessionInfo paramSessionInfo)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    return a(paramString);
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, aocg paramaocg)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.t = true;
+    this.a.a(262144, paramaocg, paramLong);
+    ((axab)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, axab.jdField_a_of_type_Int);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.f(131072);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.f(65536);
   }
 }
 

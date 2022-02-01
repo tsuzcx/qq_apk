@@ -1,42 +1,24 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
 public class lmg
 {
-  public int a;
-  public long a;
-  final String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public boolean d = false;
-  public boolean e = false;
-  
-  public lmg(AVNotifyCenter paramAVNotifyCenter, String paramString, long paramLong)
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = ("AvChatData_" + paramString + "_" + paramLong);
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString + ", mRelationId[" + this.jdField_a_of_type_Long + "], mRelationType[" + this.jdField_c_of_type_Int + "], mUinType[" + this.jdField_b_of_type_Int + "], mPeerUin[" + this.jdField_b_of_type_JavaLangString + "], mIsChating[" + this.d + "], mIsWaitting[" + this.jdField_c_of_type_Boolean + "]";
+    if ((paramString == null) || (paramString.equals("point"))) {}
+    do
+    {
+      return 0;
+      if (paramString.equals("line")) {
+        return 1;
+      }
+      if (paramString.equals("square")) {
+        return 2;
+      }
+    } while (!paramString.equals("ellipse"));
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmg
  * JD-Core Version:    0.7.0.1
  */

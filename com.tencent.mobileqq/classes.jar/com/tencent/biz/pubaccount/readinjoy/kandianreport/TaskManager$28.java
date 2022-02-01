@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 import mqq.app.AppRuntime;
-import pha;
+import ozs;
 
 class TaskManager$28
   implements JSContext.Callback
@@ -12,7 +12,7 @@ class TaskManager$28
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    return pha.a().getAccount();
+    return ozs.a().getAccount();
   }
 }
 

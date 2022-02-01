@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bgnt;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import org.json.JSONObject;
@@ -13,6 +14,7 @@ public class NetworkJsPlugin
 {
   private static final Set<String> S_EVENT_MAP = new NetworkJsPlugin.1();
   private static final String TAG = "[mini] NetworkJsPlugin";
+  private JsRuntime cacheNetworkStateChangeRuntime;
   private String mLastNetworkType = "";
   private NetworkJsPlugin.NetInfoHandler mNetEventHandle;
   
@@ -27,51 +29,60 @@ public class NetworkJsPlugin
   
   private void callBackStatusChange(JSONObject paramJSONObject)
   {
-    if ((this.jsPluginEngine.getServiceRuntime() != null) && (paramJSONObject != null) && (paramJSONObject.has("networkType")) && (!this.mLastNetworkType.equals(paramJSONObject.optString("networkType"))))
+    JsRuntime localJsRuntime = this.jsPluginEngine.getServiceRuntime();
+    if (this.isGameRuntime) {
+      localJsRuntime = this.cacheNetworkStateChangeRuntime;
+    }
+    if ((localJsRuntime != null) && (paramJSONObject != null) && (paramJSONObject.has("networkType")) && (!this.mLastNetworkType.equals(paramJSONObject.optString("networkType"))))
     {
       this.mLastNetworkType = paramJSONObject.optString("networkType");
-      this.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onNetworkStatusChange", paramJSONObject.toString(), 0);
+      localJsRuntime.evaluateSubcribeJS("onNetworkStatusChange", paramJSONObject.toString(), 0);
     }
   }
   
   private String getCurrentType()
   {
-    if (this.jsPluginEngine.getServiceRuntime() != null)
+    switch (bhnv.a(BaseApplication.getContext().getApplicationContext()))
     {
-      switch (bgnt.a(this.jsPluginEngine.getServiceRuntime().getContextEx()))
-      {
-      default: 
-        return "unknown";
-      case 0: 
-        return "none";
-      case 2: 
-        return "2g";
-      case 3: 
-        return "3g";
-      case 4: 
-        return "4g";
-      }
-      return "wifi";
+    default: 
+      return "unknown";
+    case 0: 
+      return "none";
+    case 2: 
+      return "2g";
+    case 3: 
+      return "3g";
+    case 4: 
+      return "4g";
     }
-    return "unknown";
+    return "wifi";
   }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
     QLog.d("[mini] NetworkJsPlugin", 2, "handleNativeRequest: " + paramString1 + " |jsonParams: " + paramString2 + " |callbackId:" + paramInt);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("networkType", getCurrentType());
-      this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, localJSONObject, paramInt);
-      return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
+    JSONObject localJSONObject;
+    if ("getNetworkType".equals(paramString1)) {
+      localJSONObject = new JSONObject();
     }
-    catch (Throwable paramString2)
+    for (;;)
     {
-      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-      paramString2.printStackTrace();
+      try
+      {
+        localJSONObject.put("networkType", getCurrentType());
+        this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, localJSONObject, paramInt);
+        return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
+      }
+      catch (Throwable paramString2)
+      {
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+        paramString2.printStackTrace();
+        return "";
+      }
+      if (("onNetworkStatusChange".equals(paramString1)) && (this.cacheNetworkStateChangeRuntime == null)) {
+        this.cacheNetworkStateChangeRuntime = paramJsRuntime;
+      }
     }
-    return "";
   }
   
   public void onDestroy()
@@ -83,6 +94,7 @@ public class NetworkJsPlugin
       this.mNetEventHandle = null;
     }
     this.mLastNetworkType = "";
+    this.cacheNetworkStateChangeRuntime = null;
   }
   
   public Set<String> supportedEvents()

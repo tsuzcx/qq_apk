@@ -1,32 +1,23 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.support.annotation.Nullable;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tribe.async.async.SimpleJob;
 
 class yfd
-  extends JobSegment<Integer, yig>
+  extends SimpleJob
 {
-  private yif a;
-  
-  public yfd(@NonNull yif paramyif)
+  yfd(yfc paramyfc, String paramString, yff paramyff, boolean paramBoolean)
   {
-    this.a = paramyif;
+    super(paramString);
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((yig)localObject).a.size() > 0) || (((yig)localObject).b))
-    {
-      yqp.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
-    }
-    localObject = new wzd();
-    ((wzd)localObject).a = this.a.a();
-    ((wzd)localObject).b = QQStoryContext.a().b();
-    wlb.a().a((wlf)localObject, new yfe(this, paramJobContext, paramInteger));
+    this.jdField_a_of_type_Yfc.a();
+    this.jdField_a_of_type_Yfc.b();
+    ((wse)wth.a(17)).a(this.jdField_a_of_type_Yff.a, yfc.a(this.jdField_a_of_type_Yfc).a, yfc.a(this.jdField_a_of_type_Yfc).a(), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Yfc.a("Q.qqstory.detail:CommentListPageLoader");
+    return null;
   }
 }
 

@@ -7,6 +7,7 @@ import com.tencent.mobileqq.mini.utils.OpenDataDomainUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
 import com.tencent.mobileqq.minigame.manager.FileDownloadManager;
+import com.tencent.mobileqq.triton.script.ScriptContextType;
 import org.json.JSONObject;
 
 class FileJsPlugin$20
@@ -24,7 +25,7 @@ class FileJsPlugin$20
       this.val$jsRuntime.evaluateCallbackJs(this.val$callbackId, str1);
       return null;
     }
-    if ((this.this$0.isGameRuntime) && (((GameJsRuntime)this.val$jsRuntime).getTargetContextType() == 2) && (!OpenDataDomainUtil.getInstance().isDomainValid(str1)))
+    if ((this.this$0.isGameRuntime) && (((GameJsRuntime)this.val$jsRuntime).getTargetContextType() == ScriptContextType.OPEN_DATA) && (!OpenDataDomainUtil.getInstance().isDomainValid(str1)))
     {
       str1 = ApiUtil.wrapCallbackFail(this.val$event, null, "invalid url").toString();
       this.val$jsRuntime.evaluateCallbackJs(this.val$callbackId, str1);

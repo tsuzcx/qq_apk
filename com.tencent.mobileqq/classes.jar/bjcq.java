@@ -1,50 +1,42 @@
-public class bjcq
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+
+class bjcq
+  extends Animation
 {
-  private static bjcr a = new bjcr();
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public static void a(bjcr parambjcr)
+  public bjcq(View paramView)
   {
-    if (parambjcr != null)
-    {
-      a = parambjcr;
-      return;
-    }
-    a = new bjcr();
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public static void a(String paramString1, String paramString2)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    a.a(paramString1, paramString2);
+    super.applyTransformation(paramFloat, paramTransformation);
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F * paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    a.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a.b(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    a.c(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a.c(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    a.d(paramString1, paramString2);
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

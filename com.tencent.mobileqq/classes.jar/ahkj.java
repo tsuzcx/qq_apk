@@ -1,32 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.MessageForText;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahkj
-  extends ClickableSpan
+  extends ahkx
 {
-  ahkj(ahkf paramahkf, MessageForText paramMessageForText, ETTextView paramETTextView, CharSequence paramCharSequence) {}
-  
-  public void onClick(View paramView)
+  ahkj(ahgk paramahgk)
   {
-    if (ahcz.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText))
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.cancelLongPress();
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextMsg(this.jdField_a_of_type_JavaLangCharSequence);
-      ahcz.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
-      ahkf.a(this.jdField_a_of_type_Ahkf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop);
-    }
+    super(paramahgk, null);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_Ahkf.a.getResources().getColor(2131165765));
-    paramTextPaint.clearShadowLayer();
+    return new ahdf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

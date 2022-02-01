@@ -1,8 +1,23 @@
-import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public abstract interface bmpw
+class bmpw
+  extends Handler
 {
-  public abstract void a(Drawable paramDrawable);
+  bmpw(bmpu parambmpu, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100001)
+    {
+      bmpu.b(this.a);
+      bmpu.a(this.a).sendEmptyMessageDelayed(100001, 1000L);
+    }
+  }
 }
 
 

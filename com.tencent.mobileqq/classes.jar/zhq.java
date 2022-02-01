@@ -1,89 +1,54 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.TagEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import java.io.File;
 
 public class zhq
 {
-  public final int a;
-  public final long a;
-  public final String a;
-  public volatile long b;
-  public final String b;
-  
-  public zhq(long paramLong, String paramString1, String paramString2, int paramInt)
+  public static final String a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public zhq(TagEntry paramTagEntry)
-  {
-    this.jdField_a_of_type_Long = paramTagEntry.id;
-    this.jdField_a_of_type_JavaLangString = paramTagEntry.name;
-    this.jdField_b_of_type_JavaLangString = paramTagEntry.desc;
-    this.jdField_a_of_type_Int = paramTagEntry.type;
-  }
-  
-  public zhq(qqstory_struct.TagInfoBase paramTagInfoBase)
-  {
-    this.jdField_a_of_type_Long = paramTagInfoBase.tag_id.get();
-    this.jdField_a_of_type_JavaLangString = paramTagInfoBase.tag_name.get();
-    this.jdField_b_of_type_JavaLangString = paramTagInfoBase.tag_desc.get();
-    this.jdField_a_of_type_Int = paramTagInfoBase.tag_type.get();
-  }
-  
-  public static boolean a(zhq paramzhq)
-  {
-    return (paramzhq != null) && (Math.abs(System.currentTimeMillis() - paramzhq.jdField_b_of_type_Long) < 60000L);
-  }
-  
-  public TagEntry a()
-  {
-    return new TagEntry();
-  }
-  
-  public qqstory_struct.TagInfoBase a()
-  {
-    qqstory_struct.TagInfoBase localTagInfoBase = new qqstory_struct.TagInfoBase();
-    localTagInfoBase.tag_id.set(this.jdField_a_of_type_Long);
-    localTagInfoBase.tag_name.set(this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localTagInfoBase.tag_desc.set(this.jdField_b_of_type_JavaLangString);
+    if (paramInt >= 86400000) {
+      return "unknow";
     }
-    localTagInfoBase.tag_type.set(this.jdField_a_of_type_Int);
-    return localTagInfoBase;
+    int i = (int)Math.floor(paramInt / 3600000);
+    int j = (int)Math.floor(paramInt % 3600000) / 60000;
+    if (paramBoolean) {}
+    for (paramInt = Math.round(paramInt % 60000 / 1000.0F); i > 0; paramInt = (int)Math.floor(paramInt % 60000 / 1000)) {
+      return String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt) });
+    }
+    return String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
   }
   
-  public boolean equals(Object paramObject)
+  public static final String a(String paramString)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (zhq)paramObject;
-      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new NullPointerException("MusicComposeDialog.createMusicFilePath() musicUrl is null");
+    }
+    File localFile = new File(win.f);
+    if ((!localFile.exists()) || (!localFile.isDirectory())) {
+      localFile.mkdirs();
+    }
+    paramString = win.f + blev.a(paramString) + "." + zom.c(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "createMusicFilePath destPath = " + paramString);
+    }
+    return paramString;
   }
   
-  public int hashCode()
+  public static void a(BaseActivity paramBaseActivity, int paramInt)
   {
-    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + this.jdField_a_of_type_Int;
-  }
-  
-  public String toString()
-  {
-    return "TagInfoBase{id=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", desc='" + this.jdField_b_of_type_JavaLangString + '\'' + ", type=" + this.jdField_a_of_type_Int + '}';
+    paramInt = MusicProviderView.a(paramInt);
+    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s", new Object[] { bhlo.a(), "", Integer.valueOf(paramInt) }));
+    localIntent.putExtra("finish_animation_up_down", true);
+    paramBaseActivity.startActivityForResult(localIntent, 1000);
+    paramBaseActivity.overridePendingTransition(2130771979, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicUtils", 1, new Object[] { "music busType:", Integer.valueOf(paramInt) });
+    }
   }
 }
 

@@ -1,6 +1,33 @@
-public abstract interface nou
+import android.content.Intent;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class nou
+  extends MSFServlet
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3);
+  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
+  
+  public String[] getPreferSSOCommands()
+  {
+    return this.a;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    nov localnov = SensorAPIJavaScript.getMsfToWebViewConnector();
+    if (localnov != null) {
+      localnov.a(paramIntent, paramFromServiceMsg);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 

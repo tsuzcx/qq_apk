@@ -1,8 +1,6 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-
 public abstract interface avxb
 {
-  public abstract void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean);
+  public abstract void a();
 }
 
 

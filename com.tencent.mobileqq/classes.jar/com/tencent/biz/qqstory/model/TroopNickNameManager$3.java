@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.model;
 
-import wpu;
+import wtp;
 
 public class TroopNickNameManager$3
   implements Runnable
 {
-  public TroopNickNameManager$3(wpu paramwpu) {}
+  public TroopNickNameManager$3(wtp paramwtp) {}
   
   public void run()
   {

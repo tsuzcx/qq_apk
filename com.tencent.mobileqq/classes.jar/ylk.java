@@ -1,109 +1,32 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.Arrays;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ylk
-  implements wld<wyv, xas>, ymk
+  extends QQUIEventReceiver<StoryMessageListActivity, wtr>
 {
-  protected yln a;
-  protected yml a;
-  protected ymm a;
-  
-  public Object a()
+  public ylk(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    return this.jdField_a_of_type_Yln;
+    super(paramStoryMessageListActivity);
   }
   
-  public String a()
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull wtr paramwtr)
   {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    yqp.c("GetMyStoryFeatureDataStep", "GetMyStoryFeatureDataStep");
-    if ((this.jdField_a_of_type_Yln == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Yln.jdField_a_of_type_JavaLangString)))
+    if (paramwtr.a.isSuccess())
     {
-      if (this.jdField_a_of_type_Ymm != null)
-      {
-        this.jdField_a_of_type_Ymm.a(a());
-        return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
       }
-      yqp.d("GetMyStoryFeatureDataStep", "finish callBack is null");
-      return;
+      paramStoryMessageListActivity.g();
     }
-    wyv localwyv = new wyv();
-    localwyv.a = Arrays.asList(new String[] { this.jdField_a_of_type_Yln.jdField_a_of_type_JavaLangString });
-    wlb.a().a(localwyv, this);
   }
   
-  public void a(Object paramObject)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Yln = ((yln)paramObject);
+    return wtr.class;
   }
-  
-  public void a(@NonNull wyv paramwyv, @Nullable xas paramxas, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramxas != null) && (paramErrorMessage.isSuccess()) && (paramxas.a != null) && (paramxas.a.size() > 0))
-    {
-      this.jdField_a_of_type_Yln.jdField_a_of_type_Wqp = ((wqp)paramxas.a.get(0));
-      paramwyv = (wpf)wpm.a(10);
-      paramwyv.b("qqstory_key_story_latest_feed_feature_feed_id", this.jdField_a_of_type_Yln.jdField_a_of_type_Wqp.jdField_a_of_type_JavaLangString);
-      paramwyv.b("qqstory_key_story_latest_feed_feature_total_like_count", Integer.valueOf(this.jdField_a_of_type_Yln.jdField_a_of_type_Wqp.jdField_a_of_type_Int));
-      paramwyv.b("qqstory_key_story_latest_feed_feature_total_comment_count", Integer.valueOf(this.jdField_a_of_type_Yln.jdField_a_of_type_Wqp.b));
-      paramwyv.b("qqstory_key_story_latest_feed_feature_total_view_count", Integer.valueOf(this.jdField_a_of_type_Yln.jdField_a_of_type_Wqp.c));
-      if (this.jdField_a_of_type_Ymm != null)
-      {
-        this.jdField_a_of_type_Ymm.a(a());
-        return;
-      }
-      yqp.d("GetMyStoryFeatureDataStep", "finish callBack is null");
-      return;
-    }
-    int i = paramErrorMessage.errorCode;
-    if (paramxas == null) {
-      paramwyv = "rsp is null";
-    }
-    for (;;)
-    {
-      yqp.e("GetMyStoryFeatureDataStep", "请求Features失败 errorCode: %d %s", new Object[] { Integer.valueOf(i), paramwyv });
-      this.jdField_a_of_type_Yln.jdField_a_of_type_Wqp = new wqp();
-      this.jdField_a_of_type_Yln.jdField_a_of_type_Wqp.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Yln.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Ymm == null) {
-        break;
-      }
-      this.jdField_a_of_type_Ymm.a(a());
-      return;
-      if (paramxas.a == null) {
-        paramwyv = "features is null";
-      } else {
-        paramwyv = "invalid rsp";
-      }
-    }
-    yqp.d("GetMyStoryFeatureDataStep", "finish callBack is null");
-  }
-  
-  public void a(yml paramyml)
-  {
-    this.jdField_a_of_type_Yml = paramyml;
-  }
-  
-  public void a(ymm paramymm)
-  {
-    this.jdField_a_of_type_Ymm = paramymm;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

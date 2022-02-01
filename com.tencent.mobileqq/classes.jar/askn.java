@@ -1,30 +1,8 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class askn
-  implements DialogInterface.OnClickListener
+public abstract interface askn
 {
-  askn(askk paramaskk, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {}
-    try
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", askk.a(this.jdField_a_of_type_Askk));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-      if (QLog.isColorLevel()) {
-        QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog click confirm " + askk.a(this.jdField_a_of_type_Askk));
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
-  }
+  public abstract void a(View paramView);
 }
 
 

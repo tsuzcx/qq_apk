@@ -1,78 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-@Deprecated
-public class amzr
+class amzr
+  implements EIPCResultCallback
 {
-  private static amzr jdField_a_of_type_Amzr;
-  public int a;
-  public String a;
-  public AtomicInteger a;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  amzr(amzq paramamzq) {}
   
-  public amzr()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static amzr a()
-  {
-    try
+    if (paramEIPCResult.code == 0)
     {
-      if (jdField_a_of_type_Amzr == null) {
-        jdField_a_of_type_Amzr = new amzr();
-      }
-      amzr localamzr = jdField_a_of_type_Amzr;
-      return localamzr;
-    }
-    finally {}
-  }
-  
-  public amzr a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionManager", 2, "[setAppInterface] app:" + paramQQAppInterface);
-    }
-    return this;
-  }
-  
-  public ReentrantLock a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[getLock].");
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
+      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
+      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + amzq.a(this.a));
+      if (!amzq.a(this.a).equals(paramEIPCResult))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionManager", 2, "create lock.");
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-      }
-      ReentrantLock localReentrantLock = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-      return localReentrantLock;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[onDestroy]");
+        amzq.a(this.a).removeMessages(1);
+        amzq.a(this.a).sendEmptyMessage(1);
       }
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
+    amzq.a(this.a).removeMessages(1);
+    amzq.a(this.a).sendEmptyMessage(1);
   }
 }
 

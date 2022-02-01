@@ -1,19 +1,24 @@
-import UserGrowth.stSimpleMetaComment;
-import UserGrowth.stSimpleMetaReply;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ufu
-  implements aaeb
+  implements View.OnClickListener
 {
-  ufu(ufp paramufp, stSimpleMetaComment paramstSimpleMetaComment, boolean paramBoolean, stSimpleMetaReply paramstSimpleMetaReply) {}
+  ufu(ufr paramufr) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ufp.a(this.jdField_a_of_type_Ufp, this.jdField_a_of_type_UserGrowthStSimpleMetaComment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_UserGrowthStSimpleMetaReply);
+    uqf.a("comment", "onClick hide comment");
+    ufr.a(this.a);
+    uhf.a().a(new WSCommentShowEvent(false));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ufu
  * JD-Core Version:    0.7.0.1
  */

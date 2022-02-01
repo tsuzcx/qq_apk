@@ -1,60 +1,61 @@
-import android.opengl.GLES20;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class bkgd
+  extends QQUIEventReceiver<bkgb, axeg>
 {
-  public static int a(int paramInt, String paramString)
+  public bkgd(@NonNull bkgb parambkgb)
   {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt != 0)
-    {
-      GLES20.glShaderSource(paramInt, paramString);
-      GLES20.glCompileShader(paramInt);
-      paramString = new int[1];
-      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
-      if (paramString[0] == 0)
-      {
-        GLES20.glDeleteShader(paramInt);
-        return 0;
-      }
-    }
-    return paramInt;
+    super(parambkgb);
   }
   
-  public static int a(String paramString1, String paramString2)
+  public void a(@NonNull bkgb parambkgb, @NonNull axeg paramaxeg)
   {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
+    if (!TextUtils.equals(paramaxeg.jdField_a_of_type_JavaLangString, "QGameApp")) {}
+    String str;
     do
     {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    if (k != 0)
-    {
-      GLES20.glAttachShader(k, i);
-      a("glAttachShader");
-      GLES20.glAttachShader(k, j);
-      a("glAttachShader");
-      GLES20.glLinkProgram(k);
-      paramString1 = new int[1];
-      GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-      if (paramString1[0] != 1)
-      {
-        GLES20.glDeleteProgram(k);
-        return 0;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QGameApp", 2, "receive event:" + paramaxeg.toString());
       }
+      str = (String)paramaxeg.jdField_a_of_type_ArrayOfJavaLangObject[0];
+      switch (paramaxeg.jdField_a_of_type_Int)
+      {
+      default: 
+        return;
+      }
+    } while (!TextUtils.equals(str, "ak:3214"));
+    if (paramaxeg.jdField_a_of_type_Boolean)
+    {
+      str = (String)paramaxeg.jdField_a_of_type_ArrayOfJavaLangObject[3];
+      if (TextUtils.isEmpty(str))
+      {
+        bkgb.a(parambkgb, 1002);
+        return;
+      }
+      switch (((Integer)paramaxeg.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
+      {
+      default: 
+        return;
+      case 1: 
+        bkgb.a(parambkgb, true, str);
+        return;
+      case 2: 
+        bkgb.jdField_a_of_type_Boolean = false;
+        return;
+      }
+      bkgb.a(parambkgb, false, str);
+      return;
     }
-    return k;
+    bkgb.a(parambkgb, 1002);
   }
   
-  public static void a(String paramString)
+  public Class acceptEventClass()
   {
-    int i = GLES20.glGetError();
-    if (i != 0) {
-      throw new RuntimeException(paramString + ": glError " + i);
-    }
+    return axeg.class;
   }
 }
 

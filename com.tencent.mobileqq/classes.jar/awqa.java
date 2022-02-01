@@ -1,92 +1,172 @@
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.net.ReportLocationHandler.1;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.concurrent.atomic.AtomicBoolean;
+import tencent.im.oidb.location.RoomOperate.ReqReportLocation;
+import tencent.im.oidb.location.RoomOperate.RspReportLocation;
+import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
+import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
-public abstract class awqa
-  extends awpz
+public class awqa
+  extends awpm<awpq>
 {
-  protected MsgBackupResEntity a;
-  protected Map<String, String> a;
+  private static int jdField_a_of_type_Int = 2000;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private awqb jdField_a_of_type_Awqb;
+  private Long jdField_a_of_type_JavaLangLong;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+  private int b;
   
-  public awqa(MsgBackupResEntity paramMsgBackupResEntity)
+  public awqa(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilMap = a(paramMsgBackupResEntity.extraDataStr);
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity = paramMsgBackupResEntity;
+    super(paramQQAppInterface);
   }
   
-  protected static int a()
-  {
-    return anhk.ba.length();
-  }
+  private void b() {}
   
-  public static HashMap<String, String> a(String paramString)
+  private void c()
   {
-    localHashMap = new HashMap();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = localIterator.next().toString();
-        localHashMap.put(str, paramString.get(str).toString());
-      }
-      return localHashMap;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportLocationHandler", 2, new Object[] { "stopReport: invoked. ", " loopReportStopped: ", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean });
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
   
-  public abstract awnz a();
+  int a()
+  {
+    return this.b;
+  }
   
-  public abstract String a();
+  protected awpq a()
+  {
+    return awpq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangLong + "";
+  }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    a("import resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
-    localObject = b();
-    String str = a();
-    try
-    {
-      a(str, (String)localObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportLocationHandler", 2, "destroy: invoked. ");
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    c();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  protected void a(String paramString1, String paramString2)
+  public void a(int paramInt, long paramLong, awpi paramawpi)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      a("importFile null error ");
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocation: invoked. ", "uinType = [" + paramInt + "], sessionUin = [" + paramLong + "], locationItem = [" + paramawpi + "]" });
     }
+    RoomOperate.ReqReportLocation localReqReportLocation = new RoomOperate.ReqReportLocation();
+    qq_lbs_share.RoomKey localRoomKey = awua.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, paramLong);
+    localReqReportLocation.room_key.set(localRoomKey);
+    localReqReportLocation.room_key.setHasFlag(true);
+    localReqReportLocation.direction.set(paramawpi.a());
+    paramawpi = paramawpi.a();
+    if (paramawpi == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocation: invoked. ", " latLng: ", paramawpi });
+      }
+      return;
+    }
+    localReqReportLocation.lat.set(paramawpi.latitude);
+    localReqReportLocation.lon.set(paramawpi.longitude);
+    paramawpi = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.report_location");
+    paramawpi.putWupBuffer(localReqReportLocation.toByteArray());
+    a().sendPbReq(paramawpi);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
     int i;
-    do
+    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject))
     {
-      return;
-      i = bgmg.a(paramString1, paramString2);
-    } while (!QLog.isColorLevel());
-    File localFile = new File(paramString2);
-    paramString2 = new StringBuilder().append("restore,quickMove: ").append(paramString1).append(" to ").append(paramString2).append(" status:").append(i).append(" size:");
-    if ((localFile != null) && (localFile.exists())) {}
-    for (paramString1 = Long.valueOf(localFile.length());; paramString1 = "-1")
+      try
+      {
+        paramToServiceMsg = (RoomOperate.RspReportLocation)new RoomOperate.RspReportLocation().mergeFrom((byte[])paramObject);
+        if (awua.a((qq_lbs_share.ResultInfo)paramToServiceMsg.msg_result.get()))
+        {
+          i = paramToServiceMsg.req_interval.get();
+          if (i != 0) {
+            jdField_a_of_type_Int = i * 1000;
+          }
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " intervalMillis: ", Integer.valueOf(jdField_a_of_type_Int) });
+          return;
+        }
+        b();
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("ReportLocationHandler", 1, "requestReportLocationResp: failed. ", paramToServiceMsg);
+        return;
+      }
+    }
+    else
     {
-      a(paramString1);
-      return;
+      if (paramFromServiceMsg != null)
+      {
+        i = paramFromServiceMsg.getResultCode();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
+        }
+      }
+      b();
     }
   }
   
-  public abstract String b();
+  public void a(String paramString, awqb paramawqb)
+  {
+    this.jdField_a_of_type_Awqb = paramawqb;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportLocationHandler", 2, new Object[] { "startReportInLoop: invoked. still in loop, no need re-request ", " sessionUin: ", paramString });
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.jdField_a_of_type_JavaLangRunnable = new ReportLocationHandler.1(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public boolean a()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean a(awpk paramawpk)
+  {
+    if (!a()) {
+      return false;
+    }
+    return new awpk(this.b, "" + this.jdField_a_of_type_JavaLangLong).equals(paramawpk);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return (!TextUtils.isEmpty(a())) && (a().equals(paramString)) && (a() == paramInt);
+  }
 }
 
 

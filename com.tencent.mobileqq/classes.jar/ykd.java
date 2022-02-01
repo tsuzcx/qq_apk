@@ -1,58 +1,25 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ykd
-  implements Comparator<StoryVideoItem>
+  extends wzi
 {
-  private boolean a;
+  public int a;
+  public String a;
+  public List<ShareGroupCollectionItem> a;
   
-  public ykd(boolean paramBoolean)
+  public ykd(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.a = paramBoolean;
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
+  public String toString()
   {
-    int j = 1;
-    int i = -1;
-    if (paramStoryVideoItem1.isUploadFail() == paramStoryVideoItem2.isUploadFail()) {
-      if (paramStoryVideoItem1.mCreateTime == paramStoryVideoItem2.mCreateTime) {
-        i = 0;
-      }
-    }
-    do
-    {
-      do
-      {
-        return i;
-        if (paramStoryVideoItem1.mCreateTime <= paramStoryVideoItem2.mCreateTime) {
-          break;
-        }
-        i = j;
-      } while (this.a);
-      return -1;
-      if (this.a) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-      if (!paramStoryVideoItem1.isUploadFail()) {
-        break;
-      }
-      i = j;
-    } while (this.a);
-    return -1;
-    if (paramStoryVideoItem2.isUploadFail())
-    {
-      if (this.a) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return 0;
+    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

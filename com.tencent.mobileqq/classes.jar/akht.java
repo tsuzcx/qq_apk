@@ -1,38 +1,21 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public class akht
-  extends PhotoListBaseData
+class akht
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a = -1L;
-  public SessionInfo a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public zgp a;
-  public boolean a;
-  public String b;
-  public HashMap<String, byte[]> b;
-  public boolean b;
-  public String c;
-  public HashMap<LocalMediaInfo, LocalMediaInfo> c = new HashMap();
-  public boolean c;
-  public String d;
-  public boolean d = true;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
+  akht(akha paramakha) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akht
  * JD-Core Version:    0.7.0.1
  */

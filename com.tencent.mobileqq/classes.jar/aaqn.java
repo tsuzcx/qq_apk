@@ -1,34 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaqn
-  implements DialogInterface.OnClickListener
+class aaqn
+  implements aanq
 {
-  public aaqn(MoveFileActivity paramMoveFileActivity) {}
+  aaqn(aaqm paramaaqm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    paramDialogInterface = (abdk)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > bfsj.a)
+    if (paramBoolean1)
     {
-      paramDialogInterface.a(this.a.getString(2131696650), -65536);
-      bcst.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
-    }
-    do
-    {
+      abbe.b(SubScribeDraftItemView.b(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "delete_draft", 0, 0, new String[0]);
+      paramString = new SubDraftChangeEvent();
+      paramString.setDraftID(String.valueOf(this.a.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
+      aaak.a().a(paramString);
+      QLog.d(SubScribeDraftItemView.a(), 4, "delete draft success");
       return;
-      if (bfsj.a(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface.a(this.a.getString(2131696651), -65536);
-        bcst.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
-        return;
-      }
-      paramDialogInterface.dismiss();
-    } while (bfsj.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
-    aaqt.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131696579);
+    }
+    QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), "delete failed", 1).a();
   }
 }
 

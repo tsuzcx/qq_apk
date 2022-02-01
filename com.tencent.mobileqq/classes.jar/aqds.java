@@ -1,28 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class aqds
-  implements View.OnClickListener
+public class aqds
+  implements aqfn
 {
-  aqdq jdField_a_of_type_Aqdq;
-  aqdu jdField_a_of_type_Aqdu;
-  
-  aqds(aqdq paramaqdq, aqdu paramaqdu)
+  public boolean needProcess(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Aqdq = paramaqdq;
-    this.jdField_a_of_type_Aqdu = paramaqdu;
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
+    }
+    return true;
   }
   
-  public void onClick(View paramView)
+  public void process(JSONObject paramJSONObject, aqfo paramaqfo, Object paramObject)
   {
-    aqcb.a(paramView.getContext(), (ColorNote)aqdq.a(this.jdField_a_of_type_Aqdq).get(this.jdField_a_of_type_Aqdu.getAdapterPosition()));
-    if (aqdq.a(this.jdField_a_of_type_Aqdq) != null) {
-      aqdq.a(this.jdField_a_of_type_Aqdq).b();
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramaqfo, paramObject), 20000L);
   }
 }
 

@@ -1,10 +1,43 @@
-public abstract interface aowt
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aowt
+  extends aoxh
 {
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  {
+    paramQQAppInterface = new aows(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "groupvideo";
+    if (paramString.contains("openroom")) {
+      paramQQAppInterface.c = "openroom";
+    }
+    for (;;)
+    {
+      paramContext = paramString.split("\\?");
+      if (paramContext.length == 2) {
+        break;
+      }
+      return paramQQAppInterface;
+      if (paramString.contains("preload")) {
+        paramQQAppInterface.c = "preload";
+      }
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
+  }
 }
 
 

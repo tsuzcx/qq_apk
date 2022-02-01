@@ -1,18 +1,12 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class yxu
-  implements yxv
+class yxu
+  implements DialogInterface.OnClickListener
 {
-  public void a(List<yxs> paramList, DoodleView paramDoodleView)
-  {
-    ywy localywy = new ywy(paramDoodleView);
-    yxi localyxi = new yxi(paramDoodleView);
-    paramDoodleView = new yxm(paramDoodleView);
-    paramList.add(localywy);
-    paramList.add(localyxi);
-    paramList.add(paramDoodleView);
-  }
+  yxu(yxt paramyxt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

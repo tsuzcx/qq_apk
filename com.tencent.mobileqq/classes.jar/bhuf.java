@@ -1,99 +1,98 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AntiphingToast.3;
-import java.util.Timer;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class bhuf
 {
-  private int jdField_a_of_type_Int;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  public Handler a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString = "AntiPhing";
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public bhuf()
+  public static byte[] a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bhug(this, Looper.getMainLooper());
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
-  {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, paramFloat1, paramFloat2);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setDuration(700L);
-    localTranslateAnimation.setStartOffset(20L);
-    if (paramBoolean == true) {
-      localTranslateAnimation.setAnimationListener(new bhuh(this));
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localTranslateAnimation);
-  }
-  
-  public void a(int paramInt)
-  {
-    a(this.jdField_a_of_type_AndroidContentResResources.getString(paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2, FrameLayout paramFrameLayout)
-  {
-    a(paramFrameLayout);
-    a(paramInt1);
-    b(paramInt2);
-  }
-  
-  public void a(FrameLayout paramFrameLayout)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_AndroidContentResResources = paramFrameLayout.getContext().getResources();
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViewsInLayout();
-    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length + 4);
+    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
+    try
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561909, null);
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      localDataOutputStream.writeInt(paramArrayOfByte.length + 4);
+      localDataOutputStream.write(paramArrayOfByte);
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      label76:
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte = paramArrayOfByte;
+      paramArrayOfByte.printStackTrace();
+      try
       {
-        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362698);
-        if ((localTextView != null) && (paramString != null)) {
-          localTextView.setText(paramString);
-        }
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        return null;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        return null;
       }
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setFocusable(false);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
-    a(-80.0F, 0.0F, false);
-    new Timer().schedule(new AntiphingToast.3(this), this.jdField_a_of_type_Int + 700);
-    return true;
+    finally
+    {
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException1)
+      {
+        break label76;
+      }
+    }
   }
   
-  public void b(int paramInt)
+  public static byte[] b(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
+    DataInputStream localDataInputStream = new DataInputStream(localByteArrayInputStream);
+    try
+    {
+      paramArrayOfByte = new byte[localDataInputStream.readInt() - 4];
+      label72:
+      return paramArrayOfByte;
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        return paramArrayOfByte;
+      }
+      catch (Exception localException5) {}
+      localException1 = localException1;
+      paramArrayOfByte = null;
+      localException1.printStackTrace();
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        return paramArrayOfByte;
+      }
+      catch (Exception localException2)
+      {
+        return paramArrayOfByte;
+      }
+    }
+    finally
+    {
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException3)
+      {
+        break label72;
+      }
+    }
   }
 }
 

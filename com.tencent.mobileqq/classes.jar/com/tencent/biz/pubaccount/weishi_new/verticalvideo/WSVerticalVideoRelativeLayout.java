@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import urd;
+import use;
 
 public class WSVerticalVideoRelativeLayout
   extends RelativeLayout
 {
-  private urd a;
+  private use a;
   
   public WSVerticalVideoRelativeLayout(Context paramContext)
   {
@@ -29,9 +29,9 @@ public class WSVerticalVideoRelativeLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setDispatchTouchEventListener(urd paramurd)
+  public void setDispatchTouchEventListener(use paramuse)
   {
-    this.a = paramurd;
+    this.a = paramuse;
   }
 }
 

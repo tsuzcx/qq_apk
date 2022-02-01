@@ -2,20 +2,20 @@ package dov.com.qq.im.aeeditor.module.edit;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import bnzb;
-import boer;
+import bpam;
+import bpgm;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEEditorImageEditFragment$20$2
   implements Runnable
 {
-  public AEEditorImageEditFragment$20$2(boer paramboer) {}
+  public AEEditorImageEditFragment$20$2(bpgm parambpgm) {}
   
   public void run()
   {
     if (this.a.a.getActivity() == null)
     {
-      bnzb.d(AEEditorImageEditFragment.e(), "[onExportComplete], activity == null");
+      bpam.d(AEEditorImageEditFragment.e(), "[onExportComplete], activity == null");
       return;
     }
     this.a.a.b();

@@ -1,17 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
-final class upo
-  implements ShareActionSheet.OnItemClickListener
+public class upo
+  implements DialogInterface.OnClickListener
 {
-  upo(Context paramContext, uoc paramuoc) {}
+  public upo(OuterInterceptManager.1 param1) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    uph.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Uoc);
-    paramShareActionSheet.dismiss();
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
   }
 }
 

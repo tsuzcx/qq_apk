@@ -1,33 +1,10 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gamecenter.activities.GameCenterActivity;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class ausn
-  implements View.OnClickListener
+public abstract interface ausn
 {
-  public ausn(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    Object localObject = "";
-    if (QQGamePubAccountFragment.a(this.a) != null) {
-      localObject = this.a.a(QQGamePubAccountFragment.a(this.a).getCurrentItem());
-    }
-    aceh.a(ampj.a(), "769", "205037", (String)localObject, "76901", "1", "160", new String[] { this.a.a(), "", "20" });
-    localObject = new Intent(BaseApplication.getContext(), GameCenterActivity.class);
-    ((Intent)localObject).putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
-    ((Intent)localObject).addFlags(268435456);
-    ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-    ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_zf_games");
-    paramView.getContext().startActivity((Intent)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(Object paramObject, int paramInt);
 }
 
 

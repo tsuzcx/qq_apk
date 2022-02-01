@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader;
 
-import atkg;
+import auca;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
 
 public class ExtfBaseFileUploader$2
   implements Runnable
 {
-  public ExtfBaseFileUploader$2(atkg paramatkg, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp) {}
+  public ExtfBaseFileUploader$2(auca paramauca, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp) {}
   
   public void run()
   {

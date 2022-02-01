@@ -1,28 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
 class aibx
-  implements anof
+  implements DialogInterface.OnClickListener
 {
-  aibx(aibv paramaibv) {}
+  aibx(aibr paramaibr) {}
   
-  public boolean a(anok paramanok)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      axei.a(this.a.jdField_a_of_type_JavaLangString, "onShowHotchatNote", new Object[] { paramanok });
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
     }
-    if (paramanok == null)
-    {
-      if ((this.a.jdField_a_of_type_Anoe.b) && (this.a.jdField_a_of_type_Bfhl != null)) {
-        this.a.jdField_a_of_type_Bfhl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
-      }
-      return false;
-    }
-    if (this.a.jdField_a_of_type_Bfhl == null) {
-      this.a.jdField_a_of_type_Bfhl = new bfhl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, aibv.a(this.a), aibv.a(this.a), this.a.jdField_a_of_type_Beqr, this.a.U, null);
-    }
-    this.a.jdField_a_of_type_Bfhl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramanok.jdField_a_of_type_JavaLangString, paramanok.b);
-    this.a.jdField_a_of_type_Anoe.b = true;
-    return true;
   }
 }
 

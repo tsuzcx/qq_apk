@@ -1,36 +1,33 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiod
-  extends RecyclerView.OnScrollListener
+class aiod
+  implements View.OnClickListener
 {
-  public boolean a;
+  aiod(ainh paramainh) {}
   
-  public aiod(ZhituPanelView paramZhituPanelView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
-        ((aioe)paramRecyclerView.getAdapter()).a();
-      }
+    agej.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    if (this.a.h != null) {
+      this.a.h.setVisibility(0);
     }
+    if (this.a.i != null) {
+      this.a.i.setVisibility(0);
+    }
+    this.a.aA();
+    if (this.a.jdField_a_of_type_Obj.b(this.a.a()) != 0) {
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bgsg;
-import bist;
-import bisy;
-import bivk;
-import biwe;
-import biwp;
+import bhsi;
+import bjts;
+import bjtx;
+import bjwj;
+import bjxd;
+import bjxo;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class MyAppApi$17
   implements Runnable
 {
-  public MyAppApi$17(biwe parambiwe, Activity paramActivity, String paramString) {}
+  public MyAppApi$17(bjxd parambjxd, Activity paramActivity, String paramString) {}
   
   public void run()
   {
-    bisy.c("MyAppApi", "---isAutoInstall:" + bivk.c() + " url:" + bivk.a() + " interval:" + bivk.a());
-    if ((bist.b(this.jdField_a_of_type_AndroidAppActivity)) && (bist.c(this.jdField_a_of_type_AndroidAppActivity)))
+    bjtx.c("MyAppApi", "---isAutoInstall:" + bjwj.c() + " url:" + bjwj.a() + " interval:" + bjwj.a());
+    if ((bjts.b(this.jdField_a_of_type_AndroidAppActivity)) && (bjts.c(this.jdField_a_of_type_AndroidAppActivity)))
     {
-      boolean bool1 = bivk.b();
-      boolean bool2 = bivk.j();
-      String str = bgsg.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
+      boolean bool1 = bjwj.b();
+      boolean bool2 = bjwj.j();
+      String str = bhsi.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
       if ((!this.this$0.b()) && (bool1) && (bool2) && ("true".equals(str)))
       {
         ThreadManager.getUIHandler().post(new MyAppApi.17.1(this));
-        bisy.c("MyAppApi", "---startDownloadYYB---");
-        this.this$0.a = new biwp(this.this$0);
+        bjtx.c("MyAppApi", "---startDownloadYYB---");
+        this.this$0.a = new bjxo(this.this$0);
         this.this$0.a.jdField_a_of_type_Boolean = true;
         this.this$0.a.b = false;
         this.this$0.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;

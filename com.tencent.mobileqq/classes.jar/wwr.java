@@ -1,54 +1,79 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import android.os.Build;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wwr
-  extends wnn
+  extends wpa
 {
-  private ArrayList<String> a;
+  static final String a;
+  static boolean b;
+  public boolean a;
+  public String b;
+  public int c;
+  public String c;
   
-  public wwr(ArrayList<String> paramArrayList)
+  static
   {
-    this.a = paramArrayList;
+    jdField_a_of_type_JavaLangString = wnu.a("StoryTabSvc.startpage_feeds_list_725");
   }
   
   public String a()
   {
-    return wjz.a("StorySvc.batch_get_user_icon_info");
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public wno a(byte[] paramArrayOfByte)
+  public wov a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
+    qqstory_service.RspMsgTabNodeList localRspMsgTabNodeList = new qqstory_service.RspMsgTabNodeList();
     try
     {
-      localRspIconPostfix.mergeFrom(paramArrayOfByte);
-      return new wws(localRspIconPostfix);
+      localRspMsgTabNodeList.mergeFrom(paramArrayOfByte);
+      return new wws(localRspMsgTabNodeList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      yqp.d("GetUserIconHandler", "" + paramArrayOfByte);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    if (jdField_b_of_type_Boolean)
     {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_c_of_type_JavaLangString = null;
     }
-    return localReqIconPostfix.toByteArray();
+    qqstory_service.ReqMsgTabNodeList localReqMsgTabNodeList = new qqstory_service.ReqMsgTabNodeList();
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    localReqMsgTabNodeList.source.set(this.jdField_c_of_type_Int);
+    if (this.jdField_c_of_type_JavaLangString != null) {
+      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localReqMsgTabNodeList.version.set(4);
+    Long localLong = zos.a();
+    if (localLong != null) {
+      localReqMsgTabNodeList.adcode.set(localLong.longValue());
+    }
+    localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
+    localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
+    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.4.5"));
+    return localReqMsgTabNodeList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeListRequest{cookie='" + this.jdField_c_of_type_JavaLangString + '\'' + ", seq='" + this.jdField_b_of_type_JavaLangString + '\'' + ", source=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

@@ -1,193 +1,159 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.SystemClock;
+import com.tencent.biz.pubaccount.weishi_new.player.report.WSPlayerReportImpl.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ulo
+  implements ulm
 {
-  private static Map<String, Long> a = new HashMap();
+  private long jdField_a_of_type_Long;
+  private uln jdField_a_of_type_Uln = new uln();
+  private boolean jdField_a_of_type_Boolean;
   
-  private static WSStatisticsReporter.Builder a(String paramString)
+  private void a()
   {
-    return new WSStatisticsReporter.Builder().setSopName(paramString).setSceneFrom("QQ_profile_settings").setFlush(true).setImmediatelyUpload(ups.c());
+    uqf.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onInfo] 播放状态回调 PLAYER_INFO_CHANGE_HW_BACKUP_URL");
+    this.jdField_a_of_type_Uln.jdField_c_of_type_Boolean = true;
   }
   
-  private static String a(azfe paramazfe)
+  private void a(Object paramObject)
   {
-    if ((paramazfe != null) && (paramazfe.a != null)) {
-      return paramazfe.a.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  private static String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return "profile_main";
-    }
-    return "profile_guest";
-  }
-  
-  public static void a()
-  {
-    a("privacy_settings", "");
-  }
-  
-  public static void a(azfe paramazfe, QQAppInterface paramQQAppInterface)
-  {
-    String str = a(paramazfe);
-    a(a(a(paramazfe, paramQQAppInterface, str)), str);
-  }
-  
-  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
-  {
-    paramBuilder.build(paramString).report();
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    a.put(paramString1, Long.valueOf(System.currentTimeMillis()));
-    a(paramString1, "1", 0L, paramString2);
-  }
-  
-  private static void a(String paramString1, String paramString2, long paramLong, String paramString3)
-  {
-    paramString1 = a(paramString1).addParams("event_type", paramString2);
-    if (TextUtils.equals("2", paramString2)) {
-      paramString1.addParams("page_live_time", String.valueOf(paramLong));
-    }
-    if (!TextUtils.isEmpty(paramString3))
+    if ((paramObject instanceof String))
     {
-      paramString2 = new HashMap();
-      paramString2.put("owner_id", paramString3);
-      paramString1.addExtParams(paramString2);
-    }
-    a(paramString1, "gzh_pagevisit");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      return;
-    }
-    a(a("privacy_settings").addParams("position", "weishi_switch").addParams("feed_id", "").addParams("owner_id", ""), "gzh_exposure");
-  }
-  
-  public static void a(boolean paramBoolean, String paramString)
-  {
-    WSStatisticsReporter.Builder localBuilder = a(a(paramBoolean));
-    if (paramBoolean) {}
-    for (String str = "my_weishi";; str = "owner_weishi")
-    {
-      a(localBuilder.addParams("position", str).addParams("feed_id", "").addParams("owner_id", paramString), "gzh_exposure");
-      return;
-    }
-  }
-  
-  public static void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    Object localObject2 = a(a(paramBoolean1));
-    Object localObject1;
-    if (paramBoolean1)
-    {
-      localObject1 = "my_weishi_jump";
-      localObject2 = ((WSStatisticsReporter.Builder)localObject2).addParams("position", (String)localObject1);
-      if (!paramBoolean2) {
-        break label115;
-      }
-      localObject1 = umy.c;
-      label37:
-      localObject1 = ((WSStatisticsReporter.Builder)localObject2).addParams("action_id", (String)localObject1).addParams("feed_id", "").addParams("owner_id", paramString);
-      localObject2 = new HashMap();
-      if (paramBoolean1) {
-        if (!paramBoolean3) {
-          break label123;
-        }
-      }
-    }
-    label115:
-    label123:
-    for (paramString = "0";; paramString = "1")
-    {
-      ((Map)localObject2).put("click_status", paramString);
-      ((WSStatisticsReporter.Builder)localObject1).addExtParams((Map)localObject2);
-      a((WSStatisticsReporter.Builder)localObject1, "gzh_click");
-      return;
-      localObject1 = "owner_weishi_jump";
-      break;
-      localObject1 = umy.b;
-      break label37;
-    }
-  }
-  
-  private static boolean a(azfe paramazfe, QQAppInterface paramQQAppInterface, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramazfe != null)
-    {
-      bool1 = bool2;
-      if (paramazfe.a != null)
+      paramObject = ((String)paramObject).split(":", 2);
+      if (paramObject.length == 2)
       {
-        bool1 = bool2;
-        if (paramQQAppInterface != null)
-        {
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(paramString)) {
-            if (paramazfe.a.jdField_a_of_type_Int != 0)
-            {
-              bool1 = bool2;
-              if (!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramString)) {}
-            }
-            else
-            {
-              bool1 = true;
-            }
-          }
-        }
+        String str = paramObject[1];
+        this.jdField_a_of_type_Uln.jdField_e_of_type_JavaLangString = str;
+        uqf.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onInfo] PERFORMANCE_REPORT method:" + paramObject[0] + ", timeJson:" + str);
       }
     }
-    return bool1;
   }
   
-  public static void b()
+  private void a(uln paramuln)
   {
-    b("privacy_settings", "");
+    uqf.d("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onStop] mReportData:" + paramuln.toString());
+    this.jdField_a_of_type_Boolean = true;
+    ulp.a(paramuln);
   }
   
-  public static void b(azfe paramazfe, QQAppInterface paramQQAppInterface)
+  private void b()
   {
-    String str = a(paramazfe);
-    b(a(a(paramazfe, paramQQAppInterface, str)), str);
+    uqf.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onInfo] 播放状态回调 PLAYER_INFO_DECODER_BLOCK");
   }
   
-  private static void b(String paramString1, String paramString2)
+  private void b(Object paramObject)
   {
-    Long localLong = Long.valueOf(0L);
-    if (a != null) {
-      localLong = (Long)a.get(paramString1);
+    uqf.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onInfo] 播放状态回调 PLAYER_INFO_HW_DECODE_FAILED");
+    if ((paramObject instanceof String)) {
+      this.jdField_a_of_type_Uln.h = ((String)paramObject);
     }
-    if ((localLong != null) && (localLong.longValue() > 0L)) {}
-    for (long l = System.currentTimeMillis() - localLong.longValue();; l = 0L)
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Uln.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.jdField_a_of_type_Uln.jdField_f_of_type_JavaLangString = (paramInt1 + ":" + paramInt2);
+    this.jdField_a_of_type_Uln.jdField_g_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      a(paramString1, "2", l, paramString2);
+    default: 
+      return;
+    case 28: 
+      b();
+      return;
+    case 39: 
+      b(paramObject);
+      return;
+    case 41: 
+      a();
+      return;
+    }
+    a(paramObject);
+  }
+  
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    uqf.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onOpenVideo] ==== start ====");
+    this.jdField_a_of_type_Boolean = false;
+    if (!paramBoolean) {}
+    for (long l = SystemClock.uptimeMillis();; l = 0L)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Uln.jdField_b_of_type_JavaLangString = paramString1;
+      this.jdField_a_of_type_Uln.jdField_a_of_type_JavaLangString = paramString2;
+      this.jdField_a_of_type_Uln.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Uln.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Uln.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_Uln.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Uln.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Uln.jdField_e_of_type_Int = 0;
+      this.jdField_a_of_type_Uln.jdField_e_of_type_Long = 0L;
+      this.jdField_a_of_type_Uln.jdField_d_of_type_Long = 0L;
+      this.jdField_a_of_type_Uln.jdField_d_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Uln.jdField_f_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Uln.jdField_g_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Uln.jdField_c_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Uln.jdField_e_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Uln.h = "";
+      this.jdField_a_of_type_Uln.jdField_c_of_type_Boolean = false;
       return;
     }
   }
   
-  public static void b(boolean paramBoolean)
+  public void a(ulc paramulc)
   {
-    WSStatisticsReporter.Builder localBuilder = a("privacy_settings").addParams("position", "weishi_switch").addParams("action_id", umy.jdField_a_of_type_JavaLangString).addParams("feed_id", "").addParams("owner_id", "");
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
+    this.jdField_a_of_type_Uln.n = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+    ThreadManager.getSubThreadHandler().post(new WSPlayerReportImpl.1(this, paramulc));
+  }
+  
+  public void a(ulc paramulc, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Uln.jdField_b_of_type_Boolean = paramulc.f();
+    this.jdField_a_of_type_Uln.jdField_c_of_type_JavaLangString = paramulc.a();
+    this.jdField_a_of_type_Uln.jdField_a_of_type_Long = paramulc.c();
+    this.jdField_a_of_type_Uln.jdField_b_of_type_Long = paramulc.d();
+    this.jdField_a_of_type_Uln.jdField_e_of_type_Int = paramulc.c();
+    this.jdField_a_of_type_Uln.jdField_d_of_type_Int = paramulc.d();
+    this.jdField_a_of_type_Uln.jdField_c_of_type_Long = paramulc.e();
+    this.jdField_a_of_type_Uln.jdField_d_of_type_JavaLangString = paramulc.c();
+    this.jdField_a_of_type_Uln.jdField_f_of_type_Long = paramulc.f();
+    this.jdField_a_of_type_Uln.jdField_d_of_type_Long = paramulc.h();
+    this.jdField_a_of_type_Uln.jdField_e_of_type_Long = paramulc.g();
+    this.jdField_a_of_type_Uln.jdField_g_of_type_Long = paramulc.i();
+    this.jdField_a_of_type_Uln.i = paramulc.b();
+    a(this.jdField_a_of_type_Uln);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    uqf.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onHitPreload] loaded:" + paramBoolean);
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Uln.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(ulc paramulc)
+  {
+    int j = 0;
+    uln localuln = this.jdField_a_of_type_Uln;
+    if (paramulc != null) {}
+    for (int i = paramulc.a();; i = 0)
     {
-      localHashMap.put("switch", str);
-      localBuilder.addExtParams(localHashMap);
-      a(localBuilder, "gzh_click");
+      localuln.jdField_a_of_type_Int = i;
+      localuln = this.jdField_a_of_type_Uln;
+      i = j;
+      if (paramulc != null) {
+        i = paramulc.b();
+      }
+      localuln.jdField_b_of_type_Int = i;
       return;
     }
   }

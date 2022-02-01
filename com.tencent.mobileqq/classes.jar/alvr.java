@@ -1,17 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-final class alvr
-  implements DialogInterface.OnClickListener
+public class alvr
+  implements Animation.AnimationListener
 {
-  alvr(Context paramContext) {}
+  public alvr(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ((Activity)this.a).finish();
+    if (NewFlowCameraActivity.b(this.a) != null) {
+      NewFlowCameraActivity.b(this.a).setVisibility(4);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

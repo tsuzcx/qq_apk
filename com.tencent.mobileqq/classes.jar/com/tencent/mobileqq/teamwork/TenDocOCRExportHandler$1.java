@@ -2,9 +2,9 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anni;
-import bdit;
-import bdjj;
+import anzj;
+import bebo;
+import bece;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.io.UnsupportedEncodingException;
@@ -14,15 +14,15 @@ import org.json.JSONObject;
 public class TenDocOCRExportHandler$1
   implements Runnable
 {
-  public TenDocOCRExportHandler$1(bdjj parambdjj, String paramString) {}
+  public TenDocOCRExportHandler$1(bece parambece, String paramString) {}
   
   public void run()
   {
     if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
       return;
     }
-    bdjj localbdjj = (bdjj)this.this$0.app.a(157);
-    JSONObject localJSONObject = bdit.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
+    bece localbece = (bece)this.this$0.app.a(157);
+    JSONObject localJSONObject = bebo.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
     if (localJSONObject != null)
     {
       String str = localJSONObject.optString("url");
@@ -34,21 +34,21 @@ public class TenDocOCRExportHandler$1
         {
           Bundle localBundle = new Bundle();
           localBundle.putString("url", str);
-          localbdjj.notifyUI(3, true, new Object[] { localJSONObject });
+          localbece.notifyUI(3, true, new Object[] { localJSONObject });
           QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
           return;
         }
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        localbdjj.notifyUI(1, true, new Object[] { anni.a(2131713534), this.a });
+        localbece.notifyUI(1, true, new Object[] { anzj.a(2131713643), this.a });
         localUnsupportedEncodingException.printStackTrace();
         return;
       }
-      localbdjj.notifyUI(1, true, new Object[] { anni.a(2131713533), this.a });
+      localbece.notifyUI(1, true, new Object[] { anzj.a(2131713642), this.a });
       return;
     }
-    localbdjj.notifyUI(1, true, new Object[] { anni.a(2131713532), this.a });
+    localbece.notifyUI(1, true, new Object[] { anzj.a(2131713641), this.a });
   }
 }
 

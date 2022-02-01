@@ -1,24 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aeqk
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aeqk(NotificationActivity paramNotificationActivity) {}
+  public aeqk(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
-    this.a.app.z();
-    this.a.finish();
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    while (this.a.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqk
  * JD-Core Version:    0.7.0.1
  */

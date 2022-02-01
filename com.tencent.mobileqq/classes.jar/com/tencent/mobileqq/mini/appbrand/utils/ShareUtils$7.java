@@ -6,11 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -39,7 +41,7 @@ final class ShareUtils$7
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848403);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848422);
         }
         Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$sharePicUrl, paramJSONObject).getCurrDrawable());
         paramJSONObject = localBitmap;
@@ -67,20 +69,23 @@ final class ShareUtils$7
       }
       catch (Exception paramJSONObject)
       {
-        do
+        for (;;)
         {
-          for (;;)
-          {
-            QLog.e("AppBrandRuntime", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
-            paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848403));
+          QLog.e("AppBrandRuntime", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
+          paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848422));
+          continue;
+          if (this.val$shareType == 4) {
+            WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$apkgInfo.apkgName + ": " + this.val$finalDescription, paramJSONObject, "", str);
           }
-        } while (this.val$shareType != 4);
-        WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$apkgInfo.apkgName + ": " + this.val$finalDescription, paramJSONObject, "", str);
-        return;
+        }
       }
       if (this.val$shareType == 3)
       {
         WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.val$finalDescription, paramJSONObject, "QQ小程序 · " + this.val$apkgInfo.apkgName, str);
+        paramJSONObject = new Bundle();
+        paramJSONObject.putParcelable("MiniAppInfoForQQ", this.val$apkgInfo.appConfig.config);
+        paramJSONObject.putParcelable("MiniAppLaunchParamForQQ", this.val$apkgInfo.appConfig.launchParam);
+        QIPCClientHelper.getInstance().getClient().callServer("MiniAppTransferModule", "mini_record_wx_share_miniapp_for_qq", paramJSONObject);
         return;
       }
     }

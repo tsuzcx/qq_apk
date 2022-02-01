@@ -1,12 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.richstatus.topic.TopicEditTextView;
 
-class bbwl
-  implements View.OnClickListener
+public class bbwl
+  implements ActionMode.Callback
 {
-  bbwl(bbwj parambbwj) {}
+  public bbwl(TopicEditTextView paramTopicEditTextView) {}
   
-  public void onClick(View paramView) {}
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return TopicEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 

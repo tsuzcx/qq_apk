@@ -1,11 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class atdd
-  implements atdk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/extendfriend/wiget/ColdPalaceTipDialog$init$1$1"}, k=3, mv={1, 1, 16})
+final class atdd
+  implements View.OnClickListener
 {
-  atdd(atdc paramatdc, boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
+  atdd(atdb paramatdb, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt) {}
+  
+  public final void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Atdb.isShowing())
+    {
+      bdll.b(null, "dc00898", "", "", "0X800B2CF", "0X800B2CF", 2, 0, "", "", "", "");
+      this.jdField_a_of_type_Atdb.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

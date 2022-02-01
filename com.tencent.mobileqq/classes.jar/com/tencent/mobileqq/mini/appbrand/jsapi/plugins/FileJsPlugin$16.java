@@ -5,7 +5,7 @@ import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import java.io.File;
-import nmk;
+import nof;
 
 class FileJsPlugin$16
   implements FileJsPlugin.FileTask
@@ -34,7 +34,7 @@ class FileJsPlugin$16
       return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$zipFilePath, this.val$callbackId);
     }
     long l1 = FileUtils.getFileOrFolderSize(str2);
-    int i = nmk.a(str1, str2);
+    int i = nof.a(str1, str2);
     FileJsPlugin localFileJsPlugin = this.this$0;
     String str3 = this.val$event;
     if (i == 0) {

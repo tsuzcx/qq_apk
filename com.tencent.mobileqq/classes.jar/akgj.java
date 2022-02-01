@@ -1,22 +1,8 @@
-import android.os.Handler;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.SendPhotoTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.MotionEvent;
 
-public class akgj
-  implements MessageQueue.IdleHandler
+public abstract interface akgj
 {
-  public akgj(SendPhotoActivity paramSendPhotoActivity) {}
-  
-  public boolean queueIdle()
-  {
-    ayxi.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
-    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
-    return false;
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

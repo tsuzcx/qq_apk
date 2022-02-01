@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import bajk;
-import bajn;
+import bbcd;
+import bbcg;
 import com.tencent.qphone.base.util.QLog;
 
 class AIOIceBreakShow$1
@@ -20,12 +20,12 @@ class AIOIceBreakShow$1
     {
       QLog.d("AIOIceBreakShow", 1, String.format("markEnteredFlag, type = %s, uin = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      if (bajn.d(this.jdField_a_of_type_Int))
+      if (bbcg.d(this.jdField_a_of_type_Int))
       {
         AIOIceBreakShow.a(this.this$0).b(this.jdField_a_of_type_JavaLangString);
         AIOIceBreakShow.a(this.this$0).d();
       }
-      else if (bajn.e(this.jdField_a_of_type_Int))
+      else if (bbcg.e(this.jdField_a_of_type_Int))
       {
         AIOIceBreakShow.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
         AIOIceBreakShow.a(this.this$0).e();

@@ -1,22 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class rue
-  implements MediaPlayer.OnCompletionListener
+public abstract interface rue
 {
-  rue(ruc paramruc) {}
+  public abstract void a(VideoInfo paramVideoInfo);
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    ruc.a(this.a).a = false;
-    paramMediaPlayer = (ruf)ruc.a(this.a).get();
-    if (paramMediaPlayer != null)
-    {
-      paramMediaPlayer.b(ruc.a(this.a));
-      this.a.a(false, "ugc voice play");
-    }
-  }
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

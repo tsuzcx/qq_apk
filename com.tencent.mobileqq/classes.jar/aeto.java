@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aeto
-  implements DialogInterface.OnCancelListener
+public class aeto
+  implements View.OnClickListener
 {
-  aeto(aetm paramaetm) {}
+  public aeto(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    if (System.currentTimeMillis() - this.a.a < 2000L)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (HongbaoShowerActivity.a(this.a) == 0) {}
+    for (String str = "1";; str = "2")
+    {
+      bdll.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, str, "", "", "");
+      break;
+    }
   }
 }
 

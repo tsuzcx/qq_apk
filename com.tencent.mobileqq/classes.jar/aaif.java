@@ -1,26 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
 class aaif
-  implements Animator.AnimatorListener
+  implements aadm<Object>
 {
-  aaif(aaid paramaaid, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  aaif(aaid paramaaid, aaav paramaaav) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(Object... paramVarArgs)
   {
-    paramAnimator = (FrameLayout.LayoutParams)aaid.b(this.jdField_a_of_type_Aaid).getLayoutParams();
-    paramAnimator.height = this.jdField_a_of_type_Int;
-    paramAnimator.width = this.b;
-    paramAnimator.setMargins(this.c, this.d, 0, 0);
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_Aaav.onReceive(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetFeedDetailRsp)paramVarArgs[3]);
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

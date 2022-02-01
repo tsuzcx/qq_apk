@@ -1,22 +1,19 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class afpv
+  extends BroadcastReceiver
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
+  public afpv(SubLoginActivity paramSubLoginActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    QLog.d("Q.subaccount.SubLoginActivity", 1, "AutoLoginReceiver onReceive");
+    SubLoginActivity.b(this.a, true);
+  }
 }
 
 

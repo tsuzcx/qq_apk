@@ -1,9 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-
-public abstract interface bbfb
+class bbfb
 {
-  public abstract void a(View paramView, int paramInt1, ScribbleResMgr.ResInfo paramResInfo, int paramInt2);
+  private static final bbew a = new bbew(null);
 }
 
 

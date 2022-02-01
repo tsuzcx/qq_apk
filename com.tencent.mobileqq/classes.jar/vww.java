@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleSetProfileRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.List;
+import qqcircle.QQCircleProfile.SetProfileRsp;
 
 public class vww
-  implements DialogInterface.OnClickListener
+  extends aabb
 {
-  public vww(QCircleFollowTagView paramQCircleFollowTagView) {}
+  public MutableLiveData<vxq<QQCircleProfile.SetProfileRsp>> a = new MutableLiveData();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a()
   {
-    this.a.a(false);
-    if (QCircleFollowTagView.a(this.a) != null) {
-      QCircleFollowTagView.a(this.a).a();
-    }
+    return "QCircleDataEditViewMode";
+  }
+  
+  public void a(String paramString, List<FeedCloudMeta.StTagInfo> paramList, List<Long> paramList1)
+  {
+    paramString = new QCircleSetProfileRequest(paramString, paramList, paramList1);
+    this.a.setValue(vxq.b());
+    VSNetworkHelper.a().a(paramString, new vwx(this));
   }
 }
 

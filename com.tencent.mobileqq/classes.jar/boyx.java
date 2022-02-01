@@ -1,98 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Bitmap;
 
 public class boyx
 {
-  public static boyx a;
-  public int a;
-  protected Object a;
-  boolean a;
-  public int b = 0;
+  public final int a;
+  public final Bitmap a;
+  public final String a;
+  public final Throwable a;
+  public final boolean a;
   
-  public boyx()
+  private boyx(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public static boyx a()
+  private static boyx b(int paramInt, String paramString)
   {
-    if (jdField_a_of_type_Boyx == null) {}
-    try
-    {
-      if (jdField_a_of_type_Boyx == null) {
-        jdField_a_of_type_Boyx = new boyx();
-      }
-      return jdField_a_of_type_Boyx;
-    }
-    finally {}
+    return new boyx(false, paramInt, paramString, null, null);
   }
   
-  public static String a(String paramString)
+  private static boyx b(Bitmap paramBitmap)
   {
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      int i = paramString.lastIndexOf('.');
-      if ((i > -1) && (i < paramString.length() - 1)) {
-        return paramString.substring(0, i) + ".pcm";
-      }
-    }
-    return null;
+    return new boyx(true, 0, null, null, paramBitmap);
   }
   
-  public void a(String paramString1, String paramString2)
+  public String toString()
   {
-    byte[] arrayOfByte = bgmg.a(new File(paramString1));
-    Object localObject = null;
-    if (arrayOfByte == null)
-    {
-      QLog.e("StoryGameAudioMixManager", 1, "录音文件为空");
-      return;
-    }
-    String str = a(paramString2);
-    if (str != null)
-    {
-      localObject = new File(str);
-      if (!((File)localObject).exists())
-      {
-        if (!boyu.a(new File(paramString2), new File(str))) {
-          break label135;
-        }
-        this.jdField_a_of_type_Int = 2;
-        if (QLog.isColorLevel()) {
-          QLog.d("StoryGameAudioMixManager", 2, "convert mp3 in publish now");
-        }
-      }
-      localObject = bgmg.a((File)localObject);
-    }
-    else
-    {
-      if (localObject != null) {
-        break label144;
-      }
-      QLog.e("StoryGameAudioMixManager", 1, "bgm为空" + str);
-      return;
-    }
-    label135:
-    QLog.e("StoryGameAudioMixManager", 1, "bgm conver fail");
-    return;
-    label144:
-    paramString2 = new byte[arrayOfByte.length];
-    if (boyu.a(paramString2, (byte[])localObject, arrayOfByte, arrayOfByte.length, 0.0D))
-    {
-      if (!QLog.isColorLevel()) {
-        break label185;
-      }
-      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes succedd");
-    }
-    for (;;)
-    {
-      bgmg.a(paramString2, paramString1);
-      return;
-      label185:
-      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes fail");
-    }
+    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
   }
 }
 

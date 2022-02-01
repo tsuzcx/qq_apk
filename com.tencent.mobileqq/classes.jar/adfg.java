@@ -1,49 +1,47 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0xa0.submsgtype0xa0.MsgBody;
 
-class adfg
-  extends adff
+public class adfg
+  implements adci
 {
-  public adfg(adea paramadea, long paramLong)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    super(paramadea, 3, paramLong);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (paramInt == 0)
+    bool = true;
+    submsgtype0xa0.MsgBody localMsgBody = new submsgtype0xa0.MsgBody();
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("nation", paramSosoLbsInfo.a.c);
-        localJSONObject.put("province", paramSosoLbsInfo.a.d);
-        localJSONObject.put("city", paramSosoLbsInfo.a.e);
-        localJSONObject.put("district", paramSosoLbsInfo.a.g);
-        adhh.a(this.jdField_a_of_type_Adea, localJSONObject);
-        return;
-      }
-      catch (JSONException paramSosoLbsInfo)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
-          }
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+        int i = localMsgBody.uint32_is_mass_bless_open.get();
+        if (i != 0) {
+          continue;
         }
       }
+      catch (Exception paramMsgType0x210)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("BlessManager", 2, "handleMsgType0x210SubMsgType0x8f : fail to parse 0x211_0xa0.");
+        bool = true;
+        continue;
+      }
+      ((ajan)paramQQAppInterface.getManager(138)).c(bool);
+      return;
+      bool = false;
     }
-    adhh.a(this.jdField_a_of_type_Adea, paramInt, "error " + paramInt);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

@@ -1,28 +1,43 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.util.SparseArray;
+import com.tencent.mobileqq.hotpic.HotPicTagInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class avtg
-  extends anmu
 {
-  public avtg(ListenTogetherManager paramListenTogetherManager) {}
+  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public int a()
   {
-    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if (paramBoolean)
-    {
-      String str = avtq.a(2, String.valueOf(paramObject));
-      if (ListenTogetherManager.a(this.a).equals(str))
-      {
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-        avst.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
-        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-        this.a.a(2, String.valueOf(paramObject), false);
-      }
-    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public HotPicTagInfo a(int paramInt)
+  {
+    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+  }
+  
+  public List<HotPicTagInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+  }
+  
+  public void a(HotPicTagInfo paramHotPicTagInfo)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
+  }
+  
+  public HotPicTagInfo b(int paramInt)
+  {
+    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
 }
 

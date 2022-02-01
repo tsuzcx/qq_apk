@@ -1,43 +1,47 @@
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class aqtq
+class aqtq
+  implements aqud
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 1;
-  public int d = -1;
+  aqtq(aqto paramaqto, HistoryFormItem paramHistoryFormItem) {}
   
-  public aqtq()
+  public void a(View paramView, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public static aqtq a(JSONObject paramJSONObject)
-  {
-    aqtq localaqtq = new aqtq();
-    localaqtq.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
-    localaqtq.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
-    localaqtq.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
-    localaqtq.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
-    localaqtq.c = paramJSONObject.optInt("version", -1);
-    localaqtq.d = paramJSONObject.optInt("appid", -1);
-    localaqtq.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
-    return localaqtq;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    aqrf localaqrf = new aqrf();
+    ColorNote localColorNote2;
+    if ((aqri.a()) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a())) {
+      localColorNote2 = (ColorNote)aqto.a(this.jdField_a_of_type_Aqto).get(paramInt);
+    }
+    try
+    {
+      ColorNote localColorNote1 = (ColorNote)localColorNote2.clone();
+      if (localColorNote1 != null)
+      {
+        localColorNote1.setType(0);
+        localaqrf.a(localColorNote1.parseBundle());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.setEnable(false);
+      aqto.a(this.jdField_a_of_type_Aqto, localColorNote2, paramInt);
+      QQToast.a(paramView.getContext(), 2, anzj.a(2131690771), 500).a();
+      return;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+        Object localObject = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtq
  * JD-Core Version:    0.7.0.1
  */

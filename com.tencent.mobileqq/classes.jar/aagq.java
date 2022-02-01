@@ -1,6 +1,17 @@
-public abstract interface aagq
+import android.app.Activity;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.7.1;
+
+public class aagq
+  implements aant
 {
-  public abstract void a(int paramInt);
+  aagq(aagi paramaagi) {}
+  
+  public void a(int paramInt)
+  {
+    if (aagi.q(this.a) != null) {
+      aagi.r(this.a).runOnUiThread(new DetailBaseBlock.7.1(this));
+    }
+  }
 }
 
 

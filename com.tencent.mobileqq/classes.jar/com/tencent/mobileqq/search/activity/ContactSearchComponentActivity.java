@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import anhk;
-import bbhy;
+import antf;
+import bcas;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -79,7 +79,7 @@ public class ContactSearchComponentActivity
     ArrayList localArrayList = new ArrayList();
     if ((i == 7) || (i == 6) || (i == 23))
     {
-      localArrayList.add(anhk.aC);
+      localArrayList.add(antf.aC);
       return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
     }
     return super.a();
@@ -97,7 +97,7 @@ public class ContactSearchComponentActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131377025).setOnTouchListener(new bbhy(this));
+    findViewById(2131377164).setOnTouchListener(new bcas(this));
     return true;
   }
   

@@ -1,33 +1,35 @@
-import android.support.annotation.Nullable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class xja
+final class xja
+  implements URLDrawable.URLDrawableListener
 {
-  @Nullable
-  public String a;
-  public xix a;
-  @Nullable
-  public xiy a;
-  @Nullable
-  public String b;
+  xja(long paramLong, xjl paramxjl) {}
   
-  public xja(@Nullable xix paramxix, @Nullable String paramString1, @Nullable String paramString2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Xix = paramxix;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    }
+    if (this.jdField_a_of_type_Xjl != null) {
+      this.jdField_a_of_type_Xjl.b();
+    }
   }
   
-  public xja(xja paramxja)
-  {
-    this.jdField_a_of_type_Xix = paramxja.jdField_a_of_type_Xix;
-    this.jdField_a_of_type_JavaLangString = paramxja.jdField_a_of_type_JavaLangString;
-    this.b = paramxja.b;
-    this.jdField_a_of_type_Xiy = paramxja.jdField_a_of_type_Xiy;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public String toString()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Xix + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
+    }
+    yup.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (this.jdField_a_of_type_Xjl != null) {
+      this.jdField_a_of_type_Xjl.a();
+    }
   }
 }
 

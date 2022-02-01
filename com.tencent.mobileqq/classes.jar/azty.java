@@ -1,25 +1,22 @@
+import android.graphics.Bitmap;
+
 public class azty
 {
+  public float a;
   public int a;
-  public final int[] a;
+  public Bitmap a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e;
   
-  public azty()
+  private azty()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      localStringBuilder.append('#').append(i).append('_').append(this.jdField_a_of_type_ArrayOfInt[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

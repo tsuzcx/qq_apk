@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class aekx
-  implements View.OnClickListener
+  implements bjig
 {
-  public aekx(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public aekx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      zyx.a(1, 2131718139);
+      return;
+    }
+    zyx.a(2, 2131718157);
   }
 }
 

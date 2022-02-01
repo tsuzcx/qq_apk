@@ -3,8 +3,8 @@ package com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bctj;
-import bghp;
+import bdmc;
+import bhhq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,7 +132,7 @@ public class PtvTemplateManager$PtvTemplateInfo
         if (i >= j) {
           break label188;
         }
-        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)bghp.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
+        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)bhhq.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
         if (localPtvTemplateInfo == null) {
           break label193;
         }
@@ -201,7 +201,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     localHashMap.put("timems", "" + (l1 - l2));
     localHashMap.put("totalsize", "" + this.totalLen);
     localHashMap.put("success", "" + this.usable);
-    bctj.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+    bdmc.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
   }
   
   public String getLbsActivityType(int paramInt)

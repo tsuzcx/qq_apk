@@ -1,91 +1,48 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
-class oeg
-  implements BusinessObserver
+public class oeg
+  implements TouchWebView.OnScrollChangedListener
 {
-  oeg(oef paramoef, oej paramoej) {}
+  public oeg(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EcshopMinusViewChatPie", 2, "isSuccess: " + paramBoolean);
-    }
-    if (paramInt != 1) {}
-    for (;;)
+    paramInt1 = paramInt2 - paramInt4;
+    if (paramInt1 > 0)
     {
-      return;
-      qq_ad.QQAdGetRsp localQQAdGetRsp = new qq_ad.QQAdGetRsp();
-      try
-      {
-        localQQAdGetRsp.mergeFrom(paramBundle.getByteArray("data"));
-        if (localQQAdGetRsp.qgg_msgs.has())
-        {
-          paramBundle = localQQAdGetRsp.qgg_msgs.get();
-          if ((paramBundle != null) && (!paramBundle.isEmpty()))
-          {
-            paramBundle = paramBundle.iterator();
-            paramInt = 0;
-            while (paramBundle.hasNext())
-            {
-              String str = (String)paramBundle.next();
-              MessageForArkApp localMessageForArkApp = (MessageForArkApp)bbzh.a(-5008);
-              localMessageForArkApp.msgtype = -5008;
-              ArkAppMessage localArkAppMessage = new ArkAppMessage();
-              localArkAppMessage.fromAppXml(str);
-              localMessageForArkApp.msgData = localArkAppMessage.toBytes();
-              localMessageForArkApp.parse();
-              if ((!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appName)) && (!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appView)))
-              {
-                oef.a(this.jdField_a_of_type_Oef).add(localMessageForArkApp);
-                localMessageForArkApp.time = System.currentTimeMillis();
-                if (paramInt == 0) {
-                  localMessageForArkApp.saveExtInfoToExtStr("add_title", "minus_view_title_second");
-                }
-              }
-              oev.a().a.put(Long.valueOf(localMessageForArkApp.uniseq), localMessageForArkApp);
-              paramInt += 1;
-            }
-          }
-        }
-        paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-        if ((paramBundle instanceof QQAppInterface))
-        {
-          paramBundle = (odh)((QQAppInterface)paramBundle).a(139);
-          if (paramBundle != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("EcshopMinusViewChatPie", 2, "-----deleteRiskAd----");
-            }
-            paramBundle.a(localQQAdGetRsp);
-          }
-        }
-        if (this.jdField_a_of_type_Oej != null) {
-          this.jdField_a_of_type_Oej.a(oef.a(this.jdField_a_of_type_Oef));
-        }
-        if (localQQAdGetRsp.qgg_prompt.has())
-        {
-          oer.a(localQQAdGetRsp.qgg_prompt.get());
-          return;
-        }
+      if (this.a.jdField_b_of_type_Int < 0) {
+        this.a.jdField_b_of_type_Int = 0;
       }
-      catch (Throwable paramBundle)
+      paramView = this.a;
+      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
       {
-        paramBundle.printStackTrace();
+        this.a.jdField_c_of_type_Boolean = false;
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
+        {
+          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
+          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
       }
     }
+    do
+    {
+      do
+      {
+        return;
+        if (this.a.jdField_b_of_type_Int > 0) {
+          this.a.jdField_b_of_type_Int = 0;
+        }
+        paramView = this.a;
+        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
+      this.a.jdField_c_of_type_Boolean = true;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

@@ -1,17 +1,23 @@
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.biz.qqcircle.scrollers.QCircleFeedPicPreloadScroller.3;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeMoreView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class vsa
-  extends voy
+  implements View.OnClickListener
 {
-  public vsa(QCircleFeedPicPreloadScroller.3 param3) {}
+  public vsa(QCirclePolyLikeMoreView paramQCirclePolyLikeMoreView) {}
   
-  public void a(int paramInt, vou paramvou)
+  public void onClick(View paramView)
   {
-    if ((paramInt == QCircleFeedPicLoader.f) || (paramInt == QCircleFeedPicLoader.c)) {
-      vrx.a(this.a.this$0).put(paramvou.b(), Boolean.valueOf(true));
+    if (this.a.jdField_a_of_type_Vrx != null) {
+      this.a.jdField_a_of_type_Vrx.b();
     }
+    if (this.a.jdField_a_of_type_Vrn == null) {
+      this.a.jdField_a_of_type_Vrn = new vrn(this.a.getContext());
+    }
+    this.a.jdField_a_of_type_Vrn.a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, vry.a().a(), this.a.jdField_a_of_type_Vsj, this.a.a());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

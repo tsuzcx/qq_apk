@@ -1,26 +1,65 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class akle
-  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
+public class akle
+  extends arac
 {
-  private akle(aklc paramaklc) {}
-  
-  protected AnimationView.AnimationInfo a(String... paramVarArgs)
+  public static akld a()
   {
-    if ("1".equals(paramVarArgs[1])) {
-      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
-    }
-    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+    return (akld)aran.a().a(470);
   }
   
-  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  @NonNull
+  public akld a(int paramInt)
+  {
+    return new akld();
+  }
+  
+  @Nullable
+  public akld a(araj[] paramArrayOfaraj)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaraj[0].a);
     }
-    this.a.a(paramAnimationInfo);
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return akld.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public Class<akld> clazz()
+  {
+    return akld.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onUpdate(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int type()
+  {
+    return 470;
   }
 }
 

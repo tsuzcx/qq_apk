@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.view;
 
-import angk;
+import ansf;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class ApolloPanel$CmshowAppController$3
   implements Runnable
 {
-  public ApolloPanel$CmshowAppController$3(angk paramangk, float paramFloat) {}
+  public ApolloPanel$CmshowAppController$3(ansf paramansf, float paramFloat) {}
   
   public void run()
   {
-    if (ApolloPanel.a(this.jdField_a_of_type_Angk.a).getVisibility() != 0) {
-      ApolloPanel.a(this.jdField_a_of_type_Angk.a).setVisibility(0);
+    if (ApolloPanel.a(this.jdField_a_of_type_Ansf.a).getVisibility() != 0) {
+      ApolloPanel.a(this.jdField_a_of_type_Ansf.a).setVisibility(0);
     }
-    ApolloPanel.a(this.jdField_a_of_type_Angk.a).setProgress(this.jdField_a_of_type_Float);
+    ApolloPanel.a(this.jdField_a_of_type_Ansf.a).setProgress(this.jdField_a_of_type_Float);
   }
 }
 

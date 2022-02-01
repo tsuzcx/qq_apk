@@ -1,26 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.startGuideAnimate.1;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.Map;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$startGuideAnimate$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shp
-  extends AnimatorListenerAdapter
+public class shp
+  extends pmr
 {
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public shp(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap)
   {
-    if (shi.a(this.a.this$0)) {
-      return;
-    }
-    if (shi.a(this.a.this$0) >= 1)
-    {
-      shi.a(this.a.this$0);
-      return;
-    }
-    paramAnimator = this.a.this$0;
-    shi.a(paramAnimator, shi.a(paramAnimator) + 1);
-    shi.c(this.a.this$0);
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

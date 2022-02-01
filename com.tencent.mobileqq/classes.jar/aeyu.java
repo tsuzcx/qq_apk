@@ -1,16 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeyu
-  extends ayes
+  implements View.OnClickListener
 {
-  public aeyu(QQSettingMe paramQQSettingMe) {}
+  public aeyu(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (this.a.c) {
-      this.a.i();
-    }
+    MoveToGroupActivity.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

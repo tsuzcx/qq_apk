@@ -1,67 +1,32 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import org.json.JSONObject;
 
 public class adkb
-  implements View.OnClickListener
 {
-  public adkb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public adkb(adka paramadka) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    if (!AddFriendVerifyActivity.a(this.a)) {}
-    for (;;)
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.a != null)
-      {
-        this.a.getWindow().setSoftInputMode(2);
-        this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-        AddFriendVerifyActivity.a(this.a).clearFocus();
-      }
-      if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
-      {
-        ReportDialog localReportDialog = new ReportDialog(this.a, 2131755823);
-        localReportDialog.setContentView(2131562815);
-        ((TextView)localReportDialog.findViewById(2131365475)).setText(this.a.getString(2131690952));
-        ((ProgressBar)localReportDialog.findViewById(2131366957)).setVisibility(8);
-        ((ImageView)localReportDialog.findViewById(2131380280)).setImageResource(2130839586);
-        localReportDialog.show();
-      }
-      else
-      {
-        this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
-        if (bgnt.d(this.a))
-        {
-          if (AddFriendVerifyActivity.a(this.a) != null) {}
-          for (int i = AddFriendVerifyActivity.a(this.a).a();; i = 2000)
-          {
-            QLog.e("AddFriendVerifyActivity", 1, "joinTroop templateId: " + i);
-            AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), i);
-            bcst.b(null, "dc00898", "", "", "qq_vip", "0X800A62B", ahdx.a(i), 0, "", "", "", "");
-            if (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from"))) {
-              break;
-            }
-            bcst.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
-            break;
-          }
-        }
-        QQToast.a(this.a, 1, 2131693948, 0).b(this.a.getTitleBarHeight());
-      }
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("lib_name").trim();
+      this.b = paramJSONObject.getString("func_name").trim();
+      return true;
     }
+    catch (Exception paramJSONObject)
+    {
+      adjv.a("KingKongNativePatch", "Parse fingerprint error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 

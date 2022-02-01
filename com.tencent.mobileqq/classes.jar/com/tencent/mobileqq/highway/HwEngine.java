@@ -31,11 +31,11 @@ public class HwEngine
   public AtomicLong dwFlow_Wifi = new AtomicLong(0L);
   public AtomicLong dwFlow_Xg = new AtomicLong(0L);
   public boolean ipv6Switch;
-  private SparseArray<HwNetSegConf> mBuzSegConfigs;
+  private SparseArray<HwNetSegConf> mBuzSegConfigs = null;
   public ConnManager mConnManager;
   private Context mContext;
   public RequestWorker mRequestWorker;
-  private HwNetSegConf mSegConfig;
+  private HwNetSegConf mSegConfig = null;
   public TransactionWorker mTransWorker;
   public WeakNetLearner mWeakNetLearner;
   private WeakNetCallback probeEngineCallBack = new HwEngine.1(this);

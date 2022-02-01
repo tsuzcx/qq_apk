@@ -1,10 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
-final class bfqr
-  implements DialogInterface.OnClickListener
+class bfqr
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  bfqr(bfqm parambfqm) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

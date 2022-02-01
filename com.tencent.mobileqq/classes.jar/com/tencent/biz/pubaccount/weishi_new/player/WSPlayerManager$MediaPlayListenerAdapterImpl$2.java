@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import ujv;
-import ujz;
-import ukb;
-import ukc;
+import ukp;
+import ukx;
+import ukz;
+import ula;
 
 public class WSPlayerManager$MediaPlayListenerAdapterImpl$2
   implements Runnable
 {
-  public WSPlayerManager$MediaPlayListenerAdapterImpl$2(ujz paramujz) {}
+  public WSPlayerManager$MediaPlayListenerAdapterImpl$2(ukx paramukx) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class WSPlayerManager$MediaPlayListenerAdapterImpl$2
     {
       Iterator localIterator = WSPlayerManager.a(this.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((ukc)localIterator.next()).c(WSPlayerManager.b(this.a.a));
+        ((ula)localIterator.next()).c(WSPlayerManager.b(this.a.a));
       }
     }
   }

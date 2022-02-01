@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import aoch;
-import blws;
+import aoot;
+import bmxu;
 import com.tencent.mobileqq.app.BaseActivity;
 import cooperation.qzone.contentbox.model.MQMsg;
 
@@ -14,15 +14,15 @@ class MsgPhotoView$2
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_AndroidContentContext == null) || (this.this$0.jdField_a_of_type_Blws == null)) {}
+    if ((this.this$0.jdField_a_of_type_AndroidContentContext == null) || (this.this$0.jdField_a_of_type_Bmxu == null)) {}
     Object localObject;
     do
     {
       return;
-      localObject = aoch.a(1, 3);
-      localObject = aoch.a(((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).app, 1, this.a.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
-    } while (this.this$0.jdField_a_of_type_Blws == null);
-    this.this$0.jdField_a_of_type_Blws.obtainMessage(10001, localObject).sendToTarget();
+      localObject = aoot.a(1, 3);
+      localObject = aoot.a(((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).app, 1, this.a.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
+    } while (this.this$0.jdField_a_of_type_Bmxu == null);
+    this.this$0.jdField_a_of_type_Bmxu.obtainMessage(10001, localObject).sendToTarget();
   }
 }
 

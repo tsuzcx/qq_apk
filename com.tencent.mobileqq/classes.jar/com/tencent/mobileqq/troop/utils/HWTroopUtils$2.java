@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfpl;
+import bgpm;
 
 public final class HWTroopUtils$2
   implements Runnable
 {
-  public HWTroopUtils$2(bfpl parambfpl, int paramInt) {}
+  public HWTroopUtils$2(bgpm parambgpm, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfpl.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bgpm.a(this.jdField_a_of_type_Int);
   }
 }
 

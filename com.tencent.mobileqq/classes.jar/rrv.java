@@ -1,18 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment.onCreate..inlined.let.lambda.1;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "errorMsg", "", "onResult", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$1$1"}, k=3, mv={1, 1, 16})
-public final class rrv
-  implements roj
+public class rrv
+  extends uch
 {
-  public rrv(SelectTopicFragment.onCreate..inlined.let.lambda.1 param1, ColumnInfo paramColumnInfo) {}
+  private rrv(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public final void a(int paramInt, @Nullable String paramString)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.this$0, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$activity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$rowKey$inlined, paramString);
+    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    int i;
+    do
+    {
+      String str;
+      do
+      {
+        return;
+        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
+        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
+      } while (str == null);
+      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
+    } while (paramBundle == null);
+    if (i == 1) {
+      paramBundle.o = true;
+    }
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
+      return;
+      if (i == 0) {
+        paramBundle.o = false;
+      }
+    }
   }
 }
 

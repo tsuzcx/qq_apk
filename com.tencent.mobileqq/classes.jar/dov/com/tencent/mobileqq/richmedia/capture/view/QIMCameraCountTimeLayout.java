@@ -9,7 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bgtn;
+import bhtq;
 
 public class QIMCameraCountTimeLayout
   extends LinearLayout
@@ -40,17 +40,17 @@ public class QIMCameraCountTimeLayout
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844448);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bgtn.a(6.0F), bgtn.a(6.0F));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844462);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bhtq.a(6.0F), bhtq.a(6.0F));
     localLayoutParams.gravity = 16;
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0秒");
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165356);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167279));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167302));
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = bgtn.a(4.0F);
+    localLayoutParams.leftMargin = bhtq.a(4.0F);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   

@@ -1,14 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
 
-public class beof
-  implements biap
+public final class beof
+  implements Parcelable.Creator<OpenDocParam>
 {
-  public beof(NewTroopContactView paramNewTroopContactView) {}
+  public OpenDocParam a(Parcel paramParcel)
+  {
+    return new OpenDocParam(paramParcel);
+  }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  public OpenDocParam[] a(int paramInt)
+  {
+    return new OpenDocParam[paramInt];
+  }
 }
 
 

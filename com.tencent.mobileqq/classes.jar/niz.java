@@ -1,603 +1,2659 @@
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.1;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.4;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ReqClearMessage;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Looper;
+import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
+import com.tencent.biz.AuthorizeConfig.1;
+import com.tencent.biz.AuthorizeConfig.2;
+import com.tencent.biz.AuthorizeConfig.4;
+import com.tencent.biz.AuthorizeConfig.5;
+import com.tencent.biz.AuthorizeConfig.6;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.webview.utils.WebViewConstant;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Set<Ljava.lang.String;>;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotOpt;
-import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import tencent.im.oidb.cmd0x791.oidb_0x791.ReqBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotOpt;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import tencent.im.s2c.msgtype0x210.submsgtype0x69.Submsgtype0x69;
 
 public class niz
-  extends anii
 {
-  public int a;
-  protected anil a;
-  protected njf a;
+  public static volatile long a;
+  protected static final ArrayMap<String, String> a;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public static final AtomicBoolean a;
+  protected static niz a;
+  protected static final JSONArray a;
+  public static final String[] a;
+  public static volatile long b;
+  private static final Object jdField_b_of_type_JavaLangObject = new Object();
+  private static long e;
+  private static long f;
+  protected volatile int a;
+  public final Context a;
+  public final SharedPreferences a;
+  private final String jdField_a_of_type_JavaLangString = "faceUnblockCamera.startPTVActivity";
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public final ConcurrentHashMap<String, JSONArray> a;
+  public final AtomicInteger a;
+  public nlx a;
+  public nly a;
+  public WtTicketPromise a;
+  public volatile JSONObject a;
+  private boolean jdField_a_of_type_Boolean;
+  private final String jdField_b_of_type_JavaLangString = "https://mysec.qq.com/v2/account_control/index.html";
+  public final ConcurrentHashMap<String, Set<String>> b;
+  protected volatile JSONArray b;
+  public volatile JSONObject b;
+  protected volatile long c;
+  private final String c;
+  protected volatile JSONArray c;
+  public volatile JSONObject c;
+  protected volatile long d;
+  protected volatile JSONArray d;
+  protected volatile JSONObject d;
+  protected volatile JSONArray e;
+  protected volatile JSONObject e;
+  protected volatile JSONArray f;
+  protected volatile JSONObject f;
+  public volatile JSONArray g;
+  protected volatile JSONObject g;
+  public volatile JSONObject h;
+  public volatile JSONObject i;
   
-  public niz(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Anil = new njc(this);
-    this.jdField_a_of_type_Njf = new njf(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.jdField_a_of_type_Njf);
-    this.jdField_a_of_type_Int = 0;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "skey", "pskey", "a1", "a2", "ptlogin2", "pt4_token" };
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(jdField_a_of_type_ArrayOfJavaLangString.length);
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("skey", "[\"*.qq.com\",\"*.tenpay.com\"]");
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("pskey", "[\"game.qq.com\",\"kg.qq.com\",\"id.qq.com\",\"qzone.qq.com\",\"qzone.com\",\"openmobile.qq.com\", \"tenpay.com\", \"buluo.qq.com\", \"docs.qq.com\"],\"ti.qq.com\"]");
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("a1", "[]");
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("a2", "[\"aq.qq.com\",\"weloan.tenpay.com\"]");
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("ptlogin2", "[\"http://ptlogin2.qq.com\",\"https://ssl.ptlogin2.qq.com\", \"https://ptlogin2.qq.com\"]");
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("pt4_token", "[\"gamecenter.qq.com\",\"imgcache.qq.com\",\"vip.qq.com\",\"haoma.qq.com\"]");
+    jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
+    jdField_a_of_type_OrgJsonJSONArray.put("com.tencent.qqcomic.aiogift");
+    jdField_a_of_type_OrgJsonJSONArray.put("com.tencent.gamecenter.hebao");
+    jdField_a_of_type_OrgJsonJSONArray.put("com.tencent.gamecenter.hebao2020");
+    jdField_a_of_type_Long = -1L;
+    jdField_b_of_type_Long = -1L;
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public static oidb_0x791.RedDotInfo a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  private niz(Context paramContext)
   {
-    int j = 0;
-    Object localObject1 = null;
-    label700:
-    label979:
-    label1002:
-    if ((paramArrayOfByte != null) && (paramQQAppInterface != null))
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
+    this.jdField_c_of_type_JavaLangString = "qbizApi.getClientInfo";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_d_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(jdField_a_of_type_ArrayOfJavaLangString.length);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(jdField_a_of_type_ArrayOfJavaLangString.length);
+    this.jdField_a_of_type_OicqWlogin_sdkRequestWtTicketPromise = new njb(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("AuthorizeConfig", 2, "AuthorizeConfig init");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
+    this.jdField_a_of_type_Nlx = new nlx(this.jdField_a_of_type_AndroidContentSharedPreferences);
+    this.jdField_a_of_type_Nly = new nly(this.jdField_a_of_type_AndroidContentSharedPreferences, this.jdField_a_of_type_Nlx);
+    this.jdField_a_of_type_Nlx.a(this.jdField_a_of_type_Nly);
+    FlatBuffersParser.f();
+    k();
+    jdField_e_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastPreloadPskey", 0L);
+  }
+  
+  private static String a(String paramString1, String paramString2, Set<String> paramSet)
+  {
+    Object localObject1;
+    Object localObject2;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      int i;
+      localObject1 = Uri.parse(paramString2);
+      localObject2 = ((Uri)localObject1).getScheme();
+      if ((!"http".equals(localObject2)) && (!"https".equals(localObject2)))
+      {
+        localObject1 = "";
+        return localObject1;
+      }
+      if (((Uri)localObject1).isHierarchical())
+      {
+        localObject1 = ((Uri)localObject1).getHost();
+        if (localObject1 != null)
+        {
+          localObject1 = ((String)localObject1).toLowerCase();
+          if (paramSet.contains(localObject1)) {
+            paramSet = (Set<String>)localObject1;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject1 = paramSet;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      if (!TextUtils.isEmpty(paramSet))
+      {
+        QLog.d("AuthorizeConfig", 2, paramSet + " need " + paramString1 + " which extract from " + paramString2);
+        return paramSet;
+        localObject2 = paramSet.iterator();
+        do
+        {
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          paramSet = (String)((Iterator)localObject2).next();
+        } while (!((String)localObject1).endsWith("." + paramSet));
+      }
+      else
+      {
+        QLog.d("AuthorizeConfig", 2, paramString2 + " not need " + paramString1);
+        return paramSet;
+        paramSet = "";
+      }
+    }
+  }
+  
+  /* Error */
+  public static String a(byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: new 297	java/io/ByteArrayOutputStream
+    //   3: dup
+    //   4: invokespecial 298	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: astore_2
+    //   8: aload_2
+    //   9: astore_1
+    //   10: new 300	java/util/zip/Inflater
+    //   13: dup
+    //   14: invokespecial 301	java/util/zip/Inflater:<init>	()V
+    //   17: astore_3
+    //   18: aload_2
+    //   19: astore_1
+    //   20: aload_3
+    //   21: aload_0
+    //   22: invokevirtual 305	java/util/zip/Inflater:setInput	([B)V
+    //   25: aload_2
+    //   26: astore_1
+    //   27: sipush 1024
+    //   30: newarray byte
+    //   32: astore_0
+    //   33: aload_2
+    //   34: astore_1
+    //   35: aload_3
+    //   36: invokevirtual 308	java/util/zip/Inflater:finished	()Z
+    //   39: ifne +56 -> 95
+    //   42: aload_2
+    //   43: astore_1
+    //   44: aload_2
+    //   45: aload_0
+    //   46: iconst_0
+    //   47: aload_3
+    //   48: aload_0
+    //   49: invokevirtual 312	java/util/zip/Inflater:inflate	([B)I
+    //   52: invokevirtual 316	java/io/ByteArrayOutputStream:write	([BII)V
+    //   55: goto -22 -> 33
+    //   58: astore_1
+    //   59: aload_2
+    //   60: astore_0
+    //   61: aload_1
+    //   62: astore_2
+    //   63: aload_0
+    //   64: astore_1
+    //   65: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   68: ifeq +14 -> 82
+    //   71: aload_0
+    //   72: astore_1
+    //   73: ldc 161
+    //   75: iconst_2
+    //   76: ldc 239
+    //   78: aload_2
+    //   79: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   82: aload_0
+    //   83: ifnull +7 -> 90
+    //   86: aload_0
+    //   87: invokevirtual 322	java/io/ByteArrayOutputStream:close	()V
+    //   90: ldc 239
+    //   92: astore_0
+    //   93: aload_0
+    //   94: areturn
+    //   95: aload_2
+    //   96: astore_1
+    //   97: aload_3
+    //   98: invokevirtual 325	java/util/zip/Inflater:end	()V
+    //   101: aload_2
+    //   102: astore_1
+    //   103: new 40	java/lang/String
+    //   106: dup
+    //   107: aload_2
+    //   108: invokevirtual 329	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   111: invokespecial 331	java/lang/String:<init>	([B)V
+    //   114: astore_3
+    //   115: aload_3
+    //   116: astore_0
+    //   117: aload_2
+    //   118: ifnull -25 -> 93
+    //   121: aload_2
+    //   122: invokevirtual 322	java/io/ByteArrayOutputStream:close	()V
+    //   125: aload_3
+    //   126: areturn
+    //   127: astore_1
+    //   128: aload_3
+    //   129: astore_0
+    //   130: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   133: ifeq -40 -> 93
+    //   136: ldc 161
+    //   138: iconst_2
+    //   139: ldc 239
+    //   141: aload_1
+    //   142: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   145: aload_3
+    //   146: areturn
+    //   147: astore_0
+    //   148: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   151: ifeq -61 -> 90
+    //   154: ldc 161
+    //   156: iconst_2
+    //   157: ldc 239
+    //   159: aload_0
+    //   160: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   163: goto -73 -> 90
+    //   166: astore_0
+    //   167: aconst_null
+    //   168: astore_1
+    //   169: aload_1
+    //   170: ifnull +7 -> 177
+    //   173: aload_1
+    //   174: invokevirtual 322	java/io/ByteArrayOutputStream:close	()V
+    //   177: aload_0
+    //   178: athrow
+    //   179: astore_1
+    //   180: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   183: ifeq -6 -> 177
+    //   186: ldc 161
+    //   188: iconst_2
+    //   189: ldc 239
+    //   191: aload_1
+    //   192: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   195: goto -18 -> 177
+    //   198: astore_0
+    //   199: goto -30 -> 169
+    //   202: astore_2
+    //   203: aconst_null
+    //   204: astore_0
+    //   205: goto -142 -> 63
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	208	0	paramArrayOfByte	byte[]
+    //   9	35	1	localObject1	Object
+    //   58	4	1	localThrowable1	java.lang.Throwable
+    //   64	39	1	localObject2	Object
+    //   127	15	1	localException1	Exception
+    //   168	6	1	localObject3	Object
+    //   179	13	1	localException2	Exception
+    //   7	115	2	localObject4	Object
+    //   202	1	2	localThrowable2	java.lang.Throwable
+    //   17	129	3	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	18	58	java/lang/Throwable
+    //   20	25	58	java/lang/Throwable
+    //   27	33	58	java/lang/Throwable
+    //   35	42	58	java/lang/Throwable
+    //   44	55	58	java/lang/Throwable
+    //   97	101	58	java/lang/Throwable
+    //   103	115	58	java/lang/Throwable
+    //   121	125	127	java/lang/Exception
+    //   86	90	147	java/lang/Exception
+    //   0	8	166	finally
+    //   173	177	179	java/lang/Exception
+    //   10	18	198	finally
+    //   20	25	198	finally
+    //   27	33	198	finally
+    //   35	42	198	finally
+    //   44	55	198	finally
+    //   65	71	198	finally
+    //   73	82	198	finally
+    //   97	101	198	finally
+    //   103	115	198	finally
+    //   0	8	202	java/lang/Throwable
+  }
+  
+  public static niz a()
+  {
+    if (jdField_a_of_type_Niz == null) {}
+    try
+    {
+      if (jdField_a_of_type_Niz == null) {
+        jdField_a_of_type_Niz = new niz(BaseApplication.getContext());
+      }
+      jdField_a_of_type_Niz.a();
+      if (!jdField_a_of_type_Niz.a(true)) {
+        jdField_a_of_type_Niz.i();
+      }
+      return jdField_a_of_type_Niz;
+    }
+    finally {}
+  }
+  
+  public static niz a(boolean paramBoolean)
+  {
+    if (jdField_a_of_type_Niz == null) {}
+    try
+    {
+      if (jdField_a_of_type_Niz == null) {
+        jdField_a_of_type_Niz = new niz(BaseApplication.getContext());
+      }
+      jdField_a_of_type_Niz.a();
+      jdField_a_of_type_Niz.a(paramBoolean);
+      return jdField_a_of_type_Niz;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  private JSONArray a(String paramString)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: aload_1
+    //   3: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: ifeq +15 -> 21
+    //   9: new 80	org/json/JSONArray
+    //   12: dup
+    //   13: invokespecial 82	org/json/JSONArray:<init>	()V
+    //   16: astore 5
+    //   18: aload 5
+    //   20: areturn
+    //   21: aload_0
+    //   22: getfield 139	niz:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   25: aload_1
+    //   26: invokevirtual 357	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   29: checkcast 80	org/json/JSONArray
+    //   32: astore 6
+    //   34: aload 6
+    //   36: astore 5
+    //   38: aload 6
+    //   40: ifnonnull -22 -> 18
+    //   43: aload_0
+    //   44: getfield 139	niz:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   47: astore 8
+    //   49: aload 8
+    //   51: monitorenter
+    //   52: aload_0
+    //   53: getfield 139	niz:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   56: aload_1
+    //   57: invokevirtual 357	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   60: checkcast 80	org/json/JSONArray
+    //   63: astore 5
+    //   65: aload 5
+    //   67: astore 6
+    //   69: aload 5
+    //   71: ifnonnull +139 -> 210
+    //   74: aload_0
+    //   75: getfield 192	niz:jdField_a_of_type_Nly	Lnly;
+    //   78: aload_1
+    //   79: invokevirtual 359	nly:a	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   82: astore 6
+    //   84: aload 6
+    //   86: ifnonnull +195 -> 281
+    //   89: new 80	org/json/JSONArray
+    //   92: dup
+    //   93: getstatic 62	niz:jdField_a_of_type_AndroidSupportV4UtilArrayMap	Landroid/support/v4/util/ArrayMap;
+    //   96: aload_1
+    //   97: invokevirtual 360	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: checkcast 40	java/lang/String
+    //   103: invokespecial 363	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   106: astore 5
+    //   108: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   111: ifeq +29 -> 140
+    //   114: ldc 161
+    //   116: iconst_2
+    //   117: new 255	java/lang/StringBuilder
+    //   120: dup
+    //   121: invokespecial 256	java/lang/StringBuilder:<init>	()V
+    //   124: ldc_w 365
+    //   127: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: aload_1
+    //   131: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokestatic 367	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   140: aload 5
+    //   142: astore 6
+    //   144: aload 5
+    //   146: ifnonnull +44 -> 190
+    //   149: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   152: ifeq +29 -> 181
+    //   155: ldc 161
+    //   157: iconst_2
+    //   158: new 255	java/lang/StringBuilder
+    //   161: dup
+    //   162: invokespecial 256	java/lang/StringBuilder:<init>	()V
+    //   165: aload_1
+    //   166: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: ldc_w 369
+    //   172: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokestatic 367	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: new 80	org/json/JSONArray
+    //   184: dup
+    //   185: invokespecial 82	org/json/JSONArray:<init>	()V
+    //   188: astore 6
+    //   190: aload_0
+    //   191: getfield 139	niz:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   194: aload_1
+    //   195: aload 6
+    //   197: invokevirtual 370	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   200: pop
+    //   201: aload_0
+    //   202: getfield 141	niz:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   205: aload_1
+    //   206: invokevirtual 373	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   209: pop
+    //   210: aload 8
+    //   212: monitorexit
+    //   213: aload 6
+    //   215: areturn
+    //   216: astore_1
+    //   217: aload 8
+    //   219: monitorexit
+    //   220: aload_1
+    //   221: athrow
+    //   222: astore 7
+    //   224: aload 6
+    //   226: astore 5
+    //   228: aload 7
+    //   230: astore 6
+    //   232: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   235: ifeq +151 -> 386
+    //   238: ldc 161
+    //   240: iconst_2
+    //   241: new 255	java/lang/StringBuilder
+    //   244: dup
+    //   245: invokespecial 256	java/lang/StringBuilder:<init>	()V
+    //   248: ldc_w 375
+    //   251: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: aload_1
+    //   255: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: ldc_w 377
+    //   261: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: aload 6
+    //   266: invokevirtual 380	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   269: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   272: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: invokestatic 367	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   278: goto +108 -> 386
+    //   281: ldc 44
+    //   283: aload_1
+    //   284: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   287: istore 4
+    //   289: iload 4
+    //   291: ifeq +78 -> 369
+    //   294: new 80	org/json/JSONArray
+    //   297: dup
+    //   298: getstatic 62	niz:jdField_a_of_type_AndroidSupportV4UtilArrayMap	Landroid/support/v4/util/ArrayMap;
+    //   301: ldc 44
+    //   303: invokevirtual 360	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   306: checkcast 40	java/lang/String
+    //   309: invokespecial 363	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   312: astore 5
+    //   314: aload 5
+    //   316: invokevirtual 384	org/json/JSONArray:length	()I
+    //   319: istore_2
+    //   320: iload_3
+    //   321: iload_2
+    //   322: if_icmpge +32 -> 354
+    //   325: aload 6
+    //   327: aload 5
+    //   329: iload_3
+    //   330: invokevirtual 388	org/json/JSONArray:optString	(I)Ljava/lang/String;
+    //   333: invokevirtual 89	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   336: pop
+    //   337: iload_3
+    //   338: iconst_1
+    //   339: iadd
+    //   340: istore_3
+    //   341: goto -21 -> 320
+    //   344: aload 7
+    //   346: invokevirtual 391	org/json/JSONException:printStackTrace	()V
+    //   349: iconst_0
+    //   350: istore_2
+    //   351: goto -31 -> 320
+    //   354: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   357: ifeq +12 -> 369
+    //   360: ldc 161
+    //   362: iconst_2
+    //   363: ldc_w 393
+    //   366: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   369: aload 6
+    //   371: astore 5
+    //   373: goto -233 -> 140
+    //   376: astore 7
+    //   378: goto -34 -> 344
+    //   381: astore 6
+    //   383: goto -151 -> 232
+    //   386: goto -246 -> 140
+    //   389: astore 7
+    //   391: aconst_null
+    //   392: astore 5
+    //   394: goto -50 -> 344
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	397	0	this	niz
+    //   0	397	1	paramString	String
+    //   319	32	2	j	int
+    //   1	340	3	k	int
+    //   287	3	4	bool	boolean
+    //   16	377	5	localObject1	Object
+    //   32	338	6	localObject2	Object
+    //   381	1	6	localJSONException1	JSONException
+    //   222	123	7	localJSONException2	JSONException
+    //   376	1	7	localJSONException3	JSONException
+    //   389	1	7	localJSONException4	JSONException
+    //   47	171	8	localConcurrentHashMap	ConcurrentHashMap
+    // Exception table:
+    //   from	to	target	type
+    //   52	65	216	finally
+    //   74	84	216	finally
+    //   89	108	216	finally
+    //   108	140	216	finally
+    //   149	181	216	finally
+    //   181	190	216	finally
+    //   190	210	216	finally
+    //   210	213	216	finally
+    //   217	220	216	finally
+    //   232	278	216	finally
+    //   281	289	216	finally
+    //   294	314	216	finally
+    //   314	320	216	finally
+    //   325	337	216	finally
+    //   344	349	216	finally
+    //   354	369	216	finally
+    //   89	108	222	org/json/JSONException
+    //   314	320	376	org/json/JSONException
+    //   108	140	381	org/json/JSONException
+    //   294	314	389	org/json/JSONException
+  }
+  
+  private JSONObject a()
+  {
+    JSONObject localJSONObject3 = this.jdField_a_of_type_OrgJsonJSONObject;
+    System.currentTimeMillis();
+    Object localObject = localJSONObject3;
+    JSONObject localJSONObject1;
+    if (localJSONObject3 == null)
+    {
+      localObject = this.jdField_a_of_type_Nly.a();
+      localJSONObject1 = localJSONObject3;
+      if (localObject == null) {}
+    }
+    try
+    {
+      localJSONObject1 = new JSONObject((String)localObject);
+      localObject = localJSONObject1;
+      if (localJSONObject1 == null) {
+        localObject = new JSONObject();
+      }
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
       for (;;)
       {
-        try
+        JSONObject localJSONObject2 = localJSONObject3;
+        if (QLog.isColorLevel())
         {
-          localObject2 = new Submsgtype0x69();
-          ((Submsgtype0x69)localObject2).mergeFrom(paramArrayOfByte);
-          boolean bool = ((Submsgtype0x69)localObject2).bool_test_env.get();
-          if (bool != bccs.a)
-          {
-            yqp.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, sIsTestEnv = %b", Boolean.valueOf(bool), Boolean.valueOf(bccs.a));
-            if (bool != ylb.a())
-            {
-              yqp.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, QQStoryNetReqUtils.isDevEnv() = %b", Boolean.valueOf(bool), Boolean.valueOf(ylb.a()));
-              return null;
-            }
-          }
-          paramArrayOfByte = new oidb_0x791.RedDotInfo();
-          paramArrayOfByte.uint32_appid.set(((Submsgtype0x69)localObject2).uint32_appid.get());
-          paramArrayOfByte.bool_display_reddot.set(((Submsgtype0x69)localObject2).bool_display_reddot.get());
-          paramArrayOfByte.uint32_number.set(((Submsgtype0x69)localObject2).uint32_number.get());
-          paramArrayOfByte.uint32_reason.set(((Submsgtype0x69)localObject2).uint32_reason.get());
-          paramArrayOfByte.uint32_last_time.set(((Submsgtype0x69)localObject2).uint32_last_time.get());
-          paramArrayOfByte.uint64_cmd_uin.set(((Submsgtype0x69)localObject2).uint64_cmd_uin.get());
-          paramArrayOfByte.str_face_url.set(((Submsgtype0x69)localObject2).bytes_face_url.get());
-          paramArrayOfByte.str_custom_buffer.set(((Submsgtype0x69)localObject2).bytes_custom_buffer.get());
-          paramArrayOfByte.uint32_expire_time.set(((Submsgtype0x69)localObject2).uint32_expire_time.get());
-          paramArrayOfByte.uint32_cmd_uin_type.set(((Submsgtype0x69)localObject2).uint32_cmd_uin_type.get());
-          paramArrayOfByte.uint32_report_type.set(((Submsgtype0x69)localObject2).uint32_report_type.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "parsePushRedPointInfo:" + njg.a(paramArrayOfByte));
-          }
-          i = paramArrayOfByte.uint32_appid.get();
-          if (i != 38) {}
+          QLog.d("AuthorizeConfig", 2, "Decode mOfflineConfig  error");
+          localJSONObject2 = localJSONObject3;
         }
-        catch (Exception paramQQAppInterface)
-        {
-          Object localObject2;
-          int k;
-          int m;
-          long l1;
-          long l2;
-          paramQQAppInterface.printStackTrace();
-          paramQQAppInterface = localObject1;
-        }
-        try
-        {
-          localObject2 = new JSONObject(paramArrayOfByte.str_custom_buffer.get().toStringUtf8());
-          if (((JSONObject)localObject2).optInt("official_topic") != 1) {
-            break label619;
-          }
-          i = 1;
-          k = ((JSONObject)localObject2).optInt("red_content_type");
-          m = ((Integer)axdz.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-          if (i != 0)
-          {
-            new bcsy(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("push_red_send").a(new String[] { String.valueOf(m), "0", String.valueOf(k), "0" }).a();
-            Log.i("redreport", "retport push_red_send d1 = " + m + " d3 = " + k);
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          continue;
-          paramQQAppInterface = localException.a();
-          i = niy.a(paramArrayOfByte, paramQQAppInterface);
-          if (i >= 0) {
-            break label700;
-          }
-          if (!QLog.isColorLevel()) {
-            break label1031;
-          }
-          QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "comparePriority:比上一个红点优先级低，current：" + njg.a(paramArrayOfByte) + "|lastRedPoint:" + njg.a(paramQQAppInterface));
-          return null;
-          if ((i != 0) || (paramArrayOfByte.uint32_last_time.get() >= paramQQAppInterface.uint32_last_time.get())) {
-            break label1002;
-          }
-          if (!QLog.isColorLevel()) {
-            break label1031;
-          }
-          QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "当前红点比上一个红点旧，current：" + njg.a(paramArrayOfByte) + "|lastRedPoint:" + njg.a(paramQQAppInterface));
-          return null;
-          paramQQAppInterface = localException.a();
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.uint64_cmd_uin.get() == paramArrayOfByte.uint64_cmd_uin.get()) && (paramQQAppInterface.uint32_cmd_uin_type.get() == paramArrayOfByte.uint32_cmd_uin_type.get()) && (paramQQAppInterface.uint32_last_time.get() == paramArrayOfByte.uint32_last_time.get())) {
-            break label1002;
-          }
-          if (!QLog.isColorLevel()) {
-            break label1031;
-          }
-          QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "故事的撤回红点需要判断uin和lasttime，强校验，和上一个不一致的话直接返回，不处理，current：" + njg.a(paramArrayOfByte) + "|lastRedPoint:" + njg.a(paramQQAppInterface));
-          return null;
-          if (46 != paramArrayOfByte.uint32_appid.get()) {
-            break label1002;
-          }
-          if (!bdjg.a(paramQQAppInterface)) {
-            break label1031;
-          }
-          oidb_0x791.RedDotInfo localRedDotInfo = localException.a(46, false);
-          i = j;
-          if (localRedDotInfo == null) {
-            break label941;
-          }
-          i = j;
-          if (!localRedDotInfo.uint32_last_time.has()) {
-            break label941;
-          }
-          i = localRedDotInfo.uint32_last_time.get();
-          if (!QLog.isColorLevel()) {
-            break label979;
-          }
-          QLog.i("TroopRedTouchHandler", 2, "TENCENT_DOCS_ASSISTANT  show redDot" + paramArrayOfByte.bool_display_reddot.get());
-          localException.a(localRedDotInfo, paramArrayOfByte);
-          localException.a(paramArrayOfByte);
-          a(paramQQAppInterface, paramArrayOfByte, i, false);
-          return null;
-          if (niy.c(paramArrayOfByte.uint32_appid.get())) {
-            break label1031;
-          }
-        }
-        localObject2 = (njg)paramQQAppInterface.getManager(70);
-        if (!niy.b(paramArrayOfByte.uint32_appid.get())) {
-          break label883;
-        }
-        if (!paramArrayOfByte.bool_display_reddot.get()) {
-          break label771;
-        }
-        paramQQAppInterface = (wpf)wpm.a(10);
-        l1 = NetConnInfoCenter.getServerTimeMillis();
-        l2 = paramQQAppInterface.a();
-        if (l1 >= l2) {
-          break;
-        }
-        if (!QLog.isColorLevel()) {
-          break label1031;
-        }
-        QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "故事红点下发到达时间：" + l1 + "小于最近更新刷新时间：" + l2 + njg.a(paramArrayOfByte));
-        return null;
-        yqp.a("TroopRedTouchHandler", "parsePushRedPointInfo() return %s", paramQQAppInterface);
-        return paramQQAppInterface;
-        label619:
-        i = 0;
       }
-      label883:
-      localException.a(paramArrayOfByte);
     }
-    label771:
-    label941:
-    for (paramQQAppInterface = paramArrayOfByte;; paramQQAppInterface = null) {
-      break;
+  }
+  
+  private String b(String paramString1, String paramString2)
+  {
+    String str = paramString1;
+    if (paramString1.startsWith(paramString2)) {
+      str = paramString1.substring(paramString2.length());
     }
-    label1031:
+    return str;
+  }
+  
+  private JSONObject b()
+  {
+    Object localObject3 = this.jdField_b_of_type_OrgJsonJSONObject;
+    System.currentTimeMillis();
+    Object localObject1 = localObject3;
+    String str;
+    if (localObject3 == null)
+    {
+      str = this.jdField_a_of_type_Nly.b();
+      localObject1 = localObject3;
+      if (str == null) {}
+    }
+    try
+    {
+      localObject1 = new JSONObject(str);
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = new JSONObject();
+      }
+      this.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject3);
+      localObject1 = localObject3;
+      return localObject1;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        Object localObject2 = localObject3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorizeConfig", 2, "Decode mExtraConfig error");
+          localObject2 = localObject3;
+        }
+      }
+    }
+  }
+  
+  public static boolean b(String paramString1, String paramString2)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while ("*".equals(paramString1));
+      if (!"*.*".equals(paramString1)) {
+        break;
+      }
+      bool1 = bool2;
+    } while (paramString2.indexOf('.') != -1);
+    return false;
+    if (paramString1.startsWith("*")) {
+      return paramString2.endsWith(paramString1.substring(1));
+    }
+    if (paramString1.endsWith("*")) {
+      return paramString2.startsWith(paramString1.substring(0, paramString1.length() - 1));
+    }
+    return paramString2.equals(paramString1);
+  }
+  
+  private boolean f()
+  {
+    boolean bool2 = false;
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
+          return false;
+        }
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 3) {
+          return true;
+        }
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1) {
+          break label121;
+        }
+        bool1 = "com.tencent.mobileqq".equals(MobileQQ.getMobileQQ().getQQProcessName());
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+        long l = System.currentTimeMillis() - jdField_b_of_type_Long;
+        if (l < 0L) {
+          break label126;
+        }
+        if (l >= 1800000L)
+        {
+          break label126;
+          return bool1;
+        }
+      }
+      int j = 0;
+      break label128;
+      label121:
+      boolean bool1 = false;
+      continue;
+      label126:
+      j = 1;
+      label128:
+      if (!bool1)
+      {
+        bool1 = bool2;
+        if (j == 0) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+  }
+  
+  public int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      JSONObject localJSONObject;
+      do
+      {
+        return 0;
+        paramString = paramString.split("\\?");
+        localJSONObject = a();
+      } while (!localJSONObject.has(paramString[0]));
+      try
+      {
+        int j = localJSONObject.getJSONObject(paramString[0]).getInt("delay");
+        return j;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AuthorizeConfig", 2, "getCheckUpDelayTime error");
+    return 0;
+  }
+  
+  public long a()
+  {
+    if (-1L == this.jdField_d_of_type_Long) {
+      this.jdField_d_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("publishSeq", 0L);
+    }
+    return this.jdField_d_of_type_Long;
+  }
+  
+  /* Error */
+  public Boolean a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +8 -> 9
+    //   4: iconst_0
+    //   5: invokestatic 489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   8: areturn
+    //   9: aload_1
+    //   10: invokestatic 225	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   13: astore 5
+    //   15: aload 5
+    //   17: invokevirtual 229	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   20: astore 6
+    //   22: ldc_w 491
+    //   25: aload 6
+    //   27: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   30: ifeq +55 -> 85
+    //   33: aload_1
+    //   34: invokevirtual 418	java/lang/String:length	()I
+    //   37: sipush 200
+    //   40: if_icmple +42 -> 82
+    //   43: aload_1
+    //   44: iconst_0
+    //   45: sipush 200
+    //   48: invokevirtual 439	java/lang/String:substring	(II)Ljava/lang/String;
+    //   51: astore_1
+    //   52: ldc_w 493
+    //   55: ldc_w 495
+    //   58: aload_1
+    //   59: ldc 239
+    //   61: ldc 239
+    //   63: ldc 239
+    //   65: invokestatic 500	bguj:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   68: ldc 161
+    //   70: iconst_1
+    //   71: ldc_w 502
+    //   74: invokestatic 367	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: iconst_0
+    //   78: invokestatic 489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   81: areturn
+    //   82: goto -30 -> 52
+    //   85: ldc 231
+    //   87: aload 6
+    //   89: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   92: ifne +18 -> 110
+    //   95: ldc 237
+    //   97: aload 6
+    //   99: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   102: ifne +8 -> 110
+    //   105: iconst_0
+    //   106: invokestatic 489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   109: areturn
+    //   110: aload 5
+    //   112: invokevirtual 245	android/net/Uri:getHost	()Ljava/lang/String;
+    //   115: astore_1
+    //   116: aload_1
+    //   117: astore 5
+    //   119: aload_1
+    //   120: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   123: ifne +9 -> 132
+    //   126: aload_1
+    //   127: invokevirtual 248	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   130: astore 5
+    //   132: aload_0
+    //   133: getfield 504	niz:jdField_c_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   136: astore_1
+    //   137: invokestatic 402	java/lang/System:currentTimeMillis	()J
+    //   140: pop2
+    //   141: aload_1
+    //   142: ifnonnull +238 -> 380
+    //   145: aload_0
+    //   146: getfield 192	niz:jdField_a_of_type_Nly	Lnly;
+    //   149: invokevirtual 506	nly:c	()Ljava/lang/String;
+    //   152: astore 6
+    //   154: aload 6
+    //   156: ifnull +101 -> 257
+    //   159: new 406	org/json/JSONObject
+    //   162: dup
+    //   163: aload 6
+    //   165: invokespecial 407	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   168: astore 6
+    //   170: aload 6
+    //   172: astore_1
+    //   173: aload_1
+    //   174: ifnonnull +203 -> 377
+    //   177: new 406	org/json/JSONObject
+    //   180: dup
+    //   181: ldc_w 508
+    //   184: invokespecial 407	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   187: astore 6
+    //   189: aload 6
+    //   191: astore_1
+    //   192: aload_0
+    //   193: aload_1
+    //   194: putfield 504	niz:jdField_c_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   197: aload_1
+    //   198: ldc_w 510
+    //   201: invokevirtual 513	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   204: astore 6
+    //   206: aload 6
+    //   208: invokevirtual 384	org/json/JSONArray:length	()I
+    //   211: istore 4
+    //   213: iconst_0
+    //   214: istore_3
+    //   215: iload_3
+    //   216: iload 4
+    //   218: if_icmpge +56 -> 274
+    //   221: aload 6
+    //   223: iload_3
+    //   224: invokevirtual 388	org/json/JSONArray:optString	(I)Ljava/lang/String;
+    //   227: aload 5
+    //   229: invokestatic 515	niz:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   232: ifeq +33 -> 265
+    //   235: iconst_1
+    //   236: invokestatic 489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   239: areturn
+    //   240: astore 6
+    //   242: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   245: ifeq +12 -> 257
+    //   248: ldc 161
+    //   250: iconst_2
+    //   251: ldc_w 517
+    //   254: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   257: goto -84 -> 173
+    //   260: astore 6
+    //   262: goto -70 -> 192
+    //   265: iload_3
+    //   266: iconst_1
+    //   267: iadd
+    //   268: istore_3
+    //   269: goto -54 -> 215
+    //   272: astore 5
+    //   274: aload_1
+    //   275: ldc_w 519
+    //   278: invokevirtual 513	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   281: astore 5
+    //   283: aload 5
+    //   285: invokevirtual 384	org/json/JSONArray:length	()I
+    //   288: istore 4
+    //   290: iconst_0
+    //   291: istore_3
+    //   292: iload_3
+    //   293: iload 4
+    //   295: if_icmpge +30 -> 325
+    //   298: aload 5
+    //   300: iload_3
+    //   301: invokevirtual 388	org/json/JSONArray:optString	(I)Ljava/lang/String;
+    //   304: aload_2
+    //   305: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   308: ifeq +8 -> 316
+    //   311: iconst_1
+    //   312: invokestatic 489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   315: areturn
+    //   316: iload_3
+    //   317: iconst_1
+    //   318: iadd
+    //   319: istore_3
+    //   320: goto -28 -> 292
+    //   323: astore 5
+    //   325: aload_1
+    //   326: ldc_w 521
+    //   329: invokevirtual 513	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   332: astore_1
+    //   333: aload_1
+    //   334: invokevirtual 384	org/json/JSONArray:length	()I
+    //   337: istore 4
+    //   339: iconst_0
+    //   340: istore_3
+    //   341: iload_3
+    //   342: iload 4
+    //   344: if_icmpge +28 -> 372
+    //   347: aload_1
+    //   348: iload_3
+    //   349: invokevirtual 388	org/json/JSONArray:optString	(I)Ljava/lang/String;
+    //   352: aload_2
+    //   353: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   356: ifeq +8 -> 364
+    //   359: iconst_1
+    //   360: invokestatic 489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   363: areturn
+    //   364: iload_3
+    //   365: iconst_1
+    //   366: iadd
+    //   367: istore_3
+    //   368: goto -27 -> 341
+    //   371: astore_1
+    //   372: iconst_0
+    //   373: invokestatic 489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   376: areturn
+    //   377: goto -185 -> 192
+    //   380: goto -183 -> 197
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	383	0	this	niz
+    //   0	383	1	paramString1	String
+    //   0	383	2	paramString2	String
+    //   214	154	3	j	int
+    //   211	134	4	k	int
+    //   13	215	5	localObject1	Object
+    //   272	1	5	localJSONException1	JSONException
+    //   281	18	5	localJSONArray	JSONArray
+    //   323	1	5	localJSONException2	JSONException
+    //   20	202	6	localObject2	Object
+    //   240	1	6	localJSONException3	JSONException
+    //   260	1	6	localJSONException4	JSONException
+    // Exception table:
+    //   from	to	target	type
+    //   159	170	240	org/json/JSONException
+    //   177	189	260	org/json/JSONException
+    //   197	213	272	org/json/JSONException
+    //   221	235	272	org/json/JSONException
+    //   274	290	323	org/json/JSONException
+    //   298	311	323	org/json/JSONException
+    //   325	339	371	org/json/JSONException
+    //   347	359	371	org/json/JSONException
+  }
+  
+  public String a(String paramString)
+  {
     return null;
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong)
+  public String a(String paramString1, String paramString2)
   {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new TroopRedTouchHandler.4(paramQQAppInterface, paramLong));
+    return b().optString(paramString1, paramString2);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, oidb_0x791.RedDotInfo paramRedDotInfo)
+  public Set<String> a(String paramString)
   {
-    if ((paramQQAppInterface == null) || (paramRedDotInfo == null)) {}
-    njg localnjg;
+    Object localObject1;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject1 = new HashSet();
+    }
+    Object localObject2;
+    do
+    {
+      return localObject1;
+      localObject2 = (Set)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localObject1 = localObject2;
+    } while (localObject2 != null);
+    for (;;)
+    {
+      int j;
+      synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        localObject2 = (Set)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break label232;
+        }
+        localObject2 = new HashSet(32);
+        localObject1 = a(paramString);
+        if ((localObject1 != null) && (((JSONArray)localObject1).length() != 0))
+        {
+          int k = ((JSONArray)localObject1).length();
+          j = 0;
+          if (j < k) {
+            if ("skey".equals(paramString)) {
+              ((Set)localObject2).add(b(((JSONArray)localObject1).optString(j, ""), "*."));
+            } else {
+              ((Set)localObject2).add(((JSONArray)localObject1).optString(j, ""));
+            }
+          }
+        }
+      }
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AuthorizeConfig", 2, paramString + " domain white list: " + localObject2);
+        localObject1 = localObject2;
+      }
+      label232:
+      return localObject1;
+      j += 1;
+    }
+  }
+  
+  protected void a()
+  {
+    ThreadManager.executeOnSubThread(new AuthorizeConfig.1(this));
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    System.currentTimeMillis();
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    if (FlatBuffersParser.a()) {}
+    for (paramString1 = this.jdField_a_of_type_Nlx.a(localEditor, paramString1); paramString1 == null; paramString1 = this.jdField_a_of_type_Nly.a(localEditor, paramString1)) {
+      return;
+    }
+    long l = this.jdField_d_of_type_Long;
+    this.jdField_d_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("publishSeq", this.jdField_d_of_type_Long);
+    QLog.i("AuthorizeConfig", 1, "update white list's publishSeq from " + l + " to " + this.jdField_d_of_type_Long + ".");
+    if (TextUtils.isEmpty(paramString1))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+      localEditor.putLong("lastUpdate", System.currentTimeMillis());
+      localEditor.putString("qqVersion", "2013 8.4.5");
+      localEditor.putString(paramString3, paramString2);
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "White list update completed as version=" + paramString2);
+      }
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_ok", 0, 1, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      localEditor.commit();
+      g();
+      i();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.e("AuthorizeConfig", 2, "Authorize config parse failed include: " + paramString1);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    String str = nld.a();
+    if (!TextUtils.isEmpty(str)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "CgiConfig sp content: " + str);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_b_of_type_OrgJsonJSONArray = new JSONArray(str);
+        if (this.jdField_b_of_type_OrgJsonJSONArray == null) {
+          break;
+        }
+        return true;
+      }
+      catch (JSONException localJSONException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("AuthorizeConfig", 2, "CgiConfig load exception: " + localJSONException.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "CgiConfig sp content empty!");
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    Object localObject = Uri.parse(paramString).getScheme();
+    if ((!"http".equals(localObject)) && (!"https".equals(localObject))) {
+      return false;
+    }
+    localObject = Uri.parse(paramString).getHost();
+    paramString = (String)localObject;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramString = ((String)localObject).toLowerCase();
+    }
+    localObject = a("skey");
+    int k = ((JSONArray)localObject).length();
+    int j = 0;
+    while (j < k)
+    {
+      if (b(((JSONArray)localObject).optString(j), paramString)) {
+        return true;
+      }
+      j += 1;
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      return false;
+    }
+    Uri localUri = Uri.parse(paramString1);
+    String str = localUri.getScheme();
+    if ("file".equals(str))
+    {
+      if (paramString1.length() > 200) {
+        paramString1 = paramString1.substring(0, 200);
+      }
+      for (;;)
+      {
+        bguj.a("webview", "file_js", paramString1, "", "", "");
+        QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
+        return false;
+      }
+    }
+    if ((!"http".equals(str)) && (!"https".equals(str))) {
+      return false;
+    }
+    if ("data.checkPermission".equals(paramString2)) {
+      return paramString1.startsWith("https://qqweb.qq.com/m/whitelist/testing/");
+    }
+    if (paramString2.startsWith("CAPTCHA.")) {
+      return true;
+    }
+    if ((paramString2.startsWith("login.openSmsPage")) && ("ti.qq.com".equals(localUri.getHost()))) {
+      return true;
+    }
+    if (paramString2.equals("identification.loginVerify")) {
+      return true;
+    }
+    if ("faceUnblockCamera.startPTVActivity".equals(paramString2)) {
+      return true;
+    }
+    if (("qbizApi.getClientInfo".equals(paramString2)) && (paramString1.startsWith("https://mysec.qq.com/v2/account_control/index.html"))) {
+      return true;
+    }
+    System.currentTimeMillis();
+    int j = this.jdField_a_of_type_Nly.a(localUri.getHost(), paramString2);
+    if (nlw.a(j)) {
+      return true;
+    }
+    if (nlw.b(j)) {
+      return false;
+    }
+    if ("publicAccountNew.config".equals(paramString2)) {
+      return true;
+    }
+    if (tyo.a(paramString1)) {
+      return (!TextUtils.isEmpty(paramString2)) && (tyo.a(paramString1, paramString2));
+    }
+    return false;
+  }
+  
+  public boolean a(JSONObject paramJSONObject)
+  {
+    return birz.a(paramJSONObject, "sonicWhiteList");
+  }
+  
+  protected boolean a(boolean paramBoolean)
+  {
+    if (f())
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
+      ThreadManager.executeOnNetWorkThread(new AuthorizeConfig.2(this, paramBoolean));
+      return true;
+    }
+    return false;
+  }
+  
+  public String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      JSONObject localJSONObject;
+      do
+      {
+        return null;
+        paramString = paramString.split("\\?");
+        localJSONObject = a();
+      } while (!localJSONObject.has(paramString[0]));
+      try
+      {
+        paramString = localJSONObject.getJSONObject(paramString[0]).getString("bid");
+        return paramString;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AuthorizeConfig", 2, "getOfflineId error");
+    return null;
+  }
+  
+  public void b()
+  {
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localEditor.remove("lastVersion");
+    localEditor.commit();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
+    a(false);
+  }
+  
+  public boolean b()
+  {
+    String str = nld.b();
+    if (!TextUtils.isEmpty(str)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig sp content: " + str);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_c_of_type_OrgJsonJSONArray = new JSONArray(str);
+        if (this.jdField_c_of_type_OrgJsonJSONArray == null) {
+          break;
+        }
+        return true;
+      }
+      catch (JSONException localJSONException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig load exception: " + localJSONException.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig sp content empty!");
+      }
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if ((this.jdField_b_of_type_OrgJsonJSONArray == null) && (!a()))
+          {
+            if (QLog.isColorLevel())
+            {
+              QLog.d("AuthorizeConfig", 2, "CgiConfig loadfromsp fail , url: " + noe.b(paramString, new String[0]));
+              return false;
+            }
+          }
+          else
+          {
+            String str1 = Uri.parse(paramString).getHost();
+            if ((this.jdField_b_of_type_OrgJsonJSONArray.length() != 0) && (!TextUtils.isEmpty(str1)))
+            {
+              str1 = str1.toLowerCase();
+              int k = this.jdField_b_of_type_OrgJsonJSONArray.length();
+              j = 0;
+              if (j < k)
+              {
+                String str2 = this.jdField_b_of_type_OrgJsonJSONArray.optString(j, "");
+                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
+                  break label249;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label247;
+                }
+                QLog.d("AuthorizeConfig", 2, "CgiConfig hit , url: " + noe.b(paramString, new String[0]) + " domain: " + str2);
+                break label247;
+              }
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorizeConfig", 2, "CgiConfig check fail , url empty!");
+          return false;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+      return false;
+      label247:
+      return true;
+      label249:
+      j += 1;
+    }
+  }
+  
+  public String c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      JSONObject localJSONObject;
+      do
+      {
+        return null;
+        paramString = paramString.split("\\?");
+        localJSONObject = a();
+      } while (!localJSONObject.has(paramString[0]));
+      try
+      {
+        paramString = localJSONObject.getJSONObject(paramString[0]).getString("duck");
+        return paramString;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AuthorizeConfig", 2, "getCheckUpType error");
+    return null;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "readAndSaveX5Config from VasQuickUpdateManager.SCID_FUNCDEV_WEBVIEW.");
+    }
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject2 = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject1, "VASBiz_FuncDev_webview.json", false, null);
+    if ((localObject2 != null) && (localObject1 != null) && (((AppRuntime)localObject1).isLogin()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "receive X5Config data: " + ((JSONObject)localObject2).toString());
+      }
+      localObject2 = ((JSONObject)localObject2).optJSONArray("vipGrayConfig2");
+      if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
+      {
+        int j = 0;
+        boolean bool3 = true;
+        boolean bool1 = true;
+        if (j < ((JSONArray)localObject2).length())
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(j);
+          boolean bool2 = bool3;
+          boolean bool4 = bool1;
+          if (localJSONObject != null)
+          {
+            if (birz.a(localJSONObject, "X5Config"))
+            {
+              if (localJSONObject.optInt("mainThreadControl", 0) != 0) {
+                break label220;
+              }
+              bool1 = true;
+            }
+            label172:
+            bool2 = bool3;
+            bool4 = bool1;
+            if (birz.a(localJSONObject, "X5Config"))
+            {
+              if (localJSONObject.optInt("enableQuic", 1) != 1) {
+                break label225;
+              }
+              bool2 = true;
+            }
+          }
+          for (bool4 = bool1;; bool4 = bool1)
+          {
+            j += 1;
+            bool3 = bool2;
+            bool1 = bool4;
+            break;
+            label220:
+            bool1 = false;
+            break label172;
+            label225:
+            bool2 = false;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("AuthorizeConfig", 2, "readAndSaveX5Config isInitOnSubThread : " + bool1 + ", enable quick: " + bool3);
+        }
+        localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+        localObject1 = ((AppRuntime)localObject1).getApplication().getSharedPreferences("sp_x5_config_" + (String)localObject2, 4).edit();
+        ((SharedPreferences.Editor)localObject1).putBoolean("key_x5_init_sub_thread", bool1);
+        ((SharedPreferences.Editor)localObject1).putBoolean("key_x5_enable_quic", bool3);
+        ((SharedPreferences.Editor)localObject1).apply();
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    String str = nld.c();
+    if (!TextUtils.isEmpty(str)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig sp content: " + str);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_d_of_type_OrgJsonJSONArray = new JSONArray(str);
+        if (this.jdField_d_of_type_OrgJsonJSONArray == null) {
+          break;
+        }
+        return true;
+      }
+      catch (JSONException localJSONException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig load exception: " + localJSONException.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig sp content empty!");
+      }
+    }
+    return false;
+  }
+  
+  public boolean c(String paramString)
+  {
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if ((this.jdField_c_of_type_OrgJsonJSONArray == null) && (!b()))
+          {
+            if (QLog.isColorLevel())
+            {
+              QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig loadfromsp fail , url: " + noe.b(paramString, new String[0]));
+              return false;
+            }
+          }
+          else
+          {
+            String str1 = Uri.parse(paramString).getHost();
+            int k = this.jdField_c_of_type_OrgJsonJSONArray.length();
+            if ((k != 0) && (!TextUtils.isEmpty(str1)))
+            {
+              str1 = str1.toLowerCase();
+              j = 0;
+              if (j < k)
+              {
+                String str2 = this.jdField_c_of_type_OrgJsonJSONArray.optString(j, "");
+                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
+                  break label255;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label253;
+                }
+                QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig hit , url: " + noe.b(paramString, new String[0]) + " domain: " + str2);
+                break label253;
+              }
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig check fail , url empty!");
+          return false;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AuthorizeConfig", 2, "AsyncCheckConfig check exception", paramString);
+        }
+      }
+      return false;
+      label253:
+      return true;
+      label255:
+      j += 1;
+    }
+  }
+  
+  public boolean c(String paramString1, String paramString2)
+  {
+    if (paramString1 != null)
+    {
+      localObject1 = paramString1;
+      if (!"about:blank".equalsIgnoreCase(paramString1)) {}
+    }
+    else
+    {
+      localObject1 = "https://localhost/";
+    }
+    Object localObject3 = Uri.parse((String)localObject1);
+    paramString1 = ((Uri)localObject3).getScheme();
+    if ("file".equals(paramString1))
+    {
+      if (((String)localObject1).length() > 200) {}
+      for (paramString1 = ((String)localObject1).substring(0, 200);; paramString1 = (String)localObject1)
+      {
+        bguj.a("webview", "file_scheme", paramString1, "", "", "");
+        QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
+        return false;
+      }
+    }
+    if ((!"http".equals(paramString1)) && (!"https".equals(paramString1))) {
+      return false;
+    }
+    Object localObject1 = this.i;
+    System.currentTimeMillis();
+    paramString1 = (String)localObject1;
+    if (localObject1 == null) {}
+    label235:
+    for (;;)
+    {
+      try
+      {
+        paramString1 = this.jdField_a_of_type_Nly.a();
+        if (paramString1 == null)
+        {
+          try
+          {
+            localObject1 = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"tel\",\"sms\",\"http\",\"https\",\"file\", \"mqqc2b\"]}");
+            paramString1 = (String)localObject1;
+          }
+          catch (JSONException localJSONException)
+          {
+            JSONArray localJSONArray;
+            continue;
+            localObject3 = ((Uri)localObject3).getHost();
+            Object localObject2 = localObject3;
+            if (TextUtils.isEmpty((CharSequence)localObject3)) {
+              break label235;
+            }
+            localObject2 = ((String)localObject3).toLowerCase();
+            int m = localJSONArray.length();
+            int j = 0;
+            if (j >= m) {
+              break label330;
+            }
+            localObject3 = localJSONArray.optString(j);
+            if (b((String)localObject3, (String)localObject2)) {
+              break label275;
+            }
+            for (;;)
+            {
+              j += 1;
+              break;
+              localObject3 = paramString1.optJSONArray((String)localObject3);
+              if (localObject3 != null)
+              {
+                int n = ((JSONArray)localObject3).length();
+                int k = 0;
+                while (k < n)
+                {
+                  if (b(((JSONArray)localObject3).optString(k), paramString2)) {
+                    return true;
+                  }
+                  k += 1;
+                }
+              }
+            }
+            return false;
+          }
+          this.i = paramString1;
+          localJSONArray = paramString1.names();
+          if (localJSONArray == null) {
+            return false;
+          }
+        }
+      }
+      catch (JSONException paramString1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AuthorizeConfig", 2, "Decode mSchemeConfig error");
+        }
+        paramString1 = (String)localObject1;
+      }
+    }
+  }
+  
+  public String d(String paramString)
+  {
+    return a("p_skey", paramString, a("pskey"));
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "readAndSaveX5PreloadWhiteListConfig from VasQuickUpdateManager.SCID_FUNCDEV_WEBVIEW.");
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    JSONObject localJSONObject = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject, "VASBiz_FuncDev_webview.json", false, null);
+    if ((localJSONObject != null) && (localObject != null) && (((AppRuntime)localObject).isLogin()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "receive X5PreloadWhiteList data: " + localJSONObject.toString());
+      }
+      localObject = localJSONObject.optJSONArray("x5PreloadWhiteList");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
+        this.g = ((JSONArray)localObject).optJSONObject(0);
+      }
+    }
+  }
+  
+  public boolean d()
+  {
+    boolean bool = true;
+    try
+    {
+      if ((this.jdField_a_of_type_Int == -1) && (!e()))
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorizeConfig", 2, "forceHttpsConfig loadfromsp fail");
+          return false;
+        }
+      }
+      else
+      {
+        int j = this.jdField_a_of_type_Int;
+        if (j == 1) {}
+        for (;;)
+        {
+          return bool;
+          bool = false;
+        }
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("AuthorizeConfig", 2, "forceHttps enable check exception", localException);
+      }
+    }
+  }
+  
+  public boolean d(String paramString)
+  {
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if ((this.jdField_d_of_type_OrgJsonJSONArray == null) && (!c()))
+          {
+            if (QLog.isColorLevel())
+            {
+              QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig loadfromsp fail , url: " + noe.b(paramString, new String[0]));
+              return false;
+            }
+          }
+          else
+          {
+            String str1 = Uri.parse(paramString).getHost();
+            int k = this.jdField_d_of_type_OrgJsonJSONArray.length();
+            if ((k != 0) && (!TextUtils.isEmpty(str1)))
+            {
+              str1 = str1.toLowerCase();
+              j = 0;
+              if (j < k)
+              {
+                String str2 = this.jdField_d_of_type_OrgJsonJSONArray.optString(j, "");
+                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
+                  break label255;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label253;
+                }
+                QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig hit , url: " + noe.b(paramString, new String[0]) + " domain: " + str2);
+                break label253;
+              }
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig check fail , url empty!");
+          return false;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AuthorizeConfig", 2, "SkipInputWarningConfig check exception", paramString);
+        }
+      }
+      return false;
+      label253:
+      return true;
+      label255:
+      j += 1;
+    }
+  }
+  
+  public String e(String paramString)
+  {
+    return a("pt4_token", paramString, a("pt4_token"));
+  }
+  
+  public void e()
+  {
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "readAndSaveSonicWhiteListConfig from VasQuickUpdateManager.SCID_FUNCDEV_WEBVIEW.");
+    }
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1 = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject2, "VASBiz_FuncDev_webview.json", false, null);
+    Object localObject3;
+    if (localObject1 != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "receive WhiteListConfig data: " + ((JSONObject)localObject1).toString());
+      }
+      localObject1 = ((JSONObject)localObject1).optJSONArray("vipGrayConfig2");
+      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+      {
+        if (j >= ((JSONArray)localObject1).length()) {
+          break label280;
+        }
+        localObject3 = ((JSONArray)localObject1).optJSONObject(j);
+        if ((localObject3 == null) || (!a((JSONObject)localObject3))) {
+          break label241;
+        }
+      }
+    }
+    label280:
+    for (localObject1 = ((JSONObject)localObject3).optJSONObject("configs");; localObject1 = null)
+    {
+      localObject3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localObject2 = ((AppRuntime)localObject2).getApplication().getSharedPreferences("sp_sonic_white_list_config_" + (String)localObject3, 4).edit();
+      if (localObject1 != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("AuthorizeConfig", 2, "readAndSaveSonicWhiteListConfig: " + ((JSONObject)localObject1).toString());
+        }
+        ((SharedPreferences.Editor)localObject2).putString("key_sonic_white_list_conifg", ((JSONObject)localObject1).toString());
+      }
+      for (;;)
+      {
+        this.h = ((JSONObject)localObject1);
+        ((SharedPreferences.Editor)localObject2).apply();
+        return;
+        label241:
+        j += 1;
+        break;
+        QLog.e("AuthorizeConfig", 1, "readAndSaveSonicWhiteListConfig encounter error!. so remove all sonic white list.");
+        ((SharedPreferences.Editor)localObject2).remove("key_sonic_white_list_conifg");
+      }
+      QLog.d("AuthorizeConfig", 1, "readAndSaveSonicWhiteListConfig VasQuickUpdateManager.SCID_FUNCDEV_WEBVIEW is null");
+      return;
+    }
+  }
+  
+  /* Error */
+  public boolean e()
+  {
+    // Byte code:
+    //   0: invokestatic 890	nld:b	()I
+    //   3: istore_2
+    //   4: iload_2
+    //   5: iconst_1
+    //   6: if_icmpne +141 -> 147
+    //   9: iconst_1
+    //   10: istore_1
+    //   11: aload_0
+    //   12: iload_1
+    //   13: putfield 132	niz:jdField_a_of_type_Int	I
+    //   16: invokestatic 892	nld:d	()Ljava/lang/String;
+    //   19: astore_3
+    //   20: aload_3
+    //   21: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   24: ifne +167 -> 191
+    //   27: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   30: ifeq +29 -> 59
+    //   33: ldc 161
+    //   35: iconst_2
+    //   36: new 255	java/lang/StringBuilder
+    //   39: dup
+    //   40: invokespecial 256	java/lang/StringBuilder:<init>	()V
+    //   43: ldc_w 894
+    //   46: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: aload_3
+    //   50: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   59: aload_0
+    //   60: new 80	org/json/JSONArray
+    //   63: dup
+    //   64: aload_3
+    //   65: invokespecial 363	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   68: putfield 896	niz:jdField_e_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   71: invokestatic 898	nld:e	()Ljava/lang/String;
+    //   74: astore_3
+    //   75: aload_3
+    //   76: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   79: ifne +169 -> 248
+    //   82: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   85: ifeq +29 -> 114
+    //   88: ldc 161
+    //   90: iconst_2
+    //   91: new 255	java/lang/StringBuilder
+    //   94: dup
+    //   95: invokespecial 256	java/lang/StringBuilder:<init>	()V
+    //   98: ldc_w 900
+    //   101: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: aload_3
+    //   105: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   111: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   114: aload_0
+    //   115: new 80	org/json/JSONArray
+    //   118: dup
+    //   119: aload_3
+    //   120: invokespecial 363	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   123: putfield 902	niz:jdField_f_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   126: iload_2
+    //   127: iconst_m1
+    //   128: if_icmpeq +138 -> 266
+    //   131: aload_0
+    //   132: getfield 896	niz:jdField_e_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   135: ifnull +131 -> 266
+    //   138: aload_0
+    //   139: getfield 902	niz:jdField_f_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   142: ifnull +124 -> 266
+    //   145: iconst_1
+    //   146: ireturn
+    //   147: iconst_0
+    //   148: istore_1
+    //   149: goto -138 -> 11
+    //   152: astore_3
+    //   153: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   156: ifeq -85 -> 71
+    //   159: ldc 161
+    //   161: iconst_2
+    //   162: new 255	java/lang/StringBuilder
+    //   165: dup
+    //   166: invokespecial 256	java/lang/StringBuilder:<init>	()V
+    //   169: ldc_w 904
+    //   172: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: aload_3
+    //   176: invokevirtual 380	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   179: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   185: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   188: goto -117 -> 71
+    //   191: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   194: ifeq -123 -> 71
+    //   197: ldc 161
+    //   199: iconst_2
+    //   200: ldc_w 906
+    //   203: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   206: goto -135 -> 71
+    //   209: astore_3
+    //   210: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   213: ifeq -87 -> 126
+    //   216: ldc 161
+    //   218: iconst_2
+    //   219: new 255	java/lang/StringBuilder
+    //   222: dup
+    //   223: invokespecial 256	java/lang/StringBuilder:<init>	()V
+    //   226: ldc_w 908
+    //   229: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: aload_3
+    //   233: invokevirtual 380	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   236: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   242: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   245: goto -119 -> 126
+    //   248: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   251: ifeq -125 -> 126
+    //   254: ldc 161
+    //   256: iconst_2
+    //   257: ldc_w 910
+    //   260: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   263: goto -137 -> 126
+    //   266: iconst_0
+    //   267: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	268	0	this	niz
+    //   10	139	1	j	int
+    //   3	126	2	k	int
+    //   19	101	3	str	String
+    //   152	24	3	localJSONException1	JSONException
+    //   209	24	3	localJSONException2	JSONException
+    // Exception table:
+    //   from	to	target	type
+    //   59	71	152	org/json/JSONException
+    //   114	126	209	org/json/JSONException
+  }
+  
+  public boolean e(String paramString)
+  {
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if ((this.jdField_e_of_type_OrgJsonJSONArray == null) && (!e()))
+          {
+            if (QLog.isColorLevel())
+            {
+              QLog.d("AuthorizeConfig", 2, "forceHttpsConfig loadfromsp fail , url: " + noe.b(paramString, new String[0]));
+              return false;
+            }
+          }
+          else
+          {
+            String str1 = Uri.parse(paramString).getHost();
+            int k = this.jdField_e_of_type_OrgJsonJSONArray.length();
+            if ((k != 0) && (!TextUtils.isEmpty(str1)))
+            {
+              str1 = str1.toLowerCase();
+              j = 0;
+              if (j < k)
+              {
+                String str2 = this.jdField_e_of_type_OrgJsonJSONArray.optString(j, "");
+                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
+                  break label255;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label253;
+                }
+                QLog.d("AuthorizeConfig", 2, "forceHttpsConfig hit , url: " + noe.b(paramString, new String[0]) + " domain: " + str2);
+                break label253;
+              }
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorizeConfig", 2, "forceHttpsConfig check fail , url empty!");
+          return false;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AuthorizeConfig", 2, "forceHttpsConfig check exception", paramString);
+        }
+      }
+      return false;
+      label253:
+      return true;
+      label255:
+      j += 1;
+    }
+  }
+  
+  public String f(String paramString)
+  {
+    return a("a2", paramString, a("a2"));
+  }
+  
+  public void f()
+  {
+    boolean bool = true;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject == null) || (!((AppRuntime)localObject).isLogin()))
+    {
+      QLog.e("AuthorizeConfig", 1, "loadSonicWhiteListConfigFromSp, runtime is null or is not login!");
+      return;
+    }
+    String str = ((AppRuntime)localObject).getAccount();
+    localObject = ((AppRuntime)localObject).getApplication().getSharedPreferences("sp_sonic_white_list_config_" + str, 4).getString("key_sonic_white_list_conifg", null);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (;;)
+    {
+      try
+      {
+        this.h = new JSONObject((String)localObject);
+        if (this.h == null) {
+          e();
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        localObject = new StringBuilder().append("loadSonicWhiteListConfigFromSp:  ");
+        if (this.h == null) {
+          break label176;
+        }
+        QLog.i("AuthorizeConfig", 2, bool);
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("AuthorizeConfig", 2, "", localException);
+        continue;
+      }
+      QLog.e("AuthorizeConfig", 1, "loadSonicWhiteListConfigFromSp is null!");
+      continue;
+      label176:
+      bool = false;
+    }
+  }
+  
+  public boolean f(String paramString)
+  {
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if ((this.jdField_f_of_type_OrgJsonJSONArray == null) && (!e()))
+          {
+            if (QLog.isColorLevel())
+            {
+              QLog.d("AuthorizeConfig", 2, "forceHttpsExcludeConfig loadfromsp fail , url: " + noe.b(paramString, new String[0]));
+              return false;
+            }
+          }
+          else
+          {
+            String str1 = Uri.parse(paramString).getHost();
+            int k = this.jdField_f_of_type_OrgJsonJSONArray.length();
+            if ((k != 0) && (!TextUtils.isEmpty(str1)))
+            {
+              str1 = str1.toLowerCase();
+              j = 0;
+              if (j < k)
+              {
+                String str2 = this.jdField_f_of_type_OrgJsonJSONArray.optString(j, "");
+                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
+                  break label255;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label253;
+                }
+                QLog.d("AuthorizeConfig", 2, "forceHttpsExcludeConfig hit , url: " + noe.b(paramString, new String[0]) + " domain: " + str2);
+                break label253;
+              }
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorizeConfig", 2, "forceHttpsExcludeConfig check fail , url empty!");
+          return false;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AuthorizeConfig", 2, "forceHttpsExcludeConfig check exception", paramString);
+        }
+      }
+      return false;
+      label253:
+      return true;
+      label255:
+      j += 1;
+    }
+  }
+  
+  public void g()
+  {
+    long l = System.currentTimeMillis();
+    if (l - jdField_e_of_type_Long < 86400000L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 1, new Object[] { "cachePreloadPskeyList too often lastTime:", Long.valueOf(jdField_e_of_type_Long), " interval:", Long.valueOf(86400000L) });
+      }
+    }
     do
     {
       return;
-      localnjg = (njg)paramQQAppInterface.getManager(70);
-    } while ((localnjg == null) || (paramRedDotInfo == null));
-    int i = paramRedDotInfo.uint32_appid.get();
-    if ((i != 56) && (i != 61))
+      if (BaseApplicationImpl.getApplication().getRuntime().isLogin()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AuthorizeConfig", 2, "cachePreloadPskeyList is not login");
+    return;
+    if (((arjz)aran.a().a(585)).jdField_a_of_type_Int == 1)
     {
-      paramRedDotInfo.bool_display_reddot.set(false);
-      paramRedDotInfo.uint32_number.set(0);
-      localnjg.a(paramRedDotInfo);
+      Object localObject3 = a("pskey");
+      ArrayList localArrayList = new ArrayList(((Set)localObject3).size());
+      ??? = new HashSet(20);
+      Object localObject4 = WebViewConstant.DEFAULT_PSKEY_LIST;
+      int k = localObject4.length;
+      int j = 0;
+      while (j < k)
+      {
+        ((HashSet)???).add(localObject4[j]);
+        j += 1;
+      }
+      localObject3 = ((Set)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (String)((Iterator)localObject3).next();
+        if (!((HashSet)???).contains(localObject4)) {
+          localArrayList.add(localObject4);
+        }
+      }
+      for (;;)
+      {
+        synchronized (jdField_a_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+          if (QLog.isColorLevel())
+          {
+            if (this.jdField_a_of_type_JavaUtilArrayList != null)
+            {
+              j = this.jdField_a_of_type_JavaUtilArrayList.size();
+              QLog.d("AuthorizeConfig", 2, new Object[] { "preloadPskey list:", Integer.valueOf(j), " waitPt4Token:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_Boolean) {
+              break;
+            }
+            h();
+            jdField_e_of_type_Long = l;
+            this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastPreloadPskey", jdField_e_of_type_Long).commit();
+            return;
+          }
+        }
+        j = 0;
+      }
     }
-    paramQQAppInterface = (niz)paramQQAppInterface.a(43);
-    paramQQAppInterface.a(paramRedDotInfo);
-    paramQQAppInterface.a(paramRedDotInfo.uint32_appid.get());
+    QLog.d("AuthorizeConfig", 1, "do not support preloadPskey.");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, oidb_0x791.RedDotInfo paramRedDotInfo, int paramInt, boolean paramBoolean)
+  public boolean g(String paramString)
   {
-    boolean bool = true;
-    int i;
-    label79:
-    aong localaong;
-    if ((paramQQAppInterface != null) && (paramRedDotInfo != null) && (paramRedDotInfo.uint32_appid.has()))
+    Object localObject = Uri.parse(paramString);
+    String str;
+    int j;
+    boolean bool;
+    if ((localObject != null) && (((Uri)localObject).isHierarchical()))
     {
-      int j = paramRedDotInfo.uint32_appid.get();
-      if (!paramRedDotInfo.uint32_number.has()) {
-        break label181;
+      if (this.h == null) {
+        f();
       }
-      i = paramRedDotInfo.uint32_number.get();
-      if (j == 46)
+      if (this.h != null)
       {
-        if ((!paramRedDotInfo.uint32_last_time.has()) || (paramRedDotInfo.uint32_last_time.get() == paramInt)) {
-          break label187;
+        str = ((Uri)localObject).getHost();
+        localObject = ((Uri)localObject).getPath();
+        if (this.h == null) {
+          break label272;
         }
-        paramInt = 1;
-        localaong = paramQQAppInterface.a().a();
-        if (localaong.findRecentUser(anhk.aO, 6004) == null) {
-          break label192;
+        JSONArray localJSONArray = this.h.optJSONArray(str);
+        if ((localJSONArray == null) || (localJSONArray.length() <= 0)) {
+          break label272;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("AuthorizeConfig", 2, "isInSonicWhiteList, host: " + str + ", rules: " + localJSONArray.toString());
+        }
+        j = 0;
+        if (j >= localJSONArray.length()) {
+          break label272;
+        }
+        str = localJSONArray.optString(j);
+        if ((str.equalsIgnoreCase((String)localObject)) || (str.equals("*"))) {
+          bool = true;
         }
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("TroopRedTouchHandler", 2, " hasRecentUser " + bool + " isClicked " + paramBoolean + " redDotInfo.bool_display_reddot" + paramRedDotInfo.bool_display_reddot.get());
+        QLog.i("AuthorizeConfig", 2, "isInSonicWhiteList: " + bool + ", url: " + noe.b(paramString, new String[0]));
       }
-      if ((bool) || (paramRedDotInfo.bool_display_reddot.get()) || (paramBoolean)) {
-        break label198;
+      return bool;
+      if ((str.endsWith("*")) && (((String)localObject).startsWith(str.replace("/*", ""))))
+      {
+        bool = true;
       }
-      return;
-      label181:
-      i = 0;
-      break;
-      label187:
-      paramInt = 0;
-      break label79;
-      label192:
-      bool = false;
-    }
-    label198:
-    RecentUser localRecentUser = (RecentUser)localaong.findRecentUserByUin(anhk.aO, 6004);
-    if ((i > 0) && ((paramRedDotInfo.bool_display_reddot.get()) || (paramBoolean))) {
-      if (!paramRedDotInfo.uint32_last_time.has()) {
-        break label306;
+      else
+      {
+        j += 1;
+        break;
+        QLog.e("AuthorizeConfig", 1, "mSonicWhiteListConfig is null! ");
+        label272:
+        bool = false;
       }
-    }
-    label306:
-    for (long l = paramRedDotInfo.uint32_last_time.get();; l = NetConnInfoCenter.getServerTimeMillis() / 1000L)
-    {
-      localRecentUser.lastmsgtime = l;
-      localRecentUser.msgType = 0;
-      localRecentUser.displayName = paramQQAppInterface.getApp().getString(2131718532);
-      if (paramInt != 0) {
-        localaong.saveRecentUser(localRecentUser);
-      }
-      paramQQAppInterface.a().a(localRecentUser);
-      paramQQAppInterface.E();
-      return;
     }
   }
   
-  private static boolean b(QQAppInterface paramQQAppInterface, List<Integer> paramList, byte[] paramArrayOfByte)
+  public void h()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "preloadPskey waiting");
+      }
+    }
+    AppRuntime localAppRuntime;
+    do
+    {
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime.isLogin()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AuthorizeConfig", 2, "preloadPskey is not login");
+    return;
+    TicketManager localTicketManager = (TicketManager)localAppRuntime.getManager(2);
+    ArrayList localArrayList1 = new ArrayList(20);
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject2 = jdField_a_of_type_JavaLangObject;
+    int j = 0;
+    for (;;)
+    {
+      try
+      {
+        if (j < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          if (j < 20) {
+            localArrayList1.add(this.jdField_a_of_type_JavaUtilArrayList.get(j));
+          } else {
+            localArrayList2.add(this.jdField_a_of_type_JavaUtilArrayList.get(j));
+          }
+        }
+      }
+      finally {}
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, new Object[] { "preload:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " cur:", Integer.valueOf(localArrayList1.size()), " left:", Integer.valueOf(localArrayList2.size()) });
+      }
+      this.jdField_a_of_type_JavaUtilArrayList = localArrayList2;
+      if (localArrayList1.size() == 0) {
+        break;
+      }
+      localObject2 = new String[localArrayList1.size()];
+      j = 0;
+      while (j < localArrayList1.size())
+      {
+        localObject2[j] = String.format("(%d)%s", new Object[] { Integer.valueOf(1048576), localArrayList1.get(j) });
+        j += 1;
+      }
+      AuthorizeConfig.4 local4 = new AuthorizeConfig.4(this, localTicketManager, localObject1.getAccount(), (String[])localObject2);
+      if (Looper.myLooper() != Looper.getMainLooper())
+      {
+        local4.run();
+        return;
+      }
+      ThreadManager.post(local4, 8, null, true);
+      return;
+      j += 1;
+    }
+  }
+  
+  public boolean h(String paramString)
+  {
+    Object localObject = Uri.parse(paramString).getScheme();
+    if ((!"http".equals(localObject)) && (!"https".equals(localObject))) {
+      return false;
+    }
+    localObject = a("a1");
+    paramString = Uri.parse(paramString).getHost();
+    if (!TextUtils.isEmpty(paramString)) {
+      paramString = paramString.toLowerCase();
+    }
+    for (;;)
+    {
+      if (((Set)localObject).contains(paramString)) {
+        return true;
+      }
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (b((String)((Iterator)localObject).next(), paramString)) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  
+  public void i()
+  {
+    long l = System.currentTimeMillis();
+    if (l - jdField_f_of_type_Long < 21600000L) {
+      QLog.d("AuthorizeConfig", 1, "preload too often");
+    }
+    do
+    {
+      return;
+      synchronized (jdField_b_of_type_JavaLangObject)
+      {
+        if (l - jdField_f_of_type_Long < 21600000L)
+        {
+          QLog.d("AuthorizeConfig", 1, "preload too often");
+          return;
+        }
+      }
+      jdField_f_of_type_Long = l;
+      ??? = BaseApplicationImpl.getApplication().getRuntime();
+    } while ((!(??? instanceof QQAppInterface)) || ((!((AppRuntime)???).isLogin()) && (!"com.tencent.mobileqq".equals(MobileQQ.getMobileQQ().getQQProcessName()))));
+    if (com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[3].intValue() == 1)
+    {
+      TicketManager localTicketManager = (TicketManager)((AppRuntime)???).getManager(2);
+      Object localObject3 = a("pt4_token");
+      String[] arrayOfString = new String[((Set)localObject3).size()];
+      localObject3 = ((Set)localObject3).iterator();
+      int j = 0;
+      while (((Iterator)localObject3).hasNext())
+      {
+        arrayOfString[j] = String.format("(%d)%s", new Object[] { Integer.valueOf(134217728), (String)((Iterator)localObject3).next() });
+        j += 1;
+      }
+      ??? = new AuthorizeConfig.5(this, localTicketManager, ((AppRuntime)???).getAccount(), arrayOfString);
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        ((Runnable)???).run();
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return;
+        ThreadManager.post((Runnable)???, 8, null, true);
+      }
+    }
+    QLog.d("AuthorizeConfig", 1, "do not support preload.");
+  }
+  
+  public boolean i(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = paramString;
+      if (!"about:blank".equalsIgnoreCase(paramString)) {}
+    }
+    else
+    {
+      localObject = "https://localhost/";
+    }
+    Uri localUri = Uri.parse((String)localObject);
+    paramString = localUri.getScheme();
+    if ((!"http".equals(paramString)) && (!"https".equals(paramString))) {
+      return false;
+    }
+    Object localObject = this.i;
+    System.currentTimeMillis();
+    paramString = (String)localObject;
+    if (localObject == null) {}
+    label167:
+    label211:
+    label222:
+    for (;;)
+    {
+      try
+      {
+        paramString = this.jdField_a_of_type_Nly.a();
+        if (paramString == null)
+        {
+          try
+          {
+            localObject = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"tel\",\"sms\",\"http\",\"https\",\"file\", \"mqqc2b\"]}");
+            paramString = (String)localObject;
+          }
+          catch (JSONException localJSONException)
+          {
+            JSONArray localJSONArray;
+            continue;
+            String str = localUri.getHost();
+            paramString = str;
+            if (TextUtils.isEmpty(str)) {
+              break label167;
+            }
+            paramString = str.toLowerCase();
+            int k = localJSONArray.length();
+            int j = 0;
+            if (j >= k) {
+              break label222;
+            }
+            str = localJSONArray.optString(j);
+            if ((str == null) || (!str.equals("*"))) {
+              break label211;
+            }
+            while (!b(str, paramString))
+            {
+              j += 1;
+              break;
+            }
+            return true;
+            return false;
+          }
+          localJSONArray = paramString.names();
+          if (localJSONArray == null) {
+            return false;
+          }
+        }
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AuthorizeConfig", 2, "Decode mSchemeConfig error");
+        }
+        paramString = (String)localObject;
+      }
+    }
+  }
+  
+  public void j()
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      QLog.d("AuthorizeConfig", 1, "WebViewSwitchAio main process loadFuncDevWebViewConfig");
+      localObject1 = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject1, "VASBiz_FuncDev_webview.json", true, null);
+    }
+    while (localObject1 != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 1, "WebViewSwitchAio loadFuncDevWebViewConfig return " + ((JSONObject)localObject1).toString());
+      }
+      Object localObject2 = ((JSONObject)localObject1).optJSONArray("WebViewSwitchAioConfig");
+      if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
+        this.jdField_d_of_type_OrgJsonJSONObject = ((JSONArray)localObject2).optJSONObject(0);
+      }
+      localObject2 = ((JSONObject)localObject1).optJSONArray("WebViewWhiteScreenDomains");
+      if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
+        this.jdField_e_of_type_OrgJsonJSONObject = ((JSONArray)localObject2).optJSONObject(0);
+      }
+      localObject1 = ((JSONObject)localObject1).optJSONArray("arkShareWhiteList");
+      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0)) {
+        this.jdField_f_of_type_OrgJsonJSONObject = ((JSONArray)localObject1).optJSONObject(0);
+      }
+      return;
+      localObject2 = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject1, "VASBiz_FuncDev_webview.json", false, null);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        QLog.d("AuthorizeConfig", 1, "WebViewSwitchAio calling main process to download FuncDevWebViewConfig");
+        localObject1 = asev.a("download_FuncDev_webview", "", 0, null);
+        asjw.a().b((Bundle)localObject1);
+        localObject1 = localObject2;
+      }
+    }
+    QLog.d("AuthorizeConfig", 1, "WebViewSwitchAio loadFuncDevWebViewConfig return null");
+  }
+  
+  public boolean j(String paramString)
+  {
+    k();
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      Object localObject1 = Uri.parse(paramString);
+      Object localObject2 = ((Uri)localObject1).getScheme();
+      if (("http".equals(localObject2)) || ("https".equals(localObject2)))
+      {
+        localObject1 = ((Uri)localObject1).getHost();
+        localObject2 = this.jdField_d_of_type_OrgJsonJSONObject;
+        if (QLog.isColorLevel()) {
+          QLog.d("AuthorizeConfig", 1, "WebViewSwitchAio call canSwitchAIO url " + paramString + " config " + localObject2);
+        }
+        if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (((JSONObject)localObject2).optInt("enable", 0) == 1))
+        {
+          paramString = ((JSONObject)localObject2).optJSONArray("domains");
+          if (paramString != null)
+          {
+            int j = paramString.length() - 1;
+            while (j >= 0)
+            {
+              if (((String)localObject1).endsWith(paramString.optString(j))) {
+                return true;
+              }
+              j -= 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public void k()
   {
     try
     {
-      oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-      localOIDBSSOPkg.mergeFrom(paramArrayOfByte);
-      if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
-      {
-        a(paramQQAppInterface, 120L);
-        return false;
-      }
-      paramArrayOfByte = new oidb_0x791.RspBody();
-      paramArrayOfByte.mergeFrom(localOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-      paramArrayOfByte = (oidb_0x791.GetRedDotRes)paramArrayOfByte.msg_get_reddot_res.get();
-      if (paramArrayOfByte != null)
-      {
-        a(paramQQAppInterface, paramArrayOfByte.uint32_interval.get());
-        boolean bool = ((njg)paramQQAppInterface.getManager(70)).a(paramList, paramArrayOfByte);
-        return bool;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-    }
-    return false;
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      localObject1 = this.app.getApplication().getSharedPreferences(this.app.getCurrentAccountUin() + "RedTouchExManager_GetTime", 0);
-      long l1 = ((SharedPreferences)localObject1).getLong("last_get_time", 0L);
-      long l2 = ((SharedPreferences)localObject1).getLong("interval_time", 0L);
-      long l3 = Math.abs(System.currentTimeMillis() / 1000L - l1);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopRedTouchHandler", 4, "getRedPointInfo() start getRedPointInfoAsync,last_get_time:" + l1 + " |detal(current_time - last_get_time):" + l3 + " |interval_time:" + l2);
-      }
-      if (l3 < l2) {
+      long l = System.currentTimeMillis();
+      if ((l - this.jdField_c_of_type_Long < 1800000L) && (this.jdField_d_of_type_OrgJsonJSONObject != null) && (this.jdField_f_of_type_OrgJsonJSONObject != null)) {
         return;
       }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TroopRedTouchHandler", 4, "getRedPointInfo() start");
-    }
-    Object localObject1 = new ArrayList();
-    ((List)localObject1).add(Integer.valueOf(8));
-    ((List)localObject1).add(Integer.valueOf(11));
-    ((List)localObject1).add(Integer.valueOf(52));
-    ((List)localObject1).add(Integer.valueOf(21));
-    ((List)localObject1).add(Integer.valueOf(35));
-    ((List)localObject1).add(Integer.valueOf(37));
-    ((List)localObject1).add(Integer.valueOf(65));
-    if (bdjg.a(this.app)) {
-      ((List)localObject1).add(Integer.valueOf(46));
-    }
-    Object localObject3 = new oidb_0x791.GetRedDotOpt();
-    ((oidb_0x791.GetRedDotOpt)localObject3).uint64_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    ((oidb_0x791.GetRedDotOpt)localObject3).rpt_uint32_appid.addAll((Collection)localObject1);
-    Object localObject2 = new oidb_0x791.ReqBody();
-    ((oidb_0x791.ReqBody)localObject2).msg_get_reddot.set((MessageMicro)localObject3);
-    localObject3 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(1937);
-    ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x791.ReqBody)localObject2).toByteArray()));
-    localObject2 = new NewIntent(this.app.getApplication(), niq.class);
-    ((NewIntent)localObject2).setWithouLogin(true);
-    ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x791_0");
-    ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray());
-    ((NewIntent)localObject2).setObserver(new nja(this, (List)localObject1));
-    this.app.startServlet((NewIntent)localObject2);
-  }
-  
-  public void a()
-  {
-    this.app.addObserver(this.jdField_a_of_type_Anil);
-  }
-  
-  public void a(int paramInt)
-  {
-    String str;
-    if (paramInt == 60)
-    {
-      b(60);
-      str = "7719.771901";
-    }
-    for (;;)
-    {
-      if (str.length() <= 0) {}
-      baif localbaif;
-      do
-      {
-        return;
-        if (paramInt == 59)
-        {
-          b(59);
-          str = "7719.771903";
-          break;
-        }
-        if (paramInt == 38)
-        {
-          str = "7719.771904";
-          break;
-        }
-        if ((paramInt != 53) && (paramInt != 54)) {
-          break label112;
-        }
-        str = "7719.771901";
-        break;
-        localbaif = (baif)this.app.getManager(36);
-        localbaif.b(str);
-      } while (localbaif.a(7719) == null);
-      localbaif.a(7719, str);
+      this.jdField_c_of_type_Long = l;
+      ThreadManager.post(new AuthorizeConfig.6(this), 5, null, false);
       return;
-      label112:
-      str = "";
     }
+    finally {}
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean k(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopRedTouchHandler", 2, "clearStoryMessageRedPoint");
+      QLog.i("AuthorizeConfig", 2, "[canShareArkMsg] ArkName: " + paramString + " ArkShareConfig: " + this.jdField_f_of_type_OrgJsonJSONObject);
     }
-    qqstory_710_message.ReqClearMessage localReqClearMessage = new qqstory_710_message.ReqClearMessage();
-    localReqClearMessage.start_time.set(paramInt1);
-    localReqClearMessage.source.set(paramInt2);
-    localReqClearMessage.version_ctrl.set(775);
-    NewIntent localNewIntent = new NewIntent(this.app.getApplication(), niq.class);
-    localNewIntent.putExtra("cmd", wjz.a("StorySvc.clr_710_message_list"));
-    localNewIntent.putExtra("data", localReqClearMessage.toByteArray());
-    localNewIntent.setObserver(new njd(this));
-    this.app.startServlet(localNewIntent);
-  }
-  
-  public void a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, oidb_0x791.RedDotInfo paramRedDotInfo, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    Object localObject1 = new oidb_0x791.SetRedDotOpt();
-    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.app.getCurrentAccountUin())));
-    ((oidb_0x791.SetRedDotOpt)localObject1).rpt_uint64_uin.set((List)localObject2);
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_clear.set(paramBoolean1);
-    if (paramInt2 >= 0) {
-      ((oidb_0x791.SetRedDotOpt)localObject1).uint32_total_number.set(paramInt2);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_keep_unchanged.set(paramBoolean2);
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_push_to_client.set(paramBoolean3);
-    if (paramRedDotInfo != null)
+    k();
+    Object localObject = this.jdField_f_of_type_OrgJsonJSONObject;
+    JSONArray localJSONArray = null;
+    if (localObject != null) {
+      localJSONArray = ((JSONObject)localObject).optJSONArray("validArkNames");
+    }
+    if (localObject != null)
     {
-      if (paramRedDotInfo.bool_display_reddot.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).bool_display_reddot.set(paramRedDotInfo.bool_display_reddot.get());
-      }
-      if (paramRedDotInfo.uint32_number.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).int32_number.set(paramRedDotInfo.uint32_number.get());
-      }
-      if (paramRedDotInfo.str_custom_buffer.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).str_custom_buffer.set(paramRedDotInfo.str_custom_buffer.get());
-      }
-      if (paramRedDotInfo.str_face_url.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).str_face_url.set(paramRedDotInfo.str_face_url.get());
-      }
-      if (paramRedDotInfo.uint32_expire_time.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint32_expire_time.set(paramRedDotInfo.uint32_expire_time.get());
-      }
-      if (paramRedDotInfo.uint64_cmd_uin.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(paramRedDotInfo.uint64_cmd_uin.get());
-      }
-      if (paramRedDotInfo.uint32_reason.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint32_reason.set(paramRedDotInfo.uint32_reason.get());
-      }
-      if (paramRedDotInfo.uint32_last_time.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint32_last_time.set(paramRedDotInfo.uint32_last_time.get());
-      }
+      localObject = localJSONArray;
+      if (localJSONArray != null) {}
     }
-    paramRedDotInfo = new oidb_0x791.ReqBody();
-    paramRedDotInfo.msg_set_reddot.set((MessageMicro)localObject1);
-    localObject1 = new oidb_sso.OIDBSSOPkg();
-    localObject2 = ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command;
-    if (paramBoolean4) {}
-    for (paramInt2 = 2887;; paramInt2 = 1937)
+    else
     {
-      ((PBUInt32Field)localObject2).set(paramInt2);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(paramInt1);
-      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramRedDotInfo.toByteArray()));
-      paramRedDotInfo = new NewIntent(this.app.getApplication(), niq.class);
-      paramRedDotInfo.putExtra("cmd", "OidbSvc.0x791_" + String.valueOf(paramInt1));
-      paramRedDotInfo.putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      paramRedDotInfo.setObserver(new nje(this));
-      this.app.startServlet(paramRedDotInfo);
-      return;
+      localObject = jdField_a_of_type_OrgJsonJSONArray;
     }
-  }
-  
-  public void a(njg paramnjg, int paramInt)
-  {
-    paramnjg = paramnjg.a(paramInt);
-    a(this.app, paramnjg);
-  }
-  
-  public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    if (paramRedDotInfo == null) {
-      return;
-    }
-    Object localObject1 = new oidb_0x791.SetRedDotOpt();
-    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.app.getCurrentAccountUin())));
-    ((oidb_0x791.SetRedDotOpt)localObject1).rpt_uint64_uin.set((List)localObject2);
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_clear.set(true);
-    if (paramRedDotInfo.uint32_appid.get() == 46) {
-      ((oidb_0x791.SetRedDotOpt)localObject1).bool_push_to_client.set(true);
-    }
-    for (;;)
+    int j = ((JSONArray)localObject).length() - 1;
+    while (j >= 0)
     {
-      localObject2 = new oidb_0x791.ReqBody();
-      ((oidb_0x791.ReqBody)localObject2).msg_set_reddot.set((MessageMicro)localObject1);
-      localObject1 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1937);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(paramRedDotInfo.uint32_appid.get());
-      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x791.ReqBody)localObject2).toByteArray()));
-      localObject2 = new NewIntent(this.app.getApplication(), niq.class);
-      ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x791_" + String.valueOf(paramRedDotInfo.uint32_appid.get()));
-      ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      ((NewIntent)localObject2).setObserver(new njb(this));
-      this.app.startServlet((NewIntent)localObject2);
-      return;
-      ((oidb_0x791.SetRedDotOpt)localObject1).bool_push_to_client.set(false);
-    }
-  }
-  
-  public boolean a()
-  {
-    QLog.d("TroopRedTouchHandler", 2, "getRedPointInfo<requestedRedPoint:" + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int != 1)
-    {
-      ThreadManager.post(new TroopRedTouchHandler.1(this), 5, null, true);
-      return true;
+      if (paramString.equals(((JSONArray)localObject).optString(j))) {
+        return true;
+      }
+      j -= 1;
     }
     return false;
   }
   
-  public void b()
+  public boolean l(String paramString)
   {
-    this.app.removeObserver(this.jdField_a_of_type_Anil);
-  }
-  
-  public void b(int paramInt)
-  {
-    Object localObject = (njg)this.app.getManager(70);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (this.g == null) {
+      d();
+    }
+    Object localObject = this.g;
+    JSONArray localJSONArray = null;
+    if (localObject != null) {
+      localJSONArray = ((JSONObject)localObject).optJSONArray("domainList");
+    }
     if (localObject != null)
     {
-      oidb_0x791.RedDotInfo localRedDotInfo = ((njg)localObject).a(paramInt, false);
-      if ((localRedDotInfo != null) && (localRedDotInfo.uint32_number.has()) && (localRedDotInfo.uint32_number.get() > 0))
+      localObject = localJSONArray;
+      if (localJSONArray != null) {}
+    }
+    else
+    {
+      localObject = new JSONArray();
+      ((JSONArray)localObject).put("*.vip.qq.com");
+    }
+    int j = ((JSONArray)localObject).length() - 1;
+    while (j >= 0)
+    {
+      if (b(((JSONArray)localObject).optString(j), paramString)) {
+        return true;
+      }
+      j -= 1;
+    }
+    return false;
+  }
+  
+  public boolean m(String paramString)
+  {
+    k();
+    Object localObject = this.jdField_e_of_type_OrgJsonJSONObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("AuthorizeConfig", 1, "isInWhiteScreenWhiteList is called of domain " + paramString + " config " + localObject);
+    }
+    if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localObject = ((JSONObject)localObject).optJSONArray("domains");
+      if (localObject != null)
       {
-        localRedDotInfo.uint32_number.set(0);
-        ((njg)localObject).a(localRedDotInfo);
-        localObject = new oidb_0x791.RedDotInfo();
-        ((oidb_0x791.RedDotInfo)localObject).uint32_appid.set(paramInt);
-        if (localRedDotInfo.uint32_last_time.has()) {
-          ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.set(localRedDotInfo.uint32_last_time.get());
+        int j = ((JSONArray)localObject).length() - 1;
+        while (j >= 0)
+        {
+          if (paramString.endsWith(((JSONArray)localObject).optString(j))) {
+            return true;
+          }
+          j -= 1;
         }
-        a(paramInt, false, 0, true, (oidb_0x791.RedDotInfo)localObject, true, true);
       }
     }
+    return false;
   }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return ayet.class;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Njf != null) {
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Njf);
-    }
-    this.jdField_a_of_type_Int = 0;
-    super.onDestroy();
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

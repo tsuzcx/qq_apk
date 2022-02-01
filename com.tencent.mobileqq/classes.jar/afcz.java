@@ -1,24 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class afcz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnCancelListener
 {
-  public afcz(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
+  public afcz(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcz
  * JD-Core Version:    0.7.0.1
  */

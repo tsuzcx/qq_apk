@@ -1,19 +1,18 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.together.writetogether.view.SavingAnimView;
 
-public abstract class bepq
+public class bepq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static final int ITEM_TYPE_AUDIO = 2;
-  public static final int ITEM_TYPE_MUSIC = 3;
-  public static final int ITEM_TYPE_NONE = 0;
-  public static final int ITEM_TYPE_PIC = 1;
-  public static final int ITEM_TYPE_VIDEO = 4;
-  protected static final String TAG = "publish_mediaInfo";
+  public bepq(SavingAnimView paramSavingAnimView) {}
   
-  public abstract String getJsonText();
-  
-  public abstract View getView(Context paramContext, View.OnClickListener paramOnClickListener);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    SavingAnimView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 0.25F);
+    SavingAnimView.b(this.a, SavingAnimView.a(this.a) * 0.1F);
+    this.a.invalidate();
+  }
 }
 
 

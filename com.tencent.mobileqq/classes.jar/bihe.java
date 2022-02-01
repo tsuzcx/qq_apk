@@ -1,166 +1,308 @@
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnErrorListener;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.view.SurfaceHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class bihe
+  implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, biha
 {
-  private static void a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  private int jdField_a_of_type_Int = 0;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private bihb jdField_a_of_type_Bihb;
+  private bihc jdField_a_of_type_Bihc;
+  private bihd jdField_a_of_type_Bihd;
+  private int b;
+  
+  public bihe()
   {
-    int j = 0;
-    int k = paramArrayOfByte.length;
-    int i = 0;
-    while (i < k >> 2)
-    {
-      int m = j + 1;
-      paramArrayOfByte[j] &= 0xFF;
-      int n = paramArrayOfInt[i];
-      j = m + 1;
-      paramArrayOfInt[i] = (n | (paramArrayOfByte[m] & 0xFF) << 8);
-      n = paramArrayOfInt[i];
-      m = j + 1;
-      paramArrayOfInt[i] = (n | (paramArrayOfByte[j] & 0xFF) << 16);
-      n = paramArrayOfInt[i];
-      j = m + 1;
-      paramArrayOfInt[i] = ((paramArrayOfByte[m] & 0xFF) << 24 | n);
-      i += 1;
-    }
-    if (j < paramArrayOfByte.length)
-    {
-      k = j + 1;
-      paramArrayOfByte[j] &= 0xFF;
-      j = 8;
-      while (k < paramArrayOfByte.length)
-      {
-        paramArrayOfInt[i] |= (paramArrayOfByte[k] & 0xFF) << j;
-        k += 1;
-        j += 8;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer construct");
     }
   }
   
-  private static void a(int[] paramArrayOfInt, int paramInt, byte[] paramArrayOfByte)
+  public static String a(int paramInt)
   {
-    int i = paramArrayOfByte.length >> 2;
-    int j = i;
-    if (i > paramInt) {
-      j = paramInt;
-    }
-    int k = 0;
-    i = 0;
-    while (i < j)
+    switch (paramInt)
     {
-      int m = k + 1;
-      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
-      k = m + 1;
-      paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 8 & 0xFF));
-      m = k + 1;
-      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] >>> 16 & 0xFF));
-      paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 24 & 0xFF));
-      i += 1;
-      k = m + 1;
+    default: 
+      return "null";
+    case 0: 
+      return " idle ";
+    case 1: 
+      return " playing ";
+    case 2: 
+      return " pause ";
     }
-    if ((paramInt > j) && (k < paramArrayOfByte.length))
-    {
-      paramInt = k + 1;
-      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
-      j = 8;
-      while ((j <= 24) && (paramInt < paramArrayOfByte.length))
-      {
-        paramArrayOfByte[paramInt] = ((byte)(paramArrayOfInt[i] >>> j & 0xFF));
-        j += 8;
-        paramInt += 1;
-      }
+    return " error ";
+  }
+  
+  private void b(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer changePlayState " + paramInt);
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Bihc != null) {
+      this.jdField_a_of_type_Bihc.a(this.jdField_a_of_type_Int);
     }
   }
   
-  public static byte[] a()
+  public int a()
   {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getPlayState " + this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      return this.jdField_a_of_type_Int;
+    }
+    return 3;
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer start");
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      b(1);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer seek to " + paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {}
     try
     {
-      byte[] arrayOfByte = "DFG#$%^#%$RGHR(&*M<><".getBytes("UTF-8");
-      return arrayOfByte;
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
+      return;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    catch (IllegalStateException localIllegalStateException)
     {
-      localUnsupportedEncodingException.printStackTrace();
+      QLog.e("LocalVideoMediaPlayer", 2, "mMediaPlayer seekTo " + paramInt + " IllegalStateException");
     }
-    return null;
   }
   
-  public static byte[] a(byte[] paramArrayOfByte)
+  public void a(SurfaceHolder paramSurfaceHolder)
   {
-    Object localObject = paramArrayOfByte;
-    if (paramArrayOfByte != null)
-    {
-      localObject = paramArrayOfByte;
-      if (paramArrayOfByte.length <= 16) {}
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer setDisplay ");
     }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDisplay(paramSurfaceHolder);
+    }
+  }
+  
+  public void a(bihb parambihb)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer setCompletionListener ");
+    }
+    this.jdField_a_of_type_Bihb = parambihb;
+  }
+  
+  public void a(bihc parambihc)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer setPlayStateListener ");
+    }
+    this.jdField_a_of_type_Bihc = parambihc;
+  }
+  
+  public void a(bihd parambihd)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer setPreparedListener ");
+    }
+    this.jdField_a_of_type_Bihd = parambihd;
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer resume");
+    }
+    if (a() == 2) {
+      a();
+    }
+    return a() == 1;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer play " + paramInt);
+    }
+    this.b = paramInt;
     try
     {
-      localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramArrayOfByte);
-      localObject = ((MessageDigest)localObject).digest();
-      return localObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocalVideoMediaPlayer", 2, "#play#, msec=" + paramInt);
+      }
+      c();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+      return true;
     }
-    catch (NoSuchAlgorithmException paramArrayOfByte) {}
-    return null;
+    catch (Exception paramString)
+    {
+      QLog.e("LocalVideoMediaPlayer", 2, "#play#, msec=" + paramInt, paramString);
+      d();
+    }
+    return false;
   }
   
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public int b()
   {
-    byte[] arrayOfByte = a(paramArrayOfByte2);
-    if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0)) {
-      return paramArrayOfByte1;
-    }
-    if ((paramArrayOfByte1.length % 4 != 0) || (paramArrayOfByte1.length < 8)) {
-      return null;
-    }
-    paramArrayOfByte2 = new int[paramArrayOfByte1.length >>> 2];
-    a(paramArrayOfByte1, paramArrayOfByte2);
-    if (arrayOfByte.length % 4 == 0) {}
-    for (int i = arrayOfByte.length >>> 2;; i = (arrayOfByte.length >>> 2) + 1)
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
     {
-      j = i;
-      if (i < 4) {
-        j = 4;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getCurrentPosition " + this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition());
       }
-      paramArrayOfByte1 = new int[j];
-      i = 0;
-      while (i < j)
-      {
-        paramArrayOfByte1[i] = 0;
-        i += 1;
-      }
+      return this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
     }
-    a(arrayOfByte, paramArrayOfByte1);
-    int m = paramArrayOfByte2.length - 1;
-    i = paramArrayOfByte2[m];
-    i = paramArrayOfByte2[0];
-    int j = (52 / (m + 1) + 6) * -1640531527;
-    while (j != 0)
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getCurrentPosition -1");
+    }
+    return -1;
+  }
+  
+  public void b()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer pause");
+    }
+    if (b())
     {
-      int n = j >>> 2 & 0x3;
-      int k = i;
-      i = m;
-      while (i > 0)
-      {
-        i1 = paramArrayOfByte2[(i - 1)];
-        k = paramArrayOfByte2[i] - ((k ^ j) + (i1 ^ paramArrayOfByte1[(i & 0x3 ^ n)]) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
-        paramArrayOfByte2[i] = k;
-        i -= 1;
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
+      b(2);
+    }
+  }
+  
+  public boolean b()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer isPlaying ");
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      return this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getDuration " + this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration());
       }
-      int i1 = paramArrayOfByte2[m];
-      i = paramArrayOfByte2[0] - ((paramArrayOfByte1[(i & 0x3 ^ n)] ^ i1) + (k ^ j) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
-      paramArrayOfByte2[0] = i;
-      j += 1640531527;
+      return this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
     }
-    i = paramArrayOfByte2[(paramArrayOfByte2.length - 1)];
-    if ((i < 0) || (i > paramArrayOfByte2.length - 1 << 2)) {
-      return null;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getDuration -1");
     }
-    paramArrayOfByte1 = new byte[i];
-    a(paramArrayOfByte2, paramArrayOfByte2.length - 1, paramArrayOfByte1);
-    return paramArrayOfByte1;
+    return -1;
+  }
+  
+  public void c()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer release");
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+    }
+    b(0);
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getVideoWidth " + this.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth());
+      }
+      return this.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getVideoWidth -1");
+    }
+    return -1;
+  }
+  
+  public void d()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer reset ");
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+      b(0);
+    }
+  }
+  
+  public int e()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getVideoHeight " + this.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight());
+      }
+      return this.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer getVideoHeight -1");
+    }
+    return -1;
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer onCompletion ");
+    }
+    b(0);
+    if (this.jdField_a_of_type_Bihb != null) {
+      this.jdField_a_of_type_Bihb.a(this);
+    }
+  }
+  
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    QLog.e("LocalVideoMediaPlayer", 2, "mMediaPlayer onError what=" + paramInt1 + ",extra=" + paramInt2);
+    b(3);
+    d();
+    return false;
+  }
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocalVideoMediaPlayer", 2, "LocalVideoMediaPlayer onPrepared ");
+    }
+    if (this.jdField_a_of_type_Bihd != null) {
+      this.jdField_a_of_type_Bihd.a(this);
+    }
+    a();
+    if (this.b > 0) {
+      a(this.b);
+    }
   }
 }
 

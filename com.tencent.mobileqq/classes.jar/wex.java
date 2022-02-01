@@ -1,20 +1,6 @@
-import android.support.v4.util.LruCache;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
-
-class wex
-  extends LruCache<KEY, VALUE>
+public abstract interface wex
 {
-  wex(wew paramwew, int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
-  {
-    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
-    this.a.a();
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

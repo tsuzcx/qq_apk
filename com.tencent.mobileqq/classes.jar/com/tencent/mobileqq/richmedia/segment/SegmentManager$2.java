@@ -3,11 +3,11 @@ package com.tencent.mobileqq.richmedia.segment;
 import android.app.Activity;
 import android.media.MediaFormat;
 import android.os.Bundle;
-import balo;
-import bavo;
-import bctj;
-import bgmg;
-import bqio;
+import bbeh;
+import bboh;
+import bdmc;
+import bhmi;
+import brka;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -16,39 +16,39 @@ import java.util.HashMap;
 public class SegmentManager$2
   implements Runnable
 {
-  public SegmentManager$2(bavo parambavo, MediaFormat paramMediaFormat) {}
+  public SegmentManager$2(bboh parambboh, MediaFormat paramMediaFormat) {}
   
   public void run()
   {
     boolean bool = false;
     long l1 = System.currentTimeMillis();
-    long l3 = bavo.a(this.this$0) - bavo.b(this.this$0);
-    long l4 = bavo.c(this.this$0) - bavo.b(this.this$0);
+    long l3 = bboh.a(this.this$0) - bboh.b(this.this$0);
+    long l4 = bboh.c(this.this$0) - bboh.b(this.this$0);
     if (QLog.isColorLevel()) {
       QLog.d("SegmentManager", 2, "combineVideo,encodeVideoTime:" + l3 + " encodeAudioTime:" + l4);
     }
     Object localObject = this.this$0.b();
     int j;
-    if (bavo.b(this.this$0).equals("AUDIO_PROBLEM"))
+    if (bboh.b(this.this$0).equals("AUDIO_PROBLEM"))
     {
-      bgmg.d(bavo.c(this.this$0), (String)localObject);
-      bavo.a(this.this$0, false);
-      localObject = bavo.a(this.this$0);
+      bhmi.d(bboh.c(this.this$0), (String)localObject);
+      bboh.a(this.this$0, false);
+      localObject = bboh.a(this.this$0);
       i = this.a.getInteger("width");
       j = this.a.getInteger("height");
       ((Bundle)localObject).putInt("video_slice_width", i);
       ((Bundle)localObject).putInt("video_slice_height", j);
-      ((Bundle)localObject).putLong("video_duration", bavo.d(this.this$0));
-      this.this$0.jdField_a_of_type_Balo.a(203, -1, (Bundle)localObject);
+      ((Bundle)localObject).putLong("video_duration", bboh.d(this.this$0));
+      this.this$0.jdField_a_of_type_Bbeh.a(203, -1, (Bundle)localObject);
       bool = true;
       if (bool) {
         this.this$0.jdField_a_of_type_JavaUtilHashMap.put("param_succ_flag", "1");
       }
-      bctj.a(BaseApplication.getContext()).a(null, "LightVideoEncode", bool, l1 - bavo.b(this.this$0), bavo.d(this.this$0), this.this$0.jdField_a_of_type_JavaUtilHashMap, null);
+      bdmc.a(BaseApplication.getContext()).a(null, "LightVideoEncode", bool, l1 - bboh.b(this.this$0), bboh.d(this.this$0), this.this$0.jdField_a_of_type_JavaUtilHashMap, null);
       ((Activity)this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.getContext()).finish();
       return;
     }
-    int i = bqio.a(bavo.c(this.this$0), bavo.b(this.this$0), (String)localObject, 0);
+    int i = brka.a(bboh.c(this.this$0), bboh.b(this.this$0), (String)localObject, 0);
     if (i != 0)
     {
       if (QLog.isColorLevel()) {
@@ -61,20 +61,20 @@ public class SegmentManager$2
     {
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d("SegmentManager", 2, "combineVideo,timeCombineDone:" + (l2 - l1) + " timeFinish:" + (l2 - bavo.b(this.this$0)));
+        QLog.d("SegmentManager", 2, "combineVideo,timeCombineDone:" + (l2 - l1) + " timeFinish:" + (l2 - bboh.b(this.this$0)));
       }
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("param_combine_time", String.valueOf(l2 - l1));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("param_video_time", String.valueOf(l3));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("param_audio_time", String.valueOf(l4));
       l1 = l2;
       break;
-      localObject = bavo.a(this.this$0);
+      localObject = bboh.a(this.this$0);
       i = this.a.getInteger("width");
       j = this.a.getInteger("height");
       ((Bundle)localObject).putInt("video_slice_width", i);
       ((Bundle)localObject).putInt("video_slice_height", j);
-      ((Bundle)localObject).putLong("video_duration", bavo.d(this.this$0));
-      this.this$0.jdField_a_of_type_Balo.a(203, -1, (Bundle)localObject);
+      ((Bundle)localObject).putLong("video_duration", bboh.d(this.this$0));
+      this.this$0.jdField_a_of_type_Bbeh.a(203, -1, (Bundle)localObject);
       bool = true;
     }
   }

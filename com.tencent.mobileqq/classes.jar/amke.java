@@ -1,46 +1,23 @@
-import android.util.Log;
-import java.io.Writer;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amke
-  extends Writer
+  extends amkm
 {
-  private StringBuilder a = new StringBuilder();
-  
-  private void a()
+  public amke(SpecailCareListActivity paramSpecailCareListActivity)
   {
-    if (this.a.length() > 0)
-    {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
+    super(paramSpecailCareListActivity, null);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (this.a.d != 0) {
+      this.a.b = true;
     }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
+      return;
     }
+    this.a.a.notifyDataSetChanged();
   }
 }
 

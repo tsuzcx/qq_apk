@@ -1,32 +1,27 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.IEventReceiver;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xyc
-  extends QQUIEventReceiver<IEventReceiver, wxh>
+  extends QQUIEventReceiver<xyb, wmd>
 {
-  public xyc(@NonNull IEventReceiver paramIEventReceiver)
+  public xyc(@NonNull xyb paramxyb)
   {
-    super(paramIEventReceiver);
+    super(paramxyb);
   }
   
-  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull wxh paramwxh)
+  public void a(@NonNull xyb paramxyb, @NonNull wmd paramwmd)
   {
-    if (paramwxh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      QQToast.a(xfe.a(), 2, anni.a(2131709803), 0).a();
-      yqu.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramwxh.jdField_a_of_type_Int), "5" });
+    if ((xyb.a(paramxyb) == null) || (paramwmd.a == null) || (!TextUtils.equals(xyb.a(paramxyb).a, paramwmd.a.mVid))) {
       return;
     }
-    QQToast.a(xfe.a(), 1, anni.a(2131709798), 0).a();
-    yqu.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
+    paramxyb.a.i();
   }
   
   public Class acceptEventClass()
   {
-    return wxh.class;
+    return wmd.class;
   }
 }
 

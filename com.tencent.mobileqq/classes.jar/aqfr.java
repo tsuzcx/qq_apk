@@ -1,54 +1,63 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqfr
-  implements Application.ActivityLifecycleCallbacks
 {
-  public aqfr(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<String, String> a;
+  public boolean a;
+  public long b;
+  public long c;
+  public long d;
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public JSONObject a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if (this.a.f)
+    JSONObject localJSONObject = new JSONObject();
+    String str;
+    for (;;)
     {
-      this.a.f = false;
-      this.a.d = true;
-      this.a.a().removeCallbacks(this.a.b);
-      this.a.a().postDelayed(this.a.b, 200L);
+      try
+      {
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          Object localObject = this.jdField_a_of_type_JavaLangString;
+          localJSONObject.put("evt", localObject);
+          localJSONObject.put("index", this.jdField_a_of_type_Int);
+          localJSONObject.put("result", this.jdField_a_of_type_Boolean);
+          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
+          localJSONObject.put("endTime", this.b);
+          localJSONObject.put("costTime", this.c);
+          localJSONObject.put("net", this.d);
+          localObject = new JSONObject();
+          if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+            break;
+          }
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
+          continue;
+        }
+        str = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("ArkVipReportItem", 1, "getJsonObject()", localJSONException);
+        return localJSONObject;
+      }
     }
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    localJSONObject.put("param", str);
+    return localJSONObject;
   }
 }
 

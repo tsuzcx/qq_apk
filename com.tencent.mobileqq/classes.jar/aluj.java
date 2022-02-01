@@ -1,17 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-class aluj
-  extends anxg
+public class aluj
 {
-  aluj(aluh paramaluh) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public static <T extends alui> T a(FlowActivity paramFlowActivity, int paramInt)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      aluh.a(this.a, paramString, localBitmap);
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
+    return new aluk(paramFlowActivity);
   }
 }
 

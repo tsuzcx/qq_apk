@@ -1,25 +1,25 @@
 package com.tencent.qg.qq;
 
-import bjfb;
+import bkgb;
 
 public class QGameApp$3
   implements Runnable
 {
-  public QGameApp$3(bjfb parambjfb, boolean paramBoolean, String paramString) {}
+  public QGameApp$3(bkgb parambkgb, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if (!bjfb.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
+    if (!bkgb.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
     {
-      bjfb.a(this.this$0, 1001);
+      bkgb.a(this.this$0, 1001);
       return;
     }
-    if (bjfb.a(this.this$0))
+    if (bkgb.a(this.this$0))
     {
-      bjfb.a(this.this$0);
+      bkgb.a(this.this$0);
       return;
     }
-    bjfb.a(this.this$0, 1003);
+    bkgb.a(this.this$0, 1003);
   }
 }
 

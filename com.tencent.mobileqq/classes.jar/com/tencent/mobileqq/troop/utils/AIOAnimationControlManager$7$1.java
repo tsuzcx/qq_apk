@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfos;
-import bfpc;
+import bgot;
+import bgpd;
 
 public class AIOAnimationControlManager$7$1
   implements Runnable
 {
-  public AIOAnimationControlManager$7$1(bfpc parambfpc) {}
+  public AIOAnimationControlManager$7$1(bgpd parambgpd) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Bfos.a = 1;
-    this.a.jdField_a_of_type_Bfos.a(this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Bgot.a = 1;
+    this.a.jdField_a_of_type_Bgot.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,27 +1,189 @@
-class lby
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public abstract class lby<T>
+  extends arac<T>
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  long b;
-  long c;
-  long d;
-  long e;
-  long f;
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
   
-  lby(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
+  public lby(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = paramLong6;
+    this.jdField_a_of_type_JavaLangString = ("QAVConfig_" + this.jdField_a_of_type_Int);
   }
   
-  boolean a()
+  private static int a(String paramString)
   {
-    return (this.jdField_a_of_type_Long > 0L) && (this.b > 0L) && (this.c > 0L);
+    try
+    {
+      int i = new JSONObject(paramString).optInt("task_id");
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  @Nullable
+  static araj a(String paramString, int paramInt, araj[] paramArrayOfaraj)
+  {
+    Object localObject1 = null;
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0))
+    {
+      paramArrayOfaraj = (araj[])localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.i(paramString, 2, "getSuitableItem, confFiles is null or empty.");
+        paramArrayOfaraj = (araj[])localObject1;
+      }
+      return paramArrayOfaraj;
+    }
+    int i;
+    if ((QLog.isDevelopLevel()) || (paramArrayOfaraj.length > 1))
+    {
+      i = 1;
+      label47:
+      localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      paramInt = aran.a().a(paramInt, ((AppInterface)localObject1).getCurrentAccountUin());
+      if (i == 0) {
+        break label341;
+      }
+    }
+    label139:
+    label338:
+    label341:
+    for (Object localObject2 = "getSuitableItem, Version[" + paramInt + "], size[" + paramArrayOfaraj.length + "]";; localObject2 = null)
+    {
+      localObject1 = paramArrayOfaraj[0];
+      Object localObject4 = localObject2;
+      Object localObject3 = localObject1;
+      int j;
+      if (paramArrayOfaraj.length > 1)
+      {
+        int k = paramArrayOfaraj.length;
+        paramInt = 0;
+        j = 0;
+        localObject4 = localObject2;
+        localObject3 = localObject1;
+        if (paramInt < k)
+        {
+          localObject4 = paramArrayOfaraj[paramInt];
+          int m = a(((araj)localObject4).jdField_a_of_type_JavaLangString);
+          localObject3 = localObject2;
+          if (i != 0) {
+            localObject3 = (String)localObject2 + ", \nindex[" + j + "], taskId[" + ((araj)localObject4).jdField_a_of_type_Int + "], task_id[" + m + "]";
+          }
+          if (m != ((araj)localObject4).jdField_a_of_type_Int) {
+            break label338;
+          }
+          localObject1 = localObject4;
+        }
+      }
+      for (;;)
+      {
+        j += 1;
+        paramInt += 1;
+        localObject2 = localObject3;
+        break label139;
+        i = 0;
+        break label47;
+        paramArrayOfaraj = (araj[])localObject3;
+        if (i == 0) {
+          break;
+        }
+        paramArrayOfaraj = (String)localObject4 + ", \nselect taskId[" + ((araj)localObject3).jdField_a_of_type_Int;
+        QLog.w(paramString, 1, paramArrayOfaraj + "], content\n" + ((araj)localObject3).jdField_a_of_type_JavaLangString);
+        return localObject3;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    String str = "";
+    if (isAccountRelated()) {
+      str = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
+    }
+    return aran.a().a(this.jdField_a_of_type_Int, str);
+  }
+  
+  @NonNull
+  protected abstract T a(araj[] paramArrayOfaraj);
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  @Nullable
+  public final T onParsed(araj[] paramArrayOfaraj)
+  {
+    try
+    {
+      Object localObject = a(paramArrayOfaraj);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onParsed, 配置解析异常, [\n" + paramArrayOfaraj[0].jdField_a_of_type_JavaLangString + "\n]", localException);
+      AudioHelper.c(this.jdField_a_of_type_JavaLangString + anzj.a(2131707781));
+    }
+    return migrateOldOrDefaultContent(type());
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isDevelopLevel())
+    {
+      int i = a();
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onReqFailed, failCode[" + paramInt + "], version[" + i + "]");
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isDevelopLevel())
+    {
+      int i = a();
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onReqNoReceive, version[" + i + "]");
+    }
+  }
+  
+  public void onUpdate(T paramT)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onUpdate, " + paramT);
+    }
+  }
+  
+  public int type()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

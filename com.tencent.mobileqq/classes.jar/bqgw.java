@@ -1,16 +1,10 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
 public abstract interface bqgw
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
   
-  public abstract void a(int paramInt, bqgr parambqgr);
-  
-  public abstract void a(int paramInt, ArrayList<bqgr> paramArrayList);
-  
-  public abstract void a(String[] paramArrayOfString, String paramString);
-  
-  public abstract void b(int paramInt, bqgr parambqgr);
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 

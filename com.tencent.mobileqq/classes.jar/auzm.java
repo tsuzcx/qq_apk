@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
 
-final class auzm
-  implements DialogInterface.OnClickListener
+public class auzm
+  implements URLDrawable.URLDrawableListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public auzm(ForwardMarketFaceOption paramForwardMarketFaceOption) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramDialogInterface.dismiss();
+    paramURLDrawable.setBounds(bhmq.a(paramURLDrawable, 36, 100, this.a.a));
+    ForwardMarketFaceOption.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

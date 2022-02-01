@@ -1,46 +1,29 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.17.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
 
 public class aykl
-  extends bbxe
+  implements aqhu
 {
-  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public aykl(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public aykl(OlympicToolAppInterface paramOlympicToolAppInterface)
+  public void a(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("OlympicToolService", 2, "new OlympicToolService");
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
     }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
   }
   
-  public AppInterface a()
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
+    if ((TextUtils.isEmpty(paramString)) || (!this.a.p)) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
     }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, aykm.class);
+    this.a.runOnUiThread(new NearbyPeopleProfileActivity.17.1(this, paramString, paramBoolean1));
   }
 }
 

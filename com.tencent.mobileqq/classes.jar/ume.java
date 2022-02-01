@@ -1,64 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz.1;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import UserGrowth.stNotificationRsp;
 
-public class ume
-  extends uly<WSRedDotPushMsg, WSPushStrategyInfo>
+class ume
+  implements ukd
 {
-  private int jdField_a_of_type_Int;
-  private Intent jdField_a_of_type_AndroidContentIntent;
+  ume(umd paramumd) {}
   
-  public ume(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  public void a(uko paramuko)
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-  }
-  
-  private String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return Uri.parse(paramString).getQueryParameter("logsour");
-    }
-    return null;
-  }
-  
-  private void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (TextUtils.equals(a(paramString), "2020020163")))
+    uqf.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramuko.b + " | resultBean:" + paramuko.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
+    if (this.a.a() == null)
     {
-      umw.a();
-      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
+      uqf.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse getView(): null");
+      return;
     }
-  }
-  
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
-  {
-    boolean bool3 = zmi.a(paramContext);
-    upe.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
-    boolean bool1 = false;
-    if (this.jdField_a_of_type_Int == 2)
+    if (paramuko.a())
     {
-      WSHomeFragment.a(paramContext);
-      bool1 = true;
-    }
-    boolean bool2 = bool1;
-    if (!TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme))
-    {
-      bool2 = bool1;
-      if (bool3)
+      if ((paramuko.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
       {
-        ujn.a().a(new WSWeSeeClientBiz.1(this, paramContext, paramWSPushStrategyInfo), 200L);
-        bool2 = true;
+        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramuko.jdField_a_of_type_JavaLangObject;
+        uke localuke = paramuko.jdField_a_of_type_Uke;
+        if (localuke != null) {
+          unu.a().a(localstNotificationRsp.trace_id, localuke.a);
+        }
+        if (localstNotificationRsp.type > 0)
+        {
+          ((unf)this.a.a()).a(localstNotificationRsp, localuke);
+          return;
+        }
+        ((unf)this.a.a()).b(paramuko.b, paramuko.jdField_a_of_type_JavaLangString);
+        return;
       }
+      ((unf)this.a.a()).b(paramuko.b, paramuko.jdField_a_of_type_JavaLangString);
+      uqf.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramuko.b + " | " + paramuko.jdField_a_of_type_JavaLangString);
+      return;
     }
-    return bool2;
+    ((unf)this.a.a()).b(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString);
   }
 }
 

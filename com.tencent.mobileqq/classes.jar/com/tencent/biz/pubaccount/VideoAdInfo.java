@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import obk;
+import ocu;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +29,7 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PosAdInfo;
 public class VideoAdInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new obk();
+  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new ocu();
   public String A;
   public String B;
   public String C;

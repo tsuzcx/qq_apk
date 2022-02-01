@@ -4,21 +4,21 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.RemoteException;
-import bgmg;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import ltr;
-import lvs;
-import mnl;
-import mno;
-import mnp;
-import mpu;
+import lun;
+import lwo;
+import moi;
+import mol;
+import mom;
+import mqr;
 
 public class AVRedPacketConfigManager$2
   implements Runnable
 {
-  public AVRedPacketConfigManager$2(ltr paramltr, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
+  public AVRedPacketConfigManager$2(lun paramlun, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
   
   public void run()
   {
@@ -41,17 +41,17 @@ public class AVRedPacketConfigManager$2
         }
         if ((this.jdField_b_of_type_Int == 2) && (l1 != l2))
         {
-          mnl localmnl = mnl.a();
-          if ((localmnl == null) || (localmnl.g != 1) || (!mnp.a(this.jdField_b_of_type_JavaLangString))) {
+          moi localmoi = moi.a();
+          if ((localmoi == null) || (localmoi.g != 1) || (!mom.a(this.jdField_b_of_type_JavaLangString))) {
             break label689;
           }
-          ltr.a(this.this$0).removeMessages(100);
-          ltr.a(this.this$0).sendEmptyMessageDelayed(100, 60000L);
+          lun.a(this.this$0).removeMessages(100);
+          lun.a(this.this$0).sendEmptyMessageDelayed(100, 60000L);
           l2 = System.currentTimeMillis();
-          mnp.a(this.jdField_a_of_type_JavaLangString);
+          mom.a(this.jdField_a_of_type_JavaLangString);
           long l3 = System.currentTimeMillis();
-          ltr.a(this.this$0).removeMessages(100);
-          mno.a(l3 - l2);
+          lun.a(this.this$0).removeMessages(100);
+          mol.a(l3 - l2);
         }
         label264:
         l2 = ((File)localObject).lastModified();
@@ -60,7 +60,7 @@ public class AVRedPacketConfigManager$2
           QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",modifyTime = " + l2 + ", spModifiedTime=" + l1);
         }
       }
-      if (this.this$0.jdField_b_of_type_Lvs != null)
+      if (this.this$0.jdField_b_of_type_Lwo != null)
       {
         if (this.jdField_b_of_type_Int != 1) {
           break label700;
@@ -72,16 +72,16 @@ public class AVRedPacketConfigManager$2
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",downloadBgMusicFinish = " + this.this$0.c + ",downloadResFinish = " + this.this$0.jdField_b_of_type_Boolean + ",downloadCallBack = " + this.this$0.jdField_b_of_type_Lvs);
+        QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",downloadBgMusicFinish = " + this.this$0.c + ",downloadResFinish = " + this.this$0.jdField_b_of_type_Boolean + ",downloadCallBack = " + this.this$0.jdField_b_of_type_Lwo);
       }
       if ((this.this$0.jdField_b_of_type_Boolean) && (this.this$0.c)) {}
       for (;;)
       {
         try
         {
-          mpu.a(this.this$0.jdField_a_of_type_JavaLangString);
-          localObject = mpu.b();
-          if (bgmg.b(this.jdField_a_of_type_JavaLangString)) {
+          mqr.a(this.this$0.jdField_a_of_type_JavaLangString);
+          localObject = mqr.b();
+          if (bhmi.b(this.jdField_a_of_type_JavaLangString)) {
             continue;
           }
           QLog.w("AVRedPacketConfigManger", 1, "onDownloadFinish, !exist, mp4[" + (String)localObject + "]");
@@ -95,11 +95,11 @@ public class AVRedPacketConfigManager$2
         }
         try
         {
-          this.this$0.jdField_b_of_type_Lvs.a(bool1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_b_of_type_JavaLangString);
+          this.this$0.jdField_b_of_type_Lwo.a(bool1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_b_of_type_JavaLangString);
           if (bool1) {
             localSharedPreferences.edit().putBoolean("res_exist", true).commit();
           }
-          this.this$0.jdField_b_of_type_Lvs = null;
+          this.this$0.jdField_b_of_type_Lwo = null;
           this.this$0.a("onDownloadFinish");
           return;
         }

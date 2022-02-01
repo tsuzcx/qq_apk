@@ -1,31 +1,32 @@
-import android.annotation.TargetApi;
-import java.net.URL;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@TargetApi(14)
 public class wgl
+  extends wov
 {
-  public static URL a(URL paramURL)
-  {
-    String str = paramURL.getHost();
-    int k = str.indexOf(':');
-    Object localObject = paramURL;
-    if (k != -1)
-    {
-      localObject = str.substring(0, k);
-      int j = paramURL.getPort();
-      int i = j;
-      if (j == -1) {
-        i = Integer.valueOf(str.substring(k + 1)).intValue();
-      }
-      yqp.b("URLChecker", "url is not initilized correctly, so re-create it");
-      localObject = new URL(paramURL.getProtocol(), (String)localObject, i, paramURL.getFile());
-    }
-    return localObject;
-  }
+  List<AddressItem> a = new ArrayList();
   
-  public static boolean a(URL paramURL)
+  public wgl(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
   {
-    return paramURL.getHost().indexOf(':') == -1;
+    super(paramRspBatchGetPOIList.result);
+    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
+    if (paramRspBatchGetPOIList != null)
+    {
+      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
+      while (paramRspBatchGetPOIList.hasNext())
+      {
+        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
+        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
+        localAddressItem.poiType = localPOI.poi_type.get();
+        this.a.add(localAddressItem);
+      }
+    }
   }
 }
 

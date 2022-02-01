@@ -1,52 +1,46 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
+import msf.msgsvc.msg_svc.RoutingHead;
+import msf.msgsvc.msg_svc.WPATmp;
 
 public class adjr
-  implements View.OnClickListener
+  implements adbw
 {
-  public adjr(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    String str1 = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-    int i = 0;
-    String str2;
-    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
+    return 1005;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().b(paramMessageRecord.frienduin);
+    msg_svc.WPATmp localWPATmp = new msg_svc.WPATmp();
+    localWPATmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (paramQQAppInterface != null)
     {
-      str2 = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
-      if (!"".equals(str2)) {}
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131689996), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
+      bhvd.a(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("WPARoutingType", 2, "wpa------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
       }
-      for (;;)
-      {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
-        }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        str1 = str1.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str2));
-        i += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(str1, null, "");
-      }
+      localWPATmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
+    paramRoutingHead.wpa_tmp.set(localWPATmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 7000;
   }
 }
 

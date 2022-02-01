@@ -1,42 +1,66 @@
-import android.view.View;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.SpannableString;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class aumw
-  implements bkhw
 {
-  public aumw(NearbyHybridFragment paramNearbyHybridFragment) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, aumz paramaumz)
   {
-    switch (paramInt)
-    {
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
     }
-    for (;;)
+    if (localObject == null)
     {
-      if (this.a.jdField_a_of_type_Bkho != null) {
-        this.a.jdField_a_of_type_Bkho.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
       }
-      this.a.o();
       return;
-      this.a.p();
-      continue;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
-      }
-      if ((bgnt.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
-      {
-        aumh.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
-      }
-      else
-      {
-        QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131693946), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
-      }
     }
+    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramaumz);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt, aumz paramaumz)
+  {
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
+    }
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
+      }
+      return;
+    }
+    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramaumz);
+  }
+  
+  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, aumz paramaumz)
+  {
+    aumx localaumx = new aumx(paramaumz);
+    paramaumz = new aumy(paramaumz);
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread()) {}
+    do
+    {
+      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localaumx, paramaumz));
+      do
+      {
+        return;
+      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
+      if ((paramCharSequence instanceof String))
+      {
+        bhlq.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692065, 2131692069, localaumx, paramaumz).show();
+        return;
+      }
+    } while (!(paramCharSequence instanceof SpannableString));
+    bhlq.a(paramContext, 230, paramString, paramCharSequence, 2131692065, 2131692069, localaumx, paramaumz).show();
   }
 }
 

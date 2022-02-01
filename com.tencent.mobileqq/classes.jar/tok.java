@@ -1,17 +1,27 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class tok
-  extends tou
+  implements pye
 {
-  public tok(BridgeModule paramBridgeModule)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramBridgeModule);
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    BridgeModule.access$400(this.a, paramInt2, paramIntent);
+    return pto.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

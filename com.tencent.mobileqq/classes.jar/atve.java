@@ -1,9 +1,4 @@
-public abstract interface atve
-{
-  public abstract void a();
-  
-  public abstract void b();
-}
+public abstract interface atve {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

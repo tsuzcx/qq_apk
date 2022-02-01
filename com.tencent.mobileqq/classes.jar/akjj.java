@@ -1,68 +1,56 @@
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class akjj
-  extends akhu
+class akjj
+  implements bljm
 {
-  akjj(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  akjj(akjc paramakjc) {}
   
-  private boolean a(LocalMediaInfo paramLocalMediaInfo)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramLocalMediaInfo.mediaWidth < 320) || (paramLocalMediaInfo.mediaHeight < 320))
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    }
+    if ((this.a.jdField_a_of_type_Akgd.getCount() <= 0) || (paramInt <= 0)) {}
+    do
     {
-      paramLocalMediaInfo = bglp.a(this.mActivity, 230, null, anni.a(2131706859), anni.a(2131706843), null, null, new akjk(this));
-      try
-      {
-        paramLocalMediaInfo.show();
-        return false;
+      return;
+      paramAdapterView = (akjl)this.a.jdField_a_of_type_Akgd.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+    }
+    try
+    {
+      paramAdapterView = bfmb.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      if (paramAdapterView == null) {
+        break label214;
       }
-      catch (Exception paramLocalMediaInfo)
+      paramAdapterView = (TroopLinkElement)paramAdapterView;
+    }
+    catch (Exception paramAdapterView)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PhotoListLogicNearby", 2, "showLocationFailDialog fail!", paramLocalMediaInfo);
-          }
-        }
+        paramAdapterView = null;
+        continue;
+        paramAdapterView = null;
       }
     }
-    return true;
-  }
-  
-  public Intent caseNoSingModeImage(View paramView, int paramInt)
-  {
-    LocalMediaInfo localLocalMediaInfo = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
-    if ((((NewPhotoListActivity)this.mActivity).photoListAdapter.getItemViewType(paramInt) == 0) && (!a(localLocalMediaInfo))) {
-      return null;
+    if (paramAdapterView != null)
+    {
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", paramAdapterView.url);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
     }
-    return super.caseNoSingModeImage(paramView, paramInt);
-  }
-  
-  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
-  {
-    return anni.a(2131693913);
-  }
-  
-  public void onCheckBoxClick(View paramView, int paramInt, CheckBox paramCheckBox)
-  {
-    if (a(((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt))) {
-      super.onCheckBoxClick(paramView, paramInt, paramCheckBox);
-    }
-  }
-  
-  public void startPhotoPreviewActivity(Intent paramIntent)
-  {
-    if (paramIntent != null) {
-      super.startPhotoPreviewActivity(paramIntent);
-    }
+    this.a.a(true);
   }
 }
 

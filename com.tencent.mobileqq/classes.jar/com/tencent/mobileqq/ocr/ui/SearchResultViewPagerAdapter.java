@@ -5,12 +5,12 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
-import aygk;
-import aygm;
-import ayht;
-import ayij;
-import ayik;
+import anzj;
+import ayzd;
+import ayzf;
+import azam;
+import azbc;
+import azbd;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,59 +21,59 @@ public class SearchResultViewPagerAdapter
   extends PagerAdapter
 {
   ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  public ayht a;
+  public azam a;
   SearchResultFragment jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment;
-  public List<ayik> a;
-  Map<String, ayij> jdField_a_of_type_JavaUtilMap = new HashMap();
-  List<aygk> b;
+  public List<azbd> a;
+  Map<String, azbc> jdField_a_of_type_JavaUtilMap = new HashMap();
+  List<ayzd> b;
   
-  public SearchResultViewPagerAdapter(ayht paramayht, SearchResultFragment paramSearchResultFragment, ViewPager paramViewPager)
+  public SearchResultViewPagerAdapter(azam paramazam, SearchResultFragment paramSearchResultFragment, ViewPager paramViewPager)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Ayht = paramayht;
+    this.jdField_a_of_type_Azam = paramazam;
     this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = paramSearchResultFragment;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
   }
   
-  public List<ayik> a(String paramString, int paramInt, aygm paramaygm)
+  public List<azbd> a(String paramString, int paramInt, ayzf paramayzf)
   {
-    if (paramaygm != null) {}
-    for (this.b = paramaygm.jdField_a_of_type_JavaUtilList;; this.b = null)
+    if (paramayzf != null) {}
+    for (this.b = paramayzf.jdField_a_of_type_JavaUtilList;; this.b = null)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      if ((paramaygm != null) && (paramaygm.b != null)) {
-        this.jdField_a_of_type_JavaUtilList = paramaygm.b;
+      if ((paramayzf != null) && (paramayzf.b != null)) {
+        this.jdField_a_of_type_JavaUtilList = paramayzf.b;
       }
-      if ((paramInt != 0) || (paramaygm == null) || (paramaygm.b == null) || (paramaygm.b.size() <= 0)) {
+      if ((paramInt != 0) || (paramayzf == null) || (paramayzf.b == null) || (paramayzf.b.size() <= 0)) {
         break;
       }
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        ayik localayik = (ayik)localIterator.next();
-        if (localayik.jdField_a_of_type_Int == 0)
+        azbd localazbd = (azbd)localIterator.next();
+        if (localazbd.jdField_a_of_type_Int == 0)
         {
-          localayik.jdField_a_of_type_JavaUtilList = paramaygm.jdField_a_of_type_JavaUtilList;
-          localayik.jdField_a_of_type_Boolean = paramaygm.jdField_a_of_type_Boolean;
+          localazbd.jdField_a_of_type_JavaUtilList = paramayzf.jdField_a_of_type_JavaUtilList;
+          localazbd.jdField_a_of_type_Boolean = paramayzf.jdField_a_of_type_Boolean;
         }
       }
     }
     if (this.jdField_a_of_type_JavaUtilList.size() == 0)
     {
-      paramaygm = new ayik();
-      paramaygm.jdField_a_of_type_JavaLangString = anni.a(2131712418);
-      paramaygm.jdField_a_of_type_Int = 0;
-      paramaygm.jdField_a_of_type_JavaUtilList = this.b;
-      if ((paramaygm.jdField_a_of_type_JavaUtilList == null) || (paramaygm.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      paramayzf = new azbd();
+      paramayzf.jdField_a_of_type_JavaLangString = anzj.a(2131712527);
+      paramayzf.jdField_a_of_type_Int = 0;
+      paramayzf.jdField_a_of_type_JavaUtilList = this.b;
+      if ((paramayzf.jdField_a_of_type_JavaUtilList == null) || (paramayzf.jdField_a_of_type_JavaUtilList.size() <= 0)) {
         break label241;
       }
     }
     label241:
-    for (paramaygm.jdField_b_of_type_Int = paramInt;; paramaygm.jdField_b_of_type_Int = -1)
+    for (paramayzf.jdField_b_of_type_Int = paramInt;; paramayzf.jdField_b_of_type_Int = -1)
     {
-      paramaygm.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_JavaUtilList.add(0, paramaygm);
-      a(this.jdField_a_of_type_Ayht.a());
+      paramayzf.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_JavaUtilList.add(0, paramayzf);
+      a(this.jdField_a_of_type_Azam.a());
       super.notifyDataSetChanged();
       return this.jdField_a_of_type_JavaUtilList;
     }
@@ -81,8 +81,8 @@ public class SearchResultViewPagerAdapter
   
   public void a(int paramInt)
   {
-    ayik localayik = (ayik)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ((ayij)this.jdField_a_of_type_JavaUtilMap.get(localayik.jdField_a_of_type_JavaLangString)).a();
+    azbd localazbd = (azbd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    ((azbc)this.jdField_a_of_type_JavaUtilMap.get(localazbd.jdField_a_of_type_JavaLangString)).a();
   }
   
   void a(Context paramContext)
@@ -90,19 +90,19 @@ public class SearchResultViewPagerAdapter
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      ayik localayik = (ayik)this.jdField_a_of_type_JavaUtilList.get(i);
-      ayij localayij;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localayik.jdField_a_of_type_JavaLangString)) {
-        localayij = (ayij)this.jdField_a_of_type_JavaUtilMap.get(localayik.jdField_a_of_type_JavaLangString);
+      azbd localazbd = (azbd)this.jdField_a_of_type_JavaUtilList.get(i);
+      azbc localazbc;
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localazbd.jdField_a_of_type_JavaLangString)) {
+        localazbc = (azbc)this.jdField_a_of_type_JavaUtilMap.get(localazbd.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
-        localayij.a(localayik.jdField_a_of_type_Boolean);
-        localayij.a(paramContext, localayik);
+        localazbc.a(localazbd.jdField_a_of_type_Boolean);
+        localazbc.a(paramContext, localazbd);
         i += 1;
         break;
-        localayij = new ayij(this.jdField_a_of_type_Ayht, this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment);
-        this.jdField_a_of_type_JavaUtilMap.put(localayik.jdField_a_of_type_JavaLangString, localayij);
+        localazbc = new azbc(this.jdField_a_of_type_Azam, this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment);
+        this.jdField_a_of_type_JavaUtilMap.put(localazbd.jdField_a_of_type_JavaLangString, localazbc);
       }
     }
   }
@@ -127,8 +127,8 @@ public class SearchResultViewPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = (ayik)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localObject = ((ayij)this.jdField_a_of_type_JavaUtilMap.get(((ayik)localObject).jdField_a_of_type_JavaLangString)).a(this.jdField_a_of_type_Ayht.a(), (ayik)localObject);
+    Object localObject = (azbd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    localObject = ((azbc)this.jdField_a_of_type_JavaUtilMap.get(((azbd)localObject).jdField_a_of_type_JavaLangString)).a(this.jdField_a_of_type_Azam.a(), (azbd)localObject);
     paramViewGroup.removeView((View)localObject);
     paramViewGroup.addView((View)localObject);
     return localObject;

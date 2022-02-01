@@ -1,6 +1,6 @@
 package Wallet;
 
-import bgln;
+import bhlo;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -34,12 +34,12 @@ public final class JudgeDownloadReq
     JudgeDownloadReq localJudgeDownloadReq = new JudgeDownloadReq();
     localJudgeDownloadReq.iUin = paramLong;
     localJudgeDownloadReq.vecResInfo = paramArrayList;
-    localJudgeDownloadReq.sPhoneType = bgln.i();
-    localJudgeDownloadReq.sQQVersion = bgln.c();
-    localJudgeDownloadReq.fMinCPUFreq = ((float)bgln.a());
-    localJudgeDownloadReq.fMaxCPUFreq = ((float)bgln.b());
-    localJudgeDownloadReq.iCores = bgln.b();
-    localJudgeDownloadReq.iMemory = (bgln.d() / 1024L);
+    localJudgeDownloadReq.sPhoneType = bhlo.i();
+    localJudgeDownloadReq.sQQVersion = bhlo.c();
+    localJudgeDownloadReq.fMinCPUFreq = ((float)bhlo.a());
+    localJudgeDownloadReq.fMaxCPUFreq = ((float)bhlo.b());
+    localJudgeDownloadReq.iCores = bhlo.b();
+    localJudgeDownloadReq.iMemory = (bhlo.d() / 1024L);
     localJudgeDownloadReq.iRetryTimes = paramInt;
     return localJudgeDownloadReq;
   }

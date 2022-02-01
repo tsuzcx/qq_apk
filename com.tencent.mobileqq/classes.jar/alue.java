@@ -1,28 +1,49 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import java.util.Map;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class alue
-  extends anmu
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public alue(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  float jdField_a_of_type_Float;
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public alue(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
   {
-    if (paramBoolean1) {
-      this.a.c();
-    }
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
   }
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.a.c();
+    return super.onDown(paramMotionEvent);
   }
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramBoolean) {
-      this.a.c();
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.h) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.i)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    if (Math.abs(f) > this.jdField_a_of_type_Float)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
+      return true;
+    }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

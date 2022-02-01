@@ -1,32 +1,31 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class bifh
-  implements IVideoInnerStatusListener
+public class bifh
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  bifh(bifg parambifg) {}
+  public bifh(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void notifyVideoClose(int paramInt)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.b();
-  }
-  
-  public void notifyVideoSeek(int paramInt)
-  {
-    if (bifg.a(this.a) != null)
-    {
-      paramInt = (int)(paramInt * bifg.a(this.a).c() / 100.0D);
-      bifg.a(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
     }
-  }
-  
-  public void notifyVideoStart()
-  {
-    bifg.a(this.a);
-  }
-  
-  public void notifyVideoStop()
-  {
-    bifg.b(this.a);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      paramTVK_IMediaPlayer.pause();
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      return;
+      paramTVK_IMediaPlayer.start();
+    }
   }
 }
 

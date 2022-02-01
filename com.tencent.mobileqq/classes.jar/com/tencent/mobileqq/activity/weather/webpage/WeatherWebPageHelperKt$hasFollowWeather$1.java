@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import anrs;
+import aody;
 import com.tencent.mobileqq.app.ThreadManager;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function1;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public final class WeatherWebPageHelperKt$hasFollowWeather$1
   implements Runnable
 {
-  public WeatherWebPageHelperKt$hasFollowWeather$1(Ref.ObjectRef paramObjectRef, anrs paramanrs, Function1 paramFunction1) {}
+  public WeatherWebPageHelperKt$hasFollowWeather$1(Ref.ObjectRef paramObjectRef, aody paramaody, Function1 paramFunction1) {}
   
   public final void run()
   {
-    this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element = this.jdField_a_of_type_Anrs.a("2658655094");
+    this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element = this.jdField_a_of_type_Aody.a("2658655094");
     ThreadManager.getUIHandler().post((Runnable)new WeatherWebPageHelperKt.hasFollowWeather.1.1(this));
   }
 }

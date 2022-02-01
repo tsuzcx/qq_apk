@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.report;
 import android.os.Debug;
 import android.os.Debug.MemoryInfo;
 import android.os.SystemClock;
-import anro;
-import blru;
+import aodu;
+import bmsw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -65,7 +65,7 @@ public class MiniGamePerformanceStatics
         reset();
         return;
       }
-      f3 = (float)(anro.a("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
+      f3 = (float)(aodu.a("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
       f4 = this.mAverageMemory.calculate();
       f5 = this.mMaxMemory.calculate() - this.mStartMemory;
       if (!this.miniAppConfig.isReportTypeMiniGame()) {
@@ -115,7 +115,7 @@ public class MiniGamePerformanceStatics
       localObject = (String)localIterator.next();
       localHashMap = new HashMap();
       localHashMap.put("appId", str);
-      localHashMap.put("qua", blru.a());
+      localHashMap.put("qua", bmsw.a());
       localHashMap.put("apiName", localObject);
       localHashMap.put("isSdk", String.valueOf(0));
       if (!paramBoolean) {
@@ -205,7 +205,7 @@ public class MiniGamePerformanceStatics
     this.mAverageMemory.reset();
     this.mAverageFps.reset();
     this.mFpsVariance.reset();
-    this.mStartCpuTime = anro.a("-1");
+    this.mStartCpuTime = aodu.a("-1");
     this.mStartTimeMillis = SystemClock.uptimeMillis();
     this.fileApiSuccessCountMap.clear();
     this.fileApiFailCountMap.clear();

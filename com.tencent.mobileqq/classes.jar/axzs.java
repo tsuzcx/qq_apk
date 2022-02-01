@@ -1,9 +1,20 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axzs
-  extends axzq
+  implements View.OnClickListener
 {
-  public PublishVideoEntry a;
+  public axzs(RecentUserInvitePanel paramRecentUserInvitePanel, axzx paramaxzx) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_Axzx);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

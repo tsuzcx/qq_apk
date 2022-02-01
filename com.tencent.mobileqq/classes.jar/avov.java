@@ -1,38 +1,72 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-class avov
-  implements njz
+public class avov
 {
-  avov(avou paramavou) {}
+  avow a;
   
-  public void a(Bundle paramBundle)
+  public avov(int paramInt)
   {
-    if (!TextUtils.isEmpty(this.a.a))
+    this.a = new avow(paramInt);
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      paramBundle = paramBundle.getString("info");
-      localJSONObject = new JSONObject();
+    default: 
+      return "";
+    case 1: 
+      return "graytip";
+    case 2: 
+      return "nor_text";
+    case 3: 
+      return "url";
+    case 4: 
+      return "qq";
+    case 5: 
+      return "img";
+    case 6: 
+      return "dialog";
+    case 7: 
+      return "title";
+    case 8: 
+      return "alter";
+    case 9: 
+      return "btn";
     }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        JSONObject localJSONObject;
-        localJSONObject.put("data", paramBundle);
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
-        }
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
-        return;
-      }
+    return "item";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "align";
+    case 2: 
+      return "text";
+    case 3: 
+      return "size";
+    case 4: 
+      return "jump";
+    case 5: 
+      return "color";
+    case 6: 
+      return "uin";
+    case 7: 
+      return "name";
     }
-    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    return "src";
+  }
+  
+  public avow a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return avow.a(this.a, 0);
   }
 }
 

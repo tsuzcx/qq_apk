@@ -1,26 +1,14 @@
-import UserGrowth.stBlockRecommPersonRsp;
+import java.util.List;
 
-class ugo
-  implements ujj
+public abstract interface ugo<T>
 {
-  ugo(ugn paramugn) {}
+  public abstract void a(boolean paramBoolean1, List<T> paramList, boolean paramBoolean2);
   
-  public void a(uju paramuju)
-  {
-    if (!(paramuju.a instanceof stBlockRecommPersonRsp)) {
-      upe.b("WSUserBusiness", "[actionBlockRecommendPerson] data error: " + paramuju.a);
-    }
-    do
-    {
-      return;
-      paramuju = (stBlockRecommPersonRsp)paramuju.a;
-    } while (paramuju == null);
-    upe.b("WSUserBusiness", "[actionBlockRecommendPerson] data success resultBean.ret:" + paramuju.ret);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ugo
  * JD-Core Version:    0.7.0.1
  */

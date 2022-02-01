@@ -1,10 +1,14 @@
-public abstract interface ayrg
+class ayrg
+  implements ayrw
 {
-  public abstract int a();
+  ayrg(ayrf paramayrf, String paramString) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract boolean a();
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean) {
+      this.jdField_a_of_type_Ayrf.a(this.jdField_a_of_type_JavaLangString, paramInt);
+    }
+  }
 }
 
 

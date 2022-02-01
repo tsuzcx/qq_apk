@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.gamecenter.web.view.BaseNestScrollWebView;
@@ -24,7 +24,7 @@ public class MiniGamePublicAccountWebView
   
   public void onPageFinish(String paramString)
   {
-    setPaddingTop(afur.a(afur.a(ImmersiveUtils.getStatusBarHeight(getContext()), getContext().getResources()) + 463.0F, getResources()));
+    setPaddingTop(agej.a(agej.a(ImmersiveUtils.getStatusBarHeight(getContext()), getContext().getResources()) + 463.0F, getResources()));
   }
   
   public void setPaddingTop(int paramInt)

@@ -1,16 +1,23 @@
 package dov.com.qq.im.capture.control;
 
-import bokv;
+import bpmq;
 
 public class QIMAsyncManager$1
   implements Runnable
 {
-  public QIMAsyncManager$1(bokv parambokv) {}
+  public QIMAsyncManager$1(bpmq parambpmq) {}
   
   public void run()
   {
-    this.this$0.c();
-    bokv.a(this.this$0, true);
+    synchronized (this.this$0)
+    {
+      if (bpmq.a(this.this$0)) {
+        return;
+      }
+      this.this$0.d();
+      bpmq.a(this.this$0, true);
+      return;
+    }
   }
 }
 

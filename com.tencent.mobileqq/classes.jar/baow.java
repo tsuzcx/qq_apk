@@ -1,8 +1,12 @@
-import android.hardware.Camera;
-
-public abstract interface baow
+class baow
+  extends anwt
 {
-  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
+  baow(baou parambaou) {}
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    this.a.b(paramString, 3000);
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import akpj;
-import akqv;
-import akrk;
-import akrl;
+import alau;
+import alcg;
+import alcv;
+import alcw;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -12,16 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import anni;
-import blqo;
-import blqv;
-import blqw;
+import anzj;
+import bmrq;
+import bmrx;
+import bmry;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.text.DecimalFormat;
 import java.util.List;
-import niw;
+import nkr;
 
 public abstract class BaseHbUIFragment
   extends BaseHbFragment
@@ -30,22 +30,22 @@ public abstract class BaseHbUIFragment
   public View a;
   protected Button a;
   protected EditText a;
-  public blqw a;
+  public bmry a;
   private DecimalFormat a;
-  public niw a;
+  public nkr a;
   protected EditText b;
   public EditText c;
   
   public BaseHbUIFragment()
   {
-    this.jdField_a_of_type_Blqw = new blqw();
+    this.jdField_a_of_type_Bmry = new bmry();
     this.jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-    this.jdField_a_of_type_AndroidTextTextWatcher = new akpj(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new alau(this);
   }
   
   protected float a()
   {
-    return blqo.a(this.b.getText().toString());
+    return bmrq.a(this.b.getText().toString());
   }
   
   public abstract int a();
@@ -54,22 +54,22 @@ public abstract class BaseHbUIFragment
   
   protected void a()
   {
-    this.c.setHint(akqv.a(this.channel, this.jdField_a_of_type_Blqw, this.mActivity.a(), a()));
+    this.c.setHint(alcg.a(this.channel, this.jdField_a_of_type_Bmry, this.mActivity.a(), a()));
     b();
   }
   
   protected void a(Bundle paramBundle)
   {
-    blqv.a(paramBundle, this.jdField_a_of_type_Blqw);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131371879));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new akrl(this.jdField_a_of_type_AndroidWidgetEditText));
-    this.b = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131362652));
+    bmrx.a(paramBundle, this.jdField_a_of_type_Bmry);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131371992));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new alcw(this.jdField_a_of_type_AndroidWidgetEditText));
+    this.b = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131362668));
     this.b.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    this.b.addTextChangedListener(new akrk(this.b));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364909));
-    this.c = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131370599));
+    this.b.addTextChangedListener(new alcv(this.b));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364956));
+    this.c = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131370703));
     if (QLog.isColorLevel()) {
-      QLog.i("BaseHbUIFragment", 2, "bundleInfo: " + this.jdField_a_of_type_Blqw);
+      QLog.i("BaseHbUIFragment", 2, "bundleInfo: " + this.jdField_a_of_type_Bmry);
     }
   }
   
@@ -77,43 +77,43 @@ public abstract class BaseHbUIFragment
   {
     String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
     float f = a();
-    if ((blqo.a(str, 0) <= 0) || (f <= 0.0F))
+    if ((bmrq.a(str, 0) <= 0) || (f <= 0.0F))
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696069));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696112));
       return false;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(anni.a(2131699810), new Object[] { this.jdField_a_of_type_JavaTextDecimalFormat.format(f) }));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(anzj.a(2131699917), new Object[] { this.jdField_a_of_type_JavaTextDecimalFormat.format(f) }));
     return true;
   }
   
   protected String b()
   {
-    return akqv.a(this.c);
+    return alcg.a(this.c);
   }
   
   protected void b()
   {
-    QLog.i("BaseHbUIFragment", 2, "recv_type: " + this.jdField_a_of_type_Blqw.recv_type);
-    if (blqv.b.contains(this.jdField_a_of_type_Blqw.recv_type))
+    QLog.i("BaseHbUIFragment", 2, "recv_type: " + this.jdField_a_of_type_Bmry.recv_type);
+    if (bmrx.b.contains(this.jdField_a_of_type_Bmry.recv_type))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
       ((View)this.jdField_a_of_type_AndroidWidgetEditText.getParent()).setVisibility(8);
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Blqw.people_num)) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131699809) + this.jdField_a_of_type_Blqw.people_num + anni.a(2131699811));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bmry.people_num)) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(anzj.a(2131699916) + this.jdField_a_of_type_Bmry.people_num + anzj.a(2131699918));
     }
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
   }
   
   protected boolean b()
   {
-    if (blqo.a()) {
+    if (bmrq.a()) {
       return false;
     }
-    if (blqo.a(this.b.getText().toString()) <= 0.0F)
+    if (bmrq.a(this.b.getText().toString()) <= 0.0F)
     {
       QLog.d("BaseHbUIFragment", 2, "amount error, no input!");
       return false;

@@ -1,68 +1,92 @@
-import android.text.TextUtils;
-import com.tencent.open.appstore.js.DINewForCommonWebView;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.io.File;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bisj
-  implements bivy
 {
-  public bisj(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
-  
-  public void a(int paramInt, String paramString)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, String... paramVarArgs)
   {
-    bisy.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bisy.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt1).append('|');
+    localStringBuffer.append(paramInt2).append('|');
+    localStringBuffer.append(paramInt3).append('|');
+    localStringBuffer.append(paramInt4).append('|');
+    localStringBuffer.append(paramInt5).append('|');
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramInt6).append('|');
+    localStringBuffer.append(paramInt7).append('|');
+    localStringBuffer.append(paramInt8).append('|');
+    localStringBuffer.append(paramInt9).append('|');
+    localStringBuffer.append(paramInt10);
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      if (i < j)
+      paramString1 = new String[5];
+      System.arraycopy(paramVarArgs, 0, paramString1, 0, Math.min(5, paramVarArgs.length));
+      paramInt1 = 0;
+      if (paramInt1 < 5)
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          if (TextUtils.isEmpty(localDownloadInfo.l)) {
-            localJSONObject.put("final_file_exits", "false");
-          }
-          for (;;)
-          {
-            localJSONArray.put(localJSONObject);
-            i += 1;
-            break;
-            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
-          }
+        if (paramString1[paramInt1] == null) {
+          localStringBuffer.append("|");
         }
-        catch (JSONException localJSONException)
+        for (;;)
         {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
+          paramInt1 += 1;
+          break;
+          localStringBuffer.append("|" + paramString1[paramInt1]);
         }
       }
     }
-    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
-    bisy.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
-    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
+    else
+    {
+      localStringBuffer.append('|').append('|').append('|').append('|').append('|');
+    }
+    bdkl.a(null, "sendtdbank|b_sng_qqvip_qq_webview|qq_webview", localStringBuffer.toString(), true);
+  }
+  
+  public static void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, long paramLong15, long paramLong16, long paramLong17, String paramString1, String paramString2, String paramString3)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramLong1).append('|');
+    localStringBuffer.append(paramLong2).append('|');
+    localStringBuffer.append(paramLong3).append('|');
+    localStringBuffer.append(paramLong4).append('|');
+    localStringBuffer.append(paramLong5).append('|');
+    localStringBuffer.append(paramLong6).append('|');
+    localStringBuffer.append(paramLong7).append('|');
+    localStringBuffer.append(paramLong8).append('|');
+    localStringBuffer.append(paramLong9).append('|');
+    localStringBuffer.append(paramLong10).append('|');
+    localStringBuffer.append(paramLong11).append('|');
+    localStringBuffer.append(paramLong12).append('|');
+    localStringBuffer.append(paramLong13).append('|');
+    localStringBuffer.append(paramLong14).append('|');
+    localStringBuffer.append(paramLong15).append('|');
+    localStringBuffer.append(paramLong16).append('|');
+    localStringBuffer.append(paramLong17).append('|');
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramString3).append('|');
+    bdkl.a(null, "dc00763", localStringBuffer.toString(), true);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, long paramLong, String paramString5, String paramString6, String paramString7, int paramInt2, int paramInt3, int paramInt4, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramString3).append('|');
+    localStringBuffer.append(paramString4).append('|');
+    localStringBuffer.append(paramInt1).append('|');
+    localStringBuffer.append(paramLong).append('|');
+    localStringBuffer.append(paramString5).append('|');
+    localStringBuffer.append(paramString6).append('|');
+    localStringBuffer.append(paramString7).append('|');
+    localStringBuffer.append(paramInt2).append('|');
+    localStringBuffer.append(paramInt3).append('|');
+    localStringBuffer.append(paramInt4).append('|');
+    localStringBuffer.append(paramString8).append('|');
+    localStringBuffer.append(paramString9).append('|');
+    localStringBuffer.append(paramString10).append('|');
+    localStringBuffer.append(paramString11).append('|');
+    localStringBuffer.append(paramString12);
+    bdkl.a(null, "dc01183", localStringBuffer.toString(), true);
   }
 }
 

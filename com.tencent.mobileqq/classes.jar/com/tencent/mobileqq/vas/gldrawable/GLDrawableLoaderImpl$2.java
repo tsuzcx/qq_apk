@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bhbk;
-import bhbl;
+import bibs;
+import bibt;
 
 public class GLDrawableLoaderImpl$2
   implements Runnable
 {
-  public GLDrawableLoaderImpl$2(bhbk parambhbk) {}
+  public GLDrawableLoaderImpl$2(bibs parambibs) {}
   
   public void run()
   {
-    this.this$0.a(new bhbl(this));
+    this.this$0.a(new bibt(this));
   }
 }
 

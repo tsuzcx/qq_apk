@@ -1,346 +1,51 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Point;
-import android.hardware.display.VirtualDisplay;
-import android.media.projection.MediaProjection;
-import android.media.projection.MediaProjectionManager;
-import android.os.Build.VERSION;
-import android.support.annotation.RequiresApi;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.opengl.effects.AEFilterSupport;
-import com.tencent.av.ui.ScreenRecordHelper.1;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Timer;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.Button;
+import com.tencent.av.ui.QavPanel;
 
-@RequiresApi(api=21)
 public class miu
+  extends Handler
 {
-  static final int[][] jdField_a_of_type_Array2dOfInt = { { 720, 1280 }, { 1080, 1920 }, { 1080, 1920 } };
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private VirtualDisplay jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay;
-  private MediaProjection jdField_a_of_type_AndroidMediaProjectionMediaProjection;
-  private MediaProjectionManager jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private loq jdField_a_of_type_Loq;
-  private final lvj jdField_a_of_type_Lvj = new lvj();
-  private miv jdField_a_of_type_Miv;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  
-  private void a(boolean paramBoolean)
+  public miu(QavPanel paramQavPanel, Looper paramLooper)
   {
-    if ((!paramBoolean) && (this.jdField_a_of_type_Miv != null)) {
-      this.jdField_a_of_type_Miv.b(1);
-    }
+    super(paramLooper);
   }
   
-  private void d()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay = this.jdField_a_of_type_AndroidMediaProjectionMediaProjection.createVirtualDisplay("ScreenRecordHelper", this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int, 16, this.jdField_a_of_type_Loq.a(), null, null);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null)
+    switch (paramMessage.what)
     {
-      localObject1 = null;
-      if (!(localObject1 instanceof Activity)) {
-        break label81;
-      }
     }
-    label81:
-    Object localObject2;
-    for (Object localObject1 = (Activity)localObject1;; localObject2 = null)
-    {
-      if (localObject1 == null)
-      {
-        QLog.i("ScreenRecordHelper", 1, "requestScreenCapture, context not bind Activity .");
-        return;
-        localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        break;
-      }
-      QLog.d("ScreenRecordHelper", 1, "Start requestScreenCapture");
-      try
-      {
-        ((Activity)localObject1).startActivityForResult(this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager.createScreenCaptureIntent(), 8080);
-        return;
-      }
-      catch (ActivityNotFoundException localActivityNotFoundException)
-      {
-        QLog.d("ScreenRecordHelper", 1, "Start requestScreenCapture fail ActivityNotFoundException");
-        return;
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ScreenRecordHelper", 4, "stop, fromType[" + paramInt + "]");
-    }
-    b();
-    a(paramInt);
-    c();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int k;
-    int i;
-    label55:
-    int m;
-    int j;
-    if (this.jdField_b_of_type_Int < this.c)
-    {
-      k = 1;
-      switch (AEFilterSupport.a())
-      {
-      case 5: 
-      case 6: 
-      default: 
-        i = 0;
-        m = jdField_a_of_type_Array2dOfInt[i][0];
-        j = jdField_a_of_type_Array2dOfInt[i][1];
-        if ((paramInt1 != 0) && (paramInt2 != 0) && (Math.max(paramInt1, paramInt2) < Math.max(m, j)))
-        {
-          i = Math.min(paramInt1, paramInt2);
-          j = Math.max(paramInt1, paramInt2);
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      if (k == 0)
-      {
-        m = i;
-        i = j;
-        j = m;
-      }
-      for (;;)
-      {
-        if (k != 0)
-        {
-          k = Math.min(this.c, j) / 8 * 8;
-          m = (int)(k * (this.jdField_b_of_type_Int / this.c)) / 16 * 16;
-        }
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("ScreenRecordHelper", 4, "updateRecordParam, pre[" + this.jdField_a_of_type_Lvj + "], display[" + this.jdField_b_of_type_Int + "," + this.c + "], limit[" + i + "," + j + "], come[" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "], record[" + m + "," + k + "]");
-          }
-          this.jdField_a_of_type_Lvj.jdField_a_of_type_Int = m;
-          this.jdField_a_of_type_Lvj.jdField_b_of_type_Int = k;
-          if (paramInt3 > 0) {
-            this.jdField_a_of_type_Lvj.c = paramInt3;
-          }
-          if (this.jdField_a_of_type_Loq != null) {
-            this.jdField_a_of_type_Loq.a(this.jdField_a_of_type_Lvj);
-          }
-          return;
-          k = 0;
-          break;
-          i = 2;
-          break label55;
-          i = 1;
-          break label55;
-          i = 0;
-          break label55;
-          m = Math.min(this.jdField_b_of_type_Int, i) / 16 * 16;
-          k = (int)(m * this.c / this.jdField_b_of_type_Int) / 8 * 8;
-        }
-      }
-      i = m;
-    }
-  }
-  
-  public void a(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    if (this.jdField_a_of_type_Boolean) {}
     do
     {
+      do
+      {
+        do
+        {
+          return;
+          QavPanel.a(this.a);
+          return;
+          QavPanel.b(this.a);
+          return;
+        } while ((mvd.a(false)) || (this.a.h == null) || (!this.a.h.isShown()));
+        this.a.a(this.a.getResources().getString(2131692585));
+        mvd.a(false);
+        QavPanel.a(this.a).a();
+        QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
+        return;
+      } while ((mvd.a(true)) || (this.a.h == null) || (!this.a.h.isShown()) || (!QavPanel.a(this.a).a()));
+      this.a.a(this.a.getResources().getString(2131692586));
+      QavPanel.a(this.a).a();
+      QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
+      mvd.a(true);
       return;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager = ((MediaProjectionManager)paramContext.getApplicationContext().getSystemService("media_projection"));
-      Object localObject = new DisplayMetrics();
-      ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-      this.jdField_a_of_type_Int = ((DisplayMetrics)localObject).densityDpi;
-      localObject = new Point();
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getRealSize((Point)localObject);
-      this.jdField_b_of_type_Int = ((Point)localObject).x;
-      this.c = ((Point)localObject).y;
-      a(0, 0, 15);
-      this.jdField_a_of_type_Loq = new loq();
-      this.jdField_a_of_type_Loq.a(this.jdField_b_of_type_Int, this.c);
-      this.jdField_a_of_type_Loq.a(this.jdField_a_of_type_Lvj);
-      this.jdField_a_of_type_Loq.a();
-    } while (!QLog.isDevelopLevel());
-    QLog.i("ScreenRecordHelper", 4, "doBindActivityContext, density[" + this.jdField_a_of_type_Int + "], size[" + this.jdField_b_of_type_Int + "," + this.c + "]");
-  }
-  
-  public void a(los paramlos)
-  {
-    if (this.jdField_a_of_type_Loq != null) {
-      this.jdField_a_of_type_Loq.a(paramlos);
-    }
-  }
-  
-  public void a(miv parammiv)
-  {
-    this.jdField_a_of_type_Miv = parammiv;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      QLog.d("ScreenRecordHelper", 1, "attachRecorder");
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
-      }
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Context localContext = null;
-    long l = AudioHelper.b();
-    QLog.d("ScreenRecordHelper", 1, "Start stopProjection fromType:=" + paramInt);
-    if (this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay != null)
-    {
-      this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay.release();
-      this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay = null;
-    }
-    if (this.jdField_a_of_type_AndroidMediaProjectionMediaProjection != null)
-    {
-      this.jdField_a_of_type_AndroidMediaProjectionMediaProjection.stop();
-      this.jdField_a_of_type_AndroidMediaProjectionMediaProjection = null;
-    }
-    if (this.jdField_a_of_type_Miv != null) {
-      this.jdField_a_of_type_Miv.a(paramInt);
-    }
-    a(null);
-    a(null);
-    this.jdField_b_of_type_Boolean = false;
-    maf.a(VideoController.a().a, true);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if ((localContext != null) && (Build.VERSION.SDK_INT >= 21))
-      {
-        if (paramInt != 1) {
-          break label162;
-        }
-        lyu.a(l, 3, localContext);
-      }
-    }
-    label162:
-    while (paramInt == 2)
-    {
-      return true;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      break;
-    }
-    lyu.a(l, 3, localContext);
-    return true;
-  }
-  
-  public boolean a(Intent paramIntent)
-  {
-    QLog.d("ScreenRecordHelper", 1, "Start startProjection");
-    long l = AudioHelper.b();
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (Context localContext = null; localContext == null; localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      QLog.d("ScreenRecordHelper", 1, "Start startProjection, context is null.");
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager == null)
-    {
-      a(false);
-      QLog.d("ScreenRecordHelper", 1, "Start startProjection, mMediaProjectionManager is null.");
-      return false;
-    }
-    this.jdField_a_of_type_AndroidMediaProjectionMediaProjection = this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager.getMediaProjection(-1, paramIntent);
-    if (this.jdField_a_of_type_AndroidMediaProjectionMediaProjection == null)
-    {
-      a(false);
-      return false;
-    }
-    a(true);
-    d();
-    if (this.jdField_a_of_type_Miv != null) {
-      this.jdField_a_of_type_Miv.a(this.jdField_a_of_type_Lvj, this.jdField_b_of_type_Int, this.c);
-    }
-    paramIntent = VideoController.a().a;
-    if (Build.VERSION.SDK_INT >= 21) {
-      lyu.a(l, 3, localContext, true, paramIntent.getCurrentAccountUin(), true);
-    }
-    maf.a(paramIntent, 8, 0L, true);
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new ScreenRecordHelper.1(this), 0L, 1000L);
-    this.jdField_b_of_type_Boolean = true;
-    return true;
-  }
-  
-  public void b()
-  {
-    a(false);
-  }
-  
-  public boolean b()
-  {
-    try
-    {
-      QLog.d("ScreenRecordHelper", 1, "detachRecorder");
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ScreenRecordHelper", 4, "quit");
-    }
-    if (this.jdField_a_of_type_Loq != null)
-    {
-      this.jdField_a_of_type_Loq.a(true);
-      this.jdField_a_of_type_Loq = null;
-    }
-    this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay = null;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean);
+      this.a.a("MSG_TRY_CLEAN_TIPS", 1);
+      return;
+    } while (QavPanel.a(this.a) == null);
+    QavPanel.a(this.a).a();
+    QavPanel.a(this.a).sendEmptyMessageDelayed(261, 4000L);
   }
 }
 

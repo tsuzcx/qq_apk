@@ -32,7 +32,7 @@ class BannerAdPlugin$1
         BannerAdPlugin.access$300(this.this$0, this.val$req, 1003, (String)BannerAdPlugin.access$200().get(Integer.valueOf(1003)), 300);
         return;
       }
-      BannerAdPlugin.access$402(this.this$0, localAdProxy.createBannerAdView(localActivity, this.val$appid, this.val$adPosInfo.mAdUnitId, Math.round(BannerAdPlugin.access$000(this.this$0).mAdRealWidth * BannerAdPlugin.access$500(this.this$0)), Math.round(BannerAdPlugin.access$000(this.this$0).mAdRealHeight * BannerAdPlugin.access$500(this.this$0)), new BannerAdPlugin.1.1(this), this.val$ext, BannerAdPlugin.access$800(this.this$0)));
+      BannerAdPlugin.access$402(this.this$0, localAdProxy.createBannerAdView(localActivity, this.val$appid, this.val$adPosInfo.mAdUnitId, Math.round(BannerAdPlugin.access$000(this.this$0).mAdRealWidth * BannerAdPlugin.access$500(this.this$0)), Math.round(BannerAdPlugin.access$000(this.this$0).mAdRealHeight * BannerAdPlugin.access$500(this.this$0)), new BannerAdPlugin.1.1(this), this.val$ext, BannerAdPlugin.access$800(this.this$0), this.this$0));
     } while (BannerAdPlugin.access$400(this.this$0) == null);
     try
     {

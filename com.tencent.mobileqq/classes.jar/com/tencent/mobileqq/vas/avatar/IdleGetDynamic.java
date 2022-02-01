@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import bhbe;
+import bibk;
 import java.util.ArrayList;
 
 public class IdleGetDynamic
   extends IdleUpdater
 {
-  private ArrayList<bhbe> a;
+  private ArrayList<bibk> a;
   
   public IdleGetDynamic()
   {
@@ -28,19 +28,19 @@ public class IdleGetDynamic
     int i = 0;
     while (i < j)
     {
-      ((bhbe)localObject.get(i)).a(true);
+      ((bibk)localObject.get(i)).a(true);
       i += 1;
     }
   }
   
-  public void a(bhbe parambhbe)
+  public void a(bibk parambibk)
   {
     try
     {
       if (this.a == null) {
         this.a = new ArrayList();
       }
-      this.a.add(parambhbe);
+      this.a.add(parambibk);
       if (this.a.size() == 1) {
         b();
       }

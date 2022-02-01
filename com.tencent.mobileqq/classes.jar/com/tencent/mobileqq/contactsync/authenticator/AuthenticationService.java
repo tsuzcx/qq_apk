@@ -3,12 +3,12 @@ package com.tencent.mobileqq.contactsync.authenticator;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import ardi;
+import arsx;
 
 public class AuthenticationService
   extends Service
 {
-  private ardi a;
+  private arsx a;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -18,7 +18,7 @@ public class AuthenticationService
   public void onCreate()
   {
     super.onCreate();
-    this.a = new ardi(this);
+    this.a = new arsx(this);
   }
   
   public void onDestroy() {}

@@ -1,75 +1,59 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class bdob
-  extends ClickableSpan
 {
-  public String a;
+  private int jdField_a_of_type_Int;
+  private short jdField_a_of_type_Short;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean b;
   
-  public bdob(bdnt parambdnt, String paramString)
+  bdob(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
   }
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (bgkw.a) {
-      if (QLog.isColorLevel()) {
-        QLog.e("LinkSpan", 2, "LinkSpan.onCLick is invoked by LongClick misstake");
-      }
-    }
-    Object localObject;
-    do
-    {
-      return;
-      localObject = paramView.getTag();
-      if ((localObject instanceof String)) {
-        bdnt.a((String)localObject);
-      }
-      localObject = this.jdField_a_of_type_JavaLangString;
-      boolean bool2 = bgny.d.matcher((CharSequence)localObject).find();
-      boolean bool1 = bool2;
-      if (!bool2) {
-        bool1 = bgny.c.matcher((CharSequence)localObject).find();
-      }
-      if (bool1)
-      {
-        if (bdoh.f.matcher((CharSequence)localObject).find())
-        {
-          this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 2, bdnt.a(this.jdField_a_of_type_Bdnt));
-          bdnt.a("1", null);
-          return;
-        }
-        this.jdField_a_of_type_Bdnt.a(paramView, (String)localObject);
-        bdnt.a("0", null);
-        return;
-      }
-      if (bdoh.a.matcher((CharSequence)localObject).find())
-      {
-        this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 3, bdnt.a(this.jdField_a_of_type_Bdnt));
-        bdnt.a("2", null);
-        return;
-      }
-      Matcher localMatcher = bdoh.b.matcher((CharSequence)localObject);
-      if ((localMatcher.find()) && (localMatcher.start() == 0) && (localMatcher.end() == ((String)localObject).length()))
-      {
-        this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 0, bdnt.a(this.jdField_a_of_type_Bdnt));
-        bdnt.a("1", null);
-        return;
-      }
-    } while (!bdoh.e.matcher((CharSequence)localObject).find());
-    this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 1, bdnt.a(this.jdField_a_of_type_Bdnt));
-    bdnt.a("2", null);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public short a()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.clearShadowLayer();
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(short paramShort)
+  {
+    this.jdField_a_of_type_Short = paramShort;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

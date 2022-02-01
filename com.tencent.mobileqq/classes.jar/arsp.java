@@ -1,6 +1,28 @@
-public abstract interface arsp
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+
+public class arsp
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  public arsp(ContactSyncManager paramContactSyncManager, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ContactSyncManager.a(this.a);
+      return;
+    }
+    ContactSyncManager.b(this.a);
+  }
 }
 
 

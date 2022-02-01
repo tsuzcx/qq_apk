@@ -1,24 +1,13 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
 
 class rsu
-  implements URLDrawable.URLDrawableListener
+  implements seg
 {
-  rsu(rsn paramrsn) {}
+  rsu(rsr paramrsr) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(View paramView)
   {
-    rsn.b(this.a);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bgmo.b(paramURLDrawable.getCurrDrawable());
-    rsn.a(this.a, paramURLDrawable, rsn.a(this.a).e);
+    paramView.setTag(new roq(paramView));
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
-import bisy;
-import biuh;
-import bivr;
+import bjtx;
+import bjvg;
+import bjwq;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManager$14
   implements Runnable
 {
-  public DownloadManager$14(bivr parambivr, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$14(bjwq parambjwq, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -21,13 +21,13 @@ public class DownloadManager$14
         this.this$0.e(this.a);
         this.this$0.a(4, this.a);
       }
-      biuh.a("300", this.a.h, this.a.c, this.a.o);
+      bjvg.a("300", this.a.h, this.a.c, this.a.o);
       this.this$0.c(this.a);
       return;
     }
     catch (Exception localException)
     {
-      bisy.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bjtx.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

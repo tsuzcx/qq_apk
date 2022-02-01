@@ -1,28 +1,34 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Card;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bije
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bije(AuthorityActivity paramAuthorityActivity) {}
-  
-  public void onGlobalLayout()
+  public static bija a(Activity paramActivity, @NonNull JSONObject paramJSONObject, azxr paramazxr, String paramString)
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    if ((paramazxr == null) || (paramazxr.a == null)) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal card info is null");
+    }
+    long l1 = paramazxr.a.lCurrentStyleId;
+    if (l1 < 0L) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id=" + l1);
+    }
+    long l2 = paramJSONObject.optLong("id");
+    if (l2 != l1) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id(" + l1 + ") and json id(" + l2 + ") not match");
+    }
+    if (l2 == azxy.l) {}
+    for (paramActivity = new bijf(paramActivity, paramJSONObject, paramazxr);; paramActivity = new bijg(paramActivity, paramJSONObject, paramazxr))
     {
-      i = AuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      AuthorityActivity.a(this.a).setMaxHeight(i - j);
+      paramActivity.a(paramString);
+      return paramActivity;
+      if (l2 != azxy.m) {
+        break;
+      }
     }
-    int i = ((View)this.a.findViewById(2131376788).getParent()).getTop();
-    if (i > 0) {
-      AuthorityActivity.a(this.a).setMaxHeight(AuthorityActivity.a(this.a).a() - i);
-    }
-    AuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal id=" + l2);
   }
 }
 

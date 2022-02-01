@@ -1,16 +1,20 @@
-public class oqb
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
+final class oqb
+  implements blkc
 {
-  public static boolean a(int paramInt)
+  oqb(oqa paramoqa) {}
+  
+  public final void a()
   {
-    if (!pfq.a()) {
-      return false;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    ViewBase localViewBase = this.a.a;
+    Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
+    localViewBase.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
   }
 }
 

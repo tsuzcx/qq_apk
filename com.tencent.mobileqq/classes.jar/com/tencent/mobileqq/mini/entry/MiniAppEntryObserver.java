@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import anil;
+import anui;
 
 public class MiniAppEntryObserver
-  implements anil
+  implements anui
 {
   public void onMiniAppEntryChanged() {}
   

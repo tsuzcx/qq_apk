@@ -1,41 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wzr
-  extends wlf
+  extends wzi
 {
+  public int a;
   public String a;
+  public List<VideoCollectionItem> a;
+  public String b;
+  public boolean e = true;
   
-  public String a()
+  public wzr(String paramString, ErrorMessage paramErrorMessage)
   {
-    return wjz.a("StoryGroupSvc.get_dynamic_group_feedid_list");
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public String toString()
   {
-    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
-    try
-    {
-      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new wzs(localRspGroupStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
-    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqGroupStoryFeedIdList.toByteArray();
+    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,107 +1,45 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.im.oidb.cmd0xe8c.oidb_0xe8c.ReqBody;
-import tencent.im.oidb.cmd0xe8c.oidb_0xe8c.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-public class baju
-  extends anii
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacyHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "checkIv", "Landroid/widget/ImageView;", "getCheckIv", "()Landroid/widget/ImageView;", "setCheckIv", "(Landroid/widget/ImageView;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class baju
+  extends RecyclerView.ViewHolder
 {
-  public baju(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  @NotNull
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  @NotNull
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public baju(@NotNull View paramView)
   {
-    bajz localbajz = new bajz();
-    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {}
-    for (;;)
-    {
-      int j;
-      try
-      {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg.uint32_result.get() == 0)
-        {
-          i = 1;
-          if (i == 0) {
-            break label224;
-          }
-          paramFromServiceMsg = new oidb_0xe8c.RspBody();
-          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          long l = paramFromServiceMsg.uint64_friend_uin.get();
-          j = paramFromServiceMsg.uint32_flag.get();
-          if ((j & 0x1) != 0)
-          {
-            i = 1;
-            break label230;
-            localbajz.jdField_a_of_type_Long = l;
-            if ((i != 0) || (j == 0)) {
-              continue;
-            }
-            bool = true;
-            localbajz.jdField_a_of_type_Boolean = bool;
-            bool = true;
-            if (QLog.isColorLevel()) {
-              QLog.d("OneWayFriendHandler", 0, String.format("handleGetOneWayFriendFlag success=%s result=%s", new Object[] { Boolean.valueOf(bool), localbajz }));
-            }
-            notifyUI(1, bool, localbajz);
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        int i = 0;
-        break label230;
-        j = 0;
-        continue;
-        boolean bool = false;
-        continue;
-        bool = false;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("OneWayFriendHandler", 1, "handleGetOneWayFriendFlag fail.", paramToServiceMsg);
-      }
-      label224:
-      continue;
-      label230:
-      if ((j & 0x2) != 0) {
-        j = 1;
-      }
+    super(paramView);
+    View localView = paramView.findViewById(2131379040);
+    if (localView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OneWayFriendHandler", 0, String.format("getOneWayFriendFlag friendUin=%s", new Object[] { Long.valueOf(paramLong) }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
+    paramView = paramView.findViewById(2131364503);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.ImageView");
     }
-    oidb_0xe8c.ReqBody localReqBody = new oidb_0xe8c.ReqBody();
-    localReqBody.uint64_friend_uin.set(paramLong);
-    sendPbReq(makeOIDBPkg("OidbSvc.0xe8c", 3724, 0, localReqBody.toByteArray()));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView);
   }
   
-  protected Class<? extends anil> observerClass()
+  @NotNull
+  public final ImageView a()
   {
-    return bajy.class;
+    return this.jdField_a_of_type_AndroidWidgetImageView;
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  @NotNull
+  public final TextView a()
   {
-    if ("OidbSvc.0xe8c".equals(paramToServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

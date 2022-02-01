@@ -1,25 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class poi
-  implements Animation.AnimationListener
+class poi
+  implements Comparator<AdvertisementInfo>
 {
-  public poi(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  poi(pog parampog) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    this.a.getView().setVisibility(8);
-    this.a.getActivity().setResult(-1);
-    this.a.getActivity().finish();
-    this.a.getActivity().overridePendingTransition(0, 0);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,17 +1,30 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 public class asiv
-  extends anty
+  extends anyu
 {
-  public asiv(ExtendFriendFragment paramExtendFriendFragment) {}
+  public asiv(MessengerService paramMessengerService) {}
   
-  public void a(boolean paramBoolean)
+  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendFragment", 2, String.format("onDataChange success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (this.a.b != null)
+    {
+      this.a.b.putString("cmd", "ipc_signature_setlike");
+      paramObject = new Bundle();
+      if (!paramBoolean) {
+        break label81;
+      }
     }
-    ExtendFriendFragment.a(this.a);
+    label81:
+    for (int i = 0;; i = 101)
+    {
+      paramObject.putInt("result", i);
+      this.a.b.putBundle("response", paramObject);
+      this.a.a(this.a.b);
+      this.a.b = null;
+      return;
+    }
   }
 }
 

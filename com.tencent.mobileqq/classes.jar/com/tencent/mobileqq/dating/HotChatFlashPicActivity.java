@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.dating;
 
 import Override;
-import abfy;
-import abga;
-import abgb;
-import abgg;
-import ahul;
-import ahum;
-import ahuo;
+import abkc;
+import abke;
+import abkf;
+import abkk;
+import aidz;
+import aiea;
+import aiec;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,12 +35,11 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import arky;
-import arkz;
-import bgey;
-import bgli;
-import bkjg;
-import bqcd;
+import asao;
+import asap;
+import bhez;
+import bhlj;
+import blkj;
 import com.tencent.common.galleryactivity.AnimationView;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLImageView;
@@ -52,6 +51,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.BinderWarpper;
 import com.tencent.widget.CountDownProgressBar;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.io.File;
 import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -59,21 +59,21 @@ import mqq.os.MqqHandler;
 
 public class HotChatFlashPicActivity
   extends BaseActivity
-  implements abfy, View.OnClickListener, View.OnTouchListener, bkjg
+  implements abkc, View.OnClickListener, View.OnTouchListener, blkj
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private abgg jdField_a_of_type_Abgg;
-  private ahul jdField_a_of_type_Ahul;
-  private ahuo jdField_a_of_type_Ahuo = new arky(this);
+  private abkk jdField_a_of_type_Abkk;
+  private aidz jdField_a_of_type_Aidz;
+  private aiec jdField_a_of_type_Aiec = new asao(this);
   private Dialog jdField_a_of_type_AndroidAppDialog;
   private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new arkz(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new asap(this);
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgli jdField_a_of_type_Bgli;
+  private bhlj jdField_a_of_type_Bhlj;
   private AnimationView jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private AIOImageData jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData;
@@ -187,7 +187,7 @@ public class HotChatFlashPicActivity
           if (QLog.isColorLevel()) {
             QLog.d("Q.hotchat", 2, "reqWidth:" + n + ",reqHeight:" + m + ",inSampleSize:" + localOptions.inSampleSize + ",block:" + i1);
           }
-          paramString = bgey.a((Bitmap)localObject, i1);
+          paramString = bhez.a((Bitmap)localObject, i1);
         }
         i1 = i2;
       }
@@ -296,12 +296,12 @@ public class HotChatFlashPicActivity
     Message localMessage = new Message();
     localMessage.what = 2;
     localMessage.arg1 = paramInt;
-    this.jdField_a_of_type_Bgli.sendMessage(localMessage);
+    this.jdField_a_of_type_Bhlj.sendMessage(localMessage);
   }
   
   private void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2131166357);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2131166361);
     if (this.i) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
@@ -313,7 +313,7 @@ public class HotChatFlashPicActivity
     if (paramBitmap != null)
     {
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
-      this.jdField_a_of_type_Bgli.sendEmptyMessage(8);
+      this.jdField_a_of_type_Bhlj.sendEmptyMessage(8);
       this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
     }
   }
@@ -327,15 +327,15 @@ public class HotChatFlashPicActivity
     int i1 = ((DisplayMetrics)localObject).widthPixels;
     int i2 = ((DisplayMetrics)localObject).heightPixels;
     float f1 = Math.min(i1 / m, i2 / n);
-    localObject = abga.a((int)(m * f1), (int)(n * f1), i1, i2, false, null);
+    localObject = abke.a((int)(m * f1), (int)(n * f1), i1, i2, false, null);
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(paramDrawable, localRect, (Rect)localObject, abgb.a(localRect, paramDrawable), 350L);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(paramDrawable, localRect, (Rect)localObject, abkf.a(localRect, paramDrawable), 350L);
     paramDrawable = new AlphaAnimation(0.0F, 1.0F);
     paramDrawable.setInterpolator(new AccelerateInterpolator());
     paramDrawable.setDuration(350L);
     paramDrawable.setFillAfter(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2131166357);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2131166361);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramDrawable);
   }
   
@@ -344,7 +344,7 @@ public class HotChatFlashPicActivity
     Message localMessage = new Message();
     localMessage.what = 0;
     localMessage.obj = paramString;
-    this.jdField_a_of_type_Bgli.sendMessageDelayed(localMessage, 200L);
+    this.jdField_a_of_type_Bhlj.sendMessageDelayed(localMessage, 200L);
   }
   
   private String b()
@@ -403,12 +403,12 @@ public class HotChatFlashPicActivity
     int i1 = ((DisplayMetrics)localObject).widthPixels;
     int i2 = ((DisplayMetrics)localObject).heightPixels;
     float f1 = Math.min(i1 / m, i2 / n);
-    localObject = abga.a((int)(m * f1), (int)(n * f1), i1, i2, false, null);
+    localObject = abke.a((int)(m * f1), (int)(n * f1), i1, i2, false, null);
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
     this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(paramDrawable, localRect, (Rect)localObject, abgb.a(localRect, paramDrawable), 0, 0, 350L);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(paramDrawable, localRect, (Rect)localObject, abkf.a(localRect, paramDrawable), 0, 0, 350L);
     paramDrawable = new AlphaAnimation(1.0F, 0.0F);
     paramDrawable.setDuration(350L);
     paramDrawable.setFillAfter(true);
@@ -417,20 +417,20 @@ public class HotChatFlashPicActivity
   
   private void b(String paramString)
   {
-    this.jdField_a_of_type_Bgli.sendEmptyMessage(7);
+    this.jdField_a_of_type_Bhlj.sendEmptyMessage(7);
     paramString = a(paramString);
     if (paramString != null)
     {
       Message localMessage = new Message();
       localMessage.what = 5;
       localMessage.obj = paramString;
-      this.jdField_a_of_type_Bgli.sendMessage(localMessage);
+      this.jdField_a_of_type_Bhlj.sendMessage(localMessage);
     }
   }
   
   private void c(String paramString)
   {
-    this.jdField_a_of_type_Bgli.sendEmptyMessage(7);
+    this.jdField_a_of_type_Bhlj.sendEmptyMessage(7);
     a(a(paramString));
   }
   
@@ -471,7 +471,7 @@ public class HotChatFlashPicActivity
     this.k = true;
     requestWindowFeature(1);
     getWindow().setFlags(1024, 1024);
-    if (bqcd.c(this))
+    if (LiuHaiUtils.enableNotch(this))
     {
       this.mNeedStatusTrans = true;
       this.mActNeedImmersive = false;
@@ -479,24 +479,24 @@ public class HotChatFlashPicActivity
       if (Build.VERSION.SDK_INT > 13) {
         getWindow().addFlags(8192);
       }
-      setContentView(2131561264);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376788));
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)findViewById(2131362678));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131366744));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131366748);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366746));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366747));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131366743);
-      this.jdField_a_of_type_ComTencentWidgetCountDownProgressBar = ((CountDownProgressBar)findViewById(2131366742));
+      setContentView(2131561302);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376925));
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)findViewById(2131362694));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131366795));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131366799);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366797));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366798));
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131366794);
+      this.jdField_a_of_type_ComTencentWidgetCountDownProgressBar = ((CountDownProgressBar)findViewById(2131366793));
       this.jdField_a_of_type_ComTencentWidgetCountDownProgressBar.setTotalMills(2500L, 3);
       this.jdField_a_of_type_ComTencentWidgetCountDownProgressBar.setOnCountDownLinstener(this);
-      this.jdField_a_of_type_Abgg = new abgg();
-      this.jdField_a_of_type_Abgg.a(this, (ImageView)findViewById(2131366745));
+      this.jdField_a_of_type_Abkk = new abkk();
+      this.jdField_a_of_type_Abkk.a(this, (ImageView)findViewById(2131366796));
       paramBundle = (BinderWarpper)getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
       if (paramBundle != null)
       {
-        this.jdField_a_of_type_Ahul = ahum.a(paramBundle.a);
-        this.jdField_a_of_type_Ahul.a(this.jdField_a_of_type_Ahuo);
+        this.jdField_a_of_type_Aidz = aiea.a(paramBundle.a);
+        this.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_Aiec);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData = ((AIOImageData)getIntent().getParcelableExtra("extra.EXTRA_CURRENT_IMAGE"));
       this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("isreaded", false);
@@ -506,7 +506,7 @@ public class HotChatFlashPicActivity
       this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("self_uin");
       this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("self_identify", true);
       this.jdField_b_of_type_Int = getIntent().getIntExtra("curtype", 0);
-      this.jdField_a_of_type_Bgli = new bgli(this.jdField_a_of_type_AndroidOsHandler$Callback);
+      this.jdField_a_of_type_Bhlj = new bhlj(this.jdField_a_of_type_AndroidOsHandler$Callback);
       paramBundle = getSharedPreferences(this.jdField_a_of_type_JavaLangString, 4);
       if (!this.jdField_a_of_type_Boolean) {
         break label656;
@@ -529,11 +529,11 @@ public class HotChatFlashPicActivity
       if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData != null)) {
         break label686;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842509);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842522);
       if (!this.jdField_a_of_type_Boolean) {
         break label673;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692928);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692936);
       label577:
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
@@ -554,9 +554,9 @@ public class HotChatFlashPicActivity
       label686:
       if ((this.jdField_a_of_type_Int >= 2) && (!this.e))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842509);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842522);
         if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692930);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692938);
         }
         for (;;)
         {
@@ -568,7 +568,7 @@ public class HotChatFlashPicActivity
       this.jdField_c_of_type_JavaLangString = a();
       if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.equals("I:E")))
       {
-        this.jdField_a_of_type_Bgli.sendEmptyMessage(1);
+        this.jdField_a_of_type_Bhlj.sendEmptyMessage(1);
       }
       else if (this.jdField_c_of_type_JavaLangString != null)
       {
@@ -589,7 +589,7 @@ public class HotChatFlashPicActivity
             QLog.d("Q.hotchat", 2, "flashpic thumbImageFile exists");
           }
         }
-        this.jdField_a_of_type_Ahul.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Int, 2);
+        this.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Int, 2);
       }
     }
   }
@@ -601,7 +601,7 @@ public class HotChatFlashPicActivity
     try
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap().recycle();
-      if ((this.jdField_a_of_type_Ahul == null) || (getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false))) {}
+      if ((this.jdField_a_of_type_Aidz == null) || (getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false))) {}
     }
     catch (Exception localException1)
     {
@@ -609,7 +609,7 @@ public class HotChatFlashPicActivity
       {
         do
         {
-          this.jdField_a_of_type_Ahul.a();
+          this.jdField_a_of_type_Aidz.a();
           System.gc();
           return;
           localException1 = localException1;
@@ -651,7 +651,7 @@ public class HotChatFlashPicActivity
       this.k = false;
       return;
       label39:
-      this.jdField_a_of_type_Bgli.postDelayed(new HotChatFlashPicActivity.3(this), 350L);
+      this.jdField_a_of_type_Bhlj.postDelayed(new HotChatFlashPicActivity.3(this), 350L);
     }
   }
   
@@ -700,7 +700,7 @@ public class HotChatFlashPicActivity
         this.jdField_a_of_type_Int += 1;
         this.jdField_d_of_type_Boolean = true;
         ThreadManager.getFileThreadHandler().post(new HotChatFlashPicActivity.6(this));
-        this.jdField_a_of_type_Bgli.sendEmptyMessage(4);
+        this.jdField_a_of_type_Bhlj.sendEmptyMessage(4);
       }
       return false;
     }
@@ -709,7 +709,7 @@ public class HotChatFlashPicActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368947) {
+    if (paramView.getId() == 2131369042) {
       finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -739,16 +739,16 @@ public class HotChatFlashPicActivity
         {
           this.f = true;
           this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          this.jdField_a_of_type_Abgg.b(0);
-          this.jdField_a_of_type_Abgg.a();
+          this.jdField_a_of_type_Abkk.b(0);
+          this.jdField_a_of_type_Abkk.a();
           a(0);
-          this.jdField_a_of_type_Ahul.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Int, 2);
+          this.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Int, 2);
           return true;
         }
       } while ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean) || (this.f) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_b_of_type_Boolean));
-      this.jdField_a_of_type_Bgli.sendEmptyMessageDelayed(3, 500L);
+      this.jdField_a_of_type_Bhlj.sendEmptyMessageDelayed(3, 500L);
       return true;
-      this.jdField_a_of_type_Bgli.removeMessages(3);
+      this.jdField_a_of_type_Bhlj.removeMessages(3);
       if (QLog.isColorLevel()) {
         QLog.d("Q.hotchat", 2, "on touch: " + paramMotionEvent.getAction());
       }

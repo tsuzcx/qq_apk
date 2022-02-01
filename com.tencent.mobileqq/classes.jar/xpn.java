@@ -1,13 +1,35 @@
-import java.io.File;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public abstract interface xpn
+class xpn
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
+  xpn(xpm paramxpm) {}
   
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  public void onClick(View paramView)
+  {
+    Object localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+    if (localObject != null) {
+      ((VideoViewVideoHolder)localObject).d = 2;
+    }
+    this.a.a().finish();
+    String str = "";
+    localObject = str;
+    if (this.a.jdField_a_of_type_Int >= 0)
+    {
+      localObject = str;
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
+        localObject = ((xqz)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
+      }
+    }
+    yup.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", localObject });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

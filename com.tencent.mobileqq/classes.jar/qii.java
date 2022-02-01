@@ -1,14 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import kotlin.Metadata;
 
-public class qii
-  implements ViewBase.IBuilder
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$IPushNotifyDialogCallback;", "", "resultCallback", "", "buttonId", "", "result", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qii
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new qih(paramVafContext);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

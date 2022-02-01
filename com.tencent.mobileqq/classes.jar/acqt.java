@@ -1,49 +1,47 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class acqt
-  implements acqj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$initWeb$1", "Lcom/tencent/gdtad/views/videoceiling/GdtWebViewBuilder;", "onReceivedError", "", "view", "Lcom/tencent/smtt/sdk/WebView;", "errorCode", "", "description", "", "failingUrl", "shouldOverrideUrlLoading", "", "webview", "url", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acqt
+  extends acyg
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  acqt(AppInterface paramAppInterface1, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface2)
   {
-    Object localObject = null;
-    if (paramacpp != null) {}
-    for (paramVarArgs = paramacpp.a(); (paramacpp == null) || (paramVarArgs == null); paramVarArgs = null)
+    super(paramActivity, paramIntent, paramAppInterface2, localAppInterface);
+  }
+  
+  public void onReceivedError(@NotNull WebView paramWebView, int paramInt, @NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramWebView, "view");
+    Intrinsics.checkParameterIsNotNull(paramString1, "description");
+    Intrinsics.checkParameterIsNotNull(paramString2, "failingUrl");
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(@NotNull WebView paramWebView, @Nullable String paramString)
+  {
+    boolean bool = true;
+    Intrinsics.checkParameterIsNotNull(paramWebView, "webview");
+    QLog.i("AbsWebView", 1, "shouldOverrideUrlLoading " + paramString);
+    if (paramString != null)
     {
-      acqy.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("netType", acra.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramacpp.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramacpp != null) {
-            paramString = paramacpp.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
-          return true;
-          localJSONException = localJSONException;
-          acqy.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          acqy.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
-        }
+      if (!acqn.a(this.jdField_a_of_type_Acqn).a(paramString, acqn.a(this.jdField_a_of_type_Acqn))) {
+        bool = a(paramWebView, paramString);
       }
     }
+    else {
+      return bool;
+    }
+    return true;
   }
 }
 

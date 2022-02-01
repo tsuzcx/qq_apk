@@ -1,8 +1,6 @@
 public abstract interface agbv
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(int paramInt);
 }
 
 

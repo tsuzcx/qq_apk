@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import adrq;
-import aogp;
+import aear;
+import aotu;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,11 +10,11 @@ import java.util.ArrayList;
 class QQMessageFacade$5
   implements Runnable
 {
-  QQMessageFacade$5(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, ArrayList paramArrayList, adrq paramadrq) {}
+  QQMessageFacade$5(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, ArrayList paramArrayList, aear paramaear) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Adrq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aear);
   }
 }
 

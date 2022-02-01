@@ -1,11 +1,14 @@
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
 
-public class bhgc
-  extends VasWebviewUiPlugin
+final class bhgc
+  extends View.AccessibilityDelegate
 {
-  public long getPluginBusiness()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    return 1048576L;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    paramAccessibilityNodeInfo.setVisibleToUser(false);
   }
 }
 

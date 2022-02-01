@@ -8,7 +8,9 @@ public abstract interface ISPlayerViewBase
   
   public abstract void setVideoWidthAndHeight(int paramInt1, int paramInt2);
   
-  public abstract void setViewCallBack(ISPlayerViewBase.viewCreateCallBack paramviewCreateCallBack);
+  public abstract void setViewCallBack(ISPlayerViewBase.ViewCreateCallBack paramViewCreateCallBack);
+  
+  public abstract void setViewViewTagId(String paramString);
   
   public abstract void setXYaxis(int paramInt);
 }

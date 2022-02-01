@@ -1,6 +1,14 @@
-class bnye
+import android.os.Bundle;
+
+public abstract interface bnye
 {
-  public static bnyd a = new bnyd("ae_camera_get_info_client");
+  public abstract void a();
+  
+  public abstract void a(float paramFloat, boolean paramBoolean);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 

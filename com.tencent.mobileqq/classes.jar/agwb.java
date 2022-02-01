@@ -1,16 +1,54 @@
 import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-class agwb
-  implements atwb
+public class agwb
+  implements agvc
 {
-  agwb(agup paramagup) {}
+  private BaseChatPie a;
   
-  public void onClick(View paramView)
+  public agwb(BaseChatPie paramBaseChatPie)
   {
-    atvo.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.a != null)
+    {
+      BaseActivity localBaseActivity = this.a.a();
+      localObject1 = localObject2;
+      if (localBaseActivity != null) {
+        localObject1 = localBaseActivity.getIntent();
+      }
+    }
+    a((Intent)localObject1);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if ((paramIntent == null) || (this.a == null)) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = this.a.a;
+    } while ((localQQAppInterface == null) || (!paramIntent.getBooleanExtra("key_reactive_push_tip", false)));
+    bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A1BF", "0X800A1BF", 0, 0, "", "", "", "");
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13 };
   }
 }
 

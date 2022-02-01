@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akve;
+import algt;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.qphone.base.util.QLog;
-import zlx;
+import zps;
 
 public class DrawRedpacketPannelPreviewFragment$4$1
   implements Runnable
 {
-  public DrawRedpacketPannelPreviewFragment$4$1(akve paramakve, boolean paramBoolean) {}
+  public DrawRedpacketPannelPreviewFragment$4$1(algt paramalgt, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Akve.a.getActivity() == null) || (this.jdField_a_of_type_Akve.a.getActivity().isFinishing())) {}
+    if ((this.jdField_a_of_type_Algt.a.getActivity() == null) || (this.jdField_a_of_type_Algt.a.getActivity().isFinishing())) {}
     for (;;)
     {
       return;
-      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akve.a, this.jdField_a_of_type_Boolean);
-      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akve.a);
+      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algt.a, this.jdField_a_of_type_Boolean);
+      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algt.a);
       if (QLog.isColorLevel()) {
         QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onRecog---" + this.jdField_a_of_type_Boolean);
       }
-      if (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akve.a))
+      if (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algt.a))
       {
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akve.a).setTextColor(Color.parseColor("#00D9B5"));
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akve.a).setCompoundDrawablesWithIntrinsicBounds(2130847255, 0, 0, 0);
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akve.a).setCompoundDrawablePadding(zlx.a(this.jdField_a_of_type_Akve.a.getActivity(), 5.0F));
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akve.a).setText(anni.a(2131702337));
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Algt.a).setTextColor(Color.parseColor("#00D9B5"));
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Algt.a).setCompoundDrawablesWithIntrinsicBounds(2130847272, 0, 0, 0);
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Algt.a).setCompoundDrawablePadding(zps.a(this.jdField_a_of_type_Algt.a.getActivity(), 5.0F));
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Algt.a).setText(anzj.a(2131702444));
       }
-      while (DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akve.a))
+      while (DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Algt.a))
       {
-        DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akve.a);
+        DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Algt.a);
         return;
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akve.a).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        if ((DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akve.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akve.a).a(false, false) == 0)) {
-          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akve.a).setText("......");
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Algt.a).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        if ((DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algt.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algt.a).a(false, false) == 0)) {
+          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Algt.a).setText("......");
         } else {
-          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akve.a).setText(anni.a(2131702327));
+          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Algt.a).setText(anzj.a(2131702434));
         }
       }
     }

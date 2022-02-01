@@ -1,34 +1,10 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public abstract class axuu
-  extends axsb
+public class axuu
+  implements BusinessObserver
 {
-  public boolean a;
-  
-  public axuu(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(PicInfo paramPicInfo);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

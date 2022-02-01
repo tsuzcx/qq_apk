@@ -1,8 +1,21 @@
-import android.os.Bundle;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.widget.DynamicGridView;
 
-public abstract interface blko
+public class blko
+  implements TypeEvaluator<Rect>
 {
-  public abstract boolean a(int paramInt, Bundle paramBundle);
+  public blko(DynamicGridView paramDynamicGridView) {}
+  
+  public int a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+  }
 }
 
 

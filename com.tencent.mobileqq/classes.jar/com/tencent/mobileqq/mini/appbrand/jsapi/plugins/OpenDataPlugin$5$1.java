@@ -15,7 +15,7 @@ class OpenDataPlugin$5$1
     try
     {
       paramDialogInterface.dismiss();
-      OpenDataPlugin.access$000(this.this$1.this$0, this.this$1.val$toUser, this.this$1.val$nick, this.this$1.val$title, this.this$1.val$imageUrl, this.this$1.val$imageUrlId, this.this$1.val$jsRuntime, this.this$1.val$callbackId, "shareMessageToFriend");
+      OpenDataPlugin.access$100(this.this$1.this$0, this.this$1.val$toUser, this.this$1.val$nick, this.this$1.val$title, this.this$1.val$imageUrl, this.this$1.val$imageUrlId, this.this$1.val$jsRuntime, this.this$1.val$callbackId, "shareMessageToFriend");
       return;
     }
     catch (Throwable paramDialogInterface)

@@ -1,6 +1,6 @@
 public abstract interface auuj
 {
-  public abstract void a();
+  public abstract void a(String paramString, long paramLong);
 }
 
 

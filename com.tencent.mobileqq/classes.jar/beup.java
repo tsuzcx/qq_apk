@@ -1,8 +1,6 @@
-public class beup
+public abstract interface beup
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public abstract void a(bevl parambevl, bevm parambevm);
 }
 
 

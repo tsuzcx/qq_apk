@@ -1,48 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xyi
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wyb>
+class xyi
+  implements bliz
 {
-  public xyi(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  xyi(xyd paramxyd, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, blir paramblir) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wyb paramwyb)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {}
-    xyv localxyv;
-    Object localObject1;
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
       return;
-      Object localObject2 = null;
-      localxyv = paramQQStoryShareGroupProfileActivity.a.a;
-      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
-      do
-      {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (HotSortVideoEntry)localIterator.next();
-      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramwyb.a));
-    } while (localObject1 == null);
-    ((HotSortVideoEntry)localObject1).viewCount += 1;
-    ((wot)wpm.a(25)).a((HotSortVideoEntry)localObject1);
-    localxyv.a((HotSortVideoEntry)localObject1);
-    paramQQStoryShareGroupProfileActivity.d = true;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wyb.class;
+      xyd.a(this.jdField_a_of_type_Xyd, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

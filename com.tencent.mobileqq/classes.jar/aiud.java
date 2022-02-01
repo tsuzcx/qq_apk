@@ -1,27 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aiud
-  implements View.OnClickListener
+public abstract interface aiud
 {
-  public aiud(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  public abstract void a(aiub paramaiub);
   
-  public void onClick(View paramView)
-  {
-    int i = Face2FaceAddContactFragment.a(this.a).length();
-    if (i >= 4) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Face2FaceAddContactFragment.a(this.a, paramView, i);
-      i = Face2FaceAddContactFragment.a(this.a).length();
-      Face2FaceAddContactFragment.a(this.a, i);
-      Face2FaceAddContactFragment.b(this.a, i);
-    }
-  }
+  public abstract boolean a(String paramString);
 }
 
 

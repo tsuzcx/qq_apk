@@ -1,6 +1,6 @@
 package com.tencent.util.pm;
 
-import bgpa;
+import bhpc;
 
 public final class PackageUtil$4
   implements Runnable

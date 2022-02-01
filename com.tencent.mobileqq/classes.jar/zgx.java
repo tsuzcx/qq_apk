@@ -1,13 +1,11 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.graphics.Bitmap;
+import java.util.List;
 
-public final class zgx
-  implements FilenameFilter
+public class zgx
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.endsWith(".mp4");
-  }
+  public int a;
+  public List<String> a;
+  public List<Bitmap> b;
 }
 
 

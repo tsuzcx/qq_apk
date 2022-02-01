@@ -1,56 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bbkm
-  extends bbmz
+class bbkm
+  implements bbmo
 {
-  protected QQAppInterface a;
-  protected FTSEntity a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected CharSequence b;
-  protected CharSequence c;
-  private CharSequence d;
+  bbkm(bbkl parambbkl, int[] paramArrayOfInt) {}
   
-  public bbkm(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
+    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
   }
   
-  public String a()
+  public void a(String arg1)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if (this.d == null) {
-      this.d = bbup.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
+    yup.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
+    synchronized (bbkl.a(this.jdField_a_of_type_Bbkl))
+    {
+      bbkl.a(this.jdField_a_of_type_Bbkl, true);
+      bbkl.a(this.jdField_a_of_type_Bbkl).notifyAll();
+      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
+      return;
     }
-    return this.d;
   }
   
-  public int c()
+  public void a_(int paramInt, Throwable arg2)
   {
-    return 1;
+    String str;
+    if (??? != null) {
+      str = ???.getMessage();
+    }
+    for (;;)
+    {
+      yup.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
+      yuk.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
+      bbkl.a(this.jdField_a_of_type_Bbkl, paramInt);
+      synchronized (bbkl.a(this.jdField_a_of_type_Bbkl))
+      {
+        bbkl.a(this.jdField_a_of_type_Bbkl, true);
+        bbkl.a(this.jdField_a_of_type_Bbkl).notifyAll();
+        return;
+        str = "UNKNOWN ERROR";
+      }
+    }
   }
   
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public abstract CharSequence e();
+  public void b() {}
 }
 
 

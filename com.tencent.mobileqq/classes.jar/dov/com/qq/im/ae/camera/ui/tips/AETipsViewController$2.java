@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.tips;
 
-import bnne;
+import boop;
 
 public class AETipsViewController$2
   implements Runnable
 {
-  public AETipsViewController$2(bnne parambnne) {}
+  public AETipsViewController$2(boop paramboop) {}
   
   public void run()
   {
-    bnne.b(this.this$0);
+    boop.b(this.this$0);
   }
 }
 

@@ -2,12 +2,12 @@ package com.tencent.biz.qqstory.model;
 
 import com.tencent.biz.qqstory.database.StoryEntry;
 import com.tencent.mobileqq.persistence.EntityManager;
-import wpj;
+import wte;
 
 public class StoryManager$2
   implements Runnable
 {
-  public StoryManager$2(wpj paramwpj, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
+  public StoryManager$2(wte paramwte, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
   
   public void run()
   {

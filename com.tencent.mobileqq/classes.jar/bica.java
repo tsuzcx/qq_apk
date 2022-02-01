@@ -1,8 +1,12 @@
-import com.tencent.mobileqq.widget.ObservableScrollView;
-
 public abstract interface bica
 {
-  public abstract void a(ObservableScrollView paramObservableScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a();
+  
+  public abstract void a(bicb parambicb);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

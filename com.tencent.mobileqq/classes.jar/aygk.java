@@ -1,13 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class aygk
+public abstract interface aygk
 {
-  public int a;
-  public String a;
-  public List<aygl> a = new ArrayList();
-  public String b;
-  public String c;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

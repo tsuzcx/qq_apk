@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public final class aykn
-  implements Parcelable.Creator<ShuayishuaConfig>
+public class aykn
+  implements anvi
 {
-  public ShuayishuaConfig a(Parcel paramParcel)
-  {
-    return new ShuayishuaConfig(paramParcel);
-  }
+  public aykn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public ShuayishuaConfig[] a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return new ShuayishuaConfig[paramInt];
+    if ((paramBoolean) && (paramInt == 2))
+    {
+      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
+        break label41;
+      }
+      NearbyPeopleProfileActivity.a(this.a).d();
+    }
+    label41:
+    while (NearbyPeopleProfileActivity.a(this.a) == null) {
+      return;
+    }
   }
 }
 

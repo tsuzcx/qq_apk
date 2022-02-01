@@ -1,11 +1,13 @@
-import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
-
 public class axpx
 {
-  public float a;
-  public float[] a;
-  
-  private axpx(MetaballView paramMetaballView) {}
+  public int a;
+  public axpw a;
+  public axqo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d = 0;
 }
 
 

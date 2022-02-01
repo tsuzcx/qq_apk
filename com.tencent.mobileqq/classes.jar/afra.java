@@ -1,24 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class afra
   implements DialogInterface.OnClickListener
 {
-  public afra(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public afra(TranslucentTRansferFragment paramTranslucentTRansferFragment, bhpc parambhpc) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.n();
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nlw.a(), paramDialogInterface, "0");
-      this.a.finish();
-      return;
-    }
+    this.jdField_a_of_type_Bhpc.dismiss();
   }
 }
 

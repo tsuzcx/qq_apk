@@ -1,33 +1,72 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arke
-  implements Animator.AnimatorListener
+  extends arac<arkd>
 {
-  public arke(DataReportViewer paramDataReportViewer) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  @NonNull
+  public arkd a(int paramInt)
   {
-    this.a.a.setVisibility(0);
-    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
-    paramAnimator.setFillAfter(true);
-    paramAnimator.setDuration(200L);
-    this.a.a.startAnimation(paramAnimator);
-    paramAnimator.setAnimationListener(new arkf(this));
+    return new arkd();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  @Nullable
+  public arkd a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    {
+      arkd localarkd = arkd.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      }
+      return localarkd;
+    }
+    return null;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(arkd paramarkd)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramarkd.toString());
+    }
+  }
+  
+  public Class<arkd> clazz()
+  {
+    return arkd.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 361;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arke
  * JD-Core Version:    0.7.0.1
  */

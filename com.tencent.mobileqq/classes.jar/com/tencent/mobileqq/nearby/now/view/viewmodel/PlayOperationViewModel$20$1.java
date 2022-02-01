@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
-import axop;
-import axpa;
+import ayhj;
+import ayhu;
 
 public class PlayOperationViewModel$20$1
   implements Runnable
 {
-  public PlayOperationViewModel$20$1(axpa paramaxpa) {}
+  public PlayOperationViewModel$20$1(ayhu paramayhu) {}
   
   public void run()
   {
-    axop.a(this.a.a);
+    ayhj.a(this.a.a);
   }
 }
 

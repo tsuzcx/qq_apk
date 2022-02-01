@@ -1,18 +1,9 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-final class awsg
-  implements awsn
+public abstract interface awsg
 {
-  awsg(Context paramContext) {}
-  
-  public void a(Intent paramIntent)
-  {
-    if ((this.a instanceof ChatActivity)) {
-      ((ChatActivity)this.a).a(paramIntent);
-    }
-  }
+  public abstract void a(List<LocationRoom.Venue> paramList);
 }
 
 

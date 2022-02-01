@@ -1,24 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import java.lang.ref.WeakReference;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.common.app.AppInterface;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bovb
-  implements View.OnClickListener
+  extends ViewModel
 {
-  public bovb(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
+  private MutableLiveData<boqz> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  private Map<String, boqp> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void onClick(View paramView)
+  public MutableLiveData<boqz> a()
   {
-    if (VideoCoverPickerProviderView.a(this.a) != null)
-    {
-      bovc localbovc = (bovc)VideoCoverPickerProviderView.a(this.a).get();
-      if (localbovc != null) {
-        localbovc.a(VideoCoverPickerProviderView.b(this.a), false);
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+  }
+  
+  public void a(AppInterface paramAppInterface, bosw parambosw)
+  {
+    bovc localbovc = new bovc(this);
+    this.jdField_a_of_type_JavaUtilMap.put(parambosw.a.id, localbovc);
+    boqm.a().a(paramAppInterface, parambosw.a, localbovc);
+  }
+  
+  public void onCleared()
+  {
+    super.onCleared();
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
 }
 

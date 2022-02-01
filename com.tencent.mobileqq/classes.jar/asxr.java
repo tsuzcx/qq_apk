@@ -1,25 +1,9 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import java.util.List;
-
 public class asxr
-  extends aszq
 {
-  public asxr(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
-  {
-    if (paramBoolean1) {
-      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
-  {
-    if (paramBoolean1) {
-      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
-    }
-  }
+  public int a;
+  public long a;
+  public asxh a;
+  public String a;
 }
 
 

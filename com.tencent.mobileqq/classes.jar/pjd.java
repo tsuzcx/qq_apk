@@ -1,32 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class pjd
-  implements AladdinConfigHandler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("check_period_ms", str1)) {
-        bmqa.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
-      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
-        bmqa.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
-      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
-        bmqa.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
-    }
-    return true;
-  }
+  public pjd(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onWipeConfig(int paramInt) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131698579), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299011));
+      ocd.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", ozs.e(), false);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      ocd.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", ozs.e(), false);
+    }
+  }
 }
 
 

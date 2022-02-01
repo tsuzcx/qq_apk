@@ -1,16 +1,9 @@
-import android.os.Handler;
-
-class agpx
-  implements adbw
+final class agpx
+  implements agql<agpw>
 {
-  agpx(agpv paramagpv) {}
-  
-  public void a(int paramInt, abez paramabez) {}
-  
-  public void a(long paramLong)
+  public agpw a(agqi paramagqi)
   {
-    agpv.a("onLowMemory");
-    agpv.a().sendMessage(agpv.a().obtainMessage(5));
+    return new agpw(paramagqi);
   }
 }
 

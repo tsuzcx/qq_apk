@@ -1,48 +1,73 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import SummaryCard.RespCondSearch;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class anvg
-  extends Handler
+  extends anyu
 {
-  anvg(anvf paramanvf, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  anvg(anve paramanve) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onCondSearchFriendResult(long paramLong, boolean paramBoolean, Object paramObject, int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    case 2: 
-    default: 
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "searchseq = " + this.a.jdField_a_of_type_Long + " | seq = " + paramLong + ", isSuccess=" + paramBoolean + ", ret=" + paramInt1 + ", searchFrom=" + paramInt2);
+    }
+    if (this.a.jdField_a_of_type_Long != paramLong) {
       return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+    }
+    if ((paramBoolean) && (paramInt1 == 0))
+    {
+      paramObject = (RespCondSearch)paramObject;
+      anve localanve = this.a;
+      if (paramObject.cEndFlag == 0)
       {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), niq.class);
-        ((NewIntent)localObject).putExtra("data", ((anvk)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
+        paramBoolean = true;
+        localanve.jdField_e_of_type_Boolean = paramBoolean;
+        this.a.jdField_f_of_type_Int = paramObject.iPage;
+        this.a.jdField_b_of_type_Long = paramObject.dwSessionID;
+        if (this.a.jdField_b_of_type_JavaUtilList != null) {
+          break label342;
+        }
+        this.a.jdField_b_of_type_JavaUtilList = paramObject.vUserList;
       }
       for (;;)
       {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Anvk = null;
+        if ((this.a.jdField_g_of_type_Int >= 2) || ((this.a.jdField_b_of_type_JavaUtilList != null) && (this.a.jdField_b_of_type_JavaUtilList.size() >= 10)) || (!this.a.jdField_e_of_type_Boolean)) {
+          break label382;
+        }
+        paramObject = this.a;
+        paramObject.jdField_g_of_type_Int += 1;
+        ((FriendListHandler)anve.a(this.a).a(1)).a(this.a.jdField_a_of_type_Long, this.a.jdField_f_of_type_Int + 1, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, this.a.c, this.a.jdField_f_of_type_ArrayOfJavaLangString, this.a.jdField_g_of_type_ArrayOfJavaLangString, this.a.d, this.a.jdField_e_of_type_Int, paramInt2);
         return;
-        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((anvk)paramMessage.obj).a.toByteArray());
-        this.a.sendPbReq((ToServiceMsg)localObject);
+        paramBoolean = false;
+        break;
+        label342:
+        if ((paramObject.vUserList != null) && (!paramObject.vUserList.isEmpty())) {
+          this.a.jdField_b_of_type_JavaUtilList.addAll(paramObject.vUserList);
+        }
       }
+      label382:
+      if ((this.a.jdField_b_of_type_JavaUtilList == null) || (this.a.jdField_b_of_type_JavaUtilList.size() < 6)) {
+        this.a.jdField_e_of_type_Boolean = false;
+      }
+      this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+      return;
     }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+    if ((paramBoolean) && (paramInt1 != 0))
+    {
+      this.a.jdField_e_of_type_Boolean = false;
+      this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+      return;
+    }
+    if (this.a.jdField_g_of_type_Int == 0)
+    {
+      this.a.a(false, null, this.a.jdField_e_of_type_Boolean, paramInt2);
+      return;
+    }
+    this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
   }
 }
 

@@ -1,15 +1,22 @@
-import android.view.View;
+import android.opengl.EGLContext;
 
 public class bddt
-  implements bdds
 {
-  public void a(Throwable paramThrowable) {}
+  int jdField_a_of_type_Int;
+  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  int b;
   
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView) {}
+  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      return;
+    }
+  }
 }
 
 

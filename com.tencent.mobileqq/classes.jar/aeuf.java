@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aeuf
-  implements DialogInterface.OnClickListener
+public class aeuf
+  extends BroadcastReceiver
 {
-  aeuf(aeue paramaeue) {}
+  public aeuf(JumpActivity paramJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeuf
  * JD-Core Version:    0.7.0.1
  */

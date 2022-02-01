@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class aemv
-  extends aniz
+  implements InputFilter
 {
-  public aemv(Leba paramLeba) {}
+  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
-  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public aemv(EditInfoActivity paramEditInfoActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+      return "";
     }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
+    return null;
   }
 }
 

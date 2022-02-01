@@ -1,19 +1,9 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
 
-public class bhwe
-  extends ListView
+public abstract interface bhwe
 {
-  public bhwe(DraggableGridView paramDraggableGridView, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public void setOverScrollMode(int paramInt)
-  {
-    super.setOverScrollMode(2);
-  }
+  public abstract URLDrawable a(Drawable paramDrawable);
 }
 
 

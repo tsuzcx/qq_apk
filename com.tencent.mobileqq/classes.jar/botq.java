@@ -1,20 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.widget.AdapterView;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class botq
-  implements DialogInterface.OnClickListener
+class botq
+  implements View.OnClickListener
 {
-  public botq(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  botq(botp parambotp, int paramInt, boqw paramboqw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Boty.k();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.onItemClick(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    botp.a(this.jdField_a_of_type_Botp, this.jdField_a_of_type_Int);
+    botr localbotr;
+    if (this.jdField_a_of_type_Int != botp.a(this.jdField_a_of_type_Botp))
+    {
+      int i = botp.a(this.jdField_a_of_type_Botp);
+      botp.a(this.jdField_a_of_type_Botp, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Botp.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Botp.notifyItemChanged(i);
+      if (botp.a(this.jdField_a_of_type_Botp) != null)
+      {
+        localbotr = botp.a(this.jdField_a_of_type_Botp);
+        if (this.jdField_a_of_type_Boqw.b != 1) {
+          break label161;
+        }
+      }
+    }
+    label161:
+    for (boqw localboqw = null;; localboqw = this.jdField_a_of_type_Boqw)
+    {
+      localbotr.a(localboqw);
+      bozv.a().k(this.jdField_a_of_type_Boqw.a);
+      bozr.a().ae();
+      bpam.b("AEGIFStickerAdapter", "【Gif Material Click】: " + this.jdField_a_of_type_Boqw.a);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

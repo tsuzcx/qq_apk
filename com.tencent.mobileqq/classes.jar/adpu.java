@@ -1,60 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
 
 public class adpu
-  extends anlc
+  implements DialogInterface.OnClickListener
 {
-  public adpu(BaseChatPie paramBaseChatPie) {}
+  public adpu(TestAppFragment paramTestAppFragment) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((BaseChatPie.a(this.a) == null) || (paramObject == null) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null));
-      localObject = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-      paramObject = (EmoticonResp)paramObject;
-      BaseChatPie.a(this.a).a(paramBoolean, paramInt, paramObject, (String)localObject);
-      return;
-      if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
-        this.a.jdField_a_of_type_Biau.dismiss();
-      }
-    } while (paramObject == null);
-    Object localObject = (EmoticonResp)paramObject;
-    int i;
-    if (paramBoolean)
-    {
-      i = ((EmoticonResp)localObject).delEpId;
-      if ((((EmoticonResp)localObject).keySeq == null) || (((EmoticonResp)localObject).keySeq.equals(""))) {
-        paramObject = anni.a(2131699792);
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(((EmoticonResp)localObject).emoticonId)) {
-        break label240;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "auth type emoticon id is null");
-      return;
-      paramObject = ((EmoticonResp)localObject).keySeq;
-      continue;
-      paramObject = anni.a(2131699777);
-      i = -404;
-    }
-    label240:
-    ((awmr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(String.valueOf(((EmoticonResp)localObject).epId), ((EmoticonResp)localObject).emoticonId, new adpv(this, paramInt, i, paramObject));
+    paramDialogInterface.dismiss();
   }
 }
 

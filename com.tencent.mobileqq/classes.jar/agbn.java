@@ -1,17 +1,35 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1;
+import Wallet.AcsMsg;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class agbn
-  extends bkfi
+  implements Handler.Callback
 {
-  agbn(agbk paramagbk) {}
+  public agbn(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((agbk.a(this.a) != null) && (agbk.a(this.a).isShown())) {
-      this.a.a.post(new ComboAnimation3.3.1(this));
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).e();
+        continue;
+        paramMessage = (Bundle)paramMessage.obj;
+        ActivateFriendActivity.a(this.a, (ArrayList)paramMessage.getSerializable("models"), (List)paramMessage.getSerializable("list"), paramMessage.getInt("count"));
+        continue;
+        paramMessage = (Bundle)paramMessage.obj;
+        this.a.a((AcsMsg)paramMessage.getSerializable("acsMsg"));
+      }
     }
   }
 }

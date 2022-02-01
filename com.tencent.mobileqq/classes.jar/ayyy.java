@@ -1,362 +1,54 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
 
 public class ayyy
+  implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
+  public ayyy(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public ayyy(int paramInt1, int paramInt2, int paramInt3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / this.jdField_b_of_type_Int);
-    this.jdField_c_of_type_Int = paramInt3;
-    if ((paramInt3 != 0) && (paramInt3 % 90 == 0)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  private boolean a(Bitmap paramBitmap)
-  {
-    if (b(paramBitmap))
+    paramView = (EditText)paramView;
+    int j = paramMotionEvent.getAction();
+    if (j == 1)
     {
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      if ((i > this.jdField_a_of_type_Int) || (j > this.jdField_a_of_type_Int)) {
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m <= f)
+      {
+        i = localLayout.getOffsetForHorizontal(i, m);
+        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+        if (localObject.length != 0)
+        {
+          localObject[0].onClick(paramView);
+          bdll.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
         return true;
       }
-    }
-    return false;
-  }
-  
-  /* Error */
-  private Bitmap b(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   4: istore 5
-    //   6: aload_1
-    //   7: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   10: istore 6
-    //   12: new 47	android/graphics/Matrix
-    //   15: dup
-    //   16: invokespecial 48	android/graphics/Matrix:<init>	()V
-    //   19: astore 8
-    //   21: aload_1
-    //   22: astore 7
-    //   24: aload_0
-    //   25: getfield 29	ayyy:jdField_a_of_type_Boolean	Z
-    //   28: ifeq +67 -> 95
-    //   31: aload 8
-    //   33: aload_0
-    //   34: getfield 27	ayyy:jdField_c_of_type_Int	I
-    //   37: i2f
-    //   38: iload 5
-    //   40: iconst_1
-    //   41: ishr
-    //   42: i2f
-    //   43: iload 6
-    //   45: iconst_1
-    //   46: ishr
-    //   47: i2f
-    //   48: invokevirtual 52	android/graphics/Matrix:postRotate	(FFF)Z
-    //   51: pop
-    //   52: iload 5
-    //   54: aload_1
-    //   55: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   58: if_icmple +198 -> 256
-    //   61: aload_1
-    //   62: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   65: istore_2
-    //   66: iload 6
-    //   68: aload_1
-    //   69: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   72: if_icmple +177 -> 249
-    //   75: aload_1
-    //   76: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   79: istore 4
-    //   81: aload_1
-    //   82: iconst_0
-    //   83: iconst_0
-    //   84: iload_2
-    //   85: iload 4
-    //   87: aload 8
-    //   89: iconst_1
-    //   90: invokestatic 56	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   93: astore 7
-    //   95: aload_0
-    //   96: iconst_1
-    //   97: putfield 17	ayyy:jdField_b_of_type_Boolean	Z
-    //   100: iload_3
-    //   101: i2f
-    //   102: aload_0
-    //   103: getfield 25	ayyy:jdField_a_of_type_Float	F
-    //   106: fmul
-    //   107: f2i
-    //   108: istore 4
-    //   110: iload 5
-    //   112: iload 6
-    //   114: if_icmple +88 -> 202
-    //   117: iload 4
-    //   119: istore_2
-    //   120: aload_0
-    //   121: getfield 27	ayyy:jdField_c_of_type_Int	I
-    //   124: bipush 90
-    //   126: idiv
-    //   127: iconst_2
-    //   128: irem
-    //   129: ifeq +109 -> 238
-    //   132: iload_3
-    //   133: istore 4
-    //   135: iload_3
-    //   136: aload 7
-    //   138: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   141: if_icmple +10 -> 151
-    //   144: aload 7
-    //   146: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   149: istore 4
-    //   151: iload_2
-    //   152: istore_3
-    //   153: iload_2
-    //   154: aload 7
-    //   156: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   159: if_icmple +9 -> 168
-    //   162: aload 7
-    //   164: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   167: istore_3
-    //   168: aload 7
-    //   170: iconst_0
-    //   171: iconst_0
-    //   172: iload 4
-    //   174: iload_3
-    //   175: invokestatic 59	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   178: astore_1
-    //   179: aload_1
-    //   180: areturn
-    //   181: astore 7
-    //   183: aload_1
-    //   184: invokevirtual 62	android/graphics/Bitmap:recycle	()V
-    //   187: aload 7
-    //   189: invokevirtual 65	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   192: aload_0
-    //   193: ldc 67
-    //   195: ldc 69
-    //   197: invokevirtual 72	ayyy:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   200: aconst_null
-    //   201: areturn
-    //   202: iload_3
-    //   203: istore_2
-    //   204: iload 4
-    //   206: istore_3
-    //   207: goto -87 -> 120
-    //   210: astore_1
-    //   211: aload 7
-    //   213: invokevirtual 76	android/graphics/Bitmap:isRecycled	()Z
-    //   216: ifne +8 -> 224
-    //   219: aload 7
-    //   221: invokevirtual 62	android/graphics/Bitmap:recycle	()V
-    //   224: aload_1
-    //   225: invokevirtual 65	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   228: aload_0
-    //   229: ldc 78
-    //   231: ldc 69
-    //   233: invokevirtual 72	ayyy:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   236: aconst_null
-    //   237: areturn
-    //   238: iload_2
-    //   239: istore 4
-    //   241: iload_3
-    //   242: istore_2
-    //   243: iload 4
-    //   245: istore_3
-    //   246: goto -114 -> 132
-    //   249: iload 6
-    //   251: istore 4
-    //   253: goto -172 -> 81
-    //   256: iload 5
-    //   258: istore_2
-    //   259: goto -193 -> 66
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	262	0	this	ayyy
-    //   0	262	1	paramBitmap	Bitmap
-    //   0	262	2	paramInt1	int
-    //   0	262	3	paramInt2	int
-    //   79	173	4	i	int
-    //   4	253	5	j	int
-    //   10	240	6	k	int
-    //   22	147	7	localBitmap	Bitmap
-    //   181	39	7	localOutOfMemoryError	OutOfMemoryError
-    //   19	69	8	localMatrix	Matrix
-    // Exception table:
-    //   from	to	target	type
-    //   52	66	181	java/lang/OutOfMemoryError
-    //   66	81	181	java/lang/OutOfMemoryError
-    //   81	95	181	java/lang/OutOfMemoryError
-    //   120	132	210	java/lang/OutOfMemoryError
-    //   135	151	210	java/lang/OutOfMemoryError
-    //   153	168	210	java/lang/OutOfMemoryError
-    //   168	179	210	java/lang/OutOfMemoryError
-  }
-  
-  private boolean b(Bitmap paramBitmap)
-  {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    return (i > j * this.jdField_a_of_type_Float) || (j > i * this.jdField_a_of_type_Float);
-  }
-  
-  private Bitmap c(Bitmap paramBitmap)
-  {
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    Matrix localMatrix = new Matrix();
-    Bitmap localBitmap = paramBitmap;
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localMatrix.postRotate(this.jdField_c_of_type_Int, j >> 1, k >> 1);
-      i = j;
-    }
-    try
-    {
-      if (j > paramBitmap.getWidth()) {
-        i = paramBitmap.getWidth();
+      if ((j == 1) && (!paramView.isFocused())) {
+        bdll.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
       }
-      j = k;
-      if (k > paramBitmap.getHeight()) {
-        j = paramBitmap.getHeight();
-      }
-      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
-      return localBitmap;
+      return paramView.onTouchEvent(paramMotionEvent);
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      paramBitmap.recycle();
-      localOutOfMemoryError.printStackTrace();
-      a("keepSide", "createBitmap OutOfMemoryError");
-    }
-    return null;
-  }
-  
-  public Bitmap a(Bitmap paramBitmap)
-  {
-    if (a(paramBitmap)) {
-      paramBitmap = b(paramBitmap);
-    }
-    for (;;)
-    {
-      if (paramBitmap == null) {
-        return paramBitmap;
-      }
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      int k;
-      if (i > j)
-      {
-        k = j;
-        j = i;
-      }
-      while (b(paramBitmap))
-      {
-        return b(paramBitmap, j, k);
-        k = i;
-      }
-      if (j > this.jdField_a_of_type_Int) {
-        return a(paramBitmap, j, k);
-      }
-      return c(paramBitmap);
-    }
-  }
-  
-  Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    paramInt2 = paramBitmap.getWidth();
-    int i = paramBitmap.getHeight();
-    Object localObject = new Matrix();
-    this.jdField_c_of_type_Boolean = true;
-    float f = this.jdField_a_of_type_Int / (paramInt1 * 1.0F);
-    if (this.jdField_a_of_type_Boolean) {
-      ((Matrix)localObject).postRotate(this.jdField_c_of_type_Int, paramInt2 >> 1, i >> 1);
-    }
-    ((Matrix)localObject).postScale(f, f);
-    paramInt1 = paramInt2;
-    try
-    {
-      if (paramInt2 > paramBitmap.getWidth()) {
-        paramInt1 = paramBitmap.getWidth();
-      }
-      paramInt2 = i;
-      if (i > paramBitmap.getHeight()) {
-        paramInt2 = paramBitmap.getHeight();
-      }
-      localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramInt1, paramInt2, (Matrix)localObject, true);
-      return localObject;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      paramBitmap.recycle();
-      localOutOfMemoryError.printStackTrace();
-      a("clipLongSide", "createBitmap OutOfMemoryError");
-    }
-    return null;
-  }
-  
-  void a(String paramString1, String paramString2)
-  {
-    ayxi.b("ClipStrategy", paramString1, paramString2);
-  }
-  
-  Bitmap b(Bitmap paramBitmap)
-  {
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    int i;
-    int j;
-    if (k > m)
-    {
-      i = m;
-      j = (int)(i * this.jdField_a_of_type_Float);
-      if (k <= m) {
-        break label90;
-      }
-    }
-    for (;;)
-    {
-      k = j;
-      try
-      {
-        if (j > paramBitmap.getWidth()) {
-          k = paramBitmap.getWidth();
-        }
-        j = i;
-        if (i > paramBitmap.getHeight()) {
-          j = paramBitmap.getHeight();
-        }
-        Bitmap localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, k, j);
-        return localBitmap;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        paramBitmap.recycle();
-        localOutOfMemoryError.printStackTrace();
-        a("clipBigImg", "createBitmap OutOfMemoryError");
-      }
-      i = k;
-      break;
-      label90:
-      k = i;
-      i = j;
-      j = k;
-    }
-    return null;
   }
 }
 

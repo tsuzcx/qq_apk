@@ -1,8 +1,29 @@
-public abstract interface zbm
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class zbm
+  extends AnimatorListenerAdapter
 {
-  public abstract int a();
+  zbm(zbj paramzbj) {}
   
-  public abstract zbc a(int paramInt);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    yuk.b("TextLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    yuk.b("TextLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.a.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    yuk.b("TextLayer", "scaleAnimator start!");
+    this.a.c = true;
+  }
 }
 
 

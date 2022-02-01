@@ -1,16 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aymd
-  implements ValueAnimator.AnimatorUpdateListener
+class aymd
+  implements View.OnClickListener
 {
-  public aymd(ScanIconAnimateView paramScanIconAnimateView) {}
+  aymd(aykx paramaykx, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    Intent localIntent = new Intent(this.jdField_a_of_type_Aykx.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Aykx.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aykx.a.j)) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localIntent.putExtra("url", (String)localObject);
+      this.jdField_a_of_type_Aykx.a.startActivity(localIntent);
+      bdll.b(this.jdField_a_of_type_Aykx.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Aykx.a.l = true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

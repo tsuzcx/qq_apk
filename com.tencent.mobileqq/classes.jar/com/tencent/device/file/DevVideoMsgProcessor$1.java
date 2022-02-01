@@ -1,9 +1,9 @@
 package com.tencent.device.file;
 
 import android.content.Intent;
-import bcec;
-import bcev;
-import bcfn;
+import bcwu;
+import bcxn;
+import bcyf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ public final class DevVideoMsgProcessor$1
   
   public void run()
   {
-    bcev localbcev = bcec.a(0, 1);
+    bcxn localbcxn = bcwu.a(0, 1);
     Object localObject = new Intent();
     ((Intent)localObject).addFlags(603979776);
     ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_JavaLangString);
@@ -22,12 +22,12 @@ public final class DevVideoMsgProcessor$1
     ((Intent)localObject).putExtra("file_send_business_type", 1);
     ((Intent)localObject).putExtra("file_send_path", this.b);
     long l = System.currentTimeMillis();
-    localObject = bcec.a(1, localObject, localbcev);
+    localObject = bcwu.a(1, localObject, localbcxn);
     if (QLog.isColorLevel()) {
       QLog.i("DeviceShortVideo", 2, "createShortVideoUploadInfo cost:" + (System.currentTimeMillis() - l));
     }
-    localbcev.a((bcfn)localObject);
-    bcec.a(localbcev, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localbcxn.a((bcyf)localObject);
+    bcwu.a(localbcxn, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

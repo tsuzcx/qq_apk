@@ -1,16 +1,16 @@
 package com.tencent.biz.now;
 
 import android.widget.ImageView;
-import noy;
+import nqt;
 
 public class NowVideoView$2$1
   implements Runnable
 {
-  public NowVideoView$2$1(noy paramnoy, ImageView paramImageView) {}
+  public NowVideoView$2$1(nqt paramnqt, ImageView paramImageView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Noy.a.a);
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Nqt.a.a);
   }
 }
 

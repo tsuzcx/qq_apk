@@ -1,6 +1,19 @@
-public abstract interface amky
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class amky
+  implements aqgm
 {
-  public abstract void a(String paramString);
+  public amky(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+  }
 }
 
 

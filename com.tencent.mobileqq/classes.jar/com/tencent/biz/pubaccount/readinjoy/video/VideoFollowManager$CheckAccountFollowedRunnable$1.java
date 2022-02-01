@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import shz;
+import rzd;
 
 class VideoFollowManager$CheckAccountFollowedRunnable$1
   implements Runnable
@@ -20,9 +20,9 @@ class VideoFollowManager$CheckAccountFollowedRunnable$1
       Object localObject = (VideoInfo)localIterator.next();
       boolean bool = i | VideoFollowManager.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFollowManager$CheckAccountFollowedRunnable, (VideoInfo)localObject, this.jdField_a_of_type_Boolean);
       i = bool;
-      if (((VideoInfo)localObject).d != null)
+      if (((VideoInfo)localObject).c != null)
       {
-        localObject = ((VideoInfo)localObject).d.iterator();
+        localObject = ((VideoInfo)localObject).c.iterator();
         for (;;)
         {
           i = bool;

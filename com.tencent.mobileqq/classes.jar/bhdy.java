@@ -1,35 +1,68 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener.1;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import protocol.KQQConfig.UpgradeInfo;
 
-public class bhdy
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+public final class bhdy
+  implements Parcelable.Creator<UpgradeDetailWrapper>
 {
-  private bhdx jdField_a_of_type_Bhdx;
-  private final WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public bhdy(WallpaperHelper paramWallpaperHelper)
+  public UpgradeDetailWrapper a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
+    ApkUpdateDetail localApkUpdateDetail = null;
+    String str = "";
+    UpgradeInfo localUpgradeInfo;
+    if (paramParcel.readInt() == 1)
+    {
+      localUpgradeInfo = new UpgradeInfo();
+      localUpgradeInfo.iAppid = paramParcel.readInt();
+      localUpgradeInfo.bAppType = paramParcel.readByte();
+      localUpgradeInfo.iUpgradeType = paramParcel.readInt();
+      localUpgradeInfo.iUpgradeSdkId = paramParcel.readInt();
+      localUpgradeInfo.strTitle = paramParcel.readString();
+      localUpgradeInfo.strUpgradeDesc = paramParcel.readString();
+      localUpgradeInfo.strUrl = paramParcel.readString();
+      localUpgradeInfo.iActionType = paramParcel.readInt();
+      localUpgradeInfo.bNewSwitch = paramParcel.readByte();
+      localUpgradeInfo.iNewTimeStamp = paramParcel.readInt();
+      localUpgradeInfo.strUpgradePageUrl = paramParcel.readString();
+      localUpgradeInfo.iIncrementUpgrade = paramParcel.readInt();
+      localUpgradeInfo.iTipsType = paramParcel.readInt();
+      localUpgradeInfo.strBannerPicUrl = paramParcel.readString();
+      localUpgradeInfo.strNewUpgradeDescURL = paramParcel.readString();
+      localUpgradeInfo.iDisplayDay = paramParcel.readInt();
+      localUpgradeInfo.iTipsWaitDay = paramParcel.readInt();
+      localUpgradeInfo.strProgressName = paramParcel.readString();
+      localUpgradeInfo.strNewTipsDescURL = paramParcel.readString();
+      localUpgradeInfo.strNewSoftwareURL = paramParcel.readString();
+      str = paramParcel.readString();
+    }
+    for (;;)
+    {
+      if (paramParcel.readInt() == 1)
+      {
+        localApkUpdateDetail = new ApkUpdateDetail();
+        localApkUpdateDetail.fileMd5 = paramParcel.readString();
+        localApkUpdateDetail.newapksize = paramParcel.readInt();
+        localApkUpdateDetail.packageName = paramParcel.readString();
+        localApkUpdateDetail.patchsize = paramParcel.readInt();
+        localApkUpdateDetail.sigMd5 = paramParcel.readString();
+        localApkUpdateDetail.updatemethod = paramParcel.readInt();
+        localApkUpdateDetail.url = paramParcel.readString();
+        localApkUpdateDetail.versioncode = paramParcel.readInt();
+        localApkUpdateDetail.versionname = paramParcel.readString();
+      }
+      paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
+      paramParcel.b = str;
+      paramParcel.a = anvl.a(localUpgradeInfo);
+      return paramParcel;
+      localUpgradeInfo = null;
+    }
   }
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public UpgradeDetailWrapper[] a(int paramInt)
   {
-    paramString = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramString != null)
-    {
-      paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
-      if ((this.jdField_a_of_type_Bhdx == null) || (!this.jdField_a_of_type_Bhdx.equals(paramSharedPreferences)))
-      {
-        this.jdField_a_of_type_Bhdx = paramSharedPreferences;
-        ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
-      }
-    }
+    return new UpgradeDetailWrapper[paramInt];
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
+import aacw;
 import android.os.Handler;
-import anhk;
+import antf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -11,17 +12,16 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import vhk;
-import zza;
+import vjo;
 
 class QCircleChatListBlock$3
   implements Runnable
 {
-  QCircleChatListBlock$3(QCircleChatListBlock paramQCircleChatListBlock, zza paramzza) {}
+  QCircleChatListBlock$3(QCircleChatListBlock paramQCircleChatListBlock, aacw paramaacw) {}
   
   public void run()
   {
-    Object localObject2 = this.this$0.mApp.a().a(anhk.aU, 10008, null);
+    Object localObject2 = this.this$0.mApp.a().a(antf.aU, 10008, null);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ArrayList();
@@ -30,7 +30,7 @@ class QCircleChatListBlock$3
     QCircleChatListBlock.access$100(this.this$0).addAll((Collection)localObject1);
     Collections.reverse(QCircleChatListBlock.access$100(this.this$0));
     localObject1 = this.this$0.makeRecentBaseDataList(QCircleChatListBlock.access$100(this.this$0));
-    localObject2 = vhk.a(this.this$0.mApp, QCircleChatListBlock.access$100(this.this$0));
+    localObject2 = vjo.a(this.this$0.mApp, QCircleChatListBlock.access$100(this.this$0));
     ThreadManager.getUIHandlerV2().post(new QCircleChatListBlock.3.1(this, (Pair)localObject2));
     this.val$callBack.a((List)localObject1);
   }

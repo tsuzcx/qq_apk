@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpcg;
-import bpep;
+import bqeb;
+import bqgk;
 import com.tencent.image.URLImageView;
 import cooperation.qzone.widget.FastAnimationDrawable;
 
@@ -19,7 +19,7 @@ class EditGifImage$1
     this.this$0.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
     this.this$0.b = localFastAnimationDrawable;
     this.this$0.d = true;
-    this.this$0.jdField_a_of_type_Bpep.a.a(true, true);
+    this.this$0.jdField_a_of_type_Bqgk.a.a(true, true);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import amgy;
-import ancd;
+import amss;
 import android.text.TextUtils;
+import annx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -53,7 +53,7 @@ public class ApolloGameData
   public int type;
   public int viewMode;
   
-  private ArrayList<amgy> parseBtnInfo(String paramString, QQAppInterface paramQQAppInterface)
+  private ArrayList<amss> parseBtnInfo(String paramString, QQAppInterface paramQQAppInterface)
   {
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
@@ -65,7 +65,7 @@ public class ApolloGameData
       int i;
       try
       {
-        paramQQAppInterface = (ancd)paramQQAppInterface.getManager(155);
+        paramQQAppInterface = (annx)paramQQAppInterface.getManager(155);
         paramString = new JSONArray(paramString);
         if ((paramQQAppInterface == null) || (paramString == null)) {
           break label203;
@@ -76,7 +76,7 @@ public class ApolloGameData
       }
       catch (Exception paramString)
       {
-        amgy localamgy;
+        amss localamss;
         QLog.e("ApolloGameData", 1, paramString, new Object[0]);
         long l2 = System.currentTimeMillis();
         if (!QLog.isColorLevel()) {
@@ -90,12 +90,12 @@ public class ApolloGameData
         paramQQAppInterface = paramString.optJSONObject(i);
         if (paramQQAppInterface != null)
         {
-          localamgy = new amgy();
-          localamgy.jdField_a_of_type_Int = paramQQAppInterface.optInt("src");
-          localamgy.jdField_b_of_type_Int = paramQQAppInterface.optInt("mode");
-          localamgy.jdField_a_of_type_JavaLangString = paramQQAppInterface.optString("normalBkgUrl");
-          localamgy.jdField_b_of_type_JavaLangString = paramQQAppInterface.optString("playingUrl");
-          localArrayList.add(localamgy);
+          localamss = new amss();
+          localamss.jdField_a_of_type_Int = paramQQAppInterface.optInt("src");
+          localamss.jdField_b_of_type_Int = paramQQAppInterface.optInt("mode");
+          localamss.jdField_a_of_type_JavaLangString = paramQQAppInterface.optString("normalBkgUrl");
+          localamss.jdField_b_of_type_JavaLangString = paramQQAppInterface.optString("playingUrl");
+          localArrayList.add(localamss);
         }
       }
       else

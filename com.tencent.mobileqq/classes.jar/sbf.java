@@ -1,29 +1,57 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class sbf
-  extends oce
 {
-  private sbf(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  private JSONObject a;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public sbf(String paramString)
   {
-    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    Object localObject;
-    do
+    try
     {
-      do
+      if (TextUtils.isEmpty(paramString))
       {
+        this.a = new JSONObject();
         return;
-        localObject = paramBundle.getString("VALUE_VIDEO_VID");
-      } while (localObject == null);
-      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
-    } while (localObject == null);
-    ((VideoInfo)localObject).q = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
+      }
+      this.a = new JSONObject(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public sbf(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.a = new JSONObject();
+    odr.a(paramString1, paramString2, paramString3, paramString4, this.a);
+  }
+  
+  public sbf(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(paramString1);
+    odr.a(paramString2, paramString3, paramString4, paramString5, this.a);
+  }
+  
+  public String a()
+  {
+    return this.a.toString();
+  }
+  
+  protected void a(String paramString, Object paramObject)
+  {
+    try
+    {
+      this.a.put(paramString, paramObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

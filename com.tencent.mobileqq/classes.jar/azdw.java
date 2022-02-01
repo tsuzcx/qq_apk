@@ -1,21 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-
-public class azdw
-  implements ValueAnimator.AnimatorUpdateListener
+class azdw
 {
-  public azdw(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  public int a;
+  public azds a;
+  public azdt a;
+  public azdv a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
-  }
+  private azdw(azdh paramazdh) {}
 }
 
 

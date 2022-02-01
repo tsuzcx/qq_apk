@@ -1,51 +1,47 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class yji
-  extends wfr<yjc, yiq>
+class yji
+  extends QQUIEventReceiver<yjh, wzr>
 {
-  public yji(yjc paramyjc)
+  public yji(@NonNull yjh paramyjh)
   {
-    super(paramyjc);
+    super(paramyjh);
   }
   
-  public void a(@NonNull yjc paramyjc, @NonNull yiq paramyiq)
+  public void a(@NonNull yjh paramyjh, @NonNull wzr paramwzr)
   {
-    if (paramyiq.jdField_a_of_type_Int == 0) {
+    if (!TextUtils.equals(String.valueOf(paramyjh.hashCode()), paramwzr.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    Object localObject = paramyjc.a(paramyiq.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    yuk.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramwzr);
+    if (paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramyiq.jdField_a_of_type_JavaLangString });
-      return;
+      if (paramwzr.jdField_a_of_type_Int != -1) {
+        paramyjh.jdField_a_of_type_Int = paramwzr.jdField_a_of_type_Int;
+      }
+      paramyjh.jdField_a_of_type_Boolean = true;
+      paramyjh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
+      if (paramwzr.e)
+      {
+        paramyjh.a(paramwzr.jdField_a_of_type_JavaUtilList, paramwzr.c, paramwzr.jdField_a_of_type_Boolean);
+        paramyjh.b = paramwzr.jdField_a_of_type_Boolean;
+      }
     }
-    if (!(localObject instanceof yir))
+    for (;;)
     {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramyiq.jdField_a_of_type_JavaLangString });
+      yjh.a(paramyjh).a(paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
       return;
+      paramyjh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
     }
-    localObject = (yir)localObject;
-    FeedVideoInfo localFeedVideoInfo = ((yip)wpm.a(12)).a(paramyiq.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((yir)localObject).a).mVideoPullType);
-    if (localFeedVideoInfo == null)
-    {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramyiq.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((yir)localObject).a).mVideoPullType) });
-      return;
-    }
-    ((yir)localObject).c(localFeedVideoInfo.mVideoItemList, true);
-    ((GeneralFeedItem)((yir)localObject).a).updateVideoInfo(localFeedVideoInfo);
-    yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramyiq.jdField_a_of_type_JavaLangString, Integer.valueOf(((yir)localObject).a().size()));
-    yjc.a(paramyjc).a((yka)localObject);
   }
   
   public Class acceptEventClass()
   {
-    return yiq.class;
+    return wzr.class;
   }
-  
-  public void b(@NonNull yjc paramyjc, @NonNull yiq paramyiq) {}
 }
 
 

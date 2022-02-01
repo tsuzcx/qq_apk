@@ -1,42 +1,52 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import com.tribe.async.parallel.ParallelStream;
 
 public class yfh
-  extends QQUIEventReceiver<yff, wvw>
+  extends JobSegment<yfw, yfw>
 {
-  public yfh(@NonNull yff paramyff)
-  {
-    super(paramyff);
-  }
+  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
+  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
+  private yfw jdField_a_of_type_Yfw;
   
-  public void a(@NonNull yff paramyff, @NonNull wvw paramwvw)
+  private void a(String paramString)
   {
-    if (paramwvw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new yfp(this), paramString);
+    ylv localylv1;
+    ylv localylv2;
+    if (this.jdField_a_of_type_Yfw.a())
     {
-      yqp.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramwvw.jdField_a_of_type_Int));
-      if ((TextUtils.isEmpty(paramwvw.b)) || (paramwvw.b.equals(paramyff.jdField_a_of_type_JavaLangString))) {
-        break label49;
-      }
+      localylv1 = new ylv(paramString, 2, "", 0);
+      localylv2 = new ylv(paramString, 2, "", 1);
     }
-    label49:
-    do
+    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new yfn(this, 0), paramString).map(new yfn(this, 1), paramString).map(new yfl(this), localylv1).map(new yfl(this), localylv2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new yfn(this, -1), paramString).map(new yfl(this), localylv1))
     {
+      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new yfk(this));
       return;
-      if (paramwvw.jdField_a_of_type_Int != -1) {
-        yff.a(paramyff, paramwvw.jdField_a_of_type_Int);
-      }
-    } while (paramyff.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-    paramyff.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = yff.a(paramyff);
-    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramyff), 5, null, false);
+      localylv1 = new ylv(paramString, 2, "");
+    }
   }
   
-  public Class acceptEventClass()
+  protected void a(JobContext paramJobContext, yfw paramyfw)
   {
-    return wvw.class;
+    if ((paramyfw == null) || (paramyfw.a == null) || (TextUtils.isEmpty(paramyfw.a.feedId)))
+    {
+      yuk.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
+      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
+      return;
+    }
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
+    this.jdField_a_of_type_Yfw = paramyfw;
+    a(paramyfw.a.feedId);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
   }
 }
 

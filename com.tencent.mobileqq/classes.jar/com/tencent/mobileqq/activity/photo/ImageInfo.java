@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akei;
-import aket;
+import akpt;
+import akqe;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
 public class ImageInfo
-  extends akei
+  extends akpt
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageInfo> CREATOR = new aket();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new akqe();
   public long a;
   public int b;
   public long b;

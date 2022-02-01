@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastMusicInfo;
-
-public final class bmab
-  implements Parcelable.Creator<BroadcastMusicInfo>
+public abstract interface bmab
 {
-  public BroadcastMusicInfo a(Parcel paramParcel)
-  {
-    return new BroadcastMusicInfo(paramParcel);
-  }
-  
-  public BroadcastMusicInfo[] a(int paramInt)
-  {
-    return new BroadcastMusicInfo[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,26 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.webbundle.sdk.IWebBundleWebView.OnPageFinishedListener;
-import cooperation.comic.webbundle.WebBundleWebView;
+import android.util.Pair;
 
-public class blci
-  extends WebViewClient
+final class blci
+  implements blck
 {
-  public blci(WebBundleWebView paramWebBundleWebView, IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener) {}
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public Pair<String, String> a(String paramString)
   {
-    super.onPageFinished(paramWebView, paramString);
-    this.jdField_a_of_type_ComTencentWebbundleSdkIWebBundleWebView$OnPageFinishedListener.onPageFinished(this.jdField_a_of_type_CooperationComicWebbundleWebBundleWebView, paramString);
-  }
-  
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    paramString = paramString.split(":", 2);
+    if ((paramString == null) || (paramString.length < 2)) {
+      return null;
+    }
+    return new Pair(paramString[0].trim(), paramString[1].trim());
   }
 }
 

@@ -1,25 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aahh
-  implements View.OnClickListener
+class aahh
+  implements aanj
 {
-  public aahh(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, aagr paramaagr) {}
+  aahh(aahg paramaahg) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aagr.a.poster.registerCertifiedAccountUrl.get()))
+    if (paramBoolean)
     {
-      aaae.a(this.jdField_a_of_type_Aagr.a.poster.registerCertifiedAccountUrl.get());
-      aaxb.b(this.jdField_a_of_type_Aagr.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
+        this.a.setDatas((ArrayList)paramVarArgs[0]);
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d(aahg.a, 4, "get drafts failed");
   }
 }
 

@@ -1,215 +1,420 @@
-class bggj
-  extends bggi
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.honor.TroopHonorManager.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.oidb_0xdc9.oidb_0xdc9.HonorList;
+import tencent.im.troop.honor.troop_honor.HonorChangeGrayTipsReserved;
+import tencent.im.troop.honor.troop_honor.UserHonor;
+
+public class bggj
+  implements Manager
 {
-  private static final int[] a;
-  private static final int[] jdField_b_of_type_ArrayOfInt = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, 63, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-  private static final int[] jdField_c_of_type_ArrayOfInt = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 8, -1, -1, 18, 37, 21, 41, 20, 49, 4, 13, 39, 22, -1, -1, -1, -2, -1, -1, -1, 50, 47, 24, 15, 36, 56, 46, 26, 9, 31, 19, 1, 61, 14, 27, 52, 25, 58, 28, 38, 30, 29, 60, 63, 6, 45, -1, -1, -1, -1, 2, -1, 17, 43, 32, 62, 3, 59, 44, 23, 51, 34, 53, 55, 33, 0, 12, 11, 57, 5, 54, 40, 7, 16, 35, 10, 42, 48, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-  private int jdField_b_of_type_Int;
-  private int jdField_c_of_type_Int;
-  private final int[] d;
+  private bggt jdField_a_of_type_Bggt;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public bggj(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    this.jdField_a_of_type_Bggt = new bggt();
+    ThreadManager.getSubThreadHandler().post(new TroopHonorManager.1(this));
   }
   
-  public bggj(int paramInt, byte[] paramArrayOfByte)
+  public List<bggs> a(String paramString)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    if ((paramInt & 0x8) == 0) {}
-    for (paramArrayOfByte = jdField_a_of_type_ArrayOfInt;; paramArrayOfByte = jdField_c_of_type_ArrayOfInt)
+    ArrayList localArrayList = new ArrayList();
+    paramString = bggn.a(paramString);
+    if ((paramString != null) && (paramString.size() > 0))
     {
-      this.d = paramArrayOfByte;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_c_of_type_Int = 0;
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
+      {
+        Object localObject = (Integer)paramString.next();
+        localObject = this.jdField_a_of_type_Bggt.a(((Integer)localObject).intValue());
+        if (localObject != null) {
+          localArrayList.add(localObject);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public List<bggs> a(String paramString1, String paramString2)
+  {
+    if (!b(paramString1)) {
+      return null;
+    }
+    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(paramString1, paramString2);
+    if (localObject != null) {}
+    for (localObject = a(((TroopMemberInfo)localObject).honorList);; localObject = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { paramString1, paramString2, localObject }));
+      }
+      return localObject;
+    }
+  }
+  
+  public void a(bggt parambggt, boolean paramBoolean)
+  {
+    if (parambggt == null) {}
+    for (;;)
+    {
+      try
+      {
+        QLog.d("TroopHonor.manager", 1, "updateConfig, config == null");
+        return;
+      }
+      finally {}
+      if ((paramBoolean) && (this.jdField_a_of_type_Boolean))
+      {
+        QLog.d("TroopHonor.manager", 1, "had init config");
+      }
+      else
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Bggt = parambggt;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopHonor.manager", 2, String.format("updateConfig, isInit: %s, config: %s", new Object[] { Boolean.valueOf(paramBoolean), parambggt }));
+        }
+        if (!paramBoolean) {
+          ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).notifyUI(80, true, null);
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, bggm parambggm)
+  {
+    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(paramString1, paramString2, new bggk(this, paramString1, paramString2, parambggm));
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    TroopManager localTroopManager;
+    Object localObject;
+    do
+    {
+      return;
+      localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+      TroopMemberInfo localTroopMemberInfo = localTroopManager.b(paramString1, paramString2);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString2))
+      {
+        localObject = localTroopManager.c(paramString1);
+        if ((localObject != null) && (paramString3 != null) && (!paramString3.equals(((TroopInfo)localObject).myHonorList)))
+        {
+          ((TroopInfo)localObject).myHonorList = paramString3;
+          localTroopManager.b((TroopInfo)localObject);
+        }
+      }
+      localObject = localTroopMemberInfo;
+      if (localTroopMemberInfo == null)
+      {
+        localObject = localTroopMemberInfo;
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          localObject = new TroopMemberInfo();
+          ((TroopMemberInfo)localObject).memberuin = paramString2;
+          ((TroopMemberInfo)localObject).troopuin = paramString1;
+        }
+      }
+    } while ((localObject == null) || (paramString3.equals(((TroopMemberInfo)localObject).honorList)));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("updateTroopMemberHonor troopUin: %s, memberUin: %s, newHonorList: %s, oldHonorList: %s", new Object[] { paramString1, paramString2, paramString3, ((TroopMemberInfo)localObject).honorList }));
+    }
+    ((TroopMemberInfo)localObject).honorList = paramString3;
+    if (((TroopMemberInfo)localObject).getStatus() == 1000) {
+      localTroopManager.a(paramString1, paramString2, (TroopMemberInfo)localObject);
+    }
+    localTroopManager.b(paramString1, paramString2, (TroopMemberInfo)localObject);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo = localTroopManager.c(paramString);
+    if (localTroopInfo == null) {
+      QLog.d("TroopHonor.manager", 1, "updateTroopHonorAIOSwitch troopInfo is null");
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopHonor.manager", 2, String.format("updateTroopHonorAIOSwitch, troopUin: %s, isOpen: %s, old: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(localTroopInfo.isTroopHonorOpen()) }));
+      }
+    } while (!(localTroopInfo.isTroopHonorOpen() ^ paramBoolean));
+    if (paramBoolean) {}
+    for (localTroopInfo.dwGroupFlagExt3 &= 0xFDFFFFFF;; localTroopInfo.dwGroupFlagExt3 |= 0x2000000)
+    {
+      localTroopManager.b(localTroopInfo);
       return;
     }
   }
   
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.jdField_b_of_type_Int == 6) {
-      return false;
-    }
-    int i2 = paramInt2 + paramInt1;
-    int j = this.jdField_b_of_type_Int;
-    paramInt2 = this.jdField_c_of_type_Int;
-    int i = 0;
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    int[] arrayOfInt = this.d;
-    int k;
-    int m;
-    int i1;
-    if (paramInt1 < i2)
+    for (;;)
     {
-      k = i;
-      m = paramInt2;
-      i1 = paramInt1;
-      if (j == 0)
+      try
       {
-        int n = paramInt1;
-        for (paramInt1 = paramInt2; n + 4 <= i2; paramInt1 = paramInt2)
+        Object localObject = new troop_honor.HonorChangeGrayTipsReserved();
+        ((troop_honor.HonorChangeGrayTipsReserved)localObject).mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = ((troop_honor.HonorChangeGrayTipsReserved)localObject).user_honor.get();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
         {
-          paramInt2 = arrayOfInt[(paramArrayOfByte[n] & 0xFF)] << 18 | arrayOfInt[(paramArrayOfByte[(n + 1)] & 0xFF)] << 12 | arrayOfInt[(paramArrayOfByte[(n + 2)] & 0xFF)] << 6 | arrayOfInt[(paramArrayOfByte[(n + 3)] & 0xFF)];
-          paramInt1 = paramInt2;
-          if (paramInt2 < 0) {
+          localObject = paramArrayOfByte.iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            paramArrayOfByte = (troop_honor.UserHonor)((Iterator)localObject).next();
+            String str = String.valueOf(paramArrayOfByte.uin.get());
+            if (!paramArrayOfByte.id.has()) {
+              break label224;
+            }
+            paramArrayOfByte = paramArrayOfByte.id.get();
+            a(paramString, str, bggn.a(paramArrayOfByte));
+            if ((!TextUtils.isEmpty(str)) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+              ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).notifyUI(80, true, new Object[] { paramString, str });
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("TroopHonor.push", 2, String.format("updatePushTroopHonor, pushType: %s, troopUin: %s, memberUin: %s, ids: %s", new Object[] { Integer.valueOf(paramInt), paramString, str, paramArrayOfByte }));
+            continue;
+          }
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramString)
+      {
+        paramString.printStackTrace();
+        QLog.d("TroopHonor.manager", 1, "updatePushTroopHonor", paramString);
+      }
+      label224:
+      paramArrayOfByte = null;
+    }
+  }
+  
+  public void a(List<oidb_0xdc9.HonorList> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      QLog.d("TroopHonor.manager", 1, "updateHostHonorList| honorList is empty!");
+    }
+    StringBuilder localStringBuilder;
+    label382:
+    do
+    {
+      return;
+      TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+      localStringBuilder = new StringBuilder();
+      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      if (TextUtils.isEmpty(str1))
+      {
+        QLog.d("TroopHonor.manager", 1, "updateHostHonorList memberUin is empty");
+        return;
+      }
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        paramList = (oidb_0xdc9.HonorList)localIterator.next();
+        String str2 = String.valueOf(paramList.group_id.get());
+        if (paramList.is_gray.has()) {}
+        for (int i = paramList.is_gray.get();; i = 0)
+        {
+          List localList = paramList.id.get();
+          String str3 = bggn.a(localList);
+          localStringBuilder.append(str2).append(": ").append(str3).append("\n");
+          if (TextUtils.isEmpty(str2)) {
+            break label382;
+          }
+          paramList = localTroopManager.c(str2);
+          if (paramList != null)
+          {
+            paramList.troopHonorGrayFlag = i;
+            paramList.myHonorList = str3;
+            a(paramList);
+            if (QLog.isColorLevel()) {
+              QLog.d("TroopHonor.manager", 2, String.format("updateHostHonorList| update troopUin: %s, troopHonorGrayFlag: %s", new Object[] { str2, Integer.valueOf(i) }));
+            }
+          }
+          TroopMemberInfo localTroopMemberInfo = localTroopManager.b(str2, str1);
+          paramList = localTroopMemberInfo;
+          if (localTroopMemberInfo == null)
+          {
+            paramList = localTroopMemberInfo;
+            if (!TextUtils.isEmpty(str3))
+            {
+              paramList = new TroopMemberInfo();
+              paramList.memberuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+              paramList.troopuin = str2;
+            }
+          }
+          if (paramList == null) {
             break;
           }
-          arrayOfByte[(i + 2)] = ((byte)paramInt2);
-          arrayOfByte[(i + 1)] = ((byte)(paramInt2 >> 8));
-          arrayOfByte[i] = ((byte)(paramInt2 >> 16));
-          i += 3;
-          n += 4;
+          paramList.honorList = str3;
+          if (paramList.getStatus() == 1000) {
+            localTroopManager.a(str2, str1, paramList);
+          }
+          boolean bool = a(paramList);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("TroopHonor.manager", 2, String.format("updateHostHonorList| update host memberInfo, troopUin: %s, honorList: %s, result: %s", new Object[] { str2, localList, Boolean.valueOf(bool) }));
+          break;
         }
-        k = i;
-        m = paramInt1;
-        i1 = n;
-        if (n >= i2) {
-          paramInt2 = paramInt1;
+        QLog.d("TroopHonor.manager", 1, String.format("updateHostHonorList| troopUin is empty", new Object[0]));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopHonor.manager", 2, "updateHostHonorList, " + localStringBuilder.toString());
+  }
+  
+  public boolean a(Entity paramEntity)
+  {
+    boolean bool = false;
+    if (paramEntity.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+      if (paramEntity.getStatus() == 1001) {
+        bool = true;
+      }
+    }
+    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return bool;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((this.jdField_a_of_type_Bggt != null) && (this.jdField_a_of_type_Bggt.jdField_a_of_type_Boolean)) {}
+    for (int i = 1;; i = 0)
+    {
+      TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+      if (i == 0)
+      {
+        paramString = localTroopManager.c(paramString);
+        if ((paramString == null) || (paramString.troopHonorGrayFlag != 1)) {
+          break;
         }
       }
+      return true;
+    }
+    return false;
+  }
+  
+  public void b(String paramString1, String paramString2, bggm parambggm)
+  {
+    if ((!b(paramString1)) && (parambggm != null))
+    {
+      parambggm.a(null);
+      return;
+    }
+    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(paramString1, paramString2, new bggl(this, paramString1, paramString2, parambggm));
+  }
+  
+  public boolean b(String paramString)
+  {
+    boolean bool5 = false;
+    boolean bool2;
+    TroopManager localTroopManager;
+    boolean bool1;
+    if ((this.jdField_a_of_type_Bggt != null) && (this.jdField_a_of_type_Bggt.jdField_a_of_type_Boolean))
+    {
+      bool2 = true;
+      localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+      if (bool2) {
+        break label240;
+      }
+      TroopInfo localTroopInfo = localTroopManager.c(paramString);
+      if ((localTroopInfo == null) || (localTroopInfo.troopHonorGrayFlag != 1)) {
+        break label223;
+      }
+      bool1 = true;
     }
     for (;;)
     {
-      if (!paramBoolean)
+      label64:
+      paramString = localTroopManager.c(paramString);
+      boolean bool3;
+      label91:
+      boolean bool6;
+      if ((paramString != null) && ((paramString.dwGroupFlagExt3 & 0x2000000) == 0L))
       {
-        this.jdField_b_of_type_Int = j;
-        this.jdField_c_of_type_Int = paramInt2;
-        this.jdField_a_of_type_Int = i;
-        return true;
-        paramInt2 = arrayOfInt[(paramArrayOfByte[i1] & 0xFF)];
-        switch (j)
-        {
+        bool3 = true;
+        bool6 = bdgb.b();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopHonor.manager", 2, String.format("isSupportTroopHonor, isGlobalOpen: %s, isGrayTroop: %s, isAIOOpen: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool3) }));
         }
-        label292:
-        label577:
-        do
+        paramString = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        if (paramString == null) {
+          break label234;
+        }
+        paramString = paramString.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+        if (paramString == null) {
+          break label234;
+        }
+      }
+      label223:
+      label234:
+      for (boolean bool4 = paramString.troopHonorSwitch;; bool4 = false)
+      {
+        if (!bool2)
         {
-          do
+          bool2 = bool5;
+          if (!bool1) {}
+        }
+        else
+        {
+          bool2 = bool5;
+          if (bool3)
           {
-            paramInt1 = j;
-            paramInt2 = m;
-            i = k;
-            for (;;)
+            bool2 = bool5;
+            if (!bool6)
             {
-              j = paramInt1;
-              paramInt1 = i1 + 1;
-              break;
-              if (paramInt2 >= 0)
-              {
-                paramInt1 = j + 1;
-                i = k;
-              }
-              else
-              {
-                if (paramInt2 == -1) {
-                  break label292;
-                }
-                this.jdField_b_of_type_Int = 6;
-                return false;
-                if (paramInt2 >= 0)
-                {
-                  paramInt2 = m << 6 | paramInt2;
-                  paramInt1 = j + 1;
-                  i = k;
-                }
-                else
-                {
-                  if (paramInt2 == -1) {
-                    break label292;
-                  }
-                  this.jdField_b_of_type_Int = 6;
-                  return false;
-                  if (paramInt2 >= 0)
-                  {
-                    paramInt2 = m << 6 | paramInt2;
-                    paramInt1 = j + 1;
-                    i = k;
-                  }
-                  else if (paramInt2 == -2)
-                  {
-                    arrayOfByte[k] = ((byte)(m >> 4));
-                    paramInt1 = 4;
-                    i = k + 1;
-                    paramInt2 = m;
-                  }
-                  else
-                  {
-                    if (paramInt2 == -1) {
-                      break label292;
-                    }
-                    this.jdField_b_of_type_Int = 6;
-                    return false;
-                    if (paramInt2 >= 0)
-                    {
-                      paramInt2 = m << 6 | paramInt2;
-                      arrayOfByte[(k + 2)] = ((byte)paramInt2);
-                      arrayOfByte[(k + 1)] = ((byte)(paramInt2 >> 8));
-                      arrayOfByte[k] = ((byte)(paramInt2 >> 16));
-                      i = k + 3;
-                      paramInt1 = 0;
-                    }
-                    else if (paramInt2 == -2)
-                    {
-                      arrayOfByte[(k + 1)] = ((byte)(m >> 2));
-                      arrayOfByte[k] = ((byte)(m >> 10));
-                      i = k + 2;
-                      paramInt1 = 5;
-                      paramInt2 = m;
-                    }
-                    else
-                    {
-                      if (paramInt2 == -1) {
-                        break label292;
-                      }
-                      this.jdField_b_of_type_Int = 6;
-                      return false;
-                      if (paramInt2 != -2) {
-                        break label577;
-                      }
-                      paramInt1 = j + 1;
-                      i = k;
-                      paramInt2 = m;
-                    }
-                  }
-                }
+              bool2 = bool5;
+              if (bool4) {
+                bool2 = true;
               }
             }
-          } while (paramInt2 == -1);
-          this.jdField_b_of_type_Int = 6;
-          return false;
-        } while (paramInt2 == -1);
-        this.jdField_b_of_type_Int = 6;
-        return false;
-      }
-      paramInt1 = i;
-      switch (j)
-      {
-      default: 
-        paramInt1 = i;
-      case 0: 
-      case 1: 
-      case 2: 
-      case 3: 
-        for (;;)
-        {
-          this.jdField_b_of_type_Int = j;
-          this.jdField_a_of_type_Int = paramInt1;
-          return true;
-          this.jdField_b_of_type_Int = 6;
-          return false;
-          arrayOfByte[i] = ((byte)(paramInt2 >> 4));
-          paramInt1 = i + 1;
-          continue;
-          k = i + 1;
-          arrayOfByte[i] = ((byte)(paramInt2 >> 10));
-          paramInt1 = k + 1;
-          arrayOfByte[k] = ((byte)(paramInt2 >> 2));
+          }
         }
+        return bool2;
+        bool2 = false;
+        break;
+        bool1 = false;
+        break label64;
+        bool3 = false;
+        break label91;
       }
-      this.jdField_b_of_type_Int = 6;
-      return false;
+      label240:
+      bool1 = false;
     }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
 }
 

@@ -1,86 +1,84 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.avgame.session.AVGameSession;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ngf
-  extends loj
 {
-  public ngf(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  private AVGameSession jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
+  private final Map<String, AVGameSession> jdField_a_of_type_JavaUtilMap = new HashMap(3);
+  
+  public AVGameSession a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    return this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
   }
   
-  public ngf(ngf paramngf)
+  public AVGameSession a(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (paramngf != null)
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Int = paramngf.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = paramngf.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Float = paramngf.jdField_a_of_type_Float;
-      this.jdField_b_of_type_Float = paramngf.jdField_b_of_type_Float;
+      AVGameSession localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      localObject = localAVGameSession;
+      if (localAVGameSession == null)
+      {
+        localAVGameSession = new AVGameSession(paramInt, paramString);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localAVGameSession);
+        if (this.jdField_a_of_type_JavaUtilMap.size() != 1)
+        {
+          localObject = localAVGameSession;
+          if (!paramBoolean) {}
+        }
+        else
+        {
+          a(paramString);
+          localObject = localAVGameSession;
+        }
+      }
     }
+    return localObject;
+  }
+  
+  public AVGameSession a(String paramString)
+  {
+    AVGameSession localAVGameSession = null;
+    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
+      localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    return localAVGameSession;
   }
   
   public void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    paramString = a(paramString);
+    if ((paramString != null) && (!paramString.a))
     {
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramString[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          int k = localObject.indexOf('=');
-          if ((k > 0) && (k < localObject.length()))
-          {
-            String str;
-            float f;
-            try
-            {
-              str = localObject.substring(0, k);
-              f = Float.parseFloat(localObject.substring(k + 1));
-              if (!"MemoryLimit".equalsIgnoreCase(str)) {
-                break label129;
-              }
-              this.jdField_b_of_type_Float = f;
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-              QLog.e("AvGameMachineLevelUtils", 2, localThrowable.toString());
-            }
-            continue;
-            label129:
-            if ("CpuNumLimit".equalsIgnoreCase(str)) {
-              this.jdField_b_of_type_Int = ((int)f);
-            } else if ("CpuFreqLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Float = f;
-            } else if ("APILevelLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Int = ((int)f);
-            }
-          }
-        }
+      if (this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession != null) {
+        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
       }
+      paramString.a = true;
+      this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = paramString;
     }
   }
   
-  public boolean a(@NonNull loj paramloj)
+  public AVGameSession b(String paramString)
   {
-    return (this.jdField_a_of_type_Int <= paramloj.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int <= paramloj.jdField_b_of_type_Int) && (this.jdField_a_of_type_Float <= paramloj.jdField_a_of_type_Float) && (this.jdField_b_of_type_Float <= paramloj.jdField_b_of_type_Float);
+    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
+    {
+      paramString = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if ((paramString != null) && (paramString == this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession))
+      {
+        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
+        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = null;
+      }
+      return paramString;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ngf
  * JD-Core Version:    0.7.0.1
  */

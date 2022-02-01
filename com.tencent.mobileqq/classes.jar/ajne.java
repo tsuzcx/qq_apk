@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class ajne
-  implements DialogInterface.OnClickListener
+public class ajne
+  extends ContentObserver
 {
-  ajne(ajnc paramajnc) {}
+  WeakReference<PhoneContactManagerImp> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajne(Handler paramHandler)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    super(paramHandler);
+  }
+  
+  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
+  {
+    if (this.a != null) {
+      this.a.clear();
     }
-    if (paramInt == 1) {
-      bgzo.a(ajnc.a(this.a), ajnc.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", ajnc.a(this.a).getApp().getString(2131718361), "");
+    if (paramPhoneContactManagerImp != null) {
+      this.a = new WeakReference(paramPhoneContactManagerImp);
+    }
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
+    }
+    if (this.a == null) {}
+    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
+    {
+      if (localPhoneContactManagerImp != null) {
+        localPhoneContactManagerImp.g = true;
+      }
+      return;
     }
   }
 }

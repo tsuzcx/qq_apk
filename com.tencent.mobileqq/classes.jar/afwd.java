@@ -1,55 +1,29 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.aio.AudioSenorManager;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afwd
-  implements SensorEventListener
+class afwd
+  implements View.OnClickListener
 {
-  public afwd(AudioSenorManager paramAudioSenorManager) {}
+  afwd(afwc paramafwc) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (afur.b()) {}
-    label141:
-    label144:
-    for (;;)
-    {
-      return;
-      boolean bool;
-      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
-      {
-        bool = true;
-        label28:
-        QLog.d("AudioPlayer_SenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
-        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
-          continue;
-        }
-        if (!bool) {
-          break label141;
-        }
-      }
-      for (;;)
-      {
-        if (i == AudioSenorManager.a(this.a)) {
-          break label144;
-        }
-        AudioSenorManager.a(this.a, i);
-        if (AudioSenorManager.a(this.a) == null) {
-          break;
-        }
-        AudioSenorManager.a(this.a).a(i);
-        return;
-        bool = false;
-        break label28;
-        i = 0;
-      }
+    this.a.a.jdField_d_of_type_Boolean = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691682);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131369042));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
+    if (this.a.a.jdField_a_of_type_Afwg != null) {
+      this.a.a.jdField_a_of_type_Afwg.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

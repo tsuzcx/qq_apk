@@ -2,7 +2,7 @@ package com.tencent.mobileqq.qipc;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bkzo;
+import bmar;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import mqq.app.MobileQQ;
 
 public class QIPCEnvironmentInit
 {
-  public static final bkzo sCallbac = new bkzo();
+  public static final bmar sCallbac = new bmar();
   
   static void initEnvironment()
   {

@@ -1,28 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 class ahub
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  ahub(ahua paramahua, String paramString) {}
+  ahub(ahtz paramahtz, ahud paramahud, CharSequence paramCharSequence) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((ahua.a(this.jdField_a_of_type_Ahua) == null) || (ahua.a(this.jdField_a_of_type_Ahua).a.a(this.jdField_a_of_type_JavaLangString) == null))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    boolean bool = ahua.a(this.jdField_a_of_type_Ahua).a.a(this.jdField_a_of_type_JavaLangString, ahua.a(this.jdField_a_of_type_Ahua).jdField_d_of_type_Int, ahua.a(this.jdField_a_of_type_Ahua).jdField_d_of_type_JavaUtilList);
-    String str2 = ahua.a(this.jdField_a_of_type_Ahua) + "";
-    if (bool) {}
-    for (String str1 = "1";; str1 = "2")
-    {
-      bcst.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 1, 0, str2, str1, "", "");
-      this.jdField_a_of_type_Ahua.notifyDataSetChanged();
-      break;
-    }
+    this.jdField_a_of_type_Ahud.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Ahud.d.startAnimation(this.jdField_a_of_type_Ahtz.a);
+    this.jdField_a_of_type_Ahud.a.requestLayout();
+    this.jdField_a_of_type_Ahud.g = 0;
+    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Ahud.a.getLayoutParams();
+    paramAnimation.width = -2;
+    paramAnimation.height = -2;
+    this.jdField_a_of_type_Ahud.a.setAnimation(null);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Ahud.g = 0;
+    this.jdField_a_of_type_Ahud.d.startAnimation(this.jdField_a_of_type_Ahtz.b);
   }
 }
 

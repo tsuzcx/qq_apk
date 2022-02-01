@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import adrm;
-import afwx;
-import aiyr;
-import bbyp;
-import bcst;
+import aean;
+import aggr;
+import ajka;
+import bcrg;
+import bdll;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -19,7 +19,7 @@ public final class ChatActivityFacade$8
   public void run()
   {
     String str;
-    if (adrm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
+    if (aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
     {
       str = this.jdField_a_of_type_OrgJsonJSONObject.optString("fromuin");
       if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(str)) {
@@ -28,26 +28,26 @@ public final class ChatActivityFacade$8
       long l = this.jdField_a_of_type_OrgJsonJSONObject.optLong("time");
       QLog.i("ChatActivityFacade.QCircleFeeds", 1, "add new feeds publishTime:" + l);
       if (this.jdField_a_of_type_Boolean) {
-        ((aiyr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_OrgJsonJSONObject.toString(), str);
+        ((ajka)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_OrgJsonJSONObject.toString(), str);
       }
     }
     else
     {
       return;
     }
-    afwx localafwx = (afwx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
+    aggr localaggr = (aggr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
     BeancurdMsg localBeancurdMsg = new BeancurdMsg();
     localBeancurdMsg.buffer = this.jdField_a_of_type_OrgJsonJSONObject.toString();
     localBeancurdMsg.busiid = 12;
     localBeancurdMsg.frienduin = str;
     localBeancurdMsg.isNeedDelHistory = true;
-    localBeancurdMsg.startTime = bbyp.a();
+    localBeancurdMsg.startTime = bcrg.a();
     localBeancurdMsg.validTime = 604800L;
     if (QLog.isColorLevel()) {
       QLog.i("ChatActivityFacade.QCircleFeeds", 2, "addQCircleFeedMessageV2 receiveBeancurd:" + localBeancurdMsg);
     }
-    localafwx.a(localBeancurdMsg);
-    bcst.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800B279", "0X800B279", 0, 0, "", "", "", "");
+    localaggr.a(localBeancurdMsg);
+    bdll.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800B279", "0X800B279", 0, 0, "", "", "", "");
     return;
     label246:
     QLog.e("ChatActivityFacade.QCircleFeeds", 1, "当前获取到的feeds的发表人不匹配，忽略不插入");

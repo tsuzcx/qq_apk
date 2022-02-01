@@ -1,19 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pkp
-  extends RecyclerView.OnScrollListener
+  implements pks
 {
-  public pkp(ReadInJoyDynamicChannelBaseFragment paramReadInJoyDynamicChannelBaseFragment, StaggeredGridLayoutManager paramStaggeredGridLayoutManager) {}
+  public pkp(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a()
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.invalidateSpanAssignments();
-    }
+    ocd.a(null, "CliOper", "", "", "0X8007DB5", "0X8007DB5", 0, 0, "", "", "", ozs.c(ReadInJoySelfFragment.b(this.a)), false);
+    ozs.a(this.a.a.getContext(), 2);
+    ocd.a(null, "CliOper", "", "", "0X80080F1", "0X80080F1", 0, 0, "", "", "", ozs.c(ReadInJoySelfFragment.a(this.a).c()), false);
+    ReadInJoySelfFragment.a(this.a).r();
   }
 }
 

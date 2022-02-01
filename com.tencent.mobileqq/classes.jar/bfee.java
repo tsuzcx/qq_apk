@@ -1,6 +1,17 @@
-public abstract interface bfee
+public class bfee
 {
-  public abstract void a(boolean paramBoolean);
+  public long a;
+  public String a;
+  public String b;
+  
+  public bfee() {}
+  
+  public bfee(long paramLong, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

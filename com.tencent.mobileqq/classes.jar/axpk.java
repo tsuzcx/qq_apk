@@ -1,40 +1,128 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForRichText;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.ArrayList;
+import java.util.HashMap;
+import tencent.im.msg.im_msg_body.RichText;
 
 class axpk
-  implements axkz
+  implements azrg
 {
-  axpk(axop paramaxop) {}
+  private int jdField_a_of_type_Int;
+  private axpf jdField_a_of_type_Axpf;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
+  private int b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private axpk(MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, axpf paramaxpf)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Axpf = paramaxpf;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    if (paramRichText != null)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
       if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
+        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack attachRichText2Msg with " + paramRichText.toString());
       }
-      if (paramBundle.busi_buf.has())
+      if (((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForRichText)) && (((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText == null)) {
+        if (QLog.isColorLevel()) {
+          break label185;
+        }
+      }
+      for (;;)
       {
-        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        this.a.a(paramArrayOfByte);
+        ((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText = paramRichText;
+        if (!(this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt)) {
+          break label272;
+        }
+        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize >= 0L) {
+          break label211;
+        }
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg with fileSize < 0");
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
+        paramRichText = Thread.currentThread().getStackTrace();
+        int j = paramRichText.length;
+        int i = 0;
+        while (i < j)
+        {
+          QLog.d("MultiMsg_TAG", 2, new Object[] { paramRichText[i] });
+          i += 1;
+        }
+        label185:
+        QLog.d("MultiMsg_TAG", 2, "PttUploadCallback.attachRichText2Msg return but mr.richtext is null");
       }
+      ((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize = 1L;
+      for (;;)
+      {
+        label211:
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+        axpf.a(this.jdField_a_of_type_Axpf, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new HashMap(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, true, this.b);
+        return null;
+        label272:
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg but not message for ptt");
+      }
+    }
+    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack attachRichText2Msg with null");
+    return null;
+  }
+  
+  public void a(azrh paramazrh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack updateMsg with " + paramazrh.toString());
+    }
+  }
+  
+  public void b(azrh paramazrh)
+  {
+    if (paramazrh.jdField_a_of_type_Int != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack onSend fail with " + paramazrh.toString());
+      }
+      if ((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt))
+      {
+        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize < 0L)
+        {
+          QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend with fileSize < 0");
+          if (QLog.isColorLevel())
+          {
+            QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
+            paramazrh = Thread.currentThread().getStackTrace();
+            int j = paramazrh.length;
+            int i = 0;
+            while (i < j)
+            {
+              QLog.d("MultiMsg_TAG", 2, new Object[] { paramazrh[i] });
+              i += 1;
+            }
+          }
+        }
+      }
+      else {
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend but no message for ptt");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      axpf.a(this.jdField_a_of_type_Axpf, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack onSend result ok");
   }
 }
 

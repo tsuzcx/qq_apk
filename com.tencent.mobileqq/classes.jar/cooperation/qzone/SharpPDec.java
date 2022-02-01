@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
 import android.content.Context;
-import bmja;
+import bnkd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.startup.step.AVSoUtils;
@@ -140,8 +140,8 @@ public class SharpPDec
     {
       try
       {
-        paramContext = bmja.a(paramContext);
-        if (bmja.f(paramContext))
+        paramContext = bnkd.a(paramContext);
+        if (bnkd.f(paramContext))
         {
           QLog.i("SharpPDec", 1, "cooperation.SharpPDec:QzoneLive process,return 0.");
           i = j;

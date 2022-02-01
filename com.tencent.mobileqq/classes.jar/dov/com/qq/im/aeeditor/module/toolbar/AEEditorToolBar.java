@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bgtn;
-import bnyp;
-import boip;
+import bhtq;
+import bozz;
+import bpkk;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.qq.im.ae.view.AECompoundButton;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public abstract class AEEditorToolBar
   implements View.OnClickListener
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorToolBar.class.getSimpleName();
-  protected boip a;
+  protected bpkk a;
   private List<AECompoundButton> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public AEEditorToolBar(Context paramContext)
@@ -58,12 +58,12 @@ public abstract class AEEditorToolBar
     localAECompoundButton.setOnClickListener(this);
     localAECompoundButton.setBackgroundResource(paramInt3);
     localAECompoundButton.setForegroundResource(paramInt2);
-    localAECompoundButton.setForegroundSize(bgtn.a(32.0F), bgtn.a(32.0F));
+    localAECompoundButton.setForegroundSize(bhtq.a(32.0F), bhtq.a(32.0F));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.width = bgtn.a(56.0F);
-    localLayoutParams.height = bgtn.a(56.0F);
+    localLayoutParams.width = bhtq.a(56.0F);
+    localLayoutParams.height = bhtq.a(56.0F);
     if ((a(paramString)) && (!b(paramString))) {
-      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2131558558, localAECompoundButton, false));
+      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2131558560, localAECompoundButton, false));
     }
     addView(localAECompoundButton, paramInt1, localLayoutParams);
     this.jdField_a_of_type_JavaUtilList.add(paramInt1, localAECompoundButton);
@@ -95,7 +95,7 @@ public abstract class AEEditorToolBar
   
   public void b(String paramString)
   {
-    paramString = findViewById(2131376606);
+    paramString = findViewById(2131376739);
     if (paramString != null) {
       paramString.setVisibility(8);
     }
@@ -103,7 +103,7 @@ public abstract class AEEditorToolBar
   
   protected boolean b(String paramString)
   {
-    return bnyp.a().a("ae_editor_tool_bar_red_dot_" + paramString, false, 0);
+    return bozz.a().a("ae_editor_tool_bar_red_dot_" + paramString, false, 0);
   }
   
   public void c()
@@ -117,9 +117,9 @@ public abstract class AEEditorToolBar
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setToolBarListener(boip paramboip)
+  public void setToolBarListener(bpkk parambpkk)
   {
-    this.jdField_a_of_type_Boip = paramboip;
+    this.jdField_a_of_type_Bpkk = parambpkk;
   }
 }
 

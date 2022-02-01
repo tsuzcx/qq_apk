@@ -1,15 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class atvc
-  implements DialogInterface.OnClickListener
+class atvc
+  implements atve
 {
-  atvc(atve paramatve) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a();
-  }
+  atvc(atuv paramatuv) {}
 }
 
 

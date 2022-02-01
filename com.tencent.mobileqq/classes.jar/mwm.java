@@ -1,12 +1,21 @@
-import com.tencent.common.app.AppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-public abstract class mwm
-  extends anii
+public class mwm
+  implements Animation.AnimationListener
 {
-  protected mwm(AppInterface paramAppInterface)
+  public mwm(StageEffectView.5.1 param1) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramAppInterface);
+    this.a.a.a.a(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

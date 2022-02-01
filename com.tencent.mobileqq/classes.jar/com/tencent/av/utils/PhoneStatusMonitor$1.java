@@ -1,17 +1,17 @@
 package com.tencent.av.utils;
 
 import android.content.Context;
-import msb;
-import msf;
+import msz;
+import mtd;
 
 public class PhoneStatusMonitor$1
   implements Runnable
 {
-  public PhoneStatusMonitor$1(msb parammsb, Context paramContext) {}
+  public PhoneStatusMonitor$1(msz parammsz, Context paramContext) {}
   
   public void run()
   {
-    msf.a(this.a, msb.a(this.this$0), 32);
+    mtd.a(this.a, msz.a(this.this$0), 32);
   }
 }
 

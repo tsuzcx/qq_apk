@@ -1,34 +1,90 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aivk
-  implements ajhv
+  implements aiwf, View.OnClickListener
 {
-  public aivk(TroopView paramTroopView) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  View jdField_a_of_type_AndroidViewView;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt1, int paramInt2)
+  public aivk(Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
   {
-    if (TroopView.a(this.a) != null) {
-      TroopView.a(this.a).a(paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return 58;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560637, null);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
-    if (paramInt1 >= paramInt2) {
-      if (!TroopView.a(this.a))
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(@NonNull aiwh paramaiwh, boolean paramBoolean)
+  {
+    boolean bool = a(paramaiwh);
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
+    }
+    if (paramBoolean) {
+      if (!bool)
       {
-        TroopView.a(this.a, true);
-        if (this.a.a != null) {
-          this.a.a.a(TroopView.a(this.a));
-        }
+        paramaiwh.a(this, new Object[0]);
+        bhju.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!TroopView.a(this.a));
-      TroopView.a(this.a, false);
-    } while (this.a.a == null);
-    this.a.a.a(TroopView.a(this.a));
+    while (!bool) {
+      return;
+    }
+    paramaiwh.a();
+  }
+  
+  public boolean a(@NonNull aiwh paramaiwh)
+  {
+    int i = paramaiwh.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
+    }
+    return i == b();
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 19;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, "click tips, jump to web");
+    }
+    bgpk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aioTip");
+    bhju.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

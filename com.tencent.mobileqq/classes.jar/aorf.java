@@ -1,144 +1,89 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ARClassifyLBSCheckReq;
-import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ARClassifyLBSCheckRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.LBSPoint;
-import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ReqBody;
-import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.RspBody;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class aorf
-  extends anii
 {
-  public aorf(AppInterface paramAppInterface)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    super(paramAppInterface);
+    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
   }
   
-  private static aozm a(oidb_cmd0xb49.LBSPoint paramLBSPoint)
+  public static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
-    int j = 0;
-    aozm localaozm = new aozm();
-    int i;
-    if (paramLBSPoint.int32_lat.has())
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      i = paramLBSPoint.int32_lat.get();
-      localaozm.jdField_a_of_type_Int = i;
-      if (!paramLBSPoint.int32_lon.has()) {
-        break label141;
-      }
-      i = paramLBSPoint.int32_lon.get();
-      label53:
-      localaozm.jdField_b_of_type_Int = i;
-      if (!paramLBSPoint.str_name.has()) {
-        break label146;
-      }
-      str = paramLBSPoint.str_name.get();
-      label77:
-      localaozm.jdField_a_of_type_JavaLangString = str;
-      if (!paramLBSPoint.str_addr.has()) {
-        break label152;
-      }
-    }
-    label141:
-    label146:
-    label152:
-    for (String str = paramLBSPoint.str_addr.get();; str = "")
-    {
-      localaozm.jdField_b_of_type_JavaLangString = str;
-      i = j;
-      if (paramLBSPoint.uint32_dist.has()) {
-        i = paramLBSPoint.uint32_dist.get();
-      }
-      localaozm.c = i;
-      return localaozm;
-      i = 0;
-      break;
-      i = 0;
-      break label53;
-      str = "";
-      break label77;
-    }
-  }
-  
-  public boolean a(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("ARLBSHandler", 1, "requestToCheckLBSLocation. imageId = " + paramString + ", latitude = " + paramInt1 + ", longitude = " + paramInt2);
-    Object localObject = new oidb_cmd0xb49.ReqBody();
-    ((oidb_cmd0xb49.ReqBody)localObject).int32_lat.set(paramInt1);
-    ((oidb_cmd0xb49.ReqBody)localObject).int32_lon.set(paramInt2);
-    oidb_cmd0xb49.ARClassifyLBSCheckReq localARClassifyLBSCheckReq = new oidb_cmd0xb49.ARClassifyLBSCheckReq();
-    localARClassifyLBSCheckReq.str_id.set(paramString);
-    ((oidb_cmd0xb49.ReqBody)localObject).msg_ar_classify_req.set(localARClassifyLBSCheckReq);
-    localObject = makeOIDBPkg("OidbSvc.0xb49", 2889, 10, ((oidb_cmd0xb49.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).addAttribute("imageId", paramString);
-    sendPbReq((ToServiceMsg)localObject);
-    return true;
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return aorg.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    while (!"OidbSvc.0xb49".equals(paramFromServiceMsg.getServiceCmd())) {
       return;
+      paramContext = a(paramContext, paramString).edit();
+      paramContext.putBoolean("show_unread_msg", paramBoolean);
+      paramContext.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool2;
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
+      bool2 = true;
     }
-    aozl localaozl = new aozl();
-    String str = (String)paramToServiceMsg.getAttribute("imageId", "");
-    QLog.i("ARLBSHandler", 1, "req.getAttribute id imageIdSend:" + str);
-    int i;
-    if (paramFromServiceMsg.isSuccess())
+    boolean bool1;
+    do
     {
-      paramToServiceMsg = new oidb_cmd0xb49.RspBody();
-      parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-      paramFromServiceMsg.extraData.getString("str_error_msg");
-      if (paramToServiceMsg.msg_ar_classify_rsp.has())
+      return bool2;
+      paramContext = a(paramContext, paramString1);
+      bool2 = paramContext.getBoolean("show_video_msg", false);
+      bool1 = bool2;
+      if (!bool2)
       {
-        paramFromServiceMsg = (oidb_cmd0xb49.ARClassifyLBSCheckRsp)paramToServiceMsg.msg_ar_classify_rsp.get();
-        if (paramFromServiceMsg.str_id.has()) {}
-        for (paramToServiceMsg = paramFromServiceMsg.str_id.get(); !paramToServiceMsg.equalsIgnoreCase(str); paramToServiceMsg = "")
-        {
-          QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is success. err: image id is not equals. req image id = " + str + ", rsp image id = " + paramToServiceMsg);
-          return;
+        paramContext = paramContext.getString("KeyHiddenChatList", "");
+        String str = paramString2 + "|" + paramInt + ";";
+        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
+          bool2 = true;
         }
-        if (paramFromServiceMsg.uint32_lbs_result.has())
+        bool1 = bool2;
+        if (QLog.isColorLevel())
         {
-          i = paramFromServiceMsg.uint32_lbs_result.get();
-          localaozl.jdField_a_of_type_Int = i;
-          localaozl.jdField_a_of_type_JavaLangString = paramToServiceMsg;
-          if (!paramFromServiceMsg.msg_nearest_point.has()) {
-            break label291;
-          }
-          paramToServiceMsg = a(paramFromServiceMsg.msg_nearest_point);
-          label241:
-          localaozl.jdField_a_of_type_Aozm = paramToServiceMsg;
+          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
+          bool1 = bool2;
         }
       }
-      else
-      {
-        QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is success. retCode = " + localaozl.jdField_a_of_type_Int);
-      }
+      bool2 = bool1;
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
+    return bool1;
+  }
+  
+  public static boolean a(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return true;
     }
-    for (;;)
+    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
+  }
+  
+  public static void b(String paramString, Context paramContext, boolean paramBoolean)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      notifyUI(1, true, localaozl);
       return;
-      i = -1;
-      break;
-      label291:
-      paramToServiceMsg = null;
-      break label241;
-      QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is failed. ");
+      paramContext = a(paramContext, paramString).edit();
+      paramContext.putBoolean("show_video_msg", paramBoolean);
+      paramContext.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
+  }
+  
+  public static boolean b(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return true;
     }
+    return a(paramContext, paramString).getBoolean("show_video_msg", false);
   }
 }
 

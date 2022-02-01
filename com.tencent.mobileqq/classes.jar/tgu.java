@@ -1,16 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1;
+import java.util.Map;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class tgu
-  implements bkij
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "result", "", "uinsFollowStatus", "", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/FollowingMember;", "requestFollowStatusBack", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DataBridgeInvokeHandler$isFollowUin$1$1$1"}, k=3, mv={1, 1, 16})
+public final class tgu
+  implements ppq
 {
-  public tgu(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  public tgu(DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1 param1) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void a(int paramInt, @Nullable Map<Long, ? extends qwb> paramMap)
   {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
-      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    if ((paramMap != null) && (paramMap.get(Long.valueOf(Long.parseLong(this.a.a))) != null))
+    {
+      paramMap = (qwb)paramMap.get(Long.valueOf(Long.parseLong(this.a.a)));
+      if (paramMap != null)
+      {
+        boolean bool = paramMap.a();
+        tgs.a(this.a.this$0, bool, this.a.b);
+      }
     }
   }
 }

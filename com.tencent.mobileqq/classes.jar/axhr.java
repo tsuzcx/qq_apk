@@ -1,93 +1,49 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class axhr
-  implements View.OnClickListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public axhr(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public axhr(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (paramView == ChooseInterestTagActivity.b(this.a)) {
-      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
-      {
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
-        ChooseInterestTagActivity.a(this.a, true, true);
-      }
-    }
-    label394:
-    do
+    switch (paramInt)
     {
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-        break;
-        Object localObject2;
-        if (paramView == this.a.leftView)
-        {
-          bkft.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a))
-          {
-            this.a.finish();
-          }
-          else
-          {
-            localObject2 = this.a.getIntent();
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new Intent();
-            }
-            Collections.reverse(ChooseInterestTagActivity.a(this.a));
-            ((Intent)localObject1).putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
-            ((Intent)localObject1).putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
-            this.a.setResult(-1, (Intent)localObject1);
-            this.a.finish();
-          }
-        }
-        else
-        {
-          if (paramView != this.a.rightViewText) {
-            break label394;
-          }
-          bkft.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a)) {
-            if (ChooseInterestTagActivity.a(this.a).isEmpty())
-            {
-              ChooseInterestTagActivity.a(this.a, anni.a(2131700609));
-            }
-            else
-            {
-              ChooseInterestTagActivity.a(this.a, 0, anni.a(2131700603), 0);
-              Collections.reverse(ChooseInterestTagActivity.a(this.a));
-              localObject1 = new axid(ChooseInterestTagActivity.a(this.a));
-              ((axid)localObject1).a.addAll(ChooseInterestTagActivity.a(this.a));
-              localObject2 = new ArrayList(1);
-              ((List)localObject2).add(localObject1);
-              ChooseInterestTagActivity.a(this.a).a((List)localObject2, 0, 1);
-            }
-          }
+    default: 
+      if (MsgBackupDateFragment.a(this.a)) {
+        if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a))) {
+          this.a.setRightButtonEnable(true);
         }
       }
-    } while (paramView != ChooseInterestTagActivity.a(this.a));
-    ChooseInterestTagActivity.a(this.a).setText(anni.a(2131700626));
-    Object localObject1 = ChooseInterestTagActivity.a(this.a);
-    int j = ChooseInterestTagActivity.a(this.a);
-    int k = ChooseInterestTagActivity.b(this.a);
-    if (ChooseInterestTagActivity.a(this.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      ((axeq)localObject1).a("", j, k, 30, 0, i);
       break;
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      MsgBackupDateFragment.a(this.a, false);
+      MsgBackupDateFragment.a(this.a, 0L);
+      MsgBackupDateFragment.b(this.a, 0L);
+      MsgBackupDateFragment.a(this.a).setVisibility(8);
+      break;
+      MsgBackupDateFragment.a(this.a, true);
+      MsgBackupDateFragment.a(this.a).setVisibility(0);
+      break;
+      if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
+      {
+        this.a.setRightButtonEnable(true);
+      }
+      else
+      {
+        this.a.setRightButtonEnable(false);
+        continue;
+        this.a.setRightButtonEnable(true);
+      }
     }
   }
 }

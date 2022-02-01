@@ -105,7 +105,9 @@ public class FabbyStrokeFilter
   
   public void setStrokeColor(float[] paramArrayOfFloat)
   {
-    addParam(new UniformParam.Float4fParam("strokeColor", paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]));
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 4)) {
+      addParam(new UniformParam.Float4fParam("strokeColor", paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]));
+    }
   }
   
   public void setStrokeGapInPixel(float paramFloat)

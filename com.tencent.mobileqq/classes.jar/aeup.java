@@ -1,27 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-public final class aeup
-  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
+public class aeup
+  extends aeuk
 {
-  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
+  public aeup(JumpActivity paramJumpActivity)
   {
-    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
-    localCardContactInfo.a = paramParcel.readString();
-    localCardContactInfo.c = paramParcel.readString();
-    localCardContactInfo.b = paramParcel.readString();
-    return localCardContactInfo;
+    super(paramJumpActivity);
   }
   
-  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return new ProfileActivity.CardContactInfo[paramInt];
+    this.b.b(paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeup
  * JD-Core Version:    0.7.0.1
  */

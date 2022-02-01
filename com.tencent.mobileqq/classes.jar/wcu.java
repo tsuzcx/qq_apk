@@ -1,17 +1,18 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wcu
-  extends wla
+class wcu
+  implements View.OnClickListener
 {
-  public List<qqstory_struct.GpsMsg> a;
+  wcu(wct paramwct, long paramLong) {}
   
-  public wcu(qqstory_service.RspCheckBlackList paramRspCheckBlackList)
+  public void onClick(View paramView)
   {
-    super(paramRspCheckBlackList.result);
-    this.a = paramRspCheckBlackList.black_gps_list.get();
+    if (wcp.a(this.jdField_a_of_type_Wct.a.a) != null) {
+      wcp.a(this.jdField_a_of_type_Wct.a.a).b(this.jdField_a_of_type_Long);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

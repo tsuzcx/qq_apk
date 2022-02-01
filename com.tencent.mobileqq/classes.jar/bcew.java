@@ -1,211 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.net.URLEncoder;
+import java.util.List;
 
 public class bcew
-  implements bcfg
+  implements bcfq
 {
-  private static String jdField_a_of_type_JavaLangString = "ShortVideoResDownload_";
-  private static ConcurrentHashMap<Integer, bcew> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public int a;
-  private bcez jdField_a_of_type_Bcez;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean;
+  private String jdField_a_of_type_JavaLangString;
+  private List<bcfr> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
   
-  private bcew(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public bcew(ajfc paramajfc, List<bcfr> paramList, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    jdField_a_of_type_JavaLangString += this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bcez = new bcez(jdField_a_of_type_JavaLangString, this);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a()
+  public int a()
   {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
+    return 1;
   }
   
-  private void a(@Nullable bcfh parambcfh)
+  public String a()
   {
-    bnzb.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLoginInternal] - BEGIN -");
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bcey(this, parambcfh));
-    bnzb.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLoginInternal] - END -");
+    return anzj.a(2131704245);
   }
   
-  public static void a(@NonNull QQAppInterface paramQQAppInterface, @Nullable bcfh parambcfh)
+  public List<bcfr> a()
   {
-    bnzb.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - BEGIN -");
-    boolean bool = VideoEnvironment.c(paramQQAppInterface);
-    if (!bool)
-    {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      if (parambcfh != null) {
-        parambcfh.b(-1, -6);
-      }
-      bnzb.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -, supportShortVideo=" + bool);
-      return;
-    }
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
-    {
-      if (parambcfh != null) {
-        parambcfh.b(-1, -1);
-      }
-      bnzb.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -, reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-      return;
-    }
-    paramQQAppInterface = new bcew(paramQQAppInterface, true);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
-    paramQQAppInterface.a(parambcfh);
-    bnzb.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -");
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  private boolean a()
+  public void a(View paramView)
   {
-    boolean bool = bgnt.g(null);
-    if (bool)
-    {
-      VideoEnvironment.a(jdField_a_of_type_JavaLangString, anni.a(2131712855), null);
-      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      return bool;
+    bcni.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
+    new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
+    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
+    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
+    Object localObject2 = "https://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Boolean) {
+      localObject1 = (String)localObject2 + "&show_tab=hot";
     }
-    VideoEnvironment.a(jdField_a_of_type_JavaLangString, anni.a(2131712794), null);
-    return bool;
+    if (QLog.isColorLevel()) {
+      QLog.d("search", 2, "lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
+    }
+    localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("url", (String)localObject1);
+    ((Intent)localObject2).putExtra("uin", ((BaseActivity)paramView.getContext()).app.getCurrentAccountUin());
+    ((Intent)localObject2).putExtra("portraitOnly", true);
+    ((Intent)localObject2).putExtra("hide_more_button", true);
+    ((Intent)localObject2).putExtra("hide_operation_bar", true);
+    ((Intent)localObject2).putExtra("isShowAd", false);
+    paramView.getContext().startActivity((Intent)localObject2);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public String b()
   {
-    return a(paramQQAppInterface, true);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    boolean bool = false;
-    for (;;)
-    {
-      try
-      {
-        if (!VideoEnvironment.c(paramQQAppInterface))
-        {
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          paramBoolean = bool;
-          return paramBoolean;
-        }
-        if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
-        {
-          VideoEnvironment.a("ShortVideoResDownload", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
-          paramBoolean = bool;
-          continue;
-        }
-        paramQQAppInterface = new bcew(paramQQAppInterface, paramBoolean);
-      }
-      finally {}
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
-      bool = paramQQAppInterface.a();
-      paramBoolean = bool;
-      if (!bool)
-      {
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
-        paramBoolean = bool;
-      }
-    }
-  }
-  
-  private static void b(bcew parambcew)
-  {
-    if (parambcew != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(parambcew.jdField_a_of_type_Int));
-    }
-  }
-  
-  private boolean b()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "startDownloadConfigNoLogin");
-    boolean bool = bgnt.g(null);
-    if (bool)
-    {
-      VideoEnvironment.a(jdField_a_of_type_JavaLangString, anni.a(2131712855), null);
-      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bcex(this));
-      return bool;
-    }
-    VideoEnvironment.a(jdField_a_of_type_JavaLangString, anni.a(2131712794), null);
-    return bool;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    if (!VideoEnvironment.c(paramQQAppInterface)) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
-      {
-        VideoEnvironment.a("startDownloadResourceNoLogin", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
-        return false;
-      }
-      paramQQAppInterface = new bcew(paramQQAppInterface, true);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
-      bool2 = paramQQAppInterface.b();
-      bool1 = bool2;
-    } while (bool2);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
-    return bool2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult | result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| uncompress config error=" + paramInt2, null);
-        b(this);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| check config success...", null);
-        this.jdField_a_of_type_Bcez.jdField_a_of_type_Boolean = false;
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bcez);
-        VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| mDownloadFilterSo=false", null);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (bcls.c())
-          {
-            this.jdField_a_of_type_Bcez.b = false;
-            ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bcez);
-          }
-          if (bcls.g())
-          {
-            this.jdField_a_of_type_Bcez.d = false;
-            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bcez);
-          }
-        }
-        this.jdField_a_of_type_Bcez.a();
-        return;
-      }
-      VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| check config error=" + paramInt1, null);
-      b(this);
-      return;
-    }
-    VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
-    b(this);
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

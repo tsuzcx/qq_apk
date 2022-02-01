@@ -1,10 +1,22 @@
-public class otz
+import java.util.ArrayList;
+
+class otz
+  extends ovd
 {
-  public static void a(int paramInt)
+  otz(otv paramotv, int paramInt)
   {
-    if ((paramInt == 41516) || (paramInt == 41522)) {
-      oat.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new otx().a().a(paramInt).a(), false);
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      paramovg.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
     }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramovg.onCommentLoadMore(2, false, new ArrayList(), false, 4);
   }
 }
 

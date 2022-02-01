@@ -1,106 +1,56 @@
+import android.content.Context;
 import android.view.View;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
 
 public class acsn
+  extends acsy
 {
-  public View a;
-  private WeakReference<acso> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<WeakReference<acso>> jdField_a_of_type_JavaUtilList;
-  
-  private int a(WeakReference<acso> paramWeakReference)
+  protected acsn(Context paramContext)
   {
-    int j;
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null))
+    super(paramContext);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    acvc.b("GdtMotiveVideoAd", "185V doAnimation " + this.jdField_a_of_type_Acsl + " targetMode " + paramInt);
+    acsj localacsj;
+    if (this.jdField_a_of_type_Acsl != null)
     {
-      j = -1;
-      return j;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label71;
-      }
-      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localWeakReference != null)
+      localacsj = (acsj)this.jdField_a_of_type_Acsl;
+      a();
+      if (paramInt == 1)
       {
-        j = i;
-        if (localWeakReference.get() == paramWeakReference.get()) {
-          break;
-        }
+        a(localacsj.jdField_a_of_type_AndroidViewView, localacsj.jdField_a_of_type_Int, 0);
+        a(localacsj.f, localacsj.j, localacsj.k);
       }
-      i += 1;
     }
-    label71:
-    return -1;
-  }
-  
-  private acso a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (acso)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    if (a() != null) {
-      a().b();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
-  
-  private boolean b(WeakReference<acso> paramWeakReference)
-  {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
-    while (a(paramWeakReference) != -1) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramWeakReference);
-    return true;
-  }
-  
-  private boolean c(WeakReference<acso> paramWeakReference)
-  {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
-    int i;
-    do
+    else
     {
-      return false;
-      i = a(paramWeakReference);
-    } while (i == -1);
-    this.jdField_a_of_type_JavaUtilList.remove(i);
-    return true;
-  }
-  
-  public void a(WeakReference<acso> paramWeakReference)
-  {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == a()))
-    {
-      acqy.a("GdtVideoCommonView", "MutiVideoManager play return: " + paramWeakReference);
       return;
     }
-    a();
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    b(paramWeakReference);
+    a(localacsj.jdField_a_of_type_AndroidViewView, -localacsj.jdField_a_of_type_Int, 0);
+    a(localacsj.f, -localacsj.j, -localacsj.k);
   }
   
-  public boolean a(WeakReference<acso> paramWeakReference)
+  public void a(View paramView1, View paramView2, View paramView3, View paramView4)
   {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
-    do
+    acsj localacsj = new acsj();
+    localacsj.jdField_a_of_type_AndroidViewView = paramView1;
+    localacsj.f = paramView2;
+    localacsj.g = paramView3;
+    localacsj.jdField_a_of_type_Int = acwn.a(-306, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    localacsj.j = acwn.a(-406, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    localacsj.k = acwn.a(125, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    float f = acwn.a(400, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    if (f > 0.0F)
     {
-      return false;
-      c(paramWeakReference);
-    } while (this.jdField_a_of_type_JavaUtilList.size() <= 0);
-    paramWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.iterator().next();
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-      ((acso)paramWeakReference.get()).a();
+      localacsj.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / acwn.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
+      localacsj.b = localacsj.jdField_a_of_type_Float;
     }
-    return true;
+    localacsj.l = acwn.a(50, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    localacsj.m = acwn.a(-100, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    a(localacsj, paramView4);
+    this.jdField_a_of_type_Acsl = localacsj;
   }
 }
 

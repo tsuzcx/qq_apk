@@ -1,90 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommonBottomData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-class syu
-  extends syj
-  implements View.OnClickListener
+public abstract class syu
+  extends BaseAdapter
+  implements syx
 {
-  private View b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363591);
-  private View c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363605);
-  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131364795);
+  private int jdField_a_of_type_Int;
+  private HashMap<Object, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public syu(sys paramsys, View paramView, BaseData paramBaseData)
+  protected void a(Object paramObject)
   {
-    super(paramView, paramBaseData);
-    this.d.setOnClickListener(this);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localHashMap.put(paramObject, Integer.valueOf(i));
   }
   
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  protected void a(List<?> paramList)
   {
-    int i = 0;
-    paramBaseData1 = (CommonBottomData)paramBaseData2;
-    if ((paramBaseData1.t == 14) && (paramBaseData1.b))
-    {
-      this.d.setVisibility(0);
-      if (!paramBaseData1.a) {
-        break label148;
-      }
-      this.c.setVisibility(0);
-      if (paramBaseData2.t != 14) {
-        break label123;
-      }
-      this.c.getLayoutParams().height = bggq.a(this.c.getContext(), 6.0F);
-      label78:
-      paramBaseData1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-      if (paramBaseData2.t != 14) {
-        break label160;
-      }
-    }
-    for (;;)
-    {
-      paramBaseData1.rightMargin = i;
-      paramBaseData1.leftMargin = i;
-      return;
-      this.d.setVisibility(8);
-      break;
-      label123:
-      this.c.getLayoutParams().height = bggq.a(this.c.getContext(), 10.0F);
-      break label78;
-      label148:
-      this.c.setVisibility(8);
-      break label78;
-      label160:
-      i = bggq.a(this.b.getContext(), 12.0F);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramList.next());
     }
   }
   
-  public void onClick(View paramView)
+  protected void b(Object paramObject)
   {
-    ArticleInfo localArticleInfo;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.t == 14)
-    {
-      localObject = (BaseActivity)this.jdField_a_of_type_AndroidViewView.getContext();
-      if ((localObject != null) && ((localObject instanceof FastWebActivity))) {
-        ((FastWebActivity)localObject).a();
-      }
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
-      i = (int)localArticleInfo.mChannelID;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a.c()) {
-        break label95;
-      }
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramObject);
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
+      return -1L;
     }
-    label95:
-    for (Object localObject = "2";; localObject = "1")
-    {
-      tcc.a(localArticleInfo, "0X800900A", pha.a(localArticleInfo, i, (String)localObject));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    Object localObject = getItem(paramInt);
+    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+  }
+  
+  public final boolean hasStableIds()
+  {
+    return true;
   }
 }
 

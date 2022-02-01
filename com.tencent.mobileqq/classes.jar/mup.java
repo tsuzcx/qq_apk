@@ -1,16 +1,43 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mup
-  extends muq
 {
-  public mup(VideoAppInterface paramVideoAppInterface, long paramLong)
+  public static int a(View paramView, int paramInt)
   {
-    super(paramVideoAppInterface, 64, paramLong);
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return 2147483647;
+    }
+    if ((paramView instanceof Integer)) {
+      return ((Integer)paramView).intValue();
+    }
+    a("getInt", paramInt, paramView);
+    return 2147483647;
   }
   
-  public void a(String paramString, mus parammus)
+  public static String a(View paramView, int paramInt)
   {
-    super.a(paramString, parammus);
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return null;
+    }
+    if ((paramView instanceof String)) {
+      return (String)paramView;
+    }
+    a("getStr", paramInt, paramView);
+    return null;
+  }
+  
+  static void a(String paramString, int paramInt, Object paramObject)
+  {
+    if (AudioHelper.e())
+    {
+      paramString = paramString + anzj.a(2131713529) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
+      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
+      throw new ClassCastException(paramString);
+    }
   }
 }
 

@@ -1,28 +1,57 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import java.util.ArrayList;
 
-class mgw
-  extends BroadcastReceiver
+public class mgw
+  extends lef
 {
-  mgw(mgv parammgv) {}
+  public mgw(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QavDoubleVideoSharpnessMangaer", 2, "onReceive SVIPPayResultReceiver");
+    if (this.a.b()) {
+      return;
     }
-    if (("tencent.video.q2v.SVIP.PAY".equals(paramContext)) && (mgv.a(this.a) != null))
+    this.a.c(paramInt);
+  }
+  
+  protected void a(long paramLong, ArrayList<lcv> paramArrayList, int paramInt1, int paramInt2)
+  {
+    if (this.a.b()) {
+      return;
+    }
+    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (this.a.b()) {}
+    do
     {
-      paramContext = mgv.a(this.a).a();
-      if ((paramContext != null) && (paramContext.jdField_d_of_type_Int == 2)) {
-        mgv.a(this.a).a(Long.valueOf(paramContext.jdField_d_of_type_JavaLangString).longValue(), mgv.a(this.a));
+      do
+      {
+        return;
+      } while (paramLong != this.a.jdField_a_of_type_Long);
+      if (paramBoolean)
+      {
+        this.a.b(paramInt);
+        return;
       }
-      this.a.e();
+    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
+    this.a.a(paramInt);
+  }
+  
+  protected void d()
+  {
+    if (this.a.b()) {}
+    while (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
+    super.d();
+    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
+    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
+    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
   }
 }
 

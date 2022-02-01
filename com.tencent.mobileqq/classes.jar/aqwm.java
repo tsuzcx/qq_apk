@@ -1,19 +1,41 @@
-import android.content.Context;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.RoundImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class aqwm
-  implements aqvn
+  implements URLDrawable.URLDrawableListener
 {
-  aqwm(aqwl paramaqwl) {}
+  aqwm(aqwk paramaqwk, RoundImageView paramRoundImageView, aruk paramaruk, String paramString) {}
   
-  public void a(Context paramContext)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, aqwl.a(this.a), -1L, null, false, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_Aruk.c(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwm
  * JD-Core Version:    0.7.0.1
  */

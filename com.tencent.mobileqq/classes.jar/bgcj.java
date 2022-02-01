@@ -1,25 +1,15 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
-class bgcj
-  implements bgch
+public class bgcj
+  implements DialogInterface.OnClickListener
 {
-  bgcj(bgci parambgci) {}
+  public bgcj(ReciteFragment paramReciteFragment) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgci.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    bgci.a(this.a).sendEmptyMessage(0);
-  }
-  
-  public void c()
-  {
-    if (bgci.a(this.a) != null) {
-      bgci.a(this.a).b();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

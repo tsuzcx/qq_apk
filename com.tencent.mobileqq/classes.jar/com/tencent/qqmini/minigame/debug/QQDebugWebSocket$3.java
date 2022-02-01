@@ -1,8 +1,8 @@
 package com.tencent.qqmini.minigame.debug;
 
-import com.tencent.mobileqq.triton.sdk.debug.GameDebugInfo;
-import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.DebugInfo;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class QQDebugWebSocket$3
   implements Runnable
@@ -12,22 +12,22 @@ class QQDebugWebSocket$3
   public void run()
   {
     Object localObject1 = QQDebugWebSocket.access$400(this.this$0);
-    if ((localObject1 == null) || (!((MiniGameInfo)localObject1).needOpenDebugSocket())) {
+    if ((localObject1 == null) || (((MiniAppInfo)localObject1).debugInfo == null) || (!((MiniAppInfo)localObject1).debugInfo.valid())) {
       return;
     }
     QQDebugWebSocket.access$202(this.this$0, this.val$listener);
     long l = QQDebugWebSocket.access$500(this.this$0);
-    Object localObject2 = new StringBuilder().append(((MiniGameInfo)localObject1).debugInfo.wsUrl).append("?roomId=");
+    Object localObject2 = new StringBuilder().append(((MiniAppInfo)localObject1).debugInfo.wsUrl).append("?roomId=");
     if ((QQDebugWebSocket.access$400(this.this$0) != null) && (QQDebugWebSocket.access$400(this.this$0).debugInfo != null))
     {
       localObject1 = QQDebugWebSocket.access$400(this.this$0).debugInfo.roomId;
       localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append("&appId=");
       if (QQDebugWebSocket.access$400(this.this$0) == null) {
-        break label256;
+        break label266;
       }
     }
-    label256:
-    for (localObject1 = QQDebugWebSocket.access$400(this.this$0).gameId;; localObject1 = "")
+    label266:
+    for (localObject1 = QQDebugWebSocket.access$400(this.this$0).appId;; localObject1 = "")
     {
       localObject2 = (String)localObject1 + "&uin=" + l;
       localObject1 = localObject2;

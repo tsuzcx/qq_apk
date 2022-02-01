@@ -1,205 +1,238 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewStub;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import cooperation.qzone.widget.ExtendButton;
 
 public class bjcj
-  extends MSFServlet
+  extends ReportDialog
 {
-  protected AppRuntime a;
+  private TextView a;
   
-  private void a(Intent paramIntent, Bundle paramBundle)
+  public bjcj(Context paramContext, Intent paramIntent)
   {
-    paramBundle = paramBundle.getByteArray("wup_buffer");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "SharpSvr.c2s");
-    localToServiceMsg.setNeedCallback(false);
-    localToServiceMsg.putWupBuffer(paramBundle);
-    sendToMSF(paramIntent, localToServiceMsg);
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    bjch.a().a(paramString, paramInt);
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    bjch.a().b(paramArrayOfByte);
-  }
-  
-  private void b(Intent paramIntent, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getByteArray("wup_buffer");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "SharpSvr.s2cack");
-    localToServiceMsg.setNeedCallback(false);
-    localToServiceMsg.putWupBuffer(paramBundle);
-    sendToMSF(paramIntent, localToServiceMsg);
-  }
-  
-  private void b(byte[] paramArrayOfByte)
-  {
-    bjch.a().c(paramArrayOfByte);
-  }
-  
-  private void c(Intent paramIntent, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getByteArray("wup_buffer");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "MultiVideo.c2s");
-    localToServiceMsg.setNeedCallback(false);
-    localToServiceMsg.putWupBuffer(paramBundle);
-    sendToMSF(paramIntent, localToServiceMsg);
-  }
-  
-  private void c(byte[] paramArrayOfByte)
-  {
-    bjch.a().d(paramArrayOfByte);
-  }
-  
-  private void d(Intent paramIntent, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getByteArray("wup_buffer");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "MultiVideo.s2cack");
-    localToServiceMsg.setNeedCallback(false);
-    localToServiceMsg.putWupBuffer(paramBundle);
-    sendToMSF(paramIntent, localToServiceMsg);
-  }
-  
-  private void d(byte[] paramArrayOfByte)
-  {
-    bjch.a().e(paramArrayOfByte);
-  }
-  
-  private void e(Intent paramIntent, Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("app_id");
-    paramBundle = MsfMsgUtil.getGatewayIpMsg(null);
-    paramBundle.setTimeout(30000L);
-    paramBundle.setNeedCallback(true);
-    paramBundle.setNeedRemindSlowNetwork(false);
-    paramBundle.setAppId(i);
-    sendToMSF(paramIntent, paramBundle);
-  }
-  
-  private void e(byte[] paramArrayOfByte)
-  {
-    bjch.a().f(paramArrayOfByte);
-  }
-  
-  private void f(Intent paramIntent, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getByteArray("wup_buffer");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "VideoCCSvc.Adaptation");
-    localToServiceMsg.putWupBuffer(paramBundle);
-    localToServiceMsg.setTimeout(10000L);
-    sendToMSF(paramIntent, localToServiceMsg);
-  }
-  
-  private void g(Intent paramIntent, Bundle paramBundle)
-  {
-    byte[] arrayOfByte = paramBundle.getByteArray("wup_buffer");
-    paramBundle = new ToServiceMsg(null, String.valueOf(paramBundle.getLong("uin")), "CliLogSvc.UploadReq");
-    paramBundle.putWupBuffer(arrayOfByte);
-    paramBundle.setNeedCallback(false);
-    sendToMSF(paramIntent, paramBundle);
-  }
-  
-  public String[] getPreferSSOCommands()
-  {
-    return new String[] { "SharpSvr.c2sack", "SharpSvr.s2c", "MultiVideo.c2sack", "MultiVideo.s2c" };
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.a = getAppRuntime();
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg == null) {}
-    do
+    super(paramContext, 2131755827);
+    String str2 = paramIntent.getStringExtra("qzone_plugin_activity_name");
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131562572, null);
+    Object localObject2 = getWindow();
+    ((Window)localObject2).setWindowAnimations(2131755822);
+    ((Window)localObject2).setContentView((View)localObject1);
+    Object localObject3 = ((Window)localObject2).getAttributes();
+    ((WindowManager.LayoutParams)localObject3).width = -1;
+    ((WindowManager.LayoutParams)localObject3).height = -1;
+    ((WindowManager.LayoutParams)localObject3).gravity = 48;
+    ((WindowManager.LayoutParams)localObject3).y = ((WindowManager.LayoutParams)localObject3).y;
+    ((Window)localObject2).setAttributes((WindowManager.LayoutParams)localObject3);
+    setCanceledOnTouchOutside(false);
+    this.a = ((TextView)((View)localObject1).findViewById(2131371450));
+    localObject2 = paramIntent.getStringExtra("leftViewText");
+    if (localObject2 == null) {
+      localObject2 = paramContext.getString(2131690559);
+    }
+    for (;;)
     {
-      return;
-      paramIntent = paramFromServiceMsg.getServiceCmd();
-      bjcq.c("VideoChannelServlet", String.format("onReceive cmd=%s", new Object[] { paramIntent }));
-      if ("SharpSvr.s2c".equalsIgnoreCase(paramIntent))
+      if ("com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity".equals(str2))
       {
-        a(paramFromServiceMsg.getWupBuffer());
-        return;
+        localObject3 = ((ViewStub)((View)localObject1).findViewById(2131378338)).inflate();
+        localObject1 = paramIntent.getStringExtra("key_left_tab_title");
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label917;
+        }
+        localObject1 = paramContext.getString(2131716312);
       }
-      if ("SharpSvr.c2sack".equalsIgnoreCase(paramIntent))
+      label917:
+      for (;;)
       {
-        b(paramFromServiceMsg.getWupBuffer());
-        return;
+        paramIntent = paramIntent.getStringExtra("key_rihgt_tab_title");
+        if (TextUtils.isEmpty(paramIntent)) {}
+        for (paramContext = paramContext.getString(2131716393);; paramContext = paramIntent)
+        {
+          paramIntent = (ExtendButton)((View)localObject3).findViewById(2131363747);
+          Object localObject4 = (ExtendButton)((View)localObject3).findViewById(2131363748);
+          paramIntent.setText((CharSequence)localObject1);
+          ((ExtendButton)localObject4).setText(paramContext);
+          ((ExtendButton)localObject4).setSelected(false);
+          paramIntent.setSelected(true);
+          paramContext = (Context)localObject3;
+          ((TextView)paramContext.findViewById(2131369042)).setText((CharSequence)localObject2);
+          ((ProgressBar)((ViewStub)paramContext.findViewById(2131369102)).inflate()).setVisibility(0);
+          return;
+          localObject4 = ((ViewStub)((View)localObject1).findViewById(2131364870)).inflate();
+          TextView localTextView = (TextView)((ViewStub)((View)localObject4).findViewById(2131369088)).inflate();
+          String str1 = "";
+          long l;
+          if ("com.qzone.homepage.ui.activity.QZoneUserHomeActivity".equals(str2))
+          {
+            l = paramIntent.getLongExtra("qqid", 0L);
+            paramContext = paramIntent.getStringExtra("qzone_uin");
+            if (String.valueOf(Long.valueOf(l)).equals(paramContext))
+            {
+              localObject1 = anzj.a(2131711083);
+              localObject3 = localObject2;
+            }
+          }
+          for (;;)
+          {
+            localTextView.setText((CharSequence)localObject1);
+            paramContext = (Context)localObject4;
+            localObject2 = localObject3;
+            break;
+            localObject1 = "";
+            localObject3 = localObject2;
+            continue;
+            if ("com.qzone.feed.ui.activity.QZoneFriendFeedActivity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716539);
+              localObject3 = paramContext.getString(2131716463);
+            }
+            else if ("com.qzone.cover.ui.activity.QzoneCoverPhotoWallActivity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716437);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.cover.ui.activity.QZoneCoverStoreActivity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716438);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.detail.ui.activity.QzoneDetailActivity".equals(str2))
+            {
+              localObject1 = str1;
+              localObject3 = localObject2;
+              if (paramIntent.getBooleanExtra("qzone.sourceFrom", false))
+              {
+                localObject3 = paramContext.getString(2131698386);
+                localObject1 = str1;
+              }
+            }
+            else if ("com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity".equals(str2))
+            {
+              str1 = paramContext.getString(2131716915);
+              int i = paramIntent.getIntExtra("QZoneUploadPhotoActivity.key_state_type_src", -1);
+              paramIntent = paramIntent.getAction();
+              localObject1 = str1;
+              localObject3 = localObject2;
+              if (!TextUtils.isEmpty(paramIntent))
+              {
+                if (paramIntent.equals("com.tencent.intent.QZONE_RESHIP_FROM_QUN_AIO_TO_QUN")) {
+                  i = 5;
+                }
+                for (;;)
+                {
+                  switch (i)
+                  {
+                  case 9: 
+                  case 10: 
+                  default: 
+                    localObject1 = str1;
+                    localObject3 = localObject2;
+                    break;
+                  case 3: 
+                  case 4: 
+                  case 5: 
+                  case 6: 
+                  case 7: 
+                  case 8: 
+                  case 11: 
+                    localObject1 = paramContext.getString(2131716830);
+                    localObject3 = localObject2;
+                    break;
+                    if (paramIntent.equals("com.tencent.intent.QZONE_QUOTE_FROM_AIO")) {
+                      i = 11;
+                    }
+                    break;
+                  }
+                }
+              }
+            }
+            else if ("com.qzone.lbsv2.ui.QZoneMoodSelectLocation".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716855);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.setting.QZoneSettingManager".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716864);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity".equals(str2))
+            {
+              l = paramIntent.getLongExtra("key_album_face_uin", 0L);
+              paramContext = paramIntent.getStringExtra("key_alubm_name");
+              paramIntent = paramIntent.getStringExtra("key_album_face_nickname");
+              if ((Long.valueOf(l).longValue() != 0L) && (!TextUtils.isEmpty(paramIntent)))
+              {
+                localObject1 = paramIntent + anzj.a(2131711082);
+                localObject3 = localObject2;
+              }
+              else
+              {
+                localObject1 = paramContext;
+                localObject3 = localObject2;
+                if (paramContext == null)
+                {
+                  localObject1 = "";
+                  localObject3 = localObject2;
+                }
+              }
+            }
+            else if ("com.qzone.publish.ui.activity.QZonePublishMoodRealActivity".equals(str2))
+            {
+              localObject1 = paramIntent.getStringExtra("key_title");
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.publish.ui.activity.QZonePublishQueueAcitvity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716782);
+              localObject3 = localObject2;
+            }
+            else
+            {
+              localObject1 = str1;
+              localObject3 = localObject2;
+              if ("com.qzone.permissionsetting.ui.activities.QZoneSinglePermissionSettingActivity".equals(str2))
+              {
+                localObject1 = paramContext.getString(2131716671);
+                localObject3 = localObject2;
+              }
+            }
+          }
+        }
       }
-      if ("MultiVideo.s2c".equalsIgnoreCase(paramIntent))
-      {
-        c(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      if ("MultiVideo.c2sack".equalsIgnoreCase(paramIntent))
-      {
-        d(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      if (!"cmd_getGatewayIp".equalsIgnoreCase(paramIntent)) {
-        break;
-      }
-      paramIntent = (String)paramFromServiceMsg.getAttribute("cmd_getGatewayIp");
-    } while (paramIntent == null);
-    bjcq.c("VideoChannelServlet", String.format(">>> ip=%s", new Object[] { paramIntent }));
-    a(paramIntent, 0);
-    return;
-    if ("VideoCCSvc.Adaptation".equalsIgnoreCase(paramIntent))
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    try
     {
-      if (paramFromServiceMsg.isSuccess())
-      {
-        e(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      bjcq.a("VideoChannelServlet", String.format("onReceive get config fail, resultCode=%s", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
+      super.dismiss();
       return;
     }
-    bjcq.b("VideoChannelServlet", "onReceive handle not process cmd.");
+    catch (Exception localException) {}
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void setOnDismissListener(@Nullable DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    paramPacket = paramIntent.getExtras();
-    if (paramPacket == null) {
-      return;
+    if (paramOnDismissListener == null) {
+      super.setOnDismissListener(paramOnDismissListener);
     }
-    int i = paramPacket.getInt("req_type", -1);
-    bjcq.c("VideoChannelServlet", String.format("onSend reqType=%s", new Object[] { Integer.valueOf(i) }));
-    switch (i)
-    {
-    default: 
-      bjcq.b("VideoChannelServlet", "onSend handle not define reqType.");
-      return;
-    case 1: 
-      a(paramIntent, paramPacket);
-      return;
-    case 2: 
-      b(paramIntent, paramPacket);
-      return;
-    case 3: 
-      c(paramIntent, paramPacket);
-      return;
-    case 4: 
-      d(paramIntent, paramPacket);
-      return;
-    case 5: 
-      e(paramIntent, paramPacket);
-      return;
-    case 6: 
-      f(paramIntent, paramPacket);
-      return;
-    }
-    g(paramIntent, paramPacket);
+    super.setOnDismissListener(new bjck(paramOnDismissListener));
   }
 }
 

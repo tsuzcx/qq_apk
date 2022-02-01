@@ -1,37 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
 
 class mpx
-  extends mbx
+  implements mrb
 {
-  mpx(mpw parammpw) {}
+  mpx(mpv parammpv) {}
   
-  protected void b(mcb parammcb)
+  public void a(mra parammra)
   {
-    if (parammcb.jdField_b_of_type_Boolean) {
+    mpv localmpv = this.a;
+    if (parammra.b == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localmpv.a(bool, parammra.g, parammra.c);
+      this.a.a = null;
+      mpv.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
       return;
     }
-    parammcb.jdField_b_of_type_Boolean = this.a.a("onAVActivityPreBackPressed");
-    if (parammcb.jdField_b_of_type_Boolean) {
-      parammcb.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammcb.jdField_b_of_type_Boolean + "]");
-  }
-  
-  protected void e(String paramString)
-  {
-    if (this.a.a() != null)
-    {
-      QLog.w(this.a.i, 1, "onActivityOnResume, peerUin[" + paramString + "], mStarter[" + this.a.a.jdField_b_of_type_Boolean + "], mPlayUin[" + this.a.a.jdField_b_of_type_JavaLangString + "], mStartUin[" + this.a.a.a + "]");
-      if (((this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.jdField_b_of_type_JavaLangString, paramString))) || ((!this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.a, paramString)))) {
-        this.a.c();
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.a();
   }
 }
 

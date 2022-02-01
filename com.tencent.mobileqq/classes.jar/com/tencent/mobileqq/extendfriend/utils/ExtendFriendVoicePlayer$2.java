@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
-import asmt;
-import asmv;
-import bdtd;
+import atcs;
+import atcu;
+import berv;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
@@ -13,26 +13,26 @@ import java.io.File;
 public class ExtendFriendVoicePlayer$2
   implements Runnable
 {
-  public ExtendFriendVoicePlayer$2(asmt paramasmt, String paramString) {}
+  public ExtendFriendVoicePlayer$2(atcs paramatcs, String paramString) {}
   
   public void run()
   {
-    if ((asmt.a(this.this$0) != null) && (asmt.a(this.this$0).isFinishing()))
+    if ((atcs.a(this.this$0) != null) && (atcs.a(this.this$0).isFinishing()))
     {
       QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file not exist download on executeOnFileThread but activity isFinishing");
       return;
     }
     QLog.i("ExtendFriendVoicePlayer", 2, "playLocal file not exist executeOnFileThread");
-    String str = bdtd.a(asmt.a(this.this$0).app.getCurrentAccountUin(), MD5.toMD5(this.a), 23, null);
+    String str = berv.a(atcs.a(this.this$0).app.getCurrentAccountUin(), MD5.toMD5(this.a), 23, null);
     File localFile = new File(str);
-    int i = HttpDownloadUtil.a(asmt.a(this.this$0).app, this.a, localFile);
+    int i = HttpDownloadUtil.a(atcs.a(this.this$0).app, this.a, localFile);
     if (i == 0)
     {
-      asmt.a(this.this$0).a(localFile);
+      atcs.a(this.this$0).a(localFile);
       this.this$0.a(str);
       return;
     }
-    asmt.a(this.this$0).f(i);
+    atcs.a(this.this$0).f(i);
   }
 }
 

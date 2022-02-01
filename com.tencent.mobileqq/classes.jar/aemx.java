@@ -1,19 +1,7 @@
-import com.tencent.biz.qqcircle.list.bizblocks.QCircleObserver;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
-
 public class aemx
-  extends QCircleObserver
 {
-  public aemx(Leba paramLeba) {}
-  
-  public void onUpdateRedPoint(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.lebatab.leba", 2, "QCircleObserver onUpdateRedPoint " + paramInt);
-    }
-    Leba.f(this.a);
-  }
+  public boolean a;
+  public boolean b;
 }
 
 

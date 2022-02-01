@@ -1,15 +1,9 @@
-public class awfc
+class awfc
+  implements awef
 {
-  public int a;
-  public long a;
-  public ahcu a;
-  public awfa a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
+  awfc(awfa paramawfa) {}
   
-  public awfc(awew paramawew) {}
+  public void a(int paramInt, String paramString) {}
 }
 
 

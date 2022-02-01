@@ -1,18 +1,21 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class ajxz
-  implements View.OnTouchListener
+public class ajxz
+  extends aogx
 {
-  ajxz(ajxt paramajxt) {}
+  public ajxz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
+    }
+    ashd localashd = (ashd)EmoticonGroupStoreFragment.a(this.a).getManager(103);
+    if (localashd != null) {
+      localashd.b();
+    }
   }
 }
 

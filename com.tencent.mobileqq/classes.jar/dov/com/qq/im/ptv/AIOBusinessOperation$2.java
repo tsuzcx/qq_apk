@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bowj;
+import bpye;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import mqq.os.MqqHandler;
@@ -16,15 +16,15 @@ public final class AIOBusinessOperation$2
   
   public void run()
   {
-    int i = bowj.a(this.jdField_a_of_type_JavaLangString);
+    int i = bpye.a(this.jdField_a_of_type_JavaLangString);
     if (i == 0)
     {
-      bowj.a(this.jdField_a_of_type_AndroidWidgetImageView.getResources(), this.jdField_a_of_type_JavaLangString);
-      i = bowj.a(this.jdField_a_of_type_JavaLangString);
+      bpye.a(this.jdField_a_of_type_AndroidWidgetImageView.getResources(), this.jdField_a_of_type_JavaLangString);
+      i = bpye.a(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130844449);
+      Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130844463);
       boolean bool;
       if ((localObject instanceof BitmapDrawable))
       {
@@ -35,7 +35,7 @@ public final class AIOBusinessOperation$2
       {
         if (localObject != null)
         {
-          localObject = bowj.a((Bitmap)localObject, i);
+          localObject = bpye.a((Bitmap)localObject, i);
           ThreadManager.getUIHandler().post(new AIOBusinessOperation.2.1(this, (Bitmap)localObject, bool));
         }
         return;

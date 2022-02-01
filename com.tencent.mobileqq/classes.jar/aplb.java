@@ -1,22 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
 public class aplb
-  implements aplg
+  implements View.OnTouchListener
 {
-  public EIPCResult a(Bundle paramBundle)
+  public aplb(ScanningSurfaceView paramScanningSurfaceView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramBundle = apkf.a();
-    if (paramBundle == null)
+    switch (paramMotionEvent.getAction())
     {
-      QLog.e("ArkApp.GetUinHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("Uin", paramBundle.getCurrentAccountUin());
-    return EIPCResult.createResult(0, localBundle);
+    for (;;)
+    {
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
+    }
   }
 }
 

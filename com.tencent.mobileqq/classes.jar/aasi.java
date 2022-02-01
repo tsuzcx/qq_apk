@@ -1,47 +1,36 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class aasi
+class aasi
+  implements aatl
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
+  aasi(aasf paramaasf, String paramString) {}
   
-  public aasi(JSONObject paramJSONObject, int paramInt)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("goodsWord");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("gifUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("pngUrl");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("packageID");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("quantity");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("playRule");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("selectedWording");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("giftValue");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("giftID");
-    this.f = paramJSONObject.optInt("giftPrice");
-    this.jdField_c_of_type_Boolean = paramJSONObject.optBoolean("isFreeGift");
-    this.h = paramJSONObject.optInt("addTime");
-    this.i = paramJSONObject.optInt("freegiftlimit");
-    this.g = paramInt;
-    this.j = paramJSONObject.optInt("svip");
-    this.k = paramJSONObject.optInt("year_svip");
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("svip_logo");
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        localJSONObject.put("retCode", 0);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errMsg", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString1)) {
+          localJSONObject.put("file", paramString1);
+        }
+        this.jdField_a_of_type_Aasf.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e(this.jdField_a_of_type_Aasf.TAG, 1, paramString2, paramString1);
+      }
+      localJSONObject.put("retCode", 1);
+    }
   }
 }
 

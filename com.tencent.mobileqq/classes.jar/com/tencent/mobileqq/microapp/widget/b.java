@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bgsp;
+import bhsr;
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
 import java.io.File;
@@ -22,7 +22,7 @@ public final class b
   
   private String a(String paramString)
   {
-    if (bgsp.a(paramString)) {}
+    if (bhsr.a(paramString)) {}
     int i;
     do
     {
@@ -62,7 +62,7 @@ public final class b
   
   public void a(File paramFile)
   {
-    if ((paramFile != null) && (!bgsp.a(paramFile.toString())))
+    if ((paramFile != null) && (!bhsr.a(paramFile.toString())))
     {
       File localFile = new File(com.tencent.mobileqq.microapp.appbrand.b.b.a().a(""));
       if (!localFile.exists()) {

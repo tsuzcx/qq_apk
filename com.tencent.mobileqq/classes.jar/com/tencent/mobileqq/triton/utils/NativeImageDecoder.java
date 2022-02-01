@@ -5,15 +5,44 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
-import com.tencent.mobileqq.triton.engine.TTLog;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
 
+@TritonKeep
 public class NativeImageDecoder
 {
-  private static int a = 1024;
-  private static int b = 1024;
+  private static int MAX_IMAGE_HEIGHT = 1024;
+  private static int MAX_IMAGE_WIDTH = 1024;
+  private static final String TAG = "NativeImageDecoder";
   
-  public static Bitmap a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  @TritonKeep
+  public static Bitmap decodeGifBuffer(byte[] paramArrayOfByte, int paramInt)
+  {
+    Bitmap localBitmap2 = decodeImageBuffer(paramArrayOfByte, paramInt);
+    if ((localBitmap2 != null) && (!localBitmap2.isRecycled()))
+    {
+      if (localBitmap2.getConfig() != Bitmap.Config.ARGB_8888)
+      {
+        Bitmap localBitmap1 = localBitmap2.copy(Bitmap.Config.ARGB_8888, true);
+        paramArrayOfByte = localBitmap1;
+        if (localBitmap1 == null)
+        {
+          paramArrayOfByte = Bitmap.createBitmap(localBitmap2.getWidth(), localBitmap2.getHeight(), Bitmap.Config.ARGB_8888);
+          new Canvas(paramArrayOfByte).drawBitmap(localBitmap2, 0.0F, 0.0F, null);
+        }
+        return paramArrayOfByte;
+      }
+      return localBitmap2;
+    }
+    return null;
+  }
+  
+  @TritonKeep
+  public static Bitmap decodeImageBuffer(byte[] paramArrayOfByte, int paramInt)
+  {
+    return decodeImageBuffer(paramArrayOfByte, paramInt, MAX_IMAGE_WIDTH * 2, MAX_IMAGE_HEIGHT * 2);
+  }
+  
+  public static Bitmap decodeImageBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = 1;
     try
@@ -31,46 +60,16 @@ public class NativeImageDecoder
       paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramInt1);
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      TTLog.b("NativeImageDecoder", "decodeJpgBuffer failed:" + paramArrayOfByte.getMessage());
-      return null;
-    }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      TTLog.b("NativeImageDecoder", "decodeJpgBuffer oom:" + paramArrayOfByte.getMessage());
+      Logger.e("NativeImageDecoder", "decodeJpgBuffer oom:" + paramArrayOfByte.getMessage());
+      return null;
     }
-    return null;
-  }
-  
-  @TTNativeCall
-  public static Bitmap decodeGifBuffer(byte[] paramArrayOfByte, int paramInt)
-  {
-    Bitmap localBitmap = decodeImageBuffer(paramArrayOfByte, paramInt);
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    catch (Exception paramArrayOfByte)
     {
-      paramArrayOfByte = localBitmap.getConfig();
-      Object localObject = Bitmap.Config.ARGB_8888;
-      if (paramArrayOfByte != localObject)
-      {
-        localObject = localBitmap.copy((Bitmap.Config)localObject, true);
-        paramArrayOfByte = (byte[])localObject;
-        if (localObject == null)
-        {
-          paramArrayOfByte = Bitmap.createBitmap(localBitmap.getWidth(), localBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-          new Canvas(paramArrayOfByte).drawBitmap(localBitmap, 0.0F, 0.0F, null);
-        }
-        return paramArrayOfByte;
-      }
-      return localBitmap;
+      Logger.e("NativeImageDecoder", "decodeJpgBuffer failed:" + paramArrayOfByte.getMessage());
     }
     return null;
-  }
-  
-  @TTNativeCall
-  public static Bitmap decodeImageBuffer(byte[] paramArrayOfByte, int paramInt)
-  {
-    return a(paramArrayOfByte, paramInt, a * 2, b * 2);
   }
 }
 

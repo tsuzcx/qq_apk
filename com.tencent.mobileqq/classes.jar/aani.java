@@ -1,21 +1,12 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
-
-public class aani
-  implements ISuperPlayer.OnCompletionListener
+class aani
+  implements aanj
 {
-  public aani(TribeVideoPlugin paramTribeVideoPlugin, aanp paramaanp) {}
+  aani(aanh paramaanh) {}
   
-  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, aanp.a(this.jdField_a_of_type_Aanp));
-      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramISuperPlayer.obj = aanp.a(this.jdField_a_of_type_Aanp);
-      paramISuperPlayer.what = 6;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
+    if (this.a.jdField_a_of_type_Aanq != null) {
+      this.a.jdField_a_of_type_Aanq.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
     }
   }
 }

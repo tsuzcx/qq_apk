@@ -1,10 +1,10 @@
-import android.graphics.Bitmap;
-
 public class aysv
 {
-  public long a;
-  public Bitmap a;
-  public long b;
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

@@ -1,57 +1,66 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.s2c.msgtype0x210.submsgtype0xa2.MsgBody;
 
-class adfh
-  extends adff
+public class adfh
+  implements adci
 {
-  public adfh(adea paramadea, long paramLong)
+  @Nullable
+  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    super(paramadea, 0, paramLong);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (paramInt == 0)
+    Object localObject = (anyw)paramQQAppInterface.getManager(51);
+    MsgBody localMsgBody = new MsgBody();
+    localMessageForQQWalletTips = (MessageForQQWalletTips)bcry.a(-2029);
+    try
     {
-      double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-      double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-      double d3 = paramSosoLbsInfo.a.jdField_b_of_type_Float;
-      double d4 = paramSosoLbsInfo.a.jdField_a_of_type_Float;
-      double d5 = paramSosoLbsInfo.a.e;
-      paramSosoLbsInfo = new JSONObject();
-      try
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      String str1 = localMsgBody.uint64_sender_uin.get() + "";
+      String str2 = localMsgBody.uint64_receiver_uin.get() + "";
+      if (paramQQAppInterface.getCurrentAccountUin().equals(str1))
       {
-        paramSosoLbsInfo.put("latitude", d1);
-        paramSosoLbsInfo.put("longitude", d2);
-        paramSosoLbsInfo.put("speed", d3);
-        paramSosoLbsInfo.put("accuracy", d4);
-        paramSosoLbsInfo.put("altitude", d5);
-        paramSosoLbsInfo.put("verticalAccuracy", 0.0D);
-        paramSosoLbsInfo.put("horizontalAccuracy", d4);
-        adhh.a(this.jdField_a_of_type_Adea, paramSosoLbsInfo);
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
-          }
+        paramMsgType0x210 = str2;
+        localObject = ((anyw)localObject).e(paramMsgType0x210);
+        if ((localObject == null) || (!((Friends)localObject).isFriend())) {
+          break label269;
         }
       }
+      label269:
+      for (int i = 0;; i = 1001)
+      {
+        localMessageForQQWalletTips.senderUin = str1;
+        localMessageForQQWalletTips.reciverUin = str2;
+        localMessageForQQWalletTips.senderContent = localMsgBody.bytes_sender_rich_content.get().toStringUtf8();
+        localMessageForQQWalletTips.reciverContent = localMsgBody.bytes_receiver_rich_content.get().toStringUtf8();
+        localMessageForQQWalletTips.authKey = localMsgBody.bytes_authkey.get().toStringUtf8();
+        localMessageForQQWalletTips.init(paramQQAppInterface.getCurrentAccountUin(), paramMsgType0x210, "", "[QQWallet Tips]", paramMsgInfo.getUMsgTime(), -2029, i, paramMsgInfo.getShMsgSeq());
+        localMessageForQQWalletTips.isread = true;
+        localMessageForQQWalletTips.shmsgseq = paramMsgInfo.shMsgSeq;
+        localMessageForQQWalletTips.msgUid = paramMsgInfo.lMsgUid;
+        localMessageForQQWalletTips.getBytes();
+        localMessageForQQWalletTips.onReceiveGrapTips();
+        return localMessageForQQWalletTips;
+        paramMsgType0x210 = str1;
+        break;
+      }
+      return localMessageForQQWalletTips;
     }
-    adhh.a(this.jdField_a_of_type_Adea, paramInt, "error " + paramInt);
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    return a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
   }
 }
 

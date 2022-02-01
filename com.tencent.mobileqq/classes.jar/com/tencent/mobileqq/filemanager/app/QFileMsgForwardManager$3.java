@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atan;
-import atbk;
+import atsi;
+import attf;
 import java.util.HashMap;
 
 public class QFileMsgForwardManager$3
   implements Runnable
 {
-  public QFileMsgForwardManager$3(atan paramatan, String paramString) {}
+  public QFileMsgForwardManager$3(atsi paramatsi, String paramString) {}
   
   public void run()
   {
-    atbk localatbk = null;
-    if (atan.a(this.this$0).containsKey(this.a)) {
-      localatbk = (atbk)atan.a(this.this$0).get(this.a);
+    attf localattf = null;
+    if (atsi.a(this.this$0).containsKey(this.a)) {
+      localattf = (attf)atsi.a(this.this$0).get(this.a);
     }
-    if (localatbk != null) {
-      localatbk.d();
+    if (localattf != null) {
+      localattf.d();
     }
   }
 }

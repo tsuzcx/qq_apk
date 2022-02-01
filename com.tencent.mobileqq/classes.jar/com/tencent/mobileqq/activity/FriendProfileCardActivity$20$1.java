@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import aegr;
-import azkz;
+import aepv;
+import badl;
 import com.tencent.qphone.base.util.QLog;
 
 public class FriendProfileCardActivity$20$1
   implements Runnable
 {
-  public FriendProfileCardActivity$20$1(aegr paramaegr, String paramString) {}
+  public FriendProfileCardActivity$20$1(aepv paramaepv, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aegr.a.d != null) {
+    if (this.jdField_a_of_type_Aepv.a.d != null) {
       try
       {
         if ("profile_btn_config".equals(this.jdField_a_of_type_JavaLangString))
         {
-          this.jdField_a_of_type_Aegr.a.a(true);
+          this.jdField_a_of_type_Aepv.a.a(true);
           return;
         }
-        if (("profile_switch_config".equals(this.jdField_a_of_type_JavaLangString)) && (FriendProfileCardActivity.a(this.jdField_a_of_type_Aegr.a) != null))
+        if (("profile_switch_config".equals(this.jdField_a_of_type_JavaLangString)) && (FriendProfileCardActivity.a(this.jdField_a_of_type_Aepv.a) != null))
         {
-          FriendProfileCardActivity.a(this.jdField_a_of_type_Aegr.a).b();
+          FriendProfileCardActivity.a(this.jdField_a_of_type_Aepv.a).b();
           return;
         }
       }

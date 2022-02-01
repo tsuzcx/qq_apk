@@ -1,55 +1,154 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.Iterator;
+import java.util.List;
 
-class bjtn
-  extends BroadcastReceiver
+public class bjtn
+  implements DownloadListener
 {
-  private bjtn(bjtl parambjtl) {}
+  protected static bjtn a;
+  protected bjtm a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static bjtn a()
   {
-    if (bjtl.a(this.a).getContext() == null) {
-      return;
-    }
-    paramContext = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        String str1 = paramIntent.getStringExtra("file_path");
-        String str2 = paramIntent.getStringExtra("video_thumb_path");
-        long l = paramIntent.getLongExtra("video_duration", 0L);
-        boolean bool = paramIntent.getBooleanExtra("is_video", false);
-        paramContext.put("filePath", ((IMiniAppFileManager)bjtl.b(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str1));
-        if (!bool) {
-          continue;
-        }
-        i = 1;
-        paramContext.put("isVideo", i);
-        if (bool)
-        {
-          paramContext.put("videoDuration", (l + 999L) / 1000L);
-          paramContext.put("cover", ((IMiniAppFileManager)bjtl.c(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str2));
-        }
+      if (jdField_a_of_type_Bjtn == null) {
+        jdField_a_of_type_Bjtn = new bjtn();
       }
-      catch (JSONException paramIntent)
-      {
-        int i;
-        paramIntent.printStackTrace();
-        continue;
-      }
-      QLog.e("LaunchCameraPlugin", 1, "data: " + paramContext);
-      bjtl.a(this.a, "custom_event_checkin_onCameraInfoEvent", paramContext.toString());
-      return;
-      i = 0;
+      bjtn localbjtn = jdField_a_of_type_Bjtn;
+      return localbjtn;
+    }
+    finally {}
+  }
+  
+  public void a(Looper paramLooper)
+  {
+    this.jdField_a_of_type_Bjtm = new bjtm(paramLooper);
+  }
+  
+  protected void a(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Bjtm == null) {
+      this.jdField_a_of_type_Bjtm = new bjtm();
+    }
+    this.jdField_a_of_type_Bjtm.sendMessage(paramMessage);
+  }
+  
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    bjtx.a("NoticeListener", "onInstallSucceed ,appId" + paramString1);
+    paramString1 = bjwq.a().b(paramString2);
+    if (paramString1 != null)
+    {
+      paramString2 = this.jdField_a_of_type_Bjtm.obtainMessage();
+      paramString2.what = 6;
+      Bundle localBundle = new Bundle();
+      localBundle.putString(bjwo.a, paramString1.jdField_b_of_type_JavaLangString);
+      paramString2.setData(localBundle);
+      a(paramString2);
     }
   }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    bjtx.a("NoticeListener", "onDownloadError ,downloadInfo" + paramDownloadInfo);
+    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
+    while (paramDownloadInfo.jdField_b_of_type_Boolean) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bjtm.obtainMessage();
+    localMessage.what = -2;
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bjwo.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    localMessage.setData(localBundle);
+    localMessage.obj = paramString;
+    localMessage.arg2 = paramInt2;
+    a(localMessage);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    bjtx.a("NoticeListener", "onDownloadFinish ");
+    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
+    while (paramDownloadInfo.jdField_b_of_type_Boolean) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bjtm.obtainMessage();
+    localMessage.what = 4;
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bjwo.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    localMessage.setData(localBundle);
+    a(localMessage);
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {}
+    do
+    {
+      return;
+      bjtx.a("NoticeListener", "onDownloadPause " + paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    } while ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (paramDownloadInfo.jdField_b_of_type_Boolean));
+    Message localMessage = this.jdField_a_of_type_Bjtm.obtainMessage();
+    localMessage.what = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bjwo.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    localMessage.setData(localBundle);
+    a(localMessage);
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    bjtx.a("NoticeListener", "onDownloadUpdate notify enter infos=" + paramList.size());
+    paramList = paramList.iterator();
+    for (;;)
+    {
+      DownloadInfo localDownloadInfo;
+      if (paramList.hasNext())
+      {
+        localDownloadInfo = (DownloadInfo)paramList.next();
+        if ((localDownloadInfo == null) || (localDownloadInfo.jdField_c_of_type_Int == 1)) {
+          continue;
+        }
+        if (!localDownloadInfo.jdField_b_of_type_Boolean) {}
+      }
+      else
+      {
+        return;
+      }
+      Message localMessage = this.jdField_a_of_type_Bjtm.obtainMessage();
+      localMessage.what = 2;
+      Bundle localBundle = new Bundle();
+      localBundle.putString(bjwo.a, localDownloadInfo.jdField_b_of_type_JavaLangString);
+      localMessage.setData(localBundle);
+      a(localMessage);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
+    while (paramDownloadInfo.jdField_b_of_type_Boolean) {
+      return;
+    }
+    bjtx.a("NoticeListener", "onDownloadWait notify enter info.id=" + paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    Message localMessage = this.jdField_a_of_type_Bjtm.obtainMessage();
+    localMessage.what = 20;
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bjwo.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    localMessage.setData(localBundle);
+    a(localMessage);
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

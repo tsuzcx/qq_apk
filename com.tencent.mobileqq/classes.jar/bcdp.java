@@ -1,8 +1,19 @@
-public abstract interface bcdp
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import java.util.HashSet;
+import java.util.List;
+
+public class bcdp
 {
-  public abstract bceh a(Object paramObject, bcev parambcev);
-  
-  public abstract bcfn a(Object paramObject, bcev parambcev);
+  public int a;
+  public long a;
+  public HashSet<Long> a;
+  public List<FTSMessage> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
 }
 
 

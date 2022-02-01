@@ -1,36 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import java.util.HashMap;
 
 public class aroo
-  extends arop
 {
-  public aroo(QQAppInterface paramQQAppInterface)
-  {
-    super(e(), paramQQAppInterface);
-  }
-  
-  public static String e()
-  {
-    if (lkw.f() <= 2) {
-      return "qq.android.qav.so_665";
-    }
-    return "";
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavSoData.class;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
+  public HashMap<String, String> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aroo
  * JD-Core Version:    0.7.0.1
  */

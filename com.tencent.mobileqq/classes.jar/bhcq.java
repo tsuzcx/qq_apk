@@ -1,20 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 
 public class bhcq
-  implements View.OnClickListener
 {
-  public bhcq(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
+  public long a;
+  public ResultReceiver a;
+  public bhcp a;
+  public String a;
+  public long b;
+  public String b;
+  private long c;
   
-  public void onClick(View paramView)
-  {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public bhcq(SnapshotService paramSnapshotService) {}
 }
 
 

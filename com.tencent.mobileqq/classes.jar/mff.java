@@ -1,51 +1,19 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mff
-  implements mhj
+  implements View.OnClickListener
 {
-  public mff(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat, long paramLong) {}
+  public mff(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.j = true;
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.L();
-  }
-  
-  public void b()
-  {
-    bcst.b(null, "CliOper", "", "", "0X800592D", "0X800592D", 0, 0, "", "", "", "");
-    if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().b() != -1) && (((lnn)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c.get(0)).a == 1))
-    {
-      bcst.b(null, "CliOper", "", "", "0X800594D", "0X800594D", 0, 0, "", "", "", "");
-      ley localley = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a();
-      if (localley != null)
-      {
-        lbc.d(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.d, " TYPE_NOTIFY_CAMERA_CLOSE: " + localley.j + "|" + localley.d);
-        if (localley.j) {
-          this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.jdField_b_of_type_Mbx.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-        }
-      }
-      MultiVideoCtrlLayerUI4NewGroupChat.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat, this.jdField_a_of_type_Long);
-      MultiVideoCtrlLayerUI4NewGroupChat.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat, true);
-      if (!this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.e) {
-        break label385;
-      }
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.jdField_a_of_type_Long, 100);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.j = false;
-      return;
-      if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f != 90) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f != 270)) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().b() == -1) || (((lnn)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c.get(0)).a != 2)) {
-        break;
-      }
-      bcst.b(null, "CliOper", "", "", "0X800594E", "0X800594E", 0, 0, "", "", "", "");
-      break;
-      label385:
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.e, this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.jdField_b_of_type_Long, 101);
-    }
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b(2);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickIgnore", true, null, -1);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickIgnore");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

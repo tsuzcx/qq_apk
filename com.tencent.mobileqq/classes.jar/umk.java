@@ -1,25 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.stPublisherRsp;
+import UserGrowth.stRedDotRsp;
 
-class umk
-  implements View.OnClickListener
+public abstract interface umk
+  extends ucj
 {
-  umk(umj paramumj) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (!nmd.a(umj.a(this.a))) {
-      biti.a().a(2131719196);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      umj.a(this.a);
-      umu.b(umj.a(this.a) + 1, 1004001, umj.a(this.a), umj.a(this.a).a(), umj.a(this.a).a());
-    }
-  }
+  public abstract void a(stPublisherRsp paramstPublisherRsp);
+  
+  public abstract void a(stRedDotRsp paramstRedDotRsp);
 }
 
 

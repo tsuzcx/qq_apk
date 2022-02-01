@@ -1,20 +1,41 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class apkw
-  implements apky
+  extends apmd
 {
-  apkw(apkv paramapkv, aplf paramaplf) {}
+  apkw(apkr paramapkr) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(paramString)) {
-      localBundle.putString("pskey", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
     }
-    paramString = EIPCResult.createResult(0, localBundle);
-    this.jdField_a_of_type_Aplf.a(paramString);
+    Message localMessage = apkr.a(this.a).obtainMessage();
+    localMessage.what = 100;
+    localMessage.sendToTarget();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+    Message localMessage = apkr.a(this.a).obtainMessage();
+    localMessage.what = 102;
+    localMessage.arg1 = paramInt;
+    localMessage.sendToTarget();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
+    }
+    Message localMessage = apkr.a(this.a).obtainMessage();
+    localMessage.what = 101;
+    localMessage.sendToTarget();
   }
 }
 

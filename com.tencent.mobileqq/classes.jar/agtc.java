@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class agtc
-  implements atve
+public class agtc
+  implements DialogInterface.OnClickListener
 {
-  agtc(agta paramagta, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
+  public agtc(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((abux)this.jdField_a_of_type_Agta.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
-    agta.b(this.jdField_a_of_type_Agta, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    paramDialogInterface.dismiss();
   }
-  
-  public void b() {}
 }
 
 

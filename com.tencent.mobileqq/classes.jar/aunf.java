@@ -1,17 +1,6 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
-
-public class aunf
-  implements aauu
+public abstract interface aunf
 {
-  public aunf(NowLiveFragment paramNowLiveFragment) {}
-  
-  public void a()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

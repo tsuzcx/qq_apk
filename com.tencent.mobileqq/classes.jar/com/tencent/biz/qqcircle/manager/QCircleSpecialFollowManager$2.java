@@ -2,12 +2,12 @@ package com.tencent.biz.qqcircle.manager;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
-import vol;
+import vqu;
 
 public class QCircleSpecialFollowManager$2
   implements Runnable
 {
-  public QCircleSpecialFollowManager$2(vol paramvol, boolean paramBoolean, String paramString) {}
+  public QCircleSpecialFollowManager$2(vqu paramvqu, boolean paramBoolean, String paramString) {}
   
   public void run()
   {

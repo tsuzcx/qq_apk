@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aglj;
-import aglu;
-import ains;
+import aguk;
+import aguw;
+import aiyz;
 import com.tencent.widget.XEditTextEx;
 
 class BaseChatPie$14
@@ -12,10 +12,10 @@ class BaseChatPie$14
   
   public void run()
   {
-    if (ains.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText())) {
+    if (aiyz.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText())) {
       this.this$0.v();
     }
-    ((aglj)this.this$0.jdField_a_of_type_Aglu.a(24)).a();
+    ((aguk)this.this$0.jdField_a_of_type_Aguw.a(24)).a();
   }
 }
 

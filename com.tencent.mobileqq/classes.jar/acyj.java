@@ -1,27 +1,56 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1;
 
 public class acyj
-  extends aczg
+  implements acxy
 {
-  public int a()
+  public acyj(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
+  
+  public void a(View paramView)
   {
-    return 1000;
+    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
+    {
+      GdtVideoImaxFragment.a(this.a);
+      GdtVideoImaxFragment.b(this.a);
+    }
+    while (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() != 0) {
+      return;
+    }
+    GdtVideoImaxFragment.a(this.a).g();
+    paramView = acwn.a(this.a.getActivity());
+    GdtVideoImaxFragment.a(this.a, paramView[1], GdtVideoImaxFragment.a(this.a).getLayoutParams().height, paramView[1]);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public void a(GdtVideoCommonView paramGdtVideoCommonView)
   {
-    new bbzc().f(paramList, paramList1, paramStringBuilder);
-    return true;
+    acvc.a("GdtVideoImaxFragment", "onPrepared() called with: v = [" + paramGdtVideoCommonView + "]");
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void b(GdtVideoCommonView paramGdtVideoCommonView)
   {
-    return (paramElem.common_elem.has()) && (23 == paramElem.common_elem.uint32_service_type.get());
+    acvc.a("GdtVideoImaxFragment", "onStart() called with: ");
+    if (GdtVideoImaxFragment.a(this.a))
+    {
+      GdtVideoImaxFragment.a(this.a).removeCallbacks(GdtVideoImaxFragment.a(this.a));
+      GdtVideoImaxFragment.a(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
+      GdtVideoImaxFragment.a(this.a, false);
+    }
+  }
+  
+  public void c(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    acvc.a("GdtVideoImaxFragment", "onStop() called with: v = [" + paramGdtVideoCommonView + "]");
+  }
+  
+  public void d(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    acvc.a("GdtVideoImaxFragment", "onComplete() called with: v = [" + paramGdtVideoCommonView + "]");
   }
 }
 

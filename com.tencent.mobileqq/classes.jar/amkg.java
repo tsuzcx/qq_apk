@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public abstract interface amkg
-  extends amld
+public class amkg
+  implements View.OnClickListener
 {
-  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
+  public amkg(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public abstract int getHeight();
-  
-  public abstract int getInitHeight();
-  
-  public abstract long getLuaState();
-  
-  public abstract amir getRenderImpl();
-  
-  public abstract int getWidth();
-  
-  public abstract ApolloRenderDriver getWorker();
-  
-  public abstract void removeAllApolloBarrages(boolean paramBoolean);
-  
-  public abstract void setBubbleType(int paramInt);
-  
-  public abstract void setVisibility(int paramInt);
+  public void onClick(View paramView) {}
 }
 
 

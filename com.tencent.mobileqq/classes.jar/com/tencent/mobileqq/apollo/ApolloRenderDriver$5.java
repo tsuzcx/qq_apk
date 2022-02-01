@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo;
 
-import amki;
-import amzy;
+import amwc;
+import anls;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 class ApolloRenderDriver$5
   extends IApolloRunnableTask
 {
-  ApolloRenderDriver$5(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString, amzy paramamzy) {}
+  ApolloRenderDriver$5(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString, anls paramanls) {}
   
   public String a()
   {
@@ -27,11 +27,11 @@ class ApolloRenderDriver$5
         i += 1;
       }
       this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if (this.jdField_a_of_type_Amzy != null) {
-        this.jdField_a_of_type_Amzy.d();
+      if (this.jdField_a_of_type_Anls != null) {
+        this.jdField_a_of_type_Anls.d();
       }
-      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Amki != null)) {
-        this.this$0.jdField_a_of_type_Amki.onRender();
+      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Amwc != null)) {
+        this.this$0.jdField_a_of_type_Amwc.onRender();
       }
       return;
     }

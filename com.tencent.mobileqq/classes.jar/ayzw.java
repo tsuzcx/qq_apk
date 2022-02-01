@@ -1,9 +1,19 @@
-public final class ayzw
-  extends ayzn
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import mqq.app.QQPermissionCallback;
+
+public class ayzw
+  implements QQPermissionCallback
 {
-  protected int a()
+  public ayzw(ScanOcrActivity paramScanOcrActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return 518;
+    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
   }
 }
 

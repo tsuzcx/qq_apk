@@ -1,12 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class ahrv
-  implements aaob
+  implements bizc
 {
-  public ahrv(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  public ahrv(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, ahrx paramahrx) {}
   
-  public void callback(Bundle paramBundle) {}
+  public void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahrx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahrx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahrx.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    }
+  }
 }
 
 

@@ -1,18 +1,19 @@
-public abstract interface low
+import android.support.annotation.NonNull;
+
+public class low
 {
-  public abstract int a();
+  public float a;
+  public int a;
+  public float b;
+  public int b;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(lop paramlop);
-  
-  public abstract boolean a();
-  
-  public abstract void b(int paramInt);
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[apiLevel: ").append(this.jdField_a_of_type_Int).append(", cpuNum: ").append(this.jdField_b_of_type_Int).append(", maxFreqGHZ: ").append(this.jdField_a_of_type_Float).append(", ramSizeGB:").append(this.jdField_b_of_type_Float).append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 

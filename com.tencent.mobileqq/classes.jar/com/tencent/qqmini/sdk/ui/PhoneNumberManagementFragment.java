@@ -22,6 +22,7 @@ import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
 import com.tencent.qqmini.sdk.widget.MiniCustomDialog;

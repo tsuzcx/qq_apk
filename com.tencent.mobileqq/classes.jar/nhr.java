@@ -1,25 +1,18 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.avgame.util.AVGameStep;
 
-public class nhr
-  implements ViewTreeObserver.OnPreDrawListener
+public final class nhr
+  implements Parcelable.Creator<AVGameStep>
 {
-  public nhr(PoiMapActivity paramPoiMapActivity) {}
-  
-  public boolean onPreDraw()
+  public AVGameStep a(Parcel paramParcel)
   {
-    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
-    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
-    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
-    {
-      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
-      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    }
-    return true;
+    return new AVGameStep(paramParcel);
+  }
+  
+  public AVGameStep[] a(int paramInt)
+  {
+    return new AVGameStep[paramInt];
   }
 }
 

@@ -1,9 +1,10 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-
-public abstract interface soy
+public class soy
 {
-  public abstract void a(Context paramContext, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4);
+  public float a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

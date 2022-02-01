@@ -1,165 +1,160 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
-import com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.support.annotation.Nullable;
+import android.util.AndroidRuntimeException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 public class bblv
-  extends bbog
+  implements bbks, bbky
 {
-  public long a;
-  String a;
-  public List<bbmy> a;
-  public boolean a;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  public List<String> b;
-  public boolean b;
-  String c;
-  public boolean c;
-  public String d;
-  public String e;
-  private String f;
+  private bbkr jdField_a_of_type_Bbkr = new bblw(this);
+  private bbly jdField_a_of_type_Bbly;
+  private bblz jdField_a_of_type_Bblz = new bblz();
+  private Comparator<bbku> jdField_a_of_type_JavaUtilComparator = new bblx(this);
+  private final List<bbku> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public bblv() {}
-  
-  public bblv(String paramString1, long paramLong1, String paramString2, List<bbmy> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
+  private void f()
   {
-    this.f = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "GroupBaseNetSearchModel ,moreUrl = " + paramString3);
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((bbku)localIterator.next()).b();
+      }
     }
-    this.jdField_c_of_type_JavaLangString = paramString4;
-    this.jdField_b_of_type_JavaUtilList = paramList1;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.e = paramString6;
-    this.d = paramString5;
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
   
   public int a()
   {
-    return 1;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      return i;
+    }
   }
   
-  public String a()
+  public int a(List<bbku> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "";
+    if (paramList.size() > 0) {
+      yuk.c("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size " + paramList.size() + ", range [" + ((bbku)paramList.get(0)).a() + " - " + ((bbku)paramList.get(paramList.size() - 1)).a() + "], cycle " + ((bbku)paramList.get(0)).b() + ", current size " + this.jdField_a_of_type_JavaUtilList.size());
     }
-    return this.jdField_a_of_type_JavaLangString;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        if (j <= 5) {
+          break;
+        }
+        i = 1;
+        if ((i != 0) && (this.jdField_a_of_type_Bbly != null)) {
+          this.jdField_a_of_type_Bbly.a();
+        }
+        return j;
+        yuk.d("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size 0");
+      }
+      int i = 0;
+    }
   }
   
-  public List<bbmy> a()
+  @Nullable
+  public bbku a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getResultList." + this.jdField_a_of_type_JavaUtilList);
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        bbku localbbku = (bbku)this.jdField_a_of_type_JavaUtilList.remove(0);
+        return localbbku;
+      }
+      return null;
     }
-    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    yuk.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "stopDecode", new Object[0]);
+    this.jdField_a_of_type_Bblz.a();
+    yuk.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of stopDecode");
+    f();
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Long == 1002L) && (!this.jdField_b_of_type_JavaLangString.isEmpty())) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "&sourceext=" + paramInt);
-    }
+    this.jdField_a_of_type_Bblz.a(paramInt);
   }
   
-  public void a(View paramView)
+  public void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction. searchKey=" + this.f + " groupName=" + this.jdField_a_of_type_JavaLangString + " groupMask=" + this.jdField_a_of_type_Long);
-    }
-    if (this.jdField_a_of_type_Long == 1002L) {
-      bbuk.a(this.jdField_a_of_type_JavaUtilList, this.f);
-    }
-    if (this.jdField_a_of_type_Long == 1701L)
+    this.jdField_a_of_type_Bblz.a(paramLong1, paramLong2);
+  }
+  
+  public void a(bbko parambbko, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, bbkr parambbkr)
+  {
+    throw new AndroidRuntimeException("please use startDecode(FlowDecodeConfig, FlowListener) instead");
+  }
+  
+  public void a(bbkx parambbkx, bbly parambbly)
+  {
+    this.jdField_a_of_type_Bbly = parambbly;
+    yuk.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "startDecode : decodeConfig = %s", new Object[] { parambbkx });
+    this.jdField_a_of_type_Bblz.a(parambbkx, this.jdField_a_of_type_Bbkr, this);
+  }
+  
+  @Nullable
+  public bbku b()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("search_keyword", this.f);
-      ((Intent)localObject).putExtra("key_refer", 1005);
-      PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, MiniAppSearchFragment.class);
-    }
-    do
-    {
-      return;
-      ActiveEntitySearchActivity.jdField_b_of_type_Boolean = true;
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break;
-      }
-      localObject = bgng.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.jdField_b_of_type_JavaLangString);
-      if (localObject != null)
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        ((bgmp)localObject).a();
-        return;
+        bbku localbbku = (bbku)this.jdField_a_of_type_JavaUtilList.get(0);
+        return localbbku;
       }
-    } while ((!this.jdField_b_of_type_JavaLangString.startsWith("http://")) && (!this.jdField_b_of_type_JavaLangString.startsWith("https://")));
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject = this.jdField_b_of_type_JavaLangString + "&keyword=" + URLEncoder.encode(this.f) + "&gpstype=1&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction,moreUrl = " + this.jdField_b_of_type_JavaLangString + ",dstUrl = " + auyf.a((String)localObject));
-      paramView = paramView.getContext();
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      paramView.startActivity(localIntent);
-      return;
+      return null;
     }
-    catch (XorCipherException localXorCipherException)
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bblz.b();
+  }
+  
+  @Nullable
+  public bbku c()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      for (;;)
+      if (this.jdField_a_of_type_JavaUtilList.size() >= 2)
       {
-        localXorCipherException.printStackTrace();
+        bbku localbbku = (bbku)this.jdField_a_of_type_JavaUtilList.get(1);
+        return localbbku;
       }
+      return null;
     }
-    ActiveEntitySearchActivity.a(paramView.getContext(), this.f, this.jdField_a_of_type_JavaLangString, new long[] { this.jdField_a_of_type_Long });
   }
   
-  public int b()
+  public void c()
   {
-    return (int)this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Bblz.c();
   }
   
-  public String b()
+  public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getKeyword." + this.f);
-    }
-    return this.f;
+    yuk.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of play range change");
+    f();
   }
   
-  public String c()
+  public void e()
   {
-    if (this.jdField_c_of_type_JavaLangString == null) {
-      return anni.a(2131704133);
-    }
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      return "";
-    }
-    return this.jdField_b_of_type_JavaLangString;
+    yuk.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of direction change");
+    f();
   }
 }
 

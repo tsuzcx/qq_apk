@@ -1,17 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-final class yld
-  implements yml
+public class yld
+  implements DialogInterface.OnClickListener
 {
-  yld(WeakReference paramWeakReference) {}
+  public yld(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    yle localyle = (yle)this.a.get();
-    if (localyle != null) {
-      localyle.a(paramErrorMessage);
-    }
+    paramDialogInterface.dismiss();
+    yup.a(this.a.a(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.base;
 
-import wfi;
-import wfj;
+import wjd;
+import wje;
 
 public class QQStoryObserver$1$1
   implements Runnable
 {
-  public QQStoryObserver$1$1(wfj paramwfj) {}
+  public QQStoryObserver$1$1(wje paramwje) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Wfi.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Wjd.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

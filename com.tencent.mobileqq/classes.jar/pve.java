@@ -1,25 +1,22 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
 
-public class pve
+class pve
+  implements qod
 {
-  public static void a(List<ArticleInfo> paramList)
+  pve(puz parampuz, ppu paramppu, Container paramContainer, int paramInt) {}
+  
+  public void a(int paramInt)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
-    {
+    Object localObject = this.jdField_a_of_type_Ppu.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((qyg)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-        if ((localArticleInfo != null) && (localArticleInfo.mFeedType == 29)) {
-          QLog.d("ReadInJoyLogHelper", 1, new Object[] { "printProteusOnline: \n", localArticleInfo.toProteusOnlineString() });
-        }
-      }
     }
+    localObject = (qyh)((qyg)localObject).a.get(paramInt);
+    puz.a(this.jdField_a_of_type_Puz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu.a(), (int)((qyh)localObject).a, this.jdField_a_of_type_Ppu.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Ppu.a());
   }
 }
 

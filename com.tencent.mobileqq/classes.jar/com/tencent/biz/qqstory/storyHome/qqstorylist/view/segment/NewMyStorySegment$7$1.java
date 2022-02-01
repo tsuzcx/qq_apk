@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import ypb;
-import ypo;
+import ysw;
+import ytj;
 
 public class NewMyStorySegment$7$1
   implements Runnable
 {
-  public NewMyStorySegment$7$1(ypo paramypo) {}
+  public NewMyStorySegment$7$1(ytj paramytj) {}
   
   public void run()
   {

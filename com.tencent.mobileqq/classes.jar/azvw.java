@@ -1,106 +1,98 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.1;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.2;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
 import com.tencent.qphone.base.util.QLog;
-import friendlist.GetOnlineInfoResp;
-import java.util.Map;
+import java.util.Vector;
+import mqq.util.WeakReference;
 
 public class azvw
-  extends anmu
+  extends beyf
 {
-  public azvw(QCallDetailActivity paramQCallDetailActivity) {}
+  public static String a;
+  WeakReference<azvx> a;
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  static
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
-    {
-      QCallDetailActivity.a(this.a);
-      this.a.runOnUiThread(new QCallDetailActivity.1.1(this));
-    }
+    jdField_a_of_type_JavaLangString = "PLTransProcessorHandler";
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public azvw(azvx paramazvx, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
-    }
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!bgjw.a(paramString, this.a.app.getCurrentAccountUin())))
+    super(paramLooper);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramazvx);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    bete localbete = (bete)paramMessage.obj;
+    if (localbete.b != 56) {}
+    label460:
+    for (;;)
     {
-      localObject = (ankw)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label109;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
-      }
-    }
-    label109:
-    do
-    {
-      do
-      {
-        return;
-        if (((ankw)localObject).a(QCallDetailActivity.a(this.a)) != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
       return;
-      if (TextUtils.isEmpty(paramString))
+      azvx localazvx = (azvx)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localazvx == null)
       {
-        QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.i(jdField_a_of_type_JavaLangString, 2, "PLUploadManager is null");
+        }
       }
-      localObject = ((ankw)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
-    {
-      localObject = (ankw)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label52;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
+      else
+      {
+        Object localObject = localbete.jdField_a_of_type_JavaLangString;
+        if (QLog.isColorLevel()) {
+          QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg key:" + (String)localObject);
+        }
+        int i = 0;
+        label93:
+        if (i < localazvx.jdField_a_of_type_JavaUtilVector.size()) {
+          if (!((azvy)localazvx.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Beyg.a().equals(localObject)) {}
+        }
+        for (localObject = (azvy)localazvx.jdField_a_of_type_JavaUtilVector.get(i);; localObject = null)
+        {
+          if (localObject == null) {
+            break label460;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg find:" + ((azvy)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
+          }
+          switch (paramMessage.what)
+          {
+          }
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg. state:" + ((azvy)localObject).b + " " + ((azvy)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
+            }
+            if ((((azvy)localObject).b == 4) && (QLog.isColorLevel())) {
+              QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg url:" + ((azvy)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url);
+            }
+            if (localazvx.jdField_a_of_type_Azvz == null) {
+              break;
+            }
+            localazvx.jdField_a_of_type_Azvz.a(((azvy)localObject).jdField_a_of_type_Long, (azvy)localObject);
+            return;
+            i += 1;
+            break label93;
+            ((azvy)localObject).c = 0;
+            ((azvy)localObject).b = 1;
+            continue;
+            ((azvy)localObject).b = 4;
+            ((azvy)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.fileId = localbete.d;
+            ((azvy)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url = localbete.i;
+            if (((azvy)localObject).c < 100) {
+              ((azvy)localObject).c = 100;
+            }
+            localazvx.jdField_a_of_type_JavaUtilVector.remove(localObject);
+            continue;
+            ((azvy)localObject).b = 3;
+            continue;
+            ((azvy)localObject).b = 2;
+            ((azvy)localObject).c = ((int)(localbete.e * 100L / localbete.jdField_a_of_type_Long));
+          }
+        }
       }
     }
-    label52:
-    do
-    {
-      DiscussionInfo localDiscussionInfo;
-      do
-      {
-        return;
-        localDiscussionInfo = ((ankw)localObject).a(QCallDetailActivity.a(this.a));
-        if (localDiscussionInfo == null)
-        {
-          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
-          return;
-        }
-      } while (localDiscussionInfo.hasRenamed());
-      localObject = ((ankw)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    QCallDetailActivity.a(this.a);
-    this.a.runOnUiThread(new QCallDetailActivity.1.2(this));
   }
 }
 

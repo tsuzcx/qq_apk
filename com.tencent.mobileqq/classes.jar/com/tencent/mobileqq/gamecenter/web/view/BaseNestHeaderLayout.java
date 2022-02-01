@@ -6,11 +6,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
-import auwg;
+import avog;
 
 public abstract class BaseNestHeaderLayout
   extends BaseLayout
-  implements auwg
+  implements avog
 {
   public BaseNestHeaderLayout(@NonNull Context paramContext)
   {

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
 
 public class tsv
-  implements View.OnClickListener
+  implements ViewBase.IBuilder
 {
-  public tsv(ViolaLazyFragment paramViolaLazyFragment) {}
-  
-  public void onClick(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ReadInJoyArticleBottomVideoView(paramVafContext);
   }
 }
 

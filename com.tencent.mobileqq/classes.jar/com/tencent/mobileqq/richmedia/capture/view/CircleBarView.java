@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import bape;
-import bapf;
-import bapg;
+import bbhx;
+import bbhy;
+import bbhz;
 
 public class CircleBarView
   extends View
@@ -25,9 +25,9 @@ public class CircleBarView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bape jdField_a_of_type_Bape;
-  private bapf jdField_a_of_type_Bapf;
-  private bapg jdField_a_of_type_Bapg;
+  private bbhx jdField_a_of_type_Bbhx;
+  private bbhy jdField_a_of_type_Bbhy;
+  private bbhz jdField_a_of_type_Bbhz;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -86,25 +86,25 @@ public class CircleBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Bapg = new bapg(this);
+    this.jdField_a_of_type_Bbhz = new bbhz(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bape != null) && (this.jdField_a_of_type_Bape.hasStarted())) {
-      this.jdField_a_of_type_Bape.cancel();
+    if ((this.jdField_a_of_type_Bbhx != null) && (this.jdField_a_of_type_Bbhx.hasStarted())) {
+      this.jdField_a_of_type_Bbhx.cancel();
     }
     clearAnimation();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bape = new bape(this);
+    this.jdField_a_of_type_Bbhx = new bbhx(this);
     this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Bape.setDuration(paramInt);
-    this.jdField_a_of_type_Bape.setRepeatCount(-1);
-    this.jdField_a_of_type_Bape.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Bape);
+    this.jdField_a_of_type_Bbhx.setDuration(paramInt);
+    this.jdField_a_of_type_Bbhx.setRepeatCount(-1);
+    this.jdField_a_of_type_Bbhx.setInterpolator(new LinearInterpolator());
+    startAnimation(this.jdField_a_of_type_Bbhx);
   }
   
   public boolean a(int paramInt)
@@ -152,9 +152,9 @@ public class CircleBarView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setOnAnimationListener(bapf parambapf)
+  public void setOnAnimationListener(bbhy parambbhy)
   {
-    this.jdField_a_of_type_Bapf = parambapf;
+    this.jdField_a_of_type_Bbhy = parambbhy;
   }
   
   public void setTextView(TextView paramTextView)

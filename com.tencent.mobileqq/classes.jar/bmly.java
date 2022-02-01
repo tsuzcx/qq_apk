@@ -1,95 +1,28 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
 
 public class bmly
-  extends bmmk
+  implements ServiceConnection
 {
-  private static final String a;
-  private static String b = "";
+  bmly(bmlx parambmlx) {}
   
-  static
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    jdField_a_of_type_JavaLangString = bmmc.class.getSimpleName();
-  }
-  
-  private void a(bhod parambhod, String[] paramArrayOfString)
-  {
-    try
+    this.a.jdField_a_of_type_Bmlt = bmlu.a(paramIBinder);
+    if (this.a.jdField_a_of_type_Bmlt != null)
     {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      b = paramArrayOfString.getString("callback");
-      parambhod = new Bundle();
-      parambhod.putInt("key_personal_album_enter_model", 0);
-      parambhod.putBoolean("key_pass_result_by_bundle", true);
-      parambhod.putString("key_accept_album_anonymity", paramArrayOfString.optString("acceptType"));
-      parambhod.putString("key_deny_delect_tips", paramArrayOfString.optString("denyTips"));
-      parambhod.putBoolean("key_can_new_album", false);
-      parambhod.putString("key_from_type", paramArrayOfString.optString("fromType"));
-      paramArrayOfString = blsi.a();
-      paramArrayOfString.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getCurrentAccountUin();
-      parambhod.putBoolean("key_need_change_to_jpg", false);
-      blsb.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), paramArrayOfString, parambhod, blsb.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, 7));
-      return;
-    }
-    catch (Exception parambhod)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "handlePickQzoneAlbum,decode param error");
+      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
     }
   }
   
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    switch (paramByte)
-    {
-    }
-    do
-    {
-      return;
-    } while ((TextUtils.isEmpty(b)) || (paramIntent == null));
-    String str1 = paramIntent.getStringExtra("key_selected_albuminfo.id");
-    String str2 = paramIntent.getStringExtra("key_selected_albuminfo.name");
-    paramIntent.getStringExtra("key_selected_albuminfo.cover");
-    paramIntent.getIntExtra("key_selected_albuminfo.permission", 0);
-    paramByte = paramIntent.getIntExtra("key_selected_albuminfo.type", 0);
-    paramInt = paramIntent.getIntExtra("key_selected_albuminfo.anonymity", 0);
-    paramIntent = new JSONObject();
-    try
-    {
-      paramIntent.put("albumid", str1);
-      paramIntent.put("albumtype", paramByte);
-      paramIntent.put("albumname", str2);
-      paramIntent.put("albumanonymity", paramInt);
-      if (QLog.isDevelopLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, paramIntent.toString());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(b, new String[] { paramIntent.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("PickQzoneAlbum")) {
-      return false;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-    return true;
+    this.a.jdField_a_of_type_Bmlt = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -1,15 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.QCallRecord;
+import java.util.Comparator;
 
 class bapa
-  implements bamt
+  implements Comparator<QCallRecord>
 {
-  bapa(baoz parambaoz) {}
+  bapa(baoy parambaoy) {}
   
-  public void a(boolean paramBoolean)
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
-    }
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
   }
 }
 

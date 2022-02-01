@@ -1,77 +1,32 @@
-import android.text.TextUtils;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-public abstract class xdt
+public class xdt
+  extends wpa<xfe>
 {
-  public ConcurrentHashMap<String, Object> a;
-  public xdu a;
-  public boolean a;
-  public final String b;
-  public boolean b;
-  
-  public xdt()
+  public String a()
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.share" + getClass().getSimpleName());
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    return wnu.a("StorySvc.video_apply_authkey");
   }
   
-  public <T> T a(String paramString)
+  public xfe a(byte[] paramArrayOfByte)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
+    try
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      yqp.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result %s, stack = %s", String.valueOf(paramString), String.valueOf(localObject), zkp.a(7));
-      return localObject;
+      localRspAuthKey.mergeFrom(paramArrayOfByte);
+      return new xfe(localRspAuthKey);
     }
-    yqp.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result null, stack = %s", String.valueOf(paramString), zkp.a(7));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
+    }
     return null;
   }
   
-  public final xdt a(boolean paramBoolean1, boolean paramBoolean2)
+  protected byte[] a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    return this;
-  }
-  
-  public abstract void a();
-  
-  public void a(String paramString, Object paramObject)
-  {
-    yqp.a(this.jdField_b_of_type_JavaLangString, "putResult key %s, value %s, stack = %s", String.valueOf(paramString), String.valueOf(paramObject), zkp.a(7));
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramObject);
-    }
-  }
-  
-  protected abstract void a(Map<String, Object> paramMap);
-  
-  public final void a(boolean paramBoolean)
-  {
-    yqp.a(this.jdField_b_of_type_JavaLangString, "onJobFinish %b, stack = %s", Boolean.valueOf(paramBoolean), zkp.a(7));
-    if (this.jdField_a_of_type_Xdu != null) {
-      this.jdField_a_of_type_Xdu.b(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  protected final void b(boolean paramBoolean)
-  {
-    yqp.a(this.jdField_b_of_type_JavaLangString, "onRunFinish %b, stack = %s", Boolean.valueOf(paramBoolean), zkp.a(7));
-    if (this.jdField_a_of_type_Xdu != null) {
-      this.jdField_a_of_type_Xdu.a(paramBoolean);
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
+    return new byte[0];
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.magicface.model;
 
 import android.media.AudioRecord;
-import awga;
-import bgrn;
+import awys;
+import bhrp;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecordVolume
@@ -10,12 +10,12 @@ public class RecordVolume
 {
   private int jdField_a_of_type_Int;
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
-  private awga jdField_a_of_type_Awga;
+  private awys jdField_a_of_type_Awys;
   private volatile boolean jdField_a_of_type_Boolean;
   
-  public RecordVolume(awga paramawga)
+  public RecordVolume(awys paramawys)
   {
-    this.jdField_a_of_type_Awga = paramawga;
+    this.jdField_a_of_type_Awys = paramawys;
   }
   
   public void a()
@@ -27,7 +27,7 @@ public class RecordVolume
   {
     try
     {
-      int i = bgrn.jdField_a_of_type_Int;
+      int i = bhrp.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = AudioRecord.getMinBufferSize(i, 2, 2);
       this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, i, 2, 2, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidMediaAudioRecord.startRecording();
@@ -55,8 +55,8 @@ public class RecordVolume
             if (QLog.isColorLevel()) {
               QLog.i("recordVolume", 2, "====dB===" + d);
             }
-            if (this.jdField_a_of_type_Awga != null) {
-              this.jdField_a_of_type_Awga.a((int)Math.round(d));
+            if (this.jdField_a_of_type_Awys != null) {
+              this.jdField_a_of_type_Awys.a((int)Math.round(d));
             }
           }
           Thread.sleep(100L);

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bhod;
+import bioy;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 

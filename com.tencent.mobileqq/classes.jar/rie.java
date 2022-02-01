@@ -1,31 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class rie
+  implements bcmc<bcfr>
 {
-  public String a;
-  public String b;
+  private List<rif> a = new ArrayList();
   
-  public static rie a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
+  public List<bcfr> a(bcmq parambcmq)
   {
-    rie localrie = new rie();
-    localrie.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
-    localrie.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
-    return localrie;
-  }
-  
-  public oidb_cmd0xbc9.MoreChannelItem a()
-  {
-    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
-    if (!TextUtils.isEmpty(this.a))
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
-      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
+      rif localrif = (rif)localIterator.next();
+      if (localrif.a(parambcmq.a)) {
+        localArrayList.add(localrif);
+      }
     }
-    return localMoreChannelItem;
+    return localArrayList;
   }
+  
+  public void a()
+  {
+    Iterator localIterator = pfa.a().c().iterator();
+    while (localIterator.hasNext())
+    {
+      qwb localqwb = (qwb)localIterator.next();
+      this.a.add(new rif(localqwb));
+    }
+  }
+  
+  public void a(bcmq parambcmq, bcmd<bcfr> parambcmd)
+  {
+    parambcmd.a(a(parambcmq), 1);
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

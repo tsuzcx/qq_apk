@@ -1,88 +1,42 @@
-import android.media.MediaMetadataRetriever;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.vpng.view.VPNGImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bdgk
-  extends bdgi
+class bdgk
+  implements aldq
 {
-  protected VPNGImageView a;
+  bdgk(bdgh parambdgh, boolean paramBoolean1, boolean paramBoolean2, bdhi parambdhi) {}
   
-  public bdgk(SpriteNativeView paramSpriteNativeView, String paramString)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView(paramSpriteNativeView.getContext());
-    paramSpriteNativeView = new MediaMetadataRetriever();
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downloadSo] resCode=" + paramInt + ",pathRes=" + paramPathResult);
+    }
+    VACDReportUtil.a(this.jdField_a_of_type_Bdgh.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
+    this.jdField_a_of_type_Bdgh.jdField_a_of_type_Int = paramPathResult.subErrCode;
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      paramSpriteNativeView.setDataSource(paramString);
-      paramString = paramSpriteNativeView.extractMetadata(18);
-      String str = paramSpriteNativeView.extractMetadata(19);
-      this.jdField_a_of_type_Float = (Integer.parseInt(paramString) / 2);
-      this.b = Integer.parseInt(str);
-      paramString = new FrameLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.b);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setLayoutParams(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotX(this.jdField_a_of_type_Float / 2.0F);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotY(this.b / 2.0F);
+      this.jdField_a_of_type_Bdgh.jdField_a_of_type_Boolean = true;
+      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Bdgh.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.soFileName).getAbsolutePath();
+      bdgh.a(this.jdField_a_of_type_Bdgh, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Bdhi, paramPathResult, this.jdField_a_of_type_Bdgh.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.crc, 2);
       return;
     }
-    catch (Exception paramString)
+    if (paramInt == 2)
     {
-      QLog.e("VideoSprite", 2, "MediaMetadataRetriever exception " + paramString);
+      bdgh.a(this.jdField_a_of_type_Bdgh, 4);
       return;
     }
-    finally
+    if (paramPathResult.subErrCode == 404)
     {
-      paramSpriteNativeView.release();
+      bdgh.a(this.jdField_a_of_type_Bdgh, 9);
+      return;
     }
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setVideo(paramString, paramBoolean);
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onPause();
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onResume();
-  }
-  
-  public boolean c()
-  {
-    boolean bool = super.c();
-    a(this.jdField_a_of_type_Bder);
-    float f1 = this.jdField_a_of_type_Bder.jdField_a_of_type_Float;
-    float f2 = b();
-    float f3 = this.jdField_a_of_type_Float / 2.0F;
-    float f4 = this.f;
-    float f5 = this.jdField_a_of_type_Bder.b;
-    float f6 = b();
-    float f7 = this.b / 2.0F;
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setX(f1 * f2 - f3);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setY(f4 - f5 * f6 - f7);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleX(this.e * b());
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleY(this.e * b());
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setRotation(this.g);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
-    return bool;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
+    bdgh.a(this.jdField_a_of_type_Bdgh, 3);
   }
 }
 

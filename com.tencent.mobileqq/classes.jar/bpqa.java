@@ -1,109 +1,309 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnShowListener;
-import android.support.annotation.NonNull;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.widget.XEditText;
-import com.tencent.widget.XEditTextEx;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import dov.com.qq.im.capture.paster.CaptureComboNormalPaster.1;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 public class bpqa
-  extends ReportDialog
-  implements TextWatcher, View.OnClickListener
+  extends bpmr
+  implements IEventReceiver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private DialogInterface.OnShowListener jdField_a_of_type_AndroidContentDialogInterface$OnShowListener;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bpep jdField_a_of_type_Bpep;
-  XEditText jdField_a_of_type_ComTencentWidgetXEditText;
-  String jdField_a_of_type_JavaLangString;
-  private ydb jdField_a_of_type_Ydb;
+  public static HashMap<String, Drawable> a;
+  private float jdField_a_of_type_Float;
+  private bpqc jdField_a_of_type_Bpqc;
+  public bqpg a;
+  private final String jdField_a_of_type_JavaLangString;
+  private float jdField_b_of_type_Float;
+  private String jdField_b_of_type_JavaLangString;
+  private float c;
+  int d = 2;
   
-  public bpqa(@NonNull Context paramContext, bpep parambpep)
+  static
   {
-    super(paramContext, 2131755181);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bpep = parambpep;
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public String a()
+  public bpqa(bqpg parambqpg, String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
+    super(null);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Bqpg = parambqpg;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramFloat3;
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "create id=" + paramString1 + " name=" + paramString2);
+    }
   }
   
-  public void a()
+  private static Drawable a(String paramString, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    Window localWindow = super.getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = zby.b(getContext());
-    localLayoutParams.flags |= 0x20;
-    localLayoutParams.gravity = 80;
-    localWindow.setAttributes(localLayoutParams);
-    localWindow.setSoftInputMode(34);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131561671, null));
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXEditText = ((XEditTextEx)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366086));
-    this.jdField_a_of_type_ComTencentWidgetXEditText.addTextChangedListener(this);
-    setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Ydb = new ydb(getContext(), this.jdField_a_of_type_AndroidViewViewGroup, new bpqb(this));
-    this.jdField_a_of_type_Ydb.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690566));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    super.setOnShowListener(new bpqc(this, paramBoolean));
-    super.show();
-    if (paramString != null)
+    new File(paramString).getName();
+    URLDrawable localURLDrawable = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), paramString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+    if (localURLDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXEditText.setText(paramString);
-      this.jdField_a_of_type_ComTencentWidgetXEditText.setSelection(paramString.length());
+      int i = localURLDrawable.getStatus();
+      if (i == 1) {
+        return localURLDrawable;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QComboNPaster", 2, "urlDrawable is not  SUCCESSED :" + i);
+      }
+      localURLDrawable.setURLDrawableListener(paramURLDrawableListener);
+      if (i != 2) {
+        break label107;
+      }
+      localURLDrawable.restartDownload();
+    }
+    for (;;)
+    {
+      jdField_a_of_type_JavaUtilHashMap.put(paramString, localURLDrawable);
+      return null;
+      label107:
+      localURLDrawable.startDownload();
+    }
+    return localURLDrawable;
+  }
+  
+  public static void a(bqpg parambqpg, String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bpnq parambpnq)
+  {
+    if (parambpnq == null) {
+      throw new IllegalStateException("applyNormalPaster listener is null!");
+    }
+    int i = parambqpg.a(paramString);
+    paramString = parambqpg.a(paramString);
+    if (TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      zom.d(parambqpg.g);
+      label43:
+      if (QLog.isColorLevel()) {
+        QLog.e("QComboNPaster", 2, "applyNormalPaster uriString error!");
+      }
+      for (;;)
+      {
+        return;
+        paramString = Uri.parse(paramString).getPath();
+        String str = new File(paramString).getName();
+        bpqb localbpqb = new bpqb(str, paramString, parambqpg, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, parambpnq, i);
+        if (i != 1) {
+          try
+          {
+            b(Drawable.createFromPath(paramString), str, paramString, parambqpg, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, parambpnq, i);
+            return;
+          }
+          catch (OutOfMemoryError parambqpg)
+          {
+            yuk.c("QComboNPaster", "createFromPath error", parambqpg);
+            return;
+          }
+        }
+        File localFile = new File(paramString);
+        try
+        {
+          if (!ApngDrawable.isApngFile(localFile))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("QComboNPaster", 2, "applyNormalPaster isApngFile not valid path=" + paramString);
+            return;
+          }
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+          b(a(paramString, localbpqb), str, paramString, parambqpg, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, parambpnq, i);
+          return;
+        }
+      }
+    }
+    catch (Exception parambqpg)
+    {
+      break label43;
+    }
+  }
+  
+  private static void b(Drawable paramDrawable, String paramString1, String paramString2, bqpg parambqpg, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bpnq parambpnq, int paramInt3)
+  {
+    if (paramDrawable != null)
+    {
+      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+      int i = paramDrawable.getIntrinsicWidth();
+      paramFloat3 = paramInt1 * paramFloat3 / i;
+      if (QLog.isColorLevel()) {
+        QLog.d("QComboNPaster", 2, "applyNormalPaster w=" + i + " scale=" + paramFloat3 + " px=" + paramFloat1 + " py=" + paramFloat2);
+      }
+      parambpnq.a(new bqks(parambqpg.jdField_b_of_type_JavaLangString, paramString1, paramDrawable, paramInt3), paramInt1 * paramFloat1, paramInt2 * paramFloat2, paramFloat3, paramString2, paramSegmentKeeper);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetXEditText.setText(this.jdField_a_of_type_JavaLangString);
-    paramString = this.jdField_a_of_type_ComTencentWidgetXEditText;
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaLangString.length())
+    yuk.e("QComboNPaster", "can not create drawable from name:" + paramString1);
+  }
+  
+  public float a()
+  {
+    float f = 1.0F;
+    for (;;)
     {
-      paramString.setSelection(i);
+      try
+      {
+        if (!bhsr.a(this.jdField_a_of_type_Bqpg.g))
+        {
+          a();
+          return f;
+        }
+        if ((this.jdField_a_of_type_Bqpg.c != 100.0F) && (this.jdField_a_of_type_Bqpg.c > 0.0F))
+        {
+          f = this.jdField_a_of_type_Bqpg.d;
+          int i = this.jdField_a_of_type_Bqpg.c;
+          f = 1.0F * f / i;
+        }
+        else
+        {
+          f = 0.0F;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  /* Error */
+  public int a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 39	bpqa:jdField_a_of_type_Bqpg	Lbqpg;
+    //   6: getfield 167	bqpg:g	Ljava/lang/String;
+    //   9: invokestatic 256	bhsr:a	(Ljava/lang/String;)Z
+    //   12: ifne +17 -> 29
+    //   15: aload_0
+    //   16: iconst_3
+    //   17: putfield 33	bpqa:d	I
+    //   20: aload_0
+    //   21: getfield 33	bpqa:d	I
+    //   24: istore_1
+    //   25: aload_0
+    //   26: monitorexit
+    //   27: iload_1
+    //   28: ireturn
+    //   29: aload_0
+    //   30: getfield 39	bpqa:jdField_a_of_type_Bqpg	Lbqpg;
+    //   33: getfield 265	bqpg:jdField_b_of_type_Boolean	Z
+    //   36: ifeq -16 -> 20
+    //   39: aload_0
+    //   40: iconst_1
+    //   41: putfield 33	bpqa:d	I
+    //   44: goto -24 -> 20
+    //   47: astore_2
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_2
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	this	bpqa
+    //   24	4	1	i	int
+    //   47	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	47	finally
+    //   20	25	47	finally
+    //   29	44	47	finally
+  }
+  
+  public int a(Activity paramActivity, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Bqpg.a == null) || (this.jdField_a_of_type_Bqpg.a.size() == 0)) {
+      this.jdField_a_of_type_Bqpg.a(this.jdField_a_of_type_Bqpg.a());
+    }
+    ThreadManager.excute(new CaptureComboNormalPaster.1(this, paramInt), 64, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "apply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString);
+    }
+    return 0;
+  }
+  
+  public void a(Activity paramActivity, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Bqpg.a == null) || (this.jdField_a_of_type_Bqpg.a.size() == 0)) {
+      this.jdField_a_of_type_Bqpg.a(this.jdField_a_of_type_Bqpg.a());
+    }
+    paramActivity = this.jdField_a_of_type_Bqpg.a(this.jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "unApply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString + "url=" + paramActivity);
+    }
+    if (TextUtils.isEmpty(paramActivity)) {}
+    for (;;)
+    {
       return;
+      try
+      {
+        paramActivity = new File(Uri.parse(paramActivity).getPath()).getName();
+        DoodleLayout localDoodleLayout = bpue.a().a(paramInt);
+        if (localDoodleLayout != null)
+        {
+          localDoodleLayout.a().a(this.jdField_a_of_type_Bqpg.jdField_b_of_type_JavaLangString, paramActivity);
+          return;
+        }
+      }
+      catch (Exception paramActivity)
+      {
+        paramActivity.printStackTrace();
+      }
     }
   }
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void dismiss()
+  public int b()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
-    this.jdField_a_of_type_Ydb.c();
-    this.jdField_a_of_type_Ydb.a();
-    if (isShowing()) {
-      super.dismiss();
+    try
+    {
+      ((bqkv)wth.a(39)).a(this.jdField_a_of_type_JavaLangString, false);
+      a();
+      Dispatcher localDispatcher = wjj.a();
+      bpqc localbpqc = new bpqc(this);
+      this.jdField_a_of_type_Bpqc = localbpqc;
+      localDispatcher.registerSubscriber(localbpqc);
+      this.d = 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("QComboNPaster", 2, "create mState=" + this.d + " id=" + this.jdField_a_of_type_JavaLangString);
+      }
+      int i = this.d;
+      return i;
     }
+    finally {}
   }
   
-  public void onClick(View paramView)
+  public String b()
   {
-    dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_Bqpg.a(this.jdField_b_of_type_JavaLangString);
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
+  public boolean isValidate()
   {
-    super.setOnShowListener(paramOnShowListener);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener = paramOnShowListener;
+    return this.d == 1;
+  }
+  
+  public String toString()
+  {
+    return "NP@" + this.jdField_a_of_type_JavaLangString + "@" + hashCode();
   }
 }
 

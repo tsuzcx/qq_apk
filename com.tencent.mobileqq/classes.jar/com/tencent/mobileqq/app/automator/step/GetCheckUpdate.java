@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import agba;
-import annc;
-import anrb;
-import anrx;
-import anuf;
-import anug;
-import anuh;
-import anzx;
-import awcl;
-import azfd;
-import bbyo;
-import bcbl;
-import bgij;
+import agku;
+import anzd;
+import aodh;
+import aoef;
+import aogp;
+import aogq;
+import aogr;
+import aomh;
+import awvd;
+import azxq;
+import bcrf;
+import bcud;
+import bhik;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import nkx;
-import nli;
+import nms;
+import nnd;
 
 public class GetCheckUpdate
   extends AsyncStep
 {
-  anzx a;
+  aomh a;
   
   public int a()
   {
@@ -37,9 +37,9 @@ public class GetCheckUpdate
     }
   }
   
-  public void c()
+  public void b()
   {
-    super.c();
+    super.b();
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app;
     if (this.b == 45)
     {
@@ -48,35 +48,35 @@ public class GetCheckUpdate
       {
         Automator localAutomator = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator;
         localPublicAccountHandler.getClass();
-        localAutomator.a(102, new anrx(localPublicAccountHandler));
+        localAutomator.a(102, new aoef(localPublicAccountHandler));
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(106, new bgij(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(118, new nli(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(127, new nkx(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(117, new anuf(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(113, new bcbl(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(116, new bbyo(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(114, new anuh(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(115, new anug(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(122, new azfd(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(119, new annc(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(120, new agba(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(123, new anrb(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(126, new awcl(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(106, new bhik(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(118, new nnd(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(127, new nms(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(117, new aogp(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(113, new bcud(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(116, new bcrf(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(114, new aogr(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(115, new aogq(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(122, new azxq(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(119, new anzd(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(120, new agku(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(123, new aodh(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(126, new awvd(localQQAppInterface));
     }
-    if (this.jdField_a_of_type_Anzx == null)
+    if (this.jdField_a_of_type_Aomh == null)
     {
-      this.jdField_a_of_type_Anzx = new anzx(this, null);
-      localQQAppInterface.addObserver(this.jdField_a_of_type_Anzx);
+      this.jdField_a_of_type_Aomh = new aomh(this, null);
+      localQQAppInterface.addObserver(this.jdField_a_of_type_Aomh);
     }
   }
   
-  public void d()
+  public void c()
   {
-    if (this.jdField_a_of_type_Anzx != null)
+    if (this.jdField_a_of_type_Aomh != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anzx);
-      this.jdField_a_of_type_Anzx = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aomh);
+      this.jdField_a_of_type_Aomh = null;
     }
   }
 }

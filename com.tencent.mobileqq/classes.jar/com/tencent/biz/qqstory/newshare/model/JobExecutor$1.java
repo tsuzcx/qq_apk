@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.newshare.model;
 
 import java.util.concurrent.ConcurrentHashMap;
-import xdt;
-import xdv;
+import xho;
+import xhq;
 
 public class JobExecutor$1
   implements Runnable
 {
-  public JobExecutor$1(xdv paramxdv, xdt paramxdt, ConcurrentHashMap paramConcurrentHashMap) {}
+  public JobExecutor$1(xhq paramxhq, xho paramxho, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
-    xdv.a(this.this$0, this.jdField_a_of_type_Xdt, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    xhq.a(this.this$0, this.jdField_a_of_type_Xho, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
   }
 }
 

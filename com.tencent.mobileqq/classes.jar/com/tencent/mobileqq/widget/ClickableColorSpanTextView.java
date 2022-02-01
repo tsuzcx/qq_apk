@@ -8,12 +8,12 @@ import android.util.StateSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bhva;
+import bivv;
 
 public class ClickableColorSpanTextView
   extends TextView
 {
-  private bhva jdField_a_of_type_Bhva;
+  private bivv jdField_a_of_type_Bivv;
   private StatableSpanTextView.StatableForegroundColorSpan jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   
@@ -102,8 +102,8 @@ public class ClickableColorSpanTextView
           }
           if (this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null)
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_Bhva != null)) {
-              this.jdField_a_of_type_Bhva.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan);
+            if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_Bivv != null)) {
+              this.jdField_a_of_type_Bivv.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan);
             }
             this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan.a(StateSet.WILD_CARD);
             this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
@@ -116,9 +116,9 @@ public class ClickableColorSpanTextView
     }
   }
   
-  public void setSpanClickListener(bhva parambhva)
+  public void setSpanClickListener(bivv parambivv)
   {
-    this.jdField_a_of_type_Bhva = parambhva;
+    this.jdField_a_of_type_Bivv = parambivv;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)

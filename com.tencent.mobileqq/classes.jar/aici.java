@@ -1,25 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aici
-  implements nkl
+  implements DialogInterface.OnClickListener
 {
-  aici(aibv paramaibv) {}
+  aici(aibr paramaibr) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
-    }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aibv.b(paramString, bool);
-      return;
-    }
+    this.a.e();
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

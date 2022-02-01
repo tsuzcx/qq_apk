@@ -1,14 +1,27 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aiqo
+public class aiqo
+  implements bgwh
 {
-  public TextView a;
+  public aiqo(TroopChatPie paramTroopChatPie) {}
   
-  public aiqo(View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a = ((TextView)paramView.findViewById(2131378445));
-    paramView.setTag(this);
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      TroopChatPie.b(this.a, true);
+      paramString = (agwy)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      TroopChatPie.b(this.a, false);
+      paramString = (agwy)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

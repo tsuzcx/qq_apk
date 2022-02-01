@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.widget.IndexView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akdc
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public akdc(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public akdc(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (ChatHistoryTroopFileFragment.a(this.a) != null) {
+        ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
+      }
+    }
   }
 }
 

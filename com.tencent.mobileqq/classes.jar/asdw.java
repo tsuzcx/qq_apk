@@ -1,36 +1,61 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class asdw
-  implements asdm
+  extends asdn
 {
-  public asdw(RelatedEmotionPanel paramRelatedEmotionPanel) {}
-  
-  public void a() {}
-  
-  public void a(float paramFloat)
+  public asdw(QQAppInterface paramQQAppInterface)
   {
-    if (RelatedEmotionPanel.a(this.a) != null) {
-      RelatedEmotionPanel.a(this.a).a(paramFloat);
+    super("qq.android.early.precover", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10045;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return PrecoverData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyPrecover";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    super.a(paramXmlData);
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
+      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
     }
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RelatedEmotionPanel", 4, "dismiss type: " + paramInt);
-    }
-    if (paramInt > -1) {
-      bcst.b(RelatedEmotionPanel.a(this.a), "dc00898", "", this.a.a, "0X800B11A", "0X800B11A", paramInt, 0, "", "", "", "");
-    }
-    this.a.a();
-    if (paramInt == 2) {
-      AbstractGifImage.resumeAll();
-    }
+    return false;
   }
   
-  public void b() {}
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public boolean i()
+  {
+    File localFile = new File(c());
+    return (localFile != null) && (localFile.exists());
+  }
+  
+  public boolean j()
+  {
+    File localFile = new File(d());
+    return (localFile != null) && (localFile.exists());
+  }
 }
 
 

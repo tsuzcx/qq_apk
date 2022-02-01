@@ -1,16 +1,16 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class swe
-  extends DataSetObserver
+public class swe
+  implements OnCompositionLoadedListener
 {
-  swe(swd paramswd) {}
+  public swe(RefreshAnimView.1 param1) {}
   
-  public void onChanged()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    QLog.d("FastWebActivity", 2, "DataSetObserver ");
-    FastWebActivity.a(this.a.a, 100L);
+    RefreshAnimView.a(this.a.this$0, paramLottieComposition);
   }
 }
 

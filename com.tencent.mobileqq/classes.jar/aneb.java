@@ -1,21 +1,37 @@
-public class aneb
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.utils.VipUtils;
+
+class aneb
+  implements amxj
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
-  public long d;
+  aneb(anea paramanea) {}
   
-  static
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    jdField_a_of_type_JavaLangString = bgln.i();
-    b = bgln.e();
-    c = bgln.g();
-    jdField_a_of_type_Int = bgln.b();
-    jdField_a_of_type_Long = bgln.a();
+    anea localanea = this.a;
+    if (anea.a(this.a).jdField_b_of_type_Boolean)
+    {
+      paramStartCheckParam = anea.a(this.a).e;
+      anea.a(localanea, paramStartCheckParam);
+      if (!"message".equals(anea.a(this.a).f)) {
+        break label101;
+      }
+    }
+    label101:
+    for (int i = 1;; i = 0)
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(anea.a(this.a).jdField_b_of_type_Int) });
+      return;
+      paramStartCheckParam = anea.a(this.a).d;
+      break;
+    }
+  }
+  
+  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (anea.a(this.a) != null) {
+      anea.a(this.a).c(-10001, anea.a(this.a).jdField_b_of_type_JavaLangString);
+    }
   }
 }
 

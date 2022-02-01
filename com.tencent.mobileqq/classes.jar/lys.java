@@ -1,34 +1,74 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
-public class lys
-  extends lyn
+class lys
+  implements lzb
 {
-  protected static int a;
+  lys(lyr paramlyr, long paramLong) {}
   
-  static
+  public Bitmap a(long paramLong)
   {
-    jdField_a_of_type_Int = 3;
+    if (this.jdField_a_of_type_Lyr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Lyr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Lyr.jdField_a_of_type_JavaLangString, (byte)3, false, false);
   }
   
-  public lys(Context paramContext)
+  public TroopInfoData a()
   {
-    this.jdField_a_of_type_JavaLangString = "SmallScreenShare";
-    this.i = 2131559768;
-    this.j = paramContext.getResources().getDimensionPixelSize(2131297836);
-    this.k = paramContext.getResources().getDimensionPixelSize(2131297835);
+    return this.jdField_a_of_type_Lyr.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
   }
   
-  public void a()
+  public String a()
   {
-    jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
-    super.a();
+    return lyr.a(this.jdField_a_of_type_Lyr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Lyr.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  public String a(int paramInt)
   {
-    super.a(paramBoolean, jdField_a_of_type_Int);
+    return null;
+  }
+  
+  public String a(long paramLong, int paramInt)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_Lyr.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
+      localObject = null;
+    }
+    String str;
+    do
+    {
+      return localObject;
+      str = lyr.a(this.jdField_a_of_type_Lyr, paramInt);
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    this.jdField_a_of_type_Lyr.a(paramLong, this.jdField_a_of_type_Lyr.jdField_a_of_type_Long, this.jdField_a_of_type_Lyr.jdField_a_of_type_Int);
+    return str;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.w("ShareChat", 1, "onFinish, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
+    mrw.a(paramInt1, paramInt2);
+    if (paramInt3 == 2) {
+      mrw.a(paramInt1, paramInt2, 99, null);
+    }
+  }
+  
+  public String b()
+  {
+    return lyr.a(this.jdField_a_of_type_Lyr.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.w("ShareChat", 1, "onQRForward, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramInt3 == 2) {
+      mrw.a(paramInt1, paramInt2, 99, null);
+    }
   }
 }
 

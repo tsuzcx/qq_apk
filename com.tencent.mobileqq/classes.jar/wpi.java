@@ -1,71 +1,31 @@
-import android.os.Build;
 import android.text.TextUtils;
 
 public class wpi
 {
-  public static wpi a;
-  public static wpi b;
-  @zkv(a="manufacturer")
-  public String a;
-  @zkv(a="model")
-  public String b;
-  
-  static
-  {
-    jdField_a_of_type_Wpi = new wpi();
-    jdField_b_of_type_Wpi = new wpi();
-    jdField_b_of_type_Wpi.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
-    jdField_b_of_type_Wpi.jdField_b_of_type_JavaLangString = Build.MODEL;
-    jdField_a_of_type_Wpi.jdField_a_of_type_JavaLangString = "all";
-    jdField_a_of_type_Wpi.jdField_b_of_type_JavaLangString = "all";
-  }
-  
-  public boolean a()
-  {
-    if (jdField_a_of_type_Wpi.equals(this)) {}
-    while ((jdField_b_of_type_Wpi.equals(this)) || ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_Wpi.jdField_b_of_type_JavaLangString)))) {
-      return true;
-    }
-    return false;
-  }
+  public int a;
+  public final long a;
+  public final String a;
+  public final String b;
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (wpi)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null)
-      {
-        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
-      }
-      else {
-        while (paramObject.jdField_a_of_type_JavaLangString != null) {
-          return false;
-        }
-      }
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_b_of_type_JavaLangString == null);
+    if ((paramObject instanceof wpi)) {
+      return TextUtils.equals(((wpi)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    }
     return false;
   }
   
-  public int hashCode()
+  public String toString()
   {
-    int j = 0;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0)
-    {
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        j = this.jdField_b_of_type_JavaLangString.hashCode();
-      }
-      return i * 31 + j;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append("\n");
+    localStringBuilder.append("-t ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("  -dt ");
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 

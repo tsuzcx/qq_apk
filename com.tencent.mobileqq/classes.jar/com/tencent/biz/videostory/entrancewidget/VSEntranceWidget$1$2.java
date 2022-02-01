@@ -1,17 +1,17 @@
 package com.tencent.biz.videostory.entrancewidget;
 
-import aawo;
+import abar;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 public class VSEntranceWidget$1$2
   implements Runnable
 {
-  public VSEntranceWidget$1$2(aawo paramaawo, Drawable paramDrawable) {}
+  public VSEntranceWidget$1$2(abar paramabar, Drawable paramDrawable) {}
   
   public void run()
   {
-    ((ImageView)this.jdField_a_of_type_Aawo.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((ImageView)this.jdField_a_of_type_Abar.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

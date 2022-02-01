@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import akwo;
+import alid;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,21 +8,21 @@ import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONObject;
-import pmb;
-import pmk;
-import pmn;
-import pqe;
-import trd;
+import peu;
+import pfd;
+import pfh;
+import pjc;
+import thy;
 
 public class ReadInJoySelfCenterViolaFragment
   extends ReadInJoyViolaChannelFragment
-  implements pmb
+  implements peu
 {
-  private pmn a;
+  private pfh a;
   
   public ReadInJoySelfCenterViolaFragment()
   {
-    this.jdField_a_of_type_Pmn = new pqe(this);
+    this.jdField_a_of_type_Pfh = new pjc(this);
   }
   
   public static ReadInJoySelfCenterViolaFragment a(String paramString)
@@ -43,7 +43,7 @@ public class ReadInJoySelfCenterViolaFragment
     {
       int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(3);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.b())) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(trd.a(i).toString());
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(thy.a(i).toString());
       }
     }
   }
@@ -95,8 +95,8 @@ public class ReadInJoySelfCenterViolaFragment
         a(paramBundle);
       }
       this.b = localBundle.getString("channel_version_key", "");
-      pmk.a().a(this.jdField_a_of_type_Pmn);
-      akwo.a(getActivity(), true);
+      pfd.a().a(this.jdField_a_of_type_Pfh);
+      alid.a(getActivity(), true);
       return;
     }
   }
@@ -104,7 +104,7 @@ public class ReadInJoySelfCenterViolaFragment
   public void onDestroy()
   {
     super.onDestroy();
-    pmk.a().b(this.jdField_a_of_type_Pmn);
+    pfd.a().b(this.jdField_a_of_type_Pfh);
   }
   
   public void onResume()

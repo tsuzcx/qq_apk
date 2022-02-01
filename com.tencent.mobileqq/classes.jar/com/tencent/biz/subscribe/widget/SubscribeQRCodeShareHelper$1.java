@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.widget;
 
-import aakt;
-import bgmg;
+import aaou;
+import bhmi;
 
 public class SubscribeQRCodeShareHelper$1
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$1(aakt paramaakt) {}
+  public SubscribeQRCodeShareHelper$1(aaou paramaaou) {}
   
   public void run()
   {
-    bgmg.a(aakt.a(this.this$0), true);
-    bgmg.c(aakt.a(this.this$0) + ".nomedia");
+    bhmi.a(aaou.a(this.this$0), true);
+    bhmi.c(aaou.a(this.this$0) + ".nomedia");
   }
 }
 

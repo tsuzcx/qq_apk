@@ -1,52 +1,96 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 class asom
-  implements Handler.Callback
+  extends asmx
 {
-  asom(asoh paramasoh) {}
+  private int e;
+  private int f;
   
-  public boolean handleMessage(Message paramMessage)
+  public asom(asol paramasol, int paramInt)
   {
-    switch (paramMessage.what)
+    this.e = ((int)(paramasol.a.getResources().getDisplayMetrics().density * 30.0F));
+    this.f = paramInt;
+  }
+  
+  public void a(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup)
+  {
+    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131365947);
+    localImageView.setVisibility(0);
+    localImageView.setTag(Boolean.valueOf(false));
+    asmu localasmu = a(paramInt);
+    paramRelativeLayout.setTag(localasmu);
+    if ((localasmu != null) && ((localasmu instanceof assj)))
     {
-    default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
+      paramViewGroup = (assj)localasmu;
+      paramInt = paramViewGroup.b;
+      if (paramViewGroup.a != 1) {
+        break label256;
+      }
+      if ((paramInt >= 0) && (paramInt < begd.a.length))
       {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
-        return false;
+        String str = begd.a[paramInt];
+        paramViewGroup = str;
+        if (str != null)
+        {
+          paramViewGroup = str;
+          if (str.startsWith("/"))
+          {
+            paramViewGroup = str;
+            if (str.length() > 1) {
+              paramViewGroup = str.substring(1);
+            }
+          }
+        }
+        if (paramViewGroup != null) {
+          paramRelativeLayout.setContentDescription(paramViewGroup);
+        }
       }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      paramMessage = (String)this.a.b.get(this.a.b.size() - 1);
-      Drawable localDrawable = bgmo.a(true);
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        aoch.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-      return false;
     }
-    paramMessage = (ArrayList)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
+    label255:
+    do
     {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      return false;
-    }
-    asoh.a(this.a, paramMessage);
-    return false;
+      break label255;
+      paramViewGroup = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
+      float f1 = this.a.a.getResources().getDisplayMetrics().density;
+      if (localasmu == null) {
+        break;
+      }
+      if ((localasmu.c == 1) || (localasmu.c == 2) || (localasmu.c == 7))
+      {
+        paramViewGroup.width = this.e;
+        paramViewGroup.height = this.e;
+      }
+      if (localasmu.c != -1)
+      {
+        paramRelativeLayout = localasmu.a(this.a.a, f1);
+        if (paramRelativeLayout != null) {
+          localImageView.setImageDrawable(paramRelativeLayout);
+        }
+        for (;;)
+        {
+          localImageView.setBackgroundDrawable(null);
+          return;
+          if (paramViewGroup.a != 2) {
+            break;
+          }
+          paramRelativeLayout.setContentDescription(begd.a(paramInt));
+          break;
+          localImageView.setVisibility(4);
+        }
+      }
+    } while (!"delete".equals(localasmu.i));
+    label256:
+    localImageView.setImageResource(2130839565);
+    paramRelativeLayout.setContentDescription(anzj.a(2131702963));
+    return;
+    localImageView.setImageDrawable(null);
+    localImageView.setVisibility(4);
   }
 }
 

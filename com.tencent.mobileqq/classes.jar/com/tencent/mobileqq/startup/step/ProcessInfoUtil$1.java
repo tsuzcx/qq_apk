@@ -2,7 +2,7 @@ package com.tencent.mobileqq.startup.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bcqt;
+import bdjl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,11 +13,11 @@ public final class ProcessInfoUtil$1
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = bcqt.a();
+    SharedPreferences localSharedPreferences = bdjl.a();
     int i;
     if (localSharedPreferences != null)
     {
-      i = bcqt.a(BaseApplicationImpl.getContext(), this.a);
+      i = bdjl.a(BaseApplicationImpl.getContext(), this.a);
       if (i != -1) {
         break label27;
       }

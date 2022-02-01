@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import anni;
-import bgir;
+import anzj;
+import bhis;
 
 class ScreenShotUtil$2$3
   implements Runnable
@@ -10,7 +10,7 @@ class ScreenShotUtil$2$3
   
   public void run()
   {
-    this.this$0.a.a(new IllegalStateException(anni.a(2131717580)));
+    this.this$0.a.a(new IllegalStateException(anzj.a(2131717711)));
   }
 }
 

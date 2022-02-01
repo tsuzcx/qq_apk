@@ -1,14 +1,17 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.ttpic.openapi.model.WMElement;
 
 class bopu
-  implements boqp
+  implements DialogInterface.OnClickListener
 {
-  bopu(bopt parambopt) {}
+  bopu(bopo parambopo, bopw parambopw, WMElement paramWMElement) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return bfsj.b(paramString);
+    this.jdField_a_of_type_Bopw.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bopw.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
   }
 }
 

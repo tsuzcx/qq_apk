@@ -1,28 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.widget.OCRBottomTabView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-public class aygc
-  implements TextWatcher
+final class aygc
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public aygc(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      this.a.b.setEnabled(false);
-      this.a.a.setEnabled(false);
-      return;
-    }
-    this.a.b.setEnabled(true);
-    this.a.a.setEnabled(true);
+    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
+  }
 }
 
 

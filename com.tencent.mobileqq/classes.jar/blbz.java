@@ -1,20 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-
-class blbz
-  extends BroadcastReceiver
+final class blbz
 {
-  blbz(blby paramblby) {}
+  int jdField_a_of_type_Int;
+  blco jdField_a_of_type_Blco;
+  blcp jdField_a_of_type_Blcp;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
-    }
-    blby.a(this.a);
-    blby.b(this.a);
+    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_Blco.toString() + "]";
   }
 }
 

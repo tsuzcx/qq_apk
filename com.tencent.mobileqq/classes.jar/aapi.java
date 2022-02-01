@@ -1,6 +1,6 @@
 public abstract interface aapi
 {
-  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
+  public abstract void a(int paramInt);
 }
 
 

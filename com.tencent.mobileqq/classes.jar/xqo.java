@@ -1,59 +1,109 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class xqo
-  implements TVK_SDKMgr.OnLogListener
+  extends xqn
 {
-  public int a;
+  private xqn a;
   
-  public int d(String paramString1, String paramString2)
+  public Activity a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    return this.a.a();
   }
   
-  public int e(String paramString1, String paramString2)
+  public OpenPlayerBuilder.Data a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-    return 0;
+    return this.a.a();
   }
   
-  public int i(String paramString1, String paramString2)
+  public XViewPager a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
+    return this.a.a();
   }
   
-  public int v(String paramString1, String paramString2)
+  public String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    return this.a.a(paramString);
   }
   
-  public int w(String paramString1, String paramString2)
+  public xms a()
   {
-    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
-    try
-    {
-      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
-      label32:
-      if (QLog.isColorLevel()) {
-        QLog.w(paramString1, 2, paramString2);
-      }
-      return 0;
+    return this.a.a();
+  }
+  
+  public xmv a()
+  {
+    return this.a.a();
+  }
+  
+  public xqf a()
+  {
+    return this.a.a();
+  }
+  
+  public xqn a()
+  {
+    return this.a;
+  }
+  
+  public xqy a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(wjd paramwjd)
+  {
+    this.a.a(paramwjd);
+  }
+  
+  public void a(xpd paramxpd)
+  {
+    this.a.a(paramxpd);
+  }
+  
+  public void a(xqn paramxqn)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
     }
-    catch (Exception localException)
-    {
-      break label32;
-    }
+    this.a = paramxqn;
+  }
+  
+  public void a(xrg paramxrg)
+  {
+    this.a.a(paramxrg);
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public void b(wjd paramwjd)
+  {
+    this.a.b(paramwjd);
+  }
+  
+  public void b(xpd paramxpd)
+  {
+    this.a.b(paramxpd);
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 

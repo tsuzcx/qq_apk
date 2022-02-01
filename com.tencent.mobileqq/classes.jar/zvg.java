@@ -1,51 +1,14 @@
-public class zvg
+final class zvg
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private zwd jdField_a_of_type_Zwd;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  public float a;
+  public float b;
+  public float c;
   
-  public zvg(String paramString)
+  public zvg(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public zve a()
-  {
-    return new zve(this, null);
-  }
-  
-  public zvg a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public zvg a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public zvg a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public zvg b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public zvg b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 

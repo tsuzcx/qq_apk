@@ -4,15 +4,15 @@ import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import bpzb;
-import bpzc;
-import bpzd;
+import braw;
+import brax;
+import bray;
 
 public class FixedSizeVideoView
   extends VideoView
 {
   private int jdField_a_of_type_Int = -1;
-  public bpzd a;
+  public bray a;
   private Runnable jdField_a_of_type_JavaLangRunnable = new FixedSizeVideoView.1(this);
   private int b;
   private int c;
@@ -20,13 +20,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new bpzb(this));
+    super.setOnCompletionListener(new braw(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new bpzc(this));
+    super.setOnCompletionListener(new brax(this));
   }
   
   public void pause()
@@ -40,10 +40,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(bpzd parambpzd)
+  public void setOnFixVDPlayCompelteListener(bray parambray)
   {
-    if (parambpzd != null) {
-      this.jdField_a_of_type_Bpzd = parambpzd;
+    if (parambray != null) {
+      this.jdField_a_of_type_Bray = parambray;
     }
   }
   

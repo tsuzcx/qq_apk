@@ -1,127 +1,48 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.util.NativeSoLoader.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.util.VADHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
 
 public class bcll
+  extends bcmb
 {
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public static boolean a;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  
-  public static byte a(String paramString)
+  public bcll(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
   {
-    byte b = 0;
-    if (paramString == null) {
-      b = -1;
+    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
+  }
+  
+  public bcfq a(List<bcfr> paramList, String paramString)
+  {
+    return new bcfc(paramList, paramString, GroupSearchEngine.a(this.a));
+  }
+  
+  public List<bcfq> a(bcmq parambcmq)
+  {
+    if (!GroupSearchEngine.a(this.a)) {
+      return null;
     }
-    do
+    VADHelper.a("voice_search_approximate_cost");
+    List localList = super.a(parambcmq);
+    VADHelper.b("voice_search_approximate_cost");
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      for (;;)
+      if (parambcmq.a == null) {
+        parambcmq.a = new Bundle();
+      }
+      parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
+      if (localList.size() >= 2)
       {
-        return b;
-        paramString = a() + "/lib" + paramString + ".so";
-        if (QLog.isColorLevel()) {
-          QLog.i("TK_Config_NativeSoLoader", 2, "start TKNativeSo: " + paramString);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((bcfq)localList.get(1)).a().size());
         }
-        File localFile = new File(paramString);
-        if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {
-          try
-          {
-            System.load(paramString);
-            if (QLog.isColorLevel())
-            {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load " + paramString + " success!");
-              return 0;
-            }
-          }
-          catch (UnsatisfiedLinkError paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load from tk dir failed: " + paramString.getMessage());
-            }
-            return -3;
-          }
-        }
+        parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((bcfq)localList.get(1)).a().size());
       }
-      b = -2;
-    } while (!QLog.isColorLevel());
-    QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
-    return -2;
-  }
-  
-  public static String a()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TK_Config_NativeSoLoader", 2, "getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/tk";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String str1 = a() + "/lib" + paramString + ".so";
-    ??? = new File(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: exist= " + ((File)???).exists() + " isUncompressZip=" + jdField_a_of_type_Boolean);
-    }
-    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
-      for (;;)
-      {
-        synchronized (jdField_a_of_type_ArrayOfByte)
-        {
-          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("tk_native_" + paramString, null);
-          if (str2 != null) {
-            if (str2.equalsIgnoreCase(azby.a(str1)))
-            {
-              break label221;
-              return bool1;
-            }
-            else
-            {
-              bool1 = bool2;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
-              bool1 = bool2;
-            }
-          }
-        }
-        label221:
-        boolean bool1 = true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if (paramBoolean) {
-        break label77;
-      }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(a("TKGLRenderer"));
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TK_Config_NativeSoLoader", 2, "isisSoFileExistAsync[3D]: sInitSuccess= " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + "  async=" + paramBoolean);
-      }
-      return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-      label77:
-      ThreadManager.post(new NativeSoLoader.1(), 8, null, false);
+      return localList;
+      parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
     }
   }
 }

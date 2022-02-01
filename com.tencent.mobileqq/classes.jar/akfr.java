@@ -1,10 +1,37 @@
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class akfr
+public class akfr
 {
-  public URLImageView a;
-  
-  private akfr(akfp paramakfp) {}
+  public static String a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForText))
+    {
+      paramMessageRecord = (MessageForText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
+    }
+    if ((paramMessageRecord instanceof MessageForReplyText))
+    {
+      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
+    }
+    return "";
+  }
 }
 
 

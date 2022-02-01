@@ -1,28 +1,45 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.qphone.base.util.QLog;
 
-class asep
-  extends FrameLayout
+public class asep
+  implements ServiceConnection
 {
-  public asep(asem paramasem, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public asep(Client paramClient) {}
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    int i = asem.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
+    try
+    {
+      this.a.mIsBound = true;
+      this.a.mService = new Messenger(paramIBinder);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
+      }
+      asjw.a().a();
+      paramComponentName = Message.obtain(null, 1);
+      paramComponentName.replyTo = this.a.mMessenger;
+      this.a.mService.send(paramComponentName);
+      return;
     }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    catch (Exception paramComponentName)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+    }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(asem.a(this.a).getMeasuredWidth() - asem.a(this.a).getPaddingLeft() - asem.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    this.a.mService = null;
+    this.a.onDisconnectWithService();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
+    }
   }
 }
 

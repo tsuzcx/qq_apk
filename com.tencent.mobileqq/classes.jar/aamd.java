@@ -1,96 +1,49 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class aamd
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
 {
-  private CertifiedAccountMeta.StQQGroup jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  private volatile int jdField_a_of_type_Int = 0;
+  private aamn jdField_a_of_type_Aamn;
   
-  public aamd(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, View paramView)
+  public void a()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379779));
-    this.b = ((TextView)paramView.findViewById(2131379808));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363851));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    a(-1);
   }
   
-  public void a(CertifiedAccountMeta.StQQGroup paramStQQGroup)
+  public void a(int paramInt)
   {
-    String str;
-    if (paramStQQGroup != null)
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Aamn != null) {}
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStQQGroup.name.get());
-      this.b.setText(paramStQQGroup.memberNum.get() + anni.a(2131712145));
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup = paramStQQGroup;
-      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
-      if (paramStQQGroup.joinState.get() != 1) {
-        break label143;
-      }
-      str = anni.a(2131712141);
-      localButton.setText(str);
-      if (RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user != null)
-      {
-        str = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
-        if (paramStQQGroup.joinState.get() != 1) {
-          break label152;
-        }
-      }
-    }
-    label143:
-    label152:
-    for (paramStQQGroup = "open_butten";; paramStQQGroup = "enter_butten")
-    {
-      aaxb.a(str, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
+    case 0: 
+    default: 
       return;
-      str = anni.a(2131712140);
-      break;
+    case -1: 
+      this.jdField_a_of_type_Aamn.d();
+      return;
+    case 1: 
+      this.jdField_a_of_type_Aamn.b();
+      return;
+    case 2: 
+      this.jdField_a_of_type_Aamn.a();
+      return;
     }
+    this.jdField_a_of_type_Aamn.c();
   }
   
-  public void onClick(View paramView)
+  public void a(aamn paramaamn)
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup != null) && (paramView != null) && (paramView.getContext() != null))
-    {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() != 1) {
-        break label117;
-      }
-      localObject = afur.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
-      ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
-      ((Intent)localObject).putExtra("uintype", 1);
-      ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
-      paramView.getContext().startActivity((Intent)localObject);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label117:
-      localObject = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
-      ((Bundle)localObject).putInt("t_s_f", 1001);
-      bfup.a(paramView.getContext(), (Bundle)localObject, 2);
-    }
+    this.jdField_a_of_type_Aamn = paramaamn;
+    a(this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 

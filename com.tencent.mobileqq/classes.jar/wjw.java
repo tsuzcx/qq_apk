@@ -1,20 +1,43 @@
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wjw
-  implements wjl
+class wjw
+  extends SimpleJob<Void>
 {
-  public wjw(StoryVideoUploadTask paramStoryVideoUploadTask, wrb paramwrb, wjh paramwjh) {}
-  
-  public void a(wjk paramwjk)
+  wjw(wjt paramwjt, String paramString1, String paramString2, int paramInt)
   {
-    paramwjk = this.jdField_a_of_type_Wrb;
-    if (this.jdField_a_of_type_Wjh.a == 0) {}
-    for (int i = 2;; i = 3)
+    super(paramString1);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = wjt.a(this.jdField_a_of_type_Wjt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    long l1;
+    if (paramJobContext != null)
     {
-      paramwjk.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_Wrb.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Wjh.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_Wrb.c = this.jdField_a_of_type_Wjh.c;
-      return;
+      paramVarArgs = ((wte)wth.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null) {
+        break label132;
+      }
+      l1 = 0L;
+      if (paramJobContext.updatedMs <= 0L) {
+        break label141;
+      }
+    }
+    label132:
+    label141:
+    for (long l2 = paramJobContext.updatedMs;; l2 = System.currentTimeMillis())
+    {
+      int i = paramJobContext.compressLevel;
+      yup.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
+      yuk.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
+      return null;
+      l1 = paramVarArgs.mCreateTime;
+      break;
     }
   }
 }

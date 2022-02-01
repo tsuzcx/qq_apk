@@ -1,20 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
 
 public class akpn
-  implements View.OnClickListener
+  implements bliz
 {
-  public akpn(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  public akpn(SettingActivity2 paramSettingActivity2, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (KuaKuaHbFragment.a(this.a) != null) {
-      KuaKuaHbFragment.a(this.a).a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Blir.cancel();
+    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, anzj.a(2131712732), anzj.a(2131712729), anzj.a(2131712730), anzj.a(2131712728), new akpo(this), new akpp(this)).show();
   }
 }
 

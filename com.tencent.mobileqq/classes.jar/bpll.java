@@ -1,36 +1,20 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
 
-public class bpll
+class bpll
+  implements View.OnTouchListener
 {
-  @NonNull
-  public final bphk a;
-  @NonNull
-  public final bphl a;
-  @NonNull
-  public final bphm a;
-  @NonNull
-  public final bphv a;
-  @NonNull
-  public final bphy a;
-  @NonNull
-  public final bpic a;
-  public final ArrayList<bpio> a;
+  bpll(bplj parambplj) {}
   
-  public bpll(@NonNull bpic parambpic, @NonNull bphy parambphy, @NonNull bphm parambphm, @NonNull bphk parambphk, @NonNull bphv parambphv, @NonNull bphl parambphl)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Bpic = parambpic;
-    this.jdField_a_of_type_Bphy = parambphy;
-    this.jdField_a_of_type_Bphm = parambphm;
-    this.jdField_a_of_type_Bphk = parambphk;
-    this.jdField_a_of_type_Bphl = parambphl;
-    this.jdField_a_of_type_Bphv = parambphv;
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambphm);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambphk);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambphy);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambpic);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambphv);
+    if (((bplj.a(this.a) instanceof QIMCameraStoryCaptureButtonLayout)) && (((QIMCameraStoryCaptureButtonLayout)bplj.a(this.a)).c())) {
+      return true;
+    }
+    return bplj.a(this.a).a(paramMotionEvent);
   }
 }
 

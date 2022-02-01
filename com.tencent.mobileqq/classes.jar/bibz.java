@@ -1,8 +1,18 @@
-import android.view.View;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public abstract interface bibz
+class bibz
+  implements Handler.Callback
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  bibz(bibw parambibw) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if ((paramMessage != null) && (paramMessage.obj != null)) {
+      bibw.a().a(paramMessage.obj.toString());
+    }
+    return false;
+  }
 }
 
 

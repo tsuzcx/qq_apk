@@ -1,51 +1,66 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
+import java.util.HashSet;
+import java.util.Iterator;
 
-class atbo
-  extends atbl
+public class atbo
+  implements atbn
 {
-  private long jdField_a_of_type_Long;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private atbj jdField_a_of_type_Atbj;
-  private beyd jdField_a_of_type_Beyd = new atbp(this);
-  private String jdField_a_of_type_JavaLangString;
-  private UUID jdField_a_of_type_JavaUtilUUID;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  private final HashSet<LoadingLayoutBase> a = new HashSet();
   
-  private atbo(atan paramatan, String paramString1, String paramString2)
+  public void a(LoadingLayoutBase paramLoadingLayoutBase)
   {
-    super(paramatan);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  void a(String paramString, int paramInt)
-  {
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
-    bexz.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
-  }
-  
-  void a(String paramString, int paramInt, atbj paramatbj)
-  {
-    if (paramatbj == null)
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
-      return;
+    if (paramLoadingLayoutBase != null) {
+      this.a.add(paramLoadingLayoutBase);
     }
-    this.jdField_a_of_type_Atbj = paramatbj;
-    this.jdField_b_of_type_Long = Long.parseLong(paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    bexz.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Beyd);
+  }
+  
+  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
+    }
+  }
+  
+  public void setLoadingDrawable(Drawable paramDrawable)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
+    }
+  }
+  
+  public void setPullLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
+    }
+  }
+  
+  public void setRefreshResultLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
+    }
+  }
+  
+  public void setRefreshingLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
+    }
+  }
+  
+  public void setReleaseLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
+    }
   }
 }
 

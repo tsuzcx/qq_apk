@@ -1,24 +1,20 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class bmir
-  implements QQPermissionCallback
+class bmir
+  implements DialogInterface.OnClickListener
 {
-  bmir(String paramString1, String paramString2, Activity paramActivity) {}
+  bmir(bmim parambmim) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bglp.b(bmiq.a(this.jdField_a_of_type_AndroidAppActivity));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bmiq.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.a.a("0X8004857", 1);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmir
  * JD-Core Version:    0.7.0.1
  */

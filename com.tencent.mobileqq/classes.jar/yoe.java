@@ -1,22 +1,40 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
 
 public class yoe
-  extends QQUIEventReceiver<ynm, wwx>
+  extends zsj<yoh>
 {
-  public yoe(@NonNull ynm paramynm)
+  private LruCache<yoh, Drawable> a = new yof(this, 5242880);
+  
+  public LruCache<yoh, Drawable> a()
   {
-    super(paramynm);
+    return this.a;
   }
   
-  public void a(@NonNull ynm paramynm, @NonNull wwx paramwwx)
+  public zsk a(ImageView paramImageView, yoh paramyoh)
   {
-    paramynm.i();
+    return new yoi(paramImageView, paramyoh);
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return wwx.class;
+    super.a();
+    b();
+  }
+  
+  public void b()
+  {
+    super.b();
+    try
+    {
+      this.a.evictAll();
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.a = new yog(this, 5242880);
+    }
   }
 }
 

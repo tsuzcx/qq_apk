@@ -1,52 +1,18 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
-public abstract class bpnt
-  implements bpns
+public final class bpnt
+  implements Parcelable.Creator<QIMFilterCategoryItem>
 {
-  private List<bpno> a = new ArrayList();
-  
-  public void a()
+  public QIMFilterCategoryItem a(Parcel paramParcel)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bpno)localIterator.next()).h();
-    }
+    return new QIMFilterCategoryItem(paramParcel);
   }
   
-  public void a(int paramInt)
+  public QIMFilterCategoryItem[] a(int paramInt)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bpno)localIterator.next()).a(paramInt);
-    }
-  }
-  
-  public void a(bpno parambpno)
-  {
-    if (parambpno == null) {
-      throw new IllegalArgumentException("the observer is null.");
-    }
-    if (this.a.contains(parambpno)) {
-      throw new IllegalStateException("Observer " + parambpno + " is already registered.");
-    }
-    this.a.add(parambpno);
-  }
-  
-  public void b(bpno parambpno)
-  {
-    if (parambpno == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    synchronized (this.a)
-    {
-      int i = this.a.indexOf(parambpno);
-      if (i != -1) {
-        this.a.remove(i);
-      }
-      return;
-    }
+    return new QIMFilterCategoryItem[paramInt];
   }
 }
 

@@ -1,18 +1,63 @@
-class bbco
-  extends anvc
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class bbco
 {
-  bbco(bbck parambbck) {}
+  private int jdField_a_of_type_Int;
+  private bbcq jdField_a_of_type_Bbcq;
+  private bbcr jdField_a_of_type_Bbcr = new bbcp(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  public bbco(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    int j = ((Integer)paramObject).intValue();
-    paramObject = gm.a();
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    if (QLog.isColorLevel()) {
+      QLog.d("OneWayFriendHelper", 0, String.format("OneWayFriendHelper app=%s curType=%s friendUin=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt), paramString }));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bbcr);
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OneWayFriendHelper", 0, String.format("notifyOneWayFriend friendUin=%s oneWayFriend=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+    }
+    if (this.jdField_a_of_type_Bbcq != null) {
+      this.jdField_a_of_type_Bbcq.a(paramString, paramBoolean);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
+    return (paramInt == 0) && (!paramQQAppInterface.b(paramString));
+  }
+  
+  public void a()
+  {
+    if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString))
     {
-      paramObject.b(i, j);
+      bbcn localbbcn = (bbcn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(179);
+      if (localbbcn != null) {
+        localbbcn.a(Long.parseLong(this.jdField_a_of_type_JavaLangString));
+      }
       return;
     }
+    a(this.jdField_a_of_type_JavaLangString, false);
+  }
+  
+  public void a(bbcq parambbcq)
+  {
+    this.jdField_a_of_type_Bbcq = parambbcq;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bbcq = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bbcr);
   }
 }
 

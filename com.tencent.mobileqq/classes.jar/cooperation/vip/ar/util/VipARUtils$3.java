@@ -1,21 +1,21 @@
 package cooperation.vip.ar.util;
 
-import bmti;
-import bmtl;
+import bnuq;
+import bnut;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class VipARUtils$3
   implements Runnable
 {
-  public VipARUtils$3(bmti parambmti) {}
+  public VipARUtils$3(bnuq parambnuq) {}
   
   public void run()
   {
-    if ((bmti.a("VipARUtils_JAR_md5", bmti.b())) || (!bmti.a())) {}
+    if ((bnuq.a("VipARUtils_JAR_md5", bnuq.b())) || (!bnuq.a())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("vip_tar_engine.jar", new bmtl(this));
+        QzoneModuleManager.getInstance().downloadModule("vip_tar_engine.jar", new bnut(this));
       }
       return;
     }

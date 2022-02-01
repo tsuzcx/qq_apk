@@ -1,24 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
 
-class avaf
-  implements ValueAnimator.AnimatorUpdateListener
+public class avaf
+  implements auyi
 {
-  avaf(avad paramavad, int paramInt) {}
+  public avaf(ForwardPhotoOption paramForwardPhotoOption) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (this.jdField_a_of_type_Avad.a.getParent() != null) {
-      this.jdField_a_of_type_Avad.a.getParent().requestLayout();
-    }
+    ForwardPhotoOption.a(this.a).a.setVisibility(0);
+  }
+  
+  public void b()
+  {
+    ForwardPhotoOption.a(this.a).a.setVisibility(8);
   }
 }
 

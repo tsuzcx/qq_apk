@@ -1,7 +1,7 @@
 package com.tencent.sharp.jni;
 
 import android.content.Intent;
-import bkeb;
+import blff;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;

@@ -1,22 +1,32 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class allx
-  implements wom<woh>
+class allx
+  implements View.OnClickListener
 {
-  public allx(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  private allw jdField_a_of_type_Allw;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void a(boolean paramBoolean, woh paramwoh)
+  allx(allw paramallw, MqqHandler paramMqqHandler)
   {
-    yqp.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
-    if ((paramBoolean) && (paramwoh != null))
-    {
-      yqp.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramwoh);
-      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramwoh));
-      return;
+    this.jdField_a_of_type_Allw = paramallw;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Allw.jdField_a_of_type_JavaLangString + " on close");
     }
-    yqp.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
+    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
+    localMessage.obj = this.jdField_a_of_type_Allw;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.jdField_a_of_type_Allw.jdField_a_of_type_Allu.onClose();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

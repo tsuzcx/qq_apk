@@ -1,16 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tfm
-  implements OnCompositionLoadedListener
+  extends tfp
 {
-  public tfm(RefreshAnimView.1 param1) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public tfm(BridgeModule paramBridgeModule)
   {
-    RefreshAnimView.a(this.a.this$0, paramLottieComposition);
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$500(this.a, paramIntent);
   }
 }
 

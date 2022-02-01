@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import bclx;
+import bdep;
 
 public class NewIdentifierCameraCaptureView
   extends IdentifierCameraCaptureView
@@ -24,7 +24,7 @@ public class NewIdentifierCameraCaptureView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    paramInt1 = bclx.b(getContext());
+    paramInt1 = bdep.b(getContext());
     paramInt2 = (int)(paramInt1 / this.a);
     setMeasuredDimension((int)(paramInt1 * this.b), (int)(paramInt2 * this.b));
   }

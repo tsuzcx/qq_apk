@@ -1,79 +1,55 @@
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashSet;
+import java.io.File;
+import java.util.HashMap;
 
-public class aaub
-  extends bkps
+public abstract class aaub
 {
-  private HashSet<Integer> a = new HashSet();
+  aaub jdField_a_of_type_Aaub;
+  aauc jdField_a_of_type_Aauc;
+  String c;
+  String d;
   
-  private void a(View paramView)
+  public aaub(aatd paramaatd, aauc paramaauc, String paramString)
   {
-    if ((paramView instanceof ProteusItemView))
+    this.jdField_a_of_type_Aauc = paramaauc;
+    this.c = paramString;
+  }
+  
+  public aatn a()
+  {
+    synchronized (this.b.jdField_a_of_type_JavaLangObject)
     {
-      paramView = ((ProteusItemView)paramView).a();
-      localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
-      localValueAnimator.setDuration(300L);
-      localValueAnimator.addUpdateListener(new aaud(this, paramView));
-      localValueAnimator.start();
+      aatn localaatn = (aatn)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
+      return localaatn;
     }
-    do
-    {
-      return;
-      paramView = paramView.findViewById(2131376788);
-    } while (paramView == null);
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
-    localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new aaue(this, paramView));
-    localValueAnimator.start();
   }
   
-  protected View a(View paramView, int paramInt)
+  public File a()
   {
-    View localView;
-    if (paramView == null) {
-      localView = null;
+    int i = this.c.indexOf("_");
+    Object localObject = this.c.substring(i + 1, this.c.length());
+    localObject = new File(aatd.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    do
-    {
-      return localView;
-      localView = paramView;
-    } while (!this.a.contains(Integer.valueOf(paramInt)));
-    this.a.remove(Integer.valueOf(paramInt));
-    paramView.getViewTreeObserver().addOnPreDrawListener(new aauc(this, paramView));
-    return paramView;
+    return localObject;
   }
   
-  public void c(int paramInt)
+  public abstract void a();
+  
+  public File b()
   {
-    this.a.add(Integer.valueOf(paramInt));
-    notifyDataSetChanged();
+    File localFile = new File(aatd.jdField_a_of_type_JavaLangString + File.separator + "cache");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
   }
   
-  public int getCount()
+  public void b()
   {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
+    if (this.jdField_a_of_type_Aaub != null) {
+      this.jdField_a_of_type_Aaub.a();
+    }
   }
 }
 

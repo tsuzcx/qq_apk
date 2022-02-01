@@ -1,13 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aipy
   implements DialogInterface.OnClickListener
 {
-  public aipy(BlessTypeActivity paramBlessTypeActivity) {}
+  public aipy(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.I();
+  }
 }
 
 

@@ -1,23 +1,37 @@
-class bhjc
-  implements bhjp
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
+public class bhjc
 {
-  bhjc(bhjb parambhjb) {}
-  
-  public void a(int paramInt, String paramString)
+  public static String a(Context paramContext, String paramString)
   {
-    if (bhjb.a(this.a) != null) {
-      bhjb.a(this.a).a(false);
+    if (paramContext != null) {
+      return paramContext.getSharedPreferences("c_profile_sharepreference", 4).getString(paramString, "");
+    }
+    return "";
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 4).edit();
+      paramContext.remove(paramString);
+      paramContext.commit();
     }
   }
   
-  public void a(bhjg parambhjg)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    bhjb.a(this.a, parambhjg);
-    if (bhjb.a(this.a) != null)
-    {
-      bhjb.a(this.a);
-      bhjb.a(this.a).a(parambhjg.a);
-    }
+    b(paramContext, paramString1, paramString2);
+  }
+  
+  private static void b(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 4).edit();
+    paramContext.putString(paramString1, paramString2);
+    paramContext.commit();
   }
 }
 

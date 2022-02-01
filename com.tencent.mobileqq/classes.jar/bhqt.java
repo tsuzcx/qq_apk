@@ -1,12 +1,24 @@
-import android.os.Bundle;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
 
-public abstract interface bhqt
+class bhqt
+  implements MyLinearLayout.DispatchKeyEventListener
 {
-  public abstract int a(Bundle paramBundle);
+  bhqt(bhqp parambhqp) {}
+  
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
+    {
+      this.a.a();
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqt
  * JD-Core Version:    0.7.0.1
  */

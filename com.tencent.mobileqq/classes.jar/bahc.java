@@ -1,37 +1,53 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
 
-public class bahc
-  extends bahu<ReceiptMessageDetailFragment>
+class bahc
+  extends anyu
 {
-  public bahc(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  bahc(bahb parambahb) {}
+  
+  protected void onSetSelfSignatureResult(boolean paramBoolean)
   {
-    super(paramReceiptMessageDetailFragment);
+    if ((bahb.a(this.a) != null) && (((azxr)bahb.a(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(bahb.b(this.a).getCurrentAccountUin())))
+    {
+      ExtensionInfo localExtensionInfo = ((anyw)bahb.c(this.a).getManager(51)).a(bahb.d(this.a).getCurrentAccountUin());
+      if (localExtensionInfo != null) {
+        bahb.a(this.a, localExtensionInfo.richBuffer, localExtensionInfo.richTime);
+      }
+    }
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
-    }
-    if (paramInt == 0)
+    anyw localanyw;
+    int j;
+    int i;
+    if ((paramBoolean) && (paramArrayOfString != null) && (paramArrayOfString.length > 0) && (bahb.e(this.a) != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
+      localanyw = (anyw)bahb.f(this.a).getManager(51);
+      j = paramArrayOfString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        if (!TextUtils.equals(((azxr)bahb.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, paramArrayOfString[i])) {
+          break label143;
+        }
+        paramArrayOfString = localanyw.a(((azxr)bahb.c(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+        if (paramArrayOfString != null)
+        {
+          ((azxr)bahb.d(this.a)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramArrayOfString.getRichStatus();
+          bahb.a(this.a, ((azxr)bahb.e(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+        }
       }
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
       return;
+      label143:
+      i += 1;
     }
-    if (paramInt != 1281)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
-      return;
-    }
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
   }
 }
 

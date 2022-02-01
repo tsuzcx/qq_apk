@@ -1,120 +1,39 @@
-import android.content.Context;
+import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dalvik.system.DexClassLoader;
-import java.util.HashMap;
-import java.util.Map;
 import mqq.app.MobileQQ;
 
 public class leb
 {
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private Object jdField_a_of_type_JavaLangObject;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private lec jdField_a_of_type_Lec;
+  private boolean jdField_a_of_type_Boolean;
   
   public leb(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  public Map<String, Integer> a()
-  {
-    try
-    {
-      Map localMap = this.jdField_a_of_type_JavaUtilMap;
-      return localMap;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lec(this);
   }
   
   public void a()
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    DexClassLoader localDexClassLoader;
-    do
-    {
-      return;
-      localDexClassLoader = mqv.a();
-      if (this.jdField_a_of_type_JavaUtilMap == null) {
-        this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      }
-      if (this.jdField_a_of_type_Lec == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change receiver");
-        }
-        this.jdField_a_of_type_Lec = new lec(this);
-        localObject = new IntentFilter();
-        ((IntentFilter)localObject).addAction("com.tencent.mobileqq.qav.camera.availability");
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Lec, (IntentFilter)localObject);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change callback");
-      }
-    } while ((Build.VERSION.RELEASE.equalsIgnoreCase("7.1.2")) || (Build.MODEL.equalsIgnoreCase("vivo x9")));
-    this.jdField_a_of_type_JavaLangObject = mqv.a(localDexClassLoader, "com.tencent.av.camera2.CameraManagerWrapper");
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    Context localContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext();
-    String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName();
-    mqv.a(localDexClassLoader, localObject, "registerAvailabilityCb", new Class[] { Context.class, String.class, Handler.class }, new Object[] { localContext, str, null });
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(paramInt));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
   
   public void b()
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
-      return;
-      if (this.jdField_a_of_type_Lec != null) {
-        if (QLog.isColorLevel()) {
-          QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change receiver");
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Lec);
-        this.jdField_a_of_type_Lec = null;
-        if (QLog.isColorLevel()) {
-          QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change callback");
-        }
-        if (this.jdField_a_of_type_JavaLangObject == null) {
-          continue;
-        }
-        mqv.a(mqv.a(), this.jdField_a_of_type_JavaLangObject, "unRegisterAvailabilityCb", null, null);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("GCameraAvailabilityMonitor", 2, "regist e = " + localException);
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }

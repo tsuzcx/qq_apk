@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class alye
-  implements Animation.AnimationListener
 {
-  public alye(SpecailCareListActivity paramSpecailCareListActivity, alyv paramalyv) {}
+  public int a;
+  alyf jdField_a_of_type_Alyf = new alyf(this.jdField_a_of_type_Alyd);
+  String jdField_a_of_type_JavaLangString;
+  public AtomicInteger a;
+  volatile boolean jdField_a_of_type_Boolean;
+  public int b;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public alye(alyd paramalyd)
   {
-    this.jdField_a_of_type_Alyv.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131368138);
-    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
-    this.jdField_a_of_type_Alyv.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Alyv.a.setVisibility(4);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

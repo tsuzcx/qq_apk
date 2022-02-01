@@ -1,21 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
 
 public class beeb
-  implements View.OnTouchListener
 {
-  public beeb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public AsyncImageView a;
+  public GroupPadTemplateInfo a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    return false;
-  }
+  public beeb(bedz parambedz) {}
 }
 
 

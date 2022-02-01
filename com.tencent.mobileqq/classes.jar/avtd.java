@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-public class avtd
-  implements avvj
+public final class avtd
+  implements Parcelable.Creator<HotPicData>
 {
-  public avtd(ListenTogetherManager paramListenTogetherManager) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public HotPicData a(Parcel paramParcel)
   {
-    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
+    return new HotPicData(paramParcel);
+  }
+  
+  public HotPicData[] a(int paramInt)
+  {
+    return new HotPicData[paramInt];
   }
 }
 

@@ -8,14 +8,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
-import ankj;
-import ankk;
-import ankl;
-import ankm;
-import anni;
-import ardl;
-import bgln;
-import bgro;
+import anwg;
+import anwh;
+import anwi;
+import anwj;
+import anzj;
+import arta;
+import bhlo;
+import bhrq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.CPU;
@@ -59,13 +59,13 @@ public class DeviceProfileManager
   private static volatile DeviceProfileManager jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager;
   public static ConfigurationService.ReqGetConfig a;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static List<ankk> jdField_a_of_type_JavaUtilList;
+  private static List<anwh> jdField_a_of_type_JavaUtilList;
   public static boolean a;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "featureValue" };
   private static Field[] jdField_a_of_type_ArrayOfJavaLangReflectField;
   public static boolean b;
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ankj(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anwg(this);
   private HashMap<String, DeviceProfileManager.DPCConfigInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   private HashMap<String, DeviceProfileManager.DPCConfigInfo> b;
@@ -84,7 +84,7 @@ public class DeviceProfileManager
   }
   
   /* Error */
-  public static <T> int a(String paramString, T[] paramArrayOfT, anko<T> paramanko)
+  public static <T> int a(String paramString, T[] paramArrayOfT, anwl<T> paramanwl)
   {
     // Byte code:
     //   0: iconst_0
@@ -154,7 +154,7 @@ public class DeviceProfileManager
     //   start	length	slot	name	signature
     //   0	114	0	paramString	String
     //   0	114	1	paramArrayOfT	T[]
-    //   0	114	2	paramanko	anko<T>
+    //   0	114	2	paramanwl	anwl<T>
     //   32	71	3	i	int
     //   34	72	4	j	int
     //   1	60	5	k	int
@@ -207,31 +207,31 @@ public class DeviceProfileManager
     Object localObject1 = new ConfigurationService.OS();
     ((ConfigurationService.OS)localObject1).setHasFlag(true);
     ((ConfigurationService.OS)localObject1).type.set(2);
-    ((ConfigurationService.OS)localObject1).kernel.set(bgln.m());
-    ((ConfigurationService.OS)localObject1).sdk.set(String.valueOf(bgln.a()));
-    ((ConfigurationService.OS)localObject1).version.set(bgln.e());
-    ((ConfigurationService.OS)localObject1).rom.set(bgln.j());
+    ((ConfigurationService.OS)localObject1).kernel.set(bhlo.m());
+    ((ConfigurationService.OS)localObject1).sdk.set(String.valueOf(bhlo.a()));
+    ((ConfigurationService.OS)localObject1).version.set(bhlo.e());
+    ((ConfigurationService.OS)localObject1).rom.set(bhlo.j());
     ConfigurationService.CPU localCPU = new ConfigurationService.CPU();
     localCPU.setHasFlag(true);
-    localCPU.model.set(bgln.g());
-    localCPU.cores.set(bgln.b());
-    localCPU.frequency.set((int)bgln.a());
+    localCPU.model.set(bhlo.g());
+    localCPU.cores.set(bhlo.b());
+    localCPU.frequency.set((int)bhlo.a());
     ConfigurationService.Memory localMemory = new ConfigurationService.Memory();
     localMemory.setHasFlag(true);
-    localMemory.total.set(bgln.d());
-    localMemory.process.set(bgln.f());
+    localMemory.total.set(bhlo.d());
+    localMemory.process.set(bhlo.f());
     ConfigurationService.Storage localStorage = new ConfigurationService.Storage();
     localStorage.setHasFlag(true);
-    localStorage.builtin.set(bgln.c());
-    Object localObject2 = bgln.b();
+    localStorage.builtin.set(bhlo.c());
+    Object localObject2 = bhlo.b();
     localStorage.external.set(localObject2[0] * 1048576L + localObject2[1] * 1024L * 1024L);
     localObject2 = new ConfigurationService.Screen();
     ((ConfigurationService.Screen)localObject2).setHasFlag(true);
     ((ConfigurationService.Screen)localObject2).model.set("");
-    ((ConfigurationService.Screen)localObject2).width.set((int)bgln.g());
-    ((ConfigurationService.Screen)localObject2).height.set((int)bgln.h());
-    ((ConfigurationService.Screen)localObject2).dpi.set(bgln.d());
-    ((ConfigurationService.Screen)localObject2).multi_touch.set(bgln.c());
+    ((ConfigurationService.Screen)localObject2).width.set((int)bhlo.g());
+    ((ConfigurationService.Screen)localObject2).height.set((int)bhlo.h());
+    ((ConfigurationService.Screen)localObject2).dpi.set(bhlo.d());
+    ((ConfigurationService.Screen)localObject2).multi_touch.set(bhlo.c());
     ConfigurationService.Camera localCamera = new ConfigurationService.Camera();
     localCamera.setHasFlag(true);
     localCamera.primary.set(0L);
@@ -241,9 +241,9 @@ public class DeviceProfileManager
     ((ConfigurationService.ConfigSeq)localObject3).setHasFlag(true);
     ((ConfigurationService.ConfigSeq)localObject3).type.set(4);
     long l1 = System.currentTimeMillis();
-    SharedPreferences localSharedPreferences = bgro.a(BaseApplicationImpl.getContext(), "dpcConfig_account");
+    SharedPreferences localSharedPreferences = bhrq.a(BaseApplicationImpl.getContext(), "dpcConfig_account");
     long l2 = localSharedPreferences.getLong(DeviceProfileManager.AccountDpcManager.a(paramAppInterface, "last_update_time"), 0L);
-    int k = ardl.a(BaseApplicationImpl.getContext());
+    int k = arta.a(BaseApplicationImpl.getContext());
     int m = localSharedPreferences.getInt("key_versioncode", 0);
     if (QLog.isColorLevel()) {
       QLog.d("DeviceProfileManager", 2, "DeviceProfileManager.KEY_LAST_UPDATE_TIME=" + l2 + ",nowSystemTime=" + l1 + "versionCode=" + k + ",key_versioncode=" + m);
@@ -262,8 +262,8 @@ public class DeviceProfileManager
     paramAppInterface.add(localObject3);
     localObject3 = new ConfigurationService.DeviceInfo();
     ((ConfigurationService.DeviceInfo)localObject3).setHasFlag(true);
-    ((ConfigurationService.DeviceInfo)localObject3).brand.set(bgln.h());
-    ((ConfigurationService.DeviceInfo)localObject3).model.set(bgln.d());
+    ((ConfigurationService.DeviceInfo)localObject3).brand.set(bhlo.h());
+    ((ConfigurationService.DeviceInfo)localObject3).model.set(bhlo.d());
     ((ConfigurationService.DeviceInfo)localObject3).os = ((ConfigurationService.OS)localObject1);
     ((ConfigurationService.DeviceInfo)localObject3).cpu = localCPU;
     ((ConfigurationService.DeviceInfo)localObject3).memory = localMemory;
@@ -297,10 +297,10 @@ public class DeviceProfileManager
     new DeviceProfileManager.DPCConfigInfo().featureValue = "1";
     this.jdField_b_of_type_JavaUtilHashMap.put(DeviceProfileManager.DpcNames.aio_eggs.name(), localObject);
     localObject = new DeviceProfileManager.DPCConfigInfo();
-    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = anni.a(2131701997);
+    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = anzj.a(2131702104);
     this.jdField_b_of_type_JavaUtilHashMap.put(DeviceProfileManager.DpcNames.OneyWayDateMsgNotifyCfg.name(), localObject);
     localObject = new DeviceProfileManager.DPCConfigInfo();
-    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = anni.a(2131701992);
+    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = anzj.a(2131702099);
     this.jdField_b_of_type_JavaUtilHashMap.put(DeviceProfileManager.DpcNames.OneyWayLBSFriendMsgNotifyCfg.name(), localObject);
   }
   
@@ -333,15 +333,15 @@ public class DeviceProfileManager
     }
   }
   
-  public static void a(ankk paramankk)
+  public static void a(anwh paramanwh)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       if (jdField_a_of_type_JavaUtilList == null) {
         jdField_a_of_type_JavaUtilList = new ArrayList();
       }
-      if ((paramankk != null) && (!jdField_a_of_type_JavaUtilList.contains(paramankk))) {
-        jdField_a_of_type_JavaUtilList.add(paramankk);
+      if ((paramanwh != null) && (!jdField_a_of_type_JavaUtilList.contains(paramanwh))) {
+        jdField_a_of_type_JavaUtilList.add(paramanwh);
       }
       return;
     }
@@ -408,7 +408,7 @@ public class DeviceProfileManager
     }
     jdField_b_of_type_Boolean = true;
     a();
-    SharedPreferences localSharedPreferences = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig");
+    SharedPreferences localSharedPreferences = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig");
     this.jdField_a_of_type_Int = localSharedPreferences.getInt("ab_rand", -1);
     Object localObject;
     if (this.jdField_a_of_type_Int == -1)
@@ -484,7 +484,7 @@ public class DeviceProfileManager
       paramEditor2.putInt(DeviceProfileManager.AccountDpcManager.a(jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$AccountDpcManager.jdField_a_of_type_ComTencentCommonAppAppInterface, "server_version"), paramConfig.version.get());
     }
     int i = paramSharedPreferences.getInt("key_versioncode", 0);
-    int j = ardl.a(BaseApplicationImpl.getApplication());
+    int j = arta.a(BaseApplicationImpl.getApplication());
     if (i < j) {
       paramEditor2.putInt("key_versioncode", j);
     }
@@ -542,12 +542,12 @@ public class DeviceProfileManager
     finally {}
   }
   
-  public static void b(ankk paramankk)
+  public static void b(anwh paramanwh)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if ((jdField_a_of_type_JavaUtilList != null) && (paramankk != null)) {
-        jdField_a_of_type_JavaUtilList.remove(paramankk);
+      if ((jdField_a_of_type_JavaUtilList != null) && (paramanwh != null)) {
+        jdField_a_of_type_JavaUtilList.remove(paramanwh);
       }
       return;
     }
@@ -566,11 +566,11 @@ public class DeviceProfileManager
         i = jdField_a_of_type_JavaUtilList.size() - 1;
         if (i >= 0)
         {
-          ankk localankk = (ankk)jdField_a_of_type_JavaUtilList.get(i);
-          if (localankk == null) {
+          anwh localanwh = (anwh)jdField_a_of_type_JavaUtilList.get(i);
+          if (localanwh == null) {
             break label68;
           }
-          localankk.a(paramBoolean);
+          localanwh.a(paramBoolean);
         }
       }
       return;
@@ -698,7 +698,7 @@ public class DeviceProfileManager
         localObject2 = null;
         return localObject2;
       }
-      localObject1 = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+      localObject1 = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
       localObject2 = DeviceProfileManager.AccountDpcManager.a(jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$AccountDpcManager, paramString);
       String str = ((SharedPreferences)localObject1).getString((String)localObject2, "");
       if ("".equals(str))
@@ -723,7 +723,7 @@ public class DeviceProfileManager
         b((DeviceProfileManager.DPCConfigInfo)localObject1, str);
       }
     }
-    Object localObject2 = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig").getString(paramString, "");
+    Object localObject2 = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig").getString(paramString, "");
     if ("".equals(localObject2))
     {
       localObject1 = (DeviceProfileManager.DPCConfigInfo)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
@@ -976,13 +976,13 @@ public class DeviceProfileManager
     return a(paramString);
   }
   
-  public boolean a(String paramString, HashMap<String, ankm> paramHashMap)
+  public boolean a(String paramString, HashMap<String, anwj> paramHashMap)
   {
-    QLog.i("DeviceProfileManager", 1, "dpcStart{" + SecUtil.xor(paramString, "8.4.1") + "}dpcEnd");
+    QLog.i("DeviceProfileManager", 1, "dpcStart{" + SecUtil.xor(paramString, "8.4.5") + "}dpcEnd");
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
     }
-    paramHashMap = new ankl(paramHashMap);
+    paramHashMap = new anwi(paramHashMap);
     try
     {
       SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes("utf-8"))), paramHashMap);

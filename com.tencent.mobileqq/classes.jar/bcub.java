@@ -1,24 +1,20 @@
+import com.tencent.mobileqq.data.MessageForWriteTogether;
+import com.tencent.mobileqq.data.MessageRecord;
+
 public class bcub
-  extends bcua
+  implements adbf
 {
-  public long c = 0L;
-  boolean e = false;
-  public int j = 80;
-  public int k = 70;
-  public int l = 5;
-  public int m;
-  
-  public bcub(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public MessageRecord a(int paramInt)
   {
-    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
-    this.l = (paramInt1 % 1000);
-    this.k = (paramInt1 / 1000 % 1000);
-    this.j = (paramInt1 / 1000 / 1000 % 1000);
+    if (paramInt == -7014) {
+      return new MessageForWriteTogether();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcub
  * JD-Core Version:    0.7.0.1
  */

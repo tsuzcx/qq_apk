@@ -12,27 +12,27 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import bmqa;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.view.ClipDianDianTouchAreaLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import oat;
-import ryj;
-import smj;
-import svi;
-import tkf;
+import ocd;
+import rpf;
+import sdn;
+import sml;
+import tay;
 
 public class DailyDianDianEntranceView
   extends FrameLayout
-  implements View.OnClickListener, svi
+  implements View.OnClickListener, sml
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ClipDianDianTouchAreaLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout;
   private ReadInJoyColorBandEntranceButton jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton;
-  private ryj jdField_a_of_type_Ryj;
+  private rpf jdField_a_of_type_Rpf;
   
   public DailyDianDianEntranceView(@NonNull Context paramContext)
   {
@@ -50,22 +50,22 @@ public class DailyDianDianEntranceView
   
   private void b()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562752, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton = ((ReadInJoyColorBandEntranceButton)localView.findViewById(2131366049));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout = ((ClipDianDianTouchAreaLayout)localView.findViewById(2131366052));
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562793, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton = ((ReadInJoyColorBandEntranceButton)localView.findViewById(2131366095));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout = ((ClipDianDianTouchAreaLayout)localView.findViewById(2131366098));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.setTouchWidget(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton, 0);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setOnVideoCoverClickListener(this);
-    int j = smj.a().a();
+    int j = sdn.a().a();
     RecommendFeedsDiandianEntranceManager.a().b(j);
     QLog.d("DailyDianDianEntranceView", 1, "init | DailyFeedsDiandianEntranceManager daily feeds entryMode : " + j);
-    int i = 2130849365;
+    int i = 2130849384;
     if (j == 1) {
-      switch (bmqa.d())
+      switch (bnrf.e())
       {
       default: 
-        this.jdField_a_of_type_Ryj = new ryj(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton, getContext());
-        this.jdField_a_of_type_Ryj.a(1);
-        i = 2130843059;
+        this.jdField_a_of_type_Rpf = new rpf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton, getContext());
+        this.jdField_a_of_type_Rpf.a(1);
+        i = 2130843079;
         switch (j)
         {
         }
@@ -75,16 +75,16 @@ public class DailyDianDianEntranceView
     do
     {
       return;
-      i = 2130849399;
+      i = 2130849418;
       break;
-      i = 2130849366;
+      i = 2130849385;
       break;
       if (j != 3) {
         break;
       }
-      i = 2130849364;
+      i = 2130849383;
       break;
-    } while (!bmqa.h());
+    } while (!bnrf.h());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setClickAnimMode(1);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setDefaultIconBigMode(80, 80);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.setVisibility(0);
@@ -107,33 +107,33 @@ public class DailyDianDianEntranceView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ryj != null) {
-      this.jdField_a_of_type_Ryj.c();
+    if (this.jdField_a_of_type_Rpf != null) {
+      this.jdField_a_of_type_Rpf.c();
     }
   }
   
-  public void a(tkf paramtkf)
+  public void a(tay paramtay)
   {
-    if ((paramtkf == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton == null)) {}
+    if ((paramtay == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton == null)) {}
     int i;
     do
     {
       return;
-      i = smj.a().a();
+      i = sdn.a().a();
       QLog.d("DailyDianDianEntranceView", 1, "onEntryIconRefresh | entryMode " + i);
     } while ((i == 0) || (i == 2));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setDataSource(paramtkf);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setDataSource(paramtay);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.getVisibility() == 0))
     {
-      if (paramtkf == null) {
+      if (paramtay == null) {
         break label146;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.a(paramtkf);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.a(paramtay);
       QLog.d("DailyDianDianEntranceView", 1, "onEntryIconRefresh | addRedDot entryMode " + i);
     }
     for (;;)
     {
-      oat.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", RecommendFeedsDiandianEntranceManager.a().b(1), false);
+      ocd.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", RecommendFeedsDiandianEntranceManager.a().b(1), false);
       return;
       label146:
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setNotMsg();
@@ -141,18 +141,18 @@ public class DailyDianDianEntranceView
     }
   }
   
-  public void b(tkf paramtkf)
+  public void b(tay paramtay)
   {
-    if ((paramtkf == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton == null)) {}
+    if ((paramtay == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton == null)) {}
     do
     {
       return;
       QLog.d("DailyDianDianEntranceView", 1, "onAccountChange");
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.a();
     } while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.getVisibility() != 0));
-    if (paramtkf != null)
+    if (paramtay != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.a(paramtkf);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.a(paramtay);
       return;
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setNotMsg();

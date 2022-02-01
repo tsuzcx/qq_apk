@@ -1,20 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import java.util.List;
-
-class aycu
-  implements aycz
+public class aycu
 {
-  aycu(aycs paramaycs, Activity paramActivity) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void a(View paramView, int paramInt)
+  public aycu() {}
+  
+  public aycu(String paramString, int paramInt1, int paramInt2)
   {
-    paramView = (ayde)aydd.a().a().get(paramInt);
-    ayen.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a(), 60010);
-    ayej.a(String.valueOf(paramView.a()), paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
-  
-  public void b(View paramView, int paramInt) {}
 }
 
 

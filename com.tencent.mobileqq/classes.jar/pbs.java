@@ -1,16 +1,65 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pbs
-  extends pcm
+public class pbs
+  implements AladdinConfigHandler
 {
-  pbs(pbe parampbe, boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  private static final Set<String> a = ;
+  
+  public static Set<String> a()
   {
-    super(parampbe, null);
+    String str = onn.e();
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "getNativeFeedsAlladinKey | operationBarAladdinKey : " + str);
+    if ((a != null) && (!TextUtils.isEmpty(str))) {
+      a.add(str);
+    }
+    return a;
   }
   
-  void a(pcp parampcp)
+  private static Set<String> b()
   {
-    parampcp.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bnrf.a("native_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
+    }
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      localHashSet.add(localObject[i]);
+      i += 1;
+    }
+    return localHashSet;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
+      {
+        String str2 = (String)paramString.get(str1);
+        QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+        bnrf.a("native_feeds_aladdin_keys", str2);
+      }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

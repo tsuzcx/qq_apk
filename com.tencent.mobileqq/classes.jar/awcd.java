@@ -1,8 +1,15 @@
-public abstract class awcd
+import com.tencent.qphone.base.util.QLog;
+
+class awcd
+  implements awcx
 {
-  public abstract void a();
+  awcd(awcc paramawcc, awef paramawef) {}
   
-  public abstract void a(avwp paramavwp);
+  public void a(int paramInt, String paramString)
+  {
+    QLog.i("XProxy|NowProxy", 1, "openWatchTogetherRoom  enter success  retCode= " + paramInt + ";msg=" + paramString);
+    this.jdField_a_of_type_Awef.a(paramInt, paramString);
+  }
 }
 
 

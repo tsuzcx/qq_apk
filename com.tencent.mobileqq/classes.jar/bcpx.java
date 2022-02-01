@@ -1,11 +1,47 @@
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.ColorNickManagerProxy.Proxy;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public final class bcpx
-  implements RecentRoute.ColorNickManagerProxy.Proxy
+public class bcpx
+  extends bcpy
 {
-  public CharSequence transformMessageWithAtTroopMember(String paramString1, String paramString2)
+  PeakAppInterface a;
+  
+  public bcpx(PeakAppInterface paramPeakAppInterface)
   {
-    return bgwv.a(paramString1, paramString2, 16, null, 3);
+    this.a = paramPeakAppInterface;
+  }
+  
+  public AppInterface a()
+  {
+    return this.a;
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      super.a();
+      a(new boqh(this.a));
+      super.b();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    a(paramToServiceMsg, null, bcuv.class);
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 

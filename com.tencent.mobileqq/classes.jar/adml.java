@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mfsdk.collector.ResultObject;
 
-public class adml
-  implements DialogInterface.OnClickListener
+public abstract interface adml
 {
-  public adml(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a();
-  }
+  public abstract boolean a(ResultObject paramResultObject, admm paramadmm);
 }
 
 

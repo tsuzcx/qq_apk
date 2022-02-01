@@ -1,23 +1,37 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class auho
-  implements URLDrawable.URLDrawableListener
+class auho
+  implements aufb
 {
-  public auho(ForwardMarketFaceOption paramForwardMarketFaceOption) {}
+  auho(auha paramauha) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    paramURLDrawable.setBounds(bgmo.a(paramURLDrawable, 36, 100, this.a.a));
-    ForwardMarketFaceOption.a(this.a).setImageDrawable(paramURLDrawable);
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Auei.a();
+    bftf localbftf = this.a.a(localFileManagerEntity);
+    if ((TextUtils.isEmpty(auha.a(this.a))) && (localbftf.a != null)) {
+      auha.a(this.a, localbftf.a.toString());
+    }
+    bfsf localbfsf = new bfsf(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
+    if (((localbftf.b == 3) || (localbftf.b == 2)) && (localbftf.a != null)) {
+      localbfsf.a(localbftf.a);
+    }
+    localFileManagerEntity.status = 2;
+  }
+  
+  public void b()
+  {
+    Object localObject = this.a.jdField_a_of_type_Auei.a();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
+    localObject = this.a.a((FileManagerEntity)localObject);
+    if (!TextUtils.isEmpty(auha.a(this.a)))
+    {
+      localTroopFileTransferManager.a(UUID.fromString(auha.a(this.a)));
+      auha.a(this.a, (bftf)localObject);
+    }
   }
 }
 

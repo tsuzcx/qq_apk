@@ -1,12 +1,21 @@
-public abstract interface awxh
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+
+public class awxh
+  extends Handler
 {
-  public abstract void a();
+  public awxh(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(awxe paramawxe);
-  
-  public abstract void a(awxe paramawxe, int paramInt);
-  
-  public abstract void b(awxe paramawxe);
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.requestLayout();
+    this.a.invalidate();
+  }
 }
 
 

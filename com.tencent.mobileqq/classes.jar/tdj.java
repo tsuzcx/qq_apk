@@ -1,47 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 class tdj
-  extends anxw
+  implements tby
 {
-  tdj(tdi paramtdi) {}
+  tdj(tdi paramtdi, FrameLayout paramFrameLayout) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
+    if (tdi.a(this.jdField_a_of_type_Tdi) != null) {
+      tdi.a(this.jdField_a_of_type_Tdi).a(paramInt);
     }
   }
   
-  public void a(List<bbof> paramList, int paramInt)
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 10) {}
-    String str;
-    bbof localbbof;
-    do
+    if (paramInt2 == 5)
     {
-      return;
-      while (!paramList.hasNext())
-      {
-        do
-        {
-          str = bbgu.b;
-        } while ((paramList == null) || (paramList.size() <= 0));
-        paramList = paramList.iterator();
-      }
-      localbbof = (bbof)paramList.next();
-    } while (((localbbof.jdField_a_of_type_Int != 1) || (!TextUtils.equals(str, "Hot_word"))) && ((localbbof.jdField_a_of_type_Int != 7) || (!TextUtils.equals(str, "Recom_word"))));
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localbbof);
-    tdi.b = 0;
-    tdi.jdField_a_of_type_Int = 0;
-    this.a.a(true, -1, -1);
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      tdi.a(this.jdField_a_of_type_Tdi).getActivity().sendBroadcast(localIntent);
+    }
+    tdi.a(this.jdField_a_of_type_Tdi).getActivity().doOnBackPressed();
+    tdi.a(this.jdField_a_of_type_Tdi).getActivity().overridePendingTransition(0, 0);
   }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt == 2) && (tdi.a(this.jdField_a_of_type_Tdi).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
+  }
+  
+  public void c() {}
 }
 
 

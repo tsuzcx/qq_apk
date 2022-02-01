@@ -1,21 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class asqi
-  implements Animation.AnimationListener
+public class asqi
+  implements Animator.AnimatorListener
 {
-  asqi(asqe paramasqe) {}
+  public asqi(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
-    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionSearchPanel", 2, "upAndDownAnim onAnimationEnd=");
+    }
+    agej.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
+    this.a.c();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionSearchPanel", 2, "upAndDownAnim start animStartBottom=" + EmotionSearchPanel.b(this.a));
+    }
+    EmotionSearchPanel.c(this.a, EmotionSearchPanel.b(this.a));
+    ((asnw)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).c(4);
+  }
 }
 
 

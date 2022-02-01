@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
 
-public final class rqt
-  implements Parcelable.Creator<ResultRecord>
+public class rqt
+  extends AnimatorListenerAdapter
 {
-  public ResultRecord a(Parcel paramParcel)
+  public rqt(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new ResultRecord(paramParcel);
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
   }
   
-  public ResultRecord[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new ResultRecord[paramInt];
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
   }
 }
 

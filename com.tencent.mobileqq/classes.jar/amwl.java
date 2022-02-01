@@ -1,18 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class amwl
-  extends arpd
+  extends alms
 {
-  public amwl(ApolloGameActivity paramApolloGameActivity) {}
+  public amwl(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, alml paramalml, int paramInt)
+  {
+    super(paramContext, paramQQAppInterface, paramXListView, paramalml, paramInt);
+  }
   
-  public void onBindedToClient() {}
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
+  }
   
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
+    }
+  }
 }
 
 

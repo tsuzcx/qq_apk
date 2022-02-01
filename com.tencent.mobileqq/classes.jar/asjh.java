@@ -1,22 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
 
 public class asjh
-  implements CompoundButton.OnCheckedChangeListener
+  implements anlr
 {
-  public asjh(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  public asjh(MessengerService.IncomingHandler.30 param30) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(long paramLong, String paramString)
   {
-    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new asji(this, paramBoolean));
-    if (paramBoolean) {}
-    for (String str = "0X8009F0F";; str = "0X8009F10")
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
     {
-      bcst.b(this.a.getActivity().app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
       return;
     }
   }

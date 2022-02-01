@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.NativeGifFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class asst
-  extends asyw
 {
-  public asst(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
+    try
+    {
+      if (NativeGifFactory.isUseNewGif()) {
+        return new assv(paramFile, paramInt, paramBoolean);
+      }
+      paramFile = new assu(paramFile, paramInt, paramBoolean);
+      return paramFile;
     }
+    catch (IOException paramFile)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
+      }
+    }
+    return null;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acnw;
-import acqy;
+import acry;
+import acvc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.ResultReceiver;
@@ -15,15 +15,15 @@ final class GdtMotiveVideoFragment$1
   {
     try
     {
-      acnw localacnw = new acnw(this.jdField_a_of_type_AndroidAppActivity);
-      localacnw.a(this.jdField_a_of_type_AndroidContentIntent);
-      localacnw.a(this.jdField_a_of_type_AndroidOsResultReceiver);
-      localacnw.show();
+      acry localacry = new acry(this.jdField_a_of_type_AndroidAppActivity);
+      localacry.a(this.jdField_a_of_type_AndroidContentIntent);
+      localacry.a(this.jdField_a_of_type_AndroidOsResultReceiver);
+      localacry.show();
       return;
     }
     catch (Exception localException)
     {
-      acqy.b("GdtMotiveVideoFragment", "dialog.show() err");
+      acvc.b("GdtMotiveVideoFragment", "dialog.show() err");
     }
   }
 }

@@ -1,18 +1,12 @@
-import android.os.Bundle;
-
-public abstract interface aucv
+class aucv
+  implements bjhv
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  aucv(auct paramauct, aumz paramaumz) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void c(Bundle paramBundle);
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Aumz.a();
+  }
 }
 
 

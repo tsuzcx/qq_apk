@@ -1,22 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import java.util.List;
 
-final class asmz
-  implements View.OnTouchListener
+public class asmz
+  implements asmy
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private asmz(EmoticonMainPanel paramEmoticonMainPanel) {}
+  
+  public List<aspt> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if ((paramBoolean2) || (EmoticonMainPanel.a(this.a).jdField_a_of_type_Asnn.b)) {
+      return asos.b(EmoticonMainPanel.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    if (!paramBoolean1) {
+      return asos.a(EmoticonMainPanel.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
+    return asos.a(EmoticonMainPanel.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, EmoticonMainPanel.a(this.a).g, EmoticonMainPanel.a(this.a).h);
   }
 }
 

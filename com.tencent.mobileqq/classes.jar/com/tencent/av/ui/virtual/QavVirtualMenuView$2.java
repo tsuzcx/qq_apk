@@ -14,19 +14,19 @@ class QavVirtualMenuView$2
   public void run()
   {
     long l;
-    if (AEFilterSupport.a()) {
+    if (AEFilterSupport.a() > 3) {
       l = SystemClock.elapsedRealtime();
     }
     try
     {
       AIManager.installDetector(PTHumanSegmenter.class);
-      label16:
+      label17:
       QLog.i(QavVirtualMenuView.a(this.this$0), 1, "preload PTHumanSegmenter, cost[" + (SystemClock.elapsedRealtime() - l) + "]");
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label16;
+      break label17;
     }
   }
 }

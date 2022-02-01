@@ -1,21 +1,16 @@
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProvider.AndroidViewModelFactory;
-import android.arch.lifecycle.ViewModelProvider.Factory;
-import android.arch.lifecycle.ViewModelStoreOwner;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bner
+public abstract interface bner
 {
-  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner)
-  {
-    return new ViewModelProvider(paramViewModelStoreOwner, ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplicationImpl.getApplication()));
-  }
+  public abstract void a(PluginRecord paramPluginRecord);
   
-  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner, ViewModelProvider.Factory paramFactory)
-  {
-    return new ViewModelProvider(paramViewModelStoreOwner, paramFactory);
-  }
+  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void b(PluginRecord paramPluginRecord);
+  
+  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void c(PluginRecord paramPluginRecord);
 }
 
 

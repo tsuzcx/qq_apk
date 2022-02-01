@@ -1,63 +1,76 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGroupDateVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class wzh
-  extends wlf
+  extends wzd
 {
-  public String a;
-  public long b;
-  public String b;
-  public int c;
-  private final String c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public wzh()
+  public wzh(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_c_of_type_JavaLangString = wjz.a("StoryGroupSvc.datacard_get_feeds_new");
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramViewGroup, paramInt);
   }
   
-  public String a()
+  protected void a(ShareGroupItem paramShareGroupItem)
   {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGroupDateVideoList localRspGroupDateVideoList = new qqstory_service.RspGroupDateVideoList();
-    try
+    String str;
+    Object localObject;
+    int i;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if ((paramShareGroupItem == null) || (TextUtils.isEmpty(paramShareGroupItem.getName())))
     {
-      localRspGroupDateVideoList.mergeFrom(paramArrayOfByte);
-      return new xax(this.a, localRspGroupDateVideoList);
+      str = anzj.a(2131712804);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      localObject = (yaz)wth.a(24);
+      i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131298448);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      if (localLayoutParams != null) {
+        break label116;
+      }
+      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      label91:
+      if (paramShareGroupItem != null) {
+        break label131;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((yaz)localObject).a());
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    label116:
+    do
     {
-      yqp.b("Q.qqstory.shareGroup:GetShareGroupDateListRequest", a(), paramArrayOfByte);
-    }
-    return null;
+      return;
+      str = paramShareGroupItem.getName();
+      break;
+      localLayoutParams.width = i;
+      localLayoutParams.height = i;
+      break label91;
+      localObject = ((yaz)localObject).a(paramShareGroupItem.headerUnionIdList, str);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    } while (!QLog.isColorLevel());
+    label131:
+    paramShareGroupItem = new StringBuilder("nickname = ").append(str).append(", headerUnionIdList = ").append(paramShareGroupItem.headerUnionIdList);
+    QLog.e("zivonxxx", 2, "ShareGroupViewHolder: " + paramShareGroupItem.toString());
   }
   
-  protected byte[] a()
+  public void a(wvn paramwvn)
   {
-    qqstory_service.ReqGroupDateVideoList localReqGroupDateVideoList = new qqstory_service.ReqGroupDateVideoList();
-    localReqGroupDateVideoList.from.set(this.e);
-    localReqGroupDateVideoList.group_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGroupDateVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqGroupDateVideoList.date_count.set(this.jdField_c_of_type_Int);
-    localReqGroupDateVideoList.video_count.set(this.d);
-    localReqGroupDateVideoList.seqno.set(this.jdField_b_of_type_Long);
-    if (this.f != -1) {
-      localReqGroupDateVideoList.time_zone.set(this.f);
+    super.a(paramwvn);
+    this.itemView.setTag(paramwvn.a);
+    ShareGroupItem localShareGroupItem = ((ydc)wth.a(7)).a(paramwvn.a);
+    a(localShareGroupItem);
+    if (localShareGroupItem == null) {
+      new xab(paramwvn.a, String.valueOf(System.currentTimeMillis())).a();
     }
-    return localReqGroupDateVideoList.toByteArray();
+    if (QLog.isColorLevel()) {
+      QLog.e("zivonchen", 2, "ShareGroupViewHolder groupItem = " + localShareGroupItem + ", unionId = " + paramwvn.a);
+    }
   }
 }
 

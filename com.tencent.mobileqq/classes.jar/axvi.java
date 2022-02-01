@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import java.util.ArrayList;
 
-class axvi
-  implements DialogInterface.OnClickListener
+public class axvi
+  implements aasd
 {
-  axvi(axvh paramaxvh, bgpa parambgpa) {}
+  public axvi(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    this.jdField_a_of_type_Axvh.a.f();
+    Object localObject;
+    Intent localIntent;
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
+    {
+      localObject = paramBundle.getStringArrayList("uins");
+      paramBundle.getStringArrayList("tinyIds");
+      paramBundle = (String)((ArrayList)localObject).get(0);
+      localObject = this.a.mRuntime.a();
+      localIntent = new Intent((Context)localObject, ChatActivity.class);
+      localIntent.putExtra("PREVIOUS_UIN", paramBundle);
+      localIntent.putExtra("uin", paramBundle);
+      if (NearbyJsInterface.a(this.a) != 1) {
+        break label125;
+      }
+    }
+    label125:
+    for (int i = 10002;; i = 1001)
+    {
+      localIntent.putExtra("uintype", i);
+      localIntent.putExtra("gender", 1);
+      localIntent.addFlags(67108864);
+      ((Context)localObject).startActivity(localIntent);
+      return;
+    }
   }
 }
 

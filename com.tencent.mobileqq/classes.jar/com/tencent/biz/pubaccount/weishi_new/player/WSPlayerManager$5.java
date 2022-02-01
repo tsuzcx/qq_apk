@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import ujv;
-import ukb;
-import ukc;
-import uke;
+import ukp;
+import ukz;
+import ula;
+import ulc;
 
 class WSPlayerManager$5
   implements Runnable
@@ -24,7 +24,7 @@ class WSPlayerManager$5
       {
         Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((ukc)localIterator.next()).e(WSPlayerManager.b(this.this$0));
+          ((ula)localIterator.next()).e(WSPlayerManager.b(this.this$0));
         }
       }
     }

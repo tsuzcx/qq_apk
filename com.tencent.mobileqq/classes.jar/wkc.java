@@ -1,18 +1,6 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
-
-public class wkc
+abstract interface wkc
 {
-  public static void a(SparseIntArray paramSparseIntArray)
-  {
-    wkv.a(paramSparseIntArray);
-  }
-  
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
-  {
-    wkv.a(paramMSFServlet, paramIntent, paramBoolean);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

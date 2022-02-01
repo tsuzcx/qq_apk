@@ -1,14 +1,38 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class amkt
-  implements Comparator<amkw>
+class amkt
+  implements amjs
 {
-  public amkt(ApolloCmdChannel paramApolloCmdChannel) {}
+  amkt(amkr paramamkr, String paramString) {}
   
-  public int a(amkw paramamkw1, amkw paramamkw2)
+  public void a(boolean paramBoolean)
   {
-    return paramamkw1.a() - paramamkw2.a();
+    if (paramBoolean) {}
+    try
+    {
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Amkr.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      amkr.a(this.jdField_a_of_type_Amkr, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        amkr.a(this.jdField_a_of_type_Amkr, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    amkr.a(this.jdField_a_of_type_Amkr, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 

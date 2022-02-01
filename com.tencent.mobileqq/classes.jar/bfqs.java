@@ -1,28 +1,18 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.util.Comparator;
 
 final class bfqs
-  implements View.OnTouchListener
+  implements Comparator<String>
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(String paramString1, String paramString2)
   {
-    switch (paramMotionEvent.getAction())
+    try
     {
+      int i = paramString1.getBytes("utf-8").length;
+      int j = paramString2.getBytes("utf-8").length;
+      return i - j;
     }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
+    catch (Exception localException) {}
+    return paramString1.getBytes().length - paramString2.getBytes().length;
   }
 }
 

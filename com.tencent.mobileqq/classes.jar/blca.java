@@ -1,17 +1,40 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import mqq.os.MqqHandler;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public abstract class blca
-  implements Observer
+final class blca
+  implements blcp
 {
-  public abstract void a();
+  private long a;
   
-  public final void update(Observable paramObservable, Object paramObject)
+  public blca(long paramLong)
   {
-    ThreadManager.getUIHandler().post(new QQComicRedTouchManager.PluginRedTouchObserver.1(this));
+    this.a = paramLong;
+  }
+  
+  public void a(int paramInt, blco paramblco, blcq paramblcq)
+  {
+    long l1 = 0L;
+    if (this.a != 0L)
+    {
+      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
+        break label46;
+      }
+      QSecFramework.a(5L, this.a, paramInt, 0L, null, null, null, null);
+    }
+    label46:
+    while (paramInt != 3) {
+      return;
+    }
+    int i = paramblcq.jdField_a_of_type_Int;
+    int j = paramblcq.b;
+    int k = paramblcq.c;
+    int m = paramblcq.d;
+    paramblco = paramblcq.jdField_a_of_type_ArrayOfByte;
+    long l2 = this.a;
+    long l3 = paramInt;
+    if (paramblcq.jdField_a_of_type_Boolean) {
+      l1 = 1L;
+    }
+    QSecFramework.a(5L, l2, l3, l1, null, null, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), paramblco }, null);
   }
 }
 

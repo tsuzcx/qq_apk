@@ -1,0 +1,33 @@
+package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
+
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.qphone.base.util.QLog;
+import tsl;
+
+public class ReadInJoyAdPopSheetDialog$3
+  implements Runnable
+{
+  public ReadInJoyAdPopSheetDialog$3(tsl paramtsl, String paramString) {}
+  
+  public void run()
+  {
+    long l = SystemClock.currentThreadTimeMillis();
+    tsl.a(this.this$0, tsl.a(this.this$0));
+    if (QLog.isColorLevel()) {
+      QLog.d(tsl.a(), 2, "init webview costTime=" + (SystemClock.currentThreadTimeMillis() - l));
+    }
+    if ((!TextUtils.isEmpty(this.a)) && (tsl.a(this.this$0) != null))
+    {
+      tsl.a(this.this$0, SystemClock.currentThreadTimeMillis());
+      tsl.a(this.this$0).post(new ReadInJoyAdPopSheetDialog.3.1(this));
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.3
+ * JD-Core Version:    0.7.0.1
+ */

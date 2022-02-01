@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbtz
-  extends bbsj
+  implements View.OnTouchListener
 {
-  private Comparator<bbmu> a = new bbua(this);
+  public bbtz(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbtz(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-  }
-  
-  public Comparator<bbmu> a()
-  {
-    return this.a;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      if (paramMotionEvent.getY() < paramView.findViewById(2131380090).getHeight() + agej.a(30.0F, paramView.getResources())) {
+        SignatureHistoryFragment.a(this.a, true);
+      }
+    }
+    else {
+      return false;
+    }
+    SignatureHistoryFragment.a(this.a, false);
+    return false;
   }
 }
 

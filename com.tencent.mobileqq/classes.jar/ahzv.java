@@ -1,147 +1,97 @@
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie.8.2;
+import com.tencent.mobileqq.activity.aio.navigate.IntimateInfoNavBar.1;
+import com.tencent.mobileqq.activity.aio.navigate.IntimateInfoNavBar.2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class ahzv
-  extends anqd
+  extends ahzw
+  implements Animation.AnimationListener
 {
-  ahzv(ahzo paramahzo) {}
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  private void d(String paramString)
+  public ahzv(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    try
-    {
-      if (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-        bglp.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, anni.a(2131702124), this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131717744), new ahzx(this, paramString), null).show();
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "ERR!! send_discussion_msg_failed_not_member:" + paramString.getMessage());
-    }
+    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
   }
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public long a()
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      return;
+    return 15000L;
+  }
+  
+  public View a()
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561052, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362961));
+    TextView localTextView = (TextView)localView.findViewById(2131378896);
+    return localView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt.b(true);
     }
+    bdll.b(null, "dc00898", "", "", "0X800A11D", "0X800A11D", 0, 0, "", "", "", "");
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt == null)) {
+      QLog.d("NavigateBarManager.IntimateInfoNavBar", 1, "mChatPie == null || mChatPie.mChatDrawer == null");
+    }
+    ExtensionInfo localExtensionInfo;
+    do
+    {
+      return false;
+      localExtensionInfo = ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false);
+    } while ((localExtensionInfo == null) || (localExtensionInfo.intimate_type == 0));
+    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("IntimateInfo" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getInt("key_aio_score_guide_count", 0);
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      QLog.d("NavigateBarManager.IntimateInfoNavBar", 2, String.format("needShow score guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
-    if ((paramInt1 == 1) || (paramInt1 == 3000) || (paramInt1 == 0))
-    {
-      paramSendMessageHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
-      if ((paramSendMessageHandler != null) && ((paramSendMessageHandler instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)paramSendMessageHandler).structingMsg.mMsgAction))) {
-        awwm.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramInt1, paramLong2, false);
-      }
-    }
-    if (paramInt1 == 3000) {
-      switch (paramInt2)
-      {
-      default: 
-        if (paramInt2 > 100) {
-          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      this.a.f(196608);
-      return;
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131717743, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      continue;
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131717745, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      continue;
-      bglp.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, anni.a(2131702123), this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131691624), new ahzw(this, paramString1), null).show();
-      continue;
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new DiscussChatPie.8.2(this, paramString1));
-      } else {
-        d(paramString1);
-      }
+    if (i < 3) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void b()
   {
-    a(paramBoolean, paramString, paramLong, null);
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new IntimateInfoNavBar.1(this), 500L);
+    ThreadManager.postImmediately(new IntimateInfoNavBar.2(this), null, false);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
+  public void c() {}
+  
+  public void d()
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.t = true;
-    this.a.a(262144, paramanqa, paramLong);
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
   }
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onMsgRevokeNotice:" + paramBoolean1);
-    }
-    if (!paramBoolean1) {
-      return;
-    }
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      Object localObject = (MessageRecord)paramList.get(0);
-      if (this.a.jdField_a_of_type_Beqr != null)
-      {
-        int i = this.a.jdField_a_of_type_Beqr.b();
-        if (i != -1)
-        {
-          bfiv localbfiv = (bfiv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(363);
-          long l = localbfiv.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "&" + 3000);
-          if (((MessageRecord)localObject).uniseq == l)
-          {
-            localbfiv.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "&" + 3000, i);
-            this.a.jdField_a_of_type_Beqr.a(i);
-            this.a.jdField_a_of_type_Beqr.e();
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder("onMsgRevokeNotice==>");
-            ((StringBuilder)localObject).append("navigateType:").append(i).append("|navigaeSeq:").append(l);
-            QLog.d(this.a.jdField_a_of_type_JavaLangString + ".troop.special_msg", 2, ((StringBuilder)localObject).toString());
-          }
-        }
-      }
-    }
-    super.a(paramBoolean1, paramList, paramBoolean2);
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.f(131072);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.f(65536);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

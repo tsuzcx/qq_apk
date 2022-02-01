@@ -4,6 +4,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.support.annotation.NonNull;
+import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,11 +15,15 @@ class SensorJsPlugin$MiniAppSensorJsPlugin
   final float COEFFICENT = 10.0F;
   int accuracy = -1;
   private float[] mAccelerometerValues = new float[3];
+  private IJsService mJsService;
   private float[] mMagneticFieldValues = new float[3];
   private float[] mMatrix = new float[9];
   private float[] mValues = new float[3];
   
-  private SensorJsPlugin$MiniAppSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin) {}
+  SensorJsPlugin$MiniAppSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin, @NonNull IJsService paramIJsService)
+  {
+    this.mJsService = paramIJsService;
+  }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt)
   {
@@ -49,7 +55,7 @@ class SensorJsPlugin$MiniAppSensorJsPlugin
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("direction", f);
         localJSONObject.put("accuracy", paramSensorEvent);
-        SensorJsPlugin.access$900(this.this$0, "onCompassChange", localJSONObject.toString());
+        SensorJsPlugin.access$700(this.this$0, "onCompassChange", localJSONObject.toString(), 0, this.mJsService);
         return;
       }
       catch (JSONException paramSensorEvent)
@@ -88,7 +94,7 @@ class SensorJsPlugin$MiniAppSensorJsPlugin
       paramSensorEvent.put("x", f1);
       paramSensorEvent.put("y", f2);
       paramSensorEvent.put("z", f3);
-      SensorJsPlugin.access$800(this.this$0, "onAccelerometerChange", paramSensorEvent.toString());
+      SensorJsPlugin.access$600(this.this$0, "onAccelerometerChange", paramSensorEvent.toString(), 0, this.mJsService);
       return;
     }
     catch (JSONException paramSensorEvent)

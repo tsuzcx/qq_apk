@@ -1,22 +1,8 @@
-import android.graphics.Bitmap;
-
-class bpdw
-  extends bphc
+public abstract interface bpdw
 {
-  public Bitmap a;
-  public Bitmap b;
+  public abstract void a(int paramInt);
   
-  public bpdw(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
-  {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public bpdw(bphc parambphc, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(parambphc.jdField_c_of_type_Int, parambphc.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

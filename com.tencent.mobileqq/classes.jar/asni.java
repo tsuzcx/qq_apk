@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class asni
-  implements View.OnClickListener
+class asni
+  implements DialogInterface.OnClickListener
 {
-  asni(asnc paramasnc) {}
+  asni(asnf paramasnf, Context paramContext) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      bcst.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, FavEmosmManageActivity.class);
+    paramDialogInterface.putExtra("camera_emo_mode", 1);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    bdll.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
   }
 }
 

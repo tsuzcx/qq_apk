@@ -1,24 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-
-public class ypz
-  implements Animation.AnimationListener
+public class ypz<T>
+  extends ypy
 {
-  public ypz(NewMessageYellowBar paramNewMessageYellowBar) {}
+  public T a;
+  public String a;
+  public yqb<T> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ypz(yqb<T> paramyqb)
   {
-    this.a.setVisibility(8);
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Yqb = paramyqb;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public Object a()
   {
-    this.a.a.setAlpha(1.0F);
+    return this.jdField_a_of_type_JavaLangObject;
   }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Yqb != null) {
+      this.jdField_a_of_type_Yqb.a(this.jdField_a_of_type_JavaLangObject);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

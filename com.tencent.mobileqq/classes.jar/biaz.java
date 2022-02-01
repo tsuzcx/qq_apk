@@ -1,6 +1,8 @@
 public abstract interface biaz
 {
   public abstract void a();
+  
+  public abstract void b();
 }
 
 

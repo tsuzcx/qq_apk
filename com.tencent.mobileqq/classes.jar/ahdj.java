@@ -1,15 +1,10 @@
-class ahdj
-  extends afuv
+public abstract interface ahdj
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  int d;
+  public abstract void a();
   
-  ahdj(ahdh paramahdh) {}
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

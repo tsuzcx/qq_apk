@@ -1,103 +1,74 @@
+import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public abstract class wnu<M, VH extends wnt<M>>
-  extends RecyclerView.Adapter<wnt<M>>
+public class wnu
 {
-  protected Context a;
-  protected View a;
-  protected wnr a;
-  protected wns a;
-  protected View b;
-  
-  public wnu(Context paramContext)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
   }
   
-  public int a()
+  public static Boolean a(int paramInt)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      i = 1;
-    }
-    int j = i;
-    if (this.b != null) {
-      j = i + 1;
-    }
-    return j;
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
   }
   
-  public final wnt a(ViewGroup paramViewGroup, int paramInt)
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
   {
-    if (paramInt == 1024) {
-      paramViewGroup = new wnt(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Wnr != null) {
-        paramViewGroup.itemView.setOnClickListener(new wnv(this, paramViewGroup));
-      }
-      if (this.jdField_a_of_type_Wns != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new wnw(this, paramViewGroup));
-      }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new wnt(this.b);
-      } else {
-        paramViewGroup = b(paramViewGroup, paramInt);
-      }
-    }
+    return woh.a(paramClass, paramVarArgs);
   }
   
-  public void a(View paramView)
+  public static String a(int paramInt)
   {
-    if (paramView == null)
-    {
-      Log.w("HeaderAndFooterAdapter", "add the header view is null");
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    notifyDataSetChanged();
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
   }
   
-  public void a(wnr paramwnr)
+  public static String a(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_Wnr = paramwnr;
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
   }
   
-  public void a(wns paramwns)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Wns = paramwns;
+    return paramString;
   }
   
-  public final void a(wnt paramwnt, int paramInt)
+  public static <T extends Activity> wod<T> a(Class<? extends wod<T>> paramClass, Class<wod<T>> paramClass1, Object... paramVarArgs)
   {
-    switch (paramwnt.getItemViewType())
-    {
-    default: 
-      b(paramwnt, paramInt);
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramwnt, paramInt, getItemId(paramInt));
+    return (wod)woh.a(paramClass, paramClass1, paramVarArgs);
   }
   
-  public int b()
+  public static zsv a(Context paramContext, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return 0;
-    }
-    return 1;
+    return wok.a(paramContext, paramInt);
   }
   
-  public abstract VH b(ViewGroup paramViewGroup, int paramInt);
+  public static void a(Context paramContext, int paramInt, long paramLong)
+  {
+    won.a(paramContext, paramInt, paramLong);
+  }
   
-  public abstract void b(VH paramVH, int paramInt);
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    won.a(paramContext, paramInt, paramString);
+  }
   
-  public abstract long getItemId(int paramInt);
+  public static void a(Object paramObject)
+  {
+    wol.a(paramObject);
+  }
+  
+  public static boolean a()
+  {
+    return wom.a();
+  }
+  
+  public static String[] a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+  }
 }
 
 

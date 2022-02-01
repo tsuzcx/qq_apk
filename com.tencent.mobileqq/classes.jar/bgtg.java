@@ -1,8 +1,8 @@
-import android.view.animation.Transformation;
-
-public abstract interface bgtg<T>
+public class bgtg
 {
-  public abstract void a(bgta<T> parambgta, float paramFloat, T paramT, Transformation paramTransformation);
+  public int a;
+  public String a;
+  public String b;
 }
 
 

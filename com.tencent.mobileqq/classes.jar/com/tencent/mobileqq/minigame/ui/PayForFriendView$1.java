@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bmow;
+import bnpz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 
 class PayForFriendView$1
-  extends bmow
+  extends bnpz
 {
   PayForFriendView$1(PayForFriendView paramPayForFriendView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface, boolean paramBoolean)
   {

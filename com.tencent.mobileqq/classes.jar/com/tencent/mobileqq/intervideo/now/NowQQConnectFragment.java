@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import avju;
+import awcc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public class NowQQConnectFragment
       if (paramBundle == null) {
         QLog.e("NowQQConnectFragment", 1, "argsBundle is null");
       } else {
-        ((avju)avju.a().getManager(306)).a(paramViewGroup, paramBundle);
+        ((awcc)awcc.a().getManager(306)).a(paramViewGroup, paramBundle);
       }
     }
   }

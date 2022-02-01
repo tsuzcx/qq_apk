@@ -1,99 +1,21 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class agan
-  extends bgzm
+  implements bhtj<Integer>
 {
-  public agan(PokePanel paramPokePanel) {}
+  public agan(VisitorsActivity paramVisitorsActivity) {}
   
-  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
+  public void a(bhtd<Integer> parambhtd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    Object localObject = (Bundle)paramObject;
-    if (((Bundle)localObject).getInt("fromType") != 0) {
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
+    {
+      this.a.c.setTextSize(36.0F);
       return;
     }
-    int j = ((Bundle)localObject).getInt("id");
-    int i = ((Bundle)localObject).getInt("feeType");
-    String str1 = "free";
-    if (i == 4)
-    {
-      str1 = "vip";
-      label47:
-      if (!paramBoolean) {
-        break label160;
-      }
-      paramObject = ((Bundle)localObject).getString("name");
-      localObject = ((Bundle)localObject).getString("minVersion");
-      adrm.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
-      if (true == aheh.a) {
-        aheh.a = false;
-      }
-      label106:
-      if (!paramBoolean) {
-        break label421;
-      }
-    }
-    label160:
-    label419:
-    label421:
-    for (i = 0;; i = 1)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (i != 5) {
-        break label47;
-      }
-      str1 = "svip";
-      break label47;
-      long l = ((Bundle)localObject).getLong("result");
-      localObject = ((Bundle)localObject).getString("msg");
-      paramObject = (Bundle)paramObject;
-      this.a.a = paramObject.getInt("id", 0);
-      String str2 = anni.a(2131707094);
-      if (l == 0L)
-      {
-        this.a.b = 1;
-        if (true != aheh.a) {
-          break;
-        }
-        aheh.a = false;
-        return;
-      }
-      if (l == 4002L)
-      {
-        this.a.b = 2;
-        paramObject = anni.a(2131707097);
-        localObject = str2;
-      }
-      for (;;)
-      {
-        if (l == 0L) {
-          break label419;
-        }
-        aheh.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
-        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-        break;
-        if (l == 5002L)
-        {
-          this.a.b = 4;
-          paramObject = anni.a(2131707096);
-          localObject = str2;
-        }
-        else
-        {
-          this.a.b = 1;
-          str2 = anni.a(2131707095);
-          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
-          paramObject = localObject;
-          localObject = str2;
-        }
-      }
-      break label106;
-    }
+    this.a.c.setTextSize(44.0F);
   }
 }
 

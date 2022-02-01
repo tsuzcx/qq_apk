@@ -1,109 +1,128 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.manager.TicketManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.SmoothScroller;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 
 public class aazw
-  extends WebViewPlugin
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private RecyclerView.LayoutManager a;
+  
+  public aazw(@NonNull RecyclerView.LayoutManager paramLayoutManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountRelease", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if (!"accountRelease".equals(paramString2)) {
-      return false;
-    }
-    if ("onReleaseSuccess".equals(paramString3))
-    {
-      paramJsBridgeListener = this.mRuntime.a();
-      if (paramJsBridgeListener != null)
-      {
-        paramJsBridgeListener.setResult(-1, null);
-        paramJsBridgeListener.finish();
-      }
-    }
-    while (!"getToken".equals(paramString3)) {
-      for (;;)
-      {
-        return false;
-        QLog.d("AccountRelease", 1, "release success, activity == null");
-      }
-    }
-    paramJsBridgeListener = this.mRuntime.a();
-    paramString1 = this.mRuntime.a();
-    boolean bool = false;
-    if (paramString1 != null) {
-      bool = paramString1.getIntent().getBooleanExtra("is_release_account", false);
-    }
-    for (;;)
-    {
-      if ((bool) && (paramJsBridgeListener != null))
-      {
-        paramString1 = (TicketManager)paramJsBridgeListener.getManager(2);
-        paramJsBridgeListener = paramJsBridgeListener.getCurrentAccountUin();
-        paramString1 = paramString1.getA2(paramJsBridgeListener);
-        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString1)))
-        {
-          paramString1 = bgmj.a(paramString1);
-          long l = Long.valueOf(paramJsBridgeListener).longValue();
-          paramJsBridgeListener = new byte[76];
-          paramJsBridgeListener[3] = ((byte)(int)(0xFF & l));
-          paramJsBridgeListener[2] = ((byte)(int)(l >>> 8 & 0xFF));
-          paramJsBridgeListener[1] = ((byte)(int)(l >>> 16 & 0xFF));
-          paramJsBridgeListener[0] = ((byte)(int)(l >>> 24 & 0xFF));
-          int i = 0;
-          for (;;)
-          {
-            if (i < paramString1.length)
-            {
-              paramJsBridgeListener[(i + 4)] = paramString1[i];
-              i += 1;
-              continue;
-              QLog.d("AccountRelease", 1, "getToken, activity == null");
-              break;
-            }
-          }
-          paramJsBridgeListener = bita.a(paramJsBridgeListener);
-          if (QLog.isColorLevel()) {
-            QLog.d("AccountRelease", 2, String.format("getToken: %s", new Object[] { paramJsBridgeListener }));
-          }
-          paramString1 = new JSONObject();
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-          break label465;
-        }
-        paramString1.put("token", "");
-        callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramString1.toString() });
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-      }
-      break;
-      QLog.d("AccountRelease", 1, "uin or a2 is empty, uin:" + paramJsBridgeListener + ",a2:" + paramString1);
-      for (;;)
-      {
-        paramJsBridgeListener = "";
-        break;
-        QLog.d("AccountRelease", 1, "getToken, app == null or flag: " + bool);
-      }
-      label465:
-      paramString1.put("token", paramJsBridgeListener);
-    }
+    this.a = paramLayoutManager;
+  }
+  
+  public int a()
+  {
+    return this.a.getChildCount();
+  }
+  
+  public int a(View paramView)
+  {
+    return this.a.getPosition(paramView);
+  }
+  
+  public View a(int paramInt)
+  {
+    return this.a.getChildAt(paramInt);
+  }
+  
+  public View a(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    paramRecycler = paramRecycler.getViewForPosition(paramInt);
+    this.a.addView(paramRecycler);
+    this.a.measureChildWithMargins(paramRecycler, 0, 0);
+    return paramRecycler;
+  }
+  
+  public void a()
+  {
+    this.a.requestLayout();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.offsetChildrenHorizontal(paramInt);
+  }
+  
+  public void a(RecyclerView.Recycler paramRecycler)
+  {
+    this.a.detachAndScrapAttachedViews(paramRecycler);
+  }
+  
+  public void a(RecyclerView.SmoothScroller paramSmoothScroller)
+  {
+    this.a.startSmoothScroll(paramSmoothScroller);
+  }
+  
+  public void a(View paramView)
+  {
+    this.a.attachView(paramView);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    this.a.layoutDecorated(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+  }
+  
+  public void a(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    this.a.detachAndScrapView(paramView, paramRecycler);
+  }
+  
+  public int b()
+  {
+    return this.a.getItemCount();
+  }
+  
+  public int b(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredWidth(paramView);
+    int j = localMarginLayoutParams.leftMargin;
+    return localMarginLayoutParams.rightMargin + (i + j);
+  }
+  
+  public void b()
+  {
+    this.a.removeAllViews();
+  }
+  
+  public void b(RecyclerView.Recycler paramRecycler)
+  {
+    this.a.removeAndRecycleAllViews(paramRecycler);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.detachView(paramView);
+  }
+  
+  public void b(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    paramRecycler.recycleView(paramView);
+  }
+  
+  public int c()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int c(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredHeight(paramView);
+    int j = localMarginLayoutParams.topMargin;
+    return localMarginLayoutParams.bottomMargin + (i + j);
+  }
+  
+  public int d()
+  {
+    return this.a.getHeight();
   }
 }
 

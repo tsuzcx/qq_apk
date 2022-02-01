@@ -1,16 +1,8 @@
-import com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory.2;
-import java.io.File;
-import java.util.Comparator;
+import android.os.Bundle;
 
-public class zvj
-  implements Comparator<File>
+public abstract interface zvj
 {
-  public zvj(AnimationDrawableFactory.2 param2) {}
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

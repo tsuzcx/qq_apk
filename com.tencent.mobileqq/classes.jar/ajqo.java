@@ -1,41 +1,42 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
 public class ajqo
-  implements adwk
+  extends RecyclerView.OnScrollListener
 {
-  public ajqo(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
+  public ajqo(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a(Activity paramActivity)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QQToast.a(paramActivity, 2, 2131691324, 0).b(this.a.getActivity().getTitleBarHeight());
-    paramActivity.setResult(-1);
-    paramActivity.finish();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.b = paramInt;
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopNotifyAndRecommendView.a(this.a).getItemCount())) {
+        TroopNotifyAndRecommendView.g(this.a);
+      }
     }
-    while (paramInt != 1) {
+    if (this.a.a != null)
+    {
+      if (paramInt == 0) {
+        break label94;
+      }
+      this.a.a.a();
+      this.a.a.c();
+    }
+    label94:
+    while (!this.a.a.a()) {
       return;
     }
-    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
+    this.a.a.b();
   }
   
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (paramInt == 0) {
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

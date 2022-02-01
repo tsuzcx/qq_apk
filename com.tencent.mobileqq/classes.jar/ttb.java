@@ -1,45 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
 public class ttb
+  implements ViewBase.IBuilder
 {
-  public static volatile boolean a;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  
-  public void a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.c = false;
-    this.d = true;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    this.c = false;
-    this.d = false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.d;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
+    return new tsz(paramVafContext);
   }
 }
 

@@ -1,10 +1,35 @@
-public abstract interface lpv
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+
+public abstract class lpv
+  extends lqa
 {
-  public abstract void a(lpu paramlpu);
+  protected Handler a;
   
-  public abstract boolean a(lpu paramlpu);
+  public lpv()
+  {
+    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
+    localHandlerThread.start();
+    this.a = new lpw(localHandlerThread.getLooper(), this);
+  }
   
-  public abstract boolean b(lpu paramlpu);
+  protected abstract void a(Message paramMessage);
+  
+  protected void c()
+  {
+    super.c();
+    Process.setThreadPriority(0);
+    lbj.c("GLContextThread", "init: ");
+  }
+  
+  protected void d()
+  {
+    super.f();
+    this.a.getLooper().quit();
+  }
 }
 
 

@@ -1,46 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
-public class ahqt
-  implements ahrc<HongBaoPanel>
+class ahqt
+  implements DialogInterface.OnClickListener
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private HongBaoPanel jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ahqt(ahqr paramahqr, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public ahqt(BaseChatPie paramBaseChatPie)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10;
-  }
-  
-  public HongBaoPanel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
-  }
-  
-  public HongBaoPanel a(Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel = ((HongBaoPanel)View.inflate(paramContext, 2131560479, null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public boolean a()
-  {
-    return false;
+    aean.a(this.jdField_a_of_type_Ahqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahqr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahqr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 

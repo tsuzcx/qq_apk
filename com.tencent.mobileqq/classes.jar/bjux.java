@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.OnDismissListener;
-import com.tencent.qqmini.proxyimpl.AdProxyImpl;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
-
-public class bjux
-  implements MiniLoadingAdLayout.OnDismissListener
+public abstract interface bjux
 {
-  public bjux(AdProxyImpl paramAdProxyImpl, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public void onDismiss(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onAdDismiss(paramBoolean);
-    }
-  }
+  public abstract void b(String paramString1, String paramString2, String paramString3);
 }
 
 

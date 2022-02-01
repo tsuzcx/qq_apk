@@ -1,14 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqpim.QQPimTipsInfo;
 
-class bmoe
-  implements bltl
+public final class bmoe
+  implements Parcelable.Creator<QQPimTipsInfo>
 {
-  bmoe(bmob parambmob, int paramInt) {}
-  
-  public void onFail(Activity paramActivity, String paramString)
+  public QQPimTipsInfo a(Parcel paramParcel)
   {
-    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
+    return new QQPimTipsInfo(paramParcel, null);
+  }
+  
+  public QQPimTipsInfo[] a(int paramInt)
+  {
+    return new QQPimTipsInfo[paramInt];
   }
 }
 

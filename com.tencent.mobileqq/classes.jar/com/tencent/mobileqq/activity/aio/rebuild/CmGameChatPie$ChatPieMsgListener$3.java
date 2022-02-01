@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahyk;
-import ahyw;
-import ahyx;
+import aihy;
+import aiik;
+import aiil;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class CmGameChatPie$ChatPieMsgListener$3
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$3(ahyw paramahyw, ahyk paramahyk, String paramString) {}
+  public CmGameChatPie$ChatPieMsgListener$3(aiik paramaiik, aihy paramaihy, String paramString) {}
   
   public void run()
   {
-    ahyk.a(this.jdField_a_of_type_Ahyk, this.jdField_a_of_type_JavaLangString, null, 1);
-    if ((this.jdField_a_of_type_Ahyk.a != null) && (this.jdField_a_of_type_Ahyk.a() != null)) {
-      this.jdField_a_of_type_Ahyk.a(this.jdField_a_of_type_Ahyk.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahyk.a().c(), ahyk.a(this.jdField_a_of_type_Ahyk).jdField_a_of_type_JavaLangString, 1);
+    aihy.a(this.jdField_a_of_type_Aihy, this.jdField_a_of_type_JavaLangString, null, 1);
+    if ((this.jdField_a_of_type_Aihy.a != null) && (this.jdField_a_of_type_Aihy.a() != null)) {
+      this.jdField_a_of_type_Aihy.a(this.jdField_a_of_type_Aihy.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aihy.a().c(), aihy.a(this.jdField_a_of_type_Aihy).jdField_a_of_type_JavaLangString, 1);
     }
   }
 }

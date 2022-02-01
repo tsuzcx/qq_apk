@@ -1,129 +1,68 @@
-import android.content.Context;
-import com.tencent.av.gaudio.QQGAudioCtrl;
-import com.tencent.av.video.call.ClientLogReport;
-import com.tencent.av.video.call.GAClientLogReport;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class bjcl
-  implements bjcg
+  extends Animation
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bjci jdField_a_of_type_Bjci;
-  private bjco jdField_a_of_type_Bjco;
-  private QQGAudioCtrl jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
+  private final float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 0;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private final float b;
+  private float c;
+  private float d;
+  private final float e;
   
-  public bjcl(Context paramContext, bjci parambjci, bjco parambjco)
+  public bjcl(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bjci = parambjci;
-    this.jdField_a_of_type_Bjci.a(this);
-    bjct.a().a(this.jdField_a_of_type_AndroidContentContext, a());
-    this.jdField_a_of_type_Bjco = parambjco;
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = this.jdField_a_of_type_Bjco.a();
-    ClientLogReport.instance();
-    GAClientLogReport.instance();
+    this(paramFloat1, paramFloat2, 0, paramFloat3, paramFloat4, paramFloat5, paramBoolean);
   }
   
-  public static int a()
+  public bjcl(float paramFloat1, float paramFloat2, int paramInt, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.jdField_a_of_type_Boolean) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
     }
     for (;;)
     {
-      bjcq.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
-      return i;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
-        {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
-        }
-      } else {
-        i = 0;
-      }
+      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f3, -f4);
+      paramTransformation.postTranslate(f3, f4);
+      return;
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
   }
   
-  public static void a(bjci parambjci)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (parambjci != null) {
-      parambjci.a();
-    }
-  }
-  
-  public static void a(bjci parambjci, Context paramContext, long paramLong)
-  {
-    if (parambjci != null) {
-      parambjci.a(lkl.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
-    }
-  }
-  
-  public bjcm a()
-  {
-    return this.jdField_a_of_type_Bjco;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bjco != null)
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Bjco.g();
-      this.jdField_a_of_type_Bjco = null;
-    }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Bjci = null;
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
-    bjct.a().a();
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setNetIPAndPort(paramString, paramInt);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    lkl.a(String.valueOf(AppSetting.a()), this.jdField_a_of_type_AndroidContentContext, paramArrayOfByte);
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public void b(byte[] paramArrayOfByte) {}
-  
-  public void c(byte[] paramArrayOfByte) {}
-  
-  public void d(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(1, paramArrayOfByte);
-    }
-  }
-  
-  public void e(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(2, paramArrayOfByte);
+      this.c = (paramInt1 * this.c);
+      this.d = (paramInt2 * this.d);
     }
   }
 }

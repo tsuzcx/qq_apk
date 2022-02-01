@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.paster;
 
 import android.text.TextUtils;
-import bgnt;
-import boos;
-import boot;
-import boow;
-import bpnf;
+import bhnv;
+import bpqn;
+import bpqo;
+import bpqr;
+import bqpa;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class QIMInformationPasterManager$2
   implements Runnable
 {
-  public QIMInformationPasterManager$2(boos paramboos, List paramList) {}
+  public QIMInformationPasterManager$2(bpqn parambpqn, List paramList) {}
   
   public void run()
   {
-    boos.a(this.this$0).clear();
+    bpqn.a(this.this$0).clear();
     if (QLog.isColorLevel()) {
       QLog.d("QIMInformationPasterManager", 2, "patch pull res");
     }
-    if (!bgnt.g(boos.a(this.this$0))) {
+    if (!bhnv.g(bpqn.a(this.this$0))) {
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
       }
@@ -31,22 +31,22 @@ public class QIMInformationPasterManager$2
     {
       return;
       Iterator localIterator = this.a.iterator();
-      bpnf localbpnf;
+      bqpa localbqpa;
       while (localIterator.hasNext())
       {
-        localbpnf = (bpnf)localIterator.next();
-        if ((!TextUtils.isEmpty(localbpnf.e)) && (!this.this$0.a(localbpnf)) && (localbpnf.b != 2)) {
-          boos.a(this.this$0).add(localbpnf);
+        localbqpa = (bqpa)localIterator.next();
+        if ((!TextUtils.isEmpty(localbqpa.e)) && (!this.this$0.a(localbqpa)) && (localbqpa.b != 2)) {
+          bpqn.a(this.this$0).add(localbqpa);
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "need download size:" + boos.a(this.this$0).size());
+        QLog.d("QIMInformationPasterManager", 2, "need download size:" + bpqn.a(this.this$0).size());
       }
-      localIterator = boos.a(this.this$0).iterator();
+      localIterator = bpqn.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        localbpnf = (bpnf)localIterator.next();
-        this.this$0.a.a(localbpnf, new boot(this));
+        localbqpa = (bqpa)localIterator.next();
+        this.this$0.a.a(localbqpa, new bpqo(this));
       }
     }
   }

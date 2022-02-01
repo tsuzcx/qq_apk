@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-public class anpa
-  implements Comparator<arcs>
+class anpa
+  extends anph
 {
-  public int a(arcs paramarcs1, arcs paramarcs2)
+  anpa(anoz paramanoz) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (paramarcs1.b > paramarcs2.b) {}
-    do
-    {
-      return 1;
-      if (paramarcs1.b < paramarcs2.b) {
-        return -1;
-      }
-    } while (paramarcs1.a.sPriority > paramarcs2.a.sPriority);
-    if (paramarcs1.a.sPriority < paramarcs2.a.sPriority) {
-      return -1;
-    }
-    return 0;
+    QLog.d("ApolloGameUtil", 2, "  onPermission the http retcode = " + paramInt);
   }
 }
 

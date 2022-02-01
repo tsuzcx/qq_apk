@@ -17,17 +17,17 @@ class SensorJsPlugin$2
       int i;
       try
       {
-        SensorJsPlugin.access$300(this.this$0);
+        SensorJsPlugin.access$000(this.this$0);
         JSONObject localJSONObject1 = new JSONObject(this.val$jsonParams);
         if (localJSONObject1.optBoolean("enable"))
         {
           j = localJSONObject1.optInt("interval");
           i = 3;
           if (j != 20) {
-            break label195;
+            break label199;
           }
           i = 1;
-          if (this.this$0.startAccelerometer(i))
+          if (this.this$0.startAccelerometer(this.val$webview, i))
           {
             this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, null, this.val$callbackId);
             return;
@@ -47,7 +47,7 @@ class SensorJsPlugin$2
       localJSONObject2.put("errMsg", this.val$eventName + ":cancel");
       this.val$webview.evaluateCallbackJs(this.val$callbackId, localJSONObject2.toString());
       return;
-      label195:
+      label199:
       if (j == 60) {
         i = 2;
       }

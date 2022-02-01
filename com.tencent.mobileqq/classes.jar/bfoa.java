@@ -1,11 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class bfoa
+class bfoa
+  implements Comparator<Map.Entry<String, bfoc>>
 {
-  public ImageView a;
-  public TextView a;
-  public bfoo a;
+  bfoa(bfnz parambfnz) {}
+  
+  public int a(Map.Entry<String, bfoc> paramEntry1, Map.Entry<String, bfoc> paramEntry2)
+  {
+    float f = ((bfoc)paramEntry2.getValue()).a() - ((bfoc)paramEntry1.getValue()).a();
+    if (f > 0.0F) {
+      return 1;
+    }
+    if (f < 0.0F) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

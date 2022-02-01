@@ -1,346 +1,336 @@
-import UserGrowth.stFloatingLayerCardStyle;
+import NS_KING_SOCIALIZE_META.stShareBody;
+import NS_KING_SOCIALIZE_META.stShareInfo;
 import UserGrowth.stSimpleMetaFeed;
+import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil.1;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import cooperation.qzone.QZoneShareData;
+import java.util.ArrayList;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class uqi
-  extends bkrs<uru, bkrv<uru>>
 {
-  private int jdField_a_of_type_Int;
-  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private ukb jdField_a_of_type_Ukb;
-  private utw jdField_a_of_type_Utw;
-  private utw b;
-  
-  public uqi(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  private static void a(int paramInt, upd paramupd)
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-  }
-  
-  private stSimpleMetaFeed a(uru paramuru)
-  {
-    if ((paramuru != null) && ((paramuru.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)paramuru.a();
+    if (paramupd == null) {
+      return;
     }
-    return null;
+    WSPublicAccReport.getInstance().reportShareClick(paramupd.c, paramInt, paramupd.jdField_a_of_type_JavaLangString, paramupd.jdField_b_of_type_JavaLangString, paramupd.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
   
-  private String a(ukb paramukb)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if ((paramukb != null) && (paramukb.jdField_a_of_type_Ukf != null)) {
-      return paramukb.jdField_a_of_type_Ukf.jdField_a_of_type_JavaLangString;
+    if (paramContext == null) {
+      return;
     }
-    return "";
-  }
-  
-  private uke a(ukb paramukb)
-  {
-    if (paramukb != null) {
-      return paramukb.jdField_a_of_type_Uke;
+    paramString2 = (Activity)paramContext;
+    paramContext = paramString2;
+    if ((paramString2 instanceof BasePluginActivity)) {
+      paramContext = ((BasePluginActivity)paramString2).getOutActivity();
     }
-    return null;
-  }
-  
-  private void a()
-  {
-    WSVideoPreDownloadManager localWSVideoPreDownloadManager = new WSVideoPreDownloadManager(BaseApplicationImpl.getApplication().getApplicationContext());
-    localWSVideoPreDownloadManager.a(new uqj(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(localWSVideoPreDownloadManager);
-  }
-  
-  private void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, ukb paramukb)
-  {
-    if (c())
+    paramString2 = new Intent(paramContext, ForwardRecentActivity.class);
+    if (!TextUtils.isEmpty(paramString4))
     {
-      this.jdField_a_of_type_Ukb = ugj.a().a();
-      if ((a(paramInt, paramstSimpleMetaFeed, this.jdField_a_of_type_Ukb)) && (this.jdField_a_of_type_Ukb.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke != null))
-      {
-        paramukb.jdField_a_of_type_Uke = this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke;
-        paramukb.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ukb.jdField_a_of_type_AndroidViewView;
-        paramukb.jdField_a_of_type_Uko = this.jdField_a_of_type_Ukb.jdField_a_of_type_Uko;
-        paramukb.jdField_a_of_type_Uke.c(false);
-      }
+      paramString2.putExtra("forward_type", 2);
+      paramString2.putExtra("req_type", 1);
+      paramString2.putExtra("req_share_id", Long.parseLong("1101083114"));
+      paramString2.putExtra("title", paramString1);
+      paramString2.putExtra("app_name", anzj.a(2131715698));
+      paramString2.putExtra("image_url_remote", paramString3);
+      paramString2.putExtra("desc", anzj.a(2131715697));
+      paramString2.putExtra("detail_url", paramString4);
     }
+    paramContext.startActivity(paramString2);
   }
   
-  private void a(utw paramutw)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    upe.b("WSVerticalPageAdapterLog", "switchPlayerVideoViewLayout() holder: " + paramutw);
-    this.jdField_a_of_type_Utw = paramutw;
-    umu.a(this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb, false);
-    umw.a(this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb, false);
-    uut.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb, true);
-  }
-  
-  private void a(utw paramutw, uru paramuru, int paramInt, String paramString)
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a(paramuru);
-    paramuru = paramutw.jdField_a_of_type_Ukb;
-    if (paramuru == null) {
-      paramuru = new ukb();
-    }
-    for (;;)
-    {
-      ukf localukf = ukd.a(localstSimpleMetaFeed);
-      paramuru.jdField_a_of_type_Ukf = localukf;
-      paramuru.jdField_a_of_type_AndroidViewViewGroup = paramutw.a();
-      ujv localujv = paramutw.jdField_a_of_type_Ujv;
-      Object localObject = localujv;
-      if (localujv == null) {
-        localObject = new ura();
-      }
-      ((ura)localObject).a(paramutw);
-      paramutw.jdField_a_of_type_Ujv = ((ujv)localObject);
-      paramuru.jdField_a_of_type_Ujv = paramutw.jdField_a_of_type_Ujv;
-      if ((localstSimpleMetaFeed.gdt_ad_type == 1) && (localstSimpleMetaFeed.gdt_ad_info != null))
-      {
-        paramuru.jdField_a_of_type_Int = localukf.b();
-        paramuru.jdField_a_of_type_Long = 0L;
-        paramuru.jdField_b_of_type_Boolean = true;
-        paramuru.jdField_b_of_type_Int = paramInt;
-        if (!TextUtils.equals(paramString, "aio_home_page")) {
-          break label179;
-        }
-      }
-      label179:
-      for (paramString = "recommend_tab";; paramString = "vertical_page")
-      {
-        paramuru.jdField_a_of_type_JavaLangString = paramString;
-        a(paramInt, localstSimpleMetaFeed, paramuru);
-        paramutw.jdField_a_of_type_Ukb = paramuru;
-        return;
-        paramuru.jdField_a_of_type_Int = localukf.a();
-        break;
-      }
-    }
-  }
-  
-  private boolean a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, ukb paramukb)
-  {
-    if (paramstSimpleMetaFeed != null) {}
-    for (paramstSimpleMetaFeed = paramstSimpleMetaFeed.id;; paramstSimpleMetaFeed = "")
-    {
-      String str = a(paramukb);
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a() != paramInt + 1) || (TextUtils.isEmpty(str)) || (!TextUtils.equals(paramstSimpleMetaFeed, str)) || (!a(paramukb))) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean a(ukb paramukb)
-  {
-    boolean bool2 = false;
-    paramukb = a(paramukb);
-    boolean bool1 = bool2;
-    if (paramukb != null) {
-      if (!paramukb.b())
-      {
-        bool1 = bool2;
-        if (!paramukb.c()) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  private void b(utw paramutw)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.d();
-    this.jdField_a_of_type_Utw = paramutw;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.b(this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb, false);
-    this.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_Int, this.jdField_a_of_type_Utw.getLayoutPosition());
-    upe.a("WSVerticalPageAdapterLog", "[WSVerticalPageAdapter.java][playVideo] mNotPlayedFirstPosition:" + this.jdField_a_of_type_Int + ", currentPosition():" + this.jdField_a_of_type_Utw.getLayoutPosition());
-  }
-  
-  private void c(utw paramutw)
-  {
-    if ((paramutw == null) || (paramutw == this.jdField_a_of_type_Utw)) {}
-    int i;
+    if (paramContext == null) {}
+    Object localObject;
     do
     {
-      do
-      {
-        return;
-        this.b = paramutw;
-      } while ((this.jdField_a_of_type_Utw == null) || (this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb == null) || (this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb.jdField_a_of_type_Uke == null));
-      i = this.jdField_a_of_type_Utw.jdField_a_of_type_Ukb.jdField_a_of_type_Uke.e();
-      upe.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter tryPrePlayVideo() state:" + i + ", prePlayVideoHolder:" + paramutw);
-    } while ((i == 0) || (i == 1) || (i == 2));
-    upe.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter tryPrePlayVideo() prePlayVideoHolder:" + paramutw);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramutw.jdField_a_of_type_Ukb);
-  }
-  
-  private boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), "follow_tab"));
-  }
-  
-  private void d(utw paramutw)
-  {
-    paramutw = paramutw.jdField_a_of_type_Ukb;
-    if ((paramutw != null) && ((paramutw.jdField_a_of_type_Boolean) || ((paramutw.jdField_a_of_type_Uke != null) && (paramutw.jdField_a_of_type_Uke.e() != 0)))) {
-      paramutw.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(int paramInt)
-  {
-    Object localObject = (uru)a(paramInt);
-    if ((localObject != null) && ((((uru)localObject).a() instanceof stSimpleMetaFeed)))
-    {
-      localObject = ((stSimpleMetaFeed)((uru)localObject).a()).floatingLayerCardStyle;
-      if (localObject != null) {
-        return ((stFloatingLayerCardStyle)localObject).cardType;
+      return;
+      localObject = (Activity)paramContext;
+      paramContext = (Context)localObject;
+      if ((localObject instanceof BasePluginActivity)) {
+        paramContext = ((BasePluginActivity)localObject).getOutActivity();
       }
+      localObject = new Intent();
+    } while (TextUtils.isEmpty(paramString3));
+    ((Intent)localObject).putExtra("forward_type", 2);
+    ((Intent)localObject).putExtra("req_type", 1);
+    ((Intent)localObject).putExtra("req_share_id", Long.parseLong("1101083114"));
+    ((Intent)localObject).putExtra("title", paramString1);
+    ((Intent)localObject).putExtra("app_name", anzj.a(2131715698));
+    ((Intent)localObject).putExtra("image_url_remote", paramString2);
+    ((Intent)localObject).putExtra("desc", anzj.a(2131715697));
+    ((Intent)localObject).putExtra("detail_url", paramString3);
+    ((Intent)localObject).putExtra("key_req", ForwardRecentActivity.f);
+    ((Intent)localObject).putExtra("key_direct_show_uin_type", paramInt);
+    ((Intent)localObject).putExtra("key_direct_show_uin", paramString4);
+    auxu.a(paramContext, (Intent)localObject, ForwardRecentTranslucentActivity.class, 1);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
+  {
+    if (paramContext == null) {
+      return;
     }
-    return 0;
-  }
-  
-  public bkrv<uru> a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return ust.a(paramViewGroup, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-  }
-  
-  public WSPlayerManager a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  }
-  
-  public uru a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    List localList = a();
-    if ((localList != null) && (localList.size() > i)) {
-      return (uru)localList.get(i);
+    Object localObject = (Activity)paramContext;
+    paramContext = (Context)localObject;
+    if ((localObject instanceof BasePluginActivity)) {
+      paramContext = ((BasePluginActivity)localObject).getOutActivity();
     }
-    return null;
+    localObject = new QZoneShareData();
+    ((QZoneShareData)localObject).jdField_b_of_type_JavaLangString = paramString1;
+    ((QZoneShareData)localObject).c = paramString2;
+    ((QZoneShareData)localObject).a = new ArrayList();
+    ((QZoneShareData)localObject).a.add(paramString3);
+    ((QZoneShareData)localObject).jdField_b_of_type_Int = 0;
+    ((QZoneShareData)localObject).d = paramString4;
+    ((QZoneShareData)localObject).f = paramString5;
+    bmud.a(paramContext, paramString5, (QZoneShareData)localObject, null, paramInt);
   }
   
-  public utw a()
+  public static void a(Context paramContext, upd paramupd)
   {
-    return this.jdField_a_of_type_Utw;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    upe.a("WS_VIDEO_SCROLL", "WSVerticalPageAdapter onPageSelected() currentPosition:" + paramInt + ", viewHolder:" + paramViewHolder);
-    if ((paramViewHolder instanceof utw))
+    if (uqt.b()) {
+      return;
+    }
+    Object localObject = new ShareActionSheetV2.Param();
+    ((ShareActionSheetV2.Param)localObject).context = paramContext;
+    localObject = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject);
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    if ((paramupd != null) && (paramupd.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (paramupd.jdField_a_of_type_UserGrowthStSimpleMetaFeed.gdt_ad_type == 1) && (paramupd.jdField_a_of_type_UserGrowthStSimpleMetaFeed.gdt_ad_info != null))
     {
-      paramViewHolder = (utw)paramViewHolder;
-      stSimpleMetaFeed localstSimpleMetaFeed = a((uru)paramViewHolder.jdField_a_of_type_JavaLangObject);
-      if ((!c()) || (!a(paramInt, localstSimpleMetaFeed, this.jdField_a_of_type_Ukb))) {
-        break label98;
-      }
-      a(paramViewHolder);
-      ugj.a().a(null);
+      ((ShareActionSheet)localObject).setActionSheetTitle("");
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(90));
+      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(89));
+      ((ShareActionSheet)localObject).setActionSheetItems(localArrayList1, localArrayList2);
+      ((ShareActionSheet)localObject).setRowVisibility(8, 8, 0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ukb = null;
-      return;
-      label98:
-      b(paramViewHolder);
-    }
-  }
-  
-  public void a(bkrv<uru> parambkrv)
-  {
-    super.onViewDetachedFromWindow(parambkrv);
-    parambkrv.c();
-  }
-  
-  public void a(bkrv<uru> parambkrv, int paramInt)
-  {
-    upe.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter onBindCustomViewHolder() position: " + paramInt + ", holder:" + parambkrv);
-    uru localuru = (uru)a(paramInt);
-    if (localuru != null)
-    {
-      parambkrv.a(localuru);
-      if (((parambkrv instanceof usr)) && (((usr)parambkrv).jdField_a_of_type_Uei != null)) {
-        ((usr)parambkrv).jdField_a_of_type_Uei.a(paramInt);
-      }
-      if ((parambkrv instanceof utw))
+      ((ShareActionSheet)localObject).setItemClickListenerV2(new uql(paramContext, paramupd));
+      paramContext = (Activity)paramContext;
+      if (paramContext != null)
       {
-        parambkrv = (utw)parambkrv;
-        d(parambkrv);
-        a(parambkrv, localuru, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
-        if (paramInt > 0) {
-          c(parambkrv);
+        paramContext.getIntent().putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
+        ((ShareActionSheet)localObject).setIntentForStartForwardRecentActivity(paramContext.getIntent());
+      }
+      ((ShareActionSheet)localObject).setOnShowListener(new uqm(paramupd));
+      ((ShareActionSheet)localObject).setCancelListener(new uqn(paramupd));
+      ((ShareActionSheet)localObject).setOnDismissListener(new uqo(paramupd));
+      ((ShareActionSheet)localObject).show();
+      return;
+      ((ShareActionSheet)localObject).setActionSheetTitle(paramContext.getString(2131692536));
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(44));
+      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
+      ((ShareActionSheet)localObject).setActionSheetItems(localArrayList1, localArrayList2);
+      ((ShareActionSheet)localObject).setRowVisibility(0, 0, 0);
+    }
+  }
+  
+  private static void b(Context paramContext, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, upd paramupd)
+  {
+    int i = paramActionSheetItem.action;
+    int j = paramActionSheetItem.uinType;
+    String str2 = paramActionSheetItem.uin;
+    if (paramupd == null) {}
+    stSimpleMetaFeed localstSimpleMetaFeed;
+    String str1;
+    int k;
+    int m;
+    do
+    {
+      Object localObject5;
+      do
+      {
+        Object localObject4;
+        do
+        {
+          Object localObject3;
+          do
+          {
+            Object localObject2;
+            do
+            {
+              Object localObject1;
+              do
+              {
+                do
+                {
+                  return;
+                  localstSimpleMetaFeed = paramupd.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+                } while ((localstSimpleMetaFeed == null) || (localstSimpleMetaFeed.share_info == null));
+                str1 = localstSimpleMetaFeed.share_info.jump_url;
+                k = paramupd.jdField_b_of_type_Int;
+                m = paramupd.jdField_a_of_type_Int;
+                localObject1 = null;
+                localObject2 = null;
+                localObject3 = null;
+                localObject4 = null;
+                localObject5 = null;
+                paramActionSheetItem = null;
+                switch (i)
+                {
+                default: 
+                  return;
+                case 2: 
+                  if (localstSimpleMetaFeed.share_info.body_map != null) {
+                    paramActionSheetItem = (stShareBody)localstSimpleMetaFeed.share_info.body_map.get(Integer.valueOf(1));
+                  }
+                  break;
+                }
+              } while (paramActionSheetItem == null);
+              a(1003019, paramupd);
+              a(paramContext, paramActionSheetItem.title, paramActionSheetItem.desc, paramActionSheetItem.image_url, str1);
+              return;
+              paramActionSheetItem = localObject1;
+              if (localstSimpleMetaFeed.share_info.body_map != null) {
+                paramActionSheetItem = (stShareBody)localstSimpleMetaFeed.share_info.body_map.get(Integer.valueOf(1));
+              }
+            } while (paramActionSheetItem == null);
+            a(1003020, paramupd);
+            a(paramContext, paramActionSheetItem.title, paramActionSheetItem.desc, paramActionSheetItem.image_url, str1);
+            return;
+            paramActionSheetItem = localObject2;
+            if (localstSimpleMetaFeed.share_info.body_map != null) {
+              paramActionSheetItem = (stShareBody)localstSimpleMetaFeed.share_info.body_map.get(Integer.valueOf(1));
+            }
+          } while (paramActionSheetItem == null);
+          a(1003002, paramupd);
+          a(paramContext, paramActionSheetItem.title, paramActionSheetItem.image_url, str1, str2, j);
+          return;
+          paramActionSheetItem = localObject3;
+          if (localstSimpleMetaFeed.share_info.body_map != null) {
+            paramActionSheetItem = (stShareBody)localstSimpleMetaFeed.share_info.body_map.get(Integer.valueOf(0));
+          }
+        } while (paramActionSheetItem == null);
+        try
+        {
+          a(1003003, paramupd);
+          a(paramContext, paramActionSheetItem.title, paramActionSheetItem.desc, paramActionSheetItem.image_url, str1, str2, 0);
+          return;
         }
+        catch (Exception paramContext)
+        {
+          paramContext.printStackTrace();
+          uqf.d("WeishiShareUtil", "shareToQzone error:" + paramContext);
+          return;
+        }
+        paramActionSheetItem = localObject4;
+        if (localstSimpleMetaFeed.share_info.body_map != null) {
+          paramActionSheetItem = (stShareBody)localstSimpleMetaFeed.share_info.body_map.get(Integer.valueOf(3));
+        }
+      } while (paramActionSheetItem == null);
+      a(1003004, paramupd);
+      b(paramContext, paramActionSheetItem.title, paramActionSheetItem.desc, paramActionSheetItem.image_url, str1, 0);
+      return;
+      paramActionSheetItem = localObject5;
+      if (localstSimpleMetaFeed.share_info.body_map != null) {
+        paramActionSheetItem = (stShareBody)localstSimpleMetaFeed.share_info.body_map.get(Integer.valueOf(3));
+      }
+    } while (paramActionSheetItem == null);
+    a(1003005, paramupd);
+    b(paramContext, paramActionSheetItem.title, paramActionSheetItem.desc, paramActionSheetItem.image_url, str1, 1);
+    return;
+    a(1003012, paramupd);
+    bjuh.a().a("已收到您的举报，我们会及时处理");
+    paramContext = uno.a(localstSimpleMetaFeed, k);
+    paramContext.jubao_reason = "用户手动点击举报";
+    uno.a(116, m, paramContext);
+    return;
+    a(1003008, paramupd);
+    bjuh.a().a("后面会减少此类推荐");
+    paramContext = uno.a(localstSimpleMetaFeed, k);
+    paramContext.dislike_reason = "用户手动点击不感兴趣";
+    uno.a(8, m, paramContext);
+    return;
+    usw.a(paramContext, 131072, localstSimpleMetaFeed, k);
+  }
+  
+  private static void b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (!WXShareHelper.a().a()) {
+      bjuh.a().a(2131719399);
+    }
+    for (;;)
+    {
+      long l = System.currentTimeMillis();
+      ThreadManager.getSubThreadHandler().post(new WeishiShareUtil.1(paramString3, String.valueOf(l), paramString1, paramString2, paramString4, paramInt));
+      WXShareHelper.a().a(new uqk());
+      return;
+      if (!WXShareHelper.a().b()) {
+        bjuh.a().a(2131719400);
       }
     }
   }
   
-  public void a(WSPlayerManager paramWSPlayerManager)
+  public static void b(Context paramContext, upd paramupd)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = paramWSPlayerManager;
-    paramWSPlayerManager = new uqb(paramWSPlayerManager);
-    paramWSPlayerManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramWSPlayerManager);
-    a();
+    if (uqt.b()) {
+      return;
+    }
+    Object localObject = new ShareActionSheetV2.Param();
+    ((ShareActionSheetV2.Param)localObject).context = paramContext;
+    localObject = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject);
+    ((ShareActionSheet)localObject).setActionSheetTitle("");
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(44));
+    ((ShareActionSheet)localObject).setItemClickListenerV2(new uqp(paramContext, paramupd));
+    ((ShareActionSheet)localObject).setActionSheetItems(localArrayList1, localArrayList2);
+    ((ShareActionSheet)localObject).setRowVisibility(8, 8, 0);
+    paramContext = (Activity)paramContext;
+    if (paramContext != null)
+    {
+      paramContext.getIntent().putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
+      ((ShareActionSheet)localObject).setIntentForStartForwardRecentActivity(paramContext.getIntent());
+    }
+    ((ShareActionSheet)localObject).setOnShowListener(new uqq(paramupd));
+    ((ShareActionSheet)localObject).setCancelListener(new uqr(paramupd));
+    ((ShareActionSheet)localObject).setOnDismissListener(new uqj(paramupd));
+    ((ShareActionSheet)localObject).show();
   }
   
-  public void a(List<uru> paramList)
+  private static void c(upd paramupd)
   {
-    List localList = a();
-    if ((localList != null) && (localList.addAll(paramList))) {
-      notifyItemRangeChanged(localList.size() - paramList.size(), paramList.size());
+    if ((paramupd != null) && (paramupd.a() != null)) {
+      paramupd.a().b(2);
     }
   }
   
-  public boolean a()
+  private static void d(upd paramupd)
   {
-    if ((this.jdField_a_of_type_Utw != null) && (this.jdField_a_of_type_Utw.jdField_a_of_type_Uei != null) && ((this.jdField_a_of_type_Utw.jdField_a_of_type_Uei instanceof usp)))
-    {
-      ueh localueh = ((usp)this.jdField_a_of_type_Utw.jdField_a_of_type_Uei).b();
-      return ((localueh instanceof uto)) && (((uto)localueh).a());
-    }
-    return false;
-  }
-  
-  public utw b()
-  {
-    return this.b;
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      usr localusr = (usr)paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
-      if (localusr != null) {
-        localusr.jdField_a_of_type_Uei.a();
-      }
-      i += 1;
+    if ((paramupd != null) && (paramupd.a() != null)) {
+      paramupd.a().c(2);
     }
   }
 }

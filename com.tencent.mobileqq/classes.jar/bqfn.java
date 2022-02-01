@@ -1,36 +1,28 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class bqfn
-  implements GLSurfaceView.EGLContextFactory
+class bqfn
+  extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int = 12440;
+  bqfn(bqfm parambqfm, View paramView) {}
   
-  public bqfn(HWVideoPlayView paramHWVideoPlayView) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
-    }
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    yuk.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
+    yuk.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    yuk.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
   }
 }
 

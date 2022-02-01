@@ -1,84 +1,21 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import com.tencent.biz.subscribe.comment.CommentEditText;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
 
-public class vnw
-  extends vhl
+class vnw
+  implements aaav<FeedCloudRead.StGetFeedDetailRsp>
 {
-  protected ProgressBar a;
+  vnw(vnv paramvnv, QCircleGetFeedDetailRequest paramQCircleGetFeedDetailRequest) {}
   
-  public vnw(Activity paramActivity)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372239));
-  }
-  
-  private void i()
-  {
-    this.jdField_a_of_type_Aage = new aage(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_Aage.a(new vnx(this));
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.addTextChangedListener(new vny(this));
+    QLog.d(this.jdField_a_of_type_Vnv.a(), 1, "getSingleFeed onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if ((paramStGetFeedDetailRsp != null) && (paramStGetFeedDetailRsp.extInfo.has())) {
+      this.jdField_a_of_type_Vnv.a((FeedCloudCommon.StCommonExt)paramStGetFeedDetailRsp.extInfo.get());
     }
-  }
-  
-  protected int a()
-  {
-    return 2131560791;
-  }
-  
-  protected void a(View paramView) {}
-  
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(paramString);
-    }
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    }
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onClick:" + paramView.getId());
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.d("QCircleBaseInputPopupWindow", 1, "text_input");
-      continue;
-      if (this.jdField_a_of_type_Vhp != null) {
-        this.jdField_a_of_type_Vhp.a();
-      }
-    }
-  }
-  
-  public void show()
-  {
-    super.show();
-    i();
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.requestFocus();
-    }
+    vnv.a(this.jdField_a_of_type_Vnv).postValue(new vbf(paramLong, paramString, paramStGetFeedDetailRsp, false));
   }
 }
 

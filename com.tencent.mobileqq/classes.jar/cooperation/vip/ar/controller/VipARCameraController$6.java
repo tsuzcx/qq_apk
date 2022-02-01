@@ -1,17 +1,17 @@
 package cooperation.vip.ar.controller;
 
 import android.widget.TextView;
-import bmsv;
+import bnud;
 
 public class VipARCameraController$6
   implements Runnable
 {
-  public VipARCameraController$6(bmsv parambmsv) {}
+  public VipARCameraController$6(bnud parambnud) {}
   
   public void run()
   {
-    if (bmsv.a(this.this$0) != null) {
-      bmsv.a(this.this$0).setText("[ 尝试一下屏幕点击吧 ]");
+    if (bnud.a(this.this$0) != null) {
+      bnud.a(this.this$0).setText("[ 尝试一下屏幕点击吧 ]");
     }
   }
 }

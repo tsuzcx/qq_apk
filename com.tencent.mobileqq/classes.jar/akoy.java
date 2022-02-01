@@ -1,53 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
 public class akoy
-  extends BroadcastReceiver
+  extends Handler
 {
-  private akoy(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  private WeakReference<DialogBaseActivity> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public akoy(DialogBaseActivity paramDialogBaseActivity)
   {
-    if ((!"troop_hblist_broadcast_action".equals(paramIntent.getAction())) || (!TroopUnAccalimedRedPacketList.b(this.a))) {}
-    do
+    this.a = new WeakReference(paramDialogBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
     {
-      int i;
-      do
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
       {
-        do
-        {
-          return;
-          i = paramIntent.getIntExtra("result_code", 0);
-          int j = paramIntent.getIntExtra("grap_hb_state", 0);
-          paramContext = paramIntent.getStringExtra("listid");
-          if (QLog.isColorLevel()) {
-            QLog.d(TroopUnAccalimedRedPacketList.b(), 2, "RedPacketRefreshReceiver|resultCode:" + i + "|listId: " + paramContext + "|grabHbState: " + j);
-          }
-          if (i != -20180322) {
-            break;
-          }
-          if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
-            TroopUnAccalimedRedPacketList.b(this.a).setVisibility(8);
-          }
-        } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+        localDialogBaseActivity.a(i, bool);
         return;
-      } while (i != -20180323);
-      if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
-        TroopUnAccalimedRedPacketList.b(this.a).setVisibility(0);
+        bool = false;
       }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-      }
-    } while ((TroopUnAccalimedRedPacketList.a(this.a) == null) || (TextUtils.isEmpty(paramContext)));
-    TroopUnAccalimedRedPacketList.a(this.a).a(paramContext);
-    akrp.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a), paramContext);
+    }
+    localDialogBaseActivity.finish();
   }
 }
 

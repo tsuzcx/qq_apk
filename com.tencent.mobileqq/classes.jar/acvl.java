@@ -1,248 +1,269 @@
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import android.os.Bundle;
-import android.util.Pair;
-import com.tencent.imcore.message.BaseMessageProcessor.1;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import java.lang.ref.WeakReference;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import java.util.List<Lmsf.msgcomm.msg_comm.Msg;>;
+import java.util.Map;
 import java.util.Set;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class acvl
+public class acvl
+  implements Handler.Callback
 {
-  protected QQMessageFacade a;
-  protected MessageHandler a;
-  public QQAppInterface a;
-  private List<aofv> a;
+  private static acvl jdField_a_of_type_Acvl = new acvl();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private ConcurrentHashMap<String, WeakReference<View>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public acvl(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  private acvl()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler = paramMessageHandler;
-    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade = paramQQAppInterface.a();
+    HandlerThread localHandlerThread = new HandlerThread("GdtImpressionPolicy");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
   }
   
-  public acwn a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public static acvl a()
   {
+    try
+    {
+      acvl localacvl = jdField_a_of_type_Acvl;
+      return localacvl;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private GdtAd a(View paramView)
+  {
+    if (paramView == null) {
+      paramView = null;
+    }
+    GdtAd localGdtAd;
+    do
+    {
+      return paramView;
+      paramView = paramView.getTag(2131381107);
+      if (paramView == null) {
+        return null;
+      }
+      if (!(paramView instanceof GdtAd)) {
+        return null;
+      }
+      localGdtAd = (GdtAd)paramView;
+      if (TextUtils.isEmpty(localGdtAd.getTraceId())) {
+        return null;
+      }
+      paramView = localGdtAd;
+    } while (!TextUtils.isEmpty(localGdtAd.getUrlForImpression()));
     return null;
   }
   
-  protected Pair<Boolean, StringBuilder> a(List<msg_comm.Msg> paramList1, List<msg_comm.Msg> paramList2)
+  private void a(SharedPreferences paramSharedPreferences, SharedPreferences.Editor paramEditor, int paramInt)
   {
-    if ((paramList1 == null) || (paramList1.size() == 0)) {
-      return new Pair(Boolean.valueOf(false), null);
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = paramList1.iterator();
-    paramList1 = Boolean.valueOf(false);
-    while (localIterator.hasNext())
+    int i = 0;
+    paramSharedPreferences = paramSharedPreferences.getAll();
+    if (paramSharedPreferences != null)
     {
-      Object localObject = (msg_comm.Msg)localIterator.next();
-      if (((msg_comm.Msg)localObject).msg_head.has())
+      Object localObject = paramSharedPreferences.keySet();
+      if (((Set)localObject).size() - paramInt > 0)
       {
-        String str = a((msg_comm.Msg)localObject);
-        if (localHashSet.contains(str))
-        {
-          localObject = Boolean.valueOf(true);
-          paramList1 = (List<msg_comm.Msg>)localObject;
-          if (QLog.isColorLevel())
+        int k = Math.abs((int)(((Set)localObject).size() - paramInt * 0.5F));
+        paramSharedPreferences = new String[k];
+        localObject = ((Set)localObject).iterator();
+        int j;
+        for (paramInt = 0;; paramInt = j) {
+          if (((Iterator)localObject).hasNext())
           {
-            localStringBuilder.append("< duplicatedMsg:").append(str).append(" >");
-            paramList1 = (List<msg_comm.Msg>)localObject;
+            String str = (String)((Iterator)localObject).next();
+            j = paramInt + 1;
+            paramSharedPreferences[paramInt] = str;
+            if (j < k) {}
+          }
+          else
+          {
+            j = paramSharedPreferences.length;
+            paramInt = i;
+            while (paramInt < j)
+            {
+              paramEditor.remove(paramSharedPreferences[paramInt]);
+              paramInt += 1;
+            }
           }
         }
-        for (;;)
-        {
-          break;
-          localHashSet.add(str);
-          paramList2.add(localObject);
-        }
-      }
-    }
-    return new Pair(paramList1, localStringBuilder);
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  protected String a(msg_comm.Msg paramMsg)
-  {
-    return String.valueOf(paramMsg.hashCode());
-  }
-  
-  public void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((aofv)localIterator.next()).b(paramInt, paramBoolean, paramObject);
       }
     }
   }
   
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(aofv paramaofv)
+  private void a(View paramView, GdtAd paramGdtAd)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramaofv);
-      return;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    paramToServiceMsg.extraData.putLong("msgSeq", paramLong);
-    if (paramBoolean1)
-    {
-      if (paramBoolean2) {
-        paramToServiceMsg.setNeedRemindSlowNetwork(true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.sendPbReq(paramToServiceMsg);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.send(paramToServiceMsg);
-  }
-  
-  protected void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, int paramInt, long paramLong) {}
-  
-  public void a(String paramString, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((aofv)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, paramInt, paramBoolean2, paramBoolean3);
-      }
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, List<MessageRecord> arg3, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    int i = acwh.a(???, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((aofv)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, i, paramBoolean2, paramBoolean3);
-      }
-    }
-  }
-  
-  protected void a(List<MessageRecord> paramList, ArrayList<MessageRecord> paramArrayList, boolean paramBoolean)
-  {
-    if (paramList.size() > 0)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if (!anqc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, paramBoolean)) {
-          paramArrayList.add(localMessageRecord);
+        String str = (String)((Iterator)localObject).next();
+        WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
+          if ((paramGdtAd.getTraceId() != null) && (!paramGdtAd.getTraceId().equals(str))) {
+            a(str);
+          }
         }
       }
     }
   }
   
-  public void a(msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq)
+  private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "sendMsgReadConfirm");
-    }
-    a(true, true, false, 0L, new acvm(this, paramPbMsgReadedReportReq));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, acvn paramacvn)
+  private void a(String paramString, WeakReference<View> paramWeakReference)
   {
-    int i;
-    if (paramLong == 0L)
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWeakReference);
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("GdtImpressionPolicyReported", 0);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    a(localSharedPreferences, localEditor, 8192);
+    localEditor.putBoolean(paramString, paramBoolean);
+    localEditor.apply();
+  }
+  
+  public static boolean a(View paramView)
+  {
+    return acwn.a(paramView) > 0.5D;
+  }
+  
+  private boolean a(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("GdtImpressionPolicyReported", 0).getBoolean(paramString, false);
+  }
+  
+  private boolean b(View paramView)
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
+    if (localObject != null)
     {
-      i = bbxc.a;
-      bbxc.a = i + 1;
-      paramLong = i;
+      localObject = ((Collection)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if ((paramView != null) && (localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
+          return true;
+        }
+      }
     }
+    return false;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(View paramView)
+  {
+    acvc.a("GdtImpressionPolicy", "report view: " + paramView.hashCode());
+    GdtAd localGdtAd = a(paramView);
+    if (localGdtAd == null)
+    {
+      acvc.a("GdtImpressionPolicy", "break: statistics == null");
+      return;
+    }
+    if (localGdtAd.reportState == 2)
+    {
+      acvc.a("GdtImpressionPolicy", "break: already report " + localGdtAd.getTraceId());
+      return;
+    }
+    if (!a(paramView))
+    {
+      acvc.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not");
+      return;
+    }
+    a(paramView, localGdtAd);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    WeakReference localWeakReference = new WeakReference(paramView);
+    localMessage.obj = localWeakReference;
+    if (!b(paramView))
+    {
+      acvc.a("GdtImpressionPolicy", "inCountingMap not " + localGdtAd.getTraceId());
+      a(localGdtAd.getTraceId(), localWeakReference);
+    }
+    localGdtAd.reportState = 1;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    acvc.a("GdtImpressionPolicy", "handleMessage : ");
+    if ((paramMessage == null) || (paramMessage.obj == null)) {}
+    GdtAd localGdtAd;
+    Object localObject;
     for (;;)
     {
-      long l = System.currentTimeMillis();
-      if (!paramBoolean1)
+      return false;
+      paramMessage = (WeakReference)paramMessage.obj;
+      if (paramMessage.get() != null)
       {
-        paramacvn = paramacvn.a();
-        if (paramacvn == null) {
-          return;
+        paramMessage = (View)paramMessage.get();
+        localGdtAd = a(paramMessage);
+        if (localGdtAd == null)
+        {
+          acvc.a("GdtImpressionPolicy", "break: statistics == null");
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramacvn.getServiceCmd() + ",reqSeq=" + paramLong);
+        else if (localGdtAd.reportState != 1)
+        {
+          acvc.a("GdtImpressionPolicy", "break: statistics.reportState != 1 " + localGdtAd.getTraceId());
         }
-        a(paramacvn, paramLong, paramBoolean2, paramBoolean3);
-        return;
-      }
-      SendMessageHandler localSendMessageHandler = new SendMessageHandler();
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramLong, localSendMessageHandler);
-      i = 0;
-      while (i < 9)
-      {
-        localSendMessageHandler.a(new BaseMessageProcessor.1(this, paramacvn, paramLong, l, paramBoolean2, paramBoolean3));
-        i += 1;
-      }
-      i = 0;
-      label168:
-      if (i < 3) {
-        if (i != 0) {
-          break label222;
+        else if (!a(paramMessage))
+        {
+          acvc.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not " + localGdtAd.getTraceId());
+          localGdtAd.reportState = -1;
         }
-      }
-      label222:
-      for (paramLong = 480000L;; paramLong = (3 - i) * 480000 / 3 - i * 2000)
-      {
-        l = 480000 * i / 3;
-        localSendMessageHandler.getClass();
-        localSendMessageHandler.a(l, paramLong, "period");
-        i += 1;
-        break label168;
-        break;
+        else if (!b(paramMessage))
+        {
+          acvc.a("GdtImpressionPolicy", "break: inCountingMap not " + localGdtAd.getTraceId());
+        }
+        else
+        {
+          localObject = paramMessage.getTag(2131381106);
+          if (localObject == null)
+          {
+            acvc.a("GdtImpressionPolicy", "break: o2 == null " + localGdtAd.getTraceId());
+          }
+          else if (!(localObject instanceof acvm))
+          {
+            acvc.a("GdtImpressionPolicy", "break: o2 instanceof ReportListener not " + localGdtAd.getTraceId());
+          }
+          else
+          {
+            if (!a(localGdtAd.getTraceId())) {
+              break;
+            }
+            acvc.a("GdtImpressionPolicy", "break: already reported " + localGdtAd.getTraceId());
+          }
+        }
       }
     }
-  }
-  
-  protected boolean a(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    return anqc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, paramBoolean);
-  }
-  
-  public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public void b(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((aofv)localIterator.next()).c(paramInt, paramBoolean, paramObject);
-      }
-    }
+    ((acvm)localObject).reportImpression(paramMessage);
+    localGdtAd.reportState = 2;
+    a(localGdtAd.getTraceId(), true);
+    acvc.a("GdtImpressionPolicy", "report " + localGdtAd.getTraceId());
+    a(localGdtAd.getTraceId());
+    return true;
   }
 }
 

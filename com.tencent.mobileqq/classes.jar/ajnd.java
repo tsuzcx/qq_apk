@@ -1,24 +1,34 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 class ajnd
-  implements ViewPager.OnPageChangeListener
+  implements Comparator<PhoneContact>
 {
-  ajnd(ajnc paramajnc) {}
+  ajnd(ajnb paramajnb) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = ajnc.a(this.a).a(paramInt);
-    if (localEmoticonFromGroupEntity != null)
+    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
+    int i = j;
+    if (j == 0)
     {
-      ajnc.a(this.a, localEmoticonFromGroupEntity);
-      ajnc.b(this.a, localEmoticonFromGroupEntity);
+      Object localObject2 = paramPhoneContact1.pinyinFirst;
+      String str = paramPhoneContact2.pinyinFirst;
+      Object localObject1 = localObject2;
+      if (((String)localObject2).endsWith("#")) {
+        localObject1 = "Za";
+      }
+      localObject2 = str;
+      if (str.endsWith("#")) {
+        localObject2 = "Za";
+      }
+      j = ((String)localObject1).compareTo((String)localObject2);
+      i = j;
+      if (j == 0) {
+        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+      }
     }
+    return i;
   }
 }
 

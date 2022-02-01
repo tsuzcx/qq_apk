@@ -1,24 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
-public class bqax
-  extends BroadcastReceiver
+class bqax
+  implements zfp
 {
-  public bqax(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bqax(bqav parambqav) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a() {}
+  
+  public void b()
   {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.c();
-    }
+    yup.a("textEdit", "pasteText", bqav.b(this.a), 0, new String[0]);
   }
+  
+  public void c() {}
 }
 
 

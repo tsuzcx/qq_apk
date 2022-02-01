@@ -1,14 +1,16 @@
-import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import kotlin.jvm.functions.Function0;
 
-public abstract interface bibx
+class bibx
+  implements Function0<Drawable>
 {
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
+  bibx(bibw parambibw, bibv parambibv, Looper paramLooper, boolean paramBoolean) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void b(View paramView, float paramFloat1, float paramFloat2);
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_Bibw.a(this.jdField_a_of_type_Bibv, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
+  }
 }
 
 

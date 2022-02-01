@@ -1,8 +1,32 @@
-import android.graphics.drawable.Drawable;
+import cooperation.qqreader.js.JsCallParams;
 
-public abstract interface bmpx
+class bmpx
 {
-  public abstract void a(int paramInt, Drawable paramDrawable);
+  long jdField_a_of_type_Long;
+  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  long b;
+  
+  bmpx(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
+  {
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = System.currentTimeMillis();
+  }
+  
+  void a()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  boolean a()
+  {
+    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
+  }
+  
+  boolean a(bmpx parambmpx)
+  {
+    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(parambmpx.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
+  }
 }
 
 

@@ -1,24 +1,12 @@
-import android.widget.PopupWindow;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.part.demo.DemoBaseWidgetView;
+import qqcircle.TaskCenterReader.TaskListRsp;
 
 public class aach
-  implements aabp
+  implements aaav<TaskCenterReader.TaskListRsp>
 {
-  public aach(DetailBaseBlock.3.1 param1) {}
+  public aach(DemoBaseWidgetView paramDemoBaseWidgetView) {}
   
-  public void a()
-  {
-    QLog.d(aacd.jdField_a_of_type_JavaLangString, 2, "showFollowTipView");
-  }
-  
-  public void b()
-  {
-    QLog.d(aacd.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow followTipView");
-    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-  }
+  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp) {}
 }
 
 

@@ -1,27 +1,26 @@
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aaxf
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  public aaxf(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public aaxf(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    TroopGiftPanel.a(this.a).setSelected(false);
+    this.a.a.a(-1);
+    TroopGiftPanel.b(this.a).setSelected(true);
+    ((TextView)TroopGiftPanel.b(this.a).findViewById(2131379875)).setTextColor(Color.parseColor("#ffff5b84"));
+    TroopGiftPanel.b(this.a).findViewById(2131381067).setVisibility(0);
+    ((TextView)TroopGiftPanel.a(this.a).findViewById(2131379874)).setTextColor(Color.parseColor("#ff878b99"));
+    TroopGiftPanel.a(this.a).findViewById(2131381073).setVisibility(8);
+    this.a.onTabSelected(this.a.h, TroopGiftPanel.c);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

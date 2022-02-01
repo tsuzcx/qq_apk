@@ -1,18 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public class aayf
-  extends AnimatorListenerAdapter
+class aayf
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public aayf(SingleLyricView paramSingleLyricView) {}
+  aayf(aaye paramaaye, View paramView) {}
   
-  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  public boolean onPreDraw()
   {
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    aaye.a(this.jdField_a_of_type_Aaye, this.jdField_a_of_type_AndroidViewView);
+    return false;
   }
 }
 

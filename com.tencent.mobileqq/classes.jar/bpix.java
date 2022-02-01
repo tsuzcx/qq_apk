@@ -1,30 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
 
-public class bpix
+public final class bpix
+  implements aaav<CLIENT.StBatchGetMusicInfoRsp>
 {
-  public final int a;
-  public final Drawable a;
-  public final String a;
-  public final String b;
+  public bpix(aaav paramaaav, long paramLong) {}
   
-  public bpix(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("SelectedItem{");
-    localStringBuilder.append("category='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", name='").append(this.b).append('\'');
-    localStringBuilder.append(", drawable=").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    localStringBuilder.append(", isDynamic=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    bpam.b("AEEditorMusicHelper", "[requestDetailedMusicInfo], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_Aaav != null) {
+      this.jdField_a_of_type_Aaav.onReceive(paramBoolean, paramLong, paramString, paramStBatchGetMusicInfoRsp);
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    int i = (int)paramLong;
+    if (paramBoolean) {
+      i = 1000;
+    }
+    bozr.a().a(i, l1 - l2 + "", "AEEditorMusicInfo", 0);
   }
 }
 

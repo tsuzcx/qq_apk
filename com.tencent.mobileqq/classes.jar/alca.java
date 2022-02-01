@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import java.util.List;
 
-final class alca
-  implements Animation.AnimationListener
+public abstract interface alca
 {
-  alca(View paramView, Animation paramAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean, List<String> paramList);
 }
 
 

@@ -1,18 +1,11 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
-
 class usk
-  implements AdExposureChecker.ExposureCallback
+  implements ukd
 {
-  usk(usg paramusg) {}
+  usk(usj paramusj, usf paramusf) {}
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public void a(uko paramuko)
   {
-    FLog.e("AdExposureChecker", "onExposure");
-    urv.a(BaseApplicationImpl.getContext(), usg.a(this.a));
+    usj.a(this.jdField_a_of_type_Usj, paramuko, this.jdField_a_of_type_Usf);
   }
 }
 

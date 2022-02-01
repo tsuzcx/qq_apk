@@ -1,20 +1,30 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class avpy
-  implements View.OnClickListener
+class avpy
+  implements DialogInterface.OnClickListener
 {
-  public avpy(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  avpy(avpx paramavpx, InputStream paramInputStream) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      avpx.a(this.jdField_a_of_type_Avpx).finish();
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
+      }
+    }
   }
 }
 

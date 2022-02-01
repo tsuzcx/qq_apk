@@ -1,15 +1,15 @@
 package com.tencent.avgame.ui;
 
-import nfp;
+import nhk;
 
 public class AvGameLoadingActivity$5$1
   implements Runnable
 {
-  public AvGameLoadingActivity$5$1(nfp paramnfp) {}
+  public AvGameLoadingActivity$5$1(nhk paramnhk) {}
   
   public void run()
   {
-    AvGameLoadingActivity.b(this.a.a);
+    AvGameLoadingActivity.a(this.a.a);
   }
 }
 

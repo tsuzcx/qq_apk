@@ -3,7 +3,7 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arie;
+import arxt;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 
@@ -11,7 +11,7 @@ public class PrecoverConfig
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new arie();
+  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new arxt();
   @unique
   public String businessId;
   public int taskId;

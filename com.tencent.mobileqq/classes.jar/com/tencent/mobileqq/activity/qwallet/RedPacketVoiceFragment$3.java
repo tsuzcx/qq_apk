@@ -4,9 +4,9 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
-import anni;
-import bcst;
-import bgln;
+import anzj;
+import bdll;
+import bhlo;
 import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
@@ -27,7 +27,7 @@ class RedPacketVoiceFragment$3
     QQAppInterface localQQAppInterface;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.this$0.b.setText(anni.a(2131712071));
+      this.this$0.b.setText(anzj.a(2131712180));
       RedPacketVoiceFragment.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       this.this$0.o();
       if (RedPacketVoiceFragment.a(this.this$0))
@@ -41,14 +41,14 @@ class RedPacketVoiceFragment$3
     label233:
     for (int i = 1;; i = 0)
     {
-      bcst.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.result", 0, i, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title.length() + "", this.this$0.getActivity().app.getCurrentAccountUin(), bgln.e() + "|" + bgln.i(), "");
+      bdll.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.result", 0, i, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title.length() + "", this.this$0.getActivity().app.getCurrentAccountUin(), bhlo.e() + "|" + bhlo.i(), "");
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
       if (RedPacketVoiceFragment.a(this.this$0) == null) {
         break;
       }
       RedPacketVoiceFragment.a(this.this$0).removeCallbacksAndMessages(null);
       return;
-      this.this$0.b.setText(this.this$0.getResources().getString(2131694681));
+      this.this$0.b.setText(this.this$0.getResources().getString(2131694723));
       break label51;
     }
   }

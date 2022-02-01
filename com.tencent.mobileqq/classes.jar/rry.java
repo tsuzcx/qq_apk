@@ -1,42 +1,92 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicView$MyTopicViewHolder;", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "titleText", "Landroid/widget/TextView;", "introView", "coverView", "Landroid/widget/ImageView;", "(Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/ImageView;)V", "getCoverView", "()Landroid/widget/ImageView;", "getIntroView", "()Landroid/widget/TextView;", "getTitleText", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rry
-  extends rro
+public class rry
+  implements rlq, rvv, rvw
 {
-  @NotNull
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  @NotNull
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  @NotNull
-  private final TextView b;
+  private rry(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public rry(@NotNull TextView paramTextView1, @NotNull TextView paramTextView2, @NotNull ImageView paramImageView)
+  public List<rld> a(List<VideoInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView1;
-    this.b = paramTextView2;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(a((VideoInfo)paramList.next()));
+    }
+    return localArrayList;
   }
   
-  @NotNull
-  public final ImageView a()
+  public rrz a(VideoInfo paramVideoInfo)
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    rrz localrrz = new rrz(null);
+    rrz.a(localrrz, paramVideoInfo);
+    localrrz.jdField_b_of_type_Long = 409409L;
+    localrrz.jdField_a_of_type_Int = 0;
+    localrrz.jdField_a_of_type_JavaLangString = paramVideoInfo.c;
+    localrrz.jdField_b_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
+    localrrz.c = paramVideoInfo.jdField_a_of_type_JavaLangString;
+    localrrz.jdField_a_of_type_Long = paramVideoInfo.jdField_b_of_type_Long;
+    return localrrz;
   }
   
-  @NotNull
-  public final TextView a()
+  public void a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rln.g(false);
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rvo.a(6);
   }
   
-  @NotNull
-  public final TextView b()
+  public void a(rld paramrld)
   {
-    return this.b;
+    if ((paramrld instanceof rrz))
+    {
+      paramrld = rrz.a((rrz)paramrld);
+      if (paramrld != VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm.a) {
+        break label64;
+      }
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm, false);
+    }
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).d();
+      return;
+      label64:
+      int i = VideoFeedsRecommendFragment.a(this.a).c;
+      VideoFeedsRecommendFragment.a(this.a).remove(i);
+      VideoFeedsRecommendFragment.a(this.a).add(i, paramrld);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemChanged(i);
+    }
+  }
+  
+  public void a(rld paramrld1, rld paramrld2, int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = rrz.a((rrz)VideoFeedsRecommendFragment.a(this.a).a());
+    VideoInfo localVideoInfo = VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm.a;
+    if (VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm.a != localObject)
+    {
+      VideoFeedsRecommendFragment.a(this.a).add(VideoFeedsRecommendFragment.a(this.a).c, localObject);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemInserted(VideoFeedsRecommendFragment.a(this.a).c);
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((rot)localObject).b += 1;
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((rot)localObject).c += 1;
+      VideoFeedsRecommendFragment.a(this.a).scrollToPosition(VideoFeedsRecommendFragment.a(this.a).c);
+    }
+    if (paramBoolean) {
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm, false);
+    }
+    ocd.a(null, "", "0X8009505", "0X8009505", 0, 0, "", "0", "", new sbg(null, null, localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g).a(409409).a().a(), false);
+  }
+  
+  public void j()
+  {
+    VideoFeedsRecommendFragment.a(this.a).b();
   }
 }
 

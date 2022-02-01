@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import anrs;
+import aody;
 
 public class PublicAccountDataManager$1
   implements Runnable
 {
-  public PublicAccountDataManager$1(anrs paramanrs) {}
+  public PublicAccountDataManager$1(aody paramaody) {}
   
   public void run()
   {

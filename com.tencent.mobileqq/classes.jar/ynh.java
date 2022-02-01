@@ -1,17 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class ynh
-  extends AnimatorListenerAdapter
+class ynh
+  extends wjm<ymx, yga>
 {
-  public void onAnimationEnd(Animator paramAnimator)
+  ynh(ymx paramymx)
   {
-    if (this.a) {
-      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
-    }
+    super(paramymx);
   }
+  
+  public void a(@NonNull ymx paramymx, @NonNull yga paramyga)
+  {
+    Object localObject = paramymx.a(paramyga.jdField_a_of_type_JavaLangString);
+    if ((localObject == null) || (paramyga.jdField_a_of_type_Boolean))
+    {
+      yuk.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramyga.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramyga.jdField_a_of_type_Boolean) });
+      return;
+    }
+    if (!(localObject instanceof ylo))
+    {
+      yuk.e(this.TAG, "that is error type!");
+      return;
+    }
+    localObject = (ylo)localObject;
+    ((CommentLikeFeedItem)((ylo)localObject).a).mLikeCount = paramyga.b;
+    ((ylo)localObject).b(paramyga.jdField_a_of_type_JavaUtilList, true);
+    ymx.a(paramymx).b(paramyga.jdField_a_of_type_JavaLangString);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return yga.class;
+  }
+  
+  public void b(@NonNull ymx paramymx, @NonNull yga paramyga) {}
 }
 
 

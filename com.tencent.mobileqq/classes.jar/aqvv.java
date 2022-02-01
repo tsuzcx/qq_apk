@@ -1,117 +1,166 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.SpannableString;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqvv
-  extends aqkz<aqvu>
+  extends QIPCModule
+  implements aqvu
 {
-  @NonNull
-  public aqvu a(int paramInt)
+  private static volatile aqvv a;
+  
+  public aqvv()
   {
-    QLog.i("QFileCommonConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
-    return new aqvu();
+    super("DanmuDataIPCServer");
   }
   
-  @Nullable
-  public aqvu a(aqlg[] paramArrayOfaqlg)
+  public static aqvv a()
   {
-    QLog.i("QFileCommonConfigProcessor", 1, "onParsed");
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          paramArrayOfaqlg = (aqvu)aqlu.a(paramArrayOfaqlg[0].jdField_a_of_type_JavaLangString, aqvu.class);
-          return paramArrayOfaqlg;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaqlg) {}
-    }
-    return null;
-  }
-  
-  public void a(aqvu paramaqvu)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onUpdate");
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
+    if (a == null) {}
+    try
     {
-      if (localObject1 != null)
+      if (a == null) {
+        a = new aqvv();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  private static long[] a(List<Long> paramList)
+  {
+    long[] arrayOfLong = new long[paramList.size()];
+    paramList = paramList.iterator();
+    int i = 0;
+    while (paramList.hasNext())
+    {
+      arrayOfLong[i] = ((Long)paramList.next()).longValue();
+      i += 1;
+    }
+    return arrayOfLong;
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3, SpannableString paramSpannableString)
+  {
+    QLog.d("DanmuDataIPCServer", 1, "notifyDanmuSendResult");
+    String str;
+    if (paramSpannableString != null)
+    {
+      str = paramSpannableString.toString();
+      if ((paramString1.length() > str.length()) && (paramString1.startsWith(str)))
       {
-        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_up", paramaqvu.jdField_a_of_type_Boolean);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_down", paramaqvu.b);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2czip_down", paramaqvu.c);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_thumb", paramaqvu.d);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_up", paramaqvu.e);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_down", paramaqvu.f);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disczip_down", paramaqvu.g);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_thumb", paramaqvu.h);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_up", paramaqvu.i);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_down", paramaqvu.j);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troopzip_down", paramaqvu.k);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_thumb", paramaqvu.l);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew", paramaqvu.m);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_svip", paramaqvu.n);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramaqvu.o);
-        ((SharedPreferences.Editor)localObject2).putBoolean("enable_file_media_platform", paramaqvu.p);
-        ((SharedPreferences.Editor)localObject2).apply();
-        QLog.i("QFileCommonConfigProcessor", 1, "save download config." + paramaqvu.jdField_a_of_type_JavaLangString);
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putBoolean("troop_video_preivew", paramaqvu.m);
-        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_svip", paramaqvu.n);
-        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramaqvu.o);
-        ((Bundle)localObject2).putBoolean("enable_file_media_platform", paramaqvu.p);
-        paramaqvu = (atam)((QQAppInterface)localObject1).getManager(317);
-        if (paramaqvu != null) {
-          paramaqvu.a((Bundle)localObject2);
+        paramSpannableString = paramString1.substring(paramSpannableString.length());
+        if (!TextUtils.isEmpty(paramSpannableString)) {
+          paramString1 = paramSpannableString;
         }
       }
+    }
+    for (;;)
+    {
+      paramSpannableString = (QQAppInterface)bplg.a();
+      str = bhlg.h(paramSpannableString, String.valueOf(paramString2), paramSpannableString.getAccount());
+      paramString1 = new DanmuItemBean(Long.parseLong(paramSpannableString.c()), 0L, paramLong1, paramLong2, paramString1, str);
+      paramString1.jdField_a_of_type_Boolean = nlj.a().a(paramString2);
+      if (paramString1.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DanmuDataIPCServer", 2, "notifyDanmuSendResult, anonymousFlag true");
+        }
+        paramSpannableString = nlj.a().a(paramString2);
+        paramString1.c = paramSpannableString.jdField_a_of_type_JavaLangString;
+        paramString1.jdField_a_of_type_Int = paramSpannableString.jdField_a_of_type_Int;
+      }
+      paramSpannableString = new Bundle();
+      paramSpannableString.putParcelable("key_barrage_danmu_msg", paramString1);
+      paramSpannableString.putLong("key_barrage_msg_seq", paramLong3);
+      paramSpannableString.putString("key_barrage_grp_uin", paramString2);
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "DanmuDataIPCClient", "qipc_action_send_barrage", paramSpannableString, null);
       return;
     }
   }
   
-  public Class<aqvu> clazz()
+  public void a(aqvo paramaqvo, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList)
   {
-    return aqvu.class;
+    QLog.d("DanmuDataIPCServer", 1, new Object[] { "onDanmuPullResult, isPullEnd:", Boolean.valueOf(paramBoolean2) });
+    if (paramaqvo == null)
+    {
+      QLog.d("DanmuDataIPCServer", 1, "onDanmuPullResult fail, pullContext is null");
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("key_barrage_msg_seq", paramaqvo.jdField_a_of_type_Long);
+    localBundle.putLong("key_barrage_grp_uin", paramaqvo.b);
+    localBundle.putInt("key_barrage_topic_type", paramaqvo.jdField_a_of_type_Int);
+    localBundle.putInt("key_barrage_interval_time", paramInt);
+    localBundle.putBoolean("key_barrage_is_success", paramBoolean1);
+    if (paramaqvo.c > 0L)
+    {
+      localBundle.putLong("key_barrage_req_time", paramaqvo.c);
+      localBundle.putLong("key_barrage_net_req_time", paramaqvo.d);
+      localBundle.putLong("key_barrage_net_response_time", System.currentTimeMillis());
+      paramaqvo.c = -1L;
+    }
+    if (paramArrayList != null) {
+      localBundle.putParcelableArrayList("key_barrage_danmu_list", paramArrayList);
+    }
+    if (paramList != null) {
+      localBundle.putLongArray("key_barrage_del_seq_list", a(paramList));
+    }
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "DanmuDataIPCClient", "qipc_action_get_barrage_result", localBundle, null);
   }
   
-  public boolean isNeedCompressed()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public int type()
-  {
-    return 396;
+    long l1;
+    long l2;
+    int i;
+    boolean bool;
+    if ("qipc_action_get_barrage".equals(paramString))
+    {
+      l1 = paramBundle.getLong("key_barrage_msg_seq");
+      l2 = paramBundle.getLong("key_barrage_grp_uin");
+      i = paramBundle.getInt("key_barrage_topic_type");
+      bool = paramBundle.getBoolean("key_barrage_is_update");
+      QLog.d("DanmuDataIPCServer", 1, new Object[] { "onCall, msgSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(i), " peakCached:", Boolean.valueOf(bool) });
+      localObject = aqvp.a().a(aqvp.a().a(l2, l1));
+      if ((localObject != null) && (!((aqvq)localObject).jdField_a_of_type_Boolean))
+      {
+        QLog.d("DanmuDataIPCServer", 1, "filter duplicate request, continue pull is not completed");
+        paramString = new Bundle();
+        paramString.putBoolean("key_barrage_is_success", false);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
+        return null;
+      }
+      if (localObject != null) {
+        break label262;
+      }
+    }
+    label262:
+    for (Object localObject = new aqvo(l2, l1, i, bool);; localObject = ((aqvq)localObject).jdField_a_of_type_Aqvo)
+    {
+      ((aqvo)localObject).c = paramBundle.getLong("key_barrage_req_time");
+      ((aqvo)localObject).d = System.currentTimeMillis();
+      ((aqvo)localObject).jdField_a_of_type_Boolean = bool;
+      aqvp.a().a((aqvo)localObject, this);
+      callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+      if ("qipc_action_clear_cache".equals(paramString)) {
+        aqvp.a().a();
+      }
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvv
  * JD-Core Version:    0.7.0.1
  */

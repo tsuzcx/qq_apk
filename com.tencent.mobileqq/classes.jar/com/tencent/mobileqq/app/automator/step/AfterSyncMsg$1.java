@@ -1,20 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ains;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
+import bdho;
 
 class AfterSyncMsg$1
   implements Runnable
 {
   AfterSyncMsg$1(AfterSyncMsg paramAfterSyncMsg) {}
   
-  public void run()
-  {
-    if (this.this$0.a.app.getApplication() != null) {
-      ains.a(this.this$0.a.app).a(this.this$0.a.app);
-    }
-  }
+  public void run() {}
 }
 
 

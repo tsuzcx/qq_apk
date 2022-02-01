@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.content.Context;
-import aqgi;
+import aqvl;
 
 class SwipeBackLayout$2
   implements Runnable
@@ -10,7 +10,7 @@ class SwipeBackLayout$2
   
   public void run()
   {
-    SwipeBackLayout.access$1102(this.this$0, new aqgi(this.val$context));
+    SwipeBackLayout.access$1102(this.this$0, new aqvl(this.val$context));
     SwipeBackLayout.access$1800(this.this$0);
   }
 }

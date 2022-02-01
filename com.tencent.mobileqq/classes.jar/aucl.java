@@ -1,18 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloadUtil.3.1;
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-public final class aucl
-  implements aucn
+public class aucl
+  extends BroadcastReceiver
 {
-  aucl(String paramString1, String paramString2) {}
+  public aucl(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void a(String paramString)
+  @TargetApi(5)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramString == null) {
-      return;
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
-    new Handler(Looper.getMainLooper()).post(new UniformDownloadUtil.3.1(this));
   }
 }
 

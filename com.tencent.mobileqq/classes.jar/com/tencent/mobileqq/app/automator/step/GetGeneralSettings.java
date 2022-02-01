@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import ConfigPush.FileStoragePushFSSvcList;
-import anmu;
-import aoaa;
-import aztu;
-import bccs;
-import bdud;
+import anyu;
+import aomk;
+import bamk;
+import bcvk;
+import besx;
 import com.tencent.kingkong.Common;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -17,7 +17,7 @@ import mqq.app.MobileQQ;
 public class GetGeneralSettings
   extends AsyncStep
 {
-  private anmu a;
+  private anyu a;
   
   public int a()
   {
@@ -39,10 +39,10 @@ public class GetGeneralSettings
       if (!bool) {
         break;
       }
-      if (this.jdField_a_of_type_Anmu == null)
+      if (this.jdField_a_of_type_Anyu == null)
       {
-        this.jdField_a_of_type_Anmu = new aoaa(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anmu, true);
+        this.jdField_a_of_type_Anyu = new aomk(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anyu, true);
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(bool)) {
         break;
@@ -52,25 +52,25 @@ public class GetGeneralSettings
       Common.SetContext(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getApplicationContext());
       Common.SetSafeStatus(true);
     }
-    synchronized (bdud.a().a)
+    synchronized (besx.a().a)
     {
-      FileStoragePushFSSvcList localFileStoragePushFSSvcList = bdud.a().a();
+      FileStoragePushFSSvcList localFileStoragePushFSSvcList = besx.a().a();
       if (localFileStoragePushFSSvcList != null)
       {
-        bccs.a(localFileStoragePushFSSvcList, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
-        bdud.a().b(null);
+        bcvk.a(localFileStoragePushFSSvcList, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
+        besx.a().b(null);
       }
-      aztu.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a(true, true);
+      bamk.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a(true, true);
       return 7;
     }
   }
   
-  public void d()
+  public void c()
   {
-    if (this.jdField_a_of_type_Anmu != null)
+    if (this.jdField_a_of_type_Anyu != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anmu);
-      this.jdField_a_of_type_Anmu = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anyu);
+      this.jdField_a_of_type_Anyu = null;
     }
   }
 }

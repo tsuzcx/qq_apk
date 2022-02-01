@@ -1,26 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class ykr
-  extends QQUIEventReceiver<ykq, wop>
+  extends zsv
 {
-  public ykr(ykq paramykq1, @NonNull ykq paramykq2)
+  public static final String KEY = "MemoriesPlaceHolderSegment";
+  
+  public ykr(Context paramContext)
   {
-    super(paramykq2);
+    super(paramContext);
   }
   
-  public void a(@NonNull ykq paramykq, @NonNull wop paramwop)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
-    }
-    paramykq.b(paramwop.a);
+    return 1;
   }
   
-  public Class acceptEventClass()
+  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
   {
-    return wop.class;
+    paramInt = zps.d(this.a);
+    int i = zps.e(this.a);
+    paramyqw.a().getLayoutParams().height = (paramInt - i);
+    return paramyqw.a();
+  }
+  
+  public String a()
+  {
+    return "MemoriesPlaceHolderSegment";
+  }
+  
+  public yqw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new yqw(LayoutInflater.from(this.a).inflate(2131561778, paramViewGroup, false));
   }
 }
 

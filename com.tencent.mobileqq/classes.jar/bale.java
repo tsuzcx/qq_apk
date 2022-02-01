@@ -1,20 +1,7 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import rx.functions.Action0;
+import kotlin.Metadata;
 
-class bale
-  implements Action0
-{
-  bale(balb parambalb, HashSet paramHashSet) {}
-  
-  public void call()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabViewModel", 2, "ResourceNameOnClickListener subscribe onComplete");
-    }
-    balb.a(this.jdField_a_of_type_Balb, this.jdField_a_of_type_JavaUtilHashSet);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bale {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

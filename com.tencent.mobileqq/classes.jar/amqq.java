@@ -1,101 +1,57 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URLEncoder;
 
-public class amqq
-  implements amqp
+class amqq
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private amrr jdField_a_of_type_Amrr;
-  public WeakReference<Context> a;
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PressEffectImageView a;
+  public View b;
   
-  public amqq(Activity paramActivity, amrr paramamrr, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Amrr = paramamrr;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  amqq(amqp paramamqp) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 200;
-  }
-  
-  public amlc a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    amrr localamrr = this.jdField_a_of_type_Amrr;
-    if ((!(localAppRuntime instanceof QQAppInterface)) || (localamrr == null)) {}
-    do
+    String str3 = this.jdField_a_of_type_Amqp.a(this.jdField_a_of_type_Int);
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
     {
-      do
-      {
-        return null;
-        if (this.jdField_a_of_type_Int == paramInt2) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("CmGameHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
-      return null;
-      if ("cs.first_frame_drawn.local".equals(paramString1))
-      {
-        localamrr.e(paramString2);
-        return null;
+      if (this.jdField_a_of_type_Amqp.jdField_a_of_type_Aohb != null) {
+        this.jdField_a_of_type_Amqp.jdField_a_of_type_Aohb.a(this.jdField_a_of_type_Int);
       }
-      if ("cs.create_room.local".equals(paramString1))
-      {
-        localamrr.f(paramString2);
-        return null;
-      }
-      if ("cs.join_room.local".equals(paramString1))
-      {
-        localamrr.g(paramString2);
-        return null;
-      }
-      if ("cs.game_start.local".equals(paramString1))
-      {
-        localamrr.h(paramString2);
-        return null;
-      }
-      if ("cs.make_room_min.local".equals(paramString1))
-      {
-        localamrr.b();
-        return null;
-      }
-      if ("cs.close_room.local".equals(paramString1))
-      {
-        localamrr.c();
-        return null;
-      }
-      if ("cs.game_tips.local".equals(paramString1))
-      {
-        localamrr.i(ApolloUtil.a(paramString2, "tips"));
-        return null;
-      }
-      if ("cs.check_pubAccount_state.local".equals(paramString1))
-      {
-        localamrr.a(paramString2, paramInt1);
-        return null;
-      }
-    } while (!"cs.on_get_open_key.local".equals(paramString1));
-    localamrr.b(paramString2, paramInt1);
-    return null;
-  }
-  
-  public amrr a()
-  {
-    return this.jdField_a_of_type_Amrr;
-  }
-  
-  public void a()
-  {
-    QLog.i("CmGameHandler", 1, "[destroyHandler]");
-    this.jdField_a_of_type_Amrr = null;
+      this.jdField_a_of_type_Amqp.a();
+    }
+    while (paramView != this.jdField_a_of_type_AndroidViewView)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    String str2 = arij.a().c;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "https://sou.qq.com/kandian/kd.html?_bid=3216&_wv=3&_wwv=1293&_wvSb=0&keyword=$KEYWORD$&from=$FROM$";
+    }
+    str1 = str1.replace("$KEYWORD$", URLEncoder.encode(str3));
+    if ((this.jdField_a_of_type_Amqp.jdField_a_of_type_Int == 25) || (this.jdField_a_of_type_Amqp.jdField_a_of_type_Int == 10)) {}
+    for (str1 = str1.replace("$FROM$", "kandian_history");; str1 = str1.replace("$FROM$", bcjy.a(this.jdField_a_of_type_Amqp.jdField_a_of_type_Int)))
+    {
+      str1 = str1.replace("$SEARCHID$", "" + URLEncoder.encode(UniteSearchActivity.c));
+      bcni.a(this.jdField_a_of_type_Amqp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Amqp.jdField_a_of_type_AndroidContentContext, str1);
+      this.jdField_a_of_type_Amqp.jdField_a_of_type_Aohb.a(str3);
+      bcjy.a(null, new ReportModelDC02528().module("search_his").action("clk_search_his").ver2(bcjy.a(this.jdField_a_of_type_Amqp.jdField_a_of_type_Int)).ver4(str3).ver7("{experiment_id:" + bcjy.b + "}"));
+      new aokg(this.jdField_a_of_type_Amqp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_Amqp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_search_his", "search_his", bcjy.a(this.jdField_a_of_type_Amqp.jdField_a_of_type_Int), "", str3, "{experiment_id:" + bcjy.b + "}");
+      break;
+    }
   }
 }
 

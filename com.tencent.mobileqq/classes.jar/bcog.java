@@ -1,36 +1,67 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-class bcog
-  implements bcob
+public class bcog
+  extends bcpp
 {
-  bcog(bcof parambcof, LoadParam paramLoadParam) {}
+  public RelativeLayout b;
+  public SquareImageView b;
+  public ImageView c;
+  public SquareImageView c;
+  public TextView e;
+  public TextView f;
+  public TextView g;
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public bcog(ViewGroup paramViewGroup, int paramInt)
   {
-    synchronized (bcof.a(this.jdField_a_of_type_Bcof))
-    {
-      Object localObject2 = (List)bcof.a(this.jdField_a_of_type_Bcof).get(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
-      bcof.a(this.jdField_a_of_type_Bcof).remove(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoLoadManager", 2, "load resCode=" + paramInt + ", loadExtResult=" + paramLoadExtResult + ",loadParam=" + this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam + ",ls=" + localObject2);
-      }
-      if (localObject2 != null)
-      {
-        ??? = ((List)localObject2).iterator();
-        while (((Iterator)???).hasNext())
-        {
-          localObject2 = (bcob)((Iterator)???).next();
-          if (localObject2 != null) {
-            ((bcob)localObject2).a(paramInt, paramLoadExtResult);
-          }
-        }
-      }
+    this.jdField_c_of_type_Int = paramInt;
+    paramViewGroup.getResources();
+    LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, null, false), new LinearLayout.LayoutParams(-1, -2));
+    localLinearLayout.setBackgroundResource(2130850234);
+    localLinearLayout.setClickable(true);
+    localLinearLayout.setFocusable(true);
+    this.jdField_b_of_type_AndroidViewView = localLinearLayout;
+    a();
+  }
+  
+  protected void a()
+  {
+    super.a();
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376809));
+    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368400));
     }
+    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369260));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369184));
+    this.e = ((TextView)paramView.findViewById(2131380118));
+    this.f = ((TextView)paramView.findViewById(2131380056));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131376661));
+    this.g = ((TextView)paramView.findViewById(2131376662));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      this.f.setTextColor(this.f.getContext().getResources().getColor(2131166926));
+      this.g.setTextColor(this.g.getContext().getResources().getColor(2131166926));
+      return;
+    }
+    this.f.setTextColor(this.f.getContext().getResources().getColor(2131167302));
+    this.g.setTextColor(this.g.getContext().getResources().getColor(2131167302));
   }
 }
 

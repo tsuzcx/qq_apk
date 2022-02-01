@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class bdvd
-  implements ITransCallbackForReport
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class bdvd
+  implements View.OnClickListener
 {
-  bdvd(bdvb parambdvb) {}
+  bdvd(bdvc parambdvc) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public final void onClick(View paramView)
   {
-    this.a.a(false, paramInt, paramString1, paramString2);
+    this.a.dismiss();
+    bdll.b(bdvc.a(this.a).app, "dc00898", "", "", "0X800ADD6", "0X800ADD6", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

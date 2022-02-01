@@ -1,36 +1,65 @@
-import android.graphics.Bitmap;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public abstract interface bplh
+public class bplh
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  public static Bundle a(@NonNull Intent paramIntent)
+  {
+    return paramIntent.getBundleExtra("state");
+  }
   
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6);
+  public static Bundle a(@NonNull bplj parambplj)
+  {
+    Bundle localBundle = new Bundle();
+    if (parambplj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout != null)
+    {
+      bqjh localbqjh = (bqjh)parambplj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bqjh.a);
+      bqjf localbqjf = (bqjf)parambplj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("DynamicFaceLayer");
+      bqjx localbqjx = (bqjx)parambplj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bqjx.a);
+      localBundle.putBundle(bqjh.a, localbqjh.a());
+      localBundle.putBundle("DynamicFaceLayer", localbqjf.a());
+      if (localbqjx != null) {
+        localBundle.putBundle(bqjx.a, localbqjx.a());
+      }
+      a(parambplj, localBundle);
+      localBundle.putBundle("container", parambplj.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a());
+      return localBundle;
+    }
+    QLog.e("EditState", 1, "saveState mDoodleLayout is null");
+    return localBundle;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(bpnj parambpnj);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
-  
-  public abstract void o();
-  
-  public abstract void p();
-  
-  public abstract void q();
-  
-  public abstract void r();
-  
-  public abstract void s();
-  
-  public abstract void t();
+  private static void a(bplj parambplj, Bundle paramBundle)
+  {
+    Object localObject = parambplj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+    bqkh localbqkh = ((bqkf)localObject).a();
+    if (localbqkh == null)
+    {
+      localObject = parambplj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+      parambplj = ((bqkf)localObject).a();
+      if (parambplj == null) {
+        break label83;
+      }
+      parambplj.jdField_a_of_type_Int = 1001;
+    }
+    label83:
+    for (;;)
+    {
+      if (parambplj != null)
+      {
+        ((bpnf)bplq.a(15)).a(parambplj.jdField_a_of_type_AndroidGraphicsBitmap);
+        paramBundle.putBundle("VoteLayer", ((bqkf)localObject).a());
+      }
+      return;
+      localbqkh.jdField_a_of_type_Int = 1000;
+      parambplj = localbqkh;
+    }
+  }
 }
 
 

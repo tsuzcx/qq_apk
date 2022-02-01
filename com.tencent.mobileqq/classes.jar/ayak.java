@@ -1,94 +1,94 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.Set;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Headers;
-import okhttp3.Headers.Builder;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request.Builder;
-import okhttp3.RequestBody;
-import org.json.JSONArray;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ayak
+  implements View.OnClickListener
 {
-  public static ayak a;
-  private Callback a;
+  public ayak(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Ayak = new ayak();
-  }
-  
-  private ayak()
-  {
-    this.jdField_a_of_type_Okhttp3Callback = new ayal(this);
-  }
-  
-  private String a(Bundle paramBundle)
-  {
-    JSONArray localJSONArray1 = new JSONArray();
-    JSONArray localJSONArray2 = new JSONArray();
-    String str1 = "";
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str2 = (String)localIterator.next();
-      if ("tid".equals(str2))
+    if (paramView == ChooseInterestTagActivity.b(this.a)) {
+      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
       {
-        str1 = paramBundle.getString(str2);
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
+        ChooseInterestTagActivity.a(this.a, true, true);
       }
-      else
+    }
+    label394:
+    do
+    {
+      for (;;)
       {
-        if (!"bid".equals(str2))
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+        break;
+        Object localObject2;
+        if (paramView == this.a.leftView)
         {
-          localJSONArray1.put(str2);
-          if (!bgsp.a(paramBundle.getString(str2))) {
-            break label111;
+          blgx.b(ChooseInterestTagActivity.a(this.a));
+          if (ChooseInterestTagActivity.a(this.a))
+          {
+            this.a.finish();
+          }
+          else
+          {
+            localObject2 = this.a.getIntent();
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new Intent();
+            }
+            Collections.reverse(ChooseInterestTagActivity.a(this.a));
+            ((Intent)localObject1).putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
+            ((Intent)localObject1).putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
+            this.a.setResult(-1, (Intent)localObject1);
+            this.a.finish();
           }
         }
-        label111:
-        for (str2 = "";; str2 = paramBundle.getString(str2))
+        else
         {
-          localJSONArray2.put(str2);
-          break;
+          if (paramView != this.a.rightViewText) {
+            break label394;
+          }
+          blgx.b(ChooseInterestTagActivity.a(this.a));
+          if (ChooseInterestTagActivity.a(this.a)) {
+            if (ChooseInterestTagActivity.a(this.a).isEmpty())
+            {
+              ChooseInterestTagActivity.a(this.a, anzj.a(2131700716));
+            }
+            else
+            {
+              ChooseInterestTagActivity.a(this.a, 0, anzj.a(2131700710), 0);
+              Collections.reverse(ChooseInterestTagActivity.a(this.a));
+              localObject1 = new ayaw(ChooseInterestTagActivity.a(this.a));
+              ((ayaw)localObject1).a.addAll(ChooseInterestTagActivity.a(this.a));
+              localObject2 = new ArrayList(1);
+              ((List)localObject2).add(localObject1);
+              ChooseInterestTagActivity.a(this.a).a((List)localObject2, 0, 1);
+            }
+          }
         }
       }
-    }
-    paramBundle = new JSONArray();
-    paramBundle.put(localJSONArray2);
-    try
+    } while (paramView != ChooseInterestTagActivity.a(this.a));
+    ChooseInterestTagActivity.a(this.a).setText(anzj.a(2131700733));
+    Object localObject1 = ChooseInterestTagActivity.a(this.a);
+    int j = ChooseInterestTagActivity.a(this.a);
+    int k = ChooseInterestTagActivity.b(this.a);
+    if (ChooseInterestTagActivity.a(this.a)) {}
+    for (int i = 1;; i = 0)
     {
-      paramBundle = "&table=" + str1 + "&fields=" + URLEncoder.encode(localJSONArray1.toString(), "UTF-8") + "&datas=" + URLEncoder.encode(paramBundle.toString(), "UTF-8");
-      return paramBundle;
+      ((axxj)localObject1).a("", j, k, 30, 0, i);
+      break;
     }
-    catch (UnsupportedEncodingException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-    return "";
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
-    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), a(paramBundle));
-    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
-    ayaj.a().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null)
-    {
-      QLog.d("TurtleReportCenter", 4, "send(): no data to report");
-      return;
-    }
-    b(paramBundle);
   }
 }
 

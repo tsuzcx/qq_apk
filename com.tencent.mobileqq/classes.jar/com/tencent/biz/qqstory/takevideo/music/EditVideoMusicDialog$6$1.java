@@ -1,26 +1,26 @@
 package com.tencent.biz.qqstory.takevideo.music;
 
 import com.tencent.qphone.base.util.QLog;
-import woe;
-import woh;
-import won;
-import wpm;
-import yqp;
-import zdr;
-import zdt;
+import wrz;
+import wsc;
+import wsi;
+import wth;
+import yuk;
+import zhm;
+import zho;
 
 public class EditVideoMusicDialog$6$1
   implements Runnable
 {
-  public EditVideoMusicDialog$6$1(zdr paramzdr, woh paramwoh) {}
+  public EditVideoMusicDialog$6$1(zhm paramzhm, wsc paramwsc) {}
   
   public void run()
   {
-    yqp.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "address update, refresh ui.");
-    if (((woe)((won)wpm.a(20)).a(1)).a(this.jdField_a_of_type_Woh))
+    yuk.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "address update, refresh ui.");
+    if (((wrz)((wsi)wth.a(20)).a(1)).a(this.jdField_a_of_type_Wsc))
     {
       QLog.d("Q.qqstory.publish.edit.EditVideoMusicDialog", 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Zdr.a.a.a();
+      this.jdField_a_of_type_Zhm.a.a.a();
     }
   }
 }

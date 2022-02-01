@@ -1,58 +1,56 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 
-class nut
-  implements URLDrawable.DownloadListener
+public class nut
+  implements bliz
 {
-  nut(nus paramnus) {}
+  public nut(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    synchronized ()
-    {
-      String str = (String)nus.a(this.a).get(0);
-      nus.a(this.a).remove(0);
-      if (nus.b(this.a) != null)
-      {
-        if (!nus.b(this.a).contains(str)) {
-          break label119;
-        }
-        nus.b(this.a).remove(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
-        }
-      }
-      label119:
-      do
-      {
-        nus.a(this.a, null);
-        nus.a(this.a);
-        return;
-        nus.a(this.a).add(str);
-        nus.b(this.a).add(str);
-      } while (!QLog.isColorLevel());
-      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
-    }
-  }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    synchronized ()
-    {
-      String str = (String)nus.a(this.a).get(0);
-      nus.a(this.a).remove(0);
-      if ((nus.b(this.a) != null) && (nus.b(this.a).contains(str))) {
-        nus.b(this.a).remove(str);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
-      }
-      nus.a(this.a, null);
-      nus.a(this.a);
+    if (this.a.o) {
       return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    label273:
+    label277:
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      this.a.j = false;
+      this.a.y();
+      if (((oek)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88)).a(this.a.e)) {
+        ((ofe)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134243868, this.a.e, null, null, null, 2L, false);
+      }
+      agej.n = false;
+      if ("2290230341".equals(this.a.e))
+      {
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
+        label177:
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
+          break label273;
+        }
+      }
+      for (paramView = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name;; paramView = "")
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
+          break label277;
+        }
+        alol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, paramView);
+        break;
+        if (!TextUtils.equals(String.valueOf(2062433139L), this.a.e)) {
+          break label177;
+        }
+        ocd.a(null, null, "0X800929F", "0X800929F", 0, 0, "", "", "", odr.a(null), false);
+        break label177;
+      }
     }
   }
 }

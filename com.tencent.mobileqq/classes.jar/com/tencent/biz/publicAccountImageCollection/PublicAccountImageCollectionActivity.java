@@ -18,11 +18,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.MalformedURLException;
 import java.net.URL;
-import tds;
-import tdv;
-import tdw;
-import tee;
-import uvg;
+import suk;
+import sun;
+import suo;
+import suw;
+import uwr;
 
 public class PublicAccountImageCollectionActivity
   extends BaseActivity
@@ -34,7 +34,7 @@ public class PublicAccountImageCollectionActivity
   
   public PublicAccountImageCollectionActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new uvg(this);
+    this.jdField_a_of_type_AndroidOsHandler = new uwr(this);
   }
   
   private Drawable a(String paramString, int paramInt1, int paramInt2)
@@ -43,14 +43,14 @@ public class PublicAccountImageCollectionActivity
     try
     {
       paramString = new URL(paramString);
-      Object localObject2 = new tdw();
-      ((tdw)localObject2).jdField_a_of_type_JavaNetURL = paramString;
-      ((tdw)localObject2).jdField_a_of_type_Int = paramInt1;
-      ((tdw)localObject2).b = paramInt2;
-      localObject2 = tdv.a().a((tdw)localObject2);
+      Object localObject2 = new suo();
+      ((suo)localObject2).jdField_a_of_type_JavaNetURL = paramString;
+      ((suo)localObject2).jdField_a_of_type_Int = paramInt1;
+      ((suo)localObject2).b = paramInt2;
+      localObject2 = sun.a().a((suo)localObject2);
       paramString = localObject1;
       if (localObject2 != null) {
-        paramString = new tee(((tds)localObject2).a());
+        paramString = new suw(((suk)localObject2).a());
       }
       return paramString;
     }
@@ -88,7 +88,7 @@ public class PublicAccountImageCollectionActivity
     requestWindowFeature(1);
     getWindow().setFlags(1024, 1024);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559611);
+    super.setContentView(2131559616);
     int i = getWindowManager().getDefaultDisplay().getHeight();
     int j = getWindowManager().getDefaultDisplay().getWidth();
     Object localObject = getIntent();
@@ -103,7 +103,7 @@ public class PublicAccountImageCollectionActivity
       ((Matrix)localObject).setValues(arrayOfFloat);
     }
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView = new PublicAccountImageView(this, this.jdField_a_of_type_AndroidOsHandler, (Matrix)localObject, this.jdField_a_of_type_Int, n, i1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373039));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373152));
     paramBundle = a(paramBundle, k, m);
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageDrawable(paramBundle);
     ((Matrix)localObject).postScale(3.0F, 3.0F, n / 2, i1 / 2);

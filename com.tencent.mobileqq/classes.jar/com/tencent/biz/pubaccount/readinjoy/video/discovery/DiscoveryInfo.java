@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import shu;
+import ryy;
 
 public class DiscoveryInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoveryInfo> CREATOR = new shu();
+  public static final Parcelable.Creator<DiscoveryInfo> CREATOR = new ryy();
   public int a;
   public long a;
   public String a;

@@ -1,12 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bkhp
-  implements View.OnClickListener
+public class bkhp
+  implements bkgs
 {
-  bkhp(bkho parambkho) {}
+  public bkhp(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void onClick(View paramView) {}
+  public void a(bkie parambkie)
+  {
+    if (parambkie != null)
+    {
+      parambkie = parambkie.b;
+      if (!TextUtils.isEmpty(parambkie)) {
+        QidianProfileCardActivity.a(this.a, parambkie);
+      }
+    }
+  }
 }
 
 

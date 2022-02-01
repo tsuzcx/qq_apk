@@ -1,90 +1,72 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobSegment;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class yly
-  extends wla
+public abstract class yly<T extends ylz>
+  extends wzm
 {
-  public String a;
-  public int b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  private Stream<T> a;
+  public wuz a;
+  public yma a;
+  protected ymc<T> a;
   
-  public yly(qqstory_service.RspGetUserSelfInfo paramRspGetUserSelfInfo)
+  public yly(@NonNull ymc<T> paramymc)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    Object localObject = paramRspGetUserSelfInfo.result;
-    this.jdField_a_of_type_Int = ((qqstory_struct.ErrorInfo)localObject).error_code.get();
-    this.jdField_b_of_type_JavaLangString = ((qqstory_struct.ErrorInfo)localObject).error_desc.get().toStringUtf8();
-    int i;
-    if (paramRspGetUserSelfInfo.is_vip.has())
-    {
-      i = paramRspGetUserSelfInfo.is_vip.get();
-      this.jdField_b_of_type_Int = i;
-      if (!paramRspGetUserSelfInfo.union_id.has()) {
-        break label233;
-      }
-      localObject = paramRspGetUserSelfInfo.union_id.get().toStringUtf8();
-      label96:
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      if (!paramRspGetUserSelfInfo.fans_count.has()) {
-        break label240;
-      }
-      i = paramRspGetUserSelfInfo.fans_count.get();
-      label120:
-      this.jdField_c_of_type_Int = i;
-      if (!paramRspGetUserSelfInfo.video_count.has()) {
-        break label245;
-      }
-      i = paramRspGetUserSelfInfo.video_count.get();
-      label143:
-      this.jdField_d_of_type_Int = i;
-      i = j;
-      if (paramRspGetUserSelfInfo.visit_total_count.has()) {
-        i = paramRspGetUserSelfInfo.visit_total_count.get();
-      }
-      this.e = i;
-      if (!paramRspGetUserSelfInfo.newest_video_cover.has()) {
-        break label250;
-      }
-      localObject = paramRspGetUserSelfInfo.newest_video_cover.get().toStringUtf8();
-      label195:
-      this.jdField_c_of_type_JavaLangString = ((String)localObject);
-      if (!paramRspGetUserSelfInfo.newest_video_vid.has()) {
-        break label257;
-      }
-    }
-    label257:
-    for (paramRspGetUserSelfInfo = paramRspGetUserSelfInfo.newest_video_vid.get().toStringUtf8();; paramRspGetUserSelfInfo = "")
-    {
-      this.jdField_d_of_type_JavaLangString = paramRspGetUserSelfInfo;
-      return;
-      i = 0;
-      break;
-      label233:
-      localObject = "";
-      break label96;
-      label240:
-      i = 0;
-      break label120;
-      label245:
-      i = 0;
-      break label143;
-      label250:
-      localObject = "";
-      break label195;
-    }
+    this.jdField_a_of_type_Yma = new yma();
+    this.jdField_a_of_type_Ymc = paramymc;
+    znw.a(this.jdField_a_of_type_Ymc);
   }
   
-  public String toString()
+  private void d()
   {
-    return ykx.a(new Object[] { "Response{ isVip=", Integer.valueOf(this.jdField_b_of_type_Int), " fansCount=", Integer.valueOf(this.jdField_c_of_type_Int), " myVideoCount=", Integer.valueOf(this.jdField_d_of_type_Int), " myVisitTotalCount=", Integer.valueOf(this.e), " newestVideoCover=", this.jdField_c_of_type_JavaLangString, " newestVideoVid=", this.jdField_d_of_type_JavaLangString });
+    a();
+    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
+  }
+  
+  public abstract JobSegment<ymb, T> a();
+  
+  public abstract JobSegment<Integer, ymb> a(yma paramyma);
+  
+  protected abstract T a();
+  
+  protected abstract T a(ErrorMessage paramErrorMessage);
+  
+  public yma a()
+  {
+    return this.jdField_a_of_type_Yma;
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    super.a(paramTencentLocation, paramInt);
+    this.jdField_a_of_type_Yma.a();
+    d();
+  }
+  
+  protected abstract void a(List<String> paramList, boolean paramBoolean);
+  
+  public void a(yma paramyma)
+  {
+    this.jdField_a_of_type_Yma = paramyma;
+    yuk.a("Q.qqstory.home.position", "restore last time cache:%s", paramyma);
+  }
+  
+  public T b()
+  {
+    return a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    d();
   }
 }
 

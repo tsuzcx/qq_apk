@@ -1,27 +1,15 @@
-import Wallet.GetRandomHbIdiomReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
-class aklq
-  implements akxt
+public class aklq
+  implements DialogInterface.OnCancelListener
 {
-  aklq(aklj paramaklj, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver) {}
+  public aklq(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void a(String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (aklj.a(this.jdField_a_of_type_Aklj) != null)
-    {
-      GetRandomHbIdiomReq localGetRandomHbIdiomReq = new GetRandomHbIdiomReq();
-      localGetRandomHbIdiomReq.makeUin = aklj.a(this.jdField_a_of_type_Aklj).getLongAccountUin();
-      localGetRandomHbIdiomReq.subchannel = this.jdField_a_of_type_Int;
-      localGetRandomHbIdiomReq.sKey = paramString;
-      localGetRandomHbIdiomReq.appid = AppSetting.a();
-      localGetRandomHbIdiomReq.fromType = this.b;
-      localGetRandomHbIdiomReq.platform = 0;
-      localGetRandomHbIdiomReq.qqVersion = "8.4.1";
-      akmf.a(localGetRandomHbIdiomReq, this.jdField_a_of_type_MqqObserverBusinessObserver);
-    }
+    MiniMsgTabFragment.a(this.a, -1, null);
   }
 }
 

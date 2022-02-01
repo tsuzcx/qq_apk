@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.view.View;
-import atqm;
+import auih;
 
 public class DocExportFilePresenter$1
   implements Runnable
 {
-  public DocExportFilePresenter$1(atqm paramatqm, View paramView) {}
+  public DocExportFilePresenter$1(auih paramauih, View paramView) {}
   
   public void run()
   {

@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qoj
-  extends qon
+  implements View.OnClickListener
 {
-  public qoj(PTSEngineLoader.3 param3) {}
+  public qoj(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    super.loaded(paramString, paramInt);
-    QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], asyncBack code = " + paramInt + ", param = " + paramString);
-    if ((paramInt == 0) && (paramString == null))
-    {
-      QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], handleDownloadPTSEngine, download succeed.");
-      qoi.c(this.a.this$0);
-    }
-  }
-  
-  public void progress(int paramInt)
-  {
-    super.progress(paramInt);
+    ComponentContentNoteCard.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

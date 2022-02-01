@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
@@ -23,6 +24,7 @@ public class MainReceiverProxy
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     String str = paramIntent.getAction();
+    ThreadManager.executeOnNetworkIOThreadPool(new MainReceiverProxy.1(this));
     if ("mini_preload_app".equals(str))
     {
       QMLog.i("minisdk-start", "预加载小程序");
@@ -42,11 +44,11 @@ public class MainReceiverProxy
     {
       paramContext = paramIntent.getExtras();
       if (paramContext != null) {
-        break label315;
+        break label326;
       }
       paramContext = new Bundle();
     }
-    label315:
+    label326:
     for (;;)
     {
       paramIntent = (MiniAppInfo)paramContext.getParcelable("mini_appinfo");
@@ -56,7 +58,7 @@ public class MainReceiverProxy
         return;
         QMLog.i("minisdk-start", "预加载小程序 miniAppInfo:" + paramIntent);
         paramContext.putString("mini_key_preload_type", "preload_app");
-        AppRuntimeLoaderManager.g().preLaunchRuntimeLoader(paramIntent, new MainReceiverProxy.1(this, paramIntent), paramContext);
+        AppRuntimeLoaderManager.g().preLaunchRuntimeLoader(paramIntent, new MainReceiverProxy.2(this, paramIntent), paramContext);
         ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).preConnectDownloadHost();
         return;
       } while (!"mini_preload_game".equals(str));

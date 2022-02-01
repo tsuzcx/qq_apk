@@ -1,31 +1,14 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.qphone.base.util.QLog;
-
-final class avne
-  implements HookMethodCallback
+public abstract interface avne
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
-    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
-    {
-      paramMethodHookParam = new StringBuilder(1000);
-      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      int i = 0;
-      while (i < arrayOfStackTraceElement.length)
-      {
-        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
-        i += 1;
-      }
-      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
-    }
-  }
+  public abstract void a(String paramString);
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-class mpl
-  implements View.OnClickListener
+public abstract interface mpl
 {
-  mpl(mpj parammpj) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(false, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(LottieDrawable paramLottieDrawable);
 }
 
 

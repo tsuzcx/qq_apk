@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import snh;
-import sox;
+import sel;
+import sgb;
 
 public class ReadInJoyBaseAdapter$NetInfoHandler$5
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$NetInfoHandler$5(sox paramsox) {}
+  public ReadInJoyBaseAdapter$NetInfoHandler$5(sgb paramsgb) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ReadInJoyBaseAdapter$NetInfoHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.NetInfoHandler.5
  * JD-Core Version:    0.7.0.1
  */

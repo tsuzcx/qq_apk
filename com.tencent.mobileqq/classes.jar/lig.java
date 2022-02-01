@@ -1,107 +1,116 @@
-import android.content.SharedPreferences;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 
 public class lig
-  extends lgb
 {
-  VoiceRecogTips a;
+  public int a;
+  public long a;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long[] jdField_a_of_type_ArrayOfLong = new long[41];
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public lig(VideoAppInterface paramVideoAppInterface)
+  lig()
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
   }
   
-  public static SharedPreferences a(AppInterface paramAppInterface)
+  public String a()
   {
-    return paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin() + "qav_voicerecog", 0);
-  }
-  
-  public static lgq a(VideoAppInterface paramVideoAppInterface)
-  {
-    paramVideoAppInterface = ((lgp)paramVideoAppInterface.a(3)).a();
-    long l = bbyp.a();
-    paramVideoAppInterface = paramVideoAppInterface.iterator();
-    while (paramVideoAppInterface.hasNext())
-    {
-      lgq locallgq = (lgq)paramVideoAppInterface.next();
-      if (a(l * 1000L, locallgq.a, locallgq.b)) {
-        return locallgq;
-      }
+    String str1 = Build.MODEL;
+    String str2 = String.valueOf(Build.VERSION.SDK_INT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Android").append('|');
+    localStringBuilder.append(str1).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
+    if (this.jdField_b_of_type_Int != -1) {
+      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
     }
+    for (;;)
+    {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
+      return localStringBuilder.toString();
+      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+    }
+  }
+  
+  public String a(int paramInt, long paramLong)
+  {
+    if ((paramInt >= 0) && (paramInt < 41))
+    {
+      StringBuilder localStringBuilder;
+      if (paramLong == 1L)
+      {
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
+        localStringBuilder = new StringBuilder();
+        paramInt = 0;
+        label34:
+        if (paramInt >= 41) {
+          break label242;
+        }
+        switch (paramInt)
+        {
+        default: 
+          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break label34;
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+        break;
+        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
+        {
+          this.jdField_a_of_type_JavaLangString = lie.a();
+          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
+        }
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(0).append('|');
+        continue;
+        if (this.jdField_b_of_type_Long > 0L) {
+          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
+        }
+        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
+      }
+      label242:
+      return localStringBuilder.toString();
+    }
+    lbj.d("VideoNodeReporter", "buildBody report error:" + paramInt);
     return null;
   }
   
-  public static boolean a(long paramLong1, long paramLong2, long paramLong3)
+  public void a(lff paramlff, String paramString)
   {
-    return (paramLong1 >= paramLong2) && (paramLong1 <= paramLong3);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
-  {
-    return (lsv.b()) && (b(paramVideoAppInterface));
-  }
-  
-  public static boolean b(VideoAppInterface paramVideoAppInterface)
-  {
-    return ((lhz)paramVideoAppInterface.a(5)).a(3, "normal");
-  }
-  
-  protected void a() {}
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    if (1 == paramInt) {
-      b();
-    }
-    while (3 != paramInt) {
-      return;
-    }
-    c();
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
-  }
-  
-  protected boolean a(String paramString)
-  {
-    return false;
-  }
-  
-  void b()
-  {
-    if (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {}
-    ley localley;
-    lgq locallgq;
-    do
+    if (paramlff != null)
     {
-      do
-      {
-        return;
-        localley = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      } while (localley == null);
-      locallgq = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    } while (locallgq == null);
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      if (paramlff.k != -1) {
+        this.jdField_a_of_type_Int = paramlff.k;
+      }
+      if (paramlff.jdField_d_of_type_Int != 0) {
+        this.jdField_b_of_type_Int = paramlff.jdField_d_of_type_Int;
+      }
+      if (!TextUtils.isEmpty(paramlff.jdField_d_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramlff.jdField_d_of_type_JavaLangString;
+      }
     }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = new VoiceRecogTips(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localley.d, locallgq);
-  }
-  
-  void c()
-  {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null)
-    {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_c_of_type_JavaLangString = paramString;
     }
   }
 }

@@ -1,27 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.app.Activity;
-import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05502.1;
+import feedcloud.FeedCloudCommon.Entry;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
 public class vto
-  implements Animator.AnimatorListener
 {
-  public vto(QCircleSlidBottomView paramQCircleSlidBottomView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, FeedCloudMeta.StFeed paramStFeed, List<FeedCloudCommon.Entry> paramList, int paramInt4, int paramInt5)
   {
-    if (this.a.getContext() != null) {
-      uxx.a((Activity)this.a.getContext(), uxx.b(true));
+    if (paramInt4 <= 0) {
+      QLog.e("QCircleReportBean_QCircleLpReportDc05502", 1, "report invalid pageId," + paramInt4 + ",fpageId:" + paramInt5);
     }
-    if (QCircleSlidBottomView.a(this.a) != null) {
-      QCircleSlidBottomView.a(this.a).a();
-    }
+    vtw.a().a().post(new QCircleLpReportDc05502.1(paramString1, paramInt3, paramString2, paramString3, paramInt4, paramInt5, paramString4, paramString5, paramString6, paramString7, paramList, paramStFeed, paramInt1, paramInt2));
+  }
+  
+  private static int b()
+  {
+    return 5502;
   }
 }
 

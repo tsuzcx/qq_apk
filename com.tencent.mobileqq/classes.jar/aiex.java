@@ -1,11 +1,10 @@
-class aiex
-  implements nkl
+import android.content.Intent;
+
+public abstract interface aiex
 {
-  aiex(aidp paramaidp) {}
+  public abstract void a(Intent paramIntent);
   
-  public void loaded(String paramString, int paramInt) {}
-  
-  public void progress(int paramInt) {}
+  public abstract boolean a(int paramInt);
 }
 
 

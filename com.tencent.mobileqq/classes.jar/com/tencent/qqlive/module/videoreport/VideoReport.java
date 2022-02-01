@@ -7,6 +7,7 @@ import android.view.View;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioEntity;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.data.IAudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;

@@ -3,7 +3,7 @@ package com.tencent.avgame.ui;
 import android.text.TextUtils;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ndd;
+import new;
 
 class AVGameActivity$6
   implements Runnable

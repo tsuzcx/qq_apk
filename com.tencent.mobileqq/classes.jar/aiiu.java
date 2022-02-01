@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-
-public abstract interface aiiu
+class aiiu
+  implements bdhy
 {
-  public abstract List<? extends aiit> a(String paramString, SessionInfo paramSessionInfo);
+  aiiu(aiit paramaiit) {}
   
-  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
+  public void a()
+  {
+    aiit.a(this.a);
+    this.a.I();
+  }
+  
+  public void b()
+  {
+    this.a.I();
+  }
 }
 
 

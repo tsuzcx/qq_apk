@@ -1,49 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.widget.AbsListView;
 
-class yiw
-  implements wld<wyg, wyh>
+public class yiw
+  implements blih
 {
-  yiw(yit paramyit, JobContext paramJobContext, yig paramyig) {}
+  public yiw(StoryMemoriesFragment paramStoryMemoriesFragment, zpq paramzpq) {}
   
-  public void a(@NonNull wyg paramwyg, @Nullable wyh arg2, @NonNull ErrorMessage paramErrorMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
-    }
-    if (??? == null)
-    {
-      paramErrorMessage = new wyh(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_Yit)
-      {
-        yit.a(this.jdField_a_of_type_Yit, paramErrorMessage);
-        yit.a(this.jdField_a_of_type_Yit).remove(paramwyg);
-        yit.a(this.jdField_a_of_type_Yit, this.jdField_a_of_type_Yig);
-        return;
-      }
-    }
-    if (paramErrorMessage.isFail()) {
-      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
-    }
-    woy localwoy = (woy)wpm.a(15);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramErrorMessage = (wyi)localIterator.next();
-      localwoy.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
-    }
+    this.jdField_a_of_type_Zpq.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

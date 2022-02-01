@@ -1,16 +1,16 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import boem;
+import bpgh;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEEditorImageEditFragment$15$2
   implements Runnable
 {
-  public AEEditorImageEditFragment$15$2(boem paramboem) {}
+  public AEEditorImageEditFragment$15$2(bpgh parambpgh) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a, 2131689824, 0).a();
+    QQToast.a(this.a.a.a, 2131689829, 0).a();
   }
 }
 

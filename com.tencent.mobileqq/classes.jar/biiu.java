@@ -1,72 +1,116 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class biiu
-  extends BroadcastReceiver
 {
-  public biiu(AgentActivity paramAgentActivity) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<bnvn> jdField_a_of_type_JavaUtilList;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private biiu(Activity paramActivity)
   {
-    if (this.a.getAppInterface() != null) {
-      QLog.d("SDK_LOGIN.AgentActivity", 1, "-->onReceive, intent.getAction(): " + paramIntent.getAction());
-    }
-    if ("action_login_sucess".equals(paramIntent.getAction())) {
-      if (AgentActivity.a(this.a) != null)
-      {
-        paramContext = bipr.a(paramIntent, "login_success_uin");
-        if (!TextUtils.isEmpty(paramContext)) {
-          AgentActivity.a(this.a).putExtra("login_success_uin", paramContext);
-        }
-        if (AgentActivity.a(this.a).getIntExtra("intent_router", 0) != 1) {
-          break label314;
-        }
-        aevv.a(this.a, AgentActivity.a(this.a), PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static biiu a(@NonNull Activity paramActivity)
+  {
+    return new biiu(paramActivity);
+  }
+  
+  private bnvn a(@NonNull JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("type");
+    Object localObject = new bnvo();
+    View localView = ((bnvo)localObject).a(this.jdField_a_of_type_AndroidAppActivity, str);
+    if (localView == null)
     {
-      boolean bool = paramIntent.getBooleanExtra("forbid_quick_login_after", false);
-      if ((AgentActivity.a(this.a)) && (!this.a.a.isLogin()) && (!bool))
+      znw.a("type=" + str + " is illegal json=" + paramJSONObject, new Object[0]);
+      return null;
+    }
+    localObject = ((bnvo)localObject).a(str, localView);
+    if (localView == null)
+    {
+      znw.a("type=" + str + " create null view model json=" + paramJSONObject, new Object[0]);
+      return null;
+    }
+    ((bnvn)localObject).a(paramJSONObject);
+    return localObject;
+  }
+  
+  public biiu a(@NonNull ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    return this;
+  }
+  
+  public biiu a(@NonNull JSONArray paramJSONArray)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    }
+    a();
+    int i = 0;
+    if (i < paramJSONArray.length())
+    {
+      Object localObject = paramJSONArray.optJSONObject(i);
+      if (localObject == null) {}
+      for (;;)
       {
-        paramContext = this.a.a.getAccount();
-        QLog.i("SDK_LOGIN.AgentActivity", 1, "mLoginReceiver() OpenSDKAppinterface not login, logined uin= " + paramContext);
-        paramIntent = this.a.a.getApplication().getAllAccounts();
-        if ((paramIntent != null) && (paramIntent.size() > 0) && (!TextUtils.isEmpty(paramContext)))
+        i += 1;
+        break;
+        localObject = a((JSONObject)localObject);
+        if (localObject != null)
         {
-          paramIntent = paramIntent.iterator();
-          while (paramIntent.hasNext())
-          {
-            SimpleAccount localSimpleAccount = (SimpleAccount)paramIntent.next();
-            if (paramContext.equals(localSimpleAccount.getUin()))
-            {
-              this.a.a.login(localSimpleAccount);
-              QLog.i("SDK_LOGIN.AgentActivity", 1, "mLoginReceiver() OpenSDKAppinterface do login uin= " + paramContext);
-            }
-          }
+          ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+          this.jdField_a_of_type_AndroidViewViewGroup.addView(((bnvn)localObject).a(), localLayoutParams);
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
         }
       }
-      this.a.unregisterReceiver(this);
-      return;
-      label314:
-      this.a.startActivityForResult(AgentActivity.a(this.a), 0);
     }
+    return this;
+  }
+  
+  public biiu a(@NonNull JSONObject paramJSONObject)
+  {
+    paramJSONObject = a(paramJSONObject);
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    }
+    a();
+    if (paramJSONObject == null) {
+      return this;
+    }
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramJSONObject.a(), localLayoutParams);
+    this.jdField_a_of_type_JavaUtilList.add(paramJSONObject);
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bnvn)localIterator.next()).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biiu
  * JD-Core Version:    0.7.0.1
  */

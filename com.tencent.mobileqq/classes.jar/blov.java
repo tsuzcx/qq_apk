@@ -1,31 +1,60 @@
-import cooperation.qqreader.js.JsCallParams;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.widget.QzoneAutoVerticalScrollTextView;
 
-class blov
+public class blov
+  extends Animation
 {
-  long jdField_a_of_type_Long;
-  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
-  long b;
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  blov(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
+  public blov(QzoneAutoVerticalScrollTextView paramQzoneAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  void a()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.b = System.currentTimeMillis();
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    int i;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
+      }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
+    }
+    for (;;)
+    {
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
+      return;
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+    }
   }
   
-  boolean a()
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
-  }
-  
-  boolean a(blov paramblov)
-  {
-    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(paramblov.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getWidth();
   }
 }
 

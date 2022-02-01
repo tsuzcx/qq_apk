@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import apwr;
+import aqkr;
 
 class TextPreviewSettingActivity$2
   implements Runnable
 {
-  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, apwr paramapwr, String paramString) {}
+  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, aqkr paramaqkr, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apwr.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Aqkr.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
   }
 }
 

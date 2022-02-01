@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.fragments.person;
 
+import aabd;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import zxi;
 
 class QCirclePersonalBaseBottomFragment$3
   implements Runnable
@@ -20,7 +20,7 @@ class QCirclePersonalBaseBottomFragment$3
       localLayoutParams.height = (ImmersiveUtils.b() - this.a.getHeight() - ImmersiveUtils.a(98.0F));
       this.this$0.a.a().setLayoutParams(localLayoutParams);
       if (this.this$0.a.a().getChildCount() > 0) {
-        this.this$0.a.a().getChildAt(0).setBackgroundColor(this.this$0.getResources().getColor(2131166233));
+        this.this$0.a.a().getChildAt(0).setBackgroundColor(this.this$0.getResources().getColor(2131166234));
       }
     }
   }

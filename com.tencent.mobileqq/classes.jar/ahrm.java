@@ -1,50 +1,44 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahrm
-  implements ahrc<View>
+  extends Handler
 {
-  private BaseChatPie a;
-  
-  public ahrm(BaseChatPie paramBaseChatPie)
+  public ahrm(Looper paramLooper)
   {
-    this.a = paramBaseChatPie;
+    super(paramLooper);
   }
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 38;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public View a(Context paramContext)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    agne localagne = (agne)this.a.a(52);
-    if (paramInt2 == 0)
+    switch (paramMessage.what)
     {
-      localagne.b(false);
-      localagne.g();
-      return;
     }
-    localagne.b(true);
-    localagne.h();
-  }
-  
-  public boolean a()
-  {
-    return false;
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramMessage.arg1;
+        paramMessage = paramMessage.getData();
+      } while (!QLog.isColorLevel());
+      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
+      return;
+      i = paramMessage.arg1;
+      switch (paramMessage.arg1)
+      {
+      default: 
+        return;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    } while (!QLog.isColorLevel());
+    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
   }
 }
 

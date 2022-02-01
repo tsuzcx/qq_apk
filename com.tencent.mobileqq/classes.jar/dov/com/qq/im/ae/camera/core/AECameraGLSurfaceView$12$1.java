@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnid;
+import bojl;
 import com.tencent.ttpic.openapi.util.VideoSDKMaterialParser;
 
 class AECameraGLSurfaceView$12$1
   implements Runnable
 {
-  AECameraGLSurfaceView$12$1(AECameraGLSurfaceView.12 param12, bnid parambnid) {}
+  AECameraGLSurfaceView$12$1(AECameraGLSurfaceView.12 param12, bojl parambojl) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bnid.a(VideoSDKMaterialParser.parseVideoMaterial(this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView$12.a, "params"));
+    this.jdField_a_of_type_Bojl.a(VideoSDKMaterialParser.parseVideoMaterial(this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView$12.a, "params"));
   }
 }
 

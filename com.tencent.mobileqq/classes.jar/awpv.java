@@ -1,37 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class awpv
-  implements DialogInterface.OnClickListener
+class awpv
+  implements awqb
 {
-  public awpv(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  awpv(awpq paramawpq, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Pair<Integer, String> a()
   {
-    paramInt = awql.a().e();
-    if (1 == paramInt)
-    {
-      this.a.l();
-      if (this.a.a) {
-        awqs.a("0X800A253", 3);
-      }
+    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public awpi a()
+  {
+    if (awpq.a(this.jdField_a_of_type_Awpq) == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
     }
-    while (2 != paramInt)
-    {
-      return;
-      awqs.a("0X800A253", 1);
-      return;
-    }
-    if (this.a.d) {
-      awqs.a("0X800A244", 2);
-    }
-    for (;;)
-    {
-      this.a.l();
-      return;
-      awqs.a("0X800A244", 1);
-    }
+    return new awpi(this.jdField_a_of_type_Awpq.app.c(), awpq.a(this.jdField_a_of_type_Awpq), awpq.a(this.jdField_a_of_type_Awpq));
   }
 }
 

@@ -1,13 +1,8 @@
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.graphics.Bitmap;
 
-final class bbsm
-  implements Comparator<RecentUser>
+public abstract interface bbsm
 {
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
-  {
-    return Long.signum(paramRecentUser2.lastmsgtime - paramRecentUser1.lastmsgtime);
-  }
+  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt);
 }
 
 

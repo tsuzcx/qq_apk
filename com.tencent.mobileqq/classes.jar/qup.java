@@ -1,92 +1,35 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
 public class qup
-  extends qqt
+  extends beqz
 {
-  public qup(Context paramContext, aobu paramaobu, snh paramsnh)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    super(paramContext, paramaobu, paramsnh);
-  }
-  
-  public qqt a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return d(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).q().g().l().j().n().h();
-  }
-  
-  public qqt d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    paramDownloadParams = paramDownloadParams.urlStr;
+    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
+      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
     }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc);
-    }
-    if (this.jdField_a_of_type_Qqs != null)
+    for (;;)
     {
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLinearLayout2.setLayoutParams(localLayoutParams);
-      localLinearLayout2.addView((View)this.jdField_a_of_type_Qqs);
-      localLinearLayout1.addView(localLinearLayout2);
+      paramOutputStream = new File(paramOutputStream);
+      if (!paramOutputStream.exists()) {
+        break;
+      }
+      return paramOutputStream;
+      paramOutputStream = paramDownloadParams;
+      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
+        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public qqt e()
-  {
     return null;
   }
   
-  public qqt g()
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    this.jdField_a_of_type_Qqs = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qqt o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
-  }
-  
-  public qqt p()
-  {
-    super.p();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_Qrb);
-    }
-    return this;
+    return new quq(this, paramFile, false, false, 0, 0, 0.0F);
   }
 }
 

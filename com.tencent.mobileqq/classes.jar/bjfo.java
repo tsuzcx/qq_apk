@@ -1,22 +1,17 @@
-import android.graphics.SurfaceTexture;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-public abstract interface bjfo
+public final class bjfo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public bjfo(Context paramContext) {}
   
-  public abstract void a(int paramInt, Throwable paramThrowable);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    FloatingScreenPermission.requestPermission(this.a);
+  }
 }
 
 

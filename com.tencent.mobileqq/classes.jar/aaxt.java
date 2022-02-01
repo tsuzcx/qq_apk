@@ -1,81 +1,17 @@
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public class aaxt
+class aaxt
+  implements DialogInterface.OnShowListener
 {
-  private int jdField_a_of_type_Int = -1;
-  protected aaxs a;
-  private aaxv jdField_a_of_type_Aaxv = new aaxv(this, Looper.getMainLooper());
+  aaxt(aaxp paramaaxp) {}
   
-  public void a()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Aaxv.removeCallbacks(null);
-    this.jdField_a_of_type_Aaxs = null;
-  }
-  
-  protected void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Aaxv);
-    localMessage.what = 7;
-    localMessage.obj = new aaxu(paramLong);
-    localMessage.sendToTarget();
-  }
-  
-  public void a(aaxs paramaaxs)
-  {
-    this.jdField_a_of_type_Aaxs = paramaaxs;
-  }
-  
-  public void b()
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Aaxv);
-    localMessage.what = 4;
-    localMessage.sendToTarget();
-  }
-  
-  protected void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_Aaxs != null) {
-      this.jdField_a_of_type_Aaxs.a(paramLong);
-    }
-  }
-  
-  public void c()
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Aaxv);
-    localMessage.what = 2;
-    localMessage.sendToTarget();
-  }
-  
-  protected void c(long paramLong)
-  {
-    a(3);
-    if (this.jdField_a_of_type_Aaxs != null) {
-      this.jdField_a_of_type_Aaxs.a(paramLong);
-    }
-  }
-  
-  protected void d()
-  {
-    a(3);
-    if (this.jdField_a_of_type_Aaxs != null) {}
-  }
-  
-  protected void e()
-  {
-    a(4);
-    if (this.jdField_a_of_type_Aaxs != null) {}
-  }
-  
-  protected void f()
-  {
-    a(5);
-    if (this.jdField_a_of_type_Aaxs != null) {}
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
   }
 }
 

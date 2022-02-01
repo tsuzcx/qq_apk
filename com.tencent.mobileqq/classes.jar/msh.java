@@ -1,19 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class msh
+class msh
   implements DialogInterface.OnClickListener
 {
-  public msh(PopupDialog paramPopupDialog) {}
+  msh(msg parammsg) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PopupDialog.a.b != null) {
-      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
-    }
     paramDialogInterface.dismiss();
-    PopupDialog.a();
+    ((awaa)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString, "4", "openRoom");
   }
 }
 

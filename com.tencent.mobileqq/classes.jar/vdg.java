@@ -1,27 +1,27 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import com.tencent.mobileqq.widget.QQToast;
-import qqcircle.QQCircleRight.SetCircleUnCareRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vdg
-  implements zxa<QQCircleRight.SetCircleUnCareRsp>
+  implements View.OnClickListener
 {
-  vdg(vde paramvde, boolean paramBoolean) {}
+  vdg(vda paramvda) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRight.SetCircleUnCareRsp paramSetCircleUnCareRsp)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleSharePart", 1, "uncare person: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
-    }
-    if ((paramBoolean) && (paramLong == 0L))
+    QLog.d("QCircleFolderSplashPart", 4, "btn onClick");
+    vtq.a("", 20, vda.a(this.a));
+    if (vda.c(this.a)) {}
+    for (String str = "1";; str = "2")
     {
-      if (this.jdField_a_of_type_Boolean) {
-        QQToast.a(this.jdField_a_of_type_Vde.a(), 2, 2131697134, 0).a();
-      }
-      zwp.a().a(new QCircleFeedEvent("", 6));
+      vtq.a("", 19, 4, 0, str);
+      uyy.a().a(false);
+      vda.a(this.a);
+      this.a.b("show_publish_feed_guide_bubble", null);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Vde.a(), 1, 2131697212, 0).a();
   }
 }
 

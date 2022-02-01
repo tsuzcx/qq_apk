@@ -1,83 +1,140 @@
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.lang.ref.WeakReference;
-import java.util.Map;
+import mqq.os.MqqHandler;
 
-public class bghn
-  extends AsyncTask<Object, Void, Drawable>
+class bghn
+  implements Animation.AnimationListener
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  bghn(bghm parambghm) {}
   
-  private View a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (this == bghl.a(this.jdField_a_of_type_Bghl, localView)) {
-      return localView;
+    this.a.i = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class).obtainMessage(68).sendToTarget();
+    if (this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
+    {
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      {
+        if (this.a.jdField_a_of_type_Bfpy != null) {}
+        bghm.a(this.a);
+        this.a.notifyObservers(Integer.valueOf(123322));
+        this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      if (this.a.jdField_a_of_type_Bfpy != null) {
+        this.a.jdField_a_of_type_Bfpy.d = false;
+      }
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        this.a.d(true);
+        this.a.jdField_b_of_type_Boolean = false;
+      }
+      if (this.a.e)
+      {
+        if (bhnv.d(BaseApplication.getContext())) {
+          break label247;
+        }
+        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 1, ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131696933), 1).b(((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDimensionPixelSize(2131299011) - (int)bhmg.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 5.0F));
+      }
     }
-    return null;
-  }
-  
-  public Drawable a(Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
-    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
-    bghj localbghj = (bghj)paramVarArgs[1];
-    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
-    if (((bghl.a(this.jdField_a_of_type_Bghl) == null) || (isCancelled()) || (a() == null) || (bghl.a(this.jdField_a_of_type_Bghl))) || ((0 == 0) && (!isCancelled()) && (a() != null) && (!bghl.a(this.jdField_a_of_type_Bghl)))) {}
     for (;;)
     {
-      try
+      return;
+      label247:
+      bgqk localbgqk = (bgqk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(133);
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      if (!TextUtils.isEmpty(str))
       {
-        paramVarArgs = localbghj.a();
-        if ((bghl.a(this.jdField_a_of_type_Bghl) != null) && (paramVarArgs != null)) {
-          bghl.a(this.jdField_a_of_type_Bghl).a(str, paramVarArgs);
-        }
-        return paramVarArgs;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        if (bghl.a(this.jdField_a_of_type_Bghl) != null) {
-          bghl.a(this.jdField_a_of_type_Bghl).a();
-        }
-        System.gc();
-        Thread.yield();
-        try
+        TroopAioTopADInfo localTroopAioTopADInfo = localbgqk.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        Object localObject;
+        if (localTroopAioTopADInfo != null)
         {
-          paramVarArgs = localbghj.a();
+          if (!TextUtils.isEmpty(localTroopAioTopADInfo.jumpUrl)) {
+            break label430;
+          }
+          paramAnimation = localTroopAioTopADInfo.backgroundUrl;
+          localObject = bhni.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), paramAnimation);
+          if (localObject == null) {
+            break label439;
+          }
+          ((bhmr)localObject).a();
         }
-        catch (OutOfMemoryError paramVarArgs)
+        for (;;)
         {
-          QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
+          bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_Promote", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopAioTopADInfo.adId + "", "", "");
+          localbgqk.a(str);
+          this.a.d = false;
+          return;
+          label430:
+          paramAnimation = localTroopAioTopADInfo.jumpUrl;
+          break;
+          label439:
+          if (paramAnimation.startsWith("http"))
+          {
+            localObject = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQBrowserActivity.class);
+            ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramAnimation));
+            ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject);
+          }
+        }
+        if (this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
+        {
+          if ((this.a.jdField_a_of_type_AndroidViewView != null) && (this.a.jdField_a_of_type_Bfpy != null))
+          {
+            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+            this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+            bghm.b(this.a);
+            this.a.notifyObservers(Integer.valueOf(123322));
+            if ((this.a.c) && (this.a.jdField_a_of_type_AndroidViewView != null) && ((this.a.jdField_a_of_type_AndroidViewView instanceof TroopAioFeedsCenterView)))
+            {
+              if (!this.a.d) {
+                break label651;
+              }
+              this.a.jdField_a_of_type_Bfrm.b();
+            }
+          }
+          while (this.a.jdField_a_of_type_AndroidViewView != null)
+          {
+            this.a.jdField_a_of_type_AndroidViewView.requestFocus();
+            return;
+            label651:
+            if (this.a.f)
+            {
+              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a();
+              this.a.f = false;
+            }
+            else
+            {
+              this.a.c = false;
+              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a(true);
+            }
+          }
         }
       }
-      paramVarArgs = null;
     }
   }
   
-  public void a(Drawable paramDrawable)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    View localView = a();
-    bgho localbgho = (bgho)bghl.a(this.jdField_a_of_type_Bghl).remove(localView);
-    if ((isCancelled()) || (bghl.a(this.jdField_a_of_type_Bghl))) {
-      paramDrawable = null;
-    }
-    if (localView != null)
-    {
-      if (paramDrawable != null) {
-        break label72;
-      }
-      if ((localbgho != null) && (localbgho.a != null)) {
-        localbgho.a.a(localView, null);
-      }
-    }
-    return;
-    label72:
-    bghl.a(this.jdField_a_of_type_Bghl, this.jdField_a_of_type_Boolean, localView, paramDrawable, localbgho);
+    this.a.i = true;
   }
 }
 

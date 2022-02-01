@@ -12,11 +12,11 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 public class WorkerAction
   implements Action<Integer>
 {
-  public int ACTION_CREATE_WORKE = 1;
-  public int ACTION_GET_WORKER_MODE = 2;
-  public int ACTION_POST_MSG_TO_SERVICE = 5;
-  public int ACTION_POST_MSG_TO_WORKER = 4;
-  public int ACTION_STOP_WORKER = 3;
+  public static final int ACTION_CREATE_WORKE = 1;
+  public static final int ACTION_GET_WORKER_MODE = 2;
+  public static final int ACTION_POST_MSG_TO_SERVICE = 5;
+  public static final int ACTION_POST_MSG_TO_WORKER = 4;
+  public static final int ACTION_STOP_WORKER = 3;
   private int action = -1;
   private IMiniAppContext mMiniAppContext;
   private String mPostMsg = null;
@@ -31,14 +31,14 @@ public class WorkerAction
   
   public int createWorker(String paramString)
   {
-    this.action = this.ACTION_CREATE_WORKE;
+    this.action = 1;
     this.mWorkerName = paramString;
     return ((Integer)this.mMiniAppContext.performAction(this)).intValue();
   }
   
   public int getWorkerMode()
   {
-    this.action = this.ACTION_GET_WORKER_MODE;
+    this.action = 2;
     return ((Integer)this.mMiniAppContext.performAction(this)).intValue();
   }
   
@@ -47,23 +47,23 @@ public class WorkerAction
     if (!(paramBaseRuntime instanceof AppBrandRuntime)) {
       return Integer.valueOf(0);
     }
-    if (this.action == this.ACTION_CREATE_WORKE) {
+    if (this.action == 1) {
       return Integer.valueOf(((AppBrandRuntime)paramBaseRuntime).getMiniAppWorkerManager().createWorker(this.mWorkerName));
     }
-    if (this.action == this.ACTION_GET_WORKER_MODE)
+    if (this.action == 2)
     {
       if ((paramBaseRuntime.getJsService() instanceof AppBrandService)) {}
       for (int i = 1;; i = 0) {
         return Integer.valueOf(i);
       }
     }
-    if (this.action == this.ACTION_STOP_WORKER) {
+    if (this.action == 3) {
       ((AppBrandRuntime)paramBaseRuntime).getMiniAppWorkerManager().stopWorker();
     }
-    if (this.action == this.ACTION_POST_MSG_TO_WORKER) {
+    if (this.action == 4) {
       ((AppBrandRuntime)paramBaseRuntime).getMiniAppWorkerManager().handlePostMsgToWorker(this.mPostMsg);
     }
-    if (this.action == this.ACTION_POST_MSG_TO_SERVICE)
+    if (this.action == 5)
     {
       paramBaseRuntime = paramBaseRuntime.getJsService();
       String str = String.format("WeixinWorker.workerMsgHandler('" + Integer.valueOf(1) + "',%s)", new Object[] { this.mPostMsg });
@@ -75,21 +75,21 @@ public class WorkerAction
   
   public void postMsgToService(String paramString)
   {
-    this.action = this.ACTION_POST_MSG_TO_SERVICE;
+    this.action = 5;
     this.mPostMsg = paramString;
     this.mMiniAppContext.performAction(this);
   }
   
   public void postMsgToWorker(String paramString)
   {
-    this.action = this.ACTION_POST_MSG_TO_WORKER;
+    this.action = 4;
     this.mPostMsg = paramString;
     this.mMiniAppContext.performAction(this);
   }
   
   public void stopWorker()
   {
-    this.action = this.ACTION_STOP_WORKER;
+    this.action = 3;
     this.mMiniAppContext.performAction(this);
   }
 }

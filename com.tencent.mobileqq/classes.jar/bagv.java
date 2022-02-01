@@ -1,58 +1,65 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
-import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class bagv
-  extends bahu<ReceiptMessageDetailFragment>
 {
-  public bagv(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public static bags a(QQAppInterface paramQQAppInterface, azxr paramazxr)
   {
-    super(paramReceiptMessageDetailFragment);
-  }
-  
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramQQAppInterface != null)
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
-      return;
-    }
-    try
-    {
-      paramBundle = new oidb_0x985.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_code.get();
-      if (paramInt == 0)
+      localObject1 = localObject2;
+      if (paramazxr != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageDetailFragment", 2, "mDiscussionFetchReadStatusCallback succ");
+        localObject1 = new bags();
+        ((bags)localObject1).jdField_a_of_type_Boolean = a(paramQQAppInterface, paramazxr);
+        if (paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
+          break label84;
         }
-        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
-        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
-        paramBundle = paramBundle.rpt_msg_unread_list.get();
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
-        paramInt = paramArrayOfByte.size();
-        int i = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
-        paramInt = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-        return;
+        i = 1;
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    while ((i != 0) && (paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard != null))
     {
-      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
-      return;
+      paramazxr = paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard;
+      if (paramazxr.iNewCount > 0)
+      {
+        ((bags)localObject1).b = true;
+        ((bags)localObject1).jdField_a_of_type_Int = paramazxr.iNewCount;
+        return localObject1;
+        label84:
+        i = 0;
+      }
+      else
+      {
+        paramQQAppInterface = (aysq)paramQQAppInterface.getManager(160);
+        if (!paramQQAppInterface.a(paramQQAppInterface.a(10016), false)) {
+          break label140;
+        }
+      }
     }
-    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    label140:
+    for (int i = 1;; i = 0)
+    {
+      if ((paramazxr.iUpgradeCount > 0) || (i != 0))
+      {
+        ((bags)localObject1).b = true;
+        ((bags)localObject1).jdField_a_of_type_Int = 0;
+      }
+      return localObject1;
+    }
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, azxr paramazxr)
+  {
+    if ((paramQQAppInterface == null) || (paramazxr == null) || (paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard == null) || ((paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) && (!ProfileActivity.AllInOne.b(paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))) {}
+    while (((paramazxr.b) && (TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramazxr.jdField_a_of_type_JavaLangString))) || (bhsi.W(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) || (paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard.medalSwitchDisable) || (bhjx.b(paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+      return false;
+    }
+    return true;
   }
 }
 

@@ -1,44 +1,16 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class aasv
-  implements aats
+class aasv
+  implements bimu
 {
-  public aasv(TroopGiftPanel paramTroopGiftPanel) {}
+  aasv(aast paramaast, int paramInt, String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(List<bfte> paramList, aasn paramaasn)
+  public void a(Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_Aasj == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopGiftPanel", 2, "getPackGiftStorage--onGetPackGift error--mTroopGifPanelData is null");
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_Aasj.b(paramList);
-    this.a.jdField_a_of_type_Aasj.a(paramaasn);
-    if ((this.a.jdField_a_of_type_Aasj != null) && (this.a.jdField_a_of_type_Aasj.jdField_e_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_Aasj.jdField_e_of_type_JavaUtilArrayList.size() > 0) && (this.a.jdField_a_of_type_Aasj.b.size() > 0) && (this.a.jdField_a_of_type_Aasj.jdField_e_of_type_Int != -1))
-    {
-      this.a.jdField_a_of_type_Aasi = ((aasi)this.a.jdField_a_of_type_Aasj.jdField_e_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Aasj.jdField_e_of_type_Int));
-      TroopGiftPanel.a(this.a, this.a.jdField_a_of_type_Aasi);
-    }
-    if (this.a.d())
-    {
-      paramList = this.a;
-      if ((!TextUtils.isEmpty(this.a.f)) && (TroopGiftPanel.a(this.a))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramList.setSendGiftBtnEnabled(bool);
-        return;
-      }
-    }
-    this.a.setSendGiftBtnEnabled(TroopGiftPanel.a(this.a));
+    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
+    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aast.a.a(146, paramBundle);
   }
 }
 

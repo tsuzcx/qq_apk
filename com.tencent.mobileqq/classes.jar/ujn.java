@@ -1,142 +1,38 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import common.config.service.QzoneConfig;
+import UserGrowth.stSchema;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class ujn
-  implements Handler.Callback
+class ujn
+  extends ClickableSpan
 {
-  private static final bmgv<ujn, Void> jdField_a_of_type_Bmgv = new ujo();
-  private static String jdField_a_of_type_JavaLangString;
-  public Handler a;
+  private int jdField_a_of_type_Int;
+  private stSchema jdField_a_of_type_UserGrowthStSchema;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
   
-  public static ujn a()
+  ujn(stSimpleMetaFeed paramstSimpleMetaFeed, stSchema paramstSchema, int paramInt)
   {
-    return (ujn)jdField_a_of_type_Bmgv.b(null);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
+    this.jdField_a_of_type_UserGrowthStSchema = paramstSchema;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private static void c(uju paramuju)
+  private void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
   {
-    if ((paramuju == null) || (paramuju.jdField_a_of_type_Ujr == null) || (TextUtils.isEmpty(paramuju.jdField_a_of_type_Ujr.c()))) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (jdField_a_of_type_JavaLangString == null) {
-          jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "LinkReportCmds", "getVisitorNotify,getWidget,getActiveFeeds,getFeedAlert,getMainPage,getHostHBInfo,getProfileFeeds,applist.shuoshuo,applist.photo,detail.shuoshuo,detail.photo,getPassiveFeeds,getPhotoListEx,like,addComment,forward,Operation.shareOutsite");
-        }
-        String str = paramuju.jdField_a_of_type_Ujr.c();
-        if ((jdField_a_of_type_JavaLangString.contains(str)) && (paramuju.b != 0))
-        {
-          upe.d("WeishiBusinessLooper", "cmd error report! cmd=" + str + " retCode=" + paramuju.b + " msg=" + paramuju.jdField_a_of_type_JavaLangString + " duration=" + (System.currentTimeMillis() - paramuju.jdField_a_of_type_Long));
-          return;
-        }
-      }
-      catch (Exception paramuju)
-      {
-        upe.d("weishi-BusinessLooper", "reportRequest Exception:" + paramuju.getLocalizedMessage());
-      }
-    }
+    uns.a("friend", this.jdField_a_of_type_Int, String.valueOf(paramInt), paramstSimpleMetaFeed);
   }
   
-  public void a(Runnable paramRunnable)
+  public void onClick(@androidx.annotation.NonNull View paramView)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    uqf.a("WSFriendLikeUtil", "schema = " + this.jdField_a_of_type_UserGrowthStSchema.toString());
+    new uje(BaseApplicationImpl.context).a(this.jdField_a_of_type_UserGrowthStSchema).a(new ujo(this)).a();
   }
   
-  public void a(Runnable paramRunnable, long paramLong)
+  public void updateDrawState(@android.support.annotation.NonNull TextPaint paramTextPaint)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void a(uju paramuju)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 0;
-    localMessage.obj = paramuju;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
-    }
-  }
-  
-  public void b(uju paramuju)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.obj = paramuju;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage == null)
-    {
-      upe.d("weishi-BusinessLooper", "WeishiBusinessLooper handleMessage, msg is null");
-      return true;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    uju localuju;
-    do
-    {
-      do
-      {
-        return false;
-        localuju = (uju)paramMessage.obj;
-      } while (localuju == null);
-      localStringBuilder = new StringBuilder().append("runTask cmd=");
-      if (localuju.jdField_a_of_type_Ujr != null) {}
-      for (paramMessage = localuju.jdField_a_of_type_Ujr.getCmdString();; paramMessage = "mRequest is null")
-      {
-        upe.a("weishi-BusinessLooper", paramMessage);
-        localuju.a();
-        break;
-      }
-      localuju = (uju)paramMessage.obj;
-    } while (localuju == null);
-    StringBuilder localStringBuilder = new StringBuilder().append("completeTask resultCode:").append(localuju.b).append(", cmd=");
-    if (localuju.jdField_a_of_type_Ujr != null) {}
-    for (paramMessage = localuju.jdField_a_of_type_Ujr.getCmdString();; paramMessage = "mRequest is null")
-    {
-      for (;;)
-      {
-        upe.c("weishi-BusinessLooper", paramMessage);
-        if (localuju.jdField_a_of_type_Ujj == null) {
-          break;
-        }
-        try
-        {
-          c(localuju);
-          localuju.jdField_a_of_type_Ujj.a(localuju);
-        }
-        catch (Exception paramMessage)
-        {
-          upe.d("weishi-BusinessLooper", "handleMessage MSG_COMPLETE_TASK:" + paramMessage.getLocalizedMessage());
-        }
-      }
-      break;
-    }
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

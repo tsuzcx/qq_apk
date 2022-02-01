@@ -1,33 +1,58 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class paz
-  extends ClickableSpan
+public class paz
+  implements AladdinConfigHandler
 {
-  paz(pay parampay, SubCommentData paramSubCommentData) {}
+  private static final boolean a;
+  private static boolean b;
   
-  public void onClick(View paramView)
+  static
   {
-    paa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
-    paramView = new oyn(this.jdField_a_of_type_Pay).a().a();
-    oat.a(null, paa.a(this.jdField_a_of_type_Pay.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Pay.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pay.a.mAlgorithmID), this.jdField_a_of_type_Pay.a.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
-    for (String str = "#FF8444";; str = "#737373")
+    if (((Integer)bnrf.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramTextPaint.setColor(Color.parseColor(str));
-      paramTextPaint.setUnderlineText(false);
+      a = bool;
+      b = true;
       return;
     }
+  }
+  
+  public static boolean a()
+  {
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    return b;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("ChannelModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("ChannelModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "channel_mode")) {
+        bnrf.a("readinjoy_channel_mode", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ChannelModeConfigHandler", 1, "[onWipeConfig]");
+    bnrf.a("readinjoy_channel_mode", Integer.valueOf(-1));
   }
 }
 

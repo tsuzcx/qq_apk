@@ -1,6 +1,12 @@
 public abstract interface zcu
 {
-  public abstract void a(String paramString);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean, zbw paramzbw);
+  
+  public abstract void b(int paramInt);
 }
 
 

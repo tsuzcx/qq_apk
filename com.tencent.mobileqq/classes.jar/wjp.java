@@ -1,42 +1,34 @@
-import android.annotation.TargetApi;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@TargetApi(14)
-public class wjp
+class wjp
+  implements woy<xdt, xfe>
 {
-  public volatile int a;
-  public long a;
-  public ErrorMessage a;
-  public List<wjk> a;
-  public int b;
-  public int c;
+  wjp(wjn paramwjn) {}
   
-  public wjp()
+  public void a(xdt arg1, xfe paramxfe, ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_Int == 3);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 5;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
-    localStringBuffer.append("status=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", retryTimes=").append(this.b);
-    localStringBuffer.append(", result=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess()) {}
+    for (;;)
+    {
+      synchronized (this.a.jdField_b_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_Wjr = paramxfe.jdField_a_of_type_Wjr;
+        this.a.jdField_a_of_type_Wjr.a();
+        yuk.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_Wjr);
+        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      }
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+        return;
+        paramxfe = finally;
+        throw paramxfe;
+        yuk.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
+      }
+    }
   }
 }
 

@@ -1,18 +1,30 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class aigt
-  implements ViewPager.OnPageChangeListener
+  extends aigs
 {
-  public aigt(TroopChatPie paramTroopChatPie) {}
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public aigt(String paramString)
   {
-    TroopChatPie.a(this.a, paramInt);
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import auis;
-import auiw;
+import avar;
+import avav;
 import java.util.List;
 
 class ForwardPreviewTroopMemberController$1$1
@@ -11,10 +11,10 @@ class ForwardPreviewTroopMemberController$1$1
   
   public void run()
   {
-    if (auis.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
+    if (avar.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0.e();
-      auis.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      avar.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

@@ -1,32 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aoav
-  extends anxg
+  implements anuh
 {
-  private aoav(UpdateTroop paramUpdateTroop) {}
-  
-  protected void a(boolean paramBoolean)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
-    }
-    if (!paramBoolean)
+    if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).a().a()))
     {
-      this.a.a(6);
-      return;
+      paramAppInterface = new ArrayList();
+      paramAppInterface.add("100000");
+      return paramAppInterface;
     }
-    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.qphone.base.util.QLog;
 
 public class aasl
+  extends aoky
 {
-  public int a;
-  public String a;
-  public List<aask> a;
-  public int b;
-  public String b;
-  public int c;
+  public aasl(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public aasl(JSONObject paramJSONObject)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("lottie");
-    this.c = paramJSONObject.optInt("interval");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    if (paramJSONObject.optJSONArray("aioActivities") != null)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      paramJSONObject = paramJSONObject.optJSONArray("aioActivities");
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        aask localaask = new aask(paramJSONObject.optJSONObject(i));
-        this.jdField_a_of_type_JavaUtilList.add(localaask);
-        i += 1;
-      }
+    if (paramBoolean) {
+      this.a.a(147, paramBundle);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
   }
 }
 

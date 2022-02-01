@@ -1,36 +1,46 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
+import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class admh
-  implements CompoundButton.OnCheckedChangeListener
+  implements IMemoryCellingListener
 {
-  public admh(AssistantSettingActivity paramAssistantSettingActivity) {}
+  static void a(long paramLong) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onBeforeUploadJson()
   {
-    boolean bool = false;
-    if (!bgnt.d(this.a))
-    {
-      AssistantSettingActivity.a(this.a, 2131693988, 1);
-      localObject = this.a;
-      if (!paramBoolean) {
-        bool = true;
-      }
-      AssistantSettingActivity.b((AssistantSettingActivity)localObject, bool);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeUploadJson");
+  }
+  
+  public boolean onCanDump(long paramLong)
+  {
+    a(paramLong);
+    return false;
+  }
+  
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onHprofDumped(@NotNull String paramString) {}
+  
+  public void onLowMemory(long paramLong)
+  {
+    adma.a().a(paramLong);
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = DumpMemInfoHandler.generateHprof(paramString);
+    boolean bool = ((Boolean)paramString[0]).booleanValue();
+    if ((bool) && (paramString[1] != null)) {
+      localArrayList.add((String)paramString[1]);
     }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (Object localObject = "1";; localObject = "2")
-    {
-      bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A5D5", "0X800A5D5", 0, 0, (String)localObject, "", "", "");
-      this.a.a.b(paramBoolean);
-      break;
-    }
+    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeDump " + bool);
+    return localArrayList;
   }
 }
 

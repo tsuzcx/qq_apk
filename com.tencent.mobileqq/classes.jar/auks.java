@@ -1,40 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.LinearLayout;
 
-public class auks
-  extends bjha
+class auks
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public auks(ForwardShareCardOption paramForwardShareCardOption) {}
+  auks(aukp paramaukp) {}
   
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.y();
-    if (ForwardShareCardOption.a(this.a) != -1)
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      if ((!paramBoolean) || (paramHashMap == null)) {
-        break label151;
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((aukp.a(this.a).getVisibility() == 0) && (Math.abs(aukp.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aukp.a(this.a).setAlpha(f);
       }
-      String str = (String)paramHashMap.get("uin");
-      paramHashMap = (String)paramHashMap.get("url");
-      ForwardShareCardOption.a(this.a, paramHashMap);
-      ForwardShareCardOption.b(this.a, paramHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
+      if ((aukp.a(this.a).getVisibility() == 0) && (Math.abs(aukp.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aukp.a(this.a).setAlpha(f);
       }
-      if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
-    }
-    for (;;)
-    {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label151:
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131692663), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }

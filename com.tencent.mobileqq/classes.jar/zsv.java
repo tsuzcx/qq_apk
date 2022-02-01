@@ -1,46 +1,187 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-public class zsv
-  implements URLDrawable.URLDrawableListener
+public abstract class zsv<T>
 {
-  public zsv(QRDisplayActivity paramQRDisplayActivity, aqss paramaqss, int paramInt, boolean paramBoolean) {}
+  protected Context a;
+  private SegmentList jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
+  private zss jdField_a_of_type_Zss;
+  protected boolean a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public zsv(Context paramContext)
   {
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadCanceled:" + this.jdField_a_of_type_Aqss.a);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void T_() {}
+  
+  protected void V_() {}
+  
+  public abstract int a();
+  
+  protected int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public abstract View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup);
+  
+  protected SegmentList a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
+  }
+  
+  public abstract String a();
+  
+  public yqw a(int paramInt)
+  {
+    SegmentList localSegmentList = a();
+    if (localSegmentList == null)
+    {
+      znw.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
+      return null;
+    }
+    int i = 0;
+    if (i < localSegmentList.getChildCount())
+    {
+      yqw localyqw = (yqw)localSegmentList.getChildAt(i).getTag();
+      if (localyqw == null) {}
+      while ((!localyqw.a.equals(a())) || (localyqw.b != paramInt))
+      {
+        i += 1;
+        break;
+      }
+      return localyqw;
+    }
+    return null;
+  }
+  
+  public abstract yqw a(int paramInt, ViewGroup paramViewGroup);
+  
+  protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(zss paramzss, SegmentList paramSegmentList)
+  {
+    this.jdField_a_of_type_Zss = paramzss;
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList = paramSegmentList;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(yqw paramyqw)
+  {
+    SegmentList localSegmentList = a();
+    if (localSegmentList == null) {
+      znw.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
+    }
+    int i;
+    int j;
+    int k;
+    do
+    {
+      do
+      {
+        return false;
+      } while (paramyqw == null);
+      i = localSegmentList.getFirstVisiblePosition();
+      j = localSegmentList.getLastVisiblePosition();
+      k = paramyqw.c;
+    } while ((k < i) || (k > j));
+    return true;
+  }
+  
+  public void a_(yqw paramyqw) {}
+  
+  protected boolean a_(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return "";
+  }
+  
+  protected void b() {}
+  
+  public void b_(yqw paramyqw) {}
+  
+  protected void c() {}
+  
+  public void c(yqw paramyqw) {}
+  
+  public final void c(boolean paramBoolean)
+  {
+    
+    if (this.jdField_a_of_type_Zss != null)
+    {
+      this.jdField_a_of_type_Zss.a(a(), paramBoolean);
+      this.jdField_a_of_type_Zss.notifyDataSetChanged();
+    }
+    yoq.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return a();
+    }
+    return 0;
+  }
+  
+  protected void d() {}
+  
+  public void d(int paramInt)
+  {
+    paramInt = this.jdField_a_of_type_Zss.a(this, paramInt);
+    a().setSelection(paramInt);
+  }
+  
+  protected boolean d()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList == null) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.a(a());
+    return true;
+  }
+  
+  protected void e() {}
+  
+  public void e_(boolean paramBoolean)
+  {
+    if (paramBoolean != this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = paramBoolean;
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected int h_()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadFialed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqss.a);
-    }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.i.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
-    }
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131695759), 0).a();
+    return 1;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public void h_(int paramInt) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void k() {}
+  
+  protected void m()
   {
-    QRDisplayActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_Aqss, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadSuccessed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqss.a);
+    if (this.jdField_a_of_type_Zss == null) {
+      return;
     }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.i.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
-    }
+    this.jdField_a_of_type_Zss.notifyDataSetChanged();
   }
 }
 

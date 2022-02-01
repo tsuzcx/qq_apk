@@ -31,8 +31,8 @@ public class TVKCodecUtils
   private static final int HDR10_CODEC_CAP_NOT_SUPPORT = 0;
   private static final int HDR10_CODEC_CAP_SUPPORT = 1;
   private static final int HDR10_CODEC_CAP_UNKNOWN = -1;
-  private static final String TAG = "MediaPlayerMgr[TVKCodecUtils.java]";
-  private static HashMap<String, Integer> mCodecCap = null;
+  public static final String TAG = "MediaPlayerMgr[TVKCodecUtils.java]";
+  private static HashMap<String, Integer> mCodecCap;
   private static int mHDR10CodecSupport;
   private static String mHDRVideoLevelKey;
   protected static ArrayList<String> mHWCodecCapList = new ArrayList();
@@ -63,6 +63,7 @@ public class TVKCodecUtils
     mHWVideoHEVCMaxCap = 0;
     mHWVideoHEVCLevel = 0;
     mHWVideoHEVCProfile = 0;
+    mCodecCap = null;
     mIsInitDone = false;
     mPlayerHevcLevel = -1;
     mIsInBlackListForHardwareDec = -1;
@@ -1042,8 +1043,10 @@ public class TVKCodecUtils
     }
     catch (Exception paramContext)
     {
-      label24:
-      break label24;
+      for (;;)
+      {
+        paramContext.printStackTrace();
+      }
     }
     sIsDDPSup = bool1;
     return sIsDDPSup;

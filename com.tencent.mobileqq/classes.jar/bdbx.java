@@ -1,22 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.studymode.ModeRadioGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.maxvideo.common.AVIOStruct;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-public final class bdbx
-  implements View.OnClickListener
+public class bdbx
 {
-  public bdbx(ModeRadioGroup paramModeRadioGroup, int paramInt) {}
-  
-  public final void onClick(View paramView)
-  {
-    if (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup)) {
-      ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int, true, false, 4, null);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public AVIOStruct a;
+  public byte[] a;
 }
 
 

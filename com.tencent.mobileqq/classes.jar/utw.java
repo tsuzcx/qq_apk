@@ -1,78 +1,26 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public abstract class utw
-  extends usr<uru>
+class utw
+  implements Animator.AnimatorListener
 {
-  public ujv a;
-  public ukb a;
+  utw(utv paramutv) {}
   
-  public utw(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramViewGroup, paramInt1, paramInt2, paramWSVerticalPageFragment);
+    utv.a(this.a).removeAnimatorListener(this);
   }
   
-  public abstract void a();
-  
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a() != null))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a().e(a());
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a().d(a());
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(b());
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(c());
-    }
-    if (this.jdField_a_of_type_Uei != null) {
-      this.jdField_a_of_type_Uei.b(paramInt);
-    }
+    utv.a(this.a).setVisibility(8);
+    utv.a(this.a).removeAnimatorListener(this);
   }
   
-  public void a(uru paramuru)
-  {
-    super.a(paramuru);
-    if (this.jdField_a_of_type_Uei != null) {
-      this.jdField_a_of_type_Uei.a(paramuru);
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public abstract void b();
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Uei != null) {
-      this.jdField_a_of_type_Uei.b();
-    }
-  }
-  
-  protected boolean c()
-  {
-    return true;
-  }
-  
-  public abstract void d();
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Uei != null) {
-      this.jdField_a_of_type_Uei.c();
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

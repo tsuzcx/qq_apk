@@ -4,26 +4,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.qphone.base.util.QLog;
-import rxq;
+import rol;
+import rrm;
+import rvo;
 import sar;
-import sek;
-import sjn;
-import sjo;
+import sas;
 
 public class VideoFeedsVideoUIDelegate$2
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$2(sek paramsek, String paramString, sar paramsar) {}
+  public VideoFeedsVideoUIDelegate$2(rvo paramrvo, String paramString, rrm paramrrm) {}
   
   public void run()
   {
     QLog.d("VideoFeedsVideoUIDelegate", 2, "onVideoError playButton setVisibility GONE");
-    sek.a(this.this$0, false);
+    rvo.a(this.this$0, false);
     this.this$0.a.i.clearAnimation();
     this.this$0.a.i.setVisibility(8);
     this.this$0.a.c.setVisibility(0);
     this.this$0.a.a.a(1, this.jdField_a_of_type_JavaLangString, "点击重试");
-    sjo.a(this.jdField_a_of_type_Sar.a.g, 2);
+    sas.a(this.jdField_a_of_type_Rrm.a.g, 2);
   }
 }
 

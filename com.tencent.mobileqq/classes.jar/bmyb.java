@@ -1,71 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.PlusMenuContainer;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class bmyb
-  implements bmyw<WeiyunPB.QqSdkFileUploadMsgRsp>
+public class bmyb
+  implements View.OnClickListener
 {
-  bmyb(bmxz parambmxz, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  public bmyb(PlusMenuContainer paramPlusMenuContainer) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
-  }
-  
-  public void a(WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
-  {
-    if (paramQqSdkFileUploadMsgRsp == null)
-    {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, anni.a(2131713749));
-      return;
-    }
-    Object localObject1 = paramQqSdkFileUploadMsgRsp.pdir_key.get();
-    Object localObject3 = paramQqSdkFileUploadMsgRsp.ppdir_key.get();
-    Object localObject2;
-    label57:
-    boolean bool;
     String str;
-    if (localObject1 == null)
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
     {
-      localObject1 = null;
-      if (localObject3 != null) {
-        break label240;
+      str = (String)paramView.getTag();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("cmd", "Schema");
+      localIntent.putExtra("schema", str);
+      bmtd.a((Activity)this.a.a, bmtk.a(), localIntent);
+      if (!str.equals(PlusMenuContainer.b[0])) {
+        break label101;
       }
-      localObject2 = null;
-      if ((localObject1 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = ((String)localObject1);
-      }
-      if ((localObject3 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = ((String)localObject2);
-      }
-      bmyh.a((String)localObject2, (String)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
-      bool = paramQqSdkFileUploadMsgRsp.file_exist.get();
-      localObject3 = paramQqSdkFileUploadMsgRsp.file_id.get();
-      str = paramQqSdkFileUploadMsgRsp.server_name.get();
-      if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {
-        break label250;
-      }
+      LpReportInfo_pf00064.report(133, 2);
     }
-    label240:
-    label250:
-    for (localObject1 = paramQqSdkFileUploadMsgRsp.inside_upload_ip.get();; localObject1 = paramQqSdkFileUploadMsgRsp.outside_upload_ip.get())
+    for (;;)
     {
-      ((UploadFile)localObject2).setServerInfo(bool, (String)localObject3, str, (String)localObject1, paramQqSdkFileUploadMsgRsp.server_port.get(), Utils.bytes2HexStr(paramQqSdkFileUploadMsgRsp.check_key.get().toByteArray()).toLowerCase(), paramQqSdkFileUploadMsgRsp.channel_count.get(), Integer.toString(paramQqSdkFileUploadMsgRsp.file_version.get()));
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
+      this.a.b();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localObject1 = bnau.a((ByteStringMicro)localObject1);
-      break;
-      localObject2 = bnau.a((ByteStringMicro)localObject3);
-      break label57;
+      label101:
+      if (str.equals(PlusMenuContainer.b[1])) {
+        LpReportInfo_pf00064.report(133, 3);
+      } else if (str.equals(PlusMenuContainer.b[2])) {
+        LpReportInfo_pf00064.report(133, 4);
+      }
     }
   }
 }

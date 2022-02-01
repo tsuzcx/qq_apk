@@ -1,25 +1,29 @@
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auoz
-  implements bdvv
+public abstract class auoz
+  implements View.OnClickListener
 {
-  auoz(auox paramauox) {}
+  private long a;
   
-  public void a(bdws parambdws, bdwt parambdwt)
+  public abstract void a(View paramView);
+  
+  public void b(View paramView) {}
+  
+  public void onClick(View paramView)
   {
-    if ((parambdws != null) && (parambdwt != null) && ((parambdws instanceof bdvs)))
+    long l = System.currentTimeMillis();
+    if (l - this.a >= 500L)
     {
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.c;
-      parambdwt.c = 0L;
-      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
-      if (parambdwt.contains("range="))
-      {
-        parambdwt = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-        parambdws.jdField_a_of_type_JavaLangString = (parambdwt + "range=" + parambdws.jdField_a_of_type_Long);
-      }
+      a(paramView);
+      this.a = l;
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      b(paramView);
     }
   }
 }

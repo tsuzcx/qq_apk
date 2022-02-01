@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bgmo;
+import bhmq;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -16,17 +16,17 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import pha;
-import pyb;
-import tdt;
+import ozs;
+import pql;
+import sul;
 
 public class ReadInJoyHeadImageView
   extends NativeReadInjoyImageView
-  implements IView, pyb
+  implements IView, pql
 {
-  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841698));
   private long jdField_a_of_type_Long;
-  private pyb jdField_a_of_type_Pyb;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841708));
+  private pql jdField_a_of_type_Pql;
   
   public ReadInJoyHeadImageView(Context paramContext)
   {
@@ -49,7 +49,7 @@ public class ReadInJoyHeadImageView
   private void a()
   {
     setRound(true);
-    setImagePlaceHolder(bgmo.a());
+    setImagePlaceHolder(bhmq.a());
     this.mController.a(false);
   }
   
@@ -66,14 +66,14 @@ public class ReadInJoyHeadImageView
   {
     if (paramReadInJoyUserInfo != null)
     {
-      if (pha.k()) {
+      if (ozs.k()) {
         a(paramReadInJoyUserInfo);
       }
     }
     else {
       return;
     }
-    pha.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
+    ozs.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
@@ -106,8 +106,8 @@ public class ReadInJoyHeadImageView
   public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
     QLog.d("ReadInJoyHeadImageView", 1, "uin: " + paramString1 + " onLoadUserInfoFailed:" + paramString2);
-    if (this.jdField_a_of_type_Pyb != null) {
-      this.jdField_a_of_type_Pyb.onLoadUserInfoFailed(paramString1, paramString2);
+    if (this.jdField_a_of_type_Pql != null) {
+      this.jdField_a_of_type_Pql.onLoadUserInfoFailed(paramString1, paramString2);
     }
   }
   
@@ -119,8 +119,8 @@ public class ReadInJoyHeadImageView
     {
       return;
       ThreadManager.getUIHandler().post(new ReadInJoyHeadImageView.1(this, paramReadInJoyUserInfo));
-    } while (this.jdField_a_of_type_Pyb == null);
-    this.jdField_a_of_type_Pyb.onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
+    } while (this.jdField_a_of_type_Pql == null);
+    this.jdField_a_of_type_Pql.onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
   }
   
   public void setHeadImgByUin(long paramLong)
@@ -133,12 +133,12 @@ public class ReadInJoyHeadImageView
     setHeadImgByUin(paramLong, paramBoolean, null);
   }
   
-  public void setHeadImgByUin(long paramLong, boolean paramBoolean, pyb parampyb)
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean, pql parampql)
   {
-    setHeadImgByUin(paramLong, paramBoolean, parampyb, false);
+    setHeadImgByUin(paramLong, paramBoolean, parampql, false);
   }
   
-  public void setHeadImgByUin(long paramLong, boolean paramBoolean1, pyb parampyb, boolean paramBoolean2)
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean1, pql parampql, boolean paramBoolean2)
   {
     if (paramLong <= 0L)
     {
@@ -147,10 +147,10 @@ public class ReadInJoyHeadImageView
     }
     this.jdField_a_of_type_Long = paramLong;
     if (paramBoolean1) {
-      setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
-    if (parampyb != null) {
-      this.jdField_a_of_type_Pyb = parampyb;
+    if (parampql != null) {
+      this.jdField_a_of_type_Pql = parampql;
     }
     b(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this, paramBoolean2));
   }

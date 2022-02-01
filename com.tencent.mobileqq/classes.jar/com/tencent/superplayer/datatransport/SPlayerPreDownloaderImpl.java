@@ -8,6 +8,7 @@ import com.tencent.superplayer.api.ISPlayerPreDownloader;
 import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.superplayer.utils.ThreadUtil;
 import com.tencent.superplayer.utils.Utils;
 import com.tencent.superplayer.vinfo.VInfoGetter;
 import com.tencent.thumbplayer.api.proxy.ITPPreloadProxy;
@@ -64,7 +65,7 @@ public class SPlayerPreDownloaderImpl
                 break;
               }
               bool1 = bool2;
-            } while (paramSuperPlayerVideoInfo.getFormat() != 303);
+            } while (paramSuperPlayerVideoInfo.getFormat() != 304);
             return false;
             if (TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) {
               break;
@@ -106,13 +107,19 @@ public class SPlayerPreDownloaderImpl
     default: 
       return;
     case 1: 
-      if ((this.mLooper == null) && (this.mHandlerThread != null)) {
-        this.mLooper = this.mHandlerThread.getLooper();
+      if (this.mLooper == null) {
+        if (this.mHandlerThread == null) {
+          break label97;
+        }
       }
-      VInfoGetter localVInfoGetter = new VInfoGetter(this.mContext, this.mLooper);
-      localVInfoGetter.setListener(new SPlayerPreDownloaderImpl.1(this, paramTPDownloadParamData, paramInt));
-      localVInfoGetter.doGetVInfo(paramSuperPlayerVideoInfo);
-      return;
+      label97:
+      for (this.mLooper = this.mHandlerThread.getLooper();; this.mLooper = Looper.getMainLooper())
+      {
+        VInfoGetter localVInfoGetter = new VInfoGetter(this.mContext, this.mLooper);
+        localVInfoGetter.setListener(new SPlayerPreDownloaderImpl.3(this, paramTPDownloadParamData, paramInt));
+        localVInfoGetter.doGetVInfo(paramSuperPlayerVideoInfo);
+        return;
+      }
     }
     doPreDownload(paramSuperPlayerVideoInfo, paramTPDownloadParamData, paramInt);
   }
@@ -126,7 +133,7 @@ public class SPlayerPreDownloaderImpl
       return;
     }
     configDownloadParamData(paramTPDownloadParamData, paramSuperPlayerVideoInfo);
-    int i = this.mTPPreloadProxy.startPreload(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo), paramTPDownloadParamData, new SPlayerPreDownloaderImpl.2(this, paramInt));
+    int i = this.mTPPreloadProxy.startPreload(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo), paramTPDownloadParamData, new SPlayerPreDownloaderImpl.4(this, paramInt));
     this.mTaskIdMap.put(Integer.valueOf(paramInt), Integer.valueOf(i));
     LogUtil.d(TAG, "doPreDownload() map: taskid=" + paramInt + "-> taskIdForTPProxy=" + i);
   }
@@ -177,11 +184,8 @@ public class SPlayerPreDownloaderImpl
     {
       LogUtil.d(TAG, "stopAllPreDownload(), mTaskIdMap.size()=" + this.mTaskIdMap.size());
       Iterator localIterator = this.mTaskIdMap.keySet().iterator();
-      if (localIterator.hasNext())
-      {
-        int i = ((Integer)localIterator.next()).intValue();
-        LogUtil.d(TAG, "stopAllPreDownload(), stop taskIdForTPProxy=" + i);
-        this.mTPPreloadProxy.stopPreload(i);
+      if (localIterator.hasNext()) {
+        ThreadUtil.runOnThreadPool(new SPlayerPreDownloaderImpl.2(this, ((Integer)localIterator.next()).intValue()));
       }
     }
     this.mTaskIdMap.clear();
@@ -194,9 +198,7 @@ public class SPlayerPreDownloaderImpl
     {
       if (this.mTaskIdMap.containsKey(Integer.valueOf(paramInt)))
       {
-        int i = ((Integer)this.mTaskIdMap.get(Integer.valueOf(paramInt))).intValue();
-        LogUtil.d(TAG, "stopPreDownload() taskIdForTPProxy=" + paramInt);
-        this.mTPPreloadProxy.stopPreload(i);
+        ThreadUtil.runOnThreadPool(new SPlayerPreDownloaderImpl.1(this, paramInt, ((Integer)this.mTaskIdMap.get(Integer.valueOf(paramInt))).intValue()));
         this.mTaskIdMap.remove(Integer.valueOf(paramInt));
       }
       return;

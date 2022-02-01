@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
 public class ajex
-  implements DialogInterface.OnClickListener
+  implements ajhs
 {
-  public ajex(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public ajex(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
+      this.a.d = false;
+      this.a.a(paramString, false);
+    }
+  }
 }
 
 

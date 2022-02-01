@@ -1,20 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class pwp
-  implements Comparator<ChannelInfo>
+  implements qfd
 {
-  pwp(pwn parampwn) {}
+  pwp(pwn parampwn, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
+    QLog.d("multiVideoColumnInfo", 1, "position : " + paramInt);
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+    if ((paramInt >= 0) && (paramInt < paramViewBase.size()) && (paramViewBase.get(paramInt) != null) && (((qyq)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null))
+    {
+      paramTemplateBean = ((qyq)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo;
+      rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramTemplateBean);
+      pwn.a(this.jdField_a_of_type_Pwn, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, paramTemplateBean.e, ((qyq)paramViewBase.get(paramInt)).jdField_a_of_type_JavaLangString);
     }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
-    }
-    return 1;
   }
 }
 

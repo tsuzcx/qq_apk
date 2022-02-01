@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.net.URL;
-import ruh;
-import ryx;
+import rld;
+import rpt;
 
 public class VideoCountDownView
   extends RelativeLayout
@@ -27,7 +27,7 @@ public class VideoCountDownView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private ruh jdField_a_of_type_Ruh;
+  private rld jdField_a_of_type_Rld;
   private boolean jdField_a_of_type_Boolean;
   public final int b;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -51,29 +51,29 @@ public class VideoCountDownView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131296856);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296844);
-    this.jdField_c_of_type_Int = getResources().getDimensionPixelOffset(2131296846);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131296868);
+    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296856);
+    this.jdField_c_of_type_Int = getResources().getDimensionPixelOffset(2131296858);
     d();
   }
   
   private void d()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560341, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379953));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363889));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363860));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369346));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367267);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369287));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369288));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369289));
-    this.d = ((ImageView)findViewById(2131369290));
-    this.e = ((ImageView)findViewById(2131369291));
-    Drawable localDrawable = getResources().getDrawable(2130843184);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560353, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380137));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363913));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363884));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369436));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367321);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369377));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369378));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369379));
+    this.d = ((ImageView)findViewById(2131369380));
+    this.e = ((ImageView)findViewById(2131369381));
+    Drawable localDrawable = getResources().getDrawable(2130843202);
     localDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
-    localDrawable = getResources().getDrawable(2130843180);
+    localDrawable = getResources().getDrawable(2130843198);
     localDrawable.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
   }
@@ -85,7 +85,7 @@ public class VideoCountDownView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717237, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Ruh.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717353, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Rld.jdField_a_of_type_JavaLangString }));
   }
   
   public void a(URL paramURL)
@@ -118,21 +118,21 @@ public class VideoCountDownView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setNextVideoInfo(ruh paramruh)
+  public void setNextVideoInfo(rld paramrld)
   {
-    this.jdField_a_of_type_Ruh = paramruh;
-    if (this.jdField_a_of_type_Ruh == null) {
+    this.jdField_a_of_type_Rld = paramrld;
+    if (this.jdField_a_of_type_Rld == null) {
       return;
     }
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717238, new Object[] { this.jdField_a_of_type_Ruh.jdField_a_of_type_JavaLangString }));
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717236, new Object[] { ryx.b(paramruh.jdField_a_of_type_Long) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717354, new Object[] { this.jdField_a_of_type_Rld.jdField_a_of_type_JavaLangString }));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717352, new Object[] { rpt.b(paramrld.jdField_a_of_type_Long) }));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717239));
+    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717355));
   }
   
   public void setOnCustomClickListener(View.OnClickListener paramOnClickListener)

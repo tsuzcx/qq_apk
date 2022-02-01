@@ -1,28 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class arzw
-  implements Animator.AnimatorListener
 {
-  public arzw(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
+  TextView g;
+  TextView h;
+  TextView i;
+  TextView j;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  arzw(DataReportViewer paramDataReportViewer, View paramView)
   {
-    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
-      this.a.setVisibility(8);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378381));
+    this.b = ((TextView)paramView.findViewById(2131370564));
+    this.c = ((TextView)paramView.findViewById(2131378148));
+    this.d = ((TextView)paramView.findViewById(2131361958));
+    this.e = ((TextView)paramView.findViewById(2131372074));
+    this.f = ((TextView)paramView.findViewById(2131376589));
+    this.g = ((TextView)paramView.findViewById(2131376057));
+    this.h = ((TextView)paramView.findViewById(2131376058));
+    this.i = ((TextView)paramView.findViewById(2131376059));
+    this.j = ((TextView)paramView.findViewById(2131376060));
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,16 +1,127 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import mqq.app.AppRuntime;
 
 class aicp
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  aicp(aicl paramaicl) {}
+  aicp(aibr paramaibr, AIOImageData paramAIOImageData, aidw paramaidw, File paramFile) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    afur.n = true;
-    agaa.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+    Object localObject = paramView.getTag();
+    if (localObject == null)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+    }
+    this.jdField_a_of_type_Aibr.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+    localObject = ((bhsc)localObject).a;
+    int i = ((ShareActionSheetBuilder.ActionSheetItem)localObject).action;
+    localObject = ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus;
+    switch (i)
+    {
+    case 59: 
+    case 60: 
+    case 61: 
+    case 62: 
+    case 63: 
+    case 64: 
+    case 65: 
+    case 67: 
+    case 68: 
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      label163:
+      bdll.b(null, "dc00898", "", "", "0X8009EF6", "0X8009EF6", i, 0, "", "", "", "");
+      break;
+      i = 12;
+      aibr.a(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData);
+      continue;
+      i = 1;
+      aibr.a(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_Aidw);
+      continue;
+      this.jdField_a_of_type_Aibr.a("Pic_Forward_Qzone", 0);
+      aicv.a(aibr.n(this.jdField_a_of_type_Aibr), this.jdField_a_of_type_Aibr.b, this.jdField_a_of_type_Aibr.e, this.jdField_a_of_type_Aibr.jdField_f_of_type_Int, this.jdField_a_of_type_Aidw, this.jdField_a_of_type_Aibr.i, this.jdField_a_of_type_Aibr.d);
+      if (this.jdField_a_of_type_Aibr.h)
+      {
+        VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "4", "", "", "", "", 0, 0, 0, 0);
+        i = 4;
+        continue;
+        i = 5;
+        aibr.b(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData);
+        continue;
+        i = 2;
+        aibr.a(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Aidw, this.jdField_a_of_type_JavaIoFile);
+        continue;
+        Intent localIntent = new Intent();
+        localIntent.putExtra("preResult", (String)localObject);
+        this.jdField_a_of_type_Aibr.a(this.jdField_a_of_type_Aibr.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_g_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.h, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.k, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_j_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.e, 1, localIntent);
+        bdll.b(null, "P_CliOper", "qrcode", "", "0X80059A4", "0X80059A4", 0, 0, "", "", "", "");
+        i = 9;
+        continue;
+        localIntent = new Intent();
+        localIntent.putExtra("preResult", (String)localObject);
+        this.jdField_a_of_type_Aibr.a(this.jdField_a_of_type_Aibr.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_g_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.h, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.k, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_j_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.e, 2, localIntent);
+        i = 10;
+        continue;
+        i = 3;
+        aibr.a(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_Aidw, this.jdField_a_of_type_JavaIoFile);
+        continue;
+        i = 8;
+        OCRResultActivity.a(aibr.o(this.jdField_a_of_type_Aibr), this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 1);
+        continue;
+        i = 6;
+        aibr.c(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData);
+        continue;
+        localObject = this.jdField_a_of_type_Aibr.d;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          localObject = this.jdField_a_of_type_Aibr.c;
+        }
+        for (;;)
+        {
+          bdll.b(null, "P_CliOper", "dwop_via", "", "0X8009BE3", "0X8009BE3", this.jdField_a_of_type_Aibr.k, 0, "", "", "", "");
+          aibr.a(aibr.p(this.jdField_a_of_type_Aibr), this.jdField_a_of_type_Aibr.jdField_g_of_type_Int, this.jdField_a_of_type_Aibr.c, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_g_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.i, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_g_of_type_Int, false);
+          i = 7;
+          break label163;
+          localObject = BaseApplicationImpl.getApplication().getRuntime();
+          if ((this.jdField_a_of_type_Aibr.jdField_a_of_type_Aidz == null) || (localObject == null)) {
+            break;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_j_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Aibr.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_Aibr.jdField_g_of_type_Int, true, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.m, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.l, ((AppRuntime)localObject).getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.n);
+            i = 0;
+            break label163;
+          }
+          this.jdField_a_of_type_Aibr.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_Aibr.jdField_g_of_type_Int, false, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.k, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.l, ((AppRuntime)localObject).getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.n);
+          i = 0;
+          break label163;
+          PicShareToWX.a(this.jdField_a_of_type_JavaIoFile.getPath(), aibr.q(this.jdField_a_of_type_Aibr), 1);
+          bdll.b(null, "dc00898", "", "", "0X800A4FF", "0X800A4FF", 0, 0, "", "", "", "");
+          break;
+        }
+      }
+      else
+      {
+        i = 4;
+      }
+    }
   }
 }
 

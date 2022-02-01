@@ -10,7 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import bgkc;
+import bhkd;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -38,7 +38,7 @@ public class PhotoPreviewActivity
   
   void back()
   {
-    bgkc.anim(this, true, false);
+    bhkd.anim(this, true, false);
     super.finish();
   }
   
@@ -63,7 +63,7 @@ public class PhotoPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131562013);
+    setContentView(2131562053);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -142,18 +142,18 @@ public class PhotoPreviewActivity
   
   void initUI()
   {
-    this.topBar = findViewById(2131378990);
-    this.backBtn = ((TextView)findViewById(2131363216));
+    this.topBar = findViewById(2131379154);
+    this.backBtn = ((TextView)findViewById(2131363240));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);
     }
-    this.titleView = ((TextView)findViewById(2131378776));
-    this.gallery = ((ProGallery)findViewById(2131367288));
+    this.titleView = ((TextView)findViewById(2131378936));
+    this.gallery = ((ProGallery)findViewById(2131367342));
     this.adapter = new PhotoPreviewActivity.ImageAdapter(this);
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297079));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297091));
     this.gallery.setSelection(this.currentSelectedPostion);
     this.gallery.setOnItemClickListener(new PhotoPreviewActivity.2(this));
   }

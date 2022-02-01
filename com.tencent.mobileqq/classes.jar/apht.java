@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.9;
-
-public class apht
-  implements DialogInterface.OnClickListener
+public abstract class apht
 {
-  public apht(ArkAppDownloadModule.9 param9) {}
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public apht(int paramInt)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.b = paramInt;
   }
 }
 

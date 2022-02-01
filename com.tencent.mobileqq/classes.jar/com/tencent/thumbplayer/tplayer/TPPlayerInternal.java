@@ -655,6 +655,11 @@ public class TPPlayerInternal
     return 0L;
   }
   
+  public long getFileSizeBytes()
+  {
+    return this.mTPSwitchThreadListener.handleGetFileSizeBytes();
+  }
+  
   public Object getPlayInfo(long paramLong)
   {
     writeLockIfNeed();

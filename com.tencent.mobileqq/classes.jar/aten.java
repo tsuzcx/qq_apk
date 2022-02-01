@@ -1,8 +1,19 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface aten
+class aten
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle);
+  aten(atem paramatem) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.c();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

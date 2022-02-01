@@ -11,7 +11,7 @@ public final class MiniGamePlayTogetherHandler$2
   
   public void run()
   {
-    QQToast.a(this.a, this.a.getResources().getString(2131693091), 0).a();
+    QQToast.a(this.a, this.a.getResources().getString(2131693100), 0).a();
   }
 }
 

@@ -1,12 +1,29 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
 
-public final class bocl
-  implements FileFilter
+class bocl
+  extends Handler
 {
-  public boolean accept(File paramFile)
+  public bocl(Looper paramLooper)
   {
-    return paramFile.getName().endsWith(".json");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3000: 
+      boch.c((Activity)paramMessage.obj, paramMessage.arg1);
+      return;
+    }
+    boch.a(null);
+    boch.a(SystemClock.uptimeMillis());
   }
 }
 

@@ -1,15 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.Comparator;
+import android.app.Activity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 class pvv
-  implements Comparator<AdvertisementInfo>
+  implements Animation.AnimationListener
 {
-  pvv(pvu parampvu) {}
+  pvv(pvt parampvt, View paramView, boolean paramBoolean, Activity paramActivity, ArticleInfo paramArticleInfo) {}
   
-  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        pvt.a(this.jdField_a_of_type_Pvt, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,25 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class alhl
-  implements DialogInterface.OnDismissListener
+class alhl
+  implements bdyi
 {
-  public alhl(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  alhl(alhk paramalhk, bdyi parambdyi) {}
+  
+  public void a()
   {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
     }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
-      EditLocalVideoActivity.a(this.a, false);
-    }
+    if ((this.jdField_a_of_type_Boolean) || (alhk.a(this.jdField_a_of_type_Alhk))) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      if (alhk.a(this.jdField_a_of_type_Alhk) != null) {
+        ThreadManager.getUIHandler().removeCallbacks(alhk.a(this.jdField_a_of_type_Alhk));
+      }
+    } while (this.jdField_a_of_type_Bdyi == null);
+    this.jdField_a_of_type_Bdyi.a();
   }
 }
 

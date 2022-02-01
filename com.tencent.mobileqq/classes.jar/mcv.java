@@ -1,20 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class mcv
-  implements View.OnClickListener
+public class mcv
+  extends mcx
 {
-  mcv(mct parammct) {}
+  public int a = 0;
+  public int b = -1;
   
-  public void onClick(View paramView)
+  public mcv(View paramView, int paramInt)
   {
-    this.a.a.a().a().av = true;
-    mue.a(this.a.a);
-    mct.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+    this.a = paramInt;
   }
 }
 

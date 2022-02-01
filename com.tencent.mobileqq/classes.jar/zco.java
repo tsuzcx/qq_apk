@@ -1,52 +1,36 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class zco
-  extends zce<zcn>
+class zco
+  implements TextWatcher
 {
-  public final ImageView a;
-  public final TextView a;
-  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378520);
+  zco(zcn paramzcn) {}
   
-  zco(zcn paramzcn, @NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378445));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368246));
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561697, paramViewGroup, false);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a()
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-  }
-  
-  public void a(zcn paramzcn, int paramInt)
-  {
-    super.a(paramzcn, paramInt);
-    if ((this.jdField_a_of_type_Zcd != null) && (((zcn)this.jdField_a_of_type_Zcd).c != 0) && (((zcn)this.jdField_a_of_type_Zcd).a != null))
+    if (this.a.jdField_a_of_type_Zcu == null) {}
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((zcn)this.jdField_a_of_type_Zcd).c);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((zcn)this.jdField_a_of_type_Zcd).a);
-      this.b.setText(((zcn)this.jdField_a_of_type_Zcd).b);
       return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.b.setText("");
+      paramInt2 = this.a.a(paramCharSequence.toString());
+      if (paramInt2 > 420)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
+        if (this.a.jdField_a_of_type_Zcu != null) {
+          this.a.jdField_a_of_type_Zcu.b(420);
+        }
+      }
+    } while (paramInt2 <= 0);
+    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
+    this.a.b.setEnabled(true);
   }
 }
 

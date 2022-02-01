@@ -2,16 +2,20 @@ package com.tencent.superplayer.player;
 
 import android.content.Context;
 import android.view.Surface;
-import com.tencent.superplayer.api.SuperPlayerAudioInfo;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPTrackInfo;
 
 abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
 {
+  public abstract void handleAddSubtitleSource(String paramString1, String paramString2, String paramString3);
+  
   public abstract int handleCaptureImageInTime(long paramLong, int paramInt1, int paramInt2);
   
   public abstract int handleCaptureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
+  public abstract void handleDeselectTrack(int paramInt, long paramLong);
   
   public abstract int handleGetBufferPercent();
   
@@ -19,13 +23,13 @@ abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
   
   public abstract long handleGetDuration();
   
+  public abstract long handleGetFileSizeBytes();
+  
   public abstract MediaInfo handleGetMediaInfo();
   
-  public abstract boolean handleGetOutputMute();
-  
-  public abstract long handleGetPlayedTime();
-  
   public abstract String handleGetStreamDumpInfo();
+  
+  public abstract TPTrackInfo[] handleGetTrackInfo();
   
   public abstract int handleGetVideoHeight();
   
@@ -34,12 +38,6 @@ abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
   public abstract int handleGetVideoWidth();
   
   public abstract boolean handleIsBuffering();
-  
-  public abstract boolean handleIsLoopback();
-  
-  public abstract boolean handleIsPausing();
-  
-  public abstract boolean handleIsPlaying();
   
   public abstract void handleOpenMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption);
   
@@ -57,7 +55,7 @@ abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
   
   public abstract void handleSeekTo(int paramInt1, int paramInt2);
   
-  public abstract void handleSetAudioGainRatio(float paramFloat);
+  public abstract void handleSelectTrack(int paramInt, long paramLong);
   
   public abstract void handleSetBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -71,8 +69,6 @@ abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
   
   public abstract void handleSetSurface(Surface paramSurface);
   
-  public abstract void handleSetXYaxis(int paramInt);
-  
   public abstract void handleStart();
   
   public abstract void handleStop();
@@ -80,8 +76,6 @@ abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
   public abstract void handleSwitchDefinition(String paramString);
   
   public abstract void handleUpdatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView);
-  
-  public abstract void handlerSetAudioPostFrameOptionInfo(SuperPlayerAudioInfo paramSuperPlayerAudioInfo);
 }
 
 

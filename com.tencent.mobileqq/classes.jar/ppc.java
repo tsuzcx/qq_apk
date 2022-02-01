@@ -1,29 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
-
-public abstract interface ppc<T>
+public class ppc
 {
-  public abstract T a(int paramInt);
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public abstract List<T> a();
-  
-  public abstract void a();
-  
-  public abstract void a(T paramT, int paramInt);
-  
-  public abstract void a(List<T> paramList);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(List<T> paramList);
-  
-  public abstract void c();
-  
-  public abstract void c(List<ChannelCoverInfo> paramList);
+  public String toString()
+  {
+    return "ColumnInfoForSelfPage{myVideoCount=" + this.jdField_a_of_type_Int + ", myColumnCount=" + this.jdField_b_of_type_Int + ", mySubscribeCount=" + this.jdField_c_of_type_Int + ", myVideoJumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", myColumnJumpUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mySubscribeJumpUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 

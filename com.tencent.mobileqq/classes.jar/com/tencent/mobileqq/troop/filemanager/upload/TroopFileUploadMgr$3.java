@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bexz;
+import bfxt;
 
 public class TroopFileUploadMgr$3
   implements Runnable
 {
-  public TroopFileUploadMgr$3(bexz parambexz) {}
+  public TroopFileUploadMgr$3(bfxt parambfxt) {}
   
   public void run()
   {

@@ -1,29 +1,6 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
-
-public class auds
-  implements afzq
+public abstract interface auds
 {
-  public auds(FlashChatPanel paramFlashChatPanel) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramView instanceof ArkAppView)) {
-      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
-    }
-    return true;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

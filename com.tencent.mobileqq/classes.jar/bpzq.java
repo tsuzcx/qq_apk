@@ -1,9 +1,12 @@
-public class bpzq
+public abstract interface bpzq
 {
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 180;
-  }
+  public abstract void c(int paramInt);
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void q();
 }
 
 

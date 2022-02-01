@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import phh;
+import ozz;
 
 public final class ReadInJoyUtils$15
   implements Runnable
 {
-  public ReadInJoyUtils$15(String paramString1, String paramString2, String paramString3, String paramString4, phh paramphh) {}
+  public ReadInJoyUtils$15(String paramString1, String paramString2, String paramString3, String paramString4, ozz paramozz) {}
   
   /* Error */
   public void run()
@@ -53,7 +53,7 @@ public final class ReadInJoyUtils$15
     //   85: ldc 60
     //   87: aconst_null
     //   88: aconst_null
-    //   89: invokestatic 65	nlw:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
+    //   89: invokestatic 65	nnr:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
     //   92: invokespecial 68	java/lang/String:<init>	([B)V
     //   95: astore 8
     //   97: aload 6
@@ -137,10 +137,10 @@ public final class ReadInJoyUtils$15
     //   261: invokespecial 134	java/net/URL:<init>	(Ljava/lang/String;)V
     //   264: pop
     //   265: aload_0
-    //   266: getfield 24	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$15:jdField_a_of_type_Phh	Lphh;
+    //   266: getfield 24	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$15:jdField_a_of_type_Ozz	Lozz;
     //   269: ifnull +21 -> 290
     //   272: aload_0
-    //   273: getfield 24	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$15:jdField_a_of_type_Phh	Lphh;
+    //   273: getfield 24	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$15:jdField_a_of_type_Ozz	Lozz;
     //   276: iload_3
     //   277: aload_0
     //   278: getfield 22	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$15:d	Ljava/lang/String;

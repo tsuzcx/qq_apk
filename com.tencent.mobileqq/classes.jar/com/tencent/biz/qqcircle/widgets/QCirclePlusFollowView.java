@@ -26,7 +26,7 @@ public class QCirclePlusFollowView
   {
     super.a();
     setVisibility(0);
-    setBackgroundResource(2130844070);
+    setBackgroundResource(2130844087);
     setText("");
   }
   

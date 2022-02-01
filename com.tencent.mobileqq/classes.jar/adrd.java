@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-final class adrd
-  implements DialogInterface.OnClickListener
+public class adrd
+  extends aoib
 {
-  adrd(adsx paramadsx) {}
+  public adrd(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, bdxd parambdxd)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, bdxd parambdxd)
+  {
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, bdxd parambdxd)
+  {
+    AccountManageActivity.a(this.a, false);
   }
 }
 

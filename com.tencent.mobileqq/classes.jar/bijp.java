@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment.2.1;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ScrollView;
+import java.lang.ref.WeakReference;
 
-public class bijp
-  implements DialogInterface.OnClickListener
+class bijp
+  implements View.OnLayoutChangeListener
 {
-  public bijp(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  final int jdField_a_of_type_Int;
+  final WeakReference<ScrollView> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bijp(ScrollView paramScrollView, int paramInt)
   {
-    paramDialogInterface = new AuthorityControlAppDetailsFragment.2.1(this);
-    AuthorityControlAppDetailsFragment.a(this.a).a(paramDialogInterface);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramScrollView);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    ScrollView localScrollView = (ScrollView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localScrollView != null) && (paramInt4 - paramInt2 > paramInt8 - paramInt6))
+    {
+      localScrollView.smoothScrollTo(0, this.jdField_a_of_type_Int);
+      paramView.removeOnLayoutChangeListener(this);
+    }
   }
 }
 

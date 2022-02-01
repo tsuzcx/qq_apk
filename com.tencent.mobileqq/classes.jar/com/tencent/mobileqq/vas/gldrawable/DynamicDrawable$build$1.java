@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
 import android.graphics.drawable.Drawable;
-import bhbg;
-import bhbh;
-import bhbq;
-import bhbr;
+import bibn;
+import bibo;
+import bica;
+import bicb;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
@@ -13,25 +13,25 @@ import kotlin.jvm.internal.Intrinsics;
 public final class DynamicDrawable$build$1
   implements Runnable
 {
-  public DynamicDrawable$build$1(bhbg parambhbg, bhbq parambhbq) {}
+  public DynamicDrawable$build$1(bibn parambibn, bica parambica) {}
   
   public final void run()
   {
     Object localObject = this.a;
     Intrinsics.checkExpressionValueIsNotNull(localObject, "loader");
-    if (!((bhbq)localObject).a()) {
-      this.a.a((bhbr)new bhbh(this));
+    if (!((bica)localObject).a()) {
+      this.a.a((bicb)new bibo(this));
     }
     for (;;)
     {
-      bhbg.a(this.this$0);
+      bibn.a(this.this$0);
       return;
-      localObject = (Drawable)bhbg.a(this.this$0).invoke();
+      localObject = (Drawable)bibn.a(this.this$0).invoke();
       if (localObject != null) {
-        bhbg.a(this.this$0, (Drawable)localObject);
+        bibn.a(this.this$0, (Drawable)localObject);
       }
       if (this.this$0.a() == null) {
-        bhbg.a(this.this$0, (Drawable)bhbg.b(this.this$0).invoke());
+        bibn.a(this.this$0, (Drawable)bibn.b(this.this$0).invoke());
       }
     }
   }

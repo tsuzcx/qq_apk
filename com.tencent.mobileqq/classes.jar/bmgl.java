@@ -1,8 +1,23 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bmgl
+final class bmgl
+  implements bmgr
 {
-  public abstract void a(BaseResp paramBaseResp);
+  bmgl(bmgq parambmgq) {}
+  
+  public void a(boolean paramBoolean, Context paramContext, bmgt parambmgt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bmgk.d(paramContext, parambmgt);
+    }
+    if (this.a != null) {
+      this.a.a(paramBoolean);
+    }
+  }
 }
 
 

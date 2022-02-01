@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aexx
-  implements View.OnClickListener
+class aexx
+  implements DialogInterface.OnClickListener
 {
-  public aexx(QQMapActivity paramQQMapActivity) {}
+  aexx(aexv paramaexv) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 1) {
+      this.a.b();
+    }
+    while (aexv.a(this.a) == null) {
+      return;
+    }
+    aexv.a(this.a).b();
   }
 }
 

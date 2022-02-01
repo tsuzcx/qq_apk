@@ -1,103 +1,21 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcbx
+class bcbx
+  implements View.OnClickListener
 {
-  public static String a(Map<Integer, String> paramMap)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append("&");
-      }
-      String str = (String)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("=");
-          if (str == null) {
-            break label147;
-          }
-          localObject = URLEncoder.encode(str, "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label147:
-        localObject = "";
-      }
-    }
-    return localStringBuilder.toString();
-  }
+  bcbx(bcbw parambcbw, String paramString) {}
   
-  public static Map<Integer, String> a(String paramString)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), URLDecoder.decode(arrayOfString[1], "UTF-8"));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
-      }
-    }
-    return localHashMap;
-  }
-  
-  public static Map<String, String> b(String paramString)
-  {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(URLDecoder.decode(arrayOfString[0], "UTF-8"), URLDecoder.decode(arrayOfString[1], "UTF-8"));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
-      }
-    }
-    return localHashMap;
+    Intent localIntent = new Intent(this.jdField_a_of_type_Bcbw.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bcbw.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

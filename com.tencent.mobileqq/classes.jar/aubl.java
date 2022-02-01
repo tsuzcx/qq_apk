@@ -1,190 +1,122 @@
-import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class aubl
-  extends atoe
 {
-  private long jdField_a_of_type_Long = -1L;
-  private absc jdField_a_of_type_Absc;
-  private long b = -1L;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
+  private String c;
+  private String d;
   
-  public aubl(QQAppInterface paramQQAppInterface, Activity paramActivity, List<atmn> paramList, int paramInt)
+  public long a()
   {
-    super(paramQQAppInterface, paramActivity);
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceFileModel<FileAssistant>", 1, "FileBrowserModel init: type = device");
-    }
-    a(paramList, paramInt);
+    return this.jdField_a_of_type_Long;
   }
   
-  private boolean m()
+  public String a()
   {
-    Object localObject = this.jdField_a_of_type_Atmn.a();
-    if (localObject == null)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<ExcitingTransferHostInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<ExcitingTransferHostInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
-      }
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFilePath is null");
       return false;
     }
-    if (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath())) {
+    if (0L == this.jdField_a_of_type_Long)
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
       return false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
-    if (localObject == null) {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
       return false;
     }
-    localObject = (MessageForDeviceSingleStruct)localObject;
-    abur localabur = ((abux)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a();
-    if ((((MessageForDeviceSingleStruct)localObject).nMediaSessionID > 0L) && (localabur.a((MessageForDeviceSingleStruct)localObject)))
+    if (TextUtils.isEmpty(this.b))
     {
-      this.jdField_a_of_type_Long = ((MessageForDeviceSingleStruct)localObject).nMediaSessionID;
-      return true;
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
+      return false;
     }
-    return false;
-  }
-  
-  private void o()
-  {
-    Object localObject = this.jdField_a_of_type_Atmn.a();
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
-      }
-    }
-    do
+    if (TextUtils.isEmpty(this.c))
     {
-      do
-      {
-        return;
-      } while (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath()));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
-    } while (localObject == null);
-    localObject = (MessageForDeviceSingleStruct)localObject;
-    this.jdField_a_of_type_Long = ((abux)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a((MessageForDeviceSingleStruct)localObject);
-  }
-  
-  private void p()
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atmn.a();
-    if (localFileManagerEntity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
-      }
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
+      return false;
     }
-    do
-    {
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.msgSeq);
-    } while (localObject == null);
-    Object localObject = (MessageForDeviceSingleStruct)localObject;
-    ((abux)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().b((MessageForDeviceSingleStruct)localObject);
-    localFileManagerEntity.status = 3;
-    this.jdField_a_of_type_Long = -1L;
+    return true;
   }
   
-  public int a()
+  public byte[] a()
   {
-    int i = e();
-    int j = super.a();
-    if (j != 0) {
-      return j;
-    }
-    switch (i)
-    {
-    case 1: 
-    default: 
-      return 1;
-    case 0: 
-      return 6;
-    }
-    return 2;
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public atnd a()
+  public String b()
   {
-    if (this.jdField_a_of_type_Atnd == null) {
-      this.jdField_a_of_type_Atnd = new aubn(this);
-    }
-    return this.jdField_a_of_type_Atnd;
+    return this.b;
   }
   
-  public atnf a()
+  public void b(String paramString)
   {
-    return new aubp(this);
+    this.b = paramString;
   }
   
-  public atng a()
+  public boolean b()
   {
-    return null;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public List<atoq> a()
+  public String c()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(new atnj((atmn)localIterator.next()));
-      }
-    }
-    return localArrayList;
+    return this.c;
   }
   
-  protected void a()
+  public void c(String paramString)
   {
-    if (this.jdField_a_of_type_Absc != null) {
-      return;
-    }
-    this.jdField_a_of_type_Absc = new aubm(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Absc);
+    this.c = paramString;
   }
   
-  protected void b()
+  public String d()
   {
-    if (this.jdField_a_of_type_Absc != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Absc);
-      this.jdField_a_of_type_Absc = null;
-    }
+    return this.d;
   }
   
-  public int d()
+  public void d(String paramString)
   {
-    if (atvo.b(d())) {
-      return 3;
-    }
-    return super.d();
-  }
-  
-  public int h()
-  {
-    return 2;
-  }
-  
-  public int i()
-  {
-    if (atvo.b(d())) {
-      return 2;
-    }
-    if (m()) {
-      return 4;
-    }
-    return 3;
-  }
-  
-  public boolean i()
-  {
-    return bgnt.h(this.jdField_a_of_type_AndroidAppActivity);
+    this.d = paramString;
   }
 }
 

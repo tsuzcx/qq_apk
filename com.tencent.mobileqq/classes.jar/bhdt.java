@@ -1,42 +1,38 @@
-import com.tencent.vas.update.callback.ICmdManager;
-import com.tencent.vas.update.callback.ICommonManager;
-import com.tencent.vas.update.callback.IDbManager;
-import com.tencent.vas.update.callback.IHttpDownloader;
-import com.tencent.vas.update.callback.IReportManager;
-import com.tencent.vas.update.callback.IVasLog;
-import com.tencent.vas.update.callback.IVasUpdateFactory;
-
-public class bhdt
-  implements IVasUpdateFactory
+public final class bhdt
 {
-  public ICmdManager getCmdManager()
+  public static String a()
   {
-    return new bhdm();
+    switch ()
+    {
+    default: 
+      return "X";
+    case 2: 
+      return "2g";
+    case 3: 
+      return "3g";
+    case 4: 
+      return "4g";
+    }
+    return "wifi";
   }
   
-  public ICommonManager getCommonManager()
+  public static String b()
   {
-    return new bhdn();
-  }
-  
-  public IDbManager getDbManager()
-  {
-    return new bhdo();
-  }
-  
-  public IHttpDownloader getHttpDownloader()
-  {
-    return new bhdp();
-  }
-  
-  public IVasLog getLog()
-  {
-    return new bhdr();
-  }
-  
-  public IReportManager getReportManager()
-  {
-    return new bhds();
+    int i = 4;
+    switch (nnr.a())
+    {
+    }
+    for (;;)
+    {
+      return String.valueOf(i);
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 0;
+    }
   }
 }
 

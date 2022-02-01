@@ -1,23 +1,26 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
-class avfl
-  implements EIPCResultCallback
+public class avfl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  avfl(avfk paramavfk) {}
+  public avfl(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    avfk.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
+    blgp.a(false, paramBoolean);
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-    default: 
-      return;
-    case -102: 
-      avfk.a(this.a).a(2, paramEIPCResult.data);
+      bdll.b(null, "CliOper", "", str, "0X800A6E4", "0X800A6E4", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    avfk.a(this.a).a(1, paramEIPCResult.data);
   }
 }
 

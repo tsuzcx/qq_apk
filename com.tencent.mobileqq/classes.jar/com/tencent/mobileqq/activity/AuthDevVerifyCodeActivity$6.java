@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import biau;
+import bjbs;
 
 class AuthDevVerifyCodeActivity$6
   implements Runnable
@@ -13,8 +13,8 @@ class AuthDevVerifyCodeActivity$6
     {
       if ((AuthDevVerifyCodeActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        AuthDevVerifyCodeActivity.a(this.this$0, new biau(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        AuthDevVerifyCodeActivity.a(this.this$0).c(2131694158);
+        AuthDevVerifyCodeActivity.a(this.this$0, new bjbs(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        AuthDevVerifyCodeActivity.a(this.this$0).c(2131694176);
         AuthDevVerifyCodeActivity.a(this.this$0).c(true);
       }
       if ((AuthDevVerifyCodeActivity.a(this.this$0) != null) && (!AuthDevVerifyCodeActivity.a(this.this$0).isShowing())) {

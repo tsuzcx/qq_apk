@@ -1,85 +1,75 @@
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureFailure;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureRequest.Builder;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class bcgl
-  extends CameraCaptureSession.CaptureCallback
+  extends bcga
 {
-  public bcgl(Camera2Control paramCamera2Control) {}
+  public static final String a;
+  public List<bcgw> a;
+  public String b;
+  public boolean b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  private void a(CaptureResult paramCaptureResult, CaptureRequest paramCaptureRequest)
+  static
   {
-    paramCaptureRequest = paramCaptureRequest.getTag();
-    if ((!(paramCaptureRequest instanceof bciw)) || (((bciw)paramCaptureRequest).jdField_a_of_type_Boolean))
-    {
-      bcgu.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
-    }
-    do
-    {
-      return;
-      paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-      bcgu.a(1, "[Camera2] mAfCaptureCallback:" + paramCaptureResult);
-    } while ((paramCaptureResult == null) || ((4 != paramCaptureResult.intValue()) && (5 != paramCaptureResult.intValue())));
-    a(true, (bciw)paramCaptureRequest);
+    jdField_a_of_type_JavaLangString = bcgk.class.getSimpleName();
   }
   
-  private void a(boolean paramBoolean, bciw parambciw)
+  public bcgl(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    Camera2Control.d(this.a, false);
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  private List<bcgw> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
+    {
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
+        Object localObject = paramJSONArray.optJSONObject(i);
+        localObject = new bcgw(((JSONObject)localObject).optString("word"), ((JSONObject)localObject).optString("url"));
+        if (((bcgw)localObject).a()) {
+          localArrayList.add(localObject);
+        }
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a(String paramString)
+  {
+    this.g = false;
     try
     {
-      bcgu.a(1, "[Camera2] mAfCaptureCallback run, success:" + paramBoolean);
-      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
-      CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {}
-      for (CaptureRequest localCaptureRequest = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));; localCaptureRequest = Camera2Control.a(this.a).build())
-      {
-        localCameraCaptureSession.setRepeatingRequest(localCaptureRequest, null, null);
-        if ((parambciw.jdField_a_of_type_Bcgs.a == null) || (parambciw.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        parambciw.jdField_a_of_type_Boolean = true;
-        parambciw.jdField_a_of_type_Bcgs.a.a(1, paramBoolean);
-        return;
+      paramString = new JSONObject(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
+      this.j = paramString.optString("title");
+      this.k = paramString.optString("summary");
+      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
+      this.l = paramString.optString("jumpUrl");
+      this.m = paramString.optString("subItemLeftIconUrl");
+      paramString = paramString.optJSONArray("itemList");
+      if (paramString != null) {
+        this.jdField_a_of_type_JavaUtilList = a(paramString);
       }
       return;
     }
-    catch (Exception parambciw)
+    catch (JSONException paramString)
     {
-      bcgu.a(2, "[Camera2] mAfCaptureCallback e:" + parambciw);
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
     }
-  }
-  
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
-  {
-    a(paramTotalCaptureResult, paramCaptureRequest);
-  }
-  
-  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
-  {
-    bcgu.a(2, "[Camera2] mAfCaptureCallback failure reason:" + paramCaptureFailure.getReason());
-    paramCameraCaptureSession = paramCaptureRequest.getTag();
-    if ((!(paramCameraCaptureSession instanceof bciw)) || (((bciw)paramCameraCaptureSession).jdField_a_of_type_Boolean))
-    {
-      bcgu.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
-      return;
-    }
-    a(false, (bciw)paramCameraCaptureSession);
-  }
-  
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
-  {
-    a(paramCaptureResult, paramCaptureRequest);
   }
 }
 

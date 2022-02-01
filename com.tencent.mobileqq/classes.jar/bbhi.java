@@ -1,53 +1,19 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.SearchWordHistoryEntryModel.2.3;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Rect;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bbhi
-  implements View.OnClickListener
+  implements bdbl
 {
-  bbhi(bbhg parambbhg, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  public bbhi(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bhzm localbhzm = new bhzm(this.jdField_a_of_type_AndroidContentContext);
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559797, null, false);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131363219);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131362955);
-    ImageView localImageView3 = (ImageView)localView.findViewById(2131362942);
-    TextView localTextView1 = (TextView)localView.findViewById(2131364112);
-    TextView localTextView2 = (TextView)localView.findViewById(2131365324);
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      localImageView1.setBackgroundColor(Color.parseColor("#0b1d35"));
-      localImageView2.setImageResource(2130842288);
-      localImageView3.setImageResource(2130842288);
-      localTextView1.setBackgroundResource(2130846014);
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
     }
-    for (;;)
-    {
-      localbhzm.setContentView(localView);
-      localbhzm.setHeight(zlx.a(this.jdField_a_of_type_AndroidContentContext, 96.0F));
-      localbhzm.setWidth(zlx.a(this.jdField_a_of_type_AndroidContentContext, 224.0F));
-      localTextView1.setOnClickListener(new bbhj(this, localbhzm));
-      localTextView2.setOnClickListener(new bbhk(this, localbhzm));
-      localView.post(new SearchWordHistoryEntryModel.2.3(this, new int[2], localView, new int[2]));
-      localbhzm.showAsDropDown(paramView, 0, 0);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localImageView1.setImageResource(2130839266);
-      localImageView2.setImageResource(2130842289);
-      localImageView3.setImageResource(2130842289);
-      localTextView1.setBackgroundResource(2130842279);
-    }
+    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
   }
 }
 

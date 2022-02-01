@@ -1,8 +1,6 @@
-import android.net.Uri;
-
 public abstract interface bekr
 {
-  public abstract void a(Uri paramUri);
+  public abstract boolean a(String paramString);
 }
 
 

@@ -1,25 +1,25 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bcio;
-import bnho;
-import bnzb;
+import bdbg;
+import boiw;
+import bpam;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AECameraManager$6
   implements Runnable
 {
-  public AECameraManager$6(bnho parambnho) {}
+  public AECameraManager$6(boiw paramboiw) {}
   
   public void run()
   {
-    bnzb.b("AECameraManager", "cameraStopPreview---ENTER");
-    if (!bnho.b(this.this$0))
+    bpam.b("AECameraManager", "cameraStopPreview---ENTER");
+    if (!boiw.b(this.this$0))
     {
-      bnzb.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
+      bpam.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
       return;
     }
-    bnho.a(this.this$0).a(false);
-    bnho.a(this.this$0).set(2);
+    boiw.a(this.this$0).a(false);
+    boiw.a(this.this$0).set(2);
   }
 }
 

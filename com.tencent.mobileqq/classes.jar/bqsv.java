@@ -1,0 +1,19 @@
+public class bqsv
+{
+  public int a;
+  public bqsr<Boolean, bqsw> a;
+  public String a;
+  public boolean a;
+  public int b;
+  public bqsr<Boolean, bqsx> b;
+  public String b;
+  public boolean b;
+  public int c;
+  public int d;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     bqsv
+ * JD-Core Version:    0.7.0.1
+ */

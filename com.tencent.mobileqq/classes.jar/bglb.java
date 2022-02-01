@@ -1,31 +1,19 @@
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class bglb
-  extends bgla
+class bglb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public String b;
-  public List<Integer> b;
-  public String c;
-  public List<Integer> c;
-  public String d;
-  public List<Integer> d;
+  bglb(bgkx parambgkx) {}
   
-  public bgla a()
+  public void onGlobalLayout()
   {
-    bgla localbgla = new bgla();
-    localbgla.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbgla.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
-    localbgla.jdField_a_of_type_Int = 1;
-    return localbgla;
-  }
-  
-  public bgla b()
-  {
-    bgla localbgla = new bgla();
-    localbgla.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localbgla.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
-    localbgla.jdField_a_of_type_Int = 2;
-    return localbgla;
+    bgkx.a(this.a, this.a.jdField_a_of_type_JavaUtilArrayList);
+    if ((bgkx.a(this.a) != null) && (bgkx.a(this.a).getViewTreeObserver() != null) && (Build.VERSION.SDK_INT > 16) && (this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)) {
+      bgkx.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    }
   }
 }
 

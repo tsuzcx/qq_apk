@@ -1,18 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import mqq.app.QQPermissionCallback;
 
-class bfhf
-  extends BroadcastReceiver
+public class bfhf
+  implements QQPermissionCallback
 {
-  bfhf(bfhe parambfhe) {}
+  public bfhf(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    QLog.d("TroopReceiver", 4, paramContext);
-    this.a.e(paramContext);
+    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

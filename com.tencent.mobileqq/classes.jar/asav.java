@@ -1,26 +1,74 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.os.Bundle;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class asav
-  implements ValueAnimator.AnimatorUpdateListener
+  extends asaz
 {
-  public asav(EmotionSearchPanel paramEmotionSearchPanel) {}
+  public asav(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
   {
-    if (EmotionSearchPanel.a(this.a))
-    {
-      EmotionSearchPanel localEmotionSearchPanel = this.a;
-      int i = EmotionSearchPanel.jdField_a_of_type_Int;
-      EmotionSearchPanel.c(localEmotionSearchPanel, ((Integer)paramValueAnimator.getAnimatedValue()).intValue() + i);
+    if (!paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
+      }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha((1.0F - paramValueAnimator.getAnimatedFraction()) * 0.71F);
       return;
-      EmotionSearchPanel.c(this.a, EmotionSearchPanel.jdField_a_of_type_Int - ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      if (paramBoolean2) {
+        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
+      }
+      while (!this.a.isFinishing())
+      {
+        this.a.a();
+        return;
+        if (this.a.app.a().isInMsgBoxRecentList(antf.al, this.a.jdField_a_of_type_Int))
+        {
+          paramInt = this.a.app.a().a(antf.al, this.a.jdField_a_of_type_Int);
+          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, antf.al, this.a.app.getCurrentAccountUin());
+          if (paramInt > 0)
+          {
+            alpb.b(this.a.app, antf.al, this.a.jdField_a_of_type_Int);
+            this.a.app.a().a(antf.al, this.a.jdField_a_of_type_Int, true, true);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  {
+    if (!paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (paramBoolean2) {
+        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
+      }
+      while (!this.a.isFinishing())
+      {
+        this.a.a();
+        return;
+        if (this.a.app.a().isInMsgBoxRecentList(antf.am, this.a.jdField_a_of_type_Int))
+        {
+          paramInt = this.a.app.a().a(antf.am, this.a.jdField_a_of_type_Int);
+          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, antf.am, this.a.app.getCurrentAccountUin());
+          if (paramInt > 0)
+          {
+            alpb.b(this.a.app, antf.am, this.a.jdField_a_of_type_Int);
+            this.a.app.a().a(antf.am, this.a.jdField_a_of_type_Int, true, true);
+          }
+        }
+      }
     }
   }
 }

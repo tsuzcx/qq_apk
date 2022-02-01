@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
 
 class agsa
-  implements DialogInterface.OnClickListener
+  extends TroopAppShortcutContainer
 {
-  agsa(agrz paramagrz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  agsa(agrz paramagrz, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(true);
   }
 }
 

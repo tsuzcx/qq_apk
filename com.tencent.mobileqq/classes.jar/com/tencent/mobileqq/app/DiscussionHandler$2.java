@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import anks;
+import anwo;
 import java.util.ArrayList;
 
 public class DiscussionHandler$2
   implements Runnable
 {
-  public DiscussionHandler$2(anks paramanks, long paramLong, ArrayList paramArrayList) {}
+  public DiscussionHandler$2(anwo paramanwo, long paramLong, ArrayList paramArrayList) {}
   
   /* Error */
   public void run()
@@ -43,18 +43,18 @@ public class DiscussionHandler$2
     //   61: invokespecial 63	org/json/JSONArray:<init>	()V
     //   64: astore 10
     //   66: aload_0
-    //   67: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanks;
-    //   70: getfield 69	anks:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   67: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanwo;
+    //   70: getfield 69	anwo:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   73: bipush 53
     //   75: invokevirtual 75	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   78: checkcast 77	ankw
+    //   78: checkcast 77	anws
     //   81: lload 4
     //   83: invokestatic 83	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   86: aload_0
-    //   87: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanks;
-    //   90: getfield 69	anks:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   87: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanwo;
+    //   90: getfield 69	anwo:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   93: invokevirtual 87	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   96: invokevirtual 90	ankw:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionMemberInfo;
+    //   96: invokevirtual 90	anws:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionMemberInfo;
     //   99: astore 11
     //   101: invokestatic 96	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   104: invokevirtual 100	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
@@ -185,8 +185,8 @@ public class DiscussionHandler$2
     //   377: iload_3
     //   378: istore_2
     //   379: aload_0
-    //   380: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanks;
-    //   383: getfield 69	anks:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   380: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanwo;
+    //   383: getfield 69	anwo:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   386: iconst_2
     //   387: invokevirtual 75	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
     //   390: checkcast 188	mqq/manager/TicketManager
@@ -205,8 +205,8 @@ public class DiscussionHandler$2
     //   424: istore_2
     //   425: aload 6
     //   427: aload_0
-    //   428: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanks;
-    //   431: getfield 69	anks:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   428: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanwo;
+    //   431: getfield 69	anwo:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   434: invokevirtual 205	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
     //   437: invokeinterface 209 2 0
     //   442: astore 6
@@ -226,8 +226,8 @@ public class DiscussionHandler$2
     //   474: iload_3
     //   475: istore_2
     //   476: aload_0
-    //   477: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanks;
-    //   480: getfield 69	anks:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   477: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanwo;
+    //   480: getfield 69	anwo:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   483: invokevirtual 215	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   486: astore 10
     //   488: iload_3
@@ -313,12 +313,12 @@ public class DiscussionHandler$2
     //   683: iload_1
     //   684: ifne +88 -> 772
     //   687: aload_0
-    //   688: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanks;
+    //   688: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanwo;
     //   691: aload_0
     //   692: getfield 17	com/tencent/mobileqq/app/DiscussionHandler$2:jdField_a_of_type_Long	J
     //   695: aload_0
     //   696: getfield 19	com/tencent/mobileqq/app/DiscussionHandler$2:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   699: invokevirtual 280	anks:a	(JLjava/util/ArrayList;)V
+    //   699: invokevirtual 280	anwo:a	(JLjava/util/ArrayList;)V
     //   702: return
     //   703: astore 6
     //   705: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -347,7 +347,7 @@ public class DiscussionHandler$2
     //   769: aload 6
     //   771: athrow
     //   772: aload_0
-    //   773: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanks;
+    //   773: getfield 15	com/tencent/mobileqq/app/DiscussionHandler$2:this$0	Lanwo;
     //   776: sipush 1003
     //   779: iconst_0
     //   780: iconst_2
@@ -363,7 +363,7 @@ public class DiscussionHandler$2
     //   796: iconst_m1
     //   797: invokestatic 290	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   800: aastore
-    //   801: invokevirtual 294	anks:notifyUI	(IZLjava/lang/Object;)V
+    //   801: invokevirtual 294	anwo:notifyUI	(IZLjava/lang/Object;)V
     //   804: return
     //   805: astore 6
     //   807: iload_3

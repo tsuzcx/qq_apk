@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amux;
+import angr;
 
 public class FriendCardApolloViewController$1
   implements Runnable

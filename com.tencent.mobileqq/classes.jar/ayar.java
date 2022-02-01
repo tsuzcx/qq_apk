@@ -1,57 +1,55 @@
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import com.tencent.widget.AbsListView;
+import android.widget.ListView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import java.util.List;
 
-public final class ayar
+public class ayar
+  extends Handler
 {
-  int jdField_a_of_type_Int;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  ayaq jdField_a_of_type_Ayaq;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public ayar(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  void a()
+  public void handleMessage(Message paramMessage)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  void a(View paramView1, View paramView2, int paramInt)
-  {
-    this.jdField_a_of_type_Ayaq.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Ayaq.a();
-    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
+    default: 
+      return;
+    case 4097: 
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+      return;
+    case 4098: 
+      ChooseInterestTagActivity.a(this.a).setVisibility(8);
+      paramMessage = (List)paramMessage.obj;
+      if (paramMessage != null) {
+        ChooseInterestTagActivity.a(this.a, paramMessage);
+      }
+      if (ChooseInterestTagActivity.a(this.a) == null)
+      {
+        ChooseInterestTagActivity.a(this.a, new ayax(this.a, ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a)));
+        ChooseInterestTagActivity.a(this.a).setAdapter(ChooseInterestTagActivity.a(this.a));
+        paramMessage = this.a;
+        if (ChooseInterestTagActivity.b(this.a) == -1) {
+          break label219;
+        }
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        ChooseInterestTagActivity.a(paramMessage, false, bool);
+        return;
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+        break;
+      }
+    case 4100: 
+      label219:
+      ChooseInterestTagActivity.a(this.a, false);
       return;
     }
-  }
-  
-  void a(ayaq paramayaq)
-  {
-    this.jdField_a_of_type_Ayaq = paramayaq;
-    if (this.jdField_a_of_type_Ayaq != null)
-    {
-      paramayaq = this.jdField_a_of_type_Ayaq.a();
-      paramayaq.setOnScrollListener(new ayau(this, null));
-      paramayaq.setOnTouchListener(new ayat(this, null));
-      paramayaq.setOnItemSelectedListener(new ayav(this, null));
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Ayaq == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Ayaq.a());
+    ChooseInterestTagActivity.a(this.a, anzj.a(2131700719));
+    ChooseInterestTagActivity.a(this.a).setText("");
+    ChooseInterestTagActivity.a(this.a).setOnClickListener(null);
   }
 }
 

@@ -1,11 +1,17 @@
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class ahef
+  implements aunx
 {
-  public int a;
-  public long a;
+  ahef(ahed paramahed) {}
   
-  ahef(ahed paramahed)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = -1L;
+    aunj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
+    aunj.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
   }
 }
 

@@ -1,84 +1,54 @@
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
+import java.util.concurrent.ConcurrentHashMap;
 
 class aynm
   implements View.OnClickListener
 {
-  aynm(aymu paramaymu) {}
+  aynm(aymj paramaymj, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof aynn)) {}
-    SubAccountInfo localSubAccountInfo;
-    Object localObject1;
-    switch (((aynn)paramView.getTag()).a)
-    {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    case 2: 
-      localSubAccountInfo = (SubAccountInfo)paramView.getTag(2131361895);
-      if (localSubAccountInfo != null)
+    Object localObject = new Intent(this.jdField_a_of_type_Aymj.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString + "&type" + aymj.a(this.jdField_a_of_type_Aymj).gender);
+    String str = anzj.a(2131706137);
+    if (this.jdField_a_of_type_Aymj.a.e != 2) {
+      if (aymj.a(this.jdField_a_of_type_Aymj).gender == 0)
       {
-        localObject1 = aymu.a(this.a).getApplication().getAllAccounts();
-        Object localObject2 = new ArrayList();
-        if (localObject1 != null) {
-          ((List)localObject2).addAll((Collection)localObject1);
-        }
-        if ((localObject2 != null) && (((List)localObject2).size() > 0))
-        {
-          localObject2 = ((List)localObject2).iterator();
-          do
-          {
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
-            }
-            localObject1 = (SimpleAccount)((Iterator)localObject2).next();
-          } while (!TextUtils.equals(((SimpleAccount)localObject1).getUin(), localSubAccountInfo.subuin));
+        str = anzj.a(2131706206);
+        ((Intent)localObject).putExtra("title", str + anzj.a(2131706257));
+        this.jdField_a_of_type_Aymj.a.startActivity((Intent)localObject);
+        localObject = this.jdField_a_of_type_Aymj.a.app;
+        if (this.jdField_a_of_type_Aymj.a.e != 2) {
+          break label275;
         }
       }
-      break;
     }
-    for (;;)
+    label275:
+    for (str = "1";; str = "2")
     {
-      if (localObject1 != null) {
-        this.a.a((SimpleAccount)localObject1, aymu.a(this.a).app);
-      }
+      bdll.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "data_card", "clk_pub", 0, 0, str, "", "", "");
       for (;;)
       {
-        bcst.b(aymu.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
-        bcst.b(aymu.a(this.a), "CliOper", "", "", "0X80072D2", "0X80072D2", 0, 0, "", "", "", "");
-        aypy.a("0X800AF3A");
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        str = anzj.a(2131706240);
         break;
-        if (localSubAccountInfo != null)
-        {
-          localObject1 = new Intent("before_account_change");
-          aymu.a(this.a).sendBroadcast((Intent)localObject1);
-          localObject1 = new Intent(aymu.a(this.a), SubAccountUgActivity.class);
-          ((Intent)localObject1).putExtra("subAccount", localSubAccountInfo.subuin);
-          aymu.a(this.a).startActivity((Intent)localObject1);
+        if (this.jdField_a_of_type_Aymj.a.app != null) {
+          break label230;
         }
+        QLog.w("NearbyProfileDisplayTribePanel", 2, "mActivity.app == null is true!");
       }
-      localObject1 = (SimpleAccount)paramView.getTag(2131361895);
-      this.a.a((SimpleAccount)localObject1, aymu.a(this.a));
-      bcst.b(aymu.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
-      bcst.b(aymu.a(this.a), "CliOper", "", "", "0X80072D3", "0X80072D3", 0, 0, "", "", "", "");
-      aypy.a("0X800AF3A");
+      label230:
+      ((axup)this.jdField_a_of_type_Aymj.a.app.getManager(106)).d.put(this.jdField_a_of_type_Aymj.a.app.getCurrentAccountUin(), Integer.valueOf(1));
       break;
-      localObject1 = null;
     }
   }
 }

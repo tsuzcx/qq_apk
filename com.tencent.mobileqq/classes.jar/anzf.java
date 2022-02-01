@@ -1,39 +1,23 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.SQLiteOpenHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class anzf
-  implements ankk
+  implements anui
 {
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean) {
-      paramBoolean = bctj.a(3);
-    }
-    for (;;)
+    if (paramInt == 1)
     {
-      try
-      {
-        QLog.e("QQInitHandler_WalLog", 1, new Object[] { "onDpcPullFinished, isEnable: ", Boolean.valueOf(paramBoolean) });
-        if (paramBoolean) {
-          continue;
-        }
-        bgmg.d(SQLiteOpenHelper.WAL_FLAG_FILE_PATH);
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QQInitHandler", 1, "onDpcPullFinished, get switch error", localThrowable);
-        continue;
-      }
-      DeviceProfileManager.b(this);
-      return;
-      bgmg.a(SQLiteOpenHelper.WAL_FLAG_FILE_PATH);
+      paramObject = (HashMap)paramObject;
+      a(paramBoolean, (ArrayList)paramObject.get("mq_kandian_svc_results"), (ArrayList)paramObject.get("mq_kandian_svc_sentences"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzf
  * JD-Core Version:    0.7.0.1
  */

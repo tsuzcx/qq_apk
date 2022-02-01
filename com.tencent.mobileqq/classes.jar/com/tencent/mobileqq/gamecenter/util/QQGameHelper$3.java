@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.util;
 
-import auui;
+import avmi;
 import com.tencent.common.app.BaseApplicationImpl;
-import nko;
+import nmj;
 
 public final class QQGameHelper$3
   implements Runnable
 {
   public void run()
   {
-    nko.b("4235", BaseApplicationImpl.getApplication().getRuntime(), true, new auui(this));
+    nmj.b("4235", BaseApplicationImpl.getApplication().getRuntime(), true, new avmi(this));
   }
 }
 

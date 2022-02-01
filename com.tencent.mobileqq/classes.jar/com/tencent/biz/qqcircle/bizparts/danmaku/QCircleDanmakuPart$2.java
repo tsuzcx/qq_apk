@@ -3,24 +3,24 @@ package com.tencent.biz.qqcircle.bizparts.danmaku;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.image.ApngImage;
-import vei;
-import vet;
-import vex;
+import vgm;
+import vgx;
+import vhb;
 
 public class QCircleDanmakuPart$2
   implements Runnable
 {
-  public QCircleDanmakuPart$2(vei paramvei, ImageView paramImageView, vex paramvex) {}
+  public QCircleDanmakuPart$2(vgm paramvgm, ImageView paramImageView, vhb paramvhb) {}
   
   public void run()
   {
-    vei.a(this.this$0).a();
-    vei.a(this.this$0).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    vgm.a(this.this$0).a();
+    vgm.a(this.this$0).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
     ApngImage.pauseByTag(33);
-    if (!this.jdField_a_of_type_Vex.h())
+    if (!this.jdField_a_of_type_Vhb.h())
     {
-      this.jdField_a_of_type_Vex.i(this.jdField_a_of_type_Vex.t + 1);
-      this.jdField_a_of_type_Vex.h = true;
+      this.jdField_a_of_type_Vhb.i(this.jdField_a_of_type_Vhb.t + 1);
+      this.jdField_a_of_type_Vhb.h = true;
     }
     this.this$0.a = false;
   }

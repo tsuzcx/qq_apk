@@ -17,6 +17,11 @@ public class MqqMessage
   long when;
   Message wrappedMsg;
   
+  static
+  {
+    sPoolSize = 0;
+  }
+  
   private MqqMessage()
   {
     if (DEBUG_MESSAGE) {

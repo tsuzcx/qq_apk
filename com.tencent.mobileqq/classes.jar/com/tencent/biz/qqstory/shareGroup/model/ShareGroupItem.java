@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.shareGroup.model;
 
-import anni;
+import anzj;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.ShareGroupEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
@@ -13,14 +13,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.List;
-import wev;
-import wqq;
-import yqp;
-import zkb;
+import wiq;
+import wul;
+import yuk;
+import znw;
 
 public class ShareGroupItem
   extends BaseUIItem
-  implements wev, wqq
+  implements wiq, wul
 {
   public static final int OWNER_TYPE_CREATOR = 1;
   public static final int OWNER_TYPE_PARTICIPATOR = 2;
@@ -35,7 +35,7 @@ public class ShareGroupItem
   public int isDisband = -1;
   public int isSubscribed = -1;
   public int memberCount = -1;
-  public String name = anni.a(2131712681);
+  public String name = anzj.a(2131712790);
   public int ownerType = 1;
   public String ownerUnionId;
   public String shareGroupId;
@@ -66,9 +66,9 @@ public class ShareGroupItem
   
   public void assertItem()
   {
-    zkb.a(this.shareGroupId);
+    znw.a(this.shareGroupId);
     if (this.type == 2) {
-      yqp.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
+      yuk.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
     }
   }
   

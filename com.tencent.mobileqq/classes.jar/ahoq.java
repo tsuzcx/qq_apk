@@ -1,14 +1,17 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class ahoq
-  implements ahor
+  extends aggl
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagup.c(paramMessageRecord, paramLinearLayout, paramagwc);
-  }
+  public ImageView a;
+  public TextView a;
+  public CircleFileStateView a;
+  public View d;
+  
+  public ahoq(ahoo paramahoo) {}
 }
 
 

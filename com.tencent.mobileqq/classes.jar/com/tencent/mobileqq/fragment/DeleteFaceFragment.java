@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import afur;
+import agej;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,13 +15,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import ault;
-import aulu;
-import aulw;
-import aulx;
-import aves;
-import bccl;
-import bcst;
+import avdt;
+import avdu;
+import avdw;
+import avdx;
+import avwv;
+import bcvd;
+import bdll;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 import com.tencent.mobileqq.widget.QQToast;
@@ -61,7 +61,7 @@ public class DeleteFaceFragment
   
   private void a(String paramString1, String paramString2)
   {
-    bccl.a(101868556, paramString1, "skey", paramString2, "clean", new aulw(this, paramString1));
+    bcvd.a(101868556, paramString1, "skey", paramString2, "clean", new avdw(this, paramString1));
   }
   
   private void a(String paramString1, String paramString2, FaceDetectForThirdPartyManager.AppConf paramAppConf)
@@ -80,7 +80,7 @@ public class DeleteFaceFragment
   
   private void a(String paramString1, String paramString2, String paramString3)
   {
-    aves.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString1, "deleteFace", paramString2, 0L, 101868556, new aulx(this, paramString1, paramString3));
+    avwv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString1, "deleteFace", paramString2, 0L, 101868556, new avdx(this, paramString1, paramString3));
   }
   
   private boolean a()
@@ -90,13 +90,13 @@ public class DeleteFaceFragment
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131298998);
+    return getResources().getDimensionPixelSize(2131299011);
   }
   
   public Drawable a(int paramInt)
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(afur.a(6.0F, getResources()));
+    localGradientDrawable.setCornerRadius(agej.a(6.0F, getResources()));
     localGradientDrawable.setColor(paramInt);
     return localGradientDrawable;
   }
@@ -106,11 +106,11 @@ public class DeleteFaceFragment
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
       this.jdField_a_of_type_AndroidAppDialog = TroopBaseProxyActivity.a(getActivity());
-      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372161).getLayoutParams().width = -2;
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372466);
+      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372275).getLayoutParams().width = -2;
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372578);
       localTextView.setSingleLine();
       localTextView.setPadding(15, 0, 15, 0);
-      localTextView.setText(getString(2131705542));
+      localTextView.setText(getString(2131705649));
     }
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -155,24 +155,24 @@ public class DeleteFaceFragment
   {
     int i = paramView.getId();
     FragmentActivity localFragmentActivity = getActivity();
-    if (i == 2131368947) {
+    if (i == 2131369042) {
       localFragmentActivity.finish();
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bcst.b(null, "dc00898", "", "", "0X800A855", "0X800A855", 0, 0, "", "", "", "");
-      TextView localTextView1 = (TextView)this.b.findViewById(2131365479);
-      TextView localTextView2 = (TextView)this.b.findViewById(2131365475);
-      TextView localTextView3 = (TextView)this.b.findViewById(2131365464);
-      TextView localTextView4 = (TextView)this.b.findViewById(2131365470);
-      localTextView1.setText(getString(2131691951));
-      localTextView2.setText(getString(2131691952));
-      localTextView3.setText(getString(2131691950));
-      localTextView4.setText(getString(2131691824));
-      localTextView3.setOnClickListener(new ault(this));
-      localTextView4.setOnClickListener(new aulu(this, localFragmentActivity));
+      bdll.b(null, "dc00898", "", "", "0X800A855", "0X800A855", 0, 0, "", "", "", "");
+      TextView localTextView1 = (TextView)this.b.findViewById(2131365523);
+      TextView localTextView2 = (TextView)this.b.findViewById(2131365519);
+      TextView localTextView3 = (TextView)this.b.findViewById(2131365508);
+      TextView localTextView4 = (TextView)this.b.findViewById(2131365514);
+      localTextView1.setText(getString(2131691955));
+      localTextView2.setText(getString(2131691956));
+      localTextView3.setText(getString(2131691954));
+      localTextView4.setText(getString(2131691828));
+      localTextView3.setOnClickListener(new avdt(this));
+      localTextView4.setOnClickListener(new avdu(this, localFragmentActivity));
       this.b.show();
     }
   }
@@ -180,19 +180,19 @@ public class DeleteFaceFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561120, paramViewGroup, false);
-    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131379601);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561156, paramViewGroup, false);
+    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131379774);
     paramViewGroup.setOnClickListener(this);
-    paramViewGroup.setBackgroundDrawable(a(getResources().getColor(2131166777)));
-    ((TextView)paramLayoutInflater.findViewById(2131368994)).setText(getString(2131691832));
-    ((TextView)paramLayoutInflater.findViewById(2131368947)).setOnClickListener(this);
-    paramViewGroup = paramLayoutInflater.findViewById(2131376734);
+    paramViewGroup.setBackgroundDrawable(a(getResources().getColor(2131166781)));
+    ((TextView)paramLayoutInflater.findViewById(2131369088)).setText(getString(2131691836));
+    ((TextView)paramLayoutInflater.findViewById(2131369042)).setOnClickListener(this);
+    paramViewGroup = paramLayoutInflater.findViewById(2131376869);
     paramBundle = (LinearLayout.LayoutParams)paramViewGroup.getLayoutParams();
     paramBundle.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
     paramViewGroup.setLayoutParams(paramBundle);
-    this.b = new ReportDialog(getActivity(), 2131755823);
-    this.b.setContentView(2131558985);
-    bcst.b(null, "dc00898", "", "", "0X800A86F", "0X800A86F", 0, 0, "", "", "", "");
+    this.b = new ReportDialog(getActivity(), 2131755824);
+    this.b.setContentView(2131558984);
+    bdll.b(null, "dc00898", "", "", "0X800A86F", "0X800A86F", 0, 0, "", "", "", "");
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

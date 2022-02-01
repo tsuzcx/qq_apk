@@ -1,9 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
 public abstract interface pex
-  extends ViewBase.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public abstract void z_();
 }
 
 

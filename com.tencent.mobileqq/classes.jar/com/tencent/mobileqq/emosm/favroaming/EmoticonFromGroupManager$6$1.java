@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import arre;
-import arrj;
+import asgs;
+import asgx;
 import com.tencent.image.URLDrawable;
 
 public class EmoticonFromGroupManager$6$1
   implements Runnable
 {
-  public EmoticonFromGroupManager$6$1(arrj paramarrj, URLDrawable paramURLDrawable) {}
+  public EmoticonFromGroupManager$6$1(asgx paramasgx, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Arrj.a.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_Asgx.a.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

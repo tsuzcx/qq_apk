@@ -1,10 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
-class albh
+public class albh
   implements DialogInterface.OnClickListener
 {
-  albh(albc paramalbc) {}
+  public albh(QzoneHbFragment paramQzoneHbFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

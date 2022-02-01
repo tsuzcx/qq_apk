@@ -1,45 +1,32 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class aole
-  extends Handler
+public class aole
+  implements BusinessObserver
 {
-  private aole(aolb paramaolb) {}
+  public void a() {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt) {}
+  
+  public void b() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramMessage.what != 1) {
+    switch (paramInt)
+    {
+    case 111: 
+    case 112: 
+    case 114: 
+    default: 
+      return;
+    case 113: 
+      a(paramBundle.getInt("key_rt_type"));
+      return;
+    case 115: 
+      a();
       return;
     }
-    if (aolb.a(this.a) != null)
-    {
-      aolb.a(this.a).a();
-      this.a.a.removeObserver(aolb.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QwalletModifyPassAction", 2, "msf return error ");
-      }
-      aolb.a(this.a, 1);
-      return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
-      {
-        aolb.b(this.a);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QwalletModifyPassAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
-      }
-    }
-    aolb.a(this.a, 1);
+    b();
   }
 }
 

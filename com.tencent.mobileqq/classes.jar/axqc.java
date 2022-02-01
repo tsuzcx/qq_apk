@@ -1,10 +1,16 @@
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public final class axqc
+class axqc
+  implements DialogInterface.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
+  axqc(axqb paramaxqb, List paramList) {}
   
-  private axqc(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaUtilList, false);
+  }
 }
 
 

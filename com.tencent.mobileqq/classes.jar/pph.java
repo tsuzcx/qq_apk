@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class pph
-  implements View.OnClickListener
 {
-  public pph(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  public void a(int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void a(long paramLong, String paramString) {}
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt, ssh paramssh) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
 }
 
 

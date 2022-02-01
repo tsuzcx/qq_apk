@@ -1,17 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class tkx
-  implements View.OnClickListener
+class tkx
+  implements DialogInterface.OnClickListener
 {
-  public tkx(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  tkx(tkv paramtkv, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(0, 2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt != 1) {
+      tkt.a(this.jdField_a_of_type_Tkv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 10, tkv.a(this.jdField_a_of_type_Tkv));
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Tkv.a()) {}
+    }
+    while (!(this.jdField_a_of_type_Tkv.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      return;
+      tkv.a(this.jdField_a_of_type_Tkv).set(true);
+      this.jdField_a_of_type_Tkv.b();
+      return;
+    }
+    tkq.a(this.jdField_a_of_type_Tkv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Activity)this.jdField_a_of_type_Tkv.jdField_a_of_type_AndroidContentContext);
   }
 }
 

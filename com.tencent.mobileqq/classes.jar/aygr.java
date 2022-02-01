@@ -1,15 +1,6 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-
-class aygr
-  implements Camera.PictureCallback
+public abstract interface aygr
 {
-  aygr(aygn paramaygn) {}
-  
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    this.a.a(paramArrayOfByte, true);
-  }
+  public abstract void a(aygm paramaygm);
 }
 
 

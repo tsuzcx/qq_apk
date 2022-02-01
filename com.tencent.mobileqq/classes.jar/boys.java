@@ -1,18 +1,48 @@
+import android.app.Activity;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
+import com.tencent.common.app.AppInterface;
+import dov.com.qq.im.ae.play.EditTextViewer;
+import dov.com.qq.im.ae.play.EditTextViewer.4.1;
+
 public class boys
-  extends weu
+  extends boqk
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  public boys(EditTextViewer paramEditTextViewer, AppInterface paramAppInterface, String paramString) {}
   
-  public boys(int paramInt, boolean paramBoolean)
+  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramBoolean)
+    {
+      bool1 = bool2;
+      if (paramGetFontDataRsp != null)
+      {
+        if (paramGetFontDataRsp.Code != 0) {
+          break label74;
+        }
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, this.jdField_a_of_type_JavaLangString);
+        bool1 = true;
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, paramGetFontDataRsp);
+      }
+    }
+    for (;;)
+    {
+      EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer).runOnUiThread(new EditTextViewer.4.1(this, bool1));
+      return;
+      label74:
+      if (paramGetFontDataRsp.Code == -10002)
+      {
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, 2131689761);
+        bool1 = bool2;
+      }
+      else
+      {
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, 2131689763);
+        bool1 = bool2;
+      }
+    }
   }
 }
 

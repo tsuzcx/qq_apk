@@ -22,7 +22,7 @@ public class NavigationModule
     Fragment localFragment = getViolaInstance().getFragment();
     if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
     {
-      ((ViolaFragment)localFragment).q();
+      ((ViolaFragment)localFragment).hideTitleBar();
       ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), getModuleName(), "callback", paramString, "", true);
     }
   }
@@ -61,7 +61,7 @@ public class NavigationModule
     Fragment localFragment = getViolaInstance().getFragment();
     if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
     {
-      ((ViolaFragment)localFragment).r();
+      ((ViolaFragment)localFragment).showTitleBar();
       ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), getModuleName(), "callback", paramString, "", true);
     }
   }

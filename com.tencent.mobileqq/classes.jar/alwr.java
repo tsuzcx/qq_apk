@@ -1,32 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class alwr
-  extends BroadcastReceiver
+public abstract interface alwr
 {
-  public alwr(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.d();
-    }
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
-    }
-    this.a.d();
-  }
+  public abstract void b();
 }
 
 

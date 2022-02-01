@@ -1,119 +1,41 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.common.app.AppInterface;
 
 final class tzx
-  implements BusinessObserver
+  extends apee
 {
-  tzx(anry paramanry, String paramString, boolean paramBoolean, Context paramContext, Object paramObject, QQAppInterface paramQQAppInterface) {}
+  tzx(aoeg paramaoeg, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
-    {
-      if (this.jdField_a_of_type_Anry != null) {
-        this.jdField_a_of_type_Anry.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-      }
-    }
-    label220:
-    label374:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!paramBoolean) {
-            break label412;
-          }
-          for (;;)
-          {
-            try
-            {
-              paramBundle = paramBundle.getByteArray("data");
-              if (paramBundle == null) {
-                break label374;
-              }
-              mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-              localUnFollowResponse.mergeFrom(paramBundle);
-              if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-                break label336;
-              }
-              if (this.jdField_a_of_type_JavaLangObject == null) {
-                break label220;
-              }
-              paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-              if (paramBundle != null) {
-                paramBundle.a(this.jdField_a_of_type_JavaLangObject);
-              }
-              if (this.jdField_a_of_type_Anry == null) {
-                break;
-              }
-              this.jdField_a_of_type_Anry.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
-              return;
-            }
-            catch (Exception paramBundle)
-            {
-              if (this.jdField_a_of_type_Anry != null) {
-                this.jdField_a_of_type_Anry.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-              }
-            }
-            if (!this.jdField_a_of_type_Boolean) {
-              break;
-            }
-            tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-            return;
-            paramBundle = (anrs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-            paramBundle.b(this.jdField_a_of_type_JavaLangString);
-            paramBundle.a(this.jdField_a_of_type_JavaLangString);
-            StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
-            twi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle.a());
-            tue.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            paramBundle = (oda)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-            if (paramBundle != null) {
-              paramBundle.a(this.jdField_a_of_type_JavaLangString, "unfollow");
-            }
-          }
-          if (this.jdField_a_of_type_Anry != null) {
-            this.jdField_a_of_type_Anry.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-          }
-        } while (!this.jdField_a_of_type_Boolean);
-        tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-        return;
-        if (this.jdField_a_of_type_Anry != null) {
-          this.jdField_a_of_type_Anry.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-      return;
-      if (this.jdField_a_of_type_Anry != null) {
-        this.jdField_a_of_type_Anry.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    label336:
-    tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-    label412:
+    return 4;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Aoeg != null) {
+      this.jdField_a_of_type_Aoeg.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    tzq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Aoeg != null) {
+      this.jdField_a_of_type_Aoeg.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      tzq.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzx
  * JD-Core Version:    0.7.0.1
  */

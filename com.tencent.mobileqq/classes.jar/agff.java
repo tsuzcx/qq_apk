@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agff
-  implements View.OnClickListener
+final class agff
+  implements agfh
 {
-  public agff(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    VoiceTextEditPanel.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramString = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 21);
+    paramString.l = 11;
+    paramString.h = bhlg.h(paramQQAppInterface, paramSessionInfo.b, paramMessageRecord.senderuin);
+    return paramString;
   }
 }
 

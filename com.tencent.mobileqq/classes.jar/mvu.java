@@ -1,19 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
 
 public class mvu
-  extends RecyclerView.ViewHolder
+  extends QQAVImageFilterGroup
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public mvu(View paramView)
+  public mvu()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369103));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379611));
+    super(null);
+    int i = 0;
+    while (i < 3)
+    {
+      addFilter(new QQAVImageGaussianBlurFilter());
+      i += 1;
+    }
   }
 }
 

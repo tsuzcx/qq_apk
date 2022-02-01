@@ -1,12 +1,12 @@
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bfdw
+class bfdw
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  bfdw(bfdt parambfdt) {}
   
-  public abstract void a(WordInfo paramWordInfo);
-  
-  public abstract void g();
+  public void onClick(View paramView) {}
 }
 
 

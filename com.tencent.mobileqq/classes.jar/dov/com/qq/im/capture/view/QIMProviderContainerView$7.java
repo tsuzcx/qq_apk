@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bosv;
+import bpuq;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 

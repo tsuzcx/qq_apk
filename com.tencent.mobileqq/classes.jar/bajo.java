@@ -1,10 +1,20 @@
-public abstract interface bajo
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
+
+public class bajo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  public bajo(VasProfileTagView paramVasProfileTagView, VipTagView paramVipTagView) {}
   
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, Long paramLong);
-  
-  public abstract void b(String paramString, boolean paramBoolean);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
+    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramValueAnimator.x, paramValueAnimator.y);
+  }
 }
 
 

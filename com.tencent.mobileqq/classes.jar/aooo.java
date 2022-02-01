@@ -1,27 +1,55 @@
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.face.FaceDownloader;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
+
 public class aooo
-  implements anil
+  extends MqqHandler
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aooo(FaceDownloader paramFaceDownloader, Looper paramLooper)
   {
-    switch (paramInt)
-    {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while (paramMessage.what != 100) {
+      return;
     }
-    do
+    int i = 0;
+    label16:
+    if (i < this.a.b.size())
     {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      if (!paramBoolean) {
-        break;
+      paramMessage = (aoos)this.a.b.get(i);
+      if (paramMessage != null) {
+        break label56;
       }
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
-    return;
-    a(false, false, -1);
+    }
+    for (;;)
+    {
+      i += 1;
+      break label16;
+      break;
+      label56:
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.FaceDownloader", 2, "handle download finish task.faceInfo=" + paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo + ",bitmap=" + paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+      if ((paramMessage != null) && (paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo != null) && (paramMessage.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.a.a.size() > 0))
+      {
+        int j = 0;
+        while (j < this.a.a.size())
+        {
+          ((aooq)this.a.a.get(j)).a(true, paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+          j += 1;
+        }
+      }
+      this.a.b.remove(i);
+      i -= 1;
+    }
   }
 }
 

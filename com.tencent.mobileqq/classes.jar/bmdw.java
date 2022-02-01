@@ -1,9 +1,12 @@
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
-
-abstract interface bmdw
+public class bmdw
 {
-  public abstract boolean a(PluginRecord paramPluginRecord, File paramFile);
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "0";
+  public String g = "0";
 }
 
 

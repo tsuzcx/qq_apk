@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.os.Bundle;
-import aqce;
+import aqrh;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.AddColorSignListener;
 import com.tencent.qphone.base.util.QLog;
 
 class GameActivity$25
-  extends aqce
+  extends aqrh
 {
   GameActivity$25(GameActivity paramGameActivity) {}
   

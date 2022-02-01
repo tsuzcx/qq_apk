@@ -1,58 +1,25 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.observer.BusinessObserver;
 
 class bfdz
-  implements nkl
+  implements BusinessObserver
 {
-  bfdz(bfdy parambfdy) {}
+  bfdz(bfdx parambfdx, bfeg parambfeg) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0) {}
-    while (bfdy.a(bfdy.a(this.a), bfdy.b(this.a)))
+    if (paramBoolean)
     {
-      do
-      {
-        String str;
-        try
-        {
-          paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-          str = paramString.optString("url");
-          paramInt = paramString.optInt("filesize");
-          if ((str != null) && (str.endsWith("patch")))
-          {
-            bgmg.a(nku.a(bfdy.a(this.a)) + bfdy.a(this.a));
-            bfdy.a(this.a);
-            return;
-          }
-        }
-        catch (Exception paramString)
-        {
-          do
-          {
-            paramString.printStackTrace();
-          } while (bfdy.a(bfdy.a(this.a), bfdy.b(this.a)));
-          bfdy.b(this.a);
-          return;
-        }
-        if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-        {
-          bfdy.a(this.a, paramString);
-          return;
-        }
-      } while (bfdy.a(bfdy.a(this.a), bfdy.b(this.a)));
-      bfdy.b(this.a);
+      this.jdField_a_of_type_Bfeg.k = 1;
+      this.jdField_a_of_type_Bfdx.a.a(1, 1);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    bfdy.b(this.a);
+    QLog.d("TribeVideoListPlayerFragment", 2, "dianZan failed!!!");
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

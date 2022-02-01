@@ -1,55 +1,54 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.articlesummary.BuluoInfo;
 
 public class qxs
-  extends ClickableSpan
-  implements sth
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  protected String a;
-  boolean jdField_a_of_type_Boolean;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public qxs(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend, String paramString, int paramInt)
+  public static qxs a(articlesummary.BuluoInfo paramBuluoInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = pgc.k + bgku.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext(), PublicAccountBrowser.class);
-    localIntent.putExtra("url", paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext().startActivity(localIntent);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    qxs localqxs = new qxs();
+    String str;
+    if (paramBuluoInfo.bytes_wording.has())
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      str = paramBuluoInfo.bytes_wording.get().toStringUtf8();
+      localqxs.jdField_a_of_type_JavaLangString = str;
+      if (!paramBuluoInfo.bytes_head_url.has()) {
+        break label131;
+      }
+      str = paramBuluoInfo.bytes_head_url.get().toStringUtf8();
+      label55:
+      localqxs.d = str;
+      localqxs.jdField_a_of_type_Long = paramBuluoInfo.uint64_buluo_id.get();
+      if (!paramBuluoInfo.bytes_jump_url.has()) {
+        break label137;
+      }
+      str = paramBuluoInfo.bytes_jump_url.get().toStringUtf8();
+      label92:
+      localqxs.b = str;
+      if (!paramBuluoInfo.bytes_name.has()) {
+        break label143;
+      }
+    }
+    label131:
+    label137:
+    label143:
+    for (paramBuluoInfo = paramBuluoInfo.bytes_name.get().toStringUtf8();; paramBuluoInfo = "")
+    {
+      localqxs.c = paramBuluoInfo;
+      return localqxs;
+      str = "";
+      break;
+      str = "";
+      break label55;
+      str = "";
+      break label92;
     }
   }
 }

@@ -1,108 +1,26 @@
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class ajdj
-  extends ankx
+  extends Handler
 {
-  private ajdj(DiscussionView paramDiscussionView) {}
+  public ajdj(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.i();
-    }
-    this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-    if (this.a.c)
+    switch (paramMessage.what)
     {
-      this.a.c = false;
-      if (paramBoolean)
-      {
-        DiscussionView.a(this.a).a(0);
-        this.a.a(100, 800L);
-      }
-    }
-    else
-    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)paramMessage.obj;
+      this.a.a(paramMessage, true);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-    this.a.b(2131718227);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b()
-  {
-    this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Amce.notifyDataSetChanged();
-    }
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage, false);
   }
 }
 

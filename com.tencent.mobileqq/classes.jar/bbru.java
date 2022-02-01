@@ -1,15 +1,18 @@
-public class bbru
+import mqq.app.QQPermissionCallback;
+
+class bbru
+  implements QQPermissionCallback
 {
-  public int a;
+  bbru(bbrp parambbrp) {}
   
-  public bbru(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = paramInt;
+    bhlq.b(this.a.mContext);
   }
   
-  public int a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.a;
+    bbrp.c(this.a);
   }
 }
 

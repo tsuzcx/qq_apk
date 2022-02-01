@@ -19,7 +19,7 @@ class SubMsgPermissionSettingFragment$2$1
       SubMsgPermissionSettingFragment.access$200(this.this$1.this$0).updateSubMsgItem(this.val$curSubItem, this.val$isChecked);
       return;
     }
-    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693691), 0).a();
+    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693708), 0).a();
     SubMsgPermissionSettingFragment.access$002(this.this$1.this$0, true);
     paramJSONObject = this.val$buttonView;
     if (!this.val$isChecked) {}

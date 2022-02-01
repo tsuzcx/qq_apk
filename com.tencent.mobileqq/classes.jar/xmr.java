@@ -1,22 +1,42 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
 
 public class xmr
-  implements xli
+  extends xmt
 {
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public ErrorMessage a;
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  public xmr(xms paramxms, @Nullable ErrorMessage paramErrorMessage)
+  {
+    super(paramxms);
+    if (paramErrorMessage == null) {}
+    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      return;
+    }
+  }
   
-  public void c() {}
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
+  }
   
-  public void d() {}
+  public boolean b()
+  {
+    return (!a()) && (!c());
+  }
   
-  public void e() {}
+  public boolean c()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
+  }
   
-  public void f() {}
-  
-  public void g() {}
+  public String toString()
+  {
+    return "fg{g=" + this.jdField_a_of_type_Xms + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+  }
 }
 
 

@@ -1,41 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.util.LruCache;
+import com.tencent.mobileqq.data.MessageForPoke;
 
 class ahdl
-  implements View.OnClickListener
+  extends LruCache<Long, MessageForPoke>
 {
-  ahdl(ahdk paramahdk) {}
-  
-  public void onClick(View paramView)
+  ahdl(ahdk paramahdk, int paramInt)
   {
-    pmy.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, null);
-    ahdm localahdm = (ahdm)afur.a(paramView);
-    ChatMessage localChatMessage = localahdm.a;
-    MessageForPubAccount localMessageForPubAccount;
-    if ((localChatMessage instanceof MessageForPubAccount))
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  {
+    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
     {
-      localMessageForPubAccount = (MessageForPubAccount)localChatMessage;
-      if ((localMessageForPubAccount.mPAMessage == null) || (localMessageForPubAccount.mPAMessage.mMsgId <= 0L)) {}
-    }
-    for (long l = localMessageForPubAccount.mPAMessage.mMsgId;; l = -1L)
-    {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (localChatMessage.istroop == 1))
-      {
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "Clk_all", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-        if (((bfrd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localChatMessage.uniseq)) {
-          bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "top_one", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-        }
-      }
-      ahdk.a(this.a, localahdm, localChatMessage, l);
-      ahdk.a(this.a, localChatMessage);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramMessageForPoke1.setPlayed(this.a.b);
+      paramMessageForPoke1.mFrameState.a = false;
+      paramMessageForPoke1.mFrameState.c = true;
+      paramMessageForPoke1.mUnlimitedState.a = false;
+      paramMessageForPoke1.mUnlimitedState.b = true;
     }
   }
 }

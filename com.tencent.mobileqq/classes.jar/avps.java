@@ -1,34 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-public final class avps
-  implements EIPCResultCallback
+public class avps
 {
-  public avps(JSONObject paramJSONObject, tol paramtol, String paramString) {}
+  public List<avpr> a;
+  public Set<String> a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public avps()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
-    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
-        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
-        this.jdField_a_of_type_Tol.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-        return;
-      }
-      catch (JSONException paramEIPCResult)
-      {
-        for (;;)
-        {
-          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 

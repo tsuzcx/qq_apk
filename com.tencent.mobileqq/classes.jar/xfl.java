@@ -1,36 +1,39 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.app.Activity;
 
-final class xfl
-  implements bkhw
+class xfl
+  implements xfn
 {
-  xfl(StoryVideoItem paramStoryVideoItem, bkho parambkho) {}
+  xfl(xfj paramxfj) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(xhu paramxhu)
   {
-    switch (paramInt)
+    xfj.a(this.a).c();
+    Activity localActivity = xfj.a(this.a).a();
+    if (localActivity == null)
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((wpy)wpm.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new wxi().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
+      c(paramxhu);
       return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      yqp.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
+    }
+    xig.a(localActivity, paramxhu, xfj.a(this.a));
+  }
+  
+  public void b(xhu paramxhu)
+  {
+    xfj.a(this.a).c();
+    if (xfj.a(this.a) != null)
+    {
+      xfj.a(this.a).c(paramxhu.a);
+      xfj.a(this.a).a();
+    }
+  }
+  
+  public void c(xhu paramxhu)
+  {
+    xfj.a(this.a).c();
+    if (xfj.a(this.a) != null)
+    {
+      xfj.a(this.a).d(paramxhu.a);
+      xfj.a(this.a).a();
     }
   }
 }

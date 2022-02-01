@@ -1,27 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.29.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
 
 public class sfh
-  implements siu
+  implements sga
 {
-  public sfh(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
+  sfh(sel paramsel) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
+    pmz localpmz = (pmz)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = this.a.b(localpmz.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null) {
+      return;
     }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a));
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
+    this.a.a(localpmz.jdField_a_of_type_Rwc, localBaseArticleInfo, true);
+    ThreadManager.executeOnSubThread(new ReadInJoyBaseAdapter.29.1(this, localBaseArticleInfo));
+    pms.a(paramView);
   }
 }
 

@@ -1,19 +1,14 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import NS_COMM.COMM.StCommonExt;
 
 class aaie
-  implements ViewTreeObserver.OnPreDrawListener
+  implements aaav<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  aaie(aaid paramaaid) {}
+  aaie(aaid paramaaid, COMM.StCommonExt paramStCommonExt) {}
   
-  public boolean onPreDraw()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    aaid.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    aaid.a(this.a, aaid.a(this.a).getLeft(), aaid.a(this.a).getTop(), aaid.a(this.a).getWidth(), aaid.a(this.a).getHeight());
-    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + aaid.a(this.a).getLeft(), ",top:", Integer.valueOf(aaid.a(this.a).getTop()), ",width:", Integer.valueOf(aaid.a(this.a).getWidth()), ",height:", Integer.valueOf(aaid.a(this.a).getHeight()) });
-    return true;
+    aaid.a(this.jdField_a_of_type_Aaid, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
   }
 }
 

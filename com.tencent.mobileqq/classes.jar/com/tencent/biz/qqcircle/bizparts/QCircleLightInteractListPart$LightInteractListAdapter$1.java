@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import vby;
+import vdo;
 
 public class QCircleLightInteractListPart$LightInteractListAdapter$1
   implements Runnable
 {
-  public QCircleLightInteractListPart$LightInteractListAdapter$1(vby paramvby) {}
+  public QCircleLightInteractListPart$LightInteractListAdapter$1(vdo paramvdo) {}
   
   public void run()
   {

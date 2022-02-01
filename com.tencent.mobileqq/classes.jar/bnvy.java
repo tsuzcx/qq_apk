@@ -1,18 +1,9 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2.1;
-import mqq.os.MqqHandler;
-
-public class bnvy
-  extends bnoz
+final class bnvy
+  extends bnhx<bnvx, Void>
 {
-  public bnvy(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
-  
-  public void b(boolean paramBoolean, int paramInt)
+  protected bnvx a(Void paramVoid)
   {
-    AETakeFacePhotoPreviewFragment.a(this.a).removeObserver(this);
-    ThreadManager.getUIHandler().post(new AETakeFacePhotoPreviewFragment.2.1(this, paramBoolean, paramInt));
+    return new bnvx();
   }
 }
 

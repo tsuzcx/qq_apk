@@ -1,20 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
 
-final class aukm
-  implements DialogInterface.OnClickListener
+class aukm
+  implements bean
 {
-  aukm(long paramLong, int paramInt, Activity paramActivity, BaseChatPie paramBaseChatPie) {}
+  aukm(aukl paramaukl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bjbs parambjbs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SDK_SHARE.ForwardShareByServerHelper", 2, "qbShowShareResultDialog back");
-    }
-    aukj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    SimpleFileViewer.a(this.a.a.this$0, parambjbs);
   }
 }
 

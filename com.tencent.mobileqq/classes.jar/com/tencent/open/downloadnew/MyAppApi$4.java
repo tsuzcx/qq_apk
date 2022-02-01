@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import biti;
-import biwe;
+import bjuh;
+import bjxd;
 
 public class MyAppApi$4
   implements Runnable
 {
-  public MyAppApi$4(biwe parambiwe) {}
+  public MyAppApi$4(bjxd parambjxd) {}
   
   public void run()
   {
-    biti.a().a(this.this$0.a);
+    bjuh.a().a(this.this$0.a);
   }
 }
 

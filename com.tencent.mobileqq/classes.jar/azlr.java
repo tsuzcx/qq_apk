@@ -1,25 +1,36 @@
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.StatusVisibleFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class azlr
-  implements bkib
+  implements View.OnClickListener
 {
-  azlr(azlk paramazlk, bkho parambkho) {}
+  azlr(azlq paramazlq, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    View localView = this.jdField_a_of_type_Bkho.a.findViewById(1);
-    if (localView == null) {}
-    for (localView = null;; localView = localView.findViewById(2131361970))
+    int i = 1;
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (localView != null)
-      {
-        localView = azlk.a(this.jdField_a_of_type_Azlk, localView, 5, 5, 7, 5);
-        new RedTouch(azlk.e(this.jdField_a_of_type_Azlk), localView).a(53).a().a(bghy.a());
+      azir.a("0X800AF41", 2, String.valueOf(this.jdField_a_of_type_Azlq.jdField_a_of_type_Int));
+      if (this.jdField_a_of_type_Azlq.jdField_a_of_type_Int != 1) {
+        break label84;
       }
-      this.jdField_a_of_type_Bkho.a(null);
+    }
+    for (;;)
+    {
+      StatusVisibleFragment.a(this.jdField_a_of_type_Azlq.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azlq.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem, i, 999);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      azir.a("0X800AF41", 1, String.valueOf(this.jdField_a_of_type_Azlq.jdField_a_of_type_Int));
+      break;
+      label84:
+      if (this.jdField_a_of_type_Azlq.jdField_a_of_type_Int == 2) {
+        i = 3;
+      } else {
+        i = 0;
+      }
     }
   }
 }

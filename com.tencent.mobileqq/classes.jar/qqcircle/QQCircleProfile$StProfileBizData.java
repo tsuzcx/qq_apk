@@ -11,10 +11,11 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class QQCircleProfile$StProfileBizData
   extends MessageMicro<StProfileBizData>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "followText", "groupIDList", "bindGroupStatus", "interFollowList" }, new Object[] { "", Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, StProfileBizData.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "followText", "groupIDList", "bindGroupStatus", "interFollowList", "interFollowInfo" }, new Object[] { "", Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), null }, StProfileBizData.class);
   public final PBInt32Field bindGroupStatus = PBField.initInt32(0);
   public final PBStringField followText = PBField.initString("");
   public final PBRepeatField<Long> groupIDList = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public QQCircleProfile.StInterFollowInfo interFollowInfo = new QQCircleProfile.StInterFollowInfo();
   public final PBRepeatField<Long> interFollowList = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
 }
 

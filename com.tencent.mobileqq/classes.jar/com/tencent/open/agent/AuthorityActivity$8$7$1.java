@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bijj;
+import bjki;
 
 class AuthorityActivity$8$7$1
   implements Runnable

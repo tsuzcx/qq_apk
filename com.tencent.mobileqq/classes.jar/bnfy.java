@@ -1,8 +1,51 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-public abstract interface bnfy
+public class bnfy
+  extends QzoneExternalRequest
 {
-  public abstract void a(boolean paramBoolean, LocalMediaInfo paramLocalMediaInfo);
+  private JceStruct a;
+  
+  public bnfy(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
+  {
+    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
+    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
+    this.a = localMobileQbossReportReq;
+  }
+  
+  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
+    }
+    MobileQbossReportRsp localMobileQbossReportRsp;
+    do
+    {
+      return paramArrayOfByte;
+      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
+      paramArrayOfByte = localMobileQbossReportRsp;
+    } while (localMobileQbossReportRsp != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.mobileqboss.report";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "report";
+  }
 }
 
 

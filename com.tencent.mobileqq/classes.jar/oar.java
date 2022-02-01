@@ -1,39 +1,60 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountMenuBar;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class oar
-  implements bkhw
+  implements View.OnClickListener
 {
-  public oar(PublicAccountMenuBar paramPublicAccountMenuBar, List paramList, bkho parambkho) {}
+  public oar(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    switch (paramView.getId())
     {
-      if (PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar)) {
-        return;
-      }
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, true);
-      if (paramInt == 0)
+    default: 
+      onClick(paramView);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str;
+      if (!this.a.mUIStyleHandler.a.a)
       {
-        PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
-        return;
+        str = this.a.mSwiftTitleUI.c.getText().toString();
+        this.a.webView.loadUrl("javascript:onRightBtn(\"" + str + "\")");
+      }
+      else if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
+      {
+        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
+        this.a.getActivity().finish();
+      }
+      else
+      {
+        onClick(paramView);
+        continue;
+        if (!this.a.mUIStyleHandler.a.a)
+        {
+          str = this.a.mSwiftTitleUI.a.getText().toString();
+          if (str.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText"))) {
+            this.a.doOnBackEvent();
+          } else {
+            this.a.webView.loadUrl("javascript:onLeftBtn(\"" + str + "\")");
+          }
+        }
+        else
+        {
+          onClick(paramView);
+        }
       }
     }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-      return;
-    }
-    paramView = (aaum)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
-    if (paramView == null)
-    {
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
-      return;
-    }
-    PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, paramView);
-    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 

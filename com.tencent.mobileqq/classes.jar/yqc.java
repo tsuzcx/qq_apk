@@ -1,6 +1,9 @@
-public abstract interface yqc
+public abstract class yqc
+  extends ypy
+  implements yqg, yqh
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public yqd a;
+  protected yqe a;
 }
 
 

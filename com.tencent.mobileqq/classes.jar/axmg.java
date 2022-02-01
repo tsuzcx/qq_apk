@@ -1,25 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class axmg
-  implements bkhw
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public axmg(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bkho parambkho) {}
+  public axmg(TabPageIndicator paramTabPageIndicator) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bkho != null) {
-        this.jdField_a_of_type_Bkho.dismiss();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    if (TabPageIndicator.a(this.a) != null) {
+      this.a.performClick();
     }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

@@ -1,28 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimBridgeActivity;
 
-class bmnt
-  extends BroadcastReceiver
+public class bmnt
+  implements bmob
 {
-  bmnt(bmns parambmns) {}
+  public bmnt(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    try
-    {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(bmnu.a, 2, "QQPimBridgeActivity.hasInstalled()");
     }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(bmnu.a, 2, "QQPimBridgeActivity.downloadError()");
     }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.arg1 = paramInt;
+    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
   }
 }
 

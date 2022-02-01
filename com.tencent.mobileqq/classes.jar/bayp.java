@@ -1,30 +1,31 @@
-import android.text.TextUtils;
-import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bayp
-  implements bkhw
+public class bayp
+  implements agvc
 {
-  bayp(bayi parambayi, bkho parambkho) {}
+  private QQAppInterface a;
   
-  public void OnClick(View paramView, int paramInt)
+  public bayp(BaseChatPie paramBaseChatPie)
   {
-    if (paramView == null)
+    this.a = paramBaseChatPie.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
     }
-    paramView = this.jdField_a_of_type_Bkho.a(paramInt);
-    if (paramView == null)
+    do
     {
-      this.jdField_a_of_type_Bkho.dismiss();
       return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    }
-    this.jdField_a_of_type_Bkho.dismiss();
+    } while (this.a == null);
+    ((bayq)this.a.getManager(312)).onDestroy();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 10 };
   }
 }
 

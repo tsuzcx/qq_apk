@@ -1,40 +1,34 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aefz
-  extends anif
+  implements npn
 {
-  public aefz(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aefz(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a() {}
+  
+  public void a(ArrayList<TroopAppInfo> paramArrayList)
   {
-    if (paramInt2 == 0)
+    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    do
     {
-      this.a.a();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
-    }
-    label47:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, anni.a(2131703629), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, anni.a(2131703628), 0).a();
       return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694156);
-    }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
+      ArrayList localArrayList = new ArrayList();
+      axfw localaxfw = (axfw)this.a.app.getManager(37);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
+        localaxfw.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
+        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
+      }
+      localaxfw.a(this.a.a.troopUin, localArrayList);
+    } while (this.a.i);
   }
 }
 

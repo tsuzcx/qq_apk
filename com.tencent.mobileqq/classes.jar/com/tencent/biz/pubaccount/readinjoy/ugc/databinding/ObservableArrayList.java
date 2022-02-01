@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.databinding;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import rnl;
-import rno;
-import rnp;
+import reg;
+import rej;
+import rek;
 
 public class ObservableArrayList<T>
   extends ArrayList<T>
-  implements rno<T>
+  implements rej<T>
 {
-  private transient rnl a = new rnl();
+  private transient reg a = new reg();
   
   private void a(int paramInt1, int paramInt2)
   {
@@ -58,12 +58,12 @@ public class ObservableArrayList<T>
     return bool;
   }
   
-  public void addOnListChangedCallback(rnp paramrnp)
+  public void addOnListChangedCallback(rek paramrek)
   {
     if (this.a == null) {
-      this.a = new rnl();
+      this.a = new reg();
     }
-    this.a.a(paramrnp);
+    this.a.a(paramrek);
   }
   
   public void clear()
@@ -93,10 +93,10 @@ public class ObservableArrayList<T>
     return false;
   }
   
-  public void removeOnListChangedCallback(rnp paramrnp)
+  public void removeOnListChangedCallback(rek paramrek)
   {
     if (this.a != null) {
-      this.a.b(paramrnp);
+      this.a.b(paramrek);
     }
   }
   

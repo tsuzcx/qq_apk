@@ -1,36 +1,34 @@
-import androidx.annotation.NonNull;
-import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+import java.util.List;
+import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
 
-public class myp
-  extends myl
+public abstract interface myp
+  extends Cloneable
 {
-  protected myl a()
-  {
-    return new myp();
-  }
+  public abstract int a();
   
-  public void a(myl parammyl)
-  {
-    super.a(parammyl);
-  }
+  public abstract long a();
   
-  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
-  {
-    super.a(paramCommonQuestionInfo);
-  }
+  public abstract String a();
   
-  public int b()
-  {
-    return 5;
-  }
+  public abstract List<? extends myp> a();
   
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
-    return localStringBuilder.toString();
-  }
+  public abstract myp a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(myp parammyp);
+  
+  public abstract String[] a();
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract int c();
 }
 
 

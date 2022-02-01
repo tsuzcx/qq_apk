@@ -1,60 +1,22 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.List;
 
 public class bfyk
-  extends BaseAdapter
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public int a;
+  public long a;
+  public String a;
+  public List<Long> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
   
-  public bfyk(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
+  public String toString()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-    }
-    for (;;)
-    {
-      String str = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
-      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
-      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
-      localWheelTextView.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.jdField_d_of_type_JavaLangString + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_d_of_type_Long + '}';
   }
 }
 

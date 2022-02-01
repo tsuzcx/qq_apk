@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bclx;
+import bdep;
 import com.tencent.qphone.base.util.QLog;
 
 public class PttTextTransitionAnim
@@ -53,16 +53,16 @@ public class PttTextTransitionAnim
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166975));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bclx.a(16.0F));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166979));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bdep.a(16.0F));
     this.jdField_d_of_type_Int = 255;
     this.jdField_e_of_type_Int = 0;
     this.jdField_e_of_type_Float = 0.0F;
     this.jdField_f_of_type_Float = 0.0F;
     this.jdField_g_of_type_Float = 0.0F;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689920);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689922);
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131697664);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689927);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689929);
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131697748);
     this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
     this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_b_of_type_JavaLangString);
     this.jdField_d_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_c_of_type_JavaLangString);

@@ -1,22 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.OpenSelectPermissionFragment;
-import com.tencent.open.agent.OpenSelectPermissionFragment.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 
-public class bino
-  extends bior
+class bino
+  implements Animation.AnimationListener
 {
-  public bino(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
+  bino(binn parambinn, View paramView) {}
   
-  public void a(boolean paramBoolean, int paramInt, bios parambios)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("SDK_LOGIN.OpenSelectPermissionFragment", 1, "onDoAuthorize activity is null");
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new OpenSelectPermissionFragment.4.1(this, paramBoolean, parambios, paramInt));
+    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimation.leftMargin = this.jdField_a_of_type_Binn.e;
+    paramAnimation.topMargin = this.jdField_a_of_type_Binn.f;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Binn.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

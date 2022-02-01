@@ -1,9 +1,14 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public final class wwb
-  extends weu
+class wwb
+  implements xiv
 {
-  public List<wqp> a;
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
+  }
 }
 
 

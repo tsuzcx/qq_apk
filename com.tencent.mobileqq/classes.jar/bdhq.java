@@ -1,24 +1,21 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.startup.step.BroadcastReportRegister;
+import mqq.app.AppCallback;
 
-final class bdhq
-  implements DialogInterface.OnClickListener
+public class bdhq
+  implements AppCallback
 {
-  bdhq(Context paramContext, String paramString) {}
+  public bdhq(BroadcastReportRegister paramBroadcastReportRegister) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSendBroadcast(Context paramContext, Intent paramIntent)
   {
     try
     {
-      atvo.c(this.jdField_a_of_type_AndroidContentContext, arag.a().a());
+      aqjg.a(paramIntent);
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
-    }
+    catch (Throwable paramContext) {}
   }
 }
 

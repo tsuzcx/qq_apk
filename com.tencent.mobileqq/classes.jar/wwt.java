@@ -1,82 +1,87 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wwt
-  extends SimpleJob<Void>
+public class wwt
+  extends wpa<wwu>
 {
-  wwt(wws paramwws, String paramString)
+  static final String jdField_a_of_type_JavaLangString = wnu.a("StorySvc.get_tab_node_vid_list");
+  wvn jdField_a_of_type_Wvn;
+  String b = "";
+  String c = "";
+  
+  public wwt(wvn paramwvn, String paramString1, String paramString2)
   {
-    super(paramString);
+    this.jdField_a_of_type_Wvn = paramwvn;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static wwu a(wvn paramwvn, byte[] paramArrayOfByte)
   {
-    paramJobContext = this.a.a.icon_info.get();
-    HashMap localHashMap = new HashMap();
-    wpy localwpy = (wpy)wpm.a(2);
-    Iterator localIterator = paramJobContext.iterator();
-    String str;
-    QQUserUIItem localQQUserUIItem;
-    for (;;)
+    qqstory_service.RspMsgTabNodeVideoList localRspMsgTabNodeVideoList = new qqstory_service.RspMsgTabNodeVideoList();
+    if (paramArrayOfByte != null) {}
+    try
     {
-      if (localIterator.hasNext())
-      {
-        paramJobContext = (qqstory_struct.IconInfo)localIterator.next();
-        str = paramJobContext.union_id.get().toStringUtf8();
-        localQQUserUIItem = localwpy.b(str);
-        if (localQQUserUIItem != null) {
-          if ((paramJobContext.err_code.get() == 0) && (paramJobContext.usr_icon_list.has()) && (paramJobContext.usr_icon_list.size() > 0))
-          {
-            paramVarArgs = (qqstory_struct.UsrIcon)paramJobContext.usr_icon_list.get(0);
-            paramJobContext = paramVarArgs.icon_postfix.get().toStringUtf8();
-            paramVarArgs = paramVarArgs.jmp_postfix.get().toStringUtf8();
-            if (TextUtils.isEmpty(paramJobContext)) {
-              break label309;
-            }
-            paramJobContext = "https://pub.idqqimg.com/pc/misc/qqstory_icon/" + paramJobContext;
-          }
-        }
-      }
+      localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);
+      return new wwu(paramwvn, localRspMsgTabNodeVideoList, paramArrayOfByte);
     }
-    label309:
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramwvn)
     {
-      if (!TextUtils.isEmpty(paramVarArgs)) {
-        paramVarArgs = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + paramVarArgs;
-      }
-      for (;;)
-      {
-        localHashMap.put(str, new String[] { paramJobContext, paramVarArgs });
-        localQQUserUIItem.setUserIcon(paramJobContext, paramVarArgs);
-        for (;;)
-        {
-          localQQUserUIItem.iconUrlCacheTime = System.currentTimeMillis();
-          localwpy.a(localQQUserUIItem);
-          break;
-          localHashMap.put(str, new String[] { "", "" });
-          localQQUserUIItem.setUserIcon("", "");
-        }
-        paramJobContext = new wwu();
-        paramJobContext.a = localHashMap;
-        wfo.a().dispatch(paramJobContext);
-        return null;
-      }
+      yuk.d("Q.qqstory:ReqMsgTabNodeVideoList", "" + paramwvn);
     }
+    return null;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wwu a(byte[] paramArrayOfByte)
+  {
+    return a(this.jdField_a_of_type_Wvn, paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeVideoList localReqMsgTabNodeVideoList = new qqstory_service.ReqMsgTabNodeVideoList();
+    localReqMsgTabNodeVideoList.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wvn.jdField_a_of_type_JavaLangString));
+    localReqMsgTabNodeVideoList.req_time_stamp.set(this.jdField_a_of_type_Wvn.c);
+    localReqMsgTabNodeVideoList.node_type.set(this.jdField_a_of_type_Wvn.jdField_a_of_type_Int);
+    localReqMsgTabNodeVideoList.recommend_id.set(this.jdField_a_of_type_Wvn.e);
+    localReqMsgTabNodeVideoList.source.set(this.jdField_a_of_type_Wvn.f);
+    if (this.jdField_a_of_type_Wvn.jdField_a_of_type_Int == 12)
+    {
+      if ((TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c))) {
+        localReqMsgTabNodeVideoList.start_vid.set(this.c);
+      }
+      if (!TextUtils.isEmpty(this.b)) {
+        localReqMsgTabNodeVideoList.cookie.set(this.b);
+      }
+      localReqMsgTabNodeVideoList.page_size.set(20);
+    }
+    Long localLong = zos.a();
+    if (localLong != null) {
+      localReqMsgTabNodeVideoList.adcode.set(localLong.longValue());
+    }
+    localReqMsgTabNodeVideoList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Wvn.k)) {
+      localReqMsgTabNodeVideoList.passthrough.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wvn.k));
+    }
+    return localReqMsgTabNodeVideoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeVidListRequest{nodeInfo.unionId=" + this.jdField_a_of_type_Wvn.jdField_a_of_type_JavaLangString + ", mCookie='" + this.b + '\'' + ", mStartVid='" + this.c + '\'' + "} " + super.toString();
   }
 }
 

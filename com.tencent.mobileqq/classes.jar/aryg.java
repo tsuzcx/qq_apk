@@ -1,43 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
+import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
 
-class aryg
-  extends arrx<CustomEmotionData>
+public final class aryg
+  implements ExternalProvider
 {
-  aryg(aryf paramaryf) {}
-  
-  public void a()
+  public void onSoLoad(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "upload_finish");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "download_finish");
-    }
-    this.a.b();
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    this.a.b();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "roaming_finish");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a != null) {
-      ((arrp)this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.getManager(103)).b(this.a.jdField_a_of_type_Arrx);
-    }
-    this.a.b();
+    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aeos;
-import afaz;
-import afba;
-import afbb;
-import afbc;
-import afbd;
-import afbe;
+import aexv;
+import afkc;
+import afkd;
+import afke;
+import afkf;
+import afkg;
+import afkh;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -32,12 +32,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import anni;
-import anrj;
-import baim;
-import bcst;
-import bgpa;
-import bhix;
+import anzj;
+import aodp;
+import bbbc;
+import bdll;
+import bhpc;
+import bijm;
 import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.ConfigClearableEditText;
@@ -49,56 +49,56 @@ public class RegisterPhoneNumActivity
   extends RegisterNewBaseActivity
   implements TextWatcher, View.OnClickListener
 {
-  public aeos a;
+  public aexv a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private baim jdField_a_of_type_Baim;
+  private bbbc jdField_a_of_type_Bbbc;
   private ConfigClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new afba(this);
-  private boolean jdField_a_of_type_Boolean = true;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new afkd(this);
   private TextView b;
-  private TextView c;
-  private String jdField_d_of_type_JavaLangString = anni.a(2131712114);
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String jdField_d_of_type_JavaLangString = anzj.a(2131712223);
   private boolean jdField_d_of_type_Boolean;
   
   @TargetApi(11)
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364455));
-    c(2131715732);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364500));
+    c(2131715841);
     b();
     a(33);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380105));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380290));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131715802) + getString(2131690962));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380086));
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131715911) + getString(2131690962));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380271));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131715759) + getString(2131690962));
-    this.c = ((TextView)findViewById(2131380059));
-    this.c.setText("+" + this.jdField_b_of_type_JavaLangString);
-    this.c.setOnClickListener(this);
-    a(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131371890));
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131715868) + getString(2131690962));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380244));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText("+" + this.jdField_b_of_type_JavaLangString);
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    a(this.jdField_c_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131372003));
     this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.addTextChangedListener(this);
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363842));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363866));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   private void a(View paramView)
   {
-    paramView.setOnTouchListener(new afbb(this));
+    paramView.setOnTouchListener(new afke(this));
   }
   
   private void a(EditText paramEditText)
   {
     if (Build.VERSION.SDK_INT >= 11)
     {
-      paramEditText.setCustomSelectionActionModeCallback(new afbc(this));
+      paramEditText.setCustomSelectionActionModeCallback(new afkf(this));
       return;
     }
-    paramEditText.setOnCreateContextMenuListener(new afbd(this));
+    paramEditText.setOnCreateContextMenuListener(new afkg(this));
   }
   
   private static final boolean a(Context paramContext)
@@ -145,7 +145,7 @@ public class RegisterPhoneNumActivity
     try
     {
       String str = this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.getText().toString();
-      str = this.jdField_a_of_type_Baim.a(str);
+      str = this.jdField_a_of_type_Bbbc.a(str);
       if (str != null) {
         i = 1;
       }
@@ -194,13 +194,13 @@ public class RegisterPhoneNumActivity
     {
       this.jdField_d_of_type_JavaLangString = paramIntent.getStringExtra("k_name");
       this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("k_code");
-      this.c.setText("+" + this.jdField_b_of_type_JavaLangString);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText("+" + this.jdField_b_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(b());
     }
     while ((paramInt1 != 2) || (paramInt2 != -1)) {
       return;
     }
-    this.jdField_a_of_type_Baim.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Bbbc.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -209,7 +209,7 @@ public class RegisterPhoneNumActivity
       getWindow().setSoftInputMode(2);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131561904);
+    setContentView(2131561945);
     if (this.app == null)
     {
       paramBundle = getAppRuntime();
@@ -224,32 +224,32 @@ public class RegisterPhoneNumActivity
       return true;
     }
     if (QLog.isDevelopLevel()) {
-      bhix.a(getClass().getSimpleName(), getIntent());
+      bijm.a(getClass().getSimpleName(), getIntent());
     }
-    this.jdField_a_of_type_Baim = new baim(this);
+    this.jdField_a_of_type_Bbbc = new bbbc(this);
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-    this.jdField_a_of_type_Baim.a(getApplicationContext());
+    this.jdField_a_of_type_Bbbc.a(getApplicationContext());
     a();
-    bcst.b(this.app, "CliOper", "", "", "0X8006650", "0X8006650", 0, 0, "", "", "", "");
-    bcst.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
-    bcst.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", getIntent().getIntExtra("key_report_extra_from", 0), 0, "", "", "", "");
-    if (this.jdField_b_of_type_Int == -1) {
-      bcst.a(this.app, "new_reg_805", "reg_page", "page_exp", "", 1, "", "4", "", "", "", "", "", "", "");
+    bdll.b(this.app, "CliOper", "", "", "0X8006650", "0X8006650", 0, 0, "", "", "", "");
+    bdll.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
+    bdll.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", getIntent().getIntExtra("key_report_extra_from", 0), 0, "", "", "", "");
+    if (this.jdField_a_of_type_Int == -1) {
+      bdll.a(this.app, "new_reg_805", "reg_page", "page_exp", "", 1, "", "4", "", "", "", "", "", "", "");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aeos = new aeos();
-      paramBundle = new afaz(this);
-      this.jdField_a_of_type_Aeos.a(paramBundle);
+      this.jdField_a_of_type_Aexv = new aexv();
+      paramBundle = new afkc(this);
+      this.jdField_a_of_type_Aexv.a(paramBundle);
       return true;
-      bcst.a(this.app, "new_reg_805", "reg_page", "page_exp", "", 1, "", Integer.toString(this.jdField_b_of_type_Int), "", "", "", "", "", "", "");
+      bdll.a(this.app, "new_reg_805", "reg_page", "page_exp", "", 1, "", Integer.toString(this.jdField_a_of_type_Int), "", "", "", "", "", "", "");
     }
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Baim.a();
+    this.jdField_a_of_type_Bbbc.a();
     this.app.removeHandler(getClass());
     ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.getParent();
     if (localViewGroup != null) {
@@ -284,14 +284,14 @@ public class RegisterPhoneNumActivity
       ((Intent)localObject).putExtra("k_name", this.jdField_d_of_type_JavaLangString);
       startActivityForResult((Intent)localObject, 1);
       continue;
-      bcst.b(this.app, "CliOper", "", "", "0X8006651", "0X8006651", 0, 0, "", "", "", "");
-      bcst.a(this.app, "dc00898", "", "", "0X8007CC7", "0X8007CC7", 0, 0, "", "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X8006651", "0X8006651", 0, 0, "", "", "", "");
+      bdll.a(this.app, "dc00898", "", "", "0X8007CC7", "0X8007CC7", 0, 0, "", "", "", "");
       localObject = this.app;
-      if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (this.jdField_d_of_type_JavaLangString.equals(getString(2131715713)))) {}
+      if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (this.jdField_d_of_type_JavaLangString.equals(getString(2131715822)))) {}
       for (i = 1;; i = 2)
       {
-        bcst.a((QQAppInterface)localObject, "dc00898", "", "", "0X8007CC7", "0X8007CC7", i, 0, "", "", "", "");
-        bcst.a(this.app, "new_reg_805", "reg_page", "next_clk", "", 1, "", "", "", "", "", "", "", "", "");
+        bdll.a((QQAppInterface)localObject, "dc00898", "", "", "0X8007CC7", "0X8007CC7", i, 0, "", "", "", "");
+        bdll.a(this.app, "new_reg_805", "reg_page", "next_clk", "", 1, "", "", "", "", "", "", "", "", "");
         if (a()) {
           break label314;
         }
@@ -301,24 +301,24 @@ public class RegisterPhoneNumActivity
       label314:
       if (this.jdField_d_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Aeos.a(this, false)) {
-          this.jdField_a_of_type_Baim.b();
+        if (this.jdField_a_of_type_Aexv.a(this, false)) {
+          this.jdField_a_of_type_Bbbc.b();
         }
       }
       else
       {
-        localObject = new afbe(this, this);
-        anrj.a(this, "", (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject).show();
+        localObject = new afkh(this, this);
+        aodp.a(this, "", (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject).show();
         continue;
-        if (this.jdField_a_of_type_Boolean)
+        if (this.jdField_c_of_type_Boolean)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.jdField_c_of_type_Boolean = false;
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(new RegisterPhoneNumActivity.7(this), 1000L);
           for (;;)
           {
             try
             {
-              if (paramView.getId() != 2131380105) {
+              if (paramView.getId() != 2131380290) {
                 continue;
               }
               localObject = "https://ti.qq.com/agreement/index.html";
@@ -329,16 +329,16 @@ public class RegisterPhoneNumActivity
               QLog.d("RegisterPhoneNumActivity", 1, "no system browser exp=", localException);
               continue;
             }
-            if (i != 2131380105) {
+            if (i != 2131380290) {
               break label507;
             }
-            bcst.a(this.app, "new_reg_805", "reg_page", "terms_clk", "", 1, "", "", "", "", "", "", "", "", "");
+            bdll.a(this.app, "new_reg_805", "reg_page", "terms_clk", "", 1, "", "", "", "", "", "", "", "", "");
             break;
             localObject = "https://ti.qq.com/agreement/privacy/index.html";
           }
           label507:
-          if (i == 2131380086) {
-            bcst.a(this.app, "new_reg_805", "reg_page", "privacy_clk", "", 1, "", "", "", "", "", "", "", "", "");
+          if (i == 2131380271) {
+            bdll.a(this.app, "new_reg_805", "reg_page", "privacy_clk", "", 1, "", "", "", "", "", "", "", "", "");
           }
         }
       }

@@ -1,11 +1,11 @@
 package com.tencent.mm.hardcoder;
 
-import addy;
+import admw;
 
 public class HardCoderManager$2
   implements Runnable
 {
-  public HardCoderManager$2(addy paramaddy) {}
+  public HardCoderManager$2(admw paramadmw) {}
   
   public void run()
   {

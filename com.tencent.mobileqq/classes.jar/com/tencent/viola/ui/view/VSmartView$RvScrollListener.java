@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import com.tencent.viola.ui.view.list.VRecyclerView;
 import java.util.List;
 
 class VSmartView$RvScrollListener
@@ -15,9 +16,9 @@ class VSmartView$RvScrollListener
   private void scrollOtherRV(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (i < VSmartView.access$200(this.this$0).size())
+    if (i < VSmartView.access$300(this.this$0).size())
     {
-      VSmartView.RecyclerViewWrapper localRecyclerViewWrapper = (VSmartView.RecyclerViewWrapper)VSmartView.access$200(this.this$0).get(i);
+      VSmartView.RecyclerViewWrapper localRecyclerViewWrapper = (VSmartView.RecyclerViewWrapper)VSmartView.access$300(this.this$0).get(i);
       if (localRecyclerViewWrapper.recyclerView == paramRecyclerView) {}
       for (;;)
       {
@@ -30,7 +31,7 @@ class VSmartView$RvScrollListener
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (VSmartView.access$300(this.this$0) == null) {}
+    if (VSmartView.access$500(this.this$0) == null) {}
     Object localObject;
     do
     {
@@ -49,27 +50,27 @@ class VSmartView$RvScrollListener
             if (paramInt2 <= 0) {
               break;
             }
-            f3 = VSmartView.access$400(this.this$0);
-          } while (VSmartView.access$300(this.this$0).getTranslationY() <= -f3);
-          f2 = VSmartView.access$300(this.this$0).getTranslationY() + -paramInt2;
+            f3 = VSmartView.access$600(this.this$0);
+          } while (VSmartView.access$500(this.this$0).getTranslationY() <= -f3);
+          f2 = VSmartView.access$500(this.this$0).getTranslationY() + -paramInt2;
           f1 = f2;
           if (f2 < -f3) {
             f1 = -f3;
           }
-          VSmartView.access$300(this.this$0).setTranslationY(f1);
+          VSmartView.access$500(this.this$0).setTranslationY(f1);
           scrollOtherRV(paramRecyclerView, paramInt1, paramInt2);
           return;
         } while (!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager));
         localObject = paramRecyclerView.findViewHolderForAdapterPosition(1);
       } while (localObject == null);
       localObject = ((RecyclerView.ViewHolder)localObject).itemView;
-    } while ((localObject == null) || (((View)localObject).getTop() <= VSmartView.access$300(this.this$0).getHeight() + VSmartView.access$300(this.this$0).getTranslationY()));
-    float f2 = -paramInt2 + VSmartView.access$300(this.this$0).getTranslationY();
+    } while ((localObject == null) || (((View)localObject).getTop() <= VSmartView.access$500(this.this$0).getHeight() + VSmartView.access$500(this.this$0).getTranslationY()));
+    float f2 = -paramInt2 + VSmartView.access$500(this.this$0).getTranslationY();
     float f1 = f2;
     if (f2 > 0.0F) {
       f1 = 0.0F;
     }
-    VSmartView.access$300(this.this$0).setTranslationY(f1);
+    VSmartView.access$500(this.this$0).setTranslationY(f1);
     scrollOtherRV(paramRecyclerView, paramInt1, paramInt2);
   }
 }

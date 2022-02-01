@@ -1,18 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class agyu
-  extends ahbl
+  extends aggl
 {
-  agyu(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new ahbv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  agyu(agyt paramagyt) {}
 }
 
 

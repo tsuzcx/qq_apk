@@ -1,24 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.ae.view.AECircleCaptureProgressView;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import java.util.List;
 
-public class bqcg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bqcg
+  extends bqgj
 {
-  public bqcg(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  public abstract int a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (!AEPituCameraCaptureButtonLayout.a(this.a))
-    {
-      this.a.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setCenterScaleValue(f);
-      return;
-    }
-    this.a.jdField_a_of_type_DovComQqImAeViewAECircleCaptureProgressView.setCenterScaleValue(f);
-  }
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(List<Long> paramList);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract boolean n_();
 }
 
 

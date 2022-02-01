@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import anjx;
+import anvu;
 import com.tencent.litetransfersdk.Session;
 
 public class DataLineHandler$12
   implements Runnable
 {
-  public DataLineHandler$12(anjx paramanjx, long paramLong) {}
+  public DataLineHandler$12(anvu paramanvu, long paramLong) {}
   
   public void run()
   {
     Session localSession = this.this$0.a(this.a);
-    anjx.a(this.this$0, localSession, null, null, true);
+    anvu.a(this.this$0, localSession, null, null, true);
   }
 }
 

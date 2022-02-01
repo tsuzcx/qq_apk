@@ -1,18 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qphone.base.util.QLog;
 
-public class atyb
-  implements DialogInterface.OnClickListener
+class atyb
+  extends atxd
 {
-  public atyb(SendBottomBar paramSendBottomBar) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atyb(atwy paramatwy)
   {
-    if (paramInt == 1) {
-      this.a.c();
+    super(paramatwy);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSendWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    paramDialogInterface.dismiss();
+    atwy.b(this.jdField_a_of_type_Atwy, 11, 8);
+    atwy.c(this.jdField_a_of_type_Atwy, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Atxd = new atya(this.jdField_a_of_type_Atwy);
   }
 }
 

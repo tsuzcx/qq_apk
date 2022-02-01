@@ -1,14 +1,10 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
-
-final class bjeu
-  implements FilenameFilter
+public abstract interface bjeu
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
-  }
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.gdtad.jsbridge;
 
-import acly;
-import acqg;
+import acqa;
+import acuj;
 
 public class GdtInterstitialFragmentForJS$3$1
   implements Runnable
 {
-  public GdtInterstitialFragmentForJS$3$1(acqg paramacqg) {}
+  public GdtInterstitialFragmentForJS$3$1(acuj paramacuj) {}
   
   public void run()
   {

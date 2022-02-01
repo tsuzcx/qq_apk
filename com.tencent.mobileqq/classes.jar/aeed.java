@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aeed
-  implements arvb
+  implements DialogInterface.OnClickListener
 {
-  public aeed(EmosmActivity paramEmosmActivity) {}
+  public aeed(ChatHistoryFileActivity paramChatHistoryFileActivity, aeef paramaeef) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
-        return;
-      }
-      i += 1;
-    }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_Aeef.a(true);
   }
 }
 

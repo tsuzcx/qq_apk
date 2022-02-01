@@ -1,114 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.1;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.2;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.3;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhh
+  extends adic
 {
-  public static int a(int paramInt)
+  public int a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return 7;
-    case 2: 
-      return 0;
-    case 3: 
-      return 9;
-    case 4: 
-      return 11;
-    case 5: 
-      return 12;
-    case 6: 
-      return 13;
-    }
-    return 14;
+    return 1000;
   }
   
-  public static String a(int paramInt)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return "android";
-    case 2: 
-      return "ark";
-    case 5: 
-      return "limi";
-    case 3: 
-      return "mini_game";
-    case 4: 
-      return "mini_app";
-    case 6: 
-      return "qqpay";
-    }
-    return "web";
+    new bcrt().b(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
+    return true;
   }
   
-  public static String a(String paramString)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoraemonOpenAPI.util", 2, "url is empty");
-      }
-    }
-    do
-    {
-      return null;
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DoraemonOpenAPI.util", 2, "scheme not match " + paramString);
-    return null;
-    int i = paramString.indexOf('?');
-    int j = paramString.indexOf('#');
-    if (i == -1)
-    {
-      i = j;
-      if (j == -1) {
-        i = paramString.length();
-      }
-    }
-    for (;;)
-    {
-      return paramString.substring(0, i);
-      if (j != -1) {
-        i = Math.min(i, j);
-      }
-    }
-  }
-  
-  public static void a(adea paramadea, int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.4(paramadea, paramInt));
-  }
-  
-  public static void a(adea paramadea, int paramInt, String paramString)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.2(paramadea, paramInt, paramString));
-  }
-  
-  public static void a(adea paramadea, JSONObject paramJSONObject)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.1(paramadea, paramJSONObject));
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.sProcessId == 1;
-  }
-  
-  public static void b(adea paramadea, JSONObject paramJSONObject)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.3(paramadea, paramJSONObject));
+    return (paramElem.common_elem.has()) && (3 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

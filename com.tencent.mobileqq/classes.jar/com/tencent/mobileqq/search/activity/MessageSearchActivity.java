@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anni;
+import anzj;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,7 +27,7 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return anni.a(2131705445);
+    return anzj.a(2131705552);
   }
   
   @Override

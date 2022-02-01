@@ -1,59 +1,195 @@
-import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.math.BigInteger;
+import org.jetbrains.annotations.NotNull;
 
 public class ons
-  extends onq
 {
-  public ons(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
+  private int jdField_a_of_type_Int;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString;
+  private String g;
+  private String h;
+  private String i;
+  
+  public int a()
   {
-    super(paramBaseData, paramWeakReference, localWeakReference);
+    return this.jdField_a_of_type_Int;
   }
   
-  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  public long a()
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new ont(this, paramContext));
-  }
-  
-  protected void a(Container paramContainer, ProteusItemData paramProteusItemData)
-  {
-    super.a(paramContainer, paramProteusItemData);
-    if (paramContainer != null)
-    {
-      ViewBase localViewBase1 = paramContainer.getVirtualView();
-      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (opz.a((AdData)paramProteusItemData)))
-      {
-        ViewBase localViewBase2 = localViewBase1.findViewBaseByName("id_inner_small_img");
-        if (((localViewBase2 instanceof qkl)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.k))) {
-          opz.a(paramContainer.getContext(), localViewBase2, ((AdData)paramProteusItemData).a.k, 10);
-        }
-        localViewBase2 = localViewBase1.findViewBaseByName("id_inner_game_img1");
-        if (((localViewBase2 instanceof qkl)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.d))) {
-          opz.a(paramContainer.getContext(), localViewBase2, ((AdData)paramProteusItemData).a.a.d, 10);
-        }
-        localViewBase2 = localViewBase1.findViewBaseByName("id_inner_game_img2");
-        if (((localViewBase2 instanceof qkl)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.e))) {
-          opz.a(paramContainer.getContext(), localViewBase2, ((AdData)paramProteusItemData).a.a.e, 10);
-        }
-        localViewBase1 = localViewBase1.findViewBaseByName("id_inner_game_img3");
-        if (((localViewBase1 instanceof qkl)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.f))) {
-          opz.a(paramContainer.getContext(), localViewBase1, ((AdData)paramProteusItemData).a.a.f, 10);
-        }
-      }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return new BigInteger(this.jdField_b_of_type_JavaLangString).longValue();
     }
+    return 0L;
   }
   
-  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  public ArticleInfo a()
   {
-    return true;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_f_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public int c()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
+  }
+  
+  public int d()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String d()
+  {
+    return this.g;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public int e()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public String e()
+  {
+    return this.i;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.g = paramString;
+  }
+  
+  public String f()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public String g()
+  {
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public void g(String paramString)
+  {
+    this.i = paramString;
+  }
+  
+  public void h(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public void i(String paramString)
+  {
+    this.jdField_e_of_type_JavaLangString = paramString;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "RIJBiuAndCommentRespData{mResultCode=" + this.jdField_a_of_type_Int + ", mCommentId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mFeedsId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFeedsType=" + this.jdField_b_of_type_Int + ", mCommentString='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mCommentShareUrl='" + this.jdField_f_of_type_JavaLangString + '\'' + ", mCardAvailable=" + this.jdField_c_of_type_Int + ", mCardJumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mCommentBtnUrl='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mArticleInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo + ", mContentSrc=" + this.jdField_d_of_type_Int + ", mCommentType=" + this.jdField_e_of_type_Int + ", mListShowType=" + this.jdField_f_of_type_Int + ", mIsSecondReply=" + this.jdField_a_of_type_Boolean + ", mReplyCommentId='" + this.g + '\'' + ", mReplyUin='" + this.i + '\'' + '}';
   }
 }
 

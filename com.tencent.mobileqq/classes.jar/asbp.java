@@ -1,29 +1,26 @@
-import android.view.View;
-import java.util.ArrayList;
-
 public class asbp
 {
-  private ArrayList<View> a = new ArrayList();
+  public int a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
   
-  public View a()
+  public asbp()
   {
-    if (this.a.size() > 0) {
-      return (View)this.a.remove(0);
-    }
-    return null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void a()
+  public String toString()
   {
-    this.a.clear();
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.a.size() >= 3) {
-      return;
-    }
-    this.a.add(paramView);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enable:").append(this.jdField_a_of_type_Boolean).append(",");
+    localStringBuilder.append("mPlainContent:").append(this.jdField_a_of_type_JavaLangString).append(",");
+    localStringBuilder.append("mHighLightContent:").append(this.b).append(",");
+    localStringBuilder.append("times:").append(this.jdField_a_of_type_Int).append(",");
+    localStringBuilder.append("mJumpLinkUrls:").append(this.c).append(",");
+    return localStringBuilder.toString();
   }
 }
 

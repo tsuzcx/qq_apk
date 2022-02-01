@@ -1,8 +1,10 @@
 public abstract interface xfq
 {
-  public abstract void a();
+  public abstract void a(xhu paramxhu);
   
-  public abstract void b();
+  public abstract void b(xhu paramxhu);
+  
+  public abstract void c(xhu paramxhu);
 }
 
 

@@ -1,8 +1,41 @@
+import java.io.File;
+import java.util.zip.ZipEntry;
+
 class anix
+  implements nog
 {
-  short a = -1;
-  short b = -1;
-  short c = 0;
+  anix(aniw paramaniw, StringBuilder paramStringBuilder, String paramString) {}
+  
+  public boolean a(ZipEntry paramZipEntry)
+  {
+    if (paramZipEntry.isDirectory())
+    {
+      if ((this.jdField_a_of_type_Aniw.a != null) && (this.jdField_a_of_type_Aniw.a.length > 0))
+      {
+        localObject = this.jdField_a_of_type_Aniw.a;
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          int k = localObject[i];
+          if (paramZipEntry.getName().equals(Integer.valueOf(k + File.separatorChar)))
+          {
+            this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" download, ");
+            return false;
+          }
+          i += 1;
+        }
+      }
+      Object localObject = new File(this.jdField_a_of_type_JavaLangString + paramZipEntry.getName());
+      if ((localObject != null) && (((File)localObject).isDirectory()) && (((File)localObject).list().length >= 3))
+      {
+        this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" exist, ");
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" copy, ");
+    }
+    return true;
+  }
 }
 
 

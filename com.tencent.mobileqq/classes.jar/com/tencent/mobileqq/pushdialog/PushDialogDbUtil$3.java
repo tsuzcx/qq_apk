@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pushdialog;
 
 import android.database.sqlite.SQLiteException;
-import azup;
+import banf;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Date;
@@ -9,11 +9,11 @@ import java.util.Date;
 public class PushDialogDbUtil$3
   implements Runnable
 {
-  public PushDialogDbUtil$3(azup paramazup, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
+  public PushDialogDbUtil$3(banf parambanf, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
-    synchronized (azup.a(this.this$0))
+    synchronized (banf.a(this.this$0))
     {
       try
       {

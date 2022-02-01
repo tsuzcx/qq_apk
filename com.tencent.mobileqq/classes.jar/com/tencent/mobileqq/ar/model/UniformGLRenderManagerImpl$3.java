@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.model;
 
 import android.opengl.GLES20;
-import aoty;
-import apew;
+import apho;
+import apsm;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
@@ -12,35 +12,35 @@ import java.util.Map;
 public class UniformGLRenderManagerImpl$3
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$3(apew paramapew) {}
+  public UniformGLRenderManagerImpl$3(apsm paramapsm) {}
   
   public void run()
   {
-    if (apew.a(this.this$0)) {
+    if (apsm.a(this.this$0)) {
       QLog.i("AREngine_UniformGLRenderManagerImpl", 1, "stopModelRender. has been refused");
     }
     do
     {
       return;
-      if (this.this$0.jdField_a_of_type_Aoty != null)
+      if (this.this$0.jdField_a_of_type_Apho != null)
       {
-        this.this$0.jdField_a_of_type_JavaUtilMap.remove(this.this$0.jdField_a_of_type_Aoty.c());
-        this.this$0.jdField_a_of_type_Aoty.f();
-        this.this$0.jdField_a_of_type_Aoty = null;
+        this.this$0.jdField_a_of_type_JavaUtilMap.remove(this.this$0.jdField_a_of_type_Apho.c());
+        this.this$0.jdField_a_of_type_Apho.f();
+        this.this$0.jdField_a_of_type_Apho = null;
       }
-      if (apew.a(this.this$0) != null)
+      if (apsm.a(this.this$0) != null)
       {
-        GLES20.glDeleteTextures(1, new int[] { apew.a(this.this$0).getTexId() }, 0);
-        apew.a(this.this$0).destroy();
-        apew.a(this.this$0, null);
+        GLES20.glDeleteTextures(1, new int[] { apsm.a(this.this$0).getTexId() }, 0);
+        apsm.a(this.this$0).destroy();
+        apsm.a(this.this$0, null);
       }
-      if (apew.a(this.this$0) != null)
+      if (apsm.a(this.this$0) != null)
       {
-        apew.a(this.this$0).release();
-        apew.a(this.this$0, null);
+        apsm.a(this.this$0).release();
+        apsm.a(this.this$0, null);
       }
-    } while (apew.a(this.this$0) == null);
-    apew.a(this.this$0).d();
+    } while (apsm.a(this.this$0) == null);
+    apsm.a(this.this$0).d();
   }
 }
 

@@ -1,28 +1,85 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.lang.reflect.Field;
 
-public class awfl
+class awfl
+  implements HookMethodCallback
 {
-  public int a;
-  public String a;
-  public List<awfo> a = new ArrayList();
-  public int b = -1;
-  public String b;
-  public String c;
-  
-  public int a(int paramInt)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    if (paramMethodHookParam.throwable == null) {}
+    View localView;
+    do
     {
-      awfo localawfo = (awfo)localIterator.next();
-      if ((localawfo.a <= paramInt) && (localawfo.b > paramInt)) {
-        return localawfo.c;
+      return;
+      localView = (View)paramMethodHookParam.args[0];
+    } while (localView == null);
+    Object localObject1 = localView.getContext();
+    Object localObject2 = localObject1;
+    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
+    label295:
+    for (;;)
+    {
+      try
+      {
+        localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
+        ((Field)localObject2).setAccessible(true);
+        localObject2 = ((Field)localObject2).get(localView.getContext());
+        if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
+          break label295;
+        }
+        localObject2 = (Context)localObject2;
+        localObject1 = localObject2;
+        localObject2 = localObject1;
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        bhjx.a(localClassNotFoundException);
+        Object localObject3 = localObject1;
+        continue;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        bhjx.a(localNoSuchFieldException);
+        Object localObject4 = localObject1;
+        continue;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        bhjx.a(localIllegalArgumentException);
+        Object localObject5 = localObject1;
+        continue;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        bhjx.a(localIllegalAccessException);
+        Object localObject6 = localObject1;
+        continue;
+        localObject1 = paramMethodHookParam.throwable;
+        continue;
+        paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + " -- context is " + localObject6.getClass().getName(), paramMethodHookParam.throwable);
+        return;
+      }
+      if (paramMethodHookParam.throwable.getCause() != null)
+      {
+        localObject1 = paramMethodHookParam.throwable.getCause();
+        if ((!(localObject2 instanceof Activity)) || (((Activity)localObject2).isFinishing()) || (!(localObject1 instanceof WindowManager.BadTokenException))) {
+          continue;
+        }
+        awfj.a(1, localObject2.getClass().getName(), paramMethodHookParam.throwable.getMessage(), 0);
+        awfj.a(2, localObject2.getClass().getName(), null, 10000);
+        awfj.a(3, localObject2.getClass().getName(), null, 60000);
+        paramMethodHookParam.throwable = null;
+        ((Activity)localObject2).finish();
       }
     }
-    return 0;
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

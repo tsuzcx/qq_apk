@@ -1,6 +1,18 @@
-public abstract interface aaas
+public class aaas
+  extends aaat
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  private final String a = aaas.class.getName();
+  
+  public aaas(String paramString1, String paramString2)
+  {
+    super(paramString1, paramString2);
+  }
+  
+  protected String a()
+  {
+    yuk.b(this.a, "Get cache tag[Disk]: cache");
+    return "protocal_cache";
+  }
 }
 
 

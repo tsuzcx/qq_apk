@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.listentogether.data.ISong;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface avvk
+public class avvk
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  public avvk(PresenceInterfaceImpl.10 param10) {}
   
-  public abstract void a();
-  
-  public abstract void a(avvh paramavvh);
-  
-  public abstract void a(avvi paramavvi);
-  
-  public abstract void a(avvj paramavvj);
-  
-  public abstract void a(avvl paramavvl);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(ISong paramISong);
-  
-  public abstract int b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    QLog.d("PresenceInterfaceImpl", 2, "user click button");
+  }
 }
 
 

@@ -1,13 +1,49 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class xra
-  implements xrw
+public class xra
+  extends xmt
 {
-  xra(xqy paramxqy, xpo paramxpo, Object paramObject) {}
+  public final ErrorMessage a;
+  public final boolean a;
+  public final String b;
   
-  public boolean a(xrt paramxrt, int paramInt1, int paramInt2)
+  public xra(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Xpo.a(this.jdField_a_of_type_Xqy, 0, paramInt1, this.jdField_a_of_type_Xqy.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    super(new xms("ERROR_" + paramErrorMessage));
+    this.b = null;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add("ERROR");
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
+  }
+  
+  public xra(@NonNull String paramString, boolean paramBoolean)
+  {
+    super(new xms("LOADING_" + paramString));
+    this.b = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add("LOADING");
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+  }
+  
+  public boolean c()
+  {
+    return this.b != null;
   }
 }
 

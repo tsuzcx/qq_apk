@@ -2,7 +2,7 @@ package cooperation.qzone.plugin;
 
 import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
 import android.content.Context;
-import bmcw;
+import bndy;
 import java.util.ArrayList;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
@@ -10,7 +10,7 @@ import mqq.app.Servlet;
 public class PluginIntent
   extends NewIntent
 {
-  bmcw a;
+  bndy a;
   public ArrayList<UPDATE_INFO> a;
   public ArrayList<UPDATE_INFO> b;
   
@@ -19,14 +19,14 @@ public class PluginIntent
     super(paramContext, paramClass);
   }
   
-  public bmcw a()
+  public bndy a()
   {
     return this.a;
   }
   
-  public void a(bmcw parambmcw)
+  public void a(bndy parambndy)
   {
-    this.a = parambmcw;
+    this.a = parambndy;
   }
 }
 

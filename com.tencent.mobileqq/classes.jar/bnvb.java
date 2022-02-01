@@ -1,299 +1,31 @@
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewStub;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-@SuppressLint({"UseSparseArrays"})
-public class bnvb
+class bnvb
+  implements Downloader.DownloadListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private bndy jdField_a_of_type_Bndy;
-  private Map<Integer, bnva> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
-  private volatile boolean jdField_a_of_type_Boolean;
+  bnvb(bnva parambnva, String paramString1, String paramString2) {}
   
-  public bnvb(Activity paramActivity, View paramView, bndy parambndy)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Bndy = parambndy;
-    this.jdField_a_of_type_JavaUtilSet = a();
+    if (QLog.isColorLevel()) {
+      QLog.i("LottieLoader", 0, "diy data download fail url = " + paramString);
+    }
+    bnva.a(this.jdField_a_of_type_Bnva, 2);
+    bnva.a(this.jdField_a_of_type_Bnva, false, paramString, this.jdField_a_of_type_JavaLangString, this.b);
   }
   
-  private int a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      if (paramInt >> 16 == localInteger.intValue() >> 16) {
-        return localInteger.intValue();
-      }
-    }
-    return 65536;
-  }
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  private Set<Integer> a()
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    HashSet localHashSet = new HashSet();
-    int j = bnqb.a.a();
-    int i = j;
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      i = j;
-      if (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null) {
-        i = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", bnqb.a.a());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("LottieLoader", 0, "diy data download success url = " + paramString);
     }
-    if ((bnqb.c.a(i)) || (bnqb.t.a(i)) || (bnqb.n.a(i)) || (bnqb.e.a(i)) || (bnqb.d(i)))
-    {
-      localHashSet.add(Integer.valueOf(131072));
-      localHashSet.add(Integer.valueOf(196608));
-      localHashSet.add(Integer.valueOf(262144));
-      localHashSet.add(Integer.valueOf(327680));
-      localHashSet.add(Integer.valueOf(393216));
-      localHashSet.add(Integer.valueOf(458752));
-      localHashSet.add(Integer.valueOf(524288));
-      localHashSet.add(Integer.valueOf(589824));
-      localHashSet.add(Integer.valueOf(655360));
-    }
-    for (;;)
-    {
-      if (bnqb.a(this.jdField_a_of_type_Bndy) == 204) {
-        localHashSet.remove(Integer.valueOf(524288));
-      }
-      if (bnqb.a(this.jdField_a_of_type_Bndy) == 205) {
-        localHashSet.remove(Integer.valueOf(655360));
-      }
-      return localHashSet;
-      if (bnqb.e.a(i))
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(196608));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(589824));
-      }
-      else if ((bnqb.C.a(i)) || (bnqb.B.a(i)))
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-      }
-      else if (bnqb.w.a(i))
-      {
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(393216));
-      }
-      else
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(196608));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(589824));
-      }
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    Object localObject = null;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
-      }
-      return;
-      localObject = new bnqm(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bnkd(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bnjl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bnlc(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bniq(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bnur(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bnnl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bnnw(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bnvr(this.jdField_a_of_type_AndroidAppActivity, (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131362263), this);
-      continue;
-      localObject = new bnls(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-    }
-  }
-  
-  private <T> T b(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return this.jdField_a_of_type_Bndy;
-  }
-  
-  private void b(int paramInt, Object... paramVarArgs) {}
-  
-  private void g()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      a(((Integer)localIterator.next()).intValue());
-    }
-  }
-  
-  private void h()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((bnva)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a();
-    }
-  }
-  
-  public bnpc a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    bnva localbnva = (bnva)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if ((localbnva instanceof bnkd)) {
-      return ((bnkd)localbnva).a();
-    }
-    return null;
-  }
-  
-  public <T> T a(int paramInt, Object... paramVarArgs)
-  {
-    int i = a(paramInt);
-    bnva localbnva = (bnva)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (localbnva != null) {
-      return localbnva.a(paramInt, paramVarArgs);
-    }
-    return b(paramInt, paramVarArgs);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        g();
-        h();
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((bnva)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    int i = a(paramInt);
-    bnva localbnva = (bnva)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (localbnva != null)
-    {
-      localbnva.a(paramInt, paramVarArgs);
-      return;
-    }
-    b(paramInt, paramVarArgs);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    return (bnva)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null;
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((bnva)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).b();
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((bnva)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).c();
-    }
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((bnva)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).h();
-    }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((bnva)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).i();
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((bnva)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).g();
-    }
+    bnva.b(this.jdField_a_of_type_Bnva, true, paramString, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

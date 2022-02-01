@@ -1,39 +1,61 @@
-import android.app.Activity;
-import android.content.res.Resources;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
 import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCTipsUtils.2;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.provider.Settings.System;
+import com.tencent.qphone.base.util.QLog;
 
 public class rlx
+  extends ContentObserver
 {
-  public static void a(Activity paramActivity)
+  public rlx(rlu paramrlu, Handler paramHandler)
   {
-    if ((paramActivity == null) || (paramActivity.getWindow() == null)) {}
-    do
+    super(paramHandler);
+  }
+  
+  public ContentResolver a()
+  {
+    if (this.a.a() != null) {
+      return this.a.a().getContentResolver();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (a() != null) {
+      a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    }
+  }
+  
+  public void b()
+  {
+    if (a() != null) {
+      a().unregisterContentObserver(this);
+    }
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (this.a.a() == null) {}
+    for (;;)
     {
       return;
-      localObject = paramActivity.getWindow().getDecorView();
-    } while (!(localObject instanceof FrameLayout));
-    Object localObject = (FrameLayout)localObject;
-    View localView = paramActivity.getLayoutInflater().inflate(2131560279, (ViewGroup)localObject, false);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = afur.a(6.0F, paramActivity.getResources());
-    localLayoutParams.topMargin = (ImmersiveUtils.getStatusBarHeight(paramActivity) + paramActivity.getResources().getDimensionPixelSize(2131298998) - afur.a(12.0F, paramActivity.getResources()));
-    localView.setLayoutParams(localLayoutParams);
-    paramActivity = (TextView)localView.findViewById(2131379953);
-    if (paramActivity != null) {
-      paramActivity.setText(rlt.e());
+      int i = Settings.System.getInt(this.a.a().getContentResolver(), "accelerometer_rotation", -1);
+      if (i == 1)
+      {
+        rlu.a(this.a, true);
+        this.a.a(true);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d(rlu.a, 2, "RotationObserver.onChange() : rotateState=" + i);
+        return;
+        rlu.a(this.a, false);
+        this.a.a(false);
+      }
     }
-    ((FrameLayout)localObject).addView(localView);
-    localView.setOnClickListener(new rly(localView));
-    pha.b().postDelayed(new RIJUGCTipsUtils.2(localView), rlt.a() * 1000);
   }
 }
 

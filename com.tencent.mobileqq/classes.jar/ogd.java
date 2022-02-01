@@ -1,135 +1,311 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class ogd
+public class ogd
 {
-  int jdField_a_of_type_Int;
-  protected Activity a;
-  protected Map<Integer, Set<Long>> a;
-  svd jdField_a_of_type_Svd;
-  protected Map<Integer, Boolean> b = new HashMap();
-  protected Map<Integer, Map<Long, rev>> c = new HashMap();
-  protected Map<Integer, rev> d = new HashMap();
+  private static volatile ogd jdField_a_of_type_Ogd;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public ConcurrentHashMap<Long, ChatMessage> a;
   
-  protected ogd()
+  static
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    UserAction.registerTunnel(new TunnelInfo("000004B5DU3Q3LD1"));
   }
   
-  protected ogd(Activity paramActivity)
+  private ogd()
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public Activity a()
+  private double a(View paramView)
   {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public ViewGroup a()
-  {
-    return null;
-  }
-  
-  public Map<Long, rev> a(Integer paramInteger)
-  {
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    paramInteger = (Map)this.c.get(paramInteger);
-    if ((paramInteger != null) && (!paramInteger.isEmpty())) {
-      localConcurrentHashMap.putAll(paramInteger);
-    }
-    return localConcurrentHashMap;
-  }
-  
-  public Set<Long> a(Integer paramInteger)
-  {
-    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
-    Object localObject = localSet;
-    if (localSet == null)
+    if (paramView == null) {}
+    Rect localRect;
+    do
     {
-      localObject = new HashSet();
-      this.jdField_a_of_type_JavaUtilMap.put(paramInteger, localObject);
+      return 0.0D;
+      localRect = new Rect();
+    } while ((!paramView.getGlobalVisibleRect(localRect)) || (localRect.left >= zps.b(paramView.getContext())) || (localRect.top >= zps.c(paramView.getContext())) || (localRect.right <= 0) || (localRect.bottom <= 0));
+    return 1.0D * localRect.width() * localRect.height() / (paramView.getWidth() * paramView.getHeight());
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    String str1 = "";
+    String str2 = ofy.a(paramQQAppInterface, ofz.b(paramMessageRecord));
+    paramQQAppInterface = str1;
+    if (!bhsr.a(str2)) {
+      paramQQAppInterface = ofz.a(str2, ofz.a(ofz.c(paramMessageRecord)), false);
     }
-    return localObject;
+    QLog.i("ReportUtil", 2, "wrapPushReport: " + paramQQAppInterface);
+    return paramQQAppInterface;
   }
   
-  public seu a()
+  public static String a(String paramString1, String paramString2)
   {
-    return null;
-  }
-  
-  public sfn a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    bmqa.e(true);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(ViewGroup paramViewGroup) {}
-  
-  public void a(svd paramsvd, int paramInt)
-  {
-    this.jdField_a_of_type_Svd = paramsvd;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public boolean a(Integer paramInteger)
-  {
-    paramInteger = (Boolean)this.b.get(paramInteger);
-    if (paramInteger != null) {
-      return paramInteger.booleanValue();
+    if (bhsr.a(paramString1)) {
+      return paramString1;
     }
-    return false;
+    String str = paramString2;
+    if (bhsr.a(paramString2)) {
+      str = "tab";
+    }
+    paramString2 = new HashMap(1);
+    paramString2.put("_source", str);
+    return ofz.a(paramString1, paramString2, false);
   }
   
-  public Map<Long, rev> b(Integer paramInteger)
+  private Map<String, String> a(JSONObject paramJSONObject)
   {
-    Map localMap = (Map)this.c.get(paramInteger);
-    Object localObject = localMap;
-    if (localMap == null)
+    Iterator localIterator = paramJSONObject.keys();
+    HashMap localHashMap = new HashMap();
+    while (localIterator.hasNext())
     {
-      localObject = new ConcurrentHashMap();
-      this.c.put(paramInteger, localObject);
+      String str = (String)localIterator.next();
+      localHashMap.put(str, paramJSONObject.optString(str));
     }
-    return localObject;
+    return localHashMap;
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  public static ogd a()
   {
-    bmqa.e(false);
+    if (jdField_a_of_type_Ogd == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Ogd == null) {
+        jdField_a_of_type_Ogd = new ogd();
+      }
+      return jdField_a_of_type_Ogd;
+    }
   }
   
-  public void e() {}
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    try
+    {
+      localObject1 = paramQQAppInterface.a().a("3046055438", 1008);
+      if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
+        return;
+      }
+      localObject1 = (MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1);
+      i = 0;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      Object localObject1;
+      int i;
+      int j;
+      label63:
+      Object localObject2;
+      QLog.e("ReportUtil", 1, QLog.getStackTraceString(paramQQAppInterface));
+      return;
+    }
+    try
+    {
+      j = Integer.parseInt(ofz.a((MessageRecord)localObject1));
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      break label63;
+    }
+    localObject2 = ofz.a((MessageRecord)localObject1);
+    if (localObject2 != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ReportUtil", 2, "mGdtActionType " + ((bdol)localObject2).c);
+      }
+      if ((((bdol)localObject2).a instanceof StructMsgForGeneralShare))
+      {
+        a(paramQQAppInterface, paramString, ((StructMsgForGeneralShare)((bdol)localObject2).a).mContentTitle, NetConnInfoCenter.getServerTimeMillis() + "", "", i);
+        paramString = a(paramQQAppInterface, (MessageRecord)localObject1);
+        b(paramQQAppInterface, "qgg_push_click", ((StructMsgForGeneralShare)((bdol)localObject2).a).mContentTitle, NetConnInfoCenter.getServerTimeMillis() + "", paramString, i);
+      }
+    }
+    else
+    {
+      localObject2 = ofz.a((MessageRecord)localObject1);
+      if (localObject2 != null)
+      {
+        a(paramQQAppInterface, paramString, ((JSONObject)localObject2).optString("aio_desc_name"), NetConnInfoCenter.getServerTimeMillis() + "", "", i);
+        paramString = a(paramQQAppInterface, (MessageRecord)localObject1);
+        b(paramQQAppInterface, "qgg_push_click", ((JSONObject)localObject2).optString("aio_desc_name"), NetConnInfoCenter.getServerTimeMillis() + "", paramString, i);
+        return;
+      }
+    }
+  }
   
-  public void f() {}
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, 0);
+  }
   
-  public void g() {}
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ReportUtil", 2, String.format("opName: %s__opType: %s__d2: %s__d1: %s__fromType: %s", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt) }));
+    }
+    try
+    {
+      bdll.b(paramQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", paramString2, paramString1, paramInt, 0, paramString4, paramString3, "android", "8.4.5");
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("ReportUtil", 1, QLog.getStackTraceString(paramQQAppInterface));
+    }
+  }
   
-  public void h() {}
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("department", paramString1);
+    localHashMap.put("op_type", paramString3);
+    localHashMap.put("op_in", paramInt + "");
+    localHashMap.put("ext1", paramString5);
+    localHashMap.put("pvid", paramString4);
+    localHashMap.put("plat", "android");
+    localHashMap.put("version", "8.4.5");
+    localHashMap.put("A8", ofz.a(BaseApplicationImpl.getApplication().getRuntime()));
+    a(paramString2, localHashMap);
+  }
   
-  public void k() {}
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    try
+    {
+      if ((BaseApplicationImpl.getApplication().peekAppRuntime() instanceof QQAppInterface))
+      {
+        UserAction.onUserActionToTunnel("000004B5DU3Q3LD1", paramString, true, -1L, -1L, paramHashMap, true, true);
+        return;
+      }
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_report_event", paramString);
+      localBundle.putSerializable("key_report_params", paramHashMap);
+      QIPCClientHelper.getInstance().callServer("EcshopIPCModule", "reportToBeacon", localBundle, null);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("ReportUtil", 1, paramString, new Object[0]);
+    }
+  }
   
-  public void o() {}
+  private void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    for (;;)
+    {
+      return;
+      paramJSONObject = paramJSONObject.optJSONArray("item_list");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        int i = 0;
+        while (i < paramJSONObject.length())
+        {
+          Map localMap = a(paramJSONObject.optJSONObject(i).optJSONObject("report_data"));
+          if ((localMap != null) && (!localMap.isEmpty())) {
+            localMap.put("ext3", NetConnInfoCenter.getServerTimeMillis() + "");
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("ReportUtil", 2, "params: " + localMap);
+          }
+          alis.a("000004B5DU3Q3LD1", "qgg_floor_show", localMap);
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, 0);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ReportUtil", 2, String.format("opName: %s__opType: %s__d2: %s__d1: %s__fromType: %s", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt) }));
+    }
+    try
+    {
+      a("Vip_pay_mywallet", paramString1, paramString2, paramString3, paramString4, paramInt);
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("ReportUtil", 1, QLog.getStackTraceString(paramQQAppInterface));
+    }
+  }
+  
+  public void a(ChatXListView paramChatXListView, aggs paramaggs)
+  {
+    if ((paramaggs != null) && (!paramaggs.a().isEmpty()))
+    {
+      int i = 0;
+      if (i < paramaggs.a().size())
+      {
+        ChatMessage localChatMessage = (ChatMessage)paramaggs.a().get(i);
+        Object localObject1;
+        if ((localChatMessage instanceof MessageForArkApp))
+        {
+          localObject1 = (MessageForArkApp)localChatMessage;
+          if (((MessageForArkApp)localObject1).ark_app_message != null) {
+            break label76;
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label76:
+          localObject1 = ((MessageForArkApp)localObject1).ark_app_message.metaList;
+          if (!bhsr.a((String)localObject1)) {
+            try
+            {
+              Object localObject2 = alit.a(localChatMessage, paramChatXListView);
+              if (localObject2 != null)
+              {
+                localObject2 = (ArkAppView)((View)localObject2).findViewById(2131362928);
+                if ((localObject2 != null) && (a((View)localObject2) >= 0.8D) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(localChatMessage.uniseq))))
+                {
+                  a(new JSONObject((String)localObject1).optJSONObject("floorData"));
+                  this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(localChatMessage.uniseq));
+                }
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              localThrowable.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,14 +1,25 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 
-public class akuy
-  extends akqb
+class akuy
+  extends RecyclerView.OnScrollListener
 {
-  public akuy(DrawHbFragment paramDrawHbFragment) {}
+  akuy(akux paramakux) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
   {
-    DrawHbFragment.a(this.a);
+    if ((akux.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.mActivity).mGridView != null) && (((NewPhotoListActivity)this.a.mActivity).photoListAdapter != null) && (akux.a(this.a).selectedMediaInfoHashMap != null)) {
+      akux.a(this.a);
+    }
+    if (paramInt == 0)
+    {
+      adlb.a().a("list_photo", false);
+      return;
+    }
+    adlb.a().a("list_photo");
   }
 }
 

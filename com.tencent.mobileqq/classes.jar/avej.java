@@ -1,81 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
-class avej
-  extends BroadcastReceiver
+public class avej
+  implements TextWatcher
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  public avej(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
   
-  avej(aveh paramaveh) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      paramContext = aveh.a(this.jdField_a_of_type_Aveh).iterator();
-      while (paramContext.hasNext()) {
-        ((avek)paramContext.next()).b(false);
-      }
-    }
-    if ("android.intent.action.SCREEN_ON".equals(paramContext))
-    {
-      paramContext = aveh.a(this.jdField_a_of_type_Aveh).iterator();
-      while (paramContext.hasNext()) {
-        ((avek)paramContext.next()).b(true);
-      }
-    }
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-    {
-      paramContext = aveh.a(this.jdField_a_of_type_Aveh).iterator();
-      while (paramContext.hasNext()) {
-        ((avek)paramContext.next()).c(true);
-      }
-    }
-    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
-    {
-      paramContext = aveh.a(this.jdField_a_of_type_Aveh).iterator();
-      while (paramContext.hasNext()) {
-        ((avek)paramContext.next()).c(false);
-      }
-    }
-    if ("VolumeBtnDown".equals(paramIntent.getAction()))
-    {
-      paramContext = aveh.a(this.jdField_a_of_type_Aveh).iterator();
-      while (paramContext.hasNext()) {
-        ((avek)paramContext.next()).i();
-      }
-    }
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if (paramContext != null) {
-        break label294;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label294:
-      if (paramContext.equals("homekey"))
-      {
-        paramContext = aveh.a(this.jdField_a_of_type_Aveh).iterator();
-        while (paramContext.hasNext())
-        {
-          ((avek)paramContext.next()).h();
-          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
-        }
-      }
-    }
+    paramEditable = paramEditable.toString();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

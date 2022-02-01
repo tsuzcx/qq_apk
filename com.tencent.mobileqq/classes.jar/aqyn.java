@@ -1,120 +1,88 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.UnsupportedEncodingException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class aqyn
-  extends aqwr<aqym>
+  extends alnt
 {
-  @NonNull
-  public aqym a()
-  {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = ((QQAppInterface)localObject).getCurrentAccountUin();
-    localObject = ((QQAppInterface)localObject).getApp().getSharedPreferences("sticker_pref", 0).edit();
-    ((SharedPreferences.Editor)localObject).putInt("sticker_max_show_num_" + str, EmojiStickerManager.c);
-    ((SharedPreferences.Editor)localObject).apply();
-    ((SharedPreferences.Editor)localObject).putInt("sticker_max_send_num_" + str, EmojiStickerManager.c);
-    ((SharedPreferences.Editor)localObject).commit();
-    FlatBuffersParser.a(true);
-    return new aqym();
-  }
+  int a;
   
-  @NonNull
-  public aqym a(aqlg[] paramArrayOfaqlg)
+  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
   {
-    int j = -1;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = localQQAppInterface.getCurrentAccountUin();
-    int m = paramArrayOfaqlg.length;
-    int i = 0;
-    if (i < m)
+    paramOnClickListener = paramContext.getResources();
+    if (paramView == null)
     {
-      aqlg localaqlg = paramArrayOfaqlg[i];
-      int k = localaqlg.jdField_a_of_type_Int;
-      if (k < j) {
-        yqp.e("QVipStickerProcessor", "received old task id " + k + ", latest task id: " + j);
+      paramalno = null;
+      if ((paramView == null) || (!(paramView.getTag() instanceof aqyo))) {
+        break label179;
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          JSONObject localJSONObject = new JSONObject(new String(localaqlg.jdField_a_of_type_JavaLangString.getBytes("utf-8")));
-          SharedPreferences.Editor localEditor = localQQAppInterface.getApp().getSharedPreferences("sticker_pref", 0).edit();
-          if (localJSONObject.has("emojiMaxShowNum"))
-          {
-            EmojiStickerManager.f = localJSONObject.optInt("emojiMaxShowNum");
-            if (EmojiStickerManager.f <= 0) {
-              EmojiStickerManager.f = EmojiStickerManager.c;
-            }
-            localEditor.putInt("sticker_max_show_num_" + str, EmojiStickerManager.f);
-            localEditor.apply();
-          }
-          if (localJSONObject.has("emojiMaxStickNum"))
-          {
-            EmojiStickerManager.e = localJSONObject.optInt("emojiMaxStickNum");
-            if (EmojiStickerManager.e <= 0) {
-              EmojiStickerManager.e = EmojiStickerManager.c;
-            }
-            localEditor.putInt("sticker_max_send_num_" + str, EmojiStickerManager.e);
-            localEditor.commit();
-          }
-          if (localJSONObject.has("flatBufferEnable")) {
-            if (localJSONObject.optInt("flatBufferEnable") != 1) {
-              break label311;
-            }
-          }
-          label311:
-          for (boolean bool = true;; bool = false)
-          {
-            FlatBuffersParser.a(bool);
-            j = k;
-            break;
-          }
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-          yqp.e("QVipStickerProcessor", "item.content=" + localaqlg.jdField_a_of_type_JavaLangString + " e=" + localUnsupportedEncodingException);
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-          yqp.e("QVipStickerProcessor", "item.content=" + localaqlg.jdField_a_of_type_JavaLangString + " e=" + localJSONException);
-        }
+      paramalno = (aqyo)paramalno;
+      label35:
+      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
+      if (paramInt >= 0) {
+        break label348;
       }
+      paramInt = (int)(this.a * 1.5F);
     }
-    return new aqym();
-  }
-  
-  @NonNull
-  public aqym b()
-  {
-    return new aqym();
-  }
-  
-  public Class<aqym> clazz()
-  {
-    return aqym.class;
-  }
-  
-  public int type()
-  {
-    return 189;
+    label81:
+    label348:
+    for (;;)
+    {
+      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
+      {
+        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
+        paramViewGroup.width = -1;
+        paramViewGroup.height = paramInt;
+        paramView.setLayoutParams(paramViewGroup);
+        if ((paramObject instanceof Integer))
+        {
+          paramInt = ((Integer)paramObject).intValue();
+          if (paramInt != 16) {
+            break label294;
+          }
+          paramalno.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839414);
+          if ((paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+            ((Animatable)paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+          }
+          paramalno.jdField_a_of_type_AndroidWidgetTextView.setText(2131697916);
+        }
+      }
+      while (paramInt != 17)
+      {
+        return paramView;
+        paramalno = paramView.getTag();
+        break;
+        paramView = LayoutInflater.from(paramContext).inflate(2131561134, null);
+        paramalno = new aqyo();
+        paramalno.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369629));
+        paramalno.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+        paramalno.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380216));
+        paramView.setTag(paramalno);
+        this.a = (paramOnClickListener.getDimensionPixelSize(2131298072) + paramOnClickListener.getDimensionPixelSize(2131298074) + paramOnClickListener.getDimensionPixelSize(2131298073) * 2);
+        break label35;
+        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
+        break label81;
+      }
+      if ((paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        ((Animatable)paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+      }
+      paramalno.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramalno.jdField_a_of_type_AndroidWidgetTextView.setText(2131697915);
+      return paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyn
  * JD-Core Version:    0.7.0.1
  */

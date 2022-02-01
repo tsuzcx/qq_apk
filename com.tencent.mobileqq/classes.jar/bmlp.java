@@ -1,36 +1,89 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.globalsearch.FavoriteSearchActivity;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bmlp
-  implements Downloader.DownloadListener
+public class bmlp
+  implements bcfq
 {
-  bmlp(bmlo parambmlo, String[] paramArrayOfString) {}
+  public static final String a;
+  public static final String b = anzj.a(2131704275);
+  private List<bcfr> a;
+  private String c;
   
-  public void onDownloadCanceled(String paramString)
+  static
   {
-    QZLog.i("QZoneSharePictureJsPlugin", "onDownloadCanceled");
+    jdField_a_of_type_JavaLangString = bmlp.class.getSimpleName();
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public bmlp(List<bcfr> paramList, String paramString)
   {
-    QZLog.w("QZoneSharePictureJsPlugin", "下载GIF组件失败，请稍后重试");
-    bmlo.a(this.jdField_a_of_type_Bmlo, anni.a(2131711104), 1);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramString;
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public int a()
   {
-    QZLog.i("QZoneSharePictureJsPlugin", "下载GIF组件成功");
-    if (this.jdField_a_of_type_Bmlo.a != null)
+    return 0;
+  }
+  
+  public String a()
+  {
+    return anzj.a(2131704281);
+  }
+  
+  public List<bcfr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    Object localObject;
+    QQAppInterface localQQAppInterface;
+    JSONObject localJSONObject;
+    if (((paramView.getContext() instanceof UniteSearchActivity)) && (bbzx.b.containsKey(this)))
     {
-      bmlo.a(this.jdField_a_of_type_Bmlo, this.jdField_a_of_type_Bmlo.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
+      localObject = (bbzy)bbzx.b.get(this);
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("project", bcjy.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", ((bbzy)localObject).jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "native");
+      bcjy.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(((bbzy)localObject).jdField_a_of_type_Long + "").obj2(((bbzy)localObject).b).ver1(((bbzy)localObject).jdField_a_of_type_JavaLangString).ver2(bcjy.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbzx.jdField_a_of_type_Long));
+      localObject = (BaseActivity)paramView.getContext();
+      FavoriteSearchActivity.a((Context)localObject, this.c);
+      bmkq.a((Activity)localObject, ((BaseActivity)localObject).getAppRuntime().getAccount(), 0L);
+      bcni.a(this.c, 60, 0, paramView);
       return;
     }
-    QZLog.w("QZoneSharePictureJsPlugin", "parentPlugin is null");
-    bmlo.a(this.jdField_a_of_type_Bmlo, anni.a(2131711083), 1);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
+    }
+  }
+  
+  public String b()
+  {
+    return this.c;
   }
 }
 

@@ -1,17 +1,65 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
 
-class wmg
-  extends wme
+public class wmg
 {
-  wmg(wmf paramwmf) {}
+  public int a;
+  private Runnable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  private boolean b;
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  private wmg(wmf paramwmf)
   {
-    this.a.e();
-    if (paramBoolean) {
-      this.a.a(true, paramCommentEntry);
+    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
+  }
+  
+  private void c()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_b_of_type_Int = 0;
+            return;
+            this.jdField_b_of_type_Int += 1;
+          } while (this.jdField_b_of_type_Int < 60);
+          this.jdField_b_of_type_Int = 59;
+          return;
+          this.jdField_b_of_type_Int += 1;
+        } while (this.jdField_b_of_type_Int < 95);
+        this.jdField_b_of_type_Int = 94;
+        return;
+        this.jdField_b_of_type_Int += 1;
+      } while (this.jdField_b_of_type_Int < 100);
+      this.jdField_b_of_type_Int = 99;
+      return;
     }
+    this.jdField_b_of_type_Int = 100;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    wmf.a(this.jdField_a_of_type_Wmf).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    wmf.a(this.jdField_a_of_type_Wmf).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

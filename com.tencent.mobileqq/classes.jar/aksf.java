@@ -1,9 +1,38 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract interface aksf
+class aksf
+  extends aojs
 {
-  public abstract void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap);
+  aksf(aksb paramaksb) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!bhjx.a(paramString1, this.a.jdField_a_of_type_JavaLangString)));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+      }
+    } while (paramInt1 != 0);
+    this.a.a(true);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
+  {
+    if (!bhjx.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController", 2, String.format("onCmdTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+    }
+    this.a.a(true);
+  }
 }
 
 

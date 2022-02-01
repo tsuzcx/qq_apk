@@ -1,17 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1;
 
-public class bgzh<T extends VasQuickUpdateManager.CallBacker>
+public class bgzh
+  implements bdyi
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  bgzh(bgzd parambgzd) {}
+  
+  public void a()
+  {
+    this.a.a.post(new TroopGiftAnimationController.4.1(this));
+  }
 }
 
 

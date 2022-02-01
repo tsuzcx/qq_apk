@@ -1,173 +1,188 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback.1;
-import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
-import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import java.util.ArrayList;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
-public class binn
-  implements bitu
+class binn
+  implements View.OnTouchListener
 {
-  protected final WeakReference<binm> a;
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  int c;
+  int d;
+  int e = 2000;
+  int f;
+  int g;
+  int h;
+  int i;
   
-  public binn(binj parambinj, binm parambinm)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambinm);
-  }
+  binn(binl parambinl, DisplayMetrics paramDisplayMetrics) {}
   
-  public void a(Exception paramException)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bisy.c("OpenSdkFriendService", "GetFriendListCallback exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
-    if ((paramException instanceof ConnectTimeoutException))
+    if (paramView == this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView)
     {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", biuc.e);
-    }
-    for (;;)
-    {
-      paramException = (binm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramException != null) {
-        paramException.a(localIntent);
-      }
-      return;
-      if ((paramException instanceof SocketTimeoutException))
+      int j;
+      int k;
+      switch (paramMotionEvent.getAction())
       {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", biuc.f);
-      }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", biuc.g);
-      }
-      else if ((paramException instanceof JSONException))
-      {
-        localIntent.putExtra("key_error_code", -4);
-        localIntent.putExtra("key_error_msg", biuc.b);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", biuc.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", biuc.d);
-      }
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    bipd localbipd = new bipd();
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        localbipd.jdField_a_of_type_Int = paramJSONObject.getInt("ret");
-        localbipd.jdField_a_of_type_JavaLangString = paramJSONObject.getString("msg");
-        if (localbipd.jdField_a_of_type_Int != 0) {
-          break label486;
-        }
-        if (paramJSONObject.has("conc_max")) {
-          localbipd.d = paramJSONObject.getInt("conc_max");
-        }
-        if ((paramJSONObject.has("inv_max")) && (paramJSONObject.has("inv_count")))
+      default: 
+      case 0: 
+      case 2: 
+        do
         {
-          localbipd.b = paramJSONObject.getInt("inv_max");
-          localbipd.c = paramJSONObject.getInt("inv_count");
-        }
-        if ((paramJSONObject.has("fgmax")) && (paramJSONObject.has("fgcur")))
+          return true;
+          this.jdField_a_of_type_Binl.c.setVisibility(8);
+          j = (int)paramMotionEvent.getRawX();
+          this.jdField_a_of_type_Int = j;
+          this.c = j;
+          j = (int)paramMotionEvent.getRawY();
+          this.jdField_b_of_type_Int = j;
+          this.d = j;
+          return true;
+        } while (this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getVisibility() == 0);
+        j = (int)paramMotionEvent.getRawX() - this.jdField_a_of_type_Int;
+        k = (int)paramMotionEvent.getRawY() - this.jdField_b_of_type_Int;
+        this.e = (paramView.getLeft() + j);
+        this.f = (paramView.getTop() + k);
+        this.g = (j + paramView.getRight());
+        this.h = (paramView.getBottom() + k);
+        if (this.e < 0)
         {
-          localbipd.b = paramJSONObject.getInt("fgmax");
-          localbipd.c = paramJSONObject.getInt("fgcur");
-        }
-        bisy.c("OpenSdkFriendService", "-->result = " + paramJSONObject);
-        localbipd.e = paramJSONObject.optInt("app_rid", -1);
-        localbipd.f = paramJSONObject.optInt("app_tid", -1);
-        if ("action_invite".equals(this.jdField_a_of_type_Binj.d))
-        {
-          if (!paramJSONObject.has("md5str")) {
-            break label559;
+          this.e = 0;
+          this.g = (this.e + paramView.getWidth());
+          label195:
+          if (this.f >= 0) {
+            break label406;
           }
-          localObject = paramJSONObject.getString("md5str");
-          if (!biyn.a(biip.a().a(), "invite_friend_list_md5").getString(this.jdField_a_of_type_Binj.b, "").equals(localObject))
+          this.f = 0;
+          this.h = (this.f + paramView.getHeight());
+        }
+        for (;;)
+        {
+          paramView.layout(this.e, this.f, this.g, this.h);
+          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
+          this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
+          if ((this.jdField_a_of_type_Boolean) || ((Math.abs(paramMotionEvent.getRawX() - this.c) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F) && (Math.abs(paramMotionEvent.getRawY() - this.d) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F))) {
+            break;
+          }
+          this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setVisibility(8);
+          this.jdField_a_of_type_Binl.a(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
+          this.jdField_a_of_type_Binl.i.setVisibility(8);
+          this.jdField_a_of_type_Boolean = true;
+          return true;
+          if (this.g <= this.jdField_a_of_type_Binl.jdField_a_of_type_Int) {
+            break label195;
+          }
+          this.g = this.jdField_a_of_type_Binl.jdField_a_of_type_Int;
+          this.e = (this.g - paramView.getWidth());
+          break label195;
+          label406:
+          if (this.h > this.jdField_a_of_type_Binl.jdField_b_of_type_Int)
           {
-            paramJSONObject = (ArrayList)bipb.c(paramJSONObject);
-            localbipd.jdField_a_of_type_JavaUtilArrayList = paramJSONObject;
-            ThreadManager.executeOnSubThread(new OpenSdkFriendService.GetFriendListCallback.1(this, paramJSONObject, (String)localObject));
-            paramJSONObject = (binm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramJSONObject == null) {
-              break label558;
-            }
-            paramJSONObject.a(localbipd);
-            return;
+            this.h = this.jdField_a_of_type_Binl.jdField_b_of_type_Int;
+            this.f = (this.jdField_a_of_type_Binl.jdField_b_of_type_Int - paramView.getHeight());
           }
-          localbipd.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Binj.a();
-          if (localbipd.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
+        }
+      }
+      this.jdField_a_of_type_Binl.a(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getVisibility() == 0)
+        {
+          this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setVisibility(8);
+          this.jdField_a_of_type_Binl.a(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
+          this.jdField_a_of_type_Binl.i.setVisibility(8);
+          return true;
+        }
+        this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_Binl.a(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, false);
+        this.jdField_a_of_type_Binl.i.setVisibility(0);
+        j = paramView.getTop();
+        k = paramView.getWidth() / 2;
+        if (this.e + k < this.jdField_a_of_type_Binl.jdField_a_of_type_Int / 2) {
+          if (Build.VERSION.SDK_INT < 11) {}
+        }
+        for (;;)
+        {
+          try
+          {
+            this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.setRotationY(180.0F);
+            paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getLayoutParams();
+            paramView.gravity = 3;
+            paramView.leftMargin = (k + this.e);
+            paramView.topMargin = j;
+            this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setLayoutParams(paramView);
+            this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getPaddingBottom());
+            bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_show", 0, 1, 0, this.jdField_a_of_type_Binl.jdField_a_of_type_Birj.c + "", "", "", "");
+            return true;
+          }
+          catch (Throwable paramView)
+          {
+            QLog.e("WebLog_SwiftFloatViewUI", 1, "floatbtn.setrotationy error!", paramView);
             continue;
           }
-          this.jdField_a_of_type_Binj.a.putString("md5str", "0");
-          this.jdField_a_of_type_Binj.a("0");
-          paramJSONObject = (binm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramJSONObject == null) {
-            break label558;
+          if (Build.VERSION.SDK_INT >= 11) {}
+          try
+          {
+            this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.setRotationY(0.0F);
+            paramMotionEvent = (FrameLayout.LayoutParams)this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getLayoutParams();
+            paramMotionEvent.gravity = 5;
+            paramMotionEvent.rightMargin = (k + (this.jdField_a_of_type_Binl.jdField_a_of_type_Int - paramView.getRight()));
+            paramMotionEvent.topMargin = j;
+            this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setLayoutParams(paramMotionEvent);
+            this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.getPaddingBottom());
           }
-          new bitt(this.jdField_a_of_type_Binj.c, "GET", new binn(this.jdField_a_of_type_Binj, paramJSONObject)).a(this.jdField_a_of_type_Binj.a);
-          return;
+          catch (Throwable paramMotionEvent)
+          {
+            for (;;)
+            {
+              QLog.e("WebLog_SwiftFloatViewUI", 1, "floatbtn.setrotationy error!", paramMotionEvent);
+            }
+          }
         }
       }
-      catch (Exception paramJSONObject)
+      this.i = Math.min(this.e, this.jdField_a_of_type_Binl.jdField_a_of_type_Int - this.g);
+      if (this.i == this.e)
       {
-        a(paramJSONObject);
-        return;
+        paramMotionEvent = new TranslateAnimation(0.0F, -this.e, 0.0F, 0.0F);
+        this.e = 0;
+        this.g = (this.e + paramView.getWidth());
       }
-      if (("action_gift".equals(this.jdField_a_of_type_Binj.d)) || ("action_ask".equals(this.jdField_a_of_type_Binj.d)) || ("action_voice".equals(this.jdField_a_of_type_Binj.d)) || ("action_reactive".equals(this.jdField_a_of_type_Binj.d)))
+      for (;;)
       {
-        localbipd.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)bipb.b(paramJSONObject));
-      }
-      else
-      {
-        localbipd.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)bipb.a(paramJSONObject));
-        continue;
-        label486:
-        localbipd.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-        paramJSONObject = new Intent();
-        paramJSONObject.putExtra("key_error_code", localbipd.jdField_a_of_type_Int);
-        paramJSONObject.putExtra("key_error_msg", localbipd.jdField_a_of_type_JavaLangString);
-        paramJSONObject.putExtra("key_error_detail", localbipd.jdField_a_of_type_OrgJsonJSONObject.toString());
-        localObject = (binm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null) {
-          ((binm)localObject).a(paramJSONObject);
-        }
-        label558:
-        return;
-        label559:
-        localObject = null;
+        paramMotionEvent.setDuration(500L);
+        paramView.setVisibility(8);
+        paramMotionEvent.setAnimationListener(new bino(this, paramView));
+        paramView.startAnimation(paramMotionEvent);
+        return true;
+        paramMotionEvent = new TranslateAnimation(0.0F, this.i, 0.0F, 0.0F);
+        this.g = this.jdField_a_of_type_Binl.jdField_a_of_type_Int;
+        this.e = (this.g - paramView.getWidth());
       }
     }
+    if (paramView == this.jdField_a_of_type_Binl.c)
+    {
+      this.jdField_a_of_type_Binl.c.setVisibility(8);
+      this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Binl.a(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
+      this.jdField_a_of_type_Binl.i.setVisibility(8);
+      return true;
+    }
+    if (paramView == this.jdField_a_of_type_Binl.i)
+    {
+      this.jdField_a_of_type_Binl.c.setVisibility(8);
+      this.jdField_a_of_type_Binl.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Binl.a(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
+      this.jdField_a_of_type_Binl.i.setVisibility(8);
+      return true;
+    }
+    return false;
   }
 }
 

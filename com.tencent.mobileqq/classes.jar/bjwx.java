@@ -1,19 +1,11 @@
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
-class bjwx
-  implements bjzb
+public abstract interface bjwx
 {
-  bjwx(bjww parambjww, AsyncResult paramAsyncResult) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, null);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, null);
-  }
+  public abstract void a(List<DownloadInfo> paramList);
 }
 
 

@@ -1,22 +1,19 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
 public class aypr
-  implements BusinessObserver
+  extends bgst
 {
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public aypr(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(long paramLong)
   {
-    if (paramInt == 1) {
-      b(paramBoolean, paramBundle);
-    }
-    while (paramInt != 2) {
+    if (paramLong > 0L)
+    {
+      NearbyProfileFragment.a(this.a).setText(String.format(anzj.a(2131706213), new Object[] { Long.valueOf(paramLong) }));
       return;
     }
-    a(paramBoolean, paramBundle);
+    NearbyProfileFragment.a(this.a).setText(anzj.a(2131706175));
   }
 }
 

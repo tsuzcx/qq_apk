@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bhzr
-  implements View.OnLayoutChangeListener
+class bhzr
+  implements INetInfoHandler
 {
-  public bhzr(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
+  public void onNetMobile2None() {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    if (!ProfileCardExtendFriendView.a(this.a)) {
-      this.a.removeOnLayoutChangeListener(this);
-    }
-    while ((!ProfileCardExtendFriendView.a(this.a)) || (!ProfileCardExtendFriendView.b(this.a)) || (ProfileCardExtendFriendView.a(this.a) != 0) || (ProfileCardExtendFriendView.b(this.a) != 0)) {
-      return;
-    }
-    ProfileCardExtendFriendView.a(this.a, Math.max(paramInt4 - paramInt2, paramInt8 - paramInt6));
-    ProfileCardExtendFriendView.b(this.a, Math.min(paramInt4 - paramInt2, paramInt8 - paramInt6));
-    this.a.removeOnLayoutChangeListener(this);
-    ProfileCardExtendFriendView.a(this.a);
+    bhzq.a();
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    bhzq.a();
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 

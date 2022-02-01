@@ -1,24 +1,41 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
+import java.lang.ref.WeakReference;
 
 public class tpm
-  extends tpg
 {
-  tpm(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
+  int jdField_a_of_type_Int;
+  AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+  WeakReference<ReadInJoyArticleBottomVideoView> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  tpm(AdvertisementInfo paramAdvertisementInfo, int paramInt, ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoyArticleBottomVideoView);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public boolean equals(@Nullable Object paramObject)
   {
-    if ((paramString2 != null) && (paramString2.contains("kandianshare.html5.qq.com")))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof tpm))
     {
-      tpd.a(this.a).mShareHelper.a(paramString2);
-      return;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Int == ((tpm)paramObject).jdField_a_of_type_Int) {
+        bool1 = true;
+      }
     }
-    tpd.a(this.a).mShareHelper.a(paramString1);
+    return bool1;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.hashCode() + this.jdField_a_of_type_Int;
+    }
+    return super.hashCode() + this.jdField_a_of_type_Int;
   }
 }
 

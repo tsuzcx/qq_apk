@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vas.wallpaper;
 
-import bhdx;
-import bhdy;
+import bieh;
+import biej;
 
 public class WallpaperHelper$ConfigChangeListener$1
   implements Runnable
 {
-  public WallpaperHelper$ConfigChangeListener$1(bhdy parambhdy, WallpaperHelper paramWallpaperHelper, bhdx parambhdx) {}
+  public WallpaperHelper$ConfigChangeListener$1(biej parambiej, WallpaperHelper paramWallpaperHelper, bieh parambieh) {}
   
   public void run()
   {
-    WallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper, this.jdField_a_of_type_Bhdx, true);
+    WallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper, this.jdField_a_of_type_Bieh, true);
   }
 }
 

@@ -1,20 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afjr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public afjr(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  public afjr(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, anzj.a(2131712225) + anzj.a(2131712246) + this.jdField_a_of_type_JavaLangString + anzj.a(2131712224) + this.b + anzj.a(2131712217));
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
   }
 }
 

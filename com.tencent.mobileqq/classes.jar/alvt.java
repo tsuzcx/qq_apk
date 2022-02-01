@@ -1,17 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class alvt
-  implements DialogInterface.OnClickListener
+public class alvt
+  implements bdbf
 {
-  alvt(boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  public alvt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Exception paramException)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
+    }
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
   }
 }

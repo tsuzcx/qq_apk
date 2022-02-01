@@ -1,31 +1,48 @@
-import QC.UniBusiGetOneItemWithCheckRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class aziw
-  implements anil
+  extends azie
 {
-  aziw(azir paramazir, aziy paramaziy) {}
+  aziw(aziu paramaziu) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    aziy localaziy;
-    if (this.jdField_a_of_type_Aziy != null)
+    long l1;
+    if (paramBoolean)
     {
-      if (!(paramObject instanceof UniBusiGetOneItemWithCheckRsp)) {
-        break label50;
+      l1 = azhq.a().a(aziu.a(this.a));
+      if (l1 <= 40000L) {
+        break label176;
       }
-      localaziy = this.jdField_a_of_type_Aziy;
-      if (((UniBusiGetOneItemWithCheckRsp)paramObject).ret != 0) {
-        break label45;
+      if (!aziu.a(this.a)) {
+        break label114;
+      }
+      l2 = paramBundle.getLong("autoStatusInterval");
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoStatusManager", 2, "[status][autoMgr] onSetOnlineStatus status: " + azjb.a((int)l1) + " autoStatusInterval: " + l2);
+      }
+      if (l2 > 60L) {
+        aziu.a(this.a, azjb.a((int)l2));
       }
     }
-    label45:
-    for (paramBoolean = true;; paramBoolean = false)
+    label114:
+    while (!aziu.a(this.a))
     {
-      localaziy.a(paramBoolean, (UniBusiGetOneItemWithCheckRsp)paramObject);
+      long l2;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoStatusManager", 2, "[status][autoMgr] onSetOnlineStatus status: " + azjb.a((int)l1) + " startDetector");
+      }
+      aziu.a(this.a).a((int)l1);
+      this.a.a("statusChange");
       return;
     }
-    label50:
-    this.jdField_a_of_type_Aziy.a(false, null);
+    label176:
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoStatusManager", 2, "[status][autoMgr] onSetOnlineStatus status: " + azjb.a((int)l1) + " stopDetector");
+    }
+    this.a.b("statusChange");
   }
 }
 

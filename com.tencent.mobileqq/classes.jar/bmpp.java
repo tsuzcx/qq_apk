@@ -1,89 +1,136 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.webkit.URLUtil;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import cooperation.qqreader.QRBridgeUtil;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-public final class bmpp
-  extends Drawable.ConstantState
+public class bmpp
+  extends QIPCModule
 {
-  int jdField_a_of_type_Int = 30;
-  bmpr jdField_a_of_type_Bmpr;
-  bmpy jdField_a_of_type_Bmpy;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  private static bmpp a;
   
-  private bmpp(bmpl parambmpl) {}
-  
-  public int a()
+  public bmpp(String paramString)
   {
-    if (this.jdField_a_of_type_Bmpr == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Bmpr.a();
+    super(paramString);
   }
   
-  public void a(Rect paramRect)
+  public static bmpp a()
   {
-    this.jdField_a_of_type_Bmpr.a(paramRect);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if (this.jdField_a_of_type_Bmpr == null)
+    if (a == null) {}
+    try
     {
-      this.jdField_a_of_type_Bmpr = new bmpr(BaseApplicationImpl.getApplication());
-      if (this.jdField_a_of_type_Bmpy == null) {
-        this.jdField_a_of_type_Bmpy = new bmpq(this);
+      if (a == null) {
+        a = new bmpp("ReaderIPCModule");
       }
-      this.jdField_a_of_type_Bmpr.a(this.jdField_a_of_type_Bmpy);
-      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramString)))
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    bmqw.e("ReaderIPCModule", "action = " + paramString);
+    if (paramBundle == null)
+    {
+      bmqw.e("ReaderIPCModule", "Err params = null, action = " + paramString);
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      bmqw.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ("getRedTouchInfo".equals(paramString))
+    {
+      paramString = (bbav)((QQAppInterface)localObject).getManager(36);
+      localObject = paramBundle.getStringArrayList("pathList");
+      if ((paramString != null) && (localObject != null))
       {
-        if (!URLUtil.isNetworkUrl(paramString)) {
-          break label148;
+        paramBundle = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
+          if (localAppInfo != null) {
+            paramBundle.add(bbaz.a(localAppInfo));
+          }
         }
-        this.jdField_a_of_type_Bmpr.a(paramString, -1, true);
+        paramString = new Bundle();
+        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
+        return EIPCResult.createResult(0, paramString);
       }
     }
-    for (;;)
+    else if ("getSingleRedTouchInfo".equals(paramString))
     {
-      if (paramInt > 0) {
-        this.jdField_a_of_type_Int = paramInt;
+      paramString = (bbav)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramString = paramString.a(paramBundle.getString("path"));
+        if (paramString != null)
+        {
+          paramString = bbaz.a(paramString);
+          paramBundle = new Bundle();
+          paramBundle.putParcelable("redTouchInfo", paramString);
+          if ((paramString != null) && (paramString.b() == 1)) {
+            bmqw.e("ReaderIPCModule", "path=" + paramString.b());
+          }
+          return EIPCResult.createResult(0, paramBundle);
+        }
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      this.jdField_a_of_type_Bmpr.a();
-      break;
-      label148:
-      this.jdField_a_of_type_Bmpr.a(paramString, true);
     }
-  }
-  
-  public int b()
-  {
-    return a() * 1000 / this.jdField_a_of_type_Int;
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new bmpl(this);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new bmpl(this);
+    else
+    {
+      if (!"reportRedTouchClick".equals(paramString)) {
+        break label396;
+      }
+      paramString = (bbav)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramBundle = paramBundle.getString("path");
+        paramString.b(paramBundle);
+      }
+    }
+    label396:
+    do
+    {
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("service_type", 2);
+        ((JSONObject)localObject).put("act_id", 1002);
+        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
+        return null;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+      if ("download_reader_plugin".equals(paramString))
+      {
+        bmom.a().a(((QQAppInterface)localObject).getApp());
+        return EIPCResult.createResult(0, new Bundle());
+      }
+      if ("get_skey".equals(paramString))
+      {
+        paramString = new Bundle();
+        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
+        return EIPCResult.createResult(0, paramString);
+      }
+    } while (!"action_get_account".equals(paramString));
+    paramString = new Bundle();
+    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
+    return EIPCResult.createResult(0, paramString);
   }
 }
 

@@ -1,24 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bfcv
-  implements DialogInterface.OnClickListener
+  implements bljb
 {
-  public bfcv(ReciteRecordLayout paramReciteRecordLayout) {}
+  public bfcv(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    this.a.e();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).e();
-    }
-    paramDialogInterface.dismiss();
+    TribeVideoListPlayerFragment.a(this.a);
+    this.a.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfcv
  * JD-Core Version:    0.7.0.1
  */

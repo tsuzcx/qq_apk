@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atdm;
-import atdo;
+import atvg;
+import atvi;
 
 public class FileUploader$1
   implements Runnable
 {
-  public FileUploader$1(atdm paramatdm) {}
+  public FileUploader$1(atvg paramatvg) {}
   
   public void run()
   {
-    if ((atdm.a(this.this$0) != null) && (atdm.a(this.this$0) != null)) {
+    if ((atvg.a(this.this$0) != null) && (atvg.a(this.this$0) != null)) {
       this.this$0.a();
     }
-    atdm.a(this.this$0).a(true, atdm.a(this.this$0), 9303, "readfilefail", null);
+    atvg.a(this.this$0).a(true, atvg.a(this.this$0), 9303, "readfilefail", null);
   }
 }
 

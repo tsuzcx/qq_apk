@@ -1,19 +1,257 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.2;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.3;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aaeg
-  implements zxa<CertifiedAccountWrite.StDoCommentRsp>
+public class aaeg
+  extends WebViewPlugin
+  implements aqgm
 {
-  aaeg(aaec paramaaec, CertifiedAccountMeta.StComment paramStComment) {}
+  private aasb jdField_a_of_type_Aasb;
+  private aqgi jdField_a_of_type_Aqgi;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
+  private void a(String paramString)
   {
-    if ((paramStDoCommentRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment != null)) {
-      paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get());
+    paramString = new aaei(this, paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("code", paramString.optString("code"));
+    localBundle.putString("location", paramString.optString("location"));
+    if (this.jdField_a_of_type_Aasb == null)
+    {
+      this.jdField_a_of_type_Aasb = aasb.a();
+      this.jdField_a_of_type_Aasb.a();
     }
-    wfo.a().dispatch(this.jdField_a_of_type_Aaec.a(new Object[] { Integer.valueOf(5), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, Integer.valueOf(this.jdField_a_of_type_Aaec.hashCode()) }));
+    this.jdField_a_of_type_Aasb.c(localBundle);
+  }
+  
+  private void a(String paramString, Bitmap paramBitmap)
+  {
+    ThreadManager.post(new SubscribeJsPlugin.3(this, paramBitmap, paramString), 8, null, false);
+  }
+  
+  private void a(String paramString, String[] paramArrayOfString)
+  {
+    if ("opendetail".equals(paramString)) {
+      if (a(paramArrayOfString)) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          return;
+                          paramString = new aaei(this, paramArrayOfString[0]);
+                          QLog.d(this.TAG, 2, paramString.toString());
+                          if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+                          {
+                            ((SubscribeHybirdFragment)this.mRuntime.a()).a(aaej.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                            return;
+                          }
+                        } while ((this.mRuntime == null) || (this.mRuntime.a() == null));
+                        aaej.a(null, aaej.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                        return;
+                        if (!"sharepersonalpage".equals(paramString)) {
+                          break;
+                        }
+                      } while (!a(paramArrayOfString));
+                      paramString = new aaei(this, paramArrayOfString[0]);
+                    } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                    QLog.d(this.TAG, 2, paramString.toString());
+                    ((SubscribeHybirdFragment)this.mRuntime.a()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
+                    return;
+                    if (!"reloadmainpage".equals(paramString)) {
+                      break;
+                    }
+                  } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                  ((SubscribeHybirdFragment)this.mRuntime.a()).a();
+                  return;
+                  if (!"openpublishpage".equals(paramString)) {
+                    break;
+                  }
+                } while ((!a(paramArrayOfString)) || (this.mRuntime == null) || (this.mRuntime.a() == null));
+                paramString = new aaei(this, paramArrayOfString[0]).optString("puin");
+                new Intent().putExtra("postUin", paramString);
+                bmtd.a(this.mRuntime.a().getActivity(), null, 0);
+                return;
+                if (!"attachGoods".equals(paramString)) {
+                  break;
+                }
+              } while (!a(paramArrayOfString));
+              b(paramArrayOfString[0]);
+              return;
+              if (!"cancelfollow".equals(paramString)) {
+                break;
+              }
+            } while (!a(paramArrayOfString));
+            c(paramArrayOfString[0]);
+            return;
+            if (!"getavatar".equals(paramString)) {
+              break;
+            }
+          } while (!a(paramArrayOfString));
+          d(paramArrayOfString[0]);
+          return;
+          if (!"refreshreturnpage".equals(paramString)) {
+            break;
+          }
+        } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+        ((SubscribeHybirdFragment)this.mRuntime.a()).b();
+        return;
+        if (!"getlbslocation".equals(paramString)) {
+          break;
+        }
+      } while (!a(paramArrayOfString));
+      a(paramArrayOfString[0]);
+      return;
+    } while ((!"openhomepage".equals(paramString)) || (!a(paramArrayOfString)));
+    aaej.a(null, new aaei(this, paramArrayOfString[0]).optString("uid"));
+  }
+  
+  private boolean a(String[] paramArrayOfString)
+  {
+    boolean bool = true;
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1))
+    {
+      QLog.e(this.TAG, 2, "args is null");
+      bool = false;
+    }
+    return bool;
+  }
+  
+  private void b(String paramString)
+  {
+    paramString = new aaei(this, paramString).getJSONArray("goods");
+    if (paramString != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        if (localJSONObject != null) {
+          localArrayList.add(new CommodityBean(localJSONObject));
+        }
+        i += 1;
+      }
+      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
+        ((SubscribeHybirdFragment)this.mRuntime.a()).a(localArrayList);
+      }
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
+      return;
+    }
+    Object localObject = new aaei(this, paramString);
+    paramString = ((aaei)localObject).optString("uin");
+    String str = ((aaei)localObject).optString("nick");
+    localObject = ((aaei)localObject).optString("callback");
+    aank.a(this.mRuntime.a().getActivity(), paramString, str, new aaeh(this, (String)localObject, str));
+  }
+  
+  private void d(String paramString)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
+      return;
+    }
+    paramString = new aaei(this, paramString);
+    JSONArray localJSONArray = paramString.optJSONArray("accountList");
+    int i;
+    if ("1".equals(paramString.getString("avatarType")))
+    {
+      i = 4;
+      if (this.jdField_a_of_type_Aqgi != null) {
+        break label130;
+      }
+      this.jdField_a_of_type_Aqgi = new aqgi(this.mRuntime.a(), i);
+      this.jdField_a_of_type_Aqgi.a();
+      this.jdField_a_of_type_Aqgi.a(this);
+    }
+    for (;;)
+    {
+      ThreadManagerV2.excute(new SubscribeJsPlugin.2(this, localJSONArray), 16, null, false);
+      return;
+      i = 1;
+      break;
+      label130:
+      this.jdField_a_of_type_Aqgi.a(i);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    a(paramString1, paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i(this.TAG, 4, "handleGetAvatar onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("qsubscribe".equals(paramString2))
+    {
+      QLog.i(this.TAG, 2, "handleJsRequest:" + paramString1);
+      try
+      {
+        a(paramString3, paramVarArgs);
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        for (;;)
+        {
+          QLog.d(this.TAG, 2, paramJsBridgeListener, new Object[0]);
+        }
+      }
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Aasb != null)
+    {
+      this.jdField_a_of_type_Aasb.b();
+      this.jdField_a_of_type_Aasb = null;
+    }
+    if (this.jdField_a_of_type_Aqgi != null)
+    {
+      this.jdField_a_of_type_Aqgi.b();
+      this.jdField_a_of_type_Aqgi = null;
+    }
   }
 }
 

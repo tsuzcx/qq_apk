@@ -1,6 +1,31 @@
-public abstract interface wjl
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
+class wjl
+  extends anyu
 {
-  public abstract void a(wjk paramwjk);
+  wjl(wjk paramwjk) {}
+  
+  protected void onAddFriend(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
+    }
+    try
+    {
+      paramString = Long.valueOf(paramString);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      this.a.a(3, localArrayList);
+      this.a.a();
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
+    }
+  }
 }
 
 

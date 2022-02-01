@@ -1,9 +1,15 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-public abstract interface tjl
+public class tjl
+  implements tcg
 {
-  public abstract void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public tjl(ViolaBaseView paramViolaBaseView) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b() {}
 }
 
 

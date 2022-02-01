@@ -1,35 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agfd
-  implements TextWatcher
+final class agfd
+  implements agfh
 {
-  public agfd(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if (VoiceTextEditPanel.a(this.a).get() == 5)
-    {
-      VoiceTextEditPanel.a(this.a, paramEditable.toString());
-      if (!bgsp.a(VoiceTextEditPanel.a(this.a))) {
-        break label55;
-      }
-      this.a.setSendEnable(false);
-    }
-    for (;;)
-    {
-      this.a.c();
-      return;
-      label55:
-      this.a.setSendEnable(true);
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 22);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -61,7 +61,7 @@ public class gg
       str1 = str4;
     case 2: 
     case 3: 
-      switch (bgtl.a(bgtl.a(), str2))
+      switch (bhto.a(bhto.a(), str2))
       {
       }
       break;

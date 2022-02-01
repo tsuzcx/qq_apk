@@ -1,33 +1,21 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import java.util.ArrayList;
-
-public class aeem
-  extends PagerAdapter
+class aeem
+  extends atpa
 {
-  public aeem(FontSettingActivity paramFontSettingActivity) {}
+  aeem(aeeg paramaeeg) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
+    this.a.a.notifyDataSetChanged();
   }
   
-  public int getCount()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    return this.a.a.size();
+    this.a.a.notifyDataSetChanged();
   }
   
-  public Object instantiateItem(View paramView, int paramInt)
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
-    return this.a.a.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    this.a.a.notifyDataSetChanged();
   }
 }
 

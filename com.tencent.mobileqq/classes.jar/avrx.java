@@ -1,12 +1,103 @@
-public class avrx
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.etrump.mixlayout.EMEmoticon;
+import com.etrump.mixlayout.ETEngine;
+import com.etrump.mixlayout.ETFont;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.lang.ref.WeakReference;
+
+public final class avrx
+  extends Handler
 {
-  public int a;
-  public int b;
-  
-  public avrx(int paramInt1, int paramInt2)
+  public avrx(Looper paramLooper)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message arg1)
+  {
+    avrz localavrz;
+    int i;
+    ETEngine localETEngine;
+    Object localObject1;
+    switch (???.what)
+    {
+    case 259: 
+    default: 
+    case 258: 
+      do
+      {
+        do
+        {
+          return;
+          localavrz = (avrz)???.obj;
+        } while (localavrz == null);
+        i = avrz.a(localavrz).getWidth();
+        int j = avrz.a(localavrz).getHeight();
+        if ((HiBoomTextView.a() != null) && ((HiBoomTextView.a().getWidth() < i) || (HiBoomTextView.a().getHeight() < j)))
+        {
+          HiBoomTextView.a().recycle();
+          HiBoomTextView.a(null);
+        }
+        if (HiBoomTextView.a() != null) {
+          break;
+        }
+        HiBoomTextView.a(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
+        localETEngine = avrd.a().b;
+        String str = avrz.a(localavrz) + avrz.a(localavrz).getId() + avrz.a(localavrz) + avrz.a(localavrz).getSize();
+        localObject1 = (EMEmoticon)HiBoomTextView.a().get(str);
+        ??? = (Message)localObject1;
+        if (localObject1 == null)
+        {
+          localObject1 = EMEmoticon.createEmoticon(localETEngine, avrz.a(localavrz), avrz.a(localavrz), avrz.a(localavrz));
+          ??? = (Message)localObject1;
+          if (localObject1 != null)
+          {
+            HiBoomTextView.a().put(str, localObject1);
+            ??? = (Message)localObject1;
+          }
+        }
+      } while (??? == null);
+      ???.gotoFrame(avrz.b(localavrz));
+      ???.drawFrame(HiBoomTextView.a());
+      localObject1 = avrz.a(localavrz);
+      if (avrz.a(localavrz).get() == null) {
+        break;
+      }
+    }
+    for (;;)
+    {
+      synchronized (((HiBoomTextView)avrz.a(localavrz).get()).jdField_a_of_type_Avry)
+      {
+        if ((((Bitmap)localObject1).isRecycled()) || (HiBoomTextView.a((HiBoomTextView)avrz.a(localavrz).get()) != avrz.a(localavrz))) {
+          break label417;
+        }
+        ((Bitmap)localObject1).eraseColor(0);
+        localETEngine.native_cloneBitmap(HiBoomTextView.a(), (Bitmap)localObject1);
+        i = 1;
+        if (i == 0) {
+          break;
+        }
+        new Message().what = 259;
+        HiBoomTextView.jdField_a_of_type_Avsa.obtainMessage(259, localavrz).sendToTarget();
+        return;
+        HiBoomTextView.a().eraseColor(0);
+      }
+      if (HiBoomTextView.a() == null) {
+        break;
+      }
+      HiBoomTextView.a().recycle();
+      HiBoomTextView.a(null);
+      return;
+      label417:
+      i = 0;
+      continue;
+      i = 0;
+    }
   }
 }
 

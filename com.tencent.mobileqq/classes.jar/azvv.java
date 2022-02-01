@@ -1,17 +1,9 @@
 public class azvv
-  implements anil
 {
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramObject);
-  }
+  public static String a = "%s更新了个性标签";
+  public static String b = anzj.a(2131701355);
+  public static String c = "https://ti.qq.com/specialtag/index.html?_wv=536884193&_wwv=5";
+  public static String d = "?personality_label_blur=1";
 }
 
 

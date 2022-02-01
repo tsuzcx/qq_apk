@@ -1,19 +1,9 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import java.io.File;
 
 public class boex
-  implements bofa
 {
-  public boex(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void a(int paramInt)
-  {
-    AEEditorImageEditFragment.a(this.a, paramInt);
-    if (!AEEditorImageEditFragment.a(this.a))
-    {
-      AEEditorImageEditFragment.a(this.a, true);
-      AEEditorImageEditFragment.c(this.a);
-    }
-  }
+  public static final String a = boez.f + File.separator + "camera_emo_default_template.json";
+  public static final String b = boez.f + File.separator + "camera_emo_updated_template.json";
 }
 
 

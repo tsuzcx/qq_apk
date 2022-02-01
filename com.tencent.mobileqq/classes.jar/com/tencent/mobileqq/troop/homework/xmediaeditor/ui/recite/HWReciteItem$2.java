@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import bfeo;
-import bmrl;
+import bgei;
+import bnsq;
 
 class HWReciteItem$2
   implements Runnable
 {
-  HWReciteItem$2(HWReciteItem paramHWReciteItem, bfeo parambfeo) {}
+  HWReciteItem$2(HWReciteItem paramHWReciteItem, bgei parambgei) {}
   
   public void run()
   {

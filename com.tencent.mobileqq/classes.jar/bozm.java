@@ -1,19 +1,18 @@
-import android.content.Context;
-import android.text.InputFilter;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 
-class bozm
-  extends yzc
+public class bozm
 {
-  bozm(boza paramboza, Context paramContext)
+  public static Bitmap a(Bitmap paramBitmap, String paramString)
   {
-    super(paramContext);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setFilters(new InputFilter[] { new bozn(this, paramInt, paramInt) });
+    if (!BitmapUtils.isLegal(paramBitmap)) {}
+    int i;
+    do
+    {
+      return paramBitmap;
+      i = BitmapUtils.getDegreeByExif(paramString) % 360;
+    } while (i == 0);
+    return BitmapUtils.rotateBitmap(paramBitmap, i);
   }
 }
 

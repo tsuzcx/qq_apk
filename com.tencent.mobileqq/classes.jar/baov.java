@@ -1,6 +1,12 @@
-public abstract interface baov
+class baov
+  extends anyu
 {
-  public abstract void a();
+  baov(baou parambaou) {}
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    this.a.a(String.valueOf(paramObject));
+  }
 }
 
 

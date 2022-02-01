@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public final class awly
-  implements Parcelable.Creator<MiniAppOptions>
+public class awly
+  implements awoe
 {
-  public MiniAppOptions a(Parcel paramParcel)
-  {
-    return new MiniAppOptions(paramParcel);
-  }
+  public awly(ListenTogetherManager paramListenTogetherManager) {}
   
-  public MiniAppOptions[] a(int paramInt)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    return new MiniAppOptions[paramInt];
+    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
   }
 }
 

@@ -1,18 +1,18 @@
-import mqq.app.QQPermissionCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
-class akgs
-  implements QQPermissionCallback
+public class akgs
+  extends BroadcastReceiver
 {
-  akgs(akgr paramakgr) {}
+  public akgs(QzoneFrame paramQzoneFrame) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bglp.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    akgq.a(this.a.a);
+    if (QzoneFrame.a(this.a) != null) {
+      ((bmxd)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
+    }
   }
 }
 

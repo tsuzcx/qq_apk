@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import afgt;
-import bdeh;
+import afpx;
+import bdxc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SubLoginActivity$9$1
   implements Runnable
 {
-  public SubLoginActivity$9$1(afgt paramafgt, String paramString) {}
+  public SubLoginActivity$9$1(afpx paramafpx, String paramString) {}
   
   public void run()
   {
-    bdeh localbdeh = (bdeh)this.jdField_a_of_type_Afgt.a.app.getManager(61);
-    if (localbdeh != null) {
-      localbdeh.a(this.jdField_a_of_type_JavaLangString, 0, "");
+    bdxc localbdxc = (bdxc)this.jdField_a_of_type_Afpx.a.app.getManager(61);
+    if (localbdxc != null) {
+      localbdxc.a(this.jdField_a_of_type_JavaLangString, 0, "");
     }
   }
 }

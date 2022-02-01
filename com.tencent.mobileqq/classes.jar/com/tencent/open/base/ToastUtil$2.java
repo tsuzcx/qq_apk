@@ -1,19 +1,19 @@
 package com.tencent.open.base;
 
 import android.widget.Toast;
-import biip;
-import biti;
+import bjjo;
+import bjuh;
 
 public class ToastUtil$2
   implements Runnable
 {
-  public ToastUtil$2(biti parambiti, int paramInt1, int paramInt2) {}
+  public ToastUtil$2(bjuh parambjuh, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     if (this.this$0.a == null)
     {
-      this.this$0.a = Toast.makeText(biip.a().a(), this.a, this.b);
+      this.this$0.a = Toast.makeText(bjjo.a().a(), this.a, this.b);
       this.this$0.a.show();
       return;
     }

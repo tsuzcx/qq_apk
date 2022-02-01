@@ -1,141 +1,260 @@
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import java.util.HashSet;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.PrintStream;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 
-@JsPlugin(secondary=true)
 public class bjud
-  extends BaseJsPlugin
-  implements bmxp
 {
-  private int jdField_a_of_type_Int;
-  SparseArray<RequestEvent> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  
-  public bjud()
+  public static int a(String paramString)
   {
-    bmxq.a().a(this);
-  }
-  
-  private int a()
-  {
-    try
-    {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      return i;
+    int j = 0;
+    if (paramString == null) {
+      return 0;
     }
-    finally
+    int i = 0;
+    if (j < paramString.length())
     {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private JSONObject a(RequestEvent paramRequestEvent)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("WebSsoJsPlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
-  }
-  
-  public HashSet<String> getFilterCmds()
-  {
-    bizg localbizg = (bizg)bizh.a().a("comminfo");
-    if (localbizg != null) {
-      return localbizg.a();
-    }
-    return bmxq.a;
-  }
-  
-  public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
-  {
-    int i;
-    if (paramIntent != null)
-    {
-      i = paramIntent.getIntExtra("mini_seq", -1);
-      if (i != -1) {
-        break label26;
+      if (a(paramString.charAt(j))) {
+        i += 2;
       }
-    }
-    label26:
-    RequestEvent localRequestEvent;
-    do
-    {
-      return;
-      i = -1;
-      break;
-      localRequestEvent = (RequestEvent)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-    } while (localRequestEvent == null);
-    paramIntent = paramJSONObject;
-    if (paramJSONObject == null) {
-      paramIntent = new JSONObject();
-    }
-    paramJSONObject = new JSONObject();
-    try
-    {
-      paramJSONObject.put("cmd", paramString);
-      paramJSONObject.put("ret", paramLong);
-      paramJSONObject.put("rsp", paramIntent);
-      if (paramLong == 0L)
-      {
-        localRequestEvent.ok(paramJSONObject);
-        return;
-      }
-    }
-    catch (JSONException paramIntent)
-    {
       for (;;)
       {
-        paramIntent.printStackTrace();
+        j += 1;
+        break;
+        i += 1;
       }
-      localRequestEvent.fail(paramJSONObject, "");
+    }
+    return i;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    return paramString.replace("\\n", "\n").replace("&#92;", "\\").replace("&#39;", "'").replace("&quot;", "\"").replace("&gt;", ">").replace("&lt;", "<");
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    CharBuffer localCharBuffer = Charset.forName("UTF-16").decode(Charset.forName("UTF-16").encode(paramString));
+    int k = localCharBuffer.length();
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    if (paramInt < k)
+    {
+      if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
+      {
+        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
+        paramInt += 2;
+      }
+      for (;;)
+      {
+        j = a(paramString);
+        if (i < j) {
+          break label139;
+        }
+        i -= j;
+        localStringBuilder.append(paramString);
+        break;
+        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
+        paramInt += 1;
+      }
+      label139:
+      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
+      localStringBuilder.append("…");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static final String a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    int i = 0;
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString2 = "";
+      return paramString2;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {}
+    for (String str = paramString2;; str = "UTF-8")
+    {
+      paramString2 = paramString1;
+      for (;;)
+      {
+        int j;
+        int k;
+        try
+        {
+          if (paramString1.getBytes(str).length <= paramInt) {
+            break;
+          }
+          j = 0;
+          paramString2 = paramString1;
+          if (i >= paramString1.length()) {
+            break;
+          }
+          k = paramString1.substring(i, i + 1).getBytes(str).length;
+          if (j + k > paramInt)
+          {
+            paramString2 = paramString1.substring(0, i);
+            paramString1 = paramString2;
+            paramString2 = paramString1;
+          }
+        }
+        catch (Exception paramString2) {}
+        try
+        {
+          if (!TextUtils.isEmpty(paramString3)) {
+            paramString2 = paramString1 + paramString3;
+          }
+          return paramString2;
+        }
+        catch (Exception paramString2)
+        {
+          break label136;
+        }
+        j += k;
+        i += 1;
+      }
+      label136:
+      System.out.println("StructMsg sSubString error : " + paramString2.getMessage());
+      return paramString1;
     }
   }
   
-  @JsEvent({"requestWebSSO"})
-  public void requestWebSSO(RequestEvent paramRequestEvent)
+  public static String a(String paramString, int paramInt, boolean paramBoolean)
   {
-    try
+    if (paramString == null) {
+      return "";
+    }
+    if (!paramBoolean) {
+      return a(paramString, paramInt);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    CharBuffer localCharBuffer = Charset.forName("UTF-16").decode(Charset.forName("UTF-16").encode(paramString));
+    int k = localCharBuffer.length();
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    if (paramInt < k)
     {
-      JSONObject localJSONObject = a(paramRequestEvent).getJSONObject("data");
-      String str = localJSONObject.getString("webssoCmdId");
-      localJSONObject = localJSONObject.getJSONObject("webssoReq");
-      Object localObject = getFilterCmds();
-      if ((TextUtils.isEmpty(str)) || (localObject == null) || (!((HashSet)localObject).contains(str)))
+      if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
       {
-        paramRequestEvent.fail(anni.a(2131715562));
-        return;
+        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
+        paramInt += 2;
       }
-      int i = a();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramRequestEvent);
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("mini_seq", i);
-      bmxq.a().a(str, localJSONObject, (Bundle)localObject);
-      return;
+      for (;;)
+      {
+        j = a(paramString);
+        if (i < j) {
+          break label154;
+        }
+        i -= j;
+        localStringBuilder.append(paramString);
+        break;
+        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
+        paramInt += 1;
+      }
+      label154:
+      localStringBuilder.append("…");
     }
-    catch (Throwable localThrowable)
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    CharBuffer localCharBuffer = Charset.forName("UTF-16").decode(Charset.forName("UTF-16").encode(paramString));
+    int k = localCharBuffer.length();
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    if (paramInt < k)
     {
-      paramRequestEvent.fail(anni.a(2131715561));
-      if (QLog.isColorLevel()) {
-        QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
+      if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
+      {
+        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
+        paramInt += 2;
+      }
+      for (;;)
+      {
+        j = a(paramString);
+        if (i < j) {
+          break label148;
+        }
+        i -= j;
+        localStringBuilder.append(paramString);
+        break;
+        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
+        paramInt += 1;
+      }
+      label148:
+      if ((!paramBoolean1) || (paramBoolean2)) {
+        break label188;
+      }
+      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
+      localStringBuilder.append("…");
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      label188:
+      if ((paramBoolean1) && (paramBoolean2)) {
+        localStringBuilder.append("…");
       }
     }
+  }
+  
+  protected static boolean a(char paramChar)
+  {
+    return (paramChar >= 'ÿ') || (paramChar < 0);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return (paramString == null) || (paramString.trim().length() == 0);
+  }
+  
+  public static String[] a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString2.length() == 0)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int j;
+    for (int i = 0;; i = paramString2.length() + j)
+    {
+      j = paramString1.indexOf(paramString2, i);
+      if (j < 0)
+      {
+        localArrayList.add(paramString1.substring(i));
+        i = localArrayList.size() - 1;
+        while ((i >= 0) && (((String)localArrayList.get(i)).length() == 0))
+        {
+          localArrayList.remove(i);
+          i -= 1;
+        }
+      }
+      localArrayList.add(paramString1.substring(i, j));
+    }
+    return (String[])localArrayList.toArray(new String[0]);
+  }
+  
+  public static String b(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    return paramString.replace("%7D", "%257D").replace("%3A;", "%253A").replace("%2C';", "%252C").replace("}", "%7D").replace(":", "%3A").replace(",", "%2C");
   }
 }
 

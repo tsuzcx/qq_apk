@@ -1,6 +1,16 @@
-public abstract interface bmtn
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+
+public class bmtn
+  extends Handler
 {
-  public abstract void a(boolean paramBoolean);
+  public bmtn(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(this.a.a, paramMessage);
+  }
 }
 
 

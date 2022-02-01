@@ -1,8 +1,4 @@
-public class bjfl
-{
-  public volatile long a;
-  public volatile boolean a;
-}
+public class bjfl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

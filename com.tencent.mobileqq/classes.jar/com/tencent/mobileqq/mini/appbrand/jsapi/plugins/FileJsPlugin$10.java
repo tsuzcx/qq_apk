@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
@@ -47,7 +46,7 @@ class FileJsPlugin$10
         JSONObject localJSONObject = new JSONObject();
         if ((this.this$0.isGameRuntime) && ((localObject instanceof byte[])))
         {
-          NativeBuffer.packNativeBuffer((byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject, (ITNativeBufferPool)this.this$0.jsPluginEngine.getNativeBufferPool());
+          NativeBuffer.packNativeBuffer((byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject, this.val$webview);
           FileJsPlugin.access$100(this.this$0, this.val$event, true, this.val$startMS, l, str);
           return FileJsPlugin.access$300(this.this$0, this.val$webview, this.val$event, localJSONObject, this.val$callbackId);
         }

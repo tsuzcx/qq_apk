@@ -1,165 +1,96 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class mqd
-  extends mpf
+  extends mrc
 {
-  public mqe a;
-  public int b = 2;
-  public int c = 1;
-  public String g;
+  public mqs a;
   
-  mqd(moy parammoy)
+  mqd(mpv parammpv)
   {
-    super(parammoy);
+    super(parammpv);
   }
   
-  public void a()
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    QLog.w(this.i, 1, "SendRedBag, cancel");
-    Intent localIntent = new Intent("com.qwallet.report");
-    localIntent.setPackage(MobileQQ.getContext().getPackageName());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", "video");
-    localIntent.putExtra("type", 999);
-    localIntent.putExtra("params", localBundle);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getBaseContext().sendBroadcast(localIntent);
-    this.b = 4;
-    a("cancel");
-  }
-  
-  void a(String paramString)
-  {
-    mpt.a(this.c);
-    mpt.b(this.b);
-    if (this.b == 0) {}
-    for (boolean bool = true;; bool = false)
+    mpv localmpv = a();
+    if (localmpv == null) {
+      return;
+    }
+    mqs localmqs = this.jdField_a_of_type_Mqs;
+    this.jdField_a_of_type_Mqs = new mqs(paramString1, paramString2, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    QLog.w("AVRedBag_GameSink", 1, "onGameStart, new[" + this.jdField_a_of_type_Mqs + "], last[" + localmqs + "], fromType[" + paramInt + "], isAVActivityVisible[" + localmpv.e() + "], isSelfVideoOpen[" + mqr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface) + "]");
+    if (!this.jdField_a_of_type_Mqs.jdField_b_of_type_Boolean)
     {
-      ltb.a(bool, paramString, String.valueOf(this.b));
-      if (this.jdField_a_of_type_Mqe != null)
-      {
-        this.jdField_a_of_type_Mqe.a(this);
-        this.jdField_a_of_type_Mqe = null;
+      if (!localmpv.e()) {
+        mqq.a();
       }
+      if (!mqr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
+        mqq.b();
+      }
+    }
+    mqq.a(paramInt);
+    localmpv.a(this);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString5, String paramString6, String paramString7, boolean paramBoolean, int paramInt5)
+  {
+    mpv localmpv = a();
+    if (localmpv == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_Mqs == null)
+    {
+      this.jdField_a_of_type_Mqs = new mqs(paramString1, paramString2, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      QLog.w("AVRedBag_GameSink", 1, "onGameEnd , mResultData is empty");
+    }
+    String str1 = this.jdField_a_of_type_Mqs.jdField_a_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_Mqs.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Mqs.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Mqs.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Mqs.jdField_b_of_type_Boolean = TextUtils.equals(paramString1, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Mqs.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Mqs.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_a_of_type_Mqs.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Mqs.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Mqs.jdField_c_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Mqs.jdField_d_of_type_Int = paramInt4;
+    this.jdField_a_of_type_Mqs.i = paramString5;
+    this.jdField_a_of_type_Mqs.jdField_f_of_type_JavaLangString = paramString7;
+    this.jdField_a_of_type_Mqs.jdField_e_of_type_JavaLangString = paramString6;
+    this.jdField_a_of_type_Mqs.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Mqs.jdField_f_of_type_Int = paramInt5;
+    if (this.jdField_a_of_type_Mqs.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_Mqs.jdField_e_of_type_Int = mqe.a(this.jdField_a_of_type_Mqs.i, this.jdField_a_of_type_Mqs.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Mqs.jdField_f_of_type_JavaLangString);
+    }
+    if ((!this.jdField_a_of_type_Mqs.jdField_b_of_type_Boolean) && (paramBoolean)) {
+      bdmc.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketFinGameSuc", true, 0L, 0L, null, "");
+    }
+    paramString1 = new StringBuilder().append("onGameEnd, startUin[").append(str1).append("->").append(this.jdField_a_of_type_Mqs.jdField_a_of_type_JavaLangString).append("], playUin[").append(str2).append("->").append(this.jdField_a_of_type_Mqs.jdField_b_of_type_JavaLangString).append("], mStarter[").append(this.jdField_a_of_type_Mqs.jdField_b_of_type_Boolean).append("], score[").append(this.jdField_a_of_type_Mqs.jdField_a_of_type_Int).append("/").append(this.jdField_a_of_type_Mqs.jdField_b_of_type_Int).append("], Emoji[").append(this.jdField_a_of_type_Mqs.jdField_c_of_type_Int).append("/").append(this.jdField_a_of_type_Mqs.jdField_d_of_type_Int).append("], money[").append(this.jdField_a_of_type_Mqs.i).append("], playerGetRedbagResultCode[").append(this.jdField_a_of_type_Mqs.jdField_e_of_type_JavaLangString).append("], playerGetRedbagResultState[").append(this.jdField_a_of_type_Mqs.jdField_f_of_type_JavaLangString).append("], isSucc[").append(this.jdField_a_of_type_Mqs.jdField_a_of_type_Boolean).append("], exceptionType[").append(this.jdField_a_of_type_Mqs.jdField_f_of_type_Int).append("], mRedbagErrorType[").append(this.jdField_a_of_type_Mqs.jdField_e_of_type_Int).append("], mRedbagId[").append(this.jdField_a_of_type_Mqs.jdField_c_of_type_JavaLangString).append("], mAuthKey[");
+    if (paramString4 == null) {}
+    for (paramInt1 = 0;; paramInt1 = paramString4.length())
+    {
+      QLog.w("AVRedBag_GameSink", 1, paramInt1 + "]");
+      localmpv.b(this.jdField_a_of_type_Mqs);
+      if ((this.jdField_a_of_type_Mqs.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Mqs.a()))
+      {
+        paramString1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695178);
+        mqr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Mqs.jdField_b_of_type_JavaLangString, 0, paramString1);
+      }
+      if (this.jdField_a_of_type_Mqs.jdField_b_of_type_Boolean) {
+        mqq.a(this.jdField_a_of_type_Mqs.jdField_c_of_type_JavaLangString);
+      }
+      mqg.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      this.jdField_a_of_type_Mqs = null;
       return;
     }
   }
   
-  public boolean a(int paramInt, Intent paramIntent)
+  public String toString()
   {
-    boolean bool2 = false;
-    this.b = 3;
-    String str = this.i;
-    Object localObject = new StringBuilder().append("SendRedBag_onResult, resultCode[").append(paramInt).append("], intent[");
-    boolean bool1;
-    if (paramIntent != null)
-    {
-      bool1 = true;
-      QLog.w(str, 1, bool1 + "]");
-      if (paramIntent == null) {
-        break label260;
-      }
-      AudioHelper.a(anni.a(2131712592), paramIntent.getExtras());
-      str = String.valueOf(paramIntent.getExtras().get("result"));
-      localObject = paramIntent.getStringExtra("retmsg");
-      paramIntent = paramIntent.getStringExtra("data");
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(paramIntent)) {
-          this.g = new JSONObject(paramIntent).getString("send_listid");
-        }
-        if ("-11001".equals(str)) {
-          this.b = 4;
-        }
-        QLog.w(this.i, 1, "SendRedBag_onResult, result[" + str + "], data[" + paramIntent + "], retmsg[" + (String)localObject + "], send_listid[" + this.g + "], mErrorType[" + this.b + "]");
-        bool1 = "0".equals(str);
-        if (bool1) {
-          this.b = 0;
-        }
-        paramIntent = str;
-        a(paramIntent);
-        return bool1;
-        bool1 = false;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      label260:
-      paramIntent = "null";
-      bool1 = bool2;
-    }
-  }
-  
-  public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, Activity paramActivity, mqe parammqe)
-  {
-    this.b = 2;
-    long l1 = mpu.a(paramVideoAppInterface);
-    if (l1 == 0L) {
-      return false;
-    }
-    long l2 = a(paramVideoAppInterface);
-    if (l2 == 0L) {
-      return false;
-    }
-    if (paramActivity == null)
-    {
-      QLog.w(this.i, 1, "SendRedBag, Activity为空");
-      return false;
-    }
-    String str = a(paramVideoAppInterface);
-    paramVideoAppInterface = b(paramVideoAppInterface);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("recv_uin", l2);
-      localJSONObject.put("recv_name", paramVideoAppInterface);
-      localJSONObject.put("bus_type", 2);
-      localJSONObject.put("channel", "16384");
-      localJSONObject.put("total_num", "2");
-      Intent localIntent = new Intent(BaseApplication.getContext(), SendHbActivity.class);
-      localIntent.putExtra("userId", l1);
-      localIntent.putExtra("userName", str);
-      if (paramInt == 2)
-      {
-        localIntent.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket2");
-        localIntent.putExtra("come_from", 2);
-        localIntent.putExtra("extra_data", localJSONObject.toString());
-        localIntent.setFlags(536870912);
-        paramActivity.startActivityForResult(localIntent, 801);
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.i, 4, "SendRedBag, userId[" + l1 + "], userName[" + str + "], recv_name[" + paramVideoAppInterface + "], recv_uin[" + l2 + "], fromType[" + paramInt + "]");
-        }
-        this.jdField_a_of_type_Mqe = parammqe;
-        this.b = 1;
-        this.c = paramInt;
-        mpt.i();
-        return true;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        continue;
-        localJSONException.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket1");
-      }
-    }
+    return "mResultData[" + this.jdField_a_of_type_Mqs + "]";
   }
 }
 

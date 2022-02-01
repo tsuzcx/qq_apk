@@ -2,10 +2,10 @@ package com.tencent.mobileqq.startup.step;
 
 import android.content.SharedPreferences;
 import android.os.SystemClock;
-import arip;
-import arnl;
-import bcow;
-import bctj;
+import arye;
+import asdb;
+import bdho;
+import bdmc;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -39,8 +39,8 @@ public class DtSdkInitStep
     HashMap localHashMap = new HashMap();
     localHashMap.put("initDTFrom", String.valueOf(jdField_d_of_type_Int));
     localHashMap.put("initDTCostTime", String.valueOf(jdField_a_of_type_Long));
-    localHashMap.put("showCostTime", String.valueOf(bcow.h));
-    bctj.a(BaseApplicationImpl.getContext()).a("", "EvtInitDTCostTime", true, 0L, 0L, localHashMap, "");
+    localHashMap.put("showCostTime", String.valueOf(bdho.h));
+    bdmc.a(BaseApplicationImpl.getContext()).a("", "EvtInitDTCostTime", true, 0L, 0L, localHashMap, "");
   }
   
   private static boolean a()
@@ -78,7 +78,7 @@ public class DtSdkInitStep
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     if (localBaseApplicationImpl != null)
     {
-      VideoReport.startWithComponent(localBaseApplicationImpl, DTReportComponent.builder(new arip()).enableDebug(false).dtReport(arnl.b()).independentPageOut(true).build());
+      VideoReport.startWithComponent(localBaseApplicationImpl, DTReportComponent.builder(new arye()).enableDebug(false).dtReport(asdb.b()).elementFormatMode(1).independentPageOut(true).build());
       VideoReport.setDetectionMode(2);
       jdField_a_of_type_Long = SystemClock.elapsedRealtime() - l;
       QLog.d("DtSdkInitStep", 1, "initDTCost : " + jdField_a_of_type_Long + " ms， from = " + paramInt);
@@ -93,7 +93,7 @@ public class DtSdkInitStep
   
   private static void e()
   {
-    List localList = arip.a();
+    List localList = arye.a();
     int i = 0;
     while (i < localList.size())
     {

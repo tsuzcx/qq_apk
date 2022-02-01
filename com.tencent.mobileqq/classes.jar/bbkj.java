@@ -1,25 +1,70 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
-import com.tencent.widget.ListView;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.opengl.EGL14;
+import android.opengl.Matrix;
+import com.tencent.ttpic.video.AEEncoder;
 
+@TargetApi(17)
 public class bbkj
-  extends bbki<bbkm, bbww>
+  implements bbmo, AEEncoder
 {
-  public bbkj(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, aobu paramaobu, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
+  private bbmc jdField_a_of_type_Bbmc;
+  private bbmq jdField_a_of_type_Bbmq = new bbmq();
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  
+  public bbkj(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramListView, paramaobu, paramList, paramString, paramFTSEntitySearchDetailActivity);
+    this.jdField_a_of_type_Bbmc = new bbmc(paramString, paramInt1, paramInt2, 5242880, 1, false, 0);
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    Matrix.setRotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 180.0F, 1.0F, 0.0F, 0.0F);
   }
   
-  protected bbps a(int paramInt)
+  public void a() {}
+  
+  public void a(String arg1)
   {
-    return new bbpp(FTSEntitySearchDetailFragment.a(this.a));
+    this.jdField_a_of_type_Bbmq.c();
+    this.jdField_a_of_type_Boolean = false;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
   }
   
-  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  public void a_(int paramInt, Throwable paramThrowable) {}
+  
+  public void b() {}
+  
+  public void release()
   {
-    return new bbvc(paramViewGroup, 2131562844);
+    this.jdField_a_of_type_Bbmq.b();
+    try
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.wait();
+        label21:
+        return;
+      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label21;
+    }
+  }
+  
+  public int writeFrame(int paramInt, long paramLong)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Bbmc.a(EGL14.eglGetCurrentContext());
+      this.jdField_a_of_type_Bbmq.a(this.jdField_a_of_type_Bbmc, this);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    this.jdField_a_of_type_Bbmq.a(3553, paramInt, null, this.jdField_a_of_type_ArrayOfFloat, 1000000L * paramLong);
+    return 0;
   }
 }
 

@@ -1,10 +1,8 @@
+import android.graphics.PointF;
+
 public abstract interface zdm
 {
-  public abstract void a();
-  
-  public abstract void a(zdw paramzdw);
-  
-  public abstract void b();
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import apul;
-import bcew;
+import aqib;
+import bcxo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 public class DynamicAvatarManager$1
   implements Runnable
 {
-  public DynamicAvatarManager$1(apul paramapul) {}
+  public DynamicAvatarManager$1(aqib paramaqib) {}
   
   public void run()
   {
-    if ((!VideoEnvironment.e(apul.a(this.this$0))) && ((apul.a(this.this$0) instanceof QQAppInterface))) {
-      bcew.a((QQAppInterface)apul.a(this.this$0), false);
+    if ((!VideoEnvironment.e(aqib.a(this.this$0))) && ((aqib.a(this.this$0) instanceof QQAppInterface))) {
+      bcxo.a((QQAppInterface)aqib.a(this.this$0), false);
     }
   }
 }

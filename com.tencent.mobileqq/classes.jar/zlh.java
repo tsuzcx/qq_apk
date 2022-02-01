@@ -1,6 +1,11 @@
+import java.util.List;
+import javax.annotation.Nonnull;
+
 public abstract interface zlh
 {
-  public abstract void a(zld paramzld, zll paramzll);
+  public abstract void a(int paramInt, @Nonnull List<zlk> paramList, boolean paramBoolean);
+  
+  public abstract void b(int paramInt, @Nonnull List<zlk> paramList, boolean paramBoolean);
 }
 
 

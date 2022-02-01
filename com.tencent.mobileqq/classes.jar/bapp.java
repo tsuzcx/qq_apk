@@ -1,25 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.videoplatform.api.IThreadMgr;
+import mqq.os.MqqHandler;
 
-public final class bapp
-  extends BroadcastReceiver
+public class bapp
+  implements IThreadMgr
 {
-  private bapp(FilterProviderView paramFilterProviderView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void postOnSubThread(Runnable paramRunnable)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      bamn.a().b();
-      FilterProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
-      }
-    }
+    ThreadManager.getSubThreadHandler().post(paramRunnable);
+  }
+  
+  public void postOnSubThreadDelayed(Runnable paramRunnable, long paramLong)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(paramRunnable, paramLong);
+  }
+  
+  public void postOnUIThread(Runnable paramRunnable)
+  {
+    ThreadManager.getUIHandler().post(paramRunnable);
+  }
+  
+  public void postOnUIThreadDelayed(Runnable paramRunnable, long paramLong)
+  {
+    ThreadManager.getUIHandler().postDelayed(paramRunnable, paramLong);
+  }
+  
+  public void quitSubThread() {}
+  
+  public void removeCallbackOnSubHandler(Runnable paramRunnable)
+  {
+    ThreadManager.getSubThreadHandler().removeCallbacks(paramRunnable);
+  }
+  
+  public void removeCallbackOnUIHandler(Runnable paramRunnable)
+  {
+    ThreadManager.getUIHandler().removeCallbacks(paramRunnable);
   }
 }
 

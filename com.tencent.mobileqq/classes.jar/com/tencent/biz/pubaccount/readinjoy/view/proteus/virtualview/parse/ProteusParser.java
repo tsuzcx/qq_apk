@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,10 +40,19 @@ public class ProteusParser
   {
     if ((paramObject instanceof String))
     {
-      String str = paramObject.toString();
-      if (paramObject.toString().startsWith("$"))
+      paramObject = paramObject.toString();
+      if (paramObject.startsWith("$"))
       {
-        paramValueBean.putDynamicValue(str.substring("$".length(), str.length()), paramString);
+        paramValueBean.putDynamicValue(paramObject.substring("$".length(), paramObject.length()), paramString);
+        return true;
+      }
+      paramObject = parse$Value(paramObject);
+      if (!paramObject.isEmpty())
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext()) {
+          paramValueBean.putDynamicValue((String)paramObject.next(), paramString);
+        }
         return true;
       }
     }
@@ -355,6 +366,13 @@ public class ProteusParser
     return null;
   }
   
+  private ArrayList<String> parse$Value(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    trim$String(paramString, localArrayList);
+    return localArrayList;
+  }
+  
   private void parseAttr(JSONObject paramJSONObject, ViewBean paramViewBean, ArrayList<String> paramArrayList)
   {
     Iterator localIterator = paramJSONObject.keys();
@@ -482,6 +500,26 @@ public class ProteusParser
       }
     }
     return localViewBean;
+  }
+  
+  private void trim$String(String paramString, ArrayList<String> paramArrayList)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = Pattern.compile("\\$\\{\\w+\\}").matcher(paramString);
+        while (paramString.find())
+        {
+          String str = paramString.group();
+          paramArrayList.add(str.substring(str.indexOf('{') + 1, str.indexOf('}')));
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        LogUtil.QLog.e("readinjoy.proteus", 1, "trim$String error! msg=" + paramString);
+      }
+    }
   }
   
   public void createViewTemplate(BaseTemplateFactory paramBaseTemplateFactory, String paramString, ComplementFileStringLoader paramComplementFileStringLoader)

@@ -1,35 +1,51 @@
-import java.util.Locale;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.MD5;
+import org.json.JSONObject;
 
-class awiv
+public class awiv
+  implements bcnj
 {
-  public static int a;
-  public float a;
-  public long a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  public awiv(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public awiv()
+  public void a(String paramString)
   {
-    int m = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = m + 1;
-    this.jdField_b_of_type_Int = m;
-  }
-  
-  public String toString()
-  {
-    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
+    if (paramString == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = bhmi.a(paramString);
+        if (arrayOfByte == null) {
+          break;
+        }
+        localJSONObject.put("code", 0);
+        StringBuilder localStringBuilder = new StringBuilder("data:");
+        if (azru.a(paramString))
+        {
+          str = "image/gif;";
+          localStringBuilder.append(str);
+          localStringBuilder.append("base64,");
+          localStringBuilder.append(bhkv.encodeToString(arrayOfByte, 0));
+          localJSONObject.put("imgData", localStringBuilder);
+          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
+          localJSONObject.put("imagePath", paramString);
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+        return;
+      }
+      String str = "image/jpg;";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 

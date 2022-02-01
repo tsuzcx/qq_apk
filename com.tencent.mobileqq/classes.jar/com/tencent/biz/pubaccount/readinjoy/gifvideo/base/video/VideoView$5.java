@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import rzt;
 
 class VideoView$5
   implements Runnable
@@ -13,7 +13,7 @@ class VideoView$5
     {
       if (VideoView.access$900(this.this$0) != null)
       {
-        VideoView.access$900(this.this$0).setXYaxis(VideoView.access$1300(this.this$0));
+        VideoView.access$900(this.this$0).a(VideoView.access$1200(this.this$0));
         if (this.a) {
           this.this$0.openVideo();
         }

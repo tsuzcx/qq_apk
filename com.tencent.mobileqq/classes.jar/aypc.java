@@ -1,139 +1,19 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
 
-public class aypc
+class aypc
+  implements DialogInterface.OnClickListener
 {
-  public static final AppRuntime.Status[] a = { AppRuntime.Status.online, AppRuntime.Status.qme, AppRuntime.Status.away, AppRuntime.Status.busy, AppRuntime.Status.dnd, AppRuntime.Status.invisiable };
+  aypc(ayoz paramayoz, bhpc parambhpc) {}
   
-  public static int a(AppRuntime.Status paramStatus)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (aypd.a[paramStatus.ordinal()])
-    {
-    default: 
-      QLog.d("Q..online.status", 1, "getButtonId changed to online , status: " + paramStatus);
-    case 1: 
-      return 2131361906;
-    case 2: 
-      return 2131361907;
-    case 3: 
-      return 2131361902;
-    case 4: 
-      return 2131361903;
-    case 5: 
-      return 2131361904;
-    }
-    return 2131361905;
-  }
-  
-  public static Drawable a(AppRuntime.Status paramStatus)
-  {
-    return a(paramStatus, 0);
-  }
-  
-  public static Drawable a(AppRuntime.Status paramStatus, int paramInt)
-  {
-    Object localObject = null;
-    if (paramStatus != null) {}
-    try
-    {
-      switch (aypd.a[paramStatus.ordinal()])
-      {
-      case 1: 
-        QLog.d("Q..online.status", 1, "getStatusIcon, not find status: " + paramStatus);
-        paramStatus = localObject;
-      case 2: 
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-        for (;;)
-        {
-          if ((paramStatus != null) && (paramInt > 0)) {
-            paramStatus.setBounds(0, 0, paramInt, paramInt);
-          }
-          return paramStatus;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837555);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837557);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837546);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837548);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837551);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837553);
-          continue;
-          QLog.d("Q..online.status", 1, "getStatusIcon, status == null");
-          paramStatus = localObject;
-        }
-      }
-    }
-    catch (Exception paramStatus)
-    {
-      for (;;)
-      {
-        QLog.d("Q..online.status", 1, "getStatusDrawable", paramStatus);
-        paramStatus = localObject;
-      }
-    }
-  }
-  
-  public static String a(AppRuntime.Status paramStatus)
-  {
-    if (paramStatus != null)
-    {
-      switch (aypd.a[paramStatus.ordinal()])
-      {
-      default: 
-        QLog.d("Q..online.status", 1, "getStatusName, not find status: " + paramStatus);
-        return "";
-      case 1: 
-        return BaseApplicationImpl.getContext().getString(2131718211);
-      case 2: 
-        return BaseApplicationImpl.getContext().getString(2131718212);
-      case 3: 
-        return BaseApplicationImpl.getContext().getString(2131718201);
-      case 4: 
-        return BaseApplicationImpl.getContext().getString(2131718203);
-      case 5: 
-        return BaseApplicationImpl.getContext().getString(2131718207);
-      }
-      return BaseApplicationImpl.getContext().getString(2131718209);
-    }
-    QLog.d("Q..online.status", 1, "getStatusName, status is null");
-    return "";
-  }
-  
-  public static AppRuntime.Status a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return AppRuntime.Status.online;
-    case 2: 
-      return AppRuntime.Status.offline;
-    case 3: 
-      return AppRuntime.Status.away;
-    case 4: 
-      return AppRuntime.Status.invisiable;
-    case 5: 
-      return AppRuntime.Status.busy;
-    case 6: 
-      return AppRuntime.Status.qme;
-    }
-    return AppRuntime.Status.dnd;
-  }
-  
-  public static boolean a(AppRuntime.Status paramStatus)
-  {
-    return (paramStatus == AppRuntime.Status.away) || (paramStatus == AppRuntime.Status.busy) || (paramStatus == AppRuntime.Status.dnd);
+    this.jdField_a_of_type_Bhpc.dismiss();
+    this.jdField_a_of_type_Ayoz.a.e();
+    paramDialogInterface = new Intent("tribe_profile_edit_finish");
+    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
   }
 }
 

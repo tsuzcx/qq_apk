@@ -1,25 +1,64 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
-public class bgrr
+class bgrr
+  extends aavq
 {
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
-  {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = ShareActionSheetBuilder.ActionSheetItem.build(paramInt);
-    paramArrayList.add(localActionSheetItem);
-    return localActionSheetItem;
-  }
+  bgrr(bgrn parambgrn) {}
   
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, String paramString, int paramInt2)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle)
   {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = a(paramInt1, paramArrayList);
-    paramArrayList = paramString;
-    if (paramString == null) {
-      paramArrayList = "";
+    Object localObject = this.a;
+    ((bgrn)localObject).jdField_a_of_type_Int -= 1;
+    if ((!paramBoolean) || (paramTransFileRspBody == null)) {
+      bfvr.a("TroopFileManager", bfvr.jdField_a_of_type_Int, "onTransFileResult:  isSuccess:false");
     }
-    localActionSheetItem.argus = paramArrayList;
-    localActionSheetItem.firstLineCount = paramInt2;
-    return localActionSheetItem;
+    do
+    {
+      return;
+      localObject = paramBundle.getString("fileId");
+      paramBundle = (bfrs)this.a.c.get(localObject);
+    } while (paramBundle == null);
+    int i = paramTransFileRspBody.int32_ret_code.get();
+    bfvr.c("TroopFileManager", bfvr.jdField_a_of_type_Int, "onTransFileResult: fileId:" + (String)localObject + " isSuccess:" + paramBoolean + " errCode:" + paramInt + " retCode:" + i);
+    if (i < 0)
+    {
+      paramInt = 501;
+      switch (i)
+      {
+      }
+      for (;;)
+      {
+        this.a.a(paramBundle, paramInt);
+        return;
+        paramInt = 504;
+        continue;
+        paramInt = 103;
+        continue;
+        paramInt = 101;
+        continue;
+        paramInt = 503;
+        continue;
+        paramInt = 502;
+      }
+    }
+    paramTransFileRspBody = paramTransFileRspBody.str_save_file_path.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramBundle.jdField_a_of_type_JavaUtilUUID, paramTransFileRspBody);
+    paramBundle.b = paramTransFileRspBody;
+    paramBundle.jdField_a_of_type_Int = 102;
+    paramBundle.c = 0;
+    this.a.c.remove(localObject);
+    this.a.c.put(paramTransFileRspBody, paramBundle);
+    this.a.d(paramBundle);
+    paramTransFileRspBody = (bgrt)this.a.d.get(paramBundle.f);
+    if (paramTransFileRspBody != null) {
+      paramTransFileRspBody.a = null;
+    }
+    this.a.a(paramBundle, 505);
   }
 }
 

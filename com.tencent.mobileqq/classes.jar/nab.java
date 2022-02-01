@@ -1,15 +1,6 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.avgame.gameroom.GameRoomFragment;
-
-public class nab
-  implements PopupWindow.OnDismissListener
+class nab
 {
-  public nab(GameRoomFragment paramGameRoomFragment) {}
-  
-  public void onDismiss()
-  {
-    this.a.a = null;
-  }
+  public static mzz a = new mzz(null);
 }
 
 

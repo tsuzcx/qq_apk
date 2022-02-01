@@ -1,12 +1,26 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract class bfgl
+public class bfgl
+  extends anyu
 {
-  public final View a;
+  public bfgl(TroopAdminList paramTroopAdminList) {}
   
-  protected bfgl(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a = paramView;
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      this.a.c();
+    }
+  }
+  
+  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+    }
+    this.a.c();
   }
 }
 

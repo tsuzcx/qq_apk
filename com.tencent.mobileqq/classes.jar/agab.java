@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-final class agab
-  implements bkhy
+public class agab
+  implements DialogInterface.OnClickListener
 {
-  agab(QQAppInterface paramQQAppInterface) {}
+  public agab(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcst.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
+    this.a.l();
+    this.a.a(azxy.g, this.a.a, false);
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nnr.a(), "2", "1");
   }
 }
 

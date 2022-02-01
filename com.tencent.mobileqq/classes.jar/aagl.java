@@ -1,46 +1,25 @@
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1;
 import com.tencent.qphone.base.util.QLog;
 
-class aagl
-  implements aagf
+public class aagl
+  implements zzh
 {
-  aagl(aagg paramaagg) {}
+  aagl(aagi paramaagi) {}
   
-  public void a()
+  public void a(boolean paramBoolean, Drawable paramDrawable)
   {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
-    if (aagg.a(this.a))
+    if ((paramBoolean) && ((paramDrawable instanceof AnimationDrawable)))
     {
-      aagg.b(this.a, false);
-      if (aagg.a(this.a) != null) {
-        aagg.a(this.a).setVisibility(0);
+      paramDrawable = (AnimationDrawable)paramDrawable;
+      if (aagi.a(this.a) != null) {
+        aagi.f(this.a).runOnUiThread(new DetailBaseBlock.3.1(this, paramDrawable));
       }
-      if (aagg.a(this.a) != null) {
-        aagg.a(this.a).setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      aagg.a(this.a, false);
       return;
-      this.a.dismiss();
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
-    if (aagg.a(this.a) != paramInt)
-    {
-      aagg.a(this.a, paramInt);
-      aagg.a(this.a);
-      aagg.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      aagg.a(this.a).commit();
-    }
-    this.a.c();
-    aagg.a(this.a, true);
+    QLog.d(aagi.a, 2, "showFollowTipView error, create animationDrawable error");
   }
 }
 

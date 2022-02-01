@@ -1,41 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aebm
-  extends BroadcastReceiver
+public final class aebm
+  implements bihs
 {
-  public aebm(DirectForwardActivity paramDirectForwardActivity) {}
+  public aebm(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void callback(int paramInt)
   {
-    paramIntent = paramIntent.getExtras();
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getStringArrayList("procNameList");
-      paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bggo.a(paramIntent, paramContext))) {
-        break label53;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
     }
-    for (;;)
+    switch (paramInt)
     {
+    default: 
       return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        if (this.a.a.equals(paramContext.get(i)))
-        {
-          this.a.finish();
-          return;
-        }
-        i += 1;
-      }
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
     }
+    this.b.onClick(null, 0);
   }
 }
 

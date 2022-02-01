@@ -1,8 +1,13 @@
-public abstract interface bpgx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.10;
+
+public class bpgx
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean);
+  public bpgx(AEEditorVideoEditFragment.10 param10) {}
   
-  public abstract void b();
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

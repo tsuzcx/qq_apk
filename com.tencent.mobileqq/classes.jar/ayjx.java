@@ -1,72 +1,63 @@
-import android.graphics.Matrix;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
 
 public class ayjx
+  extends ayjw
 {
-  private static final Matrix a = new Matrix();
-  private static final Matrix b = new Matrix();
+  protected View a;
   
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  protected int a()
   {
-    return Math.max(paramFloat2, Math.min(paramFloat1, paramFloat3));
+    return 2131561299;
   }
   
-  public static void a(ayju paramayju1, ayju paramayju2, float paramFloat1, float paramFloat2, ayju paramayju3, float paramFloat3, float paramFloat4, float paramFloat5)
+  protected LabelContainer a(View paramView, int paramInt1, ayaw paramayaw, int paramInt2)
   {
-    paramayju1.a(paramayju2);
-    if (!ayju.a(paramayju2.c(), paramayju3.c())) {
-      paramayju1.b(b(paramayju2.c(), paramayju3.c(), paramFloat5), paramFloat1, paramFloat2);
-    }
-    float f2 = paramayju2.d();
-    float f3 = paramayju3.d();
-    float f1;
-    if (Math.abs(f2 - f3) <= 180.0F)
-    {
-      if (ayju.a(f2, f3)) {
-        break label189;
-      }
-      f1 = b(f2, f3, paramFloat5);
+    paramayaw = (ImageView)paramView.findViewById(2131380336);
+    if (paramInt1 == 7) {
+      paramayaw.setVisibility(8);
     }
     for (;;)
     {
-      if (!Float.isNaN(f1)) {
-        paramayju1.d(f1, paramFloat1, paramFloat2);
+      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      {
+        paramayaw = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+        paramayaw.topMargin = zft.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
+        paramView.setLayoutParams(paramayaw);
       }
-      paramayju1.a(b(0.0F, paramFloat3 - paramFloat1, paramFloat5), b(0.0F, paramFloat4 - paramFloat2, paramFloat5));
-      return;
-      f1 = f2;
-      if (f2 < 0.0F) {
-        f1 = f2 + 360.0F;
-      }
-      f2 = f3;
-      if (f3 < 0.0F) {
-        f2 = f3 + 360.0F;
-      }
-      if (!ayju.a(f1, f2)) {
-        f1 = b(f1, f2, paramFloat5);
-      } else {
-        label189:
-        f1 = (0.0F / 0.0F);
-      }
+      paramInt1 = zft.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramInt2 = zft.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramView = (LabelContainer)paramView.findViewById(2131369601);
+      paramView.setSpace(paramInt1, paramInt2);
+      return paramView;
+      paramayaw.setImageResource(b[paramInt1]);
     }
   }
   
-  public static void a(ayju paramayju1, ayju paramayju2, ayju paramayju3, float paramFloat)
+  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
   {
-    a(paramayju1, paramayju2, paramayju2.a(), paramayju2.b(), paramayju3, paramayju3.a(), paramayju3.b(), paramFloat);
+    super.a(paramContext, paramLinearLayout);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public static void a(float[] paramArrayOfFloat, ayju paramayju1, ayju paramayju2)
+  public boolean a(ayaw[] paramArrayOfayaw)
   {
-    paramayju1.a(a);
-    a.invert(b);
-    b.mapPoints(paramArrayOfFloat);
-    paramayju2.a(a);
-    a.mapPoints(paramArrayOfFloat);
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
+    if (super.a(paramArrayOfayaw))
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 

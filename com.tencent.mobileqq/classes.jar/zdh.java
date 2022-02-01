@@ -1,36 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
 
-class zdh
-  extends wrm
+public abstract interface zdh
 {
-  zdh(zdg paramzdg, wgj paramwgj, long paramLong)
-  {
-    super(paramwgj);
-  }
+  public abstract void a(ValueAnimator paramValueAnimator);
   
-  protected void a(wrp paramwrp)
-  {
-    if (paramwrp.jdField_a_of_type_Int == 0)
-    {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      zdg.a().sendMessage(Message.obtain(zdg.a(), 1, null));
-    }
-    for (;;)
-    {
-      zdg.a(this.jdField_a_of_type_Zdg);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramwrp.jdField_a_of_type_Int + ", errMsg:" + paramwrp.jdField_a_of_type_JavaLangString);
-      }
-    }
-  }
+  public abstract void b(ValueAnimator paramValueAnimator);
+  
+  public abstract void c(ValueAnimator paramValueAnimator);
+  
+  public abstract void d(ValueAnimator paramValueAnimator);
 }
 
 

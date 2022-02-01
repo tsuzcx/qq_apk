@@ -1,41 +1,30 @@
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-class bood
-  implements boov
+public class bood
+  implements Animator.AnimatorListener
 {
-  private float jdField_a_of_type_Float;
-  private WeakReference<boob> jdField_a_of_type_JavaLangRefWeakReference;
+  public bood(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
   
-  public bood(boob paramboob)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramboob);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public float a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, bpnf parambpnf)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Float = 1.0F;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-        ((boob)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
-      }
+    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).c();
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Float = 0.0F;
-    } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-    ((boob)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
   }
 }
 

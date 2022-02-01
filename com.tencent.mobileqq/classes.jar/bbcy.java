@@ -1,21 +1,48 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.remind.widget.WheelView;
 
-public class bbcy
-  extends bbcu
+final class bbcy
+  implements bbdh
 {
-  public bbcy(CommentsView paramCommentsView, int paramInt, String paramString)
+  public long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt)
   {
-    super(paramInt);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
-      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = null;
+    if ((paramArrayOfInt.length != 3) || (paramArrayOfWheelView.length != 3)) {
+      return -1L;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    String str2;
+    if (AppSetting.c)
+    {
+      str2 = bbdc.a(paramArrayOfInt[0]);
+      if ((paramArrayOfInt[1] < 0) || (paramArrayOfInt[1] >= bbdc.a.length)) {
+        break label206;
+      }
+    }
+    label206:
+    for (String str1 = bbdc.a[paramArrayOfInt[1]];; str1 = null)
+    {
+      Object localObject1 = localObject2;
+      if (paramArrayOfInt[2] >= 0)
+      {
+        localObject1 = localObject2;
+        if (paramArrayOfInt[2] < bbdc.b.length) {
+          localObject1 = bbdc.b[paramArrayOfInt[2]];
+        }
+      }
+      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        str1 = anzj.a(2131712272) + str2 + str1 + anzj.a(2131712270) + (String)localObject1 + anzj.a(2131712271);
+        int j = paramArrayOfWheelView.length;
+        int i = 0;
+        while (i < j)
+        {
+          paramArrayOfWheelView[i].setContentDescription(str1);
+          i += 1;
+        }
+      }
+      return bbdc.a(paramArrayOfInt[0], paramArrayOfInt[1], paramArrayOfInt[2]);
+    }
   }
 }
 

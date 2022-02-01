@@ -1,25 +1,14 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class apao
-  implements FileFilter
+public class apao
+  extends aoxh
 {
-  public boolean accept(File paramFile)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if (!Character.isDigit(paramFile.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    return false;
+    paramQQAppInterface = new apan(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    return paramQQAppInterface;
   }
 }
 

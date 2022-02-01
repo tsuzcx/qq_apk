@@ -1,17 +1,10 @@
-import android.graphics.Bitmap;
-import java.util.List;
-
 public abstract interface bprh
 {
-  public abstract void a();
+  public abstract void aV_();
   
-  public abstract void a(int paramInt);
+  public abstract void b();
   
-  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void a(boolean paramBoolean);
+  public abstract void c();
 }
 
 

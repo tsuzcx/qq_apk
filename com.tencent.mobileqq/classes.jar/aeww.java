@@ -1,34 +1,65 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSActivity.20.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeww
-  implements Animation.AnimationListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aeww(QQLSActivity paramQQLSActivity) {}
+  public aeww(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.removeMessages(99);
-    if (VersionUtils.isJellyBean())
+    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "do SmoothFinish");
-      }
-      QQLSActivity.g(this.a);
-      this.a.finish();
-      return;
+      ((axwo)this.a.app.a(66)).a(paramBoolean);
+      this.a.app.reportClickEvent("CliOper", "0X8006729");
     }
-    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      if (paramCompoundButton == this.a.c.a())
+      {
+        this.a.app.e(true, paramBoolean);
+      }
+      else
+      {
+        QQAppInterface localQQAppInterface;
+        String str;
+        if (paramCompoundButton == this.a.b.a())
+        {
+          localQQAppInterface = this.a.app;
+          if (paramBoolean) {}
+          for (str = "1";; str = "0")
+          {
+            bdll.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, str, "", "", "");
+            this.a.jdField_a_of_type_Anum.h(paramBoolean);
+            break;
+          }
+        }
+        if (paramCompoundButton == this.a.d.a())
+        {
+          localQQAppInterface = this.a.app;
+          if (paramBoolean) {}
+          for (str = "1";; str = "2")
+          {
+            bdll.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, str, "", "", "");
+            this.a.jdField_a_of_type_Anum.f(paramBoolean);
+            if (paramBoolean) {
+              break label249;
+            }
+            this.a.b.setVisibility(8);
+            break;
+          }
+          label249:
+          this.a.b.setVisibility(0);
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

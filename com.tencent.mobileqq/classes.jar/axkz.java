@@ -1,8 +1,18 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatActivity;
 
-public abstract interface axkz
+final class axkz
+  implements axlg
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  axkz(Context paramContext) {}
+  
+  public void a(Intent paramIntent)
+  {
+    if ((this.a instanceof ChatActivity)) {
+      ((ChatActivity)this.a).a(paramIntent);
+    }
+  }
 }
 
 

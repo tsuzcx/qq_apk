@@ -1,18 +1,14 @@
-import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class auph
-  implements View.OnClickListener
+  implements aumz
 {
-  auph(aupg paramaupg, MISC.StAppPlayingInfo paramStAppPlayingInfo, boolean paramBoolean) {}
+  auph(aupf paramaupf) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    aupj.a(paramView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo, aupg.a(this.jdField_a_of_type_Aupg), aupg.a(this.jdField_a_of_type_Aupg), this.jdField_a_of_type_Boolean);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.c();
   }
+  
+  public void b() {}
 }
 
 

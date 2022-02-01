@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bmqa;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -9,31 +9,31 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.HashMap;
 import java.util.Locale;
-import pgm;
-import pmh;
-import pyv;
+import oze;
+import pfa;
+import prf;
 
 public class ReadInJoyLogicEngine$6
   implements Runnable
 {
-  public ReadInJoyLogicEngine$6(pmh parampmh, int paramInt) {}
+  public ReadInJoyLogicEngine$6(pfa parampfa, int paramInt) {}
   
   public void run()
   {
-    Pair localPair = bmqa.a();
+    Pair localPair = bnrf.a();
     long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
     long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L - ((Long)localPair.first).longValue();
-    long l3 = pmh.a() / 1000L;
-    Object localObject2 = (Long)pmh.b().get(Integer.valueOf(this.a));
+    long l3 = pfa.a() / 1000L;
+    Object localObject2 = (Long)pfa.b().get(Integer.valueOf(this.a));
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = Long.valueOf(0L);
     }
-    if ((l1 - ((Long)localObject1).longValue() < ((Long)localPair.first).longValue()) || (l1 - l3 < pgm.a / 1000) || (l1 - l3 < ((Long)localPair.first).longValue())) {
+    if ((l1 - ((Long)localObject1).longValue() < ((Long)localPair.first).longValue()) || (l1 - l3 < oze.a / 1000) || (l1 - l3 < ((Long)localPair.first).longValue())) {
       return;
     }
-    if (pmh.a(this.this$0) != null) {
-      pmh.a(this.this$0).a(this.a, l2, ((Integer)localPair.second).intValue());
+    if (pfa.a(this.this$0) != null) {
+      pfa.a(this.this$0).a(this.a, l2, ((Integer)localPair.second).intValue());
     }
     localObject1 = this.this$0.a().createEntityManager();
     localObject2 = String.format(Locale.CHINA, "delete from %s where recommendSeq not in ( select recommendSeq from %s where channelID = %d order by recommendSeq desc limit %d ) and recommendTime < %d  and channelID = %d ", new Object[] { WeiShiVideoArticleInfo.TABLE_NAME, WeiShiVideoArticleInfo.TABLE_NAME, Integer.valueOf(this.a), localPair.second, Long.valueOf(l2), Integer.valueOf(this.a) });
@@ -42,7 +42,7 @@ public class ReadInJoyLogicEngine$6
     }
     for (;;)
     {
-      pmh.b().put(Integer.valueOf(this.a), Long.valueOf(l1));
+      pfa.b().put(Integer.valueOf(this.a), Long.valueOf(l1));
       return;
       QLog.d("VideoArticleInfo", 2, "delete outdated article successful ! Sql is : " + (String)localObject2 + ", nowTime : " + l1 + ", interval : " + localPair.first + ", feedsCnt : " + localPair.second);
     }

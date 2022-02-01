@@ -1,17 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.view.View;
 
-public class sqz
-  extends pue
+class sqz
+  implements blkc
 {
-  public sqz(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
-  {
-    super(paramString);
-  }
+  sqz(sqx paramsqx) {}
   
-  public void a(ptx paramptx)
+  public void a()
   {
-    paramptx.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+    this.a.a.setSelected(false);
   }
 }
 

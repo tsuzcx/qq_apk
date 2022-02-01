@@ -1,22 +1,15 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
-final class blfi
-  implements blfo
+public class blfi
+  extends Handler
 {
-  blfi(blfn paramblfn) {}
+  public blfi(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public void a(boolean paramBoolean, Context paramContext, blfq paramblfq)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      blfh.d(paramContext, paramblfq);
-    }
-    if (this.a != null) {
-      this.a.a(paramBoolean);
-    }
+    this.a.a(paramMessage);
   }
 }
 

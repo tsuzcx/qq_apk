@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bmqa;
+import bnrf;
 
 class KandianMergeManager$32
   implements Runnable
@@ -9,7 +9,7 @@ class KandianMergeManager$32
   
   public void run()
   {
-    bmqa.n(KandianMergeManager.a(this.this$0), true);
+    bnrf.o(KandianMergeManager.a(this.this$0), true);
   }
 }
 

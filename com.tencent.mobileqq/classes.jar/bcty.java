@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.statistics.UEC.UECItem;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageForTofuIntimateAnniversary;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public abstract interface bcty
+public class bcty
+  implements adbf
 {
-  public abstract void a(ArrayList<UEC.UECItem> paramArrayList);
+  public MessageRecord a(int paramInt)
+  {
+    if (paramInt == -7009) {
+      return new MessageForTofuIntimateAnniversary();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcty
  * JD-Core Version:    0.7.0.1
  */

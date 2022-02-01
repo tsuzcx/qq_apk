@@ -1,21 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 
-class ajnz
-  implements QQPermissionCallback
+public class ajnz
+  extends RecyclerView.OnScrollListener
 {
-  ajnz(ajnk paramajnk) {}
+  public ajnz(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
-    bglp.a(ajnk.a(this.a), new ajoa(this));
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    TroopRecommendFriendFragment.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
+        TroopRecommendFriendFragment.a(this.a);
+      }
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
-    ajnk.a(this.a, ajnk.b(this.a));
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

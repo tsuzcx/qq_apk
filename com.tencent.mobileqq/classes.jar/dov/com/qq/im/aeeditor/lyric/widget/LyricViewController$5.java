@@ -1,11 +1,11 @@
 package dov.com.qq.im.aeeditor.lyric.widget;
 
-import bobe;
+import bpcz;
 
 public class LyricViewController$5
   implements Runnable
 {
-  public LyricViewController$5(bobe parambobe, int paramInt) {}
+  public LyricViewController$5(bpcz parambpcz, int paramInt) {}
   
   public void run()
   {

@@ -16,21 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anhk;
-import aqcb;
-import aqck;
-import aufz;
-import bdnt;
-import bljn;
-import bljz;
-import bllb;
-import bllf;
-import bllg;
-import bllh;
-import blli;
-import bllj;
-import bllk;
-import blll;
+import antf;
+import aqre;
+import aqrn;
+import auxu;
+import begp;
+import bmkq;
+import bmlc;
+import bmme;
+import bmmi;
+import bmmj;
+import bmmk;
+import bmml;
+import bmmm;
+import bmmn;
+import bmmo;
 import com.tencent.biz.PoiMapActivity;
 import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -43,8 +43,8 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class LocationDetailActivity
   extends PoiMapActivity
 {
-  private aqcb jdField_a_of_type_Aqcb;
-  public bllb a;
+  private aqre jdField_a_of_type_Aqre;
+  public bmme a;
   private FadeIconImageView jdField_a_of_type_ComTencentWidgetFadeIconImageView;
   public long b = -1L;
   public ImageView d;
@@ -71,24 +71,24 @@ public class LocationDetailActivity
     if (VersionUtils.isHoneycomb()) {
       this.f.setAlpha(0.9F);
     }
-    this.f.setText(new bdnt(this.u, 3, 22));
+    this.f.setText(new begp(this.u, 3, 22));
   }
   
   private void C()
   {
-    bljn.a(this, "", this.b, 0L);
+    bmkq.a(this, "", this.b, 0L);
   }
   
   private void D()
   {
-    this.jdField_a_of_type_Aqcb = new aqcb(this, true, false, true, true, 0);
-    this.jdField_a_of_type_Aqcb.a(a(false));
-    this.jdField_a_of_type_Aqcb.a(this);
-    this.jdField_a_of_type_Aqcb.a(new bllj(this));
-    this.jdField_a_of_type_Aqcb.a(new bllk(this));
+    this.jdField_a_of_type_Aqre = new aqre(this, true, false, true, true, 0);
+    this.jdField_a_of_type_Aqre.a(a(false));
+    this.jdField_a_of_type_Aqre.a(this);
+    this.jdField_a_of_type_Aqre.a(new bmmm(this));
+    this.jdField_a_of_type_Aqre.a(new bmmn(this));
     boolean bool = c();
     if (!bool) {
-      this.jdField_a_of_type_Aqcb.g();
+      this.jdField_a_of_type_Aqre.g();
     }
     for (;;)
     {
@@ -96,13 +96,13 @@ public class LocationDetailActivity
         QLog.i("PoiMapActivity", 2, "initColorNoteController: checkShowFileColorNote[" + bool + "]");
       }
       return;
-      this.jdField_a_of_type_Aqcb.h();
+      this.jdField_a_of_type_Aqre.h();
     }
   }
   
   private int a()
   {
-    if ((this.jdField_a_of_type_Aqcb != null) && (this.jdField_a_of_type_Aqcb.c())) {}
+    if ((this.jdField_a_of_type_Aqre != null) && (this.jdField_a_of_type_Aqre.c())) {}
     for (int i = 256;; i = 128) {
       return i | 0x50;
     }
@@ -113,7 +113,7 @@ public class LocationDetailActivity
     if ((this.r != null) && (this.s != null))
     {
       Intent localIntent = a();
-      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localIntent.getStringExtra("latitude")).putExtra("forward_longitude", localIntent.getStringExtra("longitude")).putExtra("forward_location", this.m).putExtra("forward_location_string", this.m).putExtra("forward_thumb", anhk.cf + this.r + "_" + this.s + ".png").putExtra("isFromFavorites", true).putExtra("title", this.l).putExtra("summary", this.m);
+      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localIntent.getStringExtra("latitude")).putExtra("forward_longitude", localIntent.getStringExtra("longitude")).putExtra("forward_location", this.m).putExtra("forward_location_string", this.m).putExtra("forward_thumb", antf.cf + this.r + "_" + this.s + ".png").putExtra("isFromFavorites", true).putExtra("title", this.l).putExtra("summary", this.m);
       return localIntent;
     }
     return null;
@@ -121,14 +121,14 @@ public class LocationDetailActivity
   
   public void A()
   {
-    if ((this.jdField_a_of_type_Aqcb != null) && (this.jdField_a_of_type_Aqcb.c())) {
-      this.jdField_a_of_type_Aqcb.f();
+    if ((this.jdField_a_of_type_Aqre != null) && (this.jdField_a_of_type_Aqre.c())) {
+      this.jdField_a_of_type_Aqre.f();
     }
   }
   
-  public aqck a(boolean paramBoolean)
+  public aqrn a(boolean paramBoolean)
   {
-    return new bllf(this, Long.valueOf(this.b));
+    return new bmmi(this, Long.valueOf(this.b));
   }
   
   public void a(Bundle paramBundle)
@@ -137,10 +137,10 @@ public class LocationDetailActivity
     if (localIntent != null)
     {
       localIntent.putExtras(paramBundle);
-      aufz.a(getActivity(), localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
+      auxu.a(getActivity(), localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
       return;
     }
-    QQToast.a(this, 2131692007, 1, 2000).b(5);
+    QQToast.a(this, 2131692011, 1, 2000).b(5);
   }
   
   public void b(boolean paramBoolean)
@@ -156,7 +156,7 @@ public class LocationDetailActivity
     if (paramBoolean) {}
     for (int i = 13322;; i = 13321)
     {
-      bljn.a(this, (String)localObject, localIntent, i);
+      bmkq.a(this, (String)localObject, localIntent, i);
       return;
     }
   }
@@ -169,14 +169,14 @@ public class LocationDetailActivity
   public boolean d()
   {
     this.v = true;
-    if ((this.jdField_a_of_type_Aqcb != null) && (!this.jdField_a_of_type_Aqcb.c()))
+    if ((this.jdField_a_of_type_Aqre != null) && (!this.jdField_a_of_type_Aqre.c()))
     {
-      if (this.jdField_a_of_type_Aqcb.b())
+      if (this.jdField_a_of_type_Aqre.b())
       {
-        this.jdField_a_of_type_Aqcb.e();
+        this.jdField_a_of_type_Aqre.e();
         return true;
       }
-      this.jdField_a_of_type_Aqcb.i();
+      this.jdField_a_of_type_Aqre.i();
       return false;
     }
     this.v = false;
@@ -193,8 +193,8 @@ public class LocationDetailActivity
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Aqcb != null) && (this.b != -1L) && (this.b != 0L)) {
-      this.jdField_a_of_type_Aqcb.p();
+    if ((this.jdField_a_of_type_Aqre != null) && (this.b != -1L) && (this.b != 0L)) {
+      this.jdField_a_of_type_Aqre.p();
     }
     super.finish();
   }
@@ -245,7 +245,7 @@ public class LocationDetailActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = super.findViewById(2131376992);
+    paramBundle = super.findViewById(2131377131);
     paramBundle.setFocusable(false);
     paramBundle.setContentDescription(null);
     if (!super.getIntent().getBooleanExtra("forNewFavorite", false))
@@ -253,12 +253,12 @@ public class LocationDetailActivity
       paramBundle = (FrameLayout)super.findViewById(16908290);
       float f1 = super.getResources().getDisplayMetrics().density;
       this.f = new TextView(paramBundle.getContext());
-      this.f.setId(2131371810);
-      this.f.setBackgroundResource(2130839391);
+      this.f.setId(2131371917);
+      this.f.setBackgroundResource(2130839399);
       this.f.setMaxLines(3);
       int i = (int)(15.0F * f1);
       this.f.setPadding(i, i, i, i);
-      this.f.setTextColor(super.getResources().getColor(2131166986));
+      this.f.setTextColor(super.getResources().getColor(2131166990));
       this.f.setTextSize(14.0F);
       this.f.setIncludeFontPadding(false);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
@@ -283,24 +283,24 @@ public class LocationDetailActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aqcb != null) {
-      this.jdField_a_of_type_Aqcb.c();
+    if (this.jdField_a_of_type_Aqre != null) {
+      this.jdField_a_of_type_Aqre.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aqcb != null) {
-      this.jdField_a_of_type_Aqcb.b();
+    if (this.jdField_a_of_type_Aqre != null) {
+      this.jdField_a_of_type_Aqre.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aqcb != null) {
-      this.jdField_a_of_type_Aqcb.a();
+    if (this.jdField_a_of_type_Aqre != null) {
+      this.jdField_a_of_type_Aqre.a();
     }
   }
   
@@ -317,23 +317,23 @@ public class LocationDetailActivity
     this.r = localBundle.getString("lat");
     this.s = localBundle.getString("lon");
     this.b = localBundle.getLong("favId");
-    TextView localTextView1 = (TextView)findViewById(2131368947);
-    localTextView1.setText(2131692032);
-    localTextView1.setOnClickListener(new bllg(this));
-    ((TextView)super.findViewById(2131368994)).setText(2131693399);
-    TextView localTextView2 = (TextView)super.findViewById(2131368979);
+    TextView localTextView1 = (TextView)findViewById(2131369042);
+    localTextView1.setText(2131692037);
+    localTextView1.setOnClickListener(new bmmj(this));
+    ((TextView)super.findViewById(2131369088)).setText(2131693411);
+    TextView localTextView2 = (TextView)super.findViewById(2131369073);
     if (!localBundle.getBoolean("forNewFavorite", false))
     {
-      this.jdField_a_of_type_Bllb = new bllh(this, this, new blll(this), a(), 7, null);
+      this.jdField_a_of_type_Bmme = new bmmk(this, this, new bmmo(this), a(), 7, null);
       localTextView1.setText(localBundle.getString("leftViewText"));
       localTextView2.setVisibility(8);
-      this.d = ((ImageView)super.findViewById(2131368961));
+      this.d = ((ImageView)super.findViewById(2131369056));
       this.d.setVisibility(0);
-      this.d.setImageResource(2130840281);
-      this.d.setContentDescription(super.getString(2131693747));
-      this.d.setOnClickListener(this.jdField_a_of_type_Bllb);
-      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131368965));
-      if (!bljz.a()) {
+      this.d.setImageResource(2130840291);
+      this.d.setContentDescription(super.getString(2131693764));
+      this.d.setOnClickListener(this.jdField_a_of_type_Bmme);
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131369060));
+      if (!bmlc.a()) {
         if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView != null)
         {
           this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(0);
@@ -349,9 +349,9 @@ public class LocationDetailActivity
       {
         this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
         continue;
-        localTextView1.setText(2131690389);
-        localTextView2.setText(2131693974);
-        localTextView2.setOnClickListener(new blli(this));
+        localTextView1.setText(2131690384);
+        localTextView2.setText(2131693991);
+        localTextView2.setOnClickListener(new bmml(this));
       }
     }
   }

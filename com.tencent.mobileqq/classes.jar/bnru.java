@@ -1,34 +1,15 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class bnru
-  implements Observer<String>
+  implements DialogInterface.OnDismissListener
 {
-  bnru(bnrr parambnrr, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  bnru(bnrt parambnrt, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void a(@Nullable String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (!paramString.equals("")) {}
-    }
-    else
-    {
-      str = anni.a(2131698773);
-    }
-    paramString = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    if (str.indexOf('\n') > 0) {}
-    for (int i = bnrr.a(this.jdField_a_of_type_Bnrr) * 3 / 10;; i = bnrr.a(this.jdField_a_of_type_Bnrr) * 11 / 50)
-    {
-      paramString.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(bggq.c(bnrr.a(this.jdField_a_of_type_Bnrr), 23.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(bggq.a(bnrr.a(this.jdField_a_of_type_Bnrr), 2.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(str);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
-      return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
     }
   }
 }

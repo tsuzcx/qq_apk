@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import anrg;
-import bcst;
+import aodm;
+import bdll;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class PrinterStatusHandler$1
   extends TimerTask
 {
-  public PrinterStatusHandler$1(anrg paramanrg) {}
+  public PrinterStatusHandler$1(aodm paramaodm) {}
   
   public void run()
   {
-    bcst.b(this.this$0.app, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
-    if (anrg.a(this.this$0) != null)
+    bdll.b(this.this$0.app, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
+    if (aodm.a(this.this$0) != null)
     {
-      anrg.a(this.this$0).cancel();
-      anrg.a(this.this$0, null);
+      aodm.a(this.this$0).cancel();
+      aodm.a(this.this$0, null);
     }
   }
 }

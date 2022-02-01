@@ -1,92 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.IOException;
-import java.net.URLEncoder;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class wjh
-  extends wjk
+class wjh
+  implements Executor
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private int b;
   
-  public wjh(String paramString)
+  private wjh(@NonNull String paramString, int paramInt1, @IntRange(from=0L) int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  private ErrorMessage a()
+  public void execute(@NonNull Runnable paramRunnable)
   {
-    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
-    long l = System.currentTimeMillis();
-    localObject = nlw.a(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
-    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
+    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
+    int i = this.jdField_a_of_type_JavaUtilQueue.size();
+    if (i > Runtime.getRuntime().availableProcessors()) {
+      yuk.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
     {
-      localObject = nlw.a((HttpResponse)localObject);
-      yqp.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
-      localObject = new JSONObject((String)localObject);
-      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
-      if (this.jdField_a_of_type_Int != 0) {
-        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      yqp.d("Q.qqstory.publish.upload.LinkRichObject", "");
-      if (localObject != null) {}
-      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
-        return new ErrorMessage(96000003, (String)localObject);
-      }
-    }
-    String str = ((JSONObject)localObject).getString("title");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
-      this.b = str;
-    }
-    str = ((JSONObject)localObject).getString("abstract");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
-      this.c = str;
-    }
-    localObject = ((JSONObject)localObject).getString("thumbUrl");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
-      this.d = ((String)localObject);
-    }
-    yqp.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    return new ErrorMessage();
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      if (a().isSuccess())
+      yuk.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
       {
-        b();
-        notifyResult(new ErrorMessage());
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      yqp.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
-      new ErrorMessage(96000001, localJSONException.getMessage());
-      b();
-      notifyResult(new ErrorMessage());
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        yqp.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
-        new ErrorMessage(96000000, localIOException.getMessage());
+        paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (paramRunnable != null) {
+          ThreadManager.excute(paramRunnable, this.b, new wji(this, paramRunnable), false);
+        }
       }
     }
   }

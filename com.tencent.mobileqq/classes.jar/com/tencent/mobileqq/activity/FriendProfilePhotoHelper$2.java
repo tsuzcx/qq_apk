@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aeij;
+import aerm;
 
 public class FriendProfilePhotoHelper$2
   implements Runnable
 {
-  public FriendProfilePhotoHelper$2(aeij paramaeij) {}
+  public FriendProfilePhotoHelper$2(aerm paramaerm) {}
   
   public void run()
   {

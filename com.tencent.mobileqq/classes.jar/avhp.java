@@ -1,8 +1,22 @@
-import java.util.List;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.fts.FTSDatabase;
 
-public abstract interface avhp
+public class avhp
+  extends FTSDatabase
 {
-  public abstract void a(List<avij> paramList);
+  public boolean a()
+  {
+    if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
+      apau.a = false;
+    }
+    boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabaseV2");
+    if (!bool) {
+      apau.a = false;
+    }
+    return bool;
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
-import akeb;
+import akpm;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import anni;
-import aywi;
-import bgnt;
+import anzj;
+import azov;
+import bhnv;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,7 +27,7 @@ public class RebindActivity
   public int a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aywi jdField_a_of_type_Aywi;
+  private azov jdField_a_of_type_Azov;
   public String a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
@@ -56,33 +56,33 @@ public class RebindActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559555);
+    setContentView(2131559560);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_uni", false);
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_change_bind", false);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("k_country_code");
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("k_number");
     this.jdField_b_of_type_Int = getIntent().getIntExtra("kBindType", 0);
-    setTitle(anni.a(2131711913));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372322));
+    setTitle(anzj.a(2131712022));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372436));
     paramBundle = this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString;
     ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-31676);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(getResources().getString(2131694248, new Object[] { paramBundle, getIntent().getStringExtra("k_uin"), this.app.getCurrentAccountUin() }));
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(getResources().getString(2131694288, new Object[] { paramBundle, getIntent().getStringExtra("k_uin"), this.app.getCurrentAccountUin() }));
     localSpannableStringBuilder.setSpan(localForegroundColorSpan, 4, paramBundle.length() + 4, 33);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372321));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372435));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131372320));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131372434));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     return true;
   }
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aywi != null)
+    if (this.jdField_a_of_type_Azov != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Aywi);
-      this.jdField_a_of_type_Aywi = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Azov);
+      this.jdField_a_of_type_Azov = null;
     }
     super.doOnDestroy();
   }
@@ -90,21 +90,21 @@ public class RebindActivity
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton) {
-      if (!bgnt.d(this)) {
-        a(2131693991);
+      if (!bhnv.d(this)) {
+        a(2131694008);
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Aywi == null)
+      if (this.jdField_a_of_type_Azov == null)
       {
-        this.jdField_a_of_type_Aywi = new akeb(this);
-        this.app.registObserver(this.jdField_a_of_type_Aywi);
+        this.jdField_a_of_type_Azov = new akpm(this);
+        this.app.registObserver(this.jdField_a_of_type_Azov);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-      a(2131717771, 1000L, true);
+      a(2131717902, 1000L, true);
       continue;
       if (paramView == this.jdField_b_of_type_AndroidWidgetButton) {
         finish();

@@ -1,23 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaoe
-  implements aaob
+public class aaoe
+  implements View.OnClickListener
 {
-  aaoe(aaod paramaaod, String paramString) {}
+  public aaoe(VideoPlayerView paramVideoPlayerView) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
+    if (VideoPlayerView.a(this.a) != null)
     {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_Aaod.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.g(this.a);
+      VideoPlayerView.a(this.a, false);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.jdField_a_of_type_Aaod.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

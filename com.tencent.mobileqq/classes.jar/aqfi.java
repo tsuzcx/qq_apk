@@ -1,33 +1,44 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewPropertyAnimator;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aqfi
-  implements Animator.AnimatorListener
+class aqfi
 {
-  public aqfi(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, LinearLayout paramLinearLayout) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = aqfh.a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aqfi()
   {
-    ColorNoteSmallScreenRelativeLayout.c(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, false);
-    paramAnimator = ColorNoteSmallScreenRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout).iterator();
-    while (paramAnimator.hasNext()) {
-      ((ColorNote)paramAnimator.next()).animate = false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.animate().setListener(null).translationX(0.0F).setDuration(200L).start();
+    this.jdField_a_of_type_JavaLangString = "android";
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String toString()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("scene", this.jdField_b_of_type_Int);
+      localJSONObject.put("type", this.jdField_c_of_type_Int);
+      localJSONObject.put("ver", this.d);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("ArkApp.ArkSecurityReporter", 1, "ArkSafe.report exception=", localJSONException);
+      }
+    }
+  }
 }
 
 

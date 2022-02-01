@@ -215,14 +215,12 @@ public class EmbeddedVideoJsPlugin
           if ((!"updateXWebVideo".equals(paramString1)) && (!"operateXWebVideo".equals(paramString1))) {
             break;
           }
-          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, paramString1, paramString2, paramInt)))
-          {
-            if (this.jsPluginEngine != null) {
+          if (this.jsPluginEngine != null) {
+            if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, paramString1, paramString2, paramInt, this.jsPluginEngine.appBrandRuntime))) {
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+            } else {
+              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
             }
-          }
-          else if (this.jsPluginEngine != null) {
-            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
           }
         }
       }

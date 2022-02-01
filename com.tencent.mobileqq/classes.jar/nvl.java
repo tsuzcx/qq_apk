@@ -1,11 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import java.lang.ref.WeakReference;
 
-public abstract interface nvl
+public class nvl
+  implements aeqy
 {
-  public abstract void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt);
+  WeakReference<AccountDetailActivity> a;
   
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public nvl(AccountDetailActivity paramAccountDetailActivity)
+  {
+    this.a = new WeakReference(paramAccountDetailActivity);
+  }
+  
+  public void a(aeqz paramaeqz)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return;
+    }
+    ((AccountDetailActivity)this.a.get()).a(paramaeqz);
+    ((AccountDetailActivity)this.a.get()).S();
+  }
 }
 
 

@@ -1,23 +1,43 @@
-public class blix
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashSet;
+
+class blix
+  implements View.OnClickListener
 {
-  public static String a = "?action=folderList&offset=%d&limit=%d";
-  public static String b = "?action=fileList&folderId=%s&offset=%d&limit=%d";
-  public static String c = "?action=fileDetail&fileId=%s&offset=%d&limit=%d";
-  public static String d = "MPFILE_ACTION_HOST_INFO_UPDATE";
-  public static String e = "MPFILE_ACTION_CONNECT_PC_RET";
-  public static String f = "MPFILE_ACTION_CONNECT_PC_SESSINID";
-  public static String g = "MPFILE_ACTION_CHANNEL_DISCONNECT";
-  public static String h = "0X8005E1F";
-  public static String i = "0X8005F29";
-  public static String j = "0X8005E22";
-  public static String k = "0X8005E20";
-  public static String l = "0X8005E21";
-  public static String m = "0X80060DF";
-  public static String n = "0X80061A2";
-  public static String o = "0X8006443";
-  public static String p = "0X8006444";
-  public static String q = "0X8006445";
-  public static String r = "0X8006446";
+  blix(blir paramblir) {}
+  
+  public void onClick(View paramView)
+  {
+    int i = paramView.getId();
+    Object localObject;
+    if ((blir.a(this.a)) && ((blir.a(this.a) == null) || (!blir.a(this.a).contains(Integer.valueOf(i)))) && (blir.b(this.a) != -1) && (i != blir.b(this.a)))
+    {
+      localObject = (View)blir.a(this.a).get(blir.b(this.a));
+      ((View)localObject).findViewById(2131361971).setVisibility(8);
+      localObject = (TextView)((View)localObject).findViewById(2131361970);
+      blir.a(this.a, (TextView)localObject, false);
+      localObject = (View)blir.a(this.a).get(i);
+      ((View)localObject).findViewById(2131361971).setVisibility(0);
+      localObject = (TextView)((View)localObject).findViewById(2131361970);
+      blir.a(this.a, (TextView)localObject, true);
+      blir.a(this.a, i);
+    }
+    if (blir.a(this.a) != null) {
+      blir.a(this.a).OnClick(paramView, i);
+    }
+    if (blir.a(this.a) != null)
+    {
+      localObject = (TextView)paramView.findViewById(2131361970);
+      if ((localObject != null) && ((localObject instanceof TextView))) {
+        blir.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

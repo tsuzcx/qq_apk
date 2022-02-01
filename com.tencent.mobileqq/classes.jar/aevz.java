@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
-class aevz
-  implements View.OnLongClickListener
+public class aevz
+  extends asvt
 {
-  aevz(aevy paramaevy, long paramLong) {}
+  public aevz(Leba paramLeba) {}
   
-  public boolean onLongClick(View paramView)
+  protected void l_(int paramInt)
   {
-    bglp.a(this.jdField_a_of_type_Aevy.a, 230).setTitle(this.jdField_a_of_type_Aevy.a.getString(2131718366)).setItems(2130968613, new aewa(this)).show();
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
+    }
+    if (Leba.a(this.a) != null) {
+      Leba.a(this.a).b();
+    }
   }
 }
 

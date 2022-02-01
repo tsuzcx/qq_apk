@@ -1,18 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.image.AbsThirdDataSourceAdapter;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
-class sco
-  implements bkia
+public class sco
+  extends AbsThirdDataSourceAdapter
 {
-  sco(sce paramsce) {}
+  int jdField_a_of_type_Int = 2;
+  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b = 0;
+  private int c = 0;
   
-  public void ak_()
+  public sco(int paramInt)
   {
-    if (sce.b(this.a)) {
-      sce.a(this.a).c();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int getPlayType()
+  {
+    return this.c;
+  }
+  
+  public int getStaus()
+  {
+    return this.b;
+  }
+  
+  public String getURL()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
+  {
+    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
+    this.b = 1;
+    paramOnPreparedCallback = scq.a();
+    scp localscp = new scp(this);
+    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
+      paramOnPreparedCallback.a(paramString, localscp);
     }
-    if (sce.a(this.a) != null) {
-      sce.a(this.a).g();
+    while (this.jdField_a_of_type_Int != 4) {
+      return;
     }
+    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localscp);
   }
 }
 

@@ -1,23 +1,23 @@
 package dov.com.qq.im.capture.text;
 
-import boqk;
-import boql;
-import boqn;
+import bpsf;
+import bpsg;
+import bpsi;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 class DynamicTextConfigManager$1
   implements Runnable
 {
-  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, boqn paramboqn) {}
+  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bpsi parambpsi) {}
   
   public void run()
   {
     Iterator localIterator = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean.fontInfos.iterator();
     while (localIterator.hasNext())
     {
-      boqk localboqk = (boqk)localIterator.next();
-      DynamicTextConfigManager.a(this.this$0).a(localboqk, this.jdField_a_of_type_Boqn);
+      bpsf localbpsf = (bpsf)localIterator.next();
+      DynamicTextConfigManager.a(this.this$0).a(localbpsf, this.jdField_a_of_type_Bpsi);
     }
   }
 }

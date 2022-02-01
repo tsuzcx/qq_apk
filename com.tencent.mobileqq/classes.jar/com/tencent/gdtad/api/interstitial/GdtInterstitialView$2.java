@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acmb;
-import acqy;
+import acqd;
+import acvc;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
@@ -18,9 +18,9 @@ public final class GdtInterstitialView$2
     }
     for (;;)
     {
-      acqy.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
+      acvc.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      WeakReference localWeakReference = acmb.a().a(this.jdField_a_of_type_JavaLangString);
+      WeakReference localWeakReference = acqd.a().a(this.jdField_a_of_type_JavaLangString);
       if (localWeakReference != null)
       {
         if (localWeakReference.get() == null)

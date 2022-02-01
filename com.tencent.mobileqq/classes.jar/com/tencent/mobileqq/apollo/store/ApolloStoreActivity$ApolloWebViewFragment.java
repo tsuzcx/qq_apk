@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.store;
 
-import amxo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -13,8 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bhmv;
-import bkfv;
+import anji;
+import binq;
+import blha;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -30,7 +30,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
 {
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this);
   private long b;
   
   public int doCreateLoopStep_InitUIFrame(Bundle paramBundle)

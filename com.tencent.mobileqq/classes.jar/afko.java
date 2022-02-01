@@ -1,82 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xe83.oidb_0xe83.RspBody;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import mqq.os.MqqHandler;
 
 public class afko
-  extends anxg
+  extends MqqHandler
 {
-  public afko(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  public afko(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  protected void a(oidb_0xe83.RspBody paramRspBody, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramRspBody.group_id.has())
+    switch (paramMessage.what)
     {
-      paramRspBody = String.valueOf(paramRspBody.group_id.get());
-      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
-        break label119;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
-      }
-    }
-    label119:
-    do
-    {
+    case 107: 
+    default: 
       return;
-      if (QLog.isColorLevel()) {
-        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
-      }
-      this.a.d();
-      paramRspBody = this.a.a(1101236949L);
-    } while (paramRspBody == null);
-    this.a.a(paramRspBody);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
-    }
-    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.a.d();
-          } while (!paramBoolean);
-          localObject = (TroopManager)this.a.app.getManager(52);
-        } while (localObject == null);
-        localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_JavaLangString);
-      } while (localObject == null);
-      paramLong = ((TroopInfo)localObject).troopCreditLevel;
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
-      }
-    } while (paramLong == 2L);
-    if (paramLong == 1L)
-    {
-      localObject = bglp.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131718563)).setMessage(anni.a(2131714153));
-      ((bgpa)localObject).setPositiveButton(2131696834, new afkp(this));
-      ((bgpa)localObject).setNegativeButton("", null);
-      ((bgpa)localObject).setCancelable(false);
-      ((bgpa)localObject).show();
+    case 106: 
+      this.a.finish();
       return;
     }
-    Object localObject = bglp.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131718563)).setMessage(anni.a(2131714154));
-    ((bgpa)localObject).setPositiveButton(2131696834, new afkq(this));
-    ((bgpa)localObject).setNegativeButton("", null);
-    ((bgpa)localObject).setCancelable(false);
-    ((bgpa)localObject).show();
+    int i = 0;
+    while (i < 6)
+    {
+      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
+      i += 1;
+    }
+    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

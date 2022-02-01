@@ -1,27 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
-
-public class bqcn
-  extends Handler
+class bqcn
+  implements agtg
 {
-  public bqcn(BeautyBar paramBeautyBar) {}
+  bqcn(bqcm parambqcm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-      }
-    } while (BeautyBar.a(this.a) == null);
-    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+    this.a.a.a.a(-1, bqcl.a(this.a.a), 2130772029, 0, false);
+    bqcl.a(this.a.a, null);
+  }
+  
+  public void b()
+  {
+    this.a.a.a.a(-1, bqcl.a(this.a.a), 2130772029, 0, false);
+    bqcl.a(this.a.a, null);
   }
 }
 

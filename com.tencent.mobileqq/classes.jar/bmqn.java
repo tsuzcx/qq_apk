@@ -1,109 +1,54 @@
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class bmqn
+  extends bmqd
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public int c = 0;
-  public int d = 0;
+  public bmqn(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  static
+  public void a(bmqc parambmqc)
   {
-    jdField_a_of_type_JavaLangString = Long.toString(1130L);
+    boolean bool = false;
+    JSONObject localJSONObject = parambmqc.a();
+    if (localJSONObject == null) {}
+    try
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore response json is null");
+      return;
+    }
+    catch (JSONException parambmqc)
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore parse failed: " + parambmqc.getMessage());
+      return;
+    }
+    int i = localJSONObject.getInt("ret");
+    parambmqc = localJSONObject.getString("msg");
+    localJSONObject = localJSONObject.getJSONObject("data");
+    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore ret=" + i + "|msg=" + parambmqc);
+      return;
+    }
+    i = localJSONObject.optInt("err_code", 0);
+    parambmqc = localJSONObject.optString("err_msg");
+    if (i == 0) {
+      bool = true;
+    }
+    bmqu.b(ForceUserUpdateActivity.a(this.a), bool);
+    if (bool)
+    {
+      bmqw.d("ForceUserUpdateActivity", "onReceiveData: UpdateToQQBookstore succeed");
+      ForceUserUpdateActivity.c(this.a);
+      return;
+    }
+    ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore errMsg=" + parambmqc);
   }
   
-  public bmqn()
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public int a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return 0;
-    }
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public int a(bmqn parambmqn)
-  {
-    int k = 1;
-    bmqn localbmqn;
-    if (this.jdField_a_of_type_Int > parambmqn.jdField_a_of_type_Int)
-    {
-      localbmqn = parambmqn;
-      parambmqn = this;
-    }
-    for (;;)
-    {
-      int i;
-      switch (localbmqn.jdField_a_of_type_Int)
-      {
-      default: 
-        i = 0;
-        j = 0;
-        label64:
-        if (j == 0) {
-          break;
-        }
-      }
-      for (int j = k;; j = 0)
-      {
-        k = j;
-        if (i != 0) {
-          k = j | 0x2;
-        }
-        return k;
-        if (parambmqn.jdField_a_of_type_Int == 0) {
-          break;
-        }
-        i = 1;
-        j = 1;
-        break label64;
-        if ((parambmqn.jdField_a_of_type_Int == 1) && (localbmqn.jdField_b_of_type_Int == parambmqn.jdField_b_of_type_Int)) {
-          break;
-        }
-        i = 1;
-        j = 1;
-        break label64;
-        if ((parambmqn.jdField_a_of_type_Int == 2) && (localbmqn.jdField_b_of_type_JavaLangString.equals(parambmqn.jdField_b_of_type_JavaLangString))) {
-          break;
-        }
-        i = 0;
-        j = 1;
-        break label64;
-        if ((parambmqn.jdField_a_of_type_Int == 3) && (localbmqn.c == parambmqn.c)) {
-          break;
-        }
-        i = 0;
-        j = 1;
-        break label64;
-        if ((parambmqn.jdField_a_of_type_Int == 4) && (localbmqn.jdField_b_of_type_JavaLangString.equals(parambmqn.jdField_b_of_type_JavaLangString))) {
-          break;
-        }
-        i = 0;
-        j = 1;
-        break label64;
-      }
-      localbmqn = this;
-    }
-  }
-  
-  public boolean a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    do
-    {
-      return true;
-      return false;
-    } while (this.jdField_b_of_type_Int > 0);
-    return false;
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: UpdateToQQBookstore error: " + paramString);
   }
 }
 

@@ -1,22 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.List;
 
-public class ouo
-  extends anmu
+class ouo
+  extends ovd
 {
-  public ouo(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  ouo(otv paramotv, boolean paramBoolean, List paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
-    }
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    paramovg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.c(this.jdField_a_of_type_Otv), 6, 6);
   }
 }
 

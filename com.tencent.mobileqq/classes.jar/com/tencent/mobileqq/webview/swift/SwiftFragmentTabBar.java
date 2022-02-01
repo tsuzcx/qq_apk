@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
 import android.content.Context;
-import bics;
+import bjdq;
 import com.tencent.mobileqq.widget.TabBarView;
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class SwiftFragmentTabBar
     super(paramContext);
   }
   
-  public void a(List<WebViewTabBarData> paramList, bics parambics)
+  public void a(List<WebViewTabBarData> paramList, bjdq parambjdq)
   {
     if ((paramList == null) || (paramList.size() < 1)) {
       return;
@@ -24,7 +24,7 @@ public class SwiftFragmentTabBar
       super.a(((WebViewTabBarData)paramList.get(i)).tabName);
       i += 1;
     }
-    super.setOnTabChangeListener(parambics);
+    super.setOnTabChangeListener(parambjdq);
     super.setSelectedTab(0, false);
     super.setVisibility(0);
   }

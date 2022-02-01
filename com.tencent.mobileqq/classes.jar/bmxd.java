@@ -1,21 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class bmxd
-  implements Parcelable.Creator<WadlParams>
+public abstract interface bmxd
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
+  public abstract void attachQQContext(Activity paramActivity, QQAppInterface paramQQAppInterface);
   
-  public WadlParams[] a(int paramInt)
-  {
-    return new WadlParams[paramInt];
-  }
+  public abstract void clearCache();
+  
+  public abstract void forceRefresh();
+  
+  public abstract void onSwitchOutofQzone();
+  
+  public abstract void resetReportFlag();
+  
+  public abstract void setQzoneSwitchlistener(akgu paramakgu);
+  
+  public abstract void setRightButtonType(int paramInt);
+  
+  public abstract int setTitleAlphaAndGetLastValue(int paramInt);
+  
+  public abstract void setTitleView(ViewGroup paramViewGroup);
+  
+  public abstract void updatePublishBox(Intent paramIntent);
 }
 
 

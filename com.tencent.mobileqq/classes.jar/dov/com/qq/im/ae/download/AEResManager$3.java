@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.download;
 
-import bnpt;
-import bnpu;
-import bnpw;
+import borf;
+import borg;
+import bori;
 
 public class AEResManager$3
   implements Runnable
 {
-  public AEResManager$3(bnpu parambnpu, bnpt parambnpt, bnpw parambnpw) {}
+  public AEResManager$3(borg paramborg, borf paramborf, bori parambori) {}
   
   public void run()
   {
-    bnpu.a(this.this$0, this.jdField_a_of_type_Bnpt, this.jdField_a_of_type_Bnpw);
+    borg.a(this.this$0, this.jdField_a_of_type_Borf, this.jdField_a_of_type_Bori);
   }
 }
 

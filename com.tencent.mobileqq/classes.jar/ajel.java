@@ -1,72 +1,84 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajel
-  implements bics
+  implements ajdz
 {
-  public ajel(TroopActivity paramTroopActivity) {}
+  public ajel(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bcfq> paramList)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
-    }
-    if (this.a.b != 2)
+    int i = 3;
+    this.a.j();
+    if (paramBoolean)
     {
-      switch (paramInt2)
-      {
-      default: 
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        bcst.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
+      if (paramInt3 == 1) {
+        if (this.a.a != null) {
+          this.a.a.sendMessage(this.a.a.obtainMessage(4, paramList));
+        }
       }
       for (;;)
       {
-        this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_Bkfv.sendEmptyMessage(1234);
-        TroopActivity.a(this.a, paramInt2);
         return;
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        bcst.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        continue;
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
-        bcst.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
+        if (paramInt3 == 2)
+        {
+          if (this.a.a != null) {
+            this.a.a.sendEmptyMessage(5);
+          }
+        }
+        else if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+        {
+          paramObject = (ArrayList)paramObject;
+          if (paramObject.size() == 0)
+          {
+            if (this.a.a != null)
+            {
+              paramObject = this.a.a;
+              if (!this.a.b) {
+                break label159;
+              }
+            }
+            label159:
+            for (paramInt1 = 3;; paramInt1 = 2)
+            {
+              paramObject.sendEmptyMessage(paramInt1);
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+              return;
+            }
+          }
+          if (paramObject.size() > 0) {}
+          try
+          {
+            paramString = (ajfc)paramObject.get(0);
+            if ((this.a.a(paramObject)) && (this.a.a != null))
+            {
+              this.a.a.sendEmptyMessage(0);
+              return;
+            }
+          }
+          catch (Exception paramObject)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
+            }
+            paramObject = this.a.a;
+            if (!this.a.b) {}
+          }
+        }
       }
-    }
-    switch (paramInt2)
-    {
-    default: 
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
-        break;
-      }
-    }
-    for (String str = "0";; str = "1")
-    {
-      bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-      bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Int = 1;
-      break;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
-      for (str = "0";; str = "1")
+      for (paramInt1 = i;; paramInt1 = 2)
       {
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
-      for (str = "0";; str = "1")
-      {
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
-        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        break;
+        paramObject.sendEmptyMessage(paramInt1);
+        return;
       }
     }
+    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
 }
 

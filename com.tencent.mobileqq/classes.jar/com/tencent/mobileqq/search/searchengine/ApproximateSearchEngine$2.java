@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import bbse;
-import bbtk;
-import bbtx;
+import bckx;
+import bcmd;
+import bcmq;
 import java.util.List;
 
 public class ApproximateSearchEngine$2
   implements Runnable
 {
-  public ApproximateSearchEngine$2(bbse parambbse, bbtx parambbtx) {}
+  public ApproximateSearchEngine$2(bckx parambckx, bcmq parambcmq) {}
   
   public void run()
   {
-    List localList = bbse.a(this.this$0, this.a);
-    bbtk localbbtk = bbse.a(this.this$0);
-    if ((localbbtk != null) && (localList != null)) {
-      localbbtk.a(localList, 1);
+    List localList = bckx.a(this.this$0, this.a);
+    bcmd localbcmd = bckx.a(this.this$0);
+    if ((localbcmd != null) && (localList != null)) {
+      localbcmd.a(localList, 1);
     }
   }
 }

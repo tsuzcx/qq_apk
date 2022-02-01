@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import android.view.MotionEvent;
+import android.view.View;
 
-public final class akgp
-  implements Parcelable.Creator<TroopClipPic>
+public abstract interface akgp
 {
-  public TroopClipPic a(Parcel paramParcel)
-  {
-    return new TroopClipPic(paramParcel);
-  }
-  
-  public TroopClipPic[] a(int paramInt)
-  {
-    return new TroopClipPic[paramInt];
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

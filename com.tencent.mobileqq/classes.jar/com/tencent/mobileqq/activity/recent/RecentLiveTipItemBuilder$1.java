@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.recent;
 
-import alch;
-import anhk;
-import axby;
-import bcsy;
+import alnx;
+import antf;
+import axup;
+import bdlq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 
 public class RecentLiveTipItemBuilder$1
   implements Runnable
 {
-  public RecentLiveTipItemBuilder$1(alch paramalch, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, axby paramaxby) {}
+  public RecentLiveTipItemBuilder$1(alnx paramalnx, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, axup paramaxup) {}
   
   public void run()
   {
-    bcsy localbcsy = new bcsy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("msg_box");
+    bdlq localbdlq = new bdlq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("msg_box");
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving)
     {
       str = "exp_livepush";
-      localbcsy = localbcsy.d(str).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - anhk.g));
+      localbdlq = localbdlq.d(str).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - antf.g));
       if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
         break label125;
       }
@@ -26,7 +26,7 @@ public class RecentLiveTipItemBuilder$1
     label125:
     for (String str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.startLiveWordingType);; str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.endLiveWordingType))
     {
-      localbcsy.a(new String[] { str, String.valueOf(this.jdField_a_of_type_Axby.b()) }).a();
+      localbdlq.a(new String[] { str, String.valueOf(this.jdField_a_of_type_Axup.b()) }).a();
       return;
       str = "exp_relivepush";
       break;

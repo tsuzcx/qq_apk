@@ -11,33 +11,33 @@ import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import ardw;
-import ardz;
-import areb;
-import arec;
-import ared;
-import aref;
-import areg;
-import areh;
-import arei;
-import arej;
-import arek;
-import arem;
-import aren;
-import arew;
-import arfn;
-import arfp;
-import arft;
-import arfu;
-import arfv;
-import arga;
-import argb;
-import argg;
-import argk;
-import argm;
-import argn;
-import argo;
-import argp;
+import artl;
+import arto;
+import artq;
+import artr;
+import arts;
+import artu;
+import artv;
+import artw;
+import artx;
+import arty;
+import artz;
+import arub;
+import aruc;
+import arul;
+import arvc;
+import arve;
+import arvi;
+import arvj;
+import arvk;
+import arvp;
+import arvq;
+import arvv;
+import arvz;
+import arwb;
+import arwc;
+import arwd;
+import arwe;
 import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -46,7 +46,7 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class DanmakuManager
-  implements View.OnTouchListener, arfu
+  implements View.OnTouchListener, arvj
 {
   private static final DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("00.00");
   private static final DecimalFormat jdField_b_of_type_JavaTextDecimalFormat = new DecimalFormat("00");
@@ -54,20 +54,20 @@ public class DanmakuManager
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private final areb jdField_a_of_type_Areb;
-  private final arec jdField_a_of_type_Arec;
-  private final ared jdField_a_of_type_Ared;
-  private final aref jdField_a_of_type_Aref;
-  private arei jdField_a_of_type_Arei = new arei(this, null);
-  private volatile arej jdField_a_of_type_Arej;
-  private final arek jdField_a_of_type_Arek;
-  private arew jdField_a_of_type_Arew;
-  private final arft jdField_a_of_type_Arft;
-  private final argb jdField_a_of_type_Argb;
-  private final argg jdField_a_of_type_Argg;
+  private final artq jdField_a_of_type_Artq;
+  private final artr jdField_a_of_type_Artr;
+  private final arts jdField_a_of_type_Arts;
+  private final artu jdField_a_of_type_Artu;
+  private artx jdField_a_of_type_Artx = new artx(this, null);
+  private volatile arty jdField_a_of_type_Arty;
+  private final artz jdField_a_of_type_Artz;
+  private arul jdField_a_of_type_Arul;
+  private final arvi jdField_a_of_type_Arvi;
+  private final arvq jdField_a_of_type_Arvq;
+  private final arvv jdField_a_of_type_Arvv;
   private String jdField_a_of_type_JavaLangString;
-  private final List<aren> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private final Queue<argk> jdField_a_of_type_JavaUtilQueue = new LinkedBlockingDeque();
+  private final List<aruc> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private final Queue<arvz> jdField_a_of_type_JavaUtilQueue = new LinkedBlockingDeque();
   private volatile boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -82,44 +82,44 @@ public class DanmakuManager
   private long f;
   private long g;
   
-  public DanmakuManager(View paramView, arew paramarew)
+  public DanmakuManager(View paramView, arul paramarul)
   {
-    this.jdField_a_of_type_Arew = paramarew;
-    this.jdField_a_of_type_Arft = arfp.a(paramView);
-    if (this.jdField_a_of_type_Arft != null)
+    this.jdField_a_of_type_Arul = paramarul;
+    this.jdField_a_of_type_Arvi = arve.a(paramView);
+    if (this.jdField_a_of_type_Arvi != null)
     {
-      this.jdField_a_of_type_Arft.a(this);
-      this.jdField_a_of_type_Arft.a(this);
+      this.jdField_a_of_type_Arvi.a(this);
+      this.jdField_a_of_type_Arvi.a(this);
     }
-    this.jdField_a_of_type_Argg = new argg();
-    this.jdField_a_of_type_Argb = new argb();
-    this.jdField_a_of_type_Arec = new arec();
-    this.jdField_a_of_type_Arek = new arek(paramarew);
+    this.jdField_a_of_type_Arvv = new arvv();
+    this.jdField_a_of_type_Arvq = new arvq();
+    this.jdField_a_of_type_Artr = new artr();
+    this.jdField_a_of_type_Artz = new artz(paramarul);
     paramView = new DanmakuManager.DanmakuComparator();
-    this.jdField_a_of_type_Ared = new ared(this.jdField_a_of_type_Argg, paramView);
-    this.jdField_a_of_type_Areb = areb.a(paramarew, this.jdField_a_of_type_Arec, paramView, this.jdField_a_of_type_Argg, this.jdField_a_of_type_Argb);
-    this.jdField_a_of_type_Aref = new aref(paramarew);
+    this.jdField_a_of_type_Arts = new arts(this.jdField_a_of_type_Arvv, paramView);
+    this.jdField_a_of_type_Artq = artq.a(paramarul, this.jdField_a_of_type_Artr, paramView, this.jdField_a_of_type_Arvv, this.jdField_a_of_type_Arvq);
+    this.jdField_a_of_type_Artu = new artu(paramarul);
   }
   
   private void A()
   {
-    argp.c("DanmakuManager", "handleRelease()");
+    arwe.c("DanmakuManager", "handleRelease()");
     C();
-    this.jdField_a_of_type_Arek.a();
-    this.jdField_a_of_type_Arec.a();
+    this.jdField_a_of_type_Artz.a();
+    this.jdField_a_of_type_Artr.a();
     B();
   }
   
   private void B()
   {
-    if (this.jdField_a_of_type_Arew != null)
+    if (this.jdField_a_of_type_Arul != null)
     {
-      Object localObject = this.jdField_a_of_type_Arew.a();
+      Object localObject = this.jdField_a_of_type_Arul.a();
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((arfn)((Iterator)localObject).next()).a();
+          ((arvc)((Iterator)localObject).next()).a();
         }
       }
     }
@@ -129,7 +129,7 @@ public class DanmakuManager
   {
     if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
     {
-      if (argn.a()) {
+      if (arwc.a()) {
         this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
       }
     }
@@ -141,31 +141,31 @@ public class DanmakuManager
   
   private void D()
   {
-    argp.c("DanmakuManager", "handleClear()");
-    this.jdField_a_of_type_Areb.c();
-    this.jdField_a_of_type_Arew.b();
-    this.jdField_a_of_type_Ared.a();
+    arwe.c("DanmakuManager", "handleClear()");
+    this.jdField_a_of_type_Artq.c();
+    this.jdField_a_of_type_Arul.b();
+    this.jdField_a_of_type_Arts.a();
   }
   
   private void E()
   {
-    if (this.jdField_a_of_type_Arej != null) {
+    if (this.jdField_a_of_type_Arty != null) {
       while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
       {
-        argk localargk = (argk)this.jdField_a_of_type_JavaUtilQueue.poll();
-        aren localaren = this.jdField_a_of_type_Areb.a(localargk);
-        if (argp.jdField_a_of_type_Int >= 4) {
-          argp.a("DanmakuManager", new Object[] { "handleClick:", localargk, ",currentTime:", Long.valueOf(a()) });
+        arvz localarvz = (arvz)this.jdField_a_of_type_JavaUtilQueue.poll();
+        aruc localaruc = this.jdField_a_of_type_Artq.a(localarvz);
+        if (arwe.jdField_a_of_type_Int >= 4) {
+          arwe.a("DanmakuManager", new Object[] { "handleClick:", localarvz, ",currentTime:", Long.valueOf(a()) });
         }
-        ardw.a().a().a().post(new DanmakuManager.1(this, localaren, localargk));
+        artl.a().a().a().post(new DanmakuManager.1(this, localaruc, localarvz));
       }
     }
-    argp.a("DanmakuManager", "message click");
+    arwe.a("DanmakuManager", "message click");
   }
   
   private void F()
   {
-    argp.c("surface_lock", "handleClearDrawingCache");
+    arwe.c("surface_lock", "handleClearDrawingCache");
     v();
     try
     {
@@ -184,14 +184,14 @@ public class DanmakuManager
     Object localObject1 = null;
     try
     {
-      Canvas localCanvas = this.jdField_a_of_type_Arft.a();
+      Canvas localCanvas = this.jdField_a_of_type_Arvi.a();
       StringBuilder localStringBuilder;
       Object localObject4;
       if (localCanvas != null)
       {
         localObject1 = localCanvas;
         localObject3 = localCanvas;
-        argo.a(localCanvas);
+        arwd.a(localCanvas);
         localObject1 = localCanvas;
         localObject3 = localCanvas;
         localStringBuilder = new StringBuilder().append("clearDrawing lockCanvas ");
@@ -204,13 +204,13 @@ public class DanmakuManager
       {
         localObject1 = localCanvas;
         localObject3 = localCanvas;
-        argp.c("surface_lock", localObject4);
+        arwe.c("surface_lock", localObject4);
         if (localCanvas != null) {}
         try
         {
-          this.jdField_a_of_type_Arft.a(localCanvas);
-          argp.c("surface_lock", "clearDrawing unlockCanvas " + localCanvas.hashCode());
-          ardw.a().a().a().post(new DanmakuManager.2(this));
+          this.jdField_a_of_type_Arvi.a(localCanvas);
+          arwe.c("surface_lock", "clearDrawing unlockCanvas " + localCanvas.hashCode());
+          artl.a().a().a().post(new DanmakuManager.2(this));
           return;
           label154:
           localObject1 = localCanvas;
@@ -223,16 +223,16 @@ public class DanmakuManager
           for (;;)
           {
             if (localCanvas != null) {
-              argp.a("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localCanvas.hashCode(), localThrowable1);
+              arwe.a("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localCanvas.hashCode(), localThrowable1);
             }
           }
         }
       }
       try
       {
-        this.jdField_a_of_type_Arft.a(localThrowable2);
-        argp.c("surface_lock", "clearDrawing unlockCanvas " + localThrowable2.hashCode());
-        ardw.a().a().a().post(new DanmakuManager.2(this));
+        this.jdField_a_of_type_Arvi.a(localThrowable2);
+        arwe.c("surface_lock", "clearDrawing unlockCanvas " + localThrowable2.hashCode());
+        artl.a().a().a().post(new DanmakuManager.2(this));
         throw localObject2;
       }
       catch (Throwable localThrowable4)
@@ -240,7 +240,7 @@ public class DanmakuManager
         for (;;)
         {
           if (localThrowable2 != null) {
-            argp.a("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localThrowable2.hashCode(), localThrowable4);
+            arwe.a("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localThrowable2.hashCode(), localThrowable4);
           }
         }
       }
@@ -250,14 +250,14 @@ public class DanmakuManager
       if (localThrowable1 != null)
       {
         localObject3 = localThrowable1;
-        argp.a("surface_lock", "clearDrawing lockCanvas exception: " + localThrowable1.hashCode(), localThrowable3);
+        arwe.a("surface_lock", "clearDrawing lockCanvas exception: " + localThrowable1.hashCode(), localThrowable3);
       }
       if (localThrowable1 != null) {}
       try
       {
-        this.jdField_a_of_type_Arft.a(localThrowable1);
-        argp.c("surface_lock", "clearDrawing unlockCanvas " + localThrowable1.hashCode());
-        ardw.a().a().a().post(new DanmakuManager.2(this));
+        this.jdField_a_of_type_Arvi.a(localThrowable1);
+        arwe.c("surface_lock", "clearDrawing unlockCanvas " + localThrowable1.hashCode());
+        artl.a().a().a().post(new DanmakuManager.2(this));
         return;
       }
       catch (Throwable localThrowable2)
@@ -265,7 +265,7 @@ public class DanmakuManager
         for (;;)
         {
           if (localThrowable1 != null) {
-            argp.a("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localThrowable1.hashCode(), localThrowable2);
+            arwe.a("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localThrowable1.hashCode(), localThrowable2);
           }
         }
       }
@@ -278,8 +278,8 @@ public class DanmakuManager
   
   private void H()
   {
-    if (this.jdField_a_of_type_Ared != null) {
-      this.jdField_a_of_type_Ared.a();
+    if (this.jdField_a_of_type_Arts != null) {
+      this.jdField_a_of_type_Arts.a();
     }
   }
   
@@ -305,7 +305,7 @@ public class DanmakuManager
   {
     StringBuilder localStringBuilder;
     long l1;
-    if (this.jdField_a_of_type_Arew.b())
+    if (this.jdField_a_of_type_Arul.b())
     {
       long l2 = a();
       long l3 = l2 - this.jdField_c_of_type_Long;
@@ -314,19 +314,19 @@ public class DanmakuManager
       if (l3 > 16L)
       {
         this.jdField_b_of_type_Int += 1;
-        if (argp.jdField_a_of_type_Int >= 5) {
-          argp.d("DanmakuManager", "a draw block:" + l3);
+        if (arwe.jdField_a_of_type_Int >= 5) {
+          arwe.d("DanmakuManager", "a draw block:" + l3);
         }
       }
-      localObject = this.jdField_a_of_type_Ared.a();
+      localObject = this.jdField_a_of_type_Arts.a();
       if (this.jdField_a_of_type_Int % 60 == 1)
       {
-        localStringBuilder = new StringBuilder().append(argp.jdField_a_of_type_Int).append(",t:").append(argn.a(a())).append(",f:");
-        if (this.jdField_a_of_type_Argb.c() != 0L) {
+        localStringBuilder = new StringBuilder().append(arwe.jdField_a_of_type_Int).append(",t:").append(arwc.a(a())).append(",f:");
+        if (this.jdField_a_of_type_Arvq.c() != 0L) {
           break label475;
         }
         l1 = 1L;
-        localStringBuilder = localStringBuilder.append(1000L / l1).append(",ds:").append(this.jdField_a_of_type_Areb.a()).append(",ts:").append(this.jdField_a_of_type_Ared.a()).append(",mt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(this.jdField_d_of_type_Long - this.jdField_c_of_type_Long)).append(",lt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(this.jdField_e_of_type_Long - this.jdField_d_of_type_Long)).append(",dt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(l2 - this.jdField_e_of_type_Long)).append(",tt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(l3)).append(",jp:").append(jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_b_of_type_Int * 100.0F / this.jdField_a_of_type_Int)).append("%,at:").append(jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_c_of_type_Int / this.jdField_a_of_type_Int)).append(",fd:");
+        localStringBuilder = localStringBuilder.append(1000L / l1).append(",ds:").append(this.jdField_a_of_type_Artq.a()).append(",ts:").append(this.jdField_a_of_type_Arts.a()).append(",mt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(this.jdField_d_of_type_Long - this.jdField_c_of_type_Long)).append(",lt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(this.jdField_e_of_type_Long - this.jdField_d_of_type_Long)).append(",dt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(l2 - this.jdField_e_of_type_Long)).append(",tt:").append(jdField_b_of_type_JavaTextDecimalFormat.format(l3)).append(",jp:").append(jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_b_of_type_Int * 100.0F / this.jdField_a_of_type_Int)).append("%,at:").append(jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_c_of_type_Int / this.jdField_a_of_type_Int)).append(",fd:");
         if (localObject != null) {
           break label486;
         }
@@ -334,14 +334,14 @@ public class DanmakuManager
     }
     label475:
     label486:
-    for (Object localObject = "null";; localObject = argn.a(((aren)localObject).d()))
+    for (Object localObject = "null";; localObject = arwc.a(((aruc)localObject).d()))
     {
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + ",cs:" + jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_a_of_type_Arec.a() / 1024.0F / 1024.0F) + ",uc:" + jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_a_of_type_Arec.b() * 100.0F / this.jdField_a_of_type_Arec.c()));
+      this.jdField_a_of_type_JavaLangString = ((String)localObject + ",cs:" + jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_a_of_type_Artr.a() / 1024.0F / 1024.0F) + ",uc:" + jdField_a_of_type_JavaTextDecimalFormat.format(this.jdField_a_of_type_Artr.b() * 100.0F / this.jdField_a_of_type_Artr.c()));
       if (this.jdField_a_of_type_JavaLangString != null) {
-        argo.a(paramCanvas, this.jdField_a_of_type_JavaLangString);
+        arwd.a(paramCanvas, this.jdField_a_of_type_JavaLangString);
       }
       return;
-      l1 = this.jdField_a_of_type_Argb.c();
+      l1 = this.jdField_a_of_type_Arvq.c();
       break;
     }
   }
@@ -356,18 +356,18 @@ public class DanmakuManager
       this.jdField_a_of_type_Int = 0;
       this.jdField_b_of_type_Int = 0;
       this.jdField_c_of_type_Int = 0;
-      this.jdField_a_of_type_Argb.b();
-      this.jdField_a_of_type_Argb.a();
-      if (argp.jdField_a_of_type_Int >= 3) {
-        argp.c("DanmakuManager", new Object[] { "message start:startTime:", Long.valueOf(this.jdField_b_of_type_Long) });
+      this.jdField_a_of_type_Arvq.b();
+      this.jdField_a_of_type_Arvq.a();
+      if (arwe.jdField_a_of_type_Int >= 3) {
+        arwe.c("DanmakuManager", new Object[] { "message start:startTime:", Long.valueOf(this.jdField_b_of_type_Long) });
       }
       return;
     }
   }
   
-  private boolean a(arga paramarga)
+  private boolean a(arvp paramarvp)
   {
-    return (c()) && (paramarga.jdField_a_of_type_Int != -1);
+    return (c()) && (paramarvp.jdField_a_of_type_Int != -1);
   }
   
   private void b(Message paramMessage)
@@ -376,28 +376,28 @@ public class DanmakuManager
     if (paramMessage.obj == null) {}
     for (boolean bool = true;; bool = false)
     {
-      argp.c("DanmakuManager", bool);
+      arwe.c("DanmakuManager", bool);
       if (paramMessage.obj != null)
       {
         this.jdField_b_of_type_Long = ((Long)paramMessage.obj).longValue();
         this.jdField_d_of_type_Boolean = true;
         t();
       }
-      if (argp.jdField_a_of_type_Int >= 5) {
-        argp.a("DanmakuManager", new Object[] { "message seek:startTime:", Long.valueOf(this.jdField_b_of_type_Long) });
+      if (arwe.jdField_a_of_type_Int >= 5) {
+        arwe.a("DanmakuManager", new Object[] { "message seek:startTime:", Long.valueOf(this.jdField_b_of_type_Long) });
       }
       return;
     }
   }
   
-  private void b(List<aren> paramList)
+  private void b(List<aruc> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      aren localaren = (aren)paramList.next();
-      this.jdField_a_of_type_Arew.a(localaren).a(localaren);
-      this.jdField_a_of_type_Aref.a(localaren);
+      aruc localaruc = (aruc)paramList.next();
+      this.jdField_a_of_type_Arul.a(localaruc).a(localaruc);
+      this.jdField_a_of_type_Artu.a(localaruc);
     }
   }
   
@@ -415,7 +415,7 @@ public class DanmakuManager
   
   private boolean f()
   {
-    return this.jdField_a_of_type_Arft instanceof arfv;
+    return this.jdField_a_of_type_Arvi instanceof arvk;
   }
   
   private boolean g()
@@ -438,19 +438,19 @@ public class DanmakuManager
       if (!e()) {}
       try
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuDrawThreadPriority_" + this.jdField_a_of_type_Arew.b(), this.jdField_a_of_type_Arew.b());
-        this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new argm());
+        this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuDrawThreadPriority_" + this.jdField_a_of_type_Arul.b(), this.jdField_a_of_type_Arul.b());
+        this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new arwb());
         this.jdField_a_of_type_AndroidOsHandlerThread.start();
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this.jdField_a_of_type_Arei);
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this.jdField_a_of_type_Artx);
         return;
       }
       catch (Throwable localThrowable)
       {
-        argp.d("DanmakuManager", new Object[] { localThrowable });
+        arwe.d("DanmakuManager", new Object[] { localThrowable });
         return;
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_Arei);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_Artx);
   }
   
   private void n()
@@ -458,20 +458,20 @@ public class DanmakuManager
     p();
     if (this.jdField_d_of_type_Boolean)
     {
-      this.jdField_a_of_type_Areb.c();
+      this.jdField_a_of_type_Artq.c();
       this.jdField_d_of_type_Boolean = false;
     }
     try
     {
-      if (argp.jdField_a_of_type_Int >= 4) {
+      if (arwe.jdField_a_of_type_Int >= 4) {
         this.jdField_c_of_type_Long = a();
       }
       o();
-      if (argp.jdField_a_of_type_Int >= 4) {
+      if (arwe.jdField_a_of_type_Int >= 4) {
         this.jdField_d_of_type_Long = a();
       }
       q();
-      if (argp.jdField_a_of_type_Int >= 4) {
+      if (arwe.jdField_a_of_type_Int >= 4) {
         this.jdField_e_of_type_Long = a();
       }
       r();
@@ -480,56 +480,56 @@ public class DanmakuManager
     }
     catch (Throwable localThrowable)
     {
-      argp.a("DanmakuManager", localThrowable.toString(), localThrowable);
+      arwe.a("DanmakuManager", localThrowable.toString(), localThrowable);
     }
   }
   
   private void o()
   {
-    Object localObject = this.jdField_a_of_type_Ared.a();
-    if (argp.jdField_a_of_type_Int >= 4)
+    Object localObject = this.jdField_a_of_type_Arts.a();
+    if (arwe.jdField_a_of_type_Int >= 4)
     {
       int i = ((List)localObject).size();
       if (i > 0) {
-        argp.b("DanmakuManager", new Object[] { "new danmaku to draw:", Integer.valueOf(i) });
+        arwe.b("DanmakuManager", new Object[] { "new danmaku to draw:", Integer.valueOf(i) });
       }
     }
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      aren localaren = (aren)((Iterator)localObject).next();
+      aruc localaruc = (aruc)((Iterator)localObject).next();
       ((Iterator)localObject).remove();
-      if (localaren.a(this.jdField_a_of_type_Argg.a()))
+      if (localaruc.a(this.jdField_a_of_type_Arvv.a()))
       {
-        if (argp.jdField_a_of_type_Int >= 4) {
-          argp.c("DanmakuManager", new Object[] { "before measure ", localaren, " is out side" });
+        if (arwe.jdField_a_of_type_Int >= 4) {
+          arwe.c("DanmakuManager", new Object[] { "before measure ", localaruc, " is out side" });
         }
-        this.jdField_a_of_type_JavaUtilList.add(localaren);
+        this.jdField_a_of_type_JavaUtilList.add(localaruc);
       }
       else
       {
-        if ((argp.jdField_a_of_type_Int >= 4) && (localaren.h())) {
-          argp.b("DanmakuManager", "must show danmaku upload to Windown :" + localaren);
+        if ((arwe.jdField_a_of_type_Int >= 4) && (localaruc.h())) {
+          arwe.b("DanmakuManager", "must show danmaku upload to Windown :" + localaruc);
         }
-        argp.c("DanmakuManager", "upload, danmaku = " + localaren);
-        localaren.c(this.jdField_a_of_type_Argb.a());
-        this.jdField_a_of_type_Areb.a(localaren);
+        arwe.c("DanmakuManager", "upload, danmaku = " + localaruc);
+        localaruc.c(this.jdField_a_of_type_Arvq.a());
+        this.jdField_a_of_type_Artq.a(localaruc);
       }
     }
   }
   
   private void p()
   {
-    this.jdField_a_of_type_Argg.a(b());
-    this.jdField_a_of_type_Argb.b();
-    if (argp.jdField_a_of_type_Int >= 5) {
-      argp.a("DanmakuManager", new Object[] { "updateFrame:currentTime:", Long.valueOf(this.jdField_a_of_type_Argb.a()), ",lastInterval:", Long.valueOf(this.jdField_a_of_type_Argb.c()) });
+    this.jdField_a_of_type_Arvv.a(b());
+    this.jdField_a_of_type_Arvq.b();
+    if (arwe.jdField_a_of_type_Int >= 5) {
+      arwe.a("DanmakuManager", new Object[] { "updateFrame:currentTime:", Long.valueOf(this.jdField_a_of_type_Arvq.a()), ",lastInterval:", Long.valueOf(this.jdField_a_of_type_Arvq.c()) });
     }
   }
   
   private void q()
   {
-    this.jdField_a_of_type_Areb.b();
+    this.jdField_a_of_type_Artq.b();
   }
   
   /* Error */
@@ -541,7 +541,7 @@ public class DanmakuManager
     //   2: aconst_null
     //   3: astore_2
     //   4: aload_0
-    //   5: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arft	Larft;
+    //   5: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvi	Larvi;
     //   8: invokeinterface 282 1 0
     //   13: astore 4
     //   15: aload 4
@@ -551,18 +551,18 @@ public class DanmakuManager
     //   23: aload 4
     //   25: astore_3
     //   26: aload 4
-    //   28: invokestatic 287	argo:a	(Landroid/graphics/Canvas;)V
+    //   28: invokestatic 287	arwd:a	(Landroid/graphics/Canvas;)V
     //   31: aload 4
     //   33: astore_2
     //   34: aload 4
     //   36: astore_3
     //   37: aload_0
-    //   38: getfield 132	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Areb	Lareb;
+    //   38: getfield 132	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Artq	Lartq;
     //   41: aload 4
     //   43: aload_0
-    //   44: getfield 98	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Argg	Largg;
-    //   47: invokevirtual 588	argg:a	()J
-    //   50: invokevirtual 625	areb:a	(Landroid/graphics/Canvas;J)V
+    //   44: getfield 98	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvv	Larvv;
+    //   47: invokevirtual 588	arvv:a	()J
+    //   50: invokevirtual 625	artq:a	(Landroid/graphics/Canvas;J)V
     //   53: aload 4
     //   55: astore_2
     //   56: aload 4
@@ -578,14 +578,14 @@ public class DanmakuManager
     //   73: getfield 274	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_c_of_type_Boolean	Z
     //   76: ifeq +17 -> 93
     //   79: aload_0
-    //   80: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arft	Larft;
+    //   80: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvi	Larvi;
     //   83: aload 4
     //   85: invokeinterface 306 2 0
     //   90: aload_0
     //   91: monitorexit
     //   92: return
     //   93: aload_0
-    //   94: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arft	Larft;
+    //   94: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvi	Larvi;
     //   97: invokeinterface 627 1 0
     //   102: goto -12 -> 90
     //   105: astore_2
@@ -605,7 +605,7 @@ public class DanmakuManager
     //   132: invokevirtual 315	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   135: invokevirtual 305	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: aload_2
-    //   139: invokestatic 330	argp:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   139: invokestatic 330	arwe:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   142: return
     //   143: astore 5
     //   145: aload_2
@@ -628,7 +628,7 @@ public class DanmakuManager
     //   180: invokevirtual 301	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   183: invokevirtual 305	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   186: aload 5
-    //   188: invokestatic 330	argp:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   188: invokestatic 330	arwe:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   191: aload_2
     //   192: ifnull +173 -> 365
     //   195: aload_0
@@ -637,7 +637,7 @@ public class DanmakuManager
     //   198: getfield 274	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_c_of_type_Boolean	Z
     //   201: ifeq +69 -> 270
     //   204: aload_0
-    //   205: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arft	Larft;
+    //   205: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvi	Larvi;
     //   208: aload_2
     //   209: invokeinterface 306 2 0
     //   214: aload_0
@@ -660,7 +660,7 @@ public class DanmakuManager
     //   243: invokevirtual 315	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   246: invokevirtual 305	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   249: aload_3
-    //   250: invokestatic 330	argp:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   250: invokestatic 330	arwe:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   253: return
     //   254: aload_2
     //   255: astore_3
@@ -672,7 +672,7 @@ public class DanmakuManager
     //   265: astore 4
     //   267: goto -96 -> 171
     //   270: aload_0
-    //   271: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arft	Larft;
+    //   271: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvi	Larvi;
     //   274: invokeinterface 627 1 0
     //   279: goto -65 -> 214
     //   282: astore_2
@@ -684,7 +684,7 @@ public class DanmakuManager
     //   290: getfield 274	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_c_of_type_Boolean	Z
     //   293: ifeq +17 -> 310
     //   296: aload_0
-    //   297: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arft	Larft;
+    //   297: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvi	Larvi;
     //   300: aload_3
     //   301: invokeinterface 306 2 0
     //   306: aload_0
@@ -692,7 +692,7 @@ public class DanmakuManager
     //   308: aload_2
     //   309: athrow
     //   310: aload_0
-    //   311: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arft	Larft;
+    //   311: getfield 85	com/tencent/mobileqq/danmaku/core/DanmakuManager:jdField_a_of_type_Arvi	Larvi;
     //   314: invokeinterface 627 1 0
     //   319: goto -13 -> 306
     //   322: astore 4
@@ -712,7 +712,7 @@ public class DanmakuManager
     //   351: invokevirtual 315	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   354: invokevirtual 305	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   357: aload 4
-    //   359: invokestatic 330	argp:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   359: invokestatic 330	arwe:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   362: goto -54 -> 308
     //   365: return
     // Local variable table:
@@ -767,22 +767,22 @@ public class DanmakuManager
   
   private void s()
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_Areb.a());
-    this.jdField_a_of_type_Areb.d();
+    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_Artq.a());
+    this.jdField_a_of_type_Artq.d();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      aren localaren = (aren)localIterator.next();
-      Bitmap localBitmap = localaren.a();
+      aruc localaruc = (aruc)localIterator.next();
+      Bitmap localBitmap = localaruc.a();
       if (localBitmap != null)
       {
-        localaren.a(null);
-        localaren.h();
-        this.jdField_a_of_type_Arec.a(localBitmap);
+        localaruc.a(null);
+        localaruc.h();
+        this.jdField_a_of_type_Artr.a(localBitmap);
       }
     }
-    if (this.jdField_a_of_type_Arej != null) {
-      this.jdField_a_of_type_Arej.b(this.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Arty != null) {
+      this.jdField_a_of_type_Arty.b(this.jdField_a_of_type_JavaUtilList);
     }
     b(this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -790,27 +790,27 @@ public class DanmakuManager
   
   private void t()
   {
-    argp.c("DanmakuManager", "handleResume()");
+    arwe.c("DanmakuManager", "handleResume()");
     if (!this.jdField_b_of_type_Boolean)
     {
       long l = a();
       this.jdField_a_of_type_Long = (l - this.jdField_b_of_type_Long);
-      if (argp.jdField_a_of_type_Int >= 5) {
-        argp.b("DanmakuManager", "handleResume, mBaseTime = " + this.jdField_a_of_type_Long + ", currentTime = " + l + ", mPauseTime = " + this.jdField_b_of_type_Long);
+      if (arwe.jdField_a_of_type_Int >= 5) {
+        arwe.b("DanmakuManager", "handleResume, mBaseTime = " + this.jdField_a_of_type_Long + ", currentTime = " + l + ", mPauseTime = " + this.jdField_b_of_type_Long);
       }
-      this.jdField_a_of_type_Argb.b();
+      this.jdField_a_of_type_Arvq.b();
     }
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangString = null;
     u();
-    if (argp.jdField_a_of_type_Int >= 5) {
-      argp.b("DanmakuManager", new Object[] { "message resume:mPausedTime:", Long.valueOf(this.jdField_b_of_type_Long), ",mBaseTime:", Long.valueOf(this.jdField_a_of_type_Long) });
+    if (arwe.jdField_a_of_type_Int >= 5) {
+      arwe.b("DanmakuManager", new Object[] { "message resume:mPausedTime:", Long.valueOf(this.jdField_b_of_type_Long), ",mBaseTime:", Long.valueOf(this.jdField_a_of_type_Long) });
     }
   }
   
   private void u()
   {
-    argp.a("DanmakuManager", "resumeUpdateMessage()");
+    arwe.a("DanmakuManager", "resumeUpdateMessage()");
     if (d()) {
       a(4);
     }
@@ -818,7 +818,7 @@ public class DanmakuManager
   
   private void v()
   {
-    argp.a("DanmakuManager", "removeUpdateMessage()");
+    arwe.a("DanmakuManager", "removeUpdateMessage()");
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
     }
@@ -826,7 +826,7 @@ public class DanmakuManager
   
   private void w()
   {
-    argp.a("DanmakuManager", "handelUpdate()");
+    arwe.a("DanmakuManager", "handelUpdate()");
     v();
     if (b())
     {
@@ -838,15 +838,15 @@ public class DanmakuManager
   
   private void x()
   {
-    argp.c("DanmakuManager", "handlePause()");
+    arwe.c("DanmakuManager", "handlePause()");
     v();
     this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Arew.a()) {}
-    for (long l = this.jdField_a_of_type_Argg.a();; l = this.jdField_a_of_type_Argb.a())
+    if (this.jdField_a_of_type_Arul.a()) {}
+    for (long l = this.jdField_a_of_type_Arvv.a();; l = this.jdField_a_of_type_Arvq.a())
     {
       this.jdField_b_of_type_Long = l;
-      if (argp.jdField_a_of_type_Int >= 5) {
-        argp.a("DanmakuManager", new Object[] { "message pause:mPausedTime:", Long.valueOf(this.jdField_b_of_type_Long) });
+      if (arwe.jdField_a_of_type_Int >= 5) {
+        arwe.a("DanmakuManager", new Object[] { "message pause:mPausedTime:", Long.valueOf(this.jdField_b_of_type_Long) });
       }
       return;
     }
@@ -854,20 +854,20 @@ public class DanmakuManager
   
   private void y()
   {
-    argp.c("DanmakuManager", "handleQuit()");
+    arwe.c("DanmakuManager", "handleQuit()");
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Arew.b();
-    this.jdField_a_of_type_Ared.a();
-    this.jdField_a_of_type_Arec.b();
-    argp.c("DanmakuManager", "message quit");
+    this.jdField_a_of_type_Arul.b();
+    this.jdField_a_of_type_Arts.a();
+    this.jdField_a_of_type_Artr.b();
+    arwe.c("DanmakuManager", "message quit");
   }
   
   private void z()
   {
-    argp.c("DanmakuManager", "handleConfigChanged()");
-    this.jdField_a_of_type_Areb.a();
-    this.jdField_a_of_type_Ared.b();
-    argp.c("DanmakuManager", "message config changed");
+    arwe.c("DanmakuManager", "handleConfigChanged()");
+    this.jdField_a_of_type_Artq.a();
+    this.jdField_a_of_type_Arts.b();
+    arwe.c("DanmakuManager", "message config changed");
   }
   
   public long a()
@@ -875,9 +875,9 @@ public class DanmakuManager
     return SystemClock.uptimeMillis();
   }
   
-  public aren a(int paramInt, Object paramObject)
+  public aruc a(int paramInt, Object paramObject)
   {
-    return this.jdField_a_of_type_Aref.a(paramInt, paramObject);
+    return this.jdField_a_of_type_Artu.a(paramInt, paramObject);
   }
   
   public void a()
@@ -887,7 +887,7 @@ public class DanmakuManager
   
   public void a(long paramLong)
   {
-    argp.a("DanmakuManager", "start() time = " + paramLong);
+    arwe.a("DanmakuManager", "start() time = " + paramLong);
     m();
     Message localMessage = Message.obtain();
     localMessage.what = 1;
@@ -897,10 +897,10 @@ public class DanmakuManager
   
   public void a(Point paramPoint, int paramInt)
   {
-    paramPoint.y = ((int)(paramPoint.y - this.jdField_a_of_type_Arft.a()));
-    paramPoint = new argk(this.jdField_a_of_type_Argb.a(), paramPoint, paramInt);
-    if (argp.jdField_a_of_type_Int >= 4) {
-      argp.a("DanmakuManager", new Object[] { "addClickPoint:", paramPoint });
+    paramPoint.y = ((int)(paramPoint.y - this.jdField_a_of_type_Arvi.a()));
+    paramPoint = new arvz(this.jdField_a_of_type_Arvq.a(), paramPoint, paramInt);
+    if (arwe.jdField_a_of_type_Int >= 4) {
+      arwe.a("DanmakuManager", new Object[] { "addClickPoint:", paramPoint });
     }
     this.jdField_a_of_type_JavaUtilQueue.add(paramPoint);
     paramPoint = Message.obtain();
@@ -908,40 +908,40 @@ public class DanmakuManager
     c(paramPoint);
   }
   
-  public void a(arej paramarej)
+  public void a(arty paramarty)
   {
-    this.jdField_a_of_type_Arej = paramarej;
+    this.jdField_a_of_type_Arty = paramarty;
   }
   
-  public void a(aren paramaren)
+  public void a(aruc paramaruc)
   {
-    paramaren.b(this.jdField_a_of_type_Argg.a());
-    this.jdField_a_of_type_Arek.a(paramaren, new areg(this));
+    paramaruc.b(this.jdField_a_of_type_Arvv.a());
+    this.jdField_a_of_type_Artz.a(paramaruc, new artv(this));
   }
   
-  public void a(List<aren> paramList)
+  public void a(List<aruc> paramList)
   {
-    this.jdField_a_of_type_Arek.a(paramList, new areh(this));
+    this.jdField_a_of_type_Artz.a(paramList, new artw(this));
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Areb instanceof arem)) {
-      return (((arem)this.jdField_a_of_type_Areb).a()) || ((this.jdField_a_of_type_Ared != null) && (this.jdField_a_of_type_Ared.a()));
+    if ((this.jdField_a_of_type_Artq instanceof arub)) {
+      return (((arub)this.jdField_a_of_type_Artq).a()) || ((this.jdField_a_of_type_Arts != null) && (this.jdField_a_of_type_Arts.a()));
     }
     return false;
   }
   
   public long b()
   {
-    if (this.jdField_a_of_type_Arew.a()) {
+    if (this.jdField_a_of_type_Arul.a()) {
       return a() - this.jdField_a_of_type_Long;
     }
     long l = a();
     if (l - this.f >= 200L)
     {
       this.f = l;
-      l = this.jdField_a_of_type_Arew.a();
+      l = this.jdField_a_of_type_Arul.a();
       this.g = l;
       return l;
     }
@@ -950,7 +950,7 @@ public class DanmakuManager
   
   public void b()
   {
-    argp.a("DanmakuManager", "resume()");
+    arwe.a("DanmakuManager", "resume()");
     Message localMessage = Message.obtain();
     localMessage.what = 2;
     c(localMessage);
@@ -958,7 +958,7 @@ public class DanmakuManager
   
   public void b(long paramLong)
   {
-    argp.a("DanmakuManager", "seek(): postime = " + paramLong);
+    arwe.a("DanmakuManager", "seek(): postime = " + paramLong);
     Message localMessage = Message.obtain();
     localMessage.what = 5;
     localMessage.obj = Long.valueOf(paramLong);
@@ -974,7 +974,7 @@ public class DanmakuManager
         if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
         {
           bool = true;
-          argp.a("DanmakuManager", "isPrepared() = " + bool + ", mIsSurfaceCreated = " + this.jdField_c_of_type_Boolean + ", mIsQuited = " + this.jdField_a_of_type_Boolean + ", mIsPlaying = " + this.jdField_b_of_type_Boolean);
+          arwe.a("DanmakuManager", "isPrepared() = " + bool + ", mIsSurfaceCreated = " + this.jdField_c_of_type_Boolean + ", mIsQuited = " + this.jdField_a_of_type_Boolean + ", mIsPlaying = " + this.jdField_b_of_type_Boolean);
           return bool;
         }
       }
@@ -985,7 +985,7 @@ public class DanmakuManager
   
   public void c()
   {
-    argp.c("DanmakuManager", "pause()");
+    arwe.c("DanmakuManager", "pause()");
     Message localMessage = Message.obtain();
     localMessage.what = 3;
     c(localMessage);
@@ -1010,7 +1010,7 @@ public class DanmakuManager
   
   public void d()
   {
-    argp.c("DanmakuManager", "clearDrawingCache()");
+    arwe.c("DanmakuManager", "clearDrawingCache()");
     Message localMessage = Message.obtain();
     localMessage.what = 11;
     c(localMessage);
@@ -1023,7 +1023,7 @@ public class DanmakuManager
   
   public void e()
   {
-    argp.a("DanmakuManager", "clear");
+    arwe.a("DanmakuManager", "clear");
     Message localMessage = Message.obtain();
     localMessage.what = 9;
     c(localMessage);
@@ -1032,7 +1032,7 @@ public class DanmakuManager
   
   public void f()
   {
-    argp.a("DanmakuManager", "quit(); mIsQuited = true");
+    arwe.a("DanmakuManager", "quit(); mIsQuited = true");
     this.jdField_a_of_type_Boolean = true;
     Message localMessage = Message.obtain();
     localMessage.what = 6;
@@ -1041,19 +1041,19 @@ public class DanmakuManager
   
   public void g()
   {
-    argp.a("DanmakuManager", "release() mIsQuited = " + this.jdField_a_of_type_Boolean);
+    arwe.a("DanmakuManager", "release() mIsQuited = " + this.jdField_a_of_type_Boolean);
     if (!this.jdField_a_of_type_Boolean) {
       f();
     }
     Message localMessage = Message.obtain();
     localMessage.what = 8;
     c(localMessage);
-    this.jdField_a_of_type_Arej = null;
+    this.jdField_a_of_type_Arty = null;
   }
   
   public void h()
   {
-    argp.a("DanmakuManager", "notifyConfigChanged()");
+    arwe.a("DanmakuManager", "notifyConfigChanged()");
     m();
     Message localMessage = Message.obtain();
     localMessage.what = 7;
@@ -1062,12 +1062,12 @@ public class DanmakuManager
   
   public void i()
   {
-    argp.c("surface_lock", "surfaceCreated");
+    arwe.c("surface_lock", "surfaceCreated");
   }
   
   public void j()
   {
-    argp.c("surface_lock", "surfaceChanged");
+    arwe.c("surface_lock", "surfaceChanged");
     try
     {
       this.jdField_c_of_type_Boolean = true;
@@ -1082,7 +1082,7 @@ public class DanmakuManager
     try
     {
       this.jdField_c_of_type_Boolean = false;
-      argp.c("surface_lock", "surfaceDestroyed");
+      arwe.c("surface_lock", "surfaceDestroyed");
       return;
     }
     finally {}
@@ -1090,14 +1090,14 @@ public class DanmakuManager
   
   public void l()
   {
-    this.jdField_a_of_type_Arei = null;
+    this.jdField_a_of_type_Artx = null;
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    if (this.jdField_a_of_type_Arft != null) {
-      this.jdField_a_of_type_Arft.b();
+    if (this.jdField_a_of_type_Arvi != null) {
+      this.jdField_a_of_type_Arvi.b();
     }
   }
   
@@ -1105,8 +1105,8 @@ public class DanmakuManager
   {
     if (this.jdField_e_of_type_Boolean)
     {
-      if (argp.jdField_a_of_type_Int >= 4) {
-        argp.a("DanmakuManager", new Object[] { "onClick:", paramMotionEvent });
+      if (arwe.jdField_a_of_type_Int >= 4) {
+        arwe.a("DanmakuManager", new Object[] { "onClick:", paramMotionEvent });
       }
       if ((paramMotionEvent.getAction() & 0xFF) == 0) {
         a(new Point((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()), 0);

@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public abstract interface pae
-  extends View.OnClickListener, pab
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"set", "", "Lcom/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$ReportR5Builder;", "key", "", "value", "", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class pae
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void onClick(View paramView);
+  public static final void a(@NotNull paa parampaa, @NotNull String paramString, @NotNull Object paramObject)
+  {
+    Intrinsics.checkParameterIsNotNull(parampaa, "$this$set");
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    Intrinsics.checkParameterIsNotNull(paramObject, "value");
+    parampaa.a(paramString, paramObject);
+  }
 }
 
 

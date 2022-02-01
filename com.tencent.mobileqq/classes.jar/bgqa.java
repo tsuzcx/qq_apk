@@ -1,42 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
 class bgqa
-  implements View.OnTouchListener
+  extends Handler
 {
-  bgqa(bgpw parambgpw) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bgqa(bgpz parambgpz, Looper paramLooper)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840123);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840123));
-    if (this.a.c)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.a) {}
+    Object localObject;
+    String str;
+    do
     {
-      bgpw.a(this.a);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label110;
-      }
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-    }
-    for (;;)
-    {
-      this.a.c = false;
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
-      return false;
-      label110:
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-    }
+      return;
+      localObject = (Object[])paramMessage.obj;
+      paramMessage = (RollangleImageView)localObject[0];
+      str = (String)localObject[1];
+      localObject = (Bitmap)localObject[2];
+    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
+    paramMessage.setImageBitmap((Bitmap)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqa
  * JD-Core Version:    0.7.0.1
  */

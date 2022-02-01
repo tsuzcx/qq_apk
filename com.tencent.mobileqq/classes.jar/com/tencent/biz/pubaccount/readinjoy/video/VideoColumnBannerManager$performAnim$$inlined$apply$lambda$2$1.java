@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import kotlin.Metadata;
-import pka;
-import rvx;
-import rwd;
+import pcs;
+import rmt;
+import rmz;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run", "com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$columnTextTranslationAnim$1$2$onAnimationEnd$1"}, k=3, mv={1, 1, 16})
 public final class VideoColumnBannerManager$performAnim$$inlined$apply$lambda$2$1
   implements Runnable
 {
-  public VideoColumnBannerManager$performAnim$$inlined$apply$lambda$2$1(rwd paramrwd) {}
+  public VideoColumnBannerManager$performAnim$$inlined$apply$lambda$2$1(rmz paramrmz) {}
   
   public final void run()
   {
-    pka localpka = rvx.a(this.this$0.a);
-    if (localpka != null) {
-      localpka.setRepeatCount(0);
+    pcs localpcs = rmt.a(this.this$0.a);
+    if (localpcs != null) {
+      localpcs.setRepeatCount(0);
     }
-    localpka = rvx.a(this.this$0.a);
-    if (localpka != null) {
-      localpka.playAnimation();
+    localpcs = rmt.a(this.this$0.a);
+    if (localpcs != null) {
+      localpcs.playAnimation();
     }
   }
 }

@@ -1,83 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class olk
+  implements View.OnClickListener
 {
-  public static String a(int paramInt)
-  {
-    return "id_view_AdDownloadView" + b(paramInt);
-  }
+  public olk(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public static void a(AdData paramAdData, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramAdData == null) {
-      return;
-    }
-    int i = Aladdin.getConfig(341).getIntegerFromString("bottom_ad_style", 0);
-    if (i == 1) {}
-    try
-    {
-      paramJSONObject.put("visible_one", "show");
-      paramJSONObject.put("mask_image_path", "mengceng_60.png");
-      paramJSONObject.put("inner_title", paramAdData.j);
-      String str;
-      if (TextUtils.isEmpty(paramAdData.q))
-      {
-        str = paramAdData.I;
-        label67:
-        paramJSONObject.put("author_text", str);
-        paramJSONObject.put("title", paramAdData.j);
-        paramJSONObject.put("author_icon", paramAdData.J);
-        if (paramAdData.L != null) {
-          break label221;
-        }
-        paramJSONObject.put("dislike_text_android", "广告");
-      }
-      for (;;)
-      {
-        oqh.a("bindArticleBottom", "adStyle = " + i + " adsIconText = " + paramAdData.L);
-        paramJSONObject.put("article_model", paramAdData);
-        paramJSONObject.put("seperator_visible", "show");
-        return;
-        if (i == 2)
-        {
-          paramJSONObject.put("visible_two", "show");
-          break;
-        }
-        if (i == 3)
-        {
-          paramJSONObject.put("visible_three", "show");
-          break;
-        }
-        paramJSONObject.put("visible_origin", "show");
-        break;
-        str = paramAdData.q;
-        break label67;
-        label221:
-        if (!TextUtils.isEmpty(paramAdData.L)) {
-          paramJSONObject.put("dislike_text_android", paramAdData.L);
-        }
-      }
-      return;
-    }
-    catch (Exception paramAdData) {}
-  }
-  
-  private static String b(int paramInt)
-  {
-    if (paramInt == 1) {
-      return "_one";
-    }
-    if (paramInt == 2) {
-      return "_two";
-    }
-    if (paramInt == 3) {
-      return "_three";
-    }
-    return "_origin";
+    ozs.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

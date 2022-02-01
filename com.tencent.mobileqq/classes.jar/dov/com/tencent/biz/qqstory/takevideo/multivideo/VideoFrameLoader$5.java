@@ -1,23 +1,23 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
-import bprn;
-import bpro;
+import bqti;
+import bqtj;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class VideoFrameLoader$5
   implements Runnable
 {
-  public VideoFrameLoader$5(bprn parambprn, List paramList) {}
+  public VideoFrameLoader$5(bqti parambqti, List paramList) {}
   
   public void run()
   {
-    bpro localbpro = null;
-    if (bprn.a(this.this$0) != null) {
-      localbpro = (bpro)bprn.a(this.this$0).get();
+    bqtj localbqtj = null;
+    if (bqti.a(this.this$0) != null) {
+      localbqtj = (bqtj)bqti.a(this.this$0).get();
     }
-    if (localbpro != null) {
-      localbpro.a(this.a);
+    if (localbqtj != null) {
+      localbqtj.a(this.a);
     }
   }
 }

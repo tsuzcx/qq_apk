@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aflv;
+import afuz;
 
 public class TroopMemberListActivity$20
   implements Runnable
@@ -9,7 +9,7 @@ public class TroopMemberListActivity$20
   
   public void run()
   {
-    TroopMemberListActivity.a(this.this$0.app, Long.valueOf(this.this$0.b).longValue(), new aflv(this));
+    TroopMemberListActivity.a(this.this$0.app, Long.valueOf(this.this$0.b).longValue(), new afuz(this));
   }
 }
 

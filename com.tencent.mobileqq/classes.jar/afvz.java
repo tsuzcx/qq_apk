@@ -1,30 +1,18 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afvz
-  extends Handler
+  implements View.OnClickListener
 {
-  public afvz(AudioPlayerBase paramAudioPlayerBase) {}
+  public afvz(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage.what == 1000) && (this.a.d == 0) && (this.a.a()))
-    {
-      int i = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.a.jdField_a_of_type_Bgkk.b);
-      int j = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.a.jdField_a_of_type_Bgkk.b);
-      if (i / j <= 0.18F) {
-        break label125;
-      }
-      this.a.d = 1;
-      if (this.a.jdField_a_of_type_Afwa != null) {
-        this.a.jdField_a_of_type_Afwa.c(this.a, this.a.d);
-      }
-    }
-    return;
-    label125:
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

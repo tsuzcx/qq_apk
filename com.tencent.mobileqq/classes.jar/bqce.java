@@ -1,16 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.graphics.Bitmap;
 
 public class bqce
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bqix
 {
-  public bqce(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bqce(int paramInt, Bitmap paramBitmap)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    super(paramInt, paramBitmap);
+  }
+  
+  public static bqce a(bqce parambqce, Bitmap paramBitmap)
+  {
+    paramBitmap = new bqce(parambqce.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = parambqce.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = parambqce.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = parambqce.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = parambqce.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = parambqce.jdField_b_of_type_Boolean;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 

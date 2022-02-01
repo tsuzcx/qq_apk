@@ -1,299 +1,183 @@
-import android.app.Activity;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.VelocityTracker;
+import android.view.ViewConfiguration;
 
 public class wep
-  extends RecyclerView.Adapter<wdx>
-  implements IEventReceiver, wed
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private List<wcl> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private wca jdField_a_of_type_Wca = (wca)wpm.a(30);
-  private weq jdField_a_of_type_Weq;
-  private wer jdField_a_of_type_Wer;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = -1;
+  private final ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
+  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
+  private wes jdField_a_of_type_Wes;
+  private wew jdField_a_of_type_Wew;
+  private wey jdField_a_of_type_Wey;
   private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  private int d;
-  private int e = -1;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private final float c;
+  private final float d;
   
-  public wep(Activity paramActivity, wer paramwer, int paramInt1, int paramInt2)
+  public wep(Context paramContext, wes paramwes)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Wer = paramwer;
-    this.jdField_a_of_type_Weq = new weq(this);
-    this.jdField_a_of_type_JavaUtilList.add(wcl.a(1));
-    if (!this.jdField_a_of_type_Wca.a()) {
-      this.jdField_a_of_type_JavaUtilList.add(wcl.a(3));
-    }
-    this.jdField_a_of_type_Boolean = true;
-    wfo.a().registerSubscriber(this.jdField_a_of_type_Weq);
+    ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramContext);
+    this.d = localViewConfiguration.getScaledMinimumFlingVelocity();
+    this.c = localViewConfiguration.getScaledTouchSlop();
+    this.jdField_a_of_type_Wes = paramwes;
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new weq(this));
   }
   
-  private void a(List<wcl> paramList)
+  private float a(MotionEvent paramMotionEvent)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    yqu.a("video_shoot_slides", "number_smartalbum", 0, 0, new String[] { "", paramList.size() + "" });
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    try
     {
-      wcl localwcl = (wcl)paramList.next();
-      if (localwcl.a() == 1) {
-        localArrayList1.add(localwcl);
-      } else {
-        localArrayList2.add(localwcl);
-      }
+      float f = paramMotionEvent.getX(this.jdField_b_of_type_Int);
+      return f;
     }
-    yqu.a("video_shoot_slides", "read_smartalbum", 0, 0, new String[] { wca.a(localArrayList1) + "", localArrayList1.size() + "" });
-    yqu.a("video_shoot_slides", "unread_smartalbum", 0, 0, new String[] { wca.a(localArrayList2) + "", localArrayList2.size() + "" });
+    catch (Exception localException) {}
+    return paramMotionEvent.getX();
   }
   
-  private boolean a()
+  private float b(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        if (!((wcl)localIterator.next()).a()) {
-          return true;
+      float f = paramMotionEvent.getY(this.jdField_b_of_type_Int);
+      return f;
+    }
+    catch (Exception localException) {}
+    return paramMotionEvent.getY();
+  }
+  
+  private boolean b(MotionEvent paramMotionEvent)
+  {
+    int j = 0;
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    label259:
+    do
+    {
+      for (;;)
+      {
+        i = j;
+        if (this.jdField_a_of_type_Int != -1) {
+          i = this.jdField_a_of_type_Int;
+        }
+        this.jdField_b_of_type_Int = paramMotionEvent.findPointerIndex(i);
+        return true;
+        this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
+        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+        if (this.jdField_a_of_type_AndroidViewVelocityTracker != null) {
+          this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+        }
+        this.jdField_a_of_type_Float = a(paramMotionEvent);
+        this.jdField_b_of_type_Float = b(paramMotionEvent);
+        this.jdField_a_of_type_Boolean = false;
+        continue;
+        float f1 = a(paramMotionEvent);
+        float f2 = b(paramMotionEvent);
+        i = paramMotionEvent.getPointerCount();
+        float f3 = f1 - this.jdField_a_of_type_Float;
+        float f4 = f2 - this.jdField_b_of_type_Float;
+        if (!this.jdField_a_of_type_Boolean) {
+          if (Math.sqrt(f3 * f3 + f4 * f4) < this.c) {
+            break label259;
+          }
+        }
+        for (boolean bool = true;; bool = false)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          if (i > 1) {
+            this.jdField_a_of_type_Boolean = false;
+          }
+          if (!this.jdField_a_of_type_Boolean) {
+            break;
+          }
+          this.jdField_a_of_type_Float = f1;
+          this.jdField_b_of_type_Float = f2;
+          if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
+            break;
+          }
+          this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+          break;
+        }
+        this.jdField_a_of_type_Int = -1;
+        if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+        {
+          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
+          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+          continue;
+          this.jdField_a_of_type_Int = -1;
+          if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
+          {
+            this.jdField_a_of_type_Float = a(paramMotionEvent);
+            this.jdField_b_of_type_Float = b(paramMotionEvent);
+            this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+            this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
+            f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
+            f2 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity();
+            if (Math.max(Math.abs(f1), Math.abs(f2)) >= this.d) {
+              this.jdField_a_of_type_Wes.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, -f1, -f2);
+            }
+          }
+          if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+          {
+            this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
+            this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+          }
         }
       }
+      i = wfg.a(paramMotionEvent.getAction());
+    } while (paramMotionEvent.getPointerId(i) != this.jdField_a_of_type_Int);
+    if (i == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(i);
+      this.jdField_a_of_type_Float = paramMotionEvent.getX(i);
+      this.jdField_b_of_type_Float = paramMotionEvent.getY(i);
+      break;
     }
+  }
+  
+  public void a(wew paramwew)
+  {
+    this.jdField_a_of_type_Wew = paramwew;
+  }
+  
+  public void a(wey paramwey)
+  {
+    this.jdField_a_of_type_Wey = paramwey;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress();
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = false;
+    try
+    {
+      boolean bool3 = this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+      boolean bool4 = b(paramMotionEvent);
+      boolean bool1 = bool2;
+      if (bool3)
+      {
+        bool1 = bool2;
+        if (bool4) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    catch (Exception paramMotionEvent) {}
     return false;
   }
   
-  public int a()
-  {
-    return this.e;
-  }
-  
-  public int a(wcl paramwcl)
-  {
-    return this.jdField_a_of_type_JavaUtilList.indexOf(paramwcl);
-  }
-  
-  public List<wcl> a()
-  {
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public wcl a()
-  {
-    if ((this.e >= 0) && (this.e < getItemCount())) {
-      return (wcl)this.jdField_a_of_type_JavaUtilList.get(this.e);
-    }
-    return null;
-  }
-  
-  public wdx a(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561645, paramViewGroup, false);
-    return new wdx(this.jdField_a_of_type_AndroidAppActivity, paramViewGroup, this.jdField_a_of_type_Int, this.b, this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    wfo.a().unRegisterSubscriber(this.jdField_a_of_type_Weq);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  public void a(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < getItemCount()))
-    {
-      int i = this.e;
-      this.e = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", 2, "setSelectPos " + paramInt + " oldPos:" + i);
-      }
-      b(paramRecyclerView, i);
-      b(paramRecyclerView, paramInt);
-      b(paramRecyclerView, paramInt - 1);
-      b(paramRecyclerView, paramInt + 1);
-    }
-  }
-  
-  public void a(wcl paramwcl)
-  {
-    long l = SystemClock.uptimeMillis();
-    if (l - this.jdField_a_of_type_Long > 500L) {
-      if ((!paramwcl.b()) && (this.jdField_a_of_type_JavaUtilList.indexOf(paramwcl) >= 0) && (paramwcl == a()) && (this.jdField_a_of_type_Wer != null)) {
-        this.jdField_a_of_type_Wer.a(paramwcl);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = l;
-      return;
-      yqp.d("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "you click too fast, wait...");
-    }
-  }
-  
-  public void a(wdx paramwdx, int paramInt)
-  {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramwdx, paramInt, getItemId(paramInt));
-      return;
-      paramwdx.a((wcl)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      if (((this.e == -1) && (paramInt != 0)) || (this.e != paramInt)) {
-        wef.a(paramwdx, this.c, this.jdField_a_of_type_Int, this.d, this.b, 0.0F, paramInt);
-      }
-    }
-  }
-  
-  public boolean a(@NonNull List<wcl> paramList)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        if (!((wcl)localIterator.next()).a()) {
-          return false;
-        }
-      }
-    }
-    if (paramList.size() > 0)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(wcl.a(1));
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Wer.e();
-      a(paramList);
-      return true;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(wcl.a(1));
-      this.jdField_a_of_type_JavaUtilList.add(wcl.a(4));
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b()
-  {
-    if (a()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(wcl.a(1));
-    this.jdField_a_of_type_JavaUtilList.add(wcl.a(2));
-    notifyDataSetChanged();
-    this.jdField_a_of_type_Wer.e();
-  }
-  
-  public void b(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < getItemCount()))
-    {
-      paramRecyclerView = (wdx)paramRecyclerView.findViewHolderForAdapterPosition(paramInt);
-      if (paramRecyclerView != null) {
-        paramRecyclerView.a();
-      }
-    }
-  }
-  
-  public void b(wcl paramwcl)
-  {
-    int j = a(paramwcl);
-    if (j >= 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramwcl);
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label188;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-      } while (((wcl)localIterator.next()).a());
-    }
-    label188:
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0)
-      {
-        yqp.b("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "album delete all , show empty page");
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilList.add(wcl.a(1));
-        this.jdField_a_of_type_JavaUtilList.add(wcl.a(4));
-      }
-      notifyItemRemoved(j);
-      if (j < this.jdField_a_of_type_JavaUtilList.size()) {
-        notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size() - j);
-      }
-      if (this.jdField_a_of_type_Wer != null) {
-        this.jdField_a_of_type_Wer.a(paramwcl, j);
-      }
-      this.jdField_a_of_type_Wca.a(paramwcl.a());
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(wcl.a(1));
-    this.jdField_a_of_type_JavaUtilList.add(wcl.a(3));
-    notifyDataSetChanged();
-    this.jdField_a_of_type_Wer.e();
-  }
-  
-  public void c(wcl paramwcl)
-  {
-    b(paramwcl);
-    yqu.a("video_shoot_slides", "delete_smartalbum", 0, 0, new String[] { String.valueOf(paramwcl.d()), "2" });
-  }
-  
-  public void d()
-  {
-    if (a()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(wcl.a(1));
-    this.jdField_a_of_type_JavaUtilList.add(wcl.a(5));
-    notifyDataSetChanged();
-    this.jdField_a_of_type_Wer.e();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public boolean isValidate()
+  public boolean b()
   {
     return this.jdField_a_of_type_Boolean;
   }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas.updatesystem.impl;
 
 import android.os.Bundle;
-import bhdp;
+import bidz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.vas.update.callback.listener.IDownloadListener;
 import com.tencent.vas.update.entity.DownloadInfoParams;
@@ -9,7 +9,7 @@ import com.tencent.vas.update.entity.DownloadInfoParams;
 public class VasHttpDownloaderImpl$1
   implements Runnable
 {
-  public VasHttpDownloaderImpl$1(bhdp parambhdp, DownloadInfoParams paramDownloadInfoParams, IDownloadListener paramIDownloadListener) {}
+  public VasHttpDownloaderImpl$1(bidz parambidz, DownloadInfoParams paramDownloadInfoParams, IDownloadListener paramIDownloadListener) {}
   
   public void run()
   {

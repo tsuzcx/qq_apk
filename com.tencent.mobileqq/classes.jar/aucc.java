@@ -1,49 +1,71 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class aucc
+  extends aucd
 {
-  private final byte jdField_a_of_type_Byte = 0;
-  private final int jdField_a_of_type_Int = 20;
-  private final String jdField_a_of_type_JavaLangString = "PrivacyInfoUtil";
-  private final ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  private HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final byte[] jdField_a_of_type_ArrayOfByte = "gavinhuangdaydayup_happy".getBytes();
-  private final byte jdField_b_of_type_Byte = 0;
-  private final String jdField_b_of_type_JavaLangString = "DESede/ECB/PKCS5Padding";
-  private final byte[] jdField_b_of_type_ArrayOfByte = "doscarlettmarryrenzzhang".getBytes();
-  private final byte jdField_c_of_type_Byte = 1;
-  private final String jdField_c_of_type_JavaLangString = "random";
-  private final byte[] jdField_c_of_type_ArrayOfByte = "wangpeilin_georgewangson".getBytes();
-  private final byte jdField_d_of_type_Byte = 0;
-  private final byte[] jdField_d_of_type_ArrayOfByte = "georgebirthdayis19790526".getBytes();
-  private final byte[] e = "qlinkwillthebestfunction".getBytes();
-  private final byte[] f = "qqwillbebetterthanwechat".getBytes();
-  private final byte[] g = "whowillbethenextbigtiger".getBytes();
-  private final byte[] h = "whenwillwefindmahang_370".getBytes();
-  private final byte[] i = "whenwillchinagetworldcap".getBytes();
-  private byte[] j;
+  final boolean jdField_a_of_type_Boolean;
+  final byte[] jdField_a_of_type_ArrayOfByte;
+  final byte[] b;
   
-  public aucc()
+  public aucc(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.e);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.f);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.g);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.h);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.i);
+    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte5;
+    this.b = paramArrayOfByte6;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(String paramString)
+  public boolean a()
   {
-    if (paramString != null) {}
-    for (paramString = paramString.getBytes();; paramString = null)
+    if (!super.a()) {}
+    do
     {
-      this.j = paramString;
-      return;
+      do
+      {
+        do
+        {
+          return false;
+          if ((b() != null) && (b().length != 0)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBuf10MMdd5 is err");
+        return false;
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
+      return false;
+      if ((this.b != null) && (this.b.length != 0)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
+    return false;
+    return true;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" uuid:");
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
+      if (this.b == null) {
+        break label76;
+      }
+    }
+    label76:
+    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
+    {
+      return str;
+      str = "";
+      break;
     }
   }
 }

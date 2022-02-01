@@ -1,88 +1,73 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
 
 public class aofl
 {
-  private static List<aofm> jdField_a_of_type_JavaUtilList = new ArrayList(32);
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aofm(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private aoau jdField_a_of_type_Aoau = new aofn(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public static void a()
+  public aofl(String paramString)
   {
-    synchronized (jdField_a_of_type_JavaUtilList)
+    try
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
-      {
-        aofm localaofm = (aofm)localIterator.next();
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_FailCode", String.valueOf(localaofm.jdField_a_of_type_Int));
-        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-        localHashMap.put("msgType", String.valueOf(localaofm.b));
-        localHashMap.put("uinType", String.valueOf(localaofm.c));
-        bctj.a(BaseApplication.getContext()).a(localaofm.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localaofm.jdField_a_of_type_Long, 0L, localHashMap, "");
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
+      paramString = new IntentFilter();
+      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
+      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
+      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
       }
-    }
-    aofm.a(jdField_a_of_type_JavaUtilList);
-    jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (!paramQQAppInterface.c().endsWith("7")) {
       return;
     }
-    paramQQAppInterface = new HashMap();
-    paramQQAppInterface.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramQQAppInterface.put("uinType", String.valueOf(paramInt));
-    paramQQAppInterface.put("convUin", String.valueOf(paramString));
-    bctj.a(BaseApplication.getContext()).a(null, "actNoCachedLastMsg", true, 0L, 0L, paramQQAppInterface, "");
-  }
-  
-  public static void a(MessageRecord arg0, QQAppInterface paramQQAppInterface)
-  {
-    if (!paramQQAppInterface.c().endsWith("77")) {}
-    long l;
-    do
+    catch (AccountNotMatchException paramString)
     {
-      return;
-      l = NetConnInfoCenter.getServerTime() - ???.time;
-    } while ((l < 30L) || ((paramQQAppInterface.b != 0L) && (???.time < paramQQAppInterface.b)));
-    if (???.time < paramQQAppInterface.jdField_a_of_type_Long) {}
-    for (int i = 1;; i = 2)
-    {
-      paramQQAppInterface = aofm.a(i, paramQQAppInterface.c(), l, ???.msgtype, ???.istroop);
-      synchronized (jdField_a_of_type_JavaUtilList)
+      for (;;)
       {
-        jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
-        if (jdField_a_of_type_JavaUtilList.size() >= 32) {
-          a();
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
         }
-        return;
       }
     }
   }
   
-  public static void a(String paramString, long paramLong)
+  public void a()
   {
-    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 10000) < 10)
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aoau);
+    }
+    try
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-      bctj.a(BaseApplication.getContext()).a(null, paramString, true, paramLong, 0L, localHashMap, "");
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aofl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import abcr;
-import afgu;
-import afgv;
-import afgw;
-import afgx;
-import afgy;
-import afgz;
-import afha;
-import afhb;
-import afhc;
-import afhd;
-import afhe;
-import afur;
+import abgu;
+import afpy;
+import afpz;
+import afqa;
+import afqb;
+import afqc;
+import afqd;
+import afqe;
+import afqf;
+import afqg;
+import afqh;
+import afqi;
+import agej;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -50,42 +50,42 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anhk;
-import anni;
-import apss;
-import araf;
-import arag;
-import arbg;
-import arbh;
-import arpd;
-import arph;
-import arui;
-import bcst;
-import bdhj;
-import bdhx;
-import bdiq;
-import bdiv;
-import bdjd;
-import bdjg;
-import bdjm;
-import bdjn;
-import bdjq;
-import bdkv;
-import bgkb;
-import bgkc;
-import bgmg;
-import bgmo;
-import bhmv;
-import bhos;
-import bhpv;
-import bhqc;
-import bhql;
-import bhqo;
-import bhrd;
-import bhre;
-import bkgm;
-import bkho;
-import bkif;
+import antf;
+import anzj;
+import aqgi;
+import arpw;
+import arpx;
+import arqv;
+import arqw;
+import aser;
+import asev;
+import asjw;
+import bdll;
+import beae;
+import beas;
+import bebl;
+import bebq;
+import beby;
+import becb;
+import bech;
+import beci;
+import becl;
+import bedq;
+import bhkc;
+import bhkd;
+import bhmi;
+import bhmq;
+import binq;
+import bipn;
+import biqq;
+import biqx;
+import birg;
+import birj;
+import biry;
+import birz;
+import blhq;
+import blir;
+import blji;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -115,11 +115,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import ljj;
+import lju;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import nlw;
-import nmj;
+import nnr;
+import noe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -127,25 +127,25 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   extends WebViewFragment
 {
   public int a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new afgu(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new afpy(this);
   Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new afgv(this);
+  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new afpz(this);
   public Button a;
   public EditText a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   public RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private apss jdField_a_of_type_Apss;
-  private bdhx jdField_a_of_type_Bdhx;
-  private bdjq jdField_a_of_type_Bdjq;
-  bkgm jdField_a_of_type_Bkgm;
+  private aqgi jdField_a_of_type_Aqgi;
+  private beas jdField_a_of_type_Beas;
+  private becl jdField_a_of_type_Becl;
+  blhq jdField_a_of_type_Blhq;
   public InputLinearLayout a;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
   String jdField_a_of_type_JavaLangString = "";
   public boolean a;
   public int b;
-  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new afgx(this);
+  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new afqb(this);
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   public String b;
   public boolean b;
@@ -207,14 +207,14 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     for (;;)
     {
       if (paramInt != -1) {
-        this.jdField_a_of_type_Apss = new apss(getHostActivity(), paramInt);
+        this.jdField_a_of_type_Aqgi = new aqgi(getHostActivity(), paramInt);
       }
-      if (this.jdField_a_of_type_Apss == null) {
+      if (this.jdField_a_of_type_Aqgi == null) {
         break;
       }
-      this.jdField_a_of_type_Apss.a();
-      this.jdField_a_of_type_Apss.a(new afhc(this, paramImageView));
-      this.jdField_a_of_type_Apss.a(paramString, true);
+      this.jdField_a_of_type_Aqgi.a();
+      this.jdField_a_of_type_Aqgi.a(new afqg(this, paramImageView));
+      this.jdField_a_of_type_Aqgi.a(paramString, true);
       return;
       paramInt = 1;
       continue;
@@ -249,10 +249,10 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
     default: 
       str1 = "key_team_work_user_click_count";
-      paramInt = arag.a().c();
-      str2 = arag.a().b();
-      localObject2 = arag.a().c();
-      localObject1 = anni.a(2131713498);
+      paramInt = arpx.a().c();
+      str2 = arpx.a().b();
+      localObject2 = arpx.a().c();
+      localObject1 = anzj.a(2131713607);
       localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("tim_convert_teamwork_pre_" + getActivity().getCurrentAccountUin(), 4);
       i1 = localSharedPreferences.getInt(str1, 0);
       if (i1 >= paramInt) {
@@ -262,7 +262,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         break;
       }
     }
-    for (Object localObject1 = getResources().getString(2131718508);; localObject1 = str2 + "\n" + (String)localObject2)
+    for (Object localObject1 = getResources().getString(2131718644);; localObject1 = str2 + "\n" + (String)localObject2)
     {
       localObject2 = new Intent(getActivity(), DialogActivity.class);
       ((Intent)localObject2).addFlags(268435456);
@@ -270,7 +270,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       ((Intent)localObject2).addFlags(67108864);
       ((Intent)localObject2).addFlags(131072);
       ((Intent)localObject2).putExtra("key_dialog_type", DialogActivity.jdField_d_of_type_Int);
-      ((Intent)localObject2).putExtra("key_dialog_title", anni.a(2131713437));
+      ((Intent)localObject2).putExtra("key_dialog_title", anzj.a(2131713546));
       ((Intent)localObject2).putExtra("key_dialog_content", (String)localObject1);
       ((Intent)localObject2).putExtra("key_teamwork_url", a());
       getActivity().startActivity((Intent)localObject2);
@@ -280,33 +280,33 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       ((SharedPreferences.Editor)localObject1).commit();
       return;
       str1 = "key_team_work_user_click_count";
-      paramInt = arag.a().c();
-      str2 = arag.a().d();
-      localObject2 = arag.a().e();
-      localObject1 = anni.a(2131713449);
+      paramInt = arpx.a().c();
+      str2 = arpx.a().d();
+      localObject2 = arpx.a().e();
+      localObject1 = anzj.a(2131713558);
       break;
       str1 = "key_team_work_content_edit_click_count";
-      paramInt = arag.a().d();
-      str2 = arag.a().f();
-      localObject2 = arag.a().g();
-      localObject1 = anni.a(2131713448);
+      paramInt = arpx.a().d();
+      str2 = arpx.a().f();
+      localObject2 = arpx.a().g();
+      localObject1 = anzj.a(2131713557);
       break;
     }
     label396:
-    QQToast.a(getActivity(), (CharSequence)localObject1, 0).b(getActivity().getResources().getDimensionPixelSize(2131298998));
+    QQToast.a(getActivity(), (CharSequence)localObject1, 0).b(getActivity().getResources().getDimensionPixelSize(2131299011));
   }
   
   private void d(String paramString)
   {
-    if (nlw.a(paramString)) {
+    if (nnr.a(paramString)) {
       this.webView.loadUrl(paramString);
     }
     this.j = false;
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
     this.mSwiftTitleUI.c.setOnClickListener(null);
     this.mSwiftTitleUI.c.setVisibility(8);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840276);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(2131690389);
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840286);
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(2131690384);
     this.jdField_f_of_type_Int = 2;
     d();
     i();
@@ -319,7 +319,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   private void m()
   {
-    this.mIpcObserver = new afgz(this);
+    this.mIpcObserver = new afqd(this);
   }
   
   private void n()
@@ -328,8 +328,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     if (getIntent().getParcelableExtra("key_team_work_file_import_info") != null) {
       localBundle.putParcelable("key_team_work_file_import_info", getIntent().getParcelableExtra("key_team_work_file_import_info"));
     }
-    localBundle = arph.a("ipc_cmd_get_team_work_url", "", this.mIpcObserver.key, localBundle);
-    arui.a().a(localBundle);
+    localBundle = asev.a("ipc_cmd_get_team_work_url", "", this.mIpcObserver.key, localBundle);
+    asjw.a().a(localBundle);
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "-->service binded  make ipc request");
     }
@@ -340,7 +340,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   {
     Object localObject2;
     Object localObject1;
-    if (this.mUIStyleHandler.jdField_a_of_type_Bhqo.jdField_a_of_type_Boolean)
+    if (this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_a_of_type_Boolean)
     {
       QLog.e("WebLog_WebViewFragment", 1, "isFullScreen");
       if (getIntent().getStringExtra("url") != null)
@@ -358,22 +358,22 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       localObject1 = getIntent();
-      localObject2 = getResources().getColorStateList(2131166981);
+      localObject2 = getResources().getColorStateList(2131166985);
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject2);
       this.mSwiftTitleUI.c.setTextColor((ColorStateList)localObject2);
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840276);
-      if ((this.jdField_a_of_type_Bdhx == null) || (!this.jdField_a_of_type_Bdhx.a())) {
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840286);
+      if ((this.jdField_a_of_type_Beas == null) || (!this.jdField_a_of_type_Beas.a())) {
         this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(Color.parseColor("#f6f7f9"));
       }
       this.mSwiftTitleUI.b.setTextSize(18.0F);
       this.mSwiftTitleUI.b.setTextColor(Color.parseColor("#333333"));
       this.mSwiftTitleUI.b.setMaxEms(13);
       this.mSwiftTitleUI.b.getLayoutParams().height = -2;
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368997));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369091));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(12.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxEms(13);
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368967));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369061));
       this.jdField_d_of_type_Int = ((Intent)localObject1).getIntExtra("key_team_work_pad_list_type", -1);
       if ((!((Intent)localObject1).getBooleanExtra("temp_preview_from_qq", false)) || (getCurrentUrl() == null) || (!getCurrentUrl().contains("preview=1"))) {
         break label542;
@@ -398,7 +398,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bdhx == null) || (!this.jdField_a_of_type_Bdhx.a())) {
+      if ((this.jdField_a_of_type_Beas == null) || (!this.jdField_a_of_type_Beas.a())) {
         break label564;
       }
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -423,10 +423,10 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
     this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.mSwiftTitleUI.c.setVisibility(0);
-    this.mSwiftTitleUI.c.setText(anni.a(2131713444));
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131713464));
+    this.mSwiftTitleUI.c.setText(anzj.a(2131713553));
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131713573));
     this.jdField_f_of_type_Int = 1;
-    this.mSwiftTitleUI.c.setOnClickListener(new afhb(this));
+    this.mSwiftTitleUI.c.setOnClickListener(new afqf(this));
     for (;;)
     {
       setMiniAIOEntry(true);
@@ -446,7 +446,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   private void p()
   {
-    bdjg.a((TeamWorkFileImportInfo)getIntent().getParcelableExtra("key_team_work_file_import_info"), getCurrentUrl(), "0X8009F33");
+    becb.a((TeamWorkFileImportInfo)getIntent().getParcelableExtra("key_team_work_file_import_info"), getCurrentUrl(), "0X8009F33");
     q();
   }
   
@@ -455,20 +455,20 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     TeamWorkFileImportInfo localTeamWorkFileImportInfo = (TeamWorkFileImportInfo)getIntent().getParcelableExtra("key_team_work_file_import_info");
     if (a(localTeamWorkFileImportInfo))
     {
-      bdkv.a(null, "0X800A753");
-      bcst.b(null, "dc00898", "", "", "0X800A757", "0X800A757", 0, 0, "", "", String.valueOf(SystemClock.elapsedRealtime() - localTeamWorkFileImportInfo.jdField_c_of_type_Long), "");
+      bedq.a(null, "0X800A753");
+      bdll.b(null, "dc00898", "", "", "0X800A757", "0X800A757", 0, 0, "", "", String.valueOf(SystemClock.elapsedRealtime() - localTeamWorkFileImportInfo.jdField_c_of_type_Long), "");
     }
   }
   
-  public bdjq a(ViewGroup paramViewGroup)
+  public becl a(ViewGroup paramViewGroup)
   {
     boolean bool2 = false;
     if ((this.mUIStyle.b & 0x40) != 0L) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.jdField_a_of_type_Bdjq = new bdjq(this.mApp, super.getActivity(), this, this.intent, bool1);
-      this.jdField_a_of_type_Bdjq.a(this.sonicClient);
-      TouchWebView localTouchWebView = this.jdField_a_of_type_Bdjq.a();
+      this.jdField_a_of_type_Becl = new becl(this.mApp, super.getActivity(), this, this.intent, bool1);
+      this.jdField_a_of_type_Becl.a(this.sonicClient);
+      TouchWebView localTouchWebView = this.jdField_a_of_type_Becl.a();
       if (this.sonicClient != null) {
         this.sonicClient.bindWebView(localTouchWebView);
       }
@@ -476,12 +476,12 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       localTouchWebView.setPluginEngine(this.mPluginEngine);
       if ((localTouchWebView instanceof SwiftReuseTouchWebView))
       {
-        bhqc localbhqc = this.mStatistics;
+        biqx localbiqx = this.mStatistics;
         bool1 = bool2;
         if (1 == ((SwiftReuseTouchWebView)localTouchWebView).jdField_b_of_type_Int) {
           bool1 = true;
         }
-        localbhqc.u = bool1;
+        localbiqx.u = bool1;
       }
       if (localTouchWebView.getX5WebViewExtension() != null) {
         this.e = true;
@@ -493,7 +493,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       if (paramViewGroup != null) {
         paramViewGroup.addView(localTouchWebView);
       }
-      return this.jdField_a_of_type_Bdjq;
+      return this.jdField_a_of_type_Becl;
     }
   }
   
@@ -511,46 +511,46 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     if (paramInt == 0) {
       if (i1 == 3)
       {
-        bcst.b(getActivity().app, "dc00898", "", "", "0X800A074", "0X800A074", 0, 0, "", "", "", "");
+        bdll.b(getActivity().app, "dc00898", "", "", "0X800A074", "0X800A074", 0, 0, "", "", "", "");
         str = "0X80074D2";
       }
     }
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        bcst.b(getActivity().app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+        bdll.b(getActivity().app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       }
       return;
       if (i1 != 20) {
         break;
       }
-      bcst.b(getActivity().app, "dc00898", "", "", "0X800A07C", "0X800A07C", 0, 0, "", "", "", "");
+      bdll.b(getActivity().app, "dc00898", "", "", "0X800A07C", "0X800A07C", 0, 0, "", "", "", "");
       break;
       if (paramInt == 1)
       {
         if (i1 == 3) {
-          bcst.b(getActivity().app, "dc00898", "", "", "0X800A075", "0X800A075", 0, 0, "", "", "", "");
+          bdll.b(getActivity().app, "dc00898", "", "", "0X800A075", "0X800A075", 0, 0, "", "", "", "");
         }
         for (;;)
         {
           str = "0X80074D3";
           break;
           if (i1 == 20) {
-            bcst.b(getActivity().app, "dc00898", "", "", "0X800A07D", "0X800A07D", 0, 0, "", "", "", "");
+            bdll.b(getActivity().app, "dc00898", "", "", "0X800A07D", "0X800A07D", 0, 0, "", "", "", "");
           }
         }
       }
       if (paramInt == 2)
       {
         if (i1 == 3) {
-          bcst.b(getActivity().app, "dc00898", "", "", "0X800A076", "0X800A076", 0, 0, "", "", "", "");
+          bdll.b(getActivity().app, "dc00898", "", "", "0X800A076", "0X800A076", 0, 0, "", "", "", "");
         }
         for (;;)
         {
           str = "0X80074D4";
           break;
           if (i1 == 20) {
-            bcst.b(getActivity().app, "dc00898", "", "", "0X800A07E", "0X800A07E", 0, 0, "", "", "", "");
+            bdll.b(getActivity().app, "dc00898", "", "", "0X800A07E", "0X800A07E", 0, 0, "", "", "", "");
           }
         }
       }
@@ -607,14 +607,14 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         if (paramInt == 15)
         {
           if (i1 == 3) {
-            bcst.b(getActivity().app, "dc00898", "", "", "0X800A073", "0X800A073", 0, 0, "", "", "", "");
+            bdll.b(getActivity().app, "dc00898", "", "", "0X800A073", "0X800A073", 0, 0, "", "", "", "");
           }
           for (;;)
           {
             str = "0X8008A3B";
             break;
             if (i1 == 20) {
-              bcst.b(getActivity().app, "dc00898", "", "", "0X800A07B", "0X800A07B", 0, 0, "", "", "", "");
+              bdll.b(getActivity().app, "dc00898", "", "", "0X800A07B", "0X800A07B", 0, 0, "", "", "", "");
             }
           }
         }
@@ -642,29 +642,29 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     Object localObject = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).getString("camera_photo_path", "");
     if (!((String)localObject).equalsIgnoreCase(""))
     {
-      agaa.jdField_a_of_type_JavaLangString = (String)localObject;
+      agju.jdField_a_of_type_JavaLangString = (String)localObject;
       paramIntent = Uri.fromFile(new File((String)localObject));
     }
     PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit().remove("camera_photo_path").commit();
     if (paramIntent == null) {
       return;
     }
-    paramIntent = bgmo.b(BaseApplicationImpl.getApplication(), paramIntent);
+    paramIntent = bhmq.b(BaseApplicationImpl.getApplication(), paramIntent);
     if (paramIntent != null)
     {
-      bgmo.a(super.getActivity(), paramIntent);
-      if (!bgmg.e(paramIntent))
+      bhmq.a(super.getActivity(), paramIntent);
+      if (!bhmi.e(paramIntent))
       {
-        QQToast.a(super.getActivity(), super.getString(2131692205), 0).b(getTitleBarHeight());
+        QQToast.a(super.getActivity(), super.getString(2131692210), 0).b(getTitleBarHeight());
         return;
       }
       if (!new File(paramIntent).exists()) {
-        QQToast.a(super.getActivity(), getString(2131694324), 0).b(getTitleBarHeight());
+        QQToast.a(super.getActivity(), getString(2131694366), 0).b(getTitleBarHeight());
       }
     }
     else
     {
-      QQToast.a(super.getActivity(), getString(2131694324), 0).b(getTitleBarHeight());
+      QQToast.a(super.getActivity(), getString(2131694366), 0).b(getTitleBarHeight());
       return;
     }
     localObject = new Intent();
@@ -676,8 +676,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     ((Intent)localObject).putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", TeamWorkDocEditBrowserActivity.class.getName());
     ((Intent)localObject).putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     ((Intent)localObject).putExtra("PhotoConst.HANDLE_DEST_RESULT", false);
-    ((Intent)localObject).putExtra(bgkb.h, 55);
-    ((Intent)localObject).putExtra("uin", anhk.V);
+    ((Intent)localObject).putExtra(bhkc.h, 55);
+    ((Intent)localObject).putExtra("uin", antf.V);
     ((Intent)localObject).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
     ((Intent)localObject).putExtra("LASTFROM", this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
     super.getActivity().startActivity((Intent)localObject);
@@ -750,17 +750,17 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       Drawable localDrawable;
       if ((!paramBoolean) || (paramInt == 0)) {
         if (!paramBoolean) {
-          localDrawable = getResources().getDrawable(2130850525);
+          localDrawable = getResources().getDrawable(2130850538);
         }
       }
       while (localDrawable != null)
       {
-        this.mSwiftTitleUI.b.setCompoundDrawablePadding(afur.a(6.0F, getResources()));
+        this.mSwiftTitleUI.b.setCompoundDrawablePadding(agej.a(6.0F, getResources()));
         this.mSwiftTitleUI.b.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
         return;
         if (paramInt == 0)
         {
-          localDrawable = getResources().getDrawable(2130850524);
+          localDrawable = getResources().getDrawable(2130850537);
           continue;
           this.mSwiftTitleUI.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         }
@@ -839,8 +839,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
     localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
-    localIntent.putExtra(bgkb.h, 55);
-    localIntent.putExtra("uin", anhk.V);
+    localIntent.putExtra(bhkc.h, 55);
+    localIntent.putExtra("uin", antf.V);
     localIntent.putExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", true);
     localIntent.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", true);
     localIntent.putExtra("LASTFROM", this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
@@ -853,7 +853,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       localIntent.putExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
     }
     super.startActivity(localIntent);
-    bgkc.anim(super.getActivity(), false, true);
+    bhkd.anim(super.getActivity(), false, true);
   }
   
   public void b(boolean paramBoolean)
@@ -956,22 +956,22 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       this.j = bool1;
       if (this.j)
       {
-        this.mSwiftTitleUI.b.setText(getResources().getString(2131718515));
+        this.mSwiftTitleUI.b.setText(getResources().getString(2131718651));
         return;
       }
       if (this.jdField_a_of_type_Int == 2)
       {
-        this.mSwiftTitleUI.b.setText(2131718513);
+        this.mSwiftTitleUI.b.setText(2131718649);
         return;
       }
     } while (this.jdField_a_of_type_Int != 1);
-    this.mSwiftTitleUI.b.setText(2131718513);
+    this.mSwiftTitleUI.b.setText(2131718649);
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
     int i1 = super.doCreateLoopStep_Final(paramBundle);
-    if ((this.jdField_a_of_type_Bdhx != null) && (this.jdField_a_of_type_Bdhx.a())) {
+    if ((this.jdField_a_of_type_Beas != null) && (this.jdField_a_of_type_Beas.a())) {
       this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
     }
     if (getIntent().getBooleanExtra("temp_preview_show_loading", false))
@@ -980,30 +980,30 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         QLog.d("WebLog_WebViewFragment", 2, "-->service KEY_TEMP_SHOW_LOADING");
       }
       m();
-      arui.a().a(this.mIpcObserver);
-      if (arui.a().a()) {
+      asjw.a().a(this.mIpcObserver);
+      if (asjw.a().a()) {
         n();
       }
     }
     if (this.mUIStyleHandler.d == null) {
-      this.mUIStyleHandler.d = ((ViewGroup)super.getActivity().findViewById(2131363653));
+      this.mUIStyleHandler.d = ((ViewGroup)super.getActivity().findViewById(2131363678));
     }
     this.mUIStyleHandler.d.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    LayoutInflater.from(super.getActivity()).inflate(2131562952, this.mUIStyleHandler.d);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = anhk.V;
+    LayoutInflater.from(super.getActivity()).inflate(2131562986, this.mUIStyleHandler.d);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = antf.V;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 7119;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131378315));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131372549));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131378472));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131372660));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131377448));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131377602));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131367964));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131368034));
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)super.getActivity().findViewById(2131378337));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.getActivity().findViewById(2131378336));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)super.getActivity().findViewById(2131378494));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.getActivity().findViewById(2131378493));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(1);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new afgy(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.getActivity().findViewById(2131378338));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new afqc(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.getActivity().findViewById(2131378495));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_Int == 1)
     {
@@ -1030,17 +1030,17 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   {
     int i1 = super.doCreateLoopStep_InitUIFrame(paramBundle);
     if (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690563));
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690559));
     }
     if (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     if ((getIntent().hasExtra("temp_preview_show_loading")) && ((this.mUIStyleHandler.d instanceof RelativeLayout)))
     {
-      this.jdField_a_of_type_Bdhx = new bdhx((RelativeLayout)this.mUIStyleHandler.d, getActivity(), this.browserApp);
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Bdhx.a(paramBundle);
+      this.jdField_a_of_type_Beas = new beas((RelativeLayout)this.mUIStyleHandler.d, getActivity(), this.browserApp);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Beas.a(paramBundle);
       if (a(null)) {
-        bdkv.a(null, "0X800A752");
+        bedq.a(null, "0X800A752");
       }
     }
     return i1;
@@ -1101,8 +1101,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         if (this.mSwiftTitleUI == null) {
           break label140;
         }
-        this.mSwiftTitleUI.jdField_a_of_type_Bhqo.d = false;
-        this.mSwiftTitleUI.jdField_a_of_type_Bhqo.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+        this.mSwiftTitleUI.jdField_a_of_type_Birj.d = false;
+        this.mSwiftTitleUI.jdField_a_of_type_Birj.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
         if (this.mUIStyleHandler == null) {
           break;
         }
@@ -1120,8 +1120,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     if (this.mSwiftTitleUI.b != null) {
       this.mSwiftTitleUI.b.clearFocus();
     }
-    this.jdField_a_of_type_Bkgm = new bkgm(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this.jdField_b_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_Blhq = new blhq(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_AndroidOsHandler = new blhq(Looper.getMainLooper(), this.jdField_b_of_type_AndroidOsHandler$Callback);
     getIntent().getExtras().setClassLoader(getClass().getClassLoader());
     g();
     return true;
@@ -1130,12 +1130,12 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Bkgm != null)
+    if (this.jdField_a_of_type_Blhq != null)
     {
-      Message localMessage = this.jdField_a_of_type_Bkgm.obtainMessage();
+      Message localMessage = this.jdField_a_of_type_Blhq.obtainMessage();
       localMessage.what = 1;
       localMessage.obj = paramIntent;
-      this.jdField_a_of_type_Bkgm.sendMessage(localMessage);
+      this.jdField_a_of_type_Blhq.sendMessage(localMessage);
     }
   }
   
@@ -1199,7 +1199,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void h()
   {
-    if ((this.jdField_a_of_type_Bdhx != null) && (this.jdField_a_of_type_Bdhx.a())) {}
+    if ((this.jdField_a_of_type_Beas != null) && (this.jdField_a_of_type_Beas.a())) {}
     do
     {
       return;
@@ -1212,8 +1212,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void i()
   {
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850526);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new afha(this));
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850539);
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new afqe(this));
   }
   
   public void initNativeMiniAIOUser()
@@ -1226,7 +1226,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
       if (this.mMiniMsgUser == null)
       {
-        this.mMiniMsgUser = new bdiv(getActivity(), getMiniMsgUserParam(), str1, i1, str2);
+        this.mMiniMsgUser = new bebq(getActivity(), getMiniMsgUserParam(), str1, i1, str2);
         this.mMiniMsgUser.onForeground();
       }
       this.mSwiftTitleUI.a().setVisibility(0);
@@ -1244,7 +1244,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
       this.webView = a(null).a();
       this.webView.getView().setOnTouchListener(this);
-      this.webView.setOnLongClickListener(new afhe(this));
+      this.webView.setOnLongClickListener(new afqi(this));
       l1 = System.currentTimeMillis();
       if ((this.mUIStyle.jdField_a_of_type_Long & 0x10000) == 0L) {
         break label434;
@@ -1275,7 +1275,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       if (i1 == 0) {
         break label518;
       }
-      Bundle localBundle = bhre.a();
+      Bundle localBundle = birz.a();
       if (localBundle != null) {
         localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
       }
@@ -1295,10 +1295,10 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
       label295:
       if (QLog.isColorLevel()) {
-        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i1), Long.valueOf(bhrd.jdField_a_of_type_Long) }));
+        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i1), Long.valueOf(biry.jdField_a_of_type_Long) }));
       }
       System.currentTimeMillis();
-      this.webView.reportInitPerformance(l1, i1, this.mStatistics.jdField_c_of_type_Long, bhrd.jdField_a_of_type_Long);
+      this.webView.reportInitPerformance(l1, i1, this.mStatistics.jdField_c_of_type_Long, biry.jdField_a_of_type_Long);
       System.currentTimeMillis();
       this.mStatistics.e = 2;
       label513:
@@ -1327,7 +1327,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
           i1 = 0;
           break label228;
           label494:
-          if (bhqc.s) {}
+          if (biqx.s) {}
           for (i1 = 1;; i1 = 0)
           {
             l1 = i1;
@@ -1349,21 +1349,21 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
       Object localObject = new StateListDrawable();
-      Drawable localDrawable = getResources().getDrawable(2130850605);
+      Drawable localDrawable = getResources().getDrawable(2130850618);
       ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localDrawable);
-      localDrawable = getResources().getDrawable(2130850604);
+      localDrawable = getResources().getDrawable(2130850617);
       ((StateListDrawable)localObject).addState(new int[] { 16842910 }, localDrawable);
-      localDrawable = getResources().getDrawable(2130850605);
+      localDrawable = getResources().getDrawable(2130850618);
       ((StateListDrawable)localObject).addState(new int[0], localDrawable);
       this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       this.jdField_d_of_type_AndroidWidgetImageView.setClickable(true);
       localObject = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = afur.a(16.0F, getResources());
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = agej.a(16.0F, getResources());
       this.jdField_d_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (bhpv)this.mComponentsProvider.a(4);
-      ((bhpv)localObject).a(true);
-      ((bhpv)localObject).jdField_b_of_type_Boolean = true;
-      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new afhd(this));
+      localObject = (biqq)this.mComponentsProvider.a(4);
+      ((biqq)localObject).a(true);
+      ((biqq)localObject).jdField_b_of_type_Boolean = true;
+      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new afqh(this));
     }
   }
   
@@ -1372,13 +1372,13 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onDestroy");
     }
-    bhqc localbhqc = this.mStatistics;
+    biqx localbiqx = this.mStatistics;
     this.isDestroyed = true;
-    localbhqc.l = true;
-    if (this.jdField_a_of_type_Bdjq != null)
+    localbiqx.l = true;
+    if (this.jdField_a_of_type_Becl != null)
     {
-      this.jdField_a_of_type_Bdjq.a();
-      this.jdField_a_of_type_Bdjq = null;
+      this.jdField_a_of_type_Becl.a();
+      this.jdField_a_of_type_Becl = null;
       this.webView = null;
     }
     this.mApp = null;
@@ -1386,17 +1386,17 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void l()
   {
-    if (ljj.b(BaseApplicationImpl.getContext())) {
+    if (lju.b(BaseApplicationImpl.getContext())) {
       return;
     }
     Object localObject1 = super.getActivity();
-    Object localObject2 = new File(anhk.ba + "photo/");
+    Object localObject2 = new File(antf.ba + "photo/");
     if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs()))
     {
-      QQToast.a((Context)localObject1, 2131717588, 0).a();
+      QQToast.a((Context)localObject1, 2131717719, 0).a();
       return;
     }
-    localObject1 = anhk.ba + "photo/" + System.currentTimeMillis() + ".jpg";
+    localObject1 = antf.ba + "photo/" + System.currentTimeMillis() + ".jpg";
     PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit().putString("camera_photo_path", (String)localObject1).commit();
     localObject2 = new Intent();
     FileProvider7Helper.setSystemCapture(super.getActivity(), new File((String)localObject1), (Intent)localObject2);
@@ -1405,7 +1405,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131368947) {
+    if (paramView.getId() != 2131369042) {
       super.onClick(paramView);
     }
     int i1 = paramView.getId();
@@ -1420,13 +1420,13 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       if ((this.jdField_f_of_type_Int == 1) && (this.jdField_g_of_type_Boolean))
       {
         a(15);
-        localObject1 = (bkho)bkif.a(getActivity(), null);
-        ((bkho)localObject1).a(getResources().getString(2131718509));
-        ((bkho)localObject1).a(getResources().getString(2131718507), 5);
-        ((bkho)localObject1).a(getResources().getString(2131718457), 5);
-        ((bkho)localObject1).c(2131690582);
-        ((bkho)localObject1).a(new afgw(this, (bkho)localObject1));
-        ((bkho)localObject1).show();
+        localObject1 = (blir)blji.a(getActivity(), null);
+        ((blir)localObject1).a(getResources().getString(2131718645));
+        ((blir)localObject1).a(getResources().getString(2131718643), 5);
+        ((blir)localObject1).a(getResources().getString(2131718593), 5);
+        ((blir)localObject1).c(2131690580);
+        ((blir)localObject1).a(new afqa(this, (blir)localObject1));
+        ((blir)localObject1).show();
       }
       else if ((this.jdField_f_of_type_Int == 2) && (this.jdField_g_of_type_Boolean))
       {
@@ -1463,8 +1463,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         for (;;)
         {
           ((Bundle)localObject1).putParcelable("key_team_work_file_import_info", (Parcelable)localObject2);
-          localObject1 = arph.a("ipc_save_team_work", "", -1, (Bundle)localObject1);
-          arui.a().a((Bundle)localObject1);
+          localObject1 = asev.a("ipc_save_team_work", "", -1, (Bundle)localObject1);
+          asjw.a().a((Bundle)localObject1);
           doOnBackEvent();
           break;
           label411:
@@ -1479,21 +1479,21 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
           ((InputMethodManager)localObject1).hideSoftInputFromWindow(super.getActivity().getWindow().getDecorView().getWindowToken(), 0);
         }
         b(this).clearFocus();
-        if (this.jdField_a_of_type_Bkgm != null)
+        if (this.jdField_a_of_type_Blhq != null)
         {
-          localObject1 = this.jdField_a_of_type_Bkgm.obtainMessage();
+          localObject1 = this.jdField_a_of_type_Blhq.obtainMessage();
           ((Message)localObject1).what = 2;
-          this.jdField_a_of_type_Bkgm.sendMessageDelayed((Message)localObject1, 500L);
+          this.jdField_a_of_type_Blhq.sendMessageDelayed((Message)localObject1, 500L);
         }
         b(false);
         continue;
         ((InputMethodManager)localObject1).hideSoftInputFromWindow(super.getActivity().getWindow().getDecorView().getWindowToken(), 0);
         c(this).clearFocus();
-        if (this.jdField_a_of_type_Bkgm != null)
+        if (this.jdField_a_of_type_Blhq != null)
         {
-          localObject1 = this.jdField_a_of_type_Bkgm.obtainMessage();
+          localObject1 = this.jdField_a_of_type_Blhq.obtainMessage();
           ((Message)localObject1).what = 3;
-          this.jdField_a_of_type_Bkgm.sendMessageDelayed((Message)localObject1, 500L);
+          this.jdField_a_of_type_Blhq.sendMessageDelayed((Message)localObject1, 500L);
         }
         b(false);
         continue;
@@ -1521,17 +1521,17 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   public void onDestroy()
   {
     p();
-    bdjg.a(getIntent(), "0X800A16C");
+    becb.a(getIntent(), "0X800A16C");
     super.onDestroy();
     k();
-    if (this.jdField_a_of_type_Bdhx != null) {
-      this.jdField_a_of_type_Bdhx.a();
+    if (this.jdField_a_of_type_Beas != null) {
+      this.jdField_a_of_type_Beas.a();
     }
-    if (this.jdField_a_of_type_Bkgm != null)
+    if (this.jdField_a_of_type_Blhq != null)
     {
-      this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Bkgm.removeMessages(0);
-      this.jdField_a_of_type_Bkgm = null;
+      this.jdField_a_of_type_Blhq.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Blhq.removeMessages(0);
+      this.jdField_a_of_type_Blhq = null;
     }
     if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.d != null) && (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null))
     {
@@ -1543,8 +1543,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = null;
-      if (this.jdField_a_of_type_Apss != null) {
-        this.jdField_a_of_type_Apss.b();
+      if (this.jdField_a_of_type_Aqgi != null) {
+        this.jdField_a_of_type_Aqgi.b();
       }
       return;
       label133:
@@ -1555,7 +1555,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    if ((Build.VERSION.SDK_INT >= 19) && (!this.isDestroyed) && (this.jdField_a_of_type_Bdjq != null) && (this.jdField_a_of_type_Bdjq.a() != null)) {
+    if ((Build.VERSION.SDK_INT >= 19) && (!this.isDestroyed) && (this.jdField_a_of_type_Becl != null) && (this.jdField_a_of_type_Becl.a() != null)) {
       onReceivedTitle(paramWebView, paramWebView.getTitle());
     }
     super.getWebView().callJs("setDocxShareInfo", new String[] { "" });
@@ -1565,9 +1565,9 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     if (this.jdField_a_of_type_Int == 1) {
       super.getWebView().requestFocus();
     }
-    if ((this.jdField_a_of_type_Bdhx != null) && (this.jdField_a_of_type_Bdhx.a()))
+    if ((this.jdField_a_of_type_Beas != null) && (this.jdField_a_of_type_Beas.a()))
     {
-      this.jdField_a_of_type_Bdhx.b();
+      this.jdField_a_of_type_Beas.b();
       o();
       if (this.jdField_g_of_type_Int != -1000)
       {
@@ -1577,8 +1577,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       paramWebView = (TeamWorkFileImportInfo)getIntent().getParcelableExtra("key_team_work_file_import_info");
       if (a(paramWebView))
       {
-        bdkv.a(null, "0X800A754");
-        bcst.b(null, "dc00898", "", "", "0X800A756", "0X800A756", 0, 0, "", "", String.valueOf(SystemClock.elapsedRealtime() - paramWebView.jdField_c_of_type_Long), "");
+        bedq.a(null, "0X800A754");
+        bdll.b(null, "dc00898", "", "", "0X800A756", "0X800A756", 0, 0, "", "", String.valueOf(SystemClock.elapsedRealtime() - paramWebView.jdField_c_of_type_Long), "");
       }
     }
     if ((paramString != null) && ((paramString.contains("/template")) || (paramString.contains("desktop/m/templates_list.html")) || (paramString.contains("docs.qq.com/desktop/m/send.html"))))
@@ -1633,7 +1633,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       {
         this.mSwiftTitleUI.a().setVisibility(0);
         initNativeMiniAIOUser();
-        a(i1, str, (ImageView)this.mSwiftTitleUI.a().findViewById(2131371077));
+        a(i1, str, (ImageView)this.mSwiftTitleUI.a().findViewById(2131371182));
         return;
       }
     }
@@ -1642,32 +1642,32 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void showActionSheet()
   {
-    bhpv localbhpv = (bhpv)this.mComponentsProvider.a(4);
-    if (localbhpv != null)
+    biqq localbiqq = (biqq)this.mComponentsProvider.a(4);
+    if (localbiqq != null)
     {
-      abcr localabcr = ensureShare();
-      if ((localabcr != null) && (bdjg.a(localabcr.a())))
+      abgu localabgu = ensureShare();
+      if ((localabgu != null) && (becb.a(localabgu.a())))
       {
         getHostActivity().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
-        bdjd localbdjd = new bdjd(getHostActivity());
-        localbdjd.a((TeamWorkFileImportInfo)getIntent().getParcelableExtra("key_team_work_file_import_info"));
-        localbhpv.a = localbdjd;
+        beby localbeby = new beby(getHostActivity());
+        localbeby.a((TeamWorkFileImportInfo)getIntent().getParcelableExtra("key_team_work_file_import_info"));
+        localbiqq.a = localbeby;
       }
-      localbhpv.a(localabcr, this.mUIStyle.jdField_a_of_type_Long);
-      bdjg.a(getIntent(), "0X800A16D");
+      localbiqq.a(localabgu, this.mUIStyle.jdField_a_of_type_Long);
+      becb.a(getIntent(), "0X800A16D");
     }
   }
   
   public void startLoadUrl()
   {
-    nmj.a("Web_readyToLoadUrl");
+    noe.a("Web_readyToLoadUrl");
     if (this.webView == null) {
       return;
     }
     initFinish();
     if ((this.mStatistics.i) && (this.mStatistics.k > 0L))
     {
-      bcst.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.jdField_c_of_type_Int);
+      bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.jdField_c_of_type_Int);
       this.mStatistics.k = 0L;
     }
     this.mStatistics.q = System.currentTimeMillis();
@@ -1675,19 +1675,19 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     l1 = this.mStatistics.b;
     if (!TextUtils.isEmpty(this.mUrl))
     {
-      if ((arbh.a().a()) && (!TextUtils.isEmpty(bdjm.jdField_a_of_type_JavaLangString)) && (this.mUrl.contains(bdjm.jdField_a_of_type_JavaLangString))) {
+      if ((arqw.a().a()) && (!TextUtils.isEmpty(bech.jdField_a_of_type_JavaLangString)) && (this.mUrl.contains(bech.jdField_a_of_type_JavaLangString))) {
         break label221;
       }
       this.webView.loadUrl(this.mUrl);
     }
     for (;;)
     {
-      nmj.b("Web_readyToLoadUrl");
+      noe.b("Web_readyToLoadUrl");
       this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, null);
       return;
       label221:
-      if (this.jdField_a_of_type_Bdjq.jdField_a_of_type_Boolean) {
-        bdjn.a(bdiq.a(this.mUrl), this.webView);
+      if (this.jdField_a_of_type_Becl.jdField_a_of_type_Boolean) {
+        beci.a(bebl.a(this.mUrl), this.webView);
       } else {
         this.webView.loadUrl(this.mUrl);
       }

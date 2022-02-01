@@ -1,13 +1,18 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class bjwp
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnCompletionListener
+public final class bjwp
+  implements Parcelable.Creator<DownloadInfo>
 {
-  bjwp(bjwn parambjwn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnCompletionListener paramOnCompletionListener) {}
-  
-  public void onCompletion(IMediaPlayer paramIMediaPlayer)
+  public DownloadInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bjwn);
+    return new DownloadInfo(paramParcel);
+  }
+  
+  public DownloadInfo[] a(int paramInt)
+  {
+    return new DownloadInfo[paramInt];
   }
 }
 

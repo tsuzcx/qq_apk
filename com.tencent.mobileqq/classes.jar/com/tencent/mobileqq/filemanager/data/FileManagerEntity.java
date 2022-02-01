@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import atwe;
-import atwl;
-import bbyp;
+import aunz;
+import auog;
+import bcrg;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -89,7 +89,7 @@ public class FileManagerEntity
   @notColumn
   public FileManagerEntity relatedEntity;
   public String selfUin;
-  public long srvTime = bbyp.a() * 1000L;
+  public long srvTime = bcrg.a() * 1000L;
   public int status;
   public String str10Md5;
   public String strApkPackageName;
@@ -280,7 +280,7 @@ public class FileManagerEntity
   
   public String getFilePath()
   {
-    return atwe.c(this.strFilePath);
+    return aunz.c(this.strFilePath);
   }
   
   public String getTableName()
@@ -290,11 +290,11 @@ public class FileManagerEntity
   
   public boolean hasNoThumb()
   {
-    if (atwl.b(this.strLargeThumPath)) {}
-    while (atwl.b(this.strMiddleThumPath)) {
+    if (auog.b(this.strLargeThumPath)) {}
+    while (auog.b(this.strMiddleThumPath)) {
       return true;
     }
-    return atwl.b(this.strThumbPath);
+    return auog.b(this.strThumbPath);
   }
   
   public boolean isFromProcessingBuddyForward2DatalineItem()

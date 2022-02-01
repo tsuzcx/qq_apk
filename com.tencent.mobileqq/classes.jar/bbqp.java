@@ -1,165 +1,215 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.TextureView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.mini.report.MiniAppBusiReport;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.richmediabrowser.view.AIOBrowserScene.1;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.view.MainBrowserScene;
+import com.tencent.richmediabrowser.view.recyclerview.DragView;
 
 public class bbqp
-  implements bbpr<bbmy, bbvg>
+  extends MainBrowserScene
 {
-  private aobu a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  public TextureView a;
+  private View jdField_a_of_type_AndroidViewView;
+  private bbpq jdField_a_of_type_Bbpq;
   
-  public bbqp(aobu paramaobu)
+  public bbqp(Activity paramActivity, bbpq parambbpq)
   {
-    this.a = paramaobu;
+    super(paramActivity, parambbpq);
+    this.mActivity = paramActivity;
+    this.jdField_a_of_type_Bbpq = parambbpq;
   }
   
-  public void a(bbmy parambbmy, bbvg parambbvg)
+  public void a()
   {
-    if ((parambbvg.b() != null) && (!(parambbmy instanceof bbly)) && ((parambbmy instanceof bbmv))) {
-      parambbvg.b().setImageDrawable(bbup.a(this.a, parambbmy));
-    }
-  }
-  
-  public void a(bbmy parambbmy, bbvg parambbvg, Bitmap paramBitmap)
-  {
-    if ((parambbvg.b() != null) && (!(parambbmy instanceof bbly))) {
-      parambbvg.b().setImageBitmap(paramBitmap);
-    }
-  }
-  
-  protected void a(bbvg parambbvg, bbmy parambbmy)
-  {
-    if ((parambbvg.a() != null) && (parambbmy != null)) {
-      parambbvg.a().setText(parambbmy.a());
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AIOBrowserScene.1(this), 1000L);
     }
   }
   
-  public void b(bbmy parambbmy, bbvg parambbvg)
+  public void a(boolean paramBoolean)
   {
-    d(parambbmy, parambbvg);
-    a(parambbvg, parambbmy);
-    if (parambbvg.b() != null) {
-      parambbvg.b().setText(parambbmy.b());
-    }
-    if (parambbvg.c() != null) {
-      parambbvg.c().setText(parambbmy.c());
-    }
-    if (parambbvg.d() != null) {
-      parambbvg.d().setText(parambbmy.d());
-    }
-    if (parambbvg.a() != null)
+    TextureView localTextureView;
+    if (this.jdField_a_of_type_AndroidViewTextureView != null)
     {
-      if (parambbmy.a()) {
-        parambbvg.a().setVisibility(0);
+      localTextureView = this.jdField_a_of_type_AndroidViewTextureView;
+      if (!paramBoolean) {
+        break label24;
       }
     }
-    else
+    label24:
+    for (int i = 0;; i = 8)
     {
-      c(parambbmy, parambbvg);
-      if (!(parambbmy instanceof bbly)) {
-        break label544;
+      localTextureView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_AndroidViewTextureView != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidViewTextureView.getVisibility() == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean back()
+  {
+    a(false);
+    return super.back();
+  }
+  
+  public void buildComplete()
+  {
+    super.buildComplete();
+  }
+  
+  public void buildParams(Intent paramIntent)
+  {
+    super.buildParams(paramIntent);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public void initView()
+  {
+    super.initView();
+    this.mDragView.setOriginRect(bbox.a().a());
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.mContext).inflate(2131558588, null);
+    if (bbov.a()) {
+      this.jdField_a_of_type_AndroidViewTextureView = ((TextureView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365259));
+    }
+    getContentView().addView(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 19002)
+    {
+      if (paramInt2 == -1) {
+        this.mContext.setResult(-1, paramIntent);
+      }
+      this.mContext.finish();
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (paramInt1 != 19000) {
+                  break;
+                }
+              } while (paramInt2 != -1);
+              return;
+              if (paramInt1 != 19005) {
+                break;
+              }
+            } while (paramInt2 != -1);
+            paramIntent = getCurrentView();
+          } while (!(paramIntent instanceof bbqn));
+          ((bbqn)paramIntent).b();
+          return;
+        } while (paramInt1 == 103);
+        super.onActivityResult(paramInt1, paramInt2, paramIntent);
+        if ((paramInt2 != -1) || (paramInt1 != 0)) {
+          break;
+        }
+        bbqi.a(this.mContext, paramIntent.getExtras());
+      } while (bbox.a().a() != 9501);
+      this.mContext.finish();
+      return;
+    } while ((paramInt2 != -1) || (paramInt1 != 10001));
+    QQToast.a(this.mContext, 2131718211, 0).a();
+  }
+  
+  public void onContentMove(float paramFloat)
+  {
+    super.onContentMove(paramFloat);
+    this.jdField_a_of_type_Bbpq.a(false);
+    if ((getCurrentView() instanceof bbqn)) {
+      ((bbqn)getCurrentView()).b(false);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void onGestureFinish()
+  {
+    Object localObject = this.jdField_a_of_type_Bbpq.a.getSelectedItem();
+    if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null)) {
+      if (((RichMediaBrowserInfo)localObject).baseData.getType() == 100) {
+        localObject = "0X8009AB2";
       }
     }
     for (;;)
     {
-      try
-      {
-        Object localObject = (ImageView)parambbvg.a().findViewById(2131381099);
-        ImageView localImageView = (ImageView)parambbvg.a().findViewById(2131365114);
-        TextView localTextView = (TextView)parambbvg.a().findViewById(2131368108);
-        if ((localObject != null) && (localImageView != null) && (localTextView != null))
-        {
-          ((ImageView)localObject).setVisibility(4);
-          localImageView.setVisibility(4);
-          localTextView.setVisibility(4);
-        }
-        bbly localbbly = (bbly)parambbmy;
-        int i = parambbvg.a().getResources().getDimensionPixelSize(2131297389);
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(localbbly.c(), i, i);
-        parambbvg.b().setImageDrawable(localURLDrawable);
-        if ((localbbly.a() != null) && (localbbly.a().video_article.has()) && (localbbly.a().video_article.get() == bbup.a) && (localObject != null) && (localImageView != null))
-        {
-          ((ImageView)localObject).setVisibility(0);
-          localImageView.getBackground().setAlpha(25);
-          localImageView.setVisibility(0);
-        }
-        if ((((bbly)parambbmy).a() != null) && (localTextView != null))
-        {
-          localTextView.setVisibility(0);
-          if (parambbvg.a() != null) {
-            parambbvg.a().setMaxWidth(afur.a(190.0F, parambbvg.a().getResources()));
-          }
-          if ((localbbly != null) && (localbbly.a() != null))
-          {
-            localObject = localbbly.a().hotword.get();
-            i = localbbly.a().hotword_type.get();
-            oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F27", "0X8006F27", 0, 0, localbbly.a(), (String)localObject, String.valueOf(i), "");
-          }
-        }
-        if (parambbmy.c() == null) {
-          parambbvg.c().setVisibility(8);
-        }
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        bdll.b(null, "dc00898", "", "", (String)localObject, (String)localObject, bbox.a().c(), 0, "", "", "", "");
       }
-      catch (Exception parambbvg)
-      {
-        QLog.d("SearchResultPresenter", 1, "groupnetsearch model construct error:" + parambbvg.toString());
-        continue;
-      }
-      if (!TextUtils.isEmpty(parambbmy.b())) {}
-      try
-      {
-        if (Integer.valueOf(parambbmy.b()).intValue() == 36) {
-          MiniAppBusiReport.reportEshopExpo("search", "");
-        }
-        return;
-      }
-      catch (Exception parambbmy)
-      {
-        label544:
-        QLog.e("SearchResultPresenter", 1, "report expo failed", parambbmy);
-      }
-      parambbvg.a().setVisibility(8);
-      break;
-      a(parambbmy, parambbvg);
-    }
-  }
-  
-  protected void c(bbmy parambbmy, bbvg parambbvg)
-  {
-    parambbvg = parambbvg.a();
-    if (parambbvg != null) {
-      parambbvg.setOnClickListener(new bbqq(this, parambbmy));
-    }
-  }
-  
-  public void d(bbmy parambbmy, bbvg parambbvg)
-  {
-    parambbvg = parambbvg.a();
-    if (parambbmy.a() == 0)
-    {
-      Integer localInteger1 = (Integer)parambbvg.getTag(2131380928);
-      Integer localInteger2 = (Integer)parambbvg.getTag(2131380930);
-      if ((localInteger1 != null) && (localInteger2 != null)) {
-        bbus.a(parambbmy, localInteger1.intValue(), localInteger2.intValue());
-      }
-    }
-    int j = parambbmy.a();
-    int k = parambbmy.b();
-    if ((parambbmy instanceof bbmz)) {}
-    for (int i = ((bbmz)parambbmy).s;; i = 0)
-    {
-      bbus.a(j, k, parambbvg, i);
+      this.jdField_a_of_type_Bbpq.i();
+      super.onGestureFinish();
       return;
+      if (((RichMediaBrowserInfo)localObject).baseData.getType() == 101) {
+        localObject = "0X8009AB3";
+      } else {
+        localObject = null;
+      }
+    }
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    if (this.jdField_a_of_type_Bbpq.b(this.jdField_a_of_type_Bbpq.getCurrentPosition())) {
+      this.jdField_a_of_type_Bbpq.a(true);
+    }
+  }
+  
+  public void onResetPosition()
+  {
+    if (bbox.a().c() == 4) {}
+    do
+    {
+      return;
+      super.onResetPosition();
+      this.jdField_a_of_type_Bbpq.d();
+    } while (!(getCurrentView() instanceof bbqn));
+    ((bbqn)getCurrentView()).b(true);
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if (this.jdField_a_of_type_Bbpq.b(this.jdField_a_of_type_Bbpq.getCurrentPosition())) {
+      this.jdField_a_of_type_Bbpq.d();
     }
   }
 }

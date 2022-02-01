@@ -1,27 +1,51 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
 
-class bmmh
-  extends Handler
+public class bmmh
+  implements bmmg
 {
-  bmmh(bmmf parambmmf) {}
-  
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = (String[])paramMessage.obj;
-    localArrayList.add(bmmf.a(this.a, arrayOfString));
-    this.a.a(localArrayList, paramMessage.arg1);
+    return 0;
   }
+  
+  public Intent a()
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("forward_type", 22);
+    localIntent.putExtra("pluginName", "struct_favorite");
+    return localIntent;
+  }
+  
+  public void a() {}
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
+  
+  public void m() {}
+  
+  public void n() {}
 }
 
 

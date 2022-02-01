@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.provider.Settings.System;
-import bddy;
+import bdwt;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,10 +15,10 @@ public class Conversation$DateFormatChangeRunnable
   public void run()
   {
     Object localObject = Settings.System.getString(this.this$0.a().getContentResolver(), "date_format");
-    if ((this.this$0.jdField_a_of_type_Albc != null) && (TimeManager.getInstance().setDateFormat((String)localObject)) && (this.this$0.f)) {
+    if ((this.this$0.jdField_a_of_type_Alms != null) && (TimeManager.getInstance().setDateFormat((String)localObject)) && (this.this$0.f)) {
       this.this$0.a(1014, 0L, false);
     }
-    bddy.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+    bdwt.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopAssistantActivity.class);

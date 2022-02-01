@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
 public class akbg
-  implements DialogInterface.OnClickListener
+  implements blln
 {
-  public akbg(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public akbg(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    bcst.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
+    bdll.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "1", "", "");
   }
 }
 

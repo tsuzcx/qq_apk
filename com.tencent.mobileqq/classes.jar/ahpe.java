@@ -1,13 +1,28 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahpe
-  implements ahor
+  implements View.OnClickListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahpe(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  
+  public void onClick(View paramView)
   {
-    paramagup.a(paramMessageRecord, paramagwc.b);
+    ahpk localahpk = (ahpk)agej.a(paramView);
+    if (paramView == localahpk.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localahpk);
+    }
+    for (;;)
+    {
+      bdll.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == localahpk.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localahpk);
+      }
+    }
   }
 }
 

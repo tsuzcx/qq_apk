@@ -1,38 +1,20 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class urp
-  implements uej
+class urp
+  implements View.OnClickListener
 {
-  public urp(WSVerticalDataManager paramWSVerticalDataManager, ure paramure) {}
+  urp(uro paramuro) {}
   
-  public void a(JceStruct paramJceStruct)
+  public void onClick(View paramView)
   {
-    upe.a("WSVerticalDataManagerLog", "onReadCacheCompleted");
-    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {
-      upe.a("WSVerticalDataManagerLog", "struct not instanceof stSimpleGetFeedListRsp");
+    if (uro.a(this.a).getActivity() != null) {
+      uro.a(this.a).getActivity().doOnBackPressed();
     }
-    do
-    {
-      stSimpleMetaFeed localstSimpleMetaFeed;
-      do
-      {
-        do
-        {
-          return;
-          paramJceStruct = ((stSimpleGetFeedListRsp)paramJceStruct).feeds;
-        } while ((paramJceStruct == null) || (paramJceStruct.size() <= 0));
-        localstSimpleMetaFeed = (stSimpleMetaFeed)paramJceStruct.get(0);
-      } while (!TextUtils.equals(localstSimpleMetaFeed.id, WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager)));
-      WSPublicAccReport.getInstance().getRecommendFullScreenInfo().a(localstSimpleMetaFeed.video_url);
-      upe.a("WSVerticalDataManagerLog", "onReadCacheCompleted feeds.size() = " + paramJceStruct.size());
-    } while (this.jdField_a_of_type_Ure == null);
-    this.jdField_a_of_type_Ure.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager.a(paramJceStruct), false, true, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

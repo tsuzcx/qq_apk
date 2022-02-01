@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vip;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
-import bhhx;
+import anzj;
+import biim;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 
 public class KingCardActivationFragment
@@ -12,14 +12,14 @@ public class KingCardActivationFragment
 {
   public int getContentLayoutId()
   {
-    return 2131561967;
+    return 2131562007;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    setTitle(anni.a(2131704746));
-    bhhx.a().a((ViewGroup)paramView.findViewById(2131364997));
+    setTitle(anzj.a(2131704853));
+    biim.a().a((ViewGroup)paramView.findViewById(2131365044));
   }
 }
 

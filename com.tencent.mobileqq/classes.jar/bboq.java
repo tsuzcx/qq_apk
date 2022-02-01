@@ -1,55 +1,124 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.KeyEvent;
+import android.view.ViewGroup;
+import com.tencent.richmediabrowser.core.IBrowserBuilder;
 
 public class bboq
-  extends bbor
+  implements IBrowserBuilder
 {
-  String a = null;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bbpi jdField_a_of_type_Bbpi;
+  private bbpq jdField_a_of_type_Bbpq;
+  private bbqp jdField_a_of_type_Bbqp;
   
-  bbmx a(aitt paramaitt, List<bbmy> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public bboq(Activity paramActivity)
   {
-    bbly localbbly;
-    if (paramList != null)
-    {
-      localbbly = (bbly)paramList.get(0);
-      if ((localbbly != null) && (localbbly.a() != null))
-      {
-        String str = localbbly.a().hotword.get();
-        oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, localbbly.a(), str, String.valueOf(localbbly.a().hotword_type.get()), "");
-      }
-      if ((localbbly == null) || (localbbly.a() == null)) {
-        break label166;
-      }
-    }
-    for (;;)
-    {
-      if ((localbbly != null) && (localbbly.a() != null)) {
-        oat.a(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localbbly.a().account_id.get()));
-      }
-      bbuo.a(110);
-      this.a = paramString2;
-      return new bblx(paramaitt, paramList, paramString1, paramString2);
-      label166:
-      if (paramList.size() > 1) {
-        localbbly = (bbly)paramList.get(1);
-      } else {
-        localbbly = null;
-      }
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public bbpq a()
+  {
+    return this.jdField_a_of_type_Bbpq;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bbpq != null) {
+      this.jdField_a_of_type_Bbpq.onWindowFocusChanged();
     }
   }
   
-  bbmy a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return new bbly(paramhotwordrecord, paramString1, paramCharSequence1, paramString2, paramCharSequence2);
+    if (this.jdField_a_of_type_Bbpq != null) {
+      this.jdField_a_of_type_Bbpq.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
   }
   
-  bbmy a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public void a(Configuration paramConfiguration)
   {
-    return new bbly(paramrecord, paramString, paramCharSequence);
+    if (this.jdField_a_of_type_Bbpq != null) {
+      this.jdField_a_of_type_Bbpq.onConfigurationChanged(paramConfiguration);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Bbpq != null) {
+      return this.jdField_a_of_type_Bbpq.onBackEvent();
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (this.jdField_a_of_type_Bbpq != null) {
+      return this.jdField_a_of_type_Bbpq.onKeyDown(paramInt, paramKeyEvent);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bbpq != null) {
+      this.jdField_a_of_type_Bbpq.onStart();
+    }
+  }
+  
+  public void buildComplete()
+  {
+    this.jdField_a_of_type_Bbpq.buildComplete();
+    this.jdField_a_of_type_Bbqp.buildComplete();
+    this.jdField_a_of_type_Bbpi.buildComplete();
+  }
+  
+  public void buildModel()
+  {
+    this.jdField_a_of_type_Bbpi.buildModel();
+  }
+  
+  public void buildParams(Intent paramIntent)
+  {
+    this.jdField_a_of_type_Bbpq.buildParams(paramIntent);
+    this.jdField_a_of_type_Bbqp.buildParams(paramIntent);
+    this.jdField_a_of_type_Bbpi.buildParams(paramIntent);
+  }
+  
+  public void buildPresenter()
+  {
+    this.jdField_a_of_type_Bbpq = new bbpq();
+    this.jdField_a_of_type_Bbqp = new bbqp(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bbpq);
+    this.jdField_a_of_type_Bbpq.a(this.jdField_a_of_type_Bbqp);
+    this.jdField_a_of_type_Bbpi = new bbpi(this.jdField_a_of_type_Bbpq);
+    this.jdField_a_of_type_Bbpq.a(this.jdField_a_of_type_Bbpi);
+  }
+  
+  public void buildView(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Bbqp.buildView(paramViewGroup);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bbpq != null) {
+      this.jdField_a_of_type_Bbpq.onResume();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Bbpq != null) {
+      this.jdField_a_of_type_Bbpq.onPause();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Bbpq != null) {
+      this.jdField_a_of_type_Bbpq.onDestroy();
+    }
   }
 }
 

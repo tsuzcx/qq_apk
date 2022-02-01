@@ -1,13 +1,18 @@
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-class ascd
-  implements awnc<List<asac>>
+public final class ascd
+  implements Parcelable.Creator<DoutuData>
 {
-  ascd(asca paramasca) {}
-  
-  public void a(List<asac> paramList)
+  public DoutuData a(Parcel paramParcel)
   {
-    this.a.a(paramList);
+    return new DoutuData(paramParcel);
+  }
+  
+  public DoutuData[] a(int paramInt)
+  {
+    return new DoutuData[paramInt];
   }
 }
 

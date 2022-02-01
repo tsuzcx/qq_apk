@@ -2,35 +2,35 @@ package com.tencent.biz.pubaccount.readinjoy.view.ucrop;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import bdsh;
-import bdzx;
+import beqz;
+import beyq;
 import java.io.File;
-import tgh;
-import tgk;
-import zkh;
+import sxb;
+import sxe;
+import zoc;
 
 class CropImageView$1
   implements Runnable
 {
-  CropImageView$1(CropImageView paramCropImageView, Bitmap paramBitmap, tgk paramtgk, Bitmap.CompressFormat paramCompressFormat, int paramInt, tgh paramtgh) {}
+  CropImageView$1(CropImageView paramCropImageView, Bitmap paramBitmap, sxe paramsxe, Bitmap.CompressFormat paramCompressFormat, int paramInt, sxb paramsxb) {}
   
   public void run()
   {
     boolean bool = true;
-    Bitmap localBitmap = zkh.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Tgk.a(), this.jdField_a_of_type_Tgk.b(), this.jdField_a_of_type_Tgk.a());
+    Bitmap localBitmap = zoc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Sxe.a(), this.jdField_a_of_type_Sxe.b(), this.jdField_a_of_type_Sxe.a());
     int i;
     String str;
     if (localBitmap != null)
     {
       i = 1;
-      str = bdzx.a + File.separator + bdsh.c(new StringBuilder().append("CropImageView").append(System.currentTimeMillis()).toString());
-      if ((i == 0) || (!zkh.a(localBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat, this.jdField_a_of_type_Int, str))) {
+      str = beyq.a + File.separator + beqz.c(new StringBuilder().append("CropImageView").append(System.currentTimeMillis()).toString());
+      if ((i == 0) || (!zoc.a(localBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat, this.jdField_a_of_type_Int, str))) {
         break label144;
       }
     }
     for (;;)
     {
-      CropImageView.a(this.this$0, str, bool, this.jdField_a_of_type_Tgh);
+      CropImageView.a(this.this$0, str, bool, this.jdField_a_of_type_Sxb);
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         localBitmap.recycle();
       }

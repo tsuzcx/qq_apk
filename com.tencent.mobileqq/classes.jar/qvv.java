@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qvv
-  implements View.OnClickListener
 {
-  public qvv(ComponentContentNoteCard paramComponentContentNoteCard) {}
-  
-  public void onClick(View paramView)
-  {
-    ComponentContentNoteCard.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<DislikeInfo> a;
+  public List<Long> a;
+  public long b;
+  public long c;
+  public long d;
 }
 
 

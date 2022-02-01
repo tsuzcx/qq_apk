@@ -1,14 +1,8 @@
-public class nqk
+public abstract interface nqk
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

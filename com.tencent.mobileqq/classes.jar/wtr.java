@@ -1,4 +1,11 @@
-public class wtr {}
+import java.util.List;
+
+public class wtr
+  extends wip
+{
+  public String a;
+  public List<String> a;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

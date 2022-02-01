@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pwt;
-import tht;
+import ppe;
+import syn;
 
 public class FastWebModule$2
   implements Runnable
 {
-  public FastWebModule$2(pwt parampwt, tht paramtht, boolean paramBoolean, int paramInt, String paramString) {}
+  public FastWebModule$2(ppe paramppe, syn paramsyn, boolean paramBoolean, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Tht.a(this.jdField_a_of_type_Boolean, "", this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Syn.a(this.jdField_a_of_type_Boolean, "", this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

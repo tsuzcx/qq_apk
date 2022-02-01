@@ -1,20 +1,15 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-public class thv
-  implements TypeEvaluator<Rect>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "callBackId", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/UIBridgeInvokeHandler$arouseReadInJoyNativeCommentView$1$1"}, k=3, mv={1, 1, 16})
+final class thv
+  implements tfg
 {
-  public thv(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  thv(tht paramtht, String paramString) {}
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public final void a(String paramString, JSONObject paramJSONObject)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
-  }
-  
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
-  {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    this.jdField_a_of_type_Tht.a(paramString, paramJSONObject);
   }
 }
 

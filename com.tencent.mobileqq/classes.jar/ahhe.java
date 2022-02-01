@@ -1,34 +1,17 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.data.MessageForScribble;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahhe
-  implements bkhw
+class ahhe
+  extends ahkx
 {
-  public ahhe(ScribbleItemBuilder paramScribbleItemBuilder, View paramView, MessageForScribble paramMessageForScribble, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  ahhe(ahgk paramahgk)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c < 500L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c = l;
-      paramView = afyj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder);
-      }
-      bbet.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    }
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahxm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

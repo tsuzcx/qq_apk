@@ -1,8 +1,6 @@
-import cooperation.qqpim.QQPimTipsInfo;
-
 public abstract interface blmv
 {
-  public abstract void a(QQPimTipsInfo paramQQPimTipsInfo);
+  public abstract void a();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.config;
 
-import akww;
+import alil;
 
 class QWalletConfig$1
   implements Runnable
@@ -11,7 +11,7 @@ class QWalletConfig$1
   {
     synchronized ()
     {
-      akww.a(this.this$0, QWalletConfig.access$100(this.this$0));
+      alil.a(this.this$0, QWalletConfig.access$100(this.this$0));
       return;
     }
   }

@@ -1,91 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class awsh
 {
-  public String a;
-  public List<String> a;
-  public boolean a;
-  
-  public awsh()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static awsh a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      awsh localawsh = new awsh();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("mainswitch", 0) == 1) {}
-      for (;;)
-      {
-        localawsh.jdField_a_of_type_Boolean = bool;
-        localawsh.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
-        paramString = a(paramString.optJSONArray("black"));
-        localawsh.jdField_a_of_type_JavaUtilList.addAll(paramString);
-        return localawsh;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
-    }
-  }
-  
-  private static List<String> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
-    {
-      int j = paramJSONArray.length();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            localArrayList.add(paramJSONArray.getString(i).trim());
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
-            }
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  private int jdField_a_of_type_Int;
+  private awsj jdField_a_of_type_Awsj;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
 }
 
 

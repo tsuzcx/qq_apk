@@ -1,17 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import mqq.app.MobileQQ;
 
-public class ssj
-  extends anmu
+class ssj
+  implements bjig
 {
-  public ssj(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  ssj(ssi paramssi, ArticleInfo paramArticleInfo, int paramInt) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    boolean bool = true;
+    if ((ssi.a(this.jdField_a_of_type_Ssi) == null) || (!ssi.a(this.jdField_a_of_type_Ssi).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
     {
-      QLog.d("ReadinJoyProteusFamilyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.k();
+    case -1: 
+    default: 
+      zyx.b(1, 2131718139);
+      bool = false;
+    }
+    for (;;)
+    {
+      paramBaseResp = (AppInterface)ozs.a();
+      ssy.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
+      return;
+      zyx.b(2, 2131718157);
+      continue;
+      bool = false;
     }
   }
 }

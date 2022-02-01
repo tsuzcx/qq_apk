@@ -1,21 +1,8 @@
-import android.widget.FrameLayout;
+import java.util.Set;
 
-class vsq
-  implements vsz
+public abstract interface vsq
 {
-  vsq(vsn paramvsn, vsz paramvsz) {}
-  
-  public void a()
-  {
-    if (vsn.a(this.jdField_a_of_type_Vsn) != null) {
-      vsn.a(this.jdField_a_of_type_Vsn).a(3);
-    }
-    vsn.a(this.jdField_a_of_type_Vsn).setAlpha(0.0F);
-    vsn.a(null);
-    if (this.jdField_a_of_type_Vsz != null) {
-      this.jdField_a_of_type_Vsz.a();
-    }
-  }
+  public abstract void a(Set<Integer> paramSet);
 }
 
 

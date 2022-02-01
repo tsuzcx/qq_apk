@@ -6,12 +6,12 @@ import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 import android.view.View;
 import mqq.util.WeakReference;
-import ngv;
+import niq;
 
 public class GuessSongGameRecordCtrl$5
   implements Runnable
 {
-  public GuessSongGameRecordCtrl$5(ngv paramngv, View paramView) {}
+  public GuessSongGameRecordCtrl$5(niq paramniq, View paramView) {}
   
   public void run()
   {

@@ -1,26 +1,28 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class apze
-  extends ContentObserver
+public abstract class apze
+  implements apyu
 {
-  public apze(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
+  private final String a;
+  
+  public apze(String paramString)
   {
-    super(paramHandler);
+    this.a = paramString;
   }
   
-  public void onChange(boolean paramBoolean)
+  public Bundle a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.a)) {
+      localBundle.putString("Domain", this.a);
     }
-    if (BusinessCardEditActivity.a(this.a))
-    {
-      this.a.a(2131697807, 2);
-      BusinessCardEditActivity.a(this.a, false);
-    }
+    return localBundle;
+  }
+  
+  public String a()
+  {
+    return "QQ.GetPSKey";
   }
 }
 

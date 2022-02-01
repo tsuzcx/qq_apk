@@ -1,19 +1,23 @@
-import android.os.Bundle;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
-final class apkq
-  extends aplo
+public class apkq
+  implements azds
 {
-  apkq(String paramString, ArrayList paramArrayList)
+  public apkq(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
+  
+  public void a()
   {
-    super(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+    }
+    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void b()
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      this.a.add(paramBundle.getString("PSKey", ""));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 

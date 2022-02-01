@@ -1,67 +1,73 @@
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.jetbrains.annotations.NotNull;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
 
-public class ayqa
+class ayqa
+  extends AsyncTask<Integer, Void, Bundle>
 {
-  public int a;
-  private long a;
+  ayqa(aypz paramaypz) {}
   
-  public ayqa(int paramInt)
+  protected Bundle a(Integer... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  private boolean a()
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long > ayqi.O;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 40001;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = a();
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoStatus", 2, "[status] resetIfDead from: " + paramString + " hasDead: " + bool + " status: " + toString());
-    }
-    if (bool) {
-      a();
-    }
-    return bool;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("downloadcode", paramVarArgs[0].intValue());
+    try
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      paramVarArgs = (HttpURLConnection)new URL("https://tiantian.qq.com/qiqimanage/qunpack/android/58.json").openConnection();
+      paramVarArgs.setConnectTimeout(5000);
+      paramVarArgs.setReadTimeout(30000);
+      paramVarArgs.setRequestMethod("GET");
+      paramVarArgs.setRequestProperty("Connection", "Keep-Alive");
+      paramVarArgs.connect();
+      paramVarArgs = new BufferedReader(new InputStreamReader(paramVarArgs.getInputStream()));
+      Object localObject = new StringBuffer();
+      for (;;)
+      {
+        String str = paramVarArgs.readLine();
+        if (str == null) {
+          break;
+        }
+        ((StringBuffer)localObject).append(str).append("\n");
       }
-      paramObject = (ayqa)paramObject;
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
+      localObject = ((StringBuffer)localObject).toString();
+      paramVarArgs.close();
+      paramVarArgs = new JSONObject((String)localObject);
+      if (paramVarArgs.optInt("errCode", -1) == 0)
+      {
+        paramVarArgs = paramVarArgs.optJSONObject("data");
+        if (paramVarArgs != null)
+        {
+          paramVarArgs = paramVarArgs.optJSONObject("package");
+          if (paramVarArgs != null)
+          {
+            localBundle.putString("DownPackage", paramVarArgs.optString("package"));
+            localBundle.putString("DownUrl", paramVarArgs.optString("url"));
+            localBundle.putString("DownAppId", paramVarArgs.optString("appid"));
+          }
+        }
+      }
+      return localBundle;
+    }
+    catch (Exception paramVarArgs) {}
+    return null;
   }
   
-  @NotNull
-  public String toString()
+  protected void a(Bundle paramBundle)
   {
-    return "AutoStatus{status=" + ayqi.a(this.jdField_a_of_type_Int) + ", updateTime=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
+    if (paramBundle != null)
+    {
+      this.a.b = paramBundle.getString("DownPackage");
+      this.a.d = paramBundle.getString("DownUrl");
+      this.a.c = paramBundle.getString("DownAppId");
+      if ((!TextUtils.isEmpty(this.a.b)) && (!TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.d))) {
+        this.a.a(paramBundle.getInt("downloadcode"));
+      }
+    }
   }
 }
 

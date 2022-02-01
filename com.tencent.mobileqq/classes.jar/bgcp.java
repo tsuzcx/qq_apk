@@ -1,17 +1,20 @@
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bgcp
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public ResultReceiver a;
-  public bgco a;
-  public String a;
-  public long b;
-  public String b;
-  private long c;
+  public bgcp(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public bgcp(SnapshotService paramSnapshotService) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.e();
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).e();
+    }
+    paramDialogInterface.dismiss();
+  }
 }
 
 

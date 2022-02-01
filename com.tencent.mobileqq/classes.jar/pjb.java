@@ -1,38 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class pjb
-  implements AladdinConfigHandler
+  implements bljm
 {
-  public static boolean a()
-  {
-    return ((Boolean)bmqa.a("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
-  }
+  public pjb(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    if (paramInt <= 0) {}
+    do
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "enable_1160_use_new_report_service")) {
-        bmqa.a("use_new_report_channel_for_1160", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    bmqa.a("use_new_report_channel_for_1160", Boolean.valueOf(false));
+      return;
+      paramAdapterView = (psl)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
+    } while (paramAdapterView.a != 2);
+    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
   }
 }
 

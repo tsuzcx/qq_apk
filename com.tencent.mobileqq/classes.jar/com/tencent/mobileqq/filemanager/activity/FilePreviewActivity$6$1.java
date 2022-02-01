@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import asrt;
-import atvm;
-import atvn;
-import atwl;
+import athx;
+import aunh;
+import auni;
+import auog;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
@@ -11,11 +11,11 @@ import com.tencent.qphone.base.util.QLog;
 public class FilePreviewActivity$6$1
   implements Runnable
 {
-  public FilePreviewActivity$6$1(asrt paramasrt) {}
+  public FilePreviewActivity$6$1(athx paramathx) {}
   
   public void run()
   {
-    if ((this.a.a.h == null) || (this.a.a.h.length() == 0))
+    if ((this.a.a.g == null) || (this.a.a.g.length() == 0))
     {
       this.a.a.d = false;
       FilePreviewActivity.a(this.a.a);
@@ -30,11 +30,11 @@ public class FilePreviewActivity$6$1
     for (;;)
     {
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str1 + ")");
-      atvn localatvn = new atvn();
-      localatvn.b = "sf_preview_again";
-      localatvn.c = atwl.a(this.a.a.c);
-      localatvn.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
-      atvm.a(this.a.a.app.getCurrentAccountUin(), localatvn);
+      auni localauni = new auni();
+      localauni.b = "sf_preview_again";
+      localauni.c = auog.a(this.a.a.b);
+      localauni.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
+      aunh.a(this.a.a.app.getCurrentAccountUin(), localauni);
       try
       {
         this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str1);

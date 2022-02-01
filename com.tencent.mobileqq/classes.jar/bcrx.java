@@ -1,9 +1,12 @@
-import java.util.HashMap;
+import java.util.Comparator;
 
-public class bcrx
+final class bcrx
+  implements Comparator<adbr>
 {
-  HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "socket", "pipe", "anon_inode", "/dev/null", "/dev/ashmem" };
+  public int a(adbr paramadbr1, adbr paramadbr2)
+  {
+    return paramadbr2.a() - paramadbr1.a();
+  }
 }
 
 

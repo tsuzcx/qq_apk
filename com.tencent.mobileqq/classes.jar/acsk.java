@@ -1,17 +1,21 @@
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ShapeDrawable.ShaderFactory;
+import android.view.View;
 
-final class acsk
-  extends ShapeDrawable.ShaderFactory
+public class acsk
+  extends acsl
 {
-  acsk(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
-  
-  public Shader resize(int paramInt1, int paramInt2)
-  {
-    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
-  }
+  public int a;
+  public View a;
+  public int b;
+  public View b;
+  public int c;
+  public View c;
+  public int d;
+  public View d;
+  public int e;
+  public View e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

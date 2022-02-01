@@ -1,65 +1,28 @@
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.image.AbsThirdDataSourceAdapter;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 public class noz
-  extends AbsThirdDataSourceAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
-  String jdField_a_of_type_JavaLangString;
+  public noz(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public noz(NowVideoView paramNowVideoView) {}
-  
-  public boolean a()
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    if (!this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Noq.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
     }
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      String str = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = str;
-      if ((this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback != null) && (this.jdField_a_of_type_ComTencentBizNowNowVideoView.d == 0))
-      {
-        this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback.onPrepared();
-        return true;
-      }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
     }
-    return false;
-  }
-  
-  public int getPlayType()
-  {
-    return 1;
-  }
-  
-  public int getStaus()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String getURL()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
-  {
-    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      paramString = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramOnPreparedCallback.onPrepared();
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Noq.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
+    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
   }
 }
 

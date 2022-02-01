@@ -1,17 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnDismissListener;
 
 class acoy
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  acoy(acow paramacow) {}
+  acoy(acox paramacox) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.i("GdtMvViewController", 1, " DialogInterface onClick confirm");
-    acow.a(this.a, false);
-    this.a.f();
+    acox.a(this.a).a();
+    this.a.jdField_a_of_type_Acpg.d();
+    this.a.jdField_a_of_type_Acov.c();
   }
 }
 

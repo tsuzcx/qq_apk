@@ -1,8 +1,8 @@
+import android.graphics.drawable.Drawable;
+
 public abstract interface biem
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(Drawable paramDrawable);
 }
 
 

@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-
-class scl
-  implements DialogInterface.OnDismissListener
+public abstract interface scl
 {
-  scl(sce paramsce) {}
+  public abstract void a(float paramFloat);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    sce.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if ((sce.a(this.a) != null) && (sce.a(this.a).b()) && (sce.b(this.a)) && (!sce.c(this.a)) && (sce.a(this.a)) && (!sce.d(this.a))) {
-      sce.a(this.a).c();
-    }
-    if (sce.a(this.a) != null) {
-      sce.a(this.a).g();
-    }
-    sce.a(this.a, false);
-  }
+  public abstract void a(int paramInt, String paramString, scn paramscn);
 }
 
 

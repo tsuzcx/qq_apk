@@ -1,49 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.net.URL;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
-class sky
-  extends skd
+public class sky
+  extends RecyclerViewWithHeaderFooterFix
 {
-  sky(ske paramske) {}
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public sky(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
   {
-    ske.a(this.a, false);
-    paramActionSheetItem = new Bundle();
-    paramActionSheetItem.putString("title", paramBaseArticleInfo.mTitle);
-    paramActionSheetItem.putString("desc", paramBaseArticleInfo.mSummary);
-    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
-    {
-      paramActionSheetItem.putString("detail_url", paramBaseArticleInfo.qzoneShareUrl);
-      paramString = new ArrayList(1);
-      if (paramBaseArticleInfo.getVideoCoverURL() != null) {
-        break label164;
-      }
-    }
-    label164:
-    for (paramBaseArticleInfo = null;; paramBaseArticleInfo = paramBaseArticleInfo.getVideoCoverURL().getFile())
-    {
-      paramString.add(paramBaseArticleInfo);
-      paramActionSheetItem.putStringArrayList("image_url", paramString);
-      paramActionSheetItem.putLong("req_share_id", 0L);
-      bltb.a(ske.a(this.a), ske.a(this.a), paramActionSheetItem, null, 19202);
-      return;
-      paramActionSheetItem.putString("detail_url", paramString + "&sourcefrom=1");
-      break;
-    }
+    super(paramContext);
   }
   
-  public int b()
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2;
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 

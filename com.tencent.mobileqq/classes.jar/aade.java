@@ -1,16 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
-class aade
-  implements View.OnClickListener
+public class aade
 {
-  aade(aadb paramaadb1, aadb paramaadb2, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static int a(RecyclerView paramRecyclerView)
   {
-    this.b.a.b(this.jdField_a_of_type_Aadb, this.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i;
+    if (paramRecyclerView != null) {
+      try
+      {
+        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
+        }
+        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+        {
+          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
+          int[] arrayOfInt = new int[i];
+          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPositions(arrayOfInt);
+          i = arrayOfInt[(i - 1)];
+          if (arrayOfInt.length != 2) {
+            return i;
+          }
+          i = Math.max(arrayOfInt[0], arrayOfInt[1]);
+          return i;
+        }
+      }
+      catch (Exception paramRecyclerView)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+    } else {
+      i = -1;
+    }
+    return i;
+  }
+  
+  public static int b(RecyclerView paramRecyclerView)
+  {
+    int i;
+    if (paramRecyclerView != null) {
+      try
+      {
+        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+        }
+        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+        {
+          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
+          int[] arrayOfInt = new int[i];
+          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
+          i = arrayOfInt[(i - 1)];
+          if (arrayOfInt.length != 2) {
+            return i;
+          }
+          if (arrayOfInt[1] >= arrayOfInt[0]) {
+            return arrayOfInt[0];
+          }
+          i = arrayOfInt[1];
+          return i;
+        }
+      }
+      catch (Exception paramRecyclerView)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+    } else {
+      i = -1;
+    }
+    return i;
   }
 }
 

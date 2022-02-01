@@ -1,44 +1,52 @@
-public class bcib
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+
+class bcib
+  implements View.OnLongClickListener
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
+  bcib(bcia parambcia, bcfr parambcfr) {}
   
-  public long a(float paramFloat)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
-      this.jdField_c_of_type_Long = paramLong;
-    }
-    return paramLong * 1000L;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
+    paramView = new AlertDialog.Builder(paramView.getContext());
+    paramView.setTitle(anzj.a(2131701465));
+    long l = ((bcfn)this.jdField_a_of_type_Bcfr).b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = SearchConfigManager.contactSearchPinyinBaseBit;
+    int j = SearchConfigManager.contactSearchPinyinBaseBit;
+    localStringBuilder.append("拼音匹配：");
+    localStringBuilder.append((9223372036854775807L << i & l) >> j);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchRecentBaseBit;
+    j = SearchConfigManager.contactSearchRecentBaseBit;
+    int k = SearchConfigManager.contactSearchRecentBaseBit;
+    localStringBuilder.append("最近联系人排序：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 10) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchIndexBaseBit;
+    j = SearchConfigManager.contactSearchIndexBaseBit;
+    k = SearchConfigManager.contactSearchIndexBaseBit;
+    localStringBuilder.append("字符串匹配度：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchTypeBaseBit;
+    j = SearchConfigManager.contactSearchTypeBaseBit;
+    k = SearchConfigManager.contactSearchTypeBaseBit;
+    localStringBuilder.append("数据类型：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchFieldBaseBit;
+    j = SearchConfigManager.contactSearchFieldBaseBit;
+    k = SearchConfigManager.contactSearchFieldBaseBit;
+    localStringBuilder.append("字段类型：");
+    localStringBuilder.append((l & 9223372036854775807L >> 63 - (i + 8) & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    paramView.setMessage(localStringBuilder.toString());
+    paramView.create().show();
+    return false;
   }
 }
 

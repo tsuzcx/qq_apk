@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ark;
 
-import apni;
-import apnr;
-import apnu;
+import aqay;
+import aqbh;
+import aqbk;
 import java.util.ArrayList;
 
 public class ArkAppCGI$10
   implements Runnable
 {
-  public ArkAppCGI$10(apni paramapni, apnu paramapnu, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  public ArkAppCGI$10(aqay paramaqay, aqbk paramaqbk, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    synchronized (apni.a(this.this$0))
+    synchronized (aqay.a(this.this$0))
     {
-      apni.a(this.this$0).remove(this.jdField_a_of_type_Apnu);
-      this.jdField_a_of_type_Apnu.a.a(this.jdField_a_of_type_Apnu, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
+      aqay.a(this.this$0).remove(this.jdField_a_of_type_Aqbk);
+      this.jdField_a_of_type_Aqbk.a.a(this.jdField_a_of_type_Aqbk, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
       return;
     }
   }

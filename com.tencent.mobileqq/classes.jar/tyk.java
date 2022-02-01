@@ -1,56 +1,41 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class tyk
-  implements bgub
+public class tyk
+  implements aewi
 {
-  tyk(tyj paramtyj) {}
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
+  tyj jdField_a_of_type_Tyj = null;
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public tyk(tyj paramtyj, QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramString = new JSONObject();
-    if (paramInt1 == 8) {}
-    for (;;)
-    {
-      try
-      {
-        paramString.put("retCode", -1);
-        paramString.put("msg", "fail");
-        paramString.put("localId", this.a.d());
-        if (this.a.jdField_a_of_type_Bhod.a() != null) {
-          this.a.jdField_a_of_type_Bhod.a().callJs(tym.h, new String[] { paramString.toString() });
-        }
-        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
-        if (this.a.jdField_a_of_type_Bgua != null) {
-          this.a.jdField_a_of_type_Bgua.e();
-        }
-        this.a.jdField_a_of_type_Bgua = null;
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
-        continue;
-      }
-      if (paramInt1 == 4) {
-        try
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", anni.a(2131707547) + this.a.d() + anni.a(2131707541));
-          paramString.put("localId", this.a.d());
-        }
-        catch (JSONException localJSONException2)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
-    }
+    this.jdField_a_of_type_Tyj = paramtyj;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
+  public void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail, status: " + paramInt + " | icon: " + paramDrawable + " | mFolder: " + this.jdField_a_of_type_Tyj);
+    }
+    if ((paramInt == 2) && (paramDrawable != null) && (this.jdField_a_of_type_Tyj != null)) {
+      this.jdField_a_of_type_Tyj.a = paramDrawable;
+    }
+    try
+    {
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(1).notifyUI(4, true, new Object[] { this.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail", paramString);
+    }
+  }
 }
 
 

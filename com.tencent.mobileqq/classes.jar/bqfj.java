@@ -1,19 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
-final class bqfj
-  implements bpqw<Boolean, bprb>
+class bqfj
+  extends AnimatorListenerAdapter
 {
-  bqfj(bqfk parambqfk) {}
+  bqfj(bqfi parambqfi) {}
   
-  public Void a(Boolean paramBoolean, bprb parambprb)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (parambprb.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = parambprb.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.a.jdField_a_of_type_Long = parambprb.jdField_a_of_type_Long;
-      QLog.e(bqfh.a(), 2, "MediaCodecThumbnailGenerator progress " + parambprb.jdField_a_of_type_Long);
-    }
-    return null;
+    bqfi.a(this.a).sendEmptyMessageDelayed(1, 1500L);
   }
 }
 

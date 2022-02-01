@@ -1,49 +1,11 @@
 import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public abstract class ahqi
+public abstract interface ahqi
 {
-  public int a;
-  public Context a;
-  protected BaseChatPie a;
-  protected SessionInfo a;
-  public QQAppInterface a;
-  public int b;
-  
-  public ahqi(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public String toString()
-  {
-    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
-  }
+  public abstract void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString);
 }
 
 

@@ -1,78 +1,52 @@
 package com.tencent.qqmini.sdk.widget;
 
-import android.content.Intent;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Color;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AuthDialog$1
-  implements IActivityResultListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   AuthDialog$1(AuthDialog paramAuthDialog) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QMLog.d("AuthDialog", "doOnActivityResult : " + paramInt1);
-    if (paramInt1 == 1089) {
-      if (paramInt2 == -1) {
-        if (paramIntent == null) {}
-      }
-    }
-    for (;;)
+    if ((AuthDialog.access$000(this.this$0).getVisibility() == 0) && (AuthDialog.access$100(this.this$0).isChecked())) {}
+    for (int j = 1;; j = 0)
     {
-      try
+      int i = j;
+      if (AuthDialog.access$200(this.this$0).getVisibility() == 0)
       {
-        paramIntent = new JSONArray(paramIntent.getStringExtra("phoneNumberArray"));
-        if (AuthDialog.access$000(this.this$0) != null)
-        {
-          AuthDialog.access$000(this.this$0).setPhoneNumberList(paramIntent);
-          AuthDialog.access$100(this.this$0, AuthDialog.access$000(this.this$0).getPhoneNumberList());
+        i = j;
+        if (AuthDialog.access$300(this.this$0).isChecked()) {
+          i = j + 1;
         }
-        return true;
       }
-      catch (Throwable paramIntent)
+      j = i;
+      if (AuthDialog.access$400(this.this$0).getVisibility() == 0)
       {
-        QMLog.e("AuthDialog", "REQUEST_CODE_PHONE_MANAGER error, ", paramIntent);
-        return true;
+        j = i;
+        if (AuthDialog.access$500(this.this$0).isChecked()) {
+          j = i + 1;
+        }
       }
-      QMLog.e("AuthDialog", "REQUEST_CODE_PHONE_MANAGER " + paramInt2);
-      return true;
-      if (paramInt1 != 1088) {
-        break label325;
-      }
-      if (paramInt2 == -1)
+      if (j > 0)
       {
-        if (paramIntent == null) {
-          continue;
-        }
-        try
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("phoneType", 1);
-          localJSONObject.put("purePhoneNumber", paramIntent.getStringExtra("phoneNumber"));
-          localJSONObject.put("countryCode", "+86");
-          localJSONObject.put("iv", paramIntent.getStringExtra("iv"));
-          localJSONObject.put("encryptedData", paramIntent.getStringExtra("encryptedData"));
-          QMLog.d("AuthDialog", "REQUEST_CODE_ADD_PHONENUMBER stPhoneNumberObj : " + localJSONObject);
-          if (AuthDialog.access$000(this.this$0) != null)
-          {
-            AuthDialog.access$000(this.this$0).getPhoneNumberList().put(localJSONObject);
-            AuthDialog.access$100(this.this$0, AuthDialog.access$000(this.this$0).getPhoneNumberList());
-            return true;
-          }
-        }
-        catch (Throwable paramIntent)
-        {
-          QMLog.e("AuthDialog", "REQUEST_CODE_ADD_PHONENUMBER error, ", paramIntent);
-          return true;
-        }
+        AuthDialog.access$600(this.this$0).setEnabled(true);
+        AuthDialog.access$600(this.this$0).setTextColor(-1);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
+        AuthDialog.access$600(this.this$0).setEnabled(false);
+        AuthDialog.access$600(this.this$0).setTextColor(Color.parseColor("#8e909d"));
       }
     }
-    QMLog.e("AuthDialog", "REQUEST_CODE_ADD_PHONENUMBER " + paramInt2);
-    return true;
-    label325:
-    return false;
   }
 }
 

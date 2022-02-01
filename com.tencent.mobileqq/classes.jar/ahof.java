@@ -1,13 +1,20 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class ahof
-  implements ahor
+class ahof
+  implements wak
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahof(ahoe paramahoe, ahoh paramahoh) {}
+  
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    paramagup.c(paramMessageRecord, paramagwc, paramString);
+    paramStUser = this.jdField_a_of_type_Ahoh.a;
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramStUser.setClickable(paramBoolean);
+      return;
+    }
   }
 }
 

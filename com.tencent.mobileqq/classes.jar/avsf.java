@@ -1,37 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
 
-public class avsf
-  extends RecyclerView.ViewHolder
+class avsf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private TextView a;
+  avsf(avse paramavse) {}
   
-  public avsf(Context paramContext, View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131378776));
-    if (ThemeUtil.isNowThemeIsNight(null, false, null))
-    {
-      this.a.setTextColor(paramContext.getResources().getColor(2131165756));
-      return;
+    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.a.a.getParent() != null) {
+      this.a.a.getParent().requestLayout();
     }
-    this.a.setTextColor(paramContext.getResources().getColor(2131165755));
-  }
-  
-  public void a(avrz paramavrz)
-  {
-    if (TextUtils.isEmpty(paramavrz.a))
-    {
-      this.a.setVisibility(8);
-      return;
-    }
-    this.a.setVisibility(0);
-    this.a.setText(paramavrz.a);
   }
 }
 

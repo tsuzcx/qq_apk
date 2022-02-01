@@ -1,6 +1,14 @@
-public abstract interface almt
+import com.tencent.widget.XListView;
+
+class almt
+  implements xay
 {
-  public abstract void a(long paramLong1, long paramLong2, String paramString1, String paramString2, boolean paramBoolean);
+  almt(alms paramalms) {}
+  
+  public void a()
+  {
+    this.a.a.invalidateViews();
+  }
 }
 
 

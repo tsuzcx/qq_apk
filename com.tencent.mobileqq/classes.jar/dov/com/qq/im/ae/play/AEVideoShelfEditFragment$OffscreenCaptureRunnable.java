@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
 import android.widget.RelativeLayout;
-import bnxy;
+import bozi;
 
 public class AEVideoShelfEditFragment$OffscreenCaptureRunnable
   implements Runnable

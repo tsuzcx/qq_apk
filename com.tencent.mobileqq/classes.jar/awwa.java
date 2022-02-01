@@ -1,28 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class awwa
-  implements awwc
 {
-  QQAppInterface a;
+  public int a;
+  public String a;
+  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
   
-  public awwa(QQAppInterface paramQQAppInterface)
+  public awwa()
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
+    this.jdField_a_of_type_Int = 360;
   }
   
-  public void a(awws paramawws, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awwd paramawwd) {}
-  
-  public boolean a(int paramInt)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
   }
 }
 

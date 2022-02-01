@@ -1,26 +1,23 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahrf
-  implements ahvh
+  implements View.OnClickListener
 {
-  ahrf(ahrd paramahrd) {}
+  ahrf(ahqw paramahqw) {}
   
-  public boolean a(PhotoListPanel paramPhotoListPanel)
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean b(PhotoListPanel paramPhotoListPanel)
-  {
-    if (ahrd.a(this.a).J) {}
-    while ((ahrd.a(this.a).o()) || (ahrd.a(this.a).a == null) || (ahrd.a(this.a).a.getText() == null) || (ahrd.a(this.a).a.getText().length() <= 0)) {
-      return false;
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof MessageForShortVideo))
+    {
+      localObject = (MessageForShortVideo)localObject;
+      bcxc.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
     }
-    ahrd.a(this.a).as();
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

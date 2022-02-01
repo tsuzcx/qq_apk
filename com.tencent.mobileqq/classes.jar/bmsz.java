@@ -1,26 +1,46 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
-class bmsz
-  implements ScaleGestureDetector.OnScaleGestureListener
+public class bmsz
+  extends bmsy
 {
-  bmsz(bmsv parambmsv) {}
+  newest_feeds_req a = new newest_feeds_req();
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public bmsz(long paramLong, Map<Long, Long> paramMap)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (bmsv.a(this.a) != null) {
-      bmsv.a(this.a).a("onActionScale", new float[] { f });
-    }
-    return true;
+    this.a.cmd = 4;
+    this.a.login_uin = paramLong;
+    this.a.strQua = bmsw.a();
+    this.a.mapUinTimes = new HashMap();
+    this.a.mapUinTimes.putAll(paramMap);
   }
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public int a()
   {
-    return true;
+    return 1000;
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
+  public String getCmdString()
+  {
+    return "QzoneNewService.getMsgNewestFeeds";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
+  }
+  
+  public String uniKey()
+  {
+    return "getMsgNewestFeeds";
+  }
 }
 
 

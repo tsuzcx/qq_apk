@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import java.util.List;
 
-public class asrb
-  extends asyw
+class asrb
+  implements asps
 {
-  public asrb(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  asrb(asra paramasra) {}
   
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  public void a(List<aspq> paramList)
   {
-    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+    if (paramList != null)
+    {
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

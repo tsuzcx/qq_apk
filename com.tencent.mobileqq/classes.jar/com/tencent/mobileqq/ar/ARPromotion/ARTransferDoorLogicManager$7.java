@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import aosa;
-import aose;
+import apfq;
+import apfu;
 
 public class ARTransferDoorLogicManager$7
   implements Runnable
 {
-  public ARTransferDoorLogicManager$7(aosa paramaosa) {}
+  public ARTransferDoorLogicManager$7(apfq paramapfq) {}
   
   public void run()
   {
-    if ((aosa.a(this.this$0) != null) && (aosa.a(this.this$0) != null)) {
-      aosa.a(this.this$0).b(aosa.a(this.this$0));
+    if ((apfq.a(this.this$0) != null) && (apfq.a(this.this$0) != null)) {
+      apfq.a(this.this$0).b(apfq.a(this.this$0));
     }
   }
 }

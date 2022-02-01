@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount;
 
-import obm;
+import ocw;
 
 public class VideoColumnSubscribeHandler$1
   implements Runnable
 {
-  public VideoColumnSubscribeHandler$1(obm paramobm, int paramInt, boolean paramBoolean, String paramString) {}
+  public VideoColumnSubscribeHandler$1(ocw paramocw, int paramInt, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    obm.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    ocw.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,19 +1,48 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 
 class yav
-  implements yle<Integer>
+  implements yau
 {
-  yav(yas paramyas, wpf paramwpf) {}
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final WeakReference<yau> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(ErrorMessage paramErrorMessage)
+  public yav(@NonNull yau paramyau)
   {
-    yqp.e("QQStoryTakeVideoHelper", "get vip error.");
+    this.jdField_a_of_type_Int = System.identityHashCode(paramyau);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyau);
   }
   
-  public void a(Integer paramInteger)
+  private boolean a()
   {
-    yqp.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
-    this.jdField_a_of_type_Wpf.b("qqstory_i_am_vip", paramInteger);
+    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
+  }
+  
+  public void a(@NonNull yas paramyas)
+  {
+    yau localyau = (yau)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localyau != null) {
+      localyau.a(paramyas);
+    }
+  }
+  
+  public void b(@NonNull yas paramyas)
+  {
+    yau localyau = (yau)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localyau != null) {
+      localyau.b(paramyas);
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof yav)) && (((yav)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

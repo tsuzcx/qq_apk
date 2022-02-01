@@ -1,25 +1,64 @@
+import android.content.Context;
+import android.view.Window;
+
 public class mvg
+  extends blir
 {
-  public static int a(int paramInt1, int paramInt2)
+  public static boolean a;
+  boolean b = false;
+  
+  protected mvg(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
+    super(paramContext, paramBoolean1, paramBoolean2);
   }
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public static mvg a(Context paramContext)
   {
-    paramInt1 = a(paramInt1, paramInt3);
-    paramInt2 = a(paramInt2, paramInt3);
-    if (paramBoolean)
+    paramContext = new mvg(paramContext, false, false);
+    paramContext.getWindow().setWindowAnimations(2131755227);
+    return paramContext;
+  }
+  
+  public static boolean a()
+  {
+    return a;
+  }
+  
+  public void dismiss()
+  {
+    a = false;
+    this.b = false;
+    super.dismiss();
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    if (this.b)
     {
-      if (paramInt1 > paramInt2) {
-        return paramInt1 - paramInt2;
-      }
-      return paramInt1 + (paramInt3 - paramInt2);
+      a = false;
+      this.b = false;
     }
-    if (paramInt1 > paramInt2) {
-      return paramInt3 - paramInt1 + paramInt2;
+    super.onDetachedFromWindow();
+  }
+  
+  public void onStop()
+  {
+    if (this.b)
+    {
+      a = false;
+      this.b = false;
     }
-    return paramInt2 - paramInt1;
+    super.onStop();
+  }
+  
+  public void show()
+  {
+    if (a == true) {
+      return;
+    }
+    a = true;
+    this.b = true;
+    super.show();
   }
 }
 

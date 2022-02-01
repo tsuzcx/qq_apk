@@ -1,26 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Matrix;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.report.lp.MachineLearingSmartReport;
 
 public class bngp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ModuleDownloadListener
 {
-  public bngp(AECropperImageView paramAECropperImageView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6) {}
+  public bngp(MachineLearingSmartReport paramMachineLearingSmartReport, String paramString1, String paramString2, String paramString3) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    Matrix localMatrix = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
-    localMatrix.reset();
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    localMatrix.postScale((this.jdField_a_of_type_Float - this.b) * paramValueAnimator.intValue() / 20.0F + this.b, (this.jdField_a_of_type_Float - this.b) * paramValueAnimator.intValue() / 20.0F + this.b);
-    float f1 = (this.c - this.d) * paramValueAnimator.intValue() / 20.0F;
-    float f2 = this.d;
-    float f3 = this.e;
-    float f4 = this.f;
-    localMatrix.postTranslate(f1 + f2, paramValueAnimator.intValue() * (f3 - f4) / 20.0F + this.f);
-    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(localMatrix);
-    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadCanceled " + paramString);
+    }
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    MachineLearingSmartReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, 10, "Module onDownloadFailed " + paramString);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadProgress " + paramString + ",progress=" + Float.toString(paramFloat));
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadSucceed " + paramString);
+    }
+    MachineLearingSmartReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
 }
 

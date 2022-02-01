@@ -1,29 +1,43 @@
-import android.support.v4.view.ViewPager;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class ttw
-  implements RadioGroup.OnCheckedChangeListener
+  implements aaav<CertifiedAccountRead.StGetMainPageRsp>
 {
   public ttw(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    ServiceAccountFolderActivityNew.a(this.a, true);
-    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
-      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
-    }
-    for (;;)
+    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
+    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
+    String str = localStUser.icon.get();
+    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
     {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      if (ServiceAccountFolderActivityNew.b(this.a).getId() == paramInt) {
-        ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
-      }
+      ServiceAccountFolderActivityNew.a(this.a).setImageResource(2130840533);
+      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new ttx(this, localStUser));
     }
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  {
+    if (paramBoolean)
+    {
+      if (paramStGetMainPageRsp != null)
+      {
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+        yuk.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
+        a(paramStGetMainPageRsp);
+        ServiceAccountFolderActivityNew.a(this.a);
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+      }
+      return;
+    }
+    yuk.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 

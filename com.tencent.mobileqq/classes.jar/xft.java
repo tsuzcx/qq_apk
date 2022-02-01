@@ -1,32 +1,37 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
 public class xft
-  extends QQUIEventReceiver<xfs, xfn>
+  extends xho
 {
-  public xft(@NonNull xfs paramxfs)
+  StoryVideoItem a;
+  public ybh a;
+  
+  public xft(StoryVideoItem paramStoryVideoItem)
   {
-    super(paramxfs);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
   
-  public void a(@NonNull xfs paramxfs, @NonNull xfn paramxfn)
+  public void a()
   {
-    if (TextUtils.equals("SendVideoToFriendHelper", paramxfn.jdField_a_of_type_JavaLangString)) {}
-    switch (paramxfn.jdField_a_of_type_Int)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
     {
-    default: 
+      yuk.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
       return;
     }
-    yqp.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramxfn.b);
-    xfs.a(paramxfs, false);
-    paramxfs.a(paramxfs.jdField_a_of_type_AndroidOsBundle, paramxfs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxfs.jdField_a_of_type_JavaLangString, paramxfn.b);
+    wur localwur = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
+    if (localwur != null)
+    {
+      this.jdField_a_of_type_Ybh = new ybe();
+      this.jdField_a_of_type_Ybh.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new xfu(this, localwur));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
   }
   
-  public Class acceptEventClass()
-  {
-    return xfn.class;
-  }
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 

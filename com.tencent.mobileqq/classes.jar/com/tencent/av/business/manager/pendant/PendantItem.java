@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.pendant;
 
-import lgj;
+import lgr;
 
 public class PendantItem
-  extends lgj
+  extends lgr
 {
   public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;
@@ -42,11 +42,6 @@ public class PendantItem
   public static boolean isGesture(int paramInt)
   {
     return (paramInt == 2) || (paramInt == 1);
-  }
-  
-  public static boolean isOnlySupportNewFilter(int paramInt)
-  {
-    return 21 == paramInt;
   }
   
   public static boolean isOnlySupportOldFilter(int paramInt)

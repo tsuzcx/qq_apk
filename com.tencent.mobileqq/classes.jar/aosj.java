@@ -1,57 +1,91 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import IMMsgBodyPack.SlaveMasterMsg;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
+import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
+import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
 
 public class aosj
+  extends aczo
 {
-  public long a;
-  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  public String a;
-  public HashMap<Integer, String> a;
-  private final TreeMap<Integer, aosk> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  public boolean a;
-  public long b;
-  public String b;
-  public long c = 0L;
-  
-  public aosj()
+  public aosj(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public ArCloudConfigInfo a()
+  private void a(MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, SlaveMasterMsg paramSlaveMasterMsg)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public TreeMap<Integer, aosk> a()
-  {
-    return this.jdField_a_of_type_JavaUtilTreeMap;
-  }
-  
-  public String toString()
-  {
-    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
-    Object localObject = str;
-    if (QLog.isDevelopLevel())
+    Object localObject1 = new SubMsgType0x4.MsgBody();
+    try
     {
-      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject2 = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject1).mergeFrom(paramSlaveMasterMsg.vOrigMsg);
+      if (!((SubMsgType0x4.MsgBody)localObject2).msg_not_online_file.has())
       {
-        aosk localaosk = (aosk)((Iterator)localObject).next();
-        str = str + "\n" + localaosk;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody has not NotOnlineFile");
+        }
+        return;
       }
-      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
     }
-    return localObject;
+    catch (InvalidProtocolBufferMicroException paramMessageHandler)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramMessageHandler);
+      return;
+    }
+    im_msg_body.NotOnlineFile localNotOnlineFile = (im_msg_body.NotOnlineFile)((SubMsgType0x4.MsgBody)localObject2).msg_not_online_file.get();
+    localObject1 = null;
+    if (((SubMsgType0x4.MsgBody)localObject2).file_image_info.has()) {
+      localObject1 = (hummer_resv_21.FileImgInfo)((SubMsgType0x4.MsgBody)localObject2).file_image_info.get();
+    }
+    Object localObject2 = new ArrayList();
+    msg_comm.Msg localMsg = new msg_comm.Msg();
+    localMsg.msg_head.msg_uid.set(paramMsgInfo.lMsgUid);
+    localMsg.msg_head.msg_time.set(paramMsgInfo.uRealMsgTime);
+    localMsg.msg_head.from_uin.set(paramSlaveMasterMsg.lFromUin);
+    localMsg.msg_head.msg_seq.set((int)paramSlaveMasterMsg.uSeq);
+    paramMessageHandler.app.a().a(paramMessageHandler, (List)localObject2, localMsg, localNotOnlineFile, String.valueOf(paramSlaveMasterMsg.lToUin), true, false, -100L, -1, (hummer_resv_21.FileImgInfo)localObject1);
+  }
+  
+  private boolean a(MsgInfo paramMsgInfo)
+  {
+    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
+    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
+    localSlaveMasterMsg.readFrom(localJceInputStream);
+    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
+    {
+      a(this.a.a(), paramMsgInfo, localSlaveMasterMsg);
+      return true;
+    }
+    return false;
+  }
+  
+  public adau a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  {
+    boolean bool = false;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return new adau(null, bool);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
+        bool = a(paramMsgInfo);
+      } else {
+        a(getClass().getName(), paramInt);
+      }
+    }
   }
 }
 

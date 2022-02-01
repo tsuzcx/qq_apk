@@ -1,67 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewStub;
+import android.content.Context;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class bnva
+public class bnva
+  extends ApolloLottieAnim
 {
-  protected Activity a;
-  protected View a;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  protected bnvb a;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private Downloader a;
   
-  @Deprecated
-  public bnva(Activity paramActivity, View paramView, bnvb parambnvb)
+  public bnva(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Bnvb = parambnvb;
+    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
   }
   
-  public bnva(Activity paramActivity, ViewStub paramViewStub, bnvb parambnvb)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Bnvb = parambnvb;
-  }
-  
-  public <T> T a(int paramInt, Object... paramVarArgs)
-  {
-    return null;
-  }
-  
-  protected abstract void a();
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  protected void a(View paramView) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  protected final void j()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    this.jdField_a_of_type_Boolean = true;
-    a(localView);
+    this.jdField_a_of_type_Int = 1;
+    paramString3 = new bnvb(this, paramString2, paramString3);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
   }
 }
 

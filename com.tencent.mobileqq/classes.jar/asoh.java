@@ -1,386 +1,254 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 import java.util.List;
 
 public class asoh
+  implements View.OnTouchListener, avvw, blih
 {
-  int jdField_a_of_type_Int = 1;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new asom(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  volatile boolean jdField_a_of_type_Boolean;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  List<String> jdField_c_of_type_JavaUtilList = new ArrayList();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private aspu jdField_a_of_type_Aspu;
+  private avvv jdField_a_of_type_Avvv = new avvv(120, this);
+  private blih jdField_a_of_type_Blih;
+  private EmotionPanelListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView;
+  boolean jdField_a_of_type_Boolean = false;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  private int d;
+  private int e;
   
-  public asoh(int paramInt)
+  public asoh(EmotionPanelListView paramEmotionPanelListView, aspu paramaspu, blih paramblih)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Blih = paramblih;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView = paramEmotionPanelListView;
+    this.jdField_a_of_type_Aspu = paramaspu;
+    this.c = bhtq.a(5.0F);
+    this.jdField_a_of_type_Avvv.b(30);
+  }
+  
+  private void a(int paramInt)
+  {
+    if (paramInt != this.jdField_b_of_type_Int)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getChildAt(0) != null) && (paramInt == 0) && (this.jdField_b_of_type_Int != 1) && (a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (this.jdField_a_of_type_Aspu != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getListViewScrollY() < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Aspu.n();
+        if (QLog.isColorLevel()) {
+          QLog.d("EmotionPanelListView", 2, "onScrollStateChanged onPullDown");
+        }
+      }
+      this.jdField_b_of_type_Int = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionPanelListView", 2, "onScrollStateChanged mLastState :" + this.jdField_b_of_type_Int);
+      }
+    }
+  }
+  
+  private void a(View paramView)
+  {
+    if ((paramView instanceof URLImageView))
+    {
+      int i = this.jdField_a_of_type_ArrayOfInt[1] + paramView.getWidth() - this.c - this.d;
+      float f = paramView.getWidth() / 2.0F;
+      if (i < f)
+      {
+        paramView.setAlpha((f - i) * 1.0F / f);
+        return;
+      }
+      paramView.setAlpha(0.0F);
+      return;
+    }
+    paramView.setAlpha(1.0F);
+  }
+  
+  private void a(AbsListView paramAbsListView, boolean paramBoolean)
+  {
+    if (paramAbsListView != null)
+    {
+      int k = paramAbsListView.getChildCount();
+      int i = 0;
+      while (i < k)
+      {
+        View localView1 = paramAbsListView.getChildAt(i);
+        if ((localView1 instanceof ViewGroup))
+        {
+          int m = ((ViewGroup)localView1).getChildCount();
+          int j = m - 1;
+          if (j >= 0)
+          {
+            View localView2 = ((ViewGroup)localView1).getChildAt(m - 1);
+            localView2.getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+            this.jdField_a_of_type_ArrayOfInt[0] = localView2.getLeft();
+            if ((paramBoolean) && (this.e > 0) && (this.jdField_a_of_type_ArrayOfInt[0] + localView2.getWidth() * 2.0F / 3.0F > this.e) && (this.d > 0) && (this.jdField_a_of_type_ArrayOfInt[1] + localView2.getWidth() - this.c > this.d)) {
+              a(localView2);
+            }
+            for (;;)
+            {
+              j -= 1;
+              break;
+              localView2.setAlpha(1.0F);
+            }
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private boolean a(ListView paramListView)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramListView.getChildCount() > 0)
+    {
+      bool1 = bool2;
+      if (paramListView.getFirstVisiblePosition() == 0)
+      {
+        bool1 = bool2;
+        if (paramListView.getChildAt(0) != null)
+        {
+          bool1 = bool2;
+          if (paramListView.getChildAt(0).getTop() >= paramListView.getPaddingTop()) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public avvv a()
+  {
+    return this.jdField_a_of_type_Avvv;
+  }
+  
+  public void a(AbsListView paramAbsListView)
+  {
+    if (this.jdField_b_of_type_Boolean) {}
+    while ((!(paramAbsListView.getAdapter() instanceof assh)) && (!(paramAbsListView.getAdapter() instanceof asrx))) {
+      return;
+    }
+    if (((this.jdField_a_of_type_Aspu instanceof EmoticonMainPanel)) && (((EmoticonMainPanel)this.jdField_a_of_type_Aspu).a().a != null))
+    {
+      int i = EmoticonPanelController.jdField_b_of_type_Int;
+      List localList = ((EmoticonMainPanel)this.jdField_a_of_type_Aspu).a().jdField_b_of_type_JavaUtilList;
+      EmotionPanelViewPagerAdapter localEmotionPanelViewPagerAdapter = ((EmoticonMainPanel)this.jdField_a_of_type_Aspu).a().a;
+      if ((i >= 0) && (localList != null) && (i < localList.size()))
+      {
+        Object localObject2 = localEmotionPanelViewPagerAdapter.a(i);
+        Object localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = localObject2;
+          if (i - 1 >= 0) {
+            localObject1 = localEmotionPanelViewPagerAdapter.a(i - 1);
+          }
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = localObject1;
+          if (i + 1 < localList.size()) {
+            localObject2 = localEmotionPanelViewPagerAdapter.a(i + 1);
+          }
+        }
+        if ((localObject2 != null) && (((ImageButton)localObject2).getVisibility() == 0))
+        {
+          localObject1 = new int[2];
+          ((ImageButton)localObject2).getLocationOnScreen((int[])localObject1);
+          this.e = ((ImageButton)localObject2).getLeft();
+          this.d = localObject1[1];
+        }
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      a(paramAbsListView, bool);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_Aspu != null))
+    {
+      this.jdField_a_of_type_Aspu.m();
+      this.jdField_a_of_type_Avvv.a(false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelListView", 2, "onCheckSpeed overSpeed :" + paramBoolean);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Blih != null) {
+      this.jdField_a_of_type_Blih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if ((a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (this.jdField_b_of_type_Int == 2) && (this.jdField_a_of_type_Aspu != null)) {
+      a(0);
+    }
+    a(paramAbsListView);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getListViewScrollY();
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_Blih != null) {
+      this.jdField_a_of_type_Blih.onScrollStateChanged(paramAbsListView, paramInt);
+    }
     a(paramInt);
   }
   
-  private boolean a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 0;
-    if (!b(paramInt)) {
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.jdField_a_of_type_Float = paramMotionEvent.getY();
+      this.jdField_a_of_type_Avvv.a(true);
+      if (this.jdField_a_of_type_Aspu != null) {
+        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Aspu.c();
+      }
+    }
+    for (;;)
+    {
       return false;
-    }
-    Object localObject = BaseApplicationImpl.getContext();
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setLayerType(1, null);
-      }
-      if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount() <= 0)) {
-        break label344;
-      }
-      paramInt = i;
-      while (paramInt < this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount())
-      {
-        localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(paramInt);
-        if ((localObject instanceof ImageView))
+      if ((i == 1) && (this.jdField_a_of_type_Boolean)) {
+        if ((a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getListViewScrollY() < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Aspu != null))
         {
-          localObject = (ImageView)localObject;
-          ((ImageView)localObject).setVisibility(8);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-        }
-        paramInt += 1;
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate((Context)localObject, 2131561154, null));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367827));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367831));
-      continue;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate((Context)localObject, 2131561176, null));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367827));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367828));
-      continue;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate((Context)localObject, 2131561175, null));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367827));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367828));
-      continue;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate((Context)localObject, 2131561163, null));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367827));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367832));
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    label344:
-    return true;
-  }
-  
-  private void b(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      QLog.e("MatchViewHolder", 0, "updateData _ uins is null ");
-    }
-    int j;
-    QQAppInterface localQQAppInterface;
-    label189:
-    Object localObject;
-    label225:
-    do
-    {
-      do
-      {
-        return;
-        if (!a(this.jdField_c_of_type_JavaUtilList, paramArrayList)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("MatchViewHolder", 0, "updateData return for same data");
-      return;
-      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.addAll(paramArrayList);
-      this.jdField_c_of_type_JavaUtilList.clear();
-      this.jdField_c_of_type_JavaUtilList.addAll(paramArrayList);
-      j = this.jdField_b_of_type_JavaUtilList.size();
-      if (QLog.isColorLevel()) {
-        QLog.d("MatchViewHolder", 0, "updateData _ infoListSize = " + j);
-      }
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      int i;
-      ImageView localImageView;
-      if (j > 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        int k = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        if (i >= k) {
-          continue;
-        }
-        localImageView = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (i >= j) {
-          break label325;
-        }
-        localObject = (String)paramArrayList.get(i);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label349;
-        }
-        if (localQQAppInterface == null) {
-          break label331;
-        }
-        Drawable localDrawable = bgmo.a(true);
-        localObject = aoch.a(localQQAppInterface, 1, (String)localObject, 4, localDrawable, localDrawable);
-        ((aoch)localObject).mutate();
-        localDrawable = localImageView.getDrawable();
-        if ((localDrawable != null) && (localDrawable != localObject) && ((localDrawable instanceof aoch))) {
-          ((aoch)localDrawable).b();
-        }
-        localImageView.setImageDrawable((Drawable)localObject);
-        localImageView.setVisibility(0);
-      }
-      for (;;)
-      {
-        i += 1;
-        break label189;
-        i = 0;
-        break;
-        localObject = null;
-        break label225;
-        localImageView.setImageDrawable(bgmo.a(true));
-        localImageView.setVisibility(0);
-        continue;
-        localImageView.setVisibility(8);
-      }
-    } while (j <= this.jdField_a_of_type_JavaUtilList.size());
-    label325:
-    label331:
-    label349:
-    paramArrayList = (String)this.jdField_b_of_type_JavaUtilList.get(this.jdField_b_of_type_JavaUtilList.size() - 1);
-    if (localQQAppInterface != null)
-    {
-      localObject = bgmo.a(true);
-      aoch.a(localQQAppInterface, 1, paramArrayList, 4, (Drawable)localObject, (Drawable)localObject);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-    return;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-  }
-  
-  private boolean b(int paramInt)
-  {
-    return (paramInt > 0) && (paramInt <= 4);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MatchViewHolder", 0, "setUinList uins = 0");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchViewHolder", 0, "setUinList uins = " + paramArrayList);
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    }
-    paramArrayList = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramArrayList);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayList);
-  }
-  
-  boolean a(List<String> paramList1, List<String> paramList2)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    int j = paramList1.size();
-    int i;
-    if (j == paramList2.size())
-    {
-      if (j <= 0) {
-        break label97;
-      }
-      i = 0;
-      bool2 = bool1;
-      if (i >= j) {
-        break label97;
-      }
-      String str1 = (String)paramList1.get(i);
-      String str2 = (String)paramList2.get(i);
-      if ((TextUtils.isEmpty(str1)) || (str1.equals(str2))) {
-        break label132;
-      }
-      bool1 = false;
-    }
-    label132:
-    for (;;)
-    {
-      i += 1;
-      break;
-      bool2 = false;
-      label97:
-      if (QLog.isColorLevel()) {
-        QLog.d("MatchViewHolder", 0, "checkListEqual _ result = " + bool2);
-      }
-      return bool2;
-    }
-  }
-  
-  void b()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_b_of_type_AndroidWidgetImageView == null)) {
-      QLog.d("MatchViewHolder", 0, "startAnimation headFirst headLast null");
-    }
-    Object localObject1;
-    do
-    {
-      return;
-      localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    } while (localObject1 == null);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_c_of_type_AndroidWidgetImageView != null)
-    {
-      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_c_of_type_AndroidWidgetImageView);
-    }
-    Object localObject2 = BaseApplicationImpl.getContext();
-    this.jdField_c_of_type_AndroidWidgetImageView = new ImageView((Context)localObject2);
-    this.jdField_c_of_type_AndroidWidgetImageView.setLayerType(1, null);
-    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3)) {}
-    for (int i = afur.a(2.0F, ((Context)localObject2).getResources());; i = afur.a(1.0F, ((Context)localObject2).getResources()))
-    {
-      this.jdField_c_of_type_AndroidWidgetImageView.setPadding(i, i, i, i);
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130845127);
-      localObject2 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
-      ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131367827);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131367827);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
-      if (this.jdField_b_of_type_JavaUtilList.size() > 0) {}
-      try
-      {
-        localObject2 = (String)this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_JavaUtilList.size() - 1);
-        if (QLog.isColorLevel()) {
-          QLog.d("MatchViewHolder", 0, "startAnimation targetUin = " + (String)localObject2);
-        }
-        this.jdField_b_of_type_JavaUtilList.add(0, localObject2);
-        Drawable localDrawable = bgmo.a(true);
-        localObject1 = aoch.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        ((aoch)localObject1).mutate();
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-        localObject1 = new ScaleAnimation(1.0F, 1.2F, 1.0F, 1.2F, 1, 0.5F, 1, 0.5F);
-        ((ScaleAnimation)localObject1).setDuration(500);
-        ((ScaleAnimation)localObject1).setFillAfter(true);
-        ((ScaleAnimation)localObject1).setAnimationListener(new asoi(this));
-        this.jdField_c_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject1);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("MatchViewHolder", 1, "startAnimation Exception!", localException);
-      }
-    }
-  }
-  
-  void c()
-  {
-    int k = 0;
-    int i = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-    Object localObject1 = BaseApplicationImpl.getContext();
-    int j = i - ((Context)localObject1).getResources().getDimensionPixelSize(2131298100);
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      j = ((Context)localObject1).getResources().getDimensionPixelSize(2131298108);
-      i -= ((Context)localObject1).getResources().getDimensionPixelSize(2131298106);
-    }
-    for (;;)
-    {
-      Object localObject2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, j });
-      Object localObject3 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.0F });
-      ((ObjectAnimator)localObject2).setDuration(300);
-      ((ObjectAnimator)localObject3).setDuration(300);
-      localObject1 = new AnimatorSet();
-      ((AnimatorSet)localObject1).playTogether(new Animator[] { localObject2, localObject3 });
-      localObject3 = new asok(this, (AnimatorSet)localObject1);
-      localObject2 = new ArrayList();
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        j = 0;
-        for (;;)
-        {
-          if (j < this.jdField_a_of_type_JavaUtilList.size() - 1)
-          {
-            TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, i, 0.0F, 0.0F);
-            localTranslateAnimation.setDuration(300);
-            localTranslateAnimation.setFillAfter(true);
-            ((List)localObject2).add(localTranslateAnimation);
-            j += 1;
-            continue;
-            if (this.jdField_a_of_type_Int != 3) {
-              break label374;
-            }
-            j = ((Context)localObject1).getResources().getDimensionPixelSize(2131298111);
-            i -= ((Context)localObject1).getResources().getDimensionPixelSize(2131298109);
-            break;
+          this.jdField_a_of_type_Aspu.n();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionPanelListView", 2, "onTouch scroll top pull down");
           }
         }
-        ((TranslateAnimation)((List)localObject2).get(0)).setAnimationListener((Animation.AnimationListener)localObject3);
-        i = k;
-        while (i < this.jdField_a_of_type_JavaUtilList.size() - 1)
+        else if ((a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (paramMotionEvent.getY() > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Aspu != null))
         {
-          localObject3 = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-          ((ImageView)localObject3).clearAnimation();
-          ((ImageView)localObject3).startAnimation((Animation)((List)localObject2).get(i));
-          i += 1;
+          this.jdField_a_of_type_Aspu.n();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionPanelListView", 2, "onTouch no scroll top pull down");
+          }
         }
       }
-      ((AnimatorSet)localObject1).start();
-      return;
-      label374:
-      i = j;
     }
-  }
-  
-  public void d()
-  {
-    a();
-    this.jdField_a_of_type_AndroidOsHandler$Callback = null;
   }
 }
 

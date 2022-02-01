@@ -1,28 +1,16 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBaseBottomFragment;
 
 public class vpn
-  implements TypeEvaluator<PointF>
+  implements aabr<QCircleFakeAdapter>
 {
-  PointF jdField_a_of_type_AndroidGraphicsPointF;
-  PointF b = new PointF();
+  public vpn(QCirclePersonalBaseBottomFragment paramQCirclePersonalBaseBottomFragment) {}
   
-  public vpn(QCirclePolyLikeAniView paramQCirclePolyLikeAniView, PointF paramPointF)
+  public void a(aabu paramaabu, QCircleFakeAdapter paramQCircleFakeAdapter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
-  }
-  
-  private PointF a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, float paramFloat)
-  {
-    this.b.x = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.x + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.x + paramFloat * paramFloat * paramPointF2.x);
-    this.b.y = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.y + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.y + paramFloat * paramFloat * paramPointF2.y);
-    return this.b;
-  }
-  
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
-  {
-    return a(paramPointF1, paramPointF2, this.jdField_a_of_type_AndroidGraphicsPointF, paramFloat);
+    if (paramaabu.e()) {
+      this.a.b();
+    }
   }
 }
 

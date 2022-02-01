@@ -1,10 +1,16 @@
-import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class sjz
+  implements bdyg
 {
-  public static void a(ska paramska)
+  public sjz(ReadInJoySkinGuideView.1 param1) {}
+  
+  public void a(bdxj parambdxj)
   {
-    VideoReport.reportEvent(ska.a(paramska), paramska.a());
+    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, parambdxj));
   }
 }
 

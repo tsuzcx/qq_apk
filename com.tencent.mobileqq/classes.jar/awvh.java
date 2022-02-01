@@ -1,30 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import mqq.os.MqqHandler;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import com.tencent.qphone.base.util.QLog;
 
-public class awvh
-  extends MqqHandler
+class awvh
+  extends ConnectivityManager.NetworkCallback
 {
-  public awvh(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  awvh(awvg paramawvg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAvailable(Network paramNetwork)
   {
-    switch (paramMessage.what)
+    QLog.d("GateWayVerifyManager", 1, "switch network success");
+    if ((awvg.a(this.a) == null) || (!awvg.a(this.a).equals(paramNetwork)))
     {
+      awvg.a(this.a, paramNetwork);
+      if (awvg.a(this.a) != null) {
+        awvg.a(this.a).a(paramNetwork);
+      }
     }
-    do
-    {
-      return;
-      MultiCardRecommendFragment.e(this.a);
-      sendEmptyMessageDelayed(3, 500L);
-      return;
-      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
-      MultiCardRecommendFragment.e(this.a);
-      return;
-      MultiCardRecommendFragment.d(this.a);
-      return;
-    } while (MultiCardRecommendFragment.a(this.a) == null);
-    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

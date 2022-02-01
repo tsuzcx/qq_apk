@@ -1,32 +1,39 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
 
 class awje
-  implements EIPCOnGetConnectionListener
+  implements aasd
 {
-  awje(awjc paramawjc) {}
+  awje(awjd paramawjd, String paramString) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void callback(Bundle paramBundle)
   {
-    if (paramEIPCConnection != null) {
-      awjc.a(this.a, paramEIPCConnection.procName);
+    if (paramBundle.getBoolean("isSuccess", false))
+    {
+      int i = paramBundle.getInt("appid");
+      Object localObject = paramBundle.getString("openId");
+      if ((i != this.jdField_a_of_type_Awjd.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Awjd.jdField_a_of_type_JavaLangString))) {
+        break label120;
+      }
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        localObject = new Intent(this.jdField_a_of_type_Awjd.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
+        ((Intent)localObject).putExtra("memberUin", paramBundle);
+        this.jdField_a_of_type_Awjd.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+      }
     }
-    awjc.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectBind");
+    label120:
+    while (!QLog.isColorLevel()) {
+      return;
     }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      awjc.a(this.a, paramEIPCConnection.procName);
-    }
-    awjc.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectUnbind");
-    }
+    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 

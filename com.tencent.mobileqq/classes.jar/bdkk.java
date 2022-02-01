@@ -1,54 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import android.os.Bundle;
+import com.tencent.mobileqq.statistics.DailyReport;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.io.File;
 
-public abstract class bdkk
+public class bdkk
+  extends biht
 {
-  public int a;
-  protected bdkq a;
-  public QQAppInterface a;
-  public DataLineMsgRecord a;
-  public String a;
-  
-  public bdkk(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bdkq parambdkq)
+  public bdkk(DailyReport paramDailyReport, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
-    this.jdField_a_of_type_Bdkq = parambdkq;
+    super(paramString1, paramString2);
   }
   
-  public abstract String a();
-  
-  public boolean a()
+  public void onDone(bihu parambihu)
   {
-    Object localObject = arak.a().a();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
-      }
-    }
-    String str;
-    do
-    {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = atwl.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
-        return false;
-      }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
+    super.onDone(parambihu);
+    long l = parambihu.a().getLong("id");
+    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, bhkt.a(new File(bhkt.b(l, 4))), "");
+  }
+  
+  public boolean onStart(bihu parambihu)
+  {
     return true;
   }
 }

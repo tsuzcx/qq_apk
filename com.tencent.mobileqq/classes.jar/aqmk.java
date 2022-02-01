@@ -1,93 +1,68 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable.SerialExecutor.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 public class aqmk
-  extends aqkz<aqmj>
+  implements Executor
 {
-  public static void a()
-  {
-    aqmj localaqmj = (aqmj)aqlk.a().a(67);
-    aqmj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localaqmj);
-  }
+  final aqml<Runnable> jdField_a_of_type_Aqml = new aqml(30);
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public static void b()
+  public void a()
   {
-    int i = aqlk.a().a(67, "");
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "resetApolloConfVersion localVersion:" + i);
-    aqlk.a().a(67, 0);
-  }
-  
-  @NonNull
-  public aqmj a(int paramInt)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    if (paramInt == 1) {
-      return new aqmj();
+    try
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Aqml.a();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
+        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      return;
     }
-    aqmj.a();
-    return new aqmj();
+    finally {}
   }
   
-  @Nullable
-  public aqmj a(aqlg[] paramArrayOfaqlg)
+  public void b()
   {
-    return aqmj.a(paramArrayOfaqlg);
-  }
-  
-  public void a(aqmj paramaqmj)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "onUpdate");
-    aqmj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramaqmj);
-  }
-  
-  public Class<aqmj> clazz()
-  {
-    return aqmj.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.e("ApolloConfig_GlobalProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfig_GlobalProcessor", 2, "onReqNoReceive");
+    try
+    {
+      this.jdField_a_of_type_Aqml.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public int type()
+  public void execute(Runnable paramRunnable)
   {
-    return 67;
+    try
+    {
+      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
+      this.jdField_a_of_type_Aqml.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmk
  * JD-Core Version:    0.7.0.1
  */

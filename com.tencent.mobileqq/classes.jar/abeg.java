@@ -1,17 +1,27 @@
-import android.graphics.Canvas;
-import com.tencent.biz.widgets.TabLayout;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class abeg
-  implements Function1<Canvas, Unit>
+class abeg
+  implements View.OnClickListener
 {
-  public abeg(TabLayout paramTabLayout) {}
+  abeg(abef paramabef, String paramString, Activity paramActivity) {}
   
-  public Unit a(Canvas paramCanvas)
+  public void onClick(View paramView)
   {
-    TabLayout.a(this.a, paramCanvas);
-    return null;
+    this.jdField_a_of_type_Abef.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    {
+      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
+      if ((localAppInterface instanceof NearbyAppInterface)) {
+        ((NearbyAppInterface)localAppInterface).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

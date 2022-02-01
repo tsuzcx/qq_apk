@@ -1,64 +1,24 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class bchp
+  extends bchk
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
-  
-  static
+  bcfq a(ajfc paramajfc, List<bcfr> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    jdField_a_of_type_Int = 1500;
+    bcnh.a(90);
+    return new bceu(paramajfc, paramList, paramString1);
   }
   
-  public static boolean a()
+  bcfr a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    boolean bool = bcif.a(bcif.r);
-    if (bool) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
-      }
-    }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    return jdField_a_of_type_Boolean;
+    return null;
   }
   
-  public static boolean b()
+  bcfr a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    if (Build.VERSION.SDK_INT < 18) {}
-    do
-    {
-      boolean bool;
-      do
-      {
-        do
-        {
-          return false;
-          bool = bcif.e(bcif.o);
-          if (!bool) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
-        return false;
-        bool = bcif.a(bcif.r);
-        if (!bool) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
-      return false;
-    } while ((!b) || (!jdField_a_of_type_Boolean));
-    return true;
+    return new bcev(paramrecord, paramString, paramCharSequence);
   }
 }
 

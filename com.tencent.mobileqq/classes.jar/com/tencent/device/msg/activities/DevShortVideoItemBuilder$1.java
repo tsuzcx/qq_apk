@@ -1,16 +1,16 @@
 package com.tencent.device.msg.activities;
 
-import abue;
-import atvf;
+import abyi;
+import auna;
 
 public class DevShortVideoItemBuilder$1
   implements Runnable
 {
-  public DevShortVideoItemBuilder$1(abue paramabue) {}
+  public DevShortVideoItemBuilder$1(abyi paramabyi) {}
   
   public void run()
   {
-    atvf.a(2131693359);
+    auna.a(2131693371);
   }
 }
 

@@ -1,8 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-
 public abstract interface orw
 {
-  public abstract void a(GiftServiceBean paramGiftServiceBean);
+  public abstract void a(long paramLong);
 }
 
 

@@ -1,53 +1,30 @@
-import com.tencent.component.network.downloader.strategy.PortConfigStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.plugin.QZonePluginDownloadPortConfig.1;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import android.content.Context;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.webbundle.sdk.IWebBundleRuntime;
+import com.tencent.webbundle.sdk.IWebBundleWebView;
+import cooperation.comic.webbundle.WebBundleWebView;
+import org.jetbrains.annotations.NotNull;
 
 public class bmdk
-  extends PortConfigStrategy
-  implements bkzc
+  extends IWebBundleRuntime
 {
-  public bmdk()
+  public bmdk(@NotNull Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadPortConfig", 2, "defaultPortStrategy={'a[0-9].qpic.cn':[{'port': '80'},{'port': '14000'}],'m.qpic.cn':[{'port': '80'},{'port': '14000'}]}");
-    }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZonePluginDownloadPortConfig.1(this));
-    QzoneConfig.getInstance().addListener(this);
+    super(paramContext);
   }
   
-  private void a()
+  @NotNull
+  public IWebBundleWebView createWebView(@NotNull Context paramContext)
   {
-    String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
-    if (str != null)
+    paramContext = new WebBundleWebView(paramContext);
+    WebSettings localWebSettings = paramContext.getSettings();
+    String str = localWebSettings.getUserAgentString();
+    if (paramContext.getX5WebViewExtension() != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginDownloadPortConfig", 2, "initPort, ports=" + str);
-      }
-      setConfig(str);
+      localWebSettings.setUserAgentString(birz.a(str, "VipComic", bool));
+      return paramContext;
     }
-  }
-  
-  private void b()
-  {
-    String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
-    if (str != null) {}
-    for (;;)
-    {
-      setConfig(str);
-      return;
-      str = "{'a[0-9].qpic.cn':[{'port': '80'},{'port': '14000'}],'m.qpic.cn':[{'port': '80'},{'port': '14000'}]}";
-    }
-  }
-  
-  public void onConfigChange()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadPortConfig", 2, "QzoneDownloadPortConfig receive change");
-    }
-    a();
   }
 }
 

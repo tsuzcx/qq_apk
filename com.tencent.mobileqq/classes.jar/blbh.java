@@ -1,20 +1,28 @@
+import android.os.Bundle;
+import com.tencent.ims.SafeReport.RspBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import cooperation.comic.ui.QQComicFragment;
-import java.util.Observable;
-import java.util.Observer;
 
-public class blbh
-  implements Observer
+final class blbh
+  extends nkq
 {
-  public blbh(QQComicFragment paramQQComicFragment, WebView paramWebView) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (blbu.a != null)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new SafeReport.RspBody();
+    }
+    try
     {
-      QLog.d("WebLog_WebViewFragment", 4, "RuntimeCreateObserver update ");
-      blbu.a.a(this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext());
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
+        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

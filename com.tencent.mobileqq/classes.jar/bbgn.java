@@ -1,28 +1,66 @@
-import com.tencent.mobileqq.search.KDSearchHistoryFlowLayout;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import mqq.app.AppActivity;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bbgn
-  extends bkii
+  implements QQPermissionCallback
 {
-  public bbgn(KDSearchHistoryFlowLayout paramKDSearchHistoryFlowLayout)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bbgo jdField_a_of_type_Bbgo;
+  
+  public bbgn(Activity paramActivity, bbgo parambbgo)
   {
-    super(paramKDSearchHistoryFlowLayout);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Bbgo = parambbgo;
   }
   
   public void a()
   {
-    super.a();
+    if (Build.VERSION.SDK_INT < 23) {
+      if (this.jdField_a_of_type_Bbgo != null) {
+        this.jdField_a_of_type_Bbgo.a();
+      }
+    }
+    label119:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (this.jdField_a_of_type_AndroidAppActivity == null);
+        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label119;
+          }
+          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
+            break;
+          }
+          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return;
+        }
+      } while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity));
+      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      return;
+    } while (this.jdField_a_of_type_Bbgo == null);
+    this.jdField_a_of_type_Bbgo.a();
   }
   
-  public void onChanged()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super.onChanged();
-    KDSearchHistoryFlowLayout.a(this.a);
+    bhlq.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onInvalidated()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super.onInvalidated();
-    KDSearchHistoryFlowLayout.a(this.a);
+    if (this.jdField_a_of_type_Bbgo != null) {
+      this.jdField_a_of_type_Bbgo.a();
+    }
   }
 }
 

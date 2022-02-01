@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import ajon;
+import ajzw;
 import android.widget.Button;
 
 public class QFaceUnlockCameraCaptureUnit$2
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$2(ajon paramajon) {}
+  public QFaceUnlockCameraCaptureUnit$2(ajzw paramajzw) {}
   
   public void run()
   {
-    ajon.a(this.this$0).setVisibility(8);
+    ajzw.a(this.this$0).setVisibility(8);
   }
 }
 

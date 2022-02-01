@@ -1,9 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class agvk
-  implements bkhy
+  implements DialogInterface.OnClickListener
 {
-  agvk(agvj paramagvj) {}
+  agvk(agvi paramagvi, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onDismiss() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    }
+  }
 }
 
 

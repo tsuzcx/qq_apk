@@ -1,20 +1,23 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class wkx
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
+  public int a;
+  public final long a;
+  public final String a;
+  public boolean a;
+  public String b = "";
+  
+  public wkx(String paramString)
   {
-    paramQQUserUIItem = xfe.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+    this.jdField_a_of_type_Int = 1000;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public static String b(QQUserUIItem paramQQUserUIItem)
+  public ErrorMessage a()
   {
-    paramQQUserUIItem = xfe.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
+    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
   }
 }
 

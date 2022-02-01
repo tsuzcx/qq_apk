@@ -1,18 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
-final class bfux
-  extends bhhe
+class bfux
+  implements ProxyListener
 {
-  bfux(WeakReference paramWeakReference, File paramFile, bdfn parambdfn) {}
+  bfux(bfuw parambfuw, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public void onDone(bhhf parambhhf)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAnimationUtils", 2, "onDone:" + parambhhf.a);
-    }
-    bfuw.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Bdfn);
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
+  }
+  
+  public void onInsertFinish(String paramString)
+  {
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
   }
 }
 

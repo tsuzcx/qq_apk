@@ -776,9 +776,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject1 = getChildViewHolderInt(getChildAtInItem(i));
-          localObject2 = ((RecyclerViewBase.ViewHolder)localObject1).itemView;
-          this.mState.mPostLayoutHolderMap.put(localObject1, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject1, ((View)localObject2).getLeft(), ((View)localObject2).getTop(), ((View)localObject2).getRight(), ((View)localObject2).getBottom(), ((RecyclerViewBase.ViewHolder)localObject1).mPosition));
+          localObject2 = getChildViewHolderInt(getChildAtInItem(i));
+          localObject1 = ((RecyclerViewBase.ViewHolder)localObject2).itemView;
+          this.mState.mPostLayoutHolderMap.put(localObject2, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject2, ((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom(), ((RecyclerViewBase.ViewHolder)localObject2).mPosition));
           i += 1;
         }
         i = this.mState.mPreLayoutHolderMap.size() - 1;

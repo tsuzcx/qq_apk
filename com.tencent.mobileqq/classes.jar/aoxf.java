@@ -1,58 +1,46 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aoxf
-  extends aoyh
+public class aoxf
+  extends aoxh
 {
-  aoxf(aoxb paramaoxb) {}
-  
-  public void a(int paramInt)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadSuccess success " + paramInt);
-    }
-    if (aoxb.a(this.a) == null)
+    if (paramString.startsWith("mqqapi://vaslive"))
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadSuccess error mHandler is null ");
-      return;
+      paramQQAppInterface = new aoxe(paramQQAppInterface, paramContext);
+      paramQQAppInterface.a = paramString;
+      paramQQAppInterface.b = "vaslive";
+      if (paramString.startsWith("mqqapi://vaslive/watch")) {
+        paramQQAppInterface.c = "watch";
+      }
+      for (;;)
+      {
+        paramContext = paramString.split("\\?");
+        if (paramContext.length == 2) {
+          break;
+        }
+        return paramQQAppInterface;
+        if (paramString.startsWith("mqqapi://vaslive/myshopping")) {
+          paramQQAppInterface.c = "mqqapi://vaslive/myshopping";
+        }
+      }
+      paramContext = paramContext[1].split("&");
+      if (paramContext != null)
+      {
+        int i = 0;
+        while (i < paramContext.length)
+        {
+          paramString = paramContext[i].split("=");
+          if ((paramString != null) && (paramString.length == 2)) {
+            paramQQAppInterface.a(paramString[0], paramString[1]);
+          }
+          i += 1;
+        }
+      }
+      return paramQQAppInterface;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 10;
-    localMessage.arg1 = paramInt;
-    aoxb.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadProcess process " + paramInt1 + " : " + paramInt2);
-    }
-    if (aoxb.a(this.a) == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 11;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aoxb.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadError " + paramInt1 + " : " + paramInt2);
-    }
-    if (aoxb.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadError error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 12;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aoxb.a(this.a).sendMessage(localMessage);
+    return null;
   }
 }
 

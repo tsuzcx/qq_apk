@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Intent;
 import android.os.Handler;
-import anni;
-import bhge;
-import bhod;
+import anzj;
+import bigt;
+import bioy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -55,7 +55,7 @@ public class ThemeUiPlugin
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new bhge(BaseApplication.getContext().getMainLooper());
+      reportHandler = new bigt(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;
@@ -65,7 +65,7 @@ public class ThemeUiPlugin
   
   void OnActivityResume()
   {
-    this.activity.setTitle(anni.a(2131713618));
+    this.activity.setTitle(anzj.a(2131713727));
   }
   
   protected long getPluginBusiness()

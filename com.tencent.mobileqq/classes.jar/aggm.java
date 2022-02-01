@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aggm
-  implements agie
+  implements View.OnClickListener
 {
-  public aggm(DoodlePanel paramDoodlePanel) {}
+  public aggm(BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void a(agid paramagid)
+  public void onClick(View paramView)
   {
-    this.a.a(paramagid);
-    paramagid = "" + paramagid.a + ";" + paramagid.b + ";" + paramagid.c;
-    bgjb.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramagid);
+    String str = (String)paramView.getTag();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatItemLayout", 2, "vip_card_extension jumpUrl=" + str);
+    }
+    if (!bhsr.a(str)) {
+      VasWebviewUtil.openQQBrowserActivity(this.a.getContext(), str, 256L, null, false, -1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

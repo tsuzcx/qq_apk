@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
 
-class qzl
-  implements ValueAnimator.AnimatorUpdateListener
+public final class qzl
+  implements Parcelable.Creator<VisibleSetParam>
 {
-  qzl(qzi paramqzi, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public VisibleSetParam a(Parcel paramParcel)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setRotation(f);
+    return new VisibleSetParam(paramParcel);
+  }
+  
+  public VisibleSetParam[] a(int paramInt)
+  {
+    return new VisibleSetParam[paramInt];
   }
 }
 

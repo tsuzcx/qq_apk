@@ -1,19 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-class bnld
-  implements View.OnTouchListener
+public abstract class bnld<T>
+  extends Handler
 {
-  bnld(bnlc parambnlc) {}
+  private WeakReference<T> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bnld(T paramT)
   {
-    if ((bnlc.a(this.a) != null) && (bnlc.a(this.a) != null)) {
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bnlc.a(this.a), bnlc.a(this.a));
+    this.a = new WeakReference(paramT);
+  }
+  
+  public abstract void a(T paramT, Message paramMessage);
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object localObject = this.a.get();
+    if (localObject != null) {
+      a(localObject, paramMessage);
     }
-    return true;
   }
 }
 

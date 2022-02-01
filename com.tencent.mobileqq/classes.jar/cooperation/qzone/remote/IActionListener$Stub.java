@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import bmey;
+import bnga;
 
 public abstract class IActionListener$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IActionListener$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IActionListener))) {
       return (IActionListener)localIInterface;
     }
-    return new bmey(paramIBinder);
+    return new bnga(paramIBinder);
   }
   
   public IBinder asBinder()

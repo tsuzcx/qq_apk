@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-final class sib
-  implements tdu
+public class sib
+  extends pmr
 {
-  sib(BaseArticleInfo paramBaseArticleInfo, URL paramURL) {}
-  
-  public void a(tdw paramtdw, int paramInt) {}
-  
-  public void a(tdw paramtdw, Throwable paramThrowable)
+  public sib(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    QLog.e(sia.a, 2, "preload failed " + this.jdField_a_of_type_JavaNetURL);
+    super(paramString);
   }
   
-  public void a(tdw paramtdw, tds paramtds)
+  public void a(pmk parampmk)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.setHasFirstFramePreload(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(sia.a, 2, "preload success width: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getFirstFrameWidth() + ", height: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getFirstFrameHeight() + ", " + this.jdField_a_of_type_JavaNetURL + ", title: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
-    }
+    parampmk.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

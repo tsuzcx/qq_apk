@@ -1,8 +1,8 @@
 package cooperation.qqreader.host.advertisement;
 
-import ackj;
+import acon;
 import android.text.TextUtils;
-import bgnw;
+import bhny;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -151,7 +151,7 @@ public class ReaderAdWrapper
   
   public boolean isAdAppInstalled()
   {
-    return bgnw.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
+    return bhny.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
   }
   
   public boolean isAppType()

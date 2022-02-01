@@ -1,39 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
 
 public class auvm
-  extends Handler
 {
-  public auvm(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-    case 3: 
-      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
-      return;
-    case 100: 
-      QQGameFeedWebFragment.a(this.a).setVisibility(8);
-      return;
-    }
-    int i = paramMessage.arg1;
-    try
-    {
-      QQGameFeedWebFragment.a(this.a, i);
-      return;
-    }
-    catch (Throwable paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
-  }
+  public int a;
+  public FlashChatItem a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

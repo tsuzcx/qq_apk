@@ -6,30 +6,30 @@ import android.graphics.PointF;
 import android.os.Build.VERSION;
 import android.view.animation.PathInterpolator;
 import android.widget.ImageView;
-import bgtn;
-import vog;
-import voh;
+import bhtq;
+import vqo;
+import vqp;
 
 public class QCircleFuelAnimationManager$1
   implements Runnable
 {
-  public QCircleFuelAnimationManager$1(vog paramvog, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean) {}
+  public QCircleFuelAnimationManager$1(vqo paramvqo, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean) {}
   
   public void run()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     this.b.setVisibility(0);
-    Object localObject2 = new PointF(this.b.getX(), this.b.getY() - bgtn.a(5.0F));
+    Object localObject2 = new PointF(this.b.getX(), this.b.getY() - bhtq.a(5.0F));
     if (this.jdField_a_of_type_Boolean) {}
-    for (Object localObject1 = new PointF(this.b.getX() + bgtn.a(80.0F), this.b.getY() - bgtn.a(95.0F));; localObject1 = new PointF(this.b.getX() + bgtn.a(145.0F), this.b.getY() - bgtn.a(95.0F)))
+    for (Object localObject1 = new PointF(this.b.getX() + bhtq.a(80.0F), this.b.getY() - bhtq.a(95.0F));; localObject1 = new PointF(this.b.getX() + bhtq.a(145.0F), this.b.getY() - bhtq.a(95.0F)))
     {
-      localObject1 = vog.a(this.this$0, this.b, (PointF)localObject2, (PointF)localObject1, new PointF(0.19F * (((PointF)localObject1).x - ((PointF)localObject2).x) + ((PointF)localObject2).x, 1.14F * (((PointF)localObject1).y - ((PointF)localObject2).y) + ((PointF)localObject2).y), new PointF(0.91F * (((PointF)localObject1).x - ((PointF)localObject2).x) + ((PointF)localObject2).x, 1.16F * (((PointF)localObject1).y - ((PointF)localObject2).y) + ((PointF)localObject2).y), 420L);
+      localObject1 = vqo.a(this.this$0, this.b, (PointF)localObject2, (PointF)localObject1, new PointF(0.19F * (((PointF)localObject1).x - ((PointF)localObject2).x) + ((PointF)localObject2).x, 1.14F * (((PointF)localObject1).y - ((PointF)localObject2).y) + ((PointF)localObject2).y), new PointF(0.91F * (((PointF)localObject1).x - ((PointF)localObject2).x) + ((PointF)localObject2).x, 1.16F * (((PointF)localObject1).y - ((PointF)localObject2).y) + ((PointF)localObject2).y), 420L);
       if (Build.VERSION.SDK_INT >= 21) {
         ((ValueAnimator)localObject1).setInterpolator(new PathInterpolator(0.16F, 0.0F, 0.0F, 1.0F));
       }
       ((ValueAnimator)localObject1).start();
-      ((ValueAnimator)localObject1).addListener(new voh(this, (PointF)localObject2));
+      ((ValueAnimator)localObject1).addListener(new vqp(this, (PointF)localObject2));
       localObject1 = ObjectAnimator.ofFloat(this.b, "scaleX", new float[] { 1.0F, 0.0F }).setDuration(420L);
       if (Build.VERSION.SDK_INT >= 21) {
         ((ObjectAnimator)localObject1).setInterpolator(new PathInterpolator(0.33F, 0.0F, 0.67F, 1.0F));

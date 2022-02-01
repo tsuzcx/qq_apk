@@ -6,51 +6,51 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import wlb;
-import wlf;
-import wwa;
-import wyj;
-import wyv;
-import yib;
-import yij;
-import yqp;
+import wow;
+import wpa;
+import wzv;
+import xce;
+import xcq;
+import ylw;
+import yme;
+import yuk;
 
 public class GetFeedFeatureHandler$1
   implements Runnable
 {
-  public GetFeedFeatureHandler$1(wwa paramwwa) {}
+  public GetFeedFeatureHandler$1(wzv paramwzv) {}
   
   public void run()
   {
     Object localObject3;
-    if (wwa.a(this.this$0))
+    if (wzv.a(this.this$0))
     {
       localObject1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = (Long)wwa.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+        localObject3 = (Long)wzv.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
         if ((localObject3 != null) && (System.currentTimeMillis() - ((Long)localObject3).longValue() < 30000L))
         {
           ((Iterator)localObject1).remove();
-          yqp.a("Q.qqstory.home.GetFeedFeatureHandler", "remove same request for feed info:%s", localObject2);
+          yuk.a("Q.qqstory.home.GetFeedFeatureHandler", "remove same request for feed info:%s", localObject2);
         }
         else
         {
-          wwa.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, Long.valueOf(System.currentTimeMillis()));
+          wzv.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, Long.valueOf(System.currentTimeMillis()));
         }
       }
     }
     if (this.this$0.jdField_a_of_type_JavaUtilList.size() == 0) {
       return;
     }
-    yqp.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.jdField_a_of_type_JavaUtilList);
+    yuk.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.jdField_a_of_type_JavaUtilList);
     Object localObject1 = new ArrayList();
     Object localObject2 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
-      if (this.this$0.jdField_a_of_type_Yij.a((String)localObject3) == null)
+      if (this.this$0.jdField_a_of_type_Yme.a((String)localObject3) == null)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
           ((List)localObject1).add(localObject3);
@@ -65,23 +65,23 @@ public class GetFeedFeatureHandler$1
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedItem: first=", ((List)localObject1).get(0) });
       }
-      localObject2 = new wyj();
-      ((wyj)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject2 = new xce();
+      ((xce)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = new yib((String)((Iterator)localObject1).next(), 0, "", "");
-        ((wyj)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3);
+        localObject3 = new ylw((String)((Iterator)localObject1).next(), 0, "", "");
+        ((xce)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3);
       }
-      wlb.a().a((wlf)localObject2, this.this$0);
+      wow.a().a((wpa)localObject2, this.this$0);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedFeature: first=", this.this$0.jdField_a_of_type_JavaUtilList.get(0) });
     }
-    localObject1 = new wyv();
-    ((wyv)localObject1).jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_JavaUtilList;
-    wlb.a().a((wlf)localObject1, this.this$0);
+    localObject1 = new xcq();
+    ((xcq)localObject1).jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_JavaUtilList;
+    wow.a().a((wpa)localObject1, this.this$0);
   }
 }
 

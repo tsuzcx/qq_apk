@@ -1,74 +1,26 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class aenx
-  extends anmu
+  implements DialogInterface.OnClickListener
 {
-  public aenx(LoginInfoActivity paramLoginInfoActivity) {}
+  public aenx(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginInfoActivity.d(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
+    if (!TextUtils.isEmpty(paramDialogInterface))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult success");
-      }
-      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("LoginInfoActivity.AccDevSec", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-      }
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      return;
+      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
-      }
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data is null");
-    }
-    for (;;)
-    {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131691830), 0).b(this.a.getTitleBarHeight());
-      return;
-      label288:
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
-    }
-  }
-  
-  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
-    }
-    LoginInfoActivity.d(this.a);
-    if (paramBoolean)
-    {
-      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
-      {
-        LoginInfoActivity.a(this.a).remove(paramInt2);
-        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      }
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131693899), 0).b(this.a.getTitleBarHeight());
   }
 }
 

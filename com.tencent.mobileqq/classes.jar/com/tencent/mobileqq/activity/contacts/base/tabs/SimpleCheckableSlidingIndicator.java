@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import ajid;
-import ajie;
-import ajif;
-import ajig;
-import ajim;
+import ajtm;
+import ajtn;
+import ajto;
+import ajtp;
+import ajtv;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Handler.Callback;
@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import bkfv;
+import blha;
 
 public class SimpleCheckableSlidingIndicator
   extends SimpleSlidingIndicator
@@ -21,10 +21,10 @@ public class SimpleCheckableSlidingIndicator
   public static int b = 1;
   public static int c = 2;
   public static int d = 1;
-  private ajif jdField_a_of_type_Ajif;
-  ajig jdField_a_of_type_Ajig;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ajie(this);
-  private bkfv jdField_a_of_type_Bkfv;
+  ajto jdField_a_of_type_Ajto;
+  private ajtp jdField_a_of_type_Ajtp;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ajtn(this);
+  private blha jdField_a_of_type_Blha;
   private int i = -9999999;
   private int j = jdField_a_of_type_Int;
   
@@ -53,7 +53,7 @@ public class SimpleCheckableSlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new ajid(this));
+        ((ValueAnimator)localObject).addUpdateListener(new ajtm(this));
         ((ValueAnimator)localObject).start();
       }
       while (localView == null) {
@@ -78,12 +78,12 @@ public class SimpleCheckableSlidingIndicator
       if (paramBoolean1)
       {
         a();
-        if ((this.jdField_a_of_type_Ajim != null) && (paramInt >= 0)) {
-          this.jdField_a_of_type_Ajim.a(paramInt, paramBoolean2);
+        if ((this.jdField_a_of_type_Ajtv != null) && (paramInt >= 0)) {
+          this.jdField_a_of_type_Ajtv.a(paramInt, paramBoolean2);
         }
       }
     }
-    while ((this.e != paramInt) || (this.jdField_a_of_type_Ajig == null) || (paramInt < 0)) {
+    while ((this.e != paramInt) || (this.jdField_a_of_type_Ajto == null) || (paramInt < 0)) {
       for (;;)
       {
         return;
@@ -94,7 +94,7 @@ public class SimpleCheckableSlidingIndicator
         invalidate();
       }
     }
-    this.jdField_a_of_type_Ajig.a(paramInt);
+    this.jdField_a_of_type_Ajto.a(paramInt);
   }
   
   public int[] a()
@@ -116,31 +116,31 @@ public class SimpleCheckableSlidingIndicator
     {
       return super.onTouchEvent(paramMotionEvent);
       this.j = b;
-      if (this.jdField_a_of_type_Ajif != null) {
-        this.jdField_a_of_type_Ajif.a(this.j);
+      if (this.jdField_a_of_type_Ajtp != null) {
+        this.jdField_a_of_type_Ajtp.a(this.j);
       }
-      if (this.jdField_a_of_type_Bkfv != null)
+      if (this.jdField_a_of_type_Blha != null)
       {
-        this.jdField_a_of_type_Bkfv.removeMessages(d);
+        this.jdField_a_of_type_Blha.removeMessages(d);
         continue;
-        if (this.jdField_a_of_type_Bkfv != null) {
-          this.jdField_a_of_type_Bkfv.sendEmptyMessage(d);
+        if (this.jdField_a_of_type_Blha != null) {
+          this.jdField_a_of_type_Blha.sendEmptyMessage(d);
         }
       }
     }
   }
   
-  public void setOnRepeatClickListener(ajig paramajig)
+  public void setOnRepeatClickListener(ajto paramajto)
   {
-    this.jdField_a_of_type_Ajig = paramajig;
+    this.jdField_a_of_type_Ajto = paramajto;
   }
   
-  public void setScrollViewListener(ajif paramajif)
+  public void setScrollViewListener(ajtp paramajtp)
   {
-    if (this.jdField_a_of_type_Bkfv == null) {
-      this.jdField_a_of_type_Bkfv = new bkfv(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    if (this.jdField_a_of_type_Blha == null) {
+      this.jdField_a_of_type_Blha = new blha(this.jdField_a_of_type_AndroidOsHandler$Callback);
     }
-    this.jdField_a_of_type_Ajif = paramajif;
+    this.jdField_a_of_type_Ajtp = paramajtp;
   }
 }
 

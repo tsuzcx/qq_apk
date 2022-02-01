@@ -1,17 +1,17 @@
 package com.tencent.av.smallscreen;
 
 import com.tencent.av.app.VideoAppInterface;
-import lyj;
-import lyu;
+import lzf;
+import lzq;
 
 public class SmallScreenActivityPlugin$1
   implements Runnable
 {
-  public SmallScreenActivityPlugin$1(lyj paramlyj, long paramLong) {}
+  public SmallScreenActivityPlugin$1(lzf paramlzf, long paramLong) {}
   
   public void run()
   {
-    lyu.a(this.a, 2, this.this$0.a.getApp());
+    lzq.a(this.a, 2, this.this$0.a.getApp());
   }
 }
 

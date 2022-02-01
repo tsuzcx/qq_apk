@@ -1,8 +1,19 @@
-import eipc.EIPCResult;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public abstract interface aplf
+public final class aplf
+  implements Parcelable.Creator<ARCommonConfigInfo>
 {
-  public abstract void a(EIPCResult paramEIPCResult);
+  public ARCommonConfigInfo a(Parcel paramParcel)
+  {
+    return new ARCommonConfigInfo(paramParcel);
+  }
+  
+  public ARCommonConfigInfo[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo[paramInt];
+  }
 }
 
 

@@ -1,26 +1,92 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class zhx
-  implements View.OnClickListener
+  extends zia
 {
-  public zhx(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  private final int b;
+  private boolean c;
+  private boolean d;
   
-  public void onClick(View paramView)
+  public zhx(Context paramContext, String paramString, int paramInt)
   {
-    yqp.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Zhz != null)) {
-        this.a.jdField_a_of_type_Zhz.a();
-      }
+    super(paramContext, paramString, -1);
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
     }
+    this.b = i;
   }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 4;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new RelativeLayout(this.a);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
+    paramViewGroup.setBackgroundResource(2130850098);
+    paramInt = -2170912;
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+      paramInt = -16444373;
+    }
+    View localView = new View(this.a);
+    Object localObject = new RelativeLayout.LayoutParams(-1, zps.a(this.a, 1.0F));
+    ((RelativeLayout.LayoutParams)localObject).addRule(10);
+    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localView.setBackgroundColor(paramInt);
+    localObject = new View(this.a);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, zps.a(this.a, 1.0F));
+    localLayoutParams.addRule(12);
+    ((View)localObject).setLayoutParams(localLayoutParams);
+    ((View)localObject).setBackgroundColor(paramInt);
+    paramViewGroup.addView(localView);
+    paramViewGroup.addView((View)localObject);
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView)
+  {
+    View localView = ((ViewGroup)paramView).getChildAt(0);
+    paramView = ((ViewGroup)paramView).getChildAt(1);
+    if (this.c) {
+      localView.setVisibility(0);
+    }
+    while (this.d)
+    {
+      paramView.setVisibility(0);
+      return;
+      localView.setVisibility(4);
+    }
+    paramView.setVisibility(4);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
+  }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

@@ -1,19 +1,6 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-public class ambw
+final class ambw
 {
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
-  
-  public ambw(ambv paramambv) {}
+  public static final ambu a = new ambu(null);
 }
 
 

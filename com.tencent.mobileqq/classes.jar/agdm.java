@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 class agdm
-  implements bdet
+  implements BusinessObserver
 {
-  agdm(agdj paramagdj) {}
+  agdm(agdj paramagdj, agdr paramagdr) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    bdez localbdez = new bdez(3000, 360, 0);
-    localbdez.a = true;
-    this.a.a.f.a(new bdes[] { localbdez });
+    if ((paramInt == 2003) && (this.jdField_a_of_type_Agdr != null)) {
+      this.jdField_a_of_type_Agdr.a(paramBoolean, paramBundle);
+    }
   }
 }
 

@@ -1,21 +1,90 @@
-import android.text.TextUtils;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 
 public class azcd
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, azci
 {
-  public String a;
-  public String b;
+  private GestureController a;
   
-  public boolean a()
+  public azcd(GestureController paramGestureController)
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+    this.a = paramGestureController;
   }
   
-  public String toString()
+  public void a(azch paramazch)
   {
-    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
-    localStringBuilder.append("businessId=").append(this.a);
-    localStringBuilder.append(", name=").append(this.b);
-    return localStringBuilder.toString();
+    this.a.a(paramazch);
+  }
+  
+  public boolean a(azch paramazch)
+  {
+    return this.a.b(paramazch);
+  }
+  
+  public boolean b(azch paramazch)
+  {
+    return this.a.a(paramazch);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return this.a.e(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.b(paramScaleGestureDetector);
+  }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.a(paramScaleGestureDetector);
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.a.a(paramScaleGestureDetector);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return this.a.d(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return this.a.c(paramMotionEvent);
   }
 }
 

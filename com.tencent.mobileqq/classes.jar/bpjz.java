@@ -1,20 +1,42 @@
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.tavcut.bean.TextEditorData;
 
-public abstract interface bpjz
+class bpjz
+  implements TextWatcher
 {
-  public abstract void a();
+  bpjz(bpjw parambpjw) {}
   
-  public abstract void a(int paramInt);
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (paramEditable == null) {
+      return;
+    }
+    String str = paramEditable.toString();
+    if (paramEditable.length() > 20)
+    {
+      QQToast.a(this.a.getContext(), bpjw.a(this.a), 0).a();
+      str = paramEditable.subSequence(0, 20).toString();
+      bpjw.a(this.a).setText(str);
+      bpjw.a(this.a).setSelection(str.length());
+    }
+    if (TextUtils.isEmpty(str.trim())) {
+      bpjw.a(this.a).setContent("");
+    }
+    for (;;)
+    {
+      bpjw.b(this.a);
+      return;
+      bpjw.a(this.a).setContent(str);
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public abstract void a(DynamicTextItem paramDynamicTextItem, boolean paramBoolean1, int paramInt, boolean paramBoolean2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean);
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

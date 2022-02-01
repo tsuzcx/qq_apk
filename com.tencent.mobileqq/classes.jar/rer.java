@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
 
-public final class rer
-  implements Parcelable.Creator<ArticleInfo>
+public class rer
+  extends rfy
 {
-  public ArticleInfo a(Parcel paramParcel)
-  {
-    return new ArticleInfo(paramParcel);
-  }
+  public rer(EditVideoFragment paramEditVideoFragment) {}
   
-  public ArticleInfo[] a(int paramInt)
+  public void o()
   {
-    return new ArticleInfo[paramInt];
+    if ((EditVideoFragment.a(this.a) != null) && (EditVideoFragment.a(this.a))) {
+      EditVideoFragment.a(this.a).b();
+    }
   }
 }
 

@@ -1,124 +1,73 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
-public class awdo
-  extends aqkz<awdi>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/intervideo/now/webplugin/AudioRoomSettingHandler;", "", "()V", "ACT_GET_TMP_MSG_PUSH_SETTING", "", "ACT_SET_TMP_MSG_PUSH_SETTING", "TAG", "", "handleGetTmpMsgPushSetting", "", "plugin", "Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;", "reqJson", "Lorg/json/JSONObject;", "callback", "handleRequest", "args", "", "(Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;[Ljava/lang/String;)V", "handleSetTmpMsgPushSetting", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class awdo
 {
-  @NonNull
-  public awdi a(int paramInt)
+  public static final awdo a = new awdo();
+  
+  private final void a(awby paramawby, JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WelcomeConfigProcessor", 2, "migrateOldOrDefaultContent");
-    }
-    return new awdi();
+    paramawby.a().a((short)-23161, (aasd)new awdp(paramawby, paramString));
   }
   
-  @Nullable
-  public awdi a(aqlg[] paramArrayOfaqlg)
+  @JvmStatic
+  public static final void a(@NotNull awby paramawby, @NotNull String[] paramArrayOfString)
   {
-    int j;
-    int i;
-    Object localObject1;
-    if (QLog.isColorLevel())
+    Intrinsics.checkParameterIsNotNull(paramawby, "plugin");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "args");
+    for (;;)
     {
-      QLog.d("WelcomeConfigProcessor", 2, "onParsed :" + paramArrayOfaqlg);
-      if (paramArrayOfaqlg != null)
+      String str;
+      try
       {
-        j = paramArrayOfaqlg.length;
-        i = 0;
-        while (i < j)
+        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+        str = paramArrayOfString.optString("callback");
+        int i = paramArrayOfString.optInt("act", -1);
+        switch (i)
         {
-          localObject1 = paramArrayOfaqlg[i];
-          if (localObject1 != null) {
-            QLog.d("WelcomeConfigProcessor", 2, "onParsed item: " + ((aqlg)localObject1).jdField_a_of_type_JavaLangString);
-          }
-          i += 1;
+        case 1: 
+          QLog.w("AudioRoomSettingHandler", 1, "unknown action: " + i);
+          return;
         }
       }
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      j = paramArrayOfaqlg.length;
-      i = 0;
-      while (i < j)
+      catch (Exception paramawby)
       {
-        Object localObject2 = paramArrayOfaqlg[i];
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((aqlg)localObject2).jdField_a_of_type_JavaLangString))) {
-          try
-          {
-            localObject1 = new awdi();
-            localObject2 = new JSONObject(((aqlg)localObject2).jdField_a_of_type_JavaLangString);
-            if (((JSONObject)localObject2).has("popup_url")) {
-              ((awdi)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("popup_url");
-            }
-            if (((JSONObject)localObject2).has("fixed_entrance_url")) {
-              ((awdi)localObject1).b = ((JSONObject)localObject2).getString("fixed_entrance_url");
-            }
-            if (((JSONObject)localObject2).has("request_interval")) {
-              ((awdi)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("request_interval");
-            }
-            return localObject1;
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("WelcomeConfigProcessor", 1, localThrowable, new Object[0]);
-          }
-        }
-        i += 1;
+        QLog.w("AudioRoomSettingHandler", 1, "handleRequest catch: " + paramawby);
+        return;
       }
-    }
-    return null;
-  }
-  
-  public void a(awdi paramawdi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WelcomeConfigProcessor", 2, "onUpdate");
-    }
-    if (paramawdi != null) {
-      ((LoginWelcomeManager)BaseApplicationImpl.sApplication.getRuntime().getManager(146)).a(paramawdi);
+      awdo localawdo = a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
+      localawdo.a(paramawby, paramArrayOfString, str);
+      return;
+      localawdo = a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
+      localawdo.b(paramawby, paramArrayOfString, str);
+      return;
     }
   }
   
-  public Class<awdi> clazz()
+  private final void b(awby paramawby, JSONObject paramJSONObject, String paramString)
   {
-    return awdi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WelcomeConfigProcessor", 2, "migrateOldVersion");
+    boolean bool = false;
+    int i = paramJSONObject.optInt("pushSwitch", -1);
+    QLog.i("AudioRoomSettingHandler", 1, "handleSetTmpMsgPushSetting request: toStatus=" + i);
+    if ((i != 0) && (i != 1))
+    {
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("result", "fail");
+      paramawby.callJs(paramString, new String[] { paramJSONObject.toString() });
+      return;
     }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WelcomeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    paramJSONObject = paramawby.a();
+    if (i == 1) {
+      bool = true;
     }
-  }
-  
-  public int type()
-  {
-    return 454;
+    paramJSONObject.a((short)-23161, bool, (aasd)new awdq(i, paramawby, paramString));
   }
 }
 

@@ -1,41 +1,65 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class bdly
-  implements bknm
+  extends RecyclablePool.Recyclable
 {
-  public bdly(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
+  public String c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public long p;
   
-  public void a(bknl parambknl)
+  public bdly()
   {
-    int i;
-    switch (parambknl.a)
-    {
-    case 2131364575: 
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      bcst.b(this.a.app, "dc00898", "", "", "0X8009C65", "0X8009C65", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "" + i);
-      return;
-      bdjg.a(this.a.app, "0X800993B");
-      bdjg.a(this.a.app, this.a, 1, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 1;
-      continue;
-      bdjg.a(this.a.app, "0X800993C");
-      bdjg.a(this.a.app, this.a, 2, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 2;
-      continue;
-      bdjg.a(this.a.app, "0X800993C");
-      bdjg.a(this.a.app, this.a, 3, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 3;
-    }
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void recycle()
+  {
+    super.recycle();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.e = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.f = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.j = 0L;
+    this.i = 0L;
+    this.h = 0L;
+    this.g = 0L;
+    this.m = 0L;
+    this.l = 0L;
+    this.k = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.p = 0L;
+    this.o = 0L;
+    this.n = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdly
  * JD-Core Version:    0.7.0.1
  */

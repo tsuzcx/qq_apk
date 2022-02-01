@@ -1,100 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import mqq.app.AppRuntime;
 
 public class mnl
 {
-  private static mnl a;
-  public int a;
-  public String a;
-  public int b = 4;
-  public int c = 2000;
-  public int d = 4;
-  public int e = 2150;
-  public int f = 720;
-  public int g = 1;
-  public int h = 5;
-  public int i = 120000;
-  public int j = 1;
-  public int k = 1;
-  public int l = 0;
-  public int m = 0;
-  public int n = 5000;
-  public int o = 0;
-  public int p = 25000;
-  public int q = 1;
-  public int r;
-  public int s;
-  
-  public mnl()
+  public static int a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  private static int a(String[] paramArrayOfString, int paramInt1, int paramInt2)
-  {
-    if ((paramArrayOfString == null) || (paramInt1 >= paramArrayOfString.length)) {
-      return paramInt2;
+    int i = 0;
+    if (paramBoolean2) {
+      if (!paramBoolean1) {
+        break label67;
+      }
     }
-    try
+    label67:
+    for (i = biki.a(paramAppRuntime, paramString, 6, paramBoolean1, null); i != 0; i = biki.a(paramAppRuntime, paramAppRuntime.getAccount(), 6, paramBoolean1, paramString))
     {
-      paramInt1 = Integer.parseInt(paramArrayOfString[paramInt1]);
-      return paramInt1;
+      if (AudioHelper.f()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, 已经有默认配置, fcId[" + i + "]");
+      }
+      return i;
     }
-    catch (Exception paramArrayOfString)
+    paramString = BusinessCommonConfig.getInstance(paramAppRuntime);
+    if (paramString != null)
     {
-      paramArrayOfString.printStackTrace();
+      paramAppRuntime = (QAVFunCallHandler)paramString.getConfigHandler(382);
+      paramAppRuntime = paramAppRuntime.getConfigDirect();
+      if (paramAppRuntime == null) {
+        break label174;
+      }
+      i = paramAppRuntime.getActivityFCId();
     }
-    return paramInt2;
-  }
-  
-  public static mnl a()
-  {
-    if (jdField_a_of_type_Mnl == null) {
-      jdField_a_of_type_Mnl = b();
-    }
-    return jdField_a_of_type_Mnl;
-  }
-  
-  private static mnl b()
-  {
-    mnl localmnl = new mnl();
-    Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.qavDpc.name());
-    localmnl.jdField_a_of_type_JavaLangString = ((String)localObject);
-    if (!TextUtils.isEmpty(localmnl.jdField_a_of_type_JavaLangString))
+    label174:
+    for (;;)
     {
-      localObject = ((String)localObject).split("\\|");
-      localmnl.jdField_a_of_type_Int = a((String[])localObject, 0, 1);
-      localmnl.b = a((String[])localObject, 1, 4);
-      localmnl.c = a((String[])localObject, 2, 2000);
-      localmnl.d = a((String[])localObject, 3, 4);
-      localmnl.e = a((String[])localObject, 4, 2150);
-      localmnl.f = a((String[])localObject, 5, 720);
-      localmnl.g = a((String[])localObject, 6, 1);
-      localmnl.h = a((String[])localObject, 7, 5);
-      localmnl.i = a((String[])localObject, 8, 120000);
-      localmnl.j = a((String[])localObject, 9, 1);
-      localmnl.k = a((String[])localObject, 10, 1);
-      localmnl.l = a((String[])localObject, 11, 0);
-      localmnl.m = a((String[])localObject, 12, 0);
-      localmnl.n = a((String[])localObject, 13, 5000);
-      localmnl.o = a((String[])localObject, 14, 0);
-      localmnl.p = a((String[])localObject, 15, 25000);
-      localmnl.q = a((String[])localObject, 16, 1);
+      if (AudioHelper.f()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, fcId[" + i + "]");
+      }
+      return i;
+      paramAppRuntime = new QAVFunCallHandler(paramAppRuntime.getAccount());
+      break;
     }
-    localmnl.r = bgln.b();
-    localmnl.s = ((int)(bgln.b() / 1000L));
-    if (QLog.isColorLevel()) {
-      QLog.d("QavRecordDpc", 2, "init=" + localmnl);
-    }
-    return localmnl;
   }
   
-  public String toString()
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    return String.format(Locale.getDefault(), "QavRecordDpc:dpc=%s, default=%d|%d|%d|%d|%d|%d, value=%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%s|%s|%s, system=%d|%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2000), Integer.valueOf(4), Integer.valueOf(2150), Integer.valueOf(720), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.k), Integer.valueOf(this.l), Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o), Integer.valueOf(this.p), Integer.valueOf(this.q), Integer.valueOf(this.r), Integer.valueOf(this.s) });
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.AnnimateDownloadStart");
+    localIntent.setPackage(paramVideoAppInterface.getApp().getPackageName());
+    localIntent.putExtra("callId", paramInt);
+    paramVideoAppInterface.getApp().sendBroadcast(localIntent);
   }
 }
 

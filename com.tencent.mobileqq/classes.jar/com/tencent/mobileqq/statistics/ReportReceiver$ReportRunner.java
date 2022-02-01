@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.statistics;
 
 import android.content.Intent;
-import aooq;
-import bbrf;
-import bcro;
-import bcst;
-import bmxq;
+import apcg;
+import bcjy;
+import bdkg;
+import bdll;
+import bnyy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.report.ReportModel;
@@ -35,7 +35,7 @@ class ReportReceiver$ReportRunner
         i = localIntent.getIntExtra("is_runtime", -1);
         if (i == 1001)
         {
-          ((aooq)((QQAppInterface)localObject).getManager(126)).a(localIntent);
+          ((apcg)((QQAppInterface)localObject).getManager(126)).a(localIntent);
           return;
         }
         str1 = localIntent.getStringExtra("reporting_tag");
@@ -56,36 +56,36 @@ class ReportReceiver$ReportRunner
             if ((i == 0) || (i != 1)) {
               continue;
             }
-            bbrf.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
+            bcjy.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
             return;
           }
           if ("dc02181".equals(str1))
           {
             if (i == 0)
             {
-              bcro.b(str1, (QQAppInterface)localObject, str2);
+              bdkg.b(str1, (QQAppInterface)localObject, str2);
               return;
             }
             if (i != 1) {
               continue;
             }
-            bcro.a(str1, (QQAppInterface)localObject, str2);
+            bdkg.a(str1, (QQAppInterface)localObject, str2);
             return;
           }
           if ("dc_qqgame".equals(str1))
           {
-            bmxq.a().a((AppRuntime)localObject, str1, str2);
+            bnyy.a().a((AppRuntime)localObject, str1, str2);
             return;
           }
           if (i == 0)
           {
-            bcst.b((QQAppInterface)localObject, str1, str2, j);
+            bdll.b((QQAppInterface)localObject, str1, str2, j);
             return;
           }
           if (i != 1) {
             continue;
           }
-          bcst.a((QQAppInterface)localObject, str1, str2, j);
+          bdll.a((QQAppInterface)localObject, str1, str2, j);
           return;
         }
         catch (OutOfMemoryError localOutOfMemoryError) {}

@@ -1,48 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
 
-class lhd
-  implements lgy
+public class lhd
+  extends Handler
 {
-  lhd(lhc paramlhc) {}
-  
-  public void a(long paramLong, String paramString)
+  public lhd(MagicFaceDataEntity paramMagicFaceDataEntity, Looper paramLooper)
   {
-    lbc.c("AVMagicfacePlayer", "play video begin." + paramString);
-    if (this.a.jdField_b_of_type_Lgy != null) {
-      this.a.jdField_b_of_type_Lgy.a(paramLong, paramString);
-    }
+    super(paramLooper);
   }
   
-  public void a(long paramLong, String arg3, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.w("AVMagicfacePlayer", 1, "onEndMagicPlay, id[" + ??? + "], reason[" + paramInt + "], seq[" + paramLong + "]");
-    if (this.a.jdField_b_of_type_Lgy != null) {
-      this.a.jdField_b_of_type_Lgy.a(paramLong, ???, paramInt);
-    }
-    synchronized (this.a)
+    lbj.c("MagicFaceDataEntity", "MagicFaceDataEntity handleMessage A: " + this.a.a + "|" + paramMessage.what);
+    switch (paramMessage.what)
     {
-      if ((this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_Lha != null)) {
-        this.a.a(paramLong, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Lha, this.a.jdField_a_of_type_Lgz, this.a.jdField_a_of_type_Lgy);
-      }
-      return;
     }
-  }
-  
-  public void a(long paramLong, String paramString, boolean paramBoolean)
-  {
-    lbc.c("AVMagicfacePlayer", "play audio begin. id = " + paramString + ", repeat = " + paramBoolean);
-    if (paramBoolean)
+    do
     {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString, 100);
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (this.a.a != 1);
+          MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
+          return;
+        } while (this.a.a != 0);
+        this.a.a = 1;
+        this.a.c();
+        return;
+      } while (this.a.a != 1);
+      this.a.a = 0;
+      this.a.d();
       return;
-    }
-    this.a.a(this.a.jdField_a_of_type_JavaLangString, 1);
-  }
-  
-  public void b(long paramLong, String paramString)
-  {
-    lbc.c("AVMagicfacePlayer", "play audio end. id = " + paramString);
-    this.a.a(this.a.jdField_a_of_type_JavaLangString);
+    } while (this.a.a != 1);
+    paramMessage = (Integer)paramMessage.obj;
+    this.a.a(paramMessage.intValue());
   }
 }
 

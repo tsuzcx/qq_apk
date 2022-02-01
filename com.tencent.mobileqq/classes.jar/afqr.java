@@ -1,26 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class afqr
-  extends VasQuickUpdateManager.CallBacker
+  implements TextView.OnEditorActionListener
 {
-  public afqr(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public afqr(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")))
+    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
     {
-      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g))) {
-        this.a.c(this.a.g);
-      }
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
+      TextPreviewTranslateActivity.a(this.a);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
+      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      return true;
     }
-    else {
-      return;
-    }
-    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.b);
+    return false;
   }
 }
 

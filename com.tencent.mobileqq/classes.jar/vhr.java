@@ -1,25 +1,24 @@
-import com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
 
 public class vhr
-  implements vye
+  extends Handler
 {
-  public vhr(QCircleCommentBottomBar paramQCircleCommentBottomBar) {}
-  
-  public void a(int paramInt)
+  public vhr(CellTextView paramCellTextView, Looper paramLooper)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(vri.a("ext2", String.valueOf(paramInt)));
-    if (QCircleCommentBottomBar.a(this.a)) {
-      vrg.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList, QCircleCommentBottomBar.a(this.a));
-    }
-    for (;;)
-    {
-      vrr.a().a(new vrt().a("pushbutton").b("push").a(this.a.a()).a(QCircleCommentBottomBar.a(this.a)));
-      return;
-      vrc.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList, QCircleCommentBottomBar.b(this.a));
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.b = true;
+    this.a.a(6, paramMessage.arg1, paramMessage.arg2, 0);
+    paramMessage = this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell;
+    this.a.a();
+    this.a.jdField_a_of_type_Vip.g();
+    this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell = paramMessage;
   }
 }
 

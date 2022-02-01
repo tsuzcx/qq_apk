@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import sso;
+import sjs;
 
 public class ReadInJoyProteusFamilyListViewGroup$9$2
   implements Runnable
 {
-  public ReadInJoyProteusFamilyListViewGroup$9$2(sso paramsso) {}
+  public ReadInJoyProteusFamilyListViewGroup$9$2(sjs paramsjs) {}
   
   public void run()
   {

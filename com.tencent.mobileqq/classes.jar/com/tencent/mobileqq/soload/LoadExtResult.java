@@ -2,9 +2,9 @@ package com.tencent.mobileqq.soload;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bcnm;
-import bcnw;
-import bgnt;
+import bdge;
+import bdgo;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
@@ -22,10 +22,10 @@ public class LoadExtResult
 {
   private int downloadSoNum;
   private int failIndex;
-  public bcnm failInfo;
+  public bdge failInfo;
   private boolean isFirstlyLoad = true;
   private boolean isNeedRetry;
-  private Map<String, bcnw> mPathsMap = new HashMap();
+  private Map<String, bdgo> mPathsMap = new HashMap();
   private String reportStr = "";
   int resCode;
   private int soNum;
@@ -124,7 +124,7 @@ public class LoadExtResult
             localObject1 = paramSoLoadInfo.soPathToLoad;
           }
         }
-        paramSoLoadInfo = new bcnw((String)localObject1, paramSoLoadInfo.rFileFolder, paramSoLoadInfo.getVer());
+        paramSoLoadInfo = new bdgo((String)localObject1, paramSoLoadInfo.rFileFolder, paramSoLoadInfo.getVer());
         localLoadExtResult.mPathsMap.put(paramString, paramSoLoadInfo);
       }
       return localLoadExtResult;
@@ -156,7 +156,7 @@ public class LoadExtResult
       if ((!a(this.failInfo.jdField_a_of_type_Int, this.failInfo.b)) && (!b(this.failInfo.jdField_a_of_type_Int, this.failInfo.b))) {
         break label164;
       }
-      int i = bgnt.b(BaseApplicationImpl.getApplication());
+      int i = bhnv.b(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
         QLog.i("LoadExtResult", 2, "[getDelayAyncTime]curNetType:" + i);
       }
@@ -176,14 +176,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bcnw)localIterator.next()).b;
+      return ((bdgo)localIterator.next()).b;
     }
     return "";
   }
   
   public String getRelatedFilesFolder(String paramString)
   {
-    paramString = (bcnw)this.mPathsMap.get(paramString);
+    paramString = (bdgo)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
@@ -216,14 +216,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bcnw)localIterator.next()).a;
+      return ((bdgo)localIterator.next()).a;
     }
     return "";
   }
   
   public String getSoLoadPath(String paramString)
   {
-    paramString = (bcnw)this.mPathsMap.get(paramString);
+    paramString = (bdgo)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
@@ -234,14 +234,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bcnw)localIterator.next()).c;
+      return ((bdgo)localIterator.next()).c;
     }
     return "";
   }
   
   public String getVer(String paramString)
   {
-    paramString = (bcnw)this.mPathsMap.get(paramString);
+    paramString = (bdgo)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }

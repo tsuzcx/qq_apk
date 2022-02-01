@@ -1,42 +1,36 @@
-import android.support.v4.app.Fragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.widget.XEditTextEx;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class asje
-  implements asny
+class asje
+  implements anjg
 {
-  public asje(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  asje(asiw paramasiw, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
-    }
-    this.a.b = "";
-    ExtendFriendProfileEditFragment.b(this.a, 0);
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
-      ((ExtendFriendEditFragment)localFragment).a = null;
-    }
-    ExtendFriendProfileEditFragment.a(this.a, null);
-    ExtendFriendProfileEditFragment.c(this.a);
-    if (ExtendFriendProfileEditFragment.b(this.a))
+    Bundle localBundle = new Bundle();
+    if (paramBoolean)
     {
-      ExtendFriendProfileEditFragment.a(this.a, true);
-      ExtendFriendProfileEditFragment.b(this.a);
-    }
-    for (;;)
-    {
-      this.a.c = true;
-      ExtendFriendProfileEditFragment.b(this.a);
+      localBundle.putInt("apollo_apolloVipFlag", this.jdField_a_of_type_Int);
+      localBundle.putInt("apollo_apolloVipLevel", this.jdField_b_of_type_Int);
+      localBundle.putInt("apollo_result", 0);
+      localBundle.putInt("apollo_partnerRoleId", this.jdField_c_of_type_Int);
+      localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      localBundle.putInt("apollo_previewAction", this.jdField_d_of_type_Int);
+      localBundle.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
+      localBundle.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
+      localBundle.putString("title", this.jdField_c_of_type_JavaLangString);
+      localBundle.putString("subTitle", this.jdField_d_of_type_JavaLangString);
+      localBundle.putBoolean("apollo_is_super_yellow", amsx.c());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
-      ExtendFriendProfileEditFragment.a(this.a, false);
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))) {
-        ExtendFriendProfileEditFragment.a(this.a);
-      }
     }
+    localBundle.putInt("apollo_result", 1);
+    localBundle.putInt("apollo_audioId", paramInt);
+    localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

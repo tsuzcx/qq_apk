@@ -1,42 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class ansi
-  extends BroadcastReceiver
 {
-  public ansi(QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = 3;
+  public int e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (this.a.l) {
-      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      int i;
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (bccv)this.a.getManager(10);
-      } while ((paramContext == null) || (i == -1));
-      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
-      return;
-    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((azxi)this.a.getManager(104)).b();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gameId:").append(this.jdField_a_of_type_Int).append(",roomId:").append(this.jdField_a_of_type_Long).append(",actionId:").append(this.jdField_b_of_type_Int).append(",gameName:").append(this.jdField_b_of_type_JavaLangString).append(",wording:").append(",imgType:");
+      QLog.d("ApolloPanel", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.d = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansi
  * JD-Core Version:    0.7.0.1
  */

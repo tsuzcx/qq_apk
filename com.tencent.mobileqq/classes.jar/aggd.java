@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class aggd
-  implements agha
+  implements aojk
 {
-  public aggd(DoodleLayout paramDoodleLayout) {}
+  public aggd(BaseBubbleBuilder paramBaseBubbleBuilder, Intent paramIntent) {}
   
-  public void a()
+  public void a(Object paramObject)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    if ((paramObject instanceof String))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
   }
 }

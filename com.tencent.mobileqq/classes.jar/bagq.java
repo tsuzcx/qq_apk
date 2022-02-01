@@ -1,22 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public class bagq
-  implements View.OnClickListener
+class bagq
+  extends asvt
 {
-  public bagq(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, MessageForPic paramMessageForPic) {}
+  bagq(bagl parambagl) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Card paramCard)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.isAdded()) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      if (paramCard == null) {
+        break label124;
+      }
+    }
+    label124:
+    for (paramCard = paramCard.declaration;; paramCard = null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QLog.d("ProfileExtendFriendComponent", 2, String.format("onGetExtendFriendInfo success=%s declaration=%s", new Object[] { Boolean.valueOf(paramBoolean), paramCard }));
+      if (bagl.a(this.a) != null) {
+        bagl.a(this.a).removeCallbacks(bagl.a(this.a));
+      }
+      if (bagl.a(this.a) != null)
+      {
+        bagl.a(this.a).dismiss();
+        bagl.a(this.a, null);
+      }
+      if (!bagl.d(this.a))
+      {
+        bagl.b(this.a, true);
+        bagl.b(this.a);
+      }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.getActivity(), ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment));
     }
   }
 }

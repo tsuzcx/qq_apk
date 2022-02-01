@@ -1,38 +1,18 @@
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import org.apache.http.entity.ByteArrayEntity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.ImageTagInfo;
 
-public class bnah
-  extends ByteArrayEntity
+public final class bnah
+  implements Parcelable.Creator<ImageTagInfo>
 {
-  protected final int a;
-  protected final int b;
-  
-  public bnah(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public ImageTagInfo a(Parcel paramParcel)
   {
-    super(paramArrayOfByte);
-    this.a = paramInt1;
-    this.b = paramInt2;
+    return new ImageTagInfo(paramParcel, null);
   }
   
-  public InputStream getContent()
+  public ImageTagInfo[] a(int paramInt)
   {
-    return new ByteArrayInputStream(this.content, this.a, this.b);
-  }
-  
-  public long getContentLength()
-  {
-    return this.b;
-  }
-  
-  public void writeTo(OutputStream paramOutputStream)
-  {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("Output stream may not be null");
-    }
-    paramOutputStream.write(this.content, this.a, this.b);
-    paramOutputStream.flush();
+    return new ImageTagInfo[paramInt];
   }
 }
 

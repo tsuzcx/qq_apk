@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class adsf
-  implements DialogInterface.OnClickListener
+public class adsf
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adsf(AddAccountActivity paramAddAccountActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
+    libsafeedit.clearPassBuffer();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,46 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.HashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class seh
-  implements DownloadListener
+  implements bdxo
 {
-  private HashMap<String, sei> a = new HashMap();
+  public seh(RainView paramRainView, bdyr parambdyr) {}
   
-  public void a(String paramString, sei paramsei)
+  public void a()
   {
-    this.a.remove(paramString);
-    this.a.put(paramString, paramsei);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Bdyr);
+    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
+    {
+      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
+      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
+      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("SpriteGLView", 2, "rain animation end");
+      }
+    }
   }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    ThreadManager.getUIHandler().postDelayed(new VideoFeedsUGDownloadListener.2(this, paramString2), 1000L);
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.getUIHandler().post(new VideoFeedsUGDownloadListener.1(this, paramDownloadInfo));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

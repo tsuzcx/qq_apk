@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import amkm;
+import amwg;
 
 public class HotChatCenterFragment$1$1
   implements Runnable
 {
-  public HotChatCenterFragment$1$1(amkm paramamkm, String paramString) {}
+  public HotChatCenterFragment$1$1(amwg paramamwg, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amkm.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Amwg.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

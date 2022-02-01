@@ -1,11 +1,19 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class pkv
-  extends bkrv
+public class pkv
+  implements View.OnClickListener
 {
-  pkv(pku parampku, View paramView)
+  public pkv(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramView);
+    ReadInJoyViolaChannelFragment.a(this.a).d();
+    ReadInJoyViolaChannelFragment.a(this.a);
+    ReadInJoyViolaChannelFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

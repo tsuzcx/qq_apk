@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class afpp
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public afpp(TroopTransferActivity paramTroopTransferActivity) {}
+  public afpp(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramCharSequence.length() > 0) {
+      if (SubLoginActivity.a(this.a) != null) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,50 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.Switch;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.48.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class aeit
-  implements CompoundButton.OnCheckedChangeListener
+  extends BroadcastReceiver
 {
-  public aeit(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aeit(Conversation paramConversation) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool1 = this.a.a.a().isChecked();
-    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
-    int j = bcnj.c();
-    int i;
-    if ((bool1) && (bool2))
-    {
-      i = bcnj.c;
-      if (!paramBoolean) {
-        break label140;
-      }
-      String str = bcnj.a(i);
-      if (!bdoq.a(this.a, str, new aeiu(this, paramCompoundButton, bool1, i))) {
-        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = j;
-      if (!bool1) {
-        break;
-      }
-      i = j;
-      if (!ThemeUtil.isNowThemeIsNight(this.a.app, false, bcnj.a(j))) {
-        break;
-      }
-      i = bcnj.d();
-      break;
-      label140:
-      GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
-    }
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.jdField_a_of_type_Aljw.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_Aljw.jdField_a_of_type_JavaLangString = paramContext;
+    this.a.jdField_a_of_type_Aljw.a(20, 2);
+    this.a.jdField_a_of_type_Aljw.a(-1, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.48.1(this), i);
+    bdll.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

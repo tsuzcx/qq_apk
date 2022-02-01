@@ -1,24 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.widget.TextView;
 
-public class aymn
-  implements bkom
+class aymn
+  extends bgst
 {
-  public aymn(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  aymn(aymj paramaymj) {}
   
-  public void a(View paramView)
+  public void a(long paramLong)
   {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(false);
+    if (paramLong > 0L)
+    {
+      aymj.c(this.a).setText(String.format(anzj.a(2131706161), new Object[] { Long.valueOf(paramLong) }));
+      return;
     }
-  }
-  
-  public void b(View paramView)
-  {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(true);
-    }
+    aymj.c(this.a).setText(anzj.a(2131706259));
   }
 }
 

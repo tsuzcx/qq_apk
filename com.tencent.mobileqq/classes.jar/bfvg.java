@@ -1,29 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bfvg
-  extends Handler
+  extends MSFServlet
 {
-  public bfvg(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramLooper);
+    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if ((AvatarWallViewPager.a(this.a)) || (!AvatarWallViewPager.b(this.a))) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
+    if (paramIntent == null) {
       return;
     }
-    paramMessage = this.a;
-    paramMessage.b += 1;
-    this.a.b %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.b, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bhuf.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
+    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
+    paramPacket.autoResend = bool;
+    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
   }
 }
 

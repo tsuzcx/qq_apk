@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import anrs;
+import aody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import twi;
+import twk;
 
 class SubscriptFeedsActivity$7
   implements Runnable
@@ -11,8 +11,8 @@ class SubscriptFeedsActivity$7
   
   public void run()
   {
-    ((anrs)this.this$0.app.getManager(56)).a();
-    twi.a().c(this.this$0.app);
+    ((aody)this.this$0.app.getManager(56)).a();
+    twk.a().c(this.this$0.app);
   }
 }
 

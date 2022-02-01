@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.shortvideo.multisender;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import bqhy;
+import brjk;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -18,13 +18,13 @@ public class MultiSendEntry
   public String fakeVid;
   public String md5;
   @notColumn
-  List<bqhy> messageDataList;
+  List<brjk> messageDataList;
   public String messageInfos;
   public int syncToStory;
   public long time;
   public String uploadInfo;
   @notColumn
-  bqhy uploadMessageData;
+  brjk uploadMessageData;
   public String uuid;
   public String videoPath;
   
@@ -41,7 +41,7 @@ public class MultiSendEntry
     if (!TextUtils.isEmpty(this.uploadInfo)) {}
     try
     {
-      this.uploadMessageData = new bqhy();
+      this.uploadMessageData = new brjk();
       this.uploadMessageData.a(this.uploadInfo);
       if (TextUtils.isEmpty(this.messageInfos)) {}
     }
@@ -51,7 +51,7 @@ public class MultiSendEntry
       {
         try
         {
-          this.messageDataList = bqhy.a(this.messageInfos);
+          this.messageDataList = brjk.a(this.messageInfos);
           return true;
           paramCursor = paramCursor;
           paramCursor.printStackTrace();
@@ -73,23 +73,23 @@ public class MultiSendEntry
     }
     Iterator localIterator = this.messageDataList.iterator();
     while (localIterator.hasNext()) {
-      if (((bqhy)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
+      if (((brjk)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
         localIterator.remove();
       }
     }
-    this.messageInfos = bqhy.a(this.messageDataList);
+    this.messageInfos = brjk.a(this.messageDataList);
   }
   
-  public void setMessageDataList(List<bqhy> paramList)
+  public void setMessageDataList(List<brjk> paramList)
   {
     this.messageDataList = paramList;
-    this.messageInfos = bqhy.a(paramList);
+    this.messageInfos = brjk.a(paramList);
   }
   
-  public void setUploadMessageData(bqhy parambqhy)
+  public void setUploadMessageData(brjk parambrjk)
   {
-    this.uploadMessageData = parambqhy;
-    this.uploadInfo = parambqhy.a();
+    this.uploadMessageData = parambrjk;
+    this.uploadInfo = parambrjk.a();
   }
 }
 

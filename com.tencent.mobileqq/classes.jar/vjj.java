@@ -1,21 +1,21 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import java.util.ArrayList;
 
 public class vjj
-  implements Observer<vup<List<FeedCloudMeta.StFeed>>>
 {
-  public vjj(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
+  public int a;
+  public ArrayList<viv> a;
+  public ArrayList<Integer> b;
   
-  public void a(@Nullable vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public vjj(ArrayList<viv> paramArrayList, ArrayList<Integer> paramArrayList1, int paramInt)
   {
-    if (paramvup != null) {
-      QLog.d(QCircleBaseTabFragment.a, 4, "initViewData:getFeedListRequestRsp_" + this.a.a() + ",state:" + paramvup.a());
-    }
-    this.a.a(paramvup);
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramArrayList.clone());
+    this.b = ((ArrayList)paramArrayList1.clone());
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public vjj a()
+  {
+    return new vjj(this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_Int);
   }
 }
 

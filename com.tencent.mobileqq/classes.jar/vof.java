@@ -1,68 +1,38 @@
-import com.tencent.TMG.utils.QLog;
-import java.lang.ref.SoftReference;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment.5;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.Result;
+import feedcloud.FeedCloudRead.StClearCountRsp;
 
 public class vof
+  implements aaav<FeedCloudRead.StClearCountRsp>
 {
-  public static final String a;
-  private static volatile vof jdField_a_of_type_Vof;
-  private List<SoftReference<Object>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public vof(QCircleFolderFollowTabFragment.5 param5) {}
   
-  static
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StClearCountRsp paramStClearCountRsp)
   {
-    jdField_a_of_type_JavaLangString = vof.class.getSimpleName();
-  }
-  
-  public static vof a()
-  {
-    if (jdField_a_of_type_Vof == null) {}
-    try
+    paramString = new StringBuilder();
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      if (jdField_a_of_type_Vof == null) {
-        jdField_a_of_type_Vof = new vof();
+      paramLong = vtd.b();
+      if (this.a.a > paramLong) {
+        vtd.b(this.a.a);
       }
-      return jdField_a_of_type_Vof;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "clear all");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (paramString != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString));
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (a(paramString))
-    {
-      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString == null)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "mUinFollowMap getValue uin null");
-        return false;
+      paramString.append("[sendClearFollowTabRedPointRequest] clear outer red dot success!");
+      if (paramStClearCountRsp != null) {
+        paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
       }
-      return paramString.booleanValue();
+      paramString.append(", followTabFeedListLastPreRspTimestamp: ").append(this.a.a).append(", followTabFeedListLastRspTimestamp: ").append(paramLong);
+      QLog.d("QCircleEeveeRedPoint_" + QCircleFolderFollowTabFragment.e, 1, new Object[] { paramString });
+      return;
     }
-    return false;
+    paramString.append("[sendClearFollowTabRedPointRequest] clear outer red dot error! isSuccess : ").append(paramBoolean).append(", retCode: ").append(paramLong);
+    if (paramStClearCountRsp != null) {
+      paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
+    }
+    QLog.e("QCircleEeveeRedPoint_" + QCircleFolderFollowTabFragment.e, 1, new Object[] { paramString });
   }
 }
 

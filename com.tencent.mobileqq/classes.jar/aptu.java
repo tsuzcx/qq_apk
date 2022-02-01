@@ -1,26 +1,47 @@
-class aptu
+import android.animation.ObjectAnimator;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.widget.TextView;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+
+public class aptu
+  implements OnCompositionLoadedListener
 {
-  static final float[] a;
+  public aptu(QRScanEntryView paramQRScanEntryView) {}
   
-  static
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
+    long l = 0L;
+    if (paramLottieComposition != null)
+    {
+      l = paramLottieComposition.getDuration() + 100L;
+      Object localObject = paramLottieComposition.getBounds();
+      int i = agej.a(30.0F, this.a.getResources());
+      float f1 = i / ((Rect)localObject).width();
+      float f2 = i / ((Rect)localObject).height();
+      localObject = new LottieDrawable();
+      ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+      ((LottieDrawable)localObject).setScale(f1, f2);
+      ((LottieDrawable)localObject).playAnimation();
+      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localObject, null, null);
+    }
     for (;;)
     {
-      j = k;
-      if (i >= 8192) {
-        break;
-      }
-      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
-    }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
-      j += 90;
+      paramLottieComposition = ObjectAnimator.ofFloat(QRScanEntryView.a(this.a), "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+      paramLottieComposition.setDuration(300L);
+      paramLottieComposition.setRepeatCount(2);
+      paramLottieComposition.setStartDelay(l);
+      paramLottieComposition.start();
+      QRScanEntryView.a(this.a, QRScanEntryView.a(this.a), true, false);
+      QRScanEntryView.a(this.a, QRScanEntryView.b(this.a), false, true);
+      return;
+      QLog.e("AREngine_QRScanEntryView", 1, "loadFlashLightSVGDrawable fail, use static resource.");
+      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(0, 2130844875, 0, 0);
     }
   }
 }

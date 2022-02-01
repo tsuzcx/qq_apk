@@ -1,36 +1,37 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class advi
-  implements atve
+public class advi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  advi(advh paramadvh, FileManagerEntity paramFileManagerEntity) {}
+  public advi(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Advh.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    anjx localanjx;
-    ArrayList localArrayList;
-    do
+    boolean bool = false;
+    if (!bhnv.d(this.a))
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      AssistantSettingActivity.a(this.a, 2131694005, 1);
+      localObject = this.a;
+      if (!paramBoolean) {
+        bool = true;
       }
-      localanjx = (anjx)this.jdField_a_of_type_Advh.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localanjx.a(localArrayList));
-    atvf.a(2131692313);
-    return;
-    this.jdField_a_of_type_Advh.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      AssistantSettingActivity.b((AssistantSettingActivity)localObject, bool);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (Object localObject = "1";; localObject = "2")
+    {
+      bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A5D5", "0X800A5D5", 0, 0, (String)localObject, "", "", "");
+      this.a.a.b(paramBoolean);
+      break;
+    }
   }
-  
-  public void b() {}
 }
 
 

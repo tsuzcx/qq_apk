@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bexz;
-import beya;
-import beyc;
+import bfxt;
+import bfxu;
+import bfxw;
 import java.util.UUID;
 
 public class TroopFileUploadMgr$6$1
   implements Runnable
 {
-  public TroopFileUploadMgr$6$1(beya parambeya, UUID paramUUID, boolean paramBoolean, int paramInt, beyc parambeyc) {}
+  public TroopFileUploadMgr$6$1(bfxu parambfxu, UUID paramUUID, boolean paramBoolean, int paramInt, bfxw parambfxw) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Beya.a.a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Beyc);
+    this.jdField_a_of_type_Bfxu.a.a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bfxw);
   }
 }
 

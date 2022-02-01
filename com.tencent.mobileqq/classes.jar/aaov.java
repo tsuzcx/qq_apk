@@ -1,15 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
+import com.tencent.image.URLDrawable;
 
-class aaov
-  extends bhhe
+public class aaov
+  extends aaop
 {
-  aaov(aaor paramaaor, Bundle paramBundle) {}
+  public aaov(SubscribeQRCodeShareHelper.2.1 param1) {}
   
-  public void onDone(bhhf parambhhf)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Aaor.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
+    aaou.a(this.a.a.this$0, aaou.b(this.a.a.this$0));
   }
 }
 

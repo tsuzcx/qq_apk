@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atnj
-  extends atni
+  implements View.OnClickListener
 {
-  public atnj(atmn paramatmn)
-  {
-    super(paramatmn);
-  }
+  public atnj(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public boolean a(String paramString)
+  public void onClick(View paramView)
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {
-      return false;
-    }
-    return paramString.equals(String.valueOf(localFileManagerEntity.nSessionId));
+    QfileLocalFilePicTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

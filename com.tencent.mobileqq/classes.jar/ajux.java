@@ -1,13 +1,14 @@
-import android.os.Bundle;
+import java.util.ArrayList;
 
-class ajux
-  implements biap
+public class ajux
 {
-  ajux(ajuw paramajuw) {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public ArrayList<String> b;
+  public ArrayList<Integer> c;
+  public ArrayList<byte[]> d;
 }
 
 

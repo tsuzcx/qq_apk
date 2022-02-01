@@ -1,18 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
 
-public class ahil
-  implements bhye
+class ahil
+  extends ahkx
 {
-  public ahil(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, ahin paramahin) {}
-  
-  public void a(String paramString)
+  ahil(ahgk paramahgk)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
-    }
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agyb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

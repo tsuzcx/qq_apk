@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aftm;
+import agda;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
 import java.util.ArrayList;
 

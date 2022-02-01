@@ -1,20 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class mwf
-  implements DialogInterface.OnClickListener
+public class mwf
 {
-  mwf(mwd parammwd, Activity paramActivity, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(int paramInt1, int paramInt2)
   {
-    if (paramInt == 1)
+    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    paramInt1 = a(paramInt1, paramInt3);
+    paramInt2 = a(paramInt2, paramInt3);
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Mwd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-      return;
+      if (paramInt1 > paramInt2) {
+        return paramInt1 - paramInt2;
+      }
+      return paramInt1 + (paramInt3 - paramInt2);
     }
-    this.jdField_a_of_type_Mwd.a(this.jdField_a_of_type_AndroidAppActivity);
+    if (paramInt1 > paramInt2) {
+      return paramInt3 - paramInt1 + paramInt2;
+    }
+    return paramInt2 - paramInt1;
   }
 }
 

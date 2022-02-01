@@ -1,39 +1,36 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class zcp
-  extends zcd
+class zcp
+  implements View.OnTouchListener
 {
-  public int c;
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public zcp(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramString, paramInt2);
-    this.c = paramInt3;
-  }
+  zcp(zcn paramzcn) {}
   
-  @NonNull
-  public Class<? extends zce> a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return zcq.class;
-  }
-  
-  @NonNull
-  public zce a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new zcq(this, paramContext, paramViewGroup);
-  }
-  
-  public void a(int paramInt)
-  {
-    yqp.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
-    this.c = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

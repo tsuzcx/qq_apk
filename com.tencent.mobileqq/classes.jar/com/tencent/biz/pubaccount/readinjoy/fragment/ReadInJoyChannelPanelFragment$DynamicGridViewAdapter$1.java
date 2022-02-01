@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import por;
+import php;
 
 public class ReadInJoyChannelPanelFragment$DynamicGridViewAdapter$1
   implements Runnable
 {
-  public ReadInJoyChannelPanelFragment$DynamicGridViewAdapter$1(por parampor, TabChannelCoverInfo paramTabChannelCoverInfo) {}
+  public ReadInJoyChannelPanelFragment$DynamicGridViewAdapter$1(php paramphp, TabChannelCoverInfo paramTabChannelCoverInfo) {}
   
   public void run()
   {
-    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_Por.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
+    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_Php.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
   }
 }
 

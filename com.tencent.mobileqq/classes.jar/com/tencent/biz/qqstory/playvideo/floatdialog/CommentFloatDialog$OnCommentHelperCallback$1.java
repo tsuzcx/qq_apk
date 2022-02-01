@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import xkk;
+import xof;
 
 public class CommentFloatDialog$OnCommentHelperCallback$1
   implements Runnable
 {
-  public CommentFloatDialog$OnCommentHelperCallback$1(xkk paramxkk) {}
+  public CommentFloatDialog$OnCommentHelperCallback$1(xof paramxof) {}
   
   public void run()
   {

@@ -1,26 +1,19 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
-public abstract interface bnvg
+public final class bnvg
+  implements Parcelable.Creator<AlumBasicData>
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  public AlumBasicData a(Parcel paramParcel)
+  {
+    return new AlumBasicData(paramParcel);
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public AlumBasicData[] a(int paramInt)
+  {
+    return new AlumBasicData[paramInt];
+  }
 }
 
 

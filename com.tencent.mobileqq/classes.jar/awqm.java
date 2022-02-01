@@ -1,110 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public class awqm
-  extends aqkz<awqn>
+final class awqm
+  implements DialogInterface.OnClickListener
 {
-  public static boolean a;
-  private static boolean b;
+  awqm(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
   
-  public static boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (b) {
-      return a;
-    }
-    b = true;
-    a = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean b()
-  {
-    awqn localawqn2 = (awqn)aqlk.a().a(522);
-    awqn localawqn1 = localawqn2;
-    if (localawqn2 == null)
-    {
-      localawqn2 = new awqn();
-      localawqn1 = localawqn2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData = null, general new bean, so switch default");
-        localawqn1 = localawqn2;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData switch isOpened = " + localawqn1);
-    }
-    return localawqn1.a();
-  }
-  
-  @NonNull
-  public awqn a(int paramInt)
-  {
-    return new awqn();
-  }
-  
-  @Nullable
-  public awqn a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackupConfigProcessor", 2, "onParsed : " + paramArrayOfaqlg[0].a);
-      }
-      return awqn.a(paramArrayOfaqlg[0].a);
-    }
-    return new awqn();
-  }
-  
-  public void a(awqn paramawqn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onUpdate : " + paramawqn);
-    }
-    if (paramawqn != null) {
-      a = paramawqn.a();
-    }
-  }
-  
-  public Class<awqn> clazz()
-  {
-    return awqn.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onReqFailed : " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 522;
+    awtg.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    bdll.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
   }
 }
 

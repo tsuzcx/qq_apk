@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atdm;
-import atdo;
+import atvg;
+import atvi;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileUploader$3
   implements Runnable
 {
-  public FileUploader$3(atdm paramatdm) {}
+  public FileUploader$3(atvg paramatvg) {}
   
   public void run()
   {
-    if (atdm.a(this.this$0)) {
+    if (atvg.a(this.this$0)) {
       return;
     }
-    QLog.i("FtnHttpUploader<FileAssistant>", 1, "Id[" + atdm.b(this.this$0) + "] resend");
-    if (atdm.a(this.this$0) != null) {
-      atdm.a(this.this$0).i();
+    QLog.i("FtnHttpUploader<FileAssistant>", 1, "Id[" + atvg.b(this.this$0) + "] resend");
+    if (atvg.a(this.this$0) != null) {
+      atvg.a(this.this$0).i();
     }
-    atdm.a(this.this$0, 0L);
-    atdm.a(this.this$0, 0L);
+    atvg.a(this.this$0, 0L);
+    atvg.a(this.this$0, 0L);
   }
 }
 

@@ -1,32 +1,19 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
 
 public class aftd
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public aftd(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
+  public aftd(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2002)
-    {
-      if (paramBoolean) {}
-      try
-      {
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
-      }
-      this.a.b(3, "system error");
-      return;
-    }
+    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,29 +1,20 @@
-import android.app.Activity;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.7.1;
 
 public class bouv
-  implements bpna
+  implements View.OnClickListener
 {
-  public bouv(StaticStickerProviderView paramStaticStickerProviderView, Activity paramActivity) {}
+  bouv(boun paramboun) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    yqp.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
-    ((boom)bojv.a(4)).a(true, this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public void a(String paramString)
-  {
-    yqp.b("StaticStickerProviderView", "用户点击下载：" + paramString);
-    yqv.b("0X80075DD");
-    if (!((bpja)wpm.a(39)).a(paramString, true)) {
-      yqp.d("StaticStickerProviderView", "用户点击下载启动失败");
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    yqp.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
+    bozr.a().ak();
+    boun.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.7.1(this), 200L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

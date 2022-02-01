@@ -1,17 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.widget.ParticipleView;
+import java.util.ArrayList;
 
 public class bhzc
-  extends AnimatorListenerAdapter
 {
-  public bhzc(ParticipleView paramParticipleView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ParticipleView.a(this.a, 1.0F);
-    this.a.invalidate();
-  }
+  public int a;
+  public String a;
+  public ArrayList<bhzd> a = new ArrayList();
 }
 
 

@@ -1,20 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
 public class aayb
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aayb(SingleLyricView paramSingleLyricView) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(f);
-    }
-  }
+  public aayb(PluginJumpManager paramPluginJumpManager) {}
 }
 
 

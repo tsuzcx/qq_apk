@@ -1,15 +1,27 @@
-import android.graphics.RectF;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tgf
-  implements tgi
+  extends tgb
 {
-  public tgf(UCropView paramUCropView) {}
-  
-  public void a(RectF paramRectF)
+  tgf(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    UCropView.a(this.a).setCropRect(paramRectF);
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      paramString1.putExtra("uin", paramString3);
+      paramString1.putExtra("uintype", 0);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
+    }
   }
 }
 

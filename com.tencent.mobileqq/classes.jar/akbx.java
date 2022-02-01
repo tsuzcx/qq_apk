@@ -1,17 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class akbx
-  implements View.OnClickListener
+  implements aefo
 {
-  public akbx(BaseActivityView paramBaseActivityView) {}
+  public akbx(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void a(Activity paramActivity)
   {
-    this.a.f();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQToast.a(paramActivity, 2, 2131691327, 0).b(this.a.getActivity().getTitleBarHeight());
+    paramActivity.setResult(-1);
+    paramActivity.finish();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
   }
 }
 

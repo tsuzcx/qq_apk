@@ -1,10 +1,18 @@
-public abstract interface sgh
+import android.util.Pair;
+import java.net.URL;
+
+public class sgh
 {
-  public abstract void onHeadsetStateChanged(boolean paramBoolean);
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public abstract void onPhoneCome();
-  
-  public abstract void onSystemVolumeChanged(int paramInt);
+  public static sgh a(URL paramURL, Pair<Integer, Integer> paramPair)
+  {
+    sgh localsgh = new sgh();
+    localsgh.jdField_a_of_type_JavaNetURL = paramURL;
+    localsgh.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localsgh;
+  }
 }
 
 

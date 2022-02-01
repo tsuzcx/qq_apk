@@ -1,34 +1,32 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import eipc.EIPCResult;
+import org.json.JSONObject;
 
-public class bmcc
-  extends Handler
+class bmcc
+  extends VasQuickUpdateManager.CallBacker
 {
-  public bmcc(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
+  int jdField_a_of_type_Int;
+  
+  bmcc(bmcb parambmcb, int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
+    if ((paramInt1 == 0) && (paramLong == 1000L) && ("vipComic_config_v2.json".equals(paramString1)))
     {
-      if (PanoramaLoadingBall.a(this.a)) {
-        PanoramaLoadingBall.a(this.a, 60.0F);
-      }
-      if (PanoramaLoadingBall.a(this.a) == 0) {
-        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
+      paramString1 = VasQuickUpdateManager.getJSONFromLocal(BaseApplicationImpl.getApplication().getRuntime(), paramString1, false, null);
+      if (paramString1 != null)
+      {
+        paramString2 = new Bundle();
+        paramString2.putString("config_json", paramString1.toString());
+        this.jdField_a_of_type_Bmcb.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramString2));
       }
     }
-    else
-    {
-      return;
-    }
-    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
   }
 }
 

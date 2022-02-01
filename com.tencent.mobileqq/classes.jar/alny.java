@@ -1,15 +1,19 @@
-class alny
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.URLThemeImageView;
+
+public class alny
+  extends alnv
 {
-  public int a;
-  public long a;
-  public int b;
-  
-  public alny(long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt1;
-  }
+  public View a;
+  public TextView a;
+  public DragTextView a;
+  public URLThemeImageView a;
+  public TextView b;
+  public URLThemeImageView b;
+  public TextView c;
+  public TextView d;
 }
 
 

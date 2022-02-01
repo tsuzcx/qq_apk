@@ -1,72 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.GetFlagInfoRsp;
-import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.RspBody;
-import tencent.kandian.flaginfo.flag_info.FlagInfo;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class pyj
-  extends niv
+  implements View.OnClickListener
 {
-  pyj(pyi parampyi) {}
+  pyj(pyi parampyi, ppu paramppu, Context paramContext, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    int k = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = new oidb_0xe1b.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.msg_get_flag_info_rsp.has()) || (!paramBundle.msg_get_flag_info_rsp.rpt_msg_flag_info_list.has())) {
-          break;
-        }
-        paramArrayOfByte = ((oidb_0xe1b.GetFlagInfoRsp)paramBundle.msg_get_flag_info_rsp.get()).rpt_msg_flag_info_list.get();
-        int j = i;
-        if (paramArrayOfByte != null)
-        {
-          j = i;
-          if (!paramArrayOfByte.isEmpty())
-          {
-            i = 0;
-            paramInt = k;
-            j = paramInt;
-            if (i < paramArrayOfByte.size())
-            {
-              paramBundle = (flag_info.FlagInfo)paramArrayOfByte.get(i);
-              if (paramBundle == null) {
-                break label178;
-              }
-              paramInt = paramBundle.uint32_teenager_flag.get();
-              break label178;
-            }
-          }
-        }
-        if (j != 0) {
-          break label168;
-        }
-        bmqa.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
-        return;
-      }
-      catch (Exception paramArrayOfByte) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SelfInfoModule", 2, "updateSelfYoungsterModeSetting failed.");
-      return;
-      label168:
-      bmqa.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
-      return;
-      label178:
-      i += 1;
-    }
+    pzv.a(this.jdField_a_of_type_Ppu.a(), this.jdField_a_of_type_AndroidContentContext);
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Ppu.a();
+    String str1 = String.valueOf(ozs.a(this.jdField_a_of_type_Ppu.a(), this.jdField_a_of_type_Int));
+    String str2 = ozs.a(localArticleInfo.mAlgorithmID, ozs.a(localArticleInfo), 70, 0, 0, bhnv.h(this.jdField_a_of_type_AndroidContentContext), str1, null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+    ocd.a(null, str1, "0X8009355", "0X8009355", 0, 0, localArticleInfo.mFeedId + "", String.valueOf(localArticleInfo.businessId), String.valueOf(localArticleInfo.mAlgorithmID), str2, false);
+    ubg.a(localArticleInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

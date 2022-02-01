@@ -2,6 +2,7 @@ package com.tencent.tbs.reader;
 
 public abstract interface ITbsReader
 {
+  public static final int OPEN_FILEREADER_ASYNC_LOAD_READER_ENTRY_CALLBACK = 16;
   public static final int OPEN_FILEREADER_CORE_CALLBACK = 14;
   public static final int OPEN_FILEREADER_ERRORCODE_CAN_NOT_OPEN = 10000;
   public static final int OPEN_FILEREADER_ERRORCODE_CAN_NOT_SUPPORTED = 10001;

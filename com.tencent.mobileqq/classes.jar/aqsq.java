@@ -1,53 +1,40 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.content.Context;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aqsq
+  implements aqsi
 {
-  public List<aqss> a = new ArrayList();
-  
-  public static aqsq a(String paramString)
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    aqsq localaqsq = new aqsq();
     try
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("QRCodeList"))
+      paramColorNote = paramColorNote.getReserve();
+      if (paramColorNote == null) {
+        return;
+      }
+      paramColorNote = (SubscribeColorNoteReserveBean)aanc.a(paramColorNote);
+      if (paramColorNote != null)
       {
-        paramString = paramString.optJSONArray("QRCodeList");
-        Type localType = new aqsr().getClass().getGenericSuperclass();
-        localaqsq.a.addAll(avnn.a(paramString, localType));
-        if (localaqsq.a.size() > 0)
-        {
-          paramString = new aqss();
-          paramString.jdField_a_of_type_JavaLangString = "default_bg";
-          paramString.c = 1;
-          paramString.jdField_b_of_type_Int = 0;
-          paramString.jdField_a_of_type_Int = 0;
-          paramString.jdField_b_of_type_JavaLangString = "";
-          localaqsq.a.add(paramString);
-        }
+        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+        localStFeed.mergeFrom(paramColorNote.feedData);
+        QLog.d("SubscribeColorNoteLauncher", 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
+        aaej.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QrCodeDisplay.QrCodeConfBean", 2, "parse: " + localaqsq.a.size());
-      }
-      return localaqsq;
     }
-    catch (JSONException paramString)
+    catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,10 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "shouldShowStudyModeSwitchDialog", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bdcq
+public abstract interface bdcq
 {
-  public final boolean a()
-  {
-    Object localObject = aqlk.a().a(619);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
-    return ((bdcr)localObject).a();
-  }
+  public abstract void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(long paramLong, int paramInt1, float paramFloat1, float paramFloat2, int paramInt2);
+  
+  public abstract boolean a(long paramLong, int paramInt);
 }
 
 

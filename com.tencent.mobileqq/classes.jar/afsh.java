@@ -1,25 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public class afsh
-  implements Handler.Callback
+class afsh
+  implements DialogInterface.OnClickListener
 {
-  public afsh(ActivateFriendActivity paramActivateFriendActivity) {}
+  afsh(afsf paramafsf, bhpc parambhpc) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null) {
-        ActivateFriendActivity.a(this.a).e();
-      }
-    }
+    bdll.b(this.jdField_a_of_type_Afsf.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afsf.a.a, "", "", "");
+    this.jdField_a_of_type_Bhpc.cancel();
   }
 }
 

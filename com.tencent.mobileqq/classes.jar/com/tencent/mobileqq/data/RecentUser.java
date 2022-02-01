@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import alej;
-import alem;
-import alen;
+import alqb;
+import alqe;
+import alqf;
 import android.database.Cursor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -35,7 +35,7 @@ public class RecentUser
   
   public void doParse()
   {
-    this.msg = alen.a(this.msgType, this.msgData);
+    this.msg = alqf.a(this.msgType, this.msgData);
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -86,7 +86,7 @@ public class RecentUser
   
   public void prewrite()
   {
-    this.msgData = alen.a(this.msgType, this.msg);
+    this.msgData = alqf.a(this.msgType, this.msg);
     super.prewrite();
   }
   
@@ -97,7 +97,7 @@ public class RecentUser
     }
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = ((alem)paramQQAppInterface.getManager(366)).a(this.msgType);
+      paramQQAppInterface = ((alqe)paramQQAppInterface.getManager(366)).a(this.msgType);
       if (paramQQAppInterface != null) {
         return paramQQAppInterface.a();
       }

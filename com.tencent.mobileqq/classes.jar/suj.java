@@ -1,23 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.12.1;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class suj
-  implements View.OnClickListener
+final class suj
+  implements Comparator<byte[]>
 {
-  public suj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void onClick(View paramView)
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    ReadinjoyTabFrame.a(this.a).postDelayed(new ReadinjoyTabFrame.12.1(this, paramView), 300L);
-    if ((!RecommendFeedsDiandianEntranceManager.a().a()) && (!bmqa.s())) {
-      RecommendFeedsDiandianEntranceManager.a().c();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
 }
 

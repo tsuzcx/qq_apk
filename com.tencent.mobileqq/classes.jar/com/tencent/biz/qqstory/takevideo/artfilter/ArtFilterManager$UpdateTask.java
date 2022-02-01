@@ -1,22 +1,22 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
 import android.text.TextUtils;
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import ywe;
-import ywg;
+import yzz;
+import zab;
 
 class ArtFilterManager$UpdateTask
   implements Runnable
 {
-  private List<ywe> jdField_a_of_type_JavaUtilList;
-  private ywg jdField_a_of_type_Ywg;
+  private List<yzz> jdField_a_of_type_JavaUtilList;
+  private zab jdField_a_of_type_Zab;
   private boolean jdField_a_of_type_Boolean;
   
-  public ArtFilterManager$UpdateTask(List<ywe> paramList, boolean paramBoolean, ywg paramywg)
+  public ArtFilterManager$UpdateTask(List<yzz> paramList, boolean paramBoolean, zab paramzab)
   {
     if (paramBoolean != null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList(paramBoolean);
@@ -25,8 +25,8 @@ class ArtFilterManager$UpdateTask
     if (localObject != null) {}
     try
     {
-      this.jdField_a_of_type_Ywg = ((ywg)localObject.clone());
-      this.jdField_a_of_type_Boolean = paramywg;
+      this.jdField_a_of_type_Zab = ((zab)localObject.clone());
+      this.jdField_a_of_type_Boolean = paramzab;
       return;
     }
     catch (CloneNotSupportedException paramList)
@@ -34,7 +34,7 @@ class ArtFilterManager$UpdateTask
       for (;;)
       {
         paramList.printStackTrace();
-        this.jdField_a_of_type_Ywg = null;
+        this.jdField_a_of_type_Zab = null;
       }
     }
   }
@@ -48,7 +48,7 @@ class ArtFilterManager$UpdateTask
     try
     {
       if (this.jdField_a_of_type_Boolean) {
-        ArtFilterManager.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Ywg);
+        ArtFilterManager.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Zab);
       }
       if (this.jdField_a_of_type_JavaUtilList != null) {
         break label827;
@@ -62,20 +62,20 @@ class ArtFilterManager$UpdateTask
     String str;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      ywe localywe = (ywe)this.jdField_a_of_type_JavaUtilList.get(i);
+      yzz localyzz = (yzz)this.jdField_a_of_type_JavaUtilList.get(i);
       if (QLog.isColorLevel()) {
-        QLog.d("ArtFilterManager", 2, "[updateFilterResource] saved artFilter:" + localywe);
+        QLog.d("ArtFilterManager", 2, "[updateFilterResource] saved artFilter:" + localyzz);
       }
-      localObject2 = ArtFilterManager.b + localywe.a();
+      localObject2 = ArtFilterManager.b + localyzz.a();
       localObject3 = new File((String)localObject2);
       if (!((File)localObject3).exists())
       {
-        File localFile = new File(ArtFilterManager.a + localywe.a());
+        File localFile = new File(ArtFilterManager.a + localyzz.a());
         if (localFile.exists())
         {
-          bool = bgmg.d(localFile.getAbsolutePath(), ((File)localObject3).getAbsolutePath());
+          bool = bhmi.d(localFile.getAbsolutePath(), ((File)localObject3).getAbsolutePath());
           if (bool) {
-            bgmg.a(localFile.getParentFile().getAbsolutePath());
+            bhmi.a(localFile.getParentFile().getAbsolutePath());
           }
           if (QLog.isColorLevel()) {
             QLog.e("ArtFilterManager", 2, "copy artfilter resource result:" + bool);
@@ -84,17 +84,17 @@ class ArtFilterManager$UpdateTask
       }
       if (!((File)localObject3).exists())
       {
-        ArtFilterManager.a(this.this$0, localywe.b, (String)localObject2, localywe.d);
+        ArtFilterManager.a(this.this$0, localyzz.b, (String)localObject2, localyzz.d);
       }
       else
       {
-        localObject3 = localywe.b();
-        if (!new File(ArtFilterManager.b + (String)localObject3 + localywe.c()).exists())
+        localObject3 = localyzz.b();
+        if (!new File(ArtFilterManager.b + (String)localObject3 + localyzz.c()).exists())
         {
           if (QLog.isColorLevel()) {
-            QLog.e("ArtFilterManager", 2, "[updateFilterResource] zip exist but resource not exist:" + localywe.a());
+            QLog.e("ArtFilterManager", 2, "[updateFilterResource] zip exist but resource not exist:" + localyzz.a());
           }
-          if (TextUtils.isEmpty(localywe.d))
+          if (TextUtils.isEmpty(localyzz.d))
           {
             this.this$0.a((String)localObject2);
           }
@@ -110,24 +110,24 @@ class ArtFilterManager$UpdateTask
               if (QLog.isColorLevel()) {
                 QLog.d("ArtFilterManager", 2, "[updateFilterResource] checkMd5 failed: " + (String)localObject2);
               }
-              bgmg.d((String)localObject2);
+              bhmi.d((String)localObject2);
             }
           }
         }
       }
     }
-    else if (this.jdField_a_of_type_Ywg != null)
+    else if (this.jdField_a_of_type_Zab != null)
     {
-      str = this.jdField_a_of_type_Ywg.b();
+      str = this.jdField_a_of_type_Zab.b();
       localObject2 = new File(str);
       if (!((File)localObject2).exists())
       {
-        localObject3 = new File(ArtFilterManager.a + this.jdField_a_of_type_Ywg.d());
+        localObject3 = new File(ArtFilterManager.a + this.jdField_a_of_type_Zab.d());
         if (((File)localObject3).exists())
         {
-          bool = bgmg.d(((File)localObject3).getAbsolutePath(), ((File)localObject2).getAbsolutePath());
+          bool = bhmi.d(((File)localObject3).getAbsolutePath(), ((File)localObject2).getAbsolutePath());
           if (bool) {
-            bgmg.a(((File)localObject3).getParentFile().getAbsolutePath());
+            bhmi.a(((File)localObject3).getParentFile().getAbsolutePath());
           }
           if (QLog.isColorLevel()) {
             QLog.e("ArtFilterManager", 2, "copy loading resource result:" + bool);
@@ -137,7 +137,7 @@ class ArtFilterManager$UpdateTask
       if (((File)localObject2).exists()) {
         break label635;
       }
-      ArtFilterManager.a(this.this$0, this.jdField_a_of_type_Ywg.c, str, this.jdField_a_of_type_Ywg.b);
+      ArtFilterManager.a(this.this$0, this.jdField_a_of_type_Zab.c, str, this.jdField_a_of_type_Zab.b);
     }
     label822:
     label827:
@@ -149,7 +149,7 @@ class ArtFilterManager$UpdateTask
       label631:
       return;
       label635:
-      localObject2 = new File(this.jdField_a_of_type_Ywg.c());
+      localObject2 = new File(this.jdField_a_of_type_Zab.c());
       if ((!((File)localObject2).exists()) || (!((File)localObject2).isDirectory()))
       {
         if (!QLog.isColorLevel()) {
@@ -163,12 +163,12 @@ class ArtFilterManager$UpdateTask
           break label847;
         }
         localObject2 = this.this$0.a(str);
-        if (this.jdField_a_of_type_Ywg.b.equalsIgnoreCase((String)localObject2))
+        if (this.jdField_a_of_type_Zab.b.equalsIgnoreCase((String)localObject2))
         {
           this.this$0.a(str);
           break label631;
           localObject2 = ((File)localObject2).listFiles();
-          if ((localObject2 != null) && (localObject2.length == this.jdField_a_of_type_Ywg.a)) {
+          if ((localObject2 != null) && (localObject2.length == this.jdField_a_of_type_Zab.a)) {
             break label822;
           }
           if (!QLog.isColorLevel()) {
@@ -180,7 +180,7 @@ class ArtFilterManager$UpdateTask
         if (QLog.isColorLevel()) {
           QLog.d("ArtFilterManager", 2, "[updateFilterResource] check loading Md5 failed: " + str);
         }
-        bgmg.d(str);
+        bhmi.d(str);
         break label631;
         i = 0;
         continue;

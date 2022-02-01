@@ -1,24 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.capture.view.ProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bouh
-  implements Animation.AnimationListener
+class bouh
+  implements View.OnClickListener
 {
-  public bouh(QIMProviderContainerView paramQIMProviderContainerView) {}
+  bouh(bouf parambouf) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QIMProviderContainerView.a(this.a) != null)
-    {
-      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
-      QIMProviderContainerView.a(this.a).setVisibility(0);
-    }
+    bozr.a().ai();
+    bouf.a(this.a, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

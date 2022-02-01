@@ -1,83 +1,51 @@
-import com.tencent.open.base.BspatchUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class amjm
-  extends bhhe
+public class amjm
+  extends Handler
 {
-  amjm(amjl paramamjl, File paramFile, amjo paramamjo) {}
+  public amjm(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onDone(bhhf parambhhf)
+  public void handleMessage(Message paramMessage)
   {
-    super.onDone(parambhhf);
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch task.getStatus:" + parambhhf.a());
-    }
-    if (3 == parambhhf.a())
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
+    default: 
+    case 8193: 
+    case 8194: 
+      do
       {
-        String str = this.jdField_a_of_type_Amjo.e();
-        parambhhf = this.jdField_a_of_type_Amjo.c();
-        if (BspatchUtil.a(str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), parambhhf))
+        do
         {
+          do
+          {
+            return;
+            if (QQSpecialFriendSettingActivity.a(this.a) == null)
+            {
+              QQSpecialFriendSettingActivity.a(this.a, new bjbs(this.a, this.a.getTitleBarHeight()));
+              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
+              }
+            }
+          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
           try
           {
-            str = bita.a(parambhhf);
-            if (QLog.isColorLevel()) {
-              QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadZipAndPatch onDone dstMd5:" + str + " result.mMd5:" + this.jdField_a_of_type_Amjo.d);
-            }
-            if (amjl.a(this.jdField_a_of_type_Amjo, str))
-            {
-              if (amjl.a(this.jdField_a_of_type_Amjo))
-              {
-                nmk.a(new File(parambhhf), this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-                if (QLog.isColorLevel()) {
-                  QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " dstpath:" + parambhhf);
-                }
-              }
-              for (;;)
-              {
-                amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int, this.jdField_a_of_type_Amjo);
-                return;
-                boolean bool = bgmg.d(parambhhf, this.jdField_a_of_type_Amjo.b() + this.jdField_a_of_type_Amjo.jdField_e_of_type_JavaLangString);
-                QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch no need unzip copy:" + bool);
-              }
-            }
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambhhf.getMessage());
-          }
-          catch (Exception parambhhf)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambhhf.getMessage());
-            return;
-            QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-            amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo);
+            QQSpecialFriendSettingActivity.a(this.a).show();
             return;
           }
-          catch (OutOfMemoryError parambhhf)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (!QLog.isColorLevel()) {
-              return;
-            }
-          }
-        }
-        else
-        {
-          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo);
-        }
-      }
-      else
-      {
-        amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo);
-        QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile no exist path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambhhf.a());
-      }
+          catch (Exception paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+        return;
+      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
+      QQSpecialFriendSettingActivity.a(this.a).dismiss();
+      QQSpecialFriendSettingActivity.a(this.a, null);
+      return;
     }
-    else {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambhhf.a());
-    }
+    QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,48 +1,48 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
 import android.graphics.Bitmap;
-import bprn;
-import bpro;
-import bqer;
+import bqti;
+import bqtj;
+import brgc;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import zkh;
+import zoc;
 
 public class VideoFrameLoader$2
   implements Runnable
 {
-  public VideoFrameLoader$2(bprn parambprn, int paramInt, Bitmap paramBitmap) {}
+  public VideoFrameLoader$2(bqti parambqti, int paramInt, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int != bprn.a(this.this$0).size()) && (QLog.isColorLevel())) {
+    if ((this.jdField_a_of_type_Int != bqti.a(this.this$0).size()) && (QLog.isColorLevel())) {
       QLog.d("VideoFrameLoader", 2, "onloadframe index error!");
     }
     Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
     Object localObject;
-    if (bprn.a(this.this$0))
+    if (bqti.a(this.this$0))
     {
       localObject = localBitmap;
-      if (bprn.b(this.this$0)) {
-        localObject = zkh.a(localBitmap, -bprn.a(this.this$0));
+      if (bqti.b(this.this$0)) {
+        localObject = zoc.a(localBitmap, -bqti.a(this.this$0));
       }
-      if (bprn.a(this.this$0) == null)
+      if (bqti.a(this.this$0) == null)
       {
-        bprn.a(this.this$0, new bqer());
-        bprn.a(this.this$0).a(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+        bqti.a(this.this$0, new brgc());
+        bqti.a(this.this$0).a(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       }
-      localBitmap = bprn.a(this.this$0, bprn.a(this.this$0), (Bitmap)localObject, bprn.b(this.this$0));
+      localBitmap = bqti.a(this.this$0, bqti.a(this.this$0), (Bitmap)localObject, bqti.b(this.this$0));
     }
     for (;;)
     {
-      bprn.a(this.this$0).add(localBitmap);
+      bqti.a(this.this$0).add(localBitmap);
       localObject = null;
-      if (bprn.a(this.this$0) != null) {
-        localObject = (bpro)bprn.a(this.this$0).get();
+      if (bqti.a(this.this$0) != null) {
+        localObject = (bqtj)bqti.a(this.this$0).get();
       }
       if (localObject != null) {
-        ((bpro)localObject).a(this.jdField_a_of_type_Int, localBitmap);
+        ((bqtj)localObject).a(this.jdField_a_of_type_Int, localBitmap);
       }
       return;
     }

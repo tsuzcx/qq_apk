@@ -23,19 +23,15 @@ public abstract interface IMiniAppContext
   
   public abstract MiniAppInfo getMiniAppInfo();
   
-  public abstract byte[] getNativeBuffer(int paramInt);
-  
   public abstract boolean isMiniGame();
   
   public abstract boolean isOrientationLandscape();
-  
-  public abstract int newNativeBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
   public abstract <T> T performAction(Action<T> paramAction);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.IMiniAppContext
  * JD-Core Version:    0.7.0.1
  */

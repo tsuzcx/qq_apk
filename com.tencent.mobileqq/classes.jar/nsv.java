@@ -1,30 +1,28 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class nsv
-  implements bkhw
+  implements TVK_SDKMgr.InstallListener
 {
-  public nsv(AccountDetailActivity paramAccountDetailActivity) {}
+  public nsv(AccountDetailVideoManager.5 param5) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (this.a.o) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
     }
-    this.a.o = true;
-    switch (paramInt)
-    {
+    nsr.a = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
     }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.F();
-      continue;
-      AccountDetailActivity.d(this.a);
-    }
+    nsr.a = true;
   }
 }
 

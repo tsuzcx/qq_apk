@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-public final class pht
-  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
+class pht
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
-  {
-    return new AladdinConfigServlet.ConfigResult(paramParcel);
-  }
+  pht(phs paramphs) {}
   
-  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
+  public boolean onPreDraw()
   {
-    return new AladdinConfigServlet.ConfigResult[paramInt];
+    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
+    Object localObject = new int[2];
+    localView.getLocationOnScreen((int[])localObject);
+    localObject = this.a.a.a(phs.a(this.a), (int[])localObject);
+    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
+    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(phs.a(this.a));
+    return false;
   }
 }
 

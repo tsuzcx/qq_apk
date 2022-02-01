@@ -4,17 +4,11 @@ import android.content.DialogInterface.OnClickListener;
 class afdf
   implements DialogInterface.OnClickListener
 {
-  afdf(afdc paramafdc) {}
+  afdf(afde paramafde) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Bgpa.cancel();
-      this.a.b = true;
-      afdc.a(this.a);
-      this.a.b();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

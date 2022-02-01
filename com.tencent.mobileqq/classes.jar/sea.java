@@ -1,6 +1,34 @@
-public abstract interface sea
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class sea
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public sea(KandianProgressView paramKandianProgressView) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_a_of_type_Seb == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131365363: 
+      case 2131365379: 
+        this.a.jdField_a_of_type_Seb.a(this.a.jdField_a_of_type_AndroidOsBundle);
+        break;
+      case 2131376594: 
+      case 2131376602: 
+        this.a.jdField_a_of_type_Seb.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+      }
+    }
+  }
 }
 
 

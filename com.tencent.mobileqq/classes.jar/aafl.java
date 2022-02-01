@@ -1,28 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.comment.CommentView;
-import com.tencent.biz.subscribe.comment.ReplyContainer;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class aafl
-  implements View.OnClickListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public aafl(CommentView paramCommentView) {}
+  public aafl(SubScribeSwipeRefreshLayout paramSubScribeSwipeRefreshLayout) {}
   
-  public void onClick(View paramView)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
+    switch (paramMotionEvent.getAction())
     {
-      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
-      this.a.jdField_a_of_type_Aafm.b.setVisibility(8);
-      this.a.jdField_a_of_type_Aafm.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return true;
+        i = (int)(paramMotionEvent.getX() + 0.5F);
+        j = (int)(paramMotionEvent.getY() + 0.5F);
+      } while (SubScribeSwipeRefreshLayout.a(this.a) == null);
+      SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
+    } while (!SubScribeSwipeRefreshLayout.a(this.a).contains(i, j));
+    return false;
   }
 }
 

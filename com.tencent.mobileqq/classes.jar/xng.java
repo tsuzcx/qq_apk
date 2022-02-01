@@ -1,93 +1,40 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.ArrayList;
-import java.util.List;
-
 public class xng
-  extends xlt
-  implements IEventReceiver
+  extends xms
 {
-  private long jdField_a_of_type_Long;
-  private VideoCoverListBar jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
-  private xis jdField_a_of_type_Xis;
-  private xnj jdField_a_of_type_Xnj;
-  private volatile boolean b;
-  private boolean c;
-  private boolean d;
+  public int a;
+  public wvn a;
+  public boolean a;
+  public String c = "";
+  public String d = "";
   
-  public xng(@NonNull ViewGroup paramViewGroup)
+  public xng(String paramString)
   {
-    super(paramViewGroup);
+    super(paramString);
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  static xng a(wvn paramwvn)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131380616));
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
-  }
-  
-  public void a(int paramInt, xiy paramxiy, @NonNull ArrayList<xne> paramArrayList)
-  {
-    yqp.a("VideoCoverListGroupHolder", "onBind() pos=%d, group=%s", Integer.valueOf(paramInt), paramxiy);
-    boolean bool = this.jdField_a_of_type_Boolean;
-    super.a(paramInt, paramxiy, paramArrayList);
-    if (!bool)
+    xng localxng = new xng(paramwvn.jdField_a_of_type_JavaLangString);
+    localxng.jdField_a_of_type_Wvn = paramwvn;
+    if (paramwvn.jdField_a_of_type_Int == 12)
     {
-      this.d = true;
-      if (this.jdField_a_of_type_Xnj == null) {
-        this.jdField_a_of_type_Xnj = new xnj(this);
-      }
-      wfo.a().registerSubscriber("", this.jdField_a_of_type_Xnj);
+      localxng.d = paramwvn.e;
+      localxng.c = paramwvn.i;
     }
-    if ((paramxiy.c()) || (paramxiy.b())) {}
-    int i;
-    do
-    {
-      return;
-      i = this.jdField_a_of_type_Xis.a().size();
-      this.jdField_a_of_type_Xis.a(paramInt, paramArrayList, paramxiy.a);
-    } while (i == this.jdField_a_of_type_Xis.a().size());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
+    return localxng;
   }
   
-  public void a(String paramString)
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(paramString);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Xis = new xis(a().mUIStyle.showVideoCoverList);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(this.jdField_a_of_type_Xis);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnVideoClickListener(new xnh(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnScrollListener(new xni(this));
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Xnj != null)
-    {
-      this.d = false;
-      wfo.a().unRegisterSubscriber(this.jdField_a_of_type_Xnj);
+    if (this.jdField_a_of_type_Wvn != null) {
+      return this.jdField_a_of_type_Wvn.jdField_a_of_type_JavaLangString;
     }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void d()
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.b();
-  }
-  
-  public boolean isValidate()
-  {
-    return this.d;
+    return (this.jdField_a_of_type_Wvn != null) && (this.jdField_a_of_type_Wvn.jdField_a_of_type_Int == 12);
   }
 }
 

@@ -1,8 +1,21 @@
-public abstract interface aatt
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+class aatt
+  extends aaty
 {
-  public abstract void a();
+  aatt(aato paramaato, long paramLong, aatl paramaatl, File paramFile)
+  {
+    super(paramaato.a);
+  }
   
-  public abstract void b();
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    this.jdField_a_of_type_Aatl.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
+  }
 }
 
 

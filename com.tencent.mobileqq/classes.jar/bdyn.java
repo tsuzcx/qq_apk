@@ -1,18 +1,56 @@
-class bdyn
-  extends anqd
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+
+public class bdyn
+  extends bdyr
 {
-  bdyn(bdyk parambdyk) {}
+  private Paint a;
+  private String b = "";
+  private int g = 20;
+  private int h = -1;
   
-  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
+  public bdyn(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramanqe);
-    if (paramBoolean)
-    {
-      this.a.e();
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    e(paramInt1);
+    f(paramInt2);
+    a(paramSpriteGLView, paramString);
+  }
+  
+  public void a(SpriteGLView paramSpriteGLView, String paramString)
+  {
+    if (paramString.equals(this.b)) {
       return;
     }
-    this.a.d();
+    this.b = paramString;
+    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(paramString);
+    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
+    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Bdyu != null) {
+      this.jdField_a_of_type_Bdyu.c();
+    }
+    this.jdField_a_of_type_Bdyu = new bdyu(paramSpriteGLView, paramString);
+    g();
+    f();
+  }
+  
+  public void e(int paramInt)
+  {
+    this.h = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+  }
+  
+  public void f(int paramInt)
+  {
+    this.g = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
   }
 }
 

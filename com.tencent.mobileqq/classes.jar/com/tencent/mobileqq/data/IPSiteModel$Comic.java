@@ -3,13 +3,13 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import argy;
+import arwn;
 import java.util.List;
 
 public class IPSiteModel$Comic
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comic> CREATOR = new argy();
+  public static final Parcelable.Creator<Comic> CREATOR = new arwn();
   public List<IPSiteModel.ComicRich> comicRiches;
   public int comicType;
   public String cover;

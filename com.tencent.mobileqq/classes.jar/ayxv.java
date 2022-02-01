@@ -1,57 +1,55 @@
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PicPreDownloader.ScreenBroadcastReceiver.1;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import java.util.List;
 
 public class ayxv
-  extends BroadcastReceiver
+  implements anui
 {
-  public String a;
+  public void a(int paramInt, String paramString, ayzf paramayzf) {}
   
-  public ayxv(String paramString)
-  {
-    this.a = paramString;
-  }
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
   
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
+  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool = false;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
+    switch (paramInt)
     {
-      PicPreDownloader.b = PicPreDownloader.a;
-      if (!a(paramContext)) {
-        bool = true;
-      }
-      PicPreDownloader.a = bool;
-    }
-    for (;;)
-    {
-      ayxi.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a + ",lastScreenOnState:" + PicPreDownloader.b);
-      if ((PicPreDownloader.b != PicPreDownloader.a) || (PicPreDownloader.a)) {
-        break;
-      }
+    default: 
       return;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
+    case 1: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length == 2))
       {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = false;
+        a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
+        return;
       }
-      else if ("android.intent.action.USER_PRESENT".equals(paramIntent))
+      a(false, "", null);
+      return;
+    case 2: 
+      Object localObject = (Object[])paramObject;
+      if ((paramObject != null) && (localObject.length == 2))
       {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = true;
+        paramObject = (Integer)localObject[0];
+        localObject = (TranslateResult)localObject[1];
+        if (localObject != null)
+        {
+          a(paramBoolean, paramObject.intValue(), (TranslateResult)localObject);
+          return;
+        }
+        a(false, paramObject.intValue(), null);
+        return;
       }
+      a(false, -1, null);
+      return;
     }
-    ThreadManager.post(new PicPreDownloader.ScreenBroadcastReceiver.1(this), 5, null, true);
+    paramObject = (Object[])paramObject;
+    if ((paramObject != null) && (paramObject.length == 3))
+    {
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (ayzf)paramObject[2]);
+      return;
+    }
+    a(-1, "", null);
   }
 }
 

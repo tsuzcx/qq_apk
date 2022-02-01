@@ -1,31 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class pej
-  implements ValueAnimator.AnimatorUpdateListener
+public class pej
+  extends ayxl
 {
-  String jdField_a_of_type_JavaLangString = peh.a(this.jdField_a_of_type_Peh).a.commentId;
+  public pej(KandianMergeManager paramKandianMergeManager) {}
   
-  pej(peh parampeh, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if ((peh.a(this.jdField_a_of_type_Peh) == null) || (peh.a(this.jdField_a_of_type_Peh).a == null) || (this.jdField_a_of_type_JavaLangString == null))
-    {
-      peh.a(this.jdField_a_of_type_Peh, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    if (!this.jdField_a_of_type_JavaLangString.equals(peh.a(this.jdField_a_of_type_Peh).a.commentId))
-    {
-      peh.a(this.jdField_a_of_type_Peh, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    peh.a(this.jdField_a_of_type_Peh).setAlpha(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(peh.a(this.jdField_a_of_type_Peh));
+    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
+    KandianMergeManager.a(this.a);
   }
 }
 

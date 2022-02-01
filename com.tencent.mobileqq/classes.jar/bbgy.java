@@ -1,14 +1,16 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
 
-final class bbgy
-  implements ThreadFactory
+public class bbgy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  public bbgy(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    CameraCaptureButtonLayout.a(this.a, f);
   }
 }
 

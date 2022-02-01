@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahsv
-  implements DialogInterface.OnClickListener
+public class ahsv
+  implements View.OnClickListener
 {
-  ahsv(ahsd paramahsd) {}
+  public ahsv(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (!this.a.a.c())) {
-      this.a.a.f();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
+    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = bhni.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject);
+      if (localObject != null)
+      {
+        ((bhmr)localObject).b("webview");
+        ((bhmr)localObject).a("uin_type", i + "");
+        ((bhmr)localObject).a();
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

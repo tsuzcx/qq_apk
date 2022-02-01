@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.messagenotify;
 
-import yhg;
+import ylb;
 
 public class StoryMessageListActivity$3$2
   implements Runnable
 {
-  public StoryMessageListActivity$3$2(yhg paramyhg) {}
+  public StoryMessageListActivity$3$2(ylb paramylb) {}
   
   public void run()
   {

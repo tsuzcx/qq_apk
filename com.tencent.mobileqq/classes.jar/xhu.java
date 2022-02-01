@@ -1,17 +1,19 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class xhu
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class xhu
 {
-  public void onComplete(String arg1, String paramString2)
+  public int a;
+  public StoryVideoItem a;
+  public Map<String, String> a = new HashMap();
+  public final String b = "Q.qqstory.share." + getClass().getSimpleName();
+  
+  public final void a(String paramString1, String paramString2)
   {
-    synchronized ()
-    {
-      paramString2 = xht.a();
-      xht.a().post(new TVKPreloader.1.1(this, paramString2));
-      return;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      this.a.put(paramString1, paramString2);
     }
   }
 }

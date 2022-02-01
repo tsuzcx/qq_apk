@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aemd;
-import aeme;
-import aemf;
+import aevg;
+import aevh;
+import aevi;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import axdz;
-import bggp;
+import axws;
+import bhgq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -24,7 +24,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return axdz.a(getAppInterface().getAccount());
+    return axws.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -34,15 +34,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new aemd(this, paramRunnable);
-    this.b = bggp.a(this, 2131691778, a(), 2131691639, 2131691636, new aeme(this), new aemf(this));
+    paramRunnable = new aevg(this, paramRunnable);
+    this.b = bhgq.a(this, 2131691781, a(), 2131691642, 2131691639, new aevh(this), new aevi(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131691776;
+    return 2131691779;
   }
   
   public void a()
@@ -64,15 +64,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	adbo:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	adkm:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	adbo:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	adkm:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	adbo:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	adkm:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:

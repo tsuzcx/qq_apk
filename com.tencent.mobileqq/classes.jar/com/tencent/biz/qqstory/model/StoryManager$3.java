@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.model;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import wpj;
+import wte;
 
 public class StoryManager$3
   implements Runnable
 {
-  public StoryManager$3(wpj paramwpj, String paramString) {}
+  public StoryManager$3(wte paramwte, String paramString) {}
   
   public void run()
   {

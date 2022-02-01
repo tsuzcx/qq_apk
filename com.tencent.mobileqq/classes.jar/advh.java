@@ -1,63 +1,81 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HeightAdaptableListView;
 
-class advh
-  implements View.OnClickListener
+public class advh
+  implements CompoundButton.OnCheckedChangeListener
 {
-  advh(adve paramadve) {}
+  public advh(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ambt localambt = (ambt)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)localambt.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      atvo.b(localFileManagerEntity);
-    }
-    switch (localambt.jdField_a_of_type_Int)
+    int j = 1;
+    int k = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildCount();
+    int i = 0;
+    Object localObject;
+    if (i < k)
     {
+      localObject = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildAt(i);
+      if ((localObject instanceof FormSwitchItem))
+      {
+        localObject = (FormSwitchItem)localObject;
+        if (paramCompoundButton != ((FormSwitchItem)localObject).a()) {}
+      }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Ambs.notifyDataSetChanged();
-      for (;;)
+      if ((localObject == null) || (!(((FormSwitchItem)localObject).getTag() instanceof ajwh))) {}
+      ajwh localajwh;
+      boolean bool;
+      label109:
+      do
       {
-        EventCollector.getInstance().onViewClicked(paramView);
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
         return;
-        if (!bgnt.d(BaseApplication.getContext()))
-        {
-          atvf.a(2131692314);
+        i += 1;
+        break;
+        localajwh = (ajwh)((FormSwitchItem)localObject).getTag();
+        if (paramBoolean) {
+          break label267;
         }
-        else
-        {
-          atul.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new advi(this, localFileManagerEntity));
-          break;
-          this.a.a(localFileManagerEntity);
-          break;
-          if (localFileManagerEntity.getCloudType() == 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-            break;
-          }
-          if (localFileManagerEntity.getCloudType() == 6)
-          {
-            ((anjx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-          break;
-          if (bgnt.d(BaseApplication.getContext())) {
-            break label246;
-          }
-          atvf.a(2131692314);
+        bool = true;
+        localajwh.e = bool;
+        if (this.a.jdField_a_of_type_Ajwm != null) {
+          this.a.jdField_a_of_type_Ajwm.a(localajwh, localajwh.e);
+        }
+        localObject = this.a.app;
+        k = localajwh.a;
+        i = j;
+        if (localajwh.e) {
+          i = 2;
+        }
+        bdll.b((QQAppInterface)localObject, "dc00898", "", "", "0X80097A0", "0X80097A0", k, 0, String.valueOf(i), "", "", "");
+      } while (localajwh.a != 3);
+      QQAppInterface localQQAppInterface = this.a.app;
+      if (paramBoolean)
+      {
+        localObject = "0X8009C0A";
+        label227:
+        if (!paramBoolean) {
+          break label280;
         }
       }
-      label246:
-      boolean bool = localFileManagerEntity.isSend();
-      atul.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new advj(this, localFileManagerEntity));
+      label267:
+      label280:
+      for (String str = "0X8009C0A";; str = "0X8009C0B")
+      {
+        bdll.b(localQQAppInterface, "dc00898", "", "", (String)localObject, str, localajwh.a, 0, "", "", "", "");
+        break;
+        bool = false;
+        break label109;
+        localObject = "0X8009C0B";
+        break label227;
+      }
+      localObject = null;
     }
   }
 }

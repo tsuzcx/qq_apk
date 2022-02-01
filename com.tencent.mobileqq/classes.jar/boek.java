@@ -1,22 +1,14 @@
-import com.microrapid.opencv.ImageMainColorData;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import java.util.Comparator;
+import android.view.View;
 
-public class boek
-  implements Comparator<ImageMainColorData>
+final class boek
 {
-  public boek(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private bocu jdField_a_of_type_Bocu;
   
-  public int a(ImageMainColorData paramImageMainColorData1, ImageMainColorData paramImageMainColorData2)
+  public boek(bocu parambocu, View paramView)
   {
-    int i = 0;
-    if (paramImageMainColorData1.area > paramImageMainColorData2.area) {
-      i = -1;
-    }
-    while (paramImageMainColorData1.area >= paramImageMainColorData2.area) {
-      return i;
-    }
-    return 1;
+    this.jdField_a_of_type_Bocu = parambocu;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
 }
 

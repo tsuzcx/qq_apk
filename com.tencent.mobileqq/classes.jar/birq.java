@@ -1,27 +1,41 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.open.applist.QZoneAppListActivity;
-import com.tencent.open.applist.QZoneAppListActivity.1.1;
+import android.os.MessageQueue.IdleHandler;
+import java.util.ArrayList;
 
-public class birq
-  extends OnPluginInstallListener.Stub
+class birq
+  implements MessageQueue.IdleHandler
 {
-  public birq(QZoneAppListActivity paramQZoneAppListActivity) {}
+  birq(birp parambirp) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public boolean queueIdle()
   {
-    this.a.a(paramInt1 / paramInt2 * 100);
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    QZoneAppListActivity.a(this.a);
+    Object localObject;
+    int i;
+    if (!birp.a().isEmpty())
+    {
+      localObject = (birs)birp.a().remove(0);
+      i = ((birs)localObject).a();
+      if (2 == i) {
+        birp.a().add(localObject);
+      }
+    }
+    else
+    {
+      label38:
+      localObject = this.a;
+      if (birp.a().isEmpty()) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      ((birp)localObject).a = bool;
+      return this.a.a;
+      if (1 != i) {
+        break;
+      }
+      break label38;
+    }
   }
 }
 

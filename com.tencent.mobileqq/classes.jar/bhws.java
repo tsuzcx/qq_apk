@@ -1,125 +1,16 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.widget.DropdownView;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 public class bhws
-  extends AutoCompleteTextView
 {
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public bhws(DropdownView paramDropdownView, Context paramContext)
+  public bhws(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    super(paramContext);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public bhws(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    super(paramContext, paramAttributeSet);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public bhws(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
-  {
-    super(paramContext, paramAttributeSet, paramInt);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean enoughToFilter()
-  {
-    return true;
-  }
-  
-  public boolean isPopupShowing()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return super.isPopupShowing();
-    }
-    return false;
-  }
-  
-  public void onEditorAction(int paramInt)
-  {
-    if (paramInt == 5)
-    {
-      View localView = focusSearch(130);
-      if ((localView != null) && (!localView.requestFocus(130))) {
-        throw new IllegalStateException("focus search returned a view that wasn't able to take focus!");
-      }
-    }
-    else
-    {
-      super.onEditorAction(paramInt);
-    }
-  }
-  
-  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    try
-    {
-      if (isPopupShowing()) {
-        dismissDropDown();
-      }
-      return;
-    }
-    catch (Exception paramCharSequence) {}
-  }
-  
-  protected void performFiltering(CharSequence paramCharSequence, int paramInt) {}
-  
-  public void showDropDown()
-  {
-    try
-    {
-      super.showDropDown();
-      if (Build.VERSION.SDK_INT <= 8) {
-        return;
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      return;
-    }
-    try
-    {
-      Object localObject1 = getClass().getSuperclass().getDeclaredField("mDropDownList");
-      ((Field)localObject1).setAccessible(true);
-      localObject1 = ((Field)localObject1).get(this);
-      localObject1.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(0) });
-      return;
-    }
-    catch (Exception localException2)
-    {
-      try
-      {
-        Object localObject2 = getClass().getSuperclass().getDeclaredField("mPopup");
-        ((Field)localObject2).setAccessible(true);
-        localObject2 = ((Field)localObject2).get(this);
-        Object localObject3 = localObject2.getClass().getDeclaredField("mDropDownList");
-        ((Field)localObject3).setAccessible(true);
-        localObject3 = ((Field)localObject3).get(localObject2);
-        localObject3.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject3, new Object[] { Integer.valueOf(0) });
-        ((PopupWindow)localObject2).setAnimationStyle(2130772303);
-        return;
-      }
-      catch (Exception localException3) {}
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 

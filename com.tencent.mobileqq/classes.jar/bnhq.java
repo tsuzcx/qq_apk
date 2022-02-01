@@ -1,22 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraManager.8;
+import android.text.TextUtils;
 
 public class bnhq
-  implements bcit
 {
-  public bnhq(AECameraManager.8 param8) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = false;
+  private String b = "";
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+    if (!TextUtils.isEmpty(this.b))
     {
-      bnho.a(this.a.this$0, true);
-      return;
+      this.b = this.b.replaceAll("\\+86", "");
+      this.b = this.b.replaceAll("\\D", "");
     }
-    bnho.a(this.a.this$0).g();
+  }
+  
+  public String toString()
+  {
+    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
   }
 }
 

@@ -1,19 +1,25 @@
-class xpt
-  implements xpo
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xpt
+  extends QQUIEventReceiver<xpq, xbm>
 {
-  public xpo a;
-  
-  private xpt(xpr paramxpr) {}
-  
-  public boolean a(xpl paramxpl, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public xpt(@NonNull xpq paramxpq)
   {
-    if (xpr.a(this.jdField_a_of_type_Xpr) != null) {
-      xpr.a(this.jdField_a_of_type_Xpr).c(xpr.a(this.jdField_a_of_type_Xpr));
+    super(paramxpq);
+  }
+  
+  public void a(@NonNull xpq paramxpq, @NonNull xbm paramxbm)
+  {
+    yuk.b("InteractWidgetPageHolder", "receive send vid rate data result event.");
+    if (paramxpq.d()) {
+      paramxpq.a(paramxpq.jdField_a_of_type_Int, paramxpq.b, paramxpq.jdField_a_of_type_Xqz, paramxpq.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
     }
-    if (this.jdField_a_of_type_Xpo != null) {
-      return this.jdField_a_of_type_Xpo.a(paramxpl, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xbm.class;
   }
 }
 

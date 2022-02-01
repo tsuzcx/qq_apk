@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aelp;
+import aeus;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import aufz;
-import bcst;
-import bcti;
-import bihw;
+import auxu;
+import bdll;
+import bdmb;
+import bjiv;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
 import mqq.app.MobileQQ;
 
 class JumpActivity$5
@@ -26,16 +25,16 @@ class JumpActivity$5
     Object localObject2 = this.a.getString("android.intent.extra.TEXT");
     Object localObject1 = this.this$0.getIntent().getType();
     Object localObject3 = this.a.getString("pkg_name");
-    if (QSecFramework.a().a(1003).booleanValue()) {
-      bihw.a().a(this.this$0, null);
+    if (this.this$0.a().booleanValue()) {
+      bjiv.a().a(this.this$0, null);
     }
     if ("cn.wps.moffice_eng".equals(localObject3)) {
-      bcst.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
+      bdll.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
     }
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
-    bcti.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
+    bdmb.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
     if (QLog.isColorLevel()) {
       QLog.d("JumpAction", 2, "forward form JumpActivity doShare type=" + (String)localObject1);
     }
@@ -56,7 +55,7 @@ class JumpActivity$5
     {
       localObject1 = this.this$0.getIntent().getScheme();
       if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals("geo"))) {
-        break label1059;
+        break label1057;
       }
       localObject1 = new Intent();
       ((Intent)localObject1).putExtras(new Bundle());
@@ -64,7 +63,7 @@ class JumpActivity$5
       ((Intent)localObject1).putExtra("forward_from_jump", true);
       ((Intent)localObject1).putExtra("forward_type", -2);
       ((Intent)localObject1).setData(this.this$0.getIntent().getData());
-      aufz.a(this.this$0, (Intent)localObject1);
+      auxu.a(this.this$0, (Intent)localObject1);
       this.this$0.finish();
       return;
       if (!((String)localObject1).startsWith("message")) {
@@ -97,7 +96,7 @@ class JumpActivity$5
           if ((localObject2 instanceof Uri))
           {
             ((Intent)localObject1).setData((Uri)localObject2);
-            label612:
+            label610:
             ((Intent)localObject1).putExtra("sendMultiple", false);
           }
         }
@@ -110,7 +109,7 @@ class JumpActivity$5
         if ((localObject2 instanceof String))
         {
           ((Intent)localObject1).setData(Uri.parse((String)localObject2));
-          break label612;
+          break label610;
         }
         this.this$0.finish();
         return;
@@ -138,7 +137,7 @@ class JumpActivity$5
           {
             ((Intent)localObject2).putExtra("sendMultiple", false);
             ((Intent)localObject2).putExtras(this.a);
-            new aelp(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
+            new aeus(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
             return;
           }
           localObject1 = ((Uri)localObject3).getPath();
@@ -156,7 +155,7 @@ class JumpActivity$5
             }
           }
           ((Intent)localObject2).setData((Uri)localObject3);
-          label966:
+          label964:
           ((Intent)localObject2).putExtra("sendMultiple", false);
         }
       }
@@ -164,12 +163,12 @@ class JumpActivity$5
     for (;;)
     {
       ((Intent)localObject2).putExtras(this.a);
-      aufz.a(this.this$0, (Intent)localObject2);
+      auxu.a(this.this$0, (Intent)localObject2);
       break;
       if ((localObject3 instanceof String))
       {
         ((Intent)localObject2).setData(Uri.parse((String)localObject3));
-        break label966;
+        break label964;
       }
       this.this$0.finish();
       return;
@@ -178,7 +177,7 @@ class JumpActivity$5
       ((Intent)localObject2).putExtra("sendMultiple", true);
       ((Intent)localObject2).putExtra("forward_text", this.this$0.getString(2131690921));
     }
-    label1059:
+    label1057:
     this.this$0.finish();
   }
 }

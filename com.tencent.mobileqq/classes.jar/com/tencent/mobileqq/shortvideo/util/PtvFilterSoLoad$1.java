@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import bcls;
+import bdek;
 
 public final class PtvFilterSoLoad$1
   implements Runnable

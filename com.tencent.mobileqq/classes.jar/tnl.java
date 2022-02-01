@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerTriplePicItemData;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 public class tnl
-  implements bcpg
+  extends tnb
 {
-  public tnl(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
-  
-  public void a()
+  public tnl(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.saveImagePermission(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+    super(paramBaseData, paramWeakReference, localWeakReference);
   }
   
-  public void b()
+  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, "saveImage reject Permission");
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new tnm(this, paramBaseData, paramContext));
+  }
+  
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerTriplePicItemData));
   }
 }
 

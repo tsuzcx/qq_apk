@@ -14,7 +14,7 @@ final class SPBeaconReporter$1
   {
     if ((TextUtils.isEmpty(this.val$eventName)) || (this.val$copyMap.isEmpty()))
     {
-      LogUtil.e("MediaPlayerMgr.SPBeaconReporter", "report failed for eventName:" + this.val$eventName + "dataMap:" + this.val$copyMap);
+      LogUtil.e("SuperPlayer-.SPBeaconReporter", "report failed for eventName:" + this.val$eventName + "dataMap:" + this.val$copyMap);
       return;
     }
     BeaconAdapter.onUserActionToTunnel("00000U7O8S3BLETM", this.val$eventName, true, -1L, -1L, this.val$copyMap, true, true);

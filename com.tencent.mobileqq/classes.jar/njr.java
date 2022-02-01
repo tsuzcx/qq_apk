@@ -1,10 +1,20 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
+
 public class njr
+  implements View.OnTouchListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public njr(PoiMapActivity paramPoiMapActivity) {}
   
-  public njr(njo paramnjo) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
+    }
+    return true;
+  }
 }
 
 

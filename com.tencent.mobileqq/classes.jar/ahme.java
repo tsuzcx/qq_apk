@@ -1,17 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahme
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  ahme(ahmb paramahmb, afzq paramafzq) {}
+  ahme(ahlt paramahlt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Afzq.onTouch(paramView, paramMotionEvent);
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

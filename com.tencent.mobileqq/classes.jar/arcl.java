@@ -1,13 +1,4 @@
-class arcl
-  implements bosh
-{
-  arcl(arcj paramarcj) {}
-  
-  public void a(String paramString)
-  {
-    bolk.a(paramString);
-  }
-}
+public class arcl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

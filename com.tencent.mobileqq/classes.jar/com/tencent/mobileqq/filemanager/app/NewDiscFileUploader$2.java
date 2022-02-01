@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aszs;
-import auaq;
+import atrn;
+import ausl;
 
 public class NewDiscFileUploader$2
   implements Runnable
 {
-  public NewDiscFileUploader$2(aszs paramaszs) {}
+  public NewDiscFileUploader$2(atrn paramatrn) {}
   
   public void run()
   {

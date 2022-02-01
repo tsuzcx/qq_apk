@@ -1,49 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.10;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.2.1;
 
 public class alrg
-  extends aopa
+  implements Animator.AnimatorListener
 {
-  public alrg(CreateFaceToFaceDiscussionActivity.10 param10, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public alrg(CareNotificationBar.3 param3) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a.a.post(new CareNotificationBar.3.2.1(this));
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt != 0) || (paramSosoLbsInfo == null))
-    {
-      paramSosoLbsInfo = this.a.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      paramSosoLbsInfo.arg1 = 1;
-      paramSosoLbsInfo.arg2 = 2131698034;
-      paramSosoLbsInfo.sendToTarget();
-      return;
-    }
-    paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.a(this.a.this$0, paramSosoLbsInfo);
-    anqn localanqn = (anqn)this.a.this$0.app.a(33);
-    switch (this.a.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localanqn.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, this.a.this$0.b, this.a.this$0.h);
-      return;
-    case 1: 
-      localanqn.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, 2, this.a.this$0.h);
-      return;
-    case 2: 
-      localanqn.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, true);
-      return;
-    case 3: 
-      localanqn.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, false);
-      return;
-    }
-    localanqn.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

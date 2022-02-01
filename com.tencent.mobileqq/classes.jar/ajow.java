@@ -1,16 +1,30 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
 public class ajow
-  implements Cloneable
+  extends MqqHandler
 {
-  public CheckBox a;
-  public TextView a;
-  public TencentDocItem a;
-  public AsyncImageView a;
-  public TextView b;
+  public ajow(NotificationView paramNotificationView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Ajot == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Ajot.a = bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Ajot.notifyDataSetChanged();
+      return;
+    }
+    this.a.j();
+  }
 }
 
 

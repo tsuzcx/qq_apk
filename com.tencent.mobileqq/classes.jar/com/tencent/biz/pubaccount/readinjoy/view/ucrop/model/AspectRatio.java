@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.Nullable;
-import tgj;
+import sxd;
 
 public class AspectRatio
   implements Parcelable
 {
-  public static final Parcelable.Creator<AspectRatio> CREATOR = new tgj();
+  public static final Parcelable.Creator<AspectRatio> CREATOR = new sxd();
   private final float jdField_a_of_type_Float;
   @Nullable
   private final String jdField_a_of_type_JavaLangString;

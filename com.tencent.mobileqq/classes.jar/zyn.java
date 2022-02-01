@@ -1,71 +1,18 @@
-import android.app.Activity;
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.biz.richframework.part.demo.DemoBaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zyn
-  extends zyu
+class zyn
+  implements View.OnClickListener
 {
-  private BaseWidgetView a;
+  zyn(zyl paramzyl, zyr paramzyr) {}
   
-  public zyn(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super(paramBundle);
-  }
-  
-  private void a()
-  {
-    this.a.setData(null);
-    setShareData("share_key_subscribe_user", new zxs(new ExtraTypeInfo()));
-    notifyLoadingComplete(true);
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
-  {
-    this.a = new DemoBaseWidgetView(getContext());
-    return this.a;
-  }
-  
-  protected void handleBlockChange(zxu paramzxu, int paramInt)
-  {
-    super.handleBlockChange(paramzxu, paramInt);
-  }
-  
-  public void handleShareDataChange(String paramString, zxs paramzxs)
-  {
-    super.handleShareDataChange(paramString, paramzxs);
-  }
-  
-  public boolean isEnableRefresh()
-  {
-    return false;
-  }
-  
-  public void loadData(zxz paramzxz)
-  {
-    if ((paramzxz.d()) || (paramzxz.c())) {
-      a();
+    if (zyl.a(this.jdField_a_of_type_Zyl) != null) {
+      zyl.a(this.jdField_a_of_type_Zyl).b(this.jdField_a_of_type_Zyr);
     }
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    super.onActivityCreated(paramActivity, paramBundle);
-  }
-  
-  public boolean onBackEvent()
-  {
-    return super.onBackEvent();
-  }
-  
-  public void onInitBlock(Bundle paramBundle)
-  {
-    if (paramBundle != null) {}
-    ((zyk)getViewModel(zyk.class)).a().observe((QCircleBaseFragment)getParentFragment(), new zyo(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

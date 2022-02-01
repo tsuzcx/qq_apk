@@ -1,19 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
 final class bdcd
-  implements DialogInterface.OnClickListener
+  extends bdcg
 {
-  bdcd(bdby parambdby, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public double a(int paramInt1, int paramInt2)
   {
-    if ((paramDialogInterface instanceof bgpa)) {
-      ((bgpa)paramDialogInterface).setOnDismissListener(null);
+    double d2 = paramInt1 / (paramInt1 + paramInt2);
+    double d3 = paramInt2 / (paramInt1 + paramInt2);
+    double d1 = 0.0D;
+    if (paramInt1 > 0)
+    {
+      d1 = -d2;
+      d1 = 0.0D + Math.log(d2) * d1;
     }
-    bdby.a(this.jdField_a_of_type_Bdby, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
+    d2 = d1;
+    if (paramInt2 > 0) {
+      d2 = d1 + -d3 * Math.log(d3);
+    }
+    return d2 / Math.log(2.0D);
   }
 }
 

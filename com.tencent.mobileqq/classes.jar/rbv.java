@@ -1,25 +1,17 @@
-import android.os.RemoteException;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "shouldDoTaskTiming", "", "onShouldDoTaskTimingCallback"}, k=3, mv={1, 1, 16})
-final class rbv
-  implements qzb
+public class rbv
+  implements View.OnTouchListener
 {
-  rbv(rbl paramrbl) {}
+  public rbv(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public final void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      this.a.a(paramBoolean);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
-      QLog.e("RIJAidlServerRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
-    }
+    ReadInJoyUgcSearchTopicFragment.a(this.a);
+    return false;
   }
 }
 

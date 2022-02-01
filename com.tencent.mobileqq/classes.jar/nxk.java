@@ -1,28 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import java.net.URL;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class nxk
-  implements uwv
+public class nxk
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  nxk(nxj paramnxj, View paramView, ResizeURLImageView paramResizeURLImageView) {}
+  public nxk(VideoCoverView paramVideoCoverView) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Nxj.a = 3;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131370202).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366231).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366231).setOnClickListener(new nxl(this));
-  }
-  
-  public void a(URL paramURL, tds paramtds)
-  {
-    this.jdField_a_of_type_Nxj.a = 2;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131370202).setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
-    nxj.a(this.jdField_a_of_type_Nxj, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "is prepare");
+    }
+    if (VideoCoverView.a(this.a) == 1) {
+      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    bdll.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
+    nwp.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
+    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
+    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+    {
+      VideoCoverView.a(this.a).start();
+      this.a.jdField_a_of_type_Int = 4;
+      this.a.g();
+    }
   }
 }
 

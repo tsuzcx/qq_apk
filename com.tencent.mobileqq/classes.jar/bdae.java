@@ -1,76 +1,64 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.content.Intent;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bdae
-  extends bcvs
+class bdae
+  extends BroadcastReceiver
 {
-  String aa = "";
+  bdae(bdad parambdad) {}
   
-  public bdae()
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    this.a = "more";
-  }
-  
-  public bdae(String paramString)
-  {
-    this();
-    this.aa = paramString;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    paramBundle = paramView;
-    if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2131562912, null);
-    }
-    paramContext = (TextView)paramBundle.findViewById(2131377942);
-    if (TextUtils.isEmpty(this.aa)) {
-      this.aa = anni.a(2131713309);
-    }
-    paramContext.setText(this.aa);
-    return paramBundle;
-  }
-  
-  public String a()
-  {
-    return "More";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.aa = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.aa == null) {}
-    for (String str = "";; str = bbzj.a(this.aa, false))
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    for (;;)
     {
-      paramObjectOutput.writeUTF(str);
       return;
+      if (!"tencent.video.gesturemgr.notify".equals(paramIntent.getAction())) {
+        continue;
+      }
+      int i = paramIntent.getIntExtra("Event_Progress", 0);
+      if ((i == 100) || (i < 0))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+        int j = this.a.jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_Int = bdaf.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
+        {
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+          }
+          paramIntent = new ArrayList();
+        }
+        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        {
+          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          ??? = paramIntent.iterator();
+          while (???.hasNext()) {
+            ((bczz)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+          }
+          bool = false;
+        }
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
+      }
+      paramIntent = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        ??? = paramIntent.iterator();
+        if (!???.hasNext()) {
+          continue;
+        }
+        ((bczz)???.next()).a(i);
+      }
     }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "title");
-    paramXmlSerializer.text(this.aa);
-    paramXmlSerializer.endTag(null, "title");
-  }
-  
-  public boolean a(bcxj parambcxj)
-  {
-    this.aa = bbzj.a(bcwd.a(parambcxj), false);
-    return true;
   }
 }
 

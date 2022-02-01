@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
 
-class smk
-  implements View.OnClickListener
+public final class smk
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
 {
-  smk(smj paramsmj, ogr paramogr) {}
-  
-  public void onClick(View paramView)
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Ogr.j();
-    this.jdField_a_of_type_Smj.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
+  }
+  
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  {
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
   }
 }
 

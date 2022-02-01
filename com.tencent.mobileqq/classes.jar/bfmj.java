@@ -1,24 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bfmj
-  implements bkhw
+final class bfmj
+  implements DialogInterface.OnClickListener
 {
-  public bfmj(VisitorTroopCardFragment paramVisitorTroopCardFragment, bkho parambkho) {}
+  bfmj(bfmk parambfmk, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (this.jdField_a_of_type_Bkho.a(paramInt).c)
-    {
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Bfmk != null) {
+      this.jdField_a_of_type_Bfmk.a();
     }
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
+      bdll.b(null, "dc00898", "", "", "0X800B224", "0X800B224", 0, 0, "", "", "", "");
       return;
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, true, false);
-      continue;
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, true, true);
     }
+    bdll.b(null, "dc00898", "", "", "0X800B226", "0X800B226", 0, 0, "", "", "", "");
   }
 }
 

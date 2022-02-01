@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import android.widget.ImageButton;
 import com.tencent.biz.subscribe.comment.CommentEditText;
-import ufh;
+import ufj;
 
 public class WsCommentInputPopupWindow$10
   implements Runnable
 {
-  public WsCommentInputPopupWindow$10(ufh paramufh) {}
+  public WsCommentInputPopupWindow$10(ufj paramufj) {}
   
   public void run()
   {
-    ufh.a(this.this$0).setVisibility(8);
-    ufh.b(this.this$0).setVisibility(0);
-    ufh.b(this.this$0, true);
-    ufh.a(this.this$0).requestFocus();
+    ufj.a(this.this$0).setVisibility(8);
+    ufj.b(this.this$0).setVisibility(0);
+    ufj.b(this.this$0, true);
+    ufj.a(this.this$0).requestFocus();
   }
 }
 

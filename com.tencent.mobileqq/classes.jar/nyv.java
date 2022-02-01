@@ -1,14 +1,13 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class nyv
-  implements bkkn
+  implements bljb
 {
-  public nyv(PublicAccountBrowser paramPublicAccountBrowser) {}
+  public nyv(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public boolean a(int paramInt)
+  public void onDismiss()
   {
-    return (paramInt == 0) && (PublicAccountBrowser.a(this.a).getVisibility() == 0);
+    ReadInJoyNativeAdFragment.a(this.a, false);
   }
 }
 

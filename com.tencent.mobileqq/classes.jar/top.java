@@ -1,17 +1,38 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class top
-  extends tou
+  implements pye
 {
-  public top(BridgeModule paramBridgeModule)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramBridgeModule);
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    BridgeModule.access$300(this.a, paramInt1, paramInt2, paramIntent);
+    return pug.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((paramppu != null) && (paramppu.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramppu.a())))
+    {
+      paramContainer = paramContainer.findViewBaseByName("id_article_triple_image_interact");
+      if ((paramContainer != null) && ((paramContainer instanceof ttn))) {
+        ((ttn)paramContainer).a(paramppu);
+      }
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

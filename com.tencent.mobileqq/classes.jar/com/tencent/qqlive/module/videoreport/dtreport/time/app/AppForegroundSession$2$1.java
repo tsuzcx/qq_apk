@@ -1,19 +1,13 @@
 package com.tencent.qqlive.module.videoreport.dtreport.time.app;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class AppForegroundSession$2$1
   implements Runnable
 {
-  AppForegroundSession$2$1(AppForegroundSession.2 param2, String paramString, long paramLong) {}
+  AppForegroundSession$2$1(AppForegroundSession.2 param2, String paramString) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("dt_app_sessionid", this.val$sessionId);
-    localHashMap.put("dt_app_foreground_heartbeat_duration", Long.valueOf(this.val$foregroundDuration));
-    AppHeartBeatSpUtils.saveLastHeartBeat(localHashMap);
+    AppHeartBeatSpUtils.removeSessionHeartBeat(this.val$sessionId);
   }
 }
 

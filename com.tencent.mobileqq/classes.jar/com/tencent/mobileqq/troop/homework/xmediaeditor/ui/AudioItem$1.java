@@ -2,21 +2,21 @@ package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bfel;
-import bffd;
-import bmri;
+import bgef;
+import bgex;
+import bnsn;
 
 public class AudioItem$1
   implements Runnable
 {
-  public AudioItem$1(bffd parambffd, bfel parambfel) {}
+  public AudioItem$1(bgex parambgex, bgef parambgef) {}
   
   public void run()
   {
-    String str = bmri.a(this.a.b);
+    String str = bnsn.a(this.a.b);
     this.a.b(str);
     if (!TextUtils.isEmpty(str)) {
-      ((Activity)bffd.a(this.this$0)).runOnUiThread(new AudioItem.1.1(this));
+      ((Activity)bgex.a(this.this$0)).runOnUiThread(new AudioItem.1.1(this));
     }
   }
 }

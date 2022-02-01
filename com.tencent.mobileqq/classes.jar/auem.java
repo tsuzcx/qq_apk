@@ -1,48 +1,56 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class auem
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static int a(int paramInt)
   {
-    if (paramIntent != null)
+    int j = 9;
+    int i = j;
+    switch (paramInt)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    default: 
+      i = j;
     }
     for (;;)
     {
-      auen localauen = (auen)auef.a().a("sso_channel");
-      if (localauen == null) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
       }
-      localauen.a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+      return i;
+      i = 8;
+      continue;
+      i = 7;
+      continue;
+      i = 6;
+      continue;
+      i = 5;
+      continue;
+      i = 4;
     }
-    QLog.d("QFlutterFlutterServlet", 1, "ssoChannel is null");
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static void a(long paramLong)
   {
-    if (paramIntent != null)
+    int i;
+    if (paramLong < 51200L) {
+      i = 1;
+    }
+    for (;;)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      bdll.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
+      return;
+      if (paramLong < 102400L) {
+        i = 2;
+      } else if (paramLong < 512000L) {
+        i = 3;
+      } else if (paramLong < 1024000L) {
+        i = 4;
+      } else if (paramLong < 3072000L) {
+        i = 5;
+      } else if (paramLong < 10240000L) {
+        i = 6;
+      } else {
+        i = 7;
       }
     }
   }

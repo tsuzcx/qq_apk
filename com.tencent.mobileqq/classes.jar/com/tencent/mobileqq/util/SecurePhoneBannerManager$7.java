@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.util;
 
 import android.content.Context;
-import bgit;
+import bhiu;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class SecurePhoneBannerManager$7
   implements Runnable
 {
-  public SecurePhoneBannerManager$7(bgit parambgit, Context paramContext) {}
+  public SecurePhoneBannerManager$7(bhiu parambhiu, Context paramContext) {}
   
   public void run()
   {
-    QQToast.a(this.a, 2, this.a.getString(2131691863), 0).a();
+    QQToast.a(this.a, 2, this.a.getString(2131691867), 0).a();
   }
 }
 

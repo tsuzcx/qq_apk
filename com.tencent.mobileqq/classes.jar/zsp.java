@@ -1,18 +1,13 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class zsp
-  implements azmm
+  implements zto
 {
-  public zsp(QRDisplayActivity paramQRDisplayActivity) {}
+  public zsp(SegmentList paramSegmentList) {}
   
   public void a()
   {
-    bcst.b(this.a.app, "CliOper", "", "", "0X800AEB1", "0X800AEB1", 0, 0, "", "", "", "");
-  }
-  
-  public void a(String paramString)
-  {
-    bcst.b(this.a.app, "CliOper", "", "", "0X800AEB3", "0X800AEB3", 0, 0, "", "", "", "");
+    this.a.a.a(false);
   }
 }
 

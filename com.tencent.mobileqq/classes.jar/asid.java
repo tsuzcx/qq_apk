@@ -1,9 +1,6 @@
-public class asid
+public abstract interface asid
 {
-  public int a;
-  public long a;
-  public asht a;
-  public String a;
+  public abstract void a(int paramInt);
 }
 
 

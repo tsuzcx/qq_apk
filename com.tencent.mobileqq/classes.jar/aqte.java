@@ -1,67 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqte
+class aqte
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public String b = "";
+  aqte(aqtc paramaqtc) {}
   
-  public aqte()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static aqte a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
+    aqsy.a(this.a.a).setVisibility(8);
+    aqsy.a(this.a.a, null);
+    if (aqsy.a(this.a.a).getItemCount() == 0) {
+      aqsy.a(this.a.a);
     }
-    aqte localaqte;
-    try
-    {
-      localaqte = new aqte();
-      localaqte.jdField_a_of_type_JavaLangString = paramString;
-      paramString = new JSONObject(paramString);
-      localaqte.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
-      localaqte.b = paramString.optString("iconUrl");
-      if (!TextUtils.isEmpty(localaqte.b)) {
-        localaqte.b = localaqte.b.trim();
-      }
-      paramString = paramString.optJSONObject("grayTips");
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localaqte.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
-      }
-      QLog.d("ConfBean", 0, "confBean = " + localaqte.toString());
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ConfBean", 1, "parse e:", paramString);
-      }
-      return null;
-    }
-    return localaqte;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("configContent:").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqte
  * JD-Core Version:    0.7.0.1
  */

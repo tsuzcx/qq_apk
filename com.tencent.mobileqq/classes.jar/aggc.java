@@ -1,95 +1,86 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.HotChatInfo;
 
 public class aggc
+  implements View.OnLongClickListener
 {
-  private long jdField_a_of_type_Long;
-  private aggv jdField_a_of_type_Aggv = new aggv();
-  private ArrayList<aghm> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public aggc(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public long a()
+  public boolean onLongClick(View paramView)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public aggv a()
-  {
-    return this.jdField_a_of_type_Aggv;
-  }
-  
-  public String a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    switch (paramView.getId())
     {
-      aghm localaghm = (aghm)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if (localaghm != null)
-      {
-        if (localaghm.a > 0) {
-          return String.valueOf(localaghm.a());
-        }
-        return String.valueOf(localaghm.b());
-      }
     }
-    return "";
-  }
-  
-  public ArrayList<aghm> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(aghm paramaghm, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramaghm == null) {}
+    Object localObject1;
+    Object localObject2;
     do
     {
-      return;
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Aggv.a(paramaghm);
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaghm);
-    } while (!paramBoolean2);
-    this.jdField_a_of_type_Long += paramaghm.a();
-  }
-  
-  public void a(List<aghm> paramList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    long l;
-    if (paramList != null)
-    {
-      l = 0L;
-      if ((paramBoolean1) || (paramBoolean2))
+      do
       {
-        Iterator localIterator = paramList.iterator();
-        l = 0L;
-        if (localIterator.hasNext())
-        {
-          aghm localaghm = (aghm)localIterator.next();
-          if (paramBoolean1) {
-            this.jdField_a_of_type_Aggv.a(localaghm);
-          }
-          if (!paramBoolean2) {
-            break label103;
-          }
-          l = localaghm.a() + l;
+        return false;
+        localObject1 = paramView.getContext();
+        if (!(localObject1 instanceof FragmentActivity)) {
+          return true;
         }
+        localObject2 = (FragmentActivity)localObject1;
+        localObject1 = (String)paramView.getTag(2131364432);
+        paramView = (ChatMessage)paramView.getTag();
+        if (paramView == null) {
+          break;
+        }
+        localObject2 = ((FragmentActivity)localObject2).getChatFragment();
+      } while (localObject2 == null);
+      localObject2 = ((ChatFragment)localObject2).a();
+    } while (localObject2 == null);
+    if ((localObject2 instanceof ailn))
+    {
+      HotChatManager localHotChatManager = (HotChatManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60);
+      HotChatInfo localHotChatInfo = localHotChatManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if ((localHotChatInfo != null) && (localHotChatInfo.isGameRoom)) {
+        return true;
+      }
+      bgty localbgty = (bgty)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
+      if ((localHotChatInfo != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localHotChatInfo.ownerUin)) || (((localHotChatInfo.isOwnerOrAdmin(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) || (localHotChatManager.b())) && (!localHotChatInfo.isOwnerOrAdmin(paramView.senderuin)) && ((!localHotChatInfo.isRobotHotChat) || (!localbgty.b(paramView.senderuin)))))) {
+        ((ailn)localObject2).a(paramView, (String)localObject1);
       }
     }
-    label103:
     for (;;)
     {
-      break;
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (paramBoolean2) {
-        this.jdField_a_of_type_Long = (l + this.jdField_a_of_type_Long);
+      return true;
+      ((ailn)localObject2).a(paramView.senderuin, (String)localObject1, false, 1);
+      continue;
+      if ((localObject2 instanceof TroopChatPie))
+      {
+        ((TroopChatPie)localObject2).a(paramView.senderuin, (String)localObject1, false, 1);
       }
-      return;
+      else if ((localObject2 instanceof aijc))
+      {
+        if (bhlg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.frienduin)) {
+          return true;
+        }
+        ((aijc)localObject2).a(paramView.senderuin, (String)localObject1, false);
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006210", "0X8006210", 0, 0, "", "", "", "");
+      }
+      else if ((localObject2 instanceof aijm))
+      {
+        ((BaseChatPie)localObject2).bm();
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A010", "0X800A010", 0, 0, "", "", "", "");
+      }
+      else if (((localObject2 instanceof aipm)) || ((localObject2 instanceof aimx)) || ((localObject2 instanceof ainh)))
+      {
+        ((BaseChatPie)localObject2).bm();
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A011", "0X800A011", 0, 0, "", "", "", "");
+      }
     }
   }
 }

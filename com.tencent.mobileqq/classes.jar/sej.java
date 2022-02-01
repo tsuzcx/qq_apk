@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class sej
-  implements View.OnClickListener
+public abstract interface sej
 {
-  public sej(VideoFeedsUGView paramVideoFeedsUGView) {}
-  
-  public void onClick(View paramView)
-  {
-    bgsg.a("ug_prefix_ug_1get3_ug_close_time", System.currentTimeMillis());
-    this.a.setVisibility(8);
-    ogc.a(ogc.b(this.a.jdField_a_of_type_Ocb.i, "101", this.a.jdField_a_of_type_JavaLangString));
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

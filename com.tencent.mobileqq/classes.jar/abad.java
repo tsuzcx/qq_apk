@@ -1,27 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import NS_QQ_STORY_CONFIG.CONFIG.StGetStoryConfigRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 class abad
-  implements View.OnClickListener
+  implements aaav<CONFIG.StGetStoryConfigRsp>
 {
-  abad(abac paramabac, String paramString, Activity paramActivity) {}
+  abad(abac paramabac) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CONFIG.StGetStoryConfigRsp paramStGetStoryConfigRsp)
   {
-    this.jdField_a_of_type_Abac.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-    {
-      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((localAppInterface instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)localAppInterface).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
-      }
+    if ((paramStGetStoryConfigRsp != null) && (paramStGetStoryConfigRsp.intConf != null)) {
+      abac.a(this.a, paramStGetStoryConfigRsp.intConf.get());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

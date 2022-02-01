@@ -1,51 +1,54 @@
-import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class ayja
+  extends BaseAdapter
 {
-  public int a;
-  public Rect a;
-  public int b;
-  public Rect b = new Rect();
-  public int c;
-  public Rect c;
-  public int d;
-  public int e;
-  public int f;
+  public ayja(TopicLabelListView paramTopicLabelListView) {}
   
-  public ayja()
+  public int getCount()
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
+    }
+    return TopicLabelListView.a(this.a).size();
   }
   
-  public String toString()
+  public Object getItem(int paramInt)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("currAlpha = ").append(this.e).append("\n").append("currRect = ");
-    if (this.jdField_c_of_type_AndroidGraphicsRect != null)
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      str = this.jdField_c_of_type_AndroidGraphicsRect.toShortString();
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("radomAreaIndex = ").append(this.f).append("\n").append("radomRect = ");
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-        break label182;
-      }
-      str = this.jdField_a_of_type_AndroidGraphicsRect.toShortString();
-      label95:
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("gapDuration = ").append(this.jdField_c_of_type_Int).append("\n").append("startRect = ");
-      if (this.b == null) {
-        break label188;
-      }
+      paramView = new ayjb(this.a, null);
+      localObject = new LabelViewItem(TopicLabelListView.a(this.a));
+      ((View)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+      ((View)localObject).setTag(paramView);
     }
-    label182:
-    label188:
-    for (String str = this.b.toShortString();; str = "")
+    for (;;)
     {
-      localStringBuilder2.append(str).append("\n").append("edageWidth = ").append(this.jdField_a_of_type_Int).append("\n");
-      return localStringBuilder1.toString();
-      str = "";
-      break;
-      str = "";
-      break label95;
+      paramView.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
+      ((LabelViewItem)localObject).setText(paramView.a);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      ayjb localayjb = (ayjb)paramView.getTag();
+      localObject = paramView;
+      paramView = localayjb;
     }
   }
 }

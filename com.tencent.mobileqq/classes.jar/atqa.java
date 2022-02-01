@@ -1,20 +1,16 @@
 class atqa
-  implements atve
+  implements atqq
 {
-  atqa(atpy paramatpy) {}
+  atqa(atpa paramatpa) {}
   
-  public void a()
+  public void a(Object[] paramArrayOfObject)
   {
-    if (atpy.a(this.a) != null) {
-      atpy.a(this.a);
-    }
+    atpa.e(this.a, paramArrayOfObject[2]);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atqa
  * JD-Core Version:    0.7.0.1
  */

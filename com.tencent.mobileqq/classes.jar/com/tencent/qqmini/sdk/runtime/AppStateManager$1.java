@@ -2,6 +2,7 @@ package com.tencent.qqmini.sdk.runtime;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.view.View;
 import android.view.Window;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
@@ -22,13 +23,15 @@ class AppStateManager$1
       Object localObject = AppStateManager.access$000(this.this$0).getRuntime().getAttachedActivity();
       if (localObject != null)
       {
-        localObject = ScreenShotUtil.captureView(((Activity)localObject).getWindow().getDecorView());
+        localObject = ((Activity)localObject).getWindow().getDecorView();
+        ScreenShotUtil.setRuntime(AppStateManager.access$000(this.this$0).getRuntime());
+        localObject = ScreenShotUtil.captureView((View)localObject);
         String str;
-        if (ScreenShotUtil.CheckIfWhiteScreen((Bitmap)localObject))
+        if (ScreenShotUtil.checkIfWhiteScreen((Bitmap)localObject))
         {
           str = ScreenShotUtil.bitmapTobase64((Bitmap)localObject, WnsConfig.getConfig("qqminiapp", "mini_app_white_screen_shot_max_width", 500), WnsConfig.getConfig("qqminiapp", "mini_app_white_screen_shot_max_height", 500));
           if (str.length() >= 5120) {
-            break label149;
+            break label164;
           }
           QMLog.i("minisdk-start_RuntimeState", "--- report white_screen appid:" + this.val$miniAppInfo.appId + " img:" + str);
         }
@@ -40,7 +43,7 @@ class AppStateManager$1
           }
           ((Bitmap)localObject).recycle();
           return;
-          label149:
+          label164:
           QMLog.i("minisdk-start_RuntimeState", "--- report white_screen appid:" + this.val$miniAppInfo.appId + " base64 length:" + str.length());
         }
       }

@@ -1,43 +1,20 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rfk
+  implements View.OnClickListener
 {
-  public List<rfl> a;
+  public rfk(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
   
-  public static rfk a(articlesummary.HotWordInfo paramHotWordInfo)
+  public void onClick(View paramView)
   {
-    rfk localrfk = new rfk();
-    if ((paramHotWordInfo != null) && (paramHotWordInfo.rpt_hot_word_item.has()))
-    {
-      localrfk.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
-      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
-      while (paramHotWordInfo.hasNext())
-      {
-        rfl localrfl = rfl.a((articlesummary.HotWordItem)paramHotWordInfo.next());
-        localrfk.a.add(localrfl);
-      }
+    if ((AbsPublishColumnFragment.a(this.a) != null) && (AbsPublishColumnFragment.a(this.a).isShowing())) {
+      AbsPublishColumnFragment.a(this.a).dismiss();
     }
-    return localrfk;
-  }
-  
-  public byte[] a()
-  {
-    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
-    if ((this.a != null) && (this.a.size() > 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(((rfl)localIterator.next()).a());
-      }
-      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
-    }
-    return localHotWordInfo.toByteArray();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bedw
-  implements bkhy
+public abstract class bedw
 {
-  public bedw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  protected Context a;
+  protected BaseAdapter a;
+  protected QQAppInterface a;
+  protected int b;
   
-  public void onDismiss()
+  public bedw(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    TribeVideoListPlayerFragment.a(this.a);
-    this.a.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    this.b = paramInt;
   }
+  
+  public abstract View a(int paramInt1, beex parambeex, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
 }
 
 

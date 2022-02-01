@@ -1,41 +1,26 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agbp
-  extends View
+public class agbp
+  implements View.OnClickListener
 {
-  public agbp(agbk paramagbk, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public agbp(ActivateFriendActivity paramActivateFriendActivity, blir paramblir) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onClick(View paramView)
   {
-    Drawable[] arrayOfDrawable = this.a.a;
-    int j = arrayOfDrawable.length;
-    int i = 0;
-    while (i < j)
+    int i = 2;
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app;
+    if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {}
+    for (;;)
     {
-      arrayOfDrawable[i].draw(paramCanvas);
-      i += 1;
-    }
-  }
-  
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt1 = 0;
-    paramInt3 = paramInt4 - paramInt2;
-    Drawable[] arrayOfDrawable = this.a.a;
-    paramInt4 = arrayOfDrawable.length;
-    paramInt2 = 0;
-    while (paramInt1 < paramInt4)
-    {
-      Drawable localDrawable = arrayOfDrawable[paramInt1];
-      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
-      paramInt2 += localDrawable.getIntrinsicWidth();
-      paramInt1 += 1;
+      agci.a(localQQAppInterface, "remindpage_click", null, null, String.valueOf(2), String.valueOf(i));
+      this.jdField_a_of_type_Blir.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
     }
   }
 }

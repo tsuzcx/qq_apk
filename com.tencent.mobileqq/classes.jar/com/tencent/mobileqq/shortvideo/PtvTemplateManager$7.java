@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcls;
+import bdek;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ class PtvTemplateManager$7
       this.this$0.a.clear();
       this.this$0.a.addAll(localList);
       this.this$0.d = true;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (bcls.a())) {
+      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (bdek.a())) {
         this.this$0.a(this.this$0.a);
       }
       PtvTemplateManager.a(this.this$0);

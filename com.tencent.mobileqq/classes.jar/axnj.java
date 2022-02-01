@@ -1,50 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 import com.tencent.qphone.base.util.QLog;
 
-class axnj
-  extends Handler
+public class axnj
+  implements axmj
 {
-  axnj(axnh paramaxnh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public axnj(MultiCardFragment paramMultiCardFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
     }
-    do
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).setViewPagerBusy(true);
+    }
+    if (MultiCardFragment.a(this.a) != null)
     {
-      return;
-      if (this.a.jdField_a_of_type_Axns != null)
-      {
-        int i = this.a.jdField_a_of_type_Axns.a();
-        this.a.jdField_a_of_type_Axnq.a(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
-        }
+      MultiCardFragment.a(this.a).c(paramInt);
+      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
-      return;
-      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_Axns.a());
-        }
-        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
-        axnh.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
-        axnh.a(this.a).requestLayout();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
+    }
   }
 }
 

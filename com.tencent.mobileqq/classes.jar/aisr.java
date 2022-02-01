@@ -1,61 +1,72 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public class aisr
-  extends ReportDialog
+public abstract class aisr
+  implements aism
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aisr(Context paramContext)
+  public URLDrawable.URLDrawableOptions a()
   {
-    super(paramContext, 2131755401);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this;
+    return localURLDrawableOptions;
   }
   
-  public aisr(Context paramContext, String paramString)
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    super(paramContext, 2131755401);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public View a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+    if (paramURL == null) {
+      return null;
     }
-    return null;
+    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
+    return paramURL;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public URL a()
   {
-    super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131561627, null);
-    Object localObject = getWindow();
-    ((Window)localObject).setContentView(paramBundle);
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 48;
-    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299078);
-    ((Window)localObject).setAttributes(localLayoutParams);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    try
     {
-      localObject = (TextView)paramBundle.findViewById(2131371343);
-      if (localObject != null) {
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((aitc)this).k());
+      if (localURL1 == null)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
+        return null;
       }
     }
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
-    setCanceledOnTouchOutside(false);
+    catch (MalformedURLException localMalformedURLException)
+    {
+      URL localURL2;
+      for (;;)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
+        localURL2 = null;
+      }
+      return localURL2;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt) {}
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public String d()
+  {
+    return "z-";
   }
 }
 

@@ -1,35 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.1;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bjzl
-  implements bluv
+class bjzl
+  extends Handler
 {
-  public bjzl(VideoJsProxyImpl.1 param1) {}
-  
-  public void callback(int paramInt, Bundle paramBundle)
+  public bjzl(bjzi parambjzi, Looper paramLooper)
   {
-    boolean bool;
-    if (paramInt == 0)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    String str1 = null;
+    bjtx.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
+    String str2;
+    bjzk localbjzk;
+    switch (paramMessage.what)
     {
-      QLog.i("VideoJsPlugin", 1, "callback: load ok " + paramInt);
-      if (VideoEnvironment.a("AVCodec", MobileQQ.sMobileQQ.getApplicationContext()) == 0)
+    default: 
+      str2 = (String)paramMessage.obj;
+      if (str2 != null)
       {
-        bool = true;
-        bjzk.a(bool);
+        localbjzk = (bjzk)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+        if (localbjzk == null) {
+          bjtx.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
+        }
       }
-    }
-    for (;;)
-    {
-      bjzk.a().compareAndSet(true, false);
-      return;
-      bool = false;
       break;
-      QLog.w("VideoJsPlugin", 1, "callback: load failed " + paramInt);
     }
+    do
+    {
+      do
+      {
+        return;
+        bjvg.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        bjvg.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        if (localbjzk.jdField_b_of_type_Int != 1) {
+          str1 = localbjzk.jdField_b_of_type_JavaLangString.substring(localbjzk.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
+        }
+        for (;;)
+        {
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            this.a.jdField_a_of_type_Bjzh.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+            return;
+            str1 = localbjzk.jdField_b_of_type_JavaLangString;
+            continue;
+            bjtx.e("PCPushProxy", "handleMessage get key = null");
+            localbjzk = null;
+          }
+        }
+      } while (localbjzk == null);
+      if (localbjzk.c.startsWith("ANDROIDQQ.PCPUSH.")) {
+        bjvg.a("100", localbjzk.c, str1);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Bjzh.a(localbjzk);
+        return;
+        bjvg.a("100", "ANDROIDQQ.PCPUSH." + localbjzk.c, str1);
+      }
+      this.a.jdField_a_of_type_Bjzh.a(str2);
+      return;
+    } while (localbjzk == null);
+    bjvg.a("500", localbjzk.c, str1);
   }
 }
 

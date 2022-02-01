@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import anip;
-import aniz;
-import aoep;
-import aoeq;
-import bcst;
+import anum;
+import anuw;
+import aore;
+import aorf;
+import bdll;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -26,7 +26,7 @@ public class HiddenChatSettingFragment
   extends IphoneTitleBarFragment
   implements CompoundButton.OnCheckedChangeListener
 {
-  private aniz jdField_a_of_type_Aniz = new aoep(this);
+  private anuw jdField_a_of_type_Anuw = new aore(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private FormSwitchItem b;
@@ -51,19 +51,19 @@ public class HiddenChatSettingFragment
     if ((getActivity().getAppRuntime() instanceof QQAppInterface))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131374298));
-      this.b = ((FormSwitchItem)this.mContentView.findViewById(2131374299));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aniz);
-      boolean bool = aoeq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131374434));
+      this.b = ((FormSwitchItem)this.mContentView.findViewById(2131374435));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anuw);
+      boolean bool = aorf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
       a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem, bool);
-      bool = aoeq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
+      bool = aorf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
       a(this.b, bool);
     }
   }
   
   public int getContentLayoutId()
   {
-    return 2131562776;
+    return 2131562810;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -72,10 +72,10 @@ public class HiddenChatSettingFragment
     int i = 1;
     if (paramCompoundButton == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      ((anip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42318);
+      ((anum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42318);
       localQQAppInterface = getActivity().app;
       if (paramBoolean) {
-        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A34C", "0X800A34C", i, 0, "0", "0", "", "");
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A34C", "0X800A34C", i, 0, "0", "0", "", "");
       }
     }
     while (paramCompoundButton != this.b.a()) {
@@ -86,12 +86,12 @@ public class HiddenChatSettingFragment
         i = 2;
       }
     }
-    ((anip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42319);
+    ((anum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42319);
     QQAppInterface localQQAppInterface = getActivity().app;
     if (paramBoolean) {}
     for (i = j;; i = 2)
     {
-      bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A350", "0X800A350", i, 0, "0", "0", "", "");
+      bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A350", "0X800A350", i, 0, "0", "0", "", "");
       break;
     }
   }
@@ -99,14 +99,14 @@ public class HiddenChatSettingFragment
   public View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131717832));
+    setTitle(getActivity().getString(2131717964));
     return localView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aniz);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anuw);
   }
 }
 

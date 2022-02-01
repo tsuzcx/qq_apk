@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgw
-  implements DialogInterface.OnClickListener
+  implements adci
 {
-  public adgw(TestAppFragment paramTestAppFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0xfe");
+    }
+    ((MsgBoxInterFollowManager)paramQQAppInterface.getManager(202)).decode0xfeInteractAndFollowMsg(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

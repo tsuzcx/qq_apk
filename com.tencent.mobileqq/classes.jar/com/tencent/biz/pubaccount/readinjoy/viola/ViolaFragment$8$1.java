@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import tlw;
-import tmn;
+import tct;
+import tdl;
 
 public class ViolaFragment$8$1
   implements Runnable
 {
-  public ViolaFragment$8$1(tlw paramtlw) {}
+  public ViolaFragment$8$1(tct paramtct) {}
   
   public void run()
   {
-    this.a.a.a.b();
-    this.a.a.a.c();
+    this.a.a.mViolaUiDelegate.b();
+    this.a.a.mViolaUiDelegate.c();
   }
 }
 

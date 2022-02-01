@@ -1,7 +1,7 @@
 package cooperation.vip.manager;
 
 import android.content.Intent;
-import bmuj;
+import bnvr;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
@@ -9,7 +9,7 @@ import mqq.app.NewIntent;
 public class CommonRequestManager$1
   implements Runnable
 {
-  public CommonRequestManager$1(bmuj parambmuj, Intent paramIntent) {}
+  public CommonRequestManager$1(bnvr parambnvr, Intent paramIntent) {}
   
   public void run()
   {

@@ -1,72 +1,92 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-class amym
-  implements amxk
+public class amym
+  extends amyk
 {
-  amym(amyl paramamyl, JSONArray paramJSONArray, File paramFile, AppInterface paramAppInterface, String paramString1, int[] paramArrayOfInt, String paramString2) {}
+  public long a;
+  public String a;
+  public WeakReference<QQSettingMe> a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
+  int g = 7;
+  private int h;
+  private int i;
+  private int j;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public amym(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, QQSettingMe paramQQSettingMe)
   {
-    QLog.d("ApolloPluginRscLoader", 1, new Object[] { "getCombination onDownLoadFinish sucess:", Boolean.valueOf(paramBoolean) });
-    label75:
-    int i;
-    if (paramInt1 > 0)
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 98;
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("entry_id", 1);
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq", 0L);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jump_url");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("is_red", 0);
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("icon_url");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("action_id", 0);
+    this.e = paramJSONObject.optInt("bubble_id", 0);
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("scheme");
+    this.f = paramJSONObject.optInt("show_sum", 1);
+    this.i = paramJSONObject.optInt("msg_id", 0);
+    this.j = paramJSONObject.optInt("cmshow_module", 1);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
+  }
+  
+  public void a(angr paramangr, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    QLog.d("ExploreDrawerStatus", 1, "[onBubbleClick] " + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_b_of_type_JavaLangString);
+    if (2 == this.j) {}
+    for (int k = 1;; k = 0)
     {
-      paramString = this.jdField_a_of_type_Amyl;
-      if (ApolloUtil.d(paramInt1))
-      {
-        paramInt2 = 0;
-        paramString = amyl.a(paramString, 1, String.valueOf(paramInt1), paramInt2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-      }
-    }
-    else
-    {
-      if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-        break label147;
-      }
-      paramInt1 = 0;
-      if (paramInt1 >= paramArrayOfInt.length) {
-        break label147;
-      }
-      paramString = this.jdField_a_of_type_Amyl;
-      i = paramArrayOfInt[paramInt1];
-      if (!ApolloUtil.c(paramArrayOfInt[paramInt1])) {
-        break label141;
-      }
-    }
-    label141:
-    for (paramInt2 = 0;; paramInt2 = 2)
-    {
-      paramString = amyl.a(paramString, 2, String.valueOf(i), paramInt2);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-      paramInt1 += 1;
-      break label75;
-      paramInt2 = 2;
-      break;
-    }
-    label147:
-    if ((this.jdField_a_of_type_JavaIoFile != null) && (!this.jdField_a_of_type_JavaIoFile.exists()))
-    {
-      amxb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, new amyn(this));
+      VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_clk", 0, k, new String[] { this.e + "", String.valueOf(this.i) });
+      ((amsx)paramQQAppInterface.getManager(153)).a(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
       return;
     }
+  }
+  
+  public void a(angr paramangr, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    QLog.d("ExploreDrawerStatus", 1, "[onBubbleShow] showCount： " + this.h + ", showSum: " + this.f + ", content: " + this.jdField_a_of_type_JavaLangString);
+    if (this.h >= this.f) {
+      return;
+    }
+    this.h += 1;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      paramString = amyl.a(this.jdField_a_of_type_Amyl, 6, this.jdField_a_of_type_JavaLangString, 0);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
+      angi.a(paramangr, this.jdField_a_of_type_JavaLangString, 9, this.e);
+      if (2 != this.j) {
+        break label202;
+      }
     }
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length <= 0))
+    label202:
+    for (paramInt = 1;; paramInt = 0)
     {
-      this.jdField_a_of_type_Amyl.a(this.b, anni.a(2131699295), this.jdField_a_of_type_OrgJsonJSONArray);
+      VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_show", 0, paramInt, new String[] { this.e + "", String.valueOf(this.i) });
+      if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
+        break;
+      }
+      paramangr = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramangr == null) {
+        break;
+      }
+      paramangr.a(this.jdField_c_of_type_JavaLangString);
       return;
     }
-    amyl.a(this.jdField_a_of_type_Amyl, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

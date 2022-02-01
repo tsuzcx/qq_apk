@@ -1,49 +1,33 @@
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class axbw
-  implements bdvw
+  implements EIPCOnGetConnectionListener
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  axbw(axbu paramaxbu) {}
   
-  public axbw(axbv paramaxbv, Intent paramIntent, byte[] paramArrayOfByte)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
+    if (paramEIPCConnection != null) {
+      axbu.a(this.a, paramEIPCConnection.procName);
+    }
+    axbu.a(this.a, true);
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyAlumniServlet", 2, "NearbyAlumniDownloadListener.onResp()");
+      QLog.d("MediaFocusIpcClient", 2, "onConnectBind");
     }
-    if ((parambdwt == null) || (parambdwt.jdField_a_of_type_Int != 0))
-    {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("NearbyAlumniDownloadListener.onResp() | resp = ").append(parambdwt).append(" | mResult=");
-        if (parambdwt == null) {
-          break label110;
-        }
-      }
-      label110:
-      for (int i = parambdwt.jdField_a_of_type_Int;; i = -1)
-      {
-        QLog.i("NearbyAlumniServlet", 2, i);
-        axbv.a(this.jdField_a_of_type_Axbv, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
-        parambdwt = this.jdField_a_of_type_Axbv.a();
-        if (parambdwt != null) {
-          parambdwt.a();
-        }
-        return;
-      }
-    }
-    axbv.a(this.jdField_a_of_type_Axbv, this.jdField_a_of_type_AndroidContentIntent, 0, parambdwt.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte);
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      axbu.a(this.a, paramEIPCConnection.procName);
+    }
+    axbu.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "onConnectUnbind");
+    }
+  }
 }
 
 

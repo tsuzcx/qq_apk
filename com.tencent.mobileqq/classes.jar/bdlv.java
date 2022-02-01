@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bdlv
-  implements DialogInterface.OnDismissListener
+final class bdlv
 {
-  bdlv(bdlu parambdlu) {}
+  final String a;
+  final String b;
+  final String c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  bdlv(String paramString1, String paramString2, String paramString3)
   {
-    this.a.a.a = null;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlv
  * JD-Core Version:    0.7.0.1
  */

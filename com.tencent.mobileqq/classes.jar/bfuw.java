@@ -1,71 +1,166 @@
-import android.os.Bundle;
+import android.content.ContentValues;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troop.utils.VideoAnimationUtils.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.UUID;
 
 public class bfuw
+  extends apap
 {
-  private static final String a = anhk.ba + ".troop/anim_video/";
-  
-  public static void a(bhhh parambhhh, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, bdfn parambdfn)
+  public bfuw(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    if (parambhhh == null) {}
-    Object localObject;
-    do
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  private ContentValues a(Entity paramEntity)
+  {
+    ContentValues localContentValues = new ContentValues();
+    List localList = TableBuilder.getValidField(paramEntity.getClass());
+    int j = localList.size();
+    int i = 0;
+    for (;;)
     {
-      return;
-      paramSpriteVideoView = new WeakReference(paramSpriteVideoView);
-      paramString1 = new File(a + paramString1);
-      if (paramString1.exists())
+      if (i < j)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoAnimationUtils", 2, "res exists, return:" + paramString1.getAbsolutePath());
+        Object localObject1 = (Field)localList.get(i);
+        String str = ((Field)localObject1).getName();
+        if (!((Field)localObject1).isAccessible()) {
+          ((Field)localObject1).setAccessible(true);
         }
-        b(paramSpriteVideoView, paramString1.getAbsolutePath(), parambdfn);
-        return;
+        try
+        {
+          localObject1 = ((Field)localObject1).get(paramEntity);
+          if ((localObject1 instanceof Integer))
+          {
+            localContentValues.put(str, (Integer)localObject1);
+            i += 1;
+          }
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          for (;;)
+          {
+            localIllegalArgumentException.printStackTrace();
+            Object localObject2 = null;
+          }
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          for (;;)
+          {
+            localIllegalAccessException.printStackTrace();
+            Object localObject3 = null;
+            continue;
+            if ((localObject3 instanceof Long)) {
+              localContentValues.put(str, (Long)localObject3);
+            } else if ((localObject3 instanceof String)) {
+              localContentValues.put(str, (String)localObject3);
+            } else if ((localObject3 instanceof byte[])) {
+              localContentValues.put(str, (byte[])localObject3);
+            } else if ((localObject3 instanceof Short)) {
+              localContentValues.put(str, (Short)localObject3);
+            } else if ((localObject3 instanceof Boolean)) {
+              localContentValues.put(str, (Boolean)localObject3);
+            } else if ((localObject3 instanceof Double)) {
+              localContentValues.put(str, (Double)localObject3);
+            } else if ((localObject3 instanceof Float)) {
+              localContentValues.put(str, (Float)localObject3);
+            } else if ((localObject3 instanceof Byte)) {
+              localContentValues.put(str, (Byte)localObject3);
+            }
+          }
+        }
       }
-      parambhhh = parambhhh.a(1);
-      localObject = new File(a);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      paramString2 = new bhhf(paramString2, paramString1);
-      paramString2.b = 2;
-      localObject = new Bundle();
-    } while (parambhhh == null);
-    parambhhh.a(paramString2, new bfux(paramSpriteVideoView, paramString1, parambdfn), (Bundle)localObject);
+    }
+    return localContentValues;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public List<TroopFileTansferItemEntity> a(long paramLong)
   {
-    a(paramQQAppInterface, paramString1, paramString2, null, null);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
+    localTroopFileTansferItemEntity.troopuin = paramLong;
+    return localEntityManager.rawQuery(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, bdfn parambdfn)
+  protected void a() {}
+  
+  public void a(long paramLong, UUID paramUUID)
   {
-    if (paramQQAppInterface == null) {
+    if (paramUUID == null) {
       return;
     }
-    a((bhhh)paramQQAppInterface.getManager(47), paramString1, paramString2, paramSpriteVideoView, parambdfn);
+    bfvr.c("TroopFileDataBaseProxy", bfvr.a, "[" + paramUUID.toString() + "] deleteItem");
+    Object localObject = new TroopFileTansferItemEntity();
+    ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+    localObject = ((TroopFileTansferItemEntity)localObject).getTableName();
+    String str = paramUUID.toString();
+    paramUUID = new bfuz(this, paramUUID);
+    a((String)localObject, "_sId=?", new String[] { str }, paramUUID);
   }
   
-  private static void b(WeakReference<SpriteVideoView> paramWeakReference, String paramString, bdfn parambdfn)
+  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity)
   {
-    if (paramWeakReference != null)
+    if ((paramTroopFileTansferItemEntity == null) || (paramTroopFileTansferItemEntity.Id == null)) {
+      return;
+    }
+    bfvr.c("TroopFileDataBaseProxy", bfvr.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] updateItem transStatus[" + paramTroopFileTansferItemEntity.Status + "] FilePath[" + paramTroopFileTansferItemEntity.FilePath + "]");
+    int i = paramTroopFileTansferItemEntity.Status;
+    switch (paramTroopFileTansferItemEntity.Status)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoAnimationUtils", 2, "playVideoAnim");
-      }
-      if ((SpriteVideoView)paramWeakReference.get() != null) {
-        ThreadManager.getUIHandler().post(new VideoAnimationUtils.2(paramWeakReference, paramString, parambdfn));
-      }
+    }
+    for (;;)
+    {
+      paramTroopFileTansferItemEntity.preupdate();
+      ContentValues localContentValues = a(paramTroopFileTansferItemEntity);
+      localContentValues.put("Status", Integer.valueOf(i));
+      localContentValues.put("_sStatus", bfrt.a(i));
+      String str1 = paramTroopFileTansferItemEntity.getTableName();
+      String str2 = paramTroopFileTansferItemEntity.Id.toString();
+      paramTroopFileTansferItemEntity = new bfuy(this, paramTroopFileTansferItemEntity);
+      a(str1, localContentValues, "_sId=?", new String[] { str2 }, paramTroopFileTansferItemEntity);
+      return;
+      i = 3;
+      continue;
+      i = 10;
     }
   }
+  
+  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity, ProxyListener paramProxyListener)
+  {
+    bfvr.c("TroopFileDataBaseProxy", bfvr.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] addItem status[" + paramTroopFileTansferItemEntity.getStatus() + "]");
+    paramProxyListener = new bfux(this, paramTroopFileTansferItemEntity);
+    if (paramTroopFileTansferItemEntity.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 0, paramProxyListener);
+      return;
+    }
+    if (paramTroopFileTansferItemEntity.getStatus() == 1001)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 1, paramProxyListener);
+      return;
+    }
+    bfvr.a("TroopFileDataBaseProxy", bfvr.a, "Item status[" + String.valueOf(paramTroopFileTansferItemEntity.getStatus()) + "] is wrong");
+  }
+  
+  protected void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
+  }
+  
+  protected void a(String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
+  }
+  
+  protected void b() {}
 }
 
 

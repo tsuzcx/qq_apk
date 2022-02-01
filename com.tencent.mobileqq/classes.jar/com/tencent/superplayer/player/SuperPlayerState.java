@@ -10,14 +10,14 @@ class SuperPlayerState
   private volatile int mCurState = 0;
   private volatile int mPreState = 0;
   private volatile ISuperPlayerState.OnPlayStateChangeListener mStateListener;
-  private Object mStateLock = new Object();
+  private final Object mStateLock = new Object();
   
-  public SuperPlayerState(String paramString)
+  SuperPlayerState(String paramString)
   {
-    this.TAG = (paramString + "_" + "SuperPlayerState.java");
+    this.TAG = (paramString + "-" + "SuperPlayerState.java");
   }
   
-  public static String getStateStr(int paramInt)
+  static String getStateStr(int paramInt)
   {
     switch (paramInt)
     {
@@ -47,7 +47,7 @@ class SuperPlayerState
     return " RELEASED ";
   }
   
-  public void changeStateAndNotify(int paramInt)
+  void changeStateAndNotify(int paramInt)
   {
     synchronized (this.mStateLock)
     {
@@ -65,7 +65,7 @@ class SuperPlayerState
     }
   }
   
-  public SuperPlayerState copy()
+  SuperPlayerState copy()
   {
     SuperPlayerState localSuperPlayerState = new SuperPlayerState(this.TAG);
     localSuperPlayerState.mCurState = this.mCurState;
@@ -73,7 +73,7 @@ class SuperPlayerState
     return localSuperPlayerState;
   }
   
-  public final int getCurState()
+  int getCurState()
   {
     synchronized (this.mStateLock)
     {
@@ -82,18 +82,13 @@ class SuperPlayerState
     }
   }
   
-  public final int getPreState()
+  int getPreState()
   {
     synchronized (this.mStateLock)
     {
       int i = this.mPreState;
       return i;
     }
-  }
-  
-  public void setOnPlayStateListener(ISuperPlayerState.OnPlayStateChangeListener paramOnPlayStateChangeListener)
-  {
-    this.mStateListener = paramOnPlayStateChangeListener;
   }
   
   public String toString()
@@ -103,6 +98,11 @@ class SuperPlayerState
     localStringBuilder.append("mCurState:").append(getStateStr(this.mCurState)).append("/n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
+  }
+  
+  void updatePlayerTag(String paramString)
+  {
+    this.TAG = (paramString + "-" + "SuperPlayerState.java");
   }
 }
 

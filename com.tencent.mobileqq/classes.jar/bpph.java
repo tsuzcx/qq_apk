@@ -1,18 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.SecondDemoView;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
 public class bpph
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public bpph(SecondDemoView paramSecondDemoView) {}
+  public bpph(HummingActivity paramHummingActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidate();
+    if (bppc.b()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      HummingActivity.a(this.a, 1);
+      HummingActivity.b(this.a);
+    }
   }
 }
 

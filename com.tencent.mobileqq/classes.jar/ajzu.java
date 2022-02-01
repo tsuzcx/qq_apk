@@ -1,87 +1,116 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.faceunlock.FaceUnblockCameraJsApiPlugin.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ajzu
+  extends WebViewPlugin
 {
-  public Map<Integer, Boolean> a;
-  public boolean a;
+  public BroadcastReceiver a;
+  private String a;
+  private String b;
   
   public ajzu()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajzv(this);
+    this.mPluginNameSpace = "faceUnblockCamera";
   }
   
-  public static ajzu a(aqlg[] paramArrayOfaqlg)
+  private void a(Activity paramActivity, String paramString)
+  {
+    if (bbgg.a())
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("edit_video_type", 10025);
+      localBundle.putInt("entrance_type", 132);
+      localBundle.putBoolean("enable_local_video", false);
+      localBundle.putLong("capture_max_duration", 5000L);
+      localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
+      localBundle.putString("key_face_unlock_code", paramString);
+      paramString = new Intent();
+      paramString.setAction("from_webtool_launchshortvideo");
+      paramString.setClass(paramActivity, JumpActivity.class);
+      paramString.putExtras(localBundle);
+      paramActivity.startActivity(paramString);
+      return;
+    }
+    QLog.d("FaceUnblockCameraJsApiPlugin", 1, "openQIMCameraCaptureActivity failed: not support media codec");
+    this.b = ShortVideoUtils.c();
+    paramActivity = new Intent("android.media.action.VIDEO_CAPTURE");
+    paramActivity.putExtra("output", Uri.fromFile(new File(this.b)));
+    paramActivity.putExtra("android.intent.extra.videoQuality", 1);
+    startActivityForResult(paramActivity, (byte)0);
+  }
+  
+  private void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      ThreadManager.excute(new FaceUnblockCameraJsApiPlugin.2(this, paramString), 64, null, true);
+      return;
+    }
+    QLog.d("FaceUnblockCameraJsApiPlugin", 1, "onActivityResult failed: media url is null");
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaqlg[0].a);
+      QLog.d("FaceUnblockCameraJsApiPlugin", 2, "Call FaceUnblockCameraJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
     }
-    localajzu = new ajzu();
-    try
+    if ("faceUnblockCamera".equals(paramString2))
     {
-      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
-      int i;
-      label93:
-      int k;
-      if (paramArrayOfaqlg.optInt("allSwitch") == 1)
+      if ("startPTVActivity".equals(paramString3))
       {
-        bool = true;
-        localajzu.jdField_a_of_type_Boolean = bool;
-        paramArrayOfaqlg = paramArrayOfaqlg.optJSONArray("business");
-        int j = paramArrayOfaqlg.length();
-        i = 0;
-        if (i >= j) {
-          break label174;
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceUnblockCameraJsApiPlugin", 2, "Call startPTVActivity, args:" + paramVarArgs);
         }
-        JSONObject localJSONObject = (JSONObject)paramArrayOfaqlg.get(i);
-        k = localJSONObject.optInt("id");
-        if (localJSONObject.optInt("switch") != 1) {
-          break label163;
+        this.jdField_a_of_type_JavaLangString = paramString1.split("#")[1];
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          a(this.mRuntime.a(), paramVarArgs[0]);
         }
       }
-      label163:
-      for (boolean bool = true;; bool = false)
-      {
-        localajzu.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
-        i += 1;
-        break label93;
-        bool = false;
-        break;
-      }
-      return localajzu;
+      return true;
     }
-    catch (Exception paramArrayOfaqlg)
+    return false;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if ((paramByte == 0) && (paramInt == -1))
     {
-      paramArrayOfaqlg.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("FaceUnblockCameraJsApiPlugin", 2, "onActivityResult: RESULT_OK, doParseData");
+      }
+      a(this.b);
     }
   }
   
-  public String toString()
+  public void onCreate()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("allSwitch = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",businessSwitch: ");
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).booleanValue();
-        localStringBuilder.append(localInteger);
-        localStringBuilder.append("=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append(",");
-      }
-    }
-    return localStringBuilder.toString();
+    super.onCreate();
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.FaceUnblockCameraJsApiPlugin");
+    this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 

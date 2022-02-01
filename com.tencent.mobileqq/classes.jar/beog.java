@@ -1,26 +1,39 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import androidx.annotation.NonNull;
 
 public class beog
-  implements AdapterView.OnItemClickListener
 {
-  public beog(NewTroopContactView paramNewTroopContactView) {}
+  public float a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c = -1;
+  public boolean c;
+  public int d;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public beog() {}
+  
+  public beog(beog parambeog)
   {
-    String str = ((ResultRecord)paramView.getTag()).a;
-    if (this.a.a(str))
-    {
-      NewTroopContactView.a(this.a, str);
-      this.a.a.notifyDataSetChanged();
-      this.a.b(false);
-      NewTroopContactView.a(this.a);
-    }
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    this.jdField_a_of_type_JavaLangString = parambeog.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = parambeog.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = parambeog.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = parambeog.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Boolean = parambeog.jdField_a_of_type_Boolean;
+    this.c = parambeog.c;
+    this.d = parambeog.d;
+    this.jdField_b_of_type_Boolean = parambeog.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Float = parambeog.jdField_a_of_type_Float;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.c).append(",").append(this.jdField_b_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

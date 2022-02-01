@@ -10,7 +10,7 @@ import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zmn;
+import zqi;
 
 @SuppressLint({"ViewConstructor"})
 public class MiniAppCamera
@@ -43,7 +43,7 @@ public class MiniAppCamera
   private static WeakReference<WebviewContainer> sContainer;
   private static String videoPath;
   private int cameraId;
-  private volatile zmn ffmpeg;
+  private volatile zqi ffmpeg;
   private CameraSurfaceView.CameraSurfaceViewCallBack mCallback;
   protected WeakReference<WebviewContainer> mWcRef;
   
@@ -68,9 +68,9 @@ public class MiniAppCamera
   private void execCommand(String paramString1, String paramString2, String paramString3, WebviewContainer paramWebviewContainer, String paramString4, int paramInt)
   {
     if (this.ffmpeg == null) {
-      this.ffmpeg = zmn.a(BaseApplicationImpl.getApplication());
+      this.ffmpeg = zqi.a(BaseApplicationImpl.getApplication());
     }
-    paramWebviewContainer.showLoading(anni.a(2131705566));
+    paramWebviewContainer.showLoading(anzj.a(2131705673));
     paramString1 = paramString1.split(" ");
     mExecutor.execute(new MiniAppCamera.6(this, paramString2, paramString1, paramWebviewContainer, paramString4, paramInt, paramString3));
   }
@@ -231,7 +231,7 @@ public class MiniAppCamera
     //   62: getstatic 41	com/tencent/mobileqq/mini/widget/media/MiniAppCamera:cameraWidth	I
     //   65: getstatic 43	com/tencent/mobileqq/mini/widget/media/MiniAppCamera:cameraHeight	I
     //   68: iload_3
-    //   69: invokestatic 416	bgmo:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   69: invokestatic 416	bhmq:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   72: astore_0
     //   73: aload 5
     //   75: ifnull +8 -> 83

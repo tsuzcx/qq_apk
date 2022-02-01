@@ -1,142 +1,208 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import friendlist.GetLastLoginInfoResp;
+import friendlist.GetSimpleOnlineFriendInfoResp;
+import friendlist.LastLoginInfo;
+import friendlist.LastLoginPageInfo;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class aoqm
-  implements anil
+  extends aoqf
 {
-  public static final String TAG = "AppletsObserver";
-  
-  protected void onAppletsSettingSwitchChange(int paramInt) {}
-  
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList) {}
-  
-  protected void onGetAppletsPushUnreadInfo(Object paramObject) {}
-  
-  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<aoqv> paramList)
+  public aoqm(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    for (localObject1 = (akxz)((QQAppInterface)localObject1).getManager(315);; localObject1 = null)
+    super(paramQQAppInterface, paramFriendListHandler);
+  }
+  
+  private void a(FromServiceMsg paramFromServiceMsg, GetLastLoginInfoResp paramGetLastLoginInfoResp)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramGetLastLoginInfoResp != null) && (paramGetLastLoginInfoResp.errorCode == 0))
     {
-      if (localObject1 == null) {
+      paramFromServiceMsg = paramGetLastLoginInfoResp.stPageInfo;
+      ArrayList localArrayList = paramGetLastLoginInfoResp.vecLastLoginInfo;
+      anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      a(localArrayList);
+      if (paramFromServiceMsg.dwCurrentReqIndex == paramFromServiceMsg.dwTotalReqTimes)
+      {
+        bhlf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramGetLastLoginInfoResp.iRefreshIntervalMin);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(48, true, Boolean.valueOf(true));
+      }
+      while (paramFromServiceMsg.dwCurrentReqIndex >= paramFromServiceMsg.dwTotalReqTimes) {
         return;
       }
-      HashSet localHashSet = new HashSet();
-      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(48, true, Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(paramFromServiceMsg.dwTotalReqTimes, paramFromServiceMsg.dwCurrentReqIndex, paramFromServiceMsg.dwCurrentReqUin);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(48, false, Boolean.valueOf(true));
+  }
+  
+  private void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramObject instanceof GetSimpleOnlineFriendInfoResp))
+    {
+      paramFromServiceMsg = (GetSimpleOnlineFriendInfoResp)paramObject;
+      if (paramFromServiceMsg == null) {
+        a(13, false, null);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.result == 1))
+    {
+      a(13, false, null);
+      return;
+    }
+    if (paramFromServiceMsg.shClickInterval > 30)
+    {
+      i = paramFromServiceMsg.shClickInterval * 1000;
+      QQAppInterface.f = i;
+      if (paramFromServiceMsg.intervalTimeMin <= 3) {
+        break label181;
+      }
+    }
+    label181:
+    for (int i = paramFromServiceMsg.intervalTimeMin * 60 * 1000;; i = 180000)
+    {
+      QQAppInterface.e = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "Next Get Online Friend Delay " + QQAppInterface.e);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.b(paramFromServiceMsg.cShowPcIcon);
+      if (paramFromServiceMsg.vecFriendInfo.size() <= 0) {
+        break label187;
+      }
+      ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(paramFromServiceMsg.vecFriendInfo);
+      a(13, true, null);
+      return;
+      i = 30000;
+      break;
+    }
+    label187:
+    a(13, false, null);
+  }
+  
+  private void a(List<LastLoginInfo> paramList)
+  {
+    Object localObject1;
+    Object localObject2;
+    ArrayList localArrayList;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder().append("saveLastLoginInfos begin ");
+      if (paramList != null)
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        i = paramList.size();
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, i);
+      }
+    }
+    else
+    {
+      localObject1 = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      localObject2 = ((anyw)localObject1).d();
+      if ((paramList == null) || (localObject2 == null)) {
+        break label334;
+      }
+      localArrayList = new ArrayList(((ArrayList)localObject2).size());
+      if (paramList.size() != 0) {
+        break label187;
+      }
+      paramList = ((ArrayList)localObject2).iterator();
+      label101:
+      while (paramList.hasNext())
+      {
+        localObject2 = (Friends)paramList.next();
+        if (localObject2 != null)
         {
-          Object localObject2 = (aoqv)paramList.next();
-          if ((((aoqv)localObject2).a != null) && (((aoqv)localObject2).a.size() > 0) && (((aoqv)localObject2).a.get(0) != null) && (((AppletItem)((aoqv)localObject2).a.get(0)).a() == 1L))
-          {
-            localObject2 = (AppletItem)((aoqv)localObject2).a.get(0);
-            if (((AppletItem)localObject2).b() == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              ((akxz)localObject1).a(paramBoolean);
-              onAppletsSettingSwitchChange(((AppletItem)localObject2).b());
-              break;
-            }
+          if (((Friends)localObject2).lastLoginType == 0L) {
+            break label354;
           }
-          if ((((aoqv)localObject2).a != null) && (((aoqv)localObject2).a.size() > 0))
-          {
-            localObject2 = ((aoqv)localObject2).a.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              AppletItem localAppletItem = (AppletItem)((Iterator)localObject2).next();
-              if ((localAppletItem.a() != 1L) && (localAppletItem.b() != 1)) {
-                localHashSet.add(String.valueOf(localAppletItem.a()));
-              }
-            }
-          }
+          ((Friends)localObject2).lastLoginType = 0L;
         }
       }
-      ((akxz)localObject1).a(localHashSet);
-      return;
+    }
+    label187:
+    label334:
+    label349:
+    label354:
+    for (int i = 1;; i = 0)
+    {
+      if (((Friends)localObject2).showLoginClient != 0L)
+      {
+        ((Friends)localObject2).showLoginClient = 0L;
+        i = 1;
+      }
+      if (i == 0) {
+        break label101;
+      }
+      localArrayList.add(localObject2);
+      break label101;
+      i = -1;
+      break;
+      paramList = paramList.iterator();
+      Friends localFriends;
+      while (paramList.hasNext())
+      {
+        localObject2 = (LastLoginInfo)paramList.next();
+        localFriends = ((anyw)localObject1).e(String.valueOf(((LastLoginInfo)localObject2).dwFriendUin));
+        if (localFriends != null)
+        {
+          if (localFriends.showLoginClient == ((LastLoginInfo)localObject2).dwClient) {
+            break label349;
+          }
+          localFriends.showLoginClient = ((LastLoginInfo)localObject2).dwClient;
+        }
+      }
+      for (i = 1;; i = 0)
+      {
+        if (localFriends.lastLoginType != ((LastLoginInfo)localObject2).dwLastLoginType)
+        {
+          localFriends.lastLoginType = ((LastLoginInfo)localObject2).dwLastLoginType;
+          i = 1;
+        }
+        if (i == 0) {
+          break;
+        }
+        localArrayList.add(localFriends);
+        break;
+        ((anyw)localObject1).a((Friends[])localArrayList.toArray(new Friends[localArrayList.size()]), localArrayList.size());
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "saveLastLoginInfos ends ");
+        }
+        return;
+      }
     }
   }
   
-  protected void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap) {}
-  
-  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
+  public boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    akxz localakxz = null;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {
-      localakxz = (akxz)((QQAppInterface)localObject).getManager(315);
-    }
-    if (localakxz == null) {}
-    for (;;)
-    {
-      return;
-      if ((paramList != null) && (paramBoolean))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject = (AppletItem)paramList.next();
-          int i = ((AppletItem)localObject).b();
-          if (((AppletItem)localObject).a() == 1L)
-          {
-            if (i == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              localakxz.a(paramBoolean);
-              onAppletsSettingSwitchChange(i);
-              break;
-            }
-          }
-          if (localakxz != null) {
-            if (i == 0) {
-              localakxz.c(String.valueOf(((AppletItem)localObject).a()));
-            } else {
-              localakxz.d(String.valueOf(((AppletItem)localObject).a()));
-            }
-          }
-        }
-      }
-    }
+    return ("friendlist.GetLastLoginInfoReq".equals(paramString)) || ("friendlist.GetSimpleOnlineFriendInfoReq".equals(paramString));
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    case 1: 
-      onGetAppletsDetail(paramBoolean, (List)paramObject);
-      return;
-    case 2: 
-      onGetAppletsSettingSwitch(paramBoolean, (List)paramObject);
-      return;
-    case 3: 
-      onSetAppletsSettingSwitch(paramBoolean, (List)paramObject);
-      return;
-    case 8: 
-      onReceiveAppletsMessageUnreadInfo((Map)paramObject);
+    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    if ("friendlist.GetLastLoginInfoReq".equals(paramToServiceMsg)) {
+      a(paramFromServiceMsg, (GetLastLoginInfoResp)paramObject);
+    }
+    while (!"friendlist.GetSimpleOnlineFriendInfoReq".equals(paramToServiceMsg)) {
       return;
     }
-    onGetAppletsPushUnreadInfo(paramObject);
+    if (paramObject != null)
+    {
+      a(paramFromServiceMsg, paramObject);
+      return;
+    }
+    a(13, false, null);
   }
 }
 

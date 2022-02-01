@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.jsp;
 
-import avnu;
+import awgf;
 
 public class DataApiPlugin$2
   implements Runnable
 {
-  public DataApiPlugin$2(avnu paramavnu, String paramString1, String paramString2) {}
+  public DataApiPlugin$2(awgf paramawgf, String paramString1, String paramString2) {}
   
   public void run()
   {

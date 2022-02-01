@@ -15,7 +15,7 @@ import feedcloud.FeedCloudWrite.StDoReplyReq;
 import feedcloud.FeedCloudWrite.StDoReplyRsp;
 import java.util.ArrayList;
 import java.util.List;
-import uxx;
+import uzg;
 
 public class QCircleDoReplyRequest
   extends QCircleBaseRequest
@@ -33,7 +33,7 @@ public class QCircleDoReplyRequest
       return;
     }
     this.req = new FeedCloudWrite.StDoReplyReq();
-    this.req.feed.set(uxx.a(paramStFeed));
+    this.req.feed.set(uzg.a(paramStFeed));
     this.req.comment.set(paramStComment);
     this.req.reply.set(paramStReply);
     this.req.from.set(0);

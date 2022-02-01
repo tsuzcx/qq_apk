@@ -1,24 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
-
-class asou
-  implements Animator.AnimatorListener
+public abstract class asou
 {
-  asou(asot paramasot) {}
+  public int b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public asou(int paramInt)
   {
-    SignalBombAnimationView.b(this.a.a.a).setTranslationY(0.0F);
-    SignalBombAnimationView.a(this.a.a.a, false);
+    this.b = paramInt;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a() {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public int b()
+  {
+    return 0;
+  }
 }
 
 

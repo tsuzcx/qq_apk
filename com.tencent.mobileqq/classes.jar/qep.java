@@ -1,34 +1,34 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 class qep
-  implements ViewBase.OnClickListener
+  extends pfh
 {
-  qep(qel paramqel, Container paramContainer) {}
+  qep(qek paramqek) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void h(int paramInt)
   {
-    paramViewBase = BaseApplicationImpl.getContext();
-    int i;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
-      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        i = 1;
+    boolean bool;
+    if (paramInt < 3)
+    {
+      bool = true;
+      QLog.d("RvPolymericContainer", 1, "visibility changed, visible :  " + bool);
+      if (!bool) {
+        break label61;
       }
+      qek.c(this.a);
     }
     for (;;)
     {
-      if ((i == 0) && (pzo.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
-        qel.a(this.jdField_a_of_type_Qel, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      if (paramInt == 5) {
+        pfd.a().b(this);
       }
       return;
-      i = 0;
-      continue;
-      i = 1;
+      bool = false;
+      break;
+      label61:
+      if (qek.a(this.a) != null) {
+        qek.a(this.a).b();
+      }
     }
   }
 }

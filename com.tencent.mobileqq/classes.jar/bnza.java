@@ -1,54 +1,35 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class bnza
+class bnza
+  extends Handler
 {
-  private static allk a = new allk(bgtn.a(), bgtn.b());
-  
-  public static allk a()
+  public bnza(Looper paramLooper)
   {
-    return a;
+    super(paramLooper);
   }
   
-  public static allk a(AECaptureMode paramAECaptureMode, allk paramallk, boolean paramBoolean, AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  public void handleMessage(Message paramMessage)
   {
-    allk localallk;
-    if (paramAECaptureMode == AECaptureMode.NORMAL)
-    {
-      localallk = paramallk;
-      if (paramBoolean)
-      {
-        if (paramRatio != AEVideoStoryTopBarViewModel.Ratio.R_1_1) {
-          break label50;
-        }
-        i = Math.min(paramallk.a, paramallk.b);
-        localallk = new allk(i, i);
-      }
+    if (paramMessage.what == 0) {
+      bnyz.a(0);
     }
-    label50:
-    do
-    {
-      do
-      {
-        return localallk;
-        localallk = paramallk;
-      } while (paramRatio != AEVideoStoryTopBarViewModel.Ratio.FULL);
-      return paramallk;
-      localallk = paramallk;
-    } while (paramAECaptureMode != AECaptureMode.GIF);
-    int j = Math.min(paramallk.a, paramallk.b);
-    int k = bggq.a(BaseApplicationImpl.getContext(), 250.0F);
-    int i = j;
-    if (k > 0) {
-      i = Math.min(j, k);
+    while ((paramMessage.what != 1) || (!bnyz.a()) || (TextUtils.isEmpty(bnyz.a())) || (TextUtils.isEmpty(bnyz.b()))) {
+      return;
     }
-    return new allk(i, i);
-  }
-  
-  public static void a(allk paramallk)
-  {
-    a = paramallk;
+    String str1 = bnyz.a();
+    String str2 = bnyz.b();
+    int i = bnyz.a();
+    int j = bnyz.b();
+    String str3 = bnyz.a(BaseApplicationImpl.getApplication());
+    Process.setThreadPriority(10);
+    bnyz.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
+    bnyz.b();
   }
 }
 

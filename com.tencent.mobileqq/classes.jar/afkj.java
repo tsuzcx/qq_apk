@@ -1,26 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afkj
-  implements DialogInterface.OnClickListener
+  extends azov
 {
-  public afkj(TroopInfoActivity paramTroopInfoActivity) {}
+  public afkj(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    }
+    if (paramBoolean1)
     {
-      bcst.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
-      paramDialogInterface.dismiss();
-      this.a.j();
+      if (paramBoolean2)
+      {
+        RegisterQQNumberActivity.a(this.a, true);
+        RegisterQQNumberActivity.b(this.a);
+        return;
+      }
+      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
+      {
+        RegisterQQNumberActivity.a(this.a);
+        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
+        localIntent.putExtra("phonenum", this.a.a);
+        localIntent.putExtra("key", this.a.b);
+        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_binduin", paramString);
+        this.a.startActivity(localIntent);
+        this.a.finish();
+        return;
+      }
+      RegisterQQNumberActivity.b(this.a);
       return;
     }
+    RegisterQQNumberActivity.b(this.a);
   }
 }
 

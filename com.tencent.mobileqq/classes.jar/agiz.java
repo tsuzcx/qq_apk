@@ -1,20 +1,13 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
 class agiz
-  extends TroopAppShortcutContainer
+  implements agxq
 {
-  agiz(agiy paramagiy, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
-  }
+  agiz(agiq paramagiq) {}
   
-  public void a(boolean paramBoolean)
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    this.a.a(true);
+    agiq.a(this.a);
   }
 }
 

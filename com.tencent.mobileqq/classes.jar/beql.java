@@ -1,32 +1,31 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorView;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class beql
-  extends anwn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public beql(TroopAioKeywordTipManager.2 param2) {}
+  public beql(WriteTogetherEditorView paramWriteTogetherEditorView) {}
   
-  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SparseArray localSparseArray;
-    if (paramBoolean)
+    if ((WriteTogetherEditorView.a(this.a) != null) && (WriteTogetherEditorView.a(this.a).size() != 0))
     {
-      localSparseArray = this.a.this$0.b;
-      if (paramList != null) {
-        try
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
-            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
-          }
+      float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      paramValueAnimator = WriteTogetherEditorView.a(this.a).iterator();
+      while (paramValueAnimator.hasNext())
+      {
+        beog localbeog = (beog)paramValueAnimator.next();
+        if (localbeog.jdField_a_of_type_Float < 0.0F) {
+          localbeog.jdField_a_of_type_Float = (1.0F - f1);
         }
-        finally {}
+        float f2 = localbeog.jdField_a_of_type_Float;
+        WriteTogetherEditorView.a(this.a).put(localbeog.jdField_a_of_type_JavaLangString, Float.valueOf((f2 + f1) % 1.0F));
       }
+      this.a.invalidate();
     }
   }
 }

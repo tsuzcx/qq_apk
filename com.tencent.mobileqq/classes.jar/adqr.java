@@ -1,8 +1,28 @@
-public abstract interface adqr
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class adqr
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public adqr(AccountManageActivity paramAccountManageActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void onClick(View paramView)
+  {
+    bdll.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
+      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
+    }
+    AccountManageActivity.a(this.a.getActivity(), this.a.app);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

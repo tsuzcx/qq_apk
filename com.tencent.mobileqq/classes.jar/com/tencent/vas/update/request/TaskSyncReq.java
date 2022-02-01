@@ -22,12 +22,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TaskSyncReq
 {
   private static final String TAG = "VasUpdate_TaskSyncReq";
+  private HashMap<String, ItemLocalVerPrt> mArrayExistItem;
   private int mDLFrom;
   private SeqConfigEntity mSeqConfig;
   private int mSyncMode;
@@ -35,6 +39,7 @@ public class TaskSyncReq
   public TaskSyncReq(int paramInt)
   {
     this.mDLFrom = paramInt;
+    this.mArrayExistItem = new HashMap();
   }
   
   private void addLocalShouldUpdate(HashMap<String, ItemUpdateVerPtr> paramHashMap)
@@ -180,9 +185,8 @@ public class TaskSyncReq
       localJSONObject.put("seq", this.mSeqConfig.mSeq);
       localJSONObject.put("sync_mode", this.mSyncMode);
       localJSONObject.put("plver", this.mSeqConfig.mPreloadVer);
-      if (VasUpdateWrapper.getLog().isColorLevel()) {
-        VasUpdateWrapper.getLog().i("VasUpdate_TaskSyncReq", "sync getRequestContent = " + localJSONObject.toString());
-      }
+      localJSONObject.put("item_list", parseItemLocalVerList(this.mArrayExistItem));
+      VasUpdateWrapper.getLog().e("VasUpdate_TaskSyncReq", "sync getRequestContent = " + localJSONObject.toString());
       return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
@@ -243,14 +247,75 @@ public class TaskSyncReq
     VasUpdateSystem.getInstance().onTaskSyncTableComplete(this.mSeqConfig.mPollTime, this.mDLFrom, paramHashMap);
   }
   
+  private JSONArray parseItemLocalVerList(HashMap<String, ItemLocalVerPrt> paramHashMap)
+  {
+    localJSONArray = new JSONArray();
+    if (paramHashMap == null) {
+      return localJSONArray;
+    }
+    try
+    {
+      paramHashMap = paramHashMap.entrySet().iterator();
+      while (paramHashMap.hasNext())
+      {
+        ItemLocalVerPrt localItemLocalVerPrt = (ItemLocalVerPrt)((Map.Entry)paramHashMap.next()).getValue();
+        if (localItemLocalVerPrt != null)
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("bid", CommonUtil.sParseBidId(localItemLocalVerPrt.mItemId));
+          localJSONObject.put("scid", CommonUtil.sParseScid(localItemLocalVerPrt.mItemId));
+          localJSONObject.put("version", localItemLocalVerPrt.mMd5);
+          localJSONArray.put(localJSONObject);
+        }
+      }
+      return localJSONArray;
+    }
+    catch (Throwable paramHashMap)
+    {
+      paramHashMap.printStackTrace();
+    }
+  }
+  
+  private void readLocalTable()
+  {
+    try
+    {
+      this.mArrayExistItem.clear();
+      Object localObject = VasUpdateWrapper.getDbManager().selectAllItem(0);
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        int i;
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          IDbManager.ItemInfo localItemInfo = (IDbManager.ItemInfo)((Iterator)localObject).next();
+          if ((localItemInfo != null) && (!TextUtils.isEmpty(localItemInfo.content))) {
+            this.mArrayExistItem.put(localItemInfo.itemId, ItemLocalVerPrt.parseJsonToItemLocalVerPrt(localItemInfo.content));
+          }
+          i = this.mArrayExistItem.size();
+        } while (i <= 1300);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
   public String getRequest()
   {
     this.mSyncMode = 1;
     if (this.mSeqConfig == null) {
       loadSeqConfig();
     }
-    if (this.mSeqConfig.mSeq == 0L) {
+    if (this.mSeqConfig.mSeq == 0L)
+    {
       this.mSyncMode = 0;
+      readLocalTable();
     }
     return getRequestContent();
   }

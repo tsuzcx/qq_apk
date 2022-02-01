@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.appcommon.js.AppInterface.2;
-
-public class biqk
-  implements DialogInterface.OnDismissListener
+public abstract interface biqk
 {
-  public biqk(AppInterface.2 param2) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.this$0.tipDialog = null;
-  }
+  public abstract void onCheckOfflineFinish(int paramInt);
 }
 
 

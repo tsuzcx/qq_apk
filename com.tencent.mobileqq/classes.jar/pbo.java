@@ -1,16 +1,60 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pbo
-  extends pcm
+public class pbo
+  implements AladdinConfigHandler
 {
-  pbo(pbe parampbe, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampbe, null);
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    Map localMap = pan.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "native_article"))
+      {
+        bnrf.a("native_proteus_offline_bid", (String)localObject2);
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
+    }
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "native_article_cdn_url"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
+        continue;
+        svu.a(paramString, (String)localObject1);
+        return true;
+      }
+      else
+      {
+        localObject2 = paramString;
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
+    }
   }
   
-  void a(pcp parampcp)
+  public void onWipeConfig(int paramInt)
   {
-    parampcp.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    bnrf.a("native_proteus_offline_bid", "0");
   }
 }
 

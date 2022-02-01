@@ -10,16 +10,16 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import org.json.JSONObject;
-import ulw;
+import umu;
 
 public class WSPushVideoModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushVideoModel> CREATOR = new ulw();
+  public static final Parcelable.Creator<WSPushVideoModel> CREATOR = new umu();
   private int a;
   public String a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private int b;
+  public String b;
   private int jdField_c_of_type_Int;
   private String jdField_c_of_type_JavaLangString;
   private int jdField_d_of_type_Int;
@@ -31,9 +31,9 @@ public class WSPushVideoModel
   
   public WSPushVideoModel(Parcel paramParcel)
   {
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
     this.e = paramParcel.readString();
     this.f = paramParcel.readString();
@@ -48,9 +48,9 @@ public class WSPushVideoModel
     if (paramJSONObject != null)
     {
       WSPushVideoModel localWSPushVideoModel = new WSPushVideoModel();
-      localWSPushVideoModel.jdField_b_of_type_JavaLangString = paramJSONObject.optString("video_id");
-      localWSPushVideoModel.jdField_c_of_type_JavaLangString = paramJSONObject.optString("video_url");
-      localWSPushVideoModel.jdField_a_of_type_JavaLangString = paramJSONObject.optString("video_cover_url");
+      localWSPushVideoModel.jdField_c_of_type_JavaLangString = paramJSONObject.optString("video_id");
+      localWSPushVideoModel.jdField_a_of_type_JavaLangString = paramJSONObject.optString("video_url");
+      localWSPushVideoModel.jdField_b_of_type_JavaLangString = paramJSONObject.optString("video_cover_url");
       localWSPushVideoModel.e = paramJSONObject.optString("person_avatar");
       localWSPushVideoModel.jdField_d_of_type_JavaLangString = paramJSONObject.optString("person_id");
       localWSPushVideoModel.f = paramJSONObject.optString("person_nick");
@@ -67,17 +67,17 @@ public class WSPushVideoModel
   {
     stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
     localstSimpleMetaFeed.id = paramString;
-    localstSimpleMetaFeed.video_url = this.jdField_c_of_type_JavaLangString;
+    localstSimpleMetaFeed.video_url = this.jdField_a_of_type_JavaLangString;
     paramString = new ArrayList();
     stMetaUgcImage localstMetaUgcImage1 = new stMetaUgcImage();
-    localstMetaUgcImage1.url = this.jdField_a_of_type_JavaLangString;
+    localstMetaUgcImage1.url = this.jdField_b_of_type_JavaLangString;
     stMetaUgcImage localstMetaUgcImage2 = new stMetaUgcImage();
-    localstMetaUgcImage2.url = this.jdField_a_of_type_JavaLangString;
+    localstMetaUgcImage2.url = this.jdField_b_of_type_JavaLangString;
     paramString.add(localstMetaUgcImage1);
     paramString.add(localstMetaUgcImage2);
     localstSimpleMetaFeed.images = paramString;
     paramString = new stMetaUgcVideoSeg();
-    paramString.file_id = this.jdField_b_of_type_JavaLangString;
+    paramString.file_id = this.jdField_c_of_type_JavaLangString;
     paramString.duration = this.jdField_c_of_type_Int;
     paramString.height = this.jdField_a_of_type_Int;
     paramString.width = this.jdField_b_of_type_Int;
@@ -107,9 +107,9 @@ public class WSPushVideoModel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
     paramParcel.writeString(this.e);
     paramParcel.writeString(this.f);

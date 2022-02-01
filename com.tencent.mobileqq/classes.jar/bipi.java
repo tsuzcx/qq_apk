@@ -1,379 +1,367 @@
-import android.os.Build;
+import android.graphics.Bitmap;
+import android.net.http.SslCertificate;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
+import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.report.BaseData;
-import com.tencent.open.agent.report.ReportCenter.2;
-import com.tencent.open.agent.report.ReportCenter.3;
-import com.tencent.open.agent.report.ReportCenter.4;
-import com.tencent.open.agent.report.ReportCenter.5;
-import com.tencent.open.agent.report.ReportCenter.6;
-import com.tencent.open.agent.report.ReportCenter.7;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.WebViewWrapper.WebViewClientImpl.2;
+import com.tencent.mobileqq.webview.swift.WebViewWrapper.WebViewClientImpl.3;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class bipi
+  extends WebViewClient
 {
-  protected static bipi a;
-  public Handler a;
-  public ArrayList<Serializable> a;
-  protected Random a;
-  protected Executor a;
-  public ArrayList<Serializable> b;
-  protected Executor b;
-  protected Executor c = ThreadManager.newSerialExecutor();
+  ArrayMap<String, Object> a;
   
-  protected bipi()
+  bipi(bipd parambipd) {}
+  
+  WebResourceResponse a(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bipj(this, Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newSerialExecutor();
-    this.jdField_b_of_type_JavaUtilConcurrentExecutor = ThreadManager.newSerialExecutor();
+    return a(paramWebView, paramString, "", false);
   }
   
-  public static bipi a()
+  WebResourceResponse a(WebView paramWebView, String paramString1, String paramString2, boolean paramBoolean)
   {
-    try
-    {
-      if (jdField_a_of_type_Bipi == null) {
-        jdField_a_of_type_Bipi = new bipi();
-      }
-      bipi localbipi = jdField_a_of_type_Bipi;
-      return localbipi;
-    }
-    finally {}
-  }
-  
-  public int a(int paramInt)
-  {
-    int i;
-    if (paramInt == 0)
-    {
-      i = biug.a(biip.a().a(), null).a("Common_CGIReportFrequencySuccess");
-      paramInt = i;
-      if (i == 0) {
-        paramInt = 10;
-      }
-    }
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(paramString1)) {}
+    WebViewPluginEngine localWebViewPluginEngine;
     do
     {
-      return paramInt;
-      i = biug.a(biip.a().a(), null).a("Common_CGIReportFrequencyFailed");
-      paramInt = i;
-    } while (i != 0);
-    return 100;
-  }
-  
-  public Bundle a()
-  {
-    localObject1 = bipk.a().a("report_cgi");
-    if (localObject1 != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->prepareCgiData, itemList size: " + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-      return null;
-    }
-    localObject1 = new Bundle();
-    try
-    {
-      ((Bundle)localObject1).putString("releaseversion", biip.a().f());
-      ((Bundle)localObject1).putString("device", Build.DEVICE);
-      ((Bundle)localObject1).putString("qua", biul.b);
-      ((Bundle)localObject1).putString("key", "appid,apn,frequency,commandid,resultcode,tmcost,reqsize,rspsize,detail,touin,deviceinfo");
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        Object localObject2 = (BaseData)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ((Bundle)localObject1).putString(i + "_1", (String)((BaseData)localObject2).attrs.get("appid"));
-        ((Bundle)localObject1).putString(i + "_2", (String)((BaseData)localObject2).attrs.get("apn"));
-        ((Bundle)localObject1).putString(i + "_3", (String)((BaseData)localObject2).attrs.get("frequency"));
-        ((Bundle)localObject1).putString(i + "_4", (String)((BaseData)localObject2).attrs.get("commandid"));
-        ((Bundle)localObject1).putString(i + "_5", (String)((BaseData)localObject2).attrs.get("resultCode"));
-        ((Bundle)localObject1).putString(i + "_6", (String)((BaseData)localObject2).attrs.get("timeCost"));
-        ((Bundle)localObject1).putString(i + "_7", (String)((BaseData)localObject2).attrs.get("reqSize"));
-        ((Bundle)localObject1).putString(i + "_8", (String)((BaseData)localObject2).attrs.get("rspSize"));
-        ((Bundle)localObject1).putString(i + "_9", (String)((BaseData)localObject2).attrs.get("detail"));
-        ((Bundle)localObject1).putString(i + "_10", (String)((BaseData)localObject2).attrs.get("uin"));
-        localObject2 = biuf.h() + "&" + (String)((BaseData)localObject2).attrs.get("deviceInfo");
-        ((Bundle)localObject1).putString(i + "_11", (String)localObject2);
-        i += 1;
-      }
       return localObject1;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ReportCenter", 2, "-->prepareCgiData, exception.", localException);
+      if (paramString1.startsWith("mqqpa://resourceid/")) {
+        return tyo.a(paramString1);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportCenter", 2, "-->prepareCgiData, end. params: " + ((Bundle)localObject1).toString());
-      }
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.5(this));
-  }
-  
-  public void a(Bundle paramBundle, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (paramBundle == null) {}
-    for (;;)
+      localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
+    } while (localWebViewPluginEngine == null);
+    String str;
+    if (paramString1.startsWith("https://jsbridge/"))
     {
-      return;
-      try
+      str = paramString1.replace("https://jsbridge/", "jsbridge://");
+      if (QLog.isColorLevel())
       {
-        biip.a().a(Long.valueOf(paramString2).longValue());
-        if (QLog.isColorLevel()) {
-          QLog.d("ReportCenter", 2, "-->reportVia, bundle: " + paramBundle.toString());
+        if ((!str.startsWith("jsbridge://")) || (str.length() <= 512)) {
+          break label231;
         }
-        if ((!a("report_via", paramString1)) && (!paramBoolean)) {
-          continue;
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.2(this, paramString2, paramBundle, paramBoolean));
-        return;
+        QLog.i("WebLog_WebViewWrapper", 2, "doInterceptRequest:" + str.substring(0, 512));
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          biip.a().a(0L);
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.c.execute(new ReportCenter.4(this, paramString));
-  }
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->reportCgi, command: " + paramString1 + " | responseCode: " + paramInt2 + " | uin: " + paramString2 + " | detail: " + paramString3);
-    }
-    this.c.execute(new ReportCenter.7(this, paramInt3, paramString1, paramString3, paramInt1, paramInt2, paramString2, paramBoolean));
-  }
-  
-  public void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->reportCgi, command: " + paramString1 + " | startTime: " + paramLong1 + " | reqSize:" + paramLong2 + " | rspSize: " + paramLong3 + " | responseCode: " + paramInt + " | uin: " + paramLong4 + " | appid: " + paramString2 + " | detail: " + paramString3);
-    }
-    if ((!a("report_cgi", "" + paramInt)) && (!paramBoolean)) {
-      return;
-    }
-    long l = SystemClock.elapsedRealtime();
-    this.c.execute(new ReportCenter.3(this, paramString2, paramString1, paramString3, paramInt, paramLong2, paramLong3, l - paramLong1, paramLong4, paramBoolean));
-  }
-  
-  public void a(String paramString1, String paramString2, Bundle paramBundle, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.6(this, paramBundle, paramString1, paramBoolean));
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean)
-  {
-    try
-    {
-      a(bipr.a(paramString1, paramString2, paramString4, paramString5, paramString3, paramString6, paramString7, "", "", paramString8, paramString9), paramString3, paramString1, paramBoolean);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ReportCenter", 2, "-->reportVia 2 exception", paramString1);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
-  {
-    try
-    {
-      a(bipr.a(paramString1, paramString2, paramString4, paramString5, paramString3, paramString6, paramString5, "", "", "", ""), paramString3, paramString1, paramBoolean);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ReportCenter", 2, "-->reportVia 1 exception", paramString1);
-    }
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    int i = 5;
-    boolean bool = false;
-    int j;
-    if (paramString.equals("report_cgi"))
-    {
-      j = biug.a(biip.a().a(), null).a("Common_CGIReportMaxcount");
-      if (j != 0) {}
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportCenter", 2, "-->availableCount, report: " + paramString + " | dataSize: " + paramInt + " | maxcount: " + i);
+      if ((this.b.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (paramString2.equalsIgnoreCase("post")) && (paramBoolean)) {
+        ThreadManagerV2.getUIHandlerV2().post(new WebViewWrapper.WebViewClientImpl.2(this, localWebViewPluginEngine, str));
       }
-      if (paramInt >= i) {
-        bool = true;
+      if ((!str.startsWith("jsbridge:")) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
+        break label257;
       }
-      return bool;
-      i = j;
-      continue;
-      if (paramString.equals("report_via"))
-      {
-        j = biug.a(biip.a().a(), null).a("Agent_ReportBatchCount");
-        if (j != 0) {
-          i = j;
-        }
+      ThreadManagerV2.getUIHandlerV2().post(new WebViewWrapper.WebViewClientImpl.3(this, localWebViewPluginEngine, str));
+      return birz.a();
+      str = paramString1;
+      if (!paramString1.startsWith("http://jsbridge/")) {
+        break;
       }
-      else
-      {
-        i = 0;
-      }
+      str = paramString1.replace("http://jsbridge/", "jsbridge://");
+      break;
+      label231:
+      QLog.i("WebLog_WebViewWrapper", 2, "doInterceptRequest:" + str);
     }
-  }
-  
-  protected boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = true;
-    boolean bool3 = false;
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->availableFrequency, report: " + paramString1 + " | ext: " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return bool2;
-    }
-    if (paramString1.equals("report_cgi")) {}
     for (;;)
     {
       try
       {
-        int i = Integer.parseInt(paramString2);
-        i = a(i);
-        if (this.jdField_a_of_type_JavaUtilRandom.nextInt(100) < i)
+        label257:
+        if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null)
         {
-          bool2 = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
+          paramWebView = this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.requestResource(str);
+          if (!(paramWebView instanceof WebResourceResponse)) {
+            break label412;
           }
-          QLog.d("ReportCenter", 2, "-->availableFrequency, result: " + bool1 + " | frequency: " + i);
-          return bool1;
+          paramWebView = (WebResourceResponse)paramWebView;
         }
-        bool1 = false;
-        continue;
-        if (paramString1.equals("report_via"))
-        {
-          i = bius.a(paramString2);
-          if (new Random().nextInt(100) < i)
-          {
-            bool1 = true;
-            continue;
-          }
-          bool1 = bool3;
-          continue;
-        }
-        i = 100;
       }
       catch (Exception paramString1)
       {
-        return false;
+        label332:
+        paramWebView = localObject2;
+        label343:
+        QLog.e("WebLog_WebViewWrapper", 1, "shouldInterceptRequest:intercept by sonic error -> " + paramString1.getMessage());
+        continue;
       }
-      bool1 = bool3;
+      for (;;)
+      {
+        try
+        {
+          QLog.i("WebLog_WebViewWrapper", 1, "doInterceptRequest:intercept by sonic.");
+          localObject1 = paramWebView;
+          if (paramWebView != null) {
+            break;
+          }
+        }
+        catch (Exception paramString1)
+        {
+          break label343;
+          break label332;
+        }
+        try
+        {
+          paramString1 = localWebViewPluginEngine.a(str, 8L);
+          if (!(paramString1 instanceof WebResourceResponse)) {
+            continue;
+          }
+          paramString1 = (WebResourceResponse)paramString1;
+          paramWebView = paramString1;
+          return paramWebView;
+        }
+        catch (Exception paramString1)
+        {
+          QLog.e("WebLog_WebViewWrapper", 1, "shouldInterceptRequest error:" + paramString1.getMessage());
+          return paramWebView;
+        }
+      }
+      paramWebView = null;
+      continue;
+      label412:
+      paramWebView = null;
     }
   }
   
-  public Bundle b()
+  public void onDetectedBlankScreen(String paramString, int paramInt)
   {
-    for (;;)
+    QLog.i("WebLog_WebViewWrapper", 1, "onDetectedBlankScreen, status: " + paramInt + ", url:" + paramString);
+    if (this.b.jdField_a_of_type_Bioe != null) {
+      this.b.jdField_a_of_type_Bioe.onDetectedBlankScreen(paramString, paramInt);
+    }
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    if ((this.b.a()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
+      return;
+    }
+    QLog.d("WebLog_WebViewWrapper", 1, "onPageFinished:" + paramString);
+    super.onPageFinished(paramWebView, paramString);
+    if (this.b.jdField_a_of_type_Bioe != null) {
+      this.b.jdField_a_of_type_Bioe.onPageFinished(paramWebView, paramString);
+    }
+    paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+    if (paramWebView != null) {
+      paramWebView.a(paramString, 8589934594L, null);
+    }
+    if (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {}
+    try
     {
-      try
+      paramWebView = new Bundle();
+      paramWebView.putString("input-box-num", "");
+      paramString = new bipj(this);
+      this.b.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension().getFakeLoginStatus(paramWebView, paramString);
+      agdz.b(this.b.jdField_a_of_type_AndroidContentIntent);
+      return;
+    }
+    catch (Throwable paramWebView)
+    {
+      for (;;)
       {
-        Object localObject1 = bipk.a().a("report_via");
-        if (localObject1 != null) {
-          this.jdField_b_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
-        }
         if (QLog.isColorLevel()) {
-          QLog.d("ReportCenter", 2, "-->prepareViaData, itemList size: " + this.jdField_b_of_type_JavaUtilArrayList.size());
+          QLog.d("WebLog_WebViewWrapper", 2, "onFakeLoginRecognised e:", paramWebView);
         }
-        int i = this.jdField_b_of_type_JavaUtilArrayList.size();
-        if (i == 0)
-        {
-          localObject1 = null;
-          return localObject1;
-        }
-        localObject1 = new JSONArray();
-        localObject4 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break label228;
-        }
-        Object localObject5 = (Serializable)((Iterator)localObject4).next();
-        localJSONObject = new JSONObject();
-        localObject5 = (BaseData)localObject5;
-        Iterator localIterator = ((BaseData)localObject5).attrs.keySet().iterator();
-        if (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          try
-          {
-            localJSONObject.put(str, ((BaseData)localObject5).attrs.get(str));
-          }
-          catch (JSONException localJSONException2) {}
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException2);
-          continue;
-        }
-        localObject2.put(localJSONObject);
-      }
-      finally {}
-      continue;
-      label228:
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportCenter", 2, "-->prepareViaData, JSONArray array: " + localObject2.toString());
-      }
-      Object localObject4 = new Bundle();
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject3;
-      try
-      {
-        localJSONObject.put("data", localObject2);
-        ((Bundle)localObject4).putString("data", localJSONObject.toString());
-        localObject3 = localObject4;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localObject3 = localObject4;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException1);
-        localObject3 = localObject4;
       }
     }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    if ((this.b.a()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
+    for (;;)
+    {
+      return;
+      QLog.d("WebLog_WebViewWrapper", 1, "onPageStarted:" + paramString);
+      super.onPageStarted(paramWebView, paramString, paramBitmap);
+      if (this.b.jdField_a_of_type_Bioe != null)
+      {
+        this.b.jdField_a_of_type_Bioe.onPageStarted(paramWebView, paramString, paramBitmap);
+        this.b.jdField_a_of_type_Bioe.onWebViewClientImplPageStarted(paramWebView, paramString, paramBitmap);
+      }
+      paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+      if (paramWebView != null) {
+        paramWebView.a(paramString, 8589934593L, null);
+      }
+      try
+      {
+        if (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null)
+        {
+          paramWebView = new Bundle();
+          paramWebView.putStringArrayList("recognised-text", bira.a());
+          this.b.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension().setFakeLoginParams(paramWebView);
+          if (QLog.isColorLevel())
+          {
+            QLog.d("WebLog_WebViewWrapper", 2, "initWebviewExtension success");
+            return;
+          }
+        }
+      }
+      catch (Throwable paramWebView) {}
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if ((this.b.a()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
+    do
+    {
+      return;
+      QLog.e("WebLog_WebViewWrapper", 1, "onReceivedError:" + paramInt + ", desc=" + paramString1 + ", url=" + paramString2);
+      if (this.b.jdField_a_of_type_Bioe != null) {
+        this.b.jdField_a_of_type_Bioe.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+      }
+      paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+    } while (paramWebView == null);
+    paramWebView.a(paramString2, 8589934595L, paramInt);
+  }
+  
+  public void onReceivedHttpError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
+  {
+    if ((paramWebView != null) && (paramWebResourceRequest != null) && (paramWebResourceResponse != null))
+    {
+      QLog.e("WebLog_WebViewWrapper", 1, "onReceivedHttpError:" + paramWebResourceRequest.getUrl() + "Occur error, resp code=" + paramWebResourceResponse.getStatusCode());
+      String str = paramWebView.getUrl();
+      if ((str != null) && (niz.a().a(str)))
+      {
+        paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+        if (paramWebView != null)
+        {
+          if (this.a == null) {
+            this.a = new ArrayMap(4);
+          }
+          this.a.put("requestData", paramWebResourceRequest);
+          this.a.put("responseData", paramWebResourceResponse);
+          this.a.put("errorCode", Integer.valueOf(paramWebResourceResponse.getStatusCode()));
+          paramWebView.a(str, 64L, this.a);
+          paramWebView.a(str, 8589934612L, this.a);
+        }
+      }
+    }
+  }
+  
+  public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
+  {
+    if ((this.b.a()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
+      return;
+    }
+    Object localObject = paramSslError.getCertificate();
+    String str = paramWebView.getUrl();
+    StringBuilder localStringBuilder = new StringBuilder().append("onReceivedSslError:").append(paramSslError.getPrimaryError()).append(", cert=");
+    if (localObject == null) {}
+    for (localObject = "null";; localObject = ((SslCertificate)localObject).toString())
+    {
+      QLog.e("WebLog_WebViewWrapper", 1, (String)localObject + ", pageUrl=" + noe.b(str, new String[0]));
+      if (this.b.jdField_a_of_type_Bioe != null) {
+        this.b.jdField_a_of_type_Bioe.onReceivedSslError(paramWebView, paramSslError);
+      }
+      paramSslErrorHandler.cancel();
+      return;
+    }
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (this.b.a()))
+    {
+      QLog.e("WebLog_WebViewWrapper", 1, "call shouldOverrideUrlLoading after destroy.");
+      return true;
+    }
+    if ((TextUtils.isEmpty(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString)))
+    {
+      QLog.e("WebLog_WebViewWrapper", 1, new Object[] { new StringBuilder("shouldOverrideUrlLoading fail , url=[").append(paramString).append("].") });
+      return true;
+    }
+    String str;
+    if (paramString.startsWith("https://jsbridge/"))
+    {
+      str = paramString.replace("https://jsbridge/", "jsbridge://");
+      if (QLog.isColorLevel())
+      {
+        if ((!str.startsWith("jsbridge://")) || (str.length() <= 512)) {
+          break label261;
+        }
+        QLog.d("WebLog_WebViewWrapper", 2, "shouldOverrideUrlLoading:" + str.substring(0, 512));
+      }
+    }
+    for (;;)
+    {
+      agdz.b(this.b.jdField_a_of_type_AndroidContentIntent, str);
+      paramString = birz.b(str);
+      if ((this.b.jdField_a_of_type_Bioe == null) || (!this.b.jdField_a_of_type_Bioe.beforeWebViewEngineHandleOverrideUrl(this.b.jdField_a_of_type_ComTencentBizUiTouchWebView, str))) {
+        break label298;
+      }
+      QLog.d("WebLog_WebViewWrapper", 1, "shouldOverrideUrlLoading callback handle override url");
+      return true;
+      str = paramString;
+      if (!paramString.startsWith("http://jsbridge/")) {
+        break;
+      }
+      str = paramString.replace("http://jsbridge/", "jsbridge://");
+      break;
+      label261:
+      QLog.d("WebLog_WebViewWrapper", 2, "shouldOverrideUrlLoading:" + noe.b(str, new String[0]));
+    }
+    label298:
+    if ((("http".equals(paramString)) || ("data".equals(paramString))) && (!str.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+      CustomWebView.addContextLog(noe.b(str, new String[0]));
+    }
+    try
+    {
+      WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((localWebViewPluginEngine != null) && (localWebViewPluginEngine.a(str, 1024L, null)))
+      {
+        QLog.i("WebLog_WebViewWrapper", 1, "KEY_EVENT_OVERRIDE_URL_LOADING");
+        return true;
+      }
+      if ((localWebViewPluginEngine != null) && (localWebViewPluginEngine.a(str))) {
+        return true;
+      }
+      if ((this.b.jdField_a_of_type_Bioe != null) && (this.b.jdField_a_of_type_Bioe.shouldOverrideUrlLoading(paramWebView, str))) {
+        return true;
+      }
+      if (("http".equals(paramString)) || ("https".equals(paramString)) || ("data".equals(paramString)) || ("file".equals(paramString)))
+      {
+        if ((localWebViewPluginEngine != null) && (localWebViewPluginEngine.a(str, 16L, null))) {
+          return true;
+        }
+      }
+      else if (this.b.jdField_a_of_type_Bioe != null)
+      {
+        boolean bool = this.b.jdField_a_of_type_Bioe.afterWebViewEngineHandleOverrideUrl(this.b.jdField_a_of_type_ComTencentBizUiTouchWebView, str);
+        if (bool) {
+          return true;
+        }
+      }
+    }
+    catch (RuntimeException paramWebView)
+    {
+      paramString = QLog.getStackTraceString(paramWebView);
+      if (paramString.length() > 255) {}
+      for (paramWebView = paramString.substring(0, 255);; paramWebView = paramString)
+      {
+        bdll.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
+        QLog.e("WebLog_WebViewWrapper", 1, paramString);
+        return true;
+      }
+    }
+    return false;
   }
 }
 

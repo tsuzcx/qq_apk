@@ -289,7 +289,7 @@ public class BaseConstants
   public static final boolean isSwitchToTestEnv = false;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 0L;
-  public static final String revision = "2703aac4";
+  public static final String revision = "6b9ba755";
   public static final String testServerAddress = "socket://183.3.233.202:14000";
   
   static

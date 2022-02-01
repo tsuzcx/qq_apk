@@ -1,18 +1,17 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1;
 
-class ahal
-  extends ahbl
+public class ahal
+  extends auvj
 {
-  ahal(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public ahal(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return new FlashPicItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    ArkDispatchTask.getInstance().postDelayed(ArkFlashChatContainerWrapper.a(this.a).name, new ArkFlashChatContainerWrapper.2.1(this, paramBoolean, paramBundle), 1000L);
   }
 }
 

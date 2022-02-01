@@ -1,24 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class swg
-  implements pah
+class swg
+  implements OnCompositionLoadedListener
 {
-  public swg(FastWebActivity paramFastWebActivity) {}
+  swg(swf paramswf, Runnable paramRunnable) {}
   
-  public void a() {}
-  
-  public void onClick(View paramView)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a(false, null, null);
+    RefreshAnimView.a(this.jdField_a_of_type_Swf.a, paramLottieComposition);
+    if (paramLottieComposition != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }

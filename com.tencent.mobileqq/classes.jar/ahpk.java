@@ -1,14 +1,34 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class ahpk
-  implements ahor
+  extends aggl
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagup.a(paramafzq, paramagwc, paramString);
-  }
+  public ViewGroup a;
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public AutoStartProgressBar a;
+  public URLDrawable a;
+  public QQStoryItemBuilder.StoryChatVideoView a;
+  public BubbleImageView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public BubbleImageView b;
+  public String b;
+  public TextView c;
+  public BubbleImageView c;
+  public TextView d;
+  public TextView e;
 }
 
 

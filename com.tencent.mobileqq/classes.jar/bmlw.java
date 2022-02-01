@@ -1,213 +1,87 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import java.util.ArrayList;
 
 public class bmlw
-  extends WebViewPlugin
-  implements bhmo
+  extends QIPCModule
 {
-  private boolean jdField_a_of_type_Boolean;
-  private bmmk[] jdField_a_of_type_ArrayOfBmmk;
+  private static volatile bmlw a;
   
-  public static int a(WebViewPlugin paramWebViewPlugin, bhod parambhod, int paramInt)
+  private bmlw(String paramString)
   {
-    parambhod = parambhod.a(parambhod.a());
-    int i = paramInt;
-    if ((parambhod instanceof bhoe)) {
-      i = ((bhoe)parambhod).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
-    }
-    return i;
+    super(paramString);
   }
   
-  private void a()
+  public static bmlw a()
   {
-    int i = 0;
-    if ((this.jdField_a_of_type_ArrayOfBmmk == null) || (this.jdField_a_of_type_ArrayOfBmmk.length == 0))
-    {
-      this.jdField_a_of_type_ArrayOfBmmk = new bmmk[] { new bmlj(), new bmor(), new bmnr(), new bmmc(), new bmmp(), new bmml(), new bmme(), new bmla(), new bmmf(), new bmmr(), new bmlb(), new bmlh(), new bmmu(), new bmly(), new bmlx(), new bmnc(), new bmle(), new bmnp(), new bmnx(), new bmkz(), new bmni(), new bmmb(), new bmmj(), new bmnj(), new bmkx(), new bmnm(), new bmop(), new bmln(), new bmlo(), new bmmd(), new bmlz(), new bmll(), new bmns(), new bmny(), new bmnd(), new bmno(), new bmkw(), new bmmn(), new bmky(), new bmkt() };
-      bmmk[] arrayOfbmmk = this.jdField_a_of_type_ArrayOfBmmk;
-      int j = arrayOfbmmk.length;
-      while (i < j)
-      {
-        arrayOfbmmk[i].a(this);
-        i += 1;
-      }
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
+    if (a == null) {}
     try
     {
-      Object localObject = this.mRuntime.a().getIntent();
-      if ((localObject != null) && (((Intent)localObject).getBooleanExtra("fromQZone", false))) {}
-      for (boolean bool = true;; bool = false)
+      if (a == null) {
+        a = new bmlw("QfavMainQIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  QQAppInterface a()
+  {
+    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramInt = 0;
+    Bundle localBundle = new Bundle();
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return EIPCResult.createResult(100, localBundle);
+    }
+    long l;
+    if ("getfavList".equals(paramString))
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      paramString = paramBundle.getParcelableArrayList("favfile_list");
+      if (paramString != null) {
+        paramInt = paramString.size();
+      }
+      l = paramBundle.getLong("reqTimestamp");
+      localQQAppInterface.a().a().a(l, paramString, paramBundle);
+      QLog.d("QfavMainQIPCModule", 1, "onCall ACTION_GET_FAVLIST 收到" + paramInt + "条收藏");
+    }
+    for (;;)
+    {
+      return EIPCResult.createSuccessResult(localBundle);
+      if ("refreshFavList".equals(paramString))
       {
-        CustomWebView localCustomWebView = this.mRuntime.a();
-        localObject = null;
-        if (localCustomWebView != null) {
-          localObject = localCustomWebView.getUrl();
-        }
-        bool = bmjr.a((String)localObject, paramString, bool);
-        if (!bool) {
-          break;
-        }
-        return true;
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        boolean bool = paramBundle.getBoolean("refresh_list_succ", false);
+        paramBundle.putString("delete_favids", paramBundle.getString("refresh_deleted_list"));
+        localQQAppInterface.a().a().a(bool, paramBundle);
+        QLog.d("QfavMainQIPCModule", 1, "onCall ACTION_REFRESH_FAVLIST bSucc:" + bool);
       }
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("QZoneWebViewPlugin", 1, "handleBanUrlOrScheme error", paramString);
-    }
-  }
-  
-  public void callJs(String paramString, String... paramVarArgs)
-  {
-    super.callJs(paramString, paramVarArgs);
-  }
-  
-  public String[] getMultiNameSpace()
-  {
-    return new String[] { "Qzone", "qzDynamicAlbum", "QZImagePicker", "qzlive", "qqexplive", "qzui", "QzoneUpload", "QzoneAudio", "Qzone", "checkin" };
-  }
-  
-  public Object handleEvent(String paramString, long paramLong)
-  {
-    a();
-    bmmk[] arrayOfbmmk = this.jdField_a_of_type_ArrayOfBmmk;
-    int j = arrayOfbmmk.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = arrayOfbmmk[i].a(paramString, paramLong);
-      if (localObject != null) {
-        return localObject;
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934601L) && (!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/sendGift/index.html")) || (paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/gift/mall.html"))))
-    {
-      paramString = new Intent();
-      this.mRuntime.a().setResult(0, paramString);
-      this.mRuntime.a().finish();
-    }
-    label114:
-    do
-    {
-      return true;
-      a();
-      bmmk[] arrayOfbmmk = this.jdField_a_of_type_ArrayOfBmmk;
-      int j = arrayOfbmmk.length;
-      int i = 0;
-      for (;;)
+      else if ("ondownloadThumb".equals(paramString))
       {
-        if (i >= j) {
-          break label114;
-        }
-        if (arrayOfbmmk[i].a(paramString, paramLong, paramMap)) {
-          break;
-        }
-        i += 1;
+        l = paramBundle.getLong("download_fav_id");
+        paramString = paramBundle.getString("fav_thumb_path");
+        paramInt = paramBundle.getInt("thumb_format");
+        localQQAppInterface.a().a().a(l, paramString, paramInt);
       }
-      if ((paramLong == 8589934594L) && (this.jdField_a_of_type_Boolean))
+      else if ("ondownloadFile".equals(paramString))
       {
-        paramMap = null;
-        if (this.mRuntime != null) {
-          paramMap = this.mRuntime.a();
-        }
-        if (paramMap != null) {
-          paramMap.clearHistory();
-        }
-        this.jdField_a_of_type_Boolean = false;
+        l = paramBundle.getLong("download_fav_id");
+        paramString = paramBundle.getString("fav_save_path");
+        localQQAppInterface.a().a().a(l, paramString);
       }
-    } while ((1024L == paramLong) && (a(paramString)));
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) && (!paramString2.equals("qzDynamicAlbum")) && (!paramString2.equals("QZImagePicker")) && (!paramString2.equals("qzlive")) && (!paramString2.equals("qzui")) && (!paramString2.equals("QzoneUpload")) && (!paramString2.equals("QzoneAudio")) && (!paramString2.equals("qqexplive")) && (!paramString2.equals("checkin"))) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneWebViewPlugin", 2, "handleJsRequest pkgName: " + paramString2 + ",method: " + paramString3);
-    }
-    a();
-    bmmk[] arrayOfbmmk = this.jdField_a_of_type_ArrayOfBmmk;
-    int j = arrayOfbmmk.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfbmmk[i].a(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs)) {
-        return true;
-      }
-      i += 1;
-    }
-    return bmls.a(this, this.mRuntime, paramString3, paramVarArgs);
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    a();
-    Object localObject = this.jdField_a_of_type_ArrayOfBmmk;
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      localObject[i].a(paramIntent, paramByte, paramInt);
-      i += 1;
-    }
-    switch (paramByte)
-    {
-    }
-    do
-    {
-      do
+      else if ("onAVChatting".equals(paramString))
       {
-        return;
-      } while (paramInt != -1);
-      this.mRuntime.a().finish();
-      return;
-    } while (paramInt != -1);
-    try
-    {
-      localObject = paramIntent.getStringExtra("uin");
-      paramIntent = paramIntent.getStringExtra("cellid");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("id", paramIntent);
-      localJSONObject.put("uin", localObject);
-      dispatchJsEvent("deleteMessageSuccess", localJSONObject, new JSONObject());
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      paramIntent.printStackTrace();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    a();
-    bmmk[] arrayOfbmmk = this.jdField_a_of_type_ArrayOfBmmk;
-    int j = arrayOfbmmk.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfbmmk[i].a();
-      i += 1;
+        localBundle.putBoolean("is_videochatting", localQQAppInterface.d());
+      }
     }
   }
 }

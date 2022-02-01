@@ -1,6 +1,6 @@
 package com.tencent.biz.addContactTroopView;
 
-import aisn;
+import ajdw;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
@@ -10,8 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bcst;
-import bggq;
+import bdll;
+import bhgr;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -19,7 +19,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import njm;
+import nlh;
 import tencent.im.troop_search_popclassifc.popclassifc.BannerCard;
 import tencent.im.troop_search_popclassifc.popclassifc.BannerItem;
 import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
@@ -39,12 +39,12 @@ public class TroopCardBanner
   {
     try
     {
-      Object localObject = (njm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(80);
-      if ((localObject != null) && (((njm)localObject).a() != null) && (((njm)localObject).a().popRsb != null))
+      Object localObject = (nlh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(80);
+      if ((localObject != null) && (((nlh)localObject).a() != null) && (((nlh)localObject).a().popRsb != null))
       {
-        int i = ((njm)localObject).a().popRsb.uint32_longitude.get();
-        int j = ((njm)localObject).a().popRsb.uint32_latitude.get();
-        localObject = ((njm)localObject).a().popRsb.str_city_id.get();
+        int i = ((nlh)localObject).a().popRsb.uint32_longitude.get();
+        int j = ((nlh)localObject).a().popRsb.uint32_latitude.get();
+        localObject = ((nlh)localObject).a().popRsb.str_city_id.get();
         localObject = "lon=" + String.valueOf(i) + "&lat=" + String.valueOf(j) + "&city=" + (String)localObject;
         return localObject;
       }
@@ -67,16 +67,16 @@ public class TroopCardBanner
       if (i < this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size())
       {
         ImageView localImageView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-        int j = bggq.a(this.jdField_a_of_type_Aisn.a(), 6.0F);
+        int j = bhgr.a(this.jdField_a_of_type_Ajdw.a(), 6.0F);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
         if (i != 0) {
-          localLayoutParams.leftMargin = bggq.a(this.jdField_a_of_type_Aisn.a(), 4.0F);
+          localLayoutParams.leftMargin = bhgr.a(this.jdField_a_of_type_Ajdw.a(), 4.0F);
         }
         localImageView.setLayoutParams(localLayoutParams);
         if (i == 0)
         {
           this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-          localImageView.setImageResource(2130838003);
+          localImageView.setImageResource(2130838012);
         }
         for (;;)
         {
@@ -84,7 +84,7 @@ public class TroopCardBanner
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView);
           i += 1;
           break;
-          localImageView.setImageResource(2130838004);
+          localImageView.setImageResource(2130838013);
         }
       }
     }
@@ -116,7 +116,7 @@ public class TroopCardBanner
       localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
       ((Intent)localObject2).putExtra("url", (String)localObject1);
       this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_banner", 0, 0, "", String.valueOf(i), "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_banner", 0, 0, "", String.valueOf(i), "", "");
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }

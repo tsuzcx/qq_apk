@@ -1,18 +1,13 @@
-public class apoo
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
+
+public final class apoo
+  implements AVGestureWrapper.AVUploadReport
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  
-  public apoo() {}
-  
-  public apoo(String paramString1, String paramString2, String paramString3)
+  public void avGestureUploadReport(String paramString1, String paramString2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
 }
 

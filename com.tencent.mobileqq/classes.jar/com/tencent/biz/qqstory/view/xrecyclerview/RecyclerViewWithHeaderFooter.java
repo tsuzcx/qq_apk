@@ -10,14 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import zqj;
-import zqn;
+import zue;
+import zui;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private zqn jdField_a_of_type_Zqn;
+  private zui jdField_a_of_type_Zui;
   public boolean a;
   private final List<View> b = new ArrayList();
   
@@ -73,17 +73,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new zqj(paramAdapter);
+      localObject = new zue(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((zqj)localObject).a((View)paramAdapter.next());
+        ((zue)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((zqj)localObject).b((View)paramAdapter.next());
+        ((zue)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Zqn != null) {
-        ((zqj)localObject).a(this.jdField_a_of_type_Zqn);
+      if (this.jdField_a_of_type_Zui != null) {
+        ((zue)localObject).a(this.jdField_a_of_type_Zui);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);

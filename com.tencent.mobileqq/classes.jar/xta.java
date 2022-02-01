@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class xta
-  implements DialogInterface.OnClickListener
+public class xta
+  extends DataSetObserver
 {
-  xta(xsw paramxsw) {}
+  private xta(XViewPager paramXViewPager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChanged()
   {
-    xsw.a(this.a);
-    yqu.a("play_video", "clk_window", 0, 0, new String[0]);
+    this.a.b();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.b();
   }
 }
 

@@ -1,12 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class aiba
-  implements DialogInterface.OnClickListener
+public class aiba
+  implements aiaq<View>
 {
-  aiba(aiay paramaiay) {}
+  private BaseChatPie a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aiba(BaseChatPie paramBaseChatPie)
+  {
+    this.a = paramBaseChatPie;
+  }
+  
+  public int a()
+  {
+    return 38;
+  }
+  
+  public View a()
+  {
+    return null;
+  }
+  
+  public View a(Context paramContext)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    agwg localagwg = (agwg)this.a.a(52);
+    if (paramInt2 == 0)
+    {
+      localagwg.c(false);
+      localagwg.g();
+      return;
+    }
+    localagwg.c(true);
+    localagwg.h();
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 

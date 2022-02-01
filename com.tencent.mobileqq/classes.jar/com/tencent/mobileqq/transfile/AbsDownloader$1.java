@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.transfile;
 
-import bdsh;
-import bdub;
+import beqz;
+import besv;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
 public class AbsDownloader$1
   implements Runnable
 {
-  public AbsDownloader$1(bdsh parambdsh, bdub parambdub) {}
+  public AbsDownloader$1(beqz parambeqz, besv parambesv) {}
   
   public void run()
   {

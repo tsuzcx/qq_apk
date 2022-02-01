@@ -1,258 +1,75 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.mobileqq.widget.PAImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.annotation.TargetApi;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureResult;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
+@TargetApi(21)
 public class bczo
+  extends CameraCaptureSession.CaptureCallback
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcvt jdField_a_of_type_Bcvt;
-  private int b;
+  private int jdField_a_of_type_Int = 0;
+  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
   
-  public bczo(bcvt parambcvt, Context paramContext, int paramInt)
+  public bczo(Camera2Control paramCamera2Control)
   {
-    this.jdField_a_of_type_Bcvt = parambcvt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296392);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
   }
   
-  private TextView a(String paramString, View paramView, boolean paramBoolean)
+  private void a(CaptureResult paramCaptureResult)
   {
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    TextView localTextView;
-    if (paramView == null)
+    switch (this.jdField_a_of_type_Int)
     {
-      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      localTextView.setMaxLines(2);
-      localTextView.setTextColor(-1);
-      localTextView.setTextSize(2, 19.0F);
-      localTextView.setMaxLines(2);
-      localTextView.setLineSpacing(afur.a(2.5F, localResources), 1.0F);
-      localTextView.setGravity(80);
-      localTextView.setEllipsize(TextUtils.TruncateAt.END);
-      if (paramBoolean) {
-        localTextView.setBackgroundResource(2130841619);
-      }
-      int i = afur.a(12.5F, localResources);
-      int j = afur.a(12.0F, localResources);
-      localTextView.setPadding(j, 0, j, i);
-      localTextView.setId(2131378051);
-      paramView = localTextView;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localTextView.setText(paramString);
-        paramView = localTextView;
-      }
     }
     do
     {
       do
       {
-        return paramView;
-        localTextView = (TextView)paramView;
-        if (!TextUtils.isEmpty(paramString)) {
-          localTextView.setText(paramString);
-        }
-        paramView = localTextView;
-      } while (!paramBoolean);
-      paramView = localTextView;
-    } while (localTextView.getBackground() != null);
-    localTextView.setBackgroundResource(2130841619);
-    return localTextView;
-  }
-  
-  public static boolean a(bcvt parambcvt, int paramInt)
-  {
-    if (paramInt != 0) {
-      return false;
-    }
-    parambcvt = parambcvt.a.iterator();
-    label14:
-    String str;
-    if (parambcvt.hasNext())
-    {
-      str = ((bcvs)parambcvt.next()).a;
-      if (!"picture".equals(str)) {}
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      return bool;
-      if (!"title".equals(str)) {
-        break;
-      }
-      break label14;
-    }
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if (!a(this.jdField_a_of_type_Bcvt, this.jdField_a_of_type_Int)) {
-      paramContext = this.jdField_a_of_type_Bcvt.a(paramContext, paramView, paramBundle);
-    }
-    LinearLayout localLinearLayout;
-    Object localObject1;
-    Object localObject2;
-    do
-    {
-      return paramContext;
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgItemLayout5Adapter", 2, "layout5 use new style");
-      }
-      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
-        break label598;
-      }
-      localLinearLayout = (LinearLayout)paramView;
-      localObject1 = (FrameLayout)localLinearLayout.findViewById(2131378035);
-      if (localObject1 == null) {
-        break label381;
-      }
-      localObject2 = this.jdField_a_of_type_Bcvt.a.iterator();
-      paramView = null;
-      if (((Iterator)localObject2).hasNext())
-      {
-        bcvs localbcvs = (bcvs)((Iterator)localObject2).next();
-        String str = localbcvs.a;
-        if ("title".equals(str)) {
-          paramView = ((StructMsgItemTitle)localbcvs).b();
-        }
-        for (;;)
+        Integer localInteger;
+        do
         {
-          break;
-          if ("picture".equals(str)) {
-            this.jdField_a_of_type_AndroidViewView = a(localbcvs, (View)localObject1, paramBundle);
-          }
-        }
-      }
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        break;
-      }
-      paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378048);
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (paramBundle != null)
-        {
-          a(paramView, paramBundle, true);
-          return localLinearLayout;
-        }
-        paramContext = a(paramView, null, true);
-        paramView = new ViewGroup.LayoutParams(-1, this.b);
-        paramContext.setId(2131378048);
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramContext, paramView);
-        return localLinearLayout;
-      }
-      paramContext = localLinearLayout;
-    } while (paramBundle == null);
-    ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeView(paramBundle);
-    return localLinearLayout;
-    localLinearLayout.removeAllViews();
-    for (;;)
-    {
-      if (localLinearLayout == null)
-      {
-        localLinearLayout = new LinearLayout(paramContext);
-        localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-        localLinearLayout.setOrientation(1);
-        localLinearLayout.setId(2131378049);
-      }
-      for (;;)
-      {
-        localObject1 = this.jdField_a_of_type_Bcvt.a.iterator();
-        label331:
-        if (((Iterator)localObject1).hasNext())
-        {
-          paramContext = (bcvs)((Iterator)localObject1).next();
-          localObject2 = paramContext.a;
-          if ("title".equals(localObject2)) {}
-          for (paramContext = ((StructMsgItemTitle)paramContext).b();; paramContext = paramView)
+          do
           {
-            paramView = paramContext;
-            break label331;
-            label381:
-            localLinearLayout.removeAllViews();
-            paramView = null;
-            break;
-            if ("picture".equals(localObject2)) {
-              this.jdField_a_of_type_AndroidViewView = a(paramContext, null, paramBundle);
+            return;
+            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+            bczm.a(1, "[Camera2]process afState:" + localInteger);
+            if (localInteger != null) {
+              break;
             }
-          }
+          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+          return;
+        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
+        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
+        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
+          break;
         }
-        if (this.jdField_a_of_type_AndroidViewView != null)
-        {
-          if (!TextUtils.isEmpty(paramView))
-          {
-            paramContext = new ViewGroup.LayoutParams(-1, this.b);
-            paramView = a(paramView.trim(), null, true);
-            paramView.setId(2131378048);
-            ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramView, paramContext);
-          }
-          localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-        }
-        for (;;)
-        {
-          return localLinearLayout;
-          if ((!TextUtils.isEmpty(paramView)) && (paramView.trim().length() > 0))
-          {
-            this.jdField_a_of_type_AndroidWidgetTextView = a(paramView.trim(), null, false);
-            paramContext = new ViewGroup.LayoutParams(-2, -2);
-            this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramContext);
-            int i = afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-            this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
-            this.jdField_a_of_type_AndroidWidgetTextView.setId(2131378051);
-            this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
-            localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
-          }
-        }
-      }
-      label598:
-      paramView = null;
-      localLinearLayout = null;
-    }
+        this.jdField_a_of_type_Int = 4;
+        bczm.a(1, "[Camera2]process aeState:" + paramCaptureResult);
+      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+      return;
+      bczm.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
+    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
   }
   
-  public View a(bcvs parambcvs, View paramView, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    if ((paramView != null) && ((paramView instanceof FrameLayout)))
-    {
-      paramView = (FrameLayout)paramView;
-      parambcvs.a(this.jdField_a_of_type_AndroidContentContext, paramView.findViewById(2131368420), paramBundle);
-      return paramView;
-    }
-    paramView = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
-    paramView.setId(2131378035);
-    if (paramBundle != null) {
-      paramBundle.putBoolean("pa_should_change", true);
-    }
-    parambcvs = (ImageView)parambcvs.a(this.jdField_a_of_type_AndroidContentContext, null, paramBundle).findViewById(2131368420);
-    paramBundle = new FrameLayout.LayoutParams(-1, this.b);
-    if ((parambcvs != null) && ((parambcvs instanceof PAImageView)))
-    {
-      PAImageView localPAImageView = (PAImageView)parambcvs;
-      localPAImageView.setUseRadiusRound(true, localResources.getDimensionPixelSize(2131296391));
-      localPAImageView.setTag(2131373036, Integer.valueOf(1));
-    }
-    paramView.addView(parambcvs, paramBundle);
-    return paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
+  {
+    a(paramTotalCaptureResult);
+  }
+  
+  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
+  {
+    a(paramCaptureResult);
   }
 }
 

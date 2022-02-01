@@ -1,35 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class twf
+class twf
+  implements Animation.AnimationListener
 {
-  public static String a(String paramString)
+  twf(tvz paramtvz) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str1;
-    if ((paramString != null) && (paramString.length() < 5)) {
-      str1 = (String)tur.a.get(paramString);
-    }
-    for (;;)
-    {
-      String str3 = str1;
-      if (str1 == null) {
-        str3 = "";
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SubscriptUtil", 2, "getUin subscribeID[" + paramString + "]'s uin: " + str3);
-      }
-      return str3;
-      try
-      {
-        int i = Integer.parseInt(paramString);
-        str1 = String.valueOf(i);
-      }
-      catch (Exception localException)
-      {
-        String str2 = (String)tur.a.get(paramString);
-      }
-    }
+    this.a.a(tvz.a(this.a));
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

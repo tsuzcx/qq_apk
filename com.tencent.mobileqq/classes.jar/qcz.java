@@ -1,27 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class qcz
-  implements View.OnClickListener
+public class qcz
+  extends NativeText
 {
-  qcz(qcw paramqcw, pxk parampxk, snh paramsnh) {}
+  private int jdField_a_of_type_Int;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private String jdField_a_of_type_JavaLangString;
+  RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public qcz(VafContext paramVafContext)
   {
-    if ((this.jdField_a_of_type_Pxk.a() != null) && (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a != null)) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Snh.a(), this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.c, "kandian biu feed click");
-    }
-    for (;;)
+    super(paramVafContext);
+    this.mNative = new qda(this, paramVafContext.getContext());
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.mNative.setBackgroundColor(0);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      spb localspb = this.jdField_a_of_type_Snh.a();
-      if (localspb != null) {
-        localspb.a(paramView, this.jdField_a_of_type_Pxk.a(), 2);
+    default: 
+      return false;
+    }
+    if ((paramObject instanceof JSONObject)) {
+      paramObject = (JSONObject)paramObject;
+    }
+    try
+    {
+      this.jdField_a_of_type_Int = paramObject.getInt("progress");
+      this.jdField_a_of_type_JavaLangString = paramObject.getString("bgcolor");
+      this.jdField_b_of_type_JavaLangString = paramObject.getString("fgcolor");
+      return true;
+    }
+    catch (JSONException paramObject)
+    {
+      for (;;)
+      {
+        paramObject.printStackTrace();
       }
     }
   }

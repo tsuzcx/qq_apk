@@ -1,59 +1,20 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.AbsListView;
 
-public class ote
-  implements INetInfoHandler
+class ote
+  implements blih
 {
-  protected WeakReference<ono> a;
+  ote(otd paramotd) {}
   
-  public ote(ono paramono)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a = new WeakReference(paramono);
-  }
-  
-  public void onNetMobile2None()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ono)this.a.get()).c();
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ono)this.a.get()).i();
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null))
+    if (this.a.a != null)
     {
-      ((ono)this.a.get()).g();
-      ((ono)this.a.get()).i();
+      paramInt1 = otd.a(this.a, paramInt1);
+      this.a.a.onScroll(paramInt1);
     }
   }
   
-  public void onNetNone2Wifi(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ono)this.a.get()).i();
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ono)this.a.get()).h();
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ono)this.a.get()).f();
-    }
-  }
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

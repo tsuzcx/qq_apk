@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class beox
-  implements bern
+class beox
+  extends bepm<EditorState>
 {
-  beox(beow parambeow) {}
-  
-  public void a(ArrayList<Entity> paramArrayList)
+  public beox(EditorState paramEditorState, List<EditorState> paramList)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
+    super(paramList, localList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    beoh.a(this.c).b(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
     }
   }
 }

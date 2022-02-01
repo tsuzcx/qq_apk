@@ -1,10 +1,21 @@
-class athk
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+
+public class athk
+  extends BroadcastReceiver
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long b;
+  public athk(FMActivity paramFMActivity) {}
   
-  athk(athj paramathj) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

@@ -1,48 +1,38 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.qapmsdk.base.listener.IInspectorListener;
-import com.tencent.qapmsdk.common.util.InspectUUID;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class addg
-  implements IInspectorListener
+public class addg
+  implements adci
 {
-  public void onCheckingLeaked(int paramInt, @NotNull String paramString) {}
-  
-  public boolean onFilter(@NotNull Object paramObject)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    return false;
-  }
-  
-  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
-  {
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "finishDump" + paramString1 + paramString2);
-  }
-  
-  public void onHprofDumped(@NotNull String paramString) {}
-  
-  public boolean onLeaked(@NotNull InspectUUID paramInspectUUID)
-  {
-    if (paramInspectUUID == null) {}
-    do
+    beki localbeki = ((bejx)paramQQAppInterface.getManager(339)).a(4);
+    byte[] arrayOfByte;
+    long l1;
+    long l2;
+    if (localbeki != null)
     {
-      return false;
-      paramInspectUUID.toString();
-    } while (AppSetting.d);
-    return false;
+      arrayOfByte = paramMsgType0x210.vProtobuf;
+      l1 = paramMsgInfo.shMsgSeq;
+      l2 = paramMsgInfo.uRealMsgTime;
+      if (paramMsgType0x210.uSubMsgType != 295L) {
+        break label70;
+      }
+    }
+    label70:
+    for (boolean bool = false;; bool = true)
+    {
+      localbeki.a(paramQQAppInterface, arrayOfByte, l1, l2, bool);
+      return;
+    }
   }
   
-  @NotNull
-  public List<String> onPrepareDump(@NotNull String paramString)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    ArrayList localArrayList = new ArrayList(4);
-    localArrayList.add(adct.b());
-    localArrayList.add(adct.a());
-    localArrayList.addAll(adct.b());
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "leakDump" + paramString);
-    return localArrayList;
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

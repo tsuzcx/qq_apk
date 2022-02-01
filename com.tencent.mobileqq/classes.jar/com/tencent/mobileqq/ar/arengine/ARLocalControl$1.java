@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.ar.arengine;
 
 import android.content.Context;
-import apar;
-import apat;
+import apoh;
+import apoj;
 import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARLocalControl$1
   implements Runnable
 {
-  public ARLocalControl$1(apar paramapar, int paramInt1, int paramInt2, Context paramContext, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, long paramLong) {}
+  public ARLocalControl$1(apoh paramapoh, int paramInt1, int paramInt2, Context paramContext, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, long paramLong) {}
   
   public void run()
   {
-    if ((apar.a(this.this$0) & 0x4) != 0L)
+    if ((apoh.a(this.this$0) & 0x4) != 0L)
     {
       ??? = new ARFacePreviewResample();
       ((ARFacePreviewResample)???).a(this.jdField_a_of_type_Int, this.b, 17);
       int i = ((ARFacePreviewResample)???).a();
       int j = ((ARFacePreviewResample)???).b();
-      this.this$0.a = new apat();
+      this.this$0.a = new apoj();
       this.this$0.a.a((ARFacePreviewResample)???);
       if (!this.this$0.a.a(this.jdField_a_of_type_AndroidContentContext, i, j, this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo, this.this$0)) {
         this.this$0.a = null;
       }
     }
-    synchronized (apar.a())
+    synchronized (apoh.a())
     {
-      apar.a(this.this$0, true);
-      apar.a().notifyAll();
+      apoh.a(this.this$0, true);
+      apoh.a().notifyAll();
       QLog.i("AREngine_ARLocalControl", 1, String.format("initFaceRecogAsync end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
       return;
     }

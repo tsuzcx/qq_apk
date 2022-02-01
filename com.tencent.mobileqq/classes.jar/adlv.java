@@ -1,56 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.1;
 
 public class adlv
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public adlv(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public adlv(MemoryDumpHelper.1 param1) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    label43:
-    QQAppInterface localQQAppInterface;
-    String str1;
-    if (paramBoolean)
-    {
-      i = 1;
-      bmqa.d(i);
-      bmqa.a(paramBoolean);
-      bmqa.a(true);
-      if (!paramBoolean) {
-        break label108;
-      }
-      QQToast.a(this.a.getBaseContext(), 2, 2131717181, 2000).a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label131;
-      }
-      str1 = "0X8008236";
-      label60:
-      if (!paramBoolean) {
-        break label138;
-      }
-    }
-    label131:
-    label138:
-    for (String str2 = "0X8008236";; str2 = "0X8008235")
-    {
-      oat.a(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "", "", "", "", false);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 0;
-      break;
-      label108:
-      QQToast.a(this.a.getBaseContext(), 2, 2131717179, 2000).a();
-      break label43;
-      str1 = "0X8008235";
-      break label60;
-    }
+    adlu.a(this.a.this$0);
+    adlu.a(this.a.this$0, false, null, this.a.b, this.a.a, false);
+    adlu.b(this.a.this$0);
   }
 }
 

@@ -1,48 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atda
-  extends asyw
+final class atda
+  implements View.OnClickListener
 {
-  atda(atcz paramatcz) {}
+  atda(Dialog paramDialog) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
+    bdll.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
     }
-    bnaz.a(null, paramInt2);
-    paramString1 = this.a.a.a().a(paramLong2);
-    Bundle localBundle;
-    if ((paramString1 != null) && (paramString1.nOpType == 50))
-    {
-      localBundle = new Bundle();
-      localBundle.putString("taskId", paramString1.miniAppDownloadId);
-      if (!paramBoolean) {
-        break label163;
-      }
-    }
-    label163:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localBundle.putInt("retCode", paramInt1);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      localBundle.putString("retMsg", paramString1);
-      QIPCServerHelper.getInstance().callClient(auak.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
-      this.a.a(paramLong2);
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atda
  * JD-Core Version:    0.7.0.1
  */

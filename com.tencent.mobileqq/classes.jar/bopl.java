@@ -1,65 +1,51 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.1;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.2;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
 
 public class bopl
-  implements bkmq
 {
-  bopl(bopj parambopj) {}
+  private static volatile bopl jdField_a_of_type_Bopl;
+  private final int jdField_a_of_type_Int = 2000;
+  private long jdField_a_of_type_Long;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 60000;
+  private long jdField_b_of_type_Long;
+  private final int c = 1000;
+  private int d;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public static bopl a()
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
+    if (jdField_a_of_type_Bopl == null) {}
+    try
     {
-      paramView.c(l);
-      return;
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.a == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!bgnt.g(this.a.e.getContext())) {
-        break label114;
+      if (jdField_a_of_type_Bopl == null) {
+        jdField_a_of_type_Bopl = new bopl();
       }
-      bopj.a(this.a).d();
-      bopj.a(this.a).a();
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.1(this), 300L);
+      return jdField_a_of_type_Bopl;
     }
-    for (;;)
-    {
-      ((ajhj)paramView.getTag()).a = true;
-      return true;
-      l = this.a.a;
-      break;
-      label114:
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.2(this), 300L);
-    }
+    finally {}
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  private void b()
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
+    AppInterface localAppInterface = QQStoryContext.a();
+    if (localAppInterface != null)
     {
-      paramView.b(l);
-      return;
+      boqi localboqi = (boqi)localAppInterface.getBusinessHandler(3);
+      localAppInterface.addObserver(new bopn(this, localAppInterface));
+      localboqi.c();
     }
   }
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      LogicDataManager.getInstance().setOnGetQQNumberEventListener(new bopm(this));
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import acnl;
+import acrn;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,13 +16,13 @@ import org.jetbrains.annotations.Nullable;
 public final class RewardedBrowsingCallbackReceiver
   extends BroadcastReceiver
 {
-  public static final acnl a;
+  public static final acrn a;
   private final WeakReference<RewardedVideoAdPlugin> a;
   private final WeakReference<AdProxyImpl> b;
   
   static
   {
-    jdField_a_of_type_Acnl = new acnl(null);
+    jdField_a_of_type_Acrn = new acrn(null);
   }
   
   public RewardedBrowsingCallbackReceiver()

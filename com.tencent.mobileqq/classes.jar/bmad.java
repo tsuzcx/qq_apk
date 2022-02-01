@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastUrl;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import common.config.service.QzoneConfig;
+import common.config.service.QzoneConfig.2.1;
 
-public final class bmad
-  implements Parcelable.Creator<BroadcastUrl>
+public class bmad
+  extends ContentObserver
 {
-  public BroadcastUrl a(Parcel paramParcel)
+  public bmad(QzoneConfig paramQzoneConfig, Handler paramHandler)
   {
-    return new BroadcastUrl(paramParcel);
+    super(paramHandler);
   }
   
-  public BroadcastUrl[] a(int paramInt)
+  public void onChange(boolean paramBoolean)
   {
-    return new BroadcastUrl[paramInt];
+    ThreadManager.post(new QzoneConfig.2.1(this, paramBoolean), 5, null, false);
   }
 }
 

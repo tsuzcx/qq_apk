@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public final class shv
-  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
+public class shv
+  extends pmr
 {
-  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
+  public shv(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    return new DiscoveryInfo.TopicVideoCard(paramParcel);
+    super(paramString);
   }
   
-  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
+  public void a(pmk parampmk)
   {
-    return new DiscoveryInfo.TopicVideoCard[paramInt];
+    parampmk.b();
   }
 }
 

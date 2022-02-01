@@ -1,46 +1,19 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityNodeProvider;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
 public class zrr
-  extends AccessibilityNodeProvider
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public zrr(zrp paramzrp) {}
+  public zrr(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt == -1)
-    {
-      localObject1 = localObject2;
-      if (zrp.a(this.a) != null)
-      {
-        localObject1 = AccessibilityNodeInfo.obtain(zrp.a(this.a));
-        zrp.a(this.a).onInitializeAccessibilityNodeInfo((AccessibilityNodeInfo)localObject1);
-        ((AccessibilityNodeInfo)localObject1).setText(zrp.a(this.a).getContentDescription());
-      }
-    }
-    return localObject1;
-  }
-  
-  public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    boolean bool = zrp.a(this.a).performAccessibilityAction(paramInt2, paramBundle);
-    if (paramInt2 == 128) {
-      zrp.a(this.a).post(zrp.a(this.a));
-    }
-    do
-    {
-      do
-      {
-        return bool;
-      } while (paramInt2 != 64);
-      zrp.a(this.a).removeCallbacks(zrp.a(this.a));
-    } while (zrp.a(this.a) == null);
-    zrp.a(this.a).a();
-    return bool;
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 

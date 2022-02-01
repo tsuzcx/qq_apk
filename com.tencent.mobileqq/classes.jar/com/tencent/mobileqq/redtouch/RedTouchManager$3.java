@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.redtouch;
 
-import baif;
+import bbav;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
 
 public class RedTouchManager$3
   implements Runnable
 {
-  public RedTouchManager$3(baif parambaif, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
+  public RedTouchManager$3(bbav parambbav, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
   
   public void run()
   {

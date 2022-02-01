@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import android.text.TextUtils;
 
 public class blpn
-  implements View.OnClickListener
 {
-  public blpn(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public float a;
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
+  public blpn()
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public boolean a(blpn paramblpn)
+  {
+    return (paramblpn != null) && (this.jdField_a_of_type_Int == paramblpn.jdField_a_of_type_Int) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramblpn.jdField_a_of_type_JavaLangString)) && (Math.abs(this.jdField_a_of_type_Float - paramblpn.jdField_a_of_type_Float) < 0.001F);
   }
 }
 

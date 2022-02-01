@@ -1,18 +1,17 @@
-import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
-
 public class txa
 {
-  private static int a;
+  public int a;
+  public long a;
+  public int b = -1;
   
-  public static void a()
+  public txa()
   {
-    a = AbstractGifImage.DoAccumulativeRunnable.DELAY;
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public static void b()
+  public String toString()
   {
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = a;
+    return "time: " + this.jdField_a_of_type_Long + " starPosition: " + this.jdField_a_of_type_Int + "  endPostition: " + this.b;
   }
 }
 

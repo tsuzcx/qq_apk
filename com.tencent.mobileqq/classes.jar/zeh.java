@@ -1,23 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
 
-public class zeh
-  implements View.OnClickListener
+public abstract interface zeh
 {
-  public zeh(PermissionSettingActivity paramPermissionSettingActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    zef localzef = PermissionSettingActivity.a(this.a).a();
-    if (localzef != null)
-    {
-      PermissionSettingActivity.a(this.a, localzef);
-      this.a.finish();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(zei paramzei);
 }
 
 

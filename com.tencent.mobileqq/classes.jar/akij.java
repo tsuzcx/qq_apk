@@ -1,33 +1,17 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.widget.EditText;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 class akij
   implements View.OnClickListener
 {
-  akij(akif paramakif) {}
+  akij(akih paramakih) {}
   
   public void onClick(View paramView)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false)) {
-      if (atvo.a()) {
-        atvb.a(this.a.mActivity, 2131692321, 2131692326, new akik(this));
-      }
-    }
-    for (;;)
-    {
-      LpReportInfo_pf00064.allReport(603, 1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.d();
-      continue;
-      this.a.d();
-    }
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

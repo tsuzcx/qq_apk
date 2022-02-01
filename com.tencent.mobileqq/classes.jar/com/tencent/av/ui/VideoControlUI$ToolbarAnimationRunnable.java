@@ -18,13 +18,13 @@ public class VideoControlUI$ToolbarAnimationRunnable
     if (this.this$0.h) {
       localVideoControlUI = this.this$0;
     }
-    for (localVideoControlUI.w += 1;; localVideoControlUI.w -= 1)
+    for (localVideoControlUI.y += 1;; localVideoControlUI.y -= 1)
     {
-      if (this.this$0.w > 5) {
-        this.this$0.w = 5;
+      if (this.this$0.y > 5) {
+        this.this$0.y = 5;
       }
-      if (this.this$0.w < 0) {
-        this.this$0.w = 0;
+      if (this.this$0.y < 0) {
+        this.this$0.y = 0;
       }
       this.this$0.a.a().postDelayed(this, VideoControlUI.a(this.this$0));
       return;

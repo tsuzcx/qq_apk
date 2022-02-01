@@ -1,18 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
-public abstract interface bffj
+public class bffj
+  implements QQPermissionCallback
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bffj(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
-  
-  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a(this.a, this.a);
+  }
 }
 
 

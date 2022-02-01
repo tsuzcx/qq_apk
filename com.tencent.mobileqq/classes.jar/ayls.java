@@ -1,29 +1,14 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class ayls
-  implements bchh
+  implements DialogInterface.OnDismissListener
 {
-  ayls(aylq paramaylq, AppInterface paramAppInterface) {}
+  ayls(aykx paramaykx) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Aylq.jdField_a_of_type_ArrayOfInt[3] = paramInt;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    QLog.w(aylq.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[3], bDownloadSuc[" + paramBoolean1 + "]");
-    int[] arrayOfInt = this.jdField_a_of_type_Aylq.jdField_a_of_type_ArrayOfInt;
-    if (paramBoolean1) {}
-    for (paramInt = 100;; paramInt = -1)
-    {
-      arrayOfInt[3] = paramInt;
-      if (this.jdField_a_of_type_Aylq.a() == 100) {
-        aylq.a(this.jdField_a_of_type_Aylq, "onDownloadProgress1", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
-      }
-      return;
-    }
+    this.a.r = false;
   }
 }
 

@@ -1,16 +1,58 @@
-import android.view.View;
-import java.util.ArrayList;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.os.MqqHandler;
 
 class azlf
-  implements bkhw
+  implements TencentLocationListener
 {
-  azlf(azla paramazla, ArrayList paramArrayList, bkho parambkho) {}
+  private volatile boolean jdField_a_of_type_Boolean = true;
+  private Runnable b = this.jdField_a_of_type_JavaLangRunnable;
   
-  public void OnClick(View paramView, int paramInt)
+  azlf(azle paramazle, Runnable paramRunnable, MqqHandler paramMqqHandler) {}
+  
+  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
   {
-    ((bgtm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
-    this.jdField_a_of_type_Bkho.e();
+    if (paramInt == 0)
+    {
+      LatLng localLatLng2 = new LatLng(paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude());
+      LatLng localLatLng1 = localLatLng2;
+      if (QLog.isColorLevel())
+      {
+        localLatLng1 = localLatLng2;
+        if (azle.a != null) {
+          localLatLng1 = azle.a;
+        }
+      }
+      if ((localLatLng1.getLatitude() == 0.0D) && (localLatLng1.getLongitude() == 0.0D)) {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          QLog.e("LocationHandler", 1, "[LocationManager] onLocationChanged: invoked. (0,0) detected");
+        }
+      }
+    }
+    do
+    {
+      return;
+      azle.a(this.jdField_a_of_type_Azle, paramTencentLocation);
+      if (this.b != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
+        }
+        this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.b);
+        this.b = null;
+      }
+      if (paramInt == 0) {
+        azle.a(this.jdField_a_of_type_Azle, true);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. errorCode: " + paramInt + " errorMsg: " + paramString);
   }
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 

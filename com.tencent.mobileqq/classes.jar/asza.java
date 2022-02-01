@@ -1,21 +1,31 @@
-class asza
-  extends aszz
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class asza
+  implements View.OnClickListener
 {
-  asza(asyx paramasyx, aszc paramaszc) {}
+  public asza(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    if (this.a.getActivity() != null)
     {
-      this.jdField_a_of_type_Aszc.a(paramString2, paramString3);
-      return;
+      String str = "";
+      if (this.a.getActivity().app != null) {
+        str = ((asvi)this.a.getActivity().app.getManager(264)).f();
+      }
+      atcb.a(this.a.getActivity(), str);
     }
-    this.jdField_a_of_type_Aszc.a(paramInt, paramString1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asza
  * JD-Core Version:    0.7.0.1
  */

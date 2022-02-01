@@ -1,9 +1,9 @@
 package com.tencent.biz.qqcircle.widgets.feed;
 
+import aadv;
 import android.text.TextPaint;
 import android.text.style.StyleSpan;
 import androidx.annotation.NonNull;
-import zzr;
 
 class QCircleTimeLineFeedItemView$3
   extends StyleSpan
@@ -16,7 +16,7 @@ class QCircleTimeLineFeedItemView$3
   public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    zzr.a(paramTextPaint, false);
+    aadv.a(paramTextPaint, false);
   }
 }
 

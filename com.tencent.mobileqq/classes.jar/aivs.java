@@ -1,27 +1,21 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aivs
-  extends ViewPager.SimpleOnPageChangeListener
+class aivs
+  implements View.OnClickListener
 {
-  public aivs(TroopView paramTroopView) {}
+  aivs(aivr paramaivr) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (bdch.a()) {}
-    while (paramInt != 1) {
-      return;
-    }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (bdch.a()) {
-      return;
-    }
-    TroopView.a(this.a, paramInt);
+    Intent localIntent = new Intent(aivr.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", aivr.a(this.a));
+    aivr.a(this.a).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

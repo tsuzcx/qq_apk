@@ -1,19 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbdd
-  extends bbcu
+  implements View.OnClickListener
 {
-  public bbdd(LikesView paramLikesView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
+  public bbdd(IosTimepicker paramIosTimepicker) {}
   
   public void onClick(View paramView)
   {
-    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
-      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
+    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
+    {
+      IosTimepicker.a(this.a).dismiss();
+      IosTimepicker.a(this.a, null);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

@@ -1,23 +1,24 @@
-import java.lang.ref.WeakReference;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract class uig
+class uig
+  implements bliz
 {
-  private WeakReference<uii> a;
+  uig(uhz paramuhz, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
-  public uig(uii paramuii)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramuii);
-  }
-  
-  public boolean a()
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return false;
+    if (!nny.a(uhz.c(this.jdField_a_of_type_Uhz)))
+    {
+      bjuh.a().a(2131719373);
+      return;
     }
-    return a((uii)this.a.get());
+    uhz.a(this.jdField_a_of_type_Uhz).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
+    uhz.a(this.jdField_a_of_type_Uhz).setVisibility(0);
+    uhz.b(this.jdField_a_of_type_Uhz).setVisibility(4);
   }
-  
-  public abstract boolean a(uii paramuii);
 }
 
 

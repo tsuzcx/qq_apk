@@ -1,8 +1,8 @@
-public class bnub
+public abstract interface bnub
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
 }
 
 

@@ -1,179 +1,185 @@
 import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.2;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.3;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.4;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import org.json.JSONObject;
 
 public class wpu
-  implements wou
+  extends wrf
+  implements View.OnClickListener, ztc, ztd
 {
-  public static final String a;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  anwd jdField_a_of_type_Anwd;
-  anxg jdField_a_of_type_Anxg = new wpv(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public TroopManager a;
-  public Map<String, Long> a;
-  Map<String, Set<String>> b;
+  protected Handler a;
+  public CommentLikeFeedItem a;
+  public String a;
+  private wpv a;
+  protected wqa a;
   
-  static
+  public wpu(wqa paramwqa)
   {
-    jdField_a_of_type_JavaLangString = xfe.b;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.jdField_a_of_type_Wqa = paramwqa;
+    this.jdField_a_of_type_JavaLangString = QQStoryContext.a().a();
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = this.jdField_a_of_type_Wqa.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+    this.jdField_a_of_type_Wpv = new wpv(this);
   }
   
-  public static String a(String paramString1, String paramString2)
+  private void b(CommentEntry paramCommentEntry, int paramInt)
   {
-    return paramString1 + '_' + paramString2;
-  }
-  
-  public String a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
-      return jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Wqa.jdField_a_of_type_Wpw != null) {
+      this.jdField_a_of_type_Wqa.jdField_a_of_type_Wpw.a(this.jdField_a_of_type_Wqa, this.jdField_a_of_type_Wpv.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_Wpv.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Wpv.jdField_a_of_type_Int, paramCommentEntry);
     }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    if ((!TextUtils.isEmpty(paramQQUserUIItem.qq)) && (!TextUtils.isEmpty(paramString)))
+    wqg localwqg = (wqg)this.jdField_a_of_type_Wqa.a();
+    paramInt = yup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {}
+    for (paramCommentEntry = "1";; paramCommentEntry = "2")
     {
-      TroopMemberInfo localTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString, paramQQUserUIItem.qq);
-      if (localTroopMemberInfo != null)
-      {
-        if (!TextUtils.isEmpty(localTroopMemberInfo.troopnick)) {
-          return localTroopMemberInfo.troopnick;
-        }
-      }
-      else {
-        ThreadManager.post(new TroopNickNameManager.2(this, paramString, paramQQUserUIItem, paramBoolean1, paramBoolean2), 8, null, true);
-      }
-    }
-    return paramQQUserUIItem.getDisplayName();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.b = new ConcurrentHashMap();
-    QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
-    this.jdField_a_of_type_Anwd = ((anwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anxg);
-  }
-  
-  public void a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean)
-  {
-    String str = a(paramString, paramQQUserUIItem.qq);
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-      a(paramString, paramQQUserUIItem.qq);
-    }
-    if (paramBoolean) {
-      c();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Set localSet = (Set)this.b.get(paramString1);
-    Object localObject = localSet;
-    if (localSet == null)
-    {
-      localObject = new HashSet();
-      this.b.put(paramString1, localObject);
-    }
-    ((Set)localObject).add(paramString2);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anxg);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  public void c()
-  {
-    if (Looper.myLooper() != ThreadManager.getSubThreadLooper())
-    {
-      ThreadManager.executeOnSubThread(new TroopNickNameManager.3(this));
+      yup.a("home_page", "clk_content", paramInt, 0, new String[] { paramCommentEntry, yup.a(localwqg.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
       return;
     }
-    long l = System.currentTimeMillis();
-    Iterator localIterator = this.b.entrySet().iterator();
-    int i = 0;
-    Object localObject1;
-    String str1;
-    TroopInfo localTroopInfo;
-    for (;;)
-    {
-      if (localIterator.hasNext())
+  }
+  
+  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
+  {
+    paramView = QQStoryContext.a().b();
+    blir localblir = blir.a(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidAppActivity);
+    if (paramCommentEntry.authorUnionId.equals(paramView)) {
+      if (paramCommentEntry.status == 2)
       {
-        localObject1 = (Map.Entry)localIterator.next();
-        str1 = (String)((Map.Entry)localObject1).getKey();
-        Object localObject2 = (Set)((Map.Entry)localObject1).getValue();
-        localIterator.remove();
-        localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(str1);
-        if (localTroopInfo == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopNickNameManager", 2, "troopInfo not found:" + str1);
-          }
-        }
-        else
-        {
-          localObject1 = new ArrayList(20);
-          localObject2 = ((Set)localObject2).iterator();
-          label167:
-          if (((Iterator)localObject2).hasNext())
-          {
-            String str2 = (String)((Iterator)localObject2).next();
-            this.jdField_a_of_type_JavaUtilMap.put(a(str1, str2), Long.valueOf(l));
-            ((ArrayList)localObject1).add(str2);
-            if (((ArrayList)localObject1).size() < 20) {
-              break label316;
-            }
-            this.jdField_a_of_type_Anwd.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
-            localObject1 = new ArrayList(20);
-            i = 1;
-          }
-        }
+        localblir.c(anzj.a(2131703322));
+        localblir.a(anzj.a(2131703290), 3);
       }
     }
-    label314:
-    label316:
     for (;;)
     {
-      break label167;
-      if (((ArrayList)localObject1).size() > 0)
+      localblir.d(anzj.a(2131703295));
+      localblir.a(new wpx(this, localblir, paramCommentEntry, paramInt));
+      localblir.show();
+      return;
+      localblir.c(anzj.a(2131703310));
+      break;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe())
       {
-        this.jdField_a_of_type_Anwd.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
-        i = 1;
+        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isVip()) {
+          localblir.a(anzj.a(2131703320), 3);
+        }
+        localblir.c(anzj.a(2131703319));
+        localblir.c(anzj.a(2131703317));
+      }
+      else
+      {
+        localblir.c(anzj.a(2131703291));
+        localblir.c(anzj.a(2131703309));
+      }
+    }
+  }
+  
+  protected void a(CommentEntry paramCommentEntry, int paramInt)
+  {
+    if (paramCommentEntry.commentType == 5)
+    {
+      paramCommentEntry = new OpenPlayerBuilder(new VidListPlayInfo(paramCommentEntry.togetherFeedId, paramCommentEntry.togetherVid), 126);
+      xlj.a(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidAppActivity, paramCommentEntry.a(), null);
+      yup.a("play_video", "multishoot_icon", 0, 0, new String[0]);
+    }
+    Object localObject;
+    do
+    {
+      return;
+      if (paramCommentEntry.commentType != 4) {
+        break;
+      }
+      localObject = paramCommentEntry.getExtraJson().optString("vid");
+      paramCommentEntry = paramCommentEntry.getExtraJson().optString("feedid");
+    } while ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(paramCommentEntry)));
+    xlj.b(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidContentContext, (String)localObject, paramCommentEntry, 74);
+    return;
+    if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
+    {
+      localObject = blir.a(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidAppActivity);
+      if (paramCommentEntry.status == 2) {
+        ((blir)localObject).c(anzj.a(2131703324));
       }
       for (;;)
       {
-        break;
-        if (i == 0) {
-          break label314;
-        }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopNickNameManager.4(this), 30000L);
+        ((blir)localObject).a(anzj.a(2131703327), 3);
+        ((blir)localObject).d(anzj.a(2131703305));
+        ((blir)localObject).a(new wpx(this, (blir)localObject, paramCommentEntry, paramInt));
+        ((blir)localObject).show();
         return;
+        ((blir)localObject).c(anzj.a(2131703311));
       }
-      break;
+    }
+    b(paramCommentEntry, paramInt);
+    paramInt = yup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {}
+    for (paramCommentEntry = "1";; paramCommentEntry = "2")
+    {
+      yup.a("home_page", "clk_content", paramInt, 0, new String[] { paramCommentEntry, yup.a(this.jdField_a_of_type_Wqa.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return;
+    }
+  }
+  
+  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+  }
+  
+  public void a(InnerListView paramInnerListView, View paramView, int paramInt)
+  {
+    CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_Wqa.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_Wpv.jdField_a_of_type_AndroidViewViewGroup = paramInnerListView;
+    this.jdField_a_of_type_Wpv.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Wpv.jdField_a_of_type_Int = paramInt;
+    if (!bhnv.d(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidContentContext))
+    {
+      QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131703299), 0).a();
+      return;
+    }
+    a(localCommentEntry, paramInt);
+  }
+  
+  public boolean a(InnerListView paramInnerListView, View paramView, int paramInt)
+  {
+    a(paramView, (CommentEntry)this.jdField_a_of_type_Wqa.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+    this.jdField_a_of_type_Wpv.jdField_a_of_type_AndroidViewViewGroup = paramInnerListView;
+    this.jdField_a_of_type_Wpv.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Wpv.jdField_a_of_type_Int = paramInt;
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      int i = ((Integer)paramView.getTag()).intValue();
+      CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_Wqa.jdField_a_of_type_JavaUtilList.get(i);
+      blir localblir = blir.a(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidAppActivity);
+      localblir.c(anzj.a(2131703302));
+      localblir.a(anzj.a(2131703288), 3);
+      localblir.c(2131690580);
+      localblir.a(new wpx(this, localblir, localCommentEntry, i));
+      localblir.show();
+      continue;
+      this.jdField_a_of_type_Wqa.a().a();
+      if (QLog.isColorLevel()) {
+        QLog.d("FeedCommentEventHandler", 2, "onClick retry_btn");
+      }
     }
   }
 }

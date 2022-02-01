@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface aqcx
+public class aqcx
 {
-  public abstract void a(ColorNote paramColorNote);
-  
-  public abstract void b(ColorNote paramColorNote);
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public ImageView b;
 }
 
 

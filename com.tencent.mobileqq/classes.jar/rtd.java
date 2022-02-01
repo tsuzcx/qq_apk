@@ -1,14 +1,22 @@
-import org.jetbrains.annotations.NotNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public abstract interface rtd<R>
+class rtd
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(float paramFloat);
+  rtd(rsx paramrsx) {}
   
-  public abstract void a(int paramInt, @NotNull String paramString);
-  
-  public abstract void a(R paramR);
-  
-  public abstract void a(@NotNull String paramString);
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    rsx.a(this.a, "mShareActionSheet cancle button OnClick");
+    if (rsx.a(this.a) != null) {
+      rsx.a(this.a).c();
+    }
+    paramDialogInterface = rsx.a(this.a);
+    rsx.a(this.a, paramDialogInterface, String.valueOf(ozs.a()), paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
+  }
 }
 
 

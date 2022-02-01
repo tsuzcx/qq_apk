@@ -1,17 +1,25 @@
-import java.util.Random;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
 public class aptt
+  implements View.OnTouchListener
 {
-  public static Random a = new Random();
+  public aptt(QRScanEntryView paramQRScanEntryView) {}
   
-  public static final float a(float paramFloat)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return aptv.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
-  }
-  
-  public static final float b(float paramFloat)
-  {
-    return aptu.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

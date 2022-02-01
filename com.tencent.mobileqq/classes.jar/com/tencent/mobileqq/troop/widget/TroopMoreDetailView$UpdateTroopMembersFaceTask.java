@@ -7,15 +7,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
-import aoch;
-import bfxt;
+import anzj;
+import aoot;
+import bgxu;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import zlx;
+import zps;
 
 public class TroopMoreDetailView$UpdateTroopMembersFaceTask
   implements Runnable
@@ -53,11 +53,11 @@ public class TroopMoreDetailView$UpdateTroopMembersFaceTask
       ((View)localObject3).setVisibility(8);
       return;
     }
-    ((LinearLayout)((View)localObject3).findViewById(2131366173)).setVisibility(0);
-    Object localObject2 = (TextView)((View)localObject3).findViewById(2131370586);
-    ((TextView)localObject2).setText(anni.a(2131714344) + k + anni.a(2131714337));
-    Object localObject3 = (TextView)((View)localObject3).findViewById(2131370590);
-    int j = (localTroopMoreDetailView.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - ((TextView)localObject3).getMeasuredWidth() - zlx.a((Context)localObject1, 27.0F) - ((TextView)localObject2).getMeasuredWidth() - zlx.a((Context)localObject1, 24.0F)) / zlx.a((Context)localObject1, 52.0F);
+    ((LinearLayout)((View)localObject3).findViewById(2131366222)).setVisibility(0);
+    Object localObject2 = (TextView)((View)localObject3).findViewById(2131370690);
+    ((TextView)localObject2).setText(anzj.a(2131714453) + k + anzj.a(2131714446));
+    Object localObject3 = (TextView)((View)localObject3).findViewById(2131370694);
+    int j = (localTroopMoreDetailView.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - ((TextView)localObject3).getMeasuredWidth() - zps.a((Context)localObject1, 27.0F) - ((TextView)localObject2).getMeasuredWidth() - zps.a((Context)localObject1, 24.0F)) / zps.a((Context)localObject1, 52.0F);
     if (j > 6) {}
     for (;;)
     {
@@ -71,12 +71,12 @@ public class TroopMoreDetailView$UpdateTroopMembersFaceTask
         }
         localObject2 = (String)localTroopMoreDetailView.jdField_a_of_type_JavaUtilArrayList.get(j);
         ((ImageView)localObject1).setVisibility(0);
-        ((ImageView)localObject1).setBackgroundDrawable(aoch.a(localQQAppInterface, 1, (String)localObject2, 3));
+        ((ImageView)localObject1).setBackgroundDrawable(aoot.a(localQQAppInterface, 1, (String)localObject2, 3));
         ((ImageView)localObject1).setTag(localObject2);
-        ((ImageView)localObject1).setOnClickListener(new bfxt(this, localTroopMoreDetailView));
+        ((ImageView)localObject1).setOnClickListener(new bgxu(this, localTroopMoreDetailView));
         if (AppSetting.c)
         {
-          ((ImageView)localObject1).setContentDescription(anni.a(2131714335) + (j + 1));
+          ((ImageView)localObject1).setContentDescription(anzj.a(2131714444) + (j + 1));
           ViewCompat.setImportantForAccessibility((View)localObject1, 1);
         }
       }

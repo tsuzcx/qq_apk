@@ -24,8 +24,8 @@ public class a
     try
     {
       this.a = paramContext;
-      e = paramContext.getFilesDir().toString() + g.a(f.a[3]) + "_" + paramString;
-      b = paramContext.getSharedPreferences(g.a(f.a[0]) + "_" + paramString, 0);
+      e = paramContext.getFilesDir().toString() + h.a(g.a[3]) + "_" + paramString;
+      b = paramContext.getSharedPreferences(h.a(g.a[0]) + "_" + paramString, 0);
       return;
     }
     catch (Exception paramContext)
@@ -40,11 +40,11 @@ public class a
     try
     {
       b();
-      localJSONObject.put(f.a(24), 1);
-      localJSONObject.put(f.a(27), c);
-      localJSONObject.put(f.a(28), d);
-      localJSONObject.put(f.a(26), "");
-      localJSONObject.put(f.a(25), "");
+      localJSONObject.put(g.a(24), 1);
+      localJSONObject.put(g.a(27), c);
+      localJSONObject.put(g.a(28), d);
+      localJSONObject.put(g.a(26), "");
+      localJSONObject.put(g.a(25), "");
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -62,8 +62,8 @@ public class a
     try
     {
       SharedPreferences.Editor localEditor = b.edit();
-      localEditor.putLong(g.a(f.a[1]), paramLong);
-      localEditor.putString(g.a(f.a[2]), paramString);
+      localEditor.putLong(h.a(g.a[1]), paramLong);
+      localEditor.putString(h.a(g.a[2]), paramString);
       localEditor.commit();
       c = paramLong;
       d = paramString;
@@ -147,7 +147,7 @@ public class a
     do
     {
       return false;
-      bool1 = h.a(paramArrayOfByte, null);
+      bool1 = i.a(paramArrayOfByte, null);
       bool2 = paramString.equalsIgnoreCase(c.b(paramArrayOfByte));
     } while ((!bool1) || (!bool2));
     return true;
@@ -158,8 +158,8 @@ public class a
     try
     {
       Object localObject = c();
-      c = b.getLong(g.a(f.a[1]), 0L);
-      d = b.getString(g.a(f.a[2]), "");
+      c = b.getLong(h.a(g.a[1]), 0L);
+      d = b.getString(h.a(g.a[2]), "");
       if (!a((byte[])localObject, d))
       {
         localObject = b.edit();

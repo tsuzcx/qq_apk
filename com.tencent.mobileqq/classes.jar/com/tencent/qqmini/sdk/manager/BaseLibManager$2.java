@@ -16,7 +16,7 @@ class BaseLibManager$2
   public void run()
   {
     String str2 = StorageUtil.getPreference().getString("downloadUrl", null);
-    String str1 = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+    String str1 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
     QMLog.i("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str1);
     boolean bool3;
     Object localObject1;
@@ -37,9 +37,9 @@ class BaseLibManager$2
     {
       boolean bool2;
       Object localObject2;
-      if ("1.17.0.00206".equals(str1))
+      if ("1.18.0.00132".equals(str1))
       {
-        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] current version is default:1.17.0.00206");
+        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] current version is default:1.18.0.00132");
         bool2 = bool1;
         localObject2 = localObject1;
         label112:

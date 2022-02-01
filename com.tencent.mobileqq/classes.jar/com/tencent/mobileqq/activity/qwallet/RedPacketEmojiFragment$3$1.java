@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akmv;
+import akyg;
 import android.text.TextUtils;
-import bnpt;
-import bnpy;
+import borf;
+import bork;
 import com.tencent.qphone.base.util.QLog;
 
 public class RedPacketEmojiFragment$3$1
   implements Runnable
 {
-  public RedPacketEmojiFragment$3$1(akmv paramakmv, boolean paramBoolean, bnpt parambnpt) {}
+  public RedPacketEmojiFragment$3$1(akyg paramakyg, boolean paramBoolean, borf paramborf) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bnpt != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Borf != null))
     {
-      String str = bnpy.a(this.jdField_a_of_type_Bnpt);
+      String str = bork.a(this.jdField_a_of_type_Borf);
       if (QLog.isColorLevel()) {
         QLog.i("RedPacketEmojiFragment", 2, "[doLoading] onAEDownloadFinish unzipPath=" + str);
       }
       if (!TextUtils.isEmpty(str))
       {
-        this.jdField_a_of_type_Akmv.a.c = str;
-        this.jdField_a_of_type_Akmv.a.a();
+        this.jdField_a_of_type_Akyg.a.c = str;
+        this.jdField_a_of_type_Akyg.a.a();
         return;
       }
     }
-    this.jdField_a_of_type_Akmv.a.b();
+    this.jdField_a_of_type_Akyg.a.b();
   }
 }
 

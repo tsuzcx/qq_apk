@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.studymode;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -19,10 +19,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axbg;
-import axbh;
-import bdbw;
-import bdbx;
+import axtx;
+import axty;
+import bdun;
+import bduo;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableView;
@@ -38,7 +38,7 @@ public final class ModeRadioGroup
 {
   private int jdField_a_of_type_Int = -1;
   @Nullable
-  private bdbw jdField_a_of_type_Bdbw;
+  private bdun jdField_a_of_type_Bdun;
   private boolean jdField_a_of_type_Boolean = true;
   
   public ModeRadioGroup(@NotNull Context paramContext)
@@ -61,7 +61,7 @@ public final class ModeRadioGroup
     for (paramInt = 1;; paramInt = 0)
     {
       if (paramInt != 0) {}
-      setBackgroundResource(2130850338);
+      setBackgroundResource(2130850350);
       b(0);
       b(1);
       b(2);
@@ -72,23 +72,23 @@ public final class ModeRadioGroup
   private final Drawable a()
   {
     Object localObject1 = new GradientDrawable();
-    ((GradientDrawable)localObject1).setCornerRadius(afur.a(6.0F, getResources()));
+    ((GradientDrawable)localObject1).setCornerRadius(agej.a(6.0F, getResources()));
     Object localObject2 = getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "resources");
-    ((GradientDrawable)localObject1).setColor(axbg.a((Resources)localObject2, 2131167086));
-    int i = afur.a(1.5F, getResources());
+    ((GradientDrawable)localObject1).setColor(axtx.a((Resources)localObject2, 2131167096));
+    int i = agej.a(1.5F, getResources());
     localObject2 = getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "resources");
-    ((GradientDrawable)localObject1).setStroke(i, axbg.a((Resources)localObject2, 2131167088));
+    ((GradientDrawable)localObject1).setStroke(i, axtx.a((Resources)localObject2, 2131167098));
     localObject2 = new GradientDrawable();
-    ((GradientDrawable)localObject2).setCornerRadius(afur.a(6.0F, getResources()));
+    ((GradientDrawable)localObject2).setCornerRadius(agej.a(6.0F, getResources()));
     Object localObject3 = getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject3, "resources");
-    ((GradientDrawable)localObject2).setColor(axbg.a((Resources)localObject3, 2131167086));
-    i = afur.a(1.5F, getResources());
+    ((GradientDrawable)localObject2).setColor(axtx.a((Resources)localObject3, 2131167096));
+    i = agej.a(1.5F, getResources());
     localObject3 = getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject3, "resources");
-    ((GradientDrawable)localObject2).setStroke(i, axbg.a((Resources)localObject3, 2131167087));
+    ((GradientDrawable)localObject2).setStroke(i, axtx.a((Resources)localObject3, 2131167097));
     localObject3 = new StateListDrawable();
     localObject1 = (Drawable)localObject1;
     ((StateListDrawable)localObject3).addState(new int[] { 16842913 }, (Drawable)localObject1);
@@ -104,15 +104,15 @@ public final class ModeRadioGroup
     default: 
       localContext = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      return localContext.getResources().getString(2131692611);
+      return localContext.getResources().getString(2131692619);
     case 2: 
       localContext = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      return localContext.getResources().getString(2131692616);
+      return localContext.getResources().getString(2131692624);
     }
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    return localContext.getResources().getString(2131692614);
+    return localContext.getResources().getString(2131692622);
   }
   
   private final void a(View paramView)
@@ -120,15 +120,15 @@ public final class ModeRadioGroup
     if (QLog.isColorLevel()) {
       QLog.d("GeneralModeRadioGroup", 2, "showLoading");
     }
-    paramView = (TextView)paramView.findViewById(2131367415);
+    paramView = (TextView)paramView.findViewById(2131367477);
     Object localObject = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
     localObject = ((Context)localObject).getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources");
-    localObject = axbg.a((Resources)localObject, 2130839373);
+    localObject = axtx.a((Resources)localObject, 2130839381);
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    int i = afur.a(20.0F, localContext.getResources());
+    int i = agej.a(20.0F, localContext.getResources());
     ((Drawable)localObject).setBounds(0, 0, i, i);
     paramView.setCompoundDrawables(null, null, (Drawable)localObject, null);
     if ((localObject instanceof Animatable)) {
@@ -143,22 +143,22 @@ public final class ModeRadioGroup
     default: 
       localContext = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      return localContext.getResources().getString(2131692610);
+      return localContext.getResources().getString(2131692618);
     case 2: 
       localContext = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      return localContext.getResources().getString(2131692615);
+      return localContext.getResources().getString(2131692623);
     }
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    return localContext.getResources().getString(2131692613);
+    return localContext.getResources().getString(2131692621);
   }
   
   private final void b(int paramInt)
   {
     Object localObject1 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "context");
-    int i = afur.a(16.0F, ((Context)localObject1).getResources());
+    int i = agej.a(16.0F, ((Context)localObject1).getResources());
     localObject1 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "context");
     localObject1 = ((Context)localObject1).getResources();
@@ -166,56 +166,56 @@ public final class ModeRadioGroup
     int j = (((Resources)localObject1).getDisplayMetrics().widthPixels - i * 4) / 3;
     localObject1 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "context");
-    Object localObject2 = new LinearLayout.LayoutParams(j, afur.a(115.0F, ((Context)localObject1).getResources()));
+    Object localObject2 = new LinearLayout.LayoutParams(j, agej.a(115.0F, ((Context)localObject1).getResources()));
     ((LinearLayout.LayoutParams)localObject2).leftMargin = i;
     localObject1 = new RelativeLayout(getContext());
     ((RelativeLayout)localObject1).setTag(Integer.valueOf(paramInt));
     ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     localObject2 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-    i = afur.a(8.0F, ((Context)localObject2).getResources());
+    i = agej.a(8.0F, ((Context)localObject2).getResources());
     localObject2 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-    ((RelativeLayout)localObject1).setPadding(i, afur.a(12.0F, ((Context)localObject2).getResources()), i, i);
-    axbh.a((View)localObject1, a());
+    ((RelativeLayout)localObject1).setPadding(i, agej.a(12.0F, ((Context)localObject2).getResources()), i, i);
+    axty.a((View)localObject1, a());
     addView((View)localObject1);
     localObject2 = new TextView(getContext());
     Object localObject3 = getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject3, "resources");
-    ((TextView)localObject2).setTextColor(axbg.a((Resources)localObject3, 2131166986));
+    ((TextView)localObject2).setTextColor(axtx.a((Resources)localObject3, 2131166990));
     ((TextView)localObject2).setTextSize(1, 16.0F);
     ((TextView)localObject2).setText((CharSequence)a(paramInt));
     ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-2, -2));
-    ((TextView)localObject2).setId(2131367415);
+    ((TextView)localObject2).setId(2131367477);
     localObject3 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject3, "context");
-    ((TextView)localObject2).setCompoundDrawablePadding(afur.a(5.0F, ((Context)localObject3).getResources()));
+    ((TextView)localObject2).setCompoundDrawablePadding(agej.a(5.0F, ((Context)localObject3).getResources()));
     ((RelativeLayout)localObject1).addView((View)localObject2);
     localObject2 = new TextView(getContext());
     localObject3 = getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject3, "resources");
-    ((TextView)localObject2).setTextColor(axbg.a((Resources)localObject3, 2131167062));
+    ((TextView)localObject2).setTextColor(axtx.a((Resources)localObject3, 2131167072));
     ((TextView)localObject2).setTextSize(1, 12.0F);
     ((TextView)localObject2).setText((CharSequence)b(paramInt));
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131367415);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131367477);
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    ((RelativeLayout.LayoutParams)localObject3).topMargin = afur.a(4.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject3).topMargin = agej.a(4.0F, localContext.getResources());
     ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-    ((TextView)localObject2).setId(2131367413);
+    ((TextView)localObject2).setId(2131367475);
     ((RelativeLayout)localObject1).addView((View)localObject2);
     localObject2 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-    i = afur.a(16.0F, ((Context)localObject2).getResources());
+    i = agej.a(16.0F, ((Context)localObject2).getResources());
     localObject2 = new RelativeLayout.LayoutParams(i, i);
     ((RelativeLayout.LayoutParams)localObject2).addRule(12);
     ((RelativeLayout.LayoutParams)localObject2).addRule(11);
     localObject3 = new ImageView(getContext());
     ((ImageView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    ((ImageView)localObject3).setId(2131367414);
+    ((ImageView)localObject3).setId(2131367476);
     ((RelativeLayout)localObject1).addView((View)localObject3);
-    ((RelativeLayout)localObject1).setOnClickListener((View.OnClickListener)new bdbx(this, paramInt));
+    ((RelativeLayout)localObject1).setOnClickListener((View.OnClickListener)new bduo(this, paramInt));
   }
   
   private final void b(View paramView)
@@ -223,7 +223,7 @@ public final class ModeRadioGroup
     if (QLog.isColorLevel()) {
       QLog.d("GeneralModeRadioGroup", 2, "cancelLoading");
     }
-    paramView = (TextView)paramView.findViewById(2131367415);
+    paramView = (TextView)paramView.findViewById(2131367477);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "titleText");
     Drawable localDrawable = paramView.getCompoundDrawables()[2];
     if ((localDrawable instanceof Animatable)) {
@@ -259,7 +259,7 @@ public final class ModeRadioGroup
     if (i < j)
     {
       localObject1 = getChildAt(i);
-      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131367414);
+      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131367476);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "child");
       Object localObject2 = ((View)localObject1).getTag();
       if (((localObject2 instanceof Integer)) && (Intrinsics.areEqual(localObject2, Integer.valueOf(paramInt))))
@@ -267,23 +267,23 @@ public final class ModeRadioGroup
         if (paramBoolean2) {
           a((View)localObject1);
         }
-        localImageView.setImageResource(2130839371);
+        localImageView.setImageResource(2130839379);
         ((View)localObject1).setSelected(true);
       }
       for (;;)
       {
         i += 1;
         break;
-        localImageView.setImageResource(2130839372);
+        localImageView.setImageResource(2130839380);
         ((View)localObject1).setSelected(false);
         b((View)localObject1);
       }
     }
     if (paramBoolean1)
     {
-      localObject1 = this.jdField_a_of_type_Bdbw;
+      localObject1 = this.jdField_a_of_type_Bdun;
       if (localObject1 != null) {
-        ((bdbw)localObject1).a(paramInt, this.jdField_a_of_type_Int);
+        ((bdun)localObject1).a(paramInt, this.jdField_a_of_type_Int);
       }
     }
     this.jdField_a_of_type_Int = paramInt;
@@ -302,17 +302,17 @@ public final class ModeRadioGroup
     {
       View localView = getChildAt(i);
       Intrinsics.checkExpressionValueIsNotNull(localView, "getChildAt(index)");
-      axbh.a(localView, null);
+      axty.a(localView, null);
       localView = getChildAt(i);
       Intrinsics.checkExpressionValueIsNotNull(localView, "getChildAt(index)");
-      axbh.a(localView, a());
+      axty.a(localView, a());
       i += 1;
     }
   }
   
-  public final void setOnCheckChangeListener(@Nullable bdbw parambdbw)
+  public final void setOnCheckChangeListener(@Nullable bdun parambdun)
   {
-    this.jdField_a_of_type_Bdbw = parambdbw;
+    this.jdField_a_of_type_Bdun = parambdun;
   }
 }
 

@@ -1,28 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class attz
-  extends attu
+class attz
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  attz(atty paramatty, long paramLong, UUID paramUUID, Activity paramActivity) {}
   
-  public attz(bety parambety)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = parambety.e;
-    this.jdField_a_of_type_Int = 1;
-    this.b = String.valueOf(parambety.b);
-  }
-  
-  public String a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
+    switch (paramInt)
     {
-      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
-      return "";
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(this.jdField_a_of_type_Atty.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      return;
     }
-    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
+    new bfsf(this.jdField_a_of_type_Long, this.jdField_a_of_type_Atty.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

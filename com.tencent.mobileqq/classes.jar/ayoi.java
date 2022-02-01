@@ -1,20 +1,33 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.EditText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-
-public class ayoi
-  extends Editable.Factory
+class ayoi
+  implements aqxz
 {
-  public ayoi(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  ayoi(aynp paramaynp) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public int a()
   {
-    if ((paramCharSequence instanceof bdod)) {
-      return (Editable)paramCharSequence;
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
     }
-    return new bdod(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return anzj.a(2131706178);
+    }
+    return anzj.a(2131706149);
   }
 }
 

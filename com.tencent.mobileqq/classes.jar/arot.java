@@ -1,121 +1,91 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class arot
-  extends arnz
+  extends arac<aros>
 {
-  public static final String[] a = (String[])new String[] { "libgnustl_shared.so", "libjsc.so" };
-  
-  public arot(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public aros a(int paramInt)
   {
-    super("android.qq.readinjoy.viola_795", paramQQAppInterface);
-  }
-  
-  public static void a()
-  {
-    if (i()) {}
-    do
-    {
-      return;
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = (arno)((QQAppInterface)localObject).getManager(77);
-        if (localObject != null)
-        {
-          localObject = (arot)((arno)localObject).a("android.qq.readinjoy.viola_795");
-          if (localObject != null)
-          {
-            ((arot)localObject).a(true);
-            QLog.i("viola.ViolaLibHandler", 1, "restartDownloadLib");
-          }
-        }
-      }
-    } while (aros.i());
-    aros.a();
-  }
-  
-  public static boolean i()
-  {
-    String str = pmx.a();
-    int i = 0;
-    while (i < a.length)
-    {
-      File localFile = new File(str, a[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopRobotConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    return true;
+    return new aros();
   }
   
-  public int a()
+  @Nullable
+  public aros a(araj[] paramArrayOfaraj)
   {
-    return 10071;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return ViolaLibData.class;
-  }
-  
-  public String a()
-  {
-    return "viola.ViolaLibHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaLibHandler", 1, "version:" + localXmlData.Version);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopRobotConfProcessor", 2, "onParsed start");
     }
-    if (new File(paramString).exists())
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      if (pmx.a(paramString)) {
-        break label124;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotConfProcessor", 2, "onParsed " + paramArrayOfaraj.length);
       }
-      if (localXmlData != null)
-      {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        arnn.a(localXmlData, new String[] { "loadState", "Version" });
-      }
-      QLog.e("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess],unzip readinjoy_viola lib failed!");
+      return aros.a(paramArrayOfaraj[0]);
     }
-    label124:
-    do
-    {
-      return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_795").commit();
-      }
-    } while (!aros.i());
-    pmr.a("jsc doOnDownloadSuccess");
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
     return null;
+  }
+  
+  public void a(aros paramaros)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaros == null) {
+        break label58;
+      }
+    }
+    label58:
+    for (String str = paramaros.toString();; str = " empty")
+    {
+      QLog.d("TroopRobotConfProcessor", 2, str);
+      if (paramaros != null) {
+        bgpy.a(paramaros.a(), paramaros.a());
+      }
+      return;
+    }
+  }
+  
+  public Class<aros> clazz()
+  {
+    return aros.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopRobotConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 460;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arot
  * JD-Core Version:    0.7.0.1
  */

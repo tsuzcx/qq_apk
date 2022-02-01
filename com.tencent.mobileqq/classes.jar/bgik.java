@@ -1,55 +1,32 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class bgik
+  extends bghr
 {
-  public static URLDrawable a(ImageView paramImageView, String paramString)
+  public bgik(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    return a(paramImageView, paramString, bgjf.a);
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 5;
   }
   
-  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    return a(paramImageView, paramString, bgjf.a, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, null);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramImageView.getLayoutParams() != null)
-    {
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
+      new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696777), bfpe.a(paramInt1, paramLong1, paramInt2), "");
     }
-    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
-    {
-      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
-      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
-    }
-    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    if (paramDecodeHandler != null) {
-      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-    }
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setDecodeHandler(paramDecodeHandler);
-    paramImageView.setImageDrawable(paramString);
-    return paramString;
+    return null;
   }
+  
+  public void a(int paramInt, Object paramObject, String paramString) {}
+  
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

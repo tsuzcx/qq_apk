@@ -1,8 +1,6 @@
-import android.support.annotation.NonNull;
-
 public abstract interface bpvz
 {
-  public abstract void a(@NonNull bpwg parambpwg);
+  public abstract void a();
 }
 
 

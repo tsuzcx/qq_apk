@@ -1,28 +1,14 @@
-import java.io.BufferedReader;
+import android.os.SystemClock;
 
 public class llt
-  extends llo
 {
-  int a;
-  int b = 0;
-  boolean c;
+  public float a;
+  public long a;
   
-  public llt()
+  public llt(lls paramlls, float paramFloat)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Int = lls.a(lll.a(paramBufferedReader, "shape"));
-    } while (this.jdField_a_of_type_Int != 3);
-    this.c = lll.a(paramBufferedReader, "edges");
-    this.b = llr.a(lll.a(paramBufferedReader, "side"));
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
 }
 

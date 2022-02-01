@@ -1,21 +1,6 @@
-import android.view.View;
-
-public class acoi
-  extends acoj
+public abstract interface acoi
 {
-  public int a;
-  public View a;
-  public int b;
-  public View b;
-  public int c;
-  public View c;
-  public int d;
-  public View d;
-  public int e;
-  public View e;
-  public int f;
-  public int g;
-  public int h;
+  public abstract void onResponse(acoh paramacoh);
 }
 
 

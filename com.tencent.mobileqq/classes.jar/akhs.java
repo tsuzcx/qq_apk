@@ -1,19 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akhs
+class akhs
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public ImageView b;
+  akhs(akha paramakha) {}
   
-  public akhs(akhr paramakhr) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.apollo.data.CmGamePushItem;
-import java.util.Comparator;
+import android.os.Bundle;
 
-class amlm
-  implements Comparator<CmGamePushItem>
+public abstract interface amlm
 {
-  amlm(amll paramamll) {}
-  
-  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
-  {
-    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
-      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
-    }
-    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, Bundle paramBundle);
 }
 
 

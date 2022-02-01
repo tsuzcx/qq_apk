@@ -1,25 +1,90 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajps
-  implements DialogInterface.OnCancelListener
+  implements ajop
 {
-  private final WeakReference<ChatHistoryC2CAllFragment> a;
+  public ajps(TroopActivity paramTroopActivity) {}
   
-  public ajps(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
+  public Activity a()
   {
-    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+    return this.a;
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public View a()
   {
-    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
-    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    return this.a.findViewById(2131376925);
+  }
+  
+  public TextView a()
+  {
+    return (TextView)this.a.findViewById(2131369073);
+  }
+  
+  public auxu a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public blha a()
+  {
+    return this.a.jdField_a_of_type_Blha;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.a.b != 2) {
+      return;
     }
+    switch (paramInt)
+    {
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.runOnUiThread(paramRunnable);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a.isResume()) {
+      QQToast.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public boolean a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public View b()
+  {
+    return this.a.findViewById(2131376869);
+  }
+  
+  public boolean b()
+  {
+    return TroopActivity.b(this.a);
+  }
+  
+  public View c()
+  {
+    return this.a.findViewById(2131376859);
+  }
+  
+  public View d()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   }
 }
 

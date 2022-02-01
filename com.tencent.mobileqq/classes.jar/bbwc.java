@@ -1,45 +1,124 @@
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
-class bbwc
+public class bbwc
+  extends bbvz
 {
   public int a;
-  public Context a;
-  public View a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public TextView b;
-  public SquareImageView b;
-  public TextView c;
+  public CheckBox a;
+  QQAppInterface a;
+  public CommentsView a;
+  public LikesView a;
+  public RichStatus b;
   
-  public bbwc(bbwb parambbwb, Context paramContext)
+  public bbwc(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+    this.e = 1;
   }
   
-  public void a()
+  public View a(RichStatus paramRichStatus)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559813, this.jdField_a_of_type_Bbwb.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363108));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371539));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372816));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365369));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372555));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377606));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369526));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    return super.a(paramRichStatus);
   }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setMinimumHeight(0);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    int i;
+    label49:
+    label77:
+    label98:
+    LikesView localLikesView;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+      if (paramBoolean)
+      {
+        i = jdField_a_of_type_ArrayOfInt[14];
+        ((CommentsView)localObject).setNormalTextColor(i);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+        if (!paramBoolean) {
+          break label162;
+        }
+        i = jdField_a_of_type_ArrayOfInt[13];
+        ((CommentsView)localObject).setItemColor(i);
+      }
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label172;
+      }
+      i = jdField_a_of_type_ArrayOfInt[14];
+      ((LikesView)localObject).setNormalTextColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label182;
+      }
+      i = jdField_a_of_type_ArrayOfInt[13];
+      ((LikesView)localObject).setItemColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a();
+      if ((this.jdField_a_of_type_AndroidContentContext != null) && (localObject != null))
+      {
+        localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+        if (!paramBoolean) {
+          break label192;
+        }
+      }
+    }
+    label162:
+    label172:
+    label182:
+    label192:
+    for (Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847451);; localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847452))
+    {
+      localLikesView.setLikSpanDrawable((Drawable)localObject);
+      return;
+      i = jdField_a_of_type_ArrayOfInt[16];
+      break;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label49;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label77;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label98;
+    }
+  }
+  
+  protected int b()
+  {
+    return jdField_a_of_type_ArrayOfInt[12];
+  }
+  
+  protected boolean d()
+  {
+    return true;
+  }
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  protected void i() {}
 }
 
 

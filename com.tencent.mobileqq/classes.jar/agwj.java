@@ -1,6 +1,18 @@
-public abstract interface agwj
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
+
+class agwj
+  implements bixo
 {
-  public abstract void a();
+  agwj(agwg paramagwg) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.DrawerFrame.TouchEventConsumer");
+    }
+    return this.a.a(paramMotionEvent);
+  }
 }
 
 

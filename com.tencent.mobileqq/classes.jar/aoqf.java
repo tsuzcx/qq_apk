@@ -1,25 +1,34 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class aoqf
-  implements bdnd
+public abstract class aoqf
 {
-  aoqf(aoqe paramaoqe) {}
+  public FriendListHandler a;
+  protected QQAppInterface a;
   
-  public void a(int paramInt)
+  public aoqf(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
   }
   
-  public void a(String paramString)
+  protected final void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    aoqe.a(this.a, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(paramInt, paramBoolean, paramObject);
   }
   
-  public void b(int paramInt)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.a.a.a(false);
+    if (a(paramFromServiceMsg.getServiceCmd())) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
+  
+  public abstract boolean a(String paramString);
+  
+  protected abstract void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 

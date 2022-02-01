@@ -1,75 +1,73 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
+import java.io.File;
+import java.util.Map;
 
-public final class xfv
+public class xfv
+  extends xho
 {
-  public static void a(Context paramContext)
+  private String a;
+  public ybh a;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  
+  public xfv()
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
-    paramContext.startActivity(localIntent);
+    this("", null, false);
   }
   
-  public static void a(Context paramContext, String paramString)
+  public xfv(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (a(paramContext, paramString))
+    a(false, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      b(paramContext, paramString);
+      a(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    a(paramContext);
+    b(false);
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  public void a(String paramString)
   {
-    boolean bool = false;
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
+    File localFile1 = new File(this.jdField_c_of_type_JavaLangString);
     try
     {
-      paramString = localPackageManager.getPackageInfo(paramString, 0);
-      paramContext = paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
+      File localFile2 = localFile1.getParentFile();
+      if ((localFile2 != null) && (!localFile2.exists())) {
+        localFile2.mkdirs();
+      }
+      if (localFile1.exists()) {
+        localFile1.delete();
       }
     }
-    if (paramContext != null) {
-      bool = true;
+    catch (Exception localException)
+    {
+      label45:
+      break label45;
     }
-    return bool;
+    this.jdField_a_of_type_Ybh = new ybe();
+    this.jdField_a_of_type_Ybh.a(paramString, 0, 0, new xfw(this, paramString));
   }
   
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  protected void a(Map<String, Object> paramMap)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "https://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
-    paramContext.startActivity(localIntent);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, zhq paramzhq)
-  {
-    if (paramzhq == null) {
-      return false;
-    }
-    return a(paramContext, String.valueOf(paramzhq.jdField_a_of_type_Long), String.valueOf(paramzhq.jdField_a_of_type_Int));
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
-    if (paramString != null) {
-      paramContext.startActivity(paramString);
+    if ((paramMap != null) && (!paramMap.isEmpty()))
+    {
+      if (paramMap.containsKey("DownloadPic2FileJob_iiu")) {
+        this.jdField_a_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_iiu"));
+      }
+      if (paramMap.containsKey("DownloadPic2FileJob_isfp")) {
+        this.jdField_c_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_isfp"));
+      }
+      if (paramMap.containsKey("DownloadPic2FileJob_IN_ROUND")) {
+        this.jdField_c_of_type_Boolean = ((Boolean)a("DownloadPic2FileJob_IN_ROUND")).booleanValue();
+      }
     }
   }
 }

@@ -1,13 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
 
-class scx
-  implements bkia
+public class scx
+  extends AccessibilityDelegateCompat
 {
-  scx(scw paramscw) {}
+  public scx(BaseTabbar paramBaseTabbar) {}
   
-  public void ak_()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    sce.a(this.a.a).c();
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
+    }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

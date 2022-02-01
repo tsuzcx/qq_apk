@@ -1,40 +1,23 @@
 import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import eipc.EIPCResult;
 
-public class apyy
-  implements BusinessObserver
+class apyy
+  implements apza
 {
-  public void a(boolean paramBoolean) {}
+  apyy(apyx paramapyx, apyv paramapyv) {}
   
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void b(boolean paramBoolean, String paramString) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    switch (paramInt)
+    Bundle localBundle = new Bundle();
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-    default: 
-      return;
-    case 1: 
-      paramInt = paramBundle.getInt("resp_result", 0);
-      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
-      return;
-    case 2: 
-      a(paramBoolean, paramBundle.getString("key_card_id"));
-      return;
-    case 3: 
-      b(paramBoolean, paramBundle.getString("key_card_id"));
-      return;
-    case 4: 
-      a(paramBoolean);
-      return;
+      localBundle.putString("userAccount", paramString1);
+      localBundle.putString("openID", paramString2);
+      localBundle.putString("openToken", paramString3);
+      localBundle.putLong("dstAppID", paramLong);
     }
-    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
+    this.jdField_a_of_type_Apyv.a(EIPCResult.createResult(0, localBundle));
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.report;
 
-import bcnj;
-import bmfk;
+import bdgb;
+import bngm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -13,24 +13,24 @@ import mqq.os.MqqHandler;
 public class QzoneOnlineTimeCollectRptService$1
   implements Runnable
 {
-  public QzoneOnlineTimeCollectRptService$1(bmfk parambmfk) {}
+  public QzoneOnlineTimeCollectRptService$1(bngm parambngm) {}
   
   public void run()
   {
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + bmfk.a(this.this$0));
-    if (!bmfk.a(this.this$0)) {}
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + bngm.a(this.this$0));
+    if (!bngm.a(this.this$0)) {}
     try
     {
       this.this$0.a = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      bmfk.a(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
+      bngm.a(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
       this.this$0.b();
-      if (!bcnj.c())
+      if (!bdgb.c())
       {
-        bmfk.a(this.this$0);
-        bmfk.a(this.this$0, true);
+        bngm.a(this.this$0);
+        bngm.a(this.this$0, true);
         LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", true);
-        if (bmfk.a(this.this$0) != 0) {
-          ThreadManager.getSubThreadHandler().post(bmfk.a(this.this$0));
+        if (bngm.a(this.this$0) != 0) {
+          ThreadManager.getSubThreadHandler().post(bngm.a(this.this$0));
         }
         return;
       }

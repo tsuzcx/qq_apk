@@ -1,35 +1,81 @@
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
+import mqq.app.AppRuntime;
+import mqq.app.AppRuntime.Status;
+import mqq.app.Foreground;
 
-class azje
-  implements IUploadTaskCallback
+public class azje
 {
-  azje(azjd paramazjd) {}
+  private AppRuntime a;
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public azje(AppRuntime paramAppRuntime)
   {
-    this.a.f = 1002;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.c = paramString;
-    this.a.a(1002, new Object[0]);
+    this.a = paramAppRuntime;
   }
   
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
+  private boolean a(AppRuntime paramAppRuntime)
   {
-    if (this.a.f != paramInt)
+    int j = b();
+    int i;
+    if (Foreground.sCountResume > 0)
     {
-      this.a.f = paramInt;
-      this.a.a(this.a.f, new Object[0]);
+      i = 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate countResume:" + Foreground.sCountResume + " curHour: " + j + " begin: " + azjb.D + " end: " + azjb.E);
+      }
+      if (azjb.E <= azjb.D) {
+        break label165;
+      }
+      if ((j < azjb.D) || (j >= azjb.E)) {
+        break label237;
+      }
+      paramAppRuntime = paramAppRuntime.getOnlineStatus();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate closeZone curHour: " + j + " status: " + paramAppRuntime);
+      }
+      if ((paramAppRuntime != AppRuntime.Status.online) || (i == 0)) {
+        break label163;
+      }
+    }
+    label163:
+    label165:
+    do
+    {
+      return true;
+      i = 0;
+      break;
+      return false;
+      if ((j <= azjb.D) && (j >= azjb.E)) {
+        break label237;
+      }
+      paramAppRuntime = paramAppRuntime.getOnlineStatus();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate openZone curHour: " + j + " status: " + paramAppRuntime);
+      }
+    } while ((paramAppRuntime == AppRuntime.Status.online) && (i != 0));
+    return false;
+    label237:
+    return false;
+  }
+  
+  public int a()
+  {
+    if (a(this.a)) {}
+    for (int i = 41032;; i = 40001)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] getStatus return status: " + i);
+      }
+      return i;
     }
   }
   
-  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
+  int b()
   {
-    this.a.f = 1001;
-    this.a.jdField_a_of_type_JavaLangObject = paramObject;
-    this.a.a(1001, new Object[0]);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    return localCalendar.get(11);
   }
 }
 

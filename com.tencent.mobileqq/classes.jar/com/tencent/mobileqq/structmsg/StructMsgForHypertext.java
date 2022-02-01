@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import afur;
-import afzq;
+import agej;
+import agjk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -17,13 +17,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcwd;
-import bcwr;
-import bcws;
-import bcwt;
-import bcxj;
-import bdsh;
-import bdzx;
+import bdow;
+import bdpk;
+import bdpl;
+import bdpm;
+import bdqc;
+import beqz;
+import beyq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
@@ -47,14 +47,14 @@ public class StructMsgForHypertext
   extends AbsStructMsg
 {
   private String KEY_QD_HYPERTEXT_CLICK_STATE = "qd_hypertext_click_state_";
-  public ArrayList<bcwt> mHpertextArray;
+  public ArrayList<bdpm> mHpertextArray;
   protected boolean mHyperClick;
   public int mHypertextContentLayout = 0;
   public String mSourceIcon;
   public String mSourceName;
-  protected View.OnClickListener mSourceOnClickListener = new bcws(this);
+  protected View.OnClickListener mSourceOnClickListener = new bdpl(this);
   public String mSourceUrl;
-  private URLDrawableDownListener.Adapter mUrlAdapter = new bcwr(this);
+  private URLDrawableDownListener.Adapter mUrlAdapter = new bdpk(this);
   
   public StructMsgForHypertext() {}
   
@@ -68,28 +68,28 @@ public class StructMsgForHypertext
     this.mSourceUrl = paramBundle.getString("struct_share_key_source_url");
   }
   
-  public StructMsgForHypertext(bcxj parambcxj, int paramInt)
+  public StructMsgForHypertext(bdqc parambdqc, int paramInt)
   {
-    super(parambcxj);
+    super(parambdqc);
     this.mMsgServiceID = paramInt;
-    int i = parambcxj.a();
+    int i = parambdqc.a();
     paramInt = 0;
     if (paramInt < i)
     {
-      bcxj localbcxj = parambcxj.a(paramInt);
-      if (localbcxj == null) {}
+      bdqc localbdqc = parambdqc.a(paramInt);
+      if (localbdqc == null) {}
       for (;;)
       {
         paramInt += 1;
         break;
-        if (localbcxj.b.equals("source"))
+        if (localbdqc.b.equals("source"))
         {
-          parseSourceNode(localbcxj);
+          parseSourceNode(localbdqc);
         }
-        else if (localbcxj.a == 1)
+        else if (localbdqc.a == 1)
         {
-          for (localbcxj = localbcxj.b(); (localbcxj != null) && (localbcxj.a != 1); localbcxj = bcwd.a(localbcxj)) {}
-          parseItem(localbcxj);
+          for (localbdqc = localbdqc.b(); (localbdqc != null) && (localbdqc.a != 1); localbdqc = bdow.a(localbdqc)) {}
+          parseItem(localbdqc);
         }
       }
     }
@@ -106,7 +106,7 @@ public class StructMsgForHypertext
     for (int i = 0; localMatcher.find(); i = localMatcher.end())
     {
       String str = paramString.substring(i, localMatcher.start());
-      this.mHpertextArray.add(new bcwt(str));
+      this.mHpertextArray.add(new bdpm(str));
       localStringBuilder.append(str);
       Object localObject2 = localMatcher.group();
       str = "";
@@ -119,11 +119,11 @@ public class StructMsgForHypertext
       while (((Matcher)localObject2).find()) {
         localObject1 = ((Matcher)localObject2).group().replaceAll("href\\s*=\\s*(['|\"]*)|['|\"]*", "");
       }
-      this.mHpertextArray.add(new bcwt((String)localObject1, "web", null, null, null, null, null, str));
+      this.mHpertextArray.add(new bdpm((String)localObject1, "web", null, null, null, null, null, str));
       localStringBuilder.append(str);
     }
     paramString = paramString.substring(i);
-    this.mHpertextArray.add(new bcwt(paramString));
+    this.mHpertextArray.add(new bdpm(paramString));
     localStringBuilder.append(paramString);
     this.mMsgBrief = localStringBuilder.toString();
   }
@@ -161,17 +161,17 @@ public class StructMsgForHypertext
       localLinearLayout.setLayoutParams(paramView);
       paramView = new StructMsgForHypertext.HyperTextView(paramContext);
       Resources localResources = paramContext.getResources();
-      paramView.setPadding((int)localResources.getDimension(2131298900), (int)localResources.getDimension(2131298902), (int)localResources.getDimension(2131298901), (int)localResources.getDimension(2131298899));
+      paramView.setPadding((int)localResources.getDimension(2131298913), (int)localResources.getDimension(2131298915), (int)localResources.getDimension(2131298914), (int)localResources.getDimension(2131298912));
       paramView.setText(getSpannableString(false));
       paramView.setMaxLines(10);
       paramView.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
-      paramView.setTextColor(paramContext.getResources().getColor(2131165411));
-      paramView.setLinkTextColor(paramContext.getResources().getColor(2131165856));
+      paramView.setTextColor(paramContext.getResources().getColor(2131165409));
+      paramView.setLinkTextColor(paramContext.getResources().getColor(2131165857));
       paramView.setLinksClickable(false);
       paramView.setMovementMethod(LinkMovementMethod.getInstance());
       localLinearLayout.addView(paramView);
       localLinearLayout.setLongClickable(true);
-      localLinearLayout.setTag(2131377946, this);
+      localLinearLayout.setTag(2131378101, this);
       return localLinearLayout;
       paramView.width = BaseChatItemLayout.B;
       paramView.height = -2;
@@ -198,8 +198,8 @@ public class StructMsgForHypertext
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
-      paramView.setPadding(afur.a(5.0F, localResources), 0, afur.a(5.0F, localResources), 0);
-      paramView.setBackgroundResource(2130842568);
+      paramView.setPadding(agej.a(5.0F, localResources), 0, agej.a(5.0F, localResources), 0);
+      paramView.setBackgroundResource(2130842581);
     }
     TextView localTextView;
     for (;;)
@@ -229,25 +229,25 @@ public class StructMsgForHypertext
       if ((!TextUtils.isEmpty(this.mSourceIcon)) && (i != 0))
       {
         str = this.mSourceIcon;
-        localObject = localResources.getDrawable(2130850449);
-        ((Drawable)localObject).setBounds(0, 0, afur.a(12.0F, localResources), afur.a(12.0F, localResources));
+        localObject = localResources.getDrawable(2130850462);
+        ((Drawable)localObject).setBounds(0, 0, agej.a(12.0F, localResources), agej.a(12.0F, localResources));
         localColorDrawable = new ColorDrawable(15790320);
-        localColorDrawable.setBounds(0, 0, afur.a(12.0F, localResources), afur.a(12.0F, localResources));
+        localColorDrawable.setBounds(0, 0, agej.a(12.0F, localResources), agej.a(12.0F, localResources));
         localObject = URLDrawable.getDrawable(str, (Drawable)localObject, localColorDrawable);
         bool1 = bool2;
-        if (!bdsh.b(str))
+        if (!beqz.b(str))
         {
-          if (!bdzx.a(paramContext)) {
+          if (!beyq.a(paramContext)) {
             bool1 = bool2;
           }
         }
         else
         {
           ((URLDrawable)localObject).setAutoDownload(bool1);
-          ((URLDrawable)localObject).setBounds(0, 0, afur.a(12.0F, localResources), afur.a(12.0F, localResources));
-          localTextView.setCompoundDrawablePadding(afur.a(3.0F, localResources));
+          ((URLDrawable)localObject).setBounds(0, 0, agej.a(12.0F, localResources), agej.a(12.0F, localResources));
+          localTextView.setCompoundDrawablePadding(agej.a(3.0F, localResources));
           localTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
-          localTextView.setPadding(afur.a(5.0F, localResources), 0, afur.a(5.0F, localResources), 0);
+          localTextView.setPadding(agej.a(5.0F, localResources), 0, agej.a(5.0F, localResources), 0);
           paramView.setTag(this);
           paramView.setOnClickListener(this.mSourceOnClickListener);
           return paramView;
@@ -281,13 +281,13 @@ public class StructMsgForHypertext
     //   42: ifeq +256 -> 298
     //   45: aload 9
     //   47: invokeinterface 467 1 0
-    //   52: checkcast 153	bcwt
+    //   52: checkcast 153	bdpm
     //   55: astore 7
     //   57: aload 7
-    //   59: getfield 470	bcwt:h	Ljava/lang/String;
+    //   59: getfield 470	bdpm:h	Ljava/lang/String;
     //   62: astore 10
     //   64: aload 7
-    //   66: getfield 471	bcwt:b	Ljava/lang/String;
+    //   66: getfield 471	bdpm:b	Ljava/lang/String;
     //   69: invokestatic 118	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   72: ifne +215 -> 287
     //   75: aload 8
@@ -310,7 +310,7 @@ public class StructMsgForHypertext
     //   112: dup
     //   113: aload_0
     //   114: aload 7
-    //   116: invokespecial 483	com/tencent/mobileqq/structmsg/StructMsgForHypertext$HyperSpannable:<init>	(Lcom/tencent/mobileqq/structmsg/StructMsgForHypertext;Lbcwt;)V
+    //   116: invokespecial 483	com/tencent/mobileqq/structmsg/StructMsgForHypertext$HyperSpannable:<init>	(Lcom/tencent/mobileqq/structmsg/StructMsgForHypertext;Lbdpm;)V
     //   119: iload 5
     //   121: iload 6
     //   123: bipush 33
@@ -319,7 +319,7 @@ public class StructMsgForHypertext
     //   129: getfield 491	com/tencent/mobileqq/structmsg/StructMsgForHypertext:message	Lcom/tencent/mobileqq/data/MessageRecord;
     //   132: ifnull -97 -> 35
     //   135: aload 7
-    //   137: getfield 494	bcwt:f	Ljava/lang/String;
+    //   137: getfield 494	bdpm:f	Ljava/lang/String;
     //   140: invokestatic 118	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   143: ifne -108 -> 35
     //   146: aload_0
@@ -331,17 +331,17 @@ public class StructMsgForHypertext
     //   158: getfield 28	com/tencent/mobileqq/structmsg/StructMsgForHypertext:KEY_QD_HYPERTEXT_CLICK_STATE	Ljava/lang/String;
     //   161: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: aload 7
-    //   166: getfield 494	bcwt:f	Ljava/lang/String;
+    //   166: getfield 494	bdpm:f	Ljava/lang/String;
     //   169: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   175: invokevirtual 499	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   178: astore 10
     //   180: aload 7
-    //   182: getfield 502	bcwt:g	Ljava/lang/String;
+    //   182: getfield 502	bdpm:g	Ljava/lang/String;
     //   185: invokestatic 118	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   188: ifne +118 -> 306
     //   191: aload 7
-    //   193: getfield 502	bcwt:g	Ljava/lang/String;
+    //   193: getfield 502	bdpm:g	Ljava/lang/String;
     //   196: invokestatic 508	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
     //   199: invokevirtual 511	java/lang/Integer:intValue	()I
     //   202: istore_2
@@ -409,7 +409,7 @@ public class StructMsgForHypertext
     //   223	60	4	k	int
     //   83	167	5	m	int
     //   93	159	6	n	int
-    //   55	137	7	localbcwt	bcwt
+    //   55	137	7	localbdpm	bdpm
     //   261	9	7	localNumberFormatException1	java.lang.NumberFormatException
     //   301	1	7	localNumberFormatException2	java.lang.NumberFormatException
     //   24	275	8	localSpannableStringBuilder	android.text.SpannableStringBuilder
@@ -421,21 +421,21 @@ public class StructMsgForHypertext
     //   205	222	301	java/lang/NumberFormatException
   }
   
-  public View getView(Context paramContext, View paramView, afzq paramafzq, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, agjk paramagjk, Bundle paramBundle)
   {
-    paramView = (ViewGroup)super.getView(paramContext, paramView, paramafzq, paramBundle);
+    paramView = (ViewGroup)super.getView(paramContext, paramView, paramagjk, paramBundle);
     paramBundle = new StructMsgForHypertext.HyperTextView(paramContext);
     Resources localResources = paramContext.getResources();
-    paramBundle.setPadding((int)localResources.getDimension(2131298900), (int)localResources.getDimension(2131298902), (int)localResources.getDimension(2131298901), (int)localResources.getDimension(2131298899));
+    paramBundle.setPadding((int)localResources.getDimension(2131298913), (int)localResources.getDimension(2131298915), (int)localResources.getDimension(2131298914), (int)localResources.getDimension(2131298912));
     paramBundle.setText(getSpannableString(true));
     paramBundle.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
-    paramBundle.setTextColor(paramContext.getResources().getColor(2131165411));
-    paramBundle.setLinkTextColor(paramContext.getResources().getColor(2131165856));
+    paramBundle.setTextColor(paramContext.getResources().getColor(2131165409));
+    paramBundle.setLinkTextColor(paramContext.getResources().getColor(2131165857));
     paramBundle.setLinksClickable(false);
     paramBundle.setMovementMethod(LinkMovementMethod.getInstance());
-    paramBundle.setOnTouchListener(paramafzq);
-    paramBundle.setOnLongClickListener(paramafzq);
-    paramBundle.setTag(2131368133, this);
+    paramBundle.setOnTouchListener(paramagjk);
+    paramBundle.setOnLongClickListener(paramagjk);
+    paramBundle.setTag(2131368207, this);
     paramView.addView(paramBundle);
     paramContext = paramView.getLayoutParams();
     if (paramContext == null) {
@@ -444,24 +444,24 @@ public class StructMsgForHypertext
     for (;;)
     {
       paramView.setLongClickable(true);
-      paramView.setTag(2131377946, this);
+      paramView.setTag(2131378101, this);
       return paramView;
       paramContext.width = BaseChatItemLayout.B;
       paramContext.height = -2;
     }
   }
   
-  protected void parseItem(bcxj parambcxj)
+  protected void parseItem(bdqc parambdqc)
   {
-    if (parambcxj == null) {
+    if (parambdqc == null) {
       return;
     }
     this.mHpertextArray = new ArrayList();
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < parambcxj.a())
+    if (i < parambdqc.a())
     {
-      Object localObject3 = parambcxj.a(i);
+      Object localObject3 = parambdqc.a(i);
       if (localObject3 == null) {}
       for (;;)
       {
@@ -469,24 +469,24 @@ public class StructMsgForHypertext
         break;
         Object localObject1;
         Object localObject2;
-        if (((bcxj)localObject3).a())
+        if (((bdqc)localObject3).a())
         {
-          localObject1 = ((bcxj)localObject3).a("url");
-          localObject2 = ((bcxj)localObject3).a("action");
-          String str1 = ((bcxj)localObject3).a("actionData");
-          String str2 = ((bcxj)localObject3).a("a_actionData");
-          String str3 = ((bcxj)localObject3).a("i_actionData");
-          String str4 = ((bcxj)localObject3).a("key");
-          String str5 = ((bcxj)localObject3).a("clickcnt");
-          localObject3 = bcwd.a((bcxj)localObject3);
-          localObject1 = new bcwt((String)localObject1, (String)localObject2, str1, str2, str3, str4, str5, (String)localObject3);
+          localObject1 = ((bdqc)localObject3).a("url");
+          localObject2 = ((bdqc)localObject3).a("action");
+          String str1 = ((bdqc)localObject3).a("actionData");
+          String str2 = ((bdqc)localObject3).a("a_actionData");
+          String str3 = ((bdqc)localObject3).a("i_actionData");
+          String str4 = ((bdqc)localObject3).a("key");
+          String str5 = ((bdqc)localObject3).a("clickcnt");
+          localObject3 = bdow.a((bdqc)localObject3);
+          localObject1 = new bdpm((String)localObject1, (String)localObject2, str1, str2, str3, str4, str5, (String)localObject3);
           this.mHpertextArray.add(localObject1);
           localStringBuilder.append((String)localObject3);
         }
         else
         {
-          localObject1 = bcwd.a((bcxj)localObject3);
-          localObject2 = new bcwt((String)localObject1);
+          localObject1 = bdow.a((bdqc)localObject3);
+          localObject2 = new bdpm((String)localObject1);
           this.mHpertextArray.add(localObject2);
           localStringBuilder.append((String)localObject1);
         }
@@ -495,11 +495,11 @@ public class StructMsgForHypertext
     this.mMsgBrief = localStringBuilder.toString();
   }
   
-  protected void parseSourceNode(bcxj parambcxj)
+  protected void parseSourceNode(bdqc parambdqc)
   {
-    this.mSourceName = parambcxj.a("name");
-    this.mSourceIcon = parambcxj.a("icon");
-    this.mSourceUrl = parambcxj.a("url");
+    this.mSourceName = parambdqc.a("name");
+    this.mSourceIcon = parambdqc.a("icon");
+    this.mSourceUrl = parambdqc.a("url");
   }
   
   public void readExternal(ObjectInput paramObjectInput)
@@ -523,8 +523,8 @@ public class StructMsgForHypertext
         i = 0;
         while (i < j)
         {
-          bcwt localbcwt = new bcwt(paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF());
-          this.mHpertextArray.add(localbcwt);
+          bdpm localbdpm = new bdpm(paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF(), paramObjectInput.readUTF());
+          this.mHpertextArray.add(localbdpm);
           i += 1;
         }
       }
@@ -586,7 +586,7 @@ public class StructMsgForHypertext
         if (i >= this.mHpertextArray.size()) {
           break label558;
         }
-        paramByteArrayOutputStream = (bcwt)this.mHpertextArray.get(i);
+        paramByteArrayOutputStream = (bdpm)this.mHpertextArray.get(i);
         localXmlSerializer.startTag(null, "text");
         if (!TextUtils.isEmpty(paramByteArrayOutputStream.b))
         {
@@ -680,7 +680,7 @@ public class StructMsgForHypertext
     label91:
     label108:
     label125:
-    bcwt localbcwt;
+    bdpm localbdpm;
     if (this.mMsgAction == null)
     {
       str = "";
@@ -719,50 +719,50 @@ public class StructMsgForHypertext
       if (!localIterator.hasNext()) {
         break label454;
       }
-      localbcwt = (bcwt)localIterator.next();
-      if (localbcwt.a == null) {
+      localbdpm = (bdpm)localIterator.next();
+      if (localbdpm.a == null) {
         break label399;
       }
-      str = localbcwt.a;
+      str = localbdpm.a;
       label194:
       paramObjectOutput.writeUTF(str);
-      if (localbcwt.b == null) {
+      if (localbdpm.b == null) {
         break label405;
       }
-      str = localbcwt.b;
+      str = localbdpm.b;
       label215:
       paramObjectOutput.writeUTF(str);
-      if (localbcwt.c == null) {
+      if (localbdpm.c == null) {
         break label411;
       }
-      str = localbcwt.c;
+      str = localbdpm.c;
       label236:
       paramObjectOutput.writeUTF(str);
-      if (localbcwt.d == null) {
+      if (localbdpm.d == null) {
         break label417;
       }
-      str = localbcwt.d;
+      str = localbdpm.d;
       label257:
       paramObjectOutput.writeUTF(str);
-      if (localbcwt.e == null) {
+      if (localbdpm.e == null) {
         break label423;
       }
-      str = localbcwt.e;
+      str = localbdpm.e;
       label278:
       paramObjectOutput.writeUTF(str);
-      if (localbcwt.f == null) {
+      if (localbdpm.f == null) {
         break label429;
       }
-      str = localbcwt.f;
+      str = localbdpm.f;
       label299:
       paramObjectOutput.writeUTF(str);
-      if (localbcwt.g == null) {
+      if (localbdpm.g == null) {
         break label435;
       }
-      str = localbcwt.g;
+      str = localbdpm.g;
       label320:
       paramObjectOutput.writeUTF(str);
-      if (localbcwt.h == null) {
+      if (localbdpm.h == null) {
         break label441;
       }
     }
@@ -775,7 +775,7 @@ public class StructMsgForHypertext
     label429:
     label435:
     label441:
-    for (String str = localbcwt.h;; str = "")
+    for (String str = localbdpm.h;; str = "")
     {
       paramObjectOutput.writeUTF(str);
       break label160;

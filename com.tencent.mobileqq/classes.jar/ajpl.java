@@ -1,40 +1,26 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajpl
-  extends AccountObserver
+  implements View.OnClickListener
 {
-  public ajpl(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public ajpl(ShowExternalTroopListActivity paramShowExternalTroopListActivity, ImageView paramImageView) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
+    bhhz.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString, 0);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_Boolean) {}
+    for (String str1 = "0";; str1 = "1")
     {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
-      {
-        i = 0;
-        QLog.e("Q.history.C2CAllFragment", 2, i);
-      }
-    }
-    else
-    {
-      paramString1 = this.a.a.obtainMessage(39);
-      if (!paramBoolean) {
-        break label103;
-      }
-    }
-    label103:
-    for (int i = 1;; i = 0)
-    {
-      paramString1.arg1 = i;
-      paramString1.arg2 = 0;
-      this.a.a.sendMessage(paramString1);
+      bdll.b(localQQAppInterface, "P_CliOper", "Grp_join", "", "person_data", "Clk_user", 0, 0, str2, str1, "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      i = paramString2.length();
-      break;
     }
   }
 }

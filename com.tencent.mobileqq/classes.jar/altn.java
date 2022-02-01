@@ -1,13 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class altn
-  extends altq
+public abstract interface altn
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

@@ -1,22 +1,22 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
-
 public class ajsb
-  extends bfrl
 {
-  public ajsb(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bfrk parambfrk, QQAppInterface paramQQAppInterface)
+  public ajuo a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  
+  public ajsb(ajuo paramajuo)
   {
-    super(paramContext, parambfrk, paramQQAppInterface);
+    this.a = paramajuo;
   }
   
-  protected void b(Object paramObject)
+  public String toString()
   {
-    super.b(paramObject);
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    return this.b;
   }
 }
 

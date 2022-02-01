@@ -1,28 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aejf
-  extends bdpx
+  implements DialogInterface.OnDismissListener
 {
-  WeakReference<afen> a;
-  WeakReference<View> b;
+  public aejf(Conversation paramConversation) {}
   
-  aejf(afen paramafen, View paramView)
-  {
-    this.a = new WeakReference(paramafen);
-    this.b = new WeakReference(paramView);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    afen localafen = (afen)this.a.get();
-    View localView = (View)this.b.get();
-    if ((localafen != null) && (localView != null)) {
-      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localafen, localView));
-    }
-    return super.a(paramInt);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,30 +1,30 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
 import com.tencent.biz.qqstory.database.CommentEntry;
-import woj;
-import wpm;
-import yij;
-import yjc;
-import yjq;
+import wse;
+import wth;
+import yme;
+import ymx;
+import ynl;
 
 public class HomeFeedPresenter$SendVidRateDataResultReceiver$1
   implements Runnable
 {
-  public HomeFeedPresenter$SendVidRateDataResultReceiver$1(yjq paramyjq, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry) {}
+  public HomeFeedPresenter$SendVidRateDataResultReceiver$1(ynl paramynl, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry) {}
   
   public void run()
   {
-    woj localwoj = (woj)wpm.a(17);
-    if (yjc.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
+    wse localwse = (wse)wth.a(17);
+    if (ymx.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.type = 3;
-      localwoj.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localwse.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
     for (;;)
     {
-      ((yij)wpm.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      ((yme)wth.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
       return;
-      localwoj.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localwse.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
   }
 }

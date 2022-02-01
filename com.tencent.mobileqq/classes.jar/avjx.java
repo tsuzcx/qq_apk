@@ -1,14 +1,18 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
 
-class avjx
-  implements CustomizedShareForQQ
+public final class avjx
+  implements Parcelable.Creator<PadFaceAd>
 {
-  avjx(avju paramavju) {}
-  
-  public void shareToQQ(Bundle paramBundle)
+  public PadFaceAd a(Parcel paramParcel)
   {
-    avkt.a().c(paramBundle);
+    return new PadFaceAd(paramParcel);
+  }
+  
+  public PadFaceAd[] a(int paramInt)
+  {
+    return new PadFaceAd[paramInt];
   }
 }
 

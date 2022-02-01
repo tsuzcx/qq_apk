@@ -2,18 +2,18 @@ package com.tencent.av.smallscreen;
 
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import ley;
-import lym;
-import lyy;
+import lff;
+import lzi;
+import lzu;
 
 public class SmallScreenVideoController$4
   implements Runnable
 {
-  public SmallScreenVideoController$4(lyy paramlyy) {}
+  public SmallScreenVideoController$4(lzu paramlzu) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI instanceof lym))
+    if ((this.this$0.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI instanceof lzi))
     {
       String str = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
       int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R;

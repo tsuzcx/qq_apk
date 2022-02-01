@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnhi;
-import bnig;
+import boiq;
+import bojo;
 
 public class AECameraGLSurfaceView$4$1
   implements Runnable
 {
-  public AECameraGLSurfaceView$4$1(bnhi parambnhi) {}
+  public AECameraGLSurfaceView$4$1(boiq paramboiq) {}
   
   public void run()
   {

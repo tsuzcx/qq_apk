@@ -1,7 +1,7 @@
 package com.tencent.biz.qqcircle.fragments;
 
+import aaak;
 import com.tencent.biz.qqcircle.events.QCircleLazyLoadTabEvent;
-import zwp;
 
 class QCircleBaseTabFragment$3
   implements Runnable
@@ -10,7 +10,7 @@ class QCircleBaseTabFragment$3
   
   public void run()
   {
-    zwp.a().a(new QCircleLazyLoadTabEvent());
+    aaak.a().a(new QCircleLazyLoadTabEvent());
   }
 }
 

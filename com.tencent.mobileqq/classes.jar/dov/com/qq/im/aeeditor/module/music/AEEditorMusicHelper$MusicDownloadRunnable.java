@@ -1,32 +1,32 @@
 package dov.com.qq.im.aeeditor.module.music;
 
 import android.support.annotation.NonNull;
-import bogx;
-import bohe;
+import bpis;
+import bpiz;
 import com.tencent.common.app.AppInterface;
 import mqq.util.WeakReference;
 
 public class AEEditorMusicHelper$MusicDownloadRunnable
   implements Runnable
 {
-  private bogx jdField_a_of_type_Bogx;
+  private bpis jdField_a_of_type_Bpis;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<bohe> jdField_a_of_type_MqqUtilWeakReference;
+  private WeakReference<bpiz> jdField_a_of_type_MqqUtilWeakReference;
   private String b;
   
-  public AEEditorMusicHelper$MusicDownloadRunnable(@NonNull AppInterface paramAppInterface, @NonNull bogx parambogx, @NonNull String paramString1, @NonNull String paramString2, @NonNull bohe parambohe)
+  public AEEditorMusicHelper$MusicDownloadRunnable(@NonNull AppInterface paramAppInterface, @NonNull bpis parambpis, @NonNull String paramString1, @NonNull String paramString2, @NonNull bpiz parambpiz)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bogx = parambogx;
+    this.jdField_a_of_type_Bpis = parambpis;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambohe);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambpiz);
   }
   
   public void run()
   {
-    AEEditorMusicHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Bogx, this.jdField_a_of_type_JavaLangString, this.b, (bohe)this.jdField_a_of_type_MqqUtilWeakReference.get());
+    AEEditorMusicHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Bpis, this.jdField_a_of_type_JavaLangString, this.b, (bpiz)this.jdField_a_of_type_MqqUtilWeakReference.get());
   }
 }
 

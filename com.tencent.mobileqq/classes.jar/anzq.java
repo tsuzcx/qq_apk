@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-public class anzq
-  implements FilenameFilter
+class anzq
+  implements biug<oidb_0x8e4.RspBody>
 {
-  public anzq(CleanCache paramCleanCache) {}
+  anzq(anzp paramanzp) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    return !paramString.contains("CrashInfoSummary.txt");
+    if (paramInt == 0)
+    {
+      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramRspBody))
+      {
+        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
+        axxr.a().a(0, paramRspBody, 0L, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzq
  * JD-Core Version:    0.7.0.1
  */

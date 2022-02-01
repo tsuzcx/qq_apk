@@ -1,15 +1,17 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public class azkh
-  implements bgtg<Float>
+class azkh
+  implements azkr
 {
-  public azkh(VipTagView paramVipTagView) {}
+  azkh(azkg paramazkg, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
   
-  public void a(bgta<Float> parambgta, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void a(PoiBean paramPoiBean)
   {
-    VipTagView.a(this.a, paramFloat1.floatValue());
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d(azki.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Azkg.b + "] diskPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
+    }
   }
 }
 

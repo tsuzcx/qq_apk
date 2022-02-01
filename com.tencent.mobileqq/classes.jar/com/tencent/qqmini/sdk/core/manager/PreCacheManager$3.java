@@ -22,7 +22,7 @@ class PreCacheManager$3
       {
         Object localObject = (PreCacheManager.ContentAccelerateRsp)paramJSONObject.get("data");
         QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " fetch PreCache succful. CacheType:" + this.val$cacheType + " httpCode=" + ((PreCacheManager.ContentAccelerateRsp)localObject).httpReturnCode + " length=" + ((PreCacheManager.ContentAccelerateRsp)localObject).cacheData.length);
-        if ((((PreCacheManager.ContentAccelerateRsp)localObject).httpReturnCode == 200) && (((PreCacheManager.ContentAccelerateRsp)localObject).cacheData.length <= PreCacheManager.access$200(this.this$0)))
+        if ((((PreCacheManager.ContentAccelerateRsp)localObject).httpReturnCode == 200) && (((PreCacheManager.ContentAccelerateRsp)localObject).cacheData.length <= PreCacheManager.access$200()))
         {
           paramJSONObject = new PreCacheManager.PreCacheDescData();
           paramJSONObject.appid = this.val$miniAppConfig.appId;

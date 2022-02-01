@@ -1,46 +1,89 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aict
-  extends asgf
+class aict
+  implements View.OnClickListener
 {
-  aict(aicl paramaicl) {}
+  aict(aics paramaics) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, ashh paramashh, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetUnLimitFriendInfo() success=%s uinType=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
-    }
-    if ((paramBoolean) && (paramashh != null)) {
-      ThreadManager.getSubThreadHandler().post(new LimitChatPie.7.1(this, paramInt2, paramashh));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, asht paramasht, int paramInt)
-  {
-    if ((paramBoolean) && (paramasht != null))
+    Object localObject1;
+    if (paramView == this.a.a)
     {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramasht, this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO, this.a.g, this.a.K);
-      aicl.a(this.a, paramasht.mNickName);
-      this.a.e.setText(paramasht.mNickName);
-      if ((!TextUtils.isEmpty(paramasht.mNickName)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramasht.mNickName;
+      localObject1 = paramView.getTag();
+      if ((localObject1 instanceof StructMsgForImageShare)) {}
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (aics.a(((StructMsgForImageShare)localObject1).mMsgActionData))
+      {
+        this.a.b((StructMsgForImageShare)localObject1, "5");
+      }
+      else if (aics.b(((StructMsgForImageShare)localObject1).mMsgActionData))
+      {
+        aics.a(this.a, (StructMsgForImageShare)localObject1);
+        Object localObject3 = aics.b(((StructMsgForImageShare)localObject1).mMsgActionData);
+        if ((localObject3 != null) && (localObject3.length > 2))
+        {
+          localObject1 = "";
+          Object localObject2 = Uri.parse(localObject3[1]);
+          try
+          {
+            localObject2 = ((Uri)localObject2).getQueryParameter("article_id");
+            localObject1 = localObject2;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+            }
+          }
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = "";
+          }
+          localObject1 = "";
+          if (localObject3.length > 3)
+          {
+            localObject3 = localObject3[3];
+            if (localObject3 != null)
+            {
+              localObject1 = localObject3;
+              if (((String)localObject3).equals("1")) {}
+            }
+            else
+            {
+              localObject1 = "";
+            }
+          }
+          ocd.a(null, "", "0X800712E", "0X800712E", 0, 0, (String)localObject2, (String)localObject1, "", "");
+          ocd.a("0X800712E", "", (String)localObject2, (String)localObject1, "", "");
+          continue;
+          if (paramView == this.a.b)
+          {
+            localObject1 = paramView.getTag();
+            if ((localObject1 instanceof StructMsgForImageShare)) {
+              this.a.c((StructMsgForImageShare)localObject1, "5");
+            }
+          }
+          else if (paramView == this.a.c)
+          {
+            localObject1 = paramView.getTag();
+            if ((localObject1 instanceof StructMsgForImageShare)) {
+              localObject1 = (StructMsgForImageShare)localObject1;
+            }
+            this.a.c(4);
+          }
+        }
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    aicl.a(this.a, paramArrayList);
   }
 }
 

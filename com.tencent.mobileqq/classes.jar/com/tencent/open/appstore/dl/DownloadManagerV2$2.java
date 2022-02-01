@@ -2,18 +2,18 @@ package com.tencent.open.appstore.dl;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import biip;
-import bisa;
+import bjjo;
+import bjsz;
 
 public class DownloadManagerV2$2
   implements Runnable
 {
-  public DownloadManagerV2$2(bisa parambisa, IntentFilter paramIntentFilter1, IntentFilter paramIntentFilter2) {}
+  public DownloadManagerV2$2(bjsz parambjsz, IntentFilter paramIntentFilter1, IntentFilter paramIntentFilter2) {}
   
   public void run()
   {
-    biip.a().a().registerReceiver(bisa.a(this.this$0), this.a);
-    biip.a().a().registerReceiver(bisa.a(this.this$0), this.b);
+    bjjo.a().a().registerReceiver(bjsz.a(this.this$0), this.a);
+    bjjo.a().a().registerReceiver(bjsz.a(this.this$0), this.b);
   }
 }
 

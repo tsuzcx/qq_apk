@@ -1,218 +1,95 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfm
+  extends arac<arfk>
 {
-  private static boolean jdField_c_of_type_Boolean = true;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private int g;
-  
-  public arfm()
+  @NonNull
+  public static arfk a()
   {
-    DisplayMetrics localDisplayMetrics = ardw.a().a().a().getDisplayMetrics();
-    int i = localDisplayMetrics.widthPixels;
-    int j = localDisplayMetrics.heightPixels;
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = Math.max(i, j);
+    arfk localarfk2 = (arfk)aran.a().a(458);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localarfk2);
     }
-    for (this.jdField_f_of_type_Int = Math.min(i, j);; this.jdField_f_of_type_Int = Math.max(i, j))
+    arfk localarfk1 = localarfk2;
+    if (localarfk2 == null) {
+      localarfk1 = new arfk();
+    }
+    return localarfk1;
+  }
+  
+  @NonNull
+  public arfk a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    }
+    return new arfk();
+  }
+  
+  @Nullable
+  public arfk a(araj[] paramArrayOfaraj)
+  {
+    return arfk.a(paramArrayOfaraj);
+  }
+  
+  public void a(arfk paramarfk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramarfk.toString());
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      c(8000);
-      b(12);
-      a(3);
-      a(1.5F);
-      d(1);
-      c(5.0F);
-      b(5.0F);
-      b(true);
-      c(true);
-      d(16.0F);
-      e(0.0F);
-      f(5.0F);
-      g(4.0F);
-      return;
-      this.g = Math.min(i, j);
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).a(34))
+      {
+        ((ajka)((QQAppInterface)localObject).getManager(34)).a = paramarfk;
+        if (QLog.isColorLevel()) {
+          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
+        }
+      }
     }
   }
   
-  public static void a(boolean paramBoolean)
+  public Class<arfk> clazz()
   {
-    jdField_c_of_type_Boolean = paramBoolean;
+    return arfk.class;
   }
   
-  public static boolean a()
+  public boolean isNeedCompressed()
   {
-    return jdField_c_of_type_Boolean;
+    return true;
   }
   
-  public float a()
+  public boolean isNeedStoreLargeFile()
   {
-    return this.jdField_b_of_type_Float;
+    return false;
   }
   
-  public int a()
+  public int migrateOldVersion()
   {
-    return this.jdField_c_of_type_Int;
+    return 0;
   }
   
-  public void a(float paramFloat)
+  public void onReqFailed(int paramInt)
   {
-    this.jdField_d_of_type_Int = argn.a(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_b_of_type_Float = argn.a(paramFloat);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = argn.a(paramInt);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public float c()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = argn.a(paramFloat);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public float d()
-  {
-    return this.jdField_d_of_type_Float;
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.jdField_c_of_type_Float = argn.a(paramFloat);
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_e_of_type_Int = argn.a(paramInt);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (this.jdField_d_of_type_Boolean != paramBoolean)
-    {
-      int i = this.jdField_f_of_type_Int;
-      this.jdField_f_of_type_Int = this.g;
-      this.g = i;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  public float e()
+  public int type()
   {
-    return this.jdField_e_of_type_Float;
-  }
-  
-  public int e()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public void e(float paramFloat)
-  {
-    this.jdField_d_of_type_Float = paramFloat;
-  }
-  
-  public float f()
-  {
-    return this.jdField_f_of_type_Float;
-  }
-  
-  public int f()
-  {
-    return this.g;
-  }
-  
-  public void f(float paramFloat)
-  {
-    this.jdField_e_of_type_Float = argn.a(paramFloat);
-  }
-  
-  public int g()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public void g(float paramFloat)
-  {
-    this.jdField_f_of_type_Float = argn.a(paramFloat);
+    return 458;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfm
  * JD-Core Version:    0.7.0.1
  */

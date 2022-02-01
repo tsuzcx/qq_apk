@@ -1,74 +1,34 @@
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class blda
-  implements bdvw
+public final class blda
+  implements blcd
 {
-  blda(blcz paramblcz, String paramString, blcx paramblcx) {}
-  
-  public void onResp(bdwt parambdwt)
+  public void a()
   {
-    bdvs localbdvs = (bdvs)parambdwt.jdField_a_of_type_Bdws;
-    if (this.jdField_a_of_type_Blcz.jdField_a_of_type_Bdvs == localbdvs) {
-      this.jdField_a_of_type_Blcz.jdField_a_of_type_Bdvs = null;
+    if (QSecFramework.a()) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbdvs.jdField_a_of_type_JavaLangString, Integer.valueOf(parambdwt.jdField_a_of_type_Int), Integer.valueOf(parambdwt.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    if (parambdwt.jdField_a_of_type_Int == 0)
+    try
     {
-      parambdwt = new File(localbdvs.c);
-      if (!parambdwt.exists()) {}
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          parambdwt = parambdwt.getParent();
-          bgmg.a(localbdvs.c, parambdwt, false);
-          blcy.a(this.jdField_a_of_type_Blcx.b);
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          if (this.jdField_a_of_type_Blcz.jdField_a_of_type_Bldb != null)
-          {
-            this.jdField_a_of_type_Blcz.jdField_a_of_type_Bldb.a(100);
-            this.jdField_a_of_type_Blcz.jdField_a_of_type_Bldb.a(0, "Download Complete!!!");
-          }
-          this.jdField_a_of_type_Blcz.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception parambdwt)
-        {
-          parambdwt.printStackTrace();
-        }
-        int i = 0;
+      if (!QSecFramework.b()) {
+        System.loadLibrary("QSec");
       }
-    } while (this.jdField_a_of_type_Blcz.jdField_a_of_type_Bldb == null);
-    this.jdField_a_of_type_Blcz.jdField_a_of_type_Bldb.a(2, "");
+      QSecFramework.a(true);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+    }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  public void b()
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("QSecFramework", 2, "Something wrong when load native so.");
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Blcz.jdField_a_of_type_Bldb != null) {
-        this.jdField_a_of_type_Blcz.jdField_a_of_type_Bldb.a(i);
-      }
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
+    blbd.a(1, 1);
   }
 }
 

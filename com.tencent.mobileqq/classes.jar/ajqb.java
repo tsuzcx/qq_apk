@@ -1,37 +1,45 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.SwipListView;
 
-class ajqb
-  implements atve
+public class ajqb
+  implements View.OnClickListener
 {
-  ajqb(ajpz paramajpz, FileManagerEntity paramFileManagerEntity) {}
+  public ajqb(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Ajpz.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    anjx localanjx;
-    ArrayList localArrayList;
-    do
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "unnormal_tab_clk", 0, 0, "", "", "", "");
+    if (this.a.c != 3)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
       }
-      localanjx = (anjx)this.jdField_a_of_type_Ajpz.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localanjx.a(localArrayList));
-    atvf.a(2131692313);
-    return;
-    this.jdField_a_of_type_Ajpz.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      TroopNotifyAndRecommendView.a(this.a).setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+      this.a.setType(3);
+      this.a.c(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+      TroopNotifyAndRecommendView.a(this.a).setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(0);
+      this.a.setType(0);
+      this.a.jdField_a_of_type_Ajpe.a(ajqw.c());
+      this.a.jdField_a_of_type_Ajpe.a = bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
+      this.a.c(false);
+    }
   }
-  
-  public void b() {}
 }
 
 

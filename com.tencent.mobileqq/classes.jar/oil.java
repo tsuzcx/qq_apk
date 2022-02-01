@@ -1,18 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class oil
-  implements avdq
+  implements Animation.AnimationListener
 {
-  public oil(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public oil(ReadInJoyNaviController.2 param2) {}
   
-  public void a(HotPicData paramHotPicData)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
-    }
+    oii.a(this.a.this$0, true);
+    oii.a(this.a.this$0).setAlpha(0.0F);
+    oii.a(this.a.this$0).removeView(oii.a(this.a.this$0));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

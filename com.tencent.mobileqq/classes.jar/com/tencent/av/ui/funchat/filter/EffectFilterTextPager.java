@@ -22,12 +22,12 @@ import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.av.ui.AVActivity.AnimationTrigger;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lbc;
-import ley;
-import mmu;
-import mmv;
-import mmw;
-import mmx;
+import lbj;
+import lff;
+import mnr;
+import mns;
+import mnt;
+import mnu;
 
 public class EffectFilterTextPager
   extends EffectCycleViewPager
@@ -48,7 +48,7 @@ public class EffectFilterTextPager
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter = new EffectFilterTextPager.FilterTextAdapter(paramContext);
     setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter);
-    this.jdField_a_of_type_AndroidOsHandler = new mmu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new mnr(this);
     setOnTouchListener(this);
     this.jdField_a_of_type_Int = -1;
   }
@@ -56,7 +56,7 @@ public class EffectFilterTextPager
   void a()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    lbc.c("EffectFilterTextPager", "showPromotionText ");
+    lbj.c("EffectFilterTextPager", "showPromotionText ");
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -68,7 +68,7 @@ public class EffectFilterTextPager
   
   public void a(int paramInt)
   {
-    lbc.c("EffectFilterTextPager", "dispearPromotionText view:");
+    lbj.c("EffectFilterTextPager", "dispearPromotionText view:");
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramInt);
@@ -93,14 +93,14 @@ public class EffectFilterTextPager
       }
     }
     label172:
-    for (int i = 2131297638;; i = 2131297637)
+    for (int i = 2131297650;; i = 2131297649)
     {
       float f2 = getContext().getResources().getDimension(i);
-      lbc.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
+      lbj.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
       i = 0;
       while (i < j)
       {
-        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131373246);
+        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131373370);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
         localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
         localImageView.setScaleX(f1);
@@ -115,12 +115,12 @@ public class EffectFilterTextPager
   public void b()
   {
     View localView = a();
-    lbc.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
+    lbj.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
     if ((localView != null) && (localView.getVisibility() == 0))
     {
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setDuration(450L);
-      localAlphaAnimation.setAnimationListener(new mmw(this, localView));
+      localAlphaAnimation.setAnimationListener(new mnt(this, localView));
       localView.startAnimation(localAlphaAnimation);
     }
   }
@@ -155,7 +155,7 @@ public class EffectFilterTextPager
       if ((localObject instanceof Activity))
       {
         localObject = (Activity)localObject;
-        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131368654);
+        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131368728);
         if (localEditText != null)
         {
           localEditText.clearFocus();
@@ -203,9 +203,9 @@ public class EffectFilterTextPager
     setCurrentItem(i + 1, false);
   }
   
-  public void setOnFilterListenner(mmx parammmx)
+  public void setOnFilterListenner(mnu parammnu)
   {
-    setOnPageChangeListener(new mmv(this, parammmx));
+    setOnPageChangeListener(new mns(this, parammnu));
   }
   
   public void setVisibility(int paramInt)

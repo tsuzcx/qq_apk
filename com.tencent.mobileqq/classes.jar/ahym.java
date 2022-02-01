@@ -1,27 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahym
-  implements View.OnClickListener
+public class ahym
+  implements ahyf
 {
-  ahym(ahyk paramahyk) {}
-  
-  public void onClick(View paramView)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (!ampj.e()) {
-      ((amhd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.a.a(), 319);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[onClick] click audio button too fast.");
-      }
-    }
+    paramahed.a(paramMessageRecord, paramahfq, paramString);
   }
 }
 

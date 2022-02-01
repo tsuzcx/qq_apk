@@ -1,8 +1,19 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public abstract interface bbqa
+public class bbqa
 {
-  public abstract void a(View paramView);
+  public static void a(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith(antf.bg)))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("src_file_path", paramString1);
+      localHashMap.put("des_file_path", paramString2);
+      bdmc.a(BaseApplication.getContext()).a(null, "qq_images_file_delete", true, 0L, 0L, localHashMap, "");
+    }
+  }
 }
 
 

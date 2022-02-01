@@ -1,103 +1,35 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import android.view.View;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 
-class aalf
-  implements ShareActionSheet.OnItemClickListener
+public class aalf
+  implements aagy
 {
-  private final aale jdField_a_of_type_Aale;
+  public aalf(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
   
-  public aalf(aakz paramaakz, aale paramaale)
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_Aale = paramaale;
-  }
-  
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
-  {
-    this.jdField_a_of_type_Aakz.b();
-    if ((aakz.a(this.jdField_a_of_type_Aakz) == null) || (this.jdField_a_of_type_Aakz.a == null)) {}
-    for (;;)
-    {
-      return;
-      int i = paramActionSheetItem.action;
-      if (this.jdField_a_of_type_Aale != null) {
-        this.jdField_a_of_type_Aale.a(i);
-      }
-      switch (i)
-      {
-      }
-      while ((i != 11) && (i != 40) && (aakz.a(this.jdField_a_of_type_Aakz) != null))
-      {
-        aakz.a(this.jdField_a_of_type_Aakz, aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, i - 1, aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-        return;
-        aakz.a(this.jdField_a_of_type_Aakz);
-        continue;
-        aakz.b(this.jdField_a_of_type_Aakz);
-        continue;
-        aakz.a(this.jdField_a_of_type_Aakz, i);
-        continue;
-        aakz.c(this.jdField_a_of_type_Aakz);
-        continue;
-        aakz.d(this.jdField_a_of_type_Aakz);
-        continue;
-        aakz.e(this.jdField_a_of_type_Aakz);
-        continue;
-        if ((aakz.a(this.jdField_a_of_type_Aakz) != null) && (aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
-        {
-          aaxb.a(aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_shop", 0, 0, new String[0]);
-          aaae.a(zzy.a(aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-          continue;
-          if ((aakz.a(this.jdField_a_of_type_Aakz) != null) && (aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
-          {
-            aaae.a(aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.yzOrderPage.get());
-            aaxb.b(aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_shoplist", 0, 0, new String[0]);
-            continue;
-            if ((aakz.a(this.jdField_a_of_type_Aakz) != null) && (aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
-            {
-              aaae.a(QzoneConfig.getInstance().getConfig("qqsubscribe", "showFansGroupConfigEntranceUrl", "https://h5.qzone.qq.com/subscription/fansqun/{uin}?_proxy=1&_wv=3").replace("{uin}", aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-              aaxb.a(aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_fan", 0, 0, new String[0]);
-              continue;
-              aakz.a(this.jdField_a_of_type_Aakz).a(aakz.a(this.jdField_a_of_type_Aakz));
-              if ((aakz.a(this.jdField_a_of_type_Aakz) != null) && (aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
-              {
-                aaxb.a(aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_pic", 0, 0, new String[] { null, null, aakz.a(this.jdField_a_of_type_Aakz).f(), aakz.a(this.jdField_a_of_type_Aakz).c() });
-                continue;
-                aaae.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-                aaxb.b(aakz.a(this.jdField_a_of_type_Aakz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "sync_qzone", 0, 0, new String[0]);
-                continue;
-                if (aakz.a(this.jdField_a_of_type_Aakz) != null) {
-                  if (aakz.a(this.jdField_a_of_type_Aakz).b())
-                  {
-                    QLog.d("SubscribeShareHelper", 2, "mColorNoteController ：add colorNote");
-                    aakz.a(this.jdField_a_of_type_Aakz).e();
-                  }
-                  else
-                  {
-                    aakz.a(this.jdField_a_of_type_Aakz).i();
-                    continue;
-                    if ((aakz.a(this.jdField_a_of_type_Aakz) != null) && (aakz.a(this.jdField_a_of_type_Aakz).c()))
-                    {
-                      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690750), 5000).a();
-                      aakz.a(this.jdField_a_of_type_Aakz).f();
-                      QLog.d("SubscribeShareHelper", 2, "mColorNoteController ： delete colorNote");
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+    if (paramStFeed != null) {
+      if (!paramStFeed.id.get().startsWith("fakeid_")) {
+        break label40;
       }
     }
+    label40:
+    do
+    {
+      QQToast.a(this.a.getActivity(), anzj.a(2131713447), 0).a();
+      do
+      {
+        return;
+      } while (!(paramView instanceof RelativeFeedItemView));
+      paramView = (RelativeFeedItemView)paramView;
+    } while (paramView.a == null);
+    aaej.a(this.a.getActivity(), paramStFeed, 0, aame.a(paramView.a, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
   }
 }
 

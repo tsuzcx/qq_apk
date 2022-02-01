@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bgbl
-  implements DialogInterface.OnClickListener
+public abstract interface bgbl
 {
-  bgbl(bgbj parambgbj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void b(boolean paramBoolean, int paramInt);
 }
 
 

@@ -1,25 +1,59 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMyEnterTroop;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahmr
-  implements View.OnClickListener
+public class ahmr
+  extends agem
 {
-  ahmr(ahmp paramahmp) {}
-  
-  public void onClick(View paramView)
+  public ahmr(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (paramView.getId() == 2131363668) {
-      ahmp.a(this.a).a(paramView);
-    }
-    for (;;)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected agen a()
+  {
+    return new ahms(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, agen paramagen, View paramView, LinearLayout paramLinearLayout, agjk paramagjk)
+  {
+    paramLinearLayout = (ahms)paramagen;
+    paramagen = paramView;
+    if (paramView == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == 2131363669) {
-        ahmp.a(this.a).b(paramView);
-      }
+      paramagen = LayoutInflater.from(this.a).inflate(2131558887, null);
+      paramLinearLayout.b = ((TextView)paramagen.findViewById(2131367669));
     }
+    paramLinearLayout.b.setMovementMethod(null);
+    paramLinearLayout.b.setGravity(17);
+    if ((paramMessageRecord instanceof MessageForMyEnterTroop))
+    {
+      paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
+      paramMessageRecord = this.a.getString(2131696540);
+      paramLinearLayout.b.setText(paramMessageRecord);
+      paramView = this.a.getResources().getColorStateList(2131165428);
+      if (paramView != null) {
+        paramLinearLayout.b.setTextColor(paramView);
+      }
+      paramagen.setContentDescription(paramMessageRecord);
+    }
+    return paramagen;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bhum[] a(View paramView)
+  {
+    return null;
   }
 }
 

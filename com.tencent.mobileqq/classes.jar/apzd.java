@@ -1,22 +1,31 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class apzd
-  implements View.OnClickListener
+public abstract class apzd
+  implements apyu
 {
-  public apzd(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public apzd(String paramString, long paramLong)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localBundle.putString("Uin", this.jdField_a_of_type_JavaLangString);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localBundle.putLong("ViewHandle", this.jdField_a_of_type_Long);
+    return localBundle;
+  }
+  
+  public String a()
+  {
+    return "QQ.GetNickname";
   }
 }
 

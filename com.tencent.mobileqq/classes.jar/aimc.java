@@ -1,218 +1,112 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.QQOperateTips.1;
-import com.tencent.mobileqq.activity.aio.tips.QQOperateTips.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.widget.XListView;
 import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
 public class aimc
-  implements ailn, aimh
+  implements bjut
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private afwy jdField_a_of_type_Afwy;
-  private aimj jdField_a_of_type_Aimj;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  protected List<QQOperationViopTipTask> a;
-  private long jdField_b_of_type_Long = -1L;
-  private WeakReference<XPanelContainer> jdField_b_of_type_JavaLangRefWeakReference;
+  int jdField_a_of_type_Int = 1;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<amot> b;
+  WeakReference<XListView> c;
+  WeakReference<PullRefreshHeader> d;
+  WeakReference<TextView> e;
   
-  public aimc(QQAppInterface paramQQAppInterface, aimj paramaimj, Context paramContext, XPanelContainer paramXPanelContainer, List<QQOperationViopTipTask> paramList, SessionInfo paramSessionInfo, afwy paramafwy)
+  public aimc(Context paramContext, XListView paramXListView, amot paramamot, PullRefreshHeader paramPullRefreshHeader, TextView paramTextView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramXPanelContainer);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Aimj = paramaimj;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Afwy = paramafwy;
+    this.c = new WeakReference(paramXListView);
+    this.b = new WeakReference(paramamot);
+    this.d = new WeakReference(paramPullRefreshHeader);
+    this.e = new WeakReference(paramTextView);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void a()
+  public void a(Exception paramException)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new QQOperateTips.1(this));
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new QQOperateTips.2(this));
-  }
-  
-  private void b(QQOperationViopTipTask paramQQOperationViopTipTask)
-  {
-    List localList = this.jdField_a_of_type_Afwy.a();
-    if (localList == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, paramException.getMessage());
     }
-    int j = localList.size();
-    int i = j - 1;
-    label27:
-    if (i >= 0) {
-      if (i < j - 10) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QQOperateTips", 2, " findExcludeMsg, just return ");
-        return;
-        if (((ChatMessage)localList.get(i)).msgtype == -1043)
-        {
-          i = 1;
-          continue;
-        }
-        i -= 1;
-        break label27;
-      }
-      this.jdField_a_of_type_Aimj.a(this, new Object[] { paramQQOperationViopTipTask });
-      return;
-      i = 0;
+    paramException = (PullRefreshHeader)this.d.get();
+    if ((paramException != null) && (paramException.getVisibility() == 0)) {
+      paramException.a(1);
     }
   }
   
-  public int a()
+  public void a(JSONObject paramJSONObject)
   {
-    return 40;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if ((paramVarArgs[0] instanceof QQOperationViopTipTask))
-    {
-      paramVarArgs = (QQOperationViopTipTask)paramVarArgs[0];
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-        return null;
-      }
-      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2131561028, null);
-      TextView localTextView = (TextView)localView.findViewById(2131374152);
-      Button localButton = (Button)localView.findViewById(2131374149);
-      localTextView.setText(paramVarArgs.adwords);
-      localButton.setText(paramVarArgs.clickableWord);
-      localButton.setOnClickListener(new aimd(this, paramVarArgs));
-      return localView;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, "result " + paramJSONObject);
     }
-    return null;
-  }
-  
-  public MessageRecord a(Object... paramVarArgs)
-  {
-    if ((paramVarArgs[0] instanceof QQOperationViopTipTask))
-    {
-      paramVarArgs = (QQOperationViopTipTask)paramVarArgs[0];
-      MessageRecord localMessageRecord = bbzh.a(-1041);
-      long l = bbyp.a();
-      localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramVarArgs.adwords + "|" + paramVarArgs.clickableWord + "|" + paramVarArgs.linkOffset + "|" + paramVarArgs.url + "|" + paramVarArgs.taskid, l, -1041, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
-      localMessageRecord.isread = true;
-      if (!anqc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false)) {
-        return localMessageRecord;
-      }
-      return null;
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000)) {}
+    XListView localXListView = (XListView)this.c.get();
+    if (localXListView == null) {}
+    amot localamot;
     do
     {
-      return;
-      if (paramInt == 1000)
+      do
       {
-        a();
-        return;
-      }
-    } while (paramInt != 1001);
-    b();
-  }
-  
-  public void a(QQOperationViopTipTask paramQQOperationViopTipTask)
-  {
-    this.jdField_a_of_type_Aimj.a(this, new Object[] { paramQQOperationViopTipTask });
-  }
-  
-  public void a(List<QQOperationViopTipTask> paramList)
-  {
-    arcd localarcd = arcd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramList = paramList.iterator();
-    label195:
-    label198:
-    for (;;)
-    {
-      int i;
-      QQOperationViopTipTask localQQOperationViopTipTask;
-      if (paramList.hasNext())
-      {
-        i = ((QQOperationViopTipTask)paramList.next()).taskid;
-        localQQOperationViopTipTask = localarcd.a(i);
-        if ((QLog.isDevelopLevel()) && (localQQOperationViopTipTask == null)) {
-          QLog.d("QQOperateVoIP", 4, "on showTips, voipTask is null, taskId=" + i);
-        }
-        XPanelContainer localXPanelContainer = (XPanelContainer)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-        if (localXPanelContainer == null) {
-          break label195;
-        }
-        if (localXPanelContainer.a() == 0) {
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        if (localQQOperationViopTipTask == null) {
-          break label198;
-        }
-        if (localQQOperationViopTipTask.isBlueTipsTask())
+        do
         {
-          if (i != 0)
-          {
-            a(localQQOperationViopTipTask);
-            break;
-            i = 0;
-            continue;
-          }
-          if (this.jdField_a_of_type_JavaUtilList == null) {
-            break;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(localQQOperationViopTipTask);
-          break;
-        }
-        if ((!localQQOperationViopTipTask.isGryTipsTask()) || (localarcd.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2))) {
-          break;
-        }
-        b(localQQOperationViopTipTask);
+          return;
+          localObject = (TextView)this.e.get();
+        } while (localObject == null);
+        localamot = (amot)this.b.get();
+      } while (localamot == null);
+      if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode") == 0)) {
         break;
-        return;
-        i = 1;
+      }
+      if (localXListView.getVisibility() == 8) {
+        ((TextView)localObject).setText(anzj.a(2131704482));
+      }
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (paramJSONObject == null);
+    QQToast.a(paramJSONObject, 1, anzj.a(2131704484), 0).a();
+    localamot.a();
+    return;
+    ((TextView)localObject).setVisibility(8);
+    localXListView.setVisibility(0);
+    Object localObject = paramJSONObject.optJSONObject("result");
+    label193:
+    int j;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      localamot.b(((JSONObject)localObject).optJSONArray("posts"));
+      j = paramJSONObject.optInt("retcode");
+      paramJSONObject = (PullRefreshHeader)this.d.get();
+      if ((paramJSONObject != null) && (paramJSONObject.getVisibility() == 0)) {
+        if (j != 0) {
+          break label315;
+        }
       }
     }
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 6;
+    label315:
+    for (int i = 0;; i = 1)
+    {
+      paramJSONObject.a(i);
+      localXListView.springBackOverScrollHeaderView();
+      if (j != 0) {
+        break;
+      }
+      ailn.g = System.currentTimeMillis();
+      return;
+      if (((JSONObject)localObject).optInt("isend") == 0)
+      {
+        localamot.a(((JSONObject)localObject).optJSONArray("posts"));
+        localamot.a();
+        break label193;
+      }
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramJSONObject != null) {
+        QQToast.a(paramJSONObject, 2, anzj.a(2131704474), 0).a();
+      }
+      localamot.a();
+      return;
+    }
   }
 }
 

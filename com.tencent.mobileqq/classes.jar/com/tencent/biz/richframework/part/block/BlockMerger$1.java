@@ -1,8 +1,8 @@
 package com.tencent.biz.richframework.part.block;
 
+import aabj;
+import aabp;
 import java.util.ArrayList;
-import zxo;
-import zxu;
 
 public class BlockMerger$1
   implements Runnable
@@ -13,8 +13,8 @@ public class BlockMerger$1
     {
       this.a.onDetachedFromRecyclerView(this.this$0.a().a());
       this.this$0.b(this.a);
-      zxo.a(this.this$0).remove(this.a);
-      zxo.a(this.this$0, this.a, 2);
+      aabj.a(this.this$0).remove(this.a);
+      aabj.a(this.this$0, this.a, 2);
       this.this$0.notifyDataSetChanged();
       return;
     }

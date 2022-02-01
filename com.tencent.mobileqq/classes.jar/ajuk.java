@@ -1,30 +1,17 @@
-import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.contacts.friend.SimpleTextView;
+import com.tencent.widget.SingleLineTextView;
 
-class ajuk
-  extends anmu
+public class ajuk
 {
-  ajuk(ajuj paramajuj) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(1, paramString);
-    }
-  }
-  
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramBoolean) {
-      this.a.a(1, paramString);
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(2, null);
-    }
-  }
+  public int a;
+  public CheckBox a;
+  public ProgressBar a;
+  public SimpleTextView a;
+  public SingleLineTextView a;
+  public StringBuilder a;
+  public SingleLineTextView b;
 }
 
 

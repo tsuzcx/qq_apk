@@ -1,29 +1,33 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class xtf
-  extends wfr<xsw, wmr>
+  implements Animation.AnimationListener
 {
-  public xtf(xsw paramxsw)
+  public xtf(ExploreAnimalView paramExploreAnimalView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramxsw);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    paramAnimation = (ImageView)this.a.findViewById(2131365682);
+    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365683);
+    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362954);
+    this.a.a(paramAnimation, 100L);
+    this.a.a(localImageView1, 240L);
+    this.a.a(localImageView2, 360L);
   }
   
-  public void a(@NonNull xsw paramxsw, @NonNull wmr paramwmr)
-  {
-    if ((paramxsw.a != null) && (TextUtils.equals(paramxsw.a.b, paramwmr.a)))
-    {
-      yqp.a(this.TAG, "receive feed info change event. %s.", paramwmr.toString());
-      paramxsw.i();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Class acceptEventClass()
-  {
-    return wmr.class;
-  }
-  
-  public void b(@NonNull xsw paramxsw, @NonNull wmr paramwmr) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

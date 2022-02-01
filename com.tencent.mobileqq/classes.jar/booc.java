@@ -1,30 +1,36 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
-class booc
-  implements URLDrawable.URLDrawableListener
+public class booc
+  implements Animation.AnimationListener
 {
-  booc(boob paramboob, String paramString, URLDrawable paramURLDrawable, bolv parambolv) {}
+  public booc(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boob.a.remove(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster onLoadFialed");
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).b();
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    boob.a.remove(this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    boob.a(this.jdField_a_of_type_Boob, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Bolv);
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null)
+    {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setAlpha(1.0F);
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setVisibility(0);
+      return;
+    }
+    bpam.d("AEMaterialPanel", "[openWithAnimation] alpha - onAnimationStart, mContentView == null");
   }
 }
 

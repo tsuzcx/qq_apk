@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import areb;
+import artq;
 
 class DanmakuManager$3
   implements Runnable

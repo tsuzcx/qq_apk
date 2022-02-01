@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class awuq
-  implements awtq
+class awuq
+  implements DialogInterface.OnDismissListener
 {
-  public awuq(MultiCardFragment paramMultiCardFragment) {}
+  awuq(awup paramawup) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
-    }
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(true);
-    }
-    if (MultiCardFragment.a(this.a) != null)
-    {
-      MultiCardFragment.a(this.a).c(paramInt);
-      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
-        MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      }
-    }
+    this.a.a = false;
   }
 }
 

@@ -1,22 +1,16 @@
-import android.graphics.Point;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiid
+class aiid
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private aiht jdField_a_of_type_Aiht;
-  private aihu jdField_a_of_type_Aihu;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  aiid(aihy paramaihy) {}
   
-  aiid(Point paramPoint, String paramString, boolean paramBoolean, aihu paramaihu, aiht paramaiht, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Aihu = paramaihu;
-    this.jdField_a_of_type_Aiht = paramaiht;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.x(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

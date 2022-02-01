@@ -1,28 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class aapo
-  implements aapi
+public class aapo
+  extends aabs
 {
-  aapo(aapn paramaapn, long paramLong) {}
+  public aapo(CommodityListView paramCommodityListView) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public aabt a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel())
+    paramViewGroup = new CommodityItemView(this.a.getContext());
+    paramViewGroup.setIsPublishUI(CommodityListView.a(this.a));
+    paramViewGroup.setCurrentFeed(CommodityListView.a(this.a));
+    return new aabt(this, paramViewGroup);
+  }
+  
+  public int getItemCount()
+  {
+    return this.mDataList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (!blgn.a(paramInt, this.mDataList))
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      ((CommodityItemView)paramViewHolder.itemView).setData(this.mDataList.get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).a().setOnClickListener(new aapp(this, paramInt));
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapk.e = paramString1;
-      this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.a.b(this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl);
-      this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.b();
-      return;
-    }
-    this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.d = paramString2;
-    this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.a.a(this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
 }
 

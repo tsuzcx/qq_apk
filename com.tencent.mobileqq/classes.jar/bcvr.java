@@ -1,155 +1,89 @@
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import QMF_PROTOCAL.QmfDownstream;
+import QzoneCombine.ClientOnlineNotfiyRsp;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.OutputStream;
-import java.io.Writer;
-import org.xmlpull.v1.XmlSerializer;
+import cooperation.qzone.WNSStream;
+import java.io.IOException;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcvr
-  implements XmlSerializer
+  extends MSFServlet
 {
-  XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
-  
-  public bcvr(AbsStructMsg paramAbsStructMsg, XmlSerializer paramXmlSerializer)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = paramXmlSerializer;
-  }
-  
-  public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(paramString1, paramString2, paramString3);
-  }
-  
-  public void cdsect(String paramString)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.cdsect(paramString);
-  }
-  
-  public void comment(String paramString)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.comment(paramString);
-  }
-  
-  public void docdecl(String paramString)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.docdecl(paramString);
-  }
-  
-  public void endDocument()
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
-  }
-  
-  public XmlSerializer endTag(String paramString1, String paramString2)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(paramString1, paramString2);
-  }
-  
-  public void entityRef(String paramString)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.entityRef(paramString);
-  }
-  
-  public void flush()
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.flush();
-  }
-  
-  public int getDepth()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getDepth();
-  }
-  
-  public boolean getFeature(String paramString)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getFeature(paramString);
-  }
-  
-  public String getName()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getName();
-  }
-  
-  public String getNamespace()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getNamespace();
-  }
-  
-  public String getPrefix(String paramString, boolean paramBoolean)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getPrefix(paramString, paramBoolean);
-  }
-  
-  public Object getProperty(String paramString)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getProperty(paramString);
-  }
-  
-  public void ignorableWhitespace(String paramString)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.ignorableWhitespace(paramString);
-  }
-  
-  public void processingInstruction(String paramString)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.processingInstruction(paramString);
-  }
-  
-  public void setFeature(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setFeature(paramString, paramBoolean);
-  }
-  
-  public void setOutput(OutputStream paramOutputStream, String paramString)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramOutputStream, paramString);
-  }
-  
-  public void setOutput(Writer paramWriter)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramWriter);
-  }
-  
-  public void setPrefix(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setPrefix(paramString1, paramString2);
-  }
-  
-  public void setProperty(String paramString, Object paramObject)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setProperty(paramString, paramObject);
-  }
-  
-  public void startDocument(String paramString, Boolean paramBoolean)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument(paramString, paramBoolean);
-  }
-  
-  public XmlSerializer startTag(String paramString1, String paramString2)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(paramString1, paramString2);
-  }
-  
-  public XmlSerializer text(String paramString)
-  {
-    if (paramString != null) {
+    if (paramFromServiceMsg == null) {
+      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
+    }
+    for (;;)
+    {
+      return;
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label192;
+      }
+      Object localObject = new WNSStream();
+      paramFromServiceMsg = bhuf.b(paramFromServiceMsg.getWupBuffer());
       try
       {
-        XmlSerializer localXmlSerializer = this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(bbzj.a(paramString, false));
-        return localXmlSerializer;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("StructMsg", 4, "XmlSerializer . text  IllegalArgumentException。。。。。");
+        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bmah.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
+          if (paramFromServiceMsg != null)
+          {
+            localObject = paramFromServiceMsg.AttachInfo;
+            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
+            localObject = bhml.a((byte[])localObject);
+            paramIntent = paramIntent.getStringExtra("key_uin");
+            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
+            }
+            if (Build.VERSION.SDK_INT >= 9)
+            {
+              paramFromServiceMsg.apply();
+              return;
+            }
+          }
         }
       }
+      catch (IOException paramIntent)
+      {
+        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
+        return;
+      }
     }
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramString);
+    paramFromServiceMsg.commit();
+    return;
+    label192:
+    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
   }
   
-  public XmlSerializer text(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramArrayOfChar, paramInt1, paramInt2);
+    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
+    paramIntent = paramIntent.getStringExtra("key_uin");
+    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
+    byte[] arrayOfByte = bhml.a(paramIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
+    }
+    bmse localbmse = new bmse(l, arrayOfByte);
+    arrayOfByte = localbmse.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbmse.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbmse.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

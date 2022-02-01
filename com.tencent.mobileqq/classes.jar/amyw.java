@@ -1,27 +1,29 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class amyw
-  implements amxk
+public class amyw
+  implements EIPCResultCallback
 {
-  amyw(amyl paramamyl, File paramFile, String paramString) {}
+  public amyw(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    try
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, paramInt1 + anni.a(2131699318));
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
       }
-      this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + anni.a(2131699294));
+      paramEIPCResult = paramEIPCResult.data.getString("respData");
+      ApolloGameInterfaceProxy.a(this.a, "cs.on_get_open_key.local", paramEIPCResult);
       return;
     }
-    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + anni.a(2131699312));
+    catch (Throwable paramEIPCResult)
+    {
+      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+    }
   }
 }
 

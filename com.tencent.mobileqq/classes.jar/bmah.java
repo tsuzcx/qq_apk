@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public class bmah
-  implements DialogInterface.OnClickListener
 {
-  public bmah(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    this.a.getPlayMode();
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramClass.readFrom(new JceInputStream(paramArrayOfByte));
+      return paramClass;
+    }
+    catch (IllegalAccessException paramClass)
+    {
+      paramClass.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramClass)
+    {
+      for (;;)
+      {
+        paramClass.printStackTrace();
+      }
+    }
+  }
+  
+  public static byte[] a(JceStruct paramJceStruct)
+  {
+    if (paramJceStruct == null) {
+      return null;
+    }
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("utf-8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
   }
 }
 

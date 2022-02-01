@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import android.database.SQLException;
 import android.os.SystemClock;
 import android.util.Pair;
-import anqg;
-import ayvj;
+import aocm;
+import aznw;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -17,7 +17,7 @@ import java.util.List;
 public class MessageRoamManager$2
   implements Runnable
 {
-  public MessageRoamManager$2(anqg paramanqg, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
+  public MessageRoamManager$2(aocm paramaocm, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
   
   public void run()
   {
@@ -42,7 +42,7 @@ public class MessageRoamManager$2
       {
         for (;;)
         {
-          List localList2 = ((ayvj)this.this$0.a.a().createMessageRecordEntityManager()).query(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
+          List localList2 = ((aznw)this.this$0.a.a().createMessageRecordEntityManager()).query(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
         }
       }
       catch (Exception localException)

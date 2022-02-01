@@ -1,18 +1,58 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
 public class tsw
-  implements View.OnSystemUiVisibilityChangeListener
+  implements INetInfoHandler
 {
-  public tsw(ViolaLazyFragment paramViolaLazyFragment) {}
+  protected WeakReference<tmz> a;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public tsw(tmz paramtmz)
   {
-    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
-    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
+    this.a = new WeakReference(paramtmz);
+  }
+  
+  public void onNetMobile2None()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tmz)this.a.get()).c();
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tmz)this.a.get()).i();
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((tmz)this.a.get()).g();
+      ((tmz)this.a.get()).i();
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tmz)this.a.get()).i();
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tmz)this.a.get()).h();
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tmz)this.a.get()).f();
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import tvx;
-import tzo;
+import tvz;
+import tzq;
 
 class SubscriptFeedsActivity$5
   implements Runnable
@@ -10,8 +10,8 @@ class SubscriptFeedsActivity$5
   
   public void run()
   {
-    SubscriptFeedsActivity.a(this.this$0, tvx.b(this.this$0.app));
-    if (tzo.a(this.this$0.app)) {
+    SubscriptFeedsActivity.a(this.this$0, tvz.b(this.this$0.app));
+    if (tzq.a(this.this$0.app)) {
       SubscriptFeedsActivity.a(this.this$0, true);
     }
   }

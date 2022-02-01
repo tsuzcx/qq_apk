@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
-import com.tencent.widget.AbsListView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aiwz
-  implements bkhe
+class aiwz
+  extends aqrh
 {
-  public aiwz(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  aiwz(aiwv paramaiwv) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (paramBoolean)
     {
-      if ((paramInt != 0) && (paramInt != 1)) {
-        NewFriendVerifyBlockedListFragment.a(this.a).a();
-      }
-    }
-    else {
+      QQToast.a(aiwv.a(this.a).a(), 2, 2131719111, 0).a();
       return;
     }
-    NewFriendVerifyBlockedListFragment.a(this.a).b();
-    NewFriendVerifyBlockedListFragment.a(this.a).c();
+    QQToast.a(aiwv.a(this.a).a(), 0, 2131719110, 0).a();
   }
 }
 

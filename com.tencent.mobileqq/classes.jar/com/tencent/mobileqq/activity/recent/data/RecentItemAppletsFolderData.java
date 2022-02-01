@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acvy;
-import akxz;
-import alcu;
+import adab;
+import aljo;
+import alok;
 import android.content.Context;
 import android.text.TextUtils;
-import bglf;
+import bhlg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
@@ -56,20 +56,20 @@ public class RecentItemAppletsFolderData
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = bglf.j(paramQQAppInterface, this.mUser.uin);
+      this.mTitleName = bhlg.j(paramQQAppInterface, this.mUser.uin);
     }
     QQMessageFacade.Message localMessage = null;
     Object localObject1 = paramQQAppInterface.a();
     if (localObject1 != null) {
       localMessage = ((QQMessageFacade)localObject1).a(this.mUser.uin, this.mUser.getType());
     }
-    localObject1 = (akxz)paramQQAppInterface.getManager(315);
-    if (alcu.a(paramQQAppInterface)) {}
+    localObject1 = (aljo)paramQQAppInterface.getManager(315);
+    if (alok.a(paramQQAppInterface)) {}
     try
     {
-      ((akxz)localObject1).a();
+      ((aljo)localObject1).a();
       label97:
-      Object localObject2 = ((akxz)localObject1).a(this.mUser.uin);
+      Object localObject2 = ((aljo)localObject1).a(this.mUser.uin);
       if (localObject2 != null)
       {
         QLog.d("RecentItemAppletsFolderData", 2, "account not null nick:" + ((AppletsAccountInfo)localObject2).nick);
@@ -83,9 +83,9 @@ public class RecentItemAppletsFolderData
         if (localObject2 == null) {
           break label305;
         }
-        this.mUnreadNum = ((acvy)localObject2).a(localMessage.frienduin, this.mUser.getType());
+        this.mUnreadNum = ((adab)localObject2).a(localMessage.frienduin, this.mUser.getType());
         label207:
-        if (((akxz)localObject1).a(localMessage, this.mUser) != 2) {
+        if (((aljo)localObject1).a(localMessage, this.mUser) != 2) {
           break label313;
         }
         this.mUnreadFlag = 1;

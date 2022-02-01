@@ -1,43 +1,31 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import feedcloud.FeedCloudCommon.Entry;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudMeta.StRelationInfo;
-import feedcloud.FeedCloudRead.StGetFollowListRsp;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.launchbean.QCircleLayerBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import common.config.service.QzoneConfig;
 
-public class vos
+class vos
+  implements View.OnClickListener
 {
-  private final int a;
-  public final List<FeedCloudMeta.StRelationInfo> a;
-  public final vor a;
+  vos(voq paramvoq) {}
   
-  private vos(FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new LinkedList(paramStGetFollowListRsp.relationInfo.get());
-    String str;
-    long l;
-    if (paramStGetFollowListRsp.hasNext.get() == 1)
+    boolean bool = false;
+    QCircleLayerBean localQCircleLayerBean = voq.a(this.a, false);
+    if (localQCircleLayerBean != null)
     {
-      str = paramStGetFollowListRsp.attachInfo.get();
-      l = 0L;
-      paramStGetFollowListRsp = paramStGetFollowListRsp.extInfo.mapInfo.get().iterator();
-      while (paramStGetFollowListRsp.hasNext())
-      {
-        FeedCloudCommon.Entry localEntry = (FeedCloudCommon.Entry)paramStGetFollowListRsp.next();
-        if ((localEntry != null) && ("timestamp".equals(localEntry.key.get()))) {
-          l = Long.parseLong(localEntry.value.get());
-        }
+      vtq.a("", 17, 3);
+      localQCircleLayerBean.setFromReportBean(this.a.a().clone().setElementIdStr("portraitlist"));
+      if (QzoneConfig.getInstance().getConfig("qqcircle", "qqcircle_push_feeddetail_recom", 0) == 0) {
+        bool = true;
       }
+      localQCircleLayerBean.setSingleFeed(bool);
+      uyx.a(paramView.getContext(), localQCircleLayerBean);
     }
-    for (this.jdField_a_of_type_Vor = new vor(str, l, paramInt, null);; this.jdField_a_of_type_Vor = null)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

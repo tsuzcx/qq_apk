@@ -1,35 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeiw
-  extends Handler
+  extends aohk
 {
-  public aeiw(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aeiw(Conversation paramConversation) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
+    if (!this.a.f) {}
     do
     {
       return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_Biau.a(this.a.getString(2131690709));
-        this.a.jdField_a_of_type_Biau.d(2130849667);
-        this.a.jdField_a_of_type_Biau.b(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()));
-    this.a.jdField_a_of_type_Biau.cancel();
-    this.a.jdField_a_of_type_Biau.a(this.a.getString(2131690711));
-    this.a.jdField_a_of_type_Biau.c(true);
-    this.a.jdField_a_of_type_Biau.a(false);
-    this.a.jdField_a_of_type_Biau.b(true);
+    } while ((!paramBoolean) || (paramInt != bdcy.a));
+    bhlq.a(this.a.a(), 0, null, this.a.a(2131718230), 2131718232, 2131718231, new aeix(this), new aeiy(this)).show();
   }
 }
 

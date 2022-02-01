@@ -1,18 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1;
+import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class asdj
-  implements View.OnClickListener
+  extends asdn
 {
-  public asdj(RelatedEmoSlideBottomPanel paramRelatedEmoSlideBottomPanel) {}
-  
-  public void onClick(View paramView)
+  public asdj(QQAppInterface paramQQAppInterface)
   {
-    RelatedEmoSlideBottomPanel.a(this.a, 1);
-    RelatedEmoSlideBottomPanel.a(this.a, this.a.getMeasuredHeight());
-    EventCollector.getInstance().onViewClicked(paramView);
+    super("qq.android.appleemoji", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10001;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return AppleEmojiData.class;
+  }
+  
+  public String a()
+  {
+    return "AppleMojiHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
+    }
+    File localFile = new File(paramString);
+    if (!localFile.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
+      }
+      return;
+    }
+    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

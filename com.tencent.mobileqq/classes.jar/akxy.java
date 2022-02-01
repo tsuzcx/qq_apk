@@ -1,27 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class akxy
-  implements Animation.AnimationListener
+  implements aliq
 {
-  public akxy(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public akxy(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
-    }
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    this.a.startActivity(localIntent);
   }
 }
 

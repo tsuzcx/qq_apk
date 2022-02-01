@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.ClassLoaderCreator;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class awtd
-  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
+public class awtd
+  implements View.OnClickListener
 {
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
-  {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
-  }
+  public awtd(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
   
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public void onClick(View paramView)
   {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
-  }
-  
-  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
-  {
-    return new MultiAIOBaseViewPager.SavedState[paramInt];
+    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
+      bdll.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
+    }
   }
 }
 

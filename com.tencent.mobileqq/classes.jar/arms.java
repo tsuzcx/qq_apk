@@ -1,53 +1,76 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arms
+  extends armf<armr>
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  
-  public arms() {}
-  
-  public arms(long paramLong, int paramInt)
+  public static armr c()
   {
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    armr localarmr2 = (armr)aran.a().a(498);
+    armr localarmr1 = localarmr2;
+    if (localarmr2 == null) {
+      localarmr1 = new armr();
+    }
+    return localarmr1;
   }
   
-  public arms(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  @NonNull
+  public armr a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.c = paramString3;
-    this.d = paramString4;
+    return new armr();
   }
   
-  public boolean a()
+  @NonNull
+  public armr a(@NonNull araj[] paramArrayOfaraj)
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+    armr localarmr = new armr();
+    paramArrayOfaraj = paramArrayOfaraj[0].jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramArrayOfaraj)) {}
+    for (;;)
+    {
+      return localarmr;
+      try
+      {
+        paramArrayOfaraj = new JSONObject(paramArrayOfaraj);
+        localarmr.jdField_a_of_type_Int = paramArrayOfaraj.optInt("stage");
+        localarmr.jdField_a_of_type_JavaLangString = paramArrayOfaraj.optString("pay_url");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localarmr.jdField_a_of_type_Int + " url=" + localarmr.jdField_a_of_type_JavaLangString);
+          return localarmr;
+        }
+      }
+      catch (JSONException paramArrayOfaraj)
+      {
+        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfaraj);
+        localarmr.b = paramArrayOfaraj.toString();
+      }
+    }
+    return localarmr;
   }
   
-  public String toString()
+  @NonNull
+  public armr b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", url").append(this.c);
-    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",picUin:").append(this.d);
-    return localStringBuilder.toString();
+    return new armr();
+  }
+  
+  public Class<armr> clazz()
+  {
+    return armr.class;
+  }
+  
+  public int type()
+  {
+    return 498;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arms
  * JD-Core Version:    0.7.0.1
  */

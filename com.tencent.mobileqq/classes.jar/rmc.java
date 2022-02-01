@@ -1,18 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class rmc
-  implements rmn
+class rmc
+  implements rme
 {
-  public rmc(CoverSelectTabFragment paramCoverSelectTabFragment) {}
+  rmc(rlz paramrlz) {}
   
-  public void a(String paramString)
+  public void a(JSONObject paramJSONObject)
   {
+    rlz.a(this.a, paramJSONObject.toString());
     if (QLog.isColorLevel()) {
-      QLog.d("RIJUGC.CoverSelectTabFragment", 2, "OutputPicListener outPath:" + paramString);
+      QLog.w("ReadInJoyWebDataManager", 2, "preLoadMsgBox HttpFetchBizCallback jsonRetData result" + rlz.a(this.a));
     }
-    CoverSelectTabFragment.a(this.a, paramString, CoverSelectTabFragment.a(this.a).getCurrentItem());
   }
 }
 

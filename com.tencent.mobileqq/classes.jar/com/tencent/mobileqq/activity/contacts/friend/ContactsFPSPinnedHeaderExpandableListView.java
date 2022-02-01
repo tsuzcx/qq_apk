@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.friend;
 
-import ajiy;
+import ajuh;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,8 +37,8 @@ public class ContactsFPSPinnedHeaderExpandableListView
   public void setChildViewCanAction(boolean paramBoolean)
   {
     ExpandableListAdapter localExpandableListAdapter = a();
-    if ((localExpandableListAdapter instanceof ajiy)) {
-      ((ajiy)localExpandableListAdapter).a(paramBoolean);
+    if ((localExpandableListAdapter instanceof ajuh)) {
+      ((ajuh)localExpandableListAdapter).a(paramBoolean);
     }
     this.a = paramBoolean;
   }

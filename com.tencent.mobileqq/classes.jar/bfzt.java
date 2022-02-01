@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.5;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfzt
-  implements bdet
+class bfzt
+  implements View.OnClickListener
 {
-  public bfzt(TroopGiftToAllSurfaceView.5 param5) {}
+  bfzt(bfzr parambfzr, CheckBox paramCheckBox) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    TroopGiftToAllSurfaceView.a(this.a.this$0).a(new bdes[] { new bdey(600, 0, 255), new bdfb(new bdes[] { new bdfa(300, 0.0F, 1.2F), new bdfa(300, 1.2F, 1.0F) }) });
+    CheckBox localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localCheckBox.setChecked(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

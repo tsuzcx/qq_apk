@@ -1,8 +1,12 @@
-import android.graphics.drawable.Drawable;
-
-public abstract interface bmpv
+class bmpv
+  implements bmoq
 {
-  public abstract void a(Drawable paramDrawable);
+  bmpv(bmpu parambmpu) {}
+  
+  public void a()
+  {
+    bmpu.a(this.a);
+  }
 }
 
 

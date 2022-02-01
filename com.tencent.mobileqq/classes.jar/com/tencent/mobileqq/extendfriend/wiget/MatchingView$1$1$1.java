@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
 import android.view.View;
-import asoo;
+import ates;
 
 public class MatchingView$1$1$1
   implements Runnable
 {
-  public MatchingView$1$1$1(asoo paramasoo) {}
+  public MatchingView$1$1$1(ates paramates) {}
   
   public void run()
   {

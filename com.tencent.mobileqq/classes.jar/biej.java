@@ -1,38 +1,35 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener.1;
+import java.lang.ref.WeakReference;
 
 public class biej
-  implements Animator.AnimatorListener
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public biej(FloatingScreenContainer paramFloatingScreenContainer) {}
+  private bieh jdField_a_of_type_Bieh;
+  private final WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public biej(WallpaperHelper paramWallpaperHelper)
   {
-    FloatingScreenContainer.a(this.a, false);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    FloatingScreenContainer.a(this.a).removeAllListeners();
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).b();
+    paramString = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString != null)
+    {
+      paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
+      if ((this.jdField_a_of_type_Bieh == null) || (!this.jdField_a_of_type_Bieh.equals(paramSharedPreferences)))
+      {
+        this.jdField_a_of_type_Bieh = paramSharedPreferences;
+        ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
+      }
     }
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).a();
-    }
-    FloatingScreenContainer.a(this.a, true);
   }
 }
 

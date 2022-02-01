@@ -1,27 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class slx
-  implements Animator.AnimatorListener
+public class slx
+  implements View.OnClickListener
 {
-  slx(slw paramslw, boolean paramBoolean) {}
+  public slx(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    slw.a(this.jdField_a_of_type_Slw, this.jdField_a_of_type_Boolean);
+    ReadinjoyTabFrame.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    slw.a(this.jdField_a_of_type_Slw, this.jdField_a_of_type_Boolean);
-    slw.a(this.jdField_a_of_type_Slw);
-    this.jdField_a_of_type_Slw.b.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

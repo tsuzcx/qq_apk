@@ -1,14 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class xse
-  implements MediaPlayer.OnPreparedListener
+public class xse
+  extends JobSegment<String, String>
 {
-  xse(xsd paramxsd, xry paramxry) {}
+  private xse(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    this.jdField_a_of_type_Xry.a_(this.jdField_a_of_type_Xsd);
+    this.a.jdField_a_of_type_Xtg.a(null);
+    this.a.jdField_a_of_type_Xtg.a(null);
+    this.a.jdField_a_of_type_Xtg.a(null);
+    this.a.jdField_a_of_type_Xtg.a(null);
+    this.a.jdField_a_of_type_Xtg.a(null);
+    if (VideoViewVideoHolder.f(this.a) == 0)
+    {
+      yuk.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
+      notifyResult(paramString);
+      return;
+    }
+    if (VideoViewVideoHolder.f(this.a) < 7)
+    {
+      yuk.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
+      VideoViewVideoHolder.a(this.a, 0);
+      notifyResult(paramString);
+      return;
+    }
+    yuk.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
+    this.a.jdField_a_of_type_Xtg.a();
+    VideoViewVideoHolder.a(this.a, 0);
+    notifyResult(paramString);
   }
 }
 

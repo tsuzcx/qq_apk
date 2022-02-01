@@ -1,37 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
-class vcz
-  extends BroadcastReceiver
+public class vcz
+  implements aadm<Object>
 {
-  private vcz(vcw paramvcw) {}
+  public vcz(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(Object... paramVarArgs)
   {
-    int i;
-    int j;
-    if ("action_update_native_auth_info".equals(paramIntent.getAction()))
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4))
     {
-      i = paramIntent.getIntExtra("type", 1);
-      j = paramIntent.getIntExtra("status", 0);
-      paramContext = paramIntent.getStringExtra("tagName");
-      if (i != 2) {
-        break label59;
-      }
-      i = uxx.a(j);
-      uxx.a(uxc.a(), i, paramContext);
-    }
-    for (;;)
-    {
-      uxc.c();
-      return;
-      label59:
-      if (i == 3)
-      {
-        i = uxx.a(j);
-        uxx.a(uxc.b(), i, paramContext);
-      }
+      QLog.d("QCircleFolderFragmentsPart", 1, "preload requestTabData onReceive: dispatch Success:" + (Boolean)paramVarArgs[0] + " | retCode:" + (Long)paramVarArgs[1] + " | retMessage:" + (String)paramVarArgs[2]);
+      QCircleFolderFragmentsPart.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetBusiInfoRsp)paramVarArgs[3]);
     }
   }
 }

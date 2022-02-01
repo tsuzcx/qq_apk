@@ -1,16 +1,31 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
-public abstract interface yog
+class yog
+  extends LruCache<yoh, Drawable>
 {
-  public abstract void a(String paramString, CommentEntry paramCommentEntry);
+  yog(yoe paramyoe, int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  protected int a(yoh paramyoh, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        yoq.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramyoh, " size=", Integer.valueOf(i) });
+        return i;
+      }
+    }
+    return 524288;
+  }
 }
 
 

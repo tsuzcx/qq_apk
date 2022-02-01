@@ -1,20 +1,16 @@
 package com.tencent.imcore.message;
 
-import acvh;
-import acwr;
-import android.os.Handler;
+import axey;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class BaseMessageManager$1
+class BaseMessageManager$1
   implements Runnable
 {
-  public BaseMessageManager$1(acvh paramacvh, String paramString1, int paramInt1, int paramInt2, acwr paramacwr, String paramString2) {}
+  BaseMessageManager$1(BaseMessageManager paramBaseMessageManager, axey paramaxey, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.this$0.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.jdField_b_of_type_Int + ", context = " + this.jdField_a_of_type_Acwr, ", timestamp = " + System.currentTimeMillis());
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Acwr);
-    this.this$0.a(this.jdField_a_of_type_Acwr);
-    this.this$0.a.a.post(new BaseMessageManager.1.1(this));
+    this.jdField_a_of_type_Axey.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 

@@ -1,19 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-
-public class sxa
-  implements tle
+public abstract interface sxa
 {
-  public sxa(FastWebActivity paramFastWebActivity) {}
-  
-  public int a()
-  {
-    return FastWebActivity.a(this.a);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  public abstract void a(float paramFloat);
 }
 
 

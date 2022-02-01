@@ -1,12 +1,20 @@
-public abstract interface bmmt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
+
+public class bmmt
+  implements DialogInterface.OnClickListener
 {
-  public abstract void aJ();
+  public bmmt(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public abstract void aK();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmmt
  * JD-Core Version:    0.7.0.1
  */

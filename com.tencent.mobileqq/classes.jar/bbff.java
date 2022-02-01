@@ -1,119 +1,115 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 class bbff
-  implements View.OnClickListener
+  implements beuq
 {
-  bbff(bbfe parambbfe, View paramView1, bble parambble, View paramView2, String paramString, List paramList) {}
+  bbfd jdField_a_of_type_Bbfd;
+  bbfe jdField_a_of_type_Bbfe;
   
-  public void onClick(View paramView)
+  bbff(bbew parambbew, bbfe parambbfe, bbfd parambbfd)
   {
-    long l = System.currentTimeMillis();
-    if (((this.jdField_a_of_type_AndroidViewView.getTag() instanceof Long)) && (l - ((Long)this.jdField_a_of_type_AndroidViewView.getTag()).longValue() < 400L))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    this.jdField_a_of_type_Bbfe = parambbfe;
+    this.jdField_a_of_type_Bbfd = parambbfd;
+  }
+  
+  public void onResp(bevm parambevm)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, String.format("SessionResHttpListener respCode[%s], resName[%s], resUrl[%s]", new Object[] { Integer.valueOf(parambevm.c), this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bbfd.c }));
     }
-    this.jdField_a_of_type_AndroidViewView.setTag(Long.valueOf(l));
-    if (this.jdField_a_of_type_Bble.jdField_c_of_type_JavaLangString.equals("mqqapi://contact/search_might_know")) {
-      bcst.b(null, "dc00898", "", "", "0X800A336", "0X800A336", 0, 0, "", "", "", "");
-    }
-    Object localObject1;
-    int i;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bble.jdField_c_of_type_JavaLangString))
+    parambevm = (bbfd)parambevm.a.a();
+    if (parambevm == null) {}
+    label269:
+    label286:
+    do
     {
-      localObject1 = this.jdField_a_of_type_Bble.jdField_c_of_type_JavaLangString;
-      if (MiniAppLauncher.isMiniAppUrl((String)localObject1)) {
-        if (this.jdField_a_of_type_Bble.jdField_c_of_type_Int == 103)
-        {
-          localObject1 = new Intent();
-          ((Intent)localObject1).putExtra("key_refer", 4001);
-          PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject1, MiniAppSearchFragment.class);
-          i = 0;
-          label172:
-          if (this.jdField_a_of_type_Bble.jdField_c_of_type_Int == 1)
-          {
-            if (i == 0) {
-              break label716;
-            }
-            MiniProgramLpReportDC04239.reportAsync("search", "headentrance", "click", "2");
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.b.getVisibility() == 0)
+      do
       {
-        this.b.setVisibility(8);
-        bgsg.a(this.jdField_a_of_type_Bble.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      }
-      bbup.a("home_page", "clk_entry", new String[] { this.jdField_a_of_type_Bble.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Bbfe.a), String.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-      bbrf.a(null, new ReportModelDC02528().module("all_result").action("clk_entry").ver2(bbrf.a(this.jdField_a_of_type_Bbfe.a)).ver3(this.jdField_a_of_type_JavaUtilList.size() + "").ver4(this.jdField_a_of_type_Bble.jdField_a_of_type_JavaLangString).ver7("{experiment_id:" + bbrf.b + "}"));
-      localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      new anxu((QQAppInterface)localObject1).b((QQAppInterface)localObject1, "clk_entry", "all_result", bbrf.a(this.jdField_a_of_type_Bbfe.a), "", this.jdField_a_of_type_Bble.jdField_a_of_type_JavaLangString, "{experiment_id:" + bbrf.b + "}");
-      bbrf.a(bbfe.a(this.jdField_a_of_type_Bbfe), 0, SearchEntryFragment.a(this.jdField_a_of_type_Bbfe.a), "0X8009D1C", 0, 0, this.jdField_a_of_type_Bble.jdField_a_of_type_JavaLangString, null);
-      break;
-      i = 1;
-      MiniAppLauncher.startMiniApp(bbfe.a(this.jdField_a_of_type_Bbfe), (String)localObject1, 2005, null);
-      break label172;
-      Object localObject2;
-      if ((((String)localObject1).startsWith("http://")) || (((String)localObject1).startsWith("https://")))
-      {
-        localObject2 = new Intent(bbfe.a(this.jdField_a_of_type_Bbfe), QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("url", (String)localObject1);
-        bbfe.a(this.jdField_a_of_type_Bbfe).startActivity((Intent)localObject2);
-        i = 0;
-        break label172;
-      }
-      if ((bbfe.a(this.jdField_a_of_type_Bbfe) instanceof BaseActivity))
-      {
-        localObject2 = bgng.a(((BaseActivity)paramView.getContext()).app, bbfe.a(this.jdField_a_of_type_Bbfe), (String)localObject1);
-        if (localObject2 != null) {
-          ((bgmp)localObject2).a();
-        }
         for (;;)
         {
-          i = 0;
-          break;
-          bbfe.a(this.jdField_a_of_type_Bbfe).startActivity(new Intent(bbfe.a(this.jdField_a_of_type_Bbfe), JumpActivity.class).setData(Uri.parse((String)localObject1)));
+          return;
+          if (!parambevm.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString)) {
+            break label286;
+          }
+          if (bbew.b(parambevm.jdField_a_of_type_JavaLangString, parambevm.jdField_b_of_type_JavaLangString, false)) {}
+          try
+          {
+            nof.a(new File(bbew.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString), bbew.jdField_a_of_type_JavaLangString);
+            if (parambevm.jdField_b_of_type_Boolean) {
+              break label269;
+            }
+            parambevm = (bbfa)this.jdField_a_of_type_Bbew.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Bbfe.a));
+            if (parambevm != null)
+            {
+              parambevm = parambevm.b.iterator();
+              while (parambevm.hasNext())
+              {
+                bbfe localbbfe = (bbfe)parambevm.next();
+                if (bbew.a(this.jdField_a_of_type_Bbew, localbbfe, this.jdField_a_of_type_Bbfd)) {
+                  parambevm.remove();
+                }
+              }
+            }
+          }
+          catch (IOException localIOException)
+          {
+            for (;;)
+            {
+              localIOException.printStackTrace();
+            }
+          }
         }
-      }
-      bbfe.a(this.jdField_a_of_type_Bbfe).startActivity(new Intent(bbfe.a(this.jdField_a_of_type_Bbfe), JumpActivity.class).setData(Uri.parse((String)localObject1)));
-      i = 0;
-      break label172;
-      label716:
-      MiniProgramLpReportDC04239.reportAsync("search", "headentrance", "click", "1");
-      continue;
-      i = this.jdField_a_of_type_Bbfe.a;
-      if (this.jdField_a_of_type_Bbfe.a == 3) {
-        i = 21;
-      }
-      ActiveEntitySearchActivity.a(bbfe.a(this.jdField_a_of_type_Bbfe), this.jdField_a_of_type_Bble.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bble.jdField_a_of_type_ArrayOfLong, i);
-      if (!bgnt.g(bbfe.a(this.jdField_a_of_type_Bbfe))) {
-        QQToast.a(bbfe.a(this.jdField_a_of_type_Bbfe), 0, bbfe.a(this.jdField_a_of_type_Bbfe).getResources().getString(2131716972), 0).a();
-      }
-    }
+      } while (!QLog.isColorLevel());
+      QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[onResp]: BusinessParam=null  kind=" + this.jdField_a_of_type_Bbfe.a + " mItem.mName=" + this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString);
+      return;
+      bbew.a(this.jdField_a_of_type_Bbew, this.jdField_a_of_type_Bbfe, this.jdField_a_of_type_Bbfd);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[onResp]: download information no match current=" + this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString + " callback=" + parambevm.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  {
+    parambevl = (bbfd)parambevl.a();
+    if (parambevl == null) {}
+    label134:
+    label187:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (!parambevl.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString)) {
+            break label187;
+          }
+          Object localObject = (bbfa)this.jdField_a_of_type_Bbew.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Bbfe.a));
+          if (localObject == null) {
+            break label134;
+          }
+          if (parambevl.jdField_b_of_type_Boolean) {
+            break;
+          }
+          parambevl = ((bbfa)localObject).b.iterator();
+          while (parambevl.hasNext())
+          {
+            localObject = (bbfe)parambevl.next();
+            bbew.a(this.jdField_a_of_type_Bbew, (bbfe)localObject, this.jdField_a_of_type_Bbfd, paramLong1, paramLong2);
+          }
+        }
+        bbew.a(this.jdField_a_of_type_Bbew, this.jdField_a_of_type_Bbfe, this.jdField_a_of_type_Bbfd, paramLong1, paramLong2);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[Progress]: BusinessParam=null  kind=" + this.jdField_a_of_type_Bbfe.a + " mItem.mName=" + this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[Progress]: download information no match current=" + this.jdField_a_of_type_Bbfd.jdField_a_of_type_JavaLangString + " callback=" + parambevl.jdField_a_of_type_JavaLangString);
   }
 }
 

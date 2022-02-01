@@ -1,15 +1,15 @@
 package cooperation.qwallet.plugin;
 
-import aklv;
-import akms;
-import akpa;
-import akpd;
-import akrp;
-import akti;
-import aktk;
-import akwd;
-import akwu;
-import akww;
+import akxg;
+import akyd;
+import alal;
+import alao;
+import alda;
+import alex;
+import alez;
+import alhs;
+import alij;
+import alil;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -33,15 +33,15 @@ import android.os.Environment;
 import android.provider.Settings.System;
 import android.text.TextUtils;
 import android.util.Base64;
-import autr;
-import avaj;
-import bcqt;
-import bghb;
-import bgmg;
-import bgsp;
-import bkfy;
-import blfh;
-import blfq;
+import avlr;
+import avsk;
+import bdjl;
+import bhhc;
+import bhmi;
+import bhsr;
+import blhc;
+import bmgk;
+import bmgt;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -255,7 +255,7 @@ public class QWalletHelper
     }
   }
   
-  private static void addLoadingDialogInfo(Context paramContext, AppInterface paramAppInterface, Bundle paramBundle, blfq paramblfq)
+  private static void addLoadingDialogInfo(Context paramContext, AppInterface paramAppInterface, Bundle paramBundle, bmgt parambmgt)
   {
     int i = 1;
     if (!(paramContext instanceof Activity)) {}
@@ -271,11 +271,11 @@ public class QWalletHelper
         {
           paramAppInterface = new QWalletPayProgressDialog(paramContext);
           paramAppInterface.show();
-          paramblfq.jdField_a_of_type_AndroidAppDialog = paramAppInterface;
-          paramblfq.jdField_b_of_type_Boolean = false;
-          paramblfq.c = 10000;
-          paramblfq.f = null;
-          new SplashDialogWrapper(paramContext, paramblfq.jdField_a_of_type_AndroidAppDialog, paramblfq.d, paramblfq.jdField_b_of_type_JavaLangString, paramblfq.jdField_b_of_type_Boolean, paramblfq.c).show();
+          parambmgt.jdField_a_of_type_AndroidAppDialog = paramAppInterface;
+          parambmgt.jdField_b_of_type_Boolean = false;
+          parambmgt.c = 10000;
+          parambmgt.f = null;
+          new SplashDialogWrapper(paramContext, parambmgt.jdField_a_of_type_AndroidAppDialog, parambmgt.d, parambmgt.jdField_b_of_type_JavaLangString, parambmgt.jdField_b_of_type_Boolean, parambmgt.c).show();
           return;
           i = 0;
         }
@@ -299,19 +299,19 @@ public class QWalletHelper
   {
     if (paramQQAppInterface != null)
     {
-      akwd localakwd = (akwd)paramQQAppInterface.getManager(148);
-      if (localakwd != null) {
-        localakwd.onDestroy();
+      alhs localalhs = (alhs)paramQQAppInterface.getManager(148);
+      if (localalhs != null) {
+        localalhs.onDestroy();
       }
     }
     mIsRefreshHome = true;
     if ((mAppInterface != null) && (mAppInterface == paramQQAppInterface)) {
       mAppInterface = null;
     }
-    autr.a();
+    avlr.a();
     QWalletResultReceiver.clear();
-    bghb.a().a();
-    aklv.a().b();
+    bhhc.a().a();
+    akxg.a().b();
     CustomizeStrategyFactory.a().b();
     PayLogic.clearCache();
     lastTime = -1L;
@@ -525,7 +525,7 @@ public class QWalletHelper
     {
       return;
       l = VACDReportUtil.a(null, "qqwallet", "graphb", "invoke", paramString, 0, null);
-      if ((akms.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackQRCheck", true)) && (!isValidUrl(paramString)))
+      if ((akyd.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackQRCheck", true)) && (!isValidUrl(paramString)))
       {
         paramQQAppInterface = new Intent(paramActivity, PayBridgeActivity.class);
         paramQQAppInterface.putExtra("pay_requestcode", 200);
@@ -533,7 +533,7 @@ public class QWalletHelper
         VACDReportUtil.endReport(l, "invalidUrl", null, -900, null);
         return;
       }
-      if (!akms.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackGIF", true)) {
+      if (!akyd.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackGIF", true)) {
         break;
       }
       VACDReportUtil.a(l, null, "checkAnim", null, 0, null);
@@ -654,11 +654,11 @@ public class QWalletHelper
     //   147: invokevirtual 864	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   150: pop
     //   151: aconst_null
-    //   152: invokestatic 876	bctj:a	(Landroid/content/Context;)Lbctj;
+    //   152: invokestatic 876	bdmc:a	(Landroid/content/Context;)Lbdmc;
     //   155: aload_0
     //   156: aload 6
     //   158: invokevirtual 328	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokevirtual 879	bctj:b	(Lmqq/app/AppRuntime;Ljava/lang/String;)V
+    //   161: invokevirtual 879	bdmc:b	(Lmqq/app/AppRuntime;Ljava/lang/String;)V
     //   164: aload_2
     //   165: bipush 63
     //   167: invokevirtual 882	java/lang/String:indexOf	(I)I
@@ -895,7 +895,7 @@ public class QWalletHelper
     //   692: goto -102 -> 590
     //   695: aload_1
     //   696: ldc_w 969
-    //   699: invokestatic 973	anni:a	(I)Ljava/lang/String;
+    //   699: invokestatic 973	anzj:a	(I)Ljava/lang/String;
     //   702: iconst_0
     //   703: invokestatic 978	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
     //   706: invokevirtual 981	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
@@ -905,7 +905,7 @@ public class QWalletHelper
     //   714: return
     //   715: aload_1
     //   716: ldc_w 985
-    //   719: invokestatic 973	anni:a	(I)Ljava/lang/String;
+    //   719: invokestatic 973	anzj:a	(I)Ljava/lang/String;
     //   722: iconst_0
     //   723: invokestatic 978	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
     //   726: invokevirtual 981	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
@@ -1229,7 +1229,7 @@ public class QWalletHelper
   
   public static String getIMSI()
   {
-    return bkfy.b("5076bf");
+    return blhc.b("5076bf");
   }
   
   public static long getLastUpdateToopMemberNumTime(String paramString)
@@ -1278,9 +1278,9 @@ public class QWalletHelper
     //   20: aload_0
     //   21: bipush 27
     //   23: invokevirtual 508	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   26: checkcast 1184	blfh
+    //   26: checkcast 1184	bmgk
     //   29: ldc_w 590
-    //   32: invokevirtual 1187	blfh:isPlugininstalled	(Ljava/lang/String;)Z
+    //   32: invokevirtual 1187	bmgk:isPlugininstalled	(Ljava/lang/String;)Z
     //   35: istore_1
     //   36: ldc 207
     //   38: iconst_1
@@ -1466,7 +1466,7 @@ public class QWalletHelper
     if (mDeviceId == null) {}
     try
     {
-      mDeviceId = bkfy.a("5076bf");
+      mDeviceId = blhc.a("5076bf");
       if (QLog.isColorLevel()) {
         QLog.i("QWalletHelper", 1, "deviceId is:" + mDeviceId);
       }
@@ -1623,19 +1623,19 @@ public class QWalletHelper
     for (paramBoolean = true;; paramBoolean = false)
     {
       addExtraForQvipPayWalletAct(paramBaseActivity, paramQQAppInterface, localIntent, paramBoolean, true);
-      blfq localblfq = new blfq(0);
-      localblfq.jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-      localblfq.d = "QWallet";
-      localblfq.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-      localblfq.e = "com.qwallet.activity.QWalletHomeActivity";
-      localblfq.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
-      localblfq.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localblfq.jdField_b_of_type_Int = -1;
-      localblfq.jdField_a_of_type_AndroidAppDialog = paramQWalletLoadingDialog;
-      localblfq.jdField_b_of_type_Boolean = false;
-      localblfq.c = 10000;
-      localblfq.f = null;
-      blfh.a(paramBaseActivity, localblfq);
+      bmgt localbmgt = new bmgt(0);
+      localbmgt.jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+      localbmgt.d = "QWallet";
+      localbmgt.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+      localbmgt.e = "com.qwallet.activity.QWalletHomeActivity";
+      localbmgt.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
+      localbmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbmgt.jdField_b_of_type_Int = -1;
+      localbmgt.jdField_a_of_type_AndroidAppDialog = paramQWalletLoadingDialog;
+      localbmgt.jdField_b_of_type_Boolean = false;
+      localbmgt.c = 10000;
+      localbmgt.f = null;
+      bmgk.a(paramBaseActivity, localbmgt);
       if (paramLong == 0L) {
         break;
       }
@@ -1657,7 +1657,7 @@ public class QWalletHelper
     if (paramQQAppInterface == null) {
       return false;
     }
-    return ((akti)paramQQAppInterface.getManager(273)).a("4001").a;
+    return ((alex)paramQQAppInterface.getManager(273)).a("4001").a;
   }
   
   private static String hexdigest(String paramString)
@@ -1779,7 +1779,7 @@ public class QWalletHelper
     boolean bool1;
     if (TextUtils.isEmpty(mBeforeDeviceId))
     {
-      String str2 = akms.a(paramString, "business_Device", "");
+      String str2 = akyd.a(paramString, "business_Device", "");
       bool1 = bool3;
       if (!TextUtils.isEmpty(str2))
       {
@@ -1891,13 +1891,13 @@ public class QWalletHelper
       paramBundle = paramBundle.getString("packageName");
       bool1 = bool2;
     } while (TextUtils.isEmpty(paramBundle));
-    Object localObject = akww.a();
+    Object localObject = alil.a();
     if (localObject != null)
     {
-      localObject = (akpd)((QQAppInterface)localObject).getManager(245);
+      localObject = (alao)((QQAppInterface)localObject).getManager(245);
       if (localObject != null)
       {
-        localObject = ((akpd)localObject).a("common", new String[] { "act_pay_pkgs" });
+        localObject = ((alao)localObject).a("common", new String[] { "act_pay_pkgs" });
         if (localObject != null)
         {
           i = 0;
@@ -2197,25 +2197,25 @@ public class QWalletHelper
       for (boolean bool = true;; bool = false)
       {
         addExtraForQvipPayWalletAct(paramContext, paramAppInterface, localIntent, false, bool);
-        localObject = new blfq(0);
+        localObject = new bmgt(0);
         str = paramBundle.getString("preload_from");
         if (!TextUtils.isEmpty(str)) {
-          ((blfq)localObject).jdField_a_of_type_Avaj = new avaj(str, "com.tencent.mobileqq:tool", "qwallet_plugin.apk");
+          ((bmgt)localObject).jdField_a_of_type_Avsk = new avsk(str, "com.tencent.mobileqq:tool", "qwallet_plugin.apk");
         }
-        ((blfq)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-        ((blfq)localObject).d = "Wallet";
-        ((blfq)localObject).jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
-        ((blfq)localObject).e = "com.qwallet.service.QWalletPluginService";
-        ((blfq)localObject).jdField_a_of_type_AndroidContentIntent = localIntent;
-        ((blfq)localObject).jdField_a_of_type_AndroidContentServiceConnection = null;
-        addLoadingDialogInfo(paramContext, paramAppInterface, paramBundle, (blfq)localObject);
+        ((bmgt)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+        ((bmgt)localObject).d = "Wallet";
+        ((bmgt)localObject).jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
+        ((bmgt)localObject).e = "com.qwallet.service.QWalletPluginService";
+        ((bmgt)localObject).jdField_a_of_type_AndroidContentIntent = localIntent;
+        ((bmgt)localObject).jdField_a_of_type_AndroidContentServiceConnection = null;
+        addLoadingDialogInfo(paramContext, paramAppInterface, paramBundle, (bmgt)localObject);
         bool = isLaunchPayPluginAct(paramBundle, paramContext);
         if (QLog.isColorLevel()) {
           QLog.i("Q.qwallet.pay.QWalletPayBridge", 2, "isLaunchPayPluginAct =" + bool);
         }
         if (bool)
         {
-          launchPayPluginAct((blfq)localObject, localIntent, paramContext);
+          launchPayPluginAct((bmgt)localObject, localIntent, paramContext);
           return;
           localObject = null;
           break;
@@ -2224,23 +2224,23 @@ public class QWalletHelper
           str = "";
           break label238;
         }
-        blfh.c(paramContext, (blfq)localObject);
+        bmgk.c(paramContext, (bmgt)localObject);
         return;
       }
     }
   }
   
-  private static void launchPayPluginAct(blfq paramblfq, Intent paramIntent, Context paramContext)
+  private static void launchPayPluginAct(bmgt parambmgt, Intent paramIntent, Context paramContext)
   {
     Intent localIntent = new Intent();
     if ((paramIntent != null) && (paramIntent.getExtras() != null)) {
       localIntent.putExtras(paramIntent.getExtras());
     }
-    paramblfq.e = "com.qwallet.activity.QvipPayBridgeActivity";
-    paramblfq.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
-    paramblfq.jdField_a_of_type_AndroidContentIntent = localIntent;
-    paramblfq.jdField_b_of_type_Int = 3001;
-    blfh.a((Activity)paramContext, paramblfq);
+    parambmgt.e = "com.qwallet.activity.QvipPayBridgeActivity";
+    parambmgt.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
+    parambmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
+    parambmgt.jdField_b_of_type_Int = 3001;
+    bmgk.a((Activity)paramContext, parambmgt);
   }
   
   public static void launchQWalletAct(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
@@ -2252,9 +2252,9 @@ public class QWalletHelper
     if (paramBoolean2) {
       MiniAppController.preloadMiniProcess(paramBaseActivity.app.getApp());
     }
-    akwu.a("homepage_onclick");
+    alij.a("homepage_onclick");
     paramBoolean1 = PatternLockUtils.isNeedOpenPatternLock(paramBaseActivity, paramQQAppInterface.getCurrentAccountUin());
-    long l1 = bcqt.a("com.tencent.mobileqq:tool");
+    long l1 = bdjl.a("com.tencent.mobileqq:tool");
     long l2 = VACDReportUtil.a(null, "qqwallet", "homepage", "click", "toolRunTime=" + l1, 0, null);
     qLaunchTime = System.currentTimeMillis();
     if (l1 > 5000L)
@@ -2291,7 +2291,7 @@ public class QWalletHelper
     }
     localIntent.putExtra("vfcAccountFlag", paramString1);
     localIntent.addFlags(67108864);
-    paramString1 = new blfq(1);
+    paramString1 = new bmgt(1);
     paramString1.jdField_b_of_type_JavaLangString = "vfc_plugin.apk";
     paramString1.d = PluginInfo.o;
     paramString1.jdField_a_of_type_AndroidAppDialog = null;
@@ -2303,7 +2303,7 @@ public class QWalletHelper
     paramString1.c = 15000;
     paramString1.jdField_b_of_type_Boolean = true;
     paramString1.f = null;
-    blfh.a(paramBaseActivity, paramString1);
+    bmgk.a(paramBaseActivity, paramString1);
   }
   
   public static JSONObject loadUnifiedConfig(Context paramContext)
@@ -2312,7 +2312,7 @@ public class QWalletHelper
     Object localObject1 = null;
     if (paramContext != null)
     {
-      localObject3 = bgmg.a(paramContext.getFilesDir() + "/qb_tenpay_unified_config");
+      localObject3 = bhmi.a(paramContext.getFilesDir() + "/qb_tenpay_unified_config");
       if (localObject3 == null) {
         break label111;
       }
@@ -2348,7 +2348,7 @@ public class QWalletHelper
   static Bundle parseExtraConfig(QQAppInterface paramQQAppInterface)
   {
     Bundle localBundle = new Bundle();
-    paramQQAppInterface = (akpd)paramQQAppInterface.getManager(245);
+    paramQQAppInterface = (alao)paramQQAppInterface.getManager(245);
     if (paramQQAppInterface != null) {
       localBundle.putInt("accountShowType", paramQQAppInterface.a("common", 0, new String[] { "accountShow", "type" }));
     }
@@ -2357,29 +2357,29 @@ public class QWalletHelper
   
   static ArrayList<HashMap<String, String>> parseTabsConfig(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = (akpd)paramQQAppInterface.getManager(245);
-    String str1 = ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "url" });
-    Object localObject2 = ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "beginTime" });
-    String str2 = ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "endTime" });
+    Object localObject1 = (alao)paramQQAppInterface.getManager(245);
+    String str1 = ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "url" });
+    Object localObject2 = ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "beginTime" });
+    String str2 = ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "endTime" });
     if ((RedPacketManager.isValidDate((String)localObject2, str2)) && (!TextUtils.isEmpty(str1)))
     {
       paramQQAppInterface = new ArrayList();
       HashMap localHashMap1 = new HashMap();
-      localHashMap1.put("showTab", ((akpd)localObject1).a("wallet_entry", 0, new String[] { "showTab" }) + "");
-      localHashMap1.put("name", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab0", "name" }));
-      localHashMap1.put("iconNormal", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_normal" }));
-      localHashMap1.put("iconSelect", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_select" }));
+      localHashMap1.put("showTab", ((alao)localObject1).a("wallet_entry", 0, new String[] { "showTab" }) + "");
+      localHashMap1.put("name", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab0", "name" }));
+      localHashMap1.put("iconNormal", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_normal" }));
+      localHashMap1.put("iconSelect", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_select" }));
       HashMap localHashMap2 = new HashMap();
-      localHashMap2.put("name", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "name" }));
-      localHashMap2.put("iconNormal", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_normal" }));
-      localHashMap2.put("iconSelect", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_select" }));
-      localHashMap2.put("colorTop", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorTop" }));
-      localHashMap2.put("colorBottom", ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorBottom" }));
+      localHashMap2.put("name", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "name" }));
+      localHashMap2.put("iconNormal", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_normal" }));
+      localHashMap2.put("iconSelect", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_select" }));
+      localHashMap2.put("colorTop", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorTop" }));
+      localHashMap2.put("colorBottom", ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorBottom" }));
       localHashMap2.put("url", str1);
       localHashMap2.put("beginTime", localObject2);
       localHashMap2.put("endTime", str2);
-      localHashMap2.put("action", ((akpd)localObject1).a("wallet_entry", 0, new String[] { "tab1", "action" }) + "");
-      localObject1 = ((akpd)localObject1).a("wallet_entry", "", new String[] { "tab1", "search" });
+      localHashMap2.put("action", ((alao)localObject1).a("wallet_entry", 0, new String[] { "tab1", "action" }) + "");
+      localObject1 = ((alao)localObject1).a("wallet_entry", "", new String[] { "tab1", "search" });
       try
       {
         localObject2 = new JSONObject((String)localObject1);
@@ -2409,36 +2409,36 @@ public class QWalletHelper
   
   public static ArrayList<HashMap<String, String>> parseTabsConfig(String paramString)
   {
-    if (bgsp.a(paramString)) {}
+    if (bhsr.a(paramString)) {}
     for (;;)
     {
       return null;
       try
       {
         Object localObject1 = new JSONObject(paramString);
-        String str1 = akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "url" });
-        Object localObject2 = akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "beginTime" });
-        String str2 = akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "endTime" });
+        String str1 = alal.a((JSONObject)localObject1, "", new String[] { "tab1", "url" });
+        Object localObject2 = alal.a((JSONObject)localObject1, "", new String[] { "tab1", "beginTime" });
+        String str2 = alal.a((JSONObject)localObject1, "", new String[] { "tab1", "endTime" });
         if ((!RedPacketManager.isValidDate((String)localObject2, str2)) || (TextUtils.isEmpty(str1))) {
           continue;
         }
         paramString = new ArrayList();
         HashMap localHashMap1 = new HashMap();
-        localHashMap1.put("showTab", akpa.a((JSONObject)localObject1, 0, new String[] { "showTab" }) + "");
-        localHashMap1.put("name", akpa.a((JSONObject)localObject1, "", new String[] { "tab0", "name" }));
-        localHashMap1.put("iconNormal", akpa.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_normal" }));
-        localHashMap1.put("iconSelect", akpa.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_select" }));
+        localHashMap1.put("showTab", alal.a((JSONObject)localObject1, 0, new String[] { "showTab" }) + "");
+        localHashMap1.put("name", alal.a((JSONObject)localObject1, "", new String[] { "tab0", "name" }));
+        localHashMap1.put("iconNormal", alal.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_normal" }));
+        localHashMap1.put("iconSelect", alal.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_select" }));
         HashMap localHashMap2 = new HashMap();
-        localHashMap2.put("name", akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "name" }));
-        localHashMap2.put("iconNormal", akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_normal" }));
-        localHashMap2.put("iconSelect", akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_select" }));
-        localHashMap2.put("colorTop", akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "colorTop" }));
-        localHashMap2.put("colorBottom", akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "colorBottom" }));
+        localHashMap2.put("name", alal.a((JSONObject)localObject1, "", new String[] { "tab1", "name" }));
+        localHashMap2.put("iconNormal", alal.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_normal" }));
+        localHashMap2.put("iconSelect", alal.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_select" }));
+        localHashMap2.put("colorTop", alal.a((JSONObject)localObject1, "", new String[] { "tab1", "colorTop" }));
+        localHashMap2.put("colorBottom", alal.a((JSONObject)localObject1, "", new String[] { "tab1", "colorBottom" }));
         localHashMap2.put("url", str1);
         localHashMap2.put("beginTime", localObject2);
         localHashMap2.put("endTime", str2);
-        localHashMap2.put("action", akpa.a((JSONObject)localObject1, 0, new String[] { "tab1", "action" }) + "");
-        localObject1 = akpa.a((JSONObject)localObject1, "", new String[] { "tab1", "search" });
+        localHashMap2.put("action", alal.a((JSONObject)localObject1, 0, new String[] { "tab1", "action" }) + "");
+        localObject1 = alal.a((JSONObject)localObject1, "", new String[] { "tab1", "search" });
         try
         {
           localObject2 = new JSONObject((String)localObject1);
@@ -2492,7 +2492,7 @@ public class QWalletHelper
     if ((localObject2 == null) || (TextUtils.isEmpty(((PreloadResource)localObject2).url))) {
       return false;
     }
-    localObject2 = PreloadManager.e(((PreloadResource)localObject2).url);
+    localObject2 = PreloadManager.f(((PreloadResource)localObject2).url);
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
       ((PreloadManager)localObject1).a("f2f_redpacket", true);
@@ -2573,7 +2573,7 @@ public class QWalletHelper
         QLog.d("QWalletHelper", 1, "save deviceId:" + paramString2);
       }
       if (!TextUtils.isEmpty(str)) {
-        akms.a(paramString1, "business_Device", str);
+        akyd.a(paramString1, "business_Device", str);
       }
     }
   }
@@ -2601,7 +2601,7 @@ public class QWalletHelper
       try
       {
         Object localObject = new StringBuilder().append(paramString2).append("tenpayguid");
-        String str = bkfy.a("5076bf");
+        String str = blhc.a("5076bf");
         mDeviceId = str;
         str = hexdigest(str);
         localObject = str.substring(0, AES_KEY_LENGTH);

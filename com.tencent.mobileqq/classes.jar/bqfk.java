@@ -1,9 +1,21 @@
-import android.graphics.Bitmap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class bqfk
+class bqfk
+  extends AnimatorListenerAdapter
 {
-  public long a;
-  public Bitmap a;
+  bqfk(bqfi parambqfi) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    bqfi.a(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bqfi.a(this.a).setVisibility(8);
+  }
 }
 
 

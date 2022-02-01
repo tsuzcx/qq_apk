@@ -1,30 +1,26 @@
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class meg
-  extends ldy
+final class meg
 {
-  public meg(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public int a;
+  long jdField_a_of_type_Long;
+  View jdField_a_of_type_AndroidViewView = null;
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  boolean jdField_a_of_type_Boolean = false;
+  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
+  TextView jdField_b_of_type_AndroidWidgetTextView = null;
+  boolean jdField_b_of_type_Boolean = true;
+  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
+  TextView jdField_c_of_type_AndroidWidgetTextView = null;
+  public boolean c;
   
-  protected void a(long paramLong, ArrayList<lco> paramArrayList, int paramInt1, int paramInt2)
+  private meg(meb parammeb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onUserListALLUpdate");
-    }
-    MultiIncomingCallsActivity.a(this.a, paramLong, paramArrayList, paramInt1);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
-    }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
-      return;
-    }
-    MultiIncomingCallsActivity.a(this.a, paramInt);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Boolean = true;
   }
 }
 

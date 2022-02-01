@@ -1,12 +1,22 @@
-public class oty
+import java.util.ArrayList;
+
+class oty
+  extends ovd
 {
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
-  private static Integer jdField_a_of_type_JavaLangInteger;
-  
-  public static void a()
+  oty(otv paramotv, int paramInt)
   {
-    jdField_a_of_type_JavaLangBoolean = null;
-    jdField_a_of_type_JavaLangInteger = null;
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      paramovg.onCommentListLoad(1, false, new ArrayList(), false, 6, 6);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramovg.onCommentLoadMore(1, false, new ArrayList(), false, 6);
   }
 }
 

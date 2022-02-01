@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.QQPermissionCallback;
 
-public class ajfs
-  implements View.OnClickListener
+class ajfs
+  implements QQPermissionCallback
 {
-  public ajfs(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  ajfs(ajfr paramajfr, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    TroopSuspiciousFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ajfr.a(this.jdField_a_of_type_Ajfr).i();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      ajfr.a(this.jdField_a_of_type_Ajfr, this.jdField_a_of_type_JavaLangString, this.b);
+    }
   }
 }
 

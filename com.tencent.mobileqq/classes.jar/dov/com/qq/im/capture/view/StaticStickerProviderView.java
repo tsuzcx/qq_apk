@@ -7,27 +7,27 @@ import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import bojv;
-import bolv;
-import bomu;
-import boom;
-import booy;
-import bouq;
-import bouv;
-import bouw;
-import bpaz;
-import bpdh;
-import bpep;
-import bphq;
-import bpna;
-import bpnb;
-import bpnh;
-import bpni;
-import bpnl;
-import bpno;
-import bpnt;
-import bpow;
-import bppp;
+import bplq;
+import bpnq;
+import bpop;
+import bpqh;
+import bpqt;
+import bpwl;
+import bpwq;
+import bpwr;
+import bqcu;
+import bqfc;
+import bqgk;
+import bqjl;
+import bqov;
+import bqow;
+import bqpc;
+import bqpd;
+import bqpg;
+import bqpj;
+import bqpo;
+import bqqr;
+import bqrk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -41,17 +41,17 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import yqv;
+import yuq;
 
 @TargetApi(9)
 public class StaticStickerProviderView
   extends ProviderView
-  implements bouq, bpno, bpow
+  implements bpwl, bqpj, bqqr
 {
   private int jdField_a_of_type_Int = 0;
-  private bolv jdField_a_of_type_Bolv;
-  bomu jdField_a_of_type_Bomu = new bouw(this);
-  bpnt jdField_a_of_type_Bpnt;
+  private bpnq jdField_a_of_type_Bpnq;
+  bpop jdField_a_of_type_Bpop = new bpwr(this);
+  bqpo jdField_a_of_type_Bqpo;
   FacePagerAdapter jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter;
   FaceViewPager jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager;
   public ArrayList<String> a;
@@ -61,23 +61,23 @@ public class StaticStickerProviderView
     super(paramContext);
   }
   
-  private void a(boom paramboom, bpdh parambpdh)
+  private void a(bpqh parambpqh, bqfc parambqfc)
   {
-    paramboom = new ArrayList(paramboom.a());
+    parambpqh = new ArrayList(parambpqh.a());
     if (b())
     {
-      paramboom.add(0, new bpnh());
-      parambpdh.a(true);
+      parambpqh.add(0, new bqpc());
+      parambqfc.a(true);
     }
     for (;;)
     {
-      parambpdh.a(paramboom);
+      parambqfc.a(parambpqh);
       return;
-      parambpdh.a(false);
+      parambqfc.a(false);
     }
   }
   
-  public static void a(Collection<bpnb> paramCollection)
+  public static void a(Collection<bqow> paramCollection)
   {
     if (QLog.isColorLevel()) {
       QLog.d("StaticStickerProviderView", 2, "random tab shufflePaster");
@@ -85,12 +85,12 @@ public class StaticStickerProviderView
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
-      bpnb localbpnb = (bpnb)paramCollection.next();
-      if (localbpnb.jdField_a_of_type_Boolean) {
-        if ((localbpnb instanceof bpnl)) {
-          Collections.shuffle(((bpnl)localbpnb).a);
-        } else if ((localbpnb instanceof bpni)) {
-          Collections.shuffle(((bpni)localbpnb).a);
+      bqow localbqow = (bqow)paramCollection.next();
+      if (localbqow.jdField_a_of_type_Boolean) {
+        if ((localbqow instanceof bqpg)) {
+          Collections.shuffle(((bqpg)localbqow).a);
+        } else if ((localbqow instanceof bqpd)) {
+          Collections.shuffle(((bqpd)localbqow).a);
         }
       }
     }
@@ -98,10 +98,10 @@ public class StaticStickerProviderView
   
   private boolean b()
   {
-    if ((this.jdField_a_of_type_Boty != null) && ((this.jdField_a_of_type_Boty instanceof bpaz)))
+    if ((this.jdField_a_of_type_Bpvt != null) && ((this.jdField_a_of_type_Bpvt instanceof bqcu)))
     {
-      bpep localbpep = ((bpaz)this.jdField_a_of_type_Boty).a;
-      if ((localbpep != null) && (localbpep.a != null)) {
+      bqgk localbqgk = ((bqcu)this.jdField_a_of_type_Bpvt).a;
+      if ((localbqgk != null) && (localbqgk.a != null)) {
         return true;
       }
     }
@@ -110,7 +110,7 @@ public class StaticStickerProviderView
   
   private void j()
   {
-    ArrayList localArrayList1 = ((booy)bojv.a(1)).a();
+    ArrayList localArrayList1 = ((bpqt)bplq.a(1)).a();
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
     while (i < localArrayList1.size())
@@ -125,7 +125,7 @@ public class StaticStickerProviderView
       i += 1;
     }
     if (b()) {
-      localArrayList2.add(0, bpnh.f);
+      localArrayList2.add(0, bqpc.f);
     }
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.b(localArrayList2);
     this.jdField_a_of_type_JavaUtilArrayList = localArrayList2;
@@ -156,21 +156,21 @@ public class StaticStickerProviderView
   
   protected int a()
   {
-    return 2131560966;
+    return 2131560997;
   }
   
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Bpnt != null) {
-      this.jdField_a_of_type_Bpnt.b(this);
+    if (this.jdField_a_of_type_Bqpo != null) {
+      this.jdField_a_of_type_Bqpo.b(this);
     }
-    bpdh localbpdh = ((boom)bojv.a(4)).a();
-    if (localbpdh != null) {
-      localbpdh.b(this);
+    bqfc localbqfc = ((bpqh)bplq.a(4)).a();
+    if (localbqfc != null) {
+      localbqfc.b(this);
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bomu);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bpop);
     }
   }
   
@@ -199,54 +199,54 @@ public class StaticStickerProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560966, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560997, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)findViewById(2131366196));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)findViewById(2131366245));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter = new FacePagerAdapter(super.getContext());
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.a(this);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     j();
-    boom localboom = (boom)bojv.a(4);
-    localboom.j();
-    paramBundle = localboom.a();
-    a(localboom, paramBundle);
+    bpqh localbpqh = (bpqh)bplq.a(4);
+    localbpqh.e();
+    paramBundle = localbpqh.a();
+    a(localbpqh, paramBundle);
     setAdapter(paramBundle);
     Activity localActivity = (Activity)getContext();
-    setDownloadListener(new bouv(this, localActivity));
-    paramBundle = (DoodleLayout)localActivity.findViewById(2131365633);
+    setDownloadListener(new bpwq(this, localActivity));
+    paramBundle = (DoodleLayout)localActivity.findViewById(2131365676);
     if (paramBundle == null) {
-      paramBundle = (DoodleLayout)localActivity.findViewById(2131364145);
+      paramBundle = (DoodleLayout)localActivity.findViewById(2131364186);
     }
     for (;;)
     {
       setOnFaceSelectedListener(paramBundle.a());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bomu);
-      localboom.a(true, (Activity)getContext());
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bpop);
+      localbpqh.a(true, (Activity)getContext());
       return;
     }
   }
   
-  public void a(bppp parambppp)
+  public void a(bqrk parambqrk)
   {
-    if (((parambppp instanceof bphq)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    if (((parambqrk instanceof bqjl)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
     {
-      Object localObject = (bphq)parambppp;
-      parambppp = ((bphq)localObject).e;
-      localObject = ((bphq)localObject).d;
+      Object localObject = (bqjl)parambqrk;
+      parambqrk = ((bqjl)localObject).e;
+      localObject = ((bqjl)localObject).d;
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         if (TextUtils.equals((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (CharSequence)localObject))
         {
           b(i);
-          postDelayed(new StaticStickerProviderView.3(this, i, parambppp), 200L);
+          postDelayed(new StaticStickerProviderView.3(this, i, parambqrk), 200L);
         }
         i += 1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("StaticStickerProviderView", 2, "selectPosition category=" + (String)localObject + " name=" + parambppp);
+        QLog.d("StaticStickerProviderView", 2, "selectPosition category=" + (String)localObject + " name=" + parambqrk);
       }
     }
   }
@@ -254,8 +254,8 @@ public class StaticStickerProviderView
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Bolv != null) {
-      this.jdField_a_of_type_Bolv.a();
+    if (this.jdField_a_of_type_Bpnq != null) {
+      this.jdField_a_of_type_Bpnq.a();
     }
   }
   
@@ -266,19 +266,19 @@ public class StaticStickerProviderView
     for (Object localObject = "2";; localObject = "1")
     {
       DoodleLayout.a("change_face", 0, 0, new String[] { localObject });
-      if (this.jdField_a_of_type_Bpnt != null)
+      if (this.jdField_a_of_type_Bqpo != null)
       {
-        localObject = this.jdField_a_of_type_Bpnt.a(paramInt);
-        if ((localObject != null) && ((localObject instanceof bpnb)))
+        localObject = this.jdField_a_of_type_Bqpo.a(paramInt);
+        if ((localObject != null) && ((localObject instanceof bqow)))
         {
-          yqv.a("0X80076C7", "", "", ((bpnb)localObject).jdField_a_of_type_JavaLangString, "");
-          yqv.a("0X80075DC", ((bpnb)localObject).jdField_a_of_type_JavaLangString);
+          yuq.a("0X80076C7", "", "", ((bqow)localObject).jdField_a_of_type_JavaLangString, "");
+          yuq.a("0X80075DC", ((bqow)localObject).jdField_a_of_type_JavaLangString);
         }
       }
       if (paramInt == 1)
       {
-        yqv.a("0X80076CC");
-        yqv.b("0X80075E1");
+        yuq.a("0X80076CC");
+        yuq.b("0X80075E1");
       }
       return;
     }
@@ -287,10 +287,10 @@ public class StaticStickerProviderView
   public void c()
   {
     super.c();
-    boom localboom = (boom)bojv.a(4);
-    bpdh localbpdh = localboom.a();
-    if (localbpdh.a() != b()) {
-      a(localboom, localbpdh);
+    bpqh localbpqh = (bpqh)bplq.a(4);
+    bqfc localbqfc = localbpqh.a();
+    if (localbqfc.a() != b()) {
+      a(localbpqh, localbqfc);
     }
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.notifyDataSetChanged();
   }
@@ -328,15 +328,15 @@ public class StaticStickerProviderView
   public void g()
   {
     j();
-    boom localboom = (boom)bojv.a(4);
-    bpdh localbpdh = localboom.a();
-    if (localbpdh != null)
+    bpqh localbpqh = (bpqh)bplq.a(4);
+    bqfc localbqfc = localbpqh.a();
+    if (localbqfc != null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("StaticStickerProviderView", 2, "paster config updateData");
       }
-      a(localboom, localbpdh);
-      setAdapter(localbpdh);
+      a(localbpqh, localbqfc);
+      setAdapter(localbqfc);
       h();
       this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.getCurrentItem());
     }
@@ -349,24 +349,24 @@ public class StaticStickerProviderView
   
   public void i()
   {
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter != null) && (boom.a.compareAndSet(true, false))) {
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter != null) && (bpqh.a.compareAndSet(true, false))) {
       g();
     }
   }
   
-  public void setAdapter(bpnt parambpnt)
+  public void setAdapter(bqpo parambqpo)
   {
-    if (this.jdField_a_of_type_Bpnt != null)
+    if (this.jdField_a_of_type_Bqpo != null)
     {
-      this.jdField_a_of_type_Bpnt.b(this);
-      this.jdField_a_of_type_Bpnt = null;
+      this.jdField_a_of_type_Bqpo.b(this);
+      this.jdField_a_of_type_Bqpo = null;
     }
-    if (parambpnt != null)
+    if (parambqpo != null)
     {
-      parambpnt.b(this);
-      this.jdField_a_of_type_Bpnt = parambpnt;
-      this.jdField_a_of_type_Bpnt.a(this);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Bpnt);
+      parambqpo.b(this);
+      this.jdField_a_of_type_Bqpo = parambqpo;
+      this.jdField_a_of_type_Bqpo.a(this);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Bqpo);
     }
   }
   
@@ -375,15 +375,15 @@ public class StaticStickerProviderView
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
   }
   
-  public void setDownloadListener(bpna parambpna)
+  public void setDownloadListener(bqov parambqov)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambpna);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambqov);
   }
   
-  public void setOnFaceSelectedListener(bolv parambolv)
+  public void setOnFaceSelectedListener(bpnq parambpnq)
   {
-    this.jdField_a_of_type_Bolv = parambolv;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambolv);
+    this.jdField_a_of_type_Bpnq = parambpnq;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambpnq);
   }
 }
 

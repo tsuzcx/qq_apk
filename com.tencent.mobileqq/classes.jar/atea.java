@@ -1,10 +1,6 @@
 public abstract interface atea
 {
-  public abstract void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
-  
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(String paramString);
+  public abstract void a();
 }
 
 

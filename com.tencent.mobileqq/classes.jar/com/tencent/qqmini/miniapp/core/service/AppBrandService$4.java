@@ -10,7 +10,7 @@ class AppBrandService$4
   
   public void run()
   {
-    MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), this.val$id, this.val$reason, "0");
+    MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), this.val$id, "0", this.val$reason, null, null, null);
   }
 }
 

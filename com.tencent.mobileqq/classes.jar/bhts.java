@@ -1,29 +1,12 @@
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhts
-  implements anil
+public final class bhts
+  implements DialogInterface.OnClickListener
 {
-  public void a(int paramInt) {}
-  
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
-  
-  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a((submsgtype0xdd.MsgBody)paramObject);
-      return;
-    case 2: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
-    }
-    a(((Integer)paramObject).intValue());
+    bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
   }
 }
 

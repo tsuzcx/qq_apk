@@ -1,46 +1,43 @@
-import android.os.Message;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.lang.ref.SoftReference;
 
 public class anis
-  extends bdzm
+  implements amwd
 {
-  WeakReference<anit> a;
+  private SoftReference<ApolloGuestsStateActivity> a;
   
-  public anis(anit paramanit)
+  public anis(ApolloGuestsStateActivity paramApolloGuestsStateActivity)
   {
-    this.a = new WeakReference(paramanit);
+    this.a = new SoftReference(paramApolloGuestsStateActivity);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
-    bduk localbduk = (bduk)paramMessage.obj;
-    if (localbduk.b == 35) {
-      switch (paramMessage.what)
-      {
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGuestsStateActivity", 2, "apollo view is Ready.");
     }
-    do
-    {
-      do
-      {
-        return;
-        paramMessage = localbduk.a;
-        if ((this.a != null) && (this.a.get() != null))
-        {
-          ((anit)this.a.get()).b(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
+    ApolloGuestsStateActivity localApolloGuestsStateActivity = (ApolloGuestsStateActivity)this.a.get();
+    if ((localApolloGuestsStateActivity == null) || (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (ApolloGuestsStateActivity.a(localApolloGuestsStateActivity) == null)) {
       return;
-      if ((this.a != null) && (this.a.get() != null))
-      {
-        ((anit)this.a.get()).d();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
+    }
+    float f3 = anxh.a() / 16.0F;
+    float f2 = localApolloGuestsStateActivity.c;
+    float f1 = f2;
+    if (0.0F != f3) {
+      f1 = f2 / f3;
+    }
+    localApolloGuestsStateActivity.jdField_a_of_type_Float = (paramInt1 / 2 / f1);
+    if (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
+      localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
+    }
+    ApolloGuestsStateActivity.a(localApolloGuestsStateActivity).c();
+    localApolloGuestsStateActivity.b = paramInt1;
   }
 }
 

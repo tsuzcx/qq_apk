@@ -1,8 +1,10 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface blac
+final class blac
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(JSONObject paramJSONObject);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,70 +1,65 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class aqyf
-  extends aqwr<aqye>
+  extends BaseAdapter
 {
-  public static aqye a = new aqye();
+  private int jdField_a_of_type_Int = 25;
+  private int b;
   
-  public static aqye c()
+  public aqyf(TimeSelectView paramTimeSelectView, int paramInt1, int paramInt2)
   {
-    aqye localaqye2 = (aqye)aqlk.a().a(423);
-    aqye localaqye1 = localaqye2;
-    if (localaqye2 == null) {
-      localaqye1 = new aqye();
-    }
-    return localaqye1;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramTimeSelectView.getResources().getDisplayMetrics()));
   }
   
-  @NonNull
-  public aqye a()
+  public int getCount()
   {
-    return a;
+    return TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b);
   }
   
-  @NonNull
-  public aqye a(aqlg[] paramArrayOfaqlg)
+  public Object getItem(int paramInt)
   {
-    boolean bool = true;
-    localaqye = new aqye();
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    try
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      if (new JSONObject(paramArrayOfaqlg).optInt("show_red_name_card", 0) == 1) {}
-      for (;;)
-      {
-        localaqye.a = bool;
-        return localaqye;
-        bool = false;
-      }
-      return localaqye;
+      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext());
+      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
     }
-    catch (JSONException paramArrayOfaqlg)
+    for (;;)
     {
-      yqp.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfaqlg.getMessage());
+      String str = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b, paramInt);
+      WheelTextView localWheelTextView = (WheelTextView)paramView;
+      localWheelTextView.setTextSize(20.0F);
+      localWheelTextView.setTextColor(TimeSelectView.jdField_a_of_type_Int);
+      localWheelTextView.setGravity(17);
+      localWheelTextView.setText(str);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
-  }
-  
-  @NonNull
-  public aqye b()
-  {
-    return a;
-  }
-  
-  public Class<aqye> clazz()
-  {
-    return aqye.class;
-  }
-  
-  public int type()
-  {
-    return 423;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyf
  * JD-Core Version:    0.7.0.1
  */

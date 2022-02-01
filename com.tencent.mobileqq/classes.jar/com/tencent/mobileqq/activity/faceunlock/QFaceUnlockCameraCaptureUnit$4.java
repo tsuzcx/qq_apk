@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import ajon;
+import ajzw;
 import android.media.MediaRecorder;
 import com.tencent.TMG.utils.QLog;
 
 public class QFaceUnlockCameraCaptureUnit$4
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$4(ajon paramajon, boolean paramBoolean) {}
+  public QFaceUnlockCameraCaptureUnit$4(ajzw paramajzw, boolean paramBoolean) {}
   
   public void run()
   {
-    if (ajon.a(this.this$0) != null) {}
+    if (ajzw.a(this.this$0) != null) {}
     try
     {
       if (QLog.isColorLevel()) {
         QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord begin");
       }
-      ajon.a(this.this$0).stop();
-      ajon.a(this.this$0).reset();
+      ajzw.a(this.this$0).stop();
+      ajzw.a(this.this$0).reset();
       if (QLog.isColorLevel()) {
         QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord end");
       }
@@ -44,7 +44,7 @@ public class QFaceUnlockCameraCaptureUnit$4
         QLog.e("QFaceUnlockCameraCaptureUnit", 1, "stopRecord failed, Exception: " + localException.getMessage());
       }
     }
-    ajon.a(this.this$0, this.a);
+    ajzw.a(this.this$0, this.a);
   }
 }
 

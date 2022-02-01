@@ -1,17 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afjt
   implements DialogInterface.OnClickListener
 {
-  public afjt(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
+  public afjt(RegisterActivity paramRegisterActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bcst.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessage(1);
   }
 }
 

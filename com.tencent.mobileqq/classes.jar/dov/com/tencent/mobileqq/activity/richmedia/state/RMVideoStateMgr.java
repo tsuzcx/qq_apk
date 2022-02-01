@@ -3,29 +3,29 @@ package dov.com.tencent.mobileqq.activity.richmedia.state;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import anni;
-import batx;
-import bciu;
-import bgmg;
-import bmks;
-import bpwl;
-import bpyn;
-import bpyo;
-import bpyp;
-import bpyq;
-import bpyr;
-import bpys;
-import bpyt;
-import bpyu;
-import bpyy;
-import bpyz;
-import bqgx;
-import bqgz;
-import bqhb;
-import bqhs;
-import bqim;
-import bqjl;
-import bqjn;
+import anzj;
+import bbmq;
+import bdbm;
+import bhmi;
+import bnlv;
+import bqyg;
+import brai;
+import braj;
+import brak;
+import bral;
+import bram;
+import bran;
+import brao;
+import brap;
+import brat;
+import brau;
+import brij;
+import bril;
+import brin;
+import brje;
+import brjy;
+import brkx;
+import brkz;
 import com.tencent.maxvideo.common.MessageStruct;
 import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RMVideoStateMgr
-  implements bqgz, bqhb, bqhs, bqjn, AVCodec.AVCodecCallback
+  implements bril, brin, brje, brkz, AVCodec.AVCodecCallback
 {
   private static RMVideoStateMgr jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr;
   private static final int[] jdField_a_of_type_ArrayOfInt = { 850, 780, 650, 480 };
@@ -47,18 +47,18 @@ public class RMVideoStateMgr
   public long a;
   public Context a;
   public Handler a;
-  private batx jdField_a_of_type_Batx;
-  public bpyn a;
-  public bpyo a;
-  final bpyp jdField_a_of_type_Bpyp = new bpyp();
-  final bpyq jdField_a_of_type_Bpyq = new bpyq();
-  final bpyr jdField_a_of_type_Bpyr = new bpyr();
-  final bpys jdField_a_of_type_Bpys = new bpys();
-  public bpyu a;
-  public final bpyy a;
-  public bpyz a;
-  public bqhs a;
-  public bqim a;
+  private bbmq jdField_a_of_type_Bbmq;
+  public brai a;
+  public braj a;
+  final brak jdField_a_of_type_Brak = new brak();
+  final bral jdField_a_of_type_Bral = new bral();
+  final bram jdField_a_of_type_Bram = new bram();
+  final bran jdField_a_of_type_Bran = new bran();
+  public brap a;
+  public final brat a;
+  public brau a;
+  public brje a;
+  public brjy a;
   public final RMVideoSwitchCameraPicMgr a;
   public AudioCapture a;
   public PreviewContext a;
@@ -91,14 +91,14 @@ public class RMVideoStateMgr
   private RMVideoStateMgr()
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Bpyy = new bpyy();
+    this.jdField_a_of_type_Brat = new brat();
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr = new RMVideoSwitchCameraPicMgr();
     this.jdField_a_of_type_Int = 480;
-    this.jdField_a_of_type_Bpyu = new bpyu();
+    this.jdField_a_of_type_Brap = new brap();
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Bpyo = new bpyo();
+    this.jdField_a_of_type_Braj = new braj();
   }
   
   public static RMVideoStateMgr a()
@@ -166,31 +166,31 @@ public class RMVideoStateMgr
   
   private native void setVideoClipSpec(int[] paramArrayOfInt);
   
-  public int a(bqgz parambqgz, boolean paramBoolean, int paramInt1, int paramInt2)
+  public int a(bril parambril, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     int m = -1;
-    if (parambqgz == this)
+    if (parambril == this)
     {
-      a().a(parambqgz, paramBoolean, paramInt1, paramInt2);
+      a().a(parambril, paramBoolean, paramInt1, paramInt2);
       m = 0;
     }
     return m;
   }
   
-  public bpyt a()
+  public brao a()
   {
     int m = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    bpyq localbpyq = this.jdField_a_of_type_Bpyq;
+    bral localbral = this.jdField_a_of_type_Bral;
     switch (m)
     {
     default: 
-      return localbpyq;
+      return localbral;
     case 2: 
-      return this.jdField_a_of_type_Bpyp;
+      return this.jdField_a_of_type_Brak;
     case 3: 
-      return this.jdField_a_of_type_Bpys;
+      return this.jdField_a_of_type_Bran;
     }
-    return this.jdField_a_of_type_Bpyr;
+    return this.jdField_a_of_type_Bram;
   }
   
   public void a()
@@ -216,9 +216,9 @@ public class RMVideoStateMgr
       a().e();
       if (paramInt == 0)
       {
-        a(0, anni.a(2131712249), false);
-        if (1 == bpwl.jdField_a_of_type_Int) {
-          bmks.a(bqgx.a + "", "qzone_video_record", "1", null);
+        a(0, anzj.a(2131712358), false);
+        if (1 == bqyg.jdField_a_of_type_Int) {
+          bnlv.a(brij.a + "", "qzone_video_record", "1", null);
         }
       }
       return;
@@ -231,8 +231,8 @@ public class RMVideoStateMgr
   
   public void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bpyz != null) {
-      this.jdField_a_of_type_Bpyz.a(paramInt, paramString, paramBoolean);
+    if (this.jdField_a_of_type_Brau != null) {
+      this.jdField_a_of_type_Brau.a(paramInt, paramString, paramBoolean);
     }
   }
   
@@ -246,7 +246,7 @@ public class RMVideoStateMgr
     do
     {
       return;
-    } while ((!bciu.class.isInstance(paramObject)) || (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext == null));
+    } while ((!bdbm.class.isInstance(paramObject)) || (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext == null));
     this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame = true;
   }
   
@@ -262,7 +262,7 @@ public class RMVideoStateMgr
       QLog.d("" + paramString, 2, "[@][deleteCacheFile] [RMFileEventNotify]stopWatching");
     }
     if (this.jdField_a_of_type_JavaLangString != null) {
-      bgmg.a(this.jdField_a_of_type_JavaLangString, false);
+      bhmi.a(this.jdField_a_of_type_JavaLangString, false);
     }
   }
   
@@ -290,8 +290,8 @@ public class RMVideoStateMgr
       QLog.e("RMVideoStateMgr", 2, "stopHwRecorder");
     }
     this.h = false;
-    if (this.jdField_a_of_type_Batx != null) {
-      this.jdField_a_of_type_Batx.b();
+    if (this.jdField_a_of_type_Bbmq != null) {
+      this.jdField_a_of_type_Bbmq.b();
     }
     this.jdField_c_of_type_Int = 0;
   }
@@ -308,13 +308,13 @@ public class RMVideoStateMgr
   
   boolean b()
   {
-    long l = bqjl.a(bqjl.a().b);
-    if (l <= bqjl.a)
+    long l = brkx.a(brkx.a().b);
+    if (l <= brkx.a)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("RMVideoStateMgr", 2, "[@] checkDiskSpaceIsOK,freeSpace <= FREESPACE_LIMIT_EXIT freeSpace=" + l + "StorageManager.FREESPACE_LIMIT_EXIT=" + bqjl.a + " 手机剩余存储空间不足");
+        QLog.d("RMVideoStateMgr", 2, "[@] checkDiskSpaceIsOK,freeSpace <= FREESPACE_LIMIT_EXIT freeSpace=" + l + "StorageManager.FREESPACE_LIMIT_EXIT=" + brkx.a + " 手机剩余存储空间不足");
       }
-      a(0, anni.a(2131712248), false);
+      a(0, anzj.a(2131712357), false);
       return false;
     }
     return true;
@@ -355,8 +355,8 @@ public class RMVideoStateMgr
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Bpyn != null) && (this.jdField_a_of_type_Double > 0.0D)) {
-      this.jdField_a_of_type_Bpyn.startWatching();
+    if ((this.jdField_a_of_type_Brai != null) && (this.jdField_a_of_type_Double > 0.0D)) {
+      this.jdField_a_of_type_Brai.startWatching();
     }
   }
   
@@ -367,8 +367,8 @@ public class RMVideoStateMgr
   
   public void e()
   {
-    if (this.jdField_a_of_type_Bpyn != null) {
-      this.jdField_a_of_type_Bpyn.stopWatching();
+    if (this.jdField_a_of_type_Brai != null) {
+      this.jdField_a_of_type_Brai.stopWatching();
     }
   }
   

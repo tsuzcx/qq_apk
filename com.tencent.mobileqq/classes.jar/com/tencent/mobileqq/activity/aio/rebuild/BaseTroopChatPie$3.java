@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahxp;
-import bfuk;
+import aihd;
+import bgul;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class BaseTroopChatPie$3
   implements Runnable
 {
-  public BaseTroopChatPie$3(ahxp paramahxp, bfuk parambfuk) {}
+  public BaseTroopChatPie$3(aihd paramaihd, bgul parambgul) {}
   
   public void run()
   {

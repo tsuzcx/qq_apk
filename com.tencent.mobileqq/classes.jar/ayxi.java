@@ -1,90 +1,48 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-
-public class ayxi
+public final class ayxi
 {
-  public static String a(int paramInt1, int paramInt2, int paramInt3)
+  public static final String a(String paramString1, String paramString2)
   {
-    String str = bdxz.a(paramInt2);
-    return bdxz.a(bdxz.b(paramInt1), bdxz.c(paramInt3), str, "L");
-  }
-  
-  public static void a(Object paramObject, String paramString1, String paramString2)
-  {
-    if ((paramObject instanceof ayxl))
+    Object localObject2 = null;
+    int i = paramString1.indexOf("?");
+    Object localObject1 = localObject2;
+    if (i != -1)
     {
-      paramObject = (ayxl)paramObject;
-      bdxz.c(paramObject.b, true, 1, paramObject.a, paramString1, paramString2);
-      return;
-    }
-    if ((paramObject instanceof MessageForPic))
-    {
-      paramObject = (MessageForPic)paramObject;
-      bdxz.c(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("step:").append(paramString1);
-    localStringBuilder.append("    \tcontent:").append(paramString2);
-    QLog.d("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    a(paramString1, paramString2, paramString3, paramString4, 1);
-  }
-  
-  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    if (paramInt == 1) {
-      if (QLog.isColorLevel())
+      i = paramString1.indexOf(paramString2 + "=", i + 1);
+      localObject1 = localObject2;
+      if (i != -1)
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("id:");
-        localStringBuilder.append(paramString2);
-        localStringBuilder.append(" \tstep:");
-        localStringBuilder.append(paramString3);
-        localStringBuilder.append(" \tcont:");
-        localStringBuilder.append(paramString4);
-        QLog.d(paramString1, 2, localStringBuilder.toString());
+        int j = paramString1.indexOf("&", paramString2.length() + i + 1);
+        if (j == -1) {
+          break label93;
+        }
+        localObject1 = paramString1.substring(i + paramString2.length() + 1, j);
       }
     }
-    while (paramInt != 2) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id:");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append(" \tstep:");
-    localStringBuilder.append(paramString3);
-    localStringBuilder.append(" \tcont:");
-    localStringBuilder.append(paramString4);
-    QLog.e(paramString1, 1, localStringBuilder.toString());
+    return localObject1;
+    label93:
+    return paramString1.substring(paramString2.length() + i + 1);
   }
   
-  public static void b(Object paramObject, String paramString1, String paramString2)
+  public static final String a(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramObject instanceof ayxl))
+    int i = paramString1.indexOf("?");
+    if (i != -1)
     {
-      paramObject = (ayxl)paramObject;
-      bdxz.b(paramObject.b, true, 1, paramObject.a, paramString1, paramString2, null);
-      return;
+      i = paramString1.indexOf(paramString2 + "=", i + 1);
+      if (i != -1)
+      {
+        int j = paramString1.indexOf("&", paramString2.length() + i + 1);
+        if (j != -1) {
+          return paramString1.substring(0, i) + paramString2 + "=" + paramString3 + paramString1.substring(j);
+        }
+        return paramString1.substring(0, i) + paramString2 + "=" + paramString3;
+      }
+      if (paramString1.lastIndexOf("&") == paramString1.length() - 1) {
+        return paramString1 + paramString2 + "=" + paramString3;
+      }
+      return paramString1 + "&" + paramString2 + "=" + paramString3;
     }
-    if ((paramObject instanceof MessageForPic))
-    {
-      paramObject = (MessageForPic)paramObject;
-      bdxz.b(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2, null);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("step:").append(paramString1);
-    localStringBuilder.append("    \tcontent:").append(paramString2);
-    QLog.e("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    a(paramString1, paramString2, paramString3, paramString4, 2);
+    return paramString1 + "?" + paramString2 + "=" + paramString3;
   }
 }
 

@@ -1,12 +1,22 @@
-public class lfp
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+class lfp
+  extends BroadcastReceiver
 {
-  public byte[] a;
-  public byte[] b;
+  lfp(lfo paramlfo) {}
   
-  public lfp(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = new byte[paramInt1];
-    this.b = new byte[paramInt2];
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE")) {
+      this.a.d(paramContext);
+    }
+    while (!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) {
+      return;
+    }
+    this.a.d(paramContext);
   }
 }
 

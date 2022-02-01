@@ -1,12 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 
-class ajvy
-  implements DialogInterface.OnClickListener
+public class ajvy
+  extends ajwa
 {
-  ajvy(ajvx paramajvx) {}
+  public ajvy(CommonRefreshLayout paramCommonRefreshLayout)
+  {
+    super(paramCommonRefreshLayout);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && ((ajwb.a(CommonRefreshLayout.a(this.a))) || (ajwb.h(CommonRefreshLayout.a(this.a)))))
+    {
+      CommonRefreshLayout.a(this.a).setVisibility(0);
+      ((ajwf)CommonRefreshLayout.a(this.a)).a();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && (ajwb.c(CommonRefreshLayout.a(this.a))))
+    {
+      if (CommonRefreshLayout.a(this.a).getVisibility() != 0) {
+        CommonRefreshLayout.a(this.a).setVisibility(0);
+      }
+      ((ajwf)CommonRefreshLayout.a(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
+    }
+  }
+  
+  public void b()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && (ajwb.e(CommonRefreshLayout.a(this.a)))) {
+      ((ajwf)CommonRefreshLayout.a(this.a)).b();
+    }
+  }
+  
+  public void c()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && (ajwb.b(CommonRefreshLayout.a(this.a))))
+    {
+      if ((CommonRefreshLayout.a(this.a) instanceof ajwe)) {
+        ((ajwe)CommonRefreshLayout.a(this.a)).c();
+      }
+      if (CommonRefreshLayout.a(this.a) != null) {
+        CommonRefreshLayout.a(this.a).a();
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && ((ajwb.a(CommonRefreshLayout.a(this.a))) || (ajwb.h(CommonRefreshLayout.a(this.a))))) {
+      ((ajwf)CommonRefreshLayout.a(this.a)).d();
+    }
+  }
 }
 
 

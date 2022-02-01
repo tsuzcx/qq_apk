@@ -1,17 +1,20 @@
-import android.content.Context;
-import android.view.Window;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
 
 public class mkd
-  extends bkho
+  implements View.OnTouchListener
 {
-  public mkd(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
+  public mkd(VideoControlUI paramVideoControlUI) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramContext);
-    super.getWindow().addFlags(524288);
-    super.getWindow().addFlags(128);
-    super.getWindow().addFlags(1024);
-    super.getWindow().addFlags(2097152);
+    if (this.a.a != null) {
+      return this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 

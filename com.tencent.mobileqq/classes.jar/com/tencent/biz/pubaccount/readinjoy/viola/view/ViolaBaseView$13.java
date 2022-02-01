@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import tsu;
+import tjr;
 
 class ViolaBaseView$13
   implements Runnable

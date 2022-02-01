@@ -1,14 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 class bpqf
-  implements DialogInterface.OnClickListener
+  implements brhk
 {
-  bpqf(bpqd parambpqd) {}
+  bpqf(bpqe parambpqe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    synchronized (bpqe.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(bpqe.a(this.a).id))
+      {
+        bpqe.a(this.a).downloading = true;
+        bpqe.a(this.a, 1.0F * paramInt / 100.0F);
+        bpqe.a(this.a, 1);
+      }
+      return;
+    }
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    synchronized (bpqe.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(bpqe.a(this.a).id))
+      {
+        bpqe.a(this.a).downloading = false;
+        bpqe.a(this.a).usable = paramBoolean;
+      }
+      if (paramBoolean)
+      {
+        if (bpqe.a(this.a).id.equals(paramPtvTemplateInfo.id))
+        {
+          bpqe.a(this.a, 3);
+          bpqe.a(this.a, 1.0F);
+          this.a.b();
+        }
+        return;
+      }
+      this.a.a(4);
+      bpqe.a(this.a, 2);
+    }
   }
 }
 

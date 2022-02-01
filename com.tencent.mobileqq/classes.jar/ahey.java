@@ -1,15 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
-
 class ahey
-  extends voy
+  implements bljb
 {
-  ahey(ahew paramahew) {}
+  ahey(ahex paramahex) {}
   
-  public void a(int paramInt, vou paramvou)
-  {
-    super.a(paramInt, paramvou);
-    QLog.d("QCircleFeedItemBuilder", 1, paramvou.a() + ", \nstate callback:" + paramInt);
-  }
+  public void onDismiss() {}
 }
 
 

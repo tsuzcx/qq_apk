@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
-import bgjw;
+import bhjx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -35,7 +35,7 @@ class ChatSettingForTroop$23
     while (((Iterator)localObject1).hasNext())
     {
       TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject1).next();
-      if (bgjw.d(localTroopMemberInfo.memberuin)) {
+      if (bhjx.d(localTroopMemberInfo.memberuin)) {
         ((ArrayList)localObject2).add(localTroopMemberInfo.memberuin);
       }
     }

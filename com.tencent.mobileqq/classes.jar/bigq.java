@@ -1,28 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
 
-final class bigq
-  implements DialogInterface.OnClickListener
+public class bigq
+  extends EmojiUiPlugin
 {
-  bigq(bigw parambigw, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnActivityCreate()
   {
-    this.jdField_a_of_type_Bigw.a(2);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bigl.a("0X80094F8");
-    }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
-      {
-        bigl.a("0X80094F7");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 3);
-    bigl.a("0X80094F9");
+    this.mActivityType = 2;
+    super.OnActivityCreate();
+  }
+  
+  public void OnActivityPause()
+  {
+    super.OnActivityPause();
+    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
+  }
+  
+  public long getPluginBusiness()
+  {
+    return 8L;
   }
 }
 

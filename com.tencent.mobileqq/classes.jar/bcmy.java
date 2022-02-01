@@ -1,22 +1,16 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import java.util.Comparator;
 
-public class bcmy
-  extends bcnb
+class bcmy
+  implements Comparator<String>
 {
-  public bcmy(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-  }
+  bcmy(bcmx parambcmx) {}
   
-  public void a(Canvas paramCanvas)
+  public int a(String paramString1, String paramString2)
   {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
+    }
+    return paramString2.length() - paramString1.length();
   }
 }
 

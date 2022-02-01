@@ -1,12 +1,12 @@
 package cooperation.hce;
 
-import bldq;
+import bmet;
 import java.util.HashSet;
 
 public class HcePluginManager$1
   extends HashSet<String>
 {
-  public HcePluginManager$1(bldq parambldq)
+  public HcePluginManager$1(bmet parambmet)
   {
     add("A000000632010105");
     add("A000000632010106");

@@ -1,18 +1,27 @@
-import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.RoundImageView;
-
 class aqhk
-  extends arfy
 {
-  public ETTextView a;
-  public RoundImageView a;
+  static final float[] a;
   
-  public aqhk(aqhh paramaqhh, View paramView)
+  static
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131368138));
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364725));
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 8192) {
+        break;
+      }
+      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 

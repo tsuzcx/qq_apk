@@ -1,29 +1,9 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class sgd
-  extends PhoneStateListener
+public abstract interface sgd
 {
-  sgd(sgc paramsgc) {}
-  
-  public void onCallStateChanged(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.c(true);
-      return;
-    case 2: 
-      this.a.c(true);
-      return;
-    }
-    this.a.c();
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, View paramView, int paramInt, long paramLong);
 }
 
 

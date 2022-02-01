@@ -1,36 +1,29 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adub
-  implements View.OnClickListener
+  implements bliz
 {
-  public adub(ChatHistory paramChatHistory) {}
+  public adub(AddRequestActivity paramAddRequestActivity, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.d > 1)
+    switch (paramInt)
     {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839096);
-      ChatHistory localChatHistory = this.a;
-      localChatHistory.d -= 1;
-      if (this.a.d <= 1)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840469);
-      }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Aduc.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      if (bhnv.d(BaseApplication.getContext())) {
+        aber.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131693965, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      }
+    }
   }
 }
 

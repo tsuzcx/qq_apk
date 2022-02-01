@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class benj
-  implements DialogInterface.OnDismissListener
+public abstract interface benj
 {
-  benj(beng parambeng) {}
+  public abstract void a(int paramInt);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(benk parambenk);
 }
 
 

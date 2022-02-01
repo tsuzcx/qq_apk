@@ -16,10 +16,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.AnimationView;
 import feedcloud.FeedCloudMeta.StFeed;
 import qqcircle.QQCircleFeedBase.StPolyLike;
-import vpc;
-import vpd;
-import vpo;
-import vqa;
+import vrl;
+import vrm;
+import vrx;
+import vsj;
 
 public abstract class QCirclePolyBaseLikeView
   extends QCircleBaseWidgetView
@@ -33,8 +33,8 @@ public abstract class QCirclePolyBaseLikeView
   public AnimationView a;
   public FeedCloudMeta.StFeed a;
   public QQCircleFeedBase.StPolyLike a;
-  public vpo a;
-  public vqa a;
+  public vrx a;
+  public vsj a;
   protected TextView b;
   
   public QCirclePolyBaseLikeView(@NonNull Context paramContext, int paramInt)
@@ -46,8 +46,8 @@ public abstract class QCirclePolyBaseLikeView
   {
     if (this.jdField_a_of_type_ComTencentImageURLImageView != null)
     {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(new vpc(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setOnClickListener(new vpd(this));
+      this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(new vrl(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setOnClickListener(new vrm(this));
     }
   }
   
@@ -68,12 +68,12 @@ public abstract class QCirclePolyBaseLikeView
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (paramView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)paramView.findViewById(2131373886));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131373887));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131373883));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373862));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373884));
-      this.b = ((TextView)paramView.findViewById(2131373870));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)paramView.findViewById(2131374020));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131374021));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131374017));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373995));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374018));
+      this.b = ((TextView)paramView.findViewById(2131374003));
     }
   }
   
@@ -84,8 +84,8 @@ public abstract class QCirclePolyBaseLikeView
       this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike = ((QQCircleFeedBase.StPolyLike)paramObject);
       this.jdField_a_of_type_Int = paramInt;
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_ComTencentImageURLImageView.getContext().getResources().getDrawable(2130850664);
-      localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_ComTencentImageURLImageView.getContext().getResources().getDrawable(2130850664);
+      localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_ComTencentImageURLImageView.getContext().getResources().getDrawable(2130850680);
+      localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_ComTencentImageURLImageView.getContext().getResources().getDrawable(2130850680);
       String str = this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyPreviewSource.get();
       paramObject = str;
       if (TextUtils.isEmpty(str)) {
@@ -114,14 +114,14 @@ public abstract class QCirclePolyBaseLikeView
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
   }
   
-  public void setHookListener(vpo paramvpo)
+  public void setHookListener(vrx paramvrx)
   {
-    this.jdField_a_of_type_Vpo = paramvpo;
+    this.jdField_a_of_type_Vrx = paramvrx;
   }
   
-  public void setRequestManager(vqa paramvqa)
+  public void setRequestManager(vsj paramvsj)
   {
-    this.jdField_a_of_type_Vqa = paramvqa;
+    this.jdField_a_of_type_Vsj = paramvsj;
   }
 }
 

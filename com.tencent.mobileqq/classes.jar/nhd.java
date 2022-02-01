@@ -1,40 +1,25 @@
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class nhd
-  implements mzd
+class nhd
+  implements View.OnTouchListener
 {
-  public void a(int paramInt, String paramString1, String paramString2, myc parammyc) {}
+  nhd(nhb paramnhb) {}
   
-  public void a(long paramLong, String paramString1, boolean paramBoolean, String paramString2, int paramInt) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString, int paramInt, myc parammyc) {}
-  
-  public void a(String paramString, myc parammyc) {}
-  
-  public void a(HashMap<String, String> paramHashMap) {}
-  
-  public void a(myc parammyc) {}
-  
-  public void a(myc parammyc, int paramInt) {}
-  
-  public boolean a(int paramInt, String paramString, myc parammyc)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return false;
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
-  
-  public void b(String paramString, myc parammyc) {}
-  
-  public void b(myc parammyc) {}
-  
-  public void c(myc parammyc, int paramInt) {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
 }
 
 

@@ -1,28 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.JNICallCenter.DataPoint;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public final class abgm
-  implements Parcelable.Creator<DataPoint>
+class abgm
+  extends Handler
 {
-  public DataPoint a(Parcel paramParcel)
+  abgm(abgj paramabgj, Looper paramLooper)
   {
-    DataPoint localDataPoint = new DataPoint();
-    localDataPoint.mDin = paramParcel.readLong();
-    localDataPoint.mSendUinType = paramParcel.readInt();
-    localDataPoint.mApiName = paramParcel.readString();
-    localDataPoint.mProperityId = paramParcel.readInt();
-    localDataPoint.mValueType = paramParcel.readString();
-    localDataPoint.mValue = paramParcel.readString();
-    localDataPoint.mRetCode = paramParcel.readInt();
-    localDataPoint.mErrMsg = paramParcel.readString();
-    localDataPoint.mSeq = paramParcel.readString();
-    return localDataPoint;
+    super(paramLooper);
   }
   
-  public DataPoint[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new DataPoint[paramInt];
+    if (!(paramMessage.obj instanceof bisp)) {}
+    while (paramMessage.what != 204) {
+      return;
+    }
+    this.a.a((bisp)paramMessage.obj);
   }
 }
 

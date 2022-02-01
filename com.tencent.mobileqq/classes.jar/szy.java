@@ -1,25 +1,15 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class szy
-  implements tal
+  extends AnimatorListenerAdapter
 {
-  szy(szv paramszv) {}
+  szy(szw paramszw, int paramInt) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ArticleInfo localArticleInfo = paramProteusItemData.b;
-    FastWebArticleInfo localFastWebArticleInfo = paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo;
-    String str = paramViewBase.getEventAttachedData();
-    tbc.b(localArticleInfo, localFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    tbc.a(localArticleInfo, localFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    if (!TextUtils.isEmpty(str)) {
-      pha.d(paramContext, str);
-    }
+    this.jdField_a_of_type_Szw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Szw.jdField_a_of_type_Float = 0.0F;
   }
 }
 

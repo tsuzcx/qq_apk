@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import ujv;
-import ujz;
-import ukb;
+import ukp;
+import ukx;
+import ukz;
 
 public class WSPlayerManager$MediaPlayListenerAdapterImpl$4
   implements Runnable
 {
-  public WSPlayerManager$MediaPlayListenerAdapterImpl$4(ujz paramujz, ukb paramukb) {}
+  public WSPlayerManager$MediaPlayListenerAdapterImpl$4(ukx paramukx, ukz paramukz) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ukb != null) && (this.jdField_a_of_type_Ukb.a != null)) {
-      this.jdField_a_of_type_Ukb.a.i(this.jdField_a_of_type_Ukb);
+    if ((this.jdField_a_of_type_Ukz != null) && (this.jdField_a_of_type_Ukz.a != null)) {
+      this.jdField_a_of_type_Ukz.a.i(this.jdField_a_of_type_Ukz);
     }
   }
 }

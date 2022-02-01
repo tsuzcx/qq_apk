@@ -1,18 +1,773 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMBeautyItem;
+import android.content.Context;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.v4.view.accessibility.AccessibilityEventCompat;
+import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Locale;
 
-public final class bolx
-  implements Parcelable.Creator<QIMBeautyItem>
+public class bolx
+  extends RecyclerView.LayoutManager
 {
-  public QIMBeautyItem a(Parcel paramParcel)
+  protected int a;
+  private aazw jdField_a_of_type_Aazw;
+  private abab jdField_a_of_type_Abab;
+  private Context jdField_a_of_type_AndroidContentContext;
+  protected Point a;
+  protected SparseArray<View> a;
+  @NonNull
+  private final boma jdField_a_of_type_Boma;
+  private bomc jdField_a_of_type_Bomc;
+  private bomm jdField_a_of_type_Bomm;
+  protected boolean a;
+  protected int b;
+  protected Point b;
+  private boolean b;
+  protected int c;
+  protected Point c;
+  private boolean c;
+  protected int d;
+  protected int e;
+  protected int f;
+  protected int g;
+  protected int h;
+  protected int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private int n;
+  private int o;
+  
+  public bolx(@NonNull Context paramContext, @NonNull boma paramboma, @NonNull boml paramboml)
   {
-    return new QIMBeautyItem(paramParcel);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.j = 100;
+    this.i = -1;
+    this.h = -1;
+    this.m = 2100;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_AndroidGraphicsPoint = new Point();
+    this.jdField_c_of_type_AndroidGraphicsPoint = new Point();
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point();
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_Boma = paramboma;
+    this.jdField_a_of_type_Bomm = paramboml.a();
+    this.jdField_a_of_type_Aazw = new aazw(this);
+    this.l = 1;
   }
   
-  public QIMBeautyItem[] a(int paramInt)
+  private float a(View paramView, int paramInt)
   {
-    return new QIMBeautyItem[paramInt];
+    return Math.min(Math.max(-1.0F, this.jdField_a_of_type_Bomm.a(this.jdField_b_of_type_AndroidGraphicsPoint, getDecoratedLeft(paramView) + this.jdField_a_of_type_Int, getDecoratedTop(paramView) + this.jdField_b_of_type_Int) / paramInt), 1.0F);
+  }
+  
+  private int a(int paramInt)
+  {
+    int i2 = this.jdField_a_of_type_Aazw.b();
+    int i1;
+    if ((this.h != 0) && (paramInt < 0)) {
+      i1 = 0;
+    }
+    do
+    {
+      do
+      {
+        return i1;
+        i1 = paramInt;
+      } while (this.h == i2 - 1);
+      i1 = paramInt;
+    } while (paramInt < i2);
+    return i2 - 1;
+  }
+  
+  private int a(RecyclerView.State paramState)
+  {
+    int i1 = b(paramState);
+    int i2 = (int)(this.f / this.d * i1);
+    return i1 * this.h + i2;
+  }
+  
+  private void a(RecyclerView.Recycler paramRecycler, boju paramboju, int paramInt)
+  {
+    int i4 = paramboju.a(1);
+    int i1;
+    int i2;
+    if ((this.i == -1) || (!paramboju.a(this.i - this.h)))
+    {
+      i1 = 1;
+      this.jdField_a_of_type_AndroidGraphicsPoint.set(this.jdField_c_of_type_AndroidGraphicsPoint.x, this.jdField_c_of_type_AndroidGraphicsPoint.y);
+      i2 = this.h;
+      int i3 = i2 + i4;
+      i2 = i1;
+      i1 = i3;
+      label76:
+      if (!a(i1)) {
+        return;
+      }
+      if (i1 == this.i) {
+        i2 = 1;
+      }
+      this.jdField_a_of_type_Bomm.a(paramboju, this.d, this.jdField_a_of_type_AndroidGraphicsPoint);
+      if (!a(this.jdField_a_of_type_AndroidGraphicsPoint, paramInt)) {
+        break label154;
+      }
+      a(paramRecycler, i1, this.jdField_a_of_type_AndroidGraphicsPoint);
+    }
+    label154:
+    while (i2 == 0)
+    {
+      i1 += i4;
+      break label76;
+      i1 = 0;
+      break;
+    }
+  }
+  
+  private void a(RecyclerView.State paramState, int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= paramState.getItemCount())) {
+      throw new IllegalArgumentException(String.format(Locale.US, "target position out of bounds: position=%d, itemCount=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramState.getItemCount()) }));
+    }
+  }
+  
+  private boolean a()
+  {
+    if (this.i != -1)
+    {
+      this.h = this.i;
+      this.i = -1;
+      this.g = 0;
+      this.f = 0;
+      return true;
+    }
+    boju localboju = boju.a(this.f);
+    if (b())
+    {
+      int i1 = Math.abs(this.f);
+      int i2 = this.d;
+      int i3 = Math.abs(this.f) / this.d;
+      if (i1 % i2 < this.d * 0.4F)
+      {
+        i1 = this.h + localboju.a(i3);
+        if (i1 >= 0) {
+          break label133;
+        }
+        i2 = 0;
+      }
+      for (;;)
+      {
+        f(i2);
+        return false;
+        i1 = this.h + localboju.a(i3 + 1);
+        break;
+        label133:
+        i2 = i1;
+        if (i1 > getItemCount() - 1) {
+          i2 = getItemCount() - 1;
+        }
+      }
+    }
+    this.g = (-this.f);
+    if (this.g != 0)
+    {
+      e();
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt >= 0) && (paramInt < this.jdField_a_of_type_Aazw.b());
+  }
+  
+  private boolean a(Point paramPoint, int paramInt)
+  {
+    return this.jdField_a_of_type_Bomm.a(paramPoint, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_c_of_type_Int);
+  }
+  
+  private int b(RecyclerView.State paramState)
+  {
+    if (getItemCount() == 0) {
+      return 0;
+    }
+    return (int)(c(paramState) / getItemCount());
+  }
+  
+  private boolean b()
+  {
+    return Math.abs(this.f) >= this.d * 0.4F;
+  }
+  
+  private int c(RecyclerView.State paramState)
+  {
+    if (getItemCount() == 0) {
+      return 0;
+    }
+    return this.d * (getItemCount() - 1);
+  }
+  
+  private void c(RecyclerView.State paramState)
+  {
+    if ((this.h == -1) || (this.h >= paramState.getItemCount())) {
+      this.h = 0;
+    }
+  }
+  
+  private void d()
+  {
+    this.i = -1;
+    this.g = 0;
+  }
+  
+  private void e()
+  {
+    if (this.h == -1) {
+      return;
+    }
+    boly localboly = new boly(this, this.jdField_a_of_type_AndroidContentContext);
+    localboly.setTargetPosition(this.h);
+    this.jdField_a_of_type_Aazw.a(localboly);
+  }
+  
+  private void e(int paramInt)
+  {
+    if (this.h != paramInt)
+    {
+      this.h = paramInt;
+      this.jdField_b_of_type_Boolean = true;
+    }
+  }
+  
+  private void f()
+  {
+    if (this.i != -1) {}
+    for (float f1 = Math.abs(this.f + this.g);; f1 = this.d)
+    {
+      f1 = -Math.min(Math.max(-1.0F, this.f / f1), 1.0F);
+      this.jdField_a_of_type_Boma.a(f1);
+      return;
+    }
+  }
+  
+  private void f(int paramInt)
+  {
+    this.g = (-this.f);
+    boju localboju = boju.a(paramInt - this.h);
+    int i1 = Math.abs(paramInt - this.h);
+    int i2 = this.d;
+    int i3 = this.g;
+    this.g = (localboju.a(i1 * i2) + i3);
+    this.i = paramInt;
+    e();
+  }
+  
+  public int a()
+  {
+    if (this.f == 0) {
+      return this.h;
+    }
+    if (this.i != -1) {
+      return this.i;
+    }
+    return this.h + boju.a(this.f).a(1);
+  }
+  
+  protected int a(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    if (this.jdField_a_of_type_Aazw.a() == 0) {
+      return 0;
+    }
+    this.f += paramInt;
+    if (this.g != 0) {
+      this.g -= paramInt;
+    }
+    this.jdField_a_of_type_Bomm.a(-paramInt, this.jdField_a_of_type_Aazw);
+    if (this.jdField_a_of_type_Bomm.a(this)) {
+      b(paramRecycler);
+    }
+    f();
+    b();
+    return paramInt;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_Aazw.a(0);
+  }
+  
+  protected void a()
+  {
+    int i3 = 0;
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    int i1 = 0;
+    int i2;
+    for (;;)
+    {
+      i2 = i3;
+      if (i1 >= this.jdField_a_of_type_Aazw.a()) {
+        break;
+      }
+      View localView = this.jdField_a_of_type_Aazw.a(i1);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Aazw.a(localView), localView);
+      i1 += 1;
+    }
+    while (i2 < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      this.jdField_a_of_type_Aazw.b((View)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i2));
+      i2 += 1;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.j = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i1 = 1;
+    int i2 = this.jdField_a_of_type_Bomm.c(paramInt1, paramInt2);
+    if (this.f * i2 >= 0) {}
+    for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0)
+    {
+      c();
+      return;
+    }
+    paramInt2 = i1;
+    if (this.jdField_c_of_type_Boolean) {
+      paramInt2 = Math.abs(i2 / this.m);
+    }
+    boju localboju = boju.a(this.f);
+    i1 = this.h;
+    paramInt1 = i1;
+    int i4;
+    if (b())
+    {
+      paramInt1 = i1;
+      if (this.d != 0)
+      {
+        paramInt1 = Math.abs(this.f);
+        int i3 = this.d;
+        i4 = Math.abs(this.f) / this.d;
+        if (paramInt1 % i3 >= this.d * 0.4F) {
+          break label178;
+        }
+      }
+    }
+    label178:
+    for (paramInt1 = i1 + localboju.a(i4);; paramInt1 = i1 + localboju.a(i4 + 1))
+    {
+      paramInt1 = a(boju.a(i2).a(paramInt2) + paramInt1);
+      if (!a(paramInt1)) {
+        break;
+      }
+      f(paramInt1);
+      return;
+    }
+    c();
+  }
+  
+  public void a(abab paramabab)
+  {
+    this.jdField_a_of_type_Abab = paramabab;
+  }
+  
+  protected void a(RecyclerView.Recycler paramRecycler)
+  {
+    View localView = this.jdField_a_of_type_Aazw.a(0, paramRecycler);
+    int i1 = this.jdField_a_of_type_Aazw.b(localView);
+    int i2 = this.jdField_a_of_type_Aazw.c(localView);
+    this.jdField_a_of_type_Int = (i1 / 2);
+    this.jdField_b_of_type_Int = (i2 / 2);
+    this.d = this.jdField_a_of_type_Bomm.b(i1, i2);
+    this.jdField_c_of_type_Int = (this.d * this.k);
+    this.jdField_a_of_type_Aazw.a(localView, paramRecycler);
+  }
+  
+  protected void a(RecyclerView.Recycler paramRecycler, int paramInt, Point paramPoint)
+  {
+    if ((paramInt < 0) || (paramInt >= getItemCount())) {
+      return;
+    }
+    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localView == null)
+    {
+      paramRecycler = this.jdField_a_of_type_Aazw.a(paramInt, paramRecycler);
+      this.jdField_a_of_type_Aazw.a(paramRecycler, paramPoint.x - this.jdField_a_of_type_Int, paramPoint.y - this.jdField_b_of_type_Int, paramPoint.x + this.jdField_a_of_type_Int, paramPoint.y + this.jdField_b_of_type_Int);
+      return;
+    }
+    this.jdField_a_of_type_Aazw.a(localView);
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+  }
+  
+  public void a(RecyclerView.State paramState)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boma.c();
+      this.jdField_a_of_type_Boolean = false;
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Boma.d();
+      this.jdField_b_of_type_Boolean = false;
+    } while (this.jdField_a_of_type_Bomc == null);
+    this.jdField_a_of_type_Bomc.l();
+  }
+  
+  public void a(bomc parambomc)
+  {
+    this.jdField_a_of_type_Bomc = parambomc;
+  }
+  
+  public void a(boml paramboml)
+  {
+    this.jdField_a_of_type_Bomm = paramboml.a();
+    this.jdField_a_of_type_Aazw.b();
+    this.jdField_a_of_type_Aazw.a();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.h;
+  }
+  
+  public View b()
+  {
+    return this.jdField_a_of_type_Aazw.a(this.jdField_a_of_type_Aazw.a() - 1);
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Abab != null)
+    {
+      int i2 = this.d;
+      int i3 = this.l;
+      int i1 = 0;
+      while (i1 < this.jdField_a_of_type_Aazw.a())
+      {
+        View localView = this.jdField_a_of_type_Aazw.a(i1);
+        float f1 = a(localView, i3 * i2);
+        this.jdField_a_of_type_Abab.a(localView, f1);
+        i1 += 1;
+      }
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.k = paramInt;
+    this.jdField_c_of_type_Int = (this.d * paramInt);
+    this.jdField_a_of_type_Aazw.a();
+  }
+  
+  protected void b(RecyclerView.Recycler paramRecycler)
+  {
+    a();
+    this.jdField_a_of_type_Bomm.a(this.jdField_b_of_type_AndroidGraphicsPoint, this.f, this.jdField_c_of_type_AndroidGraphicsPoint);
+    int i1 = this.jdField_a_of_type_Bomm.a(this.jdField_a_of_type_Aazw.c(), this.jdField_a_of_type_Aazw.d());
+    if (a(this.jdField_c_of_type_AndroidGraphicsPoint, i1)) {
+      a(paramRecycler, this.h, this.jdField_c_of_type_AndroidGraphicsPoint);
+    }
+    a(paramRecycler, new bojw(), i1);
+    a(paramRecycler, new bojv(), i1);
+    c(paramRecycler);
+  }
+  
+  protected void b(RecyclerView.State paramState)
+  {
+    if ((!paramState.isMeasuring()) && ((this.jdField_a_of_type_Aazw.c() != this.n) || (this.jdField_a_of_type_Aazw.d() != this.o))) {}
+    for (int i1 = 1;; i1 = 0)
+    {
+      if (i1 != 0)
+      {
+        this.n = this.jdField_a_of_type_Aazw.c();
+        this.o = this.jdField_a_of_type_Aazw.d();
+        this.jdField_a_of_type_Aazw.b();
+      }
+      this.jdField_b_of_type_AndroidGraphicsPoint.set(this.jdField_a_of_type_Aazw.c() / 2, this.jdField_a_of_type_Aazw.d() / 2);
+      return;
+    }
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public void c()
+  {
+    this.g = (-this.f);
+    if (this.g != 0) {
+      e();
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.l = paramInt;
+    b();
+  }
+  
+  protected void c(RecyclerView.Recycler paramRecycler)
+  {
+    int i1 = 0;
+    while (i1 < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i1);
+      this.jdField_a_of_type_Aazw.b(localView, paramRecycler);
+      i1 += 1;
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+  }
+  
+  public boolean canScrollHorizontally()
+  {
+    return this.jdField_a_of_type_Bomm.b();
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return this.jdField_a_of_type_Bomm.a();
+  }
+  
+  public int computeHorizontalScrollExtent(RecyclerView.State paramState)
+  {
+    return b(paramState);
+  }
+  
+  public int computeHorizontalScrollOffset(RecyclerView.State paramState)
+  {
+    return a(paramState);
+  }
+  
+  public int computeHorizontalScrollRange(RecyclerView.State paramState)
+  {
+    return c(paramState);
+  }
+  
+  public int computeVerticalScrollExtent(RecyclerView.State paramState)
+  {
+    return b(paramState);
+  }
+  
+  public int computeVerticalScrollOffset(RecyclerView.State paramState)
+  {
+    return a(paramState);
+  }
+  
+  public int computeVerticalScrollRange(RecyclerView.State paramState)
+  {
+    return c(paramState);
+  }
+  
+  public void d(int paramInt)
+  {
+    this.m = paramInt;
+  }
+  
+  public RecyclerView.LayoutParams generateDefaultLayoutParams()
+  {
+    return new RecyclerView.LayoutParams(-2, -2);
+  }
+  
+  public boolean isAutoMeasureEnabled()
+  {
+    return true;
+  }
+  
+  public void onAdapterChanged(RecyclerView.Adapter paramAdapter1, RecyclerView.Adapter paramAdapter2)
+  {
+    this.i = -1;
+    this.g = 0;
+    this.f = 0;
+    if ((paramAdapter2 instanceof bolz)) {}
+    for (this.h = ((bolz)paramAdapter2).a();; this.h = 0)
+    {
+      this.jdField_a_of_type_Aazw.b();
+      return;
+    }
+  }
+  
+  public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  {
+    super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
+    if (this.jdField_a_of_type_Aazw.a() > 0)
+    {
+      paramAccessibilityEvent = AccessibilityEventCompat.asRecord(paramAccessibilityEvent);
+      paramAccessibilityEvent.setFromIndex(getPosition(a()));
+      paramAccessibilityEvent.setToIndex(getPosition(b()));
+    }
+  }
+  
+  public void onItemsAdded(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    int i1 = this.h;
+    if (this.h == -1) {
+      i1 = 0;
+    }
+    for (;;)
+    {
+      e(i1);
+      return;
+      if (this.h >= paramInt1) {
+        i1 = Math.min(this.h + paramInt2, this.jdField_a_of_type_Aazw.b() - 1);
+      }
+    }
+  }
+  
+  public void onItemsChanged(RecyclerView paramRecyclerView)
+  {
+    this.h = Math.min(Math.max(0, this.h), this.jdField_a_of_type_Aazw.b() - 1);
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onItemsRemoved(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    int i1 = -1;
+    int i2 = this.h;
+    if (this.jdField_a_of_type_Aazw.b() == 0) {
+      paramInt1 = i1;
+    }
+    for (;;)
+    {
+      e(paramInt1);
+      return;
+      if (this.h >= paramInt1)
+      {
+        if (this.h < paramInt1 + paramInt2) {
+          this.h = -1;
+        }
+        paramInt1 = Math.max(0, this.h - paramInt2);
+      }
+      else
+      {
+        paramInt1 = i2;
+      }
+    }
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    boolean bool = false;
+    if (paramState.getItemCount() == 0)
+    {
+      this.jdField_a_of_type_Aazw.b(paramRecycler);
+      this.i = -1;
+      this.h = -1;
+      this.g = 0;
+      this.f = 0;
+      return;
+    }
+    c(paramState);
+    b(paramState);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Aazw.a() == 0) {
+        bool = true;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+      if (this.jdField_a_of_type_Boolean) {
+        a(paramRecycler);
+      }
+    }
+    this.jdField_a_of_type_Aazw.a(paramRecycler);
+    b(paramRecycler);
+    b();
+  }
+  
+  public void onRestoreInstanceState(Parcelable paramParcelable)
+  {
+    this.h = ((Bundle)paramParcelable).getInt("extra_position");
+  }
+  
+  public Parcelable onSaveInstanceState()
+  {
+    Bundle localBundle = new Bundle();
+    if (this.i != -1) {
+      this.h = this.i;
+    }
+    localBundle.putInt("extra_position", this.h);
+    return localBundle;
+  }
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if ((this.e == 0) && (this.e != paramInt)) {
+      this.jdField_a_of_type_Boma.a();
+    }
+    if (paramInt == 0) {
+      if (a()) {
+        this.jdField_a_of_type_Boma.b();
+      }
+    }
+    for (;;)
+    {
+      this.e = paramInt;
+      return;
+      if (paramInt == 1) {
+        d();
+      }
+    }
+  }
+  
+  public int scrollHorizontallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    return a(paramInt, paramRecycler);
+  }
+  
+  public void scrollToPosition(int paramInt)
+  {
+    if (this.h == paramInt) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
+      return;
+      this.h = paramInt;
+      this.jdField_a_of_type_Aazw.a();
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    return a(paramInt, paramRecycler);
+  }
+  
+  public void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.State paramState, int paramInt)
+  {
+    if (this.i != -1) {
+      return;
+    }
+    a(paramState, paramInt);
+    if (this.h == -1)
+    {
+      this.h = paramInt;
+      return;
+    }
+    f(paramInt);
   }
 }
 

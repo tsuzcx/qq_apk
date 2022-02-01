@@ -1,31 +1,83 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bdmm
-  implements bihh
 {
-  public bdmm(TeamWorkTransparentShareActivity paramTeamWorkTransparentShareActivity, String paramString) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public static int a(Context paramContext, String paramString)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      zvc.a(1, 2131718007);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkTransparentShareActivity.a);
-      return;
-      zvc.a(2, 2131718025);
-    }
+    return a(paramContext, paramString, "Click_grp_asst");
+  }
+  
+  public static int a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramString1 = paramString1 + paramString2;
+    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
+    paramContext.putInt(paramString + "Click_grp_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_msg", 0);
+    paramContext.putInt(paramString + "grp_msg_equ", 0);
+    paramContext.putInt(paramString + "grp_msg_dec", 0);
+    paramContext.putInt(paramString + "grp_msg_inc", 0);
+    paramContext.commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramString1 = paramString1 + paramString2;
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
+    int i = paramContext.getInt(paramString1, 0);
+    paramContext.edit().putInt(paramString1, i + 1).commit();
+  }
+  
+  public static int b(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_setting_asst");
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_setting_asst");
+  }
+  
+  public static int c(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_setting_msg");
+  }
+  
+  public static void c(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_equ");
+  }
+  
+  public static int d(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_equ");
+  }
+  
+  public static void d(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static int e(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static void e(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_inc");
+  }
+  
+  public static int f(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_inc");
   }
 }
 

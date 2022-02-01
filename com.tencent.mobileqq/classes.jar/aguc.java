@@ -1,98 +1,51 @@
 import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aguc
-  extends bgzm
+public class aguc
+  implements agvc
 {
-  aguc(agtx paramagtx) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
+  public aguc(BaseChatPie paramBaseChatPie)
   {
-    Object localObject = (Bundle)paramObject;
-    if (1 != ((Bundle)localObject).getInt("fromType")) {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      anqy.a(false, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, new agud(this));
+    }
+    ((amst)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211)).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aggs);
+    anll.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ((amst)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211)).a(1, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 13: 
+    default: 
       return;
     }
-    int j = ((Bundle)localObject).getInt("id");
-    int i = ((Bundle)localObject).getInt("feeType");
-    String str1 = "free";
-    if (4 == i)
-    {
-      str1 = "vip";
-      label48:
-      if (!paramBoolean) {
-        break label161;
-      }
-      paramObject = ((Bundle)localObject).getString("name");
-      localObject = ((Bundle)localObject).getString("minVersion");
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 126, j, paramObject, (String)localObject);
-      if (true == aheh.a) {
-        aheh.a = false;
-      }
-      label107:
-      if (!paramBoolean) {
-        break label422;
-      }
-    }
-    label161:
-    label420:
-    label422:
-    for (i = 0;; i = 1)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (5 != i) {
-        break label48;
-      }
-      str1 = "svip";
-      break label48;
-      long l = ((Bundle)localObject).getLong("result");
-      localObject = ((Bundle)localObject).getString("msg");
-      paramObject = (Bundle)paramObject;
-      this.a.c = paramObject.getInt("id", 0);
-      String str2 = anni.a(2131704063);
-      if (l == 0L)
-      {
-        this.a.d = 1;
-        if (true != aheh.a) {
-          break;
-        }
-        aheh.a = false;
-        return;
-      }
-      if (l == 4002L)
-      {
-        this.a.d = 2;
-        paramObject = anni.a(2131704068);
-        localObject = str2;
-      }
-      for (;;)
-      {
-        if (l == 0L) {
-          break label420;
-        }
-        aheh.a(this.a.b, (Activity)this.a.jdField_a_of_type_AndroidContentContext, paramObject, (String)localObject, this.a.c, this.a.d);
-        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-        break;
-        if (l == 5002L)
-        {
-          this.a.d = 4;
-          paramObject = anni.a(2131704067);
-          localObject = str2;
-        }
-        else
-        {
-          this.a.d = 1;
-          str2 = anni.a(2131704066);
-          QLog.e("GivingHeart", 1, "vas poke auth fail, result: " + l);
-          paramObject = localObject;
-          localObject = str2;
-        }
-      }
-      break label107;
-    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13, 7 };
   }
 }
 

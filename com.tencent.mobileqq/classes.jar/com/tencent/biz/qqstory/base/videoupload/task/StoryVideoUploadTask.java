@@ -17,48 +17,48 @@ import java.io.File;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
-import wes;
-import wik;
-import wjf;
-import wjh;
-import wji;
-import wjr;
-import wjs;
-import wjt;
-import wju;
-import wjv;
-import wjw;
-import wjx;
-import wjz;
-import wlb;
-import wqv;
-import wqw;
-import wrb;
-import wzw;
-import xfe;
-import yqp;
-import yqu;
-import zkh;
-import zkr;
-import zmw;
+import win;
+import wmf;
+import wna;
+import wnc;
+import wnd;
+import wnm;
+import wnn;
+import wno;
+import wnp;
+import wnq;
+import wnr;
+import wns;
+import wnu;
+import wow;
+import wuq;
+import wur;
+import wuw;
+import xdr;
+import xiz;
+import yuk;
+import yup;
+import zoc;
+import zom;
+import zqr;
 
 @TargetApi(14)
 public class StoryVideoUploadTask
-  extends BasePublishTask<wjr>
+  extends BasePublishTask<wnm>
 {
   private AtomicInteger a;
   
-  public StoryVideoUploadTask(wjr paramwjr)
+  public StoryVideoUploadTask(wnm paramwnm)
   {
-    super(paramwjr);
+    super(paramwnm);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
     long l = SystemClock.elapsedRealtime();
-    Object localObject1 = paramwjr.a();
+    Object localObject1 = paramwnm.a();
     boolean bool;
     if ((!TextUtils.isEmpty(((PublishVideoEntry)localObject1).doodleRawPath)) && (TextUtils.isEmpty(((PublishVideoEntry)localObject1).doodlePath))) {
-      if (zkh.a(((PublishVideoEntry)localObject1).doodleRawPath))
+      if (zoc.a(((PublishVideoEntry)localObject1).doodleRawPath))
       {
-        paramwjr.jdField_d_of_type_JavaLangString = ((PublishVideoEntry)localObject1).doodleRawPath;
+        paramwnm.jdField_d_of_type_JavaLangString = ((PublishVideoEntry)localObject1).doodleRawPath;
         ((PublishVideoEntry)localObject1).getBooleanExtra("is_hw_encode", false);
         bool = ((PublishVideoEntry)localObject1).isLocalPublish;
         if (((PublishVideoEntry)localObject1).businessId == 1) {}
@@ -76,62 +76,62 @@ public class StoryVideoUploadTask
       Object localObject2 = QQStoryContext.a().a().createEntityManager();
       ((PublishVideoEntry)localObject1).setStatus(1000);
       ((EntityManager)localObject2).persistOrReplace((Entity)localObject1);
-      yqp.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "compress doodle png take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - l));
+      yuk.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "compress doodle png take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - l));
       try
       {
         for (;;)
         {
-          if (wjz.a(2131099649).booleanValue()) {
-            a(paramwjr);
+          if (wnu.a(2131099649).booleanValue()) {
+            a(paramwnm);
           }
-          localObject1 = paramwjr.a().videoUploadTempDir;
+          localObject1 = paramwnm.a().videoUploadTempDir;
           if (localObject1 != null) {
-            zkr.a((String)localObject1);
+            zom.a((String)localObject1);
           }
-          yqp.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "detail info:%s", new Object[] { paramwjr.a() });
-          if (!TextUtils.isEmpty(paramwjr.jdField_b_of_type_JavaLangString)) {
-            yqp.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "video local thumbnail file exist %b, %s", new Object[] { Boolean.valueOf(zkr.b(paramwjr.jdField_b_of_type_JavaLangString)), paramwjr.jdField_b_of_type_JavaLangString });
+          yuk.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "detail info:%s", new Object[] { paramwnm.a() });
+          if (!TextUtils.isEmpty(paramwnm.jdField_b_of_type_JavaLangString)) {
+            yuk.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "video local thumbnail file exist %b, %s", new Object[] { Boolean.valueOf(zom.b(paramwnm.jdField_b_of_type_JavaLangString)), paramwnm.jdField_b_of_type_JavaLangString });
           }
-          localObject1 = paramwjr.a().backgroundMusicPath;
+          localObject1 = paramwnm.a().backgroundMusicPath;
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            yqp.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "video local bg music file exist %b, %s", new Object[] { Boolean.valueOf(zkr.b((String)localObject1)), localObject1 });
+            yuk.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "video local bg music file exist %b, %s", new Object[] { Boolean.valueOf(zom.b((String)localObject1)), localObject1 });
           }
-          paramwjr.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          wik.a().a(((wjr)this.jdField_a_of_type_Wjp).a());
-          if ((TextUtils.isEmpty(paramwjr.jdField_e_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramwjr.jdField_k_of_type_JavaLangString))) {
+          paramwnm.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+          wmf.a().a(((wnm)this.jdField_a_of_type_Wnk).a());
+          if ((TextUtils.isEmpty(paramwnm.jdField_e_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramwnm.jdField_k_of_type_JavaLangString))) {
             break label789;
           }
-          localObject1 = new wjf(true);
-          ((wjf)localObject1).jdField_a_of_type_JavaLangString = paramwjr.jdField_e_of_type_JavaLangString;
-          ((wjf)localObject1).a(new wjs(this, paramwjr));
-          paramwjr.jdField_a_of_type_JavaUtilList.add(localObject1);
-          if ((TextUtils.isEmpty(paramwjr.jdField_f_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramwjr.jdField_l_of_type_JavaLangString))) {
+          localObject1 = new wna(true);
+          ((wna)localObject1).jdField_a_of_type_JavaLangString = paramwnm.jdField_e_of_type_JavaLangString;
+          ((wna)localObject1).a(new wnn(this, paramwnm));
+          paramwnm.jdField_a_of_type_JavaUtilList.add(localObject1);
+          if ((TextUtils.isEmpty(paramwnm.jdField_f_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramwnm.jdField_l_of_type_JavaLangString))) {
             break label800;
           }
-          localObject1 = new wjf(true);
-          ((wjf)localObject1).jdField_a_of_type_JavaLangString = paramwjr.jdField_f_of_type_JavaLangString;
-          ((wjf)localObject1).a(new wjt(this, paramwjr));
-          paramwjr.jdField_a_of_type_JavaUtilList.add(localObject1);
-          if (!TextUtils.isEmpty(((wjr)this.jdField_a_of_type_Wjp).jdField_g_of_type_JavaLangString)) {
+          localObject1 = new wna(true);
+          ((wna)localObject1).jdField_a_of_type_JavaLangString = paramwnm.jdField_f_of_type_JavaLangString;
+          ((wna)localObject1).a(new wno(this, paramwnm));
+          paramwnm.jdField_a_of_type_JavaUtilList.add(localObject1);
+          if (!TextUtils.isEmpty(((wnm)this.jdField_a_of_type_Wnk).jdField_g_of_type_JavaLangString)) {
             break label811;
           }
-          localObject1 = new wji(((wjr)this.jdField_a_of_type_Wjp).a(), ((wjr)this.jdField_a_of_type_Wjp).jdField_a_of_type_JavaLangString);
-          ((wji)localObject1).a(new wju(this));
-          paramwjr.jdField_a_of_type_JavaUtilList.add(localObject1);
-          if ((TextUtils.isEmpty(((wjr)this.jdField_a_of_type_Wjp).jdField_j_of_type_JavaLangString)) && (!TextUtils.isEmpty(((wjr)this.jdField_a_of_type_Wjp).jdField_b_of_type_JavaLangString)))
+          localObject1 = new wnd(((wnm)this.jdField_a_of_type_Wnk).a(), ((wnm)this.jdField_a_of_type_Wnk).jdField_a_of_type_JavaLangString);
+          ((wnd)localObject1).a(new wnp(this));
+          paramwnm.jdField_a_of_type_JavaUtilList.add(localObject1);
+          if ((TextUtils.isEmpty(((wnm)this.jdField_a_of_type_Wnk).jdField_j_of_type_JavaLangString)) && (!TextUtils.isEmpty(((wnm)this.jdField_a_of_type_Wnk).jdField_b_of_type_JavaLangString)))
           {
-            localObject1 = new wjf(false);
-            ((wjf)localObject1).jdField_a_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).jdField_b_of_type_JavaLangString;
-            ((wjf)localObject1).a(new wjv(this));
-            paramwjr.jdField_a_of_type_JavaUtilList.add(localObject1);
+            localObject1 = new wna(false);
+            ((wna)localObject1).jdField_a_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).jdField_b_of_type_JavaLangString;
+            ((wna)localObject1).a(new wnq(this));
+            paramwnm.jdField_a_of_type_JavaUtilList.add(localObject1);
           }
-          localObject1 = ((wjr)this.jdField_a_of_type_Wjp).jdField_a_of_type_Wrb;
-          if ((localObject1 != null) && (((wrb)localObject1).jdField_a_of_type_Int == 1) && (((wrb)localObject1).jdField_b_of_type_Int != 2))
+          localObject1 = ((wnm)this.jdField_a_of_type_Wnk).jdField_a_of_type_Wuw;
+          if ((localObject1 != null) && (((wuw)localObject1).jdField_a_of_type_Int == 1) && (((wuw)localObject1).jdField_b_of_type_Int != 2))
           {
-            localObject2 = new wjh(((wrb)localObject1).jdField_a_of_type_JavaLangString);
-            ((wrb)localObject1).jdField_b_of_type_Int = 1;
-            ((wjh)localObject2).a(new wjw(this, (wrb)localObject1, (wjh)localObject2));
-            paramwjr.jdField_a_of_type_JavaUtilList.add(localObject2);
+            localObject2 = new wnc(((wuw)localObject1).jdField_a_of_type_JavaLangString);
+            ((wuw)localObject1).jdField_b_of_type_Int = 1;
+            ((wnc)localObject2).a(new wnr(this, (wuw)localObject1, (wnc)localObject2));
+            paramwnm.jdField_a_of_type_JavaUtilList.add(localObject2);
           }
           return;
           label705:
@@ -151,16 +151,16 @@ public class StoryVideoUploadTask
       {
         for (;;)
         {
-          yqp.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "save file to camera fail", localOutOfMemoryError);
+          yuk.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "save file to camera fail", localOutOfMemoryError);
           continue;
           label789:
-          yqp.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "poll image had uploaded or null");
+          yuk.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "poll image had uploaded or null");
           continue;
           label800:
-          yqp.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "interact image had uploaded or null");
+          yuk.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "interact image had uploaded or null");
           continue;
           label811:
-          yqp.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "video had uploaded");
+          yuk.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "video had uploaded");
         }
       }
     }
@@ -168,7 +168,7 @@ public class StoryVideoUploadTask
   
   public static long a(String paramString)
   {
-    if (!zkr.b(paramString)) {}
+    if (!zom.b(paramString)) {}
     while (Build.VERSION.SDK_INT < 10) {
       return 0L;
     }
@@ -185,15 +185,15 @@ public class StoryVideoUploadTask
     return 0L;
   }
   
-  private void a(wjr paramwjr)
+  private void a(wnm paramwnm)
   {
-    Object localObject4 = paramwjr.a();
+    Object localObject4 = paramwnm.a();
     Object localObject2;
-    if ((paramwjr.jdField_b_of_type_Int == 0) && (((PublishVideoEntry)localObject4).isPicture) && (!((PublishVideoEntry)localObject4).isLocalPublish) && (!TextUtils.isEmpty(((PublishVideoEntry)localObject4).mLocalRawPicPath)))
+    if ((paramwnm.jdField_b_of_type_Int == 0) && (((PublishVideoEntry)localObject4).isPicture) && (!((PublishVideoEntry)localObject4).isLocalPublish) && (!TextUtils.isEmpty(((PublishVideoEntry)localObject4).mLocalRawPicPath)))
     {
       localObject2 = SafeBitmapFactory.decodeFile(((PublishVideoEntry)localObject4).mLocalRawPicPath);
       if (localObject2 == null) {
-        yqp.e("Q.qqstory.publish.upload:StoryVideoUploadTask", "create video thumb bitmap failed.");
+        yuk.e("Q.qqstory.publish.upload:StoryVideoUploadTask", "create video thumb bitmap failed.");
       }
     }
     else
@@ -205,7 +205,7 @@ public class StoryVideoUploadTask
     if (!TextUtils.isEmpty(((PublishVideoEntry)localObject4).doodlePath))
     {
       localObject3 = SafeBitmapFactory.decodeFile(((PublishVideoEntry)localObject4).doodlePath);
-      localObject1 = zkh.b((Bitmap)localObject2, (Bitmap)localObject3);
+      localObject1 = zoc.b((Bitmap)localObject2, (Bitmap)localObject3);
       if (localObject1 != null)
       {
         ((Bitmap)localObject3).recycle();
@@ -219,12 +219,12 @@ public class StoryVideoUploadTask
       if (localObject1 == null) {
         break;
       }
-      localObject3 = wqw.a((String)localObject1);
+      localObject3 = wur.a((String)localObject1);
       localObject1 = localObject2;
       if (localObject3 != null)
       {
-        Bitmap localBitmap = zmw.a((wqw)localObject3, ((PublishVideoEntry)localObject4).videoWidth, ((PublishVideoEntry)localObject4).videoHeight);
-        localObject3 = zkh.b((Bitmap)localObject2, localBitmap);
+        Bitmap localBitmap = zqr.a((wur)localObject3, ((PublishVideoEntry)localObject4).videoWidth, ((PublishVideoEntry)localObject4).videoHeight);
+        localObject3 = zoc.b((Bitmap)localObject2, localBitmap);
         localObject1 = localObject2;
         if (localObject3 != null)
         {
@@ -237,12 +237,12 @@ public class StoryVideoUploadTask
       if (localObject2 == null) {
         break;
       }
-      localObject3 = wqv.a((String)localObject2);
+      localObject3 = wuq.a((String)localObject2);
       localObject2 = localObject1;
       if (localObject3 != null)
       {
-        localObject4 = zmw.a((wqv)localObject3, ((PublishVideoEntry)localObject4).videoWidth, ((PublishVideoEntry)localObject4).videoHeight);
-        localObject3 = zkh.b((Bitmap)localObject1, (Bitmap)localObject4);
+        localObject4 = zqr.a((wuq)localObject3, ((PublishVideoEntry)localObject4).videoWidth, ((PublishVideoEntry)localObject4).videoHeight);
+        localObject3 = zoc.b((Bitmap)localObject1, (Bitmap)localObject4);
         localObject2 = localObject1;
         if (localObject3 != null)
         {
@@ -251,18 +251,18 @@ public class StoryVideoUploadTask
           localObject2 = localObject3;
         }
       }
-      paramwjr = xfe.a(paramwjr.jdField_g_of_type_JavaLangString, true);
-      zkr.a(wes.jdField_e_of_type_JavaLangString);
-      boolean bool = zkh.a((Bitmap)localObject2, Bitmap.CompressFormat.PNG, 100, paramwjr);
+      paramwnm = xiz.a(paramwnm.jdField_g_of_type_JavaLangString, true);
+      zom.a(win.jdField_e_of_type_JavaLangString);
+      boolean bool = zoc.a((Bitmap)localObject2, Bitmap.CompressFormat.PNG, 100, paramwnm);
       ((Bitmap)localObject2).recycle();
       if (bool)
       {
-        yqp.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "create file to camera success, %s ", paramwjr);
-        yqu.a("video_edit", "pic_save_local", 0, 0, new String[0]);
-        zkr.b(QQStoryContext.a().a(), new File(paramwjr));
+        yuk.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "create file to camera success, %s ", paramwnm);
+        yup.a("video_edit", "pic_save_local", 0, 0, new String[0]);
+        zom.b(QQStoryContext.a().a(), new File(paramwnm));
         return;
       }
-      yqp.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "create file to camera failed");
+      yuk.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "create file to camera failed");
       return;
     }
   }
@@ -270,61 +270,61 @@ public class StoryVideoUploadTask
   protected void c()
   {
     int i = 1;
-    wik.a().c(((wjr)this.jdField_a_of_type_Wjp).a());
-    if (((wjr)this.jdField_a_of_type_Wjp).a().publishFrom == 14) {}
+    wmf.a().c(((wnm)this.jdField_a_of_type_Wnk).a());
+    if (((wnm)this.jdField_a_of_type_Wnk).a().publishFrom == 14) {}
     for (boolean bool = true;; bool = false)
     {
-      wzw localwzw = new wzw(bool);
-      localwzw.jdField_d_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).jdField_g_of_type_JavaLangString;
-      localwzw.jdField_f_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).jdField_h_of_type_JavaLangString;
-      localwzw.jdField_j_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).jdField_j_of_type_JavaLangString;
-      localwzw.jdField_k_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).jdField_i_of_type_JavaLangString;
-      localwzw.jdField_c_of_type_Long = ((wjr)this.jdField_a_of_type_Wjp).jdField_b_of_type_Long;
-      localwzw.jdField_g_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).a().videoLabel;
-      localwzw.jdField_h_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).a().videoDoodleDescription;
-      localwzw.jdField_i_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).a().getStringExtra("all_doodle_text", "");
-      localwzw.jdField_e_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).a().mLocalDate;
-      localwzw.jdField_b_of_type_Long = ((wjr)this.jdField_a_of_type_Wjp).a().timeZoneOffset;
-      localwzw.jdField_d_of_type_Long = ((wjr)this.jdField_a_of_type_Wjp).jdField_d_of_type_Long;
-      localwzw.jdField_c_of_type_Int = ((wjr)this.jdField_a_of_type_Wjp).jdField_d_of_type_Int;
-      localwzw.jdField_d_of_type_Int = ((wjr)this.jdField_a_of_type_Wjp).jdField_e_of_type_Int;
-      localwzw.jdField_e_of_type_Long = ((wjr)this.jdField_a_of_type_Wjp).jdField_c_of_type_Long;
-      localwzw.jdField_l_of_type_JavaLangString = ((wjr)this.jdField_a_of_type_Wjp).a().videoLocationDescription;
-      localwzw.m = ((wjr)this.jdField_a_of_type_Wjp).a().gpsFilterDescription;
-      localwzw.n = ((wjr)this.jdField_a_of_type_Wjp).a().atJsonData;
-      localwzw.jdField_g_of_type_Int = ((wjr)this.jdField_a_of_type_Wjp).a().publishFrom;
-      localwzw.jdField_f_of_type_Long = ((wjr)this.jdField_a_of_type_Wjp).a().videoCreateTime;
-      localwzw.jdField_h_of_type_Int = ((wjr)this.jdField_a_of_type_Wjp).a().videoLatitude;
-      localwzw.jdField_i_of_type_Int = ((wjr)this.jdField_a_of_type_Wjp).a().videoLongitude;
-      localwzw.o = ((wjr)this.jdField_a_of_type_Wjp).a().localCreateCity;
-      if (((wjr)this.jdField_a_of_type_Wjp).a().isPicture) {}
+      xdr localxdr = new xdr(bool);
+      localxdr.jdField_d_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).jdField_g_of_type_JavaLangString;
+      localxdr.jdField_f_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).jdField_h_of_type_JavaLangString;
+      localxdr.jdField_j_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).jdField_j_of_type_JavaLangString;
+      localxdr.jdField_k_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).jdField_i_of_type_JavaLangString;
+      localxdr.jdField_c_of_type_Long = ((wnm)this.jdField_a_of_type_Wnk).jdField_b_of_type_Long;
+      localxdr.jdField_g_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).a().videoLabel;
+      localxdr.jdField_h_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).a().videoDoodleDescription;
+      localxdr.jdField_i_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).a().getStringExtra("all_doodle_text", "");
+      localxdr.jdField_e_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).a().mLocalDate;
+      localxdr.jdField_b_of_type_Long = ((wnm)this.jdField_a_of_type_Wnk).a().timeZoneOffset;
+      localxdr.jdField_d_of_type_Long = ((wnm)this.jdField_a_of_type_Wnk).jdField_d_of_type_Long;
+      localxdr.jdField_c_of_type_Int = ((wnm)this.jdField_a_of_type_Wnk).jdField_d_of_type_Int;
+      localxdr.jdField_d_of_type_Int = ((wnm)this.jdField_a_of_type_Wnk).jdField_e_of_type_Int;
+      localxdr.jdField_e_of_type_Long = ((wnm)this.jdField_a_of_type_Wnk).jdField_c_of_type_Long;
+      localxdr.jdField_l_of_type_JavaLangString = ((wnm)this.jdField_a_of_type_Wnk).a().videoLocationDescription;
+      localxdr.m = ((wnm)this.jdField_a_of_type_Wnk).a().gpsFilterDescription;
+      localxdr.n = ((wnm)this.jdField_a_of_type_Wnk).a().atJsonData;
+      localxdr.jdField_g_of_type_Int = ((wnm)this.jdField_a_of_type_Wnk).a().publishFrom;
+      localxdr.jdField_f_of_type_Long = ((wnm)this.jdField_a_of_type_Wnk).a().videoCreateTime;
+      localxdr.jdField_h_of_type_Int = ((wnm)this.jdField_a_of_type_Wnk).a().videoLatitude;
+      localxdr.jdField_i_of_type_Int = ((wnm)this.jdField_a_of_type_Wnk).a().videoLongitude;
+      localxdr.o = ((wnm)this.jdField_a_of_type_Wnk).a().localCreateCity;
+      if (((wnm)this.jdField_a_of_type_Wnk).a().isPicture) {}
       for (;;)
       {
-        localwzw.jdField_e_of_type_Int = i;
-        localwzw.jdField_f_of_type_Int = ((wjr)this.jdField_a_of_type_Wjp).a().getIntExtra("video_type", 0);
-        localwzw.jdField_a_of_type_ArrayOfByte = ((wjr)this.jdField_a_of_type_Wjp).a().readerConfBytes;
-        localwzw.jdField_b_of_type_ArrayOfByte = ((wjr)this.jdField_a_of_type_Wjp).a().spreadGroupBytes;
-        localwzw.p = ((wjr)this.jdField_a_of_type_Wjp).a().multiFragmentGroupId;
-        localwzw.jdField_b_of_type_Boolean = ((wjr)this.jdField_a_of_type_Wjp).a().getBooleanExtra("ignorePersonalPublish", false);
-        localwzw.jdField_j_of_type_Int = ((wjr)this.jdField_a_of_type_Wjp).a().getIntExtra("add_video_source", 0);
-        localwzw.jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = ((wjr)this.jdField_a_of_type_Wjp).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
-        localwzw.jdField_c_of_type_ArrayOfByte = ((wjr)this.jdField_a_of_type_Wjp).a().tagInfoBytes;
-        localwzw.q = ((wjr)this.jdField_a_of_type_Wjp).a().getStringExtra("pl", null);
-        localwzw.r = ((wjr)this.jdField_a_of_type_Wjp).jdField_k_of_type_JavaLangString;
-        localwzw.s = ((wjr)this.jdField_a_of_type_Wjp).a().getStringExtra("i_l", null);
-        localwzw.t = ((wjr)this.jdField_a_of_type_Wjp).jdField_l_of_type_JavaLangString;
-        localwzw.jdField_c_of_type_Boolean = ((wjr)this.jdField_a_of_type_Wjp).a().getBooleanExtra("story_sync_qzone", false);
-        localwzw.jdField_a_of_type_Wrb = ((wjr)this.jdField_a_of_type_Wjp).jdField_a_of_type_Wrb;
-        localwzw.u = ((wjr)this.jdField_a_of_type_Wjp).a().getStringExtra("game", null);
-        localwzw.v = ((wjr)this.jdField_a_of_type_Wjp).a().getStringExtra("pk_vid", null);
-        JSONObject localJSONObject = ((wjr)this.jdField_a_of_type_Wjp).a().getJSONExtra("follow_capture_param");
+        localxdr.jdField_e_of_type_Int = i;
+        localxdr.jdField_f_of_type_Int = ((wnm)this.jdField_a_of_type_Wnk).a().getIntExtra("video_type", 0);
+        localxdr.jdField_a_of_type_ArrayOfByte = ((wnm)this.jdField_a_of_type_Wnk).a().readerConfBytes;
+        localxdr.jdField_b_of_type_ArrayOfByte = ((wnm)this.jdField_a_of_type_Wnk).a().spreadGroupBytes;
+        localxdr.p = ((wnm)this.jdField_a_of_type_Wnk).a().multiFragmentGroupId;
+        localxdr.jdField_b_of_type_Boolean = ((wnm)this.jdField_a_of_type_Wnk).a().getBooleanExtra("ignorePersonalPublish", false);
+        localxdr.jdField_j_of_type_Int = ((wnm)this.jdField_a_of_type_Wnk).a().getIntExtra("add_video_source", 0);
+        localxdr.jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = ((wnm)this.jdField_a_of_type_Wnk).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+        localxdr.jdField_c_of_type_ArrayOfByte = ((wnm)this.jdField_a_of_type_Wnk).a().tagInfoBytes;
+        localxdr.q = ((wnm)this.jdField_a_of_type_Wnk).a().getStringExtra("pl", null);
+        localxdr.r = ((wnm)this.jdField_a_of_type_Wnk).jdField_k_of_type_JavaLangString;
+        localxdr.s = ((wnm)this.jdField_a_of_type_Wnk).a().getStringExtra("i_l", null);
+        localxdr.t = ((wnm)this.jdField_a_of_type_Wnk).jdField_l_of_type_JavaLangString;
+        localxdr.jdField_c_of_type_Boolean = ((wnm)this.jdField_a_of_type_Wnk).a().getBooleanExtra("story_sync_qzone", false);
+        localxdr.jdField_a_of_type_Wuw = ((wnm)this.jdField_a_of_type_Wnk).jdField_a_of_type_Wuw;
+        localxdr.u = ((wnm)this.jdField_a_of_type_Wnk).a().getStringExtra("game", null);
+        localxdr.v = ((wnm)this.jdField_a_of_type_Wnk).a().getStringExtra("pk_vid", null);
+        JSONObject localJSONObject = ((wnm)this.jdField_a_of_type_Wnk).a().getJSONExtra("follow_capture_param");
         if (localJSONObject != null)
         {
-          localwzw.w = localJSONObject.optString("vid");
-          localwzw.jdField_k_of_type_Int = (localJSONObject.optInt("comparedLevel") + 1);
-          localwzw.jdField_l_of_type_Int = localJSONObject.optInt("comparedActivityId");
+          localxdr.w = localJSONObject.optString("vid");
+          localxdr.jdField_k_of_type_Int = (localJSONObject.optInt("comparedLevel") + 1);
+          localxdr.jdField_l_of_type_Int = localJSONObject.optInt("comparedActivityId");
         }
-        wlb.a().a(localwzw, new wjx(this));
+        wow.a().a(localxdr, new wns(this));
         return;
         i = 0;
       }

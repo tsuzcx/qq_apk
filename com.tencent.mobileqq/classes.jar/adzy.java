@@ -1,26 +1,31 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
 
-class adzy
+final class adzy
   implements DialogInterface.OnClickListener
 {
-  adzy(adzx paramadzx) {}
+  adzy(aeca paramaeca, int paramInt, aebz paramaebz) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a() != null)
+    if (this.jdField_a_of_type_Aeca.a)
     {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.a().startActivity(localIntent);
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
     }
-    paramDialogInterface.dismiss();
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aebz != null) {
+        this.jdField_a_of_type_Aebz.a();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        bdll.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
+    }
   }
 }
 

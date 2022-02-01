@@ -1,99 +1,74 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.EGLContext;
+import com.tencent.mobileqq.richmedia.capture.data.FollowCaptureParam;
 
 public class bbmc
-  extends bbmz
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  public CharSequence a;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public EGLContext a;
+  public bbmi a;
+  public bbmv a;
+  public bbnm a;
+  public FollowCaptureParam a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e = 8;
+  public String e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public int h;
+  public int i;
+  public int j = -1;
+  public int k = -1;
+  public int l;
+  public int m;
   
-  public bbmc(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public bbmc(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean1, int paramInt7, String paramString2, String paramString3, String paramString4, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_d_of_type_Int = 30;
+    this.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.e = paramInt4;
+    this.jdField_f_of_type_Int = paramInt6;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_d_of_type_Int = paramInt5;
+    this.g = paramInt7;
+    this.jdField_d_of_type_JavaLangString = paramString4;
   }
   
-  public CharSequence a()
+  public bbmc(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
   {
-    return bbup.a(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), this.jdField_a_of_type_JavaLangString);
+    this(paramString, paramInt1, paramInt2, paramInt3, paramInt4, 30, 0, paramBoolean, paramInt5, null, null, null, false);
   }
   
-  public String a()
+  public EGLContext a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_AndroidOpenglEGLContext;
   }
   
-  public void a(View paramView)
+  public void a(EGLContext paramEGLContext)
   {
-    Context localContext = paramView.getContext();
-    if ((localContext != null) && ((localContext instanceof BaseActivity)))
-    {
-      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.class_index.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_flag.get(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), 4);
-      bbup.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-      bbup.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
-    }
+    this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
   }
   
-  public boolean a()
+  public String toString()
   {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-  }
-  
-  public boolean b()
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("name = ").append(this.jdField_a_of_type_JavaLangCharSequence).append(", isCert = ");
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break label102;
-      }
-    }
-    label102:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GroupNetSearchModelPublicAcntItem", 2, bool);
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    return anni.a(2131704142);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    return "EncodeConfig{sharedContext=" + this.jdField_a_of_type_AndroidOpenglEGLContext + ", outputFilePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width='" + this.jdField_a_of_type_Int + '\'' + ", height='" + this.jdField_b_of_type_Int + '\'' + ", bitRate='" + this.jdField_c_of_type_Int + '\'' + ", frameRate='" + this.jdField_d_of_type_Int + '\'' + ", iFrameInterval='" + this.e + '\'' + ", filterType=" + this.jdField_f_of_type_Int + ", needGenerateThumb=" + this.jdField_a_of_type_Boolean + ", watermarkPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mosaicPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", orientation=" + this.g + ", adjustRotation=" + this.h + '}';
   }
 }
 

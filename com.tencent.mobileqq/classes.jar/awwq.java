@@ -1,64 +1,121 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_body.RichText;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Shader.TileMode;
+import java.util.ArrayList;
 
-class awwq
-  implements ayyt
+public class awwq
 {
-  int jdField_a_of_type_Int;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public final int a;
+  public awwp a;
+  public final String a;
+  public final ArrayList<awwl> a;
+  public final int b;
+  public awwp b;
+  public final int c;
+  private final int d;
   
-  public awwq(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt)
+  public awwq(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<awwl> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Awwp = new awwp();
+    this.jdField_b_of_type_Awwp = new awwp();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.c = paramInt4;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public awwq(String paramString, int paramInt1, int paramInt2, ArrayList<awwl> paramArrayList)
   {
-    return null;
+    this.jdField_a_of_type_Awwp = new awwp();
+    this.jdField_b_of_type_Awwp = new awwp();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.jdField_b_of_type_Int = 0;
+    this.c = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  public void a(ayyu paramayyu) {}
-  
-  public void b(ayyu paramayyu)
+  public long a()
   {
-    if (paramayyu.jdField_a_of_type_Int == 0)
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      return ((awwl)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
+    }
+    return 0L;
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2)
+  {
+    a(paramCanvas, paramInt1, paramInt2, paramPaint1, paramPaint2, null, null, 1);
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt3)
+  {
+    paramInt1 = this.jdField_a_of_type_Int + paramInt1;
+    if ((this.jdField_a_of_type_Awwp != null) && (this.jdField_a_of_type_Awwp.a != null) && (!this.jdField_a_of_type_Awwp.a.isRecycled()))
     {
-      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localMessageForStructing.structingMsg.mResid = paramayyu.c;
-      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "send real struct msg done, cost : " + (System.currentTimeMillis() - awwm.b()));
+      paramBitmap1 = new Rect(paramInt1 - this.jdField_a_of_type_Awwp.c - this.jdField_a_of_type_Awwp.a.getWidth(), (int)(paramInt2 - paramPaint1.getTextSize()), paramInt1 - this.jdField_a_of_type_Awwp.c, (int)(this.jdField_a_of_type_Awwp.a.getHeight() + paramInt2 - paramPaint1.getTextSize()));
+      paramCanvas.drawBitmap(this.jdField_a_of_type_Awwp.a, null, paramBitmap1, null);
+    }
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2 - paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2 - paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2 - paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2 + paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2 + paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2 + paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2, paramPaint1);
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Paint paramPaint3, int paramInt3, float paramFloat1, float paramFloat2, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  {
+    int i = this.d;
+    paramFloat2 += this.d;
+    paramPaint3.setShader(new LinearGradient(paramFloat2, paramInt2, paramFloat2 + paramFloat1, paramInt2, paramArrayOfInt, paramArrayOfFloat, Shader.TileMode.CLAMP));
+    if (paramInt3 > 0)
+    {
+      paramArrayOfInt = (awwl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 - 1);
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(0, paramArrayOfInt.jdField_b_of_type_Int), paramInt1 + i, paramInt2, paramPaint2);
+    }
+    paramPaint2 = (awwl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3);
+    if (paramInt3 == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {}
+    for (paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length());; paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, paramPaint2.jdField_b_of_type_Int))
+    {
+      paramCanvas.drawText(paramPaint2, paramFloat2, paramInt2, paramPaint3);
+      if (paramInt3 < this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+      {
+        paramPaint2 = (awwl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 + 1);
+        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length()), paramFloat2 + paramFloat1, paramInt2, paramPaint1);
       }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "upload multi msg pack failed, result.errStr=" + paramayyu.b + ",result.errStr=" + paramayyu.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = this.d;; i = this.jdField_a_of_type_Int)
+    {
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + paramInt1, paramInt2, paramPaint);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
-    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    paramayyu = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if ((paramayyu != null) && (paramayyu.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
-      paramayyu.extraflag = 32768;
+  }
+  
+  public long b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      awwl localawwl = (awwl)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      long l = localawwl.jdField_a_of_type_Long;
+      return localawwl.jdField_b_of_type_Long + l;
     }
-    paramayyu = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramayyu, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+    return 0L;
   }
 }
 

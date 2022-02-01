@@ -1,45 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class bbua
-  implements Comparator<bbmu>
+public class bbua
+  implements View.OnClickListener
 {
-  bbua(bbtz parambbtz) {}
+  public bbua(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public int a(bbmu parambbmu1, bbmu parambbmu2)
+  public void onClick(View paramView)
   {
-    int i = -1;
-    parambbmu1 = (bboi)parambbmu1;
-    parambbmu2 = (bboi)parambbmu2;
-    anmw localanmw = (anmw)this.a.a.getManager(51);
-    boolean bool1 = localanmw.b((String)parambbmu1.a());
-    boolean bool2 = localanmw.b((String)parambbmu2.a());
-    if ((!bool1) && (!bool2))
+    String str = (String)paramView.getTag();
+    if (SignatureHistoryFragment.a(this.a).contains(str))
     {
-      bool1 = localanmw.d((String)parambbmu1.a());
-      bool2 = localanmw.d((String)parambbmu2.a());
-      if ((!bool1) && (!bool2)) {
-        return parambbmu2.f() - parambbmu1.f();
-      }
-      if (bool1 != bool2)
-      {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
-      }
-      return parambbmu2.f() - parambbmu1.f();
+      SignatureHistoryFragment.a(this.a).remove(str);
+      ((CheckBox)paramView).setChecked(false);
     }
-    if (bool1 != bool2)
+    for (;;)
     {
-      if (bool2) {}
-      for (;;)
+      SignatureHistoryFragment.b(this.a, false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (SignatureHistoryFragment.a(this.a).size() >= 200)
       {
-        return i;
-        i = 1;
+        this.a.a(1, 2131718275);
+        ((CheckBox)paramView).setChecked(false);
+      }
+      else
+      {
+        SignatureHistoryFragment.a(this.a).add(str);
+        ((CheckBox)paramView).setChecked(true);
       }
     }
-    return parambbmu2.f() - parambbmu1.f();
   }
 }
 

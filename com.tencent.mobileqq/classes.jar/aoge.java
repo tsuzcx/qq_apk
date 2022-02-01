@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-
-class aoge
-  implements Comparator<structmsg.StructMsg>
+public class aoge
+  implements anui
 {
-  aoge(aogd paramaogd) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
     }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
-    }
-    return 0;
+    a(paramBoolean, ((Boolean)paramObject).booleanValue());
   }
 }
 

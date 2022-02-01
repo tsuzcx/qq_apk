@@ -1,195 +1,241 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.wiget.FrameAnimationDrawable.1;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import mqq.app.MobileQQ;
 
-@Deprecated
-public class asog
-  extends Drawable
-  implements Handler.Callback
+class asog
+  implements AdapterView.OnItemClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 1000L;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private volatile boolean jdField_b_of_type_Boolean;
+  asog(asoc paramasoc) {}
   
-  public asog()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  }
-  
-  private void c()
-  {
-    Object localObject;
-    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int))
+    QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    long l = System.currentTimeMillis();
+    bhsq.a(null, "AIO_EmoticonPanel_TabClick");
+    Object localObject1 = this.a.a.jdField_b_of_type_JavaUtilList;
+    if (localObject1 == null) {}
+    while ((paramInt >= ((List)localObject1).size()) || (((asok)this.a.a.a(8)).b(paramInt)))
     {
-      localObject = this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int];
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    try
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      localObject = asmk.a((String)localObject, localOptions);
-      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-        ThreadManager.getUIHandler().post(new FrameAnimationDrawable.1(this));
-      }
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("FrameAnimationDrawable", 2, "updateCurBitmap fail.", localException);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelMallHelper", 2, "mOnItemClicked position: " + paramInt);
     }
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
+    asoc.a(this.a, true);
+    asoc.a(this.a, 1);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setSelection(paramInt);
+    boolean bool;
+    label185:
+    Object localObject2;
+    Object localObject6;
+    Object localObject4;
+    label262:
     int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    Object localObject3;
+    if ((((List)localObject1).size() > EmoticonPanelController.d) && (((aspt)((List)localObject1).get(EmoticonPanelController.d)).jdField_a_of_type_Int == 8))
     {
-      i = 0;
-      this.jdField_b_of_type_Int = i;
-      if (this.jdField_b_of_type_Int != 0) {
-        break label43;
+      bool = true;
+      EmoticonPanelController.jdField_a_of_type_Boolean = bool;
+      localObject2 = (aspt)((List)localObject1).get(paramInt);
+      localObject1 = "";
+      localObject6 = "";
+      localObject4 = "";
+      if (((aspt)localObject2).jdField_a_of_type_Int != 8) {
+        break label594;
       }
-    }
-    label43:
-    for (paramLong = 0L;; paramLong = this.jdField_a_of_type_Long / this.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_Long = paramLong;
-      return;
-      i = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-      break;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    int i = 0;
-    b();
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
-    {
-      this.jdField_b_of_type_Int = i;
-      if (this.jdField_b_of_type_Int != 0) {
-        break label56;
+      localObject2 = anzj.a(2131702975);
+      localObject1 = (ImageView)paramView.findViewById(2131376428);
+      bool = false;
+      if (localObject1 != null)
+      {
+        if (((ImageView)localObject1).getVisibility() != 0) {
+          break label581;
+        }
+        bool = true;
+        ((ImageView)localObject1).setVisibility(8);
       }
-    }
-    label56:
-    for (long l = 0L;; l = this.jdField_a_of_type_Long / this.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_Long = l;
-      c();
-      return;
-      i = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-      break;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
-      this.jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if ((paramCanvas != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+      localObject1 = localQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0);
+      ((SharedPreferences)localObject1).edit().putBoolean("isClickRecommendRedpoint", true).putBoolean("is_red_when_click_recommend", bool).apply();
+      i = ((SharedPreferences)localObject1).getInt("recommendRuleId", -1);
+      localObject3 = localQQAppInterface.c();
+      if (!bool) {
+        break label587;
       }
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+      localObject1 = "1";
+      label339:
+      VasWebviewUtil.reportCommercialDrainage((String)localObject3, "ep_mall", "0X8005798", "", 0, 0, 0, "", "", "", (String)localObject1, "", i + "", "", 0, 0, 0, 0);
+      bool = false;
+      localObject1 = "0X800AE0B";
+      localObject3 = "0X8005798";
     }
     for (;;)
     {
-      return true;
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Int %= this.jdField_b_of_type_Int;
+      i = this.a.a.a(bool);
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (i != 0)) {
+        bdll.b(localQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "1", "", "", "");
       }
-      if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int))
+      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+        bdll.b(localQQAppInterface, "CliOper", "", "", "ep_mall", (String)localObject3, 0, 0, (String)localObject6, "", (String)localObject4, "");
+      }
+      if (EmoticonPanelController.jdField_b_of_type_Int == paramInt) {
+        break;
+      }
+      EmoticonPanelController.jdField_b_of_type_Int = paramInt;
+      this.a.a.e(paramInt);
+      if (AppSetting.c) {
+        QQAppInterface.f((String)localObject2);
+      }
+      bhsq.a("AIO_EmoticonPanel_TabClick", null);
+      this.a.a.i = true;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("EmoticonPanelMallHelper", 2, "[Performance] TabsChanged duration:" + (System.currentTimeMillis() - l));
+      break;
+      bool = false;
+      break label185;
+      label581:
+      bool = false;
+      break label262;
+      label587:
+      localObject1 = "";
+      break label339;
+      label594:
+      if (((aspt)localObject2).jdField_a_of_type_Int == 9)
       {
-        long l1 = System.currentTimeMillis();
-        c();
-        if (this.jdField_b_of_type_Boolean)
-        {
-          long l2 = System.currentTimeMillis();
-          l1 = Math.max(this.jdField_b_of_type_Long - (l2 - l1), 0L);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10, l1);
-        }
+        localObject1 = "0X800AE0D";
+        bool = false;
+        localObject2 = anzj.a(2131702964);
+        localObject3 = "0X8005797";
+      }
+      else if (((aspt)localObject2).jdField_a_of_type_Int == 4)
+      {
+        localObject2 = anzj.a(2131702937);
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0x800a56e", "0x800a56e", 0, 0, "", "", "", "");
+        ((asnt)this.a.a.a(2)).c();
+        bool = true;
+        localObject1 = "0X800AE08";
+        localObject3 = "0X8005799";
       }
       else
       {
-        this.jdField_b_of_type_Boolean = false;
+        if (((aspt)localObject2).jdField_a_of_type_Int != 7) {
+          break label733;
+        }
+        localObject1 = "0X800AE07";
+        localObject2 = anzj.a(2131702984);
+        bool = true;
+        localObject3 = "0X800579A";
       }
     }
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    label733:
+    Object localObject5;
+    if (((aspt)localObject2).jdField_a_of_type_Int == 6)
+    {
+      localObject4 = ((aspt)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+      if (localObject4 == null) {
+        break label1146;
+      }
+      localObject2 = ((EmoticonPackage)localObject4).epId;
+      if (((EmoticonPackage)localObject4).status == 2)
+      {
+        localObject1 = "0X800584E";
+        label776:
+        localObject3 = Integer.toString(this.a.a.a((String)localObject2));
+        localObject6 = anzj.a(2131702944) + ((EmoticonPackage)localObject4).name + anzj.a(2131702961);
+        if (((EmoticonPackage)localObject4).status == 2) {
+          break label1119;
+        }
+        localObject6 = (String)localObject6 + anzj.a(2131702987);
+        localObject5 = localObject3;
+        localObject4 = localObject1;
+        localObject1 = localObject6;
+        localObject3 = localObject2;
+        localObject2 = localObject5;
+      }
+    }
+    for (;;)
+    {
+      Object localObject7 = localObject1;
+      localObject5 = localObject2;
+      localObject6 = localObject3;
+      localObject3 = localObject4;
+      bool = false;
+      localObject1 = "0X800AE0C";
+      localObject2 = localObject7;
+      localObject4 = localObject5;
+      break;
+      localObject1 = "0X80059B8";
+      break label776;
+      if (((aspt)localObject2).jdField_a_of_type_Int == 11)
+      {
+        localObject2 = anzj.a(2131702985);
+        localObject1 = (ImageView)paramView.findViewById(2131376428);
+        if (localObject1 != null)
+        {
+          ((ImageView)localObject1).setVisibility(8);
+          localObject1 = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+          if ((localObject1 != null) && (((BaseChatPie)localObject1).a != null)) {
+            ((BaseChatPie)localObject1).a.setShowRed(3, false);
+          }
+        }
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A36D", "0X800A36D", 0, 0, "", "", "", "");
+        bool = true;
+        localObject1 = "0X800AE0A";
+        localObject3 = "";
+        break;
+      }
+      if (((aspt)localObject2).jdField_a_of_type_Int == 12)
+      {
+        localObject1 = "0X800AE09";
+        bool = true;
+        localObject3 = "";
+        localObject2 = "";
+        break;
+      }
+      if (((aspt)localObject2).jdField_a_of_type_Int == 10)
+      {
+        bool = false;
+        localObject1 = "0X800AE0C";
+        localObject2 = "";
+        localObject3 = "";
+        break;
+      }
+      bool = true;
+      localObject3 = "";
+      localObject2 = "";
+      break;
+      label1119:
+      localObject4 = localObject2;
+      localObject5 = localObject1;
+      localObject1 = localObject6;
+      localObject2 = localObject3;
+      localObject3 = localObject4;
+      localObject4 = localObject5;
+      continue;
+      label1146:
+      localObject1 = "";
+      localObject4 = "";
+      localObject3 = "";
+      localObject2 = "";
+    }
   }
 }
 

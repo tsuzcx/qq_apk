@@ -1,54 +1,77 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.Iterator;
+import java.util.List;
 
 public class wyz
-  extends wlf<xat>
+  extends wyr
 {
-  public String a = "";
-  public String b = "";
-  public int c;
-  
-  public String a()
+  public wyz(ViewGroup paramViewGroup)
   {
-    return wjz.a("StorySvc.homepage_feed_loadmore_720");
+    super(paramViewGroup);
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  protected String a(QQUserUIItem paramQQUserUIItem)
   {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
-    try
+    String str = super.a(paramQQUserUIItem);
+    paramQQUserUIItem = str;
+    if (str == null) {
+      paramQQUserUIItem = anzj.a(2131712136);
+    }
+    return paramQQUserUIItem;
+  }
+  
+  public void a()
+  {
+    this.a.setTag(2131374689, null);
+  }
+  
+  protected void a(String paramString)
+  {
+    c(paramString);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, wvn paramwvn)
+  {
+    if ((!TextUtils.isEmpty(paramwvn.j)) && (!paramBoolean))
     {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new xat(localRspFriendStoryFeedVideoList);
+      this.a.setNodeName(paramString, paramwvn.j);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    super.a(paramString, paramBoolean, paramwvn);
+  }
+  
+  public void a(wvn paramwvn)
+  {
+    super.a(paramwvn);
+    this.a.setDisplayState(2);
+    String str;
+    if (!TextUtils.equals((String)this.a.getTag(2131374689), paramwvn.jdField_a_of_type_JavaLangString))
     {
-      yqp.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
+      if ((paramwvn.jdField_a_of_type_JavaUtilList == null) || (paramwvn.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label168;
+      }
+      str = ((wwf)paramwvn.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
+      Iterator localIterator = paramwvn.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        wwf localwwf = (wwf)localIterator.next();
+        if (!localwwf.jdField_a_of_type_Boolean) {
+          str = localwwf.jdField_a_of_type_JavaLangString;
+        }
+      }
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    for (;;)
+    {
+      yup.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramwvn.jdField_a_of_type_JavaLangString, "1", "", str });
+      this.a.setTag(2131374689, paramwvn.jdField_a_of_type_JavaLangString);
+      return;
+      continue;
+      label168:
+      str = "";
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
-    return localReqFriendStoryFeedVideoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
   }
 }
 

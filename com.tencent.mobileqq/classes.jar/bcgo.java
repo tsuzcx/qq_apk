@@ -1,20 +1,37 @@
-import android.hardware.camera2.CameraCharacteristics;
-import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgo
+  extends bcga
 {
-  public CameraCharacteristics a;
   public String a;
   
-  public bcgo(String paramString, CameraCharacteristics paramCameraCharacteristics)
+  public bcgo(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics = paramCameraCharacteristics;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public boolean a()
+  public bcgo(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics != null);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      this.a = new JSONObject(paramString).optString("title");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(c, 0, paramString.toString());
+    }
   }
 }
 

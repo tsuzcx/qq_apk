@@ -1,8 +1,14 @@
-public abstract interface amup
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
+class amup
 {
-  public abstract void a(String paramString, int paramInt);
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  amup(amum paramamum) {}
 }
 
 

@@ -1,132 +1,46 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.NeonControl.1;
-import com.tencent.mobileqq.ar.NeonControl.2;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aowx
+  extends aoxh
 {
-  private static aowx jdField_a_of_type_Aowx;
-  public static boolean a;
-  aowy jdField_a_of_type_Aowy;
-  public final Object a;
-  private boolean b;
-  
-  static
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  private aowx()
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
-    if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
-      ThreadManager.post(new NeonControl.1(this, (SharedPreferences)localObject1, false), 5, null, true);
+    paramQQAppInterface = new aoww(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "microapp";
+    paramQQAppInterface.c = "open";
+    if (QLog.isColorLevel()) {
+      QLog.d("HttpOpenMicroAppParser", 2, "[miniapp-scheme], open microapp scheme=" + paramString);
     }
-    boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
-    boolean bool3 = aoxi.a().e;
-    int i;
-    int j;
-    if (QLog.isColorLevel())
+    paramContext = paramString.split("\\?");
+    if ((paramContext.length < 2) || (paramContext[0].length() == 0)) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramString.substring(paramContext[0].length() + 1).split("&");
+    if (paramContext != null)
     {
-      if (bool3)
+      int i = 0;
+      while (i < paramContext.length)
       {
-        i = 1;
-        if (!bool2) {
-          break label174;
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2))
+        {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+          if (QLog.isColorLevel()) {
+            QLog.d("HttpOpenMicroAppParser", 2, "[miniapp-scheme], open microapp key=" + paramString[0] + ", value=" + paramString[1]);
+          }
         }
-        j = 1;
-        label97:
-        QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0) }));
+        i += 1;
       }
     }
-    else
-    {
-      localObject1 = this.jdField_a_of_type_JavaLangObject;
-      if ((!bool3) || (!bool2)) {
-        break label179;
-      }
+    paramContext = paramQQAppInterface.b("fakeUrl");
+    if ((TextUtils.isEmpty(paramQQAppInterface.b("scene"))) && (!TextUtils.isEmpty(paramContext))) {
+      paramQQAppInterface.a("scene", String.valueOf(2003));
     }
-    for (;;)
-    {
-      try
-      {
-        this.b = bool1;
-        return;
-      }
-      finally {}
-      i = 0;
-      break;
-      label174:
-      j = 0;
-      break label97;
-      label179:
-      bool1 = false;
-    }
-  }
-  
-  public static aowx a()
-  {
-    if (jdField_a_of_type_Aowx == null) {
-      jdField_a_of_type_Aowx = new aowx();
-    }
-    return jdField_a_of_type_Aowx;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aowy == null) {}
-    aowy localaowy;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        localaowy = new aowy(this);
-        localaowy.jdField_a_of_type_Long = this.jdField_a_of_type_Aowy.jdField_a_of_type_Long;
-        localaowy.jdField_a_of_type_Int = this.jdField_a_of_type_Aowy.jdField_a_of_type_Int;
-        localaowy.b = this.jdField_a_of_type_Aowy.b;
-        this.jdField_a_of_type_Aowy.b = -2147483648;
-        this.jdField_a_of_type_Aowy.jdField_a_of_type_Long = 0L;
-        this.jdField_a_of_type_Aowy.jdField_a_of_type_Int = 0;
-      } while ((localaowy.jdField_a_of_type_Long <= 0L) || (localaowy.jdField_a_of_type_Int <= 0) || (localaowy.b == -2147483648));
-      i = (int)(localaowy.jdField_a_of_type_Long / localaowy.jdField_a_of_type_Int);
-    } while ((i < 0) || (i >= 600000));
-    ThreadManager.post(new NeonControl.2(this, localaowy, i), 5, null, false);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    if (this.jdField_a_of_type_Aowy == null)
-    {
-      this.jdField_a_of_type_Aowy = new aowy(this);
-      this.jdField_a_of_type_Aowy.b = paramInt;
-    }
-    if (this.jdField_a_of_type_Aowy.b != paramInt)
-    {
-      if ((this.jdField_a_of_type_Aowy.jdField_a_of_type_Long > 0L) || (this.jdField_a_of_type_Aowy.jdField_a_of_type_Int > 0)) {
-        a();
-      }
-      this.jdField_a_of_type_Aowy.b = paramInt;
-      this.jdField_a_of_type_Aowy.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_Aowy.jdField_a_of_type_Int = 0;
-    }
-    aowy localaowy = this.jdField_a_of_type_Aowy;
-    localaowy.jdField_a_of_type_Long += paramLong;
-    localaowy = this.jdField_a_of_type_Aowy;
-    localaowy.jdField_a_of_type_Int += 1;
-  }
-  
-  public boolean a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      boolean bool = this.b;
-      return bool;
-    }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
-class albg
-  implements DialogInterface.OnClickListener
+public class albg
+  extends albm
 {
-  albg(albc paramalbc) {}
+  public albg(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    ((anip)this.a.a.a(2)).m(false);
+    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
   }
 }
 

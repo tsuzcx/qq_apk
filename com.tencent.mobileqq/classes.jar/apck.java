@@ -1,28 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-final class apck
-  implements bdvv
+public abstract class apck
 {
-  public void a(bdws parambdws, bdwt parambdwt)
+  public String businessId;
+  public boolean observerOnUiThread;
+  
+  public apck(String paramString)
   {
-    if ((parambdws == null) || (parambdwt == null)) {}
-    while (!(parambdws instanceof bdvs)) {
-      return;
-    }
-    bdvs localbdvs = (bdvs)parambdws;
-    localbdvs.jdField_a_of_type_Long += parambdwt.c;
-    parambdwt.c = 0L;
-    parambdwt = "bytes=" + localbdvs.jdField_a_of_type_Long + "-";
-    localbdvs.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-    parambdwt = localbdvs.jdField_a_of_type_JavaLangString;
-    if (parambdwt.contains("range="))
-    {
-      parambdwt = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-      localbdvs.jdField_a_of_type_JavaLangString = (parambdwt + "range=" + localbdvs.jdField_a_of_type_Long);
-    }
-    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((bdvs)parambdws).jdField_a_of_type_JavaLangString + ", offset=" + localbdvs.jdField_a_of_type_Long);
+    this.businessId = paramString;
   }
+  
+  public apck(String paramString, boolean paramBoolean)
+  {
+    this.businessId = paramString;
+    this.observerOnUiThread = paramBoolean;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2, boolean paramBoolean) {}
+  
+  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 

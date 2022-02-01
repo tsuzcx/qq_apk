@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import bayd;
+import bbqw;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class AIOFileVideoView$6
   implements Runnable
 {
-  public AIOFileVideoView$6(bayd parambayd, ArrayList paramArrayList) {}
+  public AIOFileVideoView$6(bbqw parambbqw, ArrayList paramArrayList) {}
   
   public void run()
   {

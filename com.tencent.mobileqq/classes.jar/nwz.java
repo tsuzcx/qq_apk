@@ -1,19 +1,20 @@
-import android.app.Dialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.qphone.base.util.QLog;
 
 public class nwz
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public nwz(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public nwz(AdControlView paramAdControlView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    ReadInJoyNativeAdFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    QLog.d("Ron", 2, "alpha:" + f);
+    AdControlView.a(this.a).setAlpha(f);
+    this.a.invalidate();
   }
 }
 

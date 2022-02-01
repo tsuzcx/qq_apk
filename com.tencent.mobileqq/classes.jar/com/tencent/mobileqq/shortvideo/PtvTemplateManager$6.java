@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import lbp;
-import lbq;
-import mue;
+import lbw;
+import lbx;
+import mvd;
 
 class PtvTemplateManager$6
   implements Runnable
@@ -20,7 +20,7 @@ class PtvTemplateManager$6
     if (QLog.isColorLevel()) {
       QLog.i("PtvTemplateManager", 2, String.format("双人挂件加载 start, rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    Object localObject1 = lbq.b(106).a;
+    Object localObject1 = lbx.b(106).a;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
@@ -30,7 +30,7 @@ class PtvTemplateManager$6
         continue;
       }
       localObject1 = new ArrayList();
-      int i = mue.b();
+      int i = mvd.b();
       if (QLog.isColorLevel()) {
         QLog.d("PtvTemplateManager", 2, "cur version:" + i);
       }

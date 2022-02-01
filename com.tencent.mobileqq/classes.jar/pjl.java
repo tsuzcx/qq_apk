@@ -1,65 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pjl
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements pks
 {
-  public static String a = "ViolaPicSerPreloadHandler";
-  public static String b = "viola_service_instance";
+  public pjl(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public static boolean a()
+  public void a()
   {
-    return ((Boolean)bmqa.a(b, Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = phv.a(paramString);
-    Object localObject = localMap.keySet();
-    for (;;)
-    {
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          String str2 = (String)((Iterator)localObject).next();
-          String str1 = (String)localMap.get(str2);
-          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
-            continue;
-          }
-          str2 = b;
-          if (Integer.parseInt(str1) == 1)
-          {
-            bool = true;
-            bmqa.a(str2, Boolean.valueOf(bool));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
-      }
-      boolean bool = false;
-    }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    super.onWipeConfig(paramInt);
-    bmqa.a(b, Boolean.valueOf(false));
+    ReadInJoySelfFragment.d(this.a);
   }
 }
 

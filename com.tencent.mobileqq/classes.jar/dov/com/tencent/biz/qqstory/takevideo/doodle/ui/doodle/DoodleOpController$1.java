@@ -1,10 +1,10 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bojl;
-import bplx;
-import bply;
-import bpmu;
-import bpmv;
+import bplg;
+import bqns;
+import bqnt;
+import bqop;
+import bqoq;
 import com.tencent.common.app.AppInterface;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,15 +17,15 @@ public class DoodleOpController$1
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (localIterator.hasNext())
     {
-      bplx localbplx = (bplx)localIterator.next();
-      if ((localbplx instanceof bpmu))
+      bqns localbqns = (bqns)localIterator.next();
+      if ((localbqns instanceof bqop))
       {
-        AppInterface localAppInterface = bojl.a();
-        this.this$0.a(localAppInterface, ((bpmu)localbplx).c);
+        AppInterface localAppInterface = bplg.a();
+        this.this$0.a(localAppInterface, ((bqop)localbqns).c);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    this.this$0.jdField_a_of_type_Bpmv.g();
+    this.this$0.jdField_a_of_type_Bqoq.g();
   }
 }
 

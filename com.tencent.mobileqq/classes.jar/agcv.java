@@ -1,15 +1,22 @@
+import Wallet.AcsMsg;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agcv
+public class agcv
   implements View.OnClickListener
 {
-  agcv(agcu paramagcu) {}
+  public agcv(ReminderListFragment paramReminderListFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.b();
+    AcsMsg localAcsMsg = (AcsMsg)paramView.getTag();
+    ReminderListFragment.a(this.a, localAcsMsg);
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

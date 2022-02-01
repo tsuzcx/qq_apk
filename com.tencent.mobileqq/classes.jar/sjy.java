@@ -1,7 +1,6 @@
-public class sjy
+public abstract interface sjy
 {
-  public long a;
-  public long b;
+  public abstract void a(String paramString);
 }
 
 

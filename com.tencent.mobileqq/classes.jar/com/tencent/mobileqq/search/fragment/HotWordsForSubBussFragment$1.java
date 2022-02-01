@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import anxu;
+import aokg;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -11,7 +11,7 @@ class HotWordsForSubBussFragment$1
   
   public void run()
   {
-    byte[] arrayOfByte = this.this$0.a.a(anxu.a);
+    byte[] arrayOfByte = this.this$0.a.a(aokg.a);
     ThreadManager.getUIHandler().post(new HotWordsForSubBussFragment.1.1(this, arrayOfByte));
   }
 }

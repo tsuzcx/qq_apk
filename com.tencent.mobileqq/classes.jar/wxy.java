@@ -1,20 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wxy
-  extends weu
+  extends QQUIEventReceiver<wxp, wmd>
 {
-  public String a;
-  public List<ygo> a;
-  
-  public wxy()
+  public wxy(@NonNull wxp paramwxp)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramwxp);
   }
   
-  public String toString()
+  public void a(@NonNull wxp paramwxp, @NonNull wmd paramwmd)
   {
-    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
+    paramwxp.a.b(paramwmd);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wmd.class;
   }
 }
 

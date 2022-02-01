@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import android.widget.ImageButton;
-import ufh;
+import ufj;
 
 public class WsCommentInputPopupWindow$9
   implements Runnable
 {
-  public WsCommentInputPopupWindow$9(ufh paramufh, int paramInt) {}
+  public WsCommentInputPopupWindow$9(ufj paramufj, int paramInt) {}
   
   public void run()
   {
-    ufh.a(this.this$0, true);
-    ufh.a(this.this$0).setVisibility(0);
-    ufh.b(this.this$0).setVisibility(8);
+    ufj.a(this.this$0, true);
+    ufj.a(this.this$0).setVisibility(0);
+    ufj.b(this.this$0).setVisibility(8);
     if (this.a == 2) {
-      ufh.c(this.this$0).performClick();
+      ufj.c(this.this$0).performClick();
     }
     while (this.a != 3) {
       return;
     }
-    ufh.d(this.this$0).performClick();
+    ufj.d(this.this$0).performClick();
   }
 }
 

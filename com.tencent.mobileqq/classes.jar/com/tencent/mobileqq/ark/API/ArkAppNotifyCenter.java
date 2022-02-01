@@ -3,11 +3,11 @@ package com.tencent.mobileqq.ark.API;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import apis;
-import apiu;
-import apiv;
-import apiw;
-import bgsp;
+import apwi;
+import apwk;
+import apwl;
+import apwm;
+import bhsr;
 import com.tencent.ark.ark;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,16 +30,16 @@ public class ArkAppNotifyCenter
   public static final String TAG = "ark.ArkAppNotifyCenter";
   public static ArkAppNotifyCenter.ArkClickListener arkClickListener;
   private static int callbackId;
-  private static HashMap<String, apiu> notifyRegs = new HashMap();
-  private static apiw receiver;
+  private static HashMap<String, apwk> notifyRegs = new HashMap();
+  private static apwm receiver;
   
   static
   {
     callbackId = -1;
-    Object localObject = new apiv();
+    Object localObject = new apwl();
     notifyRegs.put("com.tencent.troopapp", localObject);
     notifyRegs.put("com.tencent.test.troopapp", localObject);
-    localObject = new apis();
+    localObject = new apwi();
     notifyRegs.put("com.tencent.yundong", localObject);
     notifyRegs.put("com.tencent.gdt.gouwu", localObject);
     notifyRegs.put("com.tencent.gdt.label", localObject);
@@ -54,6 +54,9 @@ public class ArkAppNotifyCenter
     notifyRegs.put("com.tencent.carecomic.normal", localObject);
     notifyRegs.put("com.tencent.carecomic.update", localObject);
     notifyRegs.put("com.tencent.cmshow.mp", localObject);
+    notifyRegs.put("com.tencent.gwh.video", localObject);
+    notifyRegs.put("com.tencent.gwh.graphic", localObject);
+    notifyRegs.put("com.tencent.gwh.illustrated", localObject);
   }
   
   private static void callbackMuteStatus(String paramString)
@@ -93,7 +96,7 @@ public class ArkAppNotifyCenter
   private static ChatMessage getAdArkItemIndexInAIO(List<ChatMessage> paramList, String paramString)
   {
     ChatMessage localChatMessage;
-    if ((paramList == null) || (paramList.isEmpty()) || (bgsp.a(paramString)))
+    if ((paramList == null) || (paramList.isEmpty()) || (bhsr.a(paramString)))
     {
       localChatMessage = null;
       return localChatMessage;
@@ -103,39 +106,50 @@ public class ArkAppNotifyCenter
     {
       for (;;)
       {
-        if (i >= paramList.size()) {
-          break label133;
-        }
-        localChatMessage = (ChatMessage)paramList.get(i);
-        Object localObject;
-        if ((localChatMessage instanceof MessageForArkApp))
+        if (i < paramList.size())
         {
-          localObject = ((MessageForArkApp)localChatMessage).ark_app_message;
-          if (localObject != null)
+          localChatMessage = (ChatMessage)paramList.get(i);
+          if (!(localChatMessage instanceof MessageForArkApp)) {
+            break label187;
+          }
+          Object localObject = ((MessageForArkApp)localChatMessage).ark_app_message;
+          if (localObject == null) {
+            break label187;
+          }
+          localObject = ((ArkAppMessage)localObject).metaList;
+          if (bhsr.a((String)localObject)) {
+            break label187;
+          }
+          try
           {
-            localObject = ((ArkAppMessage)localObject).metaList;
-            if (bgsp.a((String)localObject)) {}
+            localObject = new JSONObject((String)localObject).optJSONObject("gdt");
+            String str = "";
+            JSONObject localJSONObject;
+            if (((JSONObject)localObject).optJSONObject("adInfo") != null)
+            {
+              localJSONObject = ((JSONObject)localObject).optJSONObject("adInfo").optJSONObject("report_info");
+              localObject = str;
+              if (localJSONObject != null)
+              {
+                localJSONObject = localJSONObject.optJSONObject("trace_info");
+                localObject = str;
+                if (localJSONObject == null) {}
+              }
+            }
+            for (localObject = localJSONObject.optString("traceid"); !paramString.equals(localObject); localObject = ((JSONObject)localObject).optString("traceid")) {
+              break label187;
+            }
+            return null;
           }
-        }
-        try
-        {
-          boolean bool = paramString.equals(new JSONObject((String)localObject).optJSONObject("gdt").optString("traceid"));
-          if (bool) {
-            break;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
+          catch (JSONException localJSONException)
           {
             localJSONException.printStackTrace();
           }
         }
       }
+      label187:
       i += 1;
     }
-    label133:
-    return null;
   }
   
   public static QQAppInterface getAppInterface()
@@ -149,10 +163,10 @@ public class ArkAppNotifyCenter
   
   public static boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    apiu localapiu = (apiu)notifyRegs.get(paramString1);
-    if (localapiu != null)
+    apwk localapwk = (apwk)notifyRegs.get(paramString1);
+    if (localapwk != null)
     {
-      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localapiu, paramString1, paramString2, paramString3));
+      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localapwk, paramString1, paramString2, paramString3));
       return true;
     }
     return false;
@@ -161,7 +175,7 @@ public class ArkAppNotifyCenter
   public static void registVolumnReceiver()
   {
     if (receiver == null) {
-      receiver = new apiw(null);
+      receiver = new apwm(null);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
@@ -171,7 +185,7 @@ public class ArkAppNotifyCenter
     BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(receiver, localIntentFilter);
   }
   
-  public static void setNotify(String paramString, WeakReference<apiu> paramWeakReference)
+  public static void setNotify(String paramString, WeakReference<apwk> paramWeakReference)
   {
     if ((paramWeakReference != null) && (paramWeakReference.get() != null))
     {

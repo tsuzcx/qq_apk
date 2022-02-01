@@ -1,29 +1,25 @@
-public class ausa
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+
+class ausa
+  implements bocb
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  ausa(aurp paramaurp) {}
   
-  public String toString()
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    return "TaskInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", packageName=" + this.jdField_b_of_type_JavaLangString + ", appName=" + this.e + ", taskStatus=" + this.d + ", fileSize=" + this.jdField_a_of_type_Long + ", downloadFileSize=" + this.jdField_b_of_type_Long + ", downloadFilePath='" + this.l + '\'' + ", createTime=" + this.c + ", apkChannel=" + this.g + '}';
+    aurp.b(this.a, false);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    aurp.a(this.a, true);
+    aurp.b(this.a, false);
+    bnzb.a(aurp.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
   }
 }
 

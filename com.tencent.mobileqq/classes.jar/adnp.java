@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class adnp
-  implements DialogInterface.OnDismissListener
+class adnp
+  extends JobSegment<axeh, axeh>
 {
-  public adnp(AuthDevActivity paramAuthDevActivity) {}
+  adnp(adnn paramadnn, String paramString, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(JobContext paramJobContext, axeh paramaxeh)
   {
-    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
-      AuthDevActivity.a(this.a, null);
-    }
+    axem.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new adnq(this, this));
   }
 }
 

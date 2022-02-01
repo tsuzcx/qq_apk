@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.os.Bundle;
-import aniz;
+import anuw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -10,7 +10,7 @@ import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class MiniAppTransferModule$3
-  extends aniz
+  extends anuw
 {
   MiniAppTransferModule$3(MiniAppTransferModule paramMiniAppTransferModule) {}
   

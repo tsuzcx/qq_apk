@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import anni;
-import bgjq;
-import bgtn;
+import anzj;
+import bhjr;
+import bhtq;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,16 +26,16 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import pmh;
-import pxy;
-import rkf;
+import pfa;
+import pqi;
+import raz;
 
 public class ReadInJoyDraftboxFragment
   extends IphoneTitleBarFragment
 {
   private List<ReadInJoyDraftboxItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private pxy jdField_a_of_type_Pxy = pmh.a().a();
-  private rkf jdField_a_of_type_Rkf;
+  private pqi jdField_a_of_type_Pqi = pfa.a().a();
+  private raz jdField_a_of_type_Raz;
   
   private void b()
   {
@@ -64,7 +64,7 @@ public class ReadInJoyDraftboxFragment
       if (!ThemeUtil.isInNightMode(localFragmentActivity.app)) {
         break label166;
       }
-      if ((bgjq.b()) || (bgjq.d())) {
+      if ((bhjr.b()) || (bhjr.d())) {
         break label146;
       }
       localFragmentActivity.mSystemBarComp.setStatusBarColor(-7829368);
@@ -72,7 +72,7 @@ public class ReadInJoyDraftboxFragment
     for (;;)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849526);
+      this.leftView.setBackgroundResource(2130849533);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -83,12 +83,12 @@ public class ReadInJoyDraftboxFragment
       localFragmentActivity.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label166:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bgjq.b()) && (!bgjq.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bhjr.b()) && (!bhjr.d()))
       {
         localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bgjq.d())
+      else if (!bhjr.d())
       {
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -103,26 +103,26 @@ public class ReadInJoyDraftboxFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Rkf = new rkf(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Raz = new raz(getActivity(), this.jdField_a_of_type_JavaUtilList);
     if (this.mContentView != null)
     {
-      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365706);
-      paramLayoutInflater.setAdapter(this.jdField_a_of_type_Rkf);
+      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365749);
+      paramLayoutInflater.setAdapter(this.jdField_a_of_type_Raz);
       paramLayoutInflater.setDragEnable(true);
       paramLayoutInflater.setDivider(new ColorDrawable(Color.parseColor("#FFF2F2F2")));
-      paramLayoutInflater.setDividerHeight(bgtn.a(0.5F));
-      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365705));
+      paramLayoutInflater.setDividerHeight(bhtq.a(0.5F));
+      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365748));
     }
-    setTitle(anni.a(2131711765));
+    setTitle(anzj.a(2131711874));
     if (this.leftView != null) {
-      this.leftView.setText(anni.a(2131711766));
+      this.leftView.setText(anzj.a(2131711875));
     }
     a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131560150;
+    return 2131560162;
   }
   
   public void onCreate(Bundle paramBundle)

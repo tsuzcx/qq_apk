@@ -1,13 +1,72 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class wsg
-  implements xfa
+public abstract class wsg<DATA>
 {
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public static final String a;
+  protected DATA a;
+  protected List<wsh<DATA>> a;
+  
+  static
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
+    jdField_a_of_type_JavaLangString = wsg.class.getName();
+  }
+  
+  public wsg()
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  public DATA a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull wsh<DATA> paramwsh)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramwsh)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramwsh);
+    }
+  }
+  
+  protected abstract void a(wuz paramwuz);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((wsh)localIterator.next()).a(paramBoolean, paramDATA);
+    }
+  }
+  
+  public void b()
+  {
+    yuk.b(jdField_a_of_type_JavaLangString, "onInit");
+  }
+  
+  public void b(@NonNull wsh<DATA> paramwsh)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramwsh)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramwsh);
+    }
+  }
+  
+  public void b(wuz paramwuz)
+  {
+    a(paramwuz);
+  }
+  
+  public void c()
+  {
+    yuk.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

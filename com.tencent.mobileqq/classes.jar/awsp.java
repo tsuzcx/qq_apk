@@ -1,64 +1,78 @@
-import android.view.animation.AnimationUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
-public class awsp
+class awsp
+  implements awtp
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString;
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  private final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  awsp(awsk paramawsk, Activity paramActivity) {}
   
-  public void a()
+  public void a(LocationRoom.Venue paramVenue)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
+    if (paramVenue != null)
+    {
+      awsk.a(this.jdField_a_of_type_Awsk);
       return;
     }
-    new awsq(this).execute(new Void[0]);
+    awsk.b(this.jdField_a_of_type_Awsk);
   }
   
-  public void a(int paramInt)
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (paramList != null)
     {
-      if (paramInt == 2)
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
       {
-        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-        this.jdField_a_of_type_Int = 0;
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.jdField_a_of_type_Awsk.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bhmq.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+          awsk.a(this.jdField_a_of_type_Awsk).a(paramList, localBitmap);
+        }
       }
     }
-    else {
-      return;
-    }
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
+  }
+  
+  public void a(boolean paramBoolean, Point paramPoint)
+  {
+    if (paramBoolean)
     {
-      long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
-      paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
-      this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
-      this.jdField_a_of_type_JavaLangStringBuffer.append("FPSCalculator ").append(this.jdField_a_of_type_JavaLangString).append(" frameCount :").append(this.jdField_a_of_type_Int).append(",diffTime :").append(l).append(" fps:").append(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("FPSCalculator", 2, this.jdField_a_of_type_JavaLangStringBuffer.toString());
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
-      if (((paramInt <= 0) || ("".equals(this.jdField_a_of_type_JavaLangString))) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100)) {
-        a();
+      awsk.a(this.jdField_a_of_type_Awsk).setClickable(false);
+      if (blqj.a()) {
+        awsk.a(this.jdField_a_of_type_Awsk).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840551));
       }
     }
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 0;
+    Rect localRect;
+    do
+    {
+      return;
+      awsk.a(this.jdField_a_of_type_Awsk).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840550));
+      return;
+      if (paramPoint == null) {
+        break;
+      }
+      localRect = new Rect();
+      awsk.a(this.jdField_a_of_type_Awsk).getGlobalVisibleRect(localRect);
+    } while (localRect.contains(paramPoint.x, paramPoint.y));
+    awsk.a(this.jdField_a_of_type_Awsk).setClickable(true);
+    awsk.a(this.jdField_a_of_type_Awsk).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840552));
   }
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean, awtq paramawtq)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_Int += 1;
-    }
+    awsk.a(this.jdField_a_of_type_Awsk, paramBoolean, paramawtq);
   }
 }
 

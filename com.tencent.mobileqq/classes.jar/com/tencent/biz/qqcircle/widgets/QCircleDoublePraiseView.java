@@ -1,5 +1,8 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aaak;
+import aaam;
+import aabg;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -16,17 +19,14 @@ import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
-import uxx;
-import vrc;
-import vrg;
-import vvy;
-import zwp;
-import zwr;
-import zxl;
+import uzg;
+import vtn;
+import vtr;
+import vzb;
 
 public class QCircleDoublePraiseView
   extends FrameLayout
-  implements zwr, zxl<QCircleReportBean>
+  implements aaam, aabg<QCircleReportBean>
 {
   private int jdField_a_of_type_Int;
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
@@ -54,8 +54,8 @@ public class QCircleDoublePraiseView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131560794, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373789));
+    LayoutInflater.from(getContext()).inflate(2131560825, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373915));
   }
   
   private boolean a()
@@ -71,7 +71,7 @@ public class QCircleDoublePraiseView
       return;
     }
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(getContext(), 2130772212));
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new vvy(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new vzb(this));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
     c();
@@ -80,18 +80,18 @@ public class QCircleDoublePraiseView
   
   private void c()
   {
-    uxx.a(getContext(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, a());
+    uzg.a(getContext(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, a());
   }
   
   private void d()
   {
     if (a()) {
-      vrg.a(69, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, this.b, a());
+      vtr.a(69, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, this.b, a());
     }
     while (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) {
       return;
     }
-    vrc.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 69, 2, this.b, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, b());
+    vtn.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 69, 2, this.b, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, b());
   }
   
   protected int a()
@@ -119,14 +119,14 @@ public class QCircleDoublePraiseView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    zwp.a().a(this);
+    aaak.a().a(this);
     QLog.d("QCircleDoublePraiseView", 1, "registerReceiver");
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);

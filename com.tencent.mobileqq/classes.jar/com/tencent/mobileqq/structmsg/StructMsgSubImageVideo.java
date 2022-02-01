@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import anni;
-import bcvr;
-import bcvx;
-import bcxj;
+import anzj;
+import bdok;
+import bdoq;
+import bdqc;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -32,46 +32,46 @@ public class StructMsgSubImageVideo
     super(paramBundle);
   }
   
-  public StructMsgSubImageVideo(bcxj parambcxj)
+  public StructMsgSubImageVideo(bdqc parambdqc)
   {
-    super(parambcxj);
-    if (parambcxj.a == null) {}
+    super(parambdqc);
+    if (parambdqc.a == null) {}
     for (;;)
     {
       return;
-      Iterator localIterator = parambcxj.a.iterator();
+      Iterator localIterator = parambdqc.a.iterator();
       while (localIterator.hasNext())
       {
-        parambcxj = (bcxj)localIterator.next();
+        parambdqc = (bdqc)localIterator.next();
         Object localObject;
-        if ((parambcxj == null) || (!"item".equals(parambcxj.b)))
+        if ((parambdqc == null) || (!"item".equals(parambdqc.b)))
         {
           localObject = new StringBuilder().append("StructMsgSubImageVideo: null or wrong node ");
-          if (parambcxj == null) {}
-          for (parambcxj = "null";; parambcxj = parambcxj.b)
+          if (parambdqc == null) {}
+          for (parambdqc = "null";; parambdqc = parambdqc.b)
           {
-            Log.i("StructMsgSubImageVideo", parambcxj);
+            Log.i("StructMsgSubImageVideo", parambdqc);
             break;
           }
         }
-        if ((parambcxj.a == null) || (parambcxj.a.isEmpty()))
+        if ((parambdqc.a == null) || (parambdqc.a.isEmpty()))
         {
           Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: no child in node");
         }
         else
         {
-          localObject = parambcxj.a("apptype");
+          localObject = parambdqc.a("apptype");
           if (!"10".equals(localObject))
           {
             Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong app type " + (String)localObject);
           }
           else
           {
-            localObject = parambcxj.a("type");
+            localObject = parambdqc.a("type");
             if ("0".equals(localObject)) {
-              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(parambcxj);
+              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(parambdqc);
             } else if ("1".equals(localObject)) {
-              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(parambcxj);
+              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(parambdqc);
             } else {
               Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong type " + (String)localObject);
             }
@@ -117,7 +117,7 @@ public class StructMsgSubImageVideo
   
   public String getSourceName()
   {
-    return anni.a(2131713310);
+    return anzj.a(2131713419);
   }
   
   public View getSourceView(Context paramContext, View paramView)
@@ -160,24 +160,24 @@ public class StructMsgSubImageVideo
   
   protected void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    bcvr localbcvr = new bcvr(this, new bcvx());
+    bdok localbdok = new bdok(this, new bdoq());
     try
     {
-      localbcvr.setOutput(paramByteArrayOutputStream, paramString);
-      localbcvr.startDocument(paramString, Boolean.valueOf(true));
-      localbcvr.startTag(null, "msg");
-      localbcvr.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localbcvr.attribute(null, "flag", String.valueOf(this.mFlag));
-      localbcvr.attribute(null, "brief", this.mMsgBrief);
+      localbdok.setOutput(paramByteArrayOutputStream, paramString);
+      localbdok.startDocument(paramString, Boolean.valueOf(true));
+      localbdok.startTag(null, "msg");
+      localbdok.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localbdok.attribute(null, "flag", String.valueOf(this.mFlag));
+      localbdok.attribute(null, "brief", this.mMsgBrief);
       if (this.videoItem != null) {
-        this.videoItem.toXml(localbcvr);
+        this.videoItem.toXml(localbdok);
       }
       if (this.imageItem != null) {
-        this.imageItem.toXml(localbcvr);
+        this.imageItem.toXml(localbdok);
       }
-      localbcvr.endTag(null, "msg");
-      localbcvr.endDocument();
-      localbcvr.flush();
+      localbdok.endTag(null, "msg");
+      localbdok.endDocument();
+      localbdok.flush();
       return;
     }
     catch (IOException paramByteArrayOutputStream)

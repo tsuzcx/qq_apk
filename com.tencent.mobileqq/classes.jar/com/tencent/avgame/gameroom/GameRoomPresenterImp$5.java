@@ -1,16 +1,16 @@
 package com.tencent.avgame.gameroom;
 
-import nag;
-import nfu;
+import nbk;
+import nhp;
 
 public class GameRoomPresenterImp$5
   implements Runnable
 {
-  public GameRoomPresenterImp$5(nag paramnag) {}
+  public GameRoomPresenterImp$5(nbk paramnbk) {}
   
   public void run()
   {
-    nfu.a().b(0);
+    nhp.a().b(0);
   }
 }
 

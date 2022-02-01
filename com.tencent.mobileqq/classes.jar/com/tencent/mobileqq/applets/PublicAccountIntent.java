@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.applets;
 
 import android.content.Context;
-import anil;
+import anui;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
 
 public class PublicAccountIntent
   extends NewIntent
 {
-  private anil a;
+  private anui a;
   
   public PublicAccountIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  public anil a()
+  public anui a()
   {
     return this.a;
   }
   
-  public void a(anil paramanil)
+  public void a(anui paramanui)
   {
-    this.a = paramanil;
+    this.a = paramanui;
   }
 }
 

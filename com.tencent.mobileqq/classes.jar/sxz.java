@@ -1,10 +1,22 @@
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+
 public class sxz
+  implements syg
 {
-  public float a;
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public sxz(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new sya(this, paramInt1, paramInt2));
+  }
 }
 
 

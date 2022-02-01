@@ -1,25 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
-public class axmj
-  implements View.OnTouchListener
+public abstract interface axmj
 {
-  public axmj(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
-    }
-    for (;;)
-    {
-      return false;
-      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

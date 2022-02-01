@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pmk;
-import pxl;
+import pfd;
+import ppv;
 
 public class InterestLabelInfoModule$4
   implements Runnable
 {
-  public InterestLabelInfoModule$4(pxl parampxl, int paramInt) {}
+  public InterestLabelInfoModule$4(ppv paramppv, int paramInt) {}
   
   public void run()
   {
-    pmk.a().a(this.a);
+    pfd.a().a(this.a);
   }
 }
 

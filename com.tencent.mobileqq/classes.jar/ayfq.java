@@ -1,53 +1,61 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayfq
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public ayfq(OCRResultActivity paramOCRResultActivity) {}
+  public ayfq(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
-    {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
-      {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if ((localObject.length != 0) && (j == 1))
-        {
-          localObject[0].onClick(paramView);
-          bcst.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
-        }
-      }
+    String str3 = ShortVideoCommentsView.a(this.a).getText().toString();
+    if (str3.equals("")) {
+      this.a.a(this.a.getContext().getResources().getString(2131695717));
     }
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i != 0) {
-        return true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (str3.length() > 140)
+      {
+        this.a.a(this.a.getContext().getResources().getString(2131695718));
       }
-      if ((j == 1) && (!paramView.isFocused())) {
-        bcst.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      else
+      {
+        Comments.Comment localComment = new Comments.Comment();
+        localComment.jdField_c_of_type_Long = Long.parseLong(this.a.a.getCurrentAccountUin());
+        localComment.jdField_c_of_type_JavaLangString = "";
+        String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + this.a.a.getCurrentAccountUin(), 4).getString("nick", "");
+        String str1 = str2;
+        if (TextUtils.isEmpty(str2)) {
+          str1 = this.a.a.getCurrentNickname();
+        }
+        localComment.jdField_b_of_type_JavaLangString = str1;
+        localComment.jdField_a_of_type_JavaLangString = str3;
+        localComment.jdField_b_of_type_Long = (System.currentTimeMillis() / 1000L);
+        localComment.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo = ShortVideoCommentsView.a(this.a);
+        if ((ShortVideoCommentsView.a(this.a) != null) && ((ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long > 0L) || (ShortVideoCommentsView.a(this.a).jdField_d_of_type_Long > 0L)))
+        {
+          localComment.jdField_e_of_type_JavaLangString = ShortVideoCommentsView.a(this.a).jdField_c_of_type_JavaLangString;
+          localComment.jdField_d_of_type_JavaLangString = ShortVideoCommentsView.a(this.a).jdField_b_of_type_JavaLangString;
+          localComment.jdField_e_of_type_Long = ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long;
+          localComment.f = ShortVideoCommentsView.a(this.a).jdField_d_of_type_Long;
+          localComment.jdField_c_of_type_Int = ShortVideoCommentsView.a(this.a).jdField_b_of_type_Int;
+        }
+        ShortVideoCommentsView.a(this.a).a(localComment);
+        ShortVideoCommentsView.a(this.a, localComment);
+        bdll.b(this.a.a, "dc00899", "grp_lbs", "", "new_thing", "clk_reply", 0, 0, "", "", "", "");
       }
-      return paramView.onTouchEvent(paramMotionEvent);
     }
   }
 }

@@ -1,21 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
+import java.util.Comparator;
 
-final class atld
-  implements View.OnClickListener
+public class atld
+  implements Comparator<Long>
 {
-  atld(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  public atld(QfileLocalFileDelMediaTabView.1 param1) {}
   
-  public void onClick(View paramView)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, false);
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 

@@ -1,22 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFollowListRsp;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
 
 class voo
-  implements zxa<FeedCloudRead.StGetFollowListRsp>
+  implements vxz
 {
-  voo(vol paramvol, vor paramvor) {}
+  voo(von paramvon) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp)
+  public void a(String paramString)
   {
-    QLog.d("QCircleSpecialFollowMgr", 1, "loadMoreSpecialFollowList: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFollowListRsp != null))
-    {
-      vol.a(this.jdField_a_of_type_Vol).obtainMessage(1004, new vos(paramStGetFollowListRsp, vor.a(this.jdField_a_of_type_Vor), null)).sendToTarget();
-      return;
-    }
-    vol.a(this.jdField_a_of_type_Vol).obtainMessage(1005).sendToTarget();
+    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+    localQCircleInitBean.setUin(paramString);
+    localQCircleInitBean.setFromReportBean(this.a.a().clone().setElementIdStr("portrait"));
+    uyx.b(this.a.a.getContext(), localQCircleInitBean);
   }
 }
 

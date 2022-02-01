@@ -1,15 +1,15 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acop;
+import acsr;
 
 public class GdtMvDownloadBtnPresenter$6
   implements Runnable
 {
-  public GdtMvDownloadBtnPresenter$6(acop paramacop, GdtMvAppBtnData paramGdtMvAppBtnData) {}
+  public GdtMvDownloadBtnPresenter$6(acsr paramacsr, GdtMvAppBtnData paramGdtMvAppBtnData) {}
   
   public void run()
   {
-    acop.b(this.this$0, this.a);
+    acsr.b(this.this$0, this.a);
   }
 }
 

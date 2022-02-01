@@ -1,24 +1,23 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ohd
-  implements Animation.AnimationListener
+class ohd
+  implements ViewBase.OnClickListener
 {
-  public ohd(ReadInJoyNaviController.2 param2) {}
+  ohd(ohc paramohc) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(ViewBase paramViewBase)
   {
-    oha.a(this.a.this$0, true);
-    oha.a(this.a.this$0).setAlpha(0.0F);
-    oha.a(this.a.this$0).removeView(oha.a(this.a.this$0));
+    if (paramViewBase.getEventAttachedData() == null)
+    {
+      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
+      return;
+    }
+    ogs.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
+    ozs.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

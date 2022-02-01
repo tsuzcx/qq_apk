@@ -1,38 +1,59 @@
-import android.graphics.RectF;
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.FaceImageViewer;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bnws
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends MSFServlet
 {
-  public bnws(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, FaceImageViewer paramFaceImageViewer, NodeItem paramNodeItem) {}
-  
-  public void onGlobalLayout()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
     }
-    for (;;)
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    String str2;
+    label151:
+    do
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.getLayoutParams();
-      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      localMarginLayoutParams.leftMargin = i;
-      localMarginLayoutParams.topMargin = j;
-      localMarginLayoutParams.rightMargin = k;
-      localMarginLayoutParams.bottomMargin = m;
-      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
-      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
-      this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.setLayoutParams(localMarginLayoutParams);
-      return;
-      this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      do
+      {
+        return;
+        str2 = paramFromServiceMsg.getServiceCmd();
+      } while (str2 == null);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+        if (!bool) {
+          break label151;
+        }
+      }
+      for (String str1 = "";; str1 = "not")
+      {
+        QLog.d("MonitorServlet", 2, str1 + " success");
+        if (!str2.equals("TianShu.UserActionMultiReport")) {
+          break;
+        }
+        bnwq.a().a(paramIntent, paramFromServiceMsg);
+        return;
+      }
+    } while (!str2.equals("TianShu.GetAds"));
+    bnwq.a().b(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
     }
   }
 }

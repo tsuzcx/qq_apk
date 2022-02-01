@@ -1,40 +1,33 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.Dis;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adiw
-  implements View.OnFocusChangeListener
+  implements adbw
 {
-  public adiw(AddAccountActivity paramAddAccountActivity) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public int a()
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
-      if (true == paramBoolean)
-      {
-        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
-          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
-        }
-        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText) || (true != paramBoolean))
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
+    return 3000;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.Dis();
+    paramQQAppInterface.dis_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.dis.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3008;
   }
 }
 

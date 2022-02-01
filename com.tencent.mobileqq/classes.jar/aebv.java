@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aebv
-  extends anif
+public final class aebv
+  implements DialogInterface.OnClickListener
 {
-  public aebv(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aebv(aebz paramaebz, String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e();
-    if (paramBoolean)
-    {
-      if (paramBoolean1.booleanValue()) {
-        DiscussionInfoCardActivity.e(this.a);
-      }
-      return;
+    if (this.jdField_a_of_type_Aebz != null) {
+      this.jdField_a_of_type_Aebz.a();
     }
-    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
+    bdll.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.jdField_a_of_type_Int + "", "1", "");
+    bhoq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,11 +1,8 @@
-public class bbzw
+import java.util.List;
+
+public abstract interface bbzw
 {
-  public boolean a;
-  
-  public bbzw(bbzv parambbzv)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void a(int paramInt, List<? extends bbzg> paramList);
 }
 
 

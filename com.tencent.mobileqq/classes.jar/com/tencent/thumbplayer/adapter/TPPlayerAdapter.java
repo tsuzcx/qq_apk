@@ -563,6 +563,14 @@ public class TPPlayerAdapter
     return l2;
   }
   
+  public int getNativePlayerId()
+  {
+    if (this.mPlayerBase != null) {
+      return this.mPlayerBase.getNativePlayerId();
+    }
+    return 0;
+  }
+  
   public long getPlayableDurationMs()
   {
     long l1 = 0L;

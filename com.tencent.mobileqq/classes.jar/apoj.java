@@ -1,202 +1,934 @@
+import android.content.Context;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.YTFace.cluster.FaceCluster;
+import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARFacePreviewResample;
+import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog.3;
+import com.tencent.mobileqq.armap.ARMapTracer;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class apoj
 {
-  private static boolean a;
+  public static Handler a;
+  public static boolean a;
+  public int a;
+  long jdField_a_of_type_Long;
+  public Context a;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new apok(this);
+  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  public apnv a;
+  apol jdField_a_of_type_Apol;
+  public FaceCluster a;
+  ARScanStarFaceConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo;
+  private ARFacePreviewResample jdField_a_of_type_ComTencentMobileqqArArengineARFacePreviewResample;
+  public Object a;
+  public List<apom> a;
+  public int b;
+  long jdField_b_of_type_Long;
+  Handler jdField_b_of_type_AndroidOsHandler;
+  HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
+  public List<apom> b;
+  volatile boolean jdField_b_of_type_Boolean;
+  public int c;
+  public long c;
+  public volatile boolean c;
+  int d;
+  public volatile boolean d;
+  final int e;
+  public volatile boolean e;
+  public int f;
+  volatile boolean f;
   
-  private static String a(String paramString)
+  static
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(ArkAppCenter.d());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".crash_file");
-    return localStringBuilder.toString();
+    jdField_a_of_type_Boolean = true;
   }
   
-  public static void a()
+  public apoj()
   {
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_e_of_type_Int = 10;
+    this.jdField_f_of_type_Int = 10;
+    this.jdField_c_of_type_Int = 90;
+    if (bdax.d(bdax.g)) {
+      this.jdField_c_of_type_Int = 270;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "ARLocalFaceRecog  rotateDegree = " + this.jdField_c_of_type_Int);
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    if (Build.MODEL.equals("vivo X6Plus A")) {
+      bool = true;
+    }
+    if (ARMapTracer.a() == 3) {
+      return true;
+    }
+    return bool;
+  }
+  
+  public int a(float[][] paramArrayOfFloat, float[] paramArrayOfFloat1)
+  {
+    int k = paramArrayOfFloat.length;
+    float[] arrayOfFloat = new float[k];
     int i = 0;
-    try
+    if (i < k)
     {
-      a = true;
-      Object localObject1 = ArkAppCenter.d();
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.CrashProtect", 2, "profiling clearAllCrashProtectedMark");
+      if (paramArrayOfFloat[i] != null) {
+        arrayOfFloat[i] = this.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuSimilarity(paramArrayOfFloat[i], paramArrayOfFloat1);
       }
-      localObject1 = new File((String)localObject1);
-      if (localObject1 != null)
+      for (;;)
       {
-        localObject1 = ((File)localObject1).listFiles();
-        if ((localObject1 != null) && (localObject1.length > 0))
+        i += 1;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARLocalFaceRecog", 2, "findFaceIndexByFaceFeature2 faceFeature is null,i = " + i);
+        }
+      }
+    }
+    float f1 = arrayOfFloat[0];
+    i = 0;
+    int j = -1;
+    while (i < k)
+    {
+      float f2 = f1;
+      if (arrayOfFloat[i] >= f1)
+      {
+        f2 = arrayOfFloat[i];
+        j = i;
+      }
+      i += 1;
+      f1 = f2;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "findFaceIndexByFaceFeature targetFaceFeature = " + Arrays.toString(paramArrayOfFloat1));
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "findFaceIndexByFaceFeature newFaceFeature = " + Arrays.toString(paramArrayOfFloat[0]));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "findFaceIndexByFaceFeature2 index = " + j + ",finalSimilarity = " + f1);
+    }
+    if ((!Float.isNaN(f1)) || (f1 < 0.5D)) {
+      j = -1;
+    }
+    return j;
+  }
+  
+  ARScanStarFaceActInfo a(String paramString)
+  {
+    Object localObject3 = null;
+    Object localObject1 = null;
+    Object localObject2 = localObject3;
+    int i;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject2 = localObject3;
+      if (this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo != null)
+      {
+        localObject2 = localObject3;
+        if (this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a != null)
         {
-          int j = localObject1.length;
-          while (i < j)
+          localObject2 = localObject3;
+          if (this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a.length > 0)
           {
-            Object localObject3 = localObject1[i];
-            String str = localObject3.getName();
-            if ((str != null) && (str.contains(".crash_file")))
+            int j = this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a.length;
+            i = 0;
+            localObject2 = localObject1;
+            if (i < j)
             {
-              if (QLog.isColorLevel()) {
-                QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling clearCrashProtectedMark app=", str });
+              localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a[i];
+              if ((localObject2 == null) || (!paramString.equals(((ARScanStarFaceActInfo)localObject2).jdField_b_of_type_JavaLangString))) {
+                break label119;
               }
-              localObject3.delete();
+              localObject1 = localObject2;
+            }
+          }
+        }
+      }
+    }
+    label119:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return localObject2;
+    }
+  }
+  
+  public void a()
+  {
+    boolean bool = apjx.a();
+    if (bool)
+    {
+      apjz.a(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster = FaceCluster.getInstance();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace]notifyResourceDownloadFinish ,isResourceReady = " + bool + ",FaceScanModelsLoader.hasFaceModelInit = " + apjz.jdField_b_of_type_Boolean);
+      }
+      return;
+      apjz.jdField_b_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(long paramLong, byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (!this.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean) || (!apjz.jdField_b_of_type_Boolean)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          int i = this.jdField_a_of_type_JavaUtilList.size();
+          if ((QLog.isColorLevel()) && (jdField_a_of_type_Boolean)) {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "onPreviewFrame totalFaceSize = " + i);
+          }
+          if (i == 0)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "ARFaceTest onPreviewFrame totalFaceSize is 0,frameIdx = " + paramLong + ",isPreparingData = " + this.jdField_d_of_type_Boolean);
+          }
+        }
+      }
+      if ((QLog.isColorLevel()) && (jdField_a_of_type_Boolean)) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, " Try to track Face, isTracking = " + this.jdField_f_of_type_Boolean + ",frameIndex = " + paramLong);
+      }
+    } while (this.jdField_f_of_type_Boolean);
+    if ((QLog.isColorLevel()) && (jdField_a_of_type_Boolean)) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "ARFaceTest Send track Face msg frameIdx = " + paramLong);
+    }
+    if (jdField_a_of_type_AndroidOsHandler.hasMessages(3)) {
+      jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqArArengineARFacePreviewResample.a(paramArrayOfByte);
+    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArArengineARFacePreviewResample.a();
+    this.jdField_b_of_type_Long = paramLong;
+    ??? = Message.obtain();
+    ((Message)???).what = 3;
+    ((Message)???).obj = paramArrayOfByte;
+    jdField_a_of_type_AndroidOsHandler.sendMessage((Message)???);
+  }
+  
+  public void a(ARFacePreviewResample paramARFacePreviewResample)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArArengineARFacePreviewResample = paramARFacePreviewResample;
+  }
+  
+  public void a(List<apom> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        apom localapom = (apom)localIterator.next();
+        if ((localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus != null) && (localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.nativeFaceAlignmentPtr != 0L)) {
+          FaceCluster.getInstance().releaseNativeFaceStatus(localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus);
+        }
+      }
+      paramList.clear();
+    }
+  }
+  
+  public void a(List<apom> paramList, apnv paramapnv)
+  {
+    Object localObject2 = null;
+    int i = 0;
+    int n = 0;
+    int j = 0;
+    if (paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length > 2) {
+      if (paramapnv.jdField_a_of_type_JavaUtilArrayList == null) {
+        break label1386;
+      }
+    }
+    label306:
+    label1383:
+    label1386:
+    for (int k = paramapnv.jdField_a_of_type_JavaUtilArrayList.size();; k = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "filterCloudFaceResult starCount = " + k);
+      }
+      Object localObject3;
+      Object localObject1;
+      int m;
+      if (k > 0)
+      {
+        if (k == 1)
+        {
+          localObject3 = new apom();
+          n = ((apnw)paramapnv.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int;
+          ((apom)localObject3).jdField_a_of_type_Boolean = true;
+          ((apom)localObject3).jdField_b_of_type_Int = 0;
+          ((apom)localObject3).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[n];
+          i = 0;
+          while (i < k)
+          {
+            localObject1 = (apnw)paramapnv.jdField_a_of_type_JavaUtilArrayList.get(i);
+            if (((apnw)localObject1).jdField_a_of_type_Int == n)
+            {
+              ((apom)localObject3).jdField_a_of_type_Int = 2;
+              ((apom)localObject3).jdField_a_of_type_JavaLangString = ((apnw)localObject1).jdField_a_of_type_JavaLangString;
+              ((apom)localObject3).jdField_b_of_type_JavaLangString = ((apnw)localObject1).jdField_b_of_type_JavaLangString;
+              ((apom)localObject3).c = String.valueOf(((apnw)localObject1).jdField_a_of_type_Long);
+              ((apom)localObject3).d = ((apnw)localObject1).c;
+              ((apom)localObject3).e = ((apnw)localObject1).d;
+              ((apom)localObject3).f = ((apnw)localObject1).e;
+              ((apom)localObject3).jdField_a_of_type_Float = ((apnw)localObject1).jdField_a_of_type_Float;
             }
             i += 1;
           }
+          m = 0;
+          i = j;
+          if (i < paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length)
+          {
+            j = m;
+            localObject1 = localObject2;
+            if (i != n)
+            {
+              if (localObject2 != null) {
+                break label306;
+              }
+              localObject1 = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
+              j = i;
+            }
+            for (;;)
+            {
+              i += 1;
+              m = j;
+              localObject2 = localObject1;
+              break;
+              j = m;
+              localObject1 = localObject2;
+              if (paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].width * paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].height > ((FaceStatus)localObject2).width * ((FaceStatus)localObject2).height)
+              {
+                localObject1 = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
+                j = i;
+              }
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "filterCloudFaceResult starCount = " + k + ",bigFaceID = " + m);
+          }
+          paramapnv = new apom();
+          paramapnv.jdField_a_of_type_Int = 1;
+          paramapnv.jdField_a_of_type_JavaLangString = "";
+          paramapnv.jdField_a_of_type_Boolean = true;
+          paramapnv.jdField_a_of_type_ComTencentYTFaceModelFaceStatus = ((FaceStatus)localObject2);
+          paramapnv.jdField_b_of_type_Int = 1;
+          paramList.add(localObject3);
+          paramList.add(paramapnv);
+          return;
+        }
+        if (k == 2)
+        {
+          localObject1 = new apom();
+          ((apom)localObject1).jdField_a_of_type_Boolean = true;
+          ((apom)localObject1).jdField_b_of_type_Int = 0;
+          ((apom)localObject1).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[0];
+          localObject2 = new apom();
+          ((apom)localObject2).jdField_a_of_type_Boolean = true;
+          ((apom)localObject2).jdField_b_of_type_Int = 1;
+          ((apom)localObject2).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[1];
+          while (i < k)
+          {
+            localObject3 = (apnw)paramapnv.jdField_a_of_type_JavaUtilArrayList.get(i);
+            if (((apnw)localObject3).jdField_a_of_type_Int == 0)
+            {
+              ((apom)localObject1).jdField_a_of_type_Int = 2;
+              ((apom)localObject1).jdField_a_of_type_JavaLangString = ((apnw)localObject3).jdField_a_of_type_JavaLangString;
+              ((apom)localObject1).jdField_b_of_type_JavaLangString = ((apnw)localObject3).jdField_b_of_type_JavaLangString;
+              ((apom)localObject1).c = String.valueOf(((apnw)localObject3).jdField_a_of_type_Long);
+              ((apom)localObject1).d = ((apnw)localObject3).c;
+              ((apom)localObject1).e = ((apnw)localObject3).d;
+              ((apom)localObject1).f = ((apnw)localObject3).e;
+              ((apom)localObject1).jdField_a_of_type_Float = ((apnw)localObject3).jdField_a_of_type_Float;
+            }
+            if (((apnw)localObject3).jdField_a_of_type_Int == 1)
+            {
+              ((apom)localObject2).jdField_a_of_type_Int = 2;
+              ((apom)localObject2).jdField_a_of_type_JavaLangString = ((apnw)localObject3).jdField_a_of_type_JavaLangString;
+              ((apom)localObject2).jdField_b_of_type_JavaLangString = ((apnw)localObject3).jdField_b_of_type_JavaLangString;
+              ((apom)localObject2).c = String.valueOf(((apnw)localObject3).jdField_a_of_type_Long);
+              ((apom)localObject2).d = ((apnw)localObject3).c;
+              ((apom)localObject2).e = ((apnw)localObject3).d;
+              ((apom)localObject2).f = ((apnw)localObject3).e;
+              ((apom)localObject2).jdField_a_of_type_Float = ((apnw)localObject3).jdField_a_of_type_Float;
+            }
+            i += 1;
+          }
+          paramList.add(localObject1);
+          paramList.add(localObject2);
+          return;
+        }
+        localObject2 = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[0];
+        m = 0;
+        i = 0;
+        while (i < paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length)
+        {
+          localObject1 = localObject2;
+          if (paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].width * paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].height > ((FaceStatus)localObject2).width * ((FaceStatus)localObject2).height)
+          {
+            localObject1 = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
+            m = i;
+          }
+          i += 1;
+          localObject2 = localObject1;
+        }
+        j = -2;
+        localObject1 = null;
+        i = 0;
+        if (i < paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length)
+        {
+          if (i == m) {
+            break label1383;
+          }
+          if (localObject1 == null)
+          {
+            localObject1 = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
+            j = i;
+          }
         }
       }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].width * paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].height > ((FaceStatus)localObject1).width * ((FaceStatus)localObject1).height)
+        {
+          localObject1 = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
+          j = i;
+          continue;
+          localObject3 = new apom();
+          ((apom)localObject3).jdField_a_of_type_Boolean = true;
+          ((apom)localObject3).jdField_b_of_type_Int = 0;
+          ((apom)localObject3).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = ((FaceStatus)localObject2);
+          localObject2 = new apom();
+          ((apom)localObject2).jdField_a_of_type_Boolean = true;
+          ((apom)localObject2).jdField_b_of_type_Int = 1;
+          ((apom)localObject2).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = ((FaceStatus)localObject1);
+          i = n;
+          while (i < k)
+          {
+            localObject1 = (apnw)paramapnv.jdField_a_of_type_JavaUtilArrayList.get(i);
+            if (((apnw)localObject1).jdField_a_of_type_Int == m)
+            {
+              ((apom)localObject3).jdField_a_of_type_Int = 2;
+              ((apom)localObject3).jdField_a_of_type_JavaLangString = ((apnw)localObject1).jdField_a_of_type_JavaLangString;
+              ((apom)localObject3).jdField_b_of_type_JavaLangString = ((apnw)localObject1).jdField_b_of_type_JavaLangString;
+              ((apom)localObject3).c = String.valueOf(((apnw)localObject1).jdField_a_of_type_Long);
+              ((apom)localObject3).d = ((apnw)localObject1).c;
+              ((apom)localObject3).e = ((apnw)localObject1).d;
+              ((apom)localObject3).f = ((apnw)localObject1).e;
+              ((apom)localObject3).jdField_a_of_type_Float = ((apnw)localObject1).jdField_a_of_type_Float;
+            }
+            if (((apnw)localObject1).jdField_a_of_type_Int == j)
+            {
+              ((apom)localObject2).jdField_a_of_type_Int = 2;
+              ((apom)localObject2).jdField_a_of_type_JavaLangString = ((apnw)localObject1).jdField_a_of_type_JavaLangString;
+              ((apom)localObject2).jdField_b_of_type_JavaLangString = ((apnw)localObject1).jdField_b_of_type_JavaLangString;
+              ((apom)localObject2).c = String.valueOf(((apnw)localObject1).jdField_a_of_type_Long);
+              ((apom)localObject2).d = ((apnw)localObject1).c;
+              ((apom)localObject2).e = ((apnw)localObject1).d;
+              ((apom)localObject2).f = ((apnw)localObject1).e;
+              ((apom)localObject2).jdField_a_of_type_Float = ((apnw)localObject1).jdField_a_of_type_Float;
+            }
+            i += 1;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "filterCloudFaceResult starCount = " + k + ",bigFaceID = " + m + ",secondBigFaceID = " + j);
+          }
+          paramList.add(localObject3);
+          paramList.add(localObject2);
+          return;
+          paramapnv = a(paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus);
+          localObject1 = new apom();
+          ((apom)localObject1).jdField_a_of_type_Int = 1;
+          ((apom)localObject1).jdField_a_of_type_JavaLangString = "";
+          ((apom)localObject1).jdField_a_of_type_Boolean = true;
+          ((apom)localObject1).jdField_b_of_type_Int = 0;
+          if (paramapnv != null) {
+            ((apom)localObject1).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = paramapnv[0];
+          }
+          localObject2 = new apom();
+          ((apom)localObject2).jdField_a_of_type_Int = 1;
+          ((apom)localObject2).jdField_a_of_type_JavaLangString = "";
+          ((apom)localObject2).jdField_a_of_type_Boolean = true;
+          ((apom)localObject2).jdField_b_of_type_Int = 1;
+          if (paramapnv != null) {
+            ((apom)localObject2).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = paramapnv[1];
+          }
+          paramList.add(localObject1);
+          paramList.add(localObject2);
+          return;
+        }
+      }
+    }
+  }
+  
+  void a(FaceStatus[] paramArrayOfFaceStatus1, FaceStatus[] paramArrayOfFaceStatus2)
+  {
+    if (paramArrayOfFaceStatus2 == null) {
       return;
     }
-    finally {}
-  }
-  
-  /* Error */
-  public static boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: getstatic 46	apoj:a	Z
-    //   8: ifne +87 -> 95
-    //   11: aload_0
-    //   12: invokestatic 13	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   15: ifne +80 -> 95
-    //   18: aload_0
-    //   19: invokestatic 86	apoj:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore_3
-    //   23: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   26: ifeq +31 -> 57
-    //   29: ldc 54
-    //   31: iconst_2
-    //   32: iconst_4
-    //   33: anewarray 4	java/lang/Object
-    //   36: dup
-    //   37: iconst_0
-    //   38: ldc 88
-    //   40: aastore
-    //   41: dup
-    //   42: iconst_1
-    //   43: aload_0
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_2
-    //   47: ldc 90
-    //   49: aastore
-    //   50: dup
-    //   51: iconst_3
-    //   52: aload_3
-    //   53: aastore
-    //   54: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   57: new 29	java/io/File
-    //   60: dup
-    //   61: aload_3
-    //   62: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
-    //   65: astore_0
-    //   66: aload_0
-    //   67: invokevirtual 93	java/io/File:createNewFile	()Z
-    //   70: istore_2
-    //   71: iload_2
-    //   72: ifeq +18 -> 90
-    //   75: ldc 2
-    //   77: monitorexit
-    //   78: iload_1
-    //   79: ireturn
-    //   80: astore_0
-    //   81: ldc 54
-    //   83: iconst_1
-    //   84: ldc 95
-    //   86: aload_0
-    //   87: invokestatic 98	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   90: iconst_0
-    //   91: istore_1
-    //   92: goto -17 -> 75
-    //   95: iconst_0
-    //   96: istore_1
-    //   97: goto -22 -> 75
-    //   100: astore_0
-    //   101: ldc 2
-    //   103: monitorexit
-    //   104: aload_0
-    //   105: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	106	0	paramString	String
-    //   1	96	1	bool1	boolean
-    //   70	2	2	bool2	boolean
-    //   22	40	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   66	71	80	java/io/IOException
-    //   5	57	100	finally
-    //   57	66	100	finally
-    //   66	71	100	finally
-    //   81	90	100	finally
-  }
-  
-  public static boolean b(String paramString)
-  {
-    boolean bool1 = true;
-    for (;;)
+    int k = paramArrayOfFaceStatus2.length;
+    int i = 0;
+    label11:
+    FaceStatus localFaceStatus;
+    if (i < k)
     {
-      try
-      {
-        if ((!a) && (!TextUtils.isEmpty(paramString)))
-        {
-          String str = a(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling clearCrashProtectedMark appname=", paramString, ",filePath=", str });
-          }
-          boolean bool2 = new File(str).delete();
-          if (bool2) {
-            return bool1;
-          }
-        }
-        else
-        {
-          bool1 = false;
-          continue;
-        }
-        bool1 = false;
+      localFaceStatus = paramArrayOfFaceStatus2[i];
+      if (paramArrayOfFaceStatus1 == null) {
+        break label125;
       }
-      finally {}
+      int m = paramArrayOfFaceStatus1.length;
+      j = 0;
+      label33:
+      if (j >= m) {
+        break label125;
+      }
+      if (localFaceStatus != paramArrayOfFaceStatus1[j]) {
+        break label116;
+      }
+    }
+    label116:
+    label125:
+    for (int j = 1;; j = 0)
+    {
+      if ((j == 0) && (localFaceStatus.nativeFaceAlignmentPtr != 0L))
+      {
+        FaceCluster.getInstance().releaseNativeFaceStatus(localFaceStatus);
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARLocalFaceRecog", 2, "releaseLocalFilteredFaceStatus,faceStatusInCloudResult = " + localFaceStatus);
+        }
+      }
+      i += 1;
+      break label11;
+      break;
+      j += 1;
+      break label33;
     }
   }
   
-  public static boolean c(String paramString)
+  public boolean a(Context paramContext, int paramInt1, int paramInt2, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, apol paramapol)
   {
-    boolean bool = true;
+    long l = System.currentTimeMillis();
+    if (FaceCluster.useAssetSo) {}
+    label221:
     for (;;)
     {
-      try
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt2;
+      this.jdField_a_of_type_Apol = paramapol;
+      l = System.currentTimeMillis() - l;
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face] [ScanStarFace]init result = " + true + ",previewWidth = " + paramInt1 + ",previewHeight = " + paramInt2 + ",useAssetSo = " + FaceCluster.useAssetSo + ",localFaceRecogerInitCost = " + l);
+      }
+      appv.a().g(l, true);
+      apog.a(l);
+      this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo = paramARScanStarFaceConfigInfo;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = false;
+      return true;
+      boolean bool = apjx.a();
+      if (bool)
       {
-        if ((!a) && (!TextUtils.isEmpty(paramString)))
+        apjz.a(paramContext);
+        this.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster = FaceCluster.getInstance();
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label221;
+        }
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace]init ,isResourceReady = " + bool + ",FaceScanModelsLoader.hasFaceModelInit = " + apjz.jdField_b_of_type_Boolean);
+        break;
+        apjz.jdField_b_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  public boolean a(apnv paramapnv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face][ScanStarFace]addFaceCloudRecogResult start,faceResult = " + paramapnv);
+    }
+    this.jdField_d_of_type_Boolean = true;
+    long l = System.currentTimeMillis();
+    jdField_a_of_type_AndroidOsHandler.post(new ARLocalFaceRecog.3(this, paramapnv, l));
+    return true;
+  }
+  
+  public boolean a(apom paramapom, float[][] paramArrayOfFloat1, float[][] paramArrayOfFloat2)
+  {
+    boolean bool = true;
+    if (!paramapom.jdField_a_of_type_Boolean)
+    {
+      long l1 = SystemClock.uptimeMillis();
+      int i = a(paramArrayOfFloat1, paramapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
+      long l2 = SystemClock.uptimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "recoverSingleFace findFaceIndexByFaceFeature[TimeCost] = " + (l2 - l1));
+      }
+      if ((i >= 0) && (i < paramArrayOfFloat1.length))
+      {
+        paramapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = paramArrayOfFloat2[i];
+        paramapom.jdField_a_of_type_Boolean = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "recoverSingleFace  result = " + bool + ",faceInfo = " + paramapom);
+      }
+      return bool;
+      bool = false;
+    }
+  }
+  
+  boolean a(String paramString)
+  {
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2 = bool3;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bool2 = bool3;
+      if (this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo != null)
+      {
+        bool2 = bool3;
+        if (this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a != null)
         {
-          String str = a(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling isAppCrash appname=", paramString, ",filePath=", str });
-          }
-          if (new File(str).exists())
+          bool2 = bool3;
+          if (this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a.length > 0)
           {
-            QLog.e("ArkApp.CrashProtect", 1, new Object[] { "profiling find preload crashed app=", paramString, ",filePath=", str });
-            return bool;
+            int j = this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a.length;
+            int i = 0;
+            for (;;)
+            {
+              bool2 = bool1;
+              if (i >= j) {
+                break;
+              }
+              ARScanStarFaceActInfo localARScanStarFaceActInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo.a[i];
+              long l = NetConnInfoCenter.getServerTimeMillis();
+              bool2 = bool1;
+              if (localARScanStarFaceActInfo != null)
+              {
+                bool2 = bool1;
+                if (paramString.equals(localARScanStarFaceActInfo.jdField_b_of_type_JavaLangString))
+                {
+                  bool2 = bool1;
+                  if (l > localARScanStarFaceActInfo.jdField_a_of_type_Long)
+                  {
+                    bool2 = bool1;
+                    if (l < localARScanStarFaceActInfo.jdField_b_of_type_Long) {
+                      bool2 = true;
+                    }
+                  }
+                }
+              }
+              i += 1;
+              bool1 = bool2;
+            }
           }
         }
-        else
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace]hasStarActivity result = " + bool2 + "starUin = " + paramString);
+    }
+    return bool2;
+  }
+  
+  public boolean a(List<apom> paramList)
+  {
+    paramList = paramList.iterator();
+    boolean bool = true;
+    if (paramList.hasNext())
+    {
+      apom localapom = (apom)paramList.next();
+      if ((bool) && (localapom.jdField_a_of_type_Boolean)) {}
+      for (bool = true;; bool = false) {
+        break;
+      }
+    }
+    return bool;
+  }
+  
+  boolean a(List<apom> paramList, FaceStatus paramFaceStatus)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramList != null)
+    {
+      bool1 = bool2;
+      if (paramList.size() > 0)
+      {
+        paramList = paramList.iterator();
+        bool1 = false;
+        if (paramList.hasNext())
         {
-          bool = false;
+          apom localapom = (apom)paramList.next();
+          if (!localapom.jdField_a_of_type_Boolean) {
+            break label313;
+          }
+          int i = Math.abs(localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.x + localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.width / 2 - (paramFaceStatus.x + paramFaceStatus.width / 2));
+          int j = Math.abs(localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.y + localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.height / 2 - (paramFaceStatus.y + paramFaceStatus.height / 2));
+          int k = Math.min(localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.width / 2, paramFaceStatus.width / 2);
+          int m = Math.min(localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.height / 2, paramFaceStatus.height / 2);
+          if ((i < k) && (j < m))
+          {
+            bool1 = true;
+            label191:
+            bool2 = bool1;
+            if (QLog.isColorLevel()) {
+              QLog.d("AREngine_ARLocalFaceRecog", 2, " shouldFilterTmpFace,distanceX = " + i + ",distanceY = " + j + ",w = " + k + ",h = " + m);
+            }
+          }
+        }
+      }
+    }
+    label313:
+    for (bool2 = bool1;; bool2 = bool1)
+    {
+      bool1 = bool2;
+      break;
+      bool1 = false;
+      break label191;
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, " shouldFilterTmpFace,result = " + bool1);
+      }
+      return bool1;
+    }
+  }
+  
+  FaceStatus[] a(FaceStatus[] paramArrayOfFaceStatus)
+  {
+    int j = 0;
+    if ((paramArrayOfFaceStatus != null) && (paramArrayOfFaceStatus.length > 0))
+    {
+      FaceStatus[] arrayOfFaceStatus = paramArrayOfFaceStatus;
+      if (paramArrayOfFaceStatus.length > 2)
+      {
+        arrayOfFaceStatus = new FaceStatus[2];
+        arrayOfFaceStatus[0] = paramArrayOfFaceStatus[0];
+        int i = 0;
+        int k = 0;
+        while (i < paramArrayOfFaceStatus.length)
+        {
+          if (paramArrayOfFaceStatus[i].width * paramArrayOfFaceStatus[i].height > arrayOfFaceStatus[0].width * arrayOfFaceStatus[0].height)
+          {
+            arrayOfFaceStatus[0] = paramArrayOfFaceStatus[i];
+            k = i;
+          }
+          i += 1;
+        }
+        int m = -2;
+        i = j;
+        if (i < paramArrayOfFaceStatus.length)
+        {
+          j = m;
+          if (i != k)
+          {
+            if (arrayOfFaceStatus[1] != null) {
+              break label139;
+            }
+            arrayOfFaceStatus[1] = paramArrayOfFaceStatus[i];
+            j = i;
+          }
+          for (;;)
+          {
+            i += 1;
+            m = j;
+            break;
+            label139:
+            j = m;
+            if (paramArrayOfFaceStatus[i].width * paramArrayOfFaceStatus[i].height > arrayOfFaceStatus[1].width * arrayOfFaceStatus[1].height)
+            {
+              arrayOfFaceStatus[1] = paramArrayOfFaceStatus[i];
+              j = i;
+            }
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARLocalFaceRecog", 2, "filterLocalDetectFace  bigFaceID = " + k + ",secondBigFaceID = " + m + ",faceCount = " + paramArrayOfFaceStatus.length);
+        }
+      }
+      return arrayOfFaceStatus;
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    QLog.d("AREngine_ARLocalFaceRecog", 1, "[ScanStarFace] uninit");
+    if (jdField_a_of_type_AndroidOsHandler != null) {
+      jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    apjz.a();
+    QLog.d("AREngine_ARLocalFaceRecog", 1, "[ScanStarFace] uninit finish");
+  }
+  
+  public void b(List<apom> paramList, apnv paramapnv)
+  {
+    paramapnv = paramapnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus;
+    int k = paramapnv.length;
+    int i = 0;
+    FaceStatus localFaceStatus;
+    if (i < k)
+    {
+      localFaceStatus = paramapnv[i];
+      Iterator localIterator = paramList.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while (((apom)localIterator.next()).jdField_a_of_type_ComTencentYTFaceModelFaceStatus != localFaceStatus);
+    }
+    for (int j = 1;; j = 0)
+    {
+      if ((j == 0) && (localFaceStatus.nativeFaceAlignmentPtr != 0L))
+      {
+        FaceCluster.getInstance().releaseNativeFaceStatus(localFaceStatus);
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARLocalFaceRecog", 2, "checkAndReleaseFilteredFaceStatus,faceStatusInCloudResult = " + localFaceStatus);
+        }
+      }
+      i += 1;
+      break;
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace] start ,mIsStarted = " + this.jdField_b_of_type_Boolean);
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      return true;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("ARLocalFaceRecog");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+    }
+    if (this.jdField_b_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("ARLocalFaceRecog_exFeature");
+      this.jdField_b_of_type_AndroidOsHandlerThread.start();
+      this.jdField_b_of_type_AndroidOsHandler = new Handler(this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
+    }
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    return true;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace] pause ,mIsPause = " + this.jdField_c_of_type_Boolean);
+    }
+    if (this.jdField_c_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      this.jdField_c_of_type_Boolean = true;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        a(this.jdField_a_of_type_JavaUtilList);
+        a(this.jdField_b_of_type_JavaUtilList);
+        this.jdField_f_of_type_Int = 10;
+        jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        if (this.jdField_a_of_type_Long <= 0L) {
           continue;
         }
-        bool = false;
+        apog.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, this.jdField_d_of_type_Int);
+        this.jdField_a_of_type_Long = 0L;
+        this.jdField_d_of_type_Int = 0;
+        return;
       }
-      finally {}
+    }
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace] resume ,mIsPause = " + this.jdField_c_of_type_Boolean);
+    }
+    if (!this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace] stop,mIsStarted = " + this.jdField_b_of_type_Boolean);
+    }
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = false;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      a(this.jdField_a_of_type_JavaUtilList);
+      a(this.jdField_b_of_type_JavaUtilList);
+      this.jdField_f_of_type_Int = 10;
+      jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      jdField_a_of_type_AndroidOsHandler = null;
+      this.jdField_b_of_type_AndroidOsHandlerThread.quit();
+      this.jdField_b_of_type_AndroidOsHandlerThread = null;
+      this.jdField_b_of_type_AndroidOsHandler = null;
+      return;
     }
   }
 }

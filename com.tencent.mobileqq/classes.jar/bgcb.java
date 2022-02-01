@@ -1,20 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bgcb
-  implements bgce
+public class bgcb
+  implements View.OnClickListener
 {
-  bgcb(bgbw parambgbw) {}
+  public bgcb(ReciteFragment paramReciteFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      bgbw.f(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131714456), 0).a();
+    this.a.m();
+    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

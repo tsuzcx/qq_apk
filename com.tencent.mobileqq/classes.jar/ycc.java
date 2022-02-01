@@ -1,25 +1,44 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ycc
-  implements Comparator<CommentEntry>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, ycr>
 {
-  public ycc(ycb paramycb) {}
-  
-  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
+  public ycc(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
-      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
-    }
-    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull ycr paramycr)
+  {
+    if (paramycr.a == 1)
     {
-      return -1;
-      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
-        return 1;
+      paramQQStoryShareGroupProfileActivity.g = true;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Ycq.a();
+      paramQQStoryShareGroupProfileActivity.b(true);
+      paramycr = paramQQStoryShareGroupProfileActivity.b;
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label82;
       }
-      return 0;
     }
-    return 1;
+    label82:
+    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
+    {
+      yup.a("share_story", "clk_rank", 0, 0, new String[] { paramycr, paramQQStoryShareGroupProfileActivity });
+      return;
+      if (paramycr.a != 0) {
+        break;
+      }
+      paramQQStoryShareGroupProfileActivity.g = false;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
+      break;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ycr.class;
   }
 }
 

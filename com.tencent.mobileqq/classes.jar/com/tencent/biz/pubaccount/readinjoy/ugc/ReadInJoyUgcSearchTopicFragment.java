@@ -17,8 +17,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import anni;
-import bmqa;
+import anzj;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -30,41 +30,42 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import pha;
-import pmh;
-import pmk;
-import pmn;
-import rih;
-import rkw;
-import rkx;
-import rky;
-import rkz;
-import rla;
-import rlb;
-import rlc;
-import rld;
-import rlr;
-import rnq;
+import ozs;
+import pfa;
+import pfd;
+import pfh;
+import qza;
+import raa;
+import rbq;
+import rbr;
+import rbs;
+import rbt;
+import rbu;
+import rbv;
+import rbw;
+import rbx;
+import rcl;
+import rel;
 
 public class ReadInJoyUgcSearchTopicFragment
   extends PublicBaseFragment
   implements AdapterView.OnItemClickListener
 {
-  private static final String jdField_b_of_type_JavaLangString = anni.a(2131711747);
+  private static final String jdField_b_of_type_JavaLangString = anzj.a(2131711856);
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rky(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rbs(this);
   private View jdField_a_of_type_AndroidViewView;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private List<Map<String, CharSequence>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private pmn jdField_a_of_type_Pmn = new rkw(this);
-  private rnq jdField_a_of_type_Rnq;
+  private pfh jdField_a_of_type_Pfh = new rbq(this);
+  private rel jdField_a_of_type_Rel;
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
   private List<TopicInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private pmn jdField_b_of_type_Pmn = new rkx(this);
+  private pfh jdField_b_of_type_Pfh = new rbr(this);
   
   private static List<Map<String, CharSequence>> a(List<TopicInfo> paramList)
   {
@@ -101,7 +102,7 @@ public class ReadInJoyUgcSearchTopicFragment
   
   private void a(View paramView)
   {
-    paramView.setOnClickListener(new rkz(this));
+    paramView.setOnClickListener(new rbt(this));
   }
   
   private void a(TopicInfo paramTopicInfo)
@@ -123,8 +124,8 @@ public class ReadInJoyUgcSearchTopicFragment
       this.jdField_b_of_type_JavaUtilList.addAll(paramList1);
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_a_of_type_JavaUtilList.addAll(a(paramList1));
-      this.jdField_a_of_type_Rnq.notifyDataSetChanged();
-      pha.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "0");
+      this.jdField_a_of_type_Rel.notifyDataSetChanged();
+      ozs.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "0");
     }
     while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
@@ -132,13 +133,13 @@ public class ReadInJoyUgcSearchTopicFragment
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.clear();
-    if (bmqa.k())
+    if (bnrf.k())
     {
       this.jdField_b_of_type_JavaUtilList.add(TopicInfo.a().a(true).b(this.jdField_a_of_type_Long).c("https://sqimg.qq.com/qq_product_operations/kan/images/topic-cover-default.jpg").d("https://sqimg.qq.com/qq_product_operations/kan/images/topic-head-default.jpg").b(jdField_b_of_type_JavaLangString).a(this.jdField_a_of_type_JavaLangString).a());
       this.jdField_a_of_type_JavaUtilList.add(a());
     }
-    this.jdField_a_of_type_Rnq.notifyDataSetChanged();
-    pha.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "1");
+    this.jdField_a_of_type_Rel.notifyDataSetChanged();
+    ozs.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "1");
   }
   
   private void b()
@@ -148,31 +149,31 @@ public class ReadInJoyUgcSearchTopicFragment
   
   private void b(View paramView)
   {
-    paramView.findViewById(2131364016).setOnClickListener(new rla(this));
+    paramView.findViewById(2131364042).setOnClickListener(new rbu(this));
   }
   
   private void c(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramView.findViewById(2131369974));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramView.findViewById(2131370072));
     this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams().height = -1;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369956);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131366002);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370054);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131366048);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new rlb(this));
-    this.jdField_a_of_type_Rnq = new rnq(getActivity(), this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Rnq.setViewBinder(new rlc(this));
-    paramView = LayoutInflater.from(getActivity()).inflate(2131560276, this.jdField_a_of_type_AndroidWidgetListView, false);
+    this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new rbv(this));
+    this.jdField_a_of_type_Rel = new rel(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Rel.setViewBinder(new rbw(this));
+    paramView = LayoutInflater.from(getActivity()).inflate(2131560288, this.jdField_a_of_type_AndroidWidgetListView, false);
     this.jdField_a_of_type_AndroidWidgetListView.addFooterView(paramView, null, false);
     this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Rnq);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Rel);
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131378273));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131717139);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rld(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131378430));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131717256);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rbx(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
@@ -197,10 +198,10 @@ public class ReadInJoyUgcSearchTopicFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = pha.a();
-    pmk.a().a(this.jdField_a_of_type_Pmn);
-    pmk.a().a(this.jdField_b_of_type_Pmn);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560281, paramViewGroup, false);
+    this.jdField_a_of_type_Long = ozs.a();
+    pfd.a().a(this.jdField_a_of_type_Pfh);
+    pfd.a().a(this.jdField_b_of_type_Pfh);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560293, paramViewGroup, false);
     d(paramLayoutInflater);
     c(paramLayoutInflater);
     b(paramLayoutInflater);
@@ -215,8 +216,8 @@ public class ReadInJoyUgcSearchTopicFragment
   
   public void onDestroyView()
   {
-    pmk.a().b(this.jdField_a_of_type_Pmn);
-    pmk.a().b(this.jdField_b_of_type_Pmn);
+    pfd.a().b(this.jdField_a_of_type_Pfh);
+    pfd.a().b(this.jdField_b_of_type_Pfh);
     super.onDestroyView();
   }
   
@@ -240,7 +241,7 @@ public class ReadInJoyUgcSearchTopicFragment
       if ((localTopicInfo1 != null) && (localTopicInfo1.a()))
       {
         this.jdField_a_of_type_Boolean = true;
-        pmh.a().a(localTopicInfo1);
+        pfa.a().a(localTopicInfo1);
         break;
       }
       a((TopicInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt));
@@ -248,7 +249,8 @@ public class ReadInJoyUgcSearchTopicFragment
       if (localTopicInfo1 != null) {}
       for (long l = localTopicInfo2.a();; l = -1L)
       {
-        pha.a("0X800980A", this.jdField_a_of_type_Int, l, "0");
+        ozs.a("0X800980A", this.jdField_a_of_type_Int, l, "0");
+        raa.a(String.valueOf(l), "1");
         break;
       }
     }
@@ -257,7 +259,7 @@ public class ReadInJoyUgcSearchTopicFragment
   public void onResume()
   {
     super.onResume();
-    rlr.a(this);
+    rcl.a(this);
   }
 }
 

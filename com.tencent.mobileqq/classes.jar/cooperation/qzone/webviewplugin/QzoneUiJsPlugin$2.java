@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bmfd;
-import bmfg;
-import bmnj;
+import bngf;
+import bngi;
+import bnom;
 
 public class QzoneUiJsPlugin$2
   implements Runnable
 {
-  public QzoneUiJsPlugin$2(bmnj parambmnj, String paramString) {}
+  public QzoneUiJsPlugin$2(bnom parambnom, String paramString) {}
   
   public void run()
   {
-    bmfd.a().a().h(this.a);
+    bngf.a().a().h(this.a);
   }
 }
 

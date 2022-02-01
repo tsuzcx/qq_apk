@@ -1,21 +1,24 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-
 final class bhvv
-  implements bhui
+  implements bhvx
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  private boolean a(float[] paramArrayOfFloat)
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    float f = Math.max(paramInt1 / i, paramInt2 / j);
-    localMatrix.setScale(f, f);
-    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
-    return localMatrix;
+    return paramArrayOfFloat[2] <= 0.05F;
+  }
+  
+  private boolean b(float[] paramArrayOfFloat)
+  {
+    return paramArrayOfFloat[2] >= 0.95F;
+  }
+  
+  private boolean c(float[] paramArrayOfFloat)
+  {
+    return (paramArrayOfFloat[0] >= 10.0F) && (paramArrayOfFloat[0] <= 37.0F) && (paramArrayOfFloat[1] <= 0.82F);
+  }
+  
+  public boolean a(int paramInt, float[] paramArrayOfFloat)
+  {
+    return (!b(paramArrayOfFloat)) && (!a(paramArrayOfFloat)) && (!c(paramArrayOfFloat));
   }
 }
 

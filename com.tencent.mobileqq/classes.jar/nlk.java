@@ -1,19 +1,34 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
-public final class nlk
+public class nlk
 {
-  @TargetApi(11)
-  public static void a(Context paramContext, String paramString)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  
+  public byte[] a()
   {
-    if (Build.VERSION.SDK_INT >= 11)
+    if (TextUtils.isEmpty(this.a)) {}
+    do
     {
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
-      return;
-    }
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+      return null;
+      try
+      {
+        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
+        return arrayOfByte;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
+    return null;
   }
 }
 

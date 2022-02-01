@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import java.util.Map;
-import ogh;
-import ppi;
+import ohp;
+import pig;
 
 public class ReadInJoyPicWaterFallFragment$6$1
   implements Runnable
 {
-  public ReadInJoyPicWaterFallFragment$6$1(ppi paramppi, boolean paramBoolean1, Map paramMap1, boolean paramBoolean2, Map paramMap2, String paramString) {}
+  public ReadInJoyPicWaterFallFragment$6$1(pig parampig, boolean paramBoolean1, Map paramMap1, boolean paramBoolean2, Map paramMap2, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (ogh.b(this.jdField_a_of_type_Ppi.a.a())) {
-        this.jdField_a_of_type_Ppi.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
+      if (ohp.b(this.jdField_a_of_type_Pig.a.a())) {
+        this.jdField_a_of_type_Pig.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
       }
       return;
     }
-    this.jdField_a_of_type_Ppi.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Pig.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
   }
 }
 

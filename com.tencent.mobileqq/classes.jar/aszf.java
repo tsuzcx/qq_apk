@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.appinfo.data.AppDetail;
-import java.util.concurrent.Executor;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-class aszf
-  implements atal
+public class aszf
+  implements atds
 {
-  aszf(asze paramasze) {}
+  public aszf(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
   
-  public void a()
+  public void a(String paramString, int paramInt)
   {
-    QLog.i("FileManagerEngine<FileAssistant>", 1, "waterTest, onGetAppDetailTimeLimit. apkName[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName + "]");
-    atvy.a().execute(this.a.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void a(boolean paramBoolean, AppDetail paramAppDetail)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkPackageName = paramAppDetail.packageName;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName = paramAppDetail.appName;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkIconUrl = paramAppDetail.iconUrl;
+    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
+    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
+    ExtendFriendSearchBaseFragment.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszf
  * JD-Core Version:    0.7.0.1
  */

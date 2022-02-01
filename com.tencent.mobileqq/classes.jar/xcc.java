@@ -1,54 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class xcc
-  extends xdt
+  extends wov
 {
-  private String a;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  public List<xcd> a;
   
-  public xcc(String paramString1, String paramString2, boolean paramBoolean)
+  public xcc(ErrorMessage paramErrorMessage)
   {
-    a(false, true);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a()
+  public xcc(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt url:", this.jdField_a_of_type_JavaLangString });
-    }
-    xaa localxaa = new xaa();
-    localxaa.jdField_c_of_type_Int = 1;
-    String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("\\?");
-    if (arrayOfString.length != 2)
+    super(paramRspBatchFeedLike.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
+    while (paramRspBatchFeedLike.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("EncryptUrlJob", 2, new Object[] { "Illegal url:", this.jdField_a_of_type_JavaLangString });
+      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
+      xcd localxcd = new xcd();
+      localxcd.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
+      localxcd.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
+      localxcd.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
+      localxcd.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
+        localLikeEntry.feedId = localxcd.jdField_a_of_type_JavaLangString;
+        localxcd.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
       }
-      a("EncryptUrlJob_encryptedUrl", this.jdField_a_of_type_JavaLangString);
-      b(true);
-      return;
-    }
-    localxaa.b = arrayOfString[1];
-    localxaa.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    wlb.a().a(localxaa, new xcd(this, arrayOfString));
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
-    {
-      if (paramMap.containsKey("EncryptUrlJob_shareUrl")) {
-        this.jdField_a_of_type_JavaLangString = ((String)a("EncryptUrlJob_shareUrl"));
-      }
-      if (paramMap.containsKey("EncryptUrlJob_feedId")) {
-        this.jdField_c_of_type_JavaLangString = ((String)a("EncryptUrlJob_feedId"));
-      }
+      this.jdField_a_of_type_JavaUtilList.add(localxcd);
     }
   }
 }

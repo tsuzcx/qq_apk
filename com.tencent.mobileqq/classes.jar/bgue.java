@@ -1,18 +1,32 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bgue
-  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
+class bgue
+  extends nkq
 {
-  public bgue(QAVFunCallHandler paramQAVFunCallHandler) {}
+  bgue(bgty parambgty, bgug parambgug) {}
   
-  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.setConfig(paramQAVFunCallConfig);
-    this.a.onGetConfig(paramAppInterface);
-    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bgug.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+    }
   }
 }
 

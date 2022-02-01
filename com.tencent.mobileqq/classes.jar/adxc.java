@@ -1,81 +1,63 @@
-import android.os.Handler;
+import android.content.Intent;
 import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adxc
-  extends anxg
+  extends WtloginObserver
 {
-  public adxc(ChatSettingForTroop paramChatSettingForTroop) {}
+  public adxc(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<bgat> paramList, int paramInt)
+  public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    while ((!paramBoolean1) || (paramList == null) || (paramList.size() <= 0)) {
+    if (paramInt == 0)
+    {
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      asvf.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691797), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+      }
+      AuthDevOpenUgActivity.a(this.a, true, 0);
+      paramErrMsg = new Intent();
+      paramErrMsg.putExtra("auth_dev_open", true);
+      if (AuthDevOpenUgActivity.a(this.a) != null) {}
+      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
+      {
+        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
+        this.a.a(-1, paramErrMsg);
+        return;
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    paramInt = 0;
-    label31:
-    bgat localbgat;
-    if (paramInt < paramList.size())
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131691839), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if ((paramInt != 0) || (paramDevlockInfo == null))
     {
-      localbgat = (bgat)paramList.get(paramInt);
-      if ((localbgat != null) && (bgjw.a(localbgat.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
-      {
-        if (localbgat.jdField_a_of_type_Long != 2L) {
-          break label206;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum = localbgat.b;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = localbgat.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        if (paramBoolean2) {
-          blsb.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum);
-        }
-      }
+      QQToast.a(this.a, this.a.getString(2131691848), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "onUpdateTroopUnreadMsg| isPush = " + paramBoolean2 + ", " + localbgat);
-      }
-      paramInt += 1;
-      break label31;
-      break;
-      label206:
-      if (localbgat.jdField_a_of_type_Long == 1L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadFileMsgnum = localbgat.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewFileMsgNum = localbgat.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-      }
-      else if (localbgat.jdField_a_of_type_Long == 1101236949L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mNewTroopNotificationNum = localbgat.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-      }
-      else if (localbgat.jdField_a_of_type_Long == 1106611799L)
-      {
-        Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(19);
-        ((Message)localObject).arg1 = localbgat.b;
-        ((Message)localObject).sendToTarget();
-        if ((localbgat.b == -1) || (localbgat.b > 0))
-        {
-          localObject = (anwd)this.a.app.a(20);
-          if (localObject != null) {
-            ((anwd)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, true, this.a.j, 3);
-          }
-        }
-      }
-      else if (localbgat.jdField_a_of_type_Long == 1106664488L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadFileMsgnum = 1;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewFileMsgNum = localbgat.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-      }
-    }
+    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
   }
 }
 

@@ -1,35 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudCommon.Entry;
-import java.util.ArrayList;
-import java.util.Arrays;
-import qqcircle.QQCircleFeedBase.StImageBusiData;
-import qqcircle.QQCircleFeedBase.StSimulateData;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLike;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudWrite.StDoReplyRsp;
+import java.util.Map;
 
-public class vki
-  implements View.OnClickListener
+class vki
+  implements aaav<FeedCloudWrite.StDoReplyRsp>
 {
-  public vki(QCircleContentOperationView paramQCircleContentOperationView, QQCircleFeedBase.StImageBusiData paramStImageBusiData) {}
+  vki(vjy paramvjy, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    Object localObject = bgng.a(QQStoryContext.a(), paramView.getContext(), this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.simulate_schema.get());
-    if (localObject != null) {
-      ((bgmp)localObject).a();
-    }
-    ReportExtraTypeInfo localReportExtraTypeInfo = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a();
-    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView)) {}
-    for (localObject = "1";; localObject = "2")
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoReplyRsp == null))
     {
-      vrg.a(83, 2, localReportExtraTypeInfo, new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("ext1", (String)localObject) })), QCircleContentOperationView.g(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
-      EventCollector.getInstance().onViewClicked(paramView);
+      QLog.e("QCircleCommentBusiness", 1, "addCommentReply error:" + paramLong + "  errorMsg:" + paramString);
+      aaak.a().a(new QCircleCommentUpdateEvent(10, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int));
+      if (!TextUtils.isEmpty(paramString)) {
+        vws.a(paramLong, BaseApplicationImpl.getContext(), paramString, 0);
+      }
       return;
     }
+    QLog.d("QCircleCommentBusiness", 1, "addCommentReply Success");
+    paramString = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.get();
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.set(paramStDoReplyRsp.reply.id.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.createTime.set(paramStDoReplyRsp.reply.createTime.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.set(paramStDoReplyRsp.reply.likeInfo.get());
+    paramStDoReplyRsp.reply.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+    vjy.a(this.jdField_a_of_type_Vjy).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) + 1));
+    paramStDoReplyRsp = new QCircleCommentUpdateEvent(5, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()), this.jdField_a_of_type_Int);
+    paramStDoReplyRsp.fakeReplyId = paramString;
+    aaak.a().a(paramStDoReplyRsp);
   }
 }
 

@@ -1,31 +1,43 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector.StickerAnimationListener.1;
 
 public class assg
-  implements View.OnLongClickListener
+  implements Animator.AnimatorListener
 {
-  public assg(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  private assg(assc paramassc) {}
   
-  public boolean onLongClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramView == null) {
-      return false;
-    }
-    if (!this.a.b())
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
     {
-      this.a.jdField_a_of_type_Athn.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      return false;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new StickerGestureDetector.StickerAnimationListener.1(this));
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aY();
+      this.a.jdField_b_of_type_Double = 1.0D;
+      this.a.jdField_a_of_type_Double = 0.0D;
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      {
+        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
+        this.a.c = null;
+      }
+      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
+      {
+        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
+        this.a.jdField_b_of_type_AndroidViewView = null;
+      }
+      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
     }
-    paramView.setSelected(true);
-    bguh localbguh = new bguh();
-    localbguh.a(2131365302, paramView.getContext().getString(2131691320));
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bgkw.a(paramView, localbguh, new assh(this, paramView), new assi(this, paramView));
-    return true;
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

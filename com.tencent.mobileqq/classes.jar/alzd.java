@@ -1,28 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
 
-class alzd
-  implements MediaPlayer.OnCompletionListener
+public final class alzd
+  implements Parcelable.Creator<PacmanParcelItem>
 {
-  alzd(alyz paramalyz, int paramInt, String paramString) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public PacmanParcelItem a(Parcel paramParcel)
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
-    try
-    {
-      paramMediaPlayer = new JSONObject();
-      paramMediaPlayer.put("code", 1);
-      this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-      return;
-    }
-    catch (JSONException paramMediaPlayer)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
-    }
+    return new PacmanParcelItem(paramParcel);
+  }
+  
+  public PacmanParcelItem[] a(int paramInt)
+  {
+    return new PacmanParcelItem[paramInt];
   }
 }
 

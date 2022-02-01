@@ -1,14 +1,20 @@
-import java.util.List;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
 
 public class bblb
+  implements bblg
 {
-  public List<Long> a;
+  public bblb(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
   
-  public bblb() {}
-  
-  public bblb(List<Long> paramList)
+  public GLSurfaceView.EGLConfigChooser a()
   {
-    this.a = paramList;
+    return new bblh(this.a, true);
+  }
+  
+  public GLSurfaceView.EGLContextFactory a()
+  {
+    return new bblc(this);
   }
 }
 

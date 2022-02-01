@@ -1,12 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-
 public class oky
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  private oky(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public oky(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+  }
 }
 
 

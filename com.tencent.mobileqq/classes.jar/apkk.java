@@ -1,20 +1,10 @@
-import eipc.EIPCResult;
-
-class apkk
-  implements aplf
+public abstract interface apkk
 {
-  apkk(apkf paramapkf, aple paramaple) {}
+  public abstract void a(int paramInt);
   
-  public void a(EIPCResult paramEIPCResult)
-  {
-    aple localaple = this.jdField_a_of_type_Aple;
-    if (paramEIPCResult.code == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaple.a(bool, paramEIPCResult.data);
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

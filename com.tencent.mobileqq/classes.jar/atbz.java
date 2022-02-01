@@ -1,11 +1,18 @@
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+
+@TargetApi(16)
 class atbz
-  implements bigw
 {
-  atbz(atbx paramatbx) {}
-  
-  public void a(int paramInt)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    atvo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atbx.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
+    paramView.setBackground(paramDrawable);
+  }
+  
+  public static void a(View paramView, Runnable paramRunnable)
+  {
+    paramView.postOnAnimation(paramRunnable);
   }
 }
 

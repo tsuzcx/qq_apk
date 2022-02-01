@@ -1,41 +1,28 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter$ViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "taskDescription", "Landroid/widget/TextView;", "getTaskDescription", "()Landroid/widget/TextView;", "setTaskDescription", "(Landroid/widget/TextView;)V", "taskStatus", "Landroid/widget/Button;", "getTaskStatus", "()Landroid/widget/Button;", "setTaskStatus", "(Landroid/widget/Button;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class asng
-  extends RecyclerView.ViewHolder
+class asng
+  implements View.OnClickListener
 {
-  @NotNull
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  asng(asnf paramasnf) {}
   
-  public asng(@NotNull View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    View localView = paramView.findViewById(2131378297);
-    Intrinsics.checkExpressionValueIsNotNull(localView, "itemView.findViewById(R.id.task_description)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-    paramView = paramView.findViewById(2131378302);
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "itemView.findViewById(R.id.task_status)");
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView);
-  }
-  
-  @NotNull
-  public final Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    long l = System.currentTimeMillis();
+    if (l - asnf.a(this.a) > 1000L)
+    {
+      asnf.a(this.a, l);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("AECAMERA_MODE", 202);
+      localBundle.putInt("VIDEO_STORY_FROM_TYPE", born.i.a());
+      borr.a((BaseActivity)this.a.a.a, 120, localBundle);
+      bdll.b(((BaseActivity)this.a.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

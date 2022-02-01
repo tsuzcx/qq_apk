@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark;
 
-import apmp;
-import apmr;
+import aqaf;
+import aqah;
 import com.tencent.common.app.AppInterface;
 import com.tencent.wordsegment.WordSegment;
 
 public final class ArkAiDictMgr$3
   implements Runnable
 {
-  public ArkAiDictMgr$3(AppInterface paramAppInterface, apmr paramapmr, String paramString) {}
+  public ArkAiDictMgr$3(AppInterface paramAppInterface, aqah paramaqah, String paramString) {}
   
   public void run()
   {
-    apmp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (apmp.a())
+    aqaf.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (aqaf.a())
     {
-      this.jdField_a_of_type_Apmr.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Apmr.jdField_a_of_type_ArrayOfJavaLangString = WordSegment.segment(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aqah.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Aqah.jdField_a_of_type_ArrayOfJavaLangString = WordSegment.segment(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

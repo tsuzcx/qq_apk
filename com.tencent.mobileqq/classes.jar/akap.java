@@ -1,67 +1,53 @@
-import android.os.Build.VERSION;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 class akap
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  private akap(akaj paramakaj) {}
+  akap(akao paramakao) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramKeyEvent.getKeyCode() == 67)
+    int i;
+    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_Aocm.a())
     {
-      bool1 = bool2;
-      if (paramKeyEvent.getAction() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373747));
-        }
-        if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() != 0) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() != 0)) {
-          break label243;
-        }
-        bool1 = bool2;
-        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373747) != null)
-        {
-          paramKeyEvent = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramKeyEvent[0], null, paramKeyEvent[2], paramKeyEvent[3]);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373747, null);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(afur.a(36.0F, paramView.getResources()));
-          this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
-          bool1 = true;
-        }
+      i = ((azor)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(201)).a(paramVarArgs[0], true);
+      if (i > 0) {
+        this.a.a.f = true;
       }
     }
-    label243:
-    do
+    for (;;)
     {
-      do
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        anfz.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_del_all_msg");
+      }
+      return null;
+      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_Aocm.a()))
       {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373747) == null);
-        bool1 = bool2;
-      } while (Build.VERSION.SDK_INT < 21);
-      bool1 = bool2;
-    } while (afur.a(36.0F, paramView.getResources()) != this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMinHeight());
-    paramInt = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMeasuredHeight();
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(paramInt);
-    return false;
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+        continue;
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+      }
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.b.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bjbs != null) && (this.a.a.jdField_a_of_type_Bjbs.isShowing())) {
+      this.a.a.jdField_a_of_type_Bjbs.dismiss();
+    }
+    if ((this.a.a.f) && (this.a.a.e))
+    {
+      this.a.a.e = false;
+      this.a.a.jdField_a_of_type_Aocm.d();
+    }
   }
 }
 

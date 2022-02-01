@@ -1,13 +1,61 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nullable;
 
-final class bgkp
-  implements MediaPlayer.OnCompletionListener
+public class bgkp
+  extends arac<bgko>
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  @NonNull
+  public bgko a(int paramInt)
   {
-    paramMediaPlayer.release();
-    bgkl.a = null;
+    QLog.d("TroopShortcutBarConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bgko();
+  }
+  
+  @Nullable
+  public bgko a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return bgko.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(bgko parambgko) {}
+  
+  public Class<bgko> clazz()
+  {
+    return bgko.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopShortcutBarConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 590;
   }
 }
 

@@ -1,34 +1,22 @@
-import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout;
 
-public class ajgj
-  implements View.OnClickListener
+class ajgj
+  extends RecyclerView.ViewHolder
 {
-  public ajgj(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleLayout a;
   
-  public void onClick(View paramView)
+  public ajgj(View paramView)
   {
-    Object localObject;
-    if ((paramView.getTag() instanceof ajeo))
-    {
-      localObject = (ajeo)paramView.getTag();
-      if (localObject != null) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label30:
-      localObject = TroopInfoActivity.a(((ajeo)localObject).b, 4);
-      ((Bundle)localObject).putInt("t_s_f", 1002);
-      bfup.a(this.a.getActivity(), (Bundle)localObject, 2);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372874));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372873));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)paramView.findViewById(2131372872));
   }
 }
 

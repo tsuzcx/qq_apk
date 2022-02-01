@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bhbe;
-import bhyj;
-import bhyk;
+import bibk;
+import bizh;
+import bizi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
@@ -16,11 +16,11 @@ import com.tencent.widget.URLThemeImageView;
 
 public class VasAvatar
   extends URLThemeImageView
-  implements bhyk
+  implements bizi
 {
   public Drawable a;
-  public bhbe a;
-  private bhyj jdField_a_of_type_Bhyj;
+  public bibk a;
+  private bizh jdField_a_of_type_Bizh;
   private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
   private String jdField_a_of_type_JavaLangString;
   
@@ -83,9 +83,9 @@ public class VasAvatar
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bhyj != null)
+    if (this.jdField_a_of_type_Bizh != null)
     {
-      this.jdField_a_of_type_Bhyj.a(paramCanvas);
+      this.jdField_a_of_type_Bizh.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -93,9 +93,9 @@ public class VasAvatar
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bhyj != null)
+    if (this.jdField_a_of_type_Bizh != null)
     {
-      this.jdField_a_of_type_Bhyj.b(paramCanvas);
+      this.jdField_a_of_type_Bizh.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -114,28 +114,28 @@ public class VasAvatar
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Bhbe = null;
+    this.jdField_a_of_type_Bibk = null;
   }
   
-  public void setLoader(AvatarLayout paramAvatarLayout, bhbe parambhbe)
+  public void setLoader(AvatarLayout paramAvatarLayout, bibk parambibk)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambhbe.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    parambhbe.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambibk.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    parambibk.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
-    this.jdField_a_of_type_Bhbe = parambhbe;
-    this.jdField_a_of_type_JavaLangString = parambhbe.jdField_a_of_type_JavaLangString;
-    parambhbe.a(this);
+    this.jdField_a_of_type_Bibk = parambibk;
+    this.jdField_a_of_type_JavaLangString = parambibk.jdField_a_of_type_JavaLangString;
+    parambibk.a(this);
   }
   
-  public void setMosaicEffect(bhyj parambhyj)
+  public void setMosaicEffect(bizh parambizh)
   {
-    if (this.jdField_a_of_type_Bhyj != null) {
-      this.jdField_a_of_type_Bhyj.a(null);
+    if (this.jdField_a_of_type_Bizh != null) {
+      this.jdField_a_of_type_Bizh.a(null);
     }
-    this.jdField_a_of_type_Bhyj = parambhyj;
-    if (this.jdField_a_of_type_Bhyj != null) {
-      this.jdField_a_of_type_Bhyj.a(this);
+    this.jdField_a_of_type_Bizh = parambizh;
+    if (this.jdField_a_of_type_Bizh != null) {
+      this.jdField_a_of_type_Bizh.a(this);
     }
     invalidate();
   }

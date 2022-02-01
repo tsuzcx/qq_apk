@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import atkt;
+import aucn;
 
 class FileBrowserActivity$3
   implements Runnable

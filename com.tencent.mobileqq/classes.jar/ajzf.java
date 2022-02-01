@@ -1,31 +1,23 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ajzf
-  implements bkik
+  implements DialogInterface.OnClickListener
 {
-  ajzf(ajyx paramajyx) {}
+  ajzf(ajyt paramajyt, boolean paramBoolean, String paramString) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    bdll.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, ajyt.a(this.jdField_a_of_type_Ajyt), "", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false);
     }
-    if ((this.a.jdField_a_of_type_Ajuv.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    for (;;)
     {
-      return true;
-      paramAdapterView = (ajyc)this.a.jdField_a_of_type_Ajuv.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_Ajyc = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new bguh();
-    paramAdapterView.a(2131365147, anni.a(2131713857), 2130838920);
-    paramAdapterView.a(2131367027, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692395), 2130838929);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bgkw.a(paramView, paramAdapterView, ajyx.a(this.a), new ajzg(this, paramView));
-    return true;
+      this.jdField_a_of_type_Ajyt.f();
+      return;
+      ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

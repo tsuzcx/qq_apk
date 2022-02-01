@@ -1,37 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public final class paw
-  implements Parcelable.Creator<AnchorData>
+public class paw
+  implements AladdinConfigHandler
 {
-  public AnchorData a(Parcel paramParcel)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool2 = true;
-    AnchorData localAnchorData = new AnchorData();
-    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
+    QLog.d("AdNativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      bool1 = true;
-      localAnchorData.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label67;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdNativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAdDetails_feeds")) {
+        bnrf.a("ad_native_proteus_offline_bid", str2);
       }
     }
-    label67:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localAnchorData.jdField_b_of_type_Boolean = bool1;
-      return localAnchorData;
-      bool1 = false;
-      break;
-    }
+    return true;
   }
   
-  public AnchorData[] a(int paramInt)
+  public void onWipeConfig(int paramInt)
   {
-    return new AnchorData[paramInt];
+    bnrf.a("ad_native_proteus_offline_bid", "0");
   }
 }
 

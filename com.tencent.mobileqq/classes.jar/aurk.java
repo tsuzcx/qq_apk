@@ -1,23 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.os.Bundle;
 
-class aurk
-  implements ViewSwitcher.ViewFactory
+public class aurk
 {
-  aurk(auri paramauri) {}
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public View makeView()
-  {
-    CornerImageView localCornerImageView = new CornerImageView(auri.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(afur.a(30.0F, auri.a(this.a).getResources()) / 2);
-    return localCornerImageView;
-  }
+  aurk(aure paramaure) {}
 }
 
 

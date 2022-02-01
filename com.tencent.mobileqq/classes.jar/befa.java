@@ -1,24 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class befa
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  befa(beey parambeey, befh parambefh) {}
+  befa(beez parambeez) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Befh.k = 1;
-      this.jdField_a_of_type_Beey.a.a(1, 1);
+    if (beez.a(this.a).isShowing()) {
+      beez.a(this.a).dismiss();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TribeVideoListPlayerFragment", 2, "dianZan failed!!!");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

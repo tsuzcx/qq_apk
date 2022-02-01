@@ -1,39 +1,39 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class ydm
-  extends wfi
+  extends QQUIEventReceiver<StoryPickerFragment, xbt>
 {
-  public String a;
-  private ydn a;
-  
-  public ydm(String paramString, @NonNull ydn paramydn)
+  public ydm(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ydn = paramydn;
+    super(paramStoryPickerFragment);
   }
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull xbt paramxbt)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPushMsg.d))
+    yuk.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramxbt.toString());
+    if ((paramxbt.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxbt.jdField_a_of_type_JavaUtilList != null) && (!paramxbt.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      yqp.a("DetailFeedPushObserver", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, this.jdField_a_of_type_JavaLangString);
-      return;
+      Iterator localIterator = paramxbt.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        ykj localykj = (ykj)localIterator.next();
+        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localykj.jdField_a_of_type_JavaLangString)) {
+          localykj.jdField_a_of_type_Boolean = true;
+        }
+      }
+      paramStoryPickerFragment.jdField_a_of_type_Ydu.a(paramxbt.jdField_a_of_type_JavaLangString, paramxbt.jdField_a_of_type_JavaUtilList);
     }
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
-    {
-      yqp.a("DetailFeedPushObserver", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
-      this.jdField_a_of_type_Ydn.a(1);
-      return;
-    }
-    if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
-    {
-      yqp.a("DetailFeedPushObserver", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
-      this.jdField_a_of_type_Ydn.a(2);
-      return;
-    }
-    this.jdField_a_of_type_Ydn.a(0);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xbt.class;
   }
 }
 

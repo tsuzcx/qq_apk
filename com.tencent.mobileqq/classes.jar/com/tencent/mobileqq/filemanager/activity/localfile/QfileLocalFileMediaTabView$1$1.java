@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import anni;
+import anzj;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,24 +22,28 @@ class QfileLocalFileMediaTabView$1$1
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.f) && ((QfileLocalFileMediaTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0) & 0x2) > 0)) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put("Camera", new ArrayList());
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     String str;
-    while (localIterator.hasNext())
+    while (((Iterator)localObject).hasNext())
     {
-      str = (String)localIterator.next();
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(anni.a(2131708454))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put(anni.a(2131708440), new ArrayList());
+      str = (String)((Iterator)localObject).next();
+      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(anzj.a(2131708563))) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put(anzj.a(2131708549), new ArrayList());
       }
-      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(anni.a(2131708450))).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(anzj.a(2131708559))).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(str));
     }
-    localIterator = this.b.keySet().iterator();
-    while (localIterator.hasNext())
+    localObject = this.b.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      str = (String)localIterator.next();
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(anni.a(2131708442))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put(anni.a(2131708438), new ArrayList());
+      str = (String)((Iterator)localObject).next();
+      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(anzj.a(2131708551))) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put(anzj.a(2131708547), new ArrayList());
       }
-      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(anni.a(2131708460))).addAll((Collection)this.b.get(str));
+      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(anzj.a(2131708569))).addAll((Collection)this.b.get(str));
+    }
+    localObject = anzj.a(2131708563);
+    if ((this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(localObject))) {
+      ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).addAll((Collection)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(localObject));
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.i();

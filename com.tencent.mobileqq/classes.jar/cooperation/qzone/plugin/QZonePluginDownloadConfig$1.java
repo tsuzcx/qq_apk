@@ -1,7 +1,7 @@
 package cooperation.qzone.plugin;
 
-import bctj;
-import bmdh;
+import bdmc;
+import bnej;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class QZonePluginDownloadConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadConfig$1(bmdh parambmdh, Properties paramProperties, String paramString) {}
+  public QZonePluginDownloadConfig$1(bnej parambnej, Properties paramProperties, String paramString) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class QZonePluginDownloadConfig$1
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       localHashMap.put(localEntry.getKey(), localEntry.getValue());
     }
-    bctj.a(BaseApplicationImpl.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, localHashMap, null);
+    bdmc.a(BaseApplicationImpl.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, localHashMap, null);
   }
 }
 

@@ -1,8 +1,20 @@
-class bprt
+import android.graphics.RectF;
+import android.text.TextPaint;
+
+public abstract class bprt
 {
-  int jdField_a_of_type_Int;
-  bprr jdField_a_of_type_Bprr;
-  bprs jdField_a_of_type_Bprs;
+  protected int a;
+  protected RectF a;
+  protected TextPaint a;
+  protected int b;
+  
+  public bprt(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+  }
 }
 
 

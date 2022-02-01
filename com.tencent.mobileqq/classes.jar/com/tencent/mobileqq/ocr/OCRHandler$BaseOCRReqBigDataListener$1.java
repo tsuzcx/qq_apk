@@ -1,50 +1,50 @@
 package com.tencent.mobileqq.ocr;
 
 import android.content.Intent;
-import ayey;
-import ayez;
-import bdud;
-import bdwt;
+import ayxr;
+import ayxs;
+import besx;
+import bevm;
 import com.tencent.qphone.base.util.QLog;
 
 public class OCRHandler$BaseOCRReqBigDataListener$1
   implements Runnable
 {
-  public OCRHandler$BaseOCRReqBigDataListener$1(ayez paramayez, bdwt parambdwt) {}
+  public OCRHandler$BaseOCRReqBigDataListener$1(ayxs paramayxs, bevm parambevm) {}
   
   public void run()
   {
     int i = 0;
-    ayey localayey;
+    ayxr localayxr;
     Intent localIntent;
-    if ((this.jdField_a_of_type_Bdwt == null) || (this.jdField_a_of_type_Bdwt.jdField_a_of_type_Int != 0))
+    if ((this.jdField_a_of_type_Bevm == null) || (this.jdField_a_of_type_Bevm.jdField_a_of_type_Int != 0))
     {
-      if (this.jdField_a_of_type_Bdwt == null)
+      if (this.jdField_a_of_type_Bevm == null)
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), resp is null");
         }
-        bdud.a().a(6, ayez.a(this.jdField_a_of_type_Ayez));
+        besx.a().a(6, ayxs.a(this.jdField_a_of_type_Ayxs));
         i = -10;
       }
     }
     else
     {
-      localayey = this.jdField_a_of_type_Ayez.a;
-      localIntent = ayez.a(this.jdField_a_of_type_Ayez);
-      if (this.jdField_a_of_type_Bdwt == null) {
+      localayxr = this.jdField_a_of_type_Ayxs.a;
+      localIntent = ayxs.a(this.jdField_a_of_type_Ayxs);
+      if (this.jdField_a_of_type_Bevm == null) {
         break label191;
       }
     }
     label191:
-    for (byte[] arrayOfByte = this.jdField_a_of_type_Bdwt.jdField_a_of_type_ArrayOfByte;; arrayOfByte = null)
+    for (byte[] arrayOfByte = this.jdField_a_of_type_Bevm.jdField_a_of_type_ArrayOfByte;; arrayOfByte = null)
     {
-      ayey.a(localayey, i, localIntent, arrayOfByte, ayez.a(this.jdField_a_of_type_Ayez));
+      ayxr.a(localayxr, i, localIntent, arrayOfByte, ayxs.a(this.jdField_a_of_type_Ayxs));
       return;
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), mResult=" + this.jdField_a_of_type_Bdwt.jdField_a_of_type_Int + ",mErrCode=" + this.jdField_a_of_type_Bdwt.b + ",mHttpCode=" + this.jdField_a_of_type_Bdwt.c + ",mErrDesc=" + this.jdField_a_of_type_Bdwt.jdField_a_of_type_JavaLangString);
+      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), mResult=" + this.jdField_a_of_type_Bevm.jdField_a_of_type_Int + ",mErrCode=" + this.jdField_a_of_type_Bevm.b + ",mHttpCode=" + this.jdField_a_of_type_Bevm.c + ",mErrDesc=" + this.jdField_a_of_type_Bevm.jdField_a_of_type_JavaLangString);
       break;
     }
   }

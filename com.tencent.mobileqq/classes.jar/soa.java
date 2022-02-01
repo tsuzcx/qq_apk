@@ -1,32 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class soa
-  implements sow
+public class soa
+  implements son
 {
-  soa(snh paramsnh) {}
+  public soa(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    pum localpum = (pum)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = this.a.b(localpum.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseAdapter", 2, "articleInfo == null, ERROR");
-      }
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.b()))
-    {
-      this.a.a.a();
-      this.a.b = true;
-    }
-    snh.a(this.a).a(localpum.f, localpum.jdField_a_of_type_Int);
-    snh.a(this.a).a(this.a);
-    snh.a(this.a).a(localBaseArticleInfo, snh.a(this.a, localpum.jdField_a_of_type_Sey, localBaseArticleInfo), this.a.a, new sob(this, localBaseArticleInfo), this.a.c);
-    puf.a(paramView);
+    FastWebActivity.p(this.a);
   }
 }
 

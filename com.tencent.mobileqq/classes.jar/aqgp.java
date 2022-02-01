@@ -1,16 +1,66 @@
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import java.io.File;
 
-class aqgp
-  implements EIPCResultCallback
+public class aqgp
+  implements aqgq
 {
-  aqgp(aqgo paramaqgo) {}
+  public final String a = aqgo.a + "." + getClass().getSimpleName();
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static final String b(String paramString1, String paramString2)
   {
-    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
+    return aqhq.a() + File.separator + "_res/" + paramString1;
+  }
+  
+  public String a(aqgt paramaqgt)
+  {
+    return aqhq.a() + File.separator + "_res/" + paramaqgt.b + File.separator;
+  }
+  
+  public boolean a(aqgt paramaqgt)
+  {
+    String str = b(paramaqgt);
+    try
+    {
+      boolean bool = new File(str).exists();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramaqgt + "|" + str);
+      }
+      if (!bool) {
+        return true;
+      }
+    }
+    catch (Throwable paramaqgt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramaqgt.getMessage());
+      }
+      paramaqgt.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean a(aqgt paramaqgt, boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public String b(aqgt paramaqgt)
+  {
+    return b(paramaqgt.b, paramaqgt.c);
+  }
+  
+  public boolean b(aqgt paramaqgt)
+  {
+    boolean bool = true;
+    String str = azul.a(b(paramaqgt));
+    if (!paramaqgt.b.equalsIgnoreCase(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramaqgt);
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 

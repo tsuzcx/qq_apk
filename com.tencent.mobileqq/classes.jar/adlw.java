@@ -1,17 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adlw
-  implements CompoundButton.OnCheckedChangeListener
+class adlw
+  implements DialogInterface.OnClickListener
 {
-  public adlw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  adlw(adlu paramadlu) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    awry.a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    adlu.b(this.a);
   }
 }
 

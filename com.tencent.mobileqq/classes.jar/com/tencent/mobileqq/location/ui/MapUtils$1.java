@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.widget.TextView;
-import awao;
+import awtg;
 
 public final class MapUtils$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class MapUtils$1
   
   public void run()
   {
-    awao.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
+    awtg.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
   }
 }
 

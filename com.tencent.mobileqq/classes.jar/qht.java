@@ -1,42 +1,23 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.pts.utils.PTSDeviceUtil;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.collections.CollectionsKt;
 
-public class qht
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/util/PTSLiteItemViewUtil;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qht
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  snh jdField_a_of_type_Snh;
+  private static final int jdField_a_of_type_Int;
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = CollectionsKt.arrayListOf(new String[] { "3289295241", "834584377", "616690602" });
+  public static final qhu a;
+  private static int b;
+  private static int c;
   
-  public qht(ArticleInfo paramArticleInfo, Context paramContext, snh paramsnh)
+  static
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Snh = paramsnh;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 1);
-    }
-    for (;;)
-    {
-      pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Snh);
-      qhj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009442", "0X8009445");
-      return;
-      if (pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-      {
-        pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-        pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A77", null);
-      }
-      else
-      {
-        pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 1);
-      }
-    }
+    jdField_a_of_type_Qhu = new qhu(null);
+    jdField_a_of_type_Int = PTSDeviceUtil.dp2pxInt(5.0F);
+    b = PTSDeviceUtil.rp2pxInt(12.0F);
+    c = PTSDeviceUtil.rp2pxInt(24.0F);
   }
 }
 

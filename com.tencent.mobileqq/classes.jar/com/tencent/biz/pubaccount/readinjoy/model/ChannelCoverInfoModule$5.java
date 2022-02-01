@@ -4,16 +4,16 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pwl;
+import pox;
 
 public class ChannelCoverInfoModule$5
   implements Runnable
 {
-  public ChannelCoverInfoModule$5(pwl parampwl, int paramInt) {}
+  public ChannelCoverInfoModule$5(pox parampox, int paramInt) {}
   
   public void run()
   {
-    List localList = pwl.a(this.this$0, this.a);
+    List localList = pox.a(this.this$0, this.a);
     if ((localList != null) && (localList.size() > 0))
     {
       StringBuilder localStringBuilder = new StringBuilder("loadChannelCoverListFromDB size = " + localList.size() + "\n");

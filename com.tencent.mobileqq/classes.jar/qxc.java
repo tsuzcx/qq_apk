@@ -1,49 +1,84 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.ScripCmsInfo;
 
 public class qxc
-  extends ClickableSpan
-  implements sth
+  implements Cloneable
 {
-  private int jdField_a_of_type_Int = -1;
-  protected long a;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  boolean jdField_a_of_type_Boolean;
+  public static int c;
+  public static int d;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b = "";
+  public String c;
+  public String d;
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
   
-  public qxc(ComponentHeaderNewSocial paramComponentHeaderNewSocial, long paramLong, int paramInt)
+  public qxc()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void a(boolean paramBoolean)
+  public static qxc a(articlesummary.ScripCmsInfo paramScripCmsInfo)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
+    qxc localqxc = new qxc();
+    localqxc.jdField_a_of_type_JavaLangString = paramScripCmsInfo.bytes_main_title.get().toStringUtf8();
+    localqxc.b = paramScripCmsInfo.bytes_sub_title.get().toStringUtf8();
+    localqxc.jdField_c_of_type_JavaLangString = paramScripCmsInfo.bytes_background_url.get().toStringUtf8();
+    localqxc.jdField_d_of_type_JavaLangString = paramScripCmsInfo.bytes_left_bottom_txt.get().toStringUtf8();
+    localqxc.e = paramScripCmsInfo.bytes_icon_url.get().toStringUtf8();
+    localqxc.f = paramScripCmsInfo.bytes_background_animation_url.get().toStringUtf8();
+    localqxc.g = paramScripCmsInfo.bytes_guide_main_title.get().toStringUtf8();
+    localqxc.h = paramScripCmsInfo.bytes_guide_sub_title.get().toStringUtf8();
+    localqxc.i = paramScripCmsInfo.bytes_guide_background_url.get().toStringUtf8();
+    localqxc.jdField_a_of_type_Long = paramScripCmsInfo.uint64_from_uin.get();
+    localqxc.j = paramScripCmsInfo.bytes_scrip_tag.get().toStringUtf8();
+    jdField_c_of_type_Int = paramScripCmsInfo.uint32_scrip_total_sum.get();
+    jdField_d_of_type_Int = paramScripCmsInfo.uint32_frequency_limit.get();
+    return localqxc;
   }
   
-  public void onClick(View paramView)
+  public qxc a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Long);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    try
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      super.clone();
+      qxc localqxc = new qxc();
+      localqxc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localqxc.b = this.b;
+      localqxc.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      localqxc.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+      localqxc.e = this.e;
+      localqxc.f = this.f;
+      localqxc.i = this.i;
+      localqxc.g = this.g;
+      localqxc.h = this.h;
+      localqxc.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localqxc.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localqxc.j = this.j;
+      return localqxc;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ScripCmsInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+        }
+      }
     }
   }
 }

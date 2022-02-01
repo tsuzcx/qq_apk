@@ -1,60 +1,84 @@
-import android.util.Log;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleFlowLayout;
-import java.util.HashSet;
-import java.util.List;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class vqe<T>
+public class vqe
+  extends vjp
 {
-  @Deprecated
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<T> jdField_a_of_type_JavaUtilList;
-  private vqf jdField_a_of_type_Vqf;
+  protected ProgressBar a;
   
-  public vqe(List<T> paramList)
+  public vqe(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super(paramActivity);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372353));
   }
   
-  public int a()
+  private void i()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    this.jdField_a_of_type_Aakf = new aakf(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Aakf.a(new vqf(this));
+    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.addTextChangedListener(new vqg(this));
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public abstract View a(QCircleFlowLayout paramQCircleFlowLayout, int paramInt, T paramT);
-  
-  public T a(int paramInt)
+  protected int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return 2131560821;
   }
   
-  @Deprecated
-  public HashSet<Integer> a()
+  protected void a(View paramView) {}
+  
+  public void c(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilHashSet;
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setText(paramString);
+    }
   }
   
-  public void a(int paramInt, View paramView)
+  public void g()
   {
-    Log.d("zhy", "onSelected " + paramInt);
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
   }
   
-  public void a(vqf paramvqf)
+  public void h()
   {
-    this.jdField_a_of_type_Vqf = paramvqf;
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
   }
   
-  public boolean a(int paramInt, T paramT)
+  public void onClick(View paramView)
   {
-    return false;
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onClick:" + paramView.getId());
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.d("QCircleBaseInputPopupWindow", 1, "text_input");
+      continue;
+      if (this.jdField_a_of_type_Vjt != null) {
+        this.jdField_a_of_type_Vjt.a();
+      }
+    }
   }
   
-  public void b(int paramInt, View paramView)
+  public void show()
   {
-    Log.d("zhy", "unSelected " + paramInt);
+    super.show();
+    i();
+    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.requestFocus();
+    }
   }
 }
 

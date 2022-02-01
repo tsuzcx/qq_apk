@@ -1,39 +1,54 @@
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aurc
-  implements View.OnClickListener
+public class aurc
+  extends atvf
 {
-  aurc(aurb paramaurb) {}
+  atpa jdField_a_of_type_Atpa = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString = "DiscOfflinePreviewController<FileAssistant>";
+  String b;
+  String c;
   
-  public void onClick(View paramView)
+  public aurc(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if ((aurb.a(this.a) == null) || (TextUtils.isEmpty(aurb.a(this.a).jumpUrl))) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = new Intent(auqu.a(aurb.a(this.a)), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", aurb.a(this.a).jumpUrl);
-      auqu.a(aurb.a(this.a)).startActivity((Intent)localObject);
-      localObject = new HashMap();
-      aceh.a((Map)localObject, aurb.a(this.a).msgId);
-      ((Map)localObject).put(Integer.valueOf(2), aurb.a(this.a).msgId);
-      ((Map)localObject).put(Integer.valueOf(6), aurb.a(this.a).feedId);
-      ((Map)localObject).put(Integer.valueOf(4), "20");
-      ((Map)localObject).put(Integer.valueOf(43), aurb.a(this.a).algorithmId);
-      ((Map)localObject).put(Integer.valueOf(44), aurb.a(this.a).type + "");
-      aceh.a(ampj.a(), "769", "205022", aurb.a(this.a).a().gameAppId, "76902", "1", "160", (Map)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramString1;
+    this.c = paramString2;
+    b();
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Atpa != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Atpa);
     }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.b))
+    {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, " init OfflinePreviewController error,uuid is null,stack:" + aunj.a());
+      if (this.jdField_a_of_type_Atib != null) {
+        this.jdField_a_of_type_Atib.a(false, "", "", -100005L, "", "", null, this.b, null);
+      }
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.c, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Atpa = new aurd(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Atpa);
   }
 }
 

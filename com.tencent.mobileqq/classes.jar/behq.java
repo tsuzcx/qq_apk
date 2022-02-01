@@ -1,10 +1,18 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class behq
-  extends amcl
+final class behq
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public TextView b;
+  behq(behr parambehr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    behm.a("0X800A5CA");
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+  }
 }
 
 

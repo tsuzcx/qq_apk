@@ -153,7 +153,7 @@ class RequestJsPlugin$1
             if (!RequestJsPlugin.access$1000(this.this$0)) {
               break label456;
             }
-            NativeBuffer.packNativeBuffer(RequestJsPlugin.access$1100(this.this$0), paramArrayOfByte, NativeBuffer.TYPE_BUFFER_NATIVE, "data", (JSONObject)localObject2);
+            NativeBuffer.packNativeBuffer(this.val$req.jsService, paramArrayOfByte, NativeBuffer.TYPE_BUFFER_NATIVE, "data", (JSONObject)localObject2);
           }
         }
         for (;;)
@@ -170,7 +170,7 @@ class RequestJsPlugin$1
           l1 = 0L;
           break label249;
           label456:
-          NativeBuffer.packNativeBuffer(RequestJsPlugin.access$1200(this.this$0), paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject2);
+          NativeBuffer.packNativeBuffer(this.val$req.jsService, paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject2);
           continue;
           try
           {

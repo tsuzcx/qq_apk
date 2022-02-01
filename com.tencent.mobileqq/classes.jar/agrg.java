@@ -1,23 +1,11 @@
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
 
-class agrg
-  implements agra
+public class agrg
+  extends agrq
 {
-  agrg(agre paramagre, MessageForArkFlashChat paramMessageForArkFlashChat) {}
-  
-  public void a()
-  {
-    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
-    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
-    {
-      localAutoStartProgressBar.b();
-      localAutoStartProgressBar.setVisibility(8);
-    }
-  }
-  
-  public void b() {}
+  public ImageView a;
+  public ColorView a;
 }
 
 

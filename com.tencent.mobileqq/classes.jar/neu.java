@@ -1,33 +1,14 @@
-import android.view.View;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.avgame.gameroom.video.GameRedPacketFragment;
 
-class neu
-  implements bkhw
+public class neu
+  extends BroadcastReceiver
 {
-  neu(net paramnet) {}
+  public neu(GameRedPacketFragment paramGameRedPacketFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size()) {
-      switch (((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue())
-      {
-      }
-    }
-    for (;;)
-    {
-      net.a(this.a).dismiss();
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      this.a.d();
-    }
-  }
+  public void onReceive(Context paramContext, Intent paramIntent) {}
 }
 
 

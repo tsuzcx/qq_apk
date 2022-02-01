@@ -11,15 +11,17 @@ public class PoseDataConvert
   {
     int[] arrayOfInt1 = { 14, 15 };
     int[] arrayOfInt2 = { 2, 5 };
-    int[] arrayOfInt3 = { 9, 12 };
-    int[] arrayOfInt4 = { 10, 13 };
-    int[] arrayOfInt5 = { 34, 35 };
-    int[] arrayOfInt6 = { 20, 23 };
-    int[] arrayOfInt7 = { 21, 24 };
-    int[] arrayOfInt8 = { 22, 25 };
-    int[] arrayOfInt9 = { 26, 29 };
-    int[] arrayOfInt10 = { 27, 30 };
-    mirrorMap = new int[][] { arrayOfInt1, { 16, 17 }, arrayOfInt2, { 3, 6 }, { 4, 7 }, { 8, 11 }, arrayOfInt3, arrayOfInt4, { 32, 33 }, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, { 28, 31 } };
+    int[] arrayOfInt3 = { 3, 6 };
+    int[] arrayOfInt4 = { 8, 11 };
+    int[] arrayOfInt5 = { 10, 13 };
+    int[] arrayOfInt6 = { 32, 33 };
+    int[] arrayOfInt7 = { 34, 35 };
+    int[] arrayOfInt8 = { 20, 23 };
+    int[] arrayOfInt9 = { 22, 25 };
+    int[] arrayOfInt10 = { 26, 29 };
+    int[] arrayOfInt11 = { 27, 30 };
+    int[] arrayOfInt12 = { 28, 31 };
+    mirrorMap = new int[][] { arrayOfInt1, { 16, 17 }, arrayOfInt2, arrayOfInt3, { 4, 7 }, arrayOfInt4, { 9, 12 }, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, { 21, 24 }, arrayOfInt9, arrayOfInt10, arrayOfInt11, arrayOfInt12 };
   }
   
   public static float[] convertPointsOld(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)

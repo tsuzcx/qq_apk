@@ -1,146 +1,77 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Typeface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bprv
-  extends BaseAdapter
-  implements bkij, bpry
 {
-  private int jdField_a_of_type_Int;
-  private List<bprx> jdField_a_of_type_JavaUtilList = new ArrayList();
+  int a;
+  public Bitmap a;
+  public Typeface a;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  public int e;
+  public int f;
+  public int g = 2;
   
-  public bprv(@NonNull List<bprx> paramList)
+  public bprv()
   {
-    if (paramList.isEmpty()) {
-      yqp.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a();
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((bprx)paramList.next()).a(this);
-    }
+    this.jdField_a_of_type_Int = 0;
   }
   
-  @NonNull
-  private bprw a(int paramInt)
+  public int a(float paramFloat)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
-    {
-      bprx localbprx = (bprx)localIterator.next();
-      j = localbprx.a() + i;
-      if (paramInt <= j - 1) {
-        return new bprw(localbprx, paramInt - i);
-      }
-    }
-    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
+    return agej.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
   }
   
-  private void a()
+  public bpru a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((bprx)localIterator.next()).a() + i) {}
-    this.jdField_a_of_type_Int = i;
+    bpru localbpru = new bpru();
+    a(localbpru);
+    return localbpru;
   }
   
-  @Nullable
-  public bprx a()
+  public bprv a(float paramFloat1, float paramFloat2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bprx localbprx = (bprx)localIterator.next();
-      if (localbprx.a) {
-        return localbprx;
-      }
-    }
-    return null;
+    this.e = a(paramFloat1);
+    this.f = a(paramFloat2);
+    return this;
   }
   
-  public void a(bprx parambprx)
+  public bprv a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    notifyDataSetChanged();
+    this.c = a(paramFloat1);
+    this.d = a(paramFloat2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    return this;
   }
   
-  public int getCount()
+  public bprv a(Bitmap paramBitmap)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    return this;
   }
   
-  public Object getItem(int paramInt)
+  public bprv a(Typeface paramTypeface)
   {
-    return Integer.valueOf(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
+    return this;
   }
   
-  public long getItemId(int paramInt)
+  void a(bpru parambpru)
   {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    bprw localbprw = a(paramInt);
-    return localbprw.jdField_a_of_type_Bprx.a(localbprw.jdField_a_of_type_Int);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bprw localbprw = a(paramInt);
-    bprx localbprx = localbprw.jdField_a_of_type_Bprx;
-    int i = localbprw.jdField_a_of_type_Int;
-    if (paramView == null) {
-      paramView = localbprx.a(i, paramViewGroup);
-    }
-    for (;;)
-    {
-      localbprx.a(i, paramView);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 5;
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    a();
-    super.notifyDataSetChanged();
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramView = a(paramInt);
-    paramAdapterView = paramView.jdField_a_of_type_Bprx;
-    if (!paramAdapterView.c) {}
-    do
-    {
-      return;
-      paramAdapterView.a(paramView.jdField_a_of_type_Int);
-    } while ((paramAdapterView instanceof bpru));
-    paramAdapterView.b(true);
-    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramView.hasNext())
-    {
-      bprx localbprx = (bprx)paramView.next();
-      if (localbprx != paramAdapterView)
-      {
-        localbprx.b(false);
-        localbprx.a(false);
-      }
-    }
-    notifyDataSetChanged();
+    parambpru.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    parambpru.e = this.e;
+    parambpru.f = this.f;
+    parambpru.c = this.c;
+    parambpru.d = this.d;
+    parambpru.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    parambpru.b = this.b;
+    parambpru.jdField_a_of_type_AndroidGraphicsTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
+    parambpru.g = parambpru.a(parambpru.jdField_a_of_type_Int);
+    parambpru.h = parambpru.a(parambpru.b);
+    parambpru.i = this.g;
   }
 }
 

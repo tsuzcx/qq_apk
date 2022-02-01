@@ -1,22 +1,21 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akrr
-  implements BusinessObserver
+final class akrr
+  implements DialogInterface.OnClickListener
 {
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  akrr(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 1) && (paramBundle != null))
+    switch (paramInt)
     {
-      paramInt = paramBundle.getInt("btype");
-      String str = paramBundle.getString("bid");
-      if ((akrp.a(paramInt)) && (!TextUtils.isEmpty(str))) {
-        a(paramInt, str, paramBundle);
-      }
+    default: 
+      return;
     }
+    akrn.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

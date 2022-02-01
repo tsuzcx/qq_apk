@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class bbth
-  extends bbti
+  implements DialogInterface.OnClickListener
 {
-  public bbth(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
-  }
+  public bbth(SignTextEditFragment paramSignTextEditFragment) {}
   
-  protected bbmx a(List<bbmy> paramList, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new bbmm(paramList, paramString, GroupSearchEngine.a(this.a));
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new RichStatus(null);
+    paramDialogInterface.copyFrom(this.a.a);
+    this.a.b.obtainMessage(6, paramDialogInterface).sendToTarget();
   }
 }
 

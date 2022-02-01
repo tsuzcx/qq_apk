@@ -1,86 +1,58 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.Toast;
+import com.tencent.open.base.ToastUtil.1;
+import com.tencent.open.base.ToastUtil.2;
+import com.tencent.open.base.ToastUtil.3;
 
 public class bjuh
 {
-  public static String a;
-  private bjui a;
+  protected static bjuh a;
+  protected Handler a;
+  public Toast a;
+  public Toast b;
   
-  public bjuh(IMiniAppContext paramIMiniAppContext)
+  public bjuh()
   {
-    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getQQProcessName();
-    this.jdField_a_of_type_Bjui = bjui.a();
-    if (this.jdField_a_of_type_Bjui != null) {
-      this.jdField_a_of_type_Bjui.a(paramIMiniAppContext);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public static bjuh a()
+  {
+    if (jdField_a_of_type_Bjuh == null) {
+      jdField_a_of_type_Bjuh = new bjuh();
     }
+    return jdField_a_of_type_Bjuh;
   }
   
-  protected void a(String paramString, RequestEvent paramRequestEvent)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bjui.a(paramRequestEvent);
-    paramRequestEvent = new Bundle();
-    paramRequestEvent.putString("downloadId", paramString);
-    QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Pause", paramRequestEvent, null);
+    a(paramInt, 0);
   }
   
-  protected void a(JSONObject paramJSONObject, String paramString, RequestEvent paramRequestEvent)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bjui.a(paramRequestEvent);
-    try
-    {
-      this.jdField_a_of_type_Bjui.a(paramString);
-      paramRequestEvent = new Bundle();
-      paramRequestEvent.putString("downloadId", paramString);
-      paramRequestEvent.putString("process", jdField_a_of_type_JavaLangString);
-      paramRequestEvent.putString("file_id", (String)paramJSONObject.get("file_id"));
-      paramRequestEvent.putString("filename", (String)paramJSONObject.get("filename"));
-      paramRequestEvent.putString("pdir_key", (String)paramJSONObject.get("pdir_key"));
-      QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Download", paramRequestEvent, null);
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.2(this, paramInt1, paramInt2));
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.3(this, paramView, paramInt));
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  protected boolean a(JSONObject paramJSONObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
-    {
-      if (!TextUtils.isEmpty(paramJSONObject.getString("file_id")))
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramJSONObject.getString("filename")))
-        {
-          boolean bool3 = TextUtils.isEmpty(paramJSONObject.getString("pdir_key"));
-          bool1 = bool2;
-          if (!bool3) {
-            bool1 = true;
-          }
-        }
-      }
-      return bool1;
-    }
-    catch (JSONException paramJSONObject) {}
-    return false;
-  }
-  
-  protected void b(String paramString, RequestEvent paramRequestEvent)
-  {
-    this.jdField_a_of_type_Bjui.a(paramRequestEvent);
-    this.jdField_a_of_type_Bjui.b(paramString);
-    paramRequestEvent = new Bundle();
-    paramRequestEvent.putString("downloadId", paramString);
-    QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Cancel", paramRequestEvent, null);
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.1(this, paramString, paramInt));
   }
 }
 

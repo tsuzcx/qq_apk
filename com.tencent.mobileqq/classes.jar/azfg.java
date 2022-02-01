@@ -1,17 +1,24 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+
 public class azfg
+  implements blpp
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public azfg(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public azfg(azff paramazff, int paramInt)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
+    if (AccountOnlineStateActivity.a(this.a) != null) {
+      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(false);
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    if (AccountOnlineStateActivity.a(this.a) != null) {
+      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(true);
+    }
   }
 }
 

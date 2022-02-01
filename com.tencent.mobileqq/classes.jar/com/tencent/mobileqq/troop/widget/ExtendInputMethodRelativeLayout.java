@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bfvo;
+import bgvp;
 import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class ExtendInputMethodRelativeLayout
   extends InputMethodRelativeLayout
 {
-  private bfvo a;
+  private bgvp a;
   
   public ExtendInputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,9 +36,9 @@ public class ExtendInputMethodRelativeLayout
     return true;
   }
   
-  public void setOnDownListener(bfvo parambfvo)
+  public void setOnDownListener(bgvp parambgvp)
   {
-    this.a = parambfvo;
+    this.a = parambgvp;
   }
 }
 

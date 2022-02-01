@@ -1,16 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class spu
-  implements pde
+class spu
+  extends spi
 {
-  public spu(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
-  
-  public void a(int paramInt)
+  public spu(spr paramspr, View paramView, BaseData paramBaseData)
   {
-    if (paramInt != 2) {
-      ReadInJoyFastWebBottomSocialView.a(this.a, true);
-    }
+    super(paramView, paramBaseData);
   }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
 }
 
 

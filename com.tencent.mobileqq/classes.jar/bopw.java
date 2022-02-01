@@ -1,22 +1,25 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
-public abstract class bopw
+public class bopw
+  extends RecyclerView.ViewHolder
 {
-  protected Paint a = new Paint();
+  public Button a;
+  public EditText a;
+  public ImageView a;
+  public boolean a;
   
-  public bopw()
+  public bopw(bopo parambopo, View paramView)
   {
-    this.a.setAntiAlias(true);
-    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365879));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365632));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376558));
+    this.jdField_a_of_type_Boolean = false;
   }
-  
-  public abstract void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2);
-  
-  public abstract void a(Canvas paramCanvas, ArrayList<boro> paramArrayList, int paramInt1, int paramInt2);
 }
 
 

@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import anni;
-import bctj;
-import bggo;
+import anzj;
+import bdmc;
+import bhgp;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
@@ -50,7 +50,7 @@ public class QrcodeHbGuiderActivity
   
   private void c()
   {
-    new ImmersionBar(this, -468046, findViewById(2131377811));
+    new ImmersionBar(this, -468046, findViewById(2131377964));
     d();
     e();
     f();
@@ -58,12 +58,12 @@ public class QrcodeHbGuiderActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373676));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368994));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(anni.a(2131709963));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368947));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368979));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131709962));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373795));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369088));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131710072));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369042));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369073));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131710071));
   }
   
   private void e()
@@ -142,7 +142,7 @@ public class QrcodeHbGuiderActivity
     {
       localStringBuilder.append(getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
       localStringBuilder.append("|");
-      localStringBuilder.append(bggo.a());
+      localStringBuilder.append(bhgp.a());
       localStringBuilder.append("|");
       localStringBuilder.append(this.jdField_a_of_type_Int);
       localStringBuilder.append(".");
@@ -151,7 +151,7 @@ public class QrcodeHbGuiderActivity
       }
       localStringBuilder.append("|");
       VACDReportUtil.a(this.jdField_a_of_type_Long, null, paramString, "op_type=" + this.jdField_c_of_type_JavaLangString, 0, "");
-      bctj.a(BaseApplication.getContext()).b(this.app, localStringBuilder.toString());
+      bdmc.a(BaseApplication.getContext()).b(this.app, localStringBuilder.toString());
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -226,7 +226,7 @@ public class QrcodeHbGuiderActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131560520);
+    setContentView(2131560535);
     c();
     a("face2face.index.show");
     return true;

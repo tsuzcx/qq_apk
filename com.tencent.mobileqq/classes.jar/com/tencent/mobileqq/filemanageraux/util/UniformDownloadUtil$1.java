@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import auck;
-import aucm;
-import auco;
+import auuf;
+import auuh;
+import auuj;
 
 public final class UniformDownloadUtil$1
   implements Runnable
 {
-  public UniformDownloadUtil$1(String paramString, auco paramauco) {}
+  public UniformDownloadUtil$1(String paramString, auuj paramauuj) {}
   
   public void run()
   {
-    aucm localaucm = auck.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Auco != null) && (localaucm != null)) {
-      this.jdField_a_of_type_Auco.a(localaucm.jdField_a_of_type_JavaLangString, localaucm.jdField_a_of_type_Long);
+    auuh localauuh = auuf.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Auuj != null) && (localauuh != null)) {
+      this.jdField_a_of_type_Auuj.a(localauuh.jdField_a_of_type_JavaLangString, localauuh.jdField_a_of_type_Long);
     }
   }
 }

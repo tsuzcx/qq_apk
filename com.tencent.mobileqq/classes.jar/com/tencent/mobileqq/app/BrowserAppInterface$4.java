@@ -10,7 +10,7 @@ class BrowserAppInterface$4
   
   public void run()
   {
-    if ((this.this$0.isBackground_Stop) && (BaseActivity.sTopActivity == null))
+    if ((this.this$0.isBackgroundStop) && (BaseActivity.sTopActivity == null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, "no activity running, reboot for tbs now");

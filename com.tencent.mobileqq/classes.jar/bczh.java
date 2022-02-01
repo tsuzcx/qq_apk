@@ -1,17 +1,8 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-
-class bczh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface bczh
 {
-  bczh(bczg parambczg, LinearLayout paramLinearLayout) {}
+  public abstract void a(int paramInt);
   
-  public void onGlobalLayout()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    bczg.a(this.jdField_a_of_type_Bczg, this.jdField_a_of_type_AndroidWidgetLinearLayout);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

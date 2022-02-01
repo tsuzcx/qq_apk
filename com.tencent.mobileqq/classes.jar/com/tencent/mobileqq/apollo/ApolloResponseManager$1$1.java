@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo;
 
-import amhd;
-import amis;
-import amit;
+import amsx;
+import amum;
+import amun;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionData;
 
 public class ApolloResponseManager$1$1
   implements Runnable
 {
-  public ApolloResponseManager$1$1(amit paramamit, ApolloActionData paramApolloActionData) {}
+  public ApolloResponseManager$1$1(amun paramamun, ApolloActionData paramApolloActionData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Amit.a.a == null) {
+    if (this.jdField_a_of_type_Amun.a.a == null) {
       return;
     }
-    ((amhd)this.jdField_a_of_type_Amit.a.a.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
+    ((amsx)this.jdField_a_of_type_Amun.a.a.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import bolk;
+import bpnf;
 
 public class CaptureTemplateManager$1
   implements Runnable
 {
-  public CaptureTemplateManager$1(bolk parambolk) {}
+  public CaptureTemplateManager$1(bpnf parambpnf) {}
   
   public void run()
   {

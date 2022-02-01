@@ -3,6 +3,8 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_INTERFACE.INTERFACE.StCreateUpdatableMsgReq;
 import NS_MINI_INTERFACE.INTERFACE.StCreateUpdatableMsgRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUpdatableMsgShareInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -14,11 +16,15 @@ public class CreateUpdatableMsgRequest
   private static final String TAG = "CreateUpdatableMsgRequest";
   private INTERFACE.StCreateUpdatableMsgReq req = new INTERFACE.StCreateUpdatableMsgReq();
   
-  public CreateUpdatableMsgRequest(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public CreateUpdatableMsgRequest(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, byte[] paramArrayOfByte)
   {
     this.req.appid.set(paramString1);
     this.req.templateId.set(paramString2);
     this.req.from.set(paramInt1);
+    this.req.serviceType.set(paramInt3);
+    if (paramArrayOfByte != null) {
+      this.req.sig.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    }
     paramString1 = new INTERFACE.StUpdatableMsgShareInfo();
     paramString1.scene.set(paramInt2);
     switch (paramInt2)

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader;
 
-import atjq;
-import atjt;
+import aubk;
+import aubn;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
 
 public class ExtfBaseFileDownloader$4
   implements Runnable
 {
-  public ExtfBaseFileDownloader$4(atjq paramatjq, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo) {}
+  public ExtfBaseFileDownloader$4(aubk paramaubk, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo) {}
   
   public void run()
   {
     if (this.this$0.a) {}
-    while (atjq.a(this.this$0) == null) {
+    while (aubk.a(this.this$0) == null) {
       return;
     }
-    atjq.a(this.this$0).a(this.a);
+    aubk.a(this.this$0).a(this.a);
   }
 }
 

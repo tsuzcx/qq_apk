@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import aloh;
-import aloi;
-import aloj;
+import alzz;
+import amaa;
+import amab;
 import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
@@ -17,7 +17,7 @@ public class FixedSizeVideoView
   implements Handler.Callback
 {
   private int jdField_a_of_type_Int = -1;
-  public aloj a;
+  public amab a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private int b;
   private int c;
@@ -25,13 +25,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new aloh(this));
+    super.setOnCompletionListener(new alzz(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new aloi(this));
+    super.setOnCompletionListener(new amaa(this));
   }
   
   public int a()
@@ -47,8 +47,8 @@ public class FixedSizeVideoView
     for (;;)
     {
       return true;
-      if (this.jdField_a_of_type_Aloj != null) {
-        this.jdField_a_of_type_Aloj.a(this, this.c, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Amab != null) {
+        this.jdField_a_of_type_Amab.a(this, this.c, this.jdField_a_of_type_Int);
       }
     }
   }
@@ -64,10 +64,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(aloj paramaloj)
+  public void setOnFixVDPlayCompelteListener(amab paramamab)
   {
-    if (paramaloj != null) {
-      this.jdField_a_of_type_Aloj = paramaloj;
+    if (paramamab != null) {
+      this.jdField_a_of_type_Amab = paramamab;
     }
   }
   

@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
-import aafo;
-import aafp;
-import aafq;
-import aafr;
-import aaft;
-import aafx;
-import aagq;
+import aajp;
+import aajq;
+import aajr;
+import aajs;
+import aaju;
+import aajy;
+import aakr;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
@@ -21,15 +21,15 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bclx;
+import bdep;
 
 public class EmoView
   extends LinearLayout
-  implements aafx, aagq
+  implements aajy, aakr
 {
-  private int jdField_a_of_type_Int = 2130839075;
-  private aafr jdField_a_of_type_Aafr;
-  private aagq jdField_a_of_type_Aagq;
+  private int jdField_a_of_type_Int = 2130839083;
+  private aajs jdField_a_of_type_Aajs;
+  private aakr jdField_a_of_type_Aakr;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -38,7 +38,7 @@ public class EmoView
   private boolean jdField_a_of_type_Boolean = true;
   private boolean[] jdField_a_of_type_ArrayOfBoolean = { 1, 0, 0, 0 };
   private int jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-  private aafr jdField_b_of_type_Aafr = new aafq(this);
+  private aajs jdField_b_of_type_Aajs = new aajr(this);
   private final int c = 28;
   private int d = 1;
   private int e = -1;
@@ -62,7 +62,7 @@ public class EmoView
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 81;
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidOsHandler = new aafo(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aajp(this);
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setHandler(this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
@@ -108,18 +108,18 @@ public class EmoView
   {
     int i = 27;
     int j = (int)Math.ceil(107.0D / (27 * 1.0D));
-    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558807, null);
+    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558805, null);
     localGridView.setNumColumns(7);
     if (paramInt == j) {
       i = 26;
     }
-    aaft localaaft = new aaft(getContext(), paramInt, i, 28, paramInt, this);
-    localGridView.setAdapter(localaaft);
+    aaju localaaju = new aaju(getContext(), paramInt, i, 28, paramInt, this);
+    localGridView.setAdapter(localaaju);
     localGridView.setColumnWidth(this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getWidth() / 7);
-    localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, bclx.a(196.0F)));
+    localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, bdep.a(196.0F)));
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.addView(localGridView);
-    postDelayed(new EmoView.2(this, paramInt, localGridView, localaaft), 1000L);
-    localGridView.setOnItemClickListener(new aafp(this, paramInt));
+    postDelayed(new EmoView.2(this, paramInt, localGridView, localaaju), 1000L);
+    localGridView.setOnItemClickListener(new aajq(this, paramInt));
   }
   
   private void c(int paramInt)
@@ -141,23 +141,23 @@ public class EmoView
   {
     this.d = (paramInt + 1);
     c(paramInt);
-    if (this.jdField_a_of_type_Aagq != null) {
-      this.jdField_a_of_type_Aagq.a(paramInt);
+    if (this.jdField_a_of_type_Aakr != null) {
+      this.jdField_a_of_type_Aakr.a(paramInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 27) {
-      this.jdField_b_of_type_Aafr.a();
+      this.jdField_b_of_type_Aajs.a();
     }
     do
     {
       return;
       paramInt1 = (paramInt2 - 1) * 27 + paramInt1;
     } while (paramInt1 >= 107);
-    String str = aagc.b[aaft.b[paramInt1]];
-    this.jdField_b_of_type_Aafr.a(str);
+    String str = aakd.b[aaju.b[paramInt1]];
+    this.jdField_b_of_type_Aajs.a(str);
   }
   
   public void setNavgationVisible(boolean paramBoolean)
@@ -178,9 +178,9 @@ public class EmoView
     }
   }
   
-  public void setOnScreenChangeListener(aagq paramaagq)
+  public void setOnScreenChangeListener(aakr paramaakr)
   {
-    this.jdField_a_of_type_Aagq = paramaagq;
+    this.jdField_a_of_type_Aakr = paramaakr;
   }
 }
 

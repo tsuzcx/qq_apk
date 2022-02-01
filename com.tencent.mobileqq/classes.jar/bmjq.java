@@ -1,25 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bmjq
+  implements DialogInterface.OnClickListener
 {
-  public static void a(Context paramContext, FollowUpdateEvent paramFollowUpdateEvent)
-  {
-    if (paramFollowUpdateEvent != null) {
-      a(paramContext, paramFollowUpdateEvent.useId, paramFollowUpdateEvent.followStatus);
-    }
-  }
+  public bmjq(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramContext == null) || (paramString == null)) {
-      return;
-    }
-    Intent localIntent = new Intent("action.qzone_public_account_follow");
-    localIntent.putExtra("followed", paramInt);
-    localIntent.putExtra("uin", paramString);
-    paramContext.sendBroadcast(localIntent, "com.tencent.qzone.permission.notify");
+    bmim.a(this.a, 5, null);
+    this.a.finish();
   }
 }
 

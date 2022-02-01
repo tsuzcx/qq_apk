@@ -1,26 +1,50 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1;
-import java.lang.ref.WeakReference;
-
-public class acpz
-  implements acqj
+public final class acpz
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  private static volatile boolean a;
+  
+  public static int a(int paramInt)
   {
-    Object localObject = null;
-    WeakReference localWeakReference = new WeakReference(paramacpp);
-    AdThreadManager.INSTANCE.post(new GdtDeviceInfoJsCallHandler.1(this, localWeakReference, paramVarArgs, paramString), 4);
-    if (paramacpp != null) {}
-    for (paramString = paramacpp.a();; paramString = null)
+    switch (paramInt)
     {
-      paramVarArgs = localObject;
-      if (paramacpp != null) {
-        paramVarArgs = paramacpp.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "getDeviceInfo", paramVarArgs);
-      return false;
+    case -5: 
+    case -4: 
+    case -3: 
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return 1;
+    case 0: 
+      return 0;
+    case -2: 
+      return 3;
+    case -6: 
+      return 6;
+    case -7: 
+      return 13;
     }
+    return 207;
+  }
+  
+  public static void a()
+  {
+    acvc.b("GdtArkUtil", String.format("init %b", new Object[] { Boolean.valueOf(a) }));
+    if (a) {
+      return;
+    }
+    try
+    {
+      if (a) {
+        return;
+      }
+    }
+    finally {}
+    a = true;
+    aqet.a(true);
+    aqet.a();
   }
 }
 

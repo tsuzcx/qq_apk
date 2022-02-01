@@ -1,15 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.QQQueryBusinessTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adjl
-  implements DialogInterface.OnDismissListener
+  implements adbw
 {
-  public adjl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a()
   {
-    this.a.finish();
+    return 1023;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().c(paramMessageRecord.frienduin);
+    msg_svc.QQQueryBusinessTmp localQQQueryBusinessTmp = new msg_svc.QQQueryBusinessTmp();
+    localQQQueryBusinessTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (paramQQAppInterface != null)
+    {
+      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
+      bhvd.a(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("PcQQSearchTmpRoutingType", 2, "wpa------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localQQQueryBusinessTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    }
+    paramRoutingHead.qq_querybusiness_tmp.set(localQQQueryBusinessTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8008;
   }
 }
 

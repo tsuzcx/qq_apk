@@ -4,14 +4,14 @@ import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import rpn;
-import slj;
-import txh;
+import rgj;
+import scn;
+import txj;
 
 public class CompressVideoTaskStep$1$1
   implements Runnable
 {
-  public CompressVideoTaskStep$1$1(rpn paramrpn, int paramInt, String paramString, slj paramslj) {}
+  public CompressVideoTaskStep$1$1(rgj paramrgj, int paramInt, String paramString, scn paramscn) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class CompressVideoTaskStep$1$1
     {
       str1 = str2;
       if (!this.jdField_a_of_type_JavaLangString.isEmpty()) {
-        str1 = txh.a(new File(this.jdField_a_of_type_JavaLangString));
+        str1 = txj.a(new File(this.jdField_a_of_type_JavaLangString));
       }
     }
     QLog.i("RIJUGC.CompressVideoTaskStep", 1, "get Md5, md5=" + str1);

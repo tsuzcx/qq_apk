@@ -31,7 +31,7 @@ public class ReadinjoyFormSimpleItem
     case 2: 
       return paramResources.getColorStateList(2131165687);
     case 1: 
-      return paramResources.getColorStateList(2131165381);
+      return paramResources.getColorStateList(2131165379);
     }
     return paramResources.getColorStateList(2131165687);
   }
@@ -41,32 +41,32 @@ public class ReadinjoyFormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130846371);
+      return paramResources.getDrawable(2130846388);
     case 0: 
       if (b) {
-        return paramResources.getDrawable(2130846371);
+        return paramResources.getDrawable(2130846388);
       }
-      return paramResources.getDrawable(2130846365);
+      return paramResources.getDrawable(2130846382);
     case 1: 
       if (b) {
-        return paramResources.getDrawable(2130846374);
+        return paramResources.getDrawable(2130846391);
       }
-      return paramResources.getDrawable(2130846370);
+      return paramResources.getDrawable(2130846387);
     case 2: 
       if (b) {
-        return paramResources.getDrawable(2130846373);
+        return paramResources.getDrawable(2130846390);
       }
-      return paramResources.getDrawable(2130846368);
+      return paramResources.getDrawable(2130846385);
     }
     if (b) {
-      return paramResources.getDrawable(2130846372);
+      return paramResources.getDrawable(2130846389);
     }
-    return paramResources.getDrawable(2130846366);
+    return paramResources.getDrawable(2130846383);
   }
   
   public void a()
   {
-    setArrowIcon(getResources().getDrawable(2130847235));
+    setArrowIcon(getResources().getDrawable(2130847252));
     super.a();
   }
 }

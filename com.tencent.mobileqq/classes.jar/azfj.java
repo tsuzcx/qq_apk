@@ -1,36 +1,22 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
-class azfj
-  implements AdapterView.OnItemClickListener
+public class azfj
+  extends azik
 {
-  azfj(azfh paramazfh) {}
+  public azfj(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (azfh.a(this.a).isShowing()) {
-      azfh.a(this.a).dismiss();
-    }
-    int i = -1;
-    switch ((int)paramLong)
+    super.a(paramBoolean, paramBundle);
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      if (azfh.a(this.a) != null) {
-        azfh.a(this.a).a(i, azfh.a(this.a));
+      if (!paramBundle.getBoolean("param_need_switch_online_status")) {
+        AccountOnlineStateActivity.a(this.a, true, 0);
       }
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
-      azfh.a(this.a);
-      i = 0;
-      continue;
-      azfh.b(this.a);
-      i = 2;
     }
+    AccountOnlineStateActivity.a(this.a, true, -1);
   }
 }
 

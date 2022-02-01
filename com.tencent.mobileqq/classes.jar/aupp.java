@@ -1,22 +1,16 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.fts.FTSDatabase;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class aupp
-  extends FTSDatabase
+  implements aumz
 {
-  public boolean a()
+  public aupp(QfileEditBottomBar paramQfileEditBottomBar) {}
+  
+  public void a()
   {
-    if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
-      aone.a = false;
-    }
-    boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabaseV2");
-    if (!bool) {
-      aone.a = false;
-    }
-    return bool;
+    QfileEditBottomBar.a(this.a);
   }
+  
+  public void b() {}
 }
 
 

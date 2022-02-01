@@ -1,9 +1,15 @@
-import com.tencent.avgame.gamelogic.data.Player;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.avgame.gameroom.GameRoomFragment;
 
 public class nbe
+  implements PopupWindow.OnDismissListener
 {
-  public int a = -1;
-  public Player a;
+  public nbe(GameRoomFragment paramGameRoomFragment) {}
+  
+  public void onDismiss()
+  {
+    this.a.a = null;
+  }
 }
 
 

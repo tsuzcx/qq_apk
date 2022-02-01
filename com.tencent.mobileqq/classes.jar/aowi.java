@@ -1,8 +1,17 @@
-public abstract interface aowi
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aowi
+  extends aoxh
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  {
+    paramQQAppInterface = new aowh(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "cmshow";
+    paramQQAppInterface.c = "game_invite";
+    return paramQQAppInterface;
+  }
 }
 
 

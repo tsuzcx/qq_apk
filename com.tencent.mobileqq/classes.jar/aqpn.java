@@ -1,78 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class aqpn
-  extends aqkz<aqpm>
+  extends RecyclerView.ViewHolder
 {
-  @NonNull
-  public aqpm a(int paramInt)
-  {
-    return new aqpm();
-  }
+  public ViewGroup a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  @Nullable
-  public aqpm a(aqlg[] paramArrayOfaqlg)
+  public aqpn(aqph paramaqph, View paramView)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
-    {
-      aqpm localaqpm = aqpm.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqpm;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqpm paramaqpm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramaqpm.toString());
-    }
-  }
-  
-  public Class<aqpm> clazz()
-  {
-    return aqpm.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 575;
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131364105));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364103));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364107));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364104));
+    this.b = ((TextView)paramView.findViewById(2131364106));
+    this.c = ((TextView)paramView.findViewById(2131364108));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpn
  * JD-Core Version:    0.7.0.1
  */

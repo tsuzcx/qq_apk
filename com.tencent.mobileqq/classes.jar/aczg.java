@@ -1,31 +1,66 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aczg
-  implements acxk
+  extends aczc
 {
-  public int a()
+  private boolean a;
+  private String c;
+  private String d;
+  
+  public aczg(JSONObject paramJSONObject)
   {
-    return 0;
+    a(paramJSONObject);
   }
   
-  public void a(List<acxk> paramList) {}
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public String a()
   {
-    return false;
+    String str = super.a();
+    try
+    {
+      Object localObject = new JSONObject(str);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("driverVersion", this.c);
+      ((JSONObject)localObject).put("previousPatch", this.d);
+      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
+    }
+    return str;
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  protected void a(JSONObject paramJSONObject)
   {
-    return false;
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    this.c = paramJSONObject.optString("driverVersion", null);
+    this.d = paramJSONObject.optString("previousPatch", null);
+    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(this.c))
+    {
+      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
+      return false;
+    }
+    return super.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aczg
  * JD-Core Version:    0.7.0.1
  */

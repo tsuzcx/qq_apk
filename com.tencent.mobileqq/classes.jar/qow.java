@@ -1,25 +1,34 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSNavigateTo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qow
-  implements IPTSNavigateTo
+  implements prd
 {
-  public void navigateTo(String paramString)
+  public qow(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup, List paramList, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, ArrayList<pow> paramArrayList, String paramString)
   {
-    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
-    paramString = Pattern.compile("\\/").split(paramString);
-    if ((paramString != null) && (paramString.length > 0))
-    {
-      paramString = paramString[(paramString.length - 1)];
-      Intent localIntent = new Intent();
-      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", paramString);
-      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
+    if (QLog.isColorLevel()) {
+      QLog.e("ComponentContentRecommendFollowGroup", 2, "followThem, isSuccess = " + paramBoolean + ", followList = " + paramArrayList + ", errorMsg = " + paramString);
     }
+    if (paramBoolean)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        paramArrayList = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramArrayList.isFollowed = this.jdField_a_of_type_Boolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.b(paramArrayList);
+        i += 1;
+      }
+      ComponentContentRecommendFollowGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup).notifyDataSetChanged();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.getContext(), 1, 2131717203, 0).a();
   }
 }
 

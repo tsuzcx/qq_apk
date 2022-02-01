@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahoc;
+import ahxq;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,13 +22,13 @@ public class ZanCombolEffectView
   private long jdField_a_of_type_Long;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private String jdField_a_of_type_JavaLangString = "chat_item_for_likeplus";
-  private List<ahoc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<ahxq> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private List<ahoc> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<ahxq> jdField_b_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float = 10.0F;
   private int jdField_c_of_type_Int;
@@ -61,13 +61,13 @@ public class ZanCombolEffectView
     }
     int i = 0;
     label16:
-    ahoc localahoc;
+    ahxq localahxq;
     float f1;
     if (i < paramInt)
     {
-      localahoc = new ahoc(null);
-      localahoc.jdField_a_of_type_Int = (getWidth() / 2);
-      localahoc.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
+      localahxq = new ahxq(null);
+      localahxq.jdField_a_of_type_Int = (getWidth() / 2);
+      localahxq.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
       f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       float f2 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
@@ -75,10 +75,10 @@ public class ZanCombolEffectView
       }
       j = 1;
       label90:
-      localahoc.jdField_d_of_type_Float = (j * (f2 * f1));
-      localahoc.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
-      localahoc.e = 1.0F;
-      localahoc.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
+      localahxq.jdField_d_of_type_Float = (j * (f2 * f1));
+      localahxq.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
+      localahxq.e = 1.0F;
+      localahxq.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
       f1 = (float)(this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e * 0.2D);
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
         break label263;
@@ -88,9 +88,9 @@ public class ZanCombolEffectView
     label263:
     for (int j = 1;; j = -1)
     {
-      localahoc.jdField_b_of_type_Float = (j * f1 + this.jdField_d_of_type_Float * this.jdField_d_of_type_Float);
-      localahoc.jdField_b_of_type_Int = ((int)(-this.jdField_c_of_type_Int * 0.12D));
-      this.jdField_a_of_type_JavaUtilList.add(localahoc);
+      localahxq.jdField_b_of_type_Float = (j * f1 + this.jdField_d_of_type_Float * this.jdField_d_of_type_Float);
+      localahxq.jdField_b_of_type_Int = ((int)(-this.jdField_c_of_type_Int * 0.12D));
+      this.jdField_a_of_type_JavaUtilList.add(localahxq);
       i += 1;
       break label16;
       break;
@@ -127,7 +127,7 @@ public class ZanCombolEffectView
     if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {}
     int k;
     int i;
-    ahoc localahoc;
+    ahxq localahxq;
     do
     {
       return;
@@ -144,17 +144,17 @@ public class ZanCombolEffectView
       i = 0;
       if (i < k)
       {
-        localahoc = (ahoc)this.jdField_a_of_type_JavaUtilList.get(i);
-        localahoc.jdField_b_of_type_Int = ((int)(localahoc.jdField_b_of_type_Int + localahoc.jdField_c_of_type_Float * f));
-        if (localahoc.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
-          this.jdField_b_of_type_JavaUtilList.add(localahoc);
+        localahxq = (ahxq)this.jdField_a_of_type_JavaUtilList.get(i);
+        localahxq.jdField_b_of_type_Int = ((int)(localahxq.jdField_b_of_type_Int + localahxq.jdField_c_of_type_Float * f));
+        if (localahxq.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
+          this.jdField_b_of_type_JavaUtilList.add(localahxq);
         }
         for (;;)
         {
           i += 1;
           break;
-          localahoc.jdField_a_of_type_Int = ((int)(localahoc.jdField_a_of_type_Int + (2.0F * f * localahoc.jdField_b_of_type_Float + localahoc.jdField_b_of_type_Float * 0.02D)));
-          localahoc.jdField_a_of_type_Float += localahoc.jdField_d_of_type_Float * f;
+          localahxq.jdField_a_of_type_Int = ((int)(localahxq.jdField_a_of_type_Int + (2.0F * f * localahxq.jdField_b_of_type_Float + localahxq.jdField_b_of_type_Float * 0.02D)));
+          localahxq.jdField_a_of_type_Float += localahxq.jdField_d_of_type_Float * f;
         }
       }
       this.jdField_a_of_type_JavaUtilList.removeAll(this.jdField_b_of_type_JavaUtilList);
@@ -171,13 +171,13 @@ public class ZanCombolEffectView
     return;
     while (i < k)
     {
-      localahoc = (ahoc)this.jdField_a_of_type_JavaUtilList.get(i);
+      localahxq = (ahxq)this.jdField_a_of_type_JavaUtilList.get(i);
       this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localahoc.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localahoc.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localahoc.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localahoc.e, localahoc.e);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localahoc.jdField_a_of_type_Int, localahoc.jdField_b_of_type_Int);
-      paramCanvas.drawBitmap(localahoc.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localahxq.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localahxq.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localahxq.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localahxq.e, localahxq.e);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localahxq.jdField_a_of_type_Int, localahxq.jdField_b_of_type_Int);
+      paramCanvas.drawBitmap(localahxq.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
       i += 1;
     }
     invalidate();

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.page.embedded;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.Surface;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
@@ -136,6 +137,11 @@ public class LivePlayerEmbeddedWidgetClient
       }
     } while (localTXJSAdapterError.errorCode != 0);
     return true;
+  }
+  
+  public AppBrandRuntime getAppBrandRuntime()
+  {
+    return (AppBrandRuntime)this.curAppBrandRuntime;
   }
   
   public void handleInsertXWebLivePlayer(JSONObject paramJSONObject, JsRuntime paramJsRuntime, BaseAppBrandRuntime paramBaseAppBrandRuntime)

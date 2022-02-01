@@ -1,47 +1,87 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import java.util.List;
 
-public abstract class bebs
-  extends bebf
+public class bebs
+  implements anui
 {
-  public void a(bdxf parambdxf, bdxe parambdxe)
-  {
-    FromServiceMsg localFromServiceMsg = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    Object localObject = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    bebv localbebv = (bebv)parambdxe.a;
-    beck localbeck = localbebv.a;
-    anqe localanqe = parambdxf.jdField_a_of_type_Anqe;
-    if (localFromServiceMsg.getResultCode() != 1000)
-    {
-      int i = localFromServiceMsg.getResultCode();
-      if ((i == 1002) || (i == 1013))
-      {
-        localObject = MessageHandler.a(localFromServiceMsg);
-        parambdxe = localFromServiceMsg.getBusinessFailMsg();
-        parambdxf = parambdxe;
-        if (parambdxe == null) {
-          parambdxf = "";
-        }
-        a(-1, 9311, (String)localObject, parambdxf, localanqe, localbeck.a);
-      }
-    }
-    for (;;)
-    {
-      bedb.a(localbebv, localbeck);
-      return;
-      localObject = MessageHandler.a(localFromServiceMsg);
-      parambdxe = localFromServiceMsg.getBusinessFailMsg();
-      parambdxf = parambdxe;
-      if (parambdxe == null) {
-        parambdxf = "";
-      }
-      a(-1, 9044, (String)localObject, parambdxf, localanqe, localbeck.a);
-      continue;
-      a(parambdxf, parambdxe, localFromServiceMsg, (byte[])localObject, localbebv, localbeck, localanqe);
-    }
-  }
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  protected abstract void a(bdxf parambdxf, bdxe parambdxe, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, bebv parambebv, beck parambeck, anqe paramanqe);
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList) {}
+  
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return;
+                      } while (paramObject == null);
+                      paramObject = (Object[])paramObject;
+                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                      return;
+                    } while (paramObject == null);
+                    paramObject = (Object[])paramObject;
+                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+                  return;
+                } while (paramObject == null);
+                a(paramBoolean, (Object[])paramObject);
+                return;
+                if (paramObject != null) {
+                  b(paramBoolean, (Object[])paramObject);
+                }
+              } while (paramObject == null);
+              c(paramBoolean, (Object[])paramObject);
+              return;
+            } while (paramObject == null);
+            d(paramBoolean, (Object[])paramObject);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 2);
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+  }
 }
 
 

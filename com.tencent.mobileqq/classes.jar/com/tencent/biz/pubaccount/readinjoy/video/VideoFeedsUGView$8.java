@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
-import ocb;
+import odl;
 
 class VideoFeedsUGView$8
   implements Runnable

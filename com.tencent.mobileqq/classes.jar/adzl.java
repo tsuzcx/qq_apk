@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adzl
-  extends asyw
+class adzl
+  implements DialogInterface.OnClickListener
 {
-  public adzl(Conversation paramConversation) {}
+  adzl(adzk paramadzk) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a(8, paramString1, -2147483648);
+    paramDialogInterface.dismiss();
   }
 }
 

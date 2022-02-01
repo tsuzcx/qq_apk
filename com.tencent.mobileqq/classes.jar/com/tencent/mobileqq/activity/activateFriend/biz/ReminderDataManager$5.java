@@ -1,60 +1,75 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import aftv;
-import aftz;
-import bgmg;
+import agce;
+import agdj;
+import agdq;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.activateFriend.biz.entity.ReminderEntity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReminderDataManager$5
   implements Runnable
 {
-  public ReminderDataManager$5(aftv paramaftv, String paramString, aftz paramaftz) {}
+  public ReminderDataManager$5(agdj paramagdj, boolean paramBoolean, List paramList, agdq paramagdq) {}
   
   public void run()
   {
-    File[] arrayOfFile = aftv.b(this.this$0, aftv.a(this.this$0));
-    int j;
-    int i;
-    if (arrayOfFile.length > 0)
+    agdj.a(this.this$0);
+    Object localObject1;
+    if ((agdj.a(this.this$0) != null) && (agdj.a(this.this$0).get()) && (!this.jdField_a_of_type_Boolean))
     {
-      j = arrayOfFile.length;
-      i = 0;
+      localObject1 = new ArrayList(agdj.a(this.this$0).values());
+      if (QLog.isColorLevel()) {
+        QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from cache, msg count: ", Integer.valueOf(((List)localObject1).size()) });
+      }
+      localObject1 = ((List)localObject1).iterator();
     }
-    for (;;)
+    while (((Iterator)localObject1).hasNext())
     {
-      if (i < j)
-      {
-        File localFile = arrayOfFile[i];
-        AcsMsg localAcsMsg = this.this$0.a(localFile);
-        if ((localAcsMsg == null) || (!localAcsMsg.msg_id.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label193;
-        }
+      Object localObject2 = (ReminderEntity)((Iterator)localObject1).next();
+      this.jdField_a_of_type_JavaUtilList.add(((ReminderEntity)localObject2).getAcsMsg());
+      continue;
+      localObject1 = agdj.a(this.this$0, NetConnInfoCenter.getServerTimeMillis());
+      if (localObject1 == null) {
         if (QLog.isColorLevel()) {
-          QLog.d(aftv.a(), 2, "deleteReminderFilesByMsgId msgId: " + this.jdField_a_of_type_JavaLangString);
-        }
-        if (!bgmg.d(localFile.getAbsolutePath())) {
-          break label161;
-        }
-        aftv.a(this.this$0, localAcsMsg);
-        if (QLog.isColorLevel()) {
-          QLog.d(aftv.a(), 2, "cancelAlarmById alarmId: " + localAcsMsg.msg_id.hashCode());
+          QLog.d("ReminderDataManagerNew", 1, "async from db, msg list is null");
         }
       }
-      label161:
-      do
+      while ((!agdj.a(this.this$0).get()) || (this.jdField_a_of_type_Boolean))
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d(aftv.a(), 2, " deleteFile fail ");
+        localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (AcsMsg)((Iterator)localObject1).next();
+            agdj.a(this.this$0, (AcsMsg)localObject2, 1);
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from db, msg count: ", Integer.valueOf(((List)localObject1).size()) });
+            }
+            localObject1 = ((List)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (ReminderEntity)((Iterator)localObject1).next();
+              this.jdField_a_of_type_JavaUtilList.add(((ReminderEntity)localObject2).getAcsMsg());
+            }
+            break;
+          }
         }
-      } while (this.jdField_a_of_type_Aftz == null);
-      this.jdField_a_of_type_Aftz.a();
-      return;
-      label193:
-      i += 1;
+        agdj.a(this.this$0).set(true);
+        agdj.a(this.this$0).edit().putString("sp_key_cache_list_time", agce.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
+      }
     }
+    this.jdField_a_of_type_Agdq.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

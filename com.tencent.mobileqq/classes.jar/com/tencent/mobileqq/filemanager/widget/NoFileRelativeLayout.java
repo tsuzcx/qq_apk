@@ -13,8 +13,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atxh;
-import bdjg;
+import aupc;
+import becb;
 
 public class NoFileRelativeLayout
   extends RelativeLayout
@@ -42,15 +42,15 @@ public class NoFileRelativeLayout
   public NoFileRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560854, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131371779));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378459));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378470));
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new atxh(this);
-    bdjg.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560885, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131371886));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378617));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378628));
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aupc(this);
+    becb.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131368269));
-    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131379031);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131368343));
+    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131379195);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   

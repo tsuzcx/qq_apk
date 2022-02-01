@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import atus;
-import atut;
-import atuv;
-import atuw;
-import atvo;
+import aumn;
+import aumo;
+import aumq;
+import aumr;
+import aunj;
 
 public class FMSettings$5$1$1$2
   implements Runnable
 {
-  public FMSettings$5$1$1$2(atuw paramatuw) {}
+  public FMSettings$5$1$1$2(aumr paramaumr) {}
   
   public void run()
   {
-    atut.a(4, "-------onMoveFail-------");
-    atut.a(4, atvo.a());
+    aumo.a(4, "-------onMoveFail-------");
+    aumo.a(4, aunj.a());
     this.a.a.a.a.a();
     this.a.a.a.this$0.b();
   }

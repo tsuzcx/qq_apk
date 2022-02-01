@@ -1,6 +1,6 @@
 package com.tencent.device.datadef;
 
-import abqf;
+import abuj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class DeviceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DeviceInfo> CREATOR = new abqf();
+  public static final Parcelable.Creator<DeviceInfo> CREATOR = new abuj();
   public static final double MULTIVIDEOVER = 1.4D;
   public int SSOBid_Platform;
   public String SSOBid_Version = "";

@@ -1,20 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-class bifb
-  implements ValueAnimator.AnimatorUpdateListener
+public class bifb
+  implements View.OnClickListener
 {
-  bifb(biez parambiez, float paramFloat1, float paramFloat2) {}
+  public bifb(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Context paramContext) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Biez.a.setAlpha(f2 * (f3 - f4) + f1);
+    if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getOutputMute())
+    {
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846376));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846375));
+    }
   }
 }
 

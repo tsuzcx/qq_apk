@@ -1,8 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 
-public abstract interface xpe
+public final class xpe
+  implements Parcelable.Creator<AnimationParam>
 {
-  public abstract void a(View paramView, float paramFloat);
+  public AnimationParam a(Parcel paramParcel)
+  {
+    return new AnimationParam(paramParcel);
+  }
+  
+  public AnimationParam[] a(int paramInt)
+  {
+    return new AnimationParam[paramInt];
+  }
 }
 
 

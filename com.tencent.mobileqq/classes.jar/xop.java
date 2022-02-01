@@ -1,23 +1,52 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
-class xop
-  implements xpm
+public class xop
+  extends JobSegment<String, yfw>
 {
-  xop(xol paramxol, StoryVideoItem paramStoryVideoItem) {}
+  public xop(xoj paramxoj) {}
   
-  public void a(xpl paramxpl)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if (this.jdField_a_of_type_Xol.isCanceled()) {}
-    do
+    if ((xoj.a(this.a).a != null) && (TextUtils.equals(xoj.a(this.a).a.feedId, paramString)))
     {
+      yuk.d("Q.qqstory.player.CommentFloatDialogController", "feed item already exist , no need to pull again");
+      notifyError(new ErrorMessage(2223, "feed item already exist"));
       return;
-      yqp.a(this.jdField_a_of_type_Xol.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Xol.a.c]);
-    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Xol.a, 12));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xol.a, 12);
-    this.jdField_a_of_type_Xol.a.d = 1;
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xol.a).a(this.jdField_a_of_type_Xol.a, paramxpl, VideoViewVideoHolder.b(this.jdField_a_of_type_Xol.a));
-    yqu.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    }
+    paramString = new yfw();
+    Object localObject1 = (CommentLikeFeedItem)((yme)wth.a(11)).a(xoj.a(this.a));
+    if (localObject1 != null)
+    {
+      if ((localObject1 instanceof VideoListFeedItem))
+      {
+        paramJobContext = (VideoListFeedItem)localObject1;
+        localObject2 = ((ymk)wth.a(12)).a(xoj.a(this.a), paramJobContext.mVideoPullType);
+        if (localObject2 != null)
+        {
+          paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
+          paramJobContext.mIsVideoEnd = ((FeedVideoInfo)localObject2).mIsVideoEnd;
+          paramJobContext.mVideoPullType = ((FeedVideoInfo)localObject2).mVideoPullType;
+          paramJobContext.mVideoSeq = ((FeedVideoInfo)localObject2).mVideoSeq;
+          paramString.a(((FeedVideoInfo)localObject2).mVideoItemList, true);
+        }
+      }
+      paramString.a = ((CommentLikeFeedItem)localObject1);
+      notifyResult(paramString);
+      return;
+    }
+    localObject1 = new xce();
+    ((xce)localObject1).a = new ArrayList();
+    Object localObject2 = new ylw(xoj.a(this.a), 0, "", "");
+    ((xce)localObject1).a.add(localObject2);
+    wow.a().a((wpa)localObject1, new xoq(this, paramJobContext, paramString));
   }
 }
 

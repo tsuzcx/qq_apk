@@ -1,47 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.viola.adapter.IBridgeAdapter;
-import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class tmb
-  implements IBridgeAdapter
 {
-  public tmb()
-  {
-    registerModuleFunction();
-  }
+  public long a;
+  public AdvertisementInfo a;
+  public String a;
+  public boolean a;
+  public long b;
+  public long c;
+  public long d;
   
-  public ArrayList<String> getAdapterUnRegisterFunction()
+  public void a(Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void registerModuleFunction() {}
-  
-  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
-  {
-    if (paramViolaInstance == null) {
-      break label5;
-    }
-    for (;;)
+    long l1;
+    long l2;
+    long l3;
+    if (paramBundle != null)
     {
-      label5:
-      return;
-      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
-      {
-        paramString = paramViolaInstance.getFragment();
-        if (paramString == null) {
-          break;
-        }
-        if ((paramString instanceof ViolaFragment)) {}
-        for (paramString = ((ViolaFragment)paramString).a(); paramString != null; paramString = null)
-        {
-          paramString.a(((Boolean)paramObject).booleanValue());
-          return;
-        }
+      String str = paramBundle.getString("adid", "");
+      l1 = paramBundle.getLong("navigationStart", 0L);
+      l2 = paramBundle.getLong("htmlLoaded", 0L);
+      l3 = paramBundle.getLong("domComplete", 0L);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.equals(this.jdField_a_of_type_JavaLangString))) {
+        break label71;
       }
     }
+    label71:
+    do
+    {
+      return;
+      if (l1 > 0L) {
+        this.b = l1;
+      }
+      if (l2 > 0L) {
+        this.c = l2;
+      }
+    } while (l3 <= 0L);
+    this.d = l3;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Long > 0L) && ((this.b > 0L) || (this.c > 0L) || (this.d > 0L));
   }
 }
 

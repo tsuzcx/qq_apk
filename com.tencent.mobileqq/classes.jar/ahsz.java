@@ -1,21 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import java.io.File;
-import java.util.Locale;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class ahsz
-  implements DialogInterface.OnClickListener
+public class ahsz
+  implements bloq
 {
-  ahsz(ahsy paramahsy, File paramFile) {}
+  public ahsz(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Ahsy.a.a, paramDialogInterface, true));
-  }
+  public void a() {}
 }
 
 

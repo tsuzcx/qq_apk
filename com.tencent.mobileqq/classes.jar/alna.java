@@ -1,126 +1,228 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class alna
+public class alna
+  extends alnt
 {
-  public float a;
-  public int a;
-  public almz a;
-  private alnb a;
-  public Bitmap a;
-  public boolean a;
+  protected int a;
+  private List<String> a;
   
-  public alna(String paramString, alnb paramalnb, Typeface paramTypeface)
+  public alna()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Alnb = paramalnb;
-    this.jdField_a_of_type_Almz = new almz(paramString, this.jdField_a_of_type_Alnb.c, this.jdField_a_of_type_Alnb.b, this.jdField_a_of_type_Alnb.e, this.jdField_a_of_type_Alnb.f, 0.0F, (this.jdField_a_of_type_Alnb.jdField_a_of_type_Float - this.jdField_a_of_type_Alnb.b) / 2.0F, paramTypeface);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramString);
-      return;
-    }
+    this.jdField_a_of_type_Int = 2131562815;
   }
   
-  private boolean a(String paramString1, String paramString2)
+  public int a()
   {
-    if ((paramString1 == null) && (paramString2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramString1 == null) || (paramString2 == null)) {
-        return false;
-      }
-    } while (paramString1.equals(paramString2));
-    return false;
+    return 2;
   }
   
-  private void b(String paramString)
+  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
   {
-    if (TextUtils.isEmpty(paramString))
+    Object localObject1;
+    if ((paramView != null) && ((paramView.getTag() instanceof alnb)))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      if (this.jdField_a_of_type_Int != -1)
-      {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
+      paramalpv = (alnb)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = paramalpv;
+      localObject1 = paramContext.getResources();
+      paramalpv = ((Resources)localObject1).getColorStateList(2131167074);
+      localObject1 = ((Resources)localObject1).getColorStateList(2131167075);
+      if (!ThemeUtil.isNowThemeIsDefault(null, false, null)) {
+        break label522;
       }
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = alnf.a(this.jdField_a_of_type_Almz.c, this.jdField_a_of_type_Alnb.jdField_a_of_type_Float);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Almz.jdField_a_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Almz.a(paramString);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject1, 0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = -1;
-      return;
-      QLog.d("BeanItemWrapper", 2, "createcache error:" + this.jdField_a_of_type_Almz.c + "-" + this.jdField_a_of_type_Alnb.jdField_a_of_type_Float);
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      this.jdField_a_of_type_Almz.jdField_a_of_type_Float = paramFloat1;
-      paramFloat1 = this.jdField_a_of_type_Almz.b;
-      almz localalmz = this.jdField_a_of_type_Almz;
-      localalmz.b += paramFloat2;
-      this.jdField_a_of_type_Almz.a(paramCanvas);
-      this.jdField_a_of_type_Almz.b = paramFloat1;
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, RectF paramRectF, float paramFloat1, float paramFloat2)
-  {
-    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+      if (AppSetting.c) {
+        paramViewGroup.setContentDescription(null);
       }
-    } while (this.jdField_a_of_type_Int < 0);
-    alnf.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.jdField_a_of_type_Almz.c, this.jdField_a_of_type_Alnb.jdField_a_of_type_Float, paramRectF, paramFloat1, paramFloat2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!a(paramString, this.jdField_a_of_type_Almz.jdField_a_of_type_JavaLangString))
+      if ((paramObject instanceof RecentItemAppletsFolderData))
       {
-        this.jdField_a_of_type_Almz.a(paramString);
-        b(paramString);
+        paramalpv = (RecentItemAppletsFolderData)paramObject;
+        if (paramalno != null) {
+          a(paramViewGroup, paramalpv, paramContext, paramalno.a(paramalpv.mUser.uin, paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getMeasuredWidth(), paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getMeasuredHeight(), paramalpv.iconUrl, paramalpv.iconUrlSimple));
+        }
+      }
+      a(paramContext, paramViewGroup, paramInt, paramObject, paramView, paramOnClickListener);
+      paramViewGroup.setOnClickListener(paramOnClickListener);
+      paramViewGroup.setOnLongClickListener(paramOnLongClickListener);
+      paramViewGroup.setTag(-1, Integer.valueOf(paramInt));
+      return paramViewGroup;
+      paramView = new alnb();
+      paramViewGroup = a(paramContext, this.jdField_a_of_type_Int, paramView);
+      paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramViewGroup.findViewById(2131368212));
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131378936));
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramViewGroup.findViewById(2131380442));
+      paramView.b = ((SingleLineTextView)paramViewGroup.findViewById(2131365413));
+      Object localObject2 = paramContext.getResources();
+      float f = bhlo.a();
+      paramalpv = ((Resources)localObject2).getColorStateList(2131167074);
+      localObject1 = ((Resources)localObject2).getColorStateList(2131166997);
+      localObject2 = ((Resources)localObject2).getColorStateList(2131167075);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor((ColorStateList)localObject1);
+      if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject2, 0);
+      }
+      for (;;)
+      {
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalpv, 2);
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        paramView.b.setTextColor(paramalpv);
+        paramView.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        paramView.b.setExtendTextSize(14.0F, 1);
+        paramViewGroup.setTag(paramView);
+        if (this.jdField_a_of_type_Alms != null) {
+          paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Alms.a());
+        }
+        break;
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalpv, 0);
+      }
+      label522:
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalpv, 0);
+    }
+  }
+  
+  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
+  {
+    if ((paramRecentBaseData == null) || (paramContext == null)) {
+      return null;
+    }
+    int i = paramRecentBaseData.mMenuFlag;
+    paramRecentBaseData = paramContext.getResources();
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      j = i & 0xF0;
+      if (j != 32) {
+        break label115;
+      }
+      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[2]));
+    }
+    for (;;)
+    {
+      if ((i & 0xF) == 1) {
+        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
+      }
+      return this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      break;
+      label115:
+      if (j == 16) {
+        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[3]));
+      }
+    }
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    int k = 0;
+    if ((paramView == null) || (paramRecentBaseData == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
       }
       return;
+    }
+    if ((paramView.getTag() instanceof alnb)) {}
+    for (alnb localalnb = (alnb)paramView.getTag();; localalnb = null) {
+      for (;;)
+      {
+        if (localalnb == null)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
+          return;
+        }
+        localalnb.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+        a(localalnb.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
+        localalnb.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramRecentBaseData.mShowTime, 0);
+        localalnb.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleName);
+        try
+        {
+          localalnb.b.setText(paramRecentBaseData.mLastMsg);
+          j = paramRecentBaseData.mUnreadNum;
+          i = paramRecentBaseData.mUnreadFlag;
+          if (j > 0) {
+            if (i == 0)
+            {
+              localalnb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
+              j = 0;
+              i = 0;
+              blkk.a(localalnb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
+              if ((paramRecentBaseData.mMenuFlag & 0xF0) != 32) {
+                break label340;
+              }
+            }
+          }
+        }
+        catch (Exception paramDrawable)
+        {
+          for (;;)
+          {
+            try
+            {
+              localalnb.g.setBackgroundResource(2130839403);
+              if (!AppSetting.c) {
+                break;
+              }
+              paramView.setContentDescription(paramRecentBaseData.mContentDesc);
+              return;
+              paramDrawable = paramDrawable;
+              paramDrawable.printStackTrace();
+              localalnb.b.setText(paramRecentBaseData.mLastMsg + " ");
+              continue;
+              if (i == 2)
+              {
+                i = 1;
+                localalnb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
+                j = 0;
+                continue;
+              }
+              i = 3;
+              localalnb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
+              localalnb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167121));
+              k = 2130850404;
+              continue;
+              label340:
+              localalnb.g.setBackgroundResource(2130839402);
+              continue;
+            }
+            catch (Throwable paramContext)
+            {
+              continue;
+            }
+            int j = 0;
+            int i = 0;
+          }
+        }
+      }
     }
   }
 }

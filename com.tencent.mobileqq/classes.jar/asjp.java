@@ -1,26 +1,32 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.theme.diy.ResData;
+import java.lang.ref.WeakReference;
 
-public class asjp
-  extends asgf
+class asjp
+  implements bejb
 {
-  public asjp(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  asjp(asiw paramasiw) {}
   
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<asht> paramList, ashg paramashg)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    if (this.a.b != paramLong) {
-      return;
-    }
-    try
+    paramResData = (MessengerService)this.a.a.get();
+    Bundle localBundle;
+    if (paramResData != null)
     {
-      ExtendFriendSearchFragment.a(this.a, 1);
-      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramashg);
-      return;
+      localBundle = new Bundle();
+      localBundle.putString("themeId", paramBundle.getString("themeId"));
+      if (paramInt2 != 4) {
+        break label73;
+      }
     }
-    catch (Exception paramString)
+    label73:
+    for (paramInt1 = 0;; paramInt1 = -2)
     {
-      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
+      localBundle.putInt("themeStatus", paramInt1);
+      paramBundle.putBundle("response", localBundle);
+      paramResData.a(paramBundle);
+      return 1;
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import anjh;
+import anve;
 import com.tencent.qphone.base.util.QLog;
 
 public class ConditionSearchManager$4
   implements Runnable
 {
-  public ConditionSearchManager$4(anjh paramanjh) {}
+  public ConditionSearchManager$4(anve paramanve) {}
   
   public void run()
   {

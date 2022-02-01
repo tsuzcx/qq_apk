@@ -1,13 +1,27 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class azfp
-  implements bkhw
+  implements DialogInterface.OnClickListener
 {
   azfp(azfn paramazfn) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azfn.a(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onAccoutChangeFailed -> LoginActivity");
+    }
+    paramDialogInterface = new Intent(azfn.a(this.a), LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("uin", azfn.a(this.a));
+    paramDialogInterface.putExtra("befault_uin", azfn.a(this.a).getCurrentAccountUin());
+    azfn.a(this.a).startActivity(paramDialogInterface);
+    azfn.a(this.a, null);
   }
 }
 

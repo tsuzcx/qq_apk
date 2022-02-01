@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bgmv
-  implements adsx
+public class bgmv
+  implements bgvn
 {
-  bgmv(bgmp parambgmp) {}
+  public bgmv(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void a()
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    ((BaseActivity)this.a.a).finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    ((BaseActivity)this.a.a).finish();
+    paramView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgmv
  * JD-Core Version:    0.7.0.1
  */

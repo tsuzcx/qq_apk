@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.widget.ImageView;
 
-public class bdjx
-  extends anmu
+public final class bdjx
+  implements bdhm
 {
-  public bdjx(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  public bdjx(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a()
   {
-    this.a.a.a(paramString);
+    if ((this.a != null) && (this.b != null))
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAssistantData;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopAssistantManagerProxy.Proxy;
 
-class bdis
-  implements WtTicketPromise
+public final class bdis
+  implements RecentRoute.TroopAssistantManagerProxy.Proxy
 {
-  bdis(bdiq parambdiq, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
-  
-  public void Done(Ticket paramTicket)
+  public TroopAssistantData a(IMCoreAppRuntime paramIMCoreAppRuntime)
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      return axan.a().a((QQAppInterface)paramIMCoreAppRuntime);
     }
-    for (;;)
-    {
-      QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Done,result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_Bdiq.mApp.getCurrentAccountUin());
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
-      {
-        bdiq.b(this.jdField_a_of_type_Bdiq, 0);
-        QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server success!");
-      }
-      bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-      return;
-      if ((paramTicket != null) && (paramTicket._sig == null)) {
-        i = 2;
-      } else {
-        i = 0;
-      }
-    }
+    return null;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public int getTroopAssistantUnreadNum(IMCoreAppRuntime paramIMCoreAppRuntime)
   {
-    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Failed, " + paramErrMsg);
-    bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Timeout, " + paramErrMsg);
-    bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      return axan.a().a(null, (QQAppInterface)paramIMCoreAppRuntime);
+    }
+    return 0;
   }
 }
 

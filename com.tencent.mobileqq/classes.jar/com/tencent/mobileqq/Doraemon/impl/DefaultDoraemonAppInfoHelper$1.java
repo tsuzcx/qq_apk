@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import adep;
+import adnn;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class DefaultDoraemonAppInfoHelper$1
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$1(adep paramadep) {}
+  public DefaultDoraemonAppInfoHelper$1(adnn paramadnn) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class DefaultDoraemonAppInfoHelper$1
     long l2;
     try
     {
-      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.4.1&data_version=" + this.this$0.b;
+      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.4.5&data_version=" + this.this$0.b;
       localObject7 = BaseApplicationImpl.getApplication().getRuntime();
       if (localObject7 == null)
       {
@@ -76,7 +76,7 @@ public class DefaultDoraemonAppInfoHelper$1
       {
         this.this$0.jdField_a_of_type_OrgJsonJSONObject = localJSONObject;
         this.this$0.jdField_a_of_type_JavaUtilMap.clear();
-        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.4.1").apply();
+        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.4.5").apply();
         return;
       }
     }

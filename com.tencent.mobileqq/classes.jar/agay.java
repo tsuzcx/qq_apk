@@ -1,42 +1,55 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class agay
-  extends TranslateAnimation
+  implements View.OnTouchListener
 {
-  public static volatile boolean a;
-  public int a;
+  public agay(VisitorsActivity paramVisitorsActivity) {}
   
-  public agay()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this(1, 1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
-  }
-  
-  public agay(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_Int += 1;
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 2))
+    switch (paramMotionEvent.getAction())
     {
-      setStartTime(paramLong);
-      if (this.jdField_a_of_type_Int == 2) {
-        jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+        this.a.b.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
+        bdll.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
+        paramView = new Intent(this.a, LikeRankingListActivity.class);
+        this.a.startActivity(paramView);
+        this.a.d.setVisibility(8);
+        this.a.f.clearAnimation();
+        this.a.c = 0;
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
       }
     }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
-  
-  public void reset()
-  {
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    super.reset();
   }
 }
 

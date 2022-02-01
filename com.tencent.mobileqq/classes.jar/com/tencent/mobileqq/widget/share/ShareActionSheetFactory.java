@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.widget.share;
 
-import bift;
-import bifu;
+import bjgs;
+import bjgt;
 
 public class ShareActionSheetFactory
 {
   public static ShareActionSheet create(ShareActionSheetV2.Param paramParam)
   {
-    return new bifu(new bift(new ShareActionSheetV2(paramParam)));
+    return new bjgt(new bjgs(new ShareActionSheetV2(paramParam)));
   }
 }
 

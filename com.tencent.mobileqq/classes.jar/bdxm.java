@@ -1,8 +1,13 @@
-public abstract interface bdxm
+public class bdxm
 {
-  public abstract void a(int paramInt, String paramString);
+  public float a;
+  public float b;
   
-  public abstract void a(String paramString);
+  public bdxm(float paramFloat1, float paramFloat2)
+  {
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
 }
 
 

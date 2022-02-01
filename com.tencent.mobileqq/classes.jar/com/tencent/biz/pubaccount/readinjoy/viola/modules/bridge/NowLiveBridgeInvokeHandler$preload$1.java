@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge;
 
-import avju;
+import awcc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import kotlin.Metadata;
@@ -25,7 +25,7 @@ public final class NowLiveBridgeInvokeHandler$preload$1
       if (localObject == null) {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager");
       }
-      ((avju)localObject).a();
+      ((awcc)localObject).a();
     }
   }
 }

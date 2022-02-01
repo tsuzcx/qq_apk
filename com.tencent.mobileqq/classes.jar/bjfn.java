@@ -1,15 +1,17 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.qg.video.videodecoder.MediaDecoder;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-public class bjfn
-  implements SurfaceTexture.OnFrameAvailableListener
+public final class bjfn
+  implements DialogInterface.OnClickListener
 {
-  public bjfn(MediaDecoder paramMediaDecoder, bjfo parambjfo) {}
+  public bjfn(Context paramContext) {}
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bjfo.a(paramSurfaceTexture);
+    bjfq.c();
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 

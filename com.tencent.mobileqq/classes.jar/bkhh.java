@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsListView.SavedState;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public final class bkhh
-  implements Parcelable.Creator<AbsListView.SavedState>
+public class bkhh
+  implements View.OnLongClickListener
 {
-  public AbsListView.SavedState a(Parcel paramParcel)
-  {
-    return new AbsListView.SavedState(paramParcel, null);
-  }
+  public bkhh(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, bkig parambkig) {}
   
-  public AbsListView.SavedState[] a(int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    return new AbsListView.SavedState[paramInt];
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Bkig.b);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkhh
  * JD-Core Version:    0.7.0.1
  */

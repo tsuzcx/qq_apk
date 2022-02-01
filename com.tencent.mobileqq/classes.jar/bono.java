@@ -1,37 +1,22 @@
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.widget.TextView;
 
-public class bono
-  implements View.OnClickListener
+class bono
+  extends RecyclerView.ViewHolder
 {
-  public bono(HummingActivity paramHummingActivity) {}
+  private TextView a;
   
-  public void onClick(View paramView)
+  public bono(View paramView)
   {
-    if (bonh.b()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("HUM_HummingActivity", 2, "onClick: play mHumMusicItemInfo = " + HummingActivity.a(this.a));
-      }
-      if (HummingActivity.a(this.a).b(HummingActivity.a(this.a)))
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-        this.a.setResult(-1, localIntent);
-        this.a.finish();
-      }
-      else
-      {
-        HummingActivity.a(this.a).a(HummingActivity.a(this.a), this.a.a);
-      }
-    }
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131362238));
+  }
+  
+  public void a(@NonNull bonp parambonp)
+  {
+    this.a.setText(parambonp.a);
   }
 }
 

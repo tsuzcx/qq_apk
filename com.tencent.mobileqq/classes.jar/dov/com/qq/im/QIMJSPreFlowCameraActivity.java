@@ -1,15 +1,15 @@
 package dov.com.qq.im;
 
 import Override;
-import alin;
+import aluf;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bncl;
-import bojv;
-import bolb;
+import bodt;
+import bplq;
+import bpmw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -43,18 +43,18 @@ public class QIMJSPreFlowCameraActivity
         paramBundle.printStackTrace();
         continue;
       }
-      ((bolb)bojv.a(5)).f();
+      ((bpmw)bplq.a(5)).g();
       int i = localIntent.getIntExtra("firsttab", 0);
       int j = localIntent.getIntExtra("secondtab", 0);
       String str = localIntent.getStringExtra("itemid");
       int k = localIntent.getIntExtra("type", 0);
       int m = localIntent.getIntExtra("direction", 1);
-      int n = localIntent.getIntExtra("WebSceneType", alin.d);
+      int n = localIntent.getIntExtra("WebSceneType", aluf.d);
       paramBundle = str;
       if (str == null) {
         paramBundle = "";
       }
-      bncl.a(this, 4, 10007, 7, -1, i, j, paramBundle, 0, true, k, m, n, localIntent.getExtras());
+      bodt.a(this, 4, 10007, 7, -1, i, j, paramBundle, 0, true, k, m, n, localIntent.getExtras());
     }
   }
   

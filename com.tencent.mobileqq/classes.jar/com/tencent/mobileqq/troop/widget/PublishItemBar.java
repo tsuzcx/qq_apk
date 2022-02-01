@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bgme;
+import bhmg;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PublishItemBar
@@ -58,14 +58,14 @@ public class PublishItemBar
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(1));
-        localImageButton.setImageResource(2130842477);
-        localImageButton.setContentDescription(getResources().getString(2131696547));
+        localImageButton.setImageResource(2130842490);
+        localImageButton.setContentDescription(getResources().getString(2131696590));
         a(localImageButton);
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(5));
-        localImageButton.setImageResource(2130842473);
-        localImageButton.setContentDescription(getResources().getString(2131696542));
+        localImageButton.setImageResource(2130842486);
+        localImageButton.setContentDescription(getResources().getString(2131696585));
         a(localImageButton);
       }
       if (this.jdField_b_of_type_Boolean)
@@ -73,8 +73,8 @@ public class PublishItemBar
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(2));
-        localImageButton.setImageResource(2130842468);
-        localImageButton.setContentDescription(getResources().getString(2131696533));
+        localImageButton.setImageResource(2130842481);
+        localImageButton.setContentDescription(getResources().getString(2131696576));
         a(localImageButton);
       }
       if (this.jdField_c_of_type_Boolean)
@@ -82,8 +82,8 @@ public class PublishItemBar
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(4));
-        localImageButton.setImageResource(2130842475);
-        localImageButton.setContentDescription(getResources().getString(2131696544));
+        localImageButton.setImageResource(2130842488);
+        localImageButton.setContentDescription(getResources().getString(2131696587));
         a(localImageButton);
       }
       return;
@@ -131,8 +131,8 @@ public class PublishItemBar
   public void a(ImageButton paramImageButton)
   {
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    paramImageButton.setPadding(0, 0, (int)bgme.a(getContext(), 24.0F), 0);
-    paramImageButton.setBackgroundResource(2130850664);
+    paramImageButton.setPadding(0, 0, (int)bhmg.a(getContext(), 24.0F), 0);
+    paramImageButton.setBackgroundResource(2130850680);
     paramImageButton.setLayoutParams(localLayoutParams);
     addView(paramImageButton);
   }
@@ -190,14 +190,14 @@ public class PublishItemBar
         if (!paramBoolean) {
           break label54;
         }
-        ((ImageButton)localView).setImageResource(2130843730);
+        ((ImageButton)localView).setImageResource(2130843748);
       }
       for (;;)
       {
         i += 1;
         break;
         label54:
-        ((ImageButton)localView).setImageResource(2130843729);
+        ((ImageButton)localView).setImageResource(2130843747);
       }
     }
   }

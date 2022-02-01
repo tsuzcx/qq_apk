@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.soload.config;
 
 import android.text.TextUtils;
-import bcoe;
+import bdgw;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -96,21 +96,27 @@ public class SoConfig$SoInfo
   
   public static SoInfo create(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    String str1;
-    String str2;
-    SoConfig.SoDetailInfo localSoDetailInfo;
-    do
-    {
+    boolean bool = true;
+    if (paramJSONObject == null) {
       return null;
-      str1 = paramJSONObject.optString("name");
-      str2 = paramJSONObject.optString("ver", "0.0.0");
-      localObject = SoConfig.RelatedFileInfo.create(paramJSONObject.optJSONObject("relatedFile"));
-      int i = paramJSONObject.optInt("testFlag");
-      localSoDetailInfo = SoConfig.SoDetailInfo.create(paramJSONObject.optJSONObject("arm32"), str2, (SoConfig.RelatedFileInfo)localObject, i);
-      paramJSONObject = SoConfig.SoDetailInfo.create(paramJSONObject.optJSONObject("arm64"), str2, (SoConfig.RelatedFileInfo)localObject, i);
-    } while ((TextUtils.isEmpty(str1)) || ((localSoDetailInfo == null) && (paramJSONObject == null)));
-    Object localObject = new SoInfo();
+    }
+    String str1 = paramJSONObject.optString("name");
+    String str2 = paramJSONObject.optString("ver", "0.0.0");
+    Object localObject = SoConfig.RelatedFileInfo.create(paramJSONObject.optJSONObject("relatedFile"));
+    int i = paramJSONObject.optInt("testFlag");
+    if (paramJSONObject.optInt("flowControl") == 1) {}
+    SoConfig.SoDetailInfo localSoDetailInfo;
+    for (;;)
+    {
+      localSoDetailInfo = SoConfig.SoDetailInfo.create(paramJSONObject.optJSONObject("arm32"), str2, (SoConfig.RelatedFileInfo)localObject, i, bool);
+      paramJSONObject = SoConfig.SoDetailInfo.create(paramJSONObject.optJSONObject("arm64"), str2, (SoConfig.RelatedFileInfo)localObject, i, bool);
+      if ((!TextUtils.isEmpty(str1)) && ((localSoDetailInfo != null) || (paramJSONObject != null))) {
+        break;
+      }
+      return null;
+      bool = false;
+    }
+    localObject = new SoInfo();
     ((SoInfo)localObject).name = str1;
     ((SoInfo)localObject).ver = str2;
     ((SoInfo)localObject).arm32Info = localSoDetailInfo;
@@ -126,7 +132,7 @@ public class SoConfig$SoInfo
       do
       {
         return 1;
-        if (!bcoe.a()) {
+        if (!bdgw.a()) {
           break;
         }
       } while (paramSoInfo.arm64Info == null);

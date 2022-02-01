@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.audiopanel;
 
 import android.os.Build;
 import android.view.LayoutInflater;
-import azub;
+import bamr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,11 +16,11 @@ class AudioPanelAdapter$1
     if (this.this$0.b == null) {}
     try
     {
-      ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.this$0).getApp()).inflate(2131561008, null);
+      ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.this$0).getApp()).inflate(2131561042, null);
       if (this.this$0.b == null) {
         this.this$0.b = localListenChangeVoicePanel;
       }
-      azub.a(AudioPanelAdapter.a(this.this$0));
+      bamr.a(AudioPanelAdapter.a(this.this$0));
       return;
     }
     catch (Exception localException)

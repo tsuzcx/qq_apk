@@ -1,23 +1,20 @@
-public class awdf
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
+import java.util.concurrent.Future;
+
+class awdf
+  implements CustomizedTicket
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  awdf(awde paramawde) {}
   
-  public awdf()
+  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    return this.a.a(paramString1, paramString2, paramString3, paramString4);
   }
   
-  public String toString()
+  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ContactsGuideInfo|showWelcomepage=").append(this.jdField_a_of_type_Boolean).append(",showConvGuideEntrance=").append(this.jdField_b_of_type_Boolean).append(",friends_recomm_flag=").append(this.jdField_a_of_type_Int).append(",groups_recomm_flag=").append(this.jdField_b_of_type_Int).append(",url=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    return this.a.a(paramString1, paramString2);
   }
 }
 

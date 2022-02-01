@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:id="@id/idg" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.richframework.part.block.BlockContainer android:id="@id/m8f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.richframework.part.block.BlockContainer android:id="@id/m8f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.5dip" android:layout_marginRight="8.5dip" />
     <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/m8g" android:background="@drawable/hdr" android:paddingLeft="12.0dip" android:paddingTop="5.0dip" android:paddingRight="12.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:includeFontPadding="false" />
 </FrameLayout>

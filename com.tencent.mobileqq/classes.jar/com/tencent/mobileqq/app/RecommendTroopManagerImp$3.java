@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import antq;
+import aoga;
 import tencent.im.oidb.cmd0x935.oidb_0x935.RspBody;
 
 public class RecommendTroopManagerImp$3
   implements Runnable
 {
-  public RecommendTroopManagerImp$3(antq paramantq, long paramLong, oidb_0x935.RspBody paramRspBody) {}
+  public RecommendTroopManagerImp$3(aoga paramaoga, long paramLong, oidb_0x935.RspBody paramRspBody) {}
   
   public void run()
   {
-    antq.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x935Oidb_0x935$RspBody);
+    aoga.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x935Oidb_0x935$RspBody);
   }
 }
 

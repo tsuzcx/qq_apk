@@ -1,9 +1,29 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.applets.data.AppletItem;
-
-public abstract interface aulp
+public abstract class aulp
 {
-  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem);
+  private aulo a;
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString3);
+    return localStringBuilder.toString();
+  }
+  
+  public aulo a()
+  {
+    return this.a;
+  }
+  
+  public abstract String a();
+  
+  public void a(aulo paramaulo)
+  {
+    this.a = paramaulo;
+  }
 }
 
 

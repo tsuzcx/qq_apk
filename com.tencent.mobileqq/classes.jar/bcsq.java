@@ -1,198 +1,197 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.VideoController;
+import com.tencent.av.hd_video_2.CmdS2CInviteReqBody;
+import com.tencent.av.hd_video_2.InviteTempSessionData;
+import com.tencent.av.hd_video_2.MsgBody;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportManager;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
 
 public class bcsq
+  implements bcsi
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  private static bcss jdField_a_of_type_Bcss = new bcss();
-  private static Calendar jdField_a_of_type_JavaUtilCalendar;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong;
-  public static boolean a;
-  private static int b = 2;
-  private static int c;
-  private static int d;
-  private static int e;
-  
-  static
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
-    jdField_a_of_type_Int = 3;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-    jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-  }
-  
-  public static int a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    String str = ((AppRuntime)localObject).getAccount();
-    if (TextUtils.isEmpty(str))
-    {
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
       if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "qzone report with empty account");
-      }
-      return -1;
-    }
-    if (!((anrs)((AppRuntime)localObject).getManager(56)).a(Long.valueOf(Long.parseLong("2290230341"))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "haven't yet follow qzone");
-      }
-      return -1;
-    }
-    long l = NetConnInfoCenter.getServerTime();
-    if (jdField_a_of_type_Long == 0L)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime().getPreferences();
-      b = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_max_req", 2);
-      jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong(str + "_" + "qzone_xp_first_req", l);
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_left", b));
-      jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_gap", 3);
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_a_of_type_Long * 1000L);
-      d = jdField_a_of_type_JavaUtilCalendar.get(5);
-      e = 0;
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
-    if ((e >= 5) || (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "retry: " + e + ", sending: " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      }
-      return -1;
-    }
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(l * 1000L);
-    if (jdField_a_of_type_JavaUtilCalendar.get(5) != d)
-    {
-      jdField_a_of_type_Long = l;
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(b);
-      BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(str + "_" + "qzone_xp_req_left", b).putLong(str + "_" + "qzone_xp_first_req", jdField_a_of_type_Long).apply();
-    }
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "left: 0");
-      }
-      jdField_a_of_type_JavaUtilCalendar.set(5, jdField_a_of_type_JavaUtilCalendar.get(5) + 1);
-      jdField_a_of_type_JavaUtilCalendar.set(11, 0);
-      jdField_a_of_type_JavaUtilCalendar.set(12, 0);
-      jdField_a_of_type_JavaUtilCalendar.set(13, 0);
-      return (int)((jdField_a_of_type_JavaUtilCalendar.getTimeInMillis() - l * 1000L) / 1000L);
-    }
-    return Math.max(0, (int)(c - l));
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Long = 0L;
-  }
-  
-  public static void a(int paramInt)
-  {
-    if ((paramInt == 1) && (jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (paramInt == 1) {
-      jdField_a_of_type_Boolean = true;
-    }
-    LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(6, paramInt);
-    LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    bmfd.a().a(new bcsr(paramQQAppInterface));
-    long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME", 0L);
-    QLog.d("[PhotoAlbum]QZoneReport", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME lastUpdateTime:", Long.valueOf(l) });
-    bmfd.a().a().a(l);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt, String paramString)
-  {
-    int i = paramConfig.version.get();
-    int j = bgsg.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneReport", 2, String.format(Locale.getDefault(), "received qzone xp Config remote version: %d, localVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-    }
-    if (i != j)
-    {
-      paramConfig = arcj.b(paramConfig, j, paramInt);
-      if (!TextUtils.isEmpty(paramConfig)) {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneReport", 2, "receiveAllConfigs|type: " + paramInt + ",content: " + paramConfig + ",version: " + i);
-        }
+        QLog.e("SharpVideoDecoder", 2, "<---decodeC2CMsgPkg_SharpVideo return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
       }
     }
-    while (!QLog.isColorLevel())
+    long l1;
+    long l4;
+    long l2;
+    long l5;
+    byte[] arrayOfByte2;
+    int i;
+    int j;
+    boolean bool;
+    do
     {
+      long l3;
       do
+      {
+        byte[] arrayOfByte1;
+        do
+        {
+          do
+          {
+            return;
+            l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+            l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
+            l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+            l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+            ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
+            paramList = l4 + "-" + l3;
+            if (QLog.isColorLevel()) {
+              QLog.d("shanezhaiSHARP", 2, "<---decodeC2CMsgPkg_SharpVideo :  key:" + paramList);
+            }
+            if (!paramMessageHandler.app.a().a(l2, paramList)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("shanezhaiSHARP", 2, "msg has been pulled");
+          return;
+          l3 = bcrg.a();
+          l4 = Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
+          arrayOfByte1 = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+          l5 = l3 - l1;
+          arrayOfByte2 = new byte[4];
+          byte[] arrayOfByte3 = new byte[4];
+          System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, 4);
+          System.arraycopy(arrayOfByte1, 4, arrayOfByte3, 0, 4);
+          i = lcy.a(arrayOfByte2, 4);
+          j = arrayOfByte1.length - 8 - i;
+        } while (j < 0);
+        arrayOfByte2 = new byte[j];
+        System.arraycopy(arrayOfByte1, i + 8, arrayOfByte2, 0, j);
+        bool = lla.a(arrayOfByte2);
+        if (((parambcre.jdField_a_of_type_Boolean) || (parambcre.f)) && ((parambcre.jdField_a_of_type_Long == parambcre.b) && ((parambcre.jdField_a_of_type_Long != parambcre.b) || (bool)))) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("SharpVideoDecoder", 2, "<---decodeC2CMsgPkg_SharpVideo return null:,isReaded:" + parambcre.jdField_a_of_type_Boolean + "syncOther:" + parambcre.f + ",isSharpRequest" + bool);
+      return;
+      if (bool)
+      {
+        paramMessageHandler.app.a().a(l2, paramList, l3);
+        lcc.a(l4, l2, 215);
+      }
+      if (llk.c()) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("shanezhaiSHARP", 2, "Discard video message cause device not support");
+      }
+    } while (!bool);
+    lcc.a(l4, l2, 212);
+    return;
+    if (l5 >= 60L)
+    {
+      int k;
+      int i1;
+      int i2;
+      int m;
+      if (bool)
+      {
+        paramList = String.valueOf(l2);
+        parambcre = new hd_video_2.MsgBody();
+        k = -1;
+        i1 = 0;
+        i2 = 0;
+        i = 0;
+        j = i2;
+        m = k;
+      }
+      int n;
+      for (;;)
       {
         try
         {
-          paramInt = Math.max(0, b - jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          paramConfig = new JSONObject(paramConfig);
-          b = paramConfig.optInt("maxReq", 2);
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(Math.max(0, b - paramInt));
-          jdField_a_of_type_Int = paramConfig.optInt("reqGap", 3);
-          BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(paramString + "_" + "qzone_xp_max_req", b).putInt(paramString + "_" + "qzone_xp_req_gap", jdField_a_of_type_Int).putInt(paramString + "_" + "qzone_xp_req_left", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()).apply();
-          bgsg.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString, i);
-          return;
-        }
-        catch (JSONException paramConfig)
-        {
-          for (;;)
+          parambcre.mergeFrom(arrayOfByte2);
+          j = i2;
+          m = k;
+          n = parambcre.msg_invite_body.uint32_new_business_flag.get();
+          j = i2;
+          m = n;
+          if (!parambcre.msg_invite_body.msg_temp_session.has()) {
+            continue;
+          }
+          k = i1;
+          j = i2;
+          m = n;
+          if (parambcre.msg_invite_body.msg_temp_session.uint32_relationship_type.has())
           {
-            if (QLog.isDevelopLevel()) {
-              paramConfig.printStackTrace();
+            j = i2;
+            m = n;
+            i1 = VideoController.a(parambcre.msg_invite_body.msg_temp_session.uint32_relationship_type.get(), false, 1);
+            if (i1 != -1) {
+              i = i1;
+            }
+            k = i;
+            j = i;
+            m = n;
+            if (QLog.isColorLevel())
+            {
+              j = i;
+              m = n;
+              QLog.d("shanezhaiSHARP", 2, "uinType" + i + " translateType:" + i1);
+              k = i;
             }
           }
+          i = k;
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("QZoneReport", 2, "config is null");
-      return;
+        catch (Exception parambcre)
+        {
+          parambcre.printStackTrace();
+          i = j;
+          n = m;
+          continue;
+        }
+        if (-1 != n) {
+          break label956;
+        }
+        VideoMsgTools.a(paramMessageHandler.app, 0, 6, true, paramList, String.valueOf(l4), false, null, false, new Object[] { paramMsg });
+        lcc.a(l4, l2, 208);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("shanezhaiSHARP", 2, "Discard video message because of time out " + l5 + " s");
+        return;
+        k = i1;
+        j = i2;
+        m = n;
+        if (QLog.isColorLevel())
+        {
+          j = i2;
+          m = n;
+          QLog.d("shanezhaiSHARP", 2, "msg_temp_session not include");
+          k = i1;
+        }
+      }
+      label956:
+      if (n == 0) {}
+      for (bool = true;; bool = false)
+      {
+        VideoMsgTools.a(paramMessageHandler.app, i, 6, bool, paramList, String.valueOf(l2), false, null, false, new Object[] { paramMsg });
+        break;
+      }
     }
-    QLog.i("QZoneReport", 2, "config version not updated, nothing to do");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
+    if (bool) {
+      lcc.a(l4, l2, 211);
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("QZoneReport", 2, "sending");
+      QLog.d("shanezhaiSHARP", 2, "===========handleSharpVideoMessageResp 1234========");
     }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(NetConnInfoCenter.getServerTime());
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcde.class);
-    localNewIntent.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      localNewIntent.putExtra("has_photo", str);
-      BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Bcss);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800915C", "0X800915C", 0, 0, "", "", "", "");
-      return;
-    }
+    paramMessageHandler.a(l4, arrayOfByte2, l2, (int)l1, bool);
   }
 }
 

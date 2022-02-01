@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlFragment;
-
 public class bijx
-  implements DialogInterface.OnClickListener
 {
-  public bijx(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bijx(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
+  }
 }
 
 

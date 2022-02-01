@@ -1,21 +1,26 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avfz
-  implements TVK_SDKMgr.InstallListener
+public class avfz
+  implements RadioGroup.OnCheckedChangeListener
 {
-  avfz(avfx paramavfx) {}
+  public avfz(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    avfw.b("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    avfw.b("installSDK onInstalledSuccessed");
-    avfx.a(this.a);
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      bdgb.a(0);
+      continue;
+      bdgb.a(1);
+    }
   }
 }
 

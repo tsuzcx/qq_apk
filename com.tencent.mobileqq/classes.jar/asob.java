@@ -1,9 +1,8 @@
-import kotlin.Metadata;
+import android.view.View;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;", "", "onConfirm", "", "newBirthday", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public abstract interface asob
 {
-  public abstract void a(int paramInt);
+  public abstract boolean a(View paramView, asmu paramasmu);
 }
 
 

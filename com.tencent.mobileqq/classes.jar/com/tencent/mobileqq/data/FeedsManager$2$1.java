@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.data;
 
-import aezu;
-import argv;
+import afjb;
+import arwk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Map;
 
 public class FeedsManager$2$1
   implements Runnable
 {
-  public FeedsManager$2$1(argv paramargv) {}
+  public FeedsManager$2$1(arwk paramarwk) {}
   
   public void run()
   {
     if (!this.a.a.feedInfoCache.isEmpty()) {
-      FeedsManager.access$200(this.a.a).notifyObservers(aezu.class, 10000, true, null);
+      FeedsManager.access$200(this.a.a).notifyObservers(afjb.class, 10000, true, null);
     }
   }
 }

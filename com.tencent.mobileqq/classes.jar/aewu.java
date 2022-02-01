@@ -1,151 +1,103 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
 
 public class aewu
-  extends Handler
+  extends anuw
 {
-  public aewu(QQLSActivity paramQQLSActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aewu(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 5: 
-    case 6: 
-    case 4: 
-    case 3: 
-    case 1: 
-    case 2: 
-    case 16: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-      do
-      {
-        boolean bool;
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                } while (QQLSActivity.b(this.a));
-                if (hasMessages(5)) {
-                  removeMessages(5);
-                }
-                QQLSActivity.b(this.a);
-                if (QQLSActivity.a(this.a) != null) {
-                  ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
-                }
-                QQLSActivity.b(this.a).setVisibility(0);
-                paramMessage = obtainMessage(3);
-                if (hasMessages(3)) {
-                  removeMessages(3);
-                }
-                sendMessageDelayed(paramMessage, 1200L);
-                return;
-              } while (QQLSActivity.b(this.a));
-              if (hasMessages(6)) {
-                removeMessages(6);
-              }
-              QQLSActivity.b(this.a);
-              if (QQLSActivity.a(this.a) != null) {
-                ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
-              }
-              QQLSActivity.a(this.a).setVisibility(0);
-              paramMessage = obtainMessage(4);
-              if (hasMessages(4)) {
-                removeMessages(4);
-              }
-              sendMessageDelayed(paramMessage, 1200L);
-              return;
-              QQLSActivity.a(this.a).setVisibility(4);
-              return;
-              QQLSActivity.b(this.a).setVisibility(4);
-              return;
-              this.a.c();
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message send finish");
-              }
-              QQLSActivity.a(this.a);
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message finish activity finish");
-              }
-              this.a.finish();
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message finish activity finish, enter aio");
-              }
-              this.a.finish();
-              return;
-            } while ((QQLSActivity.c(this.a)) || (!QQLSActivity.d(this.a)));
-            if (QLog.isColorLevel()) {
-              QLog.d("QQLSActivity", 2, "sensor don't callback 1000ms later");
-            }
-            QQLSActivity.c(this.a);
-            return;
-            this.a.a();
-            return;
-          } while (QQLSActivity.a(this.a));
-          bcst.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
-          paramMessage = new Intent(this.a, QQLSUnlockActivity.class);
-          this.a.startActivity(paramMessage);
-          return;
-          paramMessage = new Intent(this.a, QQLSActivity.class);
-          paramMessage.addFlags(131072);
-          this.a.startActivity(paramMessage);
-          return;
-          bool = QQLSActivity.e(this.a);
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "LS MSG_CHECKISLOCK" + bool);
-          }
-        } while (bool);
-        this.a.finish();
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "check sensor HasCallBack ====" + QQLSActivity.c(this.a));
-        }
-        if (QQLSActivity.c(this.a))
-        {
-          QQLSActivity.d(this.a);
-          return;
-        }
-      } while (!QQLSActivity.d(this.a));
-      QQLSActivity.c(this.a);
-      return;
-    case 13: 
-      QQLSActivity.e(this.a);
-      return;
-    case 14: 
-      QQLSActivity.a(this.a, false);
-      return;
-    case 15: 
-      QQLSActivity.f(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",voteAllowed=" + paramBoolean2 + ",praiseStatusAllowed=" + paramBoolean3);
+    }
+    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {}
+    while (!paramBoolean1) {
       return;
     }
-    this.a.a.a(QQLSActivity.a(this.a), (String)paramMessage.obj, 1008, false, -1, false);
-    this.a.b();
+    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean2);
+  }
+  
+  protected void onGetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      LikeSettingActivity.a(this.a, this.a.b.a(), paramBoolean2);
+      this.a.a.a(paramBoolean2);
+    }
+  }
+  
+  protected void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      LikeSettingActivity.a(this.a, this.a.d.a(), paramBoolean2);
+      this.a.a.b(paramBoolean2);
+      if (!paramBoolean2) {
+        this.a.b.setVisibility(8);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.b.setVisibility(0);
+  }
+  
+  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",forNearPeople=" + paramBoolean2 + ",allowed=" + paramBoolean3);
+    }
+    if ((!this.a.app.getCurrentAccountUin().equals(paramString)) || (!paramBoolean2)) {}
+    while (paramBoolean1) {
+      return;
+    }
+    QQToast.a(this.a, 1, 2131717966, 0).b(this.a.getTitleBarHeight());
+    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean3);
+  }
+  
+  protected void onSetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, 2131717966, 0).b(this.a.getTitleBarHeight());
+      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.a());
+      return;
+    }
+    this.a.a.a(paramBoolean2);
+  }
+  
+  protected void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, 2131717966, 0).b(this.a.getTitleBarHeight());
+      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.c());
+      return;
+    }
+    this.a.a.b(paramBoolean2);
+    if (!paramBoolean2)
+    {
+      this.a.b.setVisibility(8);
+      return;
+    }
+    this.a.b.setVisibility(0);
   }
 }
 

@@ -1,34 +1,101 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopTabFragment;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopNewServlet.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
 
 public class ofd
-  extends ofc
+  extends MSFServlet
 {
-  public ofd(EcshopTabFragment paramEcshopTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
+  public static void a(byte[] paramArrayOfByte, String paramString, BusinessObserver paramBusinessObserver)
   {
-    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView, paramString);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime == null) {
+      return;
+    }
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), ofd.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("timeout", 30000);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppRuntime.startServlet(localNewIntent);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
   {
-    super.onPageFinished(paramWebView, paramString);
-    EcshopTabFragment.a(this.a).setVisibility(0);
+    int i = paramIntent.getIntExtra("callback_thread_type", 0);
+    if (i == 0) {
+      super.notifyObserver(paramIntent, paramInt, paramBoolean, paramBundle, paramClass);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((i == 1) && (!(paramIntent instanceof NewIntent)));
+      paramIntent = ((NewIntent)paramIntent).getObserver();
+    } while (paramIntent == null);
+    ThreadManager.post(new EcshopNewServlet.1(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("EcshopNewServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+      arrayOfByte = null;
+    }
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
+      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EcshopNewServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      bhvd.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

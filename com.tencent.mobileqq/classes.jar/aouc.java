@@ -1,25 +1,37 @@
-public abstract class aouc
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
+
+class aouc
+  implements PermissionMonitor.Listener
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  
-  public aouc(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  static
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
+    if (!aotx.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  aouc(aotx paramaotx) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
+    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
+      throw new AssertionError();
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Integer.class)) {
+      throw new AssertionError();
+    }
+    ShadowParcel.b((int)aotx.a(this.jdField_a_of_type_Aotx), ((Integer)paramArrayOfObject[1]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

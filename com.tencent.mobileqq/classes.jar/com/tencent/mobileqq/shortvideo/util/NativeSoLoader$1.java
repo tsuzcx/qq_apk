@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import bcll;
+import bded;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class NativeSoLoader$1
@@ -8,10 +8,10 @@ public final class NativeSoLoader$1
 {
   public void run()
   {
-    if (!bcll.a().get())
+    if (!bded.a().get())
     {
-      boolean bool = bcll.a("TKGLRenderer");
-      bcll.a().getAndSet(bool);
+      boolean bool = bded.a("TKGLRenderer");
+      bded.a().getAndSet(bool);
     }
   }
 }

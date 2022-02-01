@@ -2,6 +2,7 @@ package com.tencent.qqmini.sdk.widget;
 
 import android.graphics.drawable.Drawable;
 import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONArray;
 
 public class AuthDialog$AuthDialogResBuilder
@@ -11,8 +12,10 @@ public class AuthDialog$AuthDialogResBuilder
   private View.OnClickListener mLeftBtnClickListener;
   private String mLeftBtnText;
   private Drawable mMiniAppIconUrl;
+  private MiniAppInfo mMiniAppInfo;
   private String mMiniAppName;
   private JSONArray mPhoneNumberList;
+  private String mReportSubAction;
   private View.OnClickListener mRightBtnClickListener;
   private String mRightBtnText;
   private Drawable mUserIconUrl;
@@ -43,6 +46,11 @@ public class AuthDialog$AuthDialogResBuilder
     return this.mMiniAppIconUrl;
   }
   
+  public MiniAppInfo getMiniAppInfo()
+  {
+    return this.mMiniAppInfo;
+  }
+  
   public String getMiniAppName()
   {
     return this.mMiniAppName;
@@ -51,6 +59,11 @@ public class AuthDialog$AuthDialogResBuilder
   public JSONArray getPhoneNumberList()
   {
     return this.mPhoneNumberList;
+  }
+  
+  public String getReportSubAction()
+  {
+    return this.mReportSubAction;
   }
   
   public View.OnClickListener getRightBtnClickListener()
@@ -103,6 +116,12 @@ public class AuthDialog$AuthDialogResBuilder
     return this;
   }
   
+  public AuthDialogResBuilder setMiniAppInfo(MiniAppInfo paramMiniAppInfo)
+  {
+    this.mMiniAppInfo = paramMiniAppInfo;
+    return this;
+  }
+  
   public AuthDialogResBuilder setMiniAppName(String paramString)
   {
     this.mMiniAppName = paramString;
@@ -112,6 +131,12 @@ public class AuthDialog$AuthDialogResBuilder
   public AuthDialogResBuilder setPhoneNumberList(JSONArray paramJSONArray)
   {
     this.mPhoneNumberList = paramJSONArray;
+    return this;
+  }
+  
+  public AuthDialogResBuilder setReportSubAction(String paramString)
+  {
+    this.mReportSubAction = paramString;
     return this;
   }
   

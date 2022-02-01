@@ -1,50 +1,19 @@
-import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
 
 public class aqyd
-  extends aqwr<aqyc>
+  implements blqt
 {
-  @NonNull
-  public static aqyc c()
-  {
-    aqyc localaqyc2 = (aqyc)aqlk.a().a(651);
-    aqyc localaqyc1 = localaqyc2;
-    if (localaqyc2 == null) {
-      localaqyc1 = new aqyc();
-    }
-    return localaqyc1;
-  }
+  public aqyd(TimeSelectView paramTimeSelectView) {}
   
-  @NonNull
-  public aqyc a()
+  public void a(View paramView, int paramInt)
   {
-    return new aqyc();
-  }
-  
-  @NonNull
-  public aqyc a(@NonNull aqlg[] paramArrayOfaqlg)
-  {
-    return aqyc.a(paramArrayOfaqlg[0].a);
-  }
-  
-  @NonNull
-  public aqyc b()
-  {
-    return new aqyc();
-  }
-  
-  public Class<aqyc> clazz()
-  {
-    return aqyc.class;
-  }
-  
-  public int type()
-  {
-    return 651;
+    TimeSelectView.a(this.a, paramView, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyd
  * JD-Core Version:    0.7.0.1
  */

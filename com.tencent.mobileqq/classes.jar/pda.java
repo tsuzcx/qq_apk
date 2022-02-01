@@ -1,125 +1,54 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.qqlive.module.videoreport.PageParams;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class pda
-  extends PopupWindow
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/dt/RIJDtParamBuilder;", "", "()V", "params", "Ljava/util/HashMap;", "", "addChannelID", "channelID", "", "addElementID", "id", "addRowkey", "rowkey", "build", "", "buildPageParams", "Lcom/tencent/qqlive/module/videoreport/PageParams;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pda
 {
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private pde jdField_a_of_type_Pde;
+  private final HashMap<String, Object> a = new HashMap();
   
-  public pda(Activity paramActivity, ArticleInfo paramArticleInfo)
+  public pda()
   {
-    super(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    a(a());
-    setTouchable(true);
-    setFocusable(true);
-    setOutsideTouchable(false);
-    setInputMethodMode(1);
-    setBackgroundDrawable(new ColorDrawable(0));
-    a();
+    Map localMap = (Map)this.a;
+    String str = pcz.a;
+    Intrinsics.checkExpressionValueIsNotNull(str, "RIJDtConstant.APP_KEY");
+    localMap.put("dt_appkey", str);
   }
   
-  private void a(VafContext paramVafContext)
+  @NotNull
+  public final PageParams a()
   {
-    TemplateBean localTemplateBean = pij.a(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
-    pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), localTemplateBean.getViewBean());
-    setContentView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    paramVafContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
-    setHeight(paramVafContext.mLayoutHeight);
-    setWidth(paramVafContext.mLayoutWidth);
+    return new PageParams((Map)this.a);
   }
   
-  public VafContext a()
+  @NotNull
+  public final Map<String, Object> a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    return (Map)this.a;
+  }
+  
+  @NotNull
+  public final pda a(long paramLong)
+  {
+    ((Map)this.a).put("channel_id", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  @NotNull
+  public final pda a(@Nullable String paramString)
+  {
+    Map localMap = (Map)this.a;
+    if (paramString != null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qmv();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_AndroidAppActivity);
-      pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "comment_feeds");
+      localMap.put("rowkey", paramString);
+      return this;
+      paramString = "null";
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  }
-  
-  public void a()
-  {
-    setOnDismissListener(new pdb(this));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    }
-  }
-  
-  protected void a(float paramFloat)
-  {
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
-    localLayoutParams.alpha = paramFloat;
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(View paramView)
-  {
-    if (isShowing())
-    {
-      dismiss();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-    a(0);
-    a(1.0F);
-    setAnimationStyle(2131755038);
-    showAtLocation(paramView, 17, 0, 0);
-    paramView = new phi();
-    paramView.i().b("wording", "" + pij.a());
-    paa.a("0X8009FE7", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramView);
-  }
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void a(Container paramContainer)
-  {
-    if (paramContainer == null) {
-      return;
-    }
-    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new pdc(this));
-  }
-  
-  public void a(pde parampde)
-  {
-    this.jdField_a_of_type_Pde = parampde;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
 }
 

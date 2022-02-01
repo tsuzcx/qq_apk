@@ -1,22 +1,30 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.2.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.os.Message;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 import mqq.os.MqqHandler;
 
 public class axoa
-  implements TVK_IMediaPlayer.OnErrorListener
+  extends MqqHandler
 {
-  axoa(axny paramaxny) {}
+  public axoa(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoViewTVKImpl", 2, "onError called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "], model = [" + paramInt1 + "], what = [" + paramInt2 + "], position = [" + paramInt3 + "], extra = [" + paramString + "], Info = [" + paramObject + "]");
+    switch (paramMessage.what)
+    {
     }
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    do
+    {
+      return;
+      MultiCardRecommendFragment.e(this.a);
+      sendEmptyMessageDelayed(3, 500L);
+      return;
+      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
+      MultiCardRecommendFragment.e(this.a);
+      return;
+      MultiCardRecommendFragment.d(this.a);
+      return;
+    } while (MultiCardRecommendFragment.a(this.a) == null);
+    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

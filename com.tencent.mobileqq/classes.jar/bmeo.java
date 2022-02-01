@@ -1,6 +1,6 @@
 public abstract interface bmeo
 {
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  public abstract void a(bmen parambmen);
 }
 
 

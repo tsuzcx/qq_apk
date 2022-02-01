@@ -1,26 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.3.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
 public final class odj
-  implements acri
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  odj(AppInterface paramAppInterface) {}
-  
-  public void reportImpression(View paramView)
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Ecshop_EcshopAdHandler", 1, "--> reportImpression");
-    }
-    if (paramView == null) {}
-    do
-    {
-      return;
-      paramView = paramView.getTag(2131364392);
-    } while (paramView == null);
-    ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.3.1(this, paramView));
+    return new VideoInfo.DownloadBarInfo(paramParcel);
+  }
+  
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  {
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 

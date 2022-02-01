@@ -1,12 +1,53 @@
-public abstract interface boal
+public final class boal
+  implements Cloneable
 {
-  public abstract void a();
+  public volatile int a;
+  public long a;
+  public boak a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d = "";
   
-  public abstract void a(boolean paramBoolean);
+  public boal()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
   
-  public abstract void b();
+  public boal a()
+  {
+    try
+    {
+      boal localboal = (boal)super.clone();
+      return localboal;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
+  }
   
-  public abstract void c();
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3) || ((this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004)));
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != 1810003) && (this.jdField_b_of_type_Int != 1810004);
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004));
+  }
 }
 
 

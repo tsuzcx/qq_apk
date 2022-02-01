@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-class asue
-  implements atve
+public class asue
 {
-  asue(asuc paramasuc, FileManagerEntity paramFileManagerEntity) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a()
-  {
-    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Asuc.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-  }
-  
-  public void b() {}
+  public asue(asua paramasua) {}
 }
 
 

@@ -2,8 +2,8 @@ package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import aukw;
-import bijj;
+import avcw;
+import bjki;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
@@ -12,20 +12,20 @@ import cooperation.qqfav.util.HandlerPlus;
 public class AuthorityActivity$8$5
   implements Runnable
 {
-  public AuthorityActivity$8$5(bijj parambijj, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  public AuthorityActivity$8$5(bjki parambjki, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
   
   public void run()
   {
-    aukw.a("KEY_GET_APP_ICON");
+    avcw.a("KEY_GET_APP_ICON");
     Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
-    aukw.a("KEY_GET_APP_ICON", this.jdField_a_of_type_Bijj.a.jdField_a_of_type_Biyc);
-    this.jdField_a_of_type_Bijj.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(AuthorityActivity.e, localBitmap);
+    avcw.a("KEY_GET_APP_ICON", this.jdField_a_of_type_Bjki.a.jdField_a_of_type_Bjzb);
+    this.jdField_a_of_type_Bjki.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(AuthorityActivity.e, localBitmap);
     if (localBitmap != null)
     {
       Message localMessage = new Message();
       localMessage.obj = localBitmap;
       localMessage.what = 4;
-      this.jdField_a_of_type_Bijj.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+      this.jdField_a_of_type_Bjki.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
     }
   }
 }

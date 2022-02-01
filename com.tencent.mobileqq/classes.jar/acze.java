@@ -1,83 +1,45 @@
-import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.ShakeWindowMsg;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.ShakeWindow;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class acze
-  extends aczg
+  extends aczc
 {
-  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean)
+  public acze(JSONObject paramJSONObject)
   {
-    Object localObject = paramList.iterator();
-    do
+    a(paramJSONObject);
+  }
+  
+  public String a()
+  {
+    String str = super.a();
+    try
     {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-      paramList = (im_msg_body.Elem)((Iterator)localObject).next();
-    } while (!paramList.shake_window.has());
-    for (;;)
-    {
-      if (paramList == null) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("elemType:ShakeWindow;\n");
-      }
-      paramList = (im_msg_body.ShakeWindow)paramList.shake_window.get();
-      localObject = (MessageForShakeWindow)bbzh.a(-2020);
-      ((MessageForShakeWindow)localObject).msgtype = -2020;
-      ((MessageForShakeWindow)localObject).msg = "[Shake Window]";
-      ShakeWindowMsg localShakeWindowMsg = new ShakeWindowMsg();
-      localShakeWindowMsg.mType = paramList.uint32_type.get();
-      localShakeWindowMsg.mReserve = paramList.uint32_reserve.get();
-      if (paramBoolean) {}
-      for (int i = 2;; i = 1)
-      {
-        localShakeWindowMsg.onlineFlag = i;
-        localShakeWindowMsg.shake = true;
-        ((MessageForShakeWindow)localObject).msgData = localShakeWindowMsg.getBytes();
-        if (((MessageForShakeWindow)localObject).msgData != null) {
-          break label186;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        paramStringBuilder.append("c2cMsgContent.data:null;\n");
-        return;
-      }
-      label186:
-      paramList1.add(localObject);
-      return;
-      paramList = null;
+      Object localObject = new JSONObject(str);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
+    }
+    return str;
   }
   
-  public int a()
+  protected void a(JSONObject paramJSONObject)
   {
-    return 1000;
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
-  {
-    a(paramList, paramList1, paramStringBuilder, paramBoolean1);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.shake_window.has();
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acze
  * JD-Core Version:    0.7.0.1
  */

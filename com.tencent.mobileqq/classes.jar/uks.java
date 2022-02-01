@@ -1,44 +1,30 @@
-import NS_KING_INTERFACE.stPostFeedDingRsp;
 import android.os.Handler;
-import android.util.Log;
+import android.os.Looper;
+import android.os.Message;
 
-public class uks
-  extends ule
-  implements ujj
+class uks
+  extends Handler
 {
-  public static String a = "weishi";
+  private ukq a;
   
-  public static void a(String paramString, boolean paramBoolean, int paramInt, Handler paramHandler)
+  uks(Looper paramLooper, ukq paramukq)
   {
-    int i = 1;
-    if (!paramBoolean)
-    {
-      i = 2;
-      Log.e(a, "此次是取消点赞：---------------");
-    }
-    paramString = new uju(new unw(paramString, i), paramHandler, new ukt(paramHandler, paramInt), 4300);
-    ujn.a().a(paramString);
+    super(paramLooper);
+    this.a = paramukq;
   }
   
-  public void a(uju paramuju)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramuju.a instanceof stPostFeedDingRsp))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      paramuju = (stPostFeedDingRsp)paramuju.a;
-      if (paramuju == null)
-      {
-        Log.e(a, "服务器失败！！！");
-        return;
-      }
-      if (paramuju.is_ding == 0)
-      {
-        Log.e(a, "没有点赞~~~~~~~~~~~~~~~~");
-        return;
-      }
-      Log.e(a, "已经点赞~~~~~~~~~~~~~~~~");
+    default: 
+      return;
+    case 1: 
+      ukq.a(this.a);
       return;
     }
-    Log.e(a, "真无语！！！");
+    ukq.b(this.a);
   }
 }
 

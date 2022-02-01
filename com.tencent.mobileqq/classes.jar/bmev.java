@@ -1,140 +1,44 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class bmev
-  extends ayev
+  implements PluginManagerUpdater
 {
-  private static bmev a;
+  private final File a;
   
-  public static bmev a()
+  public bmev()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bmev();
-      }
-      return a;
+    String str = bmfc.a().b();
+    if (QLog.isColorLevel()) {
+      QLog.i("IliveCdnPmUpdater", 2, "new IliveCdnPmUpdater file = " + str);
     }
-    finally {}
+    this.a = new File(str);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public File getLatest()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QbossReportManager", 1, "Type:sendErrorReport, code:" + paramInt3 + " errorMessage = " + paramString);
+    if (this.a.exists()) {
+      return this.a;
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcdb.class);
-    try
-    {
-      localNewIntent.putExtra("uin", Long.parseLong(localAppRuntime.getAccount()));
-      localNewIntent.putExtra("code", paramInt3);
-      localNewIntent.putExtra("appId", paramInt1);
-      localNewIntent.putExtra("taskId", paramInt2);
-      localNewIntent.putExtra("message", paramString);
-      localAppRuntime.startServlet(localNewIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return null;
   }
   
-  public void a(String paramString1, String paramString2)
+  public Future<Boolean> isAvailable(File paramFile)
   {
-    a(paramString1, paramString2, 3);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QbossReportManager", 4, "Type:reportClose, sQBosstrace:" + paramString1);
-    }
+    return aoik.a(16).submit(new bmex(this, paramFile));
   }
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public Future<File> update()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcdc.class);
-    try
-    {
-      localNewIntent.putExtra("uin", Long.parseLong(localAppRuntime.getAccount()));
-      localNewIntent.putExtra("qua", blru.a());
-      localNewIntent.putExtra("sQBosstrace", paramString1);
-      localNewIntent.putExtra("iOperType", paramInt);
-      localNewIntent.putExtra("sUserID", paramString2);
-      localAppRuntime.registObserver(this);
-      localAppRuntime.startServlet(localNewIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return aoik.a(16).submit(new bmew(this));
   }
   
-  public void b(String paramString1, String paramString2)
+  public boolean wasUpdating()
   {
-    a(paramString1, paramString2, 2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QbossReportManager", 4, "Type:reportClick, sQBosstrace:" + paramString1);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, 1);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QbossReportManager", 4, "Type:reportExpose, sQBosstrace:" + paramString1);
-    }
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, 11);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QbossReportManager", 4, "Type:reportExpose, sQBosstrace:" + paramString1);
-    }
-  }
-  
-  protected void i(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getSerializable("data");
-      if ((paramBundle != null) && ((paramBundle instanceof MobileQbossReportRsp)))
-      {
-        paramBundle = (MobileQbossReportRsp)paramBundle;
-        if (paramBundle != null)
-        {
-          if (paramBundle.iRet != 0) {
-            break label77;
-          }
-          QLog.i("QbossReportManager", 4, " onReportQbossResponse success:" + paramBundle.sMsg);
-        }
-      }
-    }
-    for (;;)
-    {
-      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this);
-      return;
-      label77:
-      QLog.i("QbossReportManager", 4, "onReportQbossResponse fail:" + paramBundle.sMsg);
-      continue;
-      QLog.i("QbossReportManager", 4, "onReportQbossResponse fail: rsp == null || not instanceof MobileQbossReportRsp");
-      continue;
-      int i = paramBundle.getInt("ret", 0);
-      paramBundle = paramBundle.getString("msg");
-      QLog.i("QbossReportManager", 1, "onReportQbossResponse fail: ret = " + i + " msg = " + paramBundle);
-    }
+    return false;
   }
 }
 

@@ -1,65 +1,13 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aimu
-  implements aimh
+class aimu
+  implements bliz
 {
-  aimj jdField_a_of_type_Aimj;
-  private Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
+  aimu(aimn paramaimn, blir paramblir) {}
   
-  public aimu(QQAppInterface paramQQAppInterface, aimj paramaimj, Context paramContext, String paramString, View.OnClickListener paramOnClickListener)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aimj = paramaimj;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return 36;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558760, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131364081);
-    TextView localTextView = (TextView)paramVarArgs.findViewById(2131364082);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131364080);
-    localTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694385));
-    localImageView1.setImageResource(2130844836);
-    paramVarArgs.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694385));
-    paramVarArgs.setOnClickListener(new aimv(this));
-    localImageView2.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    return paramVarArgs;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 10;
+    aimn.a(this.jdField_a_of_type_Aimn, paramView, paramInt, this.jdField_a_of_type_Blir);
   }
 }
 

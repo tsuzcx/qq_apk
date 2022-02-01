@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import blzp;
+import bnar;
 
 public class VideoInfo$VideoRemark
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoRemark> CREATOR = new blzp();
+  public static final Parcelable.Creator<VideoRemark> CREATOR = new bnar();
   public int a;
   public String a;
   public int b;

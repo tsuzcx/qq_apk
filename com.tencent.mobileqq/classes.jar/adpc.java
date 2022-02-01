@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-public class adpc
-  implements bkql
+class adpc
+  implements adnx
 {
-  public adpc(BaseChatPie paramBaseChatPie) {}
+  adpc(adpb paramadpb) {}
   
-  public void a(boolean paramBoolean)
+  public void a(axeh paramaxeh, int paramInt)
   {
-    if (paramBoolean)
-    {
-      BaseChatPie.a(this.a);
-      BaseChatPie.b(this.a);
-    }
+    adpb.a(this.a, paramaxeh);
+    adpb.a(this.a, paramInt);
   }
 }
 

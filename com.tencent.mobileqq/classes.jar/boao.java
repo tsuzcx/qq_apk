@@ -1,29 +1,11 @@
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
+import com.tencent.weiyun.utils.Singleton;
 
-public class boao
-  implements boaz
+final class boao
+  extends Singleton<boan, Void>
 {
-  private boao(MoreLyricLayout paramMoreLyricLayout) {}
-  
-  public void a(long paramLong)
+  protected boan a(Void paramVoid)
   {
-    bnzb.a("MoreLyricLayout", "onScroll() position => " + paramLong);
-    MoreLyricLayout.a(this.a);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    MoreLyricLayout.a(this.a, paramLong1);
-    String str = LyricWithBuoyView.a((int)paramLong1);
-    TextView localTextView = null;
-    if (MoreLyricLayout.a(this.a) != null) {
-      localTextView = MoreLyricLayout.a(this.a).a();
-    }
-    if (localTextView != null) {
-      localTextView.setText(str);
-    }
+    return new boan(null);
   }
 }
 

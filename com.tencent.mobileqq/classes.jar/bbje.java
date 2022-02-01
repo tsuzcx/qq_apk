@@ -1,17 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbje
   implements View.OnClickListener
 {
-  bbje(bbjc parambbjc) {}
+  bbje(bbjd parambbjd) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

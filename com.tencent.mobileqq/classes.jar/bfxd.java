@@ -1,16 +1,7 @@
-import android.view.View;
-import com.tencent.mobileqq.data.TroopFeedItem;
-
-public abstract class bfxd
+public abstract interface bfxd
+  extends bfwk
 {
-  public bfxd(bfwx parambfwx) {}
-  
-  protected abstract View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean);
-  
-  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
-  {
-    return a(null, paramTroopFeedItem, paramInt, paramBoolean);
-  }
+  public abstract void a(int paramInt);
 }
 
 

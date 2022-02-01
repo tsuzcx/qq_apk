@@ -1,11 +1,9 @@
 public class aslf
-  extends asle
 {
-  public aslf(asld paramasld, askk paramaskk)
-  {
-    super(paramasld, paramaskk);
-    this.a = -1;
-  }
+  int a = 0;
+  public String a;
+  public boolean a;
+  String b;
 }
 
 

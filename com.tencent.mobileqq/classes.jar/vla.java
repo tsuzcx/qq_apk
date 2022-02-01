@@ -1,28 +1,74 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
 
-class vla
-  implements View.OnClickListener
+public class vla
 {
-  vla(vks paramvks) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private vlb jdField_a_of_type_Vlb;
+  private String b;
+  private String c;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if ((this.a.a() instanceof Activity)) {
-      this.a.a(0.0F, 0.0F);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public vla a(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    Object localObject2 = bjtz.b(QCircleFeedPicLoader.a(paramString));
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = bjtz.a(paramString);
     }
-    ArrayList localArrayList = new ArrayList();
-    if (vks.a(this.a)) {}
-    for (String str = "1";; str = "2")
+    if (localObject1 == null)
     {
-      localArrayList.add(vri.a("ext1", str));
-      vrg.a(91, 2, this.a.a(), localArrayList, vks.b(this.a));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      localObject2 = new StringBuilder().append(vkx.a()).append(paramString);
+      if (paramInt != 0) {
+        break label122;
+      }
+      localObject1 = ".mp4";
+      label65:
+      this.c = ((String)localObject1);
+      localObject1 = new StringBuilder().append(vkx.c()).append(paramString);
+      if (paramInt != 0) {
+        break label128;
+      }
     }
+    label128:
+    for (paramString = ".mp4";; paramString = ".jpeg")
+    {
+      this.b = paramString;
+      return this;
+      paramString = (String)localObject1;
+      break;
+      label122:
+      localObject1 = ".jpeg";
+      break label65;
+    }
+  }
+  
+  public vla a(vlb paramvlb)
+  {
+    this.jdField_a_of_type_Vlb = paramvlb;
+    return this;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
   }
 }
 

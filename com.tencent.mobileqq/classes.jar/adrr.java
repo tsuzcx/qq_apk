@@ -1,51 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adrr
-  extends ayev
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
+  public adrr(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
-      }
-    }
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
-    return;
+    SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), null, "qqsetting_subaccount_notify", paramBoolean);
+    ((bdxc)this.a.app.getManager(61)).a(this.a.app);
+    QQAppInterface localQQAppInterface = this.a.app;
+    StringBuilder localStringBuilder = new StringBuilder();
     if (paramBoolean) {}
-    try
+    for (int i = 0;; i = 1)
     {
-      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
-      if (paramBundle != null)
-      {
-        paramBundle = zxc.a(bguc.b(paramBundle.getWupBuffer()));
-        if (paramBundle != null) {
-          adrm.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+      bdll.b(localQQAppInterface, "dc00898", "", "", "0X800AC3A", "0X800AC3A", 0, 0, i + "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
     }
   }
 }

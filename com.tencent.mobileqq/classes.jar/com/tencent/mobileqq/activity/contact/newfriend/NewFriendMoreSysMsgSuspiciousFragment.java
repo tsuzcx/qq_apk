@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aizb;
-import aizc;
+import ajkk;
+import ajkl;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bcst;
+import bdll;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -18,20 +18,20 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgSuspiciousFragment
   extends PublicBaseFragment
 {
-  private aizc jdField_a_of_type_Aizc;
+  private ajkl jdField_a_of_type_Ajkl;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   
   private void a(View paramView)
   {
-    View localView = paramView.findViewById(2131371740);
-    ((TextView)localView.findViewById(2131378788)).setText(2131698368);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131378170));
+    View localView = paramView.findViewById(2131371847);
+    ((TextView)localView.findViewById(2131378948)).setText(2131698470);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131378327));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_Aizc = new aizc(getActivity(), getActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Aizc);
-    paramView.findViewById(2131368947).setOnClickListener(new aizb(this));
-    ((TextView)paramView.findViewById(2131368994)).setText(2131698367);
-    bcst.b(getActivity().app, "dc00898", "", "", "0X800A32B", "0X800A32B", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Ajkl = new ajkl(getActivity(), getActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Ajkl);
+    paramView.findViewById(2131369042).setOnClickListener(new ajkk(this));
+    ((TextView)paramView.findViewById(2131369088)).setText(2131698469);
+    bdll.b(getActivity().app, "dc00898", "", "", "0X800A32B", "0X800A32B", 0, 0, "", "", "", "");
   }
   
   public void onCreate(Bundle paramBundle)
@@ -44,7 +44,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onCreateView");
     }
-    paramViewGroup = paramLayoutInflater.inflate(2131561326, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131561364, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
@@ -60,8 +60,8 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_Aizc != null) {
-      this.jdField_a_of_type_Aizc.c();
+    if (this.jdField_a_of_type_Ajkl != null) {
+      this.jdField_a_of_type_Ajkl.c();
     }
     super.onDestroy();
   }
@@ -69,18 +69,18 @@ public class NewFriendMoreSysMsgSuspiciousFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aizc != null) {
-      this.jdField_a_of_type_Aizc.b();
+    if (this.jdField_a_of_type_Ajkl != null) {
+      this.jdField_a_of_type_Ajkl.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aizc != null)
+    if (this.jdField_a_of_type_Ajkl != null)
     {
-      this.jdField_a_of_type_Aizc.a();
-      this.jdField_a_of_type_Aizc.d();
+      this.jdField_a_of_type_Ajkl.a();
+      this.jdField_a_of_type_Ajkl.d();
     }
   }
 }

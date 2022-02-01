@@ -1,18 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class tsk
-  implements tta
+  implements ViewBase.IBuilder
 {
-  public tsk(ViolaBaseView paramViolaBaseView) {}
-  
-  public void a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    ViolaBaseView.f(this.a);
-  }
-  
-  public void b()
-  {
-    ViolaBaseView.g(this.a);
+    return new tsj(paramVafContext);
   }
 }
 

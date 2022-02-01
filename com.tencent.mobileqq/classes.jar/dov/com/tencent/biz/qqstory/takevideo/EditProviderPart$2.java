@@ -2,20 +2,20 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.view.View;
 import android.view.ViewTreeObserver;
-import bpaz;
-import bpbb;
-import bpep;
+import bqcu;
+import bqcw;
+import bqgk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class EditProviderPart$2
   implements Runnable
 {
-  public EditProviderPart$2(bpaz parambpaz, List paramList) {}
+  public EditProviderPart$2(bqcu parambqcu, List paramList) {}
   
   public void run()
   {
-    if (bpaz.a(this.this$0) != 0) {
+    if (bqcu.a(this.this$0) != 0) {
       if (QLog.isColorLevel()) {
         QLog.e("EditProviderPart", 2, "EditVideoState is not idle");
       }
@@ -23,15 +23,15 @@ public class EditProviderPart$2
     do
     {
       return;
-      if ((this.this$0.jdField_a_of_type_Bpfx != null) && (bpaz.a(this.this$0) != null)) {
+      if ((this.this$0.jdField_a_of_type_Bqhs != null) && (bqcu.a(this.this$0) != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("EditProviderPart", 2, "initTransitionRecommendView postDelayed null");
     return;
-    this.this$0.jdField_a_of_type_Bpep.a(41);
-    bpaz.a(this.this$0).setVisibility(0);
-    bpaz.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(new bpbb(this));
+    this.this$0.jdField_a_of_type_Bqgk.a(41);
+    bqcu.a(this.this$0).setVisibility(0);
+    bqcu.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(new bqcw(this));
   }
 }
 

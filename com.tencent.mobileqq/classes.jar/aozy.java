@@ -1,14 +1,41 @@
+import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.Set;
+
 public class aozy
+  extends aoxh
 {
-  public String a;
-  public byte[] a;
-  public String b;
-  
-  public aozy(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    paramQQAppInterface = new aozx(paramQQAppInterface, paramContext);
+    paramContext = paramString.split("\\?");
+    if (paramContext.length < 1) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = paramContext[0];
+    paramQQAppInterface.c = paramContext[1];
+    paramContext = Uri.parse(paramString);
+    paramString = paramContext.getQueryParameterNames().iterator();
+    while (paramString.hasNext())
+    {
+      paramaoxk = (String)paramString.next();
+      if (!TextUtils.isEmpty(paramaoxk))
+      {
+        String str = paramContext.getQueryParameter(paramaoxk);
+        if (!TextUtils.isEmpty(str)) {
+          paramQQAppInterface.a(paramaoxk.toLowerCase(), str);
+        }
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

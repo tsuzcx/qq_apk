@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.leba;
 
-import ajvg;
+import akgp;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bkmq;
+import blnt;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
 import com.tencent.widget.ListView.OverscrollViewContainer;
 
 public class LebaListView
   extends FPSXListView
 {
-  private ajvg jdField_a_of_type_Ajvg;
+  private akgp jdField_a_of_type_Akgp;
   private boolean jdField_a_of_type_Boolean;
   
   public LebaListView(Context paramContext)
@@ -32,7 +32,7 @@ public class LebaListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Ajvg != null) && (this.jdField_a_of_type_Ajvg.a(this, paramMotionEvent))) {}
+    if ((this.jdField_a_of_type_Akgp != null) && (this.jdField_a_of_type_Akgp.a(this, paramMotionEvent))) {}
     for (boolean bool = true;; bool = false)
     {
       if (paramMotionEvent.getAction() == 0) {
@@ -134,9 +134,9 @@ public class LebaListView
     }
   }
   
-  public void setEventDispatchEventListener(ajvg paramajvg)
+  public void setEventDispatchEventListener(akgp paramakgp)
   {
-    this.jdField_a_of_type_Ajvg = paramajvg;
+    this.jdField_a_of_type_Akgp = paramakgp;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.applets;
 
-import ahdq;
-import alzs;
+import ahnc;
+import amlk;
 import com.tencent.mobileqq.app.QQAppInterface;
-import tue;
+import tug;
 
 public final class PublicAccountEventReport$2
   implements Runnable
@@ -12,8 +12,8 @@ public final class PublicAccountEventReport$2
   
   public void run()
   {
-    if (ahdq.a(tue.a().a())) {
-      alzs.a().a(this.a);
+    if (ahnc.a(tug.a().a())) {
+      amlk.a().a(this.a);
     }
   }
 }

@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
 
-public abstract class zub
-  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
+public class zub
+  extends QQUIEventReceiver<StoryUserBadgeView, xap>
 {
-  public abstract void a();
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public zub(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
   {
-    a();
+    super(paramStoryUserBadgeView);
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull xap paramxap)
   {
-    a();
+    if (paramxap.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    while (paramxap.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
+      return;
+    }
+    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xap.class;
   }
 }
 

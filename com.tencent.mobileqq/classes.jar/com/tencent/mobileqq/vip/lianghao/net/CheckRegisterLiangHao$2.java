@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import bhjh;
-import bhjm;
-import bhjn;
+import bijw;
+import bikb;
+import bikc;
 
 public class CheckRegisterLiangHao$2
   implements Runnable
 {
-  public CheckRegisterLiangHao$2(bhjm parambhjm, bhjn parambhjn, bhjh parambhjh) {}
+  public CheckRegisterLiangHao$2(bikb parambikb, bikc parambikc, bijw parambijw) {}
   
   public void run()
   {
-    bhjn localbhjn = this.jdField_a_of_type_Bhjn;
-    String str = bhjm.a(this.this$0);
-    if ((this.jdField_a_of_type_Bhjh != null) && (this.jdField_a_of_type_Bhjh.a)) {}
+    bikc localbikc = this.jdField_a_of_type_Bikc;
+    String str = bikb.a(this.this$0);
+    if ((this.jdField_a_of_type_Bijw != null) && (this.jdField_a_of_type_Bijw.a)) {}
     for (boolean bool = true;; bool = false)
     {
-      localbhjn.a(str, bool);
+      localbikc.a(str, bool);
       return;
     }
   }

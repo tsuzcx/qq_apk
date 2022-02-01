@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
 import android.widget.EditText;
-import bdmq;
-import bdmw;
+import befl;
+import befr;
 
 public class TroopTeamWorkFileSearchDialog$6$1
   implements Runnable
 {
-  public TroopTeamWorkFileSearchDialog$6$1(bdmw parambdmw) {}
+  public TroopTeamWorkFileSearchDialog$6$1(befr parambefr) {}
   
   public void run()
   {

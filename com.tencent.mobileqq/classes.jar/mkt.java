@@ -1,16 +1,15 @@
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mkt
-  implements lrx
+class mkt
+  implements DialogInterface.OnClickListener
 {
-  public mkt(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  mkt(mks parammks) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
   }
 }
 

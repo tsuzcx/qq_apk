@@ -1,439 +1,322 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.mobileqq.structmsg.widget.TextViewWrapLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
 
 public class bcyl
-  extends bcvt
 {
-  protected boolean a;
-  
-  private TextViewWrapLayout a(Context paramContext)
+  public static bcym a(bcyo parambcyo, bcyn parambcyn, boolean paramBoolean)
   {
-    paramContext = new TextViewWrapLayout(paramContext);
-    paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-    if (!TextUtils.isEmpty(this.c)) {
-      paramContext.setBackgroundResource(2130839432);
-    }
-    d(paramContext);
-    return paramContext;
-  }
-  
-  private void a(Context paramContext, ViewGroup paramViewGroup)
-  {
-    Resources localResources = paramContext.getResources();
-    int m = localResources.getDimensionPixelSize(2131298900);
-    int n = localResources.getDimensionPixelSize(2131298901);
-    int i = afur.a(5.0F, localResources);
-    if (a(1)) {}
-    for (int j = a(paramContext, 10) + i;; j = i)
+    bcym localbcym = new bcym();
+    int i;
+    if (parambcyo.e > 0)
     {
-      int k = i;
-      if (a(2)) {
-        k = i + a(paramContext, 10);
+      i = parambcyo.e;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressConfig", 2, "getCompressInfo, videoFps = " + i);
       }
-      paramViewGroup.setPadding(m, j, n, k);
-      return;
+      if (!paramBoolean) {
+        break label189;
+      }
+      localbcym.jdField_a_of_type_Float = 1.0F;
+      localbcym.jdField_a_of_type_Int = parambcyo.jdField_a_of_type_Int;
+      localbcym.jdField_b_of_type_Int = parambcyo.jdField_b_of_type_Int;
+      localbcym.jdField_b_of_type_Long = i;
+      if ((parambcyo.jdField_a_of_type_Long <= 0L) || (parambcyo.jdField_a_of_type_Long * 8L >= parambcyn.jdField_a_of_type_Long)) {
+        break label169;
+      }
+      localbcym.jdField_a_of_type_Long = parambcyo.jdField_b_of_type_Long;
+      label124:
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressConfig", 2, "getCompressInfo, isRaw, compressInfo.desBitRate = " + localbcym.jdField_a_of_type_Long);
+      }
     }
-  }
-  
-  private void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setVisibility(paramInt);
-  }
-  
-  private void a(ViewGroup paramViewGroup, View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    if ((paramViewGroup == null) || (paramView == null) || (paramLayoutParams == null)) {
-      return;
-    }
-    paramViewGroup.addView(paramView, paramLayoutParams);
-  }
-  
-  private void a(TextView paramTextView, int paramInt)
-  {
-    if (paramTextView == null) {}
-    while (paramInt <= 0) {
-      return;
-    }
-    paramTextView.setMaxLines(paramInt);
-  }
-  
-  private void b(Context paramContext, ViewGroup paramViewGroup)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    label169:
+    label189:
+    label352:
+    label742:
+    for (;;)
     {
-      paramContext = paramContext.getResources();
-      int i = afur.a(11.0F, paramContext);
-      int j = afur.a(14.0F, paramContext);
-      paramViewGroup.setPadding(j, i, j, afur.a(12.0F, paramContext));
-    }
-  }
-  
-  protected int b()
-  {
-    return 2;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    Object localObject9 = paramContext.getResources();
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
-    Object localObject8 = null;
-    Object localObject3 = null;
-    Object localObject5 = null;
-    Object localObject2 = null;
-    Object localObject7 = null;
-    Object localObject1 = null;
-    Object localObject6 = null;
-    Object localObject4 = null;
-    Object localObject10 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject10).hasNext())
-    {
-      Object localObject11 = (bcvs)((Iterator)localObject10).next();
-      if ((localObject11 instanceof bcxv))
+      return localbcym;
+      i = 30;
+      break;
+      localbcym.jdField_a_of_type_Long = ((int)(parambcyn.jdField_a_of_type_Long / parambcyo.d));
+      break label124;
+      double d2;
+      double d1;
+      if (parambcyo.jdField_a_of_type_Int <= parambcyo.jdField_b_of_type_Int)
       {
-        localObject11 = (bcxv)localObject11;
-        if (((bcxv)localObject11).t == bcxv.s) {
-          ((bcxv)localObject11).t = bcxv.q;
+        i = parambcyo.jdField_b_of_type_Int;
+        if (i <= parambcyn.jdField_a_of_type_Int) {
+          break label692;
+        }
+        localbcym.jdField_a_of_type_Float = (parambcyn.jdField_a_of_type_Int / i);
+        localbcym.jdField_a_of_type_Int = ((int)(parambcyo.jdField_a_of_type_Int * localbcym.jdField_a_of_type_Float));
+        localbcym.jdField_b_of_type_Int = ((int)(parambcyo.jdField_b_of_type_Int * localbcym.jdField_a_of_type_Float));
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressConfig", 2, "getCompressInfo,  config.scaleRate = " + localbcym.jdField_a_of_type_Float + ", compressInfo.desWidth = " + localbcym.jdField_a_of_type_Int + ", compressInfo.desHeight = " + localbcym.jdField_b_of_type_Int);
+        }
+        if ((parambcyo.e <= 0) || (parambcyo.e >= parambcyn.jdField_b_of_type_Int)) {
+          break label719;
+        }
+        localbcym.jdField_b_of_type_Long = parambcyo.e;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressConfig", 2, "getCompressInfo, compressInfo.desFPS = " + localbcym.jdField_b_of_type_Long);
+        }
+        d2 = localbcym.jdField_a_of_type_Int * localbcym.jdField_b_of_type_Int * localbcym.jdField_b_of_type_Long * parambcyn.jdField_a_of_type_Double;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressConfig", 2, "getCompressInfo, bpsExp = " + d2);
+        }
+        d1 = d2;
+        if (d2 > parambcyo.jdField_b_of_type_Long) {
+          d1 = parambcyo.jdField_b_of_type_Long;
+        }
+        d2 = d1;
+        if (d1 > parambcyn.c) {
+          d2 = parambcyn.c;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressConfig", 2, "getCompressInfo, bpsExp real = " + d2);
+        }
+        if (parambcyo.d * d2 <= parambcyn.jdField_a_of_type_Long) {
+          break label732;
+        }
+        d2 = parambcyn.jdField_a_of_type_Long / (localbcym.jdField_a_of_type_Int * localbcym.jdField_b_of_type_Int * localbcym.jdField_b_of_type_Long * parambcyo.d);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressConfig", 2, "getCompressInfo,densityExp = " + d2);
+        }
+        d1 = d2;
+        if (d2 < parambcyn.jdField_b_of_type_Double) {
+          d1 = parambcyn.jdField_b_of_type_Double;
         }
       }
+      for (localbcym.jdField_a_of_type_Long = ((int)(d1 * (localbcym.jdField_a_of_type_Int * localbcym.jdField_b_of_type_Int * localbcym.jdField_b_of_type_Long)));; localbcym.jdField_a_of_type_Long = ((int)d2))
+      {
+        if (!QLog.isColorLevel()) {
+          break label742;
+        }
+        QLog.d("VideoCompressConfig", 2, "getCompressInfo,  compressInfo.desBitRate " + localbcym.jdField_a_of_type_Long);
+        return localbcym;
+        i = parambcyo.jdField_a_of_type_Int;
+        break;
+        localbcym.jdField_a_of_type_Float = 1.0F;
+        localbcym.jdField_a_of_type_Int = parambcyo.jdField_a_of_type_Int;
+        localbcym.jdField_b_of_type_Int = parambcyo.jdField_b_of_type_Int;
+        break label263;
+        localbcym.jdField_b_of_type_Long = parambcyn.jdField_b_of_type_Int;
+        break label352;
+      }
     }
-    if ((paramView != null) && ((paramView instanceof TextViewWrapLayout)))
+  }
+  
+  public static bcyn a(QQAppInterface paramQQAppInterface)
+  {
+    bcyn localbcyn = new bcyn();
+    if (paramQQAppInterface == null) {
+      QLog.e("VideoCompressConfig", 1, "getManageConfig, app is null.");
+    }
+    do
     {
-      localObject8 = (TextViewWrapLayout)paramView;
-      localObject9 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramView = (View)localObject4;
-      localObject5 = localObject2;
-      localObject7 = paramView;
-      localObject6 = localObject1;
-      localObject4 = localObject8;
-      if (!((Iterator)localObject9).hasNext()) {
-        break label966;
+      return localbcyn;
+      paramQQAppInterface = bhsi.p(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() > 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressConfig", 2, "getManageConfig, compressConfig = " + paramQQAppInterface);
+        }
+        paramQQAppInterface = paramQQAppInterface.split("\\|");
+        if ((paramQQAppInterface == null) || (paramQQAppInterface.length < 5)) {}
       }
-      localObject4 = (bcvs)((Iterator)localObject9).next();
-      ((bcvs)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      localObject5 = ((bcvs)localObject4).jdField_a_of_type_JavaLangString;
-      if ((("picture".equals(localObject5)) || ("vote".equals(localObject5)) || ("video".equals(localObject5))) && (localObject3 == null)) {
-        localObject3 = ((bcvs)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131368420), paramBundle);
+      try
+      {
+        int i = Integer.valueOf(paramQQAppInterface[0]).intValue();
+        if (i > 0) {
+          localbcyn.jdField_a_of_type_Int = i;
+        }
+        i = Integer.valueOf(paramQQAppInterface[1]).intValue();
+        if (i > 0) {
+          localbcyn.jdField_b_of_type_Int = i;
+        }
+        double d = Double.valueOf(paramQQAppInterface[2]).doubleValue();
+        if (d > 0.0D) {
+          localbcyn.jdField_a_of_type_Double = d;
+        }
+        d = Double.valueOf(paramQQAppInterface[3]).doubleValue();
+        if (d > 0.0D) {
+          localbcyn.jdField_b_of_type_Double = d;
+        }
+        if ((paramQQAppInterface.length >= 6) && (paramQQAppInterface[5] != null) && (paramQQAppInterface[5].length() > 0))
+        {
+          i = Integer.valueOf(paramQQAppInterface[5]).intValue();
+          if (i > 0) {
+            localbcyn.jdField_a_of_type_Long = (i * 1024 * 1024 * 8);
+          }
+        }
+        long l;
+        if ((paramQQAppInterface.length >= 8) && (paramQQAppInterface[7] != null) && (paramQQAppInterface[7].length() > 0))
+        {
+          l = Long.valueOf(paramQQAppInterface[7]).longValue();
+          if (l > 0L) {
+            localbcyn.c = l;
+          }
+        }
+        if ((paramQQAppInterface.length >= 9) && (paramQQAppInterface[8] != null) && (paramQQAppInterface[8].length() > 0))
+        {
+          l = Long.valueOf(paramQQAppInterface[8]).longValue();
+          if (l > 0L) {
+            localbcyn.jdField_b_of_type_Long = l;
+          }
+        }
       }
+      catch (NumberFormatException paramQQAppInterface)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("VideoCompressConfig", 2, "getCompressConfigNew -> get VideoCompressConfig Erro", paramQQAppInterface);
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoCompressConfig", 2, "getManageConfig, maxLength = " + localbcyn.jdField_a_of_type_Int + ", maxFPS = " + localbcyn.jdField_b_of_type_Int + ", maxDensity = " + localbcyn.jdField_a_of_type_Double + ", minDensity = " + localbcyn.jdField_b_of_type_Double + ", maxSize = " + localbcyn.jdField_a_of_type_Long + ", maxBitRate = " + localbcyn.c + ", minBitRate = " + localbcyn.jdField_b_of_type_Long);
+    return localbcyn;
+  }
+  
+  public static bcyo a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("VideoCompressConfig", 1, "getVideoInfo, videoPath is empty.");
+      paramString = null;
+      return paramString;
+    }
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
+    {
+      QLog.e("VideoCompressConfig", 1, "getVideoInfo, file not exists.");
+      return null;
+    }
+    bcyo localbcyo = new bcyo();
+    localbcyo.jdField_a_of_type_Long = ((File)localObject).length();
+    if (Build.VERSION.SDK_INT >= 17) {
+      localObject = new MediaMetadataRetriever();
     }
     for (;;)
     {
-      break;
-      if (("title".equals(localObject5)) && (localObject2 == null))
+      try
       {
-        if ((localObject4 instanceof StructMsgItemTitle)) {
-          ((StructMsgItemTitle)localObject4).a(a(), this.p);
+        ((MediaMetadataRetriever)localObject).setDataSource(paramString);
+        paramString = ((MediaMetadataRetriever)localObject).extractMetadata(18);
+        String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
+        String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(24);
+        String str3 = ((MediaMetadataRetriever)localObject).extractMetadata(9);
+        String str4 = ((MediaMetadataRetriever)localObject).extractMetadata(32);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressConfig", 2, "getVideoInfo by MediaMetadataRetriever, width = " + paramString + ", height = " + str1 + ", rotation = " + str2 + ", duration = " + str3 + ", frameCount = " + str4);
         }
-        localObject2 = (TextView)((bcvs)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131379957), paramBundle);
+        localbcyo.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
+        localbcyo.jdField_b_of_type_Int = Integer.valueOf(str1).intValue();
+        localbcyo.c = Integer.valueOf(str2).intValue();
+        localbcyo.d = ((int)(Integer.valueOf(str3).intValue() / 1000.0D + 0.5D));
+        localbcyo.e = ((int)(Integer.valueOf(str4).intValue() * 1.0D / localbcyo.d + 0.5D));
       }
-      else if (localObject1 == null)
+      catch (Exception paramString)
       {
-        if (("summary".equals(localObject5)) || ("timer".equals(localObject5)))
+        QLog.e("VideoCompressConfig", 1, "getVideoProperty:", paramString);
+        ((MediaMetadataRetriever)localObject).release();
+        continue;
+      }
+      finally
+      {
+        ((MediaMetadataRetriever)localObject).release();
+      }
+      if (localbcyo.d > 0) {
+        localbcyo.jdField_b_of_type_Long = (localbcyo.jdField_a_of_type_Long * 8L / localbcyo.d);
+      }
+      paramString = localbcyo;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("VideoCompressConfig", 2, "getVideoInfo, fileSize = " + localbcyo.jdField_a_of_type_Long + ", width = " + localbcyo.jdField_a_of_type_Int + ", height = " + localbcyo.jdField_b_of_type_Int + ", rotation = " + localbcyo.c + ", duration = " + localbcyo.d + ", fps = " + localbcyo.e + ", videoInfo.bitRate = " + localbcyo.jdField_b_of_type_Long);
+      return localbcyo;
+      try
+      {
+        paramString = ShortVideoTrimmer.getRealProperties(paramString);
+        if (paramString != null)
         {
-          localObject1 = (TextView)((bcvs)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131379927), paramBundle);
-        }
-        else if ("checklist".equals(localObject5))
-        {
-          paramView = (LinearLayout)((bcvs)localObject4).a(paramContext, ((TextViewWrapLayout)localObject8).findViewById(2131379561), paramBundle);
-          continue;
-          localObject4 = a(paramContext);
-          localObject10 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          localObject3 = localObject8;
-          localObject1 = localObject7;
-          paramView = (View)localObject6;
-          localObject2 = localObject5;
-          if (((Iterator)localObject10).hasNext())
+          paramString = paramString.split(",");
+          if ((paramString != null) && (paramString.length > 0))
           {
-            localObject5 = (bcvs)((Iterator)localObject10).next();
-            ((bcvs)localObject5).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-            localObject6 = ((bcvs)localObject5).jdField_a_of_type_JavaLangString;
-            if ((("picture".equals(localObject6)) || ("vote".equals(localObject6)) || ("video".equals(localObject6))) && (localObject3 == null)) {
-              localObject3 = ((bcvs)localObject5).a(paramContext, null, paramBundle);
-            }
-          }
-          for (;;)
-          {
-            break;
-            if (("title".equals(localObject6)) && (localObject2 == null))
+            localObject = new int[paramString.length];
+            int i = 0;
+            while (i < paramString.length)
             {
-              if ((localObject5 instanceof StructMsgItemTitle)) {
-                ((StructMsgItemTitle)localObject5).a(a(), this.p);
-              }
-              localObject2 = (TextView)((bcvs)localObject5).a(paramContext, null, paramBundle);
+              localObject[i] = Integer.valueOf(paramString[i]).intValue();
+              i += 1;
             }
-            else if (localObject1 == null)
-            {
-              if (("summary".equals(localObject6)) || ("timer".equals(localObject6)))
-              {
-                localObject1 = (TextView)((bcvs)localObject5).a(paramContext, null, paramBundle);
-              }
-              else if ("checklist".equals(localObject6))
-              {
-                paramView = (LinearLayout)((bcvs)localObject5).a(paramContext, null, paramBundle);
-                continue;
-                if (localObject3 == null)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.e("StructMsg", 2, "generate 2 item failure.");
-                  }
-                  paramContext = null;
-                  return paramContext;
-                }
-                localObject5 = localObject2;
-                if (localObject2 == null)
-                {
-                  localObject5 = localObject2;
-                  if (localObject1 != null) {
-                    localObject5 = (TextView)new StructMsgItemTitle(((TextView)localObject1).getText().toString()).a(paramContext, null, paramBundle);
-                  }
-                }
-                if (localObject5 == null)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.e("StructMsg", 2, "generate 2 item titleview failure.");
-                  }
-                  return null;
-                }
-                localObject6 = new RelativeLayout.LayoutParams(-1, -2);
-                ((RelativeLayout.LayoutParams)localObject6).topMargin = 0;
-                ((RelativeLayout.LayoutParams)localObject6).addRule(10);
-                localObject7 = new RelativeLayout.LayoutParams(-1, -2);
-                ((RelativeLayout.LayoutParams)localObject7).addRule(3, ((TextView)localObject5).getId());
-                label819:
-                label881:
-                int i;
-                label966:
-                label989:
-                int j;
-                if ((this.o == 1) || (this.o == 3)) {
-                  if (this.o == 1)
-                  {
-                    localObject2 = new RelativeLayout.LayoutParams(afur.a(50.0F, (Resources)localObject9), afur.a(50.0F, (Resources)localObject9));
-                    ((RelativeLayout.LayoutParams)localObject2).topMargin = afur.a(3.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(9);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(10);
-                    localObject8 = new RelativeLayout(paramContext);
-                    localObject10 = new RelativeLayout.LayoutParams(-1, -2);
-                    if (this.o != 3) {
-                      break label1399;
-                    }
-                    ((RelativeLayout.LayoutParams)localObject10).topMargin = afur.a(12.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject7).topMargin = 5;
-                    ((RelativeLayout.LayoutParams)localObject10).addRule(10);
-                    ((RelativeLayout.LayoutParams)localObject10).addRule(1, ((View)localObject3).getId());
-                    ((RelativeLayout.LayoutParams)localObject10).leftMargin = afur.a(10.0F, (Resources)localObject9);
-                    a((ViewGroup)localObject4, (View)localObject3, (RelativeLayout.LayoutParams)localObject2);
-                    a((ViewGroup)localObject8, (View)localObject5, (RelativeLayout.LayoutParams)localObject6);
-                    a((ViewGroup)localObject8, (View)localObject1, (RelativeLayout.LayoutParams)localObject7);
-                    a((ViewGroup)localObject8, paramView, (RelativeLayout.LayoutParams)localObject7);
-                    ((TextViewWrapLayout)localObject4).addView((View)localObject8, (ViewGroup.LayoutParams)localObject10);
-                    localObject6 = localObject1;
-                    localObject7 = paramView;
-                    if ((this.o != 1) && (this.o != 3)) {
-                      break label1713;
-                    }
-                    a(paramContext, (ViewGroup)localObject4);
-                    i = 0;
-                    int k = 0;
-                    j = i;
-                    if (localObject5 != null)
-                    {
-                      paramContext = ((TextView)localObject5).getTag();
-                      j = i;
-                      if ((paramContext instanceof StructMsgItemTitle))
-                      {
-                        paramContext = (StructMsgItemTitle)paramContext;
-                        j = i;
-                        if (paramContext != null)
-                        {
-                          if (TextUtils.isEmpty(paramContext.b())) {
-                            break label1723;
-                          }
-                          i = 1;
-                          label1047:
-                          j = i;
-                        }
-                      }
-                    }
-                    i = k;
-                    if (localObject6 != null)
-                    {
-                      paramContext = ((TextView)localObject6).getTag();
-                      i = k;
-                      if ((paramContext instanceof bdaq))
-                      {
-                        paramContext = (bdaq)paramContext;
-                        i = k;
-                        if (paramContext != null)
-                        {
-                          if (TextUtils.isEmpty(paramContext.b())) {
-                            break label1729;
-                          }
-                          i = 1;
-                        }
-                      }
-                    }
-                    label1103:
-                    if (localObject7 == null) {
-                      break label1809;
-                    }
-                    paramContext = ((LinearLayout)localObject7).getTag();
-                    if (!(paramContext instanceof bdbi)) {
-                      break label1809;
-                    }
-                    paramContext = ((bdbi)paramContext).jdField_a_of_type_JavaUtilArrayList;
-                    if ((paramContext == null) || (paramContext.isEmpty())) {
-                      break label1735;
-                    }
-                    i = 1;
-                  }
-                }
-                label1799:
-                label1809:
-                for (;;)
-                {
-                  label1143:
-                  if (j != 0)
-                  {
-                    a((TextView)localObject5, 2);
-                    a((View)localObject5, 0);
-                    a((TextView)localObject6, 2);
-                    if ((this.o == 1) || (this.o == 3))
-                    {
-                      ((TextView)localObject5).setTextSize(16.0F);
-                      if (i == 0) {
-                        break label1788;
-                      }
-                      a((View)localObject6, 0);
-                      if ((this.o != 1) && (this.o != 3)) {
-                        break label1799;
-                      }
-                      if (localObject6 != null) {
-                        ((TextView)localObject6).setSingleLine(true);
-                      }
-                      if (localObject5 != null)
-                      {
-                        ((TextView)localObject5).setSingleLine(true);
-                        ((TextView)localObject5).setMaxLines(1);
-                      }
-                    }
-                  }
-                  for (;;)
-                  {
-                    label1193:
-                    label1205:
-                    paramContext = (Context)localObject4;
-                    if (!AppSetting.c) {
-                      break;
-                    }
-                    paramContext = new StringBuilder();
-                    if (localObject5 != null) {
-                      paramContext.append(((TextView)localObject5).getText());
-                    }
-                    i = paramBundle.getInt("serviceID", 0);
-                    if ((localObject6 != null) && ((i == 32) || (i == 14) || (i == 15) || (i == 16) || (i == 17))) {
-                      paramContext.append(",").append(((TextView)localObject6).getText());
-                    }
-                    ((TextViewWrapLayout)localObject4).setContentDescription(paramContext.toString());
-                    return localObject4;
-                    localObject2 = new RelativeLayout.LayoutParams(afur.a(115.0F, (Resources)localObject9), afur.a(70.0F, (Resources)localObject9));
-                    ((RelativeLayout.LayoutParams)localObject2).topMargin = afur.a(3.0F, (Resources)localObject9);
-                    break label819;
-                    label1399:
-                    ((RelativeLayout.LayoutParams)localObject10).topMargin = afur.a(7.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject7).topMargin = 0;
-                    break label881;
-                    if (!this.jdField_a_of_type_Boolean)
-                    {
-                      if (localObject1 != null) {
-                        ((TextView)localObject1).setLineSpacing(afur.a(1.0F, (Resources)localObject9), 1.0F);
-                      }
-                      localObject2 = new RelativeLayout.LayoutParams(afur.a(50.0F, (Resources)localObject9), afur.a(50.0F, (Resources)localObject9));
-                      ((RelativeLayout.LayoutParams)localObject2).topMargin = afur.a(7.0F, (Resources)localObject9);
-                      ((RelativeLayout.LayoutParams)localObject2).leftMargin = afur.a(10.0F, (Resources)localObject9);
-                      ((RelativeLayout.LayoutParams)localObject2).addRule(3, ((TextView)localObject5).getId());
-                      ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-                      ((RelativeLayout.LayoutParams)localObject7).topMargin = afur.a(5.0F, (Resources)localObject9);
-                      ((RelativeLayout.LayoutParams)localObject7).addRule(0, ((View)localObject3).getId());
-                      a((ViewGroup)localObject4, (View)localObject5, (RelativeLayout.LayoutParams)localObject6);
-                      a((ViewGroup)localObject4, (View)localObject3, (RelativeLayout.LayoutParams)localObject2);
-                      a((ViewGroup)localObject4, (View)localObject1, (RelativeLayout.LayoutParams)localObject7);
-                      a((ViewGroup)localObject4, paramView, (RelativeLayout.LayoutParams)localObject7);
-                      localObject7 = paramView;
-                      localObject6 = localObject1;
-                      break label966;
-                    }
-                    localObject2 = new RelativeLayout.LayoutParams(afur.a(32.0F, (Resources)localObject9), afur.a(32.0F, (Resources)localObject9));
-                    ((RelativeLayout.LayoutParams)localObject2).leftMargin = afur.a(6.0F, (Resources)localObject9);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-                    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-                    i = bgtn.a(20.0F);
-                    ((RelativeLayout.LayoutParams)localObject6).topMargin = i;
-                    ((RelativeLayout.LayoutParams)localObject6).bottomMargin = i;
-                    ((RelativeLayout.LayoutParams)localObject6).addRule(0, ((View)localObject3).getId());
-                    ((RelativeLayout.LayoutParams)localObject6).addRule(9);
-                    ((RelativeLayout.LayoutParams)localObject6).addRule(15);
-                    a((ViewGroup)localObject4, (View)localObject3, (RelativeLayout.LayoutParams)localObject2);
-                    a((ViewGroup)localObject4, (View)localObject5, (RelativeLayout.LayoutParams)localObject6);
-                    localObject7 = paramView;
-                    localObject6 = localObject1;
-                    break label966;
-                    label1713:
-                    b(paramContext, (ViewGroup)localObject4);
-                    break label989;
-                    label1723:
-                    i = 0;
-                    break label1047;
-                    label1729:
-                    i = 0;
-                    break label1103;
-                    label1735:
-                    i = 0;
-                    break label1143;
-                    if (!this.jdField_a_of_type_Boolean) {}
-                    for (float f = 17.0F;; f = 14.0F)
-                    {
-                      ((TextView)localObject5).setTextSize(f);
-                      break;
-                    }
-                    a((View)localObject5, 8);
-                    a((TextView)localObject6, 4);
-                    break label1193;
-                    label1788:
-                    a((View)localObject6, 8);
-                    break label1205;
-                    a((TextView)localObject6, 3);
-                  }
-                }
-              }
-            }
+            localbcyo.jdField_a_of_type_Int = localObject[1];
+            localbcyo.jdField_b_of_type_Int = localObject[2];
+            localbcyo.c = Integer.valueOf(ShortVideoTrimmer.a(localObject[3])).intValue();
+            localbcyo.d = ((int)(localObject[4] / 1000.0D + 0.5D));
           }
         }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("VideoCompressConfig", 1, "getVideoInfo error.", paramString);
       }
     }
   }
   
-  public String b()
+  public static boolean a(bcyo parambcyo, bcyn parambcyn)
   {
-    return "Layout2";
+    if ((parambcyo == null) || (parambcyn == null))
+    {
+      QLog.e("VideoCompressConfig", 1, "isNeedCompress, false, videoInfo or config is null");
+      return false;
+    }
+    if (parambcyo.jdField_a_of_type_Long * 8L > parambcyn.jdField_a_of_type_Long)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, fileSize > maxSize, fileSize = " + parambcyo.jdField_a_of_type_Long);
+      }
+      return true;
+    }
+    if (parambcyo.jdField_b_of_type_Long < parambcyn.jdField_b_of_type_Long)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressConfig", 2, "isNeedCompress,false, bitRate < minBitRate, bitRate = " + parambcyo.jdField_b_of_type_Long + ", minBitRate = " + parambcyn.jdField_b_of_type_Long);
+      }
+      return false;
+    }
+    if (parambcyo.jdField_b_of_type_Long > parambcyn.c)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, bitRate > maxBitRate, bitRate = " + parambcyo.jdField_b_of_type_Long + ", maxBitRate = " + parambcyn.c);
+      }
+      return true;
+    }
+    if (parambcyo.e > 0) {}
+    for (int i = parambcyo.e;; i = 30)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressConfig", 2, "isNeedCompress, videoFps = " + i);
+      }
+      if (parambcyo.jdField_b_of_type_Long <= parambcyo.jdField_a_of_type_Int * parambcyo.jdField_b_of_type_Int * i * parambcyn.jdField_a_of_type_Double * 1.2D) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, density > 1.2 * maxDensty. bitRate = " + parambcyo.jdField_b_of_type_Long + ", width * height * videoFps * maxDensity * 1.2 = " + i * (parambcyo.jdField_a_of_type_Int * parambcyo.jdField_b_of_type_Int) * parambcyn.jdField_a_of_type_Double * 1.2D);
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressConfig", 2, "isNeedCompress, false, density <= 1.2 * maxDensty. bitRate = " + parambcyo.jdField_b_of_type_Long + ", width * height * videoFps * maxDensity * 1.2 = " + i * (parambcyo.jdField_a_of_type_Int * parambcyo.jdField_b_of_type_Int) * parambcyn.jdField_a_of_type_Double * 1.2D);
+    }
+    return false;
   }
 }
 

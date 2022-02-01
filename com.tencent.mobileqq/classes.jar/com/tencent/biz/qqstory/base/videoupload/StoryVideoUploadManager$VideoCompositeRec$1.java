@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import why;
-import wij;
-import wjb;
+import wlt;
+import wme;
+import wmw;
 
 public class StoryVideoUploadManager$VideoCompositeRec$1
   implements Runnable
 {
-  public StoryVideoUploadManager$VideoCompositeRec$1(wij paramwij, why paramwhy, wjb paramwjb) {}
+  public StoryVideoUploadManager$VideoCompositeRec$1(wme paramwme, wlt paramwlt, wmw paramwmw) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Why.a(this.jdField_a_of_type_Wjb.a, this.jdField_a_of_type_Wjb.b);
+    this.jdField_a_of_type_Wlt.a(this.jdField_a_of_type_Wmw.a, this.jdField_a_of_type_Wmw.b);
   }
 }
 

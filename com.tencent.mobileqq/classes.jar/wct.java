@@ -1,57 +1,59 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import java.util.List;
 
-public class wct
-  extends wlf<wcu>
+class wct
+  extends RecyclerView.ViewHolder
 {
-  private static final String jdField_a_of_type_JavaLangString = wjz.a("StorySvc.check_location_blacklist");
-  private List<wdq> jdField_a_of_type_JavaUtilList;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
   
-  public String a()
+  public wct(wcs paramwcs, View paramView)
   {
-    return jdField_a_of_type_JavaLangString;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369610));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369604));
+    this.b = ((ImageView)paramView.findViewById(2131369603));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369608));
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public void a(long paramLong, int paramInt)
   {
-    qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
-    try
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    FrameLayout.LayoutParams localLayoutParams;
+    if (wcp.a(this.jdField_a_of_type_Wcs.jdField_a_of_type_Wcp) == 0)
     {
-      localRspCheckBlackList.mergeFrom(paramArrayOfByte);
-      return new wcu(localRspCheckBlackList);
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("Q群: " + paramLong);
+      localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramInt != 0) {
+        break label165;
+      }
+      localLayoutParams.setMargins(0, 0, 0, 0);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      paramArrayOfByte.printStackTrace();
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(bdep.a(5.0F), 0, bdep.a(5.0F), 0);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new wcu(this, paramLong));
+      this.b.setOnClickListener(new wcv(this, paramLong));
+      return;
+      this.b.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramLong));
+      break;
+      label165:
+      if (paramInt == this.jdField_a_of_type_Wcs.jdField_a_of_type_JavaUtilList.size() - 1) {
+        localLayoutParams.setMargins(bdep.a(5.0F), 0, bdep.a(38.0F), 0);
+      } else {
+        localLayoutParams.setMargins(bdep.a(5.0F), 0, 0, 0);
+      }
     }
-    return null;
-  }
-  
-  public void a(@NonNull List<wdq> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected byte[] a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
-    }
-    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((wdq)localIterator.next()).a());
-    }
-    localReqCheckBlackList.gps_list.addAll(localArrayList);
-    return localReqCheckBlackList.toByteArray();
   }
 }
 

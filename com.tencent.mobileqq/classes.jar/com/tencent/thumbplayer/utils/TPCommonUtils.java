@@ -54,6 +54,21 @@ public class TPCommonUtils
     }
   }
   
+  public static final String getTaskIdFromDataTransportUrl(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramString.lastIndexOf("proxy/") <= 0)) {
+      return "";
+    }
+    try
+    {
+      int i = paramString.indexOf("proxy/") + "proxy/".length();
+      paramString = paramString.substring(i, i + 8);
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+  }
+  
   public static boolean isEmpty(Collection<? extends Object> paramCollection)
   {
     return (paramCollection == null) || (paramCollection.size() <= 0);
@@ -140,10 +155,7 @@ public class TPCommonUtils
       i = Integer.parseInt(paramString);
       return i;
     }
-    catch (NumberFormatException paramString)
-    {
-      TPLogUtil.e("TPCommonUtils", paramString);
-    }
+    catch (NumberFormatException paramString) {}
     return paramInt;
   }
   

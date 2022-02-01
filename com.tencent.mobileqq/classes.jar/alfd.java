@@ -1,27 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class alfd
-  extends aleq
+public final class alfd
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public alfd(Context paramContext)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131696969);
+    return new RedPacketInfoBase(paramParcel);
   }
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public RedPacketInfoBase[] a(int paramInt)
   {
-    if ((paramObject instanceof alfd))
-    {
-      paramObject = (alfd)paramObject;
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-    }
-    paramObject = new alfd(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-    return paramObject;
+    return new RedPacketInfoBase[paramInt];
   }
 }
 

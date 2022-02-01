@@ -1,26 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import java.util.List;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public final class bqcy
-  extends BroadcastReceiver
+class bqcy
+  implements bqgw
 {
-  private bqcy(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  bqcy(bqcu parambqcu) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a() {}
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      bqbq.a().b();
-      bqbq.a().a(new bqcz());
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
     }
+    bqcu.a(this.a).setLocation(paramTroopBarPOI);
   }
 }
 

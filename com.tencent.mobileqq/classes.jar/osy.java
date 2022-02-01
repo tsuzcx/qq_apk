@@ -1,95 +1,82 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class osy
-  extends acuc
+public class osy
+  extends LinkMovementMethod
 {
-  osy(ost paramost, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  private static osy jdField_a_of_type_Osy;
+  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+  
+  public static osy a()
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    if (jdField_a_of_type_Osy == null) {
+      jdField_a_of_type_Osy = new osy();
+    }
+    return jdField_a_of_type_Osy;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    super.onPageFinished(paramWebView, paramString);
-    if (QLog.isColorLevel())
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0) || (i == 2) || (i == 3))
     {
-      QLog.d(ost.a(), 2, "loadForm onPageFinished url:" + paramString + ", costTime:" + (SystemClock.currentThreadTimeMillis() - ost.b(this.a)));
-      QLog.d(ost.a(), 2, "onPageFinished: TOTAL costTime=" + (SystemClock.currentThreadTimeMillis() - ost.c(this.a)));
-    }
-    if (ost.a(this.a) != null) {
-      ost.a(this.a).a((byte)2);
-    }
-    if (ost.a(this.a) != null) {
-      ost.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ost.a(), 2, "onReceivedError:" + paramInt + "，" + paramString1 + ", " + paramString2);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ost.a(), 2, "shouldOverrideUrlLoading url:" + paramString);
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
-      return true;
-    }
-    Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-    if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-    {
-      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-    }
-    paramString = Uri.parse(paramString);
-    localObject = paramString.getScheme();
-    if (nhe.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
-    {
-      paramWebView = new Intent("android.intent.action.VIEW", paramString);
-      paramWebView.addFlags(268435456);
-    }
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return false;
-    }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      for (;;)
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
       {
-        Log.e("AbsWebView", paramWebView.toString());
+        if (i == 1)
+        {
+          paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+          paramSpannable.setSpan(new BackgroundColorSpan(0), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          Selection.removeSelection(paramSpannable);
+          localObject[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(Color.parseColor("#DBE5EF"));
+            paramSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          }
+          else if ((i == 3) || (i == 2))
+          {
+            paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+            paramSpannable.setSpan(new BackgroundColorSpan(0), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          }
+        }
+      }
+      if ((paramTextView.getTag(2131376207) != null) && ((paramTextView.getTag(2131376207) instanceof Boolean)) && (((Boolean)paramTextView.getTag(2131376207)).booleanValue()))
+      {
+        switch (paramMotionEvent.getAction())
+        {
+        }
+        for (;;)
+        {
+          return true;
+          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130849369));
+          continue;
+          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130849373));
+        }
       }
     }
+    return false;
   }
 }
 

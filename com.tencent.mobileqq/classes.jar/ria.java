@@ -1,23 +1,72 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
+import java.util.List;
 
 public class ria
 {
-  public String a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 10;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int c = 30;
   
-  public static ria a(oidb_cmd0xbc9.AdReport paramAdReport)
+  public int a()
   {
-    ria localria = new ria();
-    localria.a = paramAdReport.bytes_report_url.get().toStringUtf8();
-    return localria;
+    return this.jdField_a_of_type_Int;
   }
   
-  public oidb_cmd0xbc9.AdReport a()
+  public String a()
   {
-    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
-    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localAdReport;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.c = paramInt;
   }
 }
 

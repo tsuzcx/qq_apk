@@ -28,14 +28,14 @@ public class PluginBaseInfo
   public long costDex2Oat;
   public long costDownload;
   public long costLib;
-  public long mCurVersion;
+  public long mCurVersion = 0L;
   public float mDownloadProgress;
   public String mFingerPrint = "";
   public int mForceUrl;
   public String mID = "";
   public int mInstallType = 0;
   public String mInstalledPath;
-  public long mLength;
+  public long mLength = 0L;
   public String mMD5 = "";
   public String mName = "";
   public String mPackageName = "";

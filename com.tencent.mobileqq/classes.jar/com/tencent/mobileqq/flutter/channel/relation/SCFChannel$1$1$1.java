@@ -13,7 +13,7 @@ class SCFChannel$1$1$1
   {
     this.a.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(null);
     if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (int i = 2131698322;; i = 2131698321)
+    for (int i = 2131698424;; i = 2131698423)
     {
       QQToast.a(BaseApplicationImpl.getContext(), 2, i, 0).a();
       return;

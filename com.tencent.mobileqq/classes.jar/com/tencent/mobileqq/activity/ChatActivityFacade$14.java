@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adrt;
+import aeau;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,11 +8,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public final class ChatActivityFacade$14
   implements Runnable
 {
-  public ChatActivityFacade$14(adrt paramadrt, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public ChatActivityFacade$14(aeau paramaeau, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Adrt.a) {
+    if (this.jdField_a_of_type_Aeau.a) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     }
   }

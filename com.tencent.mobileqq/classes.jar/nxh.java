@@ -1,16 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nxh
+public class nxh
   implements View.OnClickListener
 {
-  nxh(nxe paramnxe) {}
+  public nxh(VideoCoverView paramVideoCoverView) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    VideoCoverView.a(this.a, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

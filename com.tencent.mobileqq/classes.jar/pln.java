@@ -1,13 +1,10 @@
-public class pln
+public abstract interface pln
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a();
   
-  public String toString()
-  {
-    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

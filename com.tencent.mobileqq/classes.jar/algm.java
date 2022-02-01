@@ -1,18 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class algm
-  extends BroadcastReceiver
+  implements alfv
 {
-  public algm(LoginView paramLoginView) {}
+  public algm(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
-    LoginView.a(this.a, true);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368613).setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368613).setVisibility(0);
   }
 }
 

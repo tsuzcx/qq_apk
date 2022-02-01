@@ -1,22 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
 
 class axxq
-  implements DialogInterface.OnClickListener
 {
-  axxq(axxm paramaxxm, axzq paramaxzq, axxt paramaxxt) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!bgnt.g(this.jdField_a_of_type_Axxm.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(this.jdField_a_of_type_Axxm.jdField_a_of_type_AndroidContentContext, 1, anni.a(2131699834), 0).a();
-      return;
-    }
-    ((axyl)this.jdField_a_of_type_Axxm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Axzq.c, this.jdField_a_of_type_Axzq.a, this.jdField_a_of_type_Axzq.d, new axxr(this));
-  }
+  axxq(axxp paramaxxp) {}
 }
 
 

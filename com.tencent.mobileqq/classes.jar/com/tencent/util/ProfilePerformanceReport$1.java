@@ -1,7 +1,7 @@
 package com.tencent.util;
 
-import bctj;
-import bkfx;
+import bdmc;
+import blhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -9,11 +9,11 @@ import java.util.HashMap;
 public class ProfilePerformanceReport$1
   implements Runnable
 {
-  public ProfilePerformanceReport$1(bkfx parambkfx, String paramString, long paramLong, HashMap paramHashMap) {}
+  public ProfilePerformanceReport$1(blhb paramblhb, String paramString, long paramLong, HashMap paramHashMap) {}
   
   public void run()
   {
-    bctj.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, bkfx.a(this.this$0), true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+    bdmc.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, blhb.a(this.this$0), true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
     if (QLog.isDevelopLevel()) {
       QLog.i("ProfilePerformanceReport", 4, "end of report");
     }

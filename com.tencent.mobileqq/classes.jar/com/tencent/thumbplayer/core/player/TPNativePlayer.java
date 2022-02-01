@@ -252,6 +252,11 @@ public class TPNativePlayer
     return 0L;
   }
   
+  public int getNativePlayerId()
+  {
+    return this.m_playerID;
+  }
+  
   public int getPlayerID()
   {
     try
@@ -285,10 +290,10 @@ public class TPNativePlayer
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 188	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
+    //   1: invokespecial 189	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
     //   4: istore_2
     //   5: iload_2
-    //   6: anewarray 192	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
+    //   6: anewarray 193	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
     //   9: astore 4
     //   11: iconst_0
     //   12: istore_1
@@ -301,7 +306,7 @@ public class TPNativePlayer
     //   23: iload_1
     //   24: aload_0
     //   25: iload_1
-    //   26: invokespecial 194	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
+    //   26: invokespecial 195	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
     //   29: aastore
     //   30: iload_1
     //   31: iconst_1

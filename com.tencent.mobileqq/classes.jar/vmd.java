@@ -1,18 +1,14 @@
-import com.tencent.biz.qqcircle.fragments.message.item.QCircleMessageReplyItemView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
 
 public class vmd
-  implements vux
+  implements wey
 {
-  public vmd(QCircleMessageReplyItemView paramQCircleMessageReplyItemView, FeedCloudMeta.StReply paramStReply) {}
+  public vmd(QCircleContentImage paramQCircleContentImage) {}
   
-  public void a()
+  public void a(float paramFloat)
   {
-    vrc.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView).a, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView), 44, QCircleMessageReplyItemView.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView));
-    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView.a().clone().setElementIdStr("portrait"));
+    aaak.a().a(new QCircleContentImmersiveEvent(2));
   }
 }
 

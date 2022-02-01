@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ancd;
+import annx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloConfigUtils$1
@@ -10,9 +10,9 @@ public final class ApolloConfigUtils$1
   
   public void run()
   {
-    ancd localancd = (ancd)this.a.getManager(155);
-    if (localancd.a) {
-      localancd.a(false);
+    annx localannx = (annx)this.a.getManager(155);
+    if (localannx.a) {
+      localannx.a(false);
     }
   }
 }

@@ -1,35 +1,107 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class bfuj
 {
-  public static int A = -99;
-  public static int B = -98;
-  public static int C = -97;
-  public static int D = -36;
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 1;
-  public static int f = 2;
-  public static int g = 3;
-  public static int h = 4;
-  public static int i = 5;
-  public static int j = 6;
-  public static int k = 7;
-  public static int l = 8;
-  public static int m = 101;
-  public static int n = 102;
-  public static int o = 103;
-  public static int p = 104;
-  public static int q = 105;
-  public static int r = 106;
-  public static int s = 107;
-  public static int t = 108;
-  public static int u = 109;
-  public static int v = 111;
-  public static int w = 112;
-  public static int x = 113;
-  public static int y = 114;
-  public static int z = 100;
+  public int a;
+  public ArrayList<String> a;
+  public boolean a;
+  
+  public bfuj()
+  {
+    this.jdField_a_of_type_Int = 20;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static bfuj a(araj[] paramArrayOfaraj)
+  {
+    bfuj localbfuj = new bfuj();
+    int i = 0;
+    if (i < paramArrayOfaraj.length)
+    {
+      Object localObject = paramArrayOfaraj[i].a;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopEssenceMsgEntryConfig", 2, "jsonObj:" + ((JSONObject)localObject).toString());
+          }
+          localbfuj.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("limitMemberNum", 0);
+          if (((JSONObject)localObject).optInt("globalOpenWithNoCheckGrayUin", 0) > 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            localbfuj.jdField_a_of_type_Boolean = bool;
+            localObject = ((JSONObject)localObject).optJSONArray("grayQunUin");
+            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
+              break;
+            }
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              localbfuj.jdField_a_of_type_JavaUtilArrayList.add(String.valueOf(((JSONArray)localObject).get(j)));
+              j += 1;
+            }
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopEssenceMsgEntryConfig", 2, "config:" + localbfuj.toString());
+    }
+    return localbfuj;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = paramString.length();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    String str;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      str = (String)localIterator.next();
+    } while ((i < str.length()) || (!paramString.substring(i - str.length()).equals(str)));
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mLimitMemberNum:").append(this.jdField_a_of_type_Int).append("\r\n");
+    localStringBuilder.append("mGlobalOpenWithNoCheckGrayUin:").append(this.jdField_a_of_type_Boolean).append("\r\n");
+    localStringBuilder.append("mGrayTroopTailUins:").append(this.jdField_a_of_type_JavaUtilArrayList.toArray()).append("\r\n");
+    return localStringBuilder.toString();
+  }
 }
 
 

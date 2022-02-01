@@ -1,57 +1,31 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xjo
-  extends xil<ProfileFeedPlayInfo>
+  extends QQUIEventReceiver<xjn, xji>
 {
-  public xjo(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
+  public xjo(@NonNull xjn paramxjn)
   {
-    super(paramProfileFeedPlayInfo);
-    paramProfileFeedPlayInfo = (yij)wpm.a(11);
-    if (paramProfileFeedPlayInfo.b != null) {
-      this.a = paramProfileFeedPlayInfo.b;
-    }
+    super(paramxjn);
   }
   
-  public yib a(String paramString)
+  public void a(@NonNull xjn paramxjn, @NonNull xji paramxji)
   {
-    if (this.a == null) {
-      return null;
-    }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (TextUtils.equals("SendVideoToFriendHelper", paramxji.jdField_a_of_type_JavaLangString)) {}
+    switch (paramxji.jdField_a_of_type_Int)
     {
-      yib localyib = (yib)localIterator.next();
-      if (localyib.a.equals(paramString)) {
-        return localyib;
-      }
+    default: 
+      return;
     }
-    return null;
+    yuk.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramxji.b);
+    xjn.a(paramxjn, false);
+    paramxjn.a(paramxjn.jdField_a_of_type_AndroidOsBundle, paramxjn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxjn.jdField_a_of_type_JavaLangString, paramxji.b);
   }
   
-  public void a(boolean paramBoolean, int paramInt, xjd paramxjd)
+  public Class acceptEventClass()
   {
-    if (this.a == null)
-    {
-      paramxjd.a(new ErrorMessage(940001, "null point"), null, true);
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
-    {
-      List localList = b((List)localObject);
-      paramxjd.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      yqp.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
-      return;
-    }
-    localObject = new wzd();
-    ((wzd)localObject).a = this.a.a();
-    ((wzd)localObject).b = QQStoryContext.a().b();
-    yqp.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((wzd)localObject).a);
-    wlb.a().a((wlf)localObject, new xjp(this, paramxjd));
+    return xji.class;
   }
 }
 

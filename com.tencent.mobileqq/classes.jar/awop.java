@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 
-public final class awop
-  implements Parcelable.Creator<MsgBackupUserData>
+public class awop
 {
-  public MsgBackupUserData a(Parcel paramParcel)
-  {
-    return new MsgBackupUserData(paramParcel);
-  }
+  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  ISong jdField_a_of_type_ComTencentMobileqqListentogetherDataISong;
   
-  public MsgBackupUserData[] a(int paramInt)
+  public awop(QQMusicPlayService paramQQMusicPlayService, MediaPlayer paramMediaPlayer, ISong paramISong)
   {
-    return new MsgBackupUserData[paramInt];
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
   }
 }
 

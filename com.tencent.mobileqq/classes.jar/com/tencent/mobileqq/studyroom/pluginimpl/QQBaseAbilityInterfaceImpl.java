@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
-import aanz;
+import aasb;
 import android.content.Context;
 import android.os.Bundle;
-import avkt;
-import bdcv;
-import bdcw;
+import awde;
+import bdvq;
+import bdvr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
@@ -19,13 +19,13 @@ public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface, QQConfigAbilityInterface
 {
   private static final String TAG = "studyroom.QQBaseAbilityInterface";
-  private final avkt impl = avkt.a();
-  private final aanz mClient;
+  private final awde impl = awde.a();
+  private final aasb mClient;
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.mClient = aanz.a();
+    this.mClient = aasb.a();
     this.mClient.a();
   }
   
@@ -51,9 +51,9 @@ public class QQBaseAbilityInterfaceImpl
   
   public JSONObject getConfigFromQQ()
   {
-    bdcv localbdcv = bdcw.a();
-    if (localbdcv != null) {
-      return localbdcv.a;
+    bdvq localbdvq = bdvr.a();
+    if (localbdvq != null) {
+      return localbdvq.a;
     }
     return new JSONObject();
   }
@@ -102,7 +102,7 @@ public class QQBaseAbilityInterfaceImpl
     if (paramCallback != null) {
       paramCallback.onResult(getConfigFromQQ());
     }
-    bdcw.a();
+    bdvr.a();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}

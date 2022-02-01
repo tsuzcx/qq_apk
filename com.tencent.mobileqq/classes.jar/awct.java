@@ -1,8 +1,19 @@
-import android.net.Network;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface awct
+class awct
+  implements CustomizedLog
 {
-  public abstract void a(Network paramNetwork);
+  awct(awcc paramawcc) {}
+  
+  public void onFlushLogs() {}
+  
+  public void onLog(int paramInt, String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void onUploadLogs() {}
 }
 
 

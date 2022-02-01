@@ -1,50 +1,55 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.List;
 
 public class bmll
-  extends bmmk
+  implements bcil<bcfq, bcnz>
 {
-  public static bmll a;
-  
-  public bmll()
+  public void a(bcfq parambcfq, bcnz parambcnz)
   {
-    jdField_a_of_type_Bmll = this;
-  }
-  
-  public static void a(String paramString)
-  {
-    if ((jdField_a_of_type_Bmll != null) && (jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
+    bmlp localbmlp;
+    int i;
+    if (((parambcfq instanceof bmlp)) && ((parambcnz instanceof bcpp)))
     {
-      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onDeleteAudioVoice");
-      jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.onVoiceDelete('" + paramString + "')");
+      localbmlp = (bmlp)parambcfq;
+      parambcnz = (bcpp)parambcnz;
+      parambcfq = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", URLDrawable.URLDrawableOptions.obtain());
+      if ((parambcfq != null) && (parambcfq.getStatus() == 2)) {
+        parambcfq.restartDownload();
+      }
+      parambcnz.b().setImageDrawable(parambcfq);
+      parambcnz.a().setText(bmlp.b);
+      if (localbmlp.a() != null) {
+        break label204;
+      }
+      i = 0;
+      if (i > 10) {
+        break label218;
+      }
     }
-  }
-  
-  public static void b()
-  {
-    if ((jdField_a_of_type_Bmll != null) && (jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
+    label204:
+    label218:
+    for (parambcfq = String.valueOf(i);; parambcfq = "10+")
     {
-      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onNotifyH5CutCancel");
-      jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.cutCancel()");
+      ((TextView)parambcnz.a().findViewById(2131365407)).setText(String.format("%s条与\"", new Object[] { parambcfq }));
+      parambcfq = (TextView)parambcnz.a().findViewById(2131365401);
+      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+        parambcfq.setTextColor(Color.parseColor("#004080"));
+      }
+      parambcfq.setText(localbmlp.b());
+      ((TextView)parambcnz.a().findViewById(2131365408)).setText("\"相关收藏");
+      parambcnz.a().setVisibility(8);
+      parambcnz.a().setOnClickListener(new bmlm(this, localbmlp));
+      return;
+      i = localbmlp.a().size();
+      break;
     }
-  }
-  
-  public static void c()
-  {
-    if ((jdField_a_of_type_Bmll != null) && (jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)) {
-      jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.notifyGetVoiceRecordTime()");
-    }
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Bmll = null;
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    return false;
   }
 }
 

@@ -1,109 +1,38 @@
-import java.util.ArrayList;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgas
-  extends DefaultHandler
+  extends BroadcastReceiver
 {
-  protected bgao a;
-  protected String a;
-  protected ArrayList<bgao> a;
-  protected boolean a;
-  protected bgao b;
+  public bgas(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public bgas(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public bgao a()
-  {
-    return this.jdField_a_of_type_Bgao;
-  }
-  
-  public ArrayList<bgao> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void endDocument() {}
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.b != null) {
-      this.b = this.b.jdField_a_of_type_Bgao;
-    }
-  }
-  
-  public void startDocument() {}
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    paramString3 = null;
-    int j = paramAttributes.getLength();
-    int i = 0;
-    paramString1 = null;
-    String str2;
-    String str1;
-    if (i < j)
+    if (this.a.a != null)
     {
-      str2 = paramAttributes.getLocalName(i);
-      str1 = paramAttributes.getValue(str2);
-      if ("id".equals(str2)) {
-        paramString1 = str1;
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      if ("value".equals(str2))
-      {
-        paramString3 = str1;
-        continue;
-        if (("0".equals(paramString1)) || (paramString1 == null)) {}
-        for (;;)
-        {
-          return;
-          paramAttributes = this.b;
-          if (paramString2.startsWith("L"))
-          {
-            paramString2 = paramString2.substring(1);
-            try
-            {
-              i = Integer.parseInt(paramString2);
-              if (i != 0)
-              {
-                paramString2 = new bgao(i, paramString1, paramString3);
-                this.b = paramString2;
-                if (paramString2.a(paramAttributes))
-                {
-                  paramAttributes.a(this.b);
-                  if ((this.jdField_a_of_type_Boolean) || (!String.valueOf(this.jdField_a_of_type_JavaLangString).equals(paramString1))) {
-                    continue;
-                  }
-                  this.jdField_a_of_type_Boolean = true;
-                  this.jdField_a_of_type_Bgao = paramString2;
-                }
-              }
-            }
-            catch (NumberFormatException paramString2)
-            {
-              for (;;)
-              {
-                paramString2.printStackTrace();
-                i = 0;
-                continue;
-                this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
-              }
-            }
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubmitHomeWorkFragment", 2, "receive action_recv_video_request");
       }
+      this.a.a.b(102);
     }
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
+    }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("SubmitHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    this.a.a.b(102);
   }
 }
 

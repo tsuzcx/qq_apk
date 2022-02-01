@@ -1,77 +1,16 @@
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
 
-public class niw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class niw
+  extends niy
 {
-  private final int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private nix jdField_a_of_type_Nix;
-  private boolean jdField_a_of_type_Boolean;
+  niw(niv paramniv) {}
   
-  public niw(View paramView, nix paramnix)
+  public boolean a(int paramInt, String paramString, mze parammze)
   {
-    this(paramView, paramnix, zlx.a(paramView.getContext(), 160.0F));
-  }
-  
-  public niw(View paramView, nix paramnix, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Nix = paramnix;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Nix = null;
-    try
-    {
-      if (Build.VERSION.SDK_INT >= 16) {
-        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      return;
-    }
-    catch (Throwable localThrowable) {}
-  }
-  
-  public void onGlobalLayout()
-  {
-    boolean bool = true;
-    Rect localRect = new Rect();
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-        int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-        int j = localRect.bottom;
-        int k = localRect.top;
-        if (this.jdField_a_of_type_Nix != null)
-        {
-          if (i - (j - k) < this.jdField_a_of_type_Int) {
-            break label113;
-          }
-          if (bool != this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Boolean = bool;
-            this.jdField_a_of_type_Nix.a(bool, localRect.right, localRect.bottom);
-          }
-        }
-        return;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        QLog.e("SoftKeyboardObserver", 1, "getWindowVisibleDisplayFrame error", localNullPointerException);
-        return;
-      }
-      label113:
-      bool = false;
-    }
+    bkdp.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    niv.a(this.a).removeCallbacksAndMessages(null);
+    niv.a(this.a).sendEmptyMessage(2);
+    return true;
   }
 }
 

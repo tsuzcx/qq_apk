@@ -1,21 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aejc
-  implements View.OnClickListener
+  extends azie
 {
-  public aejc(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aejc(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    Intent localIntent = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(localIntent);
-    bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
+      }
+      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
+    }
   }
 }
 

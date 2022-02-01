@@ -1,56 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class sfd
+class sfd
+  implements PopupWindow.OnDismissListener
 {
-  private static boolean b;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new sfe(this));
-  private sff jdField_a_of_type_Sff;
-  private siw jdField_a_of_type_Siw = siy.a.a();
-  private boolean jdField_a_of_type_Boolean;
+  sfd(sel paramsel) {}
   
-  public sfd()
+  public void onDismiss()
   {
-    ThreadManager.executeOnSubThread(new VideoPluginInstall.1(this));
-  }
-  
-  private void c()
-  {
-    try
+    sel.a(this.a).a(1.0F);
+    if (this.a.b)
     {
-      if (!b)
-      {
-        this.jdField_a_of_type_Siw.a();
-        b = true;
-      }
-      return;
+      this.a.a.c();
+      this.a.b = false;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
-      ThreadManager.post(new VideoPluginInstall.2(this), 8, null, true);
-    }
-  }
-  
-  public void a(sff paramsff)
-  {
-    this.jdField_a_of_type_Sff = paramsff;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Siw.a();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Sff = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 

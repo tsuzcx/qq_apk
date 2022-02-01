@@ -1,41 +1,29 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-final class tzv
-  extends aoqo
+public class tzv
+  implements bgpp
 {
-  tzv(anry paramanry, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  public tzv(PublicAccountUtil.19 param19) {}
   
-  public int a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return 4;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Anry != null) {
-      this.jdField_a_of_type_Anry.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    if (paramJSONObject != null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
+      }
     }
-    tzo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Anry != null) {
-      this.jdField_a_of_type_Anry.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-    }
+    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzv
  * JD-Core Version:    0.7.0.1
  */

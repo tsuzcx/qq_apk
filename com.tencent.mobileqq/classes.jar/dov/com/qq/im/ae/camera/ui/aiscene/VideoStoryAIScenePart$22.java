@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import bnjl;
+import bokv;
 
 public class VideoStoryAIScenePart$22
   implements Runnable
 {
-  public VideoStoryAIScenePart$22(bnjl parambnjl) {}
+  public VideoStoryAIScenePart$22(bokv parambokv) {}
   
   public void run()
   {
-    bnjl.b(this.this$0);
+    bokv.b(this.this$0);
   }
 }
 

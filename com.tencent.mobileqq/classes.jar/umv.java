@@ -1,49 +1,18 @@
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-public class umv
+public final class umv
+  implements Parcelable.Creator<WSRedDotPushMsg>
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
-  
-  public umv(WSPublicAccReport paramWSPublicAccReport) {}
-  
-  public int a()
+  public WSRedDotPushMsg a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Boolean = false;
-    return this.b;
+    return new WSRedDotPushMsg(paramParcel);
   }
   
-  public long a()
+  public WSRedDotPushMsg[] a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    return System.currentTimeMillis() - WSPublicAccReport.access$000(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSPublicAccReport);
-  }
-  
-  public void a(String paramString)
-  {
-    int i = 1;
-    this.jdField_a_of_type_Int = 1;
-    if (new WSVideoPreDownloadManager(BaseApplicationImpl.sApplication).a(paramString)) {}
-    for (;;)
-    {
-      this.b = i;
-      return;
-      i = 0;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    return this.jdField_a_of_type_Int;
+    return new WSRedDotPushMsg[paramInt];
   }
 }
 

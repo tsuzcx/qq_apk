@@ -1,34 +1,43 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
+import java.util.concurrent.Executor;
 
 public class atsq
-  implements aucg
+  extends attg
 {
-  public atsq(SimpleFileViewer.3 param3, QQAppInterface paramQQAppInterface) {}
+  public long a;
+  private Bundle a;
+  public String a;
+  private long b;
+  public String b;
   
-  public void a(int paramInt)
+  public atsq(atsi paramatsi, MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      bdho.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new atsr(this));
-      return;
-    }
-    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
+    super(paramatsi);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    paramatsi = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramatsi);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
   }
   
-  public void a(ImageView paramImageView)
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, atte paramatte)
   {
-    SimpleFileViewer.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, paramImageView);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    aunu.a().execute(new QFileMsgForwardManager.BuddyUploadTaskExcuter.1(this, paramString, paramatte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsq
  * JD-Core Version:    0.7.0.1
  */

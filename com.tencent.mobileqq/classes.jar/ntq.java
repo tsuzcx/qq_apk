@@ -1,23 +1,17 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ntq
-  implements aehu
+class ntq
+  implements View.OnClickListener
 {
-  WeakReference<AccountDetailActivity> a;
+  ntq(ntc paramntc, String paramString, oag paramoag) {}
   
-  public ntq(AccountDetailActivity paramAccountDetailActivity)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramAccountDetailActivity);
-  }
-  
-  public void a(aehv paramaehv)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
-    }
-    ((AccountDetailActivity)this.a.get()).a(paramaehv);
-    ((AccountDetailActivity)this.a.get()).R();
+    ntc.b(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_JavaLangString);
+    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

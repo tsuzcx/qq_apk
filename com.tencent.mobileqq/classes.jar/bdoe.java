@@ -1,15 +1,20 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-final class bdoe
-  extends Editable.Factory
+public class bdoe
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  private static HashMap<String, bdod> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public static HashMap<String, bdod> a()
   {
-    if ((paramCharSequence instanceof bdod)) {
-      return (Editable)paramCharSequence;
-    }
-    return new bdod(paramCharSequence, 3);
+    return jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public static List<String> a()
+  {
+    return jdField_a_of_type_JavaUtilList;
   }
 }
 

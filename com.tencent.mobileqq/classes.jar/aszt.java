@@ -1,23 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-class aszt
-  implements auas
+public class aszt
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aszt(aszs paramaszs, aszu paramaszu) {}
+  public aszt(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile success");
-    this.jdField_a_of_type_Aszs.a = true;
-    this.jdField_a_of_type_Aszu.a(true);
-  }
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
-    this.jdField_a_of_type_Aszu.a(false);
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.e = arrayOfInt[1];
   }
 }
 

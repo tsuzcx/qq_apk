@@ -1,15 +1,9 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class ahky
-  extends afuv
+abstract interface ahky
 {
-  public ViewGroup a;
-  public AnyScaleTypeImageView a;
-  public TextView b;
-  
-  ahky(ahku paramahku) {}
+  public abstract int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage);
 }
 
 

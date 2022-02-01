@@ -1,60 +1,76 @@
-import android.support.annotation.NonNull;
-import android.util.Log;
-import com.tencent.feedback.eup.CrashReport;
-import com.tencent.mobileqq.statistics.CaughtException;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport.1;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-
-public final class bcrp
+public class bcrp
 {
-  private static final Set<String> a = new CaughtExceptionReport.1(20);
-  private static final Set<Class> b = new CaughtExceptionReport.2(5);
+  public byte a;
+  public long a;
+  public String a;
+  public short a;
+  public byte[] a;
+  public byte b;
+  public long b;
+  public String b;
+  public short b;
+  public byte[] b;
+  public byte c;
+  public long c;
+  public String c;
+  public byte[] c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
   
-  public static void a(@NonNull Throwable paramThrowable)
+  public bcrp(bcro parambcro, long paramLong, String paramString, byte paramByte1, byte paramByte2)
   {
-    a(paramThrowable, "This is CaughtException");
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
   }
   
-  public static void a(@NonNull Throwable paramThrowable, @NonNull String paramString)
+  public bcrp(bcro parambcro, long paramLong1, String paramString, byte paramByte1, byte paramByte2, long paramLong2, long paramLong3, long paramLong4, long paramLong5, short paramShort, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte3, long paramLong6)
   {
-    if ((paramThrowable == null) || (paramString == null)) {
-      return;
-    }
-    if (!a(paramThrowable))
-    {
-      Log.e("CaughtExceptionReport", "this report is not permitted. ", paramThrowable);
-      return;
-    }
-    Object localObject = paramThrowable;
-    if (!(paramThrowable instanceof CaughtException)) {
-      localObject = new CaughtException("Caught: " + paramThrowable.getMessage(), paramThrowable);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("CaughtExceptionReport-eup", 2, "rqd将上报信息到rdm网站，上报不会导致客户端闪退，仅用作数据统计");
-    }
-    CrashReport.handleCatchException(Thread.currentThread(), (Throwable)localObject, "ExtraMessage: " + paramString, null);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
+    this.g = paramLong2;
+    this.h = paramLong3;
+    this.i = paramLong4;
+    this.j = paramLong5;
+    this.jdField_b_of_type_Short = paramShort;
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.jdField_c_of_type_Byte = paramByte3;
+    this.k = paramLong6;
   }
   
-  private static boolean a(Throwable paramThrowable)
+  public bcrp(bcro parambcro, long paramLong1, String paramString1, byte paramByte1, byte paramByte2, long paramLong2, String paramString2, long paramLong3, long paramLong4, short paramShort, long paramLong5, String paramString3, long paramLong6)
   {
-    if (b.contains(paramThrowable.getClass())) {
-      return true;
-    }
-    paramThrowable = paramThrowable.getStackTrace();
-    if ((paramThrowable == null) || (paramThrowable.length < 1)) {
-      return false;
-    }
-    paramThrowable = paramThrowable[0].getClassName();
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext()) {
-      if (paramThrowable.startsWith((String)localIterator.next())) {
-        return true;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.d = paramLong4;
+    this.jdField_a_of_type_Short = paramShort;
+    this.e = paramLong5;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.f = paramLong6;
+  }
+  
+  public bcrp(bcro parambcro, long paramLong, String paramString, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 

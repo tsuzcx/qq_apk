@@ -1,50 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Path.FillType;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bhio
-  implements DownloadParams.DecodeHandler
+final class bhio
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
+  bhio(AtomicBoolean paramAtomicBoolean, azbu paramazbu) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Bitmap localBitmap;
-    Path localPath;
-    Canvas localCanvas;
-    do
-    {
-      return paramDownloadParams;
-      paramBitmap.setDensity((int)bgtn.c());
-      localBitmap = bgjf.a(paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, Bitmap.Config.ARGB_8888);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int * 2);
-      localPath = new Path();
-      localCanvas = new Canvas(localBitmap);
-      localCanvas.save();
-      localPath.moveTo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
-      localPath.lineTo(this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
-      localPath.close();
-      localPath.setFillType(Path.FillType.EVEN_ODD);
-      localCanvas.clipPath(localPath);
-      localCanvas.drawBitmap(paramBitmap, new Rect(0, (paramBitmap.getHeight() - paramBitmap.getWidth()) / 2, paramBitmap.getWidth(), (paramBitmap.getWidth() + paramBitmap.getHeight()) / 2), new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
-      localCanvas.restore();
-      paramDownloadParams = localBitmap;
-    } while (this.jdField_a_of_type_Boolean);
-    localCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    return localBitmap;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.jdField_a_of_type_Azbu.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

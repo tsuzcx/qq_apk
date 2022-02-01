@@ -1,8 +1,12 @@
-public abstract interface ajhz
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
+
+public class ajhz
+  extends amof
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
-  
-  public abstract void ao_();
+  public TextView a;
+  public PublicRecommendAccountInfo a;
+  public TextView b;
 }
 
 

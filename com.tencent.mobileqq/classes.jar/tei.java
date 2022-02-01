@@ -1,46 +1,42 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.core.ViolaInstance;
 
 public class tei
-  implements ComplementFileStringLoader
+  implements tiy
 {
-  private Context jdField_a_of_type_AndroidContentContext;
   private String jdField_a_of_type_JavaLangString;
-  private tep jdField_a_of_type_Tep;
+  private boolean jdField_a_of_type_Boolean;
   
-  public tei(Context paramContext, String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Tep = new tep(paramContext, paramString);
-  }
+  public tei(BridgeModule paramBridgeModule) {}
   
-  public String loadFileAsString(String paramString)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
-    try
+    ViolaFragment localViolaFragment;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
     {
-      InputStream localInputStream = this.jdField_a_of_type_Tep.a(paramString);
-      Object localObject = localInputStream;
-      if (localInputStream == null) {
-        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
+      if (!paramBoolean) {
+        break label85;
       }
-      localObject = tez.a((InputStream)localObject);
-      return localObject;
+      this.jdField_a_of_type_JavaLangString = localViolaFragment.getStatusBarColor();
+      this.jdField_a_of_type_Boolean = localViolaFragment.getStatusBarFontColorWhite().booleanValue();
+      localViolaFragment.setStatusBarColor("#FF000000");
+      localViolaFragment.initStatusBarColor("#FF000000");
+      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(true), true);
     }
-    catch (IOException localIOException)
+    label85:
+    do
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-    }
-    return null;
+      return;
+      localViolaFragment.setStatusBarColor(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.initStatusBarColor(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
+    } while ((!localViolaFragment.isSuspension()) || (localViolaFragment.getCommonSuspensionGestureLayout() == null));
+    localViolaFragment.getCommonSuspensionGestureLayout().g();
   }
 }
 

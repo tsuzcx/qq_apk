@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo;
 
-import amje;
-import amul;
+import amuy;
+import angf;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class ChatPieApolloViewController$6
   implements Runnable
 {
-  public ChatPieApolloViewController$6(amje paramamje, BaseChatPie paramBaseChatPie, amul paramamul) {}
+  public ChatPieApolloViewController$6(amuy paramamuy, BaseChatPie paramBaseChatPie, angf paramangf) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_Amul != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_Angf != null))
     {
-      this.jdField_a_of_type_Amul.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-      this.jdField_a_of_type_Amul.a();
+      this.jdField_a_of_type_Angf.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
+      this.jdField_a_of_type_Angf.a();
     }
   }
 }

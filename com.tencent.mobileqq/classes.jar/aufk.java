@@ -1,40 +1,44 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-public class aufk
+class aufk
+  extends atrl
 {
-  private static final String a = anhk.aZ + File.separator + "qflutter";
-  private static final String b = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "qflutter-so" + File.separator;
+  aufk(aufj paramaufj, atvm paramatvm) {}
   
-  public static void a()
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
   {
-    if (atwl.a(a))
+    QLog.i("VideoForDisc<QFile>", 2, "[" + this.jdField_a_of_type_Aufj.a.nSessionId + "],[getOnlinePlay Url]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
+    if (paramLong1 == -100001L) {}
+    while ((paramString3 == null) || (paramString3.length() == 0))
     {
-      int i = bgmg.a(a, b, false, true, true);
-      if (i == 0)
+      paramLong2 = 9360L;
+      if (paramLong1 == 0L) {
+        paramLong2 = 9048L;
+      }
+      this.jdField_a_of_type_Atvm.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131690818));
+      return;
+      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
       {
-        QLog.d("QFlutter.launcher", 4, String.format("checkDebugInstall copy result: %s", new Object[] { Integer.valueOf(i) }));
-        File[] arrayOfFile = new File(b).listFiles();
-        int j = arrayOfFile.length;
-        i = 0;
-        while (i < j)
-        {
-          File localFile = arrayOfFile[i];
-          QLog.d("QFlutter.launcher", 4, String.format("path: %s, time: %s, size: %s byte", new Object[] { localFile.getAbsolutePath(), Long.valueOf(localFile.lastModified()), Long.valueOf(localFile.length()) }));
-          i += 1;
-        }
-        aufo.a().a(true, b, true, true);
+        this.jdField_a_of_type_Aufj.a(true);
+        this.jdField_a_of_type_Atvm.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131692505));
+        return;
+      }
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Aufj.a(false);
+        this.jdField_a_of_type_Atvm.a((int)0L, BaseApplication.getContext().getResources().getString(2131690818));
         return;
       }
     }
-    aufo.a().a(false, b, true, true);
-  }
-  
-  public static boolean a()
-  {
-    return false;
+    paramString1 = "http://" + paramString3 + ":" + String.valueOf(paramInt1) + "/ftn_handler/" + paramString4;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoForDisc<QFile>", 1, paramString1);
+    }
+    this.jdField_a_of_type_Atvm.a(paramString1, paramString5);
   }
 }
 

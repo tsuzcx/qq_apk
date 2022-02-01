@@ -1,74 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aucy
+final class aucy
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  aucv jdField_a_of_type_Aucv;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  final String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  final long jdField_b_of_type_Long;
-  Object jdField_b_of_type_JavaLangObject = new Object();
-  long jdField_c_of_type_Long;
-  Object jdField_c_of_type_JavaLangObject = new Object();
-  long d;
+  aucy(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  aucy(aucw paramaucw, long paramLong1, String paramString, long paramLong2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_c_of_type_Long = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  long a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      long l = this.jdField_c_of_type_Long;
-      return l;
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
     }
-  }
-  
-  void a(int paramInt)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      QLog.i(aucw.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-  }
-  
-  void a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_c_of_type_Long = paramLong;
-      return;
-    }
-  }
-  
-  long b()
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      long l = this.d;
-      return l;
-    }
-  }
-  
-  void b(long paramLong)
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      this.d = paramLong;
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

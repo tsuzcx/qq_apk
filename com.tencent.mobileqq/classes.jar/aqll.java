@@ -1,19 +1,29 @@
-final class aqll
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.View;
+
+class aqll
+  extends AnimatorListenerAdapter
 {
-  public final int a;
-  public final long a;
-  public final Object a;
+  aqll(aqli paramaqli, ObjectAnimator paramObjectAnimator) {}
   
-  aqll(long paramLong, int paramInt, Object paramObject)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Aqli.c != null) {
+      this.jdField_a_of_type_Aqli.c.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqll
  * JD-Core Version:    0.7.0.1
  */

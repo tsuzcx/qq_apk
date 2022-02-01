@@ -1,31 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
 class begl
-  implements QQPermissionCallback
+  extends bego
 {
-  begl(begk parambegk) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  begl(String paramString)
   {
-    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    super(4, paramString);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  float a(@NonNull Paint paramPaint)
   {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
-    if (this.a.a.q != null)
-    {
-      paramArrayOfString.putExtra("from", "publish");
-      paramArrayOfString.putExtra("bid", this.a.a.q);
-      paramArrayOfString.putExtra("fromflag", this.a.a.b);
-      bfqu.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
-    }
-    aevv.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
+    return 0.0F;
   }
 }
 

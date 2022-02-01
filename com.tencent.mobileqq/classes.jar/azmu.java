@@ -1,22 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.openapi.OpenApiManager;
 
 public class azmu
-  implements View.OnClickListener
+  implements agif
 {
-  public azmu(AbsProfileHeaderView paramAbsProfileHeaderView, View paramView) {}
+  public azmu(OpenApiManager paramOpenApiManager) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, bete parambete, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.onFileTransStatusChanged(parambete, paramInt1, paramInt2);
   }
 }
 

@@ -1,27 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton.6.1;
+import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
 
 public class tav
-  implements pwx
+  implements ApngDrawable.OnPlayRepeatListener
 {
-  public tav(FastWebArticleInfo.2 param2) {}
+  public tav(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
+  public void onPlayRepeat(int paramInt)
   {
-    if ((paramBoolean1) && (paramFastWebArticleInfo != null))
-    {
-      this.a.this$0.jdField_b_of_type_Long = paramFastWebArticleInfo.jdField_b_of_type_Long;
-      if (paramFastWebArticleInfo.a > this.a.this$0.a) {
-        this.a.this$0.a = paramFastWebArticleInfo.a;
-      }
-      this.a.this$0.jdField_b_of_type_Boolean = false;
-      QLog.d("Q.readinjoy.fast_web", 2, "update fastweb info, rowkey : " + paramFastWebArticleInfo.j + ",  commentCnt : " + paramFastWebArticleInfo.jdField_b_of_type_Long + ", readCnt :" + paramFastWebArticleInfo.a);
-    }
-    ThreadManager.getUIHandler().post(new FastWebArticleInfo.2.1.1(this));
+    this.a.post(new ColorBandVideoEntranceButton.6.1(this));
   }
 }
 

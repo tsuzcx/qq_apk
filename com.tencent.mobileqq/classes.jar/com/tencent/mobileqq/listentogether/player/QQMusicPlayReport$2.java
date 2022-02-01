@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether.player;
 
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public final class QQMusicPlayReport$2
     HashMap localHashMap = new HashMap();
     localHashMap.put("qqmusicplay_report_key_seek_delay", String.valueOf(this.a));
     localHashMap.put("qqmusicplay_report_key_net_type", String.valueOf(this.b));
-    bctj.a(BaseApplication.getContext()).a("", "qqmusicplay_report_tag_seek_delay", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "qqmusicplay_report_tag_seek_delay", true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel()) {}
   }
 }

@@ -1,61 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenFullToast;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 
 public class aquw
-  extends aqkz<aquz>
+  implements aixi
 {
-  public static aquz a()
-  {
-    return (aquz)aqlk.a().a(497);
-  }
+  public aquw(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  @NonNull
-  public aquz a(int paramInt)
-  {
-    return new aquz();
-  }
+  public void a() {}
   
-  @Nullable
-  public aquz a(aqlg[] paramArrayOfaqlg)
+  public void a(int paramInt)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aquz.a(paramArrayOfaqlg);
+    if ((ColorNoteSmallScreenService.a(this.a) != null) && (ColorNoteSmallScreenService.a(this.a).a()))
+    {
+      ColorNoteSmallScreenService.a(this.a).a();
+      ColorNoteSmallScreenService.a(this.a).b();
     }
-    return null;
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.onClick(this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast);
   }
   
-  public void a(aquz paramaquz) {}
-  
-  public Class<aquz> clazz()
+  public void b()
   {
-    return aquz.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 497;
+    ColorNoteSmallScreenService.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquw
  * JD-Core Version:    0.7.0.1
  */

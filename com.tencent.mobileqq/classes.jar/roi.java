@@ -1,38 +1,14 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-final class roi
-  extends niv
+public abstract interface roi
 {
-  roi(roj paramroj, int paramInt) {}
+  public abstract void a(long paramLong);
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Roj != null)
-    {
-      this.jdField_a_of_type_Roj.a(paramInt, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback =" + this.jdField_a_of_type_Roj);
-      }
-    }
-    for (;;)
-    {
-      pmk.a().e(this.jdField_a_of_type_Int);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback is null.");
-      }
-    }
-  }
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Roj != null) {
-      this.jdField_a_of_type_Roj.a(paramInt, paramString);
-    }
-    QLog.e("RIJUGC.PublishVideoHelper", 1, "moveVideo: columnId = " + this.jdField_a_of_type_Int + "errorCode = " + paramInt + ",errorMsg =" + paramString);
-    return true;
-  }
+  public abstract void a(rot paramrot);
+  
+  public abstract void d();
 }
 
 

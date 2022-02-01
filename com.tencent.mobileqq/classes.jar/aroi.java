@@ -1,65 +1,64 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aroi
-  extends arnz
+class aroi
+  implements DialogInterface.OnClickListener
 {
-  public aroi(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.early.precover", paramQQAppInterface);
-  }
+  aroi(arof paramarof, Context paramContext, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 10045;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PrecoverData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPrecover";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    super.a(paramXmlData);
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
-      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      str = this.jdField_a_of_type_Arof.h.a(this.jdField_a_of_type_JavaLangString);
+      bhzu.a((Context)localObject, str);
+      paramDialogInterface.dismiss();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label136;
+      }
+      paramDialogInterface = "0X800AE6A";
+      label50:
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!this.b) {
+        break label142;
+      }
+      str = "size";
+      label66:
+      arof.a(paramDialogInterface, (String)localObject, str);
+      localObject = bmzn.a();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label148;
+      }
+      paramDialogInterface = "2";
+      label88:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label154;
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public boolean i()
-  {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
-  }
-  
-  public boolean j()
-  {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
+    label136:
+    label142:
+    label148:
+    label154:
+    for (String str = "2";; str = "1")
+    {
+      ((bmzn)localObject).a("Open", "4", "platform898", paramDialogInterface, str, 102, 1, System.currentTimeMillis());
+      return;
+      str = this.jdField_a_of_type_Arof.i.a(this.jdField_a_of_type_JavaLangString);
+      break;
+      paramDialogInterface = "0X800AE64";
+      break label50;
+      str = "full";
+      break label66;
+      paramDialogInterface = "3";
+      break label88;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aroi
  * JD-Core Version:    0.7.0.1
  */

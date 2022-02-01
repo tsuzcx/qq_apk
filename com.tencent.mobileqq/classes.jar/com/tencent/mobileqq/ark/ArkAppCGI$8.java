@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ark;
 
-import apni;
-import apnu;
-import bdvs;
-import bdvu;
+import aqay;
+import aqbk;
+import beum;
+import beuo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
-import nmd;
+import nny;
 
 public class ArkAppCGI$8
   implements Runnable
 {
-  public ArkAppCGI$8(apni paramapni, QQAppInterface paramQQAppInterface, apnu paramapnu, bdvs parambdvs) {}
+  public ArkAppCGI$8(aqay paramaqay, QQAppInterface paramQQAppInterface, aqbk paramaqbk, beum parambeum) {}
   
   public void run()
   {
-    if ((apni.a(this.this$0) == null) || (!nmd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
+    if ((aqay.a(this.this$0) == null) || (!nny.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
     {
       ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, network not available");
-      apni.a(this.this$0, this.jdField_a_of_type_Apnu, false, null);
+      aqay.a(this.this$0, this.jdField_a_of_type_Aqbk, false, null);
       return;
     }
-    apni.a(this.this$0).a(this.jdField_a_of_type_Bdvs);
+    aqay.a(this.this$0).a(this.jdField_a_of_type_Beum);
   }
 }
 

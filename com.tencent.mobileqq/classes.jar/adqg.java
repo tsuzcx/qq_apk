@@ -1,55 +1,70 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
+import android.text.TextUtils;
+import com.tencent.mobileqq.abtest.ABTestController;
+import com.tencent.mobileqq.abtest.ABTestController.EvtType;
+import com.tencent.mtt.abtestsdk.ABTestApi;
+import com.tencent.mtt.abtestsdk.entity.RomaExpEntity;
 
 public class adqg
-  implements View.OnClickListener
 {
-  public adqg(BaseChatPie paramBaseChatPie) {}
+  private volatile RomaExpEntity jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
   
-  public void onClick(View paramView)
+  public adqg(String paramString1, String paramString2, String paramString3)
   {
-    switch (paramView.getId())
-    {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.b = paramString3;
+    this.d = ABTestController.a().a(paramString1, paramString2, paramString3);
+    ABTestApi.getAllExperiments(new adqh(this, System.currentTimeMillis(), paramString1), 3000);
+  }
+  
+  public String a()
+  {
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) {}
+    for (String str1 = this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId();; str1 = "") {
+      return String.format("layerName:%s, entityGrayId:%s, contrastGrayId:%s, experimentGrayId:%s \nisContrast:%s, isExperiment:%s", new Object[] { str2, str1, this.c, this.b, Boolean.valueOf(c()), Boolean.valueOf(b()) });
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373747);
-      if ((localObject instanceof bfmg))
-      {
-        localObject = (bfmg)localObject;
-        if ((localObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.aio.BaseChatPie", 2, "TextItemBuilder onClickListener: isReplyMsg = true, mSourceMsgSeq = " + ((bfmg)localObject).a);
-          }
-          BaseChatPie localBaseChatPie = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a();
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && ((localBaseChatPie instanceof ahzy)))
-          {
-            ((ahzy)localBaseChatPie).a(22, ((bfmg)localObject).d, ((bfmg)localObject).c, null);
-          }
-          else if (localBaseChatPie.j())
-          {
-            QQMessageFacade.Message localMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-            localBaseChatPie.a(22, ((bfmg)localObject).a, (int)(localMessage.shmsgseq - ((bfmg)localObject).a), null);
-            MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
-          }
-        }
-      }
+  }
+  
+  public void a(ABTestController.EvtType paramEvtType, String paramString)
+  {
+    if (a()) {
+      ABTestController.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId(), paramEvtType, paramString);
     }
+  }
+  
+  public void a(String paramString)
+  {
+    if (a())
+    {
+      ABTestApi.reportExpExpose(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity);
+      a(ABTestController.EvtType.EXPOSE, paramString);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId()));
+  }
+  
+  public boolean b()
+  {
+    if (a()) {
+      return this.b.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId());
+    }
+    return false;
+  }
+  
+  public boolean c()
+  {
+    if (a()) {
+      return this.c.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId());
+    }
+    return false;
   }
 }
 

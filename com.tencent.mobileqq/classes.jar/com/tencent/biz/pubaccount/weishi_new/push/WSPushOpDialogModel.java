@@ -7,12 +7,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import uls;
+import umq;
 
 public class WSPushOpDialogModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushOpDialogModel> CREATOR = new uls();
+  public static final Parcelable.Creator<WSPushOpDialogModel> CREATOR = new umq();
   public stPopWindowsConfig mStPopWindowsConfig;
   
   public WSPushOpDialogModel() {}

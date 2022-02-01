@@ -1,27 +1,47 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class ybu
-  extends ParallelJobSegment<String, Integer>
+public class ybu
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xai>
 {
-  public ybu(ybm paramybm)
+  public ybu(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this(paramybm, "RequestViewCountSegment");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public ybu(ybm paramybm, String paramString)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xai paramxai)
   {
-    super(paramString);
+    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramxai.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramxai.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      paramxai = paramxai.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramxai.hasNext())
+      {
+        ydb localydb = (ydb)paramxai.next();
+        if (paramQQStoryShareGroupProfileActivity.c.equals(localydb.a))
+        {
+          paramQQStoryShareGroupProfileActivity.b = localydb.b;
+          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
+            break label111;
+          }
+        }
+      }
+    }
+    label111:
+    for (boolean bool = true;; bool = false)
+    {
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
+      return;
+    }
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public Class acceptEventClass()
   {
-    wyv localwyv = new wyv();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localwyv.a = localArrayList;
-    wlb.a().a(localwyv, new ybv(this, paramJobContext, paramString));
+    return xai.class;
   }
 }
 

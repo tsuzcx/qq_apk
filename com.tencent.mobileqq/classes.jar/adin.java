@@ -1,32 +1,42 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adin
-  implements aobv
+  implements adbw
 {
-  public adin(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public int a()
   {
-    String str2;
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramBitmap = this.a.app.a(paramBitmap);
-      String str1 = (String)AccountManageActivity.a(this.a).getTag();
-      str2 = (String)AccountManageActivity.b(this.a).getTag();
-      if (!paramString.equals(str1)) {
-        break label78;
-      }
-      AccountManageActivity.a(this.a).setImageBitmap(paramBitmap);
+    return 7400;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(144);
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.a().o(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    label78:
-    while (!paramString.equals(str2)) {
-      return;
-    }
-    AccountManageActivity.b(this.a).setImageBitmap(paramBitmap);
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3014;
   }
 }
 

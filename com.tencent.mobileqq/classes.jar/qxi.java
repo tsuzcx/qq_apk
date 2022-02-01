@@ -1,22 +1,11 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import tencent.im.oidb.articlesummary.articlesummary.PGCFeedsInfo;
 
-public class qxi
-  extends ClickableSpan
+public final class qxi
+  implements pno<articlesummary.PGCFeedsInfo, qyg>
 {
-  public qxi(ComponentHeaderPublish paramComponentHeaderPublish) {}
-  
-  public void onClick(View paramView)
+  public qyg a(articlesummary.PGCFeedsInfo paramPGCFeedsInfo)
   {
-    pha.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(afur.a(2, 14, this.a.getResources()));
+    return qyg.a(paramPGCFeedsInfo);
   }
 }
 

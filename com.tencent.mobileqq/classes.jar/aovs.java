@@ -1,26 +1,36 @@
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import com.tencent.qphone.base.util.QLog;
+
 public class aovs
+  extends Resources
 {
-  public int a = 3;
-  public int b = 3;
-  public int c = 1000;
-  public int d = 1;
-  public int e = 1;
+  private aovw a;
   
-  public String toString()
+  public aovs(aovw paramaovw)
   {
-    StringBuilder localStringBuilder = new StringBuilder("ArDownloadDPC{");
-    localStringBuilder.append("networkControl=").append(this.a);
-    localStringBuilder.append(", dailyRetryTimes=").append(this.b);
-    localStringBuilder.append(", countRetryTimes=").append(this.c);
-    localStringBuilder.append(", entranceControl=").append(this.d);
-    localStringBuilder.append(", autoPreDownload=").append(this.e);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    super(paramaovw.b().getAssets(), paramaovw.b().getDisplayMetrics(), paramaovw.b().getConfiguration());
+    this.a = paramaovw;
+  }
+  
+  public CharSequence getText(int paramInt)
+  {
+    int i = this.a.a(paramInt);
+    try
+    {
+      CharSequence localCharSequence = this.a.a().getText(i);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
+      }
+      return localCharSequence;
+    }
+    catch (Resources.NotFoundException localNotFoundException) {}
+    return this.a.b().getText(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aovs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+
 class axpt
+  implements DialogInterface.OnKeyListener
 {
-  public int a;
+  axpt(axps paramaxps) {}
   
-  private axpt(axop paramaxop) {}
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return paramInt == 4;
+  }
 }
 
 

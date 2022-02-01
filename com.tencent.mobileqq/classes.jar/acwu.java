@@ -1,10 +1,20 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.form.GdtFormView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface acwu<T>
+public class acwu
+  implements View.OnClickListener
 {
-  public abstract List<T> a();
+  public acwu(GdtFormView paramGdtFormView) {}
   
-  public abstract void a(Class<? extends T> paramClass);
+  public void onClick(View paramView)
+  {
+    if (GdtFormView.a(this.a)) {
+      GdtFormView.a(this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,21 +1,79 @@
-import android.view.View;
+import android.content.Context;
+import android.content.Intent;
+import android.os.HandlerThread;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeGif;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeImage;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeRIJAvatar;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeVideo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.pts.core.PTSThreadUtil;
+import com.tencent.pts.ui.PTSNodeFactory;
+import com.tencent.pts.utils.PTSDeviceUtil;
+import com.tencent.pts.utils.PTSLog;
+import com.tencent.pts.utils.PTSReportUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class qhq
-  implements bkhw
+public class qhq
 {
-  qhq(qho paramqho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a()
   {
-    switch (paramInt)
+    qic.a.a();
+    qhv.a().a();
+  }
+  
+  private static void a(Context paramContext)
+  {
+    Intent localIntent = new Intent();
+    String str = qgs.a().a("3978");
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", "daily_feeds");
+    qgu.a().getClass();
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PagePath", str);
+    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
+    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (!qic.a.b()) {}
+    do
     {
-    }
-    for (;;)
+      return false;
+      int i = pbd.b();
+      if (!pbd.a(i))
+      {
+        QLog.i("PTSHelper", 1, "[isAbleToJumpNewPTSDailyPage], it is not normal daily channel, channelID = " + i);
+        return false;
+      }
+    } while ((!qgu.a().a()) || (!qgs.a().a("daily_feeds")));
+    a(paramContext);
+    return true;
+  }
+  
+  public static void b()
+  {
+    PTSLog.registerLogger(new qhw());
+    d();
+    if (bhjr.b())
     {
-      qho.a(this.a).dismiss();
-      return;
-      qho.a(this.a, false);
+      PTSDeviceUtil.setTextHeightOffsetPerLine(0.1176471F);
+      PTSDeviceUtil.setTextWidthOffsetPerLength(0.02941177F);
     }
+    PTSNodeFactory.registerNodeVirtual("img", PTSNodeImage.class);
+    PTSNodeFactory.registerCustomViewNodeVirtual("view", "qq-rij-video", PTSNodeVideo.class);
+    PTSNodeFactory.registerCustomViewNodeVirtual("view", "qq-rij-gif", PTSNodeGif.class);
+    PTSNodeFactory.registerCustomViewNodeVirtual("view", "rij-avatar-view", PTSNodeRIJAvatar.class);
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
+    localHandlerThread.start();
+    PTSThreadUtil.registerSubHandlerThread(localHandlerThread);
+  }
+  
+  static void c() {}
+  
+  private static void d()
+  {
+    PTSReportUtil.registerPtsReport(new qhr());
   }
 }
 

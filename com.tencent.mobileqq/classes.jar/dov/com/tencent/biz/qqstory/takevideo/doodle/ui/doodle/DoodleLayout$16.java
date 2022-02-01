@@ -1,10 +1,10 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bphq;
-import bpia;
-import bpif;
-import bplh;
-import bppp;
+import bqjl;
+import bqjv;
+import bqka;
+import bqnc;
+import bqrk;
 import java.util.Map;
 
 class DoodleLayout$16
@@ -14,26 +14,26 @@ class DoodleLayout$16
   
   public void run()
   {
-    bppp localbppp;
+    bqrk localbqrk;
     if ((this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b != null) && (this.a != null))
     {
-      localbppp = this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
-      if (!(localbppp instanceof bphq)) {
+      localbqrk = this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
+      if (!(localbqrk instanceof bqjl)) {
         break label97;
       }
-      ((bphq)localbppp).a = this.a;
+      ((bqjl)localbqrk).a = this.a;
     }
     for (;;)
     {
-      localbppp.i = 3;
+      localbqrk.i = 3;
       this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b = null;
-      if (this.this$0.jdField_a_of_type_Bplh != null) {
-        this.this$0.jdField_a_of_type_Bplh.s();
+      if (this.this$0.jdField_a_of_type_Bqnc != null) {
+        this.this$0.jdField_a_of_type_Bqnc.s();
       }
       return;
       label97:
-      if ((localbppp instanceof bpif)) {
-        ((bpif)localbppp).a = this.a;
+      if ((localbqrk instanceof bqka)) {
+        ((bqka)localbqrk).a = this.a;
       }
     }
   }

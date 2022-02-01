@@ -1,10 +1,12 @@
 package com.tencent.qqmini.sdk.launcher.shell;
 
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+
 public abstract interface IMiniCacheFreeManager
 {
   public abstract void freeCache();
   
-  public abstract void freeCache(String paramString1, String paramString2, boolean paramBoolean);
+  public abstract void freeCache(String paramString, MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
 }
 
 

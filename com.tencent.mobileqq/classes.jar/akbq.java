@@ -1,44 +1,54 @@
-import android.animation.IntEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akbq
-  implements ValueAnimator.AnimatorUpdateListener
+class akbq
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-  private IntEvaluator jdField_a_of_type_AndroidAnimationIntEvaluator = new IntEvaluator();
+  akbq(akbo paramakbo, String paramString, akbt paramakbt, MessageRecord paramMessageRecord) {}
   
-  public akbq(AvatarPendantActivity paramAvatarPendantActivity, List paramList1, List paramList2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
-    {
-      paramValueAnimator = (View)this.jdField_a_of_type_JavaUtilList.get(i);
-      akbt localakbt = (akbt)this.b.get(i);
-      ViewGroup.LayoutParams localLayoutParams = paramValueAnimator.getLayoutParams();
-      if (localakbt.jdField_a_of_type_Int != localakbt.b)
+    Object localObject2;
+    if (!this.jdField_a_of_type_Akbo.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)paramValueAnimator.getLayoutParams();
-        localLayoutParams1.topMargin = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakbt.jdField_a_of_type_Int), Integer.valueOf(localakbt.b)).intValue();
-        paramValueAnimator.setLayoutParams(localLayoutParams1);
+        localObject1 = null;
+        int i = this.jdField_a_of_type_JavaLangString.lastIndexOf("#");
+        if (i > 0) {
+          localObject1 = this.jdField_a_of_type_JavaLangString.substring(i);
+        }
+        localObject2 = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+        if (localObject1 == null) {
+          break label188;
+        }
       }
-      if (localakbt.c != localakbt.d) {
-        localLayoutParams.height = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakbt.c), Integer.valueOf(localakbt.d)).intValue();
+    }
+    label188:
+    for (Object localObject1 = (String)localObject2 + (String)localObject1;; localObject1 = localObject2)
+    {
+      localObject2 = new Intent(this.jdField_a_of_type_Akbo.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      this.jdField_a_of_type_Akbo.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      boolean bool = akbt.a(this.jdField_a_of_type_Akbt).isChecked();
+      akbo.a(this.jdField_a_of_type_Akbo).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      localObject1 = akbt.a(this.jdField_a_of_type_Akbt);
+      if (!bool) {}
+      for (bool = true;; bool = false)
+      {
+        ((CheckBox)localObject1).setChecked(bool);
+        break;
       }
-      if (localakbt.e != localakbt.f) {
-        localLayoutParams.width = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakbt.e), Integer.valueOf(localakbt.f)).intValue();
-      }
-      paramValueAnimator.setLayoutParams(localLayoutParams);
-      paramValueAnimator.requestLayout();
-      i += 1;
     }
   }
 }

@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
-public class asls
-  implements aslx
+public abstract class asls
 {
-  public asls(PullToRefreshBase paramPullToRefreshBase) {}
+  public final EmoticonPanelController a;
   
-  public void a()
+  public asls(EmoticonPanelController paramEmoticonPanelController)
   {
-    PullToRefreshBase.a(this.a);
+    this.a = paramEmoticonPanelController;
   }
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public abstract int[] a();
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k() {}
 }
 
 

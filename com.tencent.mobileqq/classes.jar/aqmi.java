@@ -1,142 +1,49 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class aqmi
+  extends Handler
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  private QQAnimationDrawable b;
   
-  public aqmi() {}
-  
-  public aqmi(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  public aqmi(QQAnimationDrawable paramQQAnimationDrawable1, QQAnimationDrawable paramQQAnimationDrawable2)
   {
-    this.a = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-    this.e = paramBoolean5;
+    this.b = paramQQAnimationDrawable2;
   }
   
-  public static aqmi a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool6 = false;
-    if (paramString == null) {
-      return null;
-    }
-    boolean bool1;
-    try
+    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-      localNodeList = paramString.getElementsByTagName("shortvideo_troop_auto_play");
-      if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-        break label489;
+      QLog.d("QQAnimationDrawable", 2, bool);
+      if (!(paramMessage.obj instanceof Long)) {
+        break label170;
       }
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-        break label453;
+      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
+      paramMessage = (Long)paramMessage.obj;
+      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
+        break;
       }
-      bool1 = true;
+      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
+      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
+      return;
     }
-    catch (Exception paramString)
-    {
-      NodeList localNodeList;
-      label152:
-      label212:
-      QLog.e("AIOVideoPlayConfigProcessor", 1, "onParsed failed" + paramString);
-      return null;
-    }
-    localNodeList = paramString.getElementsByTagName("shortvideo_not_troop_auto_play");
-    if ((localNodeList != null) && (localNodeList.getLength() > 0)) {
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() > 0)
-      {
-        bool1 = true;
-        break label499;
-        localNodeList = paramString.getElementsByTagName("shortvideo_real_troop_auto_play");
-        if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-          break label478;
-        }
-        if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-          break label463;
-        }
-        bool1 = true;
-        break label504;
-        localNodeList = paramString.getElementsByTagName("shortvideo_real_not_troop_auto_play");
-        if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-          break label473;
-        }
-        if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-          break label468;
-        }
-        bool1 = true;
-        break label510;
-      }
-    }
-    label453:
-    label463:
-    label468:
-    label473:
-    label478:
-    label489:
-    label494:
-    label499:
-    label504:
-    label510:
-    for (;;)
-    {
-      paramString = paramString.getElementsByTagName("auto_del_bad_cache");
-      boolean bool5 = bool6;
-      if (paramString != null)
-      {
-        bool5 = bool6;
-        if (localNodeList.getLength() > 0)
-        {
-          bool5 = bool6;
-          if (Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue() > 0) {
-            bool5 = true;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayConfigProcessor", 2, "parse, shortvideo_troop_auto_play = " + bool2 + ", shortvideo_not_troop_auto_play = " + bool3 + ", shortvideo_real_troop_auto_play = " + bool4 + ", shortvideo_real_not_troop_auto_play = " + bool1 + ", auto_del_bad_cache = " + bool5);
-      }
-      paramString = new aqmi(bool2, bool3, bool4, bool1, bool5);
-      return paramString;
-      bool1 = false;
-      break label494;
-      bool1 = false;
-      break label499;
-      bool1 = false;
-      break label504;
-      bool1 = false;
-      break label510;
-      bool1 = true;
-      continue;
-      boolean bool4 = true;
-      break label212;
-      boolean bool3 = true;
-      break label152;
-      boolean bool2 = true;
-      break;
-      bool2 = bool1;
-      break;
-      bool3 = bool1;
-      break label152;
-      bool4 = bool1;
-      break label212;
-    }
+    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
+    this.a.scheduleSelf(this.b, paramMessage.longValue());
+    return;
+    label170:
+    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmi
  * JD-Core Version:    0.7.0.1
  */

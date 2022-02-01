@@ -1,28 +1,18 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afrp
-  extends bkfi
+  implements View.OnClickListener
 {
-  public afrp(VisitorsActivity paramVisitorsActivity) {}
+  public afrp(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
-    }
-    this.a.f.setVisibility(4);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    TroopAssistantActivity.a(this.a);
+    bdll.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,24 @@
-public class wdo
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+
+class wdo
+  implements wal
 {
-  public int a;
-  public String a;
-  private int b;
+  wdo(wdn paramwdn) {}
   
-  public String toString()
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mStr: ").append(this.jdField_a_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("mLevel: ").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("mPicCount: ").append(this.b).append(" ");
-    return localStringBuilder.toString();
+    if ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed))
+    {
+      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject;
+      vtn.a(localStFeed.poster.id.get(), 17, 2, this.a.jdField_a_of_type_Int, localStFeed, null, this.a.b());
+      vud.a().a(new vuf().a("followbutton").b("follow").a(localStFeed).a(this.a.a()).a(this.a.jdField_a_of_type_Int).c(localStFeed.poster.id.get()));
+    }
   }
 }
 

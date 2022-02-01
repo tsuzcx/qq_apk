@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.widget;
 
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import org.json.JSONArray;
 
 public class AuthDialog$AuthDialogResBuilder
@@ -9,9 +10,11 @@ public class AuthDialog$AuthDialogResBuilder
   private String mAuthTitle;
   private View.OnClickListener mLeftBtnClickListener;
   private String mLeftBtnText;
+  private MiniAppConfig mMiniAppConfig;
   private String mMiniAppIconUrl;
   private String mMiniAppName;
   private JSONArray mPhoneNumberList;
+  private String mReportSubAction;
   private View.OnClickListener mRightBtnClickListener;
   private String mRightBtnText;
   private String mUserIconUrl;
@@ -37,6 +40,11 @@ public class AuthDialog$AuthDialogResBuilder
     return this.mLeftBtnText;
   }
   
+  public MiniAppConfig getMiniAppConfig()
+  {
+    return this.mMiniAppConfig;
+  }
+  
   public String getMiniAppIconUrl()
   {
     return this.mMiniAppIconUrl;
@@ -50,6 +58,11 @@ public class AuthDialog$AuthDialogResBuilder
   public JSONArray getPhoneNumberList()
   {
     return this.mPhoneNumberList;
+  }
+  
+  public String getReportSubAction()
+  {
+    return this.mReportSubAction;
   }
   
   public View.OnClickListener getRightBtnClickListener()
@@ -96,6 +109,12 @@ public class AuthDialog$AuthDialogResBuilder
     return this;
   }
   
+  public AuthDialogResBuilder setMiniAppConfig(MiniAppConfig paramMiniAppConfig)
+  {
+    this.mMiniAppConfig = paramMiniAppConfig;
+    return this;
+  }
+  
   public AuthDialogResBuilder setMiniAppIconUrl(String paramString)
   {
     this.mMiniAppIconUrl = paramString;
@@ -111,6 +130,12 @@ public class AuthDialog$AuthDialogResBuilder
   public AuthDialogResBuilder setPhoneNumberList(JSONArray paramJSONArray)
   {
     this.mPhoneNumberList = paramJSONArray;
+    return this;
+  }
+  
+  public AuthDialogResBuilder setReportSubAction(String paramString)
+  {
+    this.mReportSubAction = paramString;
     return this;
   }
   

@@ -1,6 +1,21 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+
 public class azbq
+  extends AnimatorListenerAdapter
 {
-  public static final String a = anni.a(2131707112);
+  public azbq(ScanOcrView paramScanOcrView, int paramInt) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
+      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
+    }
+  }
 }
 
 

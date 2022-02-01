@@ -7,7 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import blzh;
+import bnaj;
 import com.tencent.image.JpegExifReader;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.Date;
 public class LocalImageShootInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LocalImageShootInfo> CREATOR = new blzh();
+  public static final Parcelable.Creator<LocalImageShootInfo> CREATOR = new bnaj();
   public long a;
   public GpsInfo4LocalImage a;
   public String a;

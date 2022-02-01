@@ -1,20 +1,7 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import kotlin.Metadata;
 
-public final class rip
-  implements Parcelable.Creator<VideoColumnInfo>
-{
-  public VideoColumnInfo a(Parcel paramParcel)
-  {
-    return new VideoColumnInfo(paramParcel);
-  }
-  
-  public VideoColumnInfo[] a(int paramInt)
-  {
-    return new VideoColumnInfo[paramInt];
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rip {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

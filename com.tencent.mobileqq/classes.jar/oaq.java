@@ -1,26 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountMenuBar;
-import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class oaq
-  implements View.OnClickListener
 {
-  public oaq(PublicAccountMenuBar paramPublicAccountMenuBar, boolean paramBoolean, mobileqq_mp.ButtonInfo paramButtonInfo, aaum paramaaum) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ButtonInfo);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_Aaum);
-    }
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public oao a;
 }
 
 

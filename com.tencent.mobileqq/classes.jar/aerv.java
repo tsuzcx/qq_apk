@@ -1,48 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class aerv
-  implements CompoundButton.OnCheckedChangeListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public aerv(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aerv(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    QQAppInterface localQQAppInterface;
-    String str1;
-    if (paramBoolean)
-    {
-      bkfm.a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label91;
-      }
-      str1 = "0X8004BE7";
-      label23:
-      if (!paramBoolean) {
-        break label97;
-      }
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
     }
-    label91:
-    label97:
-    for (String str2 = "0X8004BE7";; str2 = "0X8004BE6")
-    {
-      bcst.b(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "1", "", "", "");
-      if (AppSetting.c) {
-        NotifyPushSettingActivity.d(this.a).setContentDescription(anni.a(2131706411));
-      }
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bkfm.b();
-      break;
-      str1 = "0X8004BE6";
-      break label23;
-    }
+    return true;
   }
 }
 

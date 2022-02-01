@@ -1,12 +1,30 @@
-import com.tencent.mobileqq.olympic.TorchInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
 
-public abstract interface aykb
+public class aykb
+  implements bliz
 {
-  public abstract void a();
+  public aykb(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, blir paramblir) {}
   
-  public abstract void a(TorchInfo paramTorchInfo);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      axxd.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
+      continue;
+      paramView = (axxj)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.a(60);
+      if (paramView != null) {
+        paramView.a("", 0, false);
+      }
+    }
+  }
 }
 
 

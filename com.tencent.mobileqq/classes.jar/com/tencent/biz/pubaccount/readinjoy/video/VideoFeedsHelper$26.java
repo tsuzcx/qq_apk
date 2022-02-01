@@ -1,35 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.view.View;
+import rpt;
 
 public final class VideoFeedsHelper$26
   implements Runnable
 {
-  public VideoFeedsHelper$26(String paramString) {}
+  public VideoFeedsHelper$26(View paramView, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    try
-    {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.a).openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.setInstanceFollowRedirects(true);
-      localHttpURLConnection.connect();
-      int i = localHttpURLConnection.getResponseCode();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsHelper", 2, "asyncHttpReport reportUrl = " + this.a + ", rspCode:" + i);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("VideoFeedsHelper", 1, "asyncHttpReport error, url = " + this.a, localThrowable);
-    }
+    rpt.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

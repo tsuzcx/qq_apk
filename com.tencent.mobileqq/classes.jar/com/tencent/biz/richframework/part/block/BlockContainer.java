@@ -1,5 +1,14 @@
 package com.tencent.biz.richframework.part.block;
 
+import aabd;
+import aabi;
+import aabj;
+import aabn;
+import aabo;
+import aabp;
+import aacd;
+import aace;
+import aacf;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,26 +28,17 @@ import com.tencent.biz.subscribe.widget.StatusView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
-import zxi;
-import zxn;
-import zxo;
-import zxs;
-import zxt;
-import zxu;
-import zyh;
-import zyi;
-import zyj;
 
 public class BlockContainer
   extends FrameLayout
 {
   private static final String jdField_a_of_type_JavaLangString = BlockContainer.class.getSimpleName();
+  public aabj a;
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
   private RecyclerView.LayoutManager jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
   protected NestScrollRecyclerView a;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  public zxo a;
   
   public BlockContainer(Context paramContext)
   {
@@ -57,14 +57,19 @@ public class BlockContainer
   }
   
   @NotNull
-  private zxo b()
+  private aabj b()
   {
-    return new zxo(this);
+    return new aabj(this);
   }
   
   protected int a()
   {
-    return 2131558769;
+    return 2131558767;
+  }
+  
+  public aabj a()
+  {
+    return this.jdField_a_of_type_Aabj;
   }
   
   public Fragment a()
@@ -110,56 +115,51 @@ public class BlockContainer
     return paramView;
   }
   
-  public zxo a()
-  {
-    return this.jdField_a_of_type_Zxo;
-  }
-  
   protected void a()
   {
     LayoutInflater.from(getContext()).inflate(a(), this);
     a(this);
   }
   
+  public void a(aabo paramaabo)
+  {
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.a(paramaabo);
+    }
+  }
+  
+  public void a(aabp paramaabp)
+  {
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.a(paramaabp);
+    }
+  }
+  
   protected void a(FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364277));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364322));
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setHasFixedSize(true);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setNestedScrollingEnabled(false);
-    this.jdField_a_of_type_Zxo = b();
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Zxo);
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.addItemDecoration(new zxn(this, this.jdField_a_of_type_Zxo));
+    this.jdField_a_of_type_Aabj = b();
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Aabj);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.addItemDecoration(new aabi(this, this.jdField_a_of_type_Aabj));
     setLayoutManagerType(1, 1);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setItemAnimator(null);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setOverScrollMode(2);
   }
   
-  public void a(ArrayList<zxu> paramArrayList)
+  public void a(ArrayList<aabp> paramArrayList)
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      a((zxu)paramArrayList.next());
-    }
-  }
-  
-  public void a(zxt paramzxt)
-  {
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.a(paramzxt);
-    }
-  }
-  
-  public void a(zxu paramzxu)
-  {
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.a(paramzxu);
+      a((aabp)paramArrayList.next());
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Zxo != null) {
-      return this.jdField_a_of_type_Zxo.a();
+    if (this.jdField_a_of_type_Aabj != null) {
+      return this.jdField_a_of_type_Aabj.a();
     }
     return false;
   }
@@ -173,8 +173,8 @@ public class BlockContainer
       }
       this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setAdapter(null);
     }
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.c();
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.c();
     }
     if ((a() != null) && (a().a() != null)) {
       a().a().setImageDrawable(null);
@@ -184,16 +184,16 @@ public class BlockContainer
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Zxo != null) {
-      return this.jdField_a_of_type_Zxo.d();
+    if (this.jdField_a_of_type_Aabj != null) {
+      return this.jdField_a_of_type_Aabj.d();
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.d();
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.d();
     }
   }
   
@@ -207,24 +207,24 @@ public class BlockContainer
     super.onDetachedFromWindow();
   }
   
-  public void setBlockWrapper(zxi paramzxi)
+  public void setBlockWrapper(aabd paramaabd)
   {
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.a(paramzxi);
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.a(paramaabd);
     }
   }
   
   public void setEnableLoadMore(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.d(paramBoolean);
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.d(paramBoolean);
     }
   }
   
   public void setEnableRefresh(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.b(paramBoolean);
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.b(paramBoolean);
     }
   }
   
@@ -241,16 +241,16 @@ public class BlockContainer
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
-      this.jdField_a_of_type_Zxo.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
+      this.jdField_a_of_type_Aabj.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
       return;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zyi(getContext(), 1, false);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new aace(getContext(), 1, false);
       continue;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zyh(getContext(), paramInt2);
-      ((zyh)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Zxo.a());
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new aacd(getContext(), paramInt2);
+      ((aacd)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Aabj.a());
       continue;
       this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setHasFixedSize(false);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zyj(paramInt2, 1);
-      ((zyj)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new aacf(paramInt2, 1);
+      ((aacf)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
     }
   }
   
@@ -261,21 +261,21 @@ public class BlockContainer
   
   public void setRefreshing(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Zxo != null)
+    if (this.jdField_a_of_type_Aabj != null)
     {
-      if ((paramBoolean) && (!this.jdField_a_of_type_Zxo.c())) {
-        this.jdField_a_of_type_Zxo.c(true);
+      if ((paramBoolean) && (!this.jdField_a_of_type_Aabj.c())) {
+        this.jdField_a_of_type_Aabj.c(true);
       }
-      if ((!paramBoolean) && (this.jdField_a_of_type_Zxo.c())) {
-        this.jdField_a_of_type_Zxo.c(false);
+      if ((!paramBoolean) && (this.jdField_a_of_type_Aabj.c())) {
+        this.jdField_a_of_type_Aabj.c(false);
       }
     }
   }
   
-  public void setShareData(String paramString, zxs paramzxs)
+  public void setShareData(String paramString, aabn paramaabn)
   {
-    if (this.jdField_a_of_type_Zxo != null) {
-      this.jdField_a_of_type_Zxo.a(paramString, paramzxs);
+    if (this.jdField_a_of_type_Aabj != null) {
+      this.jdField_a_of_type_Aabj.a(paramString, paramaabn);
     }
   }
   

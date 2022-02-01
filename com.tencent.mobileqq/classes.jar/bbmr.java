@@ -1,11 +1,16 @@
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbmr
-  extends bblv
+class bbmr
+  implements bbnn
 {
-  public bbmr(String paramString1, long paramLong1, String paramString2, List<bbmy> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
+  bbmr(bbmq parambbmq) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    super(paramString1, paramLong1, paramString2, paramList, paramLong2, paramString3, paramString4, paramList1, paramBoolean1, paramBoolean2, paramBoolean3, paramString5, paramString6);
+    bbmq.a(this.a, true);
+    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
+      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
+    }
   }
 }
 

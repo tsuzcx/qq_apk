@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
 import android.widget.LinearLayout;
-import angw;
+import ansr;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.ApolloActionPackage;
@@ -17,9 +17,9 @@ class ApolloPanel$8
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Angw != null) && (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
+    if ((this.this$0.jdField_a_of_type_Ansr != null) && (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
     {
-      this.this$0.jdField_a_of_type_Angw.a(this.a);
+      this.this$0.jdField_a_of_type_Ansr.a(this.a);
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
         break label148;
       }
@@ -35,7 +35,7 @@ class ApolloPanel$8
     for (;;)
     {
       this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-      this.this$0.jdField_a_of_type_Angw.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Ansr.notifyDataSetChanged();
       if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
         break label167;
       }

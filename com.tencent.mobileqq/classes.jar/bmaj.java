@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
 public class bmaj
-  implements DialogInterface.OnCancelListener
 {
-  public bmaj(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.getPlayMode();
-  }
+  public int a;
+  public long a;
+  public byte[] a;
 }
 
 

@@ -1,15 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class yxa
-  implements ValueAnimator.AnimatorUpdateListener
+  implements woy<xcv, xep>
 {
-  yxa(ywz paramywz) {}
+  yxa(ywy paramywy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@NonNull xcv paramxcv, @Nullable xep paramxep, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.g();
+    yuk.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramxep != null))
+    {
+      yuk.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramxep.toString());
+      paramxcv = new wsc(paramxep.a, paramxep.c, paramxep.d, paramxep.e, paramxep.f, paramxcv.d, paramxcv.e);
+      this.a.a(0, paramxcv);
+      return;
+    }
+    yuk.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 

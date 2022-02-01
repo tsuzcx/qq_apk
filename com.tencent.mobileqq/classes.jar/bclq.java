@@ -1,6 +1,18 @@
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
+
 public class bclq
+  extends bcmb
 {
-  public static boolean a = true;
+  public bclq(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
+  {
+    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
+  }
+  
+  public bcfq a(List<bcfr> paramList, String paramString)
+  {
+    return new bmlp(paramList, paramString);
+  }
 }
 
 

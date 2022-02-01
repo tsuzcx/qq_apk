@@ -5,15 +5,15 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import anil;
-import anpe;
-import aqlk;
-import aqtl;
-import aywz;
-import bdsv;
-import bdvu;
-import bgut;
-import bguy;
+import anui;
+import aobf;
+import aran;
+import arix;
+import azpm;
+import bern;
+import beuo;
+import bhuw;
+import bhvb;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
@@ -32,10 +32,10 @@ import mqq.os.MqqHandler;
 
 public abstract class AppInterface
   extends IMCoreAppRuntime
-  implements bguy
+  implements bhvb
 {
   public BaseApplicationImpl app;
-  protected bgut comunicator;
+  protected bhuw comunicator;
   private MqqHandler defaultHanlder = new MqqHandler(Looper.getMainLooper());
   protected final ConcurrentHashMap<Class, MqqHandler> handlerMap = new ConcurrentHashMap();
   public HwEngine mHwEngine;
@@ -225,9 +225,9 @@ public abstract class AppInterface
     paramPluginRuntime.sendAppDataIncerment(paramString, getAppDataIncermentTags(paramString, paramBoolean, paramInt1, paramInt2, paramInt3, paramLong), paramLong);
   }
   
-  public void addObserver(anil paramanil) {}
+  public void addObserver(anui paramanui) {}
   
-  public void addObserver(anil paramanil, boolean paramBoolean) {}
+  public void addObserver(anui paramanui, boolean paramBoolean) {}
   
   public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
@@ -243,7 +243,7 @@ public abstract class AppInterface
     return null;
   }
   
-  public List<anil> getBusinessObserver(int paramInt)
+  public List<anui> getBusinessObserver(int paramInt)
   {
     return null;
   }
@@ -275,7 +275,7 @@ public abstract class AppInterface
     return this.defaultHanlder;
   }
   
-  public bgut getHttpCommunicatort()
+  public bhuw getHttpCommunicatort()
   {
     if (this.comunicator == null) {}
     try
@@ -296,12 +296,12 @@ public abstract class AppInterface
     int j;
     if (this.mHwEngine == null)
     {
-      aqtl localaqtl = (aqtl)aqlk.a().a(538);
+      arix localarix = (arix)aran.a().a(538);
       localMobileQQ = getApplication();
       str = getCurrentAccountUin();
       i = getAppid();
-      j = anpe.a();
-      if ((localaqtl == null) || (!localaqtl.a)) {
+      j = aobf.a();
+      if ((localarix == null) || (!localarix.a)) {
         break label81;
       }
     }
@@ -313,7 +313,7 @@ public abstract class AppInterface
     }
   }
   
-  public bdvu getNetEngine(int paramInt)
+  public beuo getNetEngine(int paramInt)
   {
     return null;
   }
@@ -331,7 +331,7 @@ public abstract class AppInterface
     finally {}
   }
   
-  public bdsv getTransFileController()
+  public bern getTransFileController()
   {
     return null;
   }
@@ -351,7 +351,7 @@ public abstract class AppInterface
   
   protected void httpCommunicatorCreate()
   {
-    this.comunicator = new bgut(this, 128);
+    this.comunicator = new bhuw(this, 128);
     this.comunicator.a();
   }
   
@@ -389,7 +389,7 @@ public abstract class AppInterface
     this.handlerMap.remove(paramClass);
   }
   
-  public void removeObserver(anil paramanil) {}
+  public void removeObserver(anui paramanui) {}
   
   public void reportClickEvent(String paramString1, String paramString2)
   {
@@ -418,7 +418,7 @@ public abstract class AppInterface
     }
     for (;;)
     {
-      aywz.a(paramLong, paramBoolean, bool);
+      azpm.a(paramLong, paramBoolean, bool);
       return;
       label156:
       paramBoolean = false;

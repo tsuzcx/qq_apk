@@ -1,19 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class ulz
-  extends uly<ulp, WSPushStrategyInfo>
+class ulz
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public ulz(ulp paramulp)
-  {
-    super(paramulp);
-  }
+  ulz(ulx paramulx) {}
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    WSHomeFragment.a(paramContext, 0, false);
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      uqf.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
   }
 }
 

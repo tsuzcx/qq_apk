@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.openapi.model.WMElement;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class bnoj
-  implements DialogInterface.OnClickListener
+  implements bnok
 {
-  bnoj(bnod parambnod, bnol parambnol, WMElement paramWMElement) {}
+  bnoj(bnog parambnog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bnol.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bnol.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
+    paramJSONObject.put("event_video_album_state", paramBundle.getString("event_video_album_state"));
   }
 }
 

@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aumb
-  implements View.OnClickListener
+public abstract interface aumb
 {
-  public aumb(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
+  public abstract long a(bevm parambevm);
   
-  public void onClick(View paramView)
-  {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract void b();
 }
 
 

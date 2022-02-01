@@ -1,23 +1,28 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xsl
-  extends xph
+class xsl
+  implements xtj
 {
-  public xsl(AbsVideoInfoWidget paramAbsVideoInfoWidget, StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  xsl(xsg paramxsg, StoryVideoItem paramStoryVideoItem) {}
   
-  public void a(int paramInt)
+  public boolean a(xtg paramxtg, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    super.a(paramInt);
-    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
-    if ((paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) || (paramInt < 0))
-    {
-      yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
-      return;
+    if (this.jdField_a_of_type_Xsg.isCanceled()) {
+      return true;
     }
-    xne localxne = (xne)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
-    AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localxne);
+    yuk.e(this.jdField_a_of_type_Xsg.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
+    if (paramInt2 == 102)
+    {
+      paramxtg.d();
+      return true;
+    }
+    VideoViewVideoHolder.c(this.jdField_a_of_type_Xsg.a, 7);
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, false);
+    VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a, paramInt2);
+    xsg.b(this.jdField_a_of_type_Xsg, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
+    return true;
   }
 }
 

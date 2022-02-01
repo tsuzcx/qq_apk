@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aead
-  extends aypl
+final class aead
+  implements DialogInterface.OnClickListener
 {
-  public aead(Conversation paramConversation) {}
+  aead(aebz paramaebz) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
-      }
-      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

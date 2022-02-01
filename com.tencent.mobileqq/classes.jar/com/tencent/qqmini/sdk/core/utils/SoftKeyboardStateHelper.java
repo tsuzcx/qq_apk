@@ -14,7 +14,7 @@ public class SoftKeyboardStateHelper
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public static final String TAG = "SoftKeyboardStateHelper";
-  private int KEY_BOARD_HIGH_DIFF = 200;
+  private final int KEY_BOARD_HIGH_DIFF = 200;
   private final View activityRootView;
   private boolean isSoftKeyboardOpened;
   private int lastSoftKeyboardHeightInPx;
@@ -78,12 +78,12 @@ public class SoftKeyboardStateHelper
     this.activityRootView.getWindowVisibleDisplayFrame(localRect);
     int i = this.activityRootView.getRootView().getHeight() - (localRect.bottom - localRect.top) - DisplayUtil.getStatusBarHeight(this.activityRootView.getContext());
     QMLog.d("SoftKeyboardStateHelper", "onGlobalLayout , activityRootView.Height = " + this.activityRootView.getRootView().getHeight() + " heightDiff = " + i + " (r.bottom - r.top) = " + (localRect.bottom - localRect.top));
-    if ((!this.isSoftKeyboardOpened) && (i > this.KEY_BOARD_HIGH_DIFF))
+    if ((!this.isSoftKeyboardOpened) && (i > 200))
     {
       this.isSoftKeyboardOpened = true;
       notifyOnSoftKeyboardOpened(i);
     }
-    while ((!this.isSoftKeyboardOpened) || (i >= this.KEY_BOARD_HIGH_DIFF)) {
+    while ((!this.isSoftKeyboardOpened) || (i >= 200)) {
       return;
     }
     this.isSoftKeyboardOpened = false;
@@ -110,7 +110,7 @@ public class SoftKeyboardStateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper
  * JD-Core Version:    0.7.0.1
  */

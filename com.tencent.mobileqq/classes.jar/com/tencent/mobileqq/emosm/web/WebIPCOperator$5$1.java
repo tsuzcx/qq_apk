@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.emosm.web;
 
-import arui;
-import aruj;
-import aruk;
+import asjw;
+import asjx;
+import asjy;
 
 public class WebIPCOperator$5$1
   implements Runnable
 {
-  public WebIPCOperator$5$1(aruj paramaruj, aruk paramaruk) {}
+  public WebIPCOperator$5$1(asjx paramasjx, asjy paramasjy) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aruj.a.e(this.jdField_a_of_type_Aruk.a);
+    this.jdField_a_of_type_Asjx.a.e(this.jdField_a_of_type_Asjy.a);
   }
 }
 

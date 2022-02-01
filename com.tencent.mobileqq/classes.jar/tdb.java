@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.image.URLImageView;
+import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
+import org.json.JSONObject;
 
 class tdb
-  implements txd
+  implements rmd
 {
-  tdb(tcx paramtcx, ChannelCoverInfo paramChannelCoverInfo) {}
+  IJSApiAdapter.OnInovkeCallback a;
   
-  public void a()
+  public tdb(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
   {
-    tcx.a(this.jdField_a_of_type_Tcx).setImageDrawable(tcx.a(this.jdField_a_of_type_Tcx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
+    this.a = paramOnInovkeCallback;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (this.a != null) {
+      this.a.callback(paramJSONObject);
+    }
   }
 }
 

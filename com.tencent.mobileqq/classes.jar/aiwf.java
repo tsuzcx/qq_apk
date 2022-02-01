@@ -1,11 +1,11 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
 public abstract interface aiwf
+  extends aiwj
 {
-  public abstract Activity a();
+  public abstract int a();
   
-  public abstract QQAppInterface a();
+  public abstract View a(Object... paramVarArgs);
 }
 
 

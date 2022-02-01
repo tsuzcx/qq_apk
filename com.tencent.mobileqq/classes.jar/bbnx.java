@@ -1,169 +1,50 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class bbnx
-  extends bbnh
+class bbnx
+  extends aocj
 {
-  public bbny a;
-  public bbnz a;
-  public ArrayList<bboa> a;
-  public boolean b;
-  public boolean c;
+  bbnx(bbnv parambbnv) {}
   
-  public bbnx(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, aock paramaock)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public bbnx(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
+    if (bbnv.a(this.a) == null)
     {
-    default: 
-      i = 1;
-    }
-    return i;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    QQAppInterface localQQAppInterface;
-    if (this.jdField_a_of_type_Long == 1003L)
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (b() == null) {
-        break label93;
-      }
-    }
-    label93:
-    for (paramView = b();; paramView = "")
-    {
-      bcst.b(localQQAppInterface, "dc00898", "", paramView, "auth_search", "clk_content", 0, 0, "", "", "", "");
-      if (this.jdField_c_of_type_Boolean) {
-        bcst.b(null, "dc00898", "", "", "0X800AC12", "0X800AC12", 0, 0, "", "", "", "");
-      }
+      QLog.d(bbnv.a, 1, new Object[] { "return because queue is null, isSuccess:", Boolean.valueOf(paramBoolean), " ,uniseq:", Long.valueOf(paramLong) });
       return;
     }
-  }
-  
-  public void a(String paramString)
-  {
+    bbnq localbbnq = (bbnq)bbnv.a(this.a).peek();
+    if (localbbnq != null) {
+      if ((paramLong == localbbnq.jdField_a_of_type_Long) && (localbbnq.c == 4))
+      {
+        localbbnq.c = 5;
+        bbnv.a(this.a).remove(localbbnq);
+        if (localbbnq.jdField_a_of_type_Aocj != null) {
+          localbbnq.jdField_a_of_type_Aocj.a(paramBoolean, paramLong, paramaock);
+        }
+        if (localbbnq.jdField_a_of_type_Bbnt != null) {
+          localbbnq.jdField_a_of_type_Bbnt.a(paramBoolean, paramLong);
+        }
+        if (localbbnq.jdField_a_of_type_Boolean) {
+          bcyp.a().a(paramLong);
+        }
+        bbnv.a(this.a).b(localbbnq.jdField_a_of_type_Long);
+        if (QLog.isColorLevel())
+        {
+          paramaock = new StringBuilder();
+          paramaock.append("OrderSendObserver remove uniseq:").append(paramLong).append(", queue size:").append(bbnv.a(this.a).size()).append(", mNeedCompress:").append(localbbnq.jdField_a_of_type_Boolean).append(", issuccess:").append(paramBoolean);
+          QLog.d(bbnv.a, 2, paramaock.toString());
+        }
+      }
+    }
     for (;;)
     {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("needRightCenter") != 1) {
-          break label509;
-        }
-        bool = true;
-        this.b = bool;
-        JSONObject localJSONObject = paramString.optJSONObject("imageInfo");
-        if (localJSONObject != null) {
-          a(localJSONObject);
-        }
-        localJSONObject = paramString.optJSONObject("actionInfo");
-        if (localJSONObject != null)
-        {
-          this.jdField_a_of_type_Bbny = new bbny(this);
-          this.jdField_a_of_type_Bbny.jdField_a_of_type_Int = localJSONObject.optInt("type");
-          this.jdField_a_of_type_Bbny.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
-          this.jdField_a_of_type_Bbny.jdField_a_of_type_JavaLangString = localJSONObject.optString("jumpUrl");
-        }
-        localJSONObject = paramString.optJSONObject("headIconInfo");
-        if (localJSONObject != null)
-        {
-          this.jdField_a_of_type_Bbnz = new bbnz(this);
-          this.jdField_a_of_type_Bbnz.jdField_a_of_type_Int = localJSONObject.optInt("type");
-          this.jdField_a_of_type_Bbnz.jdField_a_of_type_JavaLangString = localJSONObject.optString("iconUrl");
-          this.jdField_a_of_type_Bbnz.jdField_b_of_type_Int = localJSONObject.optInt("iconWidth");
-          this.jdField_a_of_type_Bbnz.c = localJSONObject.optInt("iconHeight");
-          this.jdField_a_of_type_Bbnz.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("tagText");
-          this.jdField_a_of_type_Bbnz.jdField_b_of_type_JavaLangString = localJSONObject.optString("tagBgColor");
-        }
-        paramString = paramString.optJSONArray("lineList");
-        if ((paramString != null) && (paramString.length() > 0))
-        {
-          i = 0;
-          if (i < paramString.length())
-          {
-            localJSONObject = paramString.getJSONObject(i);
-            bboa localbboa;
-            if (!TextUtils.isEmpty(localJSONObject.optString("word")))
-            {
-              if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-                this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-              }
-              localbboa = new bboa(this);
-              localbboa.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
-              localbboa.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
-              localbboa.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
-              if (localJSONObject.optInt("needHighlight") != 1) {
-                break label514;
-              }
-              bool = true;
-              localbboa.jdField_a_of_type_Boolean = bool;
-              this.jdField_a_of_type_JavaUtilArrayList.add(localbboa);
-            }
-            else if (localJSONObject.optJSONArray("words") != null)
-            {
-              if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-                this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-              }
-              localbboa = new bboa(this);
-              localbboa.jdField_a_of_type_JavaLangCharSequence = bbup.a(localJSONObject.optJSONArray("words"));
-              localbboa.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
-              localbboa.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
-              if (localJSONObject.optInt("needHighlight") == 1)
-              {
-                bool = true;
-                localbboa.jdField_a_of_type_Boolean = bool;
-                this.jdField_a_of_type_JavaUtilArrayList.add(localbboa);
-              }
-            }
-          }
-        }
-      }
-      catch (JSONException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_c_of_type_JavaLangString, 0, paramString.toString());
-        }
-      }
+      bbnv.a(this.a);
       return;
-      boolean bool = false;
+      QLog.d(bbnv.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localbbnq.c), ", uniseq:", Long.valueOf(localbbnq.jdField_a_of_type_Long) });
       continue;
-      i += 1;
-      continue;
-      label509:
-      bool = false;
-      continue;
-      label514:
-      bool = false;
+      QLog.d(bbnv.a, 1, new Object[] { "OrderSendObserver peekFirst is null. uniseq:", Long.valueOf(paramLong), ", issuccess:", Boolean.valueOf(paramBoolean) });
     }
-  }
-  
-  public boolean b()
-  {
-    return true;
   }
 }
 

@@ -1,22 +1,96 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import com.tencent.mobileqq.data.RecommendLabel;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Color;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Label;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.RecommendPerson;
 
-class ajnn
-  implements DialogInterface.OnClickListener
+public class ajnn
 {
-  ajnn(ajnk paramajnk) {}
+  public int a;
+  public String a;
+  public ArrayList<RecommendLabel> a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static ajnn a(oidb_0xe3b.RecommendPerson paramRecommendPerson)
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
-    if (paramInt == 1) {
-      ajnk.c(this.a);
+    int j = -1;
+    ajnn localajnn = new ajnn();
+    localajnn.jdField_a_of_type_JavaLangString = String.valueOf(paramRecommendPerson.uint64_uin.get());
+    Object localObject;
+    label74:
+    int i;
+    label98:
+    oidb_0xe3b.Label localLabel;
+    label173:
+    RecommendLabel localRecommendLabel;
+    if (paramRecommendPerson.bytes_title.has())
+    {
+      localObject = paramRecommendPerson.bytes_title.get().toStringUtf8();
+      localajnn.jdField_b_of_type_JavaLangString = ((String)localObject);
+      if (!paramRecommendPerson.bytes_reason.has()) {
+        break label404;
+      }
+      localObject = paramRecommendPerson.bytes_reason.get().toStringUtf8();
+      localajnn.c = ((String)localObject);
+      if (!paramRecommendPerson.uint32_age.has()) {
+        break label410;
+      }
+      i = paramRecommendPerson.uint32_age.get();
+      localajnn.jdField_a_of_type_Int = i;
+      i = j;
+      if (paramRecommendPerson.uint32_gender.has()) {
+        i = paramRecommendPerson.uint32_gender.get();
+      }
+      localajnn.jdField_b_of_type_Int = i;
+      if (!paramRecommendPerson.rpt_msg_label.has()) {
+        break label421;
+      }
+      paramRecommendPerson = paramRecommendPerson.rpt_msg_label.get();
+      localajnn.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRecommendPerson.size());
+      localObject = paramRecommendPerson.iterator();
+      if (!((Iterator)localObject).hasNext()) {
+        break label421;
+      }
+      localLabel = (oidb_0xe3b.Label)((Iterator)localObject).next();
+      localRecommendLabel = new RecommendLabel();
+      if (!localLabel.bytes_name.has()) {
+        break label415;
+      }
     }
-    while (paramInt != 0) {
-      return;
+    label404:
+    label410:
+    label415:
+    for (paramRecommendPerson = localLabel.bytes_name.get().toStringUtf8();; paramRecommendPerson = "")
+    {
+      localRecommendLabel.bytes_name = paramRecommendPerson;
+      localRecommendLabel.uint32_label_type = localLabel.uint32_label_type.get();
+      if (localLabel.text_color.has()) {
+        localRecommendLabel.text_color = Color.rgb(((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_b.get());
+      }
+      if (localLabel.edging_color.has()) {
+        localRecommendLabel.edging_color = Color.rgb(((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_b.get());
+      }
+      localajnn.jdField_a_of_type_JavaUtilArrayList.add(localRecommendLabel);
+      break label173;
+      localObject = "";
+      break;
+      localObject = "";
+      break label74;
+      i = -1;
+      break label98;
     }
-    ajnk.a(this.a);
+    label421:
+    return localajnn;
   }
 }
 

@@ -1,15 +1,14 @@
-public class bnic
+public abstract class bnic
 {
-  private static bnid a;
+  public static bnic a = new bnid();
   
-  public static bnid a()
-  {
-    return a;
-  }
+  public abstract int a();
   
-  public static void a(bnid parambnid)
+  public abstract String a();
+  
+  public String toString()
   {
-    a = parambnid;
+    return a() + ':' + a();
   }
 }
 

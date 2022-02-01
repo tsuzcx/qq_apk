@@ -1,18 +1,11 @@
-class avoh
-  extends ayeu
+import com.tencent.smtt.sdk.WebView;
+
+public abstract interface avoh
+  extends avof
 {
-  avoh(avog paramavog, avep paramavep) {}
+  public abstract void a(WebView paramWebView);
   
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    bcst.a(null, "dc00898", "", "", "0X800B0EB", "0X800B0EB", 0, 0, "", "", "", "");
-    avog.a(this.jdField_a_of_type_Avog, this.jdField_a_of_type_Avep);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    avog.a(this.jdField_a_of_type_Avog, this.jdField_a_of_type_Avep);
-  }
+  public abstract void b(WebView paramWebView);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agbc;
-import agbe;
+import agkw;
+import agky;
 import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -9,11 +9,11 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class AioAnimationDetector$3
   implements Runnable
 {
-  public AioAnimationDetector$3(agbc paramagbc, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, agbe paramagbe, ChatMessage paramChatMessage) {}
+  public AioAnimationDetector$3(agkw paramagkw, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, agky paramagky, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    agbc.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 0, this.jdField_a_of_type_Agbe, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    agkw.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 0, this.jdField_a_of_type_Agky, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 

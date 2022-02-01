@@ -1,11 +1,4 @@
-import android.view.View;
-
-public abstract interface axhb
-{
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, axhe paramaxhe);
-}
+class axhb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

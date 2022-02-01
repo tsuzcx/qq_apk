@@ -1,28 +1,40 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.VersionUtils;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 
-class akyu
-  implements View.OnClickListener
+public class akyu
+  implements TextWatcher
 {
-  akyu(akyh paramakyh) {}
+  public akyu(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (VersionUtils.isHoneycomb()) {
-      akyh.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
+    if (this.a.jdField_c_of_type_Int > 0) {
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramEditable.length() + "/" + this.a.jdField_c_of_type_Int);
     }
-    for (;;)
+    if (paramEditable.length() > 0)
     {
-      bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.a(anzj.a(2131704866));
+      RedPacketKuaKuaFragment.a(this.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.a));
+      RedPacketKuaKuaFragment.a(this.a).postDelayed(RedPacketKuaKuaFragment.a(this.a), this.a.jdField_a_of_type_Long * 1000L);
       return;
-      akyh.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    }
+    this.a.a(anzj.a(2131704868));
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 == 0) && (paramInt3 > paramInt1)) {
+      bdll.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.begin", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
     }
   }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,16 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class sqt
-  extends pue
+class sqt
+  implements ViewBase.OnClickListener
 {
-  public sqt(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  sqt(sqs paramsqs) {}
   
-  public void a(ptx paramptx)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramptx.b();
+    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+    sqr.a(this.a.jdField_a_of_type_Sqr, i).a(paramViewBase, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
   }
 }
 

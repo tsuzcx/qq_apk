@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import anlh;
-import anzd;
-import bojl;
+import anxd;
+import aoln;
+import bplg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.LinearGroup;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CameraEmoAllSend
   extends LinearGroup
-  implements anzd
+  implements aoln
 {
   public static boolean a;
   public static boolean b;
@@ -73,7 +73,7 @@ public class CameraEmoAllSend
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    anlh localanlh = (anlh)((QQAppInterface)bojl.a()).a(72);
+    anxd localanxd = (anxd)((QQAppInterface)bplg.a()).a(72);
     if ((paramInt3 < paramInt2) || ((paramInt4 > 0) && (paramInt5 > 0))) {
       if (paramInt3 == 0) {
         paramInt1 = 5;
@@ -81,7 +81,7 @@ public class CameraEmoAllSend
     }
     for (;;)
     {
-      localanlh.notifyUI(2, false, Integer.valueOf(paramInt1));
+      localanxd.notifyUI(2, false, Integer.valueOf(paramInt1));
       return;
       paramInt1 = 6;
       continue;
@@ -114,7 +114,7 @@ public class CameraEmoAllSend
     }
   }
   
-  public void c()
+  public void b()
   {
     this.jdField_a_of_type_JavaUtilList = ((List)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
     if (!this.jdField_a_of_type_JavaUtilList.isEmpty())

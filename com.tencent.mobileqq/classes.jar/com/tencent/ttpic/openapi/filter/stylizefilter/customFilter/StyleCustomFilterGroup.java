@@ -6,6 +6,7 @@ import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.filter.blurmaskfilter.OptimGaussianMaskFilter;
 import com.tencent.ttpic.openapi.filter.CustomFilterItem;
+import com.tencent.ttpic.util.FrameUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,8 +21,11 @@ public class StyleCustomFilterGroup
   private VideoFilterBase copyFilter = new VideoFilterBase("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private List<CustomFilterItem> customFilterList;
   private Map<String, OptimGaussianMaskFilter> gaussianFilterMap = new HashMap();
+  private int height = 0;
+  private boolean isSizeUpdated = false;
   private Map<String, StyleCustomNormalFilter> normalFilterMap = new HashMap();
   private Map<String, Frame> tmpFrameMap = new HashMap();
+  private int width = 0;
   
   public StyleCustomFilterGroup(List<CustomFilterItem> paramList)
   {
@@ -118,38 +122,46 @@ public class StyleCustomFilterGroup
         {
           label128:
           int j;
-          label154:
-          int m;
           if (localCustomFilterItem.preFilterId.size() == 0)
           {
             localObject1 = paramFrame;
             if (localObject1 == null) {
-              break label378;
+              break label435;
             }
             if (localCustomFilterItem.inputFrameSize[0] <= 0) {
-              break label380;
+              break label437;
             }
             i = localCustomFilterItem.inputFrameSize[0];
             int k = (int)(i * f);
             if (localCustomFilterItem.outputFrameSize[0] <= 0) {
-              break label389;
+              break label446;
             }
             j = localCustomFilterItem.outputFrameSize[0];
-            m = (int)(j * f);
+            label154:
+            int m = (int)(j * f);
             if ((Math.abs(i - ((Frame)localObject1).width) < 2) && (Math.abs(k - ((Frame)localObject1).height) < 2)) {
-              break label395;
+              break label452;
             }
             localObject2 = FrameBufferCache.getInstance().get(i, k);
             this.copyFilter.RenderProcess(((Frame)localObject1).getTextureId(), i, k, -1, 0.0D, (Frame)localObject2);
             localObject1 = localObject2;
-          }
-          label389:
-          label395:
-          for (;;)
-          {
+            label225:
             ((StyleCustomNormalFilter)localObject3).updateWidthHeightParam(1.0F / j, 1.0F / m);
             ((StyleCustomNormalFilter)localObject3).updateImgSize(j, m);
-            localObject1 = ((StyleCustomNormalFilter)localObject3).RenderProcess((Frame)localObject1);
+            if (!this.isSizeUpdated) {
+              break label455;
+            }
+            localObject2 = FrameBufferCache.getInstance().get(this.width, this.height);
+            FrameUtil.clearFrame((Frame)localObject2, 0.0F, 0.0F, 0.0F, 0.0F, this.width, this.height);
+            ((StyleCustomNormalFilter)localObject3).RenderProcess(((Frame)localObject1).getTextureId(), this.width, this.height, -1, 0.0D, (Frame)localObject2);
+          }
+          label435:
+          label437:
+          label446:
+          label452:
+          label455:
+          for (localObject1 = localObject2;; localObject1 = ((StyleCustomNormalFilter)localObject3).RenderProcess((Frame)localObject1))
+          {
             this.tmpFrameMap.put(localCustomFilterItem.id, localObject1);
             break;
             if (localCustomFilterItem.preFilterId.size() == 1)
@@ -164,13 +176,12 @@ public class StyleCustomFilterGroup
             }
             ((StyleCustomNormalFilter)localObject3).setTexture2(((Frame)localObject2).getTextureId());
             break label105;
-            label378:
             break;
-            label380:
             i = ((Frame)localObject1).width;
             break label128;
             j = i;
             break label154;
+            break label225;
           }
         }
       }
@@ -208,6 +219,13 @@ public class StyleCustomFilterGroup
       }
     }
     return paramFrame;
+  }
+  
+  public void updateVideoSize(int paramInt1, int paramInt2)
+  {
+    this.width = paramInt1;
+    this.height = paramInt2;
+    this.isSizeUpdated = true;
   }
 }
 

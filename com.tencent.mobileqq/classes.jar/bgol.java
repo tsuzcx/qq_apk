@@ -1,31 +1,31 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class bgol
+  implements blih
 {
-  public String a;
-  public boolean a;
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
   
-  public static bgol a(Bundle paramBundle)
+  public bgol(TroopAppShortcutContainer paramTroopAppShortcutContainer) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    bgol localbgol = new bgol();
-    localbgol.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-    localbgol.jdField_a_of_type_Boolean = paramBundle.getBoolean("enableInvite");
-    return localbgol;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    this.b = paramInt3;
+    TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer, this.jdField_a_of_type_Int);
   }
   
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    boolean bool = bgoh.a(paramString1, paramQQAppInterface, paramString2);
-    paramString1 = new Intent();
-    paramString1.setAction("tencent.video.q2v.GroupInfoChanged");
-    paramString1.putExtra("uin", paramString2);
-    paramString1.putExtra("enableInvite", bool);
-    paramString1.setPackage(paramQQAppInterface.getApplication().getPackageName());
-    paramQQAppInterface.getApp().sendBroadcast(paramString1);
+    if ((paramInt != 0) || (this.jdField_a_of_type_Int != this.b - 1) || (!TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAppShortcutContainer", 2, "needLoad mCurPage:" + TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a());
+    }
+    TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer, TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a() + 1, 30, 2);
   }
 }
 

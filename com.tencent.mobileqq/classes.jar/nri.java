@@ -1,15 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nri
+public class nri
   implements View.OnClickListener
 {
-  nri(nre paramnre) {}
+  public nri(EqqAccountDetailActivity paramEqqAccountDetailActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2, oag paramoag) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(this.a.a, this.a.a.d);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    EqqAccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

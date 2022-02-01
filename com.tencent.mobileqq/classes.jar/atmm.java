@@ -1,8 +1,25 @@
-public abstract interface atmm
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+
+public class atmm
+  extends Handler
 {
-  public abstract void a(String paramString);
+  public atmm(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void aB_();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    FileAssistantActivity.f(this.a);
+  }
 }
 
 

@@ -1,115 +1,69 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-class bgqk
-  extends BaseAdapter
+public class bgqk
+  extends Observable
+  implements Manager
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
+  protected QQAppInterface a;
+  protected EntityManager a;
+  protected ConcurrentHashMap<String, TroopAioTopADInfo> a;
   
-  public bgqk(QQAppInterface paramQQAppInterface, Context paramContext, List<ResultRecord> paramList, View.OnClickListener paramOnClickListener)
+  public bgqk(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramContext;
-    this.jdField_a_of_type_AndroidContentContext = paramList;
-    Object localObject;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = localObject;
-    this.jdField_a_of_type_JavaUtilList = paramOnClickListener;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+        }
+        return;
+      }
+      finally {}
+    }
   }
   
-  private int a(int paramInt)
+  public TroopAioTopADInfo a(String paramString)
   {
-    if (paramInt == 4) {}
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (TroopAioTopADInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      return 11;
-      if (paramInt == 1) {
-        return 4;
-      }
-      if (paramInt == 3000) {
-        return 101;
-      }
-    } while (paramInt == 1006);
-    return 1;
-  }
-  
-  private void a(ImageView paramImageView, ResultRecord paramResultRecord)
-  {
-    if (anhk.z.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130844220);
       return;
-    }
-    if (anhk.A.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130844218);
-      return;
-    }
-    if (anhk.B.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130844223);
-      return;
-    }
-    if (anhk.y.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130839564);
-      return;
-    }
-    int i = a(paramResultRecord.a());
-    paramImageView.setImageDrawable(aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramResultRecord.a));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      paramString = (TroopAioTopADInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TroopAioTopADInfo.class, paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramString);
   }
   
-  public ResultRecord a(int paramInt)
+  public void onDestroy()
   {
-    return (ResultRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ImageView localImageView;
-    if (paramView == null)
-    {
-      localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localImageView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Bgqg.i, this.jdField_a_of_type_Bgqg.i));
-    }
-    for (;;)
-    {
-      a(localImageView, a(paramInt));
-      localImageView.setTag(a(paramInt));
-      localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localImageView.setFocusable(false);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localImageView;
-      localImageView = (ImageView)paramView;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqk
  * JD-Core Version:    0.7.0.1
  */

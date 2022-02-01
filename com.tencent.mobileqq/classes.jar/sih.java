@@ -1,30 +1,18 @@
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-class sih
+public class sih
+  extends pmr
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  
-  sih(sif paramsif, String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2)
+  public sih(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
+    super(paramString);
   }
   
-  @NotNull
-  public String toString()
+  public void a(pmk parampmk)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("PlayParams{vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", url='").append(this.jdField_b_of_type_JavaLangString).append('\'').append(", playType=");
-    if (this.jdField_a_of_type_Int == 101) {}
-    for (String str = "VOD";; str = "LIVE") {
-      return str + '}';
-    }
+    parampmk.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
   }
 }
 

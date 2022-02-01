@@ -1,26 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 
-public abstract class wle<Request extends wlf, Respond extends wla>
-  implements wld<Request, Respond>
+public final class wle
 {
-  public static Handler a = new Handler(Looper.getMainLooper());
+  protected int a = 0;
   
-  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
+  public PreloadQueue a()
   {
-    if (Thread.currentThread() == a.getLooper().getThread())
-    {
-      b(paramRequest, paramRespond, paramErrorMessage);
-      return;
-    }
-    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
+    PreloadQueue localPreloadQueue = new PreloadQueue();
+    PreloadQueue.access$002(localPreloadQueue, this.a);
+    return localPreloadQueue;
   }
   
-  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
+  public wle a(int paramInt)
+  {
+    this.a = paramInt;
+    return this;
+  }
 }
 
 

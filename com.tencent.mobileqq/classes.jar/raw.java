@@ -1,21 +1,27 @@
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class raw
+  implements uyg
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<rav> a;
-  public long b;
-  public String b;
-  public long c;
+  public raw(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public raw(rat paramrat) {}
+  public void a(URL paramURL, int paramInt) {}
   
-  public String toString()
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, suk paramsuk)
   {
-    return "\nGestureEvent{direction=" + this.jdField_a_of_type_Int + ", deltaFromLastScroll=" + this.jdField_a_of_type_Long + ", scrollDistance=" + this.jdField_b_of_type_Long + ", scrollMills=" + this.c + ", scrollSpeed=" + this.jdField_a_of_type_Float + ", scrollDownAndUpCoordinate='" + this.jdField_a_of_type_JavaLangString + '\'' + ", clickCoordinate='" + this.jdField_b_of_type_JavaLangString + '\'' + ", scrollStateInfos=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
+    }
+    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramsuk.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
+    }
+    this.a.setRightViewTextDisable(1);
   }
 }
 

@@ -1,26 +1,27 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class allo
-  implements bdvw
+  implements View.OnClickListener
 {
-  allo(alll paramalll) {}
+  allo(aljw paramaljw) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onClick(View paramView)
   {
-    FilterDesc localFilterDesc = (FilterDesc)parambdwt.jdField_a_of_type_Bdws.a();
-    if (parambdwt.jdField_a_of_type_Int != 0)
+    if (aljw.a(this.a) != null) {}
+    for (QQAppInterface localQQAppInterface = aljw.a(this.a).app;; localQQAppInterface = null)
     {
-      lbc.c("VideoFilterTools", "download IconFile failed. errorCode: " + parambdwt.b + ", errorMsg: " + parambdwt.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
+      if (localQQAppInterface != null) {
+        aqcz.a().a(aljw.a(this.a), localQQAppInterface);
+      }
+      aqcz.a().a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if ((alll.a(this.a).decrementAndGet() == 0) && (alll.a(this.a) != null)) {
-      alll.a(this.a).a(true);
-    }
-    lbc.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

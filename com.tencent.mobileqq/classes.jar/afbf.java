@@ -1,35 +1,35 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 public class afbf
-  extends WtloginObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afbf(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public afbf(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131717380), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (Object localObject = "1";; localObject = "0")
     {
-      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      bdll.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, (String)localObject, "", "", "");
+      if (QLog.isDevelopLevel()) {
+        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
       }
-    }
-    if (paramInt2 == 0) {
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_ls_setting", paramBoolean + "");
+      bdmc.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, (HashMap)localObject, "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    RegisterQQNumberActivity.a(this.a);
-    paramString = new Intent(this.a, LoginActivity.class);
-    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.b);
-    paramString.addFlags(131072);
-    this.a.startActivity(paramString);
-    this.a.finish();
   }
 }
 

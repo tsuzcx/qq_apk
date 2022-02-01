@@ -1,22 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agsx
-  implements bkhw
+public class agsx
+  implements View.OnClickListener
 {
-  agsx(agsw paramagsw, MessageForDeviceFile paramMessageForDeviceFile, bkho parambkho) {}
+  public agsx(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Agsw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
+    AIOLongShotHelper.a(this.a).performClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

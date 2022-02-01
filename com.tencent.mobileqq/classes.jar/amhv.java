@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class amhv
-  implements Manager
+class amhv
+  implements DialogInterface.OnClickListener
 {
-  public static String a = "ApolloNativeSSOReqMgr";
+  amhv(amhu paramamhu) {}
   
-  public amhv(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
+    if (this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) {
+      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.jdField_b_of_type_JavaLangString, (MqqHandler)this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get(), this.a.a.g + ".mp4", true));
     }
   }
-  
-  public void onDestroy() {}
 }
 
 

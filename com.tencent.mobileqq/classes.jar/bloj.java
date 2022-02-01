@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import android.widget.BaseExpandableListAdapter;
 
-class bloj
-  implements INetInfoHandler
+public abstract class bloj
+  extends BaseExpandableListAdapter
 {
-  bloj(bloi parambloi) {}
+  public abstract void a(View paramView, int paramInt);
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public boolean a()
   {
-    bloi.a(this.a);
+    return false;
   }
   
-  public void onNetNone2Wifi(String paramString)
-  {
-    bloi.a(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public abstract int c_();
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aicv;
+import aimn;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MultiForwardChatPie$7
   implements Runnable
 {
-  public MultiForwardChatPie$7(aicv paramaicv) {}
+  public MultiForwardChatPie$7(aimn paramaimn) {}
   
   public void run()
   {
-    aicv.a(this.this$0).setVisibility(0);
-    aicv.a(this.this$0).setText(2131697669);
+    aimn.a(this.this$0).setVisibility(0);
+    aimn.a(this.this$0).setText(2131697753);
     this.this$0.e.setText(this.this$0.h);
     this.this$0.F();
   }

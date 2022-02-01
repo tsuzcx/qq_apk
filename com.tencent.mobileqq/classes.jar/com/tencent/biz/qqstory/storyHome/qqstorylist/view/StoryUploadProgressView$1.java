@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
 import com.tencent.mobileqq.widget.MessageProgressView;
-import yni;
+import yrd;
 
 public class StoryUploadProgressView$1
   implements Runnable
 {
-  public StoryUploadProgressView$1(yni paramyni) {}
+  public StoryUploadProgressView$1(yrd paramyrd) {}
   
   public void run()
   {
-    this.this$0.a.b(yni.a(this.this$0) + "_" + hashCode());
+    this.this$0.a.b(yrd.a(this.this$0) + "_" + hashCode());
   }
 }
 

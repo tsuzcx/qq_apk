@@ -464,7 +464,7 @@ public class MsfServiceSdk
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramCommandCallbackerInfo.uin, "push.cmdRegister");
     localToServiceMsg.setMsfCommand(MsfCommand.registerCmdCallback);
-    z.a(localToServiceMsg, paramCommandCallbackerInfo);
+    aa.a(localToServiceMsg, paramCommandCallbackerInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -533,13 +533,13 @@ public class MsfServiceSdk
   {
     paramString1 = new ToServiceMsg(getMsfServiceName(), paramString1, "push.proxyRegister");
     paramString1.setMsfCommand(MsfCommand.proxyRegisterPush);
-    y localy = new y();
-    localy.a = paramInt;
-    localy.b = paramString2;
-    localy.c = paramString3;
-    localy.d = paramNotifyRegisterInfo;
-    localy.e = paramCommandCallbackerInfo;
-    z.a(paramString1, localy);
+    z localz = new z();
+    localz.a = paramInt;
+    localz.b = paramString2;
+    localz.c = paramString3;
+    localz.d = paramNotifyRegisterInfo;
+    localz.e = paramCommandCallbackerInfo;
+    aa.a(paramString1, localz);
     beforeSend(paramString1);
     return paramString1;
   }
@@ -555,7 +555,7 @@ public class MsfServiceSdk
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramPushRegisterInfo.uin, "push.register");
     localToServiceMsg.setMsfCommand(MsfCommand.registerPush);
-    z.a(localToServiceMsg, paramPushRegisterInfo);
+    aa.a(localToServiceMsg, paramPushRegisterInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -608,7 +608,7 @@ public class MsfServiceSdk
   {
     paramString = new ToServiceMsg(getMsfServiceName(), paramString, "push.resetCmds");
     paramString.setMsfCommand(MsfCommand.resetCmdCallback);
-    z.a(paramString, paramCommandCallbackerInfo);
+    aa.a(paramString, paramCommandCallbackerInfo);
     beforeSend(paramString);
     return paramString;
   }
@@ -701,7 +701,7 @@ public class MsfServiceSdk
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramPushRegisterInfo.uin, "push.unRegister");
     localToServiceMsg.setMsfCommand(MsfCommand.unRegisterPush);
-    z.a(localToServiceMsg, paramPushRegisterInfo);
+    aa.a(localToServiceMsg, paramPushRegisterInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }

@@ -1,30 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aerf
-  implements DialogInterface.OnClickListener
+  extends aqmy
 {
-  public aerf(NotificationActivity paramNotificationActivity) {}
+  public aerf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    QLog.i("NotificationActivity", 1, "setNegativeButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.a));
-    paramDialogInterface = new Intent("qqplayer_exit_action");
-    this.a.sendBroadcast(paramDialogInterface);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    this.a.finish();
+    if (paramBoolean)
+    {
+      aqmx localaqmx = (aqmx)this.a.app.getManager(112);
+      this.a.a = localaqmx.a(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerf
  * JD-Core Version:    0.7.0.1
  */

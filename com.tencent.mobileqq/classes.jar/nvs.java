@@ -1,32 +1,21 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nvs
-  implements atve
+  implements View.OnClickListener
 {
-  public nvs(VideoCoverView paramVideoCoverView) {}
+  public nvs(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    if (this.a.jdField_a_of_type_Int == 5) {
-      this.a.d();
+    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    for (;;)
-    {
-      nuv.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
-      return;
-      this.a.b(VideoCoverView.a(this.a));
-    }
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_Int = 6;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    this.a.g();
-    nuv.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

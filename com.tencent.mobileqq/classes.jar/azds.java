@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-
-public class azds
-  implements biaw
+public abstract interface azds
 {
-  public azds(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if (!this.a.e) {
-      this.a.e = true;
-    }
-  }
+  public abstract void b();
 }
 
 

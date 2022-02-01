@@ -1,88 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleBaseOperator.1;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class bbep
+class bbep
+  implements bber
 {
-  public QQAppInterface a;
+  bbep(bbeo parambbeo) {}
   
-  public bbep(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public MessageForScribble a(MessageForScribble paramMessageForScribble)
-  {
-    MessageForScribble localMessageForScribble = (MessageForScribble)bbzh.a(paramMessageForScribble);
-    if (localMessageForScribble == null) {
-      QLog.e("CreateResendScribbleMsg", 2, "null msg");
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
     }
-    if (localMessageForScribble != null)
+    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
     {
-      localMessageForScribble.offSet = paramMessageForScribble.offSet;
-      localMessageForScribble.gifId = paramMessageForScribble.gifId;
-      localMessageForScribble.localFildPath = paramMessageForScribble.localFildPath;
-      localMessageForScribble.combineFileMd5 = paramMessageForScribble.combineFileMd5;
-      localMessageForScribble.isread = true;
-      localMessageForScribble.fileUploadStatus = 0;
+      return;
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
+      if (!localPtvTemplateInfo.advertisement) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
+      }
+    } while (bbeo.a(this.a) == null);
+    bbeo.a(this.a).a(localPtvTemplateInfo);
+    return;
+    this.a.a(paramInt);
+    bbgf.jdField_b_of_type_JavaLangString = bbeo.a(this.a).a + "";
+    bbgf.c = localPtvTemplateInfo.id;
+    bbgf.a = localPtvTemplateInfo.hasGesture();
+    boolean bool;
+    if (localPtvTemplateInfo.kind == 3)
+    {
+      bool = true;
+      bbgf.jdField_b_of_type_Boolean = bool;
+      if (bday.a().a != 1) {
+        break label228;
+      }
     }
-    return localMessageForScribble;
-  }
-  
-  public MessageForScribble a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3)
-  {
-    MessageForScribble localMessageForScribble = (MessageForScribble)bbzh.a(-7001);
-    bbzh.a(this.a, localMessageForScribble, paramString3, paramString3, paramInt2);
-    localMessageForScribble.msgtype = -7001;
-    localMessageForScribble.offSet = paramInt1;
-    localMessageForScribble.gifId = paramInt3;
-    localMessageForScribble.localFildPath = paramString1;
-    localMessageForScribble.combineFileMd5 = paramString2;
-    localMessageForScribble.selfuin = this.a.getCurrentAccountUin();
-    localMessageForScribble.senderuin = localMessageForScribble.selfuin;
-    localMessageForScribble.issend = 1;
-    localMessageForScribble.fileUploadStatus = 0;
-    return localMessageForScribble;
-  }
-  
-  public boolean a(MessageForScribble paramMessageForScribble)
-  {
-    ThreadManager.post(new ScribbleBaseOperator.1(this, paramMessageForScribble), 8, null, false);
-    return true;
-  }
-  
-  public boolean a(MessageForScribble paramMessageForScribble, ayxc paramayxc)
-  {
-    bdzn localbdzn = new bdzn();
-    localbdzn.jdField_a_of_type_Boolean = false;
-    localbdzn.jdField_b_of_type_Int = 262153;
-    localbdzn.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localbdzn.c = paramMessageForScribble.frienduin;
-    localbdzn.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localbdzn.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localbdzn.jdField_a_of_type_Ayxc = paramayxc;
-    localbdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    this.a.a().a(localbdzn);
-    return true;
-  }
-  
-  public boolean a(MessageForScribble paramMessageForScribble, String paramString, ayyt paramayyt)
-  {
-    bdzn localbdzn = new bdzn();
-    localbdzn.jdField_a_of_type_Boolean = true;
-    localbdzn.jdField_b_of_type_Int = 262153;
-    localbdzn.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localbdzn.c = paramMessageForScribble.frienduin;
-    localbdzn.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localbdzn.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localbdzn.jdField_a_of_type_Ayyt = paramayyt;
-    localbdzn.i = paramString;
-    localbdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    paramMessageForScribble.fileUploadStatus = 3;
-    this.a.a().a(localbdzn);
-    return true;
+    label228:
+    for (paramInt = i;; paramInt = 2)
+    {
+      bbgf.f(paramInt);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

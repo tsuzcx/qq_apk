@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bltb;
+import bmud;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ class DiscussionInfoCardActivity$17$1
       return;
       if (TextUtils.isEmpty(this.a))
       {
-        QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity, 1, 2131715855, 0).b(this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298998));
+        QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity, 1, 2131715964, 0).b(this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299011));
         return;
       }
       ArrayList localArrayList = new ArrayList();
@@ -35,7 +35,7 @@ class DiscussionInfoCardActivity$17$1
       localBundle.putLong("req_share_id", 0L);
       localBundle.putString("detail_url", this.this$0.b);
       localBundle.putStringArrayList("image_url", localArrayList);
-      bltb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidAppActivity, localBundle, null);
+      bmud.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidAppActivity, localBundle, null);
     } while (!QLog.isColorLevel());
     QLog.i("DiscussionInfoCardActivity", 2, "shareToQzone.title:" + this.this$0.c + " filePath:" + this.a + " shareLink:" + this.this$0.b + " desc:" + "");
   }

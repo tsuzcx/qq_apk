@@ -136,7 +136,7 @@ public class HippyQQUpdateManager
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("iPlatform", 0);
     localJSONObject2.put("sAppKey", "mqq");
-    localJSONObject2.put("sAppVer", "8.4.1.4680");
+    localJSONObject2.put("sAppVer", "8.4.5.4745");
     localJSONObject2.put("sSdkVer", "3.0");
     localJSONObject2.put("sChannel", "10001");
     localJSONObject2.put("sGuid", getGuid());

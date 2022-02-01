@@ -88,6 +88,20 @@ public class GameInfoManager
     return localMiniAppInfo.launchParam.fromMiniAppId;
   }
   
+  public String getGroupIdFromReportData()
+  {
+    Object localObject = getMiniAppInfo();
+    if ((localObject != null) && (((MiniAppInfo)localObject).launchParam != null))
+    {
+      QMLog.i("GameInfoManager", "getGroupIdFromReportData = " + ((MiniAppInfo)localObject).launchParam.reportData);
+      localObject = ((MiniAppInfo)localObject).launchParam.reportData;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        return PathUtil.getJSONQueryString((String)localObject).optString("groupid", "");
+      }
+    }
+    return "";
+  }
+  
   public GameInfoManager.LaunchOptions getLaunchOptions()
   {
     if (this.launchOptions == null) {

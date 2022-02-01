@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import blyl;
+import bmzn;
 
 class UiApiPlugin$17
   implements Runnable
@@ -9,7 +9,7 @@ class UiApiPlugin$17
   
   public void run()
   {
-    blyl.a().a(this.a, this.b);
+    bmzn.a().a(this.a, this.b);
   }
 }
 

@@ -1,70 +1,43 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import android.os.Message;
+import dov.com.qq.im.capture.view.CountDownView;
+import java.lang.ref.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
-class bpux
-  implements Animator.AnimatorListener
+public final class bpux
+  extends Handler
 {
-  bpux(bput parambput) {}
+  private WeakReference<CountDownView> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bpux(CountDownView paramCountDownView)
   {
-    if (!bput.a(this.a)) {
-      return;
-    }
-    if (!bput.b(this.a))
-    {
-      bput.a(this.a, false);
-      if (bput.b(this.a) == 1)
-      {
-        bput.a(this.a, 3);
-        return;
-      }
-      bput.a(this.a, 0);
-      bput.a(this.a, "");
-      return;
-    }
-    if (bput.b(this.a) == 1)
-    {
-      bput.a(this.a, 2);
-      bput.a(this.a, bput.b(this.a), 1000);
-      return;
-    }
-    bput.a(this.a, "");
-    bput.a(this.a, 0);
-    bput.a(this.a, false);
+    this.a = new WeakReference(paramCountDownView);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(CountDownView paramCountDownView, @NotNull Message paramMessage)
   {
-    if (!bput.a(this.a)) {
-      return;
+    if (paramMessage.what == 1) {
+      CountDownView.a(paramCountDownView, CountDownView.a(paramCountDownView) - 1);
     }
-    if (!bput.b(this.a))
-    {
-      bput.a(this.a, false);
-      if (bput.b(this.a) == 1)
-      {
-        bput.a(this.a, 3);
-        return;
-      }
-      bput.a(this.a, 0);
-      bput.a(this.a, "");
-      return;
-    }
-    if (bput.b(this.a) == 1)
-    {
-      bput.a(this.a, 2);
-      bput.a(this.a, bput.b(this.a), 1000);
-      return;
-    }
-    bput.a(this.a, "");
-    bput.a(this.a, 0);
-    bput.a(this.a, false);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.get() == null)
+    {
+      removeCallbacksAndMessages(null);
+      return;
+    }
+    try
+    {
+      a((CountDownView)this.a.get(), paramMessage);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
+  }
 }
 
 

@@ -1,36 +1,27 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.gdtad.api.GdtAd;
 import com.tencent.qphone.base.util.QLog;
 
-public class aatk
-  implements acko
+class aatk
+  extends aaty
 {
-  public aatk(TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public void onAdClicked(GdtAd paramGdtAd)
+  aatk(aatd paramaatd, aatl paramaatl, String paramString1, String paramString2)
   {
-    QLog.i("TroopGiftPanel", 1, "onAdClicked");
+    super(paramaatd);
   }
   
-  public void onAdClosed(GdtAd paramGdtAd)
+  public void a(boolean paramBoolean)
   {
-    QLog.i("TroopGiftPanel", 1, "onAdClosed");
-  }
-  
-  public void onAdFailedToLoad(GdtAd paramGdtAd, ackn paramackn)
-  {
-    QLog.e("TroopGiftPanel", 1, "onAdFailedToLoad: " + paramackn.a());
-  }
-  
-  public void onAdImpression(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdImpression");
-  }
-  
-  public void onAdLoaded(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdLoaded");
-    TroopGiftPanel.a(this.a, paramGdtAd);
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aatd.a));
+      this.jdField_a_of_type_Aatd.a = System.currentTimeMillis();
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aatl.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
+    }
+    this.jdField_a_of_type_Aatl.a(this.b, false, "cmobine auido video done.");
   }
 }
 

@@ -1,42 +1,99 @@
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-class aulv
-  implements WtTicketPromise
+public class aulv
+  extends auls
 {
-  aulv(aulu paramaulu, String paramString) {}
+  private MessageForTroopFile a;
   
-  public void Done(Ticket paramTicket)
+  public aulv(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a))
-    {
-      QLog.d("DeleteFaceFragment", 1, "GetSkey Done, activity is empty");
-      return;
-    }
-    QLog.d("DeleteFaceFragment", 1, "GetSkey done");
-    if ((paramTicket == null) || (paramTicket._sig == null))
-    {
-      QLog.e("DeleteFaceFragment", 1, "ticket is error");
-      DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, this.jdField_a_of_type_Aulu.a.getString(2131693958));
-      return;
-    }
-    paramTicket = new String(paramTicket._sig);
-    DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, this.jdField_a_of_type_JavaLangString, paramTicket);
+    super(paramQQAppInterface, paramChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile = ((MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public long a()
   {
-    QLog.e("DeleteFaceFragment", 1, new Object[] { "getSkey Failed, ", paramErrMsg.getMessage() });
-    DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, paramErrMsg.getMessage());
+    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    if (localbftf == null) {
+      return 0L;
+    }
+    return localbftf.c;
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public aulp a()
   {
-    QLog.e("DeleteFaceFragment", 1, new Object[] { "getSkey timeout, ", paramErrMsg.getMessage() });
-    DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, paramErrMsg.getMessage());
+    aulu localaulu = new aulu(bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile));
+    localaulu.a(new aulw(this));
+    return localaulu;
+  }
+  
+  public String a()
+  {
+    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    if (localbftf != null) {
+      return localbftf.jdField_a_of_type_JavaLangString;
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
+    if (localbftf == null)
+    {
+      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
+      return false;
+    }
+    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "] fileId[" + localbftf.e + "]");
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
+    localTroopFileTransferManager.a(localbftf.e, localbftf.g, localbftf.c, localbftf.h);
+    if ((localbftf.b == 10) || (localbftf.b == 9)) {
+      if (localbftf.jdField_a_of_type_JavaUtilUUID != null) {
+        localTroopFileTransferManager.c(localbftf.jdField_a_of_type_JavaUtilUUID);
+      }
+    }
+    for (;;)
+    {
+      return true;
+      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : resumeDownload error, infoId is null");
+      return false;
+      if (localbftf.b != 7) {
+        break;
+      }
+      localTroopFileTransferManager.a(localbftf.e, localbftf.g, localbftf.c, localbftf.h);
+    }
+    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : can not handle file info status[" + localbftf.b + ",download error");
+    return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq;
+  }
+  
+  public boolean b()
+  {
+    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    if (localbftf == null) {
+      QLog.i("TroopFileSaveModel<QFile>", 1, "stopDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
+    }
+    while ((localbftf.b != 8) && (localbftf.b != 9) && (localbftf.b != 10)) {
+      return false;
+    }
+    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
+    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).d(localbftf.jdField_a_of_type_JavaUtilUUID);
+    return true;
+  }
+  
+  public boolean c()
+  {
+    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    return (localbftf != null) && (localbftf.b == 8);
   }
 }
 

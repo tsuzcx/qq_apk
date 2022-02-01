@@ -1,77 +1,118 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class annc
-  extends FriendListHandler
-  implements bcbk
+  implements anng
 {
-  private ToServiceMsg a;
-  
-  public annc(QQAppInterface paramQQAppInterface)
+  public QQAppInterface a()
   {
-    super(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    Object localObject2 = new ArrayList(2);
-    ((ArrayList)localObject2).add(this.app.getAccount());
-    Object localObject1 = (bdeh)this.app.getManager(61);
-    if (localObject1 != null) {}
-    for (localObject1 = ((bdeh)localObject1).a();; localObject1 = null)
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
-        ((ArrayList)localObject2).addAll((Collection)localObject1);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+        return (QQAppInterface)localAppRuntime;
       }
-      localObject1 = new String[((ArrayList)localObject2).size()];
-      ((ArrayList)localObject2).toArray((Object[])localObject1);
-      b((String[])localObject1);
-      if (this.a != null)
+    }
+    return null;
+  }
+  
+  public List<TraceData> a()
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    return localQQAppInterface.a().createEntityManager().query(TraceData.class);
+  }
+  
+  public boolean a(List<TraceData> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return false;
+    }
+    Object localObject;
+    EntityTransaction localEntityTransaction;
+    TraceData localTraceData;
+    try
+    {
+      localObject = a();
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((QQAppInterface)localObject).a().createEntityManager();
+      localEntityTransaction = ((EntityManager)localObject).getTransaction();
+      localEntityTransaction.begin();
+      paramList = paramList.iterator();
+      for (;;)
       {
-        localObject2 = this.app.a.a(this.a.getServiceCmd());
-        if (localObject2 != null)
+        if (paramList.hasNext())
         {
-          localObject1 = new UniPacket(true);
-          ((UniPacket)localObject1).setEncodeName("utf-8");
-          if (((aber)localObject2).a(this.a, (UniPacket)localObject1))
+          localTraceData = (TraceData)paramList.next();
+          if (localTraceData.getStatus() == 1000)
           {
-            localObject2 = new ReqItem();
-            ((ReqItem)localObject2).eServiceID = 119;
-            ((ReqItem)localObject2).vecParam = ((UniPacket)localObject1).encode();
-            return localObject2;
+            ((EntityManager)localObject).persistOrReplace(localTraceData);
+            continue;
+            return true;
           }
         }
       }
-      return null;
     }
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if ((paramRespItem.eServiceID == 119) && (paramRespItem.cResult == 2))
+    catch (Throwable paramList)
     {
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetRichSig");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
-      this.app.a(this.a, localFromServiceMsg);
+      QLog.e("TraceReport", 1, paramList, new Object[0]);
+    }
+    for (;;)
+    {
+      ((EntityManager)localObject).update(localTraceData);
+      break;
+      localEntityTransaction.commit();
+      localEntityTransaction.end();
+      ((EntityManager)localObject).close();
     }
   }
   
-  public void send(ToServiceMsg paramToServiceMsg)
+  public boolean b(List<TraceData> paramList)
   {
-    this.a = paramToServiceMsg;
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return false;
+    }
+    Object localObject;
+    EntityTransaction localEntityTransaction;
+    try
+    {
+      localObject = a();
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((QQAppInterface)localObject).a().createEntityManager();
+      localEntityTransaction = ((EntityManager)localObject).getTransaction();
+      localEntityTransaction.begin();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ((EntityManager)localObject).remove((TraceData)paramList.next());
+        continue;
+        return true;
+      }
+    }
+    catch (Throwable paramList)
+    {
+      QLog.e("TraceReport", 1, paramList, new Object[0]);
+    }
+    for (;;)
+    {
+      localEntityTransaction.commit();
+      localEntityTransaction.end();
+      ((EntityManager)localObject).close();
+    }
   }
 }
 

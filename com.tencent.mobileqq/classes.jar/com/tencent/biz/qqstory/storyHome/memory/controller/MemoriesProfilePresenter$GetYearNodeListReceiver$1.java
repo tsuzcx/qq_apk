@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import wpm;
-import wpy;
-import yff;
-import yfj;
+import wth;
+import wtt;
+import yja;
+import yje;
 
 public class MemoriesProfilePresenter$GetYearNodeListReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$GetYearNodeListReceiver$1(yfj paramyfj, yff paramyff) {}
+  public MemoriesProfilePresenter$GetYearNodeListReceiver$1(yje paramyje, yja paramyja) {}
   
   public void run()
   {
-    ((wpy)wpm.a(2)).a(this.a.a);
+    ((wtt)wth.a(2)).a(this.a.a);
   }
 }
 

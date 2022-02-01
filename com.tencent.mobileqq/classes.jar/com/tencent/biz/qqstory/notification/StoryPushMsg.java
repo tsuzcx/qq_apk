@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import xet;
+import xio;
 
 public class StoryPushMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<StoryPushMsg> CREATOR = new xet();
+  public static final Parcelable.Creator<StoryPushMsg> CREATOR = new xio();
   public int a;
   public long a;
   public Bundle a;

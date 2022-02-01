@@ -1,4 +1,10 @@
-public abstract interface rns {}
+class rns
+{
+  public int a;
+  public long a;
+  public int b = 2147483647;
+  public long b;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

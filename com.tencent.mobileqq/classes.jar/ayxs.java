@@ -1,25 +1,31 @@
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ocr.OCRHandler.BaseOCRReqBigDataListener.1;
+import com.tencent.qphone.base.util.QLog;
+
 public class ayxs
+  implements beuq
 {
-  public ayxt a;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public String a()
+  public ayxs(ayxr paramayxr, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
   {
-    return null;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void onResp(bevm parambevm)
   {
-    if (this.a == null) {
-      this.a = new ayxt();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp()");
     }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
+    ThreadManager.post(new OCRHandler.BaseOCRReqBigDataListener.1(this, parambevm), 8, null, true);
   }
   
-  protected boolean a()
-  {
-    return false;
-  }
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

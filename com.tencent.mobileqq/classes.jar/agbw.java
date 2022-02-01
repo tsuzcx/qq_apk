@@ -1,28 +1,6 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
-
-public class agbw
-  extends TranslateAnimation
+public abstract interface agbw
 {
-  public int a = 0;
-  
-  public agbw()
-  {
-    this(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
-  }
-  
-  public agbw(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-  }
-  
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    if (!agay.a) {
-      setStartTime(paramLong);
-    }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
+  public abstract void a(int paramInt);
 }
 
 

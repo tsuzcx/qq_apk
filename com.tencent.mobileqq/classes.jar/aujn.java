@@ -1,75 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class aujn
-  implements BusinessObserver
+class aujn
+  implements ShareActionSheet.OnItemClickListener
 {
-  public aujn(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  aujn(aujj paramaujj) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.a.b("KEY_GET_APP_INFO", paramBoolean);
-    QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver onReceive isSuccess = ", Boolean.valueOf(paramBoolean) });
-    Object localObject2 = null;
-    synchronized (ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject)
+    if (paramActionSheetItem == null) {}
+    do
     {
-      this.a.l = false;
-      Object localObject1 = localObject2;
-      if (paramBoolean) {}
-      for (;;)
+      return;
+      aujj.a(this.a).dismiss();
+      if (paramActionSheetItem.listener != null)
       {
-        try
-        {
-          localObject1 = paramBundle.getByteArray("data");
-          if (localObject1 != null) {
-            paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          }
-        }
-        catch (Exception localException1)
-        {
-          paramBundle = null;
-        }
-        try
-        {
-          paramBundle.mergeFrom((byte[])localObject1);
-          this.a.jdField_a_of_type_Aufu = aufu.a(paramBundle);
-          if ((this.a instanceof ForwardSdkShareOption)) {
-            ((auke)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(350)).a().a(this.a.b, this.a.jdField_a_of_type_Aufu);
-          }
-          QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "get appinfo time=", Long.valueOf(System.currentTimeMillis() - this.a.c), ", ret=", Integer.valueOf(paramBundle.ret.get()) });
-          this.a.e();
-          localObject1 = paramBundle;
-          this.a.y();
-          if ((localObject1 == null) || (((GetAppInfoProto.GetAppinfoResponse)localObject1).ret.get() == 0) || (!(this.a instanceof ForwardSdkShareOption))) {
-            break;
-          }
-          if (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("enable_d55", false)) {
-            this.a.a(((GetAppInfoProto.GetAppinfoResponse)localObject1).msg.get(), true);
-          }
-          ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject.notify();
-          return;
-        }
-        catch (Exception localException2)
-        {
-          Bundle localBundle;
-          break label298;
-        }
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive data=null");
-        localObject1 = localObject2;
-        continue;
-        label298:
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver.onReceive ", localException1.getMessage() });
-        localBundle = paramBundle;
+        paramActionSheetItem.listener.onClick(null);
+        return;
       }
-      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive success, go share");
-    }
+    } while (this.a.a == null);
+    this.a.a.a(paramActionSheetItem);
   }
 }
 

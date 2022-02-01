@@ -1,25 +1,10 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
-
-public class asun
-  implements Cloneable
+public abstract interface asun
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
-  public TextView c;
+  public abstract void b();
   
-  public asun(asum paramasum) {}
+  public abstract void b(float paramFloat);
+  
+  public abstract void c(float paramFloat);
 }
 
 

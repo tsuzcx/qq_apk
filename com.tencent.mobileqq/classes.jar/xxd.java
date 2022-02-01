@@ -1,19 +1,30 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xxd
-  implements xwz
+public final class xxd
+  extends QQUIEventReceiver<xwr, ymj>
 {
-  xxd(xxc paramxxc) {}
-  
-  public void a(@NonNull xwx paramxwx)
+  public xxd(@NonNull xwr paramxwr)
   {
-    paramxwx = paramxwx.a();
-    if (paramxwx != null) {
-      xxc.a(this.a, paramxwx);
+    super(paramxwr);
+  }
+  
+  public void a(@NonNull xwr paramxwr, @NonNull ymj paramymj)
+  {
+    if ((paramymj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxwr.a != null) && (TextUtils.equals(paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxwr.a.b)))
+    {
+      yuk.a(paramxwr.b, "refresh feed item , feed id :%s", paramxwr.a.b);
+      paramxwr.i();
     }
   }
   
-  public void b(@NonNull xwx paramxwx) {}
+  public Class acceptEventClass()
+  {
+    return ymj.class;
+  }
 }
 
 

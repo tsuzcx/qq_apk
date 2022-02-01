@@ -1,20 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.view.MotionEvent;
 
-class qei
-  implements qlx
+public abstract interface qei
 {
-  qei(qeh paramqeh, ArticleInfo paramArticleInfo, Container paramContainer) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b != null)
-    {
-      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b;
-      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
-    }
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

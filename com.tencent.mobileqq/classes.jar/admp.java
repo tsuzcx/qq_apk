@@ -1,48 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class admp
-  implements CompoundButton.OnCheckedChangeListener
+  extends Observable
 {
-  public admp(AssistantSettingActivity paramAssistantSettingActivity) {}
+  private static admp a;
+  public HashMap<String, String> a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static admp a()
   {
-    if (AppSetting.c) {
-      this.a.f.setContentDescription(anni.a(2131699586));
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    if (jdField_a_of_type_Admp == null) {}
+    try
     {
-      i = 1;
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131694390), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break label106;
+      if (jdField_a_of_type_Admp == null) {
+        jdField_a_of_type_Admp = new admp();
       }
-      this.a.turnOnShake();
+      return jdField_a_of_type_Admp;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 0;
-      break;
-      label106:
-      this.a.turnOffShake();
-    }
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    paramHashMap.put("key_type", "t_held_thread");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     admp
  * JD-Core Version:    0.7.0.1
  */

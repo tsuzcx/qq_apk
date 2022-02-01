@@ -1,223 +1,42 @@
+import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bdtt
-  extends bdsh
+class bdtt
+  implements View.OnClickListener
 {
-  protected BaseApplicationImpl a;
+  bdtt(bdts parambdts) {}
   
-  public bdtt(BaseApplicationImpl paramBaseApplicationImpl)
+  public void onClick(View paramView)
   {
-    this.a = paramBaseApplicationImpl;
-  }
-  
-  public static Bitmap a(Drawable paramDrawable)
-  {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    Bitmap localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.RGB_565);
-    Canvas localCanvas = new Canvas(localBitmap);
-    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-    paramDrawable.draw(localCanvas);
-    return localBitmap;
-  }
-  
-  private Bitmap a(bdtu parambdtu)
-  {
-    int j = 0;
-    Object localObject2;
-    if (parambdtu == null) {
-      localObject2 = null;
+    Context localContext = paramView.getContext();
+    if (bhnv.a(localContext) == 1)
+    {
+      bdts.a(this.a, localContext, paramView);
+      if ((localContext instanceof BaseActivity)) {
+        bdll.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+      }
     }
     for (;;)
     {
-      return localObject2;
-      int i = parambdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth;
-      int k = parambdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight;
-      try
+      bdll.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!bhnv.g(localContext))
       {
-        BitmapFactory.Options localOptions = new BitmapFactory.Options();
-        localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-        localOptions.inDensity = 160;
-        localOptions.inTargetDensity = 160;
-        localOptions.inScreenDensity = 160;
-        localOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(parambdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
-        localOptions.inJustDecodeBounds = false;
-        localOptions.inSampleSize = b(localOptions, i, k);
-        Object localObject1 = atwg.a(parambdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
-        k = afur.a(135.0F, BaseApplicationImpl.getContext().getResources());
-        if (localOptions.outHeight > localOptions.outWidth * 2.0F)
-        {
-          i = (int)((localOptions.outHeight - localOptions.outWidth * 2.0F) / 2.0F);
-          localOptions.outHeight = ((int)(localOptions.outWidth * 2.0F));
-        }
-        for (;;)
-        {
-          localObject2 = Bitmap.createBitmap((Bitmap)localObject1, j, i, localOptions.outWidth, localOptions.outHeight);
-          if (localOptions.outWidth <= k)
-          {
-            localObject1 = localObject2;
-            if (localOptions.outHeight <= k) {}
-          }
-          else
-          {
-            localObject1 = bgmo.a((Bitmap)localObject2, k);
-          }
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            break;
-          }
-          return new beak(parambdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path).a((Bitmap)localObject1);
-          if (localOptions.outWidth <= localOptions.outHeight * 2.0F) {
-            break label361;
-          }
-          j = (int)((localOptions.outWidth - localOptions.outHeight * 2.0F) / 2.0F);
-          localOptions.outWidth = ((int)(localOptions.outHeight * 2.0F));
-          i = 0;
-        }
+        QQToast.a(localContext, 2131691989, 0).a();
       }
-      catch (Exception parambdtu)
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("_dataline_file", 2, "make Thumb ", parambdtu);
-        }
-        return null;
-      }
-      catch (OutOfMemoryError parambdtu)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("_dataline_file", 2, "make Thumb OOM ", parambdtu);
-            continue;
-            label361:
-            i = 0;
-          }
-        }
+        Resources localResources = localContext.getResources();
+        bhlq.a(localContext, 232, "", anzj.a(2131713394), localResources.getString(2131690580), localResources.getString(2131694098), new bdtu(this, localContext, paramView), new bdtv(this)).show();
       }
     }
-  }
-  
-  public bdtu a(URL paramURL)
-  {
-    try
-    {
-      bdtu localbdtu = new bdtu(this);
-      paramURL = paramURL.getFile().split("\\|");
-      localbdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
-      localbdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = paramURL[0];
-      localbdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
-      localbdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
-      localbdtu.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.modifiedDate = Long.parseLong(paramURL[3]);
-      localbdtu.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramURL[4]);
-      return localbdtu;
-    }
-    catch (Exception paramURL) {}
-    return null;
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramOutputStream = a(paramDownloadParams.url);
-    if (paramOutputStream != null) {
-      return new File(paramOutputStream.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
-    }
-    return new File(anhk.aZ);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    int i = 1;
-    int j = 1;
-    if ((paramInt1 == 0) || (paramInt2 == 0) || (paramInt1 == -1) || (paramInt2 == -1)) {
-      if (paramOptions.outWidth * paramOptions.outHeight > 5000000)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("_dataline_file", 2, "calculateInSampleSize options.outWidth*options.outHeight=" + paramOptions.outWidth * paramOptions.outHeight);
-        }
-        j = 2;
-      }
-    }
-    int k;
-    int m;
-    label95:
-    do
-    {
-      do
-      {
-        return j;
-        k = paramOptions.outHeight;
-        m = paramOptions.outWidth;
-        j = i;
-      } while (k <= paramInt2);
-      j = i;
-    } while (m <= paramInt1);
-    int n = Math.round(k / paramInt2);
-    j = Math.round(m / paramInt1);
-    if (n < j) {}
-    for (;;)
-    {
-      j = i;
-      if (n < 2) {
-        break;
-      }
-      m /= 2;
-      k /= 2;
-      i *= 2;
-      break label95;
-      n = j;
-    }
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramURLDrawableHandler = AlbumThumbManager.getInstance(BaseApplicationImpl.getContext());
-    Object localObject = new bdtv(this);
-    localObject = paramURLDrawableHandler.getThumb(paramDownloadParams.url, (beai)localObject);
-    paramURLDrawableHandler = (URLDrawableHandler)localObject;
-    if (localObject == null)
-    {
-      paramURLDrawableHandler = BaseApplicationImpl.getContext();
-      int i = atvo.a(paramFile.getPath());
-      paramURLDrawableHandler = a(paramURLDrawableHandler.getResources().getDrawable(atvo.a(i)));
-    }
-    paramDownloadParams = a(paramDownloadParams.url);
-    paramFile = paramURLDrawableHandler;
-    if (paramDownloadParams != null)
-    {
-      paramFile = paramURLDrawableHandler;
-      if (paramDownloadParams.jdField_a_of_type_Boolean)
-      {
-        paramFile = bgmo.a(paramURLDrawableHandler, afur.a(12.0F, BaseApplicationImpl.getContext().getResources()));
-        paramURLDrawableHandler.recycle();
-      }
-    }
-    return paramFile;
   }
 }
 

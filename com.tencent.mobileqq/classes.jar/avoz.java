@@ -1,45 +1,47 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class avoz
-  implements aaob
+class avoz
+  implements askn
 {
-  public avoz(QQApiPlugin.3 param3, Bitmap paramBitmap) {}
+  avoz(avoy paramavoy) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(View paramView)
   {
-    int j = 0;
-    int i = 0;
-    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
+    String str = bhyk.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if (localViewParent != null)
     {
-      paramBundle = WxShareHelperFromReadInjoy.a();
-      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
-      str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
-      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
-      for (;;)
-      {
-        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
-        return;
-        i = 1;
+      localViewParent = localViewParent.getParent();
+      if ((localViewParent instanceof ChatXListView)) {
+        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
       }
     }
-    paramBundle = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
-    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
-    for (i = j;; i = 1)
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
+    }
+    for (;;)
     {
-      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
+      }
     }
   }
 }

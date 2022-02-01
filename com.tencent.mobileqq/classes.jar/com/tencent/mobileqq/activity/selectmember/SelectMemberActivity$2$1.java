@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alsx;
+import amep;
 import android.widget.TextView;
 
 public class SelectMemberActivity$2$1
   implements Runnable
 {
-  public SelectMemberActivity$2$1(alsx paramalsx) {}
+  public SelectMemberActivity$2$1(amep paramamep) {}
   
   public void run()
   {

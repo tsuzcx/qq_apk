@@ -1,13 +1,6 @@
-public class bihs
+public abstract interface bihs
 {
-  public bihm a;
-  public String a;
-  
-  public bihs(String paramString, bihm parambihm)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bihm = parambihm;
-  }
+  public abstract void callback(int paramInt);
 }
 
 

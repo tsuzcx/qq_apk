@@ -1,266 +1,129 @@
-import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Environment;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginRuntime;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import android.os.Bundle;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import com.tencent.weiyun.utils.NetworkUtils;
-import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+import cooperation.qzone.contentbox.QZoneMsgFragment.QZoneMsgUIObserver.1;
+import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
+import cooperation.qzone.util.QZLog;
+import java.util.ArrayList;
 
-public final class bmyh
+public class bmyh
+  extends bmyj
 {
-  private static final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray;
-  private static String jdField_a_of_type_JavaLangString;
-  private static final Map<Integer, String> jdField_a_of_type_JavaUtilMap;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static String b;
-  private static String c;
-  private static String d;
+  public bmyh(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  static
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangString = "";
-    b = "";
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), "16*16");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), "32*32");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), "64*64");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), "128*128");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), "320*320");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(5), "384*384");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(6), "640*640");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(7), "750*750");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(8), "1024*1024");
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(9);
-    jdField_a_of_type_AndroidUtilSparseArray.put(0, "/16");
-    jdField_a_of_type_AndroidUtilSparseArray.put(1, "/32");
-    jdField_a_of_type_AndroidUtilSparseArray.put(2, "/64");
-    jdField_a_of_type_AndroidUtilSparseArray.put(3, "/128");
-    jdField_a_of_type_AndroidUtilSparseArray.put(4, "/320");
-    jdField_a_of_type_AndroidUtilSparseArray.put(5, "/384");
-    jdField_a_of_type_AndroidUtilSparseArray.put(6, "/640");
-    jdField_a_of_type_AndroidUtilSparseArray.put(7, "/750");
-    jdField_a_of_type_AndroidUtilSparseArray.put(8, "/1024");
-  }
-  
-  public static PluginRuntime a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg");
+    }
+    super.a(paramBoolean, paramBundle);
+    if (!paramBoolean)
     {
-      Class localClass = Class.forName("com.weiyun.plugin.app.WeiyunRuntime");
-      paramBaseApplicationImpl = localClass;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      try
-      {
-        ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "WeiyunPlugin.apk");
-        paramBaseApplicationImpl = localClassLoader.loadClass("com.weiyun.plugin.app.WeiyunRuntime");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
-      catch (ClassNotFoundException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof PluginRuntime)));
-      paramBaseApplicationImpl = (PluginRuntime)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl == null) {
-      return null;
-    }
-  }
-  
-  public static Pair<Pair<String, String>, Long> a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return new Pair(new Pair(paramString, paramString), Long.valueOf(0L));
-    }
-    String str = (String)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    paramString = new StringBuilder(paramString);
-    if (paramBoolean)
-    {
-      str = (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-      if (!TextUtils.isEmpty(str)) {
-        paramString.append(str);
-      }
-      paramString = paramString.toString();
-      l = paramString.hashCode() * 31;
-      return new Pair(new Pair(paramString, paramString), Long.valueOf(l));
-    }
-    paramInt = NetworkUtils.getNetworkType(BaseApplicationImpl.getApplication());
-    paramString.append("&nettype=").append(paramInt);
-    if (!TextUtils.isEmpty(str)) {
-      paramString.append("&size=").append(str);
-    }
-    paramString = paramString.toString();
-    str = paramString.replaceFirst("cn=\\d", "").replaceFirst("nettype=\\d", "");
-    long l = str.hashCode() * 31;
-    return new Pair(new Pair(paramString, str), Long.valueOf(l));
-  }
-  
-  public static String a()
-  {
-    return c;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    paramString1 = String.format("https://jump.weiyun.com/?from=30001&aid=%s", new Object[] { paramString2 });
-    QLog.d("Weiyun.AlbumBackup", 2, "weiyun vip payurl : " + paramString1);
-    return paramString1;
-  }
-  
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean) {
-      try
-      {
-        if (!jdField_a_of_type_Boolean)
-        {
-          BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          bmxt.a(localBaseApplicationImpl, false);
-          bmyx.a(localBaseApplicationImpl);
-          a(localBaseApplicationImpl);
-          jdField_a_of_type_Boolean = true;
-        }
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  private static void a(Application paramApplication)
-  {
-    c = atut.a().b();
-    if ("mounted".equals(Environment.getExternalStorageState())) {}
-    for (paramApplication = new File(bhgg.a(anhk.ba));; paramApplication = paramApplication.getCacheDir())
-    {
-      d = new File(paramApplication, "diskcache").getAbsolutePath();
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onLoadMoreMsg error");
+      QZoneMsgFragment.a(this.a, paramBoolean);
       return;
     }
-  }
-  
-  public static void a(Context paramContext)
-  {
-    paramContext.sendBroadcast(new Intent("enter_file_assit"), "com.tencent.msg.permission.pushnotify");
-  }
-  
-  public static void a(Context paramContext, long paramLong)
-  {
-    bmyx.a(paramContext, paramLong);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      jdField_a_of_type_JavaLangString = paramString1;
+    paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+    if (paramBundle != null)
+    {
+      this.a.a.b(paramBundle.ArkNes_vec);
+      QZoneMsgFragment.a(this.a);
+      QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg ，hasMore=" + QZoneMsgFragment.c(this.a));
     }
-    if (!TextUtils.isEmpty(paramString2)) {
-      b = paramString2;
+    for (;;)
+    {
+      QZoneMsgFragment.a(this.a, paramBoolean);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg ，rsp=null");
+      }
     }
   }
   
-  public static String[] a()
+  protected boolean a(boolean paramBoolean, Bundle paramBundle)
   {
-    return new String[] { jdField_a_of_type_JavaLangString, b };
+    return true;
   }
   
-  public static String b()
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    return d;
-  }
-  
-  public static String b(String paramString1, String paramString2)
-  {
-    paramString1 = String.format("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&aid=%s", new Object[] { paramString2 });
-    QLog.d("Weiyun.AlbumBackup", 2, "qq vip payurl : " + paramString1);
-    return paramString1;
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Boolean) {
-      try
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg");
+    }
+    super.b(paramBoolean, paramBundle);
+    if (!paramBoolean) {
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onPreloadMsg error");
+    }
+    do
+    {
+      return;
+      paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+      if (paramBundle != null)
       {
-        if (jdField_a_of_type_Boolean)
-        {
-          bmxt.a(false, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-          jdField_a_of_type_Boolean = false;
-        }
+        QZoneMsgFragment.a(this.a, paramBundle);
+        QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+        this.a.a.a(paramBundle.ArkNes_vec);
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg ，hasMore=" + QZoneMsgFragment.c(this.a));
         return;
       }
-      finally {}
+    } while (!QLog.isColorLevel());
+    QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg ，rsp=null");
+  }
+  
+  protected void c(boolean paramBoolean, Bundle paramBundle)
+  {
+    QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "onReFreshMsg start");
+    super.c(paramBoolean, paramBundle);
+    if (!paramBoolean)
+    {
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onReFreshMsg error");
+      QZoneMsgFragment.b(this.a, paramBoolean);
+      return;
+    }
+    paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+    if (paramBundle != null)
+    {
+      QZoneMsgFragment.a(this.a, paramBundle);
+      QZoneMsgFragment.a(this.a).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1(this, paramBundle), 500L);
+      QZoneMsgFragment.b(this.a, true);
+      QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("onReFreshMsg ，hasMore=").append(QZoneMsgFragment.c(this.a)).append(" ,ArkNes_vec size:");
+        if (paramBundle.ArkNes_vec == null) {
+          break label175;
+        }
+        paramBundle = String.valueOf(paramBundle.ArkNes_vec.size());
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, paramBundle);
+      }
+    }
+    for (;;)
+    {
+      QZoneMsgFragment.b(this.a, paramBoolean);
+      return;
+      label175:
+      paramBundle = "null";
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onReFreshMsg ，rsp=null");
+      }
     }
   }
   
-  public static String c()
+  protected void d(boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("Weiyun.AlbumBackup", 2, "weiyun shapce payurl : " + "https://jump.weiyun.com/?from=3047");
-    return "https://jump.weiyun.com/?from=3047";
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_JavaLangString = "";
-    b = "";
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLikeFeed start");
+    }
+    super.d(paramBoolean, paramBundle);
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBoolean = paramBundle.getBoolean("like_key");
+      long l = paramBundle.getLong("entity_pushtime");
+      this.a.a.a(l, paramBoolean);
+    }
   }
 }
 

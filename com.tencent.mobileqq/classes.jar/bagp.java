@@ -1,76 +1,60 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.app.Dialog;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bagp
-  extends QIPCModule
+class bagp
+  implements View.OnClickListener
 {
-  private static bagp jdField_a_of_type_Bagp;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  bagp(bagl parambagl, Card paramCard) {}
   
-  private bagp(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public static bagp a()
-  {
-    if (jdField_a_of_type_Bagp != null) {
-      return jdField_a_of_type_Bagp;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    switch (paramView.getId())
     {
-      if (jdField_a_of_type_Bagp == null) {
-        jdField_a_of_type_Bagp = new bagp("REAL_NAME");
-      }
-      bagp localbagp = jdField_a_of_type_Bagp;
-      return localbagp;
     }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RealName", 2, "onCall s: " + paramString);
-    }
-    if (paramBundle == null) {}
-    do
+    for (;;)
     {
-      return null;
-      paramInt = paramBundle.getInt("result");
-      paramBundle = paramBundle.getString("source");
-      if (QLog.isColorLevel()) {
-        QLog.i("RealName", 2, "result is : " + paramInt);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((bagl.a(this.jdField_a_of_type_Bagl) != null) && (bagl.a(this.jdField_a_of_type_Bagl).isShowing())) {
+        bagl.a(this.jdField_a_of_type_Bagl).dismiss();
       }
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle != null) && (paramString != null) && (TextUtils.equals(paramBundle, "avgame")))
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration))
       {
-        paramBundle = (anjo)paramString.a(4);
-        if (paramBundle != null)
-        {
-          if (paramInt == 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            if (bool) {
-              paramString.getPreferences().edit().putBoolean("has_auth_real_name", bool).commit();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("RealName", 2, "notifyUI");
-            }
-            paramBundle.notifyUI(15, true, new Object[] { Boolean.valueOf(bool) });
-            return null;
-          }
-        }
+        bdll.b(bagl.c(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
       }
-    } while ((paramInt == 0) || (paramString == null));
-    ((anjo)paramString.a(4)).f();
-    return null;
+      else
+      {
+        bdll.b(bagl.d(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
+        continue;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
+          PublicFragmentActivity.a(bagl.g(this.jdField_a_of_type_Bagl), ExtendFriendEditFragment.class);
+        }
+        for (;;)
+        {
+          if ((bagl.a(this.jdField_a_of_type_Bagl) != null) && (bagl.a(this.jdField_a_of_type_Bagl).isShowing())) {
+            bagl.a(this.jdField_a_of_type_Bagl).dismiss();
+          }
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
+            break label284;
+          }
+          bdll.b(bagl.e(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
+          break;
+          Intent localIntent = InterestSwitchEditActivity.a(bagl.h(this.jdField_a_of_type_Bagl));
+          bagl.i(this.jdField_a_of_type_Bagl).startActivityForResult(localIntent, 1022);
+        }
+        label284:
+        bdll.b(bagl.f(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

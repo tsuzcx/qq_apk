@@ -1,62 +1,65 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
 class bmwn
-  implements View.OnClickListener
+  implements ModuleDownloadListener
 {
   bmwn(bmwm parambmwm) {}
   
-  public void onClick(View paramView)
+  public void onDownloadCanceled(String paramString)
   {
-    if ((paramView != null) && (paramView.getId() == 2131367420))
+    bmwm.b(false);
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    bmwm.b(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("upload.so")) {
+      return;
+    }
+    bmwm.b(false);
+    String str = bmwm.a().getAbsolutePath();
+    QLog.d("[upload2]UploadEnv", 1, "upload so download success : " + str);
+    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    if (!bnjl.b(new File(paramString), localFile))
     {
-      QZLog.i("VipGeneralGdtShowView", " @getGdtInfo dispear");
-      bmwe localbmwe = new bmwe((Activity)bmwm.a(this.a));
-      Object localObject = new bmwk();
-      bmwk localbmwk = new bmwk();
-      int i;
-      if ((bmwm.a(this.a).jdField_a_of_type_JavaUtilList != null) && (bmwm.a(this.a).jdField_a_of_type_JavaUtilList.size() != 0)) {
-        i = 0;
-      }
-      while (i < bmwm.a(this.a).jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = new bmwk();
-        ((bmwk)localObject).jdField_a_of_type_Int = ((bmtz)bmwm.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int;
-        ((bmwk)localObject).b = ((bmtz)bmwm.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString;
-        ((bmwk)localObject).c = ((bmtz)bmwm.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).c;
-        ((bmwk)localObject).jdField_a_of_type_JavaLangString = ((bmtz)bmwm.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).b;
-        localbmwe.a((bmwk)localObject);
-        i += 1;
-        continue;
-        ((bmwk)localObject).b = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112610_8Virz5m93z.png";
-        ((bmwk)localObject).jdField_a_of_type_Int = 0;
-        ((bmwk)localObject).jdField_a_of_type_JavaLangString = anni.a(2131715427);
-        localbmwk.b = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112616_AcTt0SrZ9t.png";
-        localbmwk.jdField_a_of_type_Int = 1;
-        localbmwk.jdField_a_of_type_JavaLangString = anni.a(2131715428);
-        localbmwk.c = "https://www.qq.com";
-        localbmwe.a((bmwk)localObject);
-        localbmwe.a(localbmwk);
-      }
-      localbmwe.e();
-      localbmwe.a(new bmwo(this, localbmwe));
-      localObject = new bmwd(paramView.getLeft(), paramView.getTop(), 0, 0, paramView.getWidth(), paramView.getHeight());
-      bmwc.a((Activity)bmwm.a(this.a), paramView, (bmwd)localObject, localbmwe);
+      QLog.d("[upload2]UploadEnv", 1, "upload so unzip fail");
+      bmwm.b(false);
+      return;
+    }
+    if (bmwm.a(this.a, str))
+    {
+      QLog.d("[upload2]UploadEnv", 1, "upload so save success");
+      bmwm.a(this.a, true);
+      bmwm.a(true);
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      bmwm.b(false);
       return;
-      if (bmwm.a(this.a) != null)
+      try
       {
-        this.a.a(2, bmwm.a(this.a).jdField_a_of_type_JavaLangString, bmwm.a(this.a) + 1);
-        this.a.a(new WeakReference((Activity)bmwm.a(this.a)), bmwm.b(this.a), this.a.a(bmwm.c(this.a)));
+        localFile.delete();
+        bmwm.a(this.a, false);
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
       }
     }
   }

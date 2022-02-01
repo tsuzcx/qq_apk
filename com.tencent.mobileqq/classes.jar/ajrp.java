@@ -1,53 +1,42 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
 public class ajrp
-  implements bidp
+  extends RecyclerView.OnScrollListener
 {
-  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  CalendarDay b;
+  public ajrp(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public ajrp(ChatHistoryTroopDateFragment paramChatHistoryTroopDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
-    this.b = paramCalendarDay2;
-  }
-  
-  public CalendarDay a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
-      return new CalendarDay(System.currentTimeMillis());
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  }
-  
-  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString;
-    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.getActivity(), str, paramMessageRecord, -1, 3);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString, "", "", "");
-    QLog.i(ChatHistoryTroopDateFragment.b(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
-  }
-  
-  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
-  {
-    if (!ChatHistoryTroopDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment, paramInt1, paramInt2)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.a(paramInt1, paramInt2);
-    }
-  }
-  
-  public CalendarDay b()
-  {
-    if (this.b == null)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
-      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if ((paramRecyclerView instanceof LinearLayoutManager)) {
+        ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
+      }
     }
-    return this.b;
+    if (this.a.jdField_a_of_type_Aoof != null)
+    {
+      if (paramInt == 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_Aoof.a();
+      this.a.jdField_a_of_type_Aoof.c();
+    }
+    label73:
+    while (!this.a.jdField_a_of_type_Aoof.a()) {
+      return;
+    }
+    this.a.jdField_a_of_type_Aoof.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

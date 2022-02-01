@@ -1,23 +1,20 @@
-import android.os.SystemClock;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhra
+class bhra
+  implements View.OnClickListener
 {
-  final long a;
-  public final String a;
-  public final String b;
-  public final String c;
+  bhra(bhqw parambhqw, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  bhra(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  boolean a()
-  {
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhqw, 1);
+    }
+    this.jdField_a_of_type_Bhqw.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

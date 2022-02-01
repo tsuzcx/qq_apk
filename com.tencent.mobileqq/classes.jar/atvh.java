@@ -1,12 +1,38 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class atvh
-  implements Comparator<FileInfo>
+class atvh
+  implements atvj
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  private bluw jdField_a_of_type_Bluw = new bluw();
+  
+  public atvh(atvg paramatvg)
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    this.jdField_a_of_type_Bluw.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bluw.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bluz.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bluw.b();
   }
 }
 

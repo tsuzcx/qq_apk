@@ -34,6 +34,7 @@ import com.tencent.qqmini.sdk.widget.MiniToast;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,10 +48,10 @@ public class InternalJSPlugin
   private ArrayList<String> openUrlDomainWhiteList;
   private String privateOpenUrlDomainWhiteList;
   
-  private void callbackOpenResult(InternalJSPlugin.openUrlCallback paramopenUrlCallback, boolean paramBoolean, String paramString)
+  private void callbackOpenResult(InternalJSPlugin.OpenUrlCallback paramOpenUrlCallback, boolean paramBoolean, String paramString)
   {
-    if (paramopenUrlCallback != null) {
-      paramopenUrlCallback.openResult(paramBoolean, paramString);
+    if (paramOpenUrlCallback != null) {
+      paramOpenUrlCallback.openResult(paramBoolean, paramString);
     }
   }
   
@@ -83,7 +84,7 @@ public class InternalJSPlugin
         break;
       }
       QMLog.d("InternalJSPlugin", "only open");
-      paramRequestEvent.fail("app not installed");
+      paramRequestEvent.fail(getLaunchAppRetJsonObject(3), "app not installed");
       return;
     }
   }
@@ -126,6 +127,33 @@ public class InternalJSPlugin
     }
     label129:
     return localObject2;
+  }
+  
+  @NotNull
+  private JSONObject getLaunchAppRetJsonObject(int paramInt)
+  {
+    try
+    {
+      localJSONObject = new JSONObject();
+      QMLog.e("InternalJSPlugin", "startExistedApp error, ", localJSONException1);
+    }
+    catch (JSONException localJSONException1)
+    {
+      try
+      {
+        localJSONObject.put("errCode", paramInt);
+        return localJSONObject;
+      }
+      catch (JSONException localJSONException2)
+      {
+        JSONObject localJSONObject;
+        break label21;
+      }
+      localJSONException1 = localJSONException1;
+      localJSONObject = null;
+    }
+    label21:
+    return localJSONObject;
   }
   
   private void getOpenUrlDomainWhiteList()
@@ -204,7 +232,7 @@ public class InternalJSPlugin
     MiniToast.makeText(paramContext, 0, "暂不支持在" + QUAUtil.getApplicationName(paramContext) + "中下载应用", 1);
   }
   
-  private boolean openUrlForStyle(Bundle paramBundle, JSONObject paramJSONObject, InternalJSPlugin.openUrlCallback paramopenUrlCallback)
+  private boolean openUrlForStyle(Bundle paramBundle, JSONObject paramJSONObject, InternalJSPlugin.OpenUrlCallback paramOpenUrlCallback)
   {
     if (paramJSONObject.has("style"))
     {
@@ -212,7 +240,7 @@ public class InternalJSPlugin
       if ((i < 0) || (i > 2))
       {
         QMLog.e("InternalJSPlugin", "style error, return.");
-        callbackOpenResult(paramopenUrlCallback, false, "style error");
+        callbackOpenResult(paramOpenUrlCallback, false, "style error");
         return true;
       }
       switch (i)
@@ -249,14 +277,14 @@ public class InternalJSPlugin
     }
   }
   
-  private boolean openUrlForTarget(String paramString, JSONObject paramJSONObject, InternalJSPlugin.openUrlCallback paramopenUrlCallback)
+  private boolean openUrlForTarget(String paramString, JSONObject paramJSONObject, InternalJSPlugin.OpenUrlCallback paramOpenUrlCallback)
   {
     if (paramJSONObject.has("target"))
     {
       int i = paramJSONObject.optInt("target");
       if ((i < 0) || (i > 1))
       {
-        callbackOpenResult(paramopenUrlCallback, false, "target error");
+        callbackOpenResult(paramOpenUrlCallback, false, "target error");
         return true;
       }
       if (i == 1)
@@ -273,7 +301,7 @@ public class InternalJSPlugin
         }
         for (;;)
         {
-          callbackOpenResult(paramopenUrlCallback, true, null);
+          callbackOpenResult(paramOpenUrlCallback, true, null);
           return true;
           QMLog.d("InternalJSPlugin", "openUrl by system webview error.");
           break;
@@ -332,7 +360,6 @@ public class InternalJSPlugin
   @JsEvent({"launchApplication"})
   public void launchApplication(RequestEvent paramRequestEvent)
   {
-    int i = -1;
     QMLog.e("InternalJSPlugin", "openapp");
     for (;;)
     {
@@ -343,7 +370,7 @@ public class InternalJSPlugin
         String str2 = ((JSONObject)localObject).optString("appPackagename");
         localObject = ((JSONObject)localObject).optString("appParameter", "");
         if ((this.mMiniAppContext == null) || (this.mMiniAppContext.getMiniAppInfo() == null) || (this.mMiniAppContext.getMiniAppInfo().launchParam == null)) {
-          break label293;
+          break label304;
         }
         j = this.mMiniAppContext.getMiniAppInfo().launchParam.scene;
         if (this.mMiniAppContext.canLaunchApp())
@@ -356,19 +383,20 @@ public class InternalJSPlugin
             return;
           }
           QMLog.e("InternalJSPlugin", "launchApplication error, appBrandRuntime or getApkgInfo is null.");
-          paramRequestEvent.fail("appBrandRuntime or getApkgInfo is null.");
+          paramRequestEvent.fail(getLaunchAppRetJsonObject(-1), "appBrandRuntime or getApkgInfo is null.");
           return;
         }
       }
       catch (Exception localException)
       {
         QMLog.e("InternalJSPlugin", paramRequestEvent.event + " error,", localException);
-        paramRequestEvent.fail();
+        paramRequestEvent.fail(getLaunchAppRetJsonObject(-1), "exception");
         return;
       }
-      i = j;
+      int i = j;
       continue;
-      label293:
+      label304:
+      i = -1;
       int j = -1;
     }
   }
@@ -423,7 +451,7 @@ public class InternalJSPlugin
     }
   }
   
-  public void openUrl(JSONObject paramJSONObject, InternalJSPlugin.openUrlCallback paramopenUrlCallback)
+  public void openUrl(JSONObject paramJSONObject, InternalJSPlugin.OpenUrlCallback paramOpenUrlCallback)
   {
     for (;;)
     {
@@ -432,7 +460,7 @@ public class InternalJSPlugin
       {
         if ((this.mMiniAppContext == null) || (this.mMiniAppContext.getAttachedActivity() == null) || (this.mMiniAppContext.getAttachedActivity().isFinishing()) || (paramJSONObject == null))
         {
-          callbackOpenResult(paramopenUrlCallback, false, "activity or json error.");
+          callbackOpenResult(paramOpenUrlCallback, false, "activity or json error.");
           QMLog.e("InternalJSPlugin", "openurl error, return.");
           return;
         }
@@ -442,12 +470,12 @@ public class InternalJSPlugin
           if ((!TextUtils.isEmpty(str)) && (!"null".equals(str))) {
             break label127;
           }
-          callbackOpenResult(paramopenUrlCallback, false, "url is null.");
+          callbackOpenResult(paramOpenUrlCallback, false, "url is null.");
         }
         catch (Exception paramJSONObject)
         {
           QMLog.e("InternalJSPlugin", "openUrl error; ", paramJSONObject);
-          callbackOpenResult(paramopenUrlCallback, false, "openUrl error");
+          callbackOpenResult(paramOpenUrlCallback, false, "openUrl error");
         }
         continue;
         if (!AppBrandUtil.isOpenUrlFilter(str)) {
@@ -456,13 +484,13 @@ public class InternalJSPlugin
       }
       finally {}
       label127:
-      callbackOpenResult(paramopenUrlCallback, false, "url is not support, hit filter");
+      callbackOpenResult(paramOpenUrlCallback, false, "url is not support, hit filter");
       continue;
       label147:
-      if (!openUrlForTarget(str, paramJSONObject, paramopenUrlCallback))
+      if (!openUrlForTarget(str, paramJSONObject, paramOpenUrlCallback))
       {
         Bundle localBundle = new Bundle();
-        if (!openUrlForStyle(localBundle, paramJSONObject, paramopenUrlCallback))
+        if (!openUrlForStyle(localBundle, paramJSONObject, paramOpenUrlCallback))
         {
           MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
           Intent localIntent = new Intent();
@@ -471,6 +499,7 @@ public class InternalJSPlugin
             localIntent.setFlags(402653184);
           }
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+          localIntent.putExtra("big_brother_source_key", "biz_src_miniapp");
           localIntent.putExtras(localBundle);
           localIntent.putExtra("url", str);
           localIntent.putStringArrayListExtra("key_url_black_list", AppBrandUtil.getConfigFilter());
@@ -478,12 +507,12 @@ public class InternalJSPlugin
           if ((i < 0) || (i > 2))
           {
             QMLog.e("InternalJSPlugin", "animation error, return.");
-            callbackOpenResult(paramopenUrlCallback, false, "animation error");
+            callbackOpenResult(paramOpenUrlCallback, false, "animation error");
           }
           else
           {
             localMiniAppProxy.startBrowserActivity(this.mMiniAppContext.getAttachedActivity(), localIntent);
-            callbackOpenResult(paramopenUrlCallback, true, null);
+            callbackOpenResult(paramOpenUrlCallback, true, null);
             switch (i)
             {
             case 0: 

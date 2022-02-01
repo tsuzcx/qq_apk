@@ -1,11 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public abstract interface bhzz
+public class bhzz
 {
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView);
+  public static void a(String paramString, int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("authResult", String.valueOf(paramInt));
+    bdmc.a(BaseApplication.getContext()).a("", paramString, false, 0L, -1L, localHashMap, "", true);
+  }
   
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView, View paramView, biaa parambiaa);
+  public static void a(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", paramString2);
+    bdmc.a(BaseApplication.getContext()).a("", paramString1, false, 0L, -1L, localHashMap, "", true);
+  }
 }
 
 

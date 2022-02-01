@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ajpa
-  implements ajox
+  implements View.OnClickListener
 {
-  public ajpa(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
+  public ajpa(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public boolean a(TencentDocItem paramTencentDocItem)
+  public void onClick(View paramView)
   {
-    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
+    azyo.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Ajop.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -5,8 +5,12 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudCommon.Entry;
+import feedcloud.FeedCloudCommon.StCommonExt;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StPushList;
@@ -22,11 +26,16 @@ public class QCircleGetLightInteractRequest
   
   public QCircleGetLightInteractRequest(FeedCloudMeta.StFeed paramStFeed, String paramString1, int paramInt, String paramString2)
   {
+    this(paramStFeed, paramString1, paramInt, paramString2, -1L, 1);
+  }
+  
+  public QCircleGetLightInteractRequest(FeedCloudMeta.StFeed paramStFeed, String paramString1, int paramInt1, String paramString2, long paramLong, int paramInt2)
+  {
     if (paramStFeed != null)
     {
       this.req = new FeedCloudRead.StGetLightInteractListReq();
-      if (paramInt != 1) {
-        break label144;
+      if (paramInt1 != 1) {
+        break label208;
       }
       paramString2 = new QQCircleFeedBase.StFeedBusiReqData();
     }
@@ -38,10 +47,18 @@ public class QCircleGetLightInteractRequest
         this.req.id.set(paramString2.pushList.id.get());
         this.req.feedID.set(paramStFeed.id.get());
         this.req.hostID.set(paramStFeed.poster.id.get());
-        this.req.type.set(paramInt);
+        this.req.type.set(paramInt1);
+        if (paramLong != -1L)
+        {
+          paramStFeed = new FeedCloudCommon.Entry();
+          paramStFeed.key.set("last_like_time");
+          paramStFeed.value.set(String.valueOf(paramLong));
+          this.req.extInfo.mapInfo.add(paramStFeed);
+        }
         if (paramString1 != null) {
           this.req.attachInfo.set(paramString1);
         }
+        this.req.source.set(paramInt2);
         return;
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -49,15 +66,15 @@ public class QCircleGetLightInteractRequest
         localInvalidProtocolBufferMicroException.printStackTrace();
         continue;
       }
-      label144:
-      if ((paramInt == 6) || (paramInt == 7))
+      label208:
+      if ((paramInt1 == 6) || (paramInt1 == 7))
       {
         if (TextUtils.isEmpty(paramString2)) {
           this.req.id.set(paramStFeed.likeInfo.id.get());
         }
         for (;;)
         {
-          paramInt = 2;
+          paramInt1 = 2;
           break;
           this.req.id.set(paramString2);
         }

@@ -1,20 +1,33 @@
-import android.graphics.Bitmap;
+import com.tencent.superplayer.seamless.SPSeamlessHelper.SeamlessCallback;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class rmw
-  implements rnb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$jumpToColumnPlay$1$1", "Lcom/tencent/superplayer/seamless/SPSeamlessHelper$SeamlessCallback;", "onSeamlessExit", "", "enterToken", "", "exitToken", "map", "", "", "onSeamlessJump", "s", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rmw
+  implements SPSeamlessHelper.SeamlessCallback
 {
-  int jdField_a_of_type_Int = -1;
+  public rmw(rwf paramrwf) {}
   
-  public rmw(rmt paramrmt, int paramInt)
+  public void onSeamlessExit(@NotNull String paramString1, @NotNull String paramString2, @NotNull Map<String, ? extends Object> paramMap)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    Intrinsics.checkParameterIsNotNull(paramString1, "enterToken");
+    Intrinsics.checkParameterIsNotNull(paramString2, "exitToken");
+    Intrinsics.checkParameterIsNotNull(paramMap, "map");
+    paramString2 = this.a;
+    if (paramString2 != null) {
+      paramString2.a(paramString1);
+    }
   }
   
-  public void a() {}
-  
-  public void a(Bitmap paramBitmap, rmz paramrmz)
+  public void onSeamlessJump(@NotNull String paramString)
   {
-    rmt.a(this.jdField_a_of_type_Rmt).a(this.jdField_a_of_type_Int);
+    Intrinsics.checkParameterIsNotNull(paramString, "s");
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.o();
+    }
   }
 }
 

@@ -1,21 +1,17 @@
-public class awfx
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface awfx
 {
-  public int a = -1;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public int c = 1;
-  public String c;
-  public int d;
-  public int e = 1;
-  public int f;
-  public int g;
-  public int h;
+  String a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awfx
  * JD-Core Version:    0.7.0.1
  */

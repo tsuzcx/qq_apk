@@ -1,14 +1,17 @@
-public abstract interface agex
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
+final class agex
+  implements agfh
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void setSttNetFinish();
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  {
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.a, 115);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
+  }
 }
 
 

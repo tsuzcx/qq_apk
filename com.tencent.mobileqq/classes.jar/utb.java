@@ -1,16 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
 class utb
-  implements View.OnClickListener
+  implements AdExposureChecker.ExposureCallback
 {
   utb(uta paramuta) {}
   
-  public void onClick(View paramView)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    uta.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    FLog.e("AdExposureChecker", "onExposure");
+    usw.a(uta.a(this.a), (usv)this.a.a());
   }
 }
 

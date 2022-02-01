@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import aduo;
-import ahsa;
+import aedq;
+import aibo;
 
 public class ChatHistoryEmotionView$4
   implements Runnable
 {
-  public ChatHistoryEmotionView$4(aduo paramaduo) {}
+  public ChatHistoryEmotionView$4(aedq paramaedq) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      ahsa.a(aduo.a(this.this$0));
+      aibo.a(aedq.a(this.this$0));
     }
     this.this$0.g();
   }

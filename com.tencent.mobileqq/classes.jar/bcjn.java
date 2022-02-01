@@ -1,62 +1,42 @@
-public class bcjn
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bcjn
+  implements View.OnClickListener
 {
-  double a;
+  bcjn(bcjk parambcjk, bcgl parambcgl, Context paramContext) {}
   
-  bcjn(double paramDouble)
+  public void onClick(View paramView)
   {
-    this.a = paramDouble;
-  }
-  
-  public boolean a(int[][] paramArrayOfInt)
-  {
-    double d2 = 0.0D;
-    int k = paramArrayOfInt.length;
-    int m = paramArrayOfInt[0].length;
-    double[] arrayOfDouble1 = new double[k];
-    double[] arrayOfDouble2 = new double[m];
-    double d1 = 0.0D;
-    int i = 0;
-    int j;
-    while (i < k)
+    bcjy.a(null, 0, this.jdField_a_of_type_Bcgl.c, "0X8009D5D", 0, 0, null, null);
+    bcjy.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Bcgl.g).ver2(bcjy.a(UniteSearchActivity.d)).ver5("1").ver6("1").ver7("{experiment_id:" + bcjy.b + "}"));
+    String str;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Bcgl.l))
     {
-      j = 0;
-      while (j < m)
-      {
-        arrayOfDouble1[i] += paramArrayOfInt[i][j];
-        d1 += paramArrayOfInt[i][j];
-        j += 1;
+      str = bcnf.a(this.jdField_a_of_type_Bcgl.c);
+      str = bcnf.a(this.jdField_a_of_type_Bcgl.a(), 0, str);
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, "open Browser append suffix url = " + str);
       }
-      i += 1;
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
-    i = 0;
-    while (i < m)
+    for (;;)
     {
-      j = 0;
-      while (j < k)
-      {
-        arrayOfDouble2[i] += paramArrayOfInt[j][i];
-        j += 1;
-      }
-      i += 1;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = bcnf.a(bcnf.a(this.jdField_a_of_type_Bcgl.l, this.jdField_a_of_type_Bcgl.a(), 0, bcjy.a(this.jdField_a_of_type_Bcgl.c)), this.jdField_a_of_type_Bcgl.c);
+      bcni.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bcgl.a(), str);
     }
-    i = 0;
-    while (i < k)
-    {
-      j = 0;
-      while (j < m)
-      {
-        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
-        double d5 = paramArrayOfInt[i][j];
-        double d3 = d2;
-        if (d4 > 0.0D) {
-          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
-        }
-        j += 1;
-        d2 = d3;
-      }
-      i += 1;
-    }
-    return d2 > this.a + 1.0E-008D;
   }
 }
 

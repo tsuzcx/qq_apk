@@ -1,70 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationPoiDataHelper.1.1;
+import com.tencent.mobileqq.mini.out.CommonObserver;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.POI;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class awsi
-  extends aqkz<awsh>
+  extends CommonObserver
 {
-  @NonNull
-  public awsh a(int paramInt)
+  public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
   {
-    return new awsh();
-  }
-  
-  @Nullable
-  public awsh a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    awsh.a(this.a, false);
+    Object localObject1;
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfaqlg[0].a);
+      awsh.a(this.a);
+      localObject1 = paramLocationResp.poilist.get().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (LBSShare.POI)((Iterator)localObject1).next();
+        localObject2 = LocationRoom.Venue.a(awsh.a(this.a).app.c(), (LBSShare.POI)localObject2);
+        awsh.a(this.a).add(localObject2);
       }
-      return awsh.a(paramArrayOfaqlg[0].a);
+      localObject1 = this.a;
+      if (paramLocationResp.next.get() <= 0) {
+        break label198;
+      }
     }
-    return new awsh();
-  }
-  
-  public void a(awsh paramawsh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramawsh);
-    }
-    ((awsj)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a(paramawsh);
-  }
-  
-  public Class<awsh> clazz()
-  {
-    return awsh.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
+    label198:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      awsh.b((awsh)localObject1, paramBoolean);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LocationPoiDataHelper", 4, "[venue][poi-data] onGetPoiList next: mVenueList size = " + awsh.a(this.a).size() + ", mHashMore = " + awsh.a(this.a));
+      }
+      if (awsh.a(this.a) != null) {
+        ThreadManager.getUIHandler().post(new LocationPoiDataHelper.1.1(this));
+      }
+      return;
     }
   }
   
-  public int type()
-  {
-    return 478;
-  }
+  public void onGetStreetUrl(boolean paramBoolean, String paramString) {}
 }
 
 

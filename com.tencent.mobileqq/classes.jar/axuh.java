@@ -1,51 +1,41 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.1;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.2;
 
-class axuh
-  implements View.OnClickListener
+public class axuh
+  implements URLDrawable.DownloadListener
 {
-  axuh(axtp paramaxtp) {}
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
   
-  public void onClick(View paramView)
+  public axuh(Context paramContext)
   {
-    if (this.a.p)
-    {
-      axtp.b(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    Object localObject = abga.a(paramView);
-    int i = 0;
-    label41:
-    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {}
-    }
-    for (;;)
-    {
-      this.a.a.a(i, (Rect)localObject);
-      bcst.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
-      if (this.a.a.e == 3) {}
-      for (localObject = "2";; localObject = "1")
-      {
-        bcst.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, (String)localObject, "", "", "");
-        if (!axdm.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
-          break;
-        }
-        this.a.a.app.a().b(localPicInfo.jdField_a_of_type_JavaLangString);
-        break;
-        i += 1;
-        break label41;
-      }
-      i = 0;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public axuh(Context paramContext, String paramString)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    ThreadManager.postImmediately(new ImgDownloadListener.2(this, paramInt), null, true);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    ThreadManager.postImmediately(new ImgDownloadListener.1(this, paramLong), null, true);
   }
 }
 

@@ -1,8 +1,11 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
 public abstract interface avii
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
 }
 
 

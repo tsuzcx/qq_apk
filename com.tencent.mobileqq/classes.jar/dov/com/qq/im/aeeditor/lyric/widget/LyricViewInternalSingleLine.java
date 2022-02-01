@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Scroller;
-import bobi;
+import bpdd;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
 import java.util.ArrayList;
@@ -194,7 +194,7 @@ public class LyricViewInternalSingleLine
         {
           if (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mType == 2)
           {
-            a(bobi.a(this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric), null);
+            a(bpdd.a(this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric), null);
             this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.generateUiLyricLineList(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1);
           }
           this.f = true;

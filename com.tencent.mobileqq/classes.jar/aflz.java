@@ -1,23 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class aflz
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public aflz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aflz(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.b.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramEditable);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aflz
  * JD-Core Version:    0.7.0.1
  */

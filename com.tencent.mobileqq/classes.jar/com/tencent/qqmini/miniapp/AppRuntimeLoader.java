@@ -162,6 +162,7 @@ public class AppRuntimeLoader
       }
       else if (paramBaseTask == this.miniAppInfoLoadTask)
       {
+        QMLog.w("AppRuntimeLoader", "fromUpdate: " + this.fromUpdate + " threadId=" + Thread.currentThread().getId());
         if (!this.fromUpdate)
         {
           this.mMiniAppInfo = this.miniAppInfoLoadTask.getMiniAppInfo();
@@ -210,6 +211,7 @@ public class AppRuntimeLoader
     if (paramMiniAppInfo.isFakeAppInfo())
     {
       this.fromUpdate = true;
+      QMLog.w("AppRuntimeLoader", "updateMiniAppInfoFromReload  fromUpdate: " + this.fromUpdate + " threadId=" + Thread.currentThread().getId());
       this.miniAppInfoLoadTask.reset();
       this.miniAppInfoLoadTask.setStatus(2);
       this.miniAppInfoLoadTask.setMiniAppInfo(paramMiniAppInfo);

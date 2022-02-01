@@ -1,18 +1,26 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import dov.com.qq.im.ptv.LightWeightProgress;
 
 public class bpzb
-  implements MediaPlayer.OnCompletionListener
+  extends AnimatorListenerAdapter
 {
-  public bpzb(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public bpzb(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a != null)
-    {
-      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
-      this.a.a.a(paramMediaPlayer);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView 50ms delay=90ms end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.setStatus(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView begin");
     }
   }
 }

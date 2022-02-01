@@ -1,40 +1,100 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class mds
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public mds(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mds(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GAudioMembersCtrlActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
+    long l = AudioHelper.b();
+    int k = paramView.getId();
+    Object localObject = paramView.getTag(2131378401);
+    if ((localObject != null) && ((localObject instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
+    {
+      int m = this.a.jdField_a_of_type_Int;
+      bool = this.a.a(l, k, bool);
+      int i;
+      int j;
+      if (k == 4)
+      {
+        i = 1;
+        j = i;
+        if (i != 0)
+        {
+          localObject = ((AVActivity)this.a.getContext()).a;
+          if ((localObject != null) && ((localObject == null) || (((EffectFilterPanel)localObject).getVisibility() != 8))) {
+            break label344;
+          }
+          j = 1;
+        }
+        label117:
+        if ((bool) && ((m != k) || (j != 0))) {
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(k), Long.valueOf(l) });
+        }
+        if (bool)
+        {
+          localObject = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
+          if (localObject != null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onShow clear state");
+            }
+            ((lpj)localObject).b(k);
+          }
+        }
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
+        if (m != k)
+        {
+          if (k != 1) {
+            break label349;
+          }
+          mbz.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+        }
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        i = 0;
+        break;
+        label344:
+        j = 0;
+        break label117;
+        label349:
+        if (k == 2)
+        {
+          mbz.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool);
+          if (this.a.jdField_a_of_type_Mdp != null) {
+            this.a.jdField_a_of_type_Mdp.a();
+          }
+        }
+        else if (k == 4)
+        {
+          mbz.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+        }
+        else if (k == 3)
+        {
+          mbz.a(this.a.a(), bool);
+        }
+        else if (k == 5)
+        {
+          mru.f();
+        }
       }
     }
-    int i;
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason3rd", -1);
-      l = paramIntent.getLongExtra("groupId", -1L);
-    } while ((i != 1) || (this.a.jdField_a_of_type_Long != l));
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
-    }
-    this.a.finish();
   }
 }
 

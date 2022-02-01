@@ -1,17 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-
-public class aiou
-  extends BroadcastReceiver
+class aiou
+  implements blrf
 {
-  public aiou(BlessActivity paramBlessActivity) {}
+  aiou(ainh paramainh) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
-      BlessActivity.a(this.a, true);
+    if ((!this.a.ak) && (this.a.al))
+    {
+      this.a.ak = true;
+      uae.a("SUBSCRIPT_AIO_COST", null);
     }
   }
 }

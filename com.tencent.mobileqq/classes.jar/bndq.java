@@ -1,13 +1,8 @@
-import java.io.File;
+import android.content.Context;
 
-public class bndq
+public abstract interface bndq
 {
-  public static final String a = bndv.a + File.separator + "gif";
-  public static final String b = a + File.separator + "capture";
-  public static final String c = a + File.separator + "res";
-  public static final String d = a + File.separator + "res_zip_download";
-  public static final String e = c + File.separator + "GifGuide";
-  public static final String f = a + File.separator + "material_config";
+  public abstract void a(boolean paramBoolean, Context paramContext, bndr parambndr);
 }
 
 

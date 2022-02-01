@@ -1,77 +1,62 @@
-import android.os.Handler;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.1;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.os.Bundle;
 
 public class asex
-  implements ayxc, ayyq
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  private WeakReference<asey> jdField_a_of_type_MqqUtilWeakReference;
+  public int a;
+  public String a;
+  public int b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
   
-  public asex(MessageForPic paramMessageForPic, Handler paramHandler, asey paramasey)
+  public asex(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramasey);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, ayxy paramayxy)
+  public static asex a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
-    }
-    do
+    int j = 0;
+    int n = -1;
+    String str = "";
+    int i;
+    int k;
+    int m;
+    if (paramBundle != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramayxy.jdField_a_of_type_Int) });
-      }
-      if (paramayxy.jdField_a_of_type_Int == 0)
-      {
-        ((asey)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-        return;
-      }
-    } while (-1 != paramayxy.jdField_a_of_type_Int);
-    if (paramayxy.jdField_a_of_type_Ayxt != null) {
-      QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramayxy.jdField_a_of_type_Ayxt.b });
+      i = paramBundle.getInt("result", -1);
+      j = paramBundle.getInt("realSaveNum", 0);
+      k = paramBundle.getInt("payChannel", -1);
+      m = paramBundle.getInt("payState", -1);
+      n = paramBundle.getInt("provideState", -1);
     }
-    ((asey)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-  }
-  
-  public void a(int paramInt, ArrayList<ayxy> paramArrayList) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.2(this, paramInt));
-  }
-  
-  public void a(ayxd paramayxd)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.1(this, paramayxd));
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", paramInt + " needRefresh:" + paramBoolean, " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
-    }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      ((asey)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    for (paramBundle = paramBundle.getString("message");; paramBundle = str)
+    {
+      return new asex(i, j, k, m, n, paramBundle);
+      m = -1;
+      k = -1;
+      i = -1;
     }
   }
   
-  public void b(int paramInt, ayxy paramayxy) {}
-  
-  public void c(int paramInt, ayxy paramayxy) {}
-  
-  public void d(int paramInt, ayxy paramayxy) {}
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", this.jdField_a_of_type_Int);
+    localBundle.putInt("realSaveNum", this.b);
+    localBundle.putInt("payChannel", this.c);
+    localBundle.putInt("payState", this.d);
+    localBundle.putInt("provideState", this.e);
+    localBundle.putString("message", this.jdField_a_of_type_JavaLangString);
+    return localBundle;
+  }
 }
 
 

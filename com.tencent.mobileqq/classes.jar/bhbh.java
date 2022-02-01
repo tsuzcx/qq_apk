@@ -1,29 +1,38 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.vas.gldrawable.DynamicDrawable.build.1;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForTroopEffectPic;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/vas/gldrawable/DynamicDrawable$build$1$1", "Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableProxy$LoaderCallback;", "onFileDownloadFailed", "", "onFileDownloadStarted", "onFileDownloadSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bhbh
-  implements bhbr
+class bhbh
+  extends azre
 {
-  public void a() {}
+  bhbh(bhbg parambhbg, azqd paramazqd, TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
   
-  public void b()
+  public void a(int paramInt, azql paramazql)
   {
-    Drawable localDrawable = (Drawable)bhbg.a(this.a.this$0).invoke();
-    if (localDrawable != null) {
-      bhbg.a(this.a.this$0, localDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
     }
-    if (this.a.this$0.a() == null) {
-      bhbg.a(this.a.this$0, (Drawable)bhbg.b(this.a.this$0).invoke());
+    paramazql = new File(this.jdField_a_of_type_Azqd.c());
+    bgot localbgot = (bgot)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a.getManager(223);
+    if ((paramazql.exists()) && (localbgot != null))
+    {
+      localbgot.a = 1;
+      localbgot.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
+      localbgot.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
+      localbgot.f();
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
   }
   
-  public void c()
+  public void a_(int paramInt, boolean paramBoolean)
   {
-    if (this.a.this$0.a() == null) {
-      bhbg.a(this.a.this$0, (Drawable)bhbg.b(this.a.this$0).invoke());
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
     }
   }
 }

@@ -2,26 +2,26 @@ package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import atoo;
-import atri;
+import augj;
+import aujd;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
 public class SimpleFilePresenter$3
   implements Runnable
 {
-  public SimpleFilePresenter$3(atri paramatri) {}
+  public SimpleFilePresenter$3(aujd paramaujd) {}
   
   public void run()
   {
-    String str = this.this$0.jdField_a_of_type_Atoo.i();
-    if ((TextUtils.isEmpty(str)) || (atri.a(this.this$0)))
+    String str = this.this$0.jdField_a_of_type_Augj.i();
+    if ((TextUtils.isEmpty(str)) || (aujd.a(this.this$0)))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(8);
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(0);
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(str);
-    atri.a(this.this$0).postDelayed(atri.a(this.this$0), 1000L);
+    aujd.a(this.this$0).postDelayed(aujd.a(this.this$0), 1000L);
   }
 }
 

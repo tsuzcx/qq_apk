@@ -1,78 +1,95 @@
-import android.os.AsyncTask;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class mrr
-  extends AsyncTask<Void, Void, String>
 {
-  String a;
-  String b;
-  String c;
-  
-  public mrr(String paramString1, String paramString2, String paramString3)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      return null;
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    RectF localRectF = new RectF(localRect);
+    float f = paramInt;
+    localPaint.setAntiAlias(true);
+    localCanvas.drawARGB(0, 0, 0, 0);
+    localPaint.setColor(-12434878);
+    localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    return localBitmap;
   }
   
-  /* Error */
-  protected String a(Void... paramVarArgs)
+  public static Drawable a(Context paramContext, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 16	mrr:a	Ljava/lang/String;
-    //   4: aload_0
-    //   5: getfield 18	mrr:b	Ljava/lang/String;
-    //   8: aload_0
-    //   9: getfield 20	mrr:c	Ljava/lang/String;
-    //   12: invokestatic 31	mrq:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   15: astore_1
-    //   16: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   19: ifeq +28 -> 47
-    //   22: ldc 39
-    //   24: iconst_2
-    //   25: new 41	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 42	java/lang/StringBuilder:<init>	()V
-    //   32: ldc 44
-    //   34: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: aload_1
-    //   38: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 56	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   47: aload_1
-    //   48: areturn
-    //   49: astore_2
-    //   50: aconst_null
-    //   51: astore_1
-    //   52: aload_2
-    //   53: invokevirtual 59	org/apache/http/client/ClientProtocolException:printStackTrace	()V
-    //   56: aload_1
-    //   57: areturn
-    //   58: astore_2
-    //   59: aconst_null
-    //   60: astore_1
-    //   61: aload_2
-    //   62: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   65: aload_1
-    //   66: areturn
-    //   67: astore_2
-    //   68: goto -7 -> 61
-    //   71: astore_2
-    //   72: goto -20 -> 52
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	this	mrr
-    //   0	75	1	paramVarArgs	Void[]
-    //   49	4	2	localClientProtocolException1	org.apache.http.client.ClientProtocolException
-    //   58	4	2	localException1	java.lang.Exception
-    //   67	1	2	localException2	java.lang.Exception
-    //   71	1	2	localClientProtocolException2	org.apache.http.client.ClientProtocolException
-    // Exception table:
-    //   from	to	target	type
-    //   0	16	49	org/apache/http/client/ClientProtocolException
-    //   0	16	58	java/lang/Exception
-    //   16	47	67	java/lang/Exception
-    //   16	47	71	org/apache/http/client/ClientProtocolException
+    BitmapDrawable localBitmapDrawable = null;
+    int i = mvd.a(paramContext);
+    int j = mvd.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
+      {
+        try
+        {
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
+        }
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
+        }
+        catch (Exception paramContext) {}
+      } while (i > 720);
+    }
+    return null;
+  }
+  
+  public static Drawable b(Context paramContext, int paramInt)
+  {
+    BitmapDrawable localBitmapDrawable = null;
+    int i = mvd.a(paramContext);
+    int j = mvd.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
+      {
+        try
+        {
+          localOptions.inScaled = false;
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
+        }
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
+        }
+        catch (Exception paramContext) {}
+      } while (i > 720);
+    }
+    return null;
   }
 }
 

@@ -1,143 +1,120 @@
-import QQService.PrivilegeInfo;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
-class aznu
-  implements View.OnClickListener
+public class aznu
+  extends OGAbstractDao
 {
-  aznu(aznt paramaznt) {}
-  
-  public void onClick(View paramView)
+  public aznu()
   {
-    Object localObject1 = paramView.getTag();
-    if ((localObject1 instanceof azde))
+    this.columnLen = 7;
+  }
+  
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  {
+    paramEntity = (Groups)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      localObject1 = (azde)localObject1;
-      switch (((azde)localObject1).jdField_a_of_type_Int)
-      {
-      }
+      paramEntity.group_name = paramCursor.getString(paramCursor.getColumnIndex("group_name"));
+      paramEntity.group_id = paramCursor.getInt(paramCursor.getColumnIndex("group_id"));
+      paramEntity.group_friend_count = paramCursor.getInt(paramCursor.getColumnIndex("group_friend_count"));
+      paramEntity.group_online_friend_count = paramCursor.getInt(paramCursor.getColumnIndex("group_online_friend_count"));
+      paramEntity.seqid = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("seqid")));
+      paramEntity.sqqOnLine_count = paramCursor.getInt(paramCursor.getColumnIndex("sqqOnLine_count"));
+      paramEntity.datetime = paramCursor.getLong(paramCursor.getColumnIndex("datetime"));
+      return paramEntity;
     }
-    Object localObject2;
-    label288:
-    label326:
-    int i;
-    PrivilegeInfo localPrivilegeInfo;
-    label572:
-    label619:
-    do
+    int i = paramCursor.getColumnIndex("group_name");
+    if (i == -1)
     {
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        localObject2 = ((azfe)aznt.a(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.privilegeJumpUrl;
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          if (((azfe)aznt.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-            break label288;
-          }
-        }
-        for (localObject1 = "https://mc.vip.qq.com/privilegelist/index";; localObject1 = "https://mc.vip.qq.com/privilegelist/other?friend=" + ((azfe)aznt.c(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)
-        {
-          localObject2 = new Intent(aznt.a(this.a), QQBrowserActivity.class);
-          ((Intent)localObject2).putExtra("url", (String)localObject1);
-          ((Intent)localObject2).putExtra("hide_operation_bar", true);
-          ((Intent)localObject2).putExtra("hide_more_button", true);
-          ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
-          aznt.b(this.a).startActivity((Intent)localObject2);
-          bcst.b(aznt.a(this.a), "P_CliOper", "Pb_account_lifeservice", "", "ziliaoka_qqtequan", "tab-click", 0, 1, 0, "", "", "", "");
-          if (((azfe)aznt.d(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-            break label326;
-          }
-          bcst.b(aznt.b(this.a), "CliOper", "", "", "0X8006A7B", "0X8006A7B", 0, 0, "", "", "", "");
-          bcst.b(aznt.c(this.a), "dc00898", "", "", "qvip", "0X800A12F", 0, 0, "", "", "", "");
-          break;
-        }
-        bcst.b(aznt.d(this.a), "CliOper", "", "", "0X8006A8F", "0X8006A8F", 0, 0, "", "", "", "");
-        i = anyj.a(aznt.e(this.a), aznt.f(this.a).c(), false);
-        bcst.b(aznt.g(this.a), "dc00898", "", "", "qvip", "0X800A137", 0, 0, String.valueOf(i), "", "", "");
-        continue;
-        if ((((azde)localObject1).jdField_a_of_type_JavaLangObject instanceof PrivilegeInfo)) {
-          break;
-        }
-        QLog.e("DIYProfileTemplate.ProfileDiamondWallComponent", 1, "DATA_TYPE_BIG_DIAMOND url is not string:" + ((azde)localObject1).jdField_a_of_type_JavaLangObject);
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("group_name", String.class));
+      i = paramCursor.getColumnIndex("group_id");
+      if (i != -1) {
+        break label400;
       }
-      localPrivilegeInfo = (PrivilegeInfo)((azde)localObject1).jdField_a_of_type_JavaLangObject;
-      localObject1 = localPrivilegeInfo.strJumpUrl;
-      localObject2 = new Intent(aznt.c(this.a), QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      ((Intent)localObject2).putExtra("hide_operation_bar", true);
-      ((Intent)localObject2).putExtra("hide_more_button", true);
-      ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
-      aznt.d(this.a).startActivity((Intent)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.d("DIYProfileTemplate.ProfileDiamondWallComponent", 1, "DATA_TYPE_BIG_DIAMOND click");
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("group_id", Integer.TYPE));
+      label208:
+      i = paramCursor.getColumnIndex("group_friend_count");
+      if (i != -1) {
+        break label415;
       }
-      if (((azfe)aznt.e(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-        break;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("group_friend_count", Integer.TYPE));
+      label243:
+      i = paramCursor.getColumnIndex("group_online_friend_count");
+      if (i != -1) {
+        break label430;
       }
-      i = 1;
-      switch (localPrivilegeInfo.iType)
-      {
-      default: 
-        if (i == 0) {
-          break label774;
-        }
-        localObject1 = "0X800A137";
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("group_online_friend_count", Integer.TYPE));
+      label278:
+      i = paramCursor.getColumnIndex("seqid");
+      if (i != -1) {
+        break label445;
       }
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    if (localPrivilegeInfo.iIsBig == 1) {
-      if (localPrivilegeInfo.isOpen) {
-        i = 1;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("seqid", Byte.TYPE));
+      label313:
+      i = paramCursor.getColumnIndex("sqqOnLine_count");
+      if (i != -1) {
+        break label461;
       }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sqqOnLine_count", Integer.TYPE));
     }
     for (;;)
     {
-      localObject2 = "";
-      if (localPrivilegeInfo.iType == 1) {
-        localObject2 = String.valueOf(anyj.a(aznt.h(this.a), aznt.i(this.a).c(), false));
+      i = paramCursor.getColumnIndex("datetime");
+      if (i != -1) {
+        break label476;
       }
-      bcst.b(aznt.j(this.a), "dc00898", "", "", "qvip", (String)localObject1, i, 0, (String)localObject2, "", "", "");
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("datetime", Long.TYPE));
+      return paramEntity;
+      paramEntity.group_name = paramCursor.getString(i);
       break;
-      i = 0;
-      break label572;
-      if (i != 0) {}
-      for (localObject1 = "0X800A133";; localObject1 = "0X800A12B") {
-        break;
-      }
-      if (i != 0) {}
-      for (localObject1 = "0X800A135";; localObject1 = "0X800A12D") {
-        break;
-      }
-      if (i != 0) {}
-      for (localObject1 = "0X800A131";; localObject1 = "0X800A129") {
-        break;
-      }
-      label774:
-      localObject1 = "0X800A12F";
-      break label619;
-      i = 2;
-      continue;
-      if (localPrivilegeInfo.isOpen) {
-        i = 3;
-      } else {
-        i = 4;
-      }
+      label400:
+      paramEntity.group_id = paramCursor.getInt(i);
+      break label208;
+      label415:
+      paramEntity.group_friend_count = paramCursor.getInt(i);
+      break label243;
+      label430:
+      paramEntity.group_online_friend_count = paramCursor.getInt(i);
+      break label278;
+      label445:
+      paramEntity.seqid = ((byte)paramCursor.getShort(i));
+      break label313;
+      label461:
+      paramEntity.sqqOnLine_count = paramCursor.getInt(i);
     }
+    label476:
+    paramEntity.datetime = paramCursor.getLong(i);
+    return paramEntity;
+  }
+  
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  {
+    paramEntity = (Groups)paramEntity;
+    paramContentValues.put("group_name", paramEntity.group_name);
+    paramContentValues.put("group_id", Integer.valueOf(paramEntity.group_id));
+    paramContentValues.put("group_friend_count", Integer.valueOf(paramEntity.group_friend_count));
+    paramContentValues.put("group_online_friend_count", Integer.valueOf(paramEntity.group_online_friend_count));
+    paramContentValues.put("seqid", Byte.valueOf(paramEntity.seqid));
+    paramContentValues.put("sqqOnLine_count", Integer.valueOf(paramEntity.sqqOnLine_count));
+    paramContentValues.put("datetime", Long.valueOf(paramEntity.datetime));
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,group_name TEXT ,group_id INTEGER UNIQUE ,group_friend_count INTEGER ,group_online_friend_count INTEGER ,seqid INTEGER ,sqqOnLine_count INTEGER ,datetime INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznu
  * JD-Core Version:    0.7.0.1
  */

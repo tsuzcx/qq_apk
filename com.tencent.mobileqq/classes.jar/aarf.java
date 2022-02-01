@@ -1,47 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetSpaceRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import java.util.List;
 
-public abstract class aarf
-  extends niv
+public final class aarf
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      a(false, 0L, 0L, 0);
-      return;
-    }
-    paramBundle = new oidb_0x6d8.RspBody();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(paramString2));
+    localIntent.putExtra("srcAction", paramString3);
+    localIntent.putExtra("srcPackageName", paramString4);
+    localIntent.putExtra("srcClassName", paramString5);
+    localIntent.putExtra("params_appid", paramString1);
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (!paramBundle.group_space_rsp.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFileProtocol", 2, "no group_space_rsp rsp.");
-        }
-        a(false, 0L, 0L, 0);
-        return;
-      }
+      paramContext.startActivity(localIntent);
+      return true;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (ActivityNotFoundException paramContext) {}
+    return false;
+  }
+  
+  public static boolean b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(paramString1));
+    if (localPackageManager.queryIntentActivities(localIntent, 0).size() != 0)
     {
-      a(false, 0L, 0L, 0);
-      return;
+      if (a(paramContext, paramString2, paramString1, paramString3, paramString4, paramString5)) {
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DataProviderApi", 2, "start scheme:" + paramString1 + " failed!");
+      }
+      return false;
     }
-    paramArrayOfByte = (oidb_0x6d8.GetSpaceRspBody)paramBundle.group_space_rsp.get();
-    a(true, paramArrayOfByte.uint64_total_space.get(), paramArrayOfByte.uint64_used_space.get(), paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("DataProviderApi", 2, "scheme:" + paramString1 + " is not found!");
+    }
+    return false;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
-import aayr;
+import abcu;
 import android.os.Build.VERSION;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -8,7 +8,7 @@ import android.os.Vibrator;
 public class EditVideoSmartMusicPart$9
   implements Runnable
 {
-  public EditVideoSmartMusicPart$9(aayr paramaayr) {}
+  public EditVideoSmartMusicPart$9(abcu paramabcu) {}
   
   public void run()
   {

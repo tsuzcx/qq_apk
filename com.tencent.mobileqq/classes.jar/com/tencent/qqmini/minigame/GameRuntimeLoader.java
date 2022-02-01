@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.EnvConfig;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.Version;
-import com.tencent.qqmini.minigame.api.QQEnvImp;
+import com.tencent.mobileqq.triton.model.Version;
+import com.tencent.qqmini.minigame.api.MiniEnginePackage;
 import com.tencent.qqmini.minigame.gpkg.MiniGamePkg;
 import com.tencent.qqmini.minigame.manager.GameInfoManager;
 import com.tencent.qqmini.minigame.manager.GameReportManager;
@@ -156,8 +154,8 @@ public class GameRuntimeLoader
           localObject = ((MiniAppInfo)localObject).appId;
         }
       }
-      localObject = paramTritonEngineInitTask.getEnvConfig();
-      ((GameRuntime)getRuntime()).setEnvConfig((EnvConfig)localObject);
+      localObject = paramTritonEngineInitTask.getEnginePackage();
+      ((GameRuntime)getRuntime()).setEnginePackage((MiniEnginePackage)localObject);
       QMLog.i("BaseRuntimeLoader", "TritonEngine 初始化配置:" + localObject);
       if (!paramTritonEngineInitTask.isSucceed()) {
         break label137;
@@ -178,21 +176,13 @@ public class GameRuntimeLoader
   
   private void sendPreloadBaseLibVersion()
   {
-    Object localObject = this.mTritonEngineInitTask.getEnvConfig();
-    if ((localObject != null) && (((EnvConfig)localObject).getJSVersion() != null)) {}
-    for (localObject = ((EnvConfig)localObject).getJSVersion().getVersion();; localObject = null)
-    {
-      if (localObject != null)
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("bundle_key_process_name", AppLoaderFactory.g().getProcessName());
-        localBundle.putString("bundle_key_preload_game_baselib_version", (String)localObject);
-        AppBrandCmdProxy.g().sendCmd("cmd_on_preload_game_baselib", localBundle, null);
-        if (QMLog.isColorLevel()) {
-          QMLog.i("BaseRuntimeLoader", "[MiniEng]preload jsLib version:" + (String)localObject);
-        }
-      }
-      return;
+    String str = this.mTritonEngineInitTask.getEnginePackage().getVersion().getVersion();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("bundle_key_process_name", AppLoaderFactory.g().getProcessName());
+    localBundle.putString("bundle_key_preload_game_baselib_version", str);
+    AppBrandCmdProxy.g().sendCmd("cmd_on_preload_game_baselib", localBundle, null);
+    if (QMLog.isColorLevel()) {
+      QMLog.i("BaseRuntimeLoader", "[MiniEng]preload jsLib version:" + str);
     }
   }
   
@@ -207,7 +197,7 @@ public class GameRuntimeLoader
   {
     this.mGameRuntimeCreateTask = new GameRuntimeCreateTask(this.mContext, this);
     this.mMiniAppInfoLoadTask = new MiniAppInfoLoadTask(this.mContext, this);
-    this.mTritonEngineInitTask = new TritonEngineInitTask(this.mContext, this, new QQEnvImp(this), new GameJsPluginEngine());
+    this.mTritonEngineInitTask = new TritonEngineInitTask(this.mContext, this);
     this.mGpkgLoadTask = new GpkgLoadAsyncTask(this.mContext, this);
     this.mInitGameRuntimeTask = new InitGameRuntimeTask(this.mContext, this);
     this.mInitGameRuntimeTask.addDependTask(this.mTritonEngineInitTask.addDependTask(this.mGameRuntimeCreateTask)).addDependTask(this.mGpkgLoadTask.addDependTask(this.mMiniAppInfoLoadTask));
@@ -217,11 +207,6 @@ public class GameRuntimeLoader
   public boolean dismissLoadingAfterLoaded()
   {
     return false;
-  }
-  
-  public ITTEngine getGameEngine()
-  {
-    return this.mTritonEngineInitTask.getGameEngine();
   }
   
   public GameInfoManager getGameInfoManager()

@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class aiph
-  extends anuy
+class aiph
+  extends anyu
 {
-  public aiph(BlessResultActivity paramBlessResultActivity) {}
+  aiph(aipe paramaipe) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  protected void onAddFriend(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
     }
-    if ((paramBoolean) && (paramInt == bckg.a)) {
-      bglp.a(this.a.getActivity(), 0, null, this.a.getString(2131718097), 2131718099, 2131718098, new aipi(this), new aipj(this)).show();
+    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      aipe.a(this.a);
     }
   }
 }

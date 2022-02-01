@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aigu
-  implements bfuf
+  extends aigs
 {
-  public aigu(TroopChatPie paramTroopChatPie) {}
+  public Bitmap a;
+  public String b;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public aigu(String paramString)
   {
-    if (paramInt == 0) {}
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

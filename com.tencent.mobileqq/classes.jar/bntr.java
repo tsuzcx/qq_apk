@@ -1,13 +1,18 @@
-import android.arch.lifecycle.MutableLiveData;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bntr
-  extends bowd
+class bntr
+  implements View.OnTouchListener
 {
-  private MutableLiveData<bnrb> a = new MutableLiveData();
+  bntr(bntq parambntq) {}
   
-  public MutableLiveData<bnrb> a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.a;
+    if (paramMotionEvent.getAction() == 1) {
+      bntq.a(this.a);
+    }
+    return true;
   }
 }
 

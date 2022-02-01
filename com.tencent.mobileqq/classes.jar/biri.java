@@ -1,61 +1,31 @@
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
-public class biri
+class biri
+  implements TouchWebView.OnScrollChangedListener
 {
-  protected static biri a;
-  protected ArrayList<biud> a;
+  biri(birg parambirg) {}
   
-  public static biri a()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    try
+    if (System.currentTimeMillis() - this.a.a > 1000L)
     {
-      if (jdField_a_of_type_Biri == null)
+      paramInt1 = paramInt2 - paramInt4;
+      if (paramInt1 <= 0) {
+        break label55;
+      }
+      if (Math.abs(paramInt1) > 50)
       {
-        jdField_a_of_type_Biri = new biri();
-        jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        this.a.b(false);
+        this.a.a = System.currentTimeMillis();
       }
-      biri localbiri = jdField_a_of_type_Biri;
-      return localbiri;
     }
-    finally {}
-  }
-  
-  public ArrayList<biud> a()
-  {
-    return jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(biud parambiud)
-  {
-    int j = jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((biud)jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList.get(i) == parambiud) {
-        return;
-      }
-      i += 1;
+    label55:
+    while (Math.abs(paramInt1) <= 50) {
+      return;
     }
-    jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList.add(parambiud);
-  }
-  
-  public void b(biud parambiud)
-  {
-    int j = jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if ((biud)jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList.get(i) == parambiud) {
-          jdField_a_of_type_Biri.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
+    this.a.b(true);
+    this.a.a = System.currentTimeMillis();
   }
 }
 

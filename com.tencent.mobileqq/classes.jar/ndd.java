@@ -1,265 +1,452 @@
+import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.os.Bundle;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.ipc.MapParcelable;
-import com.tencent.avgame.ipc.UserInfo;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.gameroom.stage.StagePresenterImp.1;
+import com.tencent.avgame.gameroom.stage.StagePresenterImp.2;
+import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ndd
-  extends QIPCModule
+  implements nda
 {
-  private final AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
-  private final ndf jdField_a_of_type_Ndf;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  Runnable jdField_a_of_type_JavaLangRunnable = new StagePresenterImp.1(this);
+  private mze jdField_a_of_type_Mze;
+  public nbp a;
+  protected ncy a;
+  public ndc a;
+  Runnable b;
+  protected ncy b;
+  protected ncy c;
+  protected ncy d;
+  protected ncy e;
+  protected ncy f;
   
-  public ndd(AVGameAppInterface paramAVGameAppInterface)
+  public ndd(ndc paramndc)
   {
-    super("AVGameClientQIPCModule");
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
-    this.jdField_a_of_type_Ndf = new ndf(this, null);
-    QIPCClientHelper.getInstance().register(this);
-    QIPCClientHelper.getInstance().getClient().addListener(this.jdField_a_of_type_Ndf);
-    b();
+    this.jdField_b_of_type_JavaLangRunnable = new StagePresenterImp.2(this);
+    this.jdField_a_of_type_Ndc = paramndc;
   }
   
-  private void a(Bundle paramBundle)
+  private boolean a()
   {
-    if (paramBundle == null) {
-      return;
-    }
-    int i = paramBundle.getInt("key_event_id");
-    boolean bool = paramBundle.getBoolean("key_event_ret");
-    paramBundle = paramBundle.getString("key_event_msg");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameClientQIPCModule", 4, "notifyEvent, eventId[" + i + "], result[" + bool + "], msg[" + paramBundle + "]");
-    }
-    mwu.a().a(mws.class, i, bool, paramBundle);
+    return (this.jdField_a_of_type_Mze != null) && (this.jdField_a_of_type_Mze.a() == 10);
   }
   
-  private void a(Bundle paramBundle, AVGameAppInterface paramAVGameAppInterface)
+  private boolean a(int paramInt1, int paramInt2)
   {
-    if ((paramBundle == null) || (paramAVGameAppInterface == null)) {}
-    int i;
-    String str;
-    do
+    return (paramInt1 != 0) && (paramInt2 != 0);
+  }
+  
+  private boolean a(mze parammze)
+  {
+    return (this.jdField_a_of_type_Mze != null) && (this.jdField_a_of_type_Mze.a() == 4) && (this.jdField_a_of_type_Mze.a().a(parammze.a()));
+  }
+  
+  private boolean b(mze parammze)
+  {
+    return (this.jdField_a_of_type_Mze != null) && (this.jdField_a_of_type_Mze.a() == 3) && (this.jdField_a_of_type_Mze.a().a(parammze.a()));
+  }
+  
+  private boolean c(mze parammze)
+  {
+    return (this.jdField_a_of_type_Mze != null) && (this.jdField_a_of_type_Mze.a() == 2) && (this.jdField_a_of_type_Mze.a().a(parammze.a()));
+  }
+  
+  private boolean d(mze parammze)
+  {
+    return (this.jdField_a_of_type_Mze != null) && (this.jdField_a_of_type_Mze.a() == 1) && (this.jdField_a_of_type_Mze.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin.equals(parammze.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin));
+  }
+  
+  private void e(mze parammze)
+  {
+    if (parammze.c() == 1) {
+      this.jdField_a_of_type_Ncy = this.jdField_b_of_type_Ncy;
+    }
+    for (;;)
     {
-      return;
-      i = paramBundle.getInt("key_type");
-      str = paramBundle.getString("key_uin");
-      paramBundle.setClassLoader(UserInfo.class.getClassLoader());
-      paramBundle = (UserInfo)paramBundle.getParcelable("key_result");
-      paramAVGameAppInterface = (mwp)paramAVGameAppInterface.a(2);
-      if (paramAVGameAppInterface != null) {
-        paramAVGameAppInterface.a(i, str, paramBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("StagePresenterImp", 2, "updateCurGameStagePresenter curGameStagePresenter = " + this.jdField_a_of_type_Ncy);
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("AVGameClientQIPCModule", 4, "notifyUserInfoChange, uinType[" + i + "], uin[" + str + "], info[" + paramBundle + "]");
+      return;
+      if (parammze.c() == 2) {
+        this.jdField_a_of_type_Ncy = this.d;
+      } else if (parammze.c() == 3) {
+        this.jdField_a_of_type_Ncy = this.c;
+      } else if (parammze.c() == 4) {
+        this.jdField_a_of_type_Ncy = this.f;
+      } else if (parammze.c() == 5) {
+        this.jdField_a_of_type_Ncy = this.e;
+      }
+    }
   }
   
-  private void b()
+  private boolean e(mze parammze)
   {
-    if (this.jdField_a_of_type_Ndf.a()) {
-      return;
-    }
+    return myk.a().a().getAccount().equals(parammze.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+  }
+  
+  private void f(mze parammze)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("AVGameClientQIPCModule", 2, "connect, [" + this.jdField_a_of_type_Ndf.a.get() + "]");
+      QLog.d("StagePresenterImp", 2, "handleGameStart buff = " + parammze.a().a()[0] + parammze.a().a()[1] + parammze.a().a()[2]);
     }
-    QIPCClientHelper.getInstance().getClient().connect(this.jdField_a_of_type_Ndf);
-  }
-  
-  private void b(Bundle paramBundle, AVGameAppInterface paramAVGameAppInterface)
-  {
-    if ((paramBundle == null) || (paramAVGameAppInterface == null)) {}
-    int i;
-    String str;
-    int j;
-    do
+    g(parammze);
+    if ((this.jdField_a_of_type_Ncy.a()) && (e(parammze)))
     {
-      return;
-      i = paramBundle.getInt("key_face_type");
-      str = paramBundle.getString("key_uin");
-      j = paramBundle.getInt("key_id_type");
-      paramBundle = (mwp)paramAVGameAppInterface.a(2);
-      if (paramBundle != null) {
-        paramBundle.notifyUI(1, true, new Object[] { Integer.valueOf(i), str, Integer.valueOf(j) });
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("AVGameClientQIPCModule", 4, "notifyUserHeadChange, faceType[" + i + "], uin[" + str + "], idType[" + j + "]");
-  }
-  
-  private void c(Bundle paramBundle, AVGameAppInterface paramAVGameAppInterface)
-  {
-    if ((paramBundle == null) || (paramAVGameAppInterface == null)) {
-      return;
+      l = Long.parseLong(myk.a().a().getAccount());
+      RectF localRectF = this.jdField_a_of_type_Nbp.a().a(l);
+      this.jdField_a_of_type_Nbp.a().b(localRectF);
     }
-    boolean bool = paramBundle.getBoolean("key_event_ret");
-    String str = paramBundle.getString("key_play_game_id");
-    int i = paramBundle.getInt("key_file_type");
-    paramBundle = paramBundle.getString("key_file_url");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameClientQIPCModule_GameRC", 4, "notifyGameResultUpload, playId[" + str + "], fileType[" + i + "], fileUrl[" + paramBundle + "]");
+    long l = parammze.a().jdField_a_of_type_Mzi.d * 1000 - parammze.a().d();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleGameStart delayMs = " + l);
     }
-    ((myz)paramAVGameAppInterface.a(3)).notifyUI(11, bool, new Object[] { str, Integer.valueOf(i), paramBundle });
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
   }
   
-  public Bitmap a(int paramInt1, String paramString, byte paramByte, int paramInt2)
+  private void g(mze parammze)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      b();
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_face_type", paramInt1);
-      localBundle.putString("key_uin", paramString);
-      localBundle.putByte("key_shape", paramByte);
-      localBundle.putInt("key_id_type", paramInt2);
-      paramString = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_get_user_head", localBundle);
-    } while ((paramString == null) || (!paramString.isSuccess()) || (paramString.data == null));
-    return (Bitmap)paramString.data.getParcelable("key_result");
+    this.jdField_a_of_type_Nbp.a().a();
+    boolean bool = e(parammze);
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "updateUIForGamePrepare isPlayerSelf = " + bool);
+    }
+    a(this.jdField_a_of_type_Ncy.a(bool), parammze.a().jdField_a_of_type_Mzi.d * 1000, parammze.a().d());
+    this.jdField_a_of_type_Ncy.a(parammze);
+    c(this.jdField_a_of_type_Ncy.a(this.jdField_a_of_type_Nbp.a(), parammze));
   }
   
-  public UserInfo a(int paramInt, String paramString)
+  private void h(mze parammze)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    boolean bool = e(parammze);
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "updateStageUIForRealStart isPlayerSelf = " + bool);
+    }
+    this.jdField_a_of_type_Ndc.c();
+    this.jdField_a_of_type_Ncy.b(parammze);
+    b(this.jdField_a_of_type_Ncy.a(this.jdField_a_of_type_Nbp.a(), bool));
+    if ((this.jdField_a_of_type_Ncy.a()) && (!bool))
     {
-      return null;
-      b();
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_type", paramInt);
-      localBundle.putString("key_uin", paramString);
-      paramString = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_get_user_info", localBundle);
-    } while ((paramString == null) || (!paramString.isSuccess()) || (paramString.data == null));
-    paramString.data.setClassLoader(UserInfo.class.getClassLoader());
-    return (UserInfo)paramString.data.getParcelable("key_result");
+      long l = Long.parseLong(parammze.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+      parammze = this.jdField_a_of_type_Nbp.a().a(l);
+      this.jdField_a_of_type_Nbp.a().a(parammze);
+    }
+  }
+  
+  private void i(mze parammze)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleSwitchTopic ,topic = " + parammze.a().b() + " buff = " + parammze.a().a()[0] + parammze.a().a()[1] + parammze.a().a()[2]);
+    }
+    this.jdField_a_of_type_Ndc.c();
+    this.jdField_a_of_type_Ncy.c(parammze);
+    if (parammze.d(myk.a().a().getAccount())) {
+      this.jdField_a_of_type_Nbp.a().b(this.jdField_a_of_type_Ndc.a());
+    }
+  }
+  
+  public RectF a()
+  {
+    return this.jdField_a_of_type_Ndc.a();
+  }
+  
+  public Drawable a()
+  {
+    mzj localmzj = myk.a().a().a();
+    if ((localmzj == null) || (TextUtils.isEmpty(localmzj.h))) {
+      return mzu.a("avgame_questions_bg_110_height@2x.png");
+    }
+    return URLDrawable.getDrawable(localmzj.h);
+  }
+  
+  public nbp a()
+  {
+    return this.jdField_a_of_type_Nbp;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameClientQIPCModule", 2, "disconnect");
-    }
-    QIPCClientHelper.getInstance().disconnect();
+    myk.a().b();
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(ImageView paramImageView, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameClientQIPCModule", 2, "setCurrentAvGameStatus nCurrentStatus:" + paramInt + " roomId:" + paramString, new Throwable("not crash, print stack"));
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", paramInt);
-    localBundle.putString("key_room_id", paramString);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_set_cur_av_game_status", localBundle, new nde(this, paramString, paramInt));
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameClientQIPCModule", 2, "notifySendMsg shareType:" + paramInt + " friendUin:" + paramString1 + " roomId:" + paramString2, new Throwable("print stack"));
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_type", paramInt);
-    localBundle.putString("key_uin", paramString1);
-    localBundle.putString("key_room_id", paramString2);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_notify_send_msg", localBundle, null);
-  }
-  
-  public void a(int paramInt, List<String> paramList, HashMap<String, String> paramHashMap)
-  {
-    if ((paramList == null) || (paramList.size() == 0) || (paramHashMap == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        b();
-        ArrayList localArrayList = new ArrayList(paramList.size());
-        localArrayList.addAll(paramList);
-        paramList = new Bundle();
-        paramList.putInt("key_type", paramInt);
-        paramList.putStringArrayList("key_uin_list", localArrayList);
-        paramList = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_get_nicks", paramList);
-      } while ((paramList == null) || (!paramList.isSuccess()) || (paramList.data == null));
-      paramList.data.setClassLoader(MapParcelable.class.getClassLoader());
-      paramList = (MapParcelable)paramList.data.getParcelable("key_result");
-    } while (paramList == null);
-    paramHashMap.putAll(paramList.a);
+    this.jdField_a_of_type_Ndc.a(paramImageView, paramLong1, paramLong2);
   }
   
   public void a(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_play_game_id", paramString);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_upload_game_result_video", localBundle, null);
+    String str = myk.a().a().getAccount();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "showTopicSwitchedTip switcherUin = " + paramString);
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(str))) {
+      this.jdField_a_of_type_Ndc.b("avgame_tips_switch_topic@2x.png");
+    }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void a(String paramString, mze parammze)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_play_game_id", paramString1);
-    localBundle.putString("key_pic_path", paramString2);
-    localBundle.putString("key_video_path", paramString3);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_upload_game_result_resources", localBundle, null);
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    b();
-    Object localObject = new Bundle();
-    localObject = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_check_ptv_so_load_ok", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
+    paramString = myk.a().a().getAccount();
+    boolean bool = paramString.equals(parammze.a().c.uin);
+    if ((this.jdField_a_of_type_Ncy.a()) && (bool))
     {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).isSuccess()) {
-        bool1 = true;
+      long l = Long.parseLong(paramString);
+      paramString = this.jdField_a_of_type_Nbp.a().a(l);
+      this.jdField_a_of_type_Nbp.a().b(paramString);
+    }
+  }
+  
+  public void a(mze parammze)
+  {
+    this.jdField_a_of_type_Ndc.a(parammze);
+    this.jdField_a_of_type_Ndc.b(parammze);
+    e(parammze);
+    int i = parammze.c();
+    int j = parammze.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "refresh gameType = " + i + ",gameStatus = " + j);
+    }
+    if (this.jdField_a_of_type_Ncy == null)
+    {
+      QLog.d("StagePresenterImp", 1, "refresh return for null presenter,gameType = " + i + ",gameStatus = " + j);
+      return;
+    }
+    if (!a(i, j))
+    {
+      a(false);
+      this.jdField_a_of_type_Mze = parammze.a();
+      return;
+    }
+    a(true);
+    switch (j)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Mze = parammze.a();
+      return;
+      if (!d(parammze))
+      {
+        f(parammze);
+        continue;
+        if (!c(parammze))
+        {
+          i(parammze);
+          continue;
+          if (!b(parammze))
+          {
+            a(parammze, parammze.a().jdField_a_of_type_Int, parammze.a().b);
+            continue;
+            if (!a(parammze))
+            {
+              d(parammze);
+              continue;
+              if (!a()) {
+                c(parammze);
+              }
+            }
+          }
+        }
       }
     }
-    return bool1;
+  }
+  
+  public void a(mze parammze, int paramInt1, int paramInt2)
+  {
+    if (!parammze.a()) {
+      return;
+    }
+    int i = parammze.a().a(parammze.a().d.uin);
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleAnswerRight scoreThisTime = " + paramInt1 + ", actorScoreThisTime = " + paramInt2 + ", combo = " + parammze.a().jdField_a_of_type_Long);
+    }
+    String str2 = parammze.a().a();
+    Object localObject = (mxo)myk.a().a().a(2);
+    Bitmap localBitmap = ((mxo)localObject).a(String.valueOf(parammze.a().d.uin), (byte)1);
+    String str3 = parammze.a().d.nick;
+    long l = parammze.a().jdField_a_of_type_Long;
+    if ((parammze.c() == 1) && (parammze.b() != null)) {}
+    for (localObject = ((mxo)localObject).a(parammze.b().uin, (byte)1);; localObject = null)
+    {
+      boolean bool = myk.a().a().getAccount().equals(parammze.a().d.uin);
+      if (!bool) {
+        bdll.b(null, "dc00898", "", "", "0X800B04C", "0X800B04C", parammze.d(), 0, "", "", "", "");
+      }
+      int j = parammze.d();
+      if (bool) {}
+      for (String str1 = "1";; str1 = "2")
+      {
+        bdll.b(null, "dc00898", "", "", "0X800B04E", "0X800B04E", j, 0, str1, "", String.valueOf(l), "");
+        this.jdField_a_of_type_Nbp.a().a(str2, localBitmap, str3, paramInt1, i, l, (Bitmap)localObject, paramInt2, bool);
+        mzt.a().a(parammze.a(), "succeed");
+        localObject = this.jdField_a_of_type_Nbp.a().a();
+        this.jdField_a_of_type_Nbp.a().a((View)localObject, this.jdField_a_of_type_Nbp.a().a(), true);
+        if (parammze.c() == 2) {
+          this.jdField_a_of_type_Ndc.b();
+        }
+        this.jdField_a_of_type_Ncy.d(parammze);
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, parammze.a().jdField_a_of_type_Mzi.f * 1000);
+        return;
+      }
+    }
+  }
+  
+  public void a(nbp paramnbp)
+  {
+    this.jdField_a_of_type_Nbp = paramnbp;
+  }
+  
+  public void a(ncy paramncy)
+  {
+    this.jdField_b_of_type_Ncy = paramncy;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "onShowGameContent " + paramBoolean + ",curGameStagePresenter = " + this.jdField_a_of_type_Ncy);
+    }
+    if (this.jdField_a_of_type_Ncy != null) {
+      this.jdField_a_of_type_Ncy.a(paramBoolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Ndc.a(paramBoolean, paramLong1, paramLong2);
+  }
+  
+  public Drawable b()
+  {
+    mzj localmzj = myk.a().a().a();
+    if ((localmzj == null) || (TextUtils.isEmpty(localmzj.i))) {
+      return mzu.a("avgame_questions_bg_130_height@2x.png");
+    }
+    return URLDrawable.getDrawable(localmzj.i);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "resetGameContent ");
+    }
+    if (this.jdField_a_of_type_Ncy != null) {
+      this.jdField_a_of_type_Ncy.a(null);
+    }
   }
   
   public void b(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_play_game_id", paramString);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_clean_game_result_resources", localBundle, null);
+    this.jdField_a_of_type_Nbp.a(paramString);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void b(String paramString, mze parammze)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameClientQIPCModule", 4, "onCall, action[" + paramString + "]");
-    }
-    if ("action_notify_user_info_change".equals(paramString)) {
-      a(paramBundle, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface);
-    }
-    do
+    if (parammze.c())
     {
-      return null;
-      if ("action_notify_user_head_change".equals(paramString))
-      {
-        b(paramBundle, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface);
-        return null;
+      if (!e(parammze)) {
+        break label74;
       }
-      if ("action_notify_event".equals(paramString))
-      {
-        a(paramBundle);
-        return null;
-      }
-    } while (!"action_notify_game_result_upload".equals(paramString));
-    c(paramBundle, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface);
-    return null;
+      b(this.jdField_a_of_type_Nbp.a().getResources().getString(2131690215));
+    }
+    for (;;)
+    {
+      bdll.b(null, "dc00898", "", "", "0X800B04B", "0X800B04B", parammze.d(), 0, "", "", "", "");
+      return;
+      label74:
+      paramString = parammze.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.nick;
+      b(String.format(this.jdField_a_of_type_Nbp.a().getResources().getString(2131690216), new Object[] { bhlg.a(paramString, 8.0F) }));
+    }
+  }
+  
+  public void b(mze parammze)
+  {
+    this.jdField_a_of_type_Ndc.b(parammze);
+  }
+  
+  public void b(ncy paramncy)
+  {
+    this.c = paramncy;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StagePresenterImp", 2, "destroy");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_a_of_type_Ndc.a(paramString);
+  }
+  
+  public void c(mze parammze)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleGameOver");
+    }
+    this.jdField_a_of_type_Nbp.a().a();
+    d();
+    mzt.a().a(parammze.a(), "over");
+    if (parammze.d(myk.a().a().getAccount())) {
+      this.jdField_a_of_type_Nbp.a().b();
+    }
+    this.jdField_a_of_type_Nbp.a().e();
+    this.jdField_a_of_type_Ncy.f(parammze);
+  }
+  
+  public void c(ncy paramncy)
+  {
+    this.d = paramncy;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Ndc.a();
+  }
+  
+  public void d(mze parammze)
+  {
+    Object localObject = parammze.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "onAnswerTimeoutPush answer = " + (String)localObject);
+    }
+    bdll.b(null, "dc00898", "", "", "0X800B04F", "0X800B04F", parammze.d(), 0, "", "", "", "");
+    this.jdField_a_of_type_Nbp.a().a((String)localObject);
+    mzt.a().a(parammze.a(), "failed");
+    localObject = this.jdField_a_of_type_Nbp.a().a();
+    this.jdField_a_of_type_Nbp.a().a((View)localObject, this.jdField_a_of_type_Nbp.a().a(), false);
+    if (parammze.c() == 2) {
+      this.jdField_a_of_type_Ndc.b();
+    }
+    this.jdField_a_of_type_Ncy.e(parammze);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, parammze.a().jdField_a_of_type_Mzi.f * 1000);
+  }
+  
+  public void d(ncy paramncy)
+  {
+    this.f = paramncy;
+  }
+  
+  public void e(ncy paramncy)
+  {
+    this.e = paramncy;
   }
 }
 

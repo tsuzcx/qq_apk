@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahrw;
-import ahry;
+import aibk;
+import aibm;
 import android.text.TextUtils;
 
 public class AIOGalleryAdapter$6$1
   implements Runnable
 {
-  public AIOGalleryAdapter$6$1(ahrw paramahrw, String paramString) {}
+  public AIOGalleryAdapter$6$1(aibk paramaibk, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Ahrw.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Ahrw.jdField_a_of_type_Int, true);
-      this.jdField_a_of_type_Ahrw.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Ahrw.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Ahrw.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
-      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Ahrw.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
-        AIOGalleryAdapter.a(this.jdField_a_of_type_Ahrw.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Ahrw.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Ahrw.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
+      this.jdField_a_of_type_Aibk.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Aibk.jdField_a_of_type_Int, true);
+      this.jdField_a_of_type_Aibk.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Aibk.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Aibk.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
+      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Aibk.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
+        AIOGalleryAdapter.a(this.jdField_a_of_type_Aibk.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Aibk.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Aibk.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
       }
     }
   }

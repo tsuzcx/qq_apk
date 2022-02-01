@@ -1,24 +1,18 @@
-import java.util.Comparator;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 
-class bbks
-  implements Comparator<bbkw>
+public abstract interface bbks
 {
-  bbks(bbkr parambbkr) {}
+  public abstract void a();
   
-  public int a(bbkw parambbkw1, bbkw parambbkw2)
-  {
-    int j = Long.signum(parambbkw1.b - parambbkw2.b);
-    int i = j;
-    if (j == 0)
-    {
-      j = Long.signum(parambbkw1.c - parambbkw2.c);
-      i = j;
-      if (j == 0) {
-        i = Long.signum(-parambbkw1.a + parambbkw2.a);
-      }
-    }
-    return i;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(bbko parambbko, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, bbkr parambbkr);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

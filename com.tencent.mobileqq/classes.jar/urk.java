@@ -1,6 +1,20 @@
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.List;
+
 class urk
+  implements ulk
 {
-  private static final uri a = new uri(null);
+  urk(urj paramurj) {}
+  
+  public List<ull> a(int paramInt, boolean paramBoolean)
+  {
+    return usd.a(this.a.a(), paramInt, paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return AppNetConnInfo.isWifiConn();
+  }
 }
 
 

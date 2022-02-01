@@ -1,28 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import java.util.List;
 
 public class oki
-  extends niv
+  extends pfh
 {
-  private boolean b;
+  public oki(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  oki(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
+  public void a_(List<twi> paramList)
   {
-    this.b = paramBoolean;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt == 0) {
-      bmqa.a(bmqa.a(), this.b);
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a);
-      return;
-      QLog.d("ReadInJoySettingActivity", 1, "troopProtocolObserver fail!");
-    }
+    this.a.a(paramList);
   }
 }
 

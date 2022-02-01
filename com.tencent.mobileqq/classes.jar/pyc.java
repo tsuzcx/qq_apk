@@ -1,26 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
-
-public class pyc
+class pyc
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private long b = 0L;
+  private boolean jdField_a_of_type_Boolean;
   
-  public ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq a()
+  pyc(pxl parampxl, boolean paramBoolean)
   {
-    return new ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq(this, null);
+    a(paramBoolean);
   }
   
-  public pyc a(long paramLong)
+  void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public pyc b(long paramLong)
+  boolean a()
   {
-    this.b = paramLong;
-    return this;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

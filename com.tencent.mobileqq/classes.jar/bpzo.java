@@ -1,24 +1,23 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import dov.com.qq.im.ptv.LightWeightProgress;
 
-public class bpzo
-  implements Comparable<bpzo>
+class bpzo
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public int b;
+  bpzo(bpzm parambpzm) {}
   
-  public bpzo(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(bpzo parambpzo)
-  {
-    return -(int)(this.jdField_a_of_type_Long - parambpzo.jdField_a_of_type_Long);
+    this.a.a.jdField_a_of_type_DovComQqImPtvLightWeightProgress.setStatus(true);
+    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleX(1.0F);
+    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleY(1.0F);
+    this.a.a.j();
+    awlk.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,115 +1,49 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class axqz
-  implements abfp
+  implements INetInfoHandler
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<axqw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  long a = 0L;
   
-  public axqz(Context paramContext, List<PicInfo> paramList)
+  private void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      int i = 0;
-      if (i < paramList.size())
-      {
-        paramContext = (PicInfo)paramList.get(i);
-        if ((ShortVideoUtils.a()) && ((!TextUtils.isEmpty(paramContext.d)) || (!TextUtils.isEmpty(paramContext.e)))) {}
-        for (paramContext = new axqm(this.jdField_a_of_type_AndroidContentContext, paramContext);; paramContext = new axql(this.jdField_a_of_type_AndroidContentContext, paramContext))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-          i += 1;
-          break;
-        }
-      }
+    if (System.currentTimeMillis() - this.a < 500L) {
+      return;
     }
+    this.a = System.currentTimeMillis();
+    QQPlayerService.d(BaseApplicationImpl.getContext());
   }
   
-  public int a()
+  public void onNetMobile2None()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    a(4);
   }
   
-  public axqw a()
+  public void onNetMobile2Wifi(String paramString)
   {
-    if ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (axqw)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    a(3);
   }
   
-  public axqw a(int paramInt)
+  public void onNetNone2Mobile(String paramString)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (axqw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    a(1);
   }
   
-  public ArrayList<PicInfo> a()
+  public void onNetNone2Wifi(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((axqw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a);
-      i += 1;
-    }
-    return localArrayList;
+    a(2);
   }
   
-  public void a()
+  public void onNetWifi2Mobile(String paramString)
   {
-    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      ((axqw)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).c();
-    }
+    a(6);
   }
   
-  public void a(int paramInt)
+  public void onNetWifi2None()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      axqw localaxqw = (axqw)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramInt == i) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localaxqw.a(bool);
-        i += 1;
-        break;
-      }
-    }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public axqw b(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      localObject1 = localObject2;
-      if (paramInt >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          localObject1 = (axqw)this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
-        }
-      }
-    }
-    return localObject1;
+    a(5);
   }
 }
 

@@ -1,30 +1,45 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
+import java.util.List;
 
 public class bcdj
-  extends MSFServlet
+  extends bcdi
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  private int a;
   
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
-  
-  public void service(Intent paramIntent)
+  public bcdj(List<bcfr> paramList, String paramString, int paramInt)
   {
-    String str = paramIntent.getAction();
-    if ((str != null) && ("gif_ui_show".equals(str)))
+    super(paramList, paramString);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return bbzo.a("fts_native_chathistory_maxnum", 3);
+  }
+  
+  public String a()
+  {
+    return anzj.a(2131703846);
+  }
+  
+  public void a(View paramView)
+  {
+    bcni.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
+    if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
-      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
-      paramIntent = new Bundle();
-      paramIntent.putInt("gif_ui_show_bid", i);
-      paramIntent.putLong("gif_ui_show_seq", l);
-      notifyObserver(null, 0, true, paramIntent, ayew.class);
-      return;
+      bcni.a("all_result", "more_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+      bcjy.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4F", 0, 0, null, null);
     }
-    super.service(paramIntent);
+    bhuu.d = -1;
+    bhuu.f = 0;
+    bhuu.g = -1;
+    bhuu.h = -1;
+    bhuu.i = -1;
+    bhuu.j = -1;
+    bhut.a(paramView);
+    FTSEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, 1);
   }
 }
 

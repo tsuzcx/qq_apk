@@ -1,6 +1,8 @@
-public abstract interface ajlb
+import android.widget.TextView;
+
+public class ajlb
 {
-  public abstract void a();
+  public TextView a;
 }
 
 

@@ -1,19 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.graphics.Bitmap;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class sax
-  extends nyr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface sax
 {
-  private sax(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  public abstract void a(@NotNull Bitmap paramBitmap);
 }
 
 

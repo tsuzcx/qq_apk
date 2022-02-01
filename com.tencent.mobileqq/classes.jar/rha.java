@@ -1,89 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfoUser;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import org.jetbrains.annotations.NotNull;
 
-public class rha
-  implements Cloneable
+class rha
+  implements rjx
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c = 1;
+  rha(rgz paramrgz, UgcVideo paramUgcVideo) {}
   
-  public rha(SocializeFeedsInfo paramSocializeFeedsInfo) {}
-  
-  private void a(articlesummary.SocializeFeedsInfo paramSocializeFeedsInfo)
+  public void a(float paramFloat)
   {
-    int j = 0;
-    long l;
-    int i;
-    label63:
-    String str;
-    if (paramSocializeFeedsInfo.msg_master_uin.has())
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status != UgcVideo.STATUS_PAUSE)
     {
-      l = pvd.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint64_uin);
-      this.jdField_a_of_type_Long = l;
-      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
-        break label190;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = ((int)paramFloat);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status = UgcVideo.STATUS_UPLOADING;
+      if (rgz.a(this.jdField_a_of_type_Rgz) != null) {
+        rgz.a(this.jdField_a_of_type_Rgz).a(3, true, false, null);
       }
-      i = pvd.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).enum_uin_type);
-      this.jdField_a_of_type_Int = i;
-      i = j;
-      if (paramSocializeFeedsInfo.msg_master_uin.has()) {
-        i = pvd.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint32_star_style);
+      if (QLog.isColorLevel()) {
+        QLog.i("RIJUGC.UploadCoverTaskStep", 0, "coverProgress =" + paramFloat);
       }
-      this.b = i;
-      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
-        break label202;
-      }
-      if (!paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.has()) {
-        break label195;
-      }
-      str = paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.get().toStringUtf8();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = str;
-      if ((paramSocializeFeedsInfo.msg_master_uin.has()) && (paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.has())) {
-        this.c = paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.get();
-      }
-      return;
-      l = 0L;
-      break;
-      label190:
-      i = 0;
-      break label63;
-      label195:
-      str = "";
-      continue;
-      label202:
-      str = "";
     }
   }
   
-  public rha a()
+  public void a(int paramInt, @NotNull String paramString)
   {
-    try
+    QLog.e("RIJUGC.UploadCoverTaskStep", 1, "upload cover fail, errCode=" + paramInt + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status != UgcVideo.STATUS_PAUSE)
     {
-      rha localrha = (rha)super.clone();
-      return localrha;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status = UgcVideo.STATUS_FAILED;
+      if (rgz.a(this.jdField_a_of_type_Rgz) != null) {
+        rgz.a(this.jdField_a_of_type_Rgz).a(3, false, false, paramString);
+      }
+      rgz.a(this.jdField_a_of_type_Rgz).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+      this.jdField_a_of_type_Rgz.d();
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
   }
   
-  public boolean a()
+  public void a(String paramString)
   {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return "uin=" + this.jdField_a_of_type_Long + "type=" + this.jdField_a_of_type_Int;
+    QLog.i("RIJUGC.UploadCoverTaskStep", 1, "upload cover success");
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.UploadCoverTaskStep", 0, "upload cover url=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverUrl = paramString;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status != UgcVideo.STATUS_PAUSE)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
+      if (rgz.a(this.jdField_a_of_type_Rgz) != null) {
+        rgz.a(this.jdField_a_of_type_Rgz).a(3, true, true, null);
+      }
+    }
+    rgz.a(this.jdField_a_of_type_Rgz).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    this.jdField_a_of_type_Rgz.d();
   }
 }
 

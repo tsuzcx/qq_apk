@@ -1,29 +1,105 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class baqb
-  implements Animation.AnimationListener
 {
-  public baqb(ProviderContainerView paramProviderContainerView, boolean paramBoolean) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new baqc(this);
+  protected Handler a;
+  public bapy a;
+  protected QQAppInterface a;
+  Runnable jdField_a_of_type_JavaLangRunnable = new QzonePhotoGuideNotifyService.1(this);
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public baqb(QQAppInterface paramQQAppInterface, bapy parambapy)
   {
-    if (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bapy = parambapy;
+    if (paramQQAppInterface != null) {}
+    try
     {
-      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setAlpha(1.0F);
-      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setVisibility(8);
+      parambapy = new IntentFilter("com.qzonex.localalbum.new_photo_notification_feedback_action");
+      paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, parambapy);
+      return;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)) {
-      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).a(false, 150);
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("QzonePhotoGuideNotifyServlet", 1, "registerreceiver fail:" + paramQQAppInterface);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    boolean bool = false;
+    try
+    {
+      paramContext = paramContext.getPackageManager().getApplicationInfo("com.qzone", 128);
+      if ((paramContext == null) || (paramContext.metaData == null)) {
+        break label50;
+      }
+      i = paramContext.metaData.getInt("com.qzone.versioncode");
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      for (;;)
+      {
+        paramContext.printStackTrace();
+        int i = 0;
+      }
+    }
+    if (i >= paramInt) {
+      bool = true;
+    }
+    return bool;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    try
+    {
+      Intent localIntent = new Intent("com.qzonex.localalbum.new_photo_notification_action");
+      localIntent.setComponent(new ComponentName("com.qzone", "com.qzonex.proxy.localalbum.business.NewPhotoNotificationService"));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().startService(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.i("QzonePhotoGuideNotifyServlet", 2, "calling qzone");
+      }
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("QzonePhotoGuideNotifyServlet", 1, "startService fail:" + localException);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzonePhotoGuideNotifyServlet", 1, "stopService fail:" + localException);
+    }
+  }
 }
 
 

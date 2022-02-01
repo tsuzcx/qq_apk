@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import qqcircle.TaskCenterReader.TaskRecord;
-import vyy;
+import wco;
 
 public class QCircleTaskItemView
   extends QCircleBaseWidgetView<TaskCenterReader.TaskRecord>
@@ -23,7 +23,7 @@ public class QCircleTaskItemView
   
   public int a()
   {
-    return 2131560788;
+    return 2131560818;
   }
   
   protected String a()
@@ -33,9 +33,9 @@ public class QCircleTaskItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.a = ((TextView)findViewById(2131379941));
-    this.b = ((TextView)findViewById(2131379939));
-    this.c = ((TextView)findViewById(2131379938));
+    this.a = ((TextView)findViewById(2131380125));
+    this.b = ((TextView)findViewById(2131380123));
+    this.c = ((TextView)findViewById(2131380122));
   }
   
   protected void a(TaskCenterReader.TaskRecord paramTaskRecord)
@@ -53,7 +53,7 @@ public class QCircleTaskItemView
       }
     }
     label114:
-    for (int i = 2130843895;; i = 0)
+    for (int i = 2130843913;; i = 0)
     {
       localTextView.setBackgroundResource(i);
       localTextView = this.c;
@@ -61,7 +61,7 @@ public class QCircleTaskItemView
         bool = true;
       }
       localTextView.setClickable(bool);
-      this.c.setOnClickListener(new vyy(this, paramTaskRecord));
+      this.c.setOnClickListener(new wco(this, paramTaskRecord));
       return;
     }
   }

@@ -1,23 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.util.LruCache;
 
-public class arvs
+class arvs
+  extends LruCache<String, T>
 {
-  public static Bundle a(QQAppInterface paramQQAppInterface, String paramString)
+  arvs(arvr paramarvr, int paramInt)
   {
-    int i = ((anuk)paramQQAppInterface.a(13)).g();
-    if (QLog.isColorLevel()) {
-      QLog.i("EmoticonContentProvider", 2, "call, vipType = " + i);
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, T paramT)
+  {
+    int i;
+    if (paramT == null) {
+      i = 0;
     }
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putInt(paramString, i);
-    return paramQQAppInterface;
+    int j;
+    do
+    {
+      return i;
+      j = arvr.a(this.a, paramT);
+      i = j;
+    } while (j != 0);
+    return this.a.a(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvs
  * JD-Core Version:    0.7.0.1
  */

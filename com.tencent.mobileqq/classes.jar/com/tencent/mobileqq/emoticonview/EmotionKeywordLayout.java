@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import afur;
+import agej;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -9,22 +9,22 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import arzu;
-import arzv;
-import arzw;
-import arzx;
-import bgsp;
+import aspi;
+import aspj;
+import aspk;
+import aspl;
+import bhsr;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmotionKeywordLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new arzw(this);
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new aspk(this);
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private arzx jdField_a_of_type_Arzx;
+  private aspl jdField_a_of_type_Aspl;
   private EmotionKeywordHorizonListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView;
   private boolean jdField_a_of_type_Boolean;
   private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -38,22 +38,22 @@ public class EmotionKeywordLayout
   public EmotionKeywordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = afur.a(81.0F, paramContext.getResources());
+    this.jdField_a_of_type_Int = agej.a(81.0F, paramContext.getResources());
   }
   
   private void b()
   {
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365913));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365958));
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365912));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365957));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = ((EmotionKeywordHorizonListView)findViewById(2131365942));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = ((EmotionKeywordHorizonListView)findViewById(2131365987));
     }
     if (this.jdField_b_of_type_AndroidWidgetLinearLayout == null) {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362673));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362689));
     }
   }
   
@@ -62,7 +62,7 @@ public class EmotionKeywordLayout
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) {}
     for (int i = 100;; i = 81)
     {
-      this.jdField_a_of_type_Int = afur.a(i, getResources());
+      this.jdField_a_of_type_Int = agej.a(i, getResources());
       return;
     }
   }
@@ -89,7 +89,7 @@ public class EmotionKeywordLayout
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, this.jdField_a_of_type_Int });
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new arzv(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aspj(this));
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(200L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
     }
@@ -102,7 +102,7 @@ public class EmotionKeywordLayout
       QLog.d("EmotionKeywordLayout", 2, "show");
     }
     b();
-    if (bgsp.a(paramString))
+    if (bhsr.a(paramString))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -126,7 +126,7 @@ public class EmotionKeywordLayout
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Int, 0.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new arzu(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aspi(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
     }
@@ -154,16 +154,16 @@ public class EmotionKeywordLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnVisibilityListener(arzx paramarzx)
+  public void setOnVisibilityListener(aspl paramaspl)
   {
-    this.jdField_a_of_type_Arzx = paramarzx;
+    this.jdField_a_of_type_Aspl = paramaspl;
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (this.jdField_a_of_type_Arzx != null) {
-      this.jdField_a_of_type_Arzx.a(paramInt);
+    if (this.jdField_a_of_type_Aspl != null) {
+      this.jdField_a_of_type_Aspl.a(paramInt);
     }
   }
 }

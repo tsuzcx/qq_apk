@@ -1,62 +1,154 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-class ljp
-  implements Comparator<ljq>
+public class ljp
 {
-  ljp(ljo paramljo) {}
+  private static volatile ljp jdField_a_of_type_Ljp;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ljq[] jdField_a_of_type_ArrayOfLjq = new ljq[4];
   
-  public int a(ljq paramljq1, ljq paramljq2)
+  public static ljp a()
   {
-    int j = -1;
-    int i;
-    if (paramljq1 == paramljq2) {
-      i = 0;
-    }
-    label99:
-    do
+    if (jdField_a_of_type_Ljp == null) {}
+    try
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return i;
-              i = j;
-            } while (paramljq1 == null);
-            if (paramljq2 == null) {
-              return 1;
-            }
-            if ((!paramljq1.a()) || (!paramljq2.a())) {
-              break label99;
-            }
-            if (paramljq1.d == paramljq2.d) {
-              break;
-            }
-            i = j;
-          } while (paramljq2.d > paramljq1.d);
-          return 1;
-          if (paramljq1.b == paramljq2.b) {
-            break;
-          }
-          i = j;
-        } while (paramljq2.b > paramljq1.b);
-        return 1;
-        return 0;
-        if (paramljq1.a()) {
-          return 1;
-        }
-        i = j;
-      } while (paramljq2.a());
-      if (paramljq1.b == paramljq2.b) {
-        break;
+      if (jdField_a_of_type_Ljp == null) {
+        jdField_a_of_type_Ljp = new ljp();
       }
-      i = j;
-    } while (paramljq2.b > paramljq1.b);
-    return 1;
-    return 0;
+      return jdField_a_of_type_Ljp;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ArrayOfLjq.length;
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "clear.");
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLjq.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjq[i] != null)
+          {
+            this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_ArrayOfByte = null;
+            this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_Int = 0;
+          }
+        }
+        else {
+          return;
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLjq.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_Int == paramInt1)
+          {
+            this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_Int = paramInt2;
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
+          }
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLjq.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
+            this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_Int = paramInt;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      while (i < this.jdField_a_of_type_ArrayOfLjq.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfLjq[i] == null) {
+          this.jdField_a_of_type_ArrayOfLjq[i] = new ljq(this);
+        }
+        if ((this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
+          this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        }
+        this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_Int = 0;
+        i += 1;
+      }
+      return true;
+    }
+  }
+  
+  public byte[] a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLjq.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_Int == paramInt)
+          {
+            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfLjq[i].jdField_a_of_type_ArrayOfByte;
+            return arrayOfByte;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
+          return null;
+        }
+      }
+      finally {}
+      i += 1;
+    }
   }
 }
 

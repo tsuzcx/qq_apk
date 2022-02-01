@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
-import aagg;
+import aakh;
 import android.widget.ImageButton;
 
 public class SubscribeCommentInputPopupWindow$11
   implements Runnable
 {
-  public SubscribeCommentInputPopupWindow$11(aagg paramaagg) {}
+  public SubscribeCommentInputPopupWindow$11(aakh paramaakh) {}
   
   public void run()
   {
-    aagg.b(this.this$0);
-    aagg.a(this.this$0).setVisibility(0);
-    aagg.b(this.this$0).setVisibility(8);
+    aakh.b(this.this$0);
+    aakh.a(this.this$0).setVisibility(0);
+    aakh.b(this.this$0).setVisibility(8);
   }
 }
 

@@ -1,8 +1,8 @@
-import java.util.ArrayList;
-
-public abstract interface awuv
+public abstract class awuv
 {
-  public abstract void a(long paramLong, ArrayList<Long> paramArrayList);
+  public abstract void a();
+  
+  public abstract void a(awpk paramawpk);
 }
 
 

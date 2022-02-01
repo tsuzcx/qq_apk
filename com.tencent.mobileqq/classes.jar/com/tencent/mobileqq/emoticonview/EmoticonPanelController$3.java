@@ -2,7 +2,7 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anlb;
+import anwx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class EmoticonPanelController$3
@@ -12,7 +12,7 @@ class EmoticonPanelController$3
   
   public void run()
   {
-    ((anlb)this.this$0.a.a(12)).b();
+    ((anwx)this.this$0.a.a(12)).b();
     this.a.edit().putLong("lastRequestTime", System.currentTimeMillis()).apply();
   }
 }

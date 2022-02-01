@@ -16,8 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import anni;
-import bcrp;
+import anzj;
+import bdkh;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
@@ -25,20 +25,20 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XListView;
 import java.util.List;
-import wpm;
-import xgt;
-import xgu;
-import xgv;
-import xwb;
-import yij;
-import yku;
-import zlx;
+import wth;
+import xko;
+import xkp;
+import xkq;
+import xzw;
+import yme;
+import yop;
+import zps;
 
 public class QQStoryWatcherListActivity
   extends QQStoryBaseActivity
   implements View.OnClickListener
 {
-  private static final String jdField_b_of_type_JavaLangString = anni.a(2131709897);
+  private static final String jdField_b_of_type_JavaLangString = anzj.a(2131710006);
   public int a;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   View jdField_a_of_type_AndroidViewView;
@@ -46,9 +46,9 @@ public class QQStoryWatcherListActivity
   public VideoListFeedItem a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
-  public xgv a;
-  xwb jdField_a_of_type_Xwb;
-  protected yku a;
+  public xkq a;
+  xzw jdField_a_of_type_Xzw;
+  protected yop a;
   public boolean a;
   View jdField_b_of_type_AndroidViewView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -60,7 +60,7 @@ public class QQStoryWatcherListActivity
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Yku = new xgu(this);
+    this.jdField_a_of_type_Yop = new xkp(this);
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt)
@@ -118,9 +118,9 @@ public class QQStoryWatcherListActivity
         return;
         this.jdField_c_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-        this.jdField_a_of_type_Xwb.a(paramList);
+        this.jdField_a_of_type_Xzw.a(paramList);
         break;
-        this.jdField_a_of_type_Xwb.b(paramList);
+        this.jdField_a_of_type_Xzw.b(paramList);
       }
       label153:
       a(1);
@@ -150,26 +150,26 @@ public class QQStoryWatcherListActivity
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(null);
       continue;
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(anni.a(2131709896));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131710005));
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(null);
       continue;
-      if (this.jdField_a_of_type_Xgv.a >= 2000L)
+      if (this.jdField_a_of_type_Xkq.a >= 2000L)
       {
         a(0);
       }
       else
       {
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        String str = String.format("%s人累计浏览%s次", new Object[] { zlx.a(this.jdField_a_of_type_Xgv.a), zlx.a(this.jdField_a_of_type_Xgv.b) });
+        String str = String.format("%s人累计浏览%s次", new Object[] { zps.a(this.jdField_a_of_type_Xkq.a), zps.a(this.jdField_a_of_type_Xkq.b) });
         this.jdField_c_of_type_AndroidWidgetTextView.setText(str);
         this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
         this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(null);
         continue;
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(anni.a(2131709902));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131710011));
         this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
         this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -188,25 +188,25 @@ public class QQStoryWatcherListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561883);
+    super.setContentView(2131561924);
     super.setTitle(jdField_b_of_type_JavaLangString);
-    this.leftView.setText(2131690563);
-    super.findViewById(2131376788).setBackgroundColor(getResources().getColor(2131167044));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374418);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131374594));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131381096));
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131366007);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131376465));
+    this.leftView.setText(2131690559);
+    super.findViewById(2131376925).setBackgroundColor(getResources().getColor(2131167050));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374555);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131374731));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131381268));
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131366053);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131376597));
     try
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130846613, 0, 0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130846630, 0, 0);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131561881, null);
+      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131561922, null);
       this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_b_of_type_AndroidViewView);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369929));
-      this.jdField_a_of_type_Xwb = new xwb(this, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Xwb);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new xgt(this));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370027));
+      this.jdField_a_of_type_Xzw = new xzw(this, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Xzw);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new xko(this));
       this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("feed_id");
       this.jdField_a_of_type_Int = super.getIntent().getIntExtra("source", 0);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
@@ -221,17 +221,17 @@ public class QQStoryWatcherListActivity
     {
       for (;;)
       {
-        bcrp.a(paramBundle);
+        bdkh.a(paramBundle);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = ((VideoListFeedItem)((yij)wpm.a(11)).a(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = ((VideoListFeedItem)((yme)wth.a(11)).a(this.jdField_a_of_type_JavaLangString));
       if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.mViewTotalTime > 0L)) {
-        super.setTitle(jdField_b_of_type_JavaLangString + zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.mViewTotalTime));
+        super.setTitle(jdField_b_of_type_JavaLangString + zps.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.mViewTotalTime));
       }
-      this.jdField_a_of_type_Xwb.a(this.jdField_a_of_type_Yku);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839402);
+      this.jdField_a_of_type_Xzw.a(this.jdField_a_of_type_Yop);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839410);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
-      this.jdField_a_of_type_Xgv = new xgv(this, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Xgv.a();
+      this.jdField_a_of_type_Xkq = new xkq(this, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Xkq.a();
     }
     return true;
   }
@@ -247,10 +247,10 @@ public class QQStoryWatcherListActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131376465) {
-      if (this.jdField_a_of_type_Xgv != null)
+    if (i == 2131376597) {
+      if (this.jdField_a_of_type_Xkq != null)
       {
-        this.jdField_a_of_type_Xgv.a();
+        this.jdField_a_of_type_Xkq.a();
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -260,10 +260,10 @@ public class QQStoryWatcherListActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (i == 2131369929)
+      if (i == 2131370027)
       {
         a(1);
-        xgv.a(this.jdField_a_of_type_Xgv);
+        xkq.a(this.jdField_a_of_type_Xkq);
       }
     }
   }

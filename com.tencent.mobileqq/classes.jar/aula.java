@@ -1,26 +1,31 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardTextOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public class aula
-  implements View.OnClickListener
+class aula
+  implements aumz
 {
-  public aula(ForwardTextOption paramForwardTextOption) {}
+  aula(aukz paramaukz, List paramList, atqx paramatqx, aule paramaule) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Bgpa == null) {}
-    for (;;)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_Bgpa.hideSoftInputFromWindow();
-      auiq localauiq = new auiq(this.a.jdField_a_of_type_Bgpa);
-      localauiq.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692399), this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Bgpa.addPreviewView(localauiq.b());
-      this.a.E();
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Atqx.b(localFileManagerEntity);
+      }
+    }
+    if (this.jdField_a_of_type_Aule != null) {
+      this.jdField_a_of_type_Aule.a(1, 0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aule != null) {
+      this.jdField_a_of_type_Aule.a(1, 1);
     }
   }
 }

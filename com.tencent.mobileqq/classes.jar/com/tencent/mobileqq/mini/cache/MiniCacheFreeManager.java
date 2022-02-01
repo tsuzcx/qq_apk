@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bgmg;
-import bjxn;
+import bhmi;
+import bkyr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -35,16 +35,16 @@ public class MiniCacheFreeManager
   
   private static void clearAllPkgs()
   {
-    bgmg.a(ApkgManager.PATH_GAMEPKG_ROOT, false);
-    bgmg.a(ApkgManager.PATH_WXAPKG_ROOT, false);
-    bgmg.a(ApkgManager.PATH_APKG_TISSUE_ROOT, false);
+    bhmi.a(ApkgManager.PATH_GAMEPKG_ROOT, false);
+    bhmi.a(ApkgManager.PATH_WXAPKG_ROOT, false);
+    bhmi.a(ApkgManager.PATH_APKG_TISSUE_ROOT, false);
   }
   
   private static void clearAllStorageCache()
   {
     try
     {
-      bgmg.a(BaseApplication.getContext().getCacheDir() + "/mini", false);
+      bhmi.a(BaseApplication.getContext().getCacheDir() + "/mini", false);
       return;
     }
     catch (Exception localException)
@@ -117,7 +117,7 @@ public class MiniCacheFreeManager
       return;
       str = ApkgManager.getApkgFolderPath(paramMiniAppInfo);
     } while (!new File(str).exists());
-    bgmg.a(str, false);
+    bhmi.a(str, false);
     QLog.i("MiniCacheFreeManager", 1, "clearPkg finish: " + paramMiniAppInfo.appId);
   }
   
@@ -228,7 +228,7 @@ public class MiniCacheFreeManager
     {
       return;
       if (!paramMiniAppInfo.isEngineTypeMiniGame()) {}
-      for (boolean bool = true; bjxn.a(bool); bool = false)
+      for (boolean bool = true; bkyr.a(bool); bool = false)
       {
         MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), MiniSdkLauncher.convert(paramMiniAppInfo));
         return;

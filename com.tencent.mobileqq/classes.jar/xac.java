@@ -1,66 +1,12 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 import java.util.List;
 
 public class xac
-  extends wlf<xbl>
+  extends wip
 {
-  public static final String a;
-  public List<wxt> a;
-  public String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.get_colleciton_view_count");
-  }
-  
-  public xac()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
-    try
-    {
-      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
-      return new xbl(this.b, localRspCollectionViewCount);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        yqp.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      wxt localwxt = (wxt)localIterator.next();
-      localReqCollectionViewCount.collection_id.add(localwxt.a());
-    }
-    return localReqCollectionViewCount.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
-  }
+  public ShareGroupItem a;
+  public String a;
+  public List<ShareGroupItem> a;
 }
 
 

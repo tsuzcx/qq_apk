@@ -1,87 +1,13 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 class atnz
-  extends anke
+  implements blkc
 {
-  atnz(atny paramatny) {}
+  atnz(atnw paramatnw, View paramView) {}
   
-  protected void a(long paramLong, float paramFloat)
+  public void a()
   {
-    Object localObject = this.a.jdField_a_of_type_Atmn.a();
-    if (localObject == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onProgress : opType[" + this.a.jdField_a_of_type_Atmn.e() + "], uniseq[" + ((FileManagerEntity)localObject).uniseq + "], nSessionId[" + ((FileManagerEntity)localObject).nSessionId + "], peerType[" + this.a.jdField_a_of_type_Atmn.b() + "]");
-      }
-      int i = DataLineMsgRecord.getDevTypeBySeId(((FileManagerEntity)localObject).uniseq);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(((FileManagerEntity)localObject).uniseq);
-    } while ((localObject == null) || (paramLong != ((DataLineMsgRecord)localObject).sessionid) || (this.a.jdField_a_of_type_Atou == null));
-    this.a.jdField_a_of_type_Atou.a(paramFloat);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
-  {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Atmn.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onRecvFile : isSuccess[" + paramBoolean + "], uniseq[" + localFileManagerEntity.uniseq + "], nSessionId[" + localFileManagerEntity.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Atmn.b() + "]");
-    }
-    int i = DataLineMsgRecord.getDevTypeBySeId(localFileManagerEntity.uniseq);
-    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(localFileManagerEntity.uniseq);
-    if (localDataLineMsgRecord == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramLong == localDataLineMsgRecord.sessionid) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.i("DatalineFileModel<FileAssistant>", 1, "this recv file done is not current visit file");
-      return;
-      localFileManagerEntity.setFilePath(paramString);
-    } while (this.a.jdField_a_of_type_Atou == null);
-    if (paramBoolean)
-    {
-      localFileManagerEntity.status = 1;
-      this.a.jdField_a_of_type_Atou.f();
-      return;
-    }
-    localFileManagerEntity.status = 3;
-    this.a.jdField_a_of_type_Atou.g();
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    paramString = this.a.jdField_a_of_type_Atmn.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onSendFile : isSuccess[" + paramBoolean + "], uniseq[" + paramString.uniseq + "], nSessionId[" + paramString.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Atmn.b() + "]");
-    }
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramString.uniseq);
-    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(paramString.uniseq);
-    if (localDataLineMsgRecord == null) {}
-    do
-    {
-      return;
-      if (paramLong != localDataLineMsgRecord.sessionid)
-      {
-        QLog.i("DatalineFileModel<FileAssistant>", 1, "this send file done is not current visit file");
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Atou == null);
-    if (paramBoolean)
-    {
-      paramString.status = 1;
-      this.a.jdField_a_of_type_Atou.f();
-      return;
-    }
-    this.a.jdField_a_of_type_Atou.g();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

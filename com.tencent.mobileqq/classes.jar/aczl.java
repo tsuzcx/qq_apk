@@ -1,27 +1,32 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.HashMap;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import java.util.Map;
 
 public class aczl
-  extends aczg
 {
-  public int a()
-  {
-    return super.a() + 1;
-  }
+  public adab a;
+  public anyw a;
+  public apaw a;
+  public axfw a;
+  public Map<String, RecentUser> a;
+  public Map<String, MessageRecord> b = new HashMap();
+  public Map<String, MessageRecord> c = new HashMap();
+  public Map<String, MessageRecord> d = new HashMap();
+  public Map<String, MessageRecord> e = new HashMap();
+  public Map<String, List<MessageRecord>> f = new HashMap();
+  public Map<String, List<MessageRecord>> g = new HashMap();
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public aczl(QQAppInterface paramQQAppInterface)
   {
-    aqkl.a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (21 == paramElem.common_elem.uint32_service_type.get()) && (3 == paramElem.common_elem.uint32_business_type.get());
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Anyw = ((anyw)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_Axfw = ((axfw)paramQQAppInterface.getManager(37));
+    this.jdField_a_of_type_Apaw = paramQQAppInterface.a().a();
+    this.jdField_a_of_type_Adab = paramQQAppInterface.a();
   }
 }
 

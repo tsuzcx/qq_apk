@@ -1,80 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
-class bfgd
-  extends SimpleObserver<bfer>
+public class bfgd
+  extends AsyncTask<Void, Void, Bundle>
 {
-  bfgd(bfgc parambfgc, bfer parambfer) {}
+  public bfgd(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void a(bfer parambfer)
+  protected Bundle a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onNext. info position=", Integer.valueOf(parambfer.c), ", old status=", Integer.valueOf(parambfer.g), ", result=", parambfer });
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(antf.cb);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
     }
-    parambfer.g = 3;
-    parambfer.e = 100;
-    this.jdField_a_of_type_Bfgc.jdField_a_of_type_JavaUtilMap.remove(parambfer);
-    if (this.jdField_a_of_type_Bfgc.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
+    String str = antf.cb + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
     {
-      Object localObject = this.jdField_a_of_type_Bfgc.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(parambfer.c);
-      if ((localObject instanceof bfgf))
-      {
-        localObject = (bfgf)localObject;
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoItem", 2, new Object[] { "video onNext. info hash=", Integer.valueOf(parambfer.hashCode()), ", result hash=", Integer.valueOf(parambfer.hashCode()), ", info position=", Integer.valueOf(parambfer.c), ", result position=", Integer.valueOf(parambfer.c), ", vh position=", Integer.valueOf(((bfgf)localObject).jdField_a_of_type_Bfem.c), ",vh hash=", Integer.valueOf(localObject.hashCode()) });
-        }
-        if (parambfer.d.equals(((bfgf)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
-        {
-          ((bfgf)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
-          ((bfgf)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-          ((bfgf)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambfer.e, parambfer.d);
-        }
-        this.jdField_a_of_type_Bfgc.jdField_a_of_type_Bffj.a((RecyclerView.ViewHolder)localObject, true);
-      }
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      return localBundle;
     }
-    bfui.a("hw_entry_upload", "upload_video", "1", "", String.valueOf(System.currentTimeMillis() - parambfer.a), "");
-    this.jdField_a_of_type_Bfgc.a(0, false);
+    catch (IOException paramVarArgs)
+    {
+      QLog.e("foward", 2, "IOException", paramVarArgs);
+    }
+    return null;
   }
   
-  public void onError(@NonNull Error paramError)
+  protected void a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onError. info position=", Integer.valueOf(this.jdField_a_of_type_Bfer.c), ", info old status=", Integer.valueOf(this.jdField_a_of_type_Bfer.g) });
-    }
-    this.jdField_a_of_type_Bfer.g = 2;
-    this.jdField_a_of_type_Bfgc.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bfer);
-    QLog.d("VideoItem", 1, paramError, new Object[0]);
-    paramError = paramError.getMessage();
-    if (this.jdField_a_of_type_Bfgc.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
+    if (paramBundle == null)
     {
-      Object localObject = this.jdField_a_of_type_Bfgc.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bfer.c);
-      if ((localObject instanceof bfgf))
-      {
-        localObject = (bfgf)localObject;
-        if (this.jdField_a_of_type_Bfer.d.equals(((bfgf)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
-        {
-          ((bfgc)((bfei)this.jdField_a_of_type_Bfgc.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((bffs)localObject, this.jdField_a_of_type_Bfer, 0);
-          if ("200".equals(paramError))
-          {
-            QLog.d("VideoItem", 1, "VideoItem onError. upload size exceed.");
-            QQToast.a(this.jdField_a_of_type_Bfgc.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext(), anni.a(2131714959), 0).a();
-            this.jdField_a_of_type_Bfgc.jdField_a_of_type_Bffj.a((RecyclerView.ViewHolder)localObject);
-          }
-        }
-      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, anzj.a(2131705408), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+      return;
     }
-    if (!paramError.startsWith("c_")) {
-      bfui.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Bfer.a), "");
-    }
-    if (this.jdField_a_of_type_Bfer.d.equals(this.jdField_a_of_type_Bfgc.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bfgc.a(0, false);
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    auxu.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
   }
 }
 

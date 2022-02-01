@@ -1,37 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import mqq.os.MqqHandler;
 
 class asgy
-  implements View.OnTouchListener
+  implements ausc
 {
-  asgy(asgw paramasgw, View paramView, FrameLayout paramFrameLayout, TextView paramTextView1, TextView paramTextView2, asgv paramasgv, int paramInt) {}
+  public MqqHandler a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public asgy(MqqHandler paramMqqHandler)
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
+    this.a = paramMqqHandler;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (this.a != null) {
+      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
     }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(0.5F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      this.b.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      this.b.setAlpha(1.0F);
-      asgw.a(this.jdField_a_of_type_Asgw, this.jdField_a_of_type_Asgv, this.jdField_a_of_type_Int);
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      this.b.setAlpha(1.0F);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessageDelayed(100, 1500L);
     }
   }
 }

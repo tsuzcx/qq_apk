@@ -1,51 +1,104 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class zxc
-  extends ProtoBufRequest
+  extends WtloginObserver
 {
-  private CLIENT.StGetUserNewestStoryReq a = new CLIENT.StGetUserNewestStoryReq();
+  public zxc(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public zxc(COMM.StCommonExt paramStCommonExt, long paramLong1, long paramLong2)
+  public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    CLIENT.StUinTime localStUinTime = new CLIENT.StUinTime();
-    localStUinTime.newestTime.set(paramLong1);
-    localStUinTime.uin.set(paramLong2);
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(localStUinTime);
-    this.a.vecUinTime.set(localArrayList);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
     }
-  }
-  
-  public static CLIENT.StGetUserNewestStoryRsp a(byte[] paramArrayOfByte)
-  {
-    CLIENT.StGetUserNewestStoryRsp localStGetUserNewestStoryRsp = new CLIENT.StGetUserNewestStoryRsp();
-    try
+    paramArrayOfByte1 = null;
+    paramString = paramArrayOfByte1;
+    if (paramInt == 0)
     {
-      localStGetUserNewestStoryRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserNewestStoryRsp;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAioStoryFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+      paramString = paramArrayOfByte1;
+      if (paramWUserSigInfo != null) {
+        paramString = WtloginHelper.getLoginTlvValue(paramWUserSigInfo, 54);
       }
     }
-    return null;
+    paramArrayOfByte1 = new Message();
+    paramWUserSigInfo = new Bundle();
+    paramWUserSigInfo.putInt("ret", paramInt);
+    paramWUserSigInfo.putByteArray("errMsg", paramArrayOfByte2);
+    if (paramString != null) {
+      paramWUserSigInfo.putByteArray("devInfo", paramString);
+    }
+    paramArrayOfByte1.setData(paramWUserSigInfo);
+    paramArrayOfByte1.what = 2;
+    this.a.a.sendMessage(paramArrayOfByte1);
   }
   
-  public byte[] getBusiBuf()
+  public void onException(String paramString, int paramInt)
   {
-    return this.a.toByteArray();
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnException e=" + paramString);
+    }
+    paramString = new Message();
+    paramString.what = 3;
+    this.a.a.sendMessage(paramString);
+  }
+  
+  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.c = paramString;
+    paramErrMsg = null;
+    paramString = paramErrMsg;
+    if (paramArrayList != null)
+    {
+      paramString = paramErrMsg;
+      if (paramArrayList.size() > 0)
+      {
+        paramString = new ByteArrayOutputStream();
+        int i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size()) {
+            try
+            {
+              paramString.write(HexUtil.hexStr2Bytes((String)paramArrayList.get(i)));
+              i += 1;
+            }
+            catch (Throwable paramErrMsg)
+            {
+              for (;;)
+              {
+                paramErrMsg.printStackTrace();
+              }
+            }
+          }
+        }
+        paramString = paramString.toByteArray();
+      }
+    }
+    paramArrayList = new Message();
+    paramErrMsg = new Bundle();
+    paramErrMsg.putInt("ret", paramInt);
+    paramErrMsg.putByteArray("tlv", paramString);
+    paramErrMsg.putByteArray("appName", paramArrayOfByte1);
+    paramErrMsg.putByteArray("errMsg", paramArrayOfByte2);
+    paramArrayList.setData(paramErrMsg);
+    paramArrayList.what = 1;
+    this.a.a.sendMessage(paramArrayList);
   }
 }
 

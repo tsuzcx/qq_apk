@@ -1,29 +1,56 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class arkk
-  extends BroadcastReceiver
+public class arkk
+  extends arac<arkj>
 {
-  arkk(arki paramarki) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  @NonNull
+  public arkj a(int paramInt)
   {
-    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
-    paramIntent = (arkl)arki.a(this.a).get(paramContext.actionName);
-    if ((paramIntent != null) && (paramIntent.b()))
-    {
-      this.a.a();
-      arki.a(this.a).a(paramContext);
+    return new arkj();
+  }
+  
+  @Nullable
+  public arkj a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arkj.a(paramArrayOfaraj);
     }
+    return null;
+  }
+  
+  public void a(arkj paramarkj) {}
+  
+  public Class<arkj> clazz()
+  {
+    return arkj.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 484;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkk
  * JD-Core Version:    0.7.0.1
  */

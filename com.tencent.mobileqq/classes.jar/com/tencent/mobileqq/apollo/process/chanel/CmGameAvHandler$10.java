@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ampj;
-import amqf;
-import anaa;
+import anbd;
+import anbz;
+import anlu;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 
 public class CmGameAvHandler$10
   implements Runnable
 {
-  public CmGameAvHandler$10(amqf paramamqf, String paramString, long paramLong) {}
+  public CmGameAvHandler$10(anbz paramanbz, String paramString, long paramLong) {}
   
   public void run()
   {
-    anaa.a().b(this.jdField_a_of_type_JavaLangString);
-    ampj.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.audioRoom_change_qav_role.local", "{}");
+    anlu.a().b(this.jdField_a_of_type_JavaLangString);
+    anbd.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.audioRoom_change_qav_role.local", "{}");
   }
 }
 

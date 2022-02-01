@@ -1,93 +1,166 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.NativeGifFactory;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FileInfo;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import org.apache.http.Header;
 
 public class bewg
+  extends beqz
 {
-  public long a;
-  public besl a;
-  public String a;
-  public ArrayList<String> a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  protected static File a;
   
-  public bewg(QQAppInterface paramQQAppInterface, cmd0x383.ApplyFileSearchRspBody.Item paramItem)
+  protected File a(int paramInt)
   {
-    if (paramItem == null) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramItem.uint64_group_code.get();
-    this.jdField_a_of_type_JavaLangString = paramItem.bytes_group_name.get().toStringUtf8();
-    this.jdField_b_of_type_Long = paramItem.uint64_upload_uin.get();
-    this.jdField_b_of_type_JavaLangString = paramItem.bytes_uploader_nick_name.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    List localList = paramItem.bytes_match_word.get();
-    if (localList != null)
+    Object localObject = null;
+    NullPointerException localNullPointerException1 = null;
+    if ((paramInt >= begd.a.length) || (a == null)) {}
+    try
     {
-      int i = 0;
-      while (i < localList.size())
+      a = BaseApplicationImpl.getApplication().getDir("systemface", 0);
+      String str = BaseApplicationImpl.getContext().getResources().getResourceEntryName(begd.a[paramInt]);
+      localObject = new File(a + File.separator + str);
+      if (!((File)localObject).exists())
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)localList.get(i)).toStringUtf8());
-        i += 1;
+        localObject = localNullPointerException1;
+        if (QLog.isColorLevel())
+        {
+          if (localNullPointerException1 != null)
+          {
+            bool = true;
+            QLog.d("AbsDownloader", 2, new Object[] { "getGifFileFromOldDir:", Integer.valueOf(paramInt), " ,name:", str, " ,exist:", Boolean.valueOf(bool) });
+            localObject = localNullPointerException1;
+          }
+        }
+        else {
+          return localObject;
+        }
       }
     }
-    this.jdField_c_of_type_Long = paramItem.uint64_match_uin.get();
-    if (this.jdField_c_of_type_Long > 0L)
+    catch (NullPointerException localNullPointerException2)
     {
-      paramQQAppInterface = ((anmw)paramQQAppInterface.getManager(51)).e(String.valueOf(this.jdField_c_of_type_Long));
-      if (paramQQAppInterface != null)
+      for (;;)
       {
-        this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
-        this.d = paramQQAppInterface.remark;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopFileSearchItemData<QFile>", 2, "TroopFileSearchItemData matchUin:" + this.jdField_c_of_type_Long + ", name:" + this.jdField_c_of_type_JavaLangString + ", remark = " + this.d);
+        QLog.e("AbsDownloader", 1, "npe while getGifFileFromOldDir!");
+        continue;
+        boolean bool = false;
+        continue;
+        localNullPointerException1 = localNullPointerException2;
       }
     }
-    this.jdField_a_of_type_Besl = new besl((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
   }
   
-  public String toString()
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
-    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
-    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    paramOutputStream = paramDownloadParams.url.getHost();
+    String str = paramDownloadParams.url.getFile();
+    paramURLDrawableHandler = new File(b(paramOutputStream, str));
+    if (paramURLDrawableHandler.exists())
     {
-      localStringBuilder.append(", matchWord: = ");
-      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i = 0;
-      if (i < j)
+      paramOutputStream = paramURLDrawableHandler;
+      if (QLog.isColorLevel())
       {
-        if (i == j - 1) {
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
-        }
+        QLog.d("AbsDownloader", 2, new Object[] { "found file:", str });
+        paramOutputStream = paramURLDrawableHandler;
       }
     }
-    if (this.jdField_a_of_type_Besl != null) {
-      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_Besl.toString());
+    int i;
+    do
+    {
+      do
+      {
+        return paramOutputStream;
+        paramDownloadParams = paramDownloadParams.getHeader("emoId");
+        if (paramDownloadParams == null) {
+          break label224;
+        }
+        paramDownloadParams = paramDownloadParams.getValue();
+        QLog.d("AbsDownloader", 1, String.format("file[%s] not found, loading[%s], host[%s]", new Object[] { str, paramDownloadParams, paramOutputStream }));
+        i = Integer.parseInt(paramDownloadParams);
+        if (!"host_qqsys_gif".equals(paramOutputStream)) {
+          break label226;
+        }
+        if (!a(i)) {
+          break;
+        }
+        paramDownloadParams = new File(b("host_qqsys_static", str.replace(".gif", ".png")));
+        if (!paramDownloadParams.exists()) {
+          break label217;
+        }
+        paramOutputStream = paramDownloadParams;
+      } while (!QLog.isColorLevel());
+      QLog.d("AbsDownloader", 2, new Object[] { "static file exist:", Integer.valueOf(i) });
+      return paramDownloadParams;
+      paramDownloadParams = a(i);
+      paramOutputStream = paramDownloadParams;
+    } while (paramDownloadParams != null);
+    label217:
+    a(1, i);
+    for (;;)
+    {
+      label224:
+      return null;
+      label226:
+      if ("host_qqsys_static".equals(paramOutputStream)) {
+        a(1, i);
+      } else if ("host_emoji".equals(paramOutputStream)) {
+        a(2, i);
+      }
     }
-    return localStringBuilder.toString();
+  }
+  
+  protected Object a(File paramFile)
+  {
+    return NativeGifFactory.getNativeGifObject(paramFile, false);
+  }
+  
+  protected Object a(String paramString)
+  {
+    return BitmapFactory.decodeFile(paramString);
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    asky.a().a(paramInt1).b(paramInt2);
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    return asle.a(paramInt);
+  }
+  
+  protected String b(String paramString1, String paramString2)
+  {
+    int i = 2;
+    if ("host_qqsys_gif".equals(paramString1)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      return asky.a(i, paramString2);
+      if ("host_emoji".equals(paramString1)) {
+        i = 3;
+      }
+    }
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (paramFile == null) {
+      return null;
+    }
+    if (GifDrawable.isGifFile(paramFile)) {
+      return a(paramFile);
+    }
+    return a(paramFile.getAbsolutePath());
   }
 }
 

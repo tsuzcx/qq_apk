@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aeim;
-import aein;
-import aeio;
-import aeip;
-import afur;
-import ahth;
+import aerp;
+import aerq;
+import aerr;
+import aers;
+import agej;
+import aicv;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -20,16 +20,16 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import anni;
-import apul;
-import axqy;
-import azdf;
-import bcst;
-import bdsh;
-import bghy;
-import bglp;
-import bgpa;
-import bkho;
+import anzj;
+import aqib;
+import ayjs;
+import azvs;
+import bdll;
+import beqz;
+import bhhz;
+import bhlq;
+import bhpc;
+import blir;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -43,18 +43,18 @@ import java.util.ArrayList;
 
 public class FriendProfilePicBrowserActivity
   extends PicBrowserActivity
-  implements DialogInterface.OnCancelListener, View.OnClickListener, axqy
+  implements DialogInterface.OnCancelListener, View.OnClickListener, ayjs
 {
   public int a;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public azdf a;
+  public azvs a;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   
   private File a()
   {
-    PicInfo localPicInfo = this.jdField_a_of_type_Azdf.a();
+    PicInfo localPicInfo = this.jdField_a_of_type_Azvs.a();
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "getCurPicPathUrl, curPicInfo=" + localPicInfo);
     }
@@ -64,15 +64,15 @@ public class FriendProfilePicBrowserActivity
     if (!TextUtils.isEmpty(localPicInfo.c)) {
       return new File(localPicInfo.c);
     }
-    return bdsh.a(localPicInfo.a);
+    return beqz.a(localPicInfo.a);
   }
   
   private String a()
   {
     int i = -1;
     String str2 = "";
-    if (this.jdField_a_of_type_Azdf != null) {
-      i = this.jdField_a_of_type_Azdf.a();
+    if (this.jdField_a_of_type_Azvs != null) {
+      i = this.jdField_a_of_type_Azvs.a();
     }
     String str1 = str2;
     if (i >= 0)
@@ -90,7 +90,7 @@ public class FriendProfilePicBrowserActivity
   
   private void a(Bundle paramBundle)
   {
-    Intent localIntent = afur.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = agej.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramBundle));
     startActivity(localIntent);
     finish();
@@ -150,7 +150,7 @@ public class FriendProfilePicBrowserActivity
     this.jdField_b_of_type_JavaUtilArrayList = ((Bundle)localObject).getParcelableArrayList("picInfos");
     if (this.jdField_a_of_type_Int == 1)
     {
-      localObject = ((apul)this.app.getManager(180)).a(this.app.getCurrentAccountUin());
+      localObject = ((aqib)this.app.getManager(180)).a(this.app.getCurrentAccountUin());
       localPicInfo = new PicInfo();
       if (localObject != null)
       {
@@ -186,7 +186,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    bghy.a(localFile.getAbsolutePath(), this);
+    bhhz.a(localFile.getAbsolutePath(), this);
   }
   
   private void h()
@@ -195,7 +195,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    bghy.a(localFile.getAbsolutePath(), this.app, this);
+    bhhz.a(localFile.getAbsolutePath(), this.app, this);
   }
   
   private void i()
@@ -204,7 +204,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    bghy.b(localFile.getAbsolutePath(), this.app, this);
+    bhhz.b(localFile.getAbsolutePath(), this.app, this);
   }
   
   private void j()
@@ -217,7 +217,7 @@ public class FriendProfilePicBrowserActivity
       }
       return;
     }
-    ahth.a(this, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
+    aicv.a(this, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
   }
   
   private void k()
@@ -225,12 +225,12 @@ public class FriendProfilePicBrowserActivity
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "deletePic");
     }
-    bgpa localbgpa = bglp.a(this, 0);
-    localbgpa.setMessage(getString(2131691309)).setCancelable(true);
-    localbgpa.setNegativeButton(2131690582, new aein(this, localbgpa));
-    localbgpa.setPositiveButton(2131690566, new aeio(this, localbgpa));
+    bhpc localbhpc = bhlq.a(this, 0);
+    localbhpc.setMessage(getString(2131691312)).setCancelable(true);
+    localbhpc.setNegativeButton(2131690580, new aerq(this, localbhpc));
+    localbhpc.setPositiveButton(2131690562, new aerr(this, localbhpc));
     if (!isFinishing()) {
-      localbgpa.show();
+      localbhpc.show();
     }
   }
   
@@ -244,14 +244,14 @@ public class FriendProfilePicBrowserActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Azdf != null) && (this.jdField_a_of_type_Azdf.a() == paramInt1)) {
+    if ((this.jdField_a_of_type_Azvs != null) && (this.jdField_a_of_type_Azvs.a() == paramInt1)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Azdf != null) && (this.jdField_a_of_type_Azdf.a() == paramInt)) {
+    if ((this.jdField_a_of_type_Azvs != null) && (this.jdField_a_of_type_Azvs.a() == paramInt)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     }
   }
@@ -270,26 +270,26 @@ public class FriendProfilePicBrowserActivity
   
   public void c()
   {
-    boolean bool = this.jdField_a_of_type_Azdf.f();
+    boolean bool = this.jdField_a_of_type_Azvs.f();
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "showActionSheet, ,forbid=" + bool);
     }
     if (bool) {
       return;
     }
-    bkho localbkho = bkho.a(this, false);
-    localbkho.b(2131692953);
-    localbkho.b(2131692521);
-    localbkho.c(anni.a(2131703711));
-    localbkho.b(2131692517);
+    blir localblir = blir.a(this, false);
+    localblir.b(2131692962);
+    localblir.b(2131692527);
+    localblir.c(anzj.a(2131703818));
+    localblir.b(2131692523);
     if (this.jdField_a_of_type_Int == 2) {
-      localbkho.a(anni.a(2131703670), 3);
+      localblir.a(anzj.a(2131703777), 3);
     }
-    localbkho.d(anni.a(2131703712));
-    localbkho.a(new aeim(this, localbkho));
-    localbkho.show();
-    bcst.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
-    bcst.b(this.app, "dc00898", "", "", "0X800A8C9", "0X800A8C9", 0, 0, "1", "", "", "");
+    localblir.d(anzj.a(2131703819));
+    localblir.a(new aerp(this, localblir));
+    localblir.show();
+    bdll.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
+    bdll.b(this.app, "dc00898", "", "", "0X800A8C9", "0X800A8C9", 0, 0, "1", "", "", "");
   }
   
   @Override
@@ -322,17 +322,17 @@ public class FriendProfilePicBrowserActivity
       return false;
     }
     getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_Abgc = new aeip(this);
+    this.jdField_a_of_type_Abkg = new aers(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377303));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377443));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367294));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131703716));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367348));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131703823));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
-    this.jdField_a_of_type_Azdf.a(false);
+    this.jdField_a_of_type_Azvs.a(false);
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
@@ -340,7 +340,7 @@ public class FriendProfilePicBrowserActivity
         break label287;
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_Azdf.a(true);
+      this.jdField_a_of_type_Azvs.a(true);
     }
     label287:
     for (int i = 1;; i = 0)
@@ -349,7 +349,7 @@ public class FriendProfilePicBrowserActivity
       if (i != 0)
       {
         paramBundle = "1";
-        bcst.b(localQQAppInterface, "dc00898", "", "", "0X8007103", "0X8007103", 0, 0, paramBundle, "", "", "");
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0X8007103", "0X8007103", 0, 0, paramBundle, "", "", "");
       }
       for (;;)
       {
@@ -357,7 +357,7 @@ public class FriendProfilePicBrowserActivity
         paramBundle = "0";
         break;
         if (this.jdField_a_of_type_Int == 2) {
-          bcst.b(this.app, "dc00898", "", "", "0X8007C11", "0X8007C11", 0, 0, "", "", "", "");
+          bdll.b(this.app, "dc00898", "", "", "0X8007C11", "0X8007C11", 0, 0, "", "", "", "");
         }
       }
     }
@@ -366,8 +366,8 @@ public class FriendProfilePicBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Azdf != null) {
-      this.jdField_a_of_type_Azdf.u();
+    if (this.jdField_a_of_type_Azvs != null) {
+      this.jdField_a_of_type_Azvs.u();
     }
   }
   
@@ -406,7 +406,7 @@ public class FriendProfilePicBrowserActivity
       localIntent.putExtra("setHead_fileid", a());
       setResult(-1, localIntent);
       finish();
-      bcst.b(this.app, "dc00898", "", "", "0X8007C12", "0X8007C12", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X8007C12", "0X8007C12", 0, 0, "", "", "", "");
       continue;
       c();
     }

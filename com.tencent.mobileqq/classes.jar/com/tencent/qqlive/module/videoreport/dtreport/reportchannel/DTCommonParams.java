@@ -16,7 +16,7 @@ class DTCommonParams
     put(localHashMap, "dt_qq", paramIDTParamProvider.getQQ());
     put(localHashMap, "dt_qqopenid", paramIDTParamProvider.getQQOpenID());
     put(localHashMap, "dt_wxopenid", paramIDTParamProvider.getWxOpenID());
-    put(localHashMap, "dt_wxuionid", paramIDTParamProvider.getWxUnionID());
+    put(localHashMap, "dt_wxunionid", paramIDTParamProvider.getWxUnionID());
     put(localHashMap, "dt_wbopenid", paramIDTParamProvider.getWbOpenID());
     put(localHashMap, "dt_mainlogin", paramIDTParamProvider.getMainLogin());
     put(localHashMap, "dt_starttype", String.valueOf(paramIDTParamProvider.getStartType()));
@@ -30,7 +30,7 @@ class DTCommonParams
     put(localHashMap, "dt_tid", paramIDTParamProvider.getTid());
     put(localHashMap, "dt_oaid", paramIDTParamProvider.getOaid());
     put(localHashMap, "dt_guid", paramIDTParamProvider.getGuid());
-    put(localHashMap, "dt_sdkversion", String.valueOf(1540));
+    put(localHashMap, "dt_sdkversion", String.valueOf(1640));
     return localHashMap;
   }
   

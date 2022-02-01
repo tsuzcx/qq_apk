@@ -1,135 +1,31 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.OCRBottomTabView;
+
 public class ayyh
-  extends ayyg
+  implements TextWatcher
 {
-  public ayyg a()
+  public ayyh(OCRResultActivity paramOCRResultActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    return this;
+    if (paramEditable.toString().trim().length() == 0)
+    {
+      this.a.c.setEnabled(false);
+      this.a.d.setEnabled(false);
+      this.a.b.setEnabled(false);
+      return;
+    }
+    this.a.c.setEnabled(true);
+    this.a.d.setEnabled(true);
+    this.a.b.setEnabled(true);
   }
   
-  public void a(int paramInt)
-  {
-    this.e = paramInt;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void a(ayyf paramayyf)
-  {
-    this.jdField_a_of_type_Ayyf = paramayyf;
-  }
-  
-  public void a(ayyi paramayyi)
-  {
-    this.jdField_a_of_type_Ayyi = paramayyi;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_g_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_h_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_g_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_h_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_j_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_g_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void e(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.jdField_h_of_type_Int = paramInt;
-  }
-  
-  public void f(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_j_of_type_Int = paramInt;
-  }
-  
-  public void h(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public void i(int paramInt)
-  {
-    this.l = paramInt;
-  }
-  
-  public void j(int paramInt)
-  {
-    this.m = paramInt;
-  }
-  
-  public void k(int paramInt)
-  {
-    this.n = paramInt;
-  }
-  
-  public void l(int paramInt)
-  {
-    this.o = paramInt;
-  }
-  
-  public void m(int paramInt)
-  {
-    this.q = paramInt;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

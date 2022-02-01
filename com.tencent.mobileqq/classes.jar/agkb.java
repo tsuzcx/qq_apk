@@ -1,16 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-public class agkb
+final class agkb
   implements DialogInterface.OnClickListener
 {
-  public agkb(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

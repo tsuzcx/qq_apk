@@ -1,113 +1,79 @@
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.Animatable;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class apfw
-  implements Animatable
 {
-  private int jdField_a_of_type_Int;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt;
-  private int b;
+  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
+  apln jdField_a_of_type_Apln = null;
+  private apmc jdField_a_of_type_Apmc;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public apfw(int paramInt1, int[] paramArrayOfInt, ImageView paramImageView, int paramInt2)
+  void a()
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    if (paramArrayOfInt.length <= 0) {
-      throw new RuntimeException(" FrameAnimDrawable RES_IDS can not empty !!!");
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramArrayOfInt[paramInt2]);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt2;
-    a();
-  }
-  
-  public apfw(int[] paramArrayOfInt, ImageView paramImageView, int paramInt)
-  {
-    this(0, paramArrayOfInt, paramImageView, paramInt);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_ArrayOfInt.length - 1 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new apfx(this);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new apfy(this);
-  }
-  
-  private void b(Animator.AnimatorListener paramAnimatorListener)
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
-    if (paramAnimatorListener != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(paramAnimatorListener);
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Boolean) {
-      paramInt %= this.jdField_a_of_type_ArrayOfInt.length;
-    }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_ArrayOfInt[paramInt]);
-      return;
-      paramInt = this.jdField_a_of_type_ArrayOfInt.length - paramInt % this.jdField_a_of_type_ArrayOfInt.length - 1;
-    }
-  }
-  
-  public void a(Animator.AnimatorListener paramAnimatorListener)
-  {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isStarted()) {
+      if (this.jdField_a_of_type_Apln != null)
+      {
+        if (this.jdField_a_of_type_Apmc != null)
+        {
+          this.jdField_a_of_type_Apln.b(this.jdField_a_of_type_Apmc);
+          this.jdField_a_of_type_Apmc = null;
+        }
+        if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
+        {
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+          this.jdField_a_of_type_AndroidContentServiceConnection = null;
+        }
+        this.jdField_a_of_type_Apln = null;
+      }
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
       return;
     }
-    b(paramAnimatorListener);
-  }
-  
-  public void a(boolean paramBoolean, Animator.AnimatorListener paramAnimatorListener)
-  {
-    stop();
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (this.b = (this.jdField_a_of_type_ArrayOfInt.length - 1);; this.b = 0)
+    catch (Exception localException)
     {
-      a(paramAnimatorListener);
-      return;
+      QLog.w(apgj.a, 1, "DownloadDependRes.clean, Exception", localException);
     }
   }
   
-  public boolean isRunning()
+  void a(AppInterface paramAppInterface)
   {
-    return this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning();
-  }
-  
-  public void start()
-  {
-    b(null);
-  }
-  
-  public void stop()
-  {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isStarted())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
-    }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    if (!ArConfigService.e(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllListeners();
+      if (QLog.isDevelopLevel()) {
+        QLog.w(apgj.a, 1, "tryDownload, so未准备");
+      }
+      b();
     }
-    this.jdField_a_of_type_Int = this.b;
+  }
+  
+  void b()
+  {
+    if (this.jdField_a_of_type_Apln != null) {}
+    do
+    {
+      try
+      {
+        this.jdField_a_of_type_Apln.c();
+        return;
+      }
+      catch (Exception localException)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(apgj.a, 2, "downloadArSo Exception", localException);
+        return;
+      }
+      this.jdField_a_of_type_Apmc = new apfx(this);
+      this.jdField_a_of_type_AndroidContentServiceConnection = new apfy(this);
+    } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ArConfigService.class);
+    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    QLog.w(apgj.a, 1, "bindServer, ret[" + bool + "]");
   }
 }
 

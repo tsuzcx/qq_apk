@@ -1,38 +1,11 @@
-import android.content.Context;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-class lac
-  extends kzk
+public class lac
+  extends kzz
 {
-  lac(lab paramlab, Long paramLong, Context paramContext, List paramList, Language paramLanguage, lan paramlan) {}
+  private final byte[] a = { -89, -34, -67, 60, 35, 96, 30, -47, 119, 15, 33, -8, 27, -105, 120, -21, -107, 19, 72, 121, 115, 87, -7, 41, -2, 121, -54, -113, 33, -87, -47, 43, -103, -61, 84, -9, 115, 74, 69, 19, -31, -19, 67, 12, -110, -104, 34, -109, 48, -110, 20, -113, 71, 84, -39, -90 };
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  public String a()
   {
-    try
-    {
-      lab.a(this.jdField_a_of_type_Lab).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
-      lab.a(this.jdField_a_of_type_Lab).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
-      lab.a(this.jdField_a_of_type_Lab, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, lab.a(this.jdField_a_of_type_Lab).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Lan);
-      return;
-    }
-    catch (JSONException paramArrayOfHeader)
-    {
-      this.jdField_a_of_type_Lan.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
-    }
-  }
-  
-  public void a(Throwable paramThrowable, String paramString)
-  {
-    this.jdField_a_of_type_Lan.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
-    }
+    return a(this.a, a());
   }
 }
 

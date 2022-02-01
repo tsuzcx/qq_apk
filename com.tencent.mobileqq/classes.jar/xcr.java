@@ -1,53 +1,49 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class xcr
-  extends xdr
+  extends wpa<xct>
 {
-  public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&et=%d&time_zone=%d";
-  protected int a;
-  private final int[] a;
+  public List<String> a = new ArrayList();
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + wjz.a(2131698491);
+    return "StorySvc.homepage_batch_feeds_label";
   }
   
-  public xcr(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt1, int paramInt2)
+  public wov a(byte[] paramArrayOfByte)
   {
-    wpy localwpy = (wpy)wpm.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.h = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_e_of_type_Int = paramInt2;
-    this.f = paramStoryVideoItem.mOwnerUid;
-    this.jdField_e_of_type_JavaLangString = localwpy.a(this.f, false);
-    this.c = bgsp.a(paramShareGroupItem.name, 0, 16, "...");
-    this.g = paramStoryVideoItem.mDoodleText;
-    this.jdField_d_of_type_JavaLangString = a();
-    this.k = (anni.a(2131712672) + this.c + anni.a(2131712680) + wes.jdField_a_of_type_JavaLangString);
-    this.l = (this.c + "\n" + paramInt2 + anni.a(2131712676));
-    new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
-    this.i = b();
-    this.j = ("#" + wes.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-    this.jdField_d_of_type_Int = 11;
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 97, 98, 99, 100, 101 };
-  }
-  
-  public static xcr a(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt)
-  {
-    return new xcr(paramShareGroupItem, paramStoryVideoItem, paramString, paramLong, 9, paramInt);
-  }
-  
-  protected String a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&type=onedaylist&et=%d&time_zone=%d", new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(zlx.a()) });
+    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
+    try
+    {
+      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
+      return new xct(localRspStoryFeedTagInfo);
     }
-    return String.format(b, new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(zlx.a()) });
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqStoryFeedTagInfo.toByteArray();
   }
 }
 

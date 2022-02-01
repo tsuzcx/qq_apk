@@ -1,11 +1,22 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "P", "R", "", "parse", "input", "(Ljava/lang/Object;)Ljava/lang/Object;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface pvb<P, R>
+class pvb
+  implements View.OnClickListener
 {
-  @Nullable
-  public abstract R a(P paramP);
+  pvb(puz parampuz, Container paramContainer, ppu paramppu, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    puz.a(this.jdField_a_of_type_Puz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Ppu.a() + " position = " + this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

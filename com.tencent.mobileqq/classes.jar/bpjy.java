@@ -1,22 +1,18 @@
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bpjy
-  implements View.OnSystemUiVisibilityChangeListener
+  implements View.OnClickListener
 {
-  bpjy(bpjo parambpjo) {}
+  bpjy(bpjw parambpjw) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt & 0x4) == 0)
-    {
-      yqp.b("EditTextDialog", "onStatusBarShow");
-      this.a.getWindow().getDecorView().removeCallbacks(bpjo.a(this.a));
-      this.a.getWindow().getDecorView().postDelayed(bpjo.a(this.a), 1500L);
-      return;
-    }
-    yqp.b("EditTextDialog", "onStatusBarHide");
+    bozr.a().A();
+    bpjw.a(this.a);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

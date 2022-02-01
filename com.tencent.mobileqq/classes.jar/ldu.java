@@ -1,39 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.av.app.DeviceCapabilityExamination;
 
-public class ldu
+class ldu
+  implements mvr
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  ldu(ldt paramldt, ldy paramldy, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
   
-  public ldu(VideoAppInterface paramVideoAppInterface)
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ldv(this);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ldy.j = paramInt;
+    this.jdField_a_of_type_Ldy.i = paramString2;
+    DeviceCapabilityExamination.a(this.jdField_a_of_type_Ldy, this.jdField_a_of_type_Ldt.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ldt.jdField_a_of_type_Ldr != null) {
+      this.jdField_a_of_type_Ldt.jdField_a_of_type_Ldr.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
     }
   }
 }

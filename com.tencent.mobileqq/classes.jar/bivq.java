@@ -1,23 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-public final class bivq
-  implements Parcelable.Creator<DownloadInfo>
+public class bivq
+  implements View.OnTouchListener
 {
-  public DownloadInfo a(Parcel paramParcel)
-  {
-    return new DownloadInfo(paramParcel);
-  }
+  public bivq(ClearableEditText paramClearableEditText) {}
   
-  public DownloadInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new DownloadInfo[paramInt];
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
+        {
+          if (i == 0) {
+            break label107;
+          }
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_Bivt == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_Bivt.m();
+          return false;
+          i = 0;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bivq
  * JD-Core Version:    0.7.0.1
  */

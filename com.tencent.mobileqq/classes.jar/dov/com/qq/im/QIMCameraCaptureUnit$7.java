@@ -1,10 +1,10 @@
 package dov.com.qq.im;
 
 import android.app.Activity;
-import anni;
-import bnbf;
-import boym;
-import boyn;
+import anzj;
+import bocn;
+import bqah;
+import bqai;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
@@ -12,7 +12,7 @@ import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureBu
 public class QIMCameraCaptureUnit$7
   implements Runnable
 {
-  public QIMCameraCaptureUnit$7(bnbf parambnbf, int paramInt) {}
+  public QIMCameraCaptureUnit$7(bocn parambocn, int paramInt) {}
   
   public void run()
   {
@@ -26,10 +26,10 @@ public class QIMCameraCaptureUnit$7
         do
         {
           return;
-          QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131708535), 1).a();
-          Activity localActivity = this.this$0.jdField_a_of_type_Boyn.a();
+          QQToast.a(BaseApplicationImpl.getApplication(), anzj.a(2131708644), 1).a();
+          Activity localActivity = this.this$0.jdField_a_of_type_Bqai.a();
           if ((localActivity != null) && (!localActivity.isFinishing())) {
-            this.this$0.jdField_a_of_type_Boym.a(2);
+            this.this$0.jdField_a_of_type_Bqah.a(2);
           }
         } while (!this.this$0.h);
         this.this$0.K();
@@ -45,7 +45,7 @@ public class QIMCameraCaptureUnit$7
       } while (!this.this$0.h);
       this.this$0.J();
       return;
-      QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131708537), 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131708646), 0).a();
     } while (!this.this$0.h);
     this.this$0.J();
   }

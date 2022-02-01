@@ -1,165 +1,116 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicJumpActivity;
-import eipc.EIPCResult;
+import com.tencent.qav.QavDef.MultiUserInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.MultiUserInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
 
-public class blay
-  extends QIPCModule
+class blay
+  extends bkdo
 {
-  private static blay jdField_a_of_type_Blay;
-  blaz jdField_a_of_type_Blaz;
+  blay(blaw paramblaw) {}
   
-  public blay(String paramString)
+  public void onEnterRoom()
   {
-    super(paramString);
+    if (blaw.a(this.a) != null) {
+      blaw.a(this.a).onEnterRoom();
+    }
   }
   
-  public static blay a()
+  public void onError(int paramInt)
   {
-    if (jdField_a_of_type_Blay == null) {}
-    try
-    {
-      if (jdField_a_of_type_Blay == null) {
-        jdField_a_of_type_Blay = new blay("QQComicIPCModule");
-      }
-      return jdField_a_of_type_Blay;
+    if (blaw.a(this.a) != null) {
+      blaw.a(this.a).onError(paramInt);
     }
-    finally {}
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onUserAudioAvailable(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicIPCModule", 2, "action = " + paramString);
-    }
-    if (paramBundle == null)
+    if (blaw.a(this.a) != null)
     {
-      QLog.d("QQComicIPCModule", 2, "QQComicIPCModule Err params = null, action = " + paramString);
-      paramString = null;
-      return paramString;
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicIPCModule", 2, "onRemoteInvoke cannot get QQAppInterface");
+      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
+      if (paramMultiUserInfo != null)
+      {
+        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
+        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
+        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
+        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
       }
-      return null;
+      blaw.a(this.a).onUserAudioAvailable(localMultiUserInfo, paramBoolean);
     }
-    localObject = (QQAppInterface)localObject;
-    if ("isLebaItemOpen".equals(paramString))
+  }
+  
+  public void onUserEnter(QavDef.MultiUserInfo paramMultiUserInfo)
+  {
+    if (blaw.a(this.a) != null)
     {
-      paramInt = paramBundle.getInt("appId", -1);
-      paramString = ((baif)((QQAppInterface)localObject).getManager(36)).a().iterator();
-      do
+      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
+      if (paramMultiUserInfo != null)
       {
-        if (!paramString.hasNext()) {
-          break;
-        }
-        paramBundle = (BusinessInfoCheckUpdate.AppSetting)paramString.next();
-      } while (paramBundle.appid.get() != paramInt);
+        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
+        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
+        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
+        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
+      }
+      blaw.a(this.a).onUserEnter(localMultiUserInfo);
     }
-    for (boolean bool = paramBundle.setting.get();; bool = false)
+  }
+  
+  public void onUserExit(QavDef.MultiUserInfo paramMultiUserInfo)
+  {
+    if (blaw.a(this.a) != null)
     {
-      paramString = new Bundle();
-      paramString.putBoolean("isLebaItemOpen", bool);
-      return EIPCResult.createResult(0, paramString);
-      if ("getRedTouchInfo".equals(paramString))
+      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
+      if (paramMultiUserInfo != null)
       {
-        paramString = (baif)((QQAppInterface)localObject).getManager(36);
-        localObject = paramBundle.getStringArrayList("pathList");
-        if ((paramString != null) && (localObject != null))
+        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
+        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
+        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
+        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
+      }
+      blaw.a(this.a).onUserExit(localMultiUserInfo);
+    }
+  }
+  
+  public void onUserSpeaking(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
+  {
+    if (blaw.a(this.a) != null)
+    {
+      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
+      if (paramMultiUserInfo != null)
+      {
+        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
+        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
+        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
+        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
+      }
+      blaw.a(this.a).onUserSpeaking(localMultiUserInfo, paramBoolean);
+    }
+  }
+  
+  public void onUserUpdate(List<QavDef.MultiUserInfo> paramList)
+  {
+    if (blaw.a(this.a) != null)
+    {
+      ArrayList localArrayList = null;
+      if (paramList != null)
+      {
+        localArrayList = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          paramBundle = new ArrayList();
-          localObject = ((ArrayList)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)paramList.next();
+          if (localMultiUserInfo != null)
           {
-            BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
-            if (localAppInfo != null) {
-              paramBundle.add(baij.a(localAppInfo));
-            }
-          }
-          paramString = new Bundle();
-          paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
-          return EIPCResult.createResult(0, paramString);
-        }
-      }
-      else
-      {
-        if (!"reportRedTouchClick".equals(paramString)) {
-          break label410;
-        }
-        paramString = (baif)((QQAppInterface)localObject).getManager(36);
-        paramBundle = paramBundle.getString("path");
-        if ((paramString != null) && (paramBundle != null)) {
-          paramString.b(paramBundle);
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("service_type", 2);
-          ((JSONObject)localObject).put("act_id", 1002);
-          paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
-          return null;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-          continue;
-        }
-        label410:
-        if ("initPluginBeforeEnter".equals(paramString))
-        {
-          VipComicJumpActivity.a((AppInterface)localObject, paramBundle.getBoolean("doLoadModule"));
-        }
-        else
-        {
-          if ("getComicConfig".equals(paramString))
-          {
-            paramString = (VasQuickUpdateManager)((QQAppInterface)localObject).getManager(184);
-            if ((paramInt > 0) && (paramString != null))
-            {
-              if (this.jdField_a_of_type_Blaz == null) {
-                this.jdField_a_of_type_Blaz = new blaz(this, paramInt);
-              }
-              paramString.addCallBacker(this.jdField_a_of_type_Blaz);
-            }
-            paramString = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject, "vipComic_config_v2.json", true, null);
-            if (paramString == null) {
-              continue;
-            }
-            paramBundle = new Bundle();
-            paramBundle.putString("config_json", paramString.toString());
-            paramBundle = EIPCResult.createResult(0, paramBundle);
-            paramString = paramBundle;
-            if (paramInt <= 0) {
-              break;
-            }
-            callbackResult(paramInt, paramBundle);
-            continue;
-          }
-          if ("getPlayerSo".equals(paramString)) {
-            blat.a((QQAppInterface)localObject);
+            VoIPProxy.MultiUserInfo localMultiUserInfo1 = new VoIPProxy.MultiUserInfo();
+            localMultiUserInfo1.mMicOn = localMultiUserInfo.mMicOn;
+            localMultiUserInfo1.mOpenId = localMultiUserInfo.mOpenId;
+            localMultiUserInfo1.mUin = localMultiUserInfo.mUin;
+            localArrayList.add(localMultiUserInfo1);
           }
         }
       }
+      blaw.a(this.a).onUserUpdate(localArrayList);
     }
   }
 }

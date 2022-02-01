@@ -1,19 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
 
 class vgn
-  implements Animation.AnimationListener
+  implements vhg
 {
-  vgn(vgl paramvgl) {}
+  vgn(vgm paramvgm) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a()
   {
-    vgl.a(this.a, true);
-    vgl.a(this.a, 0L);
+    ArrayList localArrayList = new ArrayList();
+    if (vgm.a(this.a)) {}
+    for (String str = "1";; str = "2")
+    {
+      localArrayList.add(vtt.a("ext1", str));
+      vtr.a(84, 1, this.a.a(), localArrayList, vgm.a(this.a));
+      return;
+    }
   }
 }
 

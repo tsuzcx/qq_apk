@@ -1,76 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoFullInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
 public class wzt
-  extends wlf<xbe>
 {
-  public static final String a;
-  public List<String> a;
-  public int c;
+  public int a;
+  public VideoCollectionItem a;
   
-  static
+  public wzt(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.union_batch_vid_basic_info");
-  }
-  
-  public wzt()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchGetVideoFullInfoList localRspBatchGetVideoFullInfoList = new qqstory_service.RspBatchGetVideoFullInfoList();
-    try
-    {
-      localRspBatchGetVideoFullInfoList.mergeFrom(paramArrayOfByte);
-      yqp.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", zlb.a(localRspBatchGetVideoFullInfoList));
-      return new xbe(localRspBatchGetVideoFullInfoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yqp.b("Q.qqstory.net:GetVideoFullInfoListRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (!str.startsWith("Loading")) {}
-        for (boolean bool = true;; bool = false)
-        {
-          zkb.a(bool);
-          localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
-          break;
-        }
-      }
-    }
-    localReqBatchGetVideoFullInfoList.source.set(this.c);
-    return localReqBatchGetVideoFullInfoList.toByteArray();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
   }
   
   public String toString()
   {
-    return "GetVideoFullInfoListRequest{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "delete";; str = "update") {
+      return str + '}';
+    }
   }
 }
 

@@ -1,41 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.view.ViewStub;
+import android.view.ViewStub.OnInflateListener;
 
-public class twc
-  implements View.OnClickListener
+class twc
+  implements ViewStub.OnInflateListener
 {
-  twc(tvx paramtvx) {}
+  twc(tvz paramtvz) {}
   
-  public void onClick(View paramView)
+  public void onInflate(ViewStub paramViewStub, View paramView)
   {
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      tvx.a(this.a);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.jdField_a_of_type_Int == 3)
-      {
-        MqqHandler localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-        if ((localMqqHandler != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
-          localMqqHandler.sendEmptyMessage(1006);
-        }
-      }
-    }
+    this.a.a = paramView;
+    this.a.e();
   }
 }
 

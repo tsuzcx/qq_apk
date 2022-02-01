@@ -1,6 +1,21 @@
-public abstract interface tgg
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.SheetItemClickProcessor.JuBaoAction.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
+
+public class tgg
+  extends tgb
 {
-  public abstract void a(float paramFloat);
+  tgg(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
+  {
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    ThreadManager.executeOnSubThread(new SheetItemClickProcessor.JuBaoAction.1(this, paramString1));
+  }
 }
 
 

@@ -1,34 +1,51 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class aynb
-  implements Observer
+class aynb
+  implements View.OnClickListener
 {
-  aynb(aymu paramaymu) {}
+  aynb(aymj paramaymj) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null)) {
-      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
-    }
-    do
+    if (this.a.p)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountPanel", 2, "update");
-        }
-      } while (!(paramObject instanceof String[]));
-      paramObservable = (String[])paramObject;
-    } while ((paramObservable.length != 2) || (!anhk.x.equals(paramObservable[0])));
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "update() -> before update");
+      aymj.b(this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    aymu.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
+    PicInfo localPicInfo = (PicInfo)paramView.getTag();
+    Object localObject = abke.a(paramView);
+    int i = 0;
+    label41:
+    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {}
+    }
+    for (;;)
+    {
+      this.a.a.a(i, (Rect)localObject);
+      bdll.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
+      if (this.a.a.e == 3) {}
+      for (localObject = "2";; localObject = "1")
+      {
+        bdll.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, (String)localObject, "", "", "");
+        if (!axwf.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
+          break;
+        }
+        this.a.a.app.a().b(localPicInfo.jdField_a_of_type_JavaLangString);
+        break;
+        i += 1;
+        break label41;
+      }
+      i = 0;
+    }
   }
 }
 

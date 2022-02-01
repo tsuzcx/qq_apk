@@ -1,6 +1,19 @@
-public abstract interface bnaj
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.LocalImageShootInfo;
+
+public final class bnaj
+  implements Parcelable.Creator<LocalImageShootInfo>
 {
-  public abstract int a();
+  public LocalImageShootInfo a(Parcel paramParcel)
+  {
+    return new LocalImageShootInfo(paramParcel);
+  }
+  
+  public LocalImageShootInfo[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

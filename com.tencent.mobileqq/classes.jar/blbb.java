@@ -1,10 +1,47 @@
-public abstract interface blbb
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.concurrent.ConcurrentHashMap;
+import javax.annotation.Nullable;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
+
+class blbb
+  extends WebSocketListener
 {
-  public abstract void a();
+  blbb(blba paramblba, blaz paramblaz) {}
   
-  public abstract void a(blba paramblba);
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Blba.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Blba.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Blba.jdField_a_of_type_Int, paramInt, paramString);
+    this.jdField_a_of_type_Blba.jdField_a_of_type_Blaz.a.remove(Integer.valueOf(this.jdField_a_of_type_Blba.jdField_a_of_type_Int));
+  }
   
-  public abstract void b(blba paramblba);
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
+  {
+    QLog.e("WebSocketProxyImpl", 1, "onFailure : ", paramThrowable);
+    this.jdField_a_of_type_Blba.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onError(this.jdField_a_of_type_Blba.jdField_a_of_type_Int, bkxi.a(paramThrowable, -1), paramThrowable.getMessage());
+    this.jdField_a_of_type_Blba.jdField_a_of_type_Blaz.a.remove(Integer.valueOf(this.jdField_a_of_type_Blba.jdField_a_of_type_Int));
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, String paramString)
+  {
+    this.jdField_a_of_type_Blba.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Blba.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
+  {
+    this.jdField_a_of_type_Blba.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Blba.jdField_a_of_type_Int, paramByteString.toByteArray());
+  }
+  
+  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  {
+    this.jdField_a_of_type_Blba.jdField_a_of_type_Okhttp3WebSocket = paramWebSocket;
+    this.jdField_a_of_type_Blba.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onOpen(this.jdField_a_of_type_Blba.jdField_a_of_type_Int, paramResponse.code(), paramResponse.headers().toMultimap());
+  }
 }
 
 

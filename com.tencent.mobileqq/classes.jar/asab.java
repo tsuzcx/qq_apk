@@ -1,101 +1,61 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class asab
-  extends arzg
+  extends aryz
 {
-  public static int a(QQAppInterface paramQQAppInterface, asaf paramasaf)
+  public ArrayList<asaa> a;
+  
+  public static asab a(JSONObject paramJSONObject)
   {
-    if (paramasaf == null) {
-      return -1;
-    }
-    int i = paramasaf.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getPanelType type = " + i);
-    }
-    switch (i)
+    asab localasab = new asab();
+    localasab.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
+    paramJSONObject = paramJSONObject.optJSONArray("configs");
+    localasab.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
+    int i = 0;
+    while (i < paramJSONObject.length())
     {
-    case 5: 
-    default: 
-      return -1;
-    case 4: 
-      return 4;
-    case 7: 
-      return 1;
-    case 9: 
-      return 5;
-    case 8: 
-      return 3;
-    case 6: 
-      return a(paramQQAppInterface, paramasaf, false);
-    case 10: 
-      return a(paramQQAppInterface, paramasaf, true);
-    case 11: 
-      return 13;
+      asaa localasaa = asaa.a(paramJSONObject.optJSONObject(i));
+      localasaa.a = localasab;
+      localasab.jdField_a_of_type_JavaUtilArrayList.add(localasaa);
+      i += 1;
     }
-    return 14;
+    return localasab;
   }
   
-  private static int a(QQAppInterface paramQQAppInterface, asaf paramasaf, boolean paramBoolean)
+  public JSONObject a()
   {
-    if ((paramQQAppInterface == null) || (paramasaf == null))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType app or panelinfo is null");
-      return -1;
-    }
-    EmoticonPackage localEmoticonPackage = paramasaf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-    if (localEmoticonPackage == null)
-    {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType emotionPkg is null; type = " + paramasaf.jdField_a_of_type_Int);
-      return -1;
-    }
-    boolean bool = arze.a(localEmoticonPackage);
-    int i = localEmoticonPackage.status;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getEmotionPanelType epid = " + localEmoticonPackage.epId + "status = " + i + ";shouldUpdate = " + bool);
-    }
-    if ((!localEmoticonPackage.valid) || (i == 3) || (!a(paramQQAppInterface, localEmoticonPackage)))
-    {
-      if (i == 2) {
-        return 12;
+      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((asaa)localIterator.next()).a());
       }
-      return 7;
+      localJSONObject.put("configs", localJSONException);
     }
-    if (bool)
+    catch (JSONException localJSONException)
     {
-      if (paramBoolean) {
-        return 9;
-      }
-      return 8;
+      localJSONException.printStackTrace();
+      return localJSONObject;
     }
-    if (i != 2) {
-      return 7;
-    }
-    if (paramBoolean) {
-      return 2;
-    }
-    return 6;
+    return localJSONObject;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage)
+  public boolean a()
   {
-    if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
-      return false;
-    }
-    int i = ((anuk)paramQQAppInterface.a(13)).g();
-    if (paramEmoticonPackage.mobileFeetype == 4) {
-      return (i == 1) || (i == 3);
-    }
-    if (paramEmoticonPackage.mobileFeetype == 5) {
-      return i == 3;
-    }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asab
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,21 @@
-public class autz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class autz
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  autz(QQAppInterface paramQQAppInterface, String paramString, auub paramauub, arqd paramarqd) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+    }
+    this.jdField_a_of_type_Auub.a(this.jdField_a_of_type_Arqd.b());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,42 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import mqq.os.MqqHandler;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ajdq
-  implements View.OnTouchListener
+  extends nqf
 {
-  protected float a;
-  protected float b;
+  public ajdq(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public ajdq(NotificationView paramNotificationView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a(paramMotionEvent.getRawY()))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.sendEmptyMessageDelayed(1013, 500L);
-      }
-    }
-    for (;;)
+    if (paramInt == 0)
     {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      continue;
-      if (paramMotionEvent.getAction() == 2)
-      {
-        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
       }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      }
+      this.a.b = paramList;
+      ClassificationSearchActivity.a(this.a, true);
     }
   }
 }

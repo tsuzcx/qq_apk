@@ -1,13 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-class qsr
-  implements View.OnClickListener
-{
-  qsr(qsq paramqsq) {}
-  
-  public void onClick(View paramView) {}
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$OnWatchWordCheck;", "", "checkWatchWord", "", "text", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qsr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

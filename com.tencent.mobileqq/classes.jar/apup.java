@@ -1,34 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class apup
-  extends BroadcastReceiver
+class apup
+  implements apvv
 {
-  public apup(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  apup(apun paramapun, long paramLong) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(long paramLong)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
-      }
-      paramContext = BaseActivity2.$(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366766);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
-      }
-      this.a.finish();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apun.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    apuk.a(this.jdField_a_of_type_Apun.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

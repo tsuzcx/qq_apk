@@ -1,21 +1,21 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class beou
-  implements Comparator<Map.Entry<String, beov>>
+  extends bepm<EditorState>
 {
-  beou(beos parambeos) {}
-  
-  public int a(Map.Entry<String, beov> paramEntry1, Map.Entry<String, beov> paramEntry2)
+  public beou(EditorState paramEditorState, List<EditorState> paramList)
   {
-    long l = ((beov)paramEntry2.getValue()).a - ((beov)paramEntry1.getValue()).a;
-    if (l > 0L) {
-      return 1;
+    super(paramList, localList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    beoh.a(this.b).b(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
   }
 }
 

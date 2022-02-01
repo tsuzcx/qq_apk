@@ -1,8 +1,22 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface zro
+public final class zro
+  implements nmg
 {
-  public abstract void a(Bundle paramBundle);
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
+      PngQuantUtils.a.set(false);
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

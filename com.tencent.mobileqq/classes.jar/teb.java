@@ -1,46 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class teb
-  implements tec
+  implements tch
 {
-  public teb(RunningJob paramRunningJob, StringBuilder paramStringBuilder) {}
+  public teb(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Tdw.b = paramString;
-  }
-  
-  public void doCancel() {}
-  
-  public boolean isCancelled()
-  {
-    return false;
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    QLog.d(RunningJob.jdField_a_of_type_JavaLangString, 1, "receive image data error: " + paramInt + " progress: " + this.jdField_a_of_type_JavaLangStringBuilder);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Tdw.e = paramInt;
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    puw.b(3, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Tdw);
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Tdw.d == 0) {
-      puw.b(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Tdw);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Tdw.i = paramLong;
-    QLog.d(RunningJob.jdField_a_of_type_JavaLangString, 1, "receive image data success, total size: " + paramLong + " progress: " + this.jdField_a_of_type_JavaLangStringBuilder);
-  }
-  
-  public void publishProgress(int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(System.currentTimeMillis() + " " + paramInt + " ");
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "canOpenPage error" + localException.getMessage());
+    }
   }
 }
 

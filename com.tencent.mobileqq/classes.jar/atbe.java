@@ -1,48 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-
-class atbe
-  extends atbl
+public class atbe
+  extends atbb
 {
-  protected long a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected String a;
-  private long b;
-  protected String b;
-  
-  atbe(atan paramatan, MessageRecord paramMessageRecord)
+  public atbe(atba paramatba, atag paramatag)
   {
-    super(paramatan);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramatan = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramatan);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    super(paramatba, paramatag);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, atbj paramatbj)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    String str1 = atjh.a(atvo.e(this.jdField_b_of_type_JavaLangString));
-    String str2 = atjh.a(atvo.a(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_Long = atvo.a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
+    super.a(paramInt);
+    this.jdField_a_of_type_Atag.a();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
+    {
+    default: 
+      return false;
     }
-    atan.a(this.jdField_a_of_type_Atan).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, atan.a(this.jdField_a_of_type_Atan).getCurrentAccountUin(), new atbf(this, paramatbj, str2));
+    this.jdField_a_of_type_Atba.a(2, paramInt2);
+    return true;
   }
 }
 

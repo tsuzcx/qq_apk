@@ -1,23 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
+import java.util.Comparator;
 
-final class asmo
-  implements DialogInterface.OnClickListener
+class asmo
+  implements Comparator<EmosmPb.SmallYellowItem>
 {
-  asmo(boolean paramBoolean, BaseActivity paramBaseActivity, int paramInt, String paramString1, String paramString2) {}
+  asmo(asmn paramasmn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      asme.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
+      return 1;
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      asme.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString);
+    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
+      return 0;
     }
+    return -1;
   }
 }
 

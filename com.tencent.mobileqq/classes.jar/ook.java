@@ -1,59 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
-import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public class ook
-  extends anii
+class ook
 {
-  public static long a = 1800L;
-  
-  public ook(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  public void a()
-  {
-    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
-    oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
-    oidb_0x885.AdReqInfo localAdReqInfo = new oidb_0x885.AdReqInfo();
-    if ((this.app != null) && (this.app.getLongAccountUin() != 0L)) {
-      localReqBody.uint64_uin.set(this.app.getLongAccountUin());
-    }
-    try
-    {
-      localAdReqInfo.int32_req_type.set(3);
-      localReqAdvertisePara.msg_ad_req_info.set(localAdReqInfo);
-      localReqAdvertisePara.msg_phone_info.set(opp.a());
-      localReqBody.req_advertise_para.set(localReqAdvertisePara);
-      nir.a(this.app, new ool(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(localException));
-        }
-      }
-    }
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return oom.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView;
 }
 
 

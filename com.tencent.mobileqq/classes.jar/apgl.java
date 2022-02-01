@@ -1,18 +1,75 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import android.content.IntentFilter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface apgl
+public class apgl
+  extends apgc
 {
-  public abstract aper a();
+  static PromotionConfigInfo b;
+  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
   
-  public abstract apev a();
+  public apgl(AppInterface paramAppInterface)
+  {
+    super(paramAppInterface);
+    a(paramAppInterface);
+    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
+  }
   
-  public abstract aylq a();
+  public void a(AppInterface paramAppInterface, apge paramapge)
+  {
+    if (a("snycGetConfig", paramAppInterface, paramapge)) {
+      return;
+    }
+    paramapge.a(a());
+  }
   
-  public abstract ARCommonConfigInfo a();
+  public void a(AppInterface paramAppInterface, String paramString)
+  {
+    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
+  }
   
-  public abstract void a(boolean paramBoolean);
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    super.a(paramPromotionConfigInfo);
+    try
+    {
+      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      return;
+    }
+    finally {}
+  }
   
-  public abstract void b(boolean paramBoolean);
+  boolean a(AppInterface paramAppInterface)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
+    return paramAppInterface.getApp().registerReceiver(new apgm(this), localIntentFilter) != null;
+  }
+  
+  void b(AppInterface paramAppInterface) {}
+  
+  void b(String paramString)
+  {
+    try
+    {
+      paramString = bhui.a(this.jdField_b_of_type_JavaLangString, paramString);
+      a(paramString);
+      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+  }
 }
 
 

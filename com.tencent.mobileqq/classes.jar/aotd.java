@@ -1,13 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
-
 public class aotd
-  implements DialogInterface.OnClickListener
 {
-  public aotd(ARRecordUtils.1 param1) {}
+  public long a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aotd(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

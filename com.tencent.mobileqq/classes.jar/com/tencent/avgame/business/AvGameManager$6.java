@@ -1,22 +1,22 @@
 package com.tencent.avgame.business;
 
-import aobd;
+import aono;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mwd;
-import nga;
+import mxc;
+import nhv;
 
 public class AvGameManager$6
   implements Runnable
 {
-  public AvGameManager$6(mwd parammwd, String paramString1, String paramString2) {}
+  public AvGameManager$6(mxc parammxc, String paramString1, String paramString2) {}
   
   public void run()
   {
     try
     {
-      String str = mwd.a(this.this$0).getCurrentNickname();
-      aobd.a().a(mwd.a(this.this$0), 0, this.a, nga.a(this.b), mwd.a(this.this$0).getLongAccountUin(), str, 1, "", 1);
+      String str = mxc.a(this.this$0).getCurrentNickname();
+      aono.a().a(mxc.a(this.this$0), 0, this.a, nhv.a(this.b), mxc.a(this.this$0).getLongAccountUin(), str, 1, "", 1);
       return;
     }
     catch (Exception localException)

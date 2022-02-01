@@ -1,14 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 
-class vml
-  extends voy
+public class vml
+  implements vxz
 {
-  vml(vmk paramvmk) {}
+  public vml(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void a(int paramInt, vou paramvou)
+  public void a(String paramString)
   {
-    super.a(paramInt, paramvou);
-    QLog.d("QCircleDefaultMessagePresenter", 4, "state callback:" + paramInt);
+    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+    localQCircleInitBean.setUin(paramString);
+    localQCircleInitBean.setFromReportBean(this.a.a().clone().setElementIdStr("portrait"));
+    uyx.b(this.a.getContext(), localQCircleInitBean);
   }
 }
 

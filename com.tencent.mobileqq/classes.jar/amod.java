@@ -1,21 +1,15 @@
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-public class amod
+class amod
 {
-  public int a;
-  public long a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
   public String a;
-  public List<String> a;
-  public String b;
-  
-  public amod(List<String> paramList, int paramInt, String paramString1, long paramLong, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-  }
+  public ImageView b;
+  public TextView b;
 }
 
 

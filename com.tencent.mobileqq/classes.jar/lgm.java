@@ -1,6 +1,25 @@
-public abstract interface lgm
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
+
+class lgm
+  implements Observer
 {
-  public abstract void a(int paramInt, String paramString);
+  private WeakReference<lgl> a;
+  
+  lgm(lgl paramlgl)
+  {
+    this.a = new WeakReference(paramlgl);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    lgl locallgl = (lgl)this.a.get();
+    if (locallgl == null) {
+      return;
+    }
+    lgl.a(locallgl, paramObservable, paramObject);
+  }
 }
 
 

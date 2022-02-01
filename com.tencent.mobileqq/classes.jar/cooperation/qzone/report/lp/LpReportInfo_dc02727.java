@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import blru;
+import bmsw;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +37,7 @@ public class LpReportInfo_dc02727
   public LpReportInfo_dc02727(JSONObject paramJSONObject)
   {
     init(paramJSONObject);
-    this.qua = blru.a();
+    this.qua = bmsw.a();
   }
   
   private void init(JSONObject paramJSONObject)

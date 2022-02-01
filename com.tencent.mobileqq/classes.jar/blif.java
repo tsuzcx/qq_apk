@@ -1,16 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.annotation.SuppressLint;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.widget.AbsListView;
 
+@SuppressLint({"NewApi"})
 public class blif
-  implements DialogInterface.OnClickListener
+  implements blie
 {
-  public blif(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  private blie jdField_a_of_type_Blie;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public blif(AbsListView paramAbsListView) {}
+  
+  public void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.jdField_a_of_type_Blie.a(paramActionMode, paramInt, paramLong, paramBoolean);
+    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.getCheckedItemCount() == 0) {
+      paramActionMode.finish();
+    }
+  }
+  
+  public void a(blie paramblie)
+  {
+    this.jdField_a_of_type_Blie = paramblie;
+  }
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return this.jdField_a_of_type_Blie.onActionItemClicked(paramActionMode, paramMenuItem);
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Blie.onCreateActionMode(paramActionMode, paramMenu))
+    {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(false);
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode)
+  {
+    this.jdField_a_of_type_Blie.onDestroyActionMode(paramActionMode);
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.mChoiceActionMode = null;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.clearChoices();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.mDataChanged = true;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.rememberSyncState();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.requestLayout();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(true);
+  }
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return this.jdField_a_of_type_Blie.onPrepareActionMode(paramActionMode, paramMenu);
   }
 }
 

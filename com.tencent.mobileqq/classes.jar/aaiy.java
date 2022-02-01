@@ -1,51 +1,108 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.1;
-import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.ListView;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class aaiy
+class aaiy
+  implements aakp
 {
-  public static void a(String paramString, ImageView paramImageView)
-  {
-    ThreadManager.post(new MergeBitmapBlurUtil.1(paramString, paramImageView), 5, null, false);
-  }
+  aaiy(aaiu paramaaiu, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  private static void b(Bitmap paramBitmap, ImageView paramImageView)
+  public void a()
   {
-    ThreadManager.getUIHandler().post(new MergeBitmapBlurUtil.2(paramBitmap, paramImageView));
-  }
-  
-  private static void b(String paramString, Bitmap paramBitmap, ImageView paramImageView)
-  {
-    Bitmap localBitmap;
-    Canvas localCanvas;
-    if (paramBitmap != null)
+    QLog.d(aaiu.a(), 1, "onCommentSend()");
+    if (aaiu.a(this.jdField_a_of_type_Aaiu) == null)
     {
-      localBitmap = bgmo.a(paramImageView.getContext(), paramBitmap, 0.25F, 20.0F);
-      if (localBitmap != null)
+      QLog.d(aaiu.a(), 1, "onCommentSend(): mCommentInputPopupWindow null");
+      return;
+    }
+    String str = aaiu.a(this.jdField_a_of_type_Aaiu).a();
+    if (TextUtils.isEmpty(str.trim()))
+    {
+      QQToast.a(aaiu.m(this.jdField_a_of_type_Aaiu), aaiu.n(this.jdField_a_of_type_Aaiu).getString(2131692047), 0).a();
+      return;
+    }
+    if (!NetworkUtils.isNetworkAvailable(aaiu.o(this.jdField_a_of_type_Aaiu)))
+    {
+      QQToast.a(aaiu.p(this.jdField_a_of_type_Aaiu), 1, aaiu.q(this.jdField_a_of_type_Aaiu).getString(2131693974), 0).a();
+      return;
+    }
+    Object localObject = aaiu.a(this.jdField_a_of_type_Aaiu);
+    if (localObject == null)
+    {
+      QLog.e(aaiu.a(), 1, "feed is null");
+      return;
+    }
+    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment != null)
+    {
+      if (aaiu.a(this.jdField_a_of_type_Aaiu) == null) {
+        aaiu.a(this.jdField_a_of_type_Aaiu, aaiu.a(this.jdField_a_of_type_Aaiu, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
+      }
+      aaiu.a(this.jdField_a_of_type_Aaiu).content.set(str);
+      CertifiedAccountMeta.StReply localStReply = new CertifiedAccountMeta.StReply();
+      localStReply.id.set("fakeId_" + System.currentTimeMillis());
+      localStReply.content.set(str);
+      localStReply.createTime.set((int)(System.currentTimeMillis() / 1000L));
+      localStReply.postUser.set(aaiu.a(this.jdField_a_of_type_Aaiu));
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply != null) {}
+      for (localStReply.targetUser = ((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.postUser.get()); localObject == null; localStReply.targetUser = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.postUser)
       {
-        localCanvas = new Canvas();
-        if (!localBitmap.isMutable()) {
-          break label124;
-        }
+        QLog.e(aaiu.a(), 1, "feed is null");
+        return;
+      }
+      if (aaiu.a(this.jdField_a_of_type_Aaiu).targetUser != null) {
+        aaiu.a(this.jdField_a_of_type_Aaiu).put(Long.valueOf(aaiu.a(this.jdField_a_of_type_Aaiu)), aaiu.a(this.jdField_a_of_type_Aaiu).targetUser);
+      }
+      aaiu.b(this.jdField_a_of_type_Aaiu, aaiu.a(this.jdField_a_of_type_Aaiu).a(aaiu.a(this.jdField_a_of_type_Aaiu), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, localStReply));
+      aaiu.c(this.jdField_a_of_type_Aaiu, true);
+      aaiu.d(this.jdField_a_of_type_Aaiu, true);
+      if (aaiu.b(this.jdField_a_of_type_Aaiu) != null) {
+        aaiu.b(this.jdField_a_of_type_Aaiu).put(Long.valueOf(aaiu.a(this.jdField_a_of_type_Aaiu)), aaiu.a(this.jdField_a_of_type_Aaiu));
+      }
+      aaiu.a(this.jdField_a_of_type_Aaiu, null);
+      if (aaiu.a(this.jdField_a_of_type_Aaiu) != null)
+      {
+        aaiu.a(this.jdField_a_of_type_Aaiu).a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), localStReply);
+        aaiu.a(this.jdField_a_of_type_Aaiu).notifyDataSetChanged();
       }
     }
-    label124:
-    for (Object localObject = localBitmap;; localObject = localBitmap.copy(localBitmap.getConfig(), true))
+    for (;;)
     {
-      localCanvas.setBitmap((Bitmap)localObject);
-      localCanvas.drawColor(Color.parseColor("#3F000000"), PorterDuff.Mode.SRC_OVER);
-      localObject = zmg.a(paramBitmap.getWidth(), paramBitmap.getHeight(), paramImageView.getWidth(), paramImageView.getHeight());
-      paramBitmap = zkh.a(zkh.a(localBitmap, ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), true), paramBitmap);
-      b(paramBitmap, paramImageView);
-      bglc.a(paramString, paramBitmap);
+      aaiu.a(this.jdField_a_of_type_Aaiu).a("");
+      aaiu.a(this.jdField_a_of_type_Aaiu).b(null);
+      aaiu.a(this.jdField_a_of_type_Aaiu).dismiss();
       return;
+      if (aaiu.a(this.jdField_a_of_type_Aaiu) == null) {
+        aaiu.a(this.jdField_a_of_type_Aaiu, aaiu.b(this.jdField_a_of_type_Aaiu, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment));
+      }
+      aaiu.a(this.jdField_a_of_type_Aaiu).content.set(str);
+      localObject = new CertifiedAccountMeta.StComment();
+      ((CertifiedAccountMeta.StComment)localObject).id.set("fakeId_" + System.currentTimeMillis());
+      ((CertifiedAccountMeta.StComment)localObject).content.set(str);
+      ((CertifiedAccountMeta.StComment)localObject).createTime.set((int)(System.currentTimeMillis() / 1000L));
+      ((CertifiedAccountMeta.StComment)localObject).postUser.set(aaiu.a(this.jdField_a_of_type_Aaiu));
+      aaiu.a(this.jdField_a_of_type_Aaiu).a(aaiu.a(this.jdField_a_of_type_Aaiu), (CertifiedAccountMeta.StComment)localObject);
+      aaiu.c(this.jdField_a_of_type_Aaiu, true);
+      aaiu.d(this.jdField_a_of_type_Aaiu, true);
+      aaiu.a(this.jdField_a_of_type_Aaiu, null);
+      if (aaiu.a(this.jdField_a_of_type_Aaiu) != null)
+      {
+        aaiu.a(this.jdField_a_of_type_Aaiu).a(0, (CertifiedAccountMeta.StComment)localObject);
+        aaiu.a(this.jdField_a_of_type_Aaiu).notifyDataSetChanged();
+      }
+      if (this.jdField_a_of_type_Aaiu.a != null)
+      {
+        QLog.d(aaiu.a(), 1, "mNeedShowCommentList1");
+        this.jdField_a_of_type_Aaiu.a.setSelection(0);
+      }
     }
   }
 }

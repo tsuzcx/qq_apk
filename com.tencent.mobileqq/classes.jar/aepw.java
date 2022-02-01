@@ -1,16 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aepw
-  implements DialogInterface.OnClickListener
+  implements badl
 {
-  public aepw(NearbyActivity paramNearbyActivity) {}
+  public aepw(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    this.a.a(0L, null, null, false);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.b(paramInt);
+  }
+  
+  public void a(blih paramblih)
+  {
+    this.a.a(paramblih);
+  }
+  
+  public void b()
+  {
+    this.a.a(this.a.a.a, false, 8);
+  }
+  
+  public void b(blih paramblih)
+  {
+    this.a.b(paramblih);
+  }
+  
+  public void c()
+  {
+    FriendProfileCardActivity.a(this.a);
   }
 }
 

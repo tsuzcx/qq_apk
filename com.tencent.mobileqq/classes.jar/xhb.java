@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class xhb
-  implements ViewTreeObserver.OnPreDrawListener
+class xhb
+  extends xfr
 {
-  public xhb(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
-  
-  public boolean onPreDraw()
+  xhb(xgp paramxgp, StoryVideoItem paramStoryVideoItem, xhv paramxhv)
   {
-    xlk.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new xhc(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Xhv.a = ((String)a("result"));
+    return true;
   }
 }
 

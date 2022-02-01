@@ -1,21 +1,29 @@
-import android.os.CountDownTimer;
-import android.os.SystemClock;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
 
 class mye
-  extends CountDownTimer
+  implements Animator.AnimatorListener
 {
-  mye(myd parammyd, long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  mye(mya parammya, int paramInt1, int paramInt2) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramLong1, paramLong2);
+    mya.a(this.jdField_a_of_type_Mya).a(this.jdField_a_of_type_Int, this.b);
+    mya.a(this.jdField_a_of_type_Mya).d();
+    mya.a(this.jdField_a_of_type_Mya, null);
   }
   
-  public void onFinish()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    myd.a(this.jdField_a_of_type_Myd, this.jdField_a_of_type_Int - i);
+    mya.a(this.jdField_a_of_type_Mya).a(this.jdField_a_of_type_Int, this.b);
+    mya.a(this.jdField_a_of_type_Mya).d();
+    mya.a(this.jdField_a_of_type_Mya, null);
   }
   
-  public void onTick(long paramLong) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

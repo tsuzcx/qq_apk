@@ -1,54 +1,52 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.view.View;
-import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
-import dov.com.qq.im.ae.view.AECompoundButton;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.thread.QzoneThreadMonitor;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.util.exception.QZoneStartupFailException;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bnjb
-  implements Observer<Boolean>
+public class bnjb
+  extends Handler
 {
-  bnjb(bniq parambniq) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
+  public bnjb(QzoneThreadMonitor paramQzoneThreadMonitor, Looper paramLooper)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    if (paramBoolean.booleanValue()) {
-      if (bniq.a(this.a).a())
-      {
-        bniq.d(this.a).setVisibility(0);
-        bniq.a(this.a).setVisibility(8);
-        bniq.a(this.a).setVisibility(8);
-        bniq.a(this.a).setEntryPresent(false);
-      }
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      bnzb.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when other buttons visibility change");
-      bniq.a(this.a);
-      bniq.b(this.a);
+    default: 
       return;
-      if (bniq.a(this.a).b())
-      {
-        bniq.d(this.a).setVisibility(0);
-        bniq.a(this.a).setVisibility(0);
-        bniq.a(this.a).setEntryPresent(true);
-        if (bniq.d(this.a)) {
-          bniq.a(this.a).setVisibility(0);
-        }
-      }
-      else if (bniq.a(this.a).c())
-      {
-        bniq.d(this.a).setVisibility(0);
-        bniq.a(this.a).setVisibility(8);
-        bniq.a(this.a).setVisibility(8);
-        bniq.a(this.a).setEntryPresent(false);
-        continue;
-        bniq.a(this.a).setVisibility(8);
-        bniq.a(this.a).setVisibility(8);
-      }
+    }
+    bnjd localbnjd = (bnjd)paramMessage.obj;
+    if (!QzoneThreadMonitor.access$000(this.a).containsKey(localbnjd.jdField_a_of_type_JavaLangString))
+    {
+      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage has been canceled. id=", localbnjd.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (paramMessage.arg1 >= 10)
+    {
+      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "stack check for too many times. id=", localbnjd.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    Object localObject = QzoneThreadMonitor.access$100(QzoneHandlerThreadFactory.getHandlerThreadLooper(localbnjd.jdField_b_of_type_JavaLangString).getThread().getStackTrace(), localbnjd.jdField_b_of_type_JavaLangString + " id=" + localbnjd.jdField_a_of_type_JavaLangString + ": ");
+    QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[stack] ", localbnjd.jdField_b_of_type_JavaLangString, " id=", localbnjd.jdField_a_of_type_JavaLangString, " what=", Integer.valueOf(localbnjd.jdField_a_of_type_Int), " msg.target=", localbnjd.c, " msg.callback=", localbnjd.d });
+    QZLog.w("QzoneThreadMonitor", 1, new Object[] { localObject });
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "report_backgroudmonitor", "0").equals("1")) {
+      bnkm.a(new QZoneStartupFailException(new Throwable((String)localObject)), ((String)localObject).toString());
+    }
+    paramMessage = Message.obtain(QzoneThreadMonitor.access$200(this.a), 1, paramMessage.arg1 + 1, 0, localbnjd);
+    localObject = QzoneThreadMonitor.access$200(this.a);
+    if (localbnjd.jdField_b_of_type_Int == 1) {}
+    for (long l = 500L;; l = 250L)
+    {
+      ((Handler)localObject).sendMessageDelayed(paramMessage, l);
+      return;
     }
   }
 }

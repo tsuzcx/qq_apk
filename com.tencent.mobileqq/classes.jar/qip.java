@@ -1,54 +1,28 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function3;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qip
-  extends ViewBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$1", "Lcom/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyObserver;", "onChannelRefreshed", "", "success", "", "channelID", "", "articleSeqList", "", "", "noMoreData", "onPushNotifyDialogDismiss", "needAnimation", "uin", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qip
+  extends pfh
 {
-  private NativeGridImageView a;
-  
-  public qip(VafContext paramVafContext)
+  public void a(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2)
   {
-    super(paramVafContext);
-    this.a = new NativeGridImageView(paramVafContext.getContext());
+    this.a.b(true);
+    qio.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qio.a(this.a)), Integer.valueOf(0));
   }
   
-  public void a(ArticleInfo paramArticleInfo)
+  public void b(boolean paramBoolean, @NotNull String paramString)
   {
-    this.a.a(paramArticleInfo);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.a(this);
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    if ((Intrinsics.areEqual(paramString, qio.a(this.a).b())) || (Intrinsics.areEqual(paramString, "MATCH_ALL_UIN")))
+    {
+      this.a.b(paramBoolean);
+      qio.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qio.a(this.a)), Integer.valueOf(0));
+    }
   }
 }
 

@@ -1,14 +1,16 @@
-import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
-public class vjz
-  implements wbh
+class vjz
+  implements aadm<Object>
 {
-  public vjz(QCircleContentImage paramQCircleContentImage) {}
+  vjz(vjy paramvjy, int paramInt, FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean) {}
   
-  public void a(float paramFloat)
+  public void a(Object... paramVarArgs)
   {
-    zwp.a().a(new QCircleContentImmersiveEvent(2));
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_Int, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, this.jdField_a_of_type_Boolean);
+    }
   }
 }
 

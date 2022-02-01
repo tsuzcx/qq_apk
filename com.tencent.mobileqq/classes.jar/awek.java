@@ -1,26 +1,16 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface.OnClickListener;
 
-public class awek
+class awek
 {
-  private List<awel> a = Collections.synchronizedList(new ArrayList());
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  void a(long paramLong)
+  public awek(aweh paramaweh, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((awel)localIterator.next()).a(paramLong);
-    }
-  }
-  
-  void b(long paramLong)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((awel)localIterator.next()).b(paramLong);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
 }
 

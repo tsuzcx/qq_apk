@@ -1,27 +1,18 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.OpenID;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bfna
-  extends nmf
+  implements View.OnClickListener
 {
   bfna(bfmz parambfmz) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onClick(View paramView)
   {
-    if ((bfmz.a(this.a) == null) || (bfmz.a(this.a) == null) || (bfmz.a(this.a) == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((bfmz.a(this.a).isFinishing()) || (bfmz.a(this.a)));
-      bfmz.a(this.a).d();
-      if (bfmz.a(this.a) != null) {
-        bfmz.a(this.a).removeCallbacksAndMessages(null);
-      }
-    } while ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null) || (paramOpenID.openID.equals(bfmz.a(this.a))));
-    bfmz.a(this.a).b();
+    GroupManagerActivity.a((Activity)bfmz.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

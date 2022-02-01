@@ -1,30 +1,31 @@
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.os.MqqHandler;
 
 public class aoac
-  extends annz
 {
-  private aoac(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
-  
-  protected void a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (GetJoinedHotChatListStep.a(this.a) != null)
-    {
-      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
-      GetJoinedHotChatListStep.a(this.a, null);
+    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
     }
-    if (paramInt == 0)
-    {
-      this.a.a(7);
-      return;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().a();
+    paramString = (RecentUser)paramQQAppInterface.findRecentUser(paramString, 1);
+    if (paramString != null) {
+      paramQQAppInterface.delRecentUser(paramString);
     }
-    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoac
  * JD-Core Version:    0.7.0.1
  */

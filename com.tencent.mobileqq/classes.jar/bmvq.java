@@ -1,13 +1,17 @@
-import android.content.Context;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import com.tencent.component.network.downloader.DownloadRequest;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public final class bmvq
-  extends bmgv<QzoneHuangzuanVipIconShow, Context>
+class bmvq
 {
-  protected QzoneHuangzuanVipIconShow a(Context paramContext)
-  {
-    return new QzoneHuangzuanVipIconShow(paramContext);
-  }
+  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
+  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  
+  bmvq(bmvo parambmvo) {}
 }
 
 

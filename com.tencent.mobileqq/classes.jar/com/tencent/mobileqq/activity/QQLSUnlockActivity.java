@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import akmq;
+import akyb;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import android.os.PowerManager.WakeLock;
 import android.provider.Settings.System;
 import android.view.MotionEvent;
 import android.view.Window;
-import bctj;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -134,7 +134,7 @@ public class QQLSUnlockActivity
         QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
         paramBundle = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramBundle instanceof QQAppInterface)) {
-          akmq.a((QQAppInterface)paramBundle, false);
+          akyb.a((QQAppInterface)paramBundle, false);
         }
       }
       return;
@@ -155,13 +155,13 @@ public class QQLSUnlockActivity
   protected void onPause()
   {
     super.onPause();
-    bctj.a(this).c(this);
+    bdmc.a(this).c(this);
   }
   
   protected void onResume()
   {
     super.onResume();
-    bctj.a(this).b(this);
+    bdmc.a(this).b(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)

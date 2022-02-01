@@ -1,13 +1,13 @@
 package com.tencent.open.business.base;
 
-import biug;
+import bjvf;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OpenConfig$1
   implements Runnable
 {
-  public OpenConfig$1(biug parambiug) {}
+  public OpenConfig$1(bjvf parambjvf) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class OpenConfig$1
     try
     {
       this.this$0.a = new JSONObject(str);
-      biug.a(this.this$0, true);
+      bjvf.a(this.this$0, true);
       return;
     }
     catch (JSONException localJSONException) {}

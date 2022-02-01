@@ -1,33 +1,51 @@
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+
 public class bfgy
-  implements Comparable<bfgy>
+  extends AsyncTask<Void, Void, String>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public bfgy(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public bfgy(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  protected String a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
+    try
+    {
+      String str2 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (str2 != null)
+      {
+        bhmq.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, str2);
+        String str1 = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694371) + " " + str2;
+        paramVarArgs = str1;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "savePhoto:" + str2);
+          return str1;
+        }
+      }
+      else
+      {
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694369);
+        return paramVarArgs;
+      }
+    }
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694369);
+    }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694369);
+    }
+    return paramVarArgs;
   }
   
-  public int a(bfgy parambfgy)
+  protected void a(String paramString)
   {
-    if (this.jdField_b_of_type_Int < parambfgy.jdField_b_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_b_of_type_Int > parambfgy.jdField_b_of_type_Int) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getTitleBarHeight());
   }
 }
 

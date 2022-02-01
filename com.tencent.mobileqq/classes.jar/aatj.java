@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class aatj
-  implements View.OnClickListener
+class aatj
+  extends aaty
 {
-  public aatj(TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public void onClick(View paramView)
+  aatj(aatd paramaatd, aatl paramaatl, String paramString)
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramaatd);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "mixAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "mixAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aatd.a));
+      this.jdField_a_of_type_Aatd.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aatl.a(this.jdField_a_of_type_JavaLangString, false, "mixAudio done.");
+    }
   }
 }
 

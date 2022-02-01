@@ -1,61 +1,66 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class ardl
+public class ardl
 {
-  public static int a(Context paramContext)
+  public int a;
+  public String a;
+  public JSONObject a;
+  
+  public ardl()
   {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
   }
   
-  public static int a(Context paramContext, String paramString)
+  public static ardl a(String paramString)
   {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
     try
     {
-      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
-      return i;
+      ardl localardl = new ardl();
+      localardl.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
+      return localardl;
     }
-    catch (Exception paramContext) {}
-    return 0;
+    catch (Exception paramString)
+    {
+      QLog.e("C2CLovePushGrayConfBean", 2, "C2CLovePushGrayConfBean onParsed erro " + paramString.toString());
+    }
+    return null;
   }
   
-  public static String a(Context paramContext)
+  public ardl b(String paramString)
   {
+    ardl localardl = new ardl();
     try
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "";
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
+      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
       {
-        paramString = paramContext.getApplicationInfo(paramString, 0);
-        if (paramString != null) {
-          return true;
+        paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(paramString);
+        if (paramString != null)
+        {
+          localardl.jdField_a_of_type_Int = paramString.optInt("linkType", 1);
+          localardl.jdField_a_of_type_JavaLangString = paramString.optString("linkURL", "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1");
+          return localardl;
         }
+        localardl.jdField_a_of_type_Int = 1;
+        localardl.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
+        return localardl;
       }
-      catch (PackageManager.NameNotFoundException paramString) {}
     }
-    return false;
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("C2CLovePushGrayProcessor", 2, "getC2CLovePushGrayConfBean Exception :", paramString);
+      }
+      localardl.jdField_a_of_type_Int = 1;
+      localardl.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
+    }
+    return localardl;
   }
 }
 

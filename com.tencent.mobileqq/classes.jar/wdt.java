@@ -1,41 +1,15 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
+import android.widget.FrameLayout;
+import com.tencent.biz.qqcircle.widgets.QCirclePaiTongKuanIconView;
+import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
+import com.tencent.image.URLImageView;
 
 public class wdt
-  implements Comparable<wdt>
 {
-  public int a;
-  Bitmap a;
-  public wcm a;
+  public FrameLayout a;
+  public QCirclePaiTongKuanIconView a;
+  public URLImageView a;
   
-  public int a(@NonNull wdt paramwdt)
-  {
-    return (int)(this.jdField_a_of_type_Wcm.b - paramwdt.jdField_a_of_type_Wcm.b);
-  }
-  
-  public Bitmap a(Context paramContext)
-  {
-    BitmapFactory.Options localOptions;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      localOptions = new BitmapFactory.Options();
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Wcm.a(paramContext, 1, localOptions);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = wdu.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        yqp.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
-      }
-    }
-  }
+  public wdt(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter) {}
 }
 
 

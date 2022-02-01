@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import ngm;
-import ngr;
+import nih;
+import nim;
 
 public class GuessPictureGamePaintLogic$1
   implements Runnable
 {
-  public GuessPictureGamePaintLogic$1(ngr paramngr, View paramView, int paramInt, boolean paramBoolean) {}
+  public GuessPictureGamePaintLogic$1(nim paramnim, View paramView, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
@@ -22,19 +22,19 @@ public class GuessPictureGamePaintLogic$1
     {
       j = this.jdField_a_of_type_AndroidViewView.getWidth();
       i = this.jdField_a_of_type_AndroidViewView.getHeight();
-      j = (ngr.a(this.this$0) - j) / 2;
-      i = (ngr.b(this.this$0) - i) / 2;
+      j = (nim.a(this.this$0) - j) / 2;
+      i = (nim.b(this.this$0) - i) / 2;
     }
-    synchronized (ngr.a(this.this$0))
+    synchronized (nim.a(this.this$0))
     {
-      ngr.a(this.this$0, new ngm());
-      ngr.a(this.this$0).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
-      ngr.a(this.this$0).e = this.jdField_a_of_type_Int;
-      ngr.a(this.this$0).c = j;
-      ngr.a(this.this$0).d = i;
-      ngr.a(this.this$0).jdField_a_of_type_JavaLangString = "Answer";
-      ngr.a(this.this$0).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      ngr.a(this.this$0, true);
+      nim.a(this.this$0, new nih());
+      nim.a(this.this$0).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
+      nim.a(this.this$0).e = this.jdField_a_of_type_Int;
+      nim.a(this.this$0).c = j;
+      nim.a(this.this$0).d = i;
+      nim.a(this.this$0).jdField_a_of_type_JavaLangString = "Answer";
+      nim.a(this.this$0).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      nim.a(this.this$0, true);
       this.jdField_a_of_type_AndroidViewView.setDrawingCacheEnabled(false);
       if (QLog.isColorLevel()) {
         QLog.d("GuessPictureGamePaintLogic", 2, "onAnswerViewShow indeed");

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -12,8 +12,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import asnm;
-import asnn;
+import atdq;
+import atdr;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class ExtendFriendHorizontalTagsView
   implements View.OnClickListener
 {
   public int a;
-  public asnm a;
+  public atdq a;
   
   public ExtendFriendHorizontalTagsView(Context paramContext)
   {
@@ -44,20 +44,20 @@ public class ExtendFriendHorizontalTagsView
   
   public void onClick(View paramView)
   {
-    asnn localasnn;
-    if ((paramView.getTag() instanceof asnn))
+    atdr localatdr;
+    if ((paramView.getTag() instanceof atdr))
     {
-      localasnn = (asnn)paramView.getTag();
-      if (localasnn.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
+      localatdr = (atdr)paramView.getTag();
+      if (localatdr.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
     }
     else
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.jdField_a_of_type_Int = localasnn.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Asnm != null) {
-      this.jdField_a_of_type_Asnm.a(localasnn.jdField_a_of_type_JavaLangString, localasnn.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = localatdr.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Atdq != null) {
+      this.jdField_a_of_type_Atdq.a(localatdr.jdField_a_of_type_JavaLangString, localatdr.jdField_a_of_type_Int);
     }
     int i = 0;
     label71:
@@ -78,9 +78,9 @@ public class ExtendFriendHorizontalTagsView
     }
   }
   
-  public void setOnItemClickListener(asnm paramasnm)
+  public void setOnItemClickListener(atdq paramatdq)
   {
-    this.jdField_a_of_type_Asnm = paramasnm;
+    this.jdField_a_of_type_Atdq = paramatdq;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList, int paramInt)
@@ -91,8 +91,8 @@ public class ExtendFriendHorizontalTagsView
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    int m = afur.a(13.0F, getResources());
-    int n = afur.a(26.0F, getResources());
+    int m = agej.a(13.0F, getResources());
+    int n = agej.a(26.0F, getResources());
     int i = 0;
     int j = 0;
     label50:
@@ -107,7 +107,7 @@ public class ExtendFriendHorizontalTagsView
       {
         localTextView = new TextView(getContext());
         localTextView.setText((CharSequence)localObject);
-        localTextView.setTag(new asnn(this, i, (String)localObject));
+        localTextView.setTag(new atdr(this, i, (String)localObject));
         localTextView.setContentDescription((CharSequence)localObject);
         if (i != paramInt) {
           break label261;
@@ -124,11 +124,11 @@ public class ExtendFriendHorizontalTagsView
       localTextView.setClickable(true);
       localTextView.setFocusable(true);
       localTextView.setPadding(m, 0, m, 0);
-      localTextView.setBackgroundResource(2130845167);
-      localTextView.setTextColor(getResources().getColorStateList(2131166339));
+      localTextView.setBackgroundResource(2130845182);
+      localTextView.setTextColor(getResources().getColorStateList(2131166343));
       localObject = new LinearLayout.LayoutParams(-2, n);
       if (j > 0) {
-        ((LinearLayout.LayoutParams)localObject).leftMargin = afur.a(8.0F, getResources());
+        ((LinearLayout.LayoutParams)localObject).leftMargin = agej.a(8.0F, getResources());
       }
       addView(localTextView, (ViewGroup.LayoutParams)localObject);
       k = j + 1;

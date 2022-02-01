@@ -1,33 +1,22 @@
-import android.widget.EditText;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akrl
-  extends akqs
+class akrl
+  implements DialogInterface.OnClickListener
 {
-  public akrl(EditText paramEditText)
-  {
-    super(paramEditText);
-  }
+  akrl(akrf paramakrf) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt1 = 1;
-    paramCharSequence = paramCharSequence.toString();
-    if (paramCharSequence.startsWith("0"))
-    {
-      paramInt2 = blqo.a(paramCharSequence, 1);
-      if (paramInt2 != 0) {
-        break label53;
-      }
+    if (paramInt == 1) {
+      akrf.a(this.a, akrf.a(this.a));
     }
-    for (;;)
-    {
-      paramCharSequence = String.valueOf(paramInt1);
-      this.a.setText(paramCharSequence);
-      this.a.setSelection(paramCharSequence.length());
+    while (paramInt != 0) {
       return;
-      label53:
-      paramInt1 = paramInt2;
     }
+    this.a.b();
+    akrf.a(this.a).moveTaskToBack(true);
   }
 }
 

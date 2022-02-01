@@ -1,19 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ymt
-  implements View.OnClickListener
+  extends ylz
 {
-  public ymt(StoryListPresenter.4.1 param1) {}
+  public List<ynt> b = new ArrayList();
+  public boolean e;
   
-  public void onClick(View paramView)
+  public ymt(ErrorMessage paramErrorMessage)
   {
-    yqu.a("home_page", "clk_up_know", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramErrorMessage);
+  }
+  
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      ynt localynt = (ynt)localIterator.next();
+      localStringBuilder.append("feedId:").append(localynt.a().feedId);
+      localStringBuilder.append("unionId:").append(localynt.a().getOwner().getUnionId());
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
   }
 }
 

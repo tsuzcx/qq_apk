@@ -1,34 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class beri
-  extends anxg
+  implements ITransactionCallback
 {
-  beri(berf paramberf) {}
+  beri(berh paramberh, long paramLong) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    QLog.e("TroopCreateLogic", 1, "onTroopManagerFailed, result = " + paramInt2);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anxg);
-    if (this.a.jdField_a_of_type_Bero != null)
-    {
-      if (paramInt1 == 8) {
-        this.a.jdField_a_of_type_Bero.b(paramInt2, "");
-      }
-      this.a.jdField_a_of_type_Bero = null;
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Berh.a(paramHashMap);
+    if (QLog.isColorLevel()) {
+      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
     }
+    this.jdField_a_of_type_Berh.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Berh.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Berh.b);
+    this.jdField_a_of_type_Berh.d();
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anxg);
-    if (paramInt1 == 8)
-    {
-      if (this.a.jdField_a_of_type_Bero != null) {
-        this.a.jdField_a_of_type_Bero.b(0, paramString);
-      }
-      this.a.a(paramString, true, "");
-      ((anwd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Long.parseLong(paramString));
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Berh.a(paramHashMap);
+    if (QLog.isColorLevel()) {
+      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Berh.a.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Berh.b.b();
+    this.jdField_a_of_type_Berh.b.a = 1;
+    this.jdField_a_of_type_Berh.s = this.jdField_a_of_type_Berh.jdField_q_of_type_Long;
+    this.jdField_a_of_type_Berh.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Berh.e();
+    this.jdField_a_of_type_Berh.a.a();
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    }
+    this.jdField_a_of_type_Berh.b.a();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    berh localberh = this.jdField_a_of_type_Berh;
+    bete localbete = this.jdField_a_of_type_Berh.a;
+    long l = paramInt;
+    localbete.e = l;
+    localberh.s = l;
+    if ((paramInt < this.jdField_a_of_type_Berh.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Berh.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Berh.m)) {
+      this.jdField_a_of_type_Berh.j();
     }
   }
 }

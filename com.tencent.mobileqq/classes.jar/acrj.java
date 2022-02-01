@@ -1,106 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.statistics.GdtReporter;
-import java.net.URLEncoder;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class acrj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData;", "", "event", "", "script", "", "leftSecond", "(ILjava/lang/String;I)V", "getEvent", "()I", "getLeftSecond", "getScript", "()Ljava/lang/String;", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acrj
 {
-  public static String a(int paramInt)
+  public static final acrk a;
+  private final int jdField_a_of_type_Int;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
+  
+  static
   {
-    try
+    jdField_a_of_type_Acrk = new acrk(null);
+  }
+  
+  public acrj(int paramInt1, @NotNull String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-      ((JSONObject)localObject).put("ps", String.valueOf(1));
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public static String a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
-  {
-    int k = 1;
-    int i;
-    if ((paramLong1 >= 0L) && (paramLong2 == 0L)) {
-      i = 4;
-    }
-    for (;;)
-    {
-      long l = paramLong1;
-      if (paramLong1 <= -1L)
+      if ((paramObject instanceof acrj))
       {
-        i = 4;
-        l = 0L;
+        paramObject = (acrj)paramObject;
+        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.b != paramObject.b)) {}
       }
-      if (l >= paramLong2) {
-        i = 4;
-      }
-      try
-      {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("bt", l + "");
-        ((JSONObject)localObject).put("et", paramLong2 + "");
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (l > 0L)
-        {
-          j = 0;
-          ((JSONObject)localObject).put("bf", j + "");
-          localStringBuilder = new StringBuilder();
-          if (!paramBoolean) {
-            break label249;
-          }
-        }
-        label249:
-        for (int j = k;; j = 0)
-        {
-          ((JSONObject)localObject).put("ef", j + "");
-          ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-          ((JSONObject)localObject).put("pa", i + "");
-          localObject = ((JSONObject)localObject).toString();
-          return localObject;
-          j = 1;
-          break;
-        }
-        i = 0;
-      }
-      catch (Exception localException)
-      {
-        return null;
-      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {}
+    for (int i = str.hashCode();; i = 0) {
+      return (i + j * 31) * 31 + this.b;
     }
   }
   
-  public static void a(GdtAd paramGdtAd, String paramString)
+  @NotNull
+  public String toString()
   {
-    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getUrlForImpression()))) {
-      return;
-    }
-    a(paramGdtAd.getUrlForImpression(), paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    GdtReporter.doCgiReport(paramString);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      GdtReporter.doCgiReport(paramString1);
-      return;
-      paramString1 = paramString1 + "&" + "video" + "=" + URLEncoder.encode(paramString2);
-    }
+    return "MotiveBrowsingData(event=" + this.jdField_a_of_type_Int + ", script=" + this.jdField_a_of_type_JavaLangString + ", leftSecond=" + this.b + ")";
   }
 }
 

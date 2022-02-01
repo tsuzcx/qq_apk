@@ -1,61 +1,47 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class aqxm
-  extends aqwr<aqxl>
+  implements blnt
 {
-  @NonNull
-  public aqxl a()
+  public aqxm(SearchResultActivity paramSearchResultActivity) {}
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
-    }
-    return new aqxl();
+    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
   }
   
-  @NonNull
-  public aqxl a(@NonNull aqlg[] paramArrayOfaqlg)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    aqxl localaqxl = new aqxl();
-    try
+    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
+    if (bhnv.d(this.a)) {
+      SearchResultActivity.c(this.a);
+    }
+    for (;;)
     {
-      localaqxl.a = new JSONObject(paramArrayOfaqlg[0].a).optBoolean("showVipIcon", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localaqxl.a);
-      }
-      return localaqxl;
+      SearchResultActivity.a(this.a, System.currentTimeMillis());
+      return true;
+      SearchResultActivity.a(this.a).a(1);
+      paramView = Message.obtain();
+      paramView.what = 3;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
     }
-    catch (JSONException paramArrayOfaqlg)
-    {
-      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaqlg);
-    }
-    return localaqxl;
   }
   
-  @NonNull
-  public aqxl b()
+  public void b(int paramInt, View paramView, ListView paramListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
-    }
-    return new aqxl();
+    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
   }
   
-  public Class<aqxl> clazz()
-  {
-    return aqxl.class;
-  }
-  
-  public int type()
-  {
-    return 465;
-  }
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxm
  * JD-Core Version:    0.7.0.1
  */

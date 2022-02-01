@@ -1,15 +1,15 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import acmv;
-import acmw;
-import acmx;
-import acmy;
-import acmz;
-import acnd;
-import acnh;
-import acoe;
-import afur;
-import alzz;
+import acqx;
+import acqy;
+import acqz;
+import acra;
+import acrb;
+import acrf;
+import acrj;
+import acsg;
+import agej;
+import amlr;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProvider;
@@ -24,12 +24,12 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import axbd;
-import axbe;
-import bglp;
-import bgpa;
-import bhmv;
-import bhql;
+import axtu;
+import axtv;
+import bhlq;
+import bhpc;
+import binq;
+import birg;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
@@ -54,11 +54,11 @@ import org.jetbrains.annotations.Nullable;
 public final class GdtMotiveBrowsingFragment
   extends WebViewFragment
 {
-  public static final acmv a;
+  public static final acqx a;
   private int jdField_a_of_type_Int;
-  private acnd jdField_a_of_type_Acnd;
-  private acoe jdField_a_of_type_Acoe;
-  private bgpa jdField_a_of_type_Bgpa;
+  private acrf jdField_a_of_type_Acrf;
+  private acsg jdField_a_of_type_Acsg;
+  private bhpc jdField_a_of_type_Bhpc;
   private GdtMotiveBrowsingTitle jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
   private LifeCycleFragment jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
@@ -66,23 +66,23 @@ public final class GdtMotiveBrowsingFragment
   
   static
   {
-    jdField_a_of_type_Acmv = new acmv(null);
+    jdField_a_of_type_Acqx = new acqx(null);
   }
   
-  private final void a(acnh paramacnh)
+  private final void a(acrj paramacrj)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GdtMotiveBrowsingFragment", 2, "handleMotiveBrowsingData browsingData: " + paramacnh);
+      QLog.d("GdtMotiveBrowsingFragment", 2, "handleMotiveBrowsingData browsingData: " + paramacrj);
     }
-    int i = paramacnh.a();
-    String str = paramacnh.a();
-    int j = paramacnh.b();
+    int i = paramacrj.a();
+    String str = paramacrj.a();
+    int j = paramacrj.b();
     switch (i)
     {
     default: 
       return;
     case 0: 
-      this.webView.evaluateJavascript(str, (ValueCallback)acmw.a);
+      this.webView.evaluateJavascript(str, (ValueCallback)acqy.a);
       return;
     }
     if (j <= 0) {}
@@ -92,11 +92,11 @@ public final class GdtMotiveBrowsingFragment
       if (((GdtMotiveBrowsingFragment)this).jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle == null) {
         d();
       }
-      paramacnh = this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
-      if (paramacnh == null) {
+      paramacrj = this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
+      if (paramacrj == null) {
         Intrinsics.throwUninitializedPropertyAccessException("titleContainer");
       }
-      paramacnh.a(j);
+      paramacrj.a(j);
       return;
     }
   }
@@ -105,19 +105,19 @@ public final class GdtMotiveBrowsingFragment
   {
     Object localObject = getActivity();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "activity");
-    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment = axbd.a((FragmentActivity)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment = axtu.a((FragmentActivity)localObject);
     localObject = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
     }
-    localObject = axbe.a((ViewModelStoreOwner)localObject).get(acnd.class);
+    localObject = axtv.a((ViewModelStoreOwner)localObject).get(acrf.class);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "ofViewModelProvider(life…ingViewModel::class.java)");
-    this.jdField_a_of_type_Acnd = ((acnd)localObject);
+    this.jdField_a_of_type_Acrf = ((acrf)localObject);
     localObject = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
     }
-    ArkAppNotifyCenter.setNotify("com.tencent.weather_v2", new WeakReference(new alzz((LifeCycleFragment)localObject)));
+    ArkAppNotifyCenter.setNotify("com.tencent.weather_v2", new WeakReference(new amlr((LifeCycleFragment)localObject)));
   }
   
   private final void c()
@@ -132,12 +132,12 @@ public final class GdtMotiveBrowsingFragment
     {
       try
       {
-        this.jdField_a_of_type_Acoe = new acoe((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
-        localObject = this.jdField_a_of_type_Acoe;
+        this.jdField_a_of_type_Acsg = new acsg((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
+        localObject = this.jdField_a_of_type_Acsg;
         if (localObject == null) {
           break label173;
         }
-        localObject = ((acoe)localObject).a();
+        localObject = ((acsg)localObject).a();
         if (localObject == null) {
           break label173;
         }
@@ -145,26 +145,26 @@ public final class GdtMotiveBrowsingFragment
       }
       catch (Throwable localThrowable)
       {
-        acnd localacnd;
+        acrf localacrf;
         QLog.d("GdtMotiveBrowsingFragment", 1, localThrowable, new Object[0]);
         return;
       }
       this.jdField_a_of_type_Int = j;
-      localObject = this.jdField_a_of_type_Acnd;
+      localObject = this.jdField_a_of_type_Acrf;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewModel");
       }
-      ((acnd)localObject).a(this.jdField_a_of_type_Int);
+      ((acrf)localObject).a(this.jdField_a_of_type_Int);
       localObject = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
       }
       localObject = (LifecycleOwner)localObject;
-      localacnd = this.jdField_a_of_type_Acnd;
-      if (localacnd == null) {
+      localacrf = this.jdField_a_of_type_Acrf;
+      if (localacrf == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewModel");
       }
-      axbe.a((LifecycleOwner)localObject, (LiveData)localacnd.a(), (Function1)new GdtMotiveBrowsingFragment.initData.1((GdtMotiveBrowsingFragment)this));
+      axtv.a((LifecycleOwner)localObject, (LiveData)localacrf.a(), (Function1)new GdtMotiveBrowsingFragment.initData.1((GdtMotiveBrowsingFragment)this));
       return;
       label173:
       int i = 0;
@@ -185,13 +185,13 @@ public final class GdtMotiveBrowsingFragment
       Intrinsics.throwUninitializedPropertyAccessException("titleContainer");
     }
     ((GdtMotiveBrowsingTitle)localObject).setOnCloseClickListener((Function0)new GdtMotiveBrowsingFragment.initTitle.1((GdtMotiveBrowsingFragment)this));
-    localObject = (ViewGroup)this.mUIStyleHandler.d.findViewById(2131381162);
+    localObject = (ViewGroup)this.mUIStyleHandler.d.findViewById(2131381335);
     GdtMotiveBrowsingTitle localGdtMotiveBrowsingTitle = this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
     if (localGdtMotiveBrowsingTitle == null) {
       Intrinsics.throwUninitializedPropertyAccessException("titleContainer");
     }
     ((ViewGroup)localObject).addView((View)localGdtMotiveBrowsingTitle);
-    int i = afur.a(63.0F, getResources());
+    int i = agej.a(63.0F, getResources());
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i = ImmersiveUtils.getStatusBarHeight((Context)getActivity()) + i;
     }
@@ -213,16 +213,16 @@ public final class GdtMotiveBrowsingFragment
   
   private final void e()
   {
-    Object localObject = this.jdField_a_of_type_Bgpa;
+    Object localObject = this.jdField_a_of_type_Bhpc;
     if (localObject != null) {
-      ((bgpa)localObject).dismiss();
+      ((bhpc)localObject).dismiss();
     }
-    this.jdField_a_of_type_Bgpa = bglp.a((Context)getActivity(), 0, null, (CharSequence)getResources().getString(2131692592), getResources().getString(2131692589), getResources().getString(2131692590), (DialogInterface.OnClickListener)new acmx(this), (DialogInterface.OnClickListener)new acmy(this));
-    localObject = this.jdField_a_of_type_Bgpa;
+    this.jdField_a_of_type_Bhpc = bhlq.a((Context)getActivity(), 0, null, (CharSequence)getResources().getString(2131692598), getResources().getString(2131692595), getResources().getString(2131692596), (DialogInterface.OnClickListener)new acqz(this), (DialogInterface.OnClickListener)new acra(this));
+    localObject = this.jdField_a_of_type_Bhpc;
     if (localObject != null)
     {
-      ((bgpa)localObject).show();
-      localObject = ((bgpa)localObject).getWindow();
+      ((bhpc)localObject).show();
+      localObject = ((bhpc)localObject).getWindow();
       if (localObject != null)
       {
         localObject = ((Window)localObject).getDecorView();
@@ -230,15 +230,15 @@ public final class GdtMotiveBrowsingFragment
           ((View)localObject).setSystemUiVisibility(7942);
         }
       }
-      localObject = this.jdField_a_of_type_Acnd;
+      localObject = this.jdField_a_of_type_Acrf;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewModel");
       }
-      ((acnd)localObject).a();
+      ((acrf)localObject).a();
     }
-    localObject = this.jdField_a_of_type_Bgpa;
+    localObject = this.jdField_a_of_type_Bhpc;
     if (localObject != null) {
-      ((bgpa)localObject).setOnDismissListener((DialogInterface.OnDismissListener)new acmz(this));
+      ((bhpc)localObject).setOnDismissListener((DialogInterface.OnDismissListener)new acrb(this));
     }
   }
   
@@ -247,11 +247,11 @@ public final class GdtMotiveBrowsingFragment
     if (QLog.isColorLevel()) {
       QLog.d("GdtMotiveBrowsingFragment", 2, "DialogInterface onClick confirm");
     }
-    bgpa localbgpa = this.jdField_a_of_type_Bgpa;
-    if (localbgpa != null) {
-      localbgpa.dismiss();
+    bhpc localbhpc = this.jdField_a_of_type_Bhpc;
+    if (localbhpc != null) {
+      localbhpc.dismiss();
     }
-    this.jdField_a_of_type_Bgpa = ((bgpa)null);
+    this.jdField_a_of_type_Bhpc = ((bhpc)null);
   }
   
   private final void g()
@@ -268,11 +268,11 @@ public final class GdtMotiveBrowsingFragment
     if (QLog.isColorLevel()) {
       QLog.d("GdtMotiveBrowsingFragment", 2, "sendRewardedCallback");
     }
-    Object localObject1 = this.jdField_a_of_type_Acoe;
+    Object localObject1 = this.jdField_a_of_type_Acsg;
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject1 = ((acoe)localObject1).a();
+      localObject1 = ((acsg)localObject1).a();
       if (localObject1 != null)
       {
         localObject1 = ((GdtMotiveVideoPageData)localObject1).motiveBrowsingKey;
@@ -337,11 +337,11 @@ public final class GdtMotiveBrowsingFragment
   public void onDestroy()
   {
     super.onDestroy();
-    bgpa localbgpa = this.jdField_a_of_type_Bgpa;
-    if (localbgpa != null) {
-      localbgpa.dismiss();
+    bhpc localbhpc = this.jdField_a_of_type_Bhpc;
+    if (localbhpc != null) {
+      localbhpc.dismiss();
     }
-    this.jdField_a_of_type_Bgpa = ((bgpa)null);
+    this.jdField_a_of_type_Bhpc = ((bhpc)null);
   }
   
   public boolean shouldOverrideUrlLoading(@Nullable WebView paramWebView, @Nullable String paramString)
@@ -353,11 +353,11 @@ public final class GdtMotiveBrowsingFragment
     while (paramString == null) {
       return true;
     }
-    acnd localacnd = this.jdField_a_of_type_Acnd;
-    if (localacnd == null) {
+    acrf localacrf = this.jdField_a_of_type_Acrf;
+    if (localacrf == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewModel");
     }
-    if (!localacnd.a(paramString, this.jdField_a_of_type_Acoe)) {
+    if (!localacrf.a(paramString, this.jdField_a_of_type_Acsg)) {
       return super.shouldOverrideUrlLoading(paramWebView, paramString);
     }
     return true;

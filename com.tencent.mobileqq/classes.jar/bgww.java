@@ -1,45 +1,102 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-final class bgww
-  implements awnc<EmoticonPackage>
+class bgww
+  implements URLDrawableDownListener
 {
-  bgww(int paramInt1, int paramInt2, EditText paramEditText) {}
+  bgww(bgwv parambgwv, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    int j = 0;
-    char[] arrayOfChar1 = arpm.b(this.jdField_a_of_type_Int, this.b);
-    char[] arrayOfChar2 = new char[7];
-    arrayOfChar2[0] = '<';
-    arrayOfChar2[1] = '$';
-    arrayOfChar2[2] = arrayOfChar1[0];
-    arrayOfChar2[3] = arrayOfChar1[1];
-    arrayOfChar2[4] = arrayOfChar1[2];
-    arrayOfChar2[5] = arrayOfChar1[3];
-    arrayOfChar2[6] = '>';
-    int i = j;
-    if (paramEmoticonPackage != null)
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadCancelled ", new Object[0]));
+    }
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      i = j;
-      if (paramEmoticonPackage.isAPNG == 2)
-      {
-        arrayOfChar2[1] = 'ǿ';
-        i = j;
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
     }
-    while (i < arrayOfChar2.length)
-    {
-      if (arrayOfChar2[i] == 0) {
-        arrayOfChar2[i] = 'Ā';
-      }
-      i += 1;
+    bdll.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadFailed ", new Object[0]));
     }
-    i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    if (paramThrowable == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+    {
+      bdll.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      return;
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    if (paramInterruptedException == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
+    {
+      bdll.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      return;
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadProgressed progress=%d", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadSuccessed ", new Object[0]));
+    }
+    this.jdField_a_of_type_Bgwv.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    bdll.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 

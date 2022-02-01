@@ -1,96 +1,47 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class qsd
-  extends qqt
+public abstract class qsd
+  extends Binder
+  implements qsc
 {
-  public qsd(Context paramContext, aobu paramaobu, snh paramsnh)
+  public static qsc a(IBinder paramIBinder)
   {
-    super(paramContext, paramaobu, paramsnh);
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof qsc))) {
+      return (qsc)localIInterface;
+    }
+    return new qse(paramIBinder);
   }
   
-  public qqt a()
+  public IBinder asBinder()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).l().g().n().q().j().h();
-  }
-  
-  public qqt c(snh paramsnh, aobu paramaobu)
-  {
-    super.c(paramsnh, paramaobu);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.b = true;
     return this;
   }
   
-  public qqt d()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
-    }
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentGalleryBiu)))
+    switch (paramInt1)
     {
-      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs).setIsNeedAddTitle(true);
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout2.setOrientation(1);
-      new LinearLayout.LayoutParams(-2, -2);
-      localLinearLayout2.addView((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs);
-      localLinearLayout2.setPadding(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      localLinearLayout1.addView(localLinearLayout2);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+      return true;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public qqt e()
-  {
-    return null;
-  }
-  
-  public qqt g()
-  {
-    this.jdField_a_of_type_Qqs = new ComponentContentGalleryBiu(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qqt o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentGalleryBiu)))
+    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+    if (paramParcel1.readInt() != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs).setAdapter(this.jdField_a_of_type_Snh);
-      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs).setPosition(this.jdField_a_of_type_Int);
+      a(bool, paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
     }
-    return this;
   }
 }
 

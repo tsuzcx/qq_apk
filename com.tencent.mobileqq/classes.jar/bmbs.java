@@ -1,90 +1,157 @@
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.os.Build.VERSION;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class bmbs
-  extends bmbq
+  extends RemoteCommand
 {
-  public bmbs(boolean paramBoolean)
+  private static Bundle jdField_a_of_type_AndroidOsBundle;
+  boolean jdField_a_of_type_Boolean;
+  
+  public bmbs(String paramString, boolean paramBoolean)
   {
-    super(paramBoolean);
+    super(paramString);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int a()
+  public static Bundle a(Bundle paramBundle)
   {
-    return 3;
-  }
-  
-  protected void a()
-  {
-    this.jdField_c_of_type_Float = 90.0F;
-  }
-  
-  public int b()
-  {
-    return 2;
-  }
-  
-  protected void b()
-  {
-    Object localObject = bmiw.a().a();
-    if ((localObject == null) || (((ArrayList)localObject).size() != 2)) {}
-    do
+    try
     {
-      return;
-      float[] arrayOfFloat = (float[])((ArrayList)localObject).get(0);
-      if (arrayOfFloat != null)
-      {
-        this.jdField_a_of_type_Int = (arrayOfFloat.length / 3);
-        this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-        this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
-        this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-      }
-      localObject = (float[])((ArrayList)localObject).get(1);
-    } while (localObject == null);
-    this.jdField_b_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(localObject.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.jdField_b_of_type_JavaNioFloatBuffer.put((float[])localObject);
-    this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+      Bundle localBundle = jdField_a_of_type_AndroidOsBundle;
+      jdField_a_of_type_AndroidOsBundle = paramBundle;
+      return localBundle;
+    }
+    finally
+    {
+      paramBundle = finally;
+      throw paramBundle;
+    }
   }
   
-  public void c()
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_b_of_type_Float > 90.0F) {
-      this.jdField_b_of_type_Float = 90.0F;
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bmbs("cacomicetinfo", true));
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.addCategory("android.intent.category.LAUNCHER");
+    localIntent.addFlags(268435456);
+    tzq.a(localIntent, paramQQAppInterface, BaseApplication.getContext(), paramString, -1);
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (aody)paramQQAppInterface.getManager(56);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.b(paramString) != null;
+    }
+    return false;
+  }
+  
+  private Bundle b(Bundle paramBundle)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke cannot get QQAppInterface");
+      }
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    String str = paramBundle.getString("cacomicetinfo");
+    if ("Remotecall_getPublicAccountState".equals(str))
+    {
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        boolean bool = a((QQAppInterface)localObject, paramBundle);
+        paramBundle = new Bundle();
+        paramBundle.putBoolean("state", bool);
+        return paramBundle;
+      }
+    }
+    else
+    {
+      if (!"Remotecall_showPublicAccountDetail".equals(str)) {
+        break label123;
+      }
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle)) {
+        a((QQAppInterface)localObject, paramBundle);
+      }
     }
     for (;;)
     {
-      if (this.d != 0.0F)
+      return null;
+      label123:
+      if ("Remotecall_getUserStatus".equals(str))
       {
-        float f = (float)(Math.toDegrees(Math.atan(this.d)) * 2.0D);
-        if (Build.VERSION.SDK_INT >= 14) {
-          Matrix.perspectiveM(this.jdField_b_of_type_ArrayOfFloat, 0, f, this.e, 1.0F, 500.0F);
+        paramBundle = new Bundle();
+        if (VipUtils.b((QQAppInterface)localObject)) {
+          paramBundle.putInt("userStatus", 3);
         }
-        Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, -2.0F);
+        for (;;)
+        {
+          return paramBundle;
+          if (VipUtils.c((QQAppInterface)localObject)) {
+            paramBundle.putInt("userStatus", 2);
+          } else {
+            paramBundle.putInt("userStatus", 1);
+          }
+        }
       }
-      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_b_of_type_Float, 1.0F, 0.0F, 0.0F);
-      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_c_of_type_Float, 0.0F, 1.0F, 0.0F);
-      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, 0.0F, 1.0F);
-      if (this.jdField_a_of_type_Bmbr != null) {
-        this.jdField_a_of_type_Bmbr.a((int)this.jdField_f_of_type_Float, -this.jdField_b_of_type_Float, -this.jdField_c_of_type_Float, this.d);
+      if ("Remotecall_initQbPlugin".equals(str)) {
+        try
+        {
+          QWalletHelper.preloadQWallet((AppInterface)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.i("VipComicRemoteCommand", 2, "preloadQWallet()");
+          }
+          paramBundle = new Bundle();
+          paramBundle.putBoolean("success", true);
+          return paramBundle;
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      } else if ("Remotecall_showComicBar".equals(str))
+      {
+        if (((QQAppInterface)localObject).getHandler(Conversation.class) != null) {
+          a(paramBundle);
+        }
       }
-      return;
-      if (this.jdField_b_of_type_Float < -90.0F) {
-        this.jdField_b_of_type_Float = -90.0F;
+      else if (QLog.isColorLevel()) {
+        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke unknow invokeCmd");
       }
     }
   }
   
-  public void d()
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.jdField_f_of_type_Int);
-    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, a(), 0);
-    GLES20.glDrawArrays(4, 0, c());
+    paramBundle = b(paramBundle);
+    if (paramOnInvokeFinishLinstener != null) {
+      paramOnInvokeFinishLinstener.onInvokeFinish(paramBundle);
+    }
+    return paramBundle;
   }
 }
 

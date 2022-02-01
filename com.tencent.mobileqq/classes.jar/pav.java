@@ -1,56 +1,33 @@
-import android.graphics.Color;
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pav
+  implements AladdinConfigHandler
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
-  
-  public View a(pan parampan, int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    View localView = paramView;
-    if (paramView == null)
+    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localView = parampan.a().inflate(2131560088, paramViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379957));
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint() != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAd_feeds")) {
+        bnrf.a("ad_feeds_proteus_offline_bid", str2);
       }
-      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131380894);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b = localView.findViewById(2131380880);
-      this.b.setVisibility(0);
     }
-    localView.setTag(this);
-    return localView;
+    return true;
   }
   
-  public void a(pan parampan, int paramInt)
+  public void onWipeConfig(int paramInt)
   {
-    if (parampan == null) {
-      return;
-    }
-    pay localpay = (pay)parampan.getItem(paramInt);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str = anni.a(2131711482);
-    if (localpay.a != null) {}
-    for (parampan = String.valueOf(parampan.a().a(localpay.a.commentId));; parampan = "")
-    {
-      localSpannableStringBuilder.append(str + " ");
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#262626")), 0, str.length(), 34);
-      localSpannableStringBuilder.append(parampan);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#737373")), str.length(), localSpannableStringBuilder.length(), 34);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-      return;
-    }
+    bnrf.a("ad_feeds_proteus_offline_bid", "0");
   }
 }
 

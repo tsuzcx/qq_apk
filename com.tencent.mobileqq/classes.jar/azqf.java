@@ -1,45 +1,84 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View;
-
 public class azqf
-  extends azpu
+  extends azqg
+  implements azqr
 {
-  private boolean a;
+  public int a;
+  public azqd a;
+  public azqt a;
+  public boolean a;
+  public boolean b = true;
   
-  public azqf(azlw paramazlw, azfe paramazfe)
+  public azqf()
   {
-    super(paramazlw, paramazfe);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Azqt = new azqt();
+    this.jdField_a_of_type_Azqd = new azqd();
   }
   
   public String a()
   {
-    return "VasProfileHeaderV5Component";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nPicFowardInfo");
+    if (this.jdField_a_of_type_Azqt != null) {}
+    for (String str = this.jdField_a_of_type_Azqt.a();; str = "\n |-upInfo=null")
     {
-      VasProfileQVipV5View localVasProfileQVipV5View = new VasProfileQVipV5View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
-      localVasProfileQVipV5View.setProfileArgs(this.jdField_a_of_type_Boolean);
-      localVasProfileQVipV5View.setClickListener(this);
-      localVasProfileQVipV5View.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipV5View;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+      localStringBuilder.append(str);
+      localStringBuilder.append(this.jdField_a_of_type_Azqd);
+      return localStringBuilder.toString();
     }
   }
   
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public boolean a()
   {
-    Intent localIntent = paramBaseActivity.getIntent();
-    if (localIntent != null) {
-      this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_from_ark_babyq", false);
+    if (this.jdField_a_of_type_Azqt == null)
+    {
+      a("PicFowardInfo.check", "upInfo == null");
+      return false;
     }
-    super.a(paramBaseActivity, paramBundle);
+    if (((this.jdField_a_of_type_Azqt.b == 1000) || (this.jdField_a_of_type_Azqt.b == 1020) || (this.jdField_a_of_type_Azqt.b == 1004)) && (this.jdField_a_of_type_Azqt.d == null))
+    {
+      a("PicFowardInfo.check", "secondId invalid,uinType:" + this.jdField_a_of_type_Azqt.b + ",secondId:" + this.jdField_a_of_type_Azqt.d);
+      return false;
+    }
+    if (this.jdField_a_of_type_Azqt.jdField_g_of_type_Int == -1)
+    {
+      a("PicFowardInfo.check", "protocolType invalid,protocolType:" + this.jdField_a_of_type_Azqt.jdField_g_of_type_Int);
+      return false;
+    }
+    if (!bhmi.b(this.jdField_a_of_type_Azqt.jdField_g_of_type_JavaLangString))
+    {
+      if (this.jdField_a_of_type_Azqd == null)
+      {
+        a("PicFowardInfo.check", "downInfo == null");
+        return false;
+      }
+      if (!this.jdField_a_of_type_Azqd.a())
+      {
+        this.jdField_a_of_type_Azqh = this.jdField_a_of_type_Azqd.jdField_a_of_type_Azqh;
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public azqd getPicDownloadInfo()
+  {
+    return this.jdField_a_of_type_Azqd;
+  }
+  
+  public azqt getPicUploadInfo()
+  {
+    return this.jdField_a_of_type_Azqt;
+  }
+  
+  public boolean isSendFromLocal()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return a();
   }
 }
 

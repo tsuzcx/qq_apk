@@ -1,20 +1,31 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
 
-public class bmrt
-  implements QQPermissionCallback
+public abstract class bmrt
 {
-  public bmrt(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(Bundle paramBundle)
   {
-    bglp.b(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("_mqqpay_baseapi_appid");
+    this.c = paramBundle.getString("_mqqpay_baseapi_apptype");
+    this.b = paramBundle.getString("_mqqpay_baseapi_sdkversion");
+    this.d = paramBundle.getString("_mqqpay_baseapi_apiname");
+    this.jdField_a_of_type_Int = paramBundle.getInt("_mqqpay_baseapi_apimark");
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String toString()
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append("ai=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&sv=" + this.b);
+    localStringBuilder.append("&at=" + this.c);
+    localStringBuilder.append("&an=" + this.d);
+    localStringBuilder.append("&am=" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

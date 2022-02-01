@@ -1,9 +1,4 @@
-import android.view.View;
-
-public abstract interface bbdp
-{
-  public abstract void a(bbdo parambbdo, View paramView);
-}
+class bbdp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

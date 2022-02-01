@@ -1,14 +1,22 @@
-public class allq
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
+
+class allq
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  allq(aljw paramaljw, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
-  public allq(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    aoie.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.c, aljw.a(this.jdField_a_of_type_Aljw));
+    bdll.b(null, "CliOper", "", "", "theme", "0X8007233", 0, 0, String.valueOf(this.c), "", "", "");
+    aljw.a(this.jdField_a_of_type_Aljw).obtainMessage(16).sendToTarget();
+    bdll.a(aljw.a(this.jdField_a_of_type_Aljw).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 15, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

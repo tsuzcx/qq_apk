@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.qphone.base.util.QLog;
 
-class akyo
-  implements View.OnClickListener
+public class akyo
+  implements MediaPlayer.OnPreparedListener
 {
-  akyo(akyh paramakyh) {}
+  public akyo(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    amrr localamrr = amrr.a();
-    if (localamrr != null)
-    {
-      localamrr.a(akyh.a(this.a));
-      localamrr.a();
-      amrr.i();
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
     }
-    bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
+    bhkm.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
+    }
+    paramMediaPlayer.start();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
   }
 }
 

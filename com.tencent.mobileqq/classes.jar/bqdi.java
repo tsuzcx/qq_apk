@@ -1,6 +1,19 @@
-public abstract interface bqdi
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+
+public final class bqdi
+  implements Parcelable.Creator<EditRecordVideoSource>
 {
-  public abstract void a();
+  public EditRecordVideoSource a(Parcel paramParcel)
+  {
+    return new EditRecordVideoSource(paramParcel);
+  }
+  
+  public EditRecordVideoSource[] a(int paramInt)
+  {
+    return new EditRecordVideoSource[paramInt];
+  }
 }
 
 

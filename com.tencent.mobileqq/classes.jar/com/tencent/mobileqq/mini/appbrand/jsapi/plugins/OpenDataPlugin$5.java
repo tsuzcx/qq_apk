@@ -5,10 +5,9 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
-import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 import org.json.JSONObject;
 
 class OpenDataPlugin$5
@@ -28,6 +27,7 @@ class OpenDataPlugin$5
     }
     if (paramBoolean)
     {
+      JSONObject localJSONObject;
       for (;;)
       {
         try
@@ -35,29 +35,28 @@ class OpenDataPlugin$5
           Object localObject = (CloudStorage.StModifyFriendInteractiveStorageRsp)paramJSONObject.get("response");
           int i = paramJSONObject.getInt("retCode");
           localObject = paramJSONObject.getString("errMsg");
-          String str = paramJSONObject.optString("details", "");
-          paramJSONObject = new JSONObject();
-          paramJSONObject.put("errMsg", localObject);
-          paramJSONObject.put("errCode", i);
-          paramJSONObject.put("details", str);
+          paramJSONObject = paramJSONObject.optString("details", "");
+          localJSONObject = new JSONObject();
+          localJSONObject.put("errMsg", localObject);
+          localJSONObject.put("errCode", i);
+          localJSONObject.put("details", paramJSONObject);
           if (i != 0) {
-            break label464;
+            break label463;
           }
-          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "modifyFriendInteractiveStorage", paramJSONObject, this.val$callbackId);
-          if (((this.this$0.jsPluginEngine instanceof GameJsPluginEngine)) && (((GameJsPluginEngine)this.this$0.jsPluginEngine).getGameJsRuntime(1) != null))
+          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "modifyFriendInteractiveStorage", localJSONObject, this.val$callbackId);
+          if (this.this$0.isMiniGameRuntime())
           {
-            localObject = ((GameJsPluginEngine)this.this$0.jsPluginEngine).getGameJsRuntime(1);
-            if (localObject != null)
+            if (OpenDataPlugin.access$000(this.this$0).get("onInteractiveStorageModified") != null)
             {
-              paramJSONObject.put("key", this.val$key);
-              ((GameJsRuntime)localObject).evaluateSubcribeJS("onInteractiveStorageModified", paramJSONObject.toString(), -1);
+              localJSONObject.put("key", this.val$key);
+              ((JsRuntime)OpenDataPlugin.access$000(this.this$0).get("onInteractiveStorageModified")).evaluateSubcribeJS("onInteractiveStorageModified", localJSONObject.toString(), -1);
             }
             if ((TextUtils.isEmpty(this.val$title)) || (this.val$quiet.booleanValue())) {
               break;
             }
             paramJSONObject = this.val$object + this.val$action;
             localObject = "已" + this.val$action + "\n马上QQ告诉好友？";
-            OpenDataPlugin.access$100(this.this$0, paramJSONObject, (String)localObject, "告诉他", Boolean.valueOf(true), "下次吧", new OpenDataPlugin.5.1(this), new OpenDataPlugin.5.2(this), new OpenDataPlugin.5.3(this));
+            OpenDataPlugin.access$200(this.this$0, paramJSONObject, (String)localObject, "告诉他", Boolean.valueOf(true), "下次吧", new OpenDataPlugin.5.1(this), new OpenDataPlugin.5.2(this), new OpenDataPlugin.5.3(this));
             return;
           }
         }
@@ -69,13 +68,13 @@ class OpenDataPlugin$5
           return;
         }
         if ((this.this$0.jsPluginEngine instanceof JsPluginEngine)) {
-          this.this$0.jsPluginEngine.appBrandRuntime.evaluateServiceSubcribeJS("onInteractiveStorageModified", paramJSONObject.toString());
+          this.this$0.jsPluginEngine.appBrandRuntime.evaluateServiceSubcribeJS("onInteractiveStorageModified", localJSONObject.toString());
         }
       }
-      label464:
+      label463:
       GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE retCode != 0");
       GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error retCode != 0");
-      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", paramJSONObject, this.val$callbackId);
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", localJSONObject, this.val$callbackId);
       return;
     }
     GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");

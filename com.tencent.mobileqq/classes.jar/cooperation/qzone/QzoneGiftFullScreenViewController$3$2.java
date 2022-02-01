@@ -1,29 +1,29 @@
 package cooperation.qzone;
 
 import android.view.View;
-import blts;
-import bltu;
-import bltv;
-import bltw;
+import bmuu;
+import bmuw;
+import bmux;
+import bmuy;
 import com.tencent.image.URLDrawable;
 import java.util.List;
 
 public class QzoneGiftFullScreenViewController$3$2
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$2(bltu parambltu) {}
+  public QzoneGiftFullScreenViewController$3$2(bmuw parambmuw) {}
   
   public void run()
   {
     URLDrawable.resume();
-    ((View)this.a.jdField_a_of_type_Blts.a).setBackgroundColor(0);
-    blts.a(this.a.jdField_a_of_type_Blts);
-    this.a.jdField_a_of_type_Bltv.a();
-    if (blts.a(this.a.jdField_a_of_type_Blts).size() > 0)
+    ((View)this.a.jdField_a_of_type_Bmuu.a).setBackgroundColor(0);
+    bmuu.a(this.a.jdField_a_of_type_Bmuu);
+    this.a.jdField_a_of_type_Bmux.a();
+    if (bmuu.a(this.a.jdField_a_of_type_Bmuu).size() > 0)
     {
-      bltw localbltw = (bltw)blts.a(this.a.jdField_a_of_type_Blts).get(0);
-      this.a.jdField_a_of_type_Blts.a(localbltw.jdField_a_of_type_JavaLangString, localbltw.b, localbltw.jdField_a_of_type_Boolean, localbltw.jdField_a_of_type_Bltv);
-      blts.a(this.a.jdField_a_of_type_Blts).remove(localbltw);
+      bmuy localbmuy = (bmuy)bmuu.a(this.a.jdField_a_of_type_Bmuu).get(0);
+      this.a.jdField_a_of_type_Bmuu.a(localbmuy.jdField_a_of_type_JavaLangString, localbmuy.b, localbmuy.jdField_a_of_type_Boolean, localbmuy.jdField_a_of_type_Bmux);
+      bmuu.a(this.a.jdField_a_of_type_Bmuu).remove(localbmuy);
     }
   }
 }

@@ -20,9 +20,9 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
-import bkip;
-import bkow;
-import bkpk;
+import bljs;
+import blpz;
+import blqn;
 import com.tencent.mobileqq.R.styleable;
 
 public class Switch
@@ -37,7 +37,7 @@ public class Switch
   private Layout jdField_a_of_type_AndroidTextLayout;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-  private bkpk jdField_a_of_type_Bkpk;
+  private blqn jdField_a_of_type_Blqn;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -64,7 +64,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035060);
+    this(paramContext, paramAttributeSet, 2131035065);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -72,7 +72,7 @@ public class Switch
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = getResources();
     this.jdField_a_of_type_AndroidTextTextPaint.density = localResources.getDisplayMetrics().density;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755960);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755961);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(5);
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(7);
     this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getText(4);
@@ -96,7 +96,7 @@ public class Switch
     this.f = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new bkow(this));
+    setOnClickListener(new blpz(this));
   }
   
   private int a()
@@ -110,8 +110,8 @@ public class Switch
   
   private Layout a(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_Bkpk != null) {
-      paramCharSequence = this.jdField_a_of_type_Bkpk.getTransformation(paramCharSequence, this);
+    if (this.jdField_a_of_type_Blqn != null) {
+      paramCharSequence = this.jdField_a_of_type_Blqn.getTransformation(paramCharSequence, this);
     }
     for (;;)
     {
@@ -432,8 +432,8 @@ public class Switch
       if (!paramContext.getBoolean(0, false)) {
         break label129;
       }
-      this.jdField_a_of_type_Bkpk = new bkip(getContext());
-      this.jdField_a_of_type_Bkpk.a(true);
+      this.jdField_a_of_type_Blqn = new bljs(getContext());
+      this.jdField_a_of_type_Blqn.a(true);
     }
     for (;;)
     {
@@ -442,7 +442,7 @@ public class Switch
       this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
       break;
       label129:
-      this.jdField_a_of_type_Bkpk = null;
+      this.jdField_a_of_type_Blqn = null;
     }
   }
   

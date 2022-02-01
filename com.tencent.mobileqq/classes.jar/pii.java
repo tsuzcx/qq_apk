@@ -1,57 +1,73 @@
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
-public class pii
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+class pii
+  implements View.OnClickListener
 {
-  public static String a = "CommentFamilyConfigHandler";
+  pii(pih parampih, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = phv.a(paramString);
-    Object localObject = paramString.keySet();
-    for (;;)
+    Object localObject1 = this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
+    Object localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      String str1;
-      String str2;
-      try
+      localObject2 = this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
-            bmqa.m(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
-        bmqa.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
+        localObject1 = new Intent(this.jdField_a_of_type_Pih.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject1).putExtra("url", (String)localObject2);
+        this.jdField_a_of_type_Pih.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
       }
     }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    super.onWipeConfig(paramInt);
-    bmqa.m(0);
+    for (;;)
+    {
+      this.jdField_a_of_type_Pih.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ReadInJoyPicWaterFallFragment.c);
+      pfa.a().a(this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID, System.currentTimeMillis());
+      localObject1 = oxw.a(this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 16, this.jdField_a_of_type_Pih.a(), (ArticleInfo)this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      try
+      {
+        ((JSONObject)localObject1).put("card_type", 12);
+        localObject2 = new oxy(this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+        ((oxy)localObject2).e = String.valueOf(this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+        ((oxy)localObject2).f = String.valueOf(this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+        ((oxy)localObject2).g = ((JSONObject)localObject1).toString();
+        if (this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
+          ((oxy)localObject2).a = String.valueOf(this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
+        }
+        ((oxy)localObject2).b = "0X8008E2F";
+        ((oxy)localObject2).c = "0X8008E2F";
+        oxw.a((oxy)localObject2);
+        ReadInJoyPicWaterFallFragment.a((ArticleInfo)this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pih.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 1009);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject2 = new Intent(this.jdField_a_of_type_Pih.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      this.jdField_a_of_type_Pih.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+    }
   }
 }
 

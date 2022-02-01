@@ -1,43 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
 
-class sdd
-  extends skd
+public class sdd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sdd(sce paramsce) {}
+  public sdd(BezierSideBarView paramBezierSideBarView, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    sce.a(this.a).a(sce.b(this.a));
-    paramActionSheetItem = new Bundle();
-    paramActionSheetItem.putString("title", paramVideoInfo.c);
-    paramActionSheetItem.putString("desc", paramVideoInfo.d);
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com"))) {
-      paramActionSheetItem.putString("detail_url", paramVideoInfo.n);
+    BezierSideBarView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.invalidate();
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener.onAnimationUpdate(paramValueAnimator);
     }
-    for (;;)
-    {
-      paramString = new ArrayList(1);
-      paramString.add(paramVideoInfo.b);
-      paramActionSheetItem.putStringArrayList("image_url", paramString);
-      paramActionSheetItem.putLong("req_share_id", 0L);
-      bltb.a(sce.a(this.a), sce.a(this.a), paramActionSheetItem, null, 10001);
-      return;
-      paramActionSheetItem.putString("detail_url", sce.a(paramString, paramVideoInfo) + "&sourcefrom=1");
-    }
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2;
   }
 }
 

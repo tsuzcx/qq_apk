@@ -1,13 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.widget.LinearLayout;
 
-public abstract interface ruq
+class ruq
+  implements ruv
 {
-  public abstract long a();
+  ruq(rup paramrup, rot paramrot) {}
   
-  public abstract View a();
-  
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  public void a()
+  {
+    if ((rup.a(this.jdField_a_of_type_Rup) instanceof tow)) {
+      ((tow)rup.a(this.jdField_a_of_type_Rup)).a = true;
+    }
+    if (this.jdField_a_of_type_Rup.a() != 3)
+    {
+      this.jdField_a_of_type_Rot.e.setVisibility(8);
+      return;
+    }
+    rup.a(this.jdField_a_of_type_Rup, true, false);
+  }
 }
 
 

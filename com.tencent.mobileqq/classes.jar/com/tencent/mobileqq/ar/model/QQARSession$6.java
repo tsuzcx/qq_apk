@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.model;
 
-import apeo;
+import apse;
 
 public class QQARSession$6
   implements Runnable
 {
-  public QQARSession$6(apeo paramapeo) {}
+  public QQARSession$6(apse paramapse) {}
   
   public void run()
   {
-    apeo.a(this.this$0, false);
+    apse.a(this.this$0, false);
   }
 }
 

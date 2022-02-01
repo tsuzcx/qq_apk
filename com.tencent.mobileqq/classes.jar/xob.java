@@ -1,29 +1,52 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xob
+class xob
   implements View.OnClickListener
 {
-  public xob(VideoViewVideoHolder paramVideoViewVideoHolder, ErrorMessage paramErrorMessage) {}
+  xob(xoa paramxoa) {}
   
   public void onClick(View paramView)
   {
-    if (!bgnt.g(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext())) {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131693946, 0).a();
-    }
-    for (;;)
+    String str1;
+    if ((xoa.a(this.a) != null) && (xoa.a(this.a).a()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a(10, true, "retry " + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
+      xoa.a(this.a).c();
+      int i;
+      if (xoa.a(this.a) != null)
+      {
+        i = yup.a(xoa.a(this.a).a);
+        if (!this.a.a()) {
+          break label128;
+        }
+      }
+      label128:
+      for (str1 = "1";; str1 = "2")
+      {
+        yup.a("home_page", "cancel_reply", i, 0, new String[] { str1, yup.a(xoa.a(this.a)), "5", xoa.a(this.a) });
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        i = 0;
+        break;
+      }
+    }
+    this.a.a();
+    if (this.a.a())
+    {
+      str1 = "2";
+      label154:
+      if (!this.a.b()) {
+        break label199;
+      }
+    }
+    label199:
+    for (String str2 = "2";; str2 = "1")
+    {
+      yup.a("play_video", "close_reply", 0, 3, new String[] { str1, str2 });
+      break;
+      str1 = "1";
+      break label154;
     }
   }
 }

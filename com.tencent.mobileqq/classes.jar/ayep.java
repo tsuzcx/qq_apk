@@ -1,48 +1,38 @@
-public final class ayep
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ayep
+  implements View.OnClickListener
 {
-  public static final String a(String paramString1, String paramString2)
-  {
-    Object localObject2 = null;
-    int i = paramString1.indexOf("?");
-    Object localObject1 = localObject2;
-    if (i != -1)
-    {
-      i = paramString1.indexOf(paramString2 + "=", i + 1);
-      localObject1 = localObject2;
-      if (i != -1)
-      {
-        int j = paramString1.indexOf("&", paramString2.length() + i + 1);
-        if (j == -1) {
-          break label93;
-        }
-        localObject1 = paramString1.substring(i + paramString2.length() + 1, j);
-      }
-    }
-    return localObject1;
-    label93:
-    return paramString1.substring(paramString2.length() + i + 1);
-  }
+  ayep(ayeo paramayeo, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public static final String a(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    int i = paramString1.indexOf("?");
-    if (i != -1)
+    Object localObject = paramView.getContext();
+    if ((localObject instanceof BaseActivity))
     {
-      i = paramString1.indexOf(paramString2 + "=", i + 1);
-      if (i != -1)
-      {
-        int j = paramString1.indexOf("&", paramString2.length() + i + 1);
-        if (j != -1) {
-          return paramString1.substring(0, i) + paramString2 + "=" + paramString3 + paramString1.substring(j);
-        }
-        return paramString1.substring(0, i) + paramString2 + "=" + paramString3;
-      }
-      if (paramString1.lastIndexOf("&") == paramString1.length() - 1) {
-        return paramString1 + paramString2 + "=" + paramString3;
-      }
-      return paramString1 + "&" + paramString2 + "=" + paramString3;
+      localObject = (BaseActivity)localObject;
+      if ((((BaseActivity)localObject).app == null) || (this.jdField_a_of_type_Long != Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin()))) {}
     }
-    return paramString1 + "?" + paramString2 + "=" + paramString3;
+    for (int i = 2;; i = 3)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("&from=3");
+      ((StringBuilder)localObject).append("&mode=" + i);
+      ((StringBuilder)localObject).append("&now_id=" + this.b);
+      ((StringBuilder)localObject).append("&now_user_type=" + this.c);
+      localObject = "mqq://card/show_pslcard/?uin=" + this.jdField_a_of_type_Long + "&card_type=nearby" + ((StringBuilder)localObject).toString();
+      paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject)));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

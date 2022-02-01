@@ -1,24 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Handler;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1.1;
+import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
 
 public class bgbt
-  implements Animator.AnimatorListener
 {
-  public bgbt(ShakePicView paramShakePicView) {}
+  public float a;
+  public int a;
+  public float b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public bgbt(PinyinTextView paramPinyinTextView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  private void a()
   {
-    this.a.a.postDelayed(new ShakePicView.1.1(this), 160L);
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.jdField_a_of_type_Int = 0;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

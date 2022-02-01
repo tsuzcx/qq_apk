@@ -1,6 +1,17 @@
-public abstract interface bmkf
+class bmkf
+  implements bdhy
 {
-  public abstract void a(boolean paramBoolean);
+  bmkf(bmkd parambmkd) {}
+  
+  public void a()
+  {
+    bmkd.b(this.a);
+  }
+  
+  public void b()
+  {
+    bmkd.a(this.a, 1);
+  }
 }
 
 

@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bmpi
-  implements View.OnTouchListener
+public final class bmpi
 {
-  bmpi(bmph parambmph) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static int a()
   {
-    this.a.a();
-    return false;
+    return bmqu.a(BaseApplicationImpl.context);
+  }
+  
+  public static boolean a()
+  {
+    return (bmqu.b(BaseApplicationImpl.context) == 1) || (bmqu.c(BaseApplicationImpl.context));
   }
 }
 

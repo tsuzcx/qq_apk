@@ -1,15 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 
 class bpii
-  implements ValueAnimator.AnimatorUpdateListener
+  extends RecyclerView.ViewHolder
 {
-  bpii(bpif parambpif) {}
+  final GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+  final LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bpii(View paramView)
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.k();
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380612);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368488));
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable());
+    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131362263));
   }
 }
 

@@ -1,12 +1,23 @@
-public abstract interface rte
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+
+class rte
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  rte(rsx paramrsx) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(rtd<String> paramrtd);
-  
-  public abstract void b(String paramString);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    rsx.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if ((rsx.a(this.a) != null) && (rsx.a(this.a).b()) && (rsx.b(this.a)) && (!rsx.c(this.a)) && (rsx.a(this.a)) && (!rsx.d(this.a))) {
+      rsx.a(this.a).c();
+    }
+    if (rsx.a(this.a) != null) {
+      rsx.a(this.a).f();
+    }
+    rsx.a(this.a, false);
+  }
 }
 
 

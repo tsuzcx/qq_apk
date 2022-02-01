@@ -2,10 +2,10 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
 import android.os.Message;
-import arro;
-import arrp;
-import arss;
-import arti;
+import ashc;
+import ashd;
+import asig;
+import asiw;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$18
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$18(arti paramarti, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, arro paramarro, EntityManager paramEntityManager, arss paramarss, QQAppInterface paramQQAppInterface) {}
+  public MessengerService$IncomingHandler$18(asiw paramasiw, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, ashc paramashc, EntityManager paramEntityManager, asig paramasig, QQAppInterface paramQQAppInterface) {}
   
   public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
@@ -101,7 +101,7 @@ public class MessengerService$IncomingHandler$18
       if (paramList2 != null) {
         paramList2.obtainMessage(10).sendToTarget();
       }
-      paramList2 = (arrp)this.val$qqApp.getManager(103);
+      paramList2 = (ashd)this.val$qqApp.getManager(103);
     } while (paramList2 == null);
     paramList2.b(paramList1);
   }

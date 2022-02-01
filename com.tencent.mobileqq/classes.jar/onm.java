@@ -1,30 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.1;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class onm
-  extends BroadcastReceiver
+public class onm
+  implements pql
 {
-  onm(onl paramonl) {}
+  onm(onk paramonk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (onl.a(this.a) != null))
-      {
-        if (!paramContext.equals("homekey")) {
-          break label55;
-        }
-        onl.a(this.a).a();
-      }
+    if ((paramString1 != null) && (paramString1.equals(paramString1))) {
+      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.2(this));
     }
-    label55:
-    while (!paramContext.equals("recentapps")) {
+    QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, "setNickName infoFailed. uin:" + paramString1 + " errMsg:" + paramString2);
+  }
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    if ((paramString != null) && (paramString.equals(paramString)) && (paramReadInJoyUserInfo != null)) {
+      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.1(this, paramReadInJoyUserInfo));
+    }
+    if (paramReadInJoyUserInfo != null) {}
+    for (paramReadInJoyUserInfo = paramReadInJoyUserInfo.nick;; paramReadInJoyUserInfo = "null")
+    {
+      QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setNickName infoSuccess nick = ", paramReadInJoyUserInfo, "  uin:" + paramString });
       return;
     }
-    onl.a(this.a).b();
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.pts.core.lite;
 
 import android.text.TextUtils;
 import android.view.View;
+import com.tencent.pts.core.PTSComposer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -31,15 +32,15 @@ public class DefaultPTSLiteEventListener
     return localStringBuilder1.toString();
   }
   
-  public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer) {}
   
-  public void onScrollViewItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  public void onScrollViewItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer) {}
   
-  public void onSwiperDragTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  public void onSwiperDragTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer) {}
   
-  public void onSwiperItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  public void onSwiperItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer) {}
   
-  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer) {}
 }
 
 

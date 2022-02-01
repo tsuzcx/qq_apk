@@ -1,42 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-public class wlu
-  extends wno
+final class wlu
+  implements DialogInterface.OnClickListener
 {
-  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
-  wnp jdField_a_of_type_Wnp;
+  wlu(List paramList) {}
   
-  public wlu(qqstory_service.RspAddFeedComment paramRspAddFeedComment, wnp paramwnp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramRspAddFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
-    this.jdField_a_of_type_Wnp = paramwnp;
-  }
-  
-  public wlu(wnp paramwnp)
-  {
-    this.jdField_a_of_type_Wnp = paramwnp;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Wnp.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Wnp.a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Wnp.a(paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Wnp.a(paramBoolean, paramBundle);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      wlt.a((String)localIterator.next());
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

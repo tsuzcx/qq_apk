@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.troop;
 
-import amfk;
-import amfo;
-import amfs;
-import aong;
+import amre;
+import amri;
+import amrm;
+import apaw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.CommonlyUsedTroop;
@@ -20,7 +20,7 @@ import java.util.List;
 class ContactsTroopAdapter$UpdateAfterLoadDataUIRunnable
   implements Runnable
 {
-  aong jdField_a_of_type_Aong;
+  apaw jdField_a_of_type_Apaw;
   TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
   ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList;
   List<DiscussionInfo> jdField_a_of_type_JavaUtilList;
@@ -54,7 +54,7 @@ class ContactsTroopAdapter$UpdateAfterLoadDataUIRunnable
       if (localObject1 == null) {
         break label327;
       }
-      Collections.sort((List)localObject1, new amfo());
+      Collections.sort((List)localObject1, new amri());
       localObject1 = ((List)localObject1).iterator();
     }
     Object localObject3;
@@ -67,7 +67,7 @@ class ContactsTroopAdapter$UpdateAfterLoadDataUIRunnable
       localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(((CommonlyUsedTroop)localObject2).troopUin);
       if (localObject3 != null)
       {
-        this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_Aong);
+        this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_Apaw);
         this.this$0.b.add(localObject3);
         continue;
         i = 0;
@@ -85,28 +85,28 @@ class ContactsTroopAdapter$UpdateAfterLoadDataUIRunnable
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (TroopInfo)((Iterator)localObject2).next();
-      this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_Aong);
-      int j = amfk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(((TroopInfo)localObject3).troopuin));
+      this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_Apaw);
+      int j = amre.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(((TroopInfo)localObject3).troopuin));
       if (((TroopInfo)localObject3).isQidianPrivateTroop())
       {
-        this.this$0.g.add(new amfs(j, (Entity)localObject3));
+        this.this$0.g.add(new amrm(j, (Entity)localObject3));
       }
       else
       {
         if (((((TroopInfo)localObject3).dwAdditionalFlag & 1L) == 1L) || ((((TroopInfo)localObject3).troopowneruin != null) && (((TroopInfo)localObject3).troopowneruin.equals(localObject1)))) {
-          this.this$0.c.add(new amfs(j, (Entity)localObject3));
+          this.this$0.c.add(new amrm(j, (Entity)localObject3));
         }
         for (;;)
         {
           if (((TroopInfo)localObject3).hasSetTroopName()) {
             break label602;
           }
-          this.this$0.f.add(new amfs(j, (Entity)localObject3));
+          this.this$0.f.add(new amrm(j, (Entity)localObject3));
           break;
           if ((((TroopInfo)localObject3).dwCmdUinUinFlag & 1L) == 1L) {
-            this.this$0.d.add(new amfs(j, (Entity)localObject3));
+            this.this$0.d.add(new amrm(j, (Entity)localObject3));
           } else {
-            this.this$0.e.add(new amfs(j, (Entity)localObject3));
+            this.this$0.e.add(new amrm(j, (Entity)localObject3));
           }
         }
       }
@@ -116,22 +116,22 @@ class ContactsTroopAdapter$UpdateAfterLoadDataUIRunnable
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (DiscussionInfo)((Iterator)localObject1).next();
-      localObject3 = (RecentUser)this.jdField_a_of_type_Aong.findRecentUserByUin(((DiscussionInfo)localObject2).uin, 3000);
+      localObject3 = (RecentUser)this.jdField_a_of_type_Apaw.findRecentUserByUin(((DiscussionInfo)localObject2).uin, 3000);
       ((DiscussionInfo)localObject2).lastMsgTime = ((RecentUser)localObject3).lastmsgtime;
       if (((RecentUser)localObject3).showUpTime != 0L) {
         this.this$0.b.add(localObject2);
       }
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equals(((DiscussionInfo)localObject2).ownerUin)) {
-        this.this$0.c.add(new amfs(1, (Entity)localObject2));
+        this.this$0.c.add(new amrm(1, (Entity)localObject2));
       }
       for (;;)
       {
         if (((DiscussionInfo)localObject2).hasRenamed()) {
           break label791;
         }
-        this.this$0.f.add(new amfs(1, (Entity)localObject2));
+        this.this$0.f.add(new amrm(1, (Entity)localObject2));
         break;
-        this.this$0.e.add(new amfs(1, (Entity)localObject2));
+        this.this$0.e.add(new amrm(1, (Entity)localObject2));
       }
     }
     if (QLog.isColorLevel()) {

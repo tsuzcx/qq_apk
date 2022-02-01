@@ -1,35 +1,64 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StNotice;
-import feedcloud.FeedCloudMeta.StOperation;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
 
 class vmj
-  implements View.OnClickListener
+  implements aaav<FeedCloudRead.StGetFeedListRsp>
 {
-  vmj(vmh paramvmh) {}
+  vmj(vmf paramvmf, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    if ((this.a.a != null) && (!TextUtils.isEmpty(this.a.a.operation.opUser.id.get())))
+    boolean bool = true;
+    QLog.d("QCircleContentModel", 1, "getSingleFeed onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean);
+    Object localObject;
+    if (paramStGetFeedListRsp != null)
     {
-      if (paramView.getId() != 2131369037) {
-        break label115;
+      vmf.a(this.jdField_a_of_type_Vmf).a(paramStGetFeedListRsp.feedAttchInfo.get());
+      vmf.a(this.jdField_a_of_type_Vmf).c(paramStGetFeedListRsp.adAttchInfo.get());
+      localObject = vmf.a(this.jdField_a_of_type_Vmf);
+      if (paramStGetFeedListRsp.isFinish.get() != 1) {
+        break label311;
       }
-      vrf.a(this.a.a.operation.opUser.id.get(), 17, 8);
+      paramBoolean = bool;
     }
     for (;;)
     {
-      uxo.a(this.a.a.operation.opUser.id.get(), this.a.a().clone().setElementIdStr("portrait"));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label115:
-      if (paramView.getId() == 2131379783) {
-        vrf.a(this.a.a.operation.opUser.id.get(), 17, 9);
+      ((aabu)localObject).a(paramBoolean);
+      if (paramStGetFeedListRsp.extInfo.has()) {
+        this.jdField_a_of_type_Vmf.a((FeedCloudCommon.StCommonExt)paramStGetFeedListRsp.extInfo.get());
+      }
+      if (paramStGetFeedListRsp.busiRspData.has()) {
+        localObject = new QQCircleFeedBase.StFeedListBusiRspData();
+      }
+      try
+      {
+        ((QQCircleFeedBase.StFeedListBusiRspData)localObject).mergeFrom(paramStGetFeedListRsp.busiRspData.get().toByteArray());
+        if (((QQCircleFeedBase.StFeedListBusiRspData)localObject).refreshAttachInfo.has()) {
+          vmf.a(this.jdField_a_of_type_Vmf).b(((QQCircleFeedBase.StFeedListBusiRspData)localObject).refreshAttachInfo.get());
+        }
+        uzg.a(vmf.a(this.jdField_a_of_type_Vmf), paramStGetFeedListRsp.vecFeed.get());
+        vmf.a(this.jdField_a_of_type_Vmf).postValue(new vbf(paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean));
+        this.jdField_a_of_type_Vmf.a().a(4);
+        return;
+        label311:
+        paramBoolean = false;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        for (;;)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
       }
     }
   }

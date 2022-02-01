@@ -1,11 +1,8 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
 
-public class bciy
+public abstract interface bciy
 {
-  public bcij a;
-  public AtomicBoolean a = new AtomicBoolean(false);
-  public bcij b;
-  public bcij c;
+  public abstract void a(View paramView);
 }
 
 

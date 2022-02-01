@@ -1,8 +1,14 @@
-public abstract interface auah
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+
+class auah
+  implements auar
 {
-  public abstract void a(int paramInt, String paramString);
+  auah(auag paramauag) {}
   
-  public abstract void a(Object paramObject);
+  public void a()
+  {
+    FileSelectorSearchFragment.a(this.a.a).a();
+  }
 }
 
 

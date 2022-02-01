@@ -1,36 +1,35 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-
-final class xfk
-  implements bkhw
+class xfk
+  implements xfq
 {
-  xfk(CommentEntry paramCommentEntry, bkho parambkho) {}
+  xfk(xfj paramxfj) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(xhu paramxhu)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((wpy)wpm.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new wxi().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
-      }
-      break;
+    if (xfj.a(this.a) != null) {
+      xfj.a(this.a).a(paramxhu.a);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      yqp.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
+    if (xfj.a(this.a) != null) {
+      xfj.a(this.a).a();
+    }
+  }
+  
+  public void b(xhu paramxhu)
+  {
+    if (xfj.a(this.a) != null) {
+      xfj.a(this.a).c(paramxhu.a);
+    }
+    if (xfj.a(this.a) != null) {
+      xfj.a(this.a).a();
+    }
+  }
+  
+  public void c(xhu paramxhu)
+  {
+    if (xfj.a(this.a) != null) {
+      xfj.a(this.a).d(paramxhu.a);
+    }
+    if (xfj.a(this.a) != null) {
+      xfj.a(this.a).a();
     }
   }
 }

@@ -1,25 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
-class bpbp
-  implements View.OnClickListener
+public class bpbp
 {
-  bpbp(bpbo parambpbo) {}
-  
-  public void onClick(View paramView)
-  {
-    bpbo localbpbo = this.a;
-    if (!bpbo.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bpbo.a(localbpbo, bool);
-      bpbo.a(this.a, bpbo.a(this.a));
-      wpf.d(bpbo.a(this.a));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-  }
+  public static final String a = bofe.b + File.separator + "ae_editor";
+  public static final String b = a + File.separator + "compress";
+  public static final String c = a + File.separator + "bgm";
+  public static final String d = a + File.separator + "comic";
 }
 
 

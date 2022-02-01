@@ -1,13 +1,24 @@
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class albd
-  implements wxd
+public class albd
+  implements View.OnClickListener
 {
-  albd(albc paramalbc) {}
+  public albd(LingHbFragment paramLingHbFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.invalidateViews();
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (String str = "yyhongbao.word.change";; str = "klhongbao.word.change")
+    {
+      this.a.addUploadData(str, "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

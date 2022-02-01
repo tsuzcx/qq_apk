@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afvu;
-import afwc;
+import agfm;
+import agfu;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,10 +20,10 @@ import mqq.util.WeakReference;
 
 public class AudioDeviceManager
   extends BroadcastReceiver
-  implements afwc, Manager
+  implements agfu, Manager
 {
   private AudioSenorManager jdField_a_of_type_ComTencentMobileqqActivityAioAudioSenorManager;
-  private List<afvu> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<agfm> jdField_a_of_type_JavaUtilList = new ArrayList();
   private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -70,11 +70,11 @@ public class AudioDeviceManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      afvu localafvu = (afvu)localIterator.next();
-      if ((localafvu.a() & paramInt) == paramInt)
+      agfm localagfm = (agfm)localIterator.next();
+      if ((localagfm.a() & paramInt) == paramInt)
       {
-        QLog.d("AudioDeviceManager", 2, "notifyAllDeviceStatusChanged: audioDeviceListener=" + localafvu.getClass());
-        localafvu.a(paramInt, paramBoolean);
+        QLog.d("AudioDeviceManager", 2, "notifyAllDeviceStatusChanged: audioDeviceListener=" + localagfm.getClass());
+        localagfm.a(paramInt, paramBoolean);
       }
     }
   }
@@ -132,31 +132,31 @@ public class AudioDeviceManager
     }
   }
   
-  public void a(afvu paramafvu)
+  public void a(agfm paramagfm)
   {
-    if (paramafvu == null)
+    if (paramagfm == null)
     {
       QLog.e("AudioDeviceManager", 2, "registerAudioDeviceListener listener is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramafvu))
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramagfm))
     {
       QLog.e("AudioDeviceManager", 2, "registerAudioDeviceListener listener is contains");
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramafvu);
+    this.jdField_a_of_type_JavaUtilList.add(paramagfm);
   }
   
-  public void b(afvu paramafvu)
+  public void b(agfm paramagfm)
   {
-    if (paramafvu == null)
+    if (paramagfm == null)
     {
       QLog.e("AudioDeviceManager", 2, "unRegisterAudioDeviceListener listener is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramafvu))
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramagfm))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramafvu);
+      this.jdField_a_of_type_JavaUtilList.remove(paramagfm);
       return;
     }
     QLog.e("AudioDeviceManager", 2, "unRegisterAudioDeviceListener listener is not contains");

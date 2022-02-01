@@ -1,25 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
 
 public class ariu
-  implements View.OnClickListener
+  extends arac<ariv>
 {
-  public ariu(DBFixConfigActivity paramDBFixConfigActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static ariv a()
   {
-    boolean bool = bgmg.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db"), new File(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir(), this.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + ".db"));
-    QLog.e(DBFixConfigActivity.jdField_a_of_type_JavaLangString, 2, "copy " + bool + this.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (ariv)aran.a().a(647);
+  }
+  
+  @NonNull
+  public ariv a(int paramInt)
+  {
+    return new ariv();
+  }
+  
+  @Nullable
+  public ariv a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return ariv.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(ariv paramariv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaHttpsConfProcessor", 2, "RichmediaHttpsConfProcessor onUpdate");
+    }
+  }
+  
+  public Class<ariv> clazz()
+  {
+    return ariv.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 647;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ariu
  * JD-Core Version:    0.7.0.1
  */

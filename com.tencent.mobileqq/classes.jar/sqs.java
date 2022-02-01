@@ -1,16 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class sqs
-  extends pue
+class sqs
+  implements ViewFactory.FoundClickableViewListener
 {
-  public sqs(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  sqs(sqr paramsqr, Context paramContext, ProteusItemData paramProteusItemData) {}
   
-  public void a(ptx paramptx)
+  public void onFound(ViewBase paramViewBase)
   {
-    paramptx.b(ReadInJoyListViewGroup.a(this.a), this.a.a);
+    paramViewBase.setOnClickListener(new sqt(this));
   }
 }
 

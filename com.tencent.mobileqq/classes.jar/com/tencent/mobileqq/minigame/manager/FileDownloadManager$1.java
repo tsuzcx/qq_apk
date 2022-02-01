@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.os.SystemClock;
-import bjwi;
+import bkxi;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener.DownloadResult;
@@ -39,7 +39,7 @@ final class FileDownloadManager$1
     {
       FileDownloadManager.access$000().remove(this.val$url);
       return;
-      this.val$listener.onDownloadFailed(bjwi.a(paramIOException, -1), "request error:network");
+      this.val$listener.onDownloadFailed(bkxi.a(paramIOException, -1), "request error:network");
     }
   }
   

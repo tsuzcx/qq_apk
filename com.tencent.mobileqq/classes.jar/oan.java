@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class oan
-  implements DialogInterface.OnClickListener
+public class oan
+  implements View.OnClickListener
 {
-  oan(nzz paramnzz) {}
+  public oan(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    Intent localIntent = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+    localIntent.putExtra("uin", this.a.b);
+    localIntent.putExtra("uinname", this.a.b);
+    localIntent.putExtra("uintype", this.a.c);
+    localIntent.addFlags(67108864);
+    this.a.getActivity().startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,12 +1,27 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class awme
+  implements awoc
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  public Object a;
+  
+  private awme(ListenTogetherManager paramListenTogetherManager)
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    while (paramInt == 0) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
+  }
 }
 
 

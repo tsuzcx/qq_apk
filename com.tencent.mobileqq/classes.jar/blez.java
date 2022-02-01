@@ -1,46 +1,124 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import java.util.concurrent.ConcurrentHashMap;
+import android.util.Pair;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-public class blez
-  extends bhhe
+public abstract class blez
 {
-  public blez(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onCancel(bhhf parambhhf)
+  private static int a(ByteBuffer paramByteBuffer)
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+    a(paramByteBuffer);
+    int j = paramByteBuffer.capacity();
+    if (j < 22) {}
+    for (;;)
+    {
+      return -1;
+      int k = Math.min(j - 22, 65535);
+      int i = 0;
+      while (i < k)
+      {
+        int m = j - 22 - i;
+        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
+          return m;
+        }
+        i += 1;
+      }
+    }
   }
   
-  public void onDone(bhhf parambhhf)
+  private static int a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (parambhhf.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
-      }
-      if (TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-      }
+    return paramByteBuffer.getShort(paramInt) & 0xFFFF;
+  }
+  
+  public static long a(ByteBuffer paramByteBuffer)
+  {
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 16);
+  }
+  
+  private static long a(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
+  }
+  
+  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
+  {
+    Object localObject;
+    if (paramRandomAccessFile.length() < 22L) {
+      localObject = null;
     }
-    while (!QLog.isColorLevel())
+    Pair localPair;
+    do
     {
-      return;
-      parambhhf = azby.a(this.jdField_a_of_type_JavaLangString);
-      if (this.c.equalsIgnoreCase(parambhhf))
-      {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
-      }
-      bgmg.d(this.jdField_a_of_type_JavaLangString);
-      return;
+      return localObject;
+      localPair = a(paramRandomAccessFile, 0);
+      localObject = localPair;
+    } while (localPair != null);
+    return a(paramRandomAccessFile, 65535);
+  }
+  
+  private static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 65535)) {
+      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
     }
-    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + parambhhf.b + " code=" + parambhhf.a);
+    long l = paramRandomAccessFile.length();
+    if (l < 22L) {}
+    ByteBuffer localByteBuffer;
+    do
+    {
+      return null;
+      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
+      localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+      l -= localByteBuffer.capacity();
+      paramRandomAccessFile.seek(l);
+      paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
+      paramInt = a(localByteBuffer);
+    } while (paramInt == -1);
+    localByteBuffer.position(paramInt);
+    paramRandomAccessFile = localByteBuffer.slice();
+    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
+    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
+  }
+  
+  private static void a(ByteBuffer paramByteBuffer)
+  {
+    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
+      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
+    }
+  }
+  
+  private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
+  {
+    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
+      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
+    }
+    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
+  }
+  
+  static void a(ByteBuffer paramByteBuffer, long paramLong)
+  {
+    a(paramByteBuffer);
+    a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
+  }
+  
+  public static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
+  {
+    paramLong -= 20L;
+    if (paramLong < 0L) {}
+    do
+    {
+      return false;
+      paramRandomAccessFile.seek(paramLong);
+    } while (paramRandomAccessFile.readInt() != 1347094023);
+    return true;
+  }
+  
+  public static long b(ByteBuffer paramByteBuffer)
+  {
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 12);
   }
 }
 

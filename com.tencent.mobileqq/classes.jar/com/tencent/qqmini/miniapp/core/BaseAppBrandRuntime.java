@@ -2,21 +2,26 @@ package com.tencent.qqmini.miniapp.core;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.qqmini.miniapp.core.page.IAppBrandPageContainer;
 import com.tencent.qqmini.miniapp.core.service.AbsAppBrandService;
+import com.tencent.qqmini.miniapp.core.service.AppV8JsService;
 import com.tencent.qqmini.miniapp.core.service.IAppBrandService;
 import com.tencent.qqmini.sdk.core.BaseRuntimeImpl;
 import com.tencent.qqmini.sdk.core.Preloadable;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.manager.PreCacheManager;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IPage;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.AppConfigInfo;
@@ -88,11 +93,6 @@ public abstract class BaseAppBrandRuntime
   public MiniAppInfo getMiniAppInfo()
   {
     return this.mMiniAppInfo;
-  }
-  
-  public byte[] getNativeBuffer(int paramInt)
-  {
-    return new byte[0];
   }
   
   public IPage getPage()
@@ -180,11 +180,6 @@ public abstract class BaseAppBrandRuntime
     this.mEntryPath = this.mMiniAppInfo.launchParam.entryPath;
   }
   
-  public int newNativeBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
   public boolean onBackPress()
   {
     return (this.pageContainer != null) && (this.pageContainer.navigateBack(1, -1));
@@ -200,13 +195,22 @@ public abstract class BaseAppBrandRuntime
     this.jsPluginEngine.onCreate(this);
     this.pageContainer.setMiniAppInfo(paramMiniAppInfo);
     this.pageContainer.setFromReload(paramBoolean);
-    if (((AbsAppBrandService)this.appBrandService).getCurrState() == ((AbsAppBrandService)this.appBrandService).stateLoadSucc)
-    {
+    if (((AbsAppBrandService)this.appBrandService).getCurrState() == ((AbsAppBrandService)this.appBrandService).stateLoadSucc) {
       AppBrandTask.runTaskOnUiThread(new BaseAppBrandRuntime.1(this, paramMiniAppInfo, paramBoolean, paramString));
-      return;
     }
-    ((AbsAppBrandService)this.appBrandService).addStateChangeListener(new BaseAppBrandRuntime.2(this, paramMiniAppInfo, paramBoolean, paramString));
-    this.appBrandService.setApkgInfo((ApkgInfo)paramMiniAppInfo.apkgInfo);
+    for (;;)
+    {
+      if ((this.appBrandService instanceof AppV8JsService))
+      {
+        QMLog.i("minisdk-start_BaseAppBrandRuntime", "onLoadMiniAppInfo run with v8rt");
+        if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
+          new Handler(Looper.getMainLooper()).post(new BaseAppBrandRuntime.3(this));
+        }
+      }
+      return;
+      ((AbsAppBrandService)this.appBrandService).addStateChangeListener(new BaseAppBrandRuntime.2(this, paramMiniAppInfo, paramBoolean, paramString));
+      this.appBrandService.setApkgInfo((ApkgInfo)paramMiniAppInfo.apkgInfo);
+    }
   }
   
   public void onRuntimeAttachActivity(Activity paramActivity, ViewGroup paramViewGroup)

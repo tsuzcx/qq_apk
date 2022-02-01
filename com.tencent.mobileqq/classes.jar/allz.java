@@ -1,41 +1,74 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base.P2VGlobalConfig;
+import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
 
-public class allz
+class allz
+  implements allu
 {
-  public static void a(Context paramContext)
+  @Nullable
+  private allw jdField_a_of_type_Allw;
+  @NonNull
+  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
+  @NonNull
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public allz(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface)
   {
-    P2VGlobalConfig.P2V_VIDEO_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "qzone_dynamic_video" + File.separator;
-    P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "tencent" + File.separator + "dynamic_video_cache" + File.separator;
-    P2VGlobalConfig.NO_AUDIO_MP4 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "no_audio.mp4";
-    P2VGlobalConfig.CONCAT_FINAL_M4A = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
-    P2VGlobalConfig.CONCAT_FINAL_MP3 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
-    P2VGlobalConfig.P2V_MATERIAL_ROOT = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
-    P2VGlobalConfig.P2V_MATERIAL_WATER_MARKER_PNG_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "qzone_p2v_watermark.png";
-    P2VGlobalConfig.P2V_MATERIAL_DUMMY_VIDEO_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "resizeddummy.mp4";
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(@Nullable allw paramallw)
+  {
+    this.jdField_a_of_type_Allw = paramallw;
+  }
+  
+  public boolean isNeedAutoCloseWhenAccountChange()
+  {
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Allw == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
+  }
+  
+  public void onEnter()
+  {
+    if (this.jdField_a_of_type_Allw == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
     try
     {
-      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_ROOT);
-      if (!paramContext.exists()) {
-        paramContext.mkdirs();
-      }
-      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
-      if (!paramContext.exists()) {
-        paramContext.mkdirs();
-      }
+      this.jdField_a_of_type_AndroidAppPendingIntent.send();
+      aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
+      return;
     }
-    catch (Exception paramContext)
+    catch (PendingIntent.CanceledException localCanceledException)
     {
       for (;;)
       {
-        QLog.d("P2VEffectLoader", 2, "initP2VCacheRootSpace exception", paramContext);
+        QLog.e("Q.recent.banner", 1, "send pending intent fail with " + this.jdField_a_of_type_AndroidAppPendingIntent + "\r\n" + localCanceledException);
       }
     }
-    bgmg.c(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + ".nomedia");
-    bgmg.c(P2VGlobalConfig.P2V_MATERIAL_ROOT + ".nomedia");
   }
+  
+  public void onOverride() {}
 }
 
 

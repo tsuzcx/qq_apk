@@ -12,6 +12,7 @@ public class TPCaptureUtils
   {
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
     Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.RGB_565);
+    paramArrayOfByte.rewind();
     localBitmap.copyPixelsFromBuffer(paramArrayOfByte);
     paramArrayOfByte = localBitmap;
     if (paramInt3 != 0)

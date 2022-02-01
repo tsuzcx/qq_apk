@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import adxj;
-import bglj;
+import aegn;
+import bhlk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatSettingForTroop$4$2
   implements Runnable
 {
-  public ChatSettingForTroop$4$2(adxj paramadxj, String paramString) {}
+  public ChatSettingForTroop$4$2(aegn paramaegn, String paramString) {}
   
   public void run()
   {
-    bglj.a(this.jdField_a_of_type_Adxj.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
+    bhlk.a(this.jdField_a_of_type_Aegn.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 

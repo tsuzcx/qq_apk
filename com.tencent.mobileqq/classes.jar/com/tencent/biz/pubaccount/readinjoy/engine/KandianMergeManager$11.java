@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pha;
+import ozs;
 
 class KandianMergeManager$11
   implements Runnable
@@ -9,7 +9,7 @@ class KandianMergeManager$11
   
   public void run()
   {
-    pha.f(KandianMergeManager.a(this.this$0));
+    ozs.f(KandianMergeManager.a(this.this$0));
   }
 }
 

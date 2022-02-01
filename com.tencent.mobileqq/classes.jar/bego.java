@@ -1,23 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-public class bego
-  implements Animation.AnimationListener
+public abstract class bego
 {
-  public bego(AudioRecordFragment paramAudioRecordFragment) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bego(int paramInt, @NonNull String paramString)
   {
-    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  abstract float a(@NonNull Paint paramPaint);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 

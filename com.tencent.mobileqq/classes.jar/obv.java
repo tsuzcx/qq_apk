@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import mqq.os.MqqHandler;
 
-public final class obv
-  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
+class obv
+  extends BroadcastReceiver
 {
-  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.GameAdDownloadInfo(paramParcel);
-  }
+  obv(obj paramobj, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new VideoInfo.GameAdDownloadInfo[paramInt];
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Obj.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      }
+    }
+    try
+    {
+      for (;;)
+      {
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Obj.a);
+        label65:
+        this.jdField_a_of_type_Obj.a = null;
+        return;
+        this.jdField_a_of_type_Obj.a(str, i, 11, -1, null);
+      }
+    }
+    catch (Exception paramContext)
+    {
+      break label65;
+    }
   }
 }
 

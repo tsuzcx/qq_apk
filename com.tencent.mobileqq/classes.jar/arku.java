@@ -1,66 +1,45 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arku
-  implements Manager
 {
-  private arls jdField_a_of_type_Arls;
-  private arlx jdField_a_of_type_Arlx;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Object b = new Object();
+  private int a;
   
-  public arku(QQAppInterface paramQQAppInterface)
+  public arku()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public arls a()
+  public static arku a(araj paramaraj)
   {
-    if (this.jdField_a_of_type_Arls != null) {
-      return this.jdField_a_of_type_Arls;
-    }
-    synchronized (this.b)
-    {
-      if (this.jdField_a_of_type_Arls == null) {
-        this.jdField_a_of_type_Arls = new arls(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    arku localarku = new arku();
+    if (paramaraj != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramaraj.jdField_a_of_type_Int + " content->" + paramaraj.jdField_a_of_type_JavaLangString);
       }
-      arls localarls = this.jdField_a_of_type_Arls;
-      return localarls;
     }
+    try
+    {
+      localarku.jdField_a_of_type_Int = new JSONObject(paramaraj.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
+      return localarku;
+    }
+    catch (JSONException paramaraj)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramaraj.toString());
+    }
+    return localarku;
   }
   
-  public arlx a()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Arlx != null) {
-      return this.jdField_a_of_type_Arlx;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Arlx == null) {
-        this.jdField_a_of_type_Arlx = new arlx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      arlx localarlx = this.jdField_a_of_type_Arlx;
-      return localarlx;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Arlx != null) {
-      this.jdField_a_of_type_Arlx.b();
-    }
-    this.jdField_a_of_type_Arlx = null;
-    if (this.jdField_a_of_type_Arls != null)
-    {
-      this.jdField_a_of_type_Arls.a();
-      this.jdField_a_of_type_Arls = null;
-    }
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arku
  * JD-Core Version:    0.7.0.1
  */

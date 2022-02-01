@@ -1,49 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.LogProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-@ProxyService(proxy=LogProxy.class)
-public class bjwm
-  extends LogProxy
+final class bjwm
+  implements DialogInterface.OnClickListener
 {
-  public void log(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  bjwm(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      if (paramThrowable == null)
-      {
-        QLog.i(paramString1, 1, paramString2);
-        return;
-      }
-      break;
-    case 2: 
-      if (paramThrowable == null)
-      {
-        QLog.d(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.d(paramString1, 1, paramString2, paramThrowable);
-      return;
-    case 4: 
-      if (paramThrowable == null)
-      {
-        QLog.w(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.w(paramString1, 1, paramString2, paramThrowable);
-      return;
-    case 5: 
-      if (paramThrowable == null)
-      {
-        QLog.e(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.e(paramString1, 1, paramString2, paramThrowable);
-      return;
-    }
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
+    bjwk.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

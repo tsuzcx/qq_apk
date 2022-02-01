@@ -1,17 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-public class atzc
-  implements CompoundButton.OnCheckedChangeListener
+public final class atzc
+  implements Parcelable.Creator<FileInfo>
 {
-  public atzc(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public FileInfo a(Parcel paramParcel)
   {
-    atcq.a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
   }
 }
 

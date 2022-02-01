@@ -1,38 +1,12 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.ColorNickManagerProxy.Proxy;
 
-public class bdip
-  implements URLDrawableHandler
+public final class bdip
+  implements RecentRoute.ColorNickManagerProxy.Proxy
 {
-  public bdip(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
-  
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public CharSequence transformMessageWithAtTroopMember(String paramString1, String paramString2)
   {
-    return false;
+    return bhwz.a(paramString1, paramString2, 16, null, 3);
   }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
-  }
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

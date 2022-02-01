@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ajbp
-  implements Comparator<PhoneContact>
+public abstract interface ajbp
 {
-  public ajbp(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-  }
+  public abstract void a(ChatMessage paramChatMessage);
 }
 
 

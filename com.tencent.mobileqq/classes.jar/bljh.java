@@ -1,12 +1,9 @@
-import android.os.Bundle;
-import android.os.IInterface;
-
-public abstract interface bljh
-  extends IInterface
+public class bljh
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

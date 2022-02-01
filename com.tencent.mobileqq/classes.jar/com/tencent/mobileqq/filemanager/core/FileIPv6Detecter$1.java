@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atco;
-import atcp;
-import atcr;
-import atcs;
+import atuj;
+import atuk;
+import atum;
+import atun;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -11,7 +11,7 @@ import java.net.Socket;
 public class FileIPv6Detecter$1
   implements Runnable
 {
-  public FileIPv6Detecter$1(atco paramatco, atcs paramatcs, long paramLong, atcr paramatcr) {}
+  public FileIPv6Detecter$1(atuj paramatuj, atun paramatun, long paramLong, atum paramatum) {}
   
   public void run()
   {
@@ -21,12 +21,12 @@ public class FileIPv6Detecter$1
     {
       try
       {
-        int j = this.jdField_a_of_type_Atcs.jdField_a_of_type_Int;
+        int j = this.jdField_a_of_type_Atun.jdField_a_of_type_Int;
         i = j;
         if (j == 0) {
           i = 80;
         }
-        ((Socket)localObject1).connect(new InetSocketAddress(this.jdField_a_of_type_Atcs.a(), i), 6000);
+        ((Socket)localObject1).connect(new InetSocketAddress(this.jdField_a_of_type_Atun.a(), i), 6000);
       }
       catch (Exception localException4)
       {
@@ -80,22 +80,22 @@ public class FileIPv6Detecter$1
     if (i == 0)
     {
       bool1 = true;
-      QLog.i("FileIPv6Detecter<FileAssistant>", 1, bool1 + " cost:" + (l - this.jdField_a_of_type_Long) + " [" + this.jdField_a_of_type_Atcr.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Atcr.jdField_a_of_type_Int + "] ipInfo[" + this.jdField_a_of_type_Atcs.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Atcs.jdField_a_of_type_Int + "]");
-      localObject1 = atco.a(this.this$0, this.jdField_a_of_type_Atcr);
+      QLog.i("FileIPv6Detecter<FileAssistant>", 1, bool1 + " cost:" + (l - this.jdField_a_of_type_Long) + " [" + this.jdField_a_of_type_Atum.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Atum.jdField_a_of_type_Int + "] ipInfo[" + this.jdField_a_of_type_Atun.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Atun.jdField_a_of_type_Int + "]");
+      localObject1 = atuj.a(this.this$0, this.jdField_a_of_type_Atum);
       if (localObject1 != null)
       {
-        ((atcp)localObject1).b = false;
+        ((atuk)localObject1).b = false;
         if (i != 0) {
           break label322;
         }
         bool1 = true;
-        ((atcp)localObject1).a = bool1;
+        ((atuk)localObject1).a = bool1;
         localObject1 = this.this$0;
         if (i != 0) {
           break label327;
         }
         bool1 = bool2;
-        atco.a((atco)localObject1, bool1, this.jdField_a_of_type_Atcr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atcs.a(), this.jdField_a_of_type_Atcs.jdField_a_of_type_Int);
+        atuj.a((atuj)localObject1, bool1, this.jdField_a_of_type_Atum.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atun.a(), this.jdField_a_of_type_Atun.jdField_a_of_type_Int);
       }
     }
   }

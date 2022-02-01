@@ -1,42 +1,35 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.app.Activity;
+import java.lang.reflect.Method;
 
-public class bnuy
-  extends ViewModel
+public abstract class bnuy
 {
-  public final MutableLiveData<bnuq> a;
-  private boolean a;
-  public final MutableLiveData<AECaptureMode[]> b = new MutableLiveData();
+  public static bnuy a;
   
-  public bnuy()
+  public static void a()
   {
-    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+    try
+    {
+      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (bnuy)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
   
-  public boolean a()
+  public static void b(Activity paramActivity, String paramString)
   {
-    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bnuq)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.GIF);
+    bnuy localbnuy = a;
+    if (localbnuy != null) {
+      localbnuy.a(paramActivity, paramString);
+    }
   }
   
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bnuq)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.NORMAL);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bnuq)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.PLAY);
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract void a(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bnuy
  * JD-Core Version:    0.7.0.1
  */

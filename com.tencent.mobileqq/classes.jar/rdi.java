@@ -1,14 +1,6 @@
-import android.graphics.drawable.Drawable;
-
-class rdi
-  extends rcs
+public abstract interface rdi
 {
-  rdi(rdd paramrdd) {}
-  
-  public Drawable a()
-  {
-    return a("readinjoy_diandian_icon_background");
-  }
+  public abstract void a(String paramString);
 }
 
 

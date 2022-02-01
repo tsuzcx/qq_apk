@@ -1,85 +1,32 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ause
-  extends ausb
+class ause
+  extends atpa
 {
-  protected Context a;
-  protected FrameLayout a;
-  protected ImageView a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected TextView b;
-  protected TextView c;
+  ause(ausd paramausd) {}
   
-  public ause(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
   {
-    super(paramContext, paramView, paramViewGroup);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379852));
-    this.b = ((TextView)paramView.findViewById(2131379738));
-    this.c = ((TextView)paramView.findViewById(2131379501));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368397));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131369575));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369545));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    this.itemView.setBackgroundDrawable(auud.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-    if (!TextUtils.isEmpty(paramFeedsItemData.rcmdReason))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramFeedsItemData.rcmdReason + "");
-      if ((!TextUtils.isEmpty(paramFeedsItemData.label)) || (!TextUtils.isEmpty(paramFeedsItemData.operateText))) {
-        break label130;
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + atyt.a + "]");
     }
-    for (;;)
+    if (atyt.a)
     {
-      this.itemView.setOnClickListener(new ausf(this, paramFeedsItemData));
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break;
-      label130:
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      if (TextUtils.isEmpty(paramFeedsItemData.operateText))
-      {
-        this.c.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
+      paramString4 = "183.61.37.13";
+      paramString5 = "443";
+      if (this.a.jdField_a_of_type_Atib != null) {}
+    }
+    else
+    {
+      if ((paramString4 != null) && (paramString4.length() > 0)) {}
       for (;;)
       {
-        if (!TextUtils.isEmpty(paramFeedsItemData.label)) {
-          break label287;
-        }
-        this.b.setVisibility(8);
+        paramString5 = String.valueOf(paramInt2);
         break;
-        this.c.setText(paramFeedsItemData.operateText + "");
-        this.c.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.itemView.getResources().getDrawable(2130840937);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.itemView.getResources().getDrawable(2130840937);
-        localObject = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201908/upload_edff4f642a92ef91b6cb1b7209369506.png", (URLDrawable.URLDrawableOptions)localObject);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        paramString4 = paramString5;
       }
-      label287:
-      this.b.setText(paramFeedsItemData.label + "");
-      this.b.setVisibility(0);
     }
+    this.a.jdField_a_of_type_Atib.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
   }
 }
 

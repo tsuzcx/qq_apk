@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aipo;
+import ajax;
 import android.content.res.Resources;
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class BlessSelectMemberActivity$11$1
   implements Runnable
 {
-  public BlessSelectMemberActivity$11$1(aipo paramaipo) {}
+  public BlessSelectMemberActivity$11$1(ajax paramajax) {}
   
   public void run()
   {
-    QQToast.a(this.a.a, anni.a(2131699968), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298998));
+    QQToast.a(this.a.a, anzj.a(2131700075), 0).b(this.a.a.getResources().getDimensionPixelSize(2131299011));
   }
 }
 

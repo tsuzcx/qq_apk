@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.view;
 
-import ayfj;
+import ayyc;
 
 class OcrImageTextView$1$1
   implements Runnable

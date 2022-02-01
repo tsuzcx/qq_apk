@@ -1,16 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StLightInteractInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.events.QCircleDanmakuEvent;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vbx
-  implements Observer<vup<List<FeedCloudMeta.StLightInteractInfo>>>
+  implements View.OnClickListener
 {
-  vbx(vbt paramvbt) {}
+  vbx(vbr paramvbr) {}
   
-  public void a(@Nullable vup<List<FeedCloudMeta.StLightInteractInfo>> paramvup)
+  public void onClick(View paramView)
   {
-    vbt.a(this.a, paramvup);
+    vbr.a(this.a).d();
+    aaak.a().a(new QCircleDanmakuEvent(8, false));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

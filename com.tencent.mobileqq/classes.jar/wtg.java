@@ -1,53 +1,48 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 class wtg
-  extends whk
+  implements woy<xea, xeb>
 {
-  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  wtg(wtf paramwtf) {}
   
-  public wtg(wtc paramwtc)
+  public void a(@NonNull xea paramxea, @Nullable xeb paramxeb, @NonNull ErrorMessage paramErrorMessage)
   {
-    super("MsgTabStoryVideoPreloader");
-  }
-  
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, wgv paramwgv)
-  {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramwgv);
-    if (paramInt2 == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
-      }
-      this.jdField_a_of_type_Wtc.a(paramwgv.c, true);
+    if (paramxeb == null) {
+      yuk.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramxeb });
     }
-  }
-  
-  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, wgv paramwgv)
-  {
-    super.a(paramString, paramInt1, paramFile, paramInt2, paramwgv);
-    if (paramInt2 == 2)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
+      return;
+      if (paramErrorMessage.errorCode == 15000)
+      {
+        yuk.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramxeb);
+        this.a.jdField_a_of_type_Long = paramxeb.a.uint64_expire_time.get();
+        return;
       }
-      this.jdField_a_of_type_Wtc.a(paramwgv.c, true);
-    }
-  }
-  
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, wgv paramwgv)
-  {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramwgv);
-    if (paramInt2 == 2)
+      if (paramErrorMessage.isFail())
+      {
+        yuk.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramxeb });
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_JavaLangString = paramxeb.a.bytes_cookie.get().toStringUtf8();
+    this.a.jdField_a_of_type_Long = paramxeb.a.uint64_expire_time.get();
+    this.a.a();
+    this.a.a(paramxeb.a);
+    paramxea = paramxeb.a.bytes_global_promote_url.get().toStringUtf8();
+    if (!TextUtils.isEmpty(paramxea))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
-      }
-      this.jdField_a_of_type_Wtc.a(paramwgv.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+      ((wta)wth.a(10)).b("key_story_player_promote_url", paramxea);
+      this.a.b = paramxea;
     }
+    this.a.a("onCmdRespond()");
   }
 }
 

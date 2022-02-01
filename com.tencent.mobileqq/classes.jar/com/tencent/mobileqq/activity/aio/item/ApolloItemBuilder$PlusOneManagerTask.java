@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agpj;
+import agyp;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.MultiForwardActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -11,15 +11,15 @@ class ApolloItemBuilder$PlusOneManagerTask
   implements Runnable
 {
   int jdField_a_of_type_Int;
-  WeakReference<agpj> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<agyp> jdField_a_of_type_JavaLangRefWeakReference;
   boolean jdField_a_of_type_Boolean;
   WeakReference<ApolloItemBuilder> b;
   WeakReference<MessageForApollo> c;
   
-  public ApolloItemBuilder$PlusOneManagerTask(ApolloItemBuilder paramApolloItemBuilder, agpj paramagpj, MessageForApollo paramMessageForApollo, int paramInt)
+  public ApolloItemBuilder$PlusOneManagerTask(ApolloItemBuilder paramApolloItemBuilder, agyp paramagyp, MessageForApollo paramMessageForApollo, int paramInt)
   {
     this.b = new WeakReference(paramApolloItemBuilder);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramagpj);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramagyp);
     this.c = new WeakReference(paramMessageForApollo);
     this.jdField_a_of_type_Int = paramInt;
   }
@@ -27,23 +27,23 @@ class ApolloItemBuilder$PlusOneManagerTask
   public void run()
   {
     ApolloItemBuilder localApolloItemBuilder = (ApolloItemBuilder)this.b.get();
-    agpj localagpj = (agpj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    agyp localagyp = (agyp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     MessageForApollo localMessageForApollo = (MessageForApollo)this.c.get();
-    if ((localApolloItemBuilder == null) || (localagpj == null) || (localMessageForApollo == null)) {
+    if ((localApolloItemBuilder == null) || (localagyp == null) || (localMessageForApollo == null)) {
       break label45;
     }
     label45:
-    while (!(localagpj instanceof agpj)) {
+    while (!(localagyp instanceof agyp)) {
       return;
     }
     if (this.jdField_a_of_type_Int == 0) {
-      if ((!(localagpj.c.getContext() instanceof MultiForwardActivity)) && (!this.jdField_a_of_type_Boolean) && (!localApolloItemBuilder.a.n))
+      if ((!(localagyp.c.getContext() instanceof MultiForwardActivity)) && (!this.jdField_a_of_type_Boolean) && (!localApolloItemBuilder.a.n))
       {
         if (!localMessageForApollo.isSend()) {
           break label165;
         }
-        localagpj.c.setVisibility(0);
-        localagpj.d.setVisibility(8);
+        localagyp.c.setVisibility(0);
+        localagyp.d.setVisibility(8);
       }
     }
     for (;;)
@@ -52,13 +52,13 @@ class ApolloItemBuilder$PlusOneManagerTask
       if ((this.jdField_a_of_type_Int != 1) || (ApolloItemBuilder.a(localApolloItemBuilder) != localMessageForApollo.uniseq)) {
         break;
       }
-      localagpj.c.setVisibility(8);
-      localagpj.d.setVisibility(8);
+      localagyp.c.setVisibility(8);
+      localagyp.d.setVisibility(8);
       ApolloItemBuilder.a(localApolloItemBuilder, 0L);
       return;
       label165:
-      localagpj.c.setVisibility(8);
-      localagpj.d.setVisibility(0);
+      localagyp.c.setVisibility(8);
+      localagyp.d.setVisibility(0);
     }
   }
 }

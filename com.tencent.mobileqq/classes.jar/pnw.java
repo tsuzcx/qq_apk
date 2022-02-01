@@ -1,153 +1,419 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.Window;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJMsgBoxPopupStep.1;
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJMsgBoxPopupStep.2;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
 
 public class pnw
-  extends pnq
 {
-  private Activity a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private HashMap<String, ArrayList<String>> jdField_a_of_type_JavaUtilHashMap;
+  private ArrayList<String> b;
+  private ArrayList<String> c;
+  private ArrayList<String> d;
+  private ArrayList<String> e;
+  private ArrayList<String> f;
+  private ArrayList<String> g;
+  private ArrayList<HashMap<String, String>> h;
   
-  public pnw(@NotNull pnr parampnr, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  private long a()
   {
-    super(parampnr, "RIJMsgBoxPopupStep");
-    this.a = paramActivity;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
+    {
+      return 0L;
+      localObject = bnrf.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    return ((SharedPreferences)localObject).getLong("event_simple_p_info_f_num2", 0L);
   }
   
-  private void a(Activity paramActivity, int paramInt, String paramString, long paramLong)
+  public static String a(String paramString)
   {
-    if (paramActivity == null)
-    {
-      QLog.e("RIJMsgBoxPopupStep", 1, "openMsgBoxPage failed, activity = null");
-      return;
+    if (paramString == null) {
+      return "";
     }
-    pha.d = true;
-    paramActivity.getWindow().getDecorView().postDelayed(new RIJMsgBoxPopupStep.1(this, paramActivity, paramInt, paramString), paramLong);
-    i();
+    return blev.a(paramString);
   }
   
-  private boolean a(int paramInt)
+  private String a(List<String> paramList)
   {
-    QLog.d("RIJMsgBoxPopupStep", 2, "checkIfShowMsgBoxWithFloatingWindow | launchFrom : " + paramInt);
-    if (paramInt != 5) {
-      return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localStringBuilder.append(a((String)paramList.next())).append('^');
     }
-    Object localObject = ((KandianMergeManager)pha.a().getManager(162)).a();
-    if ((localObject == null) || (((KandianMsgBoxRedPntInfo)localObject).mMsgCnt <= 0))
+    return b(localStringBuilder.toString());
+  }
+  
+  private void a()
+  {
+    this.h = new ArrayList();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(b("p_time_stamp"), b(this.jdField_a_of_type_Long + ""));
+    localHashMap.put(b("p_flag"), b("1"));
+    a("p_sp_care", this.jdField_a_of_type_JavaUtilArrayList, localHashMap);
+    a("p_common_g", this.b, localHashMap);
+    a("p_common_d", this.c, localHashMap);
+    a("p_top_q", this.d, localHashMap);
+    a("p_top_g", this.e, localHashMap);
+    a("p_top_d", this.f, localHashMap);
+    this.h.add(localHashMap);
+    if ((this.jdField_a_of_type_Int != a()) || (pnu.a().a))
     {
-      QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | no msg");
-      return false;
-    }
-    boolean bool = ((Boolean)bmqa.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(false))).booleanValue();
-    QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | sp showFloatingWin " + bool);
-    localObject = Aladdin.getConfig(262);
-    if (localObject != null) {
-      if (((AladdinConfig)localObject).getIntegerFromString("kandian_msg_box_popup_window_cfg", 0) == 1)
+      a(this.jdField_a_of_type_JavaUtilHashMap);
+      int k = this.g.size();
+      int i = 0;
+      while (i < k)
       {
-        bool = true;
-        bmqa.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(bool));
-        QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | aladdin cfg showFloatingWin " + bool);
+        localHashMap = new HashMap();
+        localHashMap.put(b("p_time_stamp"), b(this.jdField_a_of_type_Long + ""));
+        int j = 0;
+        while ((j < 8) && (i + j < k))
+        {
+          int m = j + i;
+          localHashMap.put(b("p_f_r" + m), b((String)this.g.get(m)));
+          j += 1;
+        }
+        this.h.add(localHashMap);
+        i += j;
       }
+      a(this.jdField_a_of_type_Int);
     }
+  }
+  
+  private void a(int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = bnrf.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("event_simple_p_info_f_num2", paramInt);
+    bnrf.a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  private void a(String paramString, List<String> paramList, HashMap<String, String> paramHashMap)
+  {
+    if ((paramList == null) || (paramHashMap == null)) {}
     for (;;)
     {
-      QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | showFloatingWindow " + bool);
-      if (bool)
+      return;
+      ArrayList localArrayList = new ArrayList();
+      while (paramList.size() > 8)
       {
-        a(this.a, 6, "", 0L);
-        if (this.a != null)
+        List localList = paramList.subList(0, 8);
+        paramList = paramList.subList(8, paramList.size());
+        localArrayList.add(a(localList));
+      }
+      localArrayList.add(a(paramList));
+      int k = localArrayList.size();
+      int i = 0;
+      while (i < k)
+      {
+        int j = 0;
+        if ((j < 8) && (i + j < k))
         {
-          localObject = pha.a(this.a);
-          if (localObject != null) {
-            ((ReadinjoyTabFrame)localObject).a(32);
+          int m = j + i;
+          if (m == 0) {}
+          for (paramList = paramString;; paramList = String.format("%s%d", new Object[] { paramString, Integer.valueOf(m) }))
+          {
+            paramHashMap.put(b(paramList), localArrayList.get(m));
+            j += 1;
+            break;
+          }
+        }
+        i += j;
+      }
+    }
+  }
+  
+  private void a(HashMap<String, ArrayList<String>> paramHashMap)
+  {
+    Iterator localIterator1 = paramHashMap.keySet().iterator();
+    StringBuilder localStringBuilder;
+    int i;
+    label69:
+    String str2;
+    if (localIterator1.hasNext())
+    {
+      String str1 = (String)localIterator1.next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1).append(':');
+      Iterator localIterator2 = ((ArrayList)paramHashMap.get(str1)).iterator();
+      i = 0;
+      if (localIterator2.hasNext())
+      {
+        str2 = (String)localIterator2.next();
+        if (i < 8) {
+          break label169;
+        }
+        this.g.add(localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1).append(':');
+        i = 0;
+      }
+    }
+    label169:
+    for (;;)
+    {
+      localStringBuilder.append(a(str2)).append('^');
+      i += 1;
+      break label69;
+      this.g.add(localStringBuilder.toString());
+      break;
+      return;
+    }
+  }
+  
+  private String b(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    return Base64.encodeToString(paramString.getBytes(), 3);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = new ArrayList();
+    this.c = new ArrayList();
+    this.d = new ArrayList();
+    this.e = new ArrayList();
+    this.f = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.g = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+  }
+  
+  private void b(int paramInt)
+  {
+    if (paramInt < this.h.size())
+    {
+      HashMap localHashMap = (HashMap)this.h.get(paramInt);
+      bdmc.a(null).a(this.jdField_a_of_type_JavaLangString, "event_simple_p_info", false, 1000L, 1000L, localHashMap, null);
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.jdField_a_of_type_JavaUtilHashMap = null;
+    this.g = null;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private void d()
+  {
+    b();
+    i();
+    f();
+    e();
+    a();
+    c();
+  }
+  
+  private void e()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return;
+      localObject1 = ((apaw)localObject1).getRecentList(false);
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (RecentUser)((Iterator)localObject1).next();
+          if (localObject2 != null)
+          {
+            localObject2 = alni.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType());
+            localObject2 = alni.a().a((String)localObject2);
+            if ((localObject2 != null) && ((((RecentBaseData)localObject2).mMenuFlag & 0xF0) == 32)) {
+              if (((RecentBaseData)localObject2).getRecentUserType() == 1) {
+                this.e.add(((RecentBaseData)localObject2).getRecentUserUin());
+              } else if (((RecentBaseData)localObject2).getRecentUserType() == 3000) {
+                this.f.add(((RecentBaseData)localObject2).getRecentUserUin());
+              } else if (((RecentBaseData)localObject2).getRecentUserType() == 0) {
+                this.d.add(((RecentBaseData)localObject2).getRecentUserUin());
+              }
+            }
           }
         }
       }
-      return bool;
-      bool = false;
-      break;
+    }
+  }
+  
+  private void f()
+  {
+    g();
+    h();
+  }
+  
+  private void g()
+  {
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (localTroopManager == null) {}
+    for (;;)
+    {
+      return;
+      Object localObject1 = localTroopManager.a();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (CommonlyUsedTroop)((Iterator)localObject1).next();
+          if (localObject2 != null)
+          {
+            localObject2 = localTroopManager.b(((CommonlyUsedTroop)localObject2).troopUin);
+            if (localObject2 != null) {
+              this.b.add(((TroopInfo)localObject2).troopuin);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private void h()
+  {
+    Object localObject1 = (anws)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return;
+      localObject1 = (List)((anws)localObject1).a().clone();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (Entity)((Iterator)localObject1).next();
+          if (localObject2 != null)
+          {
+            localObject2 = (DiscussionInfo)localObject2;
+            if (((DiscussionInfo)localObject2).hasCollect) {
+              this.c.add(((DiscussionInfo)localObject2).uin);
+            }
+          }
+        }
+      }
     }
   }
   
   private void i()
   {
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)pha.a().getManager(162);
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = localKandianMergeManager.a();
-    if (localKandianMsgBoxRedPntInfo != null)
+    anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (localanyw != null)
     {
-      localKandianMsgBoxRedPntInfo.isRead = true;
-      localKandianMergeManager.l();
-      ThreadManagerV2.excute(new RIJMsgBoxPopupStep.2(this, localKandianMsgBoxRedPntInfo, localKandianMergeManager), 64, null, false);
+      localObject1 = localanyw.c();
+      if ((localObject1 != null) && (((List)localObject1).size() != 0)) {}
     }
-  }
-  
-  protected void g()
-  {
-    int i = 1;
-    Object localObject = this.a.getIntent();
-    pha.d = false;
-    boolean bool;
-    if (((Intent)localObject).hasExtra("notification_message_id"))
+    else
     {
-      String str = ((Intent)localObject).getStringExtra("notification_message_id");
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((pha.k() == 2) && (pha.m() == 2))
-      {
-        if (!str.isEmpty()) {
-          ((KandianMergeManager)localQQAppInterface.getManager(162)).a(2, str);
-        }
-      }
-      else
-      {
-        ((Intent)localObject).removeExtra("notification_message_id");
-        if ((pha.m() != 1) && (pha.k() == 2)) {
-          break label187;
-        }
-        a(this.a, 5, str, 200L);
-        bool = true;
-        label117:
-        localObject = new phi().a("uin", localQQAppInterface.getCurrentAccountUin()).a("push_type", Integer.valueOf(9));
-        if (bool) {
-          i = 3;
-        }
-        oat.a("0X80081DB", ((phi)localObject).a("load_mode", Integer.valueOf(i)).a());
-      }
-    }
-    for (;;)
-    {
-      a(bool);
-      return;
-      QLog.i("RIJMsgBoxPopupStep", 1, "readInJoy lock push, notificationMessageId is empty");
-      break;
-      label187:
-      bool = false;
-      break label117;
-      bool = false;
-    }
-  }
-  
-  protected void h()
-  {
-    int i = this.a.getIntent().getIntExtra("launch_from", 5);
-    if ((((KandianMergeManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(162)).f() > 0) && (a(i))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
       return;
     }
+    Object localObject1 = ((List)localObject1).iterator();
+    int i = 0;
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (Entity)((Iterator)localObject1).next();
+      if (localObject2 != null)
+      {
+        localObject2 = (Groups)localObject2;
+        ArrayList localArrayList = localanyw.a(String.valueOf(((Groups)localObject2).group_id));
+        if ((localArrayList != null) && (localArrayList.size() > 0))
+        {
+          Object localObject3 = new ArrayList(localArrayList);
+          int j = ((List)localObject3).size();
+          localArrayList = new ArrayList(((List)localObject3).size());
+          localObject3 = ((List)localObject3).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            Entity localEntity = (Entity)((Iterator)localObject3).next();
+            if (localEntity != null)
+            {
+              Friends localFriends = (Friends)localEntity;
+              localArrayList.add(((Friends)localEntity).uin);
+              if (localanyw.a(localFriends.uin) != null) {
+                this.jdField_a_of_type_JavaUtilArrayList.add(localFriends.uin);
+              }
+            }
+          }
+          this.jdField_a_of_type_JavaUtilHashMap.put(((Groups)localObject2).group_name, localArrayList);
+          i += j;
+        }
+      }
+    }
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    d();
+    if (this.h != null)
+    {
+      int i = 0;
+      for (;;)
+      {
+        if (i < this.h.size())
+        {
+          b(i);
+          try
+          {
+            Thread.sleep(1000L);
+            i += 1;
+          }
+          catch (Exception paramQQAppInterface)
+          {
+            for (;;)
+            {
+              paramQQAppInterface.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+    this.h = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_JavaLangString = null;
   }
 }
 

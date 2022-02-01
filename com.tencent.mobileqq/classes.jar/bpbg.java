@@ -1,22 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.tavcut.TAVCut.Callback;
+import dov.com.qq.im.aeeditor.AEEditorActivity;
+import java.util.List;
 
-class bpbg
-  extends bomw
+public class bpbg
+  implements TAVCut.Callback
 {
-  bpbg(bpaz parambpaz) {}
+  public bpbg(AEEditorActivity paramAEEditorActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onDone(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "EditProviderPart onFinish key=" + paramString + " result=" + paramBoolean);
+    bpam.b(AEEditorActivity.a(), "TAVCut init ret code = " + paramInt);
+    if (paramInt != 0) {
+      AEEditorActivity.a(this.a).add(new bpbh(this.a, -8));
     }
   }
 }

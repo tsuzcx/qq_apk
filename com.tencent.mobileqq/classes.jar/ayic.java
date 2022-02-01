@@ -1,20 +1,22 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
 
 class ayic
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  ayic(ayib paramayib) {}
+  ayic(ayhj paramayhj) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a != null) && ((paramView.getTag() instanceof ayid)))
-    {
-      ayid localayid = (ayid)paramView.getTag();
-      this.a.a.a(localayid);
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131377499).setAlpha(0.5F);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131377499).setAlpha(1.0F);
+    }
   }
 }
 

@@ -1,14 +1,20 @@
-import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.widgets.QCircleAvatarView;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
 
-public class ahoh
-  implements ahor
+class ahoh
+  extends agen
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagup.a(paramagwc.b, paramString);
-  }
+  public FrameLayout a;
+  public LinearLayout a;
+  public QCircleAvatarView a;
+  public QCircleFollowView a;
+  public View b;
+  public LinearLayout b;
+  public TextView b;
 }
 
 

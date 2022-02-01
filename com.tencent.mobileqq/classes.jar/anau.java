@@ -1,8 +1,6 @@
-public abstract class anau
+class anau
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
+  private static anat a = new anat("cm_game_client_module");
 }
 
 

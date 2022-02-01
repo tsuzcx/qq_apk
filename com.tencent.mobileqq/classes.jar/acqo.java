@@ -1,49 +1,20 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class acqo
-  implements acqj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$Companion;", "", "()V", "TAG", "", "startMotiveBrowsingDialog", "", "activity", "Landroid/app/Activity;", "data", "Lcom/tencent/gdtad/api/motivevideo/GdtMotiveVideoPageData;", "intent", "Landroid/content/Intent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acqo
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  public final void a(@NotNull Activity paramActivity, @NotNull GdtMotiveVideoPageData paramGdtMotiveVideoPageData, @NotNull Intent paramIntent)
   {
-    Object localObject = null;
-    if (paramacpp != null) {}
-    for (paramVarArgs = paramacpp.a(); (paramacpp == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      acqy.d("GdtMacJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("macAddress", acsa.b(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramacpp.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramacpp != null) {
-            paramString = paramacpp.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getMacAddress", paramString);
-          return true;
-          localJSONException = localJSONException;
-          acqy.d("GdtMacJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          acqy.d("GdtMacJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramGdtMotiveVideoPageData, "data");
+    Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
+    paramActivity.runOnUiThread((Runnable)new GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1(paramActivity, paramGdtMotiveVideoPageData, paramIntent));
   }
 }
 

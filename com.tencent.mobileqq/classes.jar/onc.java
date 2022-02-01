@@ -1,26 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
-class onc
-  implements DialogInterface.OnClickListener
+public class onc
+  implements bjbu
 {
-  onc(omz paramomz, boolean paramBoolean) {}
+  public onc(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!omz.a(this.jdField_a_of_type_Omz)) {}
+    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
+      this.a.finish();
     }
-    while (!(omz.a(this.jdField_a_of_type_Omz) instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Omz.b();
-      return;
-    }
-    oqj.b(omz.a(this.jdField_a_of_type_Omz));
-    opz.a(omz.a(this.jdField_a_of_type_Omz), omz.a(this.jdField_a_of_type_Omz).p, omz.a(this.jdField_a_of_type_Omz).q, "");
   }
 }
 

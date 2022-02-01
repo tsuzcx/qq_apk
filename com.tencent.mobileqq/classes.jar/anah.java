@@ -1,80 +1,96 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.lightGame.CmGameSocketConnection;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.lang.ref.WeakReference;
 
-class anah
-  implements anam
+public class anah
+  extends Handler
 {
-  anah(anaa paramanaa) {}
+  private WeakReference<CmGameSocketConnection> a;
   
-  public void a()
+  public anah(Looper paramLooper, CmGameSocketConnection paramCmGameSocketConnection)
   {
-    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
-    if (this.a.jdField_a_of_type_Bjsi != null) {
-      this.a.jdField_a_of_type_Bjsi.a();
-    }
+    super(paramLooper);
+    this.a = new WeakReference(paramCmGameSocketConnection);
   }
   
-  public void a(int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
-    if (this.a.jdField_a_of_type_Bjsi != null) {
-      this.a.jdField_a_of_type_Bjsi.c(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameConnection.ConnectionHandler", 2, "[handleMessage] msg=" + paramMessage.what);
     }
-  }
-  
-  public void a(int paramInt, String[] paramArrayOfString)
-  {
-    int k = paramArrayOfString.length;
-    int j = 0;
-    String str;
-    if (j < k)
+    if (this.a != null) {}
+    for (CmGameSocketConnection localCmGameSocketConnection = (CmGameSocketConnection)this.a.get();; localCmGameSocketConnection = null)
     {
-      str = paramArrayOfString[j];
-      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
-      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        break label237;
+      if (localCmGameSocketConnection == null) {
+        QLog.e("CmGameConnection.ConnectionHandler", 1, "[handleMessage] no connection");
       }
-    }
-    label237:
-    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
-    {
-      switch (paramInt)
+      boolean bool;
+      label165:
+      do
       {
-      default: 
-        label116:
-        if (i != 0) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            bool = CmGameSocketConnection.a(localCmGameSocketConnection);
+            if (QLog.isColorLevel()) {
+              QLog.d("CmGameConnection.ConnectionHandler", 2, new Object[] { "[handleMessage] conn result=", Boolean.valueOf(bool), ", connected=", Boolean.valueOf(localCmGameSocketConnection.a()) });
+            }
+            if (bool) {
+              break label165;
+            }
+          }
+        } while (localCmGameSocketConnection.a());
+        localCmGameSocketConnection.d();
+        return;
+        super.removeMessages(2);
+        paramMessage = super.obtainMessage(2);
+        paramMessage.obj = Boolean.valueOf(true);
+        super.sendMessage(paramMessage);
+        return;
+        bool = CmGameSocketConnection.b(localCmGameSocketConnection);
+        super.removeMessages(2);
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameConnection.ConnectionHandler", 1, new Object[] { "[handleMessage] heartbeat, result=", Boolean.valueOf(bool), ", flag=", paramMessage.obj });
         }
-        break;
-      }
-      for (;;)
+        if (bool)
+        {
+          if ((paramMessage.obj != null) && (((Boolean)paramMessage.obj).booleanValue())) {
+            localCmGameSocketConnection.c();
+          }
+          if (annu.a > 0L) {}
+          for (l = annu.a;; l = 120000L)
+          {
+            super.sendEmptyMessageDelayed(2, l);
+            return;
+          }
+        }
+        localCmGameSocketConnection.a(true);
+        return;
+        bool = CmGameSocketConnection.c(localCmGameSocketConnection);
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameConnection.ConnectionHandler", 1, new Object[] { "[handleMessage] send, result=", Boolean.valueOf(bool) });
+        }
+      } while (!bool);
+      super.removeMessages(2);
+      if (annu.a > 0L) {}
+      for (long l = annu.a;; l = 120000L)
       {
-        j += 1;
-        break;
-        i |= 0x20;
-        break label116;
-        i &= 0xFFFFFFDF;
-        break label116;
-        i |= 0x1;
-        break label116;
-        i &= 0xFFFFFFFE;
-        break label116;
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
+        super.sendEmptyMessageDelayed(2, l);
+        if (!CmGameSocketConnection.d(localCmGameSocketConnection)) {
+          break;
         }
+        super.removeMessages(3);
+        super.sendEmptyMessage(3);
+        return;
       }
-      if (this.a.jdField_a_of_type_Bjsi != null) {
-        this.a.jdField_a_of_type_Bjsi.a(paramInt, paramArrayOfString);
-      }
-      return;
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
-    if (this.a.jdField_a_of_type_Bjsi != null) {
-      this.a.jdField_a_of_type_Bjsi.a(paramArrayOfString);
     }
   }
 }

@@ -1,15 +1,32 @@
-import android.view.GestureDetector;
+import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import android.view.View;
+import android.view.View.OnHoverListener;
+import android.view.accessibility.AccessibilityManager;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class awsa
-  implements bkkq
+  implements View.OnHoverListener
 {
-  public awsa(MultiAIOItemFragment paramMultiAIOItemFragment) {}
+  public awsa(LocationPickFragment paramLocationPickFragment) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    MultiAIOItemFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
+    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
+    {
+      if (paramView.requestFocus()) {
+        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
+      }
+      if (!LocationPickFragment.a(this.a).b())
+      {
+        LocationPickFragment.a(this.a).setDisplayFromType(3);
+        LocationPickFragment.a(this.a).a();
+      }
+      bdll.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
+    }
     return false;
   }
 }

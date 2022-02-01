@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import blgg;
+import bmhj;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -37,7 +37,7 @@ public class PluginIphoneTitleBarActivity
   private boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   protected float b;
-  protected View.OnClickListener c = new blgg(this);
+  protected View.OnClickListener c = new bmhj(this);
   public RelativeLayout e;
   public ImageView f;
   protected TextView h;
@@ -65,9 +65,9 @@ public class PluginIphoneTitleBarActivity
   
   protected View a()
   {
-    this.j = ((TextView)findViewById(2131368979));
-    this.f = ((ImageView)findViewById(2131368961));
-    this.l = ((TextView)findViewById(2131379492));
+    this.j = ((TextView)findViewById(2131369073));
+    this.f = ((ImageView)findViewById(2131369056));
+    this.l = ((TextView)findViewById(2131379660));
     f(this.j);
     f(this.f);
     return this.j;
@@ -76,7 +76,7 @@ public class PluginIphoneTitleBarActivity
   protected String a()
   {
     if ((this.i == null) || (this.i.getText() == null) || (this.i.getText().length() == 0)) {
-      return getString(2131690563);
+      return getString(2131690559);
     }
     return this.i.getText().toString();
   }
@@ -88,10 +88,10 @@ public class PluginIphoneTitleBarActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130850093));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130850105));
     if (this.h == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376599));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376731));
       f(this.jdField_a_of_type_AndroidViewViewGroup);
       b();
       c();
@@ -107,7 +107,7 @@ public class PluginIphoneTitleBarActivity
     {
       requestWindowFeature(7);
       super.setContentView(paramView);
-      getWindow().setFeatureInt(7, 2131558977);
+      getWindow().setFeatureInt(7, 2131558976);
       a(getIntent());
       return;
     }
@@ -134,7 +134,7 @@ public class PluginIphoneTitleBarActivity
   
   protected View b()
   {
-    this.h = ((TextView)findViewById(2131368947));
+    this.h = ((TextView)findViewById(2131369042));
     if (this.h != null)
     {
       this.h.setOnClickListener(this.c);
@@ -152,7 +152,7 @@ public class PluginIphoneTitleBarActivity
       String str = paramIntent.getExtras().getString("leftViewText");
       paramIntent = str;
       if (str == null) {
-        paramIntent = getString(2131690563);
+        paramIntent = getString(2131690559);
       }
       if (this.jdField_r_of_type_Boolean) {
         localTextView.setText("  ");
@@ -167,14 +167,14 @@ public class PluginIphoneTitleBarActivity
   
   protected View c()
   {
-    this.i = ((TextView)findViewById(2131368994));
+    this.i = ((TextView)findViewById(2131369088));
     return this.i;
   }
   
   protected void c(int paramInt, View.OnClickListener paramOnClickListener)
   {
     this.h.setVisibility(8);
-    this.h = ((TextView)findViewById(2131368949));
+    this.h = ((TextView)findViewById(2131369044));
     f(this.h);
     this.h.setVisibility(0);
     this.h.setText(paramInt);
@@ -213,7 +213,7 @@ public class PluginIphoneTitleBarActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839406);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839414);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.i.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.i.getCompoundDrawablePadding();
       this.i.setCompoundDrawablePadding(10);
@@ -257,7 +257,7 @@ public class PluginIphoneTitleBarActivity
       }
       else
       {
-        str1 = getString(2131690563);
+        str1 = getString(2131690559);
       }
       if (this.jdField_r_of_type_Boolean) {
         localTextView.setText("  ");
@@ -270,7 +270,7 @@ public class PluginIphoneTitleBarActivity
     localTextView.setText(str1);
   }
   
-  public void l_(int paramInt)
+  public void m_(int paramInt)
   {
     this.b = getResources().getDisplayMetrics().density;
     requestWindowFeature(1);
@@ -299,7 +299,7 @@ public class PluginIphoneTitleBarActivity
         }
         super.setContentView(paramInt);
         if (bool) {
-          getWindow().setFeatureInt(7, 2131558977);
+          getWindow().setFeatureInt(7, 2131558976);
         }
       }
       for (;;)
@@ -312,18 +312,18 @@ public class PluginIphoneTitleBarActivity
         if (bool)
         {
           Object localObject2 = LayoutInflater.from(this);
-          localObject1 = ((LayoutInflater)localObject2).inflate(2131558979, null);
+          localObject1 = ((LayoutInflater)localObject2).inflate(2131558978, null);
           try
           {
             localObject2 = ((LayoutInflater)localObject2).inflate(paramInt, (ViewGroup)localObject1, false);
-            this.e = ((RelativeLayout)((View)localObject1).findViewById(2131378887));
+            this.e = ((RelativeLayout)((View)localObject1).findViewById(2131379050));
             if (ImmersiveUtils.isSupporImmersive() == 1)
             {
               this.e.setFitsSystemWindows(true);
               this.e.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
             }
             localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-            ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131376599);
+            ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131376731);
             this.e.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
             this.mContentView = ((View)localObject2);
             super.setContentView(this.e);
@@ -350,7 +350,7 @@ public class PluginIphoneTitleBarActivity
             QLog.e("IphoneTitleBarActivity", 2, "layout with merge ,use framelayout to immersive" + getComponentName());
           }
           super.setContentView(paramInt);
-          getWindow().setFeatureInt(7, 2131558977);
+          getWindow().setFeatureInt(7, 2131558976);
           if (this.jdField_r_of_type_AndroidViewView != null) {
             this.jdField_r_of_type_AndroidViewView.setVisibility(0);
           }

@@ -11,5 +11,5 @@
             <ImageView android:layout_gravity="center" android:id="@id/mi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ghn" />
         </FrameLayout>
     </LinearLayout>
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/km9" android:background="@drawable/hhp" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="9.5dip" android:text="+4" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/kr9" android:background="@drawable/hhp" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="9.5dip" android:text="+4" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </RelativeLayout>

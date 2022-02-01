@@ -13,6 +13,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.AdFrequencyLimit;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -44,12 +45,12 @@ public class AppUIProxy
   private void showKingcardTip()
   {
     QMLog.i("minisdk-start_UIProxy", "showKingcardTip");
-    this.mMainHandler.post(new AppUIProxy.5(this));
+    this.mMainHandler.post(new AppUIProxy.6(this));
   }
   
   public void disableBreak()
   {
-    new Handler(Looper.getMainLooper()).post(new AppUIProxy.7(this));
+    new Handler(Looper.getMainLooper()).post(new AppUIProxy.8(this));
   }
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -70,7 +71,7 @@ public class AppUIProxy
   
   public void enableBreak()
   {
-    new Handler(Looper.getMainLooper()).post(new AppUIProxy.6(this));
+    new Handler(Looper.getMainLooper()).post(new AppUIProxy.7(this));
   }
   
   protected AppRuntimeEventCenter.RuntimeStateObserver getRuntimeStateObserver()
@@ -85,7 +86,7 @@ public class AppUIProxy
     if (this.mLoadingUI == null) {
       return;
     }
-    this.mMainHandler.post(new AppUIProxy.3(this));
+    this.mMainHandler.post(new AppUIProxy.4(this));
     AdFrequencyLimit.setOnStartTime(System.currentTimeMillis());
     MiniLoadingAdManager.getInstance().preloadLoadingAd(this.mActivity, getMiniAppInfo());
   }
@@ -109,6 +110,7 @@ public class AppUIProxy
     this.mDebugText.setText("调试断点中...");
     paramViewGroup.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
     this.mDebugLayout.setVisibility(4);
+    ThreadManager.executeOnNetworkIOThreadPool(new AppUIProxy.2(this));
   }
   
   public void onIntentUpdate(Intent paramIntent)
@@ -173,7 +175,7 @@ public class AppUIProxy
         paramString = (String)localObject1;
         ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(this.mActivity, (Intent)localObject2);
         paramString = (String)localObject1;
-        AppBrandTask.runTaskOnUiThreadDelay(new AppUIProxy.2(this), 1500L);
+        AppBrandTask.runTaskOnUiThreadDelay(new AppUIProxy.3(this), 1500L);
         return;
       }
       catch (Throwable localThrowable)
@@ -192,7 +194,7 @@ public class AppUIProxy
       if (this.mCurrRuntimeLoader.dismissLoadingAfterLoaded()) {
         break label104;
       }
-      this.mCurrRuntimeLoader.addRuntimeStateObserver(new AppUIProxy.4(this));
+      this.mCurrRuntimeLoader.addRuntimeStateObserver(new AppUIProxy.5(this));
     }
     for (;;)
     {
@@ -301,7 +303,7 @@ public class AppUIProxy
   
   protected void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong)
   {
-    paramActivity.runOnUiThread(new AppUIProxy.8(this, paramActivity, paramMiniAppInfo, paramString, paramLong));
+    paramActivity.runOnUiThread(new AppUIProxy.9(this, paramActivity, paramMiniAppInfo, paramString, paramLong));
   }
 }
 

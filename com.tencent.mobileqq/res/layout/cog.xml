@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="horizontal" android:id="@id/n_u" android:background="@color/ajr" android:layout_width="46.0dip" android:layout_height="46.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:id="@id/n_m" android:background="@drawable/gge" android:layout_width="46.0dip" android:layout_height="46.0dip">
-        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/na4" android:layout_width="19.0dip" android:layout_height="19.0dip" android:scaleType="centerCrop" />
-    </FrameLayout>
-    <ImageView android:layout_gravity="center" android:id="@id/naa" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/gew" />
-</merge>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="84.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="0.5dip" android:src="@drawable/glv" android:scaleType="fitCenter" />
+        <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/kbs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="10.0dip" android:maxLines="1" android:includeFontPadding="false" />
+    </LinearLayout>
+    <TextView android:textSize="13.0dip" android:textColor="#ff000000" android:id="@id/nuo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="29.0dip" android:layout_below="@id/n1a" />
+</RelativeLayout>

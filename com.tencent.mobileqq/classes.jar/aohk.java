@@ -1,10 +1,24 @@
-public abstract interface aohk
+public class aohk
+  implements anui
 {
-  public abstract void a(int paramInt);
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
-  
-  public abstract void b();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
+    for (paramObject = (Object[])paramObject;; paramObject = null)
+    {
+      switch (paramInt)
+      {
+      }
+      do
+      {
+        return;
+      } while (paramObject == null);
+      a(paramBoolean, ((Integer)paramObject[0]).intValue());
+      return;
+    }
+  }
 }
 
 

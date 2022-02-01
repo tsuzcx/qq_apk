@@ -1,37 +1,65 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.SingleThreadExecutor;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import java.util.List;
+import java.util.concurrent.AbstractExecutorService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class aoik
-  extends aojt
+  extends AbstractExecutorService
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  private final int a;
+  
+  protected aoik(int paramInt)
   {
-    paramQQAppInterface = new aoij(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "avgame";
-    paramQQAppInterface.c = "create_room";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    while (i < paramContext.length)
-    {
-      paramString = paramContext[i];
-      if (paramString.split("=").length == 2)
-      {
-        int j = paramString.indexOf("=");
-        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
-      }
-      i += 1;
-    }
-    return paramQQAppInterface;
+    this.a = paramInt;
+  }
+  
+  public static ExecutorService a(int paramInt)
+  {
+    return new aoik(paramInt);
+  }
+  
+  public static ExecutorService b(int paramInt)
+  {
+    return new SingleThreadExecutor(paramInt);
+  }
+  
+  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
+  {
+    return false;
+  }
+  
+  public void execute(@NonNull Runnable paramRunnable)
+  {
+    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
+  }
+  
+  public boolean isShutdown()
+  {
+    return false;
+  }
+  
+  public boolean isTerminated()
+  {
+    return false;
+  }
+  
+  public void shutdown()
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  @NonNull
+  public List<Runnable> shutdownNow()
+  {
+    throw new UnsupportedOperationException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoik
  * JD-Core Version:    0.7.0.1
  */

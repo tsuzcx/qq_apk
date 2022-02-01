@@ -1,98 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.util.Pair;
 
 public class afpk
-  extends anxg
+  implements DialogInterface.OnClickListener
 {
-  public afpk(TroopTransferActivity paramTroopTransferActivity) {}
+  public afpk(SubAccountUgActivity paramSubAccountUgActivity, bdwt parambdwt, Pair paramPair) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!bgjw.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) || (!bgjw.a(paramString1, this.a.app.getCurrentAccountUin()))) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramBoolean)
+    this.jdField_a_of_type_Bdwt.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!bdwt.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
     {
-      if (this.a.jdField_a_of_type_Biax != null) {
-        this.a.jdField_a_of_type_Biax.b();
-      }
-      paramString1 = (TroopManager)this.a.app.getManager(52);
-      paramString3 = paramString1.b(paramLong + "");
-      if (paramString3 != null)
-      {
-        paramString3.dwAdditionalFlag = 0L;
-        paramString1.b(paramString3);
-      }
-      paramString1 = new Intent();
-      paramString1.putExtra("isNeedFinish", true);
-      paramString1.putExtra("fin_tip_msg", this.a.getString(2131718733));
-      paramString1.putExtra("uin", paramString2);
-      this.a.setResult(-1, paramString1);
-      this.a.finish();
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
+      bdws.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
     }
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
-      paramString1 = this.a.getString(2131718719);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Biax == null) {
-        this.a.jdField_a_of_type_Biax = new biax(this.a);
-      }
-      this.a.jdField_a_of_type_Biax.a(2, paramString1, 1500);
-      return;
-      if ((paramInt == 3) || (paramInt == 4) || (paramInt == 7) || (paramInt == 16) || (paramInt == 19))
-      {
-        paramString1 = this.a.getString(2131718721);
-      }
-      else if ((paramInt == 5) || (paramInt == 17) || (paramInt == 18))
-      {
-        paramString1 = this.a.getString(2131718720);
-      }
-      else
-      {
-        if (paramInt == 12)
-        {
-          if (this.a.jdField_a_of_type_Biax != null) {
-            this.a.jdField_a_of_type_Biax.b();
-          }
-          paramString1 = bglp.a(this.a, 230);
-          paramString1.setTitle(this.a.getString(2131695518));
-          paramString1.setMessage(this.a.getString(2131695519));
-          paramString1.setNegativeButton(this.a.getString(2131695463), new afpl(this, paramString1));
-          paramString1.setPositiveButton(this.a.getString(2131718062), new afpm(this, paramString1));
-          paramString1.show();
-          return;
-        }
-        paramString1 = this.a.getString(2131718720);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
   }
 }
 

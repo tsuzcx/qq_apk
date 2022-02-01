@@ -1,27 +1,37 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 
 public class afqp
-  extends WtloginObserver
+  extends Handler
 {
-  public afqp(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
-  
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public afqp(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
   {
-    if (QLog.isColorLevel())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ImageView localImageView = (ImageView)this.a.findViewById(2131366999);
+    switch (paramMessage.what)
     {
-      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
     }
-    if (paramInt2 == 0) {
+    do
+    {
+      do
+      {
+        return;
+        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
+        return;
+      } while (!(paramMessage.obj instanceof Drawable));
+      localImageView.setImageDrawable((Drawable)paramMessage.obj);
       return;
-    }
-    VerifyPhoneNumActivity.a(this.a);
-    VerifyPhoneNumActivity.b(this.a);
+    } while (!(paramMessage.obj instanceof Bitmap));
+    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

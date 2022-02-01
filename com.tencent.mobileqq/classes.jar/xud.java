@@ -1,86 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.DetailVideoInfoWidget.SubscribeStatusReceiver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.Dispatcher;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class xud
-  extends wfi
+  implements xvr
 {
-  public String a;
+  public xud(TextureVideoView paramTextureVideoView) {}
   
-  private xud(xts paramxts) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    boolean bool = TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString);
-    if (bool) {
-      this.jdField_a_of_type_JavaLangString = null;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Error: " + paramInt1 + "," + paramInt2);
     }
-    StoryVideoItem localStoryVideoItem;
-    if (this.jdField_a_of_type_Xts.a != null)
+    this.a.jdField_a_of_type_Int = -1;
+    this.a.b = -1;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if ((this.a.jdField_a_of_type_Xvr != null) && (this.a.jdField_a_of_type_Xvr.a(paramxvo, paramInt1, paramInt2))) {}
+    while (this.a.getWindowToken() == null) {
+      return true;
+    }
+    this.a.getContext().getResources();
+    if (paramInt1 == 200) {}
+    for (paramInt1 = 17039381;; paramInt1 = 17039377)
     {
-      localStoryVideoItem = this.jdField_a_of_type_Xts.a.a();
-      if (localStoryVideoItem != null) {
-        break label64;
+      paramxvo = TextureVideoView.a(this.a);
+      if (paramxvo == null) {
+        break;
       }
+      new AlertDialog.Builder(paramxvo).setMessage(paramInt1).setPositiveButton(17039376, new xue(this)).setCancelable(false).show();
+      return true;
     }
-    label64:
-    label326:
-    do
-    {
-      do
-      {
-        wpy localwpy;
-        QQUserUIItem localQQUserUIItem;
-        do
-        {
-          return;
-          localStoryVideoItem = null;
-          break;
-          localwpy = (wpy)wpm.a(2);
-          localQQUserUIItem = localwpy.b(localStoryVideoItem.mOwnerUid);
-        } while ((localQQUserUIItem == null) || (!TextUtils.equals(paramString, localQQUserUIItem.getUnionId())));
-        if (paramBoolean1)
-        {
-          if (paramBoolean2) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            localQQUserUIItem.isSubscribe = paramInt;
-            ThreadManager.post(new DetailVideoInfoWidget.SubscribeStatusReceiver.1(this, localwpy, localQQUserUIItem), 5, null, false);
-            if (paramBoolean2)
-            {
-              paramString = (wfg)xfe.a().getManager(181);
-              if (!paramString.g())
-              {
-                paramString.c();
-                QQToast.a(xfe.a(), 2, anni.a(2131701950), 0).a();
-              }
-              paramString = new yla(2);
-              wfo.a().dispatch(paramString);
-            }
-            xts.a(this.jdField_a_of_type_Xts, localStoryVideoItem, localQQUserUIItem);
-            if (!bool) {
-              break;
-            }
-            yqu.a("play_video", "follow_suc", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
-            return;
-          }
-        }
-        if (!paramBoolean2) {
-          break label326;
-        }
-        QQToast.a(xfe.a(), 1, anni.a(2131701949), 0).a();
-      } while (!bool);
-      yqu.a("play_video", "follow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
-      return;
-      QQToast.a(xfe.a(), 1, anni.a(2131701947), 0).a();
-    } while (!bool);
-    yqu.a("play_video", "unfollow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
   }
 }
 

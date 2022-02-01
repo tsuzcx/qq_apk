@@ -1,53 +1,34 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class opi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class opi
+  implements ViewBase.OnClickListener
 {
-  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
+  opi(otp paramotp, otd paramotd, Container paramContainer) {}
+  
+  public final void onClick(ViewBase paramViewBase)
   {
-    try
-    {
-      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_pk_cell");
-      if (paramAdData.U != null) {
-        oqj.a(paramJSONObject, paramAdData.a);
-      }
-      if (!TextUtils.isEmpty(paramAdData.j))
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", paramAdData.j);
-        paramJSONObject.put("id_tv_title", localObject);
-      }
-      if (!TextUtils.isEmpty(paramAdData.l))
-      {
-        localObject = tyc.a(paramAdData.l, 4);
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("image_url", ((URL)localObject).toString());
-        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
-      }
-      Object localObject = new JSONObject();
-      if (!TextUtils.isEmpty(paramAdData.L))
-      {
-        ((JSONObject)localObject).put("text", paramAdData.L);
-        paramJSONObject.put("id_ad_dislike_button", localObject);
-      }
-      if (!TextUtils.isEmpty(paramAdData.q))
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", paramAdData.q);
-        paramJSONObject.put("id_tv_author", localObject);
+    if (tpk.a(this.jdField_a_of_type_Otp)) {
+      if ((this.jdField_a_of_type_Otp.a.advertisementInfo == null) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_Otp.a.advertisementInfo.mAdVideoUrl)) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_Otp.a.advertisementInfo.mAdViewId))) {
+        break label101;
       }
     }
-    catch (JSONException paramAdData)
+    label101:
+    for (int i = 6;; i = 5)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ReadInjoy_ad_banner_pk_cell", 2, "JSONException = " + paramAdData.getMessage());
+      paramViewBase = this.jdField_a_of_type_Otd.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      tpk.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otp, i);
+      return;
     }
-    return paramJSONObject;
-    return paramJSONObject;
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afys;
+import agim;
 import com.tencent.qphone.base.util.QLog;
-import zvc;
+import zyx;
 
 public class IntimateInfoShareHelper$7
   implements Runnable
 {
-  public IntimateInfoShareHelper$7(afys paramafys, int paramInt1, int paramInt2) {}
+  public IntimateInfoShareHelper$7(agim paramagim, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     try
     {
-      zvc.a(this.a, this.b);
+      zyx.a(this.a, this.b);
       return;
     }
     catch (Exception localException)

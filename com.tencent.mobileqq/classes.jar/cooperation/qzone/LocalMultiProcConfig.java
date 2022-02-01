@@ -27,6 +27,7 @@ public class LocalMultiProcConfig
   public static final String PREFS_NAME_QZ_SETTING = "Qz_setting";
   public static final String PREFS_NAME_QZ_VIDEO_SETTING = "QZ_video_shared_setting";
   public static String PROCESS_NAME = "com.tencent.mobileqq:qzone";
+  public static final String QCIRCLE_PUBLISH_SELECTED_GRID_SAVE = "qcircle_publish_selected_grid_save";
   public static final String QZONE_ALBUM_DLNA_SWITCH = "QZone_dlnaSwitch";
   public static final String QZONE_BARRAGE_EFFECT_ENABLED = "qzone_barrage_effect_enabled";
   public static final String QZONE_BARRAGE_EFFECT_SAVE_DATA = "qzone_barrage_effect_save_data";
@@ -63,6 +64,7 @@ public class LocalMultiProcConfig
   public static final String QZONE_SUPER_FONT_SAVE_DATA = "qzone_super_font_save_data";
   public static final String QZONE_SYNC_KUOLIE = "QZone_synckuolie";
   public static final String QZONE_WATER_MARK = "WaterMark";
+  public static final String QZONE_WNS_NET_CLOSE = "qzone_wns_net";
   public static final String SHARPP_SO_MD5_AND_LENGTH = "sharpPSoMD5AndLength";
   public static final String SHARPP_SO_PREVIOUS_VERSION_MD5_AND_LENGTH = "sharpPSoMD5AndLength_previous";
   private static final int StateLoading = 0;

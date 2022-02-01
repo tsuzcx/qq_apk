@@ -1,19 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.requests.QCircleHeartbeatSignalReportRequest;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleReport.StHeartbeatSignalRsp;
+import org.jetbrains.annotations.NotNull;
 
-class vrk
-  implements zxa<QQCircleReport.StHeartbeatSignalRsp>
+public abstract class vrk
 {
-  vrk(vri paramvri, QCircleHeartbeatSignalReportRequest paramQCircleHeartbeatSignalReportRequest) {}
+  vrd a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleReport.StHeartbeatSignalRsp paramStHeartbeatSignalRsp)
+  vrk(@NotNull vrd paramvrd)
   {
-    if (((!paramBoolean) || (paramLong != 0L) || (paramStHeartbeatSignalRsp == null)) && (!TextUtils.isEmpty(paramString))) {
-      QLog.e("QCircleReportHelper", 1, "reportQCircleActiveIntervalTime error:" + paramString + ",traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleHeartbeatSignalReportRequest.getTraceId());
-    }
+    this.a = paramvrd;
   }
+  
+  void a(boolean paramBoolean, int paramInt) {}
 }
 
 

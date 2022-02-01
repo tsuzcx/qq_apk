@@ -1,42 +1,19 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
-public final class ayzs
+public class ayzs
+  implements azbw
 {
-  final TroopAIOAppInfo a = new TroopAIOAppInfo();
+  public ayzs(TranslateFragment paramTranslateFragment, ayyd paramayyd) {}
   
-  private void a(String paramString)
+  public void a(int paramInt, azbx paramazbx)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOPlusPanelAppInfoConfigProcessor", 2, "Config parse configText -> " + paramString);
+    if ((paramazbx != null) && (!TextUtils.isEmpty(paramazbx.b)))
+    {
+      if (!this.jdField_a_of_type_Ayyd.b.equalsIgnoreCase(paramazbx.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramazbx.b, this.jdField_a_of_type_Ayyd.b(paramazbx.b));
       }
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.a.appid = paramString.optInt("appid");
-      this.a.name = paramString.optString("title");
-      this.a.enName = paramString.optString("eng_title");
-      this.a.iconUrl = paramString.optString("iconNormal");
-      this.a.iconPress = paramString.optString("iconPress");
-      this.a.simpleDayUrl = paramString.optString("iconConciseNormal");
-      this.a.simpleDayPressUrl = paramString.optString("iconConcisePress");
-      this.a.simpleNightUrl = paramString.optString("iconConciseNightNormal");
-      this.a.simpleNightPressUrl = paramString.optString("iconConciseNightPress");
-      this.a.redDotID = azar.a(this.a.appid);
-      this.a.actionType = paramString.optString("actionType");
-      this.a.action = paramString.optString("action");
-      this.a.enableC2C = paramString.optInt("enableC2C");
-      this.a.enableGroup = paramString.optInt("enableGroup");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("AIOPlusPanelAppInfoConfigProcessor", 1, paramString, new Object[0]);
+      ayyb.a("0X800AD30", ayyb.a(paramazbx.b));
     }
   }
 }

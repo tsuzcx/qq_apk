@@ -1,56 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
 
-public class aydd
-  implements ayda
+public final class aydd
+  implements Parcelable.Creator<MedalItem>
 {
-  private static volatile aydd jdField_a_of_type_Aydd;
-  private ayda jdField_a_of_type_Ayda;
-  private List<ayde> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static aydd a()
+  public MedalItem a(Parcel paramParcel)
   {
-    if (jdField_a_of_type_Aydd == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aydd == null) {
-        jdField_a_of_type_Aydd = new aydd();
-      }
-      return jdField_a_of_type_Aydd;
-    }
-    finally {}
+    return new MedalItem(paramParcel);
   }
   
-  public List<ayde> a()
+  public MedalItem[] a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    new aydb().a(this);
-  }
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(ayda paramayda)
-  {
-    this.jdField_a_of_type_Ayda = paramayda;
-  }
-  
-  public void a(List<ayde> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_Ayda != null) {
-      this.jdField_a_of_type_Ayda.a(paramList);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Ayda = null;
-    jdField_a_of_type_Aydd = null;
+    return new MedalItem[paramInt];
   }
 }
 

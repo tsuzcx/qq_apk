@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import pmh;
+import pfa;
 
 class BridgeModule$8
   implements Runnable
@@ -9,7 +9,7 @@ class BridgeModule$8
   
   public void run()
   {
-    pmh.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    pfa.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,130 +1,198 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.ark.ArkViewModelBase.ErrorInfo;
+import com.tencent.ark.ark;
+import com.tencent.ark.open.ArkAppInfo.TimeRecord;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.rich.ArkNodeContainer.1;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
 public class bcke
+  extends ArkViewModel
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private static int jdField_a_of_type_Int;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static long[] jdField_a_of_type_ArrayOfLong = new long[20];
-  private static int jdField_b_of_type_Int;
-  private static volatile boolean jdField_b_of_type_Boolean;
-  private static long[] jdField_b_of_type_ArrayOfLong = new long[20];
-  private static int jdField_c_of_type_Int;
-  private static long[] jdField_c_of_type_ArrayOfLong = new long[20];
-  private static int jdField_d_of_type_Int;
-  private static long[] jdField_d_of_type_ArrayOfLong = new long[20];
+  private bckd a;
+  public ArkAppInfo.TimeRecord a;
   
-  public static void a()
+  public bcke(bcjz parambcjz) {}
+  
+  private void b(String paramString)
   {
-    if ((jdField_c_of_type_Int == 20) && (!jdField_a_of_type_Boolean))
-    {
-      if (!jdField_b_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
-      {
-        jdField_b_of_type_Boolean = true;
-        jdField_a_of_type_Boolean = true;
-        l = 0L;
-        j = 0;
-        while (j < jdField_c_of_type_Int)
-        {
-          l += jdField_c_of_type_ArrayOfLong[j];
-          d1 = jdField_c_of_type_ArrayOfLong[j] / 1000.0D;
-          QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[FrameBuffer]temp=" + d1 + "ms framefpsOnce=" + 1000.0D / d1);
-          j += 1;
-        }
-      }
-      double d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[FrameBuffer]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        bckc.a("sv_preprocess_frame_buffer", d1);
-      }
-      long l = 0L;
-      int j = 0;
-      while (j < jdField_d_of_type_Int)
-      {
-        l += jdField_d_of_type_ArrayOfLong[j];
-        d1 = jdField_d_of_type_ArrayOfLong[j] / 1000.0D;
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[ClipVideo]temp=" + d1 + "ms ClipVideoFpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[ClipVideo]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        bckc.a("sv_preprocess_clip_video", d1);
-      }
-      l = 0L;
-      j = 0;
-      while (j < 20)
-      {
-        d1 = (jdField_b_of_type_ArrayOfLong[j] - jdField_a_of_type_ArrayOfLong[j]) / 1000.0D;
-        l = (l + d1);
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]temp=" + d1 + "ms InputfpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 20L;
-      QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Process=" + 1000.0D / d1);
-      if (i != 0) {
-        bckc.a("sv_preprocess_total_time", d1);
-      }
-      d1 = (jdField_b_of_type_ArrayOfLong[19] - jdField_a_of_type_ArrayOfLong[0]) / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Camera=" + 1000.0D / d1);
-      }
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
     }
   }
   
-  public static void a(long paramLong)
+  public void a()
   {
-    if (jdField_a_of_type_Int < 20)
+    destroy();
+    this.jdField_a_of_type_Bckd = null;
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
-      int i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      new JSONObject(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ArkNodeContainer", 2, String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
     }
   }
   
-  public static void b()
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void b(long paramLong)
-  {
-    if (jdField_b_of_type_Int < 20)
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkNodeContainer", 2, String.format("loadArkApp, apppath:" + paramString1 + " retcode:" + paramInt + " msg:" + paramString2, new Object[0]));
+    }
+    boolean bool1;
+    label72:
+    String str1;
+    String str2;
+    String str3;
+    if (paramInt != 0)
     {
-      long[] arrayOfLong = jdField_b_of_type_ArrayOfLong;
-      int i = jdField_b_of_type_Int;
-      jdField_b_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      bool1 = true;
+      if (paramInt != -2) {
+        break label152;
+      }
+      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
+      b(str1);
+      b(str2);
+      b(str3);
+      if (paramString2 != null) {
+        break label158;
+      }
+      paramString2 = "";
+    }
+    label152:
+    label158:
+    for (;;)
+    {
+      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
+      return;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label72;
     }
   }
   
-  public static void c(long paramLong)
+  public boolean a(bckd parambckd, String paramString, float paramFloat)
   {
-    if (jdField_c_of_type_Int < 20)
+    this.jdField_a_of_type_Bckd = parambckd;
+    if (this.jdField_a_of_type_Bckd == null) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      a(paramString);
+    }
+    return super.init(this.jdField_a_of_type_Bckd.b(), this.jdField_a_of_type_Bckd.d(), this.jdField_a_of_type_Bckd.c(), paramString, aqbx.a(), paramFloat);
+  }
+  
+  public void initLibrary()
+  {
+    ark.MediaSetStub(aqcr.a);
+  }
+  
+  public void onFirstDrawEnd()
+  {
+    super.onFirstDrawEnd();
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    if (paramAppPathInfo != null) {}
+    for (paramAppPathInfo = paramAppPathInfo.path;; paramAppPathInfo = null)
     {
-      long[] arrayOfLong = jdField_c_of_type_ArrayOfLong;
-      int i = jdField_c_of_type_Int;
-      jdField_c_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.getAppFromLocal = false;
+      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.endOfGetApp = System.currentTimeMillis();
+      a(paramAppPathInfo, paramInt, paramString);
+      return;
     }
   }
   
-  public static void d(long paramLong)
+  public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
   {
-    if (jdField_d_of_type_Int < 20)
+    if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null)
     {
-      long[] arrayOfLong = jdField_d_of_type_ArrayOfLong;
-      int i = jdField_d_of_type_Int;
-      jdField_d_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      this.mInit = false;
+      this.mLoadFailed = true;
+      paramAppInfo = this.mViewImpl;
+      if (paramAppInfo != null) {
+        paramAppInfo.onLoadFailed(null, this.mErrorInfo.retCode, true);
+      }
+      return true;
+    }
+    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
+    Object localObject2 = this.jdField_a_of_type_Bckd.a();
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s", new Object[] { this.mAppInfo.name, localObject1 }));
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkNodeContainer.1(this, (String)localObject1));
+      return true;
+    }
+    localObject2 = this.mViewImpl;
+    if (localObject2 != null) {
+      ((ArkViewImplement)localObject2).onLoading();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
+    }
+    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new bckf(this));
+    return false;
+  }
+  
+  public void onLoadReport(int paramInt)
+  {
+    if (this.mAppInfo != null) {
+      aqca.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
+    }
+  }
+  
+  public void onRunAppFailed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onRunAppFailed", new Object[0]));
+    }
+    Object localObject = this.mViewImpl;
+    if (localObject != null)
+    {
+      if (this.jdField_a_of_type_Bckd == null) {
+        break label90;
+      }
+      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131717761);
+    }
+    label90:
+    for (this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_Bckd.b() });; this.mErrorInfo.msg = "")
+    {
+      this.mErrorInfo.canRetry = false;
+      super.onRunAppFailed();
+      return;
     }
   }
 }

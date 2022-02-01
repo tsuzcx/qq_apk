@@ -1,79 +1,106 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.2;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.3;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.4;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment.7.1;
+import com.tencent.mobileqq.richstatus.TipsInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bbtl
-  implements bbtj<bbnc>
+  implements bbsw
 {
-  public aode a;
-  public QQAppInterface a;
-  public String a;
+  public bbtl(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public bbtl(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aode = ((aode)paramQQAppInterface.getManager(105));
-  }
-  
-  private List<bbnc> a(String paramString, FullMessageSearchResult paramFullMessageSearchResult)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramFullMessageSearchResult != null) && (paramFullMessageSearchResult.a != null))
-    {
-      int i = 0;
-      while (i < paramFullMessageSearchResult.a.size())
-      {
-        localArrayList.add(new bbnc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, (FullMessageSearchResult.SearchResultItem)paramFullMessageSearchResult.a.get(i)));
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  public List<bbnc> a(bbtx parambbtx)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MessageSearchEngine", 2, "========== search message use MessageSearchEngine");
+      QLog.i("SignTextEditFragment", 2, String.format("onChangeStatus reslut=%d status=%s", new Object[] { Integer.valueOf(paramInt), paramRichStatus }));
     }
-    this.jdField_a_of_type_JavaLangString = parambbtx.jdField_a_of_type_JavaLangString;
-    if ((parambbtx.jdField_a_of_type_AndroidOsBundle != null) && (parambbtx.jdField_a_of_type_AndroidOsBundle.getBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", false))) {}
-    for (parambbtx = this.jdField_a_of_type_Aode.a(this.jdField_a_of_type_JavaLangString);; parambbtx = this.jdField_a_of_type_Aode.b(this.jdField_a_of_type_JavaLangString)) {
-      return a(this.jdField_a_of_type_JavaLangString, parambbtx);
+    if ((paramRichStatus == null) || (paramRichStatus == RichStatus.getEmptyStatus())) {
+      if (paramInt == 100) {
+        QQToast.a(BaseApplication.context, 2, anzj.a(2131713020), 0).a();
+      }
+    }
+    for (int i = 0;; i = 1)
+    {
+      if ((paramObject instanceof TipsInfo))
+      {
+        paramRichStatus = (TipsInfo)paramObject;
+        SignTextEditFragment.b(this.a, paramRichStatus.errorDesc);
+        if (TextUtils.isEmpty(SignTextEditFragment.a(this.a))) {
+          SignTextEditFragment.b(this.a, paramRichStatus.wording);
+        }
+      }
+      if (paramInt == 100)
+      {
+        SignTextEditFragment.a(this.a, false);
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+        this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(SignTextEditFragment.a(this.a).a(true));
+        paramObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+        paramRichStatus = paramObject;
+        if (paramObject == null) {
+          paramRichStatus = "noLogin";
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(paramRichStatus, 4).edit().putString("sign_location_id_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), SignTextEditFragment.b(this.a)).commit();
+        if (this.a.isAdded()) {
+          SignTextEditFragment.a(this.a, false);
+        }
+        paramRichStatus = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+        paramRichStatus.edit().putBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "edit_signature_version_826", true);
+        j = i;
+        if (3 == this.a.jdField_a_of_type_Int)
+        {
+          bbux.a().addObserver(this.a.jdField_a_of_type_JavaUtilObserver);
+          paramObject = bbux.a().a(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+          if ((Integer.parseInt(paramObject.jdField_a_of_type_JavaLangString) != this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId) && (paramObject.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+          {
+            SignTextEditFragment.a(this.a).set(true);
+            this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new SignTextEditFragment.7.1(this), 1500L);
+          }
+        }
+      }
+      while (i == 0)
+      {
+        return;
+        QQToast.a(BaseApplication.context, 1, anzj.a(2131713012), 0).a();
+        break;
+        int j = i;
+        if (Integer.parseInt(paramObject.jdField_a_of_type_JavaLangString) > 0)
+        {
+          j = i;
+          if (paramObject.f < 2)
+          {
+            j = i;
+            if (paramRichStatus.getBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "new_signature_version_826", true))
+            {
+              bhto.a(this.a.getActivity(), this.a.getActivity().app, 0, "signature_chouti");
+              j = 0;
+            }
+          }
+        }
+        if (j != 0) {
+          this.a.a(paramInt, SignTextEditFragment.a(this.a));
+        }
+        this.a.onBackEvent();
+        return;
+      }
+      this.a.a(paramInt, SignTextEditFragment.a(this.a));
+      return;
     }
   }
   
-  public void a() {}
+  public void a(int paramInt, boolean paramBoolean) {}
   
-  public void a(bbtx parambbtx, bbtk<bbnc> parambbtk)
-  {
-    ThreadManager.post(new MessageSearchEngine.1(this, parambbtk, parambbtx), 8, null, true);
-  }
-  
-  public void b()
-  {
-    ThreadManager.post(new MessageSearchEngine.2(this), 8, null, true);
-  }
-  
-  public void c()
-  {
-    ThreadManager.post(new MessageSearchEngine.3(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
-  }
-  
-  public void d()
-  {
-    ThreadManager.post(new MessageSearchEngine.4(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
-  }
-  
-  public void e() {}
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

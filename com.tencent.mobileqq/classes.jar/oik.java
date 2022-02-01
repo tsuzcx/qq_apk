@@ -1,17 +1,14 @@
-import android.text.Editable;
-import android.widget.EditText;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
 
-public final class oik
-  implements awnc<char[]>
+class oik
+  extends blgm
 {
-  public oik(EditText paramEditText) {}
+  oik(oij paramoij) {}
   
-  public void a(char[] paramArrayOfChar)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = this.a.getSelectionStart();
-    int j = this.a.getSelectionEnd();
-    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
-    this.a.requestFocus();
+    oii.a(this.a.a.this$0, true);
   }
 }
 

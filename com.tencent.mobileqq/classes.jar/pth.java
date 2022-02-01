@@ -1,6 +1,16 @@
-public abstract interface pth
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
+class pth
+  implements blmq
 {
-  public abstract boolean a();
+  pth(ptg paramptg) {}
+  
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  {
+    ptf.a(this.a.jdField_a_of_type_Ptf, this.a.jdField_a_of_type_Skg, this.a.jdField_a_of_type_Ppu, paramInt, paramArrayList, paramObject);
+  }
 }
 
 

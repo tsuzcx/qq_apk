@@ -1,28 +1,37 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.Date;
 
-public class blbt
+final class blbt
+  extends blbx
 {
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, long paramLong)
+  blbt(blbs paramblbs)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt2 + "|");
-    localStringBuilder.append(paramInt1 + "|");
-    localStringBuilder.append(paramLong + "|");
-    localStringBuilder.append(Build.BRAND + "|");
-    localStringBuilder.append(Build.MODEL + "|");
-    localStringBuilder.append(Build.VERSION.RELEASE);
-    if ((paramAppRuntime instanceof QQAppInterface)) {}
-    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
+    super(null);
+  }
+  
+  public boolean a(String paramString, blcq paramblcq)
+  {
+    if (this.a.size() >= this.a.maxSize())
+    {
+      blbs.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      }
+      return false;
+    }
+    if (paramblcq.a > new Date().getTime())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("PreloadSuccessRateReporter", 2, "[preloadSuccessRate]: " + localStringBuilder.toString());
+        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramblcq.toString() }));
       }
-      bcrt.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preloadSuccessRate", localStringBuilder.toString(), true);
-      return;
+      this.a.put(paramString, paramblcq);
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramblcq.toString() }));
+      }
     }
   }
 }

@@ -1,75 +1,107 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class prq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class prq<BEAN, COOKIE>
+  implements prl<BEAN>
 {
-  public prq(ReadInJoySelfFragment paramReadInJoySelfFragment, ImageView paramImageView, ogz paramogz) {}
+  protected int a;
+  @Nullable
+  private COOKIE jdField_a_of_type_JavaLangObject = null;
+  private String jdField_a_of_type_JavaLangString = "";
+  protected CopyOnWriteArrayList<BEAN> a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
   
-  public void onGlobalLayout()
+  public prq()
   {
-    for (;;)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-          int j = ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getWidth();
-          if (ReadInJoySelfFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment))
-          {
-            i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_Float + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.c + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Float);
-            if (i <= 0) {
-              break;
-            }
-            double d1 = this.jdField_a_of_type_Ogz.c / this.jdField_a_of_type_Ogz.d;
-            double d2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.d;
-            i = (int)(j - i - d1 * d2);
-            if (i <= 0) {
-              break;
-            }
-            Drawable localDrawable = DrawableUtil.getDrawable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), this.jdField_a_of_type_Ogz.b, null, null);
-            if (localDrawable == null) {
-              break;
-            }
-            ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).setMaxWidth(i);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setTag(this.jdField_a_of_type_Ogz);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment);
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Boolean) {
-              break;
-            }
-            pha.a(this.jdField_a_of_type_Ogz);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Boolean = true;
-          }
-        }
-        else
-        {
-          ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-          continue;
-        }
-        f1 = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      }
-      catch (Exception localException)
-      {
-        QLog.d("Q.readinjoy.self.SelfFragment", 1, "showMedal! error, msg=" + localException);
-        return;
-      }
-      float f1;
-      float f2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_Float;
-      float f3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Float;
-      float f4 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.c;
-      int i = (int)(f1 + f2 + f3 + f4);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt1, List<BEAN> paramList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString, prk<BEAN> paramprk)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if ((paramBoolean2) && (paramInt1 >= 0)) {
+      this.jdField_a_of_type_Int = paramInt1;
     }
+    if (this.jdField_b_of_type_Boolean) {
+      if (paramBoolean2)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
+        a(paramList);
+        this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
+        if (!paramBoolean3)
+        {
+          paramBoolean1 = true;
+          this.d = paramBoolean1;
+        }
+      }
+      else
+      {
+        paramprk.a(paramBoolean2, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
+      }
+    }
+    do
+    {
+      return;
+      paramBoolean1 = false;
+      break;
+      if (paramBoolean2)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
+        this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
+        if (!paramBoolean3) {}
+        for (paramBoolean1 = true;; paramBoolean1 = false)
+        {
+          this.d = paramBoolean1;
+          paramprk.a(true, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
+          return;
+        }
+      }
+      this.c = true;
+      this.jdField_b_of_type_Int = paramInt2;
+      this.jdField_a_of_type_JavaLangString = paramString;
+    } while (paramBoolean1);
+    paramprk.a(false, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
+  }
+  
+  public abstract void a(@Nullable COOKIE paramCOOKIE, prv<BEAN, COOKIE> paramprv);
+  
+  public abstract void a(List<BEAN> paramList);
+  
+  public void a(prp<BEAN> paramprp)
+  {
+    a(this.jdField_a_of_type_JavaLangObject, new prt(this, paramprp));
+  }
+  
+  public abstract void a(pru<BEAN> parampru);
+  
+  public void a(boolean paramBoolean, prk<BEAN> paramprk)
+  {
+    a();
+    if (paramBoolean) {
+      a(new prr(this, paramprk));
+    }
+    a(null, new prs(this, paramBoolean, paramprk));
+  }
+  
+  public boolean a()
+  {
+    return this.d;
   }
 }
 

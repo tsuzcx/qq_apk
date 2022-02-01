@@ -1,32 +1,36 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
-public class amoy
+class amoy
+  implements View.OnClickListener
 {
-  private static final SharedPreferences a = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_robot", 4);
+  amoy(amow paramamow, RedTouch paramRedTouch, arsh paramarsh) {}
   
-  public static void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      a.edit().putLong(paramString, System.currentTimeMillis()).commit();
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    Switch localSwitch;
+    if (AppSetting.c)
     {
-      long l = a.getLong(paramString, 0L);
-      if (System.currentTimeMillis() - l < 86400000L)
-      {
-        QLog.i("CmGameTemp_RobotDataUtil", 1, "isRobotUin:" + paramString);
-        return true;
+      localSwitch = (Switch)paramView.findViewById(2131363957);
+      if (localSwitch != null) {
+        if (localSwitch.isChecked()) {
+          break label66;
+        }
       }
     }
-    return false;
+    label66:
+    for (boolean bool = true;; bool = false)
+    {
+      localSwitch.setChecked(bool);
+      amow.a(this.jdField_a_of_type_Amow, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Arsh, localSwitch.isChecked());
+      paramView.sendAccessibilityEvent(1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

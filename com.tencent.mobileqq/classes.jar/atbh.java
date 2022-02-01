@@ -1,48 +1,70 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atbh
 {
-  int jdField_a_of_type_Int;
-  public atbj a;
-  atbl jdField_a_of_type_Atbl;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString;
+  private int a;
+  private int b;
   
-  atbh(atan paramatan, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
+  public static atbh a(araj paramaraj)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Atbj = new atbi(this, paramatan, paramMessageRecord);
-  }
-  
-  void a()
-  {
-    if ((this.jdField_a_of_type_Atbl != null) && (this.jdField_b_of_type_Int == 0))
+    atbh localatbh = new atbh();
+    if (paramaraj != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
+        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramaraj.jdField_a_of_type_Int + " content->" + paramaraj.jdField_a_of_type_JavaLangString);
       }
-      this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_Atbl.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Atbj);
+      try
+      {
+        paramaraj = paramaraj.jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramaraj))
+        {
+          paramaraj = new JSONObject(paramaraj);
+          localatbh.a(paramaraj.optInt("business_switch", 0));
+          localatbh.b(paramaraj.optInt("showInRecentView", 0));
+          return localatbh;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e("limitChatOnPlusConfBean", 2, "parse content is null ");
+          return localatbh;
+        }
+      }
+      catch (JSONException paramaraj)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramaraj.toString());
+        }
+      }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
+    return localatbh;
   }
   
-  void b()
+  void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Atbl != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
-    {
-      this.jdField_a_of_type_Atbl.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Int = 4;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

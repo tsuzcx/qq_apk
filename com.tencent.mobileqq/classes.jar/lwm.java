@@ -1,16 +1,4 @@
-import android.graphics.Bitmap;
-
-class lwm
-  implements lxe
-{
-  lwm(lwl paramlwl, String paramString, Bitmap paramBitmap) {}
-  
-  public void a(lxd paramlxd)
-  {
-    paramlxd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    paramlxd.a();
-  }
-}
+public class lwm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

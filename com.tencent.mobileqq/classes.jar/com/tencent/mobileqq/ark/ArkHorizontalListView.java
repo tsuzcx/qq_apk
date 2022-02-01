@@ -7,9 +7,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import apoh;
-import apov;
-import bkmr;
+import aqbx;
+import aqcl;
+import blnu;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ public class ArkHorizontalListView
 {
   private float jdField_a_of_type_Float = 0.08F;
   private int jdField_a_of_type_Int;
-  private WeakReference<apov> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<aqcl> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private int b = 3;
   
@@ -32,7 +32,7 @@ public class ArkHorizontalListView
     paramContext = paramContext.getResources();
     int i = BaseChatItemLayout.o;
     int j = MessageForArkApp.dp2px(40.0F);
-    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296331) + (i * 2 + j));
+    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296335) + (i * 2 + j));
     setStayDisplayOffsetZero(true);
     a();
   }
@@ -43,7 +43,7 @@ public class ArkHorizontalListView
     paramContext = paramContext.getResources();
     int i = BaseChatItemLayout.o;
     int j = MessageForArkApp.dp2px(40.0F);
-    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296331) + (i * 2 + j));
+    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296335) + (i * 2 + j));
     setStayDisplayOffsetZero(true);
     a();
   }
@@ -61,7 +61,7 @@ public class ArkHorizontalListView
       return false;
     }
     Object localObject = null;
-    int j = apoh.d;
+    int j = aqbx.d;
     int i = 0;
     View localView;
     if (i <= getChildCount())
@@ -80,8 +80,8 @@ public class ArkHorizontalListView
       int n;
       if (this.jdField_a_of_type_Boolean)
       {
-        k = apoh.d - this.jdField_a_of_type_Int - i / 2;
-        QLog.d("ArkHorizontalListView", 2, new Object[] { "---start find card mNextX=", Integer.valueOf(this.mNextX), ",scrollStartX=", Integer.valueOf(this.mScroller.c()), ",sRealDisplayWith=", Integer.valueOf(apoh.d), ",priovtX=", Integer.valueOf(k), ",mIsSend=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+        k = aqbx.d - this.jdField_a_of_type_Int - i / 2;
+        QLog.d("ArkHorizontalListView", 2, new Object[] { "---start find card mNextX=", Integer.valueOf(this.mNextX), ",scrollStartX=", Integer.valueOf(this.mScroller.c()), ",sRealDisplayWith=", Integer.valueOf(aqbx.d), ",priovtX=", Integer.valueOf(k), ",mIsSend=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
         i = 0;
         m = 0;
         if (i > getChildCount()) {
@@ -126,7 +126,7 @@ public class ArkHorizontalListView
             if (!this.jdField_a_of_type_Boolean) {
               break label611;
             }
-            if (k <= apoh.d) {
+            if (k <= aqbx.d) {
               break label606;
             }
             i = 1;
@@ -136,7 +136,7 @@ public class ArkHorizontalListView
             if (i == 0) {
               break label625;
             }
-            j = k - apoh.d;
+            j = k - aqbx.d;
             if (!this.jdField_a_of_type_Boolean) {
               break label656;
             }
@@ -177,7 +177,7 @@ public class ArkHorizontalListView
           i = 0;
           break label418;
           label625:
-          j = apoh.d - k;
+          j = aqbx.d - k;
           break label435;
           label634:
           j = k;
@@ -233,7 +233,7 @@ public class ArkHorizontalListView
       if (QLog.isColorLevel()) {
         QLog.d("ArkHorizontalListView", 2, "onTouchEvent updateHeadBorder action=" + (paramMotionEvent.getAction() & 0xFF));
       }
-      ((apov)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
+      ((aqcl)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -243,9 +243,9 @@ public class ArkHorizontalListView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setRefreshCallback(apov paramapov)
+  public void setRefreshCallback(aqcl paramaqcl)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramapov);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaqcl);
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.widget.OverScroller;
-import wax;
+import weo;
 
 public class PhotoViewAttacher$FlingRunnable
   implements Runnable
@@ -73,7 +73,7 @@ public class PhotoViewAttacher$FlingRunnable
     PhotoViewAttacher.a(this.this$0);
     this.jdField_a_of_type_Int = i;
     this.b = j;
-    wax.a(PhotoViewAttacher.a(this.this$0), this);
+    weo.a(PhotoViewAttacher.a(this.this$0), this);
   }
 }
 

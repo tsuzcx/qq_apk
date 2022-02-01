@@ -1,15 +1,10 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-public class adpm
-  implements aggu
+public abstract interface adpm
 {
-  public adpm(BaseChatPie paramBaseChatPie) {}
+  public abstract void a(adpn paramadpn);
   
-  public void a(Bitmap paramBitmap, aggc paramaggc, int paramInt)
-  {
-    this.a.ar();
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2);
+  
+  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3);
 }
 
 

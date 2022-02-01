@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewwrapper;
 
 import android.os.Bundle;
-import bmoz;
+import bnqc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -90,7 +90,7 @@ public class QzoneWebViewRuntime
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bmoz.a().a(this);
+    bnqc.a().a(this);
   }
 }
 

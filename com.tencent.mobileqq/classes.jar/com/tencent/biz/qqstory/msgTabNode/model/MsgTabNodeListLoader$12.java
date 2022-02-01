@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import wrx;
+import wvs;
 
 public class MsgTabNodeListLoader$12
   implements Runnable
 {
-  public MsgTabNodeListLoader$12(wrx paramwrx, String paramString, long paramLong) {}
+  public MsgTabNodeListLoader$12(wvs paramwvs, String paramString, long paramLong) {}
   
   public void run()
   {

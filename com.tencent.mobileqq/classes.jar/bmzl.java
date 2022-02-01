@@ -1,15 +1,11 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import android.text.TextUtils;
 
-class bmzl
-  implements ThreadPool.Job<Void>
+public class bmzl
+  extends bmzi
 {
-  bmzl(bmzf parambmzf, bdvs parambdvs) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public boolean a()
   {
-    bmzf.a(this.jdField_a_of_type_Bmzf).a(this.jdField_a_of_type_Bdvs);
-    return null;
+    return (this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
   }
 }
 

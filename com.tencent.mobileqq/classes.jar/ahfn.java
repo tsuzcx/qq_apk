@@ -1,28 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
 
 class ahfn
-  extends GestureDetector.SimpleOnGestureListener
+  implements aunx
 {
-  ahfn(ahfm paramahfm) {}
+  ahfn(ahed paramahed) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Ahfk.a()) {
-      return false;
-    }
-    afur.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_Ahfk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Ahfk.jdField_a_of_type_AndroidContentContext);
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Afzq != null) {
-      this.a.jdField_a_of_type_Afzq.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
-    }
+    paramView = atyt.a();
+    aunj.c(this.a.a, paramView);
+    aunh.a("0X8007FA2");
   }
 }
 

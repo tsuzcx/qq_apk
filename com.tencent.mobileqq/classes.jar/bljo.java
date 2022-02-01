@@ -1,13 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-final class bljo
-  implements DialogInterface.OnClickListener
+public abstract interface bljo
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void onNothingSelected(AdapterView<?> paramAdapterView);
 }
 
 

@@ -1,11 +1,11 @@
 package cooperation.qzone.share;
 
-import bmgc;
+import bnhe;
 
 public class QZoneShareActivity$4$1
   implements Runnable
 {
-  public QZoneShareActivity$4$1(bmgc parambmgc) {}
+  public QZoneShareActivity$4$1(bnhe parambnhe) {}
   
   public void run()
   {

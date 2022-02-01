@@ -1,43 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
 import com.tencent.qphone.base.util.QLog;
 
-public class bdid
+public final class bdid
+  implements IDiniFlyQLog
 {
-  protected bdia a;
-  TeamWorkFileImportInfo a;
-  
-  public bdid(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_Bdia = ((bdia)paramQQAppInterface.a(120));
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  protected void a(boolean paramBoolean)
-  {
-    int i = 0;
-    if ((paramBoolean) && (bgmg.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)))
+    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
+    switch (paramInt1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJob", 2, "---notifyUIFailed try local fileName: " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-      }
-      this.jdField_a_of_type_Bdia.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a = false;
-      this.jdField_a_of_type_Bdia.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bdia.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_Bdia.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
+    case 4: 
+    default: 
+      QLog.i(paramString1, paramInt2, paramString2, null);
       return;
-      i = 1;
+    case 5: 
+      QLog.w(paramString1, paramInt2, paramString2, null);
+      return;
+    case 6: 
+      QLog.e(paramString1, paramInt2, paramString2, null);
+      return;
     }
+    QLog.d(paramString1, paramInt2, paramString2, null);
   }
 }
 

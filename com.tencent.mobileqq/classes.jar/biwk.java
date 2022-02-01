@@ -1,18 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.widget.ScrollView;
 
-class biwk
-  extends BroadcastReceiver
+public class biwk
+  implements blpg
 {
-  biwk(biwe parambiwe) {}
+  public biwk(ContainerView paramContainerView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
   {
-    bisy.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
+    switch (paramInt)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramBoolean) && (!ContainerView.b(this.a)));
+      paramScrollView = ambu.a();
+      if ((paramScrollView.c()) && (!paramScrollView.a())) {
+        paramScrollView.a();
+      }
+      ContainerView.b(this.a, false);
+      return;
+      ContainerView.b(this.a, true);
+      paramScrollView = ambu.a();
+    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
+    paramScrollView.b();
   }
 }
 

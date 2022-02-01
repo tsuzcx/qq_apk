@@ -1,66 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.bussiness.presentwall.ProfilePresentWallComponent.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class bahl
-  extends bahu<ReceiptMessageReadMemberListContainerFragment>
+  implements View.OnClickListener
 {
-  public bahl(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
-  {
-    super(paramReceiptMessageReadMemberListContainerFragment);
-  }
+  bahl(bahk parambahk) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageReadMemberListContainerFragment", 4, "mTroopFetchReadMemberListCallback onRes: " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof azvr)) {}
+    switch (((azvr)localObject).a)
     {
-      for (;;)
-      {
-        try
-        {
-          paramBundle = new oidb_0x986.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = paramBundle.rpt_msg_uin_info.get();
-          paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte).iterator();
-          if (!paramArrayOfByte.hasNext()) {
-            break;
-          }
-          ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
-          if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
-            if (localMemberInfo.jdField_a_of_type_Long > 0L) {
-              ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
-            } else {
-              ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
-          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
-          return;
-        }
-      }
-      if (paramBundle.uint64_next_uin.get() == 0L)
-      {
-        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
-        return;
-      }
-      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
-      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+    localObject = new Intent(bahk.a(this.a), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", ((azxr)bahk.a(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.presentCustourl);
+    bahk.b(this.a).startActivity((Intent)localObject);
+    ThreadManager.getFileThreadHandler().post(new ProfilePresentWallComponent.1.1(this));
+    if (((azxr)bahk.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {
+      bdll.b(bahk.a(this.a), "", "", "", "0X800A1C7", "0X800A1C7", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      baew.f(bahk.c(this.a), (azxr)bahk.c(this.a));
+      break;
+      bdll.b(bahk.b(this.a), "", "", "", "0X800A1C9", "0X800A1C9", 0, 0, "", "", "", "");
+    }
   }
 }
 

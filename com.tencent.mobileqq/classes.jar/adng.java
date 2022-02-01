@@ -1,31 +1,85 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class adng
-  implements View.OnClickListener
 {
-  public adng(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public static adnb a(@NonNull Activity paramActivity, int paramInt, String paramString)
   {
-    if (paramView.getParent() == null) {}
-    for (;;)
+    return a(paramActivity, paramInt, paramString, null);
+  }
+  
+  public static adnb a(@NonNull Activity paramActivity, int paramInt, String paramString, Bundle paramBundle)
+  {
+    String str = null;
+    adni localadni = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI", 2, "createAPIManager type=" + paramInt + ", appid=" + paramString);
+    }
+    if (paramActivity == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      View localView = (View)paramView.getParent().getParent();
-      if ((localView != null) && (localView.getTag() != null))
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager activity == null");
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager appid is empty");
+    }
+    Object localObject = localadni;
+    switch (paramInt)
+    {
+    default: 
+      localObject = localadni;
+    case 2: 
+    case 0: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      while (localObject == null)
       {
-        bcst.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-        if ((localView.getTag() instanceof SimpleAccount)) {
-          this.a.a((SimpleAccount)localView.getTag());
+        QLog.e("DoraemonOpenAPI", 1, "can not create APIManager type=" + paramInt + ", appid=" + paramString);
+        return localObject;
+        if (paramBundle == null) {}
+        for (paramBundle = null; TextUtils.isEmpty(paramBundle); paramBundle = paramBundle.getString("urlSummary", ""))
+        {
+          QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
+          return null;
         }
+        localObject = new adpb(paramActivity, paramInt, paramString, paramBundle);
+        continue;
+        localadni = new adni(paramActivity, paramInt, paramString);
+        if (paramBundle == null) {
+          break label305;
+        }
+        localObject = paramBundle.getString("sdkVersion");
+        str = paramBundle.getString("pkgName");
+        paramActivity = paramBundle.getString("signature");
+        paramBundle = str;
       }
     }
+    for (;;)
+    {
+      ((adni)localadni).a((String)localObject, paramBundle, paramActivity);
+      localObject = localadni;
+      break;
+      localObject = new adny(paramActivity, paramInt, paramString);
+      break;
+      ((adnb)localObject).a();
+      return localObject;
+      label305:
+      paramBundle = null;
+      localObject = null;
+      paramActivity = str;
+    }
+  }
+  
+  public static void a()
+  {
+    ThreadManager.post(new DoraemonOpenAPI.1(), 5, null, false);
   }
 }
 

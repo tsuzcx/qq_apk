@@ -1,15 +1,12 @@
-public class ysl
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public abstract interface ysl
 {
-  public final int a;
-  public final CharSequence a;
-  public final int b;
+  public abstract void a(String paramString1, String paramString2);
   
-  public ysl(int paramInt1, int paramInt2, CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

@@ -1,9 +1,18 @@
-import java.io.File;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class bnzn
+final class bnzn
+  implements aumz
 {
-  public static final String a = ancb.k + "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip".hashCode() + ".zip";
-  public static final String b = ancb.k + "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip".hashCode() + File.separator;
+  bnzn(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  
+  public void a()
+  {
+    aunj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
+  }
+  
+  public void b() {}
 }
 
 

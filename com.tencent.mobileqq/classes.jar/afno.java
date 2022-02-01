@@ -1,18 +1,59 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.mobileqq.app.SignatureManager.SigComments;
+import java.util.List;
 
 public class afno
-  extends anmu
+  extends aoho
 {
-  public afno(TroopRequestActivity paramTroopRequestActivity) {}
+  public afno(SigCommentListActivity paramSigCommentListActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
+    List localList;
+    if (this.a.isResume())
+    {
+      this.a.stopTitleProgress();
+      if (!paramBoolean) {
+        break label175;
+      }
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
+        paramBoolean = paramObject.isOver;
+        paramObject = paramObject.mlist;
+        localList = this.a.a.a();
+        if (paramObject.size() <= 0) {
+          break label128;
+        }
+        if (localList == null) {
+          break label113;
+        }
+        localList.addAll(localList.size(), paramObject);
+        this.a.a.a(localList, paramBoolean);
+        this.a.a.notifyDataSetChanged();
+      }
     }
-    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
+    label113:
+    do
+    {
+      return;
+      this.a.a.a(paramObject, paramBoolean);
+      break;
+      if ((localList != null) && (localList.size() > 0)) {
+        this.a.a.a(localList, paramBoolean);
+      }
+      for (;;)
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        SigCommentListActivity.a(this.a, 3);
+      }
+      paramObject = this.a.a.a();
+    } while ((paramObject != null) && (paramObject.size() > 0));
+    label128:
+    label175:
+    SigCommentListActivity.a(this.a, 2);
   }
 }
 

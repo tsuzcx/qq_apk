@@ -1,40 +1,49 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.LocalMultiProcConfig;
+import com.tencent.widget.Switch;
 
 public class aerw
   implements CompoundButton.OnCheckedChangeListener
 {
-  public aerw(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aerw(GeneralSettingActivity paramGeneralSettingActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131717425) + this.a.a, paramBoolean);
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.e(this.a).setContentDescription(anni.a(2131706430));
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
+    boolean bool1 = this.a.a.a().isChecked();
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    int j = bdgb.c();
     int i;
-    if (paramBoolean)
+    if ((bool1) && (bool2))
     {
-      i = 1;
+      i = bdgb.c;
       if (!paramBoolean) {
-        break label119;
+        break label140;
+      }
+      String str = bdgb.a(i);
+      if (!behm.a(this.a, str, new aerx(this, paramCompoundButton, bool1, i))) {
+        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
       }
     }
-    label119:
-    for (String str = "1";; str = "0")
+    for (;;)
     {
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, str, "", "", "");
       EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      i = 0;
+      i = j;
+      if (!bool1) {
+        break;
+      }
+      i = j;
+      if (!ThemeUtil.isNowThemeIsNight(this.a.app, false, bdgb.a(j))) {
+        break;
+      }
+      i = bdgb.d();
       break;
+      label140:
+      GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
     }
   }
 }

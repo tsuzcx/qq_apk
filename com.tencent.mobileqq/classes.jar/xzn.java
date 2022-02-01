@@ -1,26 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xzn
-  implements DialogInterface.OnClickListener
+class xzn
+  implements DialogInterface.OnDismissListener
 {
-  public xzn(StoryPickerFragment paramStoryPickerFragment) {}
+  xzn(xzm paramxzm, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
-    this.a.getActivity().setResult(-1, paramDialogInterface);
-    this.a.getActivity().finish();
   }
 }
 

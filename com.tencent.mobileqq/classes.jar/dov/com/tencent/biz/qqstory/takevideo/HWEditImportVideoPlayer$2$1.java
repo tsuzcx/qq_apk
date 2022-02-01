@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bpep;
-import bpgi;
-import bpgk;
+import bqgk;
+import bqid;
+import bqif;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import yqp;
+import yuk;
 
 class HWEditImportVideoPlayer$2$1
   implements Runnable
@@ -17,15 +17,15 @@ class HWEditImportVideoPlayer$2$1
   {
     if (this.a.this$0.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      bpgk localbpgk = (bpgk)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
-      bpgi.a(this.a.this$0, localbpgk);
+      bqif localbqif = (bqif)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
+      bqid.a(this.a.this$0, localbqif);
     }
     for (;;)
     {
-      this.a.this$0.jdField_a_of_type_Bpep.a(Message.obtain(null, 8));
-      bpgi.a(this.a.this$0).set(true);
+      this.a.this$0.jdField_a_of_type_Bqgk.a(Message.obtain(null, 8));
+      bqid.a(this.a.this$0).set(true);
       return;
-      yqp.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
+      yuk.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }

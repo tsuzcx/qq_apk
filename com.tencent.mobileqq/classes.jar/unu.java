@@ -1,16 +1,35 @@
-import UserGrowth.stPostCommentReplyV2Req;
-import UserGrowth.stPostCommentReplyV2Rsp;
-import UserGrowth.stSimpleMetaComment;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaReply;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class unu
-  extends ujr<stPostCommentReplyV2Rsp>
 {
-  public unu(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply)
+  private ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
+  
+  public static unu a()
   {
-    super("PostCommentReplyV2", 10003);
-    this.a = new stPostCommentReplyV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment.id, paramstSimpleMetaReply);
+    return unw.a();
+  }
+  
+  public String a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return (String)this.a.get(paramString);
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(String paramString, Map<String, String> paramMap)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramMap != null)) {
+      this.a.put(paramString, new Gson().toJson(paramMap));
+    }
   }
 }
 

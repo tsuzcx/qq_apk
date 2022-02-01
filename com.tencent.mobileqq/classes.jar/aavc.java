@@ -1,19 +1,50 @@
-import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
-public class aavc
+public abstract class aavc
+  extends nkq
 {
-  int jdField_a_of_type_Int;
-  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
-  
-  aavc(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
-    this.jdField_a_of_type_Int = paramInt;
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public int a()
+  protected abstract void a(boolean paramBoolean, int paramInt, bfrs parambfrs);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Int;
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null);
+      return;
+    }
+    paramBundle = new oidb_0x6d7.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label104;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, new bfrs((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label104:
+    a(false, -1, null);
   }
 }
 

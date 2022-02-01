@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bggq;
+import bhgr;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class FrameLoading
@@ -40,7 +40,7 @@ public class FrameLoading
     localRelativeLayout.setGravity(17);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_CooperationQqreaderViewLoadingImageView = new LoadingImageView(paramContext);
-    int i = bggq.a(paramContext, 35.0F);
+    int i = bhgr.a(paramContext, 35.0F);
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams2.addRule(14);
     localRelativeLayout.addView(this.jdField_a_of_type_CooperationQqreaderViewLoadingImageView, localLayoutParams2);
@@ -50,14 +50,14 @@ public class FrameLoading
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams2.addRule(3, this.jdField_a_of_type_CooperationQqreaderViewLoadingImageView.getId());
-    localLayoutParams2.setMargins(0, bggq.a(paramContext, 15.0F) + ImmersiveUtils.getStatusBarHeight(getContext()), 0, 0);
+    localLayoutParams2.setMargins(0, bhgr.a(paramContext, 15.0F) + ImmersiveUtils.getStatusBarHeight(getContext()), 0, 0);
     localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams2);
     addView(localRelativeLayout, localLayoutParams1);
   }
   
   public void setLoadingText(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131715801, new Object[] { Integer.valueOf(paramInt) }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131715910, new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 

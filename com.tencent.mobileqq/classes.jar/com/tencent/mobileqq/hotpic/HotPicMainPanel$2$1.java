@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import avbg;
+import avti;
 
 public class HotPicMainPanel$2$1
   implements Runnable
 {
-  public HotPicMainPanel$2$1(avbg paramavbg) {}
+  public HotPicMainPanel$2$1(avti paramavti) {}
   
   public void run()
   {

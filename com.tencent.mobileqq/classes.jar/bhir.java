@@ -1,141 +1,66 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
+import android.animation.AnimatorSet;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SingleLineTextView;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bhir
-  extends bhil
+final class bhir
+  implements bhis<T>
 {
-  public bhir(Activity paramActivity, JSONObject paramJSONObject, azfe paramazfe)
-  {
-    super(paramActivity, paramJSONObject, paramazfe);
-    this.d = zlx.a(paramActivity, 3.0F);
-  }
+  bhir(AtomicBoolean paramAtomicBoolean, azbu paramazbu, bhis parambhis, WebView paramWebView, AnimatorSet paramAnimatorSet) {}
   
-  public ProfileCardFavorShowView a(Activity paramActivity)
+  public T a(Bitmap paramBitmap)
   {
-    return new ProfileCardFavorShowView(paramActivity, null, 2131562051);
-  }
-  
-  protected void a(JSONObject paramJSONObject, View paramView, TextView paramTextView, ImageView paramImageView)
-  {
-    if ((paramView != null) && (paramTextView != null))
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      paramTextView.setTextColor(this.c);
-      String str = b(paramJSONObject);
-      if (TextUtils.isEmpty(str)) {
-        break label141;
-      }
-      int i = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 300.0F);
-      int j = (int)paramTextView.getPaint().measureText(paramTextView.getText().toString());
-      int k = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
-      int m = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 40.0F);
-      paramView.setBackgroundDrawable(a(str, new bhis(Math.min(j + k, i), m)));
+      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish isCanceled");
+      this.jdField_a_of_type_Azbu.dismiss();
+      return null;
     }
-    for (;;)
+    if (paramBitmap == null)
     {
-      if (paramImageView != null)
-      {
-        paramView = c(paramJSONObject);
-        if (TextUtils.isEmpty(paramView)) {
-          break;
-        }
-        paramImageView.setImageDrawable(a(paramView));
-      }
+      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish bitmap is null");
+      this.jdField_a_of_type_Azbu.dismiss();
+      return null;
+    }
+    return this.jdField_a_of_type_Bhis.a(paramBitmap);
+  }
+  
+  public void a(Exception paramException)
+  {
+    this.jdField_a_of_type_Bhis.a(paramException);
+    this.jdField_a_of_type_Azbu.dismiss();
+  }
+  
+  public void a(T paramT, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      QLog.e("ScreenShotUtil", 1, "postBitmap isCanceled");
+      this.jdField_a_of_type_Azbu.dismiss();
       return;
-      label141:
-      if (paramJSONObject != null) {
-        QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, paramJSONObject.optString("type") + " bind title icon is null!");
-      }
-      paramView.setVisibility(8);
     }
-    if (paramJSONObject != null) {
-      QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, paramJSONObject.optString("type") + " bind arrow icon is null!");
-    }
-    paramImageView.setVisibility(8);
-  }
-  
-  public void a(JSONObject paramJSONObject, TextView paramTextView, View paramView1, ImageView paramImageView, View paramView2, View paramView3)
-  {
-    if (paramTextView != null) {
-      paramTextView.setTextColor(this.c);
-    }
-    int i;
-    if ((paramView1 instanceof TextView))
+    if (paramT == null)
     {
-      ((TextView)paramView1).setTextColor(this.c);
-      if (paramImageView != null)
-      {
-        i = a(25.0F);
-        paramView1 = paramImageView.getLayoutParams();
-        paramView1.width = i;
-        paramView1.height = i;
-        paramImageView.setLayoutParams(paramView1);
-        paramView1 = c(paramJSONObject);
-        if (TextUtils.isEmpty(paramView1)) {
-          break label325;
-        }
-        paramImageView.setImageDrawable(a(paramView1));
-      }
-      label90:
-      if ((paramTextView != null) && (paramView2 != null))
-      {
-        i = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 6.0F);
-        int j = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 12.0F);
-        int k = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 12.0F);
-        paramView1 = (LinearLayout.LayoutParams)paramTextView.getLayoutParams();
-        paramView1.bottomMargin = i;
-        paramView1.leftMargin = j;
-        paramView1.rightMargin = k;
-        paramTextView.setLayoutParams(paramView1);
-        paramTextView.setTextSize(1, 15.0F);
-        paramView1 = b(paramJSONObject);
-        if (TextUtils.isEmpty(paramView1)) {
-          break label334;
-        }
-        i = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 300.0F);
-        j = (int)paramTextView.getPaint().measureText(paramTextView.getText().toString());
-        k = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
-        int m = zlx.a(this.jdField_a_of_type_AndroidAppActivity, 40.0F);
-        paramView2.setBackgroundDrawable(a(paramView1, new bhis(Math.min(j + k, i), m)));
-        paramView2.setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      if (paramView3 != null)
-      {
-        i = a(10.0F);
-        paramView3.setPadding(i, i, i, i);
-        a(paramJSONObject, paramView3);
-      }
+      QLog.e("ScreenShotUtil", 1, "postBitmap t is null");
+      this.jdField_a_of_type_Azbu.dismiss();
       return;
-      if (!(paramView1 instanceof SingleLineTextView)) {
-        break;
-      }
-      ((SingleLineTextView)paramView1).setTextColor(this.c);
-      break;
-      label325:
-      paramImageView.setImageDrawable(null);
-      break label90;
-      label334:
-      paramView2.setBackgroundDrawable(null);
-      paramView2.setVisibility(8);
     }
-  }
-  
-  public void b(HashMap<String, View> paramHashMap)
-  {
-    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562060, null));
+    if (paramBitmap == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "postBitmap bitmap is null");
+      this.jdField_a_of_type_Azbu.dismiss();
+      this.jdField_a_of_type_Bhis.a(new NullPointerException("postBitmap bitmap is null"));
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext() != null) && (this.jdField_a_of_type_Azbu.isShowing()))
+    {
+      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
+        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      }
+      this.jdField_a_of_type_Azbu.dismiss();
+    }
+    this.jdField_a_of_type_Bhis.a(paramT, paramBitmap);
   }
 }
 

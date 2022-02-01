@@ -1,8 +1,38 @@
-import cooperation.weiyun.sdk.download.DownloadType;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.AppRuntime;
 
-public abstract interface bmzt
+class bmzt
+  extends bmzu
 {
-  public abstract void a(bmyy parambmyy, DownloadType paramDownloadType, bmzq parambmzq);
+  private bmzt()
+  {
+    super(null);
+  }
+  
+  protected void a(HashMap<bmzs, ArrayList<ItemInfo>> paramHashMap)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    ArrayList localArrayList = new ArrayList();
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Object localObject = (Map.Entry)paramHashMap.next();
+      bmzw localbmzw = new bmzw(null);
+      localbmzw.a((bmzs)((Map.Entry)localObject).getKey());
+      localObject = ((ArrayList)((Map.Entry)localObject).getValue()).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localbmzw.a((ItemInfo)((Iterator)localObject).next());
+      }
+      localArrayList.add(localbmzw.a());
+    }
+    bcvj.a(8, localAppRuntime, new bmzx(null).a(localAppRuntime.getLongAccountUin()).a(bnwt.c()).a(), localArrayList);
+  }
 }
 
 

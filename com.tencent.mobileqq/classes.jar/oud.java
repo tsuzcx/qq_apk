@@ -1,8 +1,19 @@
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract interface oud
+class oud
+  implements ows
 {
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2);
+  oud(otv paramotv) {}
+  
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, int paramInt2, boolean paramBoolean2)
+  {
+    if (paramBoolean2)
+    {
+      this.a.a(paramLong, paramBoolean1, paramInt1, paramString1, paramString2, paramInt2);
+      return;
+    }
+    this.a.a(paramLong, paramBoolean1, paramInt1, paramString1, paramInt2);
+  }
 }
 
 

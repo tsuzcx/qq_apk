@@ -6,6 +6,7 @@ import com.idlefish.flutterboost.FlutterBoostPlugin;
 import com.qflutter.log.qflutter_log.QflutterLogPlugin;
 import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
 import com.qflutter.qflutter_network_image.QflutterNetworkImagePlugin;
+import com.qflutter.qqcircle.TencentQQCirclePlugin;
 import com.qflutter.resource_loader.QFlutterResourceLoaderPlugin;
 import com.qflutter.video.QflutterVideoviewPlugin;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -20,13 +21,14 @@ public final class GeneratedPluginRegistrant
   public static void registerWith(@NonNull FlutterEngine paramFlutterEngine)
   {
     ShimPluginRegistry localShimPluginRegistry = new ShimPluginRegistry(paramFlutterEngine);
-    FlutterBoostPlugin.registerWith(localShimPluginRegistry.registrarFor("com.idlefish.flutterboost.FlutterBoostPlugin"));
     paramFlutterEngine.getPlugins().add(new PackageInfoPlugin());
     PathProviderPlugin.registerWith(localShimPluginRegistry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
-    QflutterLogPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.log.qflutter_log.QflutterLogPlugin"));
-    QflutterNetworkImagePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.qflutter_network_image.QflutterNetworkImagePlugin"));
     QflutterVideoviewPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.video.QflutterVideoviewPlugin"));
+    FlutterBoostPlugin.registerWith(localShimPluginRegistry.registrarFor("com.idlefish.flutterboost.FlutterBoostPlugin"));
+    QflutterLogPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.log.qflutter_log.QflutterLogPlugin"));
     QFlutterSkinEnginePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.native_resources.QFlutterSkinEnginePlugin"));
+    QflutterNetworkImagePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.qflutter_network_image.QflutterNetworkImagePlugin"));
+    TencentQQCirclePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.qqcircle.TencentQQCirclePlugin"));
     QFlutterResourceLoaderPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.resource_loader.QFlutterResourceLoaderPlugin"));
   }
 }

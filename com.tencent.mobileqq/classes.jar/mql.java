@@ -1,7 +1,6 @@
-final class mql
-  implements bkhy
+public abstract interface mql
 {
-  public void onDismiss() {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

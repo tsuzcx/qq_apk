@@ -1,38 +1,62 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mci
-  implements Animation.AnimationListener
 {
-  public mci(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
+  private static String a = "QAVPreSetting";
+  private static String b = "BeautyFeature";
+  private static String c = "BeautyValue";
+  private static String d = "BeautyConfig";
+  private static String e = "BeautyResetGuide";
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static int a(String paramString)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(c + paramString, -1);
+  }
+  
+  public static String a(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getString(d + paramString, "");
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    paramString = e + paramString;
+    localSharedPreferences.edit().putInt(paramString, paramInt).apply();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    paramString1 = d + paramString1;
+    localSharedPreferences.edit().putString(paramString1, paramString2).apply();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences(a, 0);
+    String str = b;
+    int j = paramString.getInt(str, -1);
+    int i = j;
+    if (j == -1) {
+      if (!llk.d()) {
+        break label67;
+      }
     }
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
+    label67:
+    for (i = 1;; i = 0)
+    {
+      paramString.edit().putInt(str, i).commit();
+      return i >= 1;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public static int b(String paramString)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
-    }
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(e + paramString, 0);
   }
 }
 

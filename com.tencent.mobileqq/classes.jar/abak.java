@@ -1,24 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
-class abak
+public class abak
 {
-  abak(abaj paramabaj, String paramString) {}
+  private String a = "";
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public static abak a(String paramString)
   {
-    this.jdField_a_of_type_Abaj.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    abak localabak = new abak();
+    localabak.a = paramString;
+    return localabak;
   }
   
-  @QQPermissionGrant(1)
-  public void grant()
+  public String a()
   {
-    aoor.a(new abal(this, "webview"));
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
-    }
+    return this.a;
   }
 }
 

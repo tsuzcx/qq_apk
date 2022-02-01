@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aceh;
-import ampj;
-import auso;
+import acik;
+import anbd;
+import avko;
 
 public class QQGamePubAccountFragment$12$1
   implements Runnable
 {
-  public QQGamePubAccountFragment$12$1(auso paramauso) {}
+  public QQGamePubAccountFragment$12$1(avko paramavko) {}
   
   public void run()
   {
     this.a.a.a(this.a.a.getActivity());
-    aceh.a(ampj.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
+    acik.a(anbd.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
   }
 }
 

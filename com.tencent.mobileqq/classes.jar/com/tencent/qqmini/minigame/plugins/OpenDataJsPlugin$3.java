@@ -2,6 +2,7 @@ package com.tencent.qqmini.minigame.plugins;
 
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageRsp;
 import android.text.TextUtils;
+import com.tencent.mobileqq.triton.script.ScriptContextType;
 import com.tencent.qqmini.minigame.GameJsService;
 import com.tencent.qqmini.minigame.utils.GameLog;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
@@ -37,7 +38,7 @@ class OpenDataJsPlugin$3
           paramJSONObject = paramJSONObject.getString("errMsg");
           localObject = new JSONObject();
           if (i != 0) {
-            break label341;
+            break label343;
           }
           this.val$req.ok();
           if ((!TextUtils.isEmpty(this.val$title)) && (!this.val$quiet.booleanValue()))
@@ -49,7 +50,7 @@ class OpenDataJsPlugin$3
           if (OpenDataJsPlugin.access$200(this.this$0))
           {
             paramJSONObject = (GameJsService)this.val$req.jsService;
-            if ((paramJSONObject == null) || (paramJSONObject.getTargetContextType() != 1)) {
+            if ((paramJSONObject == null) || (paramJSONObject.getContextType() != ScriptContextType.MAIN)) {
               break;
             }
             ((JSONObject)localObject).put("key", this.val$key);
@@ -66,7 +67,7 @@ class OpenDataJsPlugin$3
         }
         paramJSONObject = null;
       }
-      label341:
+      label343:
       ((JSONObject)localObject).put("errMsg", paramJSONObject);
       ((JSONObject)localObject).put("errCode", i);
       GameLog.getInstance().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ret != null");

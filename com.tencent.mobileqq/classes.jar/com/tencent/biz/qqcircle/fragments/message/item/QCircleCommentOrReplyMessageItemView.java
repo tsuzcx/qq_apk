@@ -7,13 +7,13 @@ import android.view.View;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
 import feedcloud.FeedCloudMeta.StNotice;
-import vms;
+import vow;
 
 public class QCircleCommentOrReplyMessageItemView
   extends QCircleBaseWidgetView<FeedCloudMeta.StNotice>
 {
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private vms jdField_a_of_type_Vms;
+  private vow jdField_a_of_type_Vow;
   
   public QCircleCommentOrReplyMessageItemView(@NonNull Context paramContext, int paramInt)
   {
@@ -22,7 +22,7 @@ public class QCircleCommentOrReplyMessageItemView
   
   public int a()
   {
-    return 2131560727;
+    return 2131560748;
   }
   
   public String a()
@@ -32,8 +32,8 @@ public class QCircleCommentOrReplyMessageItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_Vms = new vms(c());
-    this.jdField_a_of_type_Vms.a(paramContext, paramView);
+    this.jdField_a_of_type_Vow = new vow(c());
+    this.jdField_a_of_type_Vow.a(paramContext, paramView);
   }
   
   public void a(FeedCloudMeta.StNotice paramStNotice)
@@ -43,26 +43,26 @@ public class QCircleCommentOrReplyMessageItemView
   
   public void a(FeedCloudMeta.StNotice paramStNotice, int paramInt)
   {
-    if (this.jdField_a_of_type_Vms != null)
+    if (this.jdField_a_of_type_Vow != null)
     {
-      this.jdField_a_of_type_Vms.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-      this.jdField_a_of_type_Vms.a(paramStNotice, paramInt);
+      this.jdField_a_of_type_Vow.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+      this.jdField_a_of_type_Vow.a(paramStNotice, paramInt);
     }
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.jdField_a_of_type_Vms != null) {
-      this.jdField_a_of_type_Vms.b();
+    if (this.jdField_a_of_type_Vow != null) {
+      this.jdField_a_of_type_Vow.b();
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Vms != null) {
-      this.jdField_a_of_type_Vms.c();
+    if (this.jdField_a_of_type_Vow != null) {
+      this.jdField_a_of_type_Vow.c();
     }
   }
   
@@ -74,8 +74,8 @@ public class QCircleCommentOrReplyMessageItemView
   public void setReportBean(QCircleReportBean paramQCircleReportBean)
   {
     super.setReportBean(paramQCircleReportBean);
-    if (this.jdField_a_of_type_Vms != null) {
-      this.jdField_a_of_type_Vms.a(a());
+    if (this.jdField_a_of_type_Vow != null) {
+      this.jdField_a_of_type_Vow.a(a());
     }
   }
 }

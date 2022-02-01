@@ -1,8 +1,8 @@
 public abstract interface aufb
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
   
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  public abstract void b();
 }
 
 

@@ -1,42 +1,28 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.io.File;
-import java.util.Locale;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class apmu
-  implements apne
+  implements apmj
 {
-  apmu(apms paramapms, apng paramapng, apnc paramapnc, String paramString1, apne paramapne, String paramString2) {}
+  apmu(apmt paramapmt) {}
   
-  public void a(boolean paramBoolean)
+  public void a(apnb paramapnb)
   {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Apng.jdField_a_of_type_Boolean = false;
-    }
-    synchronized (this.jdField_a_of_type_Apng)
-    {
-      apng localapng2 = this.jdField_a_of_type_Apng;
-      int i = localapng2.jdField_a_of_type_Int - 1;
-      localapng2.jdField_a_of_type_Int = i;
-      if (i > 0)
-      {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Apnc.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
-        return;
-      }
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Apng.jdField_a_of_type_Boolean) }));
-      if (!this.jdField_a_of_type_Apng.jdField_a_of_type_Boolean)
-      {
-        bgmg.a(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Apne.a(false);
-        return;
-      }
-    }
-    if (!apms.a(apmp.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
-      this.jdField_a_of_type_Apne.a(false);
+    apmt.f(this.a, false);
+    if (apmt.a(this.a)) {
       return;
     }
-    this.jdField_a_of_type_Apne.a(true);
+    if (apmt.a(this.a) != null) {
+      apmt.a(this.a).removeMessages(2);
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramapnb.jdField_a_of_type_Int + ", imageId = " + paramapnb.jdField_a_of_type_JavaLangString);
+    if (apmt.a(this.a) != null)
+    {
+      apnt.a(this.a.a.recognitions, apmt.a(this.a), paramapnb);
+      apmt.a(this.a).a(0, apmt.a(this.a));
+    }
+    apmt.a(this.a, null);
   }
 }
 

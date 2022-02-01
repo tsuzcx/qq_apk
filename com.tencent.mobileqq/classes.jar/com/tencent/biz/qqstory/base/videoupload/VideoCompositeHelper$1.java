@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import wip;
-import wiw;
-import yqp;
+import wmk;
+import wmr;
+import yuk;
 
 public class VideoCompositeHelper$1
   implements Runnable
 {
-  public VideoCompositeHelper$1(wip paramwip, PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, wiw paramwiw) {}
+  public VideoCompositeHelper$1(wmk paramwmk, PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, wmr paramwmr) {}
   
   public void run()
   {
     try
     {
-      yqp.d(wip.jdField_a_of_type_JavaLangString, "composite thread try get lock");
+      yuk.d(wmk.jdField_a_of_type_JavaLangString, "composite thread try get lock");
       try
       {
-        yqp.c(wip.jdField_a_of_type_JavaLangString, "composite thread get lock and start doComposite");
-        this.this$0.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Wiw);
+        yuk.c(wmk.jdField_a_of_type_JavaLangString, "composite thread get lock and start doComposite");
+        this.this$0.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Wmr);
         return;
       }
       finally {}
@@ -26,8 +26,8 @@ public class VideoCompositeHelper$1
     }
     catch (Exception localException)
     {
-      yqp.c(wip.jdField_a_of_type_JavaLangString, "do composite exception", localException);
-      this.jdField_a_of_type_Wiw.a(942012, localException.getMessage(), "");
+      yuk.c(wmk.jdField_a_of_type_JavaLangString, "do composite exception", localException);
+      this.jdField_a_of_type_Wmr.a(942012, localException.getMessage(), "");
     }
   }
 }

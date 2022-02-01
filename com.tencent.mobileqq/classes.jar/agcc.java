@@ -1,8 +1,20 @@
-import android.graphics.Bitmap;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
-public abstract interface agcc
+public class agcc
+  implements agbv
 {
-  public abstract Bitmap a();
+  public agcc(BirthdayActivatePage paramBirthdayActivatePage) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
+  }
 }
 
 

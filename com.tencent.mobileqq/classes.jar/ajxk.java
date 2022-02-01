@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ajxk
-  implements View.OnClickListener
+public class ajxk
+  extends ajsp
 {
-  ajxk(ajxi paramajxi) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
 }
 
 

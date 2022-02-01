@@ -1,13 +1,21 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+
 class awge
-  implements awga
+  implements aasd
 {
-  awge(awgb paramawgb) {}
+  awge(awgd paramawgd, String paramString) {}
   
-  public void a(int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_Awfh != null) {
-      this.a.jdField_a_of_type_Awfh.a(paramInt, this.a.jdField_a_of_type_Awgh);
-    }
+    if (this.jdField_a_of_type_Awgd.isDestroy) {}
+    do
+    {
+      return;
+      paramBundle = String.format("{\"result\":%d, \"errMsg\":\"%s\", \"uin\":\"%s\"}", new Object[] { Integer.valueOf(paramBundle.getInt("result", -1)), paramBundle.getString("errMsg"), paramBundle.getString("retUin") });
+      this.jdField_a_of_type_Awgd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    } while (!QLog.isColorLevel());
+    QLog.e("ConnectApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
   }
 }
 

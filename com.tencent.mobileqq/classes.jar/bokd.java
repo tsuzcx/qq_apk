@@ -1,22 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class bokd
+class bokd
+  implements Observer<Boolean>
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
+  bokd(bojy parambojy) {}
   
-  public bokd(bokc parambokc) {}
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    bojy.b(this.a);
+    if (paramBoolean != null) {
+      bojy.b(this.a, paramBoolean.booleanValue());
+    }
+  }
 }
 
 

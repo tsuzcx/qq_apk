@@ -1,73 +1,28 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bhfx
-  extends RemoteCommand
+final class bhfx
+  implements DownloadParams.DecodeHandler
 {
-  public bhfx()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    super("running_plugin_cmd");
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
-    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
     {
-      switch (paramBundle.getInt("CommondType"))
-      {
-      }
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return null;
-              if (paramOnInvokeFinishLinstener == null) {
-                break;
-              }
-              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-            } while (paramOnInvokeFinishLinstener == null);
-            try
-            {
-              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
-              long l = paramBundle.getLong("runningState");
-              paramBundle = paramBundle.getString("cookieUrl");
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("runningState", l);
-              localJSONObject.put("cookieUrl", paramBundle);
-              localMessage.obj = localJSONObject;
-              paramOnInvokeFinishLinstener.sendMessage(localMessage);
-              return null;
-            }
-            catch (JSONException paramBundle)
-            {
-              return null;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
-          return null;
-        } while (paramOnInvokeFinishLinstener == null);
-        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-      } while (paramBundle == null);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
-      return null;
-    }
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bhmq.e(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

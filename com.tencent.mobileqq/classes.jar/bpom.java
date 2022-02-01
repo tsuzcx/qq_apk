@@ -1,8 +1,16 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
 
-public abstract interface bpom
+class bpom
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, int paramInt);
+  bpom(bpok parambpok) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.a().setVisibility(8);
+  }
 }
 
 

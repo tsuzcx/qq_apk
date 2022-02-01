@@ -1,35 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
-public class otf
-  implements sfj
+class otf
+  implements bliz
 {
-  private WeakReference<ReadInJoyArticleBottomVideoView> a;
+  otf(otd paramotd, otp paramotp, blir paramblir) {}
   
-  public otf(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
-  }
-  
-  public List<sfk> a(int paramInt, boolean paramBoolean)
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    ArrayList localArrayList = new ArrayList();
-    if (localReadInJoyArticleBottomVideoView != null) {
-      localArrayList.add(new sfk(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).d, "", 5, (int)ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).a));
+    switch (paramInt)
+    {
     }
-    return localArrayList;
-  }
-  
-  public boolean a()
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (localReadInJoyArticleBottomVideoView == null) {
-      return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      this.jdField_a_of_type_Otd.a().a(this.jdField_a_of_type_Otp, this.jdField_a_of_type_Otd.c);
+      this.jdField_a_of_type_Otd.notifyDataSetChanged();
     }
-    return bgnt.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
   }
 }
 

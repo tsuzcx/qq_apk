@@ -1,49 +1,27 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
+import com.tencent.av.VideoController;
+import com.tencent.av.mediacodec.NativeCodec;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class ldq
-  implements bdvw
 {
-  public void onResp(bdwt parambdwt)
+  public static void a(long paramLong, VideoController paramVideoController, lds paramlds, ldr paramldr)
   {
-    boolean bool = false;
-    String str1 = (String)parambdwt.jdField_a_of_type_Bdws.a();
-    if (parambdwt.jdField_a_of_type_Int == 0) {
-      bool = true;
-    }
-    try
+    long l1 = System.currentTimeMillis();
+    String str = paramlds.a();
+    paramVideoController = paramVideoController.a(paramLong, paramlds.a(), str.getBytes());
+    long l2 = System.currentTimeMillis();
+    if (paramVideoController == null) {}
+    for (paramVideoController = "";; paramVideoController = new String(paramVideoController))
     {
-      if (DeviceCapabilityExamination.a != null)
-      {
-        DeviceCapabilityExamination.a.a(str1, bool);
-        if (DeviceCapabilityExamination.a.a()) {
-          DeviceCapabilityExamination.a = null;
-        }
-      }
-      if (!bool)
-      {
-        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + parambdwt.jdField_a_of_type_Int + "]");
-        return;
-      }
-    }
-    finally {}
-    try
-    {
-      String str2 = DeviceCapabilityExamination.b(str1);
-      bgmg.a(parambdwt.jdField_a_of_type_Bdws.c, str2, false);
-      bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-      parambdwt = new File(DeviceCapabilityExamination.a(str1));
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + parambdwt.exists() + "]");
+      QLog.w("DeviceCapability", 1, "doCodecTest, codec[" + paramlds.jdField_a_of_type_Int + "], sampleMD5[" + paramlds.jdField_a_of_type_JavaLangString + "], cmdParams[" + str + "], result[" + paramVideoController + "], cost[" + (l2 - l1) + "], seq[" + paramLong + "]");
+      NativeCodec.hardwareCodecLevelInfo();
+      QLog.w("DeviceCapability", 1, "doCodecTest get_info_test numCores: " + llk.e() + ", cpu frep: " + llk.d() + ", memory: " + llk.a() + ", output format: " + lof.a() + ", H264EncBaseLineLevel: " + NativeCodec.mH264EncBaseLineLevel + ", H264DecBaseLineLevel: " + NativeCodec.mH264DecBaseLineLevel + ", H264EncHighProfileLevel: " + NativeCodec.mH264EncHighProfileLevel + ", H264DecHighProfileLevel: " + NativeCodec.mH264DecHighProfileLevel + ", H265EncLevel: " + NativeCodec.mH265EncLevel + ", H265DecLevel: " + NativeCodec.mH265DecLevel);
+      paramlds = new lom('=', ';');
+      paramlds.a(paramVideoController);
+      paramldr.a(paramlds.a("i_resultCode", -99), "", 0, paramlds.a("i_delay", -99), null);
       return;
     }
-    catch (Exception parambdwt)
-    {
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
-    }
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

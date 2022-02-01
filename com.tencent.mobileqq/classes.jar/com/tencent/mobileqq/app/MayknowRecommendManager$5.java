@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Bundle;
-import anpk;
+import aobl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MayknowRecommendManager$5
   implements Runnable
 {
-  public MayknowRecommendManager$5(anpk paramanpk, int paramInt1, int paramInt2, Bundle paramBundle) {}
+  public MayknowRecommendManager$5(aobl paramaobl, int paramInt1, int paramInt2, Bundle paramBundle) {}
   
   public void run()
   {
-    anpk.b(this.this$0, this.jdField_a_of_type_Int);
-    byte[] arrayOfByte = (byte[])anpk.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+    aobl.b(this.this$0, this.jdField_a_of_type_Int);
+    byte[] arrayOfByte = (byte[])aobl.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
     if ((arrayOfByte != null) && (arrayOfByte.length > 0))
     {
-      localBoolean = (Boolean)anpk.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+      localBoolean = (Boolean)aobl.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
       if ((localBoolean != null) && (localBoolean.booleanValue() == true)) {
         if (QLog.isColorLevel()) {
           QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonRemoteNextPage requesting " + this.jdField_a_of_type_Int);
@@ -27,8 +27,8 @@ public class MayknowRecommendManager$5
     {
       Boolean localBoolean;
       return;
-      anpk.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(true));
-      ((FriendListHandler)anpk.a(this.this$0).a(1)).a(this.b, this.jdField_a_of_type_Int, arrayOfByte, false, this.jdField_a_of_type_AndroidOsBundle);
+      aobl.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(true));
+      ((FriendListHandler)aobl.a(this.this$0).a(1)).a(this.b, this.jdField_a_of_type_Int, arrayOfByte, false, this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
     QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonRemoteNextPage no cookie! no need to request");

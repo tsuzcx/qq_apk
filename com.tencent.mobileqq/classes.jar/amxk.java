@@ -1,6 +1,31 @@
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+
 public abstract interface amxk
 {
-  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amxj paramamxj, long paramLong);
+  
+  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
+  
+  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  
+  public abstract void onGameCheckRetry(int paramInt);
+  
+  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
+  
+  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
+  
+  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
 }
 
 

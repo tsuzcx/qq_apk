@@ -1,8 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.37.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface sfo
+public class sfo
+  implements sgm
 {
-  public abstract void a(boolean paramBoolean, BaseArticleInfo paramBaseArticleInfo);
+  sfo(sel paramsel) {}
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  {
+    sel.d(this.a, false);
+    if (!sel.c(this.a)) {
+      return;
+    }
+    sel.a(this.a, false);
+    if ((this.a.a()) && (sel.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
+      }
+      if (!sel.a(this.a).b()) {
+        break label122;
+      }
+      sel.a(this.a).postDelayed(new ReadInJoyBaseAdapter.37.1(this, paramReadInJoyBaseListView), 1200L);
+    }
+    for (;;)
+    {
+      sel.a(this.a, this.a.a.getLastVisiblePosition() + 1, sel.c());
+      return;
+      label122:
+      this.a.a(paramReadInJoyBaseListView, sel.b);
+    }
+  }
 }
 
 

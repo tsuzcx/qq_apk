@@ -1,21 +1,29 @@
-class asyy
-  extends aszz
+import android.support.v4.app.FragmentActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class asyy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  asyy(asyx paramasyx, aszc paramaszc) {}
+  public asyy(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean)
+    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new asyz(this, paramBoolean));
+    if (paramBoolean) {}
+    for (String str = "0X8009F0F";; str = "0X8009F10")
     {
-      this.jdField_a_of_type_Aszc.a(paramString2, paramString3);
+      bdll.b(this.a.getActivity().app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    this.jdField_a_of_type_Aszc.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asyy
  * JD-Core Version:    0.7.0.1
  */

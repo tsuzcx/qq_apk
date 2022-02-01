@@ -1,56 +1,38 @@
-import android.graphics.SurfaceTexture;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
-class bjff
-  implements bjfo
+public class bjff
+  implements Animator.AnimatorListener
 {
-  bjff(bjfe parambjfe) {}
+  public bjff(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    yqp.b("DefaultMediaPlayer", "decoder -> onDecodeStart");
+    FloatingScreenContainer.a(this.a, false);
   }
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    yqp.d("DefaultMediaPlayer", "decoder -> onDecodeError :%d , %s", new Object[] { Integer.valueOf(paramInt), paramThrowable });
-  }
-  
-  public void a(long paramLong)
-  {
-    if (bjfe.a(this.a) == 0)
-    {
-      bjfg.a(this.a.hashCode(), "[Player] on video decode first frame");
-      bjfe.a(this.a, 1);
+    FloatingScreenContainer.a(this.a).removeAllListeners();
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).b();
     }
+    FloatingScreenContainer.a(this.a, false);
   }
   
-  public void a(SurfaceTexture paramSurfaceTexture)
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    bjfe.a(this.a, paramSurfaceTexture);
+    FloatingScreenContainer.a(this.a, true);
   }
   
-  public void b()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    yqp.d("DefaultMediaPlayer", "decoder -> onDecodeFinish");
-    bjfe.a(this.a);
-  }
-  
-  public void b(long paramLong)
-  {
-    yqp.d("DefaultMediaPlayer", "decoder -> onDecodeSeekTo :%d", new Object[] { Long.valueOf(paramLong) });
-  }
-  
-  public void c()
-  {
-    yqp.d("DefaultMediaPlayer", "decoder -> onDecodeCancel");
-    bjfe.a(this.a);
-  }
-  
-  public void d()
-  {
-    yqp.d("DefaultMediaPlayer", "decoder -> onDecodeRepeat");
-    bjfe.a(this.a);
-    bjfe.b(this.a);
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).a();
+    }
+    FloatingScreenContainer.a(this.a, true);
   }
 }
 

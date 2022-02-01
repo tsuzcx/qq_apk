@@ -1,27 +1,23 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
 
-class akyz
-  implements View.OnClickListener
+public class akyz
+  implements Animator.AnimatorListener
 {
-  akyz(akyh paramakyh) {}
+  public akyz(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (bgdt.a().a() == 4) {
-      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "0");
-    }
-    for (;;)
-    {
-      this.a.a(13, 0);
-      this.a.a(-1, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "0");
-    }
+    this.a.b.setRotation(0.0F);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

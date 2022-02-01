@@ -3,14 +3,14 @@ package com.tencent.biz.qqcircle.widgets;
 import android.text.TextUtils;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import bhij;
+import biiy;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import feedcloud.FeedCloudMeta.StAnimation;
 import feedcloud.FeedCloudMeta.StImage;
 import feedcloud.FeedCloudToastshowsvr.StToast;
 import feedcloud.FeedCloudToastshowsvr.StToastContent;
-import vxx;
+import wbr;
 
 public class QCirclePushToastView$1
   implements Runnable
@@ -23,7 +23,7 @@ public class QCirclePushToastView$1
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       QCirclePushToastView.a(this.this$0).a(QCirclePushToastView.a(this.this$0), (String)localObject);
-      QCirclePushToastView.a(this.this$0).addAnimatorListener(new vxx(this));
+      QCirclePushToastView.a(this.this$0).addAnimatorListener(new wbr(this));
     }
     if (!TextUtils.isEmpty(this.a.toastContent.closeButtonImg.picUrl.get()))
     {

@@ -1,26 +1,33 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.widget.QQToast;
 
-final class ubu
-  implements bihh
+class ubu
+  extends anwb
 {
-  public void onWXShareResp(BaseResp paramBaseResp)
+  ubu(ubt paramubt) {}
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
-    switch (paramBaseResp.errCode)
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(ubt.a(this.a))))
     {
-    case -1: 
-    default: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718007, 1).a();
-    case -2: 
+      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
+      if (paramBoolean) {
+        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131717888, 0).b(paramLong.getResources().getDimensionPixelSize(2131299011));
+      }
+    }
+    else
+    {
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718025, 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131717877, 0).b(paramLong.getResources().getDimensionPixelSize(2131299011));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubu
  * JD-Core Version:    0.7.0.1
  */

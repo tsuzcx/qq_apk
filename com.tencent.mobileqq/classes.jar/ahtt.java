@@ -1,51 +1,32 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.MessageForText;
 
-public class ahtt
-  extends ayyr
+class ahtt
+  extends ClickableSpan
 {
-  public ahtt(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
+  ahtt(ahtp paramahtp, MessageForText paramMessageForText, ETTextView paramETTextView, CharSequence paramCharSequence) {}
   
-  public void a(int paramInt, ayxy paramayxy)
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahuo;
-    if (localObject != null)
+    if (ahml.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText))
     {
-      if (paramayxy.jdField_a_of_type_Int != 0) {
-        break label139;
-      }
-      ((ahuo)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramayxy.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.cancelLongPress();
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextMsg(this.jdField_a_of_type_JavaLangCharSequence);
+      ahml.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
+      ahtp.a(this.jdField_a_of_type_Ahtp, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop);
     }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahtx;
-      if (localObject != null)
-      {
-        if (paramayxy.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        ((ahtx)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramayxy.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-      label139:
-      ((ahuo)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramayxy.jdField_a_of_type_Ayxt.jdField_a_of_type_JavaLangString + ", desc:" + paramayxy.jdField_a_of_type_Ayxt.b, paramayxy.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
-    }
-    ((ahtx)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramayxy.jdField_a_of_type_Ayxt.jdField_a_of_type_JavaLangString + ", desc:" + paramayxy.jdField_a_of_type_Ayxt.b, paramayxy.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahuo;
-    if (localObject != null) {
-      ((ahuo)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahtx;
-    if (localObject != null) {
-      ((ahtx)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Ahtp.a.getResources().getColor(2131165765));
+    paramTextPaint.clearShadowLayer();
   }
 }
 

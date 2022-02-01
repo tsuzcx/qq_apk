@@ -1,18 +1,15 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class snz
-  implements PopupWindow.OnDismissListener
+public class snz
+  implements MessageQueue.IdleHandler
 {
-  snz(snh paramsnh) {}
+  public snz(FastWebActivity paramFastWebActivity) {}
   
-  public void onDismiss()
+  public boolean queueIdle()
   {
-    snh.a(this.a).a(1.0F);
-    if (this.a.b)
-    {
-      this.a.a.c();
-      this.a.b = false;
-    }
+    FastWebActivity.e(this.a);
+    return false;
   }
 }
 

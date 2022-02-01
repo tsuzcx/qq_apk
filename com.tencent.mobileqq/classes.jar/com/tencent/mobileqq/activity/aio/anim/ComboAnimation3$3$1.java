@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agbk;
-import agbn;
+import agle;
+import aglh;
 
 public class ComboAnimation3$3$1
   implements Runnable
 {
-  public ComboAnimation3$3$1(agbn paramagbn) {}
+  public ComboAnimation3$3$1(aglh paramaglh) {}
   
   public void run()
   {

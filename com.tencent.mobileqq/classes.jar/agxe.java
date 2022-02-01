@@ -1,22 +1,44 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.AbsListView;
 
-class agxe
-  extends ahbl
+public class agxe
+  implements agvc
 {
-  agxe(agwz paramagwz)
+  public void a(int paramInt)
   {
-    super(paramagwz, null);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 5: 
+      aanu.a().a();
+      return;
+    case 10: 
+      aanu.a().b();
+      return;
+    }
+    aanu.a().c();
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    return new agtm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    aanu.a().a(paramAbsListView, paramInt);
   }
   
-  protected boolean a()
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return false;
+    aanu.a().a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (ahbd.class.isInstance(paramObject)) {
+      aanu.a().a((ahbd)paramObject);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13, 7, 5, 10 };
   }
 }
 

@@ -1,49 +1,76 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import java.util.List;
 
-class asmm
-  extends asgf
+public class asmm
+  extends asol
 {
-  asmm(asml paramasml) {}
+  private asmr jdField_a_of_type_Asmr;
+  private asmx jdField_a_of_type_Asmx;
+  private List<asmu> jdField_a_of_type_JavaUtilList;
+  private int[] jdField_a_of_type_ArrayOfInt;
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public asmm(Context paramContext, asmr paramasmr, int paramInt)
   {
-    if (paramObject == null) {}
+    super(paramContext, 7, paramInt);
+    this.jdField_a_of_type_Asmr = paramasmr;
+    this.jdField_a_of_type_ArrayOfInt = assp.a();
+  }
+  
+  public int a()
+  {
+    return assj.a(this.jdField_a_of_type_ArrayOfInt);
+  }
+  
+  protected int a(int paramInt)
+  {
+    return 2007;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Asmr = null;
+  }
+  
+  protected void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    int i;
     do
     {
       do
       {
-        Object[] arrayOfObject;
-        do
-        {
-          String str;
-          do
-          {
-            return;
-            arrayOfObject = (Object[])paramObject;
-            str = (String)arrayOfObject[0];
-            if (QLog.isColorLevel()) {
-              QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-            }
-            if (!paramBoolean) {
-              break;
-            }
-            paramObject = (String)arrayOfObject[1];
-          } while (asml.a(this.a) == null);
-          asml.a(this.a).a(str, paramObject);
-          return;
-        } while (paramObject == null);
-        int i = ((Integer)arrayOfObject[1]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode resetCode=%s", new Object[] { Integer.valueOf(i) }));
-        }
-        if (i != 20) {
-          break;
-        }
-      } while (asml.a(this.a) == null);
-      asml.a(this.a).a();
-      return;
-    } while (asml.a(this.a) == null);
-    asml.a(this.a).a(2131718381);
+        return;
+        i = a(paramInt);
+      } while (paramInt >= b());
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = assj.a(this.jdField_a_of_type_ArrayOfInt);
+      }
+    } while (i != 2007);
+    if (this.jdField_a_of_type_Asmx == null)
+    {
+      this.jdField_a_of_type_Asmx = new asom(this, 2007);
+      this.jdField_a_of_type_Asmx.a(true);
+      this.jdField_a_of_type_Asmx.c(false);
+      this.jdField_a_of_type_Asmx.b(false);
+      asmu localasmu = new asmu();
+      localasmu.i = "delete";
+      this.jdField_a_of_type_Asmx.a(localasmu);
+    }
+    paramView = (EmoticonLinearLayout)paramView;
+    paramView.setCallBack(this.jdField_a_of_type_Asmr);
+    paramView.setAdapter(this.jdField_a_of_type_Asmx);
+    this.jdField_a_of_type_Asmx.a(3, 7);
+    this.jdField_a_of_type_Asmx.a(paramInt);
+    this.jdField_a_of_type_Asmx.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Asmx.a();
+  }
+  
+  public int b()
+  {
+    return a() + assj.h;
   }
 }
 

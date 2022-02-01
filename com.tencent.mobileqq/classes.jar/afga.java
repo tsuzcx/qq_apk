@@ -1,79 +1,24 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.observer.SubAccountObserver;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
 public class afga
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public afga(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public afga(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject1 = paramView.findViewById(2131364446);
-    if ((localObject1 != null) && (((View)localObject1).getVisibility() == 0)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = ((Integer)paramView.getTag()).intValue();
-      localObject1 = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
-      Object localObject2 = (bdeh)this.a.app.getManager(61);
-      if (((bdeh)localObject2).a(((SimpleAccount)localObject1).getUin()))
-      {
-        this.a.c(this.a.getString(2131718273));
-        bddx.a(this.a.app);
-        this.a.setTitle("");
-        localObject1 = new Intent(this.a, SplashActivity.class);
-        ((Intent)localObject1).putExtra("tab_index", MainFragment.b);
-        ((Intent)localObject1).setFlags(67108864);
-        this.a.startActivity((Intent)localObject1);
-        this.a.finish();
-      }
-      else if (((bdeh)localObject2).a() >= 2)
-      {
-        bddy.a(this.a.app, this.a);
-      }
-      else if (!((SimpleAccount)localObject1).isLogined())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onSelectAccountClick.onClick:add account");
-        }
-        localObject2 = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject2).putExtra("subuin", ((SimpleAccount)localObject1).getUin());
-        ((Intent)localObject2).putExtra("fromWhere", this.a.b);
-        this.a.startActivity((Intent)localObject2);
-      }
-      else if (this.a.c())
-      {
-        localObject2 = ((bdeh)localObject2).a(((SimpleAccount)localObject1).getUin());
-        this.a.a(2131718275);
-        if (TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localObject2 = new afgb(this, (SimpleAccount)localObject1);
-          this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), ((SimpleAccount)localObject1).getUin(), (SubAccountObserver)localObject2);
-        }
-        else
-        {
-          bdee localbdee = (bdee)this.a.app.getManager(28);
-          if (localbdee != null) {
-            localbdee.a(((SimpleAccount)localObject1).getUin(), (String)localObject2, this.a.b);
-          }
-        }
-      }
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import bdlt;
+import beeo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
@@ -13,7 +13,7 @@ public class GroupTeamWorkListActivity$3
   {
     WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.app.getManager(13);
     if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(101, new bdlt(this));
+      localWebProcessManager.a(101, new beeo(this));
     }
   }
 }

@@ -6,8 +6,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import zhr;
-import zhs;
+import zlm;
+import zln;
 
 class AudioCombiner$AudioSegmentLooper
   implements Runnable
@@ -104,7 +104,7 @@ class AudioCombiner$AudioSegmentLooper
           Iterator localIterator2 = AudioCombiner.a(this.this$0).iterator();
           if (localIterator2.hasNext())
           {
-            byte[] arrayOfByte = ((zhr)localIterator2.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + AudioCombiner.b(this.this$0));
+            byte[] arrayOfByte = ((zlm)localIterator2.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + AudioCombiner.b(this.this$0));
             if (arrayOfByte == null) {
               continue;
             }
@@ -147,7 +147,7 @@ class AudioCombiner$AudioSegmentLooper
       }
       Iterator localIterator1 = AudioCombiner.a(this.this$0).iterator();
       while (localIterator1.hasNext()) {
-        ((zhr)localIterator1.next()).a();
+        ((zlm)localIterator1.next()).a();
       }
       if (!QLog.isColorLevel()) {
         break;

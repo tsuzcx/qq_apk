@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bobr;
-import bobs;
+import bpdm;
+import bpdn;
 
 class AEEditorEffectConfigManager$2$1
   implements Runnable
@@ -10,7 +10,7 @@ class AEEditorEffectConfigManager$2$1
   
   public void run()
   {
-    bobr.a(this.a.this$0).a(null);
+    bpdm.a(this.a.this$0).a(null);
   }
 }
 

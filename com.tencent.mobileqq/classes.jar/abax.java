@@ -1,50 +1,8 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import org.json.JSONObject;
-
-public class abax
+class abax
 {
-  public abax(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
+  private int jdField_a_of_type_Int = -1;
   
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respUploadContacts", new String[] { localJSONObject.toString() });
-      bgpa.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, anni.a(2131706212));
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
-    }
-  }
-  
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
-    {
-      NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
-    }
-  }
+  private abax(abav paramabav) {}
 }
 
 

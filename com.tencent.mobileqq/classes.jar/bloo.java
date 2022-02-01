@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqreader.js.JsCallParams;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
 
-public final class bloo
-  implements Parcelable.Creator<JsCallParams>
+public class bloo
 {
-  public JsCallParams a(Parcel paramParcel)
-  {
-    return new JsCallParams(paramParcel, null);
-  }
+  public float a;
+  public int a;
+  public BitmapDrawable a;
+  public Drawable a;
+  public URLDrawable a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public JsCallParams[] a(int paramInt)
+  public bloo() {}
+  
+  public bloo(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    return new JsCallParams[paramInt];
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.b = paramInt2;
   }
 }
 

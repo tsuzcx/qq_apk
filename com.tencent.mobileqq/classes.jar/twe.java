@@ -1,31 +1,40 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class twe
-  implements Animation.AnimationListener
+public class twe
+  implements View.OnClickListener
 {
-  twe(tvx paramtvx) {}
+  twe(tvz paramtvz) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131373029)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
+    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      tvz.a(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Int == 3)
+      {
+        MqqHandler localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+        if ((localMqqHandler != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
+          localMqqHandler.sendEmptyMessage(1006);
+        }
+      }
     }
   }
 }

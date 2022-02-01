@@ -1,28 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
-public class yca
-  extends SimpleObserver<ycb>
+class yca
+  extends xfp
 {
-  public yca(ybw paramybw) {}
+  yca(ybz paramybz) {}
   
-  public void a(ycb paramycb)
+  public void a()
   {
-    super.onNext(paramycb);
-    ybw.a(this.a, paramycb, false, new ErrorMessage());
+    super.a();
+    ybz.a(this.a).jdField_a_of_type_Xfj = null;
   }
   
-  public void onCancel()
+  public void a(int paramInt)
   {
-    super.onCancel();
-    yqp.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    ybw.a(this.a, null, false, (ErrorMessage)paramError);
+    super.a(paramInt);
+    yup.a("share_story", "day_suc", 0, paramInt, new String[] { ybz.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 

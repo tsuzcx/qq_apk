@@ -1,17 +1,14 @@
-class ansx
-  implements lxe
+import android.graphics.Bitmap;
+
+public abstract interface ansx
 {
-  ansx(ansp paramansp, byte[] paramArrayOfByte) {}
+  public abstract Bitmap a(int[] paramArrayOfInt, Bitmap paramBitmap, int paramInt1, int paramInt2);
   
-  public void a(lxd paramlxd)
-  {
-    paramlxd.a(this.jdField_a_of_type_ArrayOfByte);
-    paramlxd.a();
-  }
+  public abstract void a(ansy paramansy, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansx
  * JD-Core Version:    0.7.0.1
  */

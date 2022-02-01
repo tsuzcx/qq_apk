@@ -1,105 +1,240 @@
-import IMMsgBodyPack.PersonInfoChange;
-import IMMsgBodyPack.PersonInfoField;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor.1;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.remind.RemindPB.RemindItem;
+import com.tencent.pb.remind.RemindPB.RemindQuota;
+import com.tencent.pb.remind.RemindPB.ReqBody;
+import com.tencent.pb.remind.RemindPB.RspBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class aofw
-  extends acvl
+  extends anud
 {
-  public aofw(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  aofw(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    super(paramQQAppInterface);
   }
   
-  private void a(MsgInfo paramMsgInfo)
+  private void a(RemindPB.RspBody paramRspBody)
+  {
+    if (paramRspBody.rep_clear_uin.has())
+    {
+      Object localObject = paramRspBody.rep_clear_uin.get();
+      paramRspBody = new ArrayList();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = String.valueOf((Long)((Iterator)localObject).next());
+          paramRspBody.add(str);
+          amjp.c(str, this.app);
+        }
+        amjp.b(paramRspBody, this.app);
+      }
+    }
+  }
+  
+  private void a(FromServiceMsg paramFromServiceMsg)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "Recieved user info update");
+      QLog.e("QVipSpeicalCareHandler", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + this.app.getCurrentAccountUin());
     }
-    paramMsgInfo = new JceInputStream(paramMsgInfo.vMsg);
-    paramMsgInfo.setServerEncoding("utf-8");
-    PersonInfoChange localPersonInfoChange = new PersonInfoChange();
-    localPersonInfoChange.readFrom(paramMsgInfo);
-    int j;
-    int i;
-    long l;
-    int k;
-    if (localPersonInfoChange.cType == 0)
+    if (!paramFromServiceMsg.isSuccess()) {
+      bjqh.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.app.getCurrentAccountUin(), 1000277, anzj.a(2131710272), true);
+    }
+  }
+  
+  private void a(FromServiceMsg paramFromServiceMsg, RemindPB.RspBody paramRspBody, int paramInt)
+  {
+    if (paramInt == 1)
     {
-      paramMsgInfo = localPersonInfoChange.vChgField.iterator();
-      j = 0;
-      i = 0;
-      if (paramMsgInfo.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.i("SpecialRemind.Service", 2, "get count fail.");
+      }
+      return;
+    }
+    paramInt = paramRspBody.int32_ret.get();
+    notifyUI(1001, paramFromServiceMsg.isSuccess(), Integer.valueOf(paramInt));
+  }
+  
+  private void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  {
+    RemindPB.RspBody localRspBody = new RemindPB.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localRspBody;
+    }
+    catch (Exception localException)
+    {
+      int i;
+      for (;;)
       {
-        l = ((PersonInfoField)paramMsgInfo.next()).uField;
-        if ((l == 20015L) || (l == 10009L))
-        {
-          k = 1;
-          j = i;
-          i = k;
+        QLog.i("SpecialRemind.Service", 1, "handle send special sound exception:" + localException.getMessage());
+        paramArrayOfByte = null;
+        localException.printStackTrace();
+      }
+      a(paramFromServiceMsg, paramArrayOfByte, i);
+    }
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_method.has()))
+    {
+      i = paramArrayOfByte.uint32_method.get();
+      if (paramArrayOfByte.int32_ret.has())
+      {
+        if (paramArrayOfByte.int32_ret.get() != 0) {
+          break label110;
         }
+        b(paramFromServiceMsg, paramArrayOfByte, i);
       }
     }
-    for (;;)
+    return;
+    label110:
+  }
+  
+  private boolean a(List<String> paramList)
+  {
+    return (paramList != null) && (paramList.size() > 0);
+  }
+  
+  private void b(RemindPB.RspBody paramRspBody)
+  {
+    if (paramRspBody.rep_set_info.has())
     {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L))
+      Object localObject = paramRspBody.rep_set_info.get();
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        i = j;
-        j = 1;
-        continue;
-        if (this.a != null)
+        paramRspBody = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          paramMsgInfo = (FriendListHandler)this.a.a(1);
-          if (j != 0) {
-            paramMsgInfo.c(this.a.getAccount());
-          }
-          if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
+          RemindPB.RemindItem localRemindItem = (RemindPB.RemindItem)((Iterator)localObject).next();
+          if ((localRemindItem.uint64_uin.has()) && (localRemindItem.uint32_id.has()))
+          {
+            String str = String.valueOf(localRemindItem.uint64_uin.get());
+            paramRspBody.add(str);
+            amjp.a(str, localRemindItem.uint32_id.get(), this.app);
           }
         }
-        do
-        {
-          return;
-        } while ((localPersonInfoChange.cType != 1) || (!QLog.isColorLevel()));
-        QLog.d("MessageHandler", 2, "group data update push");
-      }
-      else
-      {
-        k = i;
-        i = j;
-        j = k;
+        amjp.a(paramRspBody, this.app);
       }
     }
   }
   
-  public acwn a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  private void b(FromServiceMsg paramFromServiceMsg, RemindPB.RspBody paramRspBody, int paramInt)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      return new acwn(null, false);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
+      notifyUI(1000, paramFromServiceMsg.isSuccess(), Integer.valueOf(paramInt));
+      return;
+      c(paramRspBody);
+      continue;
+      b(paramRspBody);
+      continue;
+      a(paramRspBody);
+    }
+  }
+  
+  private void c(RemindPB.RspBody paramRspBody)
+  {
+    if (paramRspBody.msg_quota.has())
+    {
+      paramRspBody = (RemindPB.RemindQuota)paramRspBody.msg_quota.get();
+      if (paramRspBody.uint32_comm_quota.has()) {
+        amjp.a(paramRspBody.uint32_comm_quota.get(), this.app);
+      }
+      if (paramRspBody.uint32_svip_quota.has()) {
+        amjp.b(paramRspBody.uint32_svip_quota.get(), this.app);
+      }
+      amjp.b(this.app);
+    }
+  }
+  
+  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      a(paramFromServiceMsg, (byte[])paramObject);
+      return;
+    }
+    a(paramFromServiceMsg);
+  }
+  
+  public void a(List<String> paramList1, int paramInt, List<String> paramList2)
+  {
+    RemindPB.ReqBody localReqBody = new RemindPB.ReqBody();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        paramList1 = createToServiceMsg("SpecialRemind.Service");
+        paramList1.putWupBuffer(localReqBody.toByteArray());
+        sendPbReq(paramList1);
+        return;
+      }
+      catch (Exception paramList1)
+      {
+        paramList1.printStackTrace();
+        return;
+      }
+      localReqBody.uint32_method.set(1);
+      continue;
+      if ((a(paramList1)) && (a(paramList2)) && (paramList1.size() == paramList2.size()))
+      {
+        int j = paramList2.size();
+        int i = 0;
+        while (i < j)
+        {
+          RemindPB.RemindItem localRemindItem = new RemindPB.RemindItem();
+          localRemindItem.uint64_uin.set(Long.parseLong((String)paramList1.get(i)));
+          localRemindItem.uint32_id.set(Integer.parseInt((String)paramList2.get(i)));
+          localReqBody.rep_set_info.add(localRemindItem);
+          localReqBody.setHasFlag(true);
+          i += 1;
+        }
+        localReqBody.uint32_method.set(paramInt);
+        continue;
+        if (a(paramList1))
+        {
+          paramList1 = paramList1.iterator();
+          while (paramList1.hasNext())
+          {
+            paramList2 = (String)paramList1.next();
+            localReqBody.rep_clear_uin.add(Long.valueOf(Long.parseLong(paramList2)));
+          }
+          localReqBody.uint32_method.set(4);
+        }
       }
     }
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return aofx.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    if ((paramToServiceMsg == null) || (paramToServiceMsg.length() == 0)) {}
+    while (!"SpecialRemind.Service".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    a(paramFromServiceMsg, paramObject);
   }
 }
 

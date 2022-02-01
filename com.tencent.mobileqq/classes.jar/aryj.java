@@ -1,24 +1,20 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
-class aryj
-  implements bkhe
+public class aryj
+  implements View.OnClickListener
 {
-  aryj(aryi paramaryi) {}
+  public aryj(DBFixConfigActivity paramDBFixConfigActivity, String paramString) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) || (paramInt == 2)) {
-      AbstractGifImage.resumeAll();
-    }
-    for (;;)
-    {
-      this.a.d = paramInt;
-      return;
-      AbstractGifImage.pauseAll();
-    }
+    boolean bool = bhmi.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db"), new File(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir(), this.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + ".db"));
+    QLog.e(DBFixConfigActivity.jdField_a_of_type_JavaLangString, 2, "copy " + bool + this.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

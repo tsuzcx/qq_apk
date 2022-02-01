@@ -1,17 +1,34 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class sqb
-  implements pde
+  implements spj
 {
-  public sqb(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, pde parampde) {}
+  public static final String a;
+  private static String b = "WebFastLikeDislikeCreator";
+  private sqc a;
   
-  public void a(int paramInt)
+  static
   {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
-    if (this.jdField_a_of_type_Pde != null) {
-      this.jdField_a_of_type_Pde.a(paramInt);
-    }
+    jdField_a_of_type_JavaLangString = anzj.a(2131715662);
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 19;
+  }
+  
+  public spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Sqc = new sqc(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560173, null), paramBaseData);
+    return this.jdField_a_of_type_Sqc;
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.r == 21;
   }
 }
 

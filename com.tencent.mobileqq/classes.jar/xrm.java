@@ -1,18 +1,18 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class xrm
-  implements xrj
+  implements xjl
 {
-  public xrm(MediaPlayer paramMediaPlayer) {}
+  public xrm(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(xrh paramxrh)
+  public void a()
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Xrf.b() < 2000000L) && (!this.a.jdField_a_of_type_Xrf.b()))
-    {
-      this.a.e = true;
-      this.a.jdField_a_of_type_Xrn.sendMessage(this.a.jdField_a_of_type_Xrn.obtainMessage(200, 701, 0));
-    }
+    yuk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
+  }
+  
+  public void b()
+  {
+    yuk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
   }
 }
 

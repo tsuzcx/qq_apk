@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.debug.activities;
 
-import wod;
-import wpk;
+import wry;
+import wtf;
 
 public class DebugPromoteTaskCode$2
   implements Runnable
 {
-  public DebugPromoteTaskCode$2(wod paramwod) {}
+  public DebugPromoteTaskCode$2(wry paramwry) {}
   
   public void run()
   {

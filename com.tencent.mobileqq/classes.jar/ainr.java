@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
-
-public final class ainr
-  implements Parcelable.Creator<ZhituImgResponse>
+class ainr
+  implements aaym
 {
-  public ZhituImgResponse a(Parcel paramParcel)
-  {
-    return new ZhituImgResponse(paramParcel);
-  }
+  ainr(ainh paramainh) {}
   
-  public ZhituImgResponse[] a(int paramInt)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    return new ZhituImgResponse[paramInt];
+    ainh.a(this.a, paramString);
   }
 }
 

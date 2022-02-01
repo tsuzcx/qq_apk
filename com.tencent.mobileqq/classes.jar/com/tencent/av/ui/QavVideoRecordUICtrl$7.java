@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mih;
+import mjd;
 
 public class QavVideoRecordUICtrl$7
   implements Runnable
 {
-  public QavVideoRecordUICtrl$7(mih parammih) {}
+  public QavVideoRecordUICtrl$7(mjd parammjd) {}
   
   public void run()
   {

@@ -1,17 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qmp
-  extends EventCallback
+  implements View.OnClickListener
 {
-  qmp(qmi paramqmi) {}
+  qmp(qmo paramqmo) {}
   
-  public void onPagerChange(int paramInt)
+  public void onClick(View paramView)
   {
-    qmi.b(paramInt);
-    if ((qmi.b() != null) && (!qmi.b().contains(Integer.valueOf(paramInt)))) {
-      qmi.b().add(Integer.valueOf(paramInt));
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

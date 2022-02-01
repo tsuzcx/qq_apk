@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import xkf;
-import xkn;
-import ycq;
+import xoa;
+import xoi;
+import ygl;
 
 public class CommentFloatDialog$OnCommentListViewStateChangeListener$1
   implements Runnable
 {
-  public CommentFloatDialog$OnCommentListViewStateChangeListener$1(xkn paramxkn) {}
+  public CommentFloatDialog$OnCommentListViewStateChangeListener$1(xoi paramxoi) {}
   
   public void run()
   {
-    xkf.a(this.a.a).a(true);
+    xoa.a(this.a.a).a(true);
   }
 }
 

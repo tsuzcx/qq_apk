@@ -1,45 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class acva
-  extends acuy
+  implements acun
 {
-  public acva(JSONObject paramJSONObject)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    a(paramJSONObject);
-  }
-  
-  public String a()
-  {
-    String str = super.a();
     try
     {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      acvc.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
+      paramVarArgs = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
+      acoo.a().a(paramVarArgs);
+      paramacts.callJs(paramString, null);
+      if (paramacts != null)
+      {
+        paramString = paramacts.a();
+        if (paramacts == null) {
+          break label99;
+        }
+      }
+      label99:
+      for (paramacts = paramacts.a();; paramacts = null)
+      {
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramacts, paramVarArgs);
+        return true;
+        paramString = null;
+        break;
+      }
+      return true;
     }
-    catch (JSONException localJSONException)
+    catch (Throwable paramacts)
     {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
+      paramacts.printStackTrace();
     }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acva
  * JD-Core Version:    0.7.0.1
  */

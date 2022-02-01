@@ -1,119 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.io.File;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.View.OnClickListener;
 
-class bmrn
-  implements ITMAssistantDownloadClientListener
+public class bmrn
 {
-  bmrn(bmrm parambmrm) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String d;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public bmrn(Context paramContext)
   {
-    paramTMAssistantDownloadClient = (bmro)bmrm.a(this.a).get(paramString);
-    if (paramTMAssistantDownloadClient != null) {
-      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public bmrk a()
   {
-    int j = 6;
-    String str = "";
-    Object localObject;
-    int i;
-    if (paramInt1 == 4)
-    {
-      str = (String)bmrm.b(this.a).get(paramString1);
-      localObject = "";
-      try
-      {
-        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null) {
-          break label153;
-        }
-        paramTMAssistantDownloadClient = null;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        for (;;)
-        {
-          QLog.e(bmrm.a, 2, paramTMAssistantDownloadClient.toString());
-          paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject;
-          continue;
-          QLog.e(bmrm.a, 2, "file renameTo faild frompath:" + paramTMAssistantDownloadClient + " topath:" + str);
-          i = 0;
-        }
-        QLog.e(bmrm.a, 2, "file not exist path:" + paramTMAssistantDownloadClient);
-      }
-      if (!TextUtils.isEmpty(paramTMAssistantDownloadClient))
-      {
-        localObject = new File(paramTMAssistantDownloadClient);
-        if (((File)localObject).exists()) {
-          if (((File)localObject).renameTo(new File(str)))
-          {
-            i = 1;
-            if (i != 0) {
-              break label265;
-            }
-            paramTMAssistantDownloadClient = (bmro)bmrm.a(this.a).get(paramString1);
-            if (paramTMAssistantDownloadClient != null) {
-              paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
-            }
-            bmrm.a(this.a).remove(paramString1);
-            bmrm.b(this.a).remove(paramString1);
-          }
-        }
-      }
-    }
-    label153:
-    do
-    {
-      return;
-      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath;
-      break;
-      for (;;)
-      {
-        i = 0;
-        break;
-        QLog.e(bmrm.a, 2, "currentPath is null");
-      }
-      paramTMAssistantDownloadClient = (bmro)bmrm.a(this.a).get(paramString1);
-    } while (paramTMAssistantDownloadClient == null);
-    label265:
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 0;
-    }
-    for (;;)
-    {
-      paramTMAssistantDownloadClient.a(paramString1, paramInt1, paramInt2, paramString2, str);
-      return;
-      paramInt1 = 2;
-      continue;
-      bmrm.a(this.a).remove(paramString1);
-      bmrm.b(this.a).remove(paramString1);
-      paramInt1 = j;
-      continue;
-      paramInt1 = 3;
-      bmrm.a(this.a).remove(paramString1);
-      bmrm.b(this.a).remove(paramString1);
-      continue;
-      paramInt1 = 4;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 5;
-      bmrm.a(this.a).remove(paramString1);
-      bmrm.b(this.a).remove(paramString1);
-    }
+    return new bmrk(this, null);
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  public bmrn a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bmrn a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.d = paramString;
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public bmrn b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
 }
 
 

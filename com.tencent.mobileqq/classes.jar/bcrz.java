@@ -1,52 +1,39 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class bcrz
+  extends abiv
 {
-  public char a;
-  public int a;
-  public List<bcrz> a;
-  public int b;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "MessageSvc", "TransService", "StreamSvr", "ADMsgSvc", "VideoSvc", "VideoCCSvc", "OnlinePush", "KQQGroupPic", "AccostSvc", "SecretFileSvc", "MultiVideo" };
+  private bcro jdField_a_of_type_Bcro = new bcro();
+  private bcrs jdField_a_of_type_Bcrs = new bcrs();
   
-  public bcrz(int paramInt, char paramChar)
+  public bcrz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Char = paramChar;
-    this.b = 1;
+    this.jdField_a_of_type_Bcrs.a(paramQQAppInterface);
   }
   
-  public bcrz a(char paramChar)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bcrz localbcrz = (bcrz)localIterator.next();
-      if (localbcrz.jdField_a_of_type_Char == paramChar) {
-        return localbcrz;
-      }
-    }
-    return null;
+    return this.jdField_a_of_type_Bcro.a(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public void a()
   {
-    this.b += 1;
+    this.jdField_a_of_type_Bcrs = null;
+    this.jdField_a_of_type_Bcro = null;
   }
   
-  public void a(bcrz parambcrz)
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    this.jdField_a_of_type_JavaUtilList.add(parambcrz);
+    return this.jdField_a_of_type_Bcrs.a(paramToServiceMsg, paramUniPacket);
   }
   
-  public String toString()
+  public String[] a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id: ").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("char: ").append(this.jdField_a_of_type_Char).append(" ");
-    localStringBuilder.append("cnt: ").append(this.b);
-    return localStringBuilder.toString();
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

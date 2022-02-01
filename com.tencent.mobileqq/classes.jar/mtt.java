@@ -1,66 +1,102 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioSession;
-import com.tencent.widget.AdapterView;
+import android.widget.ImageButton;
+import com.tencent.av.utils.QQFrameByFrameAnimation.1;
 
-class mtt
-  implements bkij
+public class mtt
 {
-  mtt(mts parammts, Button paramButton, long paramLong, bkho parambkho) {}
+  public int a;
+  public Handler a;
+  View jdField_a_of_type_AndroidViewView = null;
+  Runnable jdField_a_of_type_JavaLangRunnable = new QQFrameByFrameAnimation.1(this);
+  public mts a;
+  public int[] a;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public mtt()
   {
-    if (mts.a(this.jdField_a_of_type_Mts) != null)
+    this.jdField_a_of_type_Mts = null;
+    this.jdField_a_of_type_Int = 300;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+  }
+  
+  public void a()
+  {
+    this.c += 1;
+    int i;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
     {
-      paramAdapterView = (mtz)mts.a(this.jdField_a_of_type_Mts).getItem(paramInt);
-      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_Mts.a != null))
+      i = this.jdField_a_of_type_ArrayOfInt[(this.c % this.jdField_a_of_type_ArrayOfInt.length)];
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        break label67;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+    }
+    label67:
+    while (!(this.jdField_a_of_type_AndroidViewView instanceof Button)) {
+      return;
+    }
+    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(i);
+    localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(mts parammts)
+  {
+    this.jdField_a_of_type_Mts = parammts;
+  }
+  
+  public void a(int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.c = 0;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[0]);
+      }
+      if ((this.jdField_a_of_type_AndroidViewView instanceof Button))
       {
-        if (!"DEVICE_BLUETOOTHHEADSET".equals(paramAdapterView.a)) {
-          break label199;
-        }
-        maf.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
-        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-          this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
-        }
-        bcst.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
+        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
+        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+        ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Mts != null) {
+        this.jdField_a_of_type_Mts.d();
       }
     }
-    for (;;)
-    {
-      mts.a(this.jdField_a_of_type_Mts, true);
-      this.jdField_a_of_type_Mts.a.a(msn.a());
-      this.jdField_a_of_type_Mts.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      label199:
-      if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
-        }
-        bcst.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
-      }
-      else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
-        }
-        bcst.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
-      }
-      else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
-        }
-        bcst.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
-      }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_Mts != null) {
+      this.jdField_a_of_type_Mts.a();
     }
   }
 }

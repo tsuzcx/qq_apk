@@ -1,36 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
 
-public final class aurs
-  implements Parcelable.Creator<GameCenterSessionInfo>
+class aurs
+  implements boae<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp>
 {
-  public GameCenterSessionInfo a(Parcel paramParcel)
+  aurs(aurp paramaurp, ausc paramausc) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
   {
-    GameCenterSessionInfo localGameCenterSessionInfo = new GameCenterSessionInfo();
-    localGameCenterSessionInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.e = paramParcel.readString();
-    localGameCenterSessionInfo.f = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.g = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.h = paramParcel.readString();
-    localGameCenterSessionInfo.i = paramParcel.readString();
-    localGameCenterSessionInfo.j = paramParcel.readString();
-    localGameCenterSessionInfo.k = paramParcel.readString();
-    return localGameCenterSessionInfo;
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink onFailed: errorCode[" + paramInt + "], errorMsg[" + paramString + "]");
+    }
+    if (this.jdField_a_of_type_Ausc != null) {
+      this.jdField_a_of_type_Ausc.a(paramInt, paramString);
+    }
   }
   
-  public GameCenterSessionInfo[] a(int paramInt)
+  public void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
   {
-    return new GameCenterSessionInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink succeed");
+    }
+    if (this.jdField_a_of_type_Ausc != null) {
+      this.jdField_a_of_type_Ausc.a(paramWeiyunShareAddFromMobileQQMsgRsp.raw_url.get());
+    }
   }
 }
 

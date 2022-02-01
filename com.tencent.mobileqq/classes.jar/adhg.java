@@ -1,28 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
-class adhg
-  implements DialogInterface.OnKeyListener
+public class adhg
+  extends adic
 {
-  adhg(adhc paramadhc, DialogInterface.OnCancelListener paramOnCancelListener) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public int a()
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
-    {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
-      {
-        QLog.e("SdkAuthDialog", 1, "keyListener is null");
-        return true;
-      }
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
-      this.jdField_a_of_type_Adhc.a();
-      bcst.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
-    }
+    return super.a() + 2;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
     return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (14 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

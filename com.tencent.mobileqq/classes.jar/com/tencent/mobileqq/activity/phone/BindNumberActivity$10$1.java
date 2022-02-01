@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.phone;
 
-import akcd;
+import akno;
 import java.util.List;
 
 public class BindNumberActivity$10$1
   implements Runnable
 {
-  public BindNumberActivity$10$1(akcd paramakcd, int paramInt, List paramList) {}
+  public BindNumberActivity$10$1(akno paramakno, int paramInt, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akcd.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Akno.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

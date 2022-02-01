@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.content.res.Resources;
 import android.widget.Button;
-import bimo;
+import bjnn;
 import com.tencent.qphone.base.util.QLog;
 
 public class OpenAuthorityFragment$6
@@ -19,12 +19,12 @@ public class OpenAuthorityFragment$6
     }
     this.this$0.h();
     if (OpenAuthorityFragment.c(this.this$0) == 0) {
-      OpenAuthorityFragment.a(this.this$0).setTag(this.this$0.getResources().getString(2131694134));
+      OpenAuthorityFragment.a(this.this$0).setTag(this.this$0.getResources().getString(2131694152));
     }
     for (;;)
     {
       OpenAuthorityFragment.a(this.this$0).setEnabled(true);
-      this.this$0.a(this.this$0.getResources().getString(2131694142), new bimo(this));
+      this.this$0.a(this.this$0.getResources().getString(2131694160), new bjnn(this));
       return;
       OpenAuthorityFragment.a(this.this$0).setTag(OpenAuthorityFragment.d(this.this$0));
     }

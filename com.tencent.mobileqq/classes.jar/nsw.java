@@ -1,31 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class nsw
-  implements bkhw
+class nsw
+  extends BroadcastReceiver
 {
-  public nsw(AccountDetailActivity paramAccountDetailActivity) {}
+  nsw(nsr paramnsr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.o) {
-      return;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
     }
-    this.a.o = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.F();
-      continue;
-      AccountDetailActivity.a(this.a, this.a.e);
-      continue;
-      AccountDetailActivity.d(this.a);
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+      this.a.a();
     }
   }
 }

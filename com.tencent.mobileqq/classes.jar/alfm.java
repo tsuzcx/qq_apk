@@ -1,17 +1,23 @@
-class alfm
-  implements akyf
+import org.json.JSONArray;
+
+public class alfm
 {
-  alfm(alfl paramalfl) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.b();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.b();
-  }
+  public int a;
+  public String a;
+  public JSONArray a;
+  public int b;
+  public String b;
+  public JSONArray b;
+  public int c;
+  public String c;
+  public JSONArray c;
+  public String d;
+  public JSONArray d;
+  public String e;
+  public JSONArray e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

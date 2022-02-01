@@ -1,24 +1,67 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
 
-class auko
-  implements DialogInterface.OnClickListener
+public class auko
+  implements GestureDetector.OnGestureListener
 {
-  auko(aukj paramaukj, int paramInt, String paramString) {}
+  private auko(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (paramInt == 1)
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
     {
-      aukj.a(aukj.a(this.jdField_a_of_type_Aukj), "shareToQQ", aukj.a(this.jdField_a_of_type_Aukj), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      nmj.a(aukj.a(this.jdField_a_of_type_Aukj), 0, "", "");
-      if (aukj.a(this.jdField_a_of_type_Aukj) != null) {
-        aukj.a(this.jdField_a_of_type_Aukj).b(1);
+      paramMotionEvent1 = this.a.a.b();
+      if (paramFloat2 <= 0.0F) {
+        break label97;
       }
-      aukj.a(this.jdField_a_of_type_Aukj).moveTaskToBack(true);
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(8);
+      }
+      if (this.a.a.jdField_a_of_type_Auvc != null) {
+        this.a.a.jdField_a_of_type_Auvc.b(true);
+      }
+      if (this.a.a.jdField_a_of_type_Auva != null) {
+        this.a.a.jdField_a_of_type_Auva.b(true);
+      }
     }
+    label97:
+    do
+    {
+      do
+      {
+        return false;
+      } while (paramFloat2 >= 0.0F);
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(0);
+      }
+      if (this.a.a.jdField_a_of_type_Auvc != null) {
+        this.a.a.jdField_a_of_type_Auvc.a(true);
+      }
+    } while (this.a.a.jdField_a_of_type_Auva == null);
+    this.a.a.jdField_a_of_type_Auva.a(true);
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

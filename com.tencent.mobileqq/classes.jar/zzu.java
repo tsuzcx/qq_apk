@@ -1,32 +1,14 @@
-import android.graphics.Typeface;
-import java.util.Hashtable;
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.view.View;
 
-final class zzu
-  implements zwi
+class zzu
+  implements ViewPropertyAnimatorListener
 {
-  zzu(String paramString) {}
+  public void onAnimationCancel(View paramView) {}
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < 3) {}
-      try
-      {
-        Typeface localTypeface = Typeface.createFromFile(paramString);
-        zzr.a().put(this.a, localTypeface);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        i += 1;
-      }
-    }
-  }
+  public void onAnimationEnd(View paramView) {}
+  
+  public void onAnimationStart(View paramView) {}
 }
 
 

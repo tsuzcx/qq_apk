@@ -1,8 +1,6 @@
 public abstract interface bbgk
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(boolean paramBoolean);
 }
 
 

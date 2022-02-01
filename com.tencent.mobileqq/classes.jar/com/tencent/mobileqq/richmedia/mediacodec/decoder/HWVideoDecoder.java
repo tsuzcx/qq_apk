@@ -3,27 +3,27 @@ package com.tencent.mobileqq.richmedia.mediacodec.decoder;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.view.Surface;
-import barv;
-import barw;
-import bary;
-import barz;
+import bbko;
+import bbkp;
+import bbkr;
+import bbks;
 import com.tencent.mobileqq.app.ThreadManager;
-import yqp;
+import yuk;
 
 @TargetApi(16)
 public class HWVideoDecoder
-  implements barz
+  implements bbks
 {
-  private barw jdField_a_of_type_Barw;
+  private bbkp jdField_a_of_type_Bbkp;
   private HWVideoDecoder.DecodeRunnable jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable;
   private Thread jdField_a_of_type_JavaLangThread;
   
-  private void a(barv parambarv, Surface paramSurface, bary parambary)
+  private void a(bbko parambbko, Surface paramSurface, bbkr parambbkr)
   {
-    if ((parambarv == null) || (paramSurface == null)) {
+    if ((parambbko == null) || (paramSurface == null)) {
       throw new IllegalArgumentException("both decodeConfig and surface should not be null");
     }
-    yqp.b("HWVideoDecoder", "startDecode config = %s", parambarv);
+    yuk.b("HWVideoDecoder", "startDecode config = %s", parambbko);
     Thread localThread;
     if (this.jdField_a_of_type_JavaLangThread != null)
     {
@@ -33,8 +33,8 @@ public class HWVideoDecoder
     try
     {
       localThread.join();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable = new HWVideoDecoder.DecodeRunnable(parambarv.a, paramSurface, parambary);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable.a(parambarv);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable = new HWVideoDecoder.DecodeRunnable(parambbko.a, paramSurface, parambbkr);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable.a(parambbko);
       this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable, "HWVideoDecoder-Thread", 8);
       this.jdField_a_of_type_JavaLangThread.start();
       return;
@@ -68,10 +68,10 @@ public class HWVideoDecoder
     if (localDecodeRunnable != null)
     {
       localDecodeRunnable.a(paramInt);
-      yqp.a("HWVideoDecoder", "setSpeedType %d", Integer.valueOf(paramInt));
+      yuk.a("HWVideoDecoder", "setSpeedType %d", Integer.valueOf(paramInt));
       return;
     }
-    yqp.d("HWVideoDecoder", "setSpeedType %d failed, can not find DecodeRunnable", new Object[] { Integer.valueOf(paramInt) });
+    yuk.d("HWVideoDecoder", "setSpeedType %d failed, can not find DecodeRunnable", new Object[] { Integer.valueOf(paramInt) });
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -79,17 +79,17 @@ public class HWVideoDecoder
     HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable;
     if (localDecodeRunnable != null)
     {
-      yqp.a("HWVideoDecoder", "setPlayRange [%d ms, %d ms]", Long.valueOf(paramLong1), Long.valueOf(paramLong2));
+      yuk.a("HWVideoDecoder", "setPlayRange [%d ms, %d ms]", Long.valueOf(paramLong1), Long.valueOf(paramLong2));
       localDecodeRunnable.a(paramLong1, paramLong2);
       return;
     }
-    yqp.d("HWVideoDecoder", "setPlayRange failed, can not find DecodeRunnable");
+    yuk.d("HWVideoDecoder", "setPlayRange failed, can not find DecodeRunnable");
   }
   
-  public void a(barv parambarv, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, bary parambary)
+  public void a(bbko parambbko, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, bbkr parambbkr)
   {
-    this.jdField_a_of_type_Barw = new barw(paramInt, paramOnFrameAvailableListener);
-    a(parambarv, this.jdField_a_of_type_Barw.a, parambary);
+    this.jdField_a_of_type_Bbkp = new bbkp(paramInt, paramOnFrameAvailableListener);
+    a(parambbko, this.jdField_a_of_type_Bbkp.a, parambbkr);
   }
   
   public int b()
@@ -103,10 +103,10 @@ public class HWVideoDecoder
     if (localDecodeRunnable != null)
     {
       HWVideoDecoder.DecodeRunnable.a(localDecodeRunnable, true);
-      yqp.b("HWVideoDecoder", "pauseDecode");
+      yuk.b("HWVideoDecoder", "pauseDecode");
       return;
     }
-    yqp.d("HWVideoDecoder", "pauseDecode failed, can not find DecodeRunnable");
+    yuk.d("HWVideoDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
   
   public void c()
@@ -118,11 +118,11 @@ public class HWVideoDecoder
       synchronized (HWVideoDecoder.DecodeRunnable.a(localDecodeRunnable))
       {
         HWVideoDecoder.DecodeRunnable.a(localDecodeRunnable).notifyAll();
-        yqp.b("HWVideoDecoder", "resumeDecode");
+        yuk.b("HWVideoDecoder", "resumeDecode");
         return;
       }
     }
-    yqp.d("HWVideoDecoder", "resumeDecode failed, can not find DecodeRunnable");
+    yuk.d("HWVideoDecoder", "resumeDecode failed, can not find DecodeRunnable");
   }
 }
 

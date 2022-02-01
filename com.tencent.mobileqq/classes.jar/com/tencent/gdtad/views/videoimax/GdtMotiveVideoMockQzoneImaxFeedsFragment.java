@@ -1,8 +1,8 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acqy;
-import acud;
-import acue;
+import acvc;
+import acyh;
+import acyi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import anhk;
-import bhgg;
+import antf;
+import bigv;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -49,8 +49,8 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
         URLDrawable.DEBUG = false;
         if ("mounted".equals(Environment.getExternalStorageState()))
         {
-          localFile = new File(bhgg.a(anhk.ba));
-          URLDrawable.init(paramContext, new acue(paramContext, new File(localFile, "diskcache")));
+          localFile = new File(bigv.a(antf.ba));
+          URLDrawable.init(paramContext, new acyi(paramContext, new File(localFile, "diskcache")));
           jdField_a_of_type_Boolean = true;
           return;
         }
@@ -67,12 +67,12 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
   
   private void a(ImageView paramImageView, String paramString)
   {
-    acqy.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "bindPreviewImage() called with: iv = [" + paramImageView + "], url = [" + paramString + "]");
+    acvc.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "bindPreviewImage() called with: iv = [" + paramImageView + "], url = [" + paramString + "]");
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = paramImageView.getResources().getDrawable(2130850664);
-    localURLDrawableOptions.mFailedDrawable = paramImageView.getResources().getDrawable(2130850664);
+    localURLDrawableOptions.mLoadingDrawable = paramImageView.getResources().getDrawable(2130850680);
+    localURLDrawableOptions.mFailedDrawable = paramImageView.getResources().getDrawable(2130850680);
     paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-    paramImageView.setOnClickListener(new acud(this));
+    paramImageView.setOnClickListener(new acyh(this));
   }
   
   private void a(String paramString) {}
@@ -102,7 +102,7 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    acqy.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onCreateView: ");
+    acvc.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onCreateView: ");
     paramLayoutInflater = paramLayoutInflater.inflate(2131559235, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -125,7 +125,7 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    paramView = (ImageView)paramView.findViewById(2131368923);
+    paramView = (ImageView)paramView.findViewById(2131369016);
     paramBundle = this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtImaxData.getAd().info.display_info.basic_info.img.get();
     a(paramView, paramBundle);
     a(paramBundle);

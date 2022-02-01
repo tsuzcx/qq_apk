@@ -1,27 +1,17 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.text.EditTextPreView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bpjx
-  implements bpvz
+  implements View.OnClickListener
 {
-  bpjx(bpjo parambpjo) {}
+  bpjx(bpjw parambpjw) {}
   
-  public void a(@NonNull bpwg parambpwg)
+  public void onClick(View paramView)
   {
-    switch (parambpwg.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    }
-    int i = parambpwg.b;
-    this.a.jdField_a_of_type_Bpiy.jdField_a_of_type_Int = i;
-    this.a.c = i;
-    if ((this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem instanceof bork))
-    {
-      ((bork)this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).a(i);
-      this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
-    }
-    yqu.a("video_edit_text", "clk_color", 0, 0, new String[] { (String)wnh.a().a("EditVideoDTextFace.mSrcFrom"), parambpwg.jdField_a_of_type_JavaLangString, "", "" });
+    bozr.a().z();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

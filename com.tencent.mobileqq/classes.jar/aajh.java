@@ -1,13 +1,18 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class aajh
-  implements aaji
+  implements View.OnClickListener
 {
-  aajh(aajg paramaajg) {}
+  aajh(aaje paramaaje, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Aajp != null) {
-      this.a.jdField_a_of_type_Aajp.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
-    }
+    aaiu.a(this.jdField_a_of_type_Aaje.a, aaiu.a(this.jdField_a_of_type_Aaje.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
+    aaiu.a(this.jdField_a_of_type_Aaje.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,19 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afsc
+public class afsc
   implements View.OnClickListener
 {
-  afsc(afrz paramafrz, afrw paramafrw) {}
+  public afsc(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Afrz.a.a(this.jdField_a_of_type_Afrw);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,13 +1,34 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager.17;
 
-class bjwt
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener
+public class bjwt
+  implements DialogInterface.OnClickListener
 {
-  bjwt(bjwn parambjwn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnErrorListener paramOnErrorListener) {}
+  public bjwt(DownloadManager.17 param17) {}
   
-  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjwn, paramInt1, paramInt2);
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bjwo.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

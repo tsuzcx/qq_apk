@@ -1,18 +1,24 @@
 import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class rsm
-  extends rmq
+  extends RecyclerView.OnScrollListener
 {
-  public rsm(SelectVideoFragment paramSelectVideoFragment) {}
+  public rsm(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  @Nullable
-  public rmr a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bggq.a(SelectVideoFragment.a(this.a), 8.0F));
+    paramRecyclerView = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      VideoFeedsRecyclerView.a(paramRecyclerView, bool);
+      return;
+    }
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,15 +1,20 @@
-import com.tencent.biz.qqcircle.fragments.message.item.QCircleMessageReplyItemView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
 
 public class vme
-  implements vux
+  implements View.OnLongClickListener
 {
-  public vme(QCircleMessageReplyItemView paramQCircleMessageReplyItemView, String paramString) {}
+  public vme(QCircleContentImage paramQCircleContentImage) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    vrc.a(this.jdField_a_of_type_JavaLangString, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView).a, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView), 44, QCircleMessageReplyItemView.c(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView));
-    uxo.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView.a().clone().setElementIdStr("portrait"));
+    paramView = ((Activity)paramView.getContext()).findViewById(2131369376);
+    if (paramView != null) {
+      paramView.callOnClick();
+    }
+    return false;
   }
 }
 

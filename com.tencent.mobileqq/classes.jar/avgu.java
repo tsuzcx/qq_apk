@@ -1,16 +1,60 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import com.tencent.mobileqq.friends.intimate.CommonTroopListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class avgu
-  implements Callable<Boolean>
+public class avgu
+  extends BaseAdapter
 {
-  avgu(avgs paramavgs, File paramFile) {}
+  private List<IntimateInfo.CommonTroopInfo> jdField_a_of_type_JavaUtilList;
   
-  public Boolean a()
+  private avgu(CommonTroopListActivity paramCommonTroopListActivity) {}
+  
+  public IntimateInfo.CommonTroopInfo a(int paramInt)
   {
-    if ((avgs.a(this.jdField_a_of_type_Avgs).exists()) && (this.jdField_a_of_type_JavaIoFile == avgs.a(this.jdField_a_of_type_Avgs))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    return (IntimateInfo.CommonTroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<IntimateInfo.CommonTroopInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity)).inflate(2131559269, null);
+    }
+    for (;;)
+    {
+      IntimateInfo.CommonTroopInfo localCommonTroopInfo = a(paramInt);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131364903);
+      TextView localTextView = (TextView)paramView.findViewById(2131364906);
+      localImageView.setImageDrawable(aoot.a(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity), 4, localCommonTroopInfo.troopCode));
+      localTextView.setText(localCommonTroopInfo.troopName);
+      paramView.setTag(localCommonTroopInfo);
+      paramView.setOnClickListener(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
   }
 }

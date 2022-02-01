@@ -1,82 +1,98 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class nye
-  extends acuc
+  extends WebViewClient
 {
-  public nye(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  protected WebViewPluginEngine a;
+  
+  public nye(WebViewPluginEngine paramWebViewPluginEngine)
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    this.a = paramWebViewPluginEngine;
+  }
+  
+  public void onLoadResource(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrl url:" + paramString);
+    }
+    super.onLoadResource(paramWebView, paramString);
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
+    if (this.a != null) {
+      this.a.a(paramString, 8589934594L, null);
+    }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
+    JsInjector.getInstance().onPageStarted(paramWebView);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
+    if (this.a != null) {
+      this.a.a(paramString, 8589934593L, null);
+    }
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    paramWebView = this.a.findViewById(2131362789);
-    if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
-    {
-      ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
-      paramWebView.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("WEBVIEWCHECK", 2, "CustomWebViewClient onReceivedError errorCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
+    }
+    if (this.a != null) {
+      this.a.a(paramString2, 8589934595L, paramInt);
     }
   }
   
-  public void onReceivedTitle(WebView paramWebView, String paramString)
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
   {
-    super.onReceivedTitle(paramWebView, paramString);
+    if (this.a != null) {
+      try
+      {
+        paramWebView = (WebResourceResponse)this.a.a(paramString, 8L);
+        return paramWebView;
+      }
+      catch (Exception paramWebView)
+      {
+        QLog.e("WEBVIEWCHECK", 1, "shouldInterceptRequest error:" + paramWebView.toString());
+      }
+    }
+    return null;
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    acqy.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
+    boolean bool2 = false;
+    boolean bool1;
+    if ((this.a != null) && (this.a.a(paramString))) {
+      bool1 = true;
+    }
     do
     {
-      return true;
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      do
       {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (paramString == null);
+        if (paramString.startsWith("http")) {
+          break;
         }
-      }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!nhe.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return true;
-    }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      acqy.d("AbsWebView", paramWebView.toString());
-    }
-    return true;
+        bool1 = bool2;
+      } while (!paramString.startsWith("data:"));
+      bool1 = bool2;
+    } while (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"));
+    CustomWebView.addContextLog(noe.b(paramString, new String[0]));
+    return false;
   }
 }
 

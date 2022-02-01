@@ -1,13 +1,33 @@
-class akhw
-  implements bigw
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.4.1;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+
+public class akhw
+  extends ayxo
 {
-  akhw(akhu paramakhu, Runnable paramRunnable) {}
+  akhw(akha paramakha) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
+      }
+      if ((this.a.a != null) && (this.a.a.app != null)) {}
     }
+    else
+    {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    if ((GuardManager.a != null) && (!GuardManager.a.a())) {
+      ThreadManager.post(new MainAssistObserver.4.1(this, localQQAppInterface), 8, null, false);
+    }
+    this.a.g();
   }
 }
 

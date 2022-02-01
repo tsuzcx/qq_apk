@@ -1,177 +1,130 @@
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptReport.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
+import org.json.JSONObject;
 
 public class puw
+  implements pye
 {
-  public static int a;
-  public static long a;
-  public static long b;
-  public static long c;
-  public static long d;
-  public static long e;
-  public static long f;
-  
-  private static int a(String paramString)
+  private void a(ViewBase paramViewBase, ppu paramppu, ViewBase.OnClickListener paramOnClickListener)
   {
-    Map localMap = bkgj.a(paramString);
-    if (localMap.get("busiType") != null) {
-      try
-      {
-        int i = Integer.parseInt((String)localMap.get("busiType"));
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        QLog.e("RIJImageOptReport", 2, "urlString: " + paramString + "  busiType:" + (String)localMap.get("busiType"), localNumberFormatException);
-      }
-    }
-    return -1;
-  }
-  
-  public static void a(int paramInt, tdw paramtdw)
-  {
-    if ((puu.a.a()) && (paramtdw != null))
+    if ((paramViewBase == null) || (paramppu == null) || (paramppu.a() == null)) {}
+    do
     {
-      if (paramInt != 1) {
-        break label26;
-      }
-      paramtdw.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-    label26:
-    while (paramtdw.jdField_a_of_type_Long == 0L) {
       return;
+      paramViewBase = paramViewBase.findViewBaseByName("id_middle_body_wrapper");
+    } while ((paramViewBase == null) || (paramViewBase.getNativeView() == null));
+    paramViewBase.setOnClickListener(paramOnClickListener);
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    long l = 0L;
+    if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+      l = paramBaseArticleInfo.mSocialFeedInfo.a.a;
     }
-    switch (paramInt)
+    JSONObject localJSONObject = new ptl().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l).f(paramBaseArticleInfo).g(paramBaseArticleInfo).a(paramBaseArticleInfo, "Biu了").h(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).m(paramBaseArticleInfo).l(paramBaseArticleInfo).n(paramBaseArticleInfo).q(paramBaseArticleInfo).u(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).C(paramBaseArticleInfo).B(paramBaseArticleInfo).F(paramBaseArticleInfo).a("ReadInjoy_biu_cell").D(paramBaseArticleInfo).r(paramBaseArticleInfo).H(paramBaseArticleInfo).a();
+    if (!oxs.a(paramBaseArticleInfo)) {
+      puq.a(paramBaseArticleInfo, anzj.a(2131700065), localJSONObject);
+    }
+    return localJSONObject;
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    Object localObject1 = (qcb)localViewBase.findViewBaseByName("id_middle_body_content");
+    Object localObject2;
+    if (localObject1 != null)
     {
-    default: 
-      QLog.d("RIJImageOptReport", 1, "unknown type: " + paramInt + " " + paramtdw);
-      return;
-    case 2: 
-      paramtdw.jdField_b_of_type_Long = System.currentTimeMillis();
-      return;
-    case 3: 
-      paramtdw.c = System.currentTimeMillis();
-      return;
-    case 4: 
-      paramtdw.jdField_d_of_type_Long = System.currentTimeMillis();
-      return;
-    case 5: 
-      paramtdw.g = System.currentTimeMillis();
-      return;
-    }
-    paramtdw.h = System.currentTimeMillis();
-  }
-  
-  public static void a(tdw paramtdw)
-  {
-    if (paramtdw != null) {
-      oat.a(null, "", "0X800AEF3", "0X800AEF3", 0, 0, "", "", "", paramtdw.toString(), false);
-    }
-  }
-  
-  public static void a(tdw paramtdw, boolean paramBoolean, String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new RIJImageOptReport.1(paramtdw, paramString));
-  }
-  
-  public static void b(int paramInt, tdw paramtdw)
-  {
-    if (b(paramtdw)) {
-      paramtdw.jdField_d_of_type_Int = paramInt;
-    }
-  }
-  
-  private static boolean b(tdw paramtdw)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (puu.a.a())
-    {
-      bool1 = bool2;
-      if (paramtdw != null)
+      localObject2 = (NativeMiddleBodyView)((qcb)localObject1).getNativeView();
+      if ((localObject2 != null) && (((NativeMiddleBodyView)localObject2).a() == null))
       {
-        bool1 = bool2;
-        if (paramtdw.jdField_a_of_type_Long != 0L) {
-          bool1 = true;
+        localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+        LinearLayout localLinearLayout = new LinearLayout(paramContainer.getContext());
+        localLinearLayout.setOrientation(1);
+        localLinearLayout.addView(new ComponentContentGridImage(paramContainer.getContext()));
+        localLinearLayout.addView(new ComponentContentUgcImage(paramContainer.getContext()));
+        ((qcb)localObject1).a((RelativeLayout.LayoutParams)localObject3);
+        ((NativeMiddleBodyView)localObject2).a(localLinearLayout, (RelativeLayout.LayoutParams)localObject3);
+      }
+      if (localObject2 != null)
+      {
+        localObject1 = (ViewGroup)((NativeMiddleBodyView)localObject2).a();
+        localObject2 = paramppu.a();
+        paramInt1 = puq.a((ArticleInfo)localObject2);
+        localObject2 = puq.a((ArticleInfo)localObject2, paramInt1);
+        if (paramInt1 != 0) {
+          break label341;
         }
+        ((ViewGroup)localObject1).setVisibility(8);
       }
     }
-    return bool1;
-  }
-  
-  private static void c(tdw paramtdw)
-  {
-    long l2 = paramtdw.c - paramtdw.jdField_b_of_type_Long;
-    long l3 = paramtdw.jdField_d_of_type_Long - paramtdw.c;
-    long l4 = paramtdw.jdField_e_of_type_Long;
-    long l5 = paramtdw.f;
-    long l1;
-    long l6;
-    int i;
-    int j;
-    long l7;
-    if (paramtdw.g > 0L)
-    {
-      l1 = paramtdw.h - paramtdw.g;
-      l6 = paramtdw.h - paramtdw.jdField_a_of_type_Long;
-      i = paramtdw.jdField_d_of_type_Int;
-      j = paramtdw.jdField_e_of_type_Int;
-      l7 = paramtdw.i;
-      if (paramtdw.jdField_a_of_type_JavaNetURL == null) {
-        break label627;
-      }
+    qdk.e(localViewBase, paramppu);
+    localObject1 = (qax)localViewBase.findViewBaseByName("id_biu_comment");
+    if (localObject1 != null) {
+      ((qax)localObject1).a(paramppu);
     }
-    label627:
-    for (String str1 = paramtdw.jdField_a_of_type_JavaNetURL.toString();; str1 = "")
+    localObject1 = (qdg)localViewBase.findViewBaseByName("id_summary");
+    paramContainer = new puy(this, paramppu, paramContainer);
+    if (localObject1 != null)
     {
-      int k = a(str1);
-      String str2 = paramtdw.jdField_b_of_type_JavaLangString;
-      paramtdw = paramtdw.jdField_a_of_type_JavaLangString;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("subThreadWaitTime", l2 + "");
-      localHashMap.put("threadPoolWaitTime", l3 + "");
-      localHashMap.put("threadWaitTime", l2 + l3 + "");
-      localHashMap.put("downloadAndWriteFileTime", l4 + "");
-      localHashMap.put("decodeTime", l5 + "");
-      localHashMap.put("mainThreadWaitTime", l1 + "");
-      localHashMap.put("cacheType", i + "");
-      localHashMap.put("errMsg", paramtdw);
-      localHashMap.put("contentType", str2);
-      localHashMap.put("fileSize", Long.valueOf(l7));
-      localHashMap.put("urlStr", str1);
-      localHashMap.put("busiType", Integer.valueOf(k));
-      localHashMap.put("ipv6", Boolean.valueOf(bdvz.b()));
-      ube.a(j, 6, l6, localHashMap);
-      if (QLog.isColorLevel())
-      {
-        jdField_a_of_type_Int += 1;
-        jdField_a_of_type_Long += l6;
-        jdField_b_of_type_Long += l3;
-        c = l1 + c;
-        jdField_d_of_type_Long += l4;
-        jdField_e_of_type_Long += l5;
-        f += l7;
-        if (jdField_a_of_type_Int == 100)
-        {
-          QLog.d("RIJImageOptReport", 2, "average  total: " + (float)jdField_a_of_type_Long / jdField_a_of_type_Int + " size: " + f / jdField_a_of_type_Int + " threapool: " + (float)jdField_b_of_type_Long / jdField_a_of_type_Int + " mainthread: " + (float)c / jdField_a_of_type_Int + " downloadAndWriteFileTime: " + (float)jdField_d_of_type_Long / jdField_a_of_type_Int + " decodeTime: " + (float)jdField_e_of_type_Long / jdField_a_of_type_Int);
-          jdField_a_of_type_Int = 0;
-          jdField_a_of_type_Long = 0L;
-          jdField_b_of_type_Long = 0L;
-          c = 0L;
-          jdField_d_of_type_Long = 0L;
-          jdField_e_of_type_Long = 0L;
-          f = 0L;
-        }
-      }
-      return;
-      l1 = 0L;
+      ((qdg)localObject1).a(paramppu);
+      ((NativeSummaryView)((qdg)localObject1).getNativeView()).setShouldCallClick(true);
+      ((qdg)localObject1).setOnClickListener(paramContainer);
+    }
+    localObject1 = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
+    if ((localObject1 != null) && (((NativeButton)localObject1).getNativeView() != null) && ((((NativeButton)localObject1).getNativeView() instanceof NativeButtonImp))) {
+      ((NativeButtonImp)((NativeButton)localObject1).getNativeView()).setTextColor(-1);
+    }
+    qdk.a(localViewBase, paramppu.a());
+    puo.a(localViewBase, paramppu);
+    a(localViewBase, paramppu, paramContainer);
+    puo.b(localViewBase, paramppu);
+    qdk.b(localViewBase, paramppu);
+    return;
+    label341:
+    ((ViewGroup)localObject1).setVisibility(0);
+    Object localObject3 = (ComponentContentGridImage)((ViewGroup)localObject1).getChildAt(0);
+    localObject1 = (ComponentContentUgcImage)((ViewGroup)localObject1).getChildAt(1);
+    if (paramInt1 == 1)
+    {
+      ((ComponentContentGridImage)localObject3).setVisibility(8);
+      ((ComponentContentUgcImage)localObject1).setVisibility(0);
+      ((ComponentContentUgcImage)localObject1).a(paramppu);
+    }
+    for (;;)
+    {
+      ((ComponentContentUgcImage)localObject1).setPicClickListener(new pux(this, paramppu));
       break;
+      ((ComponentContentGridImage)localObject3).setVisibility(0);
+      ((ComponentContentGridImage)localObject3).setMIReadInJoyModel(paramppu);
+      ((ComponentContentUgcImage)localObject1).setVisibility(8);
+      ((ComponentContentGridImage)localObject3).a(localObject2);
     }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

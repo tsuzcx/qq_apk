@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
-import aytj;
-import aytm;
+import azlu;
+import azlx;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -12,14 +12,14 @@ public final class ConstellationView$3
   extends Lambda
   implements Function0<Unit>
 {
-  public ConstellationView$3(aytj paramaytj)
+  public ConstellationView$3(azlu paramazlu)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    aytj.a.a(this.this$0.a());
+    azlu.a.a(this.this$0.a());
   }
 }
 

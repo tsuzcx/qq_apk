@@ -1,21 +1,17 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class aeml
-  implements ViewSwitcher.ViewFactory
+class aeml
+  implements DialogInterface.OnClickListener
 {
-  public aeml(Leba paramLeba) {}
+  aeml(aemj paramaemj) {}
   
-  public View makeView()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.a.a.a.sendEmptyMessage(259);
+    paramDialogInterface.dismiss();
   }
 }
 

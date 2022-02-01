@@ -3,14 +3,14 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blzo;
+import bnaq;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class VideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoInfo> CREATOR = new blzo();
+  public static final Parcelable.Creator<VideoInfo> CREATOR = new bnaq();
   public byte a;
   public int a;
   public long a;

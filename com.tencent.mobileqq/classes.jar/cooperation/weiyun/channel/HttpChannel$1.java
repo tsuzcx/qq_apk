@@ -1,6 +1,6 @@
 package cooperation.weiyun.channel;
 
-import bmyn;
+import bnzv;
 import org.json.JSONObject;
 
 public final class HttpChannel$1
@@ -10,7 +10,7 @@ public final class HttpChannel$1
   
   public void run()
   {
-    bmyn.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+    bnzv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

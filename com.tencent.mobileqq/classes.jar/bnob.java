@@ -1,42 +1,29 @@
-import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
-import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
-import java.util.Random;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
 
 public class bnob
-  implements LogicDataManager.OnGetQQNumberEventListener
+  implements DialogInterface.OnClickListener
 {
-  bnob(bnoa parambnoa) {}
+  public bnob(QzoneQunFeedJsPlugin.2.1 param1) {}
   
-  public int onGetQQNumber()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - bnoa.a(this.a) > 60000L)
-    {
-      bnoa.a(this.a, l);
-      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
-      if (l - bnoa.b(this.a) <= 1000L) {
-        break label168;
-      }
-      bnoa.b(this.a, l);
-    }
-    for (;;)
-    {
-      synchronized (bnoa.a(this.a))
-      {
-        if (bnoa.a(this.a) != 0) {
-          bnoa.a(this.a, bnoa.a(this.a) - 1000 + new Random().nextInt(2000));
-        }
-        return bnoa.a(this.a);
-        if (l - bnoa.a(this.a) >= 0L) {
-          break;
-        }
-        bnoa.a(this.a, l);
-      }
-      label168:
-      if (l - bnoa.b(this.a) < 0L) {
-        bnoa.b(this.a, l);
-      }
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.a.a.a.mRuntime.a().getAccount();
+    Intent localIntent = new Intent();
+    String str = this.a.a.a.a.mRuntime.a().getResources().getString(2131716436);
+    QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    localIntent.putExtra("aid", "jhan_plxz");
+    localIntent.putExtra("success_tips", str);
+    localIntent.putExtra("direct_go", true);
+    QzonePluginProxyActivity.a(this.a.a.a.a.mRuntime.a(), paramDialogInterface, localIntent, 4);
   }
 }
 

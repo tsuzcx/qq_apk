@@ -1,31 +1,30 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.TipsInfo;
+import java.util.Comparator;
 
-public class aczj
-  extends aczg
+final class aczj
+  implements Comparator<aczh>
 {
-  public int a()
+  public int a(aczh paramaczh1, aczh paramaczh2)
   {
-    return 1000;
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
-  {
-    new bbzc().b(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.tips_info.has();
+    if ((paramaczh1 == null) && (paramaczh2 == null)) {}
+    do
+    {
+      return 0;
+      if ((paramaczh1 == null) && (paramaczh2 != null)) {
+        return 1;
+      }
+      if ((paramaczh1 != null) && (paramaczh2 == null)) {
+        return -1;
+      }
+      if (paramaczh1.a() > paramaczh2.a()) {
+        return -1;
+      }
+    } while (paramaczh1.a() >= paramaczh2.a());
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aczj
  * JD-Core Version:    0.7.0.1
  */

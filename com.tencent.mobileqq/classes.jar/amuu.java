@@ -1,10 +1,22 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import android.view.SurfaceHolder;
 
-public abstract interface amuu
+public class amuu
 {
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong);
+  public int a;
+  public SurfaceHolder a;
+  public int b;
+  public int c;
   
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt);
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
+    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", w=").append(this.b);
+    localStringBuffer.append(", h=").append(this.c);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

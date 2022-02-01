@@ -1,44 +1,72 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class adrs
-  extends ayev
+  implements Animation.AnimationListener
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
-  public boolean a;
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public adrs(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
-      }
-    }
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      adrm.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
     }
-    paramBundle = (adrs)adrm.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    adrm.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localQQAppInterface.unRegistObserver(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin += (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("right");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      return;
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin -= (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364490)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
+        continue;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
   }
 }
 

@@ -1,8 +1,33 @@
-import com.tencent.mobileqq.ocr.view.gesture.GestureProxy.StateSource;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
-public abstract interface ayjh
+public class ayjh
+  extends abkg
 {
-  public abstract void a(GestureProxy.StateSource paramStateSource);
+  public ayjh(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  
+  public abjn a(Activity paramActivity, abjt paramabjt)
+  {
+    return new ayjj(paramActivity, paramabjt);
+  }
+  
+  public abjp a(Activity paramActivity, abjt paramabjt)
+  {
+    return new ayjn((PicBrowserActivity)paramActivity, paramabjt);
+  }
+  
+  public abjt a(Activity paramActivity)
+  {
+    paramActivity = new ayjt(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public abju a(Activity paramActivity, abjt paramabjt)
+  {
+    return null;
+  }
 }
 
 

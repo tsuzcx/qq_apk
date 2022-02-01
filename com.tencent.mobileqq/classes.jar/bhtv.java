@@ -1,26 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
-class bhtv
-  extends Handler
+public final class bhtv
+  implements Comparator<String>
 {
-  bhtv(bhtu parambhtu, Looper paramLooper)
+  public int a(String paramString1, String paramString2)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.arg1;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
     }
-    ((bhte)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).notifyUI(3, true, Integer.valueOf(i));
+    while (paramString1 != null)
+    {
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
+    }
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
   }
 }
 

@@ -1,9 +1,21 @@
-public class omx
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+
+class omx
+  implements pqb
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
+  omx(omw paramomw) {}
+  
+  public void a(int paramInt)
+  {
+    if ((omw.a(this.a) != null) && (omw.a(this.a).a != null))
+    {
+      if (omw.a(this.a).a.mSocialFeedInfo == null) {
+        omw.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
+      }
+      omw.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
+    }
+  }
 }
 
 

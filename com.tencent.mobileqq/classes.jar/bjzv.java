@@ -1,89 +1,79 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
+import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
-import okhttp3.MediaType;
-import okhttp3.WebSocket;
-import okio.ByteString;
+import mqq.observer.BusinessObserver;
 
-@ProxyService(proxy=WebSocketProxy.class)
-public class bjzv
-  extends WebSocketProxy
+class bjzv
+  implements BusinessObserver
 {
-  public ConcurrentHashMap<Integer, bjzw> a = new ConcurrentHashMap();
+  bjzv(bjzo parambjzo, bjzb parambjzb, boolean paramBoolean, bjzx parambjzx, int paramInt, preAuth.PreAuthRequest paramPreAuthRequest, Activity paramActivity) {}
   
-  public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
+  private void a(int paramInt, String paramString)
   {
-    bjzw localbjzw = (bjzw)this.a.get(Integer.valueOf(paramInt1));
-    if ((localbjzw != null) && (localbjzw.a != null)) {}
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "--> preAuth onFail mPreAuthRetryCount=", Integer.valueOf(bjzo.c(this.jdField_a_of_type_Bjzo)), ", errorCode=", Integer.valueOf(paramInt) });
+    if (bjzo.c(this.jdField_a_of_type_Bjzo) < this.jdField_a_of_type_Int)
+    {
+      bjzo.d(this.jdField_a_of_type_Bjzo);
+      this.jdField_a_of_type_Bjzo.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthRequest, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjzb, this.jdField_a_of_type_Bjzx, this.jdField_a_of_type_Int);
+      return;
+    }
+    bjzo.b(this.jdField_a_of_type_Bjzo, 0);
+    this.jdField_a_of_type_Bjzx.a(paramInt, paramString);
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry isSuccess=", Boolean.valueOf(paramBoolean), ", type=", Integer.valueOf(paramInt), ", mPreAuthRetryCount=", Integer.valueOf(bjzo.c(this.jdField_a_of_type_Bjzo)) });
+    if (!paramBoolean)
+    {
+      avcw.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bjzb, false);
+      a(paramBundle.getInt("code", -1), "");
+      return;
+    }
+    byte[] arrayOfByte = paramBundle.getByteArray("data");
+    if (arrayOfByte == null)
+    {
+      avcw.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bjzb, false);
+      a(paramBundle.getInt("code", -1), "");
+      return;
+    }
+    preAuth.PreAuthResponse localPreAuthResponse = new preAuth.PreAuthResponse();
+    Object localObject = arrayOfByte;
+    if (this.jdField_a_of_type_Boolean) {
+      localObject = bjzy.b(arrayOfByte, this.jdField_a_of_type_Bjzb);
+    }
     try
     {
-      localbjzw.a.close(paramInt2, paramString);
-      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localbjzw, paramInt1, paramInt2, paramString), 1000L);
-      this.a.remove(Integer.valueOf(paramInt1));
-      return false;
+      localObject = (preAuth.PreAuthResponse)localPreAuthResponse.mergeFrom((byte[])localObject);
+      if ((((preAuth.PreAuthResponse)localObject).ret.has()) && (((preAuth.PreAuthResponse)localObject).ret.get() == 0))
+      {
+        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "--> preAuth mergeFrom success");
+        avcw.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bjzb, true);
+        bjzo.a(this.jdField_a_of_type_Bjzo, (preAuth.PreAuthResponse)localObject);
+        bjzo.b(this.jdField_a_of_type_Bjzo, 0);
+        this.jdField_a_of_type_Bjzx.a();
+        return;
+      }
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString);
-      }
+      QLog.e("SDK_LOGIN.OpenSdkVirtualManager", 1, "Exception", localException);
+      avcw.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bjzb, false);
+      a(paramBundle.getInt("code", -1), "");
+      return;
     }
-  }
-  
-  public boolean connectSocket(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
-  {
-    paramString1 = new bjzw(this, paramInt1, paramString1, paramMap, paramInt2, paramWebSocketListener);
-    this.a.put(Integer.valueOf(paramInt1), paramString1);
-    return true;
-  }
-  
-  public boolean send(int paramInt, String paramString)
-  {
-    bjzw localbjzw = (bjzw)this.a.get(Integer.valueOf(paramInt));
-    if ((localbjzw != null) && (localbjzw.a != null)) {
-      try
-      {
-        MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
-        localbjzw.a.send(paramString);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString);
-        return false;
-      }
-    }
-    return false;
-  }
-  
-  public boolean send(int paramInt, byte[] paramArrayOfByte)
-  {
-    bjzw localbjzw = (bjzw)this.a.get(Integer.valueOf(paramInt));
-    if ((localbjzw != null) && (localbjzw.a != null)) {
-      try
-      {
-        localbjzw.a.send(ByteString.of(paramArrayOfByte));
-        return true;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramArrayOfByte);
-        return false;
-      }
-    }
-    return false;
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "--> preAuth mergeFrom fail ret=", Integer.valueOf(localException.ret.get()), ", msg=", localException.msg.get() });
+    avcw.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bjzb, false);
+    a(localException.ret.get(), localException.msg.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjzv
  * JD-Core Version:    0.7.0.1
  */

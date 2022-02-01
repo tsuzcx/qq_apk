@@ -1,74 +1,26 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.decoupleim.ThirdPartyLoginBlockUtilImpl.LoginViewOpenSDKCb.1;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
 
-public class aobn
-  implements aobk
+class aobn
+  implements bliz
 {
-  private WeakReference<LoginActivity> a;
+  aobn(aobl paramaobl, blir paramblir) {}
   
-  public aobn(BaseActivity paramBaseActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (a(paramBaseActivity)) {
-      return;
-    }
-    this.a = new WeakReference((LoginActivity)paramBaseActivity);
-  }
-  
-  private boolean a()
-  {
-    if (this.a == null)
+    switch (paramInt)
     {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "LoginViewOpenSDKCb mActRef error");
-      return true;
     }
-    return false;
-  }
-  
-  private boolean a(BaseActivity paramBaseActivity)
-  {
-    if ((paramBaseActivity == null) || (!(paramBaseActivity instanceof LoginActivity)))
+    for (;;)
     {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "LoginViewOpenSDKCb constructor params wrong");
-      return true;
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "onLoginFailed");
-    if (a()) {
+      this.jdField_a_of_type_Blir.e();
       return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
+      }
+      this.jdField_a_of_type_Aobl.h();
+      bdll.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
     }
-    LoginActivity localLoginActivity = (LoginActivity)this.a.get();
-    if (localLoginActivity == null)
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "onLoginFailed error: activity == null");
-      return;
-    }
-    QQToast.a(localLoginActivity, 2131698433, 0).a();
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "onLoginSuccess");
-    bcst.a(null, "dc00898", "", "", "0X800B18A", "0X800B18A", 0, 0, "", "", "", "");
-    if (a()) {
-      return;
-    }
-    LoginActivity localLoginActivity = (LoginActivity)this.a.get();
-    if (localLoginActivity == null)
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "onLoginSuccess error: activity == null");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new ThirdPartyLoginBlockUtilImpl.LoginViewOpenSDKCb.1(this, localLoginActivity, paramString));
   }
 }
 

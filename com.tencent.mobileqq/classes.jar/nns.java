@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.data.TroopAppInfo;
-import java.util.ArrayList;
+import org.apache.http.conn.ssl.AbstractVerifier;
 
-public abstract interface nns
+final class nns
+  extends AbstractVerifier
 {
-  public abstract void a();
+  nns(String paramString) {}
   
-  public abstract void a(ArrayList<TroopAppInfo> paramArrayList);
+  public final String toString()
+  {
+    return "CUSTOM_COMPATIBLE";
+  }
+  
+  public final void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    verify(this.a, paramArrayOfString1, paramArrayOfString2, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     nns
  * JD-Core Version:    0.7.0.1
  */

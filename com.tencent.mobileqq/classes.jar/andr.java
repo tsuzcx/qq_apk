@@ -1,49 +1,84 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import org.json.JSONObject;
 
-final class andr
-  implements amxk
+public class andr
+  implements INetInfoHandler
 {
-  andr(String paramString, String[] paramArrayOfString, andp paramandp) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public andr(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
+    for (;;)
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
+      return;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameNetInfoHandler", 2, "[notifyEngineNetChange], type:" + paramInt);
+      }
+      try
+      {
+        ApolloCmdChannel localApolloCmdChannel = anbd.a();
+        if (localApolloCmdChannel != null)
         {
-          paramString = andq.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (andq.a(this.jdField_a_of_type_JavaLangString))
+          Object localObject = anbd.a(this.jdField_a_of_type_Int);
+          if (localObject != null)
           {
-            paramArrayOfInt = andq.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Andp.a(0, paramString, paramArrayOfInt);
+            localObject = ((ande)localObject).a();
+            if (localObject != null)
+            {
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("type", paramInt);
+              localApolloCmdChannel.callbackFromRequest(((ApolloSurfaceView)localObject).getLuaState(), 0, "sc.network_change.local", localJSONObject.toString());
+              return;
+            }
           }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
-            return;
-            this.jdField_a_of_type_Andp.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Andp.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
         }
       }
+      catch (Exception localException)
+      {
+        QLog.e("cmgame_process.CmGameNetInfoHandler", 1, "errInfo->" + localException.getMessage());
+      }
     }
-    else
-    {
-      this.jdField_a_of_type_Andp.a(-1, null, null);
-    }
+  }
+  
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
   }
 }
 

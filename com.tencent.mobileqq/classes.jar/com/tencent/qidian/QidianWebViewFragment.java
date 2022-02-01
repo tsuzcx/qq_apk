@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import bgmp;
-import bgng;
+import bhmr;
+import bhni;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -14,10 +14,10 @@ public class QidianWebViewFragment
     if ((paramString.startsWith("mqqwpa://")) && (paramString.contains("request=videochat"))) {
       try
       {
-        bgmp localbgmp = bgng.a(null, getActivity(), paramString);
-        if (localbgmp != null)
+        bhmr localbhmr = bhni.a(null, getActivity(), paramString);
+        if (localbhmr != null)
         {
-          boolean bool = localbgmp.a();
+          boolean bool = localbhmr.a();
           return bool;
         }
       }

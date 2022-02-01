@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arod;
-import arov;
+import asdr;
+import asej;
 
 public class JpegSoData
   extends XmlData
 {
-  @arov(a=true, b=false)
+  @asej(a=true, b=false)
   public String SO_MD5;
   
   public String getSharedPreferencesName()
   {
-    return "early_" + arod.e();
+    return "early_" + asdr.e();
   }
   
   public String getStrResName()
   {
-    return arod.e();
+    return asdr.e();
   }
 }
 

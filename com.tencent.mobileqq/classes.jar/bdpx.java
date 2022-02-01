@@ -1,18 +1,11 @@
+import android.widget.TextView;
+import com.tencent.biz.now.NowVideoLayout;
+
 public class bdpx
 {
-  public void a() {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public boolean a(bdps parambdps)
-  {
-    return false;
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  NowVideoLayout jdField_a_of_type_ComTencentBizNowNowVideoLayout;
+  TextView b;
 }
 
 

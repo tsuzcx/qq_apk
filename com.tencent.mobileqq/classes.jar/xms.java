@@ -1,43 +1,49 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.support.annotation.NonNull;
 
-public abstract class xms
+public class xms
 {
-  public abstract Activity a();
+  public String a;
+  public String b;
   
-  public abstract OpenPlayerBuilder.Data a();
+  public xms(@NonNull String paramString)
+  {
+    this.a = paramString;
+    znw.a(paramString);
+  }
   
-  public abstract XViewPager a();
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (xms)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
   
-  public abstract String a(String paramString);
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
   
-  public abstract xix a();
-  
-  public abstract xja a();
-  
-  public abstract xmk a();
-  
-  public abstract xnd a();
-  
-  public abstract void a();
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(wfi paramwfi);
-  
-  public abstract void a(xli paramxli);
-  
-  public abstract void a(xnl paramxnl);
-  
-  public abstract boolean a();
-  
-  public abstract void b(wfi paramwfi);
-  
-  public abstract void b(xli paramxli);
-  
-  public abstract boolean b();
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.b == null) {}
+    for (String str = "";; str = this.b) {
+      return str + this.a;
+    }
+  }
 }
 
 

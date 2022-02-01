@@ -1,37 +1,32 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
 
-public class axee
-  implements auco
+public abstract class axee
 {
-  axee(axed paramaxed) {}
+  public axeh a;
+  public MiniAppActivity a;
   
-  public void a(String paramString, long paramLong)
+  public axee(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
-    do
-    {
-      return;
-      localObject = atut.a().b() + paramString;
-      if (!new File((String)localObject).exists()) {
-        break;
-      }
-      auck.a((String)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d(axed.a(this.a), 2, "UniformDownloadUtil.installAPK,savePath=" + (String)localObject);
-    return;
-    axed.a(this.a).post(new NearbyTribeAppController.2.1(this));
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("_filename_from_dlg", paramString);
-    ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
-    ((Bundle)localObject).putString("_notify_name_dialog", anni.a(2131706163));
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
-    QLog.e(axed.a(this.a), 1, "这里已经下架，如果依然发现该log，异常case");
-    atzj.a().a("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
+  }
+  
+  public abstract void a();
+  
+  public void a(axeh paramaxeh)
+  {
+    this.jdField_a_of_type_Axeh = paramaxeh;
+    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_Axeh = paramaxeh;
+    }
+  }
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
   }
 }
 

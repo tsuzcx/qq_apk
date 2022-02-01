@@ -1,13 +1,19 @@
-import android.os.IInterface;
+import android.content.Context;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aoya
-  extends IInterface
+public class aoya
+  extends aoxh
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  {
+    paramaoxk = Uri.parse(paramString).getLastPathSegment();
+    paramQQAppInterface = new aoxz(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "com.qqfav";
+    paramQQAppInterface.c = paramaoxk;
+    return paramQQAppInterface;
+  }
 }
 
 

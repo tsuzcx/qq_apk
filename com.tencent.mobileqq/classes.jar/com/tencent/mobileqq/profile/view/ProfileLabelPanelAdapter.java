@@ -10,10 +10,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import asbp;
-import azjq;
-import azjr;
-import azjt;
+import asrd;
+import bacc;
+import bacd;
+import bacf;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -26,16 +26,16 @@ public class ProfileLabelPanelAdapter
   public float a;
   protected int a;
   public Context a;
-  protected SparseArray<azjt> a;
-  protected asbp a;
-  protected azjq a;
-  public azjr a;
-  protected azjt a;
+  protected SparseArray<bacf> a;
+  protected asrd a;
+  protected bacc a;
+  public bacd a;
+  protected bacf a;
   protected List<ProfileLabelTypeInfo> a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_Asbp = new asbp();
+    this.jdField_a_of_type_Asrd = new asrd();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -57,32 +57,32 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Azjt = ((azjt)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Azjt == null)
+    this.jdField_a_of_type_Bacf = ((bacf)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Bacf == null)
     {
-      this.jdField_a_of_type_Azjt = new azjt(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Azjt);
+      this.jdField_a_of_type_Bacf = new bacf(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Bacf);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Azjt.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Azjt);
+    this.jdField_a_of_type_Bacf.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Bacf);
   }
   
-  public void a(azjq paramazjq)
+  public void a(bacc parambacc)
   {
-    this.jdField_a_of_type_Azjq = paramazjq;
+    this.jdField_a_of_type_Bacc = parambacc;
   }
   
-  public void a(azjr paramazjr)
+  public void a(bacd parambacd)
   {
-    this.jdField_a_of_type_Azjr = paramazjr;
+    this.jdField_a_of_type_Bacd = parambacd;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     GridView localGridView = (GridView)paramObject;
     ((ViewGroup)paramView).removeView(localGridView);
-    this.jdField_a_of_type_Asbp.a((View)paramObject);
+    this.jdField_a_of_type_Asrd.a((View)paramObject);
   }
   
   public int getCount()
@@ -92,7 +92,7 @@ public class ProfileLabelPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    GridView localGridView2 = (GridView)this.jdField_a_of_type_Asbp.a();
+    GridView localGridView2 = (GridView)this.jdField_a_of_type_Asrd.a();
     GridView localGridView1 = localGridView2;
     if (localGridView2 == null) {
       localGridView1 = a();
@@ -114,10 +114,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramView.getTag();
-    azjq localazjq;
+    bacc localbacc;
     if (localProfileLabelInfo != null)
     {
-      localazjq = this.jdField_a_of_type_Azjq;
+      localbacc = this.jdField_a_of_type_Bacc;
       if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label64;
       }
@@ -125,7 +125,7 @@ public class ProfileLabelPanelAdapter
     label64:
     for (boolean bool = false;; bool = true)
     {
-      localazjq.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
+      localbacc.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }

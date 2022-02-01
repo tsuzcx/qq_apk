@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-class ucq
-  implements ukm
+public class ucq
+  implements bltz
 {
-  ucq(ucp paramucp) {}
+  public ucq(WSBaseHomeFragment paramWSBaseHomeFragment) {}
   
-  public List<ukn> a(int paramInt, boolean paramBoolean)
+  public void a()
   {
-    return uov.a(this.a.a(), paramInt, paramBoolean);
+    this.a.a();
   }
   
-  public boolean a()
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    return AppNetConnInfo.isWifiConn();
+    this.a.a(paramXRecyclerView, paramInt);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    this.a.a(paramXRecyclerView, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucq
  * JD-Core Version:    0.7.0.1
  */

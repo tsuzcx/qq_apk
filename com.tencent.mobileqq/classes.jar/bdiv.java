@@ -1,54 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.StatisticCollector.Proxy;
+import java.util.HashMap;
 
-public class bdiv
-  extends MiniMsgUser
+public final class bdiv
+  implements IMCoreProxyRoute.StatisticCollector.Proxy
 {
-  int jdField_a_of_type_Int = -1;
-  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
-  
-  public bdiv(BaseActivity paramBaseActivity, MiniMsgUserParam paramMiniMsgUserParam, String paramString1, int paramInt, String paramString2)
+  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
   {
-    super(paramBaseActivity, paramMiniMsgUserParam);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.b = paramString2;
+    bdmc.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
   }
   
-  public void onClick(View paramView)
+  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
-      }
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_Int;
-      if ((i != -1) && (!TextUtils.isEmpty(str)))
-      {
-        MiniChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, i, str, this.b);
-        hideUnread();
-      }
-    }
-  }
-  
-  public void updateUnreadCountSync(int paramInt)
-  {
-    super.updateUnreadCountSync(0);
+    bdmc.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
   }
 }
 

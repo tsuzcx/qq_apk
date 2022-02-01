@@ -1,23 +1,43 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class amdo
-  implements Animation.AnimationListener
+public class amdo
+  implements blob
 {
-  amdo(amdl paramamdl, View paramView) {}
+  public amdo(FriendTabView paramFriendTabView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof amdr))) {
-      ((amdr)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
-    }
-    amdl.a(this.jdField_a_of_type_Amdl);
+    this.a.a = true;
+    FriendTabView.a(this.a).setFooterEnable(false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
+    {
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTabView.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
+        }
+      }
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
+  }
 }
 
 

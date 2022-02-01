@@ -16,11 +16,12 @@ class AppForegroundSession$2
     localHashMap.put("dt_app_sessionid", paramString);
     localHashMap.put("dt_app_foreground_heartbeat_duration", Long.valueOf(paramLong1));
     AppForegroundSession.access$100(localHashMap);
+    ThreadUtils.execTask(new AppForegroundSession.2.1(this, paramString));
   }
   
   public void saveHeartBeatInfo(String paramString, long paramLong1, long paramLong2)
   {
-    ThreadUtils.execTask(new AppForegroundSession.2.1(this, paramString, paramLong1));
+    ThreadUtils.execTask(new AppForegroundSession.2.2(this, paramString, paramLong1));
   }
 }
 

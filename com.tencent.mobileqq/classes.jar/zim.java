@@ -1,42 +1,54 @@
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class zim
+  extends ziu<zih, zih>
 {
-  public int a;
-  public long a;
-  private Map<Integer, Long> a;
-  public int b = -1;
+  private int a;
+  public WeakReference<Activity> a;
   
-  public zim()
+  public zim(@NonNull Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt, long paramLong)
+  protected void a(JobContext paramJobContext, zih paramzih)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_Long < paramLong)
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      this.b = paramInt;
+      yuk.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() + l) {}
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      return "there_is_no_frame";
+    Object localObject = paramzih.jdField_a_of_type_Zil.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramzih.jdField_a_of_type_Zil.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramzih.jdField_a_of_type_Zil.jdField_a_of_type_Boolean) {
+        paramJobContext = paramzih.jdField_a_of_type_Zil.jdField_b_of_type_JavaLangString;
+      }
     }
-    this.jdField_a_of_type_Int = ((int)l / this.jdField_a_of_type_JavaUtilMap.size());
-    localStringBuilder.append("avg:").append(this.jdField_a_of_type_Int).append("|max:").append(this.jdField_a_of_type_Long).append("|maxId:").append(this.b);
-    return localStringBuilder.toString();
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramzih.jdField_a_of_type_Zin = new zin(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramzih.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramzih);
+      return;
+    }
   }
 }
 

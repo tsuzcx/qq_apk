@@ -1,27 +1,27 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.ttpic.util.SensorUtil2;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.4.1;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bnhi
-  implements SurfaceTexture.OnFrameAvailableListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bnhi(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
+  public bnhi(QZoneShareActivity paramQZoneShareActivity, RelativeLayout paramRelativeLayout) {}
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void onGlobalLayout()
   {
-    AECameraGLSurfaceView.a(this.a, true);
-    if (!AECameraGLSurfaceView.a(this.a))
+    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) - i > 150) {
+      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(0);
+    }
+    for (;;)
     {
-      AECameraGLSurfaceView.b(this.a, true);
-      bnvd.a().a("onFrameAvailable");
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, i);
+      return;
+      if ((i - QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) > 150) && (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.d)) {
+        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(4);
+      }
     }
-    if (AECameraGLSurfaceView.a(this.a) != null) {
-      AECameraGLSurfaceView.a(this.a).getRotation(AECameraGLSurfaceView.a(this.a));
-    }
-    this.a.queueEvent(new AECameraGLSurfaceView.4.1(this));
-    this.a.requestRender();
   }
 }
 

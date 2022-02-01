@@ -1,30 +1,30 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnho;
-import bnhs;
-import bnzb;
+import boiw;
+import boja;
+import bpam;
 
 public class AECameraManager$4
   implements Runnable
 {
-  public AECameraManager$4(bnho parambnho, int paramInt, bnhs parambnhs) {}
+  public AECameraManager$4(boiw paramboiw, int paramInt, boja paramboja) {}
   
   public void run()
   {
-    bnzb.b("AECameraManager", "[cameraManagerHandler] changeCamera " + this.jdField_a_of_type_Int);
+    bpam.b("AECameraManager", "[cameraManagerHandler] changeCamera " + this.jdField_a_of_type_Int);
     if ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 1))
     {
-      bnzb.d("AECameraManager", "[cameraManagerHandler] changeCamera invalid camera: " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bnhs.a(bnho.a(this.this$0), bnho.a(this.this$0));
+      bpam.d("AECameraManager", "[cameraManagerHandler] changeCamera invalid camera: " + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Boja.a(boiw.a(this.this$0), boiw.a(this.this$0));
       return;
     }
-    if ((bnho.a(this.this$0) != this.jdField_a_of_type_Int) && (bnho.a(this.this$0)))
+    if ((boiw.a(this.this$0) != this.jdField_a_of_type_Int) && (boiw.a(this.this$0)))
     {
-      bnzb.b("AECameraManager", "[cameraManagerHandler] changeCamera, firstly close last camera: " + bnho.a(this.this$0));
-      bnho.a(this.this$0, false);
+      bpam.b("AECameraManager", "[cameraManagerHandler] changeCamera, firstly close last camera: " + boiw.a(this.this$0));
+      boiw.a(this.this$0, false);
     }
-    bnho.a(this.this$0, this.jdField_a_of_type_Int);
-    bnho.a(this.this$0, this.jdField_a_of_type_Bnhs);
+    boiw.a(this.this$0, this.jdField_a_of_type_Int);
+    boiw.a(this.this$0, this.jdField_a_of_type_Boja);
   }
 }
 

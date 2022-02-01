@@ -1,21 +1,6 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-class bpwo
-  extends bowf
+public abstract class bpwo
 {
-  private bpwo(bpwm parambpwm) {}
-  
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
-    }
-    if ((bpwm.a(this.a) != null) && (bpwm.a(this.a).hasMessages(paramInt))) {
-      bpwm.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
-  }
+  public abstract boolean a(int paramInt1, int paramInt2);
 }
 
 

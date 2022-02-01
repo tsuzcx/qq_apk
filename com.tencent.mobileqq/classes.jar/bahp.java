@@ -1,33 +1,28 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class bahp
-  extends RecyclerView.OnScrollListener
+  implements bimf
 {
-  bahp(baho parambaho) {}
+  private WeakReference<avsm> a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  bahp(avsm paramavsm)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    baho.a(this.a, paramInt);
-    if (baho.a(this.a) == 0)
+    this.a = new WeakReference(paramavsm);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      if (baho.a(this.a).a()) {
-        baho.a(this.a).b();
+      avsm localavsm = (avsm)this.a.get();
+      if (localavsm != null) {
+        localavsm.a();
       }
-      int i = baho.a(this.a).getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramRecyclerView = baho.a(this.a).getChildAt(paramInt);
-        paramRecyclerView = (bahr)baho.a(this.a).getChildViewHolder(paramRecyclerView);
-        bahr.a(paramRecyclerView).setImageBitmap(baho.a(this.a, bahr.a(paramRecyclerView)));
-        paramInt += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileQZoneComponent", 2, "check friend's profile and preload web-process!");
       }
     }
-    baho.a(this.a).a();
-    baho.a(this.a).c();
   }
 }
 

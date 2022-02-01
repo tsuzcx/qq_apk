@@ -1,40 +1,30 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class alln
-  implements bdvw
+  implements View.OnClickListener
 {
-  public void onResp(bdwt parambdwt)
+  alln(aljw paramaljw) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = (allq)parambdwt.jdField_a_of_type_Bdws.a();
-    lbc.c("VideoFilterTools", "download file call back. file = " + ((allq)localObject).a);
-    if (parambdwt.jdField_a_of_type_Int != 0)
-    {
-      lbc.c("VideoFilterTools", "download file faild. errcode = " + parambdwt.b);
-      return;
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim()))) {
+      this.a.k();
     }
-    if (!((allq)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c)))
+    for (;;)
     {
-      lbc.c("VideoFilterTools", "download file faild : md5 is not match.");
-      bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    lbc.c("VideoFilterTools", "download file successed.");
-    try
-    {
-      localObject = alll.a();
-      bgmg.a(parambdwt.jdField_a_of_type_Bdws.c, (String)localObject, false);
-      bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-      return;
-    }
-    catch (IOException parambdwt)
-    {
-      parambdwt.printStackTrace();
-      lbc.c("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
+      Intent localIntent = new Intent(aljw.a(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("qrlogin_position", this.a.b);
+      localIntent.putExtra("qrlogin_appid", this.a.a);
+      aljw.a(this.a).startActivity(localIntent);
     }
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

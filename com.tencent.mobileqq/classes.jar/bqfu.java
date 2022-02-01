@@ -1,13 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-final class bqfu
-  implements DialogInterface.OnClickListener
+public class bqfu
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bqfu(EditVideoGuide paramEditVideoGuide) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bqft.a = null;
-    paramDialogInterface.cancel();
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_Bqgk.a(14);
   }
 }
 

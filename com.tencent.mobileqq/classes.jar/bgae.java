@@ -1,16 +1,70 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class bgae
-  implements bdfn
+public class bgae
+  extends aojs
 {
-  bgae(bgad parambgad) {}
+  public bgae(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.a != null) {
-      this.a.a.a.a.a.a();
+    super.a(paramBoolean, paramLong, paramInt);
+    this.a.o();
+    this.a.a(paramBoolean, paramInt);
+  }
+  
+  public void a(boolean paramBoolean, bfyk parambfyk)
+  {
+    super.a(paramBoolean, parambfyk);
+    this.a.o();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("获取作业信息");
+      if (!paramBoolean) {
+        break label79;
+      }
+    }
+    label79:
+    for (String str = "成功";; str = "失败")
+    {
+      QLog.d("PublishHomeWorkFragment", 2, str);
+      if ((!paramBoolean) || (parambfyk == null) || (parambfyk.b == null)) {
+        break;
+      }
+      this.a.a(parambfyk);
+      return;
+    }
+    this.a.getActivity().finish();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  {
+    super.a(paramBoolean, paramString1, paramString2, paramInt, paramString3, paramString4);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublishHomeWorkFragment", 2, "onGetHomeworkTroopIdentity: isSuccess:" + paramBoolean + ", identity:" + paramInt + ", course:" + paramString3);
+    }
+    if (!this.a.j)
+    {
+      if (!this.a.h) {
+        this.a.b(paramString3);
+      }
+      this.a.a(paramInt, paramString3, paramString4);
+      if (!paramBoolean) {
+        break label142;
+      }
+      this.a.a = paramString3;
+      this.a.b();
+    }
+    for (;;)
+    {
+      QLog.i("PublishHomeWorkFragment", 1, "init data success");
+      this.a.f();
+      return;
+      label142:
+      QQToast.a(this.a.getActivity(), anzj.a(2131707706), 0).a();
     }
   }
 }

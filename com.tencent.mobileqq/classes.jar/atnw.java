@@ -1,20 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-class atnw
-  implements atve
+public class atnw
+  implements View.OnLongClickListener
 {
-  atnw(atnv paramatnv) {}
+  public atnw(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
     }
+    paramView.setSelected(true);
+    bhuk localbhuk = new bhuk();
+    localbhuk.a(2131367081, paramView.getContext().getString(2131692400));
+    localbhuk.a(2131365346, paramView.getContext().getString(2131691323));
+    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbhuk);
+    this.a.a = bhkx.a(paramView, localbhuk, new atnx(this, paramView), new atnz(this, paramView));
+    return true;
   }
-  
-  public void b() {}
 }
 
 

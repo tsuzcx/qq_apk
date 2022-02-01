@@ -1,17 +1,17 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.subscribe.comment.SubscribeCommentInputPopupWindow.1.1;
 
 public class aaki
-  implements View.OnClickListener
+  implements aaip
 {
-  public aaki(VideoPlayerView paramVideoPlayerView) {}
+  aaki(aakh paramaakh) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    VideoPlayerView.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.isShowing()) {
+      aakh.a(this.a).runOnUiThread(new SubscribeCommentInputPopupWindow.1.1(this));
+    }
   }
 }
 

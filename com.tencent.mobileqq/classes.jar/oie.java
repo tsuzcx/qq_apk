@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class oie
-  implements View.OnClickListener
+class oie
 {
-  public oie(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    ReadInJoyBaseDeliverActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private static final oid a = new oid(null);
 }
 
 

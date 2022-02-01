@@ -1,43 +1,36 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public abstract interface zld
+public class zld
 {
-  public abstract int a();
+  public final int a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
   
-  public abstract Bitmap a();
+  public zld(qqstory_struct.CompInfoBase paramCompInfoBase)
+  {
+    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
+    this.b = paramCompInfoBase.backgroud_url.get();
+    this.c = paramCompInfoBase.compared_vid.get();
+    if (paramCompInfoBase.is_compared_able.get() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.d = paramCompInfoBase.icon_url.get();
+      this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
+      return;
+      bool = false;
+    }
+  }
   
-  public abstract View a();
-  
-  public abstract zli a(int paramInt);
-  
-  public abstract zlj a();
-  
-  public abstract void a();
-  
-  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
-  
-  public abstract void a(wqw paramwqw, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(zlf paramzlf);
-  
-  public abstract void a(zlh paramzlh);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract zll[] a();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void e(boolean paramBoolean);
+  public String toString()
+  {
+    return "CompInfoBase{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", linkUrl='" + this.b + '\'' + ", comparedVid='" + this.c + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.d + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
+  }
 }
 
 

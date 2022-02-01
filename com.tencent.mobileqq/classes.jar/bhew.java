@@ -1,31 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
 
 public class bhew
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements DialogInterface.OnClickListener
 {
-  public bhew(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public bhew(UpgradeDetailActivity paramUpgradeDetailActivity, int paramInt) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
-    }
-    if (this.a.jdField_a_of_type_Boolean)
+    switch (paramInt)
     {
-      paramTVK_IMediaPlayer.pause();
-      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+    default: 
       return;
-      paramTVK_IMediaPlayer.start();
+    case 0: 
+      bhdu.a().b(false);
+      paramDialogInterface.dismiss();
+      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
+      return;
     }
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
   }
 }
 

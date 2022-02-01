@@ -1,70 +1,60 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
+import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter.Params;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
 import com.tencent.gdtad.views.video.GdtVideoData;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
+import java.lang.ref.WeakReference;
 
-public class acoe
+public final class acoe
+  implements AdVideoCeilingAdapter
 {
-  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  private GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
-  private GdtVideoData jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
-  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
-  
-  public acoe(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  public AdError show(AdVideoCeilingAdapter.Params paramParams)
   {
-    acqy.a("GdtMotiveVideoModel", "[GdtMotiveVideoModel]\n" + paramGdtMotiveVideoPageData.adsContent);
-    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData = paramGdtMotiveVideoPageData;
-    b(paramGdtMotiveVideoPageData);
-    a(paramGdtMotiveVideoPageData);
-  }
-  
-  private void a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
-  {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData = new GdtVideoData();
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setAd(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setPlayScene(11);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setUrl(paramGdtMotiveVideoPageData.url);
-  }
-  
-  private void b(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
-  {
-    if (TextUtils.isEmpty(paramGdtMotiveVideoPageData.adsContent))
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      acqy.d("GdtMotiveVideoModel", "[adJson==null error]");
-      return;
+      acvc.d("GdtVideoCeilingAdapter", "show error");
+      return new AdError(4);
     }
-    try
+    Object localObject = new GdtVideoData();
+    ((GdtVideoData)localObject).setUrl(paramParams.videoUrl);
+    ((GdtVideoData)localObject).setStartPositionMillis(paramParams.videoStartPositionMillis);
+    ((GdtVideoData)localObject).setLoop(paramParams.videoLoop);
+    ((GdtVideoData)localObject).setDirectPlay(paramParams.videoPlayForced);
+    GdtVideoCeilingData localGdtVideoCeilingData = new GdtVideoCeilingData();
+    localGdtVideoCeilingData.setAd((GdtAd)GdtAd.class.cast(paramParams.ad));
+    localGdtVideoCeilingData.setWebUrl(paramParams.webUrl);
+    localGdtVideoCeilingData.setVideoData((GdtVideoData)localObject);
+    switch (paramParams.style)
     {
-      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
-      return;
+    default: 
+      return new AdError(4);
+    case 1: 
+      localGdtVideoCeilingData.setStyle(1);
     }
-    catch (Throwable paramGdtMotiveVideoPageData)
+    while (!localGdtVideoCeilingData.isValid())
     {
-      acqy.d("GdtMotiveVideoModel", "GdtMotiveVideoModel error]", paramGdtMotiveVideoPageData);
+      acvc.d("GdtVideoCeilingAdapter", "show error");
+      return new AdError(4);
+      localGdtVideoCeilingData.setStyle(2);
+      continue;
+      localGdtVideoCeilingData.setStyle(3);
+      continue;
+      localObject = AdCanvasDataBuilderV2.build((Context)paramParams.activity.get(), paramParams.ad, paramParams.autodownload);
+      if ((localObject == null) || (!((AdCanvasData)localObject).isValid())) {
+        return new AdError(4);
+      }
+      localGdtVideoCeilingData.setCanvasData((AdCanvasData)localObject);
+      localGdtVideoCeilingData.setStyle(4);
     }
-  }
-  
-  public GdtAd a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  }
-  
-  public GdtMotiveVideoPageData a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
-  }
-  
-  public GdtVideoData a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
-  }
-  
-  public qq_ad_get.QQAdGetRsp.AdInfo a()
-  {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+    GdtBaseVideoCeilingFragment.a((Activity)paramParams.activity.get(), GdtVideoCeilingFragmentForJS.class, localGdtVideoCeilingData, paramParams.extrasForIntent);
+    return new AdError(0);
   }
 }
 

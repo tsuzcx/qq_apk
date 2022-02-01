@@ -1,48 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
-public class aotq
-  extends Handler
+class aotq
+  implements bevw
 {
-  private WeakReference<VideoEncoderCore> a;
+  aotq(aoti paramaoti, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public aotq(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
+  public void a(bevy parambevy, bevx parambevx)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoEncoderCore);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
+    try
     {
-      switch (paramMessage.what)
-      {
+      parambevy = parambevy.a.getWupBuffer();
+      parambevx = new structmsg.RspSystemMsgRead();
+      parambevx.mergeFrom(parambevy);
+      int i = parambevx.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
       return;
+    }
+    catch (Exception parambevy)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambevy);
     }
   }
 }

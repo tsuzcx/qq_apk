@@ -2,26 +2,26 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder;
 
 import android.content.res.Resources;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
-import upe;
-import uto;
+import uqf;
+import uuq;
 
 public class WSVerticalItemVideoProgressController$1
   implements Runnable
 {
-  public WSVerticalItemVideoProgressController$1(uto paramuto) {}
+  public WSVerticalItemVideoProgressController$1(uuq paramuuq) {}
   
   public void run()
   {
     try
     {
-      if (uto.a(this.this$0) != null) {
-        uto.a(this.this$0).setThumb(uto.a(this.this$0).getDrawable(2130841780));
+      if (uuq.a(this.this$0) != null) {
+        uuq.a(this.this$0).setThumb(uuq.a(this.this$0).getDrawable(2130841791));
       }
       return;
     }
     catch (Exception localException)
     {
-      upe.d("WS_VIDEO_seekBar", "seekBar un active runnable error:" + localException);
+      uqf.d("WS_VIDEO_seekBar", "seekBar un active runnable error:" + localException);
     }
   }
 }

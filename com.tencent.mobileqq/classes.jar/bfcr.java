@@ -1,25 +1,40 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ListView;
 
-public class bfcr
-  implements bhva
+class bfcr
+  implements Animator.AnimatorListener
 {
-  public bfcr(ReciteRecordLayout paramReciteRecordLayout) {}
+  bfcr(bfcn parambfcn) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), -bfcn.a(this.a), 0, 0);
+    bfcn.a(this.a).setVisibility(8);
+    bfcn.a(this.a, false);
+    bfcn.b(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), -bfcn.a(this.a), 0, 0);
+    bfcn.a(this.a).setVisibility(8);
+    bfcn.a(this.a, false);
+    bfcn.b(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    bfcn.a(this.a, true);
+    bfcn.b(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfcr
  * JD-Core Version:    0.7.0.1
  */

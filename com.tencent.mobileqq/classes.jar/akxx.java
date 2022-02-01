@@ -1,31 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.qqwallet.QWalletPubAdReport.ReportRsp;
 
-public class akxx
-  implements Animation.AnimationListener
+class akxx
+  implements BusinessObserver
 {
-  public akxx(AnonymousEntranceView paramAnonymousEntranceView) {}
+  akxx(akxw paramakxw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletGdtAdManager", 2, "onReceive:type:" + paramInt + ",isSuccess:" + paramBoolean + ",bundle:" + paramBundle + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.a.a));
     }
-    if (AnonymousEntranceView.b(this.a) != null)
+    try
     {
-      AnonymousEntranceView.b(this.a).clearAnimation();
-      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+      paramBundle = paramBundle.getByteArray("data");
+      if ((paramBundle != null) && (paramBoolean))
+      {
+        QWalletPubAdReport.ReportRsp localReportRsp = new QWalletPubAdReport.ReportRsp();
+        localReportRsp.mergeFrom(paramBundle);
+        if (QLog.isColorLevel()) {
+          QLog.i("QWalletGdtAdManager", 2, "doReqAdsStatistics onReceive: retCode:" + localReportRsp.ret.get() + ",msg:" + localReportRsp.msg.get());
+        }
+      }
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(0);
+    catch (Throwable paramBundle)
+    {
+      QLog.e("QWalletGdtAdManager", 1, paramBundle, new Object[0]);
     }
   }
 }

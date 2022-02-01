@@ -1,31 +1,27 @@
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aaul
+class aaul
+  implements View.OnClickListener
 {
-  public abstract long a();
+  aaul(aaud paramaaud, bfrr parambfrr) {}
   
-  public abstract View a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void aq_();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c(long paramLong);
-  
-  public abstract void setHeaderBgColor(int paramInt);
-  
-  public abstract void setHeaderBgDrawable(Drawable paramDrawable);
-  
-  public abstract void setHeaderBgRes(int paramInt);
-  
-  public abstract void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
+    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_Aaud.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Bfrr.b);
+    this.jdField_a_of_type_Aaud.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    bdll.b(this.jdField_a_of_type_Aaud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_Aaud.b, String.valueOf(this.jdField_a_of_type_Aaud.jdField_a_of_type_Bfrq.a), "8020205751015455", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

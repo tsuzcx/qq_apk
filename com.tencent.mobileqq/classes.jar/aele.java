@@ -1,33 +1,38 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.QQPermissionCallback;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class aele
-  implements QQPermissionCallback
+  implements bixa
 {
-  public aele(JumpActivity paramJumpActivity, boolean paramBoolean) {}
+  public aele(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
-    bglp.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new aelf(this));
-    paramArrayOfString = new HashMap();
-    bctj.a(BaseApplication.getContext()).a("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("JumpAction", 1, "system share.doShare user grant");
-    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
-    paramArrayOfString = new HashMap();
-    bctj.a(BaseApplication.getContext()).a("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
+    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
+    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
+    anfz.a(this.a.app, "chat_history_confirm_del_msg");
+    paramDialog = this.a.app.getHandler(Conversation.class);
+    paramView = paramDialog.obtainMessage(1017);
+    paramView.obj = DiscussionInfoCardActivity.a(this.a);
+    paramView.arg1 = 3000;
+    paramDialog.sendMessage(paramView);
+    QQToast.a(this.a, 2, this.a.getString(2131690718), 0).a();
+    if (this.a.a != null) {
+      ((TextView)this.a.a.findViewById(2131378936)).setTextColor(Color.parseColor("#cccccc"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aele
  * JD-Core Version:    0.7.0.1
  */

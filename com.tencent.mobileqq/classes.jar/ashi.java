@@ -1,36 +1,44 @@
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.8;
+import java.util.List;
+import mqq.os.MqqHandler;
+
 public class ashi
+  implements asgp
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private int jdField_a_of_type_Int;
   
-  public ashi()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
-  }
+  public ashi(FavroamingManager.8 param8, List paramList) {}
   
-  public String toString()
+  public void a(int paramInt, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{SenderUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{SenderNickName: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{bEnter: ").append(this.jdField_a_of_type_Boolean).append("}");
-    localStringBuilder.append("{leaveChatType: ").append(this.jdField_a_of_type_Int).append("}");
-    localStringBuilder.append("{leftChatTime: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{matchExpired: ").append(this.jdField_c_of_type_Int).append("}");
-    localStringBuilder.append("{c2cExpiredTime: ").append(this.d).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.jdField_c_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{readyTs: ").append(this.jdField_b_of_type_Long).append("}");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int <= this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0.f();
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj.a(this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int) {
+      if (!ashd.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0))
+      {
+        paramString = (String)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+        ashd.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0, paramString, ashd.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0));
+      }
+    }
+    do
+    {
+      return;
+      paramString = ashd.p(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0).getHandler(ChatActivity.class);
+      if (paramString != null) {
+        paramString.obtainMessage(10).sendToTarget();
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj == null);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,27 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class aicg
-  implements bkmq
+  implements DialogInterface.OnKeyListener
 {
-  aicg(aibv paramaibv) {}
+  aicg(aibr paramaibr) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    aibv.a(this.a).setPullType(0);
-    aibv.a(this.a).c(aibv.g);
-    aibv.a(this.a, 0, this.a.a.a());
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
+    if (paramInt == 4)
+    {
+      this.a.n = true;
+      aibr.a(this.a).dismiss();
+    }
     return false;
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

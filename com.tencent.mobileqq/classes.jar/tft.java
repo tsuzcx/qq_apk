@@ -1,14 +1,16 @@
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class tft
-  extends tfs
+class tft
+  extends BroadcastReceiver
 {
-  public tft(String paramString)
-  {
-    super(-16777216, 0, 0, paramString);
-  }
+  tft(tfs paramtfs) {}
   
-  public void onClick(View paramView) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    this.a.a(paramContext, paramIntent);
+  }
 }
 
 

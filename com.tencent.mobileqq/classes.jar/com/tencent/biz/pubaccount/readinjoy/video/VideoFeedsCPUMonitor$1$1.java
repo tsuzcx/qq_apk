@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bgln;
+import bhlo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import oat;
+import ocd;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pha;
-import ryb;
-import ryc;
+import ozs;
+import row;
+import rox;
 
 public class VideoFeedsCPUMonitor$1$1
   implements Runnable
 {
-  public VideoFeedsCPUMonitor$1$1(ryc paramryc) {}
+  public VideoFeedsCPUMonitor$1$1(rox paramrox) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class VideoFeedsCPUMonitor$1$1
         Thread.sleep(10000L);
         localThread.start();
         l1 = System.currentTimeMillis();
-        l2 = ryb.a();
-        if (ryb.a().get() == 2)
+        l2 = row.a();
+        if (row.a().get() == 2)
         {
           l3 = System.currentTimeMillis();
-          ryb.b().getAndAdd(1);
+          row.b().getAndAdd(1);
           if (QLog.isColorLevel()) {
-            QLog.d(ryb.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
+            QLog.d(row.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
           }
           localJSONObject = new JSONObject();
         }
@@ -45,21 +45,21 @@ public class VideoFeedsCPUMonitor$1$1
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(ryb.a(), 2, "InterruptedException");
+        QLog.d(row.a(), 2, "InterruptedException");
         continue;
       }
       try
       {
         localJSONObject.put("result", String.valueOf(l2));
         localJSONObject.put("costTime", String.valueOf(l3 - l1));
-        localJSONObject.put("deviceModel", bgln.d());
-        localJSONObject.put("manufactureInfo", bgln.h());
-        localJSONObject.put("uin", pha.a());
-        oat.a(null, null, "0X8009576", "0X8009576", 0, 0, pha.a(), "1", "", localJSONObject.toString(), false);
+        localJSONObject.put("deviceModel", bhlo.d());
+        localJSONObject.put("manufactureInfo", bhlo.h());
+        localJSONObject.put("uin", ozs.a());
+        ocd.a(null, null, "0X8009576", "0X8009576", 0, 0, ozs.a(), "1", "", localJSONObject.toString(), false);
         if (localThread.isAlive()) {
           localThread.interrupt();
         }
-        ryb.a().set(0);
+        row.a().set(0);
         return;
       }
       catch (JSONException localJSONException)

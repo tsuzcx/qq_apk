@@ -1,22 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class athg
-  implements Cloneable
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public athg(FMActivity paramFMActivity) {}
   
-  public athg(athf paramathf) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
+    this.a.finish();
+  }
 }
 
 

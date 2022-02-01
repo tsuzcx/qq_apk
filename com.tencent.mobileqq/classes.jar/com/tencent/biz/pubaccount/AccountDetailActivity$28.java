@@ -1,33 +1,34 @@
 package com.tencent.biz.pubaccount;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.data.AccountDetail;
+import bhgr;
+import bhmq;
 import com.tencent.qphone.base.util.QLog;
 
 class AccountDetailActivity$28
   implements Runnable
 {
-  AccountDetailActivity$28(AccountDetailActivity paramAccountDetailActivity, AccountDetail paramAccountDetail, boolean paramBoolean) {}
+  AccountDetailActivity$28(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "updateDetailInfo");
-    }
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.isSyncLbs)) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    }
-    if (this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail)) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    try
     {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      int i = bhgr.a(this.this$0, 110.0F);
+      Bitmap localBitmap = bhmq.a(this.a, i, i);
+      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(bhmq.c(localBitmap, i, i));
+      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
       return;
     }
-    AccountDetailActivity.d(this.this$0, new AccountDetailActivity.28.1(this));
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, localException.toString());
+      }
+      localException.printStackTrace();
+    }
   }
 }
 

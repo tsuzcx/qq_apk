@@ -1,19 +1,30 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
 public class auuu
-  implements View.OnClickListener
 {
-  public auuu(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
+  public long a;
+  public long b;
   
-  public void onClick(View paramView)
+  public auuu(long paramLong1, long paramLong2)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public static auuu a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return null;
+    }
+    return new auuu(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
+    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
+    return localBundle;
   }
 }
 

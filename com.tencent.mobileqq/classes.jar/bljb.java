@@ -1,34 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-
-class bljb
-  extends RemoteCommand
+public abstract interface bljb
 {
-  bljb(blja paramblja, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if (paramBundle == null) {
-      paramBundle = null;
-    }
-    Bundle localBundle;
-    do
-    {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = blja.a(this.a, paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
-      }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
-  }
+  public abstract void onDismiss();
 }
 
 

@@ -1,98 +1,60 @@
-import android.util.Log;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
 public class asak
+  implements Manager
 {
-  public static int a;
-  private static asak jdField_a_of_type_Asak;
-  private Map<Integer, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private asbi jdField_a_of_type_Asbi;
+  private asbn jdField_a_of_type_Asbn;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private Object b = new Object();
   
-  public static asak a()
+  public asak(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_Asak == null) {}
-    try
-    {
-      if (jdField_a_of_type_Asak == null) {
-        jdField_a_of_type_Asak = new asak();
-      }
-      return jdField_a_of_type_Asak;
-    }
-    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public View a(int paramInt)
+  public asbi a()
   {
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))))
-    {
-      Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-      {
-        localObject = (View)((ArrayList)localObject).remove(0);
-        if (QLog.isColorLevel()) {
-          Log.d("EmotionPanelViewPool", "getView from pool : paneyType = " + paramInt);
-        }
-        return localObject;
-      }
+    if (this.jdField_a_of_type_Asbi != null) {
+      return this.jdField_a_of_type_Asbi;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelViewPool", 2, "destory");
-    }
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0))
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        ArrayList localArrayList = (ArrayList)((Map.Entry)localIterator.next()).getValue();
-        if (localArrayList != null) {
-          localArrayList.clear();
-        }
+      if (this.jdField_a_of_type_Asbi == null) {
+        this.jdField_a_of_type_Asbi = new asbi(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      asbi localasbi = this.jdField_a_of_type_Asbi;
+      return localasbi;
     }
   }
   
-  public void a(int paramInt, View paramView)
+  public asbn a()
   {
-    if (paramView == null) {}
-    for (;;)
+    if (this.jdField_a_of_type_Asbn != null) {
+      return this.jdField_a_of_type_Asbn;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      return;
-      ArrayList localArrayList;
-      if (this.jdField_a_of_type_JavaUtilMap == null)
-      {
-        this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-        localArrayList = new ArrayList();
-        localArrayList.add(paramView);
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
-        return;
+      if (this.jdField_a_of_type_Asbn == null) {
+        this.jdField_a_of_type_Asbn = new asbn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
-      {
-        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-        if ((localArrayList != null) && (!localArrayList.contains(paramView))) {
-          localArrayList.add(0, paramView);
-        }
-      }
-      while (QLog.isColorLevel())
-      {
-        Log.d("EmotionPanelViewPool", "relase view panelType = " + paramInt);
-        return;
-        localArrayList = new ArrayList();
-        localArrayList.add(0, paramView);
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
-      }
+      asbn localasbn = this.jdField_a_of_type_Asbn;
+      return localasbn;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Asbn != null) {
+      this.jdField_a_of_type_Asbn.b();
+    }
+    this.jdField_a_of_type_Asbn = null;
+    if (this.jdField_a_of_type_Asbi != null)
+    {
+      this.jdField_a_of_type_Asbi.a();
+      this.jdField_a_of_type_Asbi = null;
     }
   }
 }

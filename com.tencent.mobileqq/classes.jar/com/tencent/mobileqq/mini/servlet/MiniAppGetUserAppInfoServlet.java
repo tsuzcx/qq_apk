@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetUserAppInfoRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import android.content.Intent;
 import android.os.Bundle;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -60,7 +60,7 @@ public class MiniAppGetUserAppInfoServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetUserAppInfo");
-      paramPacket.putSendData(bguc.a((byte[])localObject1));
+      paramPacket.putSendData(bhuf.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

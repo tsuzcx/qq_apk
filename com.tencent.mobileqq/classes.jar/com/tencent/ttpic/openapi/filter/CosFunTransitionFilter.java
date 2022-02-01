@@ -39,8 +39,10 @@ public class CosFunTransitionFilter
   private final int backgroundMode2;
   private VideoFilterBase copyFilter = new VideoFilterBase("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private FaceFeatureTex dstFeature;
+  private boolean enableGAN = false;
   private boolean isInited = false;
   private Frame materialFrame;
+  int materialTex;
   private FaceFeatureTex srcFeature;
   private CrazyFaceDataTemplate template;
   private CFTransformFilterForTex transFilter;
@@ -60,9 +62,9 @@ public class CosFunTransitionFilter
       return;
       paramString = FaceOffUtil.getFaceBitmap(this.template.folderPath + File.separator + this.template.getFaceLayer(0).imagePath, this.MAX_SIZE.width, this.MAX_SIZE.height);
     } while (!BitmapUtils.isLegal(paramString));
-    paramInt1 = RendererUtils.createTexture(paramString);
+    this.materialTex = RendererUtils.createTexture(paramString);
     paramString.recycle();
-    this.materialFrame = new Frame(0, paramInt1, paramString.getWidth(), paramString.getHeight());
+    this.materialFrame = new Frame(0, this.materialTex, paramString.getWidth(), paramString.getHeight());
     this.isInited = true;
   }
   
@@ -135,10 +137,12 @@ public class CosFunTransitionFilter
       localCFFaceOffFilter.setFacePointsInfo(localCosFunParam.mUserFacePointsList, localCosFunParam.mWidth, localCosFunParam.mHeight, localFaceImageLayer2.faceTriangleID);
       BenchUtil.benchEnd("[CosFunTransitionFilter] processCos 1");
       BenchUtil.benchStart("[CosFunTransitionFilter] processCos 2");
-      localCFFaceOffFilter.RenderProcess(((Frame)localObject1).getTextureId(), localFrame.width, localFrame.height, -1, 0.0D, localFrame);
+      if (!this.enableGAN) {
+        localCFFaceOffFilter.RenderProcess(((Frame)localObject1).getTextureId(), localFrame.width, localFrame.height, -1, 0.0D, localFrame);
+      }
+      BenchUtil.benchEnd("[CosFunTransitionFilter] processCos 2");
       ((Frame)localObject1).clear();
       this.dstFeature.faceFeature = localCFFaceOffFilter.getFaceFeature();
-      BenchUtil.benchEnd("[CosFunTransitionFilter] processCos 2");
       i += 1;
       localObject1 = localFrame;
     }
@@ -261,9 +265,7 @@ public class CosFunTransitionFilter
     if (this.transFilter != null) {
       this.transFilter.clearGLSLSelf();
     }
-    if (this.materialFrame != null) {
-      RendererUtils.clearTexture(this.materialFrame.getTextureId());
-    }
+    RendererUtils.clearTexture(this.materialTex);
     FaceOffUtil.recycleCrazySkinMergeBitmap();
   }
   
@@ -291,7 +293,7 @@ public class CosFunTransitionFilter
     return (int)this.template.width;
   }
   
-  public void init(int paramInt1, int paramInt2, int paramInt3, List<PointF> paramList, double paramDouble)
+  public void init(int paramInt1, int paramInt2, int paramInt3, List<PointF> paramList, double paramDouble, boolean paramBoolean)
   {
     this.copyFilter.ApplyGLSLFilter();
     BenchUtil.benchStart("[CosFunTransitionFilter] preprocess");
@@ -317,6 +319,7 @@ public class CosFunTransitionFilter
     }
     BenchUtil.benchEnd("[CosFunTransitionFilter] processUserBitmap");
     BenchUtil.benchStart("[CosFunTransitionFilter] processCosFun");
+    this.enableGAN = paramBoolean;
     processCosFun();
     BenchUtil.benchEnd("[CosFunTransitionFilter] processCosFun");
     if (this.dstFeature.faceFeature != null)
@@ -329,6 +332,11 @@ public class CosFunTransitionFilter
   public boolean isInited()
   {
     return this.isInited;
+  }
+  
+  public void setMaterialFrame(Frame paramFrame)
+  {
+    this.materialFrame = paramFrame;
   }
 }
 

@@ -37,8 +37,8 @@ public class AppBrandRuntime
   private static final String TAG = "minisdk-start_AppBrandRuntime";
   public static final String VIEW_TAG = "MiniAppVideoPlayer";
   public static volatile boolean webviewDataDirectoryInited = false;
-  private List<String> LoadedAppServiceJsList = new ArrayList();
   public boolean isGettingScreenShot = false;
+  private List<String> loadedAppServiceJsList = new ArrayList();
   public MiniAppWorkerManager mMiniAppWorkerManager;
   
   public AppBrandRuntime(Context paramContext)
@@ -175,7 +175,7 @@ public class AppBrandRuntime
       QMLog.e("minisdk-start_AppBrandRuntime", "loadSubPkgAppService subPkgRoot is null.");
       return;
     }
-    if (this.LoadedAppServiceJsList.contains(paramString))
+    if (this.loadedAppServiceJsList.contains(paramString))
     {
       QMLog.e("minisdk-start_AppBrandRuntime", "loadSubPkgAppService has loaded.");
       return;

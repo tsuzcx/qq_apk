@@ -1,10 +1,28 @@
-public abstract interface lgi<T>
+public class lgi
 {
-  public abstract void onDownloadFinish(long paramLong, T paramT, boolean paramBoolean);
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public CharSequence b;
   
-  public abstract void onItemSelectedChanged(long paramLong, T paramT);
+  public lgi(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
+    this.b = paramCharSequence2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void onProgressUpdate(T paramT, int paramInt);
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public String toString()
+  {
+    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
+  }
 }
 
 

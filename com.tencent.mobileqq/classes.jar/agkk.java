@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class agkk
-  implements DialogInterface.OnClickListener
+public class agkk
 {
-  agkk(agki paramagki, ChatMessage paramChatMessage) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
+  ImageView c;
+  ImageView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Agki.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
-  }
+  public agkk(agkj paramagkj) {}
 }
 
 

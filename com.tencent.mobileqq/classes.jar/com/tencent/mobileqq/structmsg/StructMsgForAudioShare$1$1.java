@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.structmsg;
 
-import aidp;
-import bcwe;
+import ainh;
+import bdox;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import oat;
+import ocd;
 
 public class StructMsgForAudioShare$1$1
   implements Runnable
 {
-  public StructMsgForAudioShare$1$1(bcwe parambcwe, StructMsgForAudioShare paramStructMsgForAudioShare, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForAudioShare$1$1(bdox parambdox, StructMsgForAudioShare paramStructMsgForAudioShare, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
-    if (aidp.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    if (ainh.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
     for (int i = 1;; i = 0)
     {
-      oat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.uin, "0X80055C7", "0X80055C7", 0, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.msgId), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.mMsgAction, Integer.toString(i), false);
+      ocd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.uin, "0X80055C7", "0X80055C7", 0, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.msgId), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.mMsgAction, Integer.toString(i), false);
       return;
     }
   }

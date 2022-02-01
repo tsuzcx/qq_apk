@@ -1,37 +1,43 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class aegw
-  implements bkhw
+  implements bnsj
 {
-  public aegw(FriendProfileCardActivity paramFriendProfileCardActivity, bkho parambkho) {}
+  public aegw(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt.length)) {
+    int i = 0;
+    boolean bool;
+    Object localObject;
+    if (paramInt == 0)
+    {
+      this.a.b = true;
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
+      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
+      if (localObject != null) {
+        if (!bool) {
+          break label88;
+        }
+      }
+    }
+    label88:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      ((View)localObject).setVisibility(paramInt);
+      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
+      if (localObject != null)
+      {
+        paramInt = i;
+        if (bool) {
+          paramInt = 3;
+        }
+        ((FormSimpleItem)localObject).setBgType(paramInt);
+      }
       return;
-    }
-    switch (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[paramInt])
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Bkho.dismiss();
-        this.jdField_a_of_type_Bkho.a(null);
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
     }
   }
 }

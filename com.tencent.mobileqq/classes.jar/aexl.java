@@ -1,10 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class aexl
+  extends ayxn
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aexl(LoginInfoActivity paramLoginInfoActivity) {}
+  
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  {
+    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+  }
 }
 
 

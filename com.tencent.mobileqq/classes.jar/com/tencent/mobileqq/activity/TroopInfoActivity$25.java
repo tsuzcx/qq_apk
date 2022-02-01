@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bglf;
-import bglj;
+import bhlg;
+import bhlk;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -17,7 +17,7 @@ class TroopInfoActivity$25
   
   public void run()
   {
-    Object localObject1 = bglf.j(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+    Object localObject1 = bhlg.j(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin)))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
@@ -30,10 +30,10 @@ class TroopInfoActivity$25
       }
       return;
       Object localObject2 = null;
-      Object localObject3 = bglj.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      Object localObject3 = bhlk.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
       if (localObject3 == null)
       {
-        localObject3 = bglj.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+        localObject3 = bhlk.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
         localObject1 = localObject2;
         if (localObject3 != null)
         {

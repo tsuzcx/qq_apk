@@ -1,6 +1,10 @@
-public abstract interface agqu
+final class agqu
+  implements agql<agqt>
 {
-  public abstract void a();
+  public agqt a(agqi paramagqi)
+  {
+    return new agqt(paramagqi);
+  }
 }
 
 

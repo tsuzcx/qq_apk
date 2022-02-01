@@ -1,25 +1,9 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import rx.functions.Action1;
+import kotlin.Metadata;
 
-class balc
-  implements Action1<baky>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileSettingUtils;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class balc
 {
-  balc(balb parambalb, HashSet paramHashSet) {}
-  
-  public void a(baky parambaky)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabViewModel", 2, "ResourceNameOnClickListener subscribe call :" + parambaky);
-    }
-    if (TextUtils.equals(parambaky.a, "text_color"))
-    {
-      balb.a(this.jdField_a_of_type_Balb, parambaky, this.jdField_a_of_type_JavaUtilHashSet);
-      return;
-    }
-    balb.b(this.jdField_a_of_type_Balb, parambaky, this.jdField_a_of_type_JavaUtilHashSet);
-  }
+  public static final bald a = new bald(null);
 }
 
 

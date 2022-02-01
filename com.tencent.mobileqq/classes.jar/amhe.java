@@ -1,50 +1,53 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import java.io.File;
 
-class amhe
-  extends QQLruCache<String, ApolloBaseInfo>
+public class amhe
+  implements zqq
 {
-  amhe(amhd paramamhd, int paramInt1, int paramInt2, int paramInt3)
+  long jdField_a_of_type_Long;
+  amha jdField_a_of_type_Amha;
+  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public amhe(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, amha paramamha)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
+    this.jdField_a_of_type_Amha = paramamha;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public ApolloBaseInfo a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  public void onFailure(String paramString)
   {
-    if (paramApolloBaseInfo != null) {}
-    try
-    {
-      amhd.a(this.a).remove(Long.valueOf(Long.parseLong(paramApolloBaseInfo.uin)));
-      return (ApolloBaseInfo)super.put(paramString, paramApolloBaseInfo);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("ApolloManager", 1, localNumberFormatException, new Object[0]);
-      }
+    this.jdField_a_of_type_Amha.a(-12);
+    if (QLog.isColorLevel()) {
+      QLog.d("EncodeVideoTask", 2, "generate files|third step fail:" + paramString);
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString, ApolloBaseInfo paramApolloBaseInfo1, ApolloBaseInfo paramApolloBaseInfo2)
+  public void onFinish(boolean paramBoolean)
   {
-    super.entryRemoved(paramBoolean, paramString, paramApolloBaseInfo1, paramApolloBaseInfo2);
-    if (paramApolloBaseInfo1 != null) {}
-    try
-    {
-      if (amhd.a(this.a).size() < 1024) {
-        amhd.a(this.a).add(Long.valueOf(Long.parseLong(paramApolloBaseInfo1.uin)));
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("EncodeVideoTask", 2, "generate files|third step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
     }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("ApolloManager", 1, paramString, new Object[0]);
-      return;
+    if (paramBoolean) {
+      this.jdField_a_of_type_Amha.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
     }
-    catch (OutOfMemoryError paramString) {}
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart() {}
+  
+  public void onSuccess(String paramString)
+  {
+    zom.b(BaseApplication.getContext(), new File(this.b));
+    bhmi.d(this.jdField_a_of_type_JavaLangString);
+    amgx.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 3);
   }
 }
 

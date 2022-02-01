@@ -1,54 +1,45 @@
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-class atbb
-  implements aszc
+public class atbb
 {
-  atbb(atba paramatba, String paramString, atbj paramatbj) {}
+  public int a;
+  protected atag a;
+  protected atba a;
   
-  public void a(int paramInt, String paramString)
+  public atbb(atba paramatba, atag paramatag)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atba.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_Atba.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Atag = paramatag;
+    this.jdField_a_of_type_Atba = paramatba;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onEnd");
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    paramString2 = new Bundle();
-    paramString2.putString("_m_ForwardFileType", "2");
-    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Atba.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Atba.jdField_a_of_type_Long + "");
-    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Atba.c);
-    paramString2.putString("_m_ForwardDeadTime", "0");
-    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atba.e);
-    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atba.f);
-    paramString2.putString("_m_ForwardUuid", paramString1);
     if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atba.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onStart subinfo:" + paramInt);
     }
-    this.jdField_a_of_type_Atbj.a(paramString1, paramString2);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " start handle event " + paramInt1 + ", subEvent " + paramInt2);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onForceEnd");
+    }
   }
 }
 

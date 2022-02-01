@@ -1,18 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevj
-  implements View.OnClickListener
+  extends ResourcePluginListener
 {
-  public aevj(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public aevj(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void a(byte paramByte)
   {
-    this.a.a.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
+    }
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 

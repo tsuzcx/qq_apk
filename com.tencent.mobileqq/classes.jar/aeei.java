@@ -1,18 +1,33 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aeei
+class aeei
   implements View.OnClickListener
 {
-  public aeei(FontSettingActivity paramFontSettingActivity) {}
+  aeei(aeeg paramaeeg) {}
   
   public void onClick(View paramView)
   {
-    FontSettingActivity.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramView.getTag() instanceof String)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = (amnn)paramView.getTag();
+      if ((((amnn)localObject).a instanceof FileManagerEntity))
+      {
+        localObject = (FileManagerEntity)((amnn)localObject).a;
+        this.a.a((FileManagerEntity)localObject);
+      }
+      else if ((((amnn)localObject).a instanceof TencentDocData))
+      {
+        localObject = (TencentDocData)((amnn)localObject).a;
+        this.a.a((TencentDocData)localObject);
+      }
+    }
   }
 }
 

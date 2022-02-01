@@ -1,60 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atmz
-  implements aqck
+  implements View.OnClickListener
 {
-  private String a;
+  public atmz(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public atmz(String paramString)
+  public void onClick(View paramView)
   {
-    this.a = paramString;
-    if (bgmg.b(this.a)) {
-      this.a = new File(this.a).getAbsolutePath();
-    }
-  }
-  
-  private String a()
-  {
-    try
+    Object localObject1 = paramView.getTag();
+    FileInfo localFileInfo;
+    if ((localObject1 instanceof atnh))
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      localObject1 = (atnh)paramView.getTag();
+      localFileInfo = (FileInfo)((atnh)localObject1).jdField_a_of_type_JavaLangObject;
+      localObject1 = ((atnh)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (!bgmg.b(this.a))
+    for (;;)
     {
-      QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
-      return null;
+      if ((paramView.getId() == 2131366604) && (QfileBaseLocalFileTabView.b(this.a))) {
+        bdll.b(QfileBaseLocalFileTabView.b(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      }
+      Object localObject2;
+      if (localFileInfo != null)
+      {
+        localObject2 = this.a;
+        if (paramView.getId() != 2131366604) {
+          break label245;
+        }
+      }
+      label245:
+      for (boolean bool = true;; bool = false)
+      {
+        ((QfileBaseLocalFileTabView)localObject2).a(localFileInfo, (View)localObject1, bool);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (!(localObject1 instanceof atjl)) {
+          break label250;
+        }
+        localObject2 = (atjl)paramView.getTag();
+        localFileInfo = (FileInfo)((atjl)localObject2).jdField_a_of_type_JavaLangObject;
+        localObject1 = ((atjl)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+        if ((this.a.a.g()) || (this.a.a.h()))
+        {
+          SharedPreferences.Editor localEditor = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
+          localEditor.putInt("GROUP", ((atjl)localObject2).b);
+          localEditor.putInt("CHILD", (((atjl)localObject2).jdField_a_of_type_Int + 1) / 4);
+          localEditor.commit();
+        }
+        break;
+      }
+      label250:
+      localObject1 = null;
+      localFileInfo = null;
     }
-    aqcs localaqcs = new aqcs();
-    localaqcs.a(17039360);
-    String str = atwt.b(5, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localaqcs.a(str);
-    str = atvo.a(this.a);
-    localaqcs.b(str);
-    localaqcs.c(atwl.a(atvo.a(this.a)));
-    int i = atvo.a(atvo.a(str));
-    localaqcs.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localaqcs.a(str.getBytes());
-    }
-    return localaqcs.a();
   }
 }
 

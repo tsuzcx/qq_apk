@@ -1,95 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
 import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(14)
 public class aqqe
-  extends aqkz<aqqc>
+  implements Camera.FaceDetectionListener
 {
-  @NonNull
-  public static aqqc a()
-  {
-    aqqc localaqqc2 = (aqqc)aqlk.a().a(458);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localaqqc2);
-    }
-    aqqc localaqqc1 = localaqqc2;
-    if (localaqqc2 == null) {
-      localaqqc1 = new aqqc();
-    }
-    return localaqqc1;
-  }
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqpt jdField_a_of_type_Aqpt;
+  private final aqpx jdField_a_of_type_Aqpx;
   
-  @NonNull
-  public aqqc a(int paramInt)
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
-    }
-    return new aqqc();
-  }
-  
-  @Nullable
-  public aqqc a(aqlg[] paramArrayOfaqlg)
-  {
-    return aqqc.a(paramArrayOfaqlg);
-  }
-  
-  public void a(aqqc paramaqqc)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramaqqc.toString());
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(34))
-      {
-        ((aiyr)((QQAppInterface)localObject).getManager(34)).a = paramaqqc;
-        if (QLog.isColorLevel()) {
-          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
-        }
-      }
-    }
-  }
-  
-  public Class<aqqc> clazz()
-  {
-    return aqqc.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 458;
+    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqe
  * JD-Core Version:    0.7.0.1
  */

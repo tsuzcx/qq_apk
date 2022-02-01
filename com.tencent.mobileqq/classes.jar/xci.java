@@ -1,44 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xci
-  extends xdt
+  extends wpa<xeg>
 {
-  private String a;
+  private static final String b = wnu.a("StorySvc.video_show_delete");
+  public String a;
   
-  public xci()
+  public xci(String paramString)
   {
-    a(false, true);
+    this.a = paramString;
   }
   
-  public void a()
+  public String a()
   {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    bdzi localbdzi = localQQAppInterface.a();
-    bdzn localbdzn = new bdzn();
-    localbdzn.jdField_a_of_type_Ayyt = new xcj(this);
-    localbdzn.i = this.a;
-    localbdzn.jdField_a_of_type_Boolean = true;
-    localbdzn.jdField_b_of_type_Int = 196610;
-    localbdzn.jdField_b_of_type_JavaLangString = localQQAppInterface.c();
-    localbdzn.c = "";
-    localbdzn.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localbdzi.a(localbdzn);
+    return b;
   }
   
-  protected void a(Map<String, Object> paramMap)
+  public xeg a(byte[] paramArrayOfByte)
   {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
-      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
+    try
+    {
+      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
+      return new xeg(localRspDeleteVideo);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public boolean a()
+  protected byte[] a()
   {
-    return !TextUtils.isEmpty(this.a);
+    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
+    localReqDeleteVideo.vid_list.addAll(localArrayList);
+    return localReqDeleteVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
   }
 }
 

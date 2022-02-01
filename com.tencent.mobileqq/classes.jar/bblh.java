@@ -1,10 +1,9 @@
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
 
-class bblh
+public class bblh
+  extends bble
 {
-  long jdField_a_of_type_Long;
-  DiscussionMemberInfo jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
-  String jdField_a_of_type_JavaLangString;
+  public bblh(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, boolean paramBoolean) {}
 }
 
 

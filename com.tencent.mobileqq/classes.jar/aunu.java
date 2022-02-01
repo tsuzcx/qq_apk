@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
 
-class aunu
-  implements View.OnClickListener
+public class aunu
 {
-  aunu(aunt paramaunt, String paramString, View paramView) {}
+  static Executor a;
   
-  public void onClick(View paramView)
+  static
   {
-    SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aunt.a.getActivity(), this.jdField_a_of_type_AndroidViewView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+    localThreadPoolParams.poolThreadName = "fileassistant_pool";
+    localThreadPoolParams.corePoolsize = 2;
+    localThreadPoolParams.maxPooolSize = 2;
+    localThreadPoolParams.priority = 8;
+    localThreadPoolParams.queue = new LinkedBlockingQueue();
+    localThreadPoolParams.keepAliveTime = 10;
+    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+  }
+  
+  public static Executor a()
+  {
+    return a;
   }
 }
 

@@ -1,32 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-
-public class avqu
-  extends WebViewPlugin
+class avqu
+  extends aocj
 {
-  public static final String a;
-  protected aanz a;
+  avqu(avqr paramavqr) {}
   
-  static
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = avqu.class.getSimpleName();
+    this.a.a(paramLong);
   }
   
-  public avqu()
+  protected void a(boolean paramBoolean, String paramString, long paramLong, aocg paramaocg)
   {
-    this.mPluginNameSpace = "ftssearch";
-    this.jdField_a_of_type_Aanz = aanz.a();
-    this.jdField_a_of_type_Aanz.a();
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
-    while ("ftssearch".equals(paramString2)) {
-      return false;
-    }
-    return false;
+    this.a.a(paramLong);
   }
 }
 

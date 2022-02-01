@@ -54,6 +54,12 @@ public class ActivatePageAdapter
     notifyDataSetChanged();
   }
   
+  public void a(ActivateBasePage paramActivateBasePage, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramActivateBasePage);
+    notifyDataSetChanged();
+  }
+  
   public void b()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -77,14 +83,24 @@ public class ActivatePageAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ActivatePageAdapter", 4, "destroy item");
     }
-    paramObject = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramObject.b();
-    paramViewGroup.removeView(paramObject);
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)
+    {
+      ActivateBasePage localActivateBasePage = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if ((localActivateBasePage instanceof ReminderCardItemPage)) {
+        localActivateBasePage.b();
+      }
+    }
+    paramViewGroup.removeView((View)paramObject);
   }
   
   public int getCount()
   {
     return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)

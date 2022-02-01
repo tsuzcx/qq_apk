@@ -1,35 +1,41 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
-public class awum
-  implements awsv
+class awum
+  implements awtp
 {
-  public awum(MultiCardFragment paramMultiCardFragment) {}
+  awum(awuj paramawuj) {}
   
-  public void a()
-  {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).a();
-    }
-  }
+  public void a(LocationRoom.Venue paramVenue) {}
   
-  public void a(int paramInt)
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
   {
-    if (MultiCardFragment.a(this.a) != null)
+    if (paramList != null)
     {
-      MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      MultiCardFragment.a(this.a).setScrollState(2);
-      MultiCardFragment.a(this.a).fling(-paramInt);
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
+      {
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.a.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bhmq.c(localBitmap, 16, 16);
+          awuj.a(this.a).a(paramList, localBitmap);
+        }
+      }
     }
   }
   
-  public boolean a()
-  {
-    if (MultiCardFragment.a(this.a) != null) {
-      return MultiCardFragment.a(this.a).a();
-    }
-    return true;
-  }
+  public void a(boolean paramBoolean, Point paramPoint) {}
+  
+  public void a(boolean paramBoolean, awtq paramawtq) {}
 }
 
 

@@ -1,18 +1,21 @@
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import javax.annotation.Nullable;
+import com.tencent.mobileqq.persistence.notColumn;
 
-class tma
-  implements tlz
+public class tma
 {
-  public InputStream a(@Nullable InputStream paramInputStream)
-  {
-    return paramInputStream;
-  }
-  
-  public void a() {}
-  
-  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
+  @notColumn
+  public int a;
+  @notColumn
+  public long a;
+  @notColumn
+  public boolean a;
+  @notColumn
+  public int b;
+  @notColumn
+  public boolean b;
+  @notColumn
+  public int c;
+  @notColumn
+  public boolean c;
 }
 
 

@@ -2,15 +2,15 @@ package com.tencent.avgame.ui;
 
 import android.view.KeyEvent;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
-import nfr;
+import nhm;
 
 public class GameBaseFragment
   extends ReportV4Fragment
 {
-  public nfr a()
+  public nhm a()
   {
-    if ((getActivity() != null) && ((getActivity() instanceof nfr))) {
-      return (nfr)getActivity();
+    if ((getActivity() != null) && ((getActivity() instanceof nhm))) {
+      return (nhm)getActivity();
     }
     return null;
   }

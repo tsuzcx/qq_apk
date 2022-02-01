@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.tfs.mini;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -38,11 +38,11 @@ public class BaselibLoadAsyncTask
       try
       {
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 10, null, null, null, 0);
-        String str = StorageUtil.getPreference().getString("version", "1.17.0.00206");
-        if ((!BaseLibInfo.needUpdateVersion("1.17.0.00206", str)) && ((TextUtils.isEmpty(paramString)) || (BaseLibManager.verifyBaselib(new File(paramString))))) {
+        String str = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+        if ((!BaseLibInfo.needUpdateVersion("1.18.0.00132", str)) && ((TextUtils.isEmpty(paramString)) || (BaseLibManager.verifyBaselib(new File(paramString))))) {
           break label384;
         }
-        QLog.e("miniapp-start", 1, "download baselib invalid! use assert baselib. download_version=" + str + " assert_version=" + "1.17.0.00206");
+        QLog.e("miniapp-start", 1, "download baselib invalid! use assert baselib. download_version=" + str + " assert_version=" + "1.18.0.00132");
         i = 0;
         if ((!isBaseLibInit()) && (i != 0))
         {
@@ -79,7 +79,7 @@ public class BaselibLoadAsyncTask
       }
       finally {}
       return;
-      onTaskFailed(-3, anni.a(2131699819));
+      onTaskFailed(-3, anzj.a(2131699926));
       continue;
       label384:
       int i = 1;
@@ -95,9 +95,9 @@ public class BaselibLoadAsyncTask
       return;
     }
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-    String str2 = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+    String str2 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
     QLog.i("miniapp-start", 1, "execute baseLibLoad task. url=" + str1 + " version=" + str2);
-    if ("1.17.0.00206".equals(str2))
+    if ("1.18.0.00132".equals(str2))
     {
       QLog.e("miniapp-start", 1, "current is default version:" + str2);
       mBaseLibInfo = new BaseLibInfo();
@@ -133,8 +133,8 @@ public class BaselibLoadAsyncTask
     if (mBaseLibInfo == null)
     {
       str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-      str2 = StorageUtil.getPreference().getString("version", "1.17.0.00206");
-      if (!"1.17.0.00206".equals(str2)) {
+      str2 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+      if (!"1.18.0.00132".equals(str2)) {
         break label69;
       }
       mBaseLibInfo = new BaseLibInfo();

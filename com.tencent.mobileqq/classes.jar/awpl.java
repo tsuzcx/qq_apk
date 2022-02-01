@@ -1,36 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-public class awpl
-  implements biea
+public final class awpl
+  implements Parcelable.Creator<LocationRoom.Venue>
 {
-  public awpl(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
+  public LocationRoom.Venue a(Parcel paramParcel)
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      awqu.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(awnr.c) });
-      awql.a().c();
-      if (!TextUtils.isEmpty(this.a.a)) {
-        break label93;
-      }
-      this.a.a(this.a.getActivity());
-      if (this.a.b != 2) {
-        break label104;
-      }
-      awqs.a("0X800A282");
-    }
-    label93:
-    label104:
-    while (!awnr.c)
-    {
-      return;
-      this.a.onBackEvent();
-      break;
-    }
-    awqs.a("0X800A266", 4);
+    return new LocationRoom.Venue(paramParcel);
+  }
+  
+  public LocationRoom.Venue[] a(int paramInt)
+  {
+    return new LocationRoom.Venue[paramInt];
   }
 }
 

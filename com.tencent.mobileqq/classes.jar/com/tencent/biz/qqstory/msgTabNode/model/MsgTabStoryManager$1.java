@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import java.util.ArrayList;
-import wsl;
+import wwg;
 
 public class MsgTabStoryManager$1
   implements Runnable
 {
-  public MsgTabStoryManager$1(wsl paramwsl, ArrayList paramArrayList, boolean paramBoolean) {}
+  public MsgTabStoryManager$1(wwg paramwwg, ArrayList paramArrayList, boolean paramBoolean) {}
   
   public void run()
   {
-    wsl.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean);
+    wwg.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean);
   }
 }
 

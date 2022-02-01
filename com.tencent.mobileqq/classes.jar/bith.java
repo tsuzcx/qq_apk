@@ -1,8 +1,14 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 public abstract interface bith
+  extends biod
 {
-  public abstract void a();
+  public abstract View a();
   
-  public abstract void a(String paramString, byte[] paramArrayOfByte);
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 

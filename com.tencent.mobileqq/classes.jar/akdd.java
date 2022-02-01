@@ -1,90 +1,27 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.List;
 
 public class akdd
-  extends bhzk
+  implements bliz
 {
-  private akdd(CountryActivity paramCountryActivity) {}
+  public akdd(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, blir paramblir) {}
   
-  public int a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return 2131559551;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((bgod)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((bgod)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return ((bgod)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((bgod)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bgod localbgod = (bgod)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
+    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
+    if ((paramView == null) || (paramView.isEmpty())) {}
+    do
     {
-      if (paramView != null) {
-        break label121;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
-    }
-    label121:
-    for (;;)
-    {
-      ((TextView)paramView).setText(localbgod.jdField_a_of_type_JavaLangString);
-      for (;;)
-      {
-        paramView.setVisibility(0);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = CountryActivity.a(paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        CountryActivity.a(localView, localbgod);
-        paramView = localView;
-      }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+      return;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(paramView);
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new akde(this));
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
+    } while (!this.jdField_a_of_type_Blir.isShowing());
+    this.jdField_a_of_type_Blir.dismiss();
   }
 }
 

@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akpo
-  implements View.OnClickListener
+class akpo
+  implements DialogInterface.OnClickListener
 {
-  public akpo(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  akpo(akpn paramakpn) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView instanceof TextView)) {
-      KuaKuaHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

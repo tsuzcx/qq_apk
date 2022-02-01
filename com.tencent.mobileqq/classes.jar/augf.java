@@ -1,39 +1,23 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class augf
-  extends ankx
+  implements View.OnClickListener
 {
-  augf(aufz paramaufz) {}
+  augf(aufz paramaufz, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "updateDiscussionInfo start: isSuccess=" + paramBoolean);
-    }
-    String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    paramObject = (ArrayList)paramObject;
-    int i = paramObject.indexOf(str);
-    if (i != -1)
-    {
-      paramObject = (Boolean)paramObject.get(i + 1);
-      if ((paramBoolean) && (paramObject.booleanValue()))
-      {
-        paramObject = ((ankw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(str);
-        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_Bgpa != null)) {
-          this.a.jdField_a_of_type_Bgpa.setTitle(anni.a(2131703523) + augo.g + paramObject.discussionName);
-        }
-      }
-    }
+    bdll.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    auoo.a(this.jdField_a_of_type_Aufz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aufz.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     augf
  * JD-Core Version:    0.7.0.1
  */

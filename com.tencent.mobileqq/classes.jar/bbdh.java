@@ -1,17 +1,8 @@
-class bbdh
-  implements bhai
+import com.tencent.mobileqq.remind.widget.WheelView;
+
+public abstract interface bbdh
 {
-  bbdh(bbdg parambbdg) {}
-  
-  public void a()
-  {
-    this.a.l();
-    this.a.h();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
+  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
 }
 
 

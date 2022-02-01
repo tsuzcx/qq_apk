@@ -1,23 +1,24 @@
-import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.27.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class swq
-  implements InvocationHandler
+final class swq
+  extends qdl
 {
-  public swq(FastWebActivity.27.2 param2) {}
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  swq(int paramInt1, int paramInt2, int paramInt3, String paramString, ArticleInfo paramArticleInfo)
   {
-    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    FastWebActivity.a(this.a.a.a).setVisibility(8);
-    QLog.d("FastWebActivity", 1, "open web page, set activity transparent");
-    return null;
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onClick(@NonNull View paramView)
+  {
+    ozs.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent()))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clickArea = 11;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clickJumpTarget = qam.a(this.jdField_a_of_type_JavaLangString, "-1");
+      ozs.b(paramView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    }
   }
 }
 

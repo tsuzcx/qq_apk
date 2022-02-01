@@ -1,9 +1,27 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bfpo
+class bfpo
+  extends bfpu
 {
-  public abstract void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle);
+  bfpo(bfpn parambfpn) {}
+  
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  {
+    if (!this.a.a.this$0.a) {}
+    do
+    {
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    return;
+    bfpj.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+  }
 }
 
 

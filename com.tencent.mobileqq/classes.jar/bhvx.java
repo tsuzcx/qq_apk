@@ -1,18 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 
-public class bhvx
-  implements View.OnClickListener
+public abstract interface bhvx
 {
-  public bhvx(CustomedTabWidget paramCustomedTabWidget) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.setCurrentTab(this.a.indexOfChild(paramView));
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat);
 }
 
 

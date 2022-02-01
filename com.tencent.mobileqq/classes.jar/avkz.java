@@ -1,40 +1,15 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
-final class avkz
-  implements Callable<Bundle>
+public class avkz
+  implements SDKInitListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<avkt> jdField_a_of_type_MqqUtilWeakReference;
-  private final String b;
+  public avkz(GameCenterVideoViewController paramGameCenterVideoViewController) {}
   
-  avkz(avkt paramavkt, String paramString1, String paramString2)
+  public void onSDKInited(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramavkt);
-  }
-  
-  public Bundle a()
-  {
-    Object localObject = (avkt)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    Bundle[] arrayOfBundle = new Bundle[1];
-    if (localObject != null)
-    {
-      avha localavha = new avha();
-      CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      localavha.a(((avkt)localObject).a, this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new avla(this, localavha, arrayOfBundle, localCountDownLatch));
-      localCountDownLatch.await();
-      return arrayOfBundle[0];
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isSuccess", false);
-    ((Bundle)localObject).putInt("code", -1000);
-    arrayOfBundle[0] = localObject;
-    return arrayOfBundle[0];
+    QLog.d("GameCenterVideoViewController", 4, "onSDKInited result:" + paramBoolean);
   }
 }
 

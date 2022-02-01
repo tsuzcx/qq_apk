@@ -1,20 +1,16 @@
-import android.os.Bundle;
+import java.util.ArrayList;
 
-class bisb
-  implements bivi
+public class bisb
 {
-  bisb(bisa parambisa) {}
+  public static int a;
+  public static ArrayList<String> a;
+  public static boolean a;
+  public static boolean b;
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    bisy.b("DownloadManagerV2", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("PackageName", paramString1);
-    localBundle.putString("Code", paramString2);
-    localBundle.putInt("VersionCode", paramInt);
-    localBundle.putBoolean("IsSuccess", paramBoolean);
-    localBundle.putAll(paramBundle);
-    bisa.a(this.a, localBundle);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Int = -1;
   }
 }
 

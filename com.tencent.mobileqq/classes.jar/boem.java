@@ -1,80 +1,68 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.15.1;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.15.2;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.15.3;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.api.standard.AEModuleConfig;
+import com.tencent.aekit.api.standard.AEModuleConfig.Builder;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.aekit.openrender.AEOpenRenderConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.sveffects.SLog;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openai.ttpicmodule.AEGenderDetector;
+import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
+import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.openapi.ttpicmodule.AECatDetector;
+import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
+import com.tencent.ttpic.openapi.ttpicmodule.module_hair_segment.PTHairSegmenter;
+import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
+import com.tencent.ttpic.openapi.ttpicmodule.module_sky_segment.PTSkySegmenter;
+import com.tencent.ttpic.openapi.util.CfConfig;
+import com.tencent.ttpic.video.AECoderFactory;
 
 public class boem
-  implements boce
 {
-  public boem(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  private static boolean a;
   
-  public void a(int paramInt, bode parambode)
+  public static boolean a()
   {
-    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
-      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.15.1(this, parambode));
+    if (a) {
+      return true;
     }
-    if (paramInt == 0)
-    {
-      bnzb.b(AEEditorImageEditFragment.e(), "onAIFilterApplySuccess");
-      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.15.3(this));
-      if (AEEditorImageEditFragment.a(this.a) != null) {
-        break label107;
-      }
+    if (!bork.a(borf.b)) {
+      return false;
     }
-    label107:
-    bodj localbodj;
-    do
+    if (!b())
     {
-      do
-      {
-        return;
-        bnzb.b(AEEditorImageEditFragment.e(), "onAIFilterAppliedFailed:" + paramInt);
-        ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.15.2(this));
-        break;
-      } while (parambode == null);
-      AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.b(this.a).get(AEEditorImageEditFragment.a(this.a)), parambode);
-      AEEditorImageEditFragment.a(this.a).put(String.valueOf(AEEditorImageEditFragment.a(this.a)), this.a.a(parambode));
-      localbodj = (bodj)parambode;
-    } while (localbodj == null);
-    AEEditorImageEditFragment.a(this.a).a(AEEditorImageEditFragment.a(this.a), parambode);
-    AEEditorImageEditFragment.a(this.a).resetAEKitModelForAI(AEEditorImageEditFragment.a(this.a), localbodj.jdField_b_of_type_JavaLangString, localbodj.jdField_a_of_type_Float, localbodj.jdField_a_of_type_JavaUtilHashMap, (int)(localbodj.c * 100.0F), localbodj.jdField_b_of_type_Float);
-    this.a.a(new String[] { "智能滤镜label", localbodj.jdField_a_of_type_JavaLangString, "智能滤镜errCode", String.valueOf(paramInt) });
-    parambode = "none";
-    Iterator localIterator = NewEnhanceCategories.newEnhanceTypes.iterator();
-    if (localIterator.hasNext())
-    {
-      NewEnhanceCategories localNewEnhanceCategories = (NewEnhanceCategories)localIterator.next();
-      if (!localNewEnhanceCategories.serverLabel.equals(localbodj.jdField_a_of_type_JavaLangString)) {
-        break label425;
-      }
-      parambode = localNewEnhanceCategories.filterType;
+      SLog.e("AEKitForQQ", "sdk version Limited!");
+      return false;
     }
-    label425:
-    for (;;)
-    {
-      break;
-      bnyl.a().a().jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), "effect_aieffect_" + parambode);
-      bnyl.a().a().b.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), Float.valueOf(-1.0F));
-      AEEditorImageEditFragment.a(this.a).a(AEEditorImageEditFragment.a(this.a), "effect_aieffect");
-      return;
-    }
+    blfp.a();
+    String str = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    SharedPreferences localSharedPreferences = bozz.a().a();
+    AEOpenRenderConfig.setEnableStrictMode(false);
+    AEModule.initialize(localBaseApplication, AEModuleConfig.newBuilder().setLoadSo(false).setLutDir(str).setModelDir(str).setSoDir(str).setAuthMode(1).setPreferences(localSharedPreferences).setEnableDebug(false).setFramebufferFetchEnable(false).setEnableResourceCheck(false).setEnableProfiler(false).setEnableDefaultBasic3(false).build());
+    AECoderFactory.setAEDecoder(new boen());
+    AECoderFactory.setAEEncoder(new boeo());
+    AIManager.registerDetector(AEHandDetector.class);
+    AIManager.registerDetector(AECatDetector.class);
+    AIManager.registerDetector(AEGenderDetector.class);
+    AIManager.registerDetector(PTEmotionDetector.class);
+    AIManager.registerDetector(PTHairSegmenter.class);
+    AIManager.registerDetector(PTSkySegmenter.class);
+    AIManager.registerDetector(PTHumanSegmenter.class);
+    dov.com.qq.im.ae.data.AEMaterialConfigParser.a = OfflineConfig.getPhonePerfLevel();
+    CfConfig.setDecryptListener(new boep());
+    a = true;
+    return true;
   }
   
-  public void aS_()
+  public static boolean b()
   {
-    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
-      this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.a();
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, "资源下载中，请稍后再试", 0).a();
+    return (AEModule.isAeKitSupportVersion()) && (Build.VERSION.SDK_INT >= 21);
   }
 }
 

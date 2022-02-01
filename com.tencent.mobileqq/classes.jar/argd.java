@@ -1,32 +1,19 @@
-import android.support.v4.util.LruCache;
-
-class argd
-  extends LruCache<String, T>
+public class argd
 {
-  argd(argc paramargc, int paramInt)
-  {
-    super(paramInt);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  protected int a(String paramString, T paramT)
+  public String toString()
   {
-    int i;
-    if (paramT == null) {
-      i = 0;
-    }
-    int j;
-    do
-    {
-      return i;
-      j = argc.a(this.a, paramT);
-      i = j;
-    } while (j != 0);
-    return this.a.a(paramT);
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    localStringBuilder.append("nickName:").append(this.a).append(",headID:").append(this.b).append(",headURL:").append(this.c).append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argd
  * JD-Core Version:    0.7.0.1
  */

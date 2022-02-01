@@ -1,69 +1,83 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.widget.SimpleTextView;
 
-public final class blpy
+public abstract class blpy
+  extends blpv
 {
-  public static int a(Context paramContext, int paramInt)
+  protected final int a;
+  protected final int[] b;
+  protected final int[] c;
+  protected final int[] d;
+  protected final int[] e;
+  
+  public blpy(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "type", -1);
+    super(paramInt1, paramInt2);
+    this.e = paramArrayOfInt1;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.b = paramArrayOfInt2;
+    this.c = paramArrayOfInt3;
+    this.d = paramArrayOfInt4;
   }
   
-  public static long a(Context paramContext)
+  public View a(int paramInt, Object paramObject, blpx paramblpx, View.OnClickListener paramOnClickListener)
   {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), -1L);
+    Object localObject2 = null;
+    paramObject = null;
+    Object localObject1 = paramObject;
+    if (paramblpx != null)
+    {
+      localObject1 = paramObject;
+      if (paramblpx.jdField_a_of_type_Int >= 0)
+      {
+        if (paramblpx.b >= 0) {
+          break label35;
+        }
+        localObject1 = paramObject;
+      }
+    }
+    label35:
+    int i;
+    int j;
+    int k;
+    do
+    {
+      return localObject1;
+      paramObject = localObject2;
+      if ((paramblpx.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
+        paramObject = (SimpleTextView)paramblpx.jdField_a_of_type_AndroidViewView;
+      }
+      i = this.c[paramblpx.b];
+      j = this.d[paramblpx.b];
+      k = this.b[paramblpx.b];
+      localObject1 = paramObject;
+    } while (paramObject == null);
+    paramObject.setVisibility(0);
+    paramObject.setText(paramObject.getContext().getResources().getString(i));
+    paramObject.setBackgroundResource(j);
+    paramObject.setId(k);
+    paramObject.setTag("tag_swip_icon_menu_item");
+    paramObject.setTag(-2, Integer.valueOf(i));
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    paramObject.setContentDescription(paramObject.getResources().getString(i));
+    paramObject.setOnClickListener(paramOnClickListener);
+    paramblpx.c = this.e[paramblpx.jdField_a_of_type_Int];
+    paramblpx.d = this.jdField_a_of_type_Int;
+    return paramObject;
   }
   
-  public static String a(Context paramContext)
+  public View a(Context paramContext, int paramInt)
   {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getString("QR_LOCAL_BOOK_CONFIG" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "");
-  }
-  
-  public static String a(Context paramContext, int paramInt)
-  {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", "");
-  }
-  
-  public static void a(Context paramContext)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), System.currentTimeMillis()).apply();
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt1 + "type", paramInt2).apply();
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", paramString).apply();
-  }
-  
-  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", paramBoolean).apply();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putString("QR_LOCAL_BOOK_CONFIG" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "").apply();
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("USE_ENTRY_CONTROL", paramBoolean).apply();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("USE_ENTRY_CONTROL", false);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", false);
+    paramContext = new SimpleTextView(paramContext);
+    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.e[paramInt], this.jdField_a_of_type_Int));
+    paramContext.setGravity(17);
+    paramContext.setTextSize(16.0F);
+    paramContext.setTextColor(-1);
+    return paramContext;
   }
 }
 

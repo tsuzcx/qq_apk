@@ -1,18 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.widget.ListView;
 
-class agkr
-  implements bkij
+public abstract class agkr
 {
-  agkr(agkq paramagkq) {}
+  public int a;
+  public AIOAnimationConatiner a;
+  public ListView a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public agkr(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
-    paramAdapterView = (ajyc)agkq.a(this.a).a.getItem(paramInt - 1);
-    agkq.a(this.a, paramAdapterView);
-    agkq.a(this.a).dismiss();
-    bcst.b(agkq.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(Object... paramVarArgs);
+  
+  public void b() {}
+  
+  public abstract void c();
+  
+  public void d()
+  {
+    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import zlx;
+import zps;
 
 class ReadInJoyAtlasCommentFragment$2
   implements Runnable
@@ -13,8 +13,8 @@ class ReadInJoyAtlasCommentFragment$2
   {
     if ((!this.this$0.a) && (this.this$0.getView() != null))
     {
-      int i = this.this$0.getView().getHeight() - zlx.e(this.this$0.getActivity());
-      View localView = this.this$0.getView().findViewById(2131376027);
+      int i = this.this$0.getView().getHeight() - zps.e(this.this$0.getActivity());
+      View localView = this.this$0.getView().findViewById(2131376167);
       if (localView != null)
       {
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import bcst;
+import bdll;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
 
@@ -14,9 +14,9 @@ class PhotoListPanel$4
     if ((!((ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first).isEmpty()) || (!((ArrayList)this.jdField_a_of_type_ComTencentUtilPair.second).isEmpty()))
     {
       this.this$0.a(this.jdField_a_of_type_ComTencentUtilPair, this.jdField_a_of_type_Boolean);
-      bcec.b = System.currentTimeMillis();
+      bcwu.b = System.currentTimeMillis();
     }
-    bcst.b(null, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, "", "");
+    bdll.b(null, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, "", "");
   }
 }
 

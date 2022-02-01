@@ -1,33 +1,36 @@
 package com.tencent.avgame.gameroom.video;
 
-import leo;
-import mxl;
-import ncp;
-import ndt;
-import ned;
+import lev;
+import myk;
+import nec;
+import nfm;
+import nfw;
 
 public class AVGameControlUIImpl$2$1
   implements Runnable
 {
-  public AVGameControlUIImpl$2$1(ncp paramncp) {}
+  public AVGameControlUIImpl$2$1(nec paramnec) {}
   
   public void run()
   {
     if (this.a.a.a()) {
       return;
     }
-    ned localned = ndt.b().a();
-    if (localned != null) {
-      localned.a(this.a.a.a);
+    nfw localnfw = nfm.b().a();
+    if (localnfw != null) {
+      localnfw.a(this.a.a.jdField_a_of_type_Ner);
+    }
+    if (this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager != null) {
+      this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager.a();
     }
     AVGameControlUIImpl.a(this.a.a);
     AVGameControlUIImpl.b(this.a.a);
     AVGameControlUIImpl.c(this.a.a);
-    if (leo.b() == 1) {}
+    if (lev.b() == 1) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool2 = mxl.a().a();
-      int i = ndt.b().a();
+      boolean bool2 = myk.a().a();
+      int i = nfm.b().a();
       if ((!bool2) || (i != 1)) {
         break;
       }

@@ -1,6 +1,19 @@
-public abstract interface qlx
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+
+public class qlx
+  extends qlv
 {
-  public abstract void a();
+  public qlx(Context paramContext, aoof paramaoof, sel paramsel)
+  {
+    super(paramContext, paramaoof, paramsel);
+  }
+  
+  public qjh g()
+  {
+    this.jdField_a_of_type_Qjg = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 

@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import java.util.List;
 
-class beni
-  implements DialogInterface.OnDismissListener
+public abstract interface beni
 {
-  beni(beng parambeng) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
-  }
+  public abstract void a(String paramString, List<String> paramList, boolean paramBoolean);
 }
 
 

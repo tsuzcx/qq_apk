@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import mqq.app.QQPermissionCallback;
 
-public final class aiom
-  implements Parcelable.Creator<ZhituResponse>
+class aiom
+  implements QQPermissionCallback
 {
-  public ZhituResponse a(Parcel paramParcel)
+  aiom(ainh paramainh) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new ZhituResponse(paramParcel);
+    bhlq.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public ZhituResponse[] a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new ZhituResponse[paramInt];
+    ainh.j(this.a);
   }
 }
 

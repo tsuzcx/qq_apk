@@ -1,19 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
+import android.content.Context;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class aphq
-  implements DialogInterface.OnClickListener
+public abstract interface aphq
 {
-  public aphq(ArkAppDownloadModule.5 param5) {}
+  public abstract Context a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    bcst.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.b, "");
-  }
+  public abstract aphv a();
+  
+  public abstract apsl a();
+  
+  public abstract Object a(int paramInt);
+  
+  public abstract void a();
+  
+  public abstract void a(apho paramapho, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aphq paramaphq);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

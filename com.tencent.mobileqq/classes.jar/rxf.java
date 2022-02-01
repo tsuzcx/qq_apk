@@ -1,14 +1,19 @@
-import android.widget.Toast;
+import com.tencent.mobileqq.data.MessageRecord;
+import tencent.im.msg.im_msg_body.RichText;
 
 class rxf
-  implements qzc
+  implements azrg
 {
-  rxf(rwy paramrwy) {}
+  rxf(rxd paramrxd) {}
   
-  public void a(String paramString)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    tti.a(rwy.a(this.a), paramString, 0).show();
+    return null;
   }
+  
+  public void a(azrh paramazrh) {}
+  
+  public void b(azrh paramazrh) {}
 }
 
 

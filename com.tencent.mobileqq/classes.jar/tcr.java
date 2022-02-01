@@ -1,11 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import tencent.im.oidb.oidb_0xc90.RspBody;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-public abstract class tcr
+public class tcr
+  implements tdk
 {
-  public tcr(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public tcr(ViolaFragment paramViolaFragment) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0xc90.RspBody paramRspBody) {}
+  public void a(int paramInt)
+  {
+    if (ViolaFragment.access$200(this.a) != null) {
+      ViolaFragment.access$200(this.a).a(paramInt);
+    }
+  }
 }
 
 

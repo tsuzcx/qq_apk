@@ -1,32 +1,60 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bfij
-  extends bfhq
+  implements bfer
 {
-  public bfij(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 5;
-  }
+  public bfij(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  @Nullable
-  public bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      new bfhr(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696728), bepx.a(paramInt1, paramLong1, paramInt2), "");
+    int k = 1;
+    if (this.a.b.getText().length() <= 0) {}
+    for (;;)
+    {
+      return;
+      if (paramInt1 < 0)
+      {
+        if (paramInt2 > this.a.x.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt2);
+          return;
+          paramInt2 = this.a.x.length() + 1;
+        }
+      }
+      if (paramInt2 < 0)
+      {
+        if (paramInt1 > this.a.x.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt1);
+          return;
+          paramInt1 = this.a.x.length() + 1;
+        }
+      }
+      if (!TextUtils.isEmpty(this.a.x))
+      {
+        int i = 0;
+        int j = paramInt1;
+        if (paramInt1 < this.a.x.length() + 1)
+        {
+          j = this.a.x.length() + 1;
+          i = 1;
+        }
+        if (paramInt2 < this.a.x.length() + 1) {
+          paramInt2 = this.a.x.length() + 1;
+        }
+        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
+        {
+          this.a.b.setSelection(j, paramInt2);
+          return;
+        }
+      }
     }
-    return null;
   }
-  
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

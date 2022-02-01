@@ -1,75 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public class aqok
-  extends aqkz<aqoj>
+final class aqok
+  implements URLDrawableDownListener
 {
-  @NonNull
-  public aqoj a(int paramInt)
+  aqok(URLImageView paramURLImageView) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return new aqoj();
+    this.a.setVisibility(8);
   }
   
-  @Nullable
-  public aqoj a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      aqoj localaqoj = aqoj.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfaqlg[0].a);
-      }
-      return localaqoj;
-    }
-    return new aqoj();
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public void a(aqoj paramaqoj)
-  {
-    bgsg.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramaqoj.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramaqoj);
-    }
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  public Class<aqoj> clazz()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return aqoj.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 453;
+    this.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqok
  * JD-Core Version:    0.7.0.1
  */

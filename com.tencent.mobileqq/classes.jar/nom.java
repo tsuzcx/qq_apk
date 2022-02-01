@@ -1,28 +1,89 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public final class nom
-  implements DialogInterface.OnClickListener
+final class nom
+  implements BusinessObserver
 {
-  public nom(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
+  nom(Context paramContext, QQAppInterface paramQQAppInterface, bjbs parambjbs, EqqDetail paramEqqDetail, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ajvi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      l = NetConnInfoCenter.getServerTimeMillis();
-      ((antt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
     }
-    ajvi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    ((antt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
+    mobileqq_mp.FollowResponse localFollowResponse;
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localFollowResponse = new mobileqq_mp.FollowResponse();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
+          nok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
+          if (paramBundle != null) {
+            paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end follow, ts=" + System.currentTimeMillis());
+          }
+          nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+          asuw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
+          nok.a(this.jdField_a_of_type_Bjbs);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        nok.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        nok.a(this.jdField_a_of_type_Bjbs);
+        return;
+      }
+      if (paramInt == 58)
+      {
+        nok.a(this.jdField_a_of_type_AndroidContentContext, 2131694656);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
+      }
+      else if (paramInt == 65)
+      {
+        nok.a(this.jdField_a_of_type_AndroidContentContext, 2131694633);
+      }
+      else if (paramInt == 20)
+      {
+        nok.a(this.jdField_a_of_type_AndroidContentContext, 2131694634);
+      }
+      else
+      {
+        nok.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        nok.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        nok.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

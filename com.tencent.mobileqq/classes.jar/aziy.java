@@ -1,8 +1,6 @@
-import QC.UniBusiGetOneItemWithCheckRsp;
-
 public abstract interface aziy
 {
-  public abstract void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp);
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,39 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aihv
-  extends NativeGifImage
+class aihv
+  implements View.OnClickListener
 {
-  public aihv(File paramFile, boolean paramBoolean)
-  {
-    super(paramFile, paramBoolean);
-  }
+  aihv(aihh paramaihh) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
-  }
-  
-  public Bitmap a()
-  {
-    return this.mCurrentFrameBitmap;
-  }
-  
-  public void a()
-  {
-    getNextFrame();
-    applyNextFrame();
-  }
-  
-  public int b()
-  {
-    return this.mMetaData[FRAME_COUNT_INDEX];
-  }
-  
-  public int c()
-  {
-    return this.mCurrentFrameIndex;
+    agej.n = true;
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    agju.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,42 +1,38 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.1.1;
+import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public abstract class tcj
+public class tcj
+  implements HippyQQEngine.HippyQQEngineListener
 {
-  protected abstract void a();
+  public tcj(ViolaFragment paramViolaFragment) {}
   
-  public abstract void a(ListView paramListView);
-  
-  protected void a(String paramString, JSONObject paramJSONObject)
+  public void onError(int paramInt, String paramString)
   {
-    try
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
     {
-      paramJSONObject.put("folder_status", pha.d);
-      paramJSONObject.put("kandian_mode", pha.e());
-      paramJSONObject = paramJSONObject.toString();
-      oat.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
-      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
+      new Handler(localLooper).postDelayed(new ViolaFragment.1.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+      }
       return;
     }
-    catch (JSONException paramString)
-    {
-      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
-      throw new IllegalArgumentException("fail to construct r5 json");
+  }
+  
+  public void onSuccess()
+  {
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
     }
   }
-  
-  public abstract void b();
-  
-  public void c()
-  {
-    a();
-  }
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

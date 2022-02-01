@@ -1,42 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public class apdv
+class apdv
+  implements befy
 {
-  public static apdt a(apdw paramapdw, int paramInt)
+  apdv(apdu paramapdu) {}
+  
+  public void a(int paramInt)
   {
-    if (paramapdw == null) {
-      throw new RuntimeException("params can not be null!");
-    }
-    Object localObject;
-    switch (paramapdw.jdField_a_of_type_Int)
-    {
-    default: 
-      localObject = new apdy(paramInt);
-    }
-    for (;;)
-    {
-      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramapdw.toString());
-      return localObject;
-      localObject = new apdn(paramInt);
-      continue;
-      localObject = new apea(paramInt);
-      continue;
-      localObject = new apdr(paramInt);
-      continue;
-      localObject = new apds(paramInt);
-      continue;
-      if (TextUtils.isEmpty(paramapdw.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      localObject = new apdo(paramInt, paramapdw.jdField_a_of_type_JavaLangString);
-    }
-    throw new RuntimeException("fragmentShader can not be empty!");
+    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
   }
   
-  public static apdw a(int paramInt)
+  public void a(String paramString)
   {
-    return new apdw(paramInt);
+    apdu.a(this.a, paramString);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.a.a(false);
   }
 }
 

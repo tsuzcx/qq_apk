@@ -1,47 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qflutter.utils.FLog.Log;
+import com.tencent.qphone.base.util.QLog;
 
-class auwy
-  implements aruz
+public class auwy
+  implements FLog.Log
 {
-  auwy(auwx paramauwx) {}
-  
-  public void a(View paramView)
+  public void d(String paramString1, String paramString2)
   {
-    String str = bgyg.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if (localViewParent != null)
-    {
-      localViewParent = localViewParent.getParent();
-      if ((localViewParent instanceof ChatXListView)) {
-        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
-      }
+    if (QLog.isDebugVersion()) {
+      QLog.d(paramString1, 4, paramString2);
     }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
     }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
-      }
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
     }
   }
 }

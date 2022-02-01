@@ -1,50 +1,44 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
 
-public class xtg
-  extends QQUIEventReceiver<xsw, xfu>
+public abstract interface xtg
 {
-  public xtg(@NonNull xsw paramxsw)
-  {
-    super(paramxsw);
-  }
+  public abstract int a();
   
-  public void a(@NonNull xsw paramxsw, @NonNull xfu paramxfu)
-  {
-    if (!TextUtils.equals(paramxfu.b, String.valueOf(paramxsw.hashCode()))) {
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramxsw.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
-    }
-    paramxsw.l();
-    if (paramxfu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      yqp.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramxfu.jdField_a_of_type_JavaLangString);
-      if (paramxfu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
-      {
-        xfs.a().a(paramxsw.b(), paramxfu.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      xfs.a().a(paramxsw.b(), paramxfu.jdField_a_of_type_JavaLangString, paramxfu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxsw.hashCode());
-      return;
-    }
-    yqp.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131699979), 0).a();
-  }
+  public abstract long a();
   
-  public Class acceptEventClass()
-  {
-    return xfu.class;
-  }
+  public abstract View a();
+  
+  public abstract xtt a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(xth paramxth);
+  
+  public abstract void a(xti paramxti);
+  
+  public abstract void a(xtj paramxtj);
+  
+  public abstract void a(xtk paramxtk);
+  
+  public abstract void a(xtl paramxtl);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

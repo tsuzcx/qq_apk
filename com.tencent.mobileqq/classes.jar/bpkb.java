@@ -1,45 +1,113 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.LayoutChangeListener.1;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tavcut.bean.SolidData;
+import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.tavcut.bean.TextItem;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import com.tencent.tavcut.session.TAVCutSession;
+import com.tencent.tavsticker.utils.CollectionUtil;
+import com.tencent.weseevideo.model.effect.StickerModel;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextPart.3;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import mqq.os.MqqHandler;
 
 public class bpkb
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private bpkb(bpjo parambpjo) {}
+  private bpjw jdField_a_of_type_Bpjw;
+  private bpke jdField_a_of_type_Bpke;
   
-  public void onGlobalLayout()
+  private TextEditorData a(TextEditorData paramTextEditorData)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
-    if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout third bottom:" + i + " last:" + this.a.b);
+    if (paramTextEditorData == null) {
+      return new TextEditorData();
     }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout != null)
-    {
-      int[] arrayOfInt = new int[2];
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getLocationOnScreen(arrayOfInt);
-      int j = arrayOfInt[1];
-      int k = j - afur.a(62.0F, BaseApplicationImpl.getContext().getResources());
-      if (k < bpjo.b(this.a)) {
-        bpjo.b(this.a, k);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditTextDialog", 2, "max height" + k + "preViewTextMaxHeight" + bpjo.b(this.a) + "y" + j);
-      }
+    Map localMap = paramTextEditorData.getColorList();
+    Integer localInteger = Integer.valueOf(0);
+    if (!CollectionUtil.isEmptyMap(localMap)) {
+      localInteger = (Integer)localMap.get("bgcolor");
     }
-    if (i - this.a.b > this.a.jdField_a_of_type_Int)
+    if (localInteger == null) {
+      localInteger = Integer.valueOf(0);
+    }
+    for (;;)
     {
-      this.a.a(false);
-      if (this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem != null) {
-        this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.d = false;
-      }
+      return new TextEditorData(paramTextEditorData.getUniqueID(), paramTextEditorData.getItemID(), paramTextEditorData.getTextColor(), paramTextEditorData.getContent(), paramTextEditorData.getPagFilePath(), paramTextEditorData.getFontPath(), localInteger.intValue());
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Bpjw != null) {
+      this.jdField_a_of_type_Bpjw.setOnDismissListener(new bpkd(this));
+    }
+  }
+  
+  public TextEditorData a(TAVCutSession paramTAVCutSession, AEEditorTextBean paramAEEditorTextBean, int paramInt)
+  {
+    String str = bphr.a().a(paramAEEditorTextBean.fontId, 0);
+    StickerModel localStickerModel = new StickerModel();
+    if (paramAEEditorTextBean.type != 2)
+    {
+      localObject = new ArrayList();
+      TextItem localTextItem = new TextItem();
+      localTextItem.text = paramAEEditorTextBean.content;
+      localTextItem.textColor = paramAEEditorTextBean.textColor;
+      localTextItem.fontPath = str;
+      ((ArrayList)localObject).add(localTextItem);
+      localStickerModel.setTextItems((List)localObject);
+    }
+    localStickerModel.setFilePath(paramAEEditorTextBean.pagFilePath);
+    localStickerModel.setCenterX(0.5F);
+    localStickerModel.setCenterY(0.5F);
+    localStickerModel.setScale(paramAEEditorTextBean.scale);
+    localStickerModel.setMaxScale(paramAEEditorTextBean.maxScale);
+    localStickerModel.setMinScale(paramAEEditorTextBean.minScale);
+    localStickerModel.setMaterialId(paramAEEditorTextBean.id);
+    Object localObject = new SolidData();
+    ((SolidData)localObject).setColor(paramAEEditorTextBean.backgroundColor);
+    localStickerModel.getSolidItems().put("bgcolor", localObject);
+    if ((paramTAVCutSession instanceof TAVCutImageSession)) {
+      ((TAVCutImageSession)paramTAVCutSession).addSticker(paramInt, localStickerModel);
+    }
+    for (;;)
+    {
+      paramTAVCutSession = new TextEditorData(localStickerModel.getUniqueId(), localStickerModel.getMaterialId(), paramAEEditorTextBean.textColor, paramAEEditorTextBean.content, paramAEEditorTextBean.pagFilePath, str, paramAEEditorTextBean.backgroundColor);
+      paramTAVCutSession.setType(paramAEEditorTextBean.type);
+      return paramTAVCutSession;
+      ThreadManager.getUIHandler().post(new AEEditorTextPart.3(this, paramTAVCutSession, localStickerModel));
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bpjw != null) {
+      this.jdField_a_of_type_Bpjw.a();
+    }
+  }
+  
+  public void a(Context paramContext, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession)
+  {
+    if ((this.jdField_a_of_type_Bpjw != null) && (this.jdField_a_of_type_Bpjw.isShowing())) {
       return;
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.LayoutChangeListener.1(this));
+    this.jdField_a_of_type_Bpjw = new bpjw(paramContext, 2131755011, new bpkc(this, paramTextEditorData, paramTAVCutSession));
+    b();
+    paramContext = a(paramTextEditorData);
+    this.jdField_a_of_type_Bpjw.a(paramContext);
+    this.jdField_a_of_type_Bpjw.show();
+  }
+  
+  public void a(bpke parambpke)
+  {
+    this.jdField_a_of_type_Bpke = parambpke;
+  }
+  
+  public void a(TAVCutSession paramTAVCutSession, TextEditorData paramTextEditorData)
+  {
+    paramTAVCutSession.updateTextSticker(paramTextEditorData);
   }
 }
 

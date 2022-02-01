@@ -1,44 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class plr
-  extends bahz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public plr(KandianMergeManager paramKandianMergeManager) {}
+  public plr(VideoView paramVideoView) {}
   
-  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  public void onGlobalLayout()
   {
-    if (!"kandian_num_red_pnt_buffer".equals(paramString)) {}
-    while ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    paramString = ((NumRedMsg.NumMsgBusi)paramList.get(paramList.size() - 1)).str_ext.get();
-    if (!TextUtils.isEmpty(paramString))
+    if ((VideoView.access$400(this.a) == VideoView.PLAYMODE_AUTO) && (!this.a.needInterceptGlobalLayoutChanged))
     {
-      paramList = KandianMsgBoxRedPntInfo.createFromJSON(paramString);
-      if ((paramList == null) || (paramList.mMsgCnt <= 0) || ((KandianMergeManager.a(this.a) != null) && (paramList.mSeq <= KandianMergeManager.a(this.a).mSeq)))
+      if ((this.a.isShown()) && (VideoView.access$500(this.a).get() != 3))
       {
-        QLog.d("KandianMergeManager", 2, new Object[] { "[redpnt_center]new msgbox red info has error, local : ", KandianMergeManager.a(this.a), "new : ", paramList });
-        return;
+        VideoView.access$500(this.a).set(3);
+        QLog.d("gifvideo.VideoView", 1, "show to play");
+        this.a.startPlay();
       }
-      if (Aladdin.getConfig(215).getIntegerFromString("message_reddot_style", 1) == 2) {
-        break label183;
+      if ((!this.a.isShown()) && (VideoView.access$500(this.a).get() != 5))
+      {
+        VideoView.access$500(this.a).set(5);
+        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
+        this.a.stop();
       }
-      this.a.a(paramList);
-    }
-    for (;;)
-    {
-      QLog.d("KandianMergeManager", 1, "handlerRedPntCenterNotify | num red pnt buffer : " + paramString);
-      return;
-      label183:
-      pmh.a().j(1);
     }
   }
 }

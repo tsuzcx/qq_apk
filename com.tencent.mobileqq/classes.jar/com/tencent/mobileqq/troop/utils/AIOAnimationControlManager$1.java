@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfos;
+import bgot;
 import com.tencent.qphone.base.util.QLog;
 
 public class AIOAnimationControlManager$1
   implements Runnable
 {
-  public AIOAnimationControlManager$1(bfos parambfos) {}
+  public AIOAnimationControlManager$1(bgot parambgot) {}
   
   public void run()
   {
-    bfos.a(this.this$0);
+    bgot.a(this.this$0);
     try
     {
       this.this$0.a();

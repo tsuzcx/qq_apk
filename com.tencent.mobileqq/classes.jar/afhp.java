@@ -1,18 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class afhp
-  implements ayjd
+  implements afhn
 {
-  public afhp(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public afhp(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
   
-  public void a(int paramInt, ayje paramayje)
+  public void a(int paramInt)
   {
-    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramayje.b)))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramayje.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-    }
+    this.a.this$0.a.setPercent(paramInt);
   }
 }
 

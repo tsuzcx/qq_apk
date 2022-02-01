@@ -1,38 +1,62 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.richstatus.StatusJsHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class bbvb
-  implements bbvf
+  implements BusinessObserver
 {
-  protected View a;
+  public bbvb(StatusJsHandler paramStatusJsHandler) {}
   
-  public bbvb(ViewGroup paramViewGroup)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = new LinearLayout(paramViewGroup.getContext());
-    this.a.setVisibility(8);
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public List<bbvg> a()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return null;
+    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      this.a.a(2131694659);
+    }
+    for (;;)
+    {
+      this.a.a(this.a.c, "false");
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null))
+            {
+              paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
+              this.a.a(localBaseActivity, paramBundle);
+              StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+            }
+          }
+          else {
+            this.a.a(2131694659);
+          }
+        }
+        else
+        {
+          this.a.a(2131694659);
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
   }
 }
 

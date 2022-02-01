@@ -1,20 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.View;
 
 public class swm
-  implements syg
+  extends swl
 {
-  public swm(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
-  
-  public BaseData a()
+  public swm(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+    super(-16777216, 0, 0, paramString);
   }
   
-  public void a()
-  {
-    tcc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-  }
+  public void onClick(View paramView) {}
 }
 
 

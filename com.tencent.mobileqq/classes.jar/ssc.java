@@ -1,12 +1,15 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public abstract interface ssc
-  extends bkmq
+final class ssc
+  implements ssg
 {
-  public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
+  ssc(sse paramsse) {}
   
-  public abstract void a(View paramView, ListView paramListView, int paramInt);
+  public void a(boolean paramBoolean, List<BaseData> paramList)
+  {
+    this.a.b(paramList);
+  }
 }
 
 

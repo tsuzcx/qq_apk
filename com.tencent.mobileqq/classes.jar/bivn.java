@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
-final class bivn
-  implements DialogInterface.OnClickListener
+public class bivn
+  extends Handler
 {
-  bivn(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  public bivn(CircleProgressBar paramCircleProgressBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    bivl.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 

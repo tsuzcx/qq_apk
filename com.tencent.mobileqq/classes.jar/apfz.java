@@ -1,58 +1,57 @@
-import android.animation.Animator.AnimatorListener;
-import android.util.SparseArray;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 public class apfz
 {
-  private int jdField_a_of_type_Int = 1;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new apga(this);
-  private SparseArray<apfw> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private apgb jdField_a_of_type_Apgb;
+  public long a;
+  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  public String a;
+  public HashMap<Integer, String> a;
+  private final TreeMap<Integer, apga> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  public boolean a;
+  public long b;
+  public String b;
+  public long c = 0L;
   
-  private void a(int paramInt)
+  public apfz()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((apfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).stop();
-    }
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private void a(int paramInt1, int paramInt2)
+  public ArCloudConfigInfo a()
   {
-    apfw localapfw1 = (apfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    apfw localapfw2 = (apfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    localapfw1.a(false, null);
-    localapfw2.a(true, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
+    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
   }
   
-  public void a()
+  public String a(int paramInt)
   {
-    int i = 1;
-    while (i <= 3)
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public TreeMap<Integer, apga> a()
+  {
+    return this.jdField_a_of_type_JavaUtilTreeMap;
+  }
+  
+  public String toString()
+  {
+    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
+    Object localObject = str;
+    if (QLog.isDevelopLevel())
     {
-      a(i);
-      i += 1;
+      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        apga localapga = (apga)((Iterator)localObject).next();
+        str = str + "\n" + localapga;
+      }
+      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
     }
-  }
-  
-  public void a(int paramInt, apfw paramapfw)
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramapfw);
-  }
-  
-  public void a(int paramInt, apgb paramapgb)
-  {
-    if (this.jdField_a_of_type_Int == paramInt) {
-      return;
-    }
-    this.jdField_a_of_type_Apgb = paramapgb;
-    a(this.jdField_a_of_type_Int, paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_a_of_type_Apgb = null;
+    return localObject;
   }
 }
 

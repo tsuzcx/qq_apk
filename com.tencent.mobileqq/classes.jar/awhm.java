@@ -1,414 +1,223 @@
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TempMsgInfo;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.managers.TempMsgManager.3;
-import com.tencent.mobileqq.managers.TempMsgManager.4;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import java.util.Arrays;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awhm
-  implements Manager
+  extends WebViewPlugin
 {
-  private awhp jdField_a_of_type_Awhp;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private String jdField_a_of_type_JavaLangString;
-  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap(8);
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { "temp_msg_setting_consult_", "temp_msg_setting_contact_", "temp_msg_setting_interest_v2", "temp_msg_setting_nearby_", "temp_msg_setting_troop_", "temp_msg_setting_circle_v2", "temp_msg_setting_game_buddy_", "temp_msg_setting_audio_room" };
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new awhn(this);
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public awhm(QQAppInterface paramQQAppInterface)
+  public awhm()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    a();
+    this.mPluginNameSpace = "story";
   }
   
-  private int a(SessionInfo paramSessionInfo)
+  public static final void a(Context paramContext)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
-    if ((1000 == paramSessionInfo.jdField_a_of_type_Int) || (1004 == paramSessionInfo.jdField_a_of_type_Int) || (1022 == paramSessionInfo.jdField_a_of_type_Int)) {}
-    for (localObject = ChatActivityUtils.b((List)localObject, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface); localObject == null; localObject = ChatActivityUtils.a((List)localObject, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      return paramSessionInfo.jdField_a_of_type_Int;
-    }
-    return ((MessageRecord)localObject).istroop;
+    Intent localIntent = new Intent(paramContext, StoryTransitionActivity.class);
+    localIntent.putExtra("jump_action", 1);
+    paramContext.startActivity(localIntent);
   }
   
-  private DialogInterface.OnClickListener a(BaseChatPie paramBaseChatPie, short paramShort)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return new awho(this, paramBaseChatPie, paramShort);
-  }
-  
-  private String a(short paramShort)
-  {
-    switch (paramShort)
-    {
-    default: 
-      throw new RuntimeException("getTypeStringFromType failed " + paramShort);
-    case -23308: 
-      return "temp_msg_setting_troop_";
-    case -23309: 
-      return "temp_msg_setting_consult_";
-    case -23310: 
-      return "temp_msg_setting_contact_";
-    case -23166: 
-      return "temp_msg_setting_interest_v2";
-    case -23312: 
-      return "temp_msg_setting_nearby_";
-    case -23168: 
-      return "temp_msg_setting_circle_v2";
-    case -23161: 
-      return "temp_msg_setting_audio_room";
-    }
-    return "temp_msg_setting_game_buddy_";
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.add("temp_msg_setting_interest_v2");
-    this.jdField_a_of_type_JavaUtilList.add("temp_msg_setting_circle_v2");
-    this.jdField_a_of_type_JavaUtilList.add("temp_msg_setting_game_buddy_");
-    this.jdField_a_of_type_JavaUtilList.add("temp_msg_setting_audio_room");
-  }
-  
-  private void a(SessionInfo paramSessionInfo, short paramShort, String paramString, int paramInt, BaseChatPie paramBaseChatPie)
-  {
-    if (!a(a(paramShort)))
-    {
-      paramSessionInfo = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131718524), new Object[] { paramString, paramString });
-      paramSessionInfo = bglp.a(paramBaseChatPie.a, 230, anni.a(2131713513), paramSessionInfo, 2131718522, 2131718523, a(paramBaseChatPie, paramShort), a(paramBaseChatPie, paramShort));
-      paramSessionInfo.setOnCancelListener(new awhn(this, paramBaseChatPie));
-      paramSessionInfo.setCanceledOnTouchOutside(false);
-      paramSessionInfo.show();
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009977", "0X8009977", a(paramShort), a(paramShort), "", "", "", "");
-    }
-    while ((!a(paramSessionInfo)) || (!a(a(paramShort), paramSessionInfo))) {
-      return;
-    }
-    a(paramSessionInfo, paramString, paramInt, paramShort);
-  }
-  
-  private boolean a(SessionInfo paramSessionInfo)
-  {
-    paramSessionInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
-    int i;
-    ChatMessage localChatMessage;
-    if (paramSessionInfo.size() > 0)
-    {
-      i = paramSessionInfo.size();
-      paramSessionInfo = paramSessionInfo.iterator();
-      if (!paramSessionInfo.hasNext()) {
-        break label151;
-      }
-      localChatMessage = (ChatMessage)paramSessionInfo.next();
-      if (!localChatMessage.isSend()) {}
-    }
-    else
-    {
+    if (!"story".equals(paramString2)) {
       return false;
     }
-    if (localChatMessage.senderuin == null) {
-      i -= 1;
-    }
-    for (;;)
+    Activity localActivity = this.mRuntime.a();
+    if (paramString3.equals("openIndex"))
     {
-      break;
-      if (localChatMessage.senderuin.compareTo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()) == 0) {
-        i -= 1;
-      } else if (localChatMessage.msgtype == -1034) {
-        i -= 1;
-      } else if (QLog.isColorLevel()) {
-        QLog.d("TempMsgManager", 2, localChatMessage.toString());
-      }
+      StoryTransitionActivity.b(localActivity);
+      return true;
     }
-    label151:
-    if (i > 0) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  private boolean a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-    boolean bool1 = b(paramString);
-    if (paramInt == 0) {
-      bool1 = localSharedPreferences.getBoolean(paramString + this.jdField_a_of_type_JavaLangString + "_setting", bool1);
-    }
-    boolean bool2;
-    do
+    if (paramString3.equals("newStory"))
     {
-      return bool1;
-      if (paramInt != 1) {
-        break;
-      }
-      bool2 = localSharedPreferences.getBoolean(paramString + this.jdField_a_of_type_JavaLangString + "_show", bool1);
-      bool1 = bool2;
-    } while (!bool2);
-    localSharedPreferences.edit().putBoolean(paramString + this.jdField_a_of_type_JavaLangString + "_show", false).apply();
-    return bool2;
-    return false;
-  }
-  
-  private boolean b(String paramString)
-  {
-    return !this.jdField_a_of_type_JavaUtilList.contains(paramString);
-  }
-  
-  public int a(short paramShort)
-  {
-    switch (paramShort)
-    {
-    default: 
-      return 0;
-    case -23308: 
-      return 1;
-    case -23309: 
-      return 5;
-    case -23310: 
-      return 4;
-    case -23166: 
-      return 3;
-    case -23312: 
-      return 2;
-    case -23168: 
-      return 6;
-    case -23158: 
-      return 7;
+      paramJsBridgeListener = new Intent(localActivity, StoryTransitionActivity.class);
+      paramJsBridgeListener.putExtra("jump_action", 1);
+      paramJsBridgeListener.putExtra("video_tag", paramVarArgs[0]);
+      localActivity.startActivity(paramJsBridgeListener);
+      return true;
     }
-    return 8;
-  }
-  
-  public Map<String, Boolean> a()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    long l;
+    if (paramString3.equals("playStory"))
     {
-      String str = arrayOfString[i];
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str))
+      try
       {
-        boolean bool = b(str);
-        this.jdField_a_of_type_JavaUtilMap.put(str, Boolean.valueOf(localSharedPreferences.getBoolean(str + this.jdField_a_of_type_JavaLangString + "_setting", bool)));
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener = paramString1.optString("vid", "");
+        l = paramString1.optLong("uin", 0L);
+        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (l > 0L))
+        {
+          paramString1 = new Intent(localActivity, JumpActivity.class);
+          paramString1.setData(Uri.parse("mqqapi://qstory/openVideo?videoOwnerUin=" + l + "&videoId=" + paramJsBridgeListener));
+          localActivity.startActivity(paramString1);
+        }
       }
-      i += 1;
-    }
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public void a(awhp paramawhp)
-  {
-    this.jdField_a_of_type_Awhp = paramawhp;
-  }
-  
-  public void a(SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgManager", 2, "onEnterChat" + paramSessionInfo.jdField_a_of_type_Int);
-    }
-    int j = paramSessionInfo.jdField_a_of_type_Int;
-    int i = j;
-    if (j == 1000) {
-      i = a(paramSessionInfo);
-    }
-    switch (i)
-    {
-    case 1004: 
-    case 1009: 
-    case 1010: 
-    case 1020: 
-    case 1024: 
-    case 1025: 
-    case 10004: 
-    default: 
-      return;
-    case 1000: 
-      a(paramSessionInfo, (short)-23308, anni.a(2131713512), i, paramBaseChatPie);
-      return;
-    case 1006: 
-      a(paramSessionInfo, (short)-23310, anni.a(2131713510), i, paramBaseChatPie);
-      return;
-    case 1001: 
-    case 1003: 
-      a(paramSessionInfo, (short)-23312, anni.a(2131713509), i, paramBaseChatPie);
-      return;
-    case 10002: 
-      a(paramSessionInfo, (short)-23166, anni.a(2131713511), i, paramBaseChatPie);
-      return;
-    case 10010: 
-      a(paramSessionInfo, (short)-23161, anni.a(2131693830), i, paramBaseChatPie);
-      return;
-    case 1005: 
-      a(paramSessionInfo, (short)-23309, "QQ咨询", i, paramBaseChatPie);
-      return;
-    case 10008: 
-      a(paramSessionInfo, (short)-23168, anni.a(2131718384), i, paramBaseChatPie);
-      return;
-    }
-    a(paramSessionInfo, (short)-23158, ((autd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).a(), i, paramBaseChatPie);
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt, short paramShort)
-  {
-    Object localObject;
-    if (paramInt == 1000)
-    {
-      paramString = bglf.o(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo.c);
-      String str = bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo.c, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("TempMsgManager", 2, "getTroopNickName:" + paramString + " new From:" + str);
-      }
-      paramString = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131718529), new Object[] { str });
-      localObject = new auxc(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, paramSessionInfo.jdField_a_of_type_Int, -5023, 655381, bbyp.a());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 39);
-      localBundle.putString("textColor", "");
-      localBundle.putString("image_resource", null);
-      localBundle.putString("key_action_DATA", paramSessionInfo.c);
-      ((auxc)localObject).a(5, str.length() + 5, localBundle);
-      paramSessionInfo = new Bundle();
-      paramSessionInfo.putInt("key_action", 38);
-      paramSessionInfo.putString("textColor", "");
-      paramSessionInfo.putString("image_resource", null);
-      paramSessionInfo.putString("key_action_DATA", a(paramShort) + "");
-      ((auxc)localObject).a(paramString.length() - 5, paramString.length() - 1, paramSessionInfo);
-      paramSessionInfo = (SessionInfo)localObject;
-    }
-    for (;;)
-    {
-      localObject = new MessageForUniteGrayTip();
-      ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo);
-      auxd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("TempMsgManager", 2, "add gray tip =" + paramString);
-      }
-      return;
-      paramString = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131718528), new Object[] { paramString });
-      paramSessionInfo = new auxc(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, paramSessionInfo.jdField_a_of_type_Int, -5023, 655381, bbyp.a());
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("key_action", 38);
-      ((Bundle)localObject).putString("textColor", "");
-      ((Bundle)localObject).putString("image_resource", null);
-      ((Bundle)localObject).putString("key_action_DATA", a(paramShort) + "");
-      paramSessionInfo.a(paramString.length() - 5, paramString.length() - 1, (Bundle)localObject);
-    }
-  }
-  
-  public void a(short paramShort, boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgManager", 2, "onSetResult t=" + paramShort + " result=" + paramBoolean1 + " fm=" + paramString + " value=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
-    {
-      a(paramShort, paramBoolean2, false);
-      if (!bgsp.a(paramString)) {
-        ThreadManager.getUIHandler().post(new TempMsgManager.3(this, paramString));
-      }
-    }
-    ThreadManager.getUIHandler().post(new TempMsgManager.4(this, paramShort, paramBoolean1));
-  }
-  
-  public void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgManager", 2, "changeSetting t=" + paramShort + " s=" + paramBoolean1 + "sync=" + paramBoolean2);
-    }
-    Object localObject = a(paramShort);
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, Boolean.valueOf(paramBoolean1));
-      PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).edit().putBoolean((String)localObject + this.jdField_a_of_type_JavaLangString + "_setting", paramBoolean1).apply();
-      if (paramBoolean2)
+      catch (Exception paramJsBridgeListener)
       {
-        localObject = (anip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
-        if (localObject != null) {
-          if (paramBoolean1) {
-            break label211;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
           }
         }
       }
-    }
-    label211:
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      ((anip)localObject).a(paramShort, paramBoolean1);
-      return;
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, Boolean.valueOf(paramBoolean1));
-      break;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString)).booleanValue();
-    }
-    boolean bool = a(paramString, 0);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(bool));
-    return bool;
-  }
-  
-  public boolean a(String paramString, SessionInfo paramSessionInfo)
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TempMsgInfo.class, paramString + paramSessionInfo.jdField_a_of_type_JavaLangString) instanceof TempMsgInfo)) {
-        return false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TempMsgManager", 2, "can't tempMsgInfo, insert a new tempMsgInfo! type=" + paramString + "curFriendUin=" + paramSessionInfo.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist(new TempMsgInfo(paramString + paramSessionInfo.jdField_a_of_type_JavaLangString, System.currentTimeMillis()));
       return true;
     }
-    finally {}
+    if (paramString3.equals("openTopic")) {
+      return false;
+    }
+    int i;
+    if (paramString3.equals("openLive"))
+    {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        i = paramJsBridgeListener.optInt("type", 0);
+        l = paramJsBridgeListener.optLong("roomId", 0L);
+        int j = paramJsBridgeListener.optInt("fromId", 0);
+        paramJsBridgeListener = paramJsBridgeListener.optJSONObject("extras");
+        if (i != 1) {
+          break label782;
+        }
+        paramString1 = new Intent(localActivity, JumpActivity.class);
+        paramString2 = new StringBuilder().append("mqqapi://qstory/openNow?roomid=").append(l).append("&fromid=").append(j).append("&extras=");
+        if (paramJsBridgeListener == null) {}
+        for (paramJsBridgeListener = "";; paramJsBridgeListener = paramJsBridgeListener.toString())
+        {
+          paramString1.setData(Uri.parse(paramJsBridgeListener));
+          localActivity.startActivity(paramString1);
+          break;
+        }
+        QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (!QLog.isColorLevel()) {
+          break label782;
+        }
+      }
+    }
+    else
+    {
+      if (("openInfoCard".equals(paramString3)) || ("openMiniSummary".equals(paramString3))) {
+        try
+        {
+          QQStoryMemoriesActivity.a(localActivity, 23, new JSONObject(paramVarArgs[0]).optLong("uin", 0L));
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+      }
+      if (paramString3.equals("playVideos")) {}
+      for (;;)
+      {
+        try
+        {
+          paramString1 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString1.optString("videolist", "");
+          paramJsBridgeListener = paramString1.optString("feedlist", "");
+          i = paramString1.optInt("index", 0);
+          paramString3 = paramString1.optString("play_scence", "");
+          if ((TextUtils.isEmpty(paramString3)) || (!"videoLabelDetail".equals(paramString3))) {
+            break;
+          }
+          paramString1.optInt("tagid");
+          paramString1.optInt("tagtype");
+          if (TextUtils.isEmpty(paramString2)) {
+            break;
+          }
+          paramString3 = new ArrayList(Arrays.asList(paramString2.split(",")));
+          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          {
+            paramJsBridgeListener = new ArrayList(Arrays.asList(paramJsBridgeListener.split(",")));
+            if (paramString3.size() <= i) {
+              break label776;
+            }
+            paramString1 = (String)paramString3.get(i);
+            if (paramJsBridgeListener.size() <= i) {
+              break label770;
+            }
+            paramString2 = (String)paramJsBridgeListener.get(i);
+            xlj.a(localActivity, new VidListPlayInfo(paramJsBridgeListener, paramString3, paramString2, paramString1), 105, null);
+            break;
+          }
+          paramJsBridgeListener = new ArrayList();
+          continue;
+          QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+        }
+        break;
+        return false;
+        label770:
+        paramString2 = "";
+        continue;
+        label776:
+        paramString1 = "";
+      }
+    }
+    label782:
+    return true;
+    return true;
   }
   
-  public boolean a(short paramShort)
+  public void onActivityReady()
   {
-    return a(a(paramShort));
-  }
-  
-  public boolean b(short paramShort)
-  {
-    String str = a(paramShort);
-    return this.jdField_a_of_type_JavaUtilList.contains(str);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_do_like");
+    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_comment");
+    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_subscribe");
+    Activity localActivity = this.mRuntime.a();
+    if ((localActivity != null) && (!this.jdField_a_of_type_Boolean)) {}
+    try
+    {
+      localActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQStoryApiPlugin", 2, "regist receiver error:" + localException.toString());
+    }
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Awhp = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    super.onDestroy();
+    Activity localActivity = this.mRuntime.a();
+    if ((localActivity != null) && (this.jdField_a_of_type_Boolean))
+    {
+      localActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }

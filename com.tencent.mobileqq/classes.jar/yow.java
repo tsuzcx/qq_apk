@@ -1,16 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class yow
 {
-  public List<LocalMediaInfo> a = new ArrayList();
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
   
-  private yow(@NonNull List<LocalMediaInfo> paramList)
+  public static void a(yoz<Integer> paramyoz)
   {
-    zkb.a(paramList);
-    this.a = paramList;
+    paramyoz = new WeakReference(paramyoz);
+    ypr localypr = new ypr(null);
+    localypr.a(new yox(paramyoz));
+    localypr.a(new yoy(paramyoz));
+    localypr.a();
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {}
+    return false;
   }
 }
 

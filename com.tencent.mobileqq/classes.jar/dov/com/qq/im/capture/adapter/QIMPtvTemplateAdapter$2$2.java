@@ -1,18 +1,18 @@
 package dov.com.qq.im.capture.adapter;
 
-import anni;
-import boke;
-import bokg;
+import anzj;
+import bplz;
+import bpmb;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QIMPtvTemplateAdapter$2$2
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$2$2(bokg parambokg) {}
+  public QIMPtvTemplateAdapter$2$2(bpmb parambpmb) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a, anni.a(2131708591), 0).a();
+    QQToast.a(this.a.a.a, anzj.a(2131708700), 0).a();
   }
 }
 

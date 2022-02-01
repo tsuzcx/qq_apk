@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aroo;
+import asec;
 
 public class QavSoData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + aroo.e();
+    return "preload_" + asec.e();
   }
   
   public String getStrResName()
   {
-    return aroo.e();
+    return asec.e();
   }
 }
 

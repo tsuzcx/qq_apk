@@ -1,9 +1,16 @@
-class baki
-  implements bakp
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileBlankHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class baki
+  extends RecyclerView.ViewHolder
 {
-  baki(bakh parambakh) {}
-  
-  public void a(long paramLong) {}
+  public baki(@NotNull View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

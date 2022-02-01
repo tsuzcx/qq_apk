@@ -10,16 +10,16 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bpmc;
-import bpme;
-import bpmf;
-import bpmg;
-import bpmh;
-import bpmi;
-import bpmj;
-import bpml;
-import bpmm;
-import bpmo;
+import bqnx;
+import bqnz;
+import bqoa;
+import bqob;
+import bqoc;
+import bqod;
+import bqoe;
+import bqog;
+import bqoh;
+import bqoj;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -30,12 +30,12 @@ public class GLTextureView
   implements TextureView.SurfaceTextureListener
 {
   private static int jdField_a_of_type_Int;
-  private static final bpml jdField_a_of_type_Bpml = new bpml(null);
+  private static final bqog jdField_a_of_type_Bqog = new bqog(null);
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
-  private bpmh jdField_a_of_type_Bpmh;
-  private bpmi jdField_a_of_type_Bpmi;
-  private bpmj jdField_a_of_type_Bpmj;
-  private bpmm jdField_a_of_type_Bpmm;
+  private bqoc jdField_a_of_type_Bqoc;
+  private bqod jdField_a_of_type_Bqod;
+  private bqoe jdField_a_of_type_Bqoe;
+  private bqoh jdField_a_of_type_Bqoh;
   private GLTextureView.GLThread jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread;
   private Runnable jdField_a_of_type_JavaLangRunnable = new GLTextureView.2(this);
   private final WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
@@ -89,7 +89,7 @@ public class GLTextureView
   {
     jdField_a_of_type_Int = a(getContext(), "ro.opengles.version", 0).intValue();
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new bpmc(this));
+    addOnLayoutChangeListener(new bqnx(this));
   }
   
   @TargetApi(14)
@@ -242,18 +242,18 @@ public class GLTextureView
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    setEGLConfigChooser(new bpme(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    setEGLConfigChooser(new bqnz(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
   }
   
-  public void setEGLConfigChooser(bpmh parambpmh)
+  public void setEGLConfigChooser(bqoc parambqoc)
   {
     b();
-    this.jdField_a_of_type_Bpmh = parambpmh;
+    this.jdField_a_of_type_Bqoc = parambqoc;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new bpmo(this, paramBoolean));
+    setEGLConfigChooser(new bqoj(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -262,21 +262,21 @@ public class GLTextureView
     this.e = paramInt;
   }
   
-  public void setEGLContextFactory(bpmi parambpmi)
+  public void setEGLContextFactory(bqod parambqod)
   {
     b();
-    this.jdField_a_of_type_Bpmi = parambpmi;
+    this.jdField_a_of_type_Bqod = parambqod;
   }
   
-  public void setEGLWindowSurfaceFactory(bpmj parambpmj)
+  public void setEGLWindowSurfaceFactory(bqoe parambqoe)
   {
     b();
-    this.jdField_a_of_type_Bpmj = parambpmj;
+    this.jdField_a_of_type_Bqoe = parambqoe;
   }
   
-  public void setGLWrapper(bpmm parambpmm)
+  public void setGLWrapper(bqoh parambqoh)
   {
-    this.jdField_a_of_type_Bpmm = parambpmm;
+    this.jdField_a_of_type_Bqoh = parambqoh;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
@@ -292,14 +292,14 @@ public class GLTextureView
   public void setRenderer(GLSurfaceView.Renderer paramRenderer)
   {
     b();
-    if (this.jdField_a_of_type_Bpmh == null) {
-      this.jdField_a_of_type_Bpmh = new bpmo(this, true);
+    if (this.jdField_a_of_type_Bqoc == null) {
+      this.jdField_a_of_type_Bqoc = new bqoj(this, true);
     }
-    if (this.jdField_a_of_type_Bpmi == null) {
-      this.jdField_a_of_type_Bpmi = new bpmf(this, null);
+    if (this.jdField_a_of_type_Bqod == null) {
+      this.jdField_a_of_type_Bqod = new bqoa(this, null);
     }
-    if (this.jdField_a_of_type_Bpmj == null) {
-      this.jdField_a_of_type_Bpmj = new bpmg(null);
+    if (this.jdField_a_of_type_Bqoe == null) {
+      this.jdField_a_of_type_Bqoe = new bqob(null);
     }
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer = paramRenderer;
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = new GLTextureView.GLThread(this.jdField_a_of_type_JavaLangRefWeakReference);

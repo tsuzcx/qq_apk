@@ -1,17 +1,66 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnCompletionListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnCompletionListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.YybHandleUtil.1;
+import java.io.File;
+import java.text.DecimalFormat;
+import mqq.os.MqqHandler;
 
-class bjya
-  implements IMediaPlayer.OnCompletionListener
+public class bjya
 {
-  bjya(bjxx parambjxx, ReliableVideoPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public static String a = "YybHandleUtil";
+  public static String b = "APK/MobileAssistant_main.apk";
+  public static String c = "yyb.apk";
+  public static final String d = anzj.a(2131715805);
   
-  public void onCompletion(IMediaPlayer paramIMediaPlayer)
+  public static String a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnCompletionListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bjxx);
+    if (paramInt < 0) {
+      return null;
     }
+    float f2 = paramInt;
+    paramInt = 0;
+    float f1;
+    String str2;
+    String str1;
+    if (f2 / 1048576.0F > 1.0F)
+    {
+      f1 = f2 / 1048576.0F;
+      paramInt = 2;
+      str2 = new DecimalFormat("#.#").format(f1);
+      if (paramInt != 2) {
+        break label92;
+      }
+      str1 = "MB";
+    }
+    for (;;)
+    {
+      return str2 + str1;
+      f1 = f2;
+      if (f2 / 1024.0F <= 1.0F) {
+        break;
+      }
+      f1 = f2 / 1024.0F;
+      paramInt = 1;
+      break;
+      label92:
+      if (paramInt == 1) {
+        str1 = "KB";
+      } else {
+        str1 = "B";
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    bjtx.c(a, "---deleteYYBApkPackage--");
+    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
+  }
+  
+  public static boolean a()
+  {
+    String str = bjjo.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
+    return bjva.a(bjjo.a().a(), str);
   }
 }
 

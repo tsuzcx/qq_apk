@@ -1,6 +1,22 @@
-public abstract interface bhuo
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+import com.tencent.widget.BubblePopupWindow;
+
+public class bhuo
+  extends TextView
 {
-  public abstract void a();
+  public bhuo(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    this.a.a.b();
+    return bool;
+  }
 }
 
 

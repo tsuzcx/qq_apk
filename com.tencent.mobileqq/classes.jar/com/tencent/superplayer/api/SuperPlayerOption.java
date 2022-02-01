@@ -6,11 +6,14 @@ import org.json.JSONObject;
 
 public class SuperPlayerOption
 {
-  private static final String TAG = "MediaPlayerMgr.SuperPlayerOption";
+  private static final String TAG = "SuperPlayerOption";
   public boolean accurateSeekOnOpen;
+  public SuperPlayerAudioInfo audioFrameOutputOption;
   public long bufferPacketMinTotalDurationMs;
+  public boolean enableAudioFrameOutput;
   public boolean enableCodecReuse;
   public boolean enableVideoFrameCheck;
+  public boolean enableVideoFrameOutput;
   public boolean isPrePlay;
   public long minBufferingPacketDurationMs;
   public long preloadPacketDurationMs;
@@ -32,13 +35,14 @@ public class SuperPlayerOption
       localJSONObject.put("bufferPacketMinTotalDurationMs", this.bufferPacketMinTotalDurationMs);
       localJSONObject.put("preloadPacketDurationMs", this.preloadPacketDurationMs);
       localJSONObject.put("minBufferingPacketDurationMs", this.minBufferingPacketDurationMs);
+      localJSONObject.put("audioFrameOutputOption", this.audioFrameOutputOption);
       return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        LogUtil.e("MediaPlayerMgr.SuperPlayerOption", "");
+        LogUtil.e("SuperPlayerOption", "");
       }
     }
   }
@@ -53,6 +57,7 @@ public class SuperPlayerOption
     localStringBuilder.append("bufferPacketMinTotalDurationMs:").append(this.bufferPacketMinTotalDurationMs).append("\n");
     localStringBuilder.append("preloadPacketDurationMs:").append(this.preloadPacketDurationMs).append("\n");
     localStringBuilder.append("minBufferingPacketDurationMs:").append(this.minBufferingPacketDurationMs).append("\n");
+    localStringBuilder.append("audioFrameOutputOption:").append(this.audioFrameOutputOption).append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

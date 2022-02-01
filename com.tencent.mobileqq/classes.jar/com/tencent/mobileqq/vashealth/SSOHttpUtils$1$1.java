@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import bhfq;
-import bhfr;
+import bigb;
+import bigc;
 
 public class SSOHttpUtils$1$1
   implements Runnable
 {
-  public SSOHttpUtils$1$1(bhfr parambhfr, int paramInt, String paramString) {}
+  public SSOHttpUtils$1$1(bigc parambigc, int paramInt, String paramString) {}
   
   public void run()
   {
-    bhfq.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    bigb.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

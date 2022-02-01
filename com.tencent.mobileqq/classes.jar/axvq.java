@@ -1,11 +1,18 @@
-class axvq
-  implements bkhy
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+
+public class axvq
+  implements INetEventHandler
 {
-  axvq(axuv paramaxuv) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void onDismiss()
+  public axvq(NearbyJsInterface paramNearbyJsInterface) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    axuv.a(this.a, this.a.c, false);
+    int i = nnr.a();
+    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
+    this.jdField_a_of_type_Int = i;
   }
 }
 

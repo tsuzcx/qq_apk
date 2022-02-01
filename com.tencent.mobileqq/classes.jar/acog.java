@@ -1,22 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtAd;
 
-public class acog
-  extends acoj
+public final class acog
+  implements Parcelable.Creator<GdtAd>
 {
-  public int a;
-  public View a;
-  public int b;
-  public View b;
-  public int c;
-  public View c;
-  public int d;
-  public View d;
-  public int e;
-  public View e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  public GdtAd a(Parcel paramParcel)
+  {
+    return new GdtAd(paramParcel);
+  }
+  
+  public GdtAd[] a(int paramInt)
+  {
+    return new GdtAd[paramInt];
+  }
 }
 
 

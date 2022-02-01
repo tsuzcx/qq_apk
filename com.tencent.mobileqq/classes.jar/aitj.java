@@ -1,18 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneIPCModule;
+import java.util.List;
+import org.json.JSONObject;
 
-public class aitj
-  implements View.OnClickListener
+class aitj
+  implements aitl
 {
-  public aitj(SearchContactsActivity paramSearchContactsActivity) {}
+  aitj(aiti paramaiti) {}
   
-  public void onClick(View paramView)
+  public void a(List<aism> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.a.setResult(0);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = new StringBuilder().append("OnImgUpdated: empty data or text ").append(paramString1).append(" ");
+      if (paramList == null) {}
+      for (paramList = "null";; paramList = Integer.valueOf(paramList.size()))
+      {
+        QLog.i("StickerRecManager", 2, paramList);
+        return;
+      }
+    }
+    paramList = QzoneIPCModule.a(paramList);
+    if (paramList == null)
+    {
+      QLog.i("StickerRecManager", 2, "OnImgUpdated: failed to parse img data");
+      return;
+    }
+    QzoneIPCModule.a().a(paramString1, paramList.toString(), paramString2);
   }
 }
 

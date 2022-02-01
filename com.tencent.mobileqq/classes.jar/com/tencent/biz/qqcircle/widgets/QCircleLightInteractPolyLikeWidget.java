@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aabg;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -17,20 +18,19 @@ import feedcloud.FeedCloudMeta.StLightInteractInfo;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import qqcircle.QQCircleFeedBase.LightInteractionBusiData;
-import vxi;
-import vxj;
-import vxk;
-import zxl;
+import was;
+import wat;
+import wau;
 
 public class QCircleLightInteractPolyLikeWidget
   extends QCircleBaseLightInteractWidget
 {
+  private aabg<QCircleReportBean> jdField_a_of_type_Aabg;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private QCircleTagFlowLayout jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout;
   private QCircleAvatarView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView;
   private QCircleFollowView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView;
-  private zxl<QCircleReportBean> jdField_a_of_type_Zxl;
   
   public QCircleLightInteractPolyLikeWidget(@NonNull Context paramContext, int paramInt)
   {
@@ -47,7 +47,7 @@ public class QCircleLightInteractPolyLikeWidget
       if (localLightInteractionBusiData.polyInfos.size() == 0)
       {
         paramStLightInteractInfo.add(localLightInteractionBusiData.polyInfo);
-        this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout.setAdapter(new vxk(this, paramStLightInteractInfo));
+        this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout.setAdapter(new wau(this, paramStLightInteractInfo));
         return;
       }
     }
@@ -67,7 +67,7 @@ public class QCircleLightInteractPolyLikeWidget
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowedDismiss(false);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowedShowToast(true);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUserData(paramStUser);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowStateChangeListener(new vxi(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowStateChangeListener(new was(this));
   }
   
   private void b(FeedCloudMeta.StUser paramStUser)
@@ -77,11 +77,11 @@ public class QCircleLightInteractPolyLikeWidget
     if (paramStUser.id.get().equals(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get()))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844027);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844048);
     }
     for (;;)
     {
-      paramStUser = new vxj(this, paramStUser);
+      paramStUser = new wat(this, paramStUser);
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setOnClickListener(paramStUser);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramStUser);
       return;
@@ -91,7 +91,7 @@ public class QCircleLightInteractPolyLikeWidget
   
   public int a()
   {
-    return 2131560750;
+    return 2131560773;
   }
   
   public QCircleReportBean a()
@@ -99,8 +99,8 @@ public class QCircleLightInteractPolyLikeWidget
     if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
       return QCircleReportBean.getReportBean("QCircleLightInteractPolyLikeWidget", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
     }
-    if (this.jdField_a_of_type_Zxl != null) {
-      return QCircleReportBean.getReportBean("QCircleLightInteractPolyLikeWidget", (QCircleReportBean)this.jdField_a_of_type_Zxl.getReportBean());
+    if (this.jdField_a_of_type_Aabg != null) {
+      return QCircleReportBean.getReportBean("QCircleLightInteractPolyLikeWidget", (QCircleReportBean)this.jdField_a_of_type_Aabg.getReportBean());
     }
     return null;
   }
@@ -112,11 +112,11 @@ public class QCircleLightInteractPolyLikeWidget
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131373873));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373878));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373880));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131373874));
-    this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout = ((QCircleTagFlowLayout)paramView.findViewById(2131373940));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131374006));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374011));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374013));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131374007));
+    this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout = ((QCircleTagFlowLayout)paramView.findViewById(2131374078));
   }
   
   public void a(Object paramObject) {}
@@ -133,9 +133,9 @@ public class QCircleLightInteractPolyLikeWidget
     }
   }
   
-  public void setReportBeanAgent(zxl<QCircleReportBean> paramzxl)
+  public void setReportBeanAgent(aabg<QCircleReportBean> paramaabg)
   {
-    this.jdField_a_of_type_Zxl = paramzxl;
+    this.jdField_a_of_type_Aabg = paramaabg;
   }
 }
 

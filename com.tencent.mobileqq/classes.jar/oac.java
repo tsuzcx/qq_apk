@@ -1,36 +1,24 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class oac
-  implements bkhw
+public class oac
+  implements aumz
 {
-  oac(nzz paramnzz, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bkho parambkho) {}
+  public oac(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    acvc.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
     {
-    default: 
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    case 0: 
-      agaa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
+      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
+      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
     }
-    agaa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-    this.jdField_a_of_type_Bkho.dismiss();
   }
+  
+  public void b() {}
 }
 
 

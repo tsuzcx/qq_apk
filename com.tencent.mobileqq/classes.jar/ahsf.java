@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-class ahsf
-  implements DialogInterface.OnCancelListener
+public class ahsf
+  implements Animator.AnimatorListener
 {
-  ahsf(ahsd paramahsd) {}
+  public ahsf(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.h) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
     }
+    SixCombolEffectView.a(this.a).start();
+    this.a.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 1;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

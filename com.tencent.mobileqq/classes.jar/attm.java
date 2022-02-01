@@ -1,30 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 class attm
-  implements DialogInterface.OnClickListener
+  extends atpa
 {
-  attm(attk paramattk, List paramList, attj paramattj) {}
+  attm(attl paramattl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (paramInt == 1)
+    Object localObject = this.a.a(paramInt + "", paramString, paramLong2 + "");
+    FileManagerEntity localFileManagerEntity = attl.a(this.a).a().a(paramLong2, paramLong1, paramString, paramInt);
+    if ((localObject != null) && (localFileManagerEntity != null))
     {
-      attk.a(this.jdField_a_of_type_Attk, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Attj != null) {
-        this.jdField_a_of_type_Attj.a(1, 0);
+      localObject = ((aulp)localObject).a();
+      if (localObject != null) {
+        ((aulo)localObject).a(0, paramInt, paramString, (int)(localFileManagerEntity.fProgress * 100.0F), new Bundle());
       }
     }
-    while (this.jdField_a_of_type_Attj == null) {
-      return;
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    paramString2 = this.a.a(paramInt1 + "", paramString1, paramLong2 + "");
+    FileManagerEntity localFileManagerEntity = attl.a(this.a).a().a(paramLong2, paramLong1, paramString1, paramInt1);
+    QLog.i("FMObserver<FileAssistant>", 1, "offline file download is finish. isSuc[" + paramBoolean + "sessionId[" + paramLong2 + "]");
+    if ((paramString2 != null) && (localFileManagerEntity != null) && (paramString2.a() != null)) {
+      paramString2.a().a(paramBoolean, paramInt1, paramString1, new Bundle());
     }
-    this.jdField_a_of_type_Attj.a(1, 1);
+    if (paramString2 != null) {
+      this.a.b(paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     attm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,16 @@
-public abstract interface auco
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
+
+class auco
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString, long paramLong);
+  auco(aucn paramaucn) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+  }
 }
 
 

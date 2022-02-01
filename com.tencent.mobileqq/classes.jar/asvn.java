@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class asvn
-  implements Comparator<FavFileInfo>
+  implements atcg
 {
-  asvn(asvm paramasvm) {}
+  asvn(asvi paramasvi) {}
   
-  public int a(FavFileInfo paramFavFileInfo1, FavFileInfo paramFavFileInfo2)
+  public void a(boolean paramBoolean, aswf paramaswf)
   {
-    if (paramFavFileInfo2.c > paramFavFileInfo1.c) {
-      return 1;
+    if (asvi.a(this.a) == null)
+    {
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo null");
+      return;
     }
-    if (paramFavFileInfo2.c < paramFavFileInfo1.c) {
-      return -1;
+    if (!paramBoolean) {
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc");
     }
-    return 0;
+    if (this.a.k())
+    {
+      ((asvg)asvi.a(this.a).a(127)).a(paramaswf);
+      QLog.i("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc:" + paramBoolean);
+      return;
+    }
+    QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT In extendfriend");
   }
 }
 

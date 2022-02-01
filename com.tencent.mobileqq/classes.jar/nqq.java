@@ -1,152 +1,200 @@
-import android.support.v4.util.MQLruCache;
-import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager.1;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager.2;
+import android.content.Context;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.biz.now.NowVideoController.2;
+import com.tencent.biz.now.NowVideoController.3;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import mqq.manager.Manager;
+import java.util.Iterator;
+import java.util.List;
 
 public class nqq
-  implements Manager
 {
-  private MQLruCache<Long, nqg> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(50);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private static Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static nqq jdField_a_of_type_Nqq;
+  private Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler = new nqr(this, Looper.getMainLooper());
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
+  List<WeakReference<NowVideoView>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public boolean a;
+  public boolean b = true;
   
-  public nqq(QQAppInterface paramQQAppInterface)
+  public static nqq a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static nqq a(QQAppInterface paramQQAppInterface)
-  {
-    return (nqq)paramQQAppInterface.getManager(173);
-  }
-  
-  public int a(boolean paramBoolean1, long paramLong1, long paramLong2, long paramLong3, ArrayList<String> paramArrayList, boolean paramBoolean2)
-  {
+    if (jdField_a_of_type_Nqq == null) {}
     try
     {
-      nqg localnqg1 = new nqg();
-      localnqg1.jdField_a_of_type_Long = paramLong1;
-      localnqg1.c = paramLong3;
-      localnqg1.b = paramLong2;
-      localnqg1.jdField_a_of_type_Boolean = paramBoolean1;
-      nqg localnqg2 = (nqg)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(Long.valueOf(paramLong1));
-      if (localnqg2 != null)
-      {
-        if (paramLong3 == 0L) {
-          localnqg1.b = localnqg2.b;
-        }
-        if (!paramBoolean1) {
-          localnqg1.a(localnqg2.a());
-        }
+      if (jdField_a_of_type_Nqq == null) {
+        jdField_a_of_type_Nqq = new nqq();
       }
-      localnqg1.b(paramArrayList);
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoCache puin:" + paramLong1 + " last_msg_id:" + localnqg1.b + " msg_cnt:" + paramLong3 + " isFirstEnter:" + paramBoolean1 + " isFromDB:" + paramBoolean2);
-      }
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(Long.valueOf(paramLong1), localnqg1);
-      return 0;
+      return jdField_a_of_type_Nqq;
     }
     finally {}
   }
   
-  public int a(byte[] paramArrayOfByte, boolean paramBoolean1, long paramLong1, long paramLong2, long paramLong3, ArrayList<String> paramArrayList, boolean paramBoolean2)
+  private void e()
   {
-    a(paramBoolean1, paramLong1, paramLong2, paramLong3, paramArrayList, paramBoolean2);
-    if ((!paramBoolean2) && (paramBoolean1) && (paramArrayOfByte != null) && (paramLong3 > 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoDB puin:" + paramLong1 + " last_msg_id:" + paramLong2 + " msg_cnt:" + paramLong3 + " isFirstEnter:" + paramBoolean1 + " isFromDB:" + paramBoolean2);
-      }
-      ThreadManager.post(new AccountDetailDynamicDataManager.1(this, paramLong1, paramArrayOfByte), 8, null, true);
+    QLog.d("NowVideoController", 2, "Check play()");
+    if (this.jdField_a_of_type_ComTencentWidgetAbsListView == null) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 0)) {
+      return;
     }
-    return 0;
-  }
-  
-  public ArrayList<nqh> a(long paramLong)
-  {
-    nqg localnqg = a(paramLong);
-    if (localnqg == null) {
-      return null;
-    }
-    return localnqg.a();
-  }
-  
-  public nqg a(long paramLong)
-  {
-    return (nqg)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(Long.valueOf(paramLong));
-  }
-  
-  public nqg a(String paramString)
-  {
-    long l2 = 0L;
-    try
+    AbsListView localAbsListView = this.jdField_a_of_type_ComTencentWidgetAbsListView;
+    int k = localAbsListView.getFirstVisiblePosition();
+    int m = localAbsListView.getLastVisiblePosition();
+    int i = k;
+    label54:
+    Object localObject;
+    int j;
+    if (i <= m)
     {
-      l1 = Long.parseLong(paramString);
-      return a(l1);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
+      localObject = localAbsListView.getChildAt(i - k);
+      if (localObject != null)
       {
-        long l1 = l2;
-        if (QLog.isColorLevel())
+        localObject = ((View)localObject).findViewById(2131378098);
+        if ((localObject instanceof NowVideoView))
         {
-          QLog.d("AccountDetailDynamicDataManager", 2, "getAccountDetailDynamicInfoFromCache puin:" + paramString);
-          l1 = l2;
+          localObject = (NowVideoView)localObject;
+          ((NowVideoView)localObject).getGlobalVisibleRect(jdField_a_of_type_AndroidGraphicsRect);
+          ((NowVideoView)localObject).getHeight();
+          if (jdField_a_of_type_AndroidGraphicsRect.height() <= 0) {
+            break label156;
+          }
+          j = 1;
+          label125:
+          if (!a(((NowVideoView)localObject).getContext(), (NowVideoView)localObject)) {
+            break label189;
+          }
+          if (j == 0) {
+            break label161;
+          }
+          ((NowVideoView)localObject).a(true);
         }
       }
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, anry paramanry)
-  {
-    ArrayList localArrayList = a(paramLong);
-    if ((localArrayList == null) || (localArrayList.isEmpty())) {
-      ThreadManager.post(new AccountDetailDynamicDataManager.2(this, paramLong, paramQQAppInterface, paramanry), 8, null, true);
-    }
-  }
-  
-  public boolean a(long paramLong, byte[] paramArrayOfByte)
-  {
-    DynamicInfoEntity localDynamicInfoEntity2 = (DynamicInfoEntity)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(DynamicInfoEntity.class, paramLong);
-    DynamicInfoEntity localDynamicInfoEntity1 = localDynamicInfoEntity2;
-    if (localDynamicInfoEntity2 == null) {
-      localDynamicInfoEntity1 = new DynamicInfoEntity();
-    }
-    localDynamicInfoEntity1.puin = String.valueOf(paramLong);
-    localDynamicInfoEntity1.dynamicInfoData = paramArrayOfByte;
-    return a(localDynamicInfoEntity1);
-  }
-  
-  protected boolean a(Entity paramEntity)
-  {
-    boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      if (paramEntity.getStatus() == 1001) {
-        bool = true;
+      i += 1;
+      break label54;
+      break;
+      label156:
+      j = 0;
+      break label125;
+      label161:
+      localObject = ((NowVideoView)localObject).a();
+      if ((localObject != null) && (!((QQLiveDrawable)localObject).isPaused()))
+      {
+        ((QQLiveDrawable)localObject).pause();
+        continue;
+        label189:
+        ((NowVideoView)localObject).a();
       }
     }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-      return bool;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
   }
   
-  public void onDestroy()
+  public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 200L);
+    if (QLog.isColorLevel()) {
+      QLog.d("NowVideoController", 2, "#requestPlayCheck():# ");
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a())) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1008) || (this.jdField_a_of_type_ComTencentWidgetAbsListView == null)) {
+      return;
+    }
+    int i = this.jdField_a_of_type_ComTencentWidgetAbsListView.getFirstVisiblePosition();
+    int j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.postDelayed(new NowVideoController.3(this, i, j), paramLong);
+  }
+  
+  public void a(NowVideoView paramNowVideoView)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramNowVideoView));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, AbsListView paramAbsListView, SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
+    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentWidgetAbsListView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.b = true;
+      e();
+      return;
+    }
+    this.b = false;
+  }
+  
+  public boolean a(Context paramContext, NowVideoView paramNowVideoView)
+  {
+    return bhnv.h(paramContext);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NowVideoController", 2, "onNetWifi2Mobile(): ====>");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentWidgetAbsListView == null) || (this.jdField_a_of_type_AndroidContentContext == null)) {}
+    while (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    d();
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if (localWeakReference.get() != null) {
+        ((NowVideoView)localWeakReference.get()).e();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView = null;
+    this.b = true;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+  }
+  
+  public void d()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a())) {}
+    while ((this.jdField_a_of_type_ComTencentWidgetAbsListView == null) || (BaseActivity.sTopActivity == null)) {
+      return;
+    }
+    int i = this.jdField_a_of_type_ComTencentWidgetAbsListView.getFirstVisiblePosition();
+    int j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition();
+    BaseActivity.sTopActivity.runOnUiThread(new NowVideoController.2(this, i, j));
   }
 }
 

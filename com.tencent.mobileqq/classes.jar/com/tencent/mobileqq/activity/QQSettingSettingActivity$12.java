@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import bcst;
+import anyw;
+import com.tencent.mobileqq.data.Card;
 
 class QQSettingSettingActivity$12
   implements Runnable
 {
-  QQSettingSettingActivity$12(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  QQSettingSettingActivity$12(QQSettingSettingActivity paramQQSettingSettingActivity, anyw paramanyw, String paramString) {}
   
   public void run()
   {
-    bcst.b(this.this$0.app, "dc00898", "", "", "0X8008122", "0X8008122", 0, 0, "", "", "", "");
+    Card localCard = this.jdField_a_of_type_Anyw.b(this.jdField_a_of_type_JavaLangString);
+    this.this$0.runOnUiThread(new QQSettingSettingActivity.12.1(this, localCard));
   }
 }
 

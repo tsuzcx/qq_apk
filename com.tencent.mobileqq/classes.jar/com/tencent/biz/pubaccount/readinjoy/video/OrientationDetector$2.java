@@ -3,22 +3,22 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
-import ruy;
-import rvb;
-import ryx;
+import rlu;
+import rlx;
+import rpt;
 
 public class OrientationDetector$2
   implements Runnable
 {
-  public OrientationDetector$2(ruy paramruy, Activity paramActivity) {}
+  public OrientationDetector$2(rlu paramrlu, Activity paramActivity) {}
   
   public void run()
   {
-    ruy.a(this.this$0, this.a.getRequestedOrientation());
-    ruy.a(this.this$0, new rvb(this.this$0, new Handler(Looper.getMainLooper())));
-    ruy.a(this.this$0).a();
-    ruy.a(this.this$0, ryx.a(this.a));
-    this.this$0.a(ruy.a(this.this$0));
+    rlu.a(this.this$0, this.a.getRequestedOrientation());
+    rlu.a(this.this$0, new rlx(this.this$0, new Handler(Looper.getMainLooper())));
+    rlu.a(this.this$0).a();
+    rlu.a(this.this$0, rpt.a(this.a));
+    this.this$0.a(rlu.a(this.this$0));
   }
 }
 

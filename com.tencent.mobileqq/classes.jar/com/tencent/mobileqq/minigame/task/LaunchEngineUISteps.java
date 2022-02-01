@@ -5,8 +5,8 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.mini.tfs.BaseTask;
 import com.tencent.mobileqq.mini.tfs.TaskExecutionStatics;
 import com.tencent.mobileqq.mini.tfs.TaskSteps;
-import com.tencent.mobileqq.triton.sdk.statics.EngineInitStatistic;
-import com.tencent.mobileqq.triton.sdk.statics.GameLaunchStatistic;
+import com.tencent.mobileqq.triton.statistic.EngineInitStatistic;
+import com.tencent.mobileqq.triton.statistic.GameLaunchStatistic;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import kotlin.Metadata;
@@ -16,7 +16,7 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/task/LaunchEngineUISteps;", "Lcom/tencent/mobileqq/mini/tfs/BaseTask;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "launchGameBeginTime", "", "steps", "Lcom/tencent/mobileqq/mini/tfs/TaskSteps;", "execute", "", "getName", "", "getSubTaskExecutionStatics", "", "Lcom/tencent/mobileqq/mini/tfs/TaskExecutionStatics;", "getTotalRunDurationMs", "onFirstFrame", "onGameLaunched", "statics", "Lcom/tencent/mobileqq/triton/sdk/statics/GameLaunchStatistic;", "onRuntimeInitDone", "Companion", "FirstFrame", "InitEngine", "LaunchGame", "ScriptTask", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/task/LaunchEngineUISteps;", "Lcom/tencent/mobileqq/mini/tfs/BaseTask;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "launchGameBeginTime", "", "steps", "Lcom/tencent/mobileqq/mini/tfs/TaskSteps;", "execute", "", "getName", "", "getSubTaskExecutionStatics", "", "Lcom/tencent/mobileqq/mini/tfs/TaskExecutionStatics;", "getTotalRunDurationMs", "onFirstFrame", "onGameLaunched", "statics", "Lcom/tencent/mobileqq/triton/statistic/GameLaunchStatistic;", "onRuntimeInitDone", "Companion", "FirstFrame", "InitEngine", "LaunchGame", "ScriptTask", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class LaunchEngineUISteps
   extends BaseTask
 {
@@ -62,25 +62,18 @@ public final class LaunchEngineUISteps
   {
     Intrinsics.checkParameterIsNotNull(paramGameLaunchStatistic, "statics");
     long l1 = SystemClock.uptimeMillis() - this.launchGameBeginTime;
-    long l2 = l1 - paramGameLaunchStatistic.launchTimesMs;
-    Object localObject1 = this.steps.getCurrentStep();
-    if (localObject1 == null) {
+    long l2 = l1 - paramGameLaunchStatistic.getLaunchTimesMs();
+    BaseTask localBaseTask = this.steps.getCurrentStep();
+    if (localBaseTask == null) {
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.minigame.task.LaunchEngineUISteps.InitEngine");
     }
-    localObject1 = (LaunchEngineUISteps.InitEngine)localObject1;
-    Object localObject2 = paramGameLaunchStatistic.engineInitStatistic;
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "statics.engineInitStatistic");
-    ((LaunchEngineUISteps.InitEngine)localObject1).onTaskSucceed((EngineInitStatistic)localObject2, l2);
-    localObject1 = this.steps.getCurrentStep();
-    if (localObject1 == null) {
+    ((LaunchEngineUISteps.InitEngine)localBaseTask).onTaskSucceed(paramGameLaunchStatistic.getEngineInitStatistic(), l2);
+    localBaseTask = this.steps.getCurrentStep();
+    if (localBaseTask == null) {
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.minigame.task.LaunchEngineUISteps.LaunchGame");
     }
-    localObject1 = (LaunchEngineUISteps.LaunchGame)localObject1;
-    long l3 = paramGameLaunchStatistic.launchTimesMs;
-    localObject2 = paramGameLaunchStatistic.gameScriptLoadStatics;
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "statics.gameScriptLoadStatics");
-    ((LaunchEngineUISteps.LaunchGame)localObject1).onTaskSucceed(l3, (List)localObject2);
-    QLog.i("LaunchEngineUISteps", 1, StringsKt.trimIndent("onGameLaunched launchGameEnd \n                        totalTimeSpendInLaunch:" + l1 + " \n                        effectivelyInitEngineTime:" + l2 + " \n                        engineInitTime:" + paramGameLaunchStatistic.engineInitStatistic.totalInitTimesMs + " \n                        launchTime:" + paramGameLaunchStatistic.launchTimesMs + "\n                    "));
+    ((LaunchEngineUISteps.LaunchGame)localBaseTask).onTaskSucceed(paramGameLaunchStatistic.getLaunchTimesMs(), paramGameLaunchStatistic.getGameScriptLoadStatics());
+    QLog.i("LaunchEngineUISteps", 1, StringsKt.trimIndent("onGameLaunched launchGameEnd \n                        totalTimeSpendInLaunch:" + l1 + " \n                        effectivelyInitEngineTime:" + l2 + " \n                        engineInitTime:" + paramGameLaunchStatistic.getEngineInitStatistic().getTotalInitTimesMs() + " \n                        launchTime:" + paramGameLaunchStatistic.getLaunchTimesMs() + "\n                    "));
   }
   
   public final void onRuntimeInitDone()

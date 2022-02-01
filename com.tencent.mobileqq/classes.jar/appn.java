@@ -1,17 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class appn
-  implements ArkAppCacheMgr.OnGetAppIcon
+public abstract interface appn
 {
-  appn(appm paramappm) {}
+  public abstract void a(int paramInt);
   
-  public void callback(String paramString, Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      appj.a(this.a.jdField_a_of_type_Appj, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

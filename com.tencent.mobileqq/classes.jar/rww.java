@@ -1,9 +1,34 @@
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 class rww
+  implements rvw
 {
-  public int a;
-  public long a;
-  public int b = 2147483647;
-  public long b;
+  rww(rwu paramrwu) {}
+  
+  public List<rld> a(List<VideoInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (VideoInfo)paramList.next();
+        if (localObject != null)
+        {
+          localObject = rll.a((VideoInfo)localObject);
+          if (localObject != null) {
+            localArrayList.add(sel.a((BaseArticleInfo)localObject, true));
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
 }
 
 

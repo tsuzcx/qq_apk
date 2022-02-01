@@ -1,98 +1,123 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
-class aosr
-  implements apte
+public class aosr
 {
-  int jdField_a_of_type_Int = 0;
-  final long jdField_a_of_type_Long = AudioHelper.b();
-  long jdField_b_of_type_Long = System.currentTimeMillis();
+  private static LinkedList<aosr> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  int c;
   
-  aosr(aosq paramaosq, AppInterface paramAppInterface, String paramString, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt)
+  /* Error */
+  public static aosr a(int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)
   {
-    boolean bool2 = false;
-    if ((paramInt == 100) || (paramInt == 0) || (Math.abs(paramInt - this.jdField_a_of_type_Int) >= 10)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      long l = System.currentTimeMillis();
-      if (l - this.jdField_b_of_type_Long >= 1000L) {
-        bool2 = true;
-      }
-      if ((QLog.isDevelopLevel()) && ((bool2) || (bool1))) {
-        QLog.w(this.jdField_a_of_type_Aosq.jdField_a_of_type_JavaLangString, 1, "onDownloadUpdate, md5[" + paramString2 + "], activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], curPercent[" + paramInt + "], lastPercent[" + this.jdField_a_of_type_Int + "], needNotify[" + bool1 + "], needNotify2[" + bool2 + "]");
-      }
-      if (bool1) {
-        this.jdField_a_of_type_Int = paramInt;
-      }
-      if (bool2) {
-        this.jdField_b_of_type_Long = l;
-      }
-      if ((bool1) || (bool2)) {
-        this.jdField_a_of_type_Aosq.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, paramInt);
-      }
-      return;
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 21	aosr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: invokevirtual 28	java/util/LinkedList:size	()I
+    //   9: ifle +53 -> 62
+    //   12: getstatic 21	aosr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   15: iconst_0
+    //   16: invokevirtual 32	java/util/LinkedList:remove	(I)Ljava/lang/Object;
+    //   19: checkcast 2	aosr
+    //   22: astore 6
+    //   24: aload 6
+    //   26: iload_0
+    //   27: putfield 34	aosr:jdField_a_of_type_Int	I
+    //   30: aload 6
+    //   32: aload_1
+    //   33: putfield 36	aosr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   36: aload 6
+    //   38: lload_2
+    //   39: putfield 38	aosr:jdField_a_of_type_Long	J
+    //   42: aload 6
+    //   44: iload 4
+    //   46: putfield 40	aosr:b	I
+    //   49: aload 6
+    //   51: iload 5
+    //   53: putfield 42	aosr:c	I
+    //   56: ldc 2
+    //   58: monitorexit
+    //   59: aload 6
+    //   61: areturn
+    //   62: new 2	aosr
+    //   65: dup
+    //   66: invokespecial 43	aosr:<init>	()V
+    //   69: astore 6
+    //   71: goto -47 -> 24
+    //   74: astore_1
+    //   75: ldc 2
+    //   77: monitorexit
+    //   78: aload_1
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	paramInt1	int
+    //   0	80	1	paramString	String
+    //   0	80	2	paramLong	long
+    //   0	80	4	paramInt2	int
+    //   0	80	5	paramInt3	int
+    //   22	48	6	localaosr	aosr
+    // Exception table:
+    //   from	to	target	type
+    //   3	24	74	finally
+    //   24	56	74	finally
+    //   62	71	74	finally
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  /* Error */
+  public static void a(java.util.List<aosr> paramList)
   {
-    int i;
-    if ((paramObject instanceof aosk))
-    {
-      paramString1 = (aosk)paramObject;
-      paramString1.c = System.currentTimeMillis();
-      paramObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-      boolean bool = false;
-      if (paramInt == 0) {
-        bool = aosq.a(paramString1);
-      }
-      QLog.w(this.jdField_a_of_type_Aosq.jdField_a_of_type_JavaLangString, 1, "onDownloadFinish, md5[" + paramString2 + "], errCode[" + paramInt + "], check[" + bool + "], path[" + paramString3 + "], id[" + paramString1.e + "], request[" + paramString1.jdField_a_of_type_Long + "], Begin[" + paramString1.jdField_b_of_type_Long + "], End[" + paramString1.c + "], 调度耗时[" + (paramString1.jdField_b_of_type_Long - paramString1.jdField_a_of_type_Long) + "], 下载耗时[" + (paramString1.c - paramString1.jdField_b_of_type_Long) + "], fromPreCover[" + paramString1.d + "], seq[" + this.jdField_a_of_type_Long + "], Uin[" + paramObject + "], zipItem[" + paramString1 + "]");
-      if (paramString1.jdField_a_of_type_Apte == this) {
-        paramString1.jdField_a_of_type_Apte = null;
-      }
-      i = paramInt;
-      if (paramInt == 0)
-      {
-        i = paramInt;
-        if (!bool) {
-          i = -5;
-        }
-      }
-      if (i != 0) {
-        break label339;
-      }
-      paramString1.a(2);
-      bguf.a(paramObject, paramString1.e, paramString1.jdField_a_of_type_Int, paramString1.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Aosq.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
-      paramString1.d = -1;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aosq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString1.jdField_a_of_type_Boolean, paramString1.e, paramString1.jdField_a_of_type_Int + 1);
-      return;
-      label339:
-      if (i == 100)
-      {
-        paramString1.a(2);
-        this.jdField_a_of_type_Aosq.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
-      }
-      else
-      {
-        paramString1.a(-1);
-        this.jdField_a_of_type_Aosq.a(paramString1.e, paramString1.jdField_a_of_type_Int, -1);
-      }
-    }
-  }
-  
-  public void b() {}
-  
-  protected void finalize()
-  {
-    super.finalize();
-    QLog.w(this.jdField_a_of_type_Aosq.jdField_a_of_type_JavaLangString, 1, "ZipItem.finalize, activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "]");
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 21	aosr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: invokevirtual 28	java/util/LinkedList:size	()I
+    //   9: istore_1
+    //   10: iload_1
+    //   11: bipush 100
+    //   13: if_icmplt +7 -> 20
+    //   16: ldc 2
+    //   18: monitorexit
+    //   19: return
+    //   20: aload_0
+    //   21: invokeinterface 50 1 0
+    //   26: astore_0
+    //   27: aload_0
+    //   28: invokeinterface 56 1 0
+    //   33: ifeq -17 -> 16
+    //   36: aload_0
+    //   37: invokeinterface 60 1 0
+    //   42: checkcast 2	aosr
+    //   45: astore_2
+    //   46: getstatic 21	aosr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   49: aload_2
+    //   50: invokevirtual 64	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   53: pop
+    //   54: getstatic 21	aosr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   57: invokevirtual 28	java/util/LinkedList:size	()I
+    //   60: istore_1
+    //   61: iload_1
+    //   62: bipush 100
+    //   64: if_icmplt -37 -> 27
+    //   67: goto -51 -> 16
+    //   70: astore_0
+    //   71: ldc 2
+    //   73: monitorexit
+    //   74: aload_0
+    //   75: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	76	0	paramList	java.util.List<aosr>
+    //   9	56	1	i	int
+    //   45	5	2	localaosr	aosr
+    // Exception table:
+    //   from	to	target	type
+    //   3	10	70	finally
+    //   20	27	70	finally
+    //   27	61	70	finally
   }
 }
 

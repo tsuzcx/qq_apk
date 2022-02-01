@@ -2,7 +2,7 @@ package com.tencent.open.filedownload.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import anni;
+import anzj;
 
 public class NormalDownloadButton
   extends ApkFileDownloadButton
@@ -24,15 +24,15 @@ public class NormalDownloadButton
   
   protected String a(int paramInt)
   {
-    return anni.a(2131706367);
+    return anzj.a(2131706474);
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return anni.a(2131706368);
+      return anzj.a(2131706475);
     }
-    return anni.a(2131706366);
+    return anzj.a(2131706473);
   }
 }
 

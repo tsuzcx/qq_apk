@@ -1,27 +1,17 @@
 package com.tencent.superplayer.datatransport;
 
-import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
-import com.tencent.superplayer.api.SuperPlayerVideoInfo;
-import com.tencent.superplayer.api.TVideoNetInfo;
-import com.tencent.superplayer.vinfo.VInfoGetter.VInfoGetterListener;
-import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
+import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.thumbplayer.api.proxy.ITPPreloadProxy;
 
 class SPlayerPreDownloaderImpl$1
-  implements VInfoGetter.VInfoGetterListener
+  implements Runnable
 {
-  SPlayerPreDownloaderImpl$1(SPlayerPreDownloaderImpl paramSPlayerPreDownloaderImpl, TPDownloadParamData paramTPDownloadParamData, int paramInt) {}
+  SPlayerPreDownloaderImpl$1(SPlayerPreDownloaderImpl paramSPlayerPreDownloaderImpl, int paramInt1, int paramInt2) {}
   
-  public void onGetVInfoFailed(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, int paramInt1, int paramInt2, String paramString)
+  public void run()
   {
-    if (SPlayerPreDownloaderImpl.access$100(this.this$0) != null) {
-      SPlayerPreDownloaderImpl.access$100(this.this$0).onPrepareError(this.val$taskId);
-    }
-  }
-  
-  public void onGetVInfoSuccess(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
-  {
-    this.val$paramData.setFileDuration(paramSuperPlayerVideoInfo.getTVideoNetInfo().getVideoDuration());
-    SPlayerPreDownloaderImpl.access$000(this.this$0, paramSuperPlayerVideoInfo, this.val$paramData, this.val$taskId);
+    LogUtil.d(SPlayerPreDownloaderImpl.TAG, "stopPreDownload() taskIdForTPProxy=" + this.val$taskid);
+    SPlayerPreDownloaderImpl.access$000(this.this$0).stopPreload(this.val$taskIdForTPProxy);
   }
 }
 

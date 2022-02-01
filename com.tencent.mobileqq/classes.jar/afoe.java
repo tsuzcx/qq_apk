@@ -1,30 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afoe
-  implements bkhw
+  implements View.OnClickListener
 {
-  public afoe(TroopRequestActivity paramTroopRequestActivity, bkho parambkho) {}
+  public afoe(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    }
-    if (bgnt.d(BaseApplication.getContext())) {
-      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
-    }
-    for (;;)
-    {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
-      break;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131693948, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
-    }
+    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_GROUP_MSG");
+    bdll.b(null, "CliOper", "", "", "0X800AC8A", "0X800AC8A", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

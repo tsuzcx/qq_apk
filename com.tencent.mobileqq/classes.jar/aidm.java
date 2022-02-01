@@ -1,99 +1,137 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class aidm
-  implements BusinessObserver
+public class aidm
+  extends atpa
 {
-  aidm(aidf paramaidf) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aidm(AIOImageProviderService paramAIOImageProviderService, QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  protected void a(atzl paramatzl)
+  {
+    long l = paramatzl.a;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l);
+    aiec localaiec = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
+    if ((localFileManagerEntity == null) || (localaiec == null))
     {
-      try
+      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + localFileManagerEntity + "] callback[" + localaiec + "]");
+      return;
+    }
+    int i = 18;
+    if (paramatzl.jdField_b_of_type_Int == 5) {
+      i = 16;
+    }
+    if (auog.a(paramatzl.jdField_b_of_type_JavaLangString))
+    {
+      localaiec.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 1, paramatzl.jdField_b_of_type_JavaLangString, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, paramatzl.jdField_b_of_type_JavaLangString);
+      return;
+    }
+    paramatzl = "";
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("errorType", "thumb_download");
+      ((JSONObject)localObject).put("errorCode", localFileManagerEntity.thumbInvalidCode);
+      localObject = ((JSONObject)localObject).toString();
+      paramatzl = (atzl)localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label452;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt != 0)
-        {
-          paramBundle = paramBundle.optString("msg");
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramBundle, 0).b(this.a.a());
-            QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + ", op:" + "1" + ", errMsg:" + paramBundle);
-            return;
-          }
-          paramBoolean = false;
-          if (!paramBoolean) {
-            QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, this.a.jdField_a_of_type_AndroidContentContext.getString(2131693914), 0).b(this.a.a());
-          }
-          if (this.a.Y == paramBoolean) {
-            continue;
-          }
-          this.a.Y = paramBoolean;
-          this.a.m();
-          return;
-        }
-        localObject = paramBundle.getJSONObject("result");
-        paramInt = paramBundle.optInt("retcode");
-        if (paramInt != 0) {
-          continue;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        Object localObject;
-        boolean bool = false;
-        continue;
-        bool = false;
-        continue;
-      }
-      try
-      {
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, this.a.jdField_a_of_type_AndroidContentContext.getString(2131693915), 0).b(this.a.a());
-        bool = true;
-        paramBoolean = bool;
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "result:" + ((JSONObject)localObject).toString());
-          paramBoolean = bool;
-        }
-        catch (Exception paramBundle) {}
-      }
-      catch (Exception paramBundle)
-      {
-        bool = true;
-        continue;
-      }
-      paramBoolean = bool;
-      if (QLog.isColorLevel())
-      {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "sendOperateFollowUser Exception");
-        paramBoolean = bool;
-        continue;
-        label452:
-        paramBoolean = false;
+        localJSONException.printStackTrace();
       }
     }
+    localaiec.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 2, paramatzl, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, "I:E");
+  }
+  
+  protected void a(atzl paramatzl, int paramInt)
+  {
+    long l = paramatzl.a;
+    paramatzl = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l);
+    aiec localaiec = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
+    if ((paramatzl == null) || (localaiec == null))
+    {
+      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + paramatzl + "] callback[" + localaiec + "]");
+      return;
+    }
+    localaiec.a(paramatzl.uniseq, paramatzl.status, 18, paramInt, paramatzl.fileSize, false);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    aiec localaiec = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
+    if ((paramString == null) || (localaiec == null)) {
+      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + paramString + "] callback[" + localaiec + "]");
+    }
+    while (paramString.nFileType != 0) {
+      return;
+    }
+    localaiec.a(paramLong1, 0, 20, (int)(paramString.fProgress * 10000.0F), paramString.fileSize, false);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    aiec localaiec = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
+    if ((paramString1 == null) || (localaiec == null)) {
+      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + paramString1 + "] callback[" + localaiec + "]");
+    }
+    label217:
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean) {
+          break;
+        }
+        if (paramString1.nFileType == 0)
+        {
+          localaiec.a(paramLong1, paramString1.status, 20, 1, paramString1.getFilePath(), false);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, paramString1.getFilePath());
+          return;
+        }
+      } while (paramString1.nFileType != 2);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong1)))
+      {
+        paramString2 = BaseApplicationImpl.sApplication.getBaseContext();
+        if (paramString2 == null) {
+          break label217;
+        }
+        aunj.a(paramString2, paramString1.getFilePath());
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramLong1));
+        localaiec.a(paramLong1, paramString1.status, 269484034, 1, paramString1.getFilePath(), false);
+        return;
+        QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [c2c file save album].");
+      }
+      if ((paramInt2 == -7003) || (paramInt2 == -6101)) {
+        paramString1.status = 16;
+      }
+      if (paramString1.nFileType == 0)
+      {
+        localaiec.a(paramLong1, paramString1.status, 20, 2, paramString2, false);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, "I:E");
+        return;
+      }
+    } while (paramString1.nFileType != 2);
+    localaiec.a(paramLong1, paramString1.status, 269484034, 2, paramString2, false);
   }
 }
 

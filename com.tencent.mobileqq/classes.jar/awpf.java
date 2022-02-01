@@ -1,78 +1,127 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
-import java.util.List;
 
 public class awpf
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
+  extends awow
 {
-  public View a;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private awpg jdField_a_of_type_Awpg;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  
-  public awpf(awpe paramawpe, View paramView, awpg paramawpg)
+  public awpf(BaseChatPie paramBaseChatPie)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368891));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839088);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368826));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131368900));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(awpe.a(paramawpe).getResources().getColor(2131166993));
-    this.jdField_a_of_type_Awpg = paramawpg;
-    paramawpe.a(this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
-    paramView.setOnClickListener(this);
-    paramView.setTag(this);
+    super(paramBaseChatPie);
   }
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static awpf a(BaseChatPie paramBaseChatPie)
   {
-    if (this.jdField_a_of_type_Awpg != null)
-    {
-      int i = getAdapterPosition();
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBackup.BackupAndMigrateListAdapter", 2, "BackupAndMigrateItemHolder onCheckedChanged: " + i + ", isChecked = " + paramBoolean);
-      }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-      awpe.a(this.jdField_a_of_type_Awpe).setValueAt(i, Boolean.valueOf(paramBoolean));
-      this.jdField_a_of_type_Awpg.a(this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), (RecentBaseData)awpe.a(this.jdField_a_of_type_Awpe).get(i));
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    return (awpf)paramBaseChatPie.a(33);
   }
   
-  public void onClick(View paramView)
+  public void a()
   {
-    CheckBox localCheckBox;
-    if (this.jdField_a_of_type_Awpg != null)
-    {
-      bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (bool) {
-        break label39;
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof TroopChatPie)) {
+      ((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bF();
     }
-    label39:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.i("BaseListenTogetherPanel_Troop", 2, "onShowTroopType hasAnythingDiglog2Show:" + paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(52)).c(this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString);
+    boolean bool = false;
+    if (localTroopInfo != null) {
+      bool = localTroopInfo.isAdmin();
+    }
+    return bool;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.jdField_a_of_type_Awpc.c)) {
+      return true;
+    }
+    return a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_Awpc.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    if (this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString = "";
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c();
+    this.jdField_a_of_type_Awpb = new awpb();
+    this.jdField_a_of_type_Awpb.jdField_a_of_type_JavaLangString = "Grp_AIO";
+    int i = awml.a(str, this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Awpb.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_Awpb.b = this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.c = true;
+  }
+  
+  protected void h()
+  {
+    if (!this.b) {}
+    for (;;)
     {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if ((this.jdField_a_of_type_Awpc.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Awpc.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession != null) && (this.jdField_a_of_type_Awpc.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.c) && (this.jdField_a_of_type_Awpc.b != 3)) {
+        if (this.jdField_a_of_type_Awpc.jdField_a_of_type_Boolean) {
+          try
+          {
+            if (awml.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "listen_together_allow_start_admin_guide", false, false)) {
+              continue;
+            }
+            awml.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "listen_together_allow_start_admin_guide", true, false);
+            bhpc localbhpc = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230);
+            localbhpc.setMessage("一起听歌允许群成员开启，你可以在一起听歌-设置 中关闭此权限。").setTitle("一起听歌功能更新").setPositiveButton("知道了", new awpg(this, localbhpc));
+            localbhpc.show();
+            return;
+          }
+          catch (Exception localException1)
+          {
+            awml.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "listen_together_allow_start_admin_guide", true, false);
+            QLog.e("BaseListenTogetherPanel_Troop", 1, "showAllowMemStartGuide, admin exception:", localException1);
+            return;
+          }
+        } else {
+          try
+          {
+            Object localObject = awml.a(this.jdField_a_of_type_Awpc.jdField_a_of_type_Int, this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString);
+            if (!awml.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, (String)localObject, false, false))
+            {
+              awml.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, (String)localObject, true, false);
+              localObject = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230);
+              ((bhpc)localObject).setMessage("本群支持群成员开启一起听歌功能").setTitle("一起听歌功能更新").setPositiveButton("知道了", new awph(this, (bhpc)localObject));
+              ((bhpc)localObject).show();
+              return;
+            }
+          }
+          catch (Exception localException2)
+          {
+            String str = awml.a(this.jdField_a_of_type_Awpc.jdField_a_of_type_Int, this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString);
+            awml.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, str, true, false);
+            QLog.e("BaseListenTogetherPanel_Troop", 1, "showAllowMemStartGuide mem exception:", localException2);
+          }
+        }
+      }
     }
   }
 }

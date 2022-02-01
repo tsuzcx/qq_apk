@@ -1,19 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import android.os.Bundle;
 
 public class azie
-  implements DialogInterface.OnClickListener
+  implements anui
 {
-  public azie(StickyNotePublishFragment paramStickyNotePublishFragment, azib paramazib) {}
+  public void a(boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void c(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void d(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void e(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.b.obtainMessage(3, this.jdField_a_of_type_Azib).sendToTarget();
-    bcst.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 1, 0, "0", "0", "", "");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (Bundle)paramObject);
+      return;
+    case 2: 
+      c(paramBoolean, (Bundle)paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, (Bundle)paramObject);
+      return;
+    case 4: 
+      e(paramBoolean, (Bundle)paramObject);
+      return;
+    case 5: 
+      a(paramBoolean);
+      return;
+    case 6: 
+      b(paramBoolean);
+      return;
+    }
+    b(paramBoolean, (Bundle)paramObject);
   }
 }
 

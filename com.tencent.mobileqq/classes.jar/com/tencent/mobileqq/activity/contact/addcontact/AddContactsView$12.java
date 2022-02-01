@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import anpk;
+import aobl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ class AddContactsView$12
   
   public void run()
   {
-    Object localObject = (anpk)this.this$0.a.getManager(159);
-    int i = ((anpk)localObject).a();
-    localObject = ((anpk)localObject).b();
+    Object localObject = (aobl)this.this$0.a.getManager(159);
+    int i = ((aobl)localObject).a();
+    localObject = ((aobl)localObject).b();
     ThreadManager.getUIHandler().post(new AddContactsView.12.1(this, i, (ArrayList)localObject));
   }
 }

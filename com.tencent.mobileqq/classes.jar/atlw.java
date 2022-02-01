@@ -1,43 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-final class atlw
-  extends niv
+public class atlw
+  implements bllo
 {
-  atlw(atlx paramatlx) {}
+  public atlw(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (paramInt == 0) {
-      paramBundle = new oidb_0x6e7.RspBody();
-    }
-    do
+    if ((paramInt == this.a.jdField_a_of_type_Atjm.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
-        }
-        if (this.a != null) {
-          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
-        }
-        return;
+      if (!this.a.b()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
-      }
-    } while (this.a == null);
-    this.a.a(0, -1);
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
 }
 

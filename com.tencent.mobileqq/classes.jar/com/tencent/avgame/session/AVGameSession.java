@@ -1,12 +1,12 @@
 package com.tencent.avgame.session;
 
-import bjcq;
+import bkdp;
 import com.tencent.qav.QavDef.MultiUserInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lnn;
+import lob;
 
 public class AVGameSession
 {
@@ -14,7 +14,7 @@ public class AVGameSession
   public long a;
   private AVGameSession.SessionStatus jdField_a_of_type_ComTencentAvgameSessionAVGameSession$SessionStatus = AVGameSession.SessionStatus.NONE;
   public String a;
-  public final ArrayList<lnn> a;
+  public final ArrayList<lob> a;
   private final List<AVGameUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList(8);
   public boolean a;
   public int b;
@@ -131,7 +131,7 @@ public class AVGameSession
   {
     if (this.jdField_d_of_type_Int != paramInt)
     {
-      bjcq.d("AVGameSession", "updateStageStatus, [" + this.jdField_d_of_type_Int + "->" + paramInt + "]");
+      bkdp.d("AVGameSession", "updateStageStatus, [" + this.jdField_d_of_type_Int + "->" + paramInt + "]");
       this.jdField_d_of_type_Int = paramInt;
     }
   }
@@ -143,7 +143,7 @@ public class AVGameSession
     for (this.c &= (paramInt ^ 0xFFFFFFFF);; this.c |= paramInt)
     {
       if (i != this.c) {
-        bjcq.d("AVGameSession", "setLocalVideoFlag, mask[" + paramInt + "], clear[" + paramBoolean + "], [" + i + "->" + this.c + "]");
+        bkdp.d("AVGameSession", "setLocalVideoFlag, mask[" + paramInt + "], clear[" + paramBoolean + "], [" + i + "->" + this.c + "]");
       }
       return;
     }
@@ -163,7 +163,7 @@ public class AVGameSession
   
   public void a(AVGameSession.SessionStatus paramSessionStatus)
   {
-    bjcq.d("AVGameSession", "setSessionStatus. old status = " + this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession$SessionStatus + ", new status = " + paramSessionStatus);
+    bkdp.d("AVGameSession", "setSessionStatus. old status = " + this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession$SessionStatus + ", new status = " + paramSessionStatus);
     this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession$SessionStatus = paramSessionStatus;
   }
   
@@ -203,12 +203,12 @@ public class AVGameSession
       i += 1;
       continue;
       label180:
-      bjcq.d("AVGameSession", "updateUserPos cur[" + localLong + "] not exist. ");
+      bkdp.d("AVGameSession", "updateUserPos cur[" + localLong + "] not exist. ");
       continue;
       label213:
       if (localArrayList.size() > 0)
       {
-        bjcq.d("AVGameSession", "updateUserPos, user[" + localArrayList.size() + "] not in list.");
+        bkdp.d("AVGameSession", "updateUserPos, user[" + localArrayList.size() + "] not in list.");
         this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
       }
       return;

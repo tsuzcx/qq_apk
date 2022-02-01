@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.contacts.alphabet.IndexBar;
-import com.tencent.widget.AbsListView;
-import java.util.Arrays;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import mqq.app.QQPermissionCallback;
 
 class bfjt
-  implements bkhe
+  implements QQPermissionCallback
 {
   bfjt(bfjs parambfjs) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramInt1 = Arrays.binarySearch(bfjs.a(this.a), paramInt1);
-    if ((paramInt1 >= 0) && (bfjs.a(this.a).a != null)) {
-      bfjs.a(this.a).a.setChooseIndex(paramInt1);
-    }
+    bhlq.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    TroopBarReplyActivity.a(this.a.a, 4);
+  }
 }
 
 

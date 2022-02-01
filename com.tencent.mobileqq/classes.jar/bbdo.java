@@ -1,14 +1,13 @@
-import android.view.View;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
 
-public abstract interface bbdo
+public class bbdo
 {
-  public abstract Object a();
+  public ResourceGrabView a;
   
-  public abstract void a(View paramView, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void onClick(View paramView);
+  public static bbdo a()
+  {
+    return bbdq.a();
+  }
 }
 
 

@@ -1,117 +1,130 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aksn
-  extends akso
+  extends aksk
 {
-  public aksn(PreloadResource paramPreloadResource, bhhe parambhhe)
+  protected int a;
+  protected akso a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ImageView b;
+  
+  public aksn()
   {
-    super(parambhhe);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  private int a(String paramString, boolean paramBoolean)
+  public void a()
   {
-    int i = aktf.a(paramString, 0, this.a.getFilePos());
-    if (i == 0)
-    {
-      if (paramBoolean) {
-        aktf.a(paramString, 1, this.a.getFilePos());
-      }
-      return 1;
-    }
-    if (i == 1) {
-      return 7;
-    }
-    if (paramBoolean) {
-      aktf.a(paramString, 1, this.a.getFilePos());
-    }
-    return i;
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.b = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
   }
   
-  public void onDoneFile(bhhf parambhhf)
+  public void a(int paramInt)
   {
-    boolean bool = true;
-    Object localObject1;
-    PreloadModule localPreloadModule;
-    Object localObject2;
-    File localFile;
-    String str;
-    int i;
-    if ((parambhhf != null) && (parambhhf.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambhhf.jdField_a_of_type_JavaLangString)))
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      b(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
-      localObject1 = parambhhf.a();
-      localPreloadModule = (PreloadModule)((Bundle)localObject1).getSerializable("module");
-      localObject2 = (PreloadResource)((Bundle)localObject1).getSerializable("resource");
-      localFile = (File)parambhhf.jdField_a_of_type_JavaUtilMap.get(parambhhf.jdField_a_of_type_JavaLangString);
-      if (localFile != null) {
-        break label416;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366123));
       }
-      localObject1 = "";
-      if ((parambhhf.jdField_a_of_type_Int != 0) || (localObject2 == null)) {
-        break label474;
-      }
-      str = MD5Coding.encodeFile2HexStr((String)localObject1);
-      if ((localFile == null) || (!localFile.exists()) || (TextUtils.isEmpty(str))) {
-        break label474;
-      }
-      if ((TextUtils.isEmpty(((PreloadResource)localObject2).md5)) || (str.equalsIgnoreCase(((PreloadResource)localObject2).md5))) {
-        break label426;
-      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(akso paramakso)
+  {
+    this.jdField_a_of_type_Akso = paramakso;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372961));
+    this.b = ((ImageView)paramView.findViewById(2131372960));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372962));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    }
+    return false;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (this.b == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, "preload onDoneFile md5 not match|" + ((PreloadResource)localObject2).mResId + "|" + str + "|" + ((PreloadResource)localObject2).md5);
-      }
-      akww.a((String)localObject1);
-      aktf.a(parambhhf.jdField_a_of_type_JavaLangString, 5, this.a.getFilePos());
-      parambhhf.jdField_a_of_type_Int = -1;
-      i = 1;
-      label229:
-      if (parambhhf.jdField_a_of_type_Int == -118) {
-        i = 1;
-      }
-      if ((i != 0) && (localPreloadModule != null)) {
-        localPreloadModule.removeResource((PreloadResource)localObject2);
-      }
-      localObject2 = parambhhf.jdField_a_of_type_JavaLangString;
-      if (parambhhf.jdField_a_of_type_Int != 0) {
-        break label479;
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
       }
     }
-    for (;;)
+    do
     {
-      i = a((String)localObject2, bool);
-      parambhhf.a().putInt("scene", i);
-      if ((i == 7) && (parambhhf.jdField_a_of_type_Int == 0)) {
-        aktg.a(parambhhf.jdField_a_of_type_JavaLangString, this.a.getFilePos());
-      }
+      do
+      {
+        return false;
+        if (this.b.getVisibility() != 0) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
+        }
+      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
       if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, "preload onDoneFile|" + parambhhf.jdField_a_of_type_Int + "|" + parambhhf.jdField_a_of_type_JavaLangString + "|" + (String)localObject1 + "|" + i);
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
       }
-      super.onDoneFile(parambhhf);
-      if (this.a.isNeedReport(parambhhf.jdField_a_of_type_JavaLangString)) {
-        this.a.reportDownload(parambhhf.jdField_a_of_type_JavaLangString, parambhhf.jdField_a_of_type_Int, localPreloadModule);
+      return true;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
+    return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.b != null)
+    {
+      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
+        this.b.setVisibility(8);
       }
+    }
+    else {
       return;
-      label416:
-      localObject1 = localFile.getAbsolutePath();
-      break;
-      label426:
-      aktg.a(parambhhf.jdField_a_of_type_JavaLangString, str, NetConnInfoCenter.getServerTimeMillis(), this.a.getFilePos());
-      if (PreloadResource.access$000(this.a, (String)localObject1, parambhhf.jdField_a_of_type_JavaLangString)) {
-        this.a.unzip((String)localObject1, parambhhf.jdField_a_of_type_JavaLangString);
-      }
-      label474:
-      i = 0;
-      break label229;
-      label479:
-      bool = false;
     }
+    this.b.setVisibility(paramInt);
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

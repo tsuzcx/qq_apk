@@ -1,58 +1,53 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.PollContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xbz
-  implements xxn
+public class xbz
+  extends wov
 {
-  xbz(xby paramxby, wqw paramwqw) {}
+  public List<xca> a;
+  public List<ylv> b = new ArrayList(0);
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public xbz(ErrorMessage paramErrorMessage)
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new PollContainerLayout(paramString);
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Wqw, -1, null);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Wqw, -1, null);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (zkh.a((Bitmap)localObject, paramString)) {
-      this.jdField_a_of_type_Xby.a("result", new File(paramString).toURI().toString());
-    }
-    for (;;)
-    {
-      ((Bitmap)localObject).recycle();
-      xby.a(this.jdField_a_of_type_Xby, true);
-      return;
-      this.jdField_a_of_type_Xby.a("result", this.jdField_a_of_type_Xby.a.mVideoThumbnailUrl);
-    }
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  public xbz(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
   {
-    this.jdField_a_of_type_Xby.a("result", this.jdField_a_of_type_Xby.a.mVideoThumbnailUrl);
-    xby.b(this.jdField_a_of_type_Xby, true);
+    super(paramRspBatchFeedComment.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
+    while (paramRspBatchFeedComment.hasNext())
+    {
+      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
+      xca localxca = new xca();
+      localxca.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
+      localxca.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
+      localxca.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
+      localxca.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
+      if (localxca.jdField_b_of_type_Int != 1) {
+        this.b.add(new ylv(localxca.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
+      }
+      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
+        localCommentEntry.feedId = localxca.jdField_a_of_type_JavaLangString;
+        localxca.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(localxca);
+    }
   }
 }
 

@@ -1,23 +1,16 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
-class auyr
+public class auyr
   implements DialogInterface.OnClickListener
 {
-  auyr(auyq paramauyq, BaseChatPie paramBaseChatPie, String paramString) {}
+  public auyr(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    Intent localIntent = new Intent(localBaseActivity, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    localBaseActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 

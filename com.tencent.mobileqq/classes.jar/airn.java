@@ -1,28 +1,28 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.widget.FormMutiItem;
-
 public class airn
-  implements bhuq
 {
-  public airn(AddContactsView paramAddContactsView) {}
+  public double a;
+  public double b;
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public airn(double paramDouble1, double paramDouble2)
   {
-    if (this.a.i != null)
-    {
-      if (paramInt2 < this.a.i.getY() + this.a.i.getHeight() * 2 / 3) {
-        break label74;
-      }
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        AddContactsView.a(this.a, false);
-      }
-    }
-    return;
-    label74:
-    AddContactsView.a(this.a);
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public airn(airn paramairn)
+  {
+    a(paramairn);
+  }
+  
+  public void a(airn paramairn)
+  {
+    this.a = paramairn.a;
+    this.b = paramairn.b;
+  }
+  
+  public String toString()
+  {
+    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
   }
 }
 

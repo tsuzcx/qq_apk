@@ -1,39 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class alrp
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public alrp(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public alrp(LoginView paramLoginView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    }
-    boolean bool;
-    do
-    {
-      return;
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break;
-      }
-      bool = true;
-      paramDialogInterface.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
-    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
-    {
-      akww.a(0, paramDialogInterface);
-      return;
-      bool = false;
-      break;
-    }
+    float f = paramValueAnimator.getAnimatedFraction();
+    int i = (int)((LoginView.b(this.a) - LoginView.c(this.a)) * f + LoginView.c(this.a));
+    int j = (int)((LoginView.d(this.a) - LoginView.e(this.a)) * f + LoginView.e(this.a));
+    int k = (int)((LoginView.f(this.a) - LoginView.g(this.a)) * f + LoginView.g(this.a));
+    int m = (int)((LoginView.h(this.a) - LoginView.i(this.a)) * f + LoginView.i(this.a));
+    LoginView.a(this.a, i, j, k, m, f);
   }
 }
 

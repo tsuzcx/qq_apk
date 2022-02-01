@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class asvo
+class asvo
+  implements atcg
 {
-  ArrayList<FavFileInfo> a = new ArrayList();
-  ArrayList<FavFileInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  ArrayList<FavFileInfo> c = new ArrayList();
-  ArrayList<FavFileInfo> d = new ArrayList();
-  ArrayList<FavFileInfo> e = new ArrayList();
+  asvo(asvi paramasvi) {}
   
-  public asvo(asvi paramasvi) {}
-  
-  ArrayList<FavFileInfo> a(String paramString)
+  public void a(boolean paramBoolean, aswf paramaswf)
   {
-    int i = atvo.a(paramString);
-    if (i == 0) {
-      return this.a;
+    if (asvi.a(this.a) == null)
+    {
+      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo null");
+      return;
     }
-    if ((i == 3) || (i == 6) || (i == 7) || (i == 9) || (i == 10)) {
-      return this.jdField_b_of_type_JavaUtilArrayList;
+    if (!paramBoolean) {
+      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo NOT suc");
     }
-    if (i == 2) {
-      return this.c;
-    }
-    if (i == 5) {
-      return this.d;
-    }
-    return this.e;
+    int i = atag.a(asvi.a(this.a));
+    ((asvg)asvi.a(this.a).a(127)).a(i, paramaswf);
+    QLog.i("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo  suc:" + paramBoolean);
   }
 }
 

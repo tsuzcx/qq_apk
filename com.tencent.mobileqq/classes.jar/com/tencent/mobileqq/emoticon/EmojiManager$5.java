@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticon;
 
-import arup;
+import askd;
 import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class EmojiManager$5
   implements Runnable
 {
-  public EmojiManager$5(arup paramarup, EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public EmojiManager$5(askd paramaskd, EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
   public void run()
   {

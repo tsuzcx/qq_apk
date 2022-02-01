@@ -1,30 +1,29 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/onlinestatus/view/ConstellationView$initData$1", "Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class aytp
-  extends aysj
+class aytp
+  implements bljo
 {
-  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
+  private aytp(aytl paramaytl) {}
+  
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.a(paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConstellationView", 2, new Object[] { "onGetConstellationTrend: called. ", "bundle: " + paramBundle });
-    }
-    aytj localaytj = this.a;
-    if (paramBundle != null)
+    if (this.a.jdField_a_of_type_Int != 0)
     {
-      paramBundle = paramBundle.getString("key_today_constellation_trend");
-      if (paramBundle == null) {}
-    }
-    for (;;)
-    {
-      aytj.a(localaytj, paramBundle);
+      this.a.jdField_a_of_type_Int = 0;
       this.a.a();
-      return;
-      paramBundle = "";
+    }
+    bljo localbljo = this.a.jdField_a_of_type_Aytk.a();
+    if (localbljo != null) {
+      localbljo.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    }
+  }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView)
+  {
+    bljo localbljo = this.a.jdField_a_of_type_Aytk.a();
+    if (localbljo != null) {
+      localbljo.onNothingSelected(paramAdapterView);
     }
   }
 }

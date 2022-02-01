@@ -1,121 +1,210 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.image.PhotoListLogicArk.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.1;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.2;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.3;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.4;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.5;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.6;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.7;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.8;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.9;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Locale;
+import java.util.HashMap;
 
 public class apra
-  extends akhu
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static aprb jdField_a_of_type_Aprb;
+  private static int b = -1;
   
-  public apra(NewPhotoListActivity paramNewPhotoListActivity)
+  public static long a(String paramString, long paramLong)
   {
-    super(paramNewPhotoListActivity);
+    return BaseApplicationImpl.sApplication.getSharedPreferences("sp_mini_scan_report", 4).getLong(paramString, paramLong);
   }
   
-  public Intent caseNoSingModeImage(View paramView, int paramInt)
+  public static void a()
   {
-    Intent localIntent = ((NewPhotoListActivity)this.mActivity).getIntent();
-    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-    localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-    localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
-    localIntent.putExtra("enter_from", 3);
-    return super.caseNoSingModeImage(paramView, paramInt);
+    jdField_a_of_type_Aprb = new aprb(null);
+    jdField_a_of_type_Aprb.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void enterAlbumListFragment(Intent paramIntent)
+  public static void a(int paramInt)
   {
-    paramIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-    paramIntent.putExtra("enter_from", 3);
-    super.enterAlbumListFragment(paramIntent);
-  }
-  
-  public void initData(Intent paramIntent)
-  {
-    super.initData(paramIntent);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
-  }
-  
-  public void onBackPressed()
-  {
-    apqv.a().a("callbackArk", null, null);
-    ((NewPhotoListActivity)this.mActivity).finish();
-    bgkc.anim(this.mActivity, false, false);
-  }
-  
-  public void onSendBtnClick(View paramView)
-  {
-    ((NewPhotoListActivity)this.mActivity).sendBtn.setClickable(false);
-    if (!this.mPhotoCommonData.selectedPhotoList.isEmpty()) {
-      ((NewPhotoListActivity)this.mActivity).recordLastPos((String)this.mPhotoCommonData.selectedPhotoList.get(this.mPhotoCommonData.selectedPhotoList.size() - 1));
-    }
-    bgkc.a();
-    if (this.mPhotoCommonData.selectedPhotoList.size() == 0)
+    aprb localaprb = jdField_a_of_type_Aprb;
+    if (localaprb == null) {}
+    long l;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhotoList", 2, "size == 0");
+      return;
+      jdField_a_of_type_Aprb = null;
+      l = System.currentTimeMillis() - localaprb.jdField_a_of_type_Long;
+    } while ((l > 600000L) || (localaprb.jdField_a_of_type_Int <= 0));
+    int k = localaprb.jdField_a_of_type_Int;
+    int m = localaprb.b;
+    int n = localaprb.c;
+    int i1 = localaprb.d / k;
+    int i;
+    if (m <= 0)
+    {
+      i = 0;
+      if (n > 0) {
+        break label124;
       }
+    }
+    label124:
+    for (int j = 0;; j = localaprb.f / n)
+    {
+      ThreadManager.post(new MiniScanReport.1(i1, l, k, paramInt, m, i, n, j), 5, null, false);
+      return;
+      i = localaprb.e / m;
+      break;
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    if ((jdField_a_of_type_Aprb == null) || (paramInt1 <= 1) || (paramInt1 > 15000)) {
       return;
     }
-    ((NewPhotoListActivity)this.mActivity).getIntent();
-    if (this.mPhotoCommonData.selectedPhotoList.size() > 0)
+    switch (paramInt2)
     {
-      if (QLog.isColorLevel())
-      {
-        paramView = new StringBuilder(this.mPhotoCommonData.selectedPhotoList.size() * 128);
-        int i = 0;
-        while (i < this.mPhotoCommonData.selectedPhotoList.size())
-        {
-          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.mPhotoCommonData.selectedPhotoList.get(i) }));
-          i += 1;
-        }
-        QLog.d("PhotoListLogicArk", 2, paramView.toString());
-      }
-      ((NewPhotoListActivity)this.mActivity).showProgressDialog();
-      ThreadManagerV2.executeOnSubThread(new PhotoListLogicArk.1(this));
-    }
-    for (;;)
-    {
-      ((NewPhotoListActivity)this.mActivity).finish();
+    default: 
       return;
-      apqv.a().a("callbackArk", null, null);
+    case 0: 
+      localaprb = jdField_a_of_type_Aprb;
+      localaprb.jdField_a_of_type_Int += 1;
+      localaprb = jdField_a_of_type_Aprb;
+      localaprb.d += paramInt1;
+      return;
+    case 1: 
+      localaprb = jdField_a_of_type_Aprb;
+      localaprb.b += 1;
+      localaprb = jdField_a_of_type_Aprb;
+      localaprb.e += paramInt1;
+      return;
     }
+    aprb localaprb = jdField_a_of_type_Aprb;
+    localaprb.c += 1;
+    localaprb = jdField_a_of_type_Aprb;
+    localaprb.f += paramInt1;
   }
   
-  public void onTitleBtnCancelClick(View paramView)
+  public static void a(String paramString, long paramLong)
   {
-    apqv.a().a("callbackArk", null, null);
-    ((NewPhotoListActivity)this.mActivity).finish();
-    super.onTitleBtnCancelClick(paramView);
+    BaseApplicationImpl.sApplication.getSharedPreferences("sp_mini_scan_report", 4).edit().putLong(paramString, paramLong).apply();
   }
   
-  public void postInitUI()
+  public static void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    super.postInitUI();
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
-    if (localNewPhotoListActivity != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoListLogicArk", 2, "ArkApp ark app res:" + this.jdField_a_of_type_JavaLangString);
+    ThreadManager.post(new MiniScanReport.2(paramBoolean, paramInt, paramString), 5, null, false);
+  }
+  
+  public static void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    ThreadManager.post(new MiniScanReport.5(paramBoolean1, paramBoolean2), 5, null, false);
+  }
+  
+  public static boolean a()
+  {
+    if (b == -1) {
+      if (!BaseApplication.getContext().getSharedPreferences("envSwitch", 4).getBoolean("key_base_test_scan_on", false)) {
+        break label42;
       }
-      localNewPhotoListActivity.findViewById(2131372839).setVisibility(4);
     }
+    label42:
+    for (int i = 1;; i = 0)
+    {
+      b = i;
+      if (b != 1) {
+        break;
+      }
+      return true;
+    }
+    return false;
   }
   
-  public void startPhotoPreviewActivity(Intent paramIntent)
+  public static void b()
   {
-    super.startPhotoPreviewActivity(paramIntent);
+    if (jdField_a_of_type_Long == 0L) {
+      jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    jdField_a_of_type_Int += 1;
+  }
+  
+  public static void b(int paramInt)
+  {
+    ThreadManager.post(new MiniScanReport.6(paramInt), 5, null, false);
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new MiniScanReport.3(paramInt1, paramInt2), 5, null, false);
+  }
+  
+  private static void b(HashMap<String, String> paramHashMap)
+  {
+    String str2 = Build.MODEL;
+    int i = Build.VERSION.SDK_INT;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    paramHashMap.put("report_key_device_model", str1);
+    paramHashMap.put("report_key_device_sdk", String.valueOf(i));
+  }
+  
+  public static void c()
+  {
+    if ((jdField_a_of_type_Long == 0L) || (jdField_a_of_type_Int == 0))
+    {
+      jdField_a_of_type_Long = 0L;
+      jdField_a_of_type_Int = 0;
+      return;
+    }
+    long l = (SystemClock.uptimeMillis() - jdField_a_of_type_Long) / 1000L;
+    if (l != 0L)
+    {
+      int i = (int)(jdField_a_of_type_Int / l);
+      if ((QLog.isColorLevel()) || (a())) {
+        QLog.i("MiniRecog.MiniScanReport", 1, String.format("base_test_scan frame_rate=%d", new Object[] { Integer.valueOf(i) }));
+      }
+    }
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_Int = 0;
+  }
+  
+  public static void c(int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new MiniScanReport.4(paramInt2, paramInt1), 5, null, false);
+  }
+  
+  public static void d(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 <= 0) || (paramInt2 > 180000)) {
+      return;
+    }
+    ThreadManager.post(new MiniScanReport.7(paramInt1, paramInt2), 5, null, false);
+  }
+  
+  public static void e(int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new MiniScanReport.8(paramInt1, paramInt2), 5, null, false);
+  }
+  
+  public static void f(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 <= 0) || (paramInt2 > 180000)) {
+      return;
+    }
+    ThreadManager.post(new MiniScanReport.9(paramInt1, paramInt2), 5, null, false);
   }
 }
 

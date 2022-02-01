@@ -1,47 +1,18 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public class beax
-  extends beat
-  implements Handler.Callback
+public final class beax
+  implements Parcelable.Creator<TeamWorkFileImportInfo>
 {
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  
-  public beax(QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
+  public TeamWorkFileImportInfo a(Parcel paramParcel)
   {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    return new TeamWorkFileImportInfo(paramParcel);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public TeamWorkFileImportInfo[] a(int paramInt)
   {
-    if (paramMessage.what == 0) {
-      this.ctrl.a(this);
-    }
-    return true;
-  }
-  
-  protected void realCancel()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  protected void realStart()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, this.jdField_a_of_type_Long);
-  }
-  
-  public String toString()
-  {
-    return super.toString() + "[" + this.jdField_a_of_type_JavaLangRunnable + ", " + this.jdField_a_of_type_Long + "]";
+    return new TeamWorkFileImportInfo[paramInt];
   }
 }
 

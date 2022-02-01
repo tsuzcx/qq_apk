@@ -50,14 +50,14 @@ public class AppBrandProxy
     this.mLaunchManagerClient.onAppLifecycle(3, AppLoaderFactory.g().getProcessName(), paramMiniAppInfo, localBundle);
   }
   
-  public void onAppDestroy(Bundle paramBundle)
+  public void onAppDestroy(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
   {
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
       localBundle = new Bundle();
     }
     localBundle.putInt("PID", Process.myPid());
-    this.mLaunchManagerClient.onAppLifecycle(4, AppLoaderFactory.g().getProcessName(), null, localBundle);
+    this.mLaunchManagerClient.onAppLifecycle(4, AppLoaderFactory.g().getProcessName(), paramMiniAppInfo, localBundle);
   }
   
   public void onAppForeground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
@@ -119,18 +119,10 @@ public class AppBrandProxy
       this.mLaunchManagerClient.stopMiniApp(paramMiniAppInfo);
     }
   }
-  
-  public void stopMiniApp(String paramString)
-  {
-    QMLog.e("minisdk-start_AppBrandProxy", "stopMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " appId:" + paramString);
-    if (!AppLoaderFactory.g().isMainProcess()) {
-      this.mLaunchManagerClient.stopMiniAppByAppId(paramString);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.AppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

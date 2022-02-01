@@ -1,129 +1,57 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class xcq
-  extends xdr
+  extends wpa<xen>
 {
   public static final String a;
-  public boolean a;
-  private final int[] a;
+  public List<String> a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + wjz.a(2131698491);
+    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.feed_feature_775");
   }
   
-  public xcq(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
+  public String a()
   {
-    QQAppInterface localQQAppInterface = xfe.a();
-    wpy localwpy = (wpy)wpm.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = localQQAppInterface.getCurrentNickname();
-    String str;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
-    {
-      str = this.c + anni.a(2131705833);
-      this.jdField_d_of_type_JavaLangString = str;
-      this.f = paramStoryVideoItem.mOwnerUid;
-      this.e = localwpy.a(this.f, false);
-      this.g = paramStoryVideoItem.mDoodleText;
-      str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      this.h = str;
-      if (!paramStoryVideoItem.isMine()) {
-        break label363;
-      }
-      i = 0;
-      label137:
-      this.b = i;
-      this.c = localQQAppInterface.getCurrentNickname();
-      paramStoryVideoItem = localwpy.b(this.f);
-      if ((paramStoryVideoItem != null) && (paramStoryVideoItem.isVip)) {
-        this.c = paramStoryVideoItem.nickName;
-      }
-      this.jdField_d_of_type_JavaLangString = a();
-      this.k = this.jdField_d_of_type_JavaLangString;
-      this.i = b();
-      this.j = ("#" + wes.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-      this.jdField_d_of_type_Int = 11;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label369;
-      }
-    }
-    label363:
-    label369:
-    for (this.jdField_d_of_type_Int = 4;; this.jdField_d_of_type_Int = 1)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label377;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
-      return;
-      str = this.c + anni.a(2131705834) + wes.jdField_a_of_type_JavaLangString;
-      break;
-      i = 1;
-      break label137;
-    }
-    label377:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 32, 33, 34, 54, 45 };
+    return jdField_a_of_type_JavaLangString;
   }
   
-  protected String a(int paramInt)
+  public wov a(byte[] paramArrayOfByte)
   {
-    int i = 3;
-    if (paramInt == 1)
+    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
+    try
     {
-      str1 = this.e;
-      str2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-      str3 = this.f;
-      str4 = this.h;
-      paramInt = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
+      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
+      return new xen(localRspGetBatchFeedFeature);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
       for (;;)
       {
-        return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        i = 1;
+        paramArrayOfByte.printStackTrace();
       }
-    }
-    String str1 = jdField_a_of_type_JavaLangString;
-    String str2 = this.e;
-    String str3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-    String str4 = this.f;
-    String str5 = this.h;
-    int j = this.b;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return String.format(str1, new Object[] { str2, str3, str4, str5, Integer.valueOf(j), Integer.valueOf(i), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-      i = 1;
     }
   }
   
-  protected void a(xdz paramxdz)
+  protected byte[] a()
   {
-    wqz localwqz;
-    if ((paramxdz instanceof xea))
+    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      localwqz = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoGameInfo();
-      if (localwqz != null) {}
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
     }
-    else
-    {
-      return;
-    }
-    paramxdz = (xea)paramxdz;
-    paramxdz.o = localwqz.b;
-    if (localwqz.a == 2) {}
-    for (paramxdz.p = anni.a(2131705835);; paramxdz.p = (localwqz.c + anni.a(2131705836)))
-    {
-      paramxdz.jdField_d_of_type_JavaLangString = a();
-      return;
-    }
+    return localReqGetBatchFeedFeature.toByteArray();
   }
 }
 

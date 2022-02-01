@@ -1,17 +1,20 @@
-import com.tencent.biz.troopplugin.PluginJumpManager;
-
-public class aatz
+class aatz
+  extends aaub
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public aatz(aatd paramaatd, aauc paramaauc, String paramString)
+  {
+    super(paramaatd, paramaauc, paramString);
+  }
   
-  public aatz(PluginJumpManager paramPluginJumpManager) {}
+  public void a()
+  {
+    this.jdField_a_of_type_Aatd.a.a();
+    aatn localaatn = a();
+    this.jdField_a_of_type_Aatd.a.a(localaatn.e, localaatn.jdField_a_of_type_JavaLangString, localaatn.jdField_a_of_type_Int, new aaua(this));
+    this.jdField_a_of_type_Aauc.b(this);
+    this.jdField_a_of_type_Aaub = new aatm(this.jdField_a_of_type_Aatd, this.jdField_a_of_type_Aauc, this.c);
+    b();
+  }
 }
 
 

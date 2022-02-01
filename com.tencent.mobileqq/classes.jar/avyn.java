@@ -1,59 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageForLocationShare;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp;
 
-public class avyn
-  implements View.OnClickListener
+final class avyn
+  extends avyo
 {
-  private MessageForLocationShare a;
-  public boolean a;
+  private WeakReference<avyl> a;
   
-  public avyn()
+  private avyn(avyl paramavyl)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = new WeakReference(paramavyl);
   }
   
-  private void a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageModule", 2, new Object[] { "realClick: invoked. 屏蔽消息双击事件 messageForLocationShare: ", this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare });
-    }
-    LocationShareFragment.a(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.frienduin, 2);
-    bcst.b(null, "CliOper", "", "", "0X800A766", "0X800A766", 0, 0, "", "0", "0", "");
-  }
-  
-  public void a(MessageForLocationShare paramMessageForLocationShare)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare = paramMessageForLocationShare;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. ", " v: ", paramView, " messageForLocationShare: ", this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare });
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. disable click in chat history", " v: ", paramView });
-      }
-    }
-    for (;;)
+    if (((paramObject instanceof cmd0xcd4.InputNotifyRsp)) && (paramBoolean))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (aauy.a("LocationMessageModule"))
+      paramObject = (cmd0xcd4.InputNotifyRsp)paramObject;
+      int i = paramObject.sint32_result.get();
+      int j = paramObject.uint32_interval.get();
+      paramObject = paramObject.bytes_err_msg.get().toStringUtf8();
+      if (i != 0) {
+        break label84;
+      }
+      if ((j > 0) && (this.a.get() != null)) {
+        ((avyl)this.a.get()).a = (j * 1000);
+      }
+    }
+    return;
+    label84:
+    QLog.d(avyl.a(), 1, "send input status fail : " + paramObject);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.get() != null))
+    {
+      if ((!avyl.a((avyl)this.a.get())) && (paramBoolean2))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. 屏蔽消息双击事件", " v: ", paramView });
+        if (avyl.a((avyl)this.a.get()) != null) {
+          avyl.a((avyl)this.a.get()).a(avyl.a((avyl)this.a.get()));
         }
+        avyl.a((avyl)this.a.get()).a.addTextChangedListener(avyl.a((avyl)this.a.get()));
       }
-      else if ((BaseActivity.sTopActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.isSharingLocation)) {
-        a();
-      }
+      avyl.a((avyl)this.a.get(), paramBoolean2);
     }
   }
 }

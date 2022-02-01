@@ -1,21 +1,21 @@
 package dov.com.qq.im.ptv;
 
-import bgpa;
-import boxy;
-import boxz;
-import boya;
-import boyn;
+import bhpc;
+import bpzt;
+import bpzu;
+import bpzv;
+import bqai;
 
 public class LightWeightSoDownloadUnit$4
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$4(boxy paramboxy, String paramString) {}
+  public LightWeightSoDownloadUnit$4(bpzt parambpzt, String paramString) {}
   
   public void run()
   {
-    boxz localboxz = new boxz(this);
-    boya localboya = new boya(this);
-    bgpa.showPermissionSettingDialog(boxy.a(this.this$0).a(), null, this.a, localboxz, localboxz, localboya);
+    bpzu localbpzu = new bpzu(this);
+    bpzv localbpzv = new bpzv(this);
+    bhpc.showPermissionSettingDialog(bpzt.a(this.this$0).a(), null, this.a, localbpzu, localbpzu, localbpzv);
   }
 }
 

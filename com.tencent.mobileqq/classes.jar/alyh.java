@@ -1,26 +1,77 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class alyh
-  implements Animation.AnimationListener
 {
-  public alyh(SpecailCareListActivity paramSpecailCareListActivity, alyv paramalyv) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static int a(int paramInt)
   {
-    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Alyv.a.getLayoutParams());
-    paramAnimation.addRule(15);
-    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Alyv.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Alyv.a.clearAnimation();
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 2) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 3;
+    }
+    return 0;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static alyp a(int paramInt)
+  {
+    QLog.d("AnimDrawerFactory", 2, "create drawer by type: " + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new alym();
+    case 2: 
+      return new alzc();
+    }
+    return new alyz();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static alyp a(String paramString, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = a(Base64.decode(paramString.getBytes(), 0), paramFloat1, paramFloat2, paramInt);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("AnimDrawerFactory", 2, "subtitle base64decode exception:" + paramString.toString());
+    }
+    return null;
+  }
+  
+  public static alyp a(byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    Object localObject;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 4)) {
+      localObject = null;
+    }
+    alyp localalyp;
+    do
+    {
+      return localObject;
+      localalyp = a(agpj.a(paramArrayOfByte, 0));
+      localObject = localalyp;
+    } while (localalyp == null);
+    localalyp.a(BaseApplicationImpl.getApplication(), paramFloat1, paramFloat2, paramInt, paramArrayOfByte, 4, paramArrayOfByte.length - 4, true);
+    return localalyp;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt < 4);
+  }
 }
 
 

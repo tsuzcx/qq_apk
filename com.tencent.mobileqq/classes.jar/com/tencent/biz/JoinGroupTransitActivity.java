@@ -6,13 +6,13 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bgmp;
-import bgng;
+import bhmr;
+import bhni;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import nhh;
-import nhl;
-import nhm;
+import njc;
+import njg;
+import njh;
 
 public class JoinGroupTransitActivity
   extends BaseActivity
@@ -20,8 +20,8 @@ public class JoinGroupTransitActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private nhh jdField_a_of_type_Nhh;
-  private nhm jdField_a_of_type_Nhm;
+  private njc jdField_a_of_type_Njc;
+  private njh jdField_a_of_type_Njh;
   private String b = "";
   
   private void a()
@@ -32,11 +32,11 @@ public class JoinGroupTransitActivity
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         finish();
       }
-      this.jdField_a_of_type_Nhm = new nhm(this);
-      bgmp localbgmp = bgng.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      this.b = localbgmp.b("activity_titile_name");
-      this.jdField_a_of_type_Long = Long.valueOf(localbgmp.b("group_code")).longValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(localbgmp.b("subsource_id")).intValue();
+      this.jdField_a_of_type_Njh = new njh(this);
+      bhmr localbhmr = bhni.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      this.b = localbhmr.b("activity_titile_name");
+      this.jdField_a_of_type_Long = Long.valueOf(localbhmr.b("group_code")).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localbhmr.b("subsource_id")).intValue();
       return;
     }
     catch (Exception localException)
@@ -58,16 +58,16 @@ public class JoinGroupTransitActivity
   {
     super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_Nhh = new nhh(this, this.app, this.jdField_a_of_type_Int, this.b, new nhl(this));
-    this.jdField_a_of_type_Nhh.a();
-    this.jdField_a_of_type_Nhm.sendEmptyMessage(0);
+    this.jdField_a_of_type_Njc = new njc(this, this.app, this.jdField_a_of_type_Int, this.b, new njg(this));
+    this.jdField_a_of_type_Njc.a();
+    this.jdField_a_of_type_Njh.sendEmptyMessage(0);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Nhh.b();
+    this.jdField_a_of_type_Njc.b();
   }
   
   @Override

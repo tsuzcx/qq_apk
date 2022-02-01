@@ -1,21 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aevc
-  extends ayes
+  extends aeuk
 {
-  public aevc(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aevc(JumpActivity paramJumpActivity)
   {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
-    }
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aevc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import aduc;
-import adum;
+import aede;
+import aedo;
 import android.widget.TextView;
-import bglf;
-import bgnr;
+import bhlg;
+import bhnt;
 
 public class ChatHistory$ChatHistoryAdapter$1
   implements Runnable
 {
-  public ChatHistory$ChatHistoryAdapter$1(aduc paramaduc, int paramInt, String paramString, adum paramadum, TextView paramTextView) {}
+  public ChatHistory$ChatHistoryAdapter$1(aede paramaede, int paramInt, String paramString, aedo paramaedo, TextView paramTextView) {}
   
   public void run()
   {
-    String str = bglf.a(this.jdField_a_of_type_Aduc.a.app, this.jdField_a_of_type_Aduc.a.a, bgnr.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Adum.b.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Adum.jdField_a_of_type_JavaLangString = str;
+    String str = bhlg.a(this.jdField_a_of_type_Aede.a.app, this.jdField_a_of_type_Aede.a.a, bhnt.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Aedo.b.equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Aedo.jdField_a_of_type_JavaLangString = str;
     }
-    this.jdField_a_of_type_Aduc.a.runOnUiThread(new ChatHistory.ChatHistoryAdapter.1.1(this, str));
+    this.jdField_a_of_type_Aede.a.runOnUiThread(new ChatHistory.ChatHistoryAdapter.1.1(this, str));
   }
 }
 

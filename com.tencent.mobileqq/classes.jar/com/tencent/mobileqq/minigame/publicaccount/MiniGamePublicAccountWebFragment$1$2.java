@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 class MiniGamePublicAccountWebFragment$1$2
   implements Runnable
@@ -10,9 +9,9 @@ class MiniGamePublicAccountWebFragment$1$2
   
   public void run()
   {
-    MiniGamePublicAccountWebFragment.access$600(this.this$1.this$0).setVisibility(8);
-    MiniGamePublicAccountWebFragment.access$700(this.this$1.this$0).setVisibility(8);
-    this.this$1.this$0.notifyWebHeaderHeight(MiniGamePublicAccountWebFragment.access$400(this.this$1.this$0));
+    MiniGamePublicAccountWebFragment.access$500(this.this$1.this$0).setVisibility(8);
+    MiniGamePublicAccountWebFragment.access$400(this.this$1.this$0).setVisibility(0);
+    this.this$1.this$0.notifyWebHeaderHeight(MiniGamePublicAccountWebFragment.access$600(this.this$1.this$0));
   }
 }
 

@@ -1,39 +1,30 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.model.Comments;
 
-public class ayhg
-  implements aygs
+class ayhg
+  implements ayck
 {
-  public ayhg(ScanOcrActivity paramScanOcrActivity) {}
+  ayhg(ayhf paramayhf) {}
   
   public void a()
   {
-    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    if (ayhf.a(this.a) != null)
+    {
+      ayhf.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695719));
+      ayhf.a(this.a).b();
+      ayhf.a(this.a).c();
     }
   }
   
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
+  public void a(Comments paramComments)
+  {
+    if (ayhf.a(this.a) != null)
+    {
+      ayhf.a(this.a);
+      ayhf.a(this.a).a(paramComments);
+      ayhf.a(this.a).b();
+    }
+  }
 }
 
 

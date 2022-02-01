@@ -1,41 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class blsp
-  extends bmcr
+class blsp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public blsp(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  blsp(blso paramblso, blsg paramblsg) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    this.jdField_a_of_type_Blso.a(paramValueAnimator.getAnimatedFraction());
   }
-  
-  public void a(float paramFloat)
-  {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.obtainMessage(1008).sendToTarget();
-  }
-  
-  public void b()
-  {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
-  }
-  
-  public void c() {}
 }
 
 

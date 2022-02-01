@@ -1,34 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
 
-public class birh
-  implements DialogInterface.OnClickListener
+class birh
+  implements TouchWebView.OnOverScrollHandler
 {
-  public birh(DownloadJSApi.2 param2) {}
+  birh(birg parambirg, TouchWebView paramTouchWebView, RefreshView paramRefreshView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onBack()
   {
+    this.jdField_a_of_type_Birg.a = false;
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onBack();
+    this.jdField_a_of_type_Birg.b(true);
+  }
+  
+  public void onOverScroll(int paramInt)
+  {
+    Object localObject;
+    if (!this.jdField_a_of_type_Birg.a)
+    {
+      this.jdField_a_of_type_Birg.a = true;
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
     try
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bivp.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      bivr.a().a(10, paramDialogInterface);
-      return;
+      localObject = Uri.parse((String)localObject);
+      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
+        this.jdField_a_of_type_Birg.b.setText(anzj.a(2131713497) + ((Uri)localObject).getHost() + anzj.a(2131713490));
+      }
+      this.jdField_a_of_type_Birg.b.setVisibility(0);
     }
-    catch (Exception paramDialogInterface)
+    catch (Exception localException)
     {
-      break label6;
+      for (;;)
+      {
+        localException.printStackTrace();
+        this.jdField_a_of_type_Birg.b.setVisibility(8);
+      }
     }
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onOverScroll(paramInt);
   }
 }
 

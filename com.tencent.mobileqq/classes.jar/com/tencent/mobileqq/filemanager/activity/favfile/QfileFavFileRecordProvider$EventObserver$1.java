@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.activity.favfile;
 
-import asvl;
+import atlp;
 
 public class QfileFavFileRecordProvider$EventObserver$1
   implements Runnable
 {
-  public QfileFavFileRecordProvider$EventObserver$1(asvl paramasvl, Object paramObject) {}
+  public QfileFavFileRecordProvider$EventObserver$1(atlp paramatlp, Object paramObject) {}
   
   public void run()
   {
-    asvl.a(this.this$0, this.a);
+    atlp.a(this.this$0, this.a);
   }
 }
 

@@ -1,64 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.BannerManager.40.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class akzs
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  akzs(akyh paramakyh) {}
+  public akzs(TransactionActivity paramTransactionActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    akyh.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + akyh.a(this.a).app.getAccount(), false).commit();
-    Object localObject = akyh.a(this.a)[22];
-    ADView localADView;
-    if ((localObject != null) && (((akyd)localObject).a != null))
-    {
-      localADView = (ADView)((akyd)localObject).a.findViewById(2131362225);
-      if (localADView == null) {
-        break label307;
-      }
-    }
-    label307:
-    for (localObject = localADView.a(0);; localObject = null)
-    {
-      if (localObject != null)
-      {
-        int j = ((ViewGroup)localObject).getChildCount();
-        LinkedList localLinkedList = new LinkedList();
-        int i = 0;
-        while (i < j)
-        {
-          View localView = ((ViewGroup)localObject).getChildAt(i);
-          if (localView != null) {
-            localLinkedList.add((bcvm)localView.getTag());
-          }
-          i += 1;
-        }
-        ThreadManager.getFileThreadHandler().post(new BannerManager.40.1(this, j, localLinkedList));
-        if (localADView != null) {
-          localADView.h();
-        }
-      }
-      this.a.a(22, 0);
-      this.a.a(-1, null);
-      this.a.e = false;
-      bcst.b(akyh.a(this.a).app, "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
-      bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 12, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

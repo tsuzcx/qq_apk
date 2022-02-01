@@ -1,19 +1,41 @@
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-
-public abstract interface zvo
+public class zvo
 {
-  public abstract ViewPropertyAnimatorCompat a(RecyclerView.ViewHolder paramViewHolder);
+  int jdField_a_of_type_Int = 0;
+  short jdField_a_of_type_Short = 0;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
   
-  public abstract ViewPropertyAnimatorCompat a(zvx paramzvx, long paramLong, boolean paramBoolean);
+  public zvo() {}
   
-  public abstract ViewPropertyAnimatorCompat a(zvy paramzvy, long paramLong);
+  public zvo(int paramInt, short paramShort, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Short = paramShort;
+  }
   
-  public abstract boolean a(zvx paramzvx);
+  public int a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte.length + 4;
+  }
+  
+  public long a()
+  {
+    return zyx.a(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String a()
+  {
+    return new String(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String toString()
+  {
+    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zvo
  * JD-Core Version:    0.7.0.1
  */

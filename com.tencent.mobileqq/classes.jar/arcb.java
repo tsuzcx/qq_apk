@@ -1,41 +1,56 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class arcb
+  extends arca
 {
-  private int a;
-  
-  public static arcb a(aqlg paramaqlg)
+  public arbu a(String paramString)
   {
-    localarcb = new arcb();
-    if (paramaqlg != null)
+    QLog.d("ArkAIDictConfigProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SuspiciousTroopConfBean", 2, "parse taskid->" + paramaqlg.jdField_a_of_type_Int + " content->" + paramaqlg.jdField_a_of_type_JavaLangString);
-      }
-      try
+      arcm localarcm = (arcm)arax.a(paramString, arcm.class);
+      return new arbv(paramString, localarcm);
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
       {
-        if (paramaqlg.jdField_a_of_type_JavaLangString == null) {}
-        for (paramaqlg = "";; paramaqlg = paramaqlg.jdField_a_of_type_JavaLangString)
-        {
-          localarcb.jdField_a_of_type_Int = new JSONObject(paramaqlg).optInt("suspiciousSwitch", 0);
-          return localarcb;
-        }
-        return localarcb;
-      }
-      catch (JSONException paramaqlg)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SuspiciousTroopConfBean", 2, "parse error->" + paramaqlg.toString());
-        }
+        QLog.i("ArkAIDictConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
       }
     }
   }
   
-  public boolean a()
+  public void a(arbu paramarbu)
   {
-    return this.jdField_a_of_type_Int == 1;
+    super.a(paramarbu);
+    if (paramarbu == null) {
+      QLog.i("ArkAIDictConfigProcessor", 1, "newConf is null");
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("ArkAIDictConfigProcessor", 1, "[onUpdate] type=" + type() + ", content = " + paramarbu.a());
+          paramarbu = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        } while (paramarbu == null);
+        paramarbu = (ArkAppCenter)paramarbu.getManager(121);
+      } while (paramarbu == null);
+      paramarbu = paramarbu.a();
+    } while (paramarbu == null);
+    paramarbu.a();
+  }
+  
+  public int type()
+  {
+    return 170;
   }
 }
 

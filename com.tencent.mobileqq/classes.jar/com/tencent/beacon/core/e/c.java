@@ -54,7 +54,7 @@ public class c
   public static String b(String paramString)
   {
     Object localObject;
-    if (j.c(paramString)) {
+    if (j.b(paramString)) {
       localObject = null;
     }
     String str;

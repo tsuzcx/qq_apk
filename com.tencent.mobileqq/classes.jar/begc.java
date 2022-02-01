@@ -1,13 +1,14 @@
-import android.net.Uri;
-
-class begc
-  implements bekr
+public class begc
 {
-  begc(begb parambegb) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void a(Uri paramUri)
+  public begc(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a.a = paramUri;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 

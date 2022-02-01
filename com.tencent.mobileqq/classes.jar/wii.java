@@ -1,55 +1,30 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public final class wii
-  extends weu
+class wii
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  public StoryVideoItem a;
-  public GeneralFeedItem a;
-  public ArrayList<wih> a;
-  public final boolean a;
-  public StoryVideoItem b;
-  public boolean b;
-  public boolean c;
+  wii(wia paramwia) {}
   
-  public wii(boolean paramBoolean)
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 940006) || (paramInt == 940007) || (paramInt == 940017) || (paramInt == 940018) || (paramInt == 941001) || (paramInt == 941002) || (paramInt == bdza.a(940017)) || (paramInt == bdza.a(9042)) || (paramInt == bdza.a(9070)) || (paramInt == bdza.a(9071)) || (paramInt / 100 == bdza.a(999000) / 100) || ((paramInt >= 5100) && (paramInt <= 5108));
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 941001) || (paramInt == 941002);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return false;
+    paramView = (whs)wia.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == wia.a(this.a)))
+    {
+      paramView.b();
+      yuk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
   }
   
-  public boolean b()
+  public void onChildViewDetachedFromWindow(View paramView)
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
-  }
-  
-  public String toString()
-  {
-    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    paramView = (whs)wia.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == wia.a(this.a)))
+    {
+      paramView.c();
+      yuk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
+    }
   }
 }
 

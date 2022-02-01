@@ -5,10 +5,10 @@ import QC.UniBusinessItem;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anmw;
-import anuk;
-import anzg;
-import bhch;
+import anyw;
+import aogu;
+import aolq;
+import bict;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -50,15 +50,15 @@ public class ChatBackgroundAuth
     return null;
   }
   
-  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, anmw paramanmw, int paramInt1, int paramInt2)
+  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, anyw paramanyw, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    a(paramanmw, paramHashMap1, localArrayList, paramInt1);
-    a(paramanmw, paramHashMap2, localArrayList, paramInt2);
+    a(paramanyw, paramHashMap1, localArrayList, paramInt1);
+    a(paramanyw, paramHashMap2, localArrayList, paramInt2);
     return localArrayList;
   }
   
-  private void a(anmw paramanmw, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
+  private void a(anyw paramanyw, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
   {
     Iterator localIterator = paramHashMap.keySet().iterator();
     Object localObject3;
@@ -105,7 +105,7 @@ public class ChatBackgroundAuth
       {
         ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
         break;
-        if (paramanmw.b((String)localObject1))
+        if (paramanyw.b((String)localObject1))
         {
           i = 2;
           break label115;
@@ -150,11 +150,11 @@ public class ChatBackgroundAuth
       Object localObject = (ChatBackgroundManager)this.a.app.getManager(63);
       HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
       localObject = ((ChatBackgroundManager)localObject).c();
-      ((anuk)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (anmw)this.a.app.getManager(51), 8, 35), new anzg(this.a.app), true);
+      ((aogu)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (anyw)this.a.app.getManager(51), 8, 35), new aolq(this.a.app), true);
       localSharedPreferences.edit().putLong("lastChabgAuthTime", System.currentTimeMillis()).apply();
     }
-    if (!bhch.a.a(this.a.app, "namePlate_UrlConfig")) {
-      bhch.a.download(null, "namePlate_UrlConfig", null, false);
+    if (!bict.a.a(this.a.app, "namePlate_UrlConfig")) {
+      bict.a.download(null, "namePlate_UrlConfig", null, false);
     }
     return 7;
   }

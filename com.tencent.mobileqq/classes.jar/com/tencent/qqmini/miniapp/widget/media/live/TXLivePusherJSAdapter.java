@@ -83,70 +83,6 @@ public class TXLivePusherJSAdapter
     WXLivePusherReflect.setBGMNofify(TXLivePushListenerReflect.newOnBGMNotify(this), this.mLivePusher);
   }
   
-  private TXJSAdapterError BGMLivePusherOperate(String paramString, JSONObject paramJSONObject)
-  {
-    double d = 1.0D;
-    if (paramString.equalsIgnoreCase("playBGM"))
-    {
-      paramString = "";
-      if (paramJSONObject != null) {
-        paramString = paramJSONObject.optString("BGMFilePath", "");
-      }
-      QMLog.d("TXLivePusherJSAdapter", "playBGM filePath = " + paramString);
-      if ((paramString != null) && (paramString.length() > 0))
-      {
-        WXLivePusherReflect.playBGM(paramString, this.mLivePusher);
-        return new TXJSAdapterError();
-      }
-      return new TXJSAdapterError(-2, "fail");
-    }
-    if (paramString.equalsIgnoreCase("stopBGM"))
-    {
-      WXLivePusherReflect.stopBGM(this.mLivePusher);
-      this.mBGMPlaying = false;
-      return new TXJSAdapterError();
-    }
-    if (paramString.equalsIgnoreCase("pauseBGM"))
-    {
-      WXLivePusherReflect.pauseBGM(this.mLivePusher);
-      this.mBGMPlaying = false;
-      return new TXJSAdapterError();
-    }
-    if (paramString.equalsIgnoreCase("resumeBGM"))
-    {
-      WXLivePusherReflect.resumeBGM(this.mLivePusher);
-      this.mBGMPlaying = true;
-      return new TXJSAdapterError();
-    }
-    if (paramString.equalsIgnoreCase("setBGMPosition"))
-    {
-      if ((this.mBGMPlaying) && (paramJSONObject != null))
-      {
-        int i = paramJSONObject.optInt("BGMPosition", -1);
-        if (i > 0) {
-          WXLivePusherReflect.setBGMPosition(i, this.mLivePusher);
-        }
-      }
-      return new TXJSAdapterError();
-    }
-    if (paramString.equalsIgnoreCase("setBGMVolume"))
-    {
-      if (paramJSONObject != null) {
-        d = paramJSONObject.optDouble("volume", 1.0D);
-      }
-      WXLivePusherReflect.setBGMVolume((float)d, this.mLivePusher);
-      return new TXJSAdapterError();
-    }
-    if (paramString.equalsIgnoreCase("setMICVolume"))
-    {
-      if (paramJSONObject != null) {
-        d = paramJSONObject.optDouble("volume", 1.0D);
-      }
-      WXLivePusherReflect.setMicVolume((float)d, this.mLivePusher);
-    }
-    return null;
-  }
-  
   private Bundle adaptJsonToBundle(JSONObject paramJSONObject)
   {
     Bundle localBundle = new Bundle();
@@ -312,6 +248,70 @@ public class TXLivePusherJSAdapter
       operateLivePusher("resumeBGM", null);
     }
     return new TXJSAdapterError();
+  }
+  
+  private TXJSAdapterError bgmLivePusherOperate(String paramString, JSONObject paramJSONObject)
+  {
+    double d = 1.0D;
+    if (paramString.equalsIgnoreCase("playBGM"))
+    {
+      paramString = "";
+      if (paramJSONObject != null) {
+        paramString = paramJSONObject.optString("BGMFilePath", "");
+      }
+      QMLog.d("TXLivePusherJSAdapter", "playBGM filePath = " + paramString);
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        WXLivePusherReflect.playBGM(paramString, this.mLivePusher);
+        return new TXJSAdapterError();
+      }
+      return new TXJSAdapterError(-2, "fail");
+    }
+    if (paramString.equalsIgnoreCase("stopBGM"))
+    {
+      WXLivePusherReflect.stopBGM(this.mLivePusher);
+      this.mBGMPlaying = false;
+      return new TXJSAdapterError();
+    }
+    if (paramString.equalsIgnoreCase("pauseBGM"))
+    {
+      WXLivePusherReflect.pauseBGM(this.mLivePusher);
+      this.mBGMPlaying = false;
+      return new TXJSAdapterError();
+    }
+    if (paramString.equalsIgnoreCase("resumeBGM"))
+    {
+      WXLivePusherReflect.resumeBGM(this.mLivePusher);
+      this.mBGMPlaying = true;
+      return new TXJSAdapterError();
+    }
+    if (paramString.equalsIgnoreCase("setBGMPosition"))
+    {
+      if ((this.mBGMPlaying) && (paramJSONObject != null))
+      {
+        int i = paramJSONObject.optInt("BGMPosition", -1);
+        if (i > 0) {
+          WXLivePusherReflect.setBGMPosition(i, this.mLivePusher);
+        }
+      }
+      return new TXJSAdapterError();
+    }
+    if (paramString.equalsIgnoreCase("setBGMVolume"))
+    {
+      if (paramJSONObject != null) {
+        d = paramJSONObject.optDouble("volume", 1.0D);
+      }
+      WXLivePusherReflect.setBGMVolume((float)d, this.mLivePusher);
+      return new TXJSAdapterError();
+    }
+    if (paramString.equalsIgnoreCase("setMICVolume"))
+    {
+      if (paramJSONObject != null) {
+        d = paramJSONObject.optDouble("volume", 1.0D);
+      }
+      WXLivePusherReflect.setMicVolume((float)d, this.mLivePusher);
+    }
+    return null;
   }
   
   private TXJSAdapterError cameraLivePusherOperate(String paramString, JSONObject paramJSONObject)
@@ -1078,7 +1078,7 @@ public class TXLivePusherJSAdapter
       }
       localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = BGMLivePusherOperate(paramString, paramJSONObject);
+        localObject2 = bgmLivePusherOperate(paramString, paramJSONObject);
       }
       localObject1 = localObject2;
       if (localObject2 == null) {

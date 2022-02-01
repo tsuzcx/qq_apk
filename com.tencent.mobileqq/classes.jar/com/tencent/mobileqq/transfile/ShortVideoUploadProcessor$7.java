@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import bctj;
-import bdyr;
+import bdmc;
+import bexk;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class ShortVideoUploadProcessor$7
   implements Runnable
 {
-  public ShortVideoUploadProcessor$7(bdyr parambdyr, String paramString) {}
+  public ShortVideoUploadProcessor$7(bexk parambexk, String paramString) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class ShortVideoUploadProcessor$7
     ((HashMap)localObject).put("param_videoLen", localFile.length() + "");
     DecimalFormat localDecimalFormat = new DecimalFormat("##.000");
     ((HashMap)localObject).put("param_moovPosition", localDecimalFormat.format(l2 * 1.0D / localFile.length()) + "");
-    bctj.a(BaseApplication.getContext()).a(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
+    bdmc.a(BaseApplication.getContext()).a(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
   }
 }
 

@@ -1,23 +1,21 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class abau
-  implements aqiw
+class abau
+  implements Animation.AnimationListener
 {
-  public abau(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
+  abau(abaq paramabaq) {}
   
-  public int a()
-  {
-    return 1;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public String a(int paramInt1, int paramInt2)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
+    if (abaq.b(this.a) != null) {
+      abaq.b(this.a).setVisibility(0);
+    }
   }
 }
 

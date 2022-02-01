@@ -7,7 +7,7 @@ class MiniGamePublicAccountWebFragment$2
   
   public void onPageSelected(int paramInt)
   {
-    MiniGamePublicAccountWebFragment.access$900(this.this$0, paramInt);
+    MiniGamePublicAccountWebFragment.access$800(this.this$0, paramInt, true);
   }
 }
 

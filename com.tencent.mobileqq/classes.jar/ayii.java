@@ -1,19 +1,16 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayii
-  extends ayif
+class ayii
+  implements View.OnClickListener
 {
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, ayib paramayib, ayid paramayid)
+  ayii(ayhj paramayhj) {}
+  
+  public void onClick(View paramView)
   {
-    paramViewGroup = paramViewGroup.getContext();
-    if ((paramView != null) && (((ayid)paramView.getTag()).a == paramayid.a)) {
-      return paramView;
-    }
-    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559804, null);
-    paramView.setTag(paramayid);
-    return paramView;
+    this.a.e(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

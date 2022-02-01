@@ -1,29 +1,23 @@
-import android.widget.TextView;
+import android.animation.Animator;
+import android.view.View;
 
 class ufv
-  implements ufo
+  extends uex
 {
-  ufv(ufp paramufp, boolean paramBoolean) {}
+  ufv(ufr paramufr) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ufp.a(this.jdField_a_of_type_Ufp, null);
-    if ((ufp.a(this.jdField_a_of_type_Ufp) != null) && (ufp.c(this.jdField_a_of_type_Ufp)) && (ufp.a(this.jdField_a_of_type_Ufp) != null)) {
-      ufp.a(this.jdField_a_of_type_Ufp).setText(ufp.a(this.jdField_a_of_type_Ufp).a());
+    super.onAnimationEnd(paramAnimator);
+    if (this.a.b != null) {
+      this.a.b.setVisibility(8);
     }
-    if ((ufp.d(this.jdField_a_of_type_Ufp)) && (ufp.a(this.jdField_a_of_type_Ufp) != 0L))
-    {
-      ufp.b(this.jdField_a_of_type_Ufp);
-      ufp.c(this.jdField_a_of_type_Ufp, false);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      ufp.c(this.jdField_a_of_type_Ufp);
-    }
+    ufr.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ufv
  * JD-Core Version:    0.7.0.1
  */

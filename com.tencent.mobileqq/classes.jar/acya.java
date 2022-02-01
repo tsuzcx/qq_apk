@@ -1,37 +1,10 @@
-import android.util.SparseIntArray;
-
-public class acya
-  implements acxz
+public abstract interface acya
 {
-  private final SparseIntArray a = new SparseIntArray();
+  public abstract void a(int paramInt);
   
-  public int a(int paramInt)
-  {
-    try
-    {
-      paramInt = this.a.get(paramInt, 1);
-      return paramInt;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract void b(int paramInt);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      this.a.put(paramInt1, paramInt2);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract void c(int paramInt);
 }
 
 

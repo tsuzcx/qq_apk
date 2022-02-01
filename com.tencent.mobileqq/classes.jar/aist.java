@@ -1,141 +1,82 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 import java.util.List;
+import org.apache.http.Header;
 
-public class aist
-  extends BaseAdapter
-  implements View.OnClickListener
+class aist
+  implements URLDrawableDownListener
 {
-  public aisu a;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  List<ReadInJoySearchHistoryEntity> jdField_a_of_type_JavaUtilList;
+  aist(aiss paramaiss) {}
   
-  public aist(Context paramContext, List<ReadInJoySearchHistoryEntity> paramList, aisu paramaisu)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    b(paramList);
-    this.jdField_a_of_type_Aisu = paramaisu;
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadCancelled");
+    }
   }
   
-  private void b(List<ReadInJoySearchHistoryEntity> paramList)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    aiss.a(this.a, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.e("StickerRecBarAdapter", 2, "drawableListener onLoadFialed:" + paramURLDrawable.getURL(), paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    l2 = -1L;
+    try
     {
-      this.jdField_a_of_type_JavaUtilList = null;
-      return;
-    }
-    if (paramList.size() < 6)
-    {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = paramList.subList(0, 5);
-  }
-  
-  public void a(List<ReadInJoySearchHistoryEntity> paramList)
-  {
-    b(paramList);
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    View localView;
-    if (localObject == null)
-    {
-      localView = null;
-      localObject = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localView;
-    }
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from((Context)localObject).inflate(2131559801, null);
-      localObject = new aisv(this);
-      ((aisv)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367983));
-      ((aisv)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369476));
-      ((aisv)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364521));
-      paramView.setTag(localObject);
-      paramView.setOnClickListener(this);
-      label120:
-      ((aisv)localObject).jdField_a_of_type_Int = paramInt;
-      if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label203;
-      }
-      ((aisv)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      ((aisv)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      ((aisv)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).keyWord);
-    }
-    for (;;)
-    {
-      localObject = paramView;
-      localView = paramView;
-      break;
-      localObject = (aisv)paramView.getTag();
-      break label120;
-      label203:
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size())
+      Object localObject = paramURLDrawable.getHeader("report_key_start_download");
+      l1 = l2;
+      if (localObject != null)
       {
-        ((aisv)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        ((aisv)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        localObject = ((Header)localObject).getValue();
+        l1 = l2;
+        if (localObject != null)
+        {
+          l1 = Long.parseLong((String)localObject);
+          long l3 = System.currentTimeMillis();
+          l1 = l3 - l1;
+        }
       }
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject;
-    if ((paramView.getTag() instanceof aisv))
+    catch (Exception localException)
     {
-      localObject = (aisv)paramView.getTag();
-      if (((aisv)localObject).jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label76;
-      }
-      if (this.jdField_a_of_type_Aisu != null)
+      for (;;)
       {
-        localObject = (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(((aisv)localObject).jdField_a_of_type_Int);
-        this.jdField_a_of_type_Aisu.a((ReadInJoySearchHistoryEntity)localObject);
+        long l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("StickerRecBarAdapter", 2, "onLoadSuccessed:get start download time");
+          l1 = l2;
+        }
       }
     }
-    for (;;)
+    aiss.a(this.a, paramURLDrawable, l1);
+    paramView = paramView.getTag();
+    if (aiti.b((aism)paramView))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label76:
-      if ((((aisv)localObject).jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_Aisu != null)) {
-        this.jdField_a_of_type_Aisu.a();
+      paramView = (aitc)paramView;
+      if ((aiti.b(paramView)) && (!aiss.a(this.a).contains(paramView.j())))
+      {
+        aiss.a(this.a).add(paramView.j());
+        paramURLDrawable = paramView.l();
+        aiss.a(this.a).add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.j()));
       }
     }
   }

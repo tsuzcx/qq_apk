@@ -1,18 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.widget.VideoView;
 
-public class bikl
-  implements View.OnClickListener
+final class bikl
+  implements MediaPlayer.OnCompletionListener
 {
-  public bikl(BindGroupFragment paramBindGroupFragment) {}
+  bikl(VideoView paramVideoView) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    BindGroupFragment.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.start();
   }
 }
 

@@ -1,17 +1,10 @@
-public class blma
+public abstract interface blma
 {
-  public static String a = "noticeServiceActive";
-  public static String b = "noticeSendEmoticon";
-  public static String c = "com.qqindividuality.ipc.IpcServer";
-  public static String d = "emoticonPackageId";
-  public static String e = "imagePath";
-  public static String f = "imageName";
-  public static String g = "imageWidth";
-  public static String h = "imageHeight";
-  public static String i = "requestCode";
-  public static String j = "commDiyText";
-  public static String k = "diyText";
-  public static String l = "individuality_plugin";
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void h();
 }
 
 

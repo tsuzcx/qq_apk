@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget.reddot;
 
-import tkf;
+import tay;
 
 class ColorBandVideoEntranceButton$4
   implements Runnable
 {
-  ColorBandVideoEntranceButton$4(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton, tkf paramtkf) {}
+  ColorBandVideoEntranceButton$4(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton, tay paramtay) {}
   
   public void run()
   {

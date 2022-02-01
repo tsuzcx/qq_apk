@@ -1,20 +1,12 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
-import java.util.Comparator;
-
-public class mvk
-  implements Comparator<Integer>
+class mvk<Data>
 {
-  public mvk(StageEffectView paramStageEffectView) {}
+  final mvj jdField_a_of_type_Mvj;
+  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  mvk(mvj parammvj, Data... paramVarArgs)
   {
-    paramInteger1 = (mvr)this.a.getChildAt(paramInteger1.intValue()).getTag();
-    paramInteger2 = (mvr)this.a.getChildAt(paramInteger2.intValue()).getTag();
-    if (paramInteger1.c < paramInteger2.c) {
-      return 1;
-    }
-    return -1;
+    this.jdField_a_of_type_Mvj = parammvj;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
 }
 

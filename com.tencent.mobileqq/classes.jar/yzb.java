@@ -1,19 +1,34 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-
-class yzb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yzb
 {
-  private yzb(yys paramyys) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void onGlobalLayout()
+  public boolean equals(Object paramObject)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    if (this == paramObject) {}
+    do
     {
-      this.a.dismiss();
-      return;
-    }
-    this.a.jdField_a_of_type_Yyz.a(this.a.a());
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (yzb)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
+  }
+  
+  public String toString()
+  {
+    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

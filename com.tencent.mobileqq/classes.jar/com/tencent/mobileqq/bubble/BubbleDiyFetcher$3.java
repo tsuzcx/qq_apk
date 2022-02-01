@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bubble;
 
-import apwr;
-import apym;
+import aqkr;
+import aqmm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class BubbleDiyFetcher$3
   implements Runnable
 {
-  public BubbleDiyFetcher$3(apwr paramapwr, Set paramSet) {}
+  public BubbleDiyFetcher$3(aqkr paramaqkr, Set paramSet) {}
   
   public void run()
   {
@@ -19,23 +19,23 @@ public class BubbleDiyFetcher$3
     Iterator localIterator = this.this$0.a.iterator();
     while (localIterator.hasNext())
     {
-      apym localapym = (apym)localIterator.next();
-      if ((localapym != null) && (localapym.getCallback() != null))
+      aqmm localaqmm = (aqmm)localIterator.next();
+      if ((localaqmm != null) && (localaqmm.getCallback() != null))
       {
-        String str = localapym.a;
-        if ((this.a.contains(str)) && (!localHashSet.contains(localapym)))
+        String str = localaqmm.a;
+        if ((this.a.contains(str)) && (!localHashSet.contains(localaqmm)))
         {
           if (QLog.isColorLevel()) {
-            QLog.i("BubbleDiyFetcher", 2, "refresh uinAndDiyId drawables: " + str + ", vipBubbleDrawable:" + localapym.toString());
+            QLog.i("BubbleDiyFetcher", 2, "refresh uinAndDiyId drawables: " + str + ", vipBubbleDrawable:" + localaqmm.toString());
           }
-          localHashSet.add(localapym);
-          localapym.invalidateSelf();
-          this.this$0.a.remove(localapym);
+          localHashSet.add(localaqmm);
+          localaqmm.invalidateSelf();
+          this.this$0.a.remove(localaqmm);
         }
       }
       else
       {
-        this.this$0.a.remove(localapym);
+        this.this$0.a.remove(localaqmm);
       }
     }
     if (QLog.isColorLevel()) {

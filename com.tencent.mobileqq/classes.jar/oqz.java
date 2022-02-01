@@ -1,29 +1,22 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class oqz
+final class oqz
+  implements ViewFactory.FoundClickableViewListener
 {
-  public static ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
+  oqz(Container paramContainer, otd paramotd, otp paramotp) {}
   
-  public static Object a(int paramInt)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (a.containsKey(Integer.valueOf(paramInt))) {
-      return a.get(Integer.valueOf(paramInt));
-    }
-    return null;
-  }
-  
-  public static void a(int paramInt)
-  {
-    a.remove(Integer.valueOf(paramInt));
-  }
-  
-  public static void a(int paramInt, Object paramObject)
-  {
-    if (paramObject == null) {
+    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
       return;
     }
-    a.remove(Integer.valueOf(paramInt));
-    a.put(Integer.valueOf(paramInt), paramObject);
+    SparseArray localSparseArray = new SparseArray();
+    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+    opc.a.a(i, localSparseArray).a(i, localSparseArray).a(i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otd, this.jdField_a_of_type_Otp, paramViewBase);
   }
 }
 

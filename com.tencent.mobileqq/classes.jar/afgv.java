@@ -1,60 +1,23 @@
-import android.graphics.Rect;
+import android.app.Dialog;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afgv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public afgv(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public afgv(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    Object localObject = new Rect();
-    this.a.mUIStyleHandler.d.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.mUIStyleHandler.d.getRootView().getHeight();
-    int j = i - ((Rect)localObject).bottom;
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
-    {
-      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.e = j;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    if (j > i / 3)
-    {
-      if (this.a.c) {
-        this.a.b(false);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Int == 2) {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        }
-        i = (int)mue.b(BaseApplicationImpl.getApplication(), this.a.b + j);
-        return;
-        this.a.b(true);
-      }
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
     }
-    this.a.b(false);
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if (this.a.jdField_a_of_type_Int == 2) {
-      i = (int)mue.b(BaseApplicationImpl.getApplication(), this.a.b);
-    }
-    for (;;)
-    {
-      this.a.d = false;
-      return;
-      if (this.a.jdField_a_of_type_Int != 1) {}
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

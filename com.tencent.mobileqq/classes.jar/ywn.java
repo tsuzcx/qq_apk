@@ -1,43 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-
-public class ywn
-  extends JobSegment<Bitmap, Bitmap>
+class ywn
+  extends bcwm
 {
-  public int a;
+  ywn(ywh paramywh) {}
   
-  public ywn()
+  public void a()
   {
-    this.a = 10;
-  }
-  
-  public ywn(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    bgsn.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    yqp.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    yuk.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.Z_();
   }
 }
 

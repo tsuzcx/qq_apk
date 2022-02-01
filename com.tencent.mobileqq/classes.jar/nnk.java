@@ -1,38 +1,11 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public final class nnk
-  implements aaob
+class nnk
+  implements bljb
 {
-  public nnk(Activity paramActivity, boolean paramBoolean, String paramString) {}
+  nnk(nnj paramnnj) {}
   
-  public void callback(Bundle paramBundle)
+  public void onDismiss()
   {
-    int i = paramBundle.getInt("currentFragment", -1);
-    if (QLog.isColorLevel()) {
-      QLog.i("SensorAPIJavaScript", 2, "isFromAio callback " + i);
-    }
-    if (i == 2)
-    {
-      paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-      paramBundle.setFlags(67108864);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-      return;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      paramBundle = afur.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("uintype", 1);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppActivity.setResult(4660);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    nnj.a(this.a);
   }
 }
 

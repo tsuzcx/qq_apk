@@ -1,6 +1,11 @@
-public abstract interface alns
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+class alns
+  extends alnm
 {
-  public abstract boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4);
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

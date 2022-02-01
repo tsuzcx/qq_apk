@@ -1,10 +1,21 @@
-public abstract interface awwd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class awwd
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, awws paramawws);
+  awwd(awwb paramawwb) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awwd
  * JD-Core Version:    0.7.0.1
  */

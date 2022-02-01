@@ -1,58 +1,90 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 class aieh
-  extends aoqo
+  implements aief
 {
-  aieh(aidp paramaidp, String paramString) {}
+  private IBinder a;
   
-  public int a()
+  aieh(IBinder paramIBinder)
   {
-    return 5;
+    this.a = paramIBinder;
   }
   
-  public void a(Object paramObject)
+  public void a(CompressInfo paramCompressInfo)
   {
-    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Aidp.jdField_a_of_type_JavaLangString, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
-      }
-      aidp.a(this.jdField_a_of_type_Aidp, aidp.a(this.jdField_a_of_type_Aidp));
-      oat.a(this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      ((bfrd)this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      aidp.b(this.jdField_a_of_type_Aidp, false);
-      if ((this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.appid.get() + ""))) {
-        this.jdField_a_of_type_Aidp.b(1);
-      }
-    }
-    else
-    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(1, localParcel, null, 1);
       return;
     }
-    this.jdField_a_of_type_Aidp.c(this.jdField_a_of_type_Aidp.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public IBinder asBinder()
   {
-    this.jdField_a_of_type_Aidp.A(2131694617);
+    return this.a;
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public void b(CompressInfo paramCompressInfo)
   {
-    aidp.c(this.jdField_a_of_type_Aidp);
-    if (aidp.d(this.jdField_a_of_type_Aidp) == 0) {
-      this.jdField_a_of_type_Aidp.bp();
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void c(CompressInfo paramCompressInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(3, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
     }
   }
 }

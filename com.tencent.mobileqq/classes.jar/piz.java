@@ -1,61 +1,95 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import java.util.List;
 
 public class piz
-  implements AladdinConfigHandler
+  extends ohl
+  implements View.OnClickListener
 {
-  private static final Set<String> a = ;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private sel jdField_a_of_type_Sel;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
   
-  public static Set<String> a()
+  public piz(Activity paramActivity)
   {
-    return a;
+    super(paramActivity);
   }
   
-  private static Set<String> b()
+  private void i()
   {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (String)bmqa.a("comment_feeds_aladdin_keys", "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localHashSet;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    localObject = ((String)localObject).split("\\|");
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      localHashSet.add(localObject[i]);
-      i += 1;
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.b = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373721);
     }
-    return localHashSet;
   }
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public ViewGroup a()
   {
-    QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyProteusFamilyListViewGroup(this, 0, 0, 0, null, 2131560278);
+    this.jdField_a_of_type_Sel = ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    super.a(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    i();
+  }
+  
+  public void a(boolean paramBoolean, List<BaseArticleInfo> paramList)
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      String str1 = (String)localIterator.next();
-      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
+      a();
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (this.b != null) {
+      this.b.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    {
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
       {
-        String str2 = (String)paramString.get(str1);
-        QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-        bmqa.a("comment_feeds_aladdin_keys", str2);
+        ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent() != null) {
+          ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
+        }
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
       }
+      ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(true, paramList);
     }
-    return true;
   }
   
-  public void onWipeConfig(int paramInt)
+  public void c()
   {
-    QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
+    super.c();
   }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Sel != null) {
+      this.jdField_a_of_type_Sel.a();
+    }
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 

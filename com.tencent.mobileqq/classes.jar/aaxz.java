@@ -1,9 +1,13 @@
-public class aaxz
-  implements aaxr
+import com.tencent.biz.troopplugin.PluginJumpManager;
+
+class aaxz
+  implements nmh
 {
-  public awdu a(String paramString)
+  aaxz(aaxy paramaaxy) {}
+  
+  public void loaded(int paramInt, String paramString)
   {
-    return new aweg(paramString).a();
+    this.a.a.loadConfigFromFile();
   }
 }
 

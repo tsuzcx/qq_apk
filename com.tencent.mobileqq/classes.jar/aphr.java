@@ -1,71 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
-
-class aphr
-  implements bmxe
+public class aphr
+  extends apht
 {
-  aphr(aphi paramaphi) {}
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  float[] jdField_a_of_type_ArrayOfFloat;
+  float jdField_b_of_type_Float;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  float c;
   
-  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
+  public aphr(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if (paramArrayList != null) {
-      QLog.i("ark.download.module", 1, "ark.dctrl.onQueryCallback:" + paramArrayList.toString());
-    }
-    if (aphi.a(this.a) != null)
-    {
-      aceh.a(paramArrayList);
-      aphi.a(this.a).a(paramArrayList);
-    }
-  }
-  
-  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      QLog.i("ark.download.module", 1, "ark.dctrl.onQueryCallbackVia:" + paramArrayList.toString());
-    }
-    if (aphi.a(this.a) != null)
-    {
-      aceh.a(paramArrayList);
-      aphi.a(this.a).a(paramArrayList);
-    }
-  }
-  
-  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
-  {
-    if (aphi.a(this.a) != null)
-    {
-      aceh.a(paramWadlResult);
-      aphi.a(this.a).a(paramWadlResult);
-      if (paramWadlResult != null) {}
-    }
-    else
-    {
-      return;
-    }
-    QLog.i("ark.download.module", 1, "ark.dctrl.onWadlTaskStatusChanged:" + paramWadlResult.toString());
-    if (paramWadlResult.a != null) {}
-    for (String str = paramWadlResult.a.a;; str = "") {
-      switch (paramWadlResult.b)
-      {
-      case 8: 
-      case 10: 
-      case 11: 
-      case 12: 
-      case 13: 
-      default: 
-        return;
-      case 6: 
-        bcst.a(null, "dc00898", "", "", "0X8009E14", "0X8009E14", 0, 0, "", "", str, "");
-        return;
-      }
-    }
-    bcst.a(null, "dc00898", "", "", "0X8009E15", "0X8009E15", 0, 0, "", "", str, "");
-    return;
-    bcst.a(null, "dc00898", "", "", "0X8009E17", "0X8009E17", 0, 0, "", "", str, "");
-    return;
-    bcst.a(null, "dc00898", "", "", "0X8009E18", "0X8009E18", 0, 0, "", "", str, "");
+    super(0);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramFloat3;
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
   }
 }
 

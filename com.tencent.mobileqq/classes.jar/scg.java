@@ -1,26 +1,24 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class scg
-  implements sps
+  extends sbh
 {
-  scg(sce paramsce, VideoInfo paramVideoInfo) {}
+  scg(sbi paramsbi) {}
   
-  public void a()
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_from_type", 2);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
-      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-    }
-    PublicFragmentActivity.a(sce.a(this.jdField_a_of_type_Sce), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
-    sce.a(this.jdField_a_of_type_Sce).dismiss();
+    sbi.a(this.a, paramInt, paramBaseArticleInfo, paramString);
+  }
+  
+  public int b()
+  {
+    return 4;
+  }
+  
+  public int c()
+  {
+    return 4;
   }
 }
 

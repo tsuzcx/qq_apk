@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.persistence.entity;
 
 import android.text.TextUtils;
-import bgnt;
+import bhnv;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -119,8 +119,8 @@ public class PAAdPreloadTask
   
   public boolean isNetworkValid()
   {
-    if (((this.mNetworkType & 0x1) != 0) && (bgnt.h(null))) {}
-    while (((this.mNetworkType & 0x2) != 0) && (bgnt.a(BaseApplication.getContext()) == 4)) {
+    if (((this.mNetworkType & 0x1) != 0) && (bhnv.h(null))) {}
+    while (((this.mNetworkType & 0x2) != 0) && (bhnv.a(BaseApplication.getContext()) == 4)) {
       return true;
     }
     return false;

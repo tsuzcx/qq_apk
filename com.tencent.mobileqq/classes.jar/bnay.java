@@ -1,17 +1,19 @@
-public class bnay
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiOperationInfo;
+
+public final class bnay
+  implements Parcelable.Creator<WeishiOperationInfo>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public WeishiOperationInfo a(Parcel paramParcel)
+  {
+    return new WeishiOperationInfo(paramParcel);
+  }
+  
+  public WeishiOperationInfo[] a(int paramInt)
+  {
+    return new WeishiOperationInfo[paramInt];
+  }
 }
 
 

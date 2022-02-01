@@ -1,154 +1,96 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceTroopDetailView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class atft
-  extends atfq
+public class atft
+  implements atgs
 {
-  public atft(atfe paramatfe)
+  public atft(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  
+  public QQAppInterface a()
   {
-    super(paramatfe);
+    return this.a.app;
   }
   
-  protected String a()
+  public void a()
   {
-    return "StateExcepInvalidWhenRecv";
+    this.a.h();
   }
   
-  protected void a(int paramInt)
+  public void a(atgx paramatgx)
   {
-    int i = 1;
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == this.a.d.size())
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
+      this.a.a(paramatgx);
       return;
     }
-    if (5 != paramInt)
+    Face2FaceAddFriendActivity.a(this.a).obtainMessage().obj = paramatgx;
+    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(12, 5000L);
+  }
+  
+  public boolean a(atgx paramatgx, int paramInt)
+  {
+    if (!bhnv.d(this.a))
     {
-      this.jdField_a_of_type_Atfe.d();
-      switch (paramInt)
-      {
-      default: 
-        label63:
-        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
-        paramInt = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, NetworkUtil.isNetSupport==false");
       }
+      QQToast.a(this.a.app.getApplication(), 2131693965, 0).b(this.a.getTitleBarHeight());
     }
-    while (paramInt != 0)
+    do
     {
-      this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
-      return;
-      this.jdField_a_of_type_Atfe.b();
-      break label63;
-      atfe.b(this.jdField_a_of_type_Atfe, 11, 5);
-      atfe.c(this.jdField_a_of_type_Atfe, 11, 5);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateAcceptByPC)");
-      this.jdField_a_of_type_Atfi = new atff(this.jdField_a_of_type_Atfe);
-      paramInt = i;
-      continue;
-      atfe.b(this.jdField_a_of_type_Atfe, 11, 6);
-      atfe.c(this.jdField_a_of_type_Atfe, 11, 6);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateRefuseByPC)");
-      this.jdField_a_of_type_Atfi = new atfy(this.jdField_a_of_type_Atfe);
-      paramInt = i;
-      continue;
-      atfe.b(this.jdField_a_of_type_Atfe, 11, 8);
-      atfe.c(this.jdField_a_of_type_Atfe, 11, 8);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateSenderCancelSend)");
-      this.jdField_a_of_type_Atfi = new atgf(this.jdField_a_of_type_Atfe);
-      paramInt = i;
-      continue;
-      atfe.b(this.jdField_a_of_type_Atfe, 11, 7);
-      atfe.c(this.jdField_a_of_type_Atfe, 11, 7);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateSaveToWeiYunByPC)");
-      this.jdField_a_of_type_Atfi = new atgc(this.jdField_a_of_type_Atfe);
-      paramInt = i;
-      continue;
-      atfe.a(this.jdField_a_of_type_Atfe);
-      atfe.b(this.jdField_a_of_type_Atfe, 11, 11);
-      atfe.c(this.jdField_a_of_type_Atfe, 11, 14);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadingWhenChangeToOff)");
-      this.jdField_a_of_type_Atfi = new atgi(this.jdField_a_of_type_Atfe);
-      paramInt = 0;
+      aocv localaocv;
+      do
+      {
+        return false;
+        localaocv = (aocv)this.a.app.a(57);
+      } while (localaocv == null);
+      this.a.jdField_a_of_type_Bjbs = new bjbs(this.a);
+      this.a.jdField_a_of_type_Bjbs.a(anzj.a(2131703185));
+      this.a.jdField_a_of_type_Bjbs.setCancelable(false);
+      this.a.jdField_a_of_type_Bjbs.show();
+      try
+      {
+        long l1 = Long.valueOf(paramatgx.e).longValue();
+        long l2 = Long.valueOf(paramatgx.jdField_b_of_type_JavaLangString).longValue();
+        if (QLog.isColorLevel()) {
+          QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, troopCode=" + l1 + ", ownerUin=" + l2 + ", distance=" + paramatgx.d);
+        }
+        localaocv.a(l1, l2, paramatgx.d, paramInt);
+        return true;
+      }
+      catch (Exception paramatgx) {}
+    } while (!QLog.isColorLevel());
+    QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop:" + paramatgx.toString());
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    if (this.a.jdField_b_of_type_Int == 1) {
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopDetailView.a);
     }
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void d()
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    this.a.g();
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "afterDetailViewHide 详情页返回");
     }
-    b(paramInt1, paramInt2);
-    atfe.b(this.jdField_a_of_type_Atfe, 9, 11);
-    atfe.c(this.jdField_a_of_type_Atfe, 9, 11);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateLocalFailedWhenRecv)");
-    this.jdField_a_of_type_Atfi = new atfx(this.jdField_a_of_type_Atfe);
-    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 6, null);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.a(this.jdField_a_of_type_Atfe, 9, 12, true);
-    a("StateExcepInvalidWhenRecv");
-    this.jdField_a_of_type_Atfi = new atft(this.jdField_a_of_type_Atfe);
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((atvo.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 5);
-    }
-    localFileManagerEntity.setCloudType(1);
-    atfe.b(this.jdField_a_of_type_Atfe, 1, 0);
-    atfe.c(this.jdField_a_of_type_Atfe, 1, 0);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateGotoOffFileProcess)");
-    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Atfi = new atfu(this.jdField_a_of_type_Atfe);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.a(this.jdField_a_of_type_Atfe, 11, 9, true);
-    a("StateCancelUploadWhenRecv");
-    this.jdField_a_of_type_Atfi = new atfl(this.jdField_a_of_type_Atfe);
-  }
-  
-  protected void d()
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. onFailedOfLocalSomeThingHappen entity is null");
-      return;
-    }
-    atfe.a(this.jdField_a_of_type_Atfe);
-    atfe.a(this.jdField_a_of_type_Atfe, 9, 11, true);
-    a("StateLocalFailedWhenRecv");
-    this.jdField_a_of_type_Atfi = new atfx(this.jdField_a_of_type_Atfe);
-    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 6, null);
+    this.a.g = "";
+    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(13, this.a.a());
   }
 }
 

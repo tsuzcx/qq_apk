@@ -1,88 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aljy
-  implements Animator.AnimatorListener
+class aljy
+  implements View.OnClickListener
 {
-  public aljy(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  aljy(aljw paramaljw, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (!this.a.r)
+    if (BaseActivity.sTopActivity != null) {
+      axgj.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
+    }
+    for (;;)
     {
-      if (alin.a == 2) {
-        this.a.jdField_a_of_type_Bcio.e();
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      if (NewFlowCameraActivity.i(this.a))
-      {
-        AVCodec.get().retake();
-        yqp.c("PTV.NewFlowCameraActivity", "AVCodec.get().retake() by mbRetake flag");
-        NewFlowCameraActivity.i(this.a, false);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Almo.x();
-      if (NewFlowCameraActivity.j(this.a))
-      {
-        if (alin.a != 1) {
-          break label235;
-        }
-        NewFlowCameraActivity.a(this.a, true);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Double = 0.0D;
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.f();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
-        this.a.H();
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "start recording start time=" + this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long);
-        }
-        this.a.r = true;
-        if (this.a.f) {
-          this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(4);
-        }
-        return;
-        label235:
-        this.a.jdField_a_of_type_Bcio.c(true);
+      axgj.m();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
       }
     }
-    if (this.a.f) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    }
-    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = afur.a(59.0F, this.a.getResources());
-    paramAnimator.width = i;
-    paramAnimator.height = i;
-    paramAnimator.addRule(13);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramAnimator);
-    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
-    i = afur.a(84.0F, this.a.getResources());
-    paramAnimator.width = i;
-    paramAnimator.height = i;
-    paramAnimator.addRule(13);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramAnimator);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.r = false;
   }
 }
 

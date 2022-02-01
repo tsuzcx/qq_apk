@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
-import ajgp;
+import ajry;
 
 public class AlphabetFriendAdapter$1
   implements Runnable
 {
-  public AlphabetFriendAdapter$1(ajgp paramajgp) {}
+  public AlphabetFriendAdapter$1(ajry paramajry) {}
   
   public void run()
   {

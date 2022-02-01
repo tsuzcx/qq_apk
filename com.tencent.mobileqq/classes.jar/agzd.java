@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler;
 
 class agzd
-  extends ahbl
+  implements adku
 {
-  agzd(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  agzd(agzb paramagzb) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt, abjd paramabjd) {}
+  
+  public void a(long paramLong)
   {
-    return new ahda(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    agzb.a("onLowMemory");
+    agzb.a().sendMessage(agzb.a().obtainMessage(5));
   }
 }
 

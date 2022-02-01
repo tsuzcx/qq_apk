@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import amol;
-import amre;
+import anaf;
+import ancy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class GeneralEventHandler$1
   implements Runnable
 {
-  public GeneralEventHandler$1(amre paramamre, String paramString) {}
+  public GeneralEventHandler$1(ancy paramancy, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class GeneralEventHandler$1
       String str1 = localJSONObject.optString("friendUin");
       String str2 = localJSONObject.optString("nickName");
       int i = localJSONObject.optInt("src");
-      amol.a((QQAppInterface)amre.a(this.this$0).get(), str1, str2, i);
+      anaf.a((QQAppInterface)ancy.a(this.this$0).get(), str1, str2, i);
       return;
     }
     catch (Exception localException)

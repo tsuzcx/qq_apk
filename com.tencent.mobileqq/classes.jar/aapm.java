@@ -1,36 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aapm
-  implements aapi
+public class aapm
+  implements View.OnClickListener
 {
-  aapm(aapl paramaapl, aapk paramaapk) {}
+  public aapm(CommodityItemView paramCommodityItemView) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
+    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
+      if (!(this.a.a() instanceof CommodityBean)) {
+        break label127;
+      }
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    label127:
+    for (String str = ((CommodityBean)this.a.a()).mUrl;; str = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
     {
-      if (this.jdField_a_of_type_Aapk.a)
-      {
-        this.jdField_a_of_type_Aapl.jdField_a_of_type_Aapz.b(this.jdField_a_of_type_Aapl);
-        return;
+      if (CommodityItemView.a(this.a) != null) {
+        abbe.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + aapa.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
       }
-      if (this.jdField_a_of_type_Aapl.jdField_a_of_type_JavaLangString != null)
-      {
-        l = System.currentTimeMillis();
-        this.jdField_a_of_type_Aapl.jdField_a_of_type_Aapa.a(paramString1, this.jdField_a_of_type_Aapl.jdField_a_of_type_JavaLangString, new aapn(this, l));
-        return;
-      }
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Aapl.a(localFile, this.jdField_a_of_type_Aapl.b, new aapp(this, l));
+      aaej.a(str, 8002);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.jdField_a_of_type_Aapl.d = paramString2;
-    this.jdField_a_of_type_Aapl.jdField_a_of_type_Aapz.a(this.jdField_a_of_type_Aapl);
   }
 }
 

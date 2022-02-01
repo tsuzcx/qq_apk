@@ -1,52 +1,60 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ErrorInfo;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ReqCheckHomework;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo;
 
-class bfyv
-  implements ITransactionCallback
+public class bfyv
+  extends wpa
 {
-  bfyv(bfyu parambfyu) {}
+  bfyu jdField_a_of_type_Bfyu;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public bfyv(bfyu parambfyu, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
-    }
-    this.a.e();
+    this.jdField_a_of_type_Bfyu = parambfyu;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
-    }
-    paramHashMap = new Bdh_extinfo.CommFileExtRsp();
+    return "HwSvc.check_homework";
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    MathHWNetWorkPB.ErrorInfo localErrorInfo = new MathHWNetWorkPB.ErrorInfo();
     try
     {
-      paramHashMap.mergeFrom(paramArrayOfByte);
-      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b();
-      return;
+      localErrorInfo.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new wov(localErrorInfo.error_code.get(), localErrorInfo.error_desc.get().toStringUtf8());
+      return paramArrayOfByte;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      yuk.b("QQ.Troop.homework.SendArithHomeResultSegment", "decodeResponse", paramArrayOfByte);
     }
+    return new wov(-99, "decodeResponse error:" + paramArrayOfByte);
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  protected byte[] a()
+  {
+    MathHWNetWorkPB.ReqCheckHomework localReqCheckHomework = new MathHWNetWorkPB.ReqCheckHomework();
+    MathHWNetWorkPB.YoutuPicInfo localYoutuPicInfo = new MathHWNetWorkPB.YoutuPicInfo();
+    localYoutuPicInfo.old_url.set(this.jdField_a_of_type_Bfyu.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_url.set(this.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_data.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Bfyu.jdField_b_of_type_JavaLangString));
+    localReqCheckHomework.group_id.set(this.jdField_a_of_type_Bfyu.jdField_a_of_type_Long);
+    localReqCheckHomework.hw_id.set(this.jdField_a_of_type_Bfyu.jdField_b_of_type_Long);
+    localReqCheckHomework.uin.set(this.jdField_a_of_type_Bfyu.c);
+    localReqCheckHomework.pics.add(localYoutuPicInfo);
+    return localReqCheckHomework.toByteArray();
+  }
 }
 
 

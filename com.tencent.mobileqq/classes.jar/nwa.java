@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-class nwa
-  implements DialogInterface.OnClickListener
+public class nwa
+  implements nxe
 {
-  nwa(nvu paramnvu, JsResult paramJsResult) {}
+  public nwa(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
   }
 }
 

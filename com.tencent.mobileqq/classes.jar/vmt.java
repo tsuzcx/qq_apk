@@ -1,22 +1,17 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vmt
-  extends LinearLayoutManager
+public class vmt
+  implements View.OnClickListener
 {
-  vmt(vms paramvms, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  public vmt(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public boolean canScrollHorizontally()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
+    QCircleContentOperationView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

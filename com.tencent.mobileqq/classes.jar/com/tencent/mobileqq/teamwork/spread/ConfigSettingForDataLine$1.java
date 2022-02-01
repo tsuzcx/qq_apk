@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import arah;
-import bdkq;
+import arpy;
+import bedl;
 
 public class ConfigSettingForDataLine$1
   implements Runnable
 {
-  public ConfigSettingForDataLine$1(bdkq parambdkq, arah paramarah) {}
+  public ConfigSettingForDataLine$1(bedl parambedl, arpy paramarpy) {}
   
   public void run()
   {
-    bdkq.a(this.this$0, this.a);
+    bedl.a(this.this$0, this.a);
   }
 }
 

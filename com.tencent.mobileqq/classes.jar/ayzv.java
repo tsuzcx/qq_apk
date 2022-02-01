@@ -1,9 +1,23 @@
-public final class ayzv
-  extends ayzn
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
+
+public class ayzv
+  implements PopupWindow.OnDismissListener
 {
-  protected int a()
+  public ayzv(TranslateFragment paramTranslateFragment, ayyd paramayyd) {}
+  
+  public void onDismiss()
   {
-    return 507;
+    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Ayyd.c != null) && (this.jdField_a_of_type_Ayyd.c.size() > 1))
+    {
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846171);
+      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    }
   }
 }
 

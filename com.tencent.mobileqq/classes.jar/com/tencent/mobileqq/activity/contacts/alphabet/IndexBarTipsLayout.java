@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bggq;
+import bhgr;
 
 public class IndexBarTipsLayout
   extends RelativeLayout
@@ -38,7 +38,7 @@ public class IndexBarTipsLayout
   {
     this.a.setText(paramString);
     paramString = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-    paramString.topMargin = ((int)(paramFloat - getWidth() / 2.0D + bggq.a(getContext(), 20.0F)));
+    paramString.topMargin = ((int)(paramFloat - getWidth() / 2.0D + bhgr.a(getContext(), 20.0F)));
     this.a.setLayoutParams(paramString);
   }
 }

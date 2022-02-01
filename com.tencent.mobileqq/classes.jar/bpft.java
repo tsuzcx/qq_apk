@@ -1,34 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+
 public class bpft
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public bpft(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public boolean equals(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bpft)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
-  }
-  
-  public String toString()
-  {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+    AEEditorVideoClipFragment.b(this.a);
+    AEEditorVideoClipFragment.c(this.a);
+    this.a.a().a(this.a.getActivity());
   }
 }
 

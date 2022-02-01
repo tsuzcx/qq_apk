@@ -1,24 +1,13 @@
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
 public class ajuc
-  extends ajqq
+  extends aogl
 {
-  public static final int[] a = { 2131690659, 2131690664, 2131690661, 2131690662, 2131690666, 2131690663, 2131690660, 2131690665 };
-  public static final int[] b = { 2131364362, 2131364367, 2131364364, 2131364365, 2131364369, 2131364366, 2131364363, 2131364368 };
+  public ajuc(DeviceFragment paramDeviceFragment) {}
   
-  public ajuc(FragmentActivity paramFragmentActivity)
+  protected void b(int paramInt)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    this.a.a.notifyDataSetChanged();
   }
 }
 

@@ -1,65 +1,33 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.1.1;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.1.2;
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anfn
-  extends aned
+class anfn
+  implements View.OnClickListener
 {
-  public anfn(ApolloPanel paramApolloPanel) {}
+  anfn(anfj paramanfj) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "tab download Done");
-    }
-  }
-  
-  public void a(ApolloActionData paramApolloActionData)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "action res done. action=" + paramApolloActionData.actionId);
-    }
-    this.a.a(paramApolloActionData);
-    if (ApolloPanel.a(this.a) != null) {
-      ApolloPanel.a(this.a).a(paramApolloActionData);
-    }
-  }
-  
-  public void a(Boolean paramBoolean)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
-    MqqHandler localMqqHandler;
-    do
+    if ((anfj.a(this.a).d()) || (anfj.b(this.a)))
     {
-      do
-      {
-        do
-        {
-          return;
-          localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getHandler(ChatActivity.class);
-        } while (localMqqHandler == null);
-        localMqqHandler.post(new ApolloPanel.1.1(this));
-        if (!paramBoolean.booleanValue()) {
-          break;
-        }
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin());
-      } while (this.a.c == null);
-      this.a.c.clear();
-      this.a.d(this.a.a(ApolloPanel.jdField_a_of_type_Int));
-      return;
-    } while ((this.a.jdField_a_of_type_Anfm == null) || (this.a.jdField_a_of_type_Anfm.b != 3));
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
+      anfj.b(this.a, false);
+      anfj.a(this.a).a();
+      anfj.c(this.a).setVisibility(8);
+      anfj.b(this.a).setVisibility(8);
     }
-    localMqqHandler.post(new ApolloPanel.1.2(this));
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (anfj.a(this.a).c())
+      {
+        anfj.b(this.a, true);
+        anfj.a(this.a).b();
+        anfj.b(this.a).setVisibility(0);
+      }
+    }
   }
 }
 

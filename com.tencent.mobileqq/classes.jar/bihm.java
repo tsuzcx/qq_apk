@@ -1,6 +1,21 @@
-public abstract interface bihm
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+
+public class bihm
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public abstract biht a(String paramString);
+  public bihm(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+    }
+    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
+  }
 }
 
 

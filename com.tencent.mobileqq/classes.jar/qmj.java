@@ -1,41 +1,52 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSpecialTopic;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qmj
-  implements ViewFactory.FoundClickableViewListener
+  extends qjh
 {
-  qmj(qmi paramqmi, int paramInt, TemplateBean paramTemplateBean) {}
-  
-  public void onFound(ViewBase paramViewBase)
+  public qmj(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    if (qmi.a(this.jdField_a_of_type_Qmi) != null) {
-      paramViewBase.setOnClickListener(new qmk(this));
+    super(paramContext, paramaoof, paramsel);
+  }
+  
+  public qjh a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return c();
+  }
+  
+  public qjh d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    do
-    {
-      return;
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        return;
-      case 1038: 
-        paramViewBase.setOnClickListener(new qmn(this));
-        return;
-      case 1123: 
-        paramViewBase.setOnClickListener(new qml(this));
-        return;
-      case 1040: 
-        paramViewBase.setOnClickListener(new qmm(this));
-        return;
-      case 1131: 
-        paramViewBase.setOnClickListener(new qmo(this));
-        return;
-      }
-    } while ((this.jdField_a_of_type_Qmi.a == null) || (this.jdField_a_of_type_Qmi.a.a() == null));
-    paramViewBase.setOnClickListener(new qha(this.jdField_a_of_type_Qmi.a, qmi.a(this.jdField_a_of_type_Qmi).getContext(), 1115, this.jdField_a_of_type_Qmi.a.e(), this.jdField_a_of_type_Int));
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentSpecialTopic))) {
+      localLinearLayout.addView((ComponentContentSpecialTopic)this.jdField_a_of_type_Qjg);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qjh e()
+  {
+    return null;
+  }
+  
+  public qjh g()
+  {
+    this.jdField_a_of_type_Qjg = new ComponentContentSpecialTopic(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

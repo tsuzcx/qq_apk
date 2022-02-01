@@ -13,44 +13,44 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import banj;
-import bans;
-import banw;
-import bapv;
-import bapx;
-import bapy;
-import bapz;
-import baqa;
-import baqb;
-import baqc;
-import baqd;
-import bckg;
+import bbgc;
+import bbgl;
+import bbgp;
+import bbio;
+import bbiq;
+import bbir;
+import bbis;
+import bbit;
+import bbiu;
+import bbiv;
+import bbiw;
+import bdcy;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import zlx;
+import zps;
 
 @TargetApi(11)
 public class ProviderContainerView
   extends FrameLayout
-  implements bapv
+  implements bbio
 {
   private int jdField_a_of_type_Int = -1;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bapx(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bbiq(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private bans jdField_a_of_type_Bans;
-  private banw jdField_a_of_type_Banw;
-  private baqc jdField_a_of_type_Baqc;
-  private baqd jdField_a_of_type_Baqd;
+  private bbgl jdField_a_of_type_Bbgl;
+  private bbgp jdField_a_of_type_Bbgp;
+  private bbiv jdField_a_of_type_Bbiv;
+  private bbiw jdField_a_of_type_Bbiw;
   private CameraCaptureButtonLayout jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout;
   private EffectsCameraCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView;
   private ProviderView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView;
   private HashMap<Integer, RedDotImageView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<baqc> jdField_a_of_type_JavaUtilList;
+  private List<bbiv> jdField_a_of_type_JavaUtilList;
   public boolean a;
   View jdField_b_of_type_AndroidViewView;
   private HashMap<Integer, ProviderView> jdField_b_of_type_JavaUtilHashMap = new HashMap();
@@ -97,15 +97,15 @@ public class ProviderContainerView
   private void a(int paramInt)
   {
     a(paramInt, true);
-    paramInt = zlx.a(getContext(), 80.0F);
+    paramInt = zps.a(getContext(), 80.0F);
     Object localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt, 0.0F }), banj.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165485), 0, 153), banj.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165485), 0, 153), banj.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165485), 0, 153) });
-    ((AnimatorSet)localObject).addListener(new bapy(this));
+    ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt, 0.0F }), bbgc.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165483), 0, 153), bbgc.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165483), 0, 153), bbgc.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165483), 0, 153) });
+    ((AnimatorSet)localObject).addListener(new bbir(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
-    localObject = banj.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 0.0F, 1.0F);
+    localObject = bbgc.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new bapz(this));
+    ((Animation)localObject).setAnimationListener(new bbis(this));
     startAnimation((Animation)localObject);
   }
   
@@ -118,13 +118,13 @@ public class ProviderContainerView
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView.setVisibility(8);
     }
     ProviderView localProviderView;
-    if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Banw.a(paramInt))))
+    if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Bbgp.a(paramInt))))
     {
-      localProviderView = (ProviderView)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Banw.a(paramInt)));
+      localProviderView = (ProviderView)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Bbgp.a(paramInt)));
       if ((localProviderView != null) && (!localProviderView.jdField_c_of_type_Boolean))
       {
-        localProviderView.setProviderViewListener(this.jdField_a_of_type_Bans);
-        localProviderView.setAppInterface(this.jdField_a_of_type_Bans.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        localProviderView.setProviderViewListener(this.jdField_a_of_type_Bbgl);
+        localProviderView.setAppInterface(this.jdField_a_of_type_Bbgl.jdField_a_of_type_ComTencentCommonAppAppInterface);
         localProviderView.a(null);
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView = localProviderView;
@@ -141,14 +141,14 @@ public class ProviderContainerView
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView.aI_();
       return;
-      int i = this.jdField_a_of_type_Banw.a(paramInt);
-      localProviderView = this.jdField_a_of_type_Banw.a(getContext(), i);
+      int i = this.jdField_a_of_type_Bbgp.a(paramInt);
+      localProviderView = this.jdField_a_of_type_Bbgp.a(getContext(), i);
       if (localProviderView != null)
       {
-        if ((localProviderView instanceof bapv)) {
-          ((bapv)localProviderView).setNeedAdvertisement(this.jdField_e_of_type_Boolean);
+        if ((localProviderView instanceof bbio)) {
+          ((bbio)localProviderView).setNeedAdvertisement(this.jdField_e_of_type_Boolean);
         }
-        this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Banw.a(paramInt)), localProviderView);
+        this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bbgp.a(paramInt)), localProviderView);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localProviderView);
         break;
       }
@@ -182,8 +182,8 @@ public class ProviderContainerView
         if ((paramView instanceof RedDotImageView))
         {
           ((RedDotImageView)paramView).a(false);
-          if ((paramInt == 102) && (!bckg.a(bckg.e))) {
-            bckg.a(bckg.e);
+          if ((paramInt == 102) && (!bdcy.a(bdcy.e))) {
+            bdcy.a(bdcy.e);
           }
         }
         else
@@ -196,9 +196,9 @@ public class ProviderContainerView
         Object localObject;
         for (;;)
         {
-          localObject = this.jdField_a_of_type_Baqc;
+          localObject = this.jdField_a_of_type_Bbiv;
           if (localObject != null) {
-            ((baqc)localObject).a(paramView, paramInt);
+            ((bbiv)localObject).a(paramView, paramInt);
           }
           if (i != this.jdField_a_of_type_Int) {
             break label155;
@@ -206,7 +206,7 @@ public class ProviderContainerView
           a();
           this.jdField_a_of_type_Int = -1;
           return;
-          this.jdField_a_of_type_Banw.a(i);
+          this.jdField_a_of_type_Bbgp.a(i);
           break;
           label146:
           a(i, false);
@@ -220,7 +220,7 @@ public class ProviderContainerView
         {
           localObject = this.jdField_a_of_type_JavaUtilList.iterator();
           while (((Iterator)localObject).hasNext()) {
-            ((baqc)((Iterator)localObject).next()).a(paramView, paramInt);
+            ((bbiv)((Iterator)localObject).next()).a(paramView, paramInt);
           }
         }
       }
@@ -229,33 +229,33 @@ public class ProviderContainerView
   
   private void b()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131561465, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131561506, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368152));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372984));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366239);
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366238);
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131372974);
-    this.jdField_a_of_type_Banw = new banw(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368226));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373097));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366288);
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366287);
+    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131373087);
+    this.jdField_a_of_type_Bbgp = new bbgp(0);
   }
   
   private void b(boolean paramBoolean)
   {
-    Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, zlx.a(getContext(), 80.0F) });
+    Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, zps.a(getContext(), 80.0F) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.playTogether(new Animator[] { localObject, banj.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165485), 153, 0), banj.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165485), 153, 0), banj.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165485), 153, 0) });
-    localAnimatorSet.addListener(new baqa(this));
+    localAnimatorSet.playTogether(new Animator[] { localObject, bbgc.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165483), 153, 0), bbgc.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165483), 153, 0), bbgc.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165483), 153, 0) });
+    localAnimatorSet.addListener(new bbit(this));
     localAnimatorSet.setDuration(300L).start();
-    localObject = banj.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 1.0F, 0.0F);
+    localObject = bbgc.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 1.0F, 0.0F);
     ((Animation)localObject).setStartOffset(0L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new baqb(this, paramBoolean));
+    ((Animation)localObject).setAnimationListener(new bbiu(this, paramBoolean));
     startAnimation((Animation)localObject);
   }
   
   public int a(int paramInt)
   {
-    return this.jdField_a_of_type_Banw.b(paramInt);
+    return this.jdField_a_of_type_Bbgp.b(paramInt);
   }
   
   public void a()
@@ -281,38 +281,38 @@ public class ProviderContainerView
   public void setBeautyEnable(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Banw != null) {
-      this.jdField_a_of_type_Banw.a(paramBoolean);
+    if (this.jdField_a_of_type_Bbgp != null) {
+      this.jdField_a_of_type_Bbgp.a(paramBoolean);
     }
   }
   
-  public void setContainerViewListener(baqc parambaqc)
+  public void setContainerViewListener(bbiv parambbiv)
   {
-    this.jdField_a_of_type_Baqc = parambaqc;
+    this.jdField_a_of_type_Bbiv = parambbiv;
   }
   
   public void setFaceEffectEnable(boolean paramBoolean)
   {
     this.jdField_c_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Banw != null) {
-      this.jdField_a_of_type_Banw.d(paramBoolean);
+    if (this.jdField_a_of_type_Bbgp != null) {
+      this.jdField_a_of_type_Bbgp.d(paramBoolean);
     }
   }
   
   public void setFilterEnable(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Banw != null) {
-      this.jdField_a_of_type_Banw.c(paramBoolean);
+    if (this.jdField_a_of_type_Bbgp != null) {
+      this.jdField_a_of_type_Bbgp.c(paramBoolean);
     }
   }
   
-  public void setListenerController(bans parambans)
+  public void setListenerController(bbgl parambbgl)
   {
-    this.jdField_a_of_type_Bans = parambans;
-    this.jdField_e_of_type_AndroidViewView = parambans.jdField_a_of_type_AndroidViewView;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout = ((CameraCaptureButtonLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131364143));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_e_of_type_AndroidViewView.findViewById(2131364093));
+    this.jdField_a_of_type_Bbgl = parambbgl;
+    this.jdField_e_of_type_AndroidViewView = parambbgl.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout = ((CameraCaptureButtonLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131364184));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_e_of_type_AndroidViewView.findViewById(2131364134));
   }
   
   public void setNeedAdvertisement(boolean paramBoolean)
@@ -323,14 +323,14 @@ public class ProviderContainerView
   public void setSubtitleEnable(boolean paramBoolean)
   {
     this.jdField_d_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Banw != null) {
-      this.jdField_a_of_type_Banw.b(paramBoolean);
+    if (this.jdField_a_of_type_Bbgp != null) {
+      this.jdField_a_of_type_Bbgp.b(paramBoolean);
     }
   }
   
-  public void setTriggerLisener(baqd parambaqd)
+  public void setTriggerLisener(bbiw parambbiw)
   {
-    this.jdField_a_of_type_Baqd = parambaqd;
+    this.jdField_a_of_type_Bbiw = parambbiw;
   }
 }
 

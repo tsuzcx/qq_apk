@@ -1,11 +1,10 @@
-import java.util.List;
+import android.widget.TextView;
 
 public class amoo
 {
   public int a;
-  public List<String> a;
-  public int b;
-  public int c;
+  public TextView a;
+  public TextView b;
 }
 
 

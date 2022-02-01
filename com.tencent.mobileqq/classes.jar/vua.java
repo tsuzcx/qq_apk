@@ -1,120 +1,147 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
+import android.text.TextUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.BytesEntry;
 import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
-import qqcircle.QQCircleFeedBase.StFollowPageData;
-import qqcircle.QQCircleFeedBase.StTabInfo;
 
-class vua
-  implements zxa<FeedCloudRead.StGetFeedListRsp>
+public class vua
 {
-  vua(vtz paramvtz, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
+  private int jdField_a_of_type_Int;
+  private List<FeedCloudCommon.BytesEntry> jdField_a_of_type_JavaUtilList;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  private vua(int paramInt)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCircleFeedViewModel", 1, "requestFeedsData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
-    if (vtz.a(this.jdField_a_of_type_Vtz).a())
-    {
-      if (!bool) {
-        break label186;
-      }
-      QLog.d("QCircleFeedViewModel", 1, "use cache data");
-      vtz.a(this.jdField_a_of_type_Vtz, this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId());
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private FeedCloudCommon.BytesEntry a(String paramString, byte[] paramArrayOfByte)
+  {
+    FeedCloudCommon.BytesEntry localBytesEntry = new FeedCloudCommon.BytesEntry();
+    localBytesEntry.key.set(paramString);
+    localBytesEntry.value.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    return localBytesEntry;
+  }
+  
+  private FeedCloudCommon.StCommonExt a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    FeedCloudCommon.StCommonExt localStCommonExt = new FeedCloudCommon.StCommonExt();
+    ArrayList localArrayList = new ArrayList();
+    if (paramArrayOfByte1 != null) {
+      localArrayList.add(a("SessionID", paramArrayOfByte1));
     }
-    else
+    if (paramArrayOfByte2 != null) {
+      localArrayList.add(a("SubSessionID", paramArrayOfByte2));
+    }
+    paramArrayOfByte1 = this.jdField_a_of_type_JavaUtilList;
+    if (paramArrayOfByte1 != null) {
+      localArrayList.addAll(paramArrayOfByte1);
+    }
+    if (localArrayList.size() > 0)
     {
-      label144:
-      if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedListRsp != null)) {
-        break label254;
+      localStCommonExt.mapBytesInfo.set(localArrayList);
+      QLog.d("QCircleReporterAgent", 2, "buildSessionCommonExt() valid session and subsession!scene:" + this.jdField_a_of_type_Int);
+      return localStCommonExt;
+    }
+    QLog.e("QCircleReporterAgent", 2, "buildSessionCommonExt() no session and subsession!scene:" + this.jdField_a_of_type_Int);
+    return localStCommonExt;
+  }
+  
+  public static vua a(int paramInt)
+  {
+    return new vua(paramInt);
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    vtt.a().a(this.jdField_a_of_type_Int, paramArrayOfByte);
+  }
+  
+  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
+  {
+    byte[] arrayOfByte1 = null;
+    byte[] arrayOfByte2 = vtt.a().a();
+    if (!paramBoolean) {
+      arrayOfByte1 = vtt.a().a(this.jdField_a_of_type_Int);
+    }
+    return a(arrayOfByte2, arrayOfByte1);
+  }
+  
+  public void a(FeedCloudCommon.BytesEntry paramBytesEntry)
+  {
+    if (paramBytesEntry != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
       }
-      vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a(paramString).a(paramLong).b(this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_JavaUtilList.add(paramBytesEntry);
+    }
+  }
+  
+  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
+  {
+    QLog.d("QCircleReporterAgent", 1, "updateSubSession,scene:" + this.jdField_a_of_type_Int);
+    int i;
+    if ((paramStCommonExt != null) && (paramStCommonExt.has()) && (paramStCommonExt.mapBytesInfo.has()))
+    {
+      paramStCommonExt = paramStCommonExt.mapBytesInfo.get().iterator();
+      while (paramStCommonExt.hasNext())
+      {
+        FeedCloudCommon.BytesEntry localBytesEntry = (FeedCloudCommon.BytesEntry)paramStCommonExt.next();
+        if ((localBytesEntry != null) && ("SubSessionID".equals(localBytesEntry.key.get())))
+        {
+          paramStCommonExt = localBytesEntry.value.get().toByteArray();
+          i = 1;
+        }
+      }
     }
     for (;;)
     {
+      if (paramStCommonExt != null) {
+        a(paramStCommonExt);
+      }
+      if (i != 0)
+      {
+        QLog.d("QCircleReporterAgent", 1, "find subsession!");
+        return;
+      }
+      QLog.e("QCircleReporterAgent", 1, "can't find subsession!");
       return;
-      label186:
-      if (!this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId().equals(vtz.a(this.jdField_a_of_type_Vtz))) {
-        break label144;
-      }
-      if ((!paramBoolean) && (paramLong == -2L))
+      i = 0;
+      paramStCommonExt = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    ArrayList localArrayList;
+    int i;
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
+    {
+      localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      i = localArrayList.size() - 1;
+    }
+    for (;;)
+    {
+      if (i >= 0)
       {
-        vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a(paramString).a(paramLong).b(this.jdField_a_of_type_Boolean));
-        return;
-      }
-      QLog.d("QCircleFeedViewModel", 1, "from old cache data rsp,direct return!");
-      return;
-      label254:
-      if (!bool)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          vtz.a(this.jdField_a_of_type_Vtz).clear();
-        }
-        vtz.a(this.jdField_a_of_type_Vtz).addAll(paramStGetFeedListRsp.vecFeed.get());
-      }
-      if (paramStGetFeedListRsp.extInfo.has())
-      {
-        vtz.a(this.jdField_a_of_type_Vtz, (FeedCloudCommon.StCommonExt)paramStGetFeedListRsp.extInfo.get());
-        this.jdField_a_of_type_Vtz.a(vtz.a(this.jdField_a_of_type_Vtz));
-      }
-      vtz.b(this.jdField_a_of_type_Vtz, paramStGetFeedListRsp.feedAttchInfo.get());
-      paramString = this.jdField_a_of_type_Vtz;
-      if (paramStGetFeedListRsp.isFinish.get() > 0)
-      {
-        paramBoolean = true;
-        label374:
-        vtz.a(paramString, paramBoolean);
-        paramString = paramStGetFeedListRsp.vecFeed.get();
-        QLog.d("QCircleFeedViewModel", 1, "feed size:" + paramString.size() + " | isFinish:" + vtz.a(this.jdField_a_of_type_Vtz) + " | feedAttachInfo:" + vtz.b(this.jdField_a_of_type_Vtz));
-        if (paramString.size() <= 0) {
-          break label677;
-        }
-        vtz.a(this.jdField_a_of_type_Vtz, paramString);
-        vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a(bool).a(this.jdField_a_of_type_Boolean, paramString).c(vtz.a(this.jdField_a_of_type_Vtz)));
-        paramString = new QQCircleFeedBase.StFeedListBusiRspData();
-        if (!paramStGetFeedListRsp.busiRspData.has()) {
-          break;
-        }
-      }
-      try
-      {
-        paramString.mergeFrom(paramStGetFeedListRsp.busiRspData.get().toByteArray());
-        if (paramString.followPageData.has()) {
-          vtz.b(this.jdField_a_of_type_Vtz).setValue(paramString.followPageData.get());
-        }
-        if (paramString.refreshAttachInfo.has()) {
-          vtz.c(this.jdField_a_of_type_Vtz, paramString.refreshAttachInfo.get());
-        }
-        if ((this.jdField_a_of_type_Boolean) || (vtz.a(this.jdField_a_of_type_Vtz) == null) || (vtz.a(this.jdField_a_of_type_Vtz).a == null) || (vtz.a(this.jdField_a_of_type_Vtz).a.tabType.get() != 1) || (!paramString.rspTimestamp.has())) {
-          continue;
-        }
-        vqs.b(paramString.rspTimestamp.get());
-        return;
-        paramBoolean = false;
-        break label374;
-        label677:
-        vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a().b(this.jdField_a_of_type_Boolean).c(vtz.a(this.jdField_a_of_type_Vtz)));
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramStGetFeedListRsp)
-      {
-        for (;;)
+        FeedCloudCommon.BytesEntry localBytesEntry = (FeedCloudCommon.BytesEntry)localArrayList.get(i);
+        if ((localBytesEntry != null) && (TextUtils.equals(localBytesEntry.key.get(), paramString)))
         {
-          paramStGetFeedListRsp.printStackTrace();
+          localArrayList.remove(i);
+          this.jdField_a_of_type_JavaUtilList = localArrayList;
         }
       }
+      else
+      {
+        return;
+      }
+      i -= 1;
     }
   }
 }

@@ -11,7 +11,6 @@ import com.tencent.viola.adapter.VWebSocketAdapter;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.commons.ViolaThread;
-import com.tencent.viola.nativevue.NativeVueEngine;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -47,7 +46,6 @@ public class ViolaSDKManager
   private IReportDelegate mReportDelegate;
   private BlockingQueue<Runnable> mTaskQueue;
   private VWebSocketAdapter mWebsocketAdapter;
-  private NativeVueEngine nativeVueEngine;
   
   private ViolaSDKManager()
   {
@@ -138,23 +136,6 @@ public class ViolaSDKManager
       }
       this.mBridgeMgr.createInstanceBySource(paramViolaInstance.getInstanceId(), paramString1, paramString2, str);
     }
-  }
-  
-  public String createVueDom(String paramString1, String paramString2)
-  {
-    if (this.nativeVueEngine == null) {
-      this.nativeVueEngine = new NativeVueEngine();
-    }
-    try
-    {
-      paramString1 = this.nativeVueEngine.createDom(paramString2, paramString1);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      ViolaLogUtils.e("ViolaSDKManager", paramString1.getMessage());
-    }
-    return "";
   }
   
   void destroyInstance(String paramString)
@@ -266,23 +247,6 @@ public class ViolaSDKManager
   public VWebSocketAdapter getWebSocketAdapter()
   {
     return this.mWebsocketAdapter;
-  }
-  
-  public boolean initNativeVue(String paramString1, String paramString2)
-  {
-    if (this.nativeVueEngine == null) {
-      this.nativeVueEngine = new NativeVueEngine();
-    }
-    try
-    {
-      boolean bool = this.nativeVueEngine.init(paramString1, paramString2);
-      return bool;
-    }
-    catch (Throwable paramString1)
-    {
-      ViolaLogUtils.e("ViolaSDKManager", paramString1.getMessage());
-    }
-    return false;
   }
   
   void initScriptsFramework(String paramString1, ViolaSDKEngine.InitCallback paramInitCallback, String paramString2)

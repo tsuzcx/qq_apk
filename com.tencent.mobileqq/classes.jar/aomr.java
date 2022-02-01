@@ -1,140 +1,53 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.util.MsgAutoMonitorUtil;
 
 public class aomr
-  extends aojs
+  extends aocj
 {
-  public aomr(QQAppInterface paramQQAppInterface, Context paramContext)
+  private aomr(GetTroopAssisMsg paramGetTroopAssisMsg) {}
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    super(paramQQAppInterface, paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
+    }
+    if (paramLong2 == 1L) {
+      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
+        break label95;
+      }
+    }
+    label95:
+    for (int i = 1; i == 0; i = 0)
+    {
+      this.a.a(6);
+      return;
+    }
+    this.a.a(7);
   }
   
-  private boolean C()
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
-    i = 0;
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("guin");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!TroopInfo.isTroopMember(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopProfileAction", 2, new Object[] { "illegal goToTroopProfileApp jumpAction. troopUin=", localObject });
-      }
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
     }
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("type");
-    if ("group_file".equals(str)) {
-      bfup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, (String)localObject);
-    }
-    for (;;)
-    {
-      return true;
-      if ("group_album".equals(str)) {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("gname");
-      }
-      try
-      {
-        j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("unreadnum"));
-        i = j;
-      }
-      catch (NumberFormatException localNumberFormatException4)
-      {
-        int j;
-        label148:
-        break label148;
-      }
-      bfup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, (String)localObject, str, i);
-      continue;
-      if ("group_story".equals(str)) {
-        for (;;)
-        {
-          for (;;)
-          {
-            int k;
-            int m;
-            try
-            {
-              if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("troopStoryMemoriesFrom")) {
-                i = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("troopStoryMemoriesFrom"));
-              }
-            }
-            catch (NumberFormatException localNumberFormatException1)
-            {
-              i = 0;
-              j = 0;
-            }
-            try
-            {
-              k = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("playVideoFrom"));
-            }
-            catch (NumberFormatException localNumberFormatException2)
-            {
-              for (;;)
-              {
-                label292:
-                Bundle localBundle;
-                k = 0;
-                j = i;
-                i = k;
-              }
-            }
-            try
-            {
-              m = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("lastOpenFrom"));
-              j = i;
-              localObject = QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, null, (String)localObject, j, k);
-              ((Intent)localObject).putExtra("extra_last_open_from", m);
-              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-            }
-            catch (NumberFormatException localNumberFormatException3)
-            {
-              j = i;
-              i = k;
-              break label292;
-            }
-          }
-          i = 8;
-          continue;
-          m = 0;
-          k = i;
-        }
-      }
-      if (!"bulk_send_message".equals(localNumberFormatException1)) {
-        break;
-      }
-      localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("gc");
-      localBundle = new Bundle();
-      localBundle.putString("extra.GROUP_UIN", (String)localObject);
-      localBundle.putString("selfSet_leftViewText", anni.a(2131704685));
-      BulkSendMessageFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, localBundle);
-    }
+    MsgAutoMonitorUtil.getInstance().markGrpFinishCost();
+    this.a.a(7);
   }
   
-  public boolean a()
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    try
-    {
-      boolean bool = C();
-      return bool;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
     }
-    catch (Exception localException)
-    {
-      QLog.e("TroopProfileAction", 1, "doAction error: " + localException.getMessage());
-      a("TroopProfileAction");
+    if (!paramBoolean) {
+      this.a.a(6);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomr
  * JD-Core Version:    0.7.0.1
  */

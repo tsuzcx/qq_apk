@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.8.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class ahkm
-  extends fz
+final class ahkm
+  implements ahky
 {
-  ahkm(ahkf paramahkf) {}
-  
-  public void a(ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if ((!paramBoolean) && (paramChatMessage != null))
-    {
-      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.excute(new TextItemBuilder.8.1(this, paramChatMessage), 128, null, true);
+    if (paramChatMessage.msgtype != -1036) {
+      return 17;
     }
-    String str = this.a.a.c();
-    if (paramBoolean) {}
-    for (paramChatMessage = "1";; paramChatMessage = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
-      return;
-    }
+    return 18;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar;
 
 import android.widget.ProgressBar;
-import aorh;
+import apex;
 
 public class ARLBSPOIDialog$1
   implements Runnable
 {
-  public ARLBSPOIDialog$1(aorh paramaorh) {}
+  public ARLBSPOIDialog$1(apex paramapex) {}
   
   public void run()
   {

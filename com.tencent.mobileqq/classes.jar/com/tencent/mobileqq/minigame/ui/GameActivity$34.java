@@ -1,41 +1,18 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import bjxn;
-import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
-import com.tencent.mobileqq.mini.report.MiniGamePerformanceStatics;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.report.MiniReportManager;
-import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.debug.JankTraceLevel;
-import com.tencent.mobileqq.triton.sdk.game.GameLaunchParam.Builder;
-import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class GameActivity$34
-  implements Runnable
+  implements View.OnClickListener
 {
   GameActivity$34(GameActivity paramGameActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    GameActivity.access$4902(this.this$0, System.currentTimeMillis());
-    QLog.e("[minigame] GameActivity", 1, "start launchGame, execJS");
-    GameActivity.access$000(this.this$0).recordInitialMemory();
-    MiniProgramLpReportDC04239.reportPageView(this.this$0.mGameAppConfig, "1", null, "load", null);
-    MiniAppReportManager2.reportPageView("2load", null, null, this.this$0.mGameAppConfig);
-    GameActivity.access$2900(this.this$0, 1);
-    MiniReportManager.reportEventType(this.this$0.mGameAppConfig, 1007, "1");
-    IGameLauncher localIGameLauncher = GameActivity.access$1500(this.this$0).getGameEngine().getGameLauncher();
-    if (localIGameLauncher != null)
-    {
-      if (bjxn.b()) {
-        GameActivity.access$1500(this.this$0).getGameEngine().setJankTraceLevel(JankTraceLevel.BRIEF);
-      }
-      localIGameLauncher.launchGame(new GameLaunchParam.Builder().setGameInfo(GameActivity.access$5300(this.this$0)).setInspectorAgent(GameActivity.access$5200(this.this$0)).setGameLaunchCallback(new GameActivity.34.1(this)).build());
-      return;
-    }
-    QLog.e("[minigame] GameActivity", 1, "launchGame execJS fail");
+    this.this$0.quitDebugSocket();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

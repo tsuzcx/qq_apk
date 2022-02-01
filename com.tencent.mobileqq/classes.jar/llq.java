@@ -1,76 +1,79 @@
-import java.io.BufferedReader;
+import android.os.SystemClock;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class llq
-  extends llp
 {
-  private float jdField_a_of_type_Float;
-  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
-  private float jdField_b_of_type_Float;
-  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
-  private boolean c;
+  private long jdField_a_of_type_Long;
+  private lln jdField_a_of_type_Lln;
+  public boolean a;
+  private boolean b;
   
-  public float a(float paramFloat)
+  public llq(lln paramlln)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    int j = arrayOfFloat1.length;
-    int i = 1;
-    if (i < j) {
-      if (arrayOfFloat1[i] <= paramFloat) {}
-    }
-    for (;;)
-    {
-      if (i == -1)
-      {
-        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
-        i += 1;
-        break;
-      }
-      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-      j = i - 1;
-      float f1 = arrayOfFloat2[j];
-      float f2 = arrayOfFloat1[j];
-      float f3 = arrayOfFloat2[i];
-      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
-      i = -1;
-    }
+    this.jdField_a_of_type_Lln = paramlln;
   }
   
-  public void a(BufferedReader paramBufferedReader)
+  private void b()
   {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
       return;
-      this.jdField_a_of_type_Float = lll.a(paramBufferedReader, "highMin");
-      this.jdField_b_of_type_Float = lll.a(paramBufferedReader, "highMax");
-      this.c = lll.a(paramBufferedReader, "relative");
-      this.jdField_b_of_type_ArrayOfFloat = new float[lll.a(paramBufferedReader, "scalingCount")];
-      int i = 0;
-      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
+    }
+    b(this.jdField_a_of_type_Lln.a);
+  }
+  
+  private void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_Long != 0L)
+    {
+      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+      if (l > 3000L)
       {
-        this.jdField_b_of_type_ArrayOfFloat[i] = lll.a(paramBufferedReader, "scaling" + i);
-        i += 1;
-      }
-      this.jdField_a_of_type_ArrayOfFloat = new float[lll.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = lll.a(paramBufferedReader, "timeline" + i);
-        i += 1;
+        HashMap localHashMap = new HashMap();
+        String str1 = Integer.toHexString(paramInt);
+        String str2 = String.valueOf(l);
+        localHashMap.put("color", str1);
+        localHashMap.put("duration", str2);
+        UserAction.onUserAction("actAVFunChatDrawing", true, -1L, -1L, localHashMap, true);
+        if (QLog.isColorLevel()) {
+          QLog.d("DoodleReportController", 2, "onUserAction colorString = " + str1 + ", durationString = " + str2);
+        }
+        this.b = true;
       }
     }
   }
   
-  public boolean a()
+  public void a()
   {
-    return this.c;
+    a(false);
+    if (this.b)
+    {
+      llr.a("0X80077C2");
+      return;
+    }
+    llr.a("0X80077C1");
   }
   
-  public float b()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * llg.a();
+    if ((this.jdField_a_of_type_Boolean) && (paramInt != this.jdField_a_of_type_Lln.a))
+    {
+      b(paramInt);
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      b();
+    }
   }
 }
 

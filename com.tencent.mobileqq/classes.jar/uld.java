@@ -1,26 +1,34 @@
-import UserGrowth.stPublisherRsp;
-
-class uld
-  implements ujj
+public class uld
 {
-  uld(ukz paramukz) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
   
-  public void a(uju paramuju)
+  public int a()
   {
-    if (!paramuju.a()) {
-      upe.d("WSHomeFragmentPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramuju.jdField_a_of_type_Int + ", msg:" + paramuju.jdField_a_of_type_JavaLangString);
+    if ((this.a > 0) && (this.b > 0) && (this.b / this.a > 1.33F)) {
+      return 2;
     }
-    do
-    {
-      return;
-      if (!(paramuju.jdField_a_of_type_JavaLangObject instanceof stPublisherRsp)) {
-        break;
-      }
-      paramuju = (stPublisherRsp)paramuju.jdField_a_of_type_JavaLangObject;
-    } while (this.a.a() == null);
-    ((ulm)this.a.a()).a(paramuju);
-    return;
-    upe.d("WSHomeFragmentPresenter", "GetPublisherRequest onTaskResponse failed");
+    return 0;
+  }
+  
+  public int b()
+  {
+    if ((this.a > 0) && (this.b > 0)) {
+      return 0;
+    }
+    return 2;
   }
 }
 

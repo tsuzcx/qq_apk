@@ -1,30 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
-final class azvn
-  implements bkhw
+public class azvn
+  extends RecyclerView.ViewHolder
 {
-  azvn(bkho parambkho, int[] paramArrayOfInt, String paramString, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  int jdField_a_of_type_Int;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void OnClick(View paramView, int paramInt)
+  public azvn(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
-    this.jdField_a_of_type_Bkho.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
-    {
-    default: 
-      return;
-    }
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    if ((!bgvi.a) && (bgvf.a().a())) {
-      bgvf.a().a(paramView);
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    long l = bbyp.a();
-    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
+    super(paramView);
+    paramView.setTag(this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378617));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364030));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramCustomCoverFragment.a);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramCustomCoverFragment.a);
   }
 }
 

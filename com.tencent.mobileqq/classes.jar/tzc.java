@@ -1,9 +1,9 @@
 import android.os.Bundle;
 
 class tzc
-  implements aaob
+  implements aasd
 {
-  tzc(tym paramtym) {}
+  tzc(tyo paramtyo) {}
   
   public void callback(Bundle paramBundle)
   {
@@ -14,7 +14,7 @@ class tzc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzc
  * JD-Core Version:    0.7.0.1
  */

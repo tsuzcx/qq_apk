@@ -1,10 +1,20 @@
-public class apbj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class apbj
+  implements View.OnClickListener
 {
-  public long b = 0L;
+  apbj(apbi paramapbi, String paramString) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "ARLocalRecogResultBase{recogType = " + this.b + '}';
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
+    localOpenPlayerBuilder.a();
+    xlj.a(this.jdField_a_of_type_Apbi.a, localOpenPlayerBuilder.a(), null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,13 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.view.ViewGroup;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public abstract interface sef
+public class sef
 {
-  public abstract VideoInfo a(View paramView);
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public ArrayBlockingQueue a;
+  private seg jdField_a_of_type_Seg;
+  private int b;
   
-  public abstract void a(boolean paramBoolean);
+  public sef(int paramInt1, int paramInt2, ViewGroup paramViewGroup, seg paramseg)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Seg = paramseg;
+  }
   
-  public abstract void g();
+  public sef(int paramInt, ViewGroup paramViewGroup, seg paramseg)
+  {
+    this(paramInt, 1, paramViewGroup, paramseg);
+  }
 }
 
 

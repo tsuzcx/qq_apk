@@ -1,27 +1,24 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
 
 public class slt
-  extends AccessibilityDelegateCompat
+  implements DialogInterface.OnClickListener
 {
-  public slt(BaseTabbar paramBaseTabbar) {}
+  public slt(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain cancel");
     }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    paramDialogInterface = pfa.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b();
+    }
+    pfa.a().b(41695);
   }
 }
 

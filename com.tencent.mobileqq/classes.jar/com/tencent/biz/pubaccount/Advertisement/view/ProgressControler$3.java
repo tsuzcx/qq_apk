@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.Advertisement.view;
 import android.os.Handler;
 import java.util.Timer;
 import java.util.TimerTask;
-import nvi;
+import nxc;
 
 public class ProgressControler$3
   extends TimerTask
 {
-  public ProgressControler$3(nvi paramnvi) {}
+  public ProgressControler$3(nxc paramnxc) {}
   
   public void run()
   {
-    nvi localnvi = this.this$0;
-    localnvi.c += 50L;
+    nxc localnxc = this.this$0;
+    localnxc.c += 50L;
     if (this.this$0.c >= this.this$0.b)
     {
       this.this$0.c = this.this$0.b;

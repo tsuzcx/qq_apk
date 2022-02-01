@@ -9,9 +9,9 @@ import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.R.styleable;
-import vuw;
-import vvz;
-import vwc;
+import vxz;
+import vzc;
+import vzf;
 
 public class QCircleExpandableTextView
   extends LinearLayout
@@ -20,7 +20,7 @@ public class QCircleExpandableTextView
   public TextView a;
   public QCircleAsyncTextView a;
   public String a;
-  public vwc a;
+  public vzf a;
   boolean jdField_a_of_type_Boolean = false;
   public int b;
   public String b;
@@ -86,7 +86,7 @@ public class QCircleExpandableTextView
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView = ((QCircleAsyncTextView)getChildAt(0));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getChildAt(1));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new vvz(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new vzc(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -112,8 +112,8 @@ public class QCircleExpandableTextView
     if (this.jdField_b_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setMaxLines(this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Vwc != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8)) {
-      this.jdField_a_of_type_Vwc.a();
+    if ((this.jdField_a_of_type_Vzf != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8)) {
+      this.jdField_a_of_type_Vzf.a();
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     super.onMeasure(paramInt1, paramInt2);
@@ -130,19 +130,19 @@ public class QCircleExpandableTextView
     this.f = paramInt;
   }
   
-  public void setListener(vwc paramvwc)
+  public void setListener(vzf paramvzf)
   {
-    this.jdField_a_of_type_Vwc = paramvwc;
+    this.jdField_a_of_type_Vzf = paramvzf;
   }
   
-  public void setText(String paramString, vuw paramvuw)
+  public void setText(String paramString, vxz paramvxz)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setClickAreaTextColor(this.f);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setRichText(paramString, paramvuw);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setRichText(paramString, paramvxz);
   }
   
-  public void setText(String paramString, boolean paramBoolean, vuw paramvuw)
+  public void setText(String paramString, boolean paramBoolean, vxz paramvxz)
   {
     boolean bool;
     if (!paramBoolean)
@@ -157,10 +157,10 @@ public class QCircleExpandableTextView
     for (;;)
     {
       clearAnimation();
-      setText(paramString, paramvuw);
+      setText(paramString, paramvxz);
       getLayoutParams().height = -2;
-      if (this.jdField_a_of_type_Vwc != null) {
-        this.jdField_a_of_type_Vwc.b(paramBoolean);
+      if (this.jdField_a_of_type_Vzf != null) {
+        this.jdField_a_of_type_Vzf.b(paramBoolean);
       }
       return;
       bool = false;

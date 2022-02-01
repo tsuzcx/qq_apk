@@ -1,28 +1,100 @@
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.IReportManager;
-import java.util.HashMap;
+import java.io.File;
 
 public class bhds
-  implements IReportManager
 {
-  public void reportDLEvent(int paramInt1, long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5)
+  public static String a(String paramString1, String paramString2)
   {
-    paramInt1 += 100;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_ReportImpl", 2, "reportDLEvent: bid = " + paramLong + " scid = " + paramString1 + " dlFrom = " + paramInt1 + " bIncrement = " + paramBoolean + " errorCode = " + paramInt2 + " httpCode = " + paramInt3 + " count = " + paramInt4);
-    }
-    if ((int)(Math.random() * 10000.0D) == 1)
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    for (;;)
     {
-      paramString3 = new HashMap();
-      paramString3.put("from", String.valueOf(paramInt1));
-      paramString3.put("bid", String.valueOf(paramLong));
-      paramString3.put("scid", String.valueOf(paramString1));
-      paramString3.put("md5", String.valueOf(paramString2));
-      paramString3.put("eventCode", String.valueOf(paramInt2));
-      paramString3.put("httpCode", String.valueOf(paramInt3));
-      paramString3.put("retry", String.valueOf(paramInt4));
-      bctj.a(BaseApplication.getContext()).a("", "qqvas_updatemgr_complete", false, 0L, -1L, paramString3, "", true);
+      return null;
+      try
+      {
+        paramString1 = bhmi.a(new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2));
+        if ((paramString1 == null) || (paramString1.length <= 0)) {
+          continue;
+        }
+        if (Build.VERSION.SDK_INT <= 8)
+        {
+          paramString1 = new String(paramString1);
+          return paramString1;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            paramString1.printStackTrace();
+          }
+          paramString1 = null;
+          continue;
+          try
+          {
+            paramString1 = new String(paramString1, "UTF-8");
+          }
+          catch (Exception paramString1)
+          {
+            if (QLog.isDevelopLevel()) {
+              paramString1.printStackTrace();
+            }
+            paramString1 = null;
+          }
+        }
+      }
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UpgradeConfigManager", 2, "save Config to file failed，content is empty----" + paramString1);
+      }
+    }
+    do
+    {
+      return;
+      File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config");
+      bhmi.a(localFile.getAbsolutePath() + "/", paramString1 + paramString2, paramString3);
+    } while (!QLog.isColorLevel());
+    QLog.i("UpgradeConfigManager", 2, "save Config to file finish.");
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s", new Object[] { paramString1, paramString2 }));
+    }
+    File localFile;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      localFile = new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2);
+      if (!localFile.exists()) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        bool = localFile.delete();
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s result=%s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool) }));
+        }
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fail! fileName=%s uin=%s", new Object[] { paramString1, paramString2 }), localException);
+        }
+        bool = false;
+        continue;
+      }
+      boolean bool = false;
     }
   }
 }

@@ -1,10 +1,41 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public abstract interface bpfb
+public class bpfb
+  extends bpez
 {
-  public abstract void a();
+  public List<bpfe> a = new ArrayList();
   
-  public abstract void a(TroopBarPOI paramTroopBarPOI);
+  public float a()
+  {
+    return 0.0F;
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public HashMap<String, String> a()
+  {
+    return null;
+  }
+  
+  public float b()
+  {
+    return 0.0F;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public float c()
+  {
+    return 0.0F;
+  }
 }
 
 

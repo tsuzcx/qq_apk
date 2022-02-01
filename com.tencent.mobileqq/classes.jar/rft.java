@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
-
-public final class rft
-  implements Parcelable.Creator<MultiBiuSameContent>
+public abstract interface rft
 {
-  public MultiBiuSameContent a(Parcel paramParcel)
-  {
-    return new MultiBiuSameContent(paramParcel);
-  }
-  
-  public MultiBiuSameContent[] a(int paramInt)
-  {
-    return new MultiBiuSameContent[paramInt];
-  }
+  public abstract void a(int paramInt1, String paramString, int paramInt2, int paramInt3);
 }
 
 

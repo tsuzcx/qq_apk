@@ -1,129 +1,224 @@
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
+import android.database.sqlite.SQLiteException;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.fts.FTSTroop;
+import com.tencent.mobileqq.data.fts.TroopIndex;
+import com.tencent.mobileqq.fts.FTSDatabase;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.manager.TicketManager;
+import java.util.Map;
 
-class avhl
+public class avhl
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avhn(this);
-  private avlv jdField_a_of_type_Avlv = new avhm(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<avlu> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<avlu> b = new ArrayList();
-  
-  private Intent a()
+  public static int a(FTSDatabase paramFTSDatabase, String paramString)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
-    return localIntent;
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    avmp localavmp = (avmp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338);
-    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
-    localNewTogetherRoomMessageData.b = paramIntent.getStringExtra("closeRoomGroupOwnerUin");
-    localNewTogetherRoomMessageData.a = paramIntent.getStringExtra("closeRoomGroupUin");
-    localavmp.a(paramIntent.getStringExtra("closeRoomFrom"), localNewTogetherRoomMessageData);
-  }
-  
-  private void a(Intent paramIntent, List<avlu> paramList)
-  {
-    int i;
-    String str;
-    StringBuilder localStringBuilder;
-    if (!paramList.isEmpty())
+    paramString = "SELECT cursor FROM " + paramString + " WHERE id=1;";
+    try
     {
-      i = paramIntent.getIntExtra("callback_return_code", 0);
-      str = paramIntent.getStringExtra("callback_return_message");
-      paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext()) {
-        ((avlu)paramIntent.next()).a(i, str);
+      int i = c(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
+  }
+  
+  public static int a(FTSDatabase paramFTSDatabase, ArrayList<FTSEntity> paramArrayList, String paramString, int paramInt)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: entities == null");
       }
-      localStringBuilder = new StringBuilder().append("receive ");
-      if (paramList != this.jdField_a_of_type_JavaUtilList) {
-        break label130;
+      return -1;
+    }
+    long l1 = System.currentTimeMillis();
+    int k = a(paramFTSDatabase, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.fts.FTSDatabaseHelper", 2, "FTSDatabaseHelper.queryCursorTable = " + k + " cost:" + (System.currentTimeMillis() - l1));
+    }
+    if (k == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: syncCursor == -1");
+      }
+      return -1;
+    }
+    if (!paramFTSDatabase.b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: beginTransaction failed");
+      }
+      return -1;
+    }
+    int i = 0;
+    long l3 = 0L;
+    long l2 = 0L;
+    l1 = 0L;
+    boolean bool1 = true;
+    int j = 0;
+    long l4;
+    TroopIndex localTroopIndex;
+    if (j < paramArrayList.size())
+    {
+      l4 = System.currentTimeMillis();
+      FTSTroop localFTSTroop = (FTSTroop)paramArrayList.get(j);
+      localTroopIndex = new TroopIndex(localFTSTroop.mType, localFTSTroop.mTroopUin, localFTSTroop.mMemberUin, localFTSTroop.mMemberName, localFTSTroop.mMemberCard, localFTSTroop.mMemberNick);
+      localTroopIndex.preWrite();
+      switch (localFTSTroop.mOpt)
+      {
+      default: 
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        label268:
+        if (bool1) {
+          break;
+        }
       }
     }
-    label130:
-    for (paramIntent = "close";; paramIntent = "open")
+    for (;;)
     {
-      QLog.i("GroupVideoManager|Communicate", 2, paramIntent + " room message " + i + " " + str);
-      paramList.clear();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.fts.FTSDatabaseHelper", 2, String.format("batchTransToDatabase: insert count = %d, insertCost=%d, delCost=%d, updateCost=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1) }));
+      }
+      i = paramInt;
+      if (paramInt == -1) {
+        i = paramArrayList.size();
+      }
+      label400:
+      long l5;
+      if ((bool1) && (paramArrayList.size() != 0) && (i != 0))
+      {
+        bool1 = paramFTSDatabase.a("UPDATE " + paramString + " SET cursor=" + (k + i) + " WHERE id=1;");
+        boolean bool2 = bool1;
+        if (bool1)
+        {
+          l1 = System.currentTimeMillis();
+          bool1 = paramFTSDatabase.c();
+          l1 = System.currentTimeMillis() - l1;
+          if (!QLog.isColorLevel())
+          {
+            bool2 = bool1;
+            if (l1 <= 30000L) {}
+          }
+          else
+          {
+            QLog.d("Q.fts.FTSDatabaseHelper", 1, "commitTransaction cost=" + l1 + " success=" + bool1);
+            bool2 = bool1;
+          }
+        }
+        if (bool2)
+        {
+          return k + i;
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+          l5 = System.currentTimeMillis();
+          i += 1;
+          l4 = l1 + (l5 - l4);
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          l5 = System.currentTimeMillis();
+          l2 += l5 - l4;
+          l4 = l1;
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          if (!bool1) {
+            break label650;
+          }
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+        }
+      }
+      label650:
+      for (;;)
+      {
+        l5 = System.currentTimeMillis();
+        l4 = l3 + (l5 - l4);
+        l3 = l1;
+        l1 = l4;
+        break label268;
+        j += 1;
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        break;
+        return k;
+        break label400;
+      }
+      l4 = l1;
+      l1 = l3;
+      l3 = l4;
     }
   }
   
-  private void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, int paramInt)
+  public static boolean a(FTSDatabase paramFTSDatabase, TroopIndex paramTroopIndex)
   {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", paramInt);
-    localIntent.putExtra("togetherRoomMessageData", paramNewTogetherRoomMessageData);
-    b(localIntent);
-  }
-  
-  private void b()
-  {
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("DELETE FROM " + paramTroopIndex.getTableName() + " WHERE " + paramTroopIndex.getTableName() + " MATCH 'type:");
+    localStringBuilder.append(paramTroopIndex.type);
+    localStringBuilder.append(" ext1:");
+    localStringBuilder.append(paramTroopIndex.ext1);
+    if (!TextUtils.isEmpty(paramTroopIndex.ext6))
     {
-      localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      Intent localIntent = a();
-      localIntent.putExtra("command_type", 6);
-      localIntent.putExtra("sKeyKey", (String)localObject);
-      b(localIntent);
-      return;
+      localStringBuilder.append(" ext6:");
+      localStringBuilder.append(paramTroopIndex.ext6);
     }
-    QLog.e("GroupVideoManager|Communicate", 1, "get skey error");
+    localStringBuilder.append("';");
+    return paramFTSDatabase.a(localStringBuilder.toString());
   }
   
-  private void b(Intent paramIntent)
+  public static boolean a(FTSDatabase paramFTSDatabase, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramIntent);
+    paramFTSDatabase = paramFTSDatabase.a("SELECT name FROM sqlite_master WHERE type='table' AND name='" + paramString + "'", new int[] { 3 });
+    return (paramFTSDatabase != null) && (paramFTSDatabase.size() > 0);
   }
   
-  public avlv a()
+  public static int b(FTSDatabase paramFTSDatabase, String paramString)
   {
-    return this.jdField_a_of_type_Avlv;
+    paramString = "SELECT COUNT(*) FROM " + paramString;
+    try
+    {
+      int i = c(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
   }
   
-  void a()
+  public static boolean b(FTSDatabase paramFTSDatabase, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    if (!paramFTSDatabase.b()) {}
+    do
+    {
+      return false;
+      paramFTSDatabase.a("CREATE TABLE IF NOT EXISTS " + paramString + "(id INTEGER PRIMARY KEY AUTOINCREMENT, cursor INTEGER);");
+      paramFTSDatabase.a("INSERT INTO " + paramString + "(cursor) VALUES(0);");
+    } while (!paramFTSDatabase.c());
+    return true;
   }
   
-  void a(Bundle paramBundle, avlu paramavlu)
+  public static int c(FTSDatabase paramFTSDatabase, String paramString)
   {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", 4);
-    localIntent.putExtra("closeRoomBundle", paramBundle);
-    b(localIntent);
-    this.jdField_a_of_type_JavaUtilList.add(paramavlu);
-  }
-  
-  void a(avlu paramavlu)
-  {
-    this.b.add(paramavlu);
-  }
-  
-  void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = new IntentFilter();
-    paramQQAppInterface.addAction("com.tencent.gvideo.message.communicate.gvideo2qq");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);
+    paramFTSDatabase = paramFTSDatabase.a(paramString, new int[] { 1 });
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No result or result size != 1");
+    }
+    paramFTSDatabase = (Map)paramFTSDatabase.get(0);
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No column or column count != 1");
+    }
+    try
+    {
+      int i = ((Long)paramFTSDatabase.values().toArray()[0]).intValue();
+      return i;
+    }
+    catch (Exception paramFTSDatabase)
+    {
+      throw new SQLiteException("No column or column count != 1");
+    }
   }
 }
 

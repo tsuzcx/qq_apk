@@ -1,25 +1,36 @@
-import android.graphics.Paint;
-import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqcircle.requests.QCircleSetUserSwitchRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vep
-  implements aoci
+class vep
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public vep(PhotoDanmakuDrawer paramPhotoDanmakuDrawer, long paramLong, vex paramvex, float paramFloat1, float paramFloat2, Paint paramPaint) {}
+  vep(veo paramveo) {}
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoDanmakuDrawer", 2, "onLoadingStateChanged uin= " + this.jdField_a_of_type_Long + ", oldState=" + paramInt1 + ", curState=" + paramInt2);
-    }
-    if (paramInt2 == 1)
+    int i;
+    if (paramBoolean)
     {
-      aoch localaoch = aoch.a(((BaseActivity)PhotoDanmakuDrawer.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer)).app, 1, 4, String.valueOf(this.jdField_a_of_type_Long));
-      PhotoDanmakuDrawer.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer, this.jdField_a_of_type_Vex, this.jdField_a_of_type_Float, this.b, localaoch);
-      return;
+      i = 0;
+      QCircleSetUserSwitchRequest localQCircleSetUserSwitchRequest = new QCircleSetUserSwitchRequest(0, i);
+      VSNetworkHelper.a().a(localQCircleSetUserSwitchRequest, new veq(this, paramBoolean));
+      if (!paramBoolean) {
+        break label62;
+      }
+      vtq.a("", 11, 23, 3);
     }
-    PhotoDanmakuDrawer.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer, this.jdField_a_of_type_Vex, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_Float, this.b);
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 1;
+      break;
+      label62:
+      vtq.a("", 11, 23, 2);
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import asjt;
-import askg;
+import aszk;
+import aszx;
 import com.tencent.qphone.base.util.QLog;
 
 public class ExtendFriendSearchFragment$6$1
   implements Runnable
 {
-  public ExtendFriendSearchFragment$6$1(asjt paramasjt) {}
+  public ExtendFriendSearchFragment$6$1(aszk paramaszk) {}
   
   public void run()
   {

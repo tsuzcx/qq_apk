@@ -1,52 +1,46 @@
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class arkl
-  extends arjk
 {
-  public arkm a;
-  public String b;
-  public boolean b;
+  private Map<String, arkm> a = new HashMap();
   
-  public static arkl a(JSONObject paramJSONObject)
+  public static arkl a(araj[] paramArrayOfaraj)
   {
-    arkl localarkl = new arkl();
-    localarkl.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localarkl.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localarkl.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localarkl.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
-    return localarkl;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+      return null;
+    }
+    localarkl = new arkl();
     try
     {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
+      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].a);
+      Iterator localIterator = paramArrayOfaraj.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONObject localJSONObject = paramArrayOfaraj.getJSONObject(str);
+        localarkl.a.put(str, arkm.a(localJSONObject));
+      }
+      return localarkl;
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return localJSONObject;
+    catch (JSONException paramArrayOfaraj) {}
   }
   
-  public boolean a()
+  public static arkm a(String paramString)
   {
-    return this.jdField_b_of_type_Boolean;
+    if ((!TextUtils.isEmpty(paramString)) && (arki.a() != null)) {
+      return (arkm)arki.a().a().get(paramString);
+    }
+    return null;
   }
   
-  public boolean b()
+  public Map<String, arkm> a()
   {
-    if (this.jdField_a_of_type_Arkm == null) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return this.jdField_a_of_type_Arkm.jdField_a_of_type_Boolean;
+    return this.a;
   }
 }
 

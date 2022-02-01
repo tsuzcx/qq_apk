@@ -5,8 +5,8 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import bfiz;
-import bfjx;
+import bgja;
+import bgjy;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -22,7 +22,7 @@ public class AIOAtSearchManager
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bfiz jdField_a_of_type_Bfiz;
+  private bgja jdField_a_of_type_Bgja;
   private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   List<TroopMemberInfo> jdField_a_of_type_JavaUtilList = new ArrayList(0);
@@ -70,9 +70,9 @@ public class AIOAtSearchManager
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
   }
   
-  public void a(bfiz parambfiz)
+  public void a(bgja parambgja)
   {
-    this.jdField_a_of_type_Bfiz = parambfiz;
+    this.jdField_a_of_type_Bgja = parambgja;
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -181,16 +181,16 @@ public class AIOAtSearchManager
     if (QLog.isColorLevel()) {
       QLog.e("AIOAtSearchManager", 2, "taa handleMessage  " + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Bfiz == null) {}
+    if (this.jdField_a_of_type_Bgja == null) {}
     do
     {
       do
       {
         return true;
       } while (paramMessage.what != 1);
-      paramMessage = (bfjx)paramMessage.obj;
+      paramMessage = (bgjy)paramMessage.obj;
     } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessage.a));
-    this.jdField_a_of_type_Bfiz.a(paramMessage);
+    this.jdField_a_of_type_Bgja.a(paramMessage);
     return true;
   }
 }

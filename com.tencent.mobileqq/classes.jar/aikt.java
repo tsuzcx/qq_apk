@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aikt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aikt(aiks paramaiks) {}
+  aikt(aikq paramaikq, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aiks.a(this.a);
-    bcst.b(null, "dc00898", "", "", "0X800B034", "0X800B034", 0, 0, "", "", aiks.a(this.a).a, "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Aikq.Z = true;
+    aikq.c(this.jdField_a_of_type_Aikq, this.jdField_a_of_type_Boolean);
   }
 }
 

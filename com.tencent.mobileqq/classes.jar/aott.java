@@ -1,12 +1,17 @@
-public abstract interface aott
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class aott
+  extends aczu
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void h();
+  public aott(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, adah paramadah)
+  {
+    super(paramQQAppInterface, paramQQMessageFacade, paramadah);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgMessageManager", 2, "TinyIdMsgMessageManager() called with: app = [" + paramQQAppInterface + "], msgFacade = [" + paramQQMessageFacade + "], msgPool = [" + paramadah + "]");
+    }
+  }
 }
 
 

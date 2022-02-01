@@ -1,23 +1,16 @@
-import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.qqcircle.comment.QCircleBaseInputPopupWindow.1.1;
 
-class vjq
-  implements vvv
+public class vjq
+  implements aaip
 {
-  vjq(vjn paramvjn) {}
+  vjq(vjp paramvjp) {}
   
-  public void a()
+  public void a(View paramView)
   {
-    if (vjn.a(this.a) != null)
-    {
-      String str = vjn.a(this.a).id.get();
-      int i = this.a.a();
-      zwp.a().a(new QCircleDoublePraiseAnimationEvent(str, i, vjn.a(this.a)));
-      QLog.d("QCircleContentHorizontalAdapter", 1, "dispatchEvent id:" + str + " pageType:" + i);
-      vrr.a().a(new vrt().a("content").b("like").a(vjn.a(this.a)).a(this.a.a()).a(vjn.a(this.a)).c(vjn.a(this.a).poster.id.get()));
+    if (this.a.isShowing()) {
+      this.a.a.runOnUiThread(new QCircleBaseInputPopupWindow.1.1(this));
     }
   }
 }

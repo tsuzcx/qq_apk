@@ -1,11 +1,20 @@
-import cooperation.qzone.plugin.PluginRecord;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.1.1;
+import mqq.os.MqqHandler;
 
-class bmdo
+public class bmdo
+  extends bmee
 {
-  private int jdField_a_of_type_Int;
-  private bmdp jdField_a_of_type_Bmdp;
-  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  private String jdField_a_of_type_JavaLangString;
+  bmdo(bmdn parambmdn) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new GMEAVEngineWalper.1.1(this));
+    }
+  }
 }
 
 

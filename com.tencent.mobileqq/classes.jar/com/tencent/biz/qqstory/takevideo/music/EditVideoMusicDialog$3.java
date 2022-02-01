@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.music;
 
-import wgk;
-import zdv;
+import wkf;
+import zhq;
 
 class EditVideoMusicDialog$3
   implements Runnable
@@ -10,8 +10,8 @@ class EditVideoMusicDialog$3
   
   public void run()
   {
-    String str = zdv.a(this.a);
-    this.this$0.a = new wgk();
+    String str = zhq.a(this.a);
+    this.this$0.a = new wkf();
     this.this$0.a.a(1);
     this.this$0.a.a(this.this$0);
     this.this$0.a.a(this.a, str, 0L);

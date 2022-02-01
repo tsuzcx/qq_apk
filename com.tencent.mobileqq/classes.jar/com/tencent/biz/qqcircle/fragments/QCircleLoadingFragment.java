@@ -1,12 +1,13 @@
 package com.tencent.biz.qqcircle.fragments;
 
+import aabe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import biau;
+import bjbs;
 import com.tencent.biz.richframework.part.BasePartFragment;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -14,20 +15,19 @@ import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
-import uxo;
-import zxj;
+import uyx;
 
 public class QCircleLoadingFragment
   extends BasePartFragment
 {
-  private biau a;
+  private bjbs a;
   
   public int a()
   {
     return 0;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     return new ArrayList();
   }
@@ -35,6 +35,11 @@ public class QCircleLoadingFragment
   public int b()
   {
     return 0;
+  }
+  
+  public String c()
+  {
+    return "QCircleLoadingFragment";
   }
   
   public void onCreate(Bundle paramBundle)
@@ -46,13 +51,19 @@ public class QCircleLoadingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QZLog.d("QCircleLoadingFragment", 1, "onCreateView...");
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560724, paramViewGroup, false);
-    this.a = new biau(getActivity());
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560745, paramViewGroup, false);
+    this.a = new bjbs(getActivity());
     if (this.a != null) {
       this.a.show();
     }
     long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    uxo.a(getActivity(), getActivity().getIntent().getExtras(), String.valueOf(l), 0);
+    paramViewGroup = getActivity().getIntent();
+    if (paramViewGroup != null)
+    {
+      int i = paramViewGroup.getIntExtra("fromType", 0);
+      uyx.a(getActivity(), paramViewGroup.getExtras(), String.valueOf(l), i);
+      paramViewGroup.putExtra("key_scheme", "");
+    }
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

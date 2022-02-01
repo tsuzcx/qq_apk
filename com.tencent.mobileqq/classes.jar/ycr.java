@@ -1,20 +1,11 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-
-class ycr
-  implements TextView.OnEditorActionListener
+public class ycr
+  extends wip
 {
-  ycr(ycq paramycq) {}
+  public int a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public String toString()
   {
-    if (paramInt == 4)
-    {
-      this.a.d();
-      return true;
-    }
-    return false;
+    return "ChangeVideoSortEvent " + super.toString();
   }
 }
 

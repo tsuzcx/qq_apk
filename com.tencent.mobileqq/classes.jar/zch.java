@@ -1,37 +1,12 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class zch
-  extends zcd
+final class zch
+  implements FilenameFilter
 {
-  @NonNull
-  public final wqh a;
-  @NonNull
-  public final String c;
-  
-  public zch(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull wqh paramwqh)
+  public boolean accept(File paramFile, String paramString)
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.c = paramString2;
-    this.a = paramwqh;
-  }
-  
-  @NonNull
-  public Class<? extends zce> a()
-  {
-    return zcj.class;
-  }
-  
-  @NonNull
-  public zce a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new zcj(paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
   }
 }
 

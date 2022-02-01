@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class assk
   implements View.OnClickListener
 {
-  public assk(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public assk(SystemAndEmojiEmoticonPanelWithActionBar paramSystemAndEmojiEmoticonPanelWithActionBar) {}
   
   public void onClick(View paramView)
   {
-    LocalFileBrowserActivity.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

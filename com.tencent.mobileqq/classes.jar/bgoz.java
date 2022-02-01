@@ -1,54 +1,44 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import java.util.Comparator;
 
-public class bgoz
-  extends bgpa
+class bgoz
+  implements Comparator<bgph>
 {
-  private int jdField_a_of_type_Int = 2131558997;
-  bguh jdField_a_of_type_Bguh;
+  bgoz(bgot parambgot) {}
   
-  public bgoz(Context paramContext, int paramInt)
+  public int a(bgph parambgph1, bgph parambgph2)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bguh parambguh, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (parambguh == null) {}
-    do
+    int j = -1;
+    if (((parambgph1 instanceof MessageForDeliverGiftTips)) && ((parambgph2 instanceof MessageForDeliverGiftTips)))
     {
-      return;
-      this.jdField_a_of_type_Bguh = parambguh;
-      String[] arrayOfString = new String[parambguh.a()];
-      int i = 0;
-      while (i < parambguh.a())
-      {
-        arrayOfString[i] = parambguh.a(i).a();
-        i += 1;
+      parambgph1 = (MessageForDeliverGiftTips)parambgph1;
+      parambgph2 = (MessageForDeliverGiftTips)parambgph2;
+      int i;
+      if ((parambgph1.isToAll()) && (parambgph2.isToAll())) {
+        i = (int)(parambgph1.time - parambgph2.time);
       }
-      setItems(arrayOfString, paramOnClickListener);
-      parambguh = parambguh.a();
-    } while (parambguh == null);
-    setTitle(parambguh);
-  }
-  
-  protected int customWhichToCallBack(int paramInt)
-  {
-    bguj localbguj = this.jdField_a_of_type_Bguh.a(paramInt);
-    if (localbguj != null) {
-      return localbguj.a();
+      do
+      {
+        do
+        {
+          return i;
+          i = j;
+        } while (parambgph1.isToAll());
+        if (parambgph2.isToAll()) {
+          return 1;
+        }
+        if ((parambgph1.receiverUin == this.a.a.getLongAccountUin()) && (parambgph2.receiverUin == this.a.a.getLongAccountUin())) {
+          return (int)(parambgph1.time - parambgph2.time);
+        }
+        i = j;
+      } while (parambgph1.receiverUin == this.a.a.getLongAccountUin());
+      if (parambgph2.receiverUin == this.a.a.getLongAccountUin()) {
+        return 1;
+      }
+      return (int)(parambgph1.time - parambgph2.time);
     }
-    return -1;
-  }
-  
-  protected int getDialogListItemLayout()
-  {
-    return this.jdField_a_of_type_Int;
+    return (int)(parambgph1.getShmsgseq() - parambgph2.getShmsgseq());
   }
 }
 

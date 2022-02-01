@@ -1,60 +1,43 @@
-import android.support.v4.util.ArrayMap;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afuw
+  implements View.OnClickListener
 {
-  private static ArrayMap<Integer, afvp> a = new ArrayMap();
+  public afuw(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
   
-  static
+  public void onClick(View paramView)
   {
-    a.put(Integer.valueOf(1010), new afux());
-    a.put(Integer.valueOf(1001), new afvh());
-    a.put(Integer.valueOf(10002), new afvi());
-    a.put(Integer.valueOf(10004), new afvj());
-    a.put(Integer.valueOf(0), new afvk());
-    a.put(Integer.valueOf(1000), new afvl());
-    a.put(Integer.valueOf(1020), new afvm());
-    a.put(Integer.valueOf(1), new afvn());
-    a.put(Integer.valueOf(3000), new afvo());
-    a.put(Integer.valueOf(1004), new afuy());
-    a.put(Integer.valueOf(1005), new afuz());
-    a.put(Integer.valueOf(1023), new afva());
-    a.put(Integer.valueOf(1009), new afvb());
-    a.put(Integer.valueOf(1006), new afvc());
-    a.put(Integer.valueOf(1021), new afvd());
-    a.put(Integer.valueOf(1022), new afve());
-    a.put(Integer.valueOf(10008), new afvf());
-    a.put(Integer.valueOf(10010), new afvg());
-  }
-  
-  public static ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
-  {
-    if (paramMessageRecord.istroop == 1) {
-      paramMessageRecord = new ProfileActivity.AllInOne(paramString, 20);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.f) && (!TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))) {
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 3))
+      {
+        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
+        localIntent.putExtra("member_uin", "0");
+        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, localIntent);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) {
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
+        }
+      }
     }
     for (;;)
     {
-      paramMessageRecord.h = bglf.i(paramQQAppInterface, paramString);
-      return paramMessageRecord;
-      if (paramMessageRecord.istroop == 3000) {
-        paramMessageRecord = new ProfileActivity.AllInOne(paramString, 45);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, anzj.a(2131714413), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      continue;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
       } else {
-        paramMessageRecord = new ProfileActivity.AllInOne(paramString, 1);
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, anzj.a(2131714373), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
       }
     }
-  }
-  
-  public static ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
-  {
-    if (a.containsKey(Integer.valueOf(paramMessageRecord.istroop))) {
-      return ((afvp)a.get(Integer.valueOf(paramMessageRecord.istroop))).a(paramQQAppInterface, paramString, paramSessionInfo, paramMessageRecord);
-    }
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 19);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
   }
 }
 

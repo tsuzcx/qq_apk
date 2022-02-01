@@ -1,6 +1,20 @@
 public abstract interface pme
 {
-  public abstract void z_();
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract boolean isPlaying();
+  
+  public abstract void setMediaCoverUrl(String paramString);
+  
+  public abstract void setMediaPlayUrl(String paramString);
+  
+  public abstract void setMediaPlayVid(String paramString);
 }
 
 

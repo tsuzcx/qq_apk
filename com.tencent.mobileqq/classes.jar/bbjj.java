@@ -1,29 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-
-public class bbjj
-  implements View.OnTouchListener
+public abstract interface bbjj
 {
-  public bbjj(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public abstract void a(long paramLong);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = this.a.getActivity();
-    if ((paramView instanceof ActiveEntitySearchActivity)) {
-      ((ActiveEntitySearchActivity)paramView).c();
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof UniteSearchActivity)) {
-        ((UniteSearchActivity)paramView).b();
-      }
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void g();
 }
 
 

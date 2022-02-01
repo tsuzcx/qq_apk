@@ -1,86 +1,69 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aueq
+  implements aqrn
 {
-  private static aueq jdField_a_of_type_Aueq;
-  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.qflutterCfg.name();
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private FileManagerEntity a;
   
-  private aueq()
+  public aueq(FileManagerEntity paramFileManagerEntity)
   {
-    DeviceProfileManager.a(new auer(this));
-    a();
+    this.a = paramFileManagerEntity;
   }
   
-  public static aueq a()
+  private String a()
   {
-    if (jdField_a_of_type_Aueq == null) {}
+    String str = "";
     try
     {
-      if (jdField_a_of_type_Aueq == null) {
-        jdField_a_of_type_Aueq = new aueq();
-      }
-      return jdField_a_of_type_Aueq;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
-    if (!TextUtils.isEmpty(str))
-    {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 2) {}
-    }
-    for (;;)
-    {
-      try
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
       {
-        if (Integer.valueOf(arrayOfString[0]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        if (jdField_a_of_type_JavaUtilRandom.nextFloat() >= Float.valueOf(arrayOfString[1]).floatValue()) {
-          continue;
-        }
-        this.b = true;
+        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
+        localJSONObject.put("file_color_note_cloud_lastTime", this.a.lastTime);
+        localJSONObject.put("file_color_note_cloud_fileId", this.a.WeiYunFileId);
+        localJSONObject.put("file_color_note_fileName", this.a.fileName);
+        localJSONObject.put("file_color_note_fileSize", this.a.fileSize);
+        localJSONObject.put("file_color_note_cloud_srcType", this.a.nWeiYunSrcType);
+        localJSONObject.put("file_color_note_cloud_encodeUrl", this.a.strLargeThumPath);
+        localJSONObject.put("file_color_note_cloud_dirKey", this.a.WeiYunDirKey);
+        localJSONObject.put("file_color_note_cloud_", this.a.strFileMd5);
+        localJSONObject.put("file_color_note_cloud_", this.a.strFileSHA);
+        str = localJSONObject.toString();
       }
-      catch (Exception localException)
-      {
-        QLog.d("QFlutterDPC", 1, "loadConfig exception :" + localException.getMessage());
-        this.b = true;
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-        this.b = false;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutterDPC", 2, String.format("loadConfig, dpcValue: %s, mIsSupport: %s, mNeedReport: %s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
-      }
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      continue;
-      this.b = true;
-      this.jdField_a_of_type_Boolean = true;
+      return str;
     }
+    catch (JSONException localJSONException) {}
+    return "";
   }
   
-  public boolean a()
+  public ColorNote getColorNote()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    if (this.a == null)
+    {
+      QLog.i("CloudFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
+    }
+    aqrv localaqrv = new aqrv();
+    localaqrv.a(17039360);
+    String str = auoo.b(3, this.a.nSessionId + this.a.WeiYunFileId);
+    if (QLog.isColorLevel()) {
+      QLog.i("CloudFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localaqrv.a(str);
+    localaqrv.b(this.a.fileName);
+    localaqrv.c(auog.a(this.a.fileSize));
+    int i = aunj.a(aunj.a(this.a.fileName));
+    localaqrv.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqrv.a(str.getBytes());
+    }
+    return localaqrv.a();
   }
 }
 

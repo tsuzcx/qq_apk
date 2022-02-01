@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import UserGrowth.stSimpleGetFeedListRsp;
-import uej;
-import uen;
-import ujn;
+import uel;
+import uep;
+import ukh;
 
 public class WeiShiCacheManager$9
   implements Runnable
 {
-  public WeiShiCacheManager$9(uen paramuen, uej paramuej) {}
+  public WeiShiCacheManager$9(uep paramuep, uel paramuel) {}
   
   public void run()
   {
     if (!this.this$0.b()) {
       return;
     }
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = uen.a(this.this$0, 4);
-    ujn.a().a(new WeiShiCacheManager.9.1(this, localstSimpleGetFeedListRsp));
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = uep.a(this.this$0, 4);
+    ukh.a().a(new WeiShiCacheManager.9.1(this, localstSimpleGetFeedListRsp));
   }
 }
 

@@ -1,22 +1,24 @@
-public class beal
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+final class beal
+  implements DialogInterface.OnClickListener
 {
-  int a;
-  int b;
+  beal(Context paramContext, String paramString) {}
   
-  public beal(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    try
+    {
+      aunj.c(this.jdField_a_of_type_AndroidContentContext, arpx.a().a());
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    }
   }
 }
 

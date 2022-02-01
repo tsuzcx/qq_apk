@@ -4,26 +4,26 @@ import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
-import plh;
+import pea;
 
 public class DynamicChannelDataModule$2
   implements Runnable
 {
-  public DynamicChannelDataModule$2(plh paramplh, int paramInt1, int paramInt2) {}
+  public DynamicChannelDataModule$2(pea parampea, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = plh.a(this.this$0);
+    Object localObject = pea.a(this.this$0);
     int i = this.a;
     int j = this.b;
     localObject = ((EntityManager)localObject).query(DynamicChannelDataModel.class, true, "channelID = ?", new String[] { String.valueOf(i) }, null, null, "recommendSeq asc", String.valueOf(j));
     if ((localObject == null) || (((List)localObject).size() == 0))
     {
-      plh.a(this.this$0, this.a, 2);
+      pea.a(this.this$0, this.a, 2);
       return;
     }
-    localObject = plh.a(this.this$0, this.a, (List)localObject, false);
-    plh.a(this.this$0).post(new DynamicChannelDataModule.2.1(this, (List)localObject));
+    localObject = pea.a(this.this$0, this.a, (List)localObject, false);
+    pea.a(this.this$0).post(new DynamicChannelDataModule.2.1(this, (List)localObject));
   }
 }
 

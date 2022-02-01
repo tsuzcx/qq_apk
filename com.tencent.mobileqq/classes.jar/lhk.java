@@ -1,271 +1,109 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.business.manager.pendant.EffectPendantBase.1;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoTemplateParser;
-import com.tencent.ttpic.util.DecryptListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
 
-public abstract class lhk
-  extends EffectConfigBase<PendantItem>
-  implements lgm
+public class lhk
 {
-  private static final DecryptListener a;
-  protected final lhm a;
-  protected lho a;
-  protected boolean a;
-  protected String[] c;
+  private awzc jdField_a_of_type_Awzc;
+  String jdField_a_of_type_JavaLangString;
+  private lhf jdField_a_of_type_Lhf;
+  lhg jdField_a_of_type_Lhg;
+  lhh jdField_a_of_type_Lhh;
+  lhi jdField_a_of_type_Lhi;
+  String jdField_b_of_type_JavaLangString;
+  lhg jdField_b_of_type_Lhg;
+  lhg c = new lhl(this);
   
-  static
+  public lhk()
   {
-    jdField_a_of_type_ComTencentTtpicUtilDecryptListener = new lhl();
-  }
-  
-  public lhk(VideoAppInterface paramVideoAppInterface)
-  {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Lhm = new lhm();
-  }
-  
-  public static VideoMaterial a(String paramString1, String paramString2)
-  {
-    return VideoTemplateParser.parseVideoMaterial(paramString1, paramString2, false, jdField_a_of_type_ComTencentTtpicUtilDecryptListener);
-  }
-  
-  public VideoMaterial a(String paramString)
-  {
-    VideoMaterial localVideoMaterial = a(paramString, "params");
-    localVideoMaterial.setDataPath(paramString);
-    return localVideoMaterial;
-  }
-  
-  public Class<?> a()
-  {
-    return PendantItem.class;
-  }
-  
-  public String a(PendantItem paramPendantItem)
-  {
-    String str = null;
-    if (paramPendantItem != null) {
-      str = lbf.c() + paramPendantItem.getMd5();
-    }
-    return str;
-  }
-  
-  public List<PendantItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
-  }
-  
-  public lhm a(int paramInt1, int paramInt2)
-  {
-    if (!loz.g()) {
-      return null;
-    }
-    VideoMemoryManager.getInstance().setForceLoadFromSdCard(true);
-    PendantItem localPendantItem = (PendantItem)a();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      c();
-    }
-    if ((paramInt1 == 0) || (paramInt2 == 0) || (localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())))
-    {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Lhm.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_Lhm.jdField_a_of_type_JavaLangString = null;
-      }
-      return null;
-    }
-    String str1 = c(localPendantItem);
-    String str2 = localPendantItem.getId();
-    if ((str1.equals(this.jdField_a_of_type_Lhm.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Lhm.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_Lhm.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
-      return this.jdField_a_of_type_Lhm;
-    }
-    long l = System.currentTimeMillis();
-    VideoMaterial localVideoMaterial = a(str1);
-    this.jdField_a_of_type_Lhm.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localVideoMaterial;
-    this.jdField_a_of_type_Lhm.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
-    this.jdField_a_of_type_Lhm.jdField_a_of_type_JavaLangString = str1;
-    lbc.c(this.jdField_a_of_type_JavaLangString, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
-    return this.jdField_a_of_type_Lhm;
+    a();
   }
   
   public void a()
   {
-    super.a();
-    lgl locallgl = (lgl)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-    if (locallgl != null) {
-      locallgl.a(b(), this);
-    }
-  }
-  
-  protected void a(long paramLong, PendantItem paramPendantItem)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      ((lgn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a(paramLong, paramPendantItem);
-    }
-  }
-  
-  public void a(lho paramlho)
-  {
-    this.jdField_a_of_type_Lho = paramlho;
-  }
-  
-  public boolean a(long paramLong, PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramLong, paramPendantItem);
-    ley localley = VideoController.a().a();
-    a(paramLong, paramPendantItem);
-    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
+    if (this.jdField_a_of_type_Lhf == null)
     {
-      localley.a.set(1);
-      return bool;
-    }
-    localley.a.clear(1);
-    return bool;
-  }
-  
-  protected boolean a(PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramPendantItem);
-    String str1;
-    Object localObject;
-    int k;
-    int i;
-    if (bool)
-    {
-      str1 = c(paramPendantItem);
-      if ((this.c == null) || (this.c.length <= 0)) {
-        break label284;
-      }
-      localObject = this.c;
-      int m = localObject.length;
-      k = 0;
-      i = 0;
-      j = i;
-      if (k < m)
+      if (bhlo.d())
       {
-        String str2 = localObject[k];
-        File localFile = new File(str1, str2);
-        long l = localFile.length();
-        if (((!localFile.exists()) || (l >= 1L)) && (localFile.exists())) {
-          break label265;
-        }
-        j = 1;
-        label111:
-        if ((j == 0) && (i == 0)) {
-          break label270;
-        }
-        i = 1;
-        label121:
-        if ((j != 0) && (QLog.isColorLevel())) {
-          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "isTemplateUsable, fileName[" + str2 + "], item[" + paramPendantItem + "]");
-        }
-        if (i == 0) {
-          break label275;
-        }
+        this.jdField_a_of_type_Lhf = new lhj();
+        lbj.e("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
       }
     }
-    label265:
-    label270:
-    label275:
-    label284:
-    for (int j = i;; j = 0)
-    {
-      if (j != 0)
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Lhf = new lhj();
+    lbj.e("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
+  }
+  
+  public void a(long paramLong, String paramString, lhi paramlhi, lhh paramlhh, lhg paramlhg)
+  {
+    if (this.jdField_a_of_type_Lhf.a) {
+      try
       {
-        str1 = a(paramPendantItem);
-        localObject = b(paramPendantItem);
-        ThreadManager.excute(new EffectPendantBase.1(this, new File(str1), (String)localObject), 16, null, false);
-        if (QLog.isDevelopLevel()) {
-          QLog.i(this.jdField_a_of_type_JavaLangString, 4, "isTemplateUsable, need unzip item[" + paramPendantItem + "]");
-        }
+        this.jdField_b_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_Lhi = paramlhi;
+        this.jdField_a_of_type_Lhh = paramlhh;
+        this.jdField_a_of_type_Lhg = paramlhg;
+        this.jdField_a_of_type_Lhf.b();
+        return;
       }
-      return bool;
-      j = 0;
-      break label111;
-      i = 0;
-      break label121;
-      k += 1;
-      break;
+      finally {}
     }
-  }
-  
-  protected boolean a(String paramString)
-  {
-    return lid.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-  }
-  
-  public abstract int b();
-  
-  public String b(PendantItem paramPendantItem)
-  {
-    String str = "";
-    if (paramPendantItem != null) {
-      str = lbf.d() + paramPendantItem.getMd5() + File.separator;
-    }
-    return str;
-  }
-  
-  protected String c(PendantItem paramPendantItem)
-  {
-    Object localObject1 = "";
-    Object localObject3 = localObject1;
-    Object localObject2;
-    String str;
-    if (paramPendantItem != null)
+    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
+    try
     {
-      localObject2 = null;
-      str = b(paramPendantItem) + paramPendantItem.getName() + File.separator;
-      if (!new File(str).exists()) {
-        break label142;
+      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramlhi.a.src);
+      this.jdField_b_of_type_Lhg = paramlhg;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lhi = null;
+      this.jdField_a_of_type_Lhh = null;
+      this.jdField_a_of_type_Lhg = null;
+      if ((paramlhi.a.src != null) && (!paramlhi.a.src.equals("")) && (this.jdField_a_of_type_Awzc == null)) {
+        this.jdField_a_of_type_Awzc = new awzc();
       }
-      localObject1 = str;
+      this.jdField_a_of_type_Lhf.a(paramString);
+      this.jdField_a_of_type_Lhf.a(paramlhi);
+      this.jdField_a_of_type_Lhf.a(paramlhh);
+      this.jdField_a_of_type_Lhf.a(this.c);
+      this.jdField_a_of_type_Lhf.a();
+      return;
     }
-    for (;;)
-    {
-      localObject3 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject3 = localObject1;
-        if (QLog.isDevelopLevel())
-        {
-          QLog.i(this.jdField_a_of_type_JavaLangString, 4, "getFilterPathForRead, new[" + str + "], old[" + (String)localObject2 + "], item[" + paramPendantItem + "]");
-          localObject3 = localObject1;
-        }
-      }
-      return localObject3;
-      label142:
-      localObject3 = lbf.b() + paramPendantItem.getName() + File.separator;
-      localObject2 = localObject3;
-      if (new File((String)localObject3).exists())
-      {
-        localObject1 = localObject3;
-        localObject2 = localObject3;
-      }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Awzc != null) {
+      this.jdField_a_of_type_Awzc.a(paramString);
     }
   }
   
-  public void c()
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Lhm.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
-    this.jdField_a_of_type_Lhm.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
-    this.jdField_a_of_type_Lhm.jdField_a_of_type_JavaLangString = null;
+    lbj.c("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
+    if (this.jdField_a_of_type_Awzc != null) {
+      this.jdField_a_of_type_Awzc.a(paramString, paramInt, 0);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Lhf.a;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lhi = null;
+      this.jdField_a_of_type_Lhh = null;
+      this.jdField_a_of_type_Lhg = null;
+      this.jdField_a_of_type_Lhf.b();
+      return;
+    }
+    finally {}
   }
 }
 

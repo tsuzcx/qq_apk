@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.music;
 
-import wgk;
-import zdv;
+import wkf;
+import zhq;
 
 class P2VEditMusicDialog$3
   implements Runnable
@@ -10,8 +10,8 @@ class P2VEditMusicDialog$3
   
   public void run()
   {
-    String str = zdv.a(this.a);
-    this.this$0.a = new wgk();
+    String str = zhq.a(this.a);
+    this.this$0.a = new wkf();
     this.this$0.a.a(this.this$0);
     this.this$0.a.a(this.a, str, 0L);
   }

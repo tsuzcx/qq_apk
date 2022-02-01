@@ -1,15 +1,28 @@
-public class bpra
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
+
+class bpra
+  implements blih
 {
-  public int a;
-  public bpqw<Boolean, bprb> a;
-  public String a;
-  public boolean a;
-  public int b;
-  public bpqw<Boolean, bprc> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
+  int jdField_a_of_type_Int = 0;
+  
+  bpra(bpqz parambpqz) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 1) {
+      blgx.b(this.jdField_a_of_type_Bpqz.h);
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_Bpqz.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Bpqz.a.size())) {
+      return;
+    }
+    bpqz.a(this.jdField_a_of_type_Bpqz);
+  }
 }
 
 

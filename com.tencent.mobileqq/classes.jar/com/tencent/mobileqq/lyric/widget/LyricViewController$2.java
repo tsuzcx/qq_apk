@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import awen;
+import awxf;
 import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
 
 public class LyricViewController$2
   extends TimerTaskManager.TimerTaskRunnable
 {
-  public LyricViewController$2(awen paramawen) {}
+  public LyricViewController$2(awxf paramawxf) {}
   
   public void a()
   {
     if (!a()) {
-      awen.a(this.this$0);
+      awxf.a(this.this$0);
     }
   }
 }

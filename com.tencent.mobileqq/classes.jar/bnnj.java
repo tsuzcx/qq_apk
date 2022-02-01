@@ -1,71 +1,31 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.view.ViewStub;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class bnnj
-  extends bnil
+class bnnj
+  extends BroadcastReceiver
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bnnk(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  bnnj(bnni parambnni) {}
   
-  public bnnj(ViewStub paramViewStub)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramViewStub);
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371799);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371800));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371798));
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap, boolean paramBoolean)
-  {
-    a();
-    if (!paramBoolean)
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneDynamicAlbumPlugin", 2, paramContext);
+    }
+    paramIntent = paramIntent.getStringExtra("runningProcessName");
+    if ((("com.tencent.process.stopping".equals(paramContext)) && (!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("com.tencent.mobileqq:tool"))) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
     {
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(null);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      bnni.a(this.a, true);
+      this.a.b();
+    }
+    while (((!"com.tencent.process.starting".equals(paramContext)) || (TextUtils.isEmpty(paramIntent)) || (!paramIntent.equals("com.tencent.mobileqq:tool")) || (!bnni.a(this.a))) && (!"tencent.av.v2q.StopVideoChat".equals(paramContext))) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setStartOffset(3000L);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(200L);
-      this.jdField_a_of_type_AndroidViewView.setAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.startNow();
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-  }
-  
-  public void b()
-  {
-    if (!a()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.cancel();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    bnni.a(this.a, false);
+    this.a.c();
   }
 }
 

@@ -1,20 +1,15 @@
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface rac
+final class rac
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  rac(raf paramraf) {}
   
-  public abstract void a(long paramLong, String paramString1, @Nullable qzh paramqzh, String paramString2, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(false);
+  }
 }
 
 

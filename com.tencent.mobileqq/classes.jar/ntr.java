@@ -1,157 +1,108 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailTopGestureLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x487.oidb_0x487.GroupList;
+import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
 
-public class ntr
-  implements View.OnClickListener
+class ntr
+  extends nkq
 {
-  protected float a;
-  int jdField_a_of_type_Int = 0;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  protected AccountDetailTopGestureLayout a;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private AccountDetail jdField_a_of_type_ComTencentMobileqqDataAccountDetail;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  public ImageView b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  public ImageView c;
-  ImageView d;
-  protected ImageView e;
+  ntr(ntc paramntc) {}
   
-  public ntr(BaseActivity paramBaseActivity, View.OnClickListener paramOnClickListener, ViewGroup paramViewGroup)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().density;
-    b();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131361921));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131361920));
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-  }
-  
-  private boolean a()
-  {
-    return Build.VERSION.SDK_INT < 19;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369811));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
-    int j;
-    if (a()) {
-      j = (int)(64.0F * this.jdField_a_of_type_Float);
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, errorCode=" + paramInt);
     }
-    for (int i = (int)(4.0F * this.jdField_a_of_type_Float);; i = (int)(25.0F * this.jdField_a_of_type_Float))
+    int i;
+    if ((paramInt != -1) && (paramArrayOfByte != null))
     {
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, j);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, i, 0, 0);
-      this.jdField_a_of_type_Int = j;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailTopGestureLayout != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailTopGestureLayout.setTitleHeight(this.jdField_a_of_type_Int);
-      }
-      this.d = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369810));
-      this.d.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368979));
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      this.e = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368961));
-      this.e.setImageResource(2130843652);
-      this.e.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131696799));
-      this.e.setVisibility(0);
-      this.e.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368180));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368151));
-      this.c = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131364291));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131361889));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.d.setImageResource(2130850094);
-      this.e.setImageResource(2130842418);
-      return;
-      j = (int)(75.0F * this.jdField_a_of_type_Float);
-    }
-  }
-  
-  public void a(AccountDetail paramAccountDetail)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = paramAccountDetail;
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {}
-    Object localObject;
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, 1, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin));
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.c.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name);
-      paramAccountDetail = new Paint();
-      paramAccountDetail.setTextSize(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = ((int)((int)paramAccountDetail.measureText(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name) + 4.0F * this.jdField_a_of_type_Float));
-      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramAccountDetail = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      String str = this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedDescription;
-      if ((!TextUtils.isEmpty(str)) && (str.contains(":")))
+      try
       {
-        int i = str.indexOf(":");
-        localObject = str.substring(0, i);
-        if (str.length() > i + 1)
+        paramBundle = new oidb_0x487.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        k = paramBundle.uint32_result.get();
+        if (k != 0) {
+          break label463;
+        }
+        paramArrayOfByte = new ArrayList();
+        if (!paramBundle.msg_groups.has()) {
+          break label458;
+        }
+        localObject1 = paramBundle.msg_groups.get();
+        if (localObject1 == null) {
+          break label458;
+        }
+        int j = ((List)localObject1).size();
+        i = 0;
+        paramInt = j;
+        if (i < j)
         {
-          str = str.substring(i + 1);
-          this.jdField_a_of_type_AndroidViewViewGroup.addView(new nts(paramAccountDetail, null, (String)localObject, str).a());
+          localObject2 = ((oidb_0x487.GroupList)((List)localObject1).get(i)).uint64_groupcode.get() + "";
+          ((oidb_0x487.GroupList)((List)localObject1).get(i)).bytes_group_name.get().toStringUtf8();
+          paramArrayOfByte.add(localObject2);
+          if (paramArrayOfByte.size() < 3) {
+            break label469;
+          }
+          paramInt = j;
         }
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary)) {
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(new nts(paramAccountDetail, null, "信息简介", this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary).a());
+      catch (Exception paramArrayOfByte)
+      {
+        int k;
+        Object localObject1;
+        Object localObject2;
+        while (QLog.isColorLevel())
+        {
+          QLog.e("PubAccountMoreInfoActivity.bindTroop", 2, "getBindedTroops, exception=" + paramArrayOfByte.toString());
+          return;
+          paramInt = 0;
+          continue;
+          paramInt = 0;
+        }
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedEnterprise)) {
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(new nts(paramAccountDetail, null, "认证来源", this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedEnterprise).a());
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayOfByte);
+      if (paramBundle.uint32_privilege_flag.has())
+      {
+        localObject1 = this.a;
+        if (paramBundle.uint32_privilege_flag.get() != 1) {
+          break label478;
+        }
       }
-      localObject = tzo.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(new nts(paramAccountDetail, null, "联系电话", (String)localObject).a());
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131369810) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.doOnBackPressed();
     }
-    for (;;)
+    label458:
+    label463:
+    label469:
+    label478:
+    for (boolean bool = true;; bool = false)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ((ntc)localObject1).d = bool;
+      localObject1 = (bgre)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
+      ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", paramArrayOfByte);
+      ((bgre)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
+      this.a.d();
+      if (QLog.isColorLevel())
+      {
+        if (paramBundle.bytes_errmsg.has()) {}
+        for (paramArrayOfByte = paramBundle.bytes_errmsg.get().toStringUtf8();; paramArrayOfByte = "")
+        {
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, ret=" + k + "," + paramInt + "," + paramArrayOfByte + "," + this.a.d);
+          return;
+        }
+      }
       return;
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      i += 1;
+      break;
     }
   }
 }

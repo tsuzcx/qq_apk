@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.face;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,20 +15,20 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bgnt;
+import bhnv;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import yqp;
-import yqu;
-import yyc;
-import zbb;
-import zbc;
-import zbe;
-import zbf;
-import zbi;
-import zbl;
-import zbo;
-import zbs;
+import yuk;
+import yup;
+import zbx;
+import zew;
+import zex;
+import zez;
+import zfa;
+import zfd;
+import zfg;
+import zfj;
+import zfn;
 
 public class FaceListPage
   extends RelativeLayout
@@ -41,12 +41,12 @@ public class FaceListPage
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private zbb jdField_a_of_type_Zbb;
-  private zbc jdField_a_of_type_Zbc;
-  private zbe jdField_a_of_type_Zbe;
-  private zbl jdField_a_of_type_Zbl;
-  private zbo jdField_a_of_type_Zbo;
-  private zbs jdField_a_of_type_Zbs;
+  private zew jdField_a_of_type_Zew;
+  private zex jdField_a_of_type_Zex;
+  private zez jdField_a_of_type_Zez;
+  private zfg jdField_a_of_type_Zfg;
+  private zfj jdField_a_of_type_Zfj;
+  private zfn jdField_a_of_type_Zfn;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -54,11 +54,11 @@ public class FaceListPage
   private ViewGroup c;
   private ViewGroup d;
   
-  public FaceListPage(Context paramContext, zbe paramzbe, zbb paramzbb)
+  public FaceListPage(Context paramContext, zez paramzez, zew paramzew)
   {
     super(paramContext);
-    this.jdField_a_of_type_Zbb = paramzbb;
-    this.jdField_a_of_type_Zbe = paramzbe;
+    this.jdField_a_of_type_Zew = paramzew;
+    this.jdField_a_of_type_Zez = paramzez;
     d();
   }
   
@@ -69,17 +69,17 @@ public class FaceListPage
   
   private void b()
   {
-    yqp.b("FaceListPage", "FacePackage is LocationFacePackage");
-    zbf localzbf = (zbf)this.jdField_a_of_type_Zbc;
-    if (!localzbf.jdField_a_of_type_JavaUtilList.isEmpty())
+    yuk.b("FaceListPage", "FacePackage is LocationFacePackage");
+    zfa localzfa = (zfa)this.jdField_a_of_type_Zex;
+    if (!localzfa.jdField_a_of_type_JavaUtilList.isEmpty())
     {
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
-      this.jdField_a_of_type_Zbl.notifyDataSetChanged();
+      this.jdField_a_of_type_Zfg.notifyDataSetChanged();
       return;
     }
-    if (localzbf.jdField_a_of_type_Boolean)
+    if (localzfa.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
@@ -95,45 +95,45 @@ public class FaceListPage
     this.d.setVisibility(4);
   }
   
-  private void b(zbc paramzbc)
+  private void b(zex paramzex)
   {
-    if ((paramzbc instanceof zbi))
+    if ((paramzex instanceof zfd))
     {
-      if (this.jdField_a_of_type_Zbs == null) {
-        this.jdField_a_of_type_Zbs = new zbs(super.getContext());
+      if (this.jdField_a_of_type_Zfn == null) {
+        this.jdField_a_of_type_Zfn = new zfn(super.getContext());
       }
-      this.jdField_a_of_type_Zbl = this.jdField_a_of_type_Zbs;
+      this.jdField_a_of_type_Zfg = this.jdField_a_of_type_Zfn;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Zbl != null)
+      if (this.jdField_a_of_type_Zfg != null)
       {
-        this.jdField_a_of_type_Zbl.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Zbl.a(this.jdField_a_of_type_Zbe);
-        this.jdField_a_of_type_Zbl.a(paramzbc);
-        this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Zbl);
+        this.jdField_a_of_type_Zfg.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_Zfg.a(this.jdField_a_of_type_Zez);
+        this.jdField_a_of_type_Zfg.a(paramzex);
+        this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Zfg);
       }
       return;
-      if ((paramzbc instanceof zbf))
+      if ((paramzex instanceof zfa))
       {
-        if (this.jdField_a_of_type_Zbo == null) {
-          this.jdField_a_of_type_Zbo = new zbo(super.getContext());
+        if (this.jdField_a_of_type_Zfj == null) {
+          this.jdField_a_of_type_Zfj = new zfj(super.getContext());
         }
-        this.jdField_a_of_type_Zbl = this.jdField_a_of_type_Zbo;
+        this.jdField_a_of_type_Zfg = this.jdField_a_of_type_Zfj;
       }
       else
       {
-        yqp.e("FaceListPage", "FacePackage is illegal.");
+        yuk.e("FaceListPage", "FacePackage is illegal.");
       }
     }
   }
   
   private void c()
   {
-    yqp.b("FaceListPage", "FacePackage is NormalFacePackage");
-    zbi localzbi = (zbi)this.jdField_a_of_type_Zbc;
-    if (!localzbi.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      yqp.b("FaceListPage", "FaceUriList is not empty,load bitmap directly.");
+    yuk.b("FaceListPage", "FacePackage is NormalFacePackage");
+    zfd localzfd = (zfd)this.jdField_a_of_type_Zex;
+    if (!localzfd.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      yuk.b("FaceListPage", "FaceUriList is not empty,load bitmap directly.");
     }
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -141,15 +141,15 @@ public class FaceListPage
       if (!bool1)
       {
         bool2 = bool1;
-        if (!TextUtils.isEmpty(localzbi.f))
+        if (!TextUtils.isEmpty(localzfd.f))
         {
-          yqp.b("FaceListPage", "FacePkgPath is not empty,try to load uriList from it.");
-          bool2 = localzbi.a();
+          yuk.b("FaceListPage", "FacePkgPath is not empty,try to load uriList from it.");
+          bool2 = localzfd.a();
         }
       }
       if (bool2)
       {
-        yqp.b("FaceListPage", "FacePkg is already download.show face list.");
+        yuk.b("FaceListPage", "FacePkg is already download.show face list.");
         this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(1);
         postDelayed(new FaceListPage.2(this), 50L);
@@ -158,29 +158,29 @@ public class FaceListPage
       this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
       this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      String str = (String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131378283);
-      if ((TextUtils.isEmpty(str)) || (!str.equals(this.jdField_a_of_type_Zbc.d)))
+      String str = (String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131378440);
+      if ((TextUtils.isEmpty(str)) || (!str.equals(this.jdField_a_of_type_Zex.d)))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131378283, this.jdField_a_of_type_Zbc.d);
-        yyc.a().a(super.getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Zbc.d, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, null);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131378440, this.jdField_a_of_type_Zex.d);
+        zbx.a().a(super.getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Zex.d, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, null);
       }
       TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (TextUtils.isEmpty(localzbi.jdField_b_of_type_JavaLangString)) {}
-      for (str = "";; str = localzbi.jdField_b_of_type_JavaLangString)
+      if (TextUtils.isEmpty(localzfd.jdField_b_of_type_JavaLangString)) {}
+      for (str = "";; str = localzfd.jdField_b_of_type_JavaLangString)
       {
         localTextView.setText(str);
-        if (!localzbi.jdField_a_of_type_Boolean) {
+        if (!localzfd.jdField_a_of_type_Boolean) {
           break;
         }
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(localzbi.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(localzbi.jdField_b_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(localzfd.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(localzfd.jdField_b_of_type_Int);
         this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundColor(0);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         return;
       }
       this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130846477);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130846494);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       return;
     }
@@ -188,25 +188,25 @@ public class FaceListPage
   
   private void d()
   {
-    this.jdField_b_of_type_Int = afur.a(130.0F, super.getContext().getResources());
-    LayoutInflater.from(super.getContext()).inflate(2131561678, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366202));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366203));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131372926));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131366189));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131366183));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131370250));
-    this.c = ((LinearLayout)super.findViewById(2131370255));
-    this.d = ((LinearLayout)super.findViewById(2131370247));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365657));
+    this.jdField_b_of_type_Int = agej.a(130.0F, super.getContext().getResources());
+    LayoutInflater.from(super.getContext()).inflate(2131561719, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366251));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366252));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131373039));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131366238));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131366232));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131370351));
+    this.c = ((LinearLayout)super.findViewById(2131370356));
+    this.d = ((LinearLayout)super.findViewById(2131370348));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365700));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.c.setOnClickListener(this);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Zbc == null) {
-      yqp.d("FaceListPage", "onShow : FacePackage is null.");
+    if (this.jdField_a_of_type_Zex == null) {
+      yuk.d("FaceListPage", "onShow : FacePackage is null.");
     }
     Object localObject;
     do
@@ -216,55 +216,55 @@ public class FaceListPage
         do
         {
           return;
-          if (!"LocationFacePackage".equals(this.jdField_a_of_type_Zbc.a())) {
+          if (!"LocationFacePackage".equals(this.jdField_a_of_type_Zex.a())) {
             break;
           }
-          localObject = (zbf)this.jdField_a_of_type_Zbc;
-        } while ((!((zbf)localObject).jdField_a_of_type_JavaUtilList.isEmpty()) || (((zbf)localObject).jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Boolean));
-        if (bgnt.g(super.getContext())) {
-          yqu.a("video_shoot", "fail_poi", 0, 0, new String[] { "1" });
+          localObject = (zfa)this.jdField_a_of_type_Zex;
+        } while ((!((zfa)localObject).jdField_a_of_type_JavaUtilList.isEmpty()) || (((zfa)localObject).jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Boolean));
+        if (bhnv.g(super.getContext())) {
+          yup.a("video_shoot", "fail_poi", 0, 0, new String[] { "1" });
         }
         for (;;)
         {
           this.jdField_a_of_type_Boolean = true;
           return;
-          yqu.a("video_shoot", "fail_poi", 0, 0, new String[] { "2" });
+          yup.a("video_shoot", "fail_poi", 0, 0, new String[] { "2" });
         }
-      } while (!"NormalFacePackage".equals(this.jdField_a_of_type_Zbc.a()));
-      localObject = (zbi)this.jdField_a_of_type_Zbc;
-    } while ((!bgnt.a(getContext())) || (this.jdField_a_of_type_Zbb == null) || (((zbi)localObject).jdField_a_of_type_Boolean) || (!((zbi)localObject).jdField_a_of_type_JavaUtilList.isEmpty()));
-    yqp.a("FaceListPage", "network is wifi. download automatically : %s .", localObject);
-    this.jdField_a_of_type_Zbb.a(((zbi)localObject).jdField_a_of_type_JavaLangString);
-    yqu.a("video_edit", "auto_down_sticker", 0, 0, new String[0]);
+      } while (!"NormalFacePackage".equals(this.jdField_a_of_type_Zex.a()));
+      localObject = (zfd)this.jdField_a_of_type_Zex;
+    } while ((!bhnv.a(getContext())) || (this.jdField_a_of_type_Zew == null) || (((zfd)localObject).jdField_a_of_type_Boolean) || (!((zfd)localObject).jdField_a_of_type_JavaUtilList.isEmpty()));
+    yuk.a("FaceListPage", "network is wifi. download automatically : %s .", localObject);
+    this.jdField_a_of_type_Zew.a(((zfd)localObject).jdField_a_of_type_JavaLangString);
+    yup.a("video_edit", "auto_down_sticker", 0, 0, new String[0]);
   }
   
-  public void a(zbc paramzbc)
+  public void a(zex paramzex)
   {
     if (!a()) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new FaceListPage.1(this, paramzbc));
+      this.jdField_a_of_type_AndroidOsHandler.post(new FaceListPage.1(this, paramzex));
     }
     do
     {
       return;
-      if (paramzbc == null) {
+      if (paramzex == null) {
         break;
       }
-      yqp.b("FaceListPage", "onChange,FacePkgInfo:" + paramzbc.toString());
-      if ((this.jdField_a_of_type_Zbc == null) || (!this.jdField_a_of_type_Zbc.a().equals(paramzbc.a()))) {
-        b(paramzbc);
+      yuk.b("FaceListPage", "onChange,FacePkgInfo:" + paramzex.toString());
+      if ((this.jdField_a_of_type_Zex == null) || (!this.jdField_a_of_type_Zex.a().equals(paramzex.a()))) {
+        b(paramzex);
       }
-      this.jdField_a_of_type_Zbc = paramzbc;
-      if ("NormalFacePackage".equals(this.jdField_a_of_type_Zbc.a()))
+      this.jdField_a_of_type_Zex = paramzex;
+      if ("NormalFacePackage".equals(this.jdField_a_of_type_Zex.a()))
       {
         c();
         return;
       }
-    } while (!"LocationFacePackage".equals(this.jdField_a_of_type_Zbc.a()));
+    } while (!"LocationFacePackage".equals(this.jdField_a_of_type_Zex.a()));
     b();
     return;
-    yqp.b("FaceListPage", "onChange, null.");
-    this.jdField_a_of_type_Zbc = null;
-    this.jdField_a_of_type_Zbl.a(null);
+    yuk.b("FaceListPage", "onChange, null.");
+    this.jdField_a_of_type_Zex = null;
+    this.jdField_a_of_type_Zfg.a(null);
     this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
     this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
@@ -276,13 +276,13 @@ public class FaceListPage
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_b_of_type_AndroidWidgetTextView) {
-      if (this.jdField_a_of_type_Zbb != null)
+      if (this.jdField_a_of_type_Zew != null)
       {
-        if (((zbi)this.jdField_a_of_type_Zbc).jdField_a_of_type_Boolean) {
+        if (((zfd)this.jdField_a_of_type_Zex).jdField_a_of_type_Boolean) {
           break label83;
         }
-        yqp.b("FaceListPage", "Download pkg:" + this.jdField_a_of_type_Zbc.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Zbb.a(this.jdField_a_of_type_Zbc.jdField_a_of_type_JavaLangString);
+        yuk.b("FaceListPage", "Download pkg:" + this.jdField_a_of_type_Zex.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Zew.a(this.jdField_a_of_type_Zex.jdField_a_of_type_JavaLangString);
       }
     }
     for (;;)
@@ -290,14 +290,14 @@ public class FaceListPage
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       label83:
-      this.jdField_a_of_type_Zbb.b(this.jdField_a_of_type_Zbc.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Zew.b(this.jdField_a_of_type_Zex.jdField_a_of_type_JavaLangString);
       continue;
-      if ((paramView == this.c) && (this.jdField_a_of_type_Zbb != null))
+      if ((paramView == this.c) && (this.jdField_a_of_type_Zew != null))
       {
         this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
         this.c.setVisibility(4);
         this.d.setVisibility(0);
-        this.jdField_a_of_type_Zbb.a();
+        this.jdField_a_of_type_Zew.a();
       }
     }
   }

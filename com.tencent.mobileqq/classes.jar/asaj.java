@@ -1,26 +1,59 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.2;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import mqq.manager.Manager;
 
 public class asaj
-  implements bkhe
+  implements Manager
 {
-  public asaj(EmotionPanelViewPagerAdapter.2 param2) {}
+  public static long a;
+  public static long b;
+  public static long c;
+  private byte jdField_a_of_type_Byte;
+  private int jdField_a_of_type_Int;
+  protected NearbyAppInterface a;
+  protected EntityManager a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public asaj(NearbyAppInterface paramNearbyAppInterface)
   {
-    if ((paramInt == 0) || (paramInt == 2))
-    {
-      URLDrawable.resume();
-      if (this.a.jdField_a_of_type_Int == 1) {
-        EmotionPanelViewPagerAdapter.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentWidgetListView);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramNearbyAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = -2147483648;
+  }
+  
+  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    URLDrawable.pause();
+    if (!axxb.c())
+    {
+      axws.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
+      axws.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
+      axws.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
+      return;
+    }
+    jdField_a_of_type_Long = paramLong1;
+    b = paramLong2;
+    c = paramLong3;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

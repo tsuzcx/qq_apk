@@ -1,38 +1,57 @@
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video.EglHandlerThreadEx;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Map;
 
-@RequiresApi(api=18)
 public class avfp
-  implements aveo
+  extends anyu
 {
-  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private zfw jdField_a_of_type_Zfw;
+  public avfp(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public void a()
+  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map<String, Integer> paramMap)
   {
+    boolean bool = true;
     if (QLog.isColorLevel()) {
-      QLog.d("identification_yuv", 2, "uninit..");
+      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
     }
-    try
+    this.a.a();
+    paramMap = this.a.getActivity();
+    if (paramMap == null)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.quitSafely();
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx = null;
-      }
+      QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
       return;
     }
-    finally {}
+    if (paramBoolean)
+    {
+      QQToast.a(paramMap.getApplicationContext(), 2, 2131694460, 0).b(this.a.getActivity().getTitleBarHeight());
+      return;
+    }
+    FormSwitchItem localFormSwitchItem;
+    if (QQSettingChatOperationFragment.a(this.a) != null)
+    {
+      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
+      localFormSwitchItem = QQSettingChatOperationFragment.a(this.a);
+      if (QQSettingChatOperationFragment.a(this.a).e() != 1) {
+        break label176;
+      }
+    }
+    label176:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localFormSwitchItem.setChecked(paramBoolean);
+      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
+      QQToast.a(paramMap.getApplicationContext(), 2131694459, 0).b(paramMap.getTitleBarHeight());
+      return;
+    }
   }
   
-  public void a(zga paramzga)
+  protected void onSetMessageRaoam(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Zfw != null) {
-      this.jdField_a_of_type_Zfw.a(paramzga);
+    if (paramBoolean) {
+      QQSettingChatOperationFragment.a(this.a);
     }
   }
 }

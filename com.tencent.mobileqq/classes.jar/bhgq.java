@@ -1,127 +1,76 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bhgq
-  extends WebViewPlugin
 {
-  protected arpd a;
-  public final String a;
-  public String b;
-  
-  public bhgq()
+  public static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
-    this.jdField_a_of_type_Arpd = new bhgr(this);
-    this.mPluginNameSpace = "video";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "handleJsRequest, url=" + paramString1);
-    }
-    boolean bool1;
-    if ((!"video".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    label154:
-    do
+    Object localObject2 = paramContext.getResources().getString(paramInt1);
+    Object localObject1 = paramContext.getResources().getString(paramInt2);
+    String str2 = paramContext.getResources().getString(paramInt3);
+    String str1 = paramContext.getResources().getString(paramInt4);
+    paramContext = new ReportDialog(paramContext, 2131755824);
+    paramContext.setContentView(2131558984);
+    TextView localTextView = (TextView)paramContext.findViewById(2131365523);
+    if (localTextView != null)
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          for (;;)
-          {
-            try
-            {
-              paramString1 = new JSONObject(paramVarArgs[0]);
-              if (paramString1.has("callback"))
-              {
-                paramJsBridgeListener = paramString1.getString("callback");
-                if (!"isInstalled".equals(paramString3)) {
-                  break label154;
-                }
-                bool1 = bool2;
-                if (!arui.a().a()) {
-                  break;
-                }
-                paramString1 = new Bundle();
-                paramJsBridgeListener = arph.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_Arpd.key, paramString1);
-                arui.a().a(paramJsBridgeListener);
-                return true;
-              }
-            }
-            catch (Exception paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-              return true;
-            }
-            paramJsBridgeListener = "";
-          }
-          if (!"installPlugin".equals(paramString3)) {
-            break;
-          }
-          bool1 = bool2;
-        } while (!arui.a().a());
-        paramString1 = new Bundle();
-        paramJsBridgeListener = arph.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_Arpd.key, paramString1);
-        arui.a().a(paramJsBridgeListener);
-        return true;
-        bool1 = bool2;
-      } while (!"playVideo".equals(paramString3));
-      paramString2 = paramString1.optString("vid", "");
-      paramString3 = paramString1.optString("format", "");
-      int i = paramString1.optInt("playType", 0);
-      paramString1 = paramString1.optString("screenOrientation", "landscape");
-      if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-        this.b = paramJsBridgeListener;
-      }
-      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
-      {
-        paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
-        paramJsBridgeListener.putExtra("vid", paramString2);
-        paramJsBridgeListener.putExtra("videoFormat", paramString3);
-        paramJsBridgeListener.putExtra("vtype", i);
-        paramJsBridgeListener.putExtra("screenOrientation", paramString1);
-        startActivityForResult(paramJsBridgeListener, (byte)100);
-        return true;
-      }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(this.b));
-    callJs(this.b, new String[] { String.valueOf(4) });
-    return true;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "vip video api plugin on activity result requestCode=" + paramByte + ",resultCode=" + paramInt);
+      localTextView.setText((CharSequence)localObject2);
+      localTextView.setContentDescription((CharSequence)localObject2);
     }
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if ((paramByte == 100) && (!TextUtils.isEmpty(this.b))) {
-      callJs(this.b, new String[] { String.valueOf(paramInt) });
+    localObject2 = (TextView)paramContext.findViewById(2131365519);
+    if (localObject2 != null)
+    {
+      ((TextView)localObject2).setText((CharSequence)localObject1);
+      ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
     }
+    localObject1 = (TextView)paramContext.findViewById(2131365508);
+    if (localObject1 != null)
+    {
+      ((TextView)localObject1).setText(str2);
+      ((TextView)localObject1).setContentDescription(str2);
+      if (paramOnClickListener1 != null) {
+        ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
+      }
+    }
+    paramOnClickListener1 = (TextView)paramContext.findViewById(2131365514);
+    if (paramOnClickListener1 != null)
+    {
+      paramOnClickListener1.setText(str1);
+      paramOnClickListener1.setContentDescription(str1);
+      if (paramOnClickListener2 != null) {
+        paramOnClickListener1.setOnClickListener(paramOnClickListener2);
+      }
+    }
+    return paramContext;
   }
   
-  public void onCreate()
+  public static Dialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    super.onCreate();
-    arui.a().a(this.jdField_a_of_type_Arpd);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    arui.a().b(this.jdField_a_of_type_Arpd);
+    paramContext = new ReportDialog(paramContext, 2131755824);
+    paramContext.setContentView(2131558984);
+    TextView localTextView = (TextView)paramContext.findViewById(2131365523);
+    if (localTextView != null) {
+      localTextView.setText(paramString1);
+    }
+    paramString1 = (TextView)paramContext.findViewById(2131365519);
+    if (paramString1 != null) {
+      paramString1.setText(paramString2);
+    }
+    paramString1 = (TextView)paramContext.findViewById(2131365508);
+    if (paramString1 != null) {
+      paramString1.setText(2131690515);
+    }
+    paramString1 = (TextView)paramContext.findViewById(2131365514);
+    if (paramString1 != null) {
+      paramString1.setText(2131690559);
+    }
+    paramContext.setOnDismissListener(paramOnDismissListener);
+    return paramContext;
   }
 }
 

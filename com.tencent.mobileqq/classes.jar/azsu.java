@@ -1,13 +1,9 @@
-public class azsu
+public final class azsu
+  extends azsa
 {
-  public float a;
-  public int a;
-  public float b = -1.0F;
-  
-  public azsu()
+  protected int a()
   {
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_Int = -1;
+    return 560;
   }
 }
 

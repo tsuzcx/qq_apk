@@ -1,55 +1,43 @@
-import VACDReport.ReportReq;
-import VACDReport.ReportRsp;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class akwg
-  extends MSFServlet
+  extends aktq
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  akwg(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if ((paramFromServiceMsg == null) || (paramIntent == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("VACDReport", 2, "onReceive request or response is null");
-      }
-    }
-    while (!"QQWalletPayReportSvc.vacdReportProxy".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (ReportRsp localReportRsp = (ReportRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportRsp());; localReportRsp = null)
-    {
-      Bundle localBundle = new Bundle();
-      if (localReportRsp != null) {
-        localBundle.putSerializable("rsp", localReportRsp);
-      }
-      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
-      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-    }
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected void d()
   {
-    switch (paramIntent.getExtras().getInt("cmd_type"))
+    Object localObject = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
+    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+    if (localObject != null)
     {
-    default: 
+      akrx.a(((ArrayList)localObject).size(), this.a.totalPicCount);
+      akrx.a(localIntent, ((ArrayList)localObject).size(), this.mPhotoCommonData.currentQualityType);
+    }
+    localObject = (NewPhotoPreviewActivity)this.mActivity;
+    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
       return;
     }
-    try
-    {
-      paramPacket.addRequestPacket("req", (ReportReq)paramIntent.getSerializableExtra("req"));
-      paramPacket.setSSOCommand("QQWalletPayReportSvc.vacdReportProxy");
-      paramPacket.setFuncName("vacdReportProxy");
-      paramPacket.setServantName("MQQ.VACDReportServer.VACDReportObj");
-      paramPacket.setTimeout(15000L);
-      return;
+    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)localObject).finish();
+  }
+  
+  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    paramAdapterView = (NewPhotoPreviewActivity)this.mActivity;
+    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
+      paramAdapterView.titleView.setText(anzj.a(2131707021));
     }
-    catch (OutOfMemoryError paramIntent) {}
   }
 }
 

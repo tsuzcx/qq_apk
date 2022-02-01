@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.singtogether;
 
-import avlk;
+import awdv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -11,7 +11,7 @@ import java.util.List;
 public class FetchOpenIdManager$1
   implements Runnable
 {
-  public FetchOpenIdManager$1(avlk paramavlk, QQAppInterface paramQQAppInterface) {}
+  public FetchOpenIdManager$1(awdv paramawdv, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -23,14 +23,14 @@ public class FetchOpenIdManager$1
     while (((Iterator)localObject).hasNext())
     {
       OpenIdItem localOpenIdItem = (OpenIdItem)((Iterator)localObject).next();
-      avlk.a(this.this$0, localOpenIdItem.appId, localOpenIdItem.uin, localOpenIdItem.openId);
-      avlk.a(this.this$0, localOpenIdItem, false);
+      awdv.a(this.this$0, localOpenIdItem.appId, localOpenIdItem.uin, localOpenIdItem.openId);
+      awdv.a(this.this$0, localOpenIdItem, false);
       continue;
       if (QLog.isColorLevel()) {
         QLog.d("FetchOpenIdManager", 2, "initOpenIdFromDB size is 0");
       }
     }
-    avlk.a(this.this$0, 1);
+    awdv.a(this.this$0, 1);
     localEntityManager.close();
   }
 }

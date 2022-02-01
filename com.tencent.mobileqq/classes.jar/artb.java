@@ -1,70 +1,111 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.copyprompt.CopyPromptHelper.4;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class artb
-  extends bdin
+  implements agvc, View.OnClickListener
 {
-  public artb(MessengerService paramMessengerService) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new artc(this);
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CopyPromptHelper.4(this);
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public artb(BaseChatPie paramBaseChatPie)
   {
-    Bundle localBundle;
-    int i;
-    String str;
-    if (this.a.a != null)
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  private View a(String paramString)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2131559592, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, false);
+    ((TextView)localView.findViewById(2131373081)).setText(new begp(paramString, 3, 16));
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.addRule(9);
+    paramString.addRule(2, 2131368726);
+    paramString.leftMargin = agej.a(14.0F, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources());
+    ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364389)).addView(localView, paramString);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X800B22B", "0X800B22B", 0, 0, "", "", "", "");
+    return localView;
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364480).getVisibility() == 0;
+  }
+  
+  private void b()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(320);
+    if ((localObject instanceof artf))
     {
-      localBundle = new Bundle();
-      localBundle.putString("url", null);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label115;
+      localObject = ((artf)localObject).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("CopyPromptHelper", 2, "handlePrompt content : " + (String)localObject);
       }
-      i = paramTeamWorkFileImportInfo.f;
-      localBundle.putInt("retCode", i);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label120;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        a();
+        this.jdField_a_of_type_AndroidViewView = a((String)localObject);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
+        nkr[] arrayOfnkr = new nkr[1];
+        arrayOfnkr[0] = new nkr(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, new artd(this, arrayOfnkr));
+        if (this.jdField_a_of_type_AndroidViewView != null) {
+          this.jdField_a_of_type_AndroidViewView.setOnClickListener(new arte(this, (String)localObject));
+        }
       }
-      str = paramTeamWorkFileImportInfo.h;
-      label53:
-      localBundle.putString("errorStr", str);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label126;
-      }
-    }
-    label115:
-    label120:
-    label126:
-    for (paramTeamWorkFileImportInfo = paramTeamWorkFileImportInfo.i;; paramTeamWorkFileImportInfo = "")
-    {
-      localBundle.putString("redirectUrl", paramTeamWorkFileImportInfo);
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
-      return;
-      i = 0;
-      break;
-      str = "";
-      break label53;
     }
   }
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
-    }
-    if (this.a.a != null)
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("url", paramString);
-      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d == 10)) {
-        localBundle.putBoolean("needRefresh", true);
-      }
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
     }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      return;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13 };
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!a()) {
+      b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

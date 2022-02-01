@@ -1,81 +1,66 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.FrameBufferCache;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class lre
-  extends lrg
+  extends lri
 {
-  protected final Context a;
-  protected final int k;
+  private final String jdField_a_of_type_JavaLangString = "MultipleTextureSource-" + Integer.toHexString(hashCode());
+  private List<Frame> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  public lre(Context paramContext, int paramInt)
-  {
-    bkfk.a(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.k = paramInt;
-    a(false);
-  }
+  protected void a() {}
   
-  protected Bitmap a()
+  public void a(List<lrf> paramList, long paramLong)
   {
-    Object localObject = null;
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-    localOptions.inScaled = false;
-    int i = mue.a(this.jdField_a_of_type_AndroidContentContext);
-    localOptions.inSampleSize = 1;
-    if (i <= 480) {
-      localOptions.inSampleSize = 2;
-    }
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    try
+    ArrayList localArrayList1 = new ArrayList(paramList.size());
+    int i = 0;
+    if (i < paramList.size())
     {
-      Bitmap localBitmap2 = BitmapFactory.decodeResource(localResources, this.k, localOptions);
-      localObject = localBitmap2;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError3)
-    {
-      do
+      lrf locallrf = (lrf)paramList.get(i);
+      label131:
+      ArrayList localArrayList2;
+      if (i >= this.jdField_a_of_type_JavaUtilList.size())
       {
-        localOptions.inSampleSize *= 2;
-      } while (localResources == null);
-      try
-      {
-        localObject = BitmapFactory.decodeResource(localResources, this.k, localOptions);
-        return localObject;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        localOptions.inSampleSize *= 2;
-        i = this.k;
-        try
-        {
-          Bitmap localBitmap1 = BitmapFactory.decodeResource(localResources, i, localOptions);
-          return localBitmap1;
+        localObject = new Frame();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "render: create cached frame#" + Integer.toHexString(localObject.hashCode()));
+        ((Frame)localObject).setSizedTexture(locallrf.jdField_a_of_type_Int, locallrf.b, locallrf.c);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        if (!locallrf.a()) {
+          break label257;
         }
-        catch (OutOfMemoryError localOutOfMemoryError2) {}
+        localArrayList2 = new ArrayList(1);
+        lrm locallrm = new lrm();
+        locallrm.jdField_a_of_type_JavaUtilList = locallrf.jdField_a_of_type_JavaUtilList;
+        localArrayList2.add(locallrm);
+      }
+      label257:
+      for (Object localObject = lrl.a((Frame)localObject, localArrayList2);; localObject = lrl.a((Frame)localObject))
+      {
+        localArrayList1.add(localObject);
+        i += 1;
+        break;
+        localObject = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
+        ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).setSizedTexture(locallrf.jdField_a_of_type_Int, locallrf.b, locallrf.c);
+        break label131;
       }
     }
-    return localObject;
-    return null;
+    b(localArrayList1, paramLong);
   }
   
-  protected void a(Bitmap paramBitmap)
+  protected void b()
   {
-    if (!d()) {
-      paramBitmap.recycle();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).clear();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: cached frame#" + Integer.toHexString(((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).hashCode()));
+      i += 1;
     }
-  }
-  
-  public int[] a(lpx paramlpx)
-  {
-    if (!c()) {
-      b(paramlpx);
-    }
-    return this.jdField_a_of_type_ArrayOfInt;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    FrameBufferCache.getInstance().destroy();
   }
 }
 

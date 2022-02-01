@@ -12,12 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bezn;
-import bezp;
-import bezq;
-import bezu;
-import bfbp;
-import biau;
+import bfzh;
+import bfzj;
+import bfzk;
+import bfzo;
+import bgbj;
+import bjbs;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -30,13 +30,13 @@ import java.net.URL;
 
 public class BeginnerGuideFragment
   extends PublicBaseFragment
-  implements bfbp
+  implements bgbj
 {
   private int jdField_a_of_type_Int;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
-  private bezu jdField_a_of_type_Bezu;
-  private biau jdField_a_of_type_Biau;
+  private bfzo jdField_a_of_type_Bfzo;
+  private bjbs jdField_a_of_type_Bjbs;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   protected ComplexGuidViewPager a;
   private boolean jdField_a_of_type_Boolean;
@@ -103,7 +103,7 @@ public class BeginnerGuideFragment
         try
         {
           String str3 = new File(new URL(str2).getFile()).getName();
-          new bezn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Bezu, i, false);
+          new bfzh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Bfzo, i, false);
           return true;
         }
         catch (Exception localException) {}
@@ -141,10 +141,10 @@ public class BeginnerGuideFragment
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager == null) {
       return;
     }
-    bezp localbezp = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a;
+    bfzj localbfzj = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (localbezp != null)
+    if (localbfzj != null)
     {
       if (!this.jdField_a_of_type_Boolean) {
         break label135;
@@ -156,14 +156,14 @@ public class BeginnerGuideFragment
         localObject1 = localObject2;
       }
     }
-    while ((localObject1 != null) && (((bezq)localObject1).jdField_a_of_type_JavaLangString != null) && (((bezq)localObject1).jdField_a_of_type_JavaUtilArrayList != null))
+    while ((localObject1 != null) && (((bfzk)localObject1).jdField_a_of_type_JavaLangString != null) && (((bfzk)localObject1).jdField_a_of_type_JavaUtilArrayList != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setData(((bezq)localObject1).jdField_a_of_type_JavaLangString, ((bezq)localObject1).jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setData(((bfzk)localObject1).jdField_a_of_type_JavaLangString, ((bfzk)localObject1).jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.invalidate();
       return;
-      localObject1 = localbezp.b;
+      localObject1 = localbfzj.b;
       continue;
-      localObject1 = localbezp.a;
+      localObject1 = localbfzj.a;
       continue;
       label135:
       switch (this.jdField_a_of_type_Int)
@@ -174,10 +174,10 @@ public class BeginnerGuideFragment
         localObject1 = localObject2;
         break;
       case 4: 
-        localObject1 = localbezp.c;
+        localObject1 = localbfzj.c;
         break;
       case 7: 
-        localObject1 = localbezp.d;
+        localObject1 = localbfzj.d;
       }
     }
   }
@@ -196,13 +196,13 @@ public class BeginnerGuideFragment
     {
       if (!getActivity().isFinishing())
       {
-        if (this.jdField_a_of_type_Biau == null)
+        if (this.jdField_a_of_type_Bjbs == null)
         {
-          this.jdField_a_of_type_Biau = new biau(getActivity(), getActivity().getTitleBarHeight());
-          this.jdField_a_of_type_Biau.setCancelable(false);
-          this.jdField_a_of_type_Biau.show();
+          this.jdField_a_of_type_Bjbs = new bjbs(getActivity(), getActivity().getTitleBarHeight());
+          this.jdField_a_of_type_Bjbs.setCancelable(false);
+          this.jdField_a_of_type_Bjbs.show();
         }
-        this.jdField_a_of_type_Biau.c(paramInt);
+        this.jdField_a_of_type_Bjbs.c(paramInt);
       }
     }
     catch (Exception localException)
@@ -227,12 +227,12 @@ public class BeginnerGuideFragment
   
   protected void c()
   {
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Biau.dismiss();
+      this.jdField_a_of_type_Bjbs.dismiss();
       label24:
-      this.jdField_a_of_type_Biau = null;
+      this.jdField_a_of_type_Bjbs = null;
       if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager != null) {
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setVisibility(0);
       }
@@ -271,7 +271,7 @@ public class BeginnerGuideFragment
       QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment create view");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_Bezu = new bezu(this, Looper.myLooper());
+    this.jdField_a_of_type_Bfzo = new bfzo(this, Looper.myLooper());
     this.jdField_a_of_type_AndroidOsBundle = getArguments();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
@@ -284,15 +284,15 @@ public class BeginnerGuideFragment
     for (;;)
     {
       boolean bool = a();
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560605, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560620, paramViewGroup, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {
         getActivity().finish();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364882));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364929));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setOnActionBtnClickListener(this);
       d();
       if (bool) {
-        a(2131696714);
+        a(2131696763);
       }
       paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -308,8 +308,8 @@ public class BeginnerGuideFragment
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Bezu != null) {
-      this.jdField_a_of_type_Bezu.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Bfzo != null) {
+      this.jdField_a_of_type_Bfzo.removeCallbacksAndMessages(null);
     }
   }
   

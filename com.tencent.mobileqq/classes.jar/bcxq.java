@@ -1,22 +1,56 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import java.util.ArrayList;
 
 class bcxq
-  implements View.OnLongClickListener
+  implements bcxy
 {
-  bcxq(bcxp parambcxp) {}
+  bcxq(bcxo parambcxo, bcxz parambcxz) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.a.a != null)
-    {
-      afzq localafzq = (afzq)this.a.a.get();
-      if (localafzq != null) {
-        return localafzq.onLongClick(paramView);
+    bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult] - BEGIN -, result=" + paramInt1 + ", serverError=" + paramInt2);
+    if ((paramInt1 == 1) || (paramInt1 == 0)) {
+      if (paramInt2 != 0)
+      {
+        bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], serverError");
+        bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+        bcxo.a(this.jdField_a_of_type_Bcxo);
+        if (this.jdField_a_of_type_Bcxz != null) {
+          this.jdField_a_of_type_Bcxz.b(paramInt1, paramInt2);
+        }
       }
     }
-    return false;
+    for (;;)
+    {
+      bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult] - END -, result=" + paramInt1 + ", serverError=" + paramInt2);
+      return;
+      ArrayList localArrayList = new ArrayList(1);
+      if (ShortVideoResourceManager.a(bcxo.a(this.jdField_a_of_type_Bcxo), localArrayList) == 0)
+      {
+        bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList valid");
+        bcxo.a(this.jdField_a_of_type_Bcxo).a();
+        if (this.jdField_a_of_type_Bcxz != null) {
+          this.jdField_a_of_type_Bcxz.b(paramInt1, paramInt2);
+        }
+      }
+      else
+      {
+        bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList invalid");
+        bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+        bcxo.a(this.jdField_a_of_type_Bcxo);
+        if (this.jdField_a_of_type_Bcxz != null)
+        {
+          this.jdField_a_of_type_Bcxz.b(paramInt1, paramInt2);
+          continue;
+          bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], result invalid");
+          bpam.b(bcxo.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+          bcxo.a(this.jdField_a_of_type_Bcxo);
+          if (this.jdField_a_of_type_Bcxz != null) {
+            this.jdField_a_of_type_Bcxz.b(paramInt1, paramInt2);
+          }
+        }
+      }
+    }
   }
 }
 

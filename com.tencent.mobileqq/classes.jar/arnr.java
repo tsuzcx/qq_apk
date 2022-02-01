@@ -1,18 +1,11 @@
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-
-public abstract interface arnr
+public class arnr
 {
-  public abstract void a(XmlData paramXmlData);
-  
-  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
-  
-  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
-  
-  public abstract void b(XmlData paramXmlData);
+  public String a = "https://club.vip.qq.com/profile/music?_proxy=1";
+  public String b = "https://club.vip.qq.com/profile/music/player?_wv=131072&_fv=0&_proxy=1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnr
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import bezr;
-import bfbp;
+import bfzl;
+import bgbj;
 import com.tencent.biz.troopgift.absMultiViewPager;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
@@ -25,7 +25,7 @@ public class GuideViewPager
   extends absMultiViewPager
   implements View.OnClickListener, GifDrawable.OnGIFPlayOnceListener
 {
-  private bfbp a;
+  private bgbj a;
   
   public GuideViewPager(Context paramContext)
   {
@@ -59,40 +59,40 @@ public class GuideViewPager
   
   public View a(int paramInt)
   {
-    bezr localbezr = (bezr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561584, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131367261);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363376);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131367237);
+    bfzl localbfzl = (bfzl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561625, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131367315);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363399);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131367288);
     ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361946);
-    if (localbezr.jdField_a_of_type_Boolean) {
-      if (!TextUtils.isEmpty(localbezr.jdField_a_of_type_JavaLangString))
+    if (localbfzl.jdField_a_of_type_Boolean) {
+      if (!TextUtils.isEmpty(localbfzl.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath((ImageView)localObject, localbezr.jdField_a_of_type_JavaLangString);
+        setBitmapByPath((ImageView)localObject, localbfzl.jdField_a_of_type_JavaLangString);
         ((ImageView)localObject).setVisibility(0);
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localbezr.c))
+      if (!TextUtils.isEmpty(localbfzl.c))
       {
-        localImageView2.setImageDrawable(a(localbezr.c));
+        localImageView2.setImageDrawable(a(localbfzl.c));
         localImageView2.setVisibility(0);
         localImageView2.setOnClickListener(this);
       }
       return localRelativeLayout;
-      if (!TextUtils.isEmpty(localbezr.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localbfzl.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath(localImageView3, localbezr.jdField_a_of_type_JavaLangString);
+        setBitmapByPath(localImageView3, localbfzl.jdField_a_of_type_JavaLangString);
         localImageView3.setVisibility(0);
       }
-      if (!TextUtils.isEmpty(localbezr.b))
+      if (!TextUtils.isEmpty(localbfzl.b))
       {
-        localObject = a(localbezr.b);
+        localObject = a(localbfzl.b);
         if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
           ((GifDrawable)((URLDrawable)localObject).getCurrDrawable()).setGIFPlayOnceListener(this);
         }
-        localImageView1.setImageDrawable(a(localbezr.b));
+        localImageView1.setImageDrawable(a(localbfzl.b));
         localImageView1.setVisibility(0);
       }
     }
@@ -107,8 +107,8 @@ public class GuideViewPager
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Bfbp != null) {
-        this.jdField_a_of_type_Bfbp.a();
+      if (this.jdField_a_of_type_Bgbj != null) {
+        this.jdField_a_of_type_Bgbj.a();
       }
     }
   }
@@ -118,9 +118,9 @@ public class GuideViewPager
     ThreadManager.getUIHandler().post(new GuideViewPager.2(this));
   }
   
-  public void setOnActionBtnClickListener(bfbp parambfbp)
+  public void setOnActionBtnClickListener(bgbj parambgbj)
   {
-    this.jdField_a_of_type_Bfbp = parambfbp;
+    this.jdField_a_of_type_Bgbj = parambgbj;
   }
 }
 

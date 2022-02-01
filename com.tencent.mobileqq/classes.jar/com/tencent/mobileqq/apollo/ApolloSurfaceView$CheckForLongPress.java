@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amkj;
+import amwd;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -20,7 +20,7 @@ class ApolloSurfaceView$CheckForLongPress
   public void run()
   {
     if (ApolloSurfaceView.access$100(this.this$0) == null) {}
-    amkj localamkj;
+    amwd localamwd;
     do
     {
       do
@@ -28,16 +28,16 @@ class ApolloSurfaceView$CheckForLongPress
         do
         {
           return;
-          localamkj = (amkj)ApolloSurfaceView.access$100(this.this$0).get();
-        } while (localamkj == null);
+          localamwd = (amwd)ApolloSurfaceView.access$100(this.this$0).get();
+        } while (localamwd == null);
         if (QLog.isColorLevel()) {
           QLog.d("ApolloSurfaceView", 2, "CheckForLongPress onLongClick");
         }
       } while (this.a != ApolloSurfaceView.access$201(this.this$0));
       ApolloSurfaceView.access$302(this.this$0, true);
       ApolloSurfaceView.access$401(this.this$0, 2);
-    } while ((TextUtils.isEmpty(this.this$0.mApolloId)) || (ApolloSurfaceView.access$500(this.this$0) < 0) || (localamkj == null));
-    localamkj.onNotifyLongTouch(this.this$0.mApolloId);
+    } while ((TextUtils.isEmpty(this.this$0.mApolloId)) || (ApolloSurfaceView.access$500(this.this$0) < 0) || (localamwd == null));
+    localamwd.onNotifyLongTouch(this.this$0.mApolloId);
   }
 }
 

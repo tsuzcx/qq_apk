@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ancd;
 import android.os.Bundle;
 import android.os.Message;
-import arti;
+import annx;
+import asiw;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloFavActionData;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$28
   implements Runnable
 {
-  public MessengerService$IncomingHandler$28(arti paramarti, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$28(asiw paramasiw, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class MessengerService$IncomingHandler$28
     ArrayList localArrayList;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localObject2 = (ancd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localObject2 = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
       JSONObject localJSONObject = new JSONObject();
       localObject1 = new JSONArray();
       localArrayList = new ArrayList();
@@ -44,7 +44,7 @@ public class MessengerService$IncomingHandler$28
         Object localObject3 = localJSONArray.getJSONObject(i);
         long l = ((JSONObject)localObject3).optLong("seq");
         int j = ((JSONObject)localObject3).optInt("actionId");
-        localObject3 = ((ancd)localObject2).a(l);
+        localObject3 = ((annx)localObject2).a(l);
         if ((localObject3 == null) || (j != ((ApolloFavActionData)localObject3).acitonId)) {
           ((JSONArray)localObject1).put(l);
         } else {
@@ -61,7 +61,7 @@ public class MessengerService$IncomingHandler$28
       label180:
       if (localArrayList.size() > 0)
       {
-        ((ancd)localObject2).f(localArrayList);
+        ((annx)localObject2).f(localArrayList);
         localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
         if (localObject2 != null)
         {

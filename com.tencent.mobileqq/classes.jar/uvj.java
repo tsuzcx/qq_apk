@@ -1,33 +1,50 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
-class uvj
-  implements uvy
+public class uvj
+  extends uvh
 {
-  uvj(uvi paramuvi) {}
+  private stSimpleMetaFeed a;
   
-  public void a(Object paramObject)
+  public uvj(urv paramurv)
   {
-    if ((paramObject instanceof uvp))
+    super(paramurv);
+  }
+  
+  public List<usv> a(ArrayList paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
+      this.a = ((stSimpleMetaFeed)paramArrayList.get(0));
+    }
+    return null;
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if ((this.a != null) && (this.a.collection != null) && (!TextUtils.isEmpty(this.a.collection.cid)))
     {
-      if (!this.a.b) {
-        ((PublicAccountImageCollectionMainActivity)uvi.a(this.a)).h();
-      }
-      this.a.b = true;
+      usj.a().a(this.a.collection.cid, 2, this);
+      return true;
     }
-    while ((paramObject instanceof uvq)) {
-      if (uvi.a(this.a))
-      {
-        this.a.d(true);
-        return;
-        ((PublicAccountImageCollectionMainActivity)uvi.a(this.a)).g();
-      }
-      else
-      {
-        this.a.d(false);
-        return;
-      }
+    return false;
+  }
+  
+  public void b()
+  {
+    super.b();
+    usj.a().a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    urv localurv = a();
+    if ((localurv != null) && (this.a != null)) {
+      localurv.b(this.a);
     }
-    this.a.d(true);
   }
 }
 

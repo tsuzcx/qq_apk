@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blzm;
+import bnao;
 
 public class PublishEventTag
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishEventTag> CREATOR = new blzm();
+  public static final Parcelable.Creator<PublishEventTag> CREATOR = new bnao();
   public String a;
   public String b;
   public String c;

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.comment;
 
-import wlz;
-import wmc;
+import wpu;
+import wpx;
 
 public class FeedCommentEventHandler$OnActionSheetButtonClickListener$1
   implements Runnable
 {
-  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(wmc paramwmc) {}
+  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(wpx paramwpx) {}
   
   public void run()
   {
-    wlz.a(this.a.a, wmc.a(this.a), wmc.a(this.a));
+    wpu.a(this.a.a, wpx.a(this.a), wpx.a(this.a));
   }
 }
 

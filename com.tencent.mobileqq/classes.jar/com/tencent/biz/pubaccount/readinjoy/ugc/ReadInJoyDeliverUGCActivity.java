@@ -17,22 +17,22 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import asbq;
-import atvo;
-import avbc;
-import avbk;
-import avda;
-import ayzh;
-import bcls;
-import bctj;
-import bdzi;
-import bdzn;
-import bgmj;
-import biau;
-import bkho;
-import bkif;
-import bmqa;
+import anzj;
+import asre;
+import aunj;
+import avte;
+import avtm;
+import avvc;
+import azru;
+import bdek;
+import bdmc;
+import beyb;
+import beyg;
+import bhml;
+import bjbs;
+import blir;
+import blji;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
@@ -59,26 +59,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import mqq.os.MqqHandler;
-import oat;
+import ocd;
+import onw;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ovj;
-import pha;
-import pmk;
-import pmn;
-import rjm;
-import rjn;
-import rjp;
-import rjq;
-import rjr;
-import rjs;
-import rjt;
-import rju;
-import rjv;
-import rjx;
-import rjy;
-import rkk;
-import rlr;
+import ozs;
+import pfd;
+import pfh;
+import raa;
+import rab;
+import rag;
+import rah;
+import raj;
+import rak;
+import ral;
+import ram;
+import ran;
+import rao;
+import rap;
+import rar;
+import ras;
+import rbe;
+import rcl;
 
 public class ReadInJoyDeliverUGCActivity
   extends ReadInJoyBaseDeliverActivity
@@ -90,17 +92,17 @@ public class ReadInJoyDeliverUGCActivity
   private ReadInJoyNinePicDeliverDynamicGridView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView;
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  pmn jdField_a_of_type_Pmn = new rjp(this);
-  private rjx jdField_a_of_type_Rjx = new rjx(this);
-  private rkk jdField_a_of_type_Rkk;
+  pfh jdField_a_of_type_Pfh = new raj(this);
+  private rar jdField_a_of_type_Rar = new rar(this);
+  private rbe jdField_a_of_type_Rbe;
   private float jdField_b_of_type_Float;
   private long jdField_b_of_type_Long;
-  private biau jdField_b_of_type_Biau;
+  private bjbs jdField_b_of_type_Bjbs;
   private ArrayList<SocializeFeedsInfo.BiuCommentInfo> jdField_b_of_type_JavaUtilArrayList;
   private List<Integer> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private bkho jdField_c_of_type_Bkho;
-  private List<rjy> jdField_c_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private List<bdzn> d;
+  private blir jdField_c_of_type_Blir;
+  private List<ras> jdField_c_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private List<beyg> d;
   private String jdField_e_of_type_JavaLangString = "";
   private List<String> jdField_e_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private String f;
@@ -114,7 +116,8 @@ public class ReadInJoyDeliverUGCActivity
   private int p = 40000;
   private int jdField_q_of_type_Int;
   private boolean jdField_q_of_type_Boolean;
-  private boolean r;
+  private int jdField_r_of_type_Int;
+  private boolean jdField_r_of_type_Boolean;
   private boolean s;
   private boolean t;
   private boolean u;
@@ -122,6 +125,7 @@ public class ReadInJoyDeliverUGCActivity
   private boolean w;
   private boolean x;
   private boolean y;
+  private boolean z;
   
   static
   {
@@ -172,7 +176,7 @@ public class ReadInJoyDeliverUGCActivity
       }
     }
     label65:
-    for (paramHotPicData = avda.a((HotVideoData)paramHotPicData);; paramHotPicData = avbc.a(paramHotPicData.url))
+    for (paramHotPicData = avvc.a((HotVideoData)paramHotPicData);; paramHotPicData = avte.a(paramHotPicData.url))
     {
       if (paramHotPicData != null) {
         break label76;
@@ -187,7 +191,7 @@ public class ReadInJoyDeliverUGCActivity
   
   private String a(int paramInt)
   {
-    String str = pha.g();
+    String str = ozs.g();
     try
     {
       Object localObject = new JSONObject(str);
@@ -218,7 +222,7 @@ public class ReadInJoyDeliverUGCActivity
       } while (TextUtils.isEmpty(str));
       paramObject = str;
     } while (!new File(str).exists());
-    return bgmj.a(atvo.e(str));
+    return bhml.a(aunj.e(str));
   }
   
   public static String a(String paramString)
@@ -231,7 +235,7 @@ public class ReadInJoyDeliverUGCActivity
   
   private void a(Object paramObject)
   {
-    List localList = this.jdField_a_of_type_Rkk.a();
+    List localList = this.jdField_a_of_type_Rbe.a();
     if (b() < 9)
     {
       if ((!(paramObject instanceof String)) || (!localList.contains(paramObject))) {
@@ -253,12 +257,12 @@ public class ReadInJoyDeliverUGCActivity
         try
         {
           localObject1 = ((HotPicData)paramObject).clone();
-          this.jdField_a_of_type_Rkk.a(localList.size() - 1, localObject1);
+          this.jdField_a_of_type_Rbe.a(localList.size() - 1, localObject1);
           b(localObject1);
           if (localList.size() > 9) {
-            this.jdField_a_of_type_Rkk.d(localList.get(9));
+            this.jdField_a_of_type_Rbe.d(localList.get(9));
           }
-          q();
+          p();
           return;
         }
         catch (CloneNotSupportedException localCloneNotSupportedException)
@@ -267,7 +271,7 @@ public class ReadInJoyDeliverUGCActivity
           Object localObject2 = paramObject;
           continue;
         }
-        a(1, getString(2131716991));
+        a(1, getString(2131717107));
       }
     }
   }
@@ -293,7 +297,7 @@ public class ReadInJoyDeliverUGCActivity
     if ((paramInt < 0) || (paramInt > 8)) {
       return false;
     }
-    List localList = this.jdField_a_of_type_Rkk.a();
+    List localList = this.jdField_a_of_type_Rbe.a();
     if (((localList.get(paramInt) instanceof HotPicData)) || (this.jdField_e_of_type_JavaLangString.equals(localList.get(paramInt)))) {
       return true;
     }
@@ -315,11 +319,11 @@ public class ReadInJoyDeliverUGCActivity
   
   private int b()
   {
-    if (this.jdField_a_of_type_Rkk != null)
+    if (this.jdField_a_of_type_Rbe != null)
     {
-      int j = this.jdField_a_of_type_Rkk.a().size();
+      int j = this.jdField_a_of_type_Rbe.a().size();
       int i = j;
-      if (this.jdField_a_of_type_Rkk.a().get(this.jdField_a_of_type_Rkk.a().size() - 1).equals(this.jdField_e_of_type_JavaLangString)) {
+      if (this.jdField_a_of_type_Rbe.a().get(this.jdField_a_of_type_Rbe.a().size() - 1).equals(this.jdField_e_of_type_JavaLangString)) {
         i = j - 1;
       }
       return i;
@@ -331,7 +335,7 @@ public class ReadInJoyDeliverUGCActivity
   {
     if ((paramObject instanceof String))
     {
-      if (ayzh.a((String)paramObject))
+      if (azru.a((String)paramObject))
       {
         this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(2));
         return;
@@ -344,13 +348,13 @@ public class ReadInJoyDeliverUGCActivity
   
   private void b(Object paramObject, int paramInt)
   {
-    List localList = this.jdField_a_of_type_Rkk.a();
-    this.jdField_a_of_type_Rkk.a(paramInt, paramObject);
+    List localList = this.jdField_a_of_type_Rbe.a();
+    this.jdField_a_of_type_Rbe.a(paramInt, paramObject);
     c(paramObject, paramInt);
     if (localList.size() > 9) {
-      this.jdField_a_of_type_Rkk.d(localList.get(9));
+      this.jdField_a_of_type_Rbe.d(localList.get(9));
     }
-    q();
+    p();
   }
   
   private boolean b()
@@ -358,9 +362,9 @@ public class ReadInJoyDeliverUGCActivity
     if (b() != 0)
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_Rkk.a().size() - 1)
+      while (i < this.jdField_a_of_type_Rbe.a().size() - 1)
       {
-        if (!(this.jdField_a_of_type_Rkk.a().get(i) instanceof HotPicData)) {
+        if (!(this.jdField_a_of_type_Rbe.a().get(i) instanceof HotPicData)) {
           return false;
         }
         i += 1;
@@ -373,7 +377,7 @@ public class ReadInJoyDeliverUGCActivity
   {
     if ((paramObject instanceof String))
     {
-      if (ayzh.a((String)paramObject))
+      if (azru.a((String)paramObject))
       {
         this.jdField_b_of_type_JavaUtilList.add(paramInt, Integer.valueOf(2));
         return;
@@ -384,43 +388,159 @@ public class ReadInJoyDeliverUGCActivity
     this.jdField_b_of_type_JavaUtilList.add(paramInt, Integer.valueOf(2));
   }
   
-  private void d(int paramInt)
+  private String e()
   {
-    if ((paramInt < 0) || (paramInt > 8)) {}
-    Object localObject;
-    HotPicData localHotPicData;
-    do
+    int j = 1;
+    try
     {
-      return;
-      localObject = this.jdField_a_of_type_Rkk.a().get(paramInt);
-      if (!(localObject instanceof HotPicData)) {
-        break;
-      }
-      localHotPicData = (HotPicData)localObject;
-    } while (HotPicPageView.a((HotPicData)localObject) != 0);
-    avbc.a(localHotPicData.url).getAbsolutePath();
-    e(paramInt);
-    return;
-    if (((String)this.jdField_a_of_type_Rkk.a().get(paramInt)).equals(this.jdField_e_of_type_JavaLangString))
-    {
-      if (9 - b() > 0)
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("folder_status", ozs.jdField_d_of_type_Int);
+      String str1;
+      if (a().intValue() > 0)
       {
-        o();
-        oat.a(null, "", "0X8008238", "0X8008238", 0, 0, "", "", "", pha.g(), false);
-        return;
+        i = 1;
+        localJSONObject.put("topic", i);
+        String str2 = d();
+        str1 = str2;
+        if ("0".equalsIgnoreCase(str2)) {
+          str1 = "";
+        }
+        localJSONObject.put("topicid", str1);
+        localJSONObject.put("topic_num", a());
+        localJSONObject.put("sticker", raa.a(c()));
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI == null) {
+          break label202;
+        }
+        i = 1;
+        label116:
+        localJSONObject.put("location", i);
+        if (!c().contains("@")) {
+          break label207;
+        }
+        i = 1;
+        label141:
+        localJSONObject.put("at", i);
+        if (!b()) {
+          break label212;
+        }
+        i = 1;
+        label160:
+        localJSONObject.put("gif", i);
+        if (b() <= 0) {
+          break label217;
+        }
       }
-      a(1, getString(2131716991));
-      return;
+      label202:
+      label207:
+      label212:
+      label217:
+      for (int i = j;; i = 0)
+      {
+        localJSONObject.put("pic", i);
+        str1 = localJSONObject.toString();
+        return str1;
+        i = 0;
+        break;
+        i = 0;
+        break label116;
+        i = 0;
+        break label141;
+        i = 0;
+        break label160;
+      }
+      return "";
     }
-    e(paramInt);
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
   
   private void e(int paramInt)
   {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if ((this.jdField_n_of_type_Boolean) && (paramInt - this.jdField_c_of_type_Int <= 0)) {
+        break label82;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_c_of_type_Int - paramInt));
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    while (paramInt - this.jdField_c_of_type_Int > 0)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
+      }
+      this.jdField_d_of_type_Boolean = true;
+      return;
+      label82:
+      if (this.jdField_n_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#BBBBBB"));
+    }
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  private String f()
+  {
+    if ((b() == 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText()))) {
+      return "3";
+    }
+    if (((b() != 0) || (b())) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText()))) {
+      return "1";
+    }
+    if (((b() != 0) || (b())) && (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText()))) {
+      return "2";
+    }
+    return "0";
+  }
+  
+  private void f(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 8)) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_Rbe.a().get(paramInt);
+    if ((localObject instanceof HotPicData))
+    {
+      HotPicData localHotPicData = (HotPicData)localObject;
+      if (HotPicPageView.a((HotPicData)localObject) == 0)
+      {
+        avte.a(localHotPicData.url).getAbsolutePath();
+        g(paramInt);
+      }
+    }
+    for (;;)
+    {
+      raa.b();
+      return;
+      if (((String)this.jdField_a_of_type_Rbe.a().get(paramInt)).equals(this.jdField_e_of_type_JavaLangString))
+      {
+        if (9 - b() > 0)
+        {
+          n();
+          ocd.a(null, "", "0X8008238", "0X8008238", 0, 0, "", "", "", ozs.g(), false);
+        }
+        else
+        {
+          a(1, getString(2131717107));
+        }
+      }
+      else {
+        g(paramInt);
+      }
+    }
+  }
+  
+  private void g(int paramInt)
+  {
     Intent localIntent = new Intent();
     this.l = paramInt;
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_Rkk.a().iterator();
+    Iterator localIterator = this.jdField_a_of_type_Rbe.a().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -428,14 +548,14 @@ public class ReadInJoyDeliverUGCActivity
         if ((localObject instanceof String)) {
           localArrayList.add((String)localObject);
         } else if ((localObject instanceof HotPicData)) {
-          localArrayList.add(avbc.a(((HotPicData)localObject).url).getAbsolutePath());
+          localArrayList.add(avte.a(((HotPicData)localObject).url).getAbsolutePath());
         }
       }
     }
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ReadInJoyDeliverUGCActivity.class.getName());
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    localIntent.putExtra("back_btn_text", anni.a(2131711595));
+    localIntent.putExtra("back_btn_text", anzj.a(2131711704));
     localIntent.putExtra("from_readinjoy_ugc_deliver", true);
     localIntent.putExtra("keep_selected_status_after_finish", true);
     localIntent.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", paramInt);
@@ -448,39 +568,40 @@ public class ReadInJoyDeliverUGCActivity
     overridePendingTransition(2130772295, 2130772297);
   }
   
-  private void f(int paramInt)
+  private void h(int paramInt)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     long l1 = NetConnInfoCenter.getServerTimeMillis();
     long l2 = this.jdField_b_of_type_Long;
-    bctj localbctj = bctj.a(this);
+    bdmc localbdmc = bdmc.a(this);
     String str = this.app.getCurrentAccountUin();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localbctj.a(str, "actReadInJoyUGCPicture", bool, l1 - l2, 0L, localHashMap, "");
+      localbdmc.a(str, "actReadInJoyUGCPicture", bool, l1 - l2, 0L, localHashMap, "");
       return;
     }
   }
   
-  private void g(int paramInt)
+  private void i(int paramInt)
   {
-    this.jdField_a_of_type_Rkk.d(this.jdField_a_of_type_Rkk.a().get(paramInt));
+    this.jdField_a_of_type_Rbe.d(this.jdField_a_of_type_Rbe.a().get(paramInt));
     this.jdField_b_of_type_JavaUtilList.remove(paramInt);
     if (b() == 0)
     {
       a(false);
-      if (this.jdField_q_of_type_Int == 1)
+      if (this.jdField_r_of_type_Int == 1)
       {
         a(true);
         this.rightViewText.setTextColor(Color.parseColor("#BBBBBB"));
       }
     }
-    q();
+    p();
+    raa.l();
   }
   
-  private void r()
+  private void q()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -492,29 +613,29 @@ public class ReadInJoyDeliverUGCActivity
     }
   }
   
-  private void s()
+  private void r()
   {
     ThreadManager.getUIHandler().post(new ReadInJoyDeliverUGCActivity.6(this));
   }
   
-  private void t()
+  private void s()
   {
     if (this.jdField_a_of_type_Long != -1L) {
       ThreadManager.getSubThreadHandler().post(new ReadInJoyDeliverUGCActivity.7(this));
     }
   }
   
-  private void u()
+  private void t()
   {
     if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission("android.permission.CAMERA") != 0))
     {
-      requestPermissions(new rjn(this), 2000, new String[] { "android.permission.CAMERA" });
+      requestPermissions(new rah(this), 2000, new String[] { "android.permission.CAMERA" });
       return;
     }
-    p();
+    o();
   }
   
-  private void v()
+  private void u()
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
@@ -544,36 +665,36 @@ public class ReadInJoyDeliverUGCActivity
     }
   }
   
-  private void w()
+  private void v()
   {
-    ovj.a(this);
+    onw.a(this);
     this.jdField_o_of_type_Int = 1001;
     overridePendingTransition(2130771979, 2130771977);
   }
   
-  private void x()
+  private void w()
   {
     ThreadManager.executeOnFileThread(new ReadInJoyDeliverUGCActivity.11(this));
   }
   
-  private void y()
+  private void x()
   {
     this.k = 0;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity$DeliverData.a();
   }
   
-  private void z()
+  private void y()
   {
-    y();
+    x();
     Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((rjy)localIterator.next()).a = false;
+      ((ras)localIterator.next()).a = false;
     }
     localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      bdzn localbdzn = (bdzn)localIterator.next();
-      this.app.a().a(localbdzn);
+      beyg localbeyg = (beyg)localIterator.next();
+      this.app.a().a(localbeyg);
     }
     this.jdField_c_of_type_JavaUtilList.clear();
   }
@@ -582,15 +703,15 @@ public class ReadInJoyDeliverUGCActivity
   {
     this.jdField_f_of_type_Int = 178;
     super.a();
-    this.jdField_b_of_type_Biau = new biau(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView = ((ReadInJoyNinePicDeliverDynamicGridView)findViewById(2131376031));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367482));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379035));
-    int i = bmqa.o(this.app);
-    if ((!avbk.a(this.app).b()) || (i == 1) || (this.jdField_q_of_type_Int == 1)) {
+    this.jdField_b_of_type_Bjbs = new bjbs(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView = ((ReadInJoyNinePicDeliverDynamicGridView)findViewById(2131376171));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367544));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379199));
+    boolean bool = rab.d();
+    if ((!avtm.a(this.app).b()) || (!bool) || (this.jdField_r_of_type_Int == 1)) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    while (this.jdField_q_of_type_Int == 1)
+    while ((this.jdField_r_of_type_Int == 1) || (!rab.f()))
     {
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
@@ -608,37 +729,41 @@ public class ReadInJoyDeliverUGCActivity
   public void a(Editable paramEditable)
   {
     super.a(paramEditable);
-    if (b() != 0)
-    {
+    if (b() != 0) {
       a(true);
-      return;
     }
-    if (paramEditable.length() <= 0)
+    for (;;)
     {
-      a(false);
-      return;
-    }
-    if (this.jdField_q_of_type_Int == 1)
-    {
-      a(true);
-      if (b() == 0)
-      {
-        this.rightViewText.setTextColor(Color.parseColor("#BBBBBB"));
-        return;
+      if (a().intValue() < this.jdField_q_of_type_Int) {
+        raa.m();
       }
-      this.rightViewText.setTextColor(Color.parseColor("#262626"));
       return;
+      if (paramEditable.length() <= 0)
+      {
+        a(false);
+      }
+      else if (this.jdField_r_of_type_Int == 1)
+      {
+        a(true);
+        if (b() == 0) {
+          this.rightViewText.setTextColor(Color.parseColor("#BBBBBB"));
+        } else {
+          this.rightViewText.setTextColor(Color.parseColor("#262626"));
+        }
+      }
+      else
+      {
+        String str = UUID.randomUUID().toString();
+        if (rcl.a(paramEditable.toString(), str).trim().length() <= 0) {
+          a(false);
+        } else {
+          a(true);
+        }
+      }
     }
-    String str = UUID.randomUUID().toString();
-    if (rlr.a(paramEditable.toString(), str).trim().length() <= 0)
-    {
-      a(false);
-      return;
-    }
-    a(true);
   }
   
-  public void a(asbq paramasbq)
+  public void a(asre paramasre)
   {
     getActivity().getApplicationContext();
     a(true);
@@ -650,9 +775,19 @@ public class ReadInJoyDeliverUGCActivity
     {
       a(paramHotPicData);
       a(true);
+      raa.i();
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyDeliverUGCActivity", 2, "url=" + paramHotPicData.url);
       }
+    }
+  }
+  
+  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    this.jdField_q_of_type_Int = a().intValue();
+    if (paramInt3 < paramInt2) {
+      e(paramCharSequence.length());
     }
   }
   
@@ -661,216 +796,223 @@ public class ReadInJoyDeliverUGCActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 570	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 714	com/tencent/mobileqq/app/QQAppInterface:a	()Lbdzi;
+    //   1: getfield 661	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 786	com/tencent/mobileqq/app/QQAppInterface:a	()Lbeyb;
     //   7: aload_0
-    //   8: invokevirtual 832	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:getCurrentAccountUin	()Ljava/lang/String;
-    //   11: new 834	rjo
+    //   8: invokevirtual 917	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:getCurrentAccountUin	()Ljava/lang/String;
+    //   11: new 919	rai
     //   14: dup
     //   15: aload_0
-    //   16: invokespecial 835	rjo:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity;)V
-    //   19: invokevirtual 838	bdzi:a	(Ljava/lang/String;Lbdzl;)V
-    //   22: invokestatic 814	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   16: invokespecial 920	rai:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity;)V
+    //   19: invokevirtual 923	beyb:a	(Ljava/lang/String;Lbeye;)V
+    //   22: invokestatic 891	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   25: ifeq +13 -> 38
-    //   28: ldc_w 816
+    //   28: ldc_w 893
     //   31: iconst_2
-    //   32: ldc_w 840
-    //   35: invokestatic 829	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   38: aconst_null
-    //   39: ldc 101
-    //   41: ldc_w 842
-    //   44: ldc_w 842
-    //   47: iconst_0
-    //   48: iconst_0
-    //   49: aload_0
-    //   50: invokespecial 844	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:a	()I
-    //   53: invokestatic 550	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   56: aload_0
-    //   57: invokespecial 121	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	()I
-    //   60: invokestatic 417	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   63: invokevirtual 845	java/lang/Integer:toString	()Ljava/lang/String;
-    //   66: ldc 101
-    //   68: aload_0
-    //   69: invokevirtual 847	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	()Ljava/lang/String;
-    //   72: iconst_0
-    //   73: invokestatic 462	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
-    //   76: aload_0
-    //   77: invokespecial 849	com/tencent/biz/pubaccount/readinjoy/activity/ReadInJoyBaseDeliverActivity:a	()Z
-    //   80: ifne +5 -> 85
-    //   83: iconst_0
-    //   84: ireturn
-    //   85: aload_0
-    //   86: invokespecial 121	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	()I
-    //   89: ifne +167 -> 256
-    //   92: iconst_1
-    //   93: istore_1
-    //   94: aload_0
-    //   95: getfield 108	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   98: ldc_w 851
-    //   101: iload_1
-    //   102: invokevirtual 232	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   105: pop
-    //   106: aload_0
-    //   107: ldc_w 852
-    //   110: invokevirtual 854	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:c	(I)V
-    //   113: aload_0
-    //   114: iconst_1
-    //   115: putfield 434	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:u	Z
-    //   118: aload_0
-    //   119: new 65	java/util/ArrayList
-    //   122: dup
-    //   123: invokespecial 66	java/util/ArrayList:<init>	()V
-    //   126: putfield 286	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   129: aload_0
-    //   130: getfield 124	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
+    //   32: ldc_w 925
+    //   35: invokestatic 906	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: aload_0
+    //   39: invokespecial 927	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:f	()Ljava/lang/String;
+    //   42: aload_0
+    //   43: invokespecial 122	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	()I
+    //   46: aload_0
+    //   47: invokespecial 929	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:e	()Ljava/lang/String;
+    //   50: invokestatic 931	raa:a	(Ljava/lang/String;ILjava/lang/String;)V
+    //   53: aconst_null
+    //   54: ldc 102
+    //   56: ldc_w 933
+    //   59: ldc_w 933
+    //   62: iconst_0
+    //   63: iconst_0
+    //   64: aload_0
+    //   65: invokespecial 935	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:a	()I
+    //   68: invokestatic 502	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   71: aload_0
+    //   72: invokespecial 122	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	()I
+    //   75: invokestatic 419	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   78: invokevirtual 936	java/lang/Integer:toString	()Ljava/lang/String;
+    //   81: ldc 102
+    //   83: aload_0
+    //   84: invokevirtual 938	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	()Ljava/lang/String;
+    //   87: iconst_0
+    //   88: invokestatic 562	ocd:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+    //   91: aload_0
+    //   92: invokespecial 940	com/tencent/biz/pubaccount/readinjoy/activity/ReadInJoyBaseDeliverActivity:a	()Z
+    //   95: ifne +5 -> 100
+    //   98: iconst_0
+    //   99: ireturn
+    //   100: aload_0
+    //   101: invokespecial 122	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	()I
+    //   104: ifne +167 -> 271
+    //   107: iconst_1
+    //   108: istore_1
+    //   109: aload_0
+    //   110: getfield 109	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   113: ldc_w 942
+    //   116: iload_1
+    //   117: invokevirtual 233	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   120: pop
+    //   121: aload_0
+    //   122: ldc_w 943
+    //   125: invokevirtual 945	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:d	(I)V
+    //   128: aload_0
+    //   129: iconst_1
+    //   130: putfield 436	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:u	Z
     //   133: aload_0
-    //   134: getfield 570	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   137: invokevirtual 575	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   140: aload_0
-    //   141: getfield 424	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_o_of_type_Boolean	Z
+    //   134: new 66	java/util/ArrayList
+    //   137: dup
+    //   138: invokespecial 67	java/util/ArrayList:<init>	()V
+    //   141: putfield 287	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   144: aload_0
-    //   145: getfield 286	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   148: invokestatic 857	rlr:a	(Landroid/widget/EditText;Ljava/lang/String;ZLjava/util/List;)Z
-    //   151: pop
-    //   152: aload_0
-    //   153: invokestatic 559	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   156: putfield 561	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_Long	J
-    //   159: iload_1
-    //   160: iconst_1
-    //   161: if_icmpne +149 -> 310
-    //   164: aload_0
-    //   165: getfield 108	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   168: ldc_w 859
-    //   171: iconst_0
-    //   172: invokevirtual 232	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   175: pop
-    //   176: invokestatic 864	pmh:a	()Lpmh;
+    //   145: getfield 125	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
+    //   148: aload_0
+    //   149: getfield 661	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   152: invokevirtual 666	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   155: aload_0
+    //   156: getfield 426	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_o_of_type_Boolean	Z
+    //   159: aload_0
+    //   160: getfield 287	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   163: invokestatic 948	rcl:a	(Landroid/widget/EditText;Ljava/lang/String;ZLjava/util/List;)Z
+    //   166: pop
+    //   167: aload_0
+    //   168: invokestatic 650	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
+    //   171: putfield 652	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_Long	J
+    //   174: iload_1
+    //   175: iconst_1
+    //   176: if_icmpne +149 -> 325
     //   179: aload_0
-    //   180: getfield 570	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   183: invokevirtual 865	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   186: aload_0
-    //   187: getfield 246	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   190: aload_0
-    //   191: getfield 402	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   180: getfield 109	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   183: ldc_w 950
+    //   186: iconst_0
+    //   187: invokevirtual 233	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   190: pop
+    //   191: invokestatic 955	pfa:a	()Lpfa;
     //   194: aload_0
-    //   195: getfield 398	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_n_of_type_Int	I
-    //   198: aload_0
-    //   199: getfield 70	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   202: aload_0
-    //   203: invokevirtual 440	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:c	()Ljava/lang/String;
-    //   206: aconst_null
-    //   207: aload_0
-    //   208: getfield 87	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity$DeliverData	Lcom/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData;
-    //   211: invokevirtual 868	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData:b	()[I
-    //   214: aload_0
-    //   215: getfield 87	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity$DeliverData	Lcom/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData;
-    //   218: invokevirtual 870	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData:a	()[I
+    //   195: getfield 661	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   198: invokevirtual 956	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
+    //   201: aload_0
+    //   202: getfield 247	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   205: aload_0
+    //   206: getfield 404	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   209: aload_0
+    //   210: getfield 400	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_n_of_type_Int	I
+    //   213: aload_0
+    //   214: getfield 71	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   217: aload_0
+    //   218: invokevirtual 442	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:c	()Ljava/lang/String;
     //   221: aconst_null
     //   222: aload_0
-    //   223: getfield 436	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:k	I
-    //   226: aload_0
-    //   227: getfield 286	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   230: aload_0
-    //   231: getfield 466	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:w	Z
-    //   234: aload_0
-    //   235: getfield 215	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI	Lcom/tencent/mobileqq/troop/data/TroopBarPOI;
-    //   238: aload_0
-    //   239: getfield 161	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVisibleSetParam	Lcom/tencent/biz/pubaccount/readinjoy/struct/VisibleSetParam;
-    //   242: aload_0
-    //   243: getfield 584	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_q_of_type_Int	I
-    //   246: invokevirtual 873	pmh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/util/List;Ljava/lang/String;[Ljava/lang/String;[I[I[Ljava/lang/String;ILjava/util/ArrayList;ZLcom/tencent/mobileqq/troop/data/TroopBarPOI;Lcom/tencent/biz/pubaccount/readinjoy/struct/VisibleSetParam;I)V
+    //   223: getfield 88	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity$DeliverData	Lcom/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData;
+    //   226: invokevirtual 959	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData:b	()[I
+    //   229: aload_0
+    //   230: getfield 88	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity$DeliverData	Lcom/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData;
+    //   233: invokevirtual 961	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity$DeliverData:a	()[I
+    //   236: aconst_null
+    //   237: aload_0
+    //   238: getfield 438	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:k	I
+    //   241: aload_0
+    //   242: getfield 287	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   245: aload_0
+    //   246: getfield 446	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:w	Z
     //   249: aload_0
-    //   250: iconst_0
-    //   251: putfield 434	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:u	Z
-    //   254: iconst_1
-    //   255: ireturn
-    //   256: aload_0
-    //   257: getfield 875	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_m_of_type_Boolean	Z
-    //   260: ifne +150 -> 410
-    //   263: aload_0
-    //   264: invokestatic 880	bgnt:h	(Landroid/content/Context;)Z
-    //   267: ifne +143 -> 410
-    //   270: aload_0
-    //   271: invokevirtual 882	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:l	()V
-    //   274: iconst_0
-    //   275: ireturn
-    //   276: astore_2
-    //   277: ldc_w 816
-    //   280: iconst_2
-    //   281: new 818	java/lang/StringBuilder
-    //   284: dup
-    //   285: invokespecial 819	java/lang/StringBuilder:<init>	()V
-    //   288: ldc_w 884
-    //   291: invokevirtual 825	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   294: aload_2
-    //   295: invokevirtual 885	java/lang/Exception:toString	()Ljava/lang/String;
-    //   298: invokevirtual 825	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   301: invokevirtual 826	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   304: invokestatic 829	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   307: goto -201 -> 106
-    //   310: aload_0
-    //   311: getfield 297	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_Rkk	Lrkk;
-    //   314: invokevirtual 322	rkk:a	()Ljava/util/List;
-    //   317: astore_2
-    //   318: iconst_0
-    //   319: istore_1
-    //   320: aload_2
-    //   321: invokeinterface 372 1 0
-    //   326: astore_2
-    //   327: aload_2
-    //   328: invokeinterface 377 1 0
-    //   333: ifeq -79 -> 254
-    //   336: aload_2
-    //   337: invokeinterface 380 1 0
-    //   342: astore_3
-    //   343: aload_0
-    //   344: getfield 434	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:u	Z
-    //   347: ifeq +57 -> 404
-    //   350: invokestatic 814	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   353: ifeq +30 -> 383
-    //   356: ldc_w 816
-    //   359: iconst_2
-    //   360: new 818	java/lang/StringBuilder
-    //   363: dup
-    //   364: invokespecial 819	java/lang/StringBuilder:<init>	()V
-    //   367: ldc_w 887
-    //   370: invokevirtual 825	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: iload_1
-    //   374: invokevirtual 890	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   377: invokevirtual 826	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   380: invokestatic 829	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   383: aload_0
-    //   384: iload_1
-    //   385: invokespecial 892	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:a	(I)Z
-    //   388: ifeq +9 -> 397
-    //   391: aload_0
-    //   392: aload_3
-    //   393: iload_1
-    //   394: invokespecial 894	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:a	(Ljava/lang/Object;I)V
-    //   397: iload_1
-    //   398: iconst_1
-    //   399: iadd
-    //   400: istore_1
-    //   401: goto -74 -> 327
-    //   404: iconst_1
-    //   405: ireturn
-    //   406: astore_2
-    //   407: goto -231 -> 176
-    //   410: iconst_2
-    //   411: istore_1
-    //   412: goto -318 -> 94
+    //   250: getfield 216	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI	Lcom/tencent/mobileqq/troop/data/TroopBarPOI;
+    //   253: aload_0
+    //   254: getfield 162	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVisibleSetParam	Lcom/tencent/biz/pubaccount/readinjoy/struct/VisibleSetParam;
+    //   257: aload_0
+    //   258: getfield 566	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_r_of_type_Int	I
+    //   261: invokevirtual 964	pfa:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/util/List;Ljava/lang/String;[Ljava/lang/String;[I[I[Ljava/lang/String;ILjava/util/ArrayList;ZLcom/tencent/mobileqq/troop/data/TroopBarPOI;Lcom/tencent/biz/pubaccount/readinjoy/struct/VisibleSetParam;I)V
+    //   264: aload_0
+    //   265: iconst_0
+    //   266: putfield 436	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:u	Z
+    //   269: iconst_1
+    //   270: ireturn
+    //   271: aload_0
+    //   272: getfield 966	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_m_of_type_Boolean	Z
+    //   275: ifne +150 -> 425
+    //   278: aload_0
+    //   279: invokestatic 971	bhnv:h	(Landroid/content/Context;)Z
+    //   282: ifne +143 -> 425
+    //   285: aload_0
+    //   286: invokevirtual 973	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:k	()V
+    //   289: iconst_0
+    //   290: ireturn
+    //   291: astore_2
+    //   292: ldc_w 893
+    //   295: iconst_2
+    //   296: new 895	java/lang/StringBuilder
+    //   299: dup
+    //   300: invokespecial 896	java/lang/StringBuilder:<init>	()V
+    //   303: ldc_w 975
+    //   306: invokevirtual 902	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: aload_2
+    //   310: invokevirtual 976	java/lang/Exception:toString	()Ljava/lang/String;
+    //   313: invokevirtual 902	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: invokevirtual 903	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   319: invokestatic 906	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   322: goto -201 -> 121
+    //   325: aload_0
+    //   326: getfield 298	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_Rbe	Lrbe;
+    //   329: invokevirtual 324	rbe:a	()Ljava/util/List;
+    //   332: astore_2
+    //   333: iconst_0
+    //   334: istore_1
+    //   335: aload_2
+    //   336: invokeinterface 374 1 0
+    //   341: astore_2
+    //   342: aload_2
+    //   343: invokeinterface 379 1 0
+    //   348: ifeq -79 -> 269
+    //   351: aload_2
+    //   352: invokeinterface 382 1 0
+    //   357: astore_3
+    //   358: aload_0
+    //   359: getfield 436	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:u	Z
+    //   362: ifeq +57 -> 419
+    //   365: invokestatic 891	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   368: ifeq +30 -> 398
+    //   371: ldc_w 893
+    //   374: iconst_2
+    //   375: new 895	java/lang/StringBuilder
+    //   378: dup
+    //   379: invokespecial 896	java/lang/StringBuilder:<init>	()V
+    //   382: ldc_w 978
+    //   385: invokevirtual 902	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   388: iload_1
+    //   389: invokevirtual 981	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   392: invokevirtual 903	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   395: invokestatic 906	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   398: aload_0
+    //   399: iload_1
+    //   400: invokespecial 983	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:a	(I)Z
+    //   403: ifeq +9 -> 412
+    //   406: aload_0
+    //   407: aload_3
+    //   408: iload_1
+    //   409: invokespecial 985	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:a	(Ljava/lang/Object;I)V
+    //   412: iload_1
+    //   413: iconst_1
+    //   414: iadd
+    //   415: istore_1
+    //   416: goto -74 -> 342
+    //   419: iconst_1
+    //   420: ireturn
+    //   421: astore_2
+    //   422: goto -231 -> 191
+    //   425: iconst_2
+    //   426: istore_1
+    //   427: goto -318 -> 109
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	415	0	this	ReadInJoyDeliverUGCActivity
-    //   93	319	1	i	int
-    //   276	19	2	localException1	java.lang.Exception
-    //   317	20	2	localObject1	Object
-    //   406	1	2	localException2	java.lang.Exception
-    //   342	51	3	localObject2	Object
+    //   0	430	0	this	ReadInJoyDeliverUGCActivity
+    //   108	319	1	i	int
+    //   291	19	2	localException1	java.lang.Exception
+    //   332	20	2	localObject1	Object
+    //   421	1	2	localException2	java.lang.Exception
+    //   357	51	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   94	106	276	java/lang/Exception
-    //   164	176	406	java/lang/Exception
+    //   109	121	291	java/lang/Exception
+    //   179	191	421	java/lang/Exception
   }
   
   /* Error */
@@ -883,61 +1025,61 @@ public class ReadInJoyDeliverUGCActivity
     //   3: iconst_0
     //   4: aload_1
     //   5: bipush 46
-    //   7: invokevirtual 900	java/lang/String:indexOf	(I)I
-    //   10: invokevirtual 904	java/lang/String:substring	(II)Ljava/lang/String;
+    //   7: invokevirtual 991	java/lang/String:indexOf	(I)I
+    //   10: invokevirtual 995	java/lang/String:substring	(II)Ljava/lang/String;
     //   13: astore 5
     //   15: aload_1
     //   16: aload_1
     //   17: bipush 46
-    //   19: invokevirtual 900	java/lang/String:indexOf	(I)I
-    //   22: invokevirtual 906	java/lang/String:substring	(I)Ljava/lang/String;
+    //   19: invokevirtual 991	java/lang/String:indexOf	(I)I
+    //   22: invokevirtual 997	java/lang/String:substring	(I)Ljava/lang/String;
     //   25: astore 4
-    //   27: new 818	java/lang/StringBuilder
+    //   27: new 895	java/lang/StringBuilder
     //   30: dup
-    //   31: invokespecial 819	java/lang/StringBuilder:<init>	()V
+    //   31: invokespecial 896	java/lang/StringBuilder:<init>	()V
     //   34: aload 5
-    //   36: invokevirtual 825	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: ldc_w 908
-    //   42: invokevirtual 825	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 826	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokevirtual 902	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: ldc_w 999
+    //   42: invokevirtual 902	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 903	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   48: astore 5
-    //   50: new 818	java/lang/StringBuilder
+    //   50: new 895	java/lang/StringBuilder
     //   53: dup
-    //   54: invokespecial 819	java/lang/StringBuilder:<init>	()V
+    //   54: invokespecial 896	java/lang/StringBuilder:<init>	()V
     //   57: aload 5
-    //   59: invokevirtual 825	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 902	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: aload 4
-    //   64: invokevirtual 825	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 826	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokevirtual 902	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 903	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: astore 5
-    //   72: new 254	java/io/File
+    //   72: new 255	java/io/File
     //   75: dup
     //   76: aload 5
-    //   78: invokespecial 255	java/io/File:<init>	(Ljava/lang/String;)V
-    //   81: invokevirtual 258	java/io/File:exists	()Z
+    //   78: invokespecial 256	java/io/File:<init>	(Ljava/lang/String;)V
+    //   81: invokevirtual 259	java/io/File:exists	()Z
     //   84: ifeq +12 -> 96
     //   87: aload_0
     //   88: aload 5
-    //   90: invokevirtual 329	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   90: invokevirtual 331	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:b	(Ljava/lang/String;)Ljava/lang/String;
     //   93: astore_3
     //   94: aload_3
     //   95: areturn
-    //   96: new 910	java/io/FileInputStream
+    //   96: new 1001	java/io/FileInputStream
     //   99: dup
     //   100: aload_1
-    //   101: invokespecial 911	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   101: invokespecial 1002	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   104: astore 4
-    //   106: new 913	java/io/FileOutputStream
+    //   106: new 1004	java/io/FileOutputStream
     //   109: dup
     //   110: aload 5
-    //   112: invokespecial 914	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   112: invokespecial 1005	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   115: astore_1
     //   116: sipush 1024
     //   119: newarray byte
     //   121: astore_3
     //   122: aload 4
     //   124: aload_3
-    //   125: invokevirtual 920	java/io/InputStream:read	([B)I
+    //   125: invokevirtual 1011	java/io/InputStream:read	([B)I
     //   128: istore_2
     //   129: iload_2
     //   130: ifle +53 -> 183
@@ -945,60 +1087,60 @@ public class ReadInJoyDeliverUGCActivity
     //   134: aload_3
     //   135: iconst_0
     //   136: iload_2
-    //   137: invokevirtual 926	java/io/OutputStream:write	([BII)V
+    //   137: invokevirtual 1017	java/io/OutputStream:write	([BII)V
     //   140: goto -18 -> 122
     //   143: astore_3
     //   144: aload 4
     //   146: astore_3
     //   147: aload_0
-    //   148: getfield 103	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   148: getfield 104	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
     //   151: astore 4
     //   153: aload_3
     //   154: ifnull +7 -> 161
     //   157: aload_3
-    //   158: invokevirtual 929	java/io/InputStream:close	()V
+    //   158: invokevirtual 1020	java/io/InputStream:close	()V
     //   161: aload 4
     //   163: astore_3
     //   164: aload_1
     //   165: ifnull -71 -> 94
     //   168: aload_1
-    //   169: invokevirtual 930	java/io/OutputStream:close	()V
+    //   169: invokevirtual 1021	java/io/OutputStream:close	()V
     //   172: aload 4
     //   174: areturn
     //   175: astore_1
     //   176: aload_1
-    //   177: invokevirtual 931	java/io/IOException:printStackTrace	()V
+    //   177: invokevirtual 1022	java/io/IOException:printStackTrace	()V
     //   180: aload 4
     //   182: areturn
     //   183: aload_0
-    //   184: getfield 68	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   184: getfield 69	com/tencent/biz/pubaccount/readinjoy/ugc/ReadInJoyDeliverUGCActivity:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   187: aload 5
-    //   189: invokeinterface 420 2 0
+    //   189: invokeinterface 422 2 0
     //   194: pop
     //   195: aload 4
     //   197: ifnull +8 -> 205
     //   200: aload 4
-    //   202: invokevirtual 929	java/io/InputStream:close	()V
+    //   202: invokevirtual 1020	java/io/InputStream:close	()V
     //   205: aload 5
     //   207: astore_3
     //   208: aload_1
     //   209: ifnull -115 -> 94
     //   212: aload_1
-    //   213: invokevirtual 930	java/io/OutputStream:close	()V
+    //   213: invokevirtual 1021	java/io/OutputStream:close	()V
     //   216: aload 5
     //   218: areturn
     //   219: astore_1
     //   220: aload_1
-    //   221: invokevirtual 931	java/io/IOException:printStackTrace	()V
+    //   221: invokevirtual 1022	java/io/IOException:printStackTrace	()V
     //   224: aload 5
     //   226: areturn
     //   227: astore_3
     //   228: aload_3
-    //   229: invokevirtual 931	java/io/IOException:printStackTrace	()V
+    //   229: invokevirtual 1022	java/io/IOException:printStackTrace	()V
     //   232: goto -27 -> 205
     //   235: astore_3
     //   236: aload_3
-    //   237: invokevirtual 931	java/io/IOException:printStackTrace	()V
+    //   237: invokevirtual 1022	java/io/IOException:printStackTrace	()V
     //   240: goto -79 -> 161
     //   243: astore_3
     //   244: aconst_null
@@ -1008,20 +1150,20 @@ public class ReadInJoyDeliverUGCActivity
     //   249: aload 4
     //   251: ifnull +8 -> 259
     //   254: aload 4
-    //   256: invokevirtual 929	java/io/InputStream:close	()V
+    //   256: invokevirtual 1020	java/io/InputStream:close	()V
     //   259: aload_1
     //   260: ifnull +7 -> 267
     //   263: aload_1
-    //   264: invokevirtual 930	java/io/OutputStream:close	()V
+    //   264: invokevirtual 1021	java/io/OutputStream:close	()V
     //   267: aload_3
     //   268: athrow
     //   269: astore 4
     //   271: aload 4
-    //   273: invokevirtual 931	java/io/IOException:printStackTrace	()V
+    //   273: invokevirtual 1022	java/io/IOException:printStackTrace	()V
     //   276: goto -17 -> 259
     //   279: astore_1
     //   280: aload_1
-    //   281: invokevirtual 931	java/io/IOException:printStackTrace	()V
+    //   281: invokevirtual 1022	java/io/IOException:printStackTrace	()V
     //   284: goto -17 -> 267
     //   287: astore_3
     //   288: aconst_null
@@ -1096,13 +1238,13 @@ public class ReadInJoyDeliverUGCActivity
     this.jdField_i_of_type_Boolean = getIntent().getBooleanExtra("support_linkify", true);
     super.b();
     this.jdField_d_of_type_JavaLangString = "0X800865D";
-    this.jdField_a_of_type_Rkk = new rkk(getApplicationContext(), 3);
-    this.jdField_a_of_type_Rkk.a(new rjm(this));
-    this.jdField_a_of_type_Rkk.a(new rjr(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.setOnItemLongClickListener(new rjs(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.setOnDragListener(new rjt(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.setAdapter(this.jdField_a_of_type_Rkk);
-    q();
+    this.jdField_a_of_type_Rbe = new rbe(getApplicationContext(), 3);
+    this.jdField_a_of_type_Rbe.a(new rag(this));
+    this.jdField_a_of_type_Rbe.a(new ral(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.setOnItemLongClickListener(new ram(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.setOnDragListener(new ran(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.setAdapter(this.jdField_a_of_type_Rbe);
+    p();
     this.jdField_f_of_type_JavaLangString = getIntent().getStringExtra("arg_topic_id");
     this.jdField_g_of_type_JavaLangString = getIntent().getStringExtra("arg_topic_name");
     this.jdField_n_of_type_Int = getIntent().getIntExtra("arg_ad_tag", 0);
@@ -1110,7 +1252,7 @@ public class ReadInJoyDeliverUGCActivity
     this.w = getIntent().getBooleanExtra("is_from_dian_dian", false);
     this.x = getIntent().getBooleanExtra("is_from_kan_dian", false);
     this.y = getIntent().getBooleanExtra("is_from_poly_topic", false);
-    pmk.a().a(this.jdField_a_of_type_Pmn);
+    pfd.a().a(this.jdField_a_of_type_Pfh);
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyDeliverUGCActivity", 2, "initData mTopicId=" + this.jdField_f_of_type_JavaLangString + ", mTopicName=" + this.jdField_g_of_type_JavaLangString + ", mAdTag=" + this.jdField_n_of_type_Int);
     }
@@ -1125,34 +1267,67 @@ public class ReadInJoyDeliverUGCActivity
     label421:
     for (String str2 = "1";; str2 = "2")
     {
-      oat.a(null, "", "0X8008237", "0X8008237", 0, 0, "", str1, str2, pha.g(), false);
-      if (bmqa.p(this.app) == 0) {
+      ocd.a(null, "", "0X8008237", "0X8008237", 0, 0, "", str1, str2, ozs.g(), false);
+      if (bnrf.n(this.app) == 0) {
         bool = true;
       }
       this.jdField_g_of_type_Boolean = bool;
       if ((!this.jdField_g_of_type_Boolean) && (this.jdField_b_of_type_AndroidWidgetImageView != null)) {
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      r();
+      q();
       return;
       str1 = String.valueOf(this.jdField_f_of_type_JavaLangString);
       break;
     }
   }
   
+  public void b(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.b(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    if (!this.z)
+    {
+      raa.a();
+      this.z = true;
+    }
+    String str = paramCharSequence.toString().substring(paramInt1, paramInt1 + 1);
+    if ((this.jdField_g_of_type_Boolean) && (str.equals("@"))) {
+      raa.c("2");
+    }
+    if (raa.a(paramCharSequence.toString()))
+    {
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "onTextChanged | insert Emoji");
+      raa.f();
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    raa.j();
+  }
+  
   public void c(int paramInt)
   {
-    this.jdField_b_of_type_Biau = new biau(this, super.getTitleBarHeight());
-    this.jdField_b_of_type_Biau.setOnDismissListener(new rjq(this));
-    this.jdField_b_of_type_Biau.c(paramInt);
-    if (!this.jdField_b_of_type_Biau.isShowing()) {
-      this.jdField_b_of_type_Biau.show();
-    }
+    this.jdField_i_of_type_Int = 1;
+    super.c(paramInt);
+    raa.b(String.valueOf(paramInt));
+    ocd.a(null, "", "0X800957A", "0X800957A", 0, 0, "", "", "", ozs.g(), false);
   }
   
   public void d()
   {
     super.d();
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_b_of_type_Bjbs = new bjbs(this, super.getTitleBarHeight());
+    this.jdField_b_of_type_Bjbs.setOnDismissListener(new rak(this));
+    this.jdField_b_of_type_Bjbs.c(paramInt);
+    if (!this.jdField_b_of_type_Bjbs.isShowing()) {
+      this.jdField_b_of_type_Bjbs.show();
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -1169,7 +1344,7 @@ public class ReadInJoyDeliverUGCActivity
       if (!this.jdField_q_of_type_Boolean) {
         break label105;
       }
-      d(this.jdField_m_of_type_Int);
+      f(this.jdField_m_of_type_Int);
       this.jdField_q_of_type_Boolean = false;
     }
     for (;;)
@@ -1185,25 +1360,25 @@ public class ReadInJoyDeliverUGCActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560143);
-    bcls.a(this.app, BaseApplicationImpl.getContext());
+    super.setContentView(2131560155);
+    bdek.a(this.app, BaseApplicationImpl.getContext());
     overridePendingTransition(2130771979, 2130771977);
     if (isInMultiWindow())
     {
-      QQToast.a(this, anni.a(2131711564), 0).a();
+      QQToast.a(this, anzj.a(2131711673), 0).a();
       finish();
       return true;
     }
-    this.jdField_q_of_type_Int = getIntent().getIntExtra("ugcPushType", 0);
-    if (this.jdField_q_of_type_Int == 1) {
-      a(2131716987);
+    this.jdField_r_of_type_Int = getIntent().getIntExtra("ugcPushType", 0);
+    if (this.jdField_r_of_type_Int == 1) {
+      a(2131717103);
     }
     for (;;)
     {
       a();
       b();
       return true;
-      a(2131716996);
+      a(2131717112);
     }
   }
   
@@ -1212,12 +1387,12 @@ public class ReadInJoyDeliverUGCActivity
     Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      rjy localrjy = (rjy)localIterator.next();
-      this.app.a().b(localrjy);
+      ras localras = (ras)localIterator.next();
+      this.app.a().b(localras);
       this.jdField_c_of_type_JavaUtilList.clear();
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    pmk.a().b(this.jdField_a_of_type_Pmn);
+    pfd.a().b(this.jdField_a_of_type_Pfh);
     super.doOnDestroy();
   }
   
@@ -1230,7 +1405,7 @@ public class ReadInJoyDeliverUGCActivity
       if (!TextUtils.isEmpty(str))
       {
         this.jdField_b_of_type_JavaUtilList.remove(this.l);
-        this.jdField_a_of_type_Rkk.d(this.jdField_a_of_type_Rkk.a().get(this.l));
+        this.jdField_a_of_type_Rbe.d(this.jdField_a_of_type_Rbe.a().get(this.l));
         b(str, this.l);
         this.jdField_e_of_type_JavaUtilList.add(str);
       }
@@ -1272,7 +1447,7 @@ public class ReadInJoyDeliverUGCActivity
       for (;;)
       {
         this.s = true;
-        oat.a(null, "", "0X800823A", "0X800823A", 0, 0, String.valueOf(i), "", "", pha.g(), false);
+        ocd.a(null, "", "0X800823A", "0X800823A", 0, 0, String.valueOf(i), "", "", ozs.g(), false);
         break;
         paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
         break label217;
@@ -1293,6 +1468,7 @@ public class ReadInJoyDeliverUGCActivity
   {
     super.doOnPostResume();
     AbstractGifImage.resumeAll();
+    raa.a("：");
   }
   
   public void doOnSaveInstanceState(Bundle paramBundle)
@@ -1303,7 +1479,13 @@ public class ReadInJoyDeliverUGCActivity
   public void e()
   {
     super.e();
-    oat.a(null, "", "0X800823E", "0X800823E", 0, 0, "" + a(), "", "", pha.g(), false);
+    ocd.a(null, "", "0X800823E", "0X800823E", 0, 0, "" + a(), "", "", ozs.g(), false);
+  }
+  
+  public void f()
+  {
+    super.f();
+    raa.c("1");
   }
   
   public void finish()
@@ -1321,79 +1503,82 @@ public class ReadInJoyDeliverUGCActivity
   
   public void g()
   {
-    this.jdField_i_of_type_Int = 1;
-    super.g();
-    oat.a(null, "", "0X800957A", "0X800957A", 0, 0, "", "", "", pha.g(), false);
-  }
-  
-  public void h()
-  {
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyDeliverUGCActivity", 2, "onEmotionBtn!");
     }
-    oat.a(null, "", "0X800823F", "0X800823F", 0, 0, "", "", "", pha.g(), false);
-    super.h();
+    raa.e();
+    ocd.a(null, "", "0X800823F", "0X800823F", 0, 0, "", "", "", ozs.g(), false);
+    super.g();
+  }
+  
+  public void i()
+  {
+    ocd.a(null, "", "0X800823D", "0X800823D", 0, 0, "", "", "", a(1), false);
+    ThreadManager.getSubThreadHandler().post(new ReadInJoyDeliverUGCActivity.13(this));
   }
   
   public void j()
   {
-    oat.a(null, "", "0X800823D", "0X800823D", 0, 0, "", "", "", a(1), false);
-    ThreadManager.getSubThreadHandler().post(new ReadInJoyDeliverUGCActivity.13(this));
-  }
-  
-  public void k()
-  {
-    oat.a(null, "", "0X800823D", "0X800823D", 0, 0, "", "", "", a(2), false);
+    ocd.a(null, "", "0X800823D", "0X800823D", 0, 0, "", "", "", a(2), false);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem$ReadInJoyDraftboxContent != null) {
       ThreadManager.getSubThreadHandler().post(new ReadInJoyDeliverUGCActivity.12(this));
     }
     for (;;)
     {
-      x();
+      w();
       finish();
       return;
-      t();
+      s();
     }
   }
   
-  public void m()
+  public void l()
   {
-    if ((this.jdField_b_of_type_Biau != null) && (this.jdField_b_of_type_Biau.isShowing())) {
-      this.jdField_b_of_type_Biau.dismiss();
+    if ((this.jdField_b_of_type_Bjbs != null) && (this.jdField_b_of_type_Bjbs.isShowing())) {
+      this.jdField_b_of_type_Bjbs.dismiss();
+    }
+  }
+  
+  protected void m()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "onGifBtn!");
+    }
+    if (this.jdField_a_of_type_Int == 3) {
+      b(1);
+    }
+    for (;;)
+    {
+      raa.h();
+      return;
+      b(3);
+      ocd.a(null, "", "0X8008449", "0X8008449", 0, 0, "", "", "", ozs.g(), false);
     }
   }
   
   protected void n()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "onGifBtn!");
-    }
-    if (this.jdField_a_of_type_Int == 3)
+    if (this.jdField_c_of_type_Blir == null)
     {
-      b(1);
-      return;
+      this.jdField_c_of_type_Blir = ((blir)blji.a(this, null));
+      this.jdField_c_of_type_Blir.a(2131717102, 5);
+      this.jdField_c_of_type_Blir.a(2131717104, 5);
+      this.jdField_c_of_type_Blir.c(2131690580);
+      this.jdField_c_of_type_Blir.setOnDismissListener(new rao(this));
+      this.jdField_c_of_type_Blir.a(new rap(this));
     }
-    b(3);
-    oat.a(null, "", "0X8008449", "0X8008449", 0, 0, "", "", "", pha.g(), false);
-  }
-  
-  protected void o()
-  {
-    if (this.jdField_c_of_type_Bkho == null)
-    {
-      this.jdField_c_of_type_Bkho = ((bkho)bkif.a(this, null));
-      this.jdField_c_of_type_Bkho.a(2131716986, 5);
-      this.jdField_c_of_type_Bkho.a(2131716988, 5);
-      this.jdField_c_of_type_Bkho.c(2131690582);
-      this.jdField_c_of_type_Bkho.setOnDismissListener(new rju(this));
-      this.jdField_c_of_type_Bkho.a(new rjv(this));
-    }
-    if (!this.jdField_c_of_type_Bkho.isShowing())
+    if (!this.jdField_c_of_type_Blir.isShowing())
     {
       this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      this.r = false;
-      this.jdField_c_of_type_Bkho.show();
+      this.jdField_r_of_type_Boolean = false;
+      this.jdField_c_of_type_Blir.show();
     }
+  }
+  
+  public void o()
+  {
+    v();
+    ocd.a(null, "", "0X800823A", "0X800823A", 0, 0, "", "", "", ozs.g(), false);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -1403,7 +1588,7 @@ public class ReadInJoyDeliverUGCActivity
     {
       paramInt1 = paramIntent.getIntExtra("PhotoConst.readinjoy_delete_pic_position", -1);
       if (paramInt1 != -1) {
-        g(paramInt1);
+        i(paramInt1);
       }
       this.jdField_b_of_type_Int = 0;
     }
@@ -1416,9 +1601,9 @@ public class ReadInJoyDeliverUGCActivity
       b(0);
       return true;
     }
-    if (((this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString().trim().length() > 0) || (this.jdField_a_of_type_Rkk.a().size() > 1)) && (!this.t))
+    if (((this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString().trim().length() > 0) || (this.jdField_a_of_type_Rbe.a().size() > 1)) && (!this.t))
     {
-      i();
+      h();
       return true;
     }
     return super.onBackEvent();
@@ -1435,21 +1620,21 @@ public class ReadInJoyDeliverUGCActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      n();
+      m();
       continue;
       if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3)) {
         b(0);
       }
-      if (((this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString().trim().length() > 0) || (this.jdField_a_of_type_Rkk.a().size() > 1)) && (!this.t))
+      if (((this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString().trim().length() > 0) || (this.jdField_a_of_type_Rbe.a().size() > 1)) && (!this.t))
       {
-        i();
+        h();
       }
       else
       {
         finish();
         continue;
-        if ((this.jdField_q_of_type_Int == 1) && (b() == 0)) {
-          QQToast.a(this, 1, anni.a(2131711691), 0).a();
+        if ((this.jdField_r_of_type_Int == 1) && (b() == 0)) {
+          QQToast.a(this, 1, anzj.a(2131711800), 0).a();
         } else {
           a();
         }
@@ -1472,22 +1657,16 @@ public class ReadInJoyDeliverUGCActivity
   
   public void p()
   {
-    w();
-    oat.a(null, "", "0X800823A", "0X800823A", 0, 0, "", "", "", pha.g(), false);
-  }
-  
-  public void q()
-  {
-    List localList = this.jdField_a_of_type_Rkk.a();
+    List localList = this.jdField_a_of_type_Rbe.a();
     if (localList.size() == 0) {
-      this.jdField_a_of_type_Rkk.c(this.jdField_e_of_type_JavaLangString);
+      this.jdField_a_of_type_Rbe.c(this.jdField_e_of_type_JavaLangString);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Rkk.notifyDataSetChanged();
+      this.jdField_a_of_type_Rbe.notifyDataSetChanged();
       return;
       if ((localList.size() < 9) && (!localList.get(localList.size() - 1).equals(this.jdField_e_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Rkk.c(this.jdField_e_of_type_JavaLangString);
+        this.jdField_a_of_type_Rbe.c(this.jdField_e_of_type_JavaLangString);
       }
     }
   }

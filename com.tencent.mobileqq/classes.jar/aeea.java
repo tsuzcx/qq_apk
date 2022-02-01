@@ -1,65 +1,31 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.mobileqq.widget.QQBlurView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aeea
-  implements View.OnClickListener
+  implements bjhv
 {
-  public aeea(EmosmActivity paramEmosmActivity) {}
+  public aeea(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, atqx paramatqx) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (!this.a.jdField_b_of_type_Boolean)
+    if (paramInt == 2)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691932);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
-      this.a.jdField_a_of_type_Arrz.a(true);
-      this.a.jdField_b_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Arrz.notifyDataSetChanged();
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      EmosmActivity.a(this.a).setVisibility(0);
-      EmosmActivity.a(this.a).setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.a.setTitle(String.format(this.a.getResources().getString(2131691931), new Object[] { Integer.valueOf(0) }));
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, bgtn.a(44.0F));
-      bcst.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
-      if (this.a.jdField_b_of_type_Int == 1) {
-        bcst.b(this.a.app, "dc00898", "", "", "0X800AB0F", "0X800AB0F", 0, 0, "", "", "", "");
-      }
-    }
-    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
-      for (;;)
+      auna.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692445));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        this.a.a(this.a.jdField_b_of_type_Boolean);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        bcst.b(this.a.app, "dc00898", "", "", "0X800AB16", "0X800AB16", 0, 0, "", "", "", "");
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bhmi.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Atqx.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Atqx.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
       }
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691930);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
-    this.a.jdField_a_of_type_Arrz.a(false);
-    this.a.f();
-    this.a.jdField_b_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Arrz.notifyDataSetChanged();
-    this.a.jdField_a_of_type_Arrz.a();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    EmosmActivity.a(this.a).setVisibility(8);
-    EmosmActivity.a(this.a).setVisibility(8);
-    if (this.a.jdField_b_of_type_Int == 2) {
-      this.a.setTitle(2131691734);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, 0);
-      break;
-      this.a.setTitle(2131691939);
     }
   }
 }

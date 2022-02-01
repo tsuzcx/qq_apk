@@ -2,7 +2,7 @@ package com.tencent.mobileqq.data;
 
 import android.content.Context;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import org.json.JSONObject;
@@ -27,9 +27,9 @@ public class TencentDocData
   public String peerTips;
   public long sendUin;
   public int serviceId = 95;
-  public String sourceAction = anni.a(2131713522);
-  public String sourceName = anni.a(2131713518);
-  public String summary = anni.a(2131713526);
+  public String sourceAction = anzj.a(2131713631);
+  public String sourceName = anzj.a(2131713627);
+  public String summary = anzj.a(2131713635);
   public String title;
   public String url;
   
@@ -86,7 +86,7 @@ public class TencentDocData
   
   public String getBriefDes(Context paramContext)
   {
-    return paramContext.getString(2131692346, new Object[] { getTitle() });
+    return paramContext.getString(2131692351, new Object[] { getTitle() });
   }
   
   public String getTitle()

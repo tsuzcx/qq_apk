@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import akmk;
 
-class AvatarPendantActivity$10$1
+public class AvatarPendantActivity$10$1
   implements Runnable
 {
-  AvatarPendantActivity$10$1(AvatarPendantActivity.10 param10, Bitmap paramBitmap) {}
+  public AvatarPendantActivity$10$1(akmk paramakmk) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$10.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setStaticAvatar(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$10.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.a.a.c();
   }
 }
 

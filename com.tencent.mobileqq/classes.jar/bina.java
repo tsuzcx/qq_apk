@@ -1,10 +1,15 @@
-public abstract interface bina
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bina
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  bina(bimz parambimz) {}
   
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

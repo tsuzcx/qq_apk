@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jubao;
 
 import android.support.annotation.NonNull;
-import bbzj;
+import bcsa;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.mini.sdk.JsonORM;
 import com.tencent.mobileqq.mini.sdk.JsonORM.Column;
@@ -28,7 +28,7 @@ public class JubaoMsgData
       localJubaoMsgData.msgSeq = ((int)paramMessageRecord.shmsgseq);
       return localJubaoMsgData;
     }
-    int i = bbzj.b(paramMessageRecord.msgUid);
+    int i = bcsa.b(paramMessageRecord.msgUid);
     localJubaoMsgData.msgSeq = (0xFFFF & (short)(int)paramMessageRecord.shmsgseq);
     localJubaoMsgData.msgTime = ((int)paramMessageRecord.time);
     localJubaoMsgData.msgRandom = i;

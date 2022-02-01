@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:paddingBottom="11.5dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/co0" />
-    <include layout="@layout/co1" />
-    <include layout="@layout/co3" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/mvz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/mvx" android:background="@drawable/gga" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/ntc" android:background="@drawable/gg_" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+</FrameLayout>

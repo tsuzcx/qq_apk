@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.magicface.model;
 
-import awfz;
+import awyr;
 
 public class MagicfaceXBigDecoder$1
   implements Runnable
 {
-  public MagicfaceXBigDecoder$1(awfz paramawfz) {}
+  public MagicfaceXBigDecoder$1(awyr paramawyr) {}
   
   /* Error */
   public void run()
@@ -16,64 +16,64 @@ public class MagicfaceXBigDecoder$1
     //   2: lconst_0
     //   3: lstore 5
     //   5: aload_0
-    //   6: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   9: getfield 27	awfz:jdField_a_of_type_Boolean	Z
+    //   6: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   9: getfield 27	awyr:jdField_a_of_type_Boolean	Z
     //   12: ifeq +573 -> 585
     //   15: invokestatic 33	java/lang/System:currentTimeMillis	()J
     //   18: lstore_3
     //   19: aload_0
-    //   20: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   20: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   23: aload_0
-    //   24: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   27: getfield 36	awfz:jdField_a_of_type_ArrayOfByte	[B
+    //   24: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   27: getfield 36	awyr:jdField_a_of_type_ArrayOfByte	[B
     //   30: aload_0
-    //   31: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   34: getfield 40	awfz:d	I
-    //   37: invokevirtual 43	awfz:a	([BI)I
+    //   31: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   34: getfield 40	awyr:d	I
+    //   37: invokevirtual 43	awyr:a	([BI)I
     //   40: istore_2
     //   41: aload_0
-    //   42: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   42: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   45: iload_2
     //   46: aload_0
-    //   47: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   50: getfield 40	awfz:d	I
+    //   47: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   50: getfield 40	awyr:d	I
     //   53: isub
-    //   54: putfield 46	awfz:jdField_c_of_type_Int	I
+    //   54: putfield 46	awyr:jdField_c_of_type_Int	I
     //   57: aload_0
-    //   58: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   61: getfield 46	awfz:jdField_c_of_type_Int	I
+    //   58: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   61: getfield 46	awyr:jdField_c_of_type_Int	I
     //   64: ifgt +4 -> 68
     //   67: return
     //   68: aload_0
-    //   69: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   69: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   72: aload_0
-    //   73: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   76: getfield 46	awfz:jdField_c_of_type_Int	I
+    //   73: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   76: getfield 46	awyr:jdField_c_of_type_Int	I
     //   79: aload_0
-    //   80: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   83: getfield 40	awfz:d	I
+    //   80: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   83: getfield 40	awyr:d	I
     //   86: aload_0
-    //   87: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   90: getfield 36	awfz:jdField_a_of_type_ArrayOfByte	[B
-    //   93: invokevirtual 49	awfz:a	(II[B)V
+    //   87: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   90: getfield 36	awyr:jdField_a_of_type_ArrayOfByte	[B
+    //   93: invokevirtual 49	awyr:a	(II[B)V
     //   96: aload_0
-    //   97: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   97: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   100: iload_2
-    //   101: putfield 40	awfz:d	I
+    //   101: putfield 40	awyr:d	I
     //   104: invokestatic 33	java/lang/System:currentTimeMillis	()J
     //   107: lstore 7
     //   109: aload_0
-    //   110: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   113: getfield 52	awfz:jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil	Lcom/tencent/mobileqq/magicface/DecoderUtil;
+    //   110: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   113: getfield 52	awyr:jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil	Lcom/tencent/mobileqq/magicface/DecoderUtil;
     //   116: aload_0
-    //   117: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   120: getfield 55	awfz:jdField_b_of_type_ArrayOfByte	[B
+    //   117: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   120: getfield 55	awyr:jdField_b_of_type_ArrayOfByte	[B
     //   123: aload_0
-    //   124: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   127: getfield 46	awfz:jdField_c_of_type_Int	I
+    //   124: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   127: getfield 46	awyr:jdField_c_of_type_Int	I
     //   130: aload_0
-    //   131: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   134: getfield 57	awfz:jdField_c_of_type_ArrayOfByte	[B
+    //   131: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   134: getfield 57	awyr:jdField_c_of_type_ArrayOfByte	[B
     //   137: invokevirtual 63	com/tencent/mobileqq/magicface/DecoderUtil:decodeVideoDecoder	([BI[B)I
     //   140: pop
     //   141: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -92,83 +92,83 @@ public class MagicfaceXBigDecoder$1
     //   171: ldc 85
     //   173: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: aload_0
-    //   177: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   180: getfield 46	awfz:jdField_c_of_type_Int	I
+    //   177: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   180: getfield 46	awyr:jdField_c_of_type_Int	I
     //   183: invokevirtual 88	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   186: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   189: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   192: aload_0
-    //   193: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   196: getfield 98	awfz:e	I
+    //   193: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   196: getfield 98	awyr:e	I
     //   199: iconst_m1
     //   200: if_icmpne +61 -> 261
     //   203: aload_0
-    //   204: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   204: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   207: aload_0
-    //   208: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   211: getfield 52	awfz:jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil	Lcom/tencent/mobileqq/magicface/DecoderUtil;
+    //   208: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   211: getfield 52	awyr:jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil	Lcom/tencent/mobileqq/magicface/DecoderUtil;
     //   214: invokevirtual 102	com/tencent/mobileqq/magicface/DecoderUtil:getWidthVideoDecoder	()I
-    //   217: putfield 98	awfz:e	I
+    //   217: putfield 98	awyr:e	I
     //   220: aload_0
-    //   221: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   221: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   224: aload_0
-    //   225: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   228: getfield 52	awfz:jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil	Lcom/tencent/mobileqq/magicface/DecoderUtil;
+    //   225: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   228: getfield 52	awyr:jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil	Lcom/tencent/mobileqq/magicface/DecoderUtil;
     //   231: invokevirtual 105	com/tencent/mobileqq/magicface/DecoderUtil:getHeightVideoDecoder	()I
-    //   234: putfield 108	awfz:jdField_f_of_type_Int	I
+    //   234: putfield 108	awyr:jdField_f_of_type_Int	I
     //   237: aload_0
-    //   238: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   238: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   241: aload_0
-    //   242: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   245: getfield 108	awfz:jdField_f_of_type_Int	I
+    //   242: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   245: getfield 108	awyr:jdField_f_of_type_Int	I
     //   248: aload_0
-    //   249: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   252: getfield 98	awfz:e	I
+    //   249: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   252: getfield 98	awyr:e	I
     //   255: imul
     //   256: newarray int
-    //   258: putfield 111	awfz:jdField_a_of_type_ArrayOfInt	[I
+    //   258: putfield 111	awyr:jdField_a_of_type_ArrayOfInt	[I
     //   261: aload_0
-    //   262: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   265: getfield 114	awfz:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   262: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   265: getfield 114	awyr:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   268: astore 10
     //   270: aload 10
     //   272: monitorenter
     //   273: aload_0
-    //   274: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   277: getfield 116	awfz:jdField_b_of_type_Boolean	Z
+    //   274: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   277: getfield 116	awyr:jdField_b_of_type_Boolean	Z
     //   280: istore 9
     //   282: iload 9
     //   284: ifne +13 -> 297
     //   287: aload_0
-    //   288: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   291: getfield 114	awfz:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   288: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   291: getfield 114	awyr:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   294: invokevirtual 119	java/lang/Object:wait	()V
     //   297: aload 10
     //   299: monitorexit
     //   300: aload_0
-    //   301: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
+    //   301: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
     //   304: aload_0
-    //   305: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   308: getfield 57	awfz:jdField_c_of_type_ArrayOfByte	[B
+    //   305: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   308: getfield 57	awyr:jdField_c_of_type_ArrayOfByte	[B
     //   311: aload_0
-    //   312: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   315: getfield 121	awfz:jdField_f_of_type_ArrayOfByte	[B
-    //   318: invokevirtual 124	awfz:a	([B[B)[I
+    //   312: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   315: getfield 121	awyr:jdField_f_of_type_ArrayOfByte	[B
+    //   318: invokevirtual 124	awyr:a	([B[B)[I
     //   321: astore 10
     //   323: aload_0
-    //   324: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   327: getfield 127	awfz:jdField_a_of_type_Awfv	Lawfv;
+    //   324: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   327: getfield 127	awyr:jdField_a_of_type_Awyn	Lawyn;
     //   330: ifnull +31 -> 361
     //   333: aload_0
-    //   334: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   337: getfield 127	awfz:jdField_a_of_type_Awfv	Lawfv;
+    //   334: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   337: getfield 127	awyr:jdField_a_of_type_Awyn	Lawyn;
     //   340: aload 10
     //   342: aload_0
-    //   343: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   346: getfield 98	awfz:e	I
+    //   343: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   346: getfield 98	awyr:e	I
     //   349: aload_0
-    //   350: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   353: getfield 108	awfz:jdField_f_of_type_Int	I
+    //   350: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   353: getfield 108	awyr:jdField_f_of_type_Int	I
     //   356: invokeinterface 132 4 0
     //   361: invokestatic 33	java/lang/System:currentTimeMillis	()J
     //   364: lload_3
@@ -189,8 +189,8 @@ public class MagicfaceXBigDecoder$1
     //   397: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   400: lload 7
     //   402: aload_0
-    //   403: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   406: getfield 136	awfz:jdField_b_of_type_Int	I
+    //   403: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   406: getfield 136	awyr:jdField_b_of_type_Int	I
     //   409: i2l
     //   410: lcmp
     //   411: ifge +129 -> 540
@@ -199,8 +199,8 @@ public class MagicfaceXBigDecoder$1
     //   417: lcmp
     //   418: ifle +94 -> 512
     //   421: aload_0
-    //   422: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   425: getfield 136	awfz:jdField_b_of_type_Int	I
+    //   422: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   425: getfield 136	awyr:jdField_b_of_type_Int	I
     //   428: i2l
     //   429: lload 7
     //   431: lsub
@@ -216,14 +216,14 @@ public class MagicfaceXBigDecoder$1
     //   447: lload 5
     //   449: lstore_3
     //   450: aload_0
-    //   451: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   454: getfield 144	awfz:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
+    //   451: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   454: getfield 144	awyr:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
     //   457: astore 10
     //   459: aload 10
     //   461: monitorenter
     //   462: aload_0
-    //   463: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   466: getfield 144	awfz:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
+    //   463: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   466: getfield 144	awyr:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
     //   469: invokevirtual 147	java/lang/Object:notify	()V
     //   472: aload 10
     //   474: monitorexit
@@ -250,8 +250,8 @@ public class MagicfaceXBigDecoder$1
     //   508: lstore_3
     //   509: goto -59 -> 450
     //   512: aload_0
-    //   513: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   516: getfield 136	awfz:jdField_b_of_type_Int	I
+    //   513: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   516: getfield 136	awyr:jdField_b_of_type_Int	I
     //   519: i2l
     //   520: lload 7
     //   522: lsub
@@ -268,8 +268,8 @@ public class MagicfaceXBigDecoder$1
     //   543: iload_1
     //   544: ifne -94 -> 450
     //   547: aload_0
-    //   548: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawfz;
-    //   551: getfield 136	awfz:jdField_b_of_type_Int	I
+    //   548: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$1:this$0	Lawyr;
+    //   551: getfield 136	awyr:jdField_b_of_type_Int	I
     //   554: istore_1
     //   555: lload 5
     //   557: lload 7

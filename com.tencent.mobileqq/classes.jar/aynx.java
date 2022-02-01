@@ -1,30 +1,45 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import java.util.Calendar;
 
 class aynx
-  extends Animation
+  implements aqxz
 {
-  aynx(aynq paramaynq, View paramView, int paramInt) {}
+  aynx(aynp paramaynp) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public int a()
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat == 1.0F) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (paramTransformation == null);
-    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+    return 3;
   }
   
-  public boolean willChangeBounds()
+  public int a(int paramInt)
   {
-    return true;
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + anzj.a(2131706143);
+    case 1: 
+      return paramInt2 + 1 + anzj.a(2131706246);
+    }
+    return paramInt2 + 1 + anzj.a(2131706228);
   }
 }
 

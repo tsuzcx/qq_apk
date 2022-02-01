@@ -1,39 +1,68 @@
-import android.graphics.RectF;
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.EditTextViewer;
-
 public class bnwr
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bnwr(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, EditTextViewer paramEditTextViewer, NodeItem paramNodeItem) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
   
-  public void onGlobalLayout()
+  public bnwr()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getLayoutParams();
-      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      localMarginLayoutParams.leftMargin = i;
-      localMarginLayoutParams.topMargin = j;
-      localMarginLayoutParams.rightMargin = k;
-      localMarginLayoutParams.bottomMargin = m;
-      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
-      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
-      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.setLayoutParams(localMarginLayoutParams);
-      return;
-      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+  }
+  
+  public bnwr(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt4)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
+    this.jdField_e_of_type_Int = paramInt3;
+    this.jdField_e_of_type_JavaLangString = paramString2;
+    this.i = paramString3;
+    this.g = paramString4;
+    this.h = paramString5;
+    this.jdField_a_of_type_Long = paramInt4;
   }
 }
 

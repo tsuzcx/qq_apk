@@ -1,19 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 
-class ajoa
-  implements bcpg
+public class ajoa
+  extends ajoe<ajnn>
 {
-  ajoa(ajnz paramajnz) {}
-  
-  public void a()
+  public ajoa(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, Context paramContext, int paramInt)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
+    super(paramContext, paramInt);
   }
   
-  public void b()
+  protected ajoo a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
-    ajnk.a(this.a.a, ajnk.b(this.a.a));
+    return new ajnm(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  protected void a(ajoo paramajoo, ajnn paramajnn, int paramInt)
+  {
+    TroopRecommendFriendFragment.a(this.a, paramajoo, paramajnn, paramInt);
   }
 }
 

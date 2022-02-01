@@ -1,24 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class pnz
-  implements View.OnClickListener
+final class pnz
+  implements DialogInterface.OnClickListener
 {
-  pnz(pny parampny, FrameLayout paramFrameLayout, int paramInt, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    pny.a(this.jdField_a_of_type_Pny).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(pny.a(this.jdField_a_of_type_Pny));
-    pny.a(this.jdField_a_of_type_Pny, null);
-    if (261 == this.jdField_a_of_type_Int) {
-      bgsg.s(pny.a(this.jdField_a_of_type_Pny), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

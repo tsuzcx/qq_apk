@@ -1,25 +1,50 @@
-import android.os.Bundle;
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.json.JSONObject;
 
-class abag
-  implements aaob
+public class abag
 {
-  abag(abac paramabac) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  private String b = "";
   
-  public void callback(Bundle paramBundle)
+  public static abag a(String paramString)
   {
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
-    {
-      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
-      paramBundle = paramBundle.getStringArrayList("tinyIds");
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        abac.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
-        i += 1;
-      }
+    if (paramString == null) {
+      return null;
     }
+    try
+    {
+      abag localabag = new abag();
+      paramString = new JSONObject(paramString);
+      localabag.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
+      localabag.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
+      localabag.b = paramString.optString("md5", "");
+      return localabag;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JSONObject a()
+  {
+    return this.jdField_a_of_type_OrgJsonJSONObject;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
   }
 }
 

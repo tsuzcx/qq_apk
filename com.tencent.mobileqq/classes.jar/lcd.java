@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.VideoController.1;
-
 public class lcd
-  implements DialogInterface.OnClickListener
 {
-  public lcd(VideoController.1 param1) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString = null;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = null;
+  long jdField_c_of_type_Long = 0L;
+  String jdField_c_of_type_JavaLangString = null;
+  String d = null;
+  String e = null;
+  String f = null;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.this$0.g(true);
-  }
+  public lcd(lcc paramlcc) {}
 }
 
 

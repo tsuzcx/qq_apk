@@ -1,56 +1,121 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class aqzw
-  extends aqkz<aqzv>
 {
-  public static aqzv a()
+  public static byte a;
+  private static aqzy jdField_a_of_type_Aqzy;
+  public static arsk a;
+  private static bhuw jdField_a_of_type_Bhuw;
+  private static ArrayList<aqzx> jdField_a_of_type_JavaUtilArrayList;
+  static arsf[] jdField_a_of_type_ArrayOfArsf;
+  public static byte b;
+  static arsk b;
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  static
   {
-    return (aqzv)aqlk.a().a(500);
+    jdField_a_of_type_Byte = 3;
+    jdField_b_of_type_Byte = 1;
   }
   
-  @NonNull
-  public aqzv a(int paramInt)
+  public aqzw(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return new aqzv();
+    jdField_a_of_type_Bhuw = paramQQAppInterface.getHttpCommunicatort();
+    jdField_a_of_type_Aqzy = new aqzy(paramQQAppInterface.getApp(), paramString);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Arsk = new arsk((short)24, (byte)0);
+    jdField_b_of_type_Arsk = new arsk((short)12, (byte)1);
+    jdField_a_of_type_ArrayOfArsf = new arsf[] { jdField_a_of_type_Arsk, jdField_b_of_type_Arsk };
+    jdField_a_of_type_Aqzy.a();
   }
   
-  @Nullable
-  public aqzv a(aqlg[] paramArrayOfaqlg)
+  public static aqzy a()
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqzv.a(paramArrayOfaqlg);
+    return jdField_a_of_type_Aqzy;
+  }
+  
+  public static bhuw a()
+  {
+    return jdField_a_of_type_Bhuw;
+  }
+  
+  public static String a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (localAppRuntime != null) {
+      return localAppRuntime.getAccount();
     }
     return null;
   }
   
-  public void a(aqzv paramaqzv) {}
-  
-  public Class<aqzv> clazz()
+  public static String a(String paramString1, int paramInt, String paramString2)
   {
-    return aqzv.class;
+    paramString1 = new StringBuffer(aqzy.a(paramString1, paramInt).trim());
+    if (paramString2 != null)
+    {
+      paramString2 = paramString2.trim();
+      if (paramString2.length() > 0)
+      {
+        if (paramString2.charAt(0) != '&') {
+          paramString1.append('&');
+        }
+        paramString1.append(paramString2);
+      }
+    }
+    return paramString1.toString();
   }
   
-  public boolean isNeedCompressed()
+  public static ArrayList<aqzx> a()
   {
-    return true;
+    return jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public boolean isNeedStoreLargeFile()
+  public static void a()
   {
-    return false;
+    jdField_a_of_type_Aqzy = null;
+    if (jdField_a_of_type_Bhuw != null) {
+      jdField_a_of_type_Bhuw.b();
+    }
+    jdField_a_of_type_Bhuw = null;
   }
   
-  public int migrateOldVersion()
+  public int a(int paramInt)
   {
-    return 0;
+    return jdField_a_of_type_ArrayOfArsf[paramInt].a();
   }
   
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
+  public long a(int paramInt1, int paramInt2)
   {
-    return 500;
+    return ((arsk)jdField_a_of_type_ArrayOfArsf[paramInt1]).a(paramInt2);
+  }
+  
+  public Bitmap a(int paramInt1, int paramInt2)
+  {
+    return ((arsk)jdField_a_of_type_ArrayOfArsf[paramInt1]).a(paramInt2);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    return ((arsk)jdField_a_of_type_ArrayOfArsf[paramInt1]).c(paramInt2);
+  }
+  
+  public short a(int paramInt1, int paramInt2)
+  {
+    return ((arsk)jdField_a_of_type_ArrayOfArsf[paramInt1]).a(paramInt2);
+  }
+  
+  public String b(int paramInt1, int paramInt2)
+  {
+    return ((arsk)jdField_a_of_type_ArrayOfArsf[paramInt1]).a(paramInt2);
+  }
+  
+  public String c(int paramInt1, int paramInt2)
+  {
+    return ((arsk)jdField_a_of_type_ArrayOfArsf[paramInt1]).b(paramInt2);
   }
 }
 

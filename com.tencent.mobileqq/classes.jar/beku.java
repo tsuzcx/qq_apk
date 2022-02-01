@@ -1,89 +1,178 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-public class beku
-  extends Handler
+final class beku
+  implements bell
 {
-  public beku(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  beku(int[] paramArrayOfInt1, int[] paramArrayOfInt2, beko parambeko, belr parambelr1, belr parambelr2, bekr parambekr, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  private void a(belm parambelm1, belm parambelm2)
   {
-    if (this.a.isFinishing()) {}
+    if (parambelm2.jdField_a_of_type_Char == 0) {
+      parambelm1.jdField_a_of_type_Char = '\000';
+    }
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (paramMessage.what)
-            {
-            case 1002: 
-            case 1007: 
-            default: 
-              return;
-            case 1001: 
-              this.a.a(false);
-              if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
-                this.a.jdField_a_of_type_Biau.dismiss();
-              }
-              QQToast.a(this.a, 2131695569, 1).b(this.a.getTitleBarHeight());
-            }
-          } while (!(paramMessage.obj instanceof String));
-          paramMessage = (String)paramMessage.obj;
-          try
-          {
-            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-            return;
-          }
-          catch (UnsupportedOperationException paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopBar", 2, paramMessage.toString());
-        return;
-        if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
-          this.a.jdField_a_of_type_Biau.dismiss();
-        }
-        this.a.a(false);
-        this.a.a();
-        return;
-        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
-        }
-      } while ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()));
-      this.a.a();
       return;
-      this.a.a(false);
-      if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
-        this.a.jdField_a_of_type_Biau.dismiss();
+      if (parambelm1.jdField_a_of_type_Int > parambelm2.jdField_a_of_type_Int) {
+        break;
       }
-      QQToast.a(this.a, 2131695547, 1).b(this.a.getTitleBarHeight());
-      return;
-      if ((paramMessage.obj instanceof String))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+      parambelm2.jdField_a_of_type_Int -= parambelm1.jdField_a_of_type_Int;
+      parambelm2.b -= parambelm1.b;
+      parambelm1.jdField_a_of_type_Char = '\000';
+    } while (parambelm2.jdField_a_of_type_Int > 0);
+    parambelm2.jdField_a_of_type_Char = '\000';
     return;
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-    if ((Build.VERSION.SDK_INT >= 23) && (this.a.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
+    parambelm1.jdField_a_of_type_Int -= parambelm2.jdField_a_of_type_Int;
+    parambelm1.b -= parambelm2.b;
+    parambelm2.jdField_a_of_type_Char = '\000';
+  }
+  
+  private void b(belm parambelm1, belm parambelm2, belm parambelm3)
+  {
+    parambelm3.jdField_a_of_type_Char = '=';
+    parambelm3.jdField_a_of_type_JavaLangString = beks.c(parambelm1.jdField_a_of_type_JavaLangString, parambelm2.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Beko);
+    if (parambelm1.jdField_a_of_type_Int <= parambelm2.jdField_a_of_type_Int)
     {
-      this.a.requestPermissions(new bekv(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      parambelm3.jdField_a_of_type_Int = parambelm1.jdField_a_of_type_Int;
+      parambelm3.b = parambelm1.b;
+      parambelm2.jdField_a_of_type_Int -= parambelm1.jdField_a_of_type_Int;
+      parambelm2.b -= parambelm1.b;
+      parambelm1.jdField_a_of_type_Char = '\000';
+      if (parambelm2.jdField_a_of_type_Int == 0) {
+        parambelm2.jdField_a_of_type_Char = '\000';
+      }
       return;
     }
-    TroopBarReplyActivity.a(this.a, 4);
+    parambelm3.jdField_a_of_type_Int = parambelm2.jdField_a_of_type_Int;
+    parambelm3.b = parambelm2.b;
+    parambelm1.jdField_a_of_type_Int -= parambelm2.jdField_a_of_type_Int;
+    parambelm1.b -= parambelm2.b;
+    parambelm2.jdField_a_of_type_Char = '\000';
+  }
+  
+  private void c(belm parambelm1, belm parambelm2, belm parambelm3)
+  {
+    beks.a(parambelm2, parambelm3);
+    if (parambelm1.jdField_a_of_type_Char == 0) {
+      parambelm2.jdField_a_of_type_Char = '\000';
+    }
+    do
+    {
+      return;
+      if (parambelm2.jdField_a_of_type_Int > parambelm1.jdField_a_of_type_Int) {
+        break;
+      }
+      parambelm1.jdField_a_of_type_Int -= parambelm2.jdField_a_of_type_Int;
+      parambelm1.b -= parambelm2.b;
+      parambelm2.jdField_a_of_type_Char = '\000';
+    } while (parambelm1.jdField_a_of_type_Int != 0);
+    parambelm1.jdField_a_of_type_Char = '\000';
+    return;
+    parambelm3.b = parambelm1.b;
+    parambelm3.jdField_a_of_type_Int = parambelm1.jdField_a_of_type_Int;
+    parambelm2.b -= parambelm1.b;
+    parambelm2.jdField_a_of_type_Int -= parambelm1.jdField_a_of_type_Int;
+    parambelm1.jdField_a_of_type_Char = '\000';
+  }
+  
+  private void d(belm parambelm1, belm parambelm2, belm parambelm3)
+  {
+    int j = 2;
+    int i;
+    if (parambelm2.jdField_a_of_type_Char != '+') {
+      i = 1;
+    }
+    while (i == 1)
+    {
+      this.jdField_a_of_type_Belr.a(parambelm1.jdField_a_of_type_Int);
+      parambelm3.jdField_a_of_type_Char = '=';
+      parambelm3.b = parambelm1.b;
+      parambelm3.jdField_a_of_type_Int = parambelm1.jdField_a_of_type_Int;
+      parambelm3.jdField_a_of_type_JavaLangString = "";
+      parambelm1.jdField_a_of_type_Char = '\000';
+      return;
+      i = j;
+      if (parambelm1.jdField_a_of_type_Char == '+')
+      {
+        String str1 = this.jdField_a_of_type_Belr.b(1);
+        String str2 = this.jdField_b_of_type_Belr.b(1);
+        boolean bool1 = this.jdField_a_of_type_Bekr.a(parambelm1.jdField_a_of_type_JavaLangString);
+        boolean bool2 = this.jdField_a_of_type_Bekr.a(parambelm2.jdField_a_of_type_JavaLangString);
+        if ((bool1) && (!bool2))
+        {
+          i = 1;
+        }
+        else if (bool2)
+        {
+          i = j;
+          if (!bool1) {}
+        }
+        else if (str1.equals("\n"))
+        {
+          i = j;
+          if (!str2.equals("\n")) {}
+        }
+        else if ((!str1.equals("\n")) && (str2.equals("\n")))
+        {
+          i = 1;
+        }
+        else
+        {
+          i = j;
+          if (!this.jdField_a_of_type_Boolean) {
+            i = 1;
+          }
+        }
+      }
+    }
+    this.jdField_b_of_type_Belr.a(parambelm2.jdField_a_of_type_Int);
+    beks.a(parambelm2, parambelm3);
+    parambelm2.jdField_a_of_type_Char = '\000';
+  }
+  
+  public void a(belm parambelm1, belm parambelm2, belm parambelm3)
+  {
+    if ((parambelm1.jdField_a_of_type_Char == '+') || (parambelm2.jdField_a_of_type_Char == '+')) {
+      d(parambelm1, parambelm2, parambelm3);
+    }
+    for (;;)
+    {
+      switch (parambelm3.jdField_a_of_type_Char)
+      {
+      default: 
+        return;
+        if (parambelm1.jdField_a_of_type_Char == '-')
+        {
+          a(parambelm1, parambelm2);
+        }
+        else if (parambelm2.jdField_a_of_type_Char == '-')
+        {
+          c(parambelm1, parambelm2, parambelm3);
+        }
+        else if (parambelm1.jdField_a_of_type_Char == 0)
+        {
+          beks.a(parambelm2, parambelm3);
+          parambelm2.jdField_a_of_type_Char = '\000';
+        }
+        else if (parambelm2.jdField_a_of_type_Char == 0)
+        {
+          parambelm1.jdField_a_of_type_Char = '\000';
+        }
+        else
+        {
+          b(parambelm1, parambelm2, parambelm3);
+        }
+        break;
+      }
+    }
+    parambelm1 = this.jdField_a_of_type_ArrayOfInt;
+    parambelm1[0] += parambelm3.jdField_a_of_type_Int;
+    parambelm1 = this.jdField_b_of_type_ArrayOfInt;
+    parambelm1[0] += parambelm3.jdField_a_of_type_Int;
+    return;
+    parambelm1 = this.jdField_a_of_type_ArrayOfInt;
+    parambelm1[0] += parambelm3.jdField_a_of_type_Int;
+    return;
+    parambelm1 = this.jdField_b_of_type_ArrayOfInt;
+    parambelm1[0] += parambelm3.jdField_a_of_type_Int;
   }
 }
 

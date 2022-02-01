@@ -1,15 +1,4 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.GetStaticProxy;
-import mqq.app.AppRuntime;
-
-public final class bcqb
-  implements IMCoreProxyRoute.GetStaticProxy<AppRuntime>
-{
-  public AppRuntime a()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime();
-  }
-}
+class bcqb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

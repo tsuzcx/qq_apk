@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class ntt
-  implements View.OnClickListener
+class ntt
+  implements bgpp
 {
-  public ntt(AccountSettingFragment paramAccountSettingFragment) {}
+  ntt(ntc paramntc) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    AccountSettingFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ntc.a(this.a, paramJSONObject);
   }
 }
 

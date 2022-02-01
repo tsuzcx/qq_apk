@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import avum;
-import bmfd;
-import bmfg;
+import awnh;
+import bngf;
+import bngi;
 import org.json.JSONObject;
 
 class QzoneWebMusicJsPlugin$12
@@ -12,8 +12,8 @@ class QzoneWebMusicJsPlugin$12
   
   public void run()
   {
-    bmfd.a().a().a();
-    avum.a(new JSONObject(), "showFloatView", null);
+    bngf.a().a().a();
+    awnh.a(new JSONObject(), "showFloatView", null);
   }
 }
 

@@ -1,62 +1,59 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.os.Build;
-import android.os.Handler;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
-class bgrc
-  implements SensorEventListener
+public abstract class bgrc
+  extends nkq
 {
-  bgrc(bgrb parambgrb) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent arg1)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
-    }
-    if (bgrb.a(this.a) == null) {
-      return;
-    }
-    if (afur.b())
-    {
-      this.a.a = false;
-      return;
-    }
-    if (???.values[0] < bgrb.a(this.a)) {
-      bgrb.a(this.a, true);
+    boolean bool2 = false;
+    mobileqq_mp.FollowResponse localFollowResponse;
+    if (paramInt == 0) {
+      localFollowResponse = new mobileqq_mp.FollowResponse();
     }
     for (;;)
     {
-      ??? = Build.MODEL;
-      if (!afur.a()) {
-        break;
+      try
+      {
+        localFollowResponse.mergeFrom(paramArrayOfByte);
+        if (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has()) {
+          break label146;
+        }
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt != 0) {
+          break label146;
+        }
+        bool1 = true;
       }
-      if (bgrb.a(this.a).hasMessages(1)) {
-        bgrb.a(this.a).removeMessages(1);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
+        bool1 = bool2;
+        continue;
       }
-      bgrb.a(this.a).sendMessageDelayed(bgrb.a(this.a).obtainMessage(1), 150L);
+      a(bool1, paramBundle);
       return;
-      bgrb.a(this.a, false);
-    }
-    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
-    {
-      if (bgrb.a(this.a).hasMessages(1)) {
-        bgrb.a(this.a).removeMessages(1);
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("TroopBindPubAccountProtocol", 2, "follow pubAccount failed, errorCode=" + paramInt);
+        bool1 = bool2;
+        continue;
+        label146:
+        bool1 = false;
       }
-      bgrb.a(this.a).sendMessageDelayed(bgrb.a(this.a).obtainMessage(1), 250L);
-      return;
-    }
-    synchronized (this.a)
-    {
-      if (bgrb.a(this.a) != null) {
-        bgrb.a(this.a).a(bgrb.a(this.a));
-      }
-      return;
     }
   }
+  
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

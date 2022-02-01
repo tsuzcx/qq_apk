@@ -1,37 +1,17 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
 
 class axwl
-  implements View.OnLongClickListener
+  extends aybr
 {
-  axwl(axvz paramaxvz) {}
+  axwl(axwf paramaxwf, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  protected void a()
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
+    if (QLog.isColorLevel()) {
+      axxb.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
     }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new axws(this.a, paramView), paramView, 0);
-    localObject = axvz.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    axvz.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
-    {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(axvz.a(this.a), i);
-      return true;
-    }
-    paramView.setVisibility(4);
-    return true;
+    axwf.a(this.jdField_a_of_type_Axwf, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

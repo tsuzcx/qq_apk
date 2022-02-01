@@ -1,38 +1,37 @@
-import QC.CommonRsp;
-import QC.FaceRsp;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class akbj
-  extends anun
+class akbj
+  implements aumz
 {
-  public akbj(AvatarPendantActivity paramAvatarPendantActivity) {}
+  akbj(akbi paramakbi, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
+  public void a()
   {
-    if (paramFaceRsp != null)
-    {
-      int i = paramFaceRsp.authRet;
-      localObject = "null";
-      if (paramFaceRsp.stRet != null) {
-        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
-      }
-      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
-      if (i == 0) {
-        this.a.r = 0;
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Akbi.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    else
+    anvu localanvu;
+    ArrayList localArrayList;
+    do
     {
       return;
-    }
-    this.a.r = 1;
-    Object localObject = new Intent(this.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
-    this.a.startActivity((Intent)localObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localanvu = (anvu)this.jdField_a_of_type_Akbi.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localanvu.a(localArrayList));
+    auna.a(2131692318);
+    return;
+    this.jdField_a_of_type_Akbi.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

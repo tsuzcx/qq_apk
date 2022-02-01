@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bkfv;
+import blha;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
@@ -28,10 +28,10 @@ class Leba$8
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
         WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-        if ((localWebProcessManager != null) && (localWebProcessManager.d()) && (this.this$0.jdField_a_of_type_Bkfv != null))
+        if ((localWebProcessManager != null) && (localWebProcessManager.d()) && (this.this$0.jdField_a_of_type_Blha != null))
         {
-          this.this$0.jdField_a_of_type_Bkfv.removeMessages(1134010);
-          this.this$0.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(1134010, 100L);
+          this.this$0.jdField_a_of_type_Blha.removeMessages(1134010);
+          this.this$0.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1134010, 100L);
           return;
         }
       }

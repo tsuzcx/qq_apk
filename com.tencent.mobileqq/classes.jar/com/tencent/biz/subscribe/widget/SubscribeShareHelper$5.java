@@ -1,28 +1,28 @@
 package com.tencent.biz.subscribe.widget;
 
-import aabx;
-import aakz;
+import aagc;
+import aapa;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 import java.util.Map;
-import nlw;
+import nnr;
 
 public class SubscribeShareHelper$5
   implements Runnable
 {
-  public SubscribeShareHelper$5(aakz paramaakz, Map paramMap, Runnable paramRunnable) {}
+  public SubscribeShareHelper$5(aapa paramaapa, Map paramMap, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      if (aakz.a(this.this$0) == null) {
+      if (aapa.a(this.this$0) == null) {
         return;
       }
-      localObject = nlw.a(BaseApplicationImpl.getContext(), aakz.a(this.this$0).e(), "GET", null, null);
+      localObject = nnr.a(BaseApplicationImpl.getContext(), aapa.a(this.this$0).e(), "GET", null, null);
       if (localObject == null) {
         break label132;
       }

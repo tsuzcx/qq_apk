@@ -130,6 +130,11 @@ public class AppEventReporter
     return (this.mEventAdditionalReport != null) && (this.mEventAdditionalReport.shouldAdditionalReport("vst"));
   }
   
+  private void reportAppLastHeartBeat()
+  {
+    ThreadUtils.runOnUiThread(new AppEventReporter.5(this));
+  }
+  
   private void setDeviceActivated()
   {
     if (ReportUtils.getContext() != null) {
@@ -225,7 +230,7 @@ public class AppEventReporter
     {
       this.mFirstActivityResumed = true;
       if (isDeviceActivated()) {
-        break label82;
+        break label83;
       }
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.i("AppEventReporter", "onActivityResume: isDeviceActivated:false");
@@ -235,9 +240,9 @@ public class AppEventReporter
     }
     for (;;)
     {
-      AppForegroundSession.reportLastHeartBeat();
+      reportAppLastHeartBeat();
       return;
-      label82:
+      label83:
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.i("AppEventReporter", "onActivityResume: isDeviceActivated:true");
       }
@@ -262,7 +267,7 @@ public class AppEventReporter
     }
     if (!this.mActivityHashCode.remove(Integer.valueOf(paramActivity.hashCode())))
     {
-      String str = paramActivity.getApplicationContext().getString(2131693236, new Object[] { paramActivity.toString() });
+      String str = paramActivity.getApplicationContext().getString(2131693248, new Object[] { paramActivity.toString() });
       if (VideoReportInner.getInstance().isDebugMode()) {
         Toast.makeText(paramActivity.getApplicationContext(), str, 1).show();
       }

@@ -1,57 +1,73 @@
+import android.content.Context;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 public class asgk
-  implements bdvw
+  extends asnw
 {
-  public asgk(ExtendFriendResourceDownloader.4 param4) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private avse jdField_a_of_type_Avse;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
   
-  public void onResp(bdwt parambdwt)
+  public asgk(QQAppInterface paramQQAppInterface, Context paramContext, avse paramavse)
   {
-    int i = 0;
-    asge localasge = (asge)parambdwt.jdField_a_of_type_Bdws.a();
-    if (localasge != null)
-    {
-      if (parambdwt.jdField_a_of_type_Int == 0) {
-        break label147;
-      }
-      QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed. errorCode: " + parambdwt.b + ", errorMsg: " + parambdwt.jdField_a_of_type_JavaLangString + ", file: " + localasge.b);
-    }
-    for (;;)
-    {
-      if ((i != 0) && (asgg.a(this.a.this$0, localasge)))
-      {
-        ((asfs)asgg.a(this.a.this$0).a(127)).notifyUI(8, true, Boolean.valueOf(true));
-        QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  needNotifyUi  .");
-      }
-      asgg.a(this.a.this$0, localasge);
-      return;
-      label147:
-      if (!localasge.c.equalsIgnoreCase(SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c)))
-      {
-        QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed: " + localasge.b + "md5 is not match. ：" + SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c) + " infomd5:" + localasge.c);
-        bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener resFile success. file: " + localasge.jdField_a_of_type_JavaLangString + localasge.b);
-        }
-        String str = aslb.c();
-        boolean bool = asgg.b(this.a.this$0, parambdwt.jdField_a_of_type_Bdws.c, str);
-        i = bool;
-        if (!bool)
-        {
-          QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  unzip file failed.");
-          i = bool;
-        }
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Avse = paramavse;
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public String a()
+  {
+    return "RichTextPanelEmoticonSearchLayoutHelper";
+  }
+  
+  public void a() {}
+  
+  public void a(ListView paramListView, aslt paramaslt)
+  {
+    b(paramListView, paramaslt);
+    paramaslt = b();
+    if (paramaslt.getParent() == null) {
+      paramListView.addFooterView(paramaslt);
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Avse.n();
+  }
+  
+  public void c()
+  {
+    this.b = null;
+  }
 }
 
 

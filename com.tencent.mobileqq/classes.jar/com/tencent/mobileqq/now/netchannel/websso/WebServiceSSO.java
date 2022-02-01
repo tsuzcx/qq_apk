@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.now.netchannel.websso;
 
-import aydx;
+import aywq;
 import java.util.concurrent.TimeUnit;
 import okhttp3.ConnectionPool;
 import okhttp3.Dispatcher;
@@ -31,9 +31,9 @@ public class WebServiceSSO
     this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a();
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, aydx paramaydx)
+  public void a(String paramString, byte[] paramArrayOfByte, aywq paramaywq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a(paramString, paramArrayOfByte, paramaydx);
+    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a(paramString, paramArrayOfByte, paramaywq);
   }
   
   public void a(boolean paramBoolean)

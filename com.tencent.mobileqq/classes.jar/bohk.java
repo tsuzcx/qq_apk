@@ -1,30 +1,18 @@
+import com.tencent.qphone.base.util.QLog;
+
 class bohk
-  implements bohm
+  implements bjbj
 {
-  public int a()
+  bohk(bohh parambohh) {}
+  
+  public void a(bjbh parambjbh)
   {
-    return 960;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListLogicAECircle", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
+    }
   }
   
-  public int b()
-  {
-    return ((Integer)boho.a(Integer.valueOf(1024), Integer.valueOf(2048))).intValue();
-  }
-  
-  public int c()
-  {
-    return (int)(b() * 1.3D);
-  }
-  
-  public int d()
-  {
-    return ((Integer)boho.a(Integer.valueOf(1080), Integer.valueOf(1920), Integer.valueOf(2560))).intValue();
-  }
-  
-  public int e()
-  {
-    return 100;
-  }
+  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
 }
 
 

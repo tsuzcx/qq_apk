@@ -1,18 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class agjt
-  implements View.OnClickListener
+public class agjt
 {
-  agjt(agjr paramagjr) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
 }
 
 

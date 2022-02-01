@@ -1,6 +1,6 @@
-class ampa
+public abstract interface ampa
 {
-  private static amoz a = new amoz("cm_game_client_module");
+  public abstract boolean a(arsh paramarsh);
 }
 
 

@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class afhw
-  implements DialogInterface.OnClickListener
+  implements bbsw
 {
-  public afhw(TranslucentTRansferFragment paramTranslucentTRansferFragment, bgpa parambgpa) {}
+  public afhw(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
+    if (this.a.c)
+    {
+      if (paramInt != 100) {
+        this.a.a(2131690632);
+      }
+      this.a.z();
+    }
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

@@ -307,7 +307,7 @@ public class e
         bool = false;
       }
     }
-    AdLog.e("AdCanvasAppBtnUIAdapter", "updateUIByClick firstClick" + this.firstClick + paramString);
+    AdLog.e("AdCanvasAppBtnUIAdapter", "updateUIByClick firstClick" + this.firstClick + paramString + " cState:" + paramInt + " hasStartedDownload" + this.mAdAppDownloadManager.hasStartedDownload());
     if ((this.firstClick) && (this.mAdAppDownloadManager != null) && (this.mAdAppDownloadManager.hasStartedDownload()))
     {
       firstClickInitDownloadApp();

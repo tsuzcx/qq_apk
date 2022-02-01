@@ -1,46 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.QZLog;
 
 public class bnpb
-  implements Cloneable
+  extends bnnn
 {
-  public int a;
-  public String a;
-  public List<bnpf> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public static String a;
+  public static String b = "setPGCNavViewSetting";
   
-  public bnpb()
+  static
   {
-    this.jdField_b_of_type_Int = 2;
+    jdField_a_of_type_JavaLangString = "Qzone";
   }
   
-  public bnpb(String paramString)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public bnpb a()
-  {
-    bnpb localbnpb = new bnpb();
-    localbnpb.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbnpb.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbnpb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbnpb.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbnpb.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localbnpb.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localbnpb.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localbnpb;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.hashCode()) {
-      return i + 31;
+    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (!b.equals(paramString3))) {
+      return false;
     }
+    QZLog.i("QzoneHomePageJsPlugin", 4, "navigation url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " jsonString:" + paramVarArgs[0]);
+    paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
+    paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+    }
+    return true;
   }
 }
 

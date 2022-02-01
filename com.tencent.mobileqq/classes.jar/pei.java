@@ -1,14 +1,19 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 
-class pei
-  implements bkiz
+public class pei
+  extends BroadcastReceiver
 {
-  pei(peh parampeh) {}
+  public pei(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    peh.a(this.a, peh.a(this.a).getResources().getColor(2131167279));
+    paramContext = pfa.a().a();
+    if (paramContext != null) {
+      paramContext.a();
+    }
   }
 }
 

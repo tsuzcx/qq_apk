@@ -1,29 +1,34 @@
-import android.view.View;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.adapter.ILogAdapter;
 
-class tdc
-  implements URLDrawableDownListener
+public class tdc
+  implements ILogAdapter
 {
-  tdc(tcx paramtcx) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void callLog(String paramString1, int paramInt, String paramString2)
   {
-    AbstractGifImage.resumeAll();
-    tcx.a(this.a).setVisibility(0);
-    this.a.a("0X800920C", new JSONObject());
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString1, 2, paramString2);
+      }
+      break;
+    }
+    do
+    {
+      do
+      {
+        return;
+        QLog.e(paramString1, 2, paramString2);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.w(paramString1, 2, paramString2);
   }
+  
+  public void onJSError(String paramString) {}
 }
 
 

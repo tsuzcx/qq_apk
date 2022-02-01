@@ -1,22 +1,22 @@
-import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 import java.util.List;
 
-class attp
-  implements atve
+public abstract class attp
 {
-  attp(attk paramattk, List paramList) {}
+  long jdField_a_of_type_Long;
+  List<FavFileInfo> jdField_a_of_type_JavaUtilList;
   
-  public void a()
+  public attp()
   {
-    atvf.d(attk.a(this.jdField_a_of_type_Attk).getString(2131692439));
-    bfsj.a(attk.a(this.jdField_a_of_type_Attk), attk.a(this.jdField_a_of_type_Attk), this.jdField_a_of_type_JavaUtilList);
+    this.a = 0L;
   }
   
-  public void b() {}
+  protected abstract void a(int paramInt, List<FavFileInfo> paramList, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     attp
  * JD-Core Version:    0.7.0.1
  */

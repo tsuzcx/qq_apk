@@ -1,41 +1,89 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
+import com.tencent.mobileqq.app.asyncdb.FullCache;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopStatisticsInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aolk
-  extends aojs
+  extends FullCache
 {
-  public aolk(QQAppInterface paramQQAppInterface, Context paramContext)
+  public aolk(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
   {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  private boolean C()
-  {
-    WXMiniProgramHelper.a().a(this.a);
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
+    super(paramQQAppInterface, paramDBDelayManager, TroopStatisticsInfo.class);
+    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
+    long l = System.currentTimeMillis();
+    if (l - azqi.a(azqw.a, 0L) > 604800000L) {}
+    for (;;)
     {
-      if ((this.a.containsKey("user_name")) && (!bgsp.a((String)this.a.get("user_name"))))
+      try
       {
-        boolean bool = C();
-        return bool;
+        azqi.a(azqw.a, l);
+        paramQQAppInterface.drop(TroopStatisticsInfo.class);
+        this.cacheMap.clear();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, "doInit record time over 7 days, drop table");
+        }
+        return;
+        paramDBDelayManager = paramQQAppInterface.query(TroopStatisticsInfo.class);
+        if (paramDBDelayManager != null)
+        {
+          this.cacheMap.clear();
+          localObject = paramDBDelayManager.iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            TroopStatisticsInfo localTroopStatisticsInfo = (TroopStatisticsInfo)((Iterator)localObject).next();
+            this.cacheMap.put(getKey(localTroopStatisticsInfo), localTroopStatisticsInfo);
+            continue;
+          }
+        }
       }
-      return false;
+      catch (Exception paramDBDelayManager)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.db.Cache.TroopStatisticsCache", 2, paramDBDelayManager.getMessage());
+        }
+        return;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        Object localObject = new StringBuilder().append("doInit size = ");
+        if (paramDBDelayManager == null)
+        {
+          i = 0;
+          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, i);
+          continue;
+        }
+      }
+      finally
+      {
+        paramQQAppInterface.close();
+      }
+      int i = paramDBDelayManager.size();
     }
-    catch (Exception localException)
-    {
-      QLog.e("QwalletToLaunchWXMiniAppAction", 1, "doAction error: " + localException.getMessage());
-      a("QwalletToLaunchWXMiniAppAction");
-    }
-    return false;
   }
+  
+  public TroopStatisticsInfo a(String paramString)
+  {
+    if ((this.cacheMap == null) || (paramString == null)) {
+      return null;
+    }
+    return (TroopStatisticsInfo)this.cacheMap.get(paramString);
+  }
+  
+  public void destroy() {}
+  
+  public String getKey(Entity paramEntity)
+  {
+    return ((TroopStatisticsInfo)paramEntity).troopUin;
+  }
+  
+  public void init() {}
 }
 
 

@@ -1,80 +1,100 @@
-import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class arlf
-  extends arlj
+  extends arac<arle>
 {
-  public arlf(MsgBoxListActivity paramMsgBoxListActivity) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  @NonNull
+  public arle a(int paramInt)
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
+    return new arle();
+  }
+  
+  @Nullable
+  public arle a(araj[] paramArrayOfaraj)
+  {
+    QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onParsed");
+    if (paramArrayOfaraj != null) {
+      try
+      {
+        if (paramArrayOfaraj.length > 0)
+        {
+          paramArrayOfaraj = (arle)arax.a(paramArrayOfaraj[0].a, arle.class);
+          return paramArrayOfaraj;
+        }
       }
+      catch (QStorageInstantiateException paramArrayOfaraj) {}
     }
+    return null;
+  }
+  
+  public void a(arle paramarle)
+  {
+    if (paramarle == null) {
+      QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
+    }
+    label123:
     for (;;)
     {
       return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
+      QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onUpdate");
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {}
+      for (localObject = (QQAppInterface)localObject;; localObject = null)
       {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(anhk.al, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(anhk.al, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, anhk.al, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            aldk.b(this.a.app, anhk.al, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(anhk.al, this.a.jdField_a_of_type_Int, true, true);
-          }
+        if (localObject == null) {
+          break label123;
         }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("yyb_promote_action_key", paramarle.c);
+        localEditor.apply();
+        localObject = (atsh)((QQAppInterface)localObject).getManager(317);
+        if (localObject == null) {
+          break;
+        }
+        ((atsh)localObject).a(paramarle);
+        return;
       }
     }
   }
   
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public Class<arle> clazz()
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(anhk.am, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(anhk.am, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, anhk.am, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            aldk.b(this.a.app, anhk.am, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(anhk.am, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
-    }
+    return arle.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 626;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlf
  * JD-Core Version:    0.7.0.1
  */

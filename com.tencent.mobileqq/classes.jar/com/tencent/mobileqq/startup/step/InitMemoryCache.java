@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.step;
 
-import abfc;
+import abjg;
 import android.support.v4.util.LruCache;
-import bcpk;
+import bdic;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.commonsdk.cache.QQHashMap;
@@ -27,24 +27,24 @@ public class InitMemoryCache
       {
         return true;
         a = true;
-        abfc localabfc = abfc.a();
-        QQHashMap.setManager(localabfc);
-        QQConcurrentHashMap.setManager(localabfc);
-        QQLruCache.setManager(localabfc);
-        LruCache.setManager(localabfc);
+        abjg localabjg = abjg.a();
+        QQHashMap.setManager(localabjg);
+        QQConcurrentHashMap.setManager(localabjg);
+        QQLruCache.setManager(localabjg);
+        LruCache.setManager(localabjg);
         QLog.e("qiqili", 1, "InitMemoryCache BaseApplicationImpl.sProcessId =" + BaseApplicationImpl.sProcessId + "BaseApplicationImpl.processName=" + BaseApplicationImpl.processName);
         BaseApplicationImpl.sImageHashMap = new ConcurrentHashMap();
         if (BaseApplicationImpl.sProcessId == 1)
         {
           l = MemoryManager.a() * 3L / 16L;
-          BaseApplicationImpl.sImageCache = new bcpk(Integer.valueOf((int)l));
+          BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf((int)l));
           BaseApplicationImpl.sImageCacheSize = (int)l;
           return true;
         }
         if (BaseApplicationImpl.sProcessId == 5)
         {
           l = MemoryManager.a() * 3L / 16L;
-          BaseApplicationImpl.sImageCache = new bcpk(Integer.valueOf((int)l));
+          BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf((int)l));
           BaseApplicationImpl.sImageCacheSize = (int)l;
           return true;
         }
@@ -55,7 +55,7 @@ public class InitMemoryCache
         if (j > 4194304) {
           i = j;
         }
-        BaseApplicationImpl.sImageCache = new bcpk(Integer.valueOf(i));
+        BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf(i));
         BaseApplicationImpl.sImageCacheSize = j;
       } while (!QLog.isColorLevel());
       QLog.d("MemoryCache", 2, "memory size:" + j);
@@ -63,7 +63,7 @@ public class InitMemoryCache
       if ((BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 2))
       {
         l = MemoryManager.a() * 3L / 16L;
-        BaseApplicationImpl.sImageCache = new bcpk(Integer.valueOf((int)l));
+        BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf((int)l));
         BaseApplicationImpl.sImageCacheSize = (int)l;
         return true;
       }
@@ -72,7 +72,7 @@ public class InitMemoryCache
     if (j > 4194304) {
       i = j;
     }
-    BaseApplicationImpl.sImageCache = new bcpk(Integer.valueOf(i));
+    BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf(i));
     BaseApplicationImpl.sImageCacheSize = j;
     return true;
   }

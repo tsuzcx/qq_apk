@@ -1,51 +1,36 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class atic
-  extends bbip<bbmy, bbvg>
+  implements blih
 {
-  public atic(ListView paramListView, aobu paramaobu, List<bbmy> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public atic(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramaobu, paramList);
-    if (paramString == null) {
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
+      }
       return;
     }
-    if (paramString.size() == 1)
-    {
-      paramListView = (athz)paramString.get(0);
-      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        paramaobu = new ArrayList();
-        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (FileManagerEntity)paramList.next();
-          paramQQAppInterface = new athz();
-          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
-          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
-          paramaobu.add(paramQQAppInterface);
-        }
-        a(paramaobu);
-        return;
-      }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.f + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
     }
-    a(paramString);
-  }
-  
-  protected bbps<bbmy, bbvg> a(int paramInt)
-  {
-    return new atie(FileSearchFragment.a(this.a));
-  }
-  
-  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new atif(paramViewGroup);
+    if (paramInt == 0)
+    {
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
   }
 }
 

@@ -1,12 +1,16 @@
-public abstract interface axqy
+import com.tencent.mobileqq.music.QQPlayerService;
+
+public class axqy
+  implements aqva
 {
-  public abstract void a(int paramInt);
+  public axqy(QQPlayerService paramQQPlayerService) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void onServiceSyncSucc(boolean paramBoolean)
+  {
+    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
+      QQPlayerService.a(this.a).e();
+    }
+  }
 }
 
 

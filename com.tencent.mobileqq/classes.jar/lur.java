@@ -1,83 +1,133 @@
-public class lur
-  extends ltv
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
+
+public abstract class lur
 {
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  public float a;
+  public int a;
+  public long a;
+  public Matrix a;
+  public Rect a;
+  public lvr a;
+  public float b;
+  public float c;
+  public float d = 1.0F;
   
-  public void a(long paramLong)
+  public lur()
   {
-    paramLong -= this.a;
-    int i1 = 0;
-    float f2 = 1.0F;
-    int m = this.jdField_b_of_type_Int;
-    int n = this.jdField_c_of_type_Int;
-    int i;
-    float f1;
-    int j;
-    int k;
-    if ((paramLong > 2333L) && (paramLong < 2666L))
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  }
+  
+  public float a()
+  {
+    return this.d;
+  }
+  
+  protected float a(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 + paramInt2) / 2;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Rect a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preRotate(this.c, this.jdField_a_of_type_Float, this.b);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(this.d, this.d, this.jdField_a_of_type_Float, this.b);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.c != paramFloat)
     {
-      i = (int)(255L * (paramLong - 2333L) / 333L);
-      f1 = (0.5F * (float)(2666L + paramLong) - 2333.0F) / 333.0F;
-      j = (int)((this.d * paramLong + this.jdField_b_of_type_Long) / 333L);
-      k = (int)((paramLong * this.e + this.jdField_c_of_type_Long) / 333L);
+      this.c = paramFloat;
+      a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = 1;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    float f1 = a(paramInt1, paramInt3);
+    float f2 = b(paramInt2, paramInt4);
+    paramInt1 = 0;
+    if (this.jdField_a_of_type_Float != f1)
+    {
+      this.jdField_a_of_type_Float = f1;
+      paramInt1 = 1;
+    }
+    if (this.b != f2)
+    {
+      this.b = f2;
+      paramInt1 = i;
     }
     for (;;)
     {
-      a(i);
-      b(f1);
-      a(j, k, this.f + j, this.g + k);
+      if (paramInt1 != 0) {
+        a();
+      }
       return;
-      if ((paramLong >= 2666L) && (paramLong <= 4631L))
-      {
-        i = 255;
-        k = n;
-        j = m;
-        f1 = f2;
-      }
-      else
-      {
-        k = n;
-        j = m;
-        f1 = f2;
-        i = i1;
-        if (paramLong > 4631L)
-        {
-          k = n;
-          j = m;
-          f1 = f2;
-          i = i1;
-          if (paramLong < 4798L)
-          {
-            i = (int)((paramLong - 4798L) * 255L / -167L);
-            k = n;
-            j = m;
-            f1 = f2;
-          }
-        }
-      }
     }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public abstract void a(long paramLong);
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 44 / 750);
-    this.jdField_c_of_type_Int = (paramInt2 - paramInt1 * 624 / 750);
-    paramInt3 = paramInt1 * 154 / 750;
-    paramInt4 = paramInt1 * 537 / 750;
-    this.f = (paramInt1 * 221 / 750);
-    this.g = (paramInt1 * 175 / 750);
-    this.d = (paramInt1 * -110 / 750);
-    this.e = (paramInt1 * -87 / 750);
-    this.jdField_b_of_type_Long = (paramInt3 * 2666L - this.jdField_b_of_type_Int * 2333L);
-    this.jdField_c_of_type_Long = ((paramInt2 - paramInt4) * 2666L - this.jdField_c_of_type_Int * 2333L);
+    if (this.jdField_a_of_type_Lvr != null)
+    {
+      paramCanvas.save();
+      paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      paramPaint.setAlpha(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Lvr.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
+      paramCanvas.restore();
+    }
   }
+  
+  protected float b(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 + paramInt2) / 2;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Lvr != null)
+    {
+      this.jdField_a_of_type_Lvr.a();
+      this.jdField_a_of_type_Lvr = null;
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+  }
+  
+  public void b(float paramFloat)
+  {
+    if (this.d != paramFloat)
+    {
+      this.d = paramFloat;
+      a();
+    }
+  }
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

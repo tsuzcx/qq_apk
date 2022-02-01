@@ -1,50 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
-public abstract class aara
-  extends niv
+public class aara
+  implements bliz
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
+  public aara(FollowTextView paramFollowTextView, blir paramblir) {}
   
-  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, paramBundle, "", anni.a(2131714046));
+    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
       return;
     }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
+    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
+    switch (paramInt)
     {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label133;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
-      {
-        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
-        return;
-      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      a(false, -1, paramBundle, "", anni.a(2131714042));
+      this.jdField_a_of_type_Blir.dismiss();
       return;
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
     }
-    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
-    return;
-    label133:
-    a(false, -1, paramBundle, "", anni.a(2131714050));
   }
 }
 

@@ -1,8 +1,12 @@
-public class sxw
+public abstract interface sxw
 {
-  public long a;
-  public String a;
-  public String b;
+  public abstract int a();
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

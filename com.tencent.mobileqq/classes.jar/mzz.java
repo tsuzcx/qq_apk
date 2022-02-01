@@ -1,22 +1,87 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.avgame.gameroom.GameRoomFragment;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.avgame.ui.AVGameOverlayFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class mzz
-  implements DialogInterface.OnClickListener
 {
-  public mzz(GameRoomFragment paramGameRoomFragment) {}
+  private BroadcastReceiver a;
+  public boolean a;
+  private boolean b = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private mzz()
   {
-    paramDialogInterface.cancel();
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    while (paramInt != 1) {
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new naa(this);
+  }
+  
+  public static mzz a()
+  {
+    return nab.a;
+  }
+  
+  private void c()
+  {
+    try
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
+      localIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
+      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
       return;
     }
-    this.a.a.a(false, 1);
-    this.a.e();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public boolean a(int paramInt, String paramString, mze parammze)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("GlobalExitRoomManagement", 2, "onRoomSelfExit: exitType:" + paramInt + "  exitRoomTip:" + paramString);
+    }
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      if ((paramInt != 0) && (!this.jdField_a_of_type_Boolean) && (this.b))
+      {
+        parammze = new Intent();
+        parammze.putExtra("type", 1);
+        parammze.putExtra("tip", paramString);
+        parammze.putExtra("public_fragment_window_feature", 1);
+        parammze.setFlags(268435456);
+        afez.a(BaseApplicationImpl.getContext(), parammze, PublicTransFragmentActivity.class, AVGameOverlayFragment.class);
+      }
+      return bool;
+      paramInt = 0;
+      continue;
+      bool = true;
+      paramInt = 1;
+      continue;
+      paramInt = 1;
+      continue;
+      paramInt = 0;
+    }
+  }
+  
+  public void b()
+  {
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 

@@ -1,17 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class avtv
-  implements bkhy
+  implements DialogInterface.OnClickListener
 {
-  public avtv(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, avuv paramavuv) {}
+  public avtv(HotPicPageView paramHotPicPageView, avub paramavub, int paramInt) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Avuv.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Avub, this.jdField_a_of_type_Int);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
   }
 }
 

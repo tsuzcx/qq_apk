@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.ocr;
 
-import anni;
-import aygh;
-import ayjb;
+import anzj;
+import ayza;
+import azbu;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class OCRResultFragmentNew$7$2
   implements Runnable
 {
-  public OCRResultFragmentNew$7$2(aygh paramaygh, String paramString) {}
+  public OCRResultFragmentNew$7$2(ayza paramayza, String paramString) {}
   
   public void run()
   {
     try
     {
-      OCRResultFragmentNew.a(this.jdField_a_of_type_Aygh.a).dismiss();
-      OCRResultFragmentNew.a(this.jdField_a_of_type_Aygh.a).a(0);
-      OCRResultFragmentNew.a(this.jdField_a_of_type_Aygh.a, true);
-      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Aygh.a), 2, anni.a(2131706593), 1).a();
+      OCRResultFragmentNew.a(this.jdField_a_of_type_Ayza.a).dismiss();
+      OCRResultFragmentNew.a(this.jdField_a_of_type_Ayza.a).a(0);
+      OCRResultFragmentNew.a(this.jdField_a_of_type_Ayza.a, true);
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Ayza.a), 2, anzj.a(2131706700), 1).a();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
       {
-        this.jdField_a_of_type_Aygh.a.a(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Ayza.a.a(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Aygh.a), 1, anni.a(2131706587), 0).a();
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Ayza.a), 1, anzj.a(2131706694), 0).a();
       return;
     }
     catch (Exception localException)

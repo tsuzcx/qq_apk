@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import anni;
-import aper;
-import apgl;
+import anzj;
+import apsh;
+import apub;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -14,20 +14,20 @@ class ARScanEntryView$37
   
   public void run()
   {
-    aper localaper = this.this$0.a.a();
-    boolean bool1 = localaper.c();
-    boolean bool2 = localaper.d();
+    apsh localapsh = this.this$0.a.a();
+    boolean bool1 = localapsh.c();
+    boolean bool2 = localapsh.d();
     QLog.d("AREngine_ARScanEntryView", 1, "startDownloadTimeoutCheck, AR组件加载超, mIsDownloadTimeout[" + ARScanEntryView.e(this.this$0) + "],isBaseSoReady:=" + bool1 + ",isFaceSoReady:=" + bool2);
     ARScanEntryView.c(this.this$0, true);
     if (!bool1) {
-      this.this$0.d_(anni.a(2131699558));
+      this.this$0.d_(anzj.a(2131699665));
     }
     do
     {
       return;
       this.this$0.j();
     } while (ARScanEntryView.c(this.this$0));
-    QQToast.a(BaseApplicationImpl.getContext(), 2131690076, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2131690084, 0).a();
   }
 }
 

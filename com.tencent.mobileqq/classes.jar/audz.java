@@ -1,12 +1,18 @@
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public abstract interface audz
-  extends View.OnTouchListener
+class audz
+  extends BroadcastReceiver
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  audz(audx paramaudx) {}
   
-  public abstract void b(View paramView, int paramInt1, int paramInt2);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
+      this.a.a();
+    }
+  }
 }
 
 

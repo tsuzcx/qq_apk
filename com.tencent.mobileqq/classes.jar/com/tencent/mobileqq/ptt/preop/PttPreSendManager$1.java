@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ptt.preop;
 
-import azub;
+import bamr;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class PttPreSendManager$1
   implements Runnable
 {
-  public PttPreSendManager$1(azub paramazub, BaseChatPie paramBaseChatPie) {}
+  public PttPreSendManager$1(bamr parambamr, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {

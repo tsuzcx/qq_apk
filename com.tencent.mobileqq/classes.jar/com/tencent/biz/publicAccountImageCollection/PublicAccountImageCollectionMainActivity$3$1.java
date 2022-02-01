@@ -1,16 +1,16 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.widget.TextView;
-import uwf;
+import uxq;
 
 public class PublicAccountImageCollectionMainActivity$3$1
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$1(uwf paramuwf, int paramInt) {}
+  public PublicAccountImageCollectionMainActivity$3$1(uxq paramuxq, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Uwf.a.b.setText("" + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Uxq.a.b.setText("" + this.jdField_a_of_type_Int);
   }
 }
 

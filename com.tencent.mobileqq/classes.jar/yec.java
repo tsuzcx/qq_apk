@@ -1,41 +1,49 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class yec
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public yec(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    switch (paramInt)
     {
-      Object localObject = ((TextView)paramView).getText();
-      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
-      paramView = (TextView)paramView;
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramView.getTotalPaddingLeft();
-      int n = paramView.getTotalPaddingTop();
-      int i1 = paramView.getScrollX();
-      int i2 = paramView.getScrollY();
-      paramMotionEvent = paramView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length != 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramView);
-        }
-        return true;
-      }
     }
-    return false;
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
+        }
+        noe.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
+        try
+        {
+          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
+          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
+            }
+            paramDialogInterface.send();
+          }
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
+          return;
+        }
+        catch (Throwable paramDialogInterface) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
   }
 }
 

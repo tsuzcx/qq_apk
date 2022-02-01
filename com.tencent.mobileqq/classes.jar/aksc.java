@@ -1,32 +1,47 @@
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aksc
+class aksc
+  implements bliz
 {
-  int jdField_a_of_type_Int = 0;
-  aksf jdField_a_of_type_Aksf;
-  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<DownloadParam> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
+  aksc(aksb paramaksb, blir paramblir) {}
   
-  public aksc(List<DownloadParam> paramList, aksf paramaksf)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramaksf;
-    Object localObject;
-    this.jdField_a_of_type_Aksf = localObject;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if ((this.jdField_a_of_type_Aksb.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_Aksb.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
+    }
+    switch (this.jdField_a_of_type_Aksb.jdField_a_of_type_ArrayOfInt[paramInt])
     {
-      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new aksd(this));
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Blir.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.jdField_a_of_type_Aksb.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
+          ((BaseActivity)this.jdField_a_of_type_Aksb.jdField_a_of_type_AndroidAppActivity).requestPermissions(new aksd(this), 1, new String[] { "android.permission.CAMERA" });
+        } else {
+          aksb.a(this.jdField_a_of_type_Aksb);
+        }
+      }
+      else
+      {
+        aksb.a(this.jdField_a_of_type_Aksb);
+        continue;
+        aksj.b(this.jdField_a_of_type_Aksb.jdField_a_of_type_AndroidAppActivity, aksj.d(this.jdField_a_of_type_Aksb.c));
+      }
     }
   }
 }

@@ -1,54 +1,19 @@
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
 
 public class blpl
-  extends blpb
+  extends StaticLayout
 {
-  public blpl(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
-  
-  public void a(blpa paramblpa)
+  public blpl(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4)
   {
-    boolean bool = false;
-    JSONObject localJSONObject = paramblpa.a();
-    if (localJSONObject == null) {}
-    try
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore response json is null");
-      return;
-    }
-    catch (JSONException paramblpa)
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore parse failed: " + paramblpa.getMessage());
-      return;
-    }
-    int i = localJSONObject.getInt("ret");
-    paramblpa = localJSONObject.getString("msg");
-    localJSONObject = localJSONObject.getJSONObject("data");
-    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore ret=" + i + "|msg=" + paramblpa);
-      return;
-    }
-    i = localJSONObject.optInt("err_code", 0);
-    paramblpa = localJSONObject.optString("err_msg");
-    if (i == 0) {
-      bool = true;
-    }
-    blps.b(ForceUserUpdateActivity.a(this.a), bool);
-    if (bool)
-    {
-      blpu.d("ForceUserUpdateActivity", "onReceiveData: UpdateToQQBookstore succeed");
-      ForceUserUpdateActivity.c(this.a);
-      return;
-    }
-    ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore errMsg=" + paramblpa);
+    super(paramCharSequence, paramInt1, paramInt2, paramTextPaint, paramInt3, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt4);
   }
   
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  public int getParagraphDirection(int paramInt)
   {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: UpdateToQQBookstore error: " + paramString);
+    return 1;
   }
 }
 

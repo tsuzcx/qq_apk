@@ -1,15 +1,34 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.apollo.GLTextureView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XListView;
 
 public class amjt
-  implements View.OnLayoutChangeListener
+  extends Handler
 {
-  public amjt(GLTextureView paramGLTextureView) {}
+  public amjt(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.surfaceChanged(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      QQToast.a(BaseApplication.getContext(), 1, 2131693965, 0).b(this.a.getTitleBarHeight());
+      return;
+      if (this.a.jdField_a_of_type_Bjbs == null) {
+        this.a.jdField_a_of_type_Bjbs = new bjbs(this.a, this.a.getTitleBarHeight());
+      }
+      this.a.jdField_a_of_type_Bjbs.c(2131698420);
+    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bjbs.isShowing()));
+    this.a.jdField_a_of_type_Bjbs.show();
   }
 }
 

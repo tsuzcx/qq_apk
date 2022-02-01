@@ -1,18 +1,12 @@
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
 
-public class tvp
+class tvp
 {
-  public int a;
-  public long a;
-  public ReadInJoyArticle a;
-  public String a;
-  public String b = "";
+  WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<tvq> b;
   
-  public tvp()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-  }
+  private tvp(tvn paramtvn) {}
 }
 
 

@@ -1,64 +1,68 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
-
 public class bewy
 {
-  protected long a;
-  aark a;
-  protected bevk a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  private bewy(long paramLong, TroopFileTransferManager.Item paramItem)
+  public bewy()
   {
-    this.jdField_a_of_type_Aark = new bewz(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      return;
-    }
+    this.jdField_a_of_type_Int = 80;
   }
   
-  public static bewy a(long paramLong, TroopFileTransferManager.Item paramItem)
+  public String a(String paramString)
   {
-    if (paramLong == 0L)
+    Object localObject1 = null;
+    Object localObject3 = null;
+    Object localObject2 = null;
+    if (paramString != null)
     {
-      bevx.a("TroopFilePreviewWorker", bevx.a, "getWoker. troopuin=0");
-      return null;
+      if (!this.b) {
+        break label109;
+      }
+      if (!paramString.startsWith("http://")) {
+        break label72;
+      }
+      localObject1 = "http://" + this.jdField_a_of_type_JavaLangString;
     }
-    if (paramItem == null)
+    for (;;)
     {
-      bevx.a("TroopFilePreviewWorker", bevx.a, "getWoker. item=null");
-      return null;
+      localObject1 = (String)localObject1 + "/";
+      return localObject1;
+      label72:
+      localObject1 = localObject2;
+      if (paramString.startsWith("https://")) {
+        localObject1 = "https://" + this.jdField_a_of_type_JavaLangString;
+      }
     }
-    if (paramItem.Id == null)
+    label109:
+    if (paramString.startsWith("http://")) {
+      if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaLangString.startsWith("["))) {
+        localObject1 = "http://[" + this.jdField_a_of_type_JavaLangString + "]";
+      }
+    }
+    while (this.jdField_a_of_type_Int != 80)
     {
-      bevx.a("TroopFilePreviewWorker", bevx.a, "getWoker. item.id=null");
-      return null;
+      return (String)localObject1 + ":" + this.jdField_a_of_type_Int + "/";
+      localObject1 = "http://" + this.jdField_a_of_type_JavaLangString;
+      continue;
+      localObject1 = localObject3;
+      if (paramString.startsWith("https://")) {
+        if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaLangString.startsWith("["))) {
+          localObject1 = "https://[" + this.jdField_a_of_type_JavaLangString + "]";
+        } else {
+          localObject1 = "https://" + this.jdField_a_of_type_JavaLangString;
+        }
+      }
     }
-    return new bewy(paramLong, paramItem);
+    return (String)localObject1 + "/";
   }
   
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
+  public void a() {}
   
-  public boolean a()
+  public String toString()
   {
-    QQAppInterface localQQAppInterface = bevv.a();
-    if (localQQAppInterface == null)
-    {
-      bevx.a("TroopFilePreviewWorker", bevx.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo app=null");
-      return false;
-    }
-    bevx.c("TroopFilePreviewWorker", bevx.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo");
-    this.jdField_a_of_type_Bevk = aaqt.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 0, true, false, this.jdField_a_of_type_Aark);
-    return true;
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
   }
 }
 

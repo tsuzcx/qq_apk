@@ -1,13 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class advl
   implements DialogInterface.OnClickListener
 {
-  public advl(ChatHistoryImageView paramChatHistoryImageView) {}
+  public advl(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.b();
+  }
 }
 
 

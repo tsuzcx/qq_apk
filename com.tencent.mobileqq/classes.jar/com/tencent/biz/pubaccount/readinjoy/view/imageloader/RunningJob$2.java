@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
-import tds;
+import suk;
 
 class RunningJob$2
   implements Runnable
 {
-  RunningJob$2(RunningJob paramRunningJob, tds paramtds) {}
+  RunningJob$2(RunningJob paramRunningJob, suk paramsuk) {}
   
   public void run()
   {

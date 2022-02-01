@@ -1,16 +1,16 @@
 class atpz
-  implements atwo
+  implements atqq
 {
-  atpz(atpy paramatpy) {}
+  atpz(atpa paramatpa) {}
   
-  public void a()
+  public void a(Object[] paramArrayOfObject)
   {
-    atpy.a(this.a);
+    atpa.d(this.a, paramArrayOfObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atpz
  * JD-Core Version:    0.7.0.1
  */

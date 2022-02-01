@@ -1,28 +1,47 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class wvw
-  extends wvn
+class wvw
+  extends SimpleObserver<List<xiw>>
 {
-  public int a;
-  public String a;
-  public List<VideoCollectionItem> a;
-  public String b;
-  public boolean e = true;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public wvw(String paramString, ErrorMessage paramErrorMessage)
+  wvw(wvs paramwvs) {}
+  
+  public void a(List<xiw> paramList)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    yuk.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
+    super.onNext(paramList);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      xiw localxiw = (xiw)paramList.get(i);
+      if (!localxiw.a) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localxiw.b);
+      }
+      i += 1;
+    }
   }
   
-  public String toString()
+  public void onCancel()
   {
-    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    super.onCancel();
+  }
+  
+  public void onComplete()
+  {
+    yuk.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
+    super.onComplete();
+    this.jdField_a_of_type_Wvs.a(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    yuk.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
+    super.onError(paramError);
+    this.jdField_a_of_type_Wvs.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

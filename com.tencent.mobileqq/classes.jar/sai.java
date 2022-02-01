@@ -1,36 +1,78 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat;
+import com.tencent.superplayer.api.ISPlayerPreDownloader;
+import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class sai
-  implements qzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerPreloader;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader$Listener;", "preloader", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader;", "(Lcom/tencent/superplayer/api/ISPlayerPreDownloader;)V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "destory", "", "isVideoCached", "", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "onPrepareDownloadProgressUpdate", "p0", "p1", "p2", "p3", "", "p4", "onPrepareError", "onPrepareSuccess", "setPreDownloadListener", "startPreDownload", "videoDurationMs", "preloadDurationMs", "stopPreDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sai
+  implements ISPlayerPreDownloader.Listener, rzw
 {
-  public sai(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  private final ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+  private rzy jdField_a_of_type_Rzy;
   
-  public void a(boolean paramBoolean)
+  public sai(@Nullable ISPlayerPreDownloader paramISPlayerPreDownloader)
   {
-    VideoFeedsPlayActivity.a(this.a, paramBoolean);
-    if (VideoFeedsPlayActivity.a(this.a) != null)
-    {
-      if (VideoFeedsPlayActivity.a(this.a))
-      {
-        VideoFeedsPlayActivity.b(this.a);
-        if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a() != null) && (VideoFeedsPlayActivity.a(this.a).a().d()))
-        {
-          VideoInfo localVideoInfo = VideoFeedsPlayActivity.a(this.a).b();
-          this.a.a(localVideoInfo.g, VideoFeedsPlayActivity.a(this.a).a().b());
-        }
-        VideoFeedsPlayActivity.c(this.a);
-      }
+    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = paramISPlayerPreDownloader;
+  }
+  
+  public int a(@NotNull sae paramsae)
+  {
+    Intrinsics.checkParameterIsNotNull(paramsae, "videoInfo");
+    return 0;
+  }
+  
+  public void a()
+  {
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.stopAllPreDownload();
     }
-    else {
-      return;
+  }
+  
+  public void a(@Nullable rzy paramrzy)
+  {
+    this.jdField_a_of_type_Rzy = paramrzy;
+    paramrzy = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (paramrzy != null) {
+      paramrzy.setOnPreDownloadListener((ISPlayerPreDownloader.Listener)this);
     }
-    VideoFeedsPlayActivity.a(this.a).setVisibility(8);
-    VideoFeedsPlayActivity.a(this.a).setVisibility(8);
+  }
+  
+  public void a(@NotNull sae paramsae, long paramLong1, long paramLong2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramsae, "videoInfo");
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.startPreDownload(saf.a(paramsae), paramLong1, paramLong2);
+    }
+  }
+  
+  public void b()
+  {
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.destory();
+    }
+  }
+  
+  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
+  
+  public void onPrepareError(int paramInt)
+  {
+    rzy localrzy = this.jdField_a_of_type_Rzy;
+    if (localrzy != null) {
+      localrzy.a();
+    }
+  }
+  
+  public void onPrepareSuccess(int paramInt)
+  {
+    rzy localrzy = this.jdField_a_of_type_Rzy;
+    if (localrzy != null) {
+      localrzy.b();
+    }
   }
 }
 

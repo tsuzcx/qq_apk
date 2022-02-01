@@ -1,31 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
 
 public class tnc
-  implements DialogInterface.OnClickListener
+  extends tna
 {
-  public tnc(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(BaseData paramBaseData)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
+    if ((paramBaseData instanceof ProteusInnerData)) {
+      return tpp.a((ProteusInnerData)paramBaseData);
+    }
+    return 20;
+  }
+  
+  protected spi a(View paramView, BaseData paramBaseData)
+  {
+    return new tnd(this, paramView, paramBaseData, this.a);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    Object localObject = null;
+    if (this.a != null) {
+      localObject = (Context)this.a.get();
+    }
+    if ((!(localObject instanceof Activity)) || (((Activity)localObject).getWindow().getAttributes().softInputMode != 4)) {}
+    do
     {
-      paramDialogInterface.put("button", 0);
-      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("cancelBtnText", ""));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
-    }
+      localObject = (InputMethodManager)((Context)localObject).getSystemService("input_method");
+    } while (localObject == null);
+    ((InputMethodManager)localObject).hideSoftInputFromWindow(paramAbsListView.getWindowToken(), 2);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData != null) && (paramBaseData.r == 22);
   }
 }
 

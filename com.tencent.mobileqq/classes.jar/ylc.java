@@ -1,16 +1,17 @@
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-final class ylc
-  implements ymm
+public class ylc
+  implements DialogInterface.OnClickListener
 {
-  ylc(WeakReference paramWeakReference) {}
+  public ylc(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramString = (yle)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((wpf)wpm.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
-    }
+    this.a.f();
+    paramDialogInterface.dismiss();
+    yup.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
   }
 }
 

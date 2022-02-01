@@ -1,110 +1,135 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.avgame.gameroom.video.AVGameLaunchWebHelper.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISPlayerPreDownloader;
-import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import com.tencent.superplayer.api.SuperPlayerVideoInfo;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class neg
-  implements ISPlayerPreDownloader.Listener
 {
-  ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-  private final ConcurrentHashMap<Integer, neh> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new neh(this);
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bjbs jdField_a_of_type_Bjbs;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new AVGameLaunchWebHelper.1(this);
+  private zyc jdField_a_of_type_Zyc;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public neg(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    b();
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "executeCallable");
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    }
+  }
+  
+  private void b()
+  {
+    ((Application)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()).registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+  }
+  
+  private void c()
+  {
+    ((Application)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()).unregisterActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "showProgress mProgressShowing:" + this.jdField_a_of_type_Boolean);
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      try
+      {
+        if (this.jdField_a_of_type_Bjbs == null)
+        {
+          this.jdField_a_of_type_Bjbs = new bjbs(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299011));
+          this.jdField_a_of_type_Bjbs.a(anzj.a(2131707821));
+          this.jdField_a_of_type_Bjbs.c(false);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Bjbs.show();
+        return;
+      }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("AVGameLaunchWebHelper", 2, "");
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "hideProgress  mProgressShowing:" + this.jdField_a_of_type_Boolean);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
+        this.jdField_a_of_type_Bjbs.dismiss();
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVGameLaunchWebHelper", 2, "hide init check progress:" + localException.getMessage());
+      }
+      localException.printStackTrace();
+    }
+  }
   
   public void a()
   {
-    QLog.d("AVGameVideoPreLoadMgr", 1, "destroy");
-    b();
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "release");
+    }
+    e();
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.destory();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = null;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_Zyc != null)
+    {
+      this.jdField_a_of_type_Zyc.a();
+      this.jdField_a_of_type_Zyc = null;
     }
   }
   
-  public void a(String paramString)
+  public void a(Activity paramActivity, Runnable paramRunnable)
   {
-    QLog.d("AVGameVideoPreLoadMgr", 1, "stopPreLoad url:=" + paramString);
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) {}
-    for (;;)
+    QLog.d("AVGameLaunchWebHelper", 2, "preLoadToolProcAndExecuteCallable");
+    if (mvd.a(this.jdField_a_of_type_AndroidAppActivity))
     {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      neh localneh;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localneh = (neh)((Map.Entry)localIterator.next()).getValue();
-      } while (!localneh.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString));
-      for (paramString = localneh; paramString != null; paramString = null)
-      {
-        this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.stopPreDownload(paramString.jdField_a_of_type_Int);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramString.jdField_a_of_type_Int));
-        return;
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    QLog.d("AVGameVideoPreLoadMgr", 1, "preLoadUrl url:=" + paramString);
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getApplication(), 107);
-    }
-    SuperPlayerVideoInfo localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(paramString, 101, bita.d(paramString));
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.setOnPreDownloadListener(this);
-    int i = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.startPreDownload(localSuperPlayerVideoInfo, paramLong1, paramLong2);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), new neh(i, paramString));
-  }
-  
-  public void b()
-  {
-    QLog.d("AVGameVideoPreLoadMgr", 1, "cancelALLPreDoload");
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        int i = ((Integer)localIterator.next()).intValue();
-        this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.stopPreDownload(i);
-      }
-    }
-  }
-  
-  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
-  
-  public void onPrepareError(int paramInt)
-  {
-    Object localObject = (neh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    StringBuilder localStringBuilder = new StringBuilder().append("onPrepareSuccess content:=");
-    if (localObject != null) {}
-    for (localObject = ((neh)localObject).toString();; localObject = null)
-    {
-      QLog.d("AVGameVideoPreLoadMgr", 1, (String)localObject);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+      a(paramRunnable);
       return;
     }
-  }
-  
-  public void onPrepareSuccess(int paramInt)
-  {
-    Object localObject = (neh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    StringBuilder localStringBuilder = new StringBuilder().append("onPrepareSuccess content:=");
-    if (localObject != null) {}
-    for (localObject = ((neh)localObject).toString();; localObject = null)
-    {
-      QLog.d("AVGameVideoPreLoadMgr", 1, (String)localObject);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
-      return;
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Zyc == null) {
+      this.jdField_a_of_type_Zyc = new zyc(paramActivity);
     }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+    this.jdField_a_of_type_Zyc.a("preLoadToolProc", 5000L, new nei(this, paramRunnable, l));
   }
 }
 

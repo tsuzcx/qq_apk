@@ -1,22 +1,44 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
 import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class adnr
-  extends ayeu
+class adnr
+  extends SimpleObserver<axeh>
 {
-  public adnr(AuthDevActivity paramAuthDevActivity) {}
+  adnr(adnn paramadnn, adnx paramadnx) {}
   
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public void a(axeh paramaxeh)
   {
-    AuthDevActivity.a(this.a, paramSecureCheckResponse);
+    adnx localadnx = this.jdField_a_of_type_Adnx;
+    if (paramaxeh.c == 1) {}
+    for (int i = 2;; i = 3)
+    {
+      localadnx.a(paramaxeh, i);
+      return;
+    }
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onError(@NonNull Error paramError)
   {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    int i;
+    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
+      i = 4;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Adnx.a(null, i);
+      return;
+      if ((paramError instanceof AppInfoError)) {
+        i = ((AppInfoError)paramError).type;
+      } else {
+        i = 0;
+      }
+    }
   }
 }
 

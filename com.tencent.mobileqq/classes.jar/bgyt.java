@@ -1,22 +1,87 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-public final class bgyt
-  implements EIPCResultCallback
+public class bgyt
+  extends QIPCModule
 {
-  public bgyt(bgyq parambgyq) {}
+  public static bgyt a;
+  private bgyv a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private bgyt()
   {
-    if (paramEIPCResult.code != 0)
+    super("Module_CheckInServer");
+  }
+  
+  public static bgyt a()
+  {
+    if (jdField_a_of_type_Bgyt == null) {}
+    try
     {
-      this.a.a(2, "", "");
-      return;
+      if (jdField_a_of_type_Bgyt == null) {
+        jdField_a_of_type_Bgyt = new bgyt();
+      }
+      return jdField_a_of_type_Bgyt;
     }
-    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
-    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Bgyv != null)
+    {
+      this.jdField_a_of_type_Bgyv.d();
+      this.jdField_a_of_type_Bgyv = null;
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "notifyUploadResult callbackId" + paramInt + ", data = " + paramBundle.toString());
+    }
+    paramBundle = EIPCResult.createResult(0, paramBundle);
+    a();
+    callbackResult(paramInt, paramBundle);
+  }
+  
+  public void onAccountChange()
+  {
+    super.onAccountChange();
+    a();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
+    }
+    a();
+    bgys localbgys;
+    if (("ACTION_UPLOAD_PIC".equals(paramString)) || ("ACTION_UPLOAD_VIDEO".equals(paramString)))
+    {
+      localbgys = new bgys();
+      if ("ACTION_UPLOAD_PIC".equals(paramString))
+      {
+        localbgys.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+        paramString = new bgyu(localbgys, paramInt);
+        this.jdField_a_of_type_Bgyv = paramString;
+        paramString.a();
+      }
+    }
+    for (;;)
+    {
+      return null;
+      localbgys.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+      localbgys.b = paramBundle.getString("BUNDLE_NAME_COVER");
+      localbgys.jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
+      paramString = new bgyx(localbgys, paramInt);
+      break;
+      if ("ACTION_CANCEL".equals(paramString)) {
+        a();
+      }
+    }
   }
 }
 

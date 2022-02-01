@@ -10,7 +10,7 @@ class ReportMediaPlayer$4
   
   public boolean onAudioInfo(IAudioPlayer paramIAudioPlayer, int paramInt1, int paramInt2)
   {
-    return this.val$listener.onInfo(this.this$0, paramInt1, paramInt2);
+    return (this.val$listener != null) && (this.val$listener.onInfo(this.this$0, paramInt1, paramInt2));
   }
 }
 

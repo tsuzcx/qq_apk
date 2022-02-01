@@ -1,19 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.paster.InteractPasterParcelData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-public final class bool
-  implements Parcelable.Creator<InteractPasterParcelData>
+public class bool
+  implements Animation.AnimationListener
 {
-  public InteractPasterParcelData a(Parcel paramParcel)
+  public bool(AEProviderContainerView paramAEProviderContainerView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new InteractPasterParcelData(paramParcel);
+    this.a.setAlpha(1.0F);
+    this.a.setVisibility(8);
+    if (AEProviderContainerView.a(this.a) != null) {
+      AEProviderContainerView.a(this.a).a(false, 150);
+    }
+    if (AEProviderContainerView.a(this.a) != null) {
+      AEProviderContainerView.a(this.a).a(131075, new Object[0]);
+    }
   }
   
-  public InteractPasterParcelData[] a(int paramInt)
-  {
-    return new InteractPasterParcelData[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

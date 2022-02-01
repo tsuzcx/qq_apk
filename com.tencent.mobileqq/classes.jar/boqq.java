@@ -1,18 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class boqq
-  implements Parcelable.Creator<DynamicTextItem.TextMap>
+public class boqq
+  implements Cloneable
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public List<boqu> a;
+  public boolean a;
+  public int b;
+  public String b;
+  
+  public boqq()
   {
-    return new DynamicTextItem.TextMap(paramParcel);
+    this.jdField_b_of_type_Int = 2;
   }
   
-  public DynamicTextItem.TextMap[] a(int paramInt)
+  public boqq(String paramString)
   {
-    return new DynamicTextItem.TextMap[paramInt];
+    this.jdField_b_of_type_Int = 2;
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boqq a()
+  {
+    boqq localboqq = new boqq();
+    localboqq.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localboqq.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localboqq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localboqq.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localboqq.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localboqq.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localboqq.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    return localboqq;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.hashCode()) {
+      return i + 31;
+    }
   }
 }
 

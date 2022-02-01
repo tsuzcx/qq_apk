@@ -12,12 +12,13 @@ import org.json.JSONObject;
 public class AppConfigInfo
 {
   private static final boolean mEnableSubpakPathIntercapt = false;
-  public String PackageToolVersion;
   private Map<String, String> configStrs = new HashMap();
+  public boolean darkmode;
   public boolean debug;
   public String entryPagePath;
   public PageInfo globalPageInfo;
   public NetworkTimeoutInfo networkTimeoutInfo;
+  public String packageToolVersion;
   private Map<String, PageInfo> pagesInfo;
   public List<String> pagesPathList;
   public JSONObject permissionInfo;
@@ -104,8 +105,9 @@ public class AppConfigInfo
       localObject1 = paramJSONObject.optJSONArray("subPackages");
     }
     localAppConfigInfo.subPackRoots = getSubPackRoots((JSONArray)localObject1);
-    localAppConfigInfo.PackageToolVersion = paramJSONObject.optString("PackageToolVersion");
+    localAppConfigInfo.packageToolVersion = paramJSONObject.optString("PackageToolVersion");
     localAppConfigInfo.permissionInfo = paramJSONObject.optJSONObject("permission");
+    localAppConfigInfo.darkmode = paramJSONObject.optBoolean("darkmode");
     return localAppConfigInfo;
   }
   
@@ -194,7 +196,7 @@ public class AppConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.AppConfigInfo
  * JD-Core Version:    0.7.0.1
  */

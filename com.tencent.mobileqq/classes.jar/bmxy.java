@@ -1,25 +1,59 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.MsgPhotoView;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQUserPersonalData;
+import cooperation.qzone.util.QZLog;
 
-final class bmxy
-  implements UploadManager.IUploadStatusListener
+public class bmxy
+  implements View.OnClickListener
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  public bmxy(MsgPhotoView paramMsgPhotoView) {}
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    Object localObject = this.a.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.mqUserPersonalData;
+    if (localObject == null)
     {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      bnax.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
-    }
-    label26:
-    while (paramStatusInfo.state != 5) {
+      QZLog.i("MsgPhotoView", 1, " vip icon click data = null");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    bnax.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+    String str = "";
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      if (QZLog.isColorLevel()) {
+        QZLog.i("MsgPhotoView", 2, "MsgVip vip icon click url = " + str);
+      }
+      localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", str);
+      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      break;
+      str = ((MQUserPersonalData)localObject).mBVJumpUrl;
+      bntm.a(12, 2);
+      continue;
+      str = ((MQUserPersonalData)localObject).mYJumpUrl;
+      localObject = paramView.getTag();
+      if ((localObject != null) && ((localObject instanceof Boolean)))
+      {
+        if (((Boolean)localObject).booleanValue()) {}
+        for (int i = 11;; i = 10)
+        {
+          bntm.a(i, 2);
+          break;
+        }
+        str = ((MQUserPersonalData)localObject).mLYJumpUrl;
+        bntm.a(13, 2);
+      }
+    }
   }
 }
 

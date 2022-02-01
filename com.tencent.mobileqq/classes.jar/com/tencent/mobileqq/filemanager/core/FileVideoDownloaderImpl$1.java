@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atdt;
-import atea;
+import atvn;
+import atvu;
 
 public class FileVideoDownloaderImpl$1
   implements Runnable
 {
-  public FileVideoDownloaderImpl$1(atdt paramatdt, String paramString) {}
+  public FileVideoDownloaderImpl$1(atvn paramatvn, String paramString) {}
   
   public void run()
   {
-    atdt.a(this.this$0).a(this.a);
+    atvn.a(this.this$0).a(this.a);
   }
 }
 

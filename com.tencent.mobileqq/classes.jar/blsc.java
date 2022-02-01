@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
 
-final class blsc
-  implements DialogInterface.OnClickListener
+abstract interface blsc
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

@@ -1,22 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class skf
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  skf(ske paramske) {}
+  skf(ske paramske, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo, ImageView paramImageView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if (ske.a(this.jdField_a_of_type_Ske) != null) {
+      ske.a(this.jdField_a_of_type_Ske).a(this.jdField_a_of_type_Int);
     }
-    if (ske.a(this.a) != null) {
-      ske.a(this.a).a(ske.a(this.a), ske.b(this.a), false, false);
+    TabChannelCoverInfo localTabChannelCoverInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo;
+    int j = oof.b;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      oof.a("0X8009496", localTabChannelCoverInfo, j, i, this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    ske.a(this.a, true);
-    ske.b(this.a, false);
   }
 }
 

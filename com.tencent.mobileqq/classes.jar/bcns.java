@@ -1,42 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
 
-class bcns
-  implements akse
+public class bcns
+  extends bcnt
 {
-  bcns(bcnp parambcnp, boolean paramBoolean1, boolean paramBoolean2, bcoq parambcoq) {}
+  public Button a;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public bcns(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downloadSo] resCode=" + paramInt + ",pathRes=" + paramPathResult);
+    super(paramViewGroup, paramInt);
+  }
+  
+  public Button a()
+  {
+    return this.a;
+  }
+  
+  protected void a()
+  {
+    this.h = ((TextView)this.b.findViewById(2131371827));
+    this.e = ((ImageView)this.b.findViewById(2131361795));
+    this.i = ((TextView)this.b.findViewById(2131376588));
+    this.k = ((TextView)this.b.findViewById(2131377861));
+    this.a = ((Button)this.b.findViewById(2131376575));
+    this.a.setText(anzj.a(2131689551));
+    this.j = ((TextView)this.b.findViewById(2131376585));
+    if ((this.e instanceof ThemeImageView)) {
+      ((ThemeImageView)this.e).setSupportMaskView(true);
     }
-    VACDReportUtil.a(this.jdField_a_of_type_Bcnp.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
-    this.jdField_a_of_type_Bcnp.jdField_a_of_type_Int = paramPathResult.subErrCode;
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      this.jdField_a_of_type_Bcnp.jdField_a_of_type_Boolean = true;
-      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Bcnp.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.soFileName).getAbsolutePath();
-      bcnp.a(this.jdField_a_of_type_Bcnp, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Bcoq, paramPathResult, this.jdField_a_of_type_Bcnp.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.crc, 2);
-      return;
-    }
-    if (paramInt == 2)
-    {
-      bcnp.a(this.jdField_a_of_type_Bcnp, 4);
-      return;
-    }
-    if (paramPathResult.subErrCode == 404)
-    {
-      bcnp.a(this.jdField_a_of_type_Bcnp, 9);
-      return;
-    }
-    bcnp.a(this.jdField_a_of_type_Bcnp, 3);
   }
 }
 

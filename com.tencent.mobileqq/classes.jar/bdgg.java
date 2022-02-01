@@ -1,33 +1,15 @@
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.soload.SoLoadInfo;
 
-public class bdgg
-  extends bdgj
-  implements bden
+class bdgg
+  implements bdgs
 {
-  protected String b;
+  bdgg(bdgf parambdgf) {}
   
-  public bdgg(SpriteNativeView paramSpriteNativeView, String paramString)
+  public void a(@NonNull SoLoadInfo paramSoLoadInfo)
   {
-    super(paramSpriteNativeView);
-    this.b = paramString;
-  }
-  
-  protected ImageView a()
-  {
-    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    int i = bdgf.a(this.a, paramSoLoadInfo);
+    bdgf.a(this.a, i);
   }
 }
 

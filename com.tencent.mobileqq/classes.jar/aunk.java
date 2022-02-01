@@ -1,27 +1,42 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public class aunk
-  implements CompoundButton.OnCheckedChangeListener
+final class aunk
+  implements aunv
 {
-  public aunk(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  aunk(String paramString1, String paramString2) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    int i = 1;
-    bkfl.a(true, paramBoolean);
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      bcst.b(null, "CliOper", "", str, "0X800A6E3", "0X800A6E3", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (paramBitmap == null) {
       return;
-      i = 0;
+    }
+    try
+    {
+      auog.a(paramBitmap, this.a);
+      paramBitmap.recycle();
+      int i = ff.a(this.b);
+      ff.a(this.a, i);
+      return;
+    }
+    catch (FileNotFoundException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (IOException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
     }
   }
 }

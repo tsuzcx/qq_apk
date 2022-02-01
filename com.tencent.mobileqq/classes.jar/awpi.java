@@ -1,68 +1,75 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.Button;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
-import com.tencent.mobileqq.widget.navbar.NavBarCommon;
+import android.support.annotation.Nullable;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import org.jetbrains.annotations.NotNull;
 
 public class awpi
-  implements Handler.Callback
 {
-  public awpi(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int = -1;
+  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  private String jdField_a_of_type_JavaLangString;
   
-  public boolean handleMessage(Message paramMessage)
+  public awpi(String paramString, LatLng paramLatLng, double paramDouble)
   {
-    if (paramMessage.what == 1)
-    {
-      if (this.a.getActivity() == null) {
-        return true;
-      }
-      if (MsgBackupPCAuthFragment.a(this.a) > 0)
-      {
-        if (MsgBackupPCAuthFragment.a(this.a) == 60)
-        {
-          MsgBackupPCAuthFragment.a(this.a, 1);
-          MsgBackupPCAuthFragment.a(this.a).setLeftBackVisible(0);
-          MsgBackupPCAuthFragment.b(this.a).setRightViewTextVisible(8);
-        }
-        MsgBackupPCAuthFragment.b(this.a);
-        this.a.b.setText(this.a.getString(2131690472, new Object[] { Integer.valueOf(MsgBackupPCAuthFragment.a(this.a)) }));
-        if (AppSetting.c) {
-          this.a.b.setContentDescription(this.a.getString(2131690472));
-        }
-        MsgBackupPCAuthFragment.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-        return true;
-      }
-      MsgBackupPCAuthFragment.a(this.a).removeCallbacksAndMessages(null);
-      MsgBackupPCAuthFragment.a(this.a, 60);
-      MsgBackupPCAuthFragment.a(this.a, false);
-      if (bgnt.a(this.a.getActivity()) == 1)
-      {
-        i = 1;
-        label205:
-        paramMessage = this.a;
-        if (i == 0) {
-          break label288;
-        }
-      }
-      label288:
-      for (int i = 0;; i = 2)
-      {
-        MsgBackupPCAuthFragment.a(paramMessage, i);
-        MsgBackupPCAuthFragment.c(this.a).setLeftBackVisible(0);
-        MsgBackupPCAuthFragment.d(this.a).setRightViewTextVisible(8);
-        this.a.b.setText(2131690462);
-        if (!AppSetting.c) {
-          break;
-        }
-        this.a.b.setContentDescription(this.a.getString(2131690462));
-        return true;
-        i = 0;
-        break label205;
-      }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public LatLng a()
+  {
+    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(LatLng paramLatLng, Double paramDouble)
+  {
+    if (paramLatLng != null) {
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
     }
-    return false;
+    if (paramDouble != null) {
+      this.jdField_a_of_type_Double = paramDouble.doubleValue();
+    }
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof awpi))
+    {
+      paramObject = (awpi)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+    }
+    return super.equals(paramObject);
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
   }
 }
 

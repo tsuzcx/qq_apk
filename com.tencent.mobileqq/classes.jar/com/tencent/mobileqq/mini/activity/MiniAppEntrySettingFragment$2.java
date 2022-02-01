@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.activity;
 import NS_MINI_INTERFACE.INTERFACE.StGetSwitchListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StSwitchInfo;
 import android.support.v4.app.FragmentActivity;
-import biti;
+import bjuh;
 import com.tencent.mobileqq.mini.entry.MiniAppSettingSwitchInfoEntity;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -70,7 +70,7 @@ class MiniAppEntrySettingFragment$2
       catch (Exception paramJSONObject)
       {
         QLog.e("MiniAppEntrySettingFragment", 1, "onCmdListener failed e:", paramJSONObject);
-        biti.a().a("exception check log");
+        bjuh.a().a("exception check log");
         return;
       }
     }
@@ -80,11 +80,11 @@ class MiniAppEntrySettingFragment$2
     return;
     label340:
     QLog.e("MiniAppEntrySettingFragment", 1, new Object[] { "getSwitchList receive retCode =", Integer.valueOf(i) });
-    biti.a().a("retCode:" + i);
+    bjuh.a().a("retCode:" + i);
     return;
     label388:
     QLog.e("MiniAppEntrySettingFragment", 1, new Object[] { "getSwitchList receive isSuc =", Boolean.valueOf(paramBoolean) });
-    biti.a().a("getSwitchList receive isSuc false");
+    bjuh.a().a("getSwitchList receive isSuc false");
   }
 }
 

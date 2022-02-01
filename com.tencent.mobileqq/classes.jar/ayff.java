@@ -1,26 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayff
-  implements bkhw
+  implements DialogInterface.OnClickListener
 {
-  public ayff(OCRPerformFragment paramOCRPerformFragment) {}
+  public ayff(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      ayfi.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
-      ayfi.a("0X800AAE9", 0);
+    axxb.a(this.jdField_a_of_type_AndroidAppActivity, 302);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
     }
-    if (paramInt == 1)
-    {
-      bben.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
-      ayfi.a("0X800AAEA", 0);
-    }
-    if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
-      OCRPerformFragment.a(this.a).dismiss();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
   }
 }
 

@@ -1,69 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 public class atmv
-  implements aqck
+  implements View.OnLongClickListener
 {
-  private FileManagerEntity a;
+  public atmv(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public atmv(FileManagerEntity paramFileManagerEntity)
+  public boolean onLongClick(View paramView)
   {
-    this.a = paramFileManagerEntity;
-  }
-  
-  private String a()
-  {
-    String str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
-        localJSONObject.put("file_color_note_cloud_lastTime", this.a.lastTime);
-        localJSONObject.put("file_color_note_cloud_fileId", this.a.WeiYunFileId);
-        localJSONObject.put("file_color_note_fileName", this.a.fileName);
-        localJSONObject.put("file_color_note_fileSize", this.a.fileSize);
-        localJSONObject.put("file_color_note_cloud_srcType", this.a.nWeiYunSrcType);
-        localJSONObject.put("file_color_note_cloud_encodeUrl", this.a.strLargeThumPath);
-        localJSONObject.put("file_color_note_cloud_dirKey", this.a.WeiYunDirKey);
-        localJSONObject.put("file_color_note_cloud_", this.a.strFileMd5);
-        localJSONObject.put("file_color_note_cloud_", this.a.strFileSHA);
-        str = localJSONObject.toString();
-      }
-      return str;
+    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
+      return false;
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (this.a == null)
-    {
-      QLog.i("CloudFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
-    }
-    aqcs localaqcs = new aqcs();
-    localaqcs.a(17039360);
-    String str = atwt.b(3, this.a.nSessionId + this.a.WeiYunFileId);
-    if (QLog.isColorLevel()) {
-      QLog.i("CloudFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localaqcs.a(str);
-    localaqcs.b(this.a.fileName);
-    localaqcs.c(atwl.a(this.a.fileSize));
-    int i = atvo.a(atvo.a(this.a.fileName));
-    localaqcs.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localaqcs.a(str.getBytes());
-    }
-    return localaqcs.a();
+    paramView.setSelected(true);
+    bhuk localbhuk = new bhuk();
+    localbhuk.a(2131367081, paramView.getContext().getString(2131692400));
+    localbhuk.a(2131365346, paramView.getContext().getString(2131691323));
+    this.a.a = bhkx.a(paramView, localbhuk, new atmw(this, paramView), new atmy(this, paramView));
+    return true;
   }
 }
 

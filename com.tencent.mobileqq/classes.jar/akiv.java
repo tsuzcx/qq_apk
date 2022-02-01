@@ -1,34 +1,61 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akiv
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements View.OnClickListener
 {
-  akiv(akit paramakit, Intent paramIntent, ArrayList paramArrayList) {}
+  akiv(akir paramakir) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (bpwu.a(this.jdField_a_of_type_Akit.mActivity, paramLocalMediaInfo))
-    {
-      if ((akit.a(this.jdField_a_of_type_Akit) != null) && (paramLocalMediaInfo.mDuration > akit.a(this.jdField_a_of_type_Akit).videoDurationLimit))
-      {
-        ((NewPhotoListActivity)this.jdField_a_of_type_Akit.mActivity).cancleProgressDailog();
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-        PhotoUtils.a(this.jdField_a_of_type_Akit.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-        return;
-      }
-      FrameVideoHelper localFrameVideoHelper = new FrameVideoHelper(paramLocalMediaInfo.path, paramLocalMediaInfo.mediaWidth, paramLocalMediaInfo.mediaHeight, paramLocalMediaInfo.mDuration);
-      localFrameVideoHelper.a(new akiw(this, paramLocalMediaInfo, localFrameVideoHelper));
-      aaxb.a("mystatus_localupload", "video_select", 0, 0, new String[0]);
-      return;
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onClick, id = " + i);
     }
-    ((NewPhotoListActivity)this.jdField_a_of_type_Akit.mActivity).cancleProgressDailog();
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Akjl != null)
+      {
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Akjl.a.msg);
+        continue;
+        if (this.a.jdField_a_of_type_Akjl != null)
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putInt("forward_type", -1);
+          localBundle.putString("forward_text", this.a.jdField_a_of_type_Akjl.a.msg);
+          Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+          localIntent.putExtras(localBundle);
+          ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.i("C2CMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+          }
+          this.a.c = false;
+          akir.a(this.a).setVisibility(8);
+          akir.a(this.a, 0, null);
+          this.a.jdField_a_of_type_Akip.a(akir.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
+          this.a.jdField_a_of_type_Akip.notifyDataSetChanged();
+          this.a.b = 1;
+          VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatSearch", "Clk_cloudtips", 0, 0, new String[0]);
+        }
+      }
+    }
   }
 }
 

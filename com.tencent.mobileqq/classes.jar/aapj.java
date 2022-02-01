@@ -1,14 +1,18 @@
-class aapj
-  extends aapy
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
+
+public final class aapj
+  implements Parcelable.Creator<ContentElement>
 {
-  public aapj(aapa paramaapa, aapz paramaapz, String paramString)
+  public ContentElement a(Parcel paramParcel)
   {
-    super(paramaapa, paramaapz, paramString);
+    return new ContentElement();
   }
   
-  public void a()
+  public ContentElement[] a(int paramInt)
   {
-    this.jdField_a_of_type_Aapz.b(this);
+    return new ContentElement[paramInt];
   }
 }
 

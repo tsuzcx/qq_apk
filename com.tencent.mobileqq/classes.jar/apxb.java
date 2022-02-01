@@ -1,27 +1,14 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-
-public class apxb
+abstract class apxb
+  implements apwd
 {
-  public int a;
-  public Bitmap a;
-  public Rect a;
-  public apxc a;
-  public apyf a;
-  public Boolean a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b = "";
-  public boolean b;
-  public int c;
-  
-  public apxb()
+  public boolean a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    return false;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

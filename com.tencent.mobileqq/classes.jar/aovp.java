@@ -1,54 +1,54 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.8.1;
-import com.tencent.mobileqq.ar.ArConfigService.8.2;
-import com.tencent.mobileqq.ar.ArConfigService.8.3;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aovp
-  implements apcd
+class aovp
+  implements View.OnClickListener
 {
-  public aovp(ArConfigService paramArConfigService) {}
+  aovp(aovn paramaovn) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARFeatureDownloadCallBack");
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.e(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.8.1(this, i));
-    }
-  }
-  
-  public void a(boolean paramBoolean, apce paramapce)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack  result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    try
     {
-      ArConfigService.f(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.8.2(this));
+      bdll.b(null, "dc00898", "", "", "0X8009ACC", "0X8009ACC", 0, 0, "", "", "", "");
+      if (aovh.a != null) {
+        aovn.a(this.a).startActivity(aovh.a);
+      }
+      for (;;)
+      {
+        this.a.dismiss();
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (aovn.a(this.a) == null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(aovn.a(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
+        }
+        aovh.a(aovn.a(this.a));
+        aovn.a(this.a).startActivity(aovh.a);
       }
     }
-    while (ArConfigService.e(this.a)) {
-      return;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d(aovn.a(), 2, "Start Activity Failed");
+          aovn.a(this.a).startActivity(bhnl.c(aovn.a(this.a)));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d(aovn.a(), 2, "mAppInterface=null, use default intent");
+          }
+          aovn.a(this.a).startActivity(bhnl.a(aovn.a(this.a)));
+        }
+      }
     }
-    ArConfigService.a(this.a).post(new ArConfigService.8.3(this));
-    ArConfigService.a(this.a, true);
   }
-  
-  public void b() {}
 }
 
 

@@ -1,14 +1,39 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class bnpk
+class bnpk
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
-  
-  public String toString()
+  public static File a()
   {
-    return "AEMaterialWrapper{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", state=" + this.jdField_a_of_type_Int + '}';
+    try
+    {
+      String str = bmxr.b;
+      File localFile1 = new File(str);
+      boolean bool = localFile1.exists();
+      if (!bool) {
+        try
+        {
+          new File(str, ".nomedia").createNewFile();
+          if (!localFile1.mkdirs())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
+            }
+            return null;
+          }
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            localIOException.printStackTrace();
+          }
+        }
+      }
+    }
+    finally {}
+    return localFile2;
   }
 }
 

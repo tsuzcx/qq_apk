@@ -1,26 +1,9 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class yvx
-  extends QQUIEventReceiver<QQStoryTakeVideoCloseAnimationActivity, yod>
+public abstract interface yvx
+  extends yxs
 {
-  public yvx(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity)
-  {
-    super(paramQQStoryTakeVideoCloseAnimationActivity);
-  }
+  public abstract void a(long paramLong);
   
-  public void a(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity, @NonNull yod paramyod)
-  {
-    if (paramyod != null) {
-      paramQQStoryTakeVideoCloseAnimationActivity.a(paramyod.a, paramyod.b, paramyod.c, paramyod.d);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return yod.class;
-  }
+  public abstract void b();
 }
 
 

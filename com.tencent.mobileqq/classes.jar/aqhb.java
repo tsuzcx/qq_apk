@@ -1,168 +1,89 @@
 import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-import com.tencent.qphone.base.util.QLog;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
 import java.util.List;
 
 public class aqhb
-  implements arej
+  extends aqhe
 {
-  private static final arfl jdField_a_of_type_Arfl = new aqhc();
-  private static final String jdField_a_of_type_JavaLangString = aqhb.class.getSimpleName();
-  private aqhe jdField_a_of_type_Aqhe;
-  private aqhf jdField_a_of_type_Aqhf;
-  private arfm jdField_a_of_type_Arfm;
-  private DanmakuManager jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+  private float jdField_a_of_type_Float = -1.0F;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  private float[] d = new float[3];
+  private float[] e = new float[3];
+  private float[] f = new float[3];
+  private float[] g = new float[3];
+  private float[] h = new float[16];
+  private float[] i = new float[3];
   
-  public aren a(aqhg paramaqhg)
+  public aqhb(Context paramContext, int paramInt, SensorManager paramSensorManager, aqgw paramaqgw)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (paramaqhg != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramaqhg);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Arfm != null)
+    super(paramContext, paramInt, paramSensorManager, paramaqgw);
+    paramContext = paramSensorManager.getDefaultSensor(1);
+    paramSensorManager = paramSensorManager.getDefaultSensor(2);
+    if ((paramContext != null) && (paramSensorManager != null))
     {
-      this.jdField_a_of_type_Arfm.b(paramInt);
-      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.h();
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramLong);
-    }
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_Arfm = arew.a();
-    this.jdField_a_of_type_Arfm.a(3);
-    this.jdField_a_of_type_Arfm.c(7000);
-    this.jdField_a_of_type_Arfm.f(8.0F);
-    this.jdField_a_of_type_Arfm.c(12.0F);
-    this.jdField_a_of_type_Arfm.b(12.0F);
-    this.jdField_a_of_type_Arfm.b(false);
-    this.jdField_a_of_type_Arfm.d(true);
-    arey localarey = arew.a();
-    localarey.a(new aqhd(this));
-    localarey.a(-4);
-    localarey.a(new aqhh(paramContext));
-    paramContext = localarey.a();
-    arfk.a(jdField_a_of_type_Arfl);
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = new DanmakuManager(paramView, paramContext);
-  }
-  
-  public void a(aqhe paramaqhe)
-  {
-    this.jdField_a_of_type_Aqhe = paramaqhe;
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(this);
-    }
-  }
-  
-  public void a(aqhf paramaqhf)
-  {
-    this.jdField_a_of_type_Aqhf = paramaqhf;
-  }
-  
-  public void a(aren paramaren, argk paramargk, arga paramarga) {}
-  
-  public void a(DanmuItemBean paramDanmuItemBean)
-  {
-    if ((paramDanmuItemBean != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null))
-    {
-      paramDanmuItemBean = new aqhg(paramDanmuItemBean);
-      paramDanmuItemBean = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramDanmuItemBean);
-      paramDanmuItemBean.e(true);
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramDanmuItemBean);
-    }
-  }
-  
-  public void a(List<aren> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager == null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramList);
+    throw new OrientationProviderNotFound("1,2");
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d());
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    if (this.jdField_a_of_type_Aqgw == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 2.0F)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.g();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.l();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = null;
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Aqgw.updateAzimuth(paramFloat1);
     }
-  }
-  
-  public void b(List<aren> paramList)
-  {
-    if ((this.jdField_a_of_type_Aqhe != null) && (!b())) {
-      this.jdField_a_of_type_Aqhe.b();
-    }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a());
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    if (Math.abs(paramFloat2 - this.b) > 2.0F)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.e();
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Aqgw.updatePitch(paramFloat2);
     }
+    if (Math.abs(paramFloat3 - this.c) > 2.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Aqgw.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Aqgw.updateSensor(paramFloat1, paramFloat2, paramFloat3);
   }
   
-  public void d()
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.c();
+    if (paramSensorEvent.sensor.getType() == 2)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.d, 0, 3);
+      aqgx.a(this.d, this.g);
+      System.arraycopy(this.d, 0, this.g, 0, 3);
+      this.jdField_a_of_type_Boolean = true;
     }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b();
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Boolean) && (SensorManager.getRotationMatrix(this.h, null, this.e, this.d)))
+      {
+        SensorManager.getOrientation(this.h, this.i);
+        if (this.jdField_a_of_type_Int == 1) {
+          break;
+        }
+        super.a(this.h);
+      }
+      return;
+      if (paramSensorEvent.sensor.getType() == 1)
+      {
+        System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
+        aqgx.a(this.e, this.f);
+        System.arraycopy(this.e, 0, this.f, 0, 3);
+      }
     }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Aqhe != null) {
-      this.jdField_a_of_type_Aqhe.a();
-    }
+    a((float)(Math.toDegrees(this.i[0] + a()) + 360.0D) % 360.0F, (float)(this.i[1] * 180.0F / 3.141592653589793D), (float)(this.i[2] * 180.0F / 3.141592653589793D));
   }
 }
 

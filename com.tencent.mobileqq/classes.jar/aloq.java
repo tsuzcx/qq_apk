@@ -1,6 +1,15 @@
-public abstract interface aloq
+class aloq
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public aloq(String paramString1, String paramString2, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

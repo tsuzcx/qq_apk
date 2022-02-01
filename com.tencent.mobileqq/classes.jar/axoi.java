@@ -1,26 +1,99 @@
-class axoi
-  implements xrx
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class axoi
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  axoi(axof paramaxof, axnw paramaxnw) {}
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public List<RecommendPerson> a;
+  public List<axoj> b;
   
-  public boolean a_(xrt paramxrt, int paramInt1, int paramInt2)
+  public axoi(axoh paramaxoh, View paramView, int paramInt)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
+    super(paramView);
+    this.jdField_a_of_type_JavaUtilList = ((List)paramaxoh.a.get(Integer.valueOf(paramInt)));
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380164));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376887));
+      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramView.hasNext())
+      {
+        Object localObject = (RecommendPerson)paramView.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
+        }
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131563051, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131376888);
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131369425);
+        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131380165);
+        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131380166);
+        Button localButton = (Button)((View)localObject).findViewById(2131363975);
+        a(agej.a(85.0F, axoh.a(paramaxoh).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
+        axoj localaxoj = new axoj(this);
+        localaxoj.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
+        localaxoj.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localaxoj.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
+        localaxoj.b = localTextView2;
+        localaxoj.jdField_a_of_type_AndroidWidgetButton = localButton;
+        this.b.add(localaxoj);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
+      }
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
+  {
+    if (paramInt2 > 1)
+    {
+      int i = bhtq.a();
+      paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
+      localLayoutParams.leftMargin = paramInt2;
+      localLayoutParams.rightMargin = paramInt2;
+      paramRelativeLayout.setLayoutParams(localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
     }
     for (;;)
     {
-      return this.jdField_a_of_type_Axnw.a(this.jdField_a_of_type_Axof, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (axoh.a(this.jdField_a_of_type_Axoh) != null)
       {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
+        axoh.a(this.jdField_a_of_type_Axoh).a((RecyclerView.ViewHolder)paramView.getTag(2131376888), (RecommendPerson)paramView.getTag(2131363975));
+        continue;
+        if (axoh.a(this.jdField_a_of_type_Axoh) != null) {
+          axoh.a(this.jdField_a_of_type_Axoh).b((RecyclerView.ViewHolder)paramView.getTag(2131376888), (RecommendPerson)paramView.getTag(2131363975));
         }
       }
     }

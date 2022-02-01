@@ -1,50 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 
 class yiv
-  implements wld<wyd, wye>
+  extends xfp
 {
-  yiv(yit paramyit, JobContext paramJobContext, yig paramyig) {}
+  yiv(yit paramyit) {}
   
-  public void a(@NonNull wyd paramwyd, @Nullable wye arg2, @NonNull ErrorMessage paramErrorMessage)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super.a();
+    StoryMemoriesFragment.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
+    int i;
+    int j;
+    String str1;
+    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
     {
-      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      i = 1;
+      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
+      if (!bool) {
+        break label124;
+      }
+      str1 = "1";
+      label76:
+      if (i != 1) {
+        break label131;
+      }
+    }
+    label131:
+    for (String str2 = "1";; str2 = "2")
+    {
+      yup.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
       return;
-    }
-    if (??? == null)
-    {
-      paramErrorMessage = new wye(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_Yit)
-      {
-        yit.a(this.jdField_a_of_type_Yit, paramErrorMessage);
-        yit.a(this.jdField_a_of_type_Yit).remove(paramwyd);
-        yit.a(this.jdField_a_of_type_Yit, this.jdField_a_of_type_Yig);
-        return;
-      }
-    }
-    if (paramErrorMessage.isFail()) {
-      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
-    }
-    woj localwoj = (woj)wpm.a(17);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramErrorMessage = (wyf)localIterator.next();
-      localwoj.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
-      if (paramErrorMessage.b == 1) {
-        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localwoj.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
-      }
+      i = 0;
+      break;
+      label124:
+      str1 = "2";
+      break label76;
     }
   }
 }

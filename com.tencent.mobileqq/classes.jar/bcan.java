@@ -1,100 +1,67 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.msf.service.protocol.pb.SubMsgType0x51.MsgBody;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
 
 public class bcan
-  implements bcba
+  extends aoki
 {
-  private void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, MessageHandler paramMessageHandler)
+  public bcan(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  
+  public void handleAssociateResult(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
-    byte[] arrayOfByte = null;
     if (QLog.isColorLevel()) {
-      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv msg0x210.Submsgtype0x51");
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList1.size());
     }
-    if (paramMsgType0x210.sub_msg_type.get() != 81) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush submsgtype != 0x51");
-      }
-    }
-    do
+    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
     {
-      do
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
+      }
+      paramList1 = new ArrayList();
+      paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
+      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((paramList != null) && (paramList.size() > 0))
       {
-        return;
-        if (paramMsgType0x210.msg_content != null) {
-          break;
+        paramInt = 0;
+        if (paramInt < paramList.size())
+        {
+          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
+          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
+          localAssociateItem.jdField_a_of_type_JavaLangString = str;
+          localAssociateItem.jdField_a_of_type_Int = 3;
+          localAssociateItem.d = (paramInt + 1);
+          paramList1.add(localAssociateItem);
+          if (paramInt != paramList.size() - 1)
+          {
+            paramList1.add(paramSuggestUrlItem);
+            localStringBuilder.append(str).append("::");
+          }
+          for (;;)
+          {
+            paramInt += 1;
+            break;
+            localStringBuilder.append(str);
+          }
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush msg_content is null");
-      return;
-      paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-      if (paramMsgType0x210 != null) {
-        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush decode ox210Stream is null");
-    return;
-    new SubMsgType0x51.MsgBody();
-    for (;;)
-    {
-      try
-      {
-        SubMsgType0x51.MsgBody localMsgBody = new SubMsgType0x51.MsgBody();
-        localMsgBody.mergeFrom(paramMsgType0x210);
-        if (!localMsgBody.bytes_qrsig_url.has()) {
-          break label335;
-        }
-        paramMsgType0x210 = new String(localMsgBody.bytes_qrsig_url.get().toByteArray(), "utf-8");
-        if (!localMsgBody.bytes_hint1.has()) {
-          break label330;
-        }
-        paramMsg = new String(localMsgBody.bytes_hint1.get().toByteArray(), "utf-8");
-        if (!localMsgBody.bytes_hint2.has()) {
-          break label324;
-        }
-        str = new String(localMsgBody.bytes_hint2.get().toByteArray(), "utf-8");
-        if (localMsgBody.bytes_login_conf.has()) {
-          arrayOfByte = localMsgBody.bytes_login_conf.get().toByteArray();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + paramMsg + " smalltip" + str);
-        }
-        asfr.a().a(paramMessageHandler.app, paramMsgType0x210, paramMsg, str, arrayOfByte);
-        return;
-      }
-      catch (Exception paramMsgType0x210) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
-      return;
-      label324:
-      String str = null;
-      continue;
-      label330:
-      paramMsg = null;
-      continue;
-      label335:
-      paramMsgType0x210 = null;
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
+      bcjy.a(null, new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(bcni.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + bcjy.b + "}"));
     }
   }
   
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  public void handleAssociateResultError(String paramString1, Integer paramInteger, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DevLockQuickLoginDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x51");
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
     }
-    a(paramMsgType0x210, paramMsg, paramMessageHandler);
-    bbzf.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 

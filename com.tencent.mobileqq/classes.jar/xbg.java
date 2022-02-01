@@ -1,17 +1,50 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public class xbg
-  extends wla
+  extends wpa<xbh>
 {
   public final String a;
-  public final int b;
+  public String b = "";
   
-  public xbg(qqstory_service.RspGetWeather paramRspGetWeather)
+  public xbg(xbf paramxbf, String paramString)
   {
-    this.b = paramRspGetWeather.temperature.get();
-    this.a = paramRspGetWeather.wea_desc.get();
+    this.jdField_a_of_type_JavaLangString = wnu.a("StorySvc.forbid_video");
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public xbh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
+    try
+    {
+      localRspForbidVideo.mergeFrom(paramArrayOfByte);
+      return new xbh(this.jdField_a_of_type_Xbf, localRspForbidVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
+    localReqForbidVideo.vid.set(this.b);
+    return localReqForbidVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
   }
 }
 

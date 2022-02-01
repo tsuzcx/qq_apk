@@ -1,12 +1,37 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.qphone.base.util.QLog;
 
 public class aseq
+  extends Handler
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aseq(Client paramClient, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public aseq(asem paramasem) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+        this.a.onRespFromServer(paramMessage.getData());
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
+      return;
+      this.a.onPushMsgFromServer(paramMessage.getData());
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+  }
 }
 
 

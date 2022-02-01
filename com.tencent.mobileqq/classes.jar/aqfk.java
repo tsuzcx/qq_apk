@@ -1,17 +1,21 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqfk
-  implements ViewTreeObserver.OnPreDrawListener
+  implements View.OnClickListener
 {
-  public aqfk(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
+  public aqfk(ArkAppListActivity paramArkAppListActivity, String paramString) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ColorNoteSmallScreenRelativeLayout.a(this.a);
-    return true;
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
+    localIntent.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,24 +1,56 @@
-import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajat
-  extends ajax
+  implements bfqg
 {
-  public ConnectsExplorationBanner a;
+  public ajat(BlessResultActivity paramBlessResultActivity) {}
   
-  public ajat(ConnectsExplorationBanner paramConnectsExplorationBanner)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
-    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.g = this.a.b(this.a.d);
+    if (this.a.jdField_a_of_type_Blha.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Blha.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Blha.sendEmptyMessage(1001);
   }
   
-  public String a()
+  public void a(long paramLong)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner.uin;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
+    }
+    if (this.a.jdField_a_of_type_Blha.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Blha.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Blha.sendEmptyMessage(1003);
   }
   
-  public boolean a()
+  public void b()
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    long l = bhmi.a(this.a.jdField_a_of_type_Ajau.a);
+    int i = (int)(100L * paramLong / l);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
+    }
   }
 }
 

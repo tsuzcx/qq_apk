@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aibb
-  implements DialogInterface.OnClickListener
+public class aibb
 {
-  aibb(aiay paramaiay, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Aiay.Z = true;
-    aiay.c(this.jdField_a_of_type_Aiay, this.jdField_a_of_type_Boolean);
-  }
+  public static float a = 1.0F;
 }
 
 

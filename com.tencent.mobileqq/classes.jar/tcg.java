@@ -1,24 +1,10 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-class tcg
-  implements aaob
+public abstract interface tcg
 {
-  tcg(tcf paramtcf, boolean paramBoolean) {}
+  public abstract void a();
   
-  public void callback(Bundle paramBundle)
-  {
-    int j = paramBundle.getInt("readinjoy_to_wx_config");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "config = " + j + ", scene" + i);
-      }
-      this.jdField_a_of_type_Tcf.a(j, i);
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

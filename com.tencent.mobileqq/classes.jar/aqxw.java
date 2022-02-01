@@ -1,50 +1,28 @@
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.widget.VerticalGallery;
 
 public class aqxw
-  extends aqwr<aqxv>
+  implements blqs
 {
-  @NonNull
-  public static aqxv c()
+  private int jdField_a_of_type_Int;
+  
+  public aqxw(IphonePickerView paramIphonePickerView, int paramInt)
   {
-    aqxv localaqxv2 = (aqxv)aqlk.a().a(618);
-    aqxv localaqxv1 = localaqxv2;
-    if (localaqxv2 == null) {
-      localaqxv1 = new aqxv();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(VerticalGallery paramVerticalGallery)
+  {
+    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].getSelectedItemPosition();
+    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
+      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
     }
-    return localaqxv1;
-  }
-  
-  @NonNull
-  public aqxv a()
-  {
-    return new aqxv();
-  }
-  
-  @NonNull
-  public aqxv a(@NonNull aqlg[] paramArrayOfaqlg)
-  {
-    return aqxv.a(paramArrayOfaqlg[0].a);
-  }
-  
-  @NonNull
-  public aqxv b()
-  {
-    return new aqxv();
-  }
-  
-  public Class<aqxv> clazz()
-  {
-    return aqxv.class;
-  }
-  
-  public int type()
-  {
-    return 618;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxw
  * JD-Core Version:    0.7.0.1
  */

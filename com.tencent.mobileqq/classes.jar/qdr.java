@@ -1,32 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qdr
-  implements ViewBase.OnClickListener
+public class qdr
+  implements View.OnClickListener
 {
-  qdr(qdp paramqdp, pxk parampxk, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
+  public qdr(NativeAwesomeCommentView paramNativeAwesomeCommentView, qvm paramqvm) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
-    TemplateBean localTemplateBean = this.jdField_a_of_type_Pxk.a().mProteusTemplateBean;
-    if (localTemplateBean != null)
+    if (NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView)) {
+      NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView, false);
+    }
+    for (;;)
     {
-      paramViewBase = qdp.a(this.jdField_a_of_type_Qdp, localTemplateBean, paramViewBase);
-      if (oqj.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
-        oqj.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pxk.a().getContext(), this.jdField_a_of_type_Pxk.h());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_Qvm != null)
+      {
+        ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getContext(), this.jdField_a_of_type_Qvm.a, this.jdField_a_of_type_Qvm.c);
+        qvm.a(NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).a, "0X8009B77");
       }
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Pxk.a().a(false, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (ArticleInfo)this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, paramViewBase);
   }
 }
 

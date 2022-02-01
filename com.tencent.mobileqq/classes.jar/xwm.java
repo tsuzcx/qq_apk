@@ -1,72 +1,117 @@
-import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class xwm
-  extends wfi
+public abstract class xwm
+  implements IEventReceiver
 {
-  public xwm(QQStoryShieldActivity paramQQStoryShieldActivity) {}
+  private long a;
+  protected Map<Subscriber, String> a;
+  protected Set<xpd> a;
+  public xwj a;
+  protected boolean a;
+  public boolean b;
   
-  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
+  public Map<Subscriber, String> a()
   {
-    boolean bool = true;
-    QQStoryShieldActivity.a(this.a);
-    Switch localSwitch;
-    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    return null;
+  }
+  
+  public Set<xpd> a()
+  {
+    return null;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator;
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
     {
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-      this.a.b.setOnCheckedChangeListener(null);
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramQQStoryUserInfo.isAllowed != 1) {
-        break label119;
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
+        wjj.a().unRegisterSubscriber((Subscriber)localObject);
       }
-      paramBoolean = true;
-      localSwitch.setChecked(paramBoolean);
-      localSwitch = this.a.b;
-      if (paramQQStoryUserInfo.isInterested != 1) {
-        break label124;
-      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    label119:
-    label124:
-    for (paramBoolean = bool;; paramBoolean = false)
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
     {
-      localSwitch.setChecked(paramBoolean);
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-      this.a.b.setOnCheckedChangeListener(this.a);
-      return;
-      paramBoolean = false;
-      break;
+      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (xpd)localIterator.next();
+        this.jdField_a_of_type_Xwj.b((xpd)localObject);
+      }
+      this.jdField_a_of_type_JavaUtilSet.clear();
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final void a(@NonNull xwj paramxwj, int paramInt, @NonNull xqz paramxqz)
   {
-    boolean bool = true;
-    paramBoolean2 = true;
-    this.a.jdField_a_of_type_Biax.b();
-    if (paramBoolean1) {
-      return;
-    }
-    QQToast.a(this.a, 2131694182, 0).b(this.a.getTitleBarHeight());
-    if (paramBoolean3)
+    xwj.a(paramxwj, paramInt);
+    this.jdField_a_of_type_Xwj = paramxwj;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      Object localObject1 = a();
+      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
       {
-        localSwitch.setChecked(paramBoolean1);
-        return;
+        Iterator localIterator = ((Map)localObject1).entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (Map.Entry)localIterator.next();
+          Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
+          localObject2 = (String)((Map.Entry)localObject2).getValue();
+          wjj.a().registerSubscriber((String)localObject2, localSubscriber);
+        }
+        if (this.jdField_a_of_type_JavaUtilMap == null) {
+          this.jdField_a_of_type_JavaUtilMap = new HashMap();
+        }
+        this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
       }
+      localObject1 = a();
+      if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
+      {
+        if (this.jdField_a_of_type_JavaUtilSet == null) {
+          this.jdField_a_of_type_JavaUtilSet = new HashSet();
+        }
+        this.jdField_a_of_type_JavaUtilSet.addAll((Collection)localObject1);
+      }
+      this.jdField_a_of_type_Boolean = true;
     }
-    Switch localSwitch = this.a.b;
-    if (!this.a.b.isChecked()) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
-    {
-      localSwitch.setChecked(paramBoolean1);
-      return;
+    a(paramxwj.a, paramxqz);
+  }
+  
+  public final void a(xwn paramxwn, xqz paramxqz)
+  {
+    paramxwn.a();
+    b(paramxwn, paramxqz);
+  }
+  
+  public boolean a(View paramView)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+      return false;
     }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return true;
+  }
+  
+  public abstract void b(xwn paramxwn, xqz paramxqz);
+  
+  public boolean isValidate()
+  {
+    return this.b;
   }
 }
 

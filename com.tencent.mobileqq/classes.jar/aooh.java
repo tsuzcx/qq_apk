@@ -1,90 +1,123 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.Display;
-import android.view.WindowManager;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceInfo;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.Calendar;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.Hashtable;
+import java.util.LinkedList;
 
-public class aooh
+public abstract class aooh
 {
-  public static final int a;
-  private static long a;
+  int jdField_a_of_type_Int = 10;
+  aooi jdField_a_of_type_Aooi = null;
+  Hashtable<String, FaceInfo> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
+  LinkedList<FaceInfo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  boolean jdField_a_of_type_Boolean = false;
+  protected int b;
+  Hashtable<String, FaceInfo> jdField_b_of_type_JavaUtilHashtable = new Hashtable();
+  boolean jdField_b_of_type_Boolean = false;
+  boolean c = false;
   
-  static
-  {
-    jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  }
+  public abstract Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte);
   
-  public static int a(Context paramContext)
+  public void a()
   {
-    return ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
-  }
-  
-  public static int a(Context paramContext, int paramInt)
-  {
-    return bggq.a(paramContext, paramInt);
-  }
-  
-  private static long a()
-  {
-    long l = System.currentTimeMillis() / 1000L;
-    if ((jdField_a_of_type_Long != 0L) && (86400L + jdField_a_of_type_Long > l)) {
-      return jdField_a_of_type_Long;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    l = localCalendar.getTimeInMillis() / 1000L;
-    jdField_a_of_type_Long = l;
-    return l;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = "{" + paramString + "}";
-    paramString = "";
-    try
-    {
-      str = new JSONObject(str).get("metaData").toString();
-      paramString = str;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQDailyUtils", 2, localException, new Object[0]);
-    }
-    return paramString;
-    return "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong > a();
-  }
-  
-  public static boolean a(Map<String, String> paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQDailyUtils", 2, "param is null");
-      }
-      return false;
-    }
-    String str1 = (String)paramMap.get("appname");
-    String str2 = (String)paramMap.get("appview");
-    String str3 = (String)paramMap.get("appversion");
-    paramMap = (String)paramMap.get("metaData");
     if (QLog.isColorLevel()) {
-      QLog.d("QQDailyUtils", 2, "appName: " + str1 + "\nappView: " + str2 + "\nappVersion: " + str3 + "\nmetaData: " + paramMap);
+      axxb.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
     }
-    return (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(paramMap));
+    this.jdField_a_of_type_Boolean = true;
   }
+  
+  public abstract void a(int paramInt1, String paramString, int paramInt2, long paramLong);
+  
+  public void a(aooi paramaooi)
+  {
+    this.jdField_a_of_type_Aooi = paramaooi;
+  }
+  
+  public abstract void a(AppInterface paramAppInterface);
+  
+  protected void a(FaceInfo paramFaceInfo)
+  {
+    if (paramFaceInfo == null) {}
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("FaceDecoderBase", 2, "enqueueDecode, iRunningRequests=" + this.jdField_b_of_type_Int + ", pause=" + this.jdField_a_of_type_Boolean + ",faceinfo=" + paramFaceInfo.toString());
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramFaceInfo);
+        if (paramFaceInfo.jdField_b_of_type_Boolean)
+        {
+          this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramFaceInfo);
+          paramFaceInfo.a(FaceInfo.k);
+          if ((this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
+            continue;
+          }
+          e();
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
+            continue;
+            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFaceInfo);
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public final boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
+  {
+    return a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3, 100, false);
+  }
+  
+  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3);
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FaceDecoderBase", 2, "resume");
+    }
+    this.jdField_a_of_type_Boolean = false;
+    while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
+      e();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      axxb.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+    }
+    this.jdField_a_of_type_JavaUtilHashtable.clear();
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      axxb.a(2, "FaceDecoderBase", "destory", new Object[0]);
+    }
+    c();
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Aooi = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected abstract void e();
 }
 
 

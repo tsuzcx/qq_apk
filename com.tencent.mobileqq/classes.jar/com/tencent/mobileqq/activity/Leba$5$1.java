@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aena;
-import axdl;
-import axei;
+import aewd;
+import axwe;
+import axxb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
@@ -15,13 +15,13 @@ public class Leba$5$1
   {
     WebProcessManager localWebProcessManager = (WebProcessManager)this.a.this$0.a.getManager(13);
     if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(202, new aena(this));
+      localWebProcessManager.a(202, new aewd(this));
     }
     this.a.this$0.m();
-    if (axei.b()) {
-      axei.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
+    if (axxb.b()) {
+      axxb.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
     }
-    axdl.a(this.a.this$0.a.getAccount(), 0);
+    axwe.a(this.a.this$0.a.getAccount(), 0);
   }
 }
 

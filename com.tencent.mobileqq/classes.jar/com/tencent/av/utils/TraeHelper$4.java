@@ -5,17 +5,17 @@ import android.view.View;
 import android.widget.Button;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import lcu;
-import ley;
-import mqq.util.WeakReference;
-import msn;
-import mts;
-import mue;
+import java.lang.ref.WeakReference;
+import ldb;
+import lff;
+import mtl;
+import mur;
+import mvd;
 
 public class TraeHelper$4
   implements Runnable
 {
-  public TraeHelper$4(mts parammts) {}
+  public TraeHelper$4(mur parammur) {}
   
   public void run()
   {
@@ -30,25 +30,25 @@ public class TraeHelper$4
         if (localObject != null)
         {
           ((Button)localObject).setClickable(true);
-          if ((!mts.a(this.this$0)) || (!msn.a())) {
+          if ((!mur.a(this.this$0)) || (!mtl.a())) {
             break;
           }
           ((Button)localObject).setSelected(true);
-          mue.a((View)localObject, ((Button)localObject).getResources().getString(2131690160));
+          mvd.a((View)localObject, ((Button)localObject).getResources().getString(2131690170));
         }
       }
-      this.this$0.a.a().b("handFreeJob", mts.a(this.this$0).P);
-      mts.a(this.this$0);
+      this.this$0.a.a().b("handFreeJob", mur.a(this.this$0).P);
+      mur.a(this.this$0);
       localObject = this.this$0.a.a.a();
     } while (localObject == null);
-    ((lcu)localObject).b();
+    ((ldb)localObject).b();
     return;
-    ((Button)localObject).setSelected(mts.a(this.this$0).P);
+    ((Button)localObject).setSelected(mur.a(this.this$0).P);
     Resources localResources = ((Button)localObject).getResources();
-    if (mts.a(this.this$0).P) {}
-    for (int i = 2131690161;; i = 2131690162)
+    if (mur.a(this.this$0).P) {}
+    for (int i = 2131690171;; i = 2131690172)
     {
-      mue.a((View)localObject, localResources.getString(i));
+      mvd.a((View)localObject, localResources.getString(i));
       break;
     }
   }

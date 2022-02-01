@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ayuc
+  implements View.OnClickListener
 {
-  ayuc(ayub paramayub, boolean paramBoolean) {}
+  ayuc(ayua paramayua, aytv paramaytv) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void onClick(View paramView)
   {
-    bglp.a(ayub.a(this.jdField_a_of_type_Ayub), 2131697627, 2131697628);
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      ((aypj)ayub.a(this.jdField_a_of_type_Ayub).getManager(369)).a(9);
+    this.jdField_a_of_type_Ayua.dismiss();
+    if (this.jdField_a_of_type_Aytv.a != null) {
+      this.jdField_a_of_type_Aytv.a.onClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

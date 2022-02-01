@@ -1,126 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.mutualmark.mutualmark.MutualMark;
-import tencent.im.mutualmark.mutualmark.ResourceInfo_17;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
 
 public class axar
+  implements DialogInterface.OnDismissListener
 {
-  public float a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public long g;
+  public axar(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public axar()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-  }
-  
-  public static axar a(mutualmark.MutualMark paramMutualMark)
-  {
-    axar localaxar = new axar();
-    localaxar.jdField_a_of_type_Long = paramMutualMark.uint64_type.get();
-    localaxar.jdField_b_of_type_Long = paramMutualMark.uint64_level.get();
-    localaxar.jdField_a_of_type_Float = paramMutualMark.float_count.get();
-    localaxar.jdField_c_of_type_Long = paramMutualMark.uint64_day.get();
-    localaxar.jdField_d_of_type_Long = paramMutualMark.uint64_time.get();
-    localaxar.f = paramMutualMark.uint64_icon_status.get();
-    if (localaxar.f != 2L)
-    {
-      localaxar.g = 0L;
-      if (paramMutualMark.uint32_close_flag.has()) {
-        if (paramMutualMark.uint32_close_flag.get() == 0) {
-          break label302;
-        }
-      }
-    }
-    label302:
-    for (boolean bool = true;; bool = false)
-    {
-      localaxar.jdField_a_of_type_Boolean = bool;
-      mutualmark.ResourceInfo_17 localResourceInfo_17;
-      if (paramMutualMark.bytes_resource_info.has()) {
-        localResourceInfo_17 = new mutualmark.ResourceInfo_17();
-      }
-      try
-      {
-        localResourceInfo_17.mergeFrom(paramMutualMark.bytes_resource_info.get().toByteArray());
-        paramMutualMark = localResourceInfo_17;
-      }
-      catch (Throwable paramMutualMark)
-      {
-        for (;;)
-        {
-          QLog.i("MutualMarkPullInfo", 1, "parseFrom error:" + paramMutualMark.getMessage());
-          paramMutualMark = null;
-        }
-      }
-      if (paramMutualMark != null)
-      {
-        if (paramMutualMark.bytes_static_url.has()) {
-          localaxar.jdField_a_of_type_JavaLangString = paramMutualMark.bytes_static_url.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_dynamic_url.has()) {
-          localaxar.jdField_b_of_type_JavaLangString = paramMutualMark.bytes_dynamic_url.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_cartoon_url.has()) {
-          localaxar.jdField_c_of_type_JavaLangString = paramMutualMark.bytes_cartoon_url.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_cartoon_md5.has()) {
-          localaxar.jdField_d_of_type_JavaLangString = paramMutualMark.bytes_cartoon_md5.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_word.has()) {
-          localaxar.jdField_e_of_type_JavaLangString = paramMutualMark.bytes_word.get().toStringUtf8();
-        }
-      }
-      return localaxar;
-      if (!paramMutualMark.uint64_icon_status_end_time.has()) {
-        break;
-      }
-      localaxar.g = paramMutualMark.uint64_icon_status_end_time.get();
-      break;
-    }
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkPullInfo{");
-    localStringBuilder.append("type:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("level:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("count:").append(this.jdField_a_of_type_Float).append(", ");
-    localStringBuilder.append("continue_days:").append(this.jdField_c_of_type_Long).append(", ");
-    localStringBuilder.append("last_action_time:").append(this.jdField_d_of_type_Long).append(", ");
-    localStringBuilder.append("last_change_time:").append(this.jdField_e_of_type_Long).append(", ");
-    localStringBuilder.append("icon_status:").append(this.f).append(", ");
-    localStringBuilder.append("icon_status_end_time:").append(this.g).append(", ");
-    localStringBuilder.append("icon_static_url:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_dynamic_url:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_url:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_md5:").append(this.jdField_d_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_name:").append(this.jdField_e_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("user_close_flag:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    MatchChatMsgListFragment.a(this.a, false);
   }
 }
 

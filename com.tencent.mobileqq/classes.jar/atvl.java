@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class atvl
-  implements Comparator<FileInfo>
+final class atvl
+  implements SDKInitListener
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public void onSDKInited(boolean paramBoolean)
   {
-    if (paramFileInfo1.c())
-    {
-      if (!paramFileInfo2.c()) {
-        return -1000;
-      }
+    if (!paramBoolean) {
+      QLog.e("FileVideoDownloadManager<FileAssistant>XOXO", 1, "initSDKAsync failed!");
     }
-    else if (paramFileInfo2.c()) {
-      return 1000;
-    }
-    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
   }
 }
 

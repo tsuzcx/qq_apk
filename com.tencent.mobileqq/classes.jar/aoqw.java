@@ -1,63 +1,94 @@
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.qphone.base.util.QLog;
+import friendlist.FriendInfo;
+import friendlist.FriendListSubSrvRspCode;
+import friendlist.GetFriendListResp;
+import java.util.ArrayList;
 
 public class aoqw
 {
-  private static aoqw a;
+  FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ExtensionInfo jdField_a_of_type_ComTencentMobileqqDataExtensionInfo;
+  SpecialCareInfo jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo;
   
-  public static aoqw a()
+  public aoqw(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    if (a == null) {
-      a = new aoqw();
-    }
-    return a;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
   }
   
-  public void a(long paramLong)
+  private void a(Friends paramFriends, FriendInfo paramFriendInfo, GetFriendListResp paramGetFriendListResp, anyw paramanyw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    axtm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFriends, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo, paramFriendInfo.vecIntimateInfo);
+    int k = paramGetFriendListResp.wGetExtSnsRspCode;
+    int j;
+    int i;
+    if (paramGetFriendListResp.stSubSrvRspCode != null)
+    {
+      j = paramGetFriendListResp.stSubSrvRspCode.wGetMutualMarkRspCode;
+      i = paramGetFriendListResp.stSubSrvRspCode.wGetIntimateInfoRspCode;
     }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void b(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.contacttab.friend.ExtensionInfoSingleUpdater", 2, new Object[] { "handleGetFriendDetailInfo uin=", paramFriends.uin, ", cSpecialFlag=", Byte.valueOf(paramFriends.cSpecialFlag), " wGetExtSnsRspCode:", Integer.valueOf(k), " wGetMutualMarkRspCode:", Integer.valueOf(j), " wGetIntimateInfoRspCode:", Integer.valueOf(i), " extOnline:", Long.valueOf(paramFriendInfo.uExtOnlineStatus), " battery:", Integer.valueOf(paramFriendInfo.iBatteryStatus) });
+      }
+      if (k == 0) {
+        aghw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramanyw, paramFriends, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo, paramFriends.uin, paramFriendInfo.vecExtSnsFrdData);
+      }
+      if (j == 0) {
+        axsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramanyw, paramFriends, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo, paramFriends.uin, paramFriendInfo.vecMutualMarkData);
+      }
+      return;
+      i = 0;
+      j = 0;
     }
   }
   
-  public void d(long paramLong)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
+    Object localObject = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    VasFaceManager localVasFaceManager = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a();
+    ((anyw)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo);
+    ((anyw)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo);
+    localVasFaceManager.a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo);
+    localObject = new ArrayList();
+    ((ArrayList)localObject).add(this.jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(99, true, new Object[] { Boolean.valueOf(true), localObject });
   }
   
-  public void e(long paramLong)
+  public void a(Friends paramFriends, FriendInfo paramFriendInfo, GetFriendListResp paramGetFriendListResp)
   {
+    anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo = localanyw.a(paramFriends.uin);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo = new ExtensionInfo();
+      this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uin = paramFriends.uin;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId = paramFriendInfo.ulFaceAddonId;
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uVipFont = gc.a(paramFriendInfo.uFounderFont);
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.vipFontType = gc.b(paramFriendInfo.uFounderFont);
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.colorRingId = paramFriendInfo.uColorRing;
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.magicFont = (paramFriendInfo.cSpecialFlag >> 3 & 0x1);
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.faceId = ((int)paramFriendInfo.uFaceStoreId);
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.faceIdUpdateTime = NetConnInfoCenter.getServerTime();
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.timestamp = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.latestPLUpdateTimestamp = paramFriendInfo.uTagUpdateTime;
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.fontEffect = ((int)paramFriendInfo.uFontEffect);
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.fontEffectLastUpdateTime = NetConnInfoCenter.getServerTime();
+    this.jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo = new SpecialCareInfo();
+    aopz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFriendInfo.vecRing, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo, paramFriends, this.jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo, 0L);
+    a(paramFriends, paramFriendInfo, paramGetFriendListResp, localanyw);
     if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+      QLog.d("Q.contacttab.friend.ExtensionInfoSingleUpdater", 2, "handleGetFriendDetailInfo, Get ExtensionInfo, uin=" + paramFriends.uin + ", id=" + this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId + ",font=" + this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uVipFont + ", fontType = " + this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.vipFontType + ", magicfont = " + this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.magicFont + ",latestplNewsTs=" + this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.latestPLUpdateTimestamp + ",fontEffect=" + this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.fontEffect + ",fontEffectLastUpdateTime=" + this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.fontEffectLastUpdateTime);
     }
   }
 }

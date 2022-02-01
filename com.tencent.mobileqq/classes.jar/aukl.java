@@ -1,19 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
 
-final class aukl
-  implements DialogInterface.OnClickListener
+public class aukl
+  implements auub
 {
-  aukl(long paramLong, int paramInt, Activity paramActivity) {}
+  public aukl(SimpleFileViewer.3 param3, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      beaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new aukm(this));
+      return;
     }
-    aukj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
+    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    SimpleFileViewer.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, paramImageView);
   }
 }
 

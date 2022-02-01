@@ -1,15 +1,35 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
 
-class xwp
+public class xwp
+  extends xqm
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  private xwo a;
   
-  xwp(xwo paramxwo) {}
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void a(xwo paramxwo)
+  {
+    this.a = paramxwo;
+  }
+  
+  public void f()
+  {
+    if (this.a != null) {
+      this.a.c();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.a != null) {
+      this.a.b();
+    }
+  }
 }
 
 

@@ -11,10 +11,10 @@ class PermissionSettingFragment$3$1
   {
     if (this.val$finalErrCode == -101510007L)
     {
-      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693680), 0).a();
+      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693695), 0).a();
       return;
     }
-    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693691), 0).a();
+    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693708), 0).a();
   }
 }
 

@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
 class uvf
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  uvf(uve paramuve, WSTabLayout paramWSTabLayout) {}
+  uvf(uve paramuve) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (WSTabLayout.a(this.jdField_a_of_type_Uve.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout) != null) {
-      WSTabLayout.a(this.jdField_a_of_type_Uve.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout).a(uve.a(this.jdField_a_of_type_Uve));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    uqf.b("WSVerticalVideoOperationRightItemView", "itemView onDoubleTap");
+    uve.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    uqf.b("WSVerticalVideoOperationRightItemView", "itemView onSingleTapConfirmed");
+    uve.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

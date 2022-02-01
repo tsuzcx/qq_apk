@@ -13,8 +13,9 @@ class InternalJSPlugin$8$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QMLog.d("InternalJSPlugin", "confirmOpenAppDetailPage downloadUrl : " + this.this$1.val$downloadUrl);
-    InternalJSPlugin.access$1000(this.this$1.this$0, this.this$1.val$activity, this.this$1.val$nativeAppId, this.this$1.val$packageName, this.this$1.val$appName, this.this$1.val$downloadUrl);
-    this.this$1.val$req.ok();
+    InternalJSPlugin.access$1100(this.this$1.this$0, this.this$1.val$activity, this.this$1.val$nativeAppId, this.this$1.val$packageName, this.this$1.val$appName, this.this$1.val$downloadUrl);
+    paramDialogInterface = InternalJSPlugin.access$700(this.this$1.this$0, 4);
+    this.this$1.val$req.fail(paramDialogInterface, "");
   }
 }
 

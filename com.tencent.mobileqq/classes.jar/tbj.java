@@ -1,9 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
-public abstract interface tbj
+public class tbj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2);
+  public tbj(TickerView paramTickerView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    TickerView.a(this.a).a(paramValueAnimator.getAnimatedFraction());
+    TickerView.a(this.a);
+    this.a.invalidate();
+  }
 }
 
 

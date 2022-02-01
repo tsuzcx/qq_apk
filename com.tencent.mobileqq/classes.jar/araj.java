@@ -1,8 +1,14 @@
-public class araj
+public final class araj
 {
-  public int a = -1;
+  @Deprecated
+  public int a;
   public String a;
-  public int b;
+  
+  public araj(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

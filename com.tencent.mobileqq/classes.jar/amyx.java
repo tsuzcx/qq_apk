@@ -1,27 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
-class amyx
-  implements amxk
+public class amyx
+  implements andu
 {
-  amyx(amyl paramamyl, int paramInt, File paramFile, String paramString) {}
+  public amyx(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    if (!TextUtils.isEmpty(paramString2))
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + anni.a(2131699299));
-        return;
-      }
-      this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + anni.a(2131699298));
-      return;
+      paramString1 = new Bundle();
+      paramString1.putInt("type", this.jdField_a_of_type_Int);
+      paramString1.putString("uin", paramString2);
+      paramString2 = new amyy(this);
+      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
     }
-    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + anni.a(2131699320));
   }
 }
 

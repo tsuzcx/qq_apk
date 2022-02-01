@@ -1,72 +1,38 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class wnb
+class wnb
+  implements azrg
 {
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  private static wnb jdField_a_of_type_Wnb;
+  wnb(wna paramwna) {}
   
-  public static wnb a()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (jdField_a_of_type_Wnb == null)
+    return null;
+  }
+  
+  public void a(azrh paramazrh) {}
+  
+  public void b(azrh paramazrh)
+  {
+    if (paramazrh.jdField_b_of_type_Int == 0)
     {
-      jdField_a_of_type_Wnb = new wnb();
-      jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      Iterator localIterator = ((woj)wpm.a(17)).a().iterator();
-      while (localIterator.hasNext())
-      {
-        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
-        {
-          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
-        }
-      }
+      this.a.jdField_b_of_type_JavaLangString = paramazrh.jdField_b_of_type_JavaLangString;
+      this.a.b();
+      wna.a(this.a, new ErrorMessage());
+      return;
     }
-    return jdField_a_of_type_Wnb;
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return -1;
-    }
-    return paramString.intValue();
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Iterator localIterator = ((woj)wpm.a(17)).a().iterator();
-    while (localIterator.hasNext())
+    if ((paramazrh.jdField_b_of_type_Int == bext.a(940010)) && (this.a.a.getAndIncrement() < 2))
     {
-      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
-      {
-        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
-      }
+      wna.a(this.a);
+      yuk.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
+      return;
     }
-    yqp.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
-  }
-  
-  public boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_Wnb = null;
+    paramazrh = new ErrorMessage(paramazrh.jdField_b_of_type_Int, paramazrh.a);
+    paramazrh.extraMsg = "upload";
+    wna.a(this.a, paramazrh);
   }
 }
 

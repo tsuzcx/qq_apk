@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import biuh;
-import biwe;
+import bjvg;
+import bjxd;
 
 public class MyAppApi$5
   implements Runnable
 {
-  public MyAppApi$5(biwe parambiwe, String paramString1, String paramString2) {}
+  public MyAppApi$5(bjxd parambjxd, String paramString1, String paramString2) {}
   
   public void run()
   {
-    biuh.a("202", biuh.a(this.a, "NEWYYB"), this.b);
+    bjvg.a("202", bjvg.a(this.a, "NEWYYB"), this.b);
   }
 }
 

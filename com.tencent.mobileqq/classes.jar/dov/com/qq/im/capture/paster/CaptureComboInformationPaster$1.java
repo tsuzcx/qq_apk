@@ -1,16 +1,16 @@
 package dov.com.qq.im.capture.paster;
 
-import bolv;
-import boob;
+import bpnq;
+import bppw;
 
 public class CaptureComboInformationPaster$1
   implements Runnable
 {
-  public CaptureComboInformationPaster$1(boob paramboob, bolv parambolv) {}
+  public CaptureComboInformationPaster$1(bppw parambppw, bpnq parambpnq) {}
   
   public void run()
   {
-    boob.a(this.this$0, boob.a(this.this$0), this.a);
+    bppw.a(this.this$0, bppw.a(this.this$0), this.a);
   }
 }
 

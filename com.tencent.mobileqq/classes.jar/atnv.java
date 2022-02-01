@@ -1,20 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.List;
 
-class atnv
-  implements atng
+public class atnv
+  extends atrl
 {
-  atnv(atns paramatns) {}
+  public atnv(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
   {
-    this.a.a(true, atul.a(this.a.a.a()), this.a.c(), new atnw(this));
+    if (paramBoolean1) {
+      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
+    }
   }
   
-  public void b()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
   {
-    this.a.d();
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.d());
+    if (paramBoolean1) {
+      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
+    }
   }
 }
 

@@ -1,8 +1,6 @@
-public abstract interface yqb
+public abstract interface yqb<T>
 {
-  public abstract void R_();
-  
-  public abstract void S_();
+  public abstract void a(T paramT);
 }
 
 

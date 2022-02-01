@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webprocess;
 
-import bhlk;
+import bimf;
 
 class WebProcessManager$1
   implements Runnable
 {
-  WebProcessManager$1(WebProcessManager paramWebProcessManager, bhlk parambhlk) {}
+  WebProcessManager$1(WebProcessManager paramWebProcessManager, bimf parambimf) {}
   
   public void run()
   {

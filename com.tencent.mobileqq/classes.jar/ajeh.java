@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajeh
-  implements ajef
+  implements View.OnClickListener
 {
-  public ajeh(TroopActivity paramTroopActivity) {}
+  public ajeh(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
-    {
-      this.a.a.remove(paramString);
-      return;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.h != 1) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
     }
-    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

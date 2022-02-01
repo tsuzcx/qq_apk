@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.os.Message;
-import awne;
-import besf;
-import bftq;
-import bftr;
+import axfw;
+import bfrm;
+import bgtr;
+import bgts;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -21,11 +21,11 @@ class TroopChatPie$24
     do
     {
       return;
-      localObject = bftr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    } while ((localObject == null) || (((bftq)localObject).jdField_a_of_type_JavaLangString.isEmpty()));
-    Object localObject = (awne)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
+      localObject = bgts.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    } while ((localObject == null) || (((bgtr)localObject).jdField_a_of_type_JavaLangString.isEmpty()));
+    Object localObject = (axfw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
     if (localObject != null) {
-      ((awne)localObject).a(Long.valueOf(Long.parseLong(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)), true).a();
+      ((axfw)localObject).a(Long.valueOf(Long.parseLong(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)), true).a();
     }
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "handleTroopNotificationMsg. sendMessage = MSG_SHOW_TROOP_FEEDS");

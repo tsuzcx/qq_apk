@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class mjg
-  implements DialogInterface.OnClickListener
+  extends Animation
 {
-  public mjg(VideoControlUI paramVideoControlUI, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramFloat < 0.5F) {}
+    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
+    {
+      paramTransformation.setAlpha(f);
+      super.applyTransformation(paramFloat, paramTransformation);
+      return;
     }
   }
 }

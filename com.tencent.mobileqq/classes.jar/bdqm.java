@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.tofumsg.TofuItem;
-import org.jetbrains.annotations.NotNull;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-public abstract interface bdqm
+class bdqm
+  implements akxn
 {
-  public abstract int a();
+  bdqm(bdql parambdql, StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext) {}
   
-  public abstract TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt);
-  
-  public abstract oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem);
-  
-  public abstract void a();
-  
-  public abstract void a(@NotNull TofuItem paramTofuItem, @NotNull oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong);
+  public void a(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("retCode");
+    String str = paramBundle.getString("retMsg");
+    int j = paramBundle.getInt("payTime");
+    paramBundle = paramBundle.getString("orderId");
+    this.jdField_a_of_type_Bdql.a.b(i);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.savePayInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bdql.a.at, i);
+    VACDReportUtil.a("ret_code=" + i + "|ret_str=" + str + "|pay_time=" + j + "|order_id=" + paramBundle, "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
+  }
 }
 
 

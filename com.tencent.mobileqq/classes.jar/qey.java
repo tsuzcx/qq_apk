@@ -1,22 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
 class qey
-  implements qvp
+  implements ViewBase.OnClickListener
 {
-  qey(qet paramqet, pxk parampxk, Container paramContainer, int paramInt) {}
+  qey(qev paramqev) {}
   
-  public void a(int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    Object localObject = this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = ((rhn)localObject).a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+    if ((this.a.jdField_a_of_type_Qeu.a != null) && (this.a.jdField_a_of_type_Qeu.a.a() != null)) {
+      oyj.a(this.a.jdField_a_of_type_Qeu.a.a(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    }
+    oyj.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((qeu.a(this.a.jdField_a_of_type_Qeu) != null) && (this.a.jdField_a_of_type_Int < qeu.a(this.a.jdField_a_of_type_Qeu).size()))
+    {
+      ozs.a(qeu.a(this.a.jdField_a_of_type_Qeu).getContext(), (BaseArticleInfo)qeu.a(this.a.jdField_a_of_type_Qeu).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
       return;
     }
-    localObject = (rho)((rhn)localObject).a.get(paramInt);
-    qet.a(this.jdField_a_of_type_Qet, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pxk.a(), (int)((rho)localObject).a, this.jdField_a_of_type_Pxk.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Pxk.a());
+    ozs.a(qeu.a(this.a.jdField_a_of_type_Qeu).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

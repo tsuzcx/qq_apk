@@ -1,44 +1,25 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
-public class bfuy
-  implements aobv
+class bfuy
+  implements ProxyListener
 {
-  public bfuy(AddedRobotView paramAddedRobotView) {}
+  bfuy(bfuw parambfuw, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (AddedRobotView.a(this.a) == null) {}
-    for (;;)
-    {
-      return;
-      if (!AddedRobotView.a(this.a).a())
-      {
-        paramInt2 = AddedRobotView.a(this.a).getChildCount();
-        paramInt1 = 0;
-        while (paramInt1 < paramInt2)
-        {
-          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
-          if ((localObject instanceof bfvb))
-          {
-            localObject = (bfvb)localObject;
-            if ((!TextUtils.isEmpty(((bfvb)localObject).jdField_a_of_type_JavaLangString)) && (((bfvb)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
-              ((bfvb)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-            }
-          }
-          else
-          {
-            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
-          }
-          paramInt1 += 1;
-        }
-      }
-    }
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[del]. table:" + paramString);
+  }
+  
+  public void onInsertFinish(String paramString)
+  {
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[add]. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish. table:" + paramString);
   }
 }
 

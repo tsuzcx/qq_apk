@@ -1,56 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import mqq.app.AppRuntime;
 
 public class biai
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  private final WeakReference<ProfileCardMoreInfoView> a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private biaj jdField_a_of_type_Biaj;
+  private biak jdField_a_of_type_Biak;
   
-  public biai(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
+  public biai(AppRuntime paramAppRuntime, int paramInt)
   {
-    this.a = new WeakReference(paramProfileCardMoreInfoView);
+    this.jdField_a_of_type_Biak = new biak(paramInt, this.jdField_a_of_type_AndroidOsHandler);
   }
   
-  public void onClick(View paramView)
+  public biaj a()
   {
-    int j = 2;
-    Object localObject1 = (ProfileCardMoreInfoView)this.a.get();
-    if (localObject1 == null) {}
+    return this.jdField_a_of_type_Biaj;
+  }
+  
+  public biak a()
+  {
+    return this.jdField_a_of_type_Biak;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Biaj != null) {
+      this.jdField_a_of_type_Biaj.c();
+    }
+  }
+  
+  public void a(biaj parambiaj)
+  {
+    this.jdField_a_of_type_Biaj = parambiaj;
+    this.jdField_a_of_type_Biaj.b();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Biaj == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      BaseActivity localBaseActivity = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      QQAppInterface localQQAppInterface = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject1 = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_Azfe;
-      if ((localBaseActivity == null) || (localQQAppInterface == null) || (localObject1 != null))
-      {
-        Object localObject2 = paramView.getTag();
-        if ((localObject2 instanceof azde)) {
-          switch (((azde)localObject2).a)
-          {
-          default: 
-            break;
-          case 66: 
-            bghy.a((azfe)localObject1, localQQAppInterface, localBaseActivity);
-            int i = j;
-            if (((azfe)localObject1).a != null)
-            {
-              i = j;
-              if (((azfe)localObject1).a.a == 0) {
-                i = 1;
-              }
-            }
-            bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009999", "0X8009999", i, 0, "", "", "", "");
-          }
-        }
-      }
+      return true;
+      this.jdField_a_of_type_Biaj.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      return true;
+      this.jdField_a_of_type_Biaj.b();
     }
   }
 }

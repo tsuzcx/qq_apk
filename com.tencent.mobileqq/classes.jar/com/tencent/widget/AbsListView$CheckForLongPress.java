@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bkhj;
+import blim;
 
 class AbsListView$CheckForLongPress
-  extends bkhj
+  extends blim
   implements Runnable
 {
   private AbsListView$CheckForLongPress(AbsListView paramAbsListView)

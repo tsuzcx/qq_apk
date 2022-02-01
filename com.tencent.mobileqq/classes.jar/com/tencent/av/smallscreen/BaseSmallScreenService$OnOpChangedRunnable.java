@@ -6,9 +6,9 @@ import com.tencent.av.VideoController;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lhu;
-import lyu;
-import miu;
+import lic;
+import lzq;
+import mjq;
 
 class BaseSmallScreenService$OnOpChangedRunnable
   implements Runnable
@@ -26,7 +26,7 @@ class BaseSmallScreenService$OnOpChangedRunnable
       }
       i = 1;
       boolean bool1 = bool2;
-      if (lyu.c(((AppInterface)BaseSmallScreenService.a(this.this$0)).getApp()))
+      if (lzq.c(((AppInterface)BaseSmallScreenService.a(this.this$0)).getApp()))
       {
         bool1 = bool2;
         if (i == 0) {
@@ -38,13 +38,13 @@ class BaseSmallScreenService$OnOpChangedRunnable
         this.this$0.e = bool1;
         this.this$0.c();
       }
-      bool1 = lyu.i();
+      bool1 = lzq.i();
       if (bool1 != this.this$0.b)
       {
         this.this$0.b = bool1;
         this.this$0.b();
       }
-      bool1 = lyu.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
+      bool1 = lzq.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
       if (bool1 != this.this$0.c)
       {
         this.this$0.c = bool1;
@@ -68,7 +68,7 @@ class BaseSmallScreenService$OnOpChangedRunnable
     label275:
     for (long l = 1L;; l = 2L)
     {
-      lhu.a(20, l);
+      lic.a(20, l);
       this.this$0.a().postDelayed(this, 1000L);
       return;
       i = 0;

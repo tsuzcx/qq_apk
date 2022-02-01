@@ -1,23 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
-import com.tencent.widget.ListView;
+import java.util.HashMap;
 
 public class bbka
-  extends bbip<bbmy, bbvg>
+  extends bbjz
 {
-  public bbka(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, aobu paramaobu)
+  public HashMap<String, String> a(String paramString)
   {
-    super(paramListView, paramaobu);
-  }
-  
-  protected bbps<bbmy, bbvg> a(int paramInt)
-  {
-    return new bbqp(this.a.a);
-  }
-  
-  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new bbww(paramViewGroup, 2131562845);
+    if ("ShortVideo.Save".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.b + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      return paramString;
+    }
+    return null;
   }
 }
 

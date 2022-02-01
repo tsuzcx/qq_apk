@@ -30,45 +30,45 @@ class TPReportManager$1
       {
         String[] arrayOfString = paramSignalStrength.toString().split(" ");
         i = ((TelephonyManager)localObject).getNetworkType();
-        if ((i == 13) && (arrayOfString.length > 9))
-        {
-          i = TPCommonUtils.optInt(arrayOfString[9], 0);
-          TPReportManager.access$3402(this.this$0, i);
-          return;
+        if ((i != 13) || (arrayOfString.length <= 9)) {
+          break label191;
         }
+        i = TPCommonUtils.optInt(arrayOfString[9], 0);
+        TPReportManager.access$3402(this.this$0, i);
+        return;
       }
       catch (Throwable paramSignalStrength)
       {
-        TPLogUtil.e("TPReportManager", paramSignalStrength);
         return;
       }
-      if ((i == 8) || (i == 10) || (i == 9) || (i == 3))
+      localObject = ((TelephonyManager)localObject).getNetworkOperator();
+      if ((localObject != null) && (!((String)localObject).startsWith("46000")) && (!((String)localObject).startsWith("46002")))
       {
-        localObject = ((TelephonyManager)localObject).getNetworkOperator();
-        if ((localObject != null) && (!((String)localObject).startsWith("46000")) && (!((String)localObject).startsWith("46002")))
+        if (((String)localObject).startsWith("46007"))
         {
-          if (((String)localObject).startsWith("46007"))
-          {
-            i = 0;
-            continue;
-          }
-          if (((String)localObject).equals("46001"))
-          {
-            i = paramSignalStrength.getCdmaDbm();
-            continue;
-          }
-          if (((String)localObject).equals("46003")) {
-            i = paramSignalStrength.getEvdoDbm();
-          }
+          i = 0;
+          continue;
+        }
+        if (((String)localObject).equals("46001"))
+        {
+          i = paramSignalStrength.getCdmaDbm();
+          continue;
+        }
+        if (((String)localObject).equals("46003"))
+        {
+          i = paramSignalStrength.getEvdoDbm();
+          continue;
+          i = paramSignalStrength.getGsmSignalStrength();
+          i = i * 2 - 113;
+          continue;
         }
       }
-      else
-      {
-        i = paramSignalStrength.getGsmSignalStrength();
-        i = i * 2 - 113;
-        continue;
-      }
       int i = 0;
+      continue;
+      label191:
+      if ((i != 8) && (i != 10) && (i != 9)) {
+        if (i != 3) {}
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import MQQ.PayRuleCfg;
-import anyj;
+import aokv;
 import java.util.HashMap;
 
 public final class VipInfoHandler$1
@@ -13,10 +13,10 @@ public final class VipInfoHandler$1
   {
     synchronized ()
     {
-      if (anyj.a().get(this.jdField_a_of_type_JavaLangString) != this.jdField_a_of_type_MQQPayRuleCfg) {
+      if (aokv.a().get(this.jdField_a_of_type_JavaLangString) != this.jdField_a_of_type_MQQPayRuleCfg) {
         return;
       }
-      anyj.a(this.jdField_a_of_type_JavaLangString, "payRule.cfg", this.jdField_a_of_type_MQQPayRuleCfg);
+      aokv.a(this.jdField_a_of_type_JavaLangString, "payRule.cfg", this.jdField_a_of_type_MQQPayRuleCfg);
       return;
     }
   }

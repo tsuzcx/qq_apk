@@ -1,31 +1,27 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajna
-  implements View.OnClickListener
+  extends azow
 {
-  public ajna(ImgPreviewAdapter paramImgPreviewAdapter) {}
+  public ajna(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
-    if (localEmoticonFromGroupEntity != null) {
-      if (localEmoticonFromGroupEntity.msg != null) {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onQueryShowBindPhonePage result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    for (;;)
+    if (paramBoolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
-      continue;
-      QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
+      paramBoolean = PhoneContactManagerImp.b(this.a, PhoneContactManagerImp.g(this.a));
+      PhoneContactManagerImp.c(this.a, paramBoolean);
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onSetShowBindPhonePageResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
   }
 }

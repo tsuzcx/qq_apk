@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.search.rich;
 
-import bbrh;
-import bbri;
+import bcka;
+import bckb;
 import java.lang.ref.WeakReference;
 
 public class ArkAppModule$1
   implements Runnable
 {
-  public ArkAppModule$1(bbrh parambbrh, long paramLong, String paramString) {}
+  public ArkAppModule$1(bcka parambcka, long paramLong, String paramString) {}
   
   public void run()
   {
-    if (bbrh.a(this.this$0) != null)
+    if (bcka.a(this.this$0) != null)
     {
-      bbri localbbri = (bbri)bbrh.a(this.this$0).get();
-      if (localbbri != null) {
-        localbbri.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+      bckb localbckb = (bckb)bcka.a(this.this$0).get();
+      if (localbckb != null) {
+        localbckb.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
       }
     }
   }

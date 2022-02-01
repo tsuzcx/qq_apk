@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class axjy
-  implements Parcelable.Creator<Comments>
+class axjy
+  implements DialogInterface.OnClickListener
 {
-  public Comments a(Parcel paramParcel)
-  {
-    return new Comments(paramParcel);
-  }
+  axjy(axjo paramaxjo) {}
   
-  public Comments[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new Comments[paramInt];
+    paramDialogInterface.dismiss();
+    bdll.b(this.a.a, "CliOper", "", "", axjo.b, axjo.b, 0, 0, "", "", "", "");
   }
 }
 

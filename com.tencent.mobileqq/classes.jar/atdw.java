@@ -1,14 +1,28 @@
-public abstract interface atdw
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+
+public class atdw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(String paramString);
+  public atdw(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
   
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
+    }
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    int i = (int)(-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView) * f);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdw
  * JD-Core Version:    0.7.0.1
  */

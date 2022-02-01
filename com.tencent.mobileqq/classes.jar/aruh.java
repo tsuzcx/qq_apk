@@ -1,61 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.lang.ref.WeakReference;
-
 public class aruh
-  extends Handler
+  extends aruj
 {
-  protected Bundle a;
-  private WeakReference<MessengerService> a;
-  
-  public aruh(MessengerService paramMessengerService)
+  public aruh(arul paramarul)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
+    super(paramarul);
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
-      }
-    }
-    MessengerService localMessengerService;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localMessengerService != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
-      return;
-      i = paramMessage.what;
-    } while (i != 4);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("qwallet.type", i);
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      localBundle.putBoolean("qwallet.isSuccess", bool);
-      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool = false;
-    }
+    return -2147483648;
   }
 }
 

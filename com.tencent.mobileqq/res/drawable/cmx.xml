@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<clip android:gravity="bottom" android:drawable="@drawable/ftn" android:clipOrientation="vertical"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#ffdedede" />
+    <corners android:radius="2.0dip" />
+</shape>

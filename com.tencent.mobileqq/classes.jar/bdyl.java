@@ -1,50 +1,98 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import java.util.HashMap;
+import android.graphics.Bitmap;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-class bdyl
-  implements ITransactionCallback
+public class bdyl
+  extends bdyr
+  implements bdxi, bdyq
 {
-  bdyl(bdyk parambdyk, String paramString, long paramLong) {}
+  private bdym a;
+  private bdxm jdField_b_of_type_Bdxm = new bdxm(0.0F, 0.0F);
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public bdyl(SpriteGLView paramSpriteGLView, Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bdyk.a(paramInt, paramHashMap, this.jdField_a_of_type_Long);
+    super(paramSpriteGLView, paramBitmap);
+    this.c = paramBoolean;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public bdyl(SpriteGLView paramSpriteGLView, boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Bdyk.a(paramArrayOfByte, paramHashMap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    super(paramSpriteGLView);
+    this.c = paramBoolean;
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public void onSwitch2BackupChannel()
+  public String a()
   {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Bdyk.d("<BDH_LOG> onSwitch2BackupChannel()");
-    this.jdField_a_of_type_Bdyk.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public void onTransStart()
+  public void a(bdym parambdym)
   {
-    this.jdField_a_of_type_Bdyk.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Bdyk.b.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Bdyk.b.a();
+    this.jdField_a_of_type_Bdym = parambdym;
   }
   
-  public void onUpdateProgress(int paramInt)
+  public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
   {
-    bdyk localbdyk = this.jdField_a_of_type_Bdyk;
-    bduk localbduk = this.jdField_a_of_type_Bdyk.jdField_a_of_type_Bduk;
-    long l = paramInt;
-    localbduk.e = l;
-    localbdyk.s = l;
-    if ((paramInt < this.jdField_a_of_type_Bdyk.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Bdyk.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Bdyk.m))
+    if ((this.jdField_a_of_type_Bdyu == null) || (this.jdField_a_of_type_Bdyu.a == null)) {
+      return false;
+    }
+    paramInt1 = paramMotionEvent.getAction();
+    float f3 = paramMotionEvent.getX();
+    float f4 = paramMotionEvent.getY();
+    a(this.jdField_b_of_type_Bdxm);
+    float f1 = b();
+    float f5 = (this.jdField_b_of_type_Bdxm.a - this.jdField_a_of_type_Bdyu.a.getWidth() * this.e / 2.0F) * f1;
+    float f6 = (this.jdField_b_of_type_Bdxm.a + this.jdField_a_of_type_Bdyu.a.getWidth() * this.e / 2.0F) * f1;
+    float f2;
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bdyk.j();
-      if (this.jdField_a_of_type_Bdyk.g) {
-        bovt.a(this.jdField_a_of_type_Bdyk.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, 1002, this.jdField_a_of_type_Bdyk.f());
+      f2 = paramInt2 - (this.jdField_b_of_type_Bdxm.b + this.jdField_a_of_type_Bdyu.a.getHeight() * this.e / 2.0F) * f1;
+      f1 = paramInt2 - f1 * (this.jdField_b_of_type_Bdxm.b - this.jdField_a_of_type_Bdyu.a.getHeight() * this.e / 2.0F);
+      if (paramInt1 != 0) {
+        break label337;
+      }
+      if ((f3 <= f5) || (f3 >= f6) || (f4 <= f2) || (f4 >= f1)) {
+        break label315;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      if (this.c) {
+        this.jdField_a_of_type_Int = 128;
       }
     }
+    for (;;)
+    {
+      return this.jdField_b_of_type_Boolean;
+      f2 = (this.jdField_b_of_type_Bdxm.b - this.jdField_a_of_type_Bdyu.a.getHeight() * this.e / 2.0F) * f1;
+      f1 *= (this.jdField_b_of_type_Bdxm.b + this.jdField_a_of_type_Bdyu.a.getHeight() * this.e / 2.0F);
+      break;
+      label315:
+      this.jdField_b_of_type_Boolean = false;
+      if (this.c) {
+        this.jdField_a_of_type_Int = 255;
+      }
+    }
+    label337:
+    if ((paramInt1 == 1) || (paramInt1 == 3))
+    {
+      this.jdField_b_of_type_Boolean = false;
+      if (this.c) {
+        this.jdField_a_of_type_Int = 255;
+      }
+      if ((f3 > f5) && (f3 < f6) && (f4 > f2) && (f4 < f1))
+      {
+        if (this.jdField_a_of_type_Bdym != null)
+        {
+          this.jdField_a_of_type_Bdym.a(this);
+          return true;
+        }
+        return true;
+      }
+    }
+    return false;
   }
 }
 

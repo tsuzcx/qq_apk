@@ -1,52 +1,108 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bmpn
-  extends Handler
+public class bmpn
 {
-  bmpn(bmpl parambmpl, Looper paramLooper)
+  public static Map<String, String> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bmqa jdField_a_of_type_Bmqa = new bmpo(this);
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public void handleMessage(Message paramMessage)
+  public bmpn(Context paramContext)
   {
-    int j = 0;
-    if (this.a.getCallback() == null) {}
-    do
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    for (;;)
     {
-      do
+      try
       {
-        return;
-      } while ((paramMessage.what != 1000) || (!bmpl.a(this.a).jdField_a_of_type_Boolean) || (!bmpl.a(this.a)));
-      int k = (int)((float)(SystemClock.uptimeMillis() - this.a.jdField_a_of_type_Long) / (1000.0F / bmpl.a(this.a).jdField_a_of_type_Int));
-      int i;
-      if ((bmpl.b(this.a)) && (bmpl.a(this.a).jdField_a_of_type_Bmpr.a() != 0)) {
-        i = k % bmpl.a(this.a).jdField_a_of_type_Bmpr.a();
-      }
-      for (;;)
-      {
-        bmpl.a(this.a).jdField_a_of_type_Bmpr.a(i);
-        if (j != 0) {
+        paramJSONObject = paramJSONObject.getJSONArray("readerUrls");
+        int i;
+        if (paramJSONObject == null)
+        {
+          i = 0;
+          if (i == 0)
+          {
+            bmqw.a("ReaderUrlConfigDataHelper", "jsonDataToTabItemData ,size=0");
+            return false;
+          }
+        }
+        else
+        {
+          i = paramJSONObject.length();
+          continue;
+        }
+        jdField_a_of_type_JavaUtilMap.clear();
+        int j = 0;
+        if (j >= i) {
           break;
         }
-        long l = 1000 / bmpl.a(this.a).jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, (int)l);
-        this.a.invalidateSelf();
-        return;
-        i = k;
-        if (k >= bmpl.a(this.a).jdField_a_of_type_Bmpr.a())
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
+        Iterator localIterator = localJSONObject.keys();
+        if (localIterator.hasNext())
         {
-          j = 1;
-          i = k;
+          String str = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str)) {
+            jdField_a_of_type_JavaUtilMap.put(str, localJSONObject.getString(str));
+          }
+        }
+        else
+        {
+          j += 1;
         }
       }
-      this.a.stop();
-      this.a.invalidateSelf();
-    } while (this.a.jdField_a_of_type_Bmpo == null);
-    this.a.jdField_a_of_type_Bmpo.onAnimationFinished();
+      catch (Exception paramJSONObject)
+      {
+        bmqw.a("ReaderUrlConfigDataHelper", paramJSONObject.getMessage());
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private void b()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("CGI_RESPONSE", 0).getString("SP_URL_CONFIG_DATA" + str, "");
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    try
+    {
+      a(new JSONObject(str));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      bmqw.a("ReaderUrlConfigDataHelper", "getQQReaderUrlConfigDataFromDB," + localJSONException.getMessage());
+    }
+  }
+  
+  private void c()
+  {
+    bmro.a(bmro.c, this.jdField_a_of_type_Bmqa);
+  }
+  
+  public void a()
+  {
+    b();
+    c();
   }
 }
 

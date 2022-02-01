@@ -1,29 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import mqq.os.MqqHandler;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class ajdn
-  extends MqqHandler
+  implements MessageQueue.IdleHandler
 {
-  public ajdn(NotificationView paramNotificationView) {}
+  public ajdn(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean queueIdle()
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_Ajdk == null);
-      this.a.i();
-      this.a.jdField_a_of_type_Ajdk.a = bdgn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.a.jdField_a_of_type_Ajdk.notifyDataSetChanged();
-      return;
-    }
-    this.a.j();
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

@@ -1,205 +1,155 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager.OpenRedPacketResultStruct;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteReqBody;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.ReqBody;
 
 public class pnx
-  extends pnq
-  implements rac
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  @Nullable
-  private String jdField_a_of_type_JavaLangString;
-  private qzp jdField_a_of_type_Qzp;
-  private raj jdField_a_of_type_Raj = new raj(new rag());
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
+  public static final String a;
+  static HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
+  public static pnx a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  private pot jdField_a_of_type_Pot = new pot();
   
-  public pnx(@NotNull pnr parampnr, Activity paramActivity)
+  static
   {
-    super(parampnr, "RIJRedPacketPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + pnx.class.getSimpleName();
+    b = anzj.a(2131711781);
+    c = anzj.a(2131711692);
+    d = anzj.a(2131711852);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), b);
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), c);
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), d);
   }
   
-  private boolean a(Activity paramActivity)
+  public static pnx a()
   {
-    if ((RIJRedPacketManager.a().a()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity)))
+    if (jdField_a_of_type_Pnx == null) {}
+    try
     {
-      this.jdField_a_of_type_Raj.a(this);
-      this.jdField_a_of_type_Raj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
-      RIJRedPacketManager.a().a();
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean b(Activity paramActivity)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Intent localIntent;
-    String str;
-    if (!(paramActivity instanceof ReadInJoyNewFeedsActivity))
-    {
-      localIntent = paramActivity.getIntent();
-      int i = localIntent.getIntExtra("launch_from", 0);
-      str = localIntent.getStringExtra("redpackid");
-      if (i != 17) {
-        break label218;
+      if (jdField_a_of_type_Pnx == null) {
+        jdField_a_of_type_Pnx = new pnx();
       }
-      this.jdField_a_of_type_Raj.a(this);
-      i = localIntent.getIntExtra("share_source_from_content", 5);
-      int j = localIntent.getIntExtra("plat_source", 0);
-      RIJRedPacketManager.OpenRedPacketResultStruct localOpenRedPacketResultStruct = (RIJRedPacketManager.OpenRedPacketResultStruct)localIntent.getParcelableExtra("key_open_red_packet_result");
-      if (localOpenRedPacketResultStruct != null)
+      return jdField_a_of_type_Pnx;
+    }
+    finally {}
+  }
+  
+  private void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, ArrayList<byte[]> paramArrayList)
+  {
+    new bmko(6).a("nLinkType", 0).b("sTitle", paramString2).b("sUrl", paramString6).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramString4).b("sBrief", paramString3).b("sPath", paramString5).b("sResUrl", paramString6).a("lCategory", 8L).b("sBizDataList", paramArrayList).b(paramActivity, paramString1, -1, null);
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    boolean bool = false;
+    if (ozs.a(BaseApplicationImpl.getApplication().getRuntime(), "Key_First_ReadInJoy_Favorite", true) == null)
+    {
+      ozs.a("Key_First_ReadInJoy_Favorite", Integer.valueOf(1), true);
+      if (!paramBoolean) {
+        bhlq.a(paramContext, 230, paramContext.getString(2131692033), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131690580, 2131692031, new pnz(), null).setMessageCount(null).show();
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
+  {
+    a(paramActivity, paramString1, paramInt, paramString2, paramString3, paramString4, paramString5, paramString6, paramBundle, false);
+  }
+  
+  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle, boolean paramBoolean)
+  {
+    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
+    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
+    localKandianFavoriteBizData.uint32_type.set(paramInt);
+    ArrayList localArrayList = new ArrayList();
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("videoDuration");
+      localKandianFavoriteBizData.uint32_video_duration.set(paramInt);
+      paramInt = paramBundle.getInt("picNum");
+      localKandianFavoriteBizData.uint32_pic_num.set(paramInt);
+      long l = paramBundle.getLong("publishAccountUin");
+      localKandianFavoriteBizData.uint64_account_id.set(l);
+      paramString2 = paramBundle.getString("publishAccountName");
+      if (!TextUtils.isEmpty(paramString2))
       {
-        paramActivity = null;
-        if (localOpenRedPacketResultStruct.jdField_a_of_type_Boolean)
-        {
-          paramActivity = new qzh();
-          paramActivity.c = localOpenRedPacketResultStruct.d;
-          paramActivity.b = localOpenRedPacketResultStruct.c;
-          paramActivity.jdField_a_of_type_JavaLangString = localOpenRedPacketResultStruct.b;
-        }
-        this.jdField_a_of_type_Raj.a(localOpenRedPacketResultStruct.jdField_a_of_type_Long, localOpenRedPacketResultStruct.jdField_a_of_type_JavaLangString, paramActivity, localOpenRedPacketResultStruct.e, 2, j, 2);
-      }
-      QLog.i("RIJRedPacketPopupStep", 1, "launch from red packet tips click. share source: " + i + "\n packetId: " + str + "\n");
-      localIntent.removeExtra("launch_from");
-      localIntent.removeExtra("redpackid");
-      bool1 = true;
-    }
-    label218:
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(str));
-    this.jdField_a_of_type_Raj.a(this);
-    this.jdField_a_of_type_Raj.b(str, this.jdField_a_of_type_Int, this.b, this.c);
-    localIntent.removeExtra("redpackid");
-    return true;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "showErrorRedPacketDialog");
-    if ((a()) && (b()))
-    {
-      new qzu((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), BaseApplicationImpl.getContext().getString(2131717049), BaseApplicationImpl.getContext().getString(2131717247), paramInt1, paramInt2, this.jdField_a_of_type_JavaLangString).a(false);
-      a(true);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(long paramLong, String paramString1, @Nullable qzh paramqzh, String paramString2, int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "showOpenRedPacketDialog, rowkey = " + this.jdField_a_of_type_JavaLangString);
-    ViewGroup localViewGroup;
-    if (b())
-    {
-      localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-      if (paramqzh != null) {
-        break label90;
+        localKandianFavoriteBizData.bytes_account_name.set(ByteStringMicro.copyFromUtf8(paramString2));
+        l = paramBundle.getLong("feedsId");
+        localKandianFavoriteBizData.uint64_feeds_id.set(l);
+        paramInt = paramBundle.getInt("feedsType");
+        localKandianFavoriteBizData.uint32_feeds_type.set(paramInt);
+        paramInt = paramBundle.getInt("videoType");
+        localKandianFavoriteBizData.uint32_video_type.set(paramInt);
       }
     }
-    label90:
-    for (paramString1 = new qzs(localViewGroup, paramLong, paramString2, paramString1, paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_JavaLangString);; paramString1 = new qzw(localViewGroup, paramLong, paramString1, paramqzh, paramString2, paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      paramString1.a(false);
-      a(true);
+      localArrayList.add(localKandianFavoriteBizData.toByteArray());
+      if (paramBoolean)
+      {
+        new bmko(6).a("nLinkType", 0).b("sTitle", paramString3).b("sUrl", paramString6).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramString2).b("sBrief", paramString4).b("sPath", paramString5).b("sResUrl", paramString6).a("lCategory", 8L).b("sBizDataList", localArrayList).a(paramActivity, paramString1);
+        return;
+      }
+      a(paramActivity, paramString1, paramString3, paramString4, paramString2, paramString5, paramString6, localArrayList);
+      return;
+      paramString2 = "";
+      break;
+      paramString2 = "";
+    }
+  }
+  
+  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, ArrayList<String> paramArrayList)
+  {
+    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
+    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
+    localKandianFavoriteBizData.uint32_type.set(paramInt);
+    paramString2 = new ArrayList();
+    paramString2.add(localKandianFavoriteBizData.toByteArray());
+    new bmko(6).a("sCIDListToBeDelete", paramArrayList).b("sBizDataList", paramString2).a(paramActivity, paramString1, -1, null);
+  }
+  
+  public void a(List<String> paramList, poa parampoa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "getAtlasFavoriteStatus, rowKeyList = " + paramList + ", callback = " + parampoa);
+    }
+    oidb_0xb40.ReqBody localReqBody = new oidb_0xb40.ReqBody();
+    oidb_0xb40.CheckFavoriteReqBody localCheckFavoriteReqBody = new oidb_0xb40.CheckFavoriteReqBody();
+    if (paramList == null) {
       return;
     }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "showErrorRedPacketDialog, wording = " + paramString1);
-    if ((a()) && (b()))
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      new qzu((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), paramString1, paramString2, paramInt1, paramInt2, this.jdField_a_of_type_JavaLangString).a(false);
-      a(true);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "showRedPacketDialog, rowkey = " + paramString3);
-    if ((a()) && (b()) && ((this.jdField_a_of_type_Qzp == null) || (!this.jdField_a_of_type_Qzp.a())))
-    {
-      this.jdField_a_of_type_Qzp = new qzp((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), paramString1, paramString2, this.jdField_a_of_type_Raj, paramInt1, paramInt2, paramInt3, paramString3);
-      this.jdField_a_of_type_Qzp.a();
-    }
-    a(true);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "haveWallet = " + paramBoolean1 + " hasOpen = " + paramBoolean2);
-  }
-  
-  public void f()
-  {
-    super.f();
-    this.jdField_a_of_type_Raj.a();
-    if (this.jdField_a_of_type_Qzp != null)
-    {
-      this.jdField_a_of_type_Qzp.b();
-      this.jdField_a_of_type_Qzp = null;
-    }
-  }
-  
-  protected void g()
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "doStepFromOnResume");
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "doStepFromOnShowSelf");
-    if ((b()) && (this.jdField_a_of_type_AndroidAppActivity != null))
-    {
-      if ((b(this.jdField_a_of_type_AndroidAppActivity)) || (a(this.jdField_a_of_type_AndroidAppActivity))) {
-        this.jdField_a_of_type_Boolean = true;
+      String str = (String)paramList.next();
+      if (!TextUtils.isEmpty(str)) {
+        localCheckFavoriteReqBody.rpt_bytes_rowkey.add(ByteStringMicro.copyFromUtf8(str));
       }
     }
-    else {
-      return;
-    }
-    a(false);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void i()
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "dismissRedPacketDialog");
-    if (this.jdField_a_of_type_Qzp != null) {
-      this.jdField_a_of_type_Qzp.b();
-    }
-  }
-  
-  public void j()
-  {
-    QLog.d("RIJRedPacketPopupStep", 1, "showOtherPopupView");
-    a(false);
+    localReqBody.msg_check_favorite_req.set(localCheckFavoriteReqBody);
+    paramList = new Bundle();
+    nkm.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new pny(this, parampoa), localReqBody.toByteArray(), "OidbSvc.0xb40", 2880, 1, paramList, 0L);
   }
 }
 

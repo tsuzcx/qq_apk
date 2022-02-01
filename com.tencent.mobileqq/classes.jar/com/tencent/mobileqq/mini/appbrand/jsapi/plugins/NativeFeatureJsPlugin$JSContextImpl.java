@@ -8,7 +8,6 @@ import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSCon
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 class NativeFeatureJsPlugin$JSContextImpl
@@ -16,11 +15,11 @@ class NativeFeatureJsPlugin$JSContextImpl
 {
   private int callbackId;
   private String eventName;
-  private WeakReference<JsRuntime> jsRuntimeWeakReference;
+  private JsRuntime jsRuntime;
   
   public NativeFeatureJsPlugin$JSContextImpl(JsRuntime paramJsRuntime, String paramString, int paramInt)
   {
-    this.jsRuntimeWeakReference = new WeakReference(paramJsRuntime);
+    this.jsRuntime = paramJsRuntime;
     this.eventName = paramString;
     this.callbackId = paramInt;
   }
@@ -29,18 +28,15 @@ class NativeFeatureJsPlugin$JSContextImpl
   {
     JsRuntime localJsRuntime;
     String str;
-    if (this.jsRuntimeWeakReference != null)
+    if (this.jsRuntime != null)
     {
-      localJsRuntime = (JsRuntime)this.jsRuntimeWeakReference.get();
-      if (localJsRuntime != null)
-      {
-        str = "custom_event_" + paramString;
-        if (paramJSONObject != null) {
-          break label61;
-        }
+      localJsRuntime = this.jsRuntime;
+      str = "custom_event_" + paramString;
+      if (paramJSONObject != null) {
+        break label51;
       }
     }
-    label61:
+    label51:
     for (paramString = "";; paramString = paramJSONObject.toString())
     {
       localJsRuntime.evaluateSubcribeJS(str, paramString, 0);
@@ -52,18 +48,15 @@ class NativeFeatureJsPlugin$JSContextImpl
   {
     JsRuntime localJsRuntime;
     int i;
-    if (this.jsRuntimeWeakReference != null)
+    if (this.jsRuntime != null)
     {
-      localJsRuntime = (JsRuntime)this.jsRuntimeWeakReference.get();
-      if (localJsRuntime != null)
-      {
-        i = this.callbackId;
-        if (!paramBoolean) {
-          break label57;
-        }
+      localJsRuntime = this.jsRuntime;
+      i = this.callbackId;
+      if (!paramBoolean) {
+        break label46;
       }
     }
-    label57:
+    label46:
     for (paramJSONObject = ApiUtil.wrapCallbackOk(this.eventName, paramJSONObject).toString();; paramJSONObject = ApiUtil.wrapCallbackFail(this.eventName, paramJSONObject, paramString).toString())
     {
       localJsRuntime.evaluateCallbackJs(i, paramJSONObject);
@@ -73,18 +66,14 @@ class NativeFeatureJsPlugin$JSContextImpl
   
   public Activity getActivity()
   {
-    Object localObject;
-    if (this.jsRuntimeWeakReference != null)
+    Object localObject = this.jsRuntime;
+    if ((localObject instanceof ServiceWebview))
     {
-      localObject = (JsRuntime)this.jsRuntimeWeakReference.get();
-      if ((localObject instanceof ServiceWebview))
-      {
-        localObject = ((ServiceWebview)localObject).appBrandEventInterface;
-        if ((localObject != null) && ((localObject instanceof AppBrandRuntime))) {
-          return ((AppBrandRuntime)localObject).activity;
-        }
-        QLog.e("NativeFeatureJsPlugin", 1, "appBrandServiceEventInterface is null");
+      localObject = ((ServiceWebview)localObject).appBrandEventInterface;
+      if ((localObject != null) && ((localObject instanceof AppBrandRuntime))) {
+        return ((AppBrandRuntime)localObject).activity;
       }
+      QLog.e("NativeFeatureJsPlugin", 1, "appBrandServiceEventInterface is null");
     }
     for (;;)
     {
@@ -100,8 +89,6 @@ class NativeFeatureJsPlugin$JSContextImpl
       else
       {
         QLog.e("NativeFeatureJsPlugin", 1, "runtime is null");
-        continue;
-        QLog.e("NativeFeatureJsPlugin", 1, "jsRuntimeWeakReference is null");
       }
     }
   }

@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.52;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
-public class aifa
-  implements bhlk
+class aifa
+  implements View.OnClickListener
 {
-  public aifa(PublicAccountChatPie.52 param52) {}
+  aifa(aiez paramaiez, int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.this$0.a.a();
-    }
+    ((PhotoListPanel)this.jdField_a_of_type_Aiez.a.get()).a(paramView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

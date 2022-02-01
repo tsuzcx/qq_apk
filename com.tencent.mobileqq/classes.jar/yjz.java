@@ -1,41 +1,47 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class yjz
-  extends yka<TagFeedItem>
+class yjz
+  extends wjd
 {
-  public yjz(@NonNull TagFeedItem paramTagFeedItem)
-  {
-    super(paramTagFeedItem);
-  }
+  yjz(yjy paramyjy) {}
   
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    Object localObject = (qqstory_struct.TagFeed)paramStoryFeed.tag_feed.get();
-    ((TagFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.TagFeed)localObject);
-    ((TagFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.TagFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      qqstory_struct.TagVideoInfo localTagVideoInfo = (qqstory_struct.TagVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localTagVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+    paramInt = 1;
+    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
+      return;
     }
-    c(paramStoryFeed, true);
-    return true;
+    if (paramBoolean1)
+    {
+      paramString = this.a.a;
+      if (paramBoolean2)
+      {
+        paramString.isSubscribe = paramInt;
+        paramString = (wjb)xiz.a().getManager(181);
+        if (!paramBoolean2) {
+          break label128;
+        }
+        if (!paramString.h()) {
+          paramString.b();
+        }
+        QQToast.a(xiz.a(), 2, anzj.a(2131709819), 0).a();
+      }
+      for (;;)
+      {
+        yjy.a(this.a).e();
+        yjy.a(this.a).c();
+        return;
+        paramInt = 0;
+        break;
+        label128:
+        QQToast.a(xiz.a(), 2, anzj.a(2131709815), 0).a();
+      }
+    }
+    QQToast.a(xiz.a(), 1, anzj.a(2131709824), 0).a();
   }
 }
 

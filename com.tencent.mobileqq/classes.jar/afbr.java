@@ -1,27 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afbr
-  extends anhu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afbr(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public afbr(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (String str1 = "1";; str1 = "0")
     {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      if (this.a.a == 13) {
-        this.a.b();
-      }
-      this.a.finish();
+      VasWebviewUtil.reportCommercialDrainage(str2, "bubble_new", "change", "0", 0, 0, 0, "", "", str1, "", "", "", "", 0, 0, 0, 0);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    QQToast.a(this.a.app.getApp(), 1, anni.a(2131712216), 0).a();
   }
 }
 

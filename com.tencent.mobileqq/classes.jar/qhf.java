@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.IPTSLoadFeeds;
+import com.tencent.qphone.base.util.QLog;
 
-class qhf
-  implements pyb
+public class qhf
+  implements IPTSLoadFeeds
 {
-  qhf(qhe paramqhe, QQAppInterface paramQQAppInterface, String paramString) {}
+  private qfy a = new qhg(this);
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public qhf()
   {
-    qhe.a(this.jdField_a_of_type_Qhe, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "", true);
+    qfx.a().a(this.a);
   }
   
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
   {
-    qhe.a(this.jdField_a_of_type_Qhe, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramReadInJoyUserInfo.faceUrl + "140", true);
+    pfg localpfg = (pfg)((QQAppInterface)ozs.a()).getManager(163);
+    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
+    if (localpfg != null) {
+      localpfg.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
+    }
   }
 }
 

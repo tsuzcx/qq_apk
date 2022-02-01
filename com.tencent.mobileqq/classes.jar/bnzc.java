@@ -1,18 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
 
-public class bnzc
+final class bnzc
+  implements INetEventHandler
 {
-  private static boolean a;
-  
-  public static void a()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    a = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-  }
-  
-  public static boolean a()
-  {
-    return false;
+    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
   }
 }
 

@@ -1,40 +1,22 @@
-public class pwy<T>
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
+class pwy
+  implements ViewBase.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  T jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  pwy(pww parampww, ppu paramppu, Container paramContainer) {}
   
-  public pwy(T paramT)
+  public void onClick(ViewBase paramViewBase)
   {
-    this(paramT, localObject, 600000L);
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+    paramViewBase = this.jdField_a_of_type_Ppu.a();
+    if (paramViewBase != null)
+    {
+      ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
+      sel.a(paramViewBase, 0);
+      pww.b(this.jdField_a_of_type_Pww, true);
     }
-  }
-  
-  public pwy(T paramT, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramLong;
-    this.b = System.currentTimeMillis();
-    Object localObject;
-    this.jdField_a_of_type_Long = localObject;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
   }
 }
 

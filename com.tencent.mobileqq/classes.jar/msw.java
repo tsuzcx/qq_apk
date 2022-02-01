@@ -1,18 +1,12 @@
-public abstract interface msw
+public class msw
 {
-  public abstract void a();
+  public byte a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public msw(mst parammst) {}
 }
 
 

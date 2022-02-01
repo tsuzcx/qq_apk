@@ -1,8 +1,41 @@
+import android.view.View;
+import java.util.List;
+
 public class bcfi
+  implements bcfq
 {
-  public int a;
-  public int b;
-  public int c;
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<bcfr> jdField_a_of_type_JavaUtilList;
+  
+  public bcfi(List<bcfr> paramList, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public String a()
+  {
+    return anzj.a(2131704287);
+  }
+  
+  public List<bcfr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 

@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.qphone.base.util.QLog;
 
 public class alse
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public alse(PhoneContactTabView paramPhoneContactTabView) {}
+  public alse(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    PhoneContactTabView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
+    LoginView.a(this.a, true);
   }
 }
 

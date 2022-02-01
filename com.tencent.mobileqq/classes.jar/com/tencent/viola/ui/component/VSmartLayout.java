@@ -2,7 +2,6 @@ package com.tencent.viola.ui.component;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.baseComponent.VComponentContainer;
@@ -12,6 +11,7 @@ import com.tencent.viola.ui.view.VFrameLayout;
 import com.tencent.viola.ui.view.VPageSliderView;
 import com.tencent.viola.ui.view.VSmartHeaderView;
 import com.tencent.viola.ui.view.VSmartView;
+import com.tencent.viola.ui.view.list.VRecyclerView;
 import com.tencent.viola.utils.ViolaUtils;
 
 public class VSmartLayout
@@ -79,7 +79,7 @@ public class VSmartLayout
     label206:
     for (boolean bool = true;; bool = false)
     {
-      localVSmartView.addRecyclerView((RecyclerView)localVComponent.mHost, bool);
+      localVSmartView.addRecyclerView((VRecyclerView)localVComponent.mHost, bool);
       j += 1;
       break label133;
       break;

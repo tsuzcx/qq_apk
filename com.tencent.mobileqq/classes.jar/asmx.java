@@ -1,132 +1,201 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.util.WeakReference;
+import java.util.List;
 
-public class asmx
-  implements asmv
+public abstract class asmx
 {
-  private static volatile asmx jdField_a_of_type_Asmx;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  protected asmt a;
-  private WeakReference<BaseActivity> jdField_a_of_type_MqqUtilWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private WeakReference<ExtendFriendVoiceView> b;
+  int jdField_a_of_type_Int;
+  asmu jdField_a_of_type_Asmu;
+  asmw jdField_a_of_type_Asmw;
+  public String a;
+  List<asmu> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  asmu jdField_b_of_type_Asmu;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  asmu jdField_c_of_type_Asmu;
+  boolean jdField_c_of_type_Boolean;
+  int jdField_d_of_type_Int;
+  asmu jdField_d_of_type_Asmu;
+  boolean jdField_d_of_type_Boolean;
+  asmu jdField_e_of_type_Asmu;
+  boolean jdField_e_of_type_Boolean;
+  asmu jdField_f_of_type_Asmu;
+  boolean jdField_f_of_type_Boolean;
   
-  private asmx(BaseActivity paramBaseActivity)
+  public asmx()
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_JavaLangString = "init";
   }
   
-  public static final asmx a(BaseActivity paramBaseActivity)
+  public int a()
   {
-    if (jdField_a_of_type_Asmx == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Asmx == null) {
-        jdField_a_of_type_Asmx = new asmx(paramBaseActivity);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int a(int paramInt)
+  {
+    int j = 1;
+    int i = 0;
+    int k = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonLinearLayout", 2, "getRealIndex, position:" + paramInt + ",pageTotalNum:" + this.jdField_d_of_type_Int + ",page:" + this.jdField_c_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      if ((paramInt + 1) % this.jdField_d_of_type_Int == 0) {
+        paramInt = -1;
       }
-      return jdField_a_of_type_Asmx;
     }
-  }
-  
-  public static final void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    int m;
+    label237:
+    label242:
+    do
     {
-      b();
-      jdField_a_of_type_Asmx = null;
-      return;
-    }
-  }
-  
-  public static final void b()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Asmx != null)
+      do
       {
-        if (jdField_a_of_type_Asmx.a()) {
-          jdField_a_of_type_Asmx.c();
+        return paramInt;
+        return paramInt + this.jdField_c_of_type_Int * (this.jdField_d_of_type_Int - 1);
+        if (this.jdField_e_of_type_Boolean)
+        {
+          if ((paramInt == 0) && (this.jdField_c_of_type_Int == 0)) {
+            return -5;
+          }
+          if (this.jdField_f_of_type_Boolean) {
+            i = 1;
+          }
+          if ((paramInt == 1) && (this.jdField_c_of_type_Int == 0) && (this.jdField_f_of_type_Boolean)) {
+            return -6;
+          }
+          if (this.jdField_c_of_type_Int == 0) {
+            return paramInt - 1 - i;
+          }
+          return this.jdField_d_of_type_Int - 1 + (this.jdField_c_of_type_Int - 1) * this.jdField_d_of_type_Int + paramInt - i;
         }
-        ExtendFriendVoiceView localExtendFriendVoiceView = jdField_a_of_type_Asmx.a();
-        if ((localExtendFriendVoiceView != null) && (localExtendFriendVoiceView.b())) {
-          localExtendFriendVoiceView.d();
+        m = this.jdField_a_of_type_JavaUtilList.size();
+        if (this.jdField_d_of_type_Boolean)
+        {
+          i = 1;
+          if (!this.jdField_c_of_type_Boolean) {
+            break label237;
+          }
         }
+        for (;;)
+        {
+          if (this.jdField_c_of_type_Int + paramInt != 0) {
+            break label270;
+          }
+          if (!this.jdField_d_of_type_Boolean) {
+            break label242;
+          }
+          return -4;
+          i = 0;
+          break;
+          j = 0;
+        }
+        paramInt = k;
+      } while (this.jdField_a_of_type_JavaUtilList.size() != 0);
+      paramInt = k;
+    } while (!this.jdField_c_of_type_Boolean);
+    return -2;
+    label270:
+    if (this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt == i + (m - 1) + j)
+    {
+      if (this.jdField_c_of_type_Boolean) {
+        return -2;
       }
-      return;
+      return this.jdField_a_of_type_JavaUtilList.size() - 1;
     }
+    if (this.jdField_d_of_type_Boolean) {
+      return this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt - 1;
+    }
+    return paramInt + this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
   }
   
-  public ExtendFriendVoiceView a()
+  public asmu a(int paramInt)
   {
-    if (this.b != null) {
-      return (ExtendFriendVoiceView)this.b.get();
+    paramInt = a(paramInt);
+    if (paramInt == -1) {
+      return this.jdField_a_of_type_Asmu;
+    }
+    if (paramInt == -2) {
+      return this.jdField_c_of_type_Asmu;
+    }
+    if (paramInt == -3) {
+      return this.jdField_b_of_type_Asmu;
+    }
+    if (paramInt == -4) {
+      return this.jdField_d_of_type_Asmu;
+    }
+    if (paramInt == -5) {
+      return this.jdField_e_of_type_Asmu;
+    }
+    if (paramInt == -6) {
+      return this.jdField_f_of_type_Asmu;
+    }
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (asmu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void a()
   {
-    if (this.jdField_a_of_type_Asmt != null) {
-      this.jdField_a_of_type_Asmt.b();
+    if (this.jdField_a_of_type_Asmw != null) {
+      this.jdField_a_of_type_Asmw.a();
     }
   }
   
-  public void a(ExtendFriendVoiceView paramExtendFriendVoiceView)
+  public void a(int paramInt)
   {
-    if (paramExtendFriendVoiceView != null) {
-      this.b = new WeakReference(paramExtendFriendVoiceView);
-    }
+    this.jdField_c_of_type_Int = paramInt;
   }
   
-  public void a(File paramFile) {}
-  
-  public void a(String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatAioVoicePlayerManager", 2, "playVoice " + paramString);
-    }
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localBaseActivity != null)
-    {
-      if (this.jdField_a_of_type_Asmt == null) {
-        this.jdField_a_of_type_Asmt = new asmt(this, localBaseActivity);
-      }
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_Asmt.a(paramString);
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_d_of_type_Int = (paramInt2 * paramInt1);
+    this.jdField_a_of_type_Asmw.a(paramInt1, paramInt2);
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2) {}
+  public abstract void a(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup);
   
-  public boolean a()
+  public void a(asmu paramasmu)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Asmu = paramasmu;
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void c()
+  public void a(asmw paramasmw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatAioVoicePlayerManager", 2, "stopVoice");
-    }
-    if (this.jdField_a_of_type_Asmt != null)
-    {
-      this.jdField_a_of_type_Asmt.a();
-      this.jdField_a_of_type_Boolean = false;
-    }
+    this.jdField_a_of_type_Asmw = paramasmw;
   }
   
-  public void c(boolean paramBoolean) {}
+  public void a(List<asmu> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
   
-  public void f(int paramInt) {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
 }
 
 

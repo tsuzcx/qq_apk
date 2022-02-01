@@ -1,49 +1,89 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import android.text.TextUtils;
 
 public class bbko
 {
-  public static bbkk a(QQAppInterface paramQQAppInterface, int paramInt)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
+  
+  public bbko()
   {
-    return new bbkr(paramQQAppInterface);
+    this(null, 0, true, false);
   }
   
-  public static bbkm a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public bbko(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new bbkx(paramQQAppInterface, paramString, paramArrayList, paramFTSEntity);
+    this(paramString, paramInt, paramBoolean1, paramBoolean2, 0L, 0L);
   }
   
-  public static bbtx a(int paramInt, String paramString, FTSEntity paramFTSEntity)
+  public bbko(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    paramString = new bbtx(paramString);
-    paramFTSEntity = (FTSMessage)paramFTSEntity;
-    paramString.a = new Bundle();
-    paramString.a.putLong("uin", paramFTSEntity.uin);
-    paramString.a.putInt("uinType", paramFTSEntity.istroop);
-    return paramString;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
-  public static String a(Context paramContext, int paramInt)
+  public boolean a(bbko parambbko)
   {
-    return paramContext.getString(2131717620);
-  }
-  
-  public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
-  {
-    String str = paramString;
-    if (paramString.length() > 13) {
-      str = paramString.substring(0, 10) + "…";
+    if (parambbko == null) {
+      throw new NullPointerException();
     }
-    return paramContext.getString(2131717619, new Object[] { Integer.valueOf(paramInt1), str });
+    boolean bool = false;
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, parambbko.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaLangString = parambbko.jdField_a_of_type_JavaLangString;
+      bool = true;
+    }
+    if (this.jdField_a_of_type_Int != parambbko.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Int = parambbko.jdField_a_of_type_Int;
+      bool = true;
+    }
+    if (this.jdField_a_of_type_Boolean != parambbko.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = parambbko.jdField_a_of_type_Boolean;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Boolean != parambbko.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Boolean = parambbko.jdField_b_of_type_Boolean;
+      bool = true;
+    }
+    if (this.jdField_a_of_type_Long != parambbko.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = parambbko.jdField_a_of_type_Long;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Long != parambbko.jdField_b_of_type_Long)
+    {
+      this.jdField_b_of_type_Long = parambbko.jdField_b_of_type_Long;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Int != parambbko.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Int = parambbko.jdField_b_of_type_Int;
+      bool = true;
+    }
+    if (this.c != parambbko.c)
+    {
+      this.c = parambbko.c;
+      return true;
+    }
+    return bool;
   }
   
-  public static String b(Context paramContext, int paramInt)
+  public String toString()
   {
-    return anni.a(2131703738);
+    return "inputFilePath=" + this.jdField_a_of_type_JavaLangString + " speedType=" + this.jdField_a_of_type_Int + " noSleep=" + this.jdField_a_of_type_Boolean + " repeat=" + this.jdField_b_of_type_Boolean + " startTimeMillSecond=" + this.jdField_a_of_type_Long + " endTimeMillSecond=" + this.jdField_b_of_type_Long;
   }
 }
 

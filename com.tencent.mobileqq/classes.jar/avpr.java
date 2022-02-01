@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import org.json.JSONObject;
-
 public class avpr
-  implements tol
 {
-  public avpr(UiApiPlugin paramUiApiPlugin) {}
-  
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

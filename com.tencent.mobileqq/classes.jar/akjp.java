@@ -1,19 +1,17 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akjp
-  implements atve
+  implements View.OnClickListener
 {
-  akjp(akjm paramakjm) {}
+  akjp(akjn paramakjn) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.b();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

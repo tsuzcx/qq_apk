@@ -1,79 +1,29 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ttpic.openapi.model.WMEditItem;
 
-public class bopq
+class bopq
+  implements View.OnClickListener
 {
-  public int a;
-  public ArrayList<bopr> a;
-  public ArrayList<bopr> b = new ArrayList();
+  bopq(bopo parambopo, bopw parambopw, WMEditItem paramWMEditItem) {}
   
-  public bopq()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public static bopq a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return new bopq();
+    ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).hideSoftInputFromWindow(bopo.a(this.jdField_a_of_type_Bopo).getWindowToken(), 0);
+    bopo.a(this.jdField_a_of_type_Bopo).setTextColor(-1);
+    bopo.a(this.jdField_a_of_type_Bopo, bopo.a(this.jdField_a_of_type_Bopo));
+    bopo.a(this.jdField_a_of_type_Bopo, this.jdField_a_of_type_Bopw.a);
+    bopo.a(this.jdField_a_of_type_Bopo).setTextColor(-12339461);
+    bopo.a(this.jdField_a_of_type_Bopo, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    if (bopo.a(this.jdField_a_of_type_Bopo) != null) {
+      bopo.a(this.jdField_a_of_type_Bopo).a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.itemType, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.value, this.jdField_a_of_type_Bopw.a);
     }
-    localbopq = new bopq();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localbopq.jdField_a_of_type_Int = paramString.getInt("levelLimit");
-      paramString = paramString.getJSONArray("levelCfg");
-      int j = 0;
-      int i = 0;
-      while (j < paramString.length())
-      {
-        JSONObject localJSONObject = paramString.getJSONObject(j);
-        int i1 = localJSONObject.getInt("level");
-        int k = 0;
-        while (k < bopp.a.length)
-        {
-          JSONArray localJSONArray = localJSONObject.optJSONArray(bopp.a[k]);
-          int n = i;
-          if (localJSONArray != null)
-          {
-            int m = 0;
-            for (;;)
-            {
-              n = i;
-              if (m >= localJSONArray.length()) {
-                break;
-              }
-              String str = localJSONArray.getString(m);
-              bopr localbopr = new bopr();
-              localbopr.jdField_a_of_type_JavaLangString = str;
-              localbopr.c = k;
-              localbopr.b = i1;
-              n = i;
-              if (localbopq.jdField_a_of_type_Int >= i1)
-              {
-                localbopr.jdField_a_of_type_Int = i;
-                localbopq.jdField_a_of_type_JavaUtilArrayList.add(localbopr);
-                n = i + 1;
-              }
-              localbopq.b.add(localbopr);
-              m += 1;
-              i = n;
-            }
-          }
-          k += 1;
-          i = n;
-        }
-        j += 1;
-      }
-      return localbopq;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

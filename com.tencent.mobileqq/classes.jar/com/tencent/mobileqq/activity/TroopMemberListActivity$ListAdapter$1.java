@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import afnc;
+import afwg;
 
 public class TroopMemberListActivity$ListAdapter$1
   implements Runnable
 {
-  public TroopMemberListActivity$ListAdapter$1(afnc paramafnc) {}
+  public TroopMemberListActivity$ListAdapter$1(afwg paramafwg) {}
   
   public void run()
   {

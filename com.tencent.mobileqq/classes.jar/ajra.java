@@ -1,13 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
 
 public class ajra
-  implements DialogInterface.OnClickListener
+  implements bliz
 {
-  public ajra(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  public ajra(TroopSuspiciousFragment paramTroopSuspiciousFragment, blir paramblir) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
+      }
+    }
+  }
 }
 
 

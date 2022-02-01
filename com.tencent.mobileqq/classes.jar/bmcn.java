@@ -1,18 +1,13 @@
-import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-final class bmcn
-  implements bmec
+class bmcn
+  implements aqrn
 {
-  bmcn(Context paramContext, bmcp parambmcp, bmco parambmco) {}
+  bmcn(bmcm parambmcm, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
-  public void a(bmcj parambmcj)
+  public ColorNote getColorNote()
   {
-    if (parambmcj == null)
-    {
-      bmea.a(this.jdField_a_of_type_AndroidContentContext, this);
-      return;
-    }
-    parambmcj.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bmcp, this.jdField_a_of_type_Bmco);
+    return new aqrv().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838905").a(this.jdField_a_of_type_ArrayOfByte).a();
   }
 }
 

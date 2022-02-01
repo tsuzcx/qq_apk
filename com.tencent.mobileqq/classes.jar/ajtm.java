@@ -1,27 +1,16 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
 
 public class ajtm
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajtm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ajtm(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bgzo.e, anni.a(2131700404));
-    localBundle.putString(bgzo.f, "CJCLUBT");
-    localBundle.putString(bgzo.d, "1450000516");
-    localBundle.putInt(bgzo.b, 3);
-    localBundle.putString(bgzo.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    localBundle.putString(bgzo.g, "svip");
-    localBundle.putString(bgzo.a, this.a.b.getCurrentAccountUin());
-    bgzo.a(this.a.b, this.a.getActivity(), localBundle);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
   }
 }
 

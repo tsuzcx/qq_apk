@@ -27,7 +27,7 @@ public class HttpConnection
 {
   private static final String BIG_DATA_HIGHWAY_URL = "/cgi-bin/httpconn?htcmd=0x6ff0082";
   private static final int MAX_REDIRECT_NUM = 5;
-  private int iErrCode;
+  private int iErrCode = 0;
   private boolean isIpv6;
   private int mConnId;
   private IConnectionListener mConnListener;
@@ -205,7 +205,7 @@ public class HttpConnection
     //   18: return
     //   19: aload_0
     //   20: iconst_0
-    //   21: putfield 157	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
+    //   21: putfield 41	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
     //   24: aload_0
     //   25: invokespecial 344	com/tencent/mobileqq/highway/conn/HttpConnection:getBdhConnURL	()Ljava/lang/String;
     //   28: astore 8
@@ -218,12 +218,12 @@ public class HttpConnection
     //   42: aconst_null
     //   43: astore 7
     //   45: aload_1
-    //   46: getfield 133	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
+    //   46: getfield 135	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
     //   49: ifnull +16 -> 65
     //   52: aload_1
-    //   53: getfield 133	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
+    //   53: getfield 135	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
     //   56: aload_0
-    //   57: getfield 47	com/tencent/mobileqq/highway/conn/HttpConnection:mConnId	I
+    //   57: getfield 49	com/tencent/mobileqq/highway/conn/HttpConnection:mConnId	I
     //   60: invokeinterface 348 2 0
     //   65: aload_0
     //   66: aload_0
@@ -265,32 +265,32 @@ public class HttpConnection
     //   134: istore 5
     //   136: goto -39 -> 97
     //   139: aload_1
-    //   140: getfield 133	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
+    //   140: getfield 135	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
     //   143: ifnull +20 -> 163
     //   146: aload_1
-    //   147: getfield 133	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
+    //   147: getfield 135	com/tencent/mobileqq/highway/segment/HwRequest:reqListener	Lcom/tencent/mobileqq/highway/segment/IRequestListener;
     //   150: aload_0
-    //   151: getfield 47	com/tencent/mobileqq/highway/conn/HttpConnection:mConnId	I
+    //   151: getfield 49	com/tencent/mobileqq/highway/conn/HttpConnection:mConnId	I
     //   154: aload_0
     //   155: invokevirtual 374	com/tencent/mobileqq/highway/conn/HttpConnection:getProtoType	()I
     //   158: invokeinterface 378 3 0
-    //   163: ldc 90
+    //   163: ldc 92
     //   165: ldc_w 380
-    //   168: invokestatic 98	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   168: invokestatic 100	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   171: aload_0
     //   172: getfield 352	com/tencent/mobileqq/highway/conn/HttpConnection:mConnection	Ljava/net/HttpURLConnection;
     //   175: invokevirtual 383	java/net/HttpURLConnection:getResponseCode	()I
     //   178: istore 5
-    //   180: ldc 90
-    //   182: new 53	java/lang/StringBuilder
+    //   180: ldc 92
+    //   182: new 55	java/lang/StringBuilder
     //   185: dup
-    //   186: invokespecial 54	java/lang/StringBuilder:<init>	()V
+    //   186: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   189: ldc_w 385
-    //   192: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: iload 5
-    //   197: invokevirtual 63	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   200: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   203: invokestatic 98	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   197: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   200: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   203: invokestatic 100	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   206: iload 5
     //   208: sipush 200
     //   211: if_icmpeq +11 -> 222
@@ -360,13 +360,13 @@ public class HttpConnection
     //   329: invokevirtual 406	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   332: astore 8
     //   334: aload_0
-    //   335: getfield 109	com/tencent/mobileqq/highway/conn/HttpConnection:mDataCodec	Lcom/tencent/mobileqq/highway/codec/TcpProtocolDataCodec;
+    //   335: getfield 111	com/tencent/mobileqq/highway/conn/HttpConnection:mDataCodec	Lcom/tencent/mobileqq/highway/codec/TcpProtocolDataCodec;
     //   338: aload 8
     //   340: invokevirtual 410	com/tencent/mobileqq/highway/codec/TcpProtocolDataCodec:decodeS2CData	([B)Z
     //   343: pop
-    //   344: ldc 90
+    //   344: ldc 92
     //   346: ldc_w 412
-    //   349: invokestatic 98	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   349: invokestatic 100	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   352: aload_1
     //   353: invokevirtual 414	java/io/ByteArrayOutputStream:close	()V
     //   356: aload_1
@@ -433,13 +433,13 @@ public class HttpConnection
     //   490: goto -445 -> 45
     //   493: aload_0
     //   494: sipush -1013
-    //   497: putfield 157	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
+    //   497: putfield 41	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
     //   500: aload_0
     //   501: aload_0
     //   502: getfield 352	com/tencent/mobileqq/highway/conn/HttpConnection:mConnection	Ljava/net/HttpURLConnection;
     //   505: invokevirtual 440	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
-    //   508: invokevirtual 116	java/lang/Object:toString	()Ljava/lang/String;
-    //   511: putfield 43	com/tencent/mobileqq/highway/conn/HttpConnection:mStrErrInfo	Ljava/lang/String;
+    //   508: invokevirtual 118	java/lang/Object:toString	()Ljava/lang/String;
+    //   511: putfield 45	com/tencent/mobileqq/highway/conn/HttpConnection:mStrErrInfo	Ljava/lang/String;
     //   514: aconst_null
     //   515: astore_2
     //   516: aload 11
@@ -447,13 +447,13 @@ public class HttpConnection
     //   519: goto -163 -> 356
     //   522: aload_0
     //   523: sipush -1013
-    //   526: putfield 157	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
+    //   526: putfield 41	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
     //   529: aload_0
     //   530: aload_0
     //   531: getfield 352	com/tencent/mobileqq/highway/conn/HttpConnection:mConnection	Ljava/net/HttpURLConnection;
     //   534: invokevirtual 440	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
-    //   537: invokevirtual 116	java/lang/Object:toString	()Ljava/lang/String;
-    //   540: putfield 43	com/tencent/mobileqq/highway/conn/HttpConnection:mStrErrInfo	Ljava/lang/String;
+    //   537: invokevirtual 118	java/lang/Object:toString	()Ljava/lang/String;
+    //   540: putfield 45	com/tencent/mobileqq/highway/conn/HttpConnection:mStrErrInfo	Ljava/lang/String;
     //   543: aconst_null
     //   544: astore_2
     //   545: aload 11
@@ -466,12 +466,12 @@ public class HttpConnection
     //   556: astore 8
     //   558: aload_0
     //   559: sipush -1003
-    //   562: putfield 157	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
+    //   562: putfield 41	com/tencent/mobileqq/highway/conn/HttpConnection:iErrCode	I
     //   565: aload_0
     //   566: aload_2
     //   567: invokevirtual 444	java/lang/Object:getClass	()Ljava/lang/Class;
     //   570: invokevirtual 449	java/lang/Class:getName	()Ljava/lang/String;
-    //   573: putfield 43	com/tencent/mobileqq/highway/conn/HttpConnection:mStrErrInfo	Ljava/lang/String;
+    //   573: putfield 45	com/tencent/mobileqq/highway/conn/HttpConnection:mStrErrInfo	Ljava/lang/String;
     //   576: aload_1
     //   577: ifnull +7 -> 584
     //   580: aload_1

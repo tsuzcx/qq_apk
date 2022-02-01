@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import uex;
-import ufp;
-import upe;
+import uez;
+import ufr;
+import uqf;
 
 public class WsCommentPresenter$10
   implements Runnable
 {
-  public WsCommentPresenter$10(ufp paramufp) {}
+  public WsCommentPresenter$10(ufr paramufr) {}
   
   public void run()
   {
-    if (ufp.a(this.this$0) != null)
+    if (ufr.a(this.this$0) != null)
     {
-      ufp.a(this.this$0).notifyDataSetChanged();
+      ufr.a(this.this$0).notifyDataSetChanged();
       return;
     }
-    upe.d("comment", "updateAdapterOnUI, mCommentAdapter is null");
+    uqf.d("comment", "updateAdapterOnUI, mCommentAdapter is null");
   }
 }
 

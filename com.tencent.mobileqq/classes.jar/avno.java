@@ -1,32 +1,70 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.AECameraPlugin;
-import java.io.File;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class avno
-  implements bdvw
+  implements View.OnClickListener
 {
-  public avno(AECameraPlugin paramAECameraPlugin, String paramString1, String paramString2, String paramString3) {}
+  public avno(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onClick(View paramView)
   {
-    if (parambdwt.b == 0) {}
-    for (int i = 1; i != 0; i = 0)
+    String str2 = "";
+    String str1 = "";
+    Object localObject = QQGameFeedWebFragment.a(this.a);
+    int i;
+    label152:
+    int j;
+    if (localObject != null)
     {
-      AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 2);
-      parambdwt = AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading succeeded");
-      this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { parambdwt.toString() });
-      if (AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.mRuntime.a())) {
-        zkr.a(BaseApplicationImpl.getApplication(), new File(this.c));
+      str2 = ((QQGameMsgInfo)localObject).gameAppId;
+      if (TextUtils.isEmpty(((QQGameMsgInfo)localObject).paMsgid)) {
+        str1 = "";
       }
-      return;
     }
-    AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 3);
-    parambdwt = AECameraPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading failed");
-    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { parambdwt.toString() });
+    else
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put(Integer.valueOf(2), str1);
+      ((Map)localObject).put(Integer.valueOf(3), "2");
+      ((Map)localObject).put(Integer.valueOf(4), "20");
+      ((Map)localObject).put(Integer.valueOf(24), "1");
+      acik.a(anbd.a(), "769", "205037", str2, "76901", "1", "160", (Map)localObject);
+      if (QQGameFeedWebFragment.a(this.a) != null)
+      {
+        if (QQGameFeedWebFragment.a(this.a) != null) {
+          break label201;
+        }
+        i = 0;
+        j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
+        if (j + 1 >= i) {
+          break label217;
+        }
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str1 = ((QQGameMsgInfo)localObject).paMsgid;
+      break;
+      label201:
+      i = QQGameFeedWebFragment.a(this.a).size();
+      break label152;
+      label217:
+      if (j == i - 1) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
+      }
+    }
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

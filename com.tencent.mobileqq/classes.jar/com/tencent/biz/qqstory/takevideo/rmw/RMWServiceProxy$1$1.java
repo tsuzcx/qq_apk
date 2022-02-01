@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo.rmw;
 
-import zfj;
-import zfk;
+import zje;
+import zjf;
 
 public class RMWServiceProxy$1$1
   implements Runnable
 {
-  public RMWServiceProxy$1$1(zfk paramzfk) {}
+  public RMWServiceProxy$1$1(zjf paramzjf) {}
   
   public void run()
   {

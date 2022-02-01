@@ -1,24 +1,37 @@
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+import java.util.ArrayList;
 
 public class uzq
-  implements tji
+  implements aaav<FeedCloudRead.StGetFeedDetailRsp>
 {
-  public uzq(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
+  public uzq(QCircleFakeAdapter paramQCircleFakeAdapter, QCircleFeedEvent paramQCircleFeedEvent, boolean paramBoolean) {}
   
-  public View a(ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    return LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131560714, paramViewGroup, false);
-  }
-  
-  public void a(tjf paramtjf1, @Nullable tjf paramtjf2, int paramInt)
-  {
-    if (paramtjf1 != null) {
-      QCircleAggregationFragmentsPart.a(this.a, paramtjf1.a(), 1);
+    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedDetailRsp.feed != null))
+    {
+      int i = QCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter, this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent.mTargetId);
+      if (i != -1)
+      {
+        uyn.a(paramStGetFeedDetailRsp.feed.id.get(), (FeedCloudMeta.StFeed)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().get(i));
+        QCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter, this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent.mTargetId);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().remove(i);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().add(i, paramStGetFeedDetailRsp.feed);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.notifyDataSetChanged();
+        QLog.d("QCircleFakeAdapter", 1, "success replace feed");
+      }
+    }
+    for (;;)
+    {
+      QLog.d("QCircleFakeAdapter", 1, "fetch real feed success:" + paramBoolean + "  retCode code:" + paramLong + "fromRetry" + this.jdField_a_of_type_Boolean);
+      return;
+      this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent);
+      QLog.d("QCircleFakeAdapter", 1, "start retry");
     }
   }
 }

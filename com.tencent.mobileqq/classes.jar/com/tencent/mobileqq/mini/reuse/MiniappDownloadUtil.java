@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bgln;
+import bhlo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.DownloadRequest;
@@ -215,7 +215,7 @@ public class MiniappDownloadUtil
   private boolean rangeDownloadEnvEnable()
   {
     List localList = getRangeModePerfLevel();
-    if ((localList != null) && (!localList.contains(Integer.valueOf(bgln.f())))) {}
+    if ((localList != null) && (!localList.contains(Integer.valueOf(bhlo.f())))) {}
     do
     {
       return false;

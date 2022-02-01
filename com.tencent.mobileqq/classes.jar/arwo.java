@@ -1,54 +1,24 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.RejectedExecutionException;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
 
-class arwo
-  implements URLDrawable.URLDrawableListener
+public final class arwo
+  implements Parcelable.Creator
 {
-  arwo(arwh paramarwh) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public IPSiteModel.ComicRich a(Parcel paramParcel)
   {
-    if ((paramThrowable instanceof RejectedExecutionException)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
-      }
-    }
-    label41:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label41;
-          do
-          {
-            return;
-          } while (paramURLDrawable == null);
-          paramThrowable = paramURLDrawable.getFileInLocal();
-          if ((paramThrowable != null) && (paramThrowable.exists())) {
-            paramThrowable.delete();
-          }
-          paramThrowable = paramURLDrawable.getTag();
-        } while (!(paramThrowable instanceof Integer));
-        i = ((Integer)paramThrowable).intValue();
-      } while (i >= 3);
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-    } while (!QLog.isColorLevel());
-    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
+    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
+    localComicRich.extCover = paramParcel.readString();
+    localComicRich.extName = paramParcel.readString();
+    localComicRich.extTitle = paramParcel.readString();
+    localComicRich.extUrl = paramParcel.readString();
+    return localComicRich;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public IPSiteModel.ComicRich[] a(int paramInt)
+  {
+    return new IPSiteModel.ComicRich[paramInt];
+  }
 }
 
 

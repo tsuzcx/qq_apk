@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public final class avay
-  extends bhhe
+class avay
+  extends RecyclerView.ViewHolder
 {
-  public avay(String paramString) {}
+  public int a = avar.b;
   
-  public void onDone(bhhf parambhhf)
+  public avay(View paramView)
   {
-    PayLikeFloatViewBuilder.a(false);
-    if (parambhhf.a == 0)
-    {
-      parambhhf = new File(this.a + ".tmp");
-      if (parambhhf.exists()) {
-        parambhhf.renameTo(new File(this.a));
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
+    super(paramView);
+    paramView.setTag(this);
   }
 }
 

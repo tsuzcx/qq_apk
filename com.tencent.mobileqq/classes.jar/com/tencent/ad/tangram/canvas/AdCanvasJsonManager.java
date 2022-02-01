@@ -55,6 +55,29 @@ public final class AdCanvasJsonManager
     return i;
   }
   
+  private void initDataList(int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      if (this.mDataList == null) {
+        this.mDataList = new LruCache(paramInt);
+      }
+      for (;;)
+      {
+        AdLog.i("AdCanvasJsonManager", "canvas_json cache list size :" + this.mDataList.maxSize());
+        return;
+        if (this.mDataList.size() != paramInt) {
+          if (Build.VERSION.SDK_INT >= 21) {
+            this.mDataList.resize(paramInt);
+          } else {
+            this.mDataList = new LruCache(paramInt);
+          }
+        }
+      }
+    }
+    this.mDataList = null;
+  }
+  
   private void report(Ad paramAd, int paramInt1, int paramInt2, long paramLong)
   {
     try
@@ -107,6 +130,12 @@ public final class AdCanvasJsonManager
     if (this.initialized) {
       return;
     }
+    int i = getQueueLength(paramContext);
+    if (i < 0)
+    {
+      AdLog.e("AdCanvasJsonManager", "getQueueLength error");
+      return;
+    }
     try
     {
       if (this.initialized) {
@@ -116,26 +145,7 @@ public final class AdCanvasJsonManager
     finally {}
     this.initialized = true;
     this.mContext = new WeakReference(paramContext);
-    int i = getQueueLength(paramContext);
-    if (i > 0)
-    {
-      if (this.mDataList == null) {
-        this.mDataList = new LruCache(i);
-      }
-      for (;;)
-      {
-        AdLog.i("AdCanvasJsonManager", "canvas_json cache list size :" + this.mDataList.maxSize());
-        return;
-        if (this.mDataList.size() != i) {
-          if (Build.VERSION.SDK_INT >= 21) {
-            this.mDataList.resize(i);
-          } else {
-            this.mDataList = new LruCache(i);
-          }
-        }
-      }
-    }
-    this.mDataList = null;
+    initDataList(i);
   }
   
   public void preloadCanvasJson(Ad paramAd, String paramString1, String paramString2)

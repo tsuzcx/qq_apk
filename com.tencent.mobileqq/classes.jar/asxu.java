@@ -1,27 +1,21 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asxu
-  implements bkhw
+public class asxu
+  implements View.OnClickListener
 {
-  asxu(asxt paramasxt, FileManagerEntity paramFileManagerEntity, bkho parambkho) {}
+  public asxu(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Asxt.a.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
-    this.jdField_a_of_type_Asxt.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
-      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Asxt.a.a).a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      atci.a().b(3);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
-    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Asxt.a.a).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_Asxt.a.a.g();
-    if (this.jdField_a_of_type_Bkho.isShowing()) {
-      this.jdField_a_of_type_Bkho.dismiss();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

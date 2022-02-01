@@ -1,35 +1,20 @@
-import android.app.Activity;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
 public class tat
-  implements Animation.AnimationListener
+  extends AnimatorListenerAdapter
 {
-  public tat(FastWebAnimationUtils.3 param3) {}
+  public tat(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationEnd");
-    paramAnimation = (AlphaAnimation)AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2130772186);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+    this.a.a();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationStart");
+    this.a.a();
   }
 }
 

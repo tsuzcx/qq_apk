@@ -1,8 +1,6 @@
 package com.tencent.qqmini.minigame.manager;
 
-import com.tencent.qqmini.minigame.GameJsPluginEngine;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 
 class JsApiUpdateManager$2$1
   implements Runnable
@@ -11,8 +9,8 @@ class JsApiUpdateManager$2$1
   
   public void run()
   {
-    if ((this.this$0.val$gameJsPluginEngine != null) && (this.this$0.val$gameJsPluginEngine.getRuntime() != null)) {
-      ((MiniAppFileManager)this.this$0.val$gameJsPluginEngine.getRuntime().getManager(MiniAppFileManager.class)).deleteTmpFileNeed2DeleteAsync();
+    if (this.this$0.val$fileManager != null) {
+      this.this$0.val$fileManager.deleteTmpFileNeed2DeleteAsync();
     }
   }
 }

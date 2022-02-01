@@ -1,78 +1,127 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
+import mqq.util.WeakReference;
 
-public class ampm
+final class ampm
+  extends anyu
 {
-  private int a;
+  WeakReference<ampf> a;
   
-  public ampm(int paramInt)
+  ampm(ampf paramampf)
   {
-    this.a = paramInt;
+    this.a = new WeakReference(paramampf);
   }
   
-  private void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    try
+    ampf localampf;
+    if (paramBoolean)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("bannerId", paramInt1);
-      localJSONObject.put("errCode", paramInt3);
-      ampj.a().callbackFromRequest(paramLong, paramInt2, "sc.game_ad_banner_load.local", localJSONObject.toString());
+      localampf = (ampf)this.a.get();
+      if (localampf == null) {
+        break label71;
+      }
+      paramString = ampf.a(localampf, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
+      }
+      if (paramString != null) {
+        ampf.a(localampf, paramString);
+      }
+    }
+    else
+    {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.CmGameBannerAds", 1, localThrowable, new Object[0]);
-    }
+    ampf.a(localampf);
+    return;
+    label71:
+    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
   }
   
-  public void a() {}
-  
-  public void a(long paramLong, int paramInt1, int paramInt2)
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[loadBannerAd], bannerId:", Integer.valueOf(paramInt2), ",viewId:", Integer.valueOf(paramInt1) });
-    }
-    ThreadManager.getUIHandler().post(new CmGameBannerAds.1(this, paramLong, paramInt2));
-  }
-  
-  public void a(long paramLong, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    boolean bool;
-    do
+    if (paramBoolean)
     {
-      do
+      paramBundle = (ampf)this.a.get();
+      if (paramBundle != null)
       {
-        for (;;)
-        {
-          return;
-          try
-          {
-            paramString2 = new JSONObject(paramString2);
-            int i = paramString2.optInt("bannerId");
-            if (!"cs.game_ad_banner_close.local".equals(paramString1)) {
-              if ("cs.game_ad_banner_load.local".equals(paramString1))
-              {
-                a(paramLong, paramString2.optInt("viewId"), i);
-                return;
-              }
-            }
-          }
-          catch (Throwable paramString1)
-          {
-            QLog.e("cmgame_process.CmGameBannerAds", 1, paramString1, new Object[0]);
-            return;
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
         }
-      } while (("cs.game_ad_banner_show.local".equals(paramString1)) || ("cs.game_ad_banner_hide.local".equals(paramString1)));
-      bool = "cs.game_ad_banner_resize.local".equals(paramString1);
-    } while (!bool);
+        ampf.a(paramBundle);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushAdd");
+    }
+    if (paramBoolean)
+    {
+      paramList = (ampf)this.a.get();
+      if (paramList != null) {
+        ampf.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushDel");
+    }
+    if (paramBoolean)
+    {
+      paramList = (ampf)this.a.get();
+      if (paramList != null) {
+        ampf.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      ampf localampf = (ampf)this.a.get();
+      if (localampf == null) {
+        break label60;
+      }
+      if (ampf.a(localampf) != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
+        }
+        localampf.notifyDataSetChanged();
+        ampf.a(localampf).postDelayed(localampf.a, 1600L);
+      }
+    }
+    return;
+    label60:
+    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
   }
 }
 

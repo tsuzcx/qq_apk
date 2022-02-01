@@ -1,17 +1,7 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import kotlin.Metadata;
 
-public class tgw
-  implements ValueAnimator.AnimatorUpdateListener
-{
-  public tgw(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidate();
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DebugBridgeInvokeHandler$Companion;", "", "()V", "DETAIL_LOG", "", "NS_DEBUG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tgw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

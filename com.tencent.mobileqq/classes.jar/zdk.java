@@ -1,80 +1,71 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.PointF;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-class zdk
-  extends BroadcastReceiver
+public class zdk
+  implements zbg
 {
-  zdk(zdj paramzdj) {}
+  public zdk(DoodleEditView paramDoodleEditView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(zfw paramzfw)
   {
-    Object localObject = paramIntent.getAction();
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(localObject))
+    if ((paramzfw instanceof zbj))
     {
-      localObject = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "onReceive:" + (String)localObject);
+      paramzfw = (zbh)DoodleEditView.a(this.a).a("TextLayer");
+      if (paramzfw != null) {
+        paramzfw.a();
       }
-      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic")) && (!TextUtils.isEmpty((CharSequence)localObject))) {}
     }
+    this.a.a.b();
+  }
+  
+  public void a(zfw paramzfw, int paramInt1, int paramInt2)
+  {
+    if ((paramzfw instanceof zbj))
+    {
+      yuk.b("DoodleEditView", "click the TextItem:" + paramzfw);
+      paramzfw = (zbh)DoodleEditView.a(this.a).a("TextLayer");
+      this.a.a.b();
+      if ((paramzfw != null) && (paramzfw.a != null))
+      {
+        paramzfw.d();
+        paramzfw.a.a();
+      }
+    }
+    zat localzat;
     do
     {
-      return;
-      zdj.a(this.a).a();
-      for (;;)
+      do
       {
-        try
+        do
         {
-          paramIntent = new JSONObject((String)localObject);
-          i = paramIntent.optInt("id");
-          paramContext = paramContext.getSharedPreferences("VideoMusicCache", 0).getString(String.valueOf(i), null);
-          if ((paramContext == null) || (!new File(paramContext).exists())) {
-            continue;
-          }
-          localObject = new zdw();
-          ((zdw)localObject).jdField_b_of_type_JavaLangString = paramIntent.optString("title");
-          ((zdw)localObject).jdField_b_of_type_Int = 2;
-          ((zdw)localObject).a = String.valueOf(i);
-          ((zdw)localObject).g = paramContext;
-          zdj.a(this.a).a((zdw)localObject);
+          return;
+        } while (!(paramzfw instanceof zax));
+        yuk.b("DoodleEditView", "click the FaceAndTextItem:" + paramzfw);
+        paramzfw.d = false;
+        localzat = (zat)DoodleEditView.a(this.a).a("FaceLayer");
+        zax localzax = (zax)paramzfw;
+        if (localzat != null) {
+          localzat.jdField_a_of_type_JavaUtilList.add(localzax);
         }
-        catch (JSONException paramContext)
-        {
-          int i;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("MusicCache", 2, "on receiver error, ", paramContext);
-          continue;
-        }
-        yqv.a("0X80076D6");
-        return;
-        paramContext = new MusicItemInfo();
-        paramContext.mType = 5;
-        paramContext.mItemId = i;
-        paramContext.mMusicName = paramIntent.optString("title");
-        paramContext.mSingername = paramIntent.optString("desc");
-        paramContext.mSongMid = paramIntent.optString("mid");
-        zdj.a(this.a, paramIntent.optBoolean("is_from_story", false));
-        zdj.a(this.a, paramContext.mSongMid);
+        this.a.a.b();
+        this.a.setVisibility(8);
+      } while (DoodleEditView.a(this.a) == null);
+      if (!(paramzfw instanceof zau)) {
+        break;
       }
-      if ("action_music_start".equals(localObject))
-      {
-        zdj.a(this.a).b();
-        return;
-      }
-    } while (!"action_music_refresh_list".equals(localObject));
-    zdj.a(this.a).sendEmptyMessage(1);
+    } while ((localzat == null) || (localzat.jdField_a_of_type_Zba == null));
+    localzat.jdField_a_of_type_Zba.a((zau)paramzfw);
+    return;
+    DoodleEditView.a(this.a).a(paramzfw);
+  }
+  
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  {
+    if (DoodleEditView.a(this.a) != null) {
+      DoodleEditView.a(this.a).a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
+    }
   }
 }
 

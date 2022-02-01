@@ -1,37 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StUser;
 
 class vop
-  implements zwr<QCircleFollowUpdateEvent>
+  implements View.OnClickListener
 {
-  private final Handler a;
+  vop(von paramvon) {}
   
-  private vop(Handler paramHandler)
+  public void onClick(View paramView)
   {
-    this.a = paramHandler;
-  }
-  
-  public ArrayList<Class<QCircleFollowUpdateEvent>> getEventClass()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCircleFollowUpdateEvent.class);
-    return localArrayList;
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if (!(paramSimpleBaseEvent instanceof QCircleFollowUpdateEvent)) {}
-    do
+    if ((this.a.a != null) && (!TextUtils.isEmpty(this.a.a.operation.opUser.id.get())))
     {
-      return;
-      paramSimpleBaseEvent = (QCircleFollowUpdateEvent)paramSimpleBaseEvent;
-      QLog.i("QCircleSpecialFollowMgr", 4, "onReceiveEvent: QCircleFollowUpdateEvent " + paramSimpleBaseEvent.mUserId + " " + paramSimpleBaseEvent.mFollowStatus);
-    } while (paramSimpleBaseEvent.mFollowStatus != 0);
-    this.a.obtainMessage(1002, paramSimpleBaseEvent.mUserId).sendToTarget();
+      vtq.a(this.a.a.operation.opUser.id.get(), 17, 8);
+      QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+      localQCircleInitBean.setUin(this.a.a.operation.opUser.id.get());
+      localQCircleInitBean.setFromReportBean(this.a.a().clone().setElementIdStr("portrait"));
+      uyx.b(paramView.getContext(), localQCircleInitBean);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

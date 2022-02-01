@@ -1,24 +1,72 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PathMeasure;
-import com.tencent.mobileqq.doutu.combo.ComboMasterView;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arnc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends armf<arnb>
 {
-  public arnc(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static arnb c()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
+    arnb localarnb2 = (arnb)aran.a().a(469);
+    arnb localarnb1 = localarnb2;
+    if (localarnb2 == null) {
+      localarnb1 = new arnb();
+    }
+    return localarnb1;
+  }
+  
+  @NonNull
+  public arnb a()
+  {
+    return new arnb();
+  }
+  
+  @NonNull
+  public arnb a(araj[] paramArrayOfaraj)
+  {
+    boolean bool = true;
+    localarnb = new arnb();
+    paramArrayOfaraj = paramArrayOfaraj[0].jdField_a_of_type_JavaLangString;
+    try
+    {
+      paramArrayOfaraj = new JSONObject(paramArrayOfaraj);
+      if (paramArrayOfaraj.optInt("is_show_recover_entry", 1) == 1) {}
+      for (;;)
+      {
+        localarnb.jdField_a_of_type_Boolean = bool;
+        localarnb.jdField_a_of_type_JavaLangString = paramArrayOfaraj.optString("recover_text", localarnb.jdField_a_of_type_JavaLangString);
+        localarnb.b = paramArrayOfaraj.optString("recover_url", localarnb.b);
+        localarnb.c = paramArrayOfaraj.optString("recoveryHomePageUrl", localarnb.c);
+        return localarnb;
+        bool = false;
+      }
+      return localarnb;
+    }
+    catch (JSONException paramArrayOfaraj)
+    {
+      yuk.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfaraj.getMessage());
+    }
+  }
+  
+  @NonNull
+  public arnb b()
+  {
+    return new arnb();
+  }
+  
+  public Class<arnb> clazz()
+  {
+    return arnb.class;
+  }
+  
+  public int type()
+  {
+    return 469;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnc
  * JD-Core Version:    0.7.0.1
  */

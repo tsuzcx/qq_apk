@@ -1,16 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ypw
-  implements View.OnClickListener
+public class ypw
+  extends QQUIEventReceiver<yqj, wsz>
+  implements yqf
 {
-  ypw(ypv paramypv) {}
+  protected yqh a;
   
-  public void onClick(View paramView)
+  public ypw(yqj paramyqj)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramyqj);
+  }
+  
+  public Object a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return "ReportWatchVideoListStep";
+  }
+  
+  public void a()
+  {
+    wjj.a().registerSubscriber(this);
+    ((wsx)wth.a(13)).c();
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(yqg paramyqg) {}
+  
+  public void a(yqh paramyqh)
+  {
+    this.a = paramyqh;
+  }
+  
+  public void a(yqj paramyqj, wsz paramwsz)
+  {
+    wjj.a().unRegisterSubscriber(this);
+    if (this.a != null) {
+      this.a.a(a());
+    }
+    for (;;)
+    {
+      yuk.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
+      return;
+      yuk.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsz.class;
+  }
+  
+  public void b()
+  {
+    yuk.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
+  }
+  
+  public void c()
+  {
+    wsx localwsx = (wsx)wth.a(13);
+    wjj.a().unRegisterSubscriber(this);
+    localwsx.d();
   }
 }
 

@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class aiyt
-  implements Comparator<SysSuspiciousMsg>
+public class aiyt
 {
-  aiyt(aiyr paramaiyr) {}
-  
-  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
+  public static void a(BaseChatPie paramBaseChatPie)
   {
-    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
-      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
+    if (paramBaseChatPie.jdField_a_of_type_Agrt != null) {
+      paramBaseChatPie.jdField_a_of_type_Agrt.c(false);
     }
-    return 0;
+    if (paramBaseChatPie.jdField_a_of_type_Amuy != null) {
+      paramBaseChatPie.jdField_a_of_type_Amuy.a(false);
+    }
+    paramBaseChatPie.aw();
+  }
+  
+  public static void b(BaseChatPie paramBaseChatPie)
+  {
+    if (paramBaseChatPie.jdField_a_of_type_Agrt != null) {
+      paramBaseChatPie.jdField_a_of_type_Agrt.c(true);
+    }
+    if (paramBaseChatPie.jdField_a_of_type_Amuy != null) {
+      paramBaseChatPie.jdField_a_of_type_Amuy.a(true);
+    }
+    paramBaseChatPie.av();
   }
 }
 

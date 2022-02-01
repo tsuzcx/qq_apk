@@ -9,11 +9,11 @@ import android.widget.LinearLayout;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
-import sru;
-import srw;
-import sry;
-import srz;
-import ssa;
+import siy;
+import sja;
+import sjc;
+import sjd;
+import sje;
 
 public class ReadInJoyNavigationGridview
   extends LinearLayout
@@ -22,41 +22,41 @@ public class ReadInJoyNavigationGridview
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private List<ChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  private sru jdField_a_of_type_Sru;
-  private srz jdField_a_of_type_Srz;
-  private ssa jdField_a_of_type_Ssa;
+  private siy jdField_a_of_type_Siy;
+  private sjd jdField_a_of_type_Sjd;
+  private sje jdField_a_of_type_Sje;
   private boolean jdField_a_of_type_Boolean;
   
-  public ReadInJoyNavigationGridview(Context paramContext, ssa paramssa)
+  public ReadInJoyNavigationGridview(Context paramContext, sje paramsje)
   {
     super(paramContext);
     a(paramContext);
-    this.jdField_a_of_type_Srz = new srz(this);
-    this.jdField_a_of_type_Ssa = paramssa;
+    this.jdField_a_of_type_Sjd = new sjd(this);
+    this.jdField_a_of_type_Sje = paramsje;
     this.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560219, this));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371561));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371562);
-    this.jdField_a_of_type_Sru = new sru(paramContext);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560231, this));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371669));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371670);
+    this.jdField_a_of_type_Siy = new siy(paramContext);
     this.jdField_a_of_type_AndroidWidgetGridView.setPadding(this.jdField_a_of_type_AndroidWidgetGridView.getPaddingLeft(), ImmersiveUtils.getStatusBarHeight(paramContext), this.jdField_a_of_type_AndroidWidgetGridView.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Sru);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new sry(this));
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Siy);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new sjc(this));
   }
   
   private void b()
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Sru.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Siy.a(this.jdField_a_of_type_JavaUtilList);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Sru.getCount();
+    return this.jdField_a_of_type_Siy.getCount();
   }
   
   public View a()
@@ -73,7 +73,7 @@ public class ReadInJoyNavigationGridview
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Srz.removeMessages(1);
+    this.jdField_a_of_type_Sjd.removeMessages(1);
   }
   
   public boolean a()
@@ -81,15 +81,15 @@ public class ReadInJoyNavigationGridview
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void setChannelButtonListener(srw paramsrw)
+  public void setChannelButtonListener(sja paramsja)
   {
-    this.jdField_a_of_type_Sru.a(paramsrw);
+    this.jdField_a_of_type_Siy.a(paramsja);
   }
   
   public void setNaviBarAdapterDataSet(List<ChannelCoverInfo> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Srz.sendEmptyMessage(1);
+    this.jdField_a_of_type_Sjd.sendEmptyMessage(1);
   }
 }
 

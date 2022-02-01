@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-class bbga
-  implements View.OnClickListener
+public class bbga
+  implements GLGestureListener
 {
-  bbga(bbfs parambbfs) {}
+  public GameplayEngine a;
   
-  public void onClick(View paramView)
+  public int onGetPriority()
   {
-    if (bbfs.a(this.a) != null)
-    {
-      bbfs.a(this.a).findViewById(2131365328).setVisibility(8);
-      bbfs.a(this.a).findViewById(2131365329).setVisibility(0);
-      bbfs.a(this.a).a(bbfs.a(this.a).a(), false);
-      bbfs.a(this.a).notifyDataSetChanged();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 1040;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    paramMotionEvent = new bdct(paramMotionEvent);
+    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
+    return false;
   }
 }
 

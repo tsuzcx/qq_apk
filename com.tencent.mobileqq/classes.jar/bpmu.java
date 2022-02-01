@@ -1,90 +1,158 @@
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.component.network.utils.thread.AsyncTask;
+import java.util.List;
 
-public class bpmu
-  extends bplx
+final class bpmu
+  extends AsyncTask<Void, Void, Bitmap>
 {
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  public String a;
-  ArrayList<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  CopyOnWriteArrayList<PointF> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  volatile boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  volatile boolean jdField_b_of_type_Boolean;
-  public int c;
-  volatile boolean c;
-  int jdField_d_of_type_Int;
-  boolean jdField_d_of_type_Boolean;
-  boolean e = false;
+  bpmu(boolean paramBoolean1, boolean paramBoolean2, List paramList, boolean paramBoolean3) {}
   
-  public bpmu(int paramInt1, String paramString, int paramInt2)
+  /* Error */
+  protected Bitmap a(Void... paramVarArgs)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    // Byte code:
+    //   0: invokestatic 34	bqzz:a	()Lbqzz;
+    //   3: astore_1
+    //   4: aload_1
+    //   5: invokevirtual 37	bqzz:a	()Landroid/graphics/Bitmap;
+    //   8: astore_1
+    //   9: aload_1
+    //   10: astore_2
+    //   11: aload_1
+    //   12: ifnull +190 -> 202
+    //   15: aload_1
+    //   16: astore_2
+    //   17: aload_1
+    //   18: invokevirtual 43	android/graphics/Bitmap:isRecycled	()Z
+    //   21: ifne +181 -> 202
+    //   24: aload_0
+    //   25: getfield 14	bpmu:jdField_a_of_type_Boolean	Z
+    //   28: ifne +119 -> 147
+    //   31: aload_0
+    //   32: getfield 16	bpmu:b	Z
+    //   35: ifeq +51 -> 86
+    //   38: getstatic 48	bqgk:a	Lbrgc;
+    //   41: ifnull +155 -> 196
+    //   44: new 50	brgc
+    //   47: dup
+    //   48: invokespecial 51	brgc:<init>	()V
+    //   51: astore_2
+    //   52: aload_2
+    //   53: getstatic 48	bqgk:a	Lbrgc;
+    //   56: getfield 54	brgc:a	Landroid/opengl/EGLContext;
+    //   59: aload_1
+    //   60: invokevirtual 58	android/graphics/Bitmap:getWidth	()I
+    //   63: aload_1
+    //   64: invokevirtual 61	android/graphics/Bitmap:getHeight	()I
+    //   67: invokevirtual 64	brgc:a	(Landroid/opengl/EGLContext;II)V
+    //   70: aload_2
+    //   71: aload_1
+    //   72: aload_0
+    //   73: getfield 18	bpmu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   76: getstatic 48	bqgk:a	Lbrgc;
+    //   79: invokevirtual 67	brgc:a	(Landroid/graphics/Bitmap;Ljava/util/List;Lbrgc;)Landroid/graphics/Bitmap;
+    //   82: astore_2
+    //   83: goto +115 -> 198
+    //   86: new 50	brgc
+    //   89: dup
+    //   90: invokespecial 51	brgc:<init>	()V
+    //   93: astore_3
+    //   94: aload_3
+    //   95: aload_1
+    //   96: invokevirtual 58	android/graphics/Bitmap:getWidth	()I
+    //   99: aload_1
+    //   100: invokevirtual 61	android/graphics/Bitmap:getHeight	()I
+    //   103: invokevirtual 70	brgc:b	(II)V
+    //   106: aload_3
+    //   107: aload_1
+    //   108: aload_0
+    //   109: getfield 18	bpmu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   112: aload_0
+    //   113: getfield 20	bpmu:c	Z
+    //   116: invokevirtual 73	brgc:a	(Landroid/graphics/Bitmap;Ljava/util/List;Z)Landroid/graphics/Bitmap;
+    //   119: astore_2
+    //   120: aload_3
+    //   121: invokevirtual 75	brgc:a	()V
+    //   124: goto +74 -> 198
+    //   127: astore_3
+    //   128: aload_1
+    //   129: astore_2
+    //   130: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   133: ifeq +69 -> 202
+    //   136: ldc 82
+    //   138: iconst_1
+    //   139: ldc 84
+    //   141: aload_3
+    //   142: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   145: aload_1
+    //   146: areturn
+    //   147: aload_1
+    //   148: aload_1
+    //   149: invokevirtual 92	android/graphics/Bitmap:getConfig	()Landroid/graphics/Bitmap$Config;
+    //   152: iconst_1
+    //   153: invokevirtual 96	android/graphics/Bitmap:copy	(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
+    //   156: astore_2
+    //   157: aload_2
+    //   158: areturn
+    //   159: astore_3
+    //   160: aconst_null
+    //   161: astore_1
+    //   162: aload_1
+    //   163: astore_2
+    //   164: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   167: ifeq +35 -> 202
+    //   170: ldc 82
+    //   172: iconst_1
+    //   173: ldc 98
+    //   175: aload_3
+    //   176: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   179: aload_1
+    //   180: areturn
+    //   181: astore_3
+    //   182: goto -20 -> 162
+    //   185: astore_3
+    //   186: aconst_null
+    //   187: astore_1
+    //   188: goto -60 -> 128
+    //   191: aload_1
+    //   192: astore_2
+    //   193: goto +9 -> 202
+    //   196: aconst_null
+    //   197: astore_2
+    //   198: aload_2
+    //   199: ifnull -8 -> 191
+    //   202: aload_2
+    //   203: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	204	0	this	bpmu
+    //   0	204	1	paramVarArgs	Void[]
+    //   10	193	2	localObject	java.lang.Object
+    //   93	28	3	localbrgc	brgc
+    //   127	15	3	localException1	java.lang.Exception
+    //   159	17	3	localError1	java.lang.Error
+    //   181	1	3	localError2	java.lang.Error
+    //   185	1	3	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   17	83	127	java/lang/Exception
+    //   86	124	127	java/lang/Exception
+    //   147	157	127	java/lang/Exception
+    //   4	9	159	java/lang/Error
+    //   17	83	181	java/lang/Error
+    //   86	124	181	java/lang/Error
+    //   147	157	181	java/lang/Error
+    //   4	9	185	java/lang/Exception
   }
   
-  public Frame a(int paramInt1, int paramInt2)
+  protected void a(Bitmap paramBitmap)
   {
-    this.d = RendererUtils.createTexture();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-    GLES20.glBindTexture(3553, this.d);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.d, paramInt1, paramInt2, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  }
-  
-  public JSONObject a()
-  {
-    try
+    bqgk localbqgk = bqzz.a().a();
+    if ((localbqgk != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mode", this.jdField_a_of_type_Int);
-      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("subType", this.jdField_c_of_type_Int);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        PointF localPointF = (PointF)localIterator.next();
-        localJSONArray.put(localPointF.x);
-        localJSONArray.put(localPointF.y);
-      }
-      localJSONObject.put("points", localJSONArray);
-      return localJSONObject;
+      localbqgk.a(paramBitmap, true);
+      localbqgk.x();
     }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null) && (!this.e))
-    {
-      this.e = true;
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      RendererUtils.clearTexture(this.d);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = true;
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.fragments.chat.item;
 
+import aadv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -11,11 +12,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bgtn;
+import bhtq;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import uxh;
-import zzr;
+import uys;
 
 public class QCircleChatGiftRecordView
   extends LinearLayout
@@ -44,14 +44,14 @@ public class QCircleChatGiftRecordView
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560674, this));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(new LinearLayout.LayoutParams(-2, bgtn.a(16.0F)));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560690, this));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(new LinearLayout.LayoutParams(-2, bhtq.a(16.0F)));
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-986894);
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setCornerRadius(bgtn.a(8.5F));
+    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setCornerRadius(bhtq.a(8.5F));
     this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369140));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379695));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369231));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379873));
   }
   
   public void setGiftCount(int paramInt)
@@ -59,7 +59,7 @@ public class QCircleChatGiftRecordView
     this.jdField_a_of_type_JavaLangString = ("x" + paramInt);
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      zzr.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+      aadv.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -67,7 +67,7 @@ public class QCircleChatGiftRecordView
   public void setIconUrl(String paramString)
   {
     if (this.jdField_a_of_type_ComTencentImageURLImageView != null) {
-      uxh.a(paramString, this.jdField_a_of_type_ComTencentImageURLImageView, getResources().getDrawable(2130850664));
+      uys.a(paramString, this.jdField_a_of_type_ComTencentImageURLImageView, getResources().getDrawable(2130850680));
     }
   }
   

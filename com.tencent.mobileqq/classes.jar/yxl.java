@@ -1,12 +1,27 @@
-import android.graphics.PointF;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public abstract interface yxl
+class yxl
+  implements View.OnTouchListener
 {
-  public abstract void a(zcb paramzcb);
+  yxl(yxk paramyxk) {}
   
-  public abstract void a(zcb paramzcb, int paramInt1, int paramInt2);
-  
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+    }
+  }
 }
 
 

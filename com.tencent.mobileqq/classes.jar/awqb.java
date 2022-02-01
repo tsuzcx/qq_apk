@@ -1,61 +1,10 @@
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.util.Pair;
 
-public class awqb
-  extends awqg<MessageForMixedMsg>
+public abstract interface awqb
 {
-  public awqb(MessageForMixedMsg paramMessageForMixedMsg)
-  {
-    super(paramMessageForMixedMsg);
-  }
+  public abstract Pair<Integer, String> a();
   
-  protected int a()
-  {
-    return 1;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (MessageRecord)localIterator.next();
-      if ((localObject instanceof MessageForPic))
-      {
-        localObject = awoa.a((MessageRecord)localObject);
-        ((awqg)localObject).a(this.a);
-        localArrayList.addAll(((awqg)localObject).a());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        awoa.a(localMessageRecord).a();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
-    {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
-    }
-  }
+  public abstract awpi a();
 }
 
 

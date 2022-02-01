@@ -1,19 +1,14 @@
-public class bfts
+import java.util.Comparator;
+
+class bfts
+  implements Comparator<bftv>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
+  bfts(bftr parambftr) {}
+  
+  public int a(bftv parambftv1, bftv parambftv2)
+  {
+    return parambftv2.b - parambftv1.b;
+  }
 }
 
 

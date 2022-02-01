@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
+import aadv;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -7,8 +8,7 @@ import android.graphics.Rect;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.text.TextUtils;
-import vft;
-import zzr;
+import vhx;
 
 public class ColorTextCell
   extends TextCell
@@ -48,8 +48,8 @@ public class ColorTextCell
   public void draw(Canvas paramCanvas, Paint paramPaint, int paramInt1, Rect paramRect, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
     Typeface localTypeface = initFontInfo(paramPaint);
-    if (((this.useDefaultFont) || (!this.useHanyiColorFont)) && ((paramPaint instanceof vft))) {}
-    for (Paint localPaint = ((vft)paramPaint).a();; localPaint = paramPaint)
+    if (((this.useDefaultFont) || (!this.useHanyiColorFont)) && ((paramPaint instanceof vhx))) {}
+    for (Paint localPaint = ((vhx)paramPaint).a();; localPaint = paramPaint)
     {
       boolean bool;
       Shader localShader;
@@ -83,7 +83,7 @@ public class ColorTextCell
             localPaint.setFakeBoldText(bool);
           }
           if (!TextUtils.isEmpty(this.mFontFamilyUrl)) {
-            zzr.b(localPaint, this.mFontFamilyUrl);
+            aadv.b(localPaint, this.mFontFamilyUrl);
           }
           if (!this.useSuperFont)
           {
@@ -93,10 +93,10 @@ public class ColorTextCell
           }
           if (!TextUtils.isEmpty(paramPaint))
           {
-            if (!(localPaint instanceof vft)) {
+            if (!(localPaint instanceof vhx)) {
               break label448;
             }
-            ((vft)localPaint).a(paramPaint, paramInt1, paramRect.left, paramRect.top, paramCanvas, paramBitmap);
+            ((vhx)localPaint).a(paramPaint, paramInt1, paramRect.left, paramRect.top, paramCanvas, paramBitmap);
           }
         }
         for (;;)

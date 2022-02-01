@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus.auto.location;
 
 import android.widget.TextView;
-import ayqt;
+import azjm;
 
 public class LocationBaseStateDetector$2
   implements Runnable
 {
-  public LocationBaseStateDetector$2(ayqt paramayqt, String paramString) {}
+  public LocationBaseStateDetector$2(azjm paramazjm, String paramString) {}
   
   public void run()
   {
-    ayqt.a(this.this$0).setText(this.a);
+    azjm.a(this.this$0).setText(this.a);
   }
 }
 

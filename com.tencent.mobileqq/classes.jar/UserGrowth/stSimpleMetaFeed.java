@@ -17,10 +17,12 @@ import java.util.Map;
 public final class stSimpleMetaFeed
   extends JceStruct
 {
+  static ArrayList<stMagicBrand> cache_brands;
   static stMetaTag cache_bt_style;
-  static stCollection cache_collection = new stCollection();
+  static stCollection cache_collection;
   static ArrayList<stMetaComment> cache_comments;
   static stFloatingLayerCardStyle cache_floatingLayerCardStyle;
+  static stFriendLikes cache_friendLikes;
   static stMetaGeoInfo cache_geoInfo;
   static stH5OpInfo cache_h5_op_info;
   static ArrayList<stMetaUgcImage> cache_images;
@@ -32,6 +34,7 @@ public final class stSimpleMetaFeed
   static stNewIconStyle cache_new_icon;
   static stOpVideo cache_opVideo;
   static stSimpleMetaPerson cache_poster = new stSimpleMetaPerson();
+  static ArrayList<stQQGroupInfo> cache_qqGroups;
   static stShareInfo cache_share_info;
   static ArrayList<stSimpleComment> cache_simpleComments;
   static ArrayList<stMetaTag> cache_tags;
@@ -40,6 +43,7 @@ public final class stSimpleMetaFeed
   static stWaterFallCardStyle cache_waterFallCardStyle;
   static stWaterFallItemStrategy cache_waterFallItemStrategy;
   public String bottom_img_url = "";
+  public ArrayList<stMagicBrand> brands;
   public stMetaTag bt_style;
   public stCollection collection;
   public ArrayList<stMetaComment> comments;
@@ -48,6 +52,7 @@ public final class stSimpleMetaFeed
   public String feed_desc = "";
   public String feed_material_jump_url = "";
   public stFloatingLayerCardStyle floatingLayerCardStyle;
+  public stFriendLikes friendLikes;
   public String gdt_ad_info = "";
   public int gdt_ad_type;
   public stMetaGeoInfo geoInfo;
@@ -71,6 +76,7 @@ public final class stSimpleMetaFeed
   public int playNum;
   public stSimpleMetaPerson poster;
   public String poster_id = "";
+  public ArrayList<stQQGroupInfo> qqGroups;
   public stShareInfo share_info;
   public ArrayList<stSimpleComment> simpleComments;
   public ArrayList<stMetaTag> tags;
@@ -121,11 +127,19 @@ public final class stSimpleMetaFeed
     cache_simpleComments.add(localObject);
     cache_videoTag = new stVideoTag();
     cache_floatingLayerCardStyle = new stFloatingLayerCardStyle();
+    cache_collection = new stCollection();
+    cache_friendLikes = new stFriendLikes();
+    cache_brands = new ArrayList();
+    localObject = new stMagicBrand();
+    cache_brands.add(localObject);
+    cache_qqGroups = new ArrayList();
+    localObject = new stQQGroupInfo();
+    cache_qqGroups.add(localObject);
   }
   
   public stSimpleMetaFeed() {}
   
-  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection)
+  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection, stFriendLikes paramstFriendLikes, ArrayList<stMagicBrand> paramArrayList5, ArrayList<stQQGroupInfo> paramArrayList6)
   {
     this.id = paramString1;
     this.wording = paramString2;
@@ -173,6 +187,9 @@ public final class stSimpleMetaFeed
     this.videoTag = paramstVideoTag;
     this.floatingLayerCardStyle = paramstFloatingLayerCardStyle;
     this.collection = paramstCollection;
+    this.friendLikes = paramstFriendLikes;
+    this.brands = paramArrayList5;
+    this.qqGroups = paramArrayList6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -223,6 +240,9 @@ public final class stSimpleMetaFeed
     this.videoTag = ((stVideoTag)paramJceInputStream.read(cache_videoTag, 43, false));
     this.floatingLayerCardStyle = ((stFloatingLayerCardStyle)paramJceInputStream.read(cache_floatingLayerCardStyle, 44, false));
     this.collection = ((stCollection)paramJceInputStream.read(cache_collection, 45, false));
+    this.friendLikes = ((stFriendLikes)paramJceInputStream.read(cache_friendLikes, 46, false));
+    this.brands = ((ArrayList)paramJceInputStream.read(cache_brands, 47, false));
+    this.qqGroups = ((ArrayList)paramJceInputStream.read(cache_qqGroups, 48, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -344,6 +364,15 @@ public final class stSimpleMetaFeed
     }
     if (this.collection != null) {
       paramJceOutputStream.write(this.collection, 45);
+    }
+    if (this.friendLikes != null) {
+      paramJceOutputStream.write(this.friendLikes, 46);
+    }
+    if (this.brands != null) {
+      paramJceOutputStream.write(this.brands, 47);
+    }
+    if (this.qqGroups != null) {
+      paramJceOutputStream.write(this.qqGroups, 48);
     }
   }
 }

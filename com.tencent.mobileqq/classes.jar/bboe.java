@@ -1,106 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
 public class bboe
-  extends bbnh
+  implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int d;
-  private String j;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, bboj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public bboe(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public bboe(QQAppInterface paramQQAppInterface)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a(int paramInt)
+  public static bboe a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return (bboe)paramQQAppInterface.getManager(294);
   }
   
-  public void a(String paramString)
+  public bboj a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
     try
     {
-      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
+      bboj localbboj2 = (bboj)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      bboj localbboj1 = localbboj2;
+      if (localbboj2 == null)
+      {
+        localbboj1 = new bboj(paramLong);
+        localbboj1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localbboj1.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localbboj1);
+      }
+      return localbboj1;
+    }
+    finally {}
+  }
+  
+  public void a(bboj parambboj)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(parambboj.jdField_a_of_type_Long));
       return;
     }
-    catch (JSONException paramString)
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    try
     {
-      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((bboj)localIterator.next()).b();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.j = paramString;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.j;
-  }
-  
-  public String e()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int f()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int g()
-  {
-    return this.d;
-  }
-  
-  public int h()
-  {
-    return this.jdField_b_of_type_Int;
+    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

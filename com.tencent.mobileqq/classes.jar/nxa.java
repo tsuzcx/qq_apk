@@ -1,24 +1,23 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import java.net.URL;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class nxa
-  implements uwv
+  extends AnimatorListenerAdapter
 {
-  public nxa(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public nxa(AdControlView paramAdControlView) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ReadInJoyNativeAdFragment.b(this.a, 3);
+    super.onAnimationCancel(paramAnimator);
+    this.a.b = false;
   }
   
-  public void a(URL paramURL, tds paramtds)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
-    ReadInJoyNativeAdFragment.a(this.a, null);
+    super.onAnimationEnd(paramAnimator);
+    this.a.b = false;
+    this.a.setVisibility(4);
   }
 }
 

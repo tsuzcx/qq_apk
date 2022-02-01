@@ -1,19 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.RotateableView;
+import com.tencent.mobileqq.vas.gldrawable.GLDrawableLoaderImpl.2;
 
 public class bibt
-  extends Handler
+  implements bicb
 {
-  public bibt(RotateableView paramRotateableView) {}
+  public bibt(GLDrawableLoaderImpl.2 param2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void b()
   {
-    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
-    if (RotateableView.a(this.a) >= 360.0F) {
-      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
-    }
-    this.a.invalidate();
+    bibs.a(false);
+  }
+  
+  public void c()
+  {
+    bibs.a(false);
   }
 }
 

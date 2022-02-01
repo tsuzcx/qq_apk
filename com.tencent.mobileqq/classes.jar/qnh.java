@@ -1,36 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PkgInstallInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qnh
+class qnh
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
+  qnh(qng paramqng) {}
   
-  public qnh()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public oidb_cmd0x68b.PkgInstallInfo a()
-  {
-    int i = 1;
-    oidb_cmd0x68b.PkgInstallInfo localPkgInstallInfo = new oidb_cmd0x68b.PkgInstallInfo();
-    localPkgInstallInfo.uint32_platform_type.set(1);
-    PBUInt32Field localPBUInt32Field = localPkgInstallInfo.uint32_is_installed;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      localPBUInt32Field.set(i);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localPkgInstallInfo.bytes_pkg_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-      }
-      return localPkgInstallInfo;
-      i = 0;
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

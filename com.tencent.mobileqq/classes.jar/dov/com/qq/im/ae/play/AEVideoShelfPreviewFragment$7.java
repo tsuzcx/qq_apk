@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bkgk;
+import blho;
 import java.util.TimerTask;
 
 class AEVideoShelfPreviewFragment$7
@@ -10,7 +10,7 @@ class AEVideoShelfPreviewFragment$7
   
   public void run()
   {
-    bkgk.a(new AEVideoShelfPreviewFragment.7.1(this));
+    blho.a(new AEVideoShelfPreviewFragment.7.1(this));
   }
 }
 

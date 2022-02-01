@@ -1,83 +1,61 @@
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-public class bdrx
-  implements PopupWindow.OnDismissListener
+class bdrx
+  implements aggk
 {
-  bdry jdField_a_of_type_Bdry;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  boolean jdField_a_of_type_Boolean;
+  TextView b;
   
-  public bdrx(BaseActivity paramBaseActivity)
+  private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherPanel", 2, "destroyPanel");
-    }
-    a();
-    this.jdField_a_of_type_Bdry.b();
-    this.jdField_a_of_type_Bdry = null;
-  }
-  
-  public void a(TroopChatPie paramTroopChatPie, View paramView)
-  {
-    paramView = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
-    if (paramView.isActive()) {
-      paramView.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    if (this.jdField_a_of_type_Bdry == null)
-    {
-      this.jdField_a_of_type_Bdry = bdry.a(paramTroopChatPie, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, -1, -1);
-      this.jdField_a_of_type_Bdry.setOnDismissListener(this);
-      bdrb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a();
-    }
-    paramTroopChatPie = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow();
-    if (paramTroopChatPie != null)
-    {
-      paramView = paramTroopChatPie.getAttributes();
-      paramView.alpha = 0.5F;
-      paramTroopChatPie.setAttributes(paramView);
-    }
-    this.jdField_a_of_type_Bdry.setAnimationStyle(2131755398);
-    this.jdField_a_of_type_Bdry.showAtLocation(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView(), 80, 0, 0);
-    this.jdField_a_of_type_Bdry.a();
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Bdry != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Bdry.isShowing())
-      {
-        this.jdField_a_of_type_Bdry.dismiss();
-        bool1 = true;
+    Drawable localDrawable = this.a.getBackground();
+    if (localDrawable != null) {
+      if (!paramBoolean) {
+        break label28;
       }
     }
-    return bool1;
+    label28:
+    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
+    {
+      localDrawable.setColorFilter(localColorFilter);
+      localDrawable.invalidateSelf();
+      return;
+    }
   }
   
-  public void onDismiss()
+  public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    bdrb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(false);
-    Window localWindow = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow();
-    if (localWindow != null)
+    switch (paramMotionEvent.getAction())
     {
-      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-      localLayoutParams.alpha = 1.0F;
-      localWindow.setAttributes(localLayoutParams);
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        return;
+        paramView = this.a.getBackground();
+      } while (paramView == null);
+      paramView.setColorFilter(null);
+      paramView.invalidateSelf();
+      return;
     }
+    a(false);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    a(paramBoolean);
   }
 }
 

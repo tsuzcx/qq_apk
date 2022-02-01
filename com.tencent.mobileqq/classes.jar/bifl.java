@@ -1,18 +1,28 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class bifl
-  implements MediaPlayer.OnCompletionListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public bifl(VideoTextureView paramVideoTextureView) {}
+  public bifl(HealthBusinessPlugin.7 param7) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onInstallProgress(float paramFloat)
   {
-    if (VideoTextureView.a() != null) {
-      VideoTextureView.a().onVideoComplete(true);
-    }
+    this.a.this$0.c = ((int)(100.0F * paramFloat));
+    this.a.this$0.b.sendEmptyMessage(2);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    this.a.this$0.d = paramInt;
+    this.a.this$0.b.sendEmptyMessage(1);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    this.a.this$0.b.sendEmptyMessage(0);
   }
 }
 

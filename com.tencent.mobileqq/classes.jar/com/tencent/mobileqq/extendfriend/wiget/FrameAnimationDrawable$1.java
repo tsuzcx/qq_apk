@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import asog;
+import atek;
 
 public class FrameAnimationDrawable$1
   implements Runnable
 {
-  public FrameAnimationDrawable$1(asog paramasog) {}
+  public FrameAnimationDrawable$1(atek paramatek) {}
   
   public void run()
   {

@@ -934,6 +934,11 @@ public class TPSystemMediaPlayer
     }
   }
   
+  public int getNativePlayerId()
+  {
+    return 0;
+  }
+  
   public long getPlayableDurationMs()
   {
     return this.mPlayableDurationMs;
@@ -1034,7 +1039,7 @@ public class TPSystemMediaPlayer
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
-    //   6: ldc_w 961
+    //   6: ldc_w 962
     //   9: invokestatic 380	com/tencent/thumbplayer/utils/TPLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   12: aload_0
     //   13: getfield 172	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mSuspend	Z
@@ -1048,8 +1053,8 @@ public class TPSystemMediaPlayer
     //   33: putfield 656	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$ResetActionInfo:state	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
     //   36: aload_0
     //   37: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
-    //   40: ldc_w 963
-    //   43: invokestatic 966	com/tencent/thumbplayer/utils/TPLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: ldc_w 964
+    //   43: invokestatic 967	com/tencent/thumbplayer/utils/TPLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   46: aload_0
     //   47: monitorexit
     //   48: return
@@ -1544,7 +1549,7 @@ public class TPSystemMediaPlayer
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
-    //   6: ldc_w 1159
+    //   6: ldc_w 1160
     //   9: invokestatic 380	com/tencent/thumbplayer/utils/TPLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   12: aload_0
     //   13: invokespecial 345	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:destroyCheckPrepareTimeoutTimer	()V
@@ -1570,7 +1575,7 @@ public class TPSystemMediaPlayer
     //   61: if_acmpeq +13 -> 74
     //   64: aload_0
     //   65: getfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
-    //   68: getstatic 978	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:RELEASE	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   68: getstatic 979	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:RELEASE	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
     //   71: if_acmpne +50 -> 121
     //   74: aload_0
     //   75: getfield 341	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
@@ -1592,14 +1597,14 @@ public class TPSystemMediaPlayer
     //   105: putfield 194	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCurInnerAudioTrackIndex	I
     //   108: aload_0
     //   109: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
-    //   112: ldc_w 1161
+    //   112: ldc_w 1162
     //   115: invokestatic 380	com/tencent/thumbplayer/utils/TPLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   118: aload_0
     //   119: monitorexit
     //   120: return
     //   121: aload_0
     //   122: getfield 341	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   125: invokevirtual 1163	android/media/MediaPlayer:stop	()V
+    //   125: invokevirtual 1164	android/media/MediaPlayer:stop	()V
     //   128: goto -47 -> 81
     //   131: astore_1
     //   132: aload_0

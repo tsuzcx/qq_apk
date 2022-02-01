@@ -4,12 +4,12 @@ import android.view.View;
 import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
 import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import com.tencent.qphone.base.util.QLog;
-import vab;
+import vbr;
 
 public class QCircleCommentPanelPart$12
   implements Runnable
 {
-  public QCircleCommentPanelPart$12(vab paramvab, View paramView, int[] paramArrayOfInt, int paramInt) {}
+  public QCircleCommentPanelPart$12(vbr paramvbr, View paramView, int[] paramArrayOfInt, int paramInt) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class QCircleCommentPanelPart$12
     arrayOfInt[1] += this.jdField_a_of_type_AndroidViewView.getHeight();
     if (this.jdField_a_of_type_ArrayOfInt[1] > this.jdField_a_of_type_Int)
     {
-      vab.a(this.this$0).a().scrollBy(0, this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Int);
+      vbr.a(this.this$0).a().scrollBy(0, this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Int);
       QLog.i("QCircleCommentPanelPart", 1, "scrollItemToVisble  postDelayed scrollBy: " + (this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Int));
     }
   }

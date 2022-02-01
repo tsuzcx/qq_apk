@@ -1,16 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajok
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ajok(ajoi paramajoi, ajoo paramajoo) {}
   
-  ajok(ajoj paramajoj, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377780));
+    if (this.jdField_a_of_type_Ajoi.a != null)
+    {
+      int i = this.jdField_a_of_type_Ajoo.getAdapterPosition();
+      this.jdField_a_of_type_Ajoi.a.a(paramView, this.jdField_a_of_type_Ajoo, i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

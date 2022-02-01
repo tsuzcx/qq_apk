@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-class nhj
-  extends anxg
+public class nhj
+  implements nbb
 {
-  nhj(nhh paramnhh) {}
+  public nhj(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    if (paramLong != this.a.jdField_a_of_type_Long) {
-      return;
-    }
-    this.a.jdField_a_of_type_Long = 0L;
-    nhh.a(this.a, false);
-    if (paramBoolean)
-    {
-      nhh.a(this.a, paramTroopInfo);
-      return;
-    }
-    nhh.a(this.a, 2131717746, 1);
-    this.a.jdField_a_of_type_Nhk.a();
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.obj = paramLottieDrawable;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

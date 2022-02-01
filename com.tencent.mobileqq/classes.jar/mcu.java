@@ -1,22 +1,37 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class mcu
-  implements ViewTreeObserver.OnPreDrawListener
+public class mcu
 {
-  mcu(mct parammct, TextView paramTextView) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public boolean onPreDraw()
+  mcu(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_Mct.a.a().a().av = true;
-    mue.a(this.jdField_a_of_type_Mct.a);
-    QLog.d("qav_face_guide", 1, "onPreDraw");
-    return false;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public long a()
+  {
+    if ((this.jdField_a_of_type_Long == 0L) && (AudioHelper.e())) {
+      throw new IllegalArgumentException("seq未初始化:" + getClass().getSimpleName());
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    paramVideoAppInterface.a(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this });
   }
 }
 

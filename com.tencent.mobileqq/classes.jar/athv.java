@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class athv
-  extends athz
+  implements View.OnClickListener
 {
-  public CharSequence c()
+  public athv(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = (FileManagerEntity)this.a.get(0);
-    String str1 = atxd.b(((FileManagerEntity)localObject).srvTime);
-    String str2 = atvo.b((FileManagerEntity)localObject);
-    localObject = atwl.a(((FileManagerEntity)localObject).fileSize);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str2).append("  ").append(str1).append("  ").append((String)localObject);
-    this.b = localStringBuilder;
-    return localStringBuilder;
+    bdll.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, beaj.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718622), true));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

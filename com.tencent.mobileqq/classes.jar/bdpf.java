@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow.OnDismissListener;
 
 class bdpf
-  implements bgyv
+  implements PopupWindow.OnDismissListener
 {
-  bdpf(bdpd parambdpd) {}
+  bdpf(bdpe parambdpe) {}
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public void onDismiss()
   {
-    if (paramQQAppInterface != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMusicSkin", 2, "onCompleted, scid:" + paramString1);
-      }
-      this.a.a();
-    }
+    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
+    localLayoutParams.alpha = 1.0F;
+    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
   }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

@@ -1,34 +1,26 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface trf
-  extends trq
+class trf
+  extends Handler
 {
-  public abstract ViewGroup a();
+  trf(tre paramtre, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(VideoPlayManager paramVideoPlayManager);
-  
-  public abstract void a(trp paramtrp);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void setControlType(int paramInt);
-  
-  public abstract void setEndWithLastFrame(boolean paramBoolean);
-  
-  public abstract void setEventListener(trg paramtrg);
-  
-  public abstract void setFullScreenDisable(boolean paramBoolean);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    tre.a(this.a).set(1);
+    tre.a(this.a, true);
+  }
 }
 
 

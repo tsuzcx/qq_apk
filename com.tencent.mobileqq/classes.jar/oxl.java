@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentDotClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/ui/RIJCommentBubbleView$clickReportOrDelete$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentUtils$ReportCommentDialogClickListener;", "onClick", "", "msg", "", "reportType", "", "which", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class oxl
-  implements owp
+  extends osv
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
+  public void a(@NotNull String paramString, int paramInt1, int paramInt2)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
-    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxm(parampay, paramContainer, parampan, paramContainer.getVirtualView().findViewBaseByName("id_first_comment_view")));
+    Intrinsics.checkParameterIsNotNull(paramString, "msg");
+    oxi.a(this.a).a().a(oxi.a(this.a).a.commentId, paramString, paramInt1);
   }
 }
 

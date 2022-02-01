@@ -1,29 +1,20 @@
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akyi
-  implements awna
+public class akyi
+  implements View.OnClickListener
 {
-  akyi(akyh paramakyh) {}
+  public akyi(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    akyh.a(this.a).removeMessages(11);
-    akyh.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt & 0x1) != 0)
-    {
-      akyh.a(this.a).removeMessages(11);
-      akyh.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-    }
+    this.a.b.setVisibility(8);
+    this.a.a.setVisibility(8);
+    RedPacketKSongFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

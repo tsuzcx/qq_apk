@@ -1,50 +1,21 @@
-import android.text.TextUtils;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class ayfp
-  implements ActionMode.Callback
+  implements View.OnTouchListener
 {
-  public ayfp(OCRResultActivity paramOCRResultActivity, EditText paramEditText) {}
+  public ayfp(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMenuItem.getItemId() == 2131371903)
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramActionMode = OCRResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, this.jdField_a_of_type_AndroidWidgetEditText);
-      if (TextUtils.isEmpty(paramActionMode)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, 1, anni.a(2131706589), 0).a();
-      }
+      if (!ShortVideoCommentsView.a(this.a)) {}
+      this.a.l();
+      ShortVideoCommentsView.b(this.a);
     }
-    else
-    {
-      return false;
-    }
-    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, paramActionMode);
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity.overridePendingTransition(2130771992, 0);
-    return true;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode = paramActionMode.getMenuInflater();
-    if (paramActionMode != null) {
-      paramActionMode.inflate(2131623940, paramMenu);
-    }
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
     return false;
   }
 }

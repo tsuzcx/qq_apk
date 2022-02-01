@@ -1,19 +1,17 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bphc
+  implements View.OnClickListener
 {
-  public final int c;
-  public final Bitmap c;
+  public bphc(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public bphc(int paramInt, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+    AEEditorVideoEditFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

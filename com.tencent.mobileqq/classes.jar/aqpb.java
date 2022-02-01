@@ -1,36 +1,26 @@
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class aqpb
+class aqpb
+  implements MiniAppCmdInterface
 {
-  public boolean a;
+  aqpb(aqoz paramaqoz, BaseChatPie paramBaseChatPie) {}
   
-  public static aqpb a(String paramString)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        aqpb localaqpb = new aqpb();
-        if (new JSONObject(paramString).optInt("openSwitch", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localaqpb.a = bool;
-          return localaqpb;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retCode") == -12998002)) {
+      this.jdField_a_of_type_Aqoz.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
     }
-    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarJumpController", 2, "onCmdListener() isSuc = " + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpb
  * JD-Core Version:    0.7.0.1
  */

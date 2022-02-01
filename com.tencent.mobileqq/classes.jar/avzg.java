@@ -1,29 +1,16 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.content.Intent;
 
 public class avzg
-  implements View.OnKeyListener
 {
-  public avzg(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  public long a;
+  public Intent a;
+  public String a;
+  public String b = "";
+  public String c = "";
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public avzg(avzd paramavzd)
   {
-    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
-      return true;
-    }
-    if ((paramInt == 84) || (paramInt == 66))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

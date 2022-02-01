@@ -3,15 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bkpg;
-import bkph;
+import blqj;
+import blqk;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements bkph
+  implements blqk
 {
-  public bkpg a;
+  public blqj a;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class URLThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bkpg();
+        this.a = new blqj();
       }
       this.a.a(true);
     }

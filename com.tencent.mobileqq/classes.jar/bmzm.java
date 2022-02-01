@@ -1,28 +1,23 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.HashMap;
-
-class bmzm
-  implements ThreadPool.Job<Void>
+public class bmzm
 {
-  bmzm(bmzf parambmzf, Long paramLong, bdws parambdws) {}
+  private static String a;
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public static String a()
   {
-    paramJobContext = (bmzc)bmzf.a(this.jdField_a_of_type_Bmzf).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext == null) || (paramJobContext.d())) {
-      bmzf.a(this.jdField_a_of_type_Bmzf, this.jdField_a_of_type_JavaLangLong.longValue());
+    if (a != null) {
+      return a;
     }
-    for (;;)
-    {
-      return null;
-      bmzf.b(this.jdField_a_of_type_Bmzf).a(this.jdField_a_of_type_Bdws);
-    }
+    return "";
+  }
+  
+  public static void a(String paramString)
+  {
+    a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmzm
  * JD-Core Version:    0.7.0.1
  */

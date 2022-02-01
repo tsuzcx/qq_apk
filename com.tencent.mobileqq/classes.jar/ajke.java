@@ -1,21 +1,45 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class ajke
-  implements Handler.Callback
+class ajke
+  implements axfs
 {
-  public ajke(PublicAccountFragment paramPublicAccountFragment) {}
+  ajke(ajka paramajka) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
     }
-    for (;;)
-    {
-      return true;
-      this.a.i();
+    this.a.d();
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    }
+    if ((paramInt & 0x1) != 0) {
+      synchronized (ajka.a(this.a))
+      {
+        Iterator localIterator = ajka.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((ajkg)localIterator.next()).b();
+        }
+      }
     }
   }
 }

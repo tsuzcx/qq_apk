@@ -1,33 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import org.json.JSONObject;
 
 public class pie
-  implements AladdinConfigHandler
+  implements szr
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("AdNativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("AdNativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "commercialAdDetails_feeds")) {
-        bmqa.a("ad_native_proteus_offline_bid", str2);
-      }
-    }
-    return true;
-  }
+  public pie(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    bmqa.a("ad_native_proteus_offline_bid", "0");
+    this.a.a.a(paramBaseArticleInfo, paramInt);
+    JSONObject localJSONObject = oxw.a(this.a.getActivity(), this.a.a(), 3, paramInt, (ArticleInfo)paramBaseArticleInfo);
+    try
+    {
+      localJSONObject.put("card_type", 8);
+      oxy localoxy = new oxy(paramBaseArticleInfo);
+      localoxy.e = String.valueOf(paramBaseArticleInfo.mArticleID);
+      localoxy.f = String.valueOf(paramBaseArticleInfo.mStrategyId);
+      localoxy.g = localJSONObject.toString();
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localoxy.a = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.a.a);
+      }
+      localoxy.b = "0X8009A79";
+      localoxy.c = "0X8009A79";
+      oxw.a(localoxy);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("channel_id", this.a.a());
+      localJSONObject.put("folder_status", ozs.d);
+      localJSONObject.put("kandian_mode", ozs.e());
+      localJSONObject.put("feeds_type", "" + ozs.a(paramBaseArticleInfo));
+      localJSONObject.put("rowkey", ubg.a(paramBaseArticleInfo));
+      paramBaseArticleInfo = localJSONObject.toString();
+      ocd.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", anzj.a(2131712018), paramBaseArticleInfo, false);
+      return;
+    }
+    catch (Exception paramBaseArticleInfo) {}
   }
 }
 

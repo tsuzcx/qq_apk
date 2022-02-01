@@ -1,78 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.JobReporter;
-import com.tencent.mobileqq.app.ThreadWrapContext;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anvz
-  implements ThreadWrapContext
+class anvz
+  extends aocj
 {
-  private static boolean a;
-  private static volatile boolean b;
+  anvz(anvu paramanvu) {}
   
-  public static void a(long paramLong)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
+    if ((paramInt1 == 1) && (this.a.a()))
     {
-      a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
-      }
-      if (paramLong > 0L)
-      {
-        b = JobReporter.ramdomReport((int)paramLong);
-        if (QLog.isColorLevel()) {
-          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
-        }
-      }
+      this.a.a(true);
+      anvu.a(this.a, bcrg.a());
+      this.a.app.a().a(0).b();
     }
+    this.a.a.a(this.a);
   }
   
-  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  protected void b(int paramInt1, int paramInt2)
   {
-    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public long getMainProccessThreadMonitorTime()
-  {
-    return bgsg.d();
-  }
-  
-  public long getMainProccessThreadPeakCounts()
-  {
-    return bgsg.c();
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public boolean isShotReportRejectedError()
-  {
-    return b;
-  }
-  
-  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
-  {
-    bctj.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
-  }
-  
-  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
-  
-  public void setMainProccessThreadMonitorTime(long paramLong)
-  {
-    bgsg.b(paramLong);
-  }
-  
-  public void setMainProccessThreadPeakCounts(long paramLong)
-  {
-    bgsg.a(paramLong);
+    if ((paramInt1 == 1) && (this.a.b()))
+    {
+      this.a.b(true);
+      anvu.b(this.a, bcrg.a());
+      this.a.app.a().a(1).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvz
  * JD-Core Version:    0.7.0.1
  */

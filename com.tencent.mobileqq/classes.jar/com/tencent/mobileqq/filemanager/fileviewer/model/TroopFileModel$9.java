@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import atmk;
-import atpf;
+import auef;
+import auha;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class TroopFileModel$9
   implements Runnable
 {
-  public TroopFileModel$9(atpf paramatpf, MessageRecord paramMessageRecord) {}
+  public TroopFileModel$9(auha paramauha, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

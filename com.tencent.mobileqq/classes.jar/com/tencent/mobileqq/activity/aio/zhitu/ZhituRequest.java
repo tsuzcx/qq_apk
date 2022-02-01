@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import aiol;
-import bkdr;
+import aizs;
+import blev;
 
 public class ZhituRequest
 {
   public String chat;
   public String os;
-  public aiol report;
+  public aizs report;
   public int styles;
   public String text;
   public String uin;
@@ -15,7 +15,7 @@ public class ZhituRequest
   
   public String toString()
   {
-    return "ZhituRequest{chat='" + this.chat + '\'' + ", styles=" + this.styles + ", os='" + this.os + '\'' + ", uin='" + this.uin + '\'' + ", text='" + bkdr.a(this.text) + '\'' + ", report=" + this.report + ", version='" + this.version + '\'' + '}';
+    return "ZhituRequest{chat='" + this.chat + '\'' + ", styles=" + this.styles + ", os='" + this.os + '\'' + ", uin='" + this.uin + '\'' + ", text='" + blev.a(this.text) + '\'' + ", report=" + this.report + ", version='" + this.version + '\'' + '}';
   }
 }
 

@@ -1,71 +1,49 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class awda
-  extends aniz
+class awda
+  implements URLDrawable.URLDrawableListener
 {
-  public awda(LoginWelcomeManager paramLoginWelcomeManager) {}
+  awda(awcz paramawcz, long paramLong, AtomicBoolean paramAtomicBoolean, Bundle paramBundle) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("onCardDownload isSuccess=%s data=%s", new Object[] { Boolean.valueOf(paramBoolean), paramObject }));
-    }
-    if ((LoginWelcomeManager.a(this.a) == null) || ((paramBoolean) && (paramObject != null))) {}
-    for (;;)
+    System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Long;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      try
-      {
-        Object localObject = LoginWelcomeManager.a(this.a).getBundle("request");
-        String str = ((Bundle)localObject).getString("uin");
-        long l1 = Long.parseLong(LoginWelcomeManager.a(this.a).getCurrentAccountUin());
-        long l2 = Long.parseLong(str);
-        localObject = ((Bundle)localObject).getString("authSig");
-        LoginWelcomeManager.a(this.a).addObserver(this.a.a);
-        anwd localanwd = (anwd)LoginWelcomeManager.a(this.a).a(20);
-        paramObject = localanwd.a((Card)paramObject);
-        localanwd.a(str, paramObject, 1, null, (String)localObject, localanwd.a(paramObject, l1, l2), null);
-        LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("LoginWelcomeManager", 1, "onCardDownload fail.", paramObject);
-        continue;
-      }
-      this.a.b();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      awcz.a(this.jdField_a_of_type_Awcz, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
   
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i = 1;
-    QLog.d("LoginWelcomeManager", 1, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
-    if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
-      if (LoginWelcomeManager.a(this.a) != null)
-      {
-        paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-        if (paramString != null) {
-          if (!paramBoolean) {
-            break label130;
-          }
-        }
-      }
-    }
-    for (;;)
+    QLog.i("DynamicNow | NowEntry", 1, "download cover pic failed!");
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Awcz.a.b("download_cover").c("1").d(paramThrowable.getMessage()).i(String.valueOf(l1 - l2)).b();
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      paramString.putInt("result", i);
-      paramString.putString("path", LoginWelcomeManager.a(this.a));
-      LoginWelcomeManager.a(this.a, null);
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
-      return;
-      label130:
-      i = 0;
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      awcz.a(this.jdField_a_of_type_Awcz, this.jdField_a_of_type_AndroidOsBundle);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    QLog.i("DynamicNow | NowEntry", 1, " download cover pic  success  timeconsume = " + l);
+    this.jdField_a_of_type_Awcz.a.b("download_cover").c("0").i(String.valueOf(l)).b();
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      awcz.a(this.jdField_a_of_type_Awcz, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

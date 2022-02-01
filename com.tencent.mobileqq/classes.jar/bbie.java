@@ -1,25 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class bbie
-  extends Handler
+public abstract interface bbie
 {
-  public bbie(UniteSearchActivity paramUniteSearchActivity) {}
+  public abstract void a(long paramLong);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      UniteSearchActivity.a(this.a, 3);
-      this.a.h();
-    }
-  }
+  public abstract void a(VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void a_(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

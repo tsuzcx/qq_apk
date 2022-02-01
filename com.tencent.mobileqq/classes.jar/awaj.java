@@ -1,21 +1,163 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader.1;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
-class awaj
-  implements View.OnClickListener
+public class awaj
 {
-  awaj(awai paramawai) {}
+  private static Context jdField_a_of_type_AndroidContentContext;
+  private static Map<String, awaj> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public static int[] a;
+  private static boolean d;
+  private static boolean e;
+  private long jdField_a_of_type_Long;
+  protected BroadcastReceiver a;
+  private awat jdField_a_of_type_Awat;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<awal> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private final String jdField_b_of_type_JavaLangString = "GroupVideoManager.IVPluginLoader";
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.a.a()) {}
-    for (;;)
+    jdField_a_of_type_ArrayOfInt = new int[] { 3, 7, 9, 5, 10 };
+  }
+  
+  private awaj(Context paramContext, String paramString)
+  {
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new awak(this);
+    jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static awaj a(Context paramContext, String paramString)
+  {
+    awaj localawaj2 = (awaj)jdField_a_of_type_JavaUtilMap.get(paramString);
+    awaj localawaj1 = localawaj2;
+    if (localawaj2 == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      localawaj1 = new awaj(paramContext, paramString);
+      jdField_a_of_type_JavaUtilMap.put(paramString, localawaj1);
+    }
+    return localawaj1;
+  }
+  
+  private void a(int paramInt)
+  {
+    yup.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "8.4.5" });
+    switch (paramInt)
+    {
+    case 4: 
+    case 8: 
+    default: 
       return;
-      bcst.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
-      avxq.a(avzs.a(this.a.a), this.a.a);
+    case 2: 
+      awbj.b("2856626");
+      return;
+    case 3: 
+      awbj.b("2856627");
+      return;
+    case 5: 
+      awbj.b("2856629");
+      return;
+    case 6: 
+      awbj.b("2856630");
+      return;
+    case 7: 
+      awbj.b("2856631");
+      return;
+    }
+    awbj.b("2856647");
+  }
+  
+  public static boolean a()
+  {
+    if (e) {
+      return d;
+    }
+    try
+    {
+      File localFile = new File(jdField_a_of_type_AndroidContentContext.getExternalFilesDir(null).getPath(), "versionchecker.test");
+      if (localFile != null)
+      {
+        d = localFile.exists();
+        e = true;
+      }
+      return d;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+        Object localObject = null;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Awat != null) {
+      this.jdField_a_of_type_Awat.a();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, awal paramawal)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      localObject = new IntentFilter(awax.a(this.jdField_a_of_type_JavaLangString));
+      ((IntentFilter)localObject).addAction(awax.b(this.jdField_a_of_type_JavaLangString));
+      jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    this.jdField_b_of_type_Boolean = TextUtils.equals(paramString5, "slientDownload");
+    this.c = TextUtils.equals(paramString5, "download");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawal);
+    paramawal = IVPluginInfo.a();
+    Object localObject = (IVPluginInfo)paramawal.get(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(paramString3)) {}
+    try
+    {
+      ((IVPluginInfo)localObject).jdField_a_of_type_Long = Long.parseLong(paramString3);
+      if (!TextUtils.isEmpty(paramString6)) {
+        ((IVPluginInfo)localObject).e = paramString6;
+      }
+      ((IVPluginInfo)localObject).h = paramString7;
+      ((IVPluginInfo)localObject).c = paramInt;
+      ((IVPluginInfo)localObject).i = paramString8;
+      ((IVPluginInfo)localObject).j = paramString9;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        awbj.b("2856624");
+        this.jdField_a_of_type_Awat = awat.a(jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramString1);
+        ThreadManagerV2.executeOnSubThread(new IVPluginLoader.1(this, paramString2, paramString1, paramString4, paramString5, paramawal));
+        return;
+      }
+    }
+    catch (NumberFormatException paramString3)
+    {
+      for (;;)
+      {
+        paramString3.printStackTrace();
+        continue;
+        if (this.c)
+        {
+          awbj.b("2856625");
+          this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+          yup.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "8.4.5" });
+        }
+      }
     }
   }
 }

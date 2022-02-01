@@ -1,44 +1,45 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public abstract class bljs
-  extends OnPluginInstallListener.Stub
+public class bljs
+  implements blqn
 {
-  public Bundle a;
+  private Locale jdField_a_of_type_JavaUtilLocale;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bljs(Bundle paramBundle)
+  public bljs(Context paramContext)
   {
-    this.a = paramBundle;
+    this.jdField_a_of_type_JavaUtilLocale = paramContext.getResources().getConfiguration().locale;
   }
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    bljn.a(BaseApplication.getContext(), this);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
-    a(false, this.a);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramCharSequence != null) {
+        return paramCharSequence.toString().toUpperCase(this.jdField_a_of_type_JavaUtilLocale);
+      }
+      return null;
+    }
+    QLog.w("AllCapsTransformationMethod", 2, "Caller did not enable length changes; not transforming text");
+    return paramCharSequence;
   }
   
-  public void onInstallFinish(String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
-  }
+  public void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljs
  * JD-Core Version:    0.7.0.1
  */

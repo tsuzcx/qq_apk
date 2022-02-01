@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
-
-class ancj
-  implements Comparator<ApolloActionData>
+public abstract interface ancj
 {
-  ancj(ancd paramancd) {}
+  public abstract int a();
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
-  {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract amww a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  
+  public abstract void a();
 }
 
 

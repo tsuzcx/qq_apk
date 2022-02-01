@@ -1,14 +1,17 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahjv
-  implements PopupWindow.OnDismissListener
+class ahjv
+  extends ahkx
 {
-  public ahjv(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
-  
-  public void onDismiss()
+  ahjv(ahgk paramahgk)
   {
-    StructingMsgItemBuilder.b(this.a, false);
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahcf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

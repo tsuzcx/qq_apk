@@ -1,115 +1,37 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class apzr
-  extends BaseAdapter
+class apzr
+  implements ArkViewImplement.LoadCallback
 {
-  public apzr(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  apzr(apzq paramapzq, aqcq paramaqcq, aqcm paramaqcm, int paramInt, agyv paramagyv) {}
   
-  public String a(int paramInt)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
+    onLoadState(paramInt1);
   }
   
-  public int getCount()
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aqab localaqab;
-    Object localObject;
-    if (paramView == null)
+    if (paramInt == 1)
     {
-      paramView = this.a.getLayoutInflater().inflate(2131561072, null);
-      localaqab = new aqab();
-      localaqab.a = ((URLImageView)paramView.findViewById(2131364202));
-      paramView.setTag(localaqab);
-      localObject = a(paramInt);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
-      }
-      if (localObject == null) {}
-    }
-    else
-    {
-      try
-      {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          break label210;
-        }
-        localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        label139:
-        localaqab.a.setImageDrawable((Drawable)localObject);
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          localException1.printStackTrace();
-          continue;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-      }
-      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
+      this.jdField_a_of_type_Aqcq.a.setVisibility(0);
+      apzq.a(this.jdField_a_of_type_Apzq, this.jdField_a_of_type_Aqcm, this.jdField_a_of_type_Aqcq);
+      this.jdField_a_of_type_Aqcq.b.setVisibility(0);
+      this.jdField_a_of_type_Aqcm.a(this.jdField_a_of_type_Aqcq, this.jdField_a_of_type_Apzq);
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localaqab = (aqab)paramView.getTag();
-      break;
-      label210:
-      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-      break label139;
-      try
-      {
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-        {
-          localObject = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          localException1.a.setImageDrawable((Drawable)localObject);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          break;
-          localException1.a.setImageDrawable(null);
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          localException2.printStackTrace();
-        }
-      }
+      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Apzq.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_Aqcm.a(this.jdField_a_of_type_Agyv, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Aqcq.a.setVisibility(8);
+      this.jdField_a_of_type_Aqcq.b.setVisibility(8);
     }
   }
 }

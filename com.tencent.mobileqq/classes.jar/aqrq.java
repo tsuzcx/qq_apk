@@ -1,102 +1,18 @@
-import org.json.JSONObject;
+import android.content.Context;
 
-public class aqrq
+public abstract interface aqrq
 {
-  private long jdField_a_of_type_Long = 2000L;
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = 60000L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = true;
-  private boolean d = false;
+  public abstract void a(int paramInt);
   
-  public static aqrq a(String paramString)
-  {
-    boolean bool2 = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      aqrq localaqrq = new aqrq();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("useNewLog", 1) == 1)
-      {
-        bool1 = true;
-        localaqrq.jdField_a_of_type_Boolean = bool1;
-        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
-          break label130;
-        }
-        bool1 = true;
-        label56:
-        localaqrq.jdField_b_of_type_Boolean = bool1;
-        if (paramString.optInt("enableConsole", 1) != 1) {
-          break label135;
-        }
-        bool1 = true;
-        label74:
-        localaqrq.c = bool1;
-        if (paramString.optInt("enableCheckPermission", 1) != 1) {
-          break label140;
-        }
-      }
-      label130:
-      label135:
-      label140:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        localaqrq.d = bool1;
-        localaqrq.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
-        localaqrq.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
-        return localaqrq;
-        bool1 = false;
-        break;
-        bool1 = false;
-        break label56;
-        bool1 = false;
-        break label74;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2);
   
-  public long a()
-  {
-    if (this.jdField_a_of_type_Long < 0L) {
-      return 2000L;
-    }
-    return this.jdField_a_of_type_Long;
-  }
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3);
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    if (this.jdField_b_of_type_Long < 0L) {
-      return 60000L;
-    }
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public boolean b()
-  {
-    return this.d;
-  }
-  
-  public String toString()
-  {
-    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
-  }
+  public abstract void stop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrq
  * JD-Core Version:    0.7.0.1
  */

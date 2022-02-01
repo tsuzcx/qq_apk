@@ -1,18 +1,67 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.ptv.LWMotionEvent;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewStub;
 
-public final class bowm
-  implements Parcelable.Creator<LWMotionEvent>
+public abstract class bowm
 {
-  public LWMotionEvent a(Parcel paramParcel)
+  protected Activity a;
+  protected View a;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  protected bown a;
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  @Deprecated
+  public bowm(Activity paramActivity, View paramView, bown parambown)
   {
-    return new LWMotionEvent(paramParcel, null);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Bown = parambown;
   }
   
-  public LWMotionEvent[] a(int paramInt)
+  public bowm(Activity paramActivity, ViewStub paramViewStub, bown parambown)
   {
-    return new LWMotionEvent[paramInt];
+    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Bown = parambown;
+  }
+  
+  public <T> T a(int paramInt, Object... paramVarArgs)
+  {
+    return null;
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  protected void a(View paramView) {}
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void g() {}
+  
+  public void m() {}
+  
+  public void n() {}
+  
+  protected final void o()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+    this.jdField_a_of_type_Boolean = true;
+    a(localView);
   }
 }
 

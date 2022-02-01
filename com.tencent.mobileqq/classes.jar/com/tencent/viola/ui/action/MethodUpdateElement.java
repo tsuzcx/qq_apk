@@ -15,16 +15,25 @@ public class MethodUpdateElement
   implements DOMAction, RenderAction
 {
   public static String TAG = "MethodUpdateElement";
+  private volatile boolean applyLayout;
   private DomObject mDomObject;
   private String mRef;
   private String mRootRef;
   private JSONObject mUpdateData;
   private boolean needReflow = false;
+  private volatile boolean sync;
   
   public MethodUpdateElement(String paramString, JSONObject paramJSONObject)
   {
+    this(paramString, paramJSONObject, false, true);
+  }
+  
+  public MethodUpdateElement(String paramString, JSONObject paramJSONObject, boolean paramBoolean1, boolean paramBoolean2)
+  {
     this.mRef = paramString;
     this.mUpdateData = paramJSONObject;
+    this.sync = paramBoolean1;
+    this.applyLayout = paramBoolean2;
   }
   
   private void tryCompatVR(Map<String, Object> paramMap, VComponent paramVComponent)
@@ -35,32 +44,47 @@ public class MethodUpdateElement
     paramVComponent.tryCompatVR(this.mDomObject);
   }
   
+  public void executeAsync(String paramString)
+  {
+    DOMActionContext localDOMActionContext = ViolaUtils.getDomActionContext(paramString);
+    paramString = ViolaUtils.getRenderActionContext(paramString);
+    if ((localDOMActionContext == null) || (paramString == null)) {
+      return;
+    }
+    executeDom(localDOMActionContext);
+    executeRender(paramString);
+  }
+  
   public void executeDom(DOMActionContext paramDOMActionContext)
   {
     if ((paramDOMActionContext.isDestory()) || (this.mUpdateData == null)) {}
-    DomObject localDomObject;
-    do
+    for (;;)
     {
       return;
-      localDomObject = paramDOMActionContext.getDomByRef(this.mRef);
-    } while (localDomObject == null);
-    try
-    {
-      if (this.mUpdateData.has("style"))
-      {
-        localDomObject.updateStyle(ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("style")));
-        localDomObject.traverseTree(new DomObject.Consumer[] { paramDOMActionContext.getApplyStyleConsumer() });
+      DomObject localDomObject = paramDOMActionContext.getDomByRef(this.mRef);
+      if (localDomObject != null) {
+        try
+        {
+          if (this.mUpdateData.has("style"))
+          {
+            localDomObject.updateStyle(ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("style")));
+            localDomObject.traverseTree(new DomObject.Consumer[] { paramDOMActionContext.getApplyStyleConsumer() });
+          }
+          if (this.mUpdateData.has("attr")) {
+            localDomObject.updateAttr(ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("attr")));
+          }
+          this.mDomObject = localDomObject;
+          paramDOMActionContext.getComponent(this.mRef);
+          this.mRootRef = paramDOMActionContext.getRootRef();
+          if (!this.sync)
+          {
+            paramDOMActionContext.postRenderTask(this);
+            return;
+          }
+        }
+        catch (JSONException paramDOMActionContext) {}
       }
-      if (this.mUpdateData.has("attr")) {
-        localDomObject.updateAttr(ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("attr")));
-      }
-      this.mDomObject = localDomObject;
-      paramDOMActionContext.getComponent(this.mRef);
-      this.mRootRef = paramDOMActionContext.getRootRef();
-      paramDOMActionContext.postRenderTask(this);
-      return;
     }
-    catch (JSONException paramDOMActionContext) {}
   }
   
   public void executeRender(RenderActionContext paramRenderActionContext)
@@ -95,7 +119,7 @@ public class MethodUpdateElement
           {
             i = j;
             paramRenderActionContext = paramRenderActionContext.getComponent(this.mRootRef);
-            if (paramRenderActionContext != null) {
+            if ((paramRenderActionContext != null) && (this.applyLayout)) {
               paramRenderActionContext.applyLayoutAndEvent();
             }
             if (this.mDomObject != null)

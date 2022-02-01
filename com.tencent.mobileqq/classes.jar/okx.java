@@ -1,18 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class okx
-  implements View.OnClickListener
+public class okx
+  implements sje
 {
-  okx(okv paramokv, oky paramoky) {}
+  private WeakReference<ReadInJoyNewBaseActivity> a;
   
-  public void onClick(View paramView)
+  public okx(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Okv.a, oky.c(this.jdField_a_of_type_Oky));
-    oat.a(null, "CliOper", "", oky.c(this.jdField_a_of_type_Oky), "0X80078A8", "0X80078A8", 0, 0, "", "", "", pha.e(), false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
+  }
+  
+  public void a()
+  {
+    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
+    if (localReadInJoyNewFeedsActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
+      }
+    }
+    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
+      return;
+    }
+    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 

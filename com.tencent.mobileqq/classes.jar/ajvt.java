@@ -1,14 +1,33 @@
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class ajvt
-  extends anjq
+public class ajvt
 {
-  ajvt(ajvr paramajvr) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public ajvt(PublicAccountInfo paramPublicAccountInfo)
   {
-    ajvr.a(this.a, paramUpgradeDetailWrapper);
-    this.a.e();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

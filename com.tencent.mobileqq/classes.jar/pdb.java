@@ -1,17 +1,8 @@
-import android.widget.PopupWindow.OnDismissListener;
-
-class pdb
-  implements PopupWindow.OnDismissListener
+public abstract interface pdb
 {
-  pdb(pda parampda) {}
+  public abstract void a();
   
-  public void onDismiss()
-  {
-    this.a.a(1.0F);
-    if (pda.a(this.a) != null) {
-      pda.a(this.a).a(pda.a(this.a));
-    }
-  }
+  public abstract void b();
 }
 
 

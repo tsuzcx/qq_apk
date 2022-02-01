@@ -1,21 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-
 public class axfz
-  implements DialogInterface.OnClickListener
+  implements anui
 {
-  public axfz(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean, String paramString) {}
+  public void a(boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, axhd paramaxhd) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramDialogInterface.b = str;
-    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Axey.d();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    case 4: 
+      a(paramBoolean, (axhd)paramObject);
+      return;
+    }
+    b(paramBoolean);
   }
 }
 

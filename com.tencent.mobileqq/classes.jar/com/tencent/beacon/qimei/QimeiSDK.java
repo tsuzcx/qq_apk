@@ -86,7 +86,7 @@ public class QimeiSDK
   {
     try
     {
-      if (j.c(this.beaconId)) {
+      if (j.b(this.beaconId)) {
         this.beaconId = BeaconIdJNI.a(paramContext, Build.VERSION.SDK_INT);
       }
       paramContext = this.beaconId;
@@ -115,8 +115,8 @@ public class QimeiSDK
     //   19: aload_1
     //   20: areturn
     //   21: aload_1
-    //   22: invokestatic 87	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
-    //   25: invokevirtual 90	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
+    //   22: invokestatic 86	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
+    //   25: invokevirtual 89	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
     //   28: astore_1
     //   29: goto -12 -> 17
     //   32: astore_1
@@ -167,22 +167,22 @@ public class QimeiSDK
     //   18: aload_1
     //   19: areturn
     //   20: aload_2
-    //   21: invokestatic 68	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   21: invokestatic 67	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   24: ifeq +9 -> 33
     //   27: ldc 18
     //   29: astore_1
     //   30: goto -14 -> 16
     //   33: aload_1
-    //   34: invokestatic 87	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
-    //   37: invokevirtual 90	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
-    //   40: invokevirtual 112	com/tencent/beacon/qimei/Qimei:getQimeiMap	()Ljava/util/Map;
+    //   34: invokestatic 86	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
+    //   37: invokevirtual 89	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
+    //   40: invokevirtual 111	com/tencent/beacon/qimei/Qimei:getQimeiMap	()Ljava/util/Map;
     //   43: astore_1
     //   44: aload_1
     //   45: ifnull +17 -> 62
     //   48: aload_1
     //   49: aload_2
-    //   50: invokeinterface 118 2 0
-    //   55: checkcast 120	java/lang/String
+    //   50: invokeinterface 117 2 0
+    //   55: checkcast 119	java/lang/String
     //   58: astore_1
     //   59: goto -43 -> 16
     //   62: ldc 18
@@ -225,15 +225,15 @@ public class QimeiSDK
     //   18: aload_1
     //   19: areturn
     //   20: aload_1
-    //   21: invokestatic 87	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
-    //   24: invokevirtual 90	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
+    //   21: invokestatic 86	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
+    //   24: invokevirtual 89	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
     //   27: astore_1
     //   28: aload_1
-    //   29: invokevirtual 124	com/tencent/beacon/qimei/Qimei:getQimeiOld	()Ljava/lang/String;
-    //   32: invokestatic 68	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   29: invokevirtual 123	com/tencent/beacon/qimei/Qimei:getQimeiOld	()Ljava/lang/String;
+    //   32: invokestatic 67	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   35: ifne +11 -> 46
     //   38: aload_1
-    //   39: invokevirtual 124	com/tencent/beacon/qimei/Qimei:getQimeiOld	()Ljava/lang/String;
+    //   39: invokevirtual 123	com/tencent/beacon/qimei/Qimei:getQimeiOld	()Ljava/lang/String;
     //   42: astore_1
     //   43: goto -27 -> 16
     //   46: ldc 18
@@ -272,14 +272,14 @@ public class QimeiSDK
     //   18: aload_1
     //   19: areturn
     //   20: aload_1
-    //   21: invokestatic 87	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
-    //   24: invokevirtual 90	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
-    //   27: invokevirtual 127	com/tencent/beacon/qimei/Qimei:getQimeiNew	()Ljava/lang/String;
+    //   21: invokestatic 86	com/tencent/beacon/qimei/a:a	(Landroid/content/Context;)Lcom/tencent/beacon/qimei/a;
+    //   24: invokevirtual 89	com/tencent/beacon/qimei/a:b	()Lcom/tencent/beacon/qimei/Qimei;
+    //   27: invokevirtual 126	com/tencent/beacon/qimei/Qimei:getQimeiNew	()Ljava/lang/String;
     //   30: astore_2
     //   31: aload_2
     //   32: astore_1
     //   33: aload_2
-    //   34: invokestatic 68	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   34: invokestatic 67	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   37: ifeq -21 -> 16
     //   40: ldc 18
     //   42: astore_1
@@ -321,7 +321,7 @@ public class QimeiSDK
   
   public QimeiSDK setAppKey(String paramString)
   {
-    if (!j.c(paramString)) {
+    if (!j.b(paramString)) {
       b.b = paramString;
     }
     return this;
@@ -344,7 +344,7 @@ public class QimeiSDK
   
   public QimeiSDK setOmgId(String paramString)
   {
-    if (!j.c(paramString)) {
+    if (!j.b(paramString)) {
       com.tencent.beacon.core.info.c.c = paramString;
     }
     return this;

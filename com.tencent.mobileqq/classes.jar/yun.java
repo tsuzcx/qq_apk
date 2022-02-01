@@ -1,67 +1,61 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.1;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.2;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class yun
-  implements bkmq
+  extends wpa
 {
-  yun(yul paramyul) {}
+  public String a;
+  private int c;
+  private int d;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public String a()
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
+    return wnu.a("StoryMonitorSvc.client_monitor_report");
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public wov a(byte[] paramArrayOfByte)
   {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.jdField_a_of_type_Long == 0L)
+    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
+    try
     {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!bgnt.g(this.a.a())) {
-        break label118;
-      }
-      if (this.a.jdField_a_of_type_Wrl != null) {
-        this.a.jdField_a_of_type_Wrl.a();
-      }
-      this.a.f();
-      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.1(this), 300L);
+      localRspMonitorValue.mergeFrom(paramArrayOfByte);
+      return new yuo(localRspMonitorValue);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
+    localReqMonitorValue.ID.set(this.c);
+    if (this.d > 0) {
+      localReqMonitorValue.Value.set(this.d);
     }
     for (;;)
     {
-      ((ajhj)paramView.getTag()).a = true;
-      return true;
-      l = this.a.jdField_a_of_type_Long;
-      break;
-      label118:
-      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.2(this), 300L);
+      if (this.a != null) {
+        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+      }
+      return localReqMonitorValue.toByteArray();
+      localReqMonitorValue.Value.set(1);
     }
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  public String toString()
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
-    }
+    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
   }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

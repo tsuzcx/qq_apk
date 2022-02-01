@@ -1,10 +1,10 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-public class aisl
+public abstract interface aisl
 {
-  public ProgressBar a;
-  public TextView a;
+  public abstract int a();
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 

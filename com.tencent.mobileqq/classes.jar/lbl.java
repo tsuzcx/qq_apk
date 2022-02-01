@@ -1,18 +1,7 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class lbl
+final class lbl
+  implements bhvb
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public HashMap<String, lbk> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import bdyq;
+import bexj;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class ShortVideoUploadABTest$1
@@ -8,7 +8,7 @@ public final class ShortVideoUploadABTest$1
 {
   public void run()
   {
-    bdyq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+    bexj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangStringBuilder.toString());
   }
 }
 

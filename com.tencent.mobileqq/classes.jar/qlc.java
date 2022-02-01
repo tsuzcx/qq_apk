@@ -1,29 +1,59 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyLifeCycleLinearLayout;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qlc
-  extends ClickableSpan
+  extends qjh
 {
-  public qlc(NativeAwesomeCommentView paramNativeAwesomeCommentView) {}
-  
-  public void onClick(View paramView)
+  public qlc(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    if (NativeAwesomeCommentView.a(this.a) != null)
-    {
-      long l = NativeAwesomeCommentView.a(this.a).a;
-      NativeAwesomeCommentView.a(this.a, true);
-      paa.a(l + "", this.a.getContext());
-    }
+    super(paramContext, paramaoof, paramsel);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public qjh a()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
+  }
+  
+  public void b()
+  {
+    super.b();
+    ((ComponentContentNoteCard)this.jdField_a_of_type_Qjg).c();
+  }
+  
+  public qjh d()
+  {
+    ReadInJoyLifeCycleLinearLayout localReadInJoyLifeCycleLinearLayout = new ReadInJoyLifeCycleLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+    localReadInJoyLifeCycleLinearLayout.setOrientation(1);
+    localReadInJoyLifeCycleLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentNoteCard))) {
+      localReadInJoyLifeCycleLinearLayout.addView((ComponentContentNoteCard)this.jdField_a_of_type_Qjg);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localReadInJoyLifeCycleLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localReadInJoyLifeCycleLinearLayout);
+    return this;
+  }
+  
+  public qjh e()
+  {
+    return this;
+  }
+  
+  public qjh g()
+  {
+    this.jdField_a_of_type_Qjg = new ComponentContentNoteCard(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Sel);
+    return this;
+  }
+  
+  public qjh o()
+  {
+    super.o();
+    return this;
   }
 }
 

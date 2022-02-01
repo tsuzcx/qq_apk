@@ -1,24 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class akcp
-  implements akdi
+  extends atpa
 {
-  public akcp(BindVerifyActivity paramBindVerifyActivity) {}
+  private akcp(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    if (paramBoolean) {}
-    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("bind_mobile", this.a.a());
-      localIntent.putExtra("check_permission_result", paramContext);
-      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      return;
+    if ((bnyz.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((bnyz.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bnyz.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
     }
   }
 }

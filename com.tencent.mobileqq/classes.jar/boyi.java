@@ -1,102 +1,50 @@
-import dov.com.qq.im.ae.SessionWrap;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine.Callback;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import java.lang.ref.WeakReference;
 
 public class boyi
+  implements VideoShelfEngine.Callback
 {
-  public int a;
-  private SessionWrap jdField_a_of_type_DovComQqImAeSessionWrap;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int c;
-  public boolean c;
-  private int d;
-  public boolean d;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean = true;
-  private boolean f;
+  private WeakReference<AEVideoShelfPreviewFragment> a;
   
-  public boyi(int paramInt)
+  public boyi(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment)
   {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_d_of_type_Int = 11;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    if (paramInt == 2) {}
-    for (paramInt = i;; paramInt = 1)
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return;
+    this.a = new WeakReference(paramAEVideoShelfPreviewFragment);
+  }
+  
+  public void onCancelCompleted()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.e((AEVideoShelfPreviewFragment)this.a.get());
     }
   }
   
-  public boyg a()
+  public void onCompleted()
   {
-    return new boyg(this, null);
-  }
-  
-  public boyi a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public boyi a(SessionWrap paramSessionWrap)
-  {
-    this.jdField_a_of_type_DovComQqImAeSessionWrap = paramSessionWrap;
-    if (paramSessionWrap != null) {
-      this.jdField_d_of_type_Int = bcdl.a(paramSessionWrap.jdField_a_of_type_Int);
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AEVideoShelfPreviewFragment)this.a.get()).onCompletion();
     }
-    return this;
   }
   
-  public boyi a(String paramString)
+  public void onError(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.a((AEVideoShelfPreviewFragment)this.a.get(), paramInt1, paramInt2, paramString);
+    }
   }
   
-  public boyi a(boolean paramBoolean)
+  public void onProgress(int paramInt)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    return this;
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.b((AEVideoShelfPreviewFragment)this.a.get(), paramInt);
+    }
   }
   
-  public boyi b(int paramInt)
+  public void onStartGenerate()
   {
-    this.jdField_e_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public boyi b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyi c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public boyi c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyi d(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyi e(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    return this;
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.d((AEVideoShelfPreviewFragment)this.a.get());
+    }
   }
 }
 

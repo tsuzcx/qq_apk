@@ -1,53 +1,14 @@
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class aiqn
-  extends BaseAdapter
+  implements bgug
 {
-  public Handler a;
-  public QQAppInterface a;
-  public String[] a;
+  public aiqn(TroopChatPie paramTroopChatPie) {}
   
-  public String a(int paramInt)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    return this.a[paramInt];
-  }
-  
-  public int getCount()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return this.a.length;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    String str = a(paramInt);
-    View localView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559341, paramViewGroup, false);
-    }
-    aiqo localaiqo;
-    for (paramView = new aiqo(localView);; paramView = localaiqo)
-    {
-      paramView.a.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localaiqo = (aiqo)paramView.getTag();
-      localView = paramView;
-    }
+    if (paramInt == 0) {}
   }
 }
 

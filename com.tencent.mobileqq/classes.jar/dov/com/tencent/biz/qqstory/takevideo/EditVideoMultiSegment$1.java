@@ -1,15 +1,15 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpel;
+import bqgg;
 
 public class EditVideoMultiSegment$1
   implements Runnable
 {
-  public EditVideoMultiSegment$1(bpel parambpel, long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
+  public EditVideoMultiSegment$1(bqgg parambqgg, long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    bpel.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+    bqgg.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

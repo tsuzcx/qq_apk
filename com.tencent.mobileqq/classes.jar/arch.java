@@ -1,22 +1,30 @@
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class arch
+class arch
+  extends arci
 {
-  public boolean a;
+  private int a;
   
-  public static arch a(String paramString)
+  public arch(int paramInt)
   {
-    arch localarch = new arch();
-    try
+    this.a = paramInt;
+  }
+  
+  public Object a(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
     {
-      localarch.a = new JSONObject(paramString).optBoolean("test_crash_enabled", false);
-      return localarch;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+      return null;
+      paramObject = (ArrayList)paramObject;
+      if (!(paramObject instanceof ArrayList))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while ((this.a < 0) || (this.a >= paramObject.size()));
+    return paramObject.get(this.a);
   }
 }
 

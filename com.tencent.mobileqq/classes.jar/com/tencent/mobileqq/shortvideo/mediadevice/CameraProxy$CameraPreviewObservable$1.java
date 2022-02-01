@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bciu;
+import bdbm;
 
 public class CameraProxy$CameraPreviewObservable$1
   implements Runnable
 {
-  public CameraProxy$CameraPreviewObservable$1(bciu parambciu, int paramInt, Object[] paramArrayOfObject) {}
+  public CameraProxy$CameraPreviewObservable$1(bdbm parambdbm, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    bciu.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    bdbm.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

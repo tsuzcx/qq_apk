@@ -1,461 +1,187 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.text.InputFilter;
-import android.text.InputFilter.LengthFilter;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.8;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.9;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.SoftReference;
-import mqq.app.AppRuntime;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
 
 public class bgpw
-  extends bgqg
-  implements DialogInterface.OnDismissListener, View.OnClickListener
+  implements blih
 {
-  private int jdField_a_of_type_Int;
-  Resources jdField_a_of_type_AndroidContentResResources = null;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  public WindowManager.LayoutParams a;
-  public WindowManager a;
-  public EditText a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  public RelativeLayout a;
-  protected ScrollView a;
-  private bgsk jdField_a_of_type_Bgsk;
-  bgsm jdField_a_of_type_Bgsm = new bgpx(this);
-  EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = null;
-  SystemEmoticonPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = null;
-  public SoftReference<Context> a;
-  public boolean a;
-  boolean b = false;
-  public boolean c;
-  int h = 1;
+  protected float a;
+  protected int a;
+  protected Bitmap a;
+  protected Handler a;
+  protected LruCache<String, Bitmap> a;
+  protected bgpx a;
+  protected blih a;
+  protected ListView a;
+  protected ArrayList<String> a;
+  protected int b;
+  protected LruCache<String, String> b;
+  protected int c;
   
-  public bgpw(Context paramContext, int paramInt)
+  protected Bitmap a(Bitmap paramBitmap)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_Boolean = true;
-    WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-    if (localLayoutParams != null) {
-      localLayoutParams.gravity = 17;
-    }
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
-    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
-    getWindow().setSoftInputMode(19);
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    boolean bool;
-    if (BaseApplicationImpl.sProcessId == 1)
+    int j = this.jdField_b_of_type_Int;
+    int i = this.c;
+    float f2 = this.jdField_a_of_type_Float;
+    int k = paramBitmap.getWidth();
+    float f1 = f2;
+    if (k > 0)
     {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
+      f1 = f2;
+      if (k < j * f2) {
+        f1 = k / j;
       }
     }
-    label194:
-    for (paramInt = bgsk.a(0);; paramInt = (int)(150.0F * this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density))
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-1, paramInt, 2, 32, -1);
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 81;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755185;
-      return;
-      bool = false;
-      break;
-    }
+    j = (int)(j * f1);
+    i = (int)(f1 * i);
+    return bhmq.a(paramBitmap, j, j, i);
   }
   
-  private void a()
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (localLayoutParams != null)
-    {
-      localLayoutParams.height = -2;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
-    }
-  }
-  
-  private boolean a()
-  {
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
-  }
-  
-  public int a(View paramView)
-  {
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    return arrayOfInt[1];
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      return "";
-    }
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidWidgetEditText.getText() instanceof bdoi))
-    {
-      localObject = (bdoi)this.jdField_a_of_type_AndroidWidgetEditText.getText();
-      if (localObject != null) {
-        return ((bdoi)localObject).a();
-      }
-    }
-    else if ((this.jdField_a_of_type_AndroidWidgetEditText.getText() instanceof bdod))
-    {
-      localObject = (bdod)this.jdField_a_of_type_AndroidWidgetEditText.getText();
-      if (localObject != null) {
-        return ((bdod)localObject).a();
-      }
-    }
-    return this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-  }
-  
-  void a(Context paramContext)
-  {
-    bgqf localbgqf = new bgqf(this);
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      int i = getContext().getResources().getDimensionPixelSize(2131298998);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(getContext(), 2131559123, null));
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack(localbgqf);
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
-      if (this.h == 7) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramContext.b = bool;
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a((QQAppInterface)localAppRuntime, 100003, getContext(), i, null, null, false);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.k();
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_a_of_type_Int;
-        return;
-      }
-    }
-    QLog.e("QQCustomDialogWtihEmoticonInput", 1, "get QQAppInterface fail");
-    if (this.h == 7)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemAndEmojiEmoticonPanel(paramContext, localbgqf);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemEmoticonPanel(paramContext, localbgqf);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(bdoi.c);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.h = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bgqe(this, paramInt));
-    }
-  }
-  
-  public String getEditString()
+  public Bitmap a(String paramString, boolean paramBoolean)
   {
     Object localObject;
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      localObject = null;
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return this.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
-  }
-  
-  public EditText getEditText()
-  {
-    return this.jdField_a_of_type_AndroidWidgetEditText;
-  }
-  
-  public String getInputValue()
-  {
-    return this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-  }
-  
-  public void hideSoftInputFromWindow()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
-      if (paramView.getId() != 2131365878) {
-        break label269;
-      }
-      if (localObject1 != null)
-      {
-        if (!this.c) {
-          break label131;
-        }
-        a();
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView((View)localObject1);
-        this.c = false;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840123);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840123));
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQCustomDialogWtihEmoticonInput.8(this), 200L);
-        localObject1 = getWindow().getAttributes();
-        ((WindowManager.LayoutParams)localObject1).y = 0;
-        getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
-      }
-    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel;
-      break;
-      label131:
-      Object localObject2 = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((localObject2 != null) && ((localObject2 instanceof Integer)) && (((Integer)localObject2).intValue() == 2130840124))
+      try
       {
-        bkft.a(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840123);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840123));
-        this.c = false;
-      }
-      else
-      {
-        bkft.b(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840124);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840124));
-        if (this.jdField_a_of_type_Boolean) {
-          ((View)localObject1).setMinimumHeight(bgsk.a(0));
-        }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQCustomDialogWtihEmoticonInput.9(this, (View)localObject1), 200L);
-        continue;
-        label269:
-        if (this.c)
-        {
-          this.jdField_a_of_type_AndroidViewWindowManager.removeView((View)localObject1);
-          this.c = false;
-          a();
-        }
-        localObject1 = getWindow().getAttributes();
-        ((WindowManager.LayoutParams)localObject1).y = 0;
-        getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
-        bkft.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      }
-    }
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g();
-    }
-    if (this.jdField_a_of_type_Bgsk != null) {
-      this.jdField_a_of_type_Bgsk.a();
-    }
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() != 1) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    if (this.c)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label86;
-      }
-      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-    }
-    for (;;)
-    {
-      this.c = false;
-      WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-      localLayoutParams.y = 0;
-      getWindow().setAttributes(localLayoutParams);
-      a();
-      bkft.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      super.onTouchEvent(paramMotionEvent);
-      return true;
-      label86:
-      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-    }
-  }
-  
-  @TargetApi(11)
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365471));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368651));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365878));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    findViewById(2131376976).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(bdod.b);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(this.b);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new bgqa(this));
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    if (localObject == null) {
-      return;
-    }
-    acdz.a((Context)localObject, this.jdField_a_of_type_AndroidWidgetEditText);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Bgsk = new bgsk(((ViewGroup)getWindow().getDecorView().findViewById(16908290)).getChildAt(0), this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight(), this.jdField_a_of_type_Bgsm);
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Bgsk.a();
-      this.jdField_a_of_type_Int = bgsk.a(this.jdField_a_of_type_Int);
-      setOnDismissListener(this);
-      a((Context)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setDispatchKeyEventListener(new bgqb(this));
-    }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376969);
-      if ((localObject instanceof ScrollView)) {
-        this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)localObject);
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().addOnGlobalLayoutListener(new bgqd(this));
-      return;
-      a((Context)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setBackgroundResource(2130838000);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setMinimumHeight(afur.a(150.0F, this.jdField_a_of_type_AndroidContentResResources));
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setDispatchKeyEventListener(new bgqc(this));
-    }
-  }
-  
-  public void setEditLint(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramString);
-  }
-  
-  public bgpa setNegativeButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.lBtn.setVisibility(8);
-      return this;
-    }
-    hideSoftInputFromWindow();
-    this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131690962));
-    this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new bgpy(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public bgpa setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setText(paramInt);
-    this.rBtn.setContentDescription(getContext().getString(paramInt));
-    this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new bgpz(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public bgpa setPreviewImage(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    int i = paramDrawable.getIntrinsicWidth();
-    Object localObject;
-    if (paramDrawable.getIntrinsicHeight() > i)
-    {
-      localObject = ((URLDrawable)paramDrawable).getCurrDrawable();
-      if ((localObject instanceof RegionDrawable))
-      {
-        localObject = ((RegionDrawable)localObject).getBitmap();
+        localObject = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
         if (localObject != null)
         {
-          Matrix localMatrix = new Matrix();
-          localMatrix.postScale(0.5F, 0.5F);
-          localObject = Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true);
-          if (localObject != null)
-          {
-            localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentResResources, (Bitmap)localObject);
-            ((BitmapDrawable)localObject).setBounds(0, 0, ((BitmapDrawable)localObject).getIntrinsicWidth(), ((BitmapDrawable)localObject).getIntrinsicHeight());
+          if (!QLog.isColorLevel()) {
+            return localObject;
+          }
+          QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, hit cache:" + paramString);
+          return localObject;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, not in cache:" + paramString + ", add2Request=" + paramBoolean);
+        }
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          if (TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString))) {
+            continue;
+          }
+          localObject = Message.obtain();
+          ((Message)localObject).obj = paramString;
+          ((Message)localObject).what = 1001;
+          this.jdField_a_of_type_Bgpx.sendMessage((Message)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, in file cache:" + paramString + ", send decode msg ");
           }
         }
       }
+      catch (Exception paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, exception:" + paramString.toString());
+        continue;
+      }
+      return this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if ((paramBoolean) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 350L);
+        if (QLog.isColorLevel()) {
+          QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, not in file cache:" + paramString + ", send getQQHead msg ");
+        }
+      }
+    }
+    return localObject;
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NonMainAppListViewFaceLoader", 2, "refreshListFace, add2Request:" + paramBoolean);
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {
+      return;
+    }
+    int j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+    int i = 0;
+    label49:
+    Object localObject;
+    if (i < j)
+    {
+      localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i).getTag();
+      if (!(localObject instanceof amof)) {
+        break label131;
+      }
+      localObject = (amof)localObject;
+      if ((localObject != null) && (((amof)localObject).a != null) && (((amof)localObject).a.length() > 0)) {
+        ((amof)localObject).c.setImageBitmap(a(((amof)localObject).a, paramBoolean));
+      }
     }
     for (;;)
     {
-      if (localObject == null) {
-        return super.setPreviewImage(paramDrawable, paramBoolean1, paramInt, paramBoolean2);
+      i += 1;
+      break label49;
+      break;
+      label131:
+      if ((localObject instanceof rot))
+      {
+        localObject = (rot)localObject;
+        if ((((rot)localObject).a != null) && (((rot)localObject).a.a != null) && ((((rot)localObject).a.a.jdField_a_of_type_Int == 1) || (((rot)localObject).a.a.jdField_a_of_type_Int == 6)) && (!TextUtils.isEmpty(((rot)localObject).a.a.j)) && (((rot)localObject).b != null)) {
+          ((rot)localObject).b.setImageBitmap(a(((rot)localObject).a.a.j, paramBoolean));
+        }
       }
-      return super.setPreviewImage((Drawable)localObject, paramBoolean1, paramInt, paramBoolean2);
-      localObject = null;
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    }
+    if (this.jdField_a_of_type_Blih != null) {
+      this.jdField_a_of_type_Blih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("NonMainAppListViewFaceLoader", 2, "onScrollStateChanged, " + this.jdField_a_of_type_Int + " => " + paramInt);
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      if (paramInt == 0)
+      {
+        a(true);
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 350L);
+      }
+      while (this.jdField_a_of_type_Blih != null)
+      {
+        this.jdField_a_of_type_Blih.onScrollStateChanged(paramAbsListView, paramInt);
+        return;
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgpw
  * JD-Core Version:    0.7.0.1
  */

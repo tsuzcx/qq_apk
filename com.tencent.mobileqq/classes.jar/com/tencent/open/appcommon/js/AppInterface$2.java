@@ -3,8 +3,8 @@ package com.tencent.open.appcommon.js;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import biqk;
-import biws;
+import bjrj;
+import bjxr;
 
 public class AppInterface$2
   implements Runnable
@@ -14,17 +14,17 @@ public class AppInterface$2
   public void run()
   {
     Resources localResources = this.this$0.activity.getResources();
-    biws localbiws = new biws(this.this$0.activity);
-    localbiws.a(2131691460, this.a, true);
-    localbiws.b(2131691461, this.a, true);
-    localbiws.a(localResources.getString(2131691464));
-    localbiws.b(localResources.getString(2131691449));
-    localbiws.setCancelable(false);
-    localbiws.setOnDismissListener(new biqk(this));
+    bjxr localbjxr = new bjxr(this.this$0.activity);
+    localbjxr.a(2131691463, this.a, true);
+    localbjxr.b(2131691464, this.a, true);
+    localbjxr.a(localResources.getString(2131691467));
+    localbjxr.b(localResources.getString(2131691452));
+    localbjxr.setCancelable(false);
+    localbjxr.setOnDismissListener(new bjrj(this));
     if ((this.this$0.activity != null) && (!this.this$0.activity.isFinishing())) {
-      localbiws.show();
+      localbjxr.show();
     }
-    this.this$0.tipDialog = localbiws;
+    this.this$0.tipDialog = localbjxr;
   }
 }
 

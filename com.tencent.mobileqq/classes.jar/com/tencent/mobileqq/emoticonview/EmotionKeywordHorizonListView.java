@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import arzt;
+import asph;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout;
 import com.tencent.widget.HorizontalListView;
 
@@ -12,7 +12,7 @@ public class EmotionKeywordHorizonListView
   extends HorizontalListView
 {
   public int a;
-  private arzt a;
+  private asph a;
   
   public EmotionKeywordHorizonListView(Context paramContext)
   {
@@ -28,8 +28,8 @@ public class EmotionKeywordHorizonListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Arzt != null) {
-      this.jdField_a_of_type_Arzt.a(paramMotionEvent.getAction());
+    if (this.jdField_a_of_type_Asph != null) {
+      this.jdField_a_of_type_Asph.a(paramMotionEvent.getAction());
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -55,9 +55,9 @@ public class EmotionKeywordHorizonListView
     invalidate();
   }
   
-  public void setTouchListener(arzt paramarzt)
+  public void setTouchListener(asph paramasph)
   {
-    this.jdField_a_of_type_Arzt = paramarzt;
+    this.jdField_a_of_type_Asph = paramasph;
   }
   
   public void setType(int paramInt)

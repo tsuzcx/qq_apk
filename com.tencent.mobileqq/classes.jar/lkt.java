@@ -1,20 +1,9 @@
-import com.tencent.av.core.VcControllerImpl;
-
-public class lkt
+class lkt
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
   
-  public lkt(VcControllerImpl paramVcControllerImpl) {}
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" uin : " + this.jdField_a_of_type_Long + " operation : " + this.jdField_a_of_type_Int + " opvalue : " + this.b + " nickname : " + this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
-  }
+  lkt(lkn paramlkn) {}
 }
 
 

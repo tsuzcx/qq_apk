@@ -1,13 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class akke
-  implements bigw
+  implements View.OnClickListener
 {
-  akke(akkc paramakkc, Runnable paramRunnable) {}
+  akke(akka paramakka) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    akka.a(this.a).setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

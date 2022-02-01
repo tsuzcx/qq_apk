@@ -1,37 +1,16 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afhl
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public afhl(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afhl(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ImageView localImageView = (ImageView)this.a.findViewById(2131366948);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
-        return;
-      } while (!(paramMessage.obj instanceof Drawable));
-      localImageView.setImageDrawable((Drawable)paramMessage.obj);
-      return;
-    } while (!(paramMessage.obj instanceof Bitmap));
-    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
+    bdll.b(this.a.app, "dc00898", "", "", "0X8007915", "0X8007915", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
   }
 }
 

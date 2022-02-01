@@ -1,6 +1,9 @@
-public abstract interface mwz
+import android.media.MediaCodec;
+
+class mwz
 {
-  public abstract void a();
+  public int a = 1;
+  public MediaCodec a;
 }
 
 

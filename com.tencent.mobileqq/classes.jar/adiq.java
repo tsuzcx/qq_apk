@@ -1,25 +1,33 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.C2C;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adiq
-  implements View.OnClickListener
+  implements adbw
 {
-  public adiq(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!aywm.a().a(this.a.app, this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.b == null) || (!this.a.b.isShowing())) {
-        AccountManageActivity.a(this.a);
-      }
-    }
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.C2C();
+    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.c2c.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3001;
   }
 }
 

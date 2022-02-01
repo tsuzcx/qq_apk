@@ -1,16 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-
-class yos
-  implements yox
+public class yos
 {
-  yos(yor paramyor, ImageView paramImageView) {}
+  public static ThreadLocal<StringBuilder> a = new yot();
   
-  public void a(Drawable paramDrawable)
+  public static String a(Object... paramVarArgs)
   {
-    if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (paramVarArgs.length > 0)
+    {
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        if (localObject != null) {
+          localStringBuilder.append(localObject.toString());
+        }
+        i += 1;
+      }
     }
+    return "";
+    paramVarArgs = localStringBuilder.toString();
+    if (localStringBuilder.length() > 512) {
+      a.set(new StringBuilder(512));
+    }
+    localStringBuilder.setLength(0);
+    return paramVarArgs;
   }
 }
 

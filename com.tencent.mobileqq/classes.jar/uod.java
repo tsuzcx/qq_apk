@@ -1,6 +1,20 @@
-public abstract interface uod
+public abstract class uod
 {
-  public abstract void a(int paramInt);
+  private int a;
+  
+  public uod(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  abstract String a();
+  
+  abstract String b();
+  
+  public String c()
+  {
+    return uqt.a(this.a);
+  }
 }
 
 

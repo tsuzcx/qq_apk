@@ -1,60 +1,38 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.SurfaceHolder;
 
-public class biha
+public abstract interface biha
 {
-  public int a;
-  public String a;
+  public abstract int a();
   
-  public biha()
-  {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract void a();
   
-  public static biha a(QQAppInterface paramQQAppInterface)
-  {
-    biha localbiha = new biha();
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    int i = bihb.a(localBaseApplication, paramQQAppInterface);
-    if (i == 1)
-    {
-      localbiha.jdField_a_of_type_Int = 1;
-      localbiha.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-      return localbiha;
-    }
-    if (i == 2)
-    {
-      localbiha.jdField_a_of_type_Int = 2;
-      return localbiha;
-    }
-    if ((!bihc.a(localBaseApplication)) || (!bihc.b(localBaseApplication)) || (!bihc.c(localBaseApplication)))
-    {
-      if (i == 3)
-      {
-        localbiha.jdField_a_of_type_Int = 3;
-        localbiha.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-        return localbiha;
-      }
-      localbiha.jdField_a_of_type_Int = 5;
-      return localbiha;
-    }
-    localbiha.jdField_a_of_type_Int = 4;
-    return localbiha;
-  }
+  public abstract void a(int paramInt);
   
-  public static String a(Context paramContext, String paramString)
-  {
-    paramString = bihb.b(paramContext, paramString);
-    paramContext = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramContext = "https://sdi.3g.qq.com/v/2018082711463211194";
-    }
-    return paramContext;
-  }
+  public abstract void a(SurfaceHolder paramSurfaceHolder);
+  
+  public abstract void a(bihb parambihb);
+  
+  public abstract void a(bihc parambihc);
+  
+  public abstract void a(bihd parambihd);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString, int paramInt);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract int e();
 }
 
 

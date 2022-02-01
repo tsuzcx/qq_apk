@@ -1,26 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import java.util.ArrayList;
 
-class npn
-  implements View.OnClickListener
+public abstract interface npn
 {
-  npn(npm paramnpm) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).E();
-    String str2 = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
-    for (String str1 = "02";; str1 = "01")
-    {
-      oat.a(null, str2, "0X8007CA4", "0X8007CA4", 0, 0, str1, String.valueOf(npm.a(this.a)), "", "", false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-  }
+  public abstract void a(ArrayList<TroopAppInfo> paramArrayList);
 }
 
 

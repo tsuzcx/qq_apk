@@ -1,24 +1,14 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 
 public class aguj
-  extends afwr
+  implements agvc
 {
-  float jdField_a_of_type_Float;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  ImageView b;
-  public View c;
-  ImageView c;
+  public void a(int paramInt) {}
   
-  public aguj(agtx paramagtx) {}
+  public int[] a()
+  {
+    return new int[7];
+  }
 }
 
 

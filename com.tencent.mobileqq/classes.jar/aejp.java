@@ -1,23 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
 
-public class aejp
-  extends BroadcastReceiver
+class aejp
+  implements DialogInterface.OnClickListener
 {
-  public aejp(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  aejp(aejo paramaejo) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent != null)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+    }
+    for (;;)
+    {
+      try
+      {
+        paramDialogInterface.dismiss();
+        this.a.a.jdField_a_of_type_AndroidAppDialog = null;
+        return;
       }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
+      catch (Exception paramDialogInterface) {}
+      if (SettingCloneUtil.readValue(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+      }
+      this.a.a.a(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      if (aejo.a(this.a).startsWith("http")) {}
+      for (;;)
+      {
+        try
+        {
+          Intent localIntent = new Intent(this.a.a.a(), QQBrowserActivity.class);
+          localIntent.putExtra("url", aejo.a(this.a));
+          this.a.a.a().startActivity(localIntent);
+          bdll.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          localException.printStackTrace();
+          continue;
+        }
+        if (aejo.a(this.a).startsWith("mqqapi:")) {
+          bhni.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.a(), aejo.a(this.a)).a();
+        }
       }
     }
   }

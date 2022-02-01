@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amhb;
+import amsv;
 import android.app.Activity;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ApolloGameNormalStartHandler$1
   implements Runnable
 {
-  public ApolloGameNormalStartHandler$1(amhb paramamhb, int paramInt1, long paramLong, int paramInt2, int paramInt3, QQAppInterface paramQQAppInterface, String paramString1, int paramInt4, String paramString2, String paramString3, String paramString4, String paramString5, Activity paramActivity) {}
+  public ApolloGameNormalStartHandler$1(amsv paramamsv, int paramInt1, long paramLong, int paramInt2, int paramInt3, QQAppInterface paramQQAppInterface, String paramString1, int paramInt4, String paramString2, String paramString3, String paramString4, String paramString5, Activity paramActivity) {}
   
   public void run()
   {

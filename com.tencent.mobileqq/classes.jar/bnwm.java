@@ -1,16 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.text.TextUtils;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import java.io.File;
 
-public class bnwm
-  implements DialogInterface.OnCancelListener
+class bnwm
+  extends almn
 {
-  public bnwm(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  private bnwm(bnwk parambnwk) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean)
   {
-    AEVideoShelfEditFragment.a(this.a).cancelSave();
+    super.a(paramBoolean);
+    if ((paramBoolean) && (auog.a(this.c)))
+    {
+      String str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.h.hashCode()));
+      File localFile = new File(this.c);
+      QzoneZipCacheHelper.unzipFile(localFile.getAbsolutePath(), str);
+      if (localFile.exists()) {
+        auog.a(localFile);
+      }
+      this.c = str;
+      if (QZLog.isColorLevel()) {
+        QZLog.i("QbossADBannerConfigInfo", 2, "zip success = pathDir = " + str);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.a.h))) {}
+    String str;
+    Object localObject;
+    do
+    {
+      do
+      {
+        return false;
+        str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.h.hashCode()));
+        localObject = new File(str);
+      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
+      localObject = ((File)localObject).listFiles();
+    } while ((localObject == null) || (localObject.length <= 0));
+    this.c = str;
+    return true;
   }
 }
 

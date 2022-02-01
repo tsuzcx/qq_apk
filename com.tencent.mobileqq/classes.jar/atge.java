@@ -1,29 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class atge
-  extends atfi
+  implements DialogInterface.OnClickListener
 {
-  public atge(atfe paramatfe)
-  {
-    super(paramatfe);
-  }
+  atge(atgd paramatgd) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.b(this.jdField_a_of_type_Atfe, 11, 7);
-    atfe.c(this.jdField_a_of_type_Atfe, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Atfi = new atgc(this.jdField_a_of_type_Atfe);
+    Face2FaceAddFriendActivity.e(this.a.a);
   }
 }
 

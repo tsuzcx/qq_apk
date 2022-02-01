@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import bipr;
+import bjqq;
 import com.tencent.qphone.base.util.QLog;
 
 class AuthorityActivity$2
@@ -15,8 +15,8 @@ class AuthorityActivity$2
     Bitmap localBitmap3 = null;
     try
     {
-      Bitmap localBitmap1 = BitmapFactory.decodeResource(this.this$0.getResources(), 2130840264);
-      localBitmap3 = bipr.a(this.this$0, localBitmap1, 63, 63);
+      Bitmap localBitmap1 = BitmapFactory.decodeResource(this.this$0.getResources(), 2130840274);
+      localBitmap3 = bjqq.a(this.this$0, localBitmap1, 63, 63);
       if (localBitmap1 != null) {
         localBitmap1.recycle();
       }

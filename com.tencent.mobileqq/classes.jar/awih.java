@@ -1,12 +1,18 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
-class awih
+public class awih
+  implements tfg
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  public awih(UiApiPlugin paramUiApiPlugin) {}
+  
+  public void a(String paramString, JSONObject paramJSONObject)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {
+      this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
+    }
+  }
 }
 
 

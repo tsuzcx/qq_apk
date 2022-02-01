@@ -1,41 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class aewp
-  extends BroadcastReceiver
+  extends VasQuickUpdateManager.CallBacker
 {
-  public aewp(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public aewp(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
-    {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("QQIdentiferLegacy", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
-      {
-        paramContext = new Intent();
-        paramIntent = new Bundle();
-        paramIntent.putInt("ret", 204);
-        paramIntent.putString("errMsg", avog.a);
-        paramContext.putExtra("data", paramIntent);
-        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
-        QQIdentiferLegacy.a(this.a).finish();
-      }
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
+      this.a.b(this.a.a);
     }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
-    {
-      int i;
-      return;
-    }
-    QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
-    QQIdentiferLegacy.a(this.a).finish();
   }
 }
 

@@ -1,12 +1,9 @@
-import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
-
 public class wts
+  implements wsp
 {
-  public float a;
-  public float b;
-  public float c;
+  public void a() {}
   
-  private wts(DotAnimationView paramDotAnimationView) {}
+  public void b() {}
 }
 
 

@@ -1,59 +1,47 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.Nullable;
+import com.tencent.map.geolocation.TencentLocation;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wzm
-  extends wlf
+public abstract class wzm
 {
-  public static final String a;
-  public wre a;
-  public String b;
+  public long a;
+  protected AtomicBoolean a;
+  public boolean a;
+  public long b;
+  public boolean b;
   
-  static
+  public wzm()
   {
-    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.homepage_batch_feeds_720");
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public String a()
+  public void a()
   {
-    return jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
-    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
-    try
-    {
-      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new wzn(localRspStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  protected byte[] a()
+  public void a(String paramString)
   {
-    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
-    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
-    if (this.jdField_a_of_type_Wre != null)
-    {
-      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Wre.c);
-      localReqStoryFeedIdList.gps.setHasFlag(true);
-      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Wre.a);
-      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Wre.b);
-    }
-    localReqStoryFeedIdList.client_version.set(6);
-    return localReqStoryFeedIdList.toByteArray();
+    long l2 = System.currentTimeMillis();
+    long l1 = this.b - this.jdField_a_of_type_Long;
+    l2 -= this.b;
+    yuk.c(paramString, "page network respond times " + l1);
+    yuk.c(paramString, "page db times " + l2);
+  }
+  
+  public void b()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

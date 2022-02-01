@@ -1,186 +1,104 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.support.v4.app.NotificationCompat.Builder;
 import android.text.TextUtils;
-import android.widget.RemoteViews;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemVoteData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.MCardNotificationLike;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arlx
+  implements arae<String>
 {
-  RecentItemVoteData jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
   
-  public arlx(QQAppInterface paramQQAppInterface)
+  private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+    this.e = false;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private Intent a(Context paramContext)
+  public void a(String paramString)
   {
-    String str = String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10002&from_type=0&mode=2&source_id=1001&uid=%s&PUSH_CONTENT=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName });
-    paramContext = new Intent(paramContext, JumpActivity.class);
-    paramContext.setData(Uri.parse(str));
-    return paramContext;
-  }
-  
-  private void c()
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    boolean bool = bgrj.a(localBaseApplication);
-    Object localObject1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop) || (bool))
+    QLog.i("QFileIPv6ConfigBean", 1, "configID:449 onParse FileIPv6Config:" + paramString);
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.toLowerCase();
+    }
+    if (TextUtils.isEmpty(str))
     {
-      Object localObject2 = bggl.a(localBaseApplication.getResources(), 2130845332);
-      localObject1 = new NotificationCompat.Builder(localBaseApplication).setContentTitle(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName).setAutoCancel(true).setSmallIcon(BaseApplicationImpl.appnewmsgicon).setTicker(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName).setWhen(System.currentTimeMillis());
-      if (localObject2 != null) {
-        ((NotificationCompat.Builder)localObject1).setLargeIcon((Bitmap)localObject2);
-      }
-      if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130845332);
-      }
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        localObject2 = new RemoteViews(localBaseApplication.getPackageName(), 2131561119);
-        ((NotificationCompat.Builder)localObject1).setContent((RemoteViews)localObject2);
-        ((RemoteViews)localObject2).setCharSequence(2131378776, "setText", this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName);
-        ((RemoteViews)localObject2).setCharSequence(2131378686, "setText", bgsu.a(System.currentTimeMillis(), true, "yyyy-MM-dd"));
-      }
-      localObject2 = a(localBaseApplication);
-      ((Intent)localObject2).putExtra("param_notifyid", 240);
-      ((NotificationCompat.Builder)localObject1).setContentIntent(PendingIntent.getActivity(localBaseApplication, 0, (Intent)localObject2, 134217728));
-      localObject1 = ((NotificationCompat.Builder)localObject1).build();
-      ((Notification)localObject1).flags |= 0x10;
-      ((Notification)localObject1).defaults |= 0x1;
-      ((Notification)localObject1).defaults |= 0x4;
-      ((Notification)localObject1).icon = 2130845332;
-      localObject2 = QQNotificationManager.getInstance();
-      if (localObject2 != null)
-      {
-        ((QQNotificationManager)localObject2).cancel("nearby_like_notification_tag", 240);
-        ((QQNotificationManager)localObject2).notify("nearby_like_notification_tag", 240, (Notification)localObject1);
-      }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80053CD", "0X80053CD", 0, 0, "", "", "", "");
-    }
-    if (bool)
-    {
-      localObject1 = (awhk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(72);
-      if (SettingCloneUtil.readValue(localBaseApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localBaseApplication.getString(2131693426), "qqsetting_lock_screen_whenexit_key", true))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "videochatting start lsActivity from appinterface VoteEventMgr.notifyVoteEvent");
-        }
-        ((awhk)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, anhk.af, 1012, false, awhg.a(anhk.af, 1012, null));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyObservers(a());
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData == null) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public RecentBaseData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData;
-  }
-  
-  public MessageForText a(RecentBaseData paramRecentBaseData)
-  {
-    paramRecentBaseData = (RecentItemVoteData)paramRecentBaseData;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)bbzh.a(-1000));
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 1012;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = anhk.ab;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = anhk.ab;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = paramRecentBaseData.mTitleName;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = paramRecentBaseData.time;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(paramRecentBaseData.mTitleName))) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = paramRecentBaseData.mTitleName;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != paramRecentBaseData.time) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = paramRecentBaseData.time;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData = null;
-    BaseApplicationImpl.getContext();
-    QQNotificationManager.getInstance().cancel("nearby_like_notification_tag", 240);
-  }
-  
-  public void a(SubMsgType0x6f.MCardNotificationLike paramMCardNotificationLike)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramMCardNotificationLike != null)
-    {
-      str1 = str2;
-      if (paramMCardNotificationLike.str_wording.has()) {
-        str1 = paramMCardNotificationLike.str_wording.get();
-      }
-    }
-    if (TextUtils.isEmpty(str1)) {}
-    long l;
-    do
-    {
+      QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is empty, configID:449 use default value");
+      a();
       return;
-      l = bbyp.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData == null)
+    }
+    for (;;)
+    {
+      try
       {
-        paramMCardNotificationLike = new RecentUser(anhk.af, 1012);
-        paramMCardNotificationLike.msgType = 1012;
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData = new RecentItemVoteData(paramMCardNotificationLike);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(str1, l);
-        c();
+        paramString = new JSONObject(str).getJSONObject("ipv6config");
+        if (paramString == null) {
+          break label252;
+        }
+        if (paramString.has("allswitch"))
+        {
+          this.jdField_a_of_type_Boolean = paramString.getBoolean("allswitch");
+          if (!paramString.has("c2cenable")) {
+            break label214;
+          }
+          this.b = paramString.getBoolean("c2cenable");
+          if (!paramString.has("groupenable")) {
+            break label222;
+          }
+          this.c = paramString.getBoolean("groupenable");
+          if (!paramString.has("discenable")) {
+            break label230;
+          }
+          this.d = paramString.getBoolean("discenable");
+          if (!paramString.has("datalineenable")) {
+            break label238;
+          }
+          this.e = paramString.getBoolean("datalineenable");
+          if (!paramString.has("strategy")) {
+            break;
+          }
+          this.jdField_a_of_type_Int = paramString.getInt("strategy");
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
         return;
       }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName.equals(str1)) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.time == l));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(str1, l);
-    c();
-  }
-  
-  public void b()
-  {
-    BaseApplicationImpl.getContext();
-    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-    if (localQQNotificationManager != null) {
-      localQQNotificationManager.cancel("nearby_like_notification_tag", 240);
+      this.jdField_a_of_type_Boolean = false;
+      continue;
+      label214:
+      this.b = false;
+      continue;
+      label222:
+      this.c = false;
+      continue;
+      label230:
+      this.d = false;
+      continue;
+      label238:
+      this.e = false;
     }
+    this.jdField_a_of_type_Int = 0;
+    return;
+    label252:
+    QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is no ipv6config. use default value");
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlx
  * JD-Core Version:    0.7.0.1
  */

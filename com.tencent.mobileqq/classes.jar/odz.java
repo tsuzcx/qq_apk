@@ -1,18 +1,81 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class odz
-  implements View.OnClickListener
+public class odz
+  extends arac<ody>
 {
-  odz(ody paramody, String paramString) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public ody a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ody.jdField_a_of_type_Odq != null) {
-      this.jdField_a_of_type_Ody.jdField_a_of_type_Odq.b(this.jdField_a_of_type_Ody.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 0)
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        boolean bool = tvz.d((QQAppInterface)localObject);
+        return ody.a(tvz.a((QQAppInterface)localObject), tvz.b((QQAppInterface)localObject), bool);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ody();
+  }
+  
+  @Nullable
+  public ody a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PaSubscribeRedDotProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return ody.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(ody paramody)
+  {
+    paramody.a();
+  }
+  
+  public Class<ody> clazz()
+  {
+    return ody.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      return bhsi.z(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 35;
   }
 }
 

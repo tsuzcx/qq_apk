@@ -1,14 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
-final class upq
+public class upq
   implements DialogInterface.OnCancelListener
 {
-  upq(uoc paramuoc) {}
+  public upq(OuterInterceptManager.1 param1) {}
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    uph.b(this.a);
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 

@@ -1,46 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.animation.Animation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
 
 public class bosq
+  extends BaseFilter
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  public bosq()
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.addUpdateListener(new bosr(paramInt1, paramView));
-    return localValueAnimator;
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\n  float ty = textureCoordinate.y * 0.5;\n  float ny = ty + 0.5;\n  vec2 newCoord1 = vec2(textureCoordinate.x,ty);\n  vec2 newCoord2 = vec2(textureCoordinate.x,ny);\n  vec3 color = texture2D(inputImageTexture,newCoord1).xyz;\n  float alpha = 1.0-texture2D(inputImageTexture,newCoord2).r;\n  float newAlpha = step(0.5,alpha);\n\n  gl_FragColor = vec4(color,newAlpha);\n}");
   }
   
-  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  public void a(Frame paramFrame1, int paramInt1, int paramInt2, Frame paramFrame2)
   {
-    return new bgta(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new boss(paramView));
-  }
-  
-  public static void a(List<bost> paramList, Animator.AnimatorListener paramAnimatorListener)
-  {
-    if (paramList.size() > 0)
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        bost localbost = (bost)paramList.next();
-        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(localbost.jdField_a_of_type_AndroidViewView, localbost.jdField_a_of_type_JavaLangString, new float[] { localbost.jdField_a_of_type_Float, localbost.jdField_b_of_type_Float }).setDuration(localbost.jdField_a_of_type_Long);
-        localObjectAnimator.setStartDelay(localbost.jdField_b_of_type_Long);
-        localArrayList.add(localObjectAnimator);
-      }
-      paramList = new AnimatorSet();
-      paramList.playTogether(localArrayList);
-      paramList.addListener(paramAnimatorListener);
-      paramList.start();
-    }
+    RenderProcess(paramFrame1.getTextureId(), paramInt1, paramInt2, -1, 0.0D, paramFrame2);
   }
 }
 

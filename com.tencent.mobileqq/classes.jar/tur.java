@@ -1,9 +1,25 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptConstants.1;
-import java.util.Map;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import java.util.List;
 
 public class tur
+  implements ViewPager.OnPageChangeListener
 {
-  public static final Map<String, String> a = new SubscriptConstants.1();
+  public tur(FolderRecommendTabFragment.FolderRecommendHeadItemView paramFolderRecommendHeadItemView) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    beke localbeke = (beke)FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.a).a().get(paramInt);
+    if (localbeke != null) {
+      FolderRecommendTabFragment.a("227", "227", localbeke.a.iAdId + "", 101, 1);
+    }
+  }
 }
 
 

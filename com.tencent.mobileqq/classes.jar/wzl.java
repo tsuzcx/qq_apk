@@ -1,55 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class wzl
-  extends wlf
+public abstract class wzl
 {
-  public List<String> a = new ArrayList();
+  protected int a;
+  protected wzj a;
   
-  public String a()
+  public abstract void a();
+  
+  public void a(wzj paramwzj)
   {
-    return wjz.a("StorySvc.get_date_video_list");
+    this.jdField_a_of_type_Wzj = paramwzj;
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public boolean a()
   {
-    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
-    try
+    if (this.jdField_a_of_type_Int < 1)
     {
-      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
-      return new xbb(localRspSimpleInfoList);
+      this.jdField_a_of_type_Int += 1;
+      yuk.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      a();
+      return true;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yqp.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
-    }
-    return null;
+    return false;
   }
   
-  protected byte[] a()
+  public void b()
   {
-    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
-    ArrayList localArrayList = new ArrayList();
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
-      }
+    if (this.jdField_a_of_type_Wzj != null) {
+      this.jdField_a_of_type_Wzj.a(this);
     }
-    localReqSimpleInfoList.vid_list.addAll(localArrayList);
-    return localReqSimpleInfoList.toByteArray();
   }
   
-  public String toString()
+  public void c()
   {
-    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
+    if (this.jdField_a_of_type_Wzj != null) {
+      this.jdField_a_of_type_Wzj.b(this);
+    }
   }
 }
 

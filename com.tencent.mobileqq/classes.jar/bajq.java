@@ -1,31 +1,21 @@
-import androidx.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bajq
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
+  public bajq(VasProfileWZRYView paramVasProfileWZRYView, azxr paramazxr) {}
   
-  public bajq()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("age").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("gender").append("=").append(this.jdField_b_of_type_Int).append("|");
-    localStringBuilder.append("place").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("addSrc").append("=").append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuilder.append("commFrdCnt").append("=").append(this.c).append("|");
-    return localStringBuilder.toString();
+    String str = bhyk.a("gameHonourAddHonour");
+    VasWebviewUtil.openQQBrowserWithoutAD(VasProfileWZRYView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileWZRYView), str, -1L, null, false, -1);
+    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, nnr.a(), String.valueOf(this.jdField_a_of_type_Azxr.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Azxr.a.lCurrentStyleId));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

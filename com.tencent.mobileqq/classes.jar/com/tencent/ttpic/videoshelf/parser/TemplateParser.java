@@ -67,9 +67,9 @@ public class TemplateParser
     //   0: aconst_null
     //   1: astore 7
     //   3: iconst_1
-    //   4: istore 4
+    //   4: istore 5
     //   6: iconst_1
-    //   7: istore 5
+    //   7: istore 4
     //   9: aload_2
     //   10: ldc 124
     //   12: invokevirtual 127	java/lang/String:endsWith	(Ljava/lang/String;)Z
@@ -109,33 +109,33 @@ public class TemplateParser
     //   89: dup
     //   90: aload_1
     //   91: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
-    //   94: astore 8
+    //   94: astore 9
     //   96: new 45	java/io/File
     //   99: dup
     //   100: aload 6
     //   102: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
-    //   105: astore 9
-    //   107: aload 8
+    //   105: astore 8
+    //   107: aload 9
     //   109: invokevirtual 52	java/io/File:exists	()Z
     //   112: ifeq +11 -> 123
-    //   115: aload 8
+    //   115: aload 9
     //   117: invokevirtual 141	java/io/File:isFile	()Z
     //   120: ifne +19 -> 139
-    //   123: aload 9
+    //   123: aload 8
     //   125: invokevirtual 52	java/io/File:exists	()Z
     //   128: ifeq +302 -> 430
-    //   131: aload 9
+    //   131: aload 8
     //   133: invokevirtual 141	java/io/File:isFile	()Z
     //   136: ifeq +294 -> 430
-    //   139: aload 8
+    //   139: aload 9
     //   141: invokevirtual 52	java/io/File:exists	()Z
     //   144: ifeq +225 -> 369
-    //   147: aload 8
+    //   147: aload 9
     //   149: invokevirtual 141	java/io/File:isFile	()Z
     //   152: ifeq +217 -> 369
     //   155: new 143	java/io/FileInputStream
     //   158: dup
-    //   159: aload 8
+    //   159: aload 9
     //   161: invokespecial 146	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   164: astore_0
     //   165: aload_0
@@ -244,20 +244,20 @@ public class TemplateParser
     //   364: iconst_0
     //   365: istore_3
     //   366: goto -337 -> 29
-    //   369: aload 9
+    //   369: aload 8
     //   371: invokevirtual 52	java/io/File:exists	()Z
     //   374: ifeq +606 -> 980
-    //   377: aload 9
+    //   377: aload 8
     //   379: invokevirtual 141	java/io/File:isFile	()Z
     //   382: ifeq +598 -> 980
     //   385: new 143	java/io/FileInputStream
     //   388: dup
-    //   389: aload 9
+    //   389: aload 8
     //   391: invokespecial 146	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   394: astore_0
     //   395: iload_3
     //   396: ifne +12 -> 408
-    //   399: iload 5
+    //   399: iload 4
     //   401: istore_3
     //   402: aload_0
     //   403: astore 7
@@ -306,7 +306,7 @@ public class TemplateParser
     //   481: astore_2
     //   482: iload_3
     //   483: ifne +29 -> 512
-    //   486: iload 4
+    //   486: iload 5
     //   488: istore_3
     //   489: iload_3
     //   490: ifne +27 -> 517
@@ -606,11 +606,11 @@ public class TemplateParser
     //   0	986	1	paramString1	String
     //   0	986	2	paramString2	String
     //   28	486	3	i	int
-    //   4	483	4	j	int
-    //   7	393	5	k	int
+    //   7	393	4	j	int
+    //   4	483	5	k	int
     //   33	913	6	localObject1	Object
     //   1	981	7	localObject2	Object
-    //   94	451	8	localObject3	Object
+    //   105	440	8	localObject3	Object
     //   770	10	8	localObject4	Object
     //   803	5	8	localObject5	Object
     //   813	10	8	localObject6	Object
@@ -618,7 +618,7 @@ public class TemplateParser
     //   902	13	8	localException1	java.lang.Exception
     //   920	13	8	localException2	java.lang.Exception
     //   942	9	8	localObject8	Object
-    //   105	752	9	localObject9	Object
+    //   94	763	9	localObject9	Object
     //   228	626	10	str1	String
     //   225	625	11	localObject10	Object
     //   263	23	12	str2	String

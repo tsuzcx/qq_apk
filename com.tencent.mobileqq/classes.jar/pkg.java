@@ -1,12 +1,19 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-final class pkg
-  implements FileFilter
+public class pkg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public boolean accept(File paramFile)
+  public pkg(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return paramFile.getName().endsWith(".json");
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 

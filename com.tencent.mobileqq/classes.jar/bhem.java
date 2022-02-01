@@ -1,26 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.vas.watchword.VasWatchWord.addObserver.1.checkWatchWord.1.1;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import kotlin.Metadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Leipc/EIPCResult;", "kotlin.jvm.PlatformType", "onCallback"}, k=3, mv={1, 1, 16})
-public final class bhem
-  implements EIPCResultCallback
+public class bhem
+  implements DialogInterface.OnClickListener
 {
-  public static final bhem a = new bhem();
+  public bhem(UpgradeActivity paramUpgradeActivity, bhdm parambhdm, int paramInt) {}
   
-  public final void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEIPCResult != null) {}
-    for (Bundle localBundle = paramEIPCResult.data; localBundle == null; localBundle = null) {
-      return;
-    }
-    int i = paramEIPCResult.data.getInt("ret");
-    bhek.a.b();
-    new Handler(Looper.getMainLooper()).post((Runnable)new VasWatchWord.addObserver.1.checkWatchWord.1.1(paramEIPCResult, i));
+    this.jdField_a_of_type_Bhdm.d();
+    bhrv.c(true);
+    bhrv.c(this.jdField_a_of_type_Int);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity, bhdu.a().a(), false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity.finish();
   }
 }
 

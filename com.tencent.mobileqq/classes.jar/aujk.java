@@ -1,22 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class aujk
-  implements Handler.Callback
+class aujk
+  implements View.OnLongClickListener
 {
-  public aujk(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  aujk(aujj paramaujj) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onLongClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if ((this.a.jdField_a_of_type_Bgpa != null) && (this.a.jdField_a_of_type_Bgpa.isShowing()) && (this.a.jdField_a_of_type_Aujs != null)) {
-      this.a.jdField_a_of_type_Aujs.a();
-    }
+    paramView = this.a.a.b();
+    aujj.a(this.a, paramView);
+    String str = this.a.a() + "(" + auog.a(this.a.a.c()) + ")";
+    this.a.a(paramView, str);
     return true;
   }
 }

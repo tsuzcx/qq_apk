@@ -1,27 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.TargetApi;
+import android.media.MediaMetadataRetriever;
+import com.tencent.qphone.base.util.QLog;
 
-final class bdeb
-  implements DialogInterface.OnClickListener
+@TargetApi(18)
+public class bdeb
 {
-  bdeb(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(String paramString, bdec parambdec)
   {
-    bddx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bddx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bddx.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bddx.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    label226:
+    for (;;)
+    {
+      String str1;
+      String str2;
+      String str3;
+      try
+      {
+        localMediaMetadataRetriever.setDataSource(paramString);
+        str1 = localMediaMetadataRetriever.extractMetadata(18);
+        str2 = localMediaMetadataRetriever.extractMetadata(19);
+        paramString = localMediaMetadataRetriever.extractMetadata(24);
+        str3 = localMediaMetadataRetriever.extractMetadata(9);
+        localMediaMetadataRetriever.release();
+        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
+          break label226;
+        }
+        paramString = "0";
+        if ((str1 == null) || (str2 == null))
+        {
+          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
+          return -2;
+        }
+      }
+      catch (RuntimeException paramString)
+      {
+        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
+        return -1;
+      }
+      for (;;)
+      {
+        try
+        {
+          parambdec.a[0] = Integer.parseInt(str1);
+          parambdec.a[1] = Integer.parseInt(str2);
+          parambdec.a[3] = Integer.parseInt(str3);
+          i = 0;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
+          int i = -3;
+          continue;
+        }
+        try
+        {
+          parambdec.a[2] = Integer.parseInt(paramString);
+          parambdec.a[4] = 0;
+          return i;
+        }
+        catch (NumberFormatException paramString)
+        {
+          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
+          parambdec.a[2] = 0;
+          return i;
+        }
+      }
+    }
   }
 }
 

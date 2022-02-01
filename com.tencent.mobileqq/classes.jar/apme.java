@@ -1,236 +1,74 @@
-import android.os.Build;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ark;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class apme
+class apme
+  implements apmc
 {
-  public static String a;
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  public static Map<String, List<apmf>> a;
-  public static boolean a;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static boolean d;
-  public static boolean e;
-  public static boolean f;
-  public static boolean g;
-  public static boolean h;
-  public static boolean i;
-  public static boolean j;
-  private apmp jdField_a_of_type_Apmp;
-  private apms jdField_a_of_type_Apms;
-  private ArkAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
+  private IBinder a;
   
-  static
+  apme(IBinder paramIBinder)
   {
-    jdField_a_of_type_Boolean = true;
-    f = true;
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (Build.MODEL.contains("Android SDK built for x86")) {
-      c = true;
-    }
-    String str1 = Build.CPU_ABI;
-    String str2 = Build.CPU_ABI2;
-    if ((!c) && ((a(str1).booleanValue()) || (a(str2).booleanValue()))) {
-      jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  public apme(ArkAppCenter paramArkAppCenter)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter = paramArkAppCenter;
-    Object localObject = aqmv.b(159).a();
-    if ((localObject != null) && (((aqmt)localObject).a() != null))
-    {
-      localObject = ((aqmt)localObject).a();
-      jdField_a_of_type_Boolean = ((aqnn)localObject).jdField_a_of_type_Boolean;
-      f = ((aqnn)localObject).jdField_b_of_type_Boolean;
-    }
-    this.jdField_a_of_type_Apmp = new apmp(paramArkAppCenter.b());
-    this.jdField_a_of_type_Apms = new apms(paramArkAppCenter.b());
-    d();
-    a();
-    paramArkAppCenter = aqmv.b(186).a();
-    if ((paramArkAppCenter != null) && (paramArkAppCenter.a() != null))
-    {
-      ArkAppCenter.c("ArkApp.AI", "ArkAiAppCenter updateDialogConfig content =" + paramArkAppCenter.a());
-      a(paramArkAppCenter.a());
-    }
-  }
-  
-  private static Boolean a(String paramString)
-  {
-    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
-    }
-  }
-  
-  public static String a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (localAppRuntime == null) {
-      return "";
-    }
-    return localAppRuntime.getAccount();
-  }
-  
-  public static String a(String paramString)
-  {
-    return bgjb.a(BaseApplication.getContext(), paramString + a());
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    bgjb.a(BaseApplication.getContext(), paramString1 + a(), paramString2);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "open";; str = "close")
-    {
-      bgjb.a(BaseApplication.getContext(), "ark_use_android_http_" + a(), str);
-      return;
-    }
-  }
-  
-  public static boolean a()
-  {
-    try
-    {
-      boolean bool = "open".equals(bgjb.a(BaseApplication.getContext(), "ark_use_android_http_" + a()));
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilList.contains(paramString);
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "open";; str = "close") {
-      try
-      {
-        bgjb.a(BaseApplication.getContext(), "ark_support_android9_emoji", str);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ArkAppCenter.c("ArkApp.AI", "setAndroid9EmojiSupportState exception: " + localException.getMessage());
-      }
-    }
-  }
-  
-  public static boolean b()
-  {
-    try
-    {
-      boolean bool = "open".equals(bgjb.a(BaseApplication.getContext(), "ark_support_android9_emoji"));
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      ArkAppCenter.c("ArkApp.AI", "getAndroid9EmojiSupportState exception: " + localException.getMessage());
-    }
-    return false;
-  }
-  
-  private void d()
-  {
-    apmp.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.b());
+    this.a = paramIBinder;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Apms.a();
-  }
-  
-  public void a(aqns paramaqns)
-  {
-    if (paramaqns == null)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig,dialogConfig is null", new Object[0]));
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    e = paramaqns.jdField_a_of_type_Boolean;
-    d = this.jdField_a_of_type_Apms.a(paramaqns.jdField_b_of_type_JavaLangString);
-    g = paramaqns.jdField_b_of_type_Boolean;
-    a(g);
-    if (ArkAppCenter.jdField_b_of_type_Boolean) {
-      ark.SetUseAndroidHTTP(g);
-    }
-    h = paramaqns.c;
-    b(h);
-    if (ArkAppCenter.jdField_b_of_type_Boolean) {
-      ark.arkSetAndroid9EmojiFeatureSupport(h);
-    }
-    i = paramaqns.d;
-    Object localObject;
-    if (i) {
-      localObject = "true";
-    }
-    for (;;)
+    finally
     {
-      a("ark_engine_multi_thread", (String)localObject);
-      jdField_a_of_type_JavaLangString = paramaqns.jdField_a_of_type_JavaLangString;
-      boolean bool;
-      if (ArkAppCenter.jdField_b_of_type_Boolean)
-      {
-        localObject = ArkEnvironmentManager.getInstance();
-        if (i) {
-          break label183;
-        }
-        bool = true;
-        ((ArkEnvironmentManager)localObject).setSingleThreadMode(bool);
-        ArkEnvironmentManager.getInstance().setThreadMode();
-      }
-      try
-      {
-        localObject = new JSONObject(jdField_a_of_type_JavaLangString);
-        ArkEnvironmentManager.getInstance().setHardwareDisableList((JSONObject)localObject);
-        j = paramaqns.e;
-        return;
-        localObject = "false";
-        continue;
-        label183:
-        bool = false;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig, parse json failed, err=%s", new Object[] { localJSONException.getMessage() }));
-        }
-      }
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
   
   public void b()
   {
-    apmp localapmp = this.jdField_a_of_type_Apmp;
-    apmp.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.a());
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Apmp.b();
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.watermark;
 
-import bnoa;
-import bnob;
+import bopl;
+import bopm;
 
 public class WaterMarkOnlineUserManager$1$1
   implements Runnable
 {
-  public WaterMarkOnlineUserManager$1$1(bnob parambnob) {}
+  public WaterMarkOnlineUserManager$1$1(bopm parambopm) {}
   
   public void run()
   {
-    bnoa.a(this.a.a);
+    bopl.a(this.a.a);
   }
 }
 

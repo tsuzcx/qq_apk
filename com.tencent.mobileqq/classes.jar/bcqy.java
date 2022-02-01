@@ -1,91 +1,95 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameData;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
+import KQQ.InfoItem;
+import KQQ.PluginInfo;
+import KQQ.ReqGetPluginSettings;
+import KQQ.RespGetPluginSettings;
+import KQQ.SyncReq;
+import KQQ.SyncRes;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.Packet;
 
-public final class bcqy
-  extends bcox
+public class bcqy
 {
-  public bcqy(Object paramObject, SplashADView paramSplashADView, AppActivity paramAppActivity)
+  public static List<PluginInfo> a(byte[] paramArrayOfByte)
   {
-    super(paramObject);
-  }
-  
-  protected void a()
-  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    Object localObject = new UniPacket(true);
     try
     {
-      azvi localazvi = (azvi)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
-      switch (localazvi.a)
+      ((UniPacket)localObject).setEncodeName("utf-8");
+      ((UniPacket)localObject).decode(paramArrayOfByte);
+      paramArrayOfByte = (SyncRes)((UniPacket)localObject).get("SyncRes");
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.result == 0))
       {
-      case 2: 
-        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
-        return;
+        paramArrayOfByte = paramArrayOfByte.vecResPkg;
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
+        {
+          paramArrayOfByte = (InfoItem)paramArrayOfByte.get(0);
+          if (paramArrayOfByte.vecValue != null)
+          {
+            paramArrayOfByte = new JceInputStream(paramArrayOfByte.vecValue);
+            paramArrayOfByte.setServerEncoding("utf-8");
+            localObject = new RespGetPluginSettings();
+            ((RespGetPluginSettings)localObject).readFrom(paramArrayOfByte);
+            if ((localObject != null) && (((RespGetPluginSettings)localObject).PluginInfoList != null))
+            {
+              paramArrayOfByte = ((RespGetPluginSettings)localObject).PluginInfoList;
+              return paramArrayOfByte;
+            }
+          }
+        }
       }
     }
-    catch (Exception localException)
+    catch (Exception paramArrayOfByte)
     {
-      QLog.e("SplashMiniGameStarter", 1, "show SplashAd end() error ", localException);
-      return;
+      paramArrayOfByte.printStackTrace();
+      return null;
     }
+    return null;
   }
   
-  protected void a(bcow parambcow)
+  public static void a(Packet paramPacket, List<Long> paramList)
   {
-    azvi localazvi;
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        return;
-      }
-      localazvi = (azvi)this.jdField_a_of_type_JavaLangObject;
-      QLog.i("SplashMiniGameStarter", 1, "bindView");
-      bcor.a = System.currentTimeMillis();
-      if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
-      {
-        parambcow.a = 0L;
-        return;
-      }
-    }
-    catch (Exception parambcow)
-    {
-      QLog.e("SplashMiniGameStarter", 1, "show SplashAd bindView error ", parambcow);
-      return;
-    }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131377761);
-    if (localViewGroup == null)
-    {
-      QLog.i("SplashMiniGameStarter", 1, "bindView fail, root is null");
-      parambcow.a = 0L;
-      return;
-    }
-    SplashMiniGameStarter.setNeedShow(false);
-    localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
-    switch (localazvi.a)
-    {
+    SyncReq localSyncReq = new SyncReq();
+    ArrayList localArrayList = new ArrayList();
+    InfoItem localInfoItem = new InfoItem();
+    localInfoItem.cOperType = 1;
+    localInfoItem.qwServiceId = 22L;
+    localInfoItem.qwTimeStamp = 0L;
+    localInfoItem.vecValue = a(paramList);
+    localArrayList.add(localInfoItem);
+    localSyncReq.vecReqPkg = localArrayList;
+    paramPacket.setSSOCommand("ProfileService.SyncReq");
+    paramPacket.setServantName("ProfileService");
+    paramPacket.setFuncName("SyncReq");
+    paramPacket.addRequestPacket("SyncReq", localSyncReq);
+  }
+  
+  public static byte[] a(List<Long> paramList)
+  {
+    ReqGetPluginSettings localReqGetPluginSettings = new ReqGetPluginSettings();
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0)) {
+      localArrayList.addAll(paramList);
     }
     for (;;)
     {
-      SplashMiniGameStarter.preloadMiniGame();
-      return;
-      QLog.i("SplashMiniGameStarter", 1, "show video");
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
-      if (SplashMiniGameStarter.curData != null) {}
-      for (long l = SplashMiniGameStarter.curData.videoDuration * 1000;; l = 5000L)
-      {
-        parambcow.a = l;
-        break;
-      }
+      localReqGetPluginSettings.PluginList = localArrayList;
+      paramList = new JceOutputStream();
+      localReqGetPluginSettings.writeTo(paramList);
+      return paramList.toByteArray();
+      localArrayList.add(Long.valueOf(489L));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcqy
  * JD-Core Version:    0.7.0.1
  */

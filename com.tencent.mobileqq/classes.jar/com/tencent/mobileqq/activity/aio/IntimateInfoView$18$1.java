@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afyw;
-import afzj;
+import agiq;
+import agjd;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.RequiresApi;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
 
@@ -18,20 +20,32 @@ class IntimateInfoView$18$1
   @RequiresApi(api=16)
   public void run()
   {
-    if ((afyw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0) != null) && (afzj.a(afyw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)) != null))
+    RelativeLayout localRelativeLayout;
+    ImageView localImageView;
+    if ((agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0) != null) && (agjd.a(agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)) != null))
     {
-      int i = afzj.a(afyw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)).indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.a);
-      RelativeLayout localRelativeLayout = (RelativeLayout)afyw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0).getChild(i);
+      int i = agjd.a(agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)).indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.a);
+      localRelativeLayout = (RelativeLayout)agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0).getChild(i);
       if (localRelativeLayout != null)
       {
-        ImageView localImageView = (ImageView)localRelativeLayout.findViewById(2131367195);
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-          localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        localImageView = (ImageView)localRelativeLayout.findViewById(2131367246);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.a.type != 17) {
+          break label147;
         }
-        if (this.b != null) {
-          localRelativeLayout.setBackgroundDrawable(new BitmapDrawable(this.b));
-        }
+        localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+        localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+      if (this.b != null) {
+        localRelativeLayout.setBackgroundDrawable(new BitmapDrawable(this.b));
+      }
+      return;
+      label147:
+      localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     }
   }
 }

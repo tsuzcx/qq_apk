@@ -1,22 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class aels
-  extends aelh
+  implements Comparator<aelq>
 {
-  public aels(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  private aels(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public int a(aelq paramaelq1, aelq paramaelq2)
   {
-    this.b.i();
+    return paramaelq1.c.compareToIgnoreCase(paramaelq2.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aels
  * JD-Core Version:    0.7.0.1
  */

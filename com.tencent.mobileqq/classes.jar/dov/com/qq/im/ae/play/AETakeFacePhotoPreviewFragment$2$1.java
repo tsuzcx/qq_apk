@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import bnvy;
+import boxi;
 
 public class AETakeFacePhotoPreviewFragment$2$1
   implements Runnable
 {
-  public AETakeFacePhotoPreviewFragment$2$1(bnvy parambnvy, boolean paramBoolean, int paramInt) {}
+  public AETakeFacePhotoPreviewFragment$2$1(boxi paramboxi, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    AETakeFacePhotoPreviewFragment.a(this.jdField_a_of_type_Bnvy.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    AETakeFacePhotoPreviewFragment.a(this.jdField_a_of_type_Boxi.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,105 +1,316 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
-import com.tencent.mobileqq.vas.updatesystem.VasUpdateEngineV2.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.callback.ICmdManager;
-import com.tencent.vas.update.callback.listener.ICmdListener;
-import com.tencent.vas.update.entity.BusinessUpdateParams;
-import com.tencent.vas.update.wrapper.VasUpdateWrapper;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import java.util.List;
 
 public class bhdi
-  implements bhdf
 {
-  private bhdg jdField_a_of_type_Bhdg;
-  private bhdm jdField_a_of_type_Bhdm;
-  
-  public bhdi(QQAppInterface paramQQAppInterface)
+  public static void a(int paramInt1, int paramInt2, String[] paramArrayOfString, bhdh parambhdh)
   {
-    try
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_Bhdg = ((bhdg)paramQQAppInterface.getManager(374));
+    default: 
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      parambhdh.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    case 2: 
+      a(paramArrayOfString, parambhdh);
+      return;
+    case 3: 
+      a(paramInt2, paramArrayOfString, parambhdh);
+      return;
+    case 4: 
+      b(paramInt2, paramArrayOfString, parambhdh);
+      return;
+    case 5: 
+      c(paramInt2, paramArrayOfString, parambhdh);
+      return;
+    case 6: 
+      d(paramInt2, paramArrayOfString, parambhdh);
+      return;
+    case 7: 
+      e(paramInt2, paramArrayOfString, parambhdh);
+      return;
+    case 8: 
+      g(paramInt2, paramArrayOfString, parambhdh);
+      return;
+    case 9: 
+    case 11: 
+      f(paramInt2, paramArrayOfString, parambhdh);
       return;
     }
-    catch (Throwable paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      this.jdField_a_of_type_Bhdg = new bhdg(null);
-    }
+    h(paramInt2, paramArrayOfString, parambhdh);
   }
   
-  public void cancelDwonloadItem(long paramLong, String paramString)
+  public static void a(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
   {
-    if ((this.jdField_a_of_type_Bhdg != null) && (this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong) != null)) {
-      this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong).cancelDownload(paramString);
-    }
-  }
-  
-  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bhdg != null) && (this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong) != null))
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[1]))
       {
-        paramString1 = new BusinessUpdateParams(paramLong, paramArrayOfString[i], paramString2);
-        this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong).startDownload(paramString1);
-        i += 1;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 1;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
+        if (!TextUtils.isEmpty(paramArrayOfString[4]))
+        {
+          localbhdg = new bhdg();
+          localbhdg.jdField_a_of_type_Int = 4;
+          localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+          parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+        }
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          localbhdg = new bhdg();
+          localbhdg.jdField_a_of_type_Int = 3;
+          localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+        }
       }
     }
-  }
-  
-  public void downloadItem(long paramLong, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bhdg != null) && (this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong) != null))
+    while (paramInt != 1)
     {
-      paramString1 = new BusinessUpdateParams(paramLong, paramString1, paramString2);
-      this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong).startDownload(paramString1);
-    }
-  }
-  
-  public void onDestory()
-  {
-    this.jdField_a_of_type_Bhdg = null;
-  }
-  
-  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bhdm != null) && (this.jdField_a_of_type_Bhdm.a() != null)) {
-      this.jdField_a_of_type_Bhdm.a().onPbResponse(paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
-  {
-    ThreadManagerV2.excute(new VasUpdateEngineV2.1(this, paramQueryItemVersionCallback, paramInt, paramString), 32, null, true);
-  }
-  
-  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
-  {
-    if (this.jdField_a_of_type_Bhdg == null) {}
-    while (this.jdField_a_of_type_Bhdg.a() == null) {
+      do
+      {
+        do
+        {
+          return;
+          if (TextUtils.isEmpty(paramArrayOfString[4])) {
+            break;
+          }
+          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
+          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+        } while (TextUtils.isEmpty(paramArrayOfString[3]));
+        localbhdg = new bhdg();
+        localbhdg.jdField_a_of_type_Int = 3;
+        localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+        parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+        return;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[3]));
+      bhdg localbhdg = new bhdg();
+      localbhdg.jdField_a_of_type_Int = 3;
+      localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
       return;
     }
-    ICmdManager localICmdManager = VasUpdateWrapper.getCmdManager();
-    if ((localICmdManager == null) || (!(localICmdManager instanceof bhdm)))
+    if (!TextUtils.isEmpty(paramArrayOfString[1]))
     {
-      QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl");
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 1;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
       return;
     }
-    this.jdField_a_of_type_Bhdm = ((bhdm)localICmdManager);
-    this.jdField_a_of_type_Bhdm.a(paramWeakReference);
+    if (!TextUtils.isEmpty(paramArrayOfString[6]))
+    {
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 6;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
   }
   
-  public void startUpdateAllItem()
+  public static void a(String[] paramArrayOfString, bhdh parambhdh)
   {
-    if (this.jdField_a_of_type_Bhdg != null) {
-      this.jdField_a_of_type_Bhdg.updateAllItem();
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[4]))
+    {
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+      if (!TextUtils.isEmpty(paramArrayOfString[3]))
+      {
+        localbhdg = new bhdg();
+        localbhdg.jdField_a_of_type_Int = 3;
+        localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+        parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+      }
     }
+    do
+    {
+      return;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    } while (TextUtils.isEmpty(paramArrayOfString[3]));
+    bhdg localbhdg = new bhdg();
+    localbhdg.jdField_a_of_type_Int = 3;
+    localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+    parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+  }
+  
+  public static void b(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambhdh);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[6]))
+    {
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 6;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void c(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  {
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[4]))
+      {
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+      }
+    }
+    while (paramInt != 1)
+    {
+      do
+      {
+        return;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[2]));
+      bhdg localbhdg = new bhdg();
+      localbhdg.jdField_a_of_type_Int = 2;
+      localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
+      parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramArrayOfString[2]))
+    {
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 2;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void d(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  {
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[4]))
+      {
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          localbhdg = new bhdg();
+          localbhdg.jdField_a_of_type_Int = 3;
+          localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[3]));
+      localbhdg = new bhdg();
+      localbhdg.jdField_a_of_type_Int = 3;
+      localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+      return;
+      if (paramInt == 1)
+      {
+        localbhdg = new bhdg();
+        localbhdg.jdField_a_of_type_Int = 0;
+        localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+        parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 3;
+          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          return;
+        }
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+        return;
+      }
+    } while (paramInt != 3);
+    bhdg localbhdg = new bhdg();
+    localbhdg.jdField_a_of_type_Int = 7;
+    localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+    if (!TextUtils.isEmpty(paramArrayOfString[3]))
+    {
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 3;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void e(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambhdh);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public static void f(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambhdh);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[5]))
+    {
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 5;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[5];
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void g(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambhdh);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[3]))
+    {
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 3;
+      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void h(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambhdh);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
+    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambhdh.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

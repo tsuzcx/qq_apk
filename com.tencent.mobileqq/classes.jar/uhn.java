@@ -1,17 +1,19 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class uhn
-  implements View.OnTouchListener
+public abstract class uhn<T>
 {
-  uhn(uhk paramuhk) {}
+  protected T a;
+  protected StringBuilder a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public T a()
   {
-    uhk.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 

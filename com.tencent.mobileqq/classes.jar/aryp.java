@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-public class aryp
-  implements bhlk
+class aryp
+  implements DialogInterface.OnClickListener
 {
-  public aryp(EmoticonPanelMallHelper.3 param3) {}
+  aryp(aryn paramaryn) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.this$0.a.a.a();
-    }
+    paramDialogInterface.cancel();
+    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

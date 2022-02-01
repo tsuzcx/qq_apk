@@ -1,8 +1,19 @@
-public abstract interface bpno
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.FilterCategory;
+
+public final class bpno
+  implements Parcelable.Creator<FilterCategory>
 {
-  public abstract void a(int paramInt);
+  public FilterCategory a(Parcel paramParcel)
+  {
+    return new FilterCategory(paramParcel);
+  }
   
-  public abstract void h();
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
+  }
 }
 
 

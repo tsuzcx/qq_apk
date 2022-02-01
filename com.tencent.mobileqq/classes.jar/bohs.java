@@ -1,18 +1,14 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bohs
-  extends RecyclerView.ViewHolder
+class bohs
+  implements DialogInterface.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  bohs(bohp parambohp, Runnable paramRunnable) {}
   
-  public bohs(bohq parambohq, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380403);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364640));
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

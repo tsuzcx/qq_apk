@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import bcow;
-import bcrh;
+import bdho;
+import bdjz;
 
 public class Step$AfterDexStepFactory
-  implements bcrh
+  implements bdjz
 {
-  public Step a(int paramInt, bcow parambcow, int[] paramArrayOfInt)
+  public Step a(int paramInt, bdho parambdho, int[] paramArrayOfInt)
   {
-    parambcow = null;
+    parambdho = null;
     switch (paramInt)
     {
     case 8: 
@@ -17,9 +17,9 @@ public class Step$AfterDexStepFactory
     case 13: 
     case 21: 
     default: 
-      parambcow = new Step();
+      parambdho = new Step();
     case 31: 
-      return parambcow;
+      return parambdho;
     case 7: 
     case 19: 
       return new LoadData();

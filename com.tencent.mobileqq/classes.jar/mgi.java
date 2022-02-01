@@ -1,161 +1,36 @@
-import android.animation.ObjectAnimator;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 import com.tencent.qphone.base.util.QLog;
 
 public class mgi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-  public RelativeLayout a;
-  final String jdField_a_of_type_JavaLangString;
-  mgl jdField_a_of_type_Mgl = null;
-  public boolean a;
+  public mgi(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
   
-  public mgi(RelativeLayout paramRelativeLayout, int paramInt, mgl parammgl)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = ("MenuView_" + paramInt);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Mgl = parammgl;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public RelativeLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  void a()
-  {
-    ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-    if (localObjectAnimator != null) {
-      localObjectAnimator.cancel();
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
-    label221:
-    label252:
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.h()) {
       return;
-      Object localObject = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("ShowMenuView, isShow[").append(this.jdField_a_of_type_Boolean).append("], needAnimation[").append(paramBoolean).append("], lastObjectAnimator[");
-      boolean bool;
-      int i;
-      if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null)
-      {
-        bool = true;
-        QLog.w((String)localObject, 1, bool + "], visibility[" + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() + "], seq[" + paramLong + "]");
-        a();
-        if (this.jdField_a_of_type_Mgl != null) {
-          this.jdField_a_of_type_Mgl.a(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
-        }
-        if (!paramBoolean) {
-          break label252;
-        }
-        i = b();
-        localObject = null;
-        if (paramInt != 3) {
-          break label221;
-        }
-        localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "TranslationY", new float[] { i, 0.0F });
-      }
-      for (;;)
-      {
-        ((ObjectAnimator)localObject).setDuration(300L);
-        ((ObjectAnimator)localObject).addListener(new mgk(this, i, paramLong));
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ((ObjectAnimator)localObject);
-        ((ObjectAnimator)localObject).start();
-        return;
-        bool = false;
-        break;
-        if (paramInt == 4) {
-          localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
-        }
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Mgl == null);
-    this.jdField_a_of_type_Mgl.a(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-  }
-  
-  public void a(long paramLong, boolean paramBoolean, int paramInt, mhz parammhz)
-  {
-    int i = 4;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("HiddenMenuView, isShow[").append(this.jdField_a_of_type_Boolean).append("], needAnimation[").append(paramBoolean).append("], visibility[").append(i).append("], lastObjectAnimator[");
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().b() == -1) {
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.r(this.jdField_a_of_type_Long);
+    }
+    for (;;)
     {
-      QLog.w((String)localObject, 1, bool + "], seq[" + paramLong + "]");
-      a();
-      if (!paramBoolean) {
-        break label320;
-      }
-      i = b();
-      localObject = null;
-      if (paramInt == 2) {
-        localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "TranslationY", new float[] { 0.0F, i });
-      }
-      if (localObject != null) {
-        break;
-      }
-      if (!AudioHelper.e()) {
-        break label319;
-      }
-      parammhz = anni.a(2131707706) + this.jdField_a_of_type_Boolean + "], height[" + i + "], seq[" + paramLong + "]";
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, parammhz, new Throwable("打印调用栈"));
-      throw new IllegalArgumentException(parammhz);
-    }
-    ((ObjectAnimator)localObject).setDuration(300L);
-    ((ObjectAnimator)localObject).addListener(new mgj(this, i, paramLong, parammhz));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ((ObjectAnimator)localObject);
-    ((ObjectAnimator)localObject).start();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Mgl != null) {
-      this.jdField_a_of_type_Mgl.b(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
-    }
-    label319:
-    label320:
-    do
-    {
+      paramDialogInterface.dismiss();
       return;
-      if (this.jdField_a_of_type_Mgl != null) {
-        this.jdField_a_of_type_Mgl.b(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
-      }
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        this.jdField_a_of_type_Boolean = false;
+        MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
+        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 65535);
       }
-    } while (this.jdField_a_of_type_Mgl == null);
-    this.jdField_a_of_type_Mgl.b(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-  }
-  
-  int b()
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.measure(0, 0);
-      i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
+      else if (QLog.isColorLevel())
+      {
+        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
+      }
     }
-    return i;
   }
 }
 

@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.TMG.utils.QLog;
+import qqcircle.QQCircleProfile.SetProfileRsp;
 
-public class vwx
-  implements DialogInterface.OnClickListener
+class vwx
+  implements aaav<QQCircleProfile.SetProfileRsp>
 {
-  public vwx(QCircleFollowTagView paramQCircleFollowTagView) {}
+  vwx(vww paramvww) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.SetProfileRsp paramSetProfileRsp)
+  {
+    QLog.d("QCircleDataEditViewMode", 1, "setProfileRequest isSuccess:" + paramBoolean + " retCode:" + paramLong + " errorMsg:" + paramString);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramSetProfileRsp == null))
+    {
+      this.a.a.setValue(vxq.a(paramString).a(paramLong));
+      return;
+    }
+    this.a.a.setValue(vxq.a(false).a(false, paramSetProfileRsp));
+  }
 }
 
 

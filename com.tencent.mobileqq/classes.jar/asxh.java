@@ -1,21 +1,51 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import java.util.List;
 
 public class asxh
-  implements Comparator<FileManagerEntity>
 {
-  public asxh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public static final int FOOTER_TYPE_LOADING = 0;
+  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
+  public static final int FOOTER_TYPE_LOAD_OVER = 2;
+  public static final int TYPE_CAMPUS_VERIFY = 7;
+  public static final int TYPE_EMTPY = 2;
+  public static final int TYPE_FEED = 0;
+  public static final int TYPE_FEED_ADV = 4;
+  public static final int TYPE_FEED_BANNER = 6;
+  public static final int TYPE_FOOTER = 1;
+  public static final int TYPE_MINI_RECOMM = 5;
+  public int clothesId;
+  public int fontId;
+  public int fontType;
+  public boolean mAddFriendVerified;
+  public int mAge;
+  public AlumBasicData mAlumbasicdata;
+  public int mAvailLikeCount;
+  public boolean mBigVipHide;
+  public int mBigVipLevel;
+  public String mDeclaration;
+  public int mFooterType;
+  public int mGender;
+  public boolean mIsMyFeed;
+  public List<asxi> mLabelInfos;
+  public boolean mLiked;
+  public String mNickName;
+  public int mPopularity;
+  public List<asxj> mSchoolInfos;
+  public String mStrRecomTrace;
+  public int mTemplateId;
+  public int mType;
+  public String mUin;
+  public boolean mVipHide;
+  public int mVipLevel;
+  public int mVipType;
+  public int mVoiceDuration;
+  public String mVoiceUrl;
+  public boolean mbAllowStrangerVote;
+  public byte[] voiceCode;
   
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
+  public boolean equals(Object paramObject)
   {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
-    }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
-    }
-    return 0;
+    return (paramObject != null) && ((paramObject instanceof asxh)) && (bhjx.a(((asxh)paramObject).mUin, this.mUin));
   }
 }
 

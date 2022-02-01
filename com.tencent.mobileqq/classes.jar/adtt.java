@@ -1,26 +1,25 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adtt
-  implements bkhe
+  implements DialogInterface.OnClickListener
 {
-  public adtt(ChatHistory paramChatHistory) {}
+  public adtt(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.m = paramInt;
-    if (paramInt == 0)
+    if (bhnv.d(BaseApplication.getContext()))
     {
-      AbstractGifImage.resumeAll();
+      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
+      this.a.showDialog(2);
+      this.a.jdField_a_of_type_Anum.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
       return;
     }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
-      this.a.a.d();
-    }
-    AbstractGifImage.pauseAll();
+    QQToast.a(this.a, 2131693965, 0).b(this.a.getTitleBarHeight());
   }
 }
 

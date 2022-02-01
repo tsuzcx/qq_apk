@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import java.util.List;
 
-public class bbap
-  implements DialogInterface.OnClickListener
+public abstract class bbap
 {
-  public bbap(SignTextEditFragment paramSignTextEditFragment) {}
+  private static int b;
+  public int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbap()
   {
-    SignTextEditFragment.a(this.a, "");
-    paramDialogInterface.dismiss();
-    this.a.b.obtainMessage(6, null).sendToTarget();
+    int i = b;
+    b = i + 1;
+    this.a = i;
   }
+  
+  public abstract void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList);
 }
 
 

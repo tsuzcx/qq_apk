@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 
 public class sbd
-  extends ruh
 {
-  private VideoInfo a;
-  
-  public VideoInfo a()
+  public static void a(sbe paramsbe)
   {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return this.a.g;
+    VideoReport.reportEvent(sbe.a(paramsbe), paramsbe.a());
   }
 }
 

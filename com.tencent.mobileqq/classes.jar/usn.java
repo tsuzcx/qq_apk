@@ -1,17 +1,11 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-
-public class usn
-  extends urw
+class usn
+  implements ukd
 {
-  public usn(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-  }
+  usn(usm paramusm, usf paramusf) {}
   
-  public uei<uru> a(int paramInt)
+  public void a(uko paramuko)
   {
-    return new uso(a(), this);
+    usm.a(this.jdField_a_of_type_Usm, paramuko, this.jdField_a_of_type_Usf);
   }
 }
 

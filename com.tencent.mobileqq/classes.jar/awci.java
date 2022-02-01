@@ -1,52 +1,14 @@
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.QQKandianInterface;
 
-final class awci
-  extends Handler
+class awci
+  implements QQKandianInterface
 {
-  awci(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  awci(awcc paramawcc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void jumpToKandianBiu(Bundle paramBundle)
   {
-    if (paramMessage.what == 10000001)
-    {
-      paramMessage = (ProgressBar)awch.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131366957);
-      localDrawable = awch.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130839584);
-      paramMessage.setIndeterminateDrawable(localDrawable);
-      paramMessage.setBackgroundDrawable(localDrawable);
-      ((TextView)awch.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131365475)).setText(2131717759);
-      awch.a().sendEmptyMessageDelayed(10000002, 2000L);
-    }
-    while ((paramMessage.what != 10000002) || (awch.jdField_a_of_type_AndroidAppProgressDialog == null))
-    {
-      Drawable localDrawable;
-      return;
-    }
-    try
-    {
-      awch.jdField_a_of_type_Boolean = false;
-      awch.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      return;
-    }
-    finally
-    {
-      awch.jdField_a_of_type_AndroidAppProgressDialog = null;
-    }
+    awde.a().d(paramBundle);
   }
 }
 

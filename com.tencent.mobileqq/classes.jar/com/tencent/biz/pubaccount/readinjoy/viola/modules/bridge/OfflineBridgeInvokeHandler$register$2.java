@@ -7,14 +7,14 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tql;
+import thh;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "param", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class OfflineBridgeInvokeHandler$register$2
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public OfflineBridgeInvokeHandler$register$2(tql paramtql)
+  public OfflineBridgeInvokeHandler$register$2(thh paramthh)
   {
     super(2);
   }

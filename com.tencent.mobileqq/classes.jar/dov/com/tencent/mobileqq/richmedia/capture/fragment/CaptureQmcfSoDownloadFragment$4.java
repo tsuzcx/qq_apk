@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import bchg;
+import bczy;
 
 class CaptureQmcfSoDownloadFragment$4
   implements Runnable
@@ -9,7 +9,7 @@ class CaptureQmcfSoDownloadFragment$4
   
   public void run()
   {
-    bchg.a().b();
+    bczy.a().b();
   }
 }
 

@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.OnClickListener;
-import azvt;
-import azwm;
-import bgsp;
+import baoj;
+import bapc;
+import bhsr;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -17,7 +17,7 @@ public class QCallCardInfo
 {
   public static final int CARD_BLACK = 2;
   public static final int CARD_FREE = 1;
-  public static final Parcelable.Creator<QCallCardInfo> CREATOR = new azvt();
+  public static final Parcelable.Creator<QCallCardInfo> CREATOR = new baoj();
   public static int HIDE = 1;
   public static final int NONE = 0;
   public static int SHOW;
@@ -92,13 +92,13 @@ public class QCallCardInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ qid=").append(azwm.a(this.uin));
-    localStringBuilder.append(",nickname=").append(bgsp.g(this.nickname));
+    localStringBuilder.append("[ qid=").append(bapc.a(this.uin));
+    localStringBuilder.append(",nickname=").append(bhsr.g(this.nickname));
     localStringBuilder.append(",in_use_flag=").append(this.in_use_flag);
-    localStringBuilder.append(",phoneNum=").append(azwm.a(this.phonenum));
+    localStringBuilder.append(",phoneNum=").append(bapc.a(this.phonenum));
     localStringBuilder.append(",phone_mask=").append(this.phone_mask);
-    localStringBuilder.append(",qqUin=").append(azwm.a(this.qq));
-    localStringBuilder.append(",qqUin2=").append(azwm.a(this.qqUin2));
+    localStringBuilder.append(",qqUin=").append(bapc.a(this.qq));
+    localStringBuilder.append(",qqUin2=").append(bapc.a(this.qqUin2));
     localStringBuilder.append(",remark=").append(this.remark);
     localStringBuilder.append(",network=").append(this.netstatus);
     localStringBuilder.append(",autoRemark=").append(this.autoRemark);

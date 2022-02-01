@@ -2,11 +2,11 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdsi;
-import bhbq;
-import bhbt;
-import bhhf;
-import bhhh;
+import bera;
+import bica;
+import bicd;
+import bihu;
+import bihw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -20,7 +20,7 @@ import java.io.OutputStream;
 import java.net.URL;
 
 public class VasApngDownloader
-  extends bdsi
+  extends bera
 {
   public VasApngDownloader()
   {
@@ -88,9 +88,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new bhhf(paramOutputStream, localFile);
+      paramDownloadParams = new bihu(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = bhhh.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = bihw.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {
@@ -117,8 +117,8 @@ public class VasApngDownloader
       if (((Bundle)localObject2).getBoolean("key_use_gldrawable", false))
       {
         boolean bool = ((Bundle)localObject2).getBoolean("key_use_cache", false);
-        bhbt.a().a(null);
-        localObject2 = bhbt.a().a(paramFile, bool);
+        bicd.a().a(null);
+        localObject2 = bicd.a().a(paramFile, bool);
         if (localObject2 != null) {
           paramURLDrawableHandler = (URLDrawableHandler)localObject2;
         }

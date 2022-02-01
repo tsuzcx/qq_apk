@@ -1,6 +1,16 @@
-public abstract interface tjx
+public class tjx
 {
-  public abstract void a(int paramInt);
+  private boolean a;
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
 }
 
 

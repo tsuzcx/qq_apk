@@ -1,27 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajah
-  implements DialogInterface.OnClickListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public ajah(SystemMsgListView paramSystemMsgListView) {}
+  public ajah(BlessActivity paramBlessActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
-      paramDialogInterface.putExtra("kSrouce", 17);
-      this.a.a(paramDialogInterface, 230);
-      bcst.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
     }
-    while (paramInt != 0) {
-      return;
-    }
-    bcst.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
+    bdll.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
   }
 }
 

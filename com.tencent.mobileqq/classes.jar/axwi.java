@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 class axwi
-  implements DialogInterface.OnClickListener
+  implements anvi
 {
-  axwi(axwf paramaxwf, bgpa parambgpa) {}
+  axwi(axwf paramaxwf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    this.jdField_a_of_type_Axwf.a.e();
-    paramDialogInterface = new Intent("tribe_profile_edit_finish");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
+    }
+    axwf.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
   }
 }
 

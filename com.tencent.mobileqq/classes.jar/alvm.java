@@ -1,53 +1,17 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class alvm
-  implements zmv
+  implements DialogInterface.OnClickListener
 {
-  long jdField_a_of_type_Long;
-  alvi jdField_a_of_type_Alvi;
-  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public alvm(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public alvm(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, alvi paramalvi)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
-    this.jdField_a_of_type_Alvi = paramalvi;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void onFailure(String paramString)
-  {
-    this.jdField_a_of_type_Alvi.a(-12);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|third step fail:" + paramString);
-    }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|third step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.jdField_a_of_type_Alvi.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart() {}
-  
-  public void onSuccess(String paramString)
-  {
-    zkr.b(BaseApplication.getContext(), new File(this.b));
-    bgmg.d(this.jdField_a_of_type_JavaLangString);
-    alvf.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 3);
+    yup.a("video_shoot", "down_now", 0, 0, new String[0]);
+    awcc.b(null);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,31 +1,10 @@
 package com.tencent.qphone.base.util;
 
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-
-public class QLog$b
-  extends RecyclablePool.Recyclable
+public abstract interface QLog$b
 {
-  public long a;
-  public int b;
-  public int c;
-  public String d;
-  public int e;
-  public String f;
-  public Throwable g;
-  public byte[] h;
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public void recycle()
-  {
-    super.recycle();
-    this.a = 0L;
-    this.b = 0;
-    this.c = 0;
-    this.d = "";
-    this.f = "";
-    this.e = 0;
-    this.h = null;
-    this.g = null;
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable);
 }
 
 

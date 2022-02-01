@@ -1,19 +1,74 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class auut
-  implements View.OnClickListener
+class auut
 {
-  public auut(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
+  int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  auuq jdField_a_of_type_Auuq;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  final String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
+  Object jdField_b_of_type_JavaLangObject = new Object();
+  long jdField_c_of_type_Long;
+  Object jdField_c_of_type_JavaLangObject = new Object();
+  long d;
   
-  public void onClick(View paramView)
+  auut(auur paramauur, long paramLong1, String paramString, long paramLong2)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  long a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      long l = this.jdField_c_of_type_Long;
+      return l;
+    }
+  }
+  
+  void a(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      QLog.i(auur.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_c_of_type_Long = paramLong;
+      return;
+    }
+  }
+  
+  long b()
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      long l = this.d;
+      return l;
+    }
+  }
+  
+  void b(long paramLong)
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      this.d = paramLong;
+      return;
+    }
   }
 }
 

@@ -1,43 +1,44 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-class bdwi
-  implements ITransactionCallback
+public final class bdwi
+  implements bdwl
 {
-  public int a;
-  public bavp a;
-  public Transaction a;
+  private final File a;
   
-  bdwi(bdwd parambdwd) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public bdwi(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onFailed  erroCode: " + paramInt + " sendInfo:" + this.jdField_a_of_type_Bavp);
-    }
-    this.jdField_a_of_type_Bdwd.f(paramInt);
+    this.a = new File(String.format("/data/local/tmp/%sPluginManager.apk", new Object[] { paramString }));
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onSuccess  erroCode:  sendInfo:" + this.jdField_a_of_type_Bavp);
-    }
-    paramArrayOfByte = this.jdField_a_of_type_Bdwd.jdField_a_of_type_Bduk;
-    paramArrayOfByte.e += this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.totalLength;
-    if (this.jdField_a_of_type_Bdwd.jdField_a_of_type_Bavp != null) {
-      this.jdField_a_of_type_Bdwd.j();
-    }
-    this.jdField_a_of_type_Bdwd.f(this.jdField_a_of_type_Bavp);
+    return this.a.exists();
   }
   
-  public void onSwitch2BackupChannel() {}
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
+    }
+    return null;
+  }
   
-  public void onTransStart() {}
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return aoik.a(16).submit(new bdwk(this, paramFile));
+  }
   
-  public void onUpdateProgress(int paramInt) {}
+  public Future<File> update()
+  {
+    return aoik.a(16).submit(new bdwj(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
+  }
 }
 
 

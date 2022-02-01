@@ -1,10 +1,6 @@
-import java.util.List;
-
 public abstract interface pco
 {
-  public abstract void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<pay> paramList, boolean paramBoolean2, int paramInt2, int paramInt3);
-  
-  public abstract void onCommentStateError(int paramInt);
+  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3);
 }
 
 

@@ -12,16 +12,16 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bhkx;
-import bhky;
-import bhla;
-import bhlb;
+import bilm;
+import biln;
+import bilp;
+import bilq;
 import cooperation.liveroom.LiveRoomGiftCallback;
 import java.io.File;
 
 public class VPNGImageView
   extends FrameLayout
-  implements TextureView.SurfaceTextureListener, bhkx
+  implements TextureView.SurfaceTextureListener, bilm
 {
   protected int mAlign = 1;
   protected LiveRoomGiftCallback mCallback;
@@ -29,7 +29,7 @@ public class VPNGImageView
   protected boolean mIsLoop;
   protected ImageView mPreImageView;
   protected TextureView mTextureView;
-  protected bhky mVPNGRenderer;
+  protected biln mVPNGRenderer;
   protected String mVideoPath;
   protected int mWidth;
   
@@ -63,7 +63,7 @@ public class VPNGImageView
     return this.mWidth;
   }
   
-  public bhky getVPNGRenderer()
+  public biln getVPNGRenderer()
   {
     return this.mVPNGRenderer;
   }
@@ -73,7 +73,7 @@ public class VPNGImageView
     super.onDetachedFromWindow();
     if (this.mVPNGRenderer != null)
     {
-      bhla.a().a(this.mVPNGRenderer);
+      bilp.a().a(this.mVPNGRenderer);
       this.mVPNGRenderer = null;
     }
   }
@@ -104,9 +104,9 @@ public class VPNGImageView
     }
   }
   
-  public void onSetRenderer(bhky parambhky)
+  public void onSetRenderer(biln parambiln)
   {
-    this.mVPNGRenderer = parambhky;
+    this.mVPNGRenderer = parambiln;
     if ((isActivated()) && (getVisibility() == 0))
     {
       this.mVPNGRenderer.a();
@@ -118,7 +118,7 @@ public class VPNGImageView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bhla.a().a(this, this.mWidth, this.mHeight);
+      this.mVPNGRenderer = bilp.a().a(this, this.mWidth, this.mHeight);
       if (this.mVPNGRenderer != null)
       {
         this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
@@ -156,7 +156,7 @@ public class VPNGImageView
     this.mWidth = paramOptions.getWidth();
     this.mHeight = paramOptions.getHeight();
     String str = paramString + ".vpng";
-    if ((!new File(str).exists()) && (bhlb.a(paramString, str))) {
+    if ((!new File(str).exists()) && (bilq.a(paramString, str))) {
       setVideo(str, true);
     }
     this.mPreImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -175,7 +175,7 @@ public class VPNGImageView
     for (int i = 1;; i = 0)
     {
       if (this.mVPNGRenderer == null) {
-        this.mVPNGRenderer = bhla.a().a(this, this.mWidth, this.mHeight);
+        this.mVPNGRenderer = bilp.a().a(this, this.mWidth, this.mHeight);
       }
       if (this.mVPNGRenderer != null)
       {

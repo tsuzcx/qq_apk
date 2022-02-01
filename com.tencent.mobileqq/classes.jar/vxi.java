@@ -1,33 +1,19 @@
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPolyLikeWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
-public class vxi
-  implements vxd
+class vxi
+  implements aaav<FeedCloudRead.StGetFeedListRsp>
 {
-  public vxi(QCircleLightInteractPolyLikeWidget paramQCircleLightInteractPolyLikeWidget) {}
+  vxi(vxh paramvxh, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    vrr localvrr;
-    vrt localvrt;
-    if (paramBoolean)
-    {
-      vrc.a(73, 2, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
-      localvrr = vrr.a();
-      localvrt = new vrt().a("followbutton");
-      if (!paramBoolean) {
-        break label125;
-      }
-    }
-    label125:
-    for (String str = "follow";; str = "unfollow")
-    {
-      localvrr.a(localvrt.b(str).a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed).a(this.a.a()).a(this.a.jdField_a_of_type_Int).c(paramStUser.id.get()));
-      return;
-      vrc.a(74, 2, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
-      break;
-    }
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCirclePolymerizationVi", 1, "requestTagPageData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    QLog.d("QCirclePolymerizationVi", 1, "mFeedAttachInfo : " + vxh.a(this.jdField_a_of_type_Vxh));
+    this.jdField_a_of_type_Vxh.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
   }
 }
 

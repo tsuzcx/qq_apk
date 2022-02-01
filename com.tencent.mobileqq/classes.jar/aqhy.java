@@ -1,124 +1,50 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
 
 public class aqhy
-  extends bhzk
 {
-  private aqhy(CountrySelectActivity paramCountrySelectActivity) {}
+  public int a;
+  public String a;
   
-  public int a()
+  public static aqhy a(oidb_0x74b.VideoHeadInfo paramVideoHeadInfo)
   {
-    return 2131559551;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramView = (TextView)paramView;
-    Object localObject = getItem(paramInt);
-    if ((localObject instanceof aqhz)) {
-      paramView.setText(((aqhz)localObject).jdField_a_of_type_JavaLangString);
+    Object localObject;
+    if (paramVideoHeadInfo == null) {
+      localObject = null;
     }
-    while (!(localObject instanceof BaseAddress)) {
-      return;
-    }
-    paramView.setText(((BaseAddress)localObject).pinyinFirst);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return getItemViewType(paramInt) == 0;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.jdField_a_of_type_JavaUtilList.get(paramInt) instanceof aqhz)) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 0)
+    aqhy localaqhy;
+    do
     {
-      if (paramView != null) {
-        break label308;
+      return localObject;
+      localaqhy = new aqhy();
+      if (paramVideoHeadInfo.str_url.has()) {
+        localaqhy.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
       }
-      paramView = this.a.getLayoutInflater().inflate(a(), null);
+      localObject = localaqhy;
+    } while (!paramVideoHeadInfo.uint32_video_size.has());
+    localaqhy.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
+    return localaqhy;
+  }
+  
+  public static ArrayList<aqhy> a(List<oidb_0x74b.VideoHeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
     }
-    label292:
-    label302:
-    label308:
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      ((TextView)paramView).setText(((aqhz)getItem(paramInt)).jdField_a_of_type_JavaLangString);
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = this.a.getLayoutInflater().inflate(2131559552, null);
-          paramView = new aqia(null);
-          paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365112));
-          paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364460));
-          localView.findViewById(2131365111).setVisibility(8);
-          localView.setTag(paramView);
-          localView.setOnClickListener(this.a);
-        }
-        paramView = (aqia)localView.getTag();
-        BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.name);
-        if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaLangString.equals(localBaseAddress.code))) {
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-        for (;;)
-        {
-          paramView.jdField_a_of_type_JavaLangString = localBaseAddress.code;
-          if (!CountrySelectActivity.jdField_a_of_type_Boolean) {
-            break label302;
-          }
-          if (paramView.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-            break label292;
-          }
-          localView.setContentDescription(localBaseAddress.name + anni.a(2131701407));
-          paramView = localView;
-          break;
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-        localView.setContentDescription(localBaseAddress.name);
-        paramView = localView;
+      aqhy localaqhy = a((oidb_0x74b.VideoHeadInfo)paramList.next());
+      if (localaqhy != null) {
+        localArrayList.add(localaqhy);
       }
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    return localArrayList;
   }
 }
 

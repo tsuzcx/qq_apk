@@ -1,16 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-class ahsh
-  implements DialogInterface.OnClickListener
+public class ahsh
+  extends AnimatorListenerAdapter
 {
-  ahsh(ahsd paramahsd) {}
+  public ahsh(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
-    ahsd.s(this.a).setResult(8001);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
+    }
+    SixCombolEffectView.b(this.a).start();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 2;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

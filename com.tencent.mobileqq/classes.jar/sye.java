@@ -1,19 +1,10 @@
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
 
-class sye
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface sye
 {
-  sye(syd paramsyd, int paramInt, View paramView) {}
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public void onGlobalLayout()
-  {
-    this.jdField_a_of_type_Syd.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
-    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 

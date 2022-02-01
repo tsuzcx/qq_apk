@@ -1,29 +1,25 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qapmsdk.base.reporter.ab.AbType;
 
 public class adkp
-  implements View.OnClickListener
+  extends AbType
 {
-  public adkp(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt1, int paramInt2) {}
-  
-  public void onClick(View paramView)
+  public void active()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a("", null, "");
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
-    }
-    if (bgjw.b(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8008275", "0X8008275", 0, 0, "", "", "", "");
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    setPerfTimeout(1, 9223372036854775807L);
+    setPerfTimeout(4, 9223372036854775807L);
+    setPerfTimeout(2, 9223372036854775807L);
+  }
+  
+  public String getDescription()
+  {
+    return "AIO3D背景";
+  }
+  
+  public void unActive()
+  {
+    setPerfTimeout(1, 3000L);
+    setPerfTimeout(2, 2000L);
+    setPerfTimeout(4, 9223372036854775807L);
   }
 }
 

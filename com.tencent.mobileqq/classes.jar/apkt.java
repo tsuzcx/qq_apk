@@ -1,60 +1,94 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
-public class apkt
-  implements aplg
+class apkt
+  extends apma
 {
-  private String a(QQAppInterface paramQQAppInterface, String paramString)
+  apkt(apkr paramapkr) {}
+  
+  public void a()
   {
-    Object localObject = null;
-    String str = null;
-    SessionInfo localSessionInfo = apih.a();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (localSessionInfo != null) {
-        str = bglf.a(paramQQAppInterface, localSessionInfo, paramString.equals(paramQQAppInterface.c()), paramString);
-      }
-      if (str != null)
-      {
-        localObject = str;
-        if (!TextUtils.equals(str, paramString)) {}
-      }
-      else
-      {
-        str = bglf.q(paramQQAppInterface, paramString);
-        localObject = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject = bglf.a(paramQQAppInterface, paramString, 0);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
     }
-    return localObject;
+    if (apkr.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
+      return;
+    }
+    apkr.a(this.a).sendMessage(apkr.a(this.a).obtainMessage(3));
   }
   
-  public EIPCResult a(Bundle paramBundle)
+  public void a(int paramInt)
   {
-    Object localObject = apkf.a();
-    if (localObject == null)
-    {
-      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadError|error= " + paramInt);
     }
-    paramBundle = a((QQAppInterface)localObject, paramBundle.getString("Uin", ((QQAppInterface)localObject).getCurrentAccountUin()));
-    localObject = new Bundle();
-    if (TextUtils.isEmpty(paramBundle))
+    if (apkr.a(this.a) == null)
     {
-      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, nickname is empty");
-      ((Bundle)localObject).putString("Nickname", "");
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
+      return;
     }
-    for (;;)
+    apkr.a(this.a).sendMessage(apkr.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
     {
-      return EIPCResult.createResult(0, (Bundle)localObject);
-      ((Bundle)localObject).putString("Nickname", paramBundle);
+      long l = 100L * paramLong1 / paramLong2;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadProcess percent= " + l);
+      }
+      if (apkr.a(this.a) == null) {
+        QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
+      }
     }
+    else
+    {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    localMessage.arg1 = ((int)paramLong1);
+    localMessage.arg2 = ((int)paramLong2);
+    apkr.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
+    }
+    if (apkr.a(this.a) == null) {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
+    }
+    do
+    {
+      return;
+      if (paramArConfigInfo != null)
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 1;
+        localMessage.obj = paramArConfigInfo;
+        apkr.a(this.a).sendMessage(localMessage);
+      }
+      if (paramArEffectConfig != null)
+      {
+        paramArConfigInfo = Message.obtain();
+        paramArConfigInfo.what = 2;
+        paramArConfigInfo.obj = paramArEffectConfig;
+        apkr.a(this.a).sendMessage(paramArConfigInfo);
+      }
+    } while (paramARCommonConfigInfo == null);
+    paramArConfigInfo = Message.obtain();
+    paramArConfigInfo.what = 9;
+    paramArConfigInfo.obj = paramARCommonConfigInfo;
+    apkr.a(this.a).sendMessage(paramArConfigInfo);
   }
 }
 

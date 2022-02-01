@@ -3,24 +3,24 @@ package com.tencent.biz.pubaccount.readinjoy.viola;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import anhk;
-import bgmg;
-import bhgg;
-import bisz;
+import antf;
+import bhmi;
+import bigv;
+import bjty;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import tsq;
+import tjn;
 
 public final class ViolaAccessHelper$6
   implements Runnable
 {
-  public ViolaAccessHelper$6(String paramString, tsq paramtsq) {}
+  public ViolaAccessHelper$6(String paramString, tjn paramtjn) {}
   
   public void run()
   {
-    String str = bhgg.a(anhk.cG + bisz.a(this.jdField_a_of_type_JavaLangString) + ".js");
+    String str = bigv.a(antf.cG + bjty.a(this.jdField_a_of_type_JavaLangString) + ".js");
     if (TextUtils.isEmpty(str)) {
       if (QLog.isColorLevel()) {
         QLog.e("ViolaAccessHelper", 2, "loadJSFromNet [url:" + this.jdField_a_of_type_JavaLangString + "] get localPath error, download cancel");
@@ -35,7 +35,7 @@ public final class ViolaAccessHelper$6
           QLog.d("ViolaAccessHelper", 2, "loadJSFromNet [ url:" + this.jdField_a_of_type_JavaLangString + "] Download to " + str);
         }
         if (new File(str).exists()) {
-          bgmg.d(str);
+          bhmi.d(str);
         }
         boolean bool = HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(str));
         if (QLog.isColorLevel()) {
@@ -44,10 +44,10 @@ public final class ViolaAccessHelper$6
         if (bool) {}
         try
         {
-          if (this.jdField_a_of_type_Tsq != null) {
+          if (this.jdField_a_of_type_Tjn != null) {
             new Handler(Looper.getMainLooper()).postDelayed(new ViolaAccessHelper.6.1(this, str), 0L);
           }
-          if (TextUtils.isEmpty(bgmg.b(new File(str))))
+          if (TextUtils.isEmpty(bhmi.b(new File(str))))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ViolaAccessHelper", 2, "loadJSFromNet download isSucc but readFileToString is null");
@@ -61,7 +61,7 @@ public final class ViolaAccessHelper$6
         }
         catch (IOException localIOException) {}
       }
-    } while (this.jdField_a_of_type_Tsq == null);
+    } while (this.jdField_a_of_type_Tjn == null);
     new Handler(Looper.getMainLooper()).postDelayed(new ViolaAccessHelper.6.2(this), 0L);
     return;
   }

@@ -1,8 +1,15 @@
-public final class bqkd
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class bqkd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static boolean a(int paramInt)
+  bqkd(bqka parambqka) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return (paramInt == 3006) || (paramInt == 3009) || (paramInt == 3014) || (paramInt == 3068) || (paramInt == 3075) || (paramInt == 3078) || (paramInt == 3079);
+    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.k();
   }
 }
 

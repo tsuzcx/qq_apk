@@ -1,39 +1,40 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class bngs
-  implements Animator.AnimatorListener
+  extends bmsy
 {
-  public bngs(AECropperImageView paramAECropperImageView) {}
+  public JceStruct a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bngs(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
   {
-    AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationCancel(paramAnimator);
-    }
+    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
+    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
+    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
+    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
+    this.a = localCLIENT_NBP_REPORT_REQ;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a()
   {
-    AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationEnd(paramAnimator);
-    }
+    return 0;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
+  public String getCmdString()
   {
-    AECropperImageView.a(this.a, true);
+    return "QzoneNewService.nbpClientReport";
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public JceStruct getReq()
   {
-    AECropperImageView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.onAnimationStart(paramAnimator);
-    }
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "nbpClientReport";
   }
 }
 

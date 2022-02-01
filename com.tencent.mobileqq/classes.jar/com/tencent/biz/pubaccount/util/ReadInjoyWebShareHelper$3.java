@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
-import bhod;
+import bioy;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
-import nlw;
+import nnr;
 import org.json.JSONObject;
-import uat;
+import uav;
 
 public class ReadInjoyWebShareHelper$3
   implements Runnable
 {
-  public ReadInjoyWebShareHelper$3(uat paramuat, HashMap paramHashMap, String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3, String paramString4, String paramString5) {}
+  public ReadInjoyWebShareHelper$3(uav paramuav, HashMap paramHashMap, String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
-    Object localObject2 = nlw.a(this.jdField_a_of_type_JavaUtilHashMap);
+    Object localObject2 = nnr.a(this.jdField_a_of_type_JavaUtilHashMap);
     Object localObject1 = (String)((HashMap)localObject2).get("share_url");
     if (localObject1 == null) {
       localObject1 = this.jdField_a_of_type_JavaLangString;
@@ -28,12 +28,12 @@ public class ReadInjoyWebShareHelper$3
         localObject2 = this.b;
       }
       localObject1 = new ReadInjoyWebShareHelper.3.1(this, (String)localObject1, (String)localObject2);
-      if (uat.a(this.this$0).getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
+      if (uav.a(this.this$0).getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
       {
-        uat.a(this.this$0).runOnUiThread((Runnable)localObject1);
+        uav.a(this.this$0).runOnUiThread((Runnable)localObject1);
         return;
       }
-      uat.a(this.this$0).a().runOnUiThread((Runnable)localObject1);
+      uav.a(this.this$0).a().runOnUiThread((Runnable)localObject1);
       return;
     }
   }

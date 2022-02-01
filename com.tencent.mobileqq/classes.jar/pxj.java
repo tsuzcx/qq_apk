@@ -1,19 +1,22 @@
-public class pxj
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
+
+class pxj
+  implements qod
 {
-  public int a;
-  public String a;
-  public boolean a;
+  pxj(pxe parampxe, ppu paramppu, Container paramContainer, int paramInt) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
+    Object localObject = this.jdField_a_of_type_Ppu.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((qyg)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      return;
+    }
+    localObject = (qyh)((qyg)localObject).a.get(paramInt);
+    pxe.a(this.jdField_a_of_type_Pxe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu.a(), (int)((qyh)localObject).a, this.jdField_a_of_type_Ppu.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Ppu.a());
   }
 }
 

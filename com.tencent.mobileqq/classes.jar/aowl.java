@@ -1,32 +1,33 @@
 import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aowl
+  extends aoxh
 {
-  Context a;
-  public ayko a;
-  public bgpa a;
-  
-  public aowl(Context paramContext, ayko paramayko)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Ayko = paramayko;
-    this.jdField_a_of_type_Bgpa = bglp.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    paramContext = new aowm(this);
-    this.jdField_a_of_type_Bgpa.setPositiveButton(2131690078, paramContext);
-    this.jdField_a_of_type_Bgpa.setNegativeButton(2131690077, paramContext);
-    this.jdField_a_of_type_Bgpa.setMessage(2131690080);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Bgpa.isShowing()) {
-      this.jdField_a_of_type_Bgpa.show();
+    paramQQAppInterface = new aowk(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "contact";
+    paramQQAppInterface.c = "add";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceUIController", 2, "doOnClickFeedBack");
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
     }
-    bcst.b(null, "dc00898", "", "", "0X8008352", "0X8008352", 0, 0, "", "", "", "");
+    return paramQQAppInterface;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.contact.recommendtroop;
 
-import ajcf;
-import ajcl;
-import ajcn;
+import ajno;
+import ajnu;
+import ajnw;
 
 public class RecommendTroopListWrapper$2$1
   implements Runnable
 {
-  public RecommendTroopListWrapper$2$1(ajcn paramajcn, String paramString) {}
+  public RecommendTroopListWrapper$2$1(ajnw paramajnw, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajcn.a.a != null) {
-      this.jdField_a_of_type_Ajcn.a.a.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Ajnw.a.a != null) {
+      this.jdField_a_of_type_Ajnw.a.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

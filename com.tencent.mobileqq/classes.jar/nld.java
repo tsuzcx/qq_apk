@@ -1,10 +1,67 @@
-public abstract interface nld
+public class nld
 {
-  public abstract void a(Runnable paramRunnable);
+  public static int a()
+  {
+    arkf localarkf = (arkf)aran.a().a(207);
+    if (localarkf != null) {
+      return localarkf.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
   
-  public abstract void b(Runnable paramRunnable);
+  public static String a()
+  {
+    arkf localarkf = (arkf)aran.a().a(207);
+    if (localarkf != null) {
+      return localarkf.jdField_a_of_type_JavaLangString;
+    }
+    return null;
+  }
   
-  public abstract void c(Runnable paramRunnable);
+  public static int b()
+  {
+    arkf localarkf = (arkf)aran.a().a(207);
+    if (localarkf != null) {
+      return localarkf.b;
+    }
+    return -1;
+  }
+  
+  public static String b()
+  {
+    arkf localarkf = (arkf)aran.a().a(207);
+    if (localarkf != null) {
+      return localarkf.c;
+    }
+    return null;
+  }
+  
+  public static String c()
+  {
+    arkf localarkf = (arkf)aran.a().a(207);
+    if (localarkf != null) {
+      return localarkf.d;
+    }
+    return null;
+  }
+  
+  public static String d()
+  {
+    arkf localarkf = (arkf)aran.a().a(207);
+    if (localarkf != null) {
+      return localarkf.e;
+    }
+    return null;
+  }
+  
+  public static String e()
+  {
+    arkf localarkf = (arkf)aran.a().a(207);
+    if (localarkf != null) {
+      return localarkf.f;
+    }
+    return null;
+  }
 }
 
 

@@ -1,44 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahkg
-  implements View.OnClickListener
+  extends ahkx
 {
-  ahkg(ahkf paramahkf) {}
-  
-  public void onClick(View paramView)
+  ahkg(ahgk paramahgk)
   {
-    Object localObject = afur.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = (MessageForText)localObject;
-      if (!this.a.a())
-      {
-        if (((MessageForText)localObject).msgtype == -1003)
-        {
-          afur.n = true;
-          localObject = bgva.a(((MessageForText)localObject).action);
-          localObject = bgng.a(this.a.a, paramView.getContext(), (String)localObject);
-          if (localObject != null) {
-            ((bgmp)localObject).a();
-          }
-        }
-        if ((paramView instanceof ETTextView)) {
-          ((ETTextView)paramView).startAnimation(true, false);
-        }
-      }
-    }
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahpx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

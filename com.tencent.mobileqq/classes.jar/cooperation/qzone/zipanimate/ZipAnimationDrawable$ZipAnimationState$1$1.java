@@ -1,21 +1,21 @@
 package cooperation.qzone.zipanimate;
 
-import bmpl;
-import bmpo;
-import bmpp;
-import bmpq;
+import bnqp;
+import bnqs;
+import bnqt;
+import bnqu;
 
 public class ZipAnimationDrawable$ZipAnimationState$1$1
   implements Runnable
 {
-  public ZipAnimationDrawable$ZipAnimationState$1$1(bmpq parambmpq) {}
+  public ZipAnimationDrawable$ZipAnimationState$1$1(bnqu parambnqu) {}
   
   public void run()
   {
     if (this.a.a.a.a != null) {
       this.a.a.a.a.onDrawableLoaded();
     }
-    if (bmpl.a(this.a.a.a)) {
+    if (bnqp.a(this.a.a.a)) {
       this.a.a.a.d();
     }
   }

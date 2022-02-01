@@ -1,70 +1,88 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.widget.EditText;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.pb.QQALive.GetOpenInfoRsp;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-final class bmft
-  implements arxd
+public class bmft
+  extends MSFServlet
 {
-  bmft(EditText paramEditText) {}
-  
-  public void a(arxg paramarxg)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramarxg == null) || (this.a == null)) {}
-    int i;
-    int j;
+    if (QLog.isColorLevel()) {
+      QLog.d("IliveAuthServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    Object localObject;
     do
     {
-      do
-      {
-        return;
-      } while (!(paramarxg instanceof asdb));
-      i = this.a.getSelectionStart();
-      j = this.a.getSelectionEnd();
-    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
-    this.a.getEditableText().replace(i, j, bdol.b(((asdb)paramarxg).a));
-  }
-  
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
-  
-  public boolean a(arxg paramarxg)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a == null) {}
-    for (;;)
-    {
       return;
-      if (this.a.getSelectionStart() != 0) {
-        try
-        {
-          Editable localEditable = this.a.getText();
-          int i = this.a.getSelectionStart();
-          int j = TextUtils.getOffsetBefore(this.a.getText(), i);
-          if (i != j)
-          {
-            localEditable.delete(Math.min(i, j), Math.max(i, j));
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
+      localObject = paramFromServiceMsg.getServiceCmd();
+    } while (localObject == null);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      boolean bool = paramFromServiceMsg.isSuccess();
+      localStringBuilder = new StringBuilder().append("resp:").append((String)localObject).append(" is ");
+      if (!bool) {
+        break label265;
       }
     }
+    label265:
+    for (paramIntent = "";; paramIntent = "not")
+    {
+      QLog.d("IliveAuthServlet", 2, paramIntent + " success");
+      paramIntent = null;
+      if (paramFromServiceMsg.isSuccess())
+      {
+        int i = paramFromServiceMsg.getWupBuffer().length - 4;
+        paramIntent = new byte[i];
+        bhvd.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      }
+      if (!((String)localObject).equals("qqvalivelogin.GetOpenInfo")) {
+        break;
+      }
+      localObject = new QQALive.GetOpenInfoRsp();
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label283;
+      }
+      try
+      {
+        ((QQALive.GetOpenInfoRsp)localObject).mergeFrom(paramIntent);
+        if ((TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sOpenId.get())) || (TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get()))) {
+          break label271;
+        }
+        bmfn.a().a(true, ((QQALive.GetOpenInfoRsp)localObject).sOpenId.get(), ((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get());
+        return;
+      }
+      catch (Exception paramIntent)
+      {
+        bmfn.a().a(false, "", "");
+        return;
+      }
+    }
+    label271:
+    bmfn.a().a(false, "", "");
+    return;
+    label283:
+    bmfn.a().a(false, "", "");
   }
   
-  public void b(arxg paramarxg) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("IliveAuthServlet", 2, "onSend exit cmd=" + str);
+    }
+  }
 }
 
 

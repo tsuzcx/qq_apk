@@ -1,30 +1,19 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bidd
+  implements View.OnClickListener
 {
-  private static long jdField_a_of_type_Long = 400L;
-  private static boolean jdField_a_of_type_Boolean;
+  public bidd(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void a(ViewGroup paramViewGroup)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    paramViewGroup.invalidate();
-    View localView = paramViewGroup.getChildAt(0);
-    paramViewGroup = paramViewGroup.getChildAt(1);
-    bibs localbibs = new bibs(paramViewGroup);
-    localbibs.setDuration(jdField_a_of_type_Long);
-    localbibs.setFillAfter(true);
-    localbibs.setAnimationListener(new bide(localView, paramViewGroup));
-    paramViewGroup.startAnimation(localbibs);
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

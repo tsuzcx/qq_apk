@@ -1,34 +1,43 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
 
 class avzv
-  extends anxg
+  extends BroadcastReceiver
 {
-  avzv(avzs paramavzs) {}
+  avzv(avzt paramavzt) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
-      avzs.a(avzs.a(this.a), 1, paramString);
-    }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    if ((avzs.a(this.a).a() == 1) && (avzs.a(this.a).a().equals(paramString)))
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    int k;
+    int i;
+    if (paramContext.equals(awax.a("com.tencent.od")))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
       }
-      if (avzs.a(this.a) != null)
+      paramContext = awaj.a;
+      k = paramContext.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      if ((i >= k) || ((j == paramContext[i]) && (avzt.a(this.a).isShowing()))) {}
+      try
       {
-        avzs.a(this.a).finish();
-        QQToast.a(avzs.a(this.a), 2131692847, 1).a();
+        avzt.a(this.a).dismiss();
+        label105:
+        i += 1;
+        continue;
+        return;
       }
-      avzs.a(avzs.a(this.a), 1, paramString);
+      catch (Throwable paramIntent)
+      {
+        break label105;
+      }
     }
   }
 }

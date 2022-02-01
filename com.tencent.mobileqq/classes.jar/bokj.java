@@ -1,6 +1,31 @@
-public abstract interface bokj
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+import dov.com.qq.im.capture.view.CountDownView;
+
+class bokj
+  implements Observer<bopg>
 {
-  public abstract void a(int paramInt);
+  bokj(bojy parambojy) {}
+  
+  public void a(@Nullable bopg parambopg)
+  {
+    if (parambopg == null) {
+      return;
+    }
+    boolean bool = parambopg.a();
+    if (bool) {
+      bojy.c(this.a);
+    }
+    for (;;)
+    {
+      bojy.a(this.a).a(bool, new bokk(this, parambopg));
+      return;
+      if (bojy.a(this.a) != null) {
+        bojy.a(this.a).a();
+      }
+    }
+  }
 }
 
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import arrm;
-import arro;
-import aryf;
+import asha;
+import ashc;
+import asnt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class EmoticonPanelFavHelper$2
   implements Runnable
 {
-  public EmoticonPanelFavHelper$2(aryf paramaryf, QQAppInterface paramQQAppInterface, boolean paramBoolean, SharedPreferences paramSharedPreferences, String paramString) {}
+  public EmoticonPanelFavHelper$2(asnt paramasnt, QQAppInterface paramQQAppInterface, boolean paramBoolean, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void run()
   {
@@ -21,15 +21,15 @@ public class EmoticonPanelFavHelper$2
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      arro localarro = (arro)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-      List localList1 = localarro.a();
-      if ((localList1 != null) && (localList1.size() > arrm.a))
+      ashc localashc = (ashc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+      List localList1 = localashc.a();
+      if ((localList1 != null) && (localList1.size() > asha.a))
       {
-        List localList2 = localList1.subList(0, localList1.size() - arrm.a);
+        List localList2 = localList1.subList(0, localList1.size() - asha.a);
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelFavHelper", 2, "delListOverflow=" + localList2.toString() + "emolist.size=" + localList1.size());
         }
-        localarro.b(localList2);
+        localashc.b(localList2);
         this.this$0.b();
       }
       this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("local_overflow" + this.jdField_a_of_type_JavaLangString, true).apply();

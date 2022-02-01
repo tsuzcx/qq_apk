@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import bcjy;
+import bdcq;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class Game3DNativeEvent
-  implements bcjy
+  implements bdcq
 {
   public void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {

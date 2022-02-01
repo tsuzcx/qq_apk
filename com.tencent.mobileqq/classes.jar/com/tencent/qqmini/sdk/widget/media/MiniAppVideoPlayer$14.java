@@ -32,8 +32,8 @@ class MiniAppVideoPlayer$14
       localActivity = (Activity)this.this$0.atyRef.get();
     } while ((localActivity == null) || (!(this.this$0.getParent() instanceof CoverVideoView)));
     this.this$0.isFullScreen = true;
-    MiniAppVideoPlayer.access$4300(this.this$0).setVisibility(0);
     MiniAppVideoPlayer.access$4400(this.this$0).setVisibility(0);
+    MiniAppVideoPlayer.access$4500(this.this$0).setVisibility(0);
     if (this.this$0.hideTimeDesc)
     {
       MiniAppVideoPlayer.access$3400(this.this$0).setVisibility(0);
@@ -46,24 +46,24 @@ class MiniAppVideoPlayer$14
     {
       if (localIMiniAppContext != null)
       {
-        MiniAppVideoPlayer.access$4502(this.this$0, GetPageIntAction.obtain(localIMiniAppContext).getNaviBarVisibility());
-        MiniAppVideoPlayer.access$4602(this.this$0, GetPageIntAction.obtain(localIMiniAppContext).getTabBarVisibility());
+        MiniAppVideoPlayer.access$4602(this.this$0, GetPageIntAction.obtain(localIMiniAppContext).getNaviBarVisibility());
+        MiniAppVideoPlayer.access$4702(this.this$0, GetPageIntAction.obtain(localIMiniAppContext).getTabBarVisibility());
         SetViewVisibilityAction.obtain(localIMiniAppContext).setNaviBarVisibility(8);
         SetViewVisibilityAction.obtain(localIMiniAppContext).setTabBarVisibility(8);
       }
-      MiniAppVideoPlayer.access$4702(this.this$0, ((CoverVideoView)this.this$0.getParent()).getLayoutParams());
+      MiniAppVideoPlayer.access$4802(this.this$0, ((CoverVideoView)this.this$0.getParent()).getLayoutParams());
       if (this.this$0.getParent().getParent() != null)
       {
-        MiniAppVideoPlayer.access$4802(this.this$0, ((ViewGroup)this.this$0.getParent().getParent()).getScrollY());
+        MiniAppVideoPlayer.access$4902(this.this$0, ((ViewGroup)this.this$0.getParent().getParent()).getScrollY());
         ((ViewGroup)this.this$0.getParent().getParent()).scrollTo(0, 0);
       }
-      boolean bool = MiniAppVideoPlayer.access$4900(this.this$0);
-      MiniAppVideoPlayer.access$5000(this.this$0, localIMiniAppContext, bool);
+      boolean bool = MiniAppVideoPlayer.access$5000(this.this$0);
+      MiniAppVideoPlayer.access$5100(this.this$0, localIMiniAppContext, bool);
       localActivity.getWindow().getDecorView().setSystemUiVisibility(2);
-      MiniAppVideoPlayer.access$5100(this.this$0, localActivity, bool);
-      MiniAppVideoPlayer.access$5200(this.this$0, localActivity);
+      MiniAppVideoPlayer.access$5200(this.this$0, localActivity, bool);
+      MiniAppVideoPlayer.access$5300(this.this$0, localActivity);
       MiniAppVideoPlayer.access$3800(this.this$0);
-      MiniAppVideoPlayer.access$5300(this.this$0, bool);
+      MiniAppVideoPlayer.access$5400(this.this$0, bool);
       return;
     }
   }

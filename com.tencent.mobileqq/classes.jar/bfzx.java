@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bfzx
-  implements bdfn
+  implements QQPermissionCallback
 {
-  public bfzx(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bdfn parambdfn) {}
+  public bfzx(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bfzy(this));
+    bhlq.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
+    blgx.a(this.a.getActivity());
   }
 }
 

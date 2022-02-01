@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
-class tab
-  implements View.OnLongClickListener
+public class tab
+  implements szu
 {
-  tab(szv paramszv, View paramView, ProteusItemData paramProteusItemData) {}
+  private final ViewPagerCompat a;
   
-  public boolean onLongClick(View paramView)
+  public tab(ViewPagerCompat paramViewPagerCompat)
   {
-    paramView = new bguh();
-    paramView.a(0, anni.a(2131715552));
-    bgkw.a(this.jdField_a_of_type_AndroidViewView, paramView, new tac(this), new tad(this));
-    return true;
+    this.a = paramViewPagerCompat;
   }
+  
+  public void a(szz paramszz)
+  {
+    this.a.setCurrentItem(paramszz.a());
+  }
+  
+  public void b(szz paramszz) {}
+  
+  public void c(szz paramszz) {}
 }
 
 

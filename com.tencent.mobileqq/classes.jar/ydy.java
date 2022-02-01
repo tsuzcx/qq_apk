@@ -1,24 +1,32 @@
 import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class ydy
-  extends wfr<ydh, wxn>
+  implements Subscriber
 {
-  public ydy(ydh paramydh)
+  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public ydy(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    super(paramydh);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
   }
   
-  public void a(@NonNull ydh paramydh, @NonNull wxn paramwxn)
+  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
   {
-    ydh.a(paramydh, paramwxn.a, this.TAG);
+    paramList.add(zoe.class);
   }
   
-  public Class acceptEventClass()
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
   {
-    return wxn.class;
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.c();
+    }
   }
-  
-  public void b(@NonNull ydh paramydh, @NonNull wxn paramwxn) {}
 }
 
 

@@ -17,9 +17,9 @@ class ForwardShareCardOption$1
     //   7: aload_0
     //   8: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_Int	I
     //   11: if_icmpne +364 -> 375
-    //   14: invokestatic 43	bgjq:a	()Z
+    //   14: invokestatic 43	bhjr:a	()Z
     //   17: ifeq +138 -> 155
-    //   20: getstatic 48	anhk:bM	Ljava/lang/String;
+    //   20: getstatic 48	antf:bM	Ljava/lang/String;
     //   23: astore 6
     //   25: new 50	java/lang/StringBuilder
     //   28: dup
@@ -69,7 +69,7 @@ class ForwardShareCardOption$1
     //   126: invokestatic 94	com/tencent/mobileqq/forward/ForwardShareCardOption:a	(Lcom/tencent/mobileqq/forward/ForwardShareCardOption;Ljava/lang/String;Ljava/lang/String;)V
     //   129: aload_0
     //   130: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
-    //   133: invokevirtual 97	com/tencent/mobileqq/forward/ForwardShareCardOption:y	()V
+    //   133: invokevirtual 97	com/tencent/mobileqq/forward/ForwardShareCardOption:z	()V
     //   136: aload_0
     //   137: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
     //   140: getfield 100	com/tencent/mobileqq/forward/ForwardShareCardOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
@@ -93,7 +93,7 @@ class ForwardShareCardOption$1
     //   178: invokespecial 123	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   181: invokespecial 126	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   184: astore 8
-    //   186: invokestatic 132	bgmo:e	()Landroid/graphics/drawable/Drawable;
+    //   186: invokestatic 132	bhmq:e	()Landroid/graphics/drawable/Drawable;
     //   189: checkcast 134	android/graphics/drawable/BitmapDrawable
     //   192: invokevirtual 138	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
     //   195: getstatic 144	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
@@ -199,7 +199,7 @@ class ForwardShareCardOption$1
     //   401: invokevirtual 170	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   404: astore 7
     //   406: aload 6
-    //   408: invokestatic 175	atwl:a	(Ljava/lang/String;)Z
+    //   408: invokestatic 175	auog:a	(Ljava/lang/String;)Z
     //   411: ifeq +152 -> 563
     //   414: new 177	java/util/ArrayList
     //   417: dup
@@ -214,7 +214,7 @@ class ForwardShareCardOption$1
     //   435: aload_0
     //   436: getfield 23	com/tencent/mobileqq/forward/ForwardShareCardOption$1:b	Ljava/lang/String;
     //   439: ldc 184
-    //   441: invokestatic 189	bltb:a	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
+    //   441: invokestatic 189	bmud:a	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
     //   444: astore 6
     //   446: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   449: ifeq +41 -> 490
@@ -275,12 +275,12 @@ class ForwardShareCardOption$1
     //   571: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
     //   574: getfield 162	com/tencent/mobileqq/forward/ForwardShareCardOption:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   577: bipush 6
-    //   579: invokevirtual 225	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lanii;
-    //   582: checkcast 227	anks
+    //   579: invokevirtual 225	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lanud;
+    //   582: checkcast 227	anwo
     //   585: aload_0
     //   586: getfield 21	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   589: iconst_1
-    //   590: invokevirtual 230	anks:a	(Ljava/lang/String;Z)V
+    //   590: invokevirtual 230	anwo:a	(Ljava/lang/String;Z)V
     //   593: return
     //   594: astore 6
     //   596: aload 8

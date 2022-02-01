@@ -1,27 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
 
 public class afgn
-  extends MqqHandler
+  extends aggl
 {
-  public afgn(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.finish();
-      return;
-      this.a.e();
-      return;
-    } while (this.a.isFinishing());
-    SubLoginActivity.a(this.a, true);
-  }
+  public ImageView a;
+  public BreathAnimationLayout a;
+  public StringBuilder a;
+  public TextView c;
 }
 
 

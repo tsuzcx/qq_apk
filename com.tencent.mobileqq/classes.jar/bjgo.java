@@ -1,18 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class bjgo
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/widget/qus/QUSDragFloatController;", "", "createContentView", "Landroid/view/View;", "defaultHeight", "", "maxHeight", "minHeight", "onEmptyClick", "", "onShowDefault", "onShowMin", "onShowTotal", "showMode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bjgo
 {
-  public bjgo(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  @Nullable
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract void d();
 }
 
 

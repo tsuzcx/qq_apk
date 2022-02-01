@@ -1,48 +1,115 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import android.graphics.Bitmap;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 
 class bbqy
-  implements View.OnClickListener
+  implements VideoPlayerCallback
 {
-  bbqy(bbqr parambbqr, Context paramContext, bbnx parambbnx) {}
+  bbqy(bbqw parambbqw, VideoPlayParam paramVideoPlayParam) {}
   
-  public void onClick(View paramView)
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    bbup.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bbnx.a.jdField_a_of_type_JavaLangString);
-    bbhe localbbhe;
-    JSONObject localJSONObject;
-    if (bbhd.b.containsKey(this.jdField_a_of_type_Bbnx))
-    {
-      localbbhe = (bbhe)bbhd.b.get(this.jdField_a_of_type_Bbnx);
-      localJSONObject = new JSONObject();
+    if (QLog.isColorLevel()) {
+      QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onCapFrame, id:" + paramLong + ", isSuccess:" + paramBoolean + ", w:" + paramInt1 + ", h:" + paramInt2);
     }
-    try
+    bbqw.a(this.jdField_a_of_type_Bbqw, paramBitmap);
+  }
+  
+  public void onDownloadComplete(long paramLong)
+  {
+    QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, "@@@@@@@@@@@ videoView Download Success:" + paramLong);
+    AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_Bbqw.a();
+    if (!localAIOFileVideoData.f) {
+      this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.d(localAIOFileVideoData);
+    }
+  }
+  
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
+  
+  public void onFirstFrameRendered(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onFirstFrameRendered, id:" + paramLong);
+    }
+  }
+  
+  public void onLoopBack(long paramLong1, long paramLong2) {}
+  
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().e("AIOFileVideoView<FileAssistant>XOXO", 1, "onPlayError, id = " + paramLong + " ,module = " + paramInt1 + " , errorType = " + paramInt2 + ", errCode = " + paramInt3 + " , exInfo = " + paramString);
+    bbqw.a(this.jdField_a_of_type_Bbqw, paramInt1, paramInt3, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+  }
+  
+  public void onPlayProgress(long paramLong1, long paramLong2)
+  {
+    bbqw.a(this.jdField_a_of_type_Bbqw, paramLong2);
+    int i = (int)(paramLong2 / this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs() * 10000.0D);
+    this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(paramLong2));
+    this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
+  }
+  
+  public void onStateChange(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onStateChange , state = " + bbqw.a(this.jdField_a_of_type_Bbqw, paramInt) + ", msgUniseq=" + paramLong);
+    }
+    switch (paramInt)
     {
-      localJSONObject.put("project", bbrf.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localbbhe.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      bbrf.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localbbhe.jdField_a_of_type_Long + "").obj2(localbbhe.b).ver1(localbbhe.jdField_a_of_type_JavaLangString).ver2(bbrf.a(this.jdField_a_of_type_Bbnx.c)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbhd.jdField_a_of_type_Long));
-      EventCollector.getInstance().onViewClicked(paramView);
+    case 7: 
+    default: 
       return;
-    }
-    catch (JSONException localJSONException)
-    {
+    case 4: 
+      Object localObject = this.jdField_a_of_type_Bbqw.a();
+      if (((AIOFileVideoData)localObject).f) {
+        bbqw.a(this.jdField_a_of_type_Bbqw, 5);
+      }
       for (;;)
       {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
+        this.jdField_a_of_type_Bbqw.updateUI();
+        if (localObject != null)
+        {
+          this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.b(((AIOFileVideoData)localObject).a);
+          this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a(((AIOFileVideoData)localObject).a);
+        }
+        if (!this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a(this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.getCurrentPosition())) {
+          break;
+        }
+        this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a();
+        localObject = this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.getSelectedItem();
+        if ((localObject == null) || (!(((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)) || (this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a() == null) || (this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null)) {
+          break;
+        }
+        this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a().a(bbov.a(((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).d, this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos(), this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a(), this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a));
+        return;
+        bbqw.a(this.jdField_a_of_type_Bbqw, 1);
       }
+    case 8: 
+      this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs()));
+      this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(100);
+      bbqw.a(this.jdField_a_of_type_Bbqw, 0);
+      this.jdField_a_of_type_Bbqw.updateUI();
+      return;
+    case 9: 
+      bbqw.a(this.jdField_a_of_type_Bbqw);
+      return;
+    case 6: 
+      bbqw.a(this.jdField_a_of_type_Bbqw, 6);
+      this.jdField_a_of_type_Bbqw.updateUI();
+      return;
     }
+    bbqw.a(this.jdField_a_of_type_Bbqw, 3);
+    this.jdField_a_of_type_Bbqw.updateUI();
   }
 }
 

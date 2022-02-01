@@ -1,8 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public abstract interface tix
+class tix
+  implements osf
 {
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, int paramInt);
+  tix(tis paramtis) {}
+  
+  public void onViewCreated(boolean paramBoolean)
+  {
+    tis.a(this.a).d();
+  }
 }
 
 

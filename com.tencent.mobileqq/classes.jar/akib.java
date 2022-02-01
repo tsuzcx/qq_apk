@@ -1,34 +1,24 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.photo.album.OtherCommonData;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akib
-  implements OtherCommonData
+class akib
+  implements ajkg
 {
-  public int a = (int)beao.a();
-  public long a;
-  public HashMap<String, PicInfo> a;
-  public boolean a;
-  private boolean b;
+  akib(akha paramakha) {}
   
-  public void a(boolean paramBoolean, PhotoCommonBaseData<akib> paramPhotoCommonBaseData)
+  public void an_() {}
+  
+  public void b()
   {
-    this.b = paramBoolean;
-    if (paramBoolean)
-    {
-      paramPhotoCommonBaseData.needMediaInfo = true;
-      bkel.a();
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
     }
+    ((ajka)this.a.a.app.getManager(34)).d();
   }
   
-  public boolean a()
+  public void j_(int paramInt)
   {
-    if (Build.VERSION.SDK_INT < 17) {
-      return false;
-    }
-    return this.b;
+    this.a.f();
   }
 }
 

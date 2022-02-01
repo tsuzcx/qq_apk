@@ -1,13 +1,22 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 
 public class rgh
-  implements Cloneable
+  extends prw<ColumnInfo, pro<ColumnInfo>>
 {
-  public int a;
-  public long a;
-  public List<Long> a;
-  public int b;
-  public long b;
+  public rgh(rgf paramrgf)
+  {
+    super(paramrgf);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(pro<ColumnInfo> parampro)
+  {
+    super.a(parampro);
+  }
 }
 
 

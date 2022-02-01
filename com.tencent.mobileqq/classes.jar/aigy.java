@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aigy
-  implements afum
+  extends aigs
 {
-  public aigy(TroopChatPie paramTroopChatPie) {}
+  public aghh a;
+  public Bitmap a;
+  public boolean a;
+  public Drawable[] a;
   
-  public void a(aimh paramaimh)
+  public aigy(String paramString)
   {
-    ((avwk)this.a.a(33)).a(1, paramaimh);
-    ((agnm)this.a.a(43)).b(1, paramaimh);
+    super(paramString);
   }
   
-  public void b(aimh paramaimh)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    ((avwk)this.a.a(33)).b(1, paramaimh);
-    ((agnm)this.a.a(43)).a(1, paramaimh);
-    paramaimh = (agkw)this.a.a(71);
-    if (paramaimh != null) {
-      paramaimh.a(false);
+    if (paramRedPacketInfo != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      this.jdField_a_of_type_Aghh = paramRedPacketInfo.jdField_a_of_type_Aghh;
+      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
     }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
   }
 }
 

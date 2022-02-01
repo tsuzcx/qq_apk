@@ -1,105 +1,54 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoTarget;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class xek
+public class xek
+  extends wov
 {
-  public static <K, V, T extends V> T a(@NonNull Map<K, V> paramMap, K paramK, T paramT)
-  {
-    Object localObject = paramMap.get(paramK);
-    if ((localObject != null) || (paramMap.containsKey(paramK))) {
-      paramT = localObject;
-    }
-    return paramT;
-  }
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<String> b;
   
-  public static String a(String paramString)
+  public xek(qqstory_service.RspBannerVideoList paramRspBannerVideoList)
   {
-    return anhk.br + bdsh.c(paramString);
-  }
-  
-  public static String a(String paramString, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str1 = null;
-    int i = 1;
-    String[] arrayOfString = paramString.split("&");
-    int k = arrayOfString.length;
-    int j = 0;
-    paramString = str1;
-    if (j < k)
+    super(paramRspBannerVideoList.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    if ((paramRspBannerVideoList.video_list.has()) && (!paramRspBannerVideoList.video_list.isEmpty()))
     {
-      str1 = arrayOfString[j];
-      String str2 = str1.split("=")[0];
-      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
+      Iterator localIterator = paramRspBannerVideoList.video_list.get().iterator();
+      while (localIterator.hasNext())
       {
-        if (i != 0) {
-          i = 0;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(str1);
-          j += 1;
-          break;
-          localStringBuilder.append('&');
-        }
-      }
-      str1 = paramString;
-      if (QLog.isColorLevel())
-      {
-        if (paramString != null) {
-          break label216;
-        }
-        paramString = new StringBuilder();
-      }
-      for (;;)
-      {
-        paramString.append(str2);
-        str1 = paramString;
-        paramString = str1;
-        break;
-        label216:
-        paramString.append('|');
+        qqstory_struct.VideoTarget localVideoTarget = (qqstory_struct.VideoTarget)localIterator.next();
+        this.jdField_a_of_type_JavaUtilList.add(localVideoTarget.vid.get().toStringUtf8());
+        this.jdField_b_of_type_JavaUtilList.add(localVideoTarget.feed_id.get().toStringUtf8());
       }
     }
-    if ((paramString != null) && (QLog.isColorLevel())) {
-      QLog.d("ShareUtil", 2, "remove params:" + paramString);
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return paramString;
-      arrayOfString = paramString.split("\\?");
-    } while (arrayOfString.length != 2);
-    paramString = arrayOfString[0];
-    String[] arrayOfString = arrayOfString[1].split("&");
-    StringBuilder localStringBuilder = new StringBuilder("?");
-    int i = 0;
-    if (i < arrayOfString.length)
-    {
-      Object localObject = arrayOfString[i].split("=");
-      if (localObject.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject = localObject[0];
-        if ("s".equals(localObject)) {
-          arrayOfString[i] = ((String)localObject + "=" + "140");
-        }
-        localStringBuilder.append(arrayOfString[i]);
-        if (i + 1 < arrayOfString.length) {
-          localStringBuilder.append("&");
-        }
+    if (paramRspBannerVideoList.is_end.has()) {
+      if (paramRspBannerVideoList.is_end.get() != 1) {
+        break label202;
       }
     }
-    return paramString + localStringBuilder.toString();
+    label202:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (paramRspBannerVideoList.next_cookie.has()) {
+        this.jdField_a_of_type_JavaLangString = paramRspBannerVideoList.next_cookie.get().toStringUtf8();
+      }
+      if (paramRspBannerVideoList.total_count.has()) {
+        this.jdField_b_of_type_Int = paramRspBannerVideoList.total_count.get();
+      }
+      return;
+    }
   }
 }
 

@@ -1,33 +1,18 @@
-import java.util.LinkedList;
-import java.util.List;
-
-public class awvw<T>
+public class awvw
 {
-  private List<T> a = new LinkedList();
+  public int a;
+  public String a;
   
-  public int a()
+  public awvw()
   {
-    return this.a.size();
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public T a()
+  public String toString()
   {
-    if (this.a.size() == 0) {
-      return null;
-    }
-    return this.a.remove(0);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (!this.a.contains(paramT)) {
-      this.a.add(paramT);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommonGuideInfo|").append("webUrl=").append(this.jdField_a_of_type_JavaLangString).append(",type=").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

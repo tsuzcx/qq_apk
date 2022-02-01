@@ -460,14 +460,8 @@ public class MiniReportManager
     reportEventType(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString3, paramInt2, "0", 0L, null);
   }
   
-  public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong, String paramString5)
+  public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    reportEventType(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, paramString5, "", "", "", "");
-  }
-  
-  public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    long l2 = System.currentTimeMillis();
     Object localObject2 = "0000000000";
     Object localObject1 = localObject2;
     if (paramMiniAppConfig != null)
@@ -478,14 +472,14 @@ public class MiniReportManager
       }
     }
     localObject2 = getLaunchState((String)localObject1);
-    long l1;
+    long l;
     if (paramInt1 == 1)
     {
-      QLog.d("MiniReportManager", 1, "launch start  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + l2);
+      QLog.d("MiniReportManager", 1, "launch start  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + paramLong2);
       MiniAppStartState.reset((String)localObject1);
       if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null) && (paramMiniAppConfig.launchParam.launchClickTimeMillis != 0L))
       {
-        l1 = paramMiniAppConfig.launchParam.launchClickTimeMillis;
+        l = paramMiniAppConfig.launchParam.launchClickTimeMillis;
         QLog.d("MiniReportManager", 2, "reportEventType: fix onlaunch timestamp to " + paramMiniAppConfig.launchParam.launchClickTimeMillis);
         paramMiniAppConfig.launchParam.launchClickTimeMillis = 0L;
         ((MiniReportManager.MiniAppLaunchState)localObject2).hasOnloaded = false;
@@ -509,14 +503,14 @@ public class MiniReportManager
       {
         if (paramInt1 == 2)
         {
-          QLog.d("MiniReportManager", 1, "launch end  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + l2);
+          QLog.d("MiniReportManager", 1, "launch end  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + paramLong2);
           if (((MiniReportManager.MiniAppLaunchState)localObject2).hasOnloaded) {
             QLog.d("MiniReportManager", 1, "has report apponloaded. ignore apponloaed ");
           }
         }
-        label674:
-        label680:
-        label708:
+        label669:
+        label675:
+        label703:
         for (;;)
         {
           return;
@@ -530,53 +524,63 @@ public class MiniReportManager
           ((MiniReportManager.MiniAppLaunchState)localObject2).hasOnloaded = true;
           ((MiniReportManager.MiniAppLaunchState)localObject2).firstRender = true;
           ((MiniReportManager.MiniAppLaunchState)localObject2).launchId = MiniProgramReportHelper.launchIdForMiniAppConfig(paramMiniAppConfig);
-          detectWhiteScreen(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString4, l1, (MiniReportManager.MiniAppLaunchState)localObject2);
+          detectWhiteScreen(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString4, l, (MiniReportManager.MiniAppLaunchState)localObject2);
           if (eventNeedRecordTime.contains(Integer.valueOf(paramInt1))) {
-            ((MiniReportManager.MiniAppLaunchState)localObject2).eventTime.put(Integer.valueOf(paramInt1), Long.valueOf(l1));
+            ((MiniReportManager.MiniAppLaunchState)localObject2).eventTime.put(Integer.valueOf(paramInt1), Long.valueOf(l));
           }
-          MiniProgramLpReportDC04266.report(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, paramString5, l1, paramString6, paramString7, paramString8, paramString9);
+          MiniProgramLpReportDC04266.report(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong1, paramString5, l, paramString6, paramString7, paramString8, paramString9);
           paramString2 = (MiniReportManager.CostTimeRecord)eventCostTimeSparseArray.get(paramInt1);
           if (paramString2 != null)
           {
             paramString3 = (Long)((MiniReportManager.MiniAppLaunchState)localObject2).eventTime.get(Integer.valueOf(paramString2.eventStart));
             if (paramString3 == null) {
-              break label674;
+              break label669;
             }
-            paramLong = paramString3.longValue();
-            if (paramLong > 0L)
+            paramLong1 = paramString3.longValue();
+            if (paramLong1 > 0L)
             {
-              l2 = l1 - paramLong;
+              paramLong2 = l - paramLong1;
               paramString2 = paramString2.eventName;
               paramString3 = (String)((MiniReportManager.MiniAppLaunchState)localObject2).attachInfo.get(Integer.valueOf(paramInt1));
-              if (l2 < 0L) {
-                break label680;
+              if (paramLong2 < 0L) {
+                break label675;
               }
-              paramLong = l2;
-              if (l2 > MAX_TIME_COST)
+              paramLong1 = paramLong2;
+              if (paramLong2 > MAX_TIME_COST)
               {
-                QLog.d("MiniReportManager", 1, "EventType: " + paramInt1 + " real costTime : " + l2);
-                paramLong = MAX_TIME_COST;
+                QLog.d("MiniReportManager", 1, "EventType: " + paramInt1 + " real costTime : " + paramLong2);
+                paramLong1 = MAX_TIME_COST;
               }
-              MiniProgramLpReportDC04266.reportCostTimeEvent(paramMiniAppConfig, paramString2, paramString1, paramString3, paramInt2, paramLong, l1, paramString6, paramString7, paramString8, paramString9);
+              MiniProgramLpReportDC04266.reportCostTimeEvent(paramMiniAppConfig, paramString2, paramString1, paramString3, paramInt2, paramLong1, l, paramString6, paramString7, paramString8, paramString9);
             }
           }
           for (;;)
           {
             if ((paramInt1 != 2) || (!"0".equals(paramString4))) {
-              break label708;
+              break label703;
             }
-            MiniProgramLpReportDC04266.report(paramMiniAppConfig, 630, paramString1, String.valueOf(TaskMonitorManager.g().getCurrentFps()), null, 0, "0", 0L, null, l1, "", "", "", "");
+            MiniProgramLpReportDC04266.report(paramMiniAppConfig, 630, paramString1, String.valueOf(TaskMonitorManager.g().getCurrentFps()), null, 0, "0", 0L, null, l, "", "", "", "");
             return;
-            paramLong = 0L;
+            paramLong1 = 0L;
             break;
-            QLog.e("MiniReportManager", 1, "costTime < 0 " + l2);
+            QLog.e("MiniReportManager", 1, "costTime < 0 " + paramLong2);
           }
         }
       }
-      l1 = l2;
+      l = paramLong2;
       break;
-      l1 = l2;
+      l = paramLong2;
     }
+  }
+  
+  public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong, String paramString5)
+  {
+    reportEventType(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, paramString5, "", "", "", "");
+  }
+  
+  public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    reportEventType(paramMiniAppConfig, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, System.currentTimeMillis(), paramString5, paramString6, paramString7, paramString8, paramString9);
   }
   
   public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)

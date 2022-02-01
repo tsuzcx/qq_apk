@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import bcjb;
-import bckv;
+import bdbt;
+import bddn;
 import java.io.File;
 
 public class AudioEncoder
 {
-  public static int a(bckv parambckv)
+  public static int a(bddn parambddn)
   {
     try
     {
-      int i = encode(parambckv.jdField_a_of_type_JavaLangString, parambckv.jdField_b_of_type_JavaLangString, parambckv.jdField_a_of_type_Int, parambckv.jdField_b_of_type_Int, parambckv.c, parambckv.d, parambckv.e);
+      int i = encode(parambddn.jdField_a_of_type_JavaLangString, parambddn.jdField_b_of_type_JavaLangString, parambddn.jdField_a_of_type_Int, parambddn.jdField_b_of_type_Int, parambddn.c, parambddn.d, parambddn.e);
       return i;
     }
-    catch (UnsatisfiedLinkError parambckv) {}
+    catch (UnsatisfiedLinkError parambddn) {}
     return -200;
   }
   
@@ -32,22 +32,22 @@ public class AudioEncoder
     return 0;
   }
   
-  public static bckv a(String paramString1, String paramString2, int paramInt)
+  public static bddn a(String paramString1, String paramString2, int paramInt)
   {
-    bckv localbckv = new bckv();
-    localbckv.jdField_a_of_type_JavaLangString = paramString1;
-    localbckv.jdField_b_of_type_JavaLangString = paramString2;
-    localbckv.jdField_a_of_type_Int = paramInt;
-    localbckv.d = bcjb.q;
-    localbckv.c = bcjb.n;
-    if (bcjb.p == 2) {}
-    for (localbckv.jdField_b_of_type_Int = 16; bcjb.o == 16; localbckv.jdField_b_of_type_Int = 8)
+    bddn localbddn = new bddn();
+    localbddn.jdField_a_of_type_JavaLangString = paramString1;
+    localbddn.jdField_b_of_type_JavaLangString = paramString2;
+    localbddn.jdField_a_of_type_Int = paramInt;
+    localbddn.d = bdbt.q;
+    localbddn.c = bdbt.n;
+    if (bdbt.p == 2) {}
+    for (localbddn.jdField_b_of_type_Int = 16; bdbt.o == 16; localbddn.jdField_b_of_type_Int = 8)
     {
-      localbckv.e = 1;
-      return localbckv;
+      localbddn.e = 1;
+      return localbddn;
     }
-    localbckv.e = 2;
-    return localbckv;
+    localbddn.e = 2;
+    return localbddn;
   }
   
   private static native int encode(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);

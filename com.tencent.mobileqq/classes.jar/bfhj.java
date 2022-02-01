@@ -1,12 +1,13 @@
-class bfhj
-  implements bfpl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+
+public class bfhj
+  implements DialogInterface.OnClickListener
 {
-  bfhj(bfhg parambfhg) {}
+  public bfhj(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void a(int paramInt)
-  {
-    this.a.a(bfpj.b(paramInt));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

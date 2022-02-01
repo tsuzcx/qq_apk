@@ -1,51 +1,22 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Button;
-import com.tencent.av.ui.QavPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mhy
-  extends Handler
+class mhy
+  implements View.OnClickListener
 {
-  public mhy(QavPanel paramQavPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  mhy(mhr parammhr) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (!mhr.a(this.a))
     {
+      this.a.c();
+      mhr.a(this.a).a.f(0L);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QavPanel.a(this.a);
-          return;
-          QavPanel.b(this.a);
-          return;
-        } while ((mue.a(false)) || (this.a.h == null) || (!this.a.h.isShown()));
-        this.a.a(this.a.getResources().getString(2131692579));
-        mue.a(false);
-        QavPanel.a(this.a).a();
-        QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
-        return;
-      } while ((mue.a(true)) || (this.a.h == null) || (!this.a.h.isShown()) || (!QavPanel.a(this.a).a()));
-      this.a.a(this.a.getResources().getString(2131692580));
-      QavPanel.a(this.a).a();
-      QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
-      mue.a(true);
-      return;
-      this.a.a("MSG_TRY_CLEAN_TIPS", 1);
-      return;
-    } while (QavPanel.a(this.a) == null);
-    QavPanel.a(this.a).a();
-    QavPanel.a(this.a).sendEmptyMessageDelayed(261, 4000L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

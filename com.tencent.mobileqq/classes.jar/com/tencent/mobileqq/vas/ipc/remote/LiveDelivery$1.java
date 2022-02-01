@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import anil;
+import anui;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
 
 class LiveDelivery$1
-  implements anil
+  implements anui
 {
   LiveDelivery$1(LiveDelivery paramLiveDelivery, EIPCModule paramEIPCModule, int paramInt) {}
   

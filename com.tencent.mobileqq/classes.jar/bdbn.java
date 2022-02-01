@@ -1,44 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import java.util.HashMap;
+import android.hardware.Camera;
 
-public class bdbn
-  extends bdbq
+public abstract interface bdbn
 {
-  public bdbn(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  private Long b(MessageForPtt paramMessageForPtt)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
-    }
-    Long localLong = Long.valueOf(paramMessageForPtt.uniseq);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localLong)) {
-      return localLong;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(localLong, paramMessageForPtt);
-    return localLong;
-  }
-  
-  public Long a(MessageForPtt paramMessageForPtt)
-  {
-    long l = b(paramMessageForPtt).longValue();
-    new bdbo(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPtt, Long.valueOf(l)).a();
-    return Long.valueOf(l);
-  }
-  
-  public Long a(MessageForPtt paramMessageForPtt, int paramInt)
-  {
-    if (aher.h) {
-      return a(paramMessageForPtt);
-    }
-    return b(paramMessageForPtt, paramInt);
-  }
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 

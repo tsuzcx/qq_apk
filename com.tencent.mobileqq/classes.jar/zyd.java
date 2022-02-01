@@ -1,25 +1,30 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class zyd
-  extends RecyclerView.ViewHolder
+class zyd
+  extends BroadcastReceiver
 {
-  private final FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  zyd(zyc paramzyc) {}
   
-  public zyd(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372236));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369501));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379953));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366683));
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    }
+    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), zyc.a(this.a))))
+    {
+      if (zyc.a(this.a) != null) {
+        zyc.a(this.a).removeMessages(108);
+      }
+      if (zyc.a(this.a) != null) {
+        zyc.a(this.a).a();
+      }
+    }
   }
 }
 

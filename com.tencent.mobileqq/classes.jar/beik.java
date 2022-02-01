@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.os.Bundle;
 
-public class beik
-  implements DialogInterface.OnClickListener
+public abstract interface beik
 {
-  public beik(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public abstract void a(Bundle paramBundle);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void b(Bundle paramBundle);
 }
 
 

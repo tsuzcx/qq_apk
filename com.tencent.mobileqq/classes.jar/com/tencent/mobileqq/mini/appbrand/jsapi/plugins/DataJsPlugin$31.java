@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Context;
-import anni;
-import biau;
+import anzj;
+import bjbs;
 import com.tencent.mobileqq.app.ThreadManager;
 
 class DataJsPlugin$31
@@ -12,10 +12,10 @@ class DataJsPlugin$31
   
   public void run()
   {
-    biau localbiau = new biau(this.val$context);
-    localbiau.a(anni.a(2131701533));
-    localbiau.show();
-    ThreadManager.excute(new DataJsPlugin.31.1(this, localbiau), 128, null, true);
+    bjbs localbjbs = new bjbs(this.val$context);
+    localbjbs.a(anzj.a(2131701640));
+    localbjbs.show();
+    ThreadManager.excute(new DataJsPlugin.31.1(this, localbjbs), 128, null, true);
   }
 }
 

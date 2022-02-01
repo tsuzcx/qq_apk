@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.honor;
 
-import aqlk;
-import bfgp;
-import bfgz;
+import aran;
+import bggj;
+import bggt;
 
 public class TroopHonorManager$1
   implements Runnable
 {
-  public TroopHonorManager$1(bfgp parambfgp) {}
+  public TroopHonorManager$1(bggj parambggj) {}
   
   public void run()
   {
-    bfgz localbfgz = (bfgz)aqlk.a().a(544);
-    this.this$0.a(localbfgz, true);
+    bggt localbggt = (bggt)aran.a().a(544);
+    this.this$0.a(localbggt, true);
   }
 }
 

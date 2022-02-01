@@ -1,104 +1,72 @@
-import android.graphics.Color;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tencent.biz.qqstory.playvideo.playerwidget.ProgressBarVideoInfoWidget.2;
-import com.tencent.biz.qqstory.view.SplitedProgressBar;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
 
 public class xvi
-  extends AbsVideoInfoWidget
+  extends Handler
 {
-  public SplitedProgressBar a;
-  @NonNull
-  private xgq a;
+  private xvi(MediaPlayer paramMediaPlayer) {}
   
-  public xvi(@NonNull ViewGroup paramViewGroup)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramViewGroup);
-  }
-  
-  private int d()
-  {
-    int i = bclx.b(this.jdField_a_of_type_AndroidViewView.getContext());
-    int j = bclx.a(this.jdField_a_of_type_AndroidViewView.getContext());
-    int k = bclx.d(this.jdField_a_of_type_AndroidViewView.getContext());
-    boolean bool = bclx.a(this.jdField_a_of_type_AndroidViewView.getContext());
-    int m = bclx.e(this.jdField_a_of_type_AndroidViewView.getContext());
-    int n = bclx.c(this.jdField_a_of_type_AndroidViewView.getContext());
-    yqp.b("FredguoFix", "hasNavi: " + bool + ", naviHeight " + k);
-    yqp.b("FredguoFix", "debug: instantWidth " + i + ", instantHeight" + j + ", rawWidth " + m + ", rawHeight " + n);
-    yqp.b("FredguoFix", "ScreenWidth " + bclx.a + ", ScreenHeight " + bclx.b);
-    if (bool) {
-      return -2;
-    }
-    return (int)Math.min(bclx.b - bclx.a / 9.0F * 16.0F, 140.0F);
-  }
-  
-  public String a()
-  {
-    return "ProgressBarVideoInfoWidget";
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)paramView.findViewById(2131380781));
-    this.jdField_a_of_type_Xgq = new xgq(this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar);
-    if (bqcd.b(b()))
+    switch (paramMessage.what)
     {
-      paramView = (LinearLayout)a().jdField_a_of_type_AndroidViewView.findViewById(2131363601);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-      localLayoutParams.height = d();
-      if (!bclx.a(this.jdField_a_of_type_AndroidViewView.getContext())) {
-        paramView.setBackgroundColor(Color.parseColor("#181818"));
+    default: 
+    case 1: 
+    case 4: 
+    case 2: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            Log.d("Story-MediaPlayer", "onPrepared");
+          } while (this.a.jdField_a_of_type_Xvt == null);
+          this.a.jdField_a_of_type_Xvt.a_(this.a);
+          return;
+          Log.d("Story-MediaPlayer", "onSeekComplete");
+        } while (this.a.jdField_a_of_type_Xvu == null);
+        this.a.jdField_a_of_type_Xvu.a(this.a);
+        return;
+        Log.d("Story-MediaPlayer", "onPlaybackComplete");
+        if (this.a.jdField_a_of_type_Xvq != null) {
+          this.a.jdField_a_of_type_Xvq.a(this.a);
+        }
+        this.a.c(false);
+        return;
+        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
+      } while (this.a.jdField_a_of_type_Xvw == null);
+      this.a.jdField_a_of_type_Xvw.a(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 100: 
+      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+      if (this.a.jdField_a_of_type_Xvr == null) {
+        break;
       }
-      paramView.setLayoutParams(localLayoutParams);
     }
-    a(new xvj(this));
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap) {}
-  
-  public void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
-  public void a(xpl paramxpl)
-  {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      ThreadManager.getUIHandler().post(new ProgressBarVideoInfoWidget.2(this, paramxpl));
-    }
-    if (!this.c)
+    for (boolean bool = this.a.jdField_a_of_type_Xvr.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
     {
-      h();
-      j();
+      if ((this.a.jdField_a_of_type_Xvq != null) && (!bool)) {
+        this.a.jdField_a_of_type_Xvq.a(this.a);
+      }
+      this.a.c(false);
+      return;
+      Log.d("Story-MediaPlayer", "onInfo");
+      if (this.a.jdField_a_of_type_Xvs == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Xvs.a_(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+      if (this.a.jdField_a_of_type_Xvp != null) {
+        this.a.jdField_a_of_type_Xvp.a(this.a, paramMessage.arg1);
+      }
+      this.a.e = paramMessage.arg1;
+      return;
     }
-    if (this.jdField_a_of_type_Xgq != null) {
-      this.jdField_a_of_type_Xgq.a(paramxpl);
-    }
-  }
-  
-  public boolean a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (paramxne.a == null) || (paramxne.a.a != 13);
-  }
-  
-  public int b()
-  {
-    return 2131561849;
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Xgq.b();
   }
 }
 

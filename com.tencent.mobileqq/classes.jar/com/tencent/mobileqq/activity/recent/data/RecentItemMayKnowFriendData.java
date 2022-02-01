@@ -9,6 +9,11 @@ public class RecentItemMayKnowFriendData
 {
   public String curUin;
   
+  public RecentItemMayKnowFriendData(RecentUser paramRecentUser)
+  {
+    super(paramRecentUser);
+  }
+  
   public RecentItemMayKnowFriendData(RecentUser paramRecentUser, String paramString)
   {
     super(paramRecentUser);

@@ -1,13 +1,14 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
 class acsu
-  extends AdHttp.Params
+  implements ValueCallback<String>
 {
-  public int a = -2147483648;
+  acsu(acst paramacst) {}
   
-  public boolean isSuccess()
+  public void a(String paramString)
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    QLog.i("GdtMvElementsHelper", 1, "callJs onReceiveValue " + paramString);
   }
 }
 

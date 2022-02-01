@@ -1,60 +1,148 @@
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
-class bfwy
-  extends bfxd
+public class bfwy
 {
-  public TroopAioTopADInfo a;
+  protected int a;
+  protected long a;
+  aavm a;
+  protected Map<UUID, TroopFileTransferManager.Item> a;
+  protected Map<UUID, Integer> b = new HashMap();
   
-  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  protected bfwy(long paramLong, List<TroopFileTransferManager.Item> paramList, int paramInt)
   {
-    paramTroopFeedItem = paramView;
-    if (paramView == null) {
-      paramTroopFeedItem = LayoutInflater.from(this.jdField_a_of_type_Bfwx.jdField_a_of_type_AndroidContentContext).inflate(2131560556, null);
-    }
-    Object localObject = (bfwz)paramTroopFeedItem.getTag();
-    paramView = (View)localObject;
-    if (localObject == null)
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Aavm = new bfwz(this);
+    this.jdField_a_of_type_Long = paramLong;
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramView = new bfwz(this);
-      paramView.a = ((URLImageView)paramTroopFeedItem.findViewById(2131362072));
-      paramTroopFeedItem.setOnClickListener(this.jdField_a_of_type_Bfwx);
-      paramTroopFeedItem.setTag(paramView);
+      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)paramList.next();
+      this.jdField_a_of_type_JavaUtilMap.put(localItem.Id, localItem);
     }
-    if (!bgnt.d(this.jdField_a_of_type_Bfwx.jdField_a_of_type_AndroidContentContext)) {
-      if (this.jdField_a_of_type_Bfwx.jdField_a_of_type_Besf != null) {
-        this.jdField_a_of_type_Bfwx.jdField_a_of_type_Besf.c();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bfwy a(long paramLong, List<TroopFileTransferManager.Item> paramList)
+  {
+    if (paramLong == 0L)
+    {
+      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
+      return null;
+    }
+    if (paramList == null)
+    {
+      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
+      return null;
+    }
+    return new bfwy(paramLong, paramList, 1);
+  }
+  
+  private final void a(TroopFileTransferManager.Item paramItem, boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    if (!paramBoolean) {}
+    try
+    {
+      bnyz.a(-1);
+      this.b.put(paramItem.Id, Integer.valueOf(-1));
+      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun fail. isSuc:" + paramBoolean);
+      return;
+    }
+    finally {}
+    bfvr.c("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun retCode:" + paramInt1);
+    bnyz.a(paramInt1);
+    if (paramInt1 == 0)
+    {
+      this.b.remove(paramItem.Id);
+      if (this.b.size() != 0) {
+        break label212;
       }
+      paramString1 = new bgrk(paramItem.FileName, this.jdField_a_of_type_Long, 5, 604);
+      bfva.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
     }
-    do
+    label316:
+    for (;;)
     {
-      return paramTroopFeedItem;
-      try
+      return;
+      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
+      break;
+      label212:
+      paramString1 = this.b.keySet().iterator();
+      do
       {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        arnj localarnj = new arnj(1, 1);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localarnj;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localarnj;
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl, (URLDrawable.URLDrawableOptions)localObject);
-        paramView.a.setBackgroundDrawable((Drawable)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAioADManager", 2, "URLDrawable: " + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl);
+        if (!paramString1.hasNext()) {
+          break;
         }
-        bcst.b(this.jdField_a_of_type_Bfwx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Exp_Promote", 0, 0, this.jdField_a_of_type_Bfwx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.adId + "", "", "");
-        return paramTroopFeedItem;
+        paramString2 = (UUID)paramString1.next();
+      } while (((Integer)this.b.get(paramString2)).intValue() != 2147483647);
+      for (paramInt1 = 0;; paramInt1 = 1)
+      {
+        if (paramInt1 == 0) {
+          break label316;
+        }
+        paramString1 = new bgrk(paramItem.FileName, this.jdField_a_of_type_Long, 5, 605);
+        bfva.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
+        break;
       }
-      catch (IllegalArgumentException paramView) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TroopAioADManager", 2, "IllegalArgumentException");
-    return paramTroopFeedItem;
+    }
+  }
+  
+  private int b()
+  {
+    QQAppInterface localQQAppInterface = bfvp.a();
+    if (localQQAppInterface == null)
+    {
+      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun app=null");
+      return -1;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)localIterator.next();
+      if (localItem.Id == null)
+      {
+        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. item.id=null");
+      }
+      else if (localItem.ForwardTroopuin == 0L)
+      {
+        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardTroopuin=0");
+      }
+      else if (localItem.BusId != 25)
+      {
+        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. BusId err:" + localItem.BusId);
+      }
+      else if (TextUtils.isEmpty(localItem.ForwardPath))
+      {
+        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
+      }
+      else
+      {
+        bfvr.c("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + localItem.Id.toString() + "] multiTroop2weiyun. BusId:" + localItem.BusId + " ForwardBusId:" + localItem.ForwardBusId + " ForwardPath:" + localItem.ForwardPath);
+        try
+        {
+          this.b.put(localItem.Id, Integer.valueOf(2147483647));
+          aauw.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Aavm);
+        }
+        finally {}
+      }
+    }
+    return 0;
+  }
+  
+  public int a()
+  {
+    if (1 == this.jdField_a_of_type_Int) {
+      return b();
+    }
+    return -1;
   }
 }
 

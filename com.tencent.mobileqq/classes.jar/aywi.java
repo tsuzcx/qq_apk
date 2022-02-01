@@ -1,193 +1,120 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import com.tencent.mobileqq.now.netchannel.websso.ChannelCenter.2;
+import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO;
+import com.tencent.mobileqq.now.wnsilivehead.WnsHeadProto.ForwardReq;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class aywi
-  implements BusinessObserver
 {
-  private void g(boolean paramBoolean, int paramInt)
+  private static aywi jdField_a_of_type_Aywi;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private WebServiceSSO jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO;
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  public static aywi a()
   {
-    a(paramBoolean, paramInt);
-    if (paramBoolean) {
-      e(true, 7);
-    }
-  }
-  
-  protected String a(int paramInt)
-  {
-    if (paramInt == 217) {
-      return anni.a(2131701256);
-    }
-    if ((paramInt == 219) || (paramInt == 216)) {
-      return anni.a(2131701261);
-    }
-    if (paramInt == 224) {
-      return anni.a(2131701253);
-    }
-    if (paramInt == 223) {
-      return anni.a(2131701254);
-    }
-    return anni.a(2131701257);
-  }
-  
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean, int paramInt) {}
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void c(boolean paramBoolean) {}
-  
-  protected void c(boolean paramBoolean, int paramInt) {}
-  
-  protected void d(boolean paramBoolean) {}
-  
-  protected void d(boolean paramBoolean, int paramInt) {}
-  
-  protected void e(boolean paramBoolean) {}
-  
-  protected void e(boolean paramBoolean, int paramInt) {}
-  
-  protected void f(boolean paramBoolean) {}
-  
-  protected void f(boolean paramBoolean, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int k = 0;
-    int i = 0;
-    int m = 0;
-    int n = 0;
-    int i1 = 0;
-    int i2 = 0;
-    int j = 0;
-    switch (paramInt)
+    if (jdField_a_of_type_Aywi == null)
     {
-    default: 
+      jdField_a_of_type_Aywi = new aywi();
+      jdField_a_of_type_Aywi.a(false);
+    }
+    return jdField_a_of_type_Aywi;
+  }
+  
+  private WnsHeadProto.ForwardReq a(byte[] paramArrayOfByte)
+  {
+    WnsHeadProto.ForwardReq localForwardReq = new WnsHeadProto.ForwardReq();
+    localForwardReq.platform.set(16130);
+    localForwardReq.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localForwardReq.version.set(aywk.a());
+    localForwardReq.version_code.set(aywk.a());
+    localForwardReq.a2.set(aywr.a().d());
+    localForwardReq.uid.set(aywr.a().b());
+    localForwardReq.tinyid.set(aywr.a().c());
+    localForwardReq.stream_type.set(1);
+    localForwardReq.original_id.set(String.valueOf(aywr.a()));
+    localForwardReq.original_id_type.set(1);
+    localForwardReq.original_key.set(aywr.b());
+    if (this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a()) {
+      localForwardReq.target_env.set(1);
+    }
+    return localForwardReq;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Aywi != null)
+    {
+      jdField_a_of_type_Aywi.a();
+      jdField_a_of_type_Aywi = null;
+    }
+  }
+  
+  protected void a()
+  {
+    c();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt1, int paramInt2, byte[] paramArrayOfByte, aywl paramaywl)
+  {
+    String str = String.format("0x%x_0x%x", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramArrayOfByte = a(paramArrayOfByte);
+    Log.i("ChannelCenter", "WebServiceSSO--start send cmd=" + paramInt1);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a(str, paramArrayOfByte.toByteArray(), new aywj(this, paramInt1, paramaywl));
       return;
-    case 12: 
-      if (paramBoolean)
-      {
-        if (paramBundle.getBoolean("bind_state"))
-        {
-          a(true, true);
-          return;
-        }
-        a(true, false);
-        return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte = paramArrayOfByte.getMessage();
+      Log.i("ChannelCenter", paramArrayOfByte);
+      this.jdField_a_of_type_AndroidOsHandler.post(new ChannelCenter.2(this, paramInt1, paramaywl, paramArrayOfByte));
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    int i;
+    if (paramBoolean)
+    {
+      i = 1400015341;
+      if (!paramBoolean) {
+        break label54;
       }
-      a(false, false);
-      return;
-    case 35: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 14: 
-      paramInt = j;
-      if (paramBundle != null) {
-        paramInt = paramBundle.getInt("param_fail_reason", 0);
-      }
-      a(paramBoolean, paramInt);
-      return;
-    case 15: 
-      paramInt = k;
-      if (paramBundle != null) {
-        paramInt = paramBundle.getInt("param_fail_reason", 0);
-      }
-      b(paramBoolean, paramInt);
-      return;
-    case 28: 
-      paramInt = i;
-      if (paramBundle != null)
-      {
-        paramInt = i;
-        if (paramBundle.getBoolean("hasUpdate")) {
-          paramInt = 1;
-        }
-      }
-      e(paramBoolean, paramInt);
-      return;
-    case 16: 
-      if (paramBundle != null) {}
-      for (paramInt = paramBundle.getInt("k_result");; paramInt = -1)
-      {
-        f(paramBoolean, paramInt);
-        return;
-      }
-    case 17: 
-      e(paramBoolean);
-      return;
-    case 19: 
-      b(paramBoolean, paramBundle);
-      return;
-    case 20: 
-      a(paramBoolean);
-      return;
-    case 23: 
-      f(paramBoolean);
-      return;
-    case 26: 
-      a(paramBoolean, paramBundle.getBoolean("bindOK"), paramBundle.getBoolean("hadBind"), paramBundle.getString("bindUin"));
-      return;
-    case 27: 
-      b(paramBoolean, paramBundle.getBoolean("bind_state", false));
-      return;
-    case 31: 
-      paramInt = m;
-      if (paramBundle != null) {
-        paramInt = paramBundle.getInt("param_fail_reason", 0);
-      }
-      g(paramBoolean, paramInt);
-      return;
-    case 30: 
-      paramInt = n;
-      if (paramBoolean) {
-        paramInt = paramBundle.getInt("param_update_flag");
-      }
-      e(paramBoolean, paramInt);
-      return;
-    case 100: 
-      a(paramBundle.getInt("current_percentage"), paramBundle.getInt("expected_percentage"));
-      return;
-    case 32: 
-      c(paramBoolean);
-      return;
-    case 33: 
-      d(paramBoolean);
-      return;
-    case 34: 
+    }
+    label54:
+    for (int j = 7747;; j = 3256)
+    {
+      aywr.a();
+      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO = new WebServiceSSO(i, j, String.valueOf(i), aywr.a(), "", 0);
       b(paramBoolean);
       return;
-    case 38: 
-      paramInt = i1;
-      if (paramBundle != null) {
-        paramInt = paramBundle.getInt("param_fail_reason", 0);
-      }
-      d(paramBoolean, paramInt);
-      return;
+      i = 1400005918;
+      break;
     }
-    paramInt = i2;
-    if (paramBundle != null) {
-      paramInt = paramBundle.getInt("param_fail_reason", 0);
-    }
-    c(paramBoolean, paramInt);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a(paramBoolean);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aywi
  * JD-Core Version:    0.7.0.1
  */

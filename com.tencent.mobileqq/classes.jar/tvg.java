@@ -1,22 +1,6 @@
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-
-public class tvg
+class tvg
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  String jdField_a_of_type_JavaLangString;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  
-  public tvg(tvf paramtvf) {}
+  private tvg(tvc paramtvc) {}
 }
 
 

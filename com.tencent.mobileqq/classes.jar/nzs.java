@@ -1,25 +1,32 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import mqq.observer.BusinessObserver;
 
-public class nzs
+final class nzs
+  implements BusinessObserver
 {
-  public nzs(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
-  
-  @QQPermissionDenied(1)
-  public void denied()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    SosoInterface.a(new nzy(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
 }

@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acyk
-  extends aczg
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return super.a() + 2;
-  }
+  public acyk(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public void onClick(View paramView)
   {
-    new bbzc().a(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (14 == paramElem.common_elem.uint32_service_type.get());
+    GdtVideoImaxFragment.a(this.a);
+    GdtVideoImaxFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

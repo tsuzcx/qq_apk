@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.Comparator;
 
 class bjub
-  implements DialogInterface.OnClickListener
+  implements Comparator<String>
 {
-  bjub(bjtv parambjtv, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    paramDialogInterface.dismiss();
-    bmfd.a().a().d(this.jdField_a_of_type_JavaLangString);
+    return paramString1.compareTo(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjub
  * JD-Core Version:    0.7.0.1
  */

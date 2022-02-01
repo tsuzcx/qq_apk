@@ -1,21 +1,15 @@
-import android.opengl.EGLContext;
-
 public class bclb
 {
   int jdField_a_of_type_Int;
-  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  int b;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   
-  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
+  public bclb(int paramInt, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

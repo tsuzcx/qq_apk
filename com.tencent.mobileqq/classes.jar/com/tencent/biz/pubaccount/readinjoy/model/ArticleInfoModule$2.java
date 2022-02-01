@@ -3,24 +3,24 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import pwb;
-import qaf;
-import qaj;
+import pon;
+import psq;
+import psu;
 
 public class ArticleInfoModule$2
   implements Runnable
 {
-  public ArticleInfoModule$2(pwb parampwb, long paramLong1, long paramLong2, qaf paramqaf, long paramLong3) {}
+  public ArticleInfoModule$2(pon parampon, long paramLong1, long paramLong2, psq parampsq, long paramLong3) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     QLog.d("ArticleInfoModule", 2, new Object[] { "feedsPreload, loadingTime = ", Long.valueOf(this.jdField_a_of_type_Long) });
     QLog.d("ArticleInfoModule", 2, new Object[] { "feedsPreload, schedule cost = ", Long.valueOf(l - this.b) });
-    this.jdField_a_of_type_Qaf.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("hitFeedsPreloadCache", Boolean.valueOf(true));
-    this.jdField_a_of_type_Qaf.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("feedsRequestBeginTime", Long.valueOf(this.c));
-    pwb.a(this.this$0, this.jdField_a_of_type_Qaf.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Qaf.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Qaf.jdField_a_of_type_Int, this.jdField_a_of_type_Qaf.jdField_b_of_type_Int, this.jdField_a_of_type_Qaf.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Qaf.jdField_a_of_type_Boolean, this.jdField_a_of_type_Qaf.jdField_b_of_type_Boolean, this.jdField_a_of_type_Qaf.jdField_a_of_type_ArrayOfByte);
-    qaj.a(this.jdField_a_of_type_Qaf.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Qaf.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Psq.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("hitFeedsPreloadCache", Boolean.valueOf(true));
+    this.jdField_a_of_type_Psq.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("feedsRequestBeginTime", Long.valueOf(this.c));
+    pon.a(this.this$0, this.jdField_a_of_type_Psq.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Psq.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Psq.jdField_a_of_type_Int, this.jdField_a_of_type_Psq.jdField_b_of_type_Int, this.jdField_a_of_type_Psq.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Psq.jdField_a_of_type_Boolean, this.jdField_a_of_type_Psq.jdField_b_of_type_Boolean, this.jdField_a_of_type_Psq.jdField_a_of_type_ArrayOfByte);
+    psu.a(this.jdField_a_of_type_Psq.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Psq.jdField_a_of_type_JavaLangString);
   }
 }
 

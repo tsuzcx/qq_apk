@@ -9,6 +9,7 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -27,6 +28,11 @@ class PreloadingFragment$3
       l = paramJSONObject.optLong("retCode");
       localObject1 = paramJSONObject.optString("errMsg");
       QLog.i("PreloadingFragment", 1, "getAppInfoById, retCode = " + l + ",errMsg = " + (String)localObject1);
+      if (l == -1003L)
+      {
+        QLog.e("PreloadingFragment", 1, "getAppInfoById error https decode buffer, clear token");
+        MiniAppSecurityUtil.doClearAfterLoginSuccess(true);
+      }
       Object localObject2 = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       if (localObject2 != null)
       {

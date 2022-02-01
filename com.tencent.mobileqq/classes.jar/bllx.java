@@ -1,25 +1,10 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
-
 public class bllx
-  extends biau
 {
-  public bllx(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
-  
-  public void onBackPressed()
-  {
-    if (this.a.a) {
-      super.onBackPressed();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 

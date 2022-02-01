@@ -1,14 +1,19 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class ztx
-  extends zub
+  implements Animation.AnimationListener
 {
-  ztx(ztw paramztw) {}
+  ztx(ztv paramztv) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ScannerActivity.a(this.a.a).b();
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

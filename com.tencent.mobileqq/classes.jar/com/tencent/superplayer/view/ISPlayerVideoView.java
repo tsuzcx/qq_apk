@@ -7,17 +7,19 @@ public abstract interface ISPlayerVideoView
 {
   public abstract void addViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack);
   
+  public abstract void changeSurfaceObject(SPlayerVideoView.SurfaceObject paramSurfaceObject);
+  
   public abstract boolean disableViewCallback();
   
   public abstract boolean enableViewCallback();
+  
+  public abstract String getLogTag();
   
   public abstract View getRenderView();
   
   public abstract int getRenderViewHeight();
   
   public abstract int getRenderViewWidth();
-  
-  public abstract String getSerialNO();
   
   public abstract Surface getSurface();
   

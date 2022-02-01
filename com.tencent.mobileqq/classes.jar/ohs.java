@@ -1,25 +1,15 @@
-import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
+import com.tencent.biz.widgets.TabLayout;
 
-public class ohs
-  implements MessageQueue.IdleHandler
+class ohs
+  implements blmh
 {
-  public ohs(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  ohs(ohp paramohp) {}
   
-  public boolean queueIdle()
+  public void onScrollStateChanged(int paramInt)
   {
-    if (!arui.a().a())
-    {
-      arui.a().a().doBindService(BaseApplicationImpl.getApplication());
-      arui.a().a(new oht(this));
-      return false;
+    if (paramInt == 4098) {
+      ohp.a(this.a).setOverScrollMode(0);
     }
-    Bundle localBundle = arph.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    arui.a().a(localBundle);
-    return false;
   }
 }
 

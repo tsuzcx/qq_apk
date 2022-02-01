@@ -1,34 +1,21 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadParam;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bcnz
-  implements bcob
+public abstract interface bcnz
+  extends bcnx
 {
-  bcnz(bcny parambcny, int paramInt, LoadParam paramLoadParam, bcob parambcob) {}
+  public abstract View a(String paramString);
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
-  {
-    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, bcny.a(this.jdField_a_of_type_Bcny));
-    bcny.a(this.jdField_a_of_type_Bcny, paramLoadExtResult);
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mLoadItems.size() - 1) {
-        if (this.jdField_a_of_type_Bcob != null) {
-          this.jdField_a_of_type_Bcob.a(paramInt, paramLoadExtResult);
-        }
-      }
-    }
-    do
-    {
-      return;
-      bcny.a(this.jdField_a_of_type_Bcny, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_Bcob, this.jdField_a_of_type_Int + 1);
-      return;
-      if (paramLoadExtResult != null) {
-        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
-      }
-    } while (this.jdField_a_of_type_Bcob == null);
-    this.jdField_a_of_type_Bcob.a(paramInt, paramLoadExtResult);
-  }
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract TextView b();
+  
+  public abstract TextView c();
+  
+  public abstract TextView d();
 }
 
 

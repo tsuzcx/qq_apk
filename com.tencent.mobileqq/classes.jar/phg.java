@@ -1,12 +1,25 @@
-final class phg
-  implements pml
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+
+public class phg
+  implements Animation.AnimationListener
 {
-  phg(String paramString) {}
+  public phg(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void a(pmn parampmn)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    parampmn.b(this.a);
+    this.a.getView().setVisibility(8);
+    this.a.getActivity().setResult(-1);
+    this.a.getActivity().finish();
+    this.a.getActivity().overridePendingTransition(0, 0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

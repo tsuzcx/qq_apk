@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.subscript;
 
 import com.tencent.widget.SwipListView;
 import java.util.List;
-import tuv;
-import tva;
-import tvx;
+import tux;
+import tvc;
+import tvz;
 
 public class SubscriptFeedsActivity$14$1
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$1(tuv paramtuv, List paramList) {}
+  public SubscriptFeedsActivity$14$1(tux paramtux, List paramList) {}
   
   public void run()
   {
     int i;
-    if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a) != null)
+    if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a) != null)
     {
-      i = SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a).size();
+      i = SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).size();
       if (this.jdField_a_of_type_JavaUtilList == null) {
         break label142;
       }
@@ -24,13 +24,13 @@ public class SubscriptFeedsActivity$14$1
     label142:
     for (int j = this.jdField_a_of_type_JavaUtilList.size();; j = 0)
     {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a, this.jdField_a_of_type_JavaUtilList);
-      if ((SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a)) && (i != j))
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a, this.jdField_a_of_type_JavaUtilList);
+      if ((SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a)) && (i != j))
       {
-        if (this.jdField_a_of_type_Tuv.a.a.a == 2) {
-          SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a).setSelectionFromBottom(SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a).getCount() - 1, 0);
+        if (this.jdField_a_of_type_Tux.a.a.a == 2) {
+          SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).setSelectionFromBottom(SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).getCount() - 1, 0);
         }
-        SubscriptFeedsActivity.b(this.jdField_a_of_type_Tuv.a, false);
+        SubscriptFeedsActivity.b(this.jdField_a_of_type_Tux.a, false);
       }
       return;
       i = 0;

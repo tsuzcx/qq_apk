@@ -1,12 +1,12 @@
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.superplayer.api.ISuperPlayer;
 
-public abstract interface vxr
+public abstract class vxr
 {
-  public abstract void a();
+  public void a() {}
   
-  public abstract void a(FeedCloudMeta.StUser paramStUser);
+  public void a(ISuperPlayer paramISuperPlayer) {}
   
-  public abstract void b();
+  public void a(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

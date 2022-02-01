@@ -1,14 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
 
-class aaqb
-  implements DialogInterface.OnDismissListener
+public class aaqb
+  extends FragmentPagerAdapter
 {
-  aaqb(aaqa paramaaqa) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public aaqb(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    this.a.a.deleteObserver(this.a);
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return RelativePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
 }
 

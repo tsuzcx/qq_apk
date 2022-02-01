@@ -1,8 +1,25 @@
-public abstract interface aben
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
+
+class aben
 {
-  public abstract void c(int paramInt);
+  aben(abem paramabem, String paramString) {}
   
-  public abstract void l();
+  @QQPermissionDenied(1)
+  public void denied()
+  {
+    this.jdField_a_of_type_Abem.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    apch.a(new abeo(this, "webview"));
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
+    }
+  }
 }
 
 

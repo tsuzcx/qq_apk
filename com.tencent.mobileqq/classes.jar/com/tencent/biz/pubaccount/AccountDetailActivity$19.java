@@ -1,6 +1,8 @@
 package com.tencent.biz.pubaccount;
 
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountDetailActivity$19
   implements Runnable
@@ -9,16 +11,13 @@ class AccountDetailActivity$19
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "initData loadDatabase");
-    }
-    AccountDetailActivity localAccountDetailActivity = this.this$0;
-    if (!this.this$0.e()) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = this.this$0.a.a(115, this.this$0.e, (byte)1, true, 0);
+    if (localObject != null)
     {
-      localAccountDetailActivity.c = bool;
-      AccountDetailActivity.b(this.this$0, new AccountDetailActivity.19.1(this));
-      return;
+      localObject = this.this$0.a((Bitmap)localObject);
+      if (localObject != null) {
+        AccountDetailActivity.c(this.this$0, new AccountDetailActivity.19.1(this, (Drawable)localObject));
+      }
     }
   }
 }

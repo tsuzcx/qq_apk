@@ -1,128 +1,109 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.AdProxyImpl;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsInterstitialAdView;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.InterstitialADLisener;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class bjvj
-  extends AdProxy.AbsInterstitialAdView
+  implements bjut
 {
-  int jdField_a_of_type_Int = 53;
-  acly jdField_a_of_type_Acly;
-  AdProxy.InterstitialADLisener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
-  String e;
-  String f;
-  String g;
-  String h;
+  protected Context a;
+  protected final WebView a;
+  protected final String a;
+  protected boolean a;
+  protected final String b;
+  protected final String c;
   
-  public bjvj(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.InterstitialADLisener paramInterstitialADLisener)
+  public bjvj(Context paramContext, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    super(paramAdProxyImpl);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = paramInterstitialADLisener;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.h = paramString8;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private GdtHandler.Options a(JSONObject paramJSONObject)
+  public void a(Exception paramException)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
-    paramJSONObject = new GdtHandler.Options();
-    paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
-    paramJSONObject.jdField_a_of_type_Boolean = true;
-    paramJSONObject.b = true;
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniapp");
-    paramJSONObject.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    return paramJSONObject;
-  }
-  
-  public void destroy()
-  {
-    this.jdField_a_of_type_Acly = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = null;
-  }
-  
-  public void loadAD()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        break label91;
-      }
-      localObject = new StringBuilder().append("loadAD, act is null, ");
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null) {
-        break label86;
-      }
+    bjtx.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
+    if ((!this.jdField_a_of_type_Boolean) && (bjva.a(this.jdField_a_of_type_AndroidContentContext))) {
+      bjvh.b(this.jdField_a_of_type_AndroidContentContext);
     }
-    label86:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.e("AdProxyImpl", 1, bool);
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+    if (TextUtils.isEmpty(this.b)) {}
+    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
+        return;
       }
-      return;
-      localObject = null;
-      break;
-    }
-    label91:
-    this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d, this.e, this.f, this.g, this.h, 1, new bjvk(this, (Activity)localObject));
-  }
-  
-  public void onClose(Activity paramActivity, int paramInt, Intent paramIntent)
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_Acly != null) && (paramActivity != null)) {
-        this.jdField_a_of_type_Acly.a(paramActivity, paramInt, paramIntent);
-      }
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("AdProxyImpl", 1, "onClose", paramActivity);
+      catch (Exception paramException) {}
     }
   }
   
-  public boolean show(Activity paramActivity)
+  public void a(JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_Acly != null) && (paramActivity != null))
-    {
-      boolean bool = this.jdField_a_of_type_Acly.a(paramActivity);
-      if ((bool) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onShow();
-      }
-      return bool;
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
     }
-    return false;
+    bjtx.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
+    paramJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject.put("guid", this.c);
+        paramJSONObject.put("content", localJSONObject.toString());
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
+          paramJSONObject = (JSONObject)localObject;
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            paramJSONObject = (JSONObject)localObject;
+            if (bjva.a(this.jdField_a_of_type_AndroidContentContext))
+            {
+              if (localJSONObject.optInt("code", -1) != 0) {
+                continue;
+              }
+              bjvh.a(this.jdField_a_of_type_AndroidContentContext);
+              paramJSONObject = (JSONObject)localObject;
+            }
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        Object localObject;
+        if (TextUtils.isEmpty(this.b))
+        {
+          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
+          continue;
+        }
+        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
+        continue;
+      }
+      try
+      {
+        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+        if (localObject == null) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
+        return;
+      }
+      catch (Exception paramJSONObject) {}
+      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
+      continue;
+      bjvh.b(this.jdField_a_of_type_AndroidContentContext);
+      paramJSONObject = (JSONObject)localObject;
+    }
   }
 }
 

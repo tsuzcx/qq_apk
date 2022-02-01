@@ -1,35 +1,21 @@
-import com.tencent.qqmini.proxyimpl.AIOEntryPlugin.1;
-import com.tencent.qqmini.proxyimpl.AIOEntryPlugin.2;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
-@JsPlugin
 public class bjuk
-  extends BaseJsPlugin
 {
-  @JsEvent({"hideMiniAIOEntrance"})
-  public void hideMiniAIOEntrance(RequestEvent paramRequestEvent)
-  {
-    AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.2(this, paramRequestEvent));
-  }
+  public String a;
+  public WeakReference<Context> a;
+  public String b;
+  public WeakReference<bjuv> b;
+  public String c;
   
-  @JsEvent({"showMiniAIOEntrance"})
-  public void showMiniAIOEntrance(RequestEvent paramRequestEvent)
+  public bjuk(bjuj parambjuj, Context paramContext, String paramString1, String paramString2, String paramString3, bjuv parambjuv)
   {
-    try
-    {
-      AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.1(this, new JSONObject(paramRequestEvent.jsonParams), paramRequestEvent));
-      return;
-    }
-    catch (JSONException paramRequestEvent)
-    {
-      paramRequestEvent.printStackTrace();
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambjuv);
   }
 }
 

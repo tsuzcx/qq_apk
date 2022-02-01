@@ -1,138 +1,118 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arqo
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static arqo jdField_a_of_type_Arqo;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  public boks a;
+  public String a;
+  public List<arqp> a;
+  public Map<String, Long> a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
   
   public arqo()
   {
-    this.jdField_a_of_type_Boks = new boks();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  private int a()
+  public static arqo a(araj[] paramArrayOfaraj)
   {
-    Object localObject = (arqr)a().getManager(333);
-    if (jdField_a_of_type_Int == -1)
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+      return null;
+    }
+    localarqo = new arqo();
+    try
     {
-      jdField_a_of_type_Int = 1;
-      localObject = ((arqr)localObject).a();
-      if (localObject != null)
+      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].jdField_a_of_type_JavaLangString);
+      Object localObject;
+      if (paramArrayOfaraj.has("report"))
       {
-        i = 0;
-        while (i < ((List)localObject).size())
+        localObject = paramArrayOfaraj.getJSONObject("report");
+        localarqo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("inviteTShow");
+        localarqo.b = ((JSONObject)localObject).optString("inviteTClick");
+        localarqo.c = ((JSONObject)localObject).optString("stateTShow");
+        localarqo.d = ((JSONObject)localObject).optString("stateTClick");
+      }
+      if (paramArrayOfaraj.has("viewTogether"))
+      {
+        localObject = new arqp(paramArrayOfaraj.getJSONObject("viewTogether"));
+        ((arqp)localObject).a = false;
+        localarqo.jdField_a_of_type_JavaUtilList.add(localObject);
+      }
+      if (paramArrayOfaraj.has("editTogether"))
+      {
+        localObject = new arqp(paramArrayOfaraj.getJSONObject("editTogether"));
+        ((arqp)localObject).a = true;
+        localarqo.jdField_a_of_type_JavaUtilList.add(localObject);
+      }
+      if (paramArrayOfaraj.has("viewPrivate"))
+      {
+        localObject = new arqp(paramArrayOfaraj.getJSONObject("viewPrivate"));
+        ((arqp)localObject).b = true;
+        localarqo.jdField_a_of_type_JavaUtilList.add(localObject);
+      }
+      if (paramArrayOfaraj.has("editSupport"))
+      {
+        paramArrayOfaraj = paramArrayOfaraj.getJSONObject("editSupport");
+        localObject = paramArrayOfaraj.keys();
+        while (((Iterator)localObject).hasNext())
         {
-          int j = ((CameraEmotionData)((List)localObject).get(i)).emoId;
-          if (jdField_a_of_type_Int < j) {
-            jdField_a_of_type_Int = j;
-          }
-          i += 1;
+          String str = (String)((Iterator)localObject).next();
+          localarqo.jdField_a_of_type_JavaUtilMap.put(str, Long.valueOf(paramArrayOfaraj.getLong(str)));
         }
       }
+      return localarqo;
     }
-    int i = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_Int = i;
-    return i;
+    catch (JSONException paramArrayOfaraj)
+    {
+      QLog.e("TencentDocLocalCooperationBean", 1, paramArrayOfaraj.getLocalizedMessage(), paramArrayOfaraj);
+    }
   }
   
-  public static arqo a()
+  public arqp a(String paramString)
   {
-    if (jdField_a_of_type_Arqo == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    paramString = becb.a(paramString);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (jdField_a_of_type_Arqo == null) {
-        jdField_a_of_type_Arqo = new arqo();
+      arqp localarqp = (arqp)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localarqp.a(paramString)) {
+        return localarqp;
       }
-      return jdField_a_of_type_Arqo;
-    }
-  }
-  
-  private CameraEmotionData a(String paramString1, String paramString2, String paramString3)
-  {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = a().getCurrentAccountUin();
-    localCameraEmotionData.emoPath = paramString1;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    localCameraEmotionData.templateId = paramString3;
-    return localCameraEmotionData;
-  }
-  
-  private CameraEmotionData a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = a().getCurrentAccountUin();
-    localCameraEmotionData.emoOriginalPath = paramString1;
-    localCameraEmotionData.thumbPath = paramString3;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    localCameraEmotionData.templateId = paramString4;
-    return localCameraEmotionData;
-  }
-  
-  public QQAppInterface a()
-  {
-    return (QQAppInterface)bojl.a();
-  }
-  
-  public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
-  {
-    Object localObject = a();
-    if (localObject == null)
-    {
-      QLog.d("CameraEmoSendControl", 1, "app null");
-      return;
-    }
-    arqr localarqr = (arqr)((QQAppInterface)localObject).getManager(333);
-    localObject = (anim)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
-    {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i));
-      localCameraEmotionData.emoId = a();
-      localarqr.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
       i += 1;
     }
-    ((anim)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
-    }
-    this.jdField_a_of_type_Boks.a(String.valueOf(1011), new Object[] { localArrayList });
+    return null;
   }
   
-  public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, ArrayList<String> paramArrayList4)
+  public boolean a(String paramString)
   {
-    Object localObject = a();
-    arqr localarqr = (arqr)((QQAppInterface)localObject).getManager(333);
-    localObject = (anim)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
-    {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i), (String)paramArrayList4.get(i));
-      localCameraEmotionData.emoId = a();
-      localarqr.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
-      i += 1;
+    paramString = a(paramString);
+    if (paramString != null) {
+      return paramString.a;
     }
-    ((anim)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString != null) {
+      return paramString.b;
     }
-    this.jdField_a_of_type_Boks.a(String.valueOf(1011), new Object[] { localArrayList });
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqo
  * JD-Core Version:    0.7.0.1
  */

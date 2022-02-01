@@ -1,31 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
 import android.widget.TextView;
-import com.tencent.avgame.gameroom.seat.MemberItemView;
-import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
+import com.tencent.avgame.gameroom.GameRoomFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nbd
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public nbd(MemberItemView paramMemberItemView) {}
+  public nbd(GameRoomFragment paramGameRoomFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-14558778);
+    String str = String.format(this.a.getString(2131690248), new Object[] { this.a.b.getText().toString().replace("-", " ") });
+    GameRoomFragment.a(this.a, str);
+    this.a.a(2, this.a.getString(2131690249));
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    bdll.b(null, "dc00898", "", "", "0X800B020", "0X800B020", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

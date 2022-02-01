@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import acsb;
-import acsc;
+import acwf;
+import acwg;
 import android.app.Activity;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 
@@ -13,7 +13,7 @@ class AppBrandFragment$4
   public void run()
   {
     MiniLog.init();
-    acsb.a().a(this.val$activity, new acsc());
+    acwf.a().a(this.val$activity, new acwg());
   }
 }
 

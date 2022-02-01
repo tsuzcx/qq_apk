@@ -1,6 +1,77 @@
-public abstract interface apne
+public class apne
+  extends apnu
 {
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public String a;
+  public apnf[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
+  
+  public apne()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfApnf = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(apne paramapne)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramapne != null)
+    {
+      bool1 = bool2;
+      if (paramapne.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramapne.b == 0)
+        {
+          bool1 = bool2;
+          if (paramapne.jdField_a_of_type_ArrayOfApnf != null)
+          {
+            bool1 = bool2;
+            if (paramapne.jdField_a_of_type_ArrayOfApnf[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramapne.jdField_a_of_type_ArrayOfApnf[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfApnf != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfApnf.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApnf[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudMarkerRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+  }
 }
 
 

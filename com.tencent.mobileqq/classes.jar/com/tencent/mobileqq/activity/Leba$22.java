@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import axby;
-import bcsy;
+import axup;
+import bdlq;
 
 class Leba$22
   implements Runnable
 {
-  Leba$22(Leba paramLeba, axby paramaxby) {}
+  Leba$22(Leba paramLeba, axup paramaxup) {}
   
   public void run()
   {
     int i = this.a.b();
-    new bcsy(this.this$0.a).a("dc00899").b("grp_lbs").c("entry").d("clk_red").a(new String[] { String.valueOf(Leba.a(this.this$0)), String.valueOf(i), "", "" }).a();
+    new bdlq(this.this$0.a).a("dc00899").b("grp_lbs").c("entry").d("clk_red").a(new String[] { String.valueOf(Leba.a(this.this$0)), String.valueOf(i), "", "" }).a();
   }
 }
 

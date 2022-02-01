@@ -1,64 +1,66 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bgsh
 {
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
+  public int a;
+  public LinkedList<TroopFileTransferManager.Task> a;
+  public AtomicInteger a;
+  
+  public bgsh(int paramInt)
   {
-    return a(paramEditor, paramString, paramSet.toArray());
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Object[] paramArrayOfObject)
+  /* Error */
+  public void a(TroopFileTransferManager.Task paramTask)
   {
-    String str = "";
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
-    {
-      int j = paramArrayOfObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramArrayOfObject[i];
-        str = str + localObject.toString();
-        str = str + " ";
-        i += 1;
-      }
-      paramEditor.putString(paramString, str);
-      return paramEditor;
-    }
-    paramEditor.putString(paramString, "");
-    return paramEditor;
-  }
-  
-  public static Set<String> a(SharedPreferences paramSharedPreferences, String paramString, Set<String> paramSet)
-  {
-    paramString = paramSharedPreferences.getString(paramString, "");
-    paramSharedPreferences = paramSet;
-    if (paramString != null)
-    {
-      paramSharedPreferences = paramSet;
-      if (paramString.length() > 0)
-      {
-        paramSet = paramString.split(" ");
-        paramString = new HashSet();
-        int j = paramSet.length;
-        int i = 0;
-        for (;;)
-        {
-          paramSharedPreferences = paramString;
-          if (i >= j) {
-            break;
-          }
-          paramSharedPreferences = paramSet[i];
-          if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0)) {
-            paramString.add(paramSharedPreferences);
-          }
-          i += 1;
-        }
-      }
-    }
-    return paramSharedPreferences;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 24	bgsh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: aload_1
+    //   7: invokevirtual 32	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   10: pop
+    //   11: aload_0
+    //   12: getfield 19	bgsh:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   15: invokevirtual 36	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   18: aload_0
+    //   19: getfield 26	bgsh:jdField_a_of_type_Int	I
+    //   22: if_icmple +14 -> 36
+    //   25: aload_0
+    //   26: getfield 19	bgsh:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   29: invokevirtual 39	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   32: pop
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: return
+    //   36: new 41	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1
+    //   39: dup
+    //   40: aload_0
+    //   41: invokespecial 44	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1:<init>	(Lbgsh;)V
+    //   44: iconst_5
+    //   45: aconst_null
+    //   46: iconst_1
+    //   47: invokestatic 50	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   50: goto -17 -> 33
+    //   53: astore_1
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: aload_1
+    //   57: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	58	0	this	bgsh
+    //   0	58	1	paramTask	TroopFileTransferManager.Task
+    // Exception table:
+    //   from	to	target	type
+    //   2	33	53	finally
+    //   36	50	53	finally
   }
 }
 

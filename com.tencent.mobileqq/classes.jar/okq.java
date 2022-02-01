@@ -1,21 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class okq
-  extends sfp
+  implements nmg
 {
-  public okq(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public okq(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void loaded(String paramString, int paramInt)
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
     }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyVideoSubChannelActivity.a(this.a).c();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -2,6 +2,7 @@ package com.tencent.qqmini.sdk.core.manager;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import android.webkit.URLUtil;
 import com.tencent.qqmini.sdk.core.utils.FileUtils;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.ApkgBaseInfo;
@@ -207,6 +208,28 @@ public class MiniAppFileManager
     return currInstance;
   }
   
+  public static String getLocalPathSuffix(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    int i = paramString.length();
+    if (i != 0)
+    {
+      i = paramString.charAt(i - 1);
+      if ((i != 47) && (i != 92) && (i != 46)) {}
+    }
+    else
+    {
+      return "";
+    }
+    i = paramString.lastIndexOf('.');
+    if (i <= Math.max(paramString.lastIndexOf('/'), paramString.lastIndexOf('\\'))) {
+      return "";
+    }
+    return paramString.substring(i + 1).toLowerCase();
+  }
+  
   public static MiniAppFileManager getMiniAppFileManager(ApkgBaseInfo paramApkgBaseInfo)
   {
     if (paramApkgBaseInfo == null) {
@@ -288,6 +311,14 @@ public class MiniAppFileManager
   
   private static String getSuffixByPath(String paramString)
   {
+    if (URLUtil.isNetworkUrl(paramString)) {
+      return getUrlPathSuffix(paramString);
+    }
+    return getLocalPathSuffix(paramString);
+  }
+  
+  private static String getUrlPathSuffix(String paramString)
+  {
     String str2 = "";
     try
     {
@@ -296,10 +327,12 @@ public class MiniAppFileManager
     }
     catch (Throwable localThrowable)
     {
-      String str1;
-      label17:
-      int i;
-      break label17;
+      for (;;)
+      {
+        String str1;
+        int i;
+        QMLog.e(TAG, "getSuffixByPath error", localThrowable);
+      }
     }
     str1 = str2;
     if (!TextUtils.isEmpty(paramString))
@@ -374,7 +407,7 @@ public class MiniAppFileManager
     //   27: aload 4
     //   29: invokevirtual 171	java/io/File:getParentFile	()Ljava/io/File;
     //   32: aload 5
-    //   34: invokevirtual 402	java/io/File:equals	(Ljava/lang/Object;)Z
+    //   34: invokevirtual 431	java/io/File:equals	(Ljava/lang/Object;)Z
     //   37: ifeq +5 -> 42
     //   40: aload_1
     //   41: areturn
@@ -382,28 +415,28 @@ public class MiniAppFileManager
     //   45: dup
     //   46: aload_0
     //   47: aload 4
-    //   49: invokestatic 404	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getFileSuffix	(Ljava/io/File;)Ljava/lang/String;
-    //   52: invokevirtual 407	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   49: invokestatic 433	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getFileSuffix	(Ljava/io/File;)Ljava/lang/String;
+    //   52: invokevirtual 436	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   55: invokespecial 146	java/io/File:<init>	(Ljava/lang/String;)V
     //   58: astore 9
     //   60: sipush 8192
     //   63: newarray byte
     //   65: astore 7
-    //   67: new 409	java/io/BufferedInputStream
+    //   67: new 438	java/io/BufferedInputStream
     //   70: dup
-    //   71: new 411	java/io/FileInputStream
+    //   71: new 440	java/io/FileInputStream
     //   74: dup
     //   75: aload 4
-    //   77: invokespecial 414	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   80: invokespecial 417	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   77: invokespecial 443	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   80: invokespecial 446	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   83: astore 4
-    //   85: new 419	java/io/BufferedOutputStream
+    //   85: new 448	java/io/BufferedOutputStream
     //   88: dup
-    //   89: new 421	java/io/FileOutputStream
+    //   89: new 450	java/io/FileOutputStream
     //   92: dup
     //   93: aload 9
-    //   95: invokespecial 422	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   98: invokespecial 425	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   95: invokespecial 451	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   98: invokespecial 454	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   101: astore_1
     //   102: aload_1
     //   103: astore 6
@@ -411,7 +444,7 @@ public class MiniAppFileManager
     //   107: astore 5
     //   109: aload 4
     //   111: aload 7
-    //   113: invokevirtual 431	java/io/InputStream:read	([B)I
+    //   113: invokevirtual 460	java/io/InputStream:read	([B)I
     //   116: istore_2
     //   117: iload_2
     //   118: iconst_m1
@@ -424,7 +457,7 @@ public class MiniAppFileManager
     //   130: aload 7
     //   132: iconst_0
     //   133: iload_2
-    //   134: invokevirtual 437	java/io/OutputStream:write	([BII)V
+    //   134: invokevirtual 466	java/io/OutputStream:write	([BII)V
     //   137: goto -35 -> 102
     //   140: astore 7
     //   142: aload_1
@@ -432,18 +465,18 @@ public class MiniAppFileManager
     //   145: aload 4
     //   147: astore 5
     //   149: getstatic 95	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:TAG	Ljava/lang/String;
-    //   152: ldc_w 439
+    //   152: ldc_w 468
     //   155: aload 7
-    //   157: invokestatic 444	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   157: invokestatic 473	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   160: pop
     //   161: aload_1
     //   162: ifnull +7 -> 169
     //   165: aload_1
-    //   166: invokevirtual 447	java/io/OutputStream:close	()V
+    //   166: invokevirtual 476	java/io/OutputStream:close	()V
     //   169: aload 4
     //   171: ifnull +154 -> 325
     //   174: aload 4
-    //   176: invokevirtual 448	java/io/InputStream:close	()V
+    //   176: invokevirtual 477	java/io/InputStream:close	()V
     //   179: iconst_0
     //   180: istore_2
     //   181: aload 8
@@ -451,7 +484,7 @@ public class MiniAppFileManager
     //   184: iload_2
     //   185: ifeq +9 -> 194
     //   188: aload 9
-    //   190: invokevirtual 451	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   190: invokevirtual 480	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   193: astore_1
     //   194: aload_1
     //   195: areturn
@@ -460,19 +493,19 @@ public class MiniAppFileManager
     //   199: aload 4
     //   201: astore 5
     //   203: aload_1
-    //   204: invokevirtual 454	java/io/OutputStream:flush	()V
+    //   204: invokevirtual 483	java/io/OutputStream:flush	()V
     //   207: iconst_1
     //   208: istore_3
     //   209: aload_1
     //   210: ifnull +7 -> 217
     //   213: aload_1
-    //   214: invokevirtual 447	java/io/OutputStream:close	()V
+    //   214: invokevirtual 476	java/io/OutputStream:close	()V
     //   217: iload_3
     //   218: istore_2
     //   219: aload 4
     //   221: ifnull -40 -> 181
     //   224: aload 4
-    //   226: invokevirtual 448	java/io/InputStream:close	()V
+    //   226: invokevirtual 477	java/io/InputStream:close	()V
     //   229: iload_3
     //   230: istore_2
     //   231: goto -50 -> 181
@@ -492,11 +525,11 @@ public class MiniAppFileManager
     //   253: aload 6
     //   255: ifnull +8 -> 263
     //   258: aload 6
-    //   260: invokevirtual 447	java/io/OutputStream:close	()V
+    //   260: invokevirtual 476	java/io/OutputStream:close	()V
     //   263: aload 4
     //   265: ifnull +8 -> 273
     //   268: aload 4
-    //   270: invokevirtual 448	java/io/InputStream:close	()V
+    //   270: invokevirtual 477	java/io/InputStream:close	()V
     //   273: aload_1
     //   274: athrow
     //   275: astore_1

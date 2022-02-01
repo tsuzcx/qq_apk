@@ -1,98 +1,60 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.data.fts.FTSNewTroopSync;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.fts.FTSOptSync;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aonl
-  extends aonn
+  extends aoni
 {
-  public aonl(QQAppInterface paramQQAppInterface, aonm paramaonm)
+  private String b;
+  
+  public aonl(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
   {
-    super(paramQQAppInterface, paramaonm);
-    this.d = true;
+    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
+    this.b = paramString4;
   }
   
-  protected FTSOptSync a(int paramInt, long paramLong1, long paramLong2)
+  private boolean a(String paramString)
   {
-    return new FTSNewTroopSync(paramInt, paramLong1, paramLong2);
+    return (TextUtils.isEmpty(paramString)) || (a() == 1);
   }
   
-  protected List<FTSOptSync> a(SQLiteDatabase paramSQLiteDatabase, EntityManager paramEntityManager)
+  protected String f()
   {
-    localObject = null;
-    try
-    {
-      if (this.a > 0)
-      {
-        i = paramSQLiteDatabase.delete(FTSNewTroopSync.class.getSimpleName(), "_id<=?", new String[] { String.valueOf(this.a) });
-        if ((QLog.isColorLevel()) && (i > 0)) {
-          QLog.d("Q.fts.troop.operator.new", 2, "delete " + FTSNewTroopSync.class.getSimpleName() + " row=" + i);
-        }
-      }
-      paramEntityManager = paramEntityManager.query(FTSNewTroopSync.class, FTSNewTroopSync.class.getSimpleName(), false, "_id>?", new String[] { String.valueOf(this.a) }, null, null, null, "300");
-      if (paramEntityManager == null) {
-        break label291;
-      }
-      paramSQLiteDatabase = new ArrayList(paramEntityManager.size());
-      try
-      {
-        paramEntityManager = paramEntityManager.iterator();
-        while (paramEntityManager.hasNext()) {
-          paramSQLiteDatabase.add(((FTSNewTroopSync)paramEntityManager.next()).transTroopSync());
-        }
-        QLog.e("Q.fts.troop.operator.new", 1, paramEntityManager, new Object[0]);
-      }
-      catch (Throwable paramEntityManager) {}
+    String str2 = aono.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.f();
     }
-    catch (Throwable paramEntityManager)
-    {
-      for (;;)
-      {
-        int i;
-        paramSQLiteDatabase = localObject;
-        continue;
-        paramSQLiteDatabase = null;
-      }
-    }
-    paramEntityManager = new HashMap();
-    paramEntityManager.put("type", "2");
-    bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actGetOptFailed", true, 0L, 0L, paramEntityManager, null);
-    paramEntityManager = paramSQLiteDatabase;
-    label225:
-    return paramEntityManager;
-    paramEntityManager = paramSQLiteDatabase;
-    for (;;)
-    {
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label225;
-        }
-        paramEntityManager = new StringBuilder().append("getOptSyncList size:");
-        if (paramSQLiteDatabase == null) {
-          break label279;
-        }
-        i = paramSQLiteDatabase.size();
-        QLog.d("Q.fts.troop.operator.new", 2, i);
-        return paramSQLiteDatabase;
-      }
-      catch (Throwable paramEntityManager) {}
-      break;
-      label279:
-      i = 0;
-    }
+    return str1;
   }
   
-  protected String b()
+  protected String g()
   {
-    return "NewTroopCursor";
+    String str2 = aono.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.g();
+    }
+    return str1;
+  }
+  
+  protected String h()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("type", "result");
+    localJSONObject2.put("gameType", a());
+    JSONObject localJSONObject3 = new JSONObject();
+    localJSONObject3.put("jump_url", a());
+    String str2 = aono.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = "https://qqvgame.qq.com/d55d788cc3c423807d830230aad935b2.png";
+    }
+    localJSONObject3.put("icon_url", str1);
+    localJSONObject2.put("extra", localJSONObject3);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
   }
 }
 

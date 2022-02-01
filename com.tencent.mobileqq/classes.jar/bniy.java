@@ -1,30 +1,32 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.os.Looper;
+import android.util.Printer;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.BaseHandler;
 
-class bniy
-  implements Observer<bnnv>
+public class bniy
+  implements Printer
 {
-  bniy(bniq parambniq) {}
+  public bniy(BaseHandler paramBaseHandler) {}
   
-  public void a(@Nullable bnnv parambnnv)
+  public void println(String paramString)
   {
-    if (parambnnv == null) {
-      return;
-    }
-    boolean bool = parambnnv.a();
-    if (bool) {
-      bniq.c(this.a);
-    }
-    for (;;)
+    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
+    do
     {
-      bniq.a(this.a).a(bool, new bniz(this, parambnnv));
       return;
-      if (bniq.a(this.a) != null) {
-        bniq.a(this.a).a();
+      if (!BaseHandler.access$000())
+      {
+        Looper.myLooper().setMessageLogging(null);
+        return;
       }
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseHandler", 2, paramString);
+      }
+      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
+        BaseHandler.access$100(this.a);
+      }
+    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
+    BaseHandler.access$200(this.a);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mfsdk.reporter;
 
-import adbp;
-import adbs;
-import addn;
-import addp;
-import addq;
-import addt;
+import adkn;
+import adkq;
+import adml;
+import admn;
+import admo;
+import admr;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -14,7 +14,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import bdwu;
+import bevn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
@@ -31,7 +31,7 @@ import org.json.JSONObject;
 
 public class ReporterMachine
 {
-  private static addn jdField_a_of_type_Addn;
+  private static adml jdField_a_of_type_Adml;
   private static ReporterMachine jdField_a_of_type_ComTencentMfsdkReporterReporterMachine;
   private static String jdField_a_of_type_JavaLangString = "";
   private static List<ResultObject> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
@@ -46,7 +46,7 @@ public class ReporterMachine
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("ReporterMachine", 0);
       localHandlerThread.start();
       jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
-      jdField_a_of_type_Addn = new addp(localHandlerThread);
+      jdField_a_of_type_Adml = new admn(localHandlerThread);
     }
     jdField_a_of_type_JavaLangString = a();
   }
@@ -64,8 +64,8 @@ public class ReporterMachine
   
   public static void a(ResultObject paramResultObject)
   {
-    adbs.a(paramResultObject.params);
-    if ((true == paramResultObject.isRealTime) && (1 == bdwu.a().a())) {
+    adkq.a(paramResultObject.params);
+    if ((true == paramResultObject.isRealTime) && (1 == bevn.a().a())) {
       try
       {
         c(paramResultObject);
@@ -88,7 +88,7 @@ public class ReporterMachine
   
   private static void c(ResultObject paramResultObject)
   {
-    if (adbp.a > Config.MAX_REPORT_NUM) {
+    if (adkn.a > Config.MAX_REPORT_NUM) {
       return;
     }
     JSONObject localJSONObject = paramResultObject.params.getJSONObject("clientinfo");
@@ -98,12 +98,12 @@ public class ReporterMachine
     localJSONObject.put("model", Build.MODEL);
     localJSONObject.put("os", Build.VERSION.RELEASE);
     localJSONObject.put("rdmuuid", jdField_a_of_type_JavaLangString);
-    localJSONObject.put("deviceid", addt.a(BaseApplicationImpl.sApplication));
+    localJSONObject.put("deviceid", admr.a(BaseApplicationImpl.sApplication));
     if (BaseApplicationImpl.sProcessId == 1) {}
     try
     {
       String.valueOf(paramResultObject.params.get("newplugin"));
-      jdField_a_of_type_Addn.a(paramResultObject, new addq());
+      jdField_a_of_type_Adml.a(paramResultObject, new admo());
       return;
     }
     catch (Exception localException)

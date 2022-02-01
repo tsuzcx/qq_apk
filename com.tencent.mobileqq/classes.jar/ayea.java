@@ -1,20 +1,29 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class ayea
-  extends ayco
+final class ayea
+  implements bjig
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
+  ayea(String paramString, ayeg paramayeg) {}
   
-  public ayea(View paramView)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376308));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370225));
-    this.b = ((ImageView)paramView.findViewById(2131366233));
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Ayeg != null) {
+        this.jdField_a_of_type_Ayeg.a(true);
+      }
+    }
+    label50:
+    while (this.jdField_a_of_type_Ayeg == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ayeg.a(false);
   }
 }
 

@@ -1,24 +1,15 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 class vzu
-  implements uxv
+  implements DialogInterface.OnClickListener
 {
-  vzu(vzq paramvzq, FeedCloudMeta.StFeed paramStFeed) {}
+  vzu(vzr paramvzr) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == uxw.c)
-    {
-      ClipboardManager localClipboardManager = (ClipboardManager)this.jdField_a_of_type_Vzq.a.getContext().getSystemService("clipboard");
-      if (localClipboardManager != null) {
-        localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.content.get()));
-      }
-    }
+    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).b(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 

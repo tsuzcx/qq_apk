@@ -6,8 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import avbk;
-import avdq;
+import avtm;
+import avvs;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -18,7 +18,7 @@ import com.tencent.widget.XPanelContainer;
 public class PublicAccountHotPicPanel
   extends HotPicMainPanel
 {
-  avdq a;
+  avvs a;
   
   public PublicAccountHotPicPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,12 +34,12 @@ public class PublicAccountHotPicPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout = paramPanelIconLinearLayout;
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370198);
-    this.c = findViewById(2131368096);
-    this.b = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558606, null);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370299);
+    this.c = findViewById(2131368168);
+    this.b = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558608, null);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131368102));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131368083));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131368174));
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131368155));
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a = 1008;
   }
@@ -48,10 +48,10 @@ public class PublicAccountHotPicPanel
   
   public void d() {}
   
-  public void setPublicAccountGifListener(avdq paramavdq)
+  public void setPublicAccountGifListener(avvs paramavvs)
   {
-    this.jdField_a_of_type_Avdq = paramavdq;
-    avbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramavdq);
+    this.jdField_a_of_type_Avvs = paramavvs;
+    avtm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramavvs);
   }
 }
 

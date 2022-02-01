@@ -1,75 +1,82 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDateCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.HashSet;
+import java.util.Set;
 
 public class wyq
-  extends wlf
+  extends RecyclerView.ItemDecoration
 {
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
   
-  public wyq()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
   }
   
-  public String a()
+  public wyq(Context paramContext)
   {
-    if (QQStoryContext.a().a(this.jdField_b_of_type_JavaLangString)) {
-      return wjz.a("StorySvc.get_date_collection_list");
-    }
-    return wjz.a("StorySvc.get_others_video_list");
+    this.jdField_a_of_type_Int = agej.a(5.0F, paramContext.getResources());
+    this.b = agej.a(16.0F, paramContext.getResources());
+    this.c = agej.a(8.5F, paramContext.getResources());
+    this.d = agej.a(3.0F, paramContext.getResources());
+    this.e = agej.a(3.0F, paramContext.getResources());
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    qqstory_service.RspDateVideoCollectionList localRspDateVideoCollectionList = new qqstory_service.RspDateVideoCollectionList();
-    try
-    {
-      localRspDateVideoCollectionList.mergeFrom(paramArrayOfByte);
-      return new xao(this.jdField_b_of_type_JavaLangString, localRspDateVideoCollectionList);
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
     {
-      yqp.b("Q.qqstory.memories:GetDateCollectionListRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqDateCollectionList localReqDateCollectionList = new qqstory_service.ReqDateCollectionList();
-    localReqDateCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqDateCollectionList.collection_count.set(this.c);
-    localReqDateCollectionList.collection_video_count.set(this.d);
-    localReqDateCollectionList.seqno.set(this.jdField_b_of_type_Long);
-    PBInt32Field localPBInt32Field = localReqDateCollectionList.is_friend;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBInt32Field.set(i);
-      if (this.e != -1) {
-        localReqDateCollectionList.time_zone.set(this.e);
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
       }
-      localReqDateCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-      return localReqDateCollectionList.toByteArray();
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
+      }
     }
-  }
-  
-  public String toString()
-  {
-    return "GetDateCollectionListRequest{startCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", collectionPageSize=" + this.c + ", collectionVideoCount=" + this.d + ", seq=" + this.jdField_b_of_type_Long + ", timeZoneOffset=" + this.e + ", uin=" + this.jdField_b_of_type_JavaLangString + ", isFriend=" + this.jdField_a_of_type_Boolean + '}';
+    if (m == 2)
+    {
+      paramRect.right = this.b;
+      return;
+    }
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

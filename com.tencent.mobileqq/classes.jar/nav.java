@@ -1,28 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.RectF;
-import android.view.View;
+import android.app.Activity;
+import com.tencent.avgame.app.AVGameAppInterface;
 
 public abstract interface nav
 {
-  public abstract int a();
+  public abstract Activity a();
   
-  public abstract View a();
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public abstract void a();
-  
-  public abstract void a(RectF paramRectF);
+  public abstract void a(AVGameAppInterface paramAVGameAppInterface, long paramLong, String paramString1, int paramInt, String paramString2, String paramString3);
   
   public abstract void a(String paramString);
   
-  public abstract void a(String paramString1, Bitmap paramBitmap, String paramString2, long paramLong1, long paramLong2, boolean paramBoolean);
+  public abstract void a(String paramString1, String paramString2);
   
-  public abstract void a(String paramString, RectF paramRectF, int paramInt);
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public abstract void b(RectF paramRectF);
+  public abstract void a(mze parammze);
   
-  public abstract void b(String paramString);
-  
-  public abstract void b(String paramString, RectF paramRectF, int paramInt);
+  public abstract void b(mze parammze);
 }
 
 

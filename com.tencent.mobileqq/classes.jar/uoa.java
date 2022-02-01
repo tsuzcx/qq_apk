@@ -1,18 +1,10 @@
-import UserGrowth.eConfigBit;
-import UserGrowth.stUserConfigReq;
-import UserGrowth.stUserConfigRsp;
-import android.support.annotation.NonNull;
-
-public class uoa
-  extends ujr<stUserConfigRsp>
+public final class uoa
 {
-  public uoa(@NonNull eConfigBit parameConfigBit)
-  {
-    super("UserConfig", 10005);
-    stUserConfigReq localstUserConfigReq = new stUserConfigReq();
-    localstUserConfigReq.config_set = parameConfigBit.value();
-    this.a = localstUserConfigReq;
-  }
+  public static int a;
+  public static String a = "";
+  public static volatile boolean a;
+  public static int b;
+  public static String b = "";
 }
 
 

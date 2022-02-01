@@ -1,56 +1,75 @@
-public class lua
-  extends ltv
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.C2CGameInfo;
+import com.tencent.qphone.base.util.QLog;
+
+class lua
+  implements lfs
 {
-  public boolean a;
+  lua(ltz paramltz) {}
   
-  public void a(long paramLong)
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if (paramLong <= 500L)
+    bool2 = false;
+    String str = mqr.a();
+    if ((paramArrayOfByte == null) || (TextUtils.isEmpty(str)) || (paramInt1 != 9))
     {
-      i = 0;
-      f1 = f2;
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome error return, msgType=" + paramInt1);
+      }
+      return false;
     }
-    for (;;)
+    localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
+    localC2CGameInfo = new AVRedPacketGameSyncInfo.C2CGameInfo();
+    try
     {
-      a(i);
-      b(f1);
-      return;
-      if ((paramLong > 500L) && (paramLong < 1167L))
+      localC2CGameInfo.mergeFrom(paramArrayOfByte);
+      bool1 = true;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
       {
-        i = (int)(255L * (paramLong - 500L) / 667L);
-        f1 = (0.5F * (float)(paramLong + 1167L) - 500.0F) / 667.0F;
-      }
-      else if (((paramLong >= 1167L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
-      {
-        i = 255;
-        f1 = f2;
-      }
-      else
-      {
-        f1 = f2;
-        i = j;
-        if (paramLong > 2167L)
+        boolean bool1 = bool2;
+        if (QLog.isColorLevel())
         {
-          f1 = f2;
-          i = j;
-          if (paramLong < 2500L)
-          {
-            i = (int)((paramLong - 2500L) * 255L / -333L);
-            f1 = f2;
+          QLog.e("AVRedPacketHandler", 2, "onC2CDataCome,", paramArrayOfByte);
+          bool1 = bool2;
+          continue;
+          if ((paramInt2 == 2) || (paramInt2 == 3)) {
+            localAVRedPacketManager.b(paramInt2);
+          } else if (paramInt2 == 4) {
+            localAVRedPacketManager.c(localC2CGameInfo.exceptionType.get());
           }
         }
       }
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
+    if (paramInt2 == 1)
+    {
+      paramArrayOfByte = new Bundle();
+      paramArrayOfByte.putString("key", localC2CGameInfo.key.get());
+      paramArrayOfByte.putInt("gameState", localC2CGameInfo.state.get());
+      paramArrayOfByte.putString("peerUin", str);
+      paramArrayOfByte.putInt("fromWho", localC2CGameInfo.fromWho.get());
+      paramArrayOfByte.putString("money", localC2CGameInfo.money.get());
+      paramArrayOfByte.putInt("resultCode", localC2CGameInfo.resultCode.get());
+      paramArrayOfByte.putString("resultState", localC2CGameInfo.resultState.get());
+      paramArrayOfByte.putInt("musicId", localC2CGameInfo.musicId.get());
+      paramArrayOfByte.putInt("hitScore", localC2CGameInfo.scores.get());
+      paramArrayOfByte.putInt("enterType", localC2CGameInfo.enterType.get());
+      paramArrayOfByte.putInt("maxScore", localC2CGameInfo.maxScore.get());
+      paramArrayOfByte.putInt("totalEmojiNum", localC2CGameInfo.totalEmojiNum.get());
+      localAVRedPacketManager.a(bool1, paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome, isSucc: " + bool1 + ", subType=" + paramInt2);
+      }
+      return true;
+    }
   }
 }
 

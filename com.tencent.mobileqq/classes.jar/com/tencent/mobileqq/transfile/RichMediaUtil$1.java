@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import bdxz;
+import bews;
 import java.util.TimerTask;
 
 public final class RichMediaUtil$1
@@ -10,7 +10,7 @@ public final class RichMediaUtil$1
   
   public void run()
   {
-    bdxz.a(this.a, false, null);
+    bews.a(this.a, false, null);
   }
 }
 

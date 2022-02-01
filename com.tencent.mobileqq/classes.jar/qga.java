@@ -1,40 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qga
-  implements qft
+  implements View.OnClickListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public qga(PTSFragment paramPTSFragment) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(View paramView)
   {
-    return qbo.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = parampxk.a();
-    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
-      qhv.a(paramContainer, parampxk);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
-  {
-    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("search_word_click_")))
-    {
-      paramViewBase.setOnClickListener(new qgb(this, parampxk, paramContainer));
-      return true;
-    }
-    return false;
+    Context localContext = paramView.getContext();
+    Intent localIntent = new Intent(localContext, AccountDetailActivity.class);
+    localIntent.putExtra("uin", String.valueOf(3434959637L));
+    localIntent.putExtra("uintype", 1008);
+    localIntent.putExtra("source", 121);
+    localContext.startActivity(localIntent);
+    ocd.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

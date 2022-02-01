@@ -1,24 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class advm
   implements DialogInterface.OnClickListener
 {
-  public advm(ChatHistoryImageView paramChatHistoryImageView) {}
+  public advm(AssistantSettingActivity paramAssistantSettingActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a;
-    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
-    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
-    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-    }
+    this.a.a();
   }
 }
 

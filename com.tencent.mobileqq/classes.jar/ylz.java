@@ -1,25 +1,20 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.concurrent.atomic.AtomicLong;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class ylz<T extends Dispatcher.Dispatchable>
-  extends QQUIEventReceiver<ylf, T>
-  implements ymk
+public class ylz
+  extends wzi
 {
-  protected static AtomicLong a = new AtomicLong(0L);
-  public int a;
-  public long a;
-  public wvr a;
-  public ymm a;
-  public int b;
+  public List<String> a = new ArrayList();
   
-  public abstract int a(T paramT);
-  
-  public abstract void a(T paramT);
-  
-  public boolean b()
+  public ylz(ErrorMessage paramErrorMessage)
   {
-    return this.b > 0;
+    super(paramErrorMessage);
+  }
+  
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + '}';
   }
 }
 

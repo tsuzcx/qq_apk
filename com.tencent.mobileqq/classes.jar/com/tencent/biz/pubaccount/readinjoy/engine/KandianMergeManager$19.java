@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import adrm;
-import anhk;
+import aean;
+import antf;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class KandianMergeManager$19
@@ -12,9 +12,9 @@ class KandianMergeManager$19
   public void run()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = anhk.az;
+    localSessionInfo.jdField_a_of_type_JavaLangString = antf.az;
     localSessionInfo.jdField_a_of_type_Int = 1008;
-    adrm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+    aean.a(KandianMergeManager.a(this.this$0), localSessionInfo);
   }
 }
 

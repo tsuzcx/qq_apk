@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import pmh;
+import pfa;
 
 class ComponentContentRecommendFollowGroup$3
   implements Runnable
@@ -10,12 +10,12 @@ class ComponentContentRecommendFollowGroup$3
   
   public void run()
   {
-    pmh localpmh = pmh.a();
+    pfa localpfa = pfa.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localpmh.b(l, i);
+      localpfa.b(l, i);
       return;
     }
   }

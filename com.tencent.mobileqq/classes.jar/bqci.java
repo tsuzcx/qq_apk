@@ -1,16 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
 public class bqci
-  implements View.OnTouchListener
+  extends brhj
 {
-  public bqci(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  public bqci(EditPicActivity paramEditPicActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return this.a.a(paramView, paramMotionEvent);
+    yuk.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    bqbr localbqbr = (bqbr)this.a.a.a(bqbr.class);
+    if (localbqbr != null) {
+      localbqbr.b();
+    }
   }
 }
 

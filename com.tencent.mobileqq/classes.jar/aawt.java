@@ -1,60 +1,26 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
+import org.json.JSONObject;
 
-class aawt
-  extends bhhe
+public class aawt
 {
-  aawt(aaws paramaaws, Downloader.DownloadListener paramDownloadListener, String paramString1, aawu paramaawu, String paramString2, String paramString3) {}
+  public int a;
+  public aawo a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onCancel(bhhf parambhhf)
+  public aawt(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+    if (paramJSONObject.optJSONObject("aioActivityBubble") != null) {
+      this.jdField_a_of_type_Aawo = new aawo(paramJSONObject.optJSONObject("aioActivityBubble"));
     }
-    aawu.a(this.jdField_a_of_type_Aawu, 3);
-    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "onDownloadCanceled" });
-  }
-  
-  public void onDone(bhhf parambhhf)
-  {
-    if (parambhhf.a == 0)
-    {
-      boolean bool;
-      if (new File(aaws.jdField_a_of_type_JavaLangString).exists())
-      {
-        bool = bmij.b(new File(this.jdField_a_of_type_JavaLangString), new File(aaws.jdField_a_of_type_JavaLangString + "/" + this.b));
-        if (!bool) {
-          break label158;
-        }
-        if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-          this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
-        }
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        aawu.a(this.jdField_a_of_type_Aawu, 0);
-      }
-      for (;;)
-      {
-        QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByIdsuccess:" + bool);
-        return;
-        label158:
-        aawu.a(this.jdField_a_of_type_Aawu, 2);
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
-    }
-    aawu.a(this.jdField_a_of_type_Aawu, 2);
-    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByIdonDownloadFailed:" });
-  }
-  
-  public void onProgress(bhhf parambhhf)
-  {
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, 0L, 0.0F);
-    }
-    aawu.a(this.jdField_a_of_type_Aawu, 1);
   }
 }
 

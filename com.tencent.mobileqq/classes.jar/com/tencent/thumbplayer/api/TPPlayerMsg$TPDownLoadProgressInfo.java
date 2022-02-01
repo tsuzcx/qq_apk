@@ -7,6 +7,11 @@ public class TPPlayerMsg$TPDownLoadProgressInfo
   public String extraInfo;
   public long playableDurationMS;
   public long totalFileSize;
+  
+  public String toString()
+  {
+    return "TPDownLoadProgressInfo{playableDurationMS=" + this.playableDurationMS + ", downloadSpeedKBps=" + this.downloadSpeedKBps + ", currentDownloadSize=" + this.currentDownloadSize + ", totalFileSize=" + this.totalFileSize + ", extraInfo='" + this.extraInfo + '\'' + '}';
+  }
 }
 
 

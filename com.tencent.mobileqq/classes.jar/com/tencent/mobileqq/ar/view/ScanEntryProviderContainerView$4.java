@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.view;
 
-import aosj;
+import apfz;
 
 class ScanEntryProviderContainerView$4
   implements Runnable
 {
-  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, aosj paramaosj) {}
+  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, apfz paramapfz) {}
   
   public void run()
   {

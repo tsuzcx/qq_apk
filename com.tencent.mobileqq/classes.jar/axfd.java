@@ -1,23 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class axfd
-  implements ValueAnimator.AnimatorUpdateListener
+public class axfd
+  extends biia
 {
-  axfd(axfb paramaxfb, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  public axfd(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Axfb.b)
-    {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
-      this.jdField_a_of_type_Axfb.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Axfb.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
+    super.a(paramLong, paramInt, paramBundle);
+    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
+    if (new File(paramBundle).exists()) {
+      aggu.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.c(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

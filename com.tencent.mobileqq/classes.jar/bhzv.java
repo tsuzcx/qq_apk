@@ -1,29 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView.5;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
-public class bhzv
-  implements View.OnClickListener
+public class bhzv<V>
+  implements Manager
 {
-  public bhzv(ProfileCardExtendFriendView.5 param5) {}
+  private final ArrayList<bhzx<V>> a = new ArrayList();
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.a.authState == 1L) {
-      QQToast.a(this.a.this$0.getContext(), 0, 2131697896, 1).a();
+    biev.a.a();
+  }
+  
+  public static <E> bhzw<E> a(bhzw<E> parambhzw)
+  {
+    return new bhzy(parambhzw);
+  }
+  
+  public void a(String arg1, bhzw<V> parambhzw, Object paramObject)
+  {
+    if (parambhzw != null)
+    {
+      parambhzw = new bhzx(parambhzw, paramObject, ???);
+      synchronized (this.a)
+      {
+        this.a.add(parambhzw);
+        return;
+      }
     }
+  }
+  
+  public void a(String paramString, V paramV)
+  {
+    if (paramString == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.a.authState == 0L) || (this.a.a.authState == 3L)) {
-        asme.a((FriendProfileCardActivity)ProfileCardExtendFriendView.a(this.a.this$0), this.a.a.idx, this.a.a.schoolName, this.a.a.schoolId);
+      int i;
+      synchronized (this.a)
+      {
+        i = this.a.size() - 1;
+        if (i >= 0)
+        {
+          bhzx localbhzx = (bhzx)this.a.get(i);
+          if (paramString.equals(localbhzx.jdField_a_of_type_JavaLangString))
+          {
+            this.a.remove(i);
+            localArrayList.add(localbhzx);
+          }
+        }
+        else
+        {
+          paramString = localArrayList.iterator();
+          if (!paramString.hasNext()) {
+            break;
+          }
+          ??? = (bhzx)paramString.next();
+          ((bhzx)???).jdField_a_of_type_Bhzw.a(paramV, ((bhzx)???).jdField_a_of_type_JavaLangObject);
+        }
       }
+      i -= 1;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    synchronized (this.a)
+    {
+      this.a.clear();
+      return;
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import anwd;
+import aoip;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class TroopHandler$1
   implements Runnable
 {
-  public TroopHandler$1(anwd paramanwd) {}
+  public TroopHandler$1(aoip paramaoip) {}
   
   public void run()
   {

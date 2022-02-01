@@ -1,31 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-final class bgoi
-  extends anxg
+public class bgoi
+  extends ReportDialog
 {
-  bgoi(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  private static String a = "https://sola.gtimg.cn/aoi/sola/20200515111445_ChpLurYZBA.png";
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  public bgoi(Context paramContext)
   {
-    if (this.jdField_a_of_type_Long != paramLong) {
-      return;
-    }
-    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
-    if ((paramInt1 & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
-      if (paramInt1 != 480) {
-        break;
-      }
-      if (paramBoolean) {
-        bgol.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      return;
-    }
+    super(paramContext, 2131755174);
+    a();
+  }
+  
+  private void a()
+  {
+    setCancelable(false);
+    setCanceledOnTouchOutside(false);
+    setContentView(2131559012);
+    Object localObject1 = (URLImageView)findViewById(2131368320);
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#FFEBEDF5"));
+    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
+    ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(a, (URLDrawable.URLDrawableOptions)localObject2));
+    localObject1 = (TextView)findViewById(2131369576);
+    ((TextView)localObject1).setClickable(true);
+    localObject2 = new GradientDrawable();
+    ((GradientDrawable)localObject2).setCornerRadius(12.0F);
+    ((GradientDrawable)localObject2).setColor(-1315339);
+    ((TextView)localObject1).setBackgroundDrawable((Drawable)localObject2);
+    ((TextView)localObject1).setOnClickListener(new bgoj(this));
   }
 }
 

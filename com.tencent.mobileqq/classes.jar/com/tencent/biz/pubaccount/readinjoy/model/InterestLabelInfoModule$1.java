@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
-import pxl;
+import ppv;
 
 public class InterestLabelInfoModule$1
   implements Runnable
 {
-  public InterestLabelInfoModule$1(pxl parampxl) {}
+  public InterestLabelInfoModule$1(ppv paramppv) {}
   
   public void run()
   {

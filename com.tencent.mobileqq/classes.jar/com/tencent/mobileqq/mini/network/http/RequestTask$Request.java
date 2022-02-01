@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.network.http;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -29,17 +29,17 @@ public class RequestTask$Request
   public String referer = "https://appservice.qq.com/{appid}/{version}/page-frame.html";
   public String ua = "QQ/MiniApp";
   
-  public RequestTask$Request(JSONObject paramJSONObject, String paramString1, String paramString2, ITNativeBufferPool paramITNativeBufferPool)
+  public RequestTask$Request(JSONObject paramJSONObject, String paramString1, String paramString2, JsRuntime paramJsRuntime)
   {
     this.referer = paramString1;
     if (!TextUtils.isEmpty(paramString2)) {
       this.ua = paramString2;
     }
     this.mRequestCreatedMillis = SystemClock.elapsedRealtime();
-    merge(paramJSONObject, paramITNativeBufferPool);
+    merge(paramJSONObject, paramJsRuntime);
   }
   
-  public void merge(JSONObject paramJSONObject, ITNativeBufferPool paramITNativeBufferPool)
+  public void merge(JSONObject paramJSONObject, JsRuntime paramJsRuntime)
   {
     String str = null;
     if (paramJSONObject != null)
@@ -50,26 +50,26 @@ public class RequestTask$Request
       if (paramJSONObject.has("origin_url"))
       {
         this.mOriginUrl = paramJSONObject.optString("origin_url");
-        paramITNativeBufferPool = NativeBuffer.unpackNativeBuffer(paramJSONObject, "data", paramITNativeBufferPool);
-        if (paramITNativeBufferPool == null) {
+        paramJsRuntime = NativeBuffer.unpackNativeBuffer(paramJSONObject, "data", paramJsRuntime);
+        if (paramJsRuntime == null) {
           break label277;
         }
-        paramITNativeBufferPool = paramITNativeBufferPool.buf;
+        paramJsRuntime = paramJsRuntime.buf;
         label61:
-        this.mBody = paramITNativeBufferPool;
+        this.mBody = paramJsRuntime;
         if ((this.mBody == null) && (paramJSONObject.has("data")))
         {
-          paramITNativeBufferPool = paramJSONObject.optString("data");
-          if (paramITNativeBufferPool != null) {
+          paramJsRuntime = paramJSONObject.optString("data");
+          if (paramJsRuntime != null) {
             break label282;
           }
         }
       }
       label277:
       label282:
-      for (paramITNativeBufferPool = str;; paramITNativeBufferPool = paramITNativeBufferPool.getBytes())
+      for (paramJsRuntime = str;; paramJsRuntime = paramJsRuntime.getBytes())
       {
-        this.mBody = paramITNativeBufferPool;
+        this.mBody = paramJsRuntime;
         if (paramJSONObject.has("method")) {
           this.mMethod = paramJSONObject.optString("method");
         }
@@ -83,21 +83,21 @@ public class RequestTask$Request
           return;
         }
         paramJSONObject = paramJSONObject.optJSONObject("header");
-        paramITNativeBufferPool = paramJSONObject.keys();
+        paramJsRuntime = paramJSONObject.keys();
         if (this.mHeaders == null)
         {
           this.mHeaders = new HashMap();
           this.mHeaders.put("Referer", this.referer);
           this.mHeaders.put("User-Agent", this.ua);
         }
-        while (paramITNativeBufferPool.hasNext())
+        while (paramJsRuntime.hasNext())
         {
-          str = (String)paramITNativeBufferPool.next();
+          str = (String)paramJsRuntime.next();
           this.mHeaders.put(str, paramJSONObject.optString(str));
         }
         this.mOriginUrl = this.mUrl;
         break;
-        paramITNativeBufferPool = null;
+        paramJsRuntime = null;
         break label61;
       }
     }

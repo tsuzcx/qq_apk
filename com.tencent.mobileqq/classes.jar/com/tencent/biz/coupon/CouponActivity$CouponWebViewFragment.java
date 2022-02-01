@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcst;
-import bhmv;
+import bdll;
+import binq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.protofile.coupon.CouponProto.MarkBusinessFavourUpdateReq;
@@ -18,7 +18,7 @@ import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
-import niq;
+import nkl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class CouponActivity$CouponWebViewFragment
   
   private void a()
   {
-    NewIntent localNewIntent = new NewIntent(super.getActivity(), niq.class);
+    NewIntent localNewIntent = new NewIntent(super.getActivity(), nkl.class);
     localNewIntent.putExtra("cmd", "CouponSvr.coup_markBizupdate");
     localNewIntent.putExtra("data", new CouponProto.MarkBusinessFavourUpdateReq().toByteArray());
     if (this.mApp == null) {
@@ -46,7 +46,7 @@ public class CouponActivity$CouponWebViewFragment
     {
       this.mSwiftTitleUI.a.setVisibility(8);
       this.mSwiftTitleUI.c.setVisibility(0);
-      this.mSwiftTitleUI.c.setText(2131695391);
+      this.mSwiftTitleUI.c.setText(2131695434);
       this.mSwiftTitleUI.c.setOnClickListener(this);
       return i;
     }
@@ -84,7 +84,7 @@ public class CouponActivity$CouponWebViewFragment
     this.intent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.intent.putExtra("title", super.getResources().getString(2131695394));
+      this.intent.putExtra("title", super.getResources().getString(2131695437));
       this.jdField_a_of_type_Boolean = true;
       super.doOnCreate(paramBundle);
       if (this.jdField_a_of_type_Boolean)
@@ -114,7 +114,7 @@ public class CouponActivity$CouponWebViewFragment
       this.intent.putExtra("url", paramBundle);
       this.intent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
       a();
-      bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
+      bdll.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
       return true;
       this.intent.removeExtra("title");
       break;
@@ -136,7 +136,7 @@ public class CouponActivity$CouponWebViewFragment
     {
       this.mSwiftTitleUI.a.setVisibility(8);
       this.mSwiftTitleUI.c.setVisibility(0);
-      this.mSwiftTitleUI.c.setText(2131695391);
+      this.mSwiftTitleUI.c.setText(2131695434);
       this.mSwiftTitleUI.c.setClickable(false);
       return;
     }

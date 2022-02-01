@@ -1,36 +1,24 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bezk
-  implements ViewPager.OnPageChangeListener
 {
-  public bezk(DotStyleNavBar paramDotStyleNavBar) {}
+  private Map<String, String> a = new HashMap();
   
-  public void onPageScrollStateChanged(int paramInt)
+  public String a(String paramString)
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
-    }
+    paramString = bezi.a(paramString);
+    return (String)this.a.get(paramString);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(String paramString1, String paramString2)
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.setCurrent(paramInt);
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
-    }
+    this.a.put(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bezk
  * JD-Core Version:    0.7.0.1
  */

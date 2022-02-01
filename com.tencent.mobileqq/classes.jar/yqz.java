@@ -1,18 +1,31 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yqz
-  implements View.OnClickListener
+  extends QQUIEventReceiver<MystoryListView, wma>
 {
-  public yqz(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  public yqz(@NonNull MystoryListView paramMystoryListView)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramMystoryListView);
+  }
+  
+  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull wma paramwma)
+  {
+    paramMystoryListView.q();
+    paramwma = (yrh)paramMystoryListView.a("FeedSegment");
+    if (paramwma != null) {
+      paramwma.j();
+    }
+    paramMystoryListView = (ysw)paramMystoryListView.a("NewMyStorySegment");
+    if (paramMystoryListView != null) {
+      paramMystoryListView.a(false);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wma.class;
   }
 }
 

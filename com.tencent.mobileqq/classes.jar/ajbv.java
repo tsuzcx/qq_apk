@@ -1,34 +1,27 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ajbv
-  implements Comparator<PhoneContact>
+public class ajbv
+  implements ajcc
 {
-  ajbv(ajbt paramajbt) {}
+  public ajbv(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    int i = j;
-    if (j == 0)
+    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
     {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-      if (j == 0) {
-        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
       }
     }
-    return i;
+    do
+    {
+      return;
+      this.a.a = null;
+    } while (!QLog.isColorLevel());
+    QLog.i("chatHistory.troop.portal", 2, "no media data found");
   }
 }
 

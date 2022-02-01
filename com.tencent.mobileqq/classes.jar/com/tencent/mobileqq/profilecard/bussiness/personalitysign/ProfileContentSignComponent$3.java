@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profilecard.bussiness.personalitysign;
 
 import android.widget.TextView;
-import anni;
-import azfy;
-import azol;
-import bcst;
-import bgkw;
-import bguh;
+import anzj;
+import azyk;
+import bahb;
+import bdll;
+import bhkx;
+import bhuk;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.util.Pair;
@@ -15,25 +15,25 @@ import java.util.List;
 public class ProfileContentSignComponent$3
   implements Runnable
 {
-  public ProfileContentSignComponent$3(azol paramazol, TextView paramTextView, RichStatus paramRichStatus) {}
+  public ProfileContentSignComponent$3(bahb parambahb, TextView paramTextView, RichStatus paramRichStatus) {}
   
   public void run()
   {
     int i;
-    if ((azol.c(this.this$0) != null) && (!azol.d(this.this$0).isFinishing()))
+    if ((bahb.c(this.this$0) != null) && (!bahb.d(this.this$0).isFinishing()))
     {
-      i = azfy.a().a(this.jdField_a_of_type_AndroidWidgetTextView, (String)((Pair)this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.get(0)).second, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText, azol.a(this.this$0), azol.c(this.this$0), azol.b(this.this$0));
+      i = azyk.a().a(this.jdField_a_of_type_AndroidWidgetTextView, (String)((Pair)this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.get(0)).second, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText, bahb.a(this.this$0), bahb.c(this.this$0), bahb.b(this.this$0));
       if (i != -2147483648) {}
     }
     else
     {
       return;
     }
-    bguh localbguh = new bguh();
-    localbguh.a(0, anni.a(2131707242), 0);
-    bgkw.a(this.jdField_a_of_type_AndroidWidgetTextView, -i, 0, localbguh);
-    azfy.a().a(azol.h(this.this$0));
-    bcst.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
+    bhuk localbhuk = new bhuk();
+    localbhuk.a(0, anzj.a(2131707351), 0);
+    bhkx.a(this.jdField_a_of_type_AndroidWidgetTextView, -i, 0, localbhuk);
+    azyk.a().a(bahb.h(this.this$0));
+    bdll.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
   }
 }
 

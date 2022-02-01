@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader;
 
-import atkh;
+import aucb;
 import java.util.TimerTask;
 
 public class ExtfC2CFileUploader$1
   extends TimerTask
 {
-  public ExtfC2CFileUploader$1(atkh paramatkh) {}
+  public ExtfC2CFileUploader$1(aucb paramaucb) {}
   
   public void run()
   {

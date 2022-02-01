@@ -1,35 +1,25 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeon
-  implements ActionMode.Callback
+  implements View.OnClickListener
 {
-  public aeon(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public aeon(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    if ((this.a.a != null) && (this.a.a.getVisibility() == 0)) {
+      this.a.a.setVisibility(8);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeon
  * JD-Core Version:    0.7.0.1
  */

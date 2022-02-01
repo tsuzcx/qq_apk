@@ -1,27 +1,16 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-class arzq
-  implements URLDrawableDownListener
+public class arzq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  arzq(arzp paramarzp) {}
+  public arzq(DataReportViewer paramDataReportViewer) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
-      ((ProgressBar)paramView).setVisibility(4);
-    }
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

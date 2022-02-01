@@ -1,16 +1,6 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-
-final class apoi
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public abstract interface apoi
 {
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "preDownloadArkApp download complete,retCode: ", Integer.valueOf(paramInt), ";msg: ", paramString });
-    }
-  }
+  public abstract void a(long paramLong, apoz paramapoz);
 }
 
 

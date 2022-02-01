@@ -1,50 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-
 public class uoe
+  extends uod
 {
-  public static Intent a(String paramString1, String paramString2)
+  public uoe(int paramInt)
   {
-    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramString1.setPackage(paramString2);
-    }
-    paramString1.setFlags(536870912);
-    paramString1.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
-    return paramString1;
+    super(paramInt);
   }
   
-  public static void a(Activity paramActivity)
+  String a()
   {
-    String str1 = ugb.a().b();
-    String str2 = ugb.a().a();
-    upe.d("AppMarketUtils", "goAppMarket :\npackageName = " + str2 + "\nurl = " + str1);
-    try
-    {
-      paramActivity.startActivity(a(str1, str2));
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      upe.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
-    }
+    return "officialacc_weishi";
   }
   
-  public static boolean a(Activity paramActivity)
+  String b()
   {
-    if (paramActivity == null) {
-      upe.d("AppMarketUtils", "tryGoAppMarket:activity = null");
-    }
-    do
-    {
-      return false;
-      paramActivity = ugb.a().b();
-      String str = ugb.a().a();
-      upe.c("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str + "\nappStoreVendorId =" + ugb.a().d() + "\nappStoreScheme =" + paramActivity);
-    } while ((TextUtils.isEmpty(paramActivity)) || (paramActivity.startsWith("http")));
-    return true;
+    return "weishi_share_officialacc";
   }
 }
 

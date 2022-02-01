@@ -1,22 +1,106 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
-class bmoc
-  implements View.OnClickListener
+public class bmoc
 {
-  bmoc(bmob parambmob) {}
-  
-  public void onClick(View paramView)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
+    if ((paramBaseApplicationImpl == null) || (paramString == null))
     {
-      String str = blsf.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
-      this.a.mRuntime.a().loadUrl(str);
+      if (QLog.isColorLevel()) {
+        QLog.d(bmnu.a, 2, "createQQPimRuntime() application == null || processName == null");
+      }
+      return null;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    try
+    {
+      Class localClass1 = Class.forName("com.qqpim.application.QQPimPluginRuntime");
+      if (localClass1 != null) {}
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d(bmnu.a, 2, "createQQPimRuntime() cls == null");
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          ClassLoader localClassLoader;
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        localClassNotFoundException = localClassNotFoundException;
+        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqpim_plugin.apk");
+        Class localClass2 = localClassLoader.loadClass("com.qqpim.application.QQPimPluginRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        continue;
+        do
+        {
+          return null;
+          if (QLog.isColorLevel()) {
+            QLog.d(bmnu.a, 2, "createQQPimRuntime() 1 ");
+          }
+          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
+        } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
+        if (QLog.isColorLevel()) {
+          QLog.d(bmnu.a, 2, "createQQPimRuntime() succ");
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 

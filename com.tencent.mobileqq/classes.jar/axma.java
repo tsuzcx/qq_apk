@@ -1,6 +1,20 @@
-public abstract interface axma
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+
+public class axma
+  implements axlt
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  public axma(MultiAIOViewPager paramMultiAIOViewPager) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt)
+  {
+    if (MultiAIOViewPager.a(this.a) != null) {
+      MultiAIOViewPager.a(this.a).a(paramInt);
+    }
+  }
 }
 
 

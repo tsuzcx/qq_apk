@@ -12,28 +12,28 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bipa;
-import bipe;
-import bipg;
-import biph;
-import bisy;
+import bjpz;
+import bjqd;
+import bjqf;
+import bjqg;
+import bjtx;
 import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 
 public class RecommendListManager
   extends LinearLayout
-  implements View.OnClickListener, ViewStub.OnInflateListener, bipg
+  implements View.OnClickListener, ViewStub.OnInflateListener, bjqf
 {
   protected Handler a;
-  protected bipa a;
+  protected bjpz a;
   protected FriendChooser a;
   protected HashMap<String, View> a;
   
   public RecommendListManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Bipa = bipa.a();
+    this.jdField_a_of_type_Bjpz = bjpz.a();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -49,7 +49,7 @@ public class RecommendListManager
       localViewStub.setOnClickListener(this);
       i += 1;
     }
-    bisy.c("RecommendListManager", "-->onCreate()");
+    bjtx.c("RecommendListManager", "-->onCreate()");
   }
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
@@ -59,8 +59,8 @@ public class RecommendListManager
   
   public void b()
   {
-    int j = this.jdField_a_of_type_Bipa.a();
-    bisy.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
+    int j = this.jdField_a_of_type_Bjpz.a();
+    bjtx.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
     int i = j;
     if (j > 5) {
       i = 5;
@@ -76,9 +76,9 @@ public class RecommendListManager
       {
         j += 1;
         break;
-        localObject = (CheckBox)((View)localObject).findViewById(2131364466);
-        Friend localFriend = this.jdField_a_of_type_Bipa.a(j);
-        if (this.jdField_a_of_type_Bipa.a(localFriend.a)) {
+        localObject = (CheckBox)((View)localObject).findViewById(2131364511);
+        Friend localFriend = this.jdField_a_of_type_Bjpz.a(j);
+        if (this.jdField_a_of_type_Bjpz.a(localFriend.a)) {
           ((CheckBox)localObject).setChecked(true);
         } else {
           ((CheckBox)localObject).setChecked(false);
@@ -95,13 +95,13 @@ public class RecommendListManager
     {
     default: 
       i = -1;
-      bisy.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
-      if ((i != -1) && (i < this.jdField_a_of_type_Bipa.a()))
+      bjtx.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
+      if ((i != -1) && (i < this.jdField_a_of_type_Bjpz.a()))
       {
-        localCheckBox = (CheckBox)paramView.findViewById(2131364466);
-        Friend localFriend = this.jdField_a_of_type_Bipa.a(i);
+        localCheckBox = (CheckBox)paramView.findViewById(2131364511);
+        Friend localFriend = this.jdField_a_of_type_Bjpz.a(i);
         this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
-        if (!this.jdField_a_of_type_Bipa.a(localFriend.a)) {
+        if (!this.jdField_a_of_type_Bjpz.a(localFriend.a)) {
           break label176;
         }
         localCheckBox.setChecked(true);
@@ -135,26 +135,26 @@ public class RecommendListManager
     switch (paramView.getId())
     {
     default: 
-      bisy.c("RecommendListManager", "-->onInflate() position = " + i);
+      bjtx.c("RecommendListManager", "-->onInflate() position = " + i);
       paramView.setOnClickListener(this);
-      paramViewStub = this.jdField_a_of_type_Bipa.a(i);
+      paramViewStub = this.jdField_a_of_type_Bjpz.a(i);
       if ((paramViewStub.d == null) || ("".equals(paramViewStub.d))) {
-        paramViewStub.d = biph.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
+        paramViewStub.d = bjqg.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramViewStub.d, paramView);
-      localObject = (CheckBox)paramView.findViewById(2131364466);
-      localImageView = (ImageView)paramView.findViewById(2131368138);
-      paramView = (TextView)paramView.findViewById(2131371539);
-      if (this.jdField_a_of_type_Bipa.a(paramViewStub.a))
+      localObject = (CheckBox)paramView.findViewById(2131364511);
+      localImageView = (ImageView)paramView.findViewById(2131368212);
+      paramView = (TextView)paramView.findViewById(2131371647);
+      if (this.jdField_a_of_type_Bjpz.a(paramViewStub.a))
       {
         ((CheckBox)localObject).setChecked(true);
         label180:
-        localObject = bipe.a().a(paramViewStub.d);
+        localObject = bjqd.a().a(paramViewStub.d);
         if (localObject != null) {
           break label277;
         }
-        localImageView.setImageResource(2130840264);
-        bipe.a().a(paramViewStub.d, this);
+        localImageView.setImageResource(2130840274);
+        bjqd.a().a(paramViewStub.d, this);
       }
       break;
     }

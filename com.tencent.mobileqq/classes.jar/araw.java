@@ -1,57 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 public class araw
-  extends aqkz<arav>
 {
-  public static arav a()
-  {
-    return (arav)aqlk.a().a(377);
-  }
-  
-  @NonNull
-  public arav a(int paramInt)
-  {
-    return new arav();
-  }
-  
-  @Nullable
-  public arav a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arav.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(arav paramarav) {}
-  
-  public Class<arav> clazz()
-  {
-    return arav.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 377;
-  }
+  public static String a = "com.tencent.map.WelcomeActivity";
+  public static String b = "com.google.android.maps.MapsActivity";
+  public static String c = "com.tencent.map";
+  public static String d = "com.autonavi.minimap";
+  public static String e = "com.google.android.apps.maps";
+  public static String f = "com.baidu.BaiduMap";
+  public static String g = antf.br + "tencentmap.apk";
+  public static String h = "QQMAP_DEFAULT";
+  public static String i = "Location";
 }
 
 

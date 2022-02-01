@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.view;
 
-import awgb;
-import awgs;
+import awyt;
+import awzk;
 
 public class MagicfaceViewController$1
   implements Runnable
 {
-  public MagicfaceViewController$1(awgs paramawgs) {}
+  public MagicfaceViewController$1(awzk paramawzk) {}
   
   public void run()
   {

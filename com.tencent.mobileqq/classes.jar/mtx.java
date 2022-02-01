@@ -1,70 +1,156 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class mtx
-  extends RelativeLayout
+public final class mtx
+  extends Drawable
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  private final int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private HashMap<Integer, ArrayList<Bitmap>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private int c = -1;
+  private int d;
   
-  public mtx(Context paramContext, int paramInt, CharSequence paramCharSequence)
+  public mtx(int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(paramContext.getResources().getDimensionPixelSize(2131297847), 0, 0, 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(9, -1);
-    this.b = new ImageView(paramContext);
-    this.b.setImageResource(paramInt);
-    this.b.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297847), 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(11, -1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842236);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(14, -1);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramContext.getResources().getDimension(2131298950));
-    addView(this.b);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    setBackgroundResource(2130837568);
-    setId(2131369547);
-    setMinimumHeight(paramContext.getResources().getDimensionPixelSize(2131296657));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  private ArrayList<Bitmap> a()
+  {
+    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.c));
+  }
+  
+  private void a(Canvas paramCanvas) {}
+  
+  private boolean a()
+  {
+    return (this.c == 1) || (this.c == 3);
   }
   
   public void a(int paramInt)
   {
-    this.b.setImageResource(paramInt);
+    if (this.c == paramInt) {
+      return;
+    }
+    int i = this.c;
+    this.c = paramInt;
+    invalidateSelf();
   }
   
-  public void a(CharSequence paramCharSequence)
+  public void a(int paramInt, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localArrayList != null)
+    {
+      localArrayList.add(paramBitmap);
+      return;
+    }
+    localArrayList = new ArrayList();
+    localArrayList.add(paramBitmap);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
   }
   
   public void a(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    a(paramCanvas);
+    Object localObject = a();
+    if (a())
     {
-      localImageView.setVisibility(i);
+      localBitmap = (Bitmap)((ArrayList)localObject).get(0);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    do
+    {
+      return;
+      if (this.c == 0)
+      {
+        localBitmap = (Bitmap)((ArrayList)localObject).get(0);
+        localObject = (Bitmap)((ArrayList)localObject).get(1);
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+        paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.save();
+        int i = (int)(this.jdField_b_of_type_Int * (10000 - this.d) / 10000.0F);
+        if (QLog.isColorLevel()) {
+          QLog.d("huanxxiao", 1, "doUpdateAudioVolumeChange nexValue:=" + this.d);
+        }
+        this.jdField_b_of_type_AndroidGraphicsRect.set(0, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRect);
+        paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.restore();
+        return;
+      }
+    } while (this.c != 2);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (Bitmap localBitmap = (Bitmap)((ArrayList)localObject).get(1);; localBitmap = (Bitmap)((ArrayList)localObject).get(0))
+    {
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
       return;
     }
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() == paramInt) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    invalidateSelf();
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
   }
 }
 

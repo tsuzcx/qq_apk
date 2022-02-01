@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import bgpa;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.util.ColorUtils;
@@ -21,19 +21,19 @@ class OpenDataPlugin$8
     if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing())) {
       try
       {
-        bgpa localbgpa = new bgpa(this.this$0.jsPluginEngine.getActivityContext(), 2131755823);
-        localbgpa.setContentView(2131559383);
+        bhpc localbhpc = new bhpc(this.this$0.jsPluginEngine.getActivityContext(), 2131755824);
+        localbhpc.setContentView(2131559383);
         if (TextUtils.isEmpty(this.val$title)) {}
         for (String str = null;; str = this.val$title)
         {
-          localbgpa.setTitle(str).setMessage(this.val$content);
-          localbgpa.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
+          localbhpc.setTitle(str).setMessage(this.val$content);
+          localbhpc.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
           if (this.val$showCancel.booleanValue()) {
-            localbgpa.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
+            localbhpc.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
           }
-          localbgpa.setCanceledOnTouchOutside(true);
-          localbgpa.setOnCancelListener(this.val$onCancelListener);
-          localbgpa.show();
+          localbhpc.setCanceledOnTouchOutside(true);
+          localbhpc.setOnCancelListener(this.val$onCancelListener);
+          localbhpc.show();
           if (!(this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
             break;
           }

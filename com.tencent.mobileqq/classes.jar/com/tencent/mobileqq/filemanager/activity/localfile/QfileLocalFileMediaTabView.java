@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import asti;
-import asxb;
-import atut;
-import atvg;
-import atwr;
-import atxz;
+import atjm;
+import atnf;
+import aumo;
+import aunb;
+import auom;
+import aupu;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -24,7 +24,7 @@ public class QfileLocalFileMediaTabView
 {
   private int a;
   
-  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<atxz> paramList, boolean paramBoolean)
+  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<aupu> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_a_of_type_Int = 3;
@@ -37,7 +37,7 @@ public class QfileLocalFileMediaTabView
     HashMap localHashMap = new HashMap();
     String str;
     if (this.f) {
-      str = atut.a().a();
+      str = aumo.a().a();
     }
     while ((this.jdField_a_of_type_Int & 0x1) > 0)
     {
@@ -46,16 +46,16 @@ public class QfileLocalFileMediaTabView
       {
         if (localIterator.hasNext())
         {
-          atvg.a(true, ((atxz)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
+          aunb.a(true, ((aupu)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
           continue;
           str = null;
           break;
         }
       }
       if (str != null) {
-        atvg.a(true, str, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
+        aunb.a(true, str, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
       }
-      atvg.a(localHashMap);
+      aunb.a(localHashMap);
     }
     return localHashMap;
   }
@@ -65,7 +65,7 @@ public class QfileLocalFileMediaTabView
     HashMap localHashMap = new HashMap();
     String str;
     if (this.f) {
-      str = atut.a().a();
+      str = aumo.a().a();
     }
     while ((this.jdField_a_of_type_Int & 0x2) > 0)
     {
@@ -74,16 +74,16 @@ public class QfileLocalFileMediaTabView
       {
         if (localIterator.hasNext())
         {
-          atvg.a(true, ((atxz)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
+          aunb.a(true, ((aupu)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
           continue;
           str = null;
           break;
         }
       }
       if (str != null) {
-        atvg.a(true, str, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
+        aunb.a(true, str, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
       }
-      atvg.a(localHashMap);
+      aunb.a(localHashMap);
     }
     return localHashMap;
   }
@@ -99,7 +99,7 @@ public class QfileLocalFileMediaTabView
       return;
       if ((this.f) && ((this.jdField_a_of_type_Int & 0x1) > 0))
       {
-        Map localMap = atvg.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+        Map localMap = aunb.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
         if (localMap == null) {
           break;
         }
@@ -126,7 +126,7 @@ public class QfileLocalFileMediaTabView
       return;
       if ((this.f) && ((this.jdField_a_of_type_Int & 0x2) > 0))
       {
-        Map localMap = atvg.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+        Map localMap = aunb.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
         if (localMap == null) {
           break;
         }
@@ -142,9 +142,9 @@ public class QfileLocalFileMediaTabView
     }
   }
   
-  protected asti a()
+  protected atjm a()
   {
-    return new asxb(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
+    return new atnf(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
   }
   
   protected void a()

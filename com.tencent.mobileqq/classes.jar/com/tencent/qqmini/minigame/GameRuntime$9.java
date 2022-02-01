@@ -9,10 +9,10 @@ class GameRuntime$9
   
   public void run()
   {
-    if (GameRuntime.access$1100(this.this$0) != null)
+    if (GameRuntime.access$1000(this.this$0) != null)
     {
-      GameRuntime.access$1100(this.this$0).dismiss();
-      GameRuntime.access$1102(this.this$0, null);
+      GameRuntime.access$1102(this.this$0, new MiniProgressDialog(GameRuntime.access$1000(this.this$0)));
+      GameRuntime.access$1100(this.this$0).show();
     }
   }
 }

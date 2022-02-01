@@ -1,27 +1,81 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
+import java.lang.ref.WeakReference;
 
-class ajhe
-  extends bkov
+public class ajhe
+  extends Handler
 {
-  ajhe(ajhd paramajhd, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public WeakReference<TroopView> a;
+  
+  public ajhe(TroopView paramTroopView)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.a = new WeakReference(paramTroopView);
   }
   
-  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
+  public void a()
   {
-    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
-    if ((parambkou instanceof SimpleTextView)) {
-      parambkou.setTag(-10, paramObject);
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {}
+    do
+    {
+      return;
+      if (TroopView.a(localTroopView) != null) {
+        TroopView.a(localTroopView).setRefreshing(false);
+      }
+    } while (TroopView.a(localTroopView) == null);
+    TroopView.a(localTroopView).setRefresh(false);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {
+      return;
     }
-    return parambkou;
-  }
-  
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
-  {
-    this.a.a(paramInt, paramArrayOfbkou);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      TroopView.c(localTroopView);
+      TroopView.a(localTroopView, 1, 2131693965);
+      return;
+    case 4: 
+      TroopView.a(localTroopView, true);
+      return;
+    case 5: 
+      TroopView.a(localTroopView, false);
+      return;
+    case 13: 
+      TroopView.a(localTroopView, 1, 2131693965);
+      a();
+      return;
+    case 14: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label178;
+        }
+        TroopView.d(localTroopView);
+        if (TroopView.a(localTroopView) == null) {
+          break;
+        }
+        TroopView.a(localTroopView).a(0);
+        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
+        return;
+      }
+      label178:
+      a();
+      TroopView.a(localTroopView, 1, 2131718362);
+      return;
+    }
+    a();
   }
 }
 

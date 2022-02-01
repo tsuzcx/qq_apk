@@ -50,7 +50,7 @@ public class QWalletFullWindowActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    if (findViewById(2131363653) != null) {}
+    if (findViewById(2131363678) != null) {}
     return bool;
   }
 }

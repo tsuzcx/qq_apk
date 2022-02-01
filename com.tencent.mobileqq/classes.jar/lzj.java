@@ -1,147 +1,92 @@
-import android.text.TextUtils;
-import com.tencent.av.so.DownloadInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class lzj
+public class lzj
 {
-  int jdField_a_of_type_Int = 0;
-  bdvs jdField_a_of_type_Bdvs;
-  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
+  public SmallScreenRelativeLayout a;
+  protected String a;
+  public lzp a;
+  protected int i;
+  protected int j;
+  protected int k;
   
-  boolean a(DownloadInfo paramDownloadInfo)
+  public void a()
   {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Lzp.b();
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.c();
+    this.jdField_a_of_type_Lzp = null;
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
+  }
+  
+  public void a(Context paramContext, LayoutInflater paramLayoutInflater, lzk paramlzk)
+  {
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)paramLayoutInflater.inflate(this.i, null));
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.b();
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setFloatListener(paramlzk);
+    this.jdField_a_of_type_Lzp = new lzp(paramContext, this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout);
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setIsRotateSize(true);
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
+    a(this.jdField_a_of_type_Lzp.a());
+  }
+  
+  public void a(WindowManager.LayoutParams paramLayoutParams)
+  {
+    paramLayoutParams.flags = 136;
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      if ((this.jdField_a_of_type_ComTencentAvSoDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_zip_so))))) {
-        break label348;
-      }
-      bool = true;
+      paramLayoutParams.type = 2038;
+      return;
     }
-    for (;;)
+    if (lzq.a()) {}
+    for (int m = 2005;; m = 2002)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavSo", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
-      }
-      if (!bool)
-      {
-        return this.jdField_a_of_type_Boolean;
-        bool = true;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Bdvs != null)
-        {
-          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-          if ((localObject instanceof AppInterface))
-          {
-            localObject = ((AppInterface)localObject).getNetEngine(0);
-            if (localObject != null)
-            {
-              QLog.d("QavSo", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Bdvs.a() }));
-              ((bdvu)localObject).b(this.jdField_a_of_type_Bdvs);
-            }
-          }
-        }
-        this.jdField_a_of_type_ComTencentAvSoDownloadInfo = paramDownloadInfo;
-        this.c = 0;
-        this.jdField_a_of_type_Bdvs = null;
-        this.jdField_a_of_type_Int = 0;
-        this.b = 0;
-        if (!lzn.b(this.jdField_a_of_type_ComTencentAvSoDownloadInfo))
-        {
-          this.c |= 0x1;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if (!lzn.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo))
-        {
-          this.c |= 0x2;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QavSo", 2, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.c), this.jdField_a_of_type_ComTencentAvSoDownloadInfo }));
-        }
-        if (this.jdField_a_of_type_Int == 0) {
-          return this.jdField_a_of_type_Boolean;
-        }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, 3);
-        return this.jdField_a_of_type_Boolean;
-        label348:
-        bool = false;
-      }
+      paramLayoutParams.type = m;
+      return;
     }
   }
   
-  boolean a(DownloadInfo paramDownloadInfo, int paramInt)
+  public void a(BaseSmallScreenService paramBaseSmallScreenService)
   {
-    String str3;
-    String str1;
-    String str2;
-    int i;
-    if (!lzn.b(paramDownloadInfo))
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.f();
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    boolean bool = a();
+    if (paramBoolean)
     {
-      str3 = paramDownloadInfo.url_zip_so;
-      str1 = paramDownloadInfo.MD5_zip_so;
-      str2 = lzn.b() + str1;
-      i = 1;
-    }
-    boolean bool2;
-    while (paramInt < 0)
-    {
-      QLog.d("QavSo", 1, String.format("downloadRes, 下载死循环了. res_flag[%s], info[%s]", new Object[] { Integer.valueOf(i), paramDownloadInfo }));
-      lzi.a(-3);
-      bool2 = false;
-      return bool2;
-      if ((paramDownloadInfo.enable) && (!lzn.a(paramDownloadInfo)))
+      if (!this.jdField_a_of_type_Lzp.b()) {
+        this.jdField_a_of_type_Lzp.a();
+      }
+      if (!bool)
       {
-        str3 = paramDownloadInfo.url_zip_model;
-        str1 = paramDownloadInfo.MD5_zip_model;
-        str2 = lzn.a() + str1;
-        i = 2;
-      }
-      else
-      {
-        lzi.a(100);
-        return false;
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setCurPosition(paramInt);
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.d();
+        if (QLog.isDevelopLevel()) {
+          QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, show toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
+        }
       }
     }
-    QLog.i("QavSo", 1, String.format("downloadRes. res_flag[%s], outPath[%s], info[%s]", new Object[] { Integer.valueOf(i), str2, paramDownloadInfo }));
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = new lzk(this, str1, i, paramDownloadInfo, paramInt);
-    localbdvs.a(i + "_" + str1);
-    localbdvs.jdField_a_of_type_JavaLangString = str3;
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = new File(str2).getPath();
-    localbdvs.b = bgnt.a(bdwu.a().a());
-    paramDownloadInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramDownloadInfo instanceof QQAppInterface))
+    do
     {
-      paramDownloadInfo = ((QQAppInterface)paramDownloadInfo).getNetEngine(0);
-      if (paramDownloadInfo != null)
+      do
       {
-        this.jdField_a_of_type_Bdvs = localbdvs;
-        paramDownloadInfo.a(this.jdField_a_of_type_Bdvs);
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (!bool1) {
-        lzi.a(-2);
-      }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("QavSo", 2, String.format("downloadRes, res_flag[%s], md5[%s], etr[%s]", new Object[] { Integer.valueOf(i), str1, Boolean.valueOf(bool1) }));
-      return bool1;
-    }
+        return;
+      } while (!bool);
+      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.e();
+    } while (!QLog.isDevelopLevel());
+    QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, hide toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a());
   }
 }
 

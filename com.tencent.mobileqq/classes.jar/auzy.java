@@ -1,37 +1,16 @@
-import android.graphics.Bitmap;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ScrollView;
 
-public class auzy
+class auzy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<HiBoomTextView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  auzy(auzt paramauzt) {}
   
-  public static auzy a(HiBoomTextView paramHiBoomTextView)
+  public void onGlobalLayout()
   {
-    if (paramHiBoomTextView != null)
-    {
-      auzy localauzy = new auzy();
-      localauzy.jdField_a_of_type_Long = HiBoomTextView.a(paramHiBoomTextView);
-      localauzy.jdField_a_of_type_JavaLangString = HiBoomTextView.a(paramHiBoomTextView);
-      localauzy.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
-      localauzy.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(HiBoomTextView.a(paramHiBoomTextView));
-      localauzy.jdField_a_of_type_AndroidGraphicsBitmap = paramHiBoomTextView.a.a();
-      localauzy.jdField_a_of_type_Int = HiBoomTextView.a(paramHiBoomTextView);
-      localauzy.jdField_b_of_type_Int = HiBoomTextView.a(paramHiBoomTextView).currentFrameIndex();
-      localauzy.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHiBoomTextView);
-      localauzy.jdField_b_of_type_Long = System.currentTimeMillis();
-      return localauzy;
+    if (this.a.a != null) {
+      this.a.a.fullScroll(130);
     }
-    return null;
   }
 }
 

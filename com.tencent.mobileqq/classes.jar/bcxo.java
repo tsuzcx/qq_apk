@@ -1,226 +1,211 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bcxo
-  extends bcvs
+  implements bcxy
 {
-  public String aa;
-  public String ab;
-  public int o;
+  private static String jdField_a_of_type_JavaLangString = "ShortVideoResDownload_";
+  private static ConcurrentHashMap<Integer, bcxo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public int a;
+  private bcxr jdField_a_of_type_Bcxr;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  boolean jdField_a_of_type_Boolean;
   
-  public bcxo()
+  private bcxo(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    this.a = "head";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    jdField_a_of_type_JavaLangString += this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bcxr = new bcxr(jdField_a_of_type_JavaLangString, this);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public bcxo(int paramInt, String paramString1, String paramString2)
+  public static void a()
   {
-    this();
-    this.o = paramInt;
-    this.aa = paramString1;
-    this.ab = paramString2;
-  }
-  
-  public View a(Context paramContext, View paramView, int paramInt, Bundle paramBundle)
-  {
-    Object localObject2 = paramContext.getResources();
-    LinearLayout localLinearLayout;
-    Object localObject1;
-    Object localObject3;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
-    {
-      localLinearLayout = (LinearLayout)paramView;
-      localObject1 = (ImageView)localLinearLayout.findViewById(2131379528);
-      paramBundle = (ImageView)localLinearLayout.findViewById(2131379531);
-      paramView = (TextView)localLinearLayout.findViewById(2131379529);
-      localObject3 = bgmo.a();
-      localObject2 = localObject3;
-      if ((paramContext instanceof BaseActivity)) {
-        localObject2 = aoch.a(((BaseActivity)paramContext).app, 1, this.aa, 3, (Drawable)localObject3, (Drawable)localObject3);
-      }
-      ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      if (paramBundle != null)
-      {
-        if (paramInt != 2) {
-          break label594;
-        }
-        paramBundle.setImageResource(2130850439);
-      }
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
+  }
+  
+  private void a(@Nullable bcxz parambcxz)
+  {
+    bpam.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLoginInternal] - BEGIN -");
+    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bcxq(this, parambcxz));
+    bpam.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLoginInternal] - END -");
+  }
+  
+  public static void a(@NonNull QQAppInterface paramQQAppInterface, @Nullable bcxz parambcxz)
+  {
+    bpam.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - BEGIN -");
+    boolean bool = VideoEnvironment.c(paramQQAppInterface);
+    if (!bool)
+    {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      if (parambcxz != null) {
+        parambcxz.b(-1, -6);
+      }
+      bpam.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -, supportShortVideo=" + bool);
+      return;
+    }
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
+    {
+      if (parambcxz != null) {
+        parambcxz.b(-1, -1);
+      }
+      bpam.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -, reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      return;
+    }
+    paramQQAppInterface = new bcxo(paramQQAppInterface, true);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
+    paramQQAppInterface.a(parambcxz);
+    bpam.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -");
+  }
+  
+  private boolean a()
+  {
+    boolean bool = bhnv.g(null);
+    if (bool)
+    {
+      VideoEnvironment.a(jdField_a_of_type_JavaLangString, anzj.a(2131712964), null);
+      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+      return bool;
+    }
+    VideoEnvironment.a(jdField_a_of_type_JavaLangString, anzj.a(2131712903), null);
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return a(paramQQAppInterface, true);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    boolean bool = false;
     for (;;)
     {
-      if (paramView != null)
+      try
       {
-        paramView.setText(this.ab);
-        paramView.setTextSize(2, 20.0F);
-        paramView.setTextColor(-1);
-        paramView.setSingleLine();
-        paramView.setEllipsize(TextUtils.TruncateAt.END);
-      }
-      return localLinearLayout;
-      localLinearLayout = new LinearLayout(paramContext);
-      localLinearLayout.setId(2131379530);
-      localLinearLayout.setOrientation(1);
-      if (this.o == 4)
-      {
-        i = 53;
-        label193:
-        if (this.o != 4) {
-          break label406;
+        if (!VideoEnvironment.c(paramQQAppInterface))
+        {
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+          paramBoolean = bool;
+          return paramBoolean;
         }
-      }
-      label406:
-      for (int j = 53;; j = 135)
-      {
-        i = paramBundle.getInt("bundle_args_cover_width", afur.a(i, (Resources)localObject2));
-        j = paramBundle.getInt("bundle_args_cover_height", afur.a(j, (Resources)localObject2));
-        paramView = new FrameLayout(paramContext);
-        localObject1 = new LinearLayout.LayoutParams(i, j);
-        ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localLinearLayout.addView(paramView);
-        if (paramInt != 4) {
-          break label414;
+        if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
+        {
+          VideoEnvironment.a("ShortVideoResDownload", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
+          paramBoolean = bool;
+          continue;
         }
-        i = paramBundle.getInt("bundle_args_avatar_width", afur.a(50.0F, (Resources)localObject2));
-        j = paramBundle.getInt("bundle_args_avatar_height", afur.a(50.0F, (Resources)localObject2));
-        localObject1 = new ImageView(paramContext);
-        ((ImageView)localObject1).setId(2131379528);
-        paramBundle = new FrameLayout.LayoutParams(i, j);
-        paramBundle.gravity = 17;
-        paramView.addView((View)localObject1, paramBundle);
-        paramBundle = new ImageView(paramContext);
-        paramBundle.setId(2131379531);
-        paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-        paramView = null;
-        break;
-        i = 180;
-        break label193;
+        paramQQAppInterface = new bcxo(paramQQAppInterface, paramBoolean);
       }
-      label414:
-      int i = paramBundle.getInt("bundle_args_avatar_width", afur.a(80.0F, (Resources)localObject2));
-      j = paramBundle.getInt("bundle_args_avatar_height", afur.a(80.0F, (Resources)localObject2));
-      localObject1 = new ImageView(paramContext);
-      ((ImageView)localObject1).setId(2131379528);
-      paramBundle = new FrameLayout.LayoutParams(i, j);
-      paramBundle.gravity = 17;
-      paramView.addView((View)localObject1, paramBundle);
-      paramBundle = new ImageView(paramContext);
-      paramBundle.setId(2131379531);
-      paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-      paramView = new TextView(paramContext);
-      paramView.setId(2131379529);
-      localObject3 = new LinearLayout.LayoutParams(afur.a(180.0F, (Resources)localObject2), -2);
-      ((LinearLayout.LayoutParams)localObject3).gravity = 1;
-      ((LinearLayout.LayoutParams)localObject3).topMargin = afur.a(5.0F, (Resources)localObject2);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      paramView.setGravity(1);
-      localLinearLayout.addView(paramView);
-      break;
-      label594:
-      if (paramInt == 1) {
-        paramBundle.setImageResource(2130850441);
-      } else if (paramInt == 3) {
-        paramBundle.setImageResource(2130850440);
-      } else if (paramInt == 4) {
-        paramBundle.setImageResource(2130850438);
+      finally {}
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
+      bool = paramQQAppInterface.a();
+      paramBoolean = bool;
+      if (!bool)
+      {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
+        paramBoolean = bool;
       }
     }
   }
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  private static void b(bcxo parambcxo)
   {
-    return a(paramContext, paramView, this.o, paramBundle);
-  }
-  
-  public String a()
-  {
-    return "Avatar";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.aa = paramObjectInput.readUTF();
-    this.ab = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.aa == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ab != null) {
-        break label48;
-      }
+    if (parambcxo != null) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(parambcxo.jdField_a_of_type_Int));
     }
-    label48:
-    for (String str = "";; str = this.ab)
+  }
+  
+  private boolean b()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "startDownloadConfigNoLogin");
+    boolean bool = bhnv.g(null);
+    if (bool)
     {
-      paramObjectOutput.writeUTF(str);
+      VideoEnvironment.a(jdField_a_of_type_JavaLangString, anzj.a(2131712964), null);
+      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bcxp(this));
+      return bool;
+    }
+    VideoEnvironment.a(jdField_a_of_type_JavaLangString, anzj.a(2131712903), null);
+    return bool;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = false;
+    if (!VideoEnvironment.c(paramQQAppInterface)) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    boolean bool2;
+    do
+    {
+      return bool1;
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
+      {
+        VideoEnvironment.a("startDownloadResourceNoLogin", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
+        return false;
+      }
+      paramQQAppInterface = new bcxo(paramQQAppInterface, true);
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
+      bool2 = paramQQAppInterface.b();
+      bool1 = bool2;
+    } while (bool2);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
+    return bool2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult | result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| uncompress config error=" + paramInt2, null);
+        b(this);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| check config success...", null);
+        this.jdField_a_of_type_Bcxr.jdField_a_of_type_Boolean = false;
+        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bcxr);
+        VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| mDownloadFilterSo=false", null);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (bdek.c())
+          {
+            this.jdField_a_of_type_Bcxr.b = false;
+            ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bcxr);
+          }
+          if (bdek.g())
+          {
+            this.jdField_a_of_type_Bcxr.d = false;
+            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bcxr);
+          }
+        }
+        this.jdField_a_of_type_Bcxr.a();
+        return;
+      }
+      VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| check config error=" + paramInt1, null);
+      b(this);
       return;
-      str = this.aa;
-      break;
     }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "head");
-    if (this.aa == null)
-    {
-      str = "";
-      paramXmlSerializer.attribute(null, "uin", str);
-      if (this.ab != null) {
-        break label71;
-      }
-    }
-    label71:
-    for (String str = "";; str = this.ab)
-    {
-      paramXmlSerializer.attribute(null, "nick", str);
-      paramXmlSerializer.endTag(null, "head");
-      return;
-      str = this.aa;
-      break;
-    }
-  }
-  
-  public boolean a(bcxj parambcxj)
-  {
-    if (parambcxj == null) {
-      return false;
-    }
-    String str2 = parambcxj.a("uin");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    this.aa = str1;
-    str1 = parambcxj.a("nick");
-    parambcxj = str1;
-    if (str1 == null) {
-      parambcxj = "";
-    }
-    this.ab = parambcxj;
-    return true;
+    VideoEnvironment.a(jdField_a_of_type_JavaLangString, "onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    b(this);
   }
 }
 

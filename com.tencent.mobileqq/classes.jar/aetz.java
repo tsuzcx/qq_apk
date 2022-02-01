@@ -1,11 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.InterestLabelTextView;
 
 public class aetz
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    bcst.b(paramQQAppInterface, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
+  public ImageView a;
+  public TextView a;
+  public InterestLabelTextView a;
 }
 
 

@@ -1,21 +1,30 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 class zns
+  extends JobSegment<Integer, ymb>
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  private yma a;
   
-  private zns()
+  public zns(@NonNull yma paramyma)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.a = paramyma;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((ymb)localObject).a.size() > 0) || (((ymb)localObject).b))
+    {
+      yuk.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
+    }
+    localObject = new xdm();
+    ((xdm)localObject).a = this.a.a();
+    wow.a().a((wpa)localObject, new znt(this, paramJobContext, paramInteger));
   }
 }
 

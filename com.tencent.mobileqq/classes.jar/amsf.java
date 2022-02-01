@@ -1,43 +1,99 @@
+import android.content.Context;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.StatFs;
+import com.tencent.mobileqq.antiphing.AntiphishingUrlConfig.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.InputSource;
 
 public class amsf
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new amsg(this, Looper.getMainLooper());
+  private String jdField_a_of_type_JavaLangString = "antiphishingConfig";
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c = 1;
+  private int d = 2;
   
-  public String a()
+  public static long a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.d == 0) {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
-      }
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
-    }
+    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+    long l = localStatFs.getBlockSize();
+    return localStatFs.getAvailableBlocks() * l;
   }
   
-  public String toString()
+  private String a()
   {
-    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
-    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mActivityId=").append(this.b);
-    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mAIOType=").append(this.c);
-    localStringBuffer.append(", mShareTo=").append(this.d);
-    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", mShareRet=").append(this.e);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    new StringBuilder().append(Environment.getExternalStorageDirectory().getAbsolutePath()).append("/Tencent/com/tencent/mobileqq/antiphishingconfig.xml").toString();
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public ArrayList<String> a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (!this.jdField_a_of_type_Boolean)) {
+      a();
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, Context paramContext)
+  {
+    if (paramInt <= this.jdField_a_of_type_Int)
+    {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "nNewVersion:" + paramInt + "nLocalConfigVer:" + this.jdField_a_of_type_Int + "Do not Need Update!");
+      return;
+    }
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Int == paramInt) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 7200000L))
+    {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "Config Updata, Frequence limited!");
+      return;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Int = paramInt;
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "filehash:" + paramString2 + "downloadurl:" + paramString1);
+    ThreadManager.post(new AntiphishingUrlConfig.2(this, paramContext, paramString1, paramString2), 5, null, true);
+  }
+  
+  public void a(String paramString, Context paramContext)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public boolean a()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Parase Config!");
+    Object localObject = a();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = new File((String)localObject);
+    amsj localamsj = new amsj();
+    try
+    {
+      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localamsj);
+      this.jdField_a_of_type_Int = localamsj.a();
+      this.jdField_a_of_type_JavaUtilArrayList = localamsj.a();
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
   }
 }
 

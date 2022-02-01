@@ -1,41 +1,26 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
+import android.view.View;
 
-public final class ndb
+public abstract interface ndb
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  public abstract void a();
   
-  public ndb(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    a();
-  }
+  public abstract void a(View paramView);
   
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838693);
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838694));
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable });
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-  }
+  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
   
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  }
+  public abstract void b();
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(paramInt);
-  }
+  public abstract void b(View paramView);
+  
+  public abstract void c();
+  
+  public abstract void c(View paramView);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

@@ -1,59 +1,25 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyLifeCycleLinearLayout;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class qso
-  extends qqt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "shouldDoTaskTiming", "", "onShouldDoTaskTimingCallback"}, k=3, mv={1, 1, 16})
+final class qso
+  implements qrh
 {
-  public qso(Context paramContext, aobu paramaobu, snh paramsnh)
-  {
-    super(paramContext, paramaobu, paramsnh);
-  }
+  qso(qsf paramqsf) {}
   
-  public qqt a()
+  public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
-  }
-  
-  public void b()
-  {
-    super.b();
-    ((ComponentContentNoteCard)this.jdField_a_of_type_Qqs).c();
-  }
-  
-  public qqt d()
-  {
-    ReadInJoyLifeCycleLinearLayout localReadInJoyLifeCycleLinearLayout = new ReadInJoyLifeCycleLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
-    localReadInJoyLifeCycleLinearLayout.setOrientation(1);
-    localReadInJoyLifeCycleLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentNoteCard))) {
-      localReadInJoyLifeCycleLinearLayout.addView((ComponentContentNoteCard)this.jdField_a_of_type_Qqs);
+    try
+    {
+      this.a.a(paramBoolean);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localReadInJoyLifeCycleLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+      QLog.e("RIJAidlServerRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
     }
-    a(localReadInJoyLifeCycleLinearLayout);
-    return this;
-  }
-  
-  public qqt e()
-  {
-    return this;
-  }
-  
-  public qqt g()
-  {
-    this.jdField_a_of_type_Qqs = new ComponentContentNoteCard(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Snh);
-    return this;
-  }
-  
-  public qqt o()
-  {
-    super.o();
-    return this;
   }
 }
 

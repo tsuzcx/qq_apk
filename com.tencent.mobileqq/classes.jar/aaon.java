@@ -1,19 +1,56 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 public class aaon
-  extends anmu
+  implements IVideoInnerStatusListener
 {
-  public aaon(TroopMemberApiService paramTroopMemberApiService) {}
+  public aaon(VideoPlayerView paramVideoPlayerView) {}
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public void notifyVideoClose(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 30);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString });
-    localBundle.putSerializable("observer_type", Integer.valueOf(2));
-    this.a.a(3, localBundle);
+    VideoPlayerView.b(this.a, false);
+    if (VideoPlayerView.a(this.a) != null)
+    {
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.a(this.a, null);
+    }
+    VideoPlayerView.a(this.a, null);
+    this.a.b();
+  }
+  
+  public void notifyVideoSeek(int paramInt)
+  {
+    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
+    this.a.a(paramInt * this.a.a().getDurationMs() / 100L);
+  }
+  
+  public void notifyVideoStart()
+  {
+    if (this.a.a().getCurrentPositionMs() < this.a.a().getDurationMs())
+    {
+      this.a.d();
+      return;
+    }
+    if (VideoPlayerView.b(this.a))
+    {
+      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
+      return;
+    }
+    this.a.a().setLoopback(true);
+    this.a.e();
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
+    }
+    QLog.d("VideoPlayerView", 4, "no more, player repeat");
+  }
+  
+  public void notifyVideoStop()
+  {
+    this.a.c();
   }
 }
 

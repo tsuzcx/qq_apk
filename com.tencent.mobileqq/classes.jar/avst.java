@@ -1,116 +1,56 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.media_relation.media_relation.MediaRelationInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
 public class avst
 {
-  public static String a = "ListenTogetherAIOStatusHelper";
+  public static float b;
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public float c;
+  public int c;
+  public int d = 10;
+  public int e = 8;
+  public int f = 150;
+  public int g = 300;
+  public int h = 32;
+  public int i = 27;
+  public int j = 3000;
+  public int k;
+  public int l;
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "setIsGroupListenTogetherOpen, app = " + paramQQAppInterface + " troopuin:" + paramString + " isOpen:" + paramBoolean);
-    }
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
-      if (paramQQAppInterface != null)
-      {
-        paramString = paramQQAppInterface.b(paramString);
-        if (paramString != null)
-        {
-          paramString.setIsListenTogether(paramBoolean);
-          paramQQAppInterface.b(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.i(a, 2, "setIsGroupListenTogetherOpen troopinfo saved");
-          }
-        }
-      }
-    }
+    jdField_b_of_type_Float = 1.0F;
   }
   
-  public static boolean a(byte[] paramArrayOfByte)
+  private avst()
   {
-    media_relation.MediaRelationInfo localMediaRelationInfo;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      localMediaRelationInfo = new media_relation.MediaRelationInfo();
-    }
-    try
-    {
-      localMediaRelationInfo.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localMediaRelationInfo;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i;
-        long l;
-        paramArrayOfByte = null;
-        localException.printStackTrace();
-      }
-    }
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.create_time.has()))
-    {
-      i = paramArrayOfByte.create_time.get();
-      l = NetConnInfoCenter.getServerTime();
-    }
-    return i >= l - 604800L;
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  public avst(HeartLayout paramHeartLayout)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "setIsC2CListenTogetherOpen, app = " + paramQQAppInterface + " frienduin:" + paramString + " isOpen:" + paramBoolean);
-    }
-    Friends localFriends;
-    Object localObject;
-    if (paramQQAppInterface != null)
-    {
-      anmw localanmw = (anmw)paramQQAppInterface.getManager(51);
-      if (localanmw != null)
-      {
-        localFriends = localanmw.e(paramString);
-        if ((localFriends == null) || (!localFriends.isFriend())) {
-          paramBoolean = false;
-        }
-        ExtensionInfo localExtensionInfo = localanmw.a(paramString);
-        localObject = localExtensionInfo;
-        if (localExtensionInfo == null)
-        {
-          localObject = new ExtensionInfo();
-          ((ExtensionInfo)localObject).uin = paramString;
-        }
-        boolean bool = ((ExtensionInfo)localObject).isListenTogetherOpen;
-        if (bool != paramBoolean)
-        {
-          ((ExtensionInfo)localObject).isListenTogetherOpen = paramBoolean;
-          localanmw.a((ExtensionInfo)localObject);
-          ((FriendListHandler)paramQQAppInterface.a(1)).notifyUI(3, true, paramString);
-        }
-        if (QLog.isColorLevel())
-        {
-          paramString = a;
-          localObject = new StringBuilder().append("setIsC2CListenTogetherOpen extensionInfo saved, old=").append(bool).append(" new:").append(paramBoolean).append(" friend:");
-          if (localFriends == null) {
-            break label234;
-          }
-        }
-      }
-    }
-    label234:
-    for (paramQQAppInterface = Boolean.valueOf(localFriends.isFriend());; paramQQAppInterface = "null")
-    {
-      QLog.i(paramString, 2, paramQQAppInterface);
-      return;
-    }
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
+    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
+    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
+    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
+    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
+    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
   }
 }
 

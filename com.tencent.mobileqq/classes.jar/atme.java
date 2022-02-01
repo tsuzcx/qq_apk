@@ -1,17 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atme
-  extends BroadcastReceiver
+public class atme
+  implements View.OnClickListener
 {
-  atme(atmc paramatmc) {}
+  public atme(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
-      this.a.a();
-    }
+    QfileFavPicFileTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

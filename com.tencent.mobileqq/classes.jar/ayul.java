@@ -1,4 +1,9 @@
-public class ayul {}
+public abstract interface ayul
+{
+  public abstract boolean a();
+  
+  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

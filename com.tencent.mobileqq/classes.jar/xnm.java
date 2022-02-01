@@ -1,115 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.biz.qqstory.database.VideoCollectionEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class xnm
-  extends xnl
+class xnm
+  implements xmz
 {
-  Map<String, xnl> a;
+  private int jdField_a_of_type_Int;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  xms jdField_a_of_type_Xms;
   
-  public xnm(@NonNull ViewGroup paramViewGroup)
+  public xnm(xnl paramxnl, xms paramxms)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380835)));
-    b(new xlv((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131368687)));
-    b(new xmq((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380772)));
-    b(new xnn(this.jdField_a_of_type_AndroidViewView.findViewById(2131380741)));
-    b(new xnk((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380836)));
+    this.jdField_a_of_type_Xms = paramxms;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  protected void a(String paramString, xna paramxna)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561775, paramViewGroup, false);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xnl)localIterator.next()).a(paramInt1, paramInt2);
+    xck localxck = new xck();
+    localxck.jdField_c_of_type_JavaLangString = xnl.a(this.jdField_a_of_type_Xnl).uid;
+    if (xnl.a(this.jdField_a_of_type_Xnl).collectionKey != null) {
+      localxck.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(xnl.a(this.jdField_a_of_type_Xnl).collectionKey);
     }
+    localxck.jdField_d_of_type_JavaLangString = paramString;
+    localxck.jdField_c_of_type_Int = 20;
+    localxck.jdField_e_of_type_Int = xnl.a(this.jdField_a_of_type_Xnl).shareTimeZone;
+    localxck.jdField_e_of_type_JavaLangString = xnl.a(this.jdField_a_of_type_Xnl).feedId;
+    localxck.f = xnl.a(this.jdField_a_of_type_Xnl).identify;
+    localxck.g = xnl.a(this.jdField_a_of_type_Xnl).videoListOrder;
+    wow.a().a(localxck, new xnn(this, paramxna));
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull xne paramxne, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public void a(xna paramxna)
   {
-    super.a(paramInt1, paramInt2, paramxne, paramStoryPlayerGroupHolder);
-    yqp.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), paramxne);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xnl)localIterator.next()).a(paramInt1, paramInt2, paramxne, paramStoryPlayerGroupHolder);
-    }
-  }
-  
-  public void a(xms paramxms)
-  {
-    super.a(paramxms);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xnl)localIterator.next()).a(paramxms);
-    }
-  }
-  
-  public void a(xnm paramxnm)
-  {
-    super.a(this);
-    paramxnm = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (paramxnm.hasNext()) {
-      ((xnl)paramxnm.next()).a(this);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xnl)localIterator.next()).a(paramBoolean);
-    }
-  }
-  
-  @Nullable
-  public xnl b(Class<? extends xnl> paramClass)
-  {
-    return (xnl)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
-  }
-  
-  public void b()
-  {
-    super.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xnl)localIterator.next()).b();
-    }
-  }
-  
-  public void b(@NonNull xnl paramxnl)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramxnl.getClass().getName(), paramxnl);
-  }
-  
-  public void c()
-  {
-    super.c();
-    yqp.a(this.jdField_a_of_type_JavaLangString, "onUnBind, verticalPosition=%d, horizontalPosition=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_Xne);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xnl)localIterator.next()).c();
-    }
-  }
-  
-  public boolean c()
-  {
-    return super.c();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a(xnl.a(this.jdField_a_of_type_Xnl), paramxna);
   }
 }
 

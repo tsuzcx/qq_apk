@@ -1,37 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import com.tencent.ims.signature.SignatureReport;
 
-class aohw
-  implements View.OnTouchListener
+public class aohw
 {
-  aohw(aoht paramaoht, ImageView paramImageView) {}
+  public int a;
+  public long a;
+  public signature.SignatureReport a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  aohw(aohr paramaohr, String paramString)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
-    {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
-    }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
   }
 }
 

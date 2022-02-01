@@ -1,46 +1,44 @@
-import android.os.Handler;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.util.SparseArray;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectMutexManager.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class lgt
-  implements Observer
+  extends lgj
 {
-  private WeakReference<MagicFaceDataEntity> a;
+  private volatile SparseArray<lgu> a;
   
-  public lgt(MagicFaceDataEntity paramMagicFaceDataEntity)
+  protected lgt(VideoAppInterface paramVideoAppInterface)
   {
-    this.a = new WeakReference(paramMagicFaceDataEntity);
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected void a() {}
+  
+  public void a(int paramInt, String paramString)
   {
-    int j;
-    if (this.a.get() != null)
-    {
-      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
-      if (paramObject != null)
-      {
-        Object[] arrayOfObject = (Object[])paramObject;
-        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
-        {
-          j = ((Integer)arrayOfObject[0]).intValue();
-          if ((j == 130) || (j == 131) || (j == 132)) {
-            if ((j != 131) && (j != 132)) {
-              break label152;
-            }
-          }
-        }
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "notifyMutex, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
     }
-    label152:
-    for (int i = 500;; i = 0)
-    {
-      lbc.c("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
-      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
+  }
+  
+  public void a(int paramInt, lgu paramlgu)
+  {
+    if (paramlgu == null) {
       return;
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "registerMutexItem, key[" + paramInt + "]");
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramlgu);
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return false;
   }
 }
 

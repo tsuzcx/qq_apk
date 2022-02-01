@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class afhx
-  implements DialogInterface.OnDismissListener
+  implements bbst
 {
-  public afhx(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
+  public afhx(QQSettingMe paramQQSettingMe) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.getActivity().finish();
+    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
+      this.a.z();
+    }
   }
 }
 

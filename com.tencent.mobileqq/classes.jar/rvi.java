@@ -1,9 +1,7 @@
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-public abstract interface rvi
-{
-  public abstract void a(JSONObject paramJSONObject);
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$Companion;", "", "()V", "ALPHA_ANIM_START", "", "getALPHA_ANIM_START", "()F", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rvi {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

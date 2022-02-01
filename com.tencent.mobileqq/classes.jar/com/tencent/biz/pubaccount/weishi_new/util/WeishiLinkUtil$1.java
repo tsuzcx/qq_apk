@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.util;
 
 import cooperation.qzone.LocalMultiProcConfig;
-import upf;
+import uqg;
 
 public final class WeishiLinkUtil$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class WeishiLinkUtil$1
   
   public void run()
   {
-    LocalMultiProcConfig.putInt("weishi_usergrowth", upf.a(), this.a);
+    LocalMultiProcConfig.putInt("weishi_usergrowth", uqg.a(), this.a);
   }
 }
 

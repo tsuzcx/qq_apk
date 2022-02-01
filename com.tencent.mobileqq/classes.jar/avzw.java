@@ -1,31 +1,54 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 
-class avzw
-  implements View.OnClickListener
+public class avzw
+  implements awag
 {
-  avzw(avzs paramavzs, Activity paramActivity) {}
+  public avzw(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Avzs.a()) {}
-    for (;;)
+    int k = 1;
+    IVPluginDataReporter localIVPluginDataReporter;
+    int j;
+    if (!bhnv.a(GroupVideoLoadingFragment.a(this.a)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
+      i = 1;
+      if (!paramBoolean) {
+        break label80;
       }
-      avzs.a(this.jdField_a_of_type_Avzs).setClickable(false);
-      avzs.a(this.jdField_a_of_type_Avzs).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840540));
-      avzs.a(this.jdField_a_of_type_Avzs).a(true);
-      bcst.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
+      GroupVideoLoadingFragment.a(this.a, false);
+      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
+      if (!paramBoolean) {
+        break label111;
+      }
+      j = 1;
+      label50:
+      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
+      if (i == 0) {
+        break label116;
+      }
+    }
+    label80:
+    label111:
+    label116:
+    for (int i = k;; i = 0)
+    {
+      localIVPluginDataReporter.opResult(i).report();
+      return;
+      i = 0;
+      break;
+      if (i != 0) {
+        GroupVideoLoadingFragment.a(this.a, true);
+      }
+      for (;;)
+      {
+        awbj.b("2880338");
+        break;
+        GroupVideoLoadingFragment.a(this.a, false);
+      }
+      j = 0;
+      break label50;
     }
   }
 }

@@ -1,48 +1,66 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-
 class bgxi
-  implements AudioManager.OnAudioFocusChangeListener
+  extends bgwn
 {
-  bgxi(bgxg parambgxg) {}
-  
-  public void onAudioFocusChange(int paramInt)
+  bgxi(bgxh parambgxh, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (paramInt == -2)
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
+  {
+    if ((paramObject instanceof Object[]))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
+      paramObject = (Object[])paramObject;
+      if (paramObject.length == 2) {
+        break label22;
       }
-      synchronized (this.a.a)
+    }
+    label22:
+    do
+    {
+      do
       {
-        if (this.a.a.a == 4) {
-          this.a.a();
+        return;
+        paramObject = paramObject[0];
+      } while (!(paramObject instanceof boolean[]));
+      paramObject = (boolean[])paramObject;
+    } while ((paramArrayOfblpx == null) || (paramArrayOfblpx.length <= 0) || (paramObject.length != 3));
+    if ((paramArrayOfblpx.length < 0) && (paramObject[0] != 0))
+    {
+      paramArrayOfblpx[0].b = 0;
+      paramArrayOfblpx[0].a = 0;
+    }
+    for (int i = 1;; i = 0)
+    {
+      paramInt = i;
+      if (i < paramArrayOfblpx.length)
+      {
+        paramInt = i;
+        if (paramObject[1] != 0)
+        {
+          paramArrayOfblpx[i].b = 1;
+          paramArrayOfblpx[i].a = 1;
+          paramInt = i + 1;
         }
-        return;
       }
-    }
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "gained focus");
-      }
-      if (this.a.b)
+      i = paramInt;
+      if (paramInt < paramArrayOfblpx.length)
       {
-        this.a.c();
-        this.a.b = false;
+        i = paramInt;
+        if (paramObject[2] != 0)
+        {
+          paramArrayOfblpx[paramInt].b = 2;
+          paramArrayOfblpx[paramInt].a = 0;
+          i = paramInt + 1;
+        }
       }
-    }
-    else if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
-      }
-      this.a.b();
-      synchronized (this.a.a)
+      while (i < paramArrayOfblpx.length)
       {
-        this.a.a.a = 6;
-        return;
+        paramArrayOfblpx[i].b = -1;
+        paramArrayOfblpx[i].a = -1;
+        i += 1;
       }
+      break;
     }
   }
 }

@@ -1,101 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ExpandableListView;
 
-public class atjp
+class atjp
+  implements View.OnClickListener
 {
-  int a;
-  protected long a;
-  protected atjk a;
-  protected final QQAppInterface a;
-  protected ExcitingTransferOneSlotComplete a;
-  int b;
-  int c = 0;
+  atjp(atjm paramatjm, int paramInt) {}
   
-  public atjp(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  protected String a()
-  {
-    return "actGroupPDSlot";
-  }
-  
-  public void a()
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Atjk == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete == null))
-    {
-      QLog.e("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloaderDataReport err. param err");
-      return;
+    if (atjm.a(this.jdField_a_of_type_Atjm).c(this.jdField_a_of_type_Int)) {
+      atjm.a(this.jdField_a_of_type_Atjm).b(this.jdField_a_of_type_Int);
     }
-    HashMap localHashMap = this.jdField_a_of_type_Atjk.a();
-    localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete.getReportData());
-    localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("param_stackType", String.valueOf(atwt.b()));
-    localHashMap.put("param_loginType", String.valueOf(atwt.c()));
-    localHashMap.put("param_ishttps", String.valueOf(this.c));
-    QLog.i("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloaderDataReport:act=" + a() + localHashMap.toString());
-    bctj localbctj = bctj.a(BaseApplication.getContext());
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    String str2 = a();
-    if (this.jdField_a_of_type_Atjk.jdField_b_of_type_Long == 0L) {}
     for (;;)
     {
-      localbctj.a(str1, str2, bool, 0L, 0L, localHashMap, "");
-      this.jdField_a_of_type_Atjk = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = null;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool = false;
+      atjm.a(this.jdField_a_of_type_Atjm).a(this.jdField_a_of_type_Int);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
-  {
-    this.jdField_a_of_type_Atjk = new atjk();
-    this.jdField_a_of_type_Atjk.jdField_a_of_type_Long = paramInt;
-    this.jdField_a_of_type_Atjk.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Atjk.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Atjk.d = paramLong2;
-    this.jdField_a_of_type_Atjk.c = paramLong3;
-    this.jdField_a_of_type_Atjk.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Atjk.jdField_b_of_type_Int = 1;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = paramExcitingTransferOneSlotComplete;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.c = i;
-      return;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
   }
 }
 

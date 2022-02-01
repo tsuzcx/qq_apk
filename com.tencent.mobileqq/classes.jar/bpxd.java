@@ -1,18 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.util.QZLog;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
-class bpxd
-  implements View.OnClickListener
+public class bpxd
+  implements URLDrawable.URLDrawableListener
 {
-  bpxd(bpxc parambpxc) {}
+  private final WeakReference<TextView> a;
   
-  public void onClick(View paramView)
+  public bpxd(TextView paramTextView)
   {
-    QZLog.d("QzoneEditPicturePartSav", 2, "onClick save button");
-    this.a.a.a(19);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramTextView);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (TextView)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setVisibility(8);
+    }
   }
 }
 

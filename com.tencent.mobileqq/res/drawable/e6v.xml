@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="4.5dip" />
-    <solid android:color="#ff0061ff" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/gw9" />
+    <item android:state_pressed="true" android:drawable="@drawable/gw9" />
+    <item android:drawable="@drawable/gw7" />
+</selector>

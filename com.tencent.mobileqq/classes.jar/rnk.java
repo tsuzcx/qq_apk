@@ -1,6 +1,16 @@
-public abstract class rnk<C, T, A>
+import java.util.ArrayList;
+
+class rnk
 {
-  public abstract void a(C paramC, T paramT, int paramInt, A paramA);
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<rns> a = new ArrayList();
+  public int b;
+  public long b;
+  public String b;
+  public int c;
 }
 
 

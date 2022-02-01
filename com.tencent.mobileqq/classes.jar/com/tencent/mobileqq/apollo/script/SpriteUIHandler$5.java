@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amuf;
-import amug;
 import android.os.Message;
-import bgln;
+import anfz;
+import anga;
+import bhlo;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -20,12 +20,12 @@ class SpriteUIHandler$5
       MqqHandler localMqqHandler = SpriteUIHandler.a(this.this$0).a().a();
       if (1 == this.a)
       {
-        localMqqHandler.obtainMessage(47, (int)((float)bgln.h() / 7.0F / 2.84D) + 40, 0).sendToTarget();
+        localMqqHandler.obtainMessage(47, (int)((float)bhlo.h() / 7.0F / 2.84D) + 40, 0).sendToTarget();
         return;
       }
       if (2 == this.a)
       {
-        localMqqHandler.obtainMessage(47, this.b + 40 + (int)((float)bgln.h() / 7.0F), 0).sendToTarget();
+        localMqqHandler.obtainMessage(47, this.b + 40 + (int)((float)bhlo.h() / 7.0F), 0).sendToTarget();
         return;
       }
     }
@@ -35,7 +35,7 @@ class SpriteUIHandler$5
       return;
     }
     if (3 == this.a) {
-      if ((amuf.a(SpriteUIHandler.a(this.this$0).a())) && (amuf.b(SpriteUIHandler.a(this.this$0).a(), "select_more_msg")))
+      if ((anfz.a(SpriteUIHandler.a(this.this$0).a())) && (anfz.b(SpriteUIHandler.a(this.this$0).a(), "select_more_msg")))
       {
         if (QLog.isColorLevel()) {
           QLog.d("cmshow_scripted_SpriteUIHandler", 2, "addOrRemoveMargin hidden but not should remove margin");

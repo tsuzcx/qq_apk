@@ -1,32 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arww
-  implements asae
+public class arww
+  implements View.OnClickListener
 {
-  arww(arwt paramarwt) {}
+  public arww(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void a(List<asac> paramList)
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
     {
-      localStringBuilder = new StringBuilder().append("refreshPanelData call back dataList = ");
-      if (paramList != null) {
-        break label60;
-      }
+      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+      aqca.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
     }
-    label60:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
-    {
-      QLog.d("CameraEmotionAdapter", 2, localObject);
-      if (paramList != null)
-      {
-        this.a.a(paramList);
-        this.a.notifyDataSetChanged();
-      }
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

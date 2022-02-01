@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
 import android.os.Vibrator;
-import wui;
+import wyd;
 
 public class MsgTabStoryNodeListManager$1
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$1(wui paramwui) {}
+  public MsgTabStoryNodeListManager$1(wyd paramwyd) {}
   
   public void run()
   {
-    wui.a(this.this$0).vibrate(20L);
+    wyd.a(this.this$0).vibrate(20L);
   }
 }
 

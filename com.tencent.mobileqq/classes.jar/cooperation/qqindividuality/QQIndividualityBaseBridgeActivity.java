@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.MotionEvent;
-import bcst;
-import bkfv;
-import blfh;
+import bdll;
+import blha;
+import bmgk;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -19,8 +19,8 @@ public abstract class QQIndividualityBaseBridgeActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback
 {
-  protected bkfv a;
-  protected blfh a;
+  protected blha a;
+  protected bmgk a;
   
   public abstract void a();
   
@@ -31,7 +31,7 @@ public abstract class QQIndividualityBaseBridgeActivity
       if (QLog.isColorLevel()) {
         QLog.d("QQIndividuality", 2, "handlePluginInfo null == pluginInfo");
       }
-      this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -43,17 +43,17 @@ public abstract class QQIndividualityBaseBridgeActivity
     default: 
       return;
     case -2: 
-      this.jdField_a_of_type_Bkfv.sendEmptyMessage(1001);
+      this.jdField_a_of_type_Blha.sendEmptyMessage(1001);
       return;
     case 0: 
-      this.jdField_a_of_type_Blfh.a("qqindividuality_plugin.apk");
-      this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bmgk.a("qqindividuality_plugin.apk");
+      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
     case 1: 
     case 2: 
-      this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
       return;
     case 3: 
-      this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     b();
@@ -72,20 +72,20 @@ public abstract class QQIndividualityBaseBridgeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bkfv = new bkfv(this);
-    this.jdField_a_of_type_Blfh = ((blfh)this.app.getManager(27));
-    this.jdField_a_of_type_Bkfv.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
+    this.jdField_a_of_type_Blha = new blha(this);
+    this.jdField_a_of_type_Bmgk = ((bmgk)this.app.getManager(27));
+    this.jdField_a_of_type_Blha.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bkfv != null)
+    if (this.jdField_a_of_type_Blha != null)
     {
-      this.jdField_a_of_type_Bkfv.removeMessages(1000);
-      this.jdField_a_of_type_Bkfv.removeMessages(200);
-      this.jdField_a_of_type_Bkfv.removeMessages(1001);
+      this.jdField_a_of_type_Blha.removeMessages(1000);
+      this.jdField_a_of_type_Blha.removeMessages(200);
+      this.jdField_a_of_type_Blha.removeMessages(1001);
     }
   }
   
@@ -99,10 +99,10 @@ public abstract class QQIndividualityBaseBridgeActivity
       return true;
       if (!isFinishing())
       {
-        a("qqindividuality_plugin.apk", this.jdField_a_of_type_Blfh.a("qqindividuality_plugin.apk"));
+        a("qqindividuality_plugin.apk", this.jdField_a_of_type_Bmgk.a("qqindividuality_plugin.apk"));
         continue;
         QLog.e("QQIndividuality", 2, "install plugin action error");
-        bcst.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
+        bdll.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
       }
     }
   }

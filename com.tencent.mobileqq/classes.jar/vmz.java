@@ -1,30 +1,19 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import feedcloud.FeedCloudMeta.StNotice;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class vmz
-  extends vmk
+class vmz
+  extends RecyclerView.OnScrollListener
 {
-  public vmz(int paramInt)
-  {
-    super(paramInt);
-  }
+  vmz(vmw paramvmw) {}
   
-  protected View.OnClickListener a()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return this.c;
-  }
-  
-  public void b(Context paramContext, View paramView)
-  {
-    super.b(paramContext, paramView);
-    this.c = new vna(this, paramContext);
-  }
-  
-  public void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
-  {
-    super.b(paramStNotice, paramInt);
+    if (paramInt == 0)
+    {
+      adlb.a().a("qcircle_content_page", false);
+      return;
+    }
+    adlb.a().a("qcircle_content_page");
   }
 }
 

@@ -1,69 +1,75 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class akqa
+  extends BaseAdapter
 {
-  private SendHbActivity a;
+  public akqa(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public akqa(SendHbActivity paramSendHbActivity)
+  public String a(int paramInt)
   {
-    this.a = paramSendHbActivity;
-  }
-  
-  public void a()
-  {
-    Map localMap = this.a.a();
-    localMap.put("channel", this.a.jdField_a_of_type_Int + "");
-    localMap.put("bus_type", "1");
-    localMap.put("type", "1");
-    a(localMap);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty(paramString2)) {
-      return;
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
     }
-    try
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    akqb localakqb;
+    Object localObject;
+    if (paramView == null)
     {
-      localJSONObject.put("userId", paramString2);
-      localJSONObject.put("viewTag", "qrcodeHb");
-      localJSONObject.put("comeForm", 1);
-      paramString2 = new JSONObject();
-      if (!TextUtils.isEmpty(paramString1)) {
-        paramString2.putOpt("qrToken", paramString1);
+      paramView = this.a.getLayoutInflater().inflate(2131559569, null);
+      localakqb = new akqb();
+      localakqb.a = ((URLImageView)paramView.findViewById(2131372958));
+      paramView.setTag(localakqb);
+      localObject = a(paramInt);
+      if (localObject == null) {
+        break label155;
       }
-      paramString2.putOpt("comeFrom", Integer.valueOf(1));
-      localJSONObject.put("extra_data", paramString2.toString());
-      paramString1 = new Bundle();
-      paramString1.putString("json", localJSONObject.toString());
-      paramString1.putString("callbackSn", "0");
-      paramString1.putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
-      PayBridgeActivity.a(this.a, 5, paramString1);
-      return;
+      localObject = new File((String)localObject);
+      if (!((File)localObject).exists()) {}
     }
-    catch (JSONException paramString1)
+    for (;;)
     {
-      paramString1.printStackTrace();
+      try
+      {
+        localakqb.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localakqb = (akqb)paramView.getTag();
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        localMalformedURLException.printStackTrace();
+        continue;
+      }
+      label155:
+      localMalformedURLException.a.setImageDrawable(null);
     }
-  }
-  
-  public void a(Map<String, String> paramMap)
-  {
-    Object localObject = new JSONObject(paramMap);
-    paramMap = this.a.b();
-    paramMap.put("extra_data", ((JSONObject)localObject).toString());
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("json", new JSONObject(paramMap).toString());
-    ((Bundle)localObject).putString("callbackSn", "0");
-    ((Bundle)localObject).putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
-    PayBridgeActivity.a(this.a, 5, (Bundle)localObject);
   }
 }
 

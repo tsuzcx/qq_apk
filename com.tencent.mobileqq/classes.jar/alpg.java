@@ -1,23 +1,24 @@
-public final class alpg
-  implements alpj
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
+
+public class alpg
+  extends alnv
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
-  
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public DragTextView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
 }
 
 

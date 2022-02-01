@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import anni;
-import boep;
+import anzj;
+import bpgk;
 
 public class AEEditorImageEditFragment$19
   implements Runnable
@@ -10,7 +10,7 @@ public class AEEditorImageEditFragment$19
   
   public void run()
   {
-    this.this$0.a(anni.a(2131689712), true, 0L, new boep(this));
+    this.this$0.a(anzj.a(2131689717), true, 0L, new bpgk(this));
   }
 }
 

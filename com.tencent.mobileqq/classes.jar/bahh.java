@@ -1,26 +1,34 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bahh
-  implements ViewPager.OnPageChangeListener
+class bahh
+  implements bbst
 {
-  public bahh(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  private WeakReference<bahb> a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public bahh(bahb parambahb)
   {
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
-    if (paramInt == 0)
-    {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
-      return;
+    this.a = new WeakReference(parambahb);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileContentSignComponent", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
+    if (paramBitmap != null)
+    {
+      paramBitmap = (bahb)this.a.get();
+      if ((paramBitmap != null) && (bahb.f(paramBitmap) != null))
+      {
+        RichStatus localRichStatus = ((azxr)bahb.g(paramBitmap)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+        if ((localRichStatus != null) && (localRichStatus.actionId == paramInt1)) {
+          bahb.a(paramBitmap, ((azxr)bahb.h(paramBitmap)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+        }
+      }
+    }
   }
 }
 

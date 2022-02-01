@@ -1,44 +1,17 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahic
-  extends Handler
+class ahic
+  extends ahkx
 {
-  public ahic(Looper paramLooper)
+  ahic(ahgk paramahgk)
   {
-    super(paramLooper);
+    super(paramahgk, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = paramMessage.arg1;
-        paramMessage = paramMessage.getData();
-      } while (!QLog.isColorLevel());
-      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
-      return;
-      i = paramMessage.arg1;
-      switch (paramMessage.arg1)
-      {
-      default: 
-        return;
-      }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    } while (!QLog.isColorLevel());
-    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
+    return new ahmz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

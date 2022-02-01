@@ -153,6 +153,11 @@ public class ImageMaskFactory
     return null;
   }
   
+  public void reset()
+  {
+    this.mLastTimestamp = 0L;
+  }
+  
   public void resume()
   {
     if (this.mIsPaused) {

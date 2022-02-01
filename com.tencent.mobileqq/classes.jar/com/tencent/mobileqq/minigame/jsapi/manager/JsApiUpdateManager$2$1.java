@@ -9,7 +9,9 @@ class JsApiUpdateManager$2$1
   
   public void run()
   {
-    MiniAppFileManager.getInstance().deleteTmpFileNeed2DeleteAsync();
+    if (this.this$0.val$fileManager != null) {
+      this.this$0.val$fileManager.deleteTmpFileNeed2DeleteAsync();
+    }
   }
 }
 

@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import anni;
+import anzj;
 
 public class ViewPagerRadioGroup
   extends RadioGroup
@@ -35,7 +35,7 @@ public class ViewPagerRadioGroup
         localRadioButton.setChecked(true);
         if (paramInt == 1)
         {
-          localRadioButton.setContentDescription(anni.a(2131715134));
+          localRadioButton.setContentDescription(anzj.a(2131715243));
           localRadioButton.sendAccessibilityEvent(128);
         }
       }

@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class ojx
-  implements bkhy
+  implements TopGestureLayout.OnGestureListener
 {
-  public ojx(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ojx(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void onDismiss()
+  public void flingLToR()
   {
-    ReadInJoySettingActivity.c(this.a).cancel();
+    ReadInJoyChannelActivity.a(this.a, true);
+    this.a.finish();
   }
+  
+  public void flingRToL() {}
 }
 
 

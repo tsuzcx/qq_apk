@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import afsx;
-import aftb;
-import aftc;
-import aftd;
-import aftr;
-import aftu;
-import aftv;
+import agce;
+import agci;
+import agcl;
+import agcm;
+import agcn;
+import agdf;
+import agdi;
+import agdj;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,8 +20,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import anni;
-import blyl;
+import anzj;
+import bmzn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -32,12 +33,12 @@ import mqq.app.AppRuntime;
 
 public abstract class QQNotifySettingBaseFragment
   extends PublicBaseFragment
-  implements aftr, View.OnClickListener
+  implements agdf, View.OnClickListener
 {
   private static final String b;
   protected int a;
-  private aftb jdField_a_of_type_Aftb;
-  private aftv jdField_a_of_type_Aftv;
+  private agcl jdField_a_of_type_Agcl;
+  private agdj jdField_a_of_type_Agdj;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   protected View a;
   protected Button a;
@@ -72,12 +73,12 @@ public abstract class QQNotifySettingBaseFragment
   
   private void b()
   {
-    aftu.b(this.c, this.e, new aftc(this));
+    agdi.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.c, this.e, new agcm(this));
   }
   
   private void c()
   {
-    aftu.a(this.c, this.e, new aftd(this));
+    agdi.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.c, this.e, new agcn(this));
   }
   
   public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
@@ -104,14 +105,14 @@ public abstract class QQNotifySettingBaseFragment
       if (l != 0L) {
         break label54;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131709343));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131709452));
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
       label54:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(afsx.a(l * 1000L, "yyyy-MM-dd HH:mm:ss"));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(agce.a(l * 1000L, "yyyy-MM-dd HH:mm:ss"));
     }
     label74:
     a();
@@ -141,11 +142,11 @@ public abstract class QQNotifySettingBaseFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Aftb = new aftb(getActivity());
-    this.jdField_a_of_type_Aftb.show();
+    this.jdField_a_of_type_Agcl = new agcl(getActivity());
+    this.jdField_a_of_type_Agcl.show();
     this.jdField_a_of_type_CooperationQwalletPluginFakeUrl = new FakeUrl(getActivity());
     b();
-    blyl.a().a("qqremind", "1", "1", 100, this.c, "15", 1);
+    bmzn.a().a("qqremind", "1", "1", 100, this.c, "15", 1);
   }
   
   public void onClick(View paramView)
@@ -160,12 +161,14 @@ public abstract class QQNotifySettingBaseFragment
       String str = (String)paramView.getTag();
       if ("0".equals(str))
       {
+        agci.a(a(), "open_click", this.d, this.c, null, null);
         c();
       }
       else if ("1".equals(str))
       {
         a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
         continue;
+        agci.a(a(), "pending_click", this.d, this.c, null, null);
         a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
       }
     }
@@ -173,17 +176,17 @@ public abstract class QQNotifySettingBaseFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    aftu.a(a());
     this.jdField_a_of_type_AndroidViewView = a(paramLayoutInflater, paramViewGroup);
-    new ImmersionBar(getActivity(), 0, this.jdField_a_of_type_AndroidViewView.findViewById(2131377811));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379793));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379794));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363917));
+    new ImmersionBar(getActivity(), 0, this.jdField_a_of_type_AndroidViewView.findViewById(2131377964));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379972));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379973));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363941));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c = getArguments().getString("key_msgid");
     this.d = getArguments().getString("key_busid");
     this.e = getArguments().getString("key_domain");
-    this.jdField_a_of_type_Aftv = new aftv(a());
+    this.jdField_a_of_type_Agdj = ((agdj)a().getManager(378));
+    agci.a(a(), "authorizepage_exp", this.d, this.c, null, null);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -192,13 +195,12 @@ public abstract class QQNotifySettingBaseFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if ((this.jdField_a_of_type_Aftb != null) && (this.jdField_a_of_type_Aftb.isShowing())) {
-      this.jdField_a_of_type_Aftb.dismiss();
+    if ((this.jdField_a_of_type_Agcl != null) && (this.jdField_a_of_type_Agcl.isShowing())) {
+      this.jdField_a_of_type_Agcl.dismiss();
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    aftu.a();
   }
 }
 

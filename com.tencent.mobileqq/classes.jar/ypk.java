@@ -1,13 +1,40 @@
-import android.os.Handler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class ypk
-  implements ylj
+public class ypk
+  extends wpa
 {
-  ypk(ypj paramypj) {}
+  public static final String a = wnu.a("StorySvc.get_photography_guide");
   
-  public void a(yko paramyko)
+  public String a()
   {
-    ypb.a(this.a.a).sendMessage(ypb.a(this.a.a).obtainMessage(0, paramyko));
+    return a;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
+    try
+    {
+      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
+      return new ypl(localRspGetPhotographyGuide);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideRequest{}";
   }
 }
 

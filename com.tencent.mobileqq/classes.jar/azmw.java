@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class azmw
-  implements View.OnClickListener
+public final class azmw
 {
-  public azmw(AbsProfileHeaderView paramAbsProfileHeaderView, azfe paramazfe) {}
-  
-  public void onClick(View paramView)
-  {
-    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Azfe);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public long d;
 }
 
 

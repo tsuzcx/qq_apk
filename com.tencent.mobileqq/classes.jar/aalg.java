@@ -1,6 +1,23 @@
-public abstract interface aalg
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+
+public class aalg
+  implements aabr<aagu>
 {
-  public abstract void a(boolean paramBoolean);
+  public aalg(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
+  
+  public void a(aabu paramaabu, aagu paramaagu)
+  {
+    if ((paramaabu.e()) && (this.a.a != null) && (this.a.a.a != null))
+    {
+      paramaabu = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramaabu.b());
+      VSNetworkHelper.a().a(paramaabu, new aalh(this, paramaagu));
+    }
+  }
 }
 
 

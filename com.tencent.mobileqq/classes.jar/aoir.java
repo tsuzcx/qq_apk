@@ -1,33 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoir
-  extends aojt
+class aoir
+  extends apck
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  aoir(aoip paramaoip, String paramString1, long paramLong, String paramString2)
   {
-    paramQQAppInterface = new aoiq(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "asyncmsg";
-    paramQQAppInterface.c = "open_async_detail";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
     }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+    if (paramInt != 0) {
+      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
     }
-    return paramQQAppInterface;
+    this.jdField_a_of_type_Aoip.a(this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 

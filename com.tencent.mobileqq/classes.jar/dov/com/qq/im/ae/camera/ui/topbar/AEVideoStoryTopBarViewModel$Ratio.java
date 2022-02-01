@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 
 public enum AEVideoStoryTopBarViewModel$Ratio
 {
-  FULL(4),  R_1_1(11);
+  FULL(4),  R_1_1(11),  R_4_3(43);
   
   public final int code;
   

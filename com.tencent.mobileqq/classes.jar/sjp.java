@@ -1,20 +1,9 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
 
-final class sjp
-  extends sjr
+public class sjp
+  extends pfh
 {
-  sjp(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap, Activity paramActivity)
-  {
-    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    sjo.a(this.a, this, paramJSONObject);
-  }
+  public sjp(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
 }
 
 

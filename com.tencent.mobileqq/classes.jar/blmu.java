@@ -1,31 +1,13 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class blmu
-  implements EIPCResultCallback
+class blmu
+  implements PopupWindow.OnDismissListener
 {
-  public blmu(QQPimGetTipsInfoIPC.GetContactTipsRunnable paramGetContactTipsRunnable) {}
+  blmu(blms paramblms) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(blmr.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
-    }
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
-    {
-      paramEIPCResult = paramEIPCResult.data.getParcelable(blmr.n);
-      if (paramEIPCResult != null)
-      {
-        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
-        this.a.this$0.a = paramEIPCResult;
-        QQPimGetTipsInfoIPC.a(this.a.this$0).a(paramEIPCResult);
-      }
-    }
+    this.a.a(1.0F);
   }
 }
 

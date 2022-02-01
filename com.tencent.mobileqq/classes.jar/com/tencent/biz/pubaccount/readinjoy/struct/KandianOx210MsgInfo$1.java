@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bmqa;
-import rfo;
+import bnrf;
+import qwh;
 
 public class KandianOx210MsgInfo$1
   implements Runnable
 {
   public void run()
   {
-    SharedPreferences.Editor localEditor = bmqa.a(this.a, true, false).edit();
+    SharedPreferences.Editor localEditor = bnrf.a(this.a, true, false).edit();
     localEditor.putString("kandian_push_ox210_msg", this.this$0.a());
     localEditor.putInt("kandian_push_ox210_c5_msg_count", this.this$0.a);
     localEditor.putLong("kandian_push_0x210_c5_msg_time", this.this$0.d);
-    bmqa.a(localEditor, true);
+    bnrf.a(localEditor, true);
   }
 }
 

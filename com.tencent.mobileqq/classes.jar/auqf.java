@@ -1,42 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.MessageForFuDai;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class auqf
-  implements agma, Handler.Callback
+class auqf
+  implements DialogInterface.OnClickListener
 {
-  private BaseChatPie a;
+  auqf(auqe paramauqe) {}
   
-  public auqf(BaseChatPie paramBaseChatPie)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 14: 
-    case 15: 
-      auqg.e();
-      return;
-    }
-    auqg.f();
-  }
-  
-  void a(MessageForFuDai paramMessageForFuDai) {}
-  
-  public int[] a()
-  {
-    return new int[] { 3, 13, 14, 15, 16 };
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
+    SendBottomBar.a(this.a.a);
   }
 }
 

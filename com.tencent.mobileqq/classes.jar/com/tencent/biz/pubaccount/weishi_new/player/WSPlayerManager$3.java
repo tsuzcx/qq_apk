@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import uke;
-import upe;
+import ulc;
+import uqf;
 
 class WSPlayerManager$3
   implements Runnable
@@ -13,11 +13,11 @@ class WSPlayerManager$3
     if (WSPlayerManager.a(this.this$0) != null)
     {
       WSPlayerManager.a(this.this$0).b();
-      upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] subThread videoPlayer.start!");
+      uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] subThread videoPlayer.start!");
       if ((!WSPlayerManager.d(this.this$0)) && (WSPlayerManager.a(this.this$0) != null))
       {
         WSPlayerManager.a(this.this$0).c();
-        upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] activity become onPause after videoPlayer.start(), so we need to pause it!");
+        uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] activity become onPause after videoPlayer.start(), so we need to pause it!");
       }
       WSPlayerManager.a(this.this$0);
     }

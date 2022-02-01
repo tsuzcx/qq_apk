@@ -1,19 +1,73 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
-class adui
-  implements View.OnClickListener
+public class adui
+  extends ClickableSpan
 {
-  adui(aduc paramaduc, MessageRecord paramMessageRecord) {}
+  public int a;
+  public Bundle a;
+  public String a;
+  
+  public adui(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
   
   public void onClick(View paramView)
   {
-    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Aduc.a.a, abga.a(paramView));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramView != null) {}
+    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
+      return;
+    }
+    Object localObject;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      bguq.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
+      return;
+    case 2: 
+      try
+      {
+        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
+        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        paramView.startActivity((Intent)localObject);
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
+      ((ProfileActivity.AllInOne)localObject).h = 109;
+      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
+      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

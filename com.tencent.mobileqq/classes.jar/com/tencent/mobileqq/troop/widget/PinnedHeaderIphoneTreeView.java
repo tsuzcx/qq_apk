@@ -13,7 +13,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import bfvz;
+import bgwa;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.PinnedHeaderExpandableListView;
@@ -38,7 +38,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bfvz(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgwa(this);
     a();
   }
   
@@ -47,7 +47,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bfvz(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgwa(this);
     a();
   }
   
@@ -56,7 +56,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bfvz(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgwa(this);
     a();
   }
   

@@ -1,7 +1,12 @@
-public abstract interface bofv
-  extends bofu
+class bofv
+  implements bbfv
 {
-  public abstract void q();
+  bofv(bofh parambofh) {}
+  
+  public void a()
+  {
+    bofh.a(this.a).c();
+  }
 }
 
 

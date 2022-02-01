@@ -1,39 +1,33 @@
-import NS_MOBILE_FEEDS.mobile_online_report_item;
-import NS_MOBILE_FEEDS.mobile_online_report_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-public class bmfj
-  extends QzoneExternalRequest
+class bmfj
+  implements EnterCallback
 {
-  public JceStruct a;
+  bmfj(bmfi parambmfi, EnterCallback paramEnterCallback, long paramLong) {}
   
-  public bmfj(long paramLong, ArrayList<mobile_online_report_item> paramArrayList)
+  public void onCloseLoadingView()
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    mobile_online_report_req localmobile_online_report_req = new mobile_online_report_req();
-    localmobile_online_report_req.appid = 8001;
-    localmobile_online_report_req.type_id = 0;
-    localmobile_online_report_req.uin = paramLong;
-    localmobile_online_report_req.vecOnlineItem = paramArrayList;
-    this.a = localmobile_online_report_req;
+    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
+    }
+    bmqw.c("IliveAuthShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_Long);
   }
   
-  public String getCmdString()
+  public void onEnterComplete()
   {
-    return "QzoneNewService.reportOnlineTime";
+    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
+    }
+    bmqw.c("IliveAuthShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_Long);
   }
   
-  public JceStruct getReq()
+  public void onShowLoadingView(View paramView)
   {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "reportOnlineTime";
+    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
+    }
+    bmqw.c("IliveAuthShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_Long);
   }
 }
 

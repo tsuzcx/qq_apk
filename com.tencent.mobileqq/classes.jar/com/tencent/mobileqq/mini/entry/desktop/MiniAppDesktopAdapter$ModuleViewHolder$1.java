@@ -18,10 +18,10 @@ class MiniAppDesktopAdapter$ModuleViewHolder$1
   
   public void onClick(View paramView)
   {
-    Activity localActivity = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2600(this.this$0).get();
+    Activity localActivity = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0).get();
     LaunchParam localLaunchParam;
     int i;
-    if ((localActivity != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0) != null))
+    if ((localActivity != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0) != null))
     {
       localLaunchParam = new LaunchParam();
       if (this.val$moduleType != 1) {
@@ -34,7 +34,7 @@ class MiniAppDesktopAdapter$ModuleViewHolder$1
       localLaunchParam.scene = i;
       try
       {
-        MiniAppController.launchMiniAppByAppInfo(localActivity, MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0), localLaunchParam);
+        MiniAppController.launchMiniAppByAppInfo(localActivity, MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0), localLaunchParam);
         EventCollector.getInstance().onViewClicked(paramView);
         return;
         label76:

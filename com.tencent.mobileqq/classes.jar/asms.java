@@ -1,12 +1,24 @@
-public abstract interface asms
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
+import com.tencent.qphone.base.util.QLog;
+
+public class asms
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  public asms(EmoticonGuideBubbleView paramEmoticonGuideBubbleView) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonGuideBubbleView", 2, "removeFastImage fadeoutanimation ended");
+    }
+    this.a.removeAllViews();
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

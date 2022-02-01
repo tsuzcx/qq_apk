@@ -1,5 +1,10 @@
 package com.tencent.biz.qqcircle.fragments.main;
 
+import aaak;
+import aaam;
+import aabd;
+import aabe;
+import aabj;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,38 +30,33 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
-import tlg;
-import uxx;
-import uyk;
-import vee;
-import vlw;
-import vlx;
-import vqu;
-import vrf;
-import vri;
-import vrr;
-import vrt;
-import vtv;
-import vup;
-import zwp;
-import zwr;
-import zxi;
-import zxj;
-import zxo;
+import tbz;
+import uzg;
+import uzt;
+import vgi;
+import voa;
+import vob;
+import vtf;
+import vtq;
+import vtt;
+import vud;
+import vuf;
+import vwu;
+import vxq;
 
 public class QCircleAggregationFragment
   extends QCircleBaseAggregationFragment
-  implements zwr
+  implements aaam
 {
   public static String i = "QCircleAggregationFragment";
-  private vee a;
+  private vgi a;
   private boolean b;
   
   @NotNull
   private View a(@Nullable ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560725, null);
-    paramViewGroup.setOnClickListener(new vlx(this));
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560746, null);
+    paramViewGroup.setOnClickListener(new vob(this));
     return paramViewGroup;
   }
   
@@ -70,9 +70,9 @@ public class QCircleAggregationFragment
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Uyk != null)
+      if (this.jdField_a_of_type_Uzt != null)
       {
-        ArrayList localArrayList = this.jdField_a_of_type_Uyk.getDataList();
+        ArrayList localArrayList = this.jdField_a_of_type_Uzt.getDataList();
         if (localArrayList == null) {
           break;
         }
@@ -85,10 +85,10 @@ public class QCircleAggregationFragment
           FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)localArrayList.get(j);
           if (paramString.equals(localStFeed.poster.id.get()))
           {
-            if (this.jdField_a_of_type_Vtv == null) {
+            if (this.jdField_a_of_type_Vwu == null) {
               break;
             }
-            this.jdField_a_of_type_Vtv.c(localStFeed.id.get());
+            this.jdField_a_of_type_Vwu.c(localStFeed.id.get());
             return;
           }
           j -= 1;
@@ -99,18 +99,18 @@ public class QCircleAggregationFragment
   
   private void k()
   {
-    uxx.b();
-    uxx.a();
-    uxx.a(getActivity());
-    if (this.jdField_a_of_type_Uyk != null) {
-      this.jdField_a_of_type_Uyk.b();
+    uzg.b();
+    uzg.a();
+    uzg.a(getActivity());
+    if (this.jdField_a_of_type_Uzt != null) {
+      this.jdField_a_of_type_Uzt.b();
     }
-    tlg.a();
+    tbz.a();
   }
   
   private void l()
   {
-    ((vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance", null);
+    ((vtf)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance");
   }
   
   public void a()
@@ -126,23 +126,23 @@ public class QCircleAggregationFragment
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Zxi.a().a().a(a(paramViewGroup));
-    this.jdField_a_of_type_Zxi.a().a().addOnScrollListener(new vlw(this));
-    zwp.a().a(this);
+    this.jdField_a_of_type_Aabd.a().a().a(a(paramViewGroup));
+    this.jdField_a_of_type_Aabd.a().a().addOnScrollListener(new voa(this));
+    aaak.a().a(this);
   }
   
-  public void a(List<zxj> paramList)
+  public void a(List<aabe> paramList)
   {
     super.a(paramList);
-    this.jdField_a_of_type_Vee = new vee();
-    this.jdField_a_of_type_Vee.a(a());
-    paramList.add(this.jdField_a_of_type_Vee);
+    this.jdField_a_of_type_Vgi = new vgi();
+    this.jdField_a_of_type_Vgi.a(a());
+    paramList.add(this.jdField_a_of_type_Vgi);
   }
   
-  public void a(vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public void a(vxq<List<FeedCloudMeta.StFeed>> paramvxq)
   {
-    super.a(paramvup);
-    if ((paramvup != null) && (!paramvup.b()))
+    super.a(paramvxq);
+    if ((paramvxq != null) && (!paramvxq.b()))
     {
       QLog.d(i, 1, "handleFeedDataRsp is refresh reportRedPoint");
       l();
@@ -194,25 +194,25 @@ public class QCircleAggregationFragment
   
   public void onDestroy()
   {
-    uxx.c();
-    uxx.b(getActivity());
+    uzg.c();
+    uzg.b(getActivity());
     super.onDestroy();
-    zwp.a().b(this);
-    uxb.a = false;
+    aaak.a().b(this);
+    uym.a = false;
   }
   
   public void onDetach()
   {
     QLog.d(i, 1, "QCircleAggregationFragment->onDetach");
     super.onDetach();
-    vri.a().b(c());
+    vtt.a().b(c());
   }
   
   public void onPause()
   {
     super.onPause();
     if (getUserVisibleHint()) {
-      vri.a().d(c());
+      vtt.a().d(c());
     }
   }
   
@@ -223,8 +223,8 @@ public class QCircleAggregationFragment
     {
       localQCircleFeedEvent = (QCircleFeedEvent)paramSimpleBaseEvent;
       if (localQCircleFeedEvent.mState == 3) {
-        if (this.jdField_a_of_type_Vtv != null) {
-          this.jdField_a_of_type_Vtv.c(((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId);
+        if (this.jdField_a_of_type_Vwu != null) {
+          this.jdField_a_of_type_Vwu.c(((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId);
         }
       }
     }
@@ -245,9 +245,9 @@ public class QCircleAggregationFragment
           if (!(paramSimpleBaseEvent instanceof QCircleCloseBannerEvent)) {
             break;
           }
-        } while (this.jdField_a_of_type_Vtv == null);
-        this.jdField_a_of_type_Vtv.b().removeObservers(this);
-        this.jdField_a_of_type_Vtv.b().postValue(null);
+        } while (this.jdField_a_of_type_Vwu == null);
+        this.jdField_a_of_type_Vwu.b().removeObservers(this);
+        this.jdField_a_of_type_Vwu.b().postValue(null);
         return;
         if (!(paramSimpleBaseEvent instanceof QCircleLazyLoadTabEvent)) {
           break;
@@ -265,7 +265,7 @@ public class QCircleAggregationFragment
   {
     super.onResume();
     if (getUserVisibleHint()) {
-      vri.a().c(c());
+      vtt.a().c(c());
     }
     f();
   }
@@ -276,17 +276,17 @@ public class QCircleAggregationFragment
     super.setUserVisibleHint(paramBoolean);
     if (paramBoolean)
     {
-      if (vri.a().d()) {
-        vri.a().a(c(), getActivity().getIntent());
+      if (vtt.a().d()) {
+        vtt.a().a(c(), getActivity().getIntent());
       }
-      vri.a().a(c());
-      vri.a().c(c());
-      vrf.a("", 22, 1);
-      vrr.a().a(new vrt().a("main").b("impression").a(a()));
+      vtt.a().a(c());
+      vtt.a().c(c());
+      vtq.a("", 22, 1);
+      vud.a().a(new vuf().a("main").b("impression").a(a()));
       return;
     }
-    vri.a().d(c());
-    vri.a().b(c());
+    vtt.a().d(c());
+    vtt.a().b(c());
   }
 }
 

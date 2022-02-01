@@ -1,35 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class afnk
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public afnk(TroopRequestActivity paramTroopRequestActivity) {}
+  public afnk(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131717757), 0).b(this.a.getTitleBarHeight());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131717746), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    paramMessage = (String)paramMessage.obj;
-    this.a.o.setText(paramMessage + "");
-    this.a.o.setContentDescription(paramMessage + "");
-    this.a.o.setVisibility(0);
+    this.a.finish();
   }
 }
 

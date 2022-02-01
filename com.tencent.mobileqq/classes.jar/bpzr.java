@@ -1,8 +1,12 @@
-import android.graphics.Bitmap;
-
 public abstract interface bpzr
 {
-  public abstract void a(Bitmap paramBitmap);
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
 }
 
 

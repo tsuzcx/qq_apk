@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import android.os.Bundle;
-import bbio;
-import bbkl;
-import bbko;
-import bbkr;
-import bbtj;
-import bbty;
-import bbup;
+import bcbi;
+import bcde;
+import bcdh;
+import bcdk;
+import bcmc;
+import bcmr;
+import bcni;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -25,21 +25,21 @@ public class FTSEntitySearchFragment
     return localFTSEntitySearchFragment;
   }
   
-  public bbio a()
+  public bcbi a()
   {
-    return new bbkl(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu);
+    return new bcde(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof);
   }
   
-  public bbtj a()
+  public bcmc a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return bbko.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
+    return bcdh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public String a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return bbko.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
+    return bcdh.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public void a(String paramString)
@@ -64,21 +64,21 @@ public class FTSEntitySearchFragment
     label93:
     for (paramInt = i;; paramInt = paramList.size())
     {
-      bbup.a("talk", "exp_page", new String[] { str, paramInt });
+      bcni.a("talk", "exp_page", new String[] { str, paramInt });
       this.b = true;
       return;
     }
   }
   
-  public void a(List paramList, bbty parambbty)
+  public void a(List paramList, bcmr parambcmr)
   {
-    if (parambbty.a(this.c)) {
-      a(paramList, parambbty.jdField_a_of_type_Int);
+    if (parambcmr.a(this.c)) {
+      a(paramList, parambcmr.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambbty.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
+    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambcmr.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
   }
   
   public void onCreate(Bundle paramBundle)
@@ -92,25 +92,25 @@ public class FTSEntitySearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bbtj.c();
+    this.jdField_a_of_type_Bcmc.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bbtj.d();
+    this.jdField_a_of_type_Bcmc.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    ((bbkr)this.jdField_a_of_type_Bbtj).f();
+    ((bcdk)this.jdField_a_of_type_Bcmc).f();
   }
   
   public void onStop()
   {
     super.onStop();
-    ((bbkr)this.jdField_a_of_type_Bbtj).g();
+    ((bcdk)this.jdField_a_of_type_Bcmc).g();
   }
 }
 

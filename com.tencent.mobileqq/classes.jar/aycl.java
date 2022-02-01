@@ -1,48 +1,10 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.now.NowQQLiveFragment;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class aycl
-  implements biea
+public abstract interface aycl
 {
-  public aycl(NowQQLiveFragment paramNowQQLiveFragment) {}
+  public abstract void a(Comments.Comment paramComment);
   
-  public void onItemSelect(View paramView, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", ayck.a);
-      this.a.getActivity().startActivity(paramView);
-    }
-    do
-    {
-      return;
-      if (5 == paramInt)
-      {
-        paramView = new Intent();
-        Bundle localBundle = new Bundle();
-        paramView.setComponent(new ComponentName(this.a.getActivity(), ChatActivity.class));
-        localBundle.putString("uin", ayck.a);
-        localBundle.putInt("uintype", 1008);
-        localBundle.putString("uinname", anni.a(2131694044));
-        paramView.putExtras(localBundle);
-        paramView.setFlags(67108864);
-        paramView.putExtra("isforceRequestDetail", false);
-        paramView.putExtra("jump_from", 2);
-        this.a.getActivity().startActivity(paramView);
-        ayej.a();
-        ayej.b();
-        return;
-      }
-    } while (1 != paramInt);
-    NowQQLiveFragment.a(this.a);
-  }
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akgm;
+import akrx;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -16,7 +16,7 @@ public final class ChatActivityFacade$12
       String str = this.jdField_a_of_type_JavaLangString;
       int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
       QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      akgm.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      akrx.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
       return;
     }
     catch (Exception localException) {}

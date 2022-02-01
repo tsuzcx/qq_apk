@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bhbk;
-import bhbm;
-import bhbr;
+import bibs;
+import bibu;
+import bicb;
 
 public class GLDrawableLoaderImpl$4
   implements Runnable
 {
-  public GLDrawableLoaderImpl$4(bhbk parambhbk, bhbm parambhbm, bhbr parambhbr) {}
+  public GLDrawableLoaderImpl$4(bibs parambibs, bibu parambibu, bicb parambicb) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bhbm.a("gldrawable_main_init", "error", "download fail", -1L);
-    if (this.jdField_a_of_type_Bhbr != null) {
-      this.jdField_a_of_type_Bhbr.c();
+    this.jdField_a_of_type_Bibu.a("gldrawable_main_init", "error", "download fail", -1L);
+    if (this.jdField_a_of_type_Bicb != null) {
+      this.jdField_a_of_type_Bicb.c();
     }
   }
 }

@@ -1,44 +1,68 @@
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
-class xii
-  implements xiz
+public class xii
 {
-  xii(xih paramxih) {}
-  
-  public void a()
+  public static void a(Context paramContext, String paramString, xik paramxik, bjbs parambjbs)
   {
-    xih.a(this.a, this.a.a.a(xih.a(this.a), 5));
-    List localList = xih.a(this.a).a;
-    if ((xih.a(this.a) == null) && (localList.size() > 0)) {
-      xih.a(this.a, ((xiy)localList.get(0)).a);
-    }
-    label193:
-    for (;;)
+    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambjbs, paramContext, paramxik));
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      xih.a(this.a).a(xih.a(this.a), "");
-      yqp.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { xih.a(this.a) });
-      return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localList.size()) {
-          break label193;
-        }
-        if (((xiy)localList.get(i)).a.equals(xih.a(this.a)))
-        {
-          i -= 1;
-          if (i < 0) {
-            break;
-          }
-          xih.a(this.a, ((xiy)localList.get(i)).a);
-          break;
-        }
-        i += 1;
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length == 2) {
+        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
       }
+      i += 1;
     }
   }
   
-  public void a(xix paramxix, String paramString, boolean paramBoolean) {}
+  public static void a(HashMap<String, String> paramHashMap)
+  {
+    HashMap<String, String> localHashMap = null;
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    paramHashMap = localHashMap;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
+      {
+        localHashMap = paramHashMap;
+        if (QLog.isColorLevel())
+        {
+          if (paramHashMap != null) {
+            break label144;
+          }
+          paramHashMap = new StringBuilder();
+        }
+        for (;;)
+        {
+          paramHashMap.append(str);
+          localHashMap = paramHashMap;
+          localIterator.remove();
+          paramHashMap = localHashMap;
+          break;
+          label144:
+          paramHashMap.append('|');
+        }
+      }
+    }
+    if ((paramHashMap != null) && (QLog.isColorLevel())) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
+    }
+  }
 }
 
 

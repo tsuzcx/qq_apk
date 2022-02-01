@@ -1,33 +1,12 @@
-public class qaa
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class qaa
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  qaa(pzz parampzz) {}
   
-  public qaa(String paramString)
-  {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public qaa(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = 2;
-    this.d = paramString1;
-    this.c = paramString2;
-    this.b = paramString3;
-    this.e = paramString4;
-  }
-  
-  public String toString()
-  {
-    return "type = " + this.jdField_a_of_type_Int + " index = " + this.jdField_a_of_type_JavaLangString + " city = " + this.b + " province = " + this.c + " country = " + this.d + " citycode = " + this.e;
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

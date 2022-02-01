@@ -1,36 +1,23 @@
-public class bpiw
+import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+
+public final class bpiw
+  implements aaav<CLIENT.StSmartMatchMusicRsp>
 {
-  private int jdField_a_of_type_Int;
-  private bpir jdField_a_of_type_Bpir = new bpiq();
-  private int b;
+  public bpiw(aaav paramaaav, long paramLong) {}
   
-  public bpiu a()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
-    return new bpiu(this, null);
-  }
-  
-  public bpiw a(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    bpam.b("AEEditorMusicHelper", "[requestRecommendedMusicList], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_Aaav != null) {
+      this.jdField_a_of_type_Aaav.onReceive(paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
     }
-    return this;
-  }
-  
-  public bpiw a(bpir parambpir)
-  {
-    if (parambpir != null) {
-      this.jdField_a_of_type_Bpir = parambpir;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    int i = (int)paramLong;
+    if (paramBoolean) {
+      i = 1000;
     }
-    return this;
-  }
-  
-  public bpiw b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
+    bozr.a().a(i, l1 - l2 + "", "AEEditorMusicList", 0);
   }
 }
 

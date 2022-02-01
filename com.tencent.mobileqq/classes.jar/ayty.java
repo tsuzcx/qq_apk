@@ -1,28 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.StatusVisibleFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Ref.ObjectRef;
+import android.os.Handler;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.2;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/WeatherView$bindTextView$2$1"}, k=3, mv={1, 1, 16})
-final class ayty
-  implements View.OnClickListener
+public class ayty
+  implements URLDrawable.DownloadListener
 {
-  ayty(aytv paramaytv, Ref.ObjectRef paramObjectRef, boolean paramBoolean) {}
+  ayty(aytx paramaytx) {}
   
-  public final void onClick(View paramView)
+  public void onFileDownloadFailed(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      aypy.a("0X800AF49", 2, null, 4, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
     }
-    for (;;)
-    {
-      StatusVisibleFragment.a(this.jdField_a_of_type_Aytv.a(), aytv.a(this.jdField_a_of_type_Aytv), 2, 998);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aypy.a("0X800AF49", 1, null, 4, null);
+    this.a.a.post(new NearbyActivityDialog.2.2(this));
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadStarted");
     }
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
+    }
+    this.a.a.post(new NearbyActivityDialog.2.1(this));
   }
 }
 

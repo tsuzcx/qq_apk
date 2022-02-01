@@ -1,19 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class aegx
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public aegx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aegx(ChatSettingForTroop.51 param51) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_Azfe.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_Bkgm != null)) {
-      this.a.jdField_a_of_type_Bkgm.sendEmptyMessage(4);
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      return;
+    }
+    try
+    {
+      ForwardSdkShareOption.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
     }
   }
 }

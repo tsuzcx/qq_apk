@@ -1,35 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
-class akys
-  implements View.OnClickListener
+public class akys
+  implements aldq
 {
-  akys(akyh paramakyh, TipsBar paramTipsBar) {}
+  public akys(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onClick(View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (!atwl.a(atmc.a().b()))
+    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      atmc.a().c();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(10008);
-      Intent localIntent = new Intent(akyh.a(this.jdField_a_of_type_Akyh), FileBrowserActivity.class);
-      localIntent.putExtra("fileinfo", localForwardFileInfo);
-      akyh.a(this.jdField_a_of_type_Akyh).startActivity(localIntent);
-      atvm.a("0X8004BFE");
-      bcst.a(akyh.a(this.jdField_a_of_type_Akyh).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 2, 0, "", "", "", "");
+      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
+      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
     }
   }
 }

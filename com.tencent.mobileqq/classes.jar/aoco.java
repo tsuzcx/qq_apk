@@ -1,32 +1,10 @@
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
-
-public class aoco
-  implements aocp
+public abstract interface aoco
 {
-  public String a;
+  public abstract void a(aoco paramaoco);
   
-  aoco(aocj paramaocj, aoch paramaoch)
-  {
-    if ((paramaoch != null) && (paramaoch.a != null)) {
-      this.jdField_a_of_type_JavaLangString = paramaoch.a.jdField_a_of_type_JavaLangString;
-    }
-  }
+  public abstract void a(boolean paramBoolean, Object paramObject);
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (paramBoolean2) {
-      this.jdField_a_of_type_Aocj.a(paramBoolean1, 113, paramString, this.jdField_a_of_type_Aocj.a);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113);
-      }
-      return;
-      this.jdField_a_of_type_Aocj.a(paramBoolean1, 113, paramString, null);
-    }
-  }
+  public abstract void b(int paramInt1, int paramInt2, Object paramObject);
 }
 
 

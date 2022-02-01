@@ -1,22 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
 
 public class ojc
-  implements bkhw
+  implements bipr
 {
-  public ojc(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, bkho parambkho) {}
+  public ojc(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Object a(int paramInt)
   {
     switch (paramInt)
     {
+    default: 
+      return null;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      pmh.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
-    }
+    return new oje(this.a);
   }
 }
 

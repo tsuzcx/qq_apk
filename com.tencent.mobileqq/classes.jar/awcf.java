@@ -1,20 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
+import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
 
 class awcf
-  extends BroadcastReceiver
+  extends CustomizedDownloader
 {
-  awcf(awce paramawce) {}
+  awcf(awcc paramawcc) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDownload(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
   {
-    if (paramIntent == null) {}
-    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (awce.a(this.a) == null)) {
-      return;
-    }
-    awce.a(this.a).a();
+    paramBundle = new Bundle();
+    paramBundle.putString("url", paramString1);
+    paramBundle.putString("path", paramString2);
+    awde.a().a(paramBundle, paramDownloadCallback);
   }
 }
 

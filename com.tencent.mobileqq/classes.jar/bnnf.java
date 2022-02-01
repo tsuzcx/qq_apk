@@ -1,17 +1,32 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-class bnnf
-  implements Observer<bnuq>
+public class bnnf
+  extends bnnn
 {
-  bnnf(bnne parambnne) {}
-  
-  public void a(@Nullable bnuq parambnuq)
+  private static void a(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
   {
-    if (parambnuq == null) {
-      return;
+    paramWebViewPlugin = new Intent("action_js2qzone");
+    paramArrayOfString = new Bundle();
+    paramArrayOfString.putString("cmd", "writeBlogSuccess");
+    paramWebViewPlugin.putExtras(paramArrayOfString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneBlogJsPlugin", 2, "handleWriteBlog actionString: " + paramWebViewPlugin.getAction());
     }
-    bnne.a(this.a, parambnuq.b);
+    bmtd.a(parambioy.a(), bmtk.a(), paramWebViewPlugin);
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!paramString3.equalsIgnoreCase("writeBlogSuccess")) {
+      return false;
+    }
+    a(this.a, this.a.mRuntime, paramVarArgs);
+    return true;
   }
 }
 

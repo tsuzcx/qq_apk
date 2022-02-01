@@ -1,23 +1,23 @@
 package com.tencent.qqmini.sdk.core.generated;
 
-import bjvo;
-import bjwh;
-import bjwk;
-import bjwm;
-import bjww;
-import bjxo;
-import bjxw;
-import bjyg;
-import bjyl;
-import bjyn;
-import bjyo;
-import bjzf;
-import bjzi;
-import bjzk;
-import bjzr;
-import bjzs;
-import bjzv;
-import bjzy;
+import bkwo;
+import bkxh;
+import bkxk;
+import bkxm;
+import bkxx;
+import bkys;
+import bkza;
+import bkzk;
+import bkzp;
+import bkzr;
+import bkzs;
+import blaj;
+import blam;
+import blao;
+import blav;
+import blaw;
+import blaz;
+import blbc;
 import com.tencent.qqmini.proxyimpl.AdProxyImpl;
 import com.tencent.qqmini.proxyimpl.PayProxyImpl;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy;
@@ -49,26 +49,26 @@ public final class ExtProxyServiceScope
   
   static
   {
-    PROXY_SERVICES.put(WebSocketProxy.class, bjzv.class);
-    PROXY_SERVICES.put(UploaderProxy.class, bjzi.class);
-    PROXY_SERVICES.put(MiniAppProxy.class, bjww.class);
-    PROXY_SERVICES.put(DownloaderProxy.class, bjwh.class);
-    PROXY_SERVICES.put(RequestProxy.class, bjyl.class);
-    PROXY_SERVICES.put(ChannelProxy.class, bjvo.class);
-    PROXY_SERVICES.put(WnsConfigProxy.class, bjzy.class);
+    PROXY_SERVICES.put(WebSocketProxy.class, blaz.class);
+    PROXY_SERVICES.put(UploaderProxy.class, blam.class);
+    PROXY_SERVICES.put(MiniAppProxy.class, bkxx.class);
+    PROXY_SERVICES.put(DownloaderProxy.class, bkxh.class);
+    PROXY_SERVICES.put(RequestProxy.class, bkzp.class);
+    PROXY_SERVICES.put(ChannelProxy.class, bkwo.class);
+    PROXY_SERVICES.put(WnsConfigProxy.class, blbc.class);
     PROXY_SERVICES.put(AdProxy.class, AdProxyImpl.class);
     PROXY_SERVICES.put(PayProxy.class, PayProxyImpl.class);
-    PROXY_SERVICES.put(VideoPlayerProviderProxy.class, bjzr.class);
-    PROXY_SERVICES.put(ShareProxy.class, bjyo.class);
-    PROXY_SERVICES.put(KingCardProxy.class, bjwk.class);
-    PROXY_SERVICES.put(ThirdAppProxy.class, bjzf.class);
-    PROXY_SERVICES.put(VoIPProxy.class, bjzs.class);
-    PROXY_SERVICES.put(VideoJsProxy.class, bjzk.class);
-    PROXY_SERVICES.put(NavigationProxy.class, bjxw.class);
-    PROXY_SERVICES.put(PageGestureProxy.class, bjyg.class);
-    PROXY_SERVICES.put(MusicPlayerProxy.class, bjxo.class);
-    PROXY_SERVICES.put(RequestStrategyProxy.class, bjyn.class);
-    PROXY_SERVICES.put(LogProxy.class, bjwm.class);
+    PROXY_SERVICES.put(VideoPlayerProviderProxy.class, blav.class);
+    PROXY_SERVICES.put(ShareProxy.class, bkzs.class);
+    PROXY_SERVICES.put(KingCardProxy.class, bkxk.class);
+    PROXY_SERVICES.put(ThirdAppProxy.class, blaj.class);
+    PROXY_SERVICES.put(VoIPProxy.class, blaw.class);
+    PROXY_SERVICES.put(VideoJsProxy.class, blao.class);
+    PROXY_SERVICES.put(NavigationProxy.class, bkza.class);
+    PROXY_SERVICES.put(PageGestureProxy.class, bkzk.class);
+    PROXY_SERVICES.put(MusicPlayerProxy.class, bkys.class);
+    PROXY_SERVICES.put(RequestStrategyProxy.class, bkzr.class);
+    PROXY_SERVICES.put(LogProxy.class, bkxm.class);
   }
 }
 

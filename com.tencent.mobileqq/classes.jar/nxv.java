@@ -1,15 +1,18 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nxv
-  implements DialogInterface.OnShowListener
+  implements DialogInterface.OnClickListener
 {
-  nxv(nxr paramnxr) {}
+  nxv(nxo paramnxo, JsResult paramJsResult, Context paramContext) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    nxr.a(this.a).getWindow().clearFlags(8);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 

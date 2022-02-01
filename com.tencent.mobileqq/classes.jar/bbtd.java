@@ -1,34 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class bbtd
-  extends bbti
+  implements TextView.OnEditorActionListener
 {
-  public bbtd(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
-  }
+  public bbtd(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public bbmx a(List<bbmy> paramList, String paramString)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return null;
-  }
-  
-  public List<bbmx> a(bbtx parambbtx)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (parambbtx.jdField_a_of_type_AndroidOsBundle == null) {
-      parambbtx.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)) {
+      blgx.b(paramTextView);
     }
-    ArrayList localArrayList = new ArrayList();
-    parambbtx = new bbmn(parambbtx.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new bbmf(parambbtx));
-    localArrayList.add(parambbtx);
-    bbuo.a(0);
-    return localArrayList;
+    return true;
   }
 }
 

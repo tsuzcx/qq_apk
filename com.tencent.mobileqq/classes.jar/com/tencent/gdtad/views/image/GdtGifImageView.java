@@ -1,10 +1,10 @@
 package com.tencent.gdtad.views.image;
 
-import acqy;
-import acti;
-import actk;
-import actl;
-import actm;
+import acvc;
+import acxm;
+import acxo;
+import acxp;
+import acxq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.text.TextUtils;
@@ -16,16 +16,16 @@ import java.lang.ref.WeakReference;
 public class GdtGifImageView
   extends URLImageView
 {
-  actk jdField_a_of_type_Actk;
+  acxo jdField_a_of_type_Acxo;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<actm> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<acxq> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  actk jdField_b_of_type_Actk;
+  acxo jdField_b_of_type_Acxo;
   private String jdField_b_of_type_JavaLangString;
   private volatile boolean jdField_b_of_type_Boolean;
   private volatile boolean c;
   
-  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<actm> paramWeakReference, boolean paramBoolean)
+  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<acxq> paramWeakReference, boolean paramBoolean)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
@@ -35,13 +35,13 @@ public class GdtGifImageView
     this.c = paramBoolean;
     if (!TextUtils.isEmpty(paramString2))
     {
-      this.jdField_a_of_type_Actk = new actl(this);
-      new acti(paramString2, new WeakReference(this.jdField_a_of_type_Actk)).a();
+      this.jdField_a_of_type_Acxo = new acxp(this);
+      new acxm(paramString2, new WeakReference(this.jdField_a_of_type_Acxo)).a();
     }
     if (!paramBoolean)
     {
-      this.jdField_b_of_type_Actk = new actl(this);
-      paramContext = new acti(paramString1, new WeakReference(this.jdField_b_of_type_Actk));
+      this.jdField_b_of_type_Acxo = new acxp(this);
+      paramContext = new acxm(paramString1, new WeakReference(this.jdField_b_of_type_Acxo));
       paramContext.a();
       setImageDrawable(paramContext.a());
     }
@@ -62,15 +62,15 @@ public class GdtGifImageView
     setImageDrawable(paramURLDrawable);
   }
   
-  public void a(String paramString, WeakReference<actm> paramWeakReference)
+  public void a(String paramString, WeakReference<acxq> paramWeakReference)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    paramWeakReference = new acti(paramString, new WeakReference(this.jdField_b_of_type_Actk));
+    paramWeakReference = new acxm(paramString, new WeakReference(this.jdField_b_of_type_Acxo));
     paramWeakReference.a();
     setImageDrawable(paramWeakReference.a());
     this.jdField_b_of_type_Boolean = true;
-    acqy.a("GdtImageView", "GdtGifImageView update completed " + paramString);
+    acvc.a("GdtImageView", "GdtGifImageView update completed " + paramString);
     URLDrawable.resume();
     AbstractGifImage.resumeAll();
   }

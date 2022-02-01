@@ -1,99 +1,29 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolAppRuntime;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgh
+  implements adci
 {
-  WeakReference<CustomWebView> a;
-  WeakReference<AppInterface> b;
-  WeakReference<Activity> c;
-  WeakReference<bhni> d = null;
-  WeakReference<WebViewFragment> e = null;
-  
-  public adgh(Activity paramActivity)
+  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    this.c = new WeakReference(paramActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0xdc push message");
+    }
+    paramQQAppInterface = (amsx)paramQQAppInterface.getManager(153);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
+    }
+    bcrw.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
   }
   
-  public Activity a()
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    return (Activity)this.c.get();
-  }
-  
-  public bhni a()
-  {
-    Activity localActivity;
-    if (this.d == null)
-    {
-      localActivity = a();
-      if (!(localActivity instanceof bhni)) {
-        break label45;
-      }
-    }
-    label45:
-    for (this.d = new WeakReference((bhni)localActivity);; this.d = new WeakReference(a())) {
-      return (bhni)this.d.get();
-    }
-  }
-  
-  public CustomWebView a()
-  {
-    WebViewFragment localWebViewFragment;
-    if (this.a == null)
-    {
-      localWebViewFragment = a();
-      if (localWebViewFragment == null) {
-        break label42;
-      }
-    }
-    label42:
-    for (this.a = new WeakReference(localWebViewFragment.getWebView());; this.a = new WeakReference(null)) {
-      return (CustomWebView)this.a.get();
-    }
-  }
-  
-  public AppInterface a()
-  {
-    AppRuntime localAppRuntime;
-    if (this.b == null)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localAppRuntime instanceof ToolAppRuntime)) {
-        break label52;
-      }
-      this.b = new WeakReference((AppInterface)localAppRuntime.getAppRuntime("modular_web"));
-    }
-    for (;;)
-    {
-      return (AppInterface)this.b.get();
-      label52:
-      if ((localAppRuntime instanceof AppInterface)) {
-        this.b = new WeakReference((AppInterface)localAppRuntime);
-      } else {
-        this.b = new WeakReference(null);
-      }
-    }
-  }
-  
-  public WebViewFragment a()
-  {
-    Activity localActivity;
-    if (this.e == null)
-    {
-      localActivity = a();
-      if (!(localActivity instanceof bhne)) {
-        break label50;
-      }
-    }
-    label50:
-    for (this.e = new WeakReference(((bhne)localActivity).a());; this.e = new WeakReference(null)) {
-      return (WebViewFragment)this.e.get();
-    }
+    a(paramadan.a(), paramadan.a().a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

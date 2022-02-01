@@ -1,37 +1,53 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import Wallet.IdiomRedPackMatchRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-final class akxa
-  implements View.OnTouchListener
+class akxa
+  implements BusinessObserver
 {
-  private float b = 1.0F;
+  akxa(akwz paramakwz) {}
   
-  akxa(float paramFloat) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (paramInt == 26)
     {
-      this.b = paramView.getAlpha();
-      paramView.setAlpha(this.a);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        paramView.setAlpha(this.b);
+      paramBundle = (IdiomRedPackMatchRsp)paramBundle.getSerializable("rsp");
+      if ((QLog.isColorLevel()) && (paramBundle != null)) {
+        QLog.d("PasswdRedBagManager", 2, "openSolitaireRedBagByIdiom reportObserver: " + paramBoolean + "|status: " + paramBundle.status + " |hbIdiom： " + paramBundle.hbIdiom + " |hbIdiomLastPY: " + paramBundle.hbIdiomLastPY + " |idiomSeq: " + paramBundle.idiomSeq + " |subchannel: " + paramBundle.subchannel);
       }
-      else if (paramMotionEvent.getAction() == 2)
+      if ((paramBoolean) && (paramBundle != null))
       {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!akww.a(paramView, i, j)) {
-          paramView.setAlpha(1.0F);
+        if (paramBundle.status != 0) {
+          break label163;
         }
+        this.a.jdField_a_of_type_Akwu.a(this.a.jdField_a_of_type_Akwt.jdField_a_of_type_JavaLangString, paramBundle.hbIdiom, paramBundle.hbIdiomLastPY, paramBundle.idiomSeq, paramBundle.hbPoemRule);
       }
     }
+    label163:
+    do
+    {
+      return;
+      if (paramBundle.status == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PasswdRedBagManager", 2, "sessionInfo.curType: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        }
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Akwu.a(this.a.jdField_a_of_type_Akwt.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        }
+        Bundle localBundle = new Bundle();
+        localBundle.putString("answer", this.a.jdField_a_of_type_JavaLangString);
+        localBundle.putInt("subchannel", paramBundle.subchannel);
+        this.a.jdField_a_of_type_Akwu.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_Akwt, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int, localBundle);
+        return;
+      }
+    } while (paramBundle.status != 2);
+    long l = NetConnInfoCenter.getServerTime();
+    akyd.a(akwu.a(this.a.jdField_a_of_type_Akwu).getCurrentAccountUin(), "idiom_match_in_phone", l + paramBundle.timeInterval);
   }
 }
 

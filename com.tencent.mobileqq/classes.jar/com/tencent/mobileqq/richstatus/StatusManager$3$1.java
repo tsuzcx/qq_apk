@@ -2,11 +2,11 @@ package com.tencent.mobileqq.richstatus;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anmw;
-import anni;
-import bbck;
-import bbcn;
-import bcst;
+import anyw;
+import anzj;
+import bbvd;
+import bbvg;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -18,23 +18,23 @@ import mqq.os.MqqHandler;
 public class StatusManager$3$1
   implements Runnable
 {
-  public StatusManager$3$1(bbcn parambbcn, boolean paramBoolean, Bundle paramBundle) {}
+  public StatusManager$3$1(bbvg parambbvg, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    Object localObject3 = (anmw)bbck.a(this.jdField_a_of_type_Bbcn.a).getManager(51);
+    Object localObject3 = (anyw)bbvd.a(this.jdField_a_of_type_Bbvg.a).getManager(51);
     Object localObject2;
     int i;
     int j;
     Object localObject4;
     if (localObject3 != null)
     {
-      localObject2 = ((anmw)localObject3).a(bbck.a(this.jdField_a_of_type_Bbcn.a).getAccount());
+      localObject2 = ((anyw)localObject3).a(bbvd.a(this.jdField_a_of_type_Bbvg.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = bbck.a(this.jdField_a_of_type_Bbcn.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = bbvd.a(this.jdField_a_of_type_Bbvg.a).getAccount();
       }
       if (this.jdField_a_of_type_Boolean)
       {
@@ -56,7 +56,7 @@ public class StatusManager$3$1
             }
             ((RichStatus)localObject2).fontId = 0;
             ((RichStatus)localObject2).fontType = 0;
-            ((anmw)localObject3).a((ExtensionInfo)localObject1);
+            ((anyw)localObject3).a((ExtensionInfo)localObject1);
           }
         }
       }
@@ -68,7 +68,7 @@ public class StatusManager$3$1
         }
         localObject1 = "1";
         label243:
-        bcst.b(null, "CliOper", "", "", "signiture", "set_clk_save_succ", 0, 0, (String)localObject1, "", "", "");
+        bdll.b(null, "CliOper", "", "", "signiture", "set_clk_save_succ", 0, 0, (String)localObject1, "", "", "");
       }
     }
     for (Object localObject1 = localObject2;; localObject1 = null)
@@ -129,20 +129,20 @@ public class StatusManager$3$1
       }
       for (;;)
       {
-        bbck.a(this.jdField_a_of_type_Bbcn.a, null);
+        bbvd.a(this.jdField_a_of_type_Bbvg.a, null);
         ThreadManager.getUIHandler().post(new StatusManager.3.1.1(this, j, (RichStatus)localObject1, (TipsInfo)localObject2));
         gm.a().a(j, (RichStatus)localObject1, (TipsInfo)localObject2, 0);
         return;
         label659:
-        if (bbck.a(this.jdField_a_of_type_Bbcn.a) == null) {
+        if (bbvd.a(this.jdField_a_of_type_Bbvg.a) == null) {
           break;
         }
-        ((RichStatus)localObject2).fontId = bbck.a(this.jdField_a_of_type_Bbcn.a).fontId;
-        ((RichStatus)localObject2).fontType = bbck.a(this.jdField_a_of_type_Bbcn.a).fontType;
-        if ((bbck.a(this.jdField_a_of_type_Bbcn.a).mStickerInfos == null) || (bbck.a(this.jdField_a_of_type_Bbcn.a).mStickerInfos.size() <= 0)) {
+        ((RichStatus)localObject2).fontId = bbvd.a(this.jdField_a_of_type_Bbvg.a).fontId;
+        ((RichStatus)localObject2).fontType = bbvd.a(this.jdField_a_of_type_Bbvg.a).fontType;
+        if ((bbvd.a(this.jdField_a_of_type_Bbvg.a).mStickerInfos == null) || (bbvd.a(this.jdField_a_of_type_Bbvg.a).mStickerInfos.size() <= 0)) {
           break;
         }
-        ((RichStatus)localObject2).mStickerInfos = new ArrayList(bbck.a(this.jdField_a_of_type_Bbcn.a).mStickerInfos);
+        ((RichStatus)localObject2).mStickerInfos = new ArrayList(bbvd.a(this.jdField_a_of_type_Bbvg.a).mStickerInfos);
         break;
         label771:
         localObject1 = "0";
@@ -155,27 +155,27 @@ public class StatusManager$3$1
         i = j;
         break label366;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          ((TipsInfo)localObject2).titleWording = anni.a(2131713058);
+          ((TipsInfo)localObject2).titleWording = anzj.a(2131713167);
         }
         if (TextUtils.isEmpty(str2)) {
-          ((TipsInfo)localObject2).leftBtnWording = anni.a(2131713056);
+          ((TipsInfo)localObject2).leftBtnWording = anzj.a(2131713165);
         }
         j = i;
         if (TextUtils.isEmpty(str1))
         {
-          ((TipsInfo)localObject2).rightBtnWording = anni.a(2131713060);
+          ((TipsInfo)localObject2).rightBtnWording = anzj.a(2131713169);
           j = i;
           continue;
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((TipsInfo)localObject2).titleWording = anni.a(2131713057);
+            ((TipsInfo)localObject2).titleWording = anzj.a(2131713166);
           }
           if (TextUtils.isEmpty(str2)) {
-            ((TipsInfo)localObject2).leftBtnWording = anni.a(2131713059);
+            ((TipsInfo)localObject2).leftBtnWording = anzj.a(2131713168);
           }
           j = i;
           if (TextUtils.isEmpty(str1))
           {
-            ((TipsInfo)localObject2).rightBtnWording = anni.a(2131713061);
+            ((TipsInfo)localObject2).rightBtnWording = anzj.a(2131713170);
             j = i;
           }
         }

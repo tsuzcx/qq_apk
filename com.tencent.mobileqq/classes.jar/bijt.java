@@ -1,20 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.AuthorityControlFragment;
-
-public class bijt
-  implements DialogInterface.OnCancelListener
+public abstract interface bijt
 {
-  public bijt(AuthorityControlFragment paramAuthorityControlFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = this.a.getActivity();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.doOnBackPressed();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

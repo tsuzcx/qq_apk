@@ -20,6 +20,8 @@ public class RemoteProxy
   public static final String KEY_RESULT_TYPE = "resultType";
   public static final String SPLIT_CHAR = "$";
   private static final String TAG = "RemoteProxy";
+  private static HashMap<String, Class> sCacheClass = new HashMap();
+  private static HashMap<String, Method> sCacheMethod = new HashMap();
   
   private static void callServerAsync(String paramString, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
   {
@@ -110,45 +112,54 @@ public class RemoteProxy
       return null;
     }
     paramString = paramString.split("\\$");
-    Object localObject = paramString[0];
-    paramString = paramString[1];
+    Object localObject2 = paramString[0];
+    Object localObject1 = paramString[1];
     for (;;)
     {
       int j;
       try
       {
-        Class localClass = Class.forName((String)localObject);
-        localObject = localClass.newInstance();
-        ArrayList localArrayList = paramBundle.getStringArrayList("__parameterTypes__");
-        j = localArrayList.size();
-        Class[] arrayOfClass = new Class[j];
-        Object[] arrayOfObject = new Object[j];
-        if (i < localArrayList.size())
+        Class[] arrayOfClass;
+        Object[] arrayOfObject;
+        if (sCacheClass.containsKey(localObject2))
         {
-          String str1 = "__arg+" + i + "__";
-          String str2 = (String)localArrayList.get(i);
-          arrayOfClass[i] = getClassFromName(str2);
-          arrayOfObject[i] = getBundleParameter(paramBundle, str2, str1);
-          j = i;
-          if (str2.equals(EIPCModule.class.getName()))
+          paramString = (Class)sCacheClass.get(localObject2);
+          localObject2 = paramString.newInstance();
+          ArrayList localArrayList = paramBundle.getStringArrayList("__parameterTypes__");
+          j = localArrayList.size();
+          arrayOfClass = new Class[j];
+          arrayOfObject = new Object[j];
+          if (i < localArrayList.size())
           {
+            String str1 = "__arg+" + i + "__";
+            String str2 = (String)localArrayList.get(i);
+            arrayOfClass[i] = getClassFromName(str2);
+            arrayOfObject[i] = getBundleParameter(paramBundle, str2, str1);
+            j = i;
+            if (!str2.equals(EIPCModule.class.getName())) {
+              break label385;
+            }
             arrayOfObject[i] = paramQIPCModule;
             j = i + 1;
             arrayOfObject[j] = Integer.valueOf(paramInt);
             arrayOfClass[j] = getClassFromName((String)localArrayList.get(j));
+            break label385;
           }
         }
         else
         {
-          paramQIPCModule = localClass.getMethod(paramString, arrayOfClass);
-          paramString = paramQIPCModule.invoke(localObject, arrayOfObject);
-          localObject = new EIPCResult();
-          ((EIPCResult)localObject).data = paramBundle;
-          setBundleParameter(paramBundle, paramQIPCModule.getReturnType().getName(), "result", paramString);
-          setBundleParameter(paramBundle, String.class.getName(), "resultType", paramQIPCModule.getReturnType().getName());
-          paramBundle.putString("resultType", paramQIPCModule.getReturnType().getName());
-          return localObject;
+          paramString = Class.forName(localObject2);
+          sCacheClass.put(localObject2, paramString);
+          continue;
         }
+        paramQIPCModule = paramString.getMethod((String)localObject1, arrayOfClass);
+        paramString = paramQIPCModule.invoke(localObject2, arrayOfObject);
+        localObject1 = new EIPCResult();
+        ((EIPCResult)localObject1).data = paramBundle;
+        setBundleParameter(paramBundle, paramQIPCModule.getReturnType().getName(), "result", paramString);
+        setBundleParameter(paramBundle, String.class.getName(), "resultType", paramQIPCModule.getReturnType().getName());
+        paramBundle.putString("resultType", paramQIPCModule.getReturnType().getName());
+        return localObject1;
       }
       catch (Exception paramQIPCModule)
       {
@@ -156,6 +167,7 @@ public class RemoteProxy
         QLog.d("RemoteProxy", 1, "onCall exception", paramQIPCModule);
         return null;
       }
+      label385:
       i = j + 1;
     }
   }

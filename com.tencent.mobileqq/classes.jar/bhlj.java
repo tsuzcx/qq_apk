@@ -1,47 +1,37 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bhlj
-  extends anhu
+  extends MqqHandler
 {
-  public bhlj(WebProcessManager paramWebProcessManager) {}
+  private final WeakReference<Handler.Callback> a;
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public bhlj(Handler.Callback paramCallback)
   {
-    int j = -1;
-    int i = j;
-    if (paramObject != null)
-    {
-      i = j;
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (Bundle)paramObject;
-        i = paramObject.getInt("ad_bbq_code", -1);
-        if (i == 0)
-        {
-          paramObject = paramObject.getString("ad_bbq_message");
-          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-          if ((localObject instanceof QQAppInterface))
-          {
-            localObject = (anhp)((QQAppInterface)localObject).a(53);
-            if (localObject != null) {
-              ((anhp)localObject).b(paramObject);
-            }
-          }
-        }
-      }
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public bhlj(Looper paramLooper, Handler.Callback paramCallback)
+  {
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
     }
-    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
-    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-    paramObject.putExtra("result", i);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
-    }
+  }
+  
+  public String toString()
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

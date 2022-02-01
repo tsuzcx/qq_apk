@@ -1,80 +1,79 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.VideoFilterPageChangeListener.1;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class allt
-  implements ViewPager.OnPageChangeListener
+class allt
+  implements allu
 {
-  public allt(VideoFilterViewPager paramVideoFilterViewPager) {}
+  private allw jdField_a_of_type_Allw;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public allt(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(@Nullable allw paramallw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
+    this.jdField_a_of_type_Allw = paramallw;
   }
   
-  public void onPageSelected(int paramInt)
+  public boolean isNeedAutoCloseWhenAccountChange()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageSelected position: " + paramInt);
-    }
-    int i = VideoFilterViewPager.a(this.a).a(paramInt);
-    if ((VideoFilterViewPager.a(this.a) != null) && (i != 0))
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Allw == null) {}
+    QQAppInterface localQQAppInterface;
+    do
     {
-      VideoFilterViewPager.a(this.a).a(0);
-      VideoFilterViewPager.a(this.a, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state: 0");
-      }
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
+  }
+  
+  public void onEnter()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    Intent localIntent;
+    if (BaseActivity.sTopActivity != null)
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      localIntent.addFlags(268435456);
     }
     for (;;)
     {
-      alio.a("", "0X8007804", "", "", "", "");
-      Object localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
-      alll.a().a((FilterDesc)localObject1);
-      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
-      if (localObject1 != null)
+      try
       {
-        localObject2 = new VideoFilterViewPager.VideoFilterPageChangeListener.1(this, paramInt, (View)localObject1);
-        ((View)localObject1).setVisibility(0);
-        ((View)localObject1).postDelayed((Runnable)localObject2, 1800L);
-        ((View)localObject1).setTag(localObject2);
-        VideoFilterViewPager.a(this.a, (View)localObject1, paramInt, false);
+        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
+        aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
+        return;
       }
-      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt - 1);
-      Object localObject2 = VideoFilterViewPager.a(this.a).a(paramInt + 1);
-      if (localObject1 != null)
+      catch (ClassNotFoundException localClassNotFoundException)
       {
-        ((View)localObject1).removeCallbacks((Runnable)((View)localObject1).getTag());
-        ((View)localObject1).clearAnimation();
+        localClassNotFoundException.printStackTrace();
+        continue;
       }
-      if (localObject2 != null)
-      {
-        ((View)localObject2).removeCallbacks((Runnable)((View)localObject2).getTag());
-        ((View)localObject2).clearAnimation();
-      }
-      return;
-      if ((VideoFilterViewPager.a(this.a) != null) && (VideoFilterViewPager.a(this.a).a(paramInt) == 0) && (VideoFilterViewPager.a(this.a) != 0))
-      {
-        VideoFilterViewPager.a(this.a).a(0);
-        VideoFilterViewPager.a(this.a, 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state-check: 0");
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
       }
     }
   }
+  
+  public void onOverride() {}
 }
 
 

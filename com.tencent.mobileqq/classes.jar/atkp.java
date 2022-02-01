@@ -1,22 +1,31 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atkp
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public atkp(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
+  public atkp(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
-    do
+    if (!QfileBaseCloudFileTabView.a(this.a)) {}
+    for (;;)
     {
-      return false;
-      paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    } while ((paramFloat1 > -this.jdField_a_of_type_Int) || (paramFloat2 >= 0.5F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.c()));
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.onBackEvent();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QfileBaseCloudFileTabView.a(this.a);
+      this.a.f();
+      if (this.a.jdField_a_of_type_Atjm.getGroupCount() > 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Atjm.getGroupCount() - 1);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      QfileBaseCloudFileTabView.a(this.a, false);
+      this.a.h();
+    }
   }
 }
 

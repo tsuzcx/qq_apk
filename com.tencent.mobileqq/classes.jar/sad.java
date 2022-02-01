@@ -1,31 +1,39 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class sad
-  extends DataSetObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerHelper$Companion;", "", "()V", "TAG", "", "superPlayerFlag", "", "useSuperPlayer", "", "getUseSuperPlayer", "()Z", "selectPlayerFactory", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerFactory;", "selectPlayerSDKMgr", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "setSuperPlayerFlag", "", "isSuperPlayer", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sad
 {
-  public sad(VideoFeedsListView paramVideoFeedsListView) {}
-  
-  public void onChanged()
+  @NotNull
+  public final rzv a()
   {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
+    if (((sad)this).a()) {
+      return (rzv)sah.a;
     }
+    return (rzv)san.a;
   }
   
-  public void onInvalidated()
+  @NotNull
+  public final saa a()
   {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
+    if (((sad)this).a()) {
+      return (saa)saj.a;
     }
+    return (saa)sao.a;
+  }
+  
+  public final boolean a()
+  {
+    if (sac.a() == -1) {
+      sac.a(Aladdin.getConfig(307).getIntegerFromString("super_player_enable", 0));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PlayerHelper", 2, "useSuperPlayer: " + sac.a());
+    }
+    return sac.a() == 1;
   }
 }
 

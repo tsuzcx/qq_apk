@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
 
-class avdj
-  implements DialogInterface.OnClickListener
+public class avdj
+  implements aebz
 {
-  avdj(avdh paramavdh) {}
+  public avdj(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.k();
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

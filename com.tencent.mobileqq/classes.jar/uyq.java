@@ -1,58 +1,69 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
-import qqcircle.QQCircleFeedBase.StMainPageBusiRspData;
+import feedcloud.FeedCloudMeta.StGPSV2;
 
-class uyq
-  implements Observer<vup<FeedCloudRead.StGetMainPageRsp>>
+public class uyq
 {
-  uyq(uyp paramuyp) {}
+  private static volatile uyq jdField_a_of_type_Uyq;
+  private FeedCloudMeta.StGPSV2 jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2 = new FeedCloudMeta.StGPSV2();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(@Nullable vup<FeedCloudRead.StGetMainPageRsp> paramvup)
+  public static uyq a()
   {
-    if ((paramvup == null) || (paramvup.a() == null)) {
-      QLog.d("QCirclePersonalBottomBlock", 1, "uiStateData is null or getData is null");
+    if (jdField_a_of_type_Uyq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Uyq == null) {
+        jdField_a_of_type_Uyq = new uyq();
+      }
+      return jdField_a_of_type_Uyq;
     }
-    for (;;)
+    finally {}
+  }
+  
+  private void a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lat.set(Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
+  }
+  
+  public FeedCloudMeta.StGPSV2 a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (a())
+    {
+      SosoInterface.SosoLbsInfo localSosoLbsInfo = apch.a("qqcircle");
+      if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
+      {
+        a(localSosoLbsInfo);
+        QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from cache");
+      }
+    }
+    else
     {
       return;
-      if (uyp.a(this.a) == null) {
-        QLog.d("QCirclePersonalBottomBlock", 1, "mWidgetView is null");
-      }
-      try
-      {
-        QLog.d("QCirclePersonalBottomBlock", 1, "personDetail uiStateData is " + paramvup.a());
-        if ((paramvup.a() != 2) && (paramvup.a() != 3)) {
-          continue;
-        }
-        uyp.a(this.a).setFeedCount(((FeedCloudRead.StGetMainPageRsp)paramvup.a()).feedCount.get());
-        if ((((FeedCloudRead.StGetMainPageRsp)paramvup.a()).busiRspData.get() == null) || (paramvup.b())) {
-          continue;
-        }
-        QQCircleFeedBase.StMainPageBusiRspData localStMainPageBusiRspData = new QQCircleFeedBase.StMainPageBusiRspData();
-        try
-        {
-          localStMainPageBusiRspData.mergeFrom(((FeedCloudRead.StGetMainPageRsp)paramvup.a()).busiRspData.get().toByteArray());
-          return;
-        }
-        catch (Exception paramvup)
-        {
-          QLog.e("QCirclePersonalBottomBlock", 1, "mergeFrom stMainPageBusiRspData error");
-          return;
-        }
-        return;
-      }
-      catch (Exception paramvup)
-      {
-        paramvup.printStackTrace();
-        QLog.e("QCirclePersonalBottomBlock", 1, "personDetail setData error" + paramvup.getMessage());
-      }
     }
+    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request");
+    apch.a(new uyr(this, "qqcircle", true));
+  }
+  
+  public boolean a()
+  {
+    return (Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0);
   }
 }
 

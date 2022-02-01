@@ -1,37 +1,20 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.View;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class uqy
-  extends RecyclerView.OnScrollListener
+final class uqy
+  implements Animation.AnimationListener
 {
-  public uqy(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  uqy(View paramView) {}
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool2 = false;
-    if ((paramRecyclerView == null) || (paramRecyclerView.getChildCount() == 0)) {}
-    for (paramInt1 = 0;; paramInt1 = paramRecyclerView.getChildAt(0).getTop())
-    {
-      paramRecyclerView = WSVerticalPageFragment.a(this.a);
-      boolean bool1 = bool2;
-      if (paramInt1 >= 0)
-      {
-        bool1 = bool2;
-        if (WSVerticalPageFragment.a(this.a) != null)
-        {
-          bool1 = bool2;
-          if (((uqt)WSVerticalPageFragment.b(this.a)).a()) {
-            bool1 = true;
-          }
-        }
-      }
-      paramRecyclerView.setEnabled(bool1);
-      return;
-    }
+    this.a.setTag(-1, null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

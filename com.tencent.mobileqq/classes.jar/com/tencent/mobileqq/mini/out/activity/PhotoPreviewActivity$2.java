@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.view.View;
-import bkij;
+import bljm;
 import com.tencent.widget.AdapterView;
 
 class PhotoPreviewActivity$2
-  implements bkij
+  implements bljm
 {
   PhotoPreviewActivity$2(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   

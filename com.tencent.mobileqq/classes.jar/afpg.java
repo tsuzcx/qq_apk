@@ -1,50 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afpg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public afpg(TroopTransferActivity paramTroopTransferActivity, String paramString, bgpa parambgpa) {}
+  public afpg(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!bgnt.d(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biax == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biax = new biax(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biax.b(2, 2131691985, 1000);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
     }
-    paramDialogInterface = (anwd)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
-    if (paramDialogInterface != null) {}
-    try
+    Object localObject = (bdxc)this.a.app.getManager(61);
+    if (localObject != null) {}
+    for (int i = ((bdxc)localObject).a();; i = 0)
     {
-      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_JavaLangString);
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getCurrentAccountUin());
-      long l3 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Boolean = true;
-      paramDialogInterface.a(l1, l2, l3);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biax == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biax = new biax(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
+      if (i < 2)
+      {
+        localObject = new Intent(this.a, SubLoginActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", this.a.b);
+        this.a.startActivity((Intent)localObject);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biax.b(0, 2131718667, 1000);
-    }
-    catch (Exception paramDialogInterface)
-    {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopdisband.transfer", 2, paramDialogInterface.toString());
-        }
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        bdwt.a(this.a.app, this.a);
       }
     }
-    this.jdField_a_of_type_Bgpa.cancel();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
   }
 }
 

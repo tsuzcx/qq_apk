@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.weather;
 
-import alzx;
+import amlp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.NewIntent;
 
 public class WeatherServlet$PermissionCallback$1
   implements Runnable
 {
-  public WeatherServlet$PermissionCallback$1(alzx paramalzx, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface) {}
+  public WeatherServlet$PermissionCallback$1(amlp paramamlp, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

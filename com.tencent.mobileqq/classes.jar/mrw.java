@@ -1,62 +1,141 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.util.Pair;
 
-class mrw
-  extends BroadcastReceiver
+public class mrw
 {
-  mrw(mrv parammrv) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
   {
-    mry localmry;
-    if (paramIntent.getAction().equals("tencent.video.q2v.getNearByProfile"))
+    int j = 1;
+    switch (paramInt2)
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      localmry = new mry(this.a);
-      localmry.jdField_a_of_type_JavaLangString = paramContext;
-      localmry.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("nickname");
-      localmry.jdField_a_of_type_Int = paramIntent.getIntExtra("gender", -1);
-      localmry.jdField_b_of_type_Int = paramIntent.getIntExtra("age", 0);
-      localmry.jdField_a_of_type_Byte = paramIntent.getByteExtra("constellation", (byte)-1);
-      paramIntent = lbu.a().c(this.a.jdField_a_of_type_JavaLangString);
-      if (paramIntent != null) {
-        break label98;
-      }
+    default: 
+      return null;
     }
-    label98:
-    do
+    for (int i = 1;; i = 2)
     {
-      return;
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      paramInt2 = j;
+      switch (paramInt1)
       {
-        lco locallco = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext);
-        if (locallco != null)
-        {
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext, localmry.jdField_b_of_type_JavaLangString, false);
-          locallco.c = localmry.jdField_a_of_type_Int;
-        }
-        if (paramContext.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount()))
-        {
-          paramIntent.a.d = localmry.jdField_a_of_type_Int;
-          paramIntent.a.f = localmry.jdField_b_of_type_JavaLangString;
-        }
-        if (paramContext.equals(paramIntent.d))
-        {
-          paramIntent.a.c = localmry.jdField_a_of_type_Int;
-          paramIntent.a.jdField_b_of_type_JavaLangString = localmry.jdField_b_of_type_JavaLangString;
-        }
+      default: 
+        return null;
       }
-    } while ((this.a.jdField_a_of_type_Mrx == null) || (!this.a.jdField_a_of_type_JavaUtilList.contains(paramContext)));
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPeopleProfileHelper", 2, "onGetNearbyPeopleProfile uin :" + paramContext + ", nickname:" + localmry.jdField_b_of_type_JavaLangString + ", gender:" + localmry.jdField_a_of_type_Int);
     }
-    this.a.jdField_a_of_type_Mrx.a(paramContext, localmry);
-    this.a.jdField_a_of_type_JavaUtilList.remove(paramContext);
+    paramInt2 = 2;
+    for (;;)
+    {
+      return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(i));
+      paramInt2 = 3;
+      continue;
+      paramInt2 = 4;
+      continue;
+      paramInt2 = 5;
+      continue;
+      paramInt2 = 7;
+    }
+  }
+  
+  public static void a()
+  {
+    mru.b("0X800A2B9");
+  }
+  
+  public static void a(int paramInt)
+  {
+    String str;
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    case 4: 
+      str = "0X800A2BF";
+    }
+    for (;;)
+    {
+      mru.b(str);
+      return;
+      str = "0X800A2C1";
+      continue;
+      str = "0X800A2BE";
+      continue;
+      str = "0X800A2C3";
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    Pair localPair = a(paramInt1, paramInt2);
+    if (localPair == null) {
+      return;
+    }
+    bdll.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    String str;
+    switch (paramInt3)
+    {
+    default: 
+      return;
+    case 1: 
+      str = "0X800A3E3";
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt1, paramInt2);
+      if (localObject == null) {
+        break;
+      }
+      paramInt1 = ((Integer)((Pair)localObject).first).intValue();
+      localObject = String.valueOf(((Pair)localObject).second);
+      if (!TextUtils.isEmpty(paramString)) {
+        localObject = paramString;
+      }
+      bdll.b(null, "dc00898", "", "", str, str, paramInt1, 0, (String)localObject, "", "", "");
+      return;
+      str = "0X800A3E1";
+      continue;
+      str = "0X800A2BC";
+    }
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (paramInt == 1) {
+      bdll.b(null, "dc00898", "", "", "0X800A3E2", "0X800A3E2", 0, 0, "", paramString, "", "");
+    }
+  }
+  
+  public static void b()
+  {
+    mru.b("0X800A2BA");
+  }
+  
+  public static void c()
+  {
+    mru.b("0X800A2BD");
+  }
+  
+  public static void d()
+  {
+    mru.b("0X800A2C0");
+  }
+  
+  public static void e()
+  {
+    mru.b("0X800A2C2");
+  }
+  
+  public static void f()
+  {
+    mru.b("0X800A3DB");
+  }
+  
+  public static void g()
+  {
+    mru.b("0X800A3DC");
   }
 }
 

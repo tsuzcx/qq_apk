@@ -1,46 +1,55 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.QQQueryBusinessTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import OnlinePushPack.MsgInfo;
 
-public class adao
-  implements acxp
+class adao
 {
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
+  
+  public adao(adan paramadan, MsgInfo paramMsgInfo, String paramString)
+  {
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
   public int a()
   {
-    return 1023;
+    return this.jdField_a_of_type_Int;
   }
   
-  public boolean a()
+  public long a()
   {
-    return false;
+    return this.jdField_a_of_type_Long;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public adao a()
   {
-    paramQQAppInterface = paramQQAppInterface.a().c(paramMessageRecord.frienduin);
-    msg_svc.QQQueryBusinessTmp localQQQueryBusinessTmp = new msg_svc.QQQueryBusinessTmp();
-    localQQQueryBusinessTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    if (paramQQAppInterface != null)
-    {
-      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
-      bgva.a(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("PcQQSearchTmpRoutingType", 2, "wpa------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localQQQueryBusinessTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    byte[] arrayOfByte = new byte[4];
+    if (this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg.length > 4) {
+      bhvd.a(arrayOfByte, 0, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, 0, 4);
     }
-    paramRoutingHead.qq_querybusiness_tmp.set(localQQQueryBusinessTmp);
-    return true;
+    this.jdField_a_of_type_Long = bhvd.a(arrayOfByte, 0);
+    if (this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg.length >= 9)
+    {
+      arrayOfByte = new byte[this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg.length - 9];
+      bhvd.a(arrayOfByte, 0, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, 8, arrayOfByte.length);
+      this.jdField_a_of_type_JavaLangString = new String(bcsa.a(arrayOfByte), "utf-8");
+    }
+    this.jdField_a_of_type_Int = 1000;
+    this.b = -1000;
+    return this;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public int b()
   {
-    return 0;
+    return this.b;
   }
 }
 

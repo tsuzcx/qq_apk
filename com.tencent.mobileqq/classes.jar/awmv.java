@@ -1,17 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awmv
-  extends anun
+public class awmv
+  implements bliz
 {
-  awmv(awmr paramawmr) {}
+  public awmv(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, awnq paramawnq) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
     }
-    super.a();
-    this.a.d();
+    for (;;)
+    {
+      this.jdField_a_of_type_Awnq.b(false);
+      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+      }
+      return;
+      awml.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Awnq.a().e, this.jdField_a_of_type_Awnq.a().b);
+      continue;
+      this.jdField_a_of_type_Awnq.g();
+      continue;
+      this.jdField_a_of_type_Awnq.g();
+    }
   }
 }
 

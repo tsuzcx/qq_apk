@@ -1,35 +1,19 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class bnny
-  extends aoou
+  extends BroadcastReceiver
 {
-  bnny(bnnx parambnnx, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  bnny(bnnx parambnnx) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
+    if (paramIntent.getAction().equals("com.tencent.qq.syncQunMsg"))
     {
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-      {
-        SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;
-        bnnx.a(this.a, paramSosoLbsInfo.a);
-        double d1 = localSosoLocation.a;
-        double d2 = localSosoLocation.b;
-        bnzb.b(bnnx.a(), "LbsManagerService.startLocation: success");
-        bnnx.a(this.a, d1, d2);
-        return;
-      }
-      bnzb.b(bnnx.a(), "LbsManagerService.startLocation: location is null");
-      QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: location is null");
-      return;
+      int i = paramIntent.getIntExtra("com.tencent.qq.unreadcount", 0);
+      bnnx.a(this.a, i);
     }
-    bnzb.b(bnnx.a(), "LbsManagerService.startLocation: failed");
-    bnnx.a(this.a, 0);
   }
 }
 

@@ -25,6 +25,7 @@ public class IPCConst
   public static final String CMD_UPDATE_BASELIB = "cmd_update_baselib";
   public static final String CMD_UPDATE_PULL_DOWN_ENTRY_LIST = "cmd_update_pull_down_entry_list";
   public static final String CMD_UPDATE_TRITON_ENGINE = "cmd_update_triton_engine";
+  public static final String CMD_UPDATE_V8RT = "cmd_update_v8rt";
   public static final String CMD_UPLOAD_ARK_SHARE_IMAGE = "cmd_upload_ark_share_image";
   public static final String CONST_LIFECYCLE_FIRST_FRAME = "first_frame";
   public static final String KEY_APPID = "key_appid";
@@ -37,6 +38,8 @@ public class IPCConst
   public static final String KEY_BUNDLE_PROCESS_NAME = "bundle_key_process_name";
   public static final String KEY_BUNDLE_RUNTIME_LIFECYCLE = "bundle_key_runtime_lifecycle";
   public static final String KEY_BUNDLE_RUNTIME_LIST = "bundle_key_runtime_list";
+  public static final String KEY_CLIENT_PROCESS_DEATH_NOTIFIER = "CLIENT_PROCESS_DEATH_NOTIFIER";
+  public static final String KEY_CLIENT_PROCESS_PID = "CLIENT_PROCESS_PID";
   public static final String KEY_COOKIE = "cookie";
   public static final String KEY_CUSTOM_INFO = "mini_customInfo";
   public static final String KEY_ENTRY_PATH = "mini_entryPath";
@@ -77,7 +80,7 @@ public class IPCConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.IPCConst
  * JD-Core Version:    0.7.0.1
  */

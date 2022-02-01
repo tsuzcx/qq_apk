@@ -1,17 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afoc
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afoc(TroopRequestActivity paramTroopRequestActivity) {}
+  public afoc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.f();
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = 1;
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      this.a.app.d(1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label78;
+      }
+    }
+    for (;;)
+    {
+      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.app.d(0);
+      break;
+      label78:
+      i = 0;
+    }
   }
 }
 

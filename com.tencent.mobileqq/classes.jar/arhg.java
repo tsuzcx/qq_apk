@@ -1,47 +1,18 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
 
-public class arhg
-  implements ArkViewImplement.LoadCallback
+class arhg
+  implements bpuc
 {
-  public arhg(MessageForArkApp paramMessageForArkApp, appa paramappa, agpp paramagpp, apow paramapow, int paramInt) {}
+  arhg(arhf paramarhf) {}
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean) {}
-  
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView onLoadFinish MessageForArkApp state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
-    }
-    this.jdField_a_of_type_Appa.b.setVisibility(8);
-    if (paramInt == 1)
-    {
-      Object localObject = this.jdField_a_of_type_Agpp.getContainerRect();
-      float f = apoh.a();
-      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
-      this.jdField_a_of_type_Apow.a(this.jdField_a_of_type_Appa, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      if (apoh.a)
-      {
-        localObject = this.jdField_a_of_type_Appa.a.getLayoutParams();
-        QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView.onLoadFinish arkContainer rect(", Integer.valueOf(paramInt), ",", Integer.valueOf(i), "), arkView rect(", Integer.valueOf(((ViewGroup.LayoutParams)localObject).width), ",", Integer.valueOf(((ViewGroup.LayoutParams)localObject).height), "),app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
-      }
-    }
-    this.jdField_a_of_type_Apow.a(this.jdField_a_of_type_Agpp, this.jdField_a_of_type_Int);
+    ((DynamicTextConfigManager)bplq.a(7)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhg
  * JD-Core Version:    0.7.0.1
  */

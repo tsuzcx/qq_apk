@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.network.http;
 
 import NS_COMM.COMM.StCommonExt;
 import android.util.Log;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.mini.network.http.httpRequest.HttpCheckNavigateRightRequest;
 import com.tencent.mobileqq.mini.network.http.httpRequest.HttpGetAppInfoByIdRequest;
 import com.tencent.mobileqq.mini.network.http.httpRequest.HttpGetAppInfoByLinkRequest;
@@ -29,7 +29,7 @@ public class HttpCmdManager
       if (arrayOfByte1 == null) {
         arrayOfByte2 = new byte[4];
       }
-      MiniappHttpUtil.httpPostV2(paramString, bguc.a(arrayOfByte2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
+      MiniappHttpUtil.httpPostV2(paramString, bhuf.a(arrayOfByte2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
       return;
     }
     catch (Exception localException)

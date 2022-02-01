@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class TaskManager$24$1
@@ -12,7 +12,7 @@ class TaskManager$24$1
   
   public void run()
   {
-    bglp.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", anni.a(2131713423), new TaskManager.24.1.1(this), new TaskManager.24.1.2(this)).show();
+    bhlq.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", anzj.a(2131713532), new TaskManager.24.1.1(this), new TaskManager.24.1.2(this)).show();
   }
 }
 

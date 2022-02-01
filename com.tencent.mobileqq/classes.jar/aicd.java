@@ -1,25 +1,16 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aicd
-  implements bfwg
+  implements DialogInterface.OnClickListener
 {
-  aicd(aibv paramaibv) {}
+  aicd(aibr paramaibr) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      this.a.W = true;
-      paramString = (agnt)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
-    }
-    do
-    {
-      return;
-      this.a.W = false;
-      paramString = (agnt)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+    paramDialogInterface.dismiss();
+    aibr.I(this.a).setResult(8001);
   }
 }
 

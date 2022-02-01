@@ -1,47 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adzm
-  extends anke
+class adzm
+  implements DialogInterface.OnClickListener
 {
-  public adzm(Conversation paramConversation) {}
+  adzm(adzk paramadzk) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, anhk.z, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, anhk.A, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, anhk.z, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, anhk.A, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, anhk.z, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, anhk.A, 6003);
+    paramDialogInterface.dismiss();
   }
 }
 

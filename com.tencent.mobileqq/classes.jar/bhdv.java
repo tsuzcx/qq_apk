@@ -1,56 +1,102 @@
-import android.app.WallpaperColors;
-import android.service.wallpaper.WallpaperService.Engine;
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class bhdv
-  extends WallpaperService.Engine
+  implements INetEventHandler
 {
-  private final WallpaperHelper jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper = new WallpaperHelper();
+  private Context jdField_a_of_type_AndroidContentContext;
   
-  private bhdv(VipWallpaperService paramVipWallpaperService)
+  public bhdv(bhdu parambhdu)
   {
-    super(paramVipWallpaperService);
+    this.jdField_a_of_type_AndroidContentContext = bhdu.a(parambhdu);
   }
   
-  public WallpaperColors onComputeColors()
+  /* Error */
+  public void a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	bhdv:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   6: aload_0
+    //   7: invokestatic 32	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:registerNetChangeReceiver	(Landroid/content/Context;Lcom/tencent/mobileqq/msf/sdk/handler/INetEventHandler;)V
+    //   10: invokestatic 36	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isWifiConn	()Z
+    //   13: ifeq +14 -> 27
+    //   16: aload_0
+    //   17: getfield 13	bhdv:jdField_a_of_type_Bhdu	Lbhdu;
+    //   20: iconst_1
+    //   21: invokevirtual 40	bhdu:c	(Z)V
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: return
+    //   27: invokestatic 45	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   30: ifeq -6 -> 24
+    //   33: ldc 47
+    //   35: iconst_2
+    //   36: ldc 49
+    //   38: invokestatic 53	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: goto -17 -> 24
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
+    //   49: astore_1
+    //   50: goto -40 -> 10
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	bhdv
+    //   44	4	1	localObject	Object
+    //   49	1	1	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	44	finally
+    //   10	24	44	finally
+    //   27	41	44	finally
+    //   2	10	49	java/lang/Exception
   }
   
-  public void onOffsetsChanged(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
+  public void b()
   {
-    super.onOffsetsChanged(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramInt2);
+    try
+    {
+      AppNetConnInfo.unregisterNetEventHandler(this);
+      label7:
+      this.jdField_a_of_type_Bhdu.c();
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label7;
+    }
+    finally {}
   }
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    super.onSurfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceCreated(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService, paramSurfaceHolder);
-  }
-  
-  public void onSurfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceDestroyed(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
-  }
-  
-  public void onSurfaceRedrawNeeded(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceRedrawNeeded(paramSurfaceHolder);
-  }
-  
-  public void onVisibilityChanged(boolean paramBoolean)
-  {
-    super.onVisibilityChanged(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramBoolean);
+    int i = bhnv.b(this.jdField_a_of_type_AndroidContentContext);
+    if (i == 0) {
+      if (bhdu.a(this.jdField_a_of_type_Bhdu)) {
+        this.jdField_a_of_type_Bhdu.e();
+      }
+    }
+    do
+    {
+      return;
+      if (i == 1)
+      {
+        if (!bhdu.a(this.jdField_a_of_type_Bhdu))
+        {
+          this.jdField_a_of_type_Bhdu.c(true);
+          return;
+        }
+        this.jdField_a_of_type_Bhdu.d();
+        return;
+      }
+    } while ((i != 0) || (!bhdu.a(this.jdField_a_of_type_Bhdu)));
+    this.jdField_a_of_type_Bhdu.e();
   }
 }
 

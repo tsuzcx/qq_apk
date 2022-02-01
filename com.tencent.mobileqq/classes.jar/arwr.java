@@ -1,9 +1,30 @@
-import android.widget.RelativeLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
 
-public class arwr
-  extends arzl
+public final class arwr
+  implements Parcelable.Creator
 {
-  public RelativeLayout[] a;
+  public IPSiteModel.Goods a(Parcel paramParcel)
+  {
+    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
+    localGoods.cover = paramParcel.readString();
+    localGoods.goodsTags = paramParcel.readString();
+    localGoods.id = paramParcel.readString();
+    localGoods.name = paramParcel.readString();
+    localGoods.price = paramParcel.readString();
+    localGoods.saleTags = paramParcel.readString();
+    localGoods.svipPrice = paramParcel.readString();
+    localGoods.url = paramParcel.readString();
+    localGoods.moreUrl = paramParcel.readString();
+    localGoods.saleNum = paramParcel.readString();
+    return localGoods;
+  }
+  
+  public IPSiteModel.Goods[] a(int paramInt)
+  {
+    return new IPSiteModel.Goods[paramInt];
+  }
 }
 
 

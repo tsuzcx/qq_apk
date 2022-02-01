@@ -1,8 +1,27 @@
-public class zht
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class zht
+  implements View.OnClickListener
 {
-  private zhu jdField_a_of_type_Zhu;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  zht(zhs paramzhs, zhv paramzhv) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!this.jdField_a_of_type_Zhv.a()) {
+      this.jdField_a_of_type_Zhv.b();
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Zhs.a != null) {
+        this.jdField_a_of_type_Zhs.a.a(this.jdField_a_of_type_Zhs);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Zhv.c();
+    }
+  }
 }
 
 

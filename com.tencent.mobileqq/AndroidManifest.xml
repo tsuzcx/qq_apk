@@ -130,9 +130,9 @@
     <uses-permission android:name="com.tencent.smartdevice.permission.broadcast"/>
     <permission android:name="com.huawei.hwmultidisplay.permission.WINDOW_CAST_MODE" android:protectionLevel="normal"/>
     <uses-permission android:name="android.permission.REORDER_TASKS"/>
-    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/pb" android:name="com.tencent.common.app.QFixApplicationImpl" android:networkSecurityConfig="@xml/f" android:resizeableActivity="true" android:theme="@style/d1" android:vmSafeMode="false">
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="4680_20"/>
-        <meta-data android:name="com.tencent.qapm.uuid" android:value="97c25212-6cf1-4780-b60f-a4248f155bbb"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/pb" android:name="com.tencent.common.app.QFixApplicationImpl" android:networkSecurityConfig="@xml/f" android:resizeableActivity="true" android:theme="@style/d1" android:usesCleartextTraffic="true" android:vmSafeMode="false">
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="4745_29"/>
+        <meta-data android:name="com.tencent.qapm.uuid" android:value="2ab39f38-4586-460d-86ed-16cdbcd58556"/>
         <meta-data android:name="TencentOpenAbility" android:value="login_1,logout_1,newmsg_1,msgread_1,msgsend_1,querymsg_1,queryface_1,querynick_1,reg_1,sendmsg_1,setread_1,openaio_1"/>
         <meta-data android:name="TencentMapSDK" android:value="73dfcdeff8636c1d3501fa9a2860ebb7"/>
         <meta-data android:name="TencentGeoLocationSDK" android:value="QQ2013,LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ"/>
@@ -147,10 +147,11 @@
         <meta-data android:name="android.max_aspect" android:value="2.4"/>
         <meta-data android:name="android.min_aspect" android:value="1.0"/>
         <meta-data android:name="android.allow_multiple_resumed_activities" android:value="true"/>
-        <meta-data android:name="AppSetting_params" android:value="537064986#C1EA27BF9393F10E#2002#YingYongBao#ffffffffffffffffffffffffff"/>
+        <meta-data android:name="AppSetting_params" android:value="537065262#9B5CD5A54774E663#2002#YingYongBao#ffffffffffffffffffffffffff"/>
         <meta-data android:name="com.huawei.ar.engine" android:value="optional"/>
         <meta-data android:name="ABTestSDK_appKey" android:value="505_e8c0653fea13f91bf3c48159f7c24f78"/>
         <meta-data android:name="ABTestSDK_appId" android:value="505"/>
+        <meta-data android:name="EasyGoClient" android:value="true"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.msf.service.MsfService" android:process=":MSF">
             <intent-filter>
                 <action android:name="com.tencent.qphone.base.subservice"/>
@@ -293,7 +294,6 @@
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.RegisterPersonalInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterQQNumberActivity" android:screenOrientation="portrait"/>
-        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.RegisterChooseLoginActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:label="@string/pb" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.SplashActivity" android:screenOrientation="portrait" android:theme="@style/d6" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -935,7 +935,6 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity" android:screenOrientation="portrait" android:theme="@style/uc"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopTagViewActivity" android:process=":tool" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarPublishActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.QLifeCommentActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity android:configChanges="keyboard|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarReplyActivity" android:screenOrientation="portrait" android:theme="@style/sh" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity" android:screenOrientation="portrait" android:theme="@style/d9"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
@@ -1012,6 +1011,18 @@
         <activity android:configChanges="orientation" android:exported="true" android:name="com.tencent.open.agent.AgentActivity" android:process=":openSdk" android:screenOrientation="portrait" android:theme="@style/v3"/>
         <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.AuthorityActivity" android:process=":openSdk" android:screenOrientation="portrait"/>
         <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.PublicFragmentActivityForOpenSDK" android:process=":openSdk" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.sina.weibo.sdk.share.ShareTransActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.sina.weibo.sdk.share.ShareResultActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_STORY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.sina.weibo.sdk.web.WebActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.QuickLoginAuthorityActivity" android:process=":openSdk" android:screenOrientation="portrait"/>
         <activity android:configChanges="orientation" android:exported="true" android:name="com.tencent.open.agent.EncryTokenActivity" android:process=":openSdk" android:screenOrientation="portrait"/>
         <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.SwitchAccountActivity" android:process=":openSdk" android:screenOrientation="portrait"/>
@@ -1223,7 +1234,7 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.gamecenter.activities.SingleTaskQQBrowser" android:process=":tool" android:screenOrientation="portrait" android:taskAffinity="com.tencent.singletask.qqbrowser" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.DialogActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.database.corrupt.DBFixDialogActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustPan"/>
-        <activity android:exported="true" android:label="@string/pb" android:name="com.tencent.mobileqq.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:exported="true" android:label="@string/pb" android:launchMode="singleTask" android:name="com.tencent.mobileqq.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:taskAffinity="com.tencent.mobileqq" android:theme="@android:style/Theme.Translucent"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.music.QQPlayerService"/>
         <meta-data android:name="APPKEY_DENGTA" android:value="0S200MNJT807V3GE"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.aio.MessageShareActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
@@ -1569,18 +1580,20 @@
             <meta-data android:name="android.service.wallpaper" android:resource="@xml/b"/>
         </service>
         <uses-library android:name="android.test.runner"/>
-        <receiver android:exported="false" android:name="com.tencent.qqmini.miniapp.receiver.WebProcessReceiver"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qqmini.sdk.ui.MiniFragmentActivity" android:screenOrientation="portrait"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qqmini.sdk.ui.MiniTranslucentFragmentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.sina.weibo.sdk.share.ShareStoryActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.sina.weibo.sdk.share.ShareChatActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.InternalMiniActivity" android:process=":mini_internal" android:resizeableActivity="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver" android:process=":mini_internal"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity1" android:process=":mini1" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini1" android:theme="@style/zh" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity1" android:process=":mini1" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini1" android:theme="@style/zi" android:windowSoftInputMode="adjustPan"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1" android:process=":mini1"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity2" android:process=":mini2" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini2" android:theme="@style/zh" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity2" android:process=":mini2" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini2" android:theme="@style/zi" android:windowSoftInputMode="adjustPan"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2" android:process=":mini2"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity3" android:process=":mini3" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini3" android:theme="@style/zh" android:windowSoftInputMode="adjustPan"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity4" android:process=":mini4" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini4" android:theme="@style/z_" android:windowSoftInputMode="adjustPan"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity5" android:process=":mini5" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini5" android:theme="@style/z_" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity3" android:process=":mini3" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini3" android:theme="@style/zi" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity4" android:process=":mini4" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini4" android:theme="@style/za" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity5" android:process=":mini5" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini5" android:theme="@style/za" android:windowSoftInputMode="adjustPan"/>
+        <receiver android:exported="false" android:name="com.tencent.qqmini.miniapp.receiver.WebProcessReceiver"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qqmini.sdk.launcher.ui.MiniFragmentActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qqmini.sdk.launcher.ui.MiniTranslucentFragmentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
         <meta-data android:name="PLUGIN_LIFE_CLASS" android:value="com.qzone.app.QzonePluginLife"/>
         <meta-data android:name="shadow.bundletool.com.android.dynamic.apk.fused.modules" android:value="base"/>
         <meta-data android:name="shadow.bundletool.com.android.vending.splits" android:resource="@xml/n"/>

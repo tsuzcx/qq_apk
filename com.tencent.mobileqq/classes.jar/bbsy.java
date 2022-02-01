@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.util.Pair;
+import java.util.Comparator;
 
 public class bbsy
-  extends bbti
+  implements Comparator<Pair<Integer, Integer>>
 {
-  public bbsy(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
-  }
+  public bbsy(RichStatus paramRichStatus) {}
   
-  public bbmx a(List<bbmy> paramList, String paramString)
+  public int a(Pair<Integer, Integer> paramPair1, Pair<Integer, Integer> paramPair2)
   {
-    return new atig(paramList, paramString, GroupSearchEngine.a(this.a));
+    if (((Integer)paramPair1.second).intValue() < ((Integer)paramPair2.second).intValue()) {
+      return -1;
+    }
+    return 1;
   }
 }
 

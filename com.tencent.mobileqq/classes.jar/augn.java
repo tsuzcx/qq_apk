@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
-
-public class augn
-  implements DialogInterface.OnClickListener
+public abstract interface augn
 {
-  public augn(ForwardChooseFriendOption paramForwardChooseFriendOption) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void aC_();
+  
+  public abstract void aD_();
+  
+  public abstract void c();
 }
 
 

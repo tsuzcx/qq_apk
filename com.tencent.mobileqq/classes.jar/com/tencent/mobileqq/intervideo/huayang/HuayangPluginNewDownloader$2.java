@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.os.Handler;
-import avik;
-import aviy;
-import avjb;
+import awas;
+import awbg;
+import awbj;
 
 public class HuayangPluginNewDownloader$2
   implements Runnable
 {
-  public HuayangPluginNewDownloader$2(aviy paramaviy) {}
+  public HuayangPluginNewDownloader$2(awbg paramawbg) {}
   
   public void run()
   {
     try
     {
-      aviy.a(this.this$0);
+      awbg.a(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
     {
-      avjb.a("3228166");
-      avik.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
+      awbj.a("3228166");
+      awas.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
       return;
     }
     finally
     {
-      aviy.a(this.this$0).removeCallbacks(aviy.a(this.this$0));
-      aviy.a(this.this$0, false);
+      awbg.a(this.this$0).removeCallbacks(awbg.a(this.this$0));
+      awbg.a(this.this$0, false);
     }
   }
 }

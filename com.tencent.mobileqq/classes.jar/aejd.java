@@ -1,20 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aejd
-  implements View.OnClickListener
+  implements bliz
 {
-  public aejd(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aejd(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    awqs.a("0X800A22D");
-    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Blir.e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
+      }
+      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).h();
+    }
   }
 }
 

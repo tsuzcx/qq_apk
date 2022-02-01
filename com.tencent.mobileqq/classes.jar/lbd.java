@@ -1,23 +1,6 @@
-public class lbd
+class lbd
 {
-  private static bdvu jdField_a_of_type_Bdvu;
-  private static bguy jdField_a_of_type_Bguy = new lbe();
-  
-  public static bdvu a()
-  {
-    if (jdField_a_of_type_Bdvu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bdvu == null)
-      {
-        bgut localbgut = new bgut(jdField_a_of_type_Bguy, 128);
-        localbgut.a();
-        jdField_a_of_type_Bdvu = new bdwv(localbgut, true);
-      }
-      return jdField_a_of_type_Bdvu;
-    }
-    finally {}
-  }
+  private static lbb a = new lbb(null);
 }
 
 

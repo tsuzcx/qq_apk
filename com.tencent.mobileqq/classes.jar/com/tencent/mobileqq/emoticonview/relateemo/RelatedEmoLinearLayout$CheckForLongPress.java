@@ -3,7 +3,7 @@ package com.tencent.mobileqq.emoticonview.relateemo;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import arxg;
+import asmu;
 
 class RelatedEmoLinearLayout$CheckForLongPress
   implements Runnable
@@ -23,7 +23,7 @@ class RelatedEmoLinearLayout$CheckForLongPress
   
   public void run()
   {
-    if ((this.this$0.getParent() != null) && (this.jdField_a_of_type_Int == RelatedEmoLinearLayout.a(this.this$0)) && (RelatedEmoLinearLayout.a(this.this$0) != null) && ((arxg)RelatedEmoLinearLayout.a(this.this$0).getTag() != null))
+    if ((this.this$0.getParent() != null) && (this.jdField_a_of_type_Int == RelatedEmoLinearLayout.a(this.this$0)) && (RelatedEmoLinearLayout.a(this.this$0) != null) && ((asmu)RelatedEmoLinearLayout.a(this.this$0).getTag() != null))
     {
       RelatedEmoLinearLayout.a(this.this$0, true);
       RelatedEmoLinearLayout.a(this.this$0).performLongClick();

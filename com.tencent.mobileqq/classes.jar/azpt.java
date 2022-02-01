@@ -1,190 +1,87 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.view.ShakeImageView;
-import com.tencent.mobileqq.profilecard.vas.component.background.VasProfileWzBackgroundComponent.onVasDataUpdate.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.jvm.internal.StringCompanionObject;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileWzBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "mCardData", "Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "mDefaultBackgroundView", "Landroid/widget/ImageView;", "mWzBg", "Landroid/graphics/Bitmap;", "mWzBgView", "Lcom/tencent/mobileqq/profile/view/ShakeImageView;", "mWzCharacter", "mWzCharacterView", "initWzryDynamicBgAndHero", "", "data", "onCreate", "", "activity", "Lcom/tencent/mobileqq/app/BaseActivity;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onVasDataUpdate", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "updateImage", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azpt
-  extends azpm
+public abstract class azpt
+  extends Binder
+  implements azps
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private azpg jdField_a_of_type_Azpg;
-  private ShakeImageView jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private ShakeImageView jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView;
-  
-  public azpt(@Nullable azlw paramazlw, @Nullable azfe paramazfe)
+  public azpt()
   {
-    super("VasProfileWzryBackgroundComponent", paramazlw, paramazfe);
+    attachInterface(this, "com.tencent.mobileqq.pic.IPresendPicMgr");
   }
   
-  private final void a()
+  public static azps a(IBinder paramIBinder)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView;
-      if (localObject != null) {
-        ((ShakeImageView)localObject).setImage(this.jdField_a_of_type_AndroidGraphicsBitmap, (int)(a().getWidth() * 1.1D), (int)(a().getHeight() * 1.1D), 1.0F);
-      }
+    if (paramIBinder == null) {
+      return null;
     }
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
-    {
-      localObject = this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView;
-      if (localObject != null) {
-        ((ShakeImageView)localObject).setImage(this.jdField_b_of_type_AndroidGraphicsBitmap, (int)(a().getWidth() * 1.1D), (int)(a().getHeight() * 1.1D), -1.0F);
-      }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+    if ((localIInterface != null) && ((localIInterface instanceof azps))) {
+      return (azps)localIInterface;
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) && (this.jdField_b_of_type_AndroidGraphicsBitmap == null))
-    {
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localObject != null) {
-        ((ImageView)localObject).setBackgroundResource(b());
-      }
-      a(false);
-      return;
-    }
-    a("card-wzry");
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localObject != null) {
-      ((ImageView)localObject).setImageDrawable(null);
-    }
-    a(true);
+    return new azpu(paramIBinder);
   }
   
-  private final boolean a(azpg paramazpg)
+  public IBinder asBinder()
   {
-    Object localObject1;
-    Object localObject2;
-    if (QLog.isColorLevel())
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      localObject1 = b();
-      localObject2 = StringCompanionObject.INSTANCE;
-      localObject2 = new Object[3];
-      localObject2[0] = Long.valueOf(paramazpg.b());
-      localObject2[1] = paramazpg.a();
-      localObject2[2] = paramazpg.c();
-      localObject2 = String.format("initWzryDynamicBgAndHero bgId=%s bgUrl=%s heroUrl=%s", Arrays.copyOf((Object[])localObject2, localObject2.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "java.lang.String.format(format, *args)");
-      QLog.d((String)localObject1, 2, (String)localObject2);
-    }
-    if ((!TextUtils.isEmpty((CharSequence)paramazpg.a())) || (!TextUtils.isEmpty((CharSequence)paramazpg.c()))) {
-      try
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.pic.IPresendPicMgr");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      String str1 = paramParcel1.readString();
+      String str2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (boolean bool = true;; bool = false)
       {
-        paramazpg = azff.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramazpg.b());
-        String str = paramazpg + "wzBgImage.png";
-        localObject2 = paramazpg + "wzMainImage.png";
-        localObject1 = BaseApplicationImpl.sImageCache.get(str);
-        paramazpg = (azpg)localObject1;
-        if (!(localObject1 instanceof Bitmap)) {
-          paramazpg = null;
-        }
-        localObject1 = (Bitmap)paramazpg;
-        if (localObject1 != null)
-        {
-          paramazpg = (azpg)localObject1;
-          if (!((Bitmap)localObject1).isRecycled()) {}
-        }
-        else
-        {
-          paramazpg = bggl.a(str);
-        }
-        if ((paramazpg != null) && ((Intrinsics.areEqual(this.jdField_a_of_type_AndroidGraphicsBitmap, paramazpg) ^ true)))
-        {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = paramazpg;
-          BaseApplicationImpl.sImageCache.put(str, paramazpg);
-        }
-        localObject1 = BaseApplicationImpl.sImageCache.get(localObject2);
-        paramazpg = (azpg)localObject1;
-        if (!(localObject1 instanceof Bitmap)) {
-          paramazpg = null;
-        }
-        localObject1 = (Bitmap)paramazpg;
-        if (localObject1 != null)
-        {
-          paramazpg = (azpg)localObject1;
-          if (!((Bitmap)localObject1).isRecycled()) {}
-        }
-        else
-        {
-          paramazpg = bggl.a((String)localObject2);
-        }
-        if ((paramazpg != null) && ((Intrinsics.areEqual(this.jdField_b_of_type_AndroidGraphicsBitmap, paramazpg) ^ true)))
-        {
-          this.jdField_b_of_type_AndroidGraphicsBitmap = paramazpg;
-          BaseApplicationImpl.sImageCache.put(localObject2, paramazpg);
-        }
+        a(str1, str2, bool, paramParcel1.readInt(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
         return true;
       }
-      catch (Throwable paramazpg)
-      {
-        QLog.e(b(), 1, "initWzryDynamicBgAndHero fail.", paramazpg);
-      }
-    }
-    return false;
-  }
-  
-  public void a(@NotNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    Intrinsics.checkParameterIsNotNull(paramBaseActivity, "activity");
-    super.a(paramBaseActivity, paramBundle);
-    paramBundle = new ImageView((Context)paramBaseActivity);
-    paramBundle.setContentDescription((CharSequence)"qqvip_bg");
-    a().addView((View)paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = paramBundle;
-    paramBundle = new ShakeImageView((Context)paramBaseActivity);
-    paramBundle.setContentDescription((CharSequence)"qqvip_wzry_bg");
-    a().addView((View)paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView = paramBundle;
-    paramBaseActivity = new ShakeImageView((Context)paramBaseActivity);
-    paramBaseActivity.setContentDescription((CharSequence)"qqvip_wzry_character");
-    a().addView((View)paramBaseActivity);
-    this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView = paramBaseActivity;
-  }
-  
-  public boolean a(@NotNull azpj paramazpj)
-  {
-    Intrinsics.checkParameterIsNotNull(paramazpj, "data");
-    if (paramazpj.a() == null)
-    {
-      paramazpj = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (paramazpj != null) {
-        paramazpj.setBackgroundResource(b());
-      }
-    }
-    while ((paramazpj.a().equals(this.jdField_a_of_type_Azpg)) && (b())) {
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      paramInt1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeBooleanArray(paramParcel1);
       return true;
     }
-    this.jdField_a_of_type_Azpg = paramazpj.a();
-    a(paramazpj.a());
-    a().post((Runnable)new VasProfileWzBackgroundComponent.onVasDataUpdate.1(this));
+    paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    paramParcel2.writeIntArray(paramParcel1);
     return true;
-  }
-  
-  public void f()
-  {
-    super.f();
-    a().removeView((View)this.jdField_a_of_type_AndroidWidgetImageView);
-    a().removeView((View)this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView);
-    a().removeView((View)this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)null);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)null);
-    this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)null);
   }
 }
 

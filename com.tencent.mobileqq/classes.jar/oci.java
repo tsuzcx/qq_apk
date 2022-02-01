@@ -1,116 +1,19 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-
 public class oci
 {
-  private static Bitmap a(Bitmap paramBitmap)
+  public String a;
+  public boolean a;
+  public String b;
+  
+  public oci(oce paramoce, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    try
-    {
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      localBitmap = paramBitmap;
-      if (i * j > 8000)
-      {
-        double d = Math.sqrt(8000.0D / (i * j));
-        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
-      }
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      for (;;)
-      {
-        System.gc();
-        paramBitmap.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
-        }
-        localBitmap = null;
-      }
-    }
-    catch (Exception paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
-        }
-        Bitmap localBitmap = null;
-      }
-    }
-    return localBitmap;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, boolean paramBoolean1, String paramString4, boolean paramBoolean2, uan paramuan)
+  public String toString()
   {
-    int k = 0;
-    int j = 0;
-    if (paramString1 == null) {}
-    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
-    {
-      if (paramString2 == null) {}
-      for (paramString1 = "";; paramString1 = paramString2)
-      {
-        int i;
-        if (!WXShareHelper.a().a()) {
-          i = 2131719199;
-        }
-        for (;;)
-        {
-          if (i != -1) {
-            zvc.a(0, i);
-          }
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("VideoShareUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", toWeChat=" + paramBoolean1);
-            }
-            return;
-            if (WXShareHelper.a().b()) {
-              break label279;
-            }
-            i = 2131719200;
-            break;
-            paramString2 = String.valueOf(System.currentTimeMillis());
-            paramuan = new ocj(paramString2, paramuan);
-            WXShareHelper.a().a(paramuan);
-            if ((!paramBoolean1) || (TextUtils.isEmpty(paramString4)) || (paramBoolean2)) {
-              break label183;
-            }
-            WxShareHelperFromReadInjoy.a().b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
-          }
-          label183:
-          if (bmqa.t(pha.a()) == 1)
-          {
-            paramString4 = WXShareHelper.a();
-            paramBitmap = a(paramBitmap);
-            if (paramBoolean1) {}
-            for (i = j;; i = 1)
-            {
-              paramString4.c(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-              break;
-            }
-          }
-          paramString4 = WxShareHelperFromReadInjoy.a();
-          paramBitmap = a(paramBitmap);
-          if (paramBoolean1) {}
-          for (i = k;; i = 1)
-          {
-            paramString4.b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-            break;
-          }
-          label279:
-          i = -1;
-        }
-      }
-    }
+    return "PublicAccountSearchRecommendItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean;
   }
 }
 

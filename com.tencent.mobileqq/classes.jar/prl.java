@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
-
-public class prl
-  implements bkod
+public abstract interface prl<BEAN>
 {
-  public prl(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public abstract void a(prp<BEAN> paramprp);
   
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
-    }
-  }
+  public abstract void a(boolean paramBoolean, prk<BEAN> paramprk);
+  
+  public abstract boolean a();
 }
 
 

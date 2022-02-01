@@ -1,21 +1,43 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class anoh
-  implements Comparator<anok>
+final class anoh
+  implements anol
 {
-  anoh(anog paramanog) {}
-  
-  public int a(anok paramanok1, anok paramanok2)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((paramanok1 == null) || (paramanok2 == null)) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
+    }
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
+    }
+    try
     {
-      return 0;
-      if (paramanok1.a > paramanok2.a) {
-        return 1;
+      paramArrayOfInt = anog.a(paramInt1, paramArrayOfInt);
+      if (paramArrayOfInt == null)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        return;
       }
-    } while (paramanok1.a >= paramanok2.a);
-    return -1;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramArrayOfInt.put("openId", paramString2);
+    }
+    for (;;)
+    {
+      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
+      return;
+      paramArrayOfInt.put("uin", paramString1);
+    }
   }
 }
 

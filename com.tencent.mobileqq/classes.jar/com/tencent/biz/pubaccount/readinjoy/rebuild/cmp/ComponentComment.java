@@ -8,30 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bglf;
+import bhlg;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 import java.util.List;
-import pha;
-import pxk;
-import qqs;
-import qrb;
-import qva;
-import qvg;
-import qvh;
-import snh;
+import ozs;
+import ppu;
+import qjg;
+import qjp;
+import qno;
+import qnu;
+import qnv;
+import sel;
 import tencent.im.oidb.articlesummary.articlesummary.CommentInfo;
 
 public class ComponentComment
   extends FrameLayout
-  implements qqs
+  implements qjg
 {
   View jdField_a_of_type_AndroidViewView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  qva jdField_a_of_type_Qva;
+  qno jdField_a_of_type_Qno;
   TextView b;
   
   public ComponentComment(Context paramContext)
@@ -54,7 +54,7 @@ public class ComponentComment
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qva = new qva();
+    this.jdField_a_of_type_Qno = new qno();
     a(paramContext);
     a();
   }
@@ -63,10 +63,10 @@ public class ComponentComment
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560042, this, true);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131364767);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364809));
-    this.b = ((TextView)paramContext.findViewById(2131364807));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560054, this, true);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131364814);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364856));
+    this.b = ((TextView)paramContext.findViewById(2131364854));
   }
   
   public void a(Object paramObject)
@@ -76,33 +76,33 @@ public class ComponentComment
     long l;
     String str2;
     String str1;
-    if ((paramObject instanceof pxk))
+    if ((paramObject instanceof ppu))
     {
-      this.jdField_a_of_type_Qva.a((pxk)paramObject);
+      this.jdField_a_of_type_Qno.a((ppu)paramObject);
       b();
-      if (!this.jdField_a_of_type_Qva.a.d()) {
+      if (!this.jdField_a_of_type_Qno.a.d()) {
         break label313;
       }
       i = 0;
       setVisibility(i);
-      if (this.jdField_a_of_type_Qva.a.d())
+      if (this.jdField_a_of_type_Qno.a.d())
       {
-        localArticleInfo = this.jdField_a_of_type_Qva.a.a();
+        localArticleInfo = this.jdField_a_of_type_Qno.a.a();
         paramObject = (articlesummary.CommentInfo)localArticleInfo.mCommentsObj.get(0);
         l = paramObject.uint64_uin.get();
         str2 = paramObject.str_content.get();
         str1 = paramObject.str_jump_url.get();
-        if (!pha.a()) {
+        if (!ozs.a()) {
           break label319;
         }
-        paramObject = bglf.j((QQAppInterface)pha.a(), String.valueOf(l));
+        paramObject = bhlg.j((QQAppInterface)ozs.a(), String.valueOf(l));
         label134:
-        String str3 = pha.e(paramObject);
+        String str3 = ozs.e(paramObject);
         if (str3 == null) {
           break label339;
         }
         paramObject = new SpannableString(str3 + ":  " + str2);
-        paramObject.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getContext().getResources().getColor(2131167224)), 0, str3.length(), 33);
+        paramObject.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getContext().getResources().getColor(2131167247)), 0, str3.length(), 33);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str3 + ":  ");
       }
@@ -110,9 +110,9 @@ public class ComponentComment
     for (;;)
     {
       this.b.setText(paramObject);
-      this.b.setOnClickListener(new qvg(this, str1, localArticleInfo));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new qvh(this, l, localArticleInfo));
-      if (!this.jdField_a_of_type_Qva.a.f()) {
+      this.b.setOnClickListener(new qnu(this, str1, localArticleInfo));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new qnv(this, l, localArticleInfo));
+      if (!this.jdField_a_of_type_Qno.a.f()) {
         break label361;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -121,7 +121,7 @@ public class ComponentComment
       i = 8;
       break;
       label319:
-      paramObject = this.jdField_a_of_type_Qva.a.a().b(l);
+      paramObject = this.jdField_a_of_type_Qno.a.a().b(l);
       break label134;
       label339:
       paramObject = new SpannableString(str2);
@@ -131,9 +131,9 @@ public class ComponentComment
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(qrb paramqrb)
+  public void a(qjp paramqjp)
   {
-    this.jdField_a_of_type_Qva.a(paramqrb);
+    this.jdField_a_of_type_Qno.a(paramqjp);
   }
   
   public void b() {}

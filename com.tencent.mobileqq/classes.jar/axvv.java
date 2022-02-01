@@ -1,17 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class axvv
   implements DialogInterface.OnClickListener
 {
-  axvv(axuv paramaxuv, bgpa parambgpa) {}
+  axvv(axvr paramaxvr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    this.jdField_a_of_type_Axuv.a.g();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

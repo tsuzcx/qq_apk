@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class ahhk
-  implements DialogInterface.OnClickListener
+final class ahhk
+  implements ahky
 {
-  ahhk(ahhh paramahhh) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (ApolloGameUtil.a(paramChatMessage, paramQQAppInterface) == ApolloGameUtil.c) {
+      return 88;
+    }
+    return 56;
+  }
 }
 
 

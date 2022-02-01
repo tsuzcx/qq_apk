@@ -1,13 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
 
-public class beim
-  implements DialogInterface.OnClickListener
+class beim
+  extends beit
 {
-  public beim(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  beim(beil parambeil, behv parambehv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Behv.beginSwitch();
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("ThemeIPCModule", 1, "beginSwitch: ", localRemoteException);
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_Behv.postSwitch(paramInt);
+      return super.a(paramInt);
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeIPCModule", 1, "postSwitch: ", localRemoteException);
+      }
+    }
+  }
+  
+  public boolean a(beio parambeio)
+  {
+    try
+    {
+      this.jdField_a_of_type_Behv.doSwitch(parambeio.a(), parambeio.d());
+      return true;
+    }
+    catch (RemoteException parambeio)
+    {
+      QLog.e("ThemeIPCModule", 1, "beforeSwitch: ", parambeio);
+    }
+    return true;
+  }
 }
 
 

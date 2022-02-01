@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.bless;
 
 import Override;
-import aipe;
-import aiph;
-import aipk;
-import aipl;
+import ajan;
+import ajaq;
+import ajat;
+import ajau;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,19 +20,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import anhk;
-import anuy;
-import atvo;
-import bbyw;
-import beqx;
-import beqy;
-import beqz;
-import bgku;
-import bgmg;
-import bgmj;
-import bihh;
-import bkfv;
-import bltb;
+import antf;
+import aohk;
+import aunj;
+import bcrn;
+import bfqe;
+import bfqf;
+import bfqg;
+import bhkv;
+import bhmi;
+import bhml;
+import bjig;
+import blha;
+import bmud;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -58,14 +58,14 @@ import org.json.JSONObject;
 
 public class BlessResultActivity
   extends BlessTypeActivity
-  implements Handler.Callback, View.OnClickListener, bihh
+  implements Handler.Callback, View.OnClickListener, bjig
 {
   int jdField_a_of_type_Int;
-  public aipl a;
+  public ajau a;
   ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private anuy jdField_a_of_type_Anuy;
-  beqz jdField_a_of_type_Beqz = new aipk(this);
-  public bkfv a;
+  private aohk jdField_a_of_type_Aohk;
+  bfqg jdField_a_of_type_Bfqg = new ajat(this);
+  public blha a;
   BlessResultActivity.VideoUploadTask jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask;
   String jdField_a_of_type_JavaLangString;
   public boolean a;
@@ -90,12 +90,12 @@ public class BlessResultActivity
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public static beqy a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public static bfqf a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     return a(paramBundle, paramString1, paramString2, paramString3, paramBoolean, "https://c.v.qq.com/openfvupready?g_tk=");
   }
   
-  public static beqy a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
+  public static bfqf a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
   {
     long l = System.currentTimeMillis();
     String str1 = paramBundle.getString("title");
@@ -104,9 +104,9 @@ public class BlessResultActivity
     String str4 = paramBundle.getString("file_path");
     paramBundle = paramBundle.getString("vid");
     if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "applyUpload title = " + str1 + ", tags = " + str2 + ", cat = " + str3 + ", filePath = " + str4 + ", size = " + bgmg.a(str4));
+      QLog.d("BlessResultActivity", 2, "applyUpload title = " + str1 + ", tags = " + str2 + ", cat = " + str3 + ", filePath = " + str4 + ", size = " + bhmi.a(str4));
     }
-    if ((TextUtils.isEmpty(str4)) || (!bgmg.a(str4)))
+    if ((TextUtils.isEmpty(str4)) || (!bhmi.a(str4)))
     {
       if (QLog.isColorLevel()) {
         QLog.e("BlessResultActivity", 2, "!!!!!!!applyUpload filePath = " + str4);
@@ -119,7 +119,7 @@ public class BlessResultActivity
       if (paramBoolean) {
         paramString4.replaceFirst("http", "https");
       }
-      paramString4 = new HttpPost(paramString4 + String.valueOf(beqx.a(paramString2)));
+      paramString4 = new HttpPost(paramString4 + String.valueOf(bfqe.a(paramString2)));
       paramString4.setHeader("Accept", "Accept text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
       paramString4.setHeader("Accept-Charset", "utf-8;q=0.7,*;q=0.7");
       paramString4.setHeader("Accept-Encoding", "gzip, deflate");
@@ -132,14 +132,14 @@ public class BlessResultActivity
       localArrayList.add(new BasicNameValuePair("title", str1));
       localArrayList.add(new BasicNameValuePair("tags", str2));
       localArrayList.add(new BasicNameValuePair("cat", str3));
-      localArrayList.add(new BasicNameValuePair("size", String.valueOf(bgmg.a(str4))));
-      localArrayList.add(new BasicNameValuePair("sha", bgmj.a(atvo.a(str4))));
-      localArrayList.add(new BasicNameValuePair("md5", bgmj.a(atvo.e(str4))));
+      localArrayList.add(new BasicNameValuePair("size", String.valueOf(bhmi.a(str4))));
+      localArrayList.add(new BasicNameValuePair("sha", bhml.a(aunj.a(str4))));
+      localArrayList.add(new BasicNameValuePair("md5", bhml.a(aunj.e(str4))));
       if (QLog.isColorLevel()) {
         QLog.d("BlessResultActivity", 2, "applyUpload() getMessageDigest time = " + (System.currentTimeMillis() - l));
       }
       localArrayList.add(new BasicNameValuePair("platform", "android"));
-      localArrayList.add(new BasicNameValuePair("g_tk", String.valueOf(beqx.a(paramString2))));
+      localArrayList.add(new BasicNameValuePair("g_tk", String.valueOf(bfqe.a(paramString2))));
       localArrayList.add(new BasicNameValuePair("otype", "json"));
       if (!TextUtils.isEmpty(paramBundle))
       {
@@ -163,7 +163,7 @@ public class BlessResultActivity
         if (!paramBundle.optString("s", "f").equals("o")) {
           break;
         }
-        paramBundle = new beqy(paramBundle);
+        paramBundle = new bfqf(paramBundle);
       }
       catch (Exception paramString2)
       {
@@ -187,7 +187,7 @@ public class BlessResultActivity
   
   public static String a(String paramString)
   {
-    String str = anhk.ba + "bless/thumb/";
+    String str = antf.ba + "bless/thumb/";
     Object localObject = new File(str);
     if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isDirectory()) && (((File)localObject).listFiles().length > 0))
     {
@@ -213,7 +213,7 @@ public class BlessResultActivity
     //   6: invokestatic 123	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   9: ifne +10 -> 19
     //   12: aload_0
-    //   13: invokestatic 126	bgmg:a	(Ljava/lang/String;)Z
+    //   13: invokestatic 126	bhmi:a	(Ljava/lang/String;)Z
     //   16: ifne +37 -> 53
     //   19: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   22: ifeq +29 -> 51
@@ -234,7 +234,7 @@ public class BlessResultActivity
     //   54: invokestatic 123	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   57: ifne +10 -> 67
     //   60: aload_1
-    //   61: invokestatic 126	bgmg:a	(Ljava/lang/String;)Z
+    //   61: invokestatic 126	bhmi:a	(Ljava/lang/String;)Z
     //   64: ifne +37 -> 101
     //   67: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   70: ifeq -19 -> 51
@@ -269,7 +269,7 @@ public class BlessResultActivity
     //   137: ldc_w 360
     //   140: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: aload_1
-    //   144: invokestatic 107	bgmg:a	(Ljava/lang/String;)J
+    //   144: invokestatic 107	bhmi:a	(Ljava/lang/String;)J
     //   147: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   150: ldc_w 362
     //   153: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -300,7 +300,7 @@ public class BlessResultActivity
     //   217: ldc_w 377
     //   220: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: aload_3
-    //   224: invokestatic 147	beqx:a	(Ljava/lang/String;)I
+    //   224: invokestatic 147	bfqe:a	(Ljava/lang/String;)I
     //   227: invokestatic 151	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   230: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -374,20 +374,20 @@ public class BlessResultActivity
     //   393: aload 13
     //   395: ldc 205
     //   397: aload_0
-    //   398: invokestatic 107	bgmg:a	(Ljava/lang/String;)J
+    //   398: invokestatic 107	bhmi:a	(Ljava/lang/String;)J
     //   401: invokestatic 208	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   404: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   407: aload 13
     //   409: ldc 210
     //   411: aload_0
-    //   412: invokestatic 215	atvo:a	(Ljava/lang/String;)[B
-    //   415: invokestatic 220	bgmj:a	([B)Ljava/lang/String;
+    //   412: invokestatic 215	aunj:a	(Ljava/lang/String;)[B
+    //   415: invokestatic 220	bhml:a	([B)Ljava/lang/String;
     //   418: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   421: aload 13
     //   423: ldc 222
     //   425: aload_0
-    //   426: invokestatic 224	atvo:e	(Ljava/lang/String;)[B
-    //   429: invokestatic 220	bgmj:a	([B)Ljava/lang/String;
+    //   426: invokestatic 224	aunj:e	(Ljava/lang/String;)[B
+    //   429: invokestatic 220	bhml:a	([B)Ljava/lang/String;
     //   432: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   435: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   438: ifeq +34 -> 472
@@ -411,7 +411,7 @@ public class BlessResultActivity
     //   481: aload 13
     //   483: ldc 232
     //   485: aload_3
-    //   486: invokestatic 147	beqx:a	(Ljava/lang/String;)I
+    //   486: invokestatic 147	bfqe:a	(Ljava/lang/String;)I
     //   489: invokestatic 151	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   492: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   495: aload 13
@@ -927,41 +927,41 @@ public class BlessResultActivity
   
   private void g()
   {
-    this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra(bbyw.h, false);
+    this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra(bcrn.h, false);
     if (!this.jdField_c_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Anuy = new aiph(this);
-    this.app.addObserver(this.jdField_a_of_type_Anuy);
+    this.jdField_a_of_type_Aohk = new ajaq(this);
+    this.app.addObserver(this.jdField_a_of_type_Aohk);
   }
   
   private void h()
   {
-    ((ImmersiveTitleBar2)findViewById(2131378874)).setVisibility(4);
-    findViewById(2131368979).setVisibility(8);
-    findViewById(2131368947).setOnClickListener(this);
-    TextView localTextView = (TextView)findViewById(2131379591);
+    ((ImmersiveTitleBar2)findViewById(2131379037)).setVisibility(4);
+    findViewById(2131369073).setVisibility(8);
+    findViewById(2131369042).setOnClickListener(this);
+    TextView localTextView = (TextView)findViewById(2131379764);
     String str = "";
     switch (this.jdField_d_of_type_Int)
     {
     }
     for (;;)
     {
-      localTextView.setText(String.format(getString(2131690540), new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }));
+      localTextView.setText(String.format(getString(2131690535), new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }));
       if (this.jdField_e_of_type_Int > 10) {
-        ((TextView)findViewById(2131363531)).setText(String.format(getString(2131690532), new Object[] { Integer.valueOf(10) }));
+        ((TextView)findViewById(2131363554)).setText(String.format(getString(2131690527), new Object[] { Integer.valueOf(10) }));
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        findViewById(2131376716).setVisibility(0);
-        ((TextView)findViewById(2131379900)).setText(String.format(getString(2131690537), new Object[] { str }));
-        findViewById(2131379837).setOnClickListener(this);
-        findViewById(2131379679).setOnClickListener(this);
+        findViewById(2131376851).setVisibility(0);
+        ((TextView)findViewById(2131380082)).setText(String.format(getString(2131690532), new Object[] { str }));
+        findViewById(2131380017).setOnClickListener(this);
+        findViewById(2131379855).setOnClickListener(this);
       }
       return;
-      str = getString(2131690541);
+      str = getString(2131690536);
       continue;
-      str = getString(2131690525);
+      str = getString(2131690520);
     }
   }
   
@@ -970,8 +970,8 @@ public class BlessResultActivity
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask == null) || ((!this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask.b()) && (!this.jdField_a_of_type_Boolean)))
     {
       String str = this.app.c();
-      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask = new BlessResultActivity.VideoUploadTask(this, str, ((TicketManager)this.app.getManager(2)).getSkey(str), this.jdField_a_of_type_Aipl, this.jdField_a_of_type_Beqz);
-      this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(1003, 120000L);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask = new BlessResultActivity.VideoUploadTask(this, str, ((TicketManager)this.app.getManager(2)).getSkey(str), this.jdField_a_of_type_Ajau, this.jdField_a_of_type_Bfqg);
+      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1003, 120000L);
       ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask, 8, null, false);
       return;
     }
@@ -984,7 +984,7 @@ public class BlessResultActivity
     this.jdField_b_of_type_Int = paramInt;
     if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString == null) || (this.f == null))
     {
-      QQToast.a(this, 2131692223, 0).a();
+      QQToast.a(this, 2131692228, 0).a();
       d();
       return;
     }
@@ -992,20 +992,20 @@ public class BlessResultActivity
     File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
     if ((!localFile1.exists()) || (!localFile2.exists()))
     {
-      QQToast.a(this, 2131692223, 0).a();
+      QQToast.a(this, 2131692228, 0).a();
       d();
       return;
     }
     if ((!localFile1.isFile()) || (!localFile2.isFile()))
     {
-      QQToast.a(this, 2131692225, 0).a();
+      QQToast.a(this, 2131692230, 0).a();
       d();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("BlessResultActivity", 2, "share last uploaded ptv. mPtvPath=" + this.jdField_a_of_type_JavaLangString + " ,mSnapImagePath=" + this.jdField_b_of_type_JavaLangString + " ,mPtvUuid=" + this.jdField_e_of_type_JavaLangString + " ,mPtvMd5=" + this.f);
     }
-    this.g = this.jdField_a_of_type_Aipe.a(this.jdField_e_of_type_JavaLangString, this.f);
+    this.g = this.jdField_a_of_type_Ajan.a(this.jdField_e_of_type_JavaLangString, this.f);
     if (QLog.isColorLevel()) {
       QLog.d("BlessResultActivity", 2, "share url :" + this.g);
     }
@@ -1019,8 +1019,8 @@ public class BlessResultActivity
   
   public String b(String paramString)
   {
-    paramString = this.jdField_a_of_type_Aipe.e() + "&vid=" + paramString + "&nickname=";
-    String str = paramString + bgku.encodeToString(this.app.getCurrentNickname().getBytes(), 2);
+    paramString = this.jdField_a_of_type_Ajan.e() + "&vid=" + paramString + "&nickname=";
+    String str = paramString + bhkv.encodeToString(this.app.getCurrentNickname().getBytes(), 2);
     paramString = str;
     if (this.jdField_a_of_type_Int > 0) {
       paramString = str + "&template=" + this.jdField_a_of_type_Int;
@@ -1053,11 +1053,11 @@ public class BlessResultActivity
       {
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755823);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755824);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559567);
-        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372466)).setText(2131715809);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559572);
+        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372578)).setText(2131715918);
       }
       return;
     }
@@ -1100,15 +1100,15 @@ public class BlessResultActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558746);
-    this.jdField_a_of_type_Aipe.b();
-    this.jdField_a_of_type_Aipe.a(false);
+    super.setContentView(2131558743);
+    this.jdField_a_of_type_Ajan.b();
+    this.jdField_a_of_type_Ajan.a(false);
     paramBundle = getIntent();
     this.jdField_d_of_type_Int = paramBundle.getIntExtra("param_method", 1);
     this.jdField_e_of_type_Int = paramBundle.getIntExtra("param_count", 0);
     if (this.jdField_d_of_type_Int == 2)
     {
-      this.jdField_a_of_type_Bkfv = new bkfv(this);
+      this.jdField_a_of_type_Blha = new blha(this);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("param_ptv_path");
       this.jdField_b_of_type_JavaLangString = paramBundle.getStringExtra("param_snap_path");
       this.jdField_a_of_type_Int = paramBundle.getIntExtra("param_ptv_id", -1);
@@ -1137,8 +1137,8 @@ public class BlessResultActivity
         this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask.a();
       }
     }
-    if (this.jdField_a_of_type_Anuy != null) {
-      this.app.removeObserver(this.jdField_a_of_type_Anuy);
+    if (this.jdField_a_of_type_Aohk != null) {
+      this.app.removeObserver(this.jdField_a_of_type_Aohk);
     }
   }
   
@@ -1163,13 +1163,13 @@ public class BlessResultActivity
     localObject = str;
     if (TextUtils.isEmpty(str))
     {
-      str = this.jdField_a_of_type_Aipe.a(true);
+      str = this.jdField_a_of_type_Ajan.a(true);
       localObject = str;
       if (TextUtils.isEmpty(str)) {
-        localObject = getString(2131690536);
+        localObject = getString(2131690531);
       }
     }
-    str = String.format(getString(2131690535), new Object[] { this.app.getCurrentNickname() });
+    str = String.format(getString(2131690530), new Object[] { this.app.getCurrentNickname() });
     Bundle localBundle = new Bundle();
     localBundle.putString("title", (String)localObject);
     localBundle.putString("desc", str);
@@ -1179,7 +1179,7 @@ public class BlessResultActivity
     localBundle.putStringArrayList("image_url", localArrayList);
     localBundle.putString("troop_wording", (String)localObject);
     localBundle.putString("bizname", "StarBlessLink");
-    bltb.a(this.app, this, localBundle, null);
+    bmud.a(this.app, this, localBundle, null);
     if (QLog.isColorLevel()) {
       QLog.i("BlessResultActivity", 2, "shareToQzone: shareLink:" + this.g);
     }
@@ -1189,7 +1189,7 @@ public class BlessResultActivity
   {
     int k;
     if (!WXShareHelper.a().a()) {
-      k = 2131719199;
+      k = 2131719399;
     }
     for (;;)
     {
@@ -1201,7 +1201,7 @@ public class BlessResultActivity
         return;
         if (!WXShareHelper.a().b())
         {
-          k = 2131719200;
+          k = 2131719400;
           break;
           this.h = String.valueOf(System.currentTimeMillis());
           Object localObject1 = null;
@@ -1212,13 +1212,13 @@ public class BlessResultActivity
             localObject1 = str;
             if (TextUtils.isEmpty(str))
             {
-              str = this.jdField_a_of_type_Aipe.a(false);
+              str = this.jdField_a_of_type_Ajan.a(false);
               localObject1 = str;
               if (TextUtils.isEmpty(str)) {
-                localObject1 = getString(2131690536);
+                localObject1 = getString(2131690531);
               }
             }
-            str = String.format(getString(2131690535), new Object[] { this.app.getCurrentNickname() });
+            str = String.format(getString(2131690530), new Object[] { this.app.getCurrentNickname() });
             WXShareHelper.a().c(this.h, (String)localObject1, (Bitmap)localObject2, str, this.g);
             if (QLog.isColorLevel())
             {
@@ -1263,7 +1263,7 @@ public class BlessResultActivity
         this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask.a();
       }
       d();
-      QQToast.a(this, 1, 2131718007, 0).a();
+      QQToast.a(this, 1, 2131718139, 0).a();
       return true;
       this.i = this.jdField_a_of_type_JavaLangString;
       this.j = this.jdField_d_of_type_JavaLangString;
@@ -1329,10 +1329,10 @@ public class BlessResultActivity
     case -2: 
     case -1: 
     default: 
-      QQToast.a(this, 1, getString(2131718007), 0).a();
+      QQToast.a(this, 1, getString(2131718139), 0).a();
       return;
     }
-    QQToast.a(this, 2, getString(2131718025), 0).a();
+    QQToast.a(this, 2, getString(2131718157), 0).a();
   }
 }
 

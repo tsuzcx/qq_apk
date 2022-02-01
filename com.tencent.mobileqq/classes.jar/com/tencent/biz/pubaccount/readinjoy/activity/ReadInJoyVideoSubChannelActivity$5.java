@@ -1,7 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import oat;
-import och;
+import ocd;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ReadInJoyVideoSubChannelActivity$5
   implements Runnable
@@ -10,7 +11,17 @@ class ReadInJoyVideoSubChannelActivity$5
   
   public void run()
   {
-    oat.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", och.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("channel_id", ReadInJoyVideoSubChannelActivity.a(this.this$0));
+      ocd.a(null, "", "0X8009665", "0X8009665", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 

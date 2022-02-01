@@ -1,16 +1,25 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
 public class bpgp
-  implements xrw
+  implements View.OnTouchListener
 {
-  public bpgp(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public bpgp(AEEditorImageEditFragment paramAEEditorImageEditFragment, GestureDetector paramGestureDetector) {}
   
-  public boolean a(xrt paramxrt, int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+    {
+      AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment).toggleAEKit(AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment), true);
+      bpam.a(AEEditorImageEditFragment.e(), "[onTouch] onTouch/ACTION_CANCEL ");
+    }
+    bpam.a(AEEditorImageEditFragment.e(), "[onTouch] Action: " + paramMotionEvent.getAction());
+    return (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment.a == null);
   }
 }
 

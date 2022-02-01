@@ -1,104 +1,83 @@
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.comment.DanmuItemBean;
 
 public class aqwj
-  implements aqlb<String>
 {
   public int a;
+  public long a;
+  public String a;
   public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  private void a()
+  public aqwj(DanmuItemBean paramDanmuItemBean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.c = false;
-    this.d = false;
-    this.e = false;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = paramDanmuItemBean.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramDanmuItemBean.jdField_a_of_type_Long);
+    this.jdField_b_of_type_JavaLangString = paramDanmuItemBean.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = paramDanmuItemBean.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_Long = paramDanmuItemBean.d;
+    this.jdField_c_of_type_Long = paramDanmuItemBean.jdField_c_of_type_Long;
+    this.jdField_a_of_type_Boolean = paramDanmuItemBean.jdField_a_of_type_Boolean;
+    this.d = paramDanmuItemBean.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramDanmuItemBean.jdField_a_of_type_Int;
   }
   
-  public void a(String paramString)
+  public String a()
   {
-    QLog.i("QFileIPv6ConfigBean", 1, "configID:449 onParse FileIPv6Config:" + paramString);
-    String str = "";
-    if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.toLowerCase();
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = this.d;; str = this.jdField_b_of_type_JavaLangString) {
+      return str + " : " + this.jdField_c_of_type_JavaLangString;
     }
-    if (TextUtils.isEmpty(str))
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aqwj))
     {
-      QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is empty, configID:449 use default value");
-      a();
-      return;
-    }
-    for (;;)
-    {
-      try
+      paramObject = (aqwj)paramObject;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
       {
-        paramString = new JSONObject(str).getJSONObject("ipv6config");
-        if (paramString == null) {
-          break label252;
-        }
-        if (paramString.has("allswitch"))
+        bool1 = bool2;
+        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
         {
-          this.jdField_a_of_type_Boolean = paramString.getBoolean("allswitch");
-          if (!paramString.has("c2cenable")) {
-            break label214;
+          bool1 = bool2;
+          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+            {
+              bool1 = bool2;
+              if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString))
+              {
+                bool1 = bool2;
+                if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+                  bool1 = true;
+                }
+              }
+            }
           }
-          this.b = paramString.getBoolean("c2cenable");
-          if (!paramString.has("groupenable")) {
-            break label222;
-          }
-          this.c = paramString.getBoolean("groupenable");
-          if (!paramString.has("discenable")) {
-            break label230;
-          }
-          this.d = paramString.getBoolean("discenable");
-          if (!paramString.has("datalineenable")) {
-            break label238;
-          }
-          this.e = paramString.getBoolean("datalineenable");
-          if (!paramString.has("strategy")) {
-            break;
-          }
-          this.jdField_a_of_type_Int = paramString.getInt("strategy");
-          return;
         }
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
-        return;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      continue;
-      label214:
-      this.b = false;
-      continue;
-      label222:
-      this.c = false;
-      continue;
-      label230:
-      this.d = false;
-      continue;
-      label238:
-      this.e = false;
     }
-    this.jdField_a_of_type_Int = 0;
-    return;
-    label252:
-    QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is no ipv6config. use default value");
-    a();
+    return bool1;
+  }
+  
+  public int hashCode()
+  {
+    return String.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwj
  * JD-Core Version:    0.7.0.1
  */

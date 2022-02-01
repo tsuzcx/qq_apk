@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.statistics.Reporting;
 
-public class bdln
-  implements DialogInterface.OnClickListener
+public abstract interface bdln
 {
-  public bdln(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    GroupTeamWorkListActivity.a(this.a);
-  }
+  public abstract void a(Reporting paramReporting);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdln
  * JD-Core Version:    0.7.0.1
  */

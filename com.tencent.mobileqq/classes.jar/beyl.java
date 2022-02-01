@@ -1,20 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
-
 public class beyl
-  implements bfvm
 {
-  public beyl(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
+  public int a;
+  public int b;
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public beyl(int paramInt1, int paramInt2)
   {
-    paramView.setVisibility(8);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beyl
  * JD-Core Version:    0.7.0.1
  */

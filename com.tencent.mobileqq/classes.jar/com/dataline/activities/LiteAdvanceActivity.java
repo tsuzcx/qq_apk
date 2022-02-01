@@ -1,8 +1,8 @@
 package com.dataline.activities;
 
 import Override;
-import adrl;
-import afur;
+import aeam;
+import agej;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,15 +16,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anhk;
-import anni;
-import aong;
-import atut;
-import atvf;
-import atvo;
-import bcti;
-import bkho;
-import bkif;
+import antf;
+import anzj;
+import apaw;
+import aumo;
+import auna;
+import aunj;
+import bdmb;
+import blir;
+import blji;
 import cl;
 import cm;
 import cn;
@@ -62,64 +62,64 @@ public class LiteAdvanceActivity
   
   public LiteAdvanceActivity()
   {
-    this.jdField_a_of_type_JavaLangString = anhk.z;
+    this.jdField_a_of_type_JavaLangString = antf.z;
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
   private void a()
   {
-    setContentView(2131559036);
-    Object localObject1 = (ImageView)findViewById(2131368138);
-    Object localObject2 = (TextView)findViewById(2131368563);
-    TextView localTextView1 = (TextView)findViewById(2131364999);
-    TextView localTextView2 = (TextView)findViewById(2131371954);
-    TextView localTextView3 = (TextView)findViewById(2131371955);
+    setContentView(2131559035);
+    Object localObject1 = (ImageView)findViewById(2131368212);
+    Object localObject2 = (TextView)findViewById(2131368636);
+    TextView localTextView1 = (TextView)findViewById(2131365046);
+    TextView localTextView2 = (TextView)findViewById(2131372068);
+    TextView localTextView3 = (TextView)findViewById(2131372069);
     if (this.jdField_a_of_type_Int == 0)
     {
-      ((ImageView)localObject1).setBackgroundResource(2130844220);
-      ((TextView)localObject2).setText(2131693379);
-      localTextView1.setText(2131693331);
-      localTextView2.setText(2131693354);
-      localTextView3.setText(2131693355);
+      ((ImageView)localObject1).setBackgroundResource(2130844234);
+      ((TextView)localObject2).setText(2131693391);
+      localTextView1.setText(2131693343);
+      localTextView2.setText(2131693366);
+      localTextView3.setText(2131693367);
     }
     for (;;)
     {
-      setTitle(2131694588);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131380905);
+      setTitle(2131694630);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131381085);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131362183);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131362192);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131364525);
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131364570);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376264));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(atut.a().b());
-      this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377808));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376404));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(aumo.a().b());
+      this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377961));
       this.jdField_c_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_c_of_type_Boolean);
       this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new cl(this));
-      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377805));
+      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377958));
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
       this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new cm(this));
-      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131372241));
+      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131372355));
       this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
       this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new cn(this));
-      if (adrl.R)
+      if (aeam.R)
       {
         localObject2 = this.leftView.getText().toString();
         localObject1 = localObject2;
-        if (!getString(2131690389).equals(localObject2)) {
-          localObject1 = anni.a(2131704991) + (String)localObject2 + anni.a(2131704992);
+        if (!getString(2131690384).equals(localObject2)) {
+          localObject1 = anzj.a(2131705098) + (String)localObject2 + anzj.a(2131705099);
         }
         this.leftView.setContentDescription((CharSequence)localObject1);
       }
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        ((ImageView)localObject1).setBackgroundResource(2130844218);
-        ((TextView)localObject2).setText(2131693380);
-        localTextView1.setText(2131693332);
-        localTextView2.setText(2131693333);
-        localTextView3.setText(2131693334);
+        ((ImageView)localObject1).setBackgroundResource(2130844232);
+        ((TextView)localObject2).setText(2131693392);
+        localTextView1.setText(2131693344);
+        localTextView2.setText(2131693345);
+        localTextView3.setText(2131693346);
       }
     }
   }
@@ -148,7 +148,7 @@ public class LiteAdvanceActivity
     do
     {
       return false;
-      localObject = (RecentUser)((aong)localObject).findRecentUser(str, 6000);
+      localObject = (RecentUser)((apaw)localObject).findRecentUser(str, 6000);
       if (localObject != null) {
         break;
       }
@@ -167,9 +167,9 @@ public class LiteAdvanceActivity
   
   private boolean a(boolean paramBoolean)
   {
-    aong localaong = this.app.a().a();
+    apaw localapaw = this.app.a().a();
     String str = this.jdField_a_of_type_JavaLangString;
-    if ((str == null) || (str.length() == 0) || (localaong == null))
+    if ((str == null) || (str.length() == 0) || (localapaw == null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop params error, return false.");
@@ -179,7 +179,7 @@ public class LiteAdvanceActivity
     if (QLog.isColorLevel()) {
       QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop top: " + paramBoolean + " uin: " + str + " userType: " + 6000);
     }
-    RecentUser localRecentUser2 = (RecentUser)localaong.findRecentUser(str, 6000);
+    RecentUser localRecentUser2 = (RecentUser)localapaw.findRecentUser(str, 6000);
     RecentUser localRecentUser1 = localRecentUser2;
     if (localRecentUser2 == null) {
       localRecentUser1 = new RecentUser(str, 6000);
@@ -187,20 +187,20 @@ public class LiteAdvanceActivity
     if (paramBoolean) {}
     for (localRecentUser1.showUpTime = (System.currentTimeMillis() / 1000L);; localRecentUser1.showUpTime = 0L)
     {
-      localaong.saveRecentUser(localRecentUser1);
+      localapaw.saveRecentUser(localRecentUser1);
       return true;
     }
   }
   
   private void b()
   {
-    String str = getString(2131693305);
-    bkho localbkho = (bkho)bkif.a(this, null);
-    localbkho.a(str);
-    localbkho.a(getResources().getString(2131693310), 3);
-    localbkho.c(2131690582);
-    localbkho.a(new co(this, localbkho));
-    localbkho.show();
+    String str = getString(2131693317);
+    blir localblir = (blir)blji.a(this, null);
+    localblir.a(str);
+    localblir.a(getResources().getString(2131693322), 3);
+    localblir.c(2131690580);
+    localblir.a(new co(this, localblir));
+    localblir.show();
   }
   
   private void b(boolean paramBoolean)
@@ -237,7 +237,7 @@ public class LiteAdvanceActivity
     while (localIntent == null)
     {
       return;
-      atvf.a(2131718629);
+      auna.a(2131718765);
     }
     try
     {
@@ -275,21 +275,21 @@ public class LiteAdvanceActivity
   
   private void e()
   {
-    anni.a(2131704990);
-    if (atvo.a(this, getString(2131693379))) {
-      this.app.getApp().getString(2131691897);
+    anzj.a(2131705097);
+    if (aunj.a(this, getString(2131693391))) {
+      this.app.getApp().getString(2131691901);
     }
     do
     {
       return;
       if (this.jdField_a_of_type_Int == 0)
       {
-        atvo.a(this.app, this, "jump_shortcut_dataline", getString(2131693379), 2130844220);
+        aunj.a(this.app, this, "jump_shortcut_dataline", getString(2131693391), 2130844234);
         dq.q(this.app);
         return;
       }
     } while (this.jdField_a_of_type_Int != 1);
-    atvo.a(this.app, this, "jump_shortcut_dataline", getString(2131693379), 2130844220);
+    aunj.a(this.app, this, "jump_shortcut_dataline", getString(2131693391), 2130844234);
     dq.q(this.app);
   }
   
@@ -305,7 +305,7 @@ public class LiteAdvanceActivity
   {
     if ((paramInt2 == -1) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      Intent localIntent = afur.a(new Intent(this, SplashActivity.class), new int[] { 2 });
+      Intent localIntent = agej.a(new Intent(this, SplashActivity.class), new int[] { 2 });
       localIntent.putExtras(new Bundle(paramIntent.getExtras()));
       startActivity(localIntent);
       finish();
@@ -318,7 +318,7 @@ public class LiteAdvanceActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("targetUin");
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() != 0)) {
-      if (this.jdField_a_of_type_JavaLangString.equals(anhk.A)) {
+      if (this.jdField_a_of_type_JavaLangString.equals(antf.A)) {
         this.jdField_a_of_type_Int = 1;
       }
     }
@@ -332,7 +332,7 @@ public class LiteAdvanceActivity
       this.jdField_a_of_type_Int = 0;
       continue;
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangString = anhk.z;
+      this.jdField_a_of_type_JavaLangString = antf.z;
     }
   }
   
@@ -345,7 +345,7 @@ public class LiteAdvanceActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bcti.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
+      bdmb.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
       c();
       continue;
       e();

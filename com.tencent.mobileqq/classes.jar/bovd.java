@@ -1,49 +1,13 @@
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.arch.lifecycle.MutableLiveData;
 
 public class bovd
-  implements View.OnClickListener
+  extends bpxy
 {
-  public bovd(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  private MutableLiveData<bosp> a = new MutableLiveData();
   
-  public void onClick(View paramView)
+  public MutableLiveData<bosp> a()
   {
-    long l1 = 0L;
-    bovf localbovf;
-    long l2;
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
-    {
-      List localList = VideoSegmentPickerProviderView.a(this.a).a();
-      VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
-      VideoSegmentPickerProviderView.a(this.a).a.addSegment(localList);
-      if (VideoSegmentPickerProviderView.a(this.a) != null)
-      {
-        localbovf = (bovf)VideoSegmentPickerProviderView.a(this.a).get();
-        if (localbovf != null)
-        {
-          if ((localList == null) || (localList.size() <= 0)) {
-            break label158;
-          }
-          l2 = ((Long)((Pair)localList.get(0)).first).longValue();
-          l1 = ((Long)((Pair)localList.get(0)).second).longValue();
-        }
-      }
-    }
-    for (;;)
-    {
-      localbovf.a(l2, l1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label158:
-      l2 = 0L;
-    }
+    return this.a;
   }
 }
 

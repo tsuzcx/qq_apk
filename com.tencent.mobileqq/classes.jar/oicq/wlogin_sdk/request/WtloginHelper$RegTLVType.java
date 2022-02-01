@@ -11,6 +11,7 @@ public class WtloginHelper$RegTLVType
   public static final int HAS_ADDRESS_BOOK = 8;
   public static final int ID = 1;
   public static final int LANGUAGE = 3;
+  public static final int LIMIT_PHONE_REG = 51;
   public static final int MPASSWD = 11;
   public static final int MSALT = 12;
   public static final int NEW_UIN = 31;

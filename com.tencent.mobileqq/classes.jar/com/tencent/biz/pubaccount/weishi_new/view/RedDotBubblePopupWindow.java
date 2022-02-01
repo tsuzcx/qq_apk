@@ -12,34 +12,34 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import bgtn;
+import bhtq;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.ArrayList<LUserGrowth.stNotificationRedDot;>;
 import java.util.Iterator;
-import uuv;
+import uvx;
 
 public class RedDotBubblePopupWindow
   extends PopupWindow
   implements View.OnClickListener
 {
-  private static final int jdField_a_of_type_Int = bgtn.a(8.0F);
+  private static final int jdField_a_of_type_Int = bhtq.a(8.0F);
   private Activity jdField_a_of_type_AndroidAppActivity;
   protected Handler a;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RedDotBubblePopupWindow.DisPopupRunnable jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$DisPopupRunnable;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private uuv jdField_a_of_type_Uuv;
+  private uvx jdField_a_of_type_Uvx;
   private TextView b;
   private TextView c;
   
-  public RedDotBubblePopupWindow(Activity paramActivity, uuv paramuuv)
+  public RedDotBubblePopupWindow(Activity paramActivity, uvx paramuvx)
   {
     super(paramActivity);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Uuv = paramuuv;
+    this.jdField_a_of_type_Uvx = paramuvx;
   }
   
   private void b()
@@ -81,14 +81,14 @@ public class RedDotBubblePopupWindow
   
   private void b(View paramView, ArrayList<stNotificationRedDot> paramArrayList)
   {
-    paramView.findViewById(2131370120).setOnClickListener(this);
+    paramView.findViewById(2131370218).setOnClickListener(this);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131369827));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131366246));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131372051));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369834));
-    this.b = ((TextView)paramView.findViewById(2131366249));
-    this.c = ((TextView)paramView.findViewById(2131372052));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131369925));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131366295));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131372165));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369932));
+    this.b = ((TextView)paramView.findViewById(2131366298));
+    this.c = ((TextView)paramView.findViewById(2131372166));
     String str = "";
     Object localObject1 = "";
     paramView = "";
@@ -192,7 +192,7 @@ public class RedDotBubblePopupWindow
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       setBackgroundDrawable(new BitmapDrawable());
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559985, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559991, null);
       b(this.jdField_a_of_type_AndroidViewView, paramArrayList);
       setContentView(this.jdField_a_of_type_AndroidViewView);
       setWidth(-2);
@@ -204,10 +204,10 @@ public class RedDotBubblePopupWindow
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370120)
+    if (paramView.getId() == 2131370218)
     {
-      if (this.jdField_a_of_type_Uuv != null) {
-        this.jdField_a_of_type_Uuv.a();
+      if (this.jdField_a_of_type_Uvx != null) {
+        this.jdField_a_of_type_Uvx.a();
       }
       a();
     }

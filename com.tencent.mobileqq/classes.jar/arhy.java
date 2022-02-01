@@ -1,108 +1,71 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.ReportInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class arhy
-  implements Parcelable.Creator<MessageForPic>
+public class arhy
+  extends arac<arib>
 {
-  public MessageForPic a(Parcel paramParcel)
+  @NonNull
+  public arib a(int paramInt)
   {
-    boolean bool2 = true;
-    MessageForPic localMessageForPic = new MessageForPic();
-    localMessageForPic.path = paramParcel.readString();
-    localMessageForPic.size = paramParcel.readLong();
-    localMessageForPic.type = paramParcel.readInt();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localMessageForPic.isRead = bool1;
-      localMessageForPic.uuid = paramParcel.readString();
-      localMessageForPic.groupFileID = paramParcel.readLong();
-      localMessageForPic.md5 = paramParcel.readString();
-      localMessageForPic.serverStoreSource = paramParcel.readString();
-      localMessageForPic.thumbMsgUrl = paramParcel.readString();
-      localMessageForPic.bigThumbMsgUrl = paramParcel.readString();
-      localMessageForPic.thumbWidth = paramParcel.readInt();
-      localMessageForPic.thumbHeight = paramParcel.readInt();
-      localMessageForPic.bigMsgUrl = paramParcel.readString();
-      localMessageForPic.rawMsgUrl = paramParcel.readString();
-      localMessageForPic.fileSizeFlag = paramParcel.readInt();
-      localMessageForPic.picExtraFlag = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label466;
-      }
-      bool1 = true;
-      label172:
-      localMessageForPic.isMixed = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label471;
-      }
-      bool1 = true;
-      label188:
-      localMessageForPic.isShareAppActionMsg = bool1;
-      localMessageForPic.action = paramParcel.readString();
-      localMessageForPic.shareAppID = paramParcel.readLong();
-      localMessageForPic.actMsgContentValue = paramParcel.readString();
-      localMessageForPic.localUUID = paramParcel.readString();
-      localMessageForPic.subMsgId = paramParcel.readInt();
-      localMessageForPic.isReport = paramParcel.readInt();
-      localMessageForPic.subVersion = paramParcel.readInt();
-      localMessageForPic.busiType = paramParcel.readInt();
-      localMessageForPic.width = paramParcel.readLong();
-      localMessageForPic.height = paramParcel.readLong();
-      localMessageForPic.imageType = paramParcel.readInt();
-      localMessageForPic.frienduin = paramParcel.readString();
-      localMessageForPic.selfuin = paramParcel.readString();
-      localMessageForPic.senderuin = paramParcel.readString();
-      localMessageForPic.istroop = paramParcel.readInt();
-      localMessageForPic.versionCode = paramParcel.readInt();
-      localMessageForPic.uniseq = paramParcel.readLong();
-      localMessageForPic.issend = paramParcel.readInt();
-      localMessageForPic.time = paramParcel.readLong();
-      localMessageForPic.msgtype = paramParcel.readInt();
-      localMessageForPic.preDownState = paramParcel.readInt();
-      localMessageForPic.preDownNetworkType = paramParcel.readInt();
-      localMessageForPic.previewed = paramParcel.readInt();
-      localMessageForPic.mNotPredownloadReason = paramParcel.readInt();
-      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
-      if (paramParcel.readByte() == 0) {
-        break label476;
-      }
-      bool1 = true;
-      label436:
-      localMessageForPic.sync2Story = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label481;
-      }
-    }
-    label466:
-    label471:
-    label476:
-    label481:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localMessageForPic.isQzonePic = bool1;
-      return localMessageForPic;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label172;
-      bool1 = false;
-      break label188;
-      bool1 = false;
-      break label436;
-    }
+    return new arib();
   }
   
-  public MessageForPic[] a(int paramInt)
+  @Nullable
+  public arib a(araj[] paramArrayOfaraj)
   {
-    return new MessageForPic[paramInt];
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arib.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(arib paramarib)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSysAndEmojiConfProcessor", 2, "QQSysAndEmojiConfProcessor onUpdate");
+    }
+    if (paramarib != null) {
+      arib.a(paramarib);
+    }
+    asky.a().a();
+  }
+  
+  public Class<arib> clazz()
+  {
+    return arib.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 545;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhy
  * JD-Core Version:    0.7.0.1
  */

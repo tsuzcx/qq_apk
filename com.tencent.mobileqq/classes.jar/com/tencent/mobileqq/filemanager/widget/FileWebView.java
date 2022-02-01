@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ZoomButtonsController;
-import atvo;
-import atxf;
-import atxg;
+import aunj;
+import aupa;
+import aupb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -31,7 +31,7 @@ public class FileWebView
 {
   float jdField_a_of_type_Float = 1.0F;
   long jdField_a_of_type_Long = 0L;
-  atxg jdField_a_of_type_Atxg;
+  aupb jdField_a_of_type_Aupb;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
   boolean jdField_a_of_type_Boolean = false;
@@ -104,7 +104,7 @@ public class FileWebView
     return (Class)paramType;
   }
   
-  public boolean a(WebView paramWebView, String paramString, atxf paramatxf)
+  public boolean a(WebView paramWebView, String paramString, aupa paramaupa)
   {
     if (paramString == null) {
       return false;
@@ -131,7 +131,7 @@ public class FileWebView
       localObject1 = null;
       try
       {
-        paramWebView = atvo.a(paramString);
+        paramWebView = aunj.a(paramString);
         localObject1 = paramWebView;
       }
       catch (Exception paramWebView)
@@ -149,7 +149,7 @@ public class FileWebView
           paramWebView = localWebView;
         }
       }
-      arrayOfMethod = paramatxf.getClass().getMethods();
+      arrayOfMethod = paramaupa.getClass().getMethods();
       j = arrayOfMethod.length;
       i = 0;
       paramWebView = null;
@@ -169,7 +169,7 @@ public class FileWebView
             if (paramWebView != null) {
               break label278;
             }
-            paramatxf.webLog(paramString);
+            paramaupa.webLog(paramString);
             return true;
           }
         }
@@ -182,7 +182,7 @@ public class FileWebView
         label278:
         if (((LinkedHashMap)localObject1).size() == 0)
         {
-          paramWebView.invoke(paramatxf, new Object[0]);
+          paramWebView.invoke(paramaupa, new Object[0]);
           return true;
         }
         paramString = ((LinkedHashMap)localObject1).values().toArray();
@@ -219,7 +219,7 @@ public class FileWebView
       {
         QLog.e("FileWebView", 1, "invoke method exception!!! InvocationTargetException");
         return false;
-        paramWebView.invoke(paramatxf, (Object[])localObject1);
+        paramWebView.invoke(paramaupa, (Object[])localObject1);
         return true;
       }
       catch (Exception paramWebView)
@@ -255,7 +255,7 @@ public class FileWebView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Atxg == null) {
+    if (this.jdField_a_of_type_Aupb == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
@@ -269,7 +269,7 @@ public class FileWebView
       continue;
       if (Calendar.getInstance().getTimeInMillis() - this.jdField_a_of_type_Long < 80L)
       {
-        this.jdField_a_of_type_Atxg.e();
+        this.jdField_a_of_type_Aupb.e();
         return super.dispatchTouchEvent(paramMotionEvent);
       }
       this.c = paramMotionEvent.getY();
@@ -281,22 +281,22 @@ public class FileWebView
         getScale();
         if ((getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY()) < 1.0D) || (i == 0))
         {
-          this.jdField_a_of_type_Atxg.b();
-          this.jdField_a_of_type_Atxg.c();
+          this.jdField_a_of_type_Aupb.b();
+          this.jdField_a_of_type_Aupb.c();
           return super.dispatchTouchEvent(paramMotionEvent);
         }
-        this.jdField_a_of_type_Atxg.a();
+        this.jdField_a_of_type_Aupb.a();
       }
       do
       {
-        this.jdField_a_of_type_Atxg.c();
+        this.jdField_a_of_type_Aupb.c();
         break;
-        this.jdField_a_of_type_Atxg.f();
+        this.jdField_a_of_type_Aupb.f();
       } while (getScrollY() >= 1.0F);
-      this.jdField_a_of_type_Atxg.a(false);
-      this.jdField_a_of_type_Atxg.c();
+      this.jdField_a_of_type_Aupb.a(false);
+      this.jdField_a_of_type_Aupb.c();
       return super.dispatchTouchEvent(paramMotionEvent);
-      this.jdField_a_of_type_Atxg.d();
+      this.jdField_a_of_type_Aupb.d();
     }
   }
   
@@ -311,7 +311,7 @@ public class FileWebView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Atxg == null) {}
+    if (this.jdField_a_of_type_Aupb == null) {}
     do
     {
       return;
@@ -323,14 +323,14 @@ public class FileWebView
         QLog.d("FileWebView", 4, "contentHeight[" + paramInt1 + "],height[" + paramInt3 + "],scroolY[" + i + "],scale[" + f + "]");
       }
       f = getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY());
-      if ((f < paramInt3 * 2) && (!atvo.a())) {
-        this.jdField_a_of_type_Atxg.g();
+      if ((f < paramInt3 * 2) && (!aunj.a())) {
+        this.jdField_a_of_type_Aupb.g();
       }
       if (f < 2.5D) {
-        this.jdField_a_of_type_Atxg.b();
+        this.jdField_a_of_type_Aupb.b();
       }
     } while ((paramInt2 != 0) || (paramInt4 == 0));
-    this.jdField_a_of_type_Atxg.a(false);
+    this.jdField_a_of_type_Aupb.a(false);
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -340,9 +340,9 @@ public class FileWebView
     }
   }
   
-  public void setOnCustomScroolChangeListener(atxg paramatxg)
+  public void setOnCustomScroolChangeListener(aupb paramaupb)
   {
-    this.jdField_a_of_type_Atxg = paramatxg;
+    this.jdField_a_of_type_Aupb = paramaupb;
   }
   
   public void setOverrideOnCheckIsTextEditor(boolean paramBoolean)

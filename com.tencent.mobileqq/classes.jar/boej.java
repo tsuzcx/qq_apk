@@ -1,29 +1,50 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import dov.com.qq.im.ae.view.TabLayout;
+import mqq.util.WeakReference;
 
-public class boej
-  implements bojk
+final class boej
+  extends BroadcastReceiver
 {
-  public boej(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  private TabLayout a;
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(TabLayout paramTabLayout)
   {
-    if (AEEditorImageEditFragment.a(this.a).getVisibility() == 0)
-    {
-      Rect localRect = new Rect();
-      AEEditorImageEditFragment.a(this.a).getGlobalVisibleRect(localRect);
-      if (!localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-        AEEditorImageEditFragment.a(this.a);
-      }
-    }
-    return false;
+    this.a = ((TabLayout)new WeakReference(paramTabLayout).get());
   }
   
-  public boolean b(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return false;
+    int i = 0;
+    paramContext = paramIntent.getAction();
+    if (TextUtils.isEmpty(paramContext)) {}
+    boolean bool;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!"ae_editor_bottom_tab_show_hide".equals(paramContext)) {
+            break;
+          }
+          bool = paramIntent.getBooleanExtra("is_show", true);
+        } while (this.a == null);
+        paramContext = this.a;
+        if (bool) {}
+        for (;;)
+        {
+          paramContext.setVisibility(i);
+          return;
+          i = 8;
+        }
+      } while (!"ae_editor_bottom_tab_change_style".equals(paramContext));
+      bool = paramIntent.getBooleanExtra("is_full_screen_capture", false);
+    } while (this.a == null);
+    this.a.a(bool);
   }
 }
 

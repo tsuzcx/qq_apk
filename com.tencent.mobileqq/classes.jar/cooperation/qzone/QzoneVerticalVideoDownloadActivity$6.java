@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bctj;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ final class QzoneVerticalVideoDownloadActivity$6
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put(this.jdField_a_of_type_JavaLangString, this.b);
-    bctj.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.c, true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
+    bdmc.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.c, true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
   }
 }
 

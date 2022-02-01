@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 final class upi
-  implements DialogInterface.OnDismissListener
+  extends ClickableSpan
 {
-  upi(uoc paramuoc) {}
+  upi(upg paramupg, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(@NonNull View paramView)
   {
-    uph.b(this.a);
+    if (this.jdField_a_of_type_Upg != null) {
+      this.jdField_a_of_type_Upg.a(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

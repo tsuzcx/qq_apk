@@ -1,147 +1,570 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
+import com.tencent.mobileqq.app.asyncdb.FullCache;
+import com.tencent.mobileqq.data.RoamDate;
+import com.tencent.mobileqq.data.RoamMessagePreloadInfo;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
-import cooperation.qwallet.plugin.QWalletPayBridge;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aoli
-  extends aojs
+  extends FullCache
 {
-  public aoli(QQAppInterface paramQQAppInterface, Context paramContext)
+  public aoli(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramQQAppInterface, paramDBDelayManager, RoamDate.class);
   }
   
-  private boolean C()
+  private String a(String paramString1, String paramString2)
   {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      return false;
-    }
-    QWalletHelper.launchQWalletAct((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false);
-    return true;
+    return paramString1 + "&" + paramString2;
   }
   
-  private boolean a(String paramString1, String paramString2, long paramLong)
+  public Pair<Calendar, Calendar> a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("PayInvokerId", 13);
-    localBundle.putString("viewParam", paramString1);
-    if (paramString2 != null) {
-      localBundle.putString("entry", paramString2);
+    Object localObject2 = a();
+    if (!((List)localObject2).isEmpty())
+    {
+      Object localObject1 = (RoamDate)((Map.Entry)((List)localObject2).get(0)).getValue();
+      localObject2 = (RoamDate)((Map.Entry)((List)localObject2).get(((List)localObject2).size() - 1)).getValue();
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.set(11, 0);
+      localCalendar.set(12, 0);
+      localCalendar.set(13, 0);
+      localCalendar.set(14, 0);
+      localCalendar.set(1, ((RoamDate)localObject1).getYear());
+      localCalendar.set(2, ((RoamDate)localObject1).getMonth() - 1);
+      int i = 0;
+      if ((i >= ((RoamDate)localObject1).getDays()) || (a((RoamDate)localObject1, i)))
+      {
+        localCalendar.set(5, i + 1);
+        localObject1 = Calendar.getInstance();
+        ((Calendar)localObject1).set(11, 0);
+        ((Calendar)localObject1).set(12, 0);
+        ((Calendar)localObject1).set(13, 0);
+        ((Calendar)localObject1).set(14, 0);
+        ((Calendar)localObject1).set(1, ((RoamDate)localObject2).getYear());
+        ((Calendar)localObject1).set(2, ((RoamDate)localObject2).getMonth() - 1);
+        i = ((RoamDate)localObject2).getDays() - 1;
+      }
+      for (;;)
+      {
+        if ((i < 0) || (a((RoamDate)localObject2, i)))
+        {
+          ((Calendar)localObject1).set(5, i + 1);
+          return new Pair(localCalendar, localObject1);
+          i += 1;
+          break;
+        }
+        i -= 1;
+      }
     }
-    paramString1 = new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class);
-    paramString1.putExtra("srvBundle", localBundle);
-    if (paramLong != 0L) {
-      paramString1.putExtra("vacreport_key_seq", paramLong);
-    }
-    paramString1.setData(Uri.parse("mqqapi://wallet/open?src_type=web&viewtype=0&version=1&view=10&entry=" + paramString2 + "&seq=" + paramLong));
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramString1);
-    return true;
+    return null;
   }
   
-  private boolean a(String paramString1, String paramString2, long paramLong, Bundle paramBundle)
+  public RoamDate a(String paramString, int paramInt1, int paramInt2)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("PayInvokerId", 13);
-    localBundle.putString("viewParam", paramString1);
-    if (paramString2 != null) {
-      localBundle.putString("entry", paramString2);
-    }
-    if (paramLong != 0L) {
-      localBundle.putLong("vacreport_key_seq", paramLong);
-    }
-    if (paramBundle != null) {
-      localBundle.putBundle("extra_pay_data", paramBundle);
-    }
-    VACDReportUtil.a(paramLong, null, "loadPluginStart", null, 0, null);
-    QWalletPayBridge.launchForeground((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBundle);
-    return true;
+    return (RoamDate)findCache(a(paramString, paramInt1, paramInt2));
   }
   
-  public boolean a()
+  public RoamDate a(String paramString1, String paramString2)
   {
+    return (RoamDate)findCache(a(paramString1, paramString2));
+  }
+  
+  public RoamMessagePreloadInfo a(String paramString, Calendar paramCalendar, int paramInt)
+  {
+    RoamMessagePreloadInfo localRoamMessagePreloadInfo = new RoamMessagePreloadInfo();
+    localRoamMessagePreloadInfo.preloadType = paramInt;
+    List localList = a();
+    if (paramInt == 0) {
+      if (a(paramString, paramCalendar, localList)) {
+        localRoamMessagePreloadInfo.curday = paramCalendar;
+      }
+    }
     for (;;)
     {
-      try
+      if ((localRoamMessagePreloadInfo.curday != null) && (paramInt != 0))
       {
-        if (("0".equals(this.jdField_a_of_type_JavaUtilHashMap.get("viewtype"))) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("src_type"))) && ((this.jdField_a_of_type_JavaUtilHashMap.get("view") == null) || ("0".equals(this.jdField_a_of_type_JavaUtilHashMap.get("view"))))) {
-          return C();
-        }
-        if (("0".equals(this.jdField_a_of_type_JavaUtilHashMap.get("viewtype"))) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("src_type"))))
-        {
-          if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("entry")) {
-            break label461;
-          }
-          str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("entry");
-          if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("seq")) {
-            break label467;
-          }
-          str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("seq");
-          l1 = 0L;
-          bool = TextUtils.isEmpty(str2);
-          if (bool) {
-            break label456;
-          }
-        }
+        localRoamMessagePreloadInfo.previousday = a(paramString, localRoamMessagePreloadInfo.curday, localList);
+        localRoamMessagePreloadInfo.nextday = b(paramString, localRoamMessagePreloadInfo.curday, localList);
       }
-      catch (Exception localException1)
-      {
-        String str1;
-        boolean bool;
-        long l2;
-        Bundle localBundle;
-        QLog.e("QwalletToHomeAction", 1, "doAction error: " + localException1.getMessage());
-        a("QwalletToHomeAction");
-        return false;
+      return localRoamMessagePreloadInfo;
+      paramCalendar = null;
+      break;
+      if (paramInt == 1) {
+        localRoamMessagePreloadInfo.curday = a(paramString, paramCalendar, localList);
+      } else if (paramInt == 2) {
+        localRoamMessagePreloadInfo.curday = b(paramString, paramCalendar, localList);
       }
-      try
-      {
-        l2 = Long.valueOf(str2).longValue();
-        l1 = l2;
-        VACDReportUtil.a(l2, "", "jumpParse", null, 0, null);
-        l1 = l2;
-      }
-      catch (Exception localException2)
-      {
-        Object localObject;
-        continue;
-      }
-      String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("view");
-      if (("1".equals(str2)) || ("2".equals(str2)) || ("3".equals(str2)) || ("4".equals(str2)) || ("5".equals(str2)) || ("6".equals(str2)) || ("7".equals(str2)) || ("9".equals(str2)) || ("10".equals(str2)) || ("11".equals(str2)))
-      {
-        localBundle = new Bundle();
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("tokenid")) {
-          localBundle.putString("tokenid", (String)this.jdField_a_of_type_JavaUtilHashMap.get("tokenid"));
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("data")) {
-          localBundle.putString("data", (String)this.jdField_a_of_type_JavaUtilHashMap.get("data"));
-        }
-        return a(str2, str1, l1, localBundle);
-      }
-      if ("8".equals(str2))
-      {
-        bool = a(str2, str1, l1);
-        return bool;
-      }
-      return false;
-      label456:
-      long l1 = 0L;
-      continue;
-      label461:
-      localObject = null;
-      continue;
-      label467:
-      str2 = null;
     }
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    return paramInt1 + '-' + paramInt2;
+  }
+  
+  public String a(String paramString, int paramInt1, int paramInt2)
+  {
+    return paramString + "&" + a(paramInt1, paramInt2);
+  }
+  
+  public Calendar a(String paramString, Calendar paramCalendar, List<Map.Entry<String, Entity>> paramList)
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Object localObject1 = paramList;
+    if (paramList == null) {
+      localObject1 = a();
+    }
+    paramList = localObject3;
+    int j;
+    int k;
+    int i1;
+    int i;
+    if (!((List)localObject1).isEmpty())
+    {
+      j = paramCalendar.get(1);
+      k = paramCalendar.get(2);
+      i1 = paramCalendar.get(5);
+      i = 0;
+      if (i >= ((List)localObject1).size()) {
+        break label391;
+      }
+      if (!((String)((Map.Entry)((List)localObject1).get(i)).getKey()).equals(a(paramString, j, k + 1))) {
+        break label250;
+      }
+    }
+    for (;;)
+    {
+      j = 0;
+      int m = i;
+      paramString = localObject2;
+      label115:
+      paramList = paramString;
+      if (m >= 0)
+      {
+        paramList = (RoamDate)((Map.Entry)((List)localObject1).get(m)).getValue();
+        if (m != i) {
+          break label268;
+        }
+        k = i1 - 2;
+        label156:
+        if (k < 0) {
+          break label388;
+        }
+        if (!a(paramList, k)) {
+          break label259;
+        }
+        paramString = Calendar.getInstance();
+        paramString.set(11, 0);
+        paramString.set(12, 0);
+        paramString.set(13, 0);
+        paramString.set(14, 0);
+        paramString.set(1, paramList.getYear());
+        paramString.set(2, paramList.getMonth() - 1);
+        paramString.set(5, k + 1);
+        j = 1;
+      }
+      label259:
+      label388:
+      for (;;)
+      {
+        paramCalendar = paramString;
+        k = j;
+        if (k != 0)
+        {
+          paramList = paramCalendar;
+          return paramList;
+          label250:
+          i += 1;
+          break;
+          k -= 1;
+          break label156;
+          label268:
+          int n = paramList.getDays() - 1;
+          for (;;)
+          {
+            k = j;
+            paramCalendar = paramString;
+            if (n < 0) {
+              break;
+            }
+            if (a(paramList, n))
+            {
+              paramCalendar = Calendar.getInstance();
+              paramCalendar.set(11, 0);
+              paramCalendar.set(12, 0);
+              paramCalendar.set(13, 0);
+              paramCalendar.set(14, 0);
+              paramCalendar.set(1, paramList.getYear());
+              paramCalendar.set(2, paramList.getMonth() - 1);
+              paramCalendar.set(5, n + 1);
+              k = 1;
+              break;
+            }
+            n -= 1;
+          }
+        }
+        m -= 1;
+        j = k;
+        paramString = paramCalendar;
+        break label115;
+      }
+      label391:
+      i = 0;
+    }
+  }
+  
+  public List<Map.Entry<String, Entity>> a()
+  {
+    ArrayList localArrayList = new ArrayList(this.cacheMap.entrySet());
+    Collections.sort(localArrayList, new aolj(this));
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.cacheMap.clear();
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    RoamDate localRoamDate = a(String.valueOf(paramLong), paramInt1, paramInt2);
+    if (localRoamDate == null) {
+      localRoamDate = new RoamDate(String.valueOf(paramLong), a(paramInt1, paramInt2), paramInt3, paramInt4);
+    }
+    for (;;)
+    {
+      a(localRoamDate);
+      return;
+      localRoamDate.setSerindex(paramInt3, paramInt4);
+    }
+  }
+  
+  public void a(RoamDate paramRoamDate)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache.RoamDateCache", 2, "saveRoamDate roamDate = " + paramRoamDate);
+    }
+    addCache(paramRoamDate);
+    this.proxyManager.transSaveToDatabase();
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 0;
+    Object localObject = this.app.getEntityManagerFactory().createEntityManager();
+    paramString = ((EntityManager)localObject).query(RoamDate.class, false, "uin=?", new String[] { paramString }, null, null, null, null);
+    ((EntityManager)localObject).close();
+    if (paramString != null)
+    {
+      a();
+      localObject = paramString.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        RoamDate localRoamDate = (RoamDate)((Iterator)localObject).next();
+        this.cacheMap.put(getKey(localRoamDate), localRoamDate);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("doInit size = ");
+      if (paramString != null) {
+        break label132;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("Q.db.Cache.RoamDateCache", 2, i);
+      return;
+      label132:
+      i = paramString.size();
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((this.cacheMap != null) && (!this.cacheMap.isEmpty()))
+    {
+      paramString = new ArrayList();
+      Iterator localIterator = this.cacheMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str1 = (String)((Map.Entry)localIterator.next()).getKey();
+        String str2 = str1.split("&")[1];
+        paramInt3 = Integer.parseInt(str2.split("-")[0]);
+        paramInt4 = Integer.parseInt(str2.split("-")[1]);
+        if ((paramInt3 < paramInt1) || ((paramInt3 == paramInt1) && (paramInt4 < paramInt2)))
+        {
+          paramString.add(str1);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.db.Cache.RoamDateCache", 2, "clipRoamDate key=" + str1);
+          }
+        }
+      }
+      if (!paramString.isEmpty())
+      {
+        paramString = paramString.iterator();
+        while (paramString.hasNext()) {
+          b((String)paramString.next());
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong, int paramInt)
+  {
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis((5L + paramLong) * 1000L);
+    int i = ((Calendar)localObject).get(1);
+    int j = ((Calendar)localObject).get(2) + 1;
+    int k = ((Calendar)localObject).get(5);
+    RoamDate localRoamDate = a(paramString, i, j);
+    localObject = localRoamDate;
+    if (localRoamDate == null) {
+      localObject = new RoamDate(paramString, a(i, j));
+    }
+    ((RoamDate)localObject).setSerState(k - 1, paramInt);
+    a((RoamDate)localObject);
+  }
+  
+  public boolean a(RoamDate paramRoamDate, int paramInt)
+  {
+    return (paramRoamDate.getSerState(paramInt) == 2) || (paramRoamDate.getLocState(paramInt) == 3);
+  }
+  
+  public boolean a(String paramString, Calendar paramCalendar, List<Map.Entry<String, Entity>> paramList)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int j;
+    int k;
+    int m;
+    int i;
+    if (!paramList.isEmpty())
+    {
+      j = paramCalendar.get(1);
+      k = paramCalendar.get(2);
+      m = paramCalendar.get(5);
+      i = 0;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < paramList.size())
+      {
+        if ((((String)((Map.Entry)paramList.get(i)).getKey()).equals(a(paramString, j, k + 1))) && (a((RoamDate)((Map.Entry)paramList.get(i)).getValue(), m - 1))) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public String[] a(String paramString)
+  {
+    return paramString.split("\\&");
+  }
+  
+  public Calendar b(String paramString, Calendar paramCalendar, List<Map.Entry<String, Entity>> paramList)
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Object localObject1 = paramList;
+    if (paramList == null) {
+      localObject1 = a();
+    }
+    paramList = localObject3;
+    int j;
+    int k;
+    int i1;
+    int i;
+    if (!((List)localObject1).isEmpty())
+    {
+      j = paramCalendar.get(1);
+      k = paramCalendar.get(2);
+      i1 = paramCalendar.get(5);
+      i = 0;
+      if (i >= ((List)localObject1).size()) {
+        break label399;
+      }
+      if (!((String)((Map.Entry)((List)localObject1).get(i)).getKey()).equals(a(paramString, j, k + 1))) {
+        break label259;
+      }
+    }
+    for (;;)
+    {
+      j = 0;
+      int m = i;
+      paramString = localObject2;
+      label115:
+      paramList = paramString;
+      if (m < ((List)localObject1).size())
+      {
+        paramList = (RoamDate)((Map.Entry)((List)localObject1).get(m)).getValue();
+        if (m != i) {
+          break label277;
+        }
+        k = i1;
+        label161:
+        if (k >= paramList.getDays()) {
+          break label396;
+        }
+        if (!a(paramList, k)) {
+          break label268;
+        }
+        paramString = Calendar.getInstance();
+        paramString.set(11, 0);
+        paramString.set(12, 0);
+        paramString.set(13, 0);
+        paramString.set(14, 0);
+        paramString.set(1, paramList.getYear());
+        paramString.set(2, paramList.getMonth() - 1);
+        paramString.set(5, k + 1);
+        j = 1;
+      }
+      label259:
+      label268:
+      label396:
+      for (;;)
+      {
+        paramCalendar = paramString;
+        k = j;
+        if (k != 0)
+        {
+          paramList = paramCalendar;
+          return paramList;
+          i += 1;
+          break;
+          k += 1;
+          break label161;
+          label277:
+          int n = 0;
+          for (;;)
+          {
+            k = j;
+            paramCalendar = paramString;
+            if (n >= paramList.getDays()) {
+              break;
+            }
+            if (a(paramList, n))
+            {
+              paramCalendar = Calendar.getInstance();
+              paramCalendar.set(11, 0);
+              paramCalendar.set(12, 0);
+              paramCalendar.set(13, 0);
+              paramCalendar.set(14, 0);
+              paramCalendar.set(1, paramList.getYear());
+              paramCalendar.set(2, paramList.getMonth() - 1);
+              paramCalendar.set(5, n + 1);
+              k = 1;
+              break;
+            }
+            n += 1;
+          }
+        }
+        m += 1;
+        j = k;
+        paramString = paramCalendar;
+        break label115;
+      }
+      label399:
+      i = 0;
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.cacheMap.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      b((RoamDate)((Map.Entry)localIterator.next()).getValue());
+    }
+  }
+  
+  public void b(RoamDate paramRoamDate)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache.RoamDateCache", 2, "removeRoamDate roamDate = " + paramRoamDate);
+    }
+    removeCache(paramRoamDate);
+    this.proxyManager.transSaveToDatabase();
+  }
+  
+  public void b(String paramString)
+  {
+    paramString = a(paramString);
+    if ((paramString == null) || (paramString.length != 2)) {
+      return;
+    }
+    paramString = a(paramString[0], paramString[1]);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache.RoamDateCache", 2, "removeRoamDate roamDate = " + paramString);
+    }
+    removeCache(paramString);
+    this.proxyManager.transSaveToDatabase();
+  }
+  
+  public void b(String paramString, long paramLong, int paramInt)
+  {
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis((5L + paramLong) * 1000L);
+    int i = ((Calendar)localObject).get(1);
+    int j = ((Calendar)localObject).get(2) + 1;
+    int k = ((Calendar)localObject).get(5);
+    localObject = a(paramString, i, j);
+    if (localObject != null)
+    {
+      ((RoamDate)localObject).setLocState(k - 1, paramInt);
+      a((RoamDate)localObject);
+      return;
+    }
+    QLog.e("Q.roammsg.MessageRoamManager", 1, "updateRoamDateLocIndex error roam not found uin = " + paramString + " year = " + i + " month = " + j);
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.cacheMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      RoamDate localRoamDate = (RoamDate)((Map.Entry)localIterator.next()).getValue();
+      localRoamDate.clearLocState();
+      a(localRoamDate);
+    }
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.cacheMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      RoamDate localRoamDate = (RoamDate)((Map.Entry)localIterator.next()).getValue();
+      localRoamDate.clearSerState();
+      a(localRoamDate);
+    }
+  }
+  
+  public void destroy() {}
+  
+  public String getKey(Entity paramEntity)
+  {
+    paramEntity = (RoamDate)paramEntity;
+    return paramEntity.uin + "&" + paramEntity.date;
   }
 }
 

@@ -1,6 +1,33 @@
-public abstract interface aiur
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aiur
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  aiur(aiuq paramaiuq) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    {
+      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localObject != null)
+      {
+        localObject = ((ChatFragment)localObject).a();
+        if (localObject != null) {
+          ((BaseChatPie)localObject).b(aiuq.a(this.a));
+        }
+      }
+      aqcz.a().a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

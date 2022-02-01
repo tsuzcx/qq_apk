@@ -1,33 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 
 public class pid
-  implements AladdinConfigHandler
+  extends RecyclerView.OnScrollListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "commercialAd_feeds")) {
-        bmqa.a("ad_feeds_proteus_offline_bid", str2);
-      }
-    }
-    return true;
-  }
+  public pid(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    bmqa.a("ad_feeds_proteus_offline_bid", "0");
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      if (paz.a()) {
+        pfd.a().l();
+      }
+      return;
+      ReadInJoyPicWaterFallFragment.a(this.a);
+    }
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo;
 
-import amhy;
-import amia;
+import amts;
+import amtu;
 import com.tencent.mobileqq.data.ApolloActionPush;
 import mqq.util.WeakReference;
 
 public class ApolloPushManager$2
   implements Runnable
 {
-  public ApolloPushManager$2(amhy paramamhy, int paramInt, ApolloActionPush paramApolloActionPush) {}
+  public ApolloPushManager$2(amts paramamts, int paramInt, ApolloActionPush paramApolloActionPush) {}
   
   public void run()
   {
-    if (amhy.a(this.this$0) != null)
+    if (amts.a(this.this$0) != null)
     {
-      amia localamia = (amia)amhy.a(this.this$0).get();
-      if (localamia != null) {
-        localamia.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
+      amtu localamtu = (amtu)amts.a(this.this$0).get();
+      if (localamtu != null) {
+        localamtu.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
       }
     }
   }

@@ -1,60 +1,17 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public class bhux
-  extends ExploreByTouchHelper
+class bhux
+  implements HostnameVerifier
 {
-  public bhux(ClearableEditText paramClearableEditText, View paramView)
-  {
-    super(paramView);
-  }
+  bhux(bhuw parambhuw, String paramString, bhva parambhva) {}
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if ((ClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    if (ClearableEditText.c(this.a)) {
-      paramList.add(Integer.valueOf(0));
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(anni.a(2131700749));
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription(anni.a(2131700748));
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
-    }
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaLangString, paramSSLSession);
+    this.jdField_a_of_type_Bhuw.a(this.jdField_a_of_type_Bhva, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.jdField_a_of_type_JavaLangString + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
+    return bool;
   }
 }
 

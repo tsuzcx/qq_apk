@@ -1,34 +1,15 @@
-import com.tencent.open.model.AppInfo;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Paint;
 
-public class biyb
-  implements anil
+class biyb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
+  biyb(bixz parambixz) {}
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (paramBoolean)
-      {
-        a(paramBoolean, (List)paramObject, null);
-        return;
-      }
-      a(paramBoolean, null, (String)paramObject);
-      return;
-    }
-    if (paramBoolean)
-    {
-      a(paramBoolean, (List)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
+    bixz.a(this.a).setAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 

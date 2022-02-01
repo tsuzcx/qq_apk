@@ -1,24 +1,44 @@
+import android.os.SystemClock;
 import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axmf
-  implements bkhw
+  implements View.OnClickListener
 {
-  public axmf(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bkho parambkho) {}
+  public axmf(TabPageIndicator paramTabPageIndicator) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    for (;;)
+    TabPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof axmi)) {}
+    for (localObject = (axmi)localObject;; localObject = null)
     {
-      if (this.jdField_a_of_type_Bkho != null) {
-        this.jdField_a_of_type_Bkho.dismiss();
+      if (localObject == null) {}
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        int i = TabPageIndicator.a(this.a).a();
+        int j = ((axmi)localObject).jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        ((axmi)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        TabPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
+          TabPageIndicator.a(this.a).a(j);
+        }
+        if (TabPageIndicator.a(this.a) != null) {
+          TabPageIndicator.a(this.a).a(j);
+        }
       }
-      return;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
     }
   }
 }

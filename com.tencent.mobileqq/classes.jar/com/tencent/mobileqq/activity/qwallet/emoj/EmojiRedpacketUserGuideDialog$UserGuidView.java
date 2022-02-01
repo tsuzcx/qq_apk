@@ -13,13 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anni;
-import bdzx;
-import bgfz;
-import bggq;
+import anzj;
+import beyq;
+import bhga;
+import bhgr;
 import com.tencent.mobileqq.widget.RoundImageView;
 import cooperation.qwallet.plugin.QWalletPicHelper;
-import zlx;
+import zps;
 
 class EmojiRedpacketUserGuideDialog$UserGuidView
   extends FrameLayout
@@ -38,9 +38,9 @@ class EmojiRedpacketUserGuideDialog$UserGuidView
     ((RelativeLayout)localObject1).addView(paramEmojiRedpacketUserGuideDialog);
     localObject2 = (RelativeLayout.LayoutParams)paramEmojiRedpacketUserGuideDialog.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject2).addRule(13);
-    ((RelativeLayout.LayoutParams)localObject2).width = bggq.a(paramContext, 40.0F);
-    ((RelativeLayout.LayoutParams)localObject2).height = bggq.a(paramContext, 40.0F);
-    localObject2 = getResources().getDrawable(2130843400);
+    ((RelativeLayout.LayoutParams)localObject2).width = bhgr.a(paramContext, 40.0F);
+    ((RelativeLayout.LayoutParams)localObject2).height = bhgr.a(paramContext, 40.0F);
+    localObject2 = getResources().getDrawable(2130843418);
     paramEmojiRedpacketUserGuideDialog.setBackgroundDrawable((Drawable)localObject2);
     ((Animatable)localObject2).start();
     paramEmojiRedpacketUserGuideDialog = new LinearLayout(paramContext);
@@ -51,22 +51,22 @@ class EmojiRedpacketUserGuideDialog$UserGuidView
     ((RelativeLayout.LayoutParams)localObject1).width = -1;
     ((RelativeLayout.LayoutParams)localObject1).height = -2;
     localObject1 = new RoundImageView(paramContext);
-    ((RoundImageView)localObject1).setmRadius(zlx.a(paramContext, 10.0F), false);
-    ((RoundImageView)localObject1).setImageDrawable(QWalletPicHelper.getNetDrawableForQWallet(EmojiRedpacketUserGuideDialog.URL_DEFAULT, bdzx.a, bdzx.a));
+    ((RoundImageView)localObject1).setmRadius(zps.a(paramContext, 10.0F), false);
+    ((RoundImageView)localObject1).setImageDrawable(QWalletPicHelper.getNetDrawableForQWallet(EmojiRedpacketUserGuideDialog.URL_DEFAULT, beyq.a, beyq.a));
     paramEmojiRedpacketUserGuideDialog.addView((View)localObject1);
     localObject1 = (LinearLayout.LayoutParams)((RoundImageView)localObject1).getLayoutParams();
     ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-    ((LinearLayout.LayoutParams)localObject1).height = ((int)(zlx.d(paramContext) * 0.7D));
-    ((LinearLayout.LayoutParams)localObject1).width = zlx.a(paramContext, 320.0F);
+    ((LinearLayout.LayoutParams)localObject1).height = ((int)(zps.d(paramContext) * 0.7D));
+    ((LinearLayout.LayoutParams)localObject1).width = zps.a(paramContext, 320.0F);
     localObject1 = new ImageView(paramContext);
-    ((ImageView)localObject1).setImageResource(2130846527);
+    ((ImageView)localObject1).setImageResource(2130846544);
     paramEmojiRedpacketUserGuideDialog.addView((View)localObject1);
     paramEmojiRedpacketUserGuideDialog = (LinearLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-    paramEmojiRedpacketUserGuideDialog.topMargin = ((int)(zlx.d(paramContext) * 0.02D));
+    paramEmojiRedpacketUserGuideDialog.topMargin = ((int)(zps.d(paramContext) * 0.02D));
     paramEmojiRedpacketUserGuideDialog.gravity = 1;
-    paramEmojiRedpacketUserGuideDialog.width = zlx.a(paramContext, 37.0F);
-    paramEmojiRedpacketUserGuideDialog.height = zlx.a(paramContext, 37.0F);
-    bgfz.a((View)localObject1, anni.a(2131702809), null);
+    paramEmojiRedpacketUserGuideDialog.width = zps.a(paramContext, 37.0F);
+    paramEmojiRedpacketUserGuideDialog.height = zps.a(paramContext, 37.0F);
+    bhga.a((View)localObject1, anzj.a(2131702916), null);
   }
 }
 

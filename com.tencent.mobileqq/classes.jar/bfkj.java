@@ -1,188 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.ArrayList;
-import java.util.ArrayList<Lbfkl;>;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
 public class bfkj
-  extends bfkg
+  implements URLDrawable.URLDrawableListener
 {
-  private agne jdField_a_of_type_Agne;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private ArrayList<bfki> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<Integer, ArrayList<bfkl>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  public boolean a;
+  public bfkj(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bfkl parambfkl) {}
   
-  public bfkj(BaseChatPie paramBaseChatPie, agma paramagma)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_Agne = ((agne)paramagma);
-    d();
+    this.jdField_a_of_type_Bfkl.a(null);
   }
   
-  private bfkm a(bfkl parambfkl)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (!(parambfkl instanceof bfkm)) {
-      return null;
-    }
-    return (bfkm)parambfkl;
+    this.jdField_a_of_type_Bfkl.a(null);
   }
   
-  private ArrayList<bfkl> a(int paramInt, ArrayList<bfkl> paramArrayList)
-  {
-    int i = 1;
-    if (paramInt == 1) {
-      i = 2;
-    }
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    Object localObject;
-    if ((localArrayList == null) && (paramArrayList == null)) {
-      localObject = null;
-    }
-    for (;;)
-    {
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-        Collections.sort((List)localObject, new bfkk(this));
-      }
-      return localObject;
-      if ((localArrayList == null) && (paramArrayList != null))
-      {
-        localObject = paramArrayList;
-      }
-      else
-      {
-        localObject = localArrayList;
-        if (localArrayList != null)
-        {
-          localObject = localArrayList;
-          if (paramArrayList != null)
-          {
-            localObject = new ArrayList();
-            ((ArrayList)localObject).addAll(localArrayList);
-            ((ArrayList)localObject).addAll(paramArrayList);
-          }
-        }
-      }
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  private void b(int paramInt, ArrayList<bfkl> paramArrayList)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    Object localObject2;
-    if (paramInt == 0)
-    {
-      localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1));
-      localObject1 = paramArrayList;
-      paramArrayList = (ArrayList<bfkl>)localObject2;
-    }
-    while ((localObject1 == null) || (paramArrayList == null))
-    {
-      return;
-      localObject1 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0));
-    }
-    Object localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (bfkl)((Iterator)localObject1).next();
-      Iterator localIterator = paramArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject3 = (bfkl)localIterator.next();
-        if (((bfkl)localObject2).c() == ((bfkl)localObject3).c())
-        {
-          localObject3 = a((bfkl)localObject2);
-          if (localObject3 != null)
-          {
-            ((bfkm)localObject3).a(false);
-            ((bfkm)localObject3).b(0);
-          }
-        }
-      }
-    }
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new bfly(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new bfls(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this));
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bfki)localIterator.next()).a();
-    }
-    e();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
-    this.jdField_a_of_type_Agne = null;
-  }
-  
-  public void a(int paramInt, ArrayList<bfkl> paramArrayList, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_Agne == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramArrayList);
-    b(paramInt, paramArrayList);
-    if ((paramInt == 2) || (paramInt == 1))
-    {
-      paramArrayList = a(paramInt, paramArrayList);
-      this.jdField_a_of_type_Agne.a(paramInt, paramArrayList, paramBoolean);
-      this.jdField_a_of_type_Agne.a(0, (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)), this.jdField_a_of_type_Boolean);
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Agne.a(paramInt, paramArrayList, paramBoolean);
-    this.jdField_a_of_type_Agne.a(1, a(1, (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1))), false);
-  }
-  
-  public void a(Object paramObject)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bfki localbfki = (bfki)localIterator.next();
-      if (localbfki != null) {
-        localbfki.a(paramObject);
-      }
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bfki)localIterator.next()).b();
-    }
-  }
-  
-  public void b(Object paramObject)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bfki localbfki = (bfki)localIterator.next();
-      if (localbfki != null) {
-        localbfki.b(paramObject);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bfki)localIterator.next()).c();
-    }
+    paramURLDrawable = bjtv.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bfkl.a(paramURLDrawable);
   }
 }
 

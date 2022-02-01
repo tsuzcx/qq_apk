@@ -1,28 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.CameraEmotionData;
 
 class asfz
-  implements asmh
+  extends anul
 {
-  asfz(asfu paramasfu) {}
+  asfz(asfy paramasfy) {}
   
-  public void a(boolean paramBoolean, asgr paramasgr)
+  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData)
   {
-    if (asfu.a(this.a) == null)
-    {
-      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo null");
-      return;
-    }
-    if (!paramBoolean) {
-      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc");
-    }
-    if (this.a.k())
-    {
-      ((asfs)asfu.a(this.a).a(127)).a(paramasgr);
-      QLog.i("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc:" + paramBoolean);
-      return;
-    }
-    QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT In extendfriend");
+    this.a.a(paramInt, paramCameraEmotionData);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.Iterator;
 import java.util.List;
-import pme;
+import pex;
 
 class KandianSubscribeManager$1
   implements Runnable
@@ -14,9 +14,9 @@ class KandianSubscribeManager$1
     Iterator localIterator = KandianSubscribeManager.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      pme localpme = (pme)localIterator.next();
-      if (localpme != null) {
-        localpme.z_();
+      pex localpex = (pex)localIterator.next();
+      if (localpex != null) {
+        localpex.z_();
       }
     }
   }

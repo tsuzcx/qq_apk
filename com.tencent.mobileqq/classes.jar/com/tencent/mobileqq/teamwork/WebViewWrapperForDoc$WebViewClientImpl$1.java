@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.teamwork;
 
-import bdjv;
+import becq;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class WebViewWrapperForDoc$WebViewClientImpl$1
   implements Runnable
 {
-  public WebViewWrapperForDoc$WebViewClientImpl$1(bdjv parambdjv, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapperForDoc$WebViewClientImpl$1(becq parambecq, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {

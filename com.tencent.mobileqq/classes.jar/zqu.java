@@ -1,112 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class zqu
-  implements zqs
+final class zqu
+  extends zqh
 {
-  protected int a = 1;
+  zqu(zqh paramzqh, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void a(int paramInt)
+  public void onFailure(String paramString)
   {
-    this.a = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    }
+    this.jdField_a_of_type_Zqh.onFailure(paramString);
+    if ((this.jdField_a_of_type_Zqh instanceof wmp)) {
+      ((wmp)this.jdField_a_of_type_Zqh).a(941006);
+    }
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 failed msg：" + paramString);
   }
   
-  public void a(View paramView, float paramFloat)
+  public void onStart()
   {
-    if (this.a == 1)
-    {
-      paramView.setTranslationY(paramFloat);
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 start");
   }
   
-  public void a(View paramView, float paramFloat, MotionEvent paramMotionEvent)
+  public void onSuccess(String paramString)
   {
-    if (this.a == 1)
-    {
-      paramView.setTranslationY(paramFloat);
-      paramMotionEvent.offsetLocation(0.0F, paramFloat - paramMotionEvent.getY(0));
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
-    paramMotionEvent.offsetLocation(paramFloat - paramMotionEvent.getX(0), 0.0F);
-  }
-  
-  public void a(View paramView, zqp paramzqp)
-  {
-    if (this.a == 1)
-    {
-      paramzqp.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_Y;
-      paramzqp.jdField_a_of_type_Float = paramView.getTranslationY();
-      paramzqp.b = paramView.getHeight();
-      return;
-    }
-    paramzqp.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_X;
-    paramzqp.jdField_a_of_type_Float = paramView.getTranslationX();
-    paramzqp.b = paramView.getWidth();
-  }
-  
-  public boolean a(View paramView)
-  {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(-1)) {}
-    }
-    while (!paramView.canScrollHorizontally(-1))
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean a(View paramView, zqv paramzqv, MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramMotionEvent.getHistorySize() == 0) {}
-    float f1;
-    float f2;
-    do
-    {
-      return false;
-      f1 = paramMotionEvent.getY(0) - paramMotionEvent.getHistoricalY(0, 0);
-      f2 = paramMotionEvent.getX(0) - paramMotionEvent.getHistoricalX(0, 0);
-      if (this.a != 1) {
-        break;
-      }
-    } while (Math.abs(f1) < Math.abs(f2));
-    paramzqv.jdField_a_of_type_Float = paramView.getTranslationY();
-    paramzqv.b = f1;
-    if (paramzqv.b > 0.0F) {
-      bool1 = true;
-    }
-    for (paramzqv.jdField_a_of_type_Boolean = bool1;; paramzqv.jdField_a_of_type_Boolean = bool1)
-    {
-      return true;
-      if (Math.abs(f2) < Math.abs(f1)) {
-        break;
-      }
-      paramzqv.jdField_a_of_type_Float = paramView.getTranslationX();
-      paramzqv.b = f2;
-      bool1 = bool2;
-      if (paramzqv.b > 0.0F) {
-        bool1 = true;
-      }
-    }
-  }
-  
-  public boolean b(View paramView)
-  {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(1)) {}
-    }
-    while (!paramView.canScrollHorizontally(1))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 success cost：" + String.valueOf(l1 - l2));
   }
 }
 

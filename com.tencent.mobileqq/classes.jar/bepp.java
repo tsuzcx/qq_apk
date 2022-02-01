@@ -1,19 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.JoinGroupInfo;
-
-public final class bepp
-  implements Parcelable.Creator<JoinGroupInfo>
+public abstract interface bepp
 {
-  public JoinGroupInfo a(Parcel paramParcel)
-  {
-    return new JoinGroupInfo(paramParcel);
-  }
+  public abstract void a();
   
-  public JoinGroupInfo[] a(int paramInt)
-  {
-    return new JoinGroupInfo[paramInt];
-  }
+  public abstract void a(beoc parambeoc);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(beoc parambeoc);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void setEditorEnabled(boolean paramBoolean);
+  
+  public abstract void setMySelection(int paramInt1, int paramInt2);
 }
 
 

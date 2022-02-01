@@ -1,54 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
 
-public abstract class ayzj
-  extends aqkz<ayzl>
+class ayzj
+  implements Camera.PreviewCallback
 {
-  abstract int a();
+  ayzj(ayzg paramayzg) {}
   
-  @NonNull
-  public ayzl a(int paramInt)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    return new ayzl();
-  }
-  
-  @Nullable
-  public ayzl a(aqlg[] paramArrayOfaqlg)
-  {
-    ayzl localayzl = new ayzl();
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
-      ayzl.a(localayzl, paramArrayOfaqlg[0].a);
+    if (paramArrayOfByte == null) {
+      return;
     }
-    return localayzl;
-  }
-  
-  public void a(ayzl paramayzl) {}
-  
-  public Class<ayzl> clazz()
-  {
-    return ayzl.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return a();
+    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!ayzg.a(this.a)))
+    {
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if ((this.a.e != 1) && (System.currentTimeMillis() - ayzg.a(this.a) > this.a.c))
+      {
+        ayzg.a(this.a, System.currentTimeMillis());
+        ayzg.a(this.a, paramArrayOfByte);
+      }
+    }
+    ayzg.a(this.a).addCallbackBuffer(paramArrayOfByte);
   }
 }
 

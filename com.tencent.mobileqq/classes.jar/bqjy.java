@@ -1,23 +1,14 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
-public class bqjy
-  extends bqkb
+public abstract interface bqjy
 {
-  public bqjy(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-  }
+  public abstract void a(float paramFloat);
   
-  public void a(Canvas paramCanvas)
-  {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
-  }
+  public abstract void a(DynamicTextItem paramDynamicTextItem);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
+  
+  public abstract boolean a(bqka parambqka);
 }
 
 

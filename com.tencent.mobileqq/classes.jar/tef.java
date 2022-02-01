@@ -1,25 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tef
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public tef(ZImageView paramZImageView) {}
+  public tef(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    ZImageView.access$000(this.a);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("timestamp", System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      label30:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      break label30;
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ZImageView.access$000(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

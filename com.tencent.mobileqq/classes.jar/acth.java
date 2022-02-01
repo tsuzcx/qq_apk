@@ -1,66 +1,44 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class acth
+class acth
+  extends BroadcastReceiver
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float c;
+  private acth(acsz paramacsz) {}
   
-  public acth()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-  }
-  
-  private Bitmap a(Drawable paramDrawable)
-  {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
+    if (acsz.a(this.a))
+    {
+      acsz.b(this.a, false);
+      QLog.i("GdtMvViewController", 1, "SilentModeReceiver first auto called! so skip!");
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-    }
-    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    paramDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    paramDrawable.draw(localCanvas);
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.c = paramFloat;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(Canvas paramCanvas, Drawable paramDrawable)
-  {
-    if ((paramCanvas == null) || (paramDrawable == null)) {
+    while ((acsz.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
       return;
     }
-    paramDrawable = new BitmapShader(a(paramDrawable), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(paramDrawable);
-    paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+    int i = acsz.a(this.a).getRingerMode();
+    int j = acsz.a(this.a).getStreamVolume(3);
+    QLog.i("GdtMvViewController", 1, "system context mode: " + i + ", streamVolume = " + j);
+    switch (i)
+    {
+    default: 
+      acsz.c(this.a, true);
+      this.a.a = true;
+      acsz.a(this.a).a(true);
+    }
+    for (;;)
+    {
+      acsz.a(this.a, j, acsz.b(this.a), false);
+      return;
+      acsz.c(this.a, false);
+      if (j > 0) {
+        this.a.a = false;
+      }
+      acsz.a(this.a).a(this.a.a);
+    }
   }
 }
 

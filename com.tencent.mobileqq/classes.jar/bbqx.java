@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bbqx
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bbqx(bbqr parambbqr, bbnu parambbnu, bbwe parambbwe) {}
+  bbqx(bbqw parambbqw) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbnu.a(this.jdField_a_of_type_Bbwe.a());
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.back();
   }
 }
 

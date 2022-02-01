@@ -1,18 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 class awns
-  extends awnh
+  implements awmn
 {
-  awns(awnr paramawnr) {}
+  awns(awnq paramawnq) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    int i = this.a.jdField_a_of_type_Awno.e;
+    String str3 = this.a.jdField_a_of_type_Awno.b;
+    this.a.b(i, str3);
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
+    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
+      bdll.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
     }
-    if ((paramBoolean) && ((paramObject instanceof awof))) {
-      awnr.a(this.a, (awof)paramObject);
+    while ((i != 1) || (TextUtils.isEmpty(str3))) {
+      return;
+    }
+    String str2 = "2";
+    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
+    String str1 = str2;
+    if (localTroopInfo != null)
+    {
+      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
+        break label180;
+      }
+      str1 = "0";
+    }
+    for (;;)
+    {
+      bdll.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
+      return;
+      label180:
+      str1 = str2;
+      if (localTroopInfo.isAdmin()) {
+        str1 = "1";
+      }
     }
   }
 }

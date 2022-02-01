@@ -1,16 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import kotlin.Metadata;
+import android.content.DialogInterface.OnClickListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
-final class asnj
-  implements DialogInterface.OnCancelListener
+class asnj
+  implements DialogInterface.OnClickListener
 {
-  public static final asnj a = new asnj();
+  asnj(asnf paramasnf) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcst.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,22 +1,19 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bhlu
-  implements bhlz
+final class bhlu
+  implements DialogInterface.OnClickListener
 {
-  bhlu(bhlt parambhlt) {}
+  bhlu(bhpc parambhpc) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c) {
-      return;
-    }
-    this.a.b = false;
-    bhlt.a(this.a);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhlu
  * JD-Core Version:    0.7.0.1
  */

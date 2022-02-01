@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akmn;
-import akmo;
-import akmp;
-import akww;
+import akxy;
+import akxz;
+import akya;
+import alil;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -37,17 +37,17 @@ public class QWalletPrivacyFragment
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = ((String)localObject2).replace("\\n", "\n");
     }
-    localObject2 = akww.a((String)localObject1, getActivity(), new akmn(this));
+    localObject2 = alil.a((String)localObject1, getActivity(), new akxy(this));
     if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str1)))
     {
       a();
       return;
     }
-    localObject1 = bglp.a(getActivity(), 230, 2131562114, str2, (CharSequence)localObject2, 2131716100, 2131716099, new akmo(this), new akmp(this));
-    ((bgpa)localObject1).setCancelable(false);
-    ((bgpa)localObject1).setCanceledOnTouchOutside(false);
-    ((bgpa)localObject1).show();
-    paramView = (RelativeLayout)paramView.findViewById(2131374939);
+    localObject1 = bhlq.a(getActivity(), 230, 2131562154, str2, (CharSequence)localObject2, 2131716213, 2131716212, new akxz(this), new akya(this));
+    ((bhpc)localObject1).setCancelable(false);
+    ((bhpc)localObject1).setCanceledOnTouchOutside(false);
+    ((bhpc)localObject1).show();
+    paramView = (RelativeLayout)paramView.findViewById(2131375076);
     localObject1 = new ColorDrawable(-1);
     localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
@@ -73,7 +73,7 @@ public class QWalletPrivacyFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562113, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562153, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

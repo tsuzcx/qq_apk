@@ -1,78 +1,40 @@
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import cooperation.qzone.thread.QzoneThreadMonitor;
 
 public class bnjd
+  implements Comparable<bnjd>
 {
-  public static String a(long paramLong, int paramInt)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  
+  public bnjd(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
   {
-    Object localObject = biip.a().f();
-    long l = biip.a().a();
-    localObject = "https://tu.qq.com/wspeed.qq.com/w.cgi?appid=1000322&commandid=pitu.qqsdk.AutoAIScene&releaseversion=" + (String)localObject + "&touin=" + l + "&frequency=1&resultcode=" + paramInt + "&timecost=" + paramLong;
-    try
-    {
-      localObject = (HttpURLConnection)new URL((String)localObject).openConnection();
-      ((HttpURLConnection)localObject).setConnectTimeout(5000);
-      ((HttpURLConnection)localObject).setRequestMethod("GET");
-      if (((HttpURLConnection)localObject).getResponseCode() == 200)
-      {
-        localObject = ((HttpURLConnection)localObject).getInputStream().toString();
-        return localObject;
-      }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public static JSONObject a(String paramString1, String paramString2)
+  public int a(@NonNull bnjd parambnjd)
   {
-    System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
-    System.setProperty("sun.net.client.defaultReadTimeout", "30000");
-    HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString1).openConnection();
-    localHttpURLConnection.setRequestMethod("POST");
-    localHttpURLConnection.setRequestProperty("accept", "*/*");
-    localHttpURLConnection.setRequestProperty("content-type", "application/json");
-    localHttpURLConnection.setConnectTimeout(5000);
-    localHttpURLConnection.setReadTimeout(5000);
-    localHttpURLConnection.setDoOutput(true);
-    localHttpURLConnection.setDoInput(true);
-    localHttpURLConnection.setUseCaches(false);
-    localHttpURLConnection.setInstanceFollowRedirects(true);
-    localHttpURLConnection.connect();
-    paramString1 = new DataOutputStream(localHttpURLConnection.getOutputStream());
-    paramString1.write(paramString2.getBytes("utf-8"));
-    paramString1.flush();
-    paramString1.close();
-    if (200 == localHttpURLConnection.getResponseCode())
-    {
-      paramString1 = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream()));
-      paramString2 = new StringBuilder();
-      for (;;)
-      {
-        String str = paramString1.readLine();
-        if (str == null) {
-          break;
-        }
-        paramString2.append(new String(str.getBytes(), "utf-8"));
-      }
-      paramString1.close();
-    }
-    for (paramString1 = paramString2.toString();; paramString1 = null)
-    {
-      localHttpURLConnection.disconnect();
-      if (paramString1 != null) {
-        break;
-      }
-      return null;
-    }
-    return new JSONObject(paramString1);
+    return (int)(this.jdField_a_of_type_Long - parambnjd.jdField_a_of_type_Long);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof bnjd)) && (this.jdField_a_of_type_JavaLangString.equals(((bnjd)paramObject).jdField_a_of_type_JavaLangString));
   }
 }
 

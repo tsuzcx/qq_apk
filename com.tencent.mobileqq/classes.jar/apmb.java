@@ -1,38 +1,123 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
 class apmb
-  implements ArkViewImplement.LoadCallback
+  implements aplz
 {
-  apmb(apma paramapma, appa paramappa, apow paramapow, int paramInt, agpp paramagpp) {}
+  private IBinder a;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  apmb(IBinder paramIBinder)
   {
-    onLoadState(paramInt1);
+    this.a = paramIBinder;
   }
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      this.jdField_a_of_type_Appa.a.setVisibility(0);
-      apma.a(this.jdField_a_of_type_Apma, this.jdField_a_of_type_Apow, this.jdField_a_of_type_Appa);
-      this.jdField_a_of_type_Appa.b.setVisibility(0);
-      this.jdField_a_of_type_Apow.a(this.jdField_a_of_type_Appa, this.jdField_a_of_type_Apma);
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Apma.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_Apow.a(this.jdField_a_of_type_Agpp, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Appa.a.setVisibility(8);
-      this.jdField_a_of_type_Appa.b.setVisibility(8);
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+        if (paramArConfigInfo != null)
+        {
+          localParcel1.writeInt(1);
+          paramArConfigInfo.writeToParcel(localParcel1, 0);
+          if (paramArEffectConfig != null)
+          {
+            localParcel1.writeInt(1);
+            paramArEffectConfig.writeToParcel(localParcel1, 0);
+            if (paramARCommonConfigInfo == null) {
+              break label131;
+            }
+            localParcel1.writeInt(1);
+            paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
+            this.a.transact(4, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+      continue;
+      label131:
+      localParcel1.writeInt(0);
     }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

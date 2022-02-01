@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aekt;
+import aetw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,9 +19,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anha;
-import anni;
-import bgnt;
+import ansv;
+import anzj;
+import bhnv;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -62,25 +62,25 @@ public class JDHongbaoActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376662));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376796));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369081));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131369182));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379500));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379498));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379497));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379499));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379560));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379702));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376639));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369171));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131369273));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379669));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379667));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379666));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379668));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379732));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379880));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376772));
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new aekt(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new aetw(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368029);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131368101);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 0.7F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(350L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
@@ -91,8 +91,8 @@ public class JDHongbaoActivity
     if (QLog.isColorLevel()) {
       QLog.d("JDHongbaoActivity", 2, "showHongbaoResult jumpUrl " + paramString);
     }
-    if (!bgnt.d(this)) {
-      QQToast.a(this, anni.a(2131704659), 1).a();
+    if (!bhnv.d(this)) {
+      QQToast.a(this, anzj.a(2131704766), 1).a();
     }
     while (paramString == null) {
       return;
@@ -129,12 +129,12 @@ public class JDHongbaoActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString + ">");
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-      anha.a(134247337, this.app);
+      ansv.a(134247337, this.app);
     }
     for (;;)
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130844931);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130844945);
       localObject = URLDrawable.getDrawable(this.jdField_f_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       if ((this.jdField_a_of_type_ComTencentImageURLImageView != null) && (localObject != null)) {
         this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
@@ -143,7 +143,7 @@ public class JDHongbaoActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString);
-      anha.a(134247333, this.app);
+      ansv.a(134247333, this.app);
     }
   }
   
@@ -170,7 +170,7 @@ public class JDHongbaoActivity
       finish();
       return false;
     }
-    setContentView(2131558677);
+    setContentView(2131558679);
     a();
     b();
     c();
@@ -194,25 +194,25 @@ public class JDHongbaoActivity
       a(this.g);
       if (this.jdField_a_of_type_Boolean)
       {
-        anha.a(134247339, this.app);
+        ansv.a(134247339, this.app);
       }
       else
       {
-        anha.a(134247335, this.app);
+        ansv.a(134247335, this.app);
         continue;
-        anha.a(134247334, this.app);
+        ansv.a(134247334, this.app);
         a(this.h);
         continue;
-        anha.a(134247338, this.app);
+        ansv.a(134247338, this.app);
         a(this.h);
         continue;
         if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 2000L)
         {
           finish();
           if (this.jdField_a_of_type_Boolean) {
-            anha.a(134247340, this.app);
+            ansv.a(134247340, this.app);
           } else {
-            anha.a(134247336, this.app);
+            ansv.a(134247336, this.app);
           }
         }
       }

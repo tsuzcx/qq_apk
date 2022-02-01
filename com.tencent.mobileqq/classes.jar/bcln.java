@@ -1,27 +1,17 @@
-import android.opengl.EGLContext;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
 public class bcln
+  extends bcmb
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public bcmi a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  
-  public void a()
+  public bcln(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
+    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
   }
   
-  public void a(EGLContext paramEGLContext)
+  public bcfq a(List<bcfr> paramList, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-      return;
-    }
+    return new bcfi(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

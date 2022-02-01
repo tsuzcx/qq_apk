@@ -1,21 +1,83 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class ofr
-  extends aoou
+  implements ofs
 {
-  ofr(ofk paramofk, String paramString)
+  private CustomTabView a;
+  
+  public void a(Context paramContext)
   {
-    super(paramString);
+    if (paramContext != null) {
+      paramContext.sendBroadcast(new Intent("com.tencent.biz.pubaccount.ecshop.tabpage.finish"));
+    }
+    if (this.a != null) {
+      this.a.a();
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(List<ChatMessage> paramList, oft paramoft)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
-    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
+    if (paramList.size() > 0)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+        localChatMessage.removeExtInfoToExtStr("add_title");
+        if (ofz.a(localChatMessage) == 1) {
+          localIterator.remove();
+        }
+      }
+    }
+    if (paramoft != null) {
+      paramoft.a(paramList);
+    }
+  }
+  
+  public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    ofu localofu = ofw.a();
+    if (ofx.a(localofu))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EcshopMinusViewChatPie", 2, "initPublicAccountMenu new qqshop pubaccount return");
+      }
+      this.a = new CustomTabView(paramContext);
+      if (this.a.a(localofu))
+      {
+        this.a.setTag("echopCustomTabView");
+        this.a.a(1);
+        paramRelativeLayout.addView(this.a);
+        paramContext = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+        if (paramContext != null)
+        {
+          paramContext.width = -1;
+          paramContext.height = -2;
+          paramContext.addRule(12);
+        }
+        paramContext = ogb.a();
+        ogb.a(paramContext);
+        this.a.a(paramContext);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(RelativeLayout paramRelativeLayout)
+  {
+    return (ofx.a()) && (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopCustomTabView") != null);
   }
 }
 

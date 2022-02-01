@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class affn
+class affn
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
+  affn(affm paramaffm) {}
   
-  public affn(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramDialogInterface.dismiss();
+    QQIdentiferActivity.a(this.a.a, 205, anzj.a(2131709240));
+    this.a.a.finish();
   }
 }
 

@@ -1,7 +1,25 @@
-import kotlin.Metadata;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "", "()V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public class rro {}
+public abstract interface rro
+{
+  public abstract void a(rrm paramrrm);
+  
+  public abstract void a(rrm paramrrm, int paramInt);
+  
+  public abstract void a(rrm paramrrm, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(rrm paramrrm, boolean paramBoolean);
+  
+  public abstract void b(rrm paramrrm);
+  
+  public abstract void b(rrm paramrrm, boolean paramBoolean);
+  
+  public abstract void c(rrm paramrrm);
+  
+  public abstract void d(rrm paramrrm);
+  
+  public abstract void e(rrm paramrrm);
+  
+  public abstract void f(rrm paramrrm);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

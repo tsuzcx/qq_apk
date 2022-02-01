@@ -1,25 +1,25 @@
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ttr
-  implements TopGestureLayout.InterceptTouchEventListener
+  implements DialogInterface.OnClickListener
 {
-  public ttr(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
+  public ttr(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ServiceAccountFolderActivity.a(this.a) != null)
+    switch (paramInt)
     {
-      float f = paramMotionEvent.getY();
-      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
-        return false;
-      }
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
+      return;
     }
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

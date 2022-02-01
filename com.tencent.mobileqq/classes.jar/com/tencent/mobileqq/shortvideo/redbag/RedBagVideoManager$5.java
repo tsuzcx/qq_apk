@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
 import android.os.Bundle;
-import bckg;
-import bckr;
+import bdcy;
+import bddj;
 import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -10,30 +10,30 @@ import com.tencent.qphone.base.util.QLog;
 public class RedBagVideoManager$5
   implements Runnable
 {
-  public RedBagVideoManager$5(bckg parambckg) {}
+  public RedBagVideoManager$5(bdcy parambdcy) {}
   
   public void run()
   {
     String str1 = null;
-    if (bckg.a(this.this$0) == null) {}
-    while (bckg.a(this.this$0).jdField_e_of_type_Int != LocalMediaInfo.REDBAG_TYPE_GET) {
+    if (bdcy.a(this.this$0) == null) {}
+    while (bdcy.a(this.this$0).jdField_e_of_type_Int != LocalMediaInfo.REDBAG_TYPE_GET) {
       return;
     }
-    String str2 = bckg.a(this.this$0).d;
+    String str2 = bdcy.a(this.this$0).d;
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("VALUE_USER_UIN_TO_GET_NICK_NAME", str2);
-    localObject = bckr.a().a("CMD_GET_NICK_NAME_BY_UIN", (Bundle)localObject);
+    localObject = bddj.a().a("CMD_GET_NICK_NAME_BY_UIN", (Bundle)localObject);
     if ((localObject == null) && (QLog.isColorLevel())) {
       QLog.d("RedBagVideoManager", 2, "getNickName VideoPlayIPCClient.callServer value=null");
     }
     if (localObject != null) {}
     for (localObject = ((Bundle)localObject).getString("VALUE_USER_NICK_NAME");; localObject = "")
     {
-      Bundle localBundle = bckr.a().a("CMD_GET_CURRENT_NICK_NAME", null);
+      Bundle localBundle = bddj.a().a("CMD_GET_CURRENT_NICK_NAME", null);
       if (localBundle != null) {
         str1 = localBundle.getString("VALUE_GET_CURRENT_NICK_NAME");
       }
-      this.this$0.a(bckg.a(this.this$0), str2, (String)localObject, str1, bckg.a(this.this$0).c, bckg.a(this.this$0).g, bckg.a(this.this$0).jdField_e_of_type_JavaLangString);
+      this.this$0.a(bdcy.a(this.this$0), str2, (String)localObject, str1, bdcy.a(this.this$0).c, bdcy.a(this.this$0).g, bdcy.a(this.this$0).jdField_e_of_type_JavaLangString);
       return;
     }
   }

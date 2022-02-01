@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import arki;
+import arzx;
 
 public class DataReportViewerFloatViewHelper$1
   implements Runnable
 {
   public void run()
   {
-    arki.a(this.this$0, this.this$0.a());
+    arzx.a(this.this$0, this.this$0.a());
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.applets;
 
-import ahdq;
-import alzs;
-import aoqq;
-import bcst;
+import ahnc;
+import amlk;
+import apeg;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$7
@@ -18,10 +18,10 @@ public final class PublicAccountEventReport$7
     if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      aoqq.a(str1, 138, str2, bool);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB4", "0X8009EB4", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
-      if (ahdq.a(this.jdField_a_of_type_JavaLangString)) {
-        alzs.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      apeg.a(str1, 138, str2, bool);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB4", "0X8009EB4", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
+      if (ahnc.a(this.jdField_a_of_type_JavaLangString)) {
+        amlk.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       return;
     }

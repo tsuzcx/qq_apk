@@ -1,84 +1,279 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
+import android.graphics.PointF;
 import android.graphics.Typeface;
-import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Observable;
 
-public class lir
-  extends lii
+public abstract class lir
 {
-  TextPaint a;
+  private static lit a;
+  protected Typeface a;
+  protected VideoAppInterface a;
+  protected final List<liq> a;
+  protected lis a;
+  protected liu a;
+  protected lix a;
   
-  public lir(lga paramlga, boolean paramBoolean)
+  public lir(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    super(paramlga, paramBoolean);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(4.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lix = ((lix)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
+    paramVideoAppInterface = d();
+    this.jdField_a_of_type_Lix.a(paramLong, paramVideoAppInterface);
   }
   
-  public int a()
+  public static PointF a(PointF paramPointF)
   {
-    return this.jdField_a_of_type_Int * 16;
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
+    }
+    a("static getSmallPointInBigScreen: " + paramPointF.x + "|" + paramPointF.y);
+    return jdField_a_of_type_Lit.a(paramPointF);
   }
   
-  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  public static String a()
   {
-    int k = this.jdField_a_of_type_Int - 8;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
-    this.jdField_a_of_type_AndroidTextTextPaint.setFlags(1);
-    lbc.c("ARZimuTask_SpitZimuItemTask", "onDraw width = " + paramInt1);
-    float f = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
-    String str2 = this.jdField_a_of_type_Lga.a.toString();
-    String str1 = str2;
-    if (str2.length() > 10) {
-      str1 = str2.substring(str2.length() - 10);
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
     }
-    str2 = lio.a(str1);
-    int j = str1.length();
-    str1 = str1 + str2;
-    lbc.c("ARZimuTask_SpitZimuItemTask", "onDraw showText = " + str1);
-    paramInt2 = str1.length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > 13) {
-      paramInt1 = 13;
+    return jdField_a_of_type_Lit.a();
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
     }
-    int i = 2;
-    k -= 6;
-    paramInt2 = 0;
-    while (paramInt2 < paramInt1)
+    a("getSmallScreenPositionType: " + paramInt);
+    jdField_a_of_type_Lit.a(paramInt);
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
+    }
+    a("UpdateSmallScreenPosition: " + paramInt1 + "|" + paramInt2);
+    jdField_a_of_type_Lit.a(paramInt1, paramInt2);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString == null) {}
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ARZimuTask", 2, paramString);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
+    }
+    jdField_a_of_type_Lit.a(paramString1, paramString2);
+  }
+  
+  private void a(lgi paramlgi, boolean paramBoolean)
+  {
+    Object localObject1 = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    Object localObject3;
+    while (localIterator.hasNext())
     {
-      if (paramInt2 >= j)
+      localObject3 = (liq)localIterator.next();
+      localObject2 = localObject1;
+      int j = i;
+      if (!((liq)localObject3).a.a())
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
-        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
+        localObject2 = localObject1;
+        j = i;
+        if (((liq)localObject3).a.jdField_a_of_type_JavaLangString.equals(paramlgi.jdField_a_of_type_JavaLangString))
+        {
+          j = 1;
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = localObject3;
+          }
+          ((liq)localObject3).a(paramlgi);
+          lbj.c("ARZimuTask", "updateTextInner " + paramlgi.jdField_a_of_type_JavaLangString + " onTextChanged info:" + paramlgi.jdField_a_of_type_JavaLangCharSequence);
+        }
       }
-      str2 = str1.substring(paramInt2, paramInt2 + 1);
-      lio.a(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-      i += this.jdField_a_of_type_Int;
-      paramInt2 += 1;
+      i = j;
+      localObject1 = localObject2;
     }
-    lbc.c("ARZimuTask_SpitZimuItemTask", "onDraw offsetX = " + i);
+    Object localObject2 = localObject1;
+    if (i == 0)
+    {
+      localObject3 = a(paramlgi, paramBoolean);
+      localObject2 = localObject1;
+      if (localObject3 != null)
+      {
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = localObject1;
+          if (((List)localObject3).size() > 0) {
+            localObject2 = (liq)((List)localObject3).get(0);
+          }
+        }
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject3);
+        lbj.c("ARZimuTask", "updateTextInner " + paramlgi.jdField_a_of_type_JavaLangString + " addinfo:" + paramlgi.jdField_a_of_type_JavaLangCharSequence);
+      }
+    }
+    a((liq)localObject2);
   }
   
-  public void a(Typeface paramTypeface, int paramInt, mnv parammnv)
+  public static void a(boolean paramBoolean)
   {
-    super.a(paramTypeface, paramInt, parammnv);
-    if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
+    }
+    jdField_a_of_type_Lit.a(paramBoolean);
+  }
+  
+  public static String b()
+  {
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
+    }
+    return jdField_a_of_type_Lit.b();
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
+    }
+    a("setSmallScreenSize: " + paramInt1 + "|" + paramInt2);
+    jdField_a_of_type_Lit.b(paramInt1, paramInt2);
+  }
+  
+  private void b(Observable paramObservable, Object paramObject)
+  {
+    ((Integer)((Object[])(Object[])paramObject)[0]).intValue();
+    a(paramObservable, paramObject);
+  }
+  
+  public static void c(int paramInt1, int paramInt2)
+  {
+    if (jdField_a_of_type_Lit == null) {
+      jdField_a_of_type_Lit = new lit();
+    }
+    a("setBigScreenSize: " + paramInt1 + "|" + paramInt2);
+    jdField_a_of_type_Lit.c(paramInt1, paramInt2);
+  }
+  
+  public abstract int a();
+  
+  protected abstract List<liq> a(lgi paramlgi, boolean paramBoolean);
+  
+  public liu a()
+  {
+    return this.jdField_a_of_type_Liu;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Lis = new lis(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lis);
+  }
+  
+  protected void a(Observable paramObservable, Object paramObject) {}
+  
+  public void a(lgi paramlgi)
+  {
+    if ((paramlgi == null) || (TextUtils.isEmpty(paramlgi.jdField_a_of_type_JavaLangCharSequence)) || (TextUtils.isEmpty(paramlgi.jdField_a_of_type_JavaLangString)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("updateText error:");
+      if (paramlgi == null) {}
+      for (paramlgi = null;; paramlgi = paramlgi.toString())
+      {
+        lbj.e("ARZimuTask", paramlgi);
+        return;
+      }
+    }
+    lbj.c("ARZimuTask", "updateText :" + paramlgi.toString());
+    if (!this.jdField_a_of_type_Lix.a()) {
+      this.jdField_a_of_type_Lix.b("updateText1", true);
+    }
+    a(paramlgi, false);
+  }
+  
+  abstract void a(liq paramliq);
+  
+  public void a(liu paramliu)
+  {
+    this.jdField_a_of_type_Liu = paramliu;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Lis != null) {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Lis);
     }
   }
   
-  public int b()
+  public String c()
   {
-    return this.jdField_a_of_type_Int;
+    Object localObject = d();
+    localObject = (ZimuItem)this.jdField_a_of_type_Lix.a((String)localObject);
+    if (localObject != null) {}
+    for (localObject = this.jdField_a_of_type_Lix.b((lgr)localObject);; localObject = "")
+    {
+      lbj.c("ARZimuTask", "getGamePlayResoucePath path = " + (String)localObject);
+      return localObject;
+    }
   }
+  
+  protected void c()
+  {
+    String str;
+    Object localObject;
+    if ((this.jdField_a_of_type_AndroidGraphicsTypeface == null) && (this.jdField_a_of_type_Lix != null))
+    {
+      str = d();
+      localObject = (ZimuItem)this.jdField_a_of_type_Lix.a(str);
+      if (localObject != null)
+      {
+        localObject = this.jdField_a_of_type_Lix.b((lgr)localObject);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = new File((String)localObject + "font.ttf");
+          if (!((File)localObject).exists()) {
+            break label136;
+          }
+        }
+      }
+    }
+    label136:
+    while (!AudioHelper.f()) {
+      try
+      {
+        this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile((File)localObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        while (!AudioHelper.f()) {}
+        QLog.w("ARZimuTask", 1, "createTypeface, Exception, id[" + str + "]", localException);
+        return;
+      }
+    }
+    QLog.w("ARZimuTask", 1, "createTypeface, 不存在, file[" + localException.getAbsolutePath() + "], id[" + str + "]");
+  }
+  
+  public abstract String d();
 }
 
 

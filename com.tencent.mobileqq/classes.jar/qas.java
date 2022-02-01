@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class qas
-  implements View.OnClickListener
+  implements CustomMethodsRegister.CustomMethodInterface
 {
-  qas(qam paramqam, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public Object invoke(String paramString, Object... paramVarArgs)
   {
-    qam.a(2, this.jdField_a_of_type_JavaLangString);
-    pha.a(qam.a(this.jdField_a_of_type_Qam), this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      paramVarArgs = paramVarArgs[0];
+      QLog.d("RIJProteusMethod", 1, "MethodHyperLink invoke,s=" + paramString + " firstObject=" + paramVarArgs);
+      if (String.valueOf(paramVarArgs).startsWith("more-")) {
+        pfd.a().a(String.valueOf(paramVarArgs));
+      }
+    }
+    else
+    {
+      return null;
+    }
+    ozs.d(BaseApplication.getContext(), String.valueOf(paramVarArgs));
+    return null;
   }
 }
 

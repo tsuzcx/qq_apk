@@ -1,17 +1,25 @@
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.RadioViewPager;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aawh
+  implements View.OnClickListener
 {
-  private String a = "";
+  public aawh(RadioViewPager paramRadioViewPager, Context paramContext, String paramString) {}
   
-  public static aawh a(String paramString)
+  public void onClick(View paramView)
   {
-    aawh localaawh = new aawh();
-    localaawh.a = paramString;
-    return localaawh;
-  }
-  
-  public String a()
-  {
-    return this.a;
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("selfSet_leftViewText", anzj.a(2131711580));
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

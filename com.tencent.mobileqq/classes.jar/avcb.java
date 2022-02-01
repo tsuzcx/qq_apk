@@ -1,23 +1,47 @@
-import android.widget.ImageView;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
-class avcb
-  implements ValueAnimator.AnimatorUpdateListener
+public class avcb
+  extends noa
 {
-  avcb(avbz paramavbz) {}
+  public avcb(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    if (this.a.a.getVisibility() == 0) {
-      this.a.a.setAlpha(f);
-    }
-    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
-    if (localHotVideoMongoliaRelativeLayout != null) {
-      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
-    }
+    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
+    do
+    {
+      return;
+      this.a.z();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(this.a.h))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
+          }
+          this.a.N();
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
+      }
+    } while (!ForwardSdkShareOption.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", auxr.e.intValue());
+    this.a.m();
   }
 }
 

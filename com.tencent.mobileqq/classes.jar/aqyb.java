@@ -1,63 +1,24 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqyb
-  extends aqwr<aqya>
+  implements View.OnClickListener
 {
-  public static aqya a()
-  {
-    return (aqya)aqlk.a().a(563);
-  }
+  public aqyb(TimeSelectView paramTimeSelectView) {}
   
-  @NonNull
-  public aqya a(@NonNull aqlg[] paramArrayOfaqlg)
+  public void onClick(View paramView)
   {
-    aqya localaqya = new aqya();
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (paramArrayOfaqlg != null) {}
-    try
-    {
-      if (!"".equals(paramArrayOfaqlg))
-      {
-        paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg);
-        localaqya.a = paramArrayOfaqlg.getString("musicBoxUrl");
-        localaqya.b = paramArrayOfaqlg.getString("playerUrl");
-      }
-      return localaqya;
+    if (TimeSelectView.a(this.a) != null) {
+      TimeSelectView.a(this.a).a(paramView);
     }
-    catch (JSONException paramArrayOfaqlg)
-    {
-      paramArrayOfaqlg.printStackTrace();
-    }
-    return localaqya;
-  }
-  
-  @NonNull
-  public aqya b()
-  {
-    return new aqya();
-  }
-  
-  @NonNull
-  public aqya c()
-  {
-    return new aqya();
-  }
-  
-  public Class<aqya> clazz()
-  {
-    return aqya.class;
-  }
-  
-  public int type()
-  {
-    return 563;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyb
  * JD-Core Version:    0.7.0.1
  */

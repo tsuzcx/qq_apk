@@ -1,13 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime;
 
-public class beij
-  implements DialogInterface.OnClickListener
+class beij
+  extends Handler
 {
-  public beij(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  beij(beih parambeih, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Bundle)));
+      this.a.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      return;
+    } while (this.a.a == null);
+    QQToast.a(this.a.a.getApplication(), anzj.a(2131706471), 4000).a();
+  }
 }
 
 

@@ -1,68 +1,79 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
-class aacq
-  implements zxa<CertifiedAccountRead.StGetFeedListRsp>
+public abstract class aacq
+  extends aabp
 {
-  aacq(aacp paramaacp, zxz paramzxz) {}
+  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+  private BaseWidgetView jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public aacq(Bundle paramBundle)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if ((paramBoolean) && (paramLong == 0L))
+    super(paramBundle);
+  }
+  
+  protected abstract BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp);
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    BaseWidgetView localBaseWidgetView;
+    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView != null)
     {
-      this.jdField_a_of_type_Aacp.getLoadInfo().d(paramStGetFeedListRsp.livePageInfo.get());
-      if ((this.jdField_a_of_type_Zxz.c()) || (this.jdField_a_of_type_Zxz.d())) {
-        if ((paramStGetFeedListRsp.hotLive.get() == null) || (paramStGetFeedListRsp.hotLive.get().size() == 0)) {
-          if (aacp.a(this.jdField_a_of_type_Aacp) != null)
-          {
-            this.jdField_a_of_type_Aacp.clearData();
-            aacp.a(this.jdField_a_of_type_Aacp).b(true);
-          }
-        }
+      localBaseWidgetView = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
+      if (!paramBoolean) {
+        break label29;
       }
     }
-    label189:
-    do
+    label29:
+    for (int i = 0;; i = 8)
     {
-      do
-      {
-        break label189;
-        break label189;
-        paramString = this.jdField_a_of_type_Aacp;
-        localList = paramStGetFeedListRsp.hotLive.get();
-        localStCommonExt = paramStGetFeedListRsp.extInfo;
-        if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-        for (paramBoolean = bool1;; paramBoolean = false)
-        {
-          paramString.a(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-          this.jdField_a_of_type_Aacp.setShareData("share_key_continue_feeds", new zxs(paramStGetFeedListRsp.hotLive.get()));
-          return;
-          if (aacp.a(this.jdField_a_of_type_Aacp) == null) {
-            break;
-          }
-          aacp.a(this.jdField_a_of_type_Aacp).b(false);
-          break;
-        }
-      } while (!this.jdField_a_of_type_Zxz.e());
-      paramString = this.jdField_a_of_type_Aacp;
-      List localList = paramStGetFeedListRsp.hotLive.get();
-      COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-      if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        paramString.b(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-        return;
-      }
-      this.jdField_a_of_type_Aacp.notifyLoadingComplete(false);
-    } while (((!this.jdField_a_of_type_Zxz.c()) && (!this.jdField_a_of_type_Zxz.d())) || (aacp.a(this.jdField_a_of_type_Aacp) == null));
-    aacp.a(this.jdField_a_of_type_Aacp).b(true);
+      localBaseWidgetView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 1;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null)
+    {
+      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
+      paramViewGroup = new aabt(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
+      paramViewGroup.setIsRecyclable(false);
+      getParentRecyclerView().getRecycledViewPool().setMaxRecycledViews(getGlobalViewType(paramInt), 0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewGroup;
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
   }
 }
 

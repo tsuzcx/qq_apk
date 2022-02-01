@@ -1,36 +1,20 @@
-public class yxz
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class yxz
+  extends SimpleJob<Object>
 {
-  private int jdField_a_of_type_Int;
-  private yxv jdField_a_of_type_Yxv = new yxu();
-  private int b;
-  
-  public yxx a()
+  yxz(yxt paramyxt, String paramString)
   {
-    return new yxx(this, null);
+    super(paramString);
   }
   
-  public yxz a(int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
-    }
-    return this;
-  }
-  
-  public yxz a(yxv paramyxv)
-  {
-    if (paramyxv != null) {
-      this.jdField_a_of_type_Yxv = paramyxv;
-    }
-    return this;
-  }
-  
-  public yxz b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
+    yuq.a("0X80076BC");
+    return null;
   }
 }
 

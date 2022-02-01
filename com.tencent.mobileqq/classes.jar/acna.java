@@ -1,7 +1,20 @@
-import kotlin.Metadata;
+import android.os.SystemClock;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingTitle$Companion;", "", "()V", "CLOSE_IMAGE_HEIGHT", "", "COUNT_DOWN_CORNER", "COUNT_DOWN_DIVIDER_HORIZONTAL_MARGIN", "COUNT_DOWN_HEIGHT", "COUNT_DOWN_HORIZONTAL_PADDING", "COUNT_DOWN_STROKE", "COUNT_DOWN_STROKE_COLOR_NORMAL", "", "COUNT_DOWN_TEXT_SIZE", "TITLE_HEIGHT", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acna {}
+class acna
+  implements ahag
+{
+  acna(acmz paramacmz, AdArkAdapter.Callback paramCallback) {}
+  
+  public void a() {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.firstPaint(SystemClock.elapsedRealtime());
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

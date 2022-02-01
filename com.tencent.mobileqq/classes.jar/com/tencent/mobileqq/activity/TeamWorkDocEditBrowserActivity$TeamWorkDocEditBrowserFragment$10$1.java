@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bdjg;
+import becb;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$10$1
   implements Runnable
@@ -16,7 +16,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$10$1
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = "https://docs.qq.com/desktop/m/index.html?_from=1")
     {
-      str = bdjg.b(str, "s_qq_myfile");
+      str = becb.b(str, "s_qq_myfile");
       localIntent.addFlags(536870912);
       localIntent.addFlags(67108864);
       this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$10.this$0.startActivity(localIntent.putExtra("url", str));

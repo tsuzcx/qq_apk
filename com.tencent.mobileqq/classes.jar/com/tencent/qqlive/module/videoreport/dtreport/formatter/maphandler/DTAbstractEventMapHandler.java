@@ -74,18 +74,21 @@ abstract class DTAbstractEventMapHandler
   
   void formatLvTime(Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    if ((isValidMap(paramMap2)) && (paramMap2.containsKey("lvtm")))
+    if (!isValidMap(paramMap2)) {}
+    do
     {
+      do
+      {
+        return;
+      } while (!paramMap2.containsKey("lvtm"));
       paramMap2 = paramMap2.get("lvtm");
-      if (paramMap2 != null) {
-        paramMap1.put("dt_lvtm", paramMap2.toString());
-      }
-    }
+    } while (paramMap2 == null);
+    paramMap1.put("dt_lvtm", paramMap2.toString());
   }
   
   void formatPage(Map<String, Object> paramMap, Map paramMap1)
   {
-    if ((isValidMap(paramMap1)) && (isValidMap(paramMap)))
+    if ((isValidMap(paramMap1)) && (paramMap != null))
     {
       String str1 = getPageId(paramMap1);
       String str2 = getContentId(paramMap1);
@@ -117,13 +120,13 @@ abstract class DTAbstractEventMapHandler
     {
       return;
       if (paramMap.containsKey("usid")) {
-        paramMap.put("dt_usid", (String)paramMap.remove("usid"));
+        paramMap.put("dt_usid", paramMap.remove("usid"));
       }
       if (paramMap.containsKey("us_stmp")) {
-        paramMap.put("dt_usstmp", Long.valueOf(((Long)paramMap.remove("us_stmp")).longValue()));
+        paramMap.put("dt_usstmp", paramMap.remove("us_stmp"));
       }
     } while (!paramMap.containsKey("coldstart"));
-    paramMap.put("dt_coldstart", (String)paramMap.remove("coldstart"));
+    paramMap.put("dt_coldstart", paramMap.remove("coldstart"));
   }
   
   boolean isValidMap(Object paramObject)

@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bnmp
-  implements DialogInterface.OnClickListener
+public abstract interface bnmp
 {
-  bnmp(bnmn parambnmn, bnpf parambnpf) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bnmn.a(this.jdField_a_of_type_Bnmn, this.jdField_a_of_type_Bnpf);
-  }
+  public abstract void b();
 }
 
 

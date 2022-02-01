@@ -6,8 +6,11 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.MiniSDKConst;
 import com.tencent.qqmini.sdk.launcher.core.proxy.CmdProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IMiniAppNotifyProxy;
 import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -78,6 +81,13 @@ public class MiniAppCmdServlet
       long l = paramBundle.getLong("key_timestamp", 0L);
       ((IMiniAppNotifyProxy)ProxyManager.get(IMiniAppNotifyProxy.class)).report(paramString, i, paramMiniCmdCallback, str, l);
     }
+  }
+  
+  private void onUpdateV8rt(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
+  {
+    paramString = WnsConfig.getConfig("qqminiapp", "mini_app_v8_rt_url", "https://d3g.qq.com/sngapp/app/update/20200714173502_6904/libtv8rt.so");
+    paramBundle = MiniSDKConst.getMiniAppV8rtPath();
+    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, paramBundle, 60, new MiniAppCmdServlet.2(this, paramMiniCmdCallback));
   }
   
   private void preloadGameBaseLib(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
@@ -246,6 +256,8 @@ public class MiniAppCmdServlet
         preloadGameBaseLib(paramString, paramBundle, paramMiniCmdCallback);
       } else if ("cmd_notify_event_info".equals(paramString)) {
         notifyEventInfo(paramString, paramBundle, paramMiniCmdCallback);
+      } else if ("cmd_update_v8rt".equals(paramString)) {
+        onUpdateV8rt(paramString, paramBundle, paramMiniCmdCallback);
       }
     }
   }

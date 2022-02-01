@@ -10,7 +10,7 @@ class MediaJsPlugin$5
   
   public void run()
   {
-    this.this$0.insertCamera(this.val$req, this.val$cameraId, this.val$parentId, this.val$devicePosition, this.val$postionObj.optInt("left"), this.val$postionObj.optInt("top"), this.val$postionObj.optInt("width"), this.val$postionObj.optInt("height"), new MediaJsPlugin.5.1(this), this.val$flashMode, this.val$fixed, this.val$mode);
+    this.this$0.insertCamera(this.val$req, this.val$cameraId, this.val$parentId, this.val$devicePosition, this.val$positionObj.optInt("left"), this.val$positionObj.optInt("top"), this.val$positionObj.optInt("width"), this.val$positionObj.optInt("height"), new MediaJsPlugin.5.1(this), this.val$flashMode, this.val$fixed, this.val$mode);
   }
 }
 

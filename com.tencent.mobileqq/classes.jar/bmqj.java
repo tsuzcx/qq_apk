@@ -1,48 +1,49 @@
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.shadow.ReaderShadowImpl.1;
+
 public class bmqj
+  implements EnterCallback
 {
-  private static bmqj jdField_a_of_type_Bmqj = new bmqj();
-  private bmqk jdField_a_of_type_Bmqk;
-  bmql jdField_a_of_type_Bmql;
+  public bmqj(ReaderShadowImpl.1 param1, long paramLong) {}
   
-  public static bmqj a()
+  public void onCloseLoadingView()
   {
-    return jdField_a_of_type_Bmqj;
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
+    }
+    bmqw.c("ReaderShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
   }
   
-  public void a()
+  public void onEnterComplete()
   {
-    this.jdField_a_of_type_Bmqk = null;
-  }
-  
-  public void a(bmqk parambmqk)
-  {
-    this.jdField_a_of_type_Bmqk = parambmqk;
-  }
-  
-  public void a(bmql parambmql)
-  {
-    this.jdField_a_of_type_Bmql = parambmql;
-  }
-  
-  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bmqk == null) {
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
+    }
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1002L) {
+      bmqz.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "0");
+    }
+    for (;;)
+    {
+      bmqw.c("ReaderShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
       return;
+      if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1003L) {
+        bmqz.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "1");
+      }
     }
-    this.jdField_a_of_type_Bmqk.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
   }
   
-  public void a(String paramString1, String paramString2)
+  public void onShowLoadingView(View paramView)
   {
-    bmql localbmql = this.jdField_a_of_type_Bmql;
-    if ((localbmql != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
-      localbmql.a(paramString2);
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
     }
+    bmqw.c("ReaderShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,11 @@
-import android.app.Activity;
-import android.content.Intent;
-
-public abstract interface acpf
+public class acpf
 {
-  public abstract Activity a();
+  private acpg a;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Intent paramIntent);
+  public void a(acpg paramacpg)
+  {
+    this.a = paramacpg;
+  }
 }
 
 

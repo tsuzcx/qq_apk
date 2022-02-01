@@ -1,75 +1,50 @@
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
+import java.security.InvalidParameterException;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "fallbackJumpIntent", "jumpActionIntent", "jumpIntent", "jumpMsgTabIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class aybw
+public class aybw
 {
-  private final PendingIntent e(ayca paramayca)
-  {
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, SplashActivity.class);
-    localIntent.putExtra("tab_index", MainFragment.b);
-    localIntent.putExtra("fragment_id", 1);
-    localIntent.setFlags(335544320);
-    paramayca = PendingIntent.getActivity((Context)localBaseApplication, paramayca.jdField_d_of_type_Int, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramayca, "jumpPendingIntent");
-    return paramayca;
-  }
+  private SplitedProgressBar a;
   
-  @NotNull
-  protected abstract PendingIntent a(@NotNull ayca paramayca);
-  
-  protected boolean a()
+  public aybw(SplitedProgressBar paramSplitedProgressBar)
   {
-    return false;
-  }
-  
-  @NotNull
-  public final PendingIntent b(@NotNull ayca paramayca)
-  {
-    Intrinsics.checkParameterIsNotNull(paramayca, "pushComponent");
-    if (a()) {
-      return a(paramayca);
+    if (paramSplitedProgressBar == null) {
+      throw new InvalidParameterException("ProgressControler: progressBar is null");
     }
-    return c(paramayca);
+    this.a = paramSplitedProgressBar;
   }
   
-  @NotNull
-  public final PendingIntent c(@NotNull ayca paramayca)
+  public void a(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramayca, "pushComponent");
-    if (Intrinsics.areEqual(paramayca.jdField_d_of_type_JavaLangString, "")) {
-      return e(paramayca);
+    if (paramInt == 0) {
+      return;
     }
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramayca.jdField_d_of_type_JavaLangString);
-    localIntent.addFlags(268435456);
-    aycb.a(localIntent, paramayca);
-    localIntent.putExtra("param_notifyid", paramayca.jdField_d_of_type_Int);
-    paramayca = PendingIntent.getActivity((Context)localBaseApplication, paramayca.jdField_d_of_type_Int, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramayca, "jumpPendingIntent");
-    return paramayca;
+    this.a.setTotalCount(paramInt);
   }
   
-  @NotNull
-  public final PendingIntent d(@NotNull ayca paramayca)
+  public void a(int paramInt1, int paramInt2)
   {
-    Intrinsics.checkParameterIsNotNull(paramayca, "pushComponent");
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramayca.jdField_d_of_type_JavaLangString));
-    localIntent.setFlags(268435456);
-    paramayca = PendingIntent.getActivity((Context)BaseApplication.context, paramayca.jdField_d_of_type_Int, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramayca, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
-    return paramayca;
+    if (paramInt1 < this.a.b) {
+      this.a.setProgress(paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    SplitedProgressBar localSplitedProgressBar = this.a;
+    if (paramBoolean) {}
+    for (int i = 8;; i = 0)
+    {
+      localSplitedProgressBar.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    this.a.setShowMaxCount(paramInt);
   }
 }
 

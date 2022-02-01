@@ -1,66 +1,83 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
 
 public class azve
-  implements bdvw
 {
-  int jdField_a_of_type_Int;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
-  String d;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public azve(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
+  public azve(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString4;
-    this.d = paramString2;
-    this.c = paramString3;
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
-    try
+    this.jdField_a_of_type_Int = bhnv.a(BaseApplication.getContext());
+    this.jdField_a_of_type_Boolean = bcxf.a(paramQQAppInterface, paramMessageForShortVideo);
+    if (paramMessageForShortVideo.videoAttr == 1) {}
+    for (;;)
     {
-      if (parambdwt.jdField_a_of_type_Int == 0)
+      this.c = bool;
+      paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
+      if (paramQQAppInterface != null)
       {
-        QLog.i("QSplash@QbossSplashDownloadManager", 1, "ResFile has download!");
-        if (!TextUtils.isEmpty(this.d))
-        {
-          if (azvg.a(this.d, false))
-          {
-            parambdwt = new File(this.d);
-            parambdwt.renameTo(new File(this.d.substring(0, this.d.lastIndexOf("."))));
-            long l = parambdwt.length();
-            parambdwt = (beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-            if (parambdwt.a())
-            {
-              QLog.i("QSplash@QbossSplashUtil", 1, "preDownloadSuccess");
-              parambdwt.a(this.b, l);
-            }
-            azvc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-          azvc.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          QLog.i("QSplash@QbossSplashUtil", 1, "ResFile check not exist");
+        paramQQAppInterface = paramQQAppInterface.e(String.valueOf(paramMessageForShortVideo.senderuin));
+        if (paramQQAppInterface != null) {
+          this.jdField_b_of_type_Boolean = paramQQAppInterface.isFriend();
         }
       }
-      else if (parambdwt.jdField_a_of_type_Int == 1)
-      {
-        azvc.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-        QLog.i("QSplash@QbossSplashUtil", 1, "ResFile dowload faield");
-      }
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_b_of_type_Long = paramLong2;
       return;
+      bool = false;
     }
-    catch (Exception parambdwt) {}
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void a()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder("doReport:");
+      ((StringBuilder)localObject).append("mMsgViewedInAIOTime=").append(this.jdField_a_of_type_Long).append("|");
+      ((StringBuilder)localObject).append("mMsgClickedTime=").append(this.jdField_b_of_type_Long).append("|");
+      ((StringBuilder)localObject).append("mViewNetType=").append(this.jdField_a_of_type_Int).append("|");
+      ((StringBuilder)localObject).append("mClickNetType=").append(this.jdField_b_of_type_Int).append("|");
+      ((StringBuilder)localObject).append("mAutoDownload=").append(this.jdField_a_of_type_Boolean).append("|");
+      ((StringBuilder)localObject).append("mIsFriend=").append(this.jdField_b_of_type_Boolean).append("|");
+      ((StringBuilder)localObject).append("mIsHotVideo=").append(this.c).append("|");
+      QLog.i("ShortVideoPredictionEvaluator", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+    ((HashMap)localObject).put("viewed_time", String.valueOf(this.jdField_a_of_type_Long));
+    ((HashMap)localObject).put("click_time", String.valueOf(this.jdField_b_of_type_Long));
+    ((HashMap)localObject).put("view_net", String.valueOf(this.jdField_a_of_type_Int));
+    ((HashMap)localObject).put("click_net", String.valueOf(this.jdField_b_of_type_Int));
+    ((HashMap)localObject).put("auto_download", String.valueOf(this.jdField_a_of_type_Boolean));
+    ((HashMap)localObject).put("is_friend", String.valueOf(this.jdField_b_of_type_Boolean));
+    ((HashMap)localObject).put("is_hot", String.valueOf(this.c));
+    if (this.jdField_b_of_type_Long > 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bdmc.a(BaseApplication.getContext()).a(null, "actVideoMessageTime", bool, 0L, 0L, (HashMap)localObject, "");
+      return;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_b_of_type_Long == 0L)
+    {
+      this.jdField_b_of_type_Long = paramLong;
+      this.jdField_b_of_type_Int = bhnv.a(BaseApplication.getContext());
+    }
+  }
 }
 
 

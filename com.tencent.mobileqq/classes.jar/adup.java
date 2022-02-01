@@ -1,12 +1,19 @@
-public abstract interface adup
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class adup
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public adup(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public abstract void a(asfa paramasfa);
-  
-  public abstract boolean a();
-  
-  public abstract void b(asfa paramasfa);
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(2130771997, 2130772001);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

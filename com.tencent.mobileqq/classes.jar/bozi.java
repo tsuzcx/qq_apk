@@ -1,50 +1,164 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-class bozi
-  implements AdapterView.OnItemClickListener
+public class bozi
+  extends RecyclerView.Adapter<bozl>
 {
-  bozi(boza paramboza) {}
+  private static long jdField_a_of_type_Long;
+  private static final String jdField_a_of_type_JavaLangString = bozi.class.getSimpleName();
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bozk jdField_a_of_type_Bozk;
+  private HashMap<Integer, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<ShelfNode> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int c;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bozi(Context paramContext, List<ShelfNode> paramList, int paramInt1, int paramInt2)
   {
-    if (boza.a(this.a) != null) {
-      bjfg.a(boza.a(this.a).hashCode());
-    }
-    woa localwoa = boza.a(this.a).a(paramInt);
-    if (boza.a(this.a).a() == paramInt) {
-      if (localwoa.c) {
-        boza.a(this.a, true);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    if (this.c != 0)
+    {
+      this.jdField_a_of_type_Double = (this.jdField_b_of_type_Int / this.c);
+      if (this.jdField_a_of_type_Double < 1.0D) {
+        break label83;
       }
+    }
+    label83:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long >= 200L) {
+      bool = true;
+    }
+    jdField_a_of_type_Long = l;
+    return bool;
+  }
+  
+  public bozl a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bozl(this, LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558499, paramViewGroup, false));
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      int i = ((Integer)localIterator.next()).intValue();
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        localBitmap.recycle();
+      }
+    }
+  }
+  
+  public void a(int paramInt, Bitmap paramBitmap)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      if (BitmapUtils.isLegal(paramBitmap)) {
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramBitmap);
+      }
+    }
+    Bitmap localBitmap;
+    do
+    {
+      do
+      {
+        return;
+        localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      } while (!BitmapUtils.isLegal(paramBitmap));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramBitmap);
+    } while ((!BitmapUtils.isLegal(localBitmap)) || (localBitmap == paramBitmap));
+    localBitmap.recycle();
+  }
+  
+  public void a(bozk parambozk)
+  {
+    this.jdField_a_of_type_Bozk = parambozk;
+  }
+  
+  @TargetApi(21)
+  public void a(@NonNull bozl parambozl, int paramInt)
+  {
+    Object localObject = (ShelfNode)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localObject == null)
+    {
+      Log.e(jdField_a_of_type_JavaLangString, "onBindViewHolder contain null data item");
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambozl, paramInt, getItemId(paramInt));
+      return;
+    }
+    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      localObject = BitmapUtils.decodeSampleBitmap(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString + File.separator + ((ShelfNode)localObject).getCoverUri(), 1);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
+    }
+    parambozl.c.setImageBitmap((Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
+    localObject = "0" + (paramInt + 1);
+    parambozl.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    parambozl.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    if (this.jdField_a_of_type_Int == paramInt)
+    {
+      parambozl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      parambozl.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      parambozl.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      parambozl.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
-      yqu.a("textEdit_patten", "clk_patten", boza.b(this.a), 0, new String[] { "", localwoa.a });
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      if (localwoa.d)
-      {
-        if (bgnt.d(paramView.getContext()))
-        {
-          QQToast.a(boza.a(this.a).getContext(), anni.a(2131713111), 0).a();
-          boza.a(this.a, localwoa);
-        }
-        else
-        {
-          boza.b(this.a);
-        }
-      }
-      else
-      {
-        QQToast.a(boza.a(this.a).getContext(), anni.a(2131713109), 0).a();
-        continue;
-        boza.a(this.a).a(paramInt);
-        boza.a(this.a, localwoa);
-      }
+      parambozl.itemView.setOnClickListener(new bozj(this, paramInt));
+      break;
+      parambozl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      parambozl.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      parambozl.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      parambozl.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void b()
+  {
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

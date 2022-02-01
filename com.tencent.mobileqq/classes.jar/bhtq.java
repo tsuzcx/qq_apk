@@ -1,98 +1,386 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.ColorInt;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
 
 public class bhtq
-  implements BusinessObserver
 {
-  public bhtq(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean) {}
+  private static double a;
+  public static float a;
+  public static int a;
+  private static float jdField_b_of_type_Float;
+  private static int jdField_b_of_type_Int = -1;
+  private static float jdField_c_of_type_Float;
+  private static int jdField_c_of_type_Int = -1;
+  private static float jdField_d_of_type_Float;
+  private static int jdField_d_of_type_Int = -1;
+  private static int e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    try
+    DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+    jdField_a_of_type_Float = localDisplayMetrics.density;
+    jdField_a_of_type_Int = localDisplayMetrics.densityDpi;
+    jdField_c_of_type_Float = -1.0F;
+    jdField_d_of_type_Float = -1.0F;
+  }
+  
+  public static double a()
+  {
+    if (jdField_a_of_type_Double <= 0.0D)
     {
-      ((axby)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)).d.put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(1));
-      if (!paramBoolean) {
-        break label348;
-      }
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label348;
-      }
-      localObject = new WebSsoBody.WebSsoResponseBody();
-      ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-      paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-      localObject = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-      if (paramInt != 0)
-      {
-        paramBundle = ((JSONObject)localObject).optString("msg");
-        if ((TextUtils.isEmpty(paramBundle)) || (!QLog.isColorLevel())) {
-          break label348;
-        }
-        QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", errMsg:" + paramBundle);
-        QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
-        return;
-      }
-      paramBundle = ((JSONObject)localObject).getJSONObject("result");
-      if (((JSONObject)localObject).optInt("retcode") != 0) {
-        break label348;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      }
-      localObject = BaseApplicationImpl.getContext();
-      localBaseApplication = BaseApplicationImpl.getContext();
-      if (!this.b.equals("1")) {
-        break label477;
-      }
-      paramInt = 2131693915;
+      DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+      double d1 = Math.pow(localDisplayMetrics.widthPixels, 2.0D);
+      jdField_a_of_type_Double = Math.sqrt(Math.pow(localDisplayMetrics.heightPixels, 2.0D) + d1) / c();
     }
-    catch (Exception paramBundle)
-    {
-      Object localObject;
-      BaseApplication localBaseApplication;
-      if (!QLog.isColorLevel()) {
-        break label348;
-      }
-      QLog.d("Q.werewolf.WerewolvesHostInterface", 2, "sendOperateFollowUser, Exception");
-      label348:
-      paramBundle = BaseApplicationImpl.getContext();
-      if (!this.b.equals("1")) {
-        break label483;
-      }
-      label477:
-      label483:
-      for (paramInt = 2131693914;; paramInt = 2131693922)
-      {
-        paramBundle = paramBundle.getString(paramInt);
-        QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", re:" + paramBundle);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-        return;
-        paramInt = 2131693923;
-        break;
+    return jdField_a_of_type_Double;
+  }
+  
+  public static float a()
+  {
+    if (jdField_c_of_type_Float < 0.0F) {
+      jdField_c_of_type_Float = BaseApplication.getContext().getResources().getDisplayMetrics().density;
+    }
+    return jdField_c_of_type_Float;
+  }
+  
+  public static float a(float paramFloat)
+  {
+    if (jdField_b_of_type_Float == 0.0F) {
+      jdField_b_of_type_Float = jdField_a_of_type_Int;
+    }
+    return jdField_b_of_type_Float * paramFloat / 160.0F;
+  }
+  
+  public static int a()
+  {
+    if (jdField_c_of_type_Int < 0) {
+      if (BaseApplication.getContext().getResources().getConfiguration().orientation != 2) {
+        break label41;
       }
     }
-    QQToast.a((Context)localObject, 2, localBaseApplication.getString(paramInt), 0).a();
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", result:" + paramBundle.toString());
+    label41:
+    for (jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;; jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels) {
+      return jdField_c_of_type_Int;
+    }
+  }
+  
+  public static int a(float paramFloat)
+  {
+    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
+  }
+  
+  public static int a(Context paramContext)
+  {
+    int i = 0;
+    paramContext = paramContext.getResources();
+    int j = paramContext.getIdentifier("status_bar_height", "dimen", "android");
+    if (j > 0) {
+      i = paramContext.getDimensionPixelSize(j);
+    }
+    return i;
+  }
+  
+  public static Drawable a(@ColorInt int paramInt1, int paramInt2)
+  {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(paramInt2);
+    localGradientDrawable.setColor(paramInt1);
+    return localGradientDrawable;
+  }
+  
+  public static void a()
+  {
+    jdField_c_of_type_Int = -1;
+    jdField_d_of_type_Int = -1;
+  }
+  
+  @TargetApi(11)
+  public static void a(View paramView, float paramFloat)
+  {
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setAlpha(paramFloat);
+    }
+    while (paramView.getBackground() == null) {
       return;
     }
+    paramView.getBackground().setAlpha((int)(255.0F * paramFloat));
+  }
+  
+  @TargetApi(11)
+  public static void a(View paramView, int paramInt)
+  {
+    if (paramView.getBackground() != null) {
+      paramView.getBackground().setAlpha(paramInt);
+    }
+    if ((paramView instanceof ViewGroup))
+    {
+      paramView = (ViewGroup)paramView;
+      int j = paramView.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        a(paramView.getChildAt(i), paramInt);
+        i += 1;
+      }
+    }
+  }
+  
+  @TargetApi(16)
+  public static void a(View paramView, Drawable paramDrawable)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      paramView.setBackgroundDrawable(paramDrawable);
+      return;
+    }
+    paramView.setBackground(paramDrawable);
+  }
+  
+  public static void a(View paramView1, View paramView2, int[] paramArrayOfInt)
+  {
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length < 2)) {}
+    label156:
+    for (;;)
+    {
+      return;
+      int i = 0;
+      int j = 0;
+      int k;
+      int m;
+      if (paramView1.getParent() != null)
+      {
+        j = paramView1.getLeft() + j;
+        k = paramView1.getTop() + i;
+        if (paramView1.getParent() == paramView2)
+        {
+          paramArrayOfInt[0] = j;
+          paramArrayOfInt[1] = k;
+          i = k;
+          m = j;
+          if (paramArrayOfInt.length >= 4)
+          {
+            paramArrayOfInt[2] = paramView1.getMeasuredWidth();
+            paramArrayOfInt[3] = paramView1.getMeasuredHeight();
+            m = j;
+            i = k;
+          }
+        }
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          if (paramView2 != null) {
+            break label156;
+          }
+          paramArrayOfInt[0] = m;
+          paramArrayOfInt[1] = i;
+          return;
+          try
+          {
+            paramView1 = (View)paramView1.getParent();
+            if (paramArrayOfInt.length >= 4)
+            {
+              paramArrayOfInt[2] = paramView1.getMeasuredWidth();
+              paramArrayOfInt[3] = paramView1.getMeasuredHeight();
+            }
+            i = k;
+          }
+          catch (ClassCastException paramView1)
+          {
+            i = k;
+            m = j;
+          }
+        }
+        continue;
+        m = j;
+      }
+    }
+  }
+  
+  public static void a(CheckBox paramCheckBox, int paramInt)
+  {
+    if (Build.VERSION.SDK_INT < 17) {
+      paramCheckBox.setPadding(paramCheckBox.getPaddingTop() + paramInt, paramCheckBox.getPaddingTop(), paramCheckBox.getPaddingRight(), paramCheckBox.getPaddingBottom());
+    }
+  }
+  
+  public static boolean a(View paramView, int paramInt)
+  {
+    if (paramView != null)
+    {
+      paramView.setVisibility(paramInt);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(View paramView1, View paramView2)
+  {
+    if (paramView1 == paramView2) {
+      return true;
+    }
+    if ((paramView2 instanceof ViewGroup))
+    {
+      int j = ((ViewGroup)paramView2).getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        if (a(paramView1, ((ViewGroup)paramView2).getChildAt(i))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+    return false;
+  }
+  
+  public static float b()
+  {
+    if (jdField_d_of_type_Float < 0.0F) {
+      jdField_d_of_type_Float = BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity;
+    }
+    return jdField_d_of_type_Float;
+  }
+  
+  public static int b()
+  {
+    if (jdField_d_of_type_Int < 0) {
+      if (BaseApplication.getContext().getResources().getConfiguration().orientation != 2) {
+        break label41;
+      }
+    }
+    label41:
+    for (jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;; jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels) {
+      return jdField_d_of_type_Int;
+    }
+  }
+  
+  public static int b(float paramFloat)
+  {
+    return Math.round(a() * paramFloat);
+  }
+  
+  @TargetApi(11)
+  public static void b(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setScaleX(paramFloat);
+  }
+  
+  public static void b(View paramView, int paramInt)
+  {
+    if ((paramView != null) && (paramView.getVisibility() != paramInt)) {
+      paramView.setVisibility(paramInt);
+    }
+  }
+  
+  public static float c()
+  {
+    if (jdField_b_of_type_Int < 0) {
+      jdField_b_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().densityDpi;
+    }
+    return jdField_b_of_type_Int;
+  }
+  
+  public static int c()
+  {
+    if (e <= 0) {
+      e = (int)(BaseApplication.getContext().getResources().getDisplayMetrics().xdpi / 2.54D);
+    }
+    return e;
+  }
+  
+  public static int c(float paramFloat)
+  {
+    return Math.round(paramFloat / a());
+  }
+  
+  @TargetApi(11)
+  public static void c(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setScaleY(paramFloat);
+  }
+  
+  public static int d(float paramFloat)
+  {
+    return (int)(BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+  }
+  
+  @TargetApi(11)
+  public static void d(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setPivotX(paramFloat);
+  }
+  
+  public static int e(float paramFloat)
+  {
+    return (int)(paramFloat / BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity + 0.5F);
+  }
+  
+  @TargetApi(11)
+  public static void e(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setPivotY(paramFloat);
+  }
+  
+  @TargetApi(11)
+  public static void f(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setTranslationX(paramFloat);
+  }
+  
+  @TargetApi(11)
+  public static void g(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setTranslationY(paramFloat);
+  }
+  
+  @TargetApi(11)
+  public static void h(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setRotation(paramFloat);
   }
 }
 

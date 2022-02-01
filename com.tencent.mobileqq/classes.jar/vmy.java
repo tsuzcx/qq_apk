@@ -1,14 +1,19 @@
-class vmy
-  implements aagf
+import android.app.Activity;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentPart.10;
+
+public class vmy
+  implements vvs
 {
-  vmy(vms paramvms) {}
+  public vmy(QCircleContentPart.10 param10) {}
   
   public void a()
   {
-    vms.a(this.a, 0);
+    if (this.a.this$0.a() != null)
+    {
+      this.a.this$0.a().finish();
+      this.a.this$0.a().overridePendingTransition(0, 0);
+    }
   }
-  
-  public void a(int paramInt) {}
 }
 
 

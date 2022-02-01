@@ -1,9 +1,8 @@
-class benv
-  implements bkiz
+public abstract interface benv
 {
-  benv(bens parambens) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a() {}
+  public abstract void c();
 }
 
 

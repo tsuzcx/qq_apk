@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import atvf;
+import auna;
 
 class ProtocolHelper$5
   implements Runnable
@@ -9,7 +9,7 @@ class ProtocolHelper$5
   
   public void run()
   {
-    atvf.a(2131693359);
+    auna.a(2131693371);
   }
 }
 

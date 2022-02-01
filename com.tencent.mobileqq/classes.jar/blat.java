@@ -1,84 +1,93 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import java.io.File;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
-public class blat
+class blat
+  implements zqq
 {
-  public static long a;
+  blat(blao paramblao, long paramLong1, String paramString1, LocalMediaInfo paramLocalMediaInfo, int paramInt, String paramString2, long paramLong2) {}
   
-  public static String a()
+  public void onFailure(String paramString)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    return new File(localBaseApplicationImpl.getFilesDir(), "comic_so").getAbsolutePath() + File.separator;
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicSoHelper", 2, "initComicPlayerSoWithSubProcess");
-    }
-    Bundle localBundle = new Bundle();
-    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getPlayerSo", localBundle, null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (!new File(a() + "libqgplayer_841.so").exists())
+    paramString = paramString.split("\n");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicSoHelper", 2, "initComicPlayerSo start download");
-      }
-      ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(1004L, "libqgplayer_841", "comic");
+      String str = paramString[i];
+      QLog.w("VideoJsPlugin", 1, "onFailure: " + str);
+      i += 1;
     }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        a = SystemClock.elapsedRealtime();
-        bcrt.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "1|" + a + "|0", true);
-        return;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return;
-      }
+    if (this.jdField_a_of_type_JavaLangString.contains("-vf"))
+    {
+      blao.a(this.jdField_a_of_type_Blao, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, false);
+      return;
     }
-    QLog.d("VipComicSoHelper", 2, "initComicPlayerSo has exists");
+    paramString = ((IMiniAppFileManager)blao.a(this.jdField_a_of_type_Blao).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
+    blao.a(this.jdField_a_of_type_Blao, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public void onFinish(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VipComicSoHelper", 2, "onSoDownloadCompleted");
+      QLog.d("VideoJsPlugin", 2, "compress finish " + paramBoolean + " " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    if (bgtl.a(a() + "libQGamePlayer.zip", a(), "libqgplayer_841.so")) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo success");
-      }
-    }
+  }
+  
+  public void onProgress(String paramString)
+  {
+    if ((paramString.length() < 90) || (paramString.length() > 150)) {}
     for (;;)
     {
-      try
+      return;
+      paramString = new Scanner(paramString).findWithinHorizon(blao.a(), 0);
+      if (paramString != null)
       {
-        long l1 = SystemClock.elapsedRealtime();
-        long l2 = a;
-        bcrt.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "2|" + (l1 - l2) + "|" + paramInt, true);
-        return;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo failure");
+        paramString = paramString.split(":");
+        if (paramString.length > 2) {
+          try
+          {
+            int i = Integer.parseInt(paramString[0]);
+            int j = Integer.parseInt(paramString[1]);
+            double d = Double.parseDouble(paramString[2]);
+            i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (1000.0D * d)) * 100.0F / (float)this.jdField_b_of_type_Long);
+            if (i < 100)
+            {
+              blao.a(this.jdField_a_of_type_Blao, anzj.a(2131715080) + i + "%");
+              return;
+            }
+          }
+          catch (NumberFormatException paramString) {}
+        }
       }
     }
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoJsPlugin", 2, "compress start");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoJsPlugin", 2, "compress success " + paramString + " " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_JavaLangString.contains("-vf"))
+    {
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      paramString.mediaWidth /= this.jdField_a_of_type_Int;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      paramString.mediaHeight /= this.jdField_a_of_type_Int;
+    }
+    paramString = ((IMiniAppFileManager)blao.a(this.jdField_a_of_type_Blao).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_b_of_type_JavaLangString);
+    blao.a(this.jdField_a_of_type_Blao, paramString, new File(this.jdField_b_of_type_JavaLangString).length(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
   }
 }
 

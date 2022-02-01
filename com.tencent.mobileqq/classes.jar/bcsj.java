@@ -1,52 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.MsgBody;
 
 public class bcsj
-  extends aqkz<bcsk>
+  implements bcsi
 {
-  @NonNull
-  public bcsk a(int paramInt)
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
   {
-    return new bcsk();
-  }
-  
-  @Nullable
-  public bcsk a(aqlg[] paramArrayOfaqlg)
-  {
-    bcsk localbcsk = new bcsk();
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
-      bcsk.a(localbcsk, paramArrayOfaqlg[0].a);
-    }
-    return localbcsk;
-  }
-  
-  public void a(bcsk parambcsk) {}
-  
-  public Class<bcsk> clazz()
-  {
-    return bcsk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 577;
+    if ((paramList == null) || (paramMsg == null) || (!paramMsg.msg_body.has()) || (!paramMsg.msg_body.msg_content.has())) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          paramMsg = paramMsg.msg_body.msg_content.get().toByteArray();
+          bhvd.a(paramMsg, 0);
+          i = paramMsg[4];
+          if (i != 25) {
+            break;
+          }
+        } while (parambcre.d);
+        aosi.a(paramMessageHandler.app, paramMsg, 5, null, false);
+        return;
+      } while (i != 35);
+      QLog.i("ApolloPushManager", 1, "[discuss.OffLine]");
+    } while (parambcre.d);
+    aosi.b(paramMessageHandler.app, paramMsg, 5, null, false);
   }
 }
 

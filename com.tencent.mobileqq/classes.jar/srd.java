@@ -1,18 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class srd
-  extends pue
+class srd
+  implements srh
 {
-  public srd(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
-  {
-    super(paramString);
-  }
+  srd(sqr paramsqr) {}
   
-  public void a(ptx paramptx)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    paramptx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
+    srt.a(paramContext, paramProteusItemData.b, paramProteusItemData.a);
   }
 }
 

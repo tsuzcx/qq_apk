@@ -19,7 +19,7 @@ public final class DTPublicParamKey
   public static final String DT_TID = "dt_tid";
   public static final String DT_WB_OPEN_ID = "dt_wbopenid";
   public static final String DT_WX_OPEN_ID = "dt_wxopenid";
-  public static final String DT_WX_UNION_ID = "dt_wxuionid";
+  public static final String DT_WX_UNION_ID = "dt_wxunionid";
 }
 
 

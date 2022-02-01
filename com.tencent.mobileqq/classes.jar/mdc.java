@@ -1,25 +1,23 @@
-import com.tencent.av.ui.EffectToolbar;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class mdc
-  implements Observer
+class mdc
+  extends Handler
 {
-  private WeakReference<EffectToolbar> a;
-  
-  public mdc(EffectToolbar paramEffectToolbar)
+  public mdc(mdb parammdb, Looper paramLooper)
   {
-    this.a = new WeakReference(paramEffectToolbar);
+    super(paramLooper);
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
-    if (localEffectToolbar == null) {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
+    mdb.a(this.a);
   }
 }
 

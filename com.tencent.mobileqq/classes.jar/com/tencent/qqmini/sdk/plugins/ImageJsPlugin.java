@@ -10,7 +10,6 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.media.ExifInterface;
-import android.media.ThumbnailUtils;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
@@ -441,16 +440,9 @@ public class ImageJsPlugin
     try
     {
       int i = ImageUtil.getExifOrientation(paramString);
-      Object localObject1 = ImageUtil.getLocalBitmap(paramString);
+      Object localObject1 = ImageUtil.getLocalBitmapwithHW(paramString, paramInt2, paramInt3);
       if (localObject1 != null)
       {
-        int j = ((Bitmap)localObject1).getWidth();
-        if ((((Bitmap)localObject1).getHeight() < paramInt3) || (j < paramInt2))
-        {
-          paramRequestEvent.fail("destSize invalid(" + paramInt2 + "," + paramInt3 + ")");
-          return;
-        }
-        localObject1 = ThumbnailUtils.extractThumbnail((Bitmap)localObject1, paramInt2, paramInt3);
         Object localObject2 = new ByteArrayOutputStream();
         ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, paramInt1, (OutputStream)localObject2);
         localObject2 = BitmapFactory.decodeStream(new ByteArrayInputStream(((ByteArrayOutputStream)localObject2).toByteArray()), null, null);
@@ -471,6 +463,9 @@ public class ImageJsPlugin
         paramRequestEvent.ok((JSONObject)localObject1);
         return;
       }
+      QMLog.e("ImageJsPlugin", "getLocalBitmap fail or destSize invalid(" + paramInt2 + "," + paramInt3 + ")");
+      paramRequestEvent.fail("fail to get Local picture or destSize invalid(" + paramInt2 + "," + paramInt3 + ")");
+      return;
     }
     catch (Exception paramString)
     {
@@ -643,7 +638,7 @@ public class ImageJsPlugin
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break label199;
         }
-        if ((k > 0) && (j > 0)) {
+        if ((k > 0) || (j > 0)) {
           break label244;
         }
         doCompressImage((String)localObject1, i, paramRequestEvent);

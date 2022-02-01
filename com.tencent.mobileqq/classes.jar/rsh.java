@@ -1,7 +1,4 @@
-public abstract interface rsh<V>
-{
-  public abstract boolean a(V paramV);
-}
+class rsh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

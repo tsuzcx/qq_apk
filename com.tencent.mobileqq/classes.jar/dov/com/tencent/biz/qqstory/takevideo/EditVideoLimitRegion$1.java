@@ -3,8 +3,8 @@ package dov.com.tencent.biz.qqstory.takevideo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
-import bckr;
-import bgmo;
+import bddj;
+import bhmq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,13 +19,13 @@ public final class EditVideoLimitRegion$1
   
   public void run()
   {
-    Object localObject1 = bckr.a().a("CMD_GET_CURRENT_NICK_NAME", null);
+    Object localObject1 = bddj.a().a("CMD_GET_CURRENT_NICK_NAME", null);
     if (localObject1 == null) {
       localObject1 = "";
     }
     for (;;)
     {
-      Object localObject2 = bckr.a().a("CMD_GET_CURRENT_USER_HEAD", null);
+      Object localObject2 = bddj.a().a("CMD_GET_CURRENT_USER_HEAD", null);
       if (localObject2 == null) {
         localObject2 = "";
       }
@@ -34,7 +34,7 @@ public final class EditVideoLimitRegion$1
         for (;;)
         {
           localObject2 = SafeBitmapFactory.decodeFile((String)localObject2);
-          Bitmap localBitmap = bgmo.c((Bitmap)localObject2, 50, 50);
+          Bitmap localBitmap = bhmq.c((Bitmap)localObject2, 50, 50);
           BaseApplicationImpl.sImageCache.put("story_user_avatar", localBitmap);
           ((Bitmap)localObject2).recycle();
           ThreadManager.getUIHandler().post(new EditVideoLimitRegion.1.1(this, (String)localObject1, localBitmap));

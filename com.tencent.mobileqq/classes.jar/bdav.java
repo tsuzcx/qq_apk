@@ -1,24 +1,6 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-
-class bdav
-  implements bdbm
-{
-  bdav(bdau parambdau, CountdownTextView paramCountdownTextView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bdau.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Bdau.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdau.a(this.jdField_a_of_type_Bdau, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdau.a(this.jdField_a_of_type_Bdau, paramLong));
-    this.jdField_a_of_type_Bdau.jdField_d_of_type_Long = paramLong;
-  }
-}
+public abstract interface bdav
+  extends bczs
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

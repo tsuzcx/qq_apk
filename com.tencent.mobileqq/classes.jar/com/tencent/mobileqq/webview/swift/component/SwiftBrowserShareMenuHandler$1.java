@@ -1,36 +1,59 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import android.app.Activity;
-import android.content.Intent;
-import bhpv;
-import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import zvc;
+import abgu;
+import beae;
+import bebl;
+import biqq;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class SwiftBrowserShareMenuHandler$1
-  implements TeleScreenRunnable
+  implements Runnable
 {
-  public SwiftBrowserShareMenuHandler$1(bhpv parambhpv, WeakReference paramWeakReference, Intent paramIntent) {}
+  public SwiftBrowserShareMenuHandler$1(biqq parambiqq, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localActivity == null) || (localActivity.isFinishing()))
+    int j = 1;
+    int k = this.this$0.jdField_a_of_type_Abgu.a().a;
+    String str1;
+    boolean bool;
+    if (this.this$0.jdField_a_of_type_Abgu.a().a == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserShareMenuHandler", 2, "canceled");
+      str1 = this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mApp.getCurrentAccountUin();
+      String str2 = this.this$0.jdField_a_of_type_Abgu.a().i;
+      String str3 = this.this$0.jdField_a_of_type_Abgu.a().h;
+      if (this.this$0.jdField_a_of_type_Abgu.a().b == 3)
+      {
+        bool = true;
+        if (bebl.a(str1, str2, str3, bool, false, 1, null, null, null)) {
+          break label241;
+        }
       }
-      return;
     }
-    try
+    label241:
+    for (int i = 0;; i = 1)
     {
-      localActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      zvc.a(1, 2131694621);
+      if (i != 0)
+      {
+        str1 = bebl.a(this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mApp.getCurrentAccountUin(), this.this$0.jdField_a_of_type_Abgu.a());
+        this.this$0.jdField_a_of_type_Abgu.a().l = str1;
+        if (str1 != null) {
+          i = j;
+        }
+      }
+      for (;;)
+      {
+        biqq.a(this.this$0, this.a, this.b, this.c, this.d);
+        if ((i != 0) && ((this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment instanceof TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment))) {
+          ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment).c(k);
+        }
+        return;
+        bool = false;
+        break;
+        i = 0;
+      }
     }
   }
 }

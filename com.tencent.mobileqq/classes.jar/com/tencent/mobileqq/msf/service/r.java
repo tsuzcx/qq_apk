@@ -25,7 +25,7 @@ import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.RdmReq;
-import com.tencent.mobileqq.msf.sdk.y;
+import com.tencent.mobileqq.msf.sdk.aa;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -90,7 +90,7 @@ public class r
                 if (localObject3 == null) {
                   break label687;
                 }
-                z.a((ToServiceMsg)localObject2, ((a)localObject3).k);
+                aa.a((ToServiceMsg)localObject2, ((a)localObject3).k);
                 MsfService.core.pushManager.a((ToServiceMsg)localObject2, RegPushReason.fillRegProxy);
               }
             }
@@ -122,7 +122,7 @@ public class r
                 ((PushRegisterInfo)localObject3).bKikWeak = 0;
                 ((PushRegisterInfo)localObject3).timeStamp = 0L;
                 ((PushRegisterInfo)localObject3).iLargeSeq = 0L;
-                z.a((ToServiceMsg)localObject2, (PushRegisterInfo)localObject3);
+                aa.a((ToServiceMsg)localObject2, (PushRegisterInfo)localObject3);
                 MsfService.core.pushManager.a((ToServiceMsg)localObject2, RegPushReason.createDefaultRegInfo);
                 continue;
                 QLog.d(a, 1, "qqprocessName not find can not register");
@@ -182,7 +182,7 @@ public class r
               MsfService.core.unRegisterCmdCall(paramToServiceMsg);
               return;
               QLog.d(a, 1, "handleMsfRequest proxyRegisterPush");
-              paramContext = z.d(paramToServiceMsg);
+              paramContext = aa.d(paramToServiceMsg);
               e.a(paramContext.b, paramContext.c, null, paramToServiceMsg.getAppId());
               MsfService.core.proxyRegister(paramContext, paramToServiceMsg);
               return;

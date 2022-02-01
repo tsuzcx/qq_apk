@@ -1,30 +1,18 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.6;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awpa
-  implements RadioGroup.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public awpa(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  public awpa(BaseListenTogetherPanel.6 param6) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      MsgBackupDateFragment.a(this.a, 1);
-      continue;
-      MsgBackupDateFragment.a(this.a, 2);
-    }
+    this.a.this$0.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

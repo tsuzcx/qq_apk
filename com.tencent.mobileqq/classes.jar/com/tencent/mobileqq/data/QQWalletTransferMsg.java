@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import blqz;
-import blra;
-import blrb;
+import bmsb;
+import bmsc;
+import bmsd;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBSInt32Field;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.im.msg.im_msg_body.QQWalletAioBody;
 
 public class QQWalletTransferMsg
-  implements blqz
+  implements bmsb
 {
   public QQWalletAioBodyReserve body;
   private int channelId;
@@ -65,15 +65,15 @@ public class QQWalletTransferMsg
     {
       try
       {
-        localObject1 = new blrb();
+        localObject1 = new bmsd();
         localObject2 = localObject1;
       }
       catch (Exception localException1)
       {
         try
         {
-          writeHeader((blrb)localObject1, paramInt);
-          writeExternal((blrb)localObject1);
+          writeHeader((bmsd)localObject1, paramInt);
+          writeExternal((bmsd)localObject1);
           localObject2 = localObject1;
           localObject1 = localObject3;
           if (localObject2 != null) {
@@ -99,70 +99,70 @@ public class QQWalletTransferMsg
     }
   }
   
-  public void readExternal(blra paramblra)
+  public void readExternal(bmsc parambmsc)
   {
-    this.elem.background = paramblra.a();
-    this.elem.icon = paramblra.a();
-    this.elem.title = paramblra.a();
-    this.elem.subTitle = paramblra.a();
-    this.elem.content = paramblra.a();
-    this.elem.linkUrl = paramblra.a();
-    this.elem.blackStripe = paramblra.a();
-    this.elem.notice = paramblra.a();
-    this.channelId = paramblra.a();
-    this.templateId = paramblra.a();
-    this.resend = paramblra.a();
-    this.elem.titleColor = paramblra.a(-1);
-    this.elem.subtitleColor = paramblra.a(-1);
-    this.elem.actionsPriority = paramblra.a();
-    this.elem.jumpUrl = paramblra.a();
-    this.elem.nativeAndroid = paramblra.a();
-    this.elem.iconUrl = paramblra.a();
-    this.elem.contentColor = paramblra.a(13487565);
-    this.elem.contentBgColor = paramblra.a(-1);
-    this.elem.aioImageLeft = paramblra.a();
-    this.elem.aioImageRight = paramblra.a();
-    this.elem.cftImage = paramblra.a();
-    this.body.pfa_type = paramblra.a();
-    this.elem.readJsonParams(paramblra.a());
-    this.listId = paramblra.a();
+    this.elem.background = parambmsc.a();
+    this.elem.icon = parambmsc.a();
+    this.elem.title = parambmsc.a();
+    this.elem.subTitle = parambmsc.a();
+    this.elem.content = parambmsc.a();
+    this.elem.linkUrl = parambmsc.a();
+    this.elem.blackStripe = parambmsc.a();
+    this.elem.notice = parambmsc.a();
+    this.channelId = parambmsc.a();
+    this.templateId = parambmsc.a();
+    this.resend = parambmsc.a();
+    this.elem.titleColor = parambmsc.a(-1);
+    this.elem.subtitleColor = parambmsc.a(-1);
+    this.elem.actionsPriority = parambmsc.a();
+    this.elem.jumpUrl = parambmsc.a();
+    this.elem.nativeAndroid = parambmsc.a();
+    this.elem.iconUrl = parambmsc.a();
+    this.elem.contentColor = parambmsc.a(13487565);
+    this.elem.contentBgColor = parambmsc.a(-1);
+    this.elem.aioImageLeft = parambmsc.a();
+    this.elem.aioImageRight = parambmsc.a();
+    this.elem.cftImage = parambmsc.a();
+    this.body.pfa_type = parambmsc.a();
+    this.elem.readJsonParams(parambmsc.a());
+    this.listId = parambmsc.a();
   }
   
-  public void writeExternal(blrb paramblrb)
+  public void writeExternal(bmsd parambmsd)
   {
-    paramblrb.a(this.elem.background);
-    paramblrb.a(this.elem.icon);
-    paramblrb.a(this.elem.title);
-    paramblrb.a(this.elem.subTitle);
-    paramblrb.a(this.elem.content);
-    paramblrb.a(this.elem.linkUrl);
-    paramblrb.a(this.elem.blackStripe);
-    paramblrb.a(this.elem.notice);
-    paramblrb.a(this.channelId);
-    paramblrb.a(this.templateId);
-    paramblrb.a(this.resend);
-    paramblrb.a(this.elem.titleColor);
-    paramblrb.a(this.elem.subtitleColor);
-    paramblrb.a(this.elem.actionsPriority);
-    paramblrb.a(this.elem.jumpUrl);
-    paramblrb.a(this.elem.nativeAndroid);
-    paramblrb.a(this.elem.iconUrl);
-    paramblrb.a(this.elem.contentColor);
-    paramblrb.a(this.elem.contentBgColor);
-    paramblrb.a(this.elem.aioImageLeft);
-    paramblrb.a(this.elem.aioImageRight);
-    paramblrb.a(this.elem.cftImage);
-    paramblrb.a(this.body.pfa_type);
-    paramblrb.a(this.elem.generateJsonParams());
-    paramblrb.a(this.listId);
+    parambmsd.a(this.elem.background);
+    parambmsd.a(this.elem.icon);
+    parambmsd.a(this.elem.title);
+    parambmsd.a(this.elem.subTitle);
+    parambmsd.a(this.elem.content);
+    parambmsd.a(this.elem.linkUrl);
+    parambmsd.a(this.elem.blackStripe);
+    parambmsd.a(this.elem.notice);
+    parambmsd.a(this.channelId);
+    parambmsd.a(this.templateId);
+    parambmsd.a(this.resend);
+    parambmsd.a(this.elem.titleColor);
+    parambmsd.a(this.elem.subtitleColor);
+    parambmsd.a(this.elem.actionsPriority);
+    parambmsd.a(this.elem.jumpUrl);
+    parambmsd.a(this.elem.nativeAndroid);
+    parambmsd.a(this.elem.iconUrl);
+    parambmsd.a(this.elem.contentColor);
+    parambmsd.a(this.elem.contentBgColor);
+    parambmsd.a(this.elem.aioImageLeft);
+    parambmsd.a(this.elem.aioImageRight);
+    parambmsd.a(this.elem.cftImage);
+    parambmsd.a(this.body.pfa_type);
+    parambmsd.a(this.elem.generateJsonParams());
+    parambmsd.a(this.listId);
   }
   
-  public void writeHeader(blrb paramblrb, int paramInt)
+  public void writeHeader(bmsd parambmsd, int paramInt)
   {
-    paramblrb.a(32);
-    paramblrb.a(1);
-    paramblrb.a(4);
-    paramblrb.a(paramInt);
+    parambmsd.a(32);
+    parambmsd.a(1);
+    parambmsd.a(4);
+    parambmsd.a(paramInt);
   }
 }
 

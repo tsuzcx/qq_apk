@@ -1,16 +1,24 @@
-import android.graphics.ColorMatrixColorFilter;
-import android.os.Bundle;
-import java.util.Map;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.1.1;
 
-public abstract interface avfm
+public class avfm
+  implements bixa
 {
-  public abstract void a();
+  public avfm(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(ColorMatrixColorFilter paramColorMatrixColorFilter);
-  
-  public abstract void a(Map<String, Object> paramMap);
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  {
+    bdll.b(QQSettingChatOperationFragment.a(this.a), "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "0", "0", "", "");
+    bdll.b(null, "dc00898", "", "", "0X800A0C4", "0X800A0C4", 0, 0, "", "", "", "");
+    if (!this.a.getActivity().isFinishing()) {
+      QQSettingChatOperationFragment.a(this.a, true);
+    }
+    ThreadManagerV2.excute(new QQSettingChatOperationFragment.1.1(this), 64, null, true);
+  }
 }
 
 

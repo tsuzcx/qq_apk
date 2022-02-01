@@ -1,60 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.OnF2FConfigListener.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class arag
-  extends aqkz<araf>
+  implements aqzu
 {
-  public static araf a()
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aqzt paramaqzt)
   {
-    return (araf)aqlk.a().a(261);
-  }
-  
-  @NonNull
-  public araf a(int paramInt)
-  {
-    return new araf();
-  }
-  
-  @Nullable
-  public araf a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return araf.a(paramArrayOfaqlg);
+    if ((paramaqzt != null) && ("qqsettingme_f2f_guide_config".equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnF2FConfigListener", 2, "handleConfigForTag qqsettingme_f2f content = " + paramaqzt.a);
+      }
+      ThreadManager.post(new OnF2FConfigListener.1(this, paramaqzt, paramQQAppInterface), 5, null, false);
     }
-    return null;
-  }
-  
-  public void a(araf paramaraf) {}
-  
-  public Class<araf> clazz()
-  {
-    return araf.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocConvertConfigProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 261;
   }
 }
 

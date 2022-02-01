@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 class bopc
-  extends wrj
+  implements Observer<Boolean>
 {
-  bopc(bopb parambopb, String paramString)
-  {
-    super(paramString);
-  }
+  bopc(boow paramboow) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.jdField_a_of_type_Bopa.jdField_a_of_type_Double = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-      this.a.jdField_a_of_type_Bopa.b = paramSosoLbsInfo.a.b;
-      yqp.b("FacePoiManager", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Bopa.jdField_a_of_type_Double + " longitude=" + this.a.jdField_a_of_type_Bopa.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Bopa.a();
-      }
+    if (paramBoolean == null) {
       return;
     }
-    this.a.jdField_a_of_type_Bopa.jdField_a_of_type_Double = 0.0D;
-    this.a.jdField_a_of_type_Bopa.b = 0.0D;
-    yqp.b("FacePoiManager", "onLocationUpdate() error");
-    this.a.jdField_a_of_type_Bopa.jdField_a_of_type_Bopd.a(false, false, null, null);
+    View localView = boow.a(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
 }
 

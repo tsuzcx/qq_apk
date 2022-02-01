@@ -1,33 +1,21 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
 class ahfm
-  implements View.OnTouchListener
+  extends ClickableSpan
 {
-  final afzq jdField_a_of_type_Afzq;
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new ahfn(this));
-  View jdField_a_of_type_AndroidViewView = null;
+  ahfm(ahed paramahed, String paramString) {}
   
-  public ahfm(ahfk paramahfk, afzq paramafzq)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Afzq = paramafzq;
+    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.jdField_a_of_type_Afzq != null) {
-      this.jdField_a_of_type_Afzq.onTouch(paramView, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      return true;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    return false;
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

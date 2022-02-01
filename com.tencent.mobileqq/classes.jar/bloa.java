@@ -1,17 +1,19 @@
-class bloa
-  implements blno
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PinnedFooterExpandableListView;
+
+public class bloa
+  implements View.OnClickListener
 {
-  bloa(blnz paramblnz) {}
+  public bloa(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (blnz.a(this.a) != null) {
-      blnz.a(this.a);
+    if (PinnedFooterExpandableListView.a(this.b) != null) {
+      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
     }
-    while (blnz.a(this.a) == null) {
-      return;
-    }
-    blnz.a(this.a, blnz.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

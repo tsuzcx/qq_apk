@@ -1,22 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import friendlist.GetOnlineInfoResp;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class akal
-  extends anmu
+public abstract class akal
 {
-  akal(akaj paramakaj) {}
+  protected akcs a;
+  protected FragmentActivity a;
+  protected View a;
+  protected String a;
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public akal(FragmentActivity paramFragmentActivity)
   {
-    if (TextUtils.equals(paramString, this.a.a.a)) {
-      this.a.f();
-    }
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
   }
   
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  public abstract int a();
+  
+  public FragmentManager a()
   {
-    this.a.f();
+    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
+  }
+  
+  protected View a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+  }
+  
+  public BaseActivity a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131376925);
+    f();
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(akcs paramakcs)
+  {
+    this.jdField_a_of_type_Akcs = paramakcs;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Akcs = null;
+  }
+  
+  public void e() {}
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
   }
 }
 

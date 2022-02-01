@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox.model;
 
 import NS_QZONE_MQMSG.QzoneMessageBoxRsp;
 import android.text.TextUtils;
-import blxl;
+import bmyn;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import cooperation.qzone.util.QZLog;
@@ -21,7 +21,7 @@ public class QZoneMsgEntityNew
   public ArrayList<MQMsg> ArkNes_vec;
   public String bottomItemBuffer;
   @notColumn
-  public ArrayList<blxl> bottomItems;
+  public ArrayList<bmyn> bottomItems;
   public boolean hasmore = true;
   public String more_url = "";
   public String msgBuffer = "";
@@ -50,7 +50,7 @@ public class QZoneMsgEntityNew
     localQZoneMsgEntityNew.visitor_count = paramQzoneMessageBoxRsp.visitor_count;
     localQZoneMsgEntityNew.more_url = paramQzoneMessageBoxRsp.more_url;
     localQZoneMsgEntityNew.writeArkNewsToBuffer();
-    localQZoneMsgEntityNew.bottomItems = blxl.a(paramQzoneMessageBoxRsp.bottomVec);
+    localQZoneMsgEntityNew.bottomItems = bmyn.a(paramQzoneMessageBoxRsp.bottomVec);
     localQZoneMsgEntityNew.writeBottomItemToBuffer();
     if ((localQZoneMsgEntityNew.ArkNes_vec != null) && (localQZoneMsgEntityNew.ArkNes_vec.size() > 0) && (((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime > 0L)) {
       localQZoneMsgEntityNew.pushTime = ((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime;
@@ -125,9 +125,9 @@ public class QZoneMsgEntityNew
           int i = 0;
           while (i < localJSONArray.length())
           {
-            blxl localblxl = blxl.a(localJSONArray.getJSONObject(i));
-            if (localblxl != null) {
-              this.bottomItems.add(localblxl);
+            bmyn localbmyn = bmyn.a(localJSONArray.getJSONObject(i));
+            if (localbmyn != null) {
+              this.bottomItems.add(localbmyn);
             }
             i += 1;
           }
@@ -168,9 +168,9 @@ public class QZoneMsgEntityNew
     Iterator localIterator = this.bottomItems.iterator();
     while (localIterator.hasNext())
     {
-      blxl localblxl = (blxl)localIterator.next();
-      if (localblxl != null) {
-        localJSONArray.put(localblxl.a());
+      bmyn localbmyn = (bmyn)localIterator.next();
+      if (localbmyn != null) {
+        localJSONArray.put(localbmyn.a());
       }
     }
     this.bottomItemBuffer = localJSONArray.toString();

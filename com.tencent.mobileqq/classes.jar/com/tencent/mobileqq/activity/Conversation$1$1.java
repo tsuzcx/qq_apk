@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adyo;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
-
-public class Conversation$1$1
+class Conversation$1$1
   implements Runnable
 {
-  public Conversation$1$1(adyo paramadyo) {}
+  Conversation$1$1(Conversation.1 param1, boolean paramBoolean) {}
   
-  public void run() {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1.jdField_a_of_type_Boolean);
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+  }
 }
 
 

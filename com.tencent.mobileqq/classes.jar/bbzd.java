@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import com.tencent.image.URLImageView;
+import java.lang.ref.SoftReference;
 
-public class bbzd
+class bbzd
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public MessageForReplyText.SourceMsgInfo a;
-  public MessageForText.AtTroopMemberInfo a;
-  public String a;
-  public byte[] a;
-  public String b;
+  bbzd(bbzc parambbzc, AbstractGifImage paramAbstractGifImage) {}
   
-  public bbzd(bbzc parambbzc) {}
+  public void onPlayOnce()
+  {
+    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
+    if (this.jdField_a_of_type_Bbzc.jdField_a_of_type_Bbze != null) {
+      this.jdField_a_of_type_Bbzc.jdField_a_of_type_Bbze.b();
+    }
+    if (this.jdField_a_of_type_Bbzc.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
+      return;
+    }
+    AbstractGifImage.pauseAll();
+    ((URLImageView)this.jdField_a_of_type_Bbzc.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
+  }
 }
 
 

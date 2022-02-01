@@ -1,62 +1,7 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import kotlin.Metadata;
 
-public class aaru
-  extends bfss
-{
-  public aaru(AIOGiftPanelContainer.2 param2, bfst parambfst, long paramLong, bfos parambfos) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    long l = System.currentTimeMillis();
-    int i = this.jdField_a_of_type_Bfst.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 5) {
-      aasj.a(paramString2);
-    }
-    do
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOGiftPanelContainer", 2, "onGetExtraData() , configURL = " + paramString1 + ", serverVer=" + paramInt + ", localVer=" + i + ", exIds=" + paramString2);
-        }
-        QLog.d("TroopGiftPanel.time", 1, "onGetExtraData, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
-        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Aasj = aasj.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-        if ((paramInt > i) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Aasj == null)) {
-          break;
-        }
-        aart.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
-        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
-        return;
-        if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 4)) {
-          aasj.a(paramString2, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-        }
-      }
-    } while (TextUtils.isEmpty(paramString1));
-    Object localObject = new File(anhk.bs);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    localObject = anhk.bs + "troopGiftConfig.tmp";
-    paramString1 = new bhhf(paramString1, new File((String)localObject));
-    paramString1.b = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("filePath", (String)localObject);
-    this.jdField_a_of_type_Bfos.a().a(paramString1, new aarv(this, l, paramString2, paramInt), localBundle);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/tribe/TribeWebViewPlugin$Companion;", "", "()V", "NAME_SPACE", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aaru {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

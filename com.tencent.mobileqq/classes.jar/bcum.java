@@ -1,22 +1,19 @@
-public abstract class bcum
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo;
+
+public final class bcum
+  implements Parcelable.Creator<QZoneTitleTabManager.TabInfo>
 {
-  public int a = 0;
-  public int b;
-  public long b;
-  public int c = 1;
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  
-  bcum()
+  public QZoneTitleTabManager.TabInfo a(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
+    return new QZoneTitleTabManager.TabInfo(paramParcel);
   }
   
-  public abstract String a(int paramInt);
-  
-  public abstract String toString();
+  public QZoneTitleTabManager.TabInfo[] a(int paramInt)
+  {
+    return new QZoneTitleTabManager.TabInfo[paramInt];
+  }
 }
 
 

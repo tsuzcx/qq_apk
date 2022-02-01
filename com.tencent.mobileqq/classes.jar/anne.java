@@ -1,19 +1,13 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import java.util.List;
 
-public class anne
-  implements anil
+public abstract interface anne
 {
-  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1) {}
+  public abstract void a(annf paramannf);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 1)
-    {
-      paramObject = (HashMap)paramObject;
-      a(paramBoolean, (ArrayList)paramObject.get("mq_kandian_svc_results"), (ArrayList)paramObject.get("mq_kandian_svc_sentences"));
-    }
-  }
+  public abstract void a(List<TraceData> paramList);
+  
+  public abstract void b(List<TraceData> paramList);
 }
 
 

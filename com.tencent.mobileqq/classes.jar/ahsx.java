@@ -1,52 +1,26 @@
 import android.app.Activity;
-import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.util.Locale;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahsx
-  implements MessageQueue.IdleHandler
+public class ahsx
+  implements View.OnClickListener
 {
-  ahsx(ahsd paramahsd) {}
+  public ahsx(StructingMsgItemBuilder paramStructingMsgItemBuilder, TextView paramTextView, ChatMessage paramChatMessage, String paramString) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.jdField_a_of_type_Ahtj.a();
-    if ((localObject != null) && (AIOImageData.class.isInstance(((ahui)localObject).a)))
-    {
-      AIOImageData localAIOImageData = (AIOImageData)((ahui)localObject).a;
-      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null))
-      {
-        this.a.c(true);
-        this.a.u();
-      }
-    }
-    if ((localObject != null) && (AIOFilePicData.class.isInstance(((ahui)localObject).a)))
-    {
-      localObject = (AIOFilePicData)((ahui)localObject).a;
-      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
-      {
-        if ((!((AIOFilePicData)localObject).d) || (!bgnr.a(((AIOFilePicData)localObject).b))) {
-          break label211;
-        }
-        this.a.c(true);
-        this.a.a(false);
-        this.a.jdField_a_of_type_Ahtc = null;
-      }
-    }
+    if (StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {}
     for (;;)
     {
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, ahsd.d(this.a).getString(2131694414), new Object[] { atwl.a(((AIOFilePicData)localObject).a) }));
-      }
-      return false;
-      label211:
-      if (((AIOFilePicData)localObject).e) {
-        this.a.c(false);
-      } else {
-        this.a.c(true);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "", "0X8006512", "0X8006512", 0, 0, "", "" + this.jdField_a_of_type_JavaLangString, "", "");
     }
   }
 }

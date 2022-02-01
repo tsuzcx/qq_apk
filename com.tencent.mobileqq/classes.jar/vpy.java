@@ -1,24 +1,28 @@
-import android.content.Context;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeFreeView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeMoreView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikePayView;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDynamicFragment;
+import com.tencent.biz.richframework.part.BasePartFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
 public class vpy
+  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  static QCirclePolyBaseLikeView a(Context paramContext, int paramInt1, int paramInt2)
+  public vpy(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
+  
+  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
   {
-    paramInt1 |= paramInt2;
-    switch (paramInt2)
-    {
-    default: 
-      return new vpz(paramContext, paramInt1);
-    case 1: 
-      return new QCirclePolyLikeFreeView(paramContext, paramInt1);
-    case 2: 
-      return new QCirclePolyLikePayView(paramContext, paramInt1);
+    QLog.d("QCirclePersonalDynamicFragment", 4, "initViewData:getFeedListRequestRsp");
+    this.a.a(paramvxq);
+    if ((uzg.a(this.a.jdField_a_of_type_JavaLangString)) && (paramvxq != null) && (paramvxq.a() == 0) && (!this.a.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a())) {
+      this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(false));
     }
-    return new QCirclePolyLikeMoreView(paramContext, paramInt1);
+    while ((!uzg.a(this.a.jdField_a_of_type_JavaLangString)) || (paramvxq == null) || (paramvxq.a() == 1)) {
+      return;
+    }
+    this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(true));
   }
 }
 

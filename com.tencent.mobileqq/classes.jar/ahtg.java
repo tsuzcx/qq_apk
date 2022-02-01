@@ -1,27 +1,33 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class ahtg
-  implements View.OnClickListener
+public class ahtg
+  implements aojx
 {
-  ahtg(ahte paramahte, AIOShortVideoData paramAIOShortVideoData) {}
+  public ahtg(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
   {
-    ahte.a(this.jdField_a_of_type_Ahte, ahte.a(this.jdField_a_of_type_Ahte), anni.a(2131698861));
-    boolean bool = bchd.a().a();
-    Activity localActivity = ahte.b(this.jdField_a_of_type_Ahte);
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
-    if (bool) {}
-    for (int i = 1;; i = 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
+    do
     {
-      DanceMachineQQBrowserActivity.a(localActivity, j, str, i, -999, 1, 0, null);
-      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+      if (paramInt1 != 1001) {
+        paramInt2 = 100;
+      }
+      paramView.setProgress(paramInt2);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131378079);
+    } while (!(paramView instanceof ProgressBar));
+    ((ProgressBar)paramView).setProgress(paramInt2);
+    if (paramInt2 == 100) {}
+    for (paramInt1 = 8;; paramInt1 = 0)
+    {
+      paramView.setVisibility(paramInt1);
       return;
     }
   }

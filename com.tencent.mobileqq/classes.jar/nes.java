@@ -1,18 +1,42 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.ui.AVGameJoinRoomFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.avgame.app.AVGameAppInterface;
 
 public class nes
-  implements View.OnClickListener
+  extends mep
 {
-  public nes(AVGameJoinRoomFragment paramAVGameJoinRoomFragment) {}
+  private final boolean p;
+  private boolean q;
   
-  public void onClick(View paramView)
+  public nes(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this(paramContext, paramAVGameAppInterface, paramString, paramLong, true);
+  }
+  
+  public nes(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong, boolean paramBoolean)
+  {
+    super(paramContext, null, paramString, paramLong, paramBoolean);
+    this.p = paramBoolean;
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    if (h() == 2) {
+      return false;
+    }
+    return super.a(paramInt);
+  }
+  
+  protected void b(lqt paramlqt)
+  {
+    if (this.p) {
+      super.b(paramlqt);
+    }
+  }
+  
+  protected void d(lqt paramlqt)
+  {
+    this.q = true;
+    super.d(paramlqt);
   }
 }
 

@@ -1,17 +1,24 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahej
-  implements ImageAssetDelegate
+  implements View.OnClickListener
 {
-  ahej(ahei paramahei) {}
+  ahej(ahed paramahed, long paramLong) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onClick(View paramView)
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    Intent localIntent = new Intent();
+    localIntent.putExtra("uinType", this.jdField_a_of_type_Ahed.a.a);
+    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    afez.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,49 @@
-public abstract interface bedc
+import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+
+public class bedc
+  implements bede
 {
-  public abstract void a(bebv parambebv, beck parambeck);
+  public bedc(AIOMessageSpreadManager.1 param1, String paramString) {}
+  
+  public void a(List<String> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      if (QLog.isDebugVersion())
+      {
+        if (paramList != null) {
+          break label34;
+        }
+        paramList = "lst is null";
+        QLog.i("AIOMessageSpreadManager", 1, paramList);
+      }
+    }
+    label34:
+    float f1;
+    float f2;
+    do
+    {
+      return;
+      while (!paramList.hasNext())
+      {
+        paramList = "lst.size() = 0";
+        break;
+        f1 = (float)arrg.a().a();
+        paramList = paramList.iterator();
+      }
+      str = (String)paramList.next();
+      f2 = bedb.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_JavaLangString, str);
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
+      }
+    } while (f2 - f1 <= 0.0F);
+    String str = arrg.a().a();
+    paramList = arrg.a().b();
+    str = str + "。" + paramList;
+    bedb.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.a, str, paramList, "precent", null);
+  }
 }
 
 

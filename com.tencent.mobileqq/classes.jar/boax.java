@@ -1,22 +1,23 @@
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface boax
+class boax
+  implements ThreadPool.Job<Void>
 {
-  public abstract int a();
+  boax(boan paramboan, List paramList) {}
   
-  public abstract int a(int paramInt);
-  
-  public abstract Lyric a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract int b();
-  
-  public abstract int b(int paramInt);
-  
-  public abstract void setEffectEnable(boolean paramBoolean);
-  
-  public abstract void setLyric(Lyric paramLyric1, Lyric paramLyric2);
+  public Void a(ThreadPool.JobContext paramJobContext)
+  {
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Boan.b(l);
+    }
+    return null;
+  }
 }
 
 

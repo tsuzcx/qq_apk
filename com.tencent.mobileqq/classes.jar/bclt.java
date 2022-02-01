@@ -1,21 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bclt
+public final class bclt
+  implements ThreadFactory
 {
-  private static final String[] a = { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  private static boolean b()
+  public Thread newThread(Runnable paramRunnable)
   {
-    String str = bcls.b();
-    synchronized (bcls.a())
-    {
-      boolean bool1 = bgmg.a(str + "libQMCF.so");
-      boolean bool2 = bgmg.a(str + a[2]);
-      if (QLog.isColorLevel()) {
-        QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      }
-      return bool1;
-    }
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 

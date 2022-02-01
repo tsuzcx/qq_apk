@@ -10,7 +10,7 @@ class ReadInJoyListViewGroup$29
   public void run()
   {
     if ((this.this$0.a == 0) && ((this.this$0.a() instanceof SplashActivity))) {
-      rcx.b = true;
+      qtq.b = true;
     }
   }
 }

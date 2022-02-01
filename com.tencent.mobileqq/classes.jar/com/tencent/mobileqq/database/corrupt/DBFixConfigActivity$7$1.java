@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class DBFixConfigActivity$7$1
@@ -10,7 +10,7 @@ class DBFixConfigActivity$7$1
   
   public void run()
   {
-    QQToast.a(this.a.this$0.getApplicationContext(), anni.a(2131701660), 1).a();
+    QQToast.a(this.a.this$0.getApplicationContext(), anzj.a(2131701767), 1).a();
   }
 }
 

@@ -1,72 +1,79 @@
-import android.util.Log;
-import com.tencent.aekit.openrender.internal.Frame;
-import java.util.List;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
-public class lqp
+public abstract class lqp
 {
-  private int jdField_a_of_type_Int;
-  public Frame a;
-  private String jdField_a_of_type_JavaLangString = "RefFrame-" + Integer.toHexString(hashCode());
-  public List<lqq> a;
+  protected float a;
+  protected long a;
+  protected final Context a;
+  protected MotionEvent a;
+  protected boolean a;
+  protected float b;
+  protected MotionEvent b;
   
-  private lqp(Frame paramFrame)
+  public lqp(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private lqp(Frame paramFrame, List<lqq> paramList)
+  protected void a()
   {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public static lqp a(Frame paramFrame)
-  {
-    return new lqp(paramFrame);
-  }
-  
-  public static lqp a(Frame paramFrame, List<lqq> paramList)
-  {
-    return new lqp(paramFrame, paramList);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.unlock();
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.jdField_a_of_type_AndroidViewMotionEvent != null)
     {
-      b();
+      this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_a_of_type_AndroidViewMotionEvent = null;
+    }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected abstract void a(int paramInt, MotionEvent paramMotionEvent);
+  
+  protected void a(MotionEvent paramMotionEvent)
+  {
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent == null) || (localMotionEvent == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
+      }
       return;
     }
-    b(1);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int += paramInt;
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    this.jdField_a_of_type_Long = (paramMotionEvent.getEventTime() - localMotionEvent.getEventTime());
+    this.jdField_a_of_type_Float = paramMotionEvent.getPressure(paramMotionEvent.getActionIndex());
+    this.jdField_b_of_type_Float = localMotionEvent.getPressure(localMotionEvent.getActionIndex());
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty());
+    return this.jdField_a_of_type_Boolean;
   }
   
-  void b(int paramInt)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      Log.e(this.jdField_a_of_type_JavaLangString, "unlock: count=" + paramInt + ", ref=" + this.jdField_a_of_type_Int);
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (!this.jdField_a_of_type_Boolean) {
+      a(i, paramMotionEvent);
     }
-    do
+    for (;;)
     {
-      return;
-      this.jdField_a_of_type_Int -= paramInt;
-    } while (this.jdField_a_of_type_Int != 0);
-    b();
+      return true;
+      b(i, paramMotionEvent);
+    }
   }
+  
+  protected abstract void b(int paramInt, MotionEvent paramMotionEvent);
 }
 
 

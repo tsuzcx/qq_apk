@@ -1,9 +1,15 @@
-import java.io.File;
+import android.os.IInterface;
 
-public class bndv
+public abstract interface bndv
+  extends IInterface
 {
-  public static final String a = bndu.b + File.separator + "ae";
-  public static final String b = bndu.a + File.separator + "ae";
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, float paramFloat, long paramLong);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(String paramString);
 }
 
 

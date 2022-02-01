@@ -1,56 +1,35 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class bghi
-  extends CustomLruCache<String, Drawable>
+  implements View.OnClickListener
 {
-  bghi(bghh parambghh, int paramInt)
-  {
-    super(paramInt);
-  }
+  bghi(bghh parambghh) {}
   
-  protected int a(String paramString, Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    int j = 0;
-    if ((paramDrawable instanceof BitmapDrawable))
+    BaseActivity localBaseActivity = (BaseActivity)bghh.a(this.a).get();
+    if (localBaseActivity != null)
     {
-      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramString != null) {
-        j = paramString.getRowBytes() * paramString.getHeight();
-      }
+      bgpk.a(bghh.b(this.a), bghh.c(this.a).a);
+      Object localObject1 = bgtj.a();
+      Object localObject2 = ((bgtj)localObject1).a("troop_list_homework");
+      bgtk localbgtk = new bgtk();
+      localbgtk.a = bghh.d(this.a).a;
+      localbgtk.c = "aio";
+      localObject1 = ((bgtj)localObject1).a((String)localObject2, localbgtk);
+      localObject2 = new Intent(localBaseActivity, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      localBaseActivity.startActivity((Intent)localObject2);
+      bhju.a(bghh.c(this.a), bghh.e(this.a).a, "homework", "AioSee_Clk", 0, 0, new String[] { bghh.f(this.a).a, "", "", bhju.a(bghh.d(this.a), bghh.g(this.a).a) });
     }
-    int m;
-    int k;
-    do
-    {
-      do
-      {
-        return j;
-      } while (!(paramDrawable instanceof AnimationDrawable));
-      paramString = (AnimationDrawable)paramDrawable;
-      m = paramString.getNumberOfFrames();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    paramDrawable = paramString.getFrame(k);
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        j = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * j + i;
-      }
-    }
-    for (;;)
-    {
-      k += 1;
-      break;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

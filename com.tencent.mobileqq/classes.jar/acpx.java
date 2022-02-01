@@ -1,49 +1,16 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.6.1;
 
-class acpx
-  implements acqj
+public class acpx
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  acpx(acpw paramacpw) {}
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    Object localObject = null;
-    if (paramacpp != null) {}
-    for (paramVarArgs = paramacpp.a(); (paramacpp == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      acqy.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("carrier", acsa.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramacpp.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramacpp != null) {
-            paramString = paramacpp.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
-          return true;
-          localJSONException = localJSONException;
-          acqy.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          acqy.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
-    }
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.6.1(this, paramAppPathInfo, paramInt, paramString), 5);
   }
 }
 

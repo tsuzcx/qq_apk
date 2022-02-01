@@ -1,6 +1,22 @@
-public abstract interface awti
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+
+class awti
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(boolean paramBoolean);
+  awti(awth paramawth) {}
+  
+  public void onGlobalLayout()
+  {
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
+    if (localCameraPosition != null) {
+      MapWidget.a(this.a.a).a(localCameraPosition.target);
+    }
+  }
 }
 
 

@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class afbw
   implements DialogInterface.OnClickListener
 {
-  public afbw(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public afbw(OverloadTipsActivity paramOverloadTipsActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.a);
+    this.a.finish();
   }
 }
 

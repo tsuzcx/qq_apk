@@ -1,20 +1,30 @@
-public class akhn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+
+class akhn
+  implements DialogInterface.OnClickListener
 {
-  public int a = 0;
-  public int b = 0;
-  public int c = 0;
-  public int d = 0;
-  public int e = 0;
-  public int f = 0;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
-  public int j = 0;
-  public int k = 0;
+  akhn(akha paramakha) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    if (this.a.a.getIntent().getExtras() != null) {
+      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
+    }
+    paramDialogInterface.addFlags(268435456);
+    paramDialogInterface.addFlags(67108864);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.b.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhn
  * JD-Core Version:    0.7.0.1
  */

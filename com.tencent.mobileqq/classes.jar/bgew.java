@@ -1,46 +1,49 @@
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ImageUploadHandler.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import mqq.os.MqqHandler;
 
 public class bgew
-  extends WebChromeClient
+  implements bnsp
 {
-  private bgew(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  private bgee a;
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  public bgew(ArithmeticViewHolder paramArithmeticViewHolder, bgee parambgee)
   {
-    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
-    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
+    this.jdField_a_of_type_Bgee = parambgee;
   }
   
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  private void a(bgee parambgee)
   {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
-    }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+    ThreadManager.getUIHandler().post(new ArithmeticViewHolder.ImageUploadHandler.1(this, parambgee));
   }
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void a(int paramInt)
   {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    this.jdField_a_of_type_Bgee.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Bgee.jdField_a_of_type_Int = paramInt;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bgee);
+    a(this.jdField_a_of_type_Bgee);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Bgee.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Bgee.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgee.jdField_a_of_type_Int = 100;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bgee);
+    a(this.jdField_a_of_type_Bgee);
     if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
+      QLog.d("ArithmeticViewHolder", 2, "update success , url = " + paramString);
     }
   }
   
-  public void onReceivedTitle(WebView paramWebView, String paramString)
+  public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
-    }
-    this.a.setTitle(paramString);
+    this.jdField_a_of_type_Bgee.jdField_b_of_type_Int = 2;
+    a(this.jdField_a_of_type_Bgee);
+    QLog.w("ArithmeticViewHolder", 2, "upload error , code = " + paramInt + " ;local path = " + this.jdField_a_of_type_Bgee.jdField_b_of_type_JavaLangString);
   }
 }
 

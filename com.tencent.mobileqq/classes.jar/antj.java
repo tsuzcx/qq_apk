@@ -1,36 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class antj
-  implements anil
+class antj
+  implements EIPCResultCallback
 {
-  private Handler a;
+  antj(anth paramanth) {}
   
-  public antj(Handler paramHandler)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a = paramHandler;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    int i = 1;
-    if (this.a == null) {}
-    while ((paramInt != 1) && (paramInt != 0)) {
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (;;)
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
     {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
+      }
       return;
-      i = 0;
     }
+    boolean bool = paramEIPCResult.isSuccess();
+    String str2 = paramEIPCResult.data.getString("key_method_action");
+    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
+    }
+    String str1 = "";
+    if ("setFriendGrouping".equals(str2))
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
+      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
+    }
+    anth.a(this.a, str3, str1, str2);
   }
 }
 

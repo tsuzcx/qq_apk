@@ -1,11 +1,17 @@
-import cooperation.qzone.statistic.access.concept.Collector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.PluginIphoneTitleBarActivity;
 
-final class bmhj
-  extends bmhi
+public class bmhj
+  implements View.OnClickListener
 {
-  public boolean a(Collector paramCollector)
+  public bmhj(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

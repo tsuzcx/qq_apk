@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aibv;
-import anno;
+import ailn;
+import anzp;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class HotChatPie$10
   implements Runnable
 {
-  public HotChatPie$10(aibv paramaibv) {}
+  public HotChatPie$10(ailn paramailn) {}
   
   public void run()
   {
-    ((anno)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((anzp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

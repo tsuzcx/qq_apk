@@ -1,8 +1,17 @@
-import android.graphics.drawable.Drawable;
+import java.lang.ref.WeakReference;
 
-public abstract interface yox
+final class yox
+  implements yqh
 {
-  public abstract void a(Drawable paramDrawable);
+  yox(WeakReference paramWeakReference) {}
+  
+  public void a(String paramString)
+  {
+    paramString = (yoz)this.a.get();
+    if (paramString != null) {
+      paramString.a(Integer.valueOf(((Integer)((wta)wth.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
+    }
+  }
 }
 
 

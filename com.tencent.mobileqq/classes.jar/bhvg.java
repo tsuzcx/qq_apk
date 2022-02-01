@@ -1,49 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 
 public class bhvg
-  implements View.OnTouchListener
 {
-  public bhvg(ConfigClearableEditText paramConfigClearableEditText) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static boolean a()
   {
-    paramView = this.a;
-    int i;
-    if (paramMotionEvent.getX() > ConfigClearableEditText.a(this.a))
-    {
-      i = 1;
-      if (ConfigClearableEditText.a(this.a) != null)
-      {
-        if ((i == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-          break label102;
-        }
-        ConfigClearableEditText.a(this.a).b(true);
-      }
-      label66:
-      if ((paramView.getCompoundDrawables()[2] != null) || ((ConfigClearableEditText.a(this.a)) && (ConfigClearableEditText.a(this.a) != null))) {
-        break label118;
-      }
+    return (a("meizu", null, null)) && (Build.VERSION.SDK_INT > 20);
+  }
+  
+  public static boolean a(String paramString1, String paramString2, String paramString3)
+  {
+    boolean bool1 = false;
+    if (!TextUtils.isEmpty(paramString1)) {
+      bool1 = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
     }
-    label102:
-    label118:
+    boolean bool2;
+    if (!bool1) {
+      bool2 = bool1;
+    }
     do
     {
       do
       {
-        return false;
-        i = 0;
-        break;
-        ConfigClearableEditText.a(this.a).b(false);
-        break label66;
-      } while ((paramMotionEvent.getAction() != 1) || (i == 0));
-      this.a.setText("");
-      this.a.setClearButtonVisible(false);
-    } while (this.a.a == null);
-    this.a.a.a();
-    return false;
+        return bool2;
+        if (!TextUtils.isEmpty(paramString2)) {
+          bool1 = paramString2.equalsIgnoreCase(Build.BRAND);
+        }
+        bool2 = bool1;
+      } while (!bool1);
+      bool2 = bool1;
+    } while (TextUtils.isEmpty(paramString3));
+    return paramString3.equalsIgnoreCase(Build.MODEL);
   }
 }
 

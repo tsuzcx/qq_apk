@@ -1,34 +1,19 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aghc
+public abstract class aghc
   implements aghf
 {
-  public aghc(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
+  public static final boolean e = AppSetting.c;
+  public int b;
   
-  public void a(int paramInt, aghq paramaghq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      this.jdField_a_of_type_JavaUtilMap.notifyAll();
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramaghq);
-      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-        this.jdField_a_of_type_JavaUtilList.notifyAll();
-      }
-      return;
-      paramaghq = finally;
-      throw paramaghq;
-    }
-  }
+  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, agjk paramagjk);
+  
+  public abstract void a();
+  
+  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
 }
 
 

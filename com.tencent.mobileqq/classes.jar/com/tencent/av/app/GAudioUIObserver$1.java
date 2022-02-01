@@ -1,11 +1,11 @@
 package com.tencent.av.app;
 
-import ldy;
+import lef;
 
 public class GAudioUIObserver$1
   implements Runnable
 {
-  public GAudioUIObserver$1(ldy paramldy, Object paramObject) {}
+  public GAudioUIObserver$1(lef paramlef, Object paramObject) {}
   
   public void run()
   {

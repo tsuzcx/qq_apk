@@ -1,12 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-
 public class wkb
 {
-  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
-  {
-    return wku.a(paramContext, paramBoolean1, paramIntent, paramBoolean2, paramBoolean3, paramBoolean4, paramString1, paramString2);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public int c;
+  
+  public void a() {}
 }
 
 

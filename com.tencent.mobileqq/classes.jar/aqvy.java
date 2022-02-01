@@ -1,107 +1,140 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.content.Context;
+import android.graphics.Paint;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class aqvy
-  extends aqkz<aqvw>
 {
-  @NonNull
-  public aqvw a(int paramInt)
+  public static int a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    return new aqvw();
-  }
-  
-  @Nullable
-  public aqvw a(aqlg[] paramArrayOfaqlg)
-  {
-    QLog.i("QFileDownloadConfigProcessor", 1, "onParsed");
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          paramArrayOfaqlg = (aqvw)aqlu.a(paramArrayOfaqlg[0].jdField_a_of_type_JavaLangString, aqvw.class);
-          return paramArrayOfaqlg;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaqlg)
-      {
-        QLog.e("QFileDownloadConfigProcessor", 1, "onParsed : error " + paramArrayOfaqlg.getMessage());
-      }
+    if ((paramMessageRecord instanceof MessageForPic)) {
+      return 1;
     }
-    return null;
-  }
-  
-  public void a(aqvw paramaqvw)
-  {
-    if ((paramaqvw != null) && (paramaqvw.jdField_a_of_type_JavaUtilHashMap != null))
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      return 2;
+    }
+    if (aunj.a(paramMessageRecord))
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label156;
-      }
-    }
-    label156:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
+      paramMessageRecord = ahpx.a(paramQQAppInterface, paramMessageRecord);
+      int i;
+      if ((paramMessageRecord instanceof MessageForFile))
       {
-        if (!TextUtils.isEmpty(paramaqvw.jdField_a_of_type_JavaLangString))
+        paramQQAppInterface = paramQQAppInterface.a().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        if (paramQQAppInterface != null)
         {
-          SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).c(), 0).edit();
-          localEditor.putString("qfile_file_auto_download", paramaqvw.jdField_a_of_type_JavaLangString);
-          localEditor.apply();
-          QLog.i("QFileDownloadConfigProcessor", 1, "save download config [" + paramaqvw.jdField_a_of_type_JavaLangString + "]");
-        }
-        localObject = (atam)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((atam)localObject).a(paramaqvw.jdField_a_of_type_JavaUtilHashMap);
+          i = aunj.a(paramQQAppInterface.fileName);
+          if (i == 0) {
+            return 3;
+          }
+          if (i == 2) {
+            return 4;
+          }
         }
       }
-      return;
+      else if ((paramMessageRecord instanceof MessageForTroopFile))
+      {
+        paramQQAppInterface = bgsk.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord);
+        if (paramQQAppInterface != null)
+        {
+          i = aunj.a(paramQQAppInterface.g);
+          if (i == 0) {
+            return 3;
+          }
+          if (i == 2) {
+            return 4;
+          }
+        }
+      }
     }
-  }
-  
-  public Class<aqvw> clazz()
-  {
-    return aqvw.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
     return 0;
   }
   
-  public void onReqFailed(int paramInt)
+  public static final String a(Context paramContext, int paramInt)
   {
-    QLog.i("QFileDownloadConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+    if (paramInt < 0) {
+      return "";
+    }
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = 1;
+    }
+    if (i < 60) {
+      return paramContext.getString(2131698315, new Object[] { Integer.valueOf(i) });
+    }
+    if (i < 3600) {
+      return paramContext.getString(2131698316, new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
+    }
+    paramInt = i / 60;
+    return paramContext.getString(2131698317, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
   }
   
-  public int type()
+  public static final String a(Paint paramPaint, String paramString, int paramInt)
   {
-    return 85;
+    float f1 = paramPaint.measureText(paramString);
+    float f2 = paramPaint.measureText("…");
+    if (f2 > f1) {}
+    for (;;)
+    {
+      return paramString;
+      if (f2 > paramInt) {
+        return "…";
+      }
+      if (f1 > paramInt)
+      {
+        float[] arrayOfFloat = new float[paramString.length()];
+        paramPaint.getTextWidths(paramString, arrayOfFloat);
+        float f3 = paramInt;
+        f1 = 0.0F;
+        paramInt = 0;
+        while (paramInt < arrayOfFloat.length)
+        {
+          f1 += arrayOfFloat[paramInt];
+          if (f1 > f3 - f2) {
+            return paramString.substring(0, paramInt) + "…";
+          }
+          paramInt += 1;
+        }
+      }
+    }
+  }
+  
+  public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1)
+    {
+      str = "1";
+      localHashMap.put("eventSuccess", str);
+      localHashMap.put("statusCode", String.valueOf(paramInt1));
+      localHashMap.put("mediaType", String.valueOf(paramInt2));
+      if (!paramBoolean2) {
+        break label113;
+      }
+    }
+    label113:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("rspValid", str);
+      localHashMap.put("errInfo", paramString);
+      bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "DanmakuRequestMonitor", paramBoolean1, 0L, 0L, localHashMap, null);
+      return;
+      str = "0";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvy
  * JD-Core Version:    0.7.0.1
  */

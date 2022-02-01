@@ -3,12 +3,12 @@ package com.tencent.mobileqq.receipt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bahq;
+import bbag;
 
 public class ReceiptMessageReadMemberListFragment$MemberInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MemberInfo> CREATOR = new bahq();
+  public static final Parcelable.Creator<MemberInfo> CREATOR = new bbag();
   public long a;
   public String a;
   public String b;

@@ -1,148 +1,95 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class anky
-  extends MSFServlet
+class anky
 {
-  private byte[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public int a;
+  public String a;
+  public String b;
+  
+  private anky()
   {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(1274);
-    localOIDBSSOPkg.uint32_service_type.set(7);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfString1.length * 2 + 4 + paramArrayOfString2.length * 4);
-    int n = paramArrayOfString1.length;
-    int i = (byte)(n >> 8 & 0xFF);
-    int j = (byte)(n & 0xFF);
-    byte[] arrayOfByte = new byte[paramArrayOfString1.length * 2];
-    int i1 = 0;
-    int i2 = paramArrayOfString1.length;
-    n = 0;
-    long l;
-    while (n < i2)
-    {
-      l = Long.parseLong(paramArrayOfString1[n]);
-      arrayOfByte[i1] = ((byte)(int)(l >> 8 & 0xFF));
-      arrayOfByte[(i1 + 1)] = ((byte)(int)(l & 0xFF));
-      i1 += 2;
-      n += 1;
-    }
-    n = paramArrayOfString2.length;
-    int k = (byte)(n >> 8 & 0xFF);
-    int m = (byte)(n & 0xFF);
-    i1 = 0;
-    paramArrayOfString1 = new byte[n * 4];
-    i2 = paramArrayOfString2.length;
-    n = 0;
-    while (n < i2)
-    {
-      l = Long.parseLong(paramArrayOfString2[n]);
-      paramArrayOfString1[(i1 + 3)] = ((byte)(int)(0xFF & l));
-      paramArrayOfString1[(i1 + 2)] = ((byte)(int)(l >> 8 & 0xFF));
-      paramArrayOfString1[(i1 + 1)] = ((byte)(int)(l >> 16 & 0xFF));
-      paramArrayOfString1[i1] = ((byte)(int)(l >> 24 & 0xFF));
-      i1 += 4;
-      n += 1;
-    }
-    localByteBuffer.put(new byte[] { i, j }).put(arrayOfByte).put(new byte[] { k, m }).put(paramArrayOfString1);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localByteBuffer.array()));
-    paramArrayOfString1 = localOIDBSSOPkg.toByteArray();
-    paramArrayOfString2 = ByteBuffer.allocate(paramArrayOfString1.length + 4);
-    paramArrayOfString2.putInt(paramArrayOfString1.length + 4);
-    paramArrayOfString2.put(paramArrayOfString1);
-    return paramArrayOfString2.array();
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a(String paramString, JSONObject paramJSONObject, AppInterface paramAppInterface)
   {
-    int j = paramIntent.getIntExtra("key_cmd", -1);
-    paramFromServiceMsg.isSuccess();
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    switch (j)
-    {
-    default: 
-      return;
-    }
-    for (;;)
+    if (paramJSONObject != null)
     {
       try
       {
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
-        paramFromServiceMsg.get(arrayOfByte);
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(arrayOfByte);
-        if (paramFromServiceMsg.uint32_result.get() == 0)
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          return;
+        }
+        if (this.jdField_a_of_type_Int == 0)
         {
-          bool = true;
-          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          if (bool)
-          {
-            arrayOfByte = new byte[2];
-            paramFromServiceMsg.get(arrayOfByte);
-            int k = bgjw.a(arrayOfByte, 0);
-            int i = 0;
-            if (i < k)
-            {
-              arrayOfByte = new byte[4];
-              paramFromServiceMsg.get(arrayOfByte);
-              localArrayList2.add(String.valueOf(bgjw.a(arrayOfByte, 0)));
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              long l = bgjw.a(arrayOfByte, 0);
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              l = bgjw.a(arrayOfByte, 0);
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              arrayOfByte = new byte[bgjw.a(arrayOfByte, 0)];
-              paramFromServiceMsg.get(arrayOfByte);
-              localArrayList1.add(new String(arrayOfByte, "utf-8"));
-              i += 1;
-              continue;
-            }
-          }
-          localBundle.putStringArrayList("nickname_list", (ArrayList)localArrayList1);
-          localBundle.putStringArrayList("uin_list", (ArrayList)localArrayList2);
-          notifyObserver(paramIntent, j, bool, localBundle, ztc.class);
+          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, this.b);
+          return;
+        }
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Integer.parseInt(this.b));
           return;
         }
       }
-      catch (Exception paramIntent)
+      catch (Exception paramString)
       {
-        paramIntent.printStackTrace();
+        QLog.e("apollo_client_ApolloSSOConfig", 1, paramString, new Object[0]);
         return;
       }
-      boolean bool = false;
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(this.b));
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Float.parseFloat(this.b));
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 4)
+      {
+        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramAppInterface.getCurrentAccountUin()));
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 5)
+      {
+        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramAppInterface.getCurrentAccountUin());
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 8)
+      {
+        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 6)
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          paramString = Uri.parse(paramString).getQueryParameter(this.b);
+          if (!TextUtils.isEmpty(paramString)) {
+            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramString));
+          }
+        }
+      }
+      else if ((this.jdField_a_of_type_Int == 7) && (!TextUtils.isEmpty(paramString)))
+      {
+        paramString = Uri.parse(paramString).getQueryParameter(this.b);
+        if (!TextUtils.isEmpty(paramString)) {
+          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramString);
+        }
+      }
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public String toString()
   {
-    int i = paramIntent.getIntExtra("key_cmd", -1);
-    String str = null;
-    switch (i)
-    {
-    }
-    for (paramIntent = str;; paramIntent = str)
-    {
-      if (paramIntent != null) {
-        paramPacket.setSSOCommand(paramIntent);
-      }
-      return;
-      str = "OidbSvc.0x4fa_7";
-      paramPacket.putSendData(a(paramIntent.getStringArrayExtra("field_id"), paramIntent.getStringArrayExtra("uin_list")));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mKey:").append(this.jdField_a_of_type_JavaLangString).append(" mValue:").append(this.b).append(" mType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

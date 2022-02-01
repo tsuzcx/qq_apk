@@ -289,6 +289,11 @@ public class LivePusherEmbeddedWidgetClient
     return true;
   }
   
+  public IMiniAppContext getMiniAppContext()
+  {
+    return this.mMiniAppContext;
+  }
+  
   public void handleInsertXWebLivePusher(JSONObject paramJSONObject, IJsService paramIJsService)
   {
     this.callBackWebview = paramIJsService;

@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public abstract interface atji
+public class atji
+  implements aumz
 {
-  public abstract int a();
+  public atji(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public abstract long a();
+  public void a()
+  {
+    UniformDownloadActivity.a(this.a);
+  }
   
-  public abstract FileManagerEntity a();
-  
-  public abstract String a();
-  
-  public abstract void a(Object paramObject, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract void aE_();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+  }
 }
 
 

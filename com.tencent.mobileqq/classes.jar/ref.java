@@ -1,12 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
-
-public class ref
+public abstract class ref<C, T, A>
 {
-  public int a;
-  public List<oidb_cmd0x68b.BackOffGroupInfo> a;
-  public List<ArticleInfo> b;
+  public abstract void a(C paramC, T paramT, int paramInt, A paramA);
 }
 
 

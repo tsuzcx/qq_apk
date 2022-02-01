@@ -1,28 +1,23 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaInstance;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyVideoAdHighLightBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class tpf
-  extends tpg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdVideo185UIStateUtil$onProgressUpdate$1$1"}, k=3, mv={1, 1, 16})
+final class tpf
+  implements View.OnClickListener
 {
-  tpf(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
-  {
-    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
-  }
+  tpf(ReadInJoyVideoAdHighLightBar paramReadInJoyVideoAdHighLightBar, AdvertisementInfo paramAdvertisementInfo, rmg paramrmg, rwc paramrwc) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public final void onClick(View paramView)
   {
-    paramString1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("rowkey", "");
-    paramInt = this.jdField_a_of_type_OrgJsonJSONObject.optInt("from_page");
-    if (paramString1.isEmpty())
-    {
-      QLog.e(tpd.a, 1, "click add video to topic fail, rowkey=" + paramString1);
-      return;
+    rmg localrmg = this.jdField_a_of_type_Rmg;
+    if (localrmg != null) {
+      localrmg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyVideoAdHighLightBar.getContext(), nzq.aD, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Rwc.a);
     }
-    rjh.b(tpd.a(this.jdField_a_of_type_Tpd).getViolaInstance().getActivity(), paramString1, paramInt);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

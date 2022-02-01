@@ -1,13 +1,29 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
 
-class asxv
-  implements bkiz
+public class asxv
+  implements View.OnTouchListener
 {
-  asxv(asxs paramasxs, View paramView) {}
+  public asxv(ExtendFriendCampusFragment paramExtendFriendCampusFragment, View paramView) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidViewView.postInvalidate();
+      }
+    }
   }
 }
 

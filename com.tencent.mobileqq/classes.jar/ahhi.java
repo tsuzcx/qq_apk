@@ -1,52 +1,24 @@
-import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-class ahhi
-  implements View.OnClickListener
+final class ahhi
+  implements ahky
 {
-  ahhi(ahhh paramahhh) {}
-  
-  public void onClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
+    paramQQAppInterface = (MessageForArkApp)paramChatMessage;
+    paramChatMessage = new ArkAppMessage.Config();
+    paramChatMessage.fromString(paramQQAppInterface.ark_app_message.config);
+    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("multiple"))) {
+      return 112;
     }
-    afur.n = true;
-    if (this.a.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (SystemClock.uptimeMillis() - ahhh.a(this.a) < 3000L)
-      {
-        QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
-      }
-      else
-      {
-        MessageForShakeWindow localMessageForShakeWindow = (MessageForShakeWindow)afur.a(paramView);
-        if (((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
-        {
-          FragmentActivity localFragmentActivity = (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext;
-          ahhh.a(this.a, SystemClock.uptimeMillis());
-          localFragmentActivity.getChatFragment().a().at();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localMessageForShakeWindow.frienduin, false);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localMessageForShakeWindow.frienduin, false);
-        }
-      }
+    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("card"))) {
+      return 81;
     }
+    return 47;
   }
 }
 

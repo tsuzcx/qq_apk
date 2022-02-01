@@ -1,40 +1,31 @@
-import android.app.Notification;
-import android.graphics.Bitmap;
-import android.os.IInterface;
-import com.tencent.av.service.AVPbInfo;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface lvy
-  extends IInterface
+public class lvy
+  implements bjig
 {
-  public abstract int a(long paramLong, int paramInt);
+  public lvy(RedPacketShareFragment.3.1 param1) {}
   
-  public abstract AVPbInfo a(byte[] paramArrayOfByte);
-  
-  public abstract void a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, Bitmap paramBitmap);
-  
-  public abstract void a(lvv paramlvv);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, Notification paramNotification);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b();
-  
-  public abstract void b(byte[] paramArrayOfByte);
-  
-  public abstract void c();
-  
-  public abstract void c(byte[] paramArrayOfByte);
+  public void onWXShareResp(BaseResp paramBaseResp)
+  {
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
+    {
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      RedPacketShareFragment.a("0X8008CF8", 3);
+    }
+  }
 }
 
 

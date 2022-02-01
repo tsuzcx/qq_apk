@@ -26,7 +26,7 @@ public class GalleryProgressView
     Object localObject1 = null;
     try
     {
-      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130841536);
+      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130841546);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -60,7 +60,7 @@ public class GalleryProgressView
   
   public void init(Activity paramActivity, BrowserBaseScene paramBrowserBaseScene)
   {
-    this.progressBar = ((ImageView)((RelativeLayout)paramBrowserBaseScene.getRootView()).findViewById(2131372964));
+    this.progressBar = ((ImageView)((RelativeLayout)paramBrowserBaseScene.getRootView()).findViewById(2131373077));
     initDrawable(paramActivity);
   }
   

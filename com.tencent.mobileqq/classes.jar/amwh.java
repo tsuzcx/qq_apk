@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
 public class amwh
-  implements DialogInterface.OnClickListener
+  extends beyf
 {
-  public amwh(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, andl paramandl, int paramInt) {}
+  public amwh(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new amwi(this));
-    paramDialogInterface.dismiss();
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.b();
+    }
   }
 }
 

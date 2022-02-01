@@ -1,25 +1,59 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import java.util.List;
 
-public abstract interface akcb
+public class akcb
+  implements axpz
 {
-  public abstract View a();
+  public akcb(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, axps paramaxps, axqb paramaxqb, List paramList) {}
   
-  public abstract ImageView a();
+  public void a()
+  {
+    this.jdField_a_of_type_Axps.a(new akcc(this));
+    this.jdField_a_of_type_Axps.show();
+  }
   
-  public abstract TextView a();
+  public void a(axpx paramaxpx)
+  {
+    if ((paramaxpx != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity().isFinishing())) {
+      switch (paramaxpx.a)
+      {
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Axps.isShowing()) {
+        this.jdField_a_of_type_Axps.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.v();
+      this.jdField_a_of_type_Axqb.b();
+      return;
+      axpy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+      continue;
+      axpy.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+      continue;
+      axpy.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+    }
+  }
   
-  public abstract QQAppInterface a();
+  public void a(axpx paramaxpx, int paramInt)
+  {
+    this.jdField_a_of_type_Axps.a(paramInt);
+  }
   
-  public abstract View b();
+  public void b()
+  {
+    if (this.jdField_a_of_type_Axps.isShowing()) {
+      this.jdField_a_of_type_Axps.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.v();
+    this.jdField_a_of_type_Axqb.b();
+  }
   
-  public abstract TextView b();
-  
-  public abstract TextView c();
-  
-  public abstract TextView d();
+  public void c()
+  {
+    this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
+  }
 }
 
 

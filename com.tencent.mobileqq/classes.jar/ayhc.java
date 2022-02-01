@@ -1,22 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import java.util.List;
-
-public class ayhc
-  implements PopupWindow.OnDismissListener
+class ayhc
+  implements xvs
 {
-  public ayhc(TranslateFragment paramTranslateFragment, ayfk paramayfk) {}
+  ayhc(aygz paramaygz, aygq paramaygq) {}
   
-  public void onDismiss()
+  public boolean a_(xvo paramxvo, int paramInt1, int paramInt2)
   {
-    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
-    if ((this.jdField_a_of_type_Ayfk.c != null) && (this.jdField_a_of_type_Ayfk.c.size() > 1))
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
+    }
+    for (;;)
     {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846156);
-      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+      return this.jdField_a_of_type_Aygq.a(this.jdField_a_of_type_Aygz, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
+      {
+        i = 2;
+      }
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
     }
   }
 }

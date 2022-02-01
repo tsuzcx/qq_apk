@@ -16,7 +16,8 @@
     <Button android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/g7" android:background="@drawable/cnv" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="130.0dip" android:layout_marginRight="15.0dip" />
     <com.tencent.gdtad.api.motivevideo.GdtMvButtonHighLight android:textSize="18.0sp" android:textColor="@color/ai2" android:id="@id/g6" android:background="@drawable/nd" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="230.0dip" android:layout_marginRight="15.0dip" />
     <View android:id="@id/cs7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/krm" />
-    <FrameLayout android:id="@id/nvm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include layout="@layout/chg" />
+    <include layout="@layout/chj" />
+    <FrameLayout android:id="@id/o1q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/chk" />
     <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

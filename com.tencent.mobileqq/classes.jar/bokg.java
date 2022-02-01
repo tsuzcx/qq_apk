@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.1;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.2;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.3;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import mqq.os.MqqHandler;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
 
-public class bokg
-  implements bqfz
+class bokg
+  implements bpuy
 {
-  bokg(boke paramboke) {}
+  bokg(bojy parambojy) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void a()
   {
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.3(this, paramPtvTemplateInfo, paramInt));
+    bojy.a(this.a).setTouchEnable(true);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public void b()
   {
-    if (paramPtvTemplateInfo.usable)
-    {
-      boud.a(paramPtvTemplateInfo).b();
-      if ((!(boke.a(this.a) instanceof bojo)) || (((bojo)boke.a(this.a)).e())) {
-        break label54;
-      }
-    }
-    label54:
-    do
-    {
-      return;
-      boud.a(paramPtvTemplateInfo).c();
-      break;
-      ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
-    } while (paramBoolean);
-    bpwl.a("", "0X80075BB", "", "", "", "");
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.2(this));
+    bojy.a(this.a).n();
+    bojy.a(this.a).setTouchEnable(true);
   }
 }
 

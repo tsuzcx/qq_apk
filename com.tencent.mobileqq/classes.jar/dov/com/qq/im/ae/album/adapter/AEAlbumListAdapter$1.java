@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.album.adapter;
 
-import bnex;
+import bogf;
 import java.util.List;
 
 public class AEAlbumListAdapter$1
   implements Runnable
 {
-  public AEAlbumListAdapter$1(bnex parambnex, List paramList) {}
+  public AEAlbumListAdapter$1(bogf parambogf, List paramList) {}
   
   public void run()
   {

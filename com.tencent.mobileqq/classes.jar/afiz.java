@@ -1,42 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class afiz
-  implements DialogInterface.OnClickListener
+  extends ReportDialog
 {
-  public afiz(TroopDisbandActivity paramTroopDisbandActivity, bgpa parambgpa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afiz(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Biax == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Biax = new biax(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-    }
-    if (bgnt.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
+    super(paramContext, 2131755677);
+    setContentView(2131562319);
+    getWindow().setFlags(1024, 2048);
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)findViewById(2131378936)).setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    try
     {
-      paramDialogInterface = (anwd)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.a(20);
-      if (paramDialogInterface != null)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
-        {
-          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
-          localTroopDisbandActivity.b |= 0x1;
-          paramDialogInterface.l(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Biax.b(0, 2131691899, 1000);
-      }
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
-        this.jdField_a_of_type_Bgpa.cancel();
-      }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      super.dismiss();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Biax.b(2, 2131691895, 1500);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Biax.b(2, 2131693991, 1500);
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+    }
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (String str = null;; str = getContext().getResources().getString(paramInt))
+    {
+      a(str);
+      return;
+    }
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import anhk;
+import antf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ class ConfessMsgListFragment$2
   
   public void run()
   {
-    this.this$0.a.a().d(anhk.aM, 1032);
+    this.this$0.a.a().d(antf.aM, 1032);
   }
 }
 

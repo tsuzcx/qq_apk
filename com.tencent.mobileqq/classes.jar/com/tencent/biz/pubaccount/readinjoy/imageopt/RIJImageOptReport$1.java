@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.imageopt;
 
-import puw;
-import tdw;
+import pnj;
+import suo;
 
 public final class RIJImageOptReport$1
   implements Runnable
 {
-  public RIJImageOptReport$1(tdw paramtdw, String paramString) {}
+  public RIJImageOptReport$1(suo paramsuo, String paramString) {}
   
   public void run()
   {
-    if (puw.a(this.jdField_a_of_type_Tdw))
+    if (pnj.a(this.jdField_a_of_type_Suo))
     {
-      puw.a(6, this.jdField_a_of_type_Tdw);
-      this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      puw.b(this.jdField_a_of_type_Tdw);
+      pnj.a(6, this.jdField_a_of_type_Suo);
+      this.jdField_a_of_type_Suo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      pnj.b(this.jdField_a_of_type_Suo);
     }
   }
 }

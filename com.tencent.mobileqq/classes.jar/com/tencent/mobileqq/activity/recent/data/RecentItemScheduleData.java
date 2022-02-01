@@ -3,11 +3,17 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemScheduleData
   extends AbsRecentUserBusinessBaseData
 {
   public long time;
+  
+  public RecentItemScheduleData(RecentUser paramRecentUser)
+  {
+    super(paramRecentUser);
+  }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {

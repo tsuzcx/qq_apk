@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaet;
+import aaiu;
 
 public class CommentPresenter$9
   implements Runnable
 {
-  public CommentPresenter$9(aaet paramaaet) {}
+  public CommentPresenter$9(aaiu paramaaiu) {}
   
   public void run()
   {

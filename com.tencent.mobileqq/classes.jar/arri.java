@@ -1,65 +1,78 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.5;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 
-public class arri
-  implements URLDrawable.URLDrawableListener
+public final class arri
+  extends arac<arrh>
 {
-  public arri(EmoticonFromGroupManager.5 param5, URLDrawable paramURLDrawable, CustomEmotionData paramCustomEmotionData, arrp paramarrp, arro paramarro) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public static arrh a()
   {
-    arre.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
+    return (arrh)aran.a().a(559);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static boolean a(String paramString)
   {
-    arre.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    arrh localarrh = a();
+    return (localarrh != null) && (localarrh.a()) && (localarrh.a(paramString));
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  @NonNull
+  public arrh a(int paramInt)
   {
-    arre.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(paramURLDrawable)) {}
-    String str;
-    do
-    {
-      do
-      {
-        return;
-        str = arre.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0, paramURLDrawable);
-      } while ("".equals(str));
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = str;
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = paramURLDrawable;
-    } while ("".equals(str));
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EmoticonFromGroup_Manager", 4, "onLoadSuccessed upload emo " + paramURLDrawable);
-      }
-      this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      this.jdField_a_of_type_Arrp.d(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Arro.c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      return;
-    }
-    catch (IOException paramURLDrawable)
-    {
-      paramURLDrawable.printStackTrace();
-      QLog.d("EmoticonFromGroup_Manager", 1, paramURLDrawable, new Object[0]);
-    }
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    return new arrh();
+  }
+  
+  @Nullable
+  public arrh a(araj[] paramArrayOfaraj)
+  {
+    return arrh.a(paramArrayOfaraj);
+  }
+  
+  public void a(arrh paramarrh)
+  {
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "onUpdate");
+  }
+  
+  public Class<arrh> clazz()
+  {
+    return arrh.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 559;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arri
  * JD-Core Version:    0.7.0.1
  */

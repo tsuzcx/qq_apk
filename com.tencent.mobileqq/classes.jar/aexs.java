@@ -1,98 +1,52 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aexs
-  extends BroadcastReceiver
+  extends WtloginObserver
 {
-  public aexs(QQMapActivity paramQQMapActivity) {}
+  public aexs(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + bhoe.a(paramString2));
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      }
     }
-    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
-    {
-      this.a.j = paramIntent.getStringExtra("streetViewUrl");
-      this.a.n();
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
-          {
-            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-            localObject = new LBSShare.LocationResp();
-            paramContext = (Context)localObject;
-            if (arrayOfByte != null) {}
-            try
-            {
-              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
-              paramIntent = paramIntent.getExtras().getBundle("req");
-              this.a.a(paramContext, paramIntent);
-              return;
-            }
-            catch (InvalidProtocolBufferMicroException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  paramContext.printStackTrace();
-                }
-                paramContext = null;
-              }
-            }
-          }
-          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
-            break;
-          }
-          paramContext = paramIntent.getByteArrayExtra("data");
-        } while (paramContext == null);
-        Object localObject = new LBSShare.NearByShopsResp();
-        try
-        {
-          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
-          paramIntent = paramIntent.getExtras().getBundle("req");
-          this.a.a(paramContext, paramIntent);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramContext)
-        {
-          if (QLog.isColorLevel()) {
-            paramContext.printStackTrace();
-          }
-          this.a.a(null, null);
-          return;
-        }
-      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
-      paramContext = paramIntent.getByteArrayExtra("data");
-    } while (paramContext == null);
-    paramIntent = new LBSShare.GetShopsByIdsResp();
-    try
-    {
-      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
-      this.a.a(paramContext);
+    this.a.c();
+    if (this.a.isFinishing()) {
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramContext)
+    if (paramInt3 == 0)
     {
-      if (QLog.isColorLevel()) {
-        paramContext.printStackTrace();
+      this.a.a();
+      return;
+    }
+    paramString1 = null;
+    if (paramErrMsg != null) {
+      paramString1 = paramErrMsg.getMessage();
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.a(this.a.getString(2131691796), paramString1);
+      if (!TextUtils.isEmpty(paramString1)) {
+        break label299;
       }
-      this.a.a(null);
+      paramString1 = this.a.getString(2131717456);
+    }
+    label299:
+    for (;;)
+    {
+      bdll.a(this.a.app, "dc00898", "", LoginPhoneNumActivity.a(this.a), "0X800B107", "0X800B107", LoginPhoneNumActivity.a(this.a), 0, "", "", paramString1, "");
+      return;
+      this.a.a(2131717456, 1);
+      break;
     }
   }
 }

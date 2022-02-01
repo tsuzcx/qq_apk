@@ -1,36 +1,63 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.StatusVisibleFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Application;
+import android.content.Context;
+import android.telephony.TelephonyManager;
+import androidx.core.app.ActivityCompat;
+import com.tencent.qphone.base.util.QLog;
 
-class aytg
-  implements View.OnClickListener
+public class aytg
 {
-  aytg(aytf paramaytf, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public static int a(Context paramContext)
   {
-    int i = 1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      aypy.a("0X800AF41", 2, String.valueOf(this.jdField_a_of_type_Aytf.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Aytf.jdField_a_of_type_Int != 1) {
-        break label84;
-      }
+    int i = bhnv.b(paramContext);
+    if (i == 1) {
+      return 2;
     }
+    if (i == 2) {
+      return 3;
+    }
+    if (i == 3) {
+      return 4;
+    }
+    return 1;
+  }
+  
+  public static String a()
+  {
+    try
+    {
+      String str = bhlo.a();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("", 4, "no phone permission");
+    }
+    return "";
+  }
+  
+  public static String a(Application paramApplication)
+  {
     for (;;)
     {
-      StatusVisibleFragment.a(this.jdField_a_of_type_Aytf.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Aytf.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem, i, 999);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aypy.a("0X800AF41", 1, String.valueOf(this.jdField_a_of_type_Aytf.jdField_a_of_type_Int));
-      break;
-      label84:
-      if (this.jdField_a_of_type_Aytf.jdField_a_of_type_Int == 2) {
-        i = 3;
-      } else {
-        i = 0;
+      try
+      {
+        Object localObject = (TelephonyManager)paramApplication.getSystemService("phone");
+        if (ActivityCompat.checkSelfPermission(paramApplication, "android.permission.READ_PHONE_STATE") == 0)
+        {
+          paramApplication = ((TelephonyManager)localObject).getDeviceId();
+          localObject = paramApplication;
+          if (paramApplication == null) {
+            localObject = "unknown";
+          }
+          return localObject;
+        }
       }
+      catch (Exception paramApplication)
+      {
+        QLog.w("", 4, " get client info error " + paramApplication.getMessage());
+        return "unknown";
+      }
+      paramApplication = "unknown";
     }
   }
 }

@@ -1,20 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afml
-  implements View.OnClickListener
+class afml
+  implements DialogInterface.OnClickListener
 {
-  public afml(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
+  afml(afmg paramafmg) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.show();
+    this.a.b = false;
+    afmg.c(this.a);
   }
 }
 

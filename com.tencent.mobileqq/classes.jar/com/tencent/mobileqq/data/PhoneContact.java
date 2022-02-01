@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajjm;
+import ajuv;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -92,7 +92,7 @@ public class PhoneContact
         i = this.netTypeIconId;
       }
     }
-    ajjm localajjm;
+    ajuv localajuv;
     do
     {
       return i;
@@ -102,7 +102,7 @@ public class PhoneContact
       if (((this.detalStatusFlag == -55) && (this.iTermType == 68361) && ((this.abilityBits & 1L) == 0L)) || (this.iTermType == 68104) || (this.iTermType == 65805)) {
         return 0;
       }
-      localajjm = ajjm.a();
+      localajuv = ajuv.a();
       if (this.eNetworkType != 0) {
         break;
       }
@@ -110,8 +110,8 @@ public class PhoneContact
         return 0;
       }
       i = j;
-    } while (1 != localajjm.a(this.iTermType, 1));
-    if (1 != localajjm.a(this.iTermType, 1)) {
+    } while (1 != localajuv.a(this.iTermType, 1));
+    if (1 != localajuv.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)

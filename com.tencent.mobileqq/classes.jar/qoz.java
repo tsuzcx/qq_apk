@@ -1,14 +1,64 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
-class qoz
-  extends qnn
+public class qoz
+  implements View.OnClickListener
 {
-  qoz(qoy paramqoy) {}
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  qwc jdField_a_of_type_Qwc;
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
+  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
+  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
+  ImageView[] c;
   
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
+  private qoz(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  
+  public void onClick(View paramView)
   {
-    qoy.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
+    boolean bool = true;
+    switch (paramView.getId())
+    {
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    case 2131366962: 
+      i = 0;
+      label50:
+      if (i < this.jdField_a_of_type_Qwc.a.size()) {
+        if (((RecommendFollowInfo)this.jdField_a_of_type_Qwc.a.get(i)).isFollowed) {
+          break;
+        }
+      }
+      break;
+    }
+    for (int i = 0;; i = 1)
+    {
+      ComponentContentRecommendFollowGroup localComponentContentRecommendFollowGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
+      List localList = this.jdField_a_of_type_Qwc.a;
+      if (i == 0) {}
+      for (;;)
+      {
+        localComponentContentRecommendFollowGroup.a(localList, bool);
+        break;
+        i += 1;
+        break label50;
+        bool = false;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
+      break;
+    }
   }
 }
 

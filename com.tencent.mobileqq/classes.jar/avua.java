@@ -1,33 +1,72 @@
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.HotPicFooter.1;
+import mqq.os.MqqHandler;
 
 public class avua
-  implements bkhw
+  implements avtf
 {
-  public avua(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, avuv paramavuv) {}
+  int jdField_a_of_type_Int = 1;
+  avty jdField_a_of_type_Avty;
+  public boolean a;
   
-  public void OnClick(View paramView, int paramInt)
+  public avua(HotPicPageView paramHotPicPageView, avty paramavty)
   {
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
+    this.jdField_a_of_type_Avty = paramavty;
+  }
+  
+  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new avue(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131558613, paramViewGroup, false), null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams1 = null;
+    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+      localLayoutParams1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
     }
-    for (;;)
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams2 = localLayoutParams1;
+    if (localLayoutParams1 == null)
     {
-      this.jdField_a_of_type_Avuv.b(false);
-      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-      }
-      return;
-      avtq.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Avuv.a().e, this.jdField_a_of_type_Avuv.a().b);
-      continue;
-      this.jdField_a_of_type_Avuv.g();
-      continue;
-      this.jdField_a_of_type_Avuv.g();
+      localLayoutParams2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+      paramViewHolder.itemView.setLayoutParams(localLayoutParams2);
     }
+    localLayoutParams2.setFullSpan(true);
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_Int;
+    if ((!this.jdField_a_of_type_Boolean) && (paramInt != -20) && (this.jdField_a_of_type_Int == 1))
+    {
+      avtm.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramInt);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      paramViewHolder.itemView.findViewById(2131368171).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131368172).setVisibility(4);
+      return;
+    }
+    if (HotPicPageView.b())
+    {
+      paramViewHolder.itemView.findViewById(2131368172).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131368171).setVisibility(8);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new HotPicPageView.HotPicFooter.1(this, paramViewHolder));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

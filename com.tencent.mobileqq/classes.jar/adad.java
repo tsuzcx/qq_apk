@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.Grp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class adad
-  implements acxp
+class adad
+  implements NoColumnErrorHandler
 {
-  public int a()
-  {
-    return 1;
-  }
+  adad(adac paramadac) {}
   
-  public boolean a()
+  public void handleNoColumnError(NoColumnError paramNoColumnError)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.Grp();
-    paramQQAppInterface.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.grp.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
+    if ((paramNoColumnError != null) && (("unreadGiftCount".equals(paramNoColumnError.mColumnName)) || ("unreadMark".equals(paramNoColumnError.mColumnName))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.unread.Proxy", 2, paramNoColumnError.getMessage(), paramNoColumnError);
+      }
+      adac.a(this.a, true);
+    }
   }
 }
 

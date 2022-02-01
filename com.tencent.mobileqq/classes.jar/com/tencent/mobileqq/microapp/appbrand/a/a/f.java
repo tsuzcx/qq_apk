@@ -8,7 +8,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.a.c;
@@ -141,7 +141,7 @@ public final class f
       if (localBaseActivity != null)
       {
         str = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
-        if (bgsp.a(str)) {
+        if (bhsr.a(str)) {
           break label228;
         }
         if (localBaseActivity.checkSelfPermission(str) != 0) {

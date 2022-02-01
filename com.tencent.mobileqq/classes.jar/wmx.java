@@ -1,169 +1,295 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.SpannableStringBuilder;
-import android.view.View;
-import android.widget.TextView;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.comment.FeedLikeLego.2;
-import com.tencent.biz.qqstory.comment.FeedLikeLego.3;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.1;
+import com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.2;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class wmx
-  extends wni<LikeEntry>
 {
+  public static String a;
   private int jdField_a_of_type_Int;
-  public Activity a;
-  public TextView a;
-  public CommentLikeFeedItem a;
-  public List<LikeEntry> a;
-  public woy a;
-  private ycl jdField_a_of_type_Ycl;
-  private yec jdField_a_of_type_Yec;
-  public yij a;
-  public boolean a;
+  private ArrayList<zqo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private List<wmz> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public wmx(Context paramContext, Activity paramActivity, View paramView, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt)
+  static
   {
-    super(paramContext, paramView);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Ycl = new ycl(paramActivity, paramCommentLikeFeedItem, paramInt, false);
-    this.jdField_a_of_type_Yec = new yec();
+    jdField_a_of_type_JavaLangString = "Q.qqstory.publish.upload.VideoSaveToAlbumHelper";
   }
   
-  public static wmx a(Context paramContext, Activity paramActivity, View paramView, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt)
+  public wmx()
   {
-    paramContext = new wmx(paramContext, paramActivity, paramView, paramCommentLikeFeedItem, paramInt);
-    paramContext.jdField_a_of_type_Boolean = false;
-    return paramContext;
+    b();
   }
   
-  public wnj a()
+  private String a()
   {
-    return new wms(this, this.jdField_a_of_type_Boolean);
+    return win.r;
   }
   
-  public wnk a()
+  private void a(wmz paramwmz)
   {
-    return new wmy(this);
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369833));
-    this.jdField_a_of_type_Woy = ((woy)wpm.a(15));
-    this.jdField_a_of_type_Yij = ((yij)wpm.a(11));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_Wnk);
-  }
-  
-  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-  }
-  
-  public void a(List<LikeEntry> paramList)
-  {
-    if (paramList == null) {
+    yuk.c(jdField_a_of_type_JavaLangString, "generate ffmeng command start...");
+    if (TextUtils.isEmpty(paramwmz.jdField_b_of_type_JavaLangString))
+    {
+      yuk.e(jdField_a_of_type_JavaLangString, "generate failed. the video local path is null.");
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int k = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
-    boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isFriend();
-    if (!bool)
+    if (zom.c(paramwmz.e))
     {
-      if ((j == 0) && (k == 0))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramList = yci.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Ycl);
-      if ((bool) || (j != 0) || (k <= 0)) {
-        break label153;
-      }
-    }
-    label153:
-    for (int i = 1;; i = 0)
-    {
-      if ((paramList.length() != 0) || (i != 0)) {
-        break label158;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      yuk.b(jdField_a_of_type_JavaLangString, "the video has existed in the album.");
       return;
-      if (j == 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      break;
     }
-    label158:
-    if (!bool) {
-      if ((j == 0) && (k > 0)) {
-        paramList.append(String.format("%s次赞", new Object[] { zlx.a(k) }));
+    wmy localwmy = new wmy(this, paramwmz);
+    Object localObject2 = zqb.a(paramwmz.jdField_b_of_type_JavaLangString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new int[3];
+      localObject1[0] = 0;
+      localObject1[1] = paramwmz.jdField_a_of_type_Int;
+      localObject1[2] = paramwmz.jdField_b_of_type_Int;
+    }
+    int j = localObject1[0];
+    paramwmz.jdField_a_of_type_Int = localObject1[1];
+    paramwmz.jdField_b_of_type_Int = localObject1[2];
+    int i;
+    String str1;
+    String str2;
+    if (paramwmz.jdField_a_of_type_Boolean)
+    {
+      i = 2;
+      str1 = zqr.a(BaseApplication.getContext(), paramwmz.jdField_a_of_type_JavaLangString, paramwmz.jdField_a_of_type_Int, paramwmz.jdField_b_of_type_Int, i);
+      if (TextUtils.isEmpty(str1)) {
+        yuk.e(jdField_a_of_type_JavaLangString, "Client Error: generate water mark failed! May be this task is strange! %s", new Object[] { paramwmz });
+      }
+      localObject2 = paramwmz.c;
+      localObject1 = zqr.a(paramwmz.jdField_a_of_type_Wur, paramwmz.jdField_a_of_type_Int, paramwmz.jdField_b_of_type_Int);
+      str2 = zqr.a(paramwmz.jdField_a_of_type_Wuq, paramwmz.jdField_a_of_type_Int, paramwmz.jdField_b_of_type_Int);
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label306;
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramList);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_Yec);
-      if (!QLog.isColorLevel()) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        str2 = win.u;
+        str2 = str2 + paramwmz.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + "_new_mask.png";
+        if (!zqr.a((String)localObject2, (String)localObject1, str2))
+        {
+          yuk.e(jdField_a_of_type_JavaLangString, "combineTwoImg mask and vote failed");
+          return;
+          i = 1;
+          break;
+          label306:
+          localObject1 = str2;
+          continue;
+        }
+        localObject1 = str2;
+        if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str1))) {
+          break label585;
+        }
+        yuk.b(jdField_a_of_type_JavaLangString, "have doodle image, should combine doodle image and logo image.");
+        str2 = win.k + paramwmz.jdField_a_of_type_JavaLangString + "_newDownloadMask.mp4";
+        localObject2 = localObject1;
+        if (zqr.a((String)localObject1, str1, str2)) {
+          localObject2 = str2;
+        }
+      }
+    }
+    for (;;)
+    {
+      paramwmz.c = ((String)localObject2);
+      localObject1 = win.k + "hflip" + paramwmz.jdField_a_of_type_JavaLangString + ".mp4";
+      if ((j != 0) && (j != -1) && (!zom.c((String)localObject1)))
+      {
+        localObject2 = new zqo();
+        ((zqo)localObject2).jdField_a_of_type_Int = 10;
+        ((zqo)localObject2).jdField_a_of_type_JavaUtilArrayList = new VideoSaveToAlbumHelper.1(this, paramwmz, (String)localObject1);
+        ((zqo)localObject2).jdField_a_of_type_Zqq = new zra(null);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+        yuk.c(jdField_a_of_type_JavaLangString, "add a hflip command to command list.");
+      }
+      localObject2 = new zqo();
+      ((zqo)localObject2).jdField_a_of_type_Int = 1;
+      ((zqo)localObject2).jdField_a_of_type_JavaUtilArrayList = new VideoSaveToAlbumHelper.2(this, paramwmz, j, (String)localObject1);
+      ((zqo)localObject2).jdField_a_of_type_Zqq = localwmy;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      yuk.c(jdField_a_of_type_JavaLangString, "add a watermask command to command list.");
+      return;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break;
       }
-      QLog.d("FeedLikeLego", 2, "id:" + paramList.toString() + " isFriend:" + bool + "  likeSize:" + j + "  likeCount" + k);
-      return;
-      if ((j < k) && (k > 0))
-      {
-        paramList.append(String.format("等%s人赞了", new Object[] { zlx.a(k) }));
-      }
-      else
-      {
-        paramList.append("赞了");
-        continue;
-        paramList.append("赞了");
+      localObject1 = localObject2;
+      break;
+      label585:
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = str1;
       }
     }
   }
   
-  public void a(boolean paramBoolean)
+  private String b()
   {
-    String str = QQStoryContext.a().b();
-    if (paramBoolean)
+    return win.t;
+  }
+  
+  private void b()
+  {
+    zom.a(a(), false);
+    zom.a(c(), false);
+    zom.a(b(), false);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  private String c()
+  {
+    return win.s;
+  }
+  
+  public String a(@NonNull String paramString)
+  {
+    return a() + paramString + ".mp4";
+  }
+  
+  public void a()
+  {
+    yuk.c(jdField_a_of_type_JavaLangString, "trigger to execute all tasks in the task list.");
+    if (this.jdField_a_of_type_JavaUtilList.size() < 1)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = 1;
-      Object localObject;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount != -1) {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-      }
-      for (((CommentLikeFeedItem)localObject).mLikeCount += 1;; this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = 1)
+      yuk.e(jdField_a_of_type_JavaLangString, "no task need to be execute.");
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      a((wmz)((Iterator)localObject).next());
+    }
+    localObject = zqi.a(BaseApplication.getContext(), true);
+    String str = ((wmz)this.jdField_a_of_type_JavaUtilList.get(0)).e;
+    if (((zqi)localObject).a())
+    {
+      if (((zqi)localObject).a(str))
       {
-        localObject = new LikeEntry();
-        ((LikeEntry)localObject).likeTime = System.currentTimeMillis();
-        ((LikeEntry)localObject).uin = QQStoryContext.a().c();
-        ((LikeEntry)localObject).unionId = str;
-        ((LikeEntry)localObject).feedId = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId;
-        ThreadManager.post(new FeedLikeLego.2(this, (wpy)wpm.a(2), str, (LikeEntry)localObject), 5, null, true);
+        yuk.d(jdField_a_of_type_JavaLangString, "this task is already running.");
         return;
       }
+      yuk.e(jdField_a_of_type_JavaLangString, "a download task is running. let's return.");
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = 0;
-    ThreadManager.post(new FeedLikeLego.3(this, str), 5, null, true);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
+    try
+    {
+      ((zqi)localObject).a(str);
+      ((zqi)localObject).a(this.jdField_a_of_type_JavaUtilArrayList);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      yuk.e(jdField_a_of_type_JavaLangString, "error occured during executing ffmeng commands. error message is : %s.", new Object[] { localException.getMessage() });
+    }
   }
   
-  public void b() {}
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, wur paramwur, wuq paramwuq)
+  {
+    paramString1 = new wmz(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramBoolean);
+    paramString1.jdField_a_of_type_Wur = paramwur;
+    paramString1.jdField_a_of_type_Wuq = paramwuq;
+    this.jdField_a_of_type_JavaUtilList.add(paramString1);
+  }
   
-  public void c() {}
+  public boolean a(String paramString)
+  {
+    Object localObject = wmk.a(QQStoryContext.a().a().createEntityManager(), PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getGroupIdNoArgs(), new String[] { paramString });
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      PublishVideoEntry localPublishVideoEntry = (PublishVideoEntry)((Iterator)localObject).next();
+      if ((localPublishVideoEntry.videoProcessState != PublishVideoEntry.VIDEO_PROCESS_STATE_COMPOSITE_FAILED) && (localPublishVideoEntry.videoProcessState != PublishVideoEntry.VIDEO_PROCESS_STATE_COMPOSITE_SUC) && (localPublishVideoEntry.videoProcessState != PublishVideoEntry.VIDEO_PROCESS_STATE_UPLOAD_SUC))
+      {
+        yuk.a(jdField_a_of_type_JavaLangString, "waiting other fragments composited. group id is %s.", paramString);
+        return false;
+      }
+    }
+    yuk.a(jdField_a_of_type_JavaLangString, "all fragments are composited. group id is %s.", paramString);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    yuk.b(jdField_a_of_type_JavaLangString, "start coping file to temp directory. fromPath = %s. toPath = %s.", paramString1, paramString2);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      yuk.e(jdField_a_of_type_JavaLangString, "fromPath or toPath is null.");
+      return false;
+    }
+    paramString1 = new File(paramString1);
+    if (!paramString1.exists())
+    {
+      yuk.e(jdField_a_of_type_JavaLangString, "src file is not exist.");
+      return false;
+    }
+    boolean bool1 = bool2;
+    try
+    {
+      paramString2 = zom.a(paramString2);
+      bool1 = bool2;
+      long l = SystemClock.elapsedRealtime();
+      bool1 = bool2;
+      bool2 = zom.a(paramString1, paramString2);
+      bool1 = bool2;
+      yuk.b(jdField_a_of_type_JavaLangString, "copy file to temp directory cost %d ms.", Long.valueOf(SystemClock.elapsedRealtime() - l));
+      return bool2;
+    }
+    catch (IOException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return bool1;
+  }
+  
+  public boolean b(String paramString)
+  {
+    paramString = wmk.a(QQStoryContext.a().a().createEntityManager(), PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getGroupIdNoArgs(), new String[] { paramString });
+    if (paramString == null) {
+      return false;
+    }
+    paramString = paramString.iterator();
+    int i = 0;
+    label48:
+    if (paramString.hasNext())
+    {
+      if (((PublishVideoEntry)paramString.next()).videoProcessState != PublishVideoEntry.VIDEO_PROCESS_STATE_COMPOSITE_FAILED) {
+        break label102;
+      }
+      i += 1;
+    }
+    label102:
+    for (;;)
+    {
+      break label48;
+      yuk.a(jdField_a_of_type_JavaLangString, "composite failed count is %d.", Integer.valueOf(i));
+      if (i != 1) {
+        break;
+      }
+      return true;
+    }
+  }
 }
 
 

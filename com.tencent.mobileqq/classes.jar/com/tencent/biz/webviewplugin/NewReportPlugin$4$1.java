@@ -1,7 +1,7 @@
 package com.tencent.biz.webviewplugin;
 
-import abao;
-import biau;
+import aber;
+import bjbs;
 
 class NewReportPlugin$4$1
   implements Runnable
@@ -10,8 +10,8 @@ class NewReportPlugin$4$1
   
   public void run()
   {
-    abao.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
-    this.this$0.jdField_a_of_type_Biau.dismiss();
+    aber.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
+    this.this$0.jdField_a_of_type_Bjbs.dismiss();
   }
 }
 

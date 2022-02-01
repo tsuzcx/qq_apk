@@ -1,24 +1,239 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class balx
-  implements bcdv
+  implements INetInfoHandler
 {
-  balx(balv parambalv) {}
+  public String a;
+  private boolean a;
+  public String b;
+  public String c;
+  private String d;
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public balx()
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
+    this.jdField_a_of_type_Boolean = true;
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getApplication(), this);
+    a();
+  }
+  
+  public static String a()
+  {
+    return "XGIdentifier";
+  }
+  
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      long l = System.nanoTime();
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getBSSID();
+        if (QLog.isColorLevel()) {
+          QLog.e("PttIpSaver", 2, "getWifiMac " + paramContext + " time=" + (System.nanoTime() - l) / 1000000L);
+        }
+        return paramContext;
+      }
+    }
+    catch (Throwable paramContext) {}
+    return null;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      if (this.d == null)
+      {
+        this.d = a();
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("PttIpSaver", 2, "clear ip:" + paramInt);
+    }
+    if (paramInt == -1)
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      this.b = null;
+      this.c = null;
+    }
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        this.jdField_a_of_type_JavaLangString = null;
+        return;
+      }
+      if (paramInt == 1)
+      {
+        this.b = null;
+        return;
+      }
+    } while (paramInt != 2);
+    this.c = null;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public String b()
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
+    try
+    {
+      String str = this.d;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      AppNetConnInfo.unregisterNetInfoHandler(this);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void onNetMobile2None()
+  {
+    try
+    {
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    try
+    {
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Mobile  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    try
+    {
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetWifi2Mobile  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    try
+    {
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

@@ -1,28 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class yuu
-  implements TextWatcher
+public class yuu
+  implements View.OnClickListener
 {
-  yuu(yur paramyur) {}
+  public yuu(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    yty localyty = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
-    {
-      localyty.a("search_poi", 0, 0, new String[] { paramEditable });
-      yqv.a("0X80076D1");
-      yqv.b("0X80075E6");
-      yur.a(this.a);
-      return;
-    }
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

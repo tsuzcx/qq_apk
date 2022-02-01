@@ -1,60 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
 
-public abstract class aqkz<T>
+class aqkz
+  extends AnimatorListenerAdapter
 {
-  public static final int DEFAULT = 1;
-  public static final int FAIL_CODE_ERROR = -2;
-  public static final int FAIL_CODE_REQ_TIMEOUT = -1;
-  public static final int MIGRATE = 0;
-  private static final String TAG = "IQConfigProcessor";
+  aqkz(aqkv paramaqkv, aqlc paramaqlc, ObjectAnimator paramObjectAnimator) {}
   
-  public abstract Class<T> clazz();
-  
-  public boolean isAccountRelated()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return true;
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
   }
   
-  public abstract boolean isNeedCompressed();
-  
-  public abstract boolean isNeedStoreLargeFile();
-  
-  public boolean isNeedUpgradeReset()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return false;
-  }
-  
-  @NonNull
-  public abstract T migrateOldOrDefaultContent(int paramInt);
-  
-  public abstract int migrateOldVersion();
-  
-  @Nullable
-  public abstract T onParsed(aqlg[] paramArrayOfaqlg);
-  
-  public abstract void onReqFailed(int paramInt);
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + type());
+    if (this.jdField_a_of_type_Aqlc != null) {
+      this.jdField_a_of_type_Aqlc.a.setVisibility(0);
     }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
-  
-  public int onSend(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public abstract void onUpdate(T paramT);
-  
-  public abstract int type();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkz
  * JD-Core Version:    0.7.0.1
  */

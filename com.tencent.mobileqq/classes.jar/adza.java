@@ -1,33 +1,21 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.BaseChatpieHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adza
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public adza(Conversation paramConversation) {}
+  public adza(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
-      if (this.a.a == null) {
-        break label81;
-      }
-    }
-    label81:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("Q.recent", 2, bool);
-      if (this.a.a != null) {
-        this.a.a.onTouchEvent(paramMotionEvent);
-      }
-      return true;
-    }
+    axpf.a().a = 0;
+    this.a.a.a(this.a.a(), this.a.a().getIntent());
+    this.a.b(1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

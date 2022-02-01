@@ -1,10 +1,53 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface qal
+public class qal
+  implements LogUtil.ProteusLog
 {
-  public abstract void a(stc paramstc, pxk parampxk, int paramInt);
+  public void d(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, paramInt, paramString2);
+  }
   
-  public abstract void a(stc paramstc, pxk parampxk, long paramLong, Bitmap paramBitmap);
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e(paramString1, paramInt, paramString2);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
+  }
 }
 
 

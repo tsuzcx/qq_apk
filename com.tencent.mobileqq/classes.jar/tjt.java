@@ -1,29 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
 public class tjt
-  extends Handler
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public tjt(ChannelTopBanner paramChannelTopBanner, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public tjt(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if ((ChannelTopBanner.a(this.a)) || (!ChannelTopBanner.b(this.a))) {}
-    while (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Int += 1;
-    this.a.jdField_a_of_type_Int %= this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setCurrentItem(this.a.jdField_a_of_type_Int, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
   }
 }
 

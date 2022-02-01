@@ -1,102 +1,97 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.lang.ref.WeakReference;
 import java.net.URL;
+import java.util.List;
 
 class bfwv
-  implements URLDrawableDownListener
+  extends aavh
 {
-  bfwv(bfwu parambfwu, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  bfwv(bfwu parambfwu) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadCancelled ", new Object[0]));
-    }
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    if (!paramBoolean)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadFailed ", new Object[0]));
-    }
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      bfvr.a("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:false  errCode:" + paramInt1);
+      this.a.jdField_a_of_type_Bfvc.c = 2;
+      this.a.a(true, bguk.b, bguk.A, 103);
       return;
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    bfvr.c("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:true  int32_ret_code:" + paramInt1);
+    if ((paramInt1 == 0) || ((TextUtils.isEmpty(paramString3)) && (paramInt2 == 0)))
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      bfvr.a("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no host");
+      this.a.jdField_a_of_type_Bfvc.c = 1;
+      this.a.jdField_a_of_type_Bfvc.d = 101;
+      this.a.a(true, bguk.c, bguk.x, 1);
       return;
     }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadProgressed progress=%d", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadSuccessed ", new Object[0]));
-    }
-    this.jdField_a_of_type_Bfwu.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    paramString1 = aunj.a(paramByteStringMicro1);
+    if (TextUtils.isEmpty(paramString1))
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+      bfvr.a("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no string_download_url");
+      this.a.jdField_a_of_type_Bfvc.c = 1;
+      this.a.jdField_a_of_type_Bfvc.d = 102;
+      this.a.a(true, bguk.b, bguk.w, 1);
+      return;
+    }
+    paramString2 = blhn.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipInnerPath);
+    paramByteStringMicro1 = (QQAppInterface)this.b.get();
+    if ((paramByteStringMicro1 != null) && (bgsk.b(paramByteStringMicro1)) && (bgsk.c(paramByteStringMicro1)) && (paramBundle != null))
+    {
+      paramByteStringMicro1 = paramBundle.getString("strHttpsDomain");
+      if (!TextUtils.isEmpty(paramByteStringMicro1))
+      {
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.g = paramByteStringMicro1;
+        int i = (short)paramBundle.getInt("httpsPort", 0);
+        paramInt1 = i;
+        if (i != 0) {}
       }
     }
-    bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
+    for (paramInt1 = 443;; paramInt1 = 0)
+    {
+      if (this.a.jdField_a_of_type_Boolean) {}
+      for (;;)
+      {
+        this.a.f = ("/ftn_compress_getfile/rkey=" + paramString1 + "&filetype=" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipType + "&path=" + paramString2 + "&mType=Other");
+        paramString1 = paramString3 + ":" + paramInt1;
+        this.a.jdField_a_of_type_JavaUtilList.add(paramString1);
+        if (paramInt2 != 0)
+        {
+          paramString2 = this.a.a(paramInt2) + ":" + paramInt1;
+          this.a.jdField_a_of_type_JavaUtilList.add(paramString2);
+        }
+        if (this.a.jdField_a_of_type_Boolean) {
+          paramString1 = "https://" + paramString1 + this.a.f;
+        }
+        for (;;)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.PreviewUrl = paramString1;
+          try
+          {
+            paramString1 = new URL(paramString1);
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramString1.getHost();
+            bfvr.c("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. str_download_dns:" + paramString3 + " int32_server_ip:" + paramInt2 + " int32_server_port:" + paramInt3 + " mUrlParm:" + this.a.f + " port:" + paramInt1 + " isHttps:" + this.a.jdField_a_of_type_Boolean + " httpsDomain:" + this.a.g);
+            this.a.g();
+            return;
+            paramString1 = "http://" + paramString1 + this.a.f;
+          }
+          catch (Exception paramString1)
+          {
+            for (;;)
+            {
+              paramString1.printStackTrace();
+            }
+          }
+        }
+        paramInt1 = paramInt3;
+      }
+    }
   }
 }
 

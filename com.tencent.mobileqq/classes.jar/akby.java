@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.support.v4.app.FragmentActivity;
 
 public class akby
-  implements DialogInterface.OnClickListener
+  extends akbz
 {
-  public akby(BaseActivityView paramBaseActivityView) {}
+  public static final int[] a = { 2131690657, 2131690662, 2131690659, 2131690660, 2131690664, 2131690661, 2131690658 };
+  public static final int[] b = { 2131364399, 2131364404, 2131364401, 2131364402, 2131364405, 2131364403, 2131364400 };
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akby(FragmentActivity paramFragmentActivity)
   {
-    this.a.f();
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

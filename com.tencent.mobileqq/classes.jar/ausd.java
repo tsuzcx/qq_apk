@@ -1,30 +1,43 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ausd
-  implements View.OnClickListener
+public class ausd
+  extends atvf
 {
-  ausd(ausc paramausc, FeedsItemData paramFeedsItemData) {}
+  atpa jdField_a_of_type_Atpa = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onClick(View paramView)
+  public ausd(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
-      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Ausc.itemView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    b();
+  }
+  
+  public int a()
+  {
+    return 4;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Atpa != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Atpa);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Intent localIntent = new Intent(this.jdField_a_of_type_Ausc.itemView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
-      this.jdField_a_of_type_Ausc.itemView.getContext().startActivity(localIntent);
-    }
+  }
+  
+  public boolean a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Atpa = new ause(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Atpa);
   }
 }
 

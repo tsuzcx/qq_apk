@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/alq" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/root_layout" android:background="#0c000000" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/hvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0KB/s" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="14.0dip" android:textColor="#80ffffff" android:id="@id/jmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x_2" android:layout_below="@id/hvh" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/b9w" android:background="@drawable/qq_status_card_background" android:layout_width="296.0dip" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="211.0dip">
+            <ImageView android:id="@id/n1x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <TextView android:textSize="20.0sp" android:layout_gravity="center_horizontal" android:id="@id/mkd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="35.0dip" />
+            <ImageView android:id="@id/mkc" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="39.0dip" android:layout_toRightOf="@id/mkd" />
+            <TextView android:textSize="28.0sp" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/mke" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="15.0dip" android:maxWidth="145.0dip" android:maxLines="2" android:maxLength="10" android:layout_below="@id/mkd" />
+            <TextView android:textSize="12.0sp" android:layout_gravity="center_horizontal" android:id="@id/mkb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="19.0dip" android:layout_below="@id/mke" />
+            <View android:id="@id/n7f" android:background="@drawable/e5g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:id="@id/n1y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wyw" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_black" android:id="@id/j64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="29.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="29.0dip" android:text="@string/wyx" android:maxLines="2" />
+        <Button android:textSize="14.0sp" android:layout_gravity="center_horizontal" android:id="@id/nmg" android:layout_width="236.0dip" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/cx0" style="@style/et" />
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="20.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/aka" android:id="@id/nmd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_online_status_link_color" android:id="@id/nma" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:drawablePadding="4.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

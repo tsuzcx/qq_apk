@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="228.0dip" android:layout_height="128.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/nik" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <View android:layout_gravity="center" android:id="@id/dl0" android:background="@drawable/ghm" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerInside" />
-</FrameLayout>
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/kr5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" android:contentDescription="@string/cli" />
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/ks_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/grx" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <View android:id="@id/kr6" android:background="@drawable/dmz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/kr9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

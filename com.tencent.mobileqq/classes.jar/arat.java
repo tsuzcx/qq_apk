@@ -1,43 +1,26 @@
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class arat
+final class arat
+  extends XC_MethodHook
 {
-  private int a = -1;
-  
-  public static arat a(aqlg[] paramArrayOfaqlg)
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      paramArrayOfaqlg = null;
-    }
-    arat localarat;
-    do
+    try
     {
-      return paramArrayOfaqlg;
-      localarat = new arat();
-      try
-      {
-        localarat.a = new JSONObject(paramArrayOfaqlg[0].a).getInt("show_limit");
-        return localarat;
+      paramMethodHookParam = araq.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
+        araq.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
       }
-      catch (JSONException localJSONException)
-      {
-        paramArrayOfaqlg = localarat;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TencentDocHistoryTabToastBean", 1, "exception = " + localJSONException.toString());
-    return localarat;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    return this.a == 0;
+      return;
+    }
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
+    }
   }
 }
 

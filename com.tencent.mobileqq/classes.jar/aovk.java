@@ -1,86 +1,36 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class aovk
-  implements apdg
+class aovk
+  implements View.OnTouchListener
 {
-  public aovk(ArConfigService paramArConfigService) {}
+  aovk(aovh paramaovh, ImageView paramImageView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (ArConfigService.c(this.a) != null) {
-      try
-      {
-        int j = ArConfigService.c(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label106;
-          }
-          try
-          {
-            ((aoyg)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
-          }
-        }
-        return;
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    {
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
       }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
     }
-    label106:
-    ArConfigService.c(this.a).finishBroadcast();
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (ArConfigService.c(this.a) != null) {}
     for (;;)
     {
-      int i;
-      try
-      {
-        int j = ArConfigService.c(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
-        }
-        if (paramBoolean) {}
-        try
-        {
-          ((aoyg)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((aoyg)ArConfigService.c(this.a).getBroadcastItem(i)).b(paramInt, 0);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
-      }
-      return;
-      label129:
-      ArConfigService.c(this.a).finishBroadcast();
-      return;
-      i += 1;
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
     }
   }
 }

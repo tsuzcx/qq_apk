@@ -1,15 +1,35 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vdf
-  implements ShareActionSheet.OnItemClickListener
+  implements View.OnClickListener
 {
-  vdf(vde paramvde) {}
+  vdf(vda paramvda) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onClick(View paramView)
   {
-    vde.a(this.a, paramActionSheetItem);
+    if (vda.a(this.a))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    vda.a(this.a, true);
+    vda.a(this.a).setImageResource(2130843956);
+    vda.a(this.a, (AnimationDrawable)vda.a(this.a).getDrawable());
+    vda.a(this.a).start();
+    if (vda.b(this.a)) {
+      vda.c(this.a);
+    }
+    for (;;)
+    {
+      vtq.a("", 19, 5);
+      break;
+      vda.a(this.a).postDelayed(vda.a(this.a), 5000L);
+    }
   }
 }
 

@@ -1,31 +1,11 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentSinkHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdo
-  extends niv
+class pdo
+  extends blsy
 {
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  pdo(pdn parampdn, View paramView)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      this.a.a(paramArrayOfByte);
-      return;
-    }
-    this.a.a(paramInt, "Empty error message.");
-  }
-  
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
-  {
-    paramBundle = this.a;
-    if (paramString != null) {}
-    for (;;)
-    {
-      paramBundle.a(paramInt, paramString);
-      return true;
-      paramString = "Empty error message.";
-    }
+    super(paramView);
   }
 }
 

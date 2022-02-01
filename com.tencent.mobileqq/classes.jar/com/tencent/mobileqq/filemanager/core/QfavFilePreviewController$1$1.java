@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import asrx;
-import atgq;
-import atgr;
+import atib;
+import atyk;
+import atyl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QfavFilePreviewController$1$1
   implements Runnable
 {
-  public QfavFilePreviewController$1$1(atgr paramatgr, Bundle paramBundle) {}
+  public QfavFilePreviewController$1$1(atyl paramatyl, Bundle paramBundle) {}
   
   public void run()
   {
     boolean bool = true;
-    atgq.a(this.jdField_a_of_type_Atgr.a, this.jdField_a_of_type_AndroidOsBundle.getInt("previewPort", 80));
-    atgq.a(this.jdField_a_of_type_Atgr.a, this.jdField_a_of_type_AndroidOsBundle.getLong("previewCode", 0L));
-    atgq.a(this.jdField_a_of_type_Atgr.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewUid"));
-    atgq.b(this.jdField_a_of_type_Atgr.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewHost"));
-    atgq.c(this.jdField_a_of_type_Atgr.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewKey"));
+    atyk.a(this.jdField_a_of_type_Atyl.a, this.jdField_a_of_type_AndroidOsBundle.getInt("previewPort", 80));
+    atyk.a(this.jdField_a_of_type_Atyl.a, this.jdField_a_of_type_AndroidOsBundle.getLong("previewCode", 0L));
+    atyk.a(this.jdField_a_of_type_Atyl.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewUid"));
+    atyk.b(this.jdField_a_of_type_Atyl.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewHost"));
+    atyk.c(this.jdField_a_of_type_Atyl.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewKey"));
     if (QLog.isColorLevel()) {
-      QLog.i("QfavFilePreviewController", 2, "handleRemoteCmd: mHost=" + atgq.a(this.jdField_a_of_type_Atgr.a) + ", port=" + String.valueOf(atgq.a(this.jdField_a_of_type_Atgr.a)) + ", key=" + atgq.b(this.jdField_a_of_type_Atgr.a) + ", retCode =" + String.valueOf(atgq.a(this.jdField_a_of_type_Atgr.a)));
+      QLog.i("QfavFilePreviewController", 2, "handleRemoteCmd: mHost=" + atyk.a(this.jdField_a_of_type_Atyl.a) + ", port=" + String.valueOf(atyk.a(this.jdField_a_of_type_Atyl.a)) + ", key=" + atyk.b(this.jdField_a_of_type_Atyl.a) + ", retCode =" + String.valueOf(atyk.a(this.jdField_a_of_type_Atyl.a)));
     }
-    asrx localasrx;
-    if (1 == atgq.b(this.jdField_a_of_type_Atgr.a))
+    atib localatib;
+    if (1 == atyk.b(this.jdField_a_of_type_Atyl.a))
     {
-      localasrx = this.jdField_a_of_type_Atgr.a.a;
-      if (0L != atgq.a(this.jdField_a_of_type_Atgr.a)) {
+      localatib = this.jdField_a_of_type_Atyl.a.a;
+      if (0L != atyk.a(this.jdField_a_of_type_Atyl.a)) {
         break label321;
       }
     }
     for (;;)
     {
-      localasrx.a(bool, atgq.a(this.jdField_a_of_type_Atgr.a), String.valueOf(atgq.a(this.jdField_a_of_type_Atgr.a)), atgq.a(this.jdField_a_of_type_Atgr.a), null, atgq.b(this.jdField_a_of_type_Atgr.a), null, atgq.c(this.jdField_a_of_type_Atgr.a), null);
-      atgq.b(this.jdField_a_of_type_Atgr.a, 3);
+      localatib.a(bool, atyk.a(this.jdField_a_of_type_Atyl.a), String.valueOf(atyk.a(this.jdField_a_of_type_Atyl.a)), atyk.a(this.jdField_a_of_type_Atyl.a), null, atyk.b(this.jdField_a_of_type_Atyl.a), null, atyk.c(this.jdField_a_of_type_Atyl.a), null);
+      atyk.b(this.jdField_a_of_type_Atyl.a, 3);
       return;
       label321:
       bool = false;

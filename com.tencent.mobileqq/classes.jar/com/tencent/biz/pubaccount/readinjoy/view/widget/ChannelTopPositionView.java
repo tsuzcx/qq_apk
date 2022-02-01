@@ -6,13 +6,13 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import tgn;
+import sxh;
 
 public class ChannelTopPositionView
   extends RelativeLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new tgn(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sxh(this);
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   
   public ChannelTopPositionView(Context paramContext)
@@ -31,14 +31,14 @@ public class ChannelTopPositionView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559970, this, true);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559976, this, true);
     b();
     c();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372785));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372897));
   }
   
   private void c()

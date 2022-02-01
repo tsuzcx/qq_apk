@@ -1,29 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class nss
-  implements DialogInterface.OnClickListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public nss(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
+  nss(nsr paramnsr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
-      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
-    paramDialogInterface.dismiss();
+    this.a.a.start();
+    new Thread(new AccountDetailVideoManager.1.1(this)).start();
   }
 }
 

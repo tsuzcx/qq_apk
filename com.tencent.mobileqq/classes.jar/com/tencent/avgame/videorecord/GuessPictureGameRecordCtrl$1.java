@@ -1,16 +1,16 @@
 package com.tencent.avgame.videorecord;
 
-import ngs;
+import nin;
 
 public class GuessPictureGameRecordCtrl$1
   implements Runnable
 {
-  public GuessPictureGameRecordCtrl$1(ngs paramngs) {}
+  public GuessPictureGameRecordCtrl$1(nin paramnin) {}
   
   public void run()
   {
-    ngs.a(this.this$0, false);
-    ngs.b(this.this$0, false);
+    nin.a(this.this$0, false);
+    nin.b(this.this$0, false);
     this.this$0.e();
   }
 }

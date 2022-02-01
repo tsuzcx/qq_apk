@@ -1,8 +1,8 @@
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import android.os.Bundle;
 
 public abstract interface apyt
 {
-  public abstract void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem);
+  public abstract void a(Bundle paramBundle, apyv paramapyv);
 }
 
 

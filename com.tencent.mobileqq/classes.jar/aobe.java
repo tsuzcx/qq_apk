@@ -1,29 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import mqq.app.AppRuntime;
 
-class aobe
-  implements aobj
+public class aobe
+  extends anzi
 {
-  aobe(aobd paramaobd, BaseActivity paramBaseActivity, long paramLong1, long paramLong2, String paramString) {}
-  
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  protected void a(String paramString)
   {
-    QLog.d("AVGameShareUtil", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
     {
-      new aoay(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(this.jdField_a_of_type_Long), paramString, this.b, this.jdField_a_of_type_JavaLangString, 0).c();
+      localGuardManager.a(i, paramString);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131690386, 0).a();
+  }
+  
+  protected void b()
+  {
+    this.a.a(6, "fake_p_msg");
+  }
+  
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.c();
+    this.a.c(true);
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(4, anzg.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobe
  * JD-Core Version:    0.7.0.1
  */

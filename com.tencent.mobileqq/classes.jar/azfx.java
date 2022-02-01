@@ -1,33 +1,43 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
 
-public class azfx
+class azfx
+  extends azik
 {
-  public String a;
-  public String b;
+  azfx(azfn paramazfn) {}
   
-  public String a()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    super.a(paramBoolean, paramBundle);
+    if ((!azfn.a(this.a)) || (paramBundle == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanel", 2, new Object[] { "receiveModOnlineStatusPermission: no needShowOnlineStatusToast needShowOnlineStatusToast=", Boolean.valueOf(azfn.a(this.a)) });
+      }
     }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
+    boolean bool;
+    do
     {
-      this.b = paramString[0];
-      this.a = paramString[1];
+      return;
+      bool = paramBundle.getBoolean("param_need_switch_online_status", false);
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break;
+      }
+      i = paramBundle.getInt("StatusId", 0);
+      azfn.a(this.a, AppRuntime.Status.online, i, false);
+    } while (bool);
+    QQToast.a(azfn.a(this.a).getApp(), 2, 2131691178, 1).a();
+    this.a.c();
+    return;
+    if (bool) {}
+    for (int i = 2131697725;; i = 2131691179)
+    {
+      QQToast.a(azfn.a(this.a), 1, i, 1).a();
+      this.a.c();
       return;
     }
-    this.b = "";
-    this.a = "";
   }
 }
 

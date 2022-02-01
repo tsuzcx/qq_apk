@@ -4,9 +4,9 @@ import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import avng;
-import bcpj;
-import bctj;
+import awfr;
+import bdib;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
@@ -45,7 +45,7 @@ public class InitHook
     }
     while (paramBoolean)
     {
-      bctj.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, null, "", true);
+      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, null, "", true);
       return;
       ((SharedPreferences.Editor)localObject1).commit();
     }
@@ -57,7 +57,7 @@ public class InitHook
       ((HashMap)localObject1).put("detail", localObject2.toString());
     }
     ((HashMap)localObject1).put("param_FailCode", Integer.toString(paramInt));
-    bctj.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, (HashMap)localObject1, "", true);
+    bdmc.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, (HashMap)localObject1, "", true);
   }
   
   private static void b()
@@ -90,7 +90,7 @@ public class InitHook
         return;
       }
       finally {}
-      avng.a();
+      awfr.a();
     }
   }
   
@@ -132,7 +132,7 @@ public class InitHook
     //   62: ldc 161
     //   64: invokestatic 163	com/tencent/mobileqq/startup/step/InitHook:a	(ZLjava/lang/Throwable;I)V
     //   67: invokestatic 95	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   70: invokestatic 100	bctj:a	(Landroid/content/Context;)Lbctj;
+    //   70: invokestatic 100	bdmc:a	(Landroid/content/Context;)Lbdmc;
     //   73: aconst_null
     //   74: ldc 191
     //   76: iconst_1
@@ -141,7 +141,7 @@ public class InitHook
     //   79: aconst_null
     //   80: ldc 47
     //   82: iconst_1
-    //   83: invokevirtual 105	bctj:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   83: invokevirtual 105	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   86: goto -75 -> 11
     //   89: astore_1
     //   90: ldc 2
@@ -170,13 +170,13 @@ public class InitHook
     //   133: ldc 205
     //   135: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   138: invokestatic 210	com/tencent/mfsdk/MagnifierSDK:a	()Lcom/tencent/mfsdk/MagnifierSDK;
-    //   141: invokevirtual 213	com/tencent/mfsdk/MagnifierSDK:a	()Ladbx;
+    //   141: invokevirtual 213	com/tencent/mfsdk/MagnifierSDK:a	()Ladkv;
     //   144: invokeinterface 216 1 0
     //   149: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   152: iconst_1
     //   153: if_icmpne -142 -> 11
-    //   156: invokestatic 219	avnb:a	()V
-    //   159: invokestatic 222	avmy:a	()V
+    //   156: invokestatic 219	awfm:a	()V
+    //   159: invokestatic 222	awfj:a	()V
     //   162: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   165: iconst_1
     //   166: if_icmpne +3 -> 169
@@ -223,7 +223,7 @@ public class InitHook
     {
       b();
       return true;
-      DeviceProfileManager.a(new bcpj(null));
+      DeviceProfileManager.a(new bdib(null));
       continue;
       c();
     }

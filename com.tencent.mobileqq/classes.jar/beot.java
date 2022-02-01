@@ -1,21 +1,15 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class beot
-  implements Comparator<Map.Entry<String, beov>>
+  implements DialogInterface.OnClickListener
 {
   beot(beos parambeos) {}
   
-  public int a(Map.Entry<String, beov> paramEntry1, Map.Entry<String, beov> paramEntry2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = ((beov)paramEntry2.getValue()).a() - ((beov)paramEntry1.getValue()).a();
-    if (f > 0.0F) {
-      return 1;
-    }
-    if (f < 0.0F) {
-      return -1;
-    }
-    return 0;
+    beoh.a(this.a.a).finish();
   }
 }
 

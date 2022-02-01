@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.event;
 
-import syh;
-import syi;
+import spg;
+import sph;
 
 public class ListAdExposeManager$1
   implements Runnable
 {
-  public ListAdExposeManager$1(syi paramsyi, syh paramsyh) {}
+  public ListAdExposeManager$1(sph paramsph, spg paramspg) {}
   
   public void run()
   {
     this.a.b = System.currentTimeMillis();
-    syi.a(this.this$0, this.a);
+    sph.a(this.this$0, this.a);
   }
 }
 

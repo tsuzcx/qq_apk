@@ -1,60 +1,20 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class artc
-  extends bhka
+class artc
+  implements TextWatcher
 {
-  public artc(MessengerService paramMessengerService) {}
+  artc(artb paramartb) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    for (;;)
-    {
-      try
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject == null)
-        {
-          QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver.onUpdate dataBundle=null");
-          return;
-        }
-        int i = paramObject.getInt("result", -1);
-        if (!QLog.isColorLevel()) {
-          break label206;
-        }
-        QLog.d("Q.emoji.web.MessengerService", 2, "fcObserver.onUpdate ret=" + i + ", type=" + paramInt + ", isSuccess=" + paramBoolean);
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Err:" + paramObject.getMessage());
-        return;
-      }
-      QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Error type=" + paramInt);
-      paramObject = (QQAppInterface)MessengerService.a(this.a);
-      if (paramObject != null)
-      {
-        Object localObject = (bhke)paramObject.a(46);
-        paramObject.removeObserver(this);
-        return;
-        if (this.a.a != null)
-        {
-          localObject = Message.obtain(null, 5);
-          ((Message)localObject).setData(paramObject);
-          this.a.a.send((Message)localObject);
-        }
-      }
-      else
-      {
-        return;
-        label206:
-        switch (paramInt)
-        {
-        }
-      }
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.a();
     }
   }
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class MiniSDKConst$AdConst
 {
-  public static final HashMap<Integer, String> CodeMsgMap = new MiniSDKConst.AdConst.1();
+  public static final HashMap<Integer, String> CODE_MSG_MAP = new MiniSDKConst.AdConst.1();
   public static final int ERROR_CODE_BANNED = 1007;
   public static final int ERROR_CODE_CLOSED = 1008;
   public static final int ERROR_CODE_INNER_ERROR = 1003;

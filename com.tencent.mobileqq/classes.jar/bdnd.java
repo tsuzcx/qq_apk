@@ -1,10 +1,14 @@
-public abstract interface bdnd
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
+class bdnd
+  implements FileFilter
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt);
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
+  }
 }
 
 

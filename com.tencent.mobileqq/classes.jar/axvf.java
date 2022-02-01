@@ -1,35 +1,56 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbyIconDecoder.1;
+import java.util.ArrayList;
+import java.util.List;
 
-class axvf
-  implements View.OnClickListener
+public class axvf
+  implements Handler.Callback, bbsm, bhhe
 {
-  axvf(axuv paramaxuv) {}
+  NearbyAppInterface a;
+  public List<bhhf> a;
+  List<String> b;
+  List<String> c;
   
-  public void onClick(View paramView)
+  protected void a(String paramString, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698084);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    axxb.a("NearbyIconDecoder", "notifyGetIcon", new Object[] { paramString, paramBitmap });
+    this.a.runOnUiThread(new NearbyIconDecoder.1(this, paramString, paramBitmap));
+  }
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt)
+  {
+    axxb.a("NearbyIconDecoder", "onDecodeBitmap", new Object[] { paramString1, paramString2, paramBitmap, Integer.valueOf(paramInt) });
+    if (paramString1 == null) {}
+    while (paramBitmap == null) {
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-      continue;
-      this.a.b();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698084);
-      } else if (this.a.a()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698080);
-      } else {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
-      }
+    }
+    a(paramString1, paramBitmap);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    axxb.a("NearbyIconDecoder", "MSG_GET_ICON_URL", new Object[] { Integer.valueOf(this.b.size()), Integer.valueOf(this.c.size()) });
+    paramMessage = new ArrayList(this.b.size());
+    synchronized (this.b)
+    {
+      paramMessage.addAll(this.b);
+      this.b.clear();
+    }
+    synchronized (this.c)
+    {
+      this.c.addAll(paramMessage);
+      this.a.a().a(paramMessage);
+      return false;
+      paramMessage = finally;
+      throw paramMessage;
     }
   }
 }

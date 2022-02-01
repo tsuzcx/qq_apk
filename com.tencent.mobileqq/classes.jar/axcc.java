@@ -1,6 +1,6 @@
 public abstract interface axcc
 {
-  public static final String a = anhk.ba + ".nearby_hearanim";
+  public abstract void a(int paramInt);
 }
 
 

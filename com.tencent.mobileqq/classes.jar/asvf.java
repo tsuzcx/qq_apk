@@ -1,205 +1,582 @@
+import QQService.DeviceItemDes;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.support.v4.app.NotificationCompat.Builder;
 import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.manager.VerifyDevLockManager;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import mqq.manager.WtloginManager;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
 
 public class asvf
-  extends asti
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private asvh jdField_a_of_type_Asvh;
-  protected BaseFileAssistantActivity a;
-  private View.OnClickListener b;
+  private static asvf jdField_a_of_type_Asvf;
+  public static boolean a;
+  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
+  private int jdField_a_of_type_Int = -1;
+  Runnable jdField_a_of_type_JavaLangRunnable = new EquipmentLockImpl.1(this);
+  String jdField_a_of_type_JavaLangString = null;
+  private ArrayList<amsh> jdField_a_of_type_JavaUtilArrayList;
+  private Map<Integer, Handler> jdField_a_of_type_JavaUtilMap = new HashMap();
+  byte[] jdField_a_of_type_ArrayOfByte = null;
+  String jdField_b_of_type_JavaLangString = null;
+  private boolean jdField_b_of_type_Boolean = true;
+  String jdField_c_of_type_JavaLangString = null;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
+  private String e;
+  private String f = "Manually";
   
-  public asvf(Context paramContext, LinkedHashMap<String, List<FavFileInfo>> paramLinkedHashMap, BaseFileAssistantActivity paramBaseFileAssistantActivity, View.OnClickListener paramOnClickListener1, View.OnLongClickListener paramOnLongClickListener, View.OnClickListener paramOnClickListener2, asvh paramasvh)
+  public static asvf a()
   {
-    super(paramContext, paramLinkedHashMap);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.b = paramOnClickListener2;
-    this.jdField_a_of_type_Asvh = paramasvh;
-  }
-  
-  private String a(FavFileInfo paramFavFileInfo)
-  {
-    String str1 = atxd.b(paramFavFileInfo.jdField_c_of_type_Long);
-    String str2 = atwl.a(paramFavFileInfo.b);
-    return str1 + " " + paramFavFileInfo.m + " " + str2;
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    if ((paramString2 == null) || (paramString2.equalsIgnoreCase(""))) {
-      return "";
+    if (jdField_a_of_type_Asvf == null) {}
+    synchronized (jdField_b_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Asvf == null) {
+        jdField_a_of_type_Asvf = new asvf();
+      }
+      return jdField_a_of_type_Asvf;
     }
-    return paramString1 + paramString2;
   }
   
-  protected void a(FavFileInfo paramFavFileInfo, AsyncImageView paramAsyncImageView)
+  public int a(AppInterface paramAppInterface, String paramString, WtloginObserver paramWtloginObserver)
   {
-    int i = atvo.a(paramFavFileInfo.jdField_c_of_type_JavaLangString);
-    atvo.a(paramAsyncImageView, paramFavFileInfo.e, i);
-    if ((i != 0) && (!TextUtils.isEmpty(paramFavFileInfo.e)) && (atwl.b(paramFavFileInfo.e))) {
-      paramAsyncImageView.setAsyncImage(paramFavFileInfo.e);
+    if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return -1;
+    }
+    int i = AppSetting.a();
+    paramAppInterface = (WtloginManager)paramAppInterface.getManager(1);
+    if (paramAppInterface == null) {
+      return -1;
+    }
+    return paramAppInterface.checkDevLockStatus(paramString, i, paramWtloginObserver);
+  }
+  
+  public int a(AppInterface paramAppInterface, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  {
+    if (paramAppInterface == null) {
+      return -1;
+    }
+    paramAppInterface = (VerifyDevLockManager)paramAppInterface.getManager(7);
+    if (paramAppInterface == null) {
+      return -1;
+    }
+    paramAppInterface.cancelVerify(paramVerifyDevLockObserver);
+    return 0;
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramContext == null) || (paramQQAppInterface == null)) {}
+    do
+    {
+      do
+      {
+        return -1;
+        paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+      } while (TextUtils.isEmpty(paramQQAppInterface));
+      if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!this.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramQQAppInterface)))
+      {
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = -1;
+      }
+      if (!this.jdField_b_of_type_Boolean) {
+        break;
+      }
+      this.jdField_b_of_type_Boolean = false;
+      paramContext = paramContext.getSharedPreferences("devlock_sharedpref", 0);
+    } while (paramContext == null);
+    this.jdField_a_of_type_Int = paramContext.getInt("devlock_status" + paramQQAppInterface, -1);
+    this.jdField_d_of_type_JavaLangString = paramQQAppInterface;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, String paramString, WtloginObserver paramWtloginObserver)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return -1;
+    }
+    paramQQAppInterface = (WtloginManager)paramQQAppInterface.getManager(1);
+    if (paramQQAppInterface == null) {
+      return -1;
+    }
+    return paramQQAppInterface.closeDevLock(paramString, AppSetting.a(), paramWtloginObserver);
+  }
+  
+  public int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
+    }
+    this.e = paramString;
+    return 0;
+  }
+  
+  public int a(AppRuntime paramAppRuntime, Context paramContext, String paramString, boolean paramBoolean)
+  {
+    if ((paramContext == null) || (paramAppRuntime == null)) {}
+    do
+    {
+      do
+      {
+        return -1;
+      } while (TextUtils.isEmpty(paramString));
+      paramContext = paramContext.getSharedPreferences("devlock_sharedpref", 0);
+    } while (paramContext == null);
+    paramAppRuntime = paramAppRuntime.getAccount();
+    if (paramBoolean)
+    {
+      paramContext.edit().putInt("devlock_status" + paramString, 0).commit();
+      if (paramString.equalsIgnoreCase(paramAppRuntime)) {
+        this.jdField_a_of_type_Int = 0;
+      }
     }
     for (;;)
     {
+      return 0;
+      paramContext.edit().putInt("devlock_status" + paramString, 1).commit();
+      if (paramString.equalsIgnoreCase(paramAppRuntime)) {
+        this.jdField_a_of_type_Int = 1;
+      }
+    }
+  }
+  
+  public int a(AppRuntime paramAppRuntime, String paramString1, String paramString2, byte[] paramArrayOfByte, WtloginObserver paramWtloginObserver)
+  {
+    if ((paramAppRuntime == null) || (TextUtils.isEmpty(paramString1))) {
+      return -1;
+    }
+    paramAppRuntime = (WtloginManager)paramAppRuntime.getManager(1);
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    return paramAppRuntime.checkDevLockSms(paramString1, AppSetting.a(), paramString2, paramArrayOfByte, paramWtloginObserver);
+  }
+  
+  public int a(AppRuntime paramAppRuntime, String paramString, WtloginObserver paramWtloginObserver)
+  {
+    if ((paramAppRuntime == null) || (TextUtils.isEmpty(paramString))) {
+      return -1;
+    }
+    paramAppRuntime = (WtloginManager)paramAppRuntime.getManager(1);
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    return paramAppRuntime.askDevLockSms(paramString, paramWtloginObserver);
+  }
+  
+  public int a(AppRuntime paramAppRuntime, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  {
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime = (VerifyDevLockManager)paramAppRuntime.getManager(7);
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime.refreshDevLockSms(paramVerifyDevLockObserver);
+    return 0;
+  }
+  
+  public int a(AppRuntime paramAppRuntime, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver, String paramString)
+  {
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime = (VerifyDevLockManager)paramAppRuntime.getManager(7);
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime.submitSms(paramVerifyDevLockObserver, paramString);
+    return 0;
+  }
+  
+  public int a(AppRuntime paramAppRuntime, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver, byte[] paramArrayOfByte)
+  {
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime = (VerifyDevLockManager)paramAppRuntime.getManager(7);
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime.gatewayVerify(paramVerifyDevLockObserver, paramArrayOfByte);
+    return 0;
+  }
+  
+  public int a(AppRuntime paramAppRuntime, byte[] paramArrayOfByte, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  {
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime = (VerifyDevLockManager)paramAppRuntime.getManager(7);
+    if (paramAppRuntime == null) {
+      return -1;
+    }
+    paramAppRuntime.refreshDevLockSms(paramVerifyDevLockObserver, paramArrayOfByte);
+    return 0;
+  }
+  
+  public String a()
+  {
+    return this.e;
+  }
+  
+  public ArrayList<amsh> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.getContext(), DevlockQuickLoginActivity.class);
+      localIntent.addFlags(268435456);
+      localIntent.putExtra("qrcode", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("maintip", this.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("smalltip", this.jdField_c_of_type_JavaLangString);
+      localIntent.putExtra("loginConfig", this.jdField_a_of_type_ArrayOfByte);
+      BaseApplicationImpl.getContext().startActivity(localIntent);
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_c_of_type_JavaLangString = null;
+      this.jdField_a_of_type_ArrayOfByte = null;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString)) && (paramQQAppInterface != null)) {
+      paramString = paramQQAppInterface.getCurrentAccountUin();
+    }
+    for (;;)
+    {
+      bdll.b(paramQQAppInterface, "P_CliOper", "Safe_DeviceLock", paramString, "UserBehavior", this.f, 0, paramInt, "", "", "", "");
       return;
-      if ((i != 0) || (i != 2))
-      {
-        String str2 = "";
-        String str1;
-        if ((!TextUtils.isEmpty(paramFavFileInfo.k)) && (atwl.b(paramFavFileInfo.k))) {
-          str1 = paramFavFileInfo.k;
-        }
-        while (!TextUtils.isEmpty(str1))
-        {
-          paramAsyncImageView.setAsyncImage(str1);
-          return;
-          if ((!TextUtils.isEmpty(paramFavFileInfo.j)) && (atwl.b(paramFavFileInfo.j)))
-          {
-            str1 = paramFavFileInfo.j;
-          }
-          else if ((!TextUtils.isEmpty(paramFavFileInfo.i)) && (atwl.b(paramFavFileInfo.i)))
-          {
-            str1 = paramFavFileInfo.i;
-          }
-          else if ((!TextUtils.isEmpty(paramFavFileInfo.h)) && (atwl.b(paramFavFileInfo.h)))
-          {
-            str1 = paramFavFileInfo.h;
-          }
-          else
-          {
-            str1 = str2;
-            if (!TextUtils.isEmpty(paramFavFileInfo.g))
-            {
-              str1 = str2;
-              if (atwl.b(paramFavFileInfo.g)) {
-                str1 = paramFavFileInfo.g;
-              }
-            }
-          }
-        }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    boolean bool;
+    label22:
+    Object localObject2;
+    Object localObject1;
+    if ((paramQQAppInterface.isBackgroundPause) || (paramQQAppInterface.isBackgroundStop))
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("DevLock", 2, "handleQuickloginPush isInBackground=" + bool + " app.isBackground_Pause=" + paramQQAppInterface.isBackgroundPause + " app.isBackground_Stop=" + paramQQAppInterface.isBackgroundStop);
+      }
+      if (!bool) {
+        break label459;
+      }
+      paramQQAppInterface = BaseApplicationImpl.getContext();
+      localObject2 = paramQQAppInterface.getString(2131691851);
+      String str1 = paramQQAppInterface.getString(2131691851);
+      String str2 = paramString2 + "\n" + paramString3;
+      localObject1 = bhgm.a(paramQQAppInterface.getResources(), 2130844234);
+      localObject2 = new NotificationCompat.Builder(paramQQAppInterface).setContentTitle(str1).setContentText(str2).setAutoCancel(true).setSmallIcon(BaseApplicationImpl.appnewmsgicon).setTicker((CharSequence)localObject2).setWhen(System.currentTimeMillis());
+      if (localObject1 == null) {
+        break label440;
+      }
+      ((NotificationCompat.Builder)localObject2).setLargeIcon((Bitmap)localObject1);
+    }
+    for (;;)
+    {
+      if (Build.VERSION.SDK_INT < 11) {
+        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130844234);
+      }
+      localObject1 = new Intent(paramQQAppInterface, DevlockQuickLoginActivity.class);
+      ((Intent)localObject1).addFlags(268435456);
+      ((Intent)localObject1).putExtra("qrcode", paramString1);
+      ((Intent)localObject1).putExtra("maintip", paramString2);
+      ((Intent)localObject1).putExtra("smalltip", paramString3);
+      ((Intent)localObject1).putExtra("loginConfig", paramArrayOfByte);
+      ((Intent)localObject1).putExtra("param_notifyid", 276);
+      ((NotificationCompat.Builder)localObject2).setContentIntent(PendingIntent.getActivity(paramQQAppInterface, 0, (Intent)localObject1, 134217728));
+      if ((localObject2 != null) && (Build.VERSION.SDK_INT >= 26)) {
+        ((NotificationCompat.Builder)localObject2).setChannelId("CHANNEL_ID_SHOW_BADGE");
+      }
+      paramQQAppInterface = ((NotificationCompat.Builder)localObject2).build();
+      localObject1 = QQNotificationManager.getInstance();
+      if (localObject1 == null) {
+        break;
+      }
+      ((QQNotificationManager)localObject1).cancel("EquipmentLockImpl", 276);
+      jdField_a_of_type_Boolean = true;
+      ((QQNotificationManager)localObject1).notify("EquipmentLockImpl", 276, paramQQAppInterface);
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.jdField_b_of_type_JavaLangString = paramString2;
+      this.jdField_c_of_type_JavaLangString = paramString3;
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 120000L);
+      return;
+      bool = false;
+      break label22;
+      label440:
+      ((NotificationCompat.Builder)localObject2).setLargeIcon(bhgm.a(paramQQAppInterface.getResources(), 2130844234));
+    }
+    label459:
+    paramQQAppInterface = new Intent(BaseApplicationImpl.getContext(), DevlockQuickLoginActivity.class);
+    paramQQAppInterface.addFlags(268435456);
+    paramQQAppInterface.putExtra("qrcode", paramString1);
+    paramQQAppInterface.putExtra("maintip", paramString2);
+    paramQQAppInterface.putExtra("smalltip", paramString3);
+    paramQQAppInterface.putExtra("loginConfig", paramArrayOfByte);
+    BaseApplicationImpl.getContext().startActivity(paramQQAppInterface);
+  }
+  
+  public void a(String paramString)
+  {
+    this.f = paramString;
+  }
+  
+  public void a(ArrayList<amsh> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, int paramInt)
+  {
+    if (paramAppRuntime != null)
+    {
+      paramAppRuntime = (WtloginManager)paramAppRuntime.getManager(1);
+      if (paramAppRuntime != null) {
+        paramAppRuntime.setDevLockMobileType(paramInt);
       }
     }
   }
   
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean)
   {
-    FavFileInfo localFavFileInfo = (FavFileInfo)getChild(paramInt1, paramInt2);
-    if (localFavFileInfo == null) {
-      return paramView;
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
     }
-    if (paramView == null) {
-      localObject1 = paramView;
+    long l = Long.parseLong(paramQQAppInterface.getAccount());
+    String str = null;
+    int i = AppSetting.a();
+    paramQQAppInterface.getApplication();
+    BaseApplication localBaseApplication = MobileQQ.getContext();
+    if (localBaseApplication != null) {
+      str = localBaseApplication.getPackageName();
+    }
+    if ((str == null) || (str.length() < 1)) {
+      str = "com.tencent.mobileqq";
     }
     for (;;)
     {
-      try
+      paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+      if (paramQQAppInterface != null)
       {
-        Object localObject2 = new asvg(this);
-        localObject1 = paramView;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560842, paramViewGroup, false);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376115));
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361941));
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366568));
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366555));
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localObject2);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366566));
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetTextView.setGravity(48);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366553));
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369522));
-        localObject1 = paramView;
-        ((asvg)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(afur.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        localObject1 = paramView;
-        paramView.setTag(localObject2);
-        paramViewGroup = (ViewGroup)localObject2;
-        try
-        {
-          a(localFavFileInfo, paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView);
-          paramViewGroup.jdField_b_of_type_Int = paramInt1;
-          paramViewGroup.jdField_a_of_type_Int = paramInt2;
-          paramViewGroup.jdField_a_of_type_JavaLangObject = localFavFileInfo;
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.b);
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setTag(paramViewGroup);
-          paramViewGroup.jdField_c_of_type_Int = 1;
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFavFileInfo.jdField_c_of_type_JavaLangString);
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(a(localFavFileInfo));
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692164);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692139);
-          localObject1 = atxd.b(localFavFileInfo.jdField_c_of_type_Long) + a((String)localObject2, (String)localObject1);
-          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f())
-          {
-            paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(athc.a(localFavFileInfo));
-            localObject1 = (LinearLayout.LayoutParams)paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-            ((LinearLayout.LayoutParams)localObject1).topMargin = afur.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.8F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.25F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
-            return paramView;
-            localObject1 = paramView;
-            paramViewGroup = (asvg)paramView.getTag();
-          }
-          else
-          {
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-            continue;
-            paramViewGroup.printStackTrace();
-          }
-        }
-        catch (Exception paramViewGroup) {}
+        paramQQAppInterface.a(l, str, i);
+        return true;
       }
-      catch (Exception paramViewGroup)
-      {
-        paramView = (View)localObject1;
-      }
+      return false;
     }
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong, byte paramByte, byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramLong, paramByte, paramArrayOfByte, paramInt);
+    return true;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface.a(paramLong, paramString, 0L);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<DeviceItemDes> paramArrayList, int paramInt)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface.a(paramString, paramArrayList, paramInt);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<DeviceItemDes> paramArrayList, int paramInt, boolean paramBoolean, long paramLong)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface.a(paramString, paramArrayList, paramInt, paramBoolean, paramLong);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, ArrayList<amsh> paramArrayList)
+  {
+    if ((paramQQAppInterface == null) || (paramArrayList == null)) {
+      return false;
+    }
+    long l = Long.parseLong(paramQQAppInterface.getAccount());
+    String str = null;
+    int i = AppSetting.a();
+    paramQQAppInterface.getApplication();
+    Object localObject = MobileQQ.getContext();
+    if (localObject != null) {
+      str = ((Context)localObject).getPackageName();
+    }
+    if (str != null)
+    {
+      localObject = str;
+      if (str.length() >= 1) {}
+    }
+    else
+    {
+      localObject = "com.tencent.mobileqq";
+    }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface.a(l, i, (String)localObject, 1000, paramArrayList);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    BaseApplicationImpl.getContext();
+    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
+    if (localQQNotificationManager != null) {}
+    try
+    {
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      localQQNotificationManager.cancel("EquipmentLockImpl", 276);
+      jdField_a_of_type_Boolean = false;
+      label36:
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_c_of_type_JavaLangString = null;
+      this.jdField_a_of_type_ArrayOfByte = null;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label36;
+    }
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString)) && (paramQQAppInterface != null)) {
+      paramString = paramQQAppInterface.getCurrentAccountUin();
+    }
+    for (;;)
+    {
+      bdll.b(paramQQAppInterface, "dc00899", "Safe_DeviceLock", paramString, "H5UserBehavior", "H5_Manually", 0, paramInt, "", "", "", "");
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface.b(paramLong, paramString, 0L);
+      return true;
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public boolean c(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface.c(paramLong, paramString, 0L);
+      return true;
+    }
+    return false;
   }
 }
 

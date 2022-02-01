@@ -1,48 +1,48 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import java.util.HashMap;
 
 public class bbnu
-  extends bbnh
 {
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
-  public boolean b;
-  
-  public bbnu(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public static void a(int paramInt1, int paramInt2)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt1));
+    localHashMap.put("idType", String.valueOf(paramInt2));
+    bdmc.a(BaseApplication.getContext()).a(null, "OrderMediaMsgAddTimeout", false, 0L, 0L, localHashMap, "");
   }
   
-  public bbnu(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public static void a(int paramInt, long paramLong)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt));
+    localHashMap.put("totalCost", String.valueOf(paramLong));
+    bdmc.a(BaseApplication.getContext()).a(null, "OrderMediaMsgCompleteInfo", true, paramLong, paramInt, localHashMap, "");
   }
   
-  public void a(String paramString)
+  public static void a(int paramInt, boolean paramBoolean)
   {
-    for (boolean bool = true;; bool = false) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_JavaLangCharSequence = bbup.a(paramString.optJSONArray("leftText"));
-        this.jdField_b_of_type_JavaLangCharSequence = bbup.a(paramString.optJSONArray("rightText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
-        if (paramString.optInt("needCenter") == 1)
-        {
-          this.jdField_b_of_type_Boolean = bool;
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(c, 0, paramString.toString());
-      }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt));
+    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localbdmc.a(null, "OrderMediaMsgSendTimeout", paramBoolean, 0L, 0L, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt1));
+    localHashMap.put("mediaSize", String.valueOf(paramInt2));
+    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localbdmc.a(null, "OrderMediaMsgMultiSeperate", bool, 0L, paramInt1, localHashMap, "");
+      return;
     }
   }
 }

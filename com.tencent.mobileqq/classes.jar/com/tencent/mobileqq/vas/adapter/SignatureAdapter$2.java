@@ -1,53 +1,53 @@
 package com.tencent.mobileqq.vas.adapter;
 
 import android.os.Bundle;
-import bbce;
-import bgyw;
-import bgyy;
-import bgyz;
-import bhae;
-import bhau;
+import bbux;
+import bhzb;
+import bhzd;
+import bhze;
+import biak;
+import biba;
 import com.tencent.mobileqq.app.SignatureManager;
 
 public class SignatureAdapter$2
   implements Runnable
 {
-  public SignatureAdapter$2(bhau parambhau, int paramInt, bgyy parambgyy) {}
+  public SignatureAdapter$2(biba parambiba, int paramInt, bhzd parambhzd) {}
   
   public void run()
   {
     if (SignatureManager.b(String.valueOf(this.jdField_a_of_type_Int)))
     {
-      bhau.a(this.this$0, true);
-      str = bgyw.a(Integer.toString(this.jdField_a_of_type_Int), "dynamic_aio");
-      localObject1 = this.jdField_a_of_type_Bgyy.a[0];
-      localObject2 = bhau.a(this.this$0);
+      biba.a(this.this$0, true);
+      str = bhzb.a(Integer.toString(this.jdField_a_of_type_Int), "dynamic_aio");
+      localObject1 = this.jdField_a_of_type_Bhzd.a[0];
+      localObject2 = biba.a(this.this$0);
       int i;
-      if (((bgyz)localObject1).c != 0)
+      if (((bhze)localObject1).c != 0)
       {
-        i = ((bgyz)localObject1).c;
-        if (!bhau.a(this.this$0)) {
+        i = ((bhze)localObject1).c;
+        if (!biba.a(this.this$0)) {
           break label96;
         }
       }
       label96:
-      for (int j = -1;; j = ((bgyz)localObject1).b)
+      for (int j = -1;; j = ((bhze)localObject1).b)
       {
-        ((bhae)localObject2).a(str, i, j);
+        ((biak)localObject2).a(str, i, j);
         return;
         i = 50;
         break;
       }
     }
-    String str = this.jdField_a_of_type_Bgyy.a[0].a;
-    Object localObject1 = bbce.a(this.jdField_a_of_type_Int, str);
-    Object localObject2 = bgyw.a(String.valueOf(this.jdField_a_of_type_Int), str);
+    String str = this.jdField_a_of_type_Bhzd.a[0].a;
+    Object localObject1 = bbux.a(this.jdField_a_of_type_Int, str);
+    Object localObject2 = bhzb.a(String.valueOf(this.jdField_a_of_type_Int), str);
     Bundle localBundle = new Bundle();
     localBundle.putInt("resType", 2);
     localBundle.putInt("dynamicType", 16);
     localBundle.putString("tplId", String.valueOf(this.jdField_a_of_type_Int));
     localBundle.putString("fileName", str);
-    bhau.a(this.this$0).a((String)localObject1, (String)localObject2, localBundle);
+    biba.a(this.this$0).a((String)localObject1, (String)localObject2, localBundle);
   }
 }
 

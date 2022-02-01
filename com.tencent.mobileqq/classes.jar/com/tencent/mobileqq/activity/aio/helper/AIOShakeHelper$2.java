@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agkt;
+import agtu;
 
 public class AIOShakeHelper$2
   implements Runnable
 {
-  public AIOShakeHelper$2(agkt paramagkt) {}
+  public AIOShakeHelper$2(agtu paramagtu) {}
   
   public void run()
   {

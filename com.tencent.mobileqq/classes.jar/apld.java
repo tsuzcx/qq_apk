@@ -1,8 +1,29 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.ar.ScanningSurfaceView.8;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface apld
+public class apld
+  implements azds
 {
-  public abstract void a(Bundle paramBundle, aplf paramaplf);
+  public apld(ScanningSurfaceView.8 param8) {}
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
+    }
+    ScanningSurfaceView.b(this.a.this$0, this.a.b.c);
+    bdll.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
+    }
+    this.a.this$0.a.a();
+  }
 }
 
 

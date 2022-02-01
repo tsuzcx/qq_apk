@@ -1,8 +1,14 @@
-public abstract interface aobk
+public class aobk
+  implements anui
 {
-  public abstract void a();
+  public void a(Object paramObject) {}
   
-  public abstract void a(String paramString);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1) {
+      a(paramObject);
+    }
+  }
 }
 
 

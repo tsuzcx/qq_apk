@@ -1,68 +1,45 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class pld
-  extends pmn
+  implements Animator.AnimatorListener
 {
-  public pld(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
+  public pld(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void a(int paramInt, List<Long> paramList)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramInt != ReadInJoyDynamicChannelFragment.a(this.a)) {
-      return;
-    }
-    if ((paramList != null) && (paramList.size() > 0))
+    pfd.a().a(null, 110, true, null);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    pfd.a().a(null, 110, true, null);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
     {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(pmh.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
-      ReadInJoyDynamicChannelFragment.a(this.a).a(true, true);
-    }
-    for (;;)
-    {
-      paramList = pmh.a().a();
-      if (paramList == null) {
-        break;
+      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      if (ReadInjoyIMAXAdFragment.e(this.a) != 1001) {
+        break label90;
       }
-      ReadInJoyDynamicChannelFragment.a(this.a, paramList.a(ReadInJoyDynamicChannelFragment.c(this.a)));
-      return;
-      ReadInJoyDynamicChannelFragment.b(this.a).b();
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
     }
+    label90:
+    while (ReadInjoyIMAXAdFragment.e(this.a) != 1002) {
+      return;
+    }
+    ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
   }
   
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    ReadInJoyDynamicChannelFragment.a(this.a, paramTopBannerInfo);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramInt != ReadInJoyDynamicChannelFragment.d(this.a)) {
-      return;
-    }
-    paramInt = pmh.a().a(Integer.valueOf(paramInt));
-    if ((paramBoolean1) && (paramInt > 0)) {}
-    for (String str = String.format(this.a.getResources().getString(2131716884), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131716883))
-    {
-      ReadInJoyDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
-      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-        ReadInJoyDynamicChannelFragment.a(this.a).a(pmh.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.e(this.a)), paramList));
-      }
-      ReadInJoyDynamicChannelFragment.d(this.a).a(true, true);
-      return;
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if (paramInt != ReadInJoyDynamicChannelFragment.f(this.a)) {
-      return;
-    }
-    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(pmh.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.g(this.a)), paramList));
-    }
-    ReadInJoyDynamicChannelFragment.e(this.a).a(paramBoolean1, true);
+    pfd.a().a(null, 110, false, null);
   }
 }
 

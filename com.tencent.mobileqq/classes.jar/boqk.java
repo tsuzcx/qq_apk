@@ -1,27 +1,38 @@
-import org.json.JSONObject;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 
-public class boqk
+public abstract class boqk
+  implements anui
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public static boqk a(JSONObject paramJSONObject)
-  {
-    boqk localboqk = new boqk();
-    localboqk.jdField_a_of_type_JavaLangString = paramJSONObject.optString("resurl");
-    localboqk.jdField_b_of_type_JavaLangString = paramJSONObject.optString("md5");
-    localboqk.c = paramJSONObject.optString("name");
-    localboqk.jdField_a_of_type_Int = paramJSONObject.optInt("text_id");
-    localboqk.jdField_b_of_type_Int = paramJSONObject.optInt("progress");
-    return localboqk;
-  }
+  public void a(boolean paramBoolean, bosp parambosp) {}
   
-  public String a()
+  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return this.c + "_" + this.jdField_b_of_type_JavaLangString;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (bosp)paramObject);
+      return;
+    case 2: 
+      a(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    case 3: 
+      a(paramBoolean, ((Integer)paramObject).intValue());
+      return;
+    case 4: 
+      a(paramBoolean, (GetFontDataRsp)paramObject);
+      return;
+    }
+    b(paramBoolean, ((Integer)paramObject).intValue());
   }
 }
 

@@ -1,20 +1,94 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-final class asnb
-  implements View.OnClickListener
+public class asnb
 {
-  asnb(Dialog paramDialog) {}
+  private final asnn a;
   
-  public void onClick(View paramView)
+  public asnb(EmoticonMainPanel paramEmoticonMainPanel, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt)
   {
-    bcst.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new asnn(paramEmoticonMainPanel);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.a.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public asnb a(int paramInt)
+  {
+    this.a.b = paramInt;
+    return this;
+  }
+  
+  public asnb a(asmy paramasmy)
+  {
+    this.a.jdField_a_of_type_Asmy = paramasmy;
+    return this;
+  }
+  
+  public asnb a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public asnb a(boolean paramBoolean)
+  {
+    this.a.h = paramBoolean;
+    return this;
+  }
+  
+  public void a()
+  {
+    this.a.b();
+  }
+  
+  public asnb b(int paramInt)
+  {
+    this.a.jdField_c_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public asnb b(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public asnb c(boolean paramBoolean)
+  {
+    this.a.jdField_c_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public asnb d(boolean paramBoolean)
+  {
+    this.a.d = paramBoolean;
+    return this;
+  }
+  
+  public asnb e(boolean paramBoolean)
+  {
+    this.a.e = paramBoolean;
+    return this;
+  }
+  
+  public asnb f(boolean paramBoolean)
+  {
+    this.a.f = paramBoolean;
+    return this;
+  }
+  
+  public asnb g(boolean paramBoolean)
+  {
+    this.a.g = paramBoolean;
+    return this;
+  }
+  
+  public asnb h(boolean paramBoolean)
+  {
+    this.a.i = paramBoolean;
+    return this;
   }
 }
 

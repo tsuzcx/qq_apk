@@ -1,52 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class befi
+  extends bedw
 {
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, String paramString, int paramInt5, befk parambefk)
+  protected int a;
+  
+  public befi(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public View a(int paramInt1, beex parambeex, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  {
+    if (paramView == null)
     {
-      localJSONObject.put("start", paramInt1);
-      localJSONObject.put("num", paramInt2);
-      localJSONObject.put("type", paramInt3);
-      if ((paramInt3 == 1) || (paramInt3 == 2)) {
-        localJSONObject.put("theme_id", paramInt4);
-      }
-      localJSONObject.put("from", 2);
-      localJSONObject.put("bid", paramLong);
-      localJSONObject.put("pid", paramString);
-      if (paramInt5 != -1) {
-        localJSONObject.put("recommend_by_bid", paramInt5);
-      }
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559250, null);
+      parambeex = new befk(null);
+      parambeex.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367743));
+      parambeex.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367744));
+      paramView.setTag(parambeex);
     }
-    catch (JSONException paramString)
+    for (;;)
     {
-      for (;;)
-      {
-        WebSsoBody.WebSsoRequestBody localWebSsoRequestBody;
-        paramString.printStackTrace();
-      }
+      parambeex.jdField_a_of_type_AndroidWidgetTextView.setText(2131692821);
+      parambeex.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840264);
+      return paramView;
+      parambeex = (befk)paramView.getTag();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, localJSONObject.toString());
-    }
-    paramString = new NewIntent(BaseApplicationImpl.getApplication().getApplicationContext(), niq.class);
-    paramString.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.shortvideo_feeds");
-    localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-    localWebSsoRequestBody.type.set(0);
-    localWebSsoRequestBody.data.set(localJSONObject.toString());
-    paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-    paramString.setObserver(new befj(parambefk));
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramString);
   }
 }
 

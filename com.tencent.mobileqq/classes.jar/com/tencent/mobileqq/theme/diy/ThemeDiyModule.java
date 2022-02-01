@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme.diy;
 
-import afxa;
+import aggu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +15,10 @@ import android.util.Base64;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.Window;
-import anni;
-import bdpc;
-import bdpp;
-import bdqe;
+import anzj;
+import behy;
+import beil;
+import beja;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
@@ -39,7 +39,7 @@ public class ThemeDiyModule
   private SparseArray<String> mPageIndexBgMap = new SparseArray();
   private JSONObject mStyle;
   private ThemeDIYData[] mThemeDIYData = ThemeDIYActivity.getDiyData();
-  private bdqe mThemeDiyImpl;
+  private beja mThemeDiyImpl;
   
   public ThemeDiyModule(Context paramContext, AppInterface paramAppInterface)
   {
@@ -68,7 +68,7 @@ public class ThemeDiyModule
     Object localObject3 = ThemeBackground.getSharedPreferences(this.context, this.app.getAccount(), 4).getString(paramString, "null");
     Object localObject1 = "100";
     if ("theme_bg_aio_path".equals(paramString)) {
-      localObject3 = afxa.a(this.context, this.app.getAccount(), "");
+      localObject3 = aggu.a(this.context, this.app.getAccount(), "");
     }
     paramString = (String)localObject2;
     if (!"null".equals(localObject3))
@@ -164,7 +164,7 @@ public class ThemeDiyModule
     if (QLog.isColorLevel()) {
       QLog.i("ThemeDiyModule", 2, "saveTheme  themeId:" + str);
     }
-    bdpp.a(str, new ThemeDiyModule.1(this, paramJSONObject, paramString));
+    beil.a(str, new ThemeDiyModule.1(this, paramJSONObject, paramString));
   }
   
   private void setDIYData(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -213,7 +213,7 @@ public class ThemeDiyModule
     if (str.equals(""))
     {
       i = -1;
-      localObject = anni.a(2131713600);
+      localObject = anzj.a(2131713709);
     }
     for (;;)
     {
@@ -309,8 +309,8 @@ public class ThemeDiyModule
     this.mAlbumPageIndex = paramInt1;
     Object localObject = new ResSuitData.BgSuit(null);
     ((ResSuitData.BgSuit)localObject).id = "99";
-    ((ResSuitData.BgSuit)localObject).resID = 2130846093;
-    ((ResSuitData.BgSuit)localObject).name = anni.a(2131713582);
+    ((ResSuitData.BgSuit)localObject).resID = 2130846108;
+    ((ResSuitData.BgSuit)localObject).name = anzj.a(2131713691);
     localObject = DIYThemeUtils.getResData(this.app, (ResSuitData)localObject, 121, ((ResSuitData.BgSuit)localObject).id + "." + paramInt1 + "." + System.currentTimeMillis()).path;
     Rect localRect = new Rect();
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
@@ -334,7 +334,7 @@ public class ThemeDiyModule
     if (localJSONArray == null)
     {
       if (this.mThemeDiyImpl != null) {
-        this.mThemeDiyImpl.callJs(paramString, new String[] { new bdpc(-1, "bginfos is null").a() });
+        this.mThemeDiyImpl.callJs(paramString, new String[] { new behy(-1, "bginfos is null").a() });
       }
       return;
     }
@@ -393,9 +393,9 @@ public class ThemeDiyModule
     }
   }
   
-  public void setThemeDiyImpl(bdqe parambdqe)
+  public void setThemeDiyImpl(beja parambeja)
   {
-    this.mThemeDiyImpl = parambdqe;
+    this.mThemeDiyImpl = parambeja;
   }
   
   public void trySaveDefineImage(String paramString)

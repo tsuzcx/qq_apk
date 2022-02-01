@@ -1,36 +1,57 @@
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-final class azvd
-  extends beat
+public class azvd
 {
-  azvd(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
+  private static HashMap<Long, azve> a = new HashMap();
+  
+  public static void a(int paramInt1, int paramInt2)
   {
-    super(paramQQAppInterface, paramString1);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("business_type", String.valueOf(paramInt1));
+    localHashMap.put("prediction_step", String.valueOf(paramInt2));
+    bdmc.a(BaseApplication.getContext()).a(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
   }
   
-  protected void realCancel()
+  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
+    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
+    long l;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
+      }
+      l = System.currentTimeMillis();
+    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
+    paramQQAppInterface = new azve(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
+    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
   }
   
-  protected void realStart()
+  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
-    azvf.a(this.b + ".splashtemp");
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
-    azvc.a("qbossSplashrequest", (HashMap)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
-    }
-    localObject = new bdvs();
-    ((bdvs)localObject).jdField_a_of_type_Bdvw = new azve(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
-    ((bdvs)localObject).jdField_a_of_type_JavaLangString = this.d;
-    ((bdvs)localObject).jdField_a_of_type_Int = 0;
-    ((bdvs)localObject).c = (this.b + ".splashtemp");
-    ((bdwv)this.app.getNetEngine(0)).a((bdws)localObject);
+    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
+    long l;
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
+        }
+        l = System.currentTimeMillis();
+      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
+      paramQQAppInterface = (azve)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(l);
+    paramQQAppInterface.a();
   }
 }
 

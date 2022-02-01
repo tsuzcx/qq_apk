@@ -1,8 +1,8 @@
 package com.tencent.gdtad.api.interstitial;
 
-import ackp;
-import acmd;
-import acqy;
+import acot;
+import acqf;
+import acvc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,15 +10,16 @@ import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
 
 public class GdtInterstitialParams
-  extends ackp
+  extends acot
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new acmd();
+  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new acqf();
   public int a;
   public GdtHandler.Options a;
   public boolean a;
   public int b = -2147483648;
   public int c = -2147483648;
+  public int d = -2147483648;
   
   public GdtInterstitialParams()
   {
@@ -30,11 +31,12 @@ public class GdtInterstitialParams
     this.jdField_a_of_type_Int = -2147483648;
     if (paramParcel == null)
     {
-      acqy.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
+      acvc.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
     this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.b = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
@@ -54,7 +56,7 @@ public class GdtInterstitialParams
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null) && (this.jdField_a_of_type_Int != -2147483648);
+    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null) && (this.jdField_a_of_type_Int != -2147483648) && (this.b != -2147483648);
   }
   
   public boolean b()
@@ -71,11 +73,12 @@ public class GdtInterstitialParams
   {
     if (paramParcel == null)
     {
-      acqy.d("GdtInterstitialParams", "writeToParcel error");
+      acvc.d("GdtInterstitialParams", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.b);
     if (this.jdField_a_of_type_Boolean) {}
     for (paramInt = 1;; paramInt = 0)
     {

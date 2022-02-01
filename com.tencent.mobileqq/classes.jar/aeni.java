@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class aeni
-  extends antu
+  extends askq
 {
-  public aeni(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public aeni(EmosmActivity paramEmosmActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
-    }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
+    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
+    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
       return;
     }
-    paramObject = ajvi.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

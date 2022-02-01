@@ -12,8 +12,9 @@ import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
 import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
 import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
-import tmq;
+import tdo;
 
 public class KdLottieView
   extends DiniFlyAnimationView
@@ -30,12 +31,12 @@ public class KdLottieView
     localHttpRequset.url = paramString;
     localHttpRequset.method = "GET";
     localHttpRequset.timeoutMs = 5000;
-    paramString = new HashMap();
-    paramString.put("Content-Type", "application/json;charset=UTF-8");
-    localHttpRequset.paramMap = paramString;
-    paramString = ViolaSDKManager.getInstance().getHttpAdapter();
-    if (paramString != null) {
-      paramString.sendRequest(localHttpRequset, new tmq(this, paramIVLottieLoadListener), true);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("Content-Type", "application/json;charset=UTF-8");
+    localHttpRequset.paramMap = ((Map)localObject);
+    localObject = ViolaSDKManager.getInstance().getHttpAdapter();
+    if (localObject != null) {
+      ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new tdo(this, paramString, paramIVLottieLoadListener), true);
     }
   }
   

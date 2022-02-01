@@ -1,177 +1,52 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.text.TextUtils;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.ipc.AVGameBroadcastReceiver;
-import com.tencent.avgame.ipc.AccountReceiver;
-import com.tencent.avgame.ipc.ExitReceiver;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.util.WeakReference;
 
 public class ndn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private AccountReceiver jdField_a_of_type_ComTencentAvgameIpcAccountReceiver;
-  private ExitReceiver jdField_a_of_type_ComTencentAvgameIpcExitReceiver;
-  private final WeakReference<AppRuntime> jdField_a_of_type_MqqUtilWeakReference;
+  public ndn(GuessPictureStageView paramGuessPictureStageView, String paramString) {}
   
-  public ndn(AppRuntime paramAppRuntime)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
-  }
-  
-  private void a(ndm paramndm, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = new AccountReceiver(paramndm, paramString);
-    paramndm = new IntentFilter();
-    String[] arrayOfString = this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver.a();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getPaddingRight();
+    if (QLog.isColorLevel())
     {
-      String str = arrayOfString[i];
-      if (!TextUtils.isEmpty(str)) {
-        paramndm.addAction(str);
-      }
-      i += 1;
+      QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
+      QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getWidth());
+      QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips caluWidth  = " + i);
     }
-    try
+    ViewGroup.LayoutParams localLayoutParams;
+    if (i > 0)
     {
-      paramndm = BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver, paramndm, "com.tencent.msg.permission.pushnotify", null);
-      if (paramndm == null) {
-        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      if (nif.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView) <= 1) {
+        break label282;
       }
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a.a().b());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       if (QLog.isColorLevel()) {
-        QLog.i("BroadcastCenter", 2, "registerAccountReceiver, packageName[" + paramString + "], intent[" + paramndm + "]");
+        QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
       }
+    }
+    label282:
+    do
+    {
       return;
-    }
-    catch (Throwable paramndm)
-    {
-      QLog.i("BroadcastCenter", 1, "register2", paramndm);
-    }
-  }
-  
-  public void a()
-  {
-    AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    CharSequence localCharSequence = null;
-    AVGameBroadcastReceiver localAVGameBroadcastReceiver = new AVGameBroadcastReceiver(localAppRuntime);
-    String[] arrayOfString = localAVGameBroadcastReceiver.a();
-    Object localObject1 = localCharSequence;
-    int j;
-    int i;
-    if (arrayOfString != null)
-    {
-      localObject1 = localCharSequence;
-      if (arrayOfString.length > 0)
-      {
-        localObject1 = new IntentFilter();
-        j = arrayOfString.length;
-        i = 0;
-        while (i < j)
-        {
-          localCharSequence = arrayOfString[i];
-          if (!TextUtils.isEmpty(localCharSequence)) {
-            ((IntentFilter)localObject1).addAction(localCharSequence);
-          }
-          i += 1;
-        }
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = localAVGameBroadcastReceiver;
-      }
-    }
-    if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (localObject1 != null)) {
-      try
-      {
-        BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject1);
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder(100);
-          ((StringBuilder)localObject1).append("register, actions[");
-          j = arrayOfString.length;
-          i = 0;
-          while (i < j)
-          {
-            ((StringBuilder)localObject1).append(arrayOfString[i]).append(",");
-            i += 1;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          QLog.i("BroadcastCenter", 1, "register", localThrowable1);
-        }
-        localThrowable1.append("]");
-        QLog.i("BroadcastCenter", 2, localThrowable1.toString());
-      }
-    }
-    Object localObject2;
-    if ((localAppRuntime instanceof AVGameAppInterface))
-    {
-      localObject2 = (AVGameAppInterface)localAppRuntime;
-      a((ndm)localObject2, ((AVGameAppInterface)localObject2).getApp().getPackageName());
-    }
-    if ((this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver == null) && ((localAppRuntime instanceof AppInterface)))
-    {
-      this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = new ExitReceiver((AppInterface)localAppRuntime);
-      localObject2 = new IntentFilter();
-      ((IntentFilter)localObject2).addAction("com.tencent.process.exit");
-    }
-    try
-    {
-      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver, (IntentFilter)localObject2);
-      return;
-    }
-    catch (Throwable localThrowable2)
-    {
-      QLog.i("BroadcastCenter", 1, "register", localThrowable2);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
-    try
-    {
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver == null) {}
-    }
-    catch (Throwable localThrowable1)
-    {
-      try
-      {
-        BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver);
-        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
-        if (this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver != null) {}
-        try
-        {
-          BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver);
-          this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = null;
-          return;
-        }
-        catch (Throwable localThrowable3)
-        {
-          QLog.i("BroadcastCenter", 1, "unregister2", localThrowable3);
-        }
-        localThrowable1 = localThrowable1;
-        QLog.i("BroadcastCenter", 1, "unregister", localThrowable1);
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          QLog.i("BroadcastCenter", 1, "unregister2", localThrowable2);
-        }
-      }
-    }
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a.a().a());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    } while (!QLog.isColorLevel());
+    QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
   }
 }
 

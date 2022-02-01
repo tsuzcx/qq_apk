@@ -1,22 +1,10 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
+import org.json.JSONObject;
 
-class bjut
-  implements TVK_IMediaPlayer.OnCaptureImageListener
+public abstract interface bjut
 {
-  bjut(bjul parambjul, AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener) {}
+  public abstract void a(Exception paramException);
   
-  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageFailed(this.jdField_a_of_type_Bjul);
-  }
-  
-  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageSucceed(this.jdField_a_of_type_Bjul, paramBitmap);
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

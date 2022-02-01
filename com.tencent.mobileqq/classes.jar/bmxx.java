@@ -1,22 +1,37 @@
-final class bmxx
-  implements bmzs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.MsgPhotoView;
+
+public class bmxx
+  implements View.OnClickListener
 {
-  public void a(String paramString) {}
+  public bmxx(MsgPhotoView paramMsgPhotoView) {}
   
-  public void a(String paramString, long paramLong, bmzd parambmzd, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    if (MsgPhotoView.a(this.a) != null)
     {
-      if (parambmzd.a != 5) {
-        break label25;
+      if (paramView != MsgPhotoView.a(this.a)) {
+        break label50;
       }
-      bnax.a(paramString, "actFileWyDown", parambmzd, false, paramLong);
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 1);
     }
-    label25:
-    while (parambmzd.a != 4) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label50:
+      if (paramView == MsgPhotoView.b(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 2);
+      } else if (paramView == MsgPhotoView.c(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 3);
+      } else if (paramView == MsgPhotoView.d(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 4);
+      } else {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 0);
+      }
     }
-    bnax.a(paramString, "actFileWyDown", parambmzd, true, paramLong);
   }
 }
 

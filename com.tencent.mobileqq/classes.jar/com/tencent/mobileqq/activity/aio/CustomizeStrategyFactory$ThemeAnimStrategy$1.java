@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afxw;
-import afxx;
+import aghq;
+import aghr;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -9,20 +9,20 @@ import com.tencent.qphone.base.util.QLog;
 public class CustomizeStrategyFactory$ThemeAnimStrategy$1
   implements Runnable
 {
-  public CustomizeStrategyFactory$ThemeAnimStrategy$1(afxw paramafxw, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public CustomizeStrategyFactory$ThemeAnimStrategy$1(aghq paramaghq, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("CustomizeStrategyFactory", 2, "ThemeAnimStrategy");
     }
-    if ((afxw.a(this.this$0) == null) || (TextUtils.isEmpty(this.a.templateId)))
+    if ((aghq.a(this.this$0) == null) || (TextUtils.isEmpty(this.a.templateId)))
     {
       CustomizeStrategyFactory.a().a(this.a);
       return;
     }
     String str = this.a.templateId + ".zip";
-    afxw.a(this.this$0).a(str, "", new afxx(this));
+    aghq.a(this.this$0).a(str, "", new aghr(this));
   }
 }
 

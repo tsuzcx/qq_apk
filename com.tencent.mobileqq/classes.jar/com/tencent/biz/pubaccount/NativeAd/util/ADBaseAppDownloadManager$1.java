@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.NativeAd.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import nxp;
-import olv;
-import orb;
+import nzj;
+import tld;
+import tqt;
 
 public class ADBaseAppDownloadManager$1
   implements Runnable
 {
-  public ADBaseAppDownloadManager$1(nxp paramnxp, orb paramorb, int paramInt1, int paramInt2) {}
+  public ADBaseAppDownloadManager$1(nzj paramnzj, tqt paramtqt, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Iterator localIterator = nxp.a(this.this$0).iterator();
+    Iterator localIterator = nzj.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((olv)localIterator.next()).a(this.jdField_a_of_type_Orb, this.jdField_a_of_type_Int, this.b);
+      ((tld)localIterator.next()).a(this.jdField_a_of_type_Tqt, this.jdField_a_of_type_Int, this.b);
     }
   }
 }

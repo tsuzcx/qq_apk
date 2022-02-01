@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class quw
-  implements View.OnClickListener
 {
-  quw(quv paramquv) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public quw(quv paramquv, String paramString)
   {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(paramView, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

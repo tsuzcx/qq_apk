@@ -1,25 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-class ajom
-  extends BroadcastReceiver
+public abstract interface ajom
 {
-  ajom(ajol paramajol) {}
+  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent.getBooleanExtra("recording_time_out", false))
-    {
-      QQToast.a(this.a.mRuntime.a(), 2131698004, 0).a();
-      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
-      return;
-    }
-    paramContext = paramIntent.getStringExtra("target_media_url");
-    ajol.a(this.a, paramContext);
-  }
+  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

@@ -1,7 +1,16 @@
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+
 public class bmvs
+  extends Handler
 {
-  public static final int a = (int)(40.0F * bgtn.a());
-  public static final int b = (int)(24.0F * bgtn.a());
+  public bmvs(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.onHandleMessage(QzoneVerticalVideoDownloadActivity.access$000(this.a), paramMessage);
+  }
 }
 
 

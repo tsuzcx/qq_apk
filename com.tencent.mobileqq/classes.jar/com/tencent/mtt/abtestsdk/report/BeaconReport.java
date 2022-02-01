@@ -34,6 +34,7 @@ public class BeaconReport
           isSupportMultiChannel = true;
         }
         ABTestLog.debug("static initializer -> QIMEI:" + getQIMEI() + "  SDKVersion:" + sdkVersion, new Object[0]);
+        registerTunnel("JS0B558T33E4YJ", "1.1.0.9", "10000000");
         return;
       }
       catch (Exception localException2)

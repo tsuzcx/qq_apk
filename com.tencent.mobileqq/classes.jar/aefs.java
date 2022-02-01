@@ -1,30 +1,20 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.XListView;
 
-public class aefs
+class aefs
+  implements MessageQueue.IdleHandler
 {
-  public static void a()
-  {
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
-    localIntent.addFlags(268435456);
-    localIntent.addFlags(536870912);
-    localIntent.addFlags(67108864);
-    localIntent.addFlags(131072);
-    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
-    BaseApplicationImpl.getContext().startActivity(localIntent);
-  }
+  aefs(aefr paramaefr) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  public boolean queueIdle()
   {
-    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
-      return;
-    }
-    blsb.a(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
+    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    int i = localView.getTop();
+    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
+    return false;
   }
 }
 

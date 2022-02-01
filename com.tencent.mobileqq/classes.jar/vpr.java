@@ -1,23 +1,30 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeMoreView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.RadioGroup;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
 
 public class vpr
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public vpr(QCirclePolyLikeMoreView paramQCirclePolyLikeMoreView) {}
+  public vpr(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Vpo != null) {
-      this.a.jdField_a_of_type_Vpo.b();
+    
+    if ((QCirclePersonalBottomView.a(this.a) != null) && (QCirclePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
+      QCirclePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
     }
-    if (this.a.jdField_a_of_type_Vpe == null) {
-      this.a.jdField_a_of_type_Vpe = new vpe(this.a.getContext());
+    if (paramInt == 1) {
+      QCirclePersonalBottomView.a(this.a, 20, 1);
     }
-    this.a.jdField_a_of_type_Vpe.a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, vpp.a().a(), this.a.jdField_a_of_type_Vqa, this.a.a());
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (paramInt != 2) {
+      return;
+    }
+    QCirclePersonalBottomView.a(this.a, 21, 1);
   }
 }
 

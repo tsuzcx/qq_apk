@@ -1,8 +1,6 @@
 public abstract interface tle
 {
-  public abstract int a();
-  
-  public abstract boolean a();
+  public abstract void b();
 }
 
 

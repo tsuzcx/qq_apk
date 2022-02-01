@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class aehx
-  implements aqiw
+  implements View.OnLongClickListener
 {
-  public aehx(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aehx(Conversation paramConversation) {}
   
-  public int a()
+  public boolean onLongClick(View paramView)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131693461);
-    }
-    return this.a.getString(2131692055);
+    return this.a.a.b.performClick();
   }
 }
 

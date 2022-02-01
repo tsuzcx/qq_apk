@@ -1,16 +1,46 @@
-import com.tencent.widget.AbsListView;
-
-class ssh
-  extends pue
+public class ssh
 {
-  ssh(ssg paramssg, String paramString, AbsListView paramAbsListView, int paramInt)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  
+  public String a(int paramInt)
   {
-    super(paramString);
+    if (paramInt == 72) {
+      return this.d;
+    }
+    if (paramInt == 73) {
+      return this.d;
+    }
+    if (paramInt == 2) {
+      return this.d;
+    }
+    if (paramInt == 3) {
+      return this.e;
+    }
+    if (paramInt == 12) {
+      return this.a;
+    }
+    if (paramInt == 9) {
+      return this.c;
+    }
+    if (paramInt == 10) {
+      return this.b;
+    }
+    return null;
   }
   
-  public void a(ptx paramptx)
+  public String toString()
   {
-    paramptx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("weibo : ").append(this.a).append("\n");
+    localStringBuilder.append("qq : ").append(this.d).append("\n");
+    localStringBuilder.append("wx : ").append(this.c).append("\n");
+    localStringBuilder.append("pyq : ").append(this.b).append("\n");
+    localStringBuilder.append("qzone : ").append(this.e).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

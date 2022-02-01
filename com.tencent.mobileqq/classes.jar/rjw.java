@@ -1,19 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
-public final class rjw
-  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
+public class rjw
+  implements szu
 {
-  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
+  public rjw(SelectVideoTabFragment paramSelectVideoTabFragment) {}
+  
+  public void a(szz paramszz)
   {
-    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
+    SelectVideoTabFragment.a(this.a).setCurrentItem(paramszz.a());
   }
   
-  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
-  {
-    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
-  }
+  public void b(szz paramszz) {}
+  
+  public void c(szz paramszz) {}
 }
 
 

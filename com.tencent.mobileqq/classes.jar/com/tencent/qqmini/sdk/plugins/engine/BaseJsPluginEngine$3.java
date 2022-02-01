@@ -38,6 +38,7 @@ class BaseJsPluginEngine$3
       {
         paramDialogInterface.arg1 = 1;
         BaseJsPluginEngine.access$400(this.this$0, (String)localObject, true);
+        localAuthDialog.reportAuthDialogClickTo4239();
       }
       for (;;)
       {
@@ -56,11 +57,13 @@ class BaseJsPluginEngine$3
           paramDialogInterface.arg1 = 2;
           paramDialogInterface.obj = localObject;
           BaseJsPluginEngine.access$400(this.this$0, (String)localObject, false);
+          localAuthDialog.reportAuthDialogCancelTo4239();
         }
         else
         {
           paramDialogInterface.arg1 = 3;
           paramDialogInterface.obj = localObject;
+          localAuthDialog.reportAuthDialogCancelTo4239();
         }
       }
       i = -1;

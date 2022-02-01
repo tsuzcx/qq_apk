@@ -1,22 +1,21 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper;
-import com.tencent.mobileqq.activity.weather.webpage.WebViewFragmentWithArk;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "y", "<anonymous parameter 2>", "<anonymous parameter 3>", "<anonymous parameter 4>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onScrollChanged"}, k=3, mv={1, 1, 16})
-public final class amat
-  implements TouchWebView.OnScrollChangedListener
+public class amat
 {
-  public amat(WebViewFragmentWithArk paramWebViewFragmentWithArk) {}
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
   
-  public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  private amat()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewFragmentWithArk", 2, "showPreview scrollChangedListener  y: " + paramInt2 + ", arkLoadState：" + WebViewFragmentWithArk.a(this.a));
-    }
-    WebViewFragmentWithArk.a(this.a).scrollTo(0, paramInt2);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
   }
 }
 

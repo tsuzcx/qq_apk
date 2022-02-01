@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.vas;
 
-import anil;
+import anui;
 
 class VasExtensionHandler$UpdateRunnable
   implements Runnable
 {
-  anil jdField_a_of_type_Anil;
+  anui jdField_a_of_type_Anui;
   Object jdField_a_of_type_JavaLangObject;
   boolean jdField_a_of_type_Boolean;
   
-  public VasExtensionHandler$UpdateRunnable(anil paramanil, boolean paramBoolean, Object paramObject)
+  public VasExtensionHandler$UpdateRunnable(anui paramanui, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Anil = paramanil;
+    this.jdField_a_of_type_Anui = paramanui;
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Anil != null) {
-      this.jdField_a_of_type_Anil.onUpdate(0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    if (this.jdField_a_of_type_Anui != null) {
+      this.jdField_a_of_type_Anui.onUpdate(0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
     }
   }
 }

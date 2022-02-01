@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Override;
-import aknt;
-import aknw;
-import aknx;
-import akny;
-import akpl;
-import akqa;
-import akqt;
-import akqz;
-import akww;
+import akze;
+import akzh;
+import akzi;
+import akzj;
+import alaw;
+import albl;
+import alce;
+import alck;
+import alil;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -35,13 +35,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import anni;
-import aufz;
-import bglf;
-import bglp;
-import bgpa;
-import blqo;
-import blqv;
+import anzj;
+import auxu;
+import bhlg;
+import bhlq;
+import bhpc;
+import bmrq;
+import bmrx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
@@ -80,9 +80,9 @@ public class SendHbActivity
 {
   public int a;
   public long a;
-  private akqt jdField_a_of_type_Akqt;
-  private akqz jdField_a_of_type_Akqz;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aknt(this);
+  private alce jdField_a_of_type_Alce;
+  private alck jdField_a_of_type_Alck;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akze(this);
   Intent jdField_a_of_type_AndroidContentIntent = new Intent();
   private View jdField_a_of_type_AndroidViewView;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
@@ -95,7 +95,7 @@ public class SendHbActivity
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new akny(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new akzj(this);
   private Intent jdField_b_of_type_AndroidContentIntent;
   private View jdField_b_of_type_AndroidViewView;
   public String b;
@@ -162,10 +162,10 @@ public class SendHbActivity
   private Map<String, String> a(String paramString)
   {
     QLog.i("SendHbActivity", 2, "extra_data = " + paramString);
-    paramString = akww.a(paramString);
+    paramString = alil.a(paramString);
     String str = (String)paramString.remove("extra_info");
     if (!TextUtils.isEmpty(str)) {
-      paramString.putAll(akww.a(str));
+      paramString.putAll(alil.a(str));
     }
     paramString.put("send_name", this.f);
     paramString.put("send_uin", this.j);
@@ -196,8 +196,8 @@ public class SendHbActivity
     this.j = this.app.getCurrentAccountUin();
     this.f = this.app.getCurrentNickname();
     this.jdField_c_of_type_Boolean = this.jdField_b_of_type_AndroidContentIntent.getBooleanExtra("theme", false);
-    this.jdField_a_of_type_Akqz = new akqz(this);
-    this.jdField_a_of_type_Akqt = new akqt();
+    this.jdField_a_of_type_Alck = new alck(this);
+    this.jdField_a_of_type_Alce = new alce();
     this.jdField_a_of_type_Long = this.jdField_b_of_type_AndroidContentIntent.getLongExtra("vacreport_key_seq", 0L);
     this.jdField_b_of_type_Boolean = this.jdField_b_of_type_AndroidContentIntent.getBooleanExtra("is_H5", false);
     this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidContentIntent.getIntExtra("come_from", 1);
@@ -206,11 +206,11 @@ public class SendHbActivity
     String str = this.jdField_b_of_type_AndroidContentIntent.getStringExtra("extra_data");
     this.jdField_a_of_type_JavaUtilMap = a(str);
     d(str);
-    this.n = akww.a(this.jdField_a_of_type_JavaUtilMap, "hb_from_type", "0");
+    this.n = alil.a(this.jdField_a_of_type_JavaUtilMap, "hb_from_type", "0");
     this.jdField_e_of_type_JavaLangString = ((String)this.jdField_a_of_type_JavaUtilMap.get("recv_uin"));
     this.jdField_d_of_type_JavaLangString = ((String)this.jdField_a_of_type_JavaUtilMap.get("recv_type"));
     this.i = this.jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = blqo.a(this.jdField_a_of_type_JavaUtilMap.get("channel"), 1);
+    this.jdField_a_of_type_Int = bmrq.a(this.jdField_a_of_type_JavaUtilMap.get("channel"), 1);
     QLog.i("SendHbActivity", 2, "mChannel = " + this.jdField_a_of_type_Int);
     if (!this.jdField_c_of_type_Boolean) {
       this.jdField_c_of_type_JavaLangString = ((String)this.jdField_a_of_type_JavaUtilMap.get("theme_type"));
@@ -231,7 +231,7 @@ public class SendHbActivity
       }
       if ((5 == this.jdField_a_of_type_Int) || (16 == this.jdField_a_of_type_Int) || (128 == this.jdField_a_of_type_Int) || (256 == this.jdField_a_of_type_Int))
       {
-        this.f = bglf.q(this.app, this.j);
+        this.f = bhlg.q(this.app, this.j);
         if (TextUtils.isEmpty(this.f)) {
           this.f = this.app.getCurrentNickname();
         }
@@ -272,8 +272,8 @@ public class SendHbActivity
   
   private void e(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment instanceof akpl))) {
-      ((akpl)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment).a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment instanceof alaw))) {
+      ((alaw)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment).a();
     }
     try
     {
@@ -318,19 +318,19 @@ public class SendHbActivity
   
   private void g()
   {
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131377811);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376788);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131377189);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131377185));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131377964);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376925);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131377329);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131377325));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    ((Button)findViewById(2131377186)).setOnClickListener(this);
+    ((Button)findViewById(2131377326)).setOnClickListener(this);
   }
   
   private void h()
   {
     int i1 = 1;
     Object localObject;
-    if ("1".equals(akww.a(this.jdField_a_of_type_JavaUtilMap, "makeHb_type", "0")))
+    if ("1".equals(alil.a(this.jdField_a_of_type_JavaUtilMap, "makeHb_type", "0")))
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.k = ((String)this.jdField_a_of_type_JavaUtilMap.get("total_amount"));
@@ -339,15 +339,15 @@ public class SendHbActivity
       {
         localObject = a();
         ((Map)localObject).put("type", "1");
-        new akqa(this).a((Map)localObject);
+        new albl(this).a((Map)localObject);
         return;
       }
-      new akqa(this).a();
+      new albl(this).a();
       return;
     }
     if ((this.jdField_b_of_type_Boolean) && ("h5".equals(this.jdField_a_of_type_JavaUtilMap.get("invoke_from"))) && (this.jdField_a_of_type_Int == 2048))
     {
-      new akqa(this).a("", this.j);
+      new albl(this).a("", this.j);
       finish();
       return;
     }
@@ -372,9 +372,9 @@ public class SendHbActivity
     }
     for (;;)
     {
-      localObject = getString(2131696057);
+      localObject = getString(2131696100);
       if (this.jdField_a_of_type_Int == 512) {
-        localObject = getString(2131696324);
+        localObject = getString(2131696367);
       }
       boolean bool = getIntent().getBooleanExtra("isFromPanel", false);
       Bundle localBundle = a();
@@ -391,7 +391,7 @@ public class SendHbActivity
       break;
       i1 = 2;
       continue;
-      if (!blqv.jdField_a_of_type_JavaUtilList.contains(this.jdField_d_of_type_JavaLangString)) {
+      if (!bmrx.jdField_a_of_type_JavaUtilList.contains(this.jdField_d_of_type_JavaLangString)) {
         if (this.jdField_a_of_type_Int == 2048) {
           i1 = 3;
         } else if (this.jdField_a_of_type_Int == 512) {
@@ -463,8 +463,8 @@ public class SendHbActivity
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment != null)
     {
-      ((FrameLayout)findViewById(2131365198)).setVisibility(0);
-      localFragmentTransaction.add(2131365198, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment);
+      ((FrameLayout)findViewById(2131365242)).setVisibility(0);
+      localFragmentTransaction.add(2131365242, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment);
       localFragmentTransaction.commit();
     }
   }
@@ -486,7 +486,7 @@ public class SendHbActivity
   
   private void l()
   {
-    if (akww.a(this.jdField_a_of_type_JavaUtilMap, "makeHb_type", "0").equals("1")) {
+    if (alil.a(this.jdField_a_of_type_JavaUtilMap, "makeHb_type", "0").equals("1")) {
       finish();
     }
   }
@@ -505,7 +505,7 @@ public class SendHbActivity
       return i1;
       if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
       {
-        if (blqv.b.contains(this.jdField_d_of_type_JavaLangString)) {
+        if (bmrx.b.contains(this.jdField_d_of_type_JavaLangString)) {
           i1 = 133;
         } else {
           i1 = 132;
@@ -521,7 +521,7 @@ public class SendHbActivity
   {
     try
     {
-      int i1 = paramContext.getResources().getDimensionPixelSize(2131298998);
+      int i1 = paramContext.getResources().getDimensionPixelSize(2131299011);
       float f1 = paramContext.getResources().getDisplayMetrics().density;
       return i1 - (int)(f1 * 5.0F);
     }
@@ -529,14 +529,14 @@ public class SendHbActivity
     return 0;
   }
   
-  public akqt a()
+  public alce a()
   {
-    return this.jdField_a_of_type_Akqt;
+    return this.jdField_a_of_type_Alce;
   }
   
-  public akqz a()
+  public alck a()
   {
-    return this.jdField_a_of_type_Akqz;
+    return this.jdField_a_of_type_Alck;
   }
   
   public Intent a(int paramInt, String paramString1, String paramString2)
@@ -631,7 +631,7 @@ public class SendHbActivity
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    akww.a(this.app, paramString1, this.jdField_b_of_type_Int, this.h, this.jdField_a_of_type_Long, paramInt, paramString2, paramString3, paramString4);
+    alil.a(this.app, paramString1, this.jdField_b_of_type_Int, this.h, this.jdField_a_of_type_Long, paramInt, paramString2, paramString3, paramString4);
   }
   
   protected void a(String paramString1, String paramString2)
@@ -688,7 +688,7 @@ public class SendHbActivity
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    bglp.a(this, 230, null, paramString1, paramString2, paramString3, new aknw(this), new aknx(this)).show();
+    bhlq.a(this, 230, null, paramString1, paramString2, paramString3, new akzh(this), new akzi(this)).show();
   }
   
   public void a(String paramString, ArrayList<String> paramArrayList)
@@ -699,10 +699,10 @@ public class SendHbActivity
     }
     for (;;)
     {
-      localIntent.putExtra("param_title", getString(2131695939));
+      localIntent.putExtra("param_title", getString(2131695982));
       localIntent.putExtra("param_min", 0);
-      localIntent.putExtra("param_done_button_wording", getString(2131717714));
-      localIntent.putExtra("param_done_button_highlight_wording", getString(2131717715));
+      localIntent.putExtra("param_done_button_wording", getString(2131717845));
+      localIntent.putExtra("param_done_button_highlight_wording", getString(2131717846));
       localIntent.putExtra("param_max", 5);
       localIntent.putExtra("param_entrance", 25);
       if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
@@ -778,7 +778,7 @@ public class SendHbActivity
   
   public int b()
   {
-    String str = akww.a(akww.a((String)this.jdField_a_of_type_JavaUtilMap.get("selector")), "friend_type", "1");
+    String str = alil.a(alil.a((String)this.jdField_a_of_type_JavaUtilMap.get("selector")), "friend_type", "1");
     int i1 = 0;
     if (str.equals("1")) {
       i1 = 1;
@@ -833,7 +833,7 @@ public class SendHbActivity
     try
     {
       Object localObject = a();
-      ((Map)localObject).put("total_num", akww.a(this.jdField_a_of_type_JavaUtilMap, "total_num", "1"));
+      ((Map)localObject).put("total_num", alil.a(this.jdField_a_of_type_JavaUtilMap, "total_num", "1"));
       ((Map)localObject).put("total_amount", a(paramString));
       ((Map)localObject).put("channel", String.valueOf(this.jdField_a_of_type_Int));
       ((Map)localObject).put("recv_uin", this.jdField_e_of_type_JavaLangString);
@@ -871,9 +871,9 @@ public class SendHbActivity
     this.jdField_a_of_type_AndroidContentIntent.putExtra("hb_id", this.m);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("send_uin", this.j);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("hb_type", "1");
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_text", getString(2131696323));
-    HashMap localHashMap = akww.a((String)this.jdField_a_of_type_JavaUtilMap.get("selector"));
-    int i1 = akww.a(localHashMap, "type", 0);
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_text", getString(2131696366));
+    HashMap localHashMap = alil.a((String)this.jdField_a_of_type_JavaUtilMap.get("selector"));
+    int i1 = alil.a(localHashMap, "type", 0);
     if (this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidContentIntent.putExtra("item", 1);
     }
@@ -881,12 +881,12 @@ public class SendHbActivity
     {
       this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_type", 17);
       this.jdField_a_of_type_AndroidContentIntent.putExtra("invoke_from", "qwallet");
-      aufz.a(this, this.jdField_a_of_type_AndroidContentIntent);
+      auxu.a(this, this.jdField_a_of_type_AndroidContentIntent);
       return;
       if ((this.n.equals("100")) && (i1 == 1))
       {
         this.jdField_a_of_type_AndroidContentIntent.putExtra("item", b());
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("title", akww.a(localHashMap, "title", anni.a(2131712585)));
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("title", alil.a(localHashMap, "title", anzj.a(2131712694)));
       }
     }
   }
@@ -928,7 +928,7 @@ public class SendHbActivity
         paramJSONObject.putString("json", ((JSONObject)localObject).toString());
         paramJSONObject.putString("callbackSn", "0");
         paramJSONObject.putLong("vacreport_key_seq", this.jdField_a_of_type_Long);
-        localObject = akww.a(this.jdField_a_of_type_JavaUtilMap, "from_plugin", "");
+        localObject = alil.a(this.jdField_a_of_type_JavaUtilMap, "from_plugin", "");
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
           PayBridgeActivity.a(this, 5, paramJSONObject);
@@ -1031,7 +1031,7 @@ public class SendHbActivity
       e();
       setProgressBarIndeterminateVisibility(false);
       setRequestedOrientation(1);
-      setContentView(2131560523);
+      setContentView(2131560538);
       d();
       g();
       h();
@@ -1048,7 +1048,7 @@ public class SendHbActivity
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Akqz.a();
+    this.jdField_a_of_type_Alck.a();
     try
     {
       if (this.jdField_a_of_type_Long != 0L) {
@@ -1087,7 +1087,7 @@ public class SendHbActivity
   public void doOnStop()
   {
     super.doOnStop();
-    this.jdField_a_of_type_Akqz.b();
+    this.jdField_a_of_type_Alck.b();
   }
   
   /* Error */
@@ -1770,13 +1770,13 @@ public class SendHbActivity
     //   1093: aload_0
     //   1094: ldc_w 1236
     //   1097: invokevirtual 617	com/tencent/mobileqq/activity/qwallet/SendHbActivity:getString	(I)Ljava/lang/String;
-    //   1100: new 1238	aknu
+    //   1100: new 1238	akzf
     //   1103: dup
     //   1104: aload_0
-    //   1105: invokespecial 1239	aknu:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
+    //   1105: invokespecial 1239	akzf:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
     //   1108: aconst_null
-    //   1109: invokestatic 862	bglp:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lbgpa;
-    //   1112: invokevirtual 865	bgpa:show	()V
+    //   1109: invokestatic 862	bhlq:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lbhpc;
+    //   1112: invokevirtual 865	bhpc:show	()V
     //   1115: aload_0
     //   1116: invokespecial 240	com/tencent/mobileqq/activity/qwallet/SendHbActivity:l	()V
     //   1119: return
@@ -1809,13 +1809,13 @@ public class SendHbActivity
     //   1178: aload_0
     //   1179: ldc_w 1241
     //   1182: invokevirtual 617	com/tencent/mobileqq/activity/qwallet/SendHbActivity:getString	(I)Ljava/lang/String;
-    //   1185: new 1243	aknv
+    //   1185: new 1243	akzg
     //   1188: dup
     //   1189: aload_0
-    //   1190: invokespecial 1244	aknv:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
+    //   1190: invokespecial 1244	akzg:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
     //   1193: aconst_null
-    //   1194: invokestatic 862	bglp:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lbgpa;
-    //   1197: invokevirtual 865	bgpa:show	()V
+    //   1194: invokestatic 862	bhlq:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lbhpc;
+    //   1197: invokevirtual 865	bhpc:show	()V
     //   1200: goto -85 -> 1115
     //   1203: aload 5
     //   1205: ifnull +12 -> 1217
@@ -1835,7 +1835,7 @@ public class SendHbActivity
     //   1235: dup
     //   1236: invokespecial 196	java/lang/StringBuilder:<init>	()V
     //   1239: ldc_w 1245
-    //   1242: invokestatic 987	anni:a	(I)Ljava/lang/String;
+    //   1242: invokestatic 987	anzj:a	(I)Ljava/lang/String;
     //   1245: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1248: iload_2
     //   1249: invokevirtual 400	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1895,7 +1895,7 @@ public class SendHbActivity
   public void onClick(View paramView)
   {
     int i1 = paramView.getId();
-    if (i1 == 2131377186)
+    if (i1 == 2131377326)
     {
       a(this.j, a(), "hongbao.wrapped.send", "", "");
       c();
@@ -1904,16 +1904,16 @@ public class SendHbActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (i1 == 2131377185)
+      if (i1 == 2131377325)
       {
-        String str2 = getString(2131696189) + getString(2131695868);
-        String str1 = getString(2131696143);
+        String str2 = getString(2131696232) + getString(2131695911);
+        String str1 = getString(2131696186);
         if (this.jdField_c_of_type_Boolean)
         {
-          str2 = getString(2131696189);
-          str1 = getString(2131695950);
+          str2 = getString(2131696232);
+          str1 = getString(2131695993);
         }
-        a(str2, str1, getString(2131696192));
+        a(str2, str1, getString(2131696235));
         if (this.jdField_d_of_type_Boolean) {
           a(this.j, a(), "hongbao.wrapped.keyback", "", "");
         } else {

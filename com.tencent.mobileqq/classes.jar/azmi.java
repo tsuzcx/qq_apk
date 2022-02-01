@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-public class azmi
-  implements azmj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class azmi
+  implements View.OnClickListener
 {
-  public azmi(ComponentCenter paramComponentCenter) {}
+  public static final azmi a = new azmi();
   
-  public void a(azlv paramazlv)
-  {
-    ComponentCenter.a(this.a, ComponentCenter.a(this.a) | paramazlv.a());
-  }
+  public final void onClick(View paramView) {}
 }
 
 

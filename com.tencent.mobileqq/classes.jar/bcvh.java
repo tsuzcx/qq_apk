@@ -1,60 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
-import java.util.ArrayList;
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.4;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
 public class bcvh
-  extends Handler
+  implements HostnameVerifier
 {
-  private bcvg jdField_a_of_type_Bcvg;
-  private Thread jdField_a_of_type_JavaLangThread;
-  private boolean jdField_a_of_type_Boolean;
+  public bcvh(LoginVerifyServlet.4 param4, URL paramURL) {}
   
-  public bcvh(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper, Thread paramThread, bcvg parambcvg)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_Bcvg = parambcvg;
-  }
-  
-  public void a()
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    sendMessageDelayed(localMessage, 200L);
-  }
-  
-  public void b()
-  {
-    removeMessages(1);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaLangThread.getState() == Thread.State.BLOCKED)
-      {
-        if (this.jdField_a_of_type_Boolean == true)
-        {
-          SuspendThreadManager.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager, SuspendThreadManager.a());
-          SuspendThreadManager.a(1);
-          b();
-          this.jdField_a_of_type_Bcvg.a();
-          return;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        a();
-        return;
-      }
-    } while (SuspendThreadManager.a().isEmpty());
-    this.jdField_a_of_type_Boolean = false;
-    a();
+    return bool;
   }
 }
 

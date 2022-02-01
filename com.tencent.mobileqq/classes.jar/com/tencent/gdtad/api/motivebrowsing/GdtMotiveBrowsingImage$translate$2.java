@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import afur;
+import agej;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
@@ -17,7 +17,7 @@ final class GdtMotiveBrowsingImage$translate$2
   
   public final int invoke()
   {
-    return afur.a(7.5F, this.this$0.getResources());
+    return agej.a(7.5F, this.this$0.getResources());
   }
 }
 

@@ -9,7 +9,7 @@ class TroopAvatarWallEditActivity$9
   
   public void run()
   {
-    QQToast.a(this.this$0, this.this$0.getString(2131694327), 0).a();
+    QQToast.a(this.this$0, this.this$0.getString(2131694369), 0).a();
   }
 }
 

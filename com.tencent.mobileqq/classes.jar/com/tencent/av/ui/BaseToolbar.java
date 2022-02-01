@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import afur;
+import agej;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import bgtn;
+import bhtq;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
@@ -29,12 +29,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
-import ley;
-import maf;
-import mbk;
-import mbl;
-import mgm;
-import mtr;
+import lff;
+import mbb;
+import mcg;
+import mch;
+import mhi;
+import muq;
 
 public abstract class BaseToolbar
 {
@@ -52,27 +52,27 @@ public abstract class BaseToolbar
     this.mActivity = new WeakReference(paramAVActivity);
   }
   
-  private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, mbl parammbl)
+  private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, mch parammch)
   {
-    if ((paramLinearLayout == null) || (parammbl == null)) {
+    if ((paramLinearLayout == null) || (parammch == null)) {
       return null;
     }
     Button localButton = new Button(paramLinearLayout.getContext());
     Object localObject = paramLinearLayout.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297634);
+    int i = (int)((Resources)localObject).getDimension(2131297646);
     localButton.setId(paramInt);
     localButton.setGravity(17);
     localButton.setSingleLine();
-    localButton.setContentDescription(parammbl.jdField_a_of_type_JavaLangString);
+    localButton.setContentDescription(parammch.jdField_a_of_type_JavaLangString);
     localButton.setBackgroundDrawable(null);
-    localButton.setCompoundDrawablePadding(afur.a(5.0F, (Resources)localObject));
-    localButton.setText(parammbl.jdField_a_of_type_JavaLangString);
-    localButton.setTextSize(bgtn.e(afur.a(12.0F, (Resources)localObject)));
-    parammbl = parammbl.jdField_a_of_type_JavaLangString;
+    localButton.setCompoundDrawablePadding(agej.a(5.0F, (Resources)localObject));
+    localButton.setText(parammch.jdField_a_of_type_JavaLangString);
+    localButton.setTextSize(bhtq.e(agej.a(12.0F, (Resources)localObject)));
+    parammch = parammch.jdField_a_of_type_JavaLangString;
     localObject = localButton.getPaint();
-    if ((localObject != null) && (!TextUtils.isEmpty(parammbl)))
+    if ((localObject != null) && (!TextUtils.isEmpty(parammch)))
     {
-      paramInt = (int)(((TextPaint)localObject).measureText(parammbl) + 0.5F);
+      paramInt = (int)(((TextPaint)localObject).measureText(parammch) + 0.5F);
       if (QLog.isColorLevel()) {
         QLog.i("", 2, "CreateImageButton textWidth[" + paramInt + "], btn_width[" + i + "]");
       }
@@ -80,9 +80,9 @@ public abstract class BaseToolbar
     }
     for (;;)
     {
-      parammbl = new LinearLayout.LayoutParams(paramInt, -2);
-      parammbl.weight = 1.0F;
-      localButton.setLayoutParams(parammbl);
+      parammch = new LinearLayout.LayoutParams(paramInt, -2);
+      parammch.weight = 1.0F;
+      localButton.setLayoutParams(parammch);
       paramLinearLayout.addView(localButton);
       return localButton;
       paramInt = i;
@@ -100,9 +100,9 @@ public abstract class BaseToolbar
       return;
     }
     Object localObject = paramButton.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297630);
+    int i = (int)((Resources)localObject).getDimension(2131297642);
     if (paramInt2 > 0) {}
-    for (localObject = mtr.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
+    for (localObject = muq.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
     {
       ((Drawable)localObject).setBounds(0, 0, i, i);
       paramButton.setCompoundDrawables(null, (Drawable)localObject, null, null);
@@ -133,9 +133,9 @@ public abstract class BaseToolbar
     }
   }
   
-  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mgm parammgm, int paramInt)
+  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mhi parammhi, int paramInt)
   {
-    if ((!parammgm.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
+    if ((!parammhi.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
       return;
     }
     int j = 0;
@@ -143,8 +143,8 @@ public abstract class BaseToolbar
     if (paramInt > 0)
     {
       i = j;
-      if (paramInt > parammgm.a()) {
-        i = mgm.jdField_a_of_type_Int * (paramInt - 1);
+      if (paramInt > parammhi.a()) {
+        i = mhi.jdField_a_of_type_Int * (paramInt - 1);
       }
     }
     paramHorizontalListView.resetCurrentX(i);
@@ -204,7 +204,7 @@ public abstract class BaseToolbar
     return getUIInfo().d;
   }
   
-  protected abstract mbl getUIInfo();
+  protected abstract mch getUIInfo();
   
   public String getUnableInfo()
   {
@@ -279,9 +279,9 @@ public abstract class BaseToolbar
   {
     if (this.mEffectBtn != null)
     {
-      this.mEffectBtn.setTag(2131378244, Boolean.valueOf(true));
+      this.mEffectBtn.setTag(2131378401, Boolean.valueOf(true));
       this.mEffectBtn.performClick();
-      this.mEffectBtn.setTag(2131378244, null);
+      this.mEffectBtn.setTag(2131378401, null);
     }
   }
   
@@ -339,7 +339,7 @@ public abstract class BaseToolbar
       }
     } while (((EffectOperateManager)localObject).a() != getEffectBtnId());
     localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).addListener(new mbk(this));
+    ((AnimatorSet)localObject).addListener(new mcg(this));
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.56F, 1.0F });
     localObjectAnimator1.setDuration(400L);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.56F, 1.0F });
@@ -361,7 +361,7 @@ public abstract class BaseToolbar
     {
       paramRelativeLayout = getUnableInfo();
       if (!TextUtils.isEmpty(paramRelativeLayout)) {
-        maf.a(this.mApp, 1010, paramRelativeLayout);
+        mbb.a(this.mApp, 1010, paramRelativeLayout);
       }
       QLog.w(this.TAG, 1, "tryShowToolbar, 失败[" + paramRelativeLayout + "], seq[" + paramLong + "]");
       return false;
@@ -394,21 +394,21 @@ public abstract class BaseToolbar
       if (localObject == null) {
         break;
       }
-      int j = ((mbl)localObject).e;
-      int k = ((mbl)localObject).b;
+      int j = ((mch)localObject).e;
+      int k = ((mch)localObject).b;
       if ((bool) && (isEffectBtnEnable())) {
-        if ((((mbl)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
+        if ((((mch)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
           break label270;
         }
       }
       label270:
-      for (int i = ((mbl)localObject).c;; i = j)
+      for (int i = ((mch)localObject).c;; i = j)
       {
-        k = ((mbl)localObject).jdField_a_of_type_Int;
+        k = ((mch)localObject).jdField_a_of_type_Int;
         if (this.mEffectBtnRedTouch != null)
         {
           this.mEffectBtnRedTouch.setHostEnable(true);
-          int m = 2131165944;
+          int m = 2131165945;
           j = i;
           i = m;
         }
@@ -421,10 +421,10 @@ public abstract class BaseToolbar
           if (this.mEffectBtnRedTouch != null) {
             this.mEffectBtnRedTouch.setHostEnable(false);
           }
-          i = ((mbl)localObject).b;
+          i = ((mch)localObject).b;
           continue;
           j = i;
-          i = 2131165944;
+          i = 2131165945;
         }
       }
     }

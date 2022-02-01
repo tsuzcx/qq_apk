@@ -1,15 +1,9 @@
-import com.tencent.open.downloadnew.WebViewDownloadListener.1;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.app.Dialog;
+import android.view.View;
 
-public class bixa
-  implements ValueCallback<String>
+public abstract interface bixa
 {
-  public bixa(WebViewDownloadListener.1 param1) {}
-  
-  public void a(String paramString)
-  {
-    bisy.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
-  }
+  public abstract void a(Dialog paramDialog, View paramView, boolean paramBoolean);
 }
 
 

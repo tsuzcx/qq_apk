@@ -1,20 +1,11 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
-
-public class aqbe
-  implements Camera.PreviewCallback
+class aqbe
+  implements aqbh
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqau jdField_a_of_type_Aqau;
-  private final aqav jdField_a_of_type_Aqav;
+  aqbe(aqay paramaqay) {}
   
-  @TargetApi(8)
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public void a(aqbk paramaqbk, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
+    this.a.a((aqbl)paramaqbk, paramBoolean, paramArrayOfByte);
   }
 }
 

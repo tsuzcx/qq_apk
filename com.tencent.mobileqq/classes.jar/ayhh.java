@@ -1,30 +1,32 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayhh
-  implements SurfaceHolder.Callback
+class ayhh
+  implements aycl
 {
-  public ayhh(ScanOcrActivity paramScanOcrActivity) {}
+  ayhh(ayhf paramayhf) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void a(Comments.Comment paramComment)
   {
-    ScanOcrActivity.a(this.a, paramSurfaceHolder);
-    if (ScanOcrActivity.a(this.a) == null)
+    if (ayhf.a(this.a) != null)
     {
-      ScanOcrActivity.a(this.a, new aygn(this.a, this.a.jdField_a_of_type_Aygs, ScanOcrActivity.a(this.a)));
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
-      if (ScanOcrActivity.a(this.a)) {
-        ScanOcrActivity.a(this.a).a();
+      ayhf.a(this.a).a(paramComment);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
       }
     }
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
+  public void a(Comments.Comment paramComment, int paramInt, String paramString)
+  {
+    if (ayhf.a(this.a) != null)
+    {
+      ayhf.a(this.a).a(paramComment, paramInt, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
+      }
+    }
+  }
 }
 
 

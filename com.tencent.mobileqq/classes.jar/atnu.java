@@ -1,35 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 class atnu
-  implements atve
+  implements aumz
 {
-  atnu(atnt paramatnt) {}
+  atnu(atns paramatns, FileManagerEntity paramFileManagerEntity) {}
   
   public void a()
   {
-    int i = this.a.a.i();
-    int j = this.a.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 6) {
-      if (j == 0) {
-        localQQAppInterface.a().b(this.a.a.d());
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Atns.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    for (;;)
+    anvu localanvu;
+    ArrayList localArrayList;
+    do
     {
-      if (this.a.a.jdField_a_of_type_Atou != null) {
-        this.a.a.jdField_a_of_type_Atou.d();
-      }
       return;
-      localQQAppInterface.a().a(this.a.a.d());
-      continue;
-      if (j == 0) {
-        localQQAppInterface.a().a(this.a.a.d());
-      } else {
-        localQQAppInterface.a().b(this.a.a.jdField_a_of_type_Atmn.a());
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-    }
+      localanvu = (anvu)QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Atns.a).a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localanvu.a(localArrayList));
+    auna.a(2131692318);
+    return;
+    QfileBaseRecentFileTabView.B(this.jdField_a_of_type_Atns.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
   public void b() {}

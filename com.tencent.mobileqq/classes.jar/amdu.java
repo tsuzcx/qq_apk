@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
 
-public abstract interface amdu
-  extends amdt
+public class amdu
+  extends anyu
 {
-  public abstract void a(String paramString);
+  public amdu(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public abstract void a(List<MayKnowRecommend> paramList);
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    }
+  }
 }
 
 

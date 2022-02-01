@@ -19,8 +19,8 @@ import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.View.MeasureSpec;
-import aoch;
-import bmpg;
+import aoot;
+import bnqj;
 import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -31,13 +31,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import vel;
-import vep;
-import veq;
-import vex;
-import vha;
-import vhh;
-import vtu;
+import vgp;
+import vgt;
+import vgu;
+import vhb;
+import vje;
+import vjl;
+import vwt;
 
 public class PhotoDanmakuDrawer
 {
@@ -51,12 +51,12 @@ public class PhotoDanmakuDrawer
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final vhh jdField_a_of_type_Vhh;
+  private final vjl jdField_a_of_type_Vjl;
   private final Rect b = new Rect();
   
-  public PhotoDanmakuDrawer(Context paramContext, vhh paramvhh)
+  public PhotoDanmakuDrawer(Context paramContext, vjl paramvjl)
   {
-    this.jdField_a_of_type_Vhh = paramvhh;
+    this.jdField_a_of_type_Vjl = paramvjl;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -92,9 +92,9 @@ public class PhotoDanmakuDrawer
     return paramTextPaint.floatValue();
   }
   
-  public static float a(vel paramvel)
+  public static float a(vgp paramvgp)
   {
-    return a(paramvel.a) + paramvel.g * 2;
+    return a(paramvgp.a) + paramvgp.g * 2;
   }
   
   private int a(String paramString)
@@ -162,10 +162,10 @@ public class PhotoDanmakuDrawer
     }
   }
   
-  private static Paint a(vex paramvex, PhotoDanmakuDrawer.PaintType paramPaintType)
+  private static Paint a(vhb paramvhb, PhotoDanmakuDrawer.PaintType paramPaintType)
   {
     Object localObject = null;
-    switch (ver.a[paramPaintType.ordinal()])
+    switch (vgv.a[paramPaintType.ordinal()])
     {
     }
     for (;;)
@@ -175,48 +175,48 @@ public class PhotoDanmakuDrawer
         break;
       }
       return localObject;
-      localObject = a(paramvex, paramPaintType);
+      localObject = a(paramvhb, paramPaintType);
       continue;
-      String str = paramvex.d();
+      String str = paramvhb.d();
       localObject = str;
       if (str == null)
       {
-        localObject = a(paramvex, paramPaintType);
-        paramvex.d((String)localObject);
+        localObject = a(paramvhb, paramPaintType);
+        paramvhb.d((String)localObject);
         continue;
-        str = paramvex.e();
+        str = paramvhb.e();
         localObject = str;
         if (str == null)
         {
-          localObject = a(paramvex, paramPaintType);
-          paramvex.e((String)localObject);
+          localObject = a(paramvhb, paramPaintType);
+          paramvhb.e((String)localObject);
         }
       }
     }
     if (paramPaintType == PhotoDanmakuDrawer.PaintType.Hint) {}
     for (localObject = new Paint(); paramPaintType == PhotoDanmakuDrawer.PaintType.Measure; localObject = new TextPaint())
     {
-      ((Paint)localObject).setTextSize(paramvex.f());
+      ((Paint)localObject).setTextSize(paramvhb.f());
       return localObject;
     }
-    ((Paint)localObject).setTextSize(paramvex.f());
-    ((Paint)localObject).setAlpha(paramvex.d());
-    ((Paint)localObject).setAntiAlias(paramvex.e());
-    switch (ver.a[paramPaintType.ordinal()])
+    ((Paint)localObject).setTextSize(paramvhb.f());
+    ((Paint)localObject).setAlpha(paramvhb.d());
+    ((Paint)localObject).setAntiAlias(paramvhb.e());
+    switch (vgv.a[paramPaintType.ordinal()])
     {
     default: 
       ((Paint)localObject).setStyle(Paint.Style.FILL);
-      ((Paint)localObject).setColor(paramvex.b());
+      ((Paint)localObject).setColor(paramvhb.b());
       ((Paint)localObject).setTypeface(Typeface.DEFAULT_BOLD);
       ((Paint)localObject).clearShadowLayer();
     }
     for (;;)
     {
-      jdField_a_of_type_JavaUtilLinkedHashMap.put(a(paramvex, paramPaintType), localObject);
+      jdField_a_of_type_JavaUtilLinkedHashMap.put(a(paramvhb, paramPaintType), localObject);
       return localObject;
       ((Paint)localObject).setStyle(Paint.Style.FILL);
-      ((Paint)localObject).setStrokeWidth(paramvex.i());
-      ((Paint)localObject).setColor(paramvex.e());
+      ((Paint)localObject).setStrokeWidth(paramvhb.i());
+      ((Paint)localObject).setColor(paramvhb.e());
     }
   }
   
@@ -286,49 +286,48 @@ public class PhotoDanmakuDrawer
     }
   }
   
-  private static String a(vex paramvex, PhotoDanmakuDrawer.PaintType paramPaintType)
+  private static String a(vhb paramvhb, PhotoDanmakuDrawer.PaintType paramPaintType)
   {
-    if ((paramvex == null) || (paramPaintType == null)) {
+    if ((paramvhb == null) || (paramPaintType == null)) {
       return "";
     }
     if (paramPaintType == PhotoDanmakuDrawer.PaintType.Measure) {
-      return String.valueOf(paramvex.f());
+      return String.valueOf(paramvhb.f());
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append('n');
-    localStringBuilder.append(paramvex.d());
-    localStringBuilder.append(paramvex.e());
-    switch (ver.a[paramPaintType.ordinal()])
+    localStringBuilder.append(paramvhb.d());
+    localStringBuilder.append(paramvhb.e());
+    switch (vgv.a[paramPaintType.ordinal()])
     {
     default: 
       localStringBuilder.append(paramPaintType.ordinal());
-      localStringBuilder.append(paramvex.f());
-      localStringBuilder.append(paramvex.b());
+      localStringBuilder.append(paramvhb.f());
+      localStringBuilder.append(paramvhb.b());
     }
     for (;;)
     {
       return localStringBuilder.toString();
       localStringBuilder.append("b");
-      localStringBuilder.append(paramvex.i());
-      localStringBuilder.append(paramvex.e());
+      localStringBuilder.append(paramvhb.i());
+      localStringBuilder.append(paramvhb.e());
     }
   }
   
-  private void a(Canvas paramCanvas, Paint paramPaint, vex paramvex, long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void a(Canvas paramCanvas, Paint paramPaint, vhb paramvhb, long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((paramvex != null) && (paramvex.b() != null) && (!paramvex.b().isRecycled()) && (paramCanvas != null))
+    if ((paramvhb != null) && (paramvhb.b() != null) && (!paramvhb.b().isRecycled()) && (paramCanvas != null))
     {
       paramPaint.setAntiAlias(true);
-      paramCanvas.drawBitmap(paramvex.b(), paramFloat1, paramFloat2, paramPaint);
+      paramCanvas.drawBitmap(paramvhb.b(), paramFloat1, paramFloat2, paramPaint);
       return;
     }
-    aoch.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, 1, String.valueOf(paramLong), 4, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840264), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840264), new vep(this, paramLong, paramvex, paramFloat3, paramFloat4, paramPaint));
+    aoot.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, 1, String.valueOf(paramLong), 4, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840274), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840274), new vgt(this, paramLong, paramvhb, paramFloat3, paramFloat4, paramPaint));
   }
   
   private void a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, boolean paramBoolean)
   {
-    QLog.d("PhotoDanmakuDrawer", 1, new Object[] { "drawBg={left=%f,top=%f,width=%f,height=%f,clipPadding=%f}", Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3), Float.valueOf(paramFloat4), Integer.valueOf(paramInt) });
-    paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843906);
+    paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843928);
     if (paramString != null)
     {
       paramCanvas.save();
@@ -343,9 +342,9 @@ public class PhotoDanmakuDrawer
       if (paramInt > 0)
       {
         if (!paramBoolean) {
-          break label266;
+          break label209;
         }
-        paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843907);
+        paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843929);
         if (paramString != null)
         {
           paramCanvas.save();
@@ -372,97 +371,77 @@ public class PhotoDanmakuDrawer
         }
         catch (IllegalStateException paramCanvas)
         {
-          label266:
+          label209:
           QLog.e("PhotoDanmakuDrawer", 1, "drawText get an IllegalStateException: canvas.restore()");
         }
         paramString = paramString;
         QLog.e("PhotoDanmakuDrawer", 1, "drawText get an IllegalStateException: canvas.restore()");
         continue;
-        paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843908);
+        paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843930);
       }
     }
   }
   
-  private void a(Canvas paramCanvas, vex paramvex, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void a(Canvas paramCanvas, vhb paramvhb, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     System.currentTimeMillis();
-    float f2 = paramvex.a().jdField_c_of_type_Float;
-    TextPaint localTextPaint = (TextPaint)a(paramvex, PhotoDanmakuDrawer.PaintType.Normal);
-    float f1 = paramvex.j() + paramFloat1;
-    float f3 = vtu.b(5.0F);
-    float f4 = vtu.b(2.0F);
-    paramFloat3 = f1;
-    if (paramvex.e() != -10L) {
-      paramFloat3 = f1 + (paramvex.q() + paramFloat4) - vtu.a(50.0F);
+    float f3 = paramvhb.a().jdField_c_of_type_Float;
+    TextPaint localTextPaint = (TextPaint)a(paramvhb, PhotoDanmakuDrawer.PaintType.Normal);
+    float f2 = paramvhb.j() + paramFloat1;
+    float f4 = vwt.b(5.0F);
+    float f5 = vwt.b(2.0F);
+    float f1 = f2;
+    if (paramvhb.e() != -10L) {
+      f1 = f2 + (paramvhb.q() + paramFloat4) - vwt.a(50.0F);
     }
-    paramFloat3 = paramvex.i() + paramFloat3;
-    float f5 = paramvex.i();
-    float f6 = paramvex.k();
-    Object localObject = paramvex.b();
-    f5 = paramvex.l() + (f5 + f6 + paramFloat2);
+    f1 += paramvhb.i();
+    float f6 = paramvhb.i();
+    float f7 = paramvhb.k();
+    Object localObject = paramvhb.b();
+    f6 = f6 + f7 + paramFloat2 + paramvhb.l();
     if (localObject != null)
     {
       localTextPaint.setTypeface(Typeface.DEFAULT);
-      if (paramvex.c() != -1) {
-        break label606;
+      if (paramvhb.c() != -1) {
+        break label432;
       }
-      localTextPaint.setColor(paramvex.b());
+      localTextPaint.setColor(paramvhb.b());
       localTextPaint.setAlpha(178);
     }
     for (;;)
     {
-      if (paramvex.a) {
-        localTextPaint.setShadowLayer(paramvex.jdField_c_of_type_Int, paramvex.d, paramvex.e, paramvex.f);
+      if (paramvhb.a) {
+        localTextPaint.setShadowLayer(paramvhb.jdField_c_of_type_Int, paramvhb.d, paramvhb.e, paramvhb.f);
       }
-      paramCanvas.drawText(paramvex.c(), paramFloat3, f5, localTextPaint);
+      paramCanvas.drawText(paramvhb.c(), f1, f6, localTextPaint);
       paramCanvas.save();
-      if (paramvex.e() == -10L)
+      if (paramvhb.e() == -10L)
       {
-        paramCanvas.translate(localTextPaint.measureText(paramvex.c()) + paramFloat1, f5 - localTextPaint.getTextSize());
+        paramCanvas.translate(localTextPaint.measureText(paramvhb.c()) + paramFloat1, f6 - localTextPaint.getTextSize());
         localObject = new CellTextView(this.jdField_a_of_type_AndroidContentContext);
         ((CellTextView)localObject).setTextSize(localTextPaint.getTextSize());
         ((CellTextView)localObject).setTextGravity(17);
         ((CellTextView)localObject).setTextBold(true);
-        ((CellTextView)localObject).a(paramvex.b());
-        ((CellTextView)localObject).setTextColorLink(paramvex.b());
-        ((CellTextView)localObject).setTextColor(paramvex.b());
-        ((CellTextView)localObject).setOuterListener(new veq(this, paramvex));
+        ((CellTextView)localObject).a(paramvhb.b());
+        ((CellTextView)localObject).setTextColorLink(paramvhb.b());
+        ((CellTextView)localObject).setTextColor(paramvhb.b());
+        ((CellTextView)localObject).setOuterListener(new vgu(this, paramvhb));
         ((CellTextView)localObject).setMaxLine(1);
-        ((CellTextView)localObject).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-        ((CellTextView)localObject).layout((int)paramFloat3, (int)f5, (int)paramvex.g(), (int)paramvex.h());
+        ((CellTextView)localObject).measure(View.MeasureSpec.makeMeasureSpec((int)paramFloat3, 0), View.MeasureSpec.makeMeasureSpec((int)paramFloat4, 0));
+        ((CellTextView)localObject).layout((int)f1, (int)f6, (int)paramFloat3, (int)paramvhb.h());
         ((CellTextView)localObject).draw(paramCanvas);
-        if (paramvex.t > 10)
-        {
-          int j = paramvex.t;
-          int i = j;
-          if (j > 999) {
-            i = 999;
-          }
-          paramCanvas.translate(((CellTextView)localObject).getMeasuredWidth(), -5.0F);
-          localObject = new CellTextView(this.jdField_a_of_type_AndroidContentContext);
-          ((CellTextView)localObject).setTextSize(localTextPaint.getTextSize() + 10.0F);
-          localTextPaint.setStyle(Paint.Style.STROKE);
-          ((CellTextView)localObject).setTextGravity(17);
-          ((CellTextView)localObject).setTextBold(true);
-          ((CellTextView)localObject).a(" x" + i);
-          ((CellTextView)localObject).setTextColor(-1595942);
-          ((CellTextView)localObject).setMaxLine(1);
-          ((CellTextView)localObject).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-          ((CellTextView)localObject).layout((int)paramFloat3, (int)f5, (int)paramvex.g(), (int)paramvex.h());
-          ((CellTextView)localObject).draw(paramCanvas);
-        }
       }
       try
       {
         paramCanvas.restore();
-        if (paramvex.e() != -10L) {
-          a(paramCanvas, localTextPaint, paramvex, paramvex.e(), f1 - f3, f2 + paramFloat2 + f4, vtu.b(22.0F), vtu.b(22.0F));
+        if (paramvhb.e() != -10L) {
+          a(paramCanvas, localTextPaint, paramvhb, paramvhb.e(), f2 - f4, f3 + paramFloat2 + f5, vwt.b(22.0F), vwt.b(22.0F));
         }
         return;
-        label606:
-        localTextPaint.setColor(paramvex.c());
+        label432:
+        localTextPaint.setColor(paramvhb.c());
         continue;
-        paramCanvas.translate(paramFloat1 + paramFloat4 + paramvex.q() + localTextPaint.measureText(paramvex.c()) - vtu.a(8.0F), f5 - localTextPaint.getTextSize());
+        paramCanvas.translate(paramFloat1 + paramFloat4 + paramvhb.q() + localTextPaint.measureText(paramvhb.c()) - vwt.a(8.0F), f6 - localTextPaint.getTextSize());
       }
       catch (IllegalStateException localIllegalStateException)
       {
@@ -474,51 +453,50 @@ public class PhotoDanmakuDrawer
     }
   }
   
-  private void a(vex paramvex, float paramFloat1, float paramFloat2, aoch paramaoch)
+  private void a(vhb paramvhb, float paramFloat1, float paramFloat2, aoot paramaoot)
   {
-    if (paramvex != null)
+    if (paramvhb != null)
     {
-      paramaoch = a(Bitmap.createScaledBitmap(paramaoch.b(), (int)paramFloat1, (int)paramFloat2, false));
-      if (paramaoch != null) {
-        paramvex.b(paramaoch);
+      paramaoot = a(Bitmap.createScaledBitmap(paramaoot.b(), (int)paramFloat1, (int)paramFloat2, false));
+      if (paramaoot != null) {
+        paramvhb.b(paramaoot);
       }
     }
   }
   
-  private void a(vex paramvex, Paint paramPaint, float paramFloat1, float paramFloat2)
+  private void a(vhb paramvhb, Paint paramPaint, float paramFloat1, float paramFloat2)
   {
-    if (paramvex != null)
+    if (paramvhb != null)
     {
       paramPaint.setAntiAlias(true);
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = a(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130840264), (int)paramFloat1, (int)paramFloat2, false));
+        this.jdField_a_of_type_AndroidGraphicsBitmap = a(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130840274), (int)paramFloat1, (int)paramFloat2, false));
       }
-      paramvex.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramvhb.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
   
-  private void a(vex paramvex, TextPaint paramTextPaint)
+  private void a(vhb paramvhb, TextPaint paramTextPaint)
   {
-    QLog.d("PhotoDanmakuDrawer", 1, "calcPaintWH start at:" + System.currentTimeMillis() + "danmaku:" + paramvex.a());
     float f3 = a(paramTextPaint);
-    float f1 = 2.0F * paramvex.i();
-    float f2 = paramvex.j();
-    f3 += 2.0F * paramvex.k() + f1;
-    String str3 = paramvex.a().toString();
-    String str2 = a(paramvex.c(), 16);
-    String str1 = bmpg.a(str3, "");
-    int i = bmpg.a(str3);
-    Object localObject = vha.a(str1);
+    float f1 = 2.0F * paramvhb.i();
+    float f2 = paramvhb.j();
+    f3 += 2.0F * paramvhb.k() + f1;
+    String str3 = paramvhb.a().toString();
+    String str2 = a(paramvhb.c(), 16);
+    String str1 = bnqj.a(str3, "");
+    int i = bnqj.a(str3);
+    Object localObject = vje.a(str1);
     str1 = a(str3);
     ArrayList localArrayList;
     int j;
     int m;
-    if ((i > 0) && (a((String)localObject) + i * 2 > 30))
+    if ((i > 0) && (a((String)localObject) + i * 2 > 200))
     {
       localObject = new ArrayList();
       localArrayList = new ArrayList();
       QLog.d("PhotoDanmakuDrawer", 1, "rawContentStr is too long");
-      Matcher localMatcher = bmpg.a.matcher(str3);
+      Matcher localMatcher = bnqj.a.matcher(str3);
       while (localMatcher.find())
       {
         ((ArrayList)localObject).add(Integer.valueOf(localMatcher.start()));
@@ -539,47 +517,46 @@ public class PhotoDanmakuDrawer
             m += 2;
             k = ((Integer)localArrayList.get(j)).intValue();
             i = j + 1;
-            if (m < 30) {
-              break label775;
+            if (m < 200) {
+              break label708;
             }
             str3 = str1.substring(0, k + 1) + "...";
             str1 = str3;
             if (str2.isEmpty()) {
-              break label772;
+              break label705;
             }
             str2 = str2 + "： ";
             float f4 = paramTextPaint.measureText(str2);
-            i = bmpg.a(str1);
-            f2 = f4 + paramTextPaint.measureText(vha.a(bmpg.a(str1, ""))) + i * (paramTextPaint.getTextSize() + paramTextPaint.measureText(".")) + (0.0F + (2.0F * f2 + f1));
-            paramvex.c(str2);
-            paramvex.b(str1);
-            paramvex.h(-paramTextPaint.ascent());
-            if (paramvex.e() == -10L) {
-              break label769;
+            i = bnqj.a(str1);
+            f2 = f4 + paramTextPaint.measureText(vje.a(bnqj.a(str1, ""))) + i * (paramTextPaint.getTextSize() + paramTextPaint.measureText(".")) + (0.0F + (2.0F * f2 + f1));
+            paramvhb.c(str2);
+            paramvhb.b(str1);
+            paramvhb.h(-paramTextPaint.ascent());
+            if (paramvhb.e() == -10L) {
+              break label702;
             }
             f2 += f3;
             f1 = f2;
-            if (paramvex.t > 10) {
-              f1 = f2 + vtu.a(8.0F);
+            if (paramvhb.t > 10) {
+              f1 = f2 + vwt.a(8.0F);
             }
             f2 = f1;
-            if (paramvex.t > 100) {
-              f2 = f1 + vtu.a(8.0F);
+            if (paramvhb.t > 100) {
+              f2 = f1 + vwt.a(8.0F);
             }
-            f1 = f2 + paramvex.q();
-            paramvex.j(f1);
-            paramvex.i(f3);
-            f2 = paramvex.g() * 2;
-            f4 = paramvex.f() * 2;
-            paramvex.b(f1 + f2);
-            paramvex.c(f4 + f3);
-            QLog.d("PhotoDanmakuDrawer", 1, "calcPaintWH end at:" + System.currentTimeMillis());
+            f1 = f2 + paramvhb.q();
+            paramvhb.j(f1);
+            paramvhb.i(f3);
+            f2 = paramvhb.g() * 2;
+            f4 = paramvhb.f() * 2;
+            paramvhb.b(f1 + f2);
+            paramvhb.c(f4 + f3);
             return;
           }
           if (str3.substring(i, i + 1).matches("[一-龥]"))
           {
             k = m + 2;
-            if (k >= 30)
+            if (k >= 200)
             {
               str3 = str1.substring(0, i) + "...";
               str1 = str3;
@@ -606,13 +583,13 @@ public class PhotoDanmakuDrawer
         QLog.e("PhotoDanmakuDrawer", 1, "danmaku clip get an Exception:" + localException.toString());
       }
       while (i != 0) {}
-      str1 = a((String)localObject, 30);
+      str1 = a((String)localObject, 200);
       continue;
-      label769:
+      label702:
       continue;
-      label772:
+      label705:
       continue;
-      label775:
+      label708:
       j = m;
     }
   }
@@ -627,86 +604,84 @@ public class PhotoDanmakuDrawer
     this.jdField_a_of_type_AndroidGraphicsCanvas = paramCanvas;
   }
   
-  public void a(Canvas paramCanvas, vex paramvex, float paramFloat1, float paramFloat2)
+  public void a(Canvas paramCanvas, vhb paramvhb, float paramFloat1, float paramFloat2)
   {
-    float f1 = paramvex.n();
-    float f2 = paramvex.m();
-    paramvex.a();
-    a(paramCanvas, paramvex.a(), paramFloat1 - vel.b, paramFloat2 - vel.jdField_c_of_type_Int, f1 + vel.b * 2, f2 + vel.jdField_c_of_type_Int * 2, paramvex.t, paramvex.h);
-    a(paramCanvas, paramvex, paramFloat1, paramFloat2, f1, f2);
+    float f1 = paramvhb.n();
+    float f2 = paramvhb.m();
+    a(paramCanvas, paramvhb.a(), paramFloat1 - vgp.b, paramFloat2 - vgp.jdField_c_of_type_Int, f1 + vgp.b * 2, f2 + vgp.jdField_c_of_type_Int * 2, paramvhb.t, paramvhb.h);
+    a(paramCanvas, paramvhb, paramFloat1, paramFloat2, f1, f2);
     LpReportInfo_pf00064.allReport(301, 30, 1, true);
   }
   
-  public void a(vex paramvex)
+  public void a(vhb paramvhb)
   {
     Object localObject2;
     Object localObject1;
     if (this.jdField_a_of_type_AndroidGraphicsCanvas != null)
     {
-      if ((!paramvex.f()) || (!vel.a())) {
-        break label289;
+      if ((!paramvhb.f()) || (!vgp.a())) {
+        break label279;
       }
-      localObject2 = paramvex.a();
+      localObject2 = paramvhb.a();
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = this.jdField_a_of_type_Vhh.a((int)paramvex.g(), (int)paramvex.h());
-        paramvex.a((Bitmap)localObject1);
+        localObject1 = this.jdField_a_of_type_Vjl.a((int)paramvhb.g(), (int)paramvhb.h());
+        paramvhb.a((Bitmap)localObject1);
       }
       if (localObject1 == null) {
-        break label285;
+        break label275;
       }
-      QLog.i("PhotoDanmakuDrawer", 4, "bitmap");
       localObject2 = localObject1;
-      if (paramvex.g())
+      if (paramvhb.g())
       {
-        paramvex.f(false);
-        if (((Bitmap)localObject1).getWidth() >= (int)paramvex.g())
+        paramvhb.f(false);
+        if (((Bitmap)localObject1).getWidth() >= (int)paramvhb.g())
         {
           localObject2 = localObject1;
-          if (((Bitmap)localObject1).getHeight() >= (int)paramvex.h()) {}
+          if (((Bitmap)localObject1).getHeight() >= (int)paramvhb.h()) {}
         }
         else
         {
-          this.jdField_a_of_type_Vhh.a((Bitmap)localObject1);
-          localObject2 = this.jdField_a_of_type_Vhh.a((int)paramvex.g(), (int)paramvex.h());
-          paramvex.a((Bitmap)localObject2);
+          this.jdField_a_of_type_Vjl.a((Bitmap)localObject1);
+          localObject2 = this.jdField_a_of_type_Vjl.a((int)paramvhb.g(), (int)paramvhb.h());
+          paramvhb.a((Bitmap)localObject2);
         }
-        localObject1 = paramvex.a();
+        localObject1 = paramvhb.a();
         if (localObject1 != null) {
-          break label276;
+          break label266;
         }
         localObject1 = new Canvas((Bitmap)localObject2);
-        paramvex.a((Canvas)localObject1);
+        paramvhb.a((Canvas)localObject1);
       }
     }
     for (;;)
     {
       ((Bitmap)localObject2).eraseColor(0);
-      a((Canvas)localObject1, paramvex, paramvex.g(), paramvex.f());
+      a((Canvas)localObject1, paramvhb, paramvhb.g(), paramvhb.f());
       i = this.jdField_a_of_type_AndroidGraphicsCanvas.save();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, (int)paramvex.g(), (int)paramvex.h());
-      this.b.set((int)paramvex.b(), (int)paramvex.c(), (int)paramvex.d(), (int)paramvex.e());
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, (int)paramvhb.g(), (int)paramvhb.h());
+      this.b.set((int)paramvhb.b(), (int)paramvhb.c(), (int)paramvhb.d(), (int)paramvhb.e());
       this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject2, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsCanvas.restoreToCount(i);
       return;
-      label276:
+      label266:
       ((Canvas)localObject1).setBitmap((Bitmap)localObject2);
     }
-    label285:
-    vel.a(false);
-    label289:
+    label275:
+    vgp.a(false);
+    label279:
     int i = this.jdField_a_of_type_AndroidGraphicsCanvas.save();
-    a(this.jdField_a_of_type_AndroidGraphicsCanvas, paramvex, paramvex.o(), paramvex.p());
+    a(this.jdField_a_of_type_AndroidGraphicsCanvas, paramvhb, paramvhb.o(), paramvhb.p());
     this.jdField_a_of_type_AndroidGraphicsCanvas.restoreToCount(i);
   }
   
-  public void b(vex paramvex)
+  public void b(vhb paramvhb)
   {
-    if ((paramvex.a() instanceof SpannableString)) {}
+    if ((paramvhb.a() instanceof SpannableString)) {}
     for (PhotoDanmakuDrawer.PaintType localPaintType = PhotoDanmakuDrawer.PaintType.StaticLayout;; localPaintType = PhotoDanmakuDrawer.PaintType.Measure)
     {
-      a(paramvex, (TextPaint)a(paramvex, localPaintType));
+      a(paramvhb, (TextPaint)a(paramvhb, localPaintType));
       return;
     }
   }

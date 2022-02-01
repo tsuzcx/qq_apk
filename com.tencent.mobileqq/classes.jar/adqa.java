@@ -1,19 +1,142 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.annotation.NonNull;
+import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class adqa
-  implements biao
+  extends ReportDialog
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372835);
+  public static boolean a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  public adqa(BaseChatPie paramBaseChatPie) {}
-  
-  public boolean a()
+  public adqa(@NonNull Context paramContext)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
+    super(paramContext, 2131755253);
+    a(paramContext);
+  }
+  
+  private void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559544, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131362822));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362834));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131363050));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131380549));
+    this.c = ((TextView)a(paramContext, 2131380577));
+    this.d = ((TextView)a(paramContext, 2131363040));
+    this.d.setMovementMethod(ScrollingMovementMethod.getInstance());
+    this.e = ((TextView)a(paramContext, 2131369843));
+    this.f = ((TextView)a(paramContext, 2131376667));
+    setCanceledOnTouchOutside(false);
+    paramContext = getWindow();
+    if (paramContext != null) {
+      paramContext.setGravity(80);
+    }
+  }
+  
+  public <T extends View> T a(View paramView, int paramInt)
+  {
+    return paramView.findViewById(paramInt);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void a(DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    setOnCancelListener(new adqd(this, paramOnCancelListener));
+    setOnKeyListener(new adqe(this, paramOnCancelListener));
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.f.setOnClickListener(new adqb(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    if (nnr.a(paramString))
+    {
+      paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      paramString.setTag(bhez.b(localLayoutParams.width, localLayoutParams.height, zps.a(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
+      paramString.setDecodeHandler(bhez.j);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    }
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.e.setOnClickListener(new adqc(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    this.d.setText(paramString);
+  }
+  
+  public void e(String paramString)
+  {
+    this.f.setText(paramString);
+  }
+  
+  public void f(String paramString)
+  {
+    this.e.setText(paramString);
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle;
 
-import antv;
+import aogf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,11 +14,11 @@ class QCircleGlobalBroadcastHelper$1
     Object localObject = QCircleGlobalBroadcastHelper.a();
     if (localObject != null)
     {
-      localObject = (antv)((AppInterface)localObject).getBusinessHandler(87);
+      localObject = (aogf)((AppInterface)localObject).getBusinessHandler(87);
       if (localObject != null)
       {
         QLog.i(QCircleGlobalBroadcastHelper.a(), 1, "handleQQCirclePush sendRedpointReq");
-        ((antv)localObject).a(true, false);
+        ((aogf)localObject).a(true, false);
       }
     }
   }

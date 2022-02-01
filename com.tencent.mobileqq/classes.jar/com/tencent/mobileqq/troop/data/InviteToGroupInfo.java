@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bepn;
+import bfou;
 import java.util.ArrayList;
 
 public class InviteToGroupInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new bepn();
+  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new bfou();
   public int a;
   public String a;
   public ArrayList<InviteToGroupInfo.UinInfo> a;

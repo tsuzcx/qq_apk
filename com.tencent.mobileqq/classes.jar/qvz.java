@@ -1,123 +1,59 @@
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
+import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 
 public class qvz
-  extends BaseAdapter
+  implements Cloneable
 {
-  public qvz(ComponentContentRecommend paramComponentContentRecommend) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public boolean areAllItemsEnabled()
+  public static qvz a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
   {
-    return false;
+    qvz localqvz = new qvz();
+    localqvz.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
+    localqvz.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
+    localqvz.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
+    localqvz.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
+    return localqvz;
   }
   
-  public int getCount()
+  public qvz a()
   {
-    return ComponentContentRecommend.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return ComponentContentRecommend.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)ComponentContentRecommend.a(this.a).get(paramInt);
-    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
-    qwg localqwg;
-    if (paramView == null)
+    try
     {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562753, null, false);
-      localqwg = new qwg(this.a);
-      localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367857));
-      localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)paramView.findViewById(2131375945));
-      localqwg.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367909));
-      localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378877));
-      localqwg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365367));
-      localqwg.b = ((TextView)paramView.findViewById(2131363788));
-      localqwg.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365590);
-      paramView.setTag(localqwg);
+      super.clone();
+      qvz localqvz = new qvz();
+      localqvz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localqvz.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localqvz.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localqvz.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localqvz;
     }
-    for (;;)
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      if (localqwg != null) {}
-      try
+      for (;;)
       {
-        localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImage(new URL(localRecommendFollowInfo.headUrl));
-        qwa localqwa = new qwa(this, localRecommendFollowInfo);
-        localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(localqwa);
-        localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(localqwa);
-        localqwg.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localqwa);
-        if (localRecommendFollowInfo.isStar)
-        {
-          localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView.showStarRing();
-          if (!localRecommendFollowInfo.isVip) {
-            break label470;
-          }
-          localqwg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localRecommendFollowInfo.nickName);
-          localqwg.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
-          if (!localRecommendFollowInfo.isFollowed) {
-            break label483;
-          }
-          localqwg.b.setText(anni.a(2131701154));
-          localqwg.b.setTextColor(Color.parseColor("#777777"));
-          localqwg.b.setBackgroundResource(2130849428);
-          localqwg.b.setOnClickListener(new qwb(this, localRecommendFollowInfo));
-          localqwg.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-          return paramView;
-          localqwg = (qwg)paramView.getTag();
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          QLog.e(ComponentContentRecommend.a, 2, "getView, followItem.headUrl = " + localRecommendFollowInfo.headUrl + ", e = " + QLog.getStackTraceString(localMalformedURLException));
-          localMalformedURLException.printStackTrace();
-          continue;
-          localqwg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView.showNormal();
-          continue;
-          label470:
-          localqwg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          continue;
-          label483:
-          localqwg.b.setText(anni.a(2131701105));
-          localqwg.b.setTextColor(-1);
-          localqwg.b.setBackgroundResource(2130849385);
-          localqwg.b.setCompoundDrawablePadding(afur.a(3.0F, this.a.getResources()));
+        if (QLog.isColorLevel()) {
+          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
         }
       }
     }
   }
   
-  public boolean isEnabled(int paramInt)
+  public boolean a()
   {
-    return false;
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
   }
 }
 

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.activity.registerGuideLogin;
 import android.animation.ValueAnimator;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import bqcd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 class LoginView$16
   implements Runnable
@@ -19,14 +19,14 @@ class LoginView$16
     if (QLog.isColorLevel()) {
       QLog.d("LoginActivity.LoginView", 2, "mSizeChangeOpenUpdateRunnable isArrowUP = " + LoginView.a(this.this$0) + " isScrolled = " + LoginView.b(this.this$0) + " isDestroyed:" + LoginView.c(this.this$0) + " current_H:" + i);
     }
-    if ((LoginView.d(this.this$0)) || (LoginView.e(this.this$0)) || (LoginView.f(this.this$0))) {
+    if ((LoginView.d(this.this$0)) || (LoginView.e(this.this$0)) || (LoginView.f(this.this$0)) || (LoginView.g(this.this$0))) {
       LoginView.a(this.this$0).setVisibility(8);
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(7, 2131369567);
-    localLayoutParams.addRule(5, 2131369567);
+    localLayoutParams.addRule(7, 2131369661);
+    localLayoutParams.addRule(5, 2131369661);
     localLayoutParams.setMargins(0, (int)(13.0F * LoginView.a(this.this$0) + 0.5F), 0, 0);
-    localLayoutParams.addRule(3, 2131370284);
+    localLayoutParams.addRule(3, 2131370385);
     this.this$0.b.setLayoutParams(localLayoutParams);
     int j = (int)(35.0F * LoginView.a(this.this$0));
     int k = LoginView.a(this.this$0) - j;
@@ -51,12 +51,12 @@ class LoginView$16
         if (LoginView.a(this.this$0).isRunning()) {
           LoginView.a(this.this$0).cancel();
         }
-        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!bqcd.a()))) {
-          break label664;
+        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!LiuHaiUtils.a()))) {
+          break label674;
         }
       }
     }
-    label664:
+    label674:
     for (i = 40;; i = 0)
     {
       j = LoginView.d(this.this$0);

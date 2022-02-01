@@ -1,24 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
 
 public class aqig
-  extends anot
+  implements DialogInterface.OnClickListener
 {
-  public aqig(LocationSelectActivity paramLocationSelectActivity) {}
+  public aqig(DynamicAvatarRecordActivity.11 param11) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
-    {
-      this.a.a(paramBoolean, paramLBSInfo);
-      return;
-    }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    this.a.this$0.finish();
   }
 }
 

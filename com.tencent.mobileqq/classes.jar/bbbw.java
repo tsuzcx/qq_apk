@@ -1,17 +1,7 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-
-class bbbw
-  implements bbdb
+public class bbbw
 {
-  bbbw(bbbv parambbbv) {}
-  
-  public void a(String paramString)
-  {
-    if (SignatureHistoryFragment.b(this.a.a)) {
-      return;
-    }
-    SignatureHistoryFragment.a(this.a.a, paramString);
-  }
+  public static final String a = anzj.a(2131699000);
+  public static final String b = anzj.a(2131698999);
 }
 
 

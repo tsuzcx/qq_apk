@@ -20,6 +20,9 @@ final class OpenDataPlugin$1
     add("getPotentialFriendList");
     add("setMessageToFriendQuery");
     add("canUseComponent");
+    add("onInteractiveStorageModified");
+    add("onShareAppMessage");
+    add("onShareMessageToFriend");
   }
 }
 

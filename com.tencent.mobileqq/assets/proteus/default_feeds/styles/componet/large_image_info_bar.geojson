@@ -41,7 +41,7 @@
         "type": "match_parent"
       },
       "subviews": [
-        {"$includeComponet": "RIJ_follow_mark.geojson"},
+        {"$includeComponet": "componet/RIJ_follow_mark.geojson"},
         {
           "view_type":"UILabel",
           "view_id":"id_info_status",

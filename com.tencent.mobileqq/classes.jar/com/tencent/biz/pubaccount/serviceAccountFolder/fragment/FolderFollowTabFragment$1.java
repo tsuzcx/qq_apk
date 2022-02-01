@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
 import android.os.Message;
 import mqq.os.MqqHandler;
-import tue;
+import tug;
 
 public class FolderFollowTabFragment$1
   implements Runnable
 {
-  FolderFollowTabFragment$1(FolderFollowTabFragment paramFolderFollowTabFragment, tue paramtue) {}
+  FolderFollowTabFragment$1(FolderFollowTabFragment paramFolderFollowTabFragment, tug paramtug) {}
   
   public void run()
   {

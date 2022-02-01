@@ -1,29 +1,23 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.RotateableView;
 
-class ahud
-  extends FrameLayout
+public class ahud
+  extends ahtx
 {
-  public ahud(ahua paramahua, Context paramContext)
-  {
-    super(paramContext);
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
+  boolean jdField_a_of_type_Boolean = false;
+  public long b;
+  String b;
+  long jdField_c_of_type_Long;
+  String jdField_c_of_type_JavaLangString;
+  View d;
+  int e;
+  int f;
+  int g;
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i = ahua.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
-    }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(ahua.a(this.a).getMeasuredWidth() - ahua.a(this.a).getPaddingLeft() - ahua.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
-  }
+  public ahud(ahtz paramahtz) {}
 }
 
 

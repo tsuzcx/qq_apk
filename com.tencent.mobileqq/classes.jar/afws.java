@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class afws
-  implements View.OnClickListener
+  extends anyu
 {
-  public afws(BaseChatItemLayout paramBaseChatItemLayout) {}
+  public afws(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    String str = (String)paramView.getTag();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatItemLayout", 2, "vip_card_extension jumpUrl=" + str);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
     }
-    if (!bgsp.a(str)) {
-      VasWebviewUtil.openQQBrowserActivity(this.a.getContext(), str, 256L, null, false, -1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
   }
 }
 

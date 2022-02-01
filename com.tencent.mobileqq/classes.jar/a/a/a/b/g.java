@@ -1,26 +1,19 @@
 package a.a.a.b;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class g
 {
-  public static Map<byte[], String> a = new HashMap();
+  public static byte[][] a = { { 7, 73, -121, 101, 17, 31, 86, -55, 4, 79, -111, 127, 13, 20, 81, -44, 2 }, { 39, 70, -74, 82 }, { 39, 88, -78, 83, 38 }, { 106, 65, -70, 67, 33, 53, 57, -1, 40, 96 } };
+  public static byte[][] b;
   
-  public static String a(byte[] paramArrayOfByte)
+  static
   {
-    int i = 0;
-    if (a.get(paramArrayOfByte) == null)
-    {
-      byte[] arrayOfByte = new byte[paramArrayOfByte.length];
-      while (i < paramArrayOfByte.length)
-      {
-        arrayOfByte[i] = ((byte)(paramArrayOfByte[i] ^ new byte[] { 69, 16, -45, 32, 78, 91, 23, -99, 0, 0, 0, 0, 0, 0, 0, 0 }[(i % 8)]));
-        i += 1;
-      }
-      a.put(paramArrayOfByte, new String(arrayOfByte));
-    }
-    return (String)a.get(paramArrayOfByte);
+    byte[] arrayOfByte = { 48, 121 };
+    b = new byte[][] { { 54, 115 }, { 54, 115, -91 }, { 36, 121 }, { 33, 121 }, { 40, 116, -70 }, arrayOfByte, { 40, 121 }, { 54, 121 }, { 39, 102 }, { 42, 102 }, { 36, 102 }, { 54, 102 }, { 49, 121 }, { 53, 118 }, { 40, 116 }, { 48, 116 }, { 53, 126 }, { 53, 99, -67 }, { 53, 99, -74 }, { 55, 120 }, { 55, 114 }, { 49, 104, -89 }, { 33, 100 }, { 33, 102 }, { 38, 121 }, { 49, 96 }, { 33, 99 }, { 51, 117, -95 }, { 45, 99 }, { 54, 100 }, { 54, 114, -80 }, { 54, 99, -70 } };
+  }
+  
+  public static String a(int paramInt)
+  {
+    return h.a(b[paramInt]);
   }
 }
 

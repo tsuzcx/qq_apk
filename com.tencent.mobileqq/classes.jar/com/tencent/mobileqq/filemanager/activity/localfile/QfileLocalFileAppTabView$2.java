@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import atut;
-import atvg;
-import atxz;
+import aumo;
+import aunb;
+import aupu;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,21 +18,21 @@ class QfileLocalFileAppTabView$2
     Object localObject;
     if (this.this$0.f)
     {
-      atvg.a(this.this$0.a, this.this$0);
-      atvg.a(true, atut.a().b(), ".apk", "", localHashMap, this.this$0);
-      localObject = atut.a().a();
+      aunb.a(this.this$0.a, this.this$0);
+      aunb.a(true, aumo.a().b(), ".apk", "", localHashMap, this.this$0);
+      localObject = aumo.a().a();
       if (localObject != null) {
-        atvg.a(true, (String)localObject, ".apk", "", localHashMap, null);
+        aunb.a(true, (String)localObject, ".apk", "", localHashMap, null);
       }
     }
     for (;;)
     {
-      atvg.a(localHashMap);
+      aunb.a(localHashMap);
       QfileLocalFileAppTabView.a(this.this$0, new QfileLocalFileAppTabView.2.1(this));
       return;
       localObject = this.this$0.d.iterator();
       while (((Iterator)localObject).hasNext()) {
-        atvg.a(true, ((atxz)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
+        aunb.a(true, ((aupu)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
       }
     }
   }

@@ -1,95 +1,34 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Pattern;
-import mqq.app.ISecurityFileHelper;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Rect;
 
 public class blnd
-  implements ISecurityFileHelper
 {
-  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new blne(this);
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
+  private int jdField_a_of_type_Int;
+  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private int b;
+  private int c;
   
-  public String declareBusinessFileName()
+  private blnd(Bitmap paramBitmap, int paramInt)
   {
-    return "ReaderZone";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    boolean bool2 = false;
-    File localFile1 = new File(anhk.aZ, "/Tencent/ReaderZone/");
-    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    boolean bool1;
-    if ((arrayOfString == null) || (arrayOfString.length == 0))
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    if (paramBitmap != null)
     {
-      bool1 = true;
-      return bool1;
+      this.b = paramBitmap.getScaledWidth(paramInt);
+      this.c = paramBitmap.getScaledHeight(paramInt);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
+      return;
     }
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label220;
-      }
-      Object localObject = arrayOfString[i];
-      File localFile2 = new File(localFile1, (String)localObject);
-      localObject = new File(paramFile.getAbsolutePath() + File.separator + (String)localObject + File.separator + declareBusinessFileName());
-      int k = bgmg.a(localFile2.getAbsolutePath(), ((File)localObject).getAbsolutePath());
-      QLog.d("ISecurityFileHelper", 1, "doMigrate：" + declareBusinessFileName() + " result = " + k + " fromFile = " + localFile2.getAbsolutePath() + " targetFile = " + ((File)localObject).getAbsolutePath());
-      bool1 = bool2;
-      if (k != 0) {
-        break;
-      }
-      i += 1;
-    }
-    label220:
-    return true;
+    this.jdField_a_of_type_Int = 4;
   }
   
-  public boolean needMigration()
+  private void a(Rect paramRect)
   {
-    String[] arrayOfString = new File(anhk.aZ, "/Tencent/ReaderZone/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    return (arrayOfString != null) && (arrayOfString.length > 0);
-  }
-  
-  @NonNull
-  public File oldBusinessDir(String paramString)
-  {
-    return new File(new File(anhk.aZ, "/Tencent/ReaderZone/"), paramString);
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
-  {
-    paramString = oldBusinessDir(paramString);
-    return (paramString.isDirectory()) && (paramString.exists());
-  }
-  
-  public String[] reportHistoryFileInfo()
-  {
-    long l2 = 0L;
-    String[] arrayOfString1 = new String[2];
-    File localFile = new File(anhk.aZ, "/Tencent/ReaderZone/");
-    String[] arrayOfString2 = localFile.list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
-    {
-      int j = arrayOfString2.length;
-      int i = 0;
-      long l1 = 0L;
-      while (i < j)
-      {
-        String str = arrayOfString2[i];
-        l2 += bgmg.b(new File(localFile, str).getAbsolutePath());
-        l1 += bgmg.c(new File(localFile, str).getAbsolutePath());
-        i += 1;
-      }
-      arrayOfString1[0] = Long.toString(l2);
-      arrayOfString1[1] = Long.toString(l1);
-      QLog.d("ISecurityFileHelper", 1, "reportHistoryFileInfo:" + declareBusinessFileName() + " fileAmount = " + l1 + " fileSize = " + l2);
-    }
-    return arrayOfString1;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 

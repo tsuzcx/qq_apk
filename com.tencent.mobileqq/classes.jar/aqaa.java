@@ -1,38 +1,36 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.IOException;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
-public class aqaa
-  extends AsyncTask<Void, Void, String>
+class aqaa
+  implements AdapterView.OnItemClickListener
 {
-  public aqaa(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
+  aqaa(apzw paramapzw) {}
   
-  protected String a(Void... paramVarArgs)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
+    Object localObject = apzw.a(this.a).getSelectedView();
+    if (localObject != null) {
+      ((View)localObject).setSelected(false);
+    }
+    apzw.a(this.a).setSelection(paramInt);
+    localObject = apzw.a(this.a).getSelectedView();
+    if (localObject != null) {
+      ((View)localObject).setSelected(true);
+    }
+    apzw.a(this.a, paramInt);
+    apzw.a(this.a, true);
+    if ((apzw.a(this.a) != null) && (apzw.a(this.a).size() > 0) && (apzw.a(this.a).size() > apzw.a(this.a)))
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        bgmo.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694329) + " " + paramVarArgs;
+      localObject = (aqax)apzw.a(this.a).get(apzw.a(this.a));
+      if (localObject != null) {
+        aqca.a(null, ((aqax)localObject).a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
       }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694327);
-      return paramVarArgs;
     }
-    catch (IOException paramVarArgs)
-    {
-      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694327);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694327);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

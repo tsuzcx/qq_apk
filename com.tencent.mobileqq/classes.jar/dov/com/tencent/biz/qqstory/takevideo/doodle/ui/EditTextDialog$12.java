@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import bpjo;
-import bpjz;
+import bqlj;
+import bqlu;
 
 public class EditTextDialog$12
   implements Runnable
 {
-  public EditTextDialog$12(bpjo parambpjo, int paramInt1, int paramInt2) {}
+  public EditTextDialog$12(bqlj parambqlj, int paramInt1, int paramInt2) {}
   
   public void run()
   {

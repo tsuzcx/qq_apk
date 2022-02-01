@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import amgd;
+import amrx;
 
 public final class PerformanceReportUtils$3
   implements Runnable
 {
   public void run()
   {
-    amgd.a().e();
+    amrx.a().e();
   }
 }
 

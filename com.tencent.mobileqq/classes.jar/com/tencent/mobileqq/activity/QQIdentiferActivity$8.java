@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import afur;
+import agej;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
@@ -15,9 +15,9 @@ class QQIdentiferActivity$8
   {
     int i = QQIdentiferActivity.a(this.this$0).getTop();
     int j = QQIdentiferActivity.a(this.this$0).getTop();
-    View localView = this.this$0.findViewById(2131378811);
+    View localView = this.this$0.findViewById(2131378973);
     int k = localView.getHeight();
-    int m = afur.a(15.0F, this.this$0.getResources());
+    int m = agej.a(15.0F, this.this$0.getResources());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = (i + j - k - m);
     localView.setLayoutParams(localLayoutParams);

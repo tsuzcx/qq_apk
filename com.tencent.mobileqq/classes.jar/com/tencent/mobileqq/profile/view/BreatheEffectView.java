@@ -17,24 +17,24 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
-import azji;
-import azjj;
-import azjk;
-import azjl;
-import azjm;
-import azjn;
-import bgun;
-import bguo;
-import bgup;
+import babu;
+import babv;
+import babw;
+import babx;
+import baby;
+import babz;
+import bhuq;
+import bhur;
+import bhus;
 
 public class BreatheEffectView
   extends ImageView
-  implements bgup
+  implements bhus
 {
   private static int jdField_a_of_type_Int;
   public static final int[] a;
   private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private TypeEvaluator jdField_a_of_type_AndroidAnimationTypeEvaluator = new azji(this);
+  private TypeEvaluator jdField_a_of_type_AndroidAnimationTypeEvaluator = new babu(this);
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
   private Rect[] jdField_a_of_type_ArrayOfAndroidGraphicsRect;
@@ -71,16 +71,16 @@ public class BreatheEffectView
   
   private void e()
   {
-    jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298461);
-    setBackgroundResource(2130847404);
+    jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298474);
+    setBackgroundResource(2130847421);
     Drawable localDrawable = getBackground();
     if ((localDrawable instanceof LayerDrawable))
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)localDrawable);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[3];
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363379);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363380);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363372);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363402);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363403);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363395);
       return;
     }
     throw new RuntimeException("Background is not a layer drawable!");
@@ -136,7 +136,7 @@ public class BreatheEffectView
           ((ValueAnimator)localObject1).setDuration(600L);
           this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject1 });
           if (2 == i) {
-            ((ValueAnimator)localObject2).addListener(new azjj(this));
+            ((ValueAnimator)localObject2).addListener(new babv(this));
           }
           this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject2 });
           i += 1;
@@ -146,7 +146,7 @@ public class BreatheEffectView
     }
   }
   
-  public void a(azjn paramazjn)
+  public void a(babz parambabz)
   {
     if (a())
     {
@@ -163,21 +163,21 @@ public class BreatheEffectView
         Rect localRect = new Rect(j, k, j, k);
         localDrawable.setBounds(localRect);
         localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidAnimationTypeEvaluator, new Object[] { localRect, localObject });
-        ((ValueAnimator)localObject).addUpdateListener(new azjk(this, localDrawable));
+        ((ValueAnimator)localObject).addUpdateListener(new babw(this, localDrawable));
         ((ValueAnimator)localObject).setDuration(400L);
         ((ValueAnimator)localObject).setStartDelay(i * 50);
         localAnimatorSet.playTogether(new Animator[] { localObject });
         i += 1;
       }
-      if (paramazjn != null) {
-        localAnimatorSet.addListener(new azjl(this, paramazjn));
+      if (parambabz != null) {
+        localAnimatorSet.addListener(new babx(this, parambabz));
       }
       localAnimatorSet.setInterpolator(new OvershootInterpolator(1.6F));
       localAnimatorSet.start();
     }
   }
   
-  public void a(bgun parambgun, bguo parambguo, float paramFloat1, float paramFloat2)
+  public void a(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2)
   {
     d();
     a();
@@ -209,7 +209,7 @@ public class BreatheEffectView
     return false;
   }
   
-  public boolean a(bgun parambgun, bguo parambguo, float paramFloat1, float paramFloat2)
+  public boolean a(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2)
   {
     return true;
   }
@@ -229,12 +229,12 @@ public class BreatheEffectView
     }
   }
   
-  public void b(azjn paramazjn)
+  public void b(babz parambabz)
   {
     if (a())
     {
       clearAnimation();
-      paramazjn = new AnimatorSet();
+      parambabz = new AnimatorSet();
       int i = 1;
       while (i < 3)
       {
@@ -243,18 +243,18 @@ public class BreatheEffectView
         int j = ((Rect)localObject).centerX();
         int k = ((Rect)localObject).centerY();
         localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidAnimationTypeEvaluator, new Object[] { localObject, new Rect(j, k, j, k) });
-        ((ValueAnimator)localObject).addUpdateListener(new azjm(this, localDrawable));
+        ((ValueAnimator)localObject).addUpdateListener(new baby(this, localDrawable));
         ((ValueAnimator)localObject).setDuration(400L);
-        paramazjn.playTogether(new Animator[] { localObject });
+        parambabz.playTogether(new Animator[] { localObject });
         i += 1;
       }
-      paramazjn.start();
+      parambabz.start();
     }
   }
   
-  public void b(bgun parambgun, bguo parambguo, float paramFloat1, float paramFloat2) {}
+  public void b(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2) {}
   
-  public boolean b(bgun parambgun, bguo parambguo, float paramFloat1, float paramFloat2)
+  public boolean b(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2)
   {
     c();
     return true;

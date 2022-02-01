@@ -1,24 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.widget.AdapterView;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 
-public class behb
-  implements bkik
+final class behb
+  extends Editable.Factory
 {
-  public behb(MediaPreviewActivity paramMediaPreviewActivity) {}
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (this.a.a != null)
-    {
-      paramAdapterView = this.a.a.a(paramInt);
-      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
-        return false;
-      }
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
     }
-    MediaPreviewActivity.a(this.a);
-    return true;
+    return new begz(paramCharSequence, 3, ChatTextSizeSettingActivity.b() + 1);
   }
 }
 

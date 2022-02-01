@@ -1,22 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.widget.AdapterView;
 
-public class awro
-  extends AnimatorListenerAdapter
+class awro
+  implements bljm
 {
-  public awro(MultiAIOFragment paramMultiAIOFragment) {}
+  awro(awrk paramawrk, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.e(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.e(this.a);
+    awrk.a(this.jdField_a_of_type_Awrk, true);
+    awrk.a(this.jdField_a_of_type_Awrk).a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
+      bdll.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
+    }
   }
 }
 

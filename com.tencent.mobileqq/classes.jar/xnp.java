@@ -1,31 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class xnp
-  implements View.OnClickListener
+class xnp
+  extends wiu<xmz>
 {
-  public xnp(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xnp(xno paramxno) {}
   
-  public void onClick(View paramView)
+  public void a(xmz paramxmz)
   {
-    if (!bgnt.g(this.a.jdField_a_of_type_AndroidViewView.getContext())) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131693946, 0).a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      VideoViewVideoHolder.a(this.a, 2);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.a.a();
-    }
+    paramxmz.a(new xnq(this));
   }
+  
+  public void c() {}
 }
 
 

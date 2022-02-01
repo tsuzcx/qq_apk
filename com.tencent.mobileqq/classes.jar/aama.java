@@ -1,33 +1,44 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.qphone.base.util.QLog;
 
 public class aama
-  extends FragmentPagerAdapter
+  extends aamc
 {
-  public aama(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
+  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  
+  public aama(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    super(paramFragmentManager);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    if (paramStFeed != null) {
+      this.a.feed.set(paramStFeed);
+    }
   }
   
-  public int getCount()
+  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
   {
-    return RelativePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
+    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
+    try
+    {
+      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
+      }
     }
     return null;
   }
   
-  public int getItemPosition(Object paramObject)
+  public byte[] a()
   {
-    return -2;
+    return this.a.toByteArray();
   }
 }
 

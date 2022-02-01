@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-
-public class aewe
-  implements aqga
+public abstract interface aewe
 {
-  public aewe(QQBrowserActivity paramQQBrowserActivity) {}
-  
-  public void onColorNoteAnimFinish()
-  {
-    QQBrowserActivity.a(this.a);
-  }
+  public abstract void a();
 }
 
 

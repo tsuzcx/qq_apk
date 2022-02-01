@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public final class afcc
-  implements Parcelable.Creator<RiskInfoItem>
+public class afcc
+  extends anyu
 {
-  public RiskInfoItem a(Parcel paramParcel)
+  public afcc(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new RiskInfoItem(paramParcel, null);
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
   }
   
-  public RiskInfoItem[] a(int paramInt)
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new RiskInfoItem[paramInt];
+    if (!paramBoolean1) {
+      this.a.a(2131717966, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
 }
 

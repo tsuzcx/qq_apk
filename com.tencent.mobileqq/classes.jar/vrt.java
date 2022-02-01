@@ -1,67 +1,46 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView.MovingImg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class vrt
+  implements Animator.AnimatorListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
-  private String g;
-  private String h;
-  private String i;
-  private String j;
-  private String k;
-  private String l;
-  private String m;
+  public vrt(QCirclePolyLikeAniView paramQCirclePolyLikeAniView, aazo paramaazo, View paramView, QCirclePolyLikeAniView.MovingImg paramMovingImg, QQCircleFeedBase.StPolyLike paramStPolyLike) {}
   
-  public vrt a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
+    if (this.jdField_a_of_type_Aazo != null) {
+      this.jdField_a_of_type_Aazo.a();
+    }
+    if ((this.jdField_a_of_type_AndroidViewView instanceof URLImageView))
+    {
+      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$MovingImg.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramAnimator = URLDrawable.URLDrawableOptions.obtain();
+      paramAnimator.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844012);
+      paramAnimator.mRequestWidth = this.jdField_a_of_type_AndroidViewView.getWidth();
+      paramAnimator.mRequestHeight = this.jdField_a_of_type_AndroidViewView.getHeight();
+      uys.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyIconUrl.get(), (URLImageView)this.jdField_a_of_type_AndroidViewView, paramAnimator, false);
+    }
+    this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView.removeAllViews();
+    this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView.setVisibility(8);
+    QLog.d("QCirclePolymorphicAniView", 1, "poly ani end");
   }
   
-  public vrt a(QCircleReportBean paramQCircleReportBean)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = paramQCircleReportBean;
-    return this;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public vrt a(FeedCloudMeta.StFeed paramStFeed)
-  {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    return this;
-  }
-  
-  public vrt a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vrt b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vrt c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public vrt d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

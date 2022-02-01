@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import afur;
-import afzq;
+import agej;
+import agjk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -13,10 +13,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import bcwb;
-import bcxj;
-import bcxm;
+import anzj;
+import bdou;
+import bdqc;
+import bdqf;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -26,10 +26,10 @@ import java.io.UnsupportedEncodingException;
 import org.json.JSONObject;
 
 public abstract class AbsStructMsg
-  implements bcwb, Externalizable
+  implements bdou, Externalizable
 {
-  public static final String DEFAULT_MSG_BRIEF = anni.a(2131698532);
-  public static final String PA_DEFAULT_MSG_BRIEF = anni.a(2131698531);
+  public static final String DEFAULT_MSG_BRIEF = anzj.a(2131698639);
+  public static final String PA_DEFAULT_MSG_BRIEF = anzj.a(2131698638);
   public static int SOURCE_ACCOUNT_TYPE_PA = 7;
   public String adverKey;
   public int adverSign;
@@ -126,19 +126,19 @@ public abstract class AbsStructMsg
     catch (Exception paramBundle) {}
   }
   
-  AbsStructMsg(bcxj parambcxj)
+  AbsStructMsg(bdqc parambdqc)
   {
-    parseMsgAttrubutes(parambcxj);
+    parseMsgAttrubutes(parambdqc);
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, afzq paramafzq, Bundle paramBundle, int paramInt)
+  public static View getExceptionView(Context paramContext, View paramView, agjk paramagjk, Bundle paramBundle, int paramInt)
   {
-    return getExceptionView(paramContext, paramView, paramafzq, paramBundle, paramContext.getResources().getString(paramInt));
+    return getExceptionView(paramContext, paramView, paramagjk, paramBundle, paramContext.getResources().getString(paramInt));
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, afzq paramafzq, Bundle paramBundle, String paramString)
+  public static View getExceptionView(Context paramContext, View paramView, agjk paramagjk, Bundle paramBundle, String paramString)
   {
-    paramafzq = paramContext.getResources();
+    paramagjk = paramContext.getResources();
     if ((paramView != null) && ((paramView instanceof RelativeLayout))) {
       ((RelativeLayout)paramView).removeAllViews();
     }
@@ -150,16 +150,16 @@ public abstract class AbsStructMsg
       paramBundle.setText(paramString);
       paramBundle.setTextSize(2, 14.0F);
       paramBundle.setTextColor(Color.parseColor("#777777"));
-      int i = afur.a(15.0F, paramafzq);
-      int j = afur.a(7.5F, paramafzq);
+      int i = agej.a(15.0F, paramagjk);
+      int j = agej.a(7.5F, paramagjk);
       paramContext = new RelativeLayout(paramContext);
-      paramContext.setBackgroundResource(2130838300);
+      paramContext.setBackgroundResource(2130838310);
       paramContext.setPadding(i, j, i, j);
       paramContext.addView(paramBundle);
-      paramContext.setId(2131377929);
-      paramafzq = new RelativeLayout.LayoutParams(-2, -2);
-      paramafzq.addRule(13);
-      paramView.addView(paramContext, paramafzq);
+      paramContext.setId(2131378083);
+      paramagjk = new RelativeLayout.LayoutParams(-2, -2);
+      paramagjk.addRule(13);
+      paramView.addView(paramContext, paramagjk);
       return paramView;
       paramView = new RelativeLayout(paramContext);
     }
@@ -179,7 +179,7 @@ public abstract class AbsStructMsg
       paramContext.setTextColor(Color.parseColor("#000000"));
       int i = BaseChatItemLayout.o;
       int j = BaseChatItemLayout.p;
-      paramView.setBackgroundResource(2130838300);
+      paramView.setBackgroundResource(2130838310);
       paramContext.setPadding(i, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
       paramView.addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
       return paramView;
@@ -187,9 +187,9 @@ public abstract class AbsStructMsg
     }
   }
   
-  public static View getVersionExceptionView(Context paramContext, View paramView, afzq paramafzq, Bundle paramBundle)
+  public static View getVersionExceptionView(Context paramContext, View paramView, agjk paramagjk, Bundle paramBundle)
   {
-    return getExceptionView(paramContext, paramView, paramafzq, paramBundle, 2131697742);
+    return getExceptionView(paramContext, paramView, paramagjk, paramBundle, 2131697826);
   }
   
   public boolean LayoutEquals(Object paramObject)
@@ -213,14 +213,14 @@ public abstract class AbsStructMsg
   
   public abstract View getSourceView(Context paramContext, View paramView);
   
-  public View getView(Context paramContext, View paramView, afzq paramafzq, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, agjk paramagjk, Bundle paramBundle)
   {
-    paramafzq = paramView;
+    paramagjk = paramView;
     if (paramView == null)
     {
-      paramafzq = new LinearLayout(paramContext);
-      paramafzq.setOrientation(1);
-      paramContext = paramafzq.getLayoutParams();
+      paramagjk = new LinearLayout(paramContext);
+      paramagjk.setOrientation(1);
+      paramContext = paramagjk.getLayoutParams();
       if (paramContext != null) {
         break label49;
       }
@@ -228,8 +228,8 @@ public abstract class AbsStructMsg
     }
     for (;;)
     {
-      paramafzq.setLayoutParams(paramContext);
-      return paramafzq;
+      paramagjk.setLayoutParams(paramContext);
+      return paramagjk;
       label49:
       paramContext.width = BaseChatItemLayout.B;
       paramContext.height = -2;
@@ -261,7 +261,7 @@ public abstract class AbsStructMsg
     {
       localObject = localByteArrayOutputStream.toString("UTF-8");
       QLog.d("StructMsg", 4, "Obj[" + System.identityHashCode(this) + "]getXmlBytes xmlStr:" + (String)localObject);
-      localObject = bcxm.b(localByteArrayOutputStream.toByteArray());
+      localObject = bdqf.b(localByteArrayOutputStream.toByteArray());
       int i = localObject.length;
       arrayOfByte = new byte[i + 1];
       arrayOfByte[0] = 1;
@@ -292,56 +292,56 @@ public abstract class AbsStructMsg
     return this.mTSum > 0;
   }
   
-  protected void parseMsgAttrubutes(bcxj parambcxj)
+  protected void parseMsgAttrubutes(bdqc parambdqc)
   {
-    if (parambcxj == null) {}
+    if (parambdqc == null) {}
     for (;;)
     {
       return;
-      String str1 = parambcxj.a("templateID");
+      String str1 = parambdqc.a("templateID");
       if (!TextUtils.isEmpty(str1)) {
         this.mMsgTemplateID = Integer.parseInt(str1);
       }
-      this.mMsgUrl = parambcxj.a("url");
-      this.mMsgAction = parambcxj.a("action");
-      this.mMsgActionData = parambcxj.a("actionData");
-      this.mMsg_A_ActionData = parambcxj.a("a_actionData");
-      this.mMsg_I_ActionData = parambcxj.a("i_actionData");
-      this.rijAlbumActionData = parambcxj.a("rijAlbumActionData");
-      this.mQzoneExtraMsg = parambcxj.a("qzFloatExtra");
-      str1 = parambcxj.a("fwflag");
+      this.mMsgUrl = parambdqc.a("url");
+      this.mMsgAction = parambdqc.a("action");
+      this.mMsgActionData = parambdqc.a("actionData");
+      this.mMsg_A_ActionData = parambdqc.a("a_actionData");
+      this.mMsg_I_ActionData = parambdqc.a("i_actionData");
+      this.rijAlbumActionData = parambdqc.a("rijAlbumActionData");
+      this.mQzoneExtraMsg = parambdqc.a("qzFloatExtra");
+      str1 = parambdqc.a("fwflag");
       if (!TextUtils.isEmpty(str1)) {}
       try
       {
         this.fwFlag = Integer.parseInt(str1);
         label128:
-        str1 = parambcxj.a("flag");
+        str1 = parambdqc.a("flag");
         if (!TextUtils.isEmpty(str1)) {}
         try
         {
           this.mFlag = Integer.parseInt(str1);
           label151:
-          str1 = parambcxj.a("serviceID");
+          str1 = parambdqc.a("serviceID");
           if (!TextUtils.isEmpty(str1)) {
             this.mMsgServiceID = Integer.parseInt(str1);
           }
-          this.mMsgBrief = parambcxj.a("brief");
-          this.mResid = parambcxj.a("m_resid");
-          this.mFileName = parambcxj.a("m_fileName");
-          str1 = parambcxj.a("tSum");
+          this.mMsgBrief = parambdqc.a("brief");
+          this.mResid = parambdqc.a("m_resid");
+          this.mFileName = parambdqc.a("m_fileName");
+          str1 = parambdqc.a("tSum");
           if (!TextUtils.isEmpty(str1)) {
             this.mTSum = Integer.parseInt(str1);
           }
-          str1 = parambcxj.a("m_fileSize");
+          str1 = parambdqc.a("m_fileSize");
           if (!TextUtils.isEmpty(str1)) {}
           try
           {
             this.mFileSize = Long.parseLong(str1);
             label253:
-            str1 = parambcxj.a("promotionType");
-            this.mPromotionMsg = parambcxj.a("promotionMsg");
-            this.mPromotionMenus = parambcxj.a("promotionMenus");
-            String str2 = parambcxj.a("promotionMenuDestructiveIndex");
+            str1 = parambdqc.a("promotionType");
+            this.mPromotionMsg = parambdqc.a("promotionMsg");
+            this.mPromotionMenus = parambdqc.a("promotionMenus");
+            String str2 = parambdqc.a("promotionMenuDestructiveIndex");
             label392:
             label426:
             try
@@ -359,57 +359,57 @@ public abstract class AbsStructMsg
               label449:
               break label321;
             }
-            this.source_puin = parambcxj.a("sourcePublicUin");
+            this.source_puin = parambdqc.a("sourcePublicUin");
             if (this.source_puin == null) {
               this.source_puin = "";
             }
-            this.mSourceThirdName = parambcxj.a("sourceName");
+            this.mSourceThirdName = parambdqc.a("sourceName");
             if (this.mSourceThirdName == null) {
               this.mSourceThirdName = "";
             }
-            str1 = parambcxj.a("sourceMsgId");
+            str1 = parambdqc.a("sourceMsgId");
             try
             {
               if (!TextUtils.isEmpty(str1)) {
                 this.msgId = Long.parseLong(str1);
               }
-              this.mSType = parambcxj.a("sType");
-              str1 = parambcxj.a("accostType");
+              this.mSType = parambdqc.a("sType");
+              str1 = parambdqc.a("accostType");
               try
               {
                 if (!TextUtils.isEmpty(str1)) {
                   this.sourceAccoutType = Integer.parseInt(str1);
                 }
-                str1 = parambcxj.a("adverSign");
+                str1 = parambdqc.a("adverSign");
                 try
                 {
                   if (!TextUtils.isEmpty(str1)) {
                     this.adverSign = Integer.parseInt(str1);
                   }
-                  this.adverKey = parambcxj.a("adverKey");
-                  this.index = parambcxj.a("index");
-                  this.index_name = parambcxj.a("index_name");
-                  this.index_type = parambcxj.a("index_type");
-                  this.mExtraData = parambcxj.a("extraData");
-                  this.mCreateTime = parambcxj.a("createTime");
-                  this.mTagName = parambcxj.a("tagName");
-                  this.mArticleIds = parambcxj.a("articleIds");
-                  this.mOrangeWord = parambcxj.a("orangeWord");
-                  this.mAlgorithmIds = parambcxj.a("algorithmIds");
-                  this.mStrategyIds = parambcxj.a("strategyIds");
-                  this.reportEventFolderStatusValue = parambcxj.a("reportEventFolderStatusValue");
-                  this.mQidianBulkTaskId = parambcxj.a("qf_task_id");
-                  this.mInnerUniqIds = parambcxj.a("uuids");
-                  this.mQQStoryExtra = parambcxj.a("qqstoryExtra");
-                  this.mTribeShortVideoExtra = parambcxj.a("qqtribeVideoInfoExtra");
-                  this.mNeedRound = parambcxj.a("needRoundView");
-                  this.mCommonData = parambcxj.a("msgCommonData");
-                  this.mMergeSeq = parambcxj.a("mergeSeq");
-                  parambcxj = parambcxj.a("sortKey");
+                  this.adverKey = parambdqc.a("adverKey");
+                  this.index = parambdqc.a("index");
+                  this.index_name = parambdqc.a("index_name");
+                  this.index_type = parambdqc.a("index_type");
+                  this.mExtraData = parambdqc.a("extraData");
+                  this.mCreateTime = parambdqc.a("createTime");
+                  this.mTagName = parambdqc.a("tagName");
+                  this.mArticleIds = parambdqc.a("articleIds");
+                  this.mOrangeWord = parambdqc.a("orangeWord");
+                  this.mAlgorithmIds = parambdqc.a("algorithmIds");
+                  this.mStrategyIds = parambdqc.a("strategyIds");
+                  this.reportEventFolderStatusValue = parambdqc.a("reportEventFolderStatusValue");
+                  this.mQidianBulkTaskId = parambdqc.a("qf_task_id");
+                  this.mInnerUniqIds = parambdqc.a("uuids");
+                  this.mQQStoryExtra = parambdqc.a("qqstoryExtra");
+                  this.mTribeShortVideoExtra = parambdqc.a("qqtribeVideoInfoExtra");
+                  this.mNeedRound = parambdqc.a("needRoundView");
+                  this.mCommonData = parambdqc.a("msgCommonData");
+                  this.mMergeSeq = parambdqc.a("mergeSeq");
+                  parambdqc = parambdqc.a("sortKey");
                   try
                   {
-                    if (!TextUtils.isEmpty(parambcxj)) {
-                      this.mSortKey = Long.parseLong(parambcxj);
+                    if (!TextUtils.isEmpty(parambdqc)) {
+                      this.mSortKey = Long.parseLong(parambdqc);
                     }
                     if (((this.mMsgServiceID != 142) && (this.mMsgServiceID != 500)) || (!TextUtils.isEmpty(this.mExtraData)) || (TextUtils.isEmpty(this.mMsgActionData))) {
                       continue;
@@ -419,17 +419,17 @@ public abstract class AbsStructMsg
                       this.mExtraData = new JSONObject(this.mMsgActionData).getString("push_ext_data");
                       return;
                     }
-                    catch (Exception parambcxj)
+                    catch (Exception parambdqc)
                     {
-                      parambcxj.getStackTrace();
+                      parambdqc.getStackTrace();
                       return;
                     }
                   }
-                  catch (NumberFormatException parambcxj)
+                  catch (NumberFormatException parambdqc)
                   {
                     for (;;)
                     {
-                      parambcxj.printStackTrace();
+                      parambdqc.printStackTrace();
                     }
                   }
                 }

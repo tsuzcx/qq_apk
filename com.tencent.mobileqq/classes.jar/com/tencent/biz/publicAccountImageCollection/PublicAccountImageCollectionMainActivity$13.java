@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import nyq;
+import oal;
 
 class PublicAccountImageCollectionMainActivity$13
   implements Runnable

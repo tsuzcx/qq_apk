@@ -4,11 +4,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import anni;
-import arpd;
-import arph;
-import arui;
-import bhod;
+import anzj;
+import aser;
+import asev;
+import asjw;
+import bioy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import nhe;
-import nmj;
+import niz;
+import noe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,8 +30,8 @@ public abstract class VasWebviewJsPlugin
   extends VasBasePlugin
 {
   private static final String TAG = "VasWebviewJsPlugin";
-  nhe authCfg;
-  public arpd mOnRemoteResp = new VasWebviewJsPlugin.1(this);
+  niz authCfg;
+  public aser mOnRemoteResp = new VasWebviewJsPlugin.1(this);
   
   private Method getMethod(Class<?> paramClass, String paramString)
   {
@@ -247,7 +247,7 @@ public abstract class VasWebviewJsPlugin
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("domain", paramJSONObject);
-    sendRemoteReq(arph.a("getDomainIpList", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(asev.a("getDomainIpList", paramString, this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   public void getVipType(JSONObject paramJSONObject, String paramString)
@@ -272,7 +272,7 @@ public abstract class VasWebviewJsPlugin
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("uin", paramJSONObject);
-    sendRemoteReq(arph.a("getUserVipType", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(asev.a("getUserVipType", paramString, this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   protected boolean handleEmojiSchemaRequest(String paramString1, String paramString2)
@@ -285,7 +285,7 @@ public abstract class VasWebviewJsPlugin
     {
       return bool;
       if (QLog.isDevelopLevel()) {
-        QLog.d("VasWebviewJsPlugin", 4, "handleSchemaRequest:" + nmj.b(paramString1, new String[0]));
+        QLog.d("VasWebviewJsPlugin", 4, "handleSchemaRequest:" + noe.b(paramString1, new String[0]));
       }
     } while (paramString1.startsWith("qqvip:") == true);
     if (!Uri.parse(paramString1).getScheme().equals("qqjsbridge"))
@@ -401,15 +401,15 @@ public abstract class VasWebviewJsPlugin
   {
     super.onCreate();
     if (this.authCfg == null) {
-      this.authCfg = nhe.a();
+      this.authCfg = niz.a();
     }
-    arui.a().a(this.mOnRemoteResp);
+    asjw.a().a(this.mOnRemoteResp);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    arui.a().b(this.mOnRemoteResp);
+    asjw.a().b(this.mOnRemoteResp);
   }
   
   void onDisconnectWithService() {}
@@ -459,20 +459,20 @@ public abstract class VasWebviewJsPlugin
   
   public void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!arui.a().a())
+    if (!asjw.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), anni.a(2131714724), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), anzj.a(2131714833), 0).show();
       }
       QLog.e("VasWebviewJsPlugin", 1, "sendRemoteReq error ipc service not ready");
       return;
     }
     if (paramBoolean1)
     {
-      arui.a().b(paramBundle);
+      asjw.a().b(paramBundle);
       return;
     }
-    arui.a().a(paramBundle);
+    asjw.a().a(paramBundle);
   }
 }
 

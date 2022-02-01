@@ -58,6 +58,24 @@ public class MiniProgramReportHelper
     MINI_APP_CONFIG_FOR_PRELOAD.launchParam.miniAppId = "0000000000";
   }
   
+  private static String adjustRefer(String paramString)
+  {
+    if ((QUAUtil.isQQMainApp()) || (QUAUtil.isTimApp()))
+    {
+      if (paramString != null) {
+        return paramString;
+      }
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName()).append("_");
+    if (paramString != null) {}
+    for (;;)
+    {
+      return paramString;
+      paramString = "1001";
+    }
+  }
+  
   public static void assignAppLaunchId(MiniAppInfo paramMiniAppInfo)
   {
     String str1 = getMiniAppIdSafely(paramMiniAppInfo);
@@ -101,17 +119,20 @@ public class MiniProgramReportHelper
   
   private static long getDeviceRamSize()
   {
-    try
-    {
-      ActivityManager localActivityManager = (ActivityManager)AppLoaderFactory.g().getContext().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      long l = localMemoryInfo.totalMem / 1024L / 1024L;
-      return l;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (Build.VERSION.SDK_INT >= 16) {
+      try
+      {
+        ActivityManager localActivityManager = (ActivityManager)AppLoaderFactory.g().getContext().getSystemService("activity");
+        ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+        localActivityManager.getMemoryInfo(localMemoryInfo);
+        long l = localMemoryInfo.totalMem / 1024L / 1024L;
+        return l;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        QMLog.e("MiniProgramReportHelper", "getDeviceRamSize exception", localException);
+      }
     }
     return 0L;
   }
@@ -198,9 +219,9 @@ public class MiniProgramReportHelper
     COMM.Entry localEntry1 = newEntry("uid", LoginManager.getInstance().getAccount());
     COMM.Entry localEntry2 = newEntry("appid", getMiniAppIdSafely(paramMiniAppInfo));
     paramString10 = newEntry("launchid", paramString10);
-    label76:
+    label77:
     COMM.Entry localEntry3;
-    label89:
+    label90:
     COMM.Entry localEntry4;
     label126:
     COMM.Entry localEntry5;
@@ -216,30 +237,30 @@ public class MiniProgramReportHelper
       paramString2 = newEntry("event", paramString2);
       paramString9 = newEntry("timestamp", paramString9);
       if (paramString1 == null) {
-        break label615;
+        break label612;
       }
       localEntry3 = newEntry("page", paramString1);
       if (paramString3 == null) {
-        break label621;
+        break label618;
       }
       paramString3 = newEntry("attachinfo", paramString3);
       localEntry4 = newEntry("appversion", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion());
       if (paramMiniAppInfo == null) {
-        break label627;
+        break label624;
       }
       paramString1 = paramMiniAppInfo.version;
       localEntry5 = newEntry("miniapp_version", paramString1);
       localEntry6 = newEntry("qua", QUAUtil.getPlatformQUA());
       localEntry7 = newEntry("sdk_version", QUAUtil.getQUA());
       if (paramString4 == null) {
-        break label633;
+        break label630;
       }
       paramString4 = newEntry("cmd", paramString4);
       paramString5 = newEntry("retcode", paramString5);
       paramString7 = newEntry("time_cost", paramString7);
       paramString8 = newEntry("third_url", paramString8);
       if ((paramMiniAppInfo == null) || (paramMiniAppInfo.baseLibInfo == null)) {
-        break label640;
+        break label637;
       }
       paramString1 = paramMiniAppInfo.baseLibInfo.baseLibVersion;
       paramString1 = newEntry("baselib_version", paramString1);
@@ -248,28 +269,28 @@ public class MiniProgramReportHelper
       paramString6 = newEntry("app_type", paramString6);
       localEntry10 = newEntry("network_type", getNetworkType());
       if ((paramMiniAppInfo == null) || (paramMiniAppInfo.launchParam == null)) {
-        break label646;
+        break label643;
       }
     }
-    label640:
-    label646:
+    label643:
     for (paramMiniAppInfo = String.valueOf(paramMiniAppInfo.launchParam.scene);; paramMiniAppInfo = "")
     {
       return new ArrayList(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, paramString10, paramString2, paramString9, localEntry3, paramString3, localEntry4, localEntry5, localEntry6, localEntry7, paramString4, paramString5, paramString7, paramString8, paramString1, localEntry8, localEntry9, paramString6, localEntry10, newEntry("scene", paramMiniAppInfo), newEntry("source_app", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId()), newEntry("source_version", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion()), newEntry("source_uin_platform", QUAUtil.getLoginType()), newEntry("connect_openid", LoginManager.getInstance().getPayOpenId()), newEntry("connect_type", String.valueOf(LoginManager.getInstance().getLoginType())), newEntry("reverse1", paramString11), newEntry("reverse2", paramString12), newEntry("reverse3", paramString13), newEntry("reverse4", paramString14), newEntry("render_mode", paramString15), newEntry("busiType", PERF_LEVEL) }));
       paramString2 = "";
       break;
-      label615:
+      label612:
       paramString1 = "";
-      break label76;
-      label621:
+      break label77;
+      label618:
       paramString3 = "";
-      break label89;
-      label627:
+      break label90;
+      label624:
       paramString1 = "";
       break label126;
-      label633:
+      label630:
       paramString4 = "";
       break label162;
+      label637:
       paramString1 = "";
       break label221;
     }
@@ -285,23 +306,32 @@ public class MiniProgramReportHelper
   public static List<COMM.Entry> newBusinessEntries(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
   {
     ArrayList localArrayList = new ArrayList();
+    COMM.Entry localEntry1;
+    COMM.Entry localEntry2;
+    COMM.Entry localEntry3;
+    COMM.Entry localEntry4;
+    COMM.Entry localEntry5;
+    COMM.Entry localEntry6;
     if (paramMiniAppInfo != null)
     {
-      COMM.Entry localEntry1 = newEntry("launchid", paramString12);
-      COMM.Entry localEntry2 = newEntry("appid", paramMiniAppInfo.appId);
-      COMM.Entry localEntry3 = newEntry("app_version", String.valueOf(paramMiniAppInfo.version));
-      COMM.Entry localEntry4 = newEntry("app_classification", null);
-      COMM.Entry localEntry5 = newEntry("app_tag", "");
+      localEntry1 = newEntry("launchid", paramString12);
+      localEntry2 = newEntry("appid", paramMiniAppInfo.appId);
+      localEntry3 = newEntry("app_version", String.valueOf(paramMiniAppInfo.version));
+      localEntry4 = newEntry("app_classification", null);
+      localEntry5 = newEntry("app_tag", "");
       if (!EnvUtils.isPkgDownloaded(paramMiniAppInfo)) {
-        break label502;
+        break label493;
       }
       paramString12 = "1";
-      COMM.Entry localEntry6 = newEntry("isPkgDownloaed", paramString12);
+      localEntry6 = newEntry("isPkgDownloaed", paramString12);
       if (!EnvUtils.isX5Enabled(paramMiniAppInfo)) {
-        break label509;
+        break label500;
       }
-      paramString12 = "1";
-      label103:
+    }
+    label493:
+    label500:
+    for (paramString12 = "1";; paramString12 = "0")
+    {
       localArrayList.addAll(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, localEntry6, newEntry("isX5Enabled", paramString12), newEntry("app_status", String.valueOf(paramMiniAppInfo.verType)) }));
       if (!TextUtils.isEmpty(paramMiniAppInfo.via)) {
         localArrayList.add(newEntry("via", paramMiniAppInfo.via));
@@ -309,14 +339,7 @@ public class MiniProgramReportHelper
       if (paramMiniAppInfo.baseLibInfo != null) {
         localArrayList.add(newEntry("app_js_version", paramMiniAppInfo.baseLibInfo.baseLibVersion));
       }
-    }
-    paramString1 = newEntry("path", paramString1);
-    if (QUAUtil.isQQMainApp()) {
-      if (paramString2 == null) {}
-    }
-    for (;;)
-    {
-      localArrayList.addAll(Arrays.asList(new COMM.Entry[] { paramString1, newEntry("refer", paramString2), newEntry("actiontype", String.valueOf(paramString3)), newEntry("sub_actiontype", String.valueOf(paramString4)), newEntry("reserves_action", String.valueOf(paramString5)), newEntry("reserves2", String.valueOf(paramString6)), newEntry("reserves3", String.valueOf(paramString7)), newEntry("reserves4", String.valueOf(paramString8)), newEntry("reserves5", String.valueOf(paramString9)), newEntry("reserves6", String.valueOf(paramString10)), newEntry("app_type", String.valueOf(paramString11)), newEntry("sdk_version", QUAUtil.getQUA()) }));
+      localArrayList.addAll(Arrays.asList(new COMM.Entry[] { newEntry("path", paramString1), newEntry("refer", adjustRefer(paramString2)), newEntry("actiontype", String.valueOf(paramString3)), newEntry("sub_actiontype", String.valueOf(paramString4)), newEntry("reserves_action", String.valueOf(paramString5)), newEntry("reserves2", String.valueOf(paramString6)), newEntry("reserves3", String.valueOf(paramString7)), newEntry("reserves4", String.valueOf(paramString8)), newEntry("reserves5", String.valueOf(paramString9)), newEntry("reserves6", String.valueOf(paramString10)), newEntry("app_type", String.valueOf(paramString11)), newEntry("sdk_version", QUAUtil.getQUA()) }));
       if (paramMiniAppInfo != null)
       {
         if ((paramMiniAppInfo.launchParam != null) && (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData))) {
@@ -327,19 +350,8 @@ public class MiniProgramReportHelper
         }
       }
       return localArrayList;
-      label502:
       paramString12 = "0";
       break;
-      label509:
-      paramString12 = "0";
-      break label103;
-      paramString2 = "";
-      continue;
-      if (paramString2 != null) {
-        paramString2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName() + "_" + paramString2;
-      } else {
-        paramString2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName() + "_1001";
-      }
     }
   }
   
@@ -404,10 +416,10 @@ public class MiniProgramReportHelper
     return localArrayList;
   }
   
-  public static List<COMM.Entry> newQQqunInfoBusinessEntries(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static List<COMM.Entry> newQQqunInfoBusinessEntries(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(Arrays.asList(new COMM.Entry[] { newEntry("actiontype", String.valueOf(paramString1)), newEntry("sub_actiontype", String.valueOf(paramString2)), newEntry("reserves_action", String.valueOf(paramString3)), newEntry("groupid", String.valueOf(paramString4)) }));
+    localArrayList.addAll(Arrays.asList(new COMM.Entry[] { newEntry("actiontype", String.valueOf(paramString1)), newEntry("sub_actiontype", String.valueOf(paramString2)), newEntry("reserves_action", String.valueOf(paramString3)), newEntry("reserves2", String.valueOf(paramString4)), newEntry("groupid", String.valueOf(paramString5)) }));
     return localArrayList;
   }
   

@@ -1,19 +1,24 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
 public class bpei
+  implements Animator.AnimatorListener
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  public bpei(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public bpei(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-    this.e = paramBoolean5;
+    AEEditorAILoadingView.c(this.a).setVisibility(8);
+    AEEditorAILoadingView.d(this.a).playAnimation();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

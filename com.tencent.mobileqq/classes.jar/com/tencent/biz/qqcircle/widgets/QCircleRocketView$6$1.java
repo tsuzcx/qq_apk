@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import vyo;
+import wca;
 
 public class QCircleRocketView$6$1
   implements Runnable
 {
-  public QCircleRocketView$6$1(vyo paramvyo) {}
+  public QCircleRocketView$6$1(wca paramwca) {}
   
   public void run()
   {

@@ -1,22 +1,25 @@
-public abstract class kzt
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
+
+public class kzt
+  implements lau
 {
-  private static kzb a;
+  public kzt(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, ahud paramahud, String paramString2, Language paramLanguage, lat paramlat, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
-  public static kzb a()
+  public void a(TranslateError paramTranslateError, Long paramLong)
   {
-    try
-    {
-      if (a == null) {
-        a = new kzb();
-      }
-      return a;
-    }
-    finally {}
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahud, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lat, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
   }
   
-  public static boolean a()
+  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
   {
-    return a != null;
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahud, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lat, 0, AITranslator.TranslatorType.GOOGLE, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
   }
 }
 

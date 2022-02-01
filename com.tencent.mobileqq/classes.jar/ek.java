@@ -12,7 +12,7 @@ public class ek
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   public RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public apwt a;
+  public aqkt a;
   private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
   private el jdField_a_of_type_El = new el(this);
   private em jdField_a_of_type_Em = new em(this);

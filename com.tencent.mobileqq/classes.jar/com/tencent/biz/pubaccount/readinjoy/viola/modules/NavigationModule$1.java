@@ -10,7 +10,7 @@ class NavigationModule$1
   
   public void run()
   {
-    ((ViolaFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a(this.jdField_a_of_type_JavaLangString);
+    ((ViolaFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).setTitle(this.jdField_a_of_type_JavaLangString);
   }
 }
 

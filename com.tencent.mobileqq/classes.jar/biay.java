@@ -1,8 +1,34 @@
-import com.tencent.mobileqq.widget.QQTabHost;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface biay
+class biay
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost);
+  biay(biax parambiax) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.dismiss();
+      continue;
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      this.a.dismiss();
+      continue;
+      if (this.a.a != null) {
+        this.a.a.b();
+      }
+      this.a.dismiss();
+    }
+  }
 }
 
 

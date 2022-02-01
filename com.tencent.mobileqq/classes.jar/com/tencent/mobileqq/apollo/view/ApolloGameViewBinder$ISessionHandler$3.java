@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.view;
 
-import anet;
-import anfc;
+import anqo;
+import anqx;
 
 public class ApolloGameViewBinder$ISessionHandler$3
   implements Runnable
 {
-  public ApolloGameViewBinder$ISessionHandler$3(anfc paramanfc, anet paramanet) {}
+  public ApolloGameViewBinder$ISessionHandler$3(anqx paramanqx, anqo paramanqo) {}
   
   public void run()
   {
-    anet.a(this.a);
+    anqo.a(this.a);
   }
 }
 

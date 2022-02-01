@@ -1,37 +1,16 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class avyx
-  implements View.OnClickListener
+  implements Callable<Boolean>
 {
-  avyx(avys paramavys, Activity paramActivity, EditText paramEditText) {}
+  avyx(avyv paramavyv, File paramFile) {}
   
-  public void onClick(View paramView)
+  public Boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
-    }
-    avys.a(this.jdField_a_of_type_Avys).setClickable(false);
-    avys.a(this.jdField_a_of_type_Avys).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840540));
-    avys.a(this.jdField_a_of_type_Avys).a(true);
-    avys.a(this.jdField_a_of_type_Avys, avys.a(this.jdField_a_of_type_Avys).a());
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    }
-    for (;;)
-    {
-      bcst.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Avys.a("");
+    if ((avyv.a(this.jdField_a_of_type_Avyv).exists()) && (this.jdField_a_of_type_JavaIoFile == avyv.a(this.jdField_a_of_type_Avyv))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
   }
 }

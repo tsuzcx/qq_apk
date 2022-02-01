@@ -1,24 +1,7 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class ryl
-  implements slp
-{
-  public ryl(VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1 param1, VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
-  
-  public void a(slr paramslr)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ryj.a(), 2, "UUIDToUrlCallback Callback vid=" + paramslr.jdField_b_of_type_JavaLangString + ", url=" + paramslr.jdField_a_of_type_JavaLangString + ", isH265=" + paramslr.jdField_a_of_type_Boolean + ", isHWCodec=" + paramslr.jdField_b_of_type_Boolean + ", fileBitRate=" + paramslr.c);
-    }
-    if ((!TextUtils.isEmpty(paramslr.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramslr.jdField_a_of_type_JavaLangString, paramslr.jdField_b_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramslr.jdField_a_of_type_JavaLangString, paramslr.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnDataManager$Companion;", "", "()V", "CMD", "", "DATA", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ryl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

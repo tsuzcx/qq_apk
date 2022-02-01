@@ -9,6 +9,7 @@ public abstract interface AttrContants$Name
   public static final String AUTO_SCALE_WIDTH = "autoScaleWidth";
   public static final String BOUNCE_ENABLE = "bouncesEnable";
   public static final String COLUMN = "column";
+  public static final String DISABLE_TOUCH_PENETRATE = "disableTouchPenetrate";
   public static final String HEADER_VIEW_SHOW = "show";
   public static final String INPUT_AUTO_FOCUS = "autofocus";
   public static final String INPUT_DISABLE = "disabled";

@@ -1,30 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class asww
-  implements View.OnClickListener
 {
-  public asww(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void onClick(View paramView)
+  public asww()
   {
-    asxd localasxd = (asxd)paramView.getTag();
-    FileInfo localFileInfo = (FileInfo)localasxd.jdField_a_of_type_JavaLangObject;
-    switch (localasxd.c)
-    {
-    }
-    for (;;)
-    {
-      this.a.i();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.a().Z();
-      this.a.a(localFileInfo, localasxd.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{SenderUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{SenderNickName: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{bEnter: ").append(this.jdField_a_of_type_Boolean).append("}");
+    localStringBuilder.append("{leaveChatType: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{leftChatTime: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{matchExpired: ").append(this.jdField_c_of_type_Int).append("}");
+    localStringBuilder.append("{c2cExpiredTime: ").append(this.d).append("}");
+    localStringBuilder.append("{tipsWording: ").append(this.jdField_c_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{readyTs: ").append(this.jdField_b_of_type_Long).append("}");
+    return localStringBuilder.toString();
   }
 }
 

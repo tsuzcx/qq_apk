@@ -1,34 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
 
-class bpgb
+public class bpgb
   implements DialogInterface.OnClickListener
 {
-  static
-  {
-    if (!bpga.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public bpgb(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
   
-  bpgb(bpga parambpga, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    bpim localbpim = this.jdField_a_of_type_Bpga.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localbpim == null)) {
-      throw new AssertionError();
-    }
-    bpga.a(paramDialogInterface, localbpim);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bpga.a.a(35, paramDialogInterface);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

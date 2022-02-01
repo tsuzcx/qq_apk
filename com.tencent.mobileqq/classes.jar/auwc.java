@@ -1,101 +1,47 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashMap;
 
-public class auwc
-  extends bhll
-  implements bhmj
+class auwc
+  extends auwd
 {
-  private static final String TAG = "QQGameWebViewBuilder";
+  auwc(auwb paramauwb) {}
   
-  public auwc(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  protected void a(String paramString, MethodChannel.Result paramResult)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("recordPageView: %s", new Object[] { paramString }));
+    }
+    auxn.b(paramString);
+    paramResult.success(null);
   }
   
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
-    super.bindJavaScript(paramArrayList);
-    paramArrayList.add(new WadlWebViewJsPlugin());
-    paramArrayList.add(new auwd());
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new avow());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new avnu());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bhgd());
-    paramArrayList.add(new QWalletMixJsPlugin());
-    paramArrayList.add(new abcm());
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("reportPageLoadTime: pathPath: %s, loadTime: %s", new Object[] { paramString, paramInteger }));
+    }
+    auxn.a(paramString, paramInteger.intValue());
+    paramResult.success(null);
   }
   
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
+  protected void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult)
   {
-    super.buildBaseWebView(paramAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("recordFPS: pathPath: %s, fps: %s, dropRate: %s", new Object[] { paramString, paramInteger, paramDouble }));
+    }
+    auxn.a(paramString, paramInteger.intValue(), paramDouble.doubleValue());
+    paramResult.success(null);
   }
   
-  public void onDestroy()
+  protected void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult)
   {
-    super.doOnDestroy();
+    QLog.e("flutter.APMChannel", 1, String.format("reportException, msg: %s, stack: %s", new Object[] { paramString3, paramString4 }));
+    CrashReport.postException(paramInteger.intValue(), paramString2, paramString3, paramString4, paramHashMap);
+    auxn.a(paramString1);
+    paramResult.success(null);
   }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onPause()
-  {
-    super.doOnPause();
-  }
-  
-  public void onResume()
-  {
-    super.doOnResume();
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 

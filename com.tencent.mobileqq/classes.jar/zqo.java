@@ -1,33 +1,39 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
 public class zqo
-  extends RecyclerView.OnScrollListener
 {
-  public zqo(XRecyclerView paramXRecyclerView) {}
+  public int a;
+  public String a;
+  public ArrayList<Object> a;
+  public zqq a;
+  public String[] a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public zqo() {}
+  
+  public zqo(String[] paramArrayOfString, String paramString, zqq paramzqq)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    paramInt = paramRecyclerView.getChildCount();
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Zqq = paramzqq;
+  }
+  
+  public String toString()
+  {
+    String str1;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      int i = paramRecyclerView.getItemCount();
-      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
-      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
-        break label76;
+      str1 = "null";
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label86;
       }
     }
-    label76:
-    for (paramInt = 1;; paramInt = 0)
+    label86:
+    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
     {
-      if (paramInt != 0) {
-        XRecyclerView.a(this.a).b(false);
-      }
-      return;
+      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
+      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
+      break;
     }
   }
 }

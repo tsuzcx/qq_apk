@@ -1,54 +1,104 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class alma
-  extends FileObserver
+class alma
+  implements allu
 {
-  private boolean a;
+  private final int jdField_a_of_type_Int;
+  @Nullable
+  private allw jdField_a_of_type_Allw;
+  @NonNull
+  private final Intent jdField_a_of_type_AndroidContentIntent;
+  @NonNull
+  private final String jdField_a_of_type_JavaLangString;
+  @NonNull
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  @NonNull
+  private final String b;
+  @NonNull
+  private final String c;
+  @Nullable
+  private final String d;
+  @NonNull
+  private final String e;
   
-  private void a()
+  public alma(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull String paramString4, @NonNull Intent paramIntent, @NonNull String paramString5, int paramInt)
   {
-    if (!this.a)
-    {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.e = paramString5;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onEvent(int paramInt, String paramString)
+  public void a(@Nullable allw paramallw)
   {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
-    }
+    this.jdField_a_of_type_Allw = paramallw;
+  }
+  
+  public boolean isNeedAutoCloseWhenAccountChange()
+  {
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Allw == null) {}
+    QQAppInterface localQQAppInterface;
     do
     {
       return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
-    }
-    a();
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
   }
+  
+  public void onEnter()
+  {
+    if (this.jdField_a_of_type_Allw == null) {}
+    QQAppInterface localQQAppInterface;
+    BaseActivity localBaseActivity;
+    do
+    {
+      do
+      {
+        return;
+        localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localQQAppInterface == null);
+      localBaseActivity = BaseActivity.sTopActivity;
+    } while ((localBaseActivity == null) || (localBaseActivity.isFinishing()));
+    try
+    {
+      Class localClass = Class.forName(this.jdField_b_of_type_JavaLangString).asSubclass(Activity.class);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("banner_fromBanner", true);
+      bmgt localbmgt = new bmgt(this.jdField_a_of_type_Int);
+      localbmgt.d = this.d;
+      localbmgt.e = this.jdField_a_of_type_JavaLangString;
+      localbmgt.jdField_a_of_type_JavaLangClass = localClass;
+      localbmgt.jdField_b_of_type_JavaLangString = this.c;
+      localbmgt.jdField_a_of_type_JavaLangString = this.e;
+      localbmgt.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
+      localbmgt.jdField_b_of_type_Int = -1;
+      bmgk.a(localBaseActivity, localbmgt);
+      aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
+      return;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      QLog.e("Q.recent.banner", 1, "return to plugin error, can not find the ckass " + this.jdField_b_of_type_JavaLangString);
+    }
+  }
+  
+  public void onOverride() {}
 }
 
 

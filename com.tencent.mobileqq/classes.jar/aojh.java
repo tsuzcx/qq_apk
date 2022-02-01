@@ -1,32 +1,17 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 
-public class aojh
-  extends aojt
+public final class aojh
+  implements DialogInterface.OnClickListener
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public aojh(TroopManager paramTroopManager, String paramString, QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramQQAppInterface = new aojg(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "troop_homework";
-    paramQQAppInterface.c = "publish";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {}
-    for (;;)
-    {
-      return paramQQAppInterface;
-      paramContext = paramContext[1].split("&");
-      int j = paramContext.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A57E", 2, 0, "", "", "", "");
   }
 }
 

@@ -8,6 +8,23 @@ import java.util.Set;
 
 public class CssStyleSet
 {
+  public static final String A_STYLE = "a";
+  public static final String BLOCK_STYLE = "block";
+  public static final String BOLD_STYLE = "bold";
+  public static final String CLAMP_STYLE = "-webkit-line-clamp";
+  public static final String COLOR_STYLE = "color";
+  public static final String DISPLAY_STYLE = "display";
+  public static final String DIV_STYLE = "div";
+  public static final String FONT_SIZE_STYLE = "font-size";
+  public static final String FONT_WEIGHT_STYLE = "font-weight";
+  public static final String HEIGHT_STYLE = "height";
+  public static final String HREF_STYLE = "href";
+  public static final String INLINE_STYLE = "inline";
+  public static final String LINE_HEIGHT_STYLE = "line-height";
+  public static final String P_STYLE = "p";
+  public static final String RATIO_STYLE = "ratio";
+  public static final String STRONG_STYLE = "strong";
+  public static final String WIDTH_STYLE = "width";
   private final Map<String, CssStyle> cssStyleMap = new HashMap();
   
   public void addCssStyle(CssStyle paramCssStyle)

@@ -15,7 +15,7 @@ class ba
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    anjx localanjx = (anjx)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+    anvu localanvu = (anvu)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
     Object localObject;
     if ((!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335))
     {
@@ -32,15 +32,15 @@ class ba
       if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) || (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335)) {
         break label251;
       }
-      localanjx.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
+      localanvu.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
       localObject = null;
       paramInt = 0;
     }
     for (;;)
     {
-      localanjx.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+      localanvu.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
       if (paramInt != 0) {
-        localanjx.a((DataLineMsgSet)localObject);
+        localanvu.a((DataLineMsgSet)localObject);
       }
       this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dy.b();
       this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dy.notifyDataSetChanged();
@@ -53,7 +53,7 @@ class ba
       while (((Iterator)localObject).hasNext())
       {
         DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-        localanjx.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
+        localanvu.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
       }
       if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().size() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005))
       {

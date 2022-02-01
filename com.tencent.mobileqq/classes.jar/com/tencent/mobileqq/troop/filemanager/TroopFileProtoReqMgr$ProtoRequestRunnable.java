@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import anqe;
-import bevk;
-import bevl;
-import bevx;
+import aock;
+import bfve;
+import bfvf;
+import bfvr;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.NewIntent;
 
@@ -11,7 +11,7 @@ public class TroopFileProtoReqMgr$ProtoRequestRunnable
   implements Runnable
 {
   long jdField_a_of_type_Long;
-  bevl jdField_a_of_type_Bevl;
+  bfvf jdField_a_of_type_Bfvf;
   NewIntent jdField_a_of_type_MqqAppNewIntent;
   boolean jdField_a_of_type_Boolean = false;
   long jdField_b_of_type_Long;
@@ -27,13 +27,13 @@ public class TroopFileProtoReqMgr$ProtoRequestRunnable
   public void run()
   {
     int i = this.jdField_a_of_type_MqqAppNewIntent.getIntExtra("key_runnable_index", 0);
-    bevx.c("TroopFileProtoReqMgr", bevx.a, "cookie<" + this.jdField_a_of_type_Bevl.jdField_a_of_type_Bevk.jdField_b_of_type_Long + "> sendToMsf. scheduleIndex:" + i + " timeOut:" + this.jdField_a_of_type_Long);
+    bfvr.c("TroopFileProtoReqMgr", bfvr.a, "cookie<" + this.jdField_a_of_type_Bfvf.jdField_a_of_type_Bfve.jdField_b_of_type_Long + "> sendToMsf. scheduleIndex:" + i + " timeOut:" + this.jdField_a_of_type_Long);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("timeout", this.jdField_a_of_type_Long);
-    anqe localanqe = this.jdField_a_of_type_Bevl.jdField_a_of_type_Anqe;
-    localanqe.c += 1;
-    TroopFileProtoReqMgr.a(this.this$0).put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_Bevl);
+    aock localaock = this.jdField_a_of_type_Bfvf.jdField_a_of_type_Aock;
+    localaock.c += 1;
+    TroopFileProtoReqMgr.a(this.this$0).put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_Bfvf);
     this.this$0.a(this.jdField_a_of_type_MqqAppNewIntent);
   }
 }

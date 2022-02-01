@@ -1,26 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.RectF;
 
-class bptd
-  extends Handler
+public class bptd
+  extends bprs
 {
-  bptd(bptc parambptc, Looper paramLooper)
+  private int a;
+  
+  public bptd(int paramInt)
   {
-    super(paramLooper);
+    this.a = paramInt;
   }
   
-  public void handleMessage(Message paramMessage)
+  void a(int paramInt, bprt parambprt)
   {
-    if (paramMessage.what == 1000)
-    {
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
-    }
-    while ((paramMessage.what != 1002) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.a();
+    RectF localRectF = parambprt.a;
+    localRectF.top += this.a * paramInt;
+    parambprt = parambprt.a;
+    parambprt.bottom += this.a * paramInt;
   }
 }
 

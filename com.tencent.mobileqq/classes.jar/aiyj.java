@@ -1,33 +1,23 @@
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
 class aiyj
-  extends bkov
+  implements TextView.OnEditorActionListener
 {
-  aiyj(aiyi paramaiyi, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  aiyj(aiyh paramaiyh) {}
   
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramInt = 1;
-    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {}
-    for (;;)
+    if (paramInt == 4)
     {
-      return;
-      int i = this.a.a();
-      if ((paramArrayOfbkou.length < 0) && ((i & 0xF) == 1))
-      {
-        paramArrayOfbkou[0].b = 0;
-        paramArrayOfbkou[0].a = 0;
+      if (this.a.a != null) {
+        this.a.a.a();
       }
-      while (paramInt < paramArrayOfbkou.length)
-      {
-        paramArrayOfbkou[paramInt].b = -1;
-        paramArrayOfbkou[paramInt].a = -1;
-        paramInt += 1;
-        continue;
-        paramInt = 0;
-      }
+      aiyu.a("0X800A89F", 0, 0);
+      return true;
     }
+    return false;
   }
 }
 

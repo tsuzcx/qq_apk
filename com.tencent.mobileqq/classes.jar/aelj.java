@@ -1,23 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-class aelj
-  implements bhlk
+public class aelj
+  extends anyu
 {
-  aelj(aeli paramaeli, JumpActivity paramJumpActivity) {}
+  public aelj(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.b();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("extra_key_jump_src", 1);
-    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, 1, localIntent);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.view;
 
 import android.os.Handler;
-import autd;
+import avld;
 import com.tencent.TMG.utils.QLog;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -14,14 +14,14 @@ public class GameSessionView$1
   public void run()
   {
     if (GameSessionView.a(this.this$0) == null) {}
-    autd localautd;
+    avld localavld;
     List localList;
     do
     {
       return;
-      localautd = (autd)GameSessionView.a(this.this$0).getManager(358);
-      localList = localautd.a();
-      if (localautd.c()) {
+      localavld = (avld)GameSessionView.a(this.this$0).getManager(358);
+      localList = localavld.a();
+      if (localavld.c()) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -30,7 +30,7 @@ public class GameSessionView$1
     if (!GameSessionView.a(this.this$0))
     {
       GameSessionView.a(this.this$0, 1);
-      GameSessionView.a(this.this$0, localautd.b);
+      GameSessionView.a(this.this$0, localavld.b);
       GameSessionView.b(this.this$0, true);
     }
     GameSessionView.a(this.this$0).post(new GameSessionView.1.1(this, localList));

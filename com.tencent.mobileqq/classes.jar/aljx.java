@@ -1,28 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import mqq.os.MqqHandler;
 
-public class aljx
-  implements ValueAnimator.AnimatorUpdateListener
+class aljx
+  implements axfs
 {
-  public aljx(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
+  aljx(aljw paramaljw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.b * f));
-    paramValueAnimator.height = ((int)(f * this.b));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
+    aljw.a(this.a).removeMessages(11);
+    aljw.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt & 0x1) != 0)
+    {
+      aljw.a(this.a).removeMessages(11);
+      aljw.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+    }
   }
 }
 

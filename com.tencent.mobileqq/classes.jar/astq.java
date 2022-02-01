@@ -1,8 +1,19 @@
-import android.view.View;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-class astq
+public class astq
+  implements ShareActionSheet.OnItemClickListener
 {
-  View[] a = new View[12];
+  public astq(AIOEmotionFragment paramAIOEmotionFragment) {}
+  
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  {
+    this.a.a.dismiss();
+    int i = paramActionSheetItem.action;
+    this.a.a(i, paramActionSheetItem);
+  }
 }
 
 

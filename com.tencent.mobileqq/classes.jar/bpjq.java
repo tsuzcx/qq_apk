@@ -1,22 +1,4 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bpjq
-  implements View.OnClickListener
-{
-  bpjq(bpjo parambpjo) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.setSelectAllOnFocus(false);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a.setOnClickListener(null);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bpjq

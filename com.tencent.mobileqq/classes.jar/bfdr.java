@@ -1,39 +1,39 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.SpannableString;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class bfdr
   extends BaseAdapter
 {
-  protected List<ParagraphInfo> a;
-  protected Set<Integer> a;
+  bfeg jdField_a_of_type_Bfeg;
+  ArrayList<bfee> jdField_a_of_type_JavaUtilArrayList;
   
-  public bfdr(List<ParagraphInfo> paramList, Set<Integer> paramSet)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-  }
+  protected bfdr(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public ParagraphInfo a(int paramInt)
+  public void a(ArrayList<bfee> paramArrayList, bfeg parambfeg)
   {
-    return (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Bfeg = parambfeg;
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -43,25 +43,29 @@ public class bfdr
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560631, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity()).inflate(2131560561, paramViewGroup, false);
     }
-    Object localObject1 = (CheckBox)localView.findViewById(2131364462);
-    paramView = (TextView)localView.findViewById(2131379588);
-    ((CheckBox)localObject1).setChecked(this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)));
-    Object localObject2 = a(paramInt);
-    localObject1 = String.format(SelectReciteParagraphFragment.b, new Object[] { Integer.valueOf(((ParagraphInfo)localObject2).pid + 1) });
-    localObject2 = new SpannableString((String)localObject1 + ((ParagraphInfo)localObject2).content_html);
-    ((SpannableString)localObject2).setSpan(new bfvk(paramViewGroup.getContext(), paramViewGroup.getContext().getResources().getColor(2131167059), 17, 4, 3, 12, Color.parseColor("#777777"), (String)localObject1), 0, ((String)localObject1).length(), 33);
-    paramView.setText((CharSequence)localObject2);
-    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-    return localView;
+    for (;;)
+    {
+      PressEffectTextView localPressEffectTextView = (PressEffectTextView)paramView;
+      if (TextUtils.isEmpty(((bfee)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a)) {
+        localPressEffectTextView.setVisibility(8);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localPressEffectTextView.setVisibility(0);
+        localPressEffectTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_JavaUtilArrayList.size(), ((bfee)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a));
+        localPressEffectTextView.setOnClickListener(new bfds(this, paramInt));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfdr
  * JD-Core Version:    0.7.0.1
  */

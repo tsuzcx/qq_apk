@@ -1,10 +1,9 @@
-public class adbt
-  extends adbr
+import com.tencent.mobileqq.app.QQAppInterface;
+import msf.msgcomm.msg_comm.UinPairMsg;
+
+public abstract interface adbt
 {
-  public String getDescription()
-  {
-    return "资料卡背景";
-  }
+  public abstract boolean a(msg_comm.UinPairMsg paramUinPairMsg, String paramString, int[] paramArrayOfInt, QQAppInterface paramQQAppInterface);
 }
 
 

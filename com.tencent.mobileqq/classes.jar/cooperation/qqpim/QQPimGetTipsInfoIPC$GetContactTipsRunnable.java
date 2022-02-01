@@ -1,8 +1,8 @@
 package cooperation.qqpim;
 
 import android.os.Bundle;
-import blmr;
-import blmu;
+import bmnu;
+import bmnx;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class QQPimGetTipsInfoIPC$GetContactTipsRunnable
@@ -22,9 +22,9 @@ public class QQPimGetTipsInfoIPC$GetContactTipsRunnable
     try
     {
       Bundle localBundle = new Bundle();
-      localBundle.putString(blmr.l, this.a);
-      localBundle.putString(blmr.m, this.b);
-      QIPCServerHelper.getInstance().callClient(blmr.b, blmr.c, blmr.d, localBundle, new blmu(this));
+      localBundle.putString(bmnu.l, this.a);
+      localBundle.putString(bmnu.m, this.b);
+      QIPCServerHelper.getInstance().callClient(bmnu.b, bmnu.c, bmnu.d, localBundle, new bmnx(this));
       return;
     }
     catch (Throwable localThrowable)

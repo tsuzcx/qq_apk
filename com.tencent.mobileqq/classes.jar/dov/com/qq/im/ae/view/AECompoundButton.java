@@ -40,8 +40,8 @@ public class AECompoundButton
   private void a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     b(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2131558488, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369134));
+    LayoutInflater.from(paramContext).inflate(2131558489, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369224));
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }

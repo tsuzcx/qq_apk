@@ -1,33 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
 
 public class alsp
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public alsp(CameraPreviewNew.1 param1) {}
   
-  public alsp(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

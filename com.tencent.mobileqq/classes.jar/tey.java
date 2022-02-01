@@ -1,58 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tey
+  implements pql
 {
-  public static volatile tfb a = new tfb(BaseApplicationImpl.getContext(), "proteus");
+  public tey(BridgeModule paramBridgeModule, String paramString) {}
   
-  public static long a(InputStream paramInputStream, OutputStream paramOutputStream)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    return a(paramInputStream, paramOutputStream, 8024);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString2);
   }
   
-  public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    byte[] arrayOfByte = new byte[paramInt];
-    for (long l = 0L;; l += paramInt)
-    {
-      paramInt = paramInputStream.read(arrayOfByte);
-      if (-1 == paramInt) {
-        break;
-      }
-      paramOutputStream.write(arrayOfByte, 0, paramInt);
-    }
-    return l;
-  }
-  
-  public static void a(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (IOException paramCloseable) {}
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    if (paramFile == null) {
-      return false;
-    }
-    if (!paramFile.exists()) {
-      try
-      {
-        boolean bool = paramFile.mkdirs();
-        return bool;
-      }
-      finally {}
-    }
-    return true;
+    BridgeModule.access$2000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramReadInJoyUserInfo, this.jdField_a_of_type_JavaLangString);
   }
 }
 

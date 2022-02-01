@@ -1,92 +1,87 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl.1;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bhlf
 {
-  private void a()
+  public static long a(Context paramContext, String paramString)
   {
-    int i = bhrb.a().a();
-    if ((i & 0x2) == 0)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("_accelerator_mode_", i | 0x2);
-      bhrb.a().a(localBundle);
-    }
+    return paramContext.getSharedPreferences("mobileQQ", 0).getLong("pref_req_self_level_time" + paramString, 0L);
   }
   
-  protected List<WebViewPlugin> a()
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    return null;
+    long l1 = System.currentTimeMillis();
+    long l2 = paramInt * 60 * 1000;
+    paramContext = paramContext.getSharedPreferences(paramString, 0).edit();
+    paramContext.putLong("fl_pre_get_last_login_info", l1);
+    paramContext.putLong("fl_get_last_login_info_time_period", l2);
+    paramContext.commit();
   }
   
-  public void a(AppInterface arg1)
+  public static void a(Context paramContext, String paramString, long paramLong)
   {
-    if (((!bhle.jdField_a_of_type_Boolean) && (bhle.a(???))) || ((!bhle.jdField_b_of_type_Boolean) && (bhle.b(???)))) {}
-    label182:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadService", 2, "preload webview engine");
-          }
-          l1 = System.currentTimeMillis();
-          if (!bhle.a(???)) {
-            break label182;
-          }
-          bhle.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
-        }
-        catch (Exception ???)
-        {
-          long l1;
-          long l2;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("PreloadService", 2, "preload error:" + ???.toString());
-          return;
-        }
-        synchronized (bhle.jdField_a_of_type_JavaLangObject)
-        {
-          bhle.jdField_a_of_type_JavaLangObject.notifyAll();
-          bhle.jdField_a_of_type_Boolean = true;
-          l2 = System.currentTimeMillis();
-          if (QLog.isColorLevel()) {
-            QLog.i("QQBrowser", 2, "Pre_Load_async_create_webview_engine, cost=" + (l2 - l1));
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadService", 2, "asyncPreload end");
-          }
-          return;
-        }
-        if (bhle.b(???))
-        {
-          bhle.jdField_b_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
-          bhle.jdField_b_of_type_Boolean = true;
-        }
-      }
-    }
-    QLog.d("PreloadService", 2, "async preload:already inited.");
+    paramContext.getSharedPreferences("mobileQQ", 0).edit().putLong("pref_req_self_level_time" + paramString, System.currentTimeMillis()).commit();
   }
   
-  public void a(AppInterface paramAppInterface, Context paramContext, long paramLong)
+  public static void a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadService", 2, "asyncPreload app = " + paramAppInterface);
+    paramContext = paramContext.getSharedPreferences(paramString, 0).edit();
+    paramContext.putBoolean("fl_show_pc_icon", paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    paramContext.getSharedPreferences("mobileQQ", 0).edit().putBoolean("save_qqhead_to_app_storage", paramBoolean).commit();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("mobileQQ", 0).getBoolean("save_qqhead_to_app_storage", false);
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences(paramString, 0).getBoolean("fl_show_pc_icon", false);
+  }
+  
+  public static long b(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("mobileQQ", 0).getLong("pref_req_x_man_prefix" + paramString, 0L);
+  }
+  
+  public static void b(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext.getSharedPreferences(String.valueOf(antf.G), 0).edit().putInt(paramString, paramInt).commit();
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("mobileQQ", 0).edit().putLong("pref_req_x_man_prefix" + paramString, paramLong).commit();
+  }
+  
+  public static boolean b(Context paramContext, String paramString)
+  {
+    boolean bool = false;
+    paramContext = paramContext.getSharedPreferences(paramString, 0);
+    long l1 = paramContext.getLong("fl_pre_get_last_login_info", 0L);
+    long l2 = paramContext.getLong("fl_get_last_login_info_time_period", 0L);
+    long l3 = System.currentTimeMillis();
+    if ((l1 >= l3) || (l3 >= l1 + l2)) {
+      bool = true;
     }
-    if (paramAppInterface == null) {
-      return;
-    }
-    a();
-    ThreadManager.postImmediately(new PreloadService.PreloadImpl.1(this, paramAppInterface), null, true);
+    return bool;
+  }
+  
+  public static long c(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("mobileQQ", 0).getLong("pref_last_req_x_man_scene_2_time_prefix_" + paramString, 0L);
+  }
+  
+  public static void c(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("mobileQQ", 0).edit().putLong("pref_last_req_x_man_scene_2_time_prefix_" + paramString, paramLong).commit();
   }
 }
 

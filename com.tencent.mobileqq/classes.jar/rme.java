@@ -1,16 +1,8 @@
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
-import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class rme
-  extends rmq
+public abstract interface rme
 {
-  public rme(GalleryFragment paramGalleryFragment) {}
-  
-  public rmr a(int paramInt, @NotNull RecyclerView paramRecyclerView)
-  {
-    return a(paramInt, GalleryFragment.a(this.a).getItemCount(), 4, bggq.a(this.a.a, 8.0F));
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

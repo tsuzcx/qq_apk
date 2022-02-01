@@ -1,6 +1,15 @@
-public abstract interface aqgc
+import android.view.animation.Animation;
+import android.widget.ImageView;
+
+class aqgc
+  extends blgm
 {
-  public abstract void a(boolean paramBoolean);
+  aqgc(aqgb paramaqgb) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.setVisibility(0);
+  }
 }
 
 

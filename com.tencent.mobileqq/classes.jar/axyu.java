@@ -1,16 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-final class axyu
-  implements axkr
+public class axyu
+  implements biug<oidb_0x8e4.RspBody>
 {
-  axyu(axzb paramaxzb, int paramInt) {}
+  public axyu(GameRoomInviteActivity paramGameRoomInviteActivity, bitz parambitz) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-    if (this.jdField_a_of_type_Axzb != null) {
-      this.jdField_a_of_type_Axzb.a(false, null, true, this.jdField_a_of_type_Int);
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, anzj.a(2131704002));
+        return;
+      }
     }
+    this.jdField_a_of_type_Bitz.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new axyv(this));
   }
 }
 

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import android.text.TextUtils;
 
-public final class ayhq
-  implements Parcelable.Creator<TranslateResult>
+class ayhq
+  extends aybv
 {
-  public TranslateResult a(Parcel paramParcel)
-  {
-    return new TranslateResult(paramParcel);
-  }
+  ayhq(ayhj paramayhj) {}
   
-  public TranslateResult[] a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    return new TranslateResult[paramInt];
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(ayhj.b(this.a) + ""))) {
+      this.a.h(paramBoolean);
+    }
   }
 }
 

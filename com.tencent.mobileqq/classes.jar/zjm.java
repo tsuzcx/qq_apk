@@ -1,22 +1,10 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import java.util.ArrayList;
 
-public class zjm
+public abstract interface zjm
 {
-  public View a;
-  public View b;
+  public abstract void a(ArrayList<String> paramArrayList);
   
-  public zjm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131380607);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new zjn(this));
-  }
+  public abstract boolean a(ArrayList<String> paramArrayList, zjn paramzjn);
 }
 
 

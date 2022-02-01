@@ -1,17 +1,19 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.FriendListHandler;
 
-class anyt
-  implements BusinessObserver
+public class anyt
 {
-  anyt(anys paramanys) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public anyt(FriendListHandler paramFriendListHandler)
   {
-    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
-      QLog.d("ActivateFriends.Manager", 2, "acs msg succ");
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

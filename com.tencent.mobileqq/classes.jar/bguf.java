@@ -1,96 +1,32 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.mobileqq.utils.confighandler.ConfigHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bguf
+class bguf
+  extends nkq
 {
-  public static int a(String paramString)
-  {
-    int i = 0;
-    paramString = b(paramString);
-    if (paramString != null) {
-      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
-    }
-    return i;
-  }
+  bguf(bgty parambgty, bgug parambgug) {}
   
-  public static SharedPreferences a(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return bgug.a(aost.a, paramString, "config_qq.android.ar_");
-  }
-  
-  public static SharedPreferences a(String paramString1, String paramString2)
-  {
-    return bgug.a(aost.a, paramString1, "res_qq.android.ar_" + paramString2);
-  }
-  
-  public static PromotionConfigInfo a(String paramString1, String paramString2)
-  {
-    int i = 1;
-    for (;;)
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      try
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bgug.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        if (TextUtils.isEmpty(paramString2))
-        {
-          Object localObject = a(paramString1);
-          if (localObject != null)
-          {
-            paramString2 = ((SharedPreferences)localObject).getString("config", null);
-            QLog.w(aost.a, 1, "ConfigInfo.get, step[" + i + "], configText[" + paramString2 + "]");
-            localObject = new PromotionConfigInfo();
-            ((PromotionConfigInfo)localObject).setUin(paramString1);
-            if (!TextUtils.isEmpty(paramString2)) {
-              ((PromotionConfigInfo)localObject).tryParse(aost.a, paramString2);
-            }
-            return localObject;
-          }
-          i = 2;
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
         }
-        i = 0;
       }
-      finally {}
     }
-  }
-  
-  public static String a(String paramString)
-  {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = b(paramString);
-    paramString = localObject;
-    if (localSharedPreferences != null) {
-      paramString = localSharedPreferences.getString("config", null);
-    }
-    return paramString;
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    BusinessCommonConfig.saveMd5(aost.a, a(paramString1, paramString2), "md5_" + paramInt, paramString3);
-  }
-  
-  public static boolean a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
-  {
-    return BusinessCommonConfig.isResReady(aost.a + "_" + paramString2, a(paramString1, paramString2), "md5_" + paramInt, paramString3, paramString4);
-  }
-  
-  public static int b(String paramString)
-  {
-    int i = 0;
-    paramString = a(paramString);
-    if (paramString != null) {
-      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
-    }
-    return i;
-  }
-  
-  public static SharedPreferences b(String paramString)
-  {
-    return bgug.a(aost.a, paramString, "res_qq.android.ar_");
   }
 }
 

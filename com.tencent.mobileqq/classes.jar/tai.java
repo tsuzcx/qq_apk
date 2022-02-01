@@ -1,23 +1,31 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class tai
-  implements tal
+public class tai
+  extends GestureDetector.SimpleOnGestureListener
 {
-  tai(szv paramszv) {}
+  private tai(WordNavView paramWordNavView) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (((szu.a(this.a.a) instanceof sxt)) && ((paramContext instanceof FastWebActivity)))
+    float f = paramMotionEvent.getY();
+    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (szv.a(this.a) == null) {
-        szv.a(this.a, new ArrayList());
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
+        if (WordNavView.a(this.a) != null) {
+          WordNavView.a(this.a).a((String)localEntry.getValue());
+        }
       }
-      tay.a(paramProteusItemData.b, paramProteusItemData.a, (FastWebActivity)paramContext, paramProteusItemData.c, ((sxt)szu.a(this.a.a)).a(), szv.a(this.a));
     }
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

@@ -33,16 +33,17 @@ class InternalJSPlugin$4$1
             {
               paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(paramDialogInterface.optString("path")));
               if (paramDialogInterface == null) {
-                break label368;
+                break label439;
               }
               paramDialogInterface.setPackage(this.this$1.val$packageName);
-              paramDialogInterface.addFlags(67108864);
+              paramDialogInterface.addFlags(268435456);
               paramDialogInterface.putExtra("big_brother_source_key", "biz_src_miniapp");
               if (paramDialogInterface.resolveActivity(this.this$1.val$activity.getPackageManager()) == null) {
                 break;
               }
               this.this$1.val$activity.startActivity(paramDialogInterface);
-              this.this$1.this$0.jsPluginEngine.callbackJsEventOK(this.this$1.val$webview, this.this$1.val$eventName, null, this.this$1.val$callbackId);
+              paramDialogInterface = InternalJSPlugin.access$100(this.this$1.this$0, 0);
+              this.this$1.this$0.jsPluginEngine.callbackJsEventOK(this.this$1.val$webview, this.this$1.val$eventName, paramDialogInterface, this.this$1.val$callbackId);
               InnerAppReportDc4239.innerAppReport(this.this$1.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "openapp", null);
               return;
             }
@@ -73,13 +74,17 @@ class InternalJSPlugin$4$1
       catch (Throwable paramDialogInterface)
       {
         QLog.e("InternalJSPlugin", 1, "dialog click error,", paramDialogInterface);
+        paramDialogInterface = InternalJSPlugin.access$100(this.this$1.this$0, -1);
+        this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, paramDialogInterface, this.this$1.val$callbackId);
         return;
       }
     }
-    this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, null, this.this$1.val$callbackId);
+    paramDialogInterface = InternalJSPlugin.access$100(this.this$1.this$0, -1);
+    this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, paramDialogInterface, this.this$1.val$callbackId);
     return;
-    label368:
-    this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, null, this.this$1.val$callbackId);
+    label439:
+    paramDialogInterface = InternalJSPlugin.access$100(this.this$1.this$0, -1);
+    this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, paramDialogInterface, this.this$1.val$callbackId);
   }
 }
 

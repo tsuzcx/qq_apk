@@ -1,17 +1,109 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class aymt
-  implements DialogInterface.OnClickListener
+class aymt
+  implements BusinessObserver
 {
-  public aymt(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  aymt(aymj paramaymj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    aypy.a("0X800AF9C", 1);
-    paramDialogInterface.dismiss();
-    AccountOnlineStateActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyProfileDisplayTribePanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+    }
+    Object localObject;
+    if (paramBoolean)
+    {
+      try
+      {
+        ((axup)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label544;
+        }
+        localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyProfileDisplayTribePanel", 2, "retCode = [" + paramInt + "]");
+        }
+        if (paramInt == 0) {
+          break label302;
+        }
+        paramBundle = paramBundle.optString("msg");
+        if (!TextUtils.isEmpty(paramBundle))
+        {
+          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
+          return;
+        }
+        QQToast.a(this.a.a, 1, anzj.a(2131706262), 1).a();
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QQToast.a(this.a.a, 1, anzj.a(2131706198), 1).a();
+        if (!QLog.isColorLevel()) {
+          break label587;
+        }
+      }
+      QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
+      return;
+      label302:
+      if (paramBundle.optInt("retcode") == 0)
+      {
+        paramBundle = this.a;
+        if (aymj.a(this.a)) {
+          break label588;
+        }
+      }
+    }
+    label544:
+    label587:
+    label588:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      aymj.a(paramBundle, paramBoolean);
+      localObject = this.a.a;
+      if (aymj.a(this.a)) {}
+      for (paramBundle = anzj.a(2131706227);; paramBundle = anzj.a(2131706185))
+      {
+        QQToast.a((Context)localObject, 2, paramBundle, 1).a();
+        aymj.a(this.a, 1, 60);
+        if ((!aymj.a(this.a)) && (aymj.a(this.a).getChildAt(2).getVisibility() != 0))
+        {
+          paramBundle = (Button)aymj.a(this.a).getChildAt(1).findViewById(2131380216);
+          paramBundle.setTextColor(this.a.a.getResources().getColor(2131167023));
+          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839291));
+        }
+        if (!aymj.a(this.a)) {
+          break;
+        }
+        paramBundle = (Button)aymj.a(this.a).getChildAt(1).findViewById(2131380216);
+        paramBundle.setTextColor(this.a.a.getResources().getColor(2131167025));
+        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839330));
+        return;
+      }
+      QQToast.a(this.a.a, 1, anzj.a(2131706194), 1).a();
+      return;
+      QQToast.a(this.a.a, 1, anzj.a(2131706200), 1).a();
+      return;
+    }
   }
 }
 

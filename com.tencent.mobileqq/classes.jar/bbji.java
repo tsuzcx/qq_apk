@@ -1,67 +1,6 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bbji
-  implements View.OnClickListener
+public abstract interface bbji
 {
-  public bbji(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    FragmentActivity localFragmentActivity;
-    Object localObject1;
-    Object localObject2;
-    if (paramView.getTag() != null)
-    {
-      localFragmentActivity = this.a.getActivity();
-      localObject1 = (Integer)paramView.getTag(2131380930);
-      localObject2 = (AssociateSearchWordsFragment.AssociateItem)paramView.getTag(2131380929);
-      switch (((AssociateSearchWordsFragment.AssociateItem)localObject2).jdField_a_of_type_Int)
-      {
-      }
-    }
-    label224:
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((localFragmentActivity instanceof bbjl))
-      {
-        Intent localIntent = new Intent(localFragmentActivity, QQBrowserActivity.class);
-        localObject2 = ((AssociateSearchWordsFragment.AssociateItem)localObject2).e;
-        localObject1 = localObject2;
-        if (!((String)localObject2).startsWith("http")) {
-          localObject1 = "http://" + (String)localObject2;
-        }
-        localIntent.putExtra("url", (String)localObject1);
-        localFragmentActivity.startActivity(localIntent);
-        localFragmentActivity.finish();
-        continue;
-        if ((localFragmentActivity instanceof bbjl)) {
-          localObject1 = (bbjl)localFragmentActivity;
-        }
-        for (;;)
-        {
-          if (localObject1 == null) {
-            break label224;
-          }
-          ((bbjl)localObject1).a(((AssociateSearchWordsFragment.AssociateItem)localObject2).jdField_a_of_type_JavaLangString, ((AssociateSearchWordsFragment.AssociateItem)localObject2).d);
-          break;
-          if (AssociateSearchWordsFragment.a(this.a) != null) {
-            localObject1 = AssociateSearchWordsFragment.a(this.a);
-          } else {
-            localObject1 = null;
-          }
-        }
-      }
-    }
-  }
+  public abstract void a(int paramInt, float[] paramArrayOfFloat);
 }
 
 

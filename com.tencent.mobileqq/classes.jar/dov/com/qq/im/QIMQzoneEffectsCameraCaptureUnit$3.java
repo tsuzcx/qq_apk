@@ -1,7 +1,7 @@
 package dov.com.qq.im;
 
-import bcjd;
-import bncj;
+import bdbv;
+import bodr;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 import cooperation.qzone.util.QZLog;
@@ -10,21 +10,21 @@ import java.io.File;
 public class QIMQzoneEffectsCameraCaptureUnit$3
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$3(bncj parambncj, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo) {}
+  public QIMQzoneEffectsCameraCaptureUnit$3(bodr parambodr, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo) {}
   
   public void run()
   {
     boolean bool = true;
     try
     {
-      File localFile = new File(bncj.a(this.this$0));
-      int i = bcjd.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, localFile.getAbsolutePath());
-      QZLog.d(bncj.b(), 1, "Video2GifConverter: convert retCode=" + i);
-      bncj localbncj = this.this$0;
+      File localFile = new File(bodr.a(this.this$0));
+      int i = bdbv.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, localFile.getAbsolutePath());
+      QZLog.d(bodr.b(), 1, "Video2GifConverter: convert retCode=" + i);
+      bodr localbodr = this.this$0;
       if (i == 0) {}
       for (;;)
       {
-        bncj.a(localbncj, bool, localFile.getAbsolutePath());
+        bodr.a(localbodr, bool, localFile.getAbsolutePath());
         return;
         bool = false;
       }
@@ -32,8 +32,8 @@ public class QIMQzoneEffectsCameraCaptureUnit$3
     }
     catch (Throwable localThrowable)
     {
-      QZLog.e(bncj.b(), "processNotExistVideoData: convert exception", localThrowable);
-      bncj.a(this.this$0, false, null);
+      QZLog.e(bodr.b(), "processNotExistVideoData: convert exception", localThrowable);
+      bodr.a(this.this$0, false, null);
     }
   }
 }

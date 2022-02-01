@@ -2,8 +2,8 @@ package dov.com.qq.im.aeeditor.module.edit;
 
 import android.graphics.Bitmap;
 import android.util.SparseArray;
-import bnzb;
-import bnzz;
+import bpam;
+import bpbu;
 import com.microrapid.opencv.ImageAutoProcessor;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.tavcut.util.BitmapUtil;
@@ -26,11 +26,11 @@ class AEEditorImageEditFragment$10
       return;
       if ((AEEditorImageEditFragment.a(this.this$0) == null) || (AEEditorImageEditFragment.a(this.this$0).size() <= this.a) || (AEEditorImageEditFragment.a(this.this$0).get(this.a) == null))
       {
-        bnzb.d(AEEditorImageEditFragment.e(), "source image info error.");
+        bpam.d(AEEditorImageEditFragment.e(), "source image info error.");
         return;
       }
-      Object localObject = (bnzz)AEEditorImageEditFragment.a(this.this$0).get(this.a);
-      localObject = BitmapUtil.cropBitmap(((bnzz)localObject).jdField_a_of_type_JavaLangString, ((bnzz)localObject).jdField_a_of_type_ComTencentTavcutBeanCropConfig);
+      Object localObject = (bpbu)AEEditorImageEditFragment.a(this.this$0).get(this.a);
+      localObject = BitmapUtil.cropBitmap(((bpbu)localObject).jdField_a_of_type_JavaLangString, ((bpbu)localObject).jdField_a_of_type_ComTencentTavcutBeanCropConfig);
       List localList = ImageAutoProcessor.mainColorExtract((Bitmap)localObject, 4);
       BitmapUtils.recycle((Bitmap)localObject);
       AEEditorImageEditFragment.a(this.this$0, localList);
@@ -39,7 +39,7 @@ class AEEditorImageEditFragment$10
         localList.add(localList.remove(0));
       }
       AEEditorImageEditFragment.b(this.this$0).put(this.a, localList);
-      bnzb.a(AEEditorImageEditFragment.e(), "[extractColor], extracted color cached, index=" + this.a);
+      bpam.a(AEEditorImageEditFragment.e(), "[extractColor], extracted color cached, index=" + this.a);
     } while (this.a != AEEditorImageEditFragment.a(this.this$0));
     ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.10.1(this));
   }

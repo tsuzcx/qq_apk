@@ -1,6 +1,6 @@
-class agef
+public abstract interface agef
 {
-  private static final agec a = new agec(null);
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
 }
 
 

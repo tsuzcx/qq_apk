@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acqx;
+import acvb;
 import android.text.TextUtils;
-import bgtn;
+import bhtq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -76,7 +76,7 @@ public class BannerAdPlugin
       if (i == 0)
       {
         localJSONObject = localJSONObject.getJSONArray("ads_info").getJSONObject(0);
-        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
+        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
       }
       if (paramJsRuntime != null)
       {
@@ -148,9 +148,9 @@ public class BannerAdPlugin
         if (!localJSONObject.has("width")) {
           break label521;
         }
-        float f = bgtn.a();
-        j = bgtn.a();
-        i = bgtn.b();
+        float f = bhtq.a();
+        j = bhtq.a();
+        i = bhtq.b();
         if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
           break label513;
         }
@@ -294,9 +294,9 @@ public class BannerAdPlugin
         String str3 = this.jsPluginEngine.activityContext.getCurrentAccountUin();
         localObject1 = null;
         int k = 0;
-        float f = bgtn.a();
-        int j = bgtn.a();
-        i = bgtn.b();
+        float f = bhtq.a();
+        int j = bhtq.a();
+        i = bhtq.b();
         if ((this.jsPluginEngine.activityContext instanceof GameActivity))
         {
           localObject1 = ((GameActivity)this.jsPluginEngine.activityContext).getMiniGameAppId();

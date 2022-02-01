@@ -1,12 +1,12 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bpys;
+import bran;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class RMVideoRecordState$1
   implements Runnable
 {
-  public RMVideoRecordState$1(bpys parambpys, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public RMVideoRecordState$1(bran parambran, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {

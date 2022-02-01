@@ -1,104 +1,92 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentStickyData;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentAuthorTopSetReq;
-import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentAuthorTopSetRsp;
-import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.ReqBody;
-import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.RspBody;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentStickyHandler;", "", "data", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentStickyData;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentStickyData;)V", "getData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentStickyData;", "onFailCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOverTimes", "", "getOnFailCallback", "()Lkotlin/jvm/functions/Function1;", "setOnFailCallback", "(Lkotlin/jvm/functions/Function1;)V", "onSuccessCallback", "Lkotlin/Function0;", "getOnSuccessCallback", "()Lkotlin/jvm/functions/Function0;", "setOnSuccessCallback", "(Lkotlin/jvm/functions/Function0;)V", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "onCommentOperationFailed", "errorCode", "", "errorMsg", "", "onCommentOperationSuccess", "", "send0xd1eRequest", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdp
+public class pdp
+  extends pdz
 {
-  @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "FirstCommentStickyHandler";
-  public static final pdq a;
-  @NotNull
-  private final FirstCommentStickyData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentStickyData;
-  @Nullable
-  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  @Nullable
-  private Function1<? super Boolean, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  public pdp(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
   
-  static
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
   {
-    jdField_a_of_type_Pdq = new pdq(null);
-  }
-  
-  public pdp(@NotNull FirstCommentStickyData paramFirstCommentStickyData)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentStickyData = paramFirstCommentStickyData;
-  }
-  
-  private final oidb_0xd1e.ReqBody a()
-  {
-    oidb_0xd1e.ReqBody localReqBody = new oidb_0xd1e.ReqBody();
-    oidb_0xd1e.FirstCommentAuthorTopSetReq localFirstCommentAuthorTopSetReq = new oidb_0xd1e.FirstCommentAuthorTopSetReq();
-    localFirstCommentAuthorTopSetReq.article_id.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentStickyData.b());
-    localFirstCommentAuthorTopSetReq.comment_id.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentStickyData.a());
-    localFirstCommentAuthorTopSetReq.comment_type.set(1);
-    localFirstCommentAuthorTopSetReq.op_type.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentStickyData.a());
-    localFirstCommentAuthorTopSetReq.content_src.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentStickyData.d());
-    localFirstCommentAuthorTopSetReq.src.set(0);
-    localFirstCommentAuthorTopSetReq.business_info.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentStickyData.d());
-    localReqBody.first_comment_author_top_set_req.set((MessageMicro)localFirstCommentAuthorTopSetReq);
-    return localReqBody;
-  }
-  
-  public final void a()
-  {
-    oidb_0xd1e.ReqBody localReqBody = a();
-    nir.a(pha.a(), (niv)new pdr(this), localReqBody.toByteArray(), "OidbSvc.0xd1e", 3358, 10);
-  }
-  
-  public final void a(int paramInt, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "errorCode : " + paramInt + "  msg: " + paramString);
-    paramString = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-    if (paramString != null) {
-      paramString = (Unit)paramString.invoke(Boolean.valueOf(false));
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.a(this.a)) {
+      return;
     }
-  }
-  
-  public final void a(@Nullable Function0<Unit> paramFunction0)
-  {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
-  }
-  
-  public final void a(@Nullable Function1<? super Boolean, Unit> paramFunction1)
-  {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
-  }
-  
-  public final void a(@NotNull byte[] paramArrayOfByte)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "data");
-    oidb_0xd1e.RspBody localRspBody = new oidb_0xd1e.RspBody();
-    localRspBody.mergeFrom(paramArrayOfByte);
-    if ((localRspBody.first_comment_author_top_set_rsp.over_times.has()) && (localRspBody.first_comment_author_top_set_rsp.over_times.get() > 0))
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "req fail, overtimes");
-      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte = (Unit)paramArrayOfByte.invoke(Boolean.valueOf(true));
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(true, true);
+      return;
+    }
+    ReadInJoyCGIDynamicChannelFragment.b(this.a).b();
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, List<peg> paramList, int paramInt2)
+  {
+    int i = 0;
+    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.d(this.a)) {
+      return;
+    }
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a, paramInt1, paramList);
+    }
+    if (paramList != null) {
+      i = paramList.size();
+    }
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onHeaderRefreshed, channelID = ", Integer.valueOf(paramInt1), ", success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i), ", insertIndex = ", Integer.valueOf(paramInt2) });
+  }
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.b(this.a)) {
+      return;
+    }
+    int i;
+    if (paramList != null)
+    {
+      i = paramList.size();
+      if ((!paramBoolean1) || (i <= 0)) {
+        break label175;
       }
     }
-    do
+    label175:
+    for (String str = String.format(this.a.getResources().getString(2131717000), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131716999))
     {
+      ReadInJoyCGIDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
+      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+        ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
+      }
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onDataRefreshed, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", refreshSize = ", Integer.valueOf(i) });
+      ReadInJoyCGIDynamicChannelFragment.d(this.a).a(true, true);
       return;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "req success");
-      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
-    } while (paramArrayOfByte == null);
-    paramArrayOfByte = (Unit)paramArrayOfByte.invoke();
+      i = 0;
+      break;
+    }
+  }
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    int i = 0;
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.c(this.a)) {
+      return;
+    }
+    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).b(paramList);
+      ReadInJoyCGIDynamicChannelFragment.e(this.a).a(true, paramBoolean2);
+    }
+    for (;;)
+    {
+      if (paramList != null) {
+        i = paramList.size();
+      }
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onLoadMoreData, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", size = ", Integer.valueOf(i), ", hasMore = ", Boolean.valueOf(paramBoolean2) });
+      return;
+      ReadInJoyCGIDynamicChannelFragment.f(this.a).a(false, true);
+    }
   }
 }
 

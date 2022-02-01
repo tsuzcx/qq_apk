@@ -1,62 +1,204 @@
-import android.util.Log;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.AccountBaseInfo;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.LoginRsp;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.TicketInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import java.util.ArrayList;
+import java.util.List;
 
-class aydu
-  implements ayds
+public class aydu
 {
-  aydu(aydt paramaydt, aydw paramaydw) {}
+  static URLDrawable a;
   
-  public void a(int paramInt, String paramString)
+  public static Bitmap a(Drawable paramDrawable)
   {
-    Log.d("now_live_login_mgr", "login faile, errCode=" + paramInt + ", errMsg=" + paramString);
-    if (this.jdField_a_of_type_Aydw != null) {
-      this.jdField_a_of_type_Aydw.a(paramInt, paramString);
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
     }
+    Bitmap localBitmap = Bitmap.createBitmap(120, 120, Bitmap.Config.RGB_565);
+    Canvas localCanvas = new Canvas(localBitmap);
+    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    paramDrawable.draw(localCanvas);
+    return localBitmap;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, ayeg paramayeg)
   {
-    if (aydt.a(this.jdField_a_of_type_Aydt)) {
-      return;
-    }
-    for (;;)
+    paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    if (!TextUtils.isEmpty(paramString5))
     {
-      try
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mUseAutoScaleParams = false;
+      if (a != null) {
+        a.cancelDownload();
+      }
+      a = URLDrawable.getDrawable(paramString5, localURLDrawableOptions);
+      if (a.getStatus() == 1)
       {
-        Log.d("now_live_login_mgr", "login success");
-        LoginMergedProto.LoginRsp localLoginRsp = new LoginMergedProto.LoginRsp();
-        localLoginRsp.mergeFrom(paramArrayOfByte);
-        aydy.a().a(localLoginRsp.account_base_info.uid.get());
-        aydy.a().b(localLoginRsp.account_base_info.tinyid.get());
-        aydy.a().a(localLoginRsp.tickets.auth_key.get());
-        paramArrayOfByte = this.jdField_a_of_type_Aydt;
-        if (localLoginRsp.result.get() != 0) {
-          break label185;
-        }
-        bool = true;
-        aydt.a(paramArrayOfByte, bool);
-        if (this.jdField_a_of_type_Aydw == null) {
-          break;
-        }
-        this.jdField_a_of_type_Aydw.a(localLoginRsp.result.get(), localLoginRsp.errMsg.get());
+        yuk.c("ShortVideoShareUtil", "URLDrawable's status is SUCCESSED.");
+        b(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, a(a), paramayeg);
         return;
       }
-      catch (Exception paramArrayOfByte)
+      if (a.getStatus() == 2)
       {
-        Log.d("now_live_login_mgr", "login parse exception, errMsg=" + paramArrayOfByte.getMessage());
+        b(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, null, paramayeg);
+        a.downloadImediatly();
+        return;
       }
-      if (this.jdField_a_of_type_Aydw == null) {
-        break;
-      }
-      this.jdField_a_of_type_Aydw.a(1000001, "login parse exception");
+      yuk.c("ShortVideoShareUtil", "start load URLDrawable.");
+      a.setURLDrawableListener(new aydz(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, paramayeg));
+      a.downloadImediatly();
       return;
-      label185:
-      boolean bool = false;
+    }
+    b(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, null, paramayeg);
+  }
+  
+  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
+  {
+    paramString1 = new bdoi(StructMsgForGeneralShare.class).c(131).a(paramString2).a("web", paramString4, null, null, null).a();
+    paramString4 = bdov.a(2);
+    paramString4.a(paramString5, paramString2, paramString3, 0);
+    paramString1.addItem(paramString4);
+    paramString2 = new Intent();
+    paramString2.putExtra("forward_type", -3);
+    paramString2.putExtra("stuctmsg_bytes", paramString1.getBytes());
+    auxu.a(paramBaseActivity, paramString2, 123);
+  }
+  
+  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, int paramInt, String paramString6)
+  {
+    paramString1 = new Intent();
+    paramString4 = new bdoi(StructMsgForGeneralShare.class).c(131).a(paramString2).a("web", paramString4, null, null, null).a();
+    bdom localbdom = bdov.a(2);
+    localbdom.a(paramString5, paramString2, paramString3, 0);
+    paramString4.addItem(localbdom);
+    paramString1.putExtra("forward_type", -3);
+    paramString1.putExtra("stuctmsg_bytes", paramString4.getBytes());
+    paramString1.putExtra("key_req", ForwardRecentActivity.f);
+    paramString1.putExtra("key_direct_show_uin_type", paramInt);
+    paramString1.putExtra("key_direct_show_uin", paramString6);
+    auxu.a(paramBaseActivity, paramString1, ForwardRecentTranslucentActivity.class, 123, 100500, "biz_src_hdsp_nearby");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, URLDrawable paramURLDrawable, DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    paramBaseActivity.getIntent().putExtra("big_brother_source_key", "biz_src_hdsp_nearby");
+    paramString1 = new ArrayList();
+    paramURLDrawable = new ArrayList();
+    paramString1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+    paramString1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+    paramString1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+    paramString1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+    Object localObject = new ShareActionSheetV2.Param();
+    ((ShareActionSheetV2.Param)localObject).canceledOnTouchOutside = true;
+    ((ShareActionSheetV2.Param)localObject).context = paramBaseActivity;
+    ((ShareActionSheetV2.Param)localObject).fullScreen = true;
+    ((ShareActionSheetV2.Param)localObject).lp = new ViewGroup.LayoutParams(-1, -2);
+    localObject = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("forward_type", 27);
+    ((ShareActionSheet)localObject).setIntentForStartForwardRecentActivity(localIntent);
+    ((ShareActionSheet)localObject).setRowVisibility(0, 0, 0);
+    ((ShareActionSheet)localObject).setActionSheetItems(paramString1, paramURLDrawable);
+    ((ShareActionSheet)localObject).setItemClickListenerV2(new aydv(paramBaseActivity, paramString2, paramString4, paramString5, paramString3, paramString6, paramString7, paramQQAppInterface));
+    ((ShareActionSheet)localObject).setCancelListener(new aydy(paramOnDismissListener));
+    ((ShareActionSheet)localObject).show();
+  }
+  
+  private static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString5);
+    paramString5 = new Bundle();
+    paramString5.putString("title", paramString2);
+    paramString5.putString("desc", paramString3);
+    paramString5.putString("summary", paramString3);
+    paramString5.putString("detail_url", paramString4);
+    paramString5.putString("url", paramString4);
+    paramString5.putStringArrayList("image_url", localArrayList);
+    paramString5.putString("targetUrl", paramString4);
+    paramString5.putInt("cflag", 1);
+    bmud.a(paramString1, paramBaseActivity, paramString5, null, 124);
+    new ayek().h("video").i("playpage_fw_suc").a().a(paramString1);
+  }
+  
+  static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, ayeg paramayeg)
+  {
+    String str = String.valueOf(System.currentTimeMillis());
+    if (!TextUtils.isEmpty(paramString5))
+    {
+      paramString1 = URLDrawable.URLDrawableOptions.obtain();
+      paramString1.mUseAutoScaleParams = false;
+      if (a != null) {
+        a.cancelDownload();
+      }
+      a = URLDrawable.getDrawable(paramString5, paramString1);
+      paramString5 = (QQAppInterface)paramBaseActivity.getAppRuntime();
+      if (a.getStatus() == 1)
+      {
+        yuk.c("ShortVideoShareUtil", "URLDrawable's status is SUCCESSED.");
+        paramString1 = a(a);
+        paramBaseActivity = paramString1;
+        if (paramString1 == null) {
+          paramBaseActivity = bhgm.b(BaseApplicationImpl.getApplication().getResources(), 2130845326);
+        }
+        WXShareHelper.a().a(new ayeb(str, paramayeg));
+        WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
+        new ayek().h("video").i("playpage_fw_suc").a().a(paramString5);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (a.getStatus() == 2)
+    {
+      paramString1 = a(a);
+      paramBaseActivity = paramString1;
+      if (paramString1 == null) {
+        paramBaseActivity = bhgm.b(BaseApplicationImpl.getApplication().getResources(), 2130845326);
+      }
+      WXShareHelper.a().a(new ayec(str, paramayeg));
+      WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
+      a.downloadImediatly();
+      new ayek().h("video").i("playpage_fw_suc").a().a(paramString5);
+      return;
+    }
+    yuk.c("ShortVideoShareUtil", "start load URLDrawable.");
+    a.setURLDrawableListener(new ayed(str, paramayeg, paramString2, paramString3, paramString4, paramString5));
+    a.startDownload();
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap, ayeg paramayeg)
+  {
+    String str = String.valueOf(System.currentTimeMillis());
+    if (paramBitmap == null) {}
+    for (paramString1 = bhgm.b(BaseApplicationImpl.getApplication().getResources(), 2130845326);; paramString1 = paramBitmap)
+    {
+      WXShareHelper.a().a(new ayea(str, paramayeg));
+      WXShareHelper.a().b(str, paramString2, paramString1, paramString3, paramString4);
+      new ayek().h("video").i("playpage_fw_suc").a().a(paramQQAppInterface);
+      return;
     }
   }
 }

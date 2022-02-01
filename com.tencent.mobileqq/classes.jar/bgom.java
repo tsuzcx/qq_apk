@@ -1,104 +1,57 @@
-import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class bgom
+  extends bgku
 {
-  public static void a()
+  public bgom(TroopAppShortcutContainer paramTroopAppShortcutContainer, QQAppInterface paramQQAppInterface)
   {
-    a("0X8008CC3");
+    super(paramQQAppInterface);
   }
   
-  public static void a(int paramInt)
+  protected void a(long paramLong)
   {
-    if (paramInt == 4) {
-      a("0X8009187");
-    }
-    while (paramInt != 2) {
+    if (paramLong != TroopAppShortcutContainer.a(this.a)) {
       return;
     }
-    a("0X8009188");
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopAppShortcutContainer", 2, "onShortcutBarItemUpdated troopCode:" + paramLong);
+    }
+    TroopAppShortcutContainer.a(this.a, 1, 0, 3);
   }
   
-  public static void a(int paramInt, boolean paramBoolean)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVGroupConfig", 1, "reportAVGroupNum, num[" + paramInt + "], isVideo[" + paramBoolean + "]");
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopAppShortcutContainer", 2, "onSetTotalSwitch:" + String.valueOf(paramLong) + "isSuccess" + paramBoolean + "disabled" + paramInt);
     }
-    HashMap localHashMap;
-    if (paramBoolean)
+    bgnv localbgnv = new bgnv(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, TroopAppShortcutContainer.a(this.a), TroopAppShortcutContainer.a(this.a));
+    bgnw localbgnw = new bgnw();
+    bgkr localbgkr = ((bgks)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355)).a(Long.valueOf(TroopAppShortcutContainer.a(this.a)));
+    if (localbgkr != null) {
+      localbgnw.jdField_a_of_type_Bgkr = localbgkr;
+    }
+    localbgnw.b = bgqr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopAppShortcutContainer.a(this.a));
+    if (!paramBoolean)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_video", true, -1L, -1L, localHashMap, true);
+      if (paramInt != 0) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        localbgnw.jdField_a_of_type_Boolean = paramBoolean;
+        bgqr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbgnw, TroopAppShortcutContainer.a(this.a));
+        localbgnv.a(localbgnw);
+        this.a.jdField_a_of_type_Bgon.a(0, localbgnv);
+        return;
+      }
     }
-    for (;;)
+    if (paramInt == 0) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("isVideo", String.valueOf(paramBoolean));
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum", true, -1L, -1L, localHashMap, true);
-      return;
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_audio", true, -1L, -1L, localHashMap, true);
+      localbgnw.jdField_a_of_type_Boolean = paramBoolean;
+      break;
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!QLog.isDevelopLevel()) {}
-    for (;;)
-    {
-      bcst.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-      return;
-      QLog.w("QAVGroupConfig", 1, "reportClickEvent, key[" + paramString + "]");
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008CC7");
-      return;
-    }
-    a("0X8008CC8");
-  }
-  
-  public static void b()
-  {
-    a("0X8008CC4");
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008CBA");
-      return;
-    }
-    a("0X8008CB5");
-  }
-  
-  public static void c()
-  {
-    a("0X8008CC5");
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008E7D");
-      return;
-    }
-    a("0X8008E7E");
-  }
-  
-  public static void d()
-  {
-    a("0X8008CC6");
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bftx;
-import bgsg;
+import bgty;
+import bhsi;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 public class TroopRobotManager$7
   implements Runnable
 {
-  public TroopRobotManager$7(bftx parambftx, String paramString1, String paramString2, cmd0x934.RspBody paramRspBody) {}
+  public TroopRobotManager$7(bgty parambgty, String paramString1, String paramString2, cmd0x934.RspBody paramRspBody) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class TroopRobotManager$7
         localFileOutputStream.close();
         localObject1 = localFileOutputStream;
         localObject3 = localFileOutputStream;
-        bgsg.M(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString + "_" + this.b, this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.version.get());
+        bhsi.M(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString + "_" + this.b, this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.version.get());
       }
       catch (IOException localIOException4)
       {

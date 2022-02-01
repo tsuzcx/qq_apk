@@ -1,22 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ResolveInfo;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
 public class auxh
-  implements auxp
 {
-  public auxh(JefsClass paramJefsClass, Context paramContext, Intent paramIntent, String paramString, int paramInt) {}
+  public int a;
+  public auxi a;
+  public boolean a;
+  public boolean b;
   
-  public void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable)
+  public auxh(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "checkAndDo() ]");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public void a(auxi paramauxi)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Auxi = paramauxi;
     }
-    JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, paramString1, paramString2, paramString3, paramList, paramCancelableRunnable, this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 0;
   }
 }
 

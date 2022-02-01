@@ -1,23 +1,19 @@
-import android.content.Context;
+import java.util.Comparator;
 
-final class bdny
-  implements bkgi<Integer>
+class bdny
+  implements Comparator
 {
-  bdny(Context paramContext, String paramString, bkho parambkho) {}
-  
-  public void a(Integer paramInteger)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    switch (paramInteger.intValue())
-    {
+    paramObject1 = (bdnu)paramObject1;
+    paramObject2 = (bdnu)paramObject2;
+    if (paramObject1.a > paramObject2.a) {
+      return -1;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      bdnt.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      continue;
-      bdnt.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (paramObject1.a < paramObject2.a) {
+      return 1;
     }
+    return 0;
   }
 }
 

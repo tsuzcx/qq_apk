@@ -1,13 +1,6 @@
-import com.tencent.mobileqq.vas.PendantInfo;
-
-public class bgyo
+public abstract interface bgyo
 {
-  public String a;
-  
-  public bgyo(PendantInfo paramPendantInfo, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

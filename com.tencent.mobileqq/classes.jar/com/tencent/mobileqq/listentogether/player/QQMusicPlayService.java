@@ -19,14 +19,14 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import avvg;
-import avvp;
-import avvq;
-import avvr;
-import avvs;
-import avvt;
-import avvu;
-import bgnt;
+import awob;
+import awok;
+import awol;
+import awom;
+import awon;
+import awoo;
+import awop;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.listentogether.data.ISong;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -55,9 +55,9 @@ public class QQMusicPlayService
   private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private Messenger jdField_a_of_type_AndroidOsMessenger;
-  private avvr jdField_a_of_type_Avvr;
-  private avvs jdField_a_of_type_Avvs;
-  private avvt jdField_a_of_type_Avvt;
+  private awom jdField_a_of_type_Awom;
+  private awon jdField_a_of_type_Awon;
+  private awoo jdField_a_of_type_Awoo;
   private final LinkedHashSet<Messenger> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean jdField_b_of_type_Boolean;
@@ -170,7 +170,7 @@ public class QQMusicPlayService
         if (i != 0) {
           a(paramISong.a(), 2);
         }
-        avvp.a(bool, bgnt.b(this));
+        awok.a(bool, bhnv.b(this));
         return;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
@@ -323,10 +323,10 @@ public class QQMusicPlayService
     }
     jdField_a_of_type_Int = paramInt;
     if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayService", 2, String.format("updatePlayStateNotify %s [state=%s]", new Object[] { paramString, avvg.a(paramInt) }));
+      QLog.i("QQMusicPlay.QQMusicPlayService", 2, String.format("updatePlayStateNotify %s [state=%s]", new Object[] { paramString, awob.a(paramInt) }));
     }
-    if ((jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Avvr != null)) {
-      this.jdField_a_of_type_Avvr.sendEmptyMessage(14);
+    if ((jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Awom != null)) {
+      this.jdField_a_of_type_Awom.sendEmptyMessage(14);
     }
     if (!TextUtils.isEmpty(paramString))
     {
@@ -452,7 +452,7 @@ public class QQMusicPlayService
   public static boolean a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQMusicPlay.QQMusicPlayService", 2, "isPlaying : sPlayState " + avvg.a(jdField_a_of_type_Int));
+      QLog.d("QQMusicPlay.QQMusicPlayService", 2, "isPlaying : sPlayState " + awob.a(jdField_a_of_type_Int));
     }
     return (jdField_a_of_type_Int == 2) || (jdField_a_of_type_Int == 1);
   }
@@ -469,7 +469,7 @@ public class QQMusicPlayService
       }
       catch (Exception localException)
       {
-        QLog.d("QQMusicPlay.QQMusicPlayService", 1, new Object[] { "getPlayPosition exception state=", avvg.a(jdField_a_of_type_Int), localException.getStackTrace() });
+        QLog.d("QQMusicPlay.QQMusicPlayService", 1, new Object[] { "getPlayPosition exception state=", awob.a(jdField_a_of_type_Int), localException.getStackTrace() });
         return -1;
       }
     }
@@ -628,8 +628,8 @@ public class QQMusicPlayService
     try
     {
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Avvr = new avvr(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      if (this.jdField_a_of_type_Avvr != null) {
+      this.jdField_a_of_type_Awom = new awom(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      if (this.jdField_a_of_type_Awom != null) {
         break label75;
       }
     }
@@ -642,7 +642,7 @@ public class QQMusicPlayService
     }
     finally
     {
-      while (this.jdField_a_of_type_Avvr == null) {}
+      while (this.jdField_a_of_type_Awom == null) {}
     }
     return true;
   }
@@ -671,7 +671,7 @@ public class QQMusicPlayService
       QLog.i("QQMusicPlay.QQMusicPlayService", 2, "--->onCompletion");
     }
     a(b(), 8);
-    avvp.b(e, jdField_c_of_type_Int);
+    awok.b(e, jdField_c_of_type_Int);
   }
   
   public void onCreate()
@@ -680,37 +680,37 @@ public class QQMusicPlayService
     if (QLog.isColorLevel()) {
       QLog.i("QQMusicPlay.QQMusicPlayService", 2, "--->onCreate");
     }
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new avvq(this);
+    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new awol(this);
     if (c()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Avvr);
-    this.jdField_a_of_type_Avvt = new avvt(this, null);
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Awom);
+    this.jdField_a_of_type_Awoo = new awoo(this, null);
     QQMusicPlayService.2 local2 = new QQMusicPlayService.2(this);
-    this.jdField_a_of_type_Avvr.post(local2);
+    this.jdField_a_of_type_Awom.post(local2);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     QLog.i("QQMusicPlay.QQMusicPlayService", 1, "--->onDestroy");
-    if (this.jdField_a_of_type_Avvr != null)
+    if (this.jdField_a_of_type_Awom != null)
     {
-      Object localObject = new avvu(this, jdField_a_of_type_AndroidMediaMediaPlayer, jdField_a_of_type_ComTencentMobileqqListentogetherDataISong);
-      localObject = this.jdField_a_of_type_Avvr.obtainMessage(12, localObject);
-      this.jdField_a_of_type_Avvr.sendMessage((Message)localObject);
-      this.jdField_a_of_type_Avvr = null;
+      Object localObject = new awop(this, jdField_a_of_type_AndroidMediaMediaPlayer, jdField_a_of_type_ComTencentMobileqqListentogetherDataISong);
+      localObject = this.jdField_a_of_type_Awom.obtainMessage(12, localObject);
+      this.jdField_a_of_type_Awom.sendMessage((Message)localObject);
+      this.jdField_a_of_type_Awom = null;
     }
     jdField_b_of_type_Int = 0;
     ((AudioManager)getSystemService("audio")).abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
     try
     {
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_Avvt);
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_Awoo);
       label92:
-      if (this.jdField_a_of_type_Avvs != null) {}
+      if (this.jdField_a_of_type_Awon != null) {}
       try
       {
-        AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Avvs);
+        AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Awon);
         return;
       }
       catch (Exception localException1) {}
@@ -754,8 +754,8 @@ public class QQMusicPlayService
         return;
         jdField_b_of_type_Int = jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
         QLog.d("QQMusicPlay.QQMusicPlayService", 1, "--->onPrepared:sDuration " + jdField_b_of_type_Int);
-        if (this.jdField_a_of_type_Avvr != null) {
-          this.jdField_a_of_type_Avvr.sendEmptyMessage(14);
+        if (this.jdField_a_of_type_Awom != null) {
+          this.jdField_a_of_type_Awom.sendEmptyMessage(14);
         }
         paramMediaPlayer = (AudioManager)getSystemService("audio");
         i = paramMediaPlayer.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 1);
@@ -765,8 +765,8 @@ public class QQMusicPlayService
         }
       } while (i == 1);
       a(b(), 7);
-    } while (this.jdField_a_of_type_Avvr == null);
-    this.jdField_a_of_type_Avvr.sendEmptyMessage(11);
+    } while (this.jdField_a_of_type_Awom == null);
+    this.jdField_a_of_type_Awom.sendEmptyMessage(11);
   }
   
   public void onRebind(Intent paramIntent)
@@ -789,16 +789,16 @@ public class QQMusicPlayService
       if (paramIntent != null)
       {
         QLog.i("QQMusicPlay.QQMusicPlayService", 1, String.format("--->onStartCommand startId=%d what=%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramIntent.what) }));
-        if ((this.jdField_a_of_type_Avvr == null) || (this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
+        if ((this.jdField_a_of_type_Awom == null) || (this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
       }
     }
     try
     {
-      this.jdField_a_of_type_Avvr.getLooper().quit();
+      this.jdField_a_of_type_Awom.getLooper().quit();
       label79:
       c();
-      if (this.jdField_a_of_type_Avvr != null) {
-        this.jdField_a_of_type_Avvr.sendMessage(paramIntent);
+      if (this.jdField_a_of_type_Awom != null) {
+        this.jdField_a_of_type_Awom.sendMessage(paramIntent);
       }
       return 2;
     }

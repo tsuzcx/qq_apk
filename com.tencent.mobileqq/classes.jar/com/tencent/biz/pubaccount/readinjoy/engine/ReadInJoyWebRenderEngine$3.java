@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aros;
-import arot;
+import aseg;
+import aseh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import pmr;
-import pmt;
-import pmx;
+import pfl;
+import pfn;
+import pfr;
 
 public final class ReadInJoyWebRenderEngine$3
   implements Runnable
 {
-  public ReadInJoyWebRenderEngine$3(pmt parampmt, String paramString) {}
+  public ReadInJoyWebRenderEngine$3(pfn parampfn, String paramString) {}
   
   public void run()
   {
     int j = 0;
-    if (!pmx.a(this.jdField_a_of_type_Pmt))
+    if (!pfr.a(this.jdField_a_of_type_Pfn))
     {
       if (QLog.isColorLevel()) {
         QLog.e("viola.ReadInJoyWebRenderEngine", 2, " checkReinstallSoDel is false, return and wait for next load");
@@ -32,12 +32,12 @@ public final class ReadInJoyWebRenderEngine$3
     {
       try
       {
-        if (arot.i()) {
+        if (aseh.i()) {
           continue;
         }
         localStringBuilder.append("viola jsc lib not exist");
-        if (this.jdField_a_of_type_Pmt != null) {
-          this.jdField_a_of_type_Pmt.onError(pmr.c);
+        if (this.jdField_a_of_type_Pfn != null) {
+          this.jdField_a_of_type_Pfn.onError(pfl.c);
         }
         localSharedPreferences1 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         l2 = localSharedPreferences1.getLong("js_lib", 0L);
@@ -46,28 +46,28 @@ public final class ReadInJoyWebRenderEngine$3
         }
         if (System.currentTimeMillis() - l2 > 120000L)
         {
-          arot.a();
+          aseh.f();
           localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
         }
-        pmr.a(1);
+        pfl.a(1);
       }
       catch (Throwable localThrowable)
       {
         SharedPreferences localSharedPreferences1;
-        pmr.a(false);
+        pfl.a(false);
         localStringBuilder.append(localThrowable.getMessage());
-        if (this.jdField_a_of_type_Pmt == null) {
+        if (this.jdField_a_of_type_Pfn == null) {
           continue;
         }
-        this.jdField_a_of_type_Pmt.onError(pmr.b);
+        this.jdField_a_of_type_Pfn.onError(pfl.b);
         return;
-        if (aros.i()) {
+        if (aseg.i()) {
           break label470;
         }
-        if (this.jdField_a_of_type_Pmt == null) {
+        if (this.jdField_a_of_type_Pfn == null) {
           continue;
         }
-        this.jdField_a_of_type_Pmt.onError(pmr.d);
+        this.jdField_a_of_type_Pfn.onError(pfl.d);
         SharedPreferences localSharedPreferences2 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         long l2 = localSharedPreferences2.getLong("js_lib_biz", 0L);
         if (l2 <= 0L) {
@@ -76,17 +76,17 @@ public final class ReadInJoyWebRenderEngine$3
         if (System.currentTimeMillis() - l2 <= 120000L) {
           continue;
         }
-        aros.a();
+        aseg.f();
         localSharedPreferences2.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
-        pmr.a(2);
+        pfl.a(2);
         continue;
       }
       finally
       {
-        localStringBuilder.append(", isLoaded: ").append(pmr.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+        localStringBuilder.append(", isLoaded: ").append(pfl.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
         QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       }
-      localStringBuilder.append(", isLoaded: ").append(pmr.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+      localStringBuilder.append(", isLoaded: ").append(pfl.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
       QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       return;
       localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
@@ -95,8 +95,8 @@ public final class ReadInJoyWebRenderEngine$3
       localObject.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
       continue;
       label470:
-      String str1 = pmx.a();
-      String[] arrayOfString = arot.a;
+      String str1 = pfr.a();
+      String[] arrayOfString = aseh.a;
       int k = arrayOfString.length;
       int i = 0;
       String str2;
@@ -112,14 +112,14 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Pmt != null) {
-            this.jdField_a_of_type_Pmt.onError(pmr.c);
+          if (this.jdField_a_of_type_Pfn != null) {
+            this.jdField_a_of_type_Pfn.onError(pfl.c);
           }
           localStringBuilder.append(str2).append(" not exist");
-          pmr.a(1);
+          pfl.a(1);
         }
       }
-      arrayOfString = aros.a;
+      arrayOfString = aseg.a;
       k = arrayOfString.length;
       i = j;
       while (i < k)
@@ -133,16 +133,16 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Pmt != null) {
-            this.jdField_a_of_type_Pmt.onError(pmr.d);
+          if (this.jdField_a_of_type_Pfn != null) {
+            this.jdField_a_of_type_Pfn.onError(pfl.d);
           }
           localStringBuilder.append(str2).append(" not exist");
-          pmr.a(2);
+          pfl.a(2);
         }
       }
-      pmr.a(true);
-      if (this.jdField_a_of_type_Pmt != null) {
-        this.jdField_a_of_type_Pmt.onFinish(pmr.f);
+      pfl.a(true);
+      if (this.jdField_a_of_type_Pfn != null) {
+        this.jdField_a_of_type_Pfn.onFinish(pfl.f);
       }
     }
   }

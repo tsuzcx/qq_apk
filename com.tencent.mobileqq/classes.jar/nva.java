@@ -1,22 +1,20 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nva
-  implements TVK_SDKMgr.InstallListener
+  implements View.OnClickListener
 {
-  public nva(AdvertisementVideoPreloadManager.2 param2) {}
+  public nva(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    nuy.c("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    nuy.c("installSDK onInstalledSuccessed");
-    nuy.a(this.a.this$0);
+    Intent localIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

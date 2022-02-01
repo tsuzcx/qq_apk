@@ -1,112 +1,371 @@
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.SurfaceTexture;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Surface;
+import android.view.TextureView;
+import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewStub;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.bizparts.QCirclePublishStatusBoxPart.1;
-import com.tencent.biz.qqcircle.events.QCirclePublishBoxStatusEvent;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderSplashPart.1;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderSplashPart.6;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderSplashPart.7;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QzoneIPCModule;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import dov.com.qq.im.ae.camera.core.AECircleBroadcastReceiver;
+import java.io.IOException;
+import java.io.Serializable;
+import mqq.app.AppActivity;
 
 public class vda
-  extends uzu
-  implements View.OnClickListener, zwr
+  extends vbk
+  implements TextureView.SurfaceTextureListener, bojb
 {
-  private View jdField_a_of_type_AndroidViewView;
+  private int jdField_a_of_type_Int;
+  private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private TextureView jdField_a_of_type_AndroidViewTextureView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+  private AECircleBroadcastReceiver jdField_a_of_type_DovComQqImAeCameraCoreAECircleBroadcastReceiver = new AECircleBroadcastReceiver(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new QCircleFolderSplashPart.6(this);
+  private boolean jdField_a_of_type_Boolean;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private boolean jdField_b_of_type_Boolean;
+  private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
+  private boolean e;
   
-  public vda(FeedCloudMeta.StUser paramStUser)
+  private void a()
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = paramStUser;
-  }
-  
-  private void a(QCirclePublishBoxStatusEvent paramQCirclePublishBoxStatusEvent)
-  {
-    ThreadManager.getUIHandler().post(new QCirclePublishStatusBoxPart.1(this, paramQCirclePublishBoxStatusEvent));
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (uyk.a().a() != null)
+    {
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_a_of_type_DovComQqImAeCameraCoreAECircleBroadcastReceiver.a(a());
+      uzg.a(a());
+      bddj.a().a("CMD_DOWNLOAD_PTU_BASE_RES", new Bundle());
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new vdb(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new vdd(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new vde(this));
+      QLog.d("QCircleFolderSplashPart", 4, "loadSplash video");
     }
+  }
+  
+  private void b()
+  {
+    Object localObject = new DisplayMetrics();
+    a().getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.topMargin = (((DisplayMetrics)localObject).heightPixels * 2 / 3 - bhtq.a(20.0F));
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.topMargin = (((DisplayMetrics)localObject).heightPixels * 2 / 3 - bhtq.a(20.0F));
+    this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    localObject = new AlphaAnimation(0.0F, 1.0F);
+    ((AlphaAnimation)localObject).setDuration(100L);
+    ((AlphaAnimation)localObject).setFillAfter(true);
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new vdf(this));
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369389).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(0);
+    vtq.a("", 19, 3, 0, "2");
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QCircleFolderSplashPart.7(this), 4000L);
+  }
+  
+  private void d()
+  {
+    Object localObject;
+    float f;
+    int k;
+    int j;
+    int i;
+    if (this.jdField_c_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidViewTextureView.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(this);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new vdg(this));
+      localObject = new DisplayMetrics();
+      a().getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
+      f = (float)(((DisplayMetrics)localObject).heightPixels * 1.0D / ((DisplayMetrics)localObject).widthPixels);
+      if (f <= 1.777778F) {
+        break label167;
+      }
+      k = bhtq.b(70.5F);
+      j = bhtq.b(120.0F);
+      i = bhtq.b(36.0F);
+    }
+    for (;;)
+    {
+      localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).width = j;
+      ((RelativeLayout.LayoutParams)localObject).height = i;
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = k;
+      this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      return;
+      c();
+      break;
+      label167:
+      if (f > 1.5F)
+      {
+        k = bhtq.b(28.0F);
+        j = bhtq.b(120.0F);
+        i = bhtq.b(36.0F);
+      }
+      else if (f > 1.333333F)
+      {
+        k = bhtq.b(26.0F);
+        j = bhtq.b(106.0F);
+        i = bhtq.b(32.0F);
+      }
+      else
+      {
+        k = bhtq.b(28.0F);
+        j = bhtq.b(120.0F);
+        i = bhtq.b(36.0F);
+      }
+    }
+  }
+  
+  private void e()
+  {
+    QLog.d("QCircleFolderSplashPart", 1, "release...");
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECircleBroadcastReceiver.b(a());
+    this.e = false;
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    {
+      if (this.jdField_a_of_type_AndroidViewTextureView != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewTextureView);
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
+      }
+      if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_b_of_type_AndroidWidgetImageView);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+      }
+      if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_c_of_type_AndroidWidgetImageView);
+      }
+      this.jdField_b_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewViewGroup);
+      this.jdField_a_of_type_AndroidViewViewGroup = null;
+    }
+  }
+  
+  private void f()
+  {
+    e();
+    QLog.d("QCircleFolderSplashPart", 1, "hideSpashView");
+    uyk.a().d();
+    a().getWindow().clearFlags(1024);
+  }
+  
+  private void g()
+  {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      ((AppActivity)a()).requestPermissions(new vdh(this), 0, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      return;
+    }
+    h();
+  }
+  
+  private void h()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("fromType", 6);
+    localBundle.putInt("VIDEO_STORY_FROM_TYPE", born.A.a());
+    localBundle.putLong("PhotoConst.timestamp", System.currentTimeMillis());
+    localBundle.putLong("PhotoConst.timestamp_last_activity", System.currentTimeMillis());
+    localBundle.putInt("key_qcircle_entrance_type", 3);
+    Object localObject = new QCircleInitBean();
+    ((QCircleInitBean)localObject).setFromReportBean(a().clone().setElementIdStr("post"));
+    localBundle.putSerializable("key_bundle_common_init_bean", (Serializable)localObject);
+    localObject = a().getIntent();
+    if (localObject != null)
+    {
+      localBundle.putString("key_scheme", ((Intent)localObject).getStringExtra("key_scheme"));
+      ((Intent)localObject).putExtra("key_scheme", "");
+    }
+    uyx.a(a(), localBundle, null, 6);
   }
   
   public String a()
   {
-    return "QCirclePushFeedPart";
+    return "QCircleFolderSplashPart";
   }
   
-  public void a(View paramView)
+  protected void a(View paramView)
   {
     super.a(paramView);
-    if (paramView != null)
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131373278));
+    if ((this.jdField_b_of_type_Boolean) && (uyk.a().a()))
     {
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373895);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373894));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373892));
+      ThreadManager.excute(new QCircleFolderSplashPart.1(this), 16, null, true);
+      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373951));
+      if (this.jdField_a_of_type_AndroidViewViewStub != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewStub.inflate());
+      }
+      this.jdField_a_of_type_AndroidViewTextureView = ((TextureView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377914));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363687));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363688));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369330));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368211));
+      a().getWindow().setFlags(1024, 1024);
+      paramView = ((QCircleInitBean)a().getIntent().getSerializableExtra("key_bundle_common_init_bean")).getLaunchFrom();
+      this.jdField_a_of_type_Int = 0;
+      if (!"3".equals(paramView)) {
+        break label289;
+      }
+      this.jdField_a_of_type_Int = 1;
+    }
+    for (;;)
+    {
+      QLog.d("QCircleFolderSplashPart", 1, "jumpFromSubAction:" + this.jdField_a_of_type_Int);
+      a();
+      d();
+      vtq.a("", 19, this.jdField_a_of_type_Int);
+      return;
+      label289:
+      if ("4".equals(paramView)) {
+        this.jdField_a_of_type_Int = 2;
+      }
     }
   }
   
-  public ArrayList<Class> getEventClass()
+  public void a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCirclePublishBoxStatusEvent.class);
-    return localArrayList;
+    QLog.d("QCircleFolderSplashPart", 1, new Object[] { "onDownLoadFinish... filepath:", paramString });
+    this.d = true;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    super.onActivityCreated(paramActivity, paramBundle);
   }
   
   public void onActivityDestroyed(Activity paramActivity)
   {
     super.onActivityDestroyed(paramActivity);
-    zwp.a().b(this);
-  }
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    super.onActivityResumed(paramActivity);
-    zwp.a().a(this);
-    QzoneIPCModule.a().a();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131373895)
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
     {
-      vrf.a("", 16, 2, 0, c());
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_type_queue", 3);
-      blsi localblsi = blsi.a();
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(null);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(null);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(null);
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
       {
-        localObject = (QQAppInterface)localObject;
-        localblsi.b = ((QQAppInterface)localObject).getCurrentNickname();
-        localblsi.a = ((QQAppInterface)localObject).c();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
       }
-      blsb.c(a(), localblsi, localIntent, -1);
-      QLog.d("QCirclePushFeedPart", 4, "click publish enter");
+      f();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  public void onActivityStarted(Activity paramActivity)
   {
-    if ((paramSimpleBaseEvent instanceof QCirclePublishBoxStatusEvent)) {
-      a((QCirclePublishBoxStatusEvent)paramSimpleBaseEvent);
+    super.onActivityStarted(paramActivity);
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        break label111;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidViewTextureView.requestFocus();
+      if (uyk.a().a() == null) {
+        break label104;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(a(), uyk.a().a());
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+        QLog.d("QCircleFolderSplashPart", 4, "mediaplayer prepareAsync");
+        uyy.a().a(false);
+        return;
+      }
+      catch (IOException paramActivity)
+      {
+        paramActivity.printStackTrace();
+        QLog.d("QCircleFolderSplashPart", 4, "setSource or prepare error", paramActivity);
+        c();
+        continue;
+      }
+      label104:
+      c();
+    }
+    label111:
+    f();
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    f();
+  }
+  
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface(new Surface(paramSurfaceTexture));
     }
   }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    return false;
+  }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

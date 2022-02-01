@@ -1,43 +1,50 @@
-import java.io.File;
-import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arpk
-  extends RandomAccessFile
 {
-  private final byte[] a = new byte[8];
+  private String jdField_a_of_type_JavaLangString = anzj.a(2131713639);
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String b = "";
   
-  public arpk(String paramString1, String paramString2)
+  public static arpk a(araj[] paramArrayOfaraj)
   {
-    super(new File(paramString1), paramString2);
-  }
-  
-  public int read()
-  {
-    int i = -1;
-    if (read(this.a, 0, 1) != -1) {
-      i = this.a[0] & 0xFF;
+    int i = 0;
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+      return null;
     }
-    return i;
-  }
-  
-  public int read(byte[] paramArrayOfByte)
-  {
-    return read(paramArrayOfByte, 0, paramArrayOfByte.length);
-  }
-  
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    long l = super.getFilePointer();
-    paramInt2 = super.read(paramArrayOfByte, paramInt1, paramInt2);
-    if (paramInt2 > -1) {
-      arpm.a(paramArrayOfByte, paramInt1, paramInt2, l);
+    arpk localarpk = new arpk();
+    try
+    {
+      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].jdField_a_of_type_JavaLangString);
+      JSONArray localJSONArray = paramArrayOfaraj.getJSONArray("suffix");
+      while (i < localJSONArray.length())
+      {
+        localarpk.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
+        i += 1;
+      }
+      localarpk.jdField_a_of_type_JavaLangString = paramArrayOfaraj.getString("title");
+      localarpk.b = paramArrayOfaraj.getString("desc");
+      return localarpk;
     }
-    return paramInt2;
+    catch (JSONException paramArrayOfaraj)
+    {
+      paramArrayOfaraj.printStackTrace();
+    }
+    return localarpk;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpk
  * JD-Core Version:    0.7.0.1
  */

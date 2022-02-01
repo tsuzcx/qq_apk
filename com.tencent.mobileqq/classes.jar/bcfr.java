@@ -1,11 +1,27 @@
-import java.util.ArrayList;
+import android.view.View;
 
-public abstract class bcfr
-  implements bcfq
+public abstract interface bcfr
+  extends bcfo
 {
-  public void a(int paramInt, ArrayList<bcfj> paramArrayList) {}
+  public abstract int a();
   
-  public void b(int paramInt, bcfj parambcfj) {}
+  public abstract CharSequence a();
+  
+  public abstract String a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(View paramView);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract CharSequence b();
+  
+  public abstract CharSequence c();
+  
+  public abstract CharSequence d();
 }
 
 

@@ -1,65 +1,96 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
 
 public class aswv
-  implements View.OnClickListener
 {
-  public aswv(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public int a;
+  public long a;
+  public aswb a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "0";
+  public String f = "";
   
-  public void onClick(View paramView)
+  public aswv()
   {
-    Object localObject1 = paramView.getTag();
-    FileInfo localFileInfo;
-    if ((localObject1 instanceof asxd))
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 1;
+  }
+  
+  public aswv a()
+  {
+    aswv localaswv = new aswv();
+    localaswv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localaswv.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
+    localaswv.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localaswv.c = this.c;
+    localaswv.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localaswv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localaswv.e = this.e;
+    return localaswv;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = bhjx.a("");
+    this.jdField_b_of_type_JavaLangString = "";
+    this.c = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.e = "0";
+    this.jdField_b_of_type_Int = 0;
+    this.f = "";
+    this.jdField_a_of_type_Aswb = null;
+  }
+  
+  public boolean a()
+  {
+    String str = bhjx.a(this.jdField_a_of_type_ArrayOfByte);
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    do
     {
-      localObject1 = (asxd)paramView.getTag();
-      localFileInfo = (FileInfo)((asxd)localObject1).jdField_a_of_type_JavaLangObject;
-      localObject1 = ((asxd)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-    }
-    for (;;)
-    {
-      if ((paramView.getId() == 2131366555) && (QfileBaseLocalFileTabView.b(this.a))) {
-        bcst.b(QfileBaseLocalFileTabView.b(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-      }
-      Object localObject2;
-      if (localFileInfo != null)
+      do
       {
-        localObject2 = this.a;
-        if (paramView.getId() != 2131366555) {
-          break label245;
-        }
-      }
-      label245:
-      for (boolean bool = true;; bool = false)
-      {
-        ((QfileBaseLocalFileTabView)localObject2).a(localFileInfo, (View)localObject1, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!(localObject1 instanceof asth)) {
-          break label250;
-        }
-        localObject2 = (asth)paramView.getTag();
-        localFileInfo = (FileInfo)((asth)localObject2).jdField_a_of_type_JavaLangObject;
-        localObject1 = ((asth)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-        if ((this.a.a.g()) || (this.a.a.h()))
-        {
-          SharedPreferences.Editor localEditor = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
-          localEditor.putInt("GROUP", ((asth)localObject2).b);
-          localEditor.putInt("CHILD", (((asth)localObject2).jdField_a_of_type_Int + 1) / 4);
-          localEditor.commit();
-        }
-        break;
-      }
-      label250:
-      localObject1 = null;
-      localFileInfo = null;
+        return false;
+      } while (!(paramObject instanceof aswv));
+      paramObject = (aswv)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    String str = bhjx.a(this.jdField_a_of_type_ArrayOfByte);
+    int i = 0;
+    if (str != null) {
+      i = str.length();
     }
+    localStringBuilder.append("{sig: ").append(i).append("}");
+    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
+    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{nickName: ").append(this.d).append("}");
+    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
+    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.f).append("}");
+    if (this.jdField_a_of_type_Aswb != null) {
+      localStringBuilder.append(this.jdField_a_of_type_Aswb.toString());
+    }
+    return localStringBuilder.toString();
   }
 }
 

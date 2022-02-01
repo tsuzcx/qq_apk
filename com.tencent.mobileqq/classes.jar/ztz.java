@@ -1,15 +1,24 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import friendlist.GetOnlineInfoResp;
+import mqq.os.MqqHandler;
 
 public class ztz
-  implements zuj
+  extends anyu
 {
-  public ztz(ScannerActivity paramScannerActivity, long paramLong) {}
+  public ztz(StoryQIMBadgeView paramStoryQIMBadgeView) {}
   
-  public void a()
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
-    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
+    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
+    while ((!paramBoolean) || (!bhjx.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new StoryQIMBadgeView.1.1(this, paramGetOnlineInfoResp, paramString));
   }
 }
 

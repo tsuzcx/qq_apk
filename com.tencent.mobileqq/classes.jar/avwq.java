@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-
-public final class avwq
-  implements Parcelable.Creator<LocationRoom.Venue>
+public abstract interface avwq
 {
-  public LocationRoom.Venue a(Parcel paramParcel)
-  {
-    return new LocationRoom.Venue(paramParcel);
-  }
-  
-  public LocationRoom.Venue[] a(int paramInt)
-  {
-    return new LocationRoom.Venue[paramInt];
-  }
+  public abstract void a(zjv paramzjv);
 }
 
 

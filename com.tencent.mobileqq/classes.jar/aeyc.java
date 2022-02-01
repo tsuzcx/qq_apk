@@ -1,13 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SSOAccountObserver;
 
 public class aeyc
-  implements DialogInterface.OnClickListener
+  extends SSOAccountObserver
 {
-  public aeyc(QQMapActivity paramQQMapActivity) {}
+  public aeyc(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    this.a.c();
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
+    }
+    String str = null;
+    if (paramInt == 4096) {
+      str = new String(paramArrayOfByte);
+    }
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("last_account", paramString);
+    paramArrayOfByte.putExtra("wtTicket", str);
+    paramArrayOfByte.putExtra("ssobundle", paramBundle);
+    this.a.setResult(-1, paramArrayOfByte);
+    this.a.finish();
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    this.a.c();
+  }
 }
 
 

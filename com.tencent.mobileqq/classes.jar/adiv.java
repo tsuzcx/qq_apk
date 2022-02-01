@@ -1,70 +1,45 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.AddressListTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adiv
-  implements bkhw
+  implements adbw
 {
-  int jdField_a_of_type_Int = -1;
-  
-  public adiv(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bkho != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bkho.dismiss();
-      }
-      switch (paramInt)
-      {
-      default: 
-      case 0: 
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-          if (this.jdField_a_of_type_Int < 0) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
-          return;
-        }
-        catch (Throwable paramView)
-        {
-          for (;;)
-          {
-            paramView.printStackTrace();
-            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
-          }
-        }
-      case 1: 
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-          if (this.jdField_a_of_type_Int < 0) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
-          return;
-        }
-        catch (Throwable paramView)
-        {
-          for (;;)
-          {
-            paramView.printStackTrace();
-            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
-          }
-        }
-      }
-    }
+    return 1006;
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.AddressListTmp localAddressListTmp = new msg_svc.AddressListTmp();
+    localAddressListTmp.from_phone.set(paramMessageRecord.senderuin);
+    localAddressListTmp.to_phone.set(paramMessageRecord.frienduin);
+    paramMessageRecord = paramQQAppInterface.a().f(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ContactRoutingType", 2, "sameState------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localAddressListTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    }
+    paramRoutingHead.address_list.set(localAddressListTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8005;
   }
 }
 

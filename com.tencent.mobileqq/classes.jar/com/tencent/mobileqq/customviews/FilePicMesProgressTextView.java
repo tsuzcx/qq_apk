@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.customviews;
 
-import agor;
+import agxx;
 import android.graphics.drawable.Drawable;
 
 public class FilePicMesProgressTextView
@@ -29,8 +29,8 @@ public class FilePicMesProgressTextView
       if (localDrawable != null)
       {
         localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof agor)) && (!this.jdField_a_of_type_Boolean)) {
-          ((agor)localDrawable).a(this.jdField_a_of_type_Int, this.b);
+        if (((localDrawable instanceof agxx)) && (!this.jdField_a_of_type_Boolean)) {
+          ((agxx)localDrawable).a(this.jdField_a_of_type_Int, this.b);
         }
       }
       return;

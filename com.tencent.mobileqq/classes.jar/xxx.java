@@ -1,38 +1,27 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xxx
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wwh>
+  extends QQUIEventReceiver<xxn, xas>
 {
-  public xxx(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public xxx(@NonNull xxn paramxxn)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramxxn);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wwh paramwwh)
+  public void a(@NonNull xxn paramxxn, @NonNull xas paramxas)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwwh.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((paramwwh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    if (paramxas.a.isSuccess())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
-      }
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      return;
+      yuk.a(paramxxn.b, "receive user info event. %s.", paramxas.toString());
+      paramxxn.i();
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwwh);
   }
   
   public Class acceptEventClass()
   {
-    return wwh.class;
+    return xas.class;
   }
 }
 

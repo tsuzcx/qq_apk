@@ -1,57 +1,21 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiMembersAudioUI;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import java.util.ArrayList;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
+import com.tencent.qphone.base.util.QLog;
 
 public class mga
-  extends ldy
+  extends mct
 {
-  public mga(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mga(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  protected void a(int paramInt)
+  protected void a(bhon parambhon)
   {
-    if (this.a.b()) {
-      return;
+    if ((QLog.isDevelopLevel()) || (this.a.a != parambhon.a)) {
+      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambhon.a + "]");
     }
-    this.a.c(paramInt);
-  }
-  
-  protected void a(long paramLong, ArrayList<lco> paramArrayList, int paramInt1, int paramInt2)
-  {
-    if (this.a.b()) {
-      return;
-    }
-    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (this.a.b()) {}
-    do
+    if (this.a.a != parambhon.a)
     {
-      do
-      {
-        return;
-      } while (paramLong != this.a.jdField_a_of_type_Long);
-      if (paramBoolean)
-      {
-        this.a.b(paramInt);
-        return;
-      }
-    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
-    this.a.a(paramInt);
-  }
-  
-  protected void d()
-  {
-    if (this.a.b()) {}
-    while (this.a.jdField_a_of_type_Boolean) {
-      return;
+      this.a.a = parambhon.a;
+      this.a.i(0L, 65535);
     }
-    super.d();
-    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
-    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
-    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
   }
 }
 

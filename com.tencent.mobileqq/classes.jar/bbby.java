@@ -1,38 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.richstatus.HistorySignItem;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
 
-class bbby
-  implements bbda
+public class bbby
+  implements Animator.AnimatorListener
 {
-  bbby(bbbv parambbbv, HistorySignItem paramHistorySignItem) {}
+  public bbby(AIOIceBreakShow paramAIOIceBreakShow) {}
   
-  public void a(int paramInt, View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (SignatureHistoryFragment.b(this.jdField_a_of_type_Bbbv.a)) {}
-    Object localObject;
-    bbcs localbbcs;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
-      } while ((localObject == null) || (((List)localObject).size() <= paramInt));
-      localObject = (CommentItem)((List)localObject).get(paramInt);
-      localbbcs = ((CommentItem)localObject).user;
-    } while ((localbbcs == null) || (TextUtils.isEmpty(localbbcs.a)));
-    paramView.setSelected(true);
-    bguh localbguh = new bguh();
-    SignatureHistoryFragment.a(this.jdField_a_of_type_Bbbv.a, (CommentItem)localObject);
-    localbguh.a(2131365147, this.jdField_a_of_type_Bbbv.a.getString(2131691140), 0);
-    if ((localbbcs.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_Bbbv.a))) || (bgjw.a(SignatureHistoryFragment.b(this.jdField_a_of_type_Bbbv.a), SignatureHistoryFragment.a(this.jdField_a_of_type_Bbbv.a)))) {
-      localbguh.a(2131365308, this.jdField_a_of_type_Bbbv.a.getString(2131692385), 0);
-    }
-    bgkw.a(paramView, localbguh, this.jdField_a_of_type_Bbbv.a, new bbbz(this, paramView));
+    AIOIceBreakShow.a(this.a, false);
+    AIOIceBreakShow.a(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AIOIceBreakShow.a(this.a, false);
+    AIOIceBreakShow.a(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AIOIceBreakShow.a(this.a, true);
   }
 }
 

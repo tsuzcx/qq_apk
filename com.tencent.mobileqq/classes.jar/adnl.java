@@ -1,30 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class adnl
-  implements bkhw
+class adnl
+  implements View.OnClickListener
 {
-  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
+  adnl(adni paramadni, adnh paramadnh, admz paramadmz, JSONObject paramJSONObject, admy paramadmy) {}
   
-  public adnl(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
-  }
-  
-  public void a(SubAccountInfo paramSubAccountInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
+    this.jdField_a_of_type_Adni.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "reject " + this.jdField_a_of_type_Adnh.a);
+    adni.a(this.jdField_a_of_type_Adni, this.jdField_a_of_type_Adnh, 1);
+    adni.b(this.jdField_a_of_type_Adni, 4, this.jdField_a_of_type_Admz, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Admy);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

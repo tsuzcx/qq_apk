@@ -1,6 +1,39 @@
-public abstract interface lep
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
+class lep
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      paramContext = paramIntent.getAction();
+      if (paramContext.equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_ON");
+        return;
+      }
+      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_OFF");
+        lic.a(19, 1L);
+        return;
+      }
+      if (paramContext.equals("android.intent.action.USER_PRESENT"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideACTION_USER_PRESENT");
+        lic.a(19, 2L);
+        return;
+      }
+    } while (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+    paramContext = paramIntent.getStringExtra("reason");
+    QLog.d("GScreenActionMonitor", 1, "avideo ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
+  }
 }
 
 

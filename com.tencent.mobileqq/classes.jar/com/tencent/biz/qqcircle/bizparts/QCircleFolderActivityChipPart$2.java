@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import vbf;
+import vcv;
 
 public class QCircleFolderActivityChipPart$2
   implements Runnable
 {
-  public QCircleFolderActivityChipPart$2(vbf paramvbf) {}
+  public QCircleFolderActivityChipPart$2(vcv paramvcv) {}
   
   public void run()
   {
-    vbf.a(this.this$0, vbf.a(this.this$0));
+    vcv.a(this.this$0, vcv.a(this.this$0));
   }
 }
 

@@ -1,234 +1,119 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.share.watchword.RIJWatchWordShareManager.Companion.instance.2;
+import com.tencent.biz.pubaccount.readinjoy.share.watchword.RIJWatchWordShareManager.getClipWording.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.LazyThreadSafetyMode;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class qsp
-  extends qqt
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IView;", "()V", "map", "Ljava/util/LinkedHashMap;", "", "Lkotlin/collections/LinkedHashMap;", "privateTopicWatchWord", "getPrivateTopicWatchWord", "()Ljava/lang/String;", "privateVideoWatchWord", "getPrivateVideoWatchWord", "publicTopicWatchWord", "getPublicTopicWatchWord", "publicVideoWatchWord", "getPublicVideoWatchWord", "readPresenter", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordPresenter;", "watchWordCount", "", "getWatchWordCount", "()I", "watchWordObserver", "Ljava/util/ArrayList;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$OnWatchWordCheck;", "Lkotlin/collections/ArrayList;", "addWatchWordObserver", "", "observer", "clearClipBoard", "getAppearCount", "pattern", "master", "getClipWording", "watchWord", "isOpen", "", "type", "title", "getJumpUrlFromWatchWord", "getTextFromClipBoard", "callback", "Lkotlin/Function1;", "getWatchWordFromText", "text", "isRIJShareWatchWord", "jumpAction", "jumpUrl", "jumpToTargetPage", "userInfo", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$UserInfo;", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$VideoInfo;", "topicInfo", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$TopicInfo;", "onAppForeground", "removeWatchWordObjserver", "reportClick", "popupType", "rowkey", "columnId", "uin", "", "clickType", "reportExpose", "saveWatchWord2JumpUrl", "Companion", "OnWatchWordCheck", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qsp
+  implements qsu
 {
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private View jdField_b_of_type_AndroidViewView;
-  private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  @NotNull
+  private static final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy(LazyThreadSafetyMode.SYNCHRONIZED, (Function0)RIJWatchWordShareManager.Companion.instance.2.INSTANCE);
+  public static final qsq a;
+  private final int jdField_a_of_type_Int = 50;
+  private final ArrayList<qsr> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final LinkedHashMap<String, String> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private final qta jdField_a_of_type_Qta = new qta((qst)new qsy());
   
-  public qsp(Context paramContext, aobu paramaobu, snh paramsnh)
+  static
   {
-    super(paramContext, paramaobu, paramsnh);
+    jdField_a_of_type_Qsq = new qsq(null);
   }
   
-  private TextView a(int paramInt)
+  public qsp()
   {
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    localTextView.setId(2131376021);
-    localTextView.setTextSize(2, 11.0F);
-    localTextView.setGravity(17);
-    localTextView.setText(anni.a(2131703235));
-    localTextView.setWidth(bggq.a(this.jdField_a_of_type_AndroidContentContext, 30.0F));
-    localTextView.setHeight(bggq.a(this.jdField_a_of_type_AndroidContentContext, 17.0F));
-    if (paramInt == 0)
+    this.jdField_a_of_type_Qta.a((qsu)this);
+  }
+  
+  private final String a()
+  {
+    String str = Aladdin.getConfig(296).getString("watch_word_public_topic_text", ozs.g(2131717371));
+    Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…_word_public_topic_text))");
+    return str;
+  }
+  
+  private final String b()
+  {
+    String str = Aladdin.getConfig(296).getString("watch_word_private_topic_text", ozs.g(2131717369));
+    Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…word_private_topic_text))");
+    return str;
+  }
+  
+  private final String c()
+  {
+    String str = Aladdin.getConfig(296).getString("watch_word_public_video_text", ozs.g(2131717372));
+    Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…_word_public_video_text))");
+    return str;
+  }
+  
+  private final String d()
+  {
+    String str = Aladdin.getConfig(296).getString("watch_word_private_video_text", ozs.g(2131717370));
+    Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…word_private_video_text))");
+    return str;
+  }
+  
+  @NotNull
+  public final String a(@NotNull String paramString1, boolean paramBoolean, int paramInt, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "watchWord");
+    Intrinsics.checkParameterIsNotNull(paramString2, "title");
+    paramString1 = new RIJWatchWordShareManager.getClipWording.1(paramString2, paramString1);
+    if (paramInt == 1)
     {
-      localTextView.setTextColor(Color.argb(255, 255, 255, 255));
-      localTextView.setBackgroundResource(2130849407);
-      return localTextView;
-    }
-    localTextView.setTextColor(-89258);
-    localTextView.setBackgroundResource(2130849408);
-    return localTextView;
-  }
-  
-  public qqt a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return this;
-  }
-  
-  public qqt d()
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560228, localRelativeLayout, true);
-    this.jdField_d_of_type_AndroidViewView = localView.findViewById(2131369686);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131372650));
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131376641);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)localView.findViewById(2131369094));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379957));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379815));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131369156));
-    this.jdField_c_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = bggq.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-    localLayoutParams.gravity = 16;
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
-    this.jdField_c_of_type_AndroidWidgetTextView.setId(2131376014);
-    ((FrameLayout)localView.findViewById(2131366695)).addView(this.jdField_c_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370018));
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131380880);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363621));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131366702));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131366701));
-    a(localRelativeLayout);
-    return this;
-  }
-  
-  public qqt e()
-  {
-    return this;
-  }
-  
-  public qqt o()
-  {
-    pxk localpxk;
-    ArticleInfo localArticleInfo;
-    if ((this.jdField_a_of_type_JavaLangObject instanceof pxk))
-    {
-      localpxk = (pxk)this.jdField_a_of_type_JavaLangObject;
-      localArticleInfo = localpxk.a();
-      if (localArticleInfo != null) {}
-    }
-    else
-    {
-      return this;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCellTypeNow", 2, "bindData articleId = " + localArticleInfo.mArticleID + "roomId = " + localArticleInfo.mSubscribeID);
-    }
-    Object localObject1 = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject1).width = bclx.a;
-    ((RelativeLayout.LayoutParams)localObject1).height = (((RelativeLayout.LayoutParams)localObject1).width * 9 / 16);
-    this.jdField_b_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-    if (localArticleInfo.mVideoCoverUrl != null)
-    {
-      localObject1 = localArticleInfo.mVideoCoverUrl;
-      pgk.a((KandianUrlImageView)localObject2, (URL)localObject1, this.jdField_a_of_type_AndroidContentContext, true);
-      if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        jdField_a_of_type_AndroidGraphicsDrawableDrawable = bgmo.b();
+      if (paramBoolean) {
+        return paramString1.invoke(c());
       }
-      localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_ComTencentImageURLImageView.getWidth();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight();
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      return paramString1.invoke(d());
     }
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(localArticleInfo.thirdIcon)) {
-          continue;
-        }
-        localObject1 = new URL("https://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png");
-        localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        ((URLDrawable)localObject1).setDecodeHandler(bgey.a);
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FeedItemCellTypeNow", 2, "configVideoItemUI() ERROR e = " + localMalformedURLException.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localArticleInfo.mTitle);
-        this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-        this.jdField_c_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.removeAllViews();
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.addView(a(56), localLayoutParams);
-        if (localArticleInfo.mVideoPlayCount != 0) {
-          break label766;
-        }
-      }
-      localObject2 = localArticleInfo.mSubscribeName;
-      localObject1 = localObject2;
-      if (((String)localObject2).length() > 18) {
-        localObject1 = localArticleInfo.mSubscribeName.substring(0, 17) + "…";
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      if (localpxk.e() == 0)
-      {
-        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(localArticleInfo.mTitle);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.argb(255, 157, 157, 157));
-        localObject1 = new FrameLayout.LayoutParams(-2, -2);
-        ((FrameLayout.LayoutParams)localObject1).setMargins(bggq.a(this.jdField_a_of_type_AndroidContentContext, 5.0F), 0, 0, bggq.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
-        ((FrameLayout.LayoutParams)localObject1).gravity = 16;
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(a(0), (ViewGroup.LayoutParams)localObject1);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), 0, this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingBottom());
-        localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject1).height = bggq.a(this.jdField_a_of_type_AndroidContentContext, 47.0F);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(this.jdField_a_of_type_AndroidWidgetLinearLayout.getResources().getColor(2131167279));
-        return this;
-        if (localArticleInfo.mSinglePicture != null)
-        {
-          localObject1 = localArticleInfo.mSinglePicture;
-          break;
-        }
-        localObject1 = pha.a(localArticleInfo.mFirstPagePicUrl);
-        break;
-        localObject1 = new URL(localArticleInfo.thirdIcon);
-        continue;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    if (paramBoolean) {
+      return paramString1.invoke(a());
     }
-    for (;;)
-    {
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      return this;
-      label766:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(ryx.c(localArticleInfo.mVideoPlayCount));
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    return paramString1.invoke(b());
+  }
+  
+  public final void a()
+  {
+    ClipboardManager localClipboardManager = (ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard");
+    if (localClipboardManager != null) {
+      localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, (CharSequence)""));
     }
   }
   
-  public void onClick(View paramView) {}
+  public final void a(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "watchWord");
+    Intrinsics.checkParameterIsNotNull(paramString2, "jumpUrl");
+    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() >= 50) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(((Map.Entry)((Map)this.jdField_a_of_type_JavaUtilLinkedHashMap).entrySet().iterator().next()).getKey());
+    }
+    ((Map)this.jdField_a_of_type_JavaUtilLinkedHashMap).put(paramString1, paramString2);
+  }
+  
+  public final void a(@NotNull qsr paramqsr)
+  {
+    Intrinsics.checkParameterIsNotNull(paramqsr, "observer");
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramqsr)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramqsr);
+    }
+  }
 }
 
 

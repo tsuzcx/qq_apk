@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.ImageView;
-import aoch;
+import aoot;
 
 class ChatSettingForTroop$21$1
   implements Runnable
 {
-  ChatSettingForTroop$21$1(ChatSettingForTroop.21 param21, ImageView paramImageView, aoch paramaoch) {}
+  ChatSettingForTroop$21$1(ChatSettingForTroop.21 param21, ImageView paramImageView, aoot paramaoot) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_Aoch);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_Aoot);
   }
 }
 

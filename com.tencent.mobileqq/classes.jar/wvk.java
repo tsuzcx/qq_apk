@@ -1,24 +1,19 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 public class wvk
-  extends wvi
 {
-  protected TextView c = (TextView)a(2131380252);
+  public final int a;
+  public final String a;
+  public final wvj a;
   
-  public wvk(ViewGroup paramViewGroup, int paramInt)
+  public wvk(wvj paramwvj, int paramInt, String paramString)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_Wvj = paramwvj;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(wrs paramwrs)
+  public String toString()
   {
-    if (paramwrs.b > 99)
-    {
-      this.c.setText("99+");
-      return;
-    }
-    this.c.setText(String.valueOf(paramwrs.b));
+    return "Output{intput=" + this.jdField_a_of_type_Wvj + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMessage='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

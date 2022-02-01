@@ -1,24 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.view.MotionEvent;
 
-public class bllu
-  implements DialogInterface.OnDismissListener
+public abstract interface bllu
 {
-  public bllu(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a.a)
-    {
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import anpk;
+import aobl;
 
 public class MayknowRecommendManager$1
   implements Runnable
 {
-  public MayknowRecommendManager$1(anpk paramanpk) {}
+  public MayknowRecommendManager$1(aobl paramaobl) {}
   
   public void run()
   {
-    anpk.a(this.this$0);
+    aobl.a(this.this$0);
   }
 }
 

@@ -1,26 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.video.ADVideoAppDownloadManager;
-import com.tencent.biz.pubaccount.readinjoy.ad.video.ADVideoAppDownloadManager.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ord
-  implements ITMAssistantDownloadClientListener
 {
-  public ord(ADVideoAppDownloadManager paramADVideoAppDownloadManager) {}
+  private static List<ovg> a;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2) {}
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  private ord()
   {
-    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.6.1(this, paramString1, paramInt1));
+    a = new ArrayList();
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  public static ord a()
   {
-    QLog.e("ADVideoAppDownloadManager", 1, "[UniformDL] ABSdkdownload service invalid ");
+    return orf.a();
+  }
+  
+  public List<ovg> a()
+  {
+    if (a == null) {
+      return null;
+    }
+    return a;
+  }
+  
+  public void a()
+  {
+    if (a != null) {
+      a.clear();
+    }
+  }
+  
+  public void a(ovg paramovg)
+  {
+    if ((paramovg == null) || (a == null)) {}
+    while (a.contains(paramovg)) {
+      return;
+    }
+    a.add(paramovg);
+  }
+  
+  public void b(ovg paramovg)
+  {
+    if ((a == null) || (a.size() == 0)) {
+      return;
+    }
+    a.remove(paramovg);
   }
 }
 

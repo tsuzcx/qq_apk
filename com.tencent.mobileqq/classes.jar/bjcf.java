@@ -1,197 +1,55 @@
-import SharpSvrPack.MultiVideoMsg;
-import SharpSvrPack.SharpVideoMsg;
-import VideoSvrPack.VideoCallMsg;
-import com.qq.jce.wup.UniPacket;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract class bjcf
-  implements bjci
+public class bjcf
 {
-  private bjcg jdField_a_of_type_Bjcg;
-  private bjck jdField_a_of_type_Bjck;
+  Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  private Handler jdField_a_of_type_AndroidOsHandler = new bjcg(this, Looper.getMainLooper());
+  Toast jdField_a_of_type_AndroidWidgetToast = null;
   
-  private void a(MultiVideoMsg paramMultiVideoMsg)
-  {
-    UniPacket localUniPacket = new UniPacket();
-    localUniPacket.setServantName("MultiVideo");
-    localUniPacket.setFuncName("MultiVideos2cack");
-    localUniPacket.put("MultiVideoMsg", paramMultiVideoMsg);
-    j(localUniPacket.encode());
-  }
-  
-  private void a(SharpVideoMsg paramSharpVideoMsg)
-  {
-    UniPacket localUniPacket = new UniPacket();
-    localUniPacket.setServantName("SharpSvr");
-    localUniPacket.setFuncName("s2cack");
-    localUniPacket.put("SharpVideoMsg", paramSharpVideoMsg);
-    h(localUniPacket.encode());
-  }
-  
-  private boolean a(int paramInt)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Bjck != null) {
-      bool = this.jdField_a_of_type_Bjck.isSharpVideoMsgSupport(paramInt);
-    }
-    return bool;
-  }
-  
-  private boolean b(int paramInt)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Bjck != null) {
-      bool = this.jdField_a_of_type_Bjck.isMultiVideoMsgSupport(paramInt);
-    }
-    return bool;
-  }
-  
-  protected abstract long a();
+  public bjcf(Context paramContext) {}
   
   public void a()
   {
-    b();
-  }
-  
-  public void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    long l = a();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(paramLong1));
-    MultiVideoMsg localMultiVideoMsg = new MultiVideoMsg();
-    localMultiVideoMsg.ver = 0;
-    localMultiVideoMsg.type = 1;
-    localMultiVideoMsg.csCmd = ((short)(int)paramLong2);
-    localMultiVideoMsg.from_uin = l;
-    localMultiVideoMsg.to_uin = localArrayList;
-    localMultiVideoMsg.video_buff = paramArrayOfByte;
-    paramArrayOfByte = new UniPacket();
-    paramArrayOfByte.setServantName("MultiVideo");
-    paramArrayOfByte.setFuncName("MultiVideoMsg");
-    paramArrayOfByte.put("MultiVideoMsg", localMultiVideoMsg);
-    i(paramArrayOfByte.encode());
-  }
-  
-  public void a(bjcg parambjcg)
-  {
-    this.jdField_a_of_type_Bjcg = parambjcg;
-  }
-  
-  public void a(bjck parambjck)
-  {
-    this.jdField_a_of_type_Bjck = parambjck;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_Bjcg != null) {
-      this.jdField_a_of_type_Bjcg.a(paramString, paramInt);
+    if (this.jdField_a_of_type_AndroidWidgetToast != null) {
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
     }
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    long l = a();
-    VideoCallMsg localVideoCallMsg = new VideoCallMsg();
-    localVideoCallMsg.ver = 1;
-    localVideoCallMsg.type = 1;
-    localVideoCallMsg.lUin = l;
-    localVideoCallMsg.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
-    localVideoCallMsg.vMsg = paramArrayOfByte;
-    paramArrayOfByte = new UniPacket();
-    paramArrayOfByte.setServantName("VideoSvc");
-    paramArrayOfByte.setFuncName("SendVideoMsg");
-    paramArrayOfByte.put("VideoCallMsg", localVideoCallMsg);
-    g(paramArrayOfByte.encode());
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    bjch localbjch = new bjch(null);
+    localbjch.jdField_a_of_type_Int = paramInt4;
+    localbjch.b = paramInt1;
+    localbjch.c = paramInt3;
+    localbjch.d = paramInt2;
+    localMessage.obj = localbjch;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  protected abstract void b();
-  
-  public void b(byte[] paramArrayOfByte)
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bjcg != null)
-    {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
-      if (a(paramArrayOfByte.type))
-      {
-        a(paramArrayOfByte);
-        this.jdField_a_of_type_Bjcg.b(paramArrayOfByte.video_buff);
-      }
-    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    bjch localbjch = new bjch(null);
+    localbjch.jdField_a_of_type_Int = paramInt3;
+    localbjch.jdField_a_of_type_JavaLangString = paramString;
+    localbjch.c = paramInt2;
+    localbjch.d = paramInt1;
+    localMessage.obj = localbjch;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
-  
-  public void c(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Bjcg != null)
-    {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
-      if (a(paramArrayOfByte.type)) {
-        this.jdField_a_of_type_Bjcg.c(paramArrayOfByte.video_buff);
-      }
-    }
-  }
-  
-  public void d(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Bjcg != null)
-    {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
-      bjcq.c("VideoChannelBase", String.format("receiveMultiVideoMsg type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
-      if (b(paramArrayOfByte.type))
-      {
-        a(paramArrayOfByte);
-        this.jdField_a_of_type_Bjcg.d(paramArrayOfByte.video_buff);
-      }
-    }
-  }
-  
-  public void e(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Bjcg != null)
-    {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
-      bjcq.c("VideoChannelBase", String.format("receiveMultiVideoAck type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
-      if (b(paramArrayOfByte.type)) {
-        this.jdField_a_of_type_Bjcg.e(paramArrayOfByte.video_buff);
-      }
-    }
-  }
-  
-  public void f(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Bjcg != null)
-    {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (VideoCallMsg)localUniPacket.getByClass("VideoCallMsg", new VideoCallMsg());
-      this.jdField_a_of_type_Bjcg.a(paramArrayOfByte.vMsg);
-    }
-  }
-  
-  protected abstract void g(byte[] paramArrayOfByte);
-  
-  protected abstract void h(byte[] paramArrayOfByte);
-  
-  protected abstract void i(byte[] paramArrayOfByte);
-  
-  protected abstract void j(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjcf
  * JD-Core Version:    0.7.0.1
  */

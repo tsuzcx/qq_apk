@@ -1,26 +1,43 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.JobContext;
 
 class yfo
-  extends QQUIEventReceiver<yfm, wxy>
+  implements woy<ygb, ygc>
 {
-  public yfo(@NonNull yfm paramyfm)
-  {
-    super(paramyfm);
-  }
+  yfo(yfn paramyfn, JobContext paramJobContext, String paramString) {}
   
-  public void a(@NonNull yfm paramyfm, @NonNull wxy paramwxy)
+  public void a(@NonNull ygb paramygb, @Nullable ygc paramygc, @NonNull ErrorMessage paramErrorMessage)
   {
-    yqp.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramwxy.toString());
-    if (paramwxy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      yfm.a(paramyfm).a(paramwxy.jdField_a_of_type_JavaLangString, paramwxy.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      yuk.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wxy.class;
+    if ((paramygc == null) || (paramErrorMessage.isFail()))
+    {
+      yuk.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
+      yfn.a(this.jdField_a_of_type_Yfn, paramErrorMessage);
+      return;
+    }
+    if (this.jdField_a_of_type_Yfn.a == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      ((wst)wth.a(15)).a(paramygc.a, this.jdField_a_of_type_JavaLangString, bool, true);
+      paramygb = new yfj(bool, paramygc.a, paramygc.b, paramygc.c);
+      try
+      {
+        yfn.a(this.jdField_a_of_type_Yfn, paramygb);
+        return;
+      }
+      catch (NullPointerException paramygb)
+      {
+        yuk.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramygb);
+        yfn.b(this.jdField_a_of_type_Yfn, new ErrorMessage());
+        return;
+      }
+    }
   }
 }
 

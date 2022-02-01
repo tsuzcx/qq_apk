@@ -1,28 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import java.util.List;
 
 public class xas
-  extends wla
+  extends wip
 {
-  public List<wqp> a = new ArrayList();
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
-  public xas(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
+  public String toString()
   {
-    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
-    {
-      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
-      while (paramRspGetBatchFeedFeature.hasNext())
-      {
-        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
-        wqp localwqp = new wqp();
-        localwqp.a(localFeedFeature);
-        this.a.add(localwqp);
-      }
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
     }
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 

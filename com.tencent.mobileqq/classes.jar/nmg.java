@@ -1,22 +1,8 @@
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class nmg
-  implements nld
+public abstract interface nmg
 {
-  public void a(Runnable paramRunnable)
-  {
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
-  }
+  public abstract void loaded(String paramString, int paramInt);
   
-  public void b(Runnable paramRunnable)
-  {
-    ThreadManager.executeOnFileThread(paramRunnable);
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    ThreadManager.post(paramRunnable, 5, null, false);
-  }
+  public abstract void progress(int paramInt);
 }
 
 

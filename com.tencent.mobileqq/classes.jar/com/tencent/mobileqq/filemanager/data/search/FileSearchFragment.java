@@ -5,21 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import atic;
-import atig;
-import bbio;
-import bbmy;
-import bbtj;
+import atzw;
+import auaa;
+import bcbi;
+import bcfr;
+import bcmc;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
 
 public class FileSearchFragment
-  extends BaseSearchFragment<bbmy>
+  extends BaseSearchFragment<bcfr>
 {
   protected boolean a;
   public String b;
-  public List<bbmy> b;
+  public List<bcfr> b;
   int c = -1;
   
   public FileSearchFragment()
@@ -27,19 +27,19 @@ public class FileSearchFragment
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public bbio a()
+  public bcbi a()
   {
-    return new atic(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new atzw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public bbtj a()
+  public bcmc a()
   {
     return new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
   }
   
   public String a()
   {
-    return atig.jdField_b_of_type_JavaLangString;
+    return auaa.jdField_b_of_type_JavaLangString;
   }
   
   public void b(boolean paramBoolean)
@@ -50,7 +50,7 @@ public class FileSearchFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367877);
+    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367946);
     if (!this.jdField_a_of_type_Boolean) {
       paramViewGroup.setVisibility(8);
     }

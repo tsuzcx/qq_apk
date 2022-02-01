@@ -1,84 +1,259 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
 
 public class aitc
-  implements aisq
+  extends aisr
 {
-  public aitc(SearchBaseFragment paramSearchBaseFragment) {}
+  int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString;
+  private int jdField_g_of_type_Int;
+  private String jdField_g_of_type_JavaLangString;
+  private int jdField_h_of_type_Int;
+  private String jdField_h_of_type_JavaLangString;
+  private String i;
+  private String j;
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bbmx> paramList)
+  public int a()
   {
-    int i = 3;
-    this.a.j();
-    if (paramBoolean)
-    {
-      if (paramInt3 == 1) {
-        if (this.a.a != null) {
-          this.a.a.sendMessage(this.a.a.obtainMessage(4, paramList));
-        }
-      }
-      for (;;)
-      {
-        return;
-        if (paramInt3 == 2)
-        {
-          if (this.a.a != null) {
-            this.a.a.sendEmptyMessage(5);
-          }
-        }
-        else if ((paramObject != null) && ((paramObject instanceof ArrayList)))
-        {
-          paramObject = (ArrayList)paramObject;
-          if (paramObject.size() == 0)
-          {
-            if (this.a.a != null)
-            {
-              paramObject = this.a.a;
-              if (!this.a.b) {
-                break label159;
-              }
-            }
-            label159:
-            for (paramInt1 = 3;; paramInt1 = 2)
-            {
-              paramObject.sendEmptyMessage(paramInt1);
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
-              return;
-            }
-          }
-          if (paramObject.size() > 0) {}
-          try
-          {
-            paramString = (aitt)paramObject.get(0);
-            if ((this.a.a(paramObject)) && (this.a.a != null))
-            {
-              this.a.a.sendEmptyMessage(0);
-              return;
-            }
-          }
-          catch (Exception paramObject)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
-            }
-            paramObject = this.a.a;
-            if (!this.a.b) {}
-          }
-        }
-      }
-      for (paramInt1 = i;; paramInt1 = 2)
-      {
-        paramObject.sendEmptyMessage(paramInt1);
-        return;
-      }
+    return 0;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int d()
+  {
+    return this.jdField_f_of_type_Int;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public int e()
+  {
+    return this.jdField_g_of_type_Int;
+  }
+  
+  public String e()
+  {
+    return this.jdField_f_of_type_JavaLangString;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_h_of_type_Int;
+  }
+  
+  public String f()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.jdField_g_of_type_JavaLangString = paramString;
+  }
+  
+  public int g()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_Int;
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public String g()
+  {
+    return this.jdField_g_of_type_JavaLangString;
+  }
+  
+  public void g(int paramInt)
+  {
+    this.jdField_g_of_type_Int = paramInt;
+  }
+  
+  public void g(String paramString)
+  {
+    this.jdField_h_of_type_JavaLangString = paramString;
+  }
+  
+  public int h()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_Int;
+    }
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public String h()
+  {
+    return this.jdField_h_of_type_JavaLangString;
+  }
+  
+  public void h(int paramInt)
+  {
+    this.jdField_h_of_type_Int = paramInt;
+  }
+  
+  public void h(String paramString)
+  {
+    this.i = paramString;
+  }
+  
+  public String i()
+  {
+    return this.j;
+  }
+  
+  public void i(String paramString)
+  {
+    this.j = paramString;
+  }
+  
+  public String j()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public String k()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String l()
+  {
+    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      this.jdField_e_of_type_JavaLangString = aiti.d(k());
+    }
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "imgUrl=" + this.jdField_a_of_type_JavaLangString + " thumbUrl=" + this.jdField_b_of_type_JavaLangString + " imgMd5=" + this.jdField_c_of_type_JavaLangString + " thumbMd5=" + this.jdField_d_of_type_JavaLangString + " imgWidth=" + this.jdField_b_of_type_Int + " imgHeight=" + this.jdField_c_of_type_Int + " thumbWidth=" + this.jdField_d_of_type_Int + " thumbHeight=" + this.jdField_e_of_type_Int + " imgFileSize=" + this.jdField_a_of_type_Long + " thumbFileSize=" + this.jdField_b_of_type_Long;
   }
 }
 

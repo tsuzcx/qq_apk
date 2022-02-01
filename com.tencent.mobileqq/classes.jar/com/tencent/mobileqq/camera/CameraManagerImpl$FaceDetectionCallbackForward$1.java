@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.camera;
 
 import android.hardware.Camera.Face;
-import aqar;
-import aqbc;
+import aqpt;
+import aqqe;
 
 public class CameraManagerImpl$FaceDetectionCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$FaceDetectionCallbackForward$1(aqbc paramaqbc, Camera.Face[] paramArrayOfFace) {}
+  public CameraManagerImpl$FaceDetectionCallbackForward$1(aqqe paramaqqe, Camera.Face[] paramArrayOfFace) {}
   
   public void run()
   {
-    aqbc.a(this.this$0).a(this.a, aqbc.a(this.this$0));
+    aqqe.a(this.this$0).a(this.a, aqqe.a(this.this$0));
   }
 }
 

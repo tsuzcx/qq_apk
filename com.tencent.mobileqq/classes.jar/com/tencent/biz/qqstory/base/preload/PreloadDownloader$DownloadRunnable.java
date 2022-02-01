@@ -4,12 +4,12 @@ import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
-import wfy;
-import wgg;
-import wgv;
-import wgz;
-import whh;
-import wpm;
+import wjt;
+import wkb;
+import wkq;
+import wku;
+import wlc;
+import wth;
 
 class PreloadDownloader$DownloadRunnable
   implements Runnable
@@ -41,15 +41,15 @@ class PreloadDownloader$DownloadRunnable
       }
       else
       {
-        if ((this.this$0.jdField_a_of_type_Whh != null) && (!this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
-          this.this$0.jdField_a_of_type_Whh.a(this.this$0.a());
+        if ((this.this$0.jdField_a_of_type_Wlc != null) && (!this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
+          this.this$0.jdField_a_of_type_Wlc.a(this.this$0.a());
         }
         ??? = this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
-        this.this$0.jdField_a_of_type_Wgv = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
-        wgv localwgv1 = this.this$0.jdField_a_of_type_Wgv;
-        if (localwgv1 != null)
+        this.this$0.jdField_a_of_type_Wkq = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
+        wkq localwkq1 = this.this$0.jdField_a_of_type_Wkq;
+        if (localwkq1 != null)
         {
-          localwgv1.c = ((PreloadQueue)???).getId();
+          localwkq1.c = ((PreloadQueue)???).getId();
           for (;;)
           {
             Iterator localIterator;
@@ -59,25 +59,25 @@ class PreloadDownloader$DownloadRunnable
               if (!localIterator.hasNext()) {
                 break;
               }
-              wgz localwgz = (wgz)((WeakReference)localIterator.next()).get();
-              if (localwgz != null) {
-                localwgz.a(localwgv1.jdField_b_of_type_JavaLangString, localwgv1.jdField_a_of_type_Int, localwgv1);
+              wku localwku = (wku)((WeakReference)localIterator.next()).get();
+              if (localwku != null) {
+                localwku.a(localwkq1.jdField_b_of_type_JavaLangString, localwkq1.jdField_a_of_type_Int, localwkq1);
               }
             }
             localIterator.remove();
           }
-          localwgv2.jdField_b_of_type_Int = 1;
-          if (TextUtils.isEmpty(localwgv2.d))
+          localwkq2.jdField_b_of_type_Int = 1;
+          if (TextUtils.isEmpty(localwkq2.d))
           {
-            ??? = ((wfy)wpm.a(28)).a(localwgv2.jdField_b_of_type_JavaLangString, localwgv2.jdField_a_of_type_Int);
-            localwgv2.d = ((wgg)???).jdField_b_of_type_JavaLangString;
-            localwgv2.jdField_a_of_type_Boolean = ((wgg)???).jdField_a_of_type_Boolean;
-            localwgv2.f = ((wgg)???).c;
-            this.this$0.b(localwgv2);
+            ??? = ((wjt)wth.a(28)).a(localwkq2.jdField_b_of_type_JavaLangString, localwkq2.jdField_a_of_type_Int);
+            localwkq2.d = ((wkb)???).jdField_b_of_type_JavaLangString;
+            localwkq2.jdField_a_of_type_Boolean = ((wkb)???).jdField_a_of_type_Boolean;
+            localwkq2.f = ((wkb)???).c;
+            this.this$0.b(localwkq2);
           }
           else
           {
-            this.this$0.b(localwgv2);
+            this.this$0.b(localwkq2);
           }
         }
       }

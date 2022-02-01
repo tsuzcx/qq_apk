@@ -1,44 +1,40 @@
+import android.content.Context;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesn
   implements CompoundButton.OnCheckedChangeListener
 {
-  public aesn(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aesn(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
-    }
-    if (!NotifyPushSettingActivity.a(this.a).c())
+    int j = 1;
+    Object localObject = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
     {
-      NotifyPushSettingActivity.a(this.a).a(this.a);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-      FormSwitchItem localFormSwitchItem = NotifyPushSettingActivity.a(this.a);
-      if (!NotifyPushSettingActivity.a(this.a).a()) {
-        bool = true;
+      i = 2;
+      GesturePWDUtils.setGesturePWDState((Context)localObject, str, i);
+      this.a.a(paramBoolean);
+      localObject = this.a.app;
+      if (!paramBoolean) {
+        break label105;
       }
-      localFormSwitchItem.setChecked(bool);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
-    for (;;)
+    label105:
+    for (int i = j;; i = 0)
     {
+      bdll.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
       EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      mqo.a(this.a.app.getCurrentAccountUin(), paramBoolean);
-      if (!paramBoolean) {
-        bcst.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
-      }
+      i = 1;
+      break;
     }
   }
 }

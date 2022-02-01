@@ -1,15 +1,18 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 class nrv
-  implements bfpo
 {
-  nrv(nre paramnre) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  boolean jdField_a_of_type_Boolean;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    nre.a(this.a, paramJSONObject);
-  }
+  nrv(nrk paramnrk) {}
 }
 
 

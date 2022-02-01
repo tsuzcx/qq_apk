@@ -1,26 +1,37 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.securemodule.impl.AppInfo;
+import com.tencent.securemodule.service.CloudScanListener;
+import java.util.List;
 
-class aoeo
-  implements DialogInterface.OnClickListener
+public class aoeo
+  implements CloudScanListener
 {
-  aoeo(aoen paramaoen, Activity paramActivity) {}
+  public aoeo(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFinish(int paramInt)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("back_for_hidden_chat", true);
-    paramDialogInterface.setFlags(603979776);
-    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
-    bcst.b(this.jdField_a_of_type_Aoen.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
+    if (paramInt == 0) {
+      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.e(this.a)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
+    }
+  }
+  
+  public void onRiskFoud(List<AppInfo> paramList) {}
+  
+  public void onRiskFound()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("security_scan", 2, "Find Risk");
+    }
+    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.d(this.a)).edit().putBoolean("security_scan_last_result", true).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoeo
  * JD-Core Version:    0.7.0.1
  */

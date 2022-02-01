@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import adea;
-import aded;
+import admy;
+import adnb;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 class DataJsPlugin$27
   implements Runnable
 {
-  DataJsPlugin$27(DataJsPlugin paramDataJsPlugin, adea paramadea) {}
+  DataJsPlugin$27(DataJsPlugin paramDataJsPlugin, admy paramadmy) {}
   
   public void run()
   {

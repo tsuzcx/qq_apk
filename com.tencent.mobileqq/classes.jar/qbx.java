@@ -1,20 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qbx
+  implements ViewBase.IBuilder
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public ViewBase build(VafContext paramVafContext)
   {
-    JSONObject localJSONObject = new JSONObject();
-    qcd.a(paramBaseArticleInfo, localJSONObject, true);
-    qcd.a(paramBaseArticleInfo, localJSONObject);
-    qcd.b(paramBaseArticleInfo, localJSONObject);
-    qcd.e(paramBaseArticleInfo, localJSONObject);
-    qcd.l(paramBaseArticleInfo, localJSONObject);
-    qcd.g(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_none_img_cell");
-    qcd.a(localJSONObject, paramBaseArticleInfo);
-    return localJSONObject;
+    return new qbu(paramVafContext);
   }
 }
 

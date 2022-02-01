@@ -1,17 +1,34 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import java.io.IOException;
+import java.util.LinkedHashMap;
 
-@TargetApi(9)
 public class aqax
-  implements aqao
 {
-  private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
-  private Camera jdField_a_of_type_AndroidHardwareCamera;
-  private IOException jdField_a_of_type_JavaIoIOException;
-  private boolean jdField_a_of_type_Boolean;
-  private Camera.Parameters b;
+  public String a;
+  public LinkedHashMap<String, String> a;
+  public String b = "";
+  public String c = "1.0.0.1";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  
+  public aqax()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof aqax)) {}
+    do
+    {
+      return false;
+      paramObject = (aqax)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
+    return true;
+  }
 }
 
 

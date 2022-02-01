@@ -1,15 +1,27 @@
-import android.net.Network;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.qphone.base.util.QLog;
 
 class awcq
-  implements awct
+  extends BroadcastReceiver
 {
-  awcq(awco paramawco, String paramString, awcr paramawcr) {}
+  awcq(awcc paramawcc) {}
   
-  public void a(Network paramNetwork)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    awco.a(this.jdField_a_of_type_Awco).removeCallbacksAndMessages(null);
-    awco.a(this.jdField_a_of_type_Awco, this.jdField_a_of_type_JavaLangString, paramNetwork, new awcs(this.jdField_a_of_type_Awcr, paramNetwork));
+    paramContext = paramIntent.getAction();
+    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
+    {
+      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
+      NowLive.killPluginProcess();
+    }
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
+      return;
+    }
+    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
+    NowLive.killPluginProcess();
   }
 }
 

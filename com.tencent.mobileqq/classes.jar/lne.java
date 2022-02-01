@@ -1,24 +1,27 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.gaudio.BaseGaInvite;
 
 public class lne
-  implements mhj
+  implements lnf
 {
-  public lne(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
+  public lne(BaseGaInvite paramBaseGaInvite) {}
   
-  public void a()
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373371, false);
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373372, false);
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
-  }
-  
-  public void b()
-  {
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772169);
+    for (boolean bool = true;; bool = false)
+    {
+      if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
+      {
+        paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
+      }
+      return bool;
+    }
   }
 }
 

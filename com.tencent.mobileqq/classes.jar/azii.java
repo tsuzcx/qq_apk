@@ -1,17 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-public class azii
-  implements CompoundButton.OnCheckedChangeListener
+class azii
+  extends azik
 {
-  public azii(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  azii(azih paramazih) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    StickyNotePublishFragment.a(this.a, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      azih.a(this.a);
+    }
   }
 }
 

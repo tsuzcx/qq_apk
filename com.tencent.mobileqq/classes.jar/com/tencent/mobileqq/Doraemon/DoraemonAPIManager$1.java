@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
-import aded;
+import adnb;
 
 public class DoraemonAPIManager$1
   implements Runnable
 {
-  public DoraemonAPIManager$1(aded paramaded) {}
+  public DoraemonAPIManager$1(adnb paramadnb) {}
   
   public void run()
   {
-    aded.a(this.this$0);
+    adnb.a(this.this$0);
   }
 }
 

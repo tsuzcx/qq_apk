@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import java.util.List;
 
-public class oup
-  implements biaw
+class oup
+  extends ovd
 {
-  public oup(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  public void a()
+  oup(otv paramotv, boolean paramBoolean, List paramList)
   {
-    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
-      this.a.finish();
-    }
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    paramovg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.c(this.jdField_a_of_type_Otv), 6);
   }
 }
 

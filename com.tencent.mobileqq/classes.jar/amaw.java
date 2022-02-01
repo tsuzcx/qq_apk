@@ -1,7 +1,22 @@
-class amaw
+public class amaw
 {
-  String a;
-  String b;
+  public int a;
+  public boolean a;
+  
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 90: 
+    default: 
+      return 0;
+    case 0: 
+      return 270;
+    case 180: 
+      return 90;
+    }
+    return 180;
+  }
 }
 
 

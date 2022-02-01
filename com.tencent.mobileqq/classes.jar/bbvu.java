@@ -1,15 +1,6 @@
-import android.view.ViewGroup;
-
-public class bbvu
-  extends bbvs
+public abstract interface bbvu
 {
-  public static final String a = bbvu.class.getSimpleName();
-  
-  public bbvu(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(paramViewGroup, 2131559820);
-    a(a());
-  }
+  public abstract void a(String paramString);
 }
 
 

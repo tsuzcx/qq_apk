@@ -8,6 +8,7 @@ import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.config.HwNetSegConf;
 import com.tencent.mobileqq.highway.ipv6.HappyEyeballsRace;
 import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
+import com.tencent.mobileqq.highway.ipv6.Ipv6Flags;
 import com.tencent.mobileqq.highway.segment.HwRequest;
 import com.tencent.mobileqq.highway.segment.HwResponse;
 import com.tencent.mobileqq.highway.segment.RequestWorker;
@@ -17,6 +18,7 @@ import com.tencent.mobileqq.highway.utils.BdhLogUtil;
 import com.tencent.mobileqq.highway.utils.EndPoint;
 import com.tencent.mobileqq.highway.utils.HwNetworkCenter;
 import com.tencent.mobileqq.highway.utils.HwStatisticMgr;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -36,22 +38,22 @@ public class ConnManager
   private AtomicBoolean bUseHttpPatch = new AtomicBoolean(false);
   private int connCount = -1;
   public ArrayList<ConnReportInfo> connInfoList = new ArrayList();
-  public volatile int connectedConn;
+  public volatile int connectedConn = 0;
   public ConcurrentHashMap<Integer, IConnection> connections = new ConcurrentHashMap();
   public HwEngine engine;
   public ConcurrentHashMap<Integer, Runnable> heartBreaks = new ConcurrentHashMap();
   private int iHttpPatchConnId = -1;
-  public EndPoint lastEndPoint;
+  public EndPoint lastEndPoint = null;
   private HappyEyeballsRace mHERace = new HappyEyeballsRace();
   public boolean mHasIpv6List;
   private ConcurrentHashMap<String, String> mIpTimeOutCounter = new ConcurrentHashMap();
   private List<EndPoint> mReportEndPoint;
-  private int mReportFailCnt;
-  private boolean mReportHasStart;
+  private int mReportFailCnt = 0;
+  private boolean mReportHasStart = false;
   private long mReportStart = -1L;
-  private int mReportSuccCnt;
+  private int mReportSuccCnt = 0;
   public volatile AtomicLong vConnCost = new AtomicLong(-1L);
-  public volatile int vConnErrCode;
+  public volatile int vConnErrCode = 0;
   
   public ConnManager(HwEngine paramHwEngine)
   {
@@ -67,7 +69,7 @@ public class ConnManager
   private void createNewConnectionIfNeed(int paramInt, boolean paramBoolean)
   {
     int j;
-    label366:
+    label362:
     for (int i = 1;; i = j)
     {
       for (;;)
@@ -76,7 +78,7 @@ public class ConnManager
         {
           j = (int)this.engine.getCurrentConfig().curConnNum;
           if ((paramBoolean) || (paramInt > 1)) {
-            break label366;
+            break label362;
           }
           j = i;
           if (this.bUseHttpPatch.get()) {
@@ -101,14 +103,14 @@ public class ConnManager
               return;
             }
           }
-          paramBoolean = Ipv6Config.getInstance().isIpv6SwitchOpen(this.engine);
+          paramBoolean = isIpv6SwitchOpen(this.engine);
         }
         catch (Exception localException)
         {
           BdhLogUtil.LogException("C", "Create Conn Error.", localException);
           return;
         }
-        int k = Ipv6Config.getInstance().getNetType();
+        int k = NetConnInfoCenter.getActiveNetIpFamily(true);
         boolean bool = hasIpv6List();
         this.mHasIpv6List = bool;
         BdhLogUtil.LogEvent("C", "CreateNewConnectionIfNeed : ipv6SwitchOpen = " + paramBoolean + " , netStack = " + k + " , hasIpv6List = " + bool);
@@ -210,13 +212,19 @@ public class ConnManager
   
   private void startRacing(int paramInt)
   {
+    boolean bool = true;
     BdhLogUtil.LogEvent("C", "startRacing . ");
     this.mHERace.mIsRacing = true;
-    boolean bool = Ipv6Config.getInstance().isIpv6BDHFirst(this.engine);
-    BdhLogUtil.LogEvent("C", "startRacing，ipv6First =  " + bool);
-    createRacingConn(paramInt, false, bool);
-    this.mHERace.mRacingRunnable = new ConnManager.1(this, paramInt, bool);
-    this.engine.mRequestWorker.mRequestHandler.postDelayed(this.mHERace.mRacingRunnable, Ipv6Config.getInstance().mConnAttemptDelay);
+    if ((isIpv6SwitchOpen(this.engine)) && (Ipv6Config.getFlags().isIpv6BDHFirst())) {}
+    for (;;)
+    {
+      BdhLogUtil.LogEvent("C", "startRacing，ipv6First =  " + bool);
+      createRacingConn(paramInt, false, bool);
+      this.mHERace.mRacingRunnable = new ConnManager.1(this, paramInt, bool);
+      this.engine.mRequestWorker.mRequestHandler.postDelayed(this.mHERace.mRacingRunnable, Ipv6Config.getFlags().mConnAttemptDelay);
+      return;
+      bool = false;
+    }
   }
   
   public long getConnCost()
@@ -267,6 +275,16 @@ public class ConnManager
   public boolean isIpv6Fast()
   {
     return this.mHERace.mIsIpv6Fast;
+  }
+  
+  public boolean isIpv6SwitchOpen(HwEngine paramHwEngine)
+  {
+    if ((paramHwEngine != null) && (paramHwEngine.ipv6Switch))
+    {
+      BdhLogUtil.LogEvent("E", "engine.ipv6Switch is true");
+      return true;
+    }
+    return false;
   }
   
   public void onConnect(boolean paramBoolean, int paramInt1, IConnection paramIConnection, EndPoint paramEndPoint, int paramInt2, ConnReportInfo paramConnReportInfo)

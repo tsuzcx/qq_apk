@@ -1,20 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class tne
-  implements tln
+class tne
+  implements ViewFactory.FoundClickableViewListener
 {
-  public tne(BridgeModule paramBridgeModule, String paramString) {}
+  tne(tnd paramtnd, Context paramContext) {}
   
-  public void a()
+  public void onFound(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
+    paramViewBase.setOnClickListener(new tnf(this));
   }
 }
 

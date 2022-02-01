@@ -1,77 +1,25 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.1;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.2;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.3;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajfm
-  extends anqd
+  implements View.OnClickListener
 {
-  public ajfm(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public ajfm(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing()))
-    {
-      this.a.jdField_a_of_type_Biau.dismiss();
-      paramString = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718381);
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString, 0).b(this.a.a());
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    if (this.a.jdField_a_of_type_Ajdg != null) {
-      this.a.jdField_a_of_type_Ajdg.a(new TroopNotifyAndRecommendView.9.3(this, paramString1, paramBoolean, paramString3, paramInt3, paramString2, paramString4, paramInt1, paramInt2));
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopNotifyAndRecommendView", 2, "onGetSystemMsgFin.bengin");
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_Ajdg != null) {
-        this.a.jdField_a_of_type_Ajdg.a(new TroopNotifyAndRecommendView.9.2(this, paramBoolean1, paramList));
-      }
-      return;
-    }
-    catch (Exception paramList)
-    {
-      paramList.printStackTrace();
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopNotifyAndRecommendView", 2, "onGetSuspiciousSystemMsgFin.bengin");
-    }
-    if (((Activity)this.a.jdField_a_of_type_AndroidContentContext).isFinishing()) {}
+    int i = Face2FaceAddContactFragment.a(this.a).length();
+    if (i >= 4) {}
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      try
-      {
-        if (this.a.jdField_a_of_type_Ajdg != null)
-        {
-          this.a.jdField_a_of_type_Ajdg.a(new TroopNotifyAndRecommendView.9.1(this, paramBoolean1, paramBoolean2, paramList));
-          return;
-        }
-      }
-      catch (Exception paramList)
-      {
-        paramList.printStackTrace();
-        QLog.d("TroopNotifyAndRecommendView", 1, "onGetSuspiciousSystemMsgFin failed", paramList);
-      }
+      Face2FaceAddContactFragment.a(this.a, paramView, i);
+      i = Face2FaceAddContactFragment.a(this.a).length();
+      Face2FaceAddContactFragment.a(this.a, i);
+      Face2FaceAddContactFragment.b(this.a, i);
     }
   }
 }

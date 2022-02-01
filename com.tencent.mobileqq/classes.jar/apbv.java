@@ -1,33 +1,108 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.InOutQQ;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.ReqBody;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
-class apbv
-  implements apcq
+public class apbv
+  extends anud
 {
-  apbv(apbt paramapbt, apbx paramapbx, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  private List<apbw> a = new ArrayList();
   
-  public void a()
+  public apbv(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Apbx != null) {
-      this.jdField_a_of_type_Apbx.e();
+    super(paramQQAppInterface);
+  }
+  
+  /* Error */
+  public void a(apbw paramapbw)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +18 -> 21
+    //   6: aload_0
+    //   7: getfield 18	apbv:a	Ljava/util/List;
+    //   10: aload_1
+    //   11: invokeinterface 26 2 0
+    //   16: istore_2
+    //   17: iload_2
+    //   18: ifeq +6 -> 24
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: return
+    //   24: aload_0
+    //   25: getfield 18	apbv:a	Ljava/util/List;
+    //   28: aload_1
+    //   29: invokeinterface 29 2 0
+    //   34: pop
+    //   35: goto -14 -> 21
+    //   38: astore_1
+    //   39: aload_0
+    //   40: monitorexit
+    //   41: aload_1
+    //   42: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	43	0	this	apbv
+    //   0	43	1	paramapbw	apbw
+    //   16	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	17	38	finally
+    //   24	35	38	finally
+  }
+  
+  public void a(List<oidb_cmd0xe27.InOutQQ> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Apbx != null) {
-      this.jdField_a_of_type_Apbx.b(paramInt);
+    int i = paramList.size();
+    if (i > 20) {
+      paramList.subList(i - 20, i);
     }
+    oidb_cmd0xe27.ReqBody localReqBody = new oidb_cmd0xe27.ReqBody();
+    localReqBody.rpt_msg_in_out_qq.set(paramList);
+    sendPbReq(makeOIDBPkg("OidbSvc.0xe27", 3623, 1, localReqBody.toByteArray()));
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void b(apbw paramapbw)
   {
-    if (this.jdField_a_of_type_Apbx != null) {}
+    if ((paramapbw == null) || (!this.a.contains(paramapbw))) {
+      return;
+    }
+    this.a.remove(paramapbw);
   }
   
-  public void a(boolean paramBoolean)
+  protected Class<? extends anui> observerClass()
   {
-    if (this.jdField_a_of_type_Apbx != null) {
-      this.jdField_a_of_type_Apbx.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQDailyHandler", 0, "receive from front back report: " + paramFromServiceMsg.isSuccess());
+    }
+    oidb_cmd0xe27.RspBody localRspBody = new oidb_cmd0xe27.RspBody();
+    if (parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody) == 0)
+    {
+      paramObject = this.a.iterator();
+      while (paramObject.hasNext())
+      {
+        apbw localapbw = (apbw)paramObject.next();
+        if (localapbw != null) {
+          localapbw.a(paramToServiceMsg, paramFromServiceMsg, localRspBody);
+        }
+      }
     }
   }
 }

@@ -9,7 +9,7 @@ class SPlayerVideoView$3
   
   public void run()
   {
-    ((View)SPlayerVideoView.access$600(this.this$0)).requestLayout();
+    ((View)SPlayerVideoView.access$500(this.this$0)).requestLayout();
   }
 }
 

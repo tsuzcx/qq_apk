@@ -1,24 +1,15 @@
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-class akgo
-  extends AccountObserver
+public class akgo
 {
-  akgo(akgn paramakgn) {}
-  
-  public void onUpdateSKey(String paramString1, String paramString2)
-  {
-    if (paramString1 == null)
-    {
-      akgn.b(this.a, null);
-      akgn.a(this.a, null);
-      this.a.b();
-      return;
-    }
-    this.a.a(akgn.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    akgn.a(this.a, null);
-  }
+  public int a;
+  public long a;
+  public Context a;
+  public QQAppInterface a;
+  public RedTouch a;
+  public String a;
 }
 
 

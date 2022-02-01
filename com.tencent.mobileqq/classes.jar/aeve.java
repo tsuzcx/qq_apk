@@ -1,56 +1,21 @@
-import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
 
 public class aeve
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public aeve(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public aeve(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramView.getId())
+    if (!this.a.a)
     {
+      bdll.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
+      this.a.a = true;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.finish();
-      continue;
-      aevt.a(this.a);
-      oat.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
-      Object localObject1 = (baif)this.a.app.getManager(36);
-      Object localObject2 = ((baif)localObject1).a("101000.101001");
-      if ((localObject2 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() == 1)) {
-        bcst.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
-      }
-      ((baif)localObject1).b("101000.101001");
-      continue;
-      localObject1 = (String)paramView.getTag(-1);
-      localObject2 = (String)paramView.getTag(-2);
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject1 + ", name = " + (String)localObject2);
-        }
-      }
-      else
-      {
-        nmp.a(this.a.app, this.a, (String)localObject2, (String)localObject1, "IvrEnterpriseDetailEngineFalse");
-        continue;
-        aevt.a(this.a, (String)this.a.d.getTag());
-        oat.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
-        continue;
-        aevt.a(this.a, (String)this.a.d.getTag());
-      }
-    }
+    return false;
   }
 }
 

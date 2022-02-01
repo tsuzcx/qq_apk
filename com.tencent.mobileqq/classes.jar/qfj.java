@@ -1,14 +1,38 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+
 class qfj
-  implements qvq
+  implements URLDrawable.URLDrawableListener
 {
-  qfj(qfa paramqfa, pxk parampxk) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void a()
+  qfj(qfh paramqfh, String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    spb localspb = this.jdField_a_of_type_Pxk.a().a();
-    if (localspb != null) {
-      localspb.a(null, this.jdField_a_of_type_Pxk.a(), 1);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 3) {
+      paramURLDrawable.restartDownload();
     }
+    for (;;)
+    {
+      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadFailed :" + this.jdField_a_of_type_JavaLangString + "  reTry: " + this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, paramURLDrawable);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onLoadSuccessed :" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, paramURLDrawable);
   }
 }
 

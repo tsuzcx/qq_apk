@@ -1,68 +1,21 @@
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xma
-  extends AbsVideoInfoWidget
+class xma
+  implements View.OnClickListener
 {
-  private xmc a = new xmc(this);
-  private boolean e;
+  xma(xlz paramxlz, xly paramxly) {}
   
-  public xma(ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    super(paramViewGroup);
+    if (VideoCoverListBar.a(this.jdField_a_of_type_Xlz.jdField_a_of_type_Xly.a) != null) {
+      VideoCoverListBar.a(this.jdField_a_of_type_Xlz.jdField_a_of_type_Xly.a).a(xlz.a(this.jdField_a_of_type_Xlz));
+    }
+    yup.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", xlz.a(this.jdField_a_of_type_Xlz) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public String a()
-  {
-    return "LoadingMoreWidget";
-  }
-  
-  public xmc a()
-  {
-    return this.a;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new xmb(this), "");
-  }
-  
-  public void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
-  public boolean a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return this.e;
-  }
-  
-  public int b()
-  {
-    return 2131561854;
-  }
-  
-  public void d()
-  {
-    this.e = true;
-    i();
-    yqp.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
-  }
-  
-  public void e()
-  {
-    this.e = false;
-    k();
-    yqp.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
-  }
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

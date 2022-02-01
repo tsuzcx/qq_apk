@@ -1,25 +1,20 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class bccm
-  implements bccq
+public class bccm
+  implements View.OnTouchListener
 {
-  bccm(BusinessObserver paramBusinessObserver) {}
+  public bccm(FunctionSearchFragment paramFunctionSearchFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dataErrorMsg", paramString);
-    localBundle.putInt("dataErrorCode", paramInt);
-    this.a.onReceive(0, false, localBundle);
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("data", paramString.getBytes());
-    localBundle.putString("cmd", "getTmpkey");
-    this.a.onReceive(0, true, localBundle);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

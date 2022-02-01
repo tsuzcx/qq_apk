@@ -1,14 +1,33 @@
-import android.os.MessageQueue.IdleHandler;
+import android.view.View;
 
 class ainv
-  implements MessageQueue.IdleHandler
+  implements bliz
 {
-  ainv(ains paramains) {}
+  ainv(ainh paramainh) {}
   
-  public boolean queueIdle()
+  public void OnClick(View paramView, int paramInt)
   {
-    ains.a(this.a, true);
-    return true;
+    if (this.a.ag) {
+      return;
+    }
+    this.a.ag = true;
+    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.a.z(2131694705);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.b(true, 0);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Blir.dismiss();
+      return;
+      this.a.b(false, paramInt);
+      continue;
+      this.a.z(2131694705);
+      this.a.b(true, 0);
+    }
   }
 }
 

@@ -1,77 +1,66 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.view.OrientationListener;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 
-public class boqa
+public abstract class boqa
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g = 2;
+  private int jdField_a_of_type_Int = -1;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private OrientationListener jdField_a_of_type_AndroidViewOrientationListener;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public boqa()
+  public boqa(Context paramContext)
   {
-    this.jdField_a_of_type_Int = 0;
+    this(paramContext, 3);
   }
   
-  public int a(float paramFloat)
+  public boqa(Context paramContext, int paramInt)
   {
-    return afur.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
+    this.b = paramInt;
+    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
+    if (this.jdField_a_of_type_AndroidHardwareSensor != null) {
+      this.jdField_a_of_type_AndroidHardwareSensorEventListener = new boqb(this);
+    }
   }
   
-  public bopz a()
+  public void a()
   {
-    bopz localbopz = new bopz();
-    a(localbopz);
-    return localbopz;
+    if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
+      LogUtils.w("MOEL", "Cannot detect sensors. Not enabled");
+    }
+    while (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, this.b);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public boqa a(float paramFloat1, float paramFloat2)
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(int paramInt);
+  
+  public boolean a()
   {
-    this.e = a(paramFloat1);
-    this.f = a(paramFloat2);
-    return this;
+    return this.jdField_a_of_type_AndroidHardwareSensor != null;
   }
   
-  public boqa a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  public void b()
   {
-    this.c = a(paramFloat1);
-    this.d = a(paramFloat2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
-  public boqa a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    return this;
-  }
-  
-  public boqa a(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-    return this;
-  }
-  
-  void a(bopz parambopz)
-  {
-    parambopz.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    parambopz.e = this.e;
-    parambopz.f = this.f;
-    parambopz.c = this.c;
-    parambopz.d = this.d;
-    parambopz.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    parambopz.b = this.b;
-    parambopz.jdField_a_of_type_AndroidGraphicsTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
-    parambopz.g = parambopz.a(parambopz.jdField_a_of_type_Int);
-    parambopz.h = parambopz.a(parambopz.b);
-    parambopz.i = this.g;
+    if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
+      LogUtils.w("MOEL", "Cannot detect sensors. Invalid disable");
+    }
+    while (this.jdField_a_of_type_Boolean != true) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

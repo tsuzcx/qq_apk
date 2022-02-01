@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
@@ -153,7 +153,7 @@ class BlockAdPlugin$6
         try
         {
           i = paramJSONObject.getInt("resultCode");
-          BlockAdPlugin.access$200(this.this$0, this.val$webview, i, anni.a(2131699711), this.val$blockAdInfo.getCompId());
+          BlockAdPlugin.access$200(this.this$0, this.val$webview, i, anzj.a(2131699818), this.val$blockAdInfo.getCompId());
           for (;;)
           {
             QLog.e("[minigame] BlockAdPlugin", 1, "getBlockAd request error");

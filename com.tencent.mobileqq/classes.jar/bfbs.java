@@ -1,55 +1,41 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Rect;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import java.util.ArrayList;
 
 public class bfbs
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bfbw
 {
-  private bfbs(InputMethodGuard paramInputMethodGuard) {}
+  public int a;
+  public String a;
+  public ArrayList<bewy> a;
+  public byte[] a;
+  public ArrayList<bewy> b;
+  public byte[] b;
   
-  private int a()
+  public bfbs()
   {
-    if (bclx.b > 0) {
-      return bclx.b;
-    }
-    return ((WindowManager)this.a.getContext().getSystemService("window")).getDefaultDisplay().getHeight();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void onGlobalLayout()
+  public String toString()
   {
-    boolean bool = InputMethodGuard.a(this.a);
-    Rect localRect = new Rect();
-    ((Activity)this.a.getContext()).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = a();
-    int j = i - localRect.bottom;
-    if (Math.abs(j) > i / 5)
-    {
-      InputMethodGuard.a(this.a, true);
-      InputMethodGuard.a(this.a, j);
-    }
-    for (;;)
-    {
-      if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
-        InputMethodGuard.a(this.a).b(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
-      }
-      if (InputMethodGuard.b(this.a)) {
-        InputMethodGuard.b(this.a, false);
-      }
-      return;
-      InputMethodGuard.a(this.a, false);
-      InputMethodGuard.a(this.a, 0);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" urlParam:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" msgUkey:");
+    localStringBuilder.append(this.jdField_b_of_type_ArrayOfByte);
+    localStringBuilder.append(" ipList:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" mIpv6List:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" resId:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfbs
  * JD-Core Version:    0.7.0.1
  */

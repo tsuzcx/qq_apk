@@ -1,24 +1,60 @@
-import android.app.Activity;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.util.WeakReference;
 
-class nlt
-  implements bkhw
+public class nlt
 {
-  nlt(nlo paramnlo, Activity paramActivity, String paramString, bkho parambkho) {}
+  aasb jdField_a_of_type_Aasb;
+  HashMap<Integer, WeakReference<nlu>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void OnClick(View paramView, int paramInt)
+  public nlt(aasb paramaasb)
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_Aasb = paramaasb;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+  }
+  
+  public void a(int paramInt, nlu paramnlu)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
     }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramnlu));
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebPushClient", 2, "data is null");
+      }
+    }
+    WeakReference localWeakReference;
+    do
     {
-      this.jdField_a_of_type_Bkho.dismiss();
+      int i;
+      do
+      {
+        return;
+        i = paramBundle.getInt("msgType", -1);
+        if (i != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("WebPushClient", 2, "type is 0");
       return;
-      nlo.c(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      nlo.a(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
+      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    } while ((localWeakReference == null) || (localWeakReference.get() == null));
+    ((nlu)localWeakReference.get()).a(paramBundle);
   }
 }
 

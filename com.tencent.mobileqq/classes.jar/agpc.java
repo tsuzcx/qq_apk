@@ -1,58 +1,46 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public class agpc
-  implements bkhw
+class agpc
 {
-  public agpc(ApolloItemBuilder paramApolloItemBuilder, agpj paramagpj, ApolloActionData paramApolloActionData, bkho parambkho) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void OnClick(View paramView, int paramInt)
+  agpc(agpa paramagpa) {}
+  
+  public void a()
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_AndroidOsHandler == null)
     {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
+      localHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.cancel();
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
-      if ((1 == this.jdField_a_of_type_Agpj.f) || (this.jdField_a_of_type_Agpj.f == 2))
-      {
-        if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          QLog.e("ApolloItemBuilder", 1, "mContext is not activity");
-          return;
-        }
-        ApolloUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "lmx_actchat");
-      }
-      else
-      {
-        if (3 == this.jdField_a_of_type_Agpj.f)
-        {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url)) {
-            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url);
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-            break;
-            paramView.putExtra("url", ancb.T + "&id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
-          }
-        }
-        if (4 != this.jdField_a_of_type_Agpj.f) {
-          adrm.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agpj.a.uniseq);
-        }
-      }
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
   }
 }

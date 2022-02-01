@@ -1,30 +1,42 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bnlz
-  implements Observer<bnlq>
+  extends bnnn
 {
-  bnlz(bnls parambnls) {}
-  
-  public void a(@Nullable bnlq parambnlq)
+  private boolean a(String paramString)
   {
-    Object localObject = bnlm.a(parambnlq);
-    parambnlq = new LinkedList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    try
     {
-      bnlq localbnlq = (bnlq)((Iterator)localObject).next();
-      bnmc localbnmc = new bnmc(null);
-      localbnmc.a = bnme.a(localbnlq);
-      parambnlq.add(localbnmc);
+      paramString = new JSONObject(paramString);
+      int i = paramString.optInt("categoryType");
+      paramString = paramString.optString("categoryId");
+      Activity localActivity = this.a.mRuntime.a();
+      if (localActivity != null)
+      {
+        bmtd.a(localActivity, this.a.mRuntime.a().getCurrentAccountUin(), i, paramString, -1);
+        return true;
+      }
     }
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambnlq));
+    catch (Exception paramString)
+    {
+      QLog.e("QZoneCategoryAlbumPlugin", 1, paramString.getMessage());
+      return false;
+    }
+    return false;
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while ((!paramString3.equalsIgnoreCase("jumpCategoryAlbum")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      return false;
+    }
+    return a(paramVarArgs[0]);
   }
 }
 

@@ -189,7 +189,7 @@ public class ArkAppMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return BaseApplicationImpl.getApplication().getString(2131690124);
+    return BaseApplicationImpl.getApplication().getString(2131690132);
   }
   
   public long optMsgSeq()

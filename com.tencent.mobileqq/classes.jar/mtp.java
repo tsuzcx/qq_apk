@@ -1,16 +1,16 @@
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
+import android.app.PendingIntent;
 
 class mtp
-  extends PhoneStateListener
 {
-  mtp(mtn parammtn) {}
+  public final int a;
+  public final PendingIntent a;
+  public final String a;
   
-  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  public mtp(int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    this.a.c = this.a.a(paramSignalStrength);
-    this.a.d = this.a.b(paramSignalStrength);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
   }
 }
 

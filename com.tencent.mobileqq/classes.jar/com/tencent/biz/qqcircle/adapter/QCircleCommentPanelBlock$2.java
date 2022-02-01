@@ -2,17 +2,17 @@ package com.tencent.biz.qqcircle.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
-import uyc;
+import uzl;
 
 public class QCircleCommentPanelBlock$2
   implements Runnable
 {
   public void run()
   {
-    uyc.b(this.this$0);
+    uzl.b(this.this$0);
     this.this$0.notifyItemInserted(this.a);
-    this.this$0.notifyItemRangeChanged(this.a, uyc.a(this.this$0).size() - this.a);
-    uyc.a(this.this$0).scrollToPosition(0);
+    this.this$0.notifyItemRangeChanged(this.a, uzl.a(this.this$0).size() - this.a);
+    uzl.a(this.this$0).scrollToPosition(0);
   }
 }
 

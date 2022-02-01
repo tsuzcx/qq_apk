@@ -1,15 +1,22 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akow
-  extends akos
+public class akow
+  implements DialogInterface.OnClickListener
 {
-  akow(akov paramakov) {}
+  public akow(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
-      this.a.a.a.dismiss();
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
+      }
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
     }
   }
 }

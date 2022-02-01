@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/n6n" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:id="@id/lqn" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ViewStub android:id="@id/n6s" android:layout="@layout/cn2" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="10.0dip" />
-            <ViewStub android:id="@id/n6q" android:layout="@layout/cn0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/e6b" android:background="@color/agv" android:paddingLeft="18.0dip" android:paddingRight="16.0dip" android:addStatesFromChildren="false" android:layout_width="fill_parent" android:layout_height="76.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/e6q" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/bvm" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/e6e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ggz" android:singleLine="true" />
+                <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff64b1ff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/myx" android:background="@drawable/dqp" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/wvl" />
+            </LinearLayout>
+            <TextView android:textSize="14.0sp" android:textColor="#ff7a7a8d" android:ellipsize="end" android:id="@id/e6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/ggz" android:singleLine="true" />
         </LinearLayout>
-        <com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout android:id="@id/n6p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/lqn">
-            <ViewStub android:id="@id/n6t" android:layout="@layout/cn4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            <ViewStub android:id="@id/n6x" android:layout="@layout/cn7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            <ViewStub android:id="@id/n6r" android:layout="@layout/cn1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout>
-        <ViewStub android:id="@id/n9b" android:layout="@layout/cn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/n6p" />
-        <FrameLayout android:id="@id/mm4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/n9b">
-            <ViewStub android:id="@id/n6o" android:layout="@layout/cmy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </FrameLayout>
-        <ViewStub android:id="@id/n6w" android:layout="@layout/cn5" android:inflatedId="@id/n7a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="-10.0dip" android:layout_above="@id/mm4" android:layout_alignParentRight="true" />
-        <ImageView android:background="@drawable/gco" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_below="@id/mm4" />
-    </RelativeLayout>
-    <ViewStub android:id="@id/n6m" android:layout="@layout/cmu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>
+        <ImageView android:layout_gravity="center|right" android:id="@id/imo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gf_" />
+    </LinearLayout>
+</LinearLayout>

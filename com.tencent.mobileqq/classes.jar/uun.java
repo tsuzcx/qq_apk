@@ -1,33 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.widget.TextView;
 
 class uun
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements bliz
 {
-  private WSVideoPreDownloadManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager;
-  private String jdField_a_of_type_JavaLangString;
+  uun(uum paramuum, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
-  uun(WSVideoPreDownloadManager paramWSVideoPreDownloadManager, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager = paramWSVideoPreDownloadManager;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    upe.a("WSVerticalForHomePresenter", "onPreLoadFailed");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager.a();
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    upe.a("WSVerticalForHomePresenter", "onPreLoadSucess");
-    if (TextUtils.equals(paramString1, ukd.a(this.jdField_a_of_type_JavaLangString)))
+    if (!nny.a(uum.a(this.jdField_a_of_type_Uum)))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager.a();
-      upe.a("WSVerticalForHomePresenter", "videoPreDownloadManager destroy");
+      bjuh.a().a(2131719373);
+      return;
     }
+    uum.a(this.jdField_a_of_type_Uum).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
+    uum.a(this.jdField_a_of_type_Uum).setText("关注");
+    uum.a(this.jdField_a_of_type_Uum).setVisibility(0);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import atlp;
-import atlt;
+import audj;
+import audo;
 
 class SimpleFileViewer$5
   implements Runnable
 {
-  SimpleFileViewer$5(SimpleFileViewer paramSimpleFileViewer, String paramString, atlt paramatlt) {}
+  SimpleFileViewer$5(SimpleFileViewer paramSimpleFileViewer, String paramString, audo paramaudo) {}
   
   public void run()
   {
-    atlp localatlp = atlp.a();
-    SimpleFileViewer.a(this.this$0, localatlp.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atlt));
+    audj localaudj = audj.a();
+    SimpleFileViewer.a(this.this$0, localaudj.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Audo));
     SimpleFileViewer.a(this.this$0, null, SimpleFileViewer.a(this.this$0), true);
     SimpleFileViewer.a(this.this$0);
   }

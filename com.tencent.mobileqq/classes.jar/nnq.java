@@ -1,68 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-class nnq
-  implements BusinessObserver
+final class nnq
+  implements HostnameVerifier
 {
-  nnq(nnp paramnnp, boolean paramBoolean) {}
+  nnq(URL paramURL) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if (this.jdField_a_of_type_Nnp.jdField_a_of_type_Boolean) {
-      return;
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
+    if (bool) {
+      QLog.d("URLUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-    if ((!paramBoolean) || (paramBundle == null))
-    {
-      nnp.a(this.jdField_a_of_type_Nnp);
-      return;
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    Object localObject = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-      if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() != 0) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
-      {
-        nnp.a(this.jdField_a_of_type_Nnp);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopCardAppInfoHandler", 2, "handleGetTroopAppBriefList error " + QLog.getStackTraceString(paramBundle));
-      }
-      nnp.a(this.jdField_a_of_type_Nnp);
-      return;
-    }
-    localObject = nnp.a(this.jdField_a_of_type_Nnp, (oidb_sso.OIDBSSOPkg)localObject);
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        nnp.a(this.jdField_a_of_type_Nnp, (List)localObject);
-        return;
-      }
-      paramBundle = new ArrayList();
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Long localLong = (Long)((Iterator)localObject).next();
-        new TroopAppInfo().appId = localLong.longValue();
-      }
-      nnp.a(this.jdField_a_of_type_Nnp, paramBundle);
-      return;
-    }
-    nnp.a(this.jdField_a_of_type_Nnp);
+    return bool;
   }
 }
 

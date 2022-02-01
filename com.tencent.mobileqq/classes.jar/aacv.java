@@ -1,9 +1,25 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public abstract interface aacv
+public class aacv
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed);
+  public aacv(BaseWidgetView paramBaseWidgetView)
+  {
+    super(paramBaseWidgetView);
+  }
+  
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+    }
+  }
 }
 
 

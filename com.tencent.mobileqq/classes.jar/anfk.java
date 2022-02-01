@@ -1,25 +1,42 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anfk
-  extends bhhe
+class anfk
+  implements View.OnClickListener
 {
-  public anfk(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
+  anfk(anfj paramanfj) {}
   
-  public void onDone(bhhf parambhhf)
+  public void onClick(View paramView)
   {
-    super.onDone(parambhhf);
-    if (3 == parambhhf.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
-    for (;;)
+    if (anfj.a(this.a) == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambhhf.a());
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
+    boolean bool = anfj.a(this.a).a();
+    label63:
+    anfj localanfj;
+    if (bool)
+    {
+      anfj.a(this.a).setImageDrawable(anfj.a(this.a).getContext().getResources().getDrawable(2130838488));
+      localanfj = this.a;
+      if (bool) {
+        break label133;
+      }
+    }
+    label133:
+    for (bool = true;; bool = false)
+    {
+      anfj.a(localanfj, bool);
+      anfj.a(this.a).a(anfj.a(this.a));
+      break;
+      anfj.a(this.a).setImageDrawable(anfj.a(this.a).getContext().getResources().getDrawable(2130838487));
+      break label63;
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import arnx;
+import asdl;
 import com.tencent.chirp.ChirpWrapper;
 
 public class ChirpSoHandler$1
   implements Runnable
 {
-  public ChirpSoHandler$1(arnx paramarnx, String paramString) {}
+  public ChirpSoHandler$1(asdl paramasdl, String paramString) {}
   
   public void run()
   {

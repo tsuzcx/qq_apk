@@ -1,17 +1,16 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ttv
+public class ttv
   implements View.OnClickListener
 {
-  ttv(ttu paramttu, CertifiedAccountMeta.StUser paramStUser) {}
+  public ttv(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
   public void onClick(View paramView)
   {
-    aaae.a(this.jdField_a_of_type_Ttu.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-    aaxb.b("auth_follow", "clk_head", 0, 0, new String[0]);
+    this.a.doOnBackPressed();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

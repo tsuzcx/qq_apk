@@ -1,11 +1,64 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.MsgProxyUtils.Proxy;
+import VIP.AIOKeyWordReq;
+import VIP.AIOSendReq;
+import VIP.AIOSendRes;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public final class bcqe
-  implements IMCoreProxyRoute.MsgProxyUtils.Proxy
+public class bcqe
+  extends abiv
 {
-  public boolean isSaveConversation(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    return acwh.a(paramString1, paramString2, paramInt1, paramInt2);
+    if ((aokj.a.equals(paramToServiceMsg.getServiceCmd())) || (aokj.b.equals(paramToServiceMsg.getServiceCmd())))
+    {
+      if (paramFromServiceMsg == null) {
+        return null;
+      }
+      paramToServiceMsg = new UniPacket(true);
+      try
+      {
+        paramToServiceMsg.setEncodeName("utf-8");
+        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+        paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
+        return paramToServiceMsg;
+      }
+      catch (RuntimeException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        return null;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("VIP.AIOSendTipsServer.AIOSendTipsObj");
+    if (aokj.a.equals(paramToServiceMsg.getServiceCmd()))
+    {
+      paramUniPacket.setFuncName("CheckPopGrayStips");
+      paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
+    }
+    for (;;)
+    {
+      return true;
+      if (aokj.b.equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setFuncName("getUserKeyWordStips");
+        paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
+      }
+    }
+  }
+  
+  public String[] a()
+  {
+    return new String[] { "AIOSendSvc" };
   }
 }
 

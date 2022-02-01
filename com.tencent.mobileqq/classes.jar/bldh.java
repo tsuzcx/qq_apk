@@ -1,10 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
+import java.util.List;
 
-public final class bldh
-  implements DialogInterface.OnDismissListener
+class bldh
+  implements blcx
 {
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  bldh(bldg parambldg) {}
+  
+  public void a(List<Pair<Integer, Byte>> paramList)
+  {
+    Message localMessage = bldg.a(this.a).obtainMessage(2);
+    localMessage.obj = paramList;
+    bldg.a(this.a).sendMessage(localMessage);
+  }
 }
 
 

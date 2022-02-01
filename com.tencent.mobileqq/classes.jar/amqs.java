@@ -1,12 +1,17 @@
-import org.json.JSONObject;
+import android.graphics.Bitmap;
 
-public abstract interface amqs
+class amqs
+  extends aojs
 {
-  public abstract String a();
+  amqs(amqr paramamqr) {}
   
-  public abstract JSONObject a(amqr paramamqr, JSONObject paramJSONObject);
-  
-  public abstract int c();
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    Bitmap localBitmap = this.a.a.a(113, paramString);
+    if (localBitmap != null) {
+      this.a.a(paramString, localBitmap);
+    }
+  }
 }
 
 

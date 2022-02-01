@@ -1,25 +1,63 @@
-import org.json.JSONObject;
+import android.content.res.Resources;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
 
 public class aasq
+  extends axxn
 {
-  public int a;
-  public aasl a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public aasq(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public aasq(JSONObject paramJSONObject)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
-    if (paramJSONObject.optJSONObject("aioActivityBubble") != null) {
-      this.jdField_a_of_type_Aasl = new aasl(paramJSONObject.optJSONObject("aioActivityBubble"));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberApiService", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
+    }
+    ((axup)TroopMemberApiService.f(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.g(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
+    if (paramBoolean)
+    {
+      bhsi.a(BaseApplication.getContext(), false);
+      QQToast.a(BaseApplication.getContext(), 2, anzj.a(2131714339), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
+      if (!paramBoolean) {
+        break label163;
+      }
+    }
+    label163:
+    for (String str = "1";; str = "2")
+    {
+      axxd.a("clk_del_video", new String[] { str });
+      return;
+      QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131714416), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
+      break;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, UpdatePhotoList.HeadInfo paramHeadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberApiService", 2, "onUpdateNearbyPeopleAuthVideo + HeadInfo = " + paramHeadInfo.toString());
+    }
+    ((axup)TroopMemberApiService.h(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.i(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
+    if (paramBoolean)
+    {
+      bhsi.a(BaseApplication.getContext(), true);
+      QQToast.a(BaseApplication.getContext(), 2, anzj.a(2131714417), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
+      if (!paramBoolean) {
+        break label166;
+      }
+    }
+    label166:
+    for (paramHeadInfo = "1";; paramHeadInfo = "2")
+    {
+      axxd.a("clk_upload_video", new String[] { paramHeadInfo });
+      return;
+      QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131714345), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
+      break;
     }
   }
 }

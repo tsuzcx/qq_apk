@@ -1,74 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pvi
+class pvi
+  implements View.OnClickListener
 {
-  public static pvi a;
-  private long jdField_a_of_type_Long;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public pvj a;
-  public pvk a;
-  public boolean a;
+  pvi(pvh parampvh, ArticleInfo paramArticleInfo, Context paramContext) {}
   
-  private pvi()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pvj = new pvj();
-    this.jdField_a_of_type_Pvk = new pvk();
-    if (a(BaseApplicationImpl.getApplication().getRuntime()))
+    if (sel.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
+    for (int i = 3;; i = 2)
     {
-      this.jdField_a_of_type_Boolean = true;
-      a(BaseApplicationImpl.getApplication().getRuntime(), false);
-    }
-  }
-  
-  public static pvi a()
-  {
-    if (jdField_a_of_type_Pvi == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pvi == null) {
-        jdField_a_of_type_Pvi = new pvi();
-      }
-      return jdField_a_of_type_Pvi;
-    }
-    finally {}
-  }
-  
-  private void a(long paramLong)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = bmqa.a((AppRuntime)localObject, true, true);
-    } while (localObject == null);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("readinjoy_ex_last_update_time", paramLong);
-    bmqa.a((SharedPreferences.Editor)localObject, true);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
-  {
-    paramAppRuntime = bmqa.a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null) {
+      ozs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i, false, 2, false);
+      sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putBoolean("simple_force_report_once", paramBoolean);
-    bmqa.a(paramAppRuntime, true);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    paramAppRuntime = bmqa.a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getBoolean("simple_force_report_once", false);
   }
 }
 

@@ -5,38 +5,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
-import nev;
+import ngp;
 
 public class AVGameOverlayFragment
   extends PublicBaseFragment
 {
   private int jdField_a_of_type_Int = -1;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  bgpa jdField_a_of_type_Bgpa;
+  bhpc jdField_a_of_type_Bhpc;
   private String jdField_a_of_type_JavaLangString;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bgpa != null) {
+    if (this.jdField_a_of_type_Bhpc != null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showKickMeDialog");
     }
-    this.jdField_a_of_type_Bgpa = bglp.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131690218, new nev(this));
-    this.jdField_a_of_type_Bgpa.setTitle(null);
-    bgpa localbgpa = this.jdField_a_of_type_Bgpa;
+    this.jdField_a_of_type_Bhpc = bhlq.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131690227, new ngp(this));
+    this.jdField_a_of_type_Bhpc.setTitle(null);
+    bhpc localbhpc = this.jdField_a_of_type_Bhpc;
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (String str = getString(2131690264);; str = this.jdField_a_of_type_JavaLangString)
+    for (String str = getString(2131690270);; str = this.jdField_a_of_type_JavaLangString)
     {
-      localbgpa.setMessage(str);
-      this.jdField_a_of_type_Bgpa.setCancelable(false);
-      this.jdField_a_of_type_Bgpa.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bgpa.show();
+      localbhpc.setMessage(str);
+      this.jdField_a_of_type_Bhpc.setCancelable(false);
+      this.jdField_a_of_type_Bhpc.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bhpc.show();
       return;
     }
   }

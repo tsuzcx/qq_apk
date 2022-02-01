@@ -1,6 +1,6 @@
 package com.tencent.widget.immersive;
 
-import akws;
+import alih;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -15,12 +15,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.AlphaAnimation;
-import anll;
-import bgjq;
-import bqcd;
+import anxh;
+import bhjr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -180,14 +180,14 @@ public class ImmersiveUtils
   
   public static boolean a()
   {
-    return (VersionUtils.isKITKAT()) && (((jdField_d_of_type_Boolean) && (bgjq.b())) || (bgjq.d()));
+    return (VersionUtils.isKITKAT()) && (((jdField_d_of_type_Boolean) && (bhjr.b())) || (bhjr.d()));
   }
   
   public static boolean a(Activity paramActivity)
   {
     if (!jdField_e_of_type_Boolean)
     {
-      f = bqcd.b(paramActivity);
+      f = LiuHaiUtils.b(paramActivity);
       jdField_e_of_type_Boolean = true;
     }
     return f;
@@ -221,19 +221,19 @@ public class ImmersiveUtils
     do
     {
       return false;
-      if ((jdField_d_of_type_Boolean) && (bgjq.b())) {
+      if ((jdField_d_of_type_Boolean) && (bhjr.b())) {
         return b(paramWindow, paramBoolean);
       }
-    } while (!bgjq.d());
+    } while (!bhjr.d());
     return c(paramWindow, paramBoolean);
   }
   
   public static boolean a(boolean paramBoolean, Window paramWindow)
   {
-    if (akws.e()) {
+    if (alih.e()) {
       return c(paramWindow, paramBoolean);
     }
-    if (akws.a()) {
+    if (alih.a()) {
       return d(paramWindow, paramBoolean);
     }
     if (paramBoolean)
@@ -256,6 +256,11 @@ public class ImmersiveUtils
   {
     a();
     return jdField_e_of_type_Int;
+  }
+  
+  public static int b(float paramFloat)
+  {
+    return Math.round(paramFloat / a());
   }
   
   public static void b(Window paramWindow)
@@ -342,8 +347,8 @@ public class ImmersiveUtils
   public static boolean c()
   {
     boolean bool1 = false;
-    boolean bool2 = akws.a();
-    boolean bool3 = akws.e();
+    boolean bool2 = alih.a();
+    boolean bool3 = alih.e();
     if (Build.VERSION.SDK_INT >= 23) {}
     for (int i = 1;; i = 0)
     {
@@ -459,7 +464,7 @@ public class ImmersiveUtils
         if (j > 0) {
           i = localResources.getDimensionPixelSize(j);
         }
-        f1 = anll.a.density;
+        f1 = anxh.a.density;
         if (QLog.isColorLevel()) {
           QLog.d("systembar", 2, "getStatusBarHeight org=" + i + ", sys density=" + f1 + ", cur density=" + paramContext.getResources().getDisplayMetrics().density);
         }

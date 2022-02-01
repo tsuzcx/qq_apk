@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-class mgn
-  implements View.OnLayoutChangeListener
+public class mgn
+  implements DialogInterface.OnClickListener
 {
-  mgn(mgm parammgm) {}
+  public mgn(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
-      this.a.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d()))
+    {
+      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 65535);
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().aq = true;
     }
+    paramDialogInterface.dismiss();
   }
 }
 

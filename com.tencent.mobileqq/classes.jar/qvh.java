@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class qvh
-  implements View.OnClickListener
+public final class qvh
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  public qvh(ComponentComment paramComponentComment, long paramLong, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    String str = pgc.g + bgku.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), str);
-    qam.a(1, pha.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new AdvertisementInfo(paramParcel);
+  }
+  
+  public AdvertisementInfo[] a(int paramInt)
+  {
+    return new AdvertisementInfo[paramInt];
   }
 }
 

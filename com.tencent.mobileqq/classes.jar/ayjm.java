@@ -1,53 +1,89 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayjm
-  implements ayjl
+  extends AbstractImageAdapter
+  implements ayjs
 {
-  public void a(Matrix paramMatrix) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private ayjs jdField_a_of_type_Ayjs;
   
-  public void a(MotionEvent paramMotionEvent) {}
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  public ayjm(Context paramContext)
   {
-    return false;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(int paramInt)
   {
-    return false;
+    int i = nnr.a();
+    if ((i != 1) && (i != 4)) {}
+    ayjq localayjq;
+    do
+    {
+      return;
+      localayjq = (ayjq)getItem(paramInt + 1);
+      if (localayjq != null) {
+        localayjq.a();
+      }
+      localayjq = (ayjq)getItem(paramInt - 1);
+    } while (localayjq == null);
+    localayjq.a();
   }
   
-  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
+  public void a(int paramInt1, int paramInt2)
   {
-    return false;
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
   }
   
-  public void b(MotionEvent paramMotionEvent) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return false;
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
   }
   
-  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(View paramView, int paramInt)
   {
-    return false;
+    ((ayjq)getItem(paramInt)).a(paramView, paramInt, this);
   }
   
-  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
+  public void a(ayjs paramayjs)
   {
-    return false;
+    this.jdField_a_of_type_Ayjs = paramayjs;
   }
   
-  public void c(MotionEvent paramMotionEvent) {}
-  
-  public boolean c(MotionEvent paramMotionEvent)
+  public void b(int paramInt1, int paramInt2)
   {
-    return false;
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView != null) {
+      localObject = paramView;
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      localObject = (ayjq)getItem(paramInt);
+      PicInfo localPicInfo = ((ayjq)localObject).a;
+      if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
+        ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.a().b(localPicInfo.a);
+      }
+      localObject = ((ayjq)localObject).a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
+      ((View)localObject).setTag(2131296390, Boolean.valueOf(true));
+    }
   }
 }
 

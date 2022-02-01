@@ -1,18 +1,46 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rln
-  implements bkij
+public abstract interface rln
 {
-  public rln(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public abstract void a();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
-    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(VideoInfo paramVideoInfo);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void e(boolean paramBoolean);
+  
+  public abstract void f(boolean paramBoolean);
+  
+  public abstract void g(boolean paramBoolean);
+  
+  public abstract void h(boolean paramBoolean);
 }
 
 

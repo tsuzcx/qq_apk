@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amty;
-import amud;
-import amug;
+import anfs;
+import anfx;
+import anga;
 
 public class SpriteBridge$2
   implements Runnable
 {
-  public SpriteBridge$2(amud paramamud, amty paramamty, amug paramamug) {}
+  public SpriteBridge$2(anfx paramanfx, anfs paramanfs, anga paramanga) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Amty != null) && (this.jdField_a_of_type_Amug != null))
+    if ((this.jdField_a_of_type_Anfs != null) && (this.jdField_a_of_type_Anga != null))
     {
-      this.jdField_a_of_type_Amty.a(this.jdField_a_of_type_Amug.b, false);
-      this.jdField_a_of_type_Amty.a(this.jdField_a_of_type_Amug.a, false);
+      this.jdField_a_of_type_Anfs.a(this.jdField_a_of_type_Anga.b, false);
+      this.jdField_a_of_type_Anfs.a(this.jdField_a_of_type_Anga.a, false);
     }
   }
 }

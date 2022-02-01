@@ -1,13 +1,35 @@
-class bdph
-  extends bcni
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bdph
+  implements View.OnClickListener
 {
-  bdph(bdpg parambdpg) {}
+  public bdph(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public void onClick(View paramView)
   {
-    if (bdpg.a(this.a) != null) {
-      this.a.b(bdpg.a(this.a));
+    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    ((oer)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692048), 1).a();
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

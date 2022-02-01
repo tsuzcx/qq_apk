@@ -7,11 +7,11 @@ import com.tencent.qqmini.sdk.launcher.shell.IBuild;
 public class Build
   implements IBuild
 {
-  public static final String VersionName = "1.6.0_13_bdbfebd";
+  public static final String VersionName = "1.7.0_8_b448de1";
   
   public String getVersionName()
   {
-    return "1.6.0_13_bdbfebd";
+    return "1.7.0_8_b448de1";
   }
 }
 

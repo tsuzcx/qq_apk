@@ -1,24 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
 class ahcp
-  implements awfa
+  implements aumz
 {
-  ahcp(ahco paramahco) {}
+  ahcp(ahcn paramahcn, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
   
-  public void a(ahcu paramahcu)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
-    }
-    ahch.a(this.a.jdField_a_of_type_Ahch, paramahcu);
+    ((abzb)this.jdField_a_of_type_Ahcn.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    ahcn.b(this.jdField_a_of_type_Ahcn, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ahch.a(this.a.jdField_a_of_type_Ahch, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_Ahcu);
-    }
-  }
+  public void b() {}
 }
 
 

@@ -1,151 +1,76 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.ui.HeadSetView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.HorizontalListView;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public class awbe
-  extends BaseAdapter
-  implements aobv
+class awbe
+  implements Handler.Callback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private avzs jdField_a_of_type_Avzs;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final HeadSetView jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView;
-  private final HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  awbe(awbd paramawbd) {}
   
-  public awbe(QQAppInterface paramQQAppInterface, Context paramContext, HorizontalListView paramHorizontalListView, HeadSetView paramHeadSetView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView = paramHeadSetView;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  protected static final <T extends View> T a(View paramView, int paramInt)
-  {
-    return paramView.findViewById(paramInt);
-  }
-  
-  private void b(@NonNull List<String> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(avzs paramavzs)
-  {
-    this.jdField_a_of_type_Avzs = paramavzs;
-    this.jdField_a_of_type_Avzs.a(this);
-  }
-  
-  public void a(@NonNull List<String> paramList)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList.equals(paramList)) && (QLog.isColorLevel())) {
-      QLog.d("HeadAdapter", 2, new Object[] { "notifyDataSetChangedAdvance: invoked. same list, ", " newHeadSetList: ", paramList, " headSetList: ", this.jdField_a_of_type_JavaUtilList });
-    }
-    b(paramList);
-    if (this.jdField_a_of_type_JavaUtilList.size() <= this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a()) {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(1);
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      super.notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(0);
     }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Avzs == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    String str = (String)getItem(paramInt);
-    View localView;
-    if (paramView == null)
+    do
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559293, null);
-      paramView = new awbg(localView);
-      if (QLog.isColorLevel()) {
-        QLog.d("HeadAdapter", 2, new Object[] { "getView: invoked. ", " position: ", Integer.valueOf(paramInt) });
+      return false;
+      Object localObject = awbd.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((awbf)((Iterator)localObject).next()).a(paramMessage.arg1);
       }
-      paramView.jdField_a_of_type_JavaLangString = str;
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      localView.setOnClickListener(new awbf(this, str));
-      Bitmap localBitmap = this.jdField_a_of_type_Avzs.a(paramView.jdField_a_of_type_JavaLangString);
-      Object localObject = localBitmap;
-      if (localBitmap == null) {
-        localObject = bgmo.a();
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-      awao.a(localView, bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 0) + "正在共享位置");
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (awbg)paramView.getTag();
-      ((awbg)localObject).jdField_a_of_type_JavaLangString = str;
-      localView = paramView;
-      paramView = (View)localObject;
-    }
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    paramInt2 = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildCount();
-    paramInt1 = 0;
-    for (;;)
-    {
-      if (paramInt1 < paramInt2)
+      localObject = awbd.a(this.a).iterator();
+      if (((Iterator)localObject).hasNext())
       {
-        Object localObject = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(paramInt1).getTag();
-        if (!(localObject instanceof awbg)) {
-          break label87;
-        }
-        localObject = (awbg)localObject;
-        if ((paramString == null) || (!paramString.equals(((awbg)localObject).jdField_a_of_type_JavaLangString))) {
-          break label87;
-        }
-        if (paramBitmap != null)
+        awbf localawbf = (awbf)((Iterator)localObject).next();
+        if (paramMessage.arg1 == 0) {}
+        for (boolean bool = true;; bool = false)
         {
-          paramString = this.jdField_a_of_type_Avzs.a(paramString);
-          if (paramString != null) {
-            ((awbg)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString);
-          }
+          localawbf.a(bool, (Throwable)paramMessage.obj);
+          break;
         }
       }
-      return;
-      label87:
-      paramInt1 += 1;
-    }
+      localObject = new Intent(awax.a(awbd.a(this.a).c));
+      if (paramMessage.arg1 == 0)
+      {
+        if (awax.a(awbd.a(this.a).c)) {}
+        for (int i = 9;; i = 8)
+        {
+          ((Intent)localObject).putExtra("key_state", i);
+          awbd.a(this.a).sendBroadcast((Intent)localObject);
+          if (awbk.a.get(awbd.a(this.a)) == null) {
+            break;
+          }
+          awbj.b(String.valueOf(((awbk)awbk.a.get(awbd.a(this.a))).f));
+          return false;
+        }
+      }
+      if (awax.a(awbd.a(this.a).c)) {
+        awbj.a("2691708");
+      }
+      for (;;)
+      {
+        awas.a((Throwable)paramMessage.obj);
+        ((Intent)localObject).putExtra("key_state", 7);
+        awbd.a(this.a).sendBroadcast((Intent)localObject);
+        return false;
+        if (awax.b(awbd.a(this.a).c)) {
+          awbj.a("2597726");
+        } else if (awbk.a.get(awbd.a(this.a)) != null) {
+          awbj.b(String.valueOf(((awbk)awbk.a.get(awbd.a(this.a))).e));
+        }
+      }
+      paramMessage = new Intent(awax.a(awbd.a(this.a).c));
+      paramMessage.putExtra("key_state", 6);
+      awbd.a(this.a).sendBroadcast(paramMessage);
+    } while (awbk.a.get(awbd.a(this.a)) == null);
+    awbj.b(String.valueOf(((awbk)awbk.a.get(awbd.a(this.a))).d));
+    return false;
   }
 }
 

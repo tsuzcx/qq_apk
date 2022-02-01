@@ -9,8 +9,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
-import azbn;
-import bgta;
+import azua;
+import bhtd;
 
 public class ImageAlphaSwitchView
   extends View
@@ -21,7 +21,7 @@ public class ImageAlphaSwitchView
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   public Transformation a;
-  public bgta<Float> a;
+  public bhtd<Float> a;
   int b;
   public Bitmap b;
   int c = 3;
@@ -30,7 +30,7 @@ public class ImageAlphaSwitchView
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_Bgta = null;
+    this.jdField_a_of_type_Bhtd = null;
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
@@ -39,20 +39,20 @@ public class ImageAlphaSwitchView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_Bgta = null;
+    this.jdField_a_of_type_Bhtd = null;
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
   private void a()
   {
-    bgta localbgta = new bgta(Float.valueOf(0.0F), Float.valueOf(255.0F), new azbn(this));
-    if (this.jdField_a_of_type_Bgta != null) {
-      this.jdField_a_of_type_Bgta.cancel();
+    bhtd localbhtd = new bhtd(Float.valueOf(0.0F), Float.valueOf(255.0F), new azua(this));
+    if (this.jdField_a_of_type_Bhtd != null) {
+      this.jdField_a_of_type_Bhtd.cancel();
     }
-    this.jdField_a_of_type_Bgta = localbgta;
-    localbgta.setDuration(500L);
-    localbgta.start();
+    this.jdField_a_of_type_Bhtd = localbhtd;
+    localbhtd.setDuration(500L);
+    localbhtd.start();
     invalidate();
   }
   
@@ -126,8 +126,8 @@ public class ImageAlphaSwitchView
             this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255 - (int)this.jdField_a_of_type_Float);
             this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
             paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-            if (this.jdField_a_of_type_Bgta != null) {
-              bool = this.jdField_a_of_type_Bgta.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+            if (this.jdField_a_of_type_Bhtd != null) {
+              bool = this.jdField_a_of_type_Bhtd.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
             }
             if (bool) {
               invalidate();
@@ -169,8 +169,8 @@ public class ImageAlphaSwitchView
   
   public void setImage(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Bgta != null) {
-      this.jdField_a_of_type_Bgta.cancel();
+    if (this.jdField_a_of_type_Bhtd != null) {
+      this.jdField_a_of_type_Bhtd.cancel();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;

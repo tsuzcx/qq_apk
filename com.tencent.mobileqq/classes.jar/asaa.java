@@ -1,33 +1,57 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class asaa
-  extends arvc
+public class asaa
+  extends aryz
 {
-  asaa(arzy paramarzy) {}
+  public asab a;
+  public String b;
+  public boolean b;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public static asaa a(JSONObject paramJSONObject)
   {
-    this.a.b(paramEmoticonPackage);
+    asaa localasaa = new asaa();
+    localasaa.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    localasaa.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
+    localasaa.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
+    localasaa.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
+    return localasaa;
   }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public JSONObject a()
   {
-    this.a.a(paramEmoticonPackage, paramInt);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localJSONObject;
   }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public boolean a()
   {
-    this.a.a(paramEmoticonPackage);
+    return this.jdField_b_of_type_Boolean;
   }
   
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public boolean b()
   {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Asab == null) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return this.jdField_a_of_type_Asab.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asaa
  * JD-Core Version:    0.7.0.1
  */

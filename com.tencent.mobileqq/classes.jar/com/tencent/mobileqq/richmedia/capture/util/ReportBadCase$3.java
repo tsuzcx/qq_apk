@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
 import android.text.TextUtils;
-import banx;
-import bgmg;
+import bbgq;
+import bhmi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
@@ -25,18 +25,18 @@ public final class ReportBadCase$3
     String str;
     for (;;)
     {
-      synchronized (banx.a())
+      synchronized (bbgq.a())
       {
-        j = banx.a().size();
+        j = bbgq.a().size();
         arrayOfBadDataFrame = new BadcaseReportUtils.BadDataFrame[j];
         i = 0;
         if (i < j)
         {
-          arrayOfBadDataFrame[i] = ((BadcaseReportUtils.BadDataFrame)banx.a().get(i));
+          arrayOfBadDataFrame[i] = ((BadcaseReportUtils.BadDataFrame)bbgq.a().get(i));
           i += 1;
           break;
         }
-        banx.a().clear();
+        bbgq.a().clear();
         if ((arrayOfBadDataFrame == null) || (arrayOfBadDataFrame.length <= 0))
         {
           if (QLog.isColorLevel()) {
@@ -60,7 +60,7 @@ public final class ReportBadCase$3
       {
         ??? = localObject1[i];
         if ((((BadcaseReportUtils.BadDataFrame)???).zipPath != null) && (!"".equals(((BadcaseReportUtils.BadDataFrame)???).zipPath))) {
-          bgmg.d(((BadcaseReportUtils.BadDataFrame)???).zipPath);
+          bhmi.d(((BadcaseReportUtils.BadDataFrame)???).zipPath);
         }
         i += 1;
       }
@@ -77,7 +77,7 @@ public final class ReportBadCase$3
       if ((localBadDataFrame.mZipSuccess) && (localBadDataFrame.zipPath != null) && (!"".equals(localBadDataFrame.zipPath))) {}
       try
       {
-        banx.a(localBadDataFrame, banx.b(), m, (String)???, str);
+        bbgq.a(localBadDataFrame, bbgq.b(), m, (String)???, str);
         j += 1;
       }
       catch (Exception localException)

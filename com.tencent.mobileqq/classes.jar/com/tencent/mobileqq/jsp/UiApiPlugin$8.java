@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import avqs;
-import bgim;
-import bhod;
+import awjf;
+import bhin;
+import bioy;
 import org.json.JSONObject;
 
 public class UiApiPlugin$8
@@ -13,7 +13,7 @@ public class UiApiPlugin$8
   public void run()
   {
     this.this$0.i = this.a.optString("callback");
-    bgim.a(this.this$0.mRuntime.a(), new avqs(this));
+    bhin.a(this.this$0.mRuntime.a(), new awjf(this));
   }
 }
 

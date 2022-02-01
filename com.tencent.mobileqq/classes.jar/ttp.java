@@ -1,25 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class ttp
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
   public ttp(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     default: 
       return;
-    case 1: 
-      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
-      return;
     }
-    paramDialogInterface.dismiss();
+    paramMessage = (List)paramMessage.obj;
+    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
   }
 }
 

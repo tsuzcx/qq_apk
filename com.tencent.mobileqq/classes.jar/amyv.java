@@ -1,33 +1,33 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import org.json.JSONObject;
 
-class amyv
-  implements amjk
+public class amyv
+  extends anem
 {
-  amyv(amyl paramamyl, String paramString, File paramFile, int paramInt) {}
+  public amyv(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void a(boolean paramBoolean, String paramString1, List<amjh> paramList, String paramString2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    paramString1 = amyl.a(this.jdField_a_of_type_JavaLangString);
-    if (TextUtils.isEmpty(paramString1))
+    switch (paramInt)
     {
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+    }
+    do
+    {
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
       return;
     }
-    if (paramBoolean)
+    catch (Throwable paramObject)
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Amyl.a(paramString1, 0, this.jdField_a_of_type_Int + anni.a(2131699303));
-        return;
-      }
-      this.jdField_a_of_type_Amyl.a(paramString1, 2, this.jdField_a_of_type_Int + anni.a(2131699302));
-      return;
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
     }
-    this.jdField_a_of_type_Amyl.a(paramString1, 2, this.jdField_a_of_type_Int + anni.a(2131699297));
   }
 }
 

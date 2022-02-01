@@ -1,8 +1,8 @@
 public abstract interface xvl
 {
-  public abstract void a();
+  public abstract xvg a();
   
-  public abstract void b();
+  public abstract xvg b();
 }
 
 

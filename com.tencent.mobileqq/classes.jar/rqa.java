@@ -1,10 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public abstract interface rqa
+final class rqa
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(@NotNull List<UgcVideo> paramList);
+  rqa(View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.setTag(2131362696, null);
+  }
 }
 
 

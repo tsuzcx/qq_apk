@@ -1,46 +1,9 @@
-import java.util.HashMap;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aoxh
+public abstract class aoxh
 {
-  private static int a;
-  public static String a;
-  public static HashMap<String, aowp> a;
-  private static int b;
-  public static String b;
-  public static String c;
-  public static String d;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_Int = 5;
-    jdField_b_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    c = "";
-    d = "";
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new aowp(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new aowp(2147483647));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    jdField_a_of_type_JavaLangString = paramString1;
-    jdField_b_of_type_JavaLangString = paramString2;
-    c = paramString3;
-    d = paramString4;
-  }
+  public abstract aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk);
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.share;
 
-import aqlk;
-import autq;
-import autr;
+import aran;
+import avlq;
+import avlr;
 
 public final class GameShareConfProcessor$1
   implements Runnable
 {
   public void run()
   {
-    autr.a((autq)aqlk.a().a(617));
+    avlr.a((avlq)aran.a().a(617));
   }
 }
 

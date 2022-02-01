@@ -1,25 +1,8 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-
-public class zdn
-  implements zdm
+public abstract interface zdn
 {
-  public zdn(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.a.a.c(true);
-  }
-  
-  public void a(zdw paramzdw)
-  {
-    this.a.b(paramzdw);
-  }
-  
-  public void b()
-  {
-    this.a.a();
-  }
+  public abstract void a(Runnable paramRunnable);
 }
 
 

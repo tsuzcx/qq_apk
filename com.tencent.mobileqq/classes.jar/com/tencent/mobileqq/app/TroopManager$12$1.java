@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import anxf;
+import aojk;
 
 class TroopManager$12$1
   implements Runnable

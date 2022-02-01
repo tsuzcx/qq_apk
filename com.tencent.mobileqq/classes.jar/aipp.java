@@ -1,23 +1,84 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.List;
 
-public class aipp
-  implements DialogInterface.OnClickListener
+class aipp
+  extends aohi
 {
-  public aipp(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  aipp(aipm paramaipm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if (!bgnt.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131694179, 1).a();
+    
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return;
+    }
+    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
+      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
     }
     for (;;)
     {
-      paramDialogInterface.dismiss();
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.m();
       return;
-      this.a.f();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.b();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return;
+    }
+    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
+      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.b();
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.m();
+      return;
     }
   }
 }

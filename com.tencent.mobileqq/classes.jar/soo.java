@@ -1,19 +1,8 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.47.1;
 
-public class soo
-  implements Animation.AnimationListener
+public abstract interface soo
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.post(new ReadInJoyBaseAdapter.47.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(int paramInt, View paramView);
 }
 
 

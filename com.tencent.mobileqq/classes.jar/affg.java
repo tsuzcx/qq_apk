@@ -1,27 +1,74 @@
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class affg
+class affg
   implements View.OnClickListener
 {
-  public affg(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  affg(affc paramaffc, arse paramarse, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(0);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
-    if (this.a.a().booleanValue())
+    Object localObject2 = this.jdField_a_of_type_Arse.e;
+    Object localObject1 = this.jdField_a_of_type_Arse.f;
+    if ((((String)localObject2).equals("TMTWAPI")) || (((String)localObject2).equals("WAPI")))
     {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
+      localObject1 = aqzw.a((String)localObject1, 0, null);
+      localObject2 = new Intent(this.jdField_a_of_type_Affc.a, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_Affc.a.app.getCurrentAccountUin());
+      this.jdField_a_of_type_Affc.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+      this.jdField_a_of_type_Affc.a.a.sendEmptyMessageDelayed(1010, 1000L);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((((String)localObject2).equals("TMTWAP")) || (((String)localObject2).equals("WAP")))
+      {
+        localObject2 = new Intent(this.jdField_a_of_type_Affc.a, QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_Affc.a.app.getCurrentAccountUin());
+        this.jdField_a_of_type_Affc.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+      }
+      else if (((String)localObject2).equals("LOCAL"))
+      {
+        if ("CARD".equalsIgnoreCase((String)localObject1))
+        {
+          localObject1 = this.jdField_a_of_type_Arse.g.split(",")[0];
+          if (("".equals(localObject1)) || (this.jdField_a_of_type_Affc.a.app.getCurrentAccountUin().equals(localObject1))) {}
+          for (localObject1 = new ProfileActivity.AllInOne(this.jdField_a_of_type_Affc.a.app.getCurrentAccountUin(), 0);; localObject1 = new ProfileActivity.AllInOne((String)localObject1, 19))
+          {
+            ProfileActivity.b(this.jdField_a_of_type_Affc.a, (ProfileActivity.AllInOne)localObject1);
+            break;
+          }
+        }
+        if ("CHAT".equalsIgnoreCase((String)localObject1))
+        {
+          localObject1 = this.jdField_a_of_type_Arse.g.split(",")[0];
+          if (!"".equals(localObject1)) {
+            if (((anyw)this.jdField_a_of_type_Affc.a.app.getManager(51)).b((String)localObject1)) {
+              this.jdField_a_of_type_Affc.a((String)localObject1, 0, bhlg.i(this.jdField_a_of_type_Affc.a.app, (String)localObject1));
+            } else {
+              this.jdField_a_of_type_Affc.a((String)localObject1, 1001, bhlg.i(this.jdField_a_of_type_Affc.a.app, (String)localObject1));
+            }
+          }
+        }
+        else if ("NEARBY".equalsIgnoreCase((String)localObject1))
+        {
+          this.jdField_a_of_type_Affc.a.startActivity(new Intent(this.jdField_a_of_type_Affc.a, NearbyActivity.class));
+        }
+      }
+    }
   }
 }
 

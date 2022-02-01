@@ -1,15 +1,19 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auzg
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<auzh> a;
-  public int[] a;
-  public String b;
-  public List<auzi> b;
-  public String c;
-  public String d;
+  public auzg(ForwardFileOption paramForwardFileOption) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.F();
+    ForwardFileOption.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

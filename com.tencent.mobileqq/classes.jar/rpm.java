@@ -1,125 +1,109 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureProgressView;
 
 public class rpm
-  extends ouc
 {
-  @Nullable
-  private rpo jdField_a_of_type_Rpo;
-  @NotNull
-  private rpp jdField_a_of_type_Rpp;
-  @NotNull
-  private rps jdField_a_of_type_Rps;
-  @Nullable
-  private slf jdField_a_of_type_Slf;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
-  
-  public rpm(@NotNull QQAppInterface paramQQAppInterface, @NotNull rpp paramrpp, @Nullable rpo paramrpo)
-  {
-    super(paramrpp, true, "UploadCoverTaskStep");
-    this.jdField_a_of_type_Rps = ((rps)paramQQAppInterface.getManager(356));
-    this.jdField_a_of_type_Rpp = paramrpp;
-    this.jdField_a_of_type_Rpo = paramrpo;
-  }
+  private int jdField_a_of_type_Int = 0;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoFeedsGestureProgressView jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private VideoFeedsGestureProgressView jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView;
+  private ViewGroup c;
+  private ViewGroup d;
+  private ViewGroup e;
   
   public void a()
   {
-    super.a();
-    this.b = true;
-    if (this.jdField_a_of_type_Slf != null) {
-      this.jdField_a_of_type_Slf.a();
+    if (this.c != null) {
+      this.c.setVisibility(8);
     }
-    UgcVideo localUgcVideo = this.jdField_a_of_type_Rpp.a();
-    localUgcVideo.status = UgcVideo.STATUS_PAUSE;
-    this.jdField_a_of_type_Rps.d(localUgcVideo);
-    if (this.jdField_a_of_type_Rpo != null) {
-      this.jdField_a_of_type_Rpo.a(1, true, false, null);
+    if (this.d != null) {
+      this.d.setVisibility(8);
+    }
+    if (this.e != null) {
+      this.e.setVisibility(8);
     }
   }
   
-  public boolean a()
+  public void a(int paramInt, float paramFloat, long paramLong1, long paramLong2)
   {
-    UgcVideo localUgcVideo = this.jdField_a_of_type_Rpp.a();
-    int j;
-    label72:
-    String str;
-    label113:
-    long l;
-    if ((localUgcVideo.compressPath != null) && (!localUgcVideo.compressPath.isEmpty()) && (new File(localUgcVideo.compressPath).exists()))
+    switch (paramInt)
     {
-      i = 1;
-      if (i != 0) {
-        localUgcVideo.compressProgress = 100;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      String str1 = rpt.a(paramLong1);
+      String str2 = rpt.a(paramLong2);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "/");
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str2);
+      if (paramFloat > 0.0F) {
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843114);
       }
-      if (localUgcVideo.retryTime < UgcVideo.RETRY_TIME_LIMIT) {
-        break label196;
-      }
-      j = 1;
-      if (j != 0)
+      while (this.c.getVisibility() == 8)
       {
-        str = localUgcVideo.filePath;
-        File localFile = new File(str);
-        localUgcVideo.compressPath = str;
-        str = txh.a(localFile);
-        if (str == null) {
-          break label201;
-        }
-        localUgcVideo.fileMd5 = str;
-        if (!localFile.exists()) {
-          break label208;
-        }
-        l = localFile.length();
-        label134:
-        localUgcVideo.fileSize = l;
+        rpt.a(this.c, 0, 300);
+        break;
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843112);
       }
-      if ((i != 0) || (localUgcVideo.status == UgcVideo.STATUS_PAUSE) || (j != 0)) {
-        break label213;
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
+      if (paramFloat == 0.0F) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843031);
+      }
+      while (this.e.getVisibility() == 8)
+      {
+        rpt.a(this.e, 0, 300);
+        break;
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843032);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
+      if (this.d.getVisibility() == 8)
+      {
+        rpt.a(this.d, 0, 300);
+        continue;
+        if (this.jdField_a_of_type_Int != 0) {
+          if (this.jdField_a_of_type_Int == 3)
+          {
+            if (this.c.getVisibility() == 0) {
+              rpt.a(this.c, 8, 300);
+            }
+          }
+          else if (this.jdField_a_of_type_Int == 2)
+          {
+            if (this.d.getVisibility() == 0) {
+              rpt.a(this.d, 8, 300);
+            }
+          }
+          else if ((this.jdField_a_of_type_Int == 1) && (this.e.getVisibility() == 0)) {
+            rpt.a(this.e, 8, 300);
+          }
+        }
       }
     }
-    label196:
-    label201:
-    label208:
-    label213:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.b = false;
-        localUgcVideo.startCompressTime = System.currentTimeMillis();
-      }
-      if ((!super.a()) || (i == 0)) {
-        break label218;
-      }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label72;
-      str = "";
-      break label113;
-      l = 0L;
-      break label134;
-    }
-    label218:
-    return false;
   }
   
-  public boolean b()
+  public void a(Context paramContext, ViewGroup paramViewGroup)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      UgcVideo localUgcVideo = this.jdField_a_of_type_Rpp.a();
-      this.jdField_a_of_type_Slf = new slf(BaseApplicationImpl.getContext(), new rpn(this, localUgcVideo));
-      this.jdField_a_of_type_Slf.execute(new String[] { localUgcVideo.filePath });
-      localUgcVideo.uploadVideoStatus = UgcVideo.SUBSTATUS_COMPRESS_VIDEO;
-    }
-    return false;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560311, paramViewGroup));
+    this.c = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373070));
+    this.d = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363673));
+    this.e = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381225));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373068));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373072));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381224));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373069));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363674));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381226));
   }
 }
 

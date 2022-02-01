@@ -1,81 +1,91 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
 
-public class bgoe
+class bgoe
+  implements bgpp
 {
-  public static int a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  bgop jdField_a_of_type_Bgop;
+  private WeakReference<bgod> jdField_a_of_type_MqqUtilWeakReference;
+  
+  bgoe(bgod parambgod, bgop parambgop)
   {
-    if (paramBoolean3) {
-      return 1;
-    }
-    if (paramBoolean2) {
-      return 2;
-    }
-    if (paramBoolean1) {
-      return 3;
-    }
-    return 4;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambgod);
+    this.jdField_a_of_type_Bgop = parambgop;
   }
   
-  public static String a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, float paramFloat)
+  private void a()
   {
-    String str = "";
-    boolean bool1 = MediaPlayerManager.a(paramFloat);
-    boolean bool2 = MediaPlayerManager.a(paramFloat, MediaPlayerManager.b);
-    boolean bool3 = MediaPlayerManager.a(paramFloat, MediaPlayerManager.c);
-    if ((paramInt == 0) && (bool1)) {
-      if (bool3)
+    Object localObject = (bgor)((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(357);
+    if (localObject != null)
+    {
+      ArrayList localArrayList = ((bgor)localObject).a(((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_Long);
+      if ((localArrayList != null) && (!localArrayList.contains(this.jdField_a_of_type_Bgop)))
       {
-        paramFloat = 2.0F;
-        if (!paramBoolean3) {
-          break label95;
+        localArrayList.add(this.jdField_a_of_type_Bgop);
+        ((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.e();
+      }
+      localObject = ((bgor)localObject).b(((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_Long);
+      if (localObject != null)
+      {
+        int i = ((ArrayList)localObject).indexOf(this.jdField_a_of_type_Bgop);
+        if ((i >= 0) && (i < ((ArrayList)localObject).size()))
+        {
+          ((bgop)((ArrayList)localObject).get(i)).a = true;
+          ((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.f();
         }
-        str = anni.a(2131706984) + paramFloat + anni.a(2131706970);
       }
     }
-    label95:
-    do
-    {
-      do
-      {
-        return str;
-        paramFloat = 1.5F;
-        break;
-        if (paramBoolean2) {
-          return anni.a(2131706996) + paramFloat + anni.a(2131706991);
-        }
-        if (paramBoolean1) {
-          return anni.a(2131706979) + paramFloat + anni.a(2131706978);
-        }
-        return anni.a(2131706969) + paramFloat + anni.a(2131706976);
-      } while (paramInt == 0);
-      str = anni.a(2131706985);
-      if (bool2) {
-        return "当前为1.5倍速播放";
-      }
-    } while (!bool3);
-    return "当前为2倍速播放";
   }
   
-  public static int b(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private void a(int paramInt)
   {
-    int i = 0;
-    if (!AppSetting.c)
+    QLog.e("AppsRecommendViewBuilder", 1, new Object[] { "add appid retCode: ", Integer.valueOf(paramInt) });
+    if (paramInt == 41005)
     {
-      if (paramBoolean3) {
-        i = 2131718223;
+      paramInt = ((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a();
+      if (paramInt > 0)
+      {
+        String str = ((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidContentContext.getString(2131698530).replace("$COUNT", String.valueOf(paramInt));
+        QQToast.a(((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, str, 0).a();
+        return;
+      }
+      QQToast.a(((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, ((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidContentContext.getString(2131698529), 0).a();
+      return;
+    }
+    QQToast.a(((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, ((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidContentContext.getString(2131698528), 0).a();
+  }
+  
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
+    {
+      if ((paramJSONObject == null) || (!paramJSONObject.has("ec"))) {
+        break label73;
+      }
+      paramInt = paramJSONObject.optInt("ec");
+      if (QLog.isColorLevel()) {
+        QLog.d("AppsRecommendViewBuilder", 2, new Object[] { "retCode:", Integer.valueOf(paramInt) });
+      }
+      if (paramInt == 0) {
+        a();
       }
     }
-    else {
-      return i;
+    else
+    {
+      return;
     }
-    if (paramBoolean2) {
-      return 2131718225;
-    }
-    if (paramBoolean1) {
-      return 2131718226;
-    }
-    return 2131718224;
+    a(paramInt);
+    return;
+    label73:
+    QLog.e("AppsRecommendViewBuilder", 1, "add appid get result err");
+    QQToast.a(((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, ((bgod)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidContentContext.getString(2131698528), 0).a();
   }
 }
 

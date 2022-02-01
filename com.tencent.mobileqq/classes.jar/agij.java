@@ -1,6 +1,19 @@
-public abstract interface agij
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionPic;
+
+public final class agij
+  implements Parcelable.Creator<ForwardUtils.SectionPic>
 {
-  public abstract void a(int paramInt);
+  public ForwardUtils.SectionPic a(Parcel paramParcel)
+  {
+    return new ForwardUtils.SectionPic(paramParcel);
+  }
+  
+  public ForwardUtils.SectionPic[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionPic[paramInt];
+  }
 }
 
 

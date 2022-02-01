@@ -1,100 +1,127 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
+import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bcyp
-  extends bcvt
 {
-  private LinearLayout a(Context paramContext)
+  private static bcyp jdField_a_of_type_Bcyp;
+  private static ConcurrentHashMap<Long, WeakReference<bcyq>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  static
   {
-    Resources localResources = paramContext.getResources();
-    paramContext = new LinearLayout(paramContext);
-    paramContext.setOrientation(1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    int i = localResources.getDimensionPixelSize(2131298900);
-    int j = localResources.getDimensionPixelSize(2131298901);
-    paramContext.setPadding(i, localResources.getDimensionPixelSize(2131298902), j, localResources.getDimensionPixelSize(2131298899));
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
+    beyq.a();
   }
   
-  protected int b()
+  public static bcyp a()
   {
-    return 21;
+    if (jdField_a_of_type_Bcyp == null) {
+      jdField_a_of_type_Bcyp = new bcyp();
+    }
+    return jdField_a_of_type_Bcyp;
   }
   
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  public static void a(bcyo parambcyo)
   {
-    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA) {}
-    Resources localResources = paramContext.getResources();
-    int i;
-    int k;
-    label102:
-    Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
-    {
-      paramView = (LinearLayout)paramView;
-      paramView.removeAllViews();
-      i = paramView.getPaddingTop();
-      j = paramView.getPaddingBottom();
-      k = localResources.getDimensionPixelSize(2131298900);
-      int m = localResources.getDimensionPixelSize(2131298901);
-      a(paramView);
-      d(paramView);
-      paramView.setPadding(k, i, m, j);
-      k = afur.a(7.0F, localResources);
-      i = 0;
-      if (i >= this.a.size()) {
-        return paramView;
-      }
-      localObject2 = (bcvs)this.a.get(i);
-      if (!(localObject2 instanceof bdax)) {
-        break label216;
-      }
-      localObject1 = (bdax)localObject2;
-      localObject2 = ((bdax)localObject1).a(paramContext, null, paramBundle);
-      if (localObject2 != null)
-      {
-        localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.topMargin = ((bdax)localObject1).o;
-        localLayoutParams.bottomMargin = ((bdax)localObject1).p;
-        paramView.addView((View)localObject2, localLayoutParams);
-      }
+    if (parambcyo == null) {
+      return;
     }
-    label216:
-    while (!(localObject2 instanceof bcxx))
-    {
-      LinearLayout.LayoutParams localLayoutParams;
-      i += 1;
-      break label102;
-      paramView = a(paramContext);
-      break;
-    }
-    Object localObject1 = ((bcvs)localObject2).a(paramContext, null, paramBundle);
-    if (((bcxx)localObject2).a) {}
-    for (int j = 0;; j = afur.a(2.0F, localResources))
-    {
-      localObject2 = new LinearLayout.LayoutParams(-1, j);
-      ((LinearLayout.LayoutParams)localObject2).topMargin = k;
-      ((LinearLayout.LayoutParams)localObject2).bottomMargin = k;
-      if (localObject1 == null) {
-        break;
-      }
-      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      break;
-    }
-    return paramView;
+    HashMap localHashMap = new HashMap();
+    a(localHashMap, parambcyo);
+    bdmc.a(BaseApplication.getContext()).a(null, "actLongVideoInfo", true, 0L, 0L, localHashMap, "", false);
   }
   
-  public String b()
+  private static void a(HashMap<String, String> paramHashMap, bcym parambcym)
   {
-    return "Layout21";
+    paramHashMap.put("param_des_bps", String.valueOf(parambcym.jdField_a_of_type_Long));
+    paramHashMap.put("param_des_fps", String.valueOf(parambcym.jdField_b_of_type_Long));
+    paramHashMap.put("param_des_width", String.valueOf(parambcym.jdField_a_of_type_Int));
+    paramHashMap.put("param_des_height", String.valueOf(parambcym.jdField_b_of_type_Int));
+    paramHashMap.put("param_des_res", String.valueOf(parambcym.jdField_a_of_type_Int * parambcym.jdField_b_of_type_Int));
+  }
+  
+  private static void a(HashMap<String, String> paramHashMap, bcyo parambcyo)
+  {
+    paramHashMap.put("param_file_source_size", String.valueOf(parambcyo.jdField_a_of_type_Long));
+    paramHashMap.put("param_video_duration", String.valueOf(parambcyo.d));
+    paramHashMap.put("param_src_bps", String.valueOf(parambcyo.jdField_b_of_type_Long));
+    paramHashMap.put("param_src_fps", String.valueOf(parambcyo.e));
+    paramHashMap.put("param_src_width", String.valueOf(parambcyo.jdField_a_of_type_Int));
+    paramHashMap.put("param_src_height", String.valueOf(parambcyo.jdField_b_of_type_Int));
+    paramHashMap.put("param_src_res", String.valueOf(parambcyo.jdField_a_of_type_Int * parambcyo.jdField_b_of_type_Int));
+  }
+  
+  public static void a(boolean paramBoolean, long paramLong1, bcyo parambcyo, bcym parambcym, long paramLong2)
+  {
+    if ((parambcyo == null) || (parambcym == null)) {}
+    do
+    {
+      return;
+      HashMap localHashMap = new HashMap();
+      a(localHashMap, parambcyo);
+      a(localHashMap, parambcym);
+      localHashMap.put("param_compressSuccess", paramBoolean + "");
+      localHashMap.put("param_compressTime", paramLong1 + "");
+      localHashMap.put("param_file_target_sze", String.valueOf(paramLong2));
+      if ((parambcyo.jdField_a_of_type_Long > 0L) && (paramLong2 > 0L)) {
+        localHashMap.put("param_compress_rate", String.valueOf((float)paramLong2 / (float)parambcyo.jdField_a_of_type_Long));
+      }
+      if ((paramLong1 > 0L) && (parambcyo.d > 0)) {
+        localHashMap.put("param_compressSpeed", String.valueOf((float)paramLong1 / parambcyo.d));
+      }
+      bdmc.a(BaseApplication.getContext()).a(null, "actVideoCompressTime", paramBoolean, 0L, 0L, localHashMap, "", false);
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoCompressProcessor", 2, "reportVideoCompressTime, success =" + paramBoolean + ", compressTime = " + paramLong1);
+  }
+  
+  public bcyq a(long paramLong)
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      WeakReference localWeakReference = (WeakReference)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      if (localWeakReference != null) {
+        return (bcyq)localWeakReference.get();
+      }
+    }
+    return null;
+  }
+  
+  public void a(long paramLong)
+  {
+    bcyq localbcyq = a(paramLong);
+    if (localbcyq != null) {
+      localbcyq.a();
+    }
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+  }
+  
+  public void a(long paramLong, bcyq parambcyq)
+  {
+    if (parambcyq != null)
+    {
+      parambcyq = new WeakReference(parambcyq);
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), parambcyq);
+      Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)parambcyq.get(), new Void[0]);
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    ShortVideoTrimmer.a.set(false);
+    Object localObject = ShortVideoTrimmer.a();
+    if (localObject != null) {
+      ((Process)localObject).destroy();
+    }
+    localObject = a(paramLong);
+    if ((localObject != null) && (((bcyq)localObject).getStatus() != AsyncTask.Status.FINISHED) && (!((bcyq)localObject).isCancelled())) {
+      ((bcyq)localObject).cancel(true);
+    }
   }
 }
 

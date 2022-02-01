@@ -1,12 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.data.Card;
 
 public class aekw
+  extends anuw
 {
-  public ImageView a;
-  public TextView a;
-  public InterestLabelTextView a;
+  public aekw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+      }
+      return;
+    }
+  }
 }
 
 

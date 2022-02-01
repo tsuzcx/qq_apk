@@ -3,7 +3,7 @@ package com.tencent.mobileqq.pluginsdk;
 public class BasePluginActivity$PluginConfig
 {
   public boolean enableNight = true;
-  public int titleHeight;
+  public int titleHeight = 0;
 }
 
 

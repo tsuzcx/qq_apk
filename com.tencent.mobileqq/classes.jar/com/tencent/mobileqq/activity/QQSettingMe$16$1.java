@@ -7,7 +7,7 @@ class QQSettingMe$16$1
   
   public void run()
   {
-    QQSettingMe.c(this.a.this$0, this.a.a);
+    QQSettingMe.a(this.a.this$0, this.a.a);
     QQSettingMe.c(this.a.this$0);
   }
 }

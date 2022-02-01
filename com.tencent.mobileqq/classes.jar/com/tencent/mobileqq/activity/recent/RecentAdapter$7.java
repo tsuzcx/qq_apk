@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import albc;
-import bcst;
-import tue;
+import alms;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RecentAdapter$7
   implements Runnable
 {
-  public RecentAdapter$7(albc paramalbc, int paramInt, String paramString1, String paramString2, String paramString3) {}
+  public RecentAdapter$7(alms paramalms, String paramString, int paramInt) {}
   
   public void run()
   {
-    bcst.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(tue.a().a()));
+    ((MessageHandler)this.this$0.a.a(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
   }
 }
 

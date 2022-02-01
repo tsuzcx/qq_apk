@@ -1,19 +1,38 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class bgah
-  implements bdfn
+public class bgah
+  extends BroadcastReceiver
 {
-  bgah(bgag parambgag) {}
+  public bgah(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.jdField_a_of_type_Bdfn != null) {
-      this.a.a.a.a.jdField_a_of_type_Bdfn.a();
+    if (this.a.a != null)
+    {
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
+      }
+      this.a.a.b(102);
     }
-    this.a.a.a.a.this$0.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.this$0.a, true);
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
+    }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    this.a.a.b(102);
   }
 }
 

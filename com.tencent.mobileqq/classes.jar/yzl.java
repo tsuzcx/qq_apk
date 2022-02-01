@@ -1,33 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
+import android.graphics.Bitmap;
 
-final class yzl
-  implements Animator.AnimatorListener
+public class yzl
+  extends yzy
 {
-  yzl(yzm paramyzm, ValueAnimator paramValueAnimator) {}
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public String a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public yzl(int paramInt, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Yzm != null) {
-      this.jdField_a_of_type_Yzm.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    super(paramInt, paramBitmap);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public yzl a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Yzm != null) {
-      this.jdField_a_of_type_Yzm.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    paramBitmap = new yzl(this.jdField_c_of_type_Int, paramBitmap);
+    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
+    this.jdField_a_of_type_Boolean = false;
+    return paramBitmap;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public String toString()
   {
-    if (this.jdField_a_of_type_Yzm != null) {
-      this.jdField_a_of_type_Yzm.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

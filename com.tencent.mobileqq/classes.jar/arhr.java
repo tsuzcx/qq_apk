@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class arhr
-  implements DialogInterface.OnClickListener
+class arhr
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public arhr(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, ahyy paramahyy) {}
+  arhr(arhq paramarhq, QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    ((aqjj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(125)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
-    this.jdField_a_of_type_Ahyy.a(0, aqji.h, 0);
+    if (paramBoolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008, true, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import java.io.File;
 
 public class boff
-  implements DialogInterface.OnClickListener
 {
-  public boff(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static final String a = bofe.b + File.separator + "tmp";
 }
 
 

@@ -1,12 +1,12 @@
-public class aghi
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+
+public abstract interface aghi
 {
-  public int a;
-  public byte[] a;
+  public abstract void a();
   
-  aghi(aghh paramaghh)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
+  
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aigs paramaigs);
 }
 
 

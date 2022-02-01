@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class atqq
-  implements View.OnClickListener
+abstract interface atqq
 {
-  atqq(atqp paramatqp) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.m();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Object[] paramArrayOfObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atqq
  * JD-Core Version:    0.7.0.1
  */

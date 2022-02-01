@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.asyncdb.cache;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anhk;
-import anyx;
+import antf;
+import aolh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RecentUserCache$3
   implements Runnable
 {
-  public RecentUserCache$3(anyx paramanyx, SharedPreferences paramSharedPreferences) {}
+  public RecentUserCache$3(aolh paramaolh, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
@@ -22,11 +22,11 @@ public class RecentUserCache$3
     try
     {
       SQLiteDatabase localSQLiteDatabase = ((QQAppInterface)this.this$0.app).getWritableDatabase();
-      String str = this.this$0.getKey(anhk.D, 4000);
-      if (anyx.e(this.this$0).containsKey(str)) {
-        anyx.f(this.this$0).remove(str);
+      String str = this.this$0.getKey(antf.D, 4000);
+      if (aolh.e(this.this$0).containsKey(str)) {
+        aolh.f(this.this$0).remove(str);
       }
-      int i = localSQLiteDatabase.delete("recent", "uin=?", new String[] { anhk.D });
+      int i = localSQLiteDatabase.delete("recent", "uin=?", new String[] { antf.D });
       if (QLog.isColorLevel()) {
         QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | RecentUser delCount = " + i);
       }

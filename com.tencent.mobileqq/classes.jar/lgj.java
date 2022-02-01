@@ -1,23 +1,60 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+
 public abstract class lgj
 {
-  public int cid = -1;
-  public boolean isDownloading;
+  protected static final String[] a;
+  public VideoAppInterface a;
+  public final String a;
   
-  public abstract String getDesc();
+  static
+  {
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_MAKEUP", "MANAGER_VIRTUAL_BG" };
+  }
   
-  public abstract String getIconurl();
+  protected lgj(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
+  }
   
-  public abstract String getId();
+  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    {
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      paramContext = bhsi.b(paramContext).edit();
+      paramContext.putBoolean(str, paramBoolean);
+      paramContext.commit();
+      lbj.e(paramString, "setPreload zzzzz  bid=" + paramInt);
+      return;
+    }
+    lbj.e(paramString, "setPreload ERROR : bid=" + paramInt);
+  }
   
-  public abstract String getMd5();
+  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    {
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      boolean bool = bhsi.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
+      lbj.c(paramString, "isPreloaded:" + str + "|" + bool);
+      return bool;
+    }
+    lbj.e(paramString, "isPreloaded ERROR : bid=" + paramInt);
+    return false;
+  }
   
-  public abstract int getPlatform();
+  protected abstract void a();
   
-  public abstract String getResurl();
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
   
-  public abstract boolean isUsable();
+  protected void a(String paramString, boolean paramBoolean) {}
   
-  public abstract void setUsable(boolean paramBoolean);
+  protected abstract boolean a(String paramString);
 }
 
 

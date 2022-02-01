@@ -1,19 +1,24 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
+import mqq.os.MqqHandler;
 
 public class anym
-  implements BusinessObserver
+  extends MqqHandler
 {
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public anym(FriendListHandler paramFriendListHandler, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
     default: 
       return;
     }
-    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
+    FriendListHandler.a(this.a);
   }
 }
 

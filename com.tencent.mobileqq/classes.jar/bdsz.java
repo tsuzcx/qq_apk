@@ -1,79 +1,54 @@
-public class bdsz
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+
+class bdsz
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
+  bdsz(bdsy parambdsy) {}
   
-  public bdsz()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public long a()
-  {
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L)) {}
-    for (long l = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000000L;; l = 0L)
+    if (TextUtils.isEmpty(this.a.ag))
     {
-      if (l < 0L) {
-        return 0L;
-      }
-      return l;
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      l1 = l2;
-      if (this.jdField_a_of_type_Long != 0L)
-      {
-        l1 = l2;
-        if (this.jdField_b_of_type_Long != 0L) {
-          l1 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000000L;
-        }
-      }
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.jdField_b_of_type_Int).append("_").append(this.c).append("_").append(l1);
-    return localStringBuilder.toString();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = System.nanoTime();
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (paramLong >= this.jdField_b_of_type_Long) {
-      this.jdField_a_of_type_Long = 0L;
-    }
-    while (paramLong <= this.jdField_a_of_type_Long) {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void b()
-  {
-    long l = System.nanoTime();
-    if (l > this.jdField_b_of_type_Long) {
-      this.jdField_b_of_type_Long = l;
+    for (;;)
+    {
+      try
+      {
+        String str = bevq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.af);
+        if (!TextUtils.isEmpty(str)) {
+          break label133;
+        }
+        this.a.a();
+        this.a.a(this.a.ag, paramView);
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.ag, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.ae, this.a.af);
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      break;
+      label133:
+      if (new File(localException).exists())
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          this.a.d();
+        } else {
+          this.a.c();
+        }
+      }
+      else
+      {
+        this.a.a();
+        this.a.a(this.a.ag, paramView);
+      }
     }
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("startTime: ").append(this.jdField_a_of_type_Long).append(" finishTime: ").append(this.jdField_b_of_type_Long);
-    return localStringBuffer.toString();
   }
 }
 

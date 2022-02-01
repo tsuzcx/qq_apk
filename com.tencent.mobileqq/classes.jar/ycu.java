@@ -1,22 +1,19 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ycu
+class ycu
+  implements View.OnClickListener
 {
-  public abstract void P_();
+  ycu(yct paramyct, String paramString) {}
   
-  public abstract void a();
-  
-  public abstract void a(CommentEntry paramCommentEntry);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(CommentEntry paramCommentEntry);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void g_(int paramInt);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Yct.jdField_a_of_type_Ycn != null) {
+      this.jdField_a_of_type_Yct.jdField_a_of_type_Ycn.a(null, 0, this.jdField_a_of_type_Yct.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

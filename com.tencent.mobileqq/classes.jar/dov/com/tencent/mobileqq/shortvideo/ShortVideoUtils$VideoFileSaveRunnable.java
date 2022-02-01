@@ -38,7 +38,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   19: ifne +13 -> 32
     //   22: aload_0
     //   23: getfield 19	dov/com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   26: invokestatic 42	bgmg:a	(Ljava/lang/String;)Z
+    //   26: invokestatic 42	bhmi:a	(Ljava/lang/String;)Z
     //   29: ifne +54 -> 83
     //   32: aload_0
     //   33: getfield 44	dov/com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
@@ -109,7 +109,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   174: return
     //   175: new 77	java/io/File
     //   178: dup
-    //   179: getstatic 121	alkn:f	Ljava/lang/String;
+    //   179: getstatic 121	alwf:f	Ljava/lang/String;
     //   182: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
     //   185: astore_2
     //   186: goto -71 -> 115

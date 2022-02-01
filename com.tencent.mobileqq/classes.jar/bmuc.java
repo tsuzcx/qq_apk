@@ -1,18 +1,18 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.QZoneShareData;
 
-public class bmuc
-  extends bmua
+public final class bmuc
+  implements Parcelable.Creator<QZoneShareData>
 {
-  public bmuc(String paramString, View paramView)
+  public QZoneShareData a(Parcel paramParcel)
   {
-    super(paramString, paramView);
+    return new QZoneShareData(paramParcel, null);
   }
   
-  protected void a(String paramString)
+  public QZoneShareData[] a(int paramInt)
   {
-    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
+    return new QZoneShareData[paramInt];
   }
 }
 

@@ -1,18 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-class zgf
-  implements View.OnClickListener
+public class zgf
+  extends zfy
 {
-  zgf(zgd paramzgd, int paramInt) {}
+  protected EditVideoParams a;
+  public String c;
   
-  public void onClick(View paramView)
+  public zgf(int paramInt1, String paramString, int paramInt2)
   {
-    if (zgd.a(this.jdField_a_of_type_Zgd) != null) {
-      zgd.a(this.jdField_a_of_type_Zgd).a(this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramInt1, paramString, paramInt2);
+  }
+  
+  public zgf(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
+  {
+    super(paramInt1, paramString, paramInt2);
+    this.a = paramEditVideoParams;
+  }
+  
+  @NonNull
+  public Class<? extends zfz> a()
+  {
+    return zgh.class;
+  }
+  
+  @NonNull
+  public zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new zgh(this, paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

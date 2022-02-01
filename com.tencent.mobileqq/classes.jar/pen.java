@@ -1,32 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class pen
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ubp
 {
-  String jdField_a_of_type_JavaLangString = NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId;
+  public pen(KandianMergeManager paramKandianMergeManager) {}
   
-  public pen(NativeCommentTextView paramNativeCommentTextView, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    if ((NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView) == null) || (NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a == null) || (this.jdField_a_of_type_JavaLangString == null))
+    paramUri = BaseActivity.sTopActivity;
+    if (paramUri != null) {}
+    for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
     {
-      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+      bdll.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, zot.c(BaseApplicationImpl.getContext()));
       return;
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId))
-    {
-      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).setAlpha(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView));
   }
 }
 

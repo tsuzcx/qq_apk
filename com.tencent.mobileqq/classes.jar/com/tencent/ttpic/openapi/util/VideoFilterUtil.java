@@ -77,6 +77,7 @@ import com.tencent.ttpic.openapi.filter.BeautyTransformList;
 import com.tencent.ttpic.openapi.filter.BuckleFaceFilter;
 import com.tencent.ttpic.openapi.filter.ComicEffectFilter;
 import com.tencent.ttpic.openapi.filter.CosFunFilterGroup;
+import com.tencent.ttpic.openapi.filter.CustomFilterItem;
 import com.tencent.ttpic.openapi.filter.CyberpunkFilter;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
 import com.tencent.ttpic.openapi.filter.FabbyParts;
@@ -119,6 +120,9 @@ import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 import com.tencent.ttpic.openapi.model.TNNMaterialReportInfo;
 import com.tencent.ttpic.openapi.model.TriggerStateItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.cosfun.CosFun;
+import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunGroupItem;
+import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
 import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory;
 import com.tencent.ttpic.particle.GPUParticleFilter;
@@ -603,10 +607,40 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static CosFunFilterGroup createCosFunFilterGroup(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  private static List<StyleCustomFilterGroup> createCosFunCustomFilterGroup(CosFun paramCosFun)
   {
-    if ((paramVideoMaterial.getCosFun() != null) && (paramTriggerManager != null)) {
-      return new CosFunFilterGroup(paramVideoMaterial, paramTriggerManager);
+    ArrayList localArrayList = new ArrayList();
+    if (paramCosFun != null)
+    {
+      paramCosFun = paramCosFun.getCosFunGroupItem();
+      if (paramCosFun != null)
+      {
+        paramCosFun = paramCosFun.iterator();
+        while (paramCosFun.hasNext())
+        {
+          Object localObject = ((CosFun.CosFunGroupItem)paramCosFun.next()).getCosFunItems();
+          if (localObject != null)
+          {
+            localObject = ((List)localObject).iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              StyleCustomFilterGroup localStyleCustomFilterGroup = createCustomFilterGroup(((CosFun.CosFunItem)((Iterator)localObject).next()).getCustomFilterItemList());
+              if (localStyleCustomFilterGroup != null) {
+                localArrayList.add(localStyleCustomFilterGroup);
+              }
+            }
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static CosFunFilterGroup createCosFunFilterGroup(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager, List<RenderItem> paramList, boolean paramBoolean)
+  {
+    CosFun localCosFun = paramVideoMaterial.getCosFun();
+    if ((localCosFun != null) && (paramTriggerManager != null)) {
+      return new CosFunFilterGroup(paramVideoMaterial, paramTriggerManager, paramList, createCosFunCustomFilterGroup(localCosFun), paramBoolean);
     }
     return null;
   }
@@ -629,12 +663,12 @@ public class VideoFilterUtil
     return new CustomVideoFilter((String)localObject1, (String)localObject2, paramVideoMaterial.getResourceList(), getCustomFilterTriggerType(paramVideoMaterial.getItemList()), paramVideoMaterial.getDataPath());
   }
   
-  private static StyleCustomFilterGroup createCustomFilterGroup(VideoMaterial paramVideoMaterial)
+  private static StyleCustomFilterGroup createCustomFilterGroup(List<CustomFilterItem> paramList)
   {
-    if ((paramVideoMaterial.getCustomFilterGroupList() == null) || (paramVideoMaterial.getCustomFilterGroupList().size() <= 0)) {
+    if ((paramList == null) || (paramList.size() <= 0)) {
       return null;
     }
-    return new StyleCustomFilterGroup(paramVideoMaterial.getCustomFilterGroupList());
+    return new StyleCustomFilterGroup(paramList);
   }
   
   private static RenderItem createCustomRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
@@ -1367,16 +1401,16 @@ public class VideoFilterUtil
       return null;
     }
     TriggerManager localTriggerManager = new TriggerManager();
-    List localList4 = createStyleChildRenderItems(paramVideoMaterial, localTriggerManager);
+    List localList1 = createStyleChildRenderItems(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem1 = createLutRenderItem(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem2 = createSkyboxRenderItem(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem3 = createCustomRenderItem(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem4 = createCustomVertexRenderItem(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem5 = createSnakeFaceRenderItem(paramVideoMaterial, localTriggerManager);
     Object localObject2 = createFaceOffRenderItems(paramVideoMaterial, localTriggerManager);
-    List localList1 = createTransformRenderItems(paramVideoMaterial, localTriggerManager);
-    List localList2 = createBeautyTransformListRenderItems(paramVideoMaterial, localTriggerManager);
-    List localList3 = createRemodelRenderItems(paramVideoMaterial, localTriggerManager);
+    List localList2 = createTransformRenderItems(paramVideoMaterial, localTriggerManager);
+    List localList3 = createBeautyTransformListRenderItems(paramVideoMaterial, localTriggerManager);
+    List localList4 = createRemodelRenderItems(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem6 = createFaceSwitchRenderItem(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem7 = createFaceCopyRenderItem(paramVideoMaterial, localTriggerManager);
     RenderItem localRenderItem8 = createDoodleRenderItem(paramVideoMaterial, localTriggerManager);
@@ -1419,6 +1453,7 @@ public class VideoFilterUtil
         ((CustomVideoFilter)localRenderItem3.filter).setNormalRenderItems(localList19);
       }
       VideoFilterList localVideoFilterList = new VideoFilterList();
+      localVideoFilterList.setCosFunEnableGAN(isCosFunEnableGAN(paramVideoMaterial));
       AllVideoFilters localAllVideoFilters = new AllVideoFilters();
       if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.NORMAL.value) {
         localAllVideoFilters.addRenderItems(localList19);
@@ -1435,7 +1470,7 @@ public class VideoFilterUtil
           localVideoFilterList.setPhantomFilter(localPhantomFilter);
         }
         localVideoFilterList.setRapidNetRenderItems(localList22);
-        localVideoFilterList.setStyleChildRenderItems(localList4);
+        localVideoFilterList.setStyleChildRenderItems(localList1);
         localAllVideoFilters.addRenderItems(localList20);
         localAllVideoFilters.addRenderItems(localList21);
         localObject1 = createEffectFilter(paramVideoMaterial);
@@ -1444,11 +1479,12 @@ public class VideoFilterUtil
           localVideoFilterList.setVideoEffectFilter((VideoFilterBase)localObject1);
           localVideoFilterList.setVideoEffectOrder(paramVideoMaterial.getVideoFilterEffect().order);
         }
-        localVideoFilterList.setStyleCustomFilterGroup(createCustomFilterGroup(paramVideoMaterial));
+        localVideoFilterList.setStyleCustomFilterGroup(createCustomFilterGroup(paramVideoMaterial.getCustomFilterGroupList()));
+        localVideoFilterList.setCosFunInnerStyleCustomFilterGroup(createCustomFilterGroup(paramVideoMaterial.getCustomCosFunInnerFilterGroupList()));
         localVideoFilterList.setFabbyMvFiltersRenderItem(createFabbyMvFiltersRenderItem(paramVideoMaterial, localTriggerManager));
-        localVideoFilterList.setRenderItems(localAllVideoFilters.getRenderItems(), (List)localObject2, localList1);
-        localVideoFilterList.setBeautyTransformListRenderItems(localList2);
-        localVideoFilterList.setRemodelRenderItems(localList3);
+        localVideoFilterList.setRenderItems(localAllVideoFilters.getRenderItems(), (List)localObject2, localList2);
+        localVideoFilterList.setBeautyTransformListRenderItems(localList3);
+        localVideoFilterList.setRemodelRenderItems(localList4);
         localVideoFilterList.setQQGestureFilters(localArrayList2, localArrayList1);
         localVideoFilterList.setFastFaceStickerRenderItems(createFastFaceStickerRenderItem(paramVideoMaterial, localTriggerManager));
         localVideoFilterList.setFastBodyStickerRenderItems(createFastBodyStickerRenderItem(paramVideoMaterial, localTriggerManager));
@@ -1585,7 +1621,7 @@ public class VideoFilterUtil
           for (;;)
           {
             if (localList19 == null) {
-              break label1425;
+              break label1494;
             }
             localAllVideoFilters.addRenderItems(localList19);
             if ((localObject1 != null) && (((RenderItem)localObject1).filter != null)) {
@@ -1601,7 +1637,7 @@ public class VideoFilterUtil
         }
         else
         {
-          label1425:
+          label1494:
           if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_HEAD_CROP.value)
           {
             localVideoFilterList.setHeadCropRenderItem(localRenderItem12);
@@ -1611,7 +1647,7 @@ public class VideoFilterUtil
           }
         }
       }
-      localVideoFilterList.setCosFunFilterGroup(createCosFunFilterGroup(paramVideoMaterial, localTriggerManager));
+      localVideoFilterList.setCosFunFilterGroup(createCosFunFilterGroup(paramVideoMaterial, localTriggerManager, localList1, isCosFunEnableGAN(paramVideoMaterial)));
       localVideoFilterList.setTriggerManager(localTriggerManager);
       return localVideoFilterList;
     }
@@ -2892,6 +2928,14 @@ public class VideoFilterUtil
     } while (!((FaceOff3DFilter)paramVideoFilterBase).canUseBlendMode());
     return false;
     return false;
+  }
+  
+  private static boolean isCosFunEnableGAN(VideoMaterial paramVideoMaterial)
+  {
+    CosFun localCosFun = paramVideoMaterial.getCosFun();
+    List localList = paramVideoMaterial.getFaceStyleItemList();
+    paramVideoMaterial = paramVideoMaterial.getCustomCosFunInnerFilterGroupList();
+    return (localCosFun != null) && (localCosFun.isEnableGAN()) && (localList != null) && (paramVideoMaterial != null);
   }
   
   public static boolean isStatusTriggered(FaceRangeStatus paramFaceRangeStatus, int paramInt, StickerItem.ValueRange paramValueRange)

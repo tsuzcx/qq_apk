@@ -1,6 +1,27 @@
-public abstract interface tjw
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager;
+import com.tencent.nativevue.NativeVueLogAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.utils.ViolaUtils;
+
+public class tjw
+  implements NativeVueLogAdapter
 {
-  public abstract int a();
+  public void logD(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeVueLoaderManager", 2, "[NativeVue Debug]: " + paramString);
+    }
+  }
+  
+  public void logE(String paramString)
+  {
+    QLog.e("NativeVueLoaderManager", 1, "[NativeVue Error]: " + paramString);
+  }
+  
+  public void onNativeVueError(String paramString)
+  {
+    ViolaUtils.reportNVError(paramString, NativeVueLoaderManager.a().a());
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.applets;
 
 import android.text.TextUtils;
-import aoqq;
-import bmvi;
-import bmvj;
+import apeg;
+import bnwq;
+import bnwr;
 
 public final class PublicAccountEventReport$4
   implements Runnable
@@ -12,26 +12,22 @@ public final class PublicAccountEventReport$4
   
   public void run()
   {
-    Object localObject = aoqq.a(this.jdField_a_of_type_JavaLangString);
-    int j;
-    String str;
-    int k;
+    Object localObject = apeg.a(this.jdField_a_of_type_JavaLangString);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      j = (int)(System.currentTimeMillis() / 1000L);
-      str = this.b + "_" + j;
-      k = this.jdField_a_of_type_Int;
+      i = (int)(System.currentTimeMillis() / 1000L);
+      localObject = new bnwr(this.b + "_" + i, 1, this.jdField_a_of_type_Int, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
+      ((bnwr)localObject).l = this.jdField_a_of_type_JavaLangString;
+      ((bnwr)localObject).jdField_f_of_type_JavaLangString = "vab_push";
       if (!this.jdField_a_of_type_Boolean) {
-        break label117;
+        break label109;
       }
     }
-    label117:
-    for (int i = 6;; i = 1)
+    label109:
+    for (int i = 6;; i = -1)
     {
-      localObject = new bmvj(str, 1, k, i, "vab_push", "vab_push", (String)localObject, "vab_push", j);
-      ((bmvj)localObject).l = this.jdField_a_of_type_JavaLangString;
-      ((bmvj)localObject).f = "vab_push";
-      bmvi.a().a((bmvj)localObject);
+      ((bnwr)localObject).jdField_f_of_type_Int = i;
+      bnwq.a().a((bnwr)localObject);
       return;
     }
   }

@@ -1,98 +1,137 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import kotlin.Metadata;
+import kotlin.jvm.JvmName;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class pnq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"toBoolean", "", "Lcom/tencent/mobileqq/pb/PBBoolField;", "toByteArrayOrNull", "", "Lcom/tencent/mobileqq/pb/PBBytesField;", "toEnum", "", "Lcom/tencent/mobileqq/pb/PBEnumField;", "toInt", "Lcom/tencent/mobileqq/pb/PBUInt32Field;", "defaultValue", "toLong", "", "Lcom/tencent/mobileqq/pb/PBUInt64Field;", "toPBListValue", "", "P", "Lcom/tencent/mobileqq/pb/MessageMicro;", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "toPBParseValue", "R", "pbParser", "Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "(Lcom/tencent/mobileqq/pb/MessageMicro;Ljava/lang/Object;Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;)Ljava/lang/Object;", "toPBValue", "(Lcom/tencent/mobileqq/pb/MessageMicro;Lcom/tencent/mobileqq/pb/MessageMicro;)Lcom/tencent/mobileqq/pb/MessageMicro;", "toString", "", "Lcom/tencent/mobileqq/pb/PBStringField;", "toStringOrNull", "toStringUtf8", "toStringUtf8OrNull", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+@JvmName(name="PBFieldUtils")
+public final class pnq
 {
-  @NotNull
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  @NotNull
-  private pnr jdField_a_of_type_Pnr;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public pnq(@NotNull pnr parampnr, @NotNull String paramString)
+  public static final int a(@NotNull PBEnumField paramPBEnumField)
   {
-    this.jdField_a_of_type_Pnr = parampnr;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public pnr a()
-  {
-    return this.jdField_a_of_type_Pnr;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onCreate");
+    Intrinsics.checkParameterIsNotNull(paramPBEnumField, "$this$toEnum");
+    if (paramPBEnumField.has()) {
+      return paramPBEnumField.get();
     }
+    return 0;
   }
   
-  @UiThread
-  public void a(boolean paramBoolean)
+  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field)
   {
-    this.jdField_a_of_type_Pnr.a(this, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onDestroy");
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
+    if (paramPBUInt32Field.has()) {
+      return paramPBUInt32Field.get();
     }
+    return 0;
   }
   
-  public boolean b()
+  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field, int paramInt)
   {
-    return this.b;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onResume");
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
+    if (paramPBUInt32Field.has()) {
+      paramInt = paramPBUInt32Field.get();
     }
+    return paramInt;
   }
   
-  public void d()
+  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onPause");
+    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
+    if (paramPBUInt64Field.has()) {
+      return paramPBUInt64Field.get();
     }
+    return 0L;
   }
   
-  public void e()
+  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field, long paramLong)
   {
-    this.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onShowSelf");
+    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
+    if (paramPBUInt64Field.has()) {
+      paramLong = paramPBUInt64Field.get();
     }
+    return paramLong;
   }
   
-  public void f()
+  @Nullable
+  public static final <P extends MessageMicro<P>> P a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable P paramP)
   {
-    this.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onHideSelf");
+    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBValue");
+    if (paramMessageMicro.has()) {
+      paramP = paramMessageMicro.get();
     }
+    return paramP;
   }
   
-  protected abstract void g();
-  
-  protected abstract void h();
-  
-  @NonNull
-  public String toString()
+  @Nullable
+  public static final <P extends MessageMicro<P>, R> R a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable R paramR, @NotNull pno<P, R> parampno)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBParseValue");
+    Intrinsics.checkParameterIsNotNull(parampno, "pbParser");
+    if (paramMessageMicro.has())
+    {
+      paramMessageMicro = paramMessageMicro.get();
+      Intrinsics.checkExpressionValueIsNotNull(paramMessageMicro, "get()");
+      paramR = parampno.a(paramMessageMicro);
+    }
+    return paramR;
+  }
+  
+  @Nullable
+  public static final String a(@NotNull PBBytesField paramPBBytesField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8OrNull");
+    if (paramPBBytesField.has()) {
+      return paramPBBytesField.get().toStringUtf8();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public static final String a(@NotNull PBBytesField paramPBBytesField, @Nullable String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8");
+    if (paramPBBytesField.has()) {
+      paramString = paramPBBytesField.get().toStringUtf8();
+    }
+    return paramString;
+  }
+  
+  @Nullable
+  public static final String a(@NotNull PBStringField paramPBStringField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBStringField, "$this$toStringOrNull");
+    if (paramPBStringField.has()) {
+      return paramPBStringField.get().toString();
+    }
+    return null;
+  }
+  
+  public static final boolean a(@NotNull PBBoolField paramPBBoolField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBoolField, "$this$toBoolean");
+    if (paramPBBoolField.has()) {
+      return paramPBBoolField.get();
+    }
+    return false;
+  }
+  
+  @Nullable
+  public static final byte[] a(@NotNull PBBytesField paramPBBytesField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toByteArrayOrNull");
+    if (paramPBBytesField.has()) {
+      return paramPBBytesField.get().toByteArray();
+    }
+    return null;
   }
 }
 

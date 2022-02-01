@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import biau;
+import bjbs;
 
 class PermissionSettingFragment$1$2
   implements Runnable

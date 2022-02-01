@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import arkr;
-import arkv;
-import arkw;
+import asah;
+import asal;
+import asam;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -22,7 +22,7 @@ public class DatingInfo
   @notColumn
   public static final int TYPE_COMMENT = 1;
   @notColumn
-  private List<arkr> commentList = new ArrayList(20);
+  private List<asah> commentList = new ArrayList(20);
   public String commentPacked;
   @unique
   public String datingId;
@@ -38,10 +38,10 @@ public class DatingInfo
   @notColumn
   public String strDatingTime;
   @notColumn
-  private List<arkv> strangerInfos = new ArrayList(20);
+  private List<asal> strangerInfos = new ArrayList(20);
   public String strangerInfosPacked;
   @notColumn
-  private List<arkv> visitorInfos = new ArrayList(20);
+  private List<asal> visitorInfos = new ArrayList(20);
   public String visitorInfosPacked;
   
   public boolean equals(Object paramObject)
@@ -72,13 +72,13 @@ public class DatingInfo
   public void init()
   {
     if (this.datingTime == 0L) {}
-    for (this.strDatingTime = "";; this.strDatingTime = arkw.a(this.datingTime, this.datingSubject, false))
+    for (this.strDatingTime = "";; this.strDatingTime = asam.a(this.datingTime, this.datingSubject, false))
     {
-      arkv.a(this.visitorInfos, this.visitorInfosPacked);
+      asal.a(this.visitorInfos, this.visitorInfosPacked);
       this.nPrivateFlag |= 0x2;
-      arkr.a(this.commentList, this.commentPacked);
+      asah.a(this.commentList, this.commentPacked);
       this.nPrivateFlag |= 0x20;
-      arkv.a(this.strangerInfos, this.strangerInfosPacked);
+      asal.a(this.strangerInfos, this.strangerInfosPacked);
       this.nPrivateFlag |= 0x8;
       return;
     }
@@ -101,11 +101,11 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.strangerInfosPacked = arkv.a(this.strangerInfos);
+          this.strangerInfosPacked = asal.a(this.strangerInfos);
           synchronized (this.visitorInfos)
           {
             if ((this.nPrivateFlag & 0x2) == 2) {
-              this.visitorInfosPacked = arkv.a(this.visitorInfos);
+              this.visitorInfosPacked = asal.a(this.visitorInfos);
             }
           }
         }
@@ -114,7 +114,7 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.commentPacked = arkr.a(this.commentList);
+          this.commentPacked = asah.a(this.commentList);
           return;
           this.strangerInfosPacked = "";
           continue;

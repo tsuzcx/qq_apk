@@ -1,41 +1,75 @@
-import android.graphics.Canvas;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class arfn<D extends aren>
+public class arfn
 {
-  private ArrayList<arfs> a;
+  private static final arfn jdField_a_of_type_Arfn = new arfn();
+  private long jdField_a_of_type_Long = 0L;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = false;
+  private String b = "";
   
-  private void c(Canvas paramCanvas, D paramD, arew paramarew, float paramFloat1, float paramFloat2)
+  public static arfn a(araj[] paramArrayOfaraj)
   {
-    if (this.a != null)
+    Object localObject;
+    if (paramArrayOfaraj == null) {
+      localObject = jdField_a_of_type_Arfn;
+    }
+    for (;;)
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        ((arfs)localIterator.next()).a(paramCanvas, paramD, paramarew, paramFloat1, paramFloat2);
+      return localObject;
+      try
+      {
+        arfn localarfn = new arfn();
+        int j = paramArrayOfaraj.length;
+        int i = 0;
+        localObject = localarfn;
+        if (i >= j) {
+          continue;
+        }
+        localObject = new JSONObject(paramArrayOfaraj[i].jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject).optInt("visible", 0) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localarfn.jdField_a_of_type_Boolean = bool;
+          localarfn.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("guideText", "");
+          localarfn.b = ((JSONObject)localObject).optString("guideHighlightText", "");
+          localarfn.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("showIntervalMs", 0L);
+          i += 1;
+          break;
+        }
+        return jdField_a_of_type_Arfn;
+      }
+      catch (Exception paramArrayOfaraj)
+      {
+        QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfaraj);
       }
     }
   }
   
-  public abstract argl a(D paramD);
-  
-  public void a() {}
-  
-  public final void a(Canvas paramCanvas, D paramD, arew paramarew, float paramFloat1, float paramFloat2)
+  public long a()
   {
-    b(paramCanvas, paramD, paramarew, paramFloat1, paramFloat2);
-    c(paramCanvas, paramD, paramarew, paramFloat1, paramFloat2);
+    return this.jdField_a_of_type_Long;
   }
   
-  public void a(D paramD) {}
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract boolean a(aren paramaren);
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
   
-  public abstract void b(Canvas paramCanvas, D paramD, arew paramarew, float paramFloat1, float paramFloat2);
+  public String b()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfn
  * JD-Core Version:    0.7.0.1
  */

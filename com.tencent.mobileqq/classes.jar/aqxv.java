@@ -1,84 +1,19 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 public class aqxv
+  implements blqt
 {
-  private static String jdField_a_of_type_JavaLangString = "skin_leba_tongyong_bg";
-  public static HashMap<String, String> a;
-  private static String b = "https://zb.vip.qq.com/v2/pages/themeMall?_wv=16778243&from=themeIcon";
-  private boolean jdField_a_of_type_Boolean;
+  public aqxv(IphonePickerView paramIphonePickerView) {}
   
-  static
+  public void a(View paramView, int paramInt)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  @NonNull
-  public static aqxv a(String paramString)
-  {
-    aqxv localaqxv = new aqxv();
-    if (TextUtils.isEmpty(paramString))
-    {
-      localaqxv.jdField_a_of_type_Boolean = false;
-      return localaqxv;
-    }
-    localaqxv.jdField_a_of_type_Boolean = true;
-    a(paramString);
-    return localaqxv;
-  }
-  
-  private static void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONObject("android");
-      JSONObject localJSONObject = paramString.getJSONObject("backgroundIconConfig");
-      if (localJSONObject != null)
-      {
-        Iterator localIterator = localJSONObject.keys();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          jdField_a_of_type_JavaUtilHashMap.put(str, localJSONObject.getString(str));
-        }
-      }
-      jdField_a_of_type_JavaLangString = paramString.getString("defaultIconName");
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-      return;
-    }
-    b = paramString.getString("themeStoreUrl");
-  }
-  
-  public String a()
-  {
-    return b;
-  }
-  
-  public String a(String paramString)
-  {
-    String str = (String)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = jdField_a_of_type_JavaLangString;
-    }
-    return paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    IphonePickerView.a(this.a, paramView, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxv
  * JD-Core Version:    0.7.0.1
  */

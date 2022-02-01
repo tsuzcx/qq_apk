@@ -1,16 +1,21 @@
-public abstract interface nea
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+class nea
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  nea(ndy paramndy, long paramLong) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void b(long paramLong, boolean paramBoolean);
-  
-  public abstract void c(long paramLong, boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Ndy.a()) {
+      return;
+    }
+    QLog.w(this.jdField_a_of_type_Ndy.a, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+    nhs.a(this.jdField_a_of_type_Ndy.a());
+  }
 }
 
 

@@ -1,45 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xaz
-  extends wla
+  extends QQUIEventReceiver<xax, xaw>
 {
-  public long a;
-  public String a;
-  public ArrayList<ShareGroupCollectionItem> a;
-  public boolean a;
-  public int b;
-  
-  public xaz(String paramString, qqstory_service.RspShareVideoCollectionList paramRspShareVideoCollectionList)
+  public xaz(xax paramxax)
   {
-    super(paramRspShareVideoCollectionList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
-    this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
-    if (paramRspShareVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
+    super(paramxax);
+  }
+  
+  public void a(@NonNull xax paramxax, @NonNull xaw paramxaw)
+  {
+    if (paramxax.a()) {}
+    do
     {
-      this.jdField_a_of_type_Boolean = bool;
-      paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
-      while (paramRspShareVideoCollectionList.hasNext())
+      return;
+      if (paramxaw.jdField_a_of_type_Boolean)
       {
-        qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
-        ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
-        localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
+        xax.a(paramxax);
+        return;
       }
-      bool = false;
-    }
+      if ((paramxaw.a() != null) && (!paramxaw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramxaw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    return;
+    xax.a(paramxax);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xaw.class;
   }
 }
 

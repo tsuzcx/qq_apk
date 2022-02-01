@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceText;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agtf
-  implements DialogInterface.OnClickListener
+public class agtf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  agtf(agte paramagte, MessageForDeviceText paramMessageForDeviceText) {}
+  public agtf(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ((abux)this.jdField_a_of_type_Agte.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Agte.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agte.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agte.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    AIOLongShotHelper.a(this.a, paramCompoundButton, paramBoolean);
+    AIOLongShotHelper.a("0X8009DE8");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

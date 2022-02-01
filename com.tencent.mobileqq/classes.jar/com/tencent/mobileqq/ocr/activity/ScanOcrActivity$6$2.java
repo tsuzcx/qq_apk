@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ocr.activity;
 
 import android.widget.TextView;
-import ayhg;
+import ayzz;
 import com.tencent.mobileqq.ocr.view.MaskView;
 import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ScanOcrActivity$6$2
   implements Runnable
 {
-  public ScanOcrActivity$6$2(ayhg paramayhg) {}
+  public ScanOcrActivity$6$2(ayzz paramayzz) {}
   
   public void run()
   {

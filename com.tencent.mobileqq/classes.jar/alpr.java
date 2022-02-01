@@ -1,10 +1,48 @@
-import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class alpr
+  extends AbsRecentStatus
 {
-  public int a;
+  private static int a = 25;
   
-  private alpr(GLVideoClipUtil paramGLVideoClipUtil) {}
+  public int[] declareStatus()
+  {
+    return new int[] { 7 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    do
+    {
+      return false;
+      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+    } while ((paramRecentBaseData.mStatus == 4) || ((paramRecentBaseData.getRecentUserType() != 1) && (paramRecentBaseData.getRecentUserType() != 0)));
+    String str = paramRecentBaseData.getRecentUserUin();
+    if (paramRecentBaseData.getRecentUserType() == 1) {}
+    for (int i = 1;; i = 2)
+    {
+      i = ((bejx)paramIMCoreAppRuntime.getManager(339)).a(i, str);
+      if (((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus < i)) || (i == 0)) {
+        break;
+      }
+      paramRecentBaseData.mStatus = i;
+      return false;
+    }
+  }
+  
+  public int priority()
+  {
+    return a;
+  }
 }
 
 

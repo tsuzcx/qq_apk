@@ -1,20 +1,20 @@
 package cooperation.plugin;
 
-import blgo;
-import blnx;
+import bmhr;
+import bmoz;
 import com.tencent.qphone.base.util.QLog;
 
 public class PluginPreInstaller$2
   implements Runnable
 {
-  public PluginPreInstaller$2(blgo paramblgo) {}
+  public PluginPreInstaller$2(bmhr parambmhr) {}
   
   public void run()
   {
-    if (blgo.a(this.this$0) != null) {}
+    if (bmhr.a(this.this$0) != null) {}
     try
     {
-      blnx.a(1, blgo.a(this.this$0));
+      bmoz.a(1, bmhr.a(this.this$0));
       return;
     }
     catch (Exception localException)

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.relationx.addFrd;
 
-import baix;
+import bbbq;
 
 public class AddFrdStateMng$1
   implements Runnable
 {
-  public AddFrdStateMng$1(baix parambaix) {}
+  public AddFrdStateMng$1(bbbq parambbbq) {}
   
   public void run()
   {
-    baix.a(this.this$0);
+    bbbq.a(this.this$0);
     this.this$0.c = false;
   }
 }

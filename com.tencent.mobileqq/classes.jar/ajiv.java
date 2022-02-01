@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ajiv
-  extends anke
+class ajiv
+  extends anuw
 {
-  public ajiv(DeviceFragment paramDeviceFragment) {}
+  ajiv(ajis paramajis) {}
   
-  protected void b()
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (this.a.a == null) {
+    if (paramBoolean)
+    {
+      QQToast.a(ajis.a(this.a), 2131698208, 3000).a();
+      if (ajis.a(this.a) != 23) {
+        this.a.a(true);
+      }
       return;
     }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
+    QQToast.a(ajis.a(this.a), 2131698207, 0).a();
   }
 }
 

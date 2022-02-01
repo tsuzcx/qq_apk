@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import bfpx;
+import bgpy;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -20,7 +20,7 @@ class ContactJsPlugin$3
       Object localObject = paramJSONObject.opt("robotUin");
       if (((localObject instanceof String)) && (!TextUtils.isEmpty((String)localObject)))
       {
-        bfpx.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, null, (String)localObject);
+        bgpy.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, null, (String)localObject);
         this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, paramJSONObject, this.val$callbackId);
         return;
       }

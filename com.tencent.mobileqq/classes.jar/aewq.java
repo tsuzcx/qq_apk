@@ -1,52 +1,98 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import android.view.View;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.activity.LikeRankingListActivity.2.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.LikeRankingInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
-import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class aewq
-  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
+  extends anuw
 {
-  public aewq(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
+  public aewq(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    String str = new WeJson().toJson(new LiveStyleRequester.YTLiveStyleReq(-2.0F, "10164651"));
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
-    localMessage.arg1 = 24;
-    localMessage.obj = str;
-    if (paramInt == 3) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessageDelayed(localMessage, 2000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
     }
-    for (;;)
+    if ((paramBoolean) && ((paramObject instanceof Card)))
     {
-      QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(localMessage);
+      paramObject = (Card)paramObject;
+      if (paramObject.uin.equals(this.a.b)) {
+        this.a.app.a(new LikeRankingListActivity.2.1(this, paramObject));
+      }
     }
   }
   
-  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
+  protected void onReqLikeRankingListResult(boolean paramBoolean1, String paramString, List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean2)
   {
-    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
-    paramYTLiveStyleReq.app_id = "10164651";
-    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeMessages(2);
-    paramLiveStyleResponse = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
-    paramLiveStyleResponse.arg1 = 23;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(paramLiveStyleResponse);
-    if (QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).compareAndSet(true, true)) {}
-    do
+    int i;
+    if (QLog.isColorLevel())
     {
+      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
+      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
+      if (paramList == null)
+      {
+        i = 0;
+        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
+      }
+    }
+    else
+    {
+      if (!paramBoolean1) {
+        break label341;
+      }
+      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
+        break label284;
+      }
+      this.a.jdField_a_of_type_Aobc.a(paramList, paramInt, paramBoolean2);
+      if ((!paramBoolean2) || (paramList.size() != 0)) {
+        break label258;
+      }
+      this.a.e.setVisibility(0);
+      label165:
+      this.a.jdField_a_of_type_Aewr.a(paramList, true);
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        if (paramList.size() <= 0) {
+          break label273;
+        }
+        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
+        LikeRankingListActivity.a(this.a, false);
+      }
+    }
+    for (;;)
+    {
+      paramString = this.a;
+      if (paramBoolean2) {
+        paramInt = -1;
+      }
+      paramString.jdField_a_of_type_Int = paramInt;
       return;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, paramYTLiveStyleReq, this.jdField_a_of_type_Boolean);
-    } while (!QLog.isColorLevel());
-    QLog.d("QQIdentiferLegacy", 2, "getLightInfo success");
+      i = paramList.size();
+      break;
+      label258:
+      this.a.e.setVisibility(8);
+      break label165;
+      label273:
+      this.a.a(null);
+      continue;
+      label284:
+      this.a.a(null);
+      this.a.jdField_a_of_type_Aewr.a = false;
+      this.a.jdField_a_of_type_Aewr.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Aewr.getCount() <= 1) {
+        this.a.e.setVisibility(0);
+      }
+    }
+    label341:
+    this.a.jdField_a_of_type_Aewr.a = false;
+    this.a.jdField_a_of_type_Aewr.notifyDataSetChanged();
+    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131705012), 0).a();
   }
 }
 

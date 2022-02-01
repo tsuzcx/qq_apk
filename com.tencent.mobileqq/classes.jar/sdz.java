@@ -1,46 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-
-class sdz
-  extends AnimatorListenerAdapter
+public abstract interface sdz
 {
-  sdz(sdu paramsdu) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    if (sdu.a(this.a).y != null) {
-      sdu.a(this.a).y.setTag(2131362680, null);
-    }
-    if (sdu.a(this.a) != null) {
-      sdu.a(this.a).b(sdu.a(this.a));
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (sdu.a(this.a) != null)
-    {
-      paramAnimator = sdu.a(this.a).a();
-      sdu.a(this.a, sdu.a(this.a).h, paramAnimator, sdu.a(this.a), 18, -1);
-    }
-    if (sdu.a(this.a).y != null) {
-      sdu.a(this.a).y.setTag(2131362680, null);
-    }
-    if (sdu.a(this.a) != null) {
-      sdu.a(this.a).c(sdu.a(this.a));
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (sdu.a(this.a) != null) {
-      sdu.a(this.a).a(sdu.a(this.a));
-    }
-  }
+  public abstract void b();
 }
 
 

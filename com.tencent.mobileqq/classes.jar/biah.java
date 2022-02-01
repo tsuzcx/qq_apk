@@ -1,30 +1,18 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
-
 public class biah
-  implements URLDrawable.URLDrawableListener
 {
-  final WeakReference<View> a;
-  
-  public biah(View paramView)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    this.a = new WeakReference(paramView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
-    }
+    paramString6 = new StringBuilder();
+    paramString6.append(paramString1).append("|");
+    paramString6.append(paramString2).append("|");
+    paramString6.append(paramString3).append("|");
+    paramString6.append(paramString4).append("|");
+    paramString6.append(paramString5).append("|");
+    paramString6.append(paramString7).append("|");
+    paramString6.append(paramString8).append("|");
+    paramString6.append(paramString9).append("|");
+    paramString6.append(paramString10);
+    bdkl.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_errorcode_report", paramString6.toString(), true);
   }
 }
 

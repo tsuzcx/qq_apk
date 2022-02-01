@@ -1,57 +1,44 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class yed
-  extends yku
 {
-  public yed(yea paramyea) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
+  public yed(String paramString)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(yea.a(this.a)).size())) {}
-    do
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((wta)wth.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
+      {
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
+      }
+      return;
+    }
+    catch (Exception paramString)
     {
       do
       {
-        do
-        {
-          return;
-          paramObject = (CommentEntry)this.a.a.a(yea.a(this.a)).get(paramInt);
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          }
-        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-        wjz.a(paramView.getContext(), 12, paramObject.authorUnionId);
-        return;
-      } while (yea.a(this.a) == null);
-      yea.a(this.a).a(paramObject, paramInt);
-      return;
-    } while (yea.a(this.a) == null);
-    yea.a(this.a).N_();
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
+    }
   }
   
-  public void b(int paramInt, View paramView, Object paramObject, ynb paramynb)
+  public String toString()
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(yea.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (CommentEntry)this.a.a.a(yea.a(this.a)).get(paramInt);
-        switch (paramView.getId())
-        {
-        default: 
-          return;
-        }
-      } while (yea.a(this.a) == null);
-      yea.a(this.a).b(paramObject, paramInt);
-      return;
-    } while (yea.a(this.a) == null);
-    yea.a(this.a).N_();
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
   }
 }
 

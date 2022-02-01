@@ -1,28 +1,59 @@
-import android.view.ViewTreeObserver;
-import com.tencent.mobileqq.location.ui.LocationMapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class avyi
-  implements TencentMap.OnMapLoadedCallback
+  extends arac<avyj>
 {
-  public avyi(LocationMapWidget paramLocationMapWidget) {}
-  
-  public void onMapLoaded()
+  @NonNull
+  public avyj a(int paramInt)
   {
-    if (LocationMapWidget.a(this.a) != null)
-    {
-      if (this.a.a.getCameraPosition() == null) {
-        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new avyj(this));
-      }
+    return new avyj();
+  }
+  
+  @Nullable
+  public avyj a(araj[] paramArrayOfaraj)
+  {
+    avyj localavyj = new avyj();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
+      avyj.a(localavyj, paramArrayOfaraj[0].a);
     }
-    else {
-      return;
-    }
-    List localList = LocationMapWidget.a(this.a);
-    LocationMapWidget.a(this.a).a(this.a.a.getCameraPosition().target, localList);
+    return localavyj;
+  }
+  
+  public void a(avyj paramavyj) {}
+  
+  public Class<avyj> clazz()
+  {
+    return avyj.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onReqNoReceive() {}
+  
+  public int type()
+  {
+    return 445;
   }
 }
 

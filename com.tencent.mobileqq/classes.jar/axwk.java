@@ -1,39 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class axwk
-  extends bdzm
+  extends aybr
 {
-  axwk(axvz paramaxvz) {}
+  axwk(axwf paramaxwf, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a()
   {
-    bduk localbduk = (bduk)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localbduk.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bdwp.a);
-        }
-      } while (axvz.a(this.a) == null);
-      axvz.a(this.a).a = bdwp.a;
-      axvz.a(this.a);
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+      axxb.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
     }
-    this.a.a.a();
-    this.a.a.b(anni.a(2131706098));
+    axwf.a(this.jdField_a_of_type_Axwf, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

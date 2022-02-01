@@ -1,62 +1,17 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ScrollView;
 
 public class pkj
+  implements blpg
 {
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<pkk> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private HashMap<String, String> b = new HashMap();
+  public pkj(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public int a()
+  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String a(int paramInt, String paramString)
-  {
-    String str2 = "";
-    pkk localpkk = a(paramInt);
-    String str1 = str2;
-    if (localpkk != null)
-    {
-      str1 = str2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!"style_ID".equalsIgnoreCase(paramString)) {
-          break label46;
-        }
-        str1 = localpkk.jdField_a_of_type_JavaLangString;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
     }
-    return str1;
-    label46:
-    return (String)localpkk.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public String a(String paramString)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public pkk a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (pkk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
-    }
-    return localObject1;
-  }
-  
-  public String b(String paramString)
-  {
-    return (String)this.b.get(paramString);
   }
 }
 

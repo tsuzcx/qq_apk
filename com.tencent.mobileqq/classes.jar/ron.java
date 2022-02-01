@@ -1,22 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class ron
-  implements URLDrawable.URLDrawableListener
+class ron
+  implements Animation.AnimationListener
 {
-  public ron(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
+  ron(rom paramrom) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    AbsPublishColumnFragment.b(this.a);
+    if ((rnu.a(this.a.c) == rom.a(this.a)) && (rnu.a(this.a.c) != null)) {
+      rnu.a(this.a.c).a(rom.a(this.a));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if ((rom.a(this.a).a != null) && (rom.a(this.a).a.a != null))
+    {
+      boolean bool = rom.a(this.a).a.a.o;
+      if (rom.a(this.a).o != null) {
+        rom.a(this.a).o.setImageDrawable(rnu.a(this.a.c, this.a.a(bool)));
+      }
+    }
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,29 +1,37 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class xty
-  extends wfr<xts, wmr>
+  implements TVK_SDKMgr.OnLogListener
 {
-  public xty(xts paramxts)
+  public int d(String paramString1, String paramString2)
   {
-    super(paramxts);
+    yuk.b(paramString1, paramString2);
+    return 0;
   }
   
-  public void a(@NonNull xts paramxts, @NonNull wmr paramwmr)
+  public int e(String paramString1, String paramString2)
   {
-    if ((paramxts.a != null) && (TextUtils.equals(paramxts.a.b, paramwmr.a)))
-    {
-      yqp.a(this.TAG, "receive feed info change event. %s.", paramwmr.toString());
-      paramxts.i();
-    }
+    yuk.e(paramString1, paramString2);
+    return 0;
   }
   
-  public Class acceptEventClass()
+  public int i(String paramString1, String paramString2)
   {
-    return wmr.class;
+    yuk.c(paramString1, paramString2);
+    return 0;
   }
   
-  public void b(@NonNull xts paramxts, @NonNull wmr paramwmr) {}
+  public int v(String paramString1, String paramString2)
+  {
+    yuk.b(paramString1, paramString2);
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    yuk.d(paramString1, paramString2);
+    return 0;
+  }
 }
 
 

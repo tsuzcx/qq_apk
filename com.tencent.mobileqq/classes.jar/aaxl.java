@@ -1,124 +1,37 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
 
-class aaxl
-  implements batv
+public class aaxl
+  implements View.OnClickListener
 {
-  public long a;
+  public aaxl(TroopGiftPanel paramTroopGiftPanel, aawo paramaawo, aawt paramaawt, DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
-  aaxl(aaxk paramaaxk, List paramList, aaxe paramaaxe, aaxf paramaaxf) {}
-  
-  private boolean a()
+  public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    int i;
-    if (aaxk.a(this.jdField_a_of_type_Aaxk).size() == 1) {
-      i = 0;
-    }
-    int j;
-    do
+    String str1 = this.jdField_a_of_type_Aawo.b;
+    String str2 = this.jdField_a_of_type_Aawt.jdField_a_of_type_JavaLangString;
+    float f = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getProgress();
+    Iterator localIterator = this.jdField_a_of_type_Aawo.a.iterator();
+    while (localIterator.hasNext())
     {
-      long l = 1000000 * aaxk.c(this.jdField_a_of_type_Aaxk);
-      boolean bool1 = bool2;
-      if (aaxk.a(this.jdField_a_of_type_Aaxk) != null)
+      aawn localaawn = (aawn)localIterator.next();
+      if ((f >= localaawn.jdField_a_of_type_Float) && (f < localaawn.b))
       {
-        bool1 = bool2;
-        if (((Integer)aaxk.a(this.jdField_a_of_type_Aaxk).get(i)).intValue() > 0)
-        {
-          bool1 = bool2;
-          if (aaxk.a(this.jdField_a_of_type_Aaxk) < aaxk.b(this.jdField_a_of_type_Aaxk) * 1000000L)
-          {
-            aaxk.a(this.jdField_a_of_type_Aaxk).a(3553, ((Integer)aaxk.a(this.jdField_a_of_type_Aaxk).get(0)).intValue(), null, null, aaxk.a(this.jdField_a_of_type_Aaxk));
-            aaxk.a(this.jdField_a_of_type_Aaxk, aaxk.a(this.jdField_a_of_type_Aaxk) + l);
-            bool1 = true;
-          }
-        }
-      }
-      return bool1;
-      j = (int)(aaxk.a(this.jdField_a_of_type_Aaxk) / (Long.valueOf("2").longValue() * 1000L * 1000000L));
-      i = j;
-    } while (j < aaxk.a(this.jdField_a_of_type_Aaxk).size());
-    return false;
-  }
-  
-  public void a()
-  {
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (localIterator.hasNext())
-    {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if (!aaxk.a(this.jdField_a_of_type_Aaxk)) {}
-      for (int i = aaxk.a(this.jdField_a_of_type_Aaxk, localBitmap, aaxk.a(this.jdField_a_of_type_Aaxk), aaxk.b(this.jdField_a_of_type_Aaxk));; i = aaxk.b(this.jdField_a_of_type_Aaxk, localBitmap, aaxk.a(this.jdField_a_of_type_Aaxk), aaxk.b(this.jdField_a_of_type_Aaxk)))
-      {
-        aaxk.a(this.jdField_a_of_type_Aaxk).add(Integer.valueOf(i));
-        break;
+        str1 = localaawn.d;
+        str2 = localaawn.jdField_a_of_type_JavaLangString;
       }
     }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("MuiltiImageToVideo", 2, "onEncodeStart preProcess cost: " + (l2 - l1) + " ms mGpuBlur:" + aaxk.a(this.jdField_a_of_type_Aaxk));
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a();
-  }
-  
-  public void a(String arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("MuiltiImageToVideo", 2, "onEncodeStart encode cost: " + (l - this.jdField_a_of_type_Long) + " ms mGpuBlur:" + aaxk.a(this.jdField_a_of_type_Aaxk));
-    }
-    if (this.jdField_a_of_type_Aaxe != null) {
-      this.jdField_a_of_type_Aaxe.a(this.jdField_a_of_type_Aaxf);
-    }
-    if (aaxk.a(this.jdField_a_of_type_Aaxk) != null)
+    for (;;)
     {
-      aaxk.a(this.jdField_a_of_type_Aaxk).surfaceDestroyed();
-      aaxk.a(this.jdField_a_of_type_Aaxk, null);
-    }
-    if (aaxk.a(this.jdField_a_of_type_Aaxk) != null)
-    {
-      aaxk.a(this.jdField_a_of_type_Aaxk).c();
-      aaxk.a(this.jdField_a_of_type_Aaxk, null);
-    }
-    if (aaxk.a(this.jdField_a_of_type_Aaxk) != null) {
-      aaxk.a(this.jdField_a_of_type_Aaxk).clear();
-    }
-    synchronized (this.jdField_a_of_type_Aaxk)
-    {
-      this.jdField_a_of_type_Aaxk.notifyAll();
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(str1);
+      bdll.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", str2);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-  }
-  
-  public void a_(int paramInt, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("MuiltiImageToVideo", 2, "onEncodeError, code:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_Aaxk)
-    {
-      this.jdField_a_of_type_Aaxk.notifyAll();
-      if (this.jdField_a_of_type_Aaxe != null)
-      {
-        this.jdField_a_of_type_Aaxf.a(paramThrowable.getMessage());
-        this.jdField_a_of_type_Aaxf.a(943001);
-        this.jdField_a_of_type_Aaxe.b(this.jdField_a_of_type_Aaxf);
-      }
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    QLog.d("MuiltiImageToVideo", 2, "onEncodeFrame() ");
-    if ((!a()) && (aaxk.a(this.jdField_a_of_type_Aaxk) != null)) {
-      aaxk.a(this.jdField_a_of_type_Aaxk).b();
     }
   }
 }

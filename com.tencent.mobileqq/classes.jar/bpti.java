@@ -1,17 +1,6 @@
-public abstract interface bpti
-{
-  public abstract void cancelAnimator();
-  
-  public abstract void displayPanel();
-  
-  public abstract void displayPanelFinish();
-  
-  public abstract void fadeBackground(float paramFloat);
-  
-  public abstract void hidePanel();
-  
-  public abstract void hidePanelFinish();
-}
+public class bpti
+  extends bptw
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

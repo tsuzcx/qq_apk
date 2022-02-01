@@ -1,16 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
-
-public class ppz
-  implements bknm
+public abstract interface ppz
 {
-  public ppz(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
-  
-  public void a(bknl parambknl)
-  {
-    switch (parambknl.a)
-    {
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,8 +1,76 @@
-public abstract interface svv
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qphone.base.util.QLog;
+
+public abstract class svv
+  implements ski
 {
-  public abstract void a();
+  private static final String a;
+  protected int a;
+  public aayo a;
+  protected Context a;
+  protected SlideActiveAnimController a;
+  protected svw a;
+  protected svx a;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  static
+  {
+    jdField_a_of_type_JavaLangString = svv.class.getSimpleName();
+  }
+  
+  public svv(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    if (this.jdField_a_of_type_Svw != null) {
+      this.jdField_a_of_type_Svw.a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "onPullRefreshing percent:" + paramInt + " isTopRefreshing:" + paramBoolean);
+    }
+  }
+  
+  public void a(SlideActiveAnimController paramSlideActiveAnimController)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = paramSlideActiveAnimController;
+  }
+  
+  public void a(svw paramsvw)
+  {
+    this.jdField_a_of_type_Svw = paramsvw;
+  }
+  
+  public void a(svx paramsvx)
+  {
+    this.jdField_a_of_type_Svx = paramsvx;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Svx != null) {
+      this.jdField_a_of_type_Svx.a(paramBoolean);
+    }
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

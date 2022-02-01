@@ -1,14 +1,14 @@
-class vzn
-  implements vpo
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+
+public class vzn
+  implements vxz
 {
-  vzn(vzl paramvzl) {}
+  public vzn(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    vrc.a(35, 2, this.a.a, this.a.b());
+    QCircleFeedCommentWidget.a(this.a, paramString);
   }
-  
-  public void b() {}
 }
 
 

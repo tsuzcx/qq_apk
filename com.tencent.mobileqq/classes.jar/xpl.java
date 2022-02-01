@@ -1,44 +1,26 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public abstract interface xpl
+class xpl
+  extends AnimatorListenerAdapter
 {
-  public abstract int a();
+  xpl(xpj paramxpj) {}
   
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract xpy a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(xpm paramxpm);
-  
-  public abstract void a(xpn paramxpn);
-  
-  public abstract void a(xpo paramxpo);
-  
-  public abstract void a(xpp paramxpp);
-  
-  public abstract void a(xpq paramxpq);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.setImageAlpha(255);
+    }
+    for (;;)
+    {
+      this.a.a.setVisibility(8);
+      return;
+      this.a.a.setImageResource(2130850680);
+    }
+  }
 }
 
 

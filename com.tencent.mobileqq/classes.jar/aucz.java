@@ -1,30 +1,39 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aucz
+final class aucz
+  implements View.OnClickListener
 {
-  public long a;
-  public long b;
+  aucz(Activity paramActivity, String paramString) {}
   
-  public aucz(long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public static aucz a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return null;
+    bdll.b(null, "dc00898", "", "", "0X800AEE0", "0X800AEE0", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      long l = auog.a(this.jdField_a_of_type_JavaLangString);
+      WXShareHelper localWXShareHelper = WXShareHelper.a();
+      if (l <= 10485760L)
+      {
+        int i = aunj.b(this.jdField_a_of_type_JavaLangString);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i);
+        localWXShareHelper.a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        bdll.b(null, "dc00898", "", "", "0X800AEE1", "0X800AEE1", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        bdll.b(null, "dc00898", "", "", "0X800AEE2", "0X800AEE2", 0, 0, "", "", "", "");
+        aumw.a(this.jdField_a_of_type_AndroidAppActivity, "", 2131697486, new auda(this));
+      }
     }
-    return new aucz(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
-    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
-    return localBundle;
   }
 }
 

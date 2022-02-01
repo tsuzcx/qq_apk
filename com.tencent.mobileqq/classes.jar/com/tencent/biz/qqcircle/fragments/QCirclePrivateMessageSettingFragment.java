@@ -1,24 +1,24 @@
 package com.tencent.biz.qqcircle.fragments;
 
+import aabe;
 import java.util.ArrayList;
 import java.util.List;
-import vcq;
-import zxj;
+import veu;
 
 public class QCirclePrivateMessageSettingFragment
   extends QCircleBaseFragment
 {
   public int a()
   {
-    return 2131560758;
+    return 2131560783;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     ArrayList localArrayList = new ArrayList();
-    vcq localvcq = new vcq();
-    localvcq.a(a());
-    localArrayList.add(localvcq);
+    veu localveu = new veu();
+    localveu.a(a());
+    localArrayList.add(localveu);
     return localArrayList;
   }
   

@@ -1,46 +1,23 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class beib
-  implements URLDrawableHandler
+class beib
+  implements bhza
 {
-  public beib(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  beib(behz parambehz) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    return false;
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadFailed", new Object[0]));
+    if (paramQQAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOMusicSkin", 2, "onCompleted, scid:" + paramString1);
+      }
+      this.a.a();
     }
   }
   
-  public void onFileDownloadStarted()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadStarted", new Object[0]));
-    }
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadSucceed", new Object[0]));
-    }
-  }
-  
-  public void publishProgress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload publishProgress", new Object[0]));
-    }
-  }
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

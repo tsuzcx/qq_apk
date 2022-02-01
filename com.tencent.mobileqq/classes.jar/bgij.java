@@ -1,79 +1,38 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import KQQ.UserBitFlagReq;
-import KQQ.UserBitFlagRes;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.qq.taf.jce.JceInputStream;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class bgij
-  implements bcbk
+  extends bghr
 {
-  private QQAppInterface a;
-  
-  public bgij(QQAppInterface paramQQAppInterface)
+  public bgij(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.a = paramQQAppInterface;
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 6;
   }
   
-  public int a()
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    return 1;
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
+      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696759), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    }
+    return null;
   }
   
-  public ReqItem a(int paramInt)
+  public void a(int paramInt, Object paramObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSetting", 2, "getCheckUpdateItemData");
-    }
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.cOperType = 1;
-    localReqItem.eServiceID = 106;
-    UserBitFlagReq localUserBitFlagReq = new UserBitFlagReq();
-    localUserBitFlagReq.cEmotionMall = 0;
-    localUserBitFlagReq.cMyWallet = ((byte)bgig.a(this.a));
-    localUserBitFlagReq.cPtt2Text = 0;
-    localUserBitFlagReq.cAccout2Dis = 0;
-    localReqItem.vecParam = localUserBitFlagReq.toByteArray();
-    return localReqItem;
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_homework", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
   }
   
-  public void a(RespItem paramRespItem)
+  public void b(int paramInt, Object paramObject, String paramString)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSetting", 2, "handleCheckUpdateItemData");
-    }
-    if (paramRespItem.eServiceID == 106)
-    {
-      UserBitFlagRes localUserBitFlagRes = new UserBitFlagRes();
-      localUserBitFlagRes.readFrom(new JceInputStream(paramRespItem.vecUpdate));
-      int i = localUserBitFlagRes.cEmotionMall;
-      int j = localUserBitFlagRes.cMyWallet;
-      int k = localUserBitFlagRes.cAccout2Dis;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSetting", 2, "vEmotion=" + i + ",cMyWallet=" + j + ",cPtt2Text=" + localUserBitFlagRes.cPtt2Text + " ,cAccout2Dis=" + k);
-      }
-      if (this.a != null)
-      {
-        this.a.getApp().getApplicationContext().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("mywallet_flag", j).putInt("select_member_contacts_flag", k).commit();
-        paramRespItem = this.a;
-        if (localUserBitFlagRes.cPtt2Text != 1) {
-          break label211;
-        }
-      }
-    }
-    for (;;)
-    {
-      bdbq.a(paramRespItem, bool);
-      return;
-      label211:
-      bool = false;
-    }
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_homework", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
   }
 }
 

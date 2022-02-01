@@ -1,12 +1,6 @@
 public abstract interface boab
 {
-  public abstract void a(String paramString, float paramFloat);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString);
+  public abstract void a(int paramInt, String paramString, byte[] paramArrayOfByte);
 }
 
 

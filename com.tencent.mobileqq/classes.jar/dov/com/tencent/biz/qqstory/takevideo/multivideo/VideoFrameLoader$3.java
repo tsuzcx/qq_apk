@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
-import bprn;
-import bpro;
+import bqti;
+import bqtj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -10,21 +10,21 @@ import java.util.List;
 public class VideoFrameLoader$3
   implements Runnable
 {
-  public VideoFrameLoader$3(bprn parambprn) {}
+  public VideoFrameLoader$3(bqti parambqti) {}
   
   public void run()
   {
-    if (bprn.b(this.this$0) != bprn.a(this.this$0).size())
+    if (bqti.b(this.this$0) != bqti.a(this.this$0).size())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + bprn.b(this.this$0) + "-" + bprn.a(this.this$0).size());
+        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + bqti.b(this.this$0) + "-" + bqti.a(this.this$0).size());
       }
-      if ((!bprn.c(this.this$0)) && (bprn.a(this.this$0).size() == 0))
+      if ((!bqti.c(this.this$0)) && (bqti.a(this.this$0).size() == 0))
       {
-        bprn.a(this.this$0, true);
+        bqti.a(this.this$0, true);
         this.this$0.b();
-        bprn.a(this.this$0, new RetrieverDecodeRunnable(bprn.a(this.this$0), bprn.c(this.this$0), bprn.d(this.this$0), bprn.b(this.this$0), bprn.a(this.this$0), bprn.a(this.this$0), bprn.b(this.this$0), this.this$0));
-        ThreadManager.post(bprn.a(this.this$0), 10, null, true);
+        bqti.a(this.this$0, new RetrieverDecodeRunnable(bqti.a(this.this$0), bqti.c(this.this$0), bqti.d(this.this$0), bqti.b(this.this$0), bqti.a(this.this$0), bqti.a(this.this$0), bqti.b(this.this$0), this.this$0));
+        ThreadManager.post(bqti.a(this.this$0), 10, null, true);
         if (QLog.isColorLevel()) {
           QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
         }
@@ -33,10 +33,10 @@ public class VideoFrameLoader$3
     for (;;)
     {
       return;
-      if (bprn.a(this.this$0) != null) {}
-      for (bpro localbpro = (bpro)bprn.a(this.this$0).get(); localbpro != null; localbpro = null)
+      if (bqti.a(this.this$0) != null) {}
+      for (bqtj localbqtj = (bqtj)bqti.a(this.this$0).get(); localbqtj != null; localbqtj = null)
       {
-        localbpro.c();
+        localbqtj.c();
         return;
       }
     }

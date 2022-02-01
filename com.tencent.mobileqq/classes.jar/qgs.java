@@ -1,175 +1,135 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class qgs
-  extends qhj
 {
-  public qgs(ArticleInfo paramArticleInfo, Context paramContext)
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile qgs jdField_a_of_type_Qgs;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static qgs a()
   {
-    super(paramArticleInfo, paramContext);
+    if (jdField_a_of_type_Qgs == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qgs == null) {
+        jdField_a_of_type_Qgs = new qgs();
+      }
+      return jdField_a_of_type_Qgs;
+    }
+    finally {}
   }
   
-  private void a(ButtonBase paramButtonBase)
+  private void a(String paramString)
   {
-    boolean bool = true;
-    int i;
-    if (paramButtonBase.isSelected())
-    {
-      i = -1;
-      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
-      paramButtonBase.b += i;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b < 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b = 0;
-      }
-      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
-      if (i <= 0) {
-        break label136;
-      }
+    ThreadManager.excute(new PTSAppLoader.2(this, paramString), 128, null, true);
+  }
+  
+  private void b(String paramString)
+  {
+    int j = 0;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    String str1 = a(paramString);
+    boolean bool2 = bhmi.a(str1);
+    boolean bool3 = qgy.a(str1, paramString);
+    String str2 = str1 + "/" + "pts_app_config.json";
+    boolean bool4 = qgy.a(str2);
+    boolean bool1;
+    if ((bool2) && (bool3) && (bool4)) {
+      bool1 = true;
     }
-    label136:
-    for (int j = 1;; j = 0)
-    {
-      paramButtonBase.c = j;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-      pha.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      if ((!pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID))) {
-        break label141;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ATLAS", 2, "atlas native has undercarriage");
-      }
-      pmk.a().b();
-      return;
-      i = 1;
-      break;
-    }
-    label141:
-    paramButtonBase = pmh.a();
-    long l1 = pha.a();
-    long l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId;
-    if (i > 0) {}
     for (;;)
     {
-      paramButtonBase.a(l1, l2, bool, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clone());
-      break;
-      bool = false;
-    }
-  }
-  
-  protected int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.c == 1) {
-      return 2;
-    }
-    return 13;
-  }
-  
-  protected void a(ArticleInfo paramArticleInfo)
-  {
-    String str2 = pha.a(paramArticleInfo);
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    boolean bool = ube.a(paramArticleInfo.mChannelID);
-    Object localObject;
-    String str1;
-    if (bool)
-    {
-      localObject = "0X800935E";
-      if (!bool) {
-        break label163;
-      }
-      str1 = "0X800935F";
-      label35:
-      if (localSocializeFeedsInfo.c != 1) {
-        break label268;
-      }
-      if ((!snh.i(paramArticleInfo)) && (!snh.g(paramArticleInfo)) && (!snh.j(paramArticleInfo)) && (!snh.k(paramArticleInfo))) {
-        break label170;
-      }
-      if (!snh.o(paramArticleInfo)) {
-        oat.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Long), (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-      if ((!pha.k(paramArticleInfo)) && (!pha.l(paramArticleInfo))) {
-        snh.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-      }
-    }
-    label163:
-    label170:
-    do
-    {
-      return;
-      localObject = "0X8007B65";
-      break;
-      str1 = "0X8007B66";
-      break label35;
-      if (pha.b(paramArticleInfo))
+      this.jdField_a_of_type_Boolean = bool1;
+      jdField_a_of_type_JavaLangString = qgy.b(str2);
+      Object localObject1 = str1 + File.separator + "pages";
+      try
       {
-        localObject = new JSONObject();
-        try
+        localObject1 = new File((String)localObject1);
+        if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
         {
-          ((JSONObject)localObject).put("like", 0);
-          pfe.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
-          return;
-        }
-        catch (JSONException localJSONException1)
-        {
-          for (;;)
+          localObject1 = ((File)localObject1).listFiles();
+          int k = localObject1.length;
+          i = 0;
+          while (i < k)
           {
-            localJSONException1.printStackTrace();
+            Object localObject2 = localObject1[i];
+            String str3 = localObject2.getName();
+            if ((localObject2.isDirectory()) && (!TextUtils.isEmpty(str3))) {
+              this.jdField_a_of_type_JavaUtilList.add(str3);
+            }
+            i += 1;
+            continue;
+            bool1 = false;
           }
         }
       }
-      oat.a(null, paramArticleInfo.mSubscribeID, (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
-      return;
-      if ((!snh.i(paramArticleInfo)) && (!snh.g(paramArticleInfo)) && (!snh.j(paramArticleInfo)) && (!snh.k(paramArticleInfo))) {
-        break label383;
-      }
-      if (!snh.o(paramArticleInfo)) {
-        oat.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Long), localJSONException1, localJSONException1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-    } while ((pha.k(paramArticleInfo)) || (pha.l(paramArticleInfo)));
-    label268:
-    snh.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-    return;
-    label383:
-    if (pha.b(paramArticleInfo))
-    {
-      localObject = new JSONObject();
-      try
+      catch (Exception localException)
       {
-        ((JSONObject)localObject).put("like", 1);
-        pfe.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
-        return;
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
+        QLog.e("PTSAppLoader", 1, "[checkPTSApp], e = " + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[checkPTSApp], bid = ").append(paramString).append("\n").append(", appPath = ").append(str1).append("\n").append(", ptsAppVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isAppExists = ").append(bool2).append("\n").append(", isAppValid = ").append(bool3).append("\n").append(", configPath = ").append(str2).append("\n").append(", isAppVersionValid = ").append(bool4).append("\n").append(", isAppOfflineDirValid = ").append(this.jdField_a_of_type_Boolean).append("\n").append(", appNameList = ");
+        int i = j;
+        while (i < this.jdField_a_of_type_JavaUtilList.size())
         {
-          localJSONException2.printStackTrace();
+          localStringBuilder.append("[").append(i).append("]: ").append((String)this.jdField_a_of_type_JavaUtilList.get(i)).append("\n");
+          i += 1;
         }
+        QLog.i("PTSAppLoader", 1, localStringBuilder.toString());
       }
     }
-    oat.a(null, paramArticleInfo.mSubscribeID, localJSONException2, localJSONException2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
   }
   
-  protected void a(ViewBase paramViewBase)
+  public String a()
   {
-    QLog.d("OnLikeClickListener", 1, "cick like");
-    if ((paramViewBase instanceof ButtonBase)) {
-      a((ButtonBase)paramViewBase);
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
-    do
+    String str = nmp.a(paramString) + paramString;
+    QLog.i("PTSAppLoader", 1, "[getPTSAppDownloadPath], bid = " + paramString + ", path = " + str);
+    return str;
+  }
+  
+  public void a()
+  {
+    b();
+    PTSAppLoader.1 local1 = new PTSAppLoader.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = this.jdField_a_of_type_JavaUtilList.contains(paramString);
+    QLog.i("PTSAppLoader", 1, "[isPTSAppReady], appName = " + paramString + ", isAppExists = " + bool + ", isAppOfflineDirValid = " + this.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_Boolean) && (bool);
+  }
+  
+  public void b()
+  {
+    try
     {
+      this.jdField_a_of_type_Boolean = false;
+      b("3978");
       return;
-      paramViewBase = paramViewBase.findViewBaseByName("id_like_button");
-    } while ((paramViewBase == null) || (!(paramViewBase instanceof qji)));
-    ((qji)paramViewBase).onClick();
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

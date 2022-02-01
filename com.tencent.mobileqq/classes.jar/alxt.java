@@ -1,37 +1,15 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class alxt
-  implements alya
 {
-  public alxt(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void a(boolean paramBoolean)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialFriendSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
   }
 }
 

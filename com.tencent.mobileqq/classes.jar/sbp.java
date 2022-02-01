@@ -1,43 +1,19 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class sbp
-  extends pmn
+  extends sbh
 {
-  sbp(sbo paramsbo) {}
+  sbp(sbi paramsbi) {}
   
-  public void b(String paramString, int paramInt)
+  public int a()
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      if (sbo.a(this.a).a != null) {
-        sbo.a(this.a).a.o();
-      }
-    }
-    else {
-      return;
-    }
-    QLog.e("VideoFeedsRecommendPresenter", 2, "onViolaPageFailed callback, attachVideoPlayer videoPlayer is null");
+    return 3;
   }
   
-  public void p()
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsRecommendPresenter", 2, "onViolaTopicVideoAnimStart mVideoFromType：" + sbo.a(this.a));
-    }
-    pmk.a().b(sbo.a(this.a));
-    if (sbo.a(this.a) == 124) {
-      sbo.a(this.a).finish();
-    }
-    do
-    {
-      return;
-      sbo.a(this.a, true);
-    } while (sbo.a(this.a) == null);
-    sbo.a(this.a).a = null;
-    sbo.a(this.a).d();
-    sbo.a(this.a).b(sbo.a(this.a));
+    sbi.a(this.a).c(paramString + "&sourcefrom=6");
   }
 }
 

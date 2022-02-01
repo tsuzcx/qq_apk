@@ -1,26 +1,15 @@
-class awlw
-  extends awls<awlu>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+
+public class awlw
+  implements DialogInterface.OnDismissListener
 {
-  public awlw(awlu paramawlu)
-  {
-    super(paramawlu);
-  }
+  public awlw(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(awlu paramawlu, boolean paramBoolean, awlp paramawlp)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramawlu == null) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      awln localawln = paramawlu.a(paramawlp.f);
-      if (localawln != null)
-      {
-        awlu.a(paramawlu).a(paramawlp, localawln);
-        return;
-      }
-    }
-    awlu.a(paramawlu, paramawlp.jdField_a_of_type_JavaLangString, paramawlp.jdField_a_of_type_Int, 1002);
+    this.a.b();
   }
 }
 

@@ -1,44 +1,54 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfke
+  implements View.OnClickListener
 {
-  private static bfke jdField_a_of_type_Bfke = new bfke();
+  int jdField_a_of_type_Int = 0;
+  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
   String jdField_a_of_type_JavaLangString;
   
-  public static bfke a()
+  public bfke(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
   {
-    return jdField_a_of_type_Bfke;
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a() {}
-  
-  public void a(BaseChatPie paramBaseChatPie) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, bfkf parambfkf) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return true;
-  }
-  
-  public void b() {}
-  
-  public boolean b(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return false;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return paramString.equals(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (this.jdField_a_of_type_Int == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
+      break;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
+      }
+      else if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
+        continue;
+        CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
+        if (localCustomWebView != null) {
+          localCustomWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+        }
+      }
+    }
   }
 }
 

@@ -1,26 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-public class off
-  implements View.OnClickListener
+class off
+  extends aocj
 {
-  public off(MinusViewBotomView paramMinusViewBotomView, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  off(ofe paramofe) {}
   
-  public void onClick(View paramView)
+  public void a(List<MessageRecord> paramList)
   {
-    oes.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext(), "jumpPreview", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, "fypbtn");
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext() instanceof ChatActivity)) {
-      ((ChatActivity)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext()).finish();
+    super.a(paramList);
+    HashSet localHashSet = new HashSet();
+    if (oek.b != null) {
+      localHashSet.addAll(oek.b);
     }
-    oev.a(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-    oev.b(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    ofe localofe = (ofe)this.a.mApp.getBusinessHandler(88);
+    paramList = new ArrayList(paramList).iterator();
+    label164:
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || ((localMessageRecord.istroop == 1008) && (tug.e(this.a.app, localMessageRecord.senderuin)))) {}
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) && (!localHashSet.contains(localMessageRecord.senderuin))) {
+          break label164;
+        }
+        if (i != 0) {
+          localofe.a(localMessageRecord);
+        }
+        localofe.b(localMessageRecord);
+        break;
+      }
+    }
   }
 }
 

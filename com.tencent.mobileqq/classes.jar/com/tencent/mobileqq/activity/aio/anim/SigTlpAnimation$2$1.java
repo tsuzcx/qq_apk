@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agbz;
+import aglz;
 
 class SigTlpAnimation$2$1
   implements Runnable

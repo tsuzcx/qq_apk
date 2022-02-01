@@ -335,11 +335,6 @@ public class StyleChildFilter
     }
   }
   
-  public static double norm(PointF paramPointF)
-  {
-    return Math.sqrt(paramPointF.x * paramPointF.x + paramPointF.y * paramPointF.y);
-  }
-  
   private String processBlobNames(List<String> paramList)
   {
     if (paramList == null) {
@@ -409,7 +404,7 @@ public class StyleChildFilter
     if ((!this.isCosTransProcessed) && (paramBoolean2) && (this.cosFunTransitionFilter != null) && (this.textureBitmapList != null))
     {
       this.textureBitmapList.clear();
-      this.cosFunTransitionFilter.init(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, (List)paramPTFaceAttr.getAllFacePoints().get(0), paramPTFaceAttr.getFaceDetectScale());
+      this.cosFunTransitionFilter.init(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, (List)paramPTFaceAttr.getAllFacePoints().get(0), paramPTFaceAttr.getFaceDetectScale(), false);
       paramPTFaceAttr = RendererUtils.saveTexture(this.cosFunTransitionFilter.getMergedFrame(1.0F));
       if (BitmapUtils.isLegal(paramPTFaceAttr)) {
         this.textureBitmapList.add(paramPTFaceAttr);
@@ -421,76 +416,6 @@ public class StyleChildFilter
   public Frame RenderProcess(Frame paramFrame)
   {
     return render(paramFrame);
-  }
-  
-  public float[] calCropCoordsV2(List<PointF> paramList, int paramInt1, int paramInt2)
-  {
-    Object localObject = new ArrayList();
-    ((List)localObject).add(paramList.get(35));
-    ((List)localObject).add(paramList.get(39));
-    ((List)localObject).add(paramList.get(45));
-    ((List)localObject).add(paramList.get(49));
-    ((List)localObject).add(paramList.get(64));
-    ((List)localObject).add(paramList.get(0));
-    ((List)localObject).add(paramList.get(18));
-    paramList = new PointF();
-    float f1 = ((PointF)((List)localObject).get(2)).x;
-    float f2 = ((PointF)((List)localObject).get(3)).x;
-    float f3 = ((PointF)((List)localObject).get(0)).x;
-    paramList.x = (0.5F * (f2 + f1) - (((PointF)((List)localObject).get(1)).x + f3) * 0.5F);
-    f1 = ((PointF)((List)localObject).get(2)).y;
-    f2 = ((PointF)((List)localObject).get(3)).y;
-    f3 = ((PointF)((List)localObject).get(0)).y;
-    paramList.y = (0.5F * (f2 + f1) - (((PointF)((List)localObject).get(1)).y + f3) * 0.5F);
-    f1 = paramList.y;
-    f2 = paramList.x;
-    f3 = (float)(1.0D / norm(paramList));
-    f1 *= f3;
-    f2 = f3 * f2;
-    f3 = (float)norm(new PointF(((PointF)((List)localObject).get(5)).x - ((PointF)((List)localObject).get(6)).x, ((PointF)((List)localObject).get(5)).y - ((PointF)((List)localObject).get(6)).y));
-    paramList = new PointF();
-    float f4 = ((PointF)((List)localObject).get(0)).x;
-    float f5 = ((PointF)((List)localObject).get(1)).x;
-    float f6 = ((PointF)((List)localObject).get(2)).x;
-    float f7 = ((PointF)((List)localObject).get(3)).x;
-    paramList.x = ((float)((((PointF)((List)localObject).get(4)).x + (f4 + f5 + f6 + f7)) * 0.2D));
-    f4 = ((PointF)((List)localObject).get(0)).y;
-    f5 = ((PointF)((List)localObject).get(1)).y;
-    f6 = ((PointF)((List)localObject).get(2)).y;
-    f7 = ((PointF)((List)localObject).get(3)).y;
-    paramList.y = ((float)((((PointF)((List)localObject).get(4)).y + (f4 + f5 + f6 + f7)) * 0.2D));
-    f4 = 2.315F * f3 / this.NET_SIZE.width;
-    f5 = 0.5F * 2.315F * f3;
-    f3 = 2.315F * 0.5F * f3;
-    localObject = new float[6];
-    localObject[0] = (f2 * f4);
-    localObject[1] = (-f1 * f4);
-    localObject[2] = (paramList.x - (f2 * f5 - f1 * f3));
-    localObject[3] = (f1 * f4);
-    localObject[4] = (f4 * f2);
-    localObject[5] = (paramList.y - (f3 * f2 + f1 * f5));
-    this.texCoords[0] = localObject[2];
-    this.texCoords[1] = localObject[5];
-    this.texCoords[2] = (this.NET_SIZE.height * localObject[1] + localObject[2]);
-    this.texCoords[3] = (this.NET_SIZE.height * localObject[4] + localObject[5]);
-    this.texCoords[4] = (this.NET_SIZE.width * localObject[0] + this.NET_SIZE.height * localObject[1] + localObject[2]);
-    this.texCoords[5] = (this.NET_SIZE.width * localObject[3] + this.NET_SIZE.height * localObject[4] + localObject[5]);
-    this.texCoords[6] = (this.NET_SIZE.width * localObject[0] + localObject[2]);
-    this.texCoords[7] = (this.NET_SIZE.width * localObject[3] + localObject[5]);
-    int i = 0;
-    while (i < 8)
-    {
-      this.texCoords[i] /= paramInt1;
-      this.texCoords[(i + 1)] /= paramInt2;
-      i += 2;
-    }
-    paramInt1 = 0;
-    while (paramInt1 < this.texCoords.length)
-    {
-      this.position[paramInt1] = (this.texCoords[paramInt1] * 2.0F - 1.0F);
-      paramInt1 += 1;
-    }
-    return localObject;
   }
   
   public void destroy()
@@ -535,6 +460,11 @@ public class StyleChildFilter
   public boolean getIsCosTransProcessed()
   {
     return this.isCosTransProcessed;
+  }
+  
+  public List<Bitmap> getTextureBitmapList()
+  {
+    return this.textureBitmapList;
   }
   
   public void init()
@@ -616,42 +546,41 @@ public class StyleChildFilter
     }
     this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.fillFrame2);
     this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.resultFrame);
-    Frame localFrame2 = this.copyFilter.RenderProcess(this.postRenderFrame.getTextureId(), this.postRenderFrame.width, this.postRenderFrame.height);
-    if (localFrame2 != this.postRenderFrame) {
+    Frame localFrame1 = this.copyFilter.RenderProcess(this.postRenderFrame.getTextureId(), this.postRenderFrame.width, this.postRenderFrame.height);
+    if (localFrame1 != this.postRenderFrame) {
       this.postRenderFrame.unlock();
     }
-    Frame localFrame1;
     if ((this.faceRectFeatherMask) || (this.isCartoonStyleMaterial))
     {
-      this.styleChildPostRender.render(paramFrame, localFrame2, true);
-      localFrame1 = localFrame2;
+      this.styleChildPostRender.render(paramFrame, localFrame1, true, false);
+      Frame localFrame2 = localFrame1;
       if (this.isCartoonStyleMaterial)
       {
-        localFrame1 = localFrame2;
+        localFrame2 = localFrame1;
         if (this.rgba != null)
         {
-          localFrame1 = localFrame2;
+          localFrame2 = localFrame1;
           if (this.isEnlightSkin)
           {
             this.faceColorTransferFilter.updateParams(this.rgbaAfterLutA);
-            Frame localFrame3 = this.copyFilter.RenderProcess(localFrame2.getTextureId(), localFrame2.width, localFrame2.height);
-            localFrame2 = this.faceColorTransferFilter.render(localFrame3);
-            localFrame1 = localFrame2;
-            if (localFrame3 != localFrame2)
+            Frame localFrame3 = this.copyFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
+            localFrame1 = this.faceColorTransferFilter.render(localFrame3);
+            localFrame2 = localFrame1;
+            if (localFrame3 != localFrame1)
             {
               localFrame3.unlock();
-              localFrame1 = localFrame2;
+              localFrame2 = localFrame1;
             }
           }
         }
       }
       this.styleChildPostMaskRender.render(paramFrame, this.postRenderMaskFrame, true);
-      this.copyFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height, -1, 0.0D, this.frameTmp2);
+      this.copyFilter.RenderProcess(localFrame2.getTextureId(), localFrame2.width, localFrame2.height, -1, 0.0D, this.frameTmp2);
       this.copyFilter.RenderProcess(this.fillFrame2.getTextureId(), this.fillFrame2.width, this.fillFrame2.height, -1, 0.0D, this.resultFrame);
       if (this.isCartoonStyleMaterial)
       {
         if (this.faceStyleItem.faceFilterType != 99) {
-          break label581;
+          break label582;
         }
         this.resultFrame = this.styleCustomFilterGroup.render(this.fillFrame2);
         if (this.fillFrame2 != this.resultFrame) {
@@ -661,10 +590,10 @@ public class StyleChildFilter
       if (this.isCartoonStyleMaterial)
       {
         paramFrame = this.cartoonFusionFilter.render(this.resultFrame, this.frameTmp2, this.postRenderMaskFrame);
-        label441:
+        label442:
         localFrame1 = paramFrame;
         if (paramFrame == this.frameTmp2) {
-          break label663;
+          break label692;
         }
         this.frameTmp2.unlock();
       }
@@ -679,7 +608,7 @@ public class StyleChildFilter
         this.faceOffMaskFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.faceOffMask);
       }
       return this.resultFrame;
-      label581:
+      label582:
       if (this.faceStyleItem.faceFilterType == 1)
       {
         this.resultFrame = this.ttCartoonFilterGroup.render(this.fillFrame2);
@@ -688,11 +617,18 @@ public class StyleChildFilter
       this.resultFrame = this.ttToonFilterGroup.render(this.fillFrame2);
       break;
       paramFrame = this.cartoonFusionFilter.renderFeather(this.resultFrame, this.frameTmp2, this.postRenderMaskFrame);
-      break label441;
-      this.styleChildPostRender.render(paramFrame, localFrame2, false);
-      localFrame1 = localFrame2;
-      label663:
-      paramFrame = localFrame1;
+      break label442;
+      if (this.faceStyleItem.returnPostProcessTexture)
+      {
+        this.styleChildPostRender.render(this.cropFrame, localFrame1, false, true);
+        paramFrame = localFrame1;
+      }
+      else
+      {
+        this.styleChildPostRender.render(paramFrame, localFrame1, false, false);
+        label692:
+        paramFrame = localFrame1;
+      }
     }
   }
   
@@ -723,6 +659,11 @@ public class StyleChildFilter
     if (this.cartoonFusionFilter != null) {
       this.cartoonFusionFilter.setSegmentMode(paramBoolean);
     }
+  }
+  
+  public void setTextureBitmapList(List<Bitmap> paramList)
+  {
+    this.textureBitmapList = paramList;
   }
   
   public Frame updateAndRender(Frame paramFrame, PTFaceAttr paramPTFaceAttr, double paramDouble)
@@ -873,7 +814,7 @@ public class StyleChildFilter
       }
       f1 = ((com.tencent.ttpic.openapi.facedetect.FaceInfo)paramPTFaceAttr.getFaceInfoList().get(0)).rect[2] / paramPTFaceAttr.getFaceDetWidth();
       if (this.faceStyleItem.verticalMinRadius <= 0) {
-        break label1313;
+        break label1323;
       }
       f2 = this.featherMaskWidth;
       f3 = this.featherMaskHeight;
@@ -885,14 +826,16 @@ public class StyleChildFilter
       return localObject1;
       this.styleChildWarpFilter.updateParams(this.outBitmap, this.warpMat, this.faceOffMask, (float[])localObject2, this.position, paramFrame, j, k, paramDouble);
       this.styleChildPostRender.updateParams(this.outBitmap, this.warpMat, (float[])localObject2);
-      this.styleChildPostRender.setPositions(this.position);
+      if (!this.faceStyleItem.returnPostProcessTexture) {
+        this.styleChildPostRender.setPositions(this.position);
+      }
       if ((this.faceRectFeatherMask) || (this.isCartoonStyleMaterial))
       {
         this.styleChildPostMaskRender.updateParams(this.outBitmap, this.warpMat, (float[])localObject2);
         this.styleChildPostMaskRender.setPositions(this.position);
       }
     }
-    label1313:
+    label1323:
     int i = (int)(f1 * this.featherMaskWidth * 0.12D);
     this.cartoonFusionFilter.updateFaceFeatherRadius(i, i);
     return localObject1;

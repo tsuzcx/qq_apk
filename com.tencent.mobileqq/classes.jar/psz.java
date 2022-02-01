@@ -1,17 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class psz
-  implements TVK_IMediaPlayer.OnErrorListener
+class psz
+  implements View.OnClickListener
 {
-  public psz(VideoView paramVideoView) {}
+  psz(psx parampsx, long paramLong, ArticleInfo paramArticleInfo) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    QLog.e("gifvideo.VideoView", 1, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " what = " + paramInt2 + " position = " + paramInt3 + " extra = " + paramString);
-    return false;
+    String str = oyu.g + bhkv.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    ozs.a(psx.a(this.jdField_a_of_type_Psx), str);
+    psx.a(1, ozs.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

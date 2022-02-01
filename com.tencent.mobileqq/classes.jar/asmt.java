@@ -1,116 +1,105 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.2;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.v4.util.SparseArrayCompat;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
 public class asmt
 {
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new asmu(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private asmv jdField_a_of_type_Asmv;
-  private bgua jdField_a_of_type_Bgua;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private SparseArrayCompat<SparseArrayCompat<asls>> a = new SparseArrayCompat(10);
+  private SparseArrayCompat<asls> b = new SparseArrayCompat();
   
-  public asmt(asmv paramasmv, BaseActivity paramBaseActivity)
+  public asmt(EmoticonPanelController paramEmoticonPanelController)
   {
-    this.jdField_a_of_type_Asmv = paramasmv;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("audio"));
+    a(1, new asnp(paramEmoticonPanelController));
+    a(2, new asnt(paramEmoticonPanelController));
+    a(3, new asnf(paramEmoticonPanelController));
+    a(4, new asoj(paramEmoticonPanelController));
+    a(5, new asoc(paramEmoticonPanelController));
+    a(6, new asoi(paramEmoticonPanelController));
+    a(7, new asnw(paramEmoticonPanelController));
+    a(8, new asok(paramEmoticonPanelController));
   }
   
-  public void a()
+  private void a(int paramInt, asls paramasls)
   {
-    try
+    this.b.put(paramInt, paramasls);
+    int[] arrayOfInt = paramasls.a();
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      int k = arrayOfInt[i];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
+      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
+      if (localSparseArrayCompat2 == null)
       {
-        if (this.jdField_a_of_type_Bgua != null)
-        {
-          this.jdField_a_of_type_Bgua.e();
-          this.jdField_a_of_type_Bgua = null;
-        }
-        b();
-        return;
+        localSparseArrayCompat1 = new SparseArrayCompat();
+        this.a.put(k, localSparseArrayCompat1);
       }
+      localSparseArrayCompat1.put(paramInt, paramasls);
+      i += 1;
+    }
+  }
+  
+  private void a(asls paramasls, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 1: 
+      paramasls.d();
+      return;
+    case 2: 
+      paramasls.e();
+      return;
+    case 9: 
+      paramasls.j();
+      return;
+    case 10: 
+      paramasls.k();
+      return;
+    case 8: 
+      paramasls.i();
+      return;
+    case 3: 
+      paramasls.a(paramInt2);
+      return;
+    case 5: 
+      paramasls.f();
+      return;
+    case 4: 
+      paramasls.a(paramBoolean);
+      return;
+    case 7: 
+      paramasls.h();
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("ExtendFriendVoicePlayer", 1, "stop e=" + localException);
-    }
+    paramasls.g();
   }
   
-  public void a(String paramString)
+  public <T extends asls> T a(int paramInt)
   {
-    if (!a(paramString)) {
-      ThreadManager.executeOnFileThread(new ExtendFriendVoicePlayer.2(this, paramString));
-    }
+    return (asls)this.b.get(paramInt);
   }
   
-  public boolean a(String arg1)
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file but activity isFinish");
-    }
-    String str;
+    a(paramInt, -1, false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt1);
+    if (localSparseArrayCompat == null) {}
     for (;;)
     {
-      return false;
-      str = ???;
-      try
+      return;
+      int j = localSparseArrayCompat.size();
+      int i = 0;
+      while (i < j)
       {
-        if (!atwl.a(???))
-        {
-          str = bdtd.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin(), MD5.toMD5(???), 23, null);
-          File localFile = new File(str);
-          if ((!localFile.exists()) || (localFile.length() <= 0L))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e("ExtendFriendVoicePlayer", 2, String.format("playLocal file not exist : %s", new Object[] { ??? }));
-            return false;
-          }
-        }
+        a((asls)localSparseArrayCompat.valueAt(i), paramInt1, paramInt2, paramBoolean);
+        i += 1;
       }
-      catch (Exception ???)
-      {
-        QLog.e("ExtendFriendVoicePlayer", 1, "playLocal", ???);
-        return false;
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Bgua != null)
-      {
-        this.jdField_a_of_type_Bgua.e();
-        this.jdField_a_of_type_Bgua = null;
-      }
-      this.jdField_a_of_type_Bgua = new bgua(str, new Handler(), 1);
-      this.jdField_a_of_type_Bgua.b();
-      this.jdField_a_of_type_Bgua.a(this.jdField_a_of_type_Asmv);
-      this.jdField_a_of_type_Bgua.b();
-      if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-        this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
-      }
-      return true;
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
-    }
-    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
     }
   }
 }

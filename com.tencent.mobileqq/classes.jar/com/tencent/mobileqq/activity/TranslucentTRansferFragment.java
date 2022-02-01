@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import afhv;
-import afhw;
-import afhx;
+import afqz;
+import afra;
+import afrb;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class TranslucentTRansferFragment
@@ -29,16 +29,16 @@ public class TranslucentTRansferFragment
   private void b()
   {
     if (getActivity() == null) {}
-    bgpa localbgpa;
+    bhpc localbhpc;
     do
     {
       return;
-      localbgpa = bglp.a(getActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
-      localbgpa.setPositiveButton(anni.a(2131713746), new afhv(this, localbgpa));
-      localbgpa.setNegativeButton(anni.a(2131713744), new afhw(this, localbgpa));
-      localbgpa.setOnDismissListener(new afhx(this));
+      localbhpc = bhlq.a(getActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
+      localbhpc.setPositiveButton(anzj.a(2131713855), new afqz(this, localbhpc));
+      localbhpc.setNegativeButton(anzj.a(2131713853), new afra(this, localbhpc));
+      localbhpc.setOnDismissListener(new afrb(this));
     } while (getActivity().isFinishing());
-    localbgpa.show();
+    localbhpc.show();
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)

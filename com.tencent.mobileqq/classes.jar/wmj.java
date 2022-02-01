@@ -1,65 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class wmj
-  extends zpj<CommentEntry>
 {
-  boolean jdField_a_of_type_Boolean;
+  public int a;
+  public ErrorMessage a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public wmj(int paramInt, List<CommentEntry> paramList, boolean paramBoolean)
+  public wmj()
   {
-    super(paramList, paramBoolean);
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
   }
   
-  public void a(int paramInt, CommentEntry paramCommentEntry, ynb paramynb)
+  public String toString()
   {
-    if (paramCommentEntry == null) {
-      yqp.e("FeedCommentLego", "FeedComment getView. data is null.");
-    }
-    Object localObject2;
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return;
-        localObject2 = (TextView)paramynb.a(2131364758);
-        paramynb = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
-        localObject1 = wnh.a().a(paramynb);
-        if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
-        {
-          ((TextView)localObject2).setText((CharSequence)localObject1);
-          ((TextView)localObject2).setSpannableFactory(bdnt.a);
-          ((TextView)localObject2).setOnTouchListener(wmf.a(this.jdField_a_of_type_Wmf));
-          return;
-        }
-        localObject1 = yci.a(this.jdField_a_of_type_Wmf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wmf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentEntry, wmf.a(this.jdField_a_of_type_Wmf));
-        if (QQStoryContext.a()) {
-          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Wmf.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166474)), 0, ((SpannableStringBuilder)localObject1).length(), 33);
-        }
-        ((TextView)localObject2).setText((CharSequence)localObject1);
-        ((TextView)localObject2).setSpannableFactory(bdnt.a);
-        ((TextView)localObject2).setOnTouchListener(wmf.a(this.jdField_a_of_type_Wmf));
-        wpy localwpy = (wpy)wpm.a(2);
-        localObject2 = localwpy.b(paramCommentEntry.authorUnionId);
-        if (!paramCommentEntry.isReply()) {
-          break;
-        }
-        paramCommentEntry = localwpy.b(paramCommentEntry.replierUnionId);
-      } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()) || (paramCommentEntry == null) || (!paramCommentEntry.isAvailable()));
-      wnh.a().a(paramynb, (CharSequence)localObject1);
-      return;
-    } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()));
-    wnh.a().a(paramynb, (CharSequence)localObject1);
+    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
   }
 }
 

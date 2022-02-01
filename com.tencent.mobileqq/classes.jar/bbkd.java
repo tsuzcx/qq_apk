@@ -1,26 +1,27 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
-import com.tencent.widget.ListView;
+import java.util.HashMap;
 
 public class bbkd
-  extends bbip<bbmy, bbvg>
+  extends bbke
 {
-  public bbkd(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, aobu paramaobu)
+  public int a;
+  public boolean a;
+  
+  public bbkd()
   {
-    super(paramListView, paramaobu);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  protected bbps<bbmy, bbvg> a(int paramInt)
+  public HashMap<String, String> a(String paramString)
   {
-    return new bbph(this.jdField_a_of_type_Aobu);
-  }
-  
-  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    if (bbup.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
-      return new bbva(paramViewGroup, 2131562839);
+    if ("RealShortVideo.Record".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
+      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
+      return paramString;
     }
-    return new bbva(paramViewGroup, 2131562840);
+    return null;
   }
 }
 

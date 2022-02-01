@@ -1,68 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.SelectMemberBuddyListAdapter.1.1;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.feeds_info.ShareWebPageInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rhr
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  rhr(rhq paramrhq) {}
   
-  public static rhr a(feeds_info.ShareWebPageInfo paramShareWebPageInfo)
+  public void onClick(View paramView)
   {
-    if (paramShareWebPageInfo == null) {}
-    rhr localrhr;
-    do
+    QLog.d("FriendTeamListInnerFrameBuddyListAdapter", 2, "----->onBuddyListClick");
+    rhy localrhy = (rhy)paramView.getTag();
+    boolean bool;
+    Object localObject;
+    if ((localrhy != null) && (localrhy.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localrhy.jdField_a_of_type_JavaLangObject != null))
     {
-      return null;
-      localrhr = new rhr();
-      if (paramShareWebPageInfo.bytes_desc.has()) {
-        localrhr.e = paramShareWebPageInfo.bytes_desc.get().toStringUtf8();
+      if (!localrhy.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()) {
+        break label291;
       }
-      if (paramShareWebPageInfo.bytes_pic_url.has()) {
-        localrhr.c = paramShareWebPageInfo.bytes_pic_url.get().toStringUtf8();
+      if (localrhy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label230;
       }
-      if (paramShareWebPageInfo.bytes_title.has()) {
-        localrhr.b = paramShareWebPageInfo.bytes_title.get().toStringUtf8();
+      bool = true;
+      localrhy.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      if ((localrhy.jdField_a_of_type_JavaLangObject instanceof Friends))
+      {
+        localObject = (Friends)localrhy.jdField_a_of_type_JavaLangObject;
+        localObject = ResultRecord.a(((Friends)localObject).uin, ((Friends)localObject).name, 1);
+        if (!bool) {
+          break label235;
+        }
+        this.a.a.add(localObject);
       }
-      if (paramShareWebPageInfo.bytes_source.has()) {
-        localrhr.d = paramShareWebPageInfo.bytes_source.get().toStringUtf8();
+      label116:
+      if (AppSetting.c)
+      {
+        if (!localrhy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+          break label251;
+        }
+        paramView.setContentDescription(localrhy.d.getText().toString() + anzj.a(2131712615));
       }
-      if (paramShareWebPageInfo.bytes_web_url.has()) {
-        localrhr.a = paramShareWebPageInfo.bytes_web_url.get().toStringUtf8();
+      label169:
+      this.a.notifyDataSetChanged();
+      if (AppSetting.c) {
+        paramView.postDelayed(new SelectMemberBuddyListAdapter.1.1(this, paramView), 2000L);
       }
-      if ((!TextUtils.isEmpty(localrhr.d)) && (!TextUtils.isEmpty(localrhr.a))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SocializeFeedsInfo", 2, "WebSharePageInfo core info is empty!");
-    return null;
-    return localrhr;
-  }
-  
-  public feeds_info.ShareWebPageInfo a()
-  {
-    feeds_info.ShareWebPageInfo localShareWebPageInfo = new feeds_info.ShareWebPageInfo();
-    if (!TextUtils.isEmpty(this.a)) {
-      localShareWebPageInfo.bytes_web_url.set(ByteStringMicro.copyFromUtf8(this.a));
     }
-    if (!TextUtils.isEmpty(this.c)) {
-      localShareWebPageInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.c));
+    for (;;)
+    {
+      if (rhq.a(this.a) != null) {
+        rhq.a(this.a).onClick(paramView);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label230:
+      bool = false;
+      break;
+      label235:
+      this.a.a.remove(localObject);
+      break label116;
+      label251:
+      paramView.setContentDescription(localrhy.d.getText().toString() + anzj.a(2131712625));
+      break label169;
+      label291:
+      this.a.a();
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      localShareWebPageInfo.bytes_title.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localShareWebPageInfo.bytes_source.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      localShareWebPageInfo.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.e));
-    }
-    return localShareWebPageInfo;
   }
 }
 

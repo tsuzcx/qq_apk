@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.data.Card;
-
-class asfv
-  extends aniz
+public class asfv
 {
-  asfv(asfu paramasfu) {}
+  public static int a = 300;
   
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  public static String a(String paramString)
   {
-    if ((paramBoolean) && (paramInt == 0)) {
-      asfu.a(this.a);
+    if (bhsr.a(paramString)) {
+      return "";
     }
+    paramString = paramString.split("_");
+    if (paramString.length > 2) {
+      return paramString[1];
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if ((bhsr.a(paramString1)) || (bhsr.a(paramString2))) {
+      return "";
+    }
+    paramString2 = bjty.a(paramString2);
+    return antf.bm + paramString2 + paramString1;
   }
 }
 

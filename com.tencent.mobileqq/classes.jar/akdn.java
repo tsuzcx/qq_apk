@@ -1,40 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akdn
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference<DialogBaseActivity> a;
+  public akdn(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public akdn(DialogBaseActivity paramDialogBaseActivity)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramDialogBaseActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
+    this.a.g = true;
+    this.a.d.setVisibility(8);
+    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131369044));
+    this.a.d.setVisibility(0);
+    this.a.d.setText(anzj.a(2131700573));
+    this.a.d.setOnClickListener(new akdo(this));
+    ChatHistoryTroopMemberFragment.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localDialogBaseActivity.a(i, bool);
-        return;
-        bool = false;
-      }
-    }
-    localDialogBaseActivity.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

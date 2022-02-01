@@ -3,7 +3,7 @@ package cooperation.qzone.report.lp;
 import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -17,10 +17,10 @@ import mqq.app.AppRuntime;
 
 public class LpReportUtils
 {
-  public static final String ALL_REPORT = anni.a(2131705183);
-  public static final String CLICK_MESSAGE = anni.a(2131705185);
-  public static final String NOT_HIT = anni.a(2131705182);
-  public static final String SAMPLE_REPORT = anni.a(2131705184);
+  public static final String ALL_REPORT = anzj.a(2131705290);
+  public static final String CLICK_MESSAGE = anzj.a(2131705292);
+  public static final String NOT_HIT = anzj.a(2131705289);
+  public static final String SAMPLE_REPORT = anzj.a(2131705291);
   private static final String TAG = "LpReport.LpReportUtils";
   private static boolean isSampled;
   private static long sampleValidEndTime;
@@ -72,7 +72,7 @@ public class LpReportUtils
   
   public static boolean meetCondition(LpReportInfos paramLpReportInfos, long paramLong)
   {
-    if ((BaseApplicationImpl.sProcessId == 1) && (BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)) {}
+    if ((BaseApplicationImpl.sProcessId == 1) && (BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)) {}
     long l;
     int i;
     int j;

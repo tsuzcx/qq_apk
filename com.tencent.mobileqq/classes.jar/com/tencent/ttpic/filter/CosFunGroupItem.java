@@ -4,6 +4,8 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
+import com.tencent.ttpic.openapi.filter.StyleChildFilter;
+import com.tencent.ttpic.openapi.filter.stylizefilter.customFilter.StyleCustomFilterGroup;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunGroupItem;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
@@ -20,7 +22,10 @@ public class CosFunGroupItem
   private AIAttr aiAttr;
   private CosFun.CosFunGroupItem cosFunGroupItem;
   private CosFunFilter currentCosFunFilter = null;
+  private List<StyleCustomFilterGroup> customFilterGroupList;
   private boolean durationComplete = false;
+  private boolean enableGAN;
+  private StyleChildFilter ganFilter;
   private boolean isFirstUpdate = true;
   private int itemIndex = -1;
   private int lastFrameFaceCount = -1;
@@ -29,7 +34,7 @@ public class CosFunGroupItem
   private int triggerType = 1;
   private Set<Integer> triggeredExpression;
   
-  public CosFunGroupItem(String paramString, CosFun.CosFunGroupItem paramCosFunGroupItem, int paramInt, TriggerManager paramTriggerManager)
+  public CosFunGroupItem(String paramString, CosFun.CosFunGroupItem paramCosFunGroupItem, int paramInt, TriggerManager paramTriggerManager, StyleChildFilter paramStyleChildFilter, List<StyleCustomFilterGroup> paramList, boolean paramBoolean)
   {
     this.materialPath = paramString;
     this.cosFunGroupItem = paramCosFunGroupItem;
@@ -38,14 +43,23 @@ public class CosFunGroupItem
       this.itemIndex = paramInt;
     }
     this.triggerManager = paramTriggerManager;
+    this.ganFilter = paramStyleChildFilter;
+    this.customFilterGroupList = paramList;
+    this.enableGAN = paramBoolean;
     updateTriggerType(paramCosFunGroupItem);
   }
   
   private CosFunFilter createFilter(String paramString, int paramInt)
   {
     CosFunFilter localCosFunFilter = new CosFunFilter();
-    localCosFunFilter.init(paramString, (CosFun.CosFunItem)this.cosFunGroupItem.getCosFunItems().get(paramInt), this.triggerManager);
-    return localCosFunFilter;
+    if ((this.customFilterGroupList != null) && (this.customFilterGroupList.size() > paramInt)) {}
+    for (StyleCustomFilterGroup localStyleCustomFilterGroup = (StyleCustomFilterGroup)this.customFilterGroupList.get(paramInt);; localStyleCustomFilterGroup = null)
+    {
+      localCosFunFilter.init(paramString, (CosFun.CosFunItem)this.cosFunGroupItem.getCosFunItems().get(paramInt), this.triggerManager, localStyleCustomFilterGroup);
+      localCosFunFilter.setGanFilter(this.ganFilter);
+      localCosFunFilter.setEnableGAN(this.enableGAN);
+      return localCosFunFilter;
+    }
   }
   
   private CosFunFilter createNewFilter()

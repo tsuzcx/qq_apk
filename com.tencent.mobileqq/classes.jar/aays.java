@@ -1,31 +1,63 @@
-import com.tencent.biz.videostory.widget.view.smartmusicview.EditVideoSmartMusicPart.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
 public class aays
-  implements bdvw
 {
-  public aays(EditVideoSmartMusicPart.1 param1) {}
+  protected Context a;
+  protected Drawable a;
+  protected View a;
+  protected WindowManager a;
+  protected PopupWindow a;
   
-  public void onResp(bdwt parambdwt)
+  public aays(Context paramContext)
   {
-    QLog.i("EditVideoSmartMusicPart", 1, "download smart anim onResp url:  resultcode: " + parambdwt.c);
-    if (aayr.a(this.a.this$0) == null) {
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new aayt(this));
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new IllegalStateException("setContentView was not called with a view to display.");
     }
-    try
-    {
-      QLog.i("EditVideoSmartMusicPart", 1, "start unzip smart anim");
-      nmk.a(aayr.a(this.a.this$0), "/storage/emulated/0/Tencent/MobileQQ/video_story/");
-      return;
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
     }
-    catch (IOException parambdwt)
+    for (;;)
     {
-      QLog.i("EditVideoSmartMusicPart", 1, "unzip smart anim failed" + parambdwt);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+      return;
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+  }
+  
+  public void b(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
+  }
 }
 
 

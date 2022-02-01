@@ -1,17 +1,15 @@
-import android.net.Proxy;
-
-final class bmhb
-  extends bmha
+public abstract interface bmhb
+  extends bmhi
 {
-  public int a()
-  {
-    return Proxy.getDefaultPort();
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public String a()
-  {
-    return Proxy.getDefaultHost();
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

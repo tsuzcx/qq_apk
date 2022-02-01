@@ -1,21 +1,19 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-final class adrg
-  implements DialogInterface.OnClickListener
+public class adrg
+  extends bbct
 {
-  adrg(adsy paramadsy, adsx paramadsx) {}
+  public adrg(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Adsy.a) {
-      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
+      ((Dialog)paramDialogInterface).setOnDismissListener(null);
     }
-    if (this.jdField_a_of_type_Adsx != null) {
-      this.jdField_a_of_type_Adsx.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import anqd;
-import aoah;
+import aocj;
+import aomr;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class GetTroopAssisMsg
   extends AsyncStep
 {
-  private anqd a;
+  private aocj a;
   
   public int a()
   {
@@ -18,22 +18,22 @@ public class GetTroopAssisMsg
     return 2;
   }
   
-  public void c()
+  public void b()
   {
-    super.c();
-    if (this.jdField_a_of_type_Anqd == null)
+    super.b();
+    if (this.jdField_a_of_type_Aocj == null)
     {
-      this.jdField_a_of_type_Anqd = new aoah(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Anqd);
+      this.jdField_a_of_type_Aocj = new aomr(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Aocj);
     }
   }
   
-  public void d()
+  public void c()
   {
-    if (this.jdField_a_of_type_Anqd != null)
+    if (this.jdField_a_of_type_Aocj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anqd);
-      this.jdField_a_of_type_Anqd = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aocj);
+      this.jdField_a_of_type_Aocj = null;
     }
   }
 }

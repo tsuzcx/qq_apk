@@ -45,6 +45,8 @@ public abstract interface ITPPlayer
   
   public abstract long getDurationMs();
   
+  public abstract long getFileSizeBytes();
+  
   public abstract long getPlayableDurationMs();
   
   public abstract ITPPlayerProxy getPlayerProxy();

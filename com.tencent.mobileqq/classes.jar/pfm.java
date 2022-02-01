@@ -1,42 +1,46 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class pfm
+class pfm
+  implements pfq
 {
-  private static boolean a;
+  pfm(pfl parampfl) {}
   
-  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  public int a(Bundle paramBundle)
   {
-    if (BaseApplicationImpl.sApplication == null) {
-      return null;
-    }
-    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562944, null);
-    ((DragTextView)localView.findViewById(2131380208)).setDragViewType(2);
-    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131378202)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
-    ((TextView)localView.findViewById(2131379932)).setText(paramInt5);
-    return localView;
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    try
+    int j = this.a.a;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.a)
     {
-      a = paramBoolean;
-      return;
     }
-    finally
+    for (;;)
     {
-      localObject = finally;
-      throw localObject;
+      if (QLog.isColorLevel()) {
+        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
+      }
+      ozs.a(ozs.a(), true, j, System.currentTimeMillis() - l);
+      return i;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
+      continue;
+      i = this.a.g(paramBundle);
+      continue;
+      i = this.a.h(paramBundle);
+      continue;
+      i = this.a.i(paramBundle);
+      continue;
+      i = this.a.j(paramBundle);
+      continue;
+      i = this.a.k(paramBundle);
     }
-  }
-  
-  public static boolean a()
-  {
-    return a;
   }
 }
 

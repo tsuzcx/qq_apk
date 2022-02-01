@@ -1,63 +1,39 @@
-import android.util.SparseArray;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aref
 {
-  private final SparseArray<BlockingQueue<aren>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private arew jdField_a_of_type_Arew;
-  private final BlockingQueue<aren> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+  public int a;
   
-  public aref(arew paramarew)
+  public static aref a(araj[] paramArrayOfaraj)
   {
-    this.jdField_a_of_type_Arew = paramarew;
-  }
-  
-  protected int a()
-  {
-    return 300;
-  }
-  
-  public aren a(int paramInt, Object paramObject)
-  {
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null) {
-      localObject = new LinkedBlockingQueue();
-    }
-    localObject = (aren)((BlockingQueue)localObject).poll();
-    if (localObject == null)
+    localaref = new aref();
+    int i = 0;
+    try
     {
-      localObject = this.jdField_a_of_type_Arew.a(paramInt);
-      argp.a("DanmakuFactory", new Object[] { localObject, " is created " });
+      while (i < paramArrayOfaraj.length)
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[i].a);
+        if (localJSONObject.has("gc_zone_entry_optimize"))
+        {
+          localaref.a = localJSONObject.optInt("gc_zone_entry_optimize");
+          if (QLog.isColorLevel()) {
+            QLog.d("GameCenterEnterConfBean", 1, "onParsed mGcZoneEntryOptimize=" + localaref.a);
+          }
+        }
+        i += 1;
+      }
+      return localaref;
     }
-    for (;;)
+    catch (Throwable paramArrayOfaraj)
     {
-      ((aren)localObject).e();
-      ((aren)localObject).a(paramObject);
-      return localObject;
-      argp.a("DanmakuFactory", new Object[] { localObject, " is reused " });
-    }
-  }
-  
-  public void a(aren paramaren)
-  {
-    int i = paramaren.a();
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null)
-    {
-      localObject = new LinkedBlockingQueue();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
-    }
-    if (a() > ((BlockingQueue)localObject).size()) {
-      ((BlockingQueue)localObject).add(paramaren);
+      QLog.e("GameCenterEnterConfBean", 1, "GameCenterEnterConfBean parse error e=" + paramArrayOfaraj.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aref
  * JD-Core Version:    0.7.0.1
  */

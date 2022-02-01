@@ -1,17 +1,22 @@
-import java.util.Comparator;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.video.QzoneLiveVideoInterface;
 
-final class bnln
-  implements Comparator<bnlp>
+public final class bnln
+  implements bnfe
 {
-  public int a(bnlp parambnlp1, bnlp parambnlp2)
+  public bnln(String paramString) {}
+  
+  public void a(bndl parambndl)
   {
-    if (parambnlp1.a) {
-      return 1;
+    if (parambndl == null) {
+      bnfc.a(QzoneLiveVideoInterface.getContext(), this);
     }
-    if (parambnlp2.a) {
-      return -1;
-    }
-    return 0;
+    do
+    {
+      return;
+      parambndl = parambndl.a(this.a);
+    } while (parambndl == null);
+    QzoneLiveVideoInterface.access$002(parambndl.ver);
   }
 }
 

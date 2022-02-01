@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.util.ArrayList;
 
-class ahhj
-  implements DialogInterface.OnClickListener
+final class ahhj
+  implements ahky
 {
-  ahhj(ahhh paramahhh, MessageForShakeWindow paramMessageForShakeWindow) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    adrm.a(this.jdField_a_of_type_Ahhh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahhh.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahhh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
+    paramQQAppInterface = (MessageForArkBabyqReply)paramChatMessage;
+    if ((paramQQAppInterface.mArkBabyqReplyCardList == null) || (paramQQAppInterface.mArkBabyqReplyCardList.size() <= 0)) {
+      return 83;
+    }
+    return 82;
   }
 }
 

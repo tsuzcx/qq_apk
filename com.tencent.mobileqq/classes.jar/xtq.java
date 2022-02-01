@@ -1,69 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
-
-public class xtq
-  extends wfr<xto, wxv>
+class xtq
+  implements xtl
 {
-  public xtq(xto paramxto)
-  {
-    super(paramxto);
-  }
+  public xtl a;
   
-  public void a(@NonNull xto paramxto, @NonNull wxv paramwxv)
+  private xtq(xtm paramxtm) {}
+  
+  public void a(xtg paramxtg)
   {
-    if (xto.a(paramxto) != 1) {}
-    label149:
-    label209:
-    label218:
-    for (;;)
-    {
-      return;
-      int i = 0;
-      StoryVideoItem localStoryVideoItem;
-      if (i < paramwxv.a.size())
-      {
-        localStoryVideoItem = (StoryVideoItem)paramwxv.a.get(i);
-        if (!localStoryVideoItem.mVid.equals(xto.a(paramxto))) {}
-      }
-      for (paramwxv = localStoryVideoItem;; paramwxv = null)
-      {
-        if ((paramwxv == null) || (paramwxv.mErrorCode != 0)) {
-          break label218;
-        }
-        localStoryVideoItem = xto.a(paramxto).a();
-        i = localStoryVideoItem.comparedLevel;
-        int j = xto.a(paramxto).a.jdField_a_of_type_Int;
-        String str = xto.a(paramxto).a.jdField_a_of_type_JavaLangString;
-        xto.a(paramxto, xto.a(paramxto), str, false, i, j);
-        paramxto = ((wpy)wpm.a(2)).b(paramwxv.mOwnerUid);
-        if ((paramxto != null) && (paramxto.isVip))
-        {
-          i = 1;
-          if (i == 0) {
-            break label209;
-          }
-        }
-        for (paramxto = "2";; paramxto = "1")
-        {
-          yqu.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramxto, paramwxv.mVid, paramwxv.mOwnerUid, localStoryVideoItem.mVid });
-          return;
-          i += 1;
-          break;
-          i = 0;
-          break label149;
-        }
-      }
+    if (xtm.a(this.jdField_a_of_type_Xtm) != null) {
+      xtm.a(this.jdField_a_of_type_Xtm).a(0L, paramxtg.b(), paramxtg);
+    }
+    if (this.jdField_a_of_type_Xtl != null) {
+      this.jdField_a_of_type_Xtl.a(paramxtg);
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return wxv.class;
-  }
-  
-  public void b(@NonNull xto paramxto, @NonNull wxv paramwxv) {}
 }
 
 

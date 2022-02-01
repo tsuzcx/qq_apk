@@ -1,71 +1,24 @@
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider.Factory;
-import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class bowe
-  implements ViewModelProvider.Factory
+class bowe
+  implements ViewPager.OnPageChangeListener
 {
-  private static bowe jdField_a_of_type_Bowe = new bowe();
-  private static final String jdField_a_of_type_JavaLangString = bowe.class.getSimpleName();
-  private HashMap<String, ViewModel> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, AtomicInteger> b = new HashMap();
+  bowe(bowd parambowd) {}
   
-  public static bowe a()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    return jdField_a_of_type_Bowe;
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
   }
   
-  public void a(ViewModel paramViewModel)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if ((paramViewModel instanceof bowd))
-    {
-      AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(paramViewModel.getClass().getName());
-      if ((localAtomicInteger != null) && (localAtomicInteger.decrementAndGet() == 0))
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramViewModel.getClass().getName());
-        this.b.remove(paramViewModel.getClass().getName());
-        QLog.d(jdField_a_of_type_JavaLangString, 1, paramViewModel.getClass().getName() + " has removed");
-      }
-    }
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
   }
   
-  @NonNull
-  public <T extends ViewModel> T create(@NonNull Class<T> paramClass)
+  public void onPageSelected(int paramInt)
   {
-    if (bowd.class.isAssignableFrom(paramClass))
-    {
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass.getName())) {}
-      try
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.getName(), paramClass.newInstance());
-        this.b.put(paramClass.getName(), new AtomicInteger(0));
-        AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(paramClass.getName());
-        if (localAtomicInteger != null)
-        {
-          localAtomicInteger.incrementAndGet();
-          QLog.d(jdField_a_of_type_JavaLangString, 1, paramClass.getName() + " has created and ref = " + localAtomicInteger.get());
-        }
-        return (ViewModel)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass.getName());
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        for (;;)
-        {
-          localInstantiationException.printStackTrace();
-        }
-      }
-    }
-    throw new RuntimeException("Cannot create non global view model " + paramClass.getName() + " by GlobalViewModelFactory");
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
   }
 }
 

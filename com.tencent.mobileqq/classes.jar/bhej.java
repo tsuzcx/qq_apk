@@ -1,22 +1,17 @@
-import android.graphics.Canvas;
-import android.view.SurfaceHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bhej
-  extends bheh
+  implements DialogInterface.OnClickListener
 {
-  public bhej(SurfaceHolder paramSurfaceHolder)
-  {
-    super(paramSurfaceHolder);
-  }
+  public bhej(UpgradeActivity paramUpgradeActivity) {}
   
-  Canvas a(SurfaceHolder paramSurfaceHolder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramSurfaceHolder.lockHardwareCanvas();
-  }
-  
-  public boolean a()
-  {
-    return true;
+    bjtx.b("qqBaseActivity", bjqy.a(10010, 1, 2, 200));
+    bjqw.a().a(17, bjqy.a(10010, 1, 2, 200));
+    this.a.finish();
   }
 }
 

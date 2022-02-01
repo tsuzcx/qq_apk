@@ -1,6 +1,10 @@
 public abstract interface apbf
 {
-  public abstract void a(apbh paramapbh);
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

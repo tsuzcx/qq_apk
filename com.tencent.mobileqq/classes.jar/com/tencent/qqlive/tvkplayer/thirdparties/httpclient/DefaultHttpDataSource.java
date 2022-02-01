@@ -399,7 +399,11 @@ public class DefaultHttpDataSource
           if ((!"com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream".equals(localObject)) && (!"com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream".equals(localObject))) {
             break;
           }
-          localObject = paramHttpURLConnection.getClass().getSuperclass().getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
+          localObject = paramHttpURLConnection.getClass().getSuperclass();
+          if (localObject == null) {
+            break;
+          }
+          localObject = ((Class)localObject).getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
           ((Method)localObject).setAccessible(true);
           ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
           return;

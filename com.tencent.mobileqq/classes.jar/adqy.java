@@ -1,31 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.os.MqqHandler;
 
-final class adqy
-  implements DialogInterface.OnCancelListener
+public class adqy
+  extends MqqHandler
 {
-  adqy(adsy paramadsy, int paramInt, adsx paramadsx) {}
+  public adqy(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Adsy.a)
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Adsx != null) {
-        this.jdField_a_of_type_Adsx.a();
-      }
+    default: 
       return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        bcst.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
-      }
     }
+    this.a.e();
   }
 }
 

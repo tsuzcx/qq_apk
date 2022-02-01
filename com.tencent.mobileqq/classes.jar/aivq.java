@@ -1,43 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.QQBlurView;
 
-public class aivq
-  implements ajku
+class aivq
+  implements View.OnAttachStateChangeListener
 {
-  public aivq(TroopView paramTroopView) {}
+  aivq(aivp paramaivp) {}
   
-  public void a()
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    if (bdch.a())
-    {
-      localMessage = TroopView.a(this.a).obtainMessage(15);
-      TroopView.a(this.a).sendMessage(localMessage);
+    if (aivp.a(this.a) != null) {
+      aivp.a(this.a).d();
     }
-    do
+    if (aivp.a(this.a) != null)
     {
-      return;
-      if (!bgnt.g(BaseApplication.getContext())) {
-        break label105;
-      }
-      if (this.a.a.size() <= 0) {
-        break;
-      }
-    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
-    TroopView.a(this.a).c(TroopView.a(this.a).getCurrentItem());
-    return;
-    TroopView.b(this.a);
-    return;
-    label105:
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
+      aivp.a(this.a).c();
+      aivp.a(this.a, null);
     }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    aivp.a(this.a).removeOnAttachStateChangeListener(this);
   }
 }
 

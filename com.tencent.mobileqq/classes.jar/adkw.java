@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.qapmsdk.base.meta.DumpResult;
 
-public class adkw
-  extends aniz
+public abstract interface adkw
+  extends adks
 {
-  public adkw(AddRequestActivity paramAddRequestActivity) {}
+  public abstract DumpResult a(String paramString, adkz paramadkz);
   
-  protected void onImpeach(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.a.equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.a(2130839584, this.a.getString(2131690605));
-      return;
-    }
-    this.a.a(2130839571, this.a.getString(2131690603));
-  }
+  public abstract String a();
+  
+  public abstract void a(adku paramadku);
+  
+  public abstract void a(DumpResult paramDumpResult);
+  
+  public abstract String b();
+  
+  public abstract void b(adku paramadku);
+  
+  public abstract boolean c();
 }
 
 

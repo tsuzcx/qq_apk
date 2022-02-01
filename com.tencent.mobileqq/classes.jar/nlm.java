@@ -1,29 +1,10 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-
-final class nlm
-  extends AsyncTask<Void, Void, Void>
+public class nlm
 {
-  String jdField_a_of_type_JavaLangString = "";
+  public String a;
+  public String b;
+  public String c;
   
-  nlm(nln paramnln, String paramString) {}
-  
-  protected Void a(Void... paramVarArgs)
-  {
-    this.jdField_a_of_type_JavaLangString = nll.a(this.b);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    super.onPostExecute(paramVoid);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Nln.a();
-      return;
-    }
-    this.jdField_a_of_type_Nln.a(this.jdField_a_of_type_JavaLangString);
-  }
+  public nlm(nlj paramnlj) {}
 }
 
 

@@ -1,21 +1,30 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ytl
-  extends ywd
+public class ytl
+  extends QQUIEventReceiver<ysw, wsm>
 {
-  public Bitmap a;
-  public Bitmap b;
-  
-  public ytl(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public ytl(@NonNull ysw paramysw)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
+    super(paramysw);
   }
   
-  public ytl(ywd paramywd, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public void a(@NonNull ysw paramysw, @NonNull wsm paramwsm)
   {
-    this(paramywd.jdField_c_of_type_Int, paramywd.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    if (paramwsm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      yuk.d(this.TAG, "deleted story failed");
+      paramysw.a(5, paramwsm.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    paramysw.a(paramwsm.jdField_a_of_type_JavaLangString);
+    paramysw.a(new yqf[] { new yqa(ypi.a(ysw.a(paramysw).a.jdField_a_of_type_JavaLangString)), (yqf)paramysw.c.a() });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsm.class;
   }
 }
 

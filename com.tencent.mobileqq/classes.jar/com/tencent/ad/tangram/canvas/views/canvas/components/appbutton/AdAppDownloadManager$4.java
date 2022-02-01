@@ -61,6 +61,7 @@ class AdAppDownloadManager$4
       if (this.this$0.isPkgDownloading((Context)AdAppDownloadManager.access$700(this.this$0).get(), (String)localObject1, (String)localObject2) >= 0)
       {
         AdAppDownloadManager.access$200(this.this$0).cState = 8;
+        this.this$0.setStartedDownload(true);
         break;
       }
       if (this.this$0.isPkgDownloadPaused((Context)AdAppDownloadManager.access$700(this.this$0).get(), (String)localObject1, (String)localObject2) < 0) {

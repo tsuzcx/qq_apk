@@ -1,17 +1,18 @@
-import android.animation.Animator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aijd
+  implements View.OnClickListener
 {
-  aiit jdField_a_of_type_Aiit;
-  Animator jdField_a_of_type_AndroidAnimationAnimator;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  aijd(aijc paramaijc) {}
+  
+  public void onClick(View paramView)
+  {
+    ahxi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

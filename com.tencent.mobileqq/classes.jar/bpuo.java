@@ -1,21 +1,22 @@
-import android.util.Property;
+import android.view.View;
 
-class bpuo
-  extends Property<bpuh, Float>
+public class bpuo
 {
-  bpuo(bpuh parambpuh, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public float a;
+  public long a;
+  public View a;
+  public String a;
+  public float b;
+  public long b;
   
-  public Float a(bpuh parambpuh)
+  public bpuo(View paramView, String paramString, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    return Float.valueOf(bpuh.c(parambpuh));
-  }
-  
-  public void a(bpuh parambpuh, Float paramFloat)
-  {
-    bpuh.b(parambpuh, paramFloat.floatValue());
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

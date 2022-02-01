@@ -3,13 +3,13 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arha;
+import arwp;
 import java.util.List;
 
 public class IPSiteModel$Game
   implements Parcelable
 {
-  public static final Parcelable.Creator<Game> CREATOR = new arha();
+  public static final Parcelable.Creator<Game> CREATOR = new arwp();
   public String cover;
   public String desc;
   public List<IPSiteModel.GameRich> gameRiches;

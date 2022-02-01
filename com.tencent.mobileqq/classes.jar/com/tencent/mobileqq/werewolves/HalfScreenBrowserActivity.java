@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.werewolves;
 
 import Override;
-import afur;
+import agej;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,8 +17,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bgkc;
-import bhtb;
+import bhkd;
+import bitw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -59,12 +59,12 @@ public class HalfScreenBrowserActivity
     setImmersiveStatus(0);
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bhtb(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bitw(this));
     paramBundle = getIntent().getStringExtra("url");
     FrameLayout localFrameLayout = new FrameLayout(this);
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840388));
-    Object localObject = new FrameLayout.LayoutParams(afur.a(25.0F, getResources()), afur.a(25.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840398));
+    Object localObject = new FrameLayout.LayoutParams(agej.a(25.0F, getResources()), agej.a(25.0F, getResources()));
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
     localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject);
     int i;
@@ -76,7 +76,7 @@ public class HalfScreenBrowserActivity
       int j;
       if (i != 0)
       {
-        j = afur.a(338.0F, getResources());
+        j = agej.a(338.0F, getResources());
         localObject = new RelativeLayout.LayoutParams(-1, j);
         ((RelativeLayout.LayoutParams)localObject).addRule(12);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
@@ -87,10 +87,10 @@ public class HalfScreenBrowserActivity
       }
       try
       {
-        findViewById(2131376599).setVisibility(8);
+        findViewById(2131376731).setVisibility(8);
         label226:
         this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-        bgkc.anim(this, false, true);
+        bhkd.anim(this, false, true);
         return true;
         i = 0;
         continue;

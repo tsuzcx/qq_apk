@@ -1,33 +1,25 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.os.Bundle;
 
-public class apzf
-  extends anmu
+public abstract class apzf
+  implements apyu
 {
-  public apzf(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private final String a;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public apzf(String paramString)
   {
-    if ((paramBoolean) && (paramString != null))
-    {
-      String str = bglf.c(this.a.app, paramString, false);
-      int i = 0;
-      while (i < this.a.c.getChildCount())
-      {
-        Object localObject = this.a.c.getChildAt(i);
-        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof apzo)) && (paramString.equals(((apzo)((View)localObject).getTag()).a)))
-        {
-          localObject = (TextView)((View)localObject).findViewById(2131371705);
-          if (localObject != null) {
-            ((TextView)localObject).setText(str);
-          }
-        }
-        i += 1;
-      }
-    }
+    this.a = paramString;
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("domain", this.a);
+    return localBundle;
+  }
+  
+  public String a()
+  {
+    return "QQ.GetPSKeyAsync";
   }
 }
 

@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aekj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aekj(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aekj(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HongbaoShowerActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.cancel();
   }
 }
 

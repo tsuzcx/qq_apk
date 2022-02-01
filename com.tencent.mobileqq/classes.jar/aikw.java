@@ -1,20 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class aikw
   implements DialogInterface.OnClickListener
 {
-  aikw(aiks paramaiks) {}
+  aikw(aikq paramaikq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = (mwd)aiks.a(this.a).getManager(373);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.a(aiks.a(this.a).a);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

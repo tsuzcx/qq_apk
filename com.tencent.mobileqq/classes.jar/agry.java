@@ -1,10 +1,19 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface agry
+class agry
+  extends agiq
 {
-  public abstract void a();
+  agry(agrx paramagrx, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
+  {
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
+  }
   
-  public abstract void a(Bundle paramBundle);
+  public void k()
+  {
+    this.a.a(true);
+  }
 }
 
 

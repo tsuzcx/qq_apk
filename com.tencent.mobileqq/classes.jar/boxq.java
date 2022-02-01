@@ -1,26 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.widget.SeekBar;
+import com.tencent.tavcut.player.MoviePlayer.onVideoProgressListener;
+import dov.com.qq.im.ae.play.AEVideoPreviewFragment;
 
 public class boxq
-  extends AnimatorListenerAdapter
+  implements MoviePlayer.onVideoProgressListener
 {
-  public boxq(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public boxq(AEVideoPreviewFragment paramAEVideoPreviewFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void updateVideoProgress(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  170ms end");
-    }
-    this.a.c.setImageResource(2130844452);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
+    if (this.a.a != null) {
+      AEVideoPreviewFragment.a(this.a).setProgress((int)paramLong * 1000);
     }
   }
 }

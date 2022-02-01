@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bhql;
+import birg;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
@@ -38,7 +38,7 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167224);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167247);
     if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
       ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
     }

@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.1.1;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class axnz
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends aojs
 {
-  axnz(axny paramaxny) {}
+  public axnz(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("VideoViewTVKImpl", 2, "onCompletion() called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "]");
+      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
     }
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.1.1(this));
+    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(4);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.utils;
 
 import android.content.res.Resources;
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -10,7 +10,7 @@ final class FriendsStatusUtil$1
 {
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), anni.a(2131703732), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298998));
+    QQToast.a(BaseApplication.getContext(), anzj.a(2131703839), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299011));
   }
 }
 

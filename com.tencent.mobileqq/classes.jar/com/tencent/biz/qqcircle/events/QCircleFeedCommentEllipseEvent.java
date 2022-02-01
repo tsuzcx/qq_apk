@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.events;
 
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import uzk;
+import vba;
 
 public class QCircleFeedCommentEllipseEvent
   extends SimpleBaseEvent
 {
-  public uzk mInfo;
+  public vba mInfo;
   
-  public QCircleFeedCommentEllipseEvent(uzk paramuzk)
+  public QCircleFeedCommentEllipseEvent(vba paramvba)
   {
-    this.mInfo = paramuzk;
+    this.mInfo = paramvba;
   }
 }
 

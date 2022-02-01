@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bezk;
-import zlx;
+import bfze;
+import zps;
 
 public class DotStyleNavBar
   extends LinearLayout
@@ -31,14 +31,14 @@ public class DotStyleNavBar
   
   private void a()
   {
-    int j = zlx.a(getContext(), 8.0F);
-    int k = zlx.a(getContext(), 3.0F);
+    int j = zps.a(getContext(), 8.0F);
+    int k = zps.a(getContext(), 3.0F);
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
       ImageView localImageView = new ImageView(getContext());
       if (i == this.b) {
-        localImageView.setImageResource(2130848969);
+        localImageView.setImageResource(2130848988);
       }
       for (;;)
       {
@@ -48,7 +48,7 @@ public class DotStyleNavBar
         addView(localImageView, localLayoutParams);
         i += 1;
         break;
-        localImageView.setImageResource(2130848970);
+        localImageView.setImageResource(2130848989);
       }
     }
   }
@@ -67,13 +67,13 @@ public class DotStyleNavBar
     {
       ImageView localImageView = (ImageView)getChildAt(i);
       if (i == this.b) {
-        localImageView.setImageResource(2130848969);
+        localImageView.setImageResource(2130848988);
       }
       for (;;)
       {
         i += 1;
         break;
-        localImageView.setImageResource(2130848970);
+        localImageView.setImageResource(2130848989);
       }
     }
     postInvalidate();
@@ -105,7 +105,7 @@ public class DotStyleNavBar
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount());
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new bezk(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new bfze(this));
   }
 }
 

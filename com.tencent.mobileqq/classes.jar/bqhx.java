@@ -1,38 +1,14 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bqhx
-  extends PreviewContext
-  implements SurfaceHolder.Callback, bciv
+class bqhx
+  implements DialogInterface.OnClickListener
 {
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
+  bqhx(bqhv parambqhv) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

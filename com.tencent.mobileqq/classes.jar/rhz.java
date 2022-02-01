@@ -1,19 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public final class rhz
-  implements Parcelable.Creator<TagInfo>
+public class rhz
+  extends amof
 {
-  public TagInfo a(Parcel paramParcel)
-  {
-    return new TagInfo(paramParcel);
-  }
-  
-  public TagInfo[] a(int paramInt)
-  {
-    return new TagInfo[paramInt];
-  }
+  public View a;
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 

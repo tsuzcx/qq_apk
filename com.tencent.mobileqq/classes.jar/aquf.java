@@ -1,96 +1,137 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
 
 public class aquf
-  extends aqkz<aque>
 {
-  public static aque a()
+  private aqrf jdField_a_of_type_Aqrf = new aqrf();
+  private aqrl jdField_a_of_type_Aqrl;
+  private aqrn jdField_a_of_type_Aqrn;
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  public aquf()
   {
-    return (aque)aqlk.a().a(635);
+    this.jdField_a_of_type_Aqrf.a(new aqrh());
+    this.jdField_a_of_type_Aqrl = new aqrl();
+    this.jdField_a_of_type_Aqrl.a(this.jdField_a_of_type_Aqrf);
   }
   
-  @NonNull
-  public aque a(int paramInt)
+  private boolean a(int paramInt)
   {
-    return new aque();
+    return (paramInt == 16908289) || (paramInt == 16908292);
   }
   
-  @Nullable
-  public aque a(aqlg[] paramArrayOfaqlg)
+  public void a()
   {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
-    aque localaque2 = null;
-    aque localaque1;
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    if ((this.jdField_a_of_type_Aqrf != null) && (this.jdField_a_of_type_Aqrn != null))
     {
-      localaque2 = aque.a(paramArrayOfaqlg[0].a);
-      localaque1 = localaque2;
-      if (QLog.isColorLevel())
+      localColorNote = this.jdField_a_of_type_Aqrn.getColorNote();
+      if (localColorNote != null)
       {
-        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-        localaque1 = localaque2;
+        this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
+        localColorNote = aqsd.a(localColorNote);
+        this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
       }
     }
-    for (;;)
+    while (!QLog.isColorLevel())
     {
-      paramArrayOfaqlg = localaque1;
-      if (localaque1 == null) {
-        paramArrayOfaqlg = new aque();
-      }
-      return paramArrayOfaqlg;
-      localaque1 = localaque2;
-      if (QLog.isColorLevel())
+      ColorNote localColorNote;
+      do
       {
-        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
-        localaque1 = localaque2;
-      }
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onResume: colorNote is null");
+      return;
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onResume: mColorNoteCurd or mServiceInfo is null");
+  }
+  
+  public void a(aqrf paramaqrf)
+  {
+    this.jdField_a_of_type_Aqrf = paramaqrf;
+  }
+  
+  public void a(aqrh paramaqrh)
+  {
+    if (this.jdField_a_of_type_Aqrf != null) {
+      this.jdField_a_of_type_Aqrf.a(paramaqrh);
     }
   }
   
-  public void a(aque paramaque)
+  public void a(aqrn paramaqrn)
   {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onUpdate]");
+    this.jdField_a_of_type_Aqrn = paramaqrn;
   }
   
-  public Class<aque> clazz()
+  public void a(boolean paramBoolean)
   {
-    return aque.class;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public boolean isAccountRelated()
+  public void b()
   {
-    return true;
+    if ((this.jdField_a_of_type_Aqrf != null) && (this.jdField_a_of_type_Aqrn != null))
+    {
+      localColorNote = this.jdField_a_of_type_Aqrn.getColorNote();
+      if (localColorNote != null)
+      {
+        this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+        localColorNote = aqsd.a(localColorNote);
+        this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      ColorNote localColorNote;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onPause: colorNote is null");
+      return;
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onPause: mColorNoteCurd or mServiceInfo is null");
   }
   
-  public boolean isNeedCompressed()
+  public void b(boolean paramBoolean)
   {
-    return true;
+    Object localObject;
+    if ((this.jdField_a_of_type_Aqrn != null) && (this.jdField_a_of_type_Aqrf != null) && (this.jdField_a_of_type_Aqrl != null)) {
+      localObject = null;
+    }
+    try
+    {
+      ColorNote localColorNote = this.jdField_a_of_type_Aqrn.getColorNote();
+      localObject = localColorNote;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteStateNotice", 1, localException, new Object[0]);
+        continue;
+        int i = 0;
+      }
+    }
+    if ((localObject != null) && (a(localObject.getServiceType())))
+    {
+      i = 1;
+      if ((localObject != null) && (i != 0) && (this.jdField_a_of_type_Boolean) && (paramBoolean) && (!this.jdField_a_of_type_Aqrf.a(localObject.getServiceType(), localObject.getSubType())))
+      {
+        aqsd.a(localObject);
+        this.jdField_a_of_type_Aqrl.a(localObject);
+      }
+      return;
+    }
   }
   
-  public boolean isNeedStoreLargeFile()
+  public void c()
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 635;
+    b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquf
  * JD-Core Version:    0.7.0.1
  */

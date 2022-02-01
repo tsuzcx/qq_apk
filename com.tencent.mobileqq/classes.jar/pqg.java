@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
 
-public class pqg
-  implements prw
+public final class pqg
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
 {
-  public pqg(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
   {
-    ohp.a(this.a.a.getContext(), ReadInJoySelfFragment.a(this.a, 14));
-    ReadInJoySelfFragment.a(this.a, 14);
+    return new ReadInJoyDraftboxItem.PicData(paramParcel);
+  }
+  
+  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.PicData[paramInt];
   }
 }
 

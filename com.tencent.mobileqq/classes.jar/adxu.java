@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.52;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adxu
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public adxu(ChatSettingForTroop.52 param52) {}
+  public adxu(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 1)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
     }
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import atcv;
+import atup;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileManagerDataCenter$2
   implements Runnable
 {
-  public FileManagerDataCenter$2(atcv paramatcv, Bundle paramBundle) {}
+  public FileManagerDataCenter$2(atup paramatup, Bundle paramBundle) {}
   
   public void run()
   {

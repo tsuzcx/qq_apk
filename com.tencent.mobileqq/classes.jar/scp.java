@@ -1,60 +1,34 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
 class scp
-  implements spt
+  implements sct
 {
-  scp(sce paramsce, VideoInfo paramVideoInfo) {}
+  scp(sco paramsco) {}
   
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void a(scv paramscv)
   {
-    paramView = pha.a();
-    AdvertisementInfo localAdvertisementInfo;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
+    sco.a(this.a, 2);
+    sco localsco = this.a;
+    String str;
+    if (paramscv.jdField_a_of_type_JavaLangString == null)
     {
-      if (sce.a(this.jdField_a_of_type_Sce).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-        ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      str = "";
+      sco.a(localsco, str);
+      if (paramscv.jdField_a_of_type_Int != 1) {
+        break label78;
       }
-      pmh.a().a(Long.valueOf(paramView).longValue(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.makeDislikeParam(paramArrayList, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g));
-      localAdvertisementInfo = nxw.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
-        break label304;
-      }
+      sco.b(this.a, 1);
     }
-    label301:
-    label304:
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    for (;;)
     {
-      paramView = "";
-      int i = 0;
-      if (i < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(i);
-        if (paramObject == null) {
-          break label301;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (i != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
+      if (sco.a(this.a) != null) {
+        sco.a(this.a).onPrepared();
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        nxw.a(new omp().a(sce.a(this.jdField_a_of_type_Sce)).a(nxw.c).b(nxw.R).a(localAdvertisementInfo).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a(l).a(paramView).a());
-        QQToast.a(sce.a(this.jdField_a_of_type_Sce), -1, sce.a(this.jdField_a_of_type_Sce).getString(2131698481), 0).b(sce.a(this.jdField_a_of_type_Sce).getResources().getDimensionPixelSize(2131298998));
-        sce.a(this.jdField_a_of_type_Sce).dismiss();
-        return true;
-      }
+      return;
+      str = paramscv.jdField_a_of_type_JavaLangString;
+      break;
+      label78:
+      sco.b(this.a, 0);
     }
   }
 }

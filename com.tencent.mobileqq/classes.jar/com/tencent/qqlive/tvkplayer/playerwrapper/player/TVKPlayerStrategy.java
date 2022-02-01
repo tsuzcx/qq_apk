@@ -16,7 +16,7 @@ public class TVKPlayerStrategy
   public static final String HA_TURN_OFF_COUNT = "ha_turn_off_count";
   public static final String SELFPLAYER_CRASH_COUNT = "qqlive_selfplayer_crash_count";
   public static final String SELFPLAYER_CRASH_STATE = "qqlive_selfplayer_crash_state";
-  private static final String TAG = "MediaPlayerMgr[TVKPlayerStrategy.java]";
+  public static final String TAG = "MediaPlayerMgr[TVKPlayerStrategy.java]";
   private static int isInBlackListForSelfPlayer = -1;
   
   public static SharedPreferences getSharedPreferences(Context paramContext)

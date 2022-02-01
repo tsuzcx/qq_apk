@@ -1,71 +1,62 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.aioapp.GrayGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.together.writetogether.data.GetChangesetsResp;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Data;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TreeSet;
 
-public class bena
+class bena
+  extends bemu
 {
-  private final QQAppInterface a;
+  bena(bemz parambemz) {}
   
-  bena(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, GetChangesetsResp paramGetChangesetsResp)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    EntityManager localEntityManager = this.a.a().createEntityManager();
-    bemy localbemy = bemy.a(this.a);
-    Object localObject = localEntityManager.query(GrayGroupAppEntity.class);
-    if (!bend.a((Collection)localObject))
+    int j = 0;
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("ChangesetClient", 2, "onPullPad");
+    }
+    NewChangesMsg.Data localData;
+    if (paramBoolean)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if ((paramGetChangesetsResp.changes.length > 0) && (paramGetChangesetsResp.changes[0].a.newRev > this.a.jdField_a_of_type_Int + 1))
       {
-        GrayGroupAppEntity localGrayGroupAppEntity = (GrayGroupAppEntity)((Iterator)localObject).next();
-        if (paramBoolean)
+        QLog.w("ChangesetClient", 1, "get newer cs, store it");
+        paramGetChangesetsResp = paramGetChangesetsResp.changes;
+        j = paramGetChangesetsResp.length;
+      }
+      for (;;)
+      {
+        if (i < j)
         {
-          localGrayGroupAppEntity.updatedTimestamp = 0L;
-          b(localGrayGroupAppEntity);
+          localData = paramGetChangesetsResp[i];
+          this.a.jdField_a_of_type_JavaUtilTreeSet.add(localData.a);
+          i += 1;
+          continue;
+          paramGetChangesetsResp = paramGetChangesetsResp.changes;
+          int k = paramGetChangesetsResp.length;
+          i = j;
+          if (i < k)
+          {
+            localData = paramGetChangesetsResp[i].a;
+            if (localData.newRev <= this.a.jdField_a_of_type_Int) {
+              QLog.w("ChangesetClient", 1, "get duplicate cs");
+            }
+          }
         }
-        localbemy.a.put(Long.valueOf(localGrayGroupAppEntity.groupUin), localGrayGroupAppEntity);
       }
     }
-    localEntityManager.close();
-  }
-  
-  private void b(GrayGroupAppEntity paramGrayGroupAppEntity)
-  {
-    EntityManager localEntityManager = this.a.a().createEntityManager();
-    paramGrayGroupAppEntity.setStatus(1000);
-    localEntityManager.persistOrReplace(paramGrayGroupAppEntity);
-    localEntityManager.close();
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  void a(GrayGroupAppEntity paramGrayGroupAppEntity)
-  {
-    ThreadManagerV2.excute(new GrayGroupAppsDbHelper.1(this, paramGrayGroupAppEntity), 32, null, false);
-  }
-  
-  public void b()
-  {
-    a(true);
-  }
-  
-  void c()
-  {
-    this.a.a().createEntityManager().delete(GrayGroupAppEntity.class.getSimpleName(), null, null);
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (localData.newRev > this.a.jdField_a_of_type_Int + 1)
+      {
+        QLog.e("ChangesetClient", 1, "get broken cs");
+        this.a.b();
+        return;
+      }
+      bemz.a(this.a, localData);
+    }
   }
 }
 

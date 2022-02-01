@@ -1,31 +1,19 @@
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bhjh
+final class bhjh
+  implements DownloadParams.DecodeHandler
 {
-  public int a;
-  public boolean a;
-  
-  public bhjh()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = -30009;
-  }
-  
-  public bhjh(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-    if ((this.jdField_a_of_type_Int == 0) && (paramJSONObject.optInt("flag", 0) == 1)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
+    if (paramBitmap == null) {
+      return null;
     }
-  }
-  
-  public String toString()
-  {
-    return "LiangHaoStatusRsp{ret=" + this.jdField_a_of_type_Int + ", flag=" + this.jdField_a_of_type_Boolean + '}';
+    if ((paramDownloadParams != null) && (paramDownloadParams.reqWidth >= 0) && (paramDownloadParams.reqHeight >= 0)) {
+      return bhjg.a(paramBitmap, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
+    }
+    return bhjg.a(paramBitmap);
   }
 }
 

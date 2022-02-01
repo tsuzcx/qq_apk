@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.music.humrecognition;
 
 import android.os.Handler;
-import bamc;
-import bkgm;
-import bonr;
+import bbev;
+import blhq;
+import bppm;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 import java.io.File;
 

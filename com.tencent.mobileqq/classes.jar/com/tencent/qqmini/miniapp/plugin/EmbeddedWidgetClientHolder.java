@@ -27,45 +27,83 @@ public class EmbeddedWidgetClientHolder
     this.widget = paramIEmbeddedWidget;
   }
   
-  public void handleEmbeddedWidgetEvent(String paramString, JSONObject paramJSONObject, int paramInt)
+  private void createRealClient(String paramString, IMiniAppContext paramIMiniAppContext, JSONObject paramJSONObject, IJsService paramIJsService)
   {
-    QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "handleEmbeddedWidgetEvent event:" + paramString);
-    if ((this.realClient instanceof VideoEmbeddedWidgetClient)) {
-      if ("operateXWebVideo".equals(paramString)) {
-        ((VideoEmbeddedWidgetClient)this.realClient).handleOperateXWebVideo(paramJSONObject);
+    if (this.realClient == null)
+    {
+      if ((!"insertXWebVideo".equals(paramString)) && (!"updateXWebVideo".equals(paramString))) {
+        break label83;
       }
+      this.realClient = new VideoEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
+      if (this.surfaceCreated != null) {
+        this.realClient.onSurfaceCreated(this.surfaceCreated);
+      }
+      ((VideoEmbeddedWidgetClient)this.realClient).handleInsertXWebVideo(paramJSONObject, paramIJsService);
     }
-    label54:
+    label83:
     do
     {
-      do
+      return;
+      if (("insertXWebLivePlayer".equals(paramString)) || ("updateXWebLivePlayer".equals(paramString)))
       {
-        do
-        {
-          break label54;
-          do
-          {
-            return;
-          } while (!"updateXWebVideo".equals(paramString));
-          ((VideoEmbeddedWidgetClient)this.realClient).handleUpdateXWebVideo(paramJSONObject);
-          return;
-          if (!(this.realClient instanceof LivePlayerEmbeddedWidgetClient)) {
-            break;
-          }
-          if ("operateXWebLivePlayer".equals(paramString))
-          {
-            ((LivePlayerEmbeddedWidgetClient)this.realClient).handleOperateXWebLivePlayer(paramJSONObject, paramInt);
-            return;
-          }
-          if ("updateXWebLivePlayer".equals(paramString))
-          {
-            ((LivePlayerEmbeddedWidgetClient)this.realClient).handleUpdateXWebLivePlayer(paramJSONObject);
-            return;
-          }
-        } while (!"removeXWebLivePlayer".equals(paramString));
+        this.realClient = new LivePlayerEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
+        if (this.surfaceCreated != null) {
+          this.realClient.onSurfaceCreated(this.surfaceCreated);
+        }
+        ((LivePlayerEmbeddedWidgetClient)this.realClient).handleInsertXWebLivePlayer(paramJSONObject, paramIJsService);
+        return;
+      }
+    } while ((!"insertXWebLivePusher".equals(paramString)) && (!"updateXWebLivePusher".equals(paramString)));
+    this.realClient = new LivePusherEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
+    if (this.surfaceCreated != null) {
+      this.realClient.onSurfaceCreated(this.surfaceCreated);
+    }
+    ((LivePusherEmbeddedWidgetClient)this.realClient).handleInsertXWebLivePusher(paramJSONObject, paramIJsService);
+  }
+  
+  private void removeWidget()
+  {
+    IMiniAppContext localIMiniAppContext = this.realClient.getMiniAppContext();
+    if (localIMiniAppContext != null) {
+      localIMiniAppContext.performAction(new EmbeddedWidgetClientHolder.1(this));
+    }
+  }
+  
+  public IMiniAppContext getMiniAppContext()
+  {
+    return null;
+  }
+  
+  public void handleEmbeddedWidgetEvent(String paramString, IMiniAppContext paramIMiniAppContext, JSONObject paramJSONObject, int paramInt, IJsService paramIJsService)
+  {
+    QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "handleEmbeddedWidgetEvent event:" + paramString);
+    createRealClient(paramString, paramIMiniAppContext, paramJSONObject, paramIJsService);
+    if ("operateXWebVideo".equals(paramString)) {
+      ((VideoEmbeddedWidgetClient)this.realClient).handleOperateXWebVideo(paramJSONObject);
+    }
+    do
+    {
+      return;
+      if ("updateXWebVideo".equals(paramString))
+      {
+        ((VideoEmbeddedWidgetClient)this.realClient).handleUpdateXWebVideo(paramJSONObject);
+        return;
+      }
+      if ("operateXWebLivePlayer".equals(paramString))
+      {
+        ((LivePlayerEmbeddedWidgetClient)this.realClient).handleOperateXWebLivePlayer(paramJSONObject, paramInt);
+        return;
+      }
+      if ("updateXWebLivePlayer".equals(paramString))
+      {
+        ((LivePlayerEmbeddedWidgetClient)this.realClient).handleUpdateXWebLivePlayer(paramJSONObject);
+        return;
+      }
+      if ("removeXWebLivePlayer".equals(paramString))
+      {
         ((LivePlayerEmbeddedWidgetClient)this.realClient).handleRemoveXWebLivePlayer();
         return;
-      } while (!(this.realClient instanceof LivePusherEmbeddedWidgetClient));
+      }
       if ("operateXWebLivePusher".equals(paramString))
       {
         ((LivePusherEmbeddedWidgetClient)this.realClient).handleOperateXWebLivePusher(paramJSONObject, paramInt);
@@ -83,32 +121,7 @@ public class EmbeddedWidgetClientHolder
   public void handleInsertEmbeddedWidgetEvent(String paramString, IMiniAppContext paramIMiniAppContext, JSONObject paramJSONObject, IJsService paramIJsService)
   {
     QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "handleInsertEmbeddedWidgetEvent event:" + paramString);
-    if ("insertXWebVideo".equals(paramString))
-    {
-      this.realClient = new VideoEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
-      if (this.surfaceCreated != null) {
-        this.realClient.onSurfaceCreated(this.surfaceCreated);
-      }
-      ((VideoEmbeddedWidgetClient)this.realClient).handleInsertXWebVideo(paramJSONObject, paramIJsService);
-    }
-    do
-    {
-      return;
-      if ("insertXWebLivePlayer".equals(paramString))
-      {
-        this.realClient = new LivePlayerEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
-        if (this.surfaceCreated != null) {
-          this.realClient.onSurfaceCreated(this.surfaceCreated);
-        }
-        ((LivePlayerEmbeddedWidgetClient)this.realClient).handleInsertXWebLivePlayer(paramJSONObject, paramIJsService);
-        return;
-      }
-    } while (!"insertXWebLivePusher".equals(paramString));
-    this.realClient = new LivePusherEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
-    if (this.surfaceCreated != null) {
-      this.realClient.onSurfaceCreated(this.surfaceCreated);
-    }
-    ((LivePusherEmbeddedWidgetClient)this.realClient).handleInsertXWebLivePusher(paramJSONObject, paramIJsService);
+    createRealClient(paramString, paramIMiniAppContext, paramJSONObject, paramIJsService);
   }
   
   public void nativeDestroy()
@@ -171,6 +184,7 @@ public class EmbeddedWidgetClientHolder
     QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "onDestroy");
     if (this.realClient != null)
     {
+      removeWidget();
       this.realClient.onDestroy();
       return;
     }

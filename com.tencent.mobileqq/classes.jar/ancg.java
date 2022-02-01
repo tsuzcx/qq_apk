@@ -1,21 +1,11 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.TMG.sdk.AVCallback;
 
 class ancg
-  implements Comparator<ApolloActionData>
+  implements AVCallback
 {
-  ancg(ancd paramancd) {}
+  ancg(anbz paramanbz) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
-  {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

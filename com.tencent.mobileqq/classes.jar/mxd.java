@@ -1,22 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import java.util.List;
 
 class mxd
-  implements DialogInterface.OnDismissListener
+  extends mxp
 {
-  mxd(mxb parammxb, Activity paramActivity) {}
+  mxd(mxc parammxc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (!this.jdField_a_of_type_Mxb.c)
+    if (paramString1 == null) {}
+    do
     {
-      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
+      do
+      {
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while (this.a.b(paramString1));
+      mxc.a(this.a, paramString1, true);
+      return;
+    } while ((paramInt != 5) || (!this.a.b(paramString1)));
+    mxc.a(this.a, paramString1, false);
+  }
+  
+  public void a(int paramInt, String paramString, mxq parammxq)
+  {
+    if ((paramInt != 0) || (parammxq == null) || (parammxq.jdField_a_of_type_JavaUtilList == null) || (parammxq.jdField_a_of_type_JavaLangString == null)) {}
+    while (parammxq.jdField_a_of_type_JavaUtilList.size() != 0) {
       return;
     }
-    this.jdField_a_of_type_Mxb.c = false;
+    mxc.a(this.a, parammxq.jdField_a_of_type_JavaLangString, false);
   }
 }
 

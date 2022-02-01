@@ -1,23 +1,82 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-class apnj
-  implements anil
+public class apnj
+  extends apnu
+  implements apnh
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public int a;
+  public String a;
+  public apnk[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
+  
+  public apnj()
   {
-    if (!paramBoolean)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfApnk = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(apnj paramapnj)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramapnj != null)
     {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkTemp.queryAppInfoByAppNameBatch, sso request failed");
-      paramObject = null;
-    }
-    for (;;)
-    {
-      paramObject = apni.a(this.jdField_a_of_type_Apni, (String)paramObject);
-      if (this.jdField_a_of_type_Apnq != null) {
-        this.jdField_a_of_type_Apnq.a(paramObject, this.jdField_a_of_type_JavaLangObject);
+      bool1 = bool2;
+      if (paramapnj.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramapnj.b == 0)
+        {
+          bool1 = bool2;
+          if (paramapnj.jdField_a_of_type_ArrayOfApnk != null)
+          {
+            bool1 = bool2;
+            if (paramapnj.jdField_a_of_type_ArrayOfApnk[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramapnj.jdField_a_of_type_ArrayOfApnk[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
       }
-      return;
     }
+    return bool1;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfApnk[0].a;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfApnk != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfApnk.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApnk[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

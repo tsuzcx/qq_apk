@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aeai
-  implements bdci
+final class aeai
+  implements DialogInterface.OnCancelListener
 {
-  public aeai(Conversation paramConversation) {}
+  aeai(aeca paramaeca, aebz paramaebz) {}
   
-  public void a(boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (this.jdField_a_of_type_Aeca.a) {
+      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
+    if (this.jdField_a_of_type_Aebz != null) {
+      this.jdField_a_of_type_Aebz.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

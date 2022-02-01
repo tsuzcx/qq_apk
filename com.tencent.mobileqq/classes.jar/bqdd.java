@@ -1,23 +1,30 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
-public class bqdd
-  extends AnimatorListenerAdapter
+class bqdd
+  implements View.OnClickListener
 {
-  public bqdd(DragAnimationMgr paramDragAnimationMgr) {}
+  bqdd(bqdc parambqdc) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    int i = DragAnimationMgr.a(this.a).a();
-    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    int i = DragAnimationMgr.a(this.a).a();
-    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditRecognitionPart", 2, "mRecognitionBubble onClick: invoked. ");
+    }
+    MusicItemInfo localMusicItemInfo = ((bpoz)bplq.a().c(8)).a();
+    if ((MusicProviderView.a) && (localMusicItemInfo != null) && (localMusicItemInfo.mItemId != bqdc.a(this.a).mItemId) && (localMusicItemInfo.mType == 5)) {
+      this.a.c();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bqdc.a(this.a);
+    }
   }
 }
 

@@ -1,39 +1,40 @@
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.widget.ListView;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
 
 public class awsd
-  extends awte
+  implements TextWatcher
 {
-  public awsd(MultiAIOItemFragment paramMultiAIOItemFragment, bkhe parambkhe, ListView paramListView) {}
+  public awsd(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
   
-  public void b(int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super.b(paramInt);
-    boolean bool;
-    switch (paramInt)
+    if (paramEditable.length() > 0)
     {
-    default: 
-      bool = false;
-      paramInt = 0;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.b.setVisibility(0);
+      this.c.setVisibility(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkhe.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
-      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
-      {
-        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
-        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
+      paramEditable = paramEditable.toString().trim();
+      if (TextUtils.isEmpty(paramEditable)) {
+        break;
       }
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
       return;
-      bool = false;
-      paramInt = 1;
-      continue;
-      paramInt = 2;
-      bool = true;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(8);
+      this.c.setVisibility(8);
     }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,32 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aeip
-  extends abgc
+  extends wjd
 {
-  public aeip(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  public aeip(Conversation paramConversation) {}
   
-  public abfj a(Activity paramActivity, abfp paramabfp)
+  public void d(boolean paramBoolean)
   {
-    return super.a(paramActivity, paramabfp);
-  }
-  
-  public abfl a(Activity paramActivity, abfp paramabfp)
-  {
-    this.a.a = new azdf((FriendProfilePicBrowserActivity)paramActivity, paramabfp);
-    return this.a.a;
-  }
-  
-  public abfp a(Activity paramActivity)
-  {
-    paramActivity = new axqz(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public abfq a(Activity paramActivity, abfp paramabfp)
-  {
-    return null;
+    if (paramBoolean)
+    {
+      yuk.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
+      this.a.a(1055, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, false);
   }
 }
 

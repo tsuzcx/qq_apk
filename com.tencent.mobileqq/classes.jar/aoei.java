@@ -1,9 +1,12 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.List;
 
-public abstract interface aoei
+public class aoei
 {
-  public abstract boolean a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  public int a;
+  public long a;
+  public List<PublicAccountInfo> a;
+  public boolean a;
 }
 
 

@@ -1,52 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
 
 public class azal
-  extends aqkz<azam>
+  implements View.OnTouchListener
 {
-  @NonNull
-  public azam a(int paramInt)
-  {
-    return new azam();
-  }
+  public azal(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
   
-  @Nullable
-  public azam a(aqlg[] paramArrayOfaqlg)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    azam localazam = new azam();
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
-      azam.a(localazam, paramArrayOfaqlg[0].a);
-    }
-    return localazam;
-  }
-  
-  public void a(azam paramazam) {}
-  
-  public Class<azam> clazz()
-  {
-    return azam.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+    this.a.a.a(paramView);
     return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 495;
   }
 }
 

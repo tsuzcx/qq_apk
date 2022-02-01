@@ -1,17 +1,55 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.ArrayList;
 
-class wmd
-  extends wme
+public final class wmd
+  extends wip
 {
-  wmd(wmc paramwmc) {}
+  public StoryVideoItem a;
+  public GeneralFeedItem a;
+  public ArrayList<wmc> a;
+  public final boolean a;
+  public StoryVideoItem b;
+  public boolean b;
+  public boolean c;
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public wmd(boolean paramBoolean)
   {
-    this.a.a.a.e();
-    if (paramBoolean) {
-      this.a.a.a.a(true, paramCommentEntry);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 940006) || (paramInt == 940007) || (paramInt == 940017) || (paramInt == 940018) || (paramInt == 941001) || (paramInt == 941002) || (paramInt == bext.a(940017)) || (paramInt == bext.a(9042)) || (paramInt == bext.a(9070)) || (paramInt == bext.a(9071)) || (paramInt / 100 == bext.a(999000) / 100) || ((paramInt >= 5100) && (paramInt <= 5108));
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 941001) || (paramInt == 941002);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return false;
     }
+    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
+  }
+  
+  public String toString()
+  {
+    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

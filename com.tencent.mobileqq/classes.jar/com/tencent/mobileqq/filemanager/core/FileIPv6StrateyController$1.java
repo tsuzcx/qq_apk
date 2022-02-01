@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atcq;
+import atul;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class FileIPv6StrateyController$1
   implements Runnable
 {
-  public FileIPv6StrateyController$1(atcq paramatcq) {}
+  public FileIPv6StrateyController$1(atul paramatul) {}
   
   public void run()
   {
-    if (atcq.a(this.this$0)) {
+    if (atul.a(this.this$0)) {
       return;
     }
     AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.this$0);
-    atcq.a(this.this$0, true);
+    atul.a(this.this$0, true);
   }
 }
 

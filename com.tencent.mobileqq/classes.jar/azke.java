@@ -1,47 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class azke
-  implements View.OnClickListener
+class azke
+  implements azjk
 {
-  private long jdField_a_of_type_Long;
+  azke(azkc paramazkc) {}
   
-  public azke(VipPhotoViewForSimple paramVipPhotoViewForSimple) {}
-  
-  public void onClick(View paramView)
+  public void a(double paramDouble1, double paramDouble2)
   {
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = l;
-      if ((paramView != null) && ((paramView.getTag() instanceof azde)))
-      {
-        Object localObject = (azde)paramView.getTag();
-        if (localObject != null)
-        {
-          int i = ((azde)localObject).a;
-          localObject = VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple).a.a;
-          switch (i)
-          {
-          default: 
-            break;
-          case 25: 
-            if (QLog.isColorLevel()) {
-              QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "View.OnClickListener click type is photo wall view");
-            }
-            bcst.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "1", "", "", "");
-            VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple, VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple));
-          }
-        }
-      }
-    }
+    this.a.a(paramDouble1);
   }
 }
 

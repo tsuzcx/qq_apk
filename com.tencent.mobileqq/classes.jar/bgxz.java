@@ -1,8 +1,6 @@
-public class bgxz
+public abstract interface bgxz
 {
-  public long a;
-  public String a;
-  public String b;
+  public abstract void a(long paramLong);
 }
 
 

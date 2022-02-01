@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.bean;
 
-import bbcs;
+import bbvl;
 import java.io.Serializable;
 
 public class CommentItem
@@ -11,8 +11,8 @@ public class CommentItem
   public long id;
   public long targetId;
   public long timeStamp;
-  public bbcs toReplyUser;
-  public bbcs user;
+  public bbvl toReplyUser;
+  public bbvl user;
 }
 
 

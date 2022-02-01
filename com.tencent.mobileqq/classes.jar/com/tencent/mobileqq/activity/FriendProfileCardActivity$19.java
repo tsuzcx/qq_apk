@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import axzw;
-import azfe;
+import aysq;
+import azxr;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FriendProfileCardActivity$19
@@ -12,7 +12,7 @@ class FriendProfileCardActivity$19
   public void run()
   {
     if (this.this$0.a.a.a == 0) {
-      ((axzw)this.this$0.app.getManager(160)).a(true);
+      ((aysq)this.this$0.app.getManager(160)).a(true);
     }
   }
 }

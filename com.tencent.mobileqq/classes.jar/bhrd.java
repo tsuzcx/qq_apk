@@ -1,42 +1,69 @@
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebAccelerator;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bhrd
 {
-  public static long a;
-  static final AtomicBoolean a;
+  private float jdField_a_of_type_Float;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  public SensorEventListener a;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bhrf(this, Looper.getMainLooper());
+  private bhrg jdField_a_of_type_Bhrg;
+  public boolean a;
+  private boolean b;
   
-  static
+  public bhrd(Context paramContext, bhrg parambhrg)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bhre(this);
+    this.jdField_a_of_type_Bhrg = parambhrg;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static boolean a()
+  public void a()
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public static boolean b()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      long l = System.currentTimeMillis();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
-      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
-      QbSdk.initTbsSettings(localHashMap);
-      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
-      bhqc.D = SystemClock.elapsedRealtime();
-      jdField_a_of_type_Long = System.currentTimeMillis() - l;
-      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor open=====");
     }
-    return false;
+    this.b = false;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
+    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
+      if (this.jdField_a_of_type_Float > 10.0F) {
+        this.jdField_a_of_type_Float = 10.0F;
+      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 2);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Bhrg.a(this.b);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
+    {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+    }
+    try
+    {
+      this.jdField_a_of_type_Bhrg = null;
+      this.jdField_a_of_type_AndroidHardwareSensor = null;
+      return;
+    }
+    finally {}
   }
 }
 

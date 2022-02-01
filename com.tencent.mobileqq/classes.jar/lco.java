@@ -1,37 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.av.VideoController;
 
 public class lco
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public boolean d;
-  public int e = -1;
-  public boolean e;
-  public int f = 0;
-  public boolean f;
-  public boolean g;
-  public boolean h = true;
+  public lco(VideoController paramVideoController) {}
   
-  public lco()
-  {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Long = 2000L;
-  }
+  public void onAudioFocusChange(int paramInt) {}
 }
 
 

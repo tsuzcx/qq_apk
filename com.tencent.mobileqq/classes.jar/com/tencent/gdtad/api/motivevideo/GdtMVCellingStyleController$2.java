@@ -1,19 +1,19 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acno;
+import acrq;
 import android.widget.RelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 
 public class GdtMVCellingStyleController$2
   implements Runnable
 {
-  public GdtMVCellingStyleController$2(acno paramacno, double paramDouble) {}
+  public GdtMVCellingStyleController$2(acrq paramacrq, double paramDouble) {}
   
   public void run()
   {
-    int i = acno.a(this.this$0).getWidth();
+    int i = acrq.a(this.this$0).getWidth();
     QLog.i("GdtMVCellingStyleController", 1, "setVideoHeightByRatio " + i);
-    if (acno.a(this.this$0).getWidth() > 0) {
+    if (acrq.a(this.this$0).getWidth() > 0) {
       this.this$0.d((int)(i * this.a));
     }
   }

@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class zsf
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  zsf(zsd paramzsd) {}
+  zsf(zsd paramzsd, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TextView localTextView = (TextView)this.a.a.findViewById(2131364999);
-    if ((localTextView.getText() instanceof String)) {
-      this.a.a((String)localTextView.getText());
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
+        this.jdField_a_of_type_Zsd.dismiss();
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Zsd.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

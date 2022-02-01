@@ -1,43 +1,20 @@
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public class aerx
-  implements CompoundButton.OnCheckedChangeListener
+class aerx
+  implements behr
 {
-  public aerx(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  aerx(aerw paramaerw, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel()
   {
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.f(this.a).setContentDescription(anni.a(2131706422));
-    }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131717264), "qqsetting_receivemsg_whenexit_key", paramBoolean);
-    SyncService.a(this.a, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label117;
-      }
-    }
-    label117:
-    for (String str = "1";; str = "0")
-    {
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, str, "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 0;
-      break;
-    }
+    this.jdField_a_of_type_Aerw.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
+  }
+  
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_Aerw.a.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_Aerw.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

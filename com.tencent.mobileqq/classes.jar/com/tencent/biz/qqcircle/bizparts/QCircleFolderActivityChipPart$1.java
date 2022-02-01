@@ -2,22 +2,22 @@ package com.tencent.biz.qqcircle.bizparts;
 
 import com.tencent.biz.qqcircle.events.QCircleFuelAnimationEvent;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import vbf;
+import vcv;
 
 public class QCircleFolderActivityChipPart$1
   implements Runnable
 {
-  public QCircleFolderActivityChipPart$1(vbf paramvbf, SimpleBaseEvent paramSimpleBaseEvent) {}
+  public QCircleFolderActivityChipPart$1(vcv paramvcv, SimpleBaseEvent paramSimpleBaseEvent) {}
   
   public void run()
   {
-    if (vbf.a(this.this$0))
+    if (vcv.a(this.this$0))
     {
-      vbf.a(this.this$0, true);
-      vbf.a(this.this$0, (QCircleFuelAnimationEvent)this.a);
+      vcv.a(this.this$0, true);
+      vcv.a(this.this$0, (QCircleFuelAnimationEvent)this.a);
       return;
     }
-    vbf.a(this.this$0, (QCircleFuelAnimationEvent)this.a);
+    vcv.a(this.this$0, (QCircleFuelAnimationEvent)this.a);
   }
 }
 

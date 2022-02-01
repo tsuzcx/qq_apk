@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class osv
-  implements View.OnClickListener
+public abstract class osv
 {
-  osv(ost paramost) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

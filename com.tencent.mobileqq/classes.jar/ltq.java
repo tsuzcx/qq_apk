@@ -1,6 +1,20 @@
-public abstract interface ltq
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
+
+public class ltq
+  extends ltl
 {
-  public abstract void a();
+  String b;
+  
+  public ltq(RandomWebProtocol paramRandomWebProtocol) {}
+  
+  void a(String paramString)
+  {
+    super.a(paramString);
+    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
+      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+    }
+  }
 }
 
 

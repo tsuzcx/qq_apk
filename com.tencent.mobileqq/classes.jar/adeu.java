@@ -1,23 +1,59 @@
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import tencent.im.s2c.msgtype0x210.submsgtype0x86.SubMsgType0x86.MsgBody;
 
-class adeu
-  extends JobSegment<awlp, awlp>
+public class adeu
+  implements adci
 {
-  adeu(adep paramadep, String paramString, int paramInt) {}
-  
-  protected void a(JobContext paramJobContext, awlp paramawlp)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    if (paramawlp.b())
-    {
-      notifyResult(paramawlp);
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
-      }
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor receive 0x86 push message, seq = " + paramMsgInfo.shMsgSeq + "submsgtype:" + paramMsgInfo.shMsgType);
     }
-    awlu.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new adev(this, this));
+    paramMsgInfo = new SubMsgType0x86.MsgBody();
+    for (;;)
+    {
+      try
+      {
+        paramMsgInfo.mergeFrom(paramMsgType0x210.vProtobuf);
+        if (paramMsgInfo != null)
+        {
+          if (paramMsgInfo.uint32_notify_flag.get() != 1) {
+            continue;
+          }
+          bool = true;
+          if (bool == true)
+          {
+            paramMsgInfo = new String(paramMsgInfo.bytes_notify_wording.get().toByteArray(), "utf-8");
+            baou.a(paramQQAppInterface, bool, paramMsgInfo);
+            paramQQAppInterface.a().a(bool, paramMsgInfo);
+          }
+        }
+        return;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        boolean bool;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.msg.BaseMessageProcessor", 2, "parse 0x86 push msg error", paramQQAppInterface);
+      }
+      bool = false;
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

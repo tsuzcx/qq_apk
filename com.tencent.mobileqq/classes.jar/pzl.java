@@ -1,128 +1,116 @@
-import android.support.annotation.Nullable;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
-public class pzl<BEAN, VIEW extends pzd<BEAN>>
-  implements pzc<BEAN, VIEW>
+public class pzl
+  implements ViewBase.OnClickListener
 {
-  private pzb<BEAN> jdField_a_of_type_Pzb;
-  private pzd<BEAN> jdField_a_of_type_Pzd;
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ppu jdField_a_of_type_Ppu;
+  private int b;
+  private int c;
   
-  public pzl(pzb<BEAN> parampzb)
+  public pzl(ppu paramppu, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Pzb = parampzb;
+    this.jdField_a_of_type_Ppu = paramppu;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  private void a(List<BEAN> paramList)
+  private int a(int paramInt)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    switch (paramInt)
     {
-      if (this.jdField_a_of_type_Pzd != null)
-      {
-        this.jdField_a_of_type_Pzd.setCenterHide();
-        this.jdField_a_of_type_Pzd.setListData(paramList, false);
-        this.jdField_a_of_type_Pzd.setFooterNoMore();
-        this.jdField_a_of_type_Pzd.setHeaderLoading();
-      }
-      this.jdField_a_of_type_Boolean = true;
+    case 1112: 
+    default: 
+      return 0;
+    case 1113: 
+      return 1;
     }
-  }
-  
-  private void a(boolean paramBoolean, int paramInt, List<BEAN> paramList)
-  {
-    if (paramBoolean)
-    {
-      a(paramList);
-      return;
-    }
-    b(paramInt, paramList);
-  }
-  
-  private void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, @Nullable String paramString)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Pzd != null)) {
-      this.jdField_a_of_type_Pzd.setHeaderError(paramInt, paramString);
-    }
-    if ((paramList != null) && (!paramList.isEmpty()) && (paramBoolean) && (this.jdField_a_of_type_Pzd != null))
-    {
-      this.jdField_a_of_type_Pzd.setCenterHide();
-      this.jdField_a_of_type_Pzd.setListData(paramList, false);
-      this.jdField_a_of_type_Pzd.setFooterNoMore();
-    }
-    while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Pzd == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Pzd.setCenterError(paramInt, paramString);
-    this.jdField_a_of_type_Pzd.setTotal(0);
-  }
-  
-  private void b(int paramInt, List<BEAN> paramList)
-  {
-    if (this.jdField_a_of_type_Pzd != null)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Pzd.setHeaderSuccess();
-      }
-      a(paramInt, paramList);
-    }
+    return 2;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Pzd = null;
-  }
-  
-  public void a(int paramInt, List<BEAN> paramList)
-  {
-    if (this.jdField_a_of_type_Pzd != null)
+    int k = this.jdField_a_of_type_Int;
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Ppu.a();
+    int i;
+    if (localArticleInfo != null)
     {
-      this.jdField_a_of_type_Pzd.setTotal(paramInt);
-      this.jdField_a_of_type_Pzd.setListData(paramList, false);
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label82;
+      if (!localArticleInfo.hasChannelInfo()) {
+        break label148;
       }
-      this.jdField_a_of_type_Pzd.setCenterHide();
-      if (this.jdField_a_of_type_Pzb.a()) {
-        this.jdField_a_of_type_Pzd.setFooterHasMore();
+      i = localArticleInfo.mChannelInfoId;
+      if (!TextUtils.isEmpty(localArticleInfo.mArticleFriendLikeText)) {
+        break label153;
       }
     }
-    else
+    label148:
+    label153:
+    for (int j = 0;; j = 1)
     {
+      String str = ozs.d(localArticleInfo);
+      ocd.a(null, "CliOper", "", localArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localArticleInfo.mFeedId), Long.toString(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), ozs.a(localArticleInfo.mAlgorithmID, ozs.a(localArticleInfo), k, i, j, bhnv.h(this.jdField_a_of_type_AndroidContentContext), str, localArticleInfo.mStrCircleId, localArticleInfo.innerUniqueID, ozs.f(localArticleInfo), localArticleInfo), false);
+      ubk.a(localArticleInfo, k);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((this.jdField_a_of_type_Ppu == null) || (this.jdField_a_of_type_Ppu.a() == null) || (this.jdField_a_of_type_Ppu.a().mSmallMiniGameInfo == null)) {
       return;
     }
-    this.jdField_a_of_type_Pzd.setFooterNoMore();
-    return;
-    label82:
-    this.jdField_a_of_type_Pzd.setCenterEmpty();
-    this.jdField_a_of_type_Pzd.setFooterHide();
-  }
-  
-  public void a(VIEW paramVIEW)
-  {
-    this.jdField_a_of_type_Pzd = paramVIEW;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Pzd != null) {
-      this.jdField_a_of_type_Pzd.setCenterLoading();
-    }
-    this.jdField_a_of_type_Pzb.a(true, new pzm(this));
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Pzb.a())
+    String str = "";
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Ppu.a();
+    switch (this.c)
     {
-      if (this.jdField_a_of_type_Pzd != null) {
-        this.jdField_a_of_type_Pzd.setFooterNoMore();
+    default: 
+      paramViewBase = "";
+    case 1115: 
+    case 1112: 
+    case 1113: 
+    case 1114: 
+      for (;;)
+      {
+        if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty(str)) && (!MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramViewBase, 2103, null)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("OnSmallGameCardClickListener", 0, "mini game url error jump by appid url = " + paramViewBase);
+          }
+          MiniAppLauncher.launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, str, null, null, null, null, 2103);
+        }
+        a();
+        return;
+        nzq.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Ppu.h(), this.b, nzq.jdField_a_of_type_Int);
+        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(this.b);
+        str = localArticleInfo.mSmallMiniGameInfo.a(this.b);
+        continue;
+        int i = a(this.c);
+        nzq.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Ppu.h(), i, nzq.jdField_a_of_type_Int);
+        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(i);
+        str = localArticleInfo.mSmallMiniGameInfo.a(i);
       }
-      return;
     }
-    if (this.jdField_a_of_type_Pzd != null) {
-      this.jdField_a_of_type_Pzd.setFooterLoading();
+    nyo localnyo = new nyo().a(501L).b(50101L).c(5010105L).d(9L);
+    if (localArticleInfo.mSmallMiniGameInfo.a()) {}
+    for (paramViewBase = "3";; paramViewBase = "2")
+    {
+      paramViewBase = localnyo.h(paramViewBase).i(String.valueOf(this.b)).a();
+      nzq.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      ozs.d(this.jdField_a_of_type_AndroidContentContext, localArticleInfo.mSmallMiniGameInfo.a);
+      paramViewBase = "";
+      break;
     }
-    this.jdField_a_of_type_Pzb.a(new pzn(this));
   }
 }
 

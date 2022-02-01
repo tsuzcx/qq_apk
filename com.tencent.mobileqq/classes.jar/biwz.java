@@ -1,182 +1,148 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.WebViewDownloadListener.1;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class biwz
-  implements DownloadListener
+  extends ReportDialog
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  protected static biwz a;
-  protected Handler a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bixa jdField_a_of_type_Bixa;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  private TextView b;
+  private TextView c;
+  private TextView d;
   
-  protected biwz()
+  public biwz(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    super(paramContext, 2131755824);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    a();
   }
   
-  public static biwz a()
+  private void a()
   {
-    if (jdField_a_of_type_Biwz == null) {
-      jdField_a_of_type_Biwz = new biwz();
+    setContentView(2131562835);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365523));
+    this.b = ((TextView)findViewById(2131365519));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364495));
+    this.c = ((TextView)findViewById(2131365508));
+    this.d = ((TextView)findViewById(2131365514));
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131702024));
     }
-    return jdField_a_of_type_Biwz;
-  }
-  
-  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("pro", paramInt2);
-      localJSONObject.put("ismyapp", paramInt3);
-      localJSONObject.put("errorMsg", paramString3);
-      localJSONObject.put("errorCode", paramInt4);
-      localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
+    if (this.b != null) {
+      this.b.setText(anzj.a(2131702023));
     }
-    catch (JSONException paramString1)
+    if (this.jdField_a_of_type_AndroidWidgetCheckBox != null)
     {
-      for (;;)
-      {
-        bisy.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label231;
       }
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setText(anzj.a(2131702025));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bhsi.D(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
     }
-  }
-  
-  protected String a(String paramString1, int paramInt, String paramString2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt);
-      localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        bisy.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
-      }
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    biue localbiue = biue.a();
     for (;;)
     {
-      int i;
-      try
+      if (this.c != null)
       {
-        int j = localbiue.a().size();
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = (biud)localbiue.a().get(i);
-          WebView localWebView = ((biud)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((biud)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              bisy.a("WebViewDownloadListener", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((biud)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
-          }
-        }
-        else
-        {
-          return;
-        }
+        this.c.setText(2131690580);
+        this.c.setOnClickListener(this);
       }
-      catch (Exception paramString)
+      if (this.d != null)
       {
-        bisy.c("WebViewDownloadListener", "doJsCallback >>> ", paramString);
+        this.d.setText(2131694098);
+        this.d.setOnClickListener(this);
       }
-      i += 1;
+      setCancelable(true);
+      setCanceledOnTouchOutside(true);
+      return;
+      label231:
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
     }
   }
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    a(a(paramString1, 6, paramString2));
+    super.show();
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A363", "0X800A363", paramInt, 0, "1", "", "", "");
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void a(bixa parambixa)
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
+    this.jdField_a_of_type_Bixa = parambixa;
+  }
+  
+  @Deprecated
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetCheckBox != null) {
+      return this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
     }
+    return false;
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public void b(String paramString)
   {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
-    }
+    this.b.setText(paramString);
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {}
   
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  public void onClick(View paramView)
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList != null)
+    int i = 3;
+    if (this.jdField_a_of_type_Boolean)
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localJSONArray.put(((DownloadInfo)paramList.next()).a());
+      if (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        i = 1;
       }
-      a(localJSONArray.toString());
     }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
+    else {
+      switch (paramView.getId())
+      {
+      }
     }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 13, paramString2));
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 9, paramString2));
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 2;
+      break;
+      dismiss();
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A365", "0X800A365", i, 0, "1", "", "", "");
+      continue;
+      if (this.jdField_a_of_type_Bixa != null)
+      {
+        this.jdField_a_of_type_Bixa.a(this, paramView, a());
+        if (this.jdField_a_of_type_Boolean) {
+          bhsi.v(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+        }
+        dismiss();
+      }
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A364", "0X800A364", i, 0, "1", "", "", "");
+    }
   }
 }
 

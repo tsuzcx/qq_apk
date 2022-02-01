@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
 
-public class azdo
-  implements Comparator<PersonalityLabelInfo>
+class azdo
+  extends AnimatorListenerAdapter
 {
-  public azdo(PersonalityLabel paramPersonalityLabel) {}
+  azdo(azdh paramazdh) {}
   
-  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
+    if (azdh.a(this.a) != null) {
+      azdh.a(this.a).setVisibility(0);
+    }
   }
 }
 

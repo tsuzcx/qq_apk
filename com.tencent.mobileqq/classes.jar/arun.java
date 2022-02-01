@@ -1,23 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
-class arun
-  extends VasQuickUpdateManager.CallBacker
+public final class arun
 {
-  arun(arum paramarum) {}
+  private int jdField_a_of_type_Int;
+  private arup jdField_a_of_type_Arup;
+  public aruq a;
+  private arus jdField_a_of_type_Arus;
+  private arut jdField_a_of_type_Arut;
+  public aruu a;
+  private aruv jdField_a_of_type_Aruv;
+  private arux jdField_a_of_type_Arux;
+  private aruy jdField_a_of_type_Aruy;
+  private List<arvc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public arul a()
   {
-    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramString2 == null) {}
-    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
-      return;
-    }
-    ((VasQuickUpdateManager)paramString2.getManager(184)).removeCallBacker(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-    paramString1 = VasQuickUpdateManager.getJSONFromLocal(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
-    this.a.a(paramString1);
+    return new arul(this, null);
+  }
+  
+  public arun a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public arun a(aruv paramaruv)
+  {
+    this.jdField_a_of_type_Aruv = paramaruv;
+    return this;
+  }
+  
+  public arun a(arvc paramarvc)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramarvc);
+    return this;
   }
 }
 

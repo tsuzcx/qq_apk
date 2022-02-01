@@ -1,347 +1,96 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
-import java.util.HashMap;
 
-public class atuh
-  implements bdvw
+class atuh
+  extends atpa
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  private atdx jdField_a_of_type_Atdx;
-  atug jdField_a_of_type_Atug;
-  bdvs jdField_a_of_type_Bdvs;
-  bdvu jdField_a_of_type_Bdvu;
-  bktt jdField_a_of_type_Bktt;
-  InputStream jdField_a_of_type_JavaIoInputStream;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
+  atuh(atug paramatug) {}
   
-  public void a()
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bdvu.b(this.jdField_a_of_type_Bdvs);
-    if (QLog.isColorLevel()) {
-      QLog.d("OfflineFileHttpUploder<FileAssistant>", 2, "Id[" + this.jdField_c_of_type_JavaLangString + "]stop");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = this;
-    localbdvs.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbdvs.jdField_a_of_type_Int = 1;
-    localbdvs.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    localbdvs.e = this.jdField_c_of_type_JavaLangString;
-    try
+    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo, bSuccess[" + paramBoolean + " retCode:" + paramInt1 + " downloadIp:" + paramString4 + " downloadDomain:" + paramString5 + " port:" + paramInt2 + " url:" + paramString6 + " cookie:" + paramString2);
+    atui localatui = atug.a(this.a, paramLong, false);
+    if (localatui == null)
     {
-      byte[] arrayOfByte = a(paramLong);
-      arrayOfByte = this.jdField_a_of_type_Atug.a(arrayOfByte, paramLong);
-      if (arrayOfByte == null) {
-        return;
-      }
-      localbdvs.jdField_a_of_type_ArrayOfByte = arrayOfByte;
-      this.jdField_a_of_type_Bdvs = localbdvs;
-      localbdvs.jdField_a_of_type_Bdxx = atvo.a();
-      this.jdField_a_of_type_Bdvu.a(localbdvs);
-      if (QLog.isColorLevel())
-      {
-        QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]Send Http Request!");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "] Exception:" + localException.toString());
-      this.jdField_a_of_type_Atug.b();
-    }
-  }
-  
-  /* Error */
-  byte[] a(long paramLong)
-  {
-    // Byte code:
-    //   0: lload_1
-    //   1: lconst_0
-    //   2: lcmp
-    //   3: ifne +8 -> 11
-    //   6: aload_0
-    //   7: lconst_0
-    //   8: putfield 134	atuh:jdField_b_of_type_Long	J
-    //   11: aload_0
-    //   12: getfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   15: ifnonnull +23 -> 38
-    //   18: aload_0
-    //   19: new 138	java/io/FileInputStream
-    //   22: dup
-    //   23: aload_0
-    //   24: getfield 140	atuh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   27: invokespecial 143	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   30: putfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   33: aload_0
-    //   34: lconst_0
-    //   35: putfield 145	atuh:jdField_c_of_type_Long	J
-    //   38: lload_1
-    //   39: lconst_0
-    //   40: lcmp
-    //   41: ifne +113 -> 154
-    //   44: aload_0
-    //   45: getfield 145	atuh:jdField_c_of_type_Long	J
-    //   48: lconst_0
-    //   49: lcmp
-    //   50: ifeq +23 -> 73
-    //   53: aload_0
-    //   54: new 138	java/io/FileInputStream
-    //   57: dup
-    //   58: aload_0
-    //   59: getfield 140	atuh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   62: invokespecial 143	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   65: putfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   68: aload_0
-    //   69: lconst_0
-    //   70: putfield 145	atuh:jdField_c_of_type_Long	J
-    //   73: aload_0
-    //   74: lload_1
-    //   75: putfield 145	atuh:jdField_c_of_type_Long	J
-    //   78: aload_0
-    //   79: getfield 147	atuh:jdField_a_of_type_Bktt	Lbktt;
-    //   82: aload_0
-    //   83: getfield 149	atuh:jdField_a_of_type_Long	J
-    //   86: aload_0
-    //   87: getfield 134	atuh:jdField_b_of_type_Long	J
-    //   90: lload_1
-    //   91: invokestatic 154	atui:a	(Lbktt;JJJ)I
-    //   94: istore_3
-    //   95: iload_3
-    //   96: newarray byte
-    //   98: astore 4
-    //   100: aload_0
-    //   101: getfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   104: aload 4
-    //   106: iconst_0
-    //   107: iload_3
-    //   108: invokevirtual 160	java/io/InputStream:read	([BII)I
-    //   111: pop
-    //   112: aload_0
-    //   113: aload_0
-    //   114: getfield 145	atuh:jdField_c_of_type_Long	J
-    //   117: iload_3
-    //   118: i2l
-    //   119: ladd
-    //   120: putfield 145	atuh:jdField_c_of_type_Long	J
-    //   123: aload 4
-    //   125: areturn
-    //   126: astore 4
-    //   128: aload_0
-    //   129: aconst_null
-    //   130: putfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   133: aload 4
-    //   135: invokevirtual 163	java/io/FileNotFoundException:printStackTrace	()V
-    //   138: aconst_null
-    //   139: areturn
-    //   140: astore 4
-    //   142: aload_0
-    //   143: aconst_null
-    //   144: putfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   147: aload 4
-    //   149: invokevirtual 163	java/io/FileNotFoundException:printStackTrace	()V
-    //   152: aconst_null
-    //   153: areturn
-    //   154: lload_1
-    //   155: aload_0
-    //   156: getfield 145	atuh:jdField_c_of_type_Long	J
-    //   159: lcmp
-    //   160: ifle +29 -> 189
-    //   163: aload_0
-    //   164: getfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   167: lload_1
-    //   168: aload_0
-    //   169: getfield 145	atuh:jdField_c_of_type_Long	J
-    //   172: lsub
-    //   173: invokevirtual 167	java/io/InputStream:skip	(J)J
-    //   176: pop2
-    //   177: goto -104 -> 73
-    //   180: astore 4
-    //   182: aload 4
-    //   184: invokevirtual 168	java/io/IOException:printStackTrace	()V
-    //   187: aconst_null
-    //   188: areturn
-    //   189: lload_1
-    //   190: aload_0
-    //   191: getfield 145	atuh:jdField_c_of_type_Long	J
-    //   194: lcmp
-    //   195: ifge -122 -> 73
-    //   198: aload_0
-    //   199: new 138	java/io/FileInputStream
-    //   202: dup
-    //   203: aload_0
-    //   204: getfield 140	atuh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   207: invokespecial 143	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   210: putfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   213: aload_0
-    //   214: lconst_0
-    //   215: putfield 145	atuh:jdField_c_of_type_Long	J
-    //   218: aload_0
-    //   219: getfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   222: lload_1
-    //   223: invokevirtual 167	java/io/InputStream:skip	(J)J
-    //   226: pop2
-    //   227: goto -154 -> 73
-    //   230: astore 4
-    //   232: aload_0
-    //   233: aconst_null
-    //   234: putfield 136	atuh:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   237: aload 4
-    //   239: invokevirtual 168	java/io/IOException:printStackTrace	()V
-    //   242: aconst_null
-    //   243: areturn
-    //   244: astore 4
-    //   246: aconst_null
-    //   247: astore 4
-    //   249: goto -126 -> 123
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	252	0	this	atuh
-    //   0	252	1	paramLong	long
-    //   94	24	3	i	int
-    //   98	26	4	arrayOfByte	byte[]
-    //   126	8	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   140	8	4	localFileNotFoundException2	java.io.FileNotFoundException
-    //   180	3	4	localIOException1	java.io.IOException
-    //   230	8	4	localIOException2	java.io.IOException
-    //   244	1	4	localException	Exception
-    //   247	1	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   18	38	126	java/io/FileNotFoundException
-    //   53	73	140	java/io/FileNotFoundException
-    //   163	177	180	java/io/IOException
-    //   198	227	230	java/io/IOException
-    //   100	123	244	java/lang/Exception
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    int i;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OfflineFileHttpUploder<FileAssistant>", 4, "logID[" + this.jdField_c_of_type_JavaLangString + "]onResp result:" + parambdwt.jdField_a_of_type_Int + " errCode:" + parambdwt.jdField_b_of_type_Int + " errDesc:" + parambdwt.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_Bdvs = null;
-      i = parambdwt.jdField_c_of_type_Int;
-      if ((parambdwt.jdField_b_of_type_Int == 9364) && (this.jdField_a_of_type_Int < 3))
-      {
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]onNetChanged:mNetworkChangRetryCount[" + this.jdField_a_of_type_Int + "] retry!");
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Bktt.a();
-        if (this.jdField_a_of_type_Atug != null) {
-          this.jdField_a_of_type_Atug.a(true);
-        }
-        a(this.jdField_b_of_type_Long);
-        return;
-      }
-      if ((atjh.a(parambdwt.jdField_b_of_type_Int)) && (this.jdField_a_of_type_Atdx != null))
-      {
-        str = this.jdField_a_of_type_Atdx.a();
-        if (str != null)
-        {
-          this.jdField_a_of_type_JavaLangString = str;
-          a(this.jdField_b_of_type_Long);
-          return;
-        }
-      }
-      if ((i == 200) && (parambdwt.jdField_a_of_type_Int == 0)) {
-        break;
-      }
-      if ((parambdwt.jdField_a_of_type_Int == 9056) && (this.jdField_c_of_type_Int < 5))
-      {
-        this.jdField_c_of_type_Int += 1;
-        a(this.jdField_b_of_type_Long);
-        return;
-      }
-      this.jdField_a_of_type_Atug.b();
-    } while (!QLog.isColorLevel());
-    QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]httpRetCode:" + i + "]onResp result:" + parambdwt.jdField_a_of_type_Int + " errCode:" + parambdwt.jdField_b_of_type_Int + " errDesc:" + parambdwt.jdField_a_of_type_JavaLangString);
-    return;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Bktt.b();
-    String str = (String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("User-ReturnCode");
-    if (str != null) {}
-    for (long l = Long.parseLong(str);; l = 0L)
-    {
-      if (l != 0L)
-      {
-        this.jdField_a_of_type_Atug.b();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "ResponCode[206]But UserCode[" + l + "]");
-        return;
-      }
-      l = this.jdField_a_of_type_Atug.a(parambdwt);
-      if (l == -1L)
-      {
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "server resp data read len -1");
-        if (QLog.isDevelopLevel()) {
-          throw new IllegalArgumentException();
-        }
-      }
-      if (l == 0L)
-      {
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "server resp data read len 0");
-        return;
-      }
-      if (l == this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Atug.a();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "miaochuan");
-        return;
-      }
-      if (l < this.jdField_b_of_type_Long)
-      {
-        parambdwt = "RangSizeError_rangError tSize[" + String.valueOf(l) + "]<=mSize[" + String.valueOf(this.jdField_b_of_type_Long) + "],reTryafter[" + String.valueOf(this.jdField_b_of_type_Int) + "]";
-        QLog.w("OfflineFileHttpUploder<FileAssistant>", 1, "nSessionId[" + this.jdField_c_of_type_JavaLangString + "]" + parambdwt);
-        this.jdField_b_of_type_Int += 1;
-        if (this.jdField_b_of_type_Int < 3)
-        {
-          QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "server rang error retry,mmaxRangErrorRetryCount [" + this.jdField_b_of_type_Int + "], maxRangErrorRetry[" + 3 + "]");
-          a(l);
-          return;
-        }
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]server rang error not retry,mmaxRangErrorRetryCount [" + this.jdField_b_of_type_Int + "], maxRangErrorRetry[" + 3 + "]");
-        this.jdField_a_of_type_Atug.b();
-        return;
-      }
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_b_of_type_Long = l;
-      this.jdField_a_of_type_Atug.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_Long);
-      a(l);
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo no this session");
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
     }
-  }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, "nID[" + this.jdField_c_of_type_JavaLangString + "]onUpdateProgeress[" + paramLong1 + "]/[" + paramLong2 + "]");
+    if (!paramBoolean)
+    {
+      this.a.a.a().a(false, 50, new Object[] { localatui.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+    }
+    if ((paramString6 != null) && (paramString6.length() > 0))
+    {
+      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo url=null");
+      this.a.a.a().a(false, 50, new Object[] { localatui.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+    }
+    paramString6 = null;
+    if ((paramString4 != null) && (paramString4.length() > 0)) {
+      paramString1 = paramString4;
+    }
+    while ((paramString1 == null) || (paramString1.length() < 0))
+    {
+      this.a.a.a().a(false, 50, new Object[] { localatui.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+      paramString1 = paramString6;
+      if (paramString5 != null)
+      {
+        paramString1 = paramString6;
+        if (paramString5.length() > 0) {
+          paramString1 = paramString5;
+        }
+      }
+    }
+    if ((paramString3 == null) || (paramString3.length() < 0)) {
+      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo downloadKey invaild");
+    }
+    paramString5 = "/ftn_video_pic/rkey=" + paramString3 + "&filetype=" + localatui.b + "&size=" + this.a.a(localatui.jdField_a_of_type_Int) + "&";
+    paramBoolean = false;
+    short s1 = 0;
+    if ((atyt.h(this.a.a)) && (paramBundle != null))
+    {
+      paramString4 = paramBundle.getString("strHttpsDomain");
+      if (!TextUtils.isEmpty(paramString4))
+      {
+        boolean bool = true;
+        short s2 = paramBundle.getShort("httpsPort", (short)0);
+        paramBoolean = bool;
+        paramString3 = paramString4;
+        s1 = s2;
+        if (s2 == 0)
+        {
+          s1 = 443;
+          paramString3 = paramString4;
+          paramBoolean = bool;
+        }
+      }
+    }
+    for (;;)
+    {
+      paramString4 = "";
+      if (paramBundle != null) {
+        paramString4 = paramBundle.getString("IPv6Dns");
+      }
+      this.a.a(paramLong, true, paramString1, paramInt2, paramString5, null, paramString2, paramBoolean, paramString3, s1, paramString4);
+      return;
+      paramString3 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atuh
  * JD-Core Version:    0.7.0.1
  */

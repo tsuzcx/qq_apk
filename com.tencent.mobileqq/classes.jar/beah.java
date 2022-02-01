@@ -1,16 +1,12 @@
-import android.graphics.Bitmap;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
 public class beah
 {
-  beag a;
-  
-  protected Bitmap b(Bitmap paramBitmap)
-  {
-    if (this.a == null) {
-      return paramBitmap;
-    }
-    return this.a.a(paramBitmap);
-  }
+  public int a;
+  public TimDocSSOMsg.UinRightInfo a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

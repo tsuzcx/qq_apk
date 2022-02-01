@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.qcircle.QCircleChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
 
 public class azwn
-  extends asgf
 {
-  public azwn(QCircleChatMsgListFragment paramQCircleChatMsgListFragment) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleChatMsgListFragment", 2, "onUpdateSignalBombPush " + paramBoolean + " " + paramString);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleChatMsgListFragment", 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    QCircleChatMsgListFragment.a(this.a, paramArrayList);
-  }
+  public long a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public GlowCountRecyclerView a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  View c;
+  public ImageView c;
+  public View d;
+  public ImageView d;
+  View e;
 }
 
 

@@ -1,28 +1,9 @@
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
-import java.util.Map;
-
 public class ajmk
-  extends anmu
+  extends ajmf
 {
-  public ajmk(TroopFragment paramTroopFragment) {}
-  
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean a()
   {
-    if (paramBoolean1) {
-      this.a.h();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.h();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
+    return true;
   }
 }
 

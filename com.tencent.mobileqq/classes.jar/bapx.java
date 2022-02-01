@@ -1,101 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bapx
-  implements View.OnClickListener
+  implements anui
 {
-  public bapx(ProviderContainerView paramProviderContainerView) {}
+  public final String a = "QuickLoginObserver";
   
-  public void onClick(View paramView)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    int i = ProviderContainerView.a(this.a).a(((Integer)paramView.getTag()).intValue());
-    if (i == 102)
+    if (a(paramObject))
     {
-      banm.b();
-      if (!bnpy.b(bnpt.b)) {
-        QQToast.a(this.a.getContext(), anni.a(2131707292), 0).a();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      a(paramBoolean, ((Long)((Object[])(Object[])paramObject)[0]).longValue());
       return;
-      if (bann.a == 0)
-      {
-        QQToast.a(this.a.getContext(), anni.a(2131707298), 0).a();
-      }
-      else if (bann.a == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded");
-        }
-      }
-      else
-      {
-        boolean bool;
-        if (bann.a == 2)
-        {
-          bool = bann.a(true);
-          if (QLog.isColorLevel()) {
-            QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck soLoaded=" + bool);
-          }
-          if (ProviderContainerView.a(this.a) != null) {
-            ProviderContainerView.a(this.a).y();
-          }
-        }
-        if (i == 103)
-        {
-          banm.e();
-          banm.b();
-          if (!bnpy.b(bnpt.b))
-          {
-            QQToast.a(this.a.getContext(), anni.a(2131707297), 0).a();
-            continue;
-          }
-          if (bann.a == 0)
-          {
-            QQToast.a(this.a.getContext(), anni.a(2131707296), 0).a();
-            continue;
-          }
-          if (bann.a == -1)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded for beauty");
-            continue;
-          }
-          if (bann.a == 2)
-          {
-            bool = bann.a(true);
-            if (QLog.isColorLevel()) {
-              QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck beauty soLoaded=" + bool);
-            }
-            if (ProviderContainerView.a(this.a) != null) {
-              ProviderContainerView.a(this.a).y();
-            }
-          }
-        }
-        if (i == 101) {
-          banm.d();
-        }
-        if (i == 104)
-        {
-          bcst.b(null, "dc00898", "", "", "0X8008756", "0X8008756", 0, 0, "", "", "", "");
-          banm.c();
-        }
-        if (ProviderContainerView.a(this.a) != null) {
-          ProviderContainerView.a(this.a).a();
-        }
-        ProviderContainerView.a(this.a, paramView, i);
-      }
     }
+    QLog.e("QuickLoginObserver", 2, "onUpdateSetPCVerify error");
+  }
+  
+  private boolean a(Object paramObject)
+  {
+    return (paramObject != null) && ((paramObject instanceof Object[])) && (((Object[])paramObject).length == 1);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramObject);
   }
 }
 

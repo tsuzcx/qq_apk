@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adpw
-  extends anuy
+  extends adpz
 {
-  public adpw(BaseChatPie paramBaseChatPie) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public adpw(TestAppFragment paramTestAppFragment, EditText paramEditText, JSONObject paramJSONObject)
   {
-    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
-    do
+    super(paramEditText);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    super.onSuccess(paramJSONObject);
+    try
     {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("rankingID", 11002);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("topCount", 11);
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Adnb.a("getRankingList", this.jdField_a_of_type_OrgJsonJSONObject, new adpz(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_AndroidWidgetEditText));
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
-      }
-    } while ((!paramBoolean) || (paramInt != bckg.a));
-    bglp.a(this.a.a(), 0, null, this.a.a().getString(2131718097), 2131718099, 2131718098, new adpx(this), new adpy(this)).show();
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
 }
 

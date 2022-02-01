@@ -1,43 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.abtest.ABTestController;
+import com.tencent.mtt.abtestsdk.entity.RomaExpEntity;
+import com.tencent.mtt.abtestsdk.listener.GetExperimentListener;
+import java.util.Iterator;
+import java.util.List;
 
-public class adqh
-  implements View.OnClickListener
+class adqh
+  implements GetExperimentListener
 {
-  public adqh(BaseChatPie paramBaseChatPie) {}
+  adqh(adqg paramadqg, long paramLong, String paramString) {}
   
-  public void onClick(View paramView)
+  public void getExperimentFailed(int paramInt, String paramString)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    ABTestController.a("ExperimentInfo", "abtest api load exp failed, i:" + paramInt + ", s:" + paramString);
+  }
+  
+  public void getExperimentSucceed(List<RomaExpEntity> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      ABTestController.a("ExperimentInfo", "abtest api load exp failed, list empty");
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (!afuc.b())
+      long l1 = System.currentTimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      ABTestController.a("ExperimentInfo", "abtest api load exp success, size:" + paramList.size() + ", cost:" + (l1 - l2));
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        String str = this.a.a.jdField_a_of_type_JavaLangString;
-        if (this.a.a.jdField_a_of_type_Int == 1006) {
-          str = this.a.a.f;
-        }
-        switch (((Integer)localObject).intValue())
-        {
-        default: 
-          break;
-        case 1: 
-          BaseChatPie.a(this.a, str);
-          break;
-        case 2: 
-          BaseChatPie.b(this.a, str);
-          break;
-        case 3: 
-          BaseChatPie.c(this.a);
-          break;
-        case 4: 
-          BaseChatPie.d(this.a);
+        RomaExpEntity localRomaExpEntity = (RomaExpEntity)paramList.next();
+        if ((localRomaExpEntity != null) && (localRomaExpEntity.getLayerCode().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+          adqg.a(this.jdField_a_of_type_Adqg, localRomaExpEntity);
         }
       }
     }

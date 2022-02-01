@@ -1,9 +1,83 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.StatusServlet;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.NewIntent;
+
 public class bbul
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public bbul(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = new ArrayList();
+    Object localObject = SignatureHistoryFragment.a(this.a).iterator();
+    int i;
+    for (paramInt = 0; ((Iterator)localObject).hasNext(); paramInt = i)
+    {
+      String str = (String)((Iterator)localObject).next();
+      i = paramInt;
+      if (str != null)
+      {
+        i = paramInt;
+        if (SignatureHistoryFragment.b(this.a) != null)
+        {
+          i = paramInt;
+          if (SignatureHistoryFragment.b(this.a).get(0) != null)
+          {
+            i = paramInt;
+            if (((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus != null)
+            {
+              i = paramInt;
+              if (((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus.feedsId != null)
+              {
+                if (str.equals(new String(((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus.feedsId))) {
+                  paramInt = 1;
+                }
+                paramDialogInterface.add(str);
+                i = paramInt;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (SignatureHistoryFragment.a(this.a) == null) {
+      SignatureHistoryFragment.a(this.a, new bjbs(this.a.getActivity(), this.a.getActivity().getTitleBarHeight()));
+    }
+    SignatureHistoryFragment.a(this.a).a(anzj.a(2131712997));
+    SignatureHistoryFragment.a(this.a).show();
+    if ((SignatureHistoryFragment.a(this.a)) && (SignatureHistoryFragment.b(this.a).size() == 1))
+    {
+      paramDialogInterface = new NewIntent(this.a.getActivity().app.getApp(), StatusServlet.class);
+      paramDialogInterface.putExtra("k_cmd", 8);
+      this.a.getActivity().app.startServlet(paramDialogInterface);
+    }
+    while (paramDialogInterface.isEmpty())
+    {
+      bdll.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 1, 0, "0", "0", "", "");
+      VasWebviewUtil.reportCommercialDrainage(this.a.getActivity().app.c(), "signature", "signature_10", "", 1, 0, 0, "", "", "");
+      return;
+    }
+    localObject = new NewIntent(this.a.getActivity().app.getApp(), StatusServlet.class);
+    ((NewIntent)localObject).putExtra("k_cmd", 5);
+    ((NewIntent)localObject).putStringArrayListExtra("k_status_key", paramDialogInterface);
+    if (paramInt != 0) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      ((NewIntent)localObject).putExtra("k_status_flag", paramInt);
+      this.a.getActivity().app.startServlet((NewIntent)localObject);
+      break;
+    }
+  }
 }
 
 

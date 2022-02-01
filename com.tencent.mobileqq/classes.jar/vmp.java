@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vmp
-  implements vxd
+public class vmp
+  implements View.OnClickListener
 {
-  vmp(vmo paramvmo) {}
+  public vmp(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public void onClick(View paramView)
   {
-    vrr localvrr = vrr.a();
-    vrt localvrt = new vrt().a("followbutton");
-    if (paramBoolean) {}
-    for (String str = "follow";; str = "unfollow")
-    {
-      localvrr.a(localvrt.b(str).a(this.a.a()).c(paramStUser.id.get()));
-      return;
-    }
+    QCircleContentOperationView.a(this.a, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

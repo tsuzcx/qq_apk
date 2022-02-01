@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class allv
-  implements zdm
+class allv
+  implements View.OnClickListener
 {
-  public allv(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  private final int jdField_a_of_type_Int;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void a() {}
-  
-  public void a(zdw paramzdw)
+  public allv(int paramInt, MqqHandler paramMqqHandler)
   {
-    this.a.b(paramzdw);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
   }
   
-  public void b()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

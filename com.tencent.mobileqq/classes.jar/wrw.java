@@ -1,14 +1,18 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
 
-class wrw
-  implements Comparator<xfb>
+public final class wrw
+  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
 {
-  wrw(wrv paramwrv) {}
-  
-  public int a(xfb paramxfb1, xfb paramxfb2)
+  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
   {
-    return wtq.a(paramxfb1.a.mCreateTime, paramxfb2.a.mCreateTime);
+    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
+  }
+  
+  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  {
+    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
   }
 }
 

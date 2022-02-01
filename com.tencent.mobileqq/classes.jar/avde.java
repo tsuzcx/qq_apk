@@ -1,23 +1,23 @@
-import java.io.File;
-import java.util.Comparator;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
-final class avde
-  implements Comparator<File>
+class avde
+  extends RecyclerView.OnScrollListener
 {
-  private int a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 == paramLong2) {
-      return 0;
-    }
-    return 1;
-  }
+  avde(avdb paramavdb) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return a(paramFile1.lastModified(), paramFile2.lastModified());
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      avdb.a(this.a).c();
+    }
+    while (!avdb.a(this.a).a()) {
+      return;
+    }
+    avdb.a(this.a).b();
+    avdb.a(this.a).notifyDataSetChanged();
   }
 }
 

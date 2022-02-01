@@ -1,33 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class aolj
-  extends aojt
+class aolj
+  implements Comparator<Map.Entry<String, Entity>>
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  aolj(aoli paramaoli) {}
+  
+  public int a(Map.Entry<String, Entity> paramEntry1, Map.Entry<String, Entity> paramEntry2)
   {
-    paramQQAppInterface = new aoli(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wallet";
-    paramQQAppInterface.c = "open";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
+    int i = Integer.parseInt(paramEntry1.split("-")[0]);
+    int j = Integer.parseInt(paramEntry1.split("-")[1]);
+    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
+    int k = Integer.parseInt(paramEntry1.split("-")[0]);
+    int m = Integer.parseInt(paramEntry1.split("-")[1]);
+    if (i > k) {
+      return 1;
     }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+    if (i == k) {
+      return j - m;
     }
-    return paramQQAppInterface;
+    return -1;
   }
 }
 

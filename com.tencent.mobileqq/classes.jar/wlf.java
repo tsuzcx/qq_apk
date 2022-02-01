@@ -1,76 +1,51 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-public abstract class wlf<Respond extends wla>
+public class wlf
+  implements wku
 {
-  public int a;
-  public long a;
-  public wlg<Respond> a;
-  public int b;
-  private int c;
+  private String a = "SimplePreloadListener";
   
-  public wlf()
+  public wlf(String paramString)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 2;
+    this.a = paramString;
   }
   
-  @NonNull
-  public static List<ByteStringMicro> a(List<String> paramList)
+  public void a(String paramString, int paramInt1, int paramInt2, wkq paramwkq) {}
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, wkq paramwkq)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(ByteStringMicro.copyFromUtf8((String)paramList.next()));
-    }
-    return localArrayList;
-  }
-  
-  public abstract String a();
-  
-  public String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public abstract wla a(byte[] paramArrayOfByte);
-  
-  public wlg<Respond> a()
-  {
-    return this.jdField_a_of_type_Wlg;
-  }
-  
-  public void a(wlg<Respond> paramwlg)
-  {
-    this.jdField_a_of_type_Wlg = paramwlg;
-  }
-  
-  protected abstract byte[] a();
-  
-  public int b()
-  {
-    int i = this.c;
-    String str = a();
-    int j = i;
-    if (i == 0)
+    if ((paramInt1 == 1) && (paramErrorMessage.errorCode == 14))
     {
-      j = i;
-      if (str.length() > 0)
-      {
-        j = 0;
-        while (j < str.length())
-        {
-          i = i * 31 + str.charAt(j);
-          j += 1;
-        }
-        this.c = i;
-        j = i;
-      }
+      yuk.b(this.a, "download ignore because no mask pic url");
+      return;
     }
-    return j;
+    yuk.d(this.a, "download error! vid = %s , fileType = %d , error = %s", new Object[] { paramString, Integer.valueOf(paramInt1), paramErrorMessage });
+  }
+  
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, wkq paramwkq)
+  {
+    paramString = ((wte)wth.a(5)).a(paramString);
+    if (paramString != null) {
+      wkr.a(paramString, paramFile.getAbsolutePath(), paramInt1);
+    }
+  }
+  
+  public void a(String paramString, int paramInt, wkq paramwkq) {}
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, wkq paramwkq)
+  {
+    yuk.a(this.a, "download success! vid = %s , fileType = %s , file path = %s", paramString, win.a(paramInt1), paramFile.getAbsolutePath());
+    paramString = ((wte)wth.a(5)).a(paramString);
+    if (paramString != null) {
+      wkr.a(paramString, paramFile.getAbsolutePath(), paramInt1, yup.a(BaseApplicationImpl.getContext()));
+    }
+  }
+  
+  public void b(String paramString, int paramInt, wkq paramwkq)
+  {
+    yuk.a(this.a, "onPause! vid = %s , fileType = %d ", paramString, Integer.valueOf(paramInt));
   }
 }
 

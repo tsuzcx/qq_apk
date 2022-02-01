@@ -1,8 +1,6 @@
 public abstract interface bity
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract void b(String paramString1, String paramString2, String paramString3);
+  public abstract void a();
 }
 
 

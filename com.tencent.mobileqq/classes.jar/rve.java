@@ -1,52 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowHelper.startStretchAnim.1.onAnimationEnd.1;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rve
-  implements bfpo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$startStretchAnim$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rve
+  implements Animator.AnimatorListener
 {
-  public rve(ReadInJoyWebDataManager.5 param5) {}
+  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    if (paramJSONObject != null)
-    {
-      this.a.this$0.a(this.a.b, Integer.toString(rvd.b));
-      try
-      {
-        if ((this.a.jdField_a_of_type_Rvi != null) && ((this.a.jdField_a_of_type_Rvi instanceof rvi))) {
-          this.a.jdField_a_of_type_Rvi.a(paramJSONObject);
-        }
-        paramBundle = paramJSONObject.toString();
-        rvd.a(this.a.this$0, this.a.b, paramBundle);
-        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
-      }
-    }
-    do
-    {
-      return;
-      this.a.this$0.a(this.a.b, Integer.toString(rvd.a));
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
+    ruz.a(this.a).post((Runnable)new VideoFeedsStressFollowHelper.startStretchAnim.1.onAnimationEnd.1(this));
   }
+  
+  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
+  
+  public void onAnimationStart(@Nullable Animator paramAnimator) {}
 }
 
 

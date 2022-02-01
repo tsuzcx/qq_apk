@@ -1,38 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
 public class tej
-  implements ComplementFileStringLoader
+  implements bdhy
 {
-  private teq a;
+  public tej(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public tej(teq paramteq)
+  public void a()
   {
-    this.a = paramteq;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.saveImagePermission(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
   }
   
-  public String loadFileAsString(String paramString)
+  public void b()
   {
-    try
-    {
-      InputStream localInputStream = this.a.a(paramString);
-      if (localInputStream == null) {
-        throw new IllegalStateException(paramString + " not found");
-      }
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-      return null;
-    }
-    String str = tez.a(localIOException);
-    return str;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, "saveImage reject Permission");
   }
 }
 

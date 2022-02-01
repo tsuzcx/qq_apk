@@ -10,15 +10,19 @@ public class TPPluginManager
   
   public ITPPluginManager addPlugin(ITPPluginBase paramITPPluginBase)
   {
-    if (this.mPluginList == null) {
-      this.mPluginList = new ArrayList();
-    }
-    if (!this.mPluginList.contains(paramITPPluginBase))
+    try
     {
-      paramITPPluginBase.onAttach();
-      this.mPluginList.add(paramITPPluginBase);
+      if (this.mPluginList == null) {
+        this.mPluginList = new ArrayList();
+      }
+      if (!this.mPluginList.contains(paramITPPluginBase))
+      {
+        paramITPPluginBase.onAttach();
+        this.mPluginList.add(paramITPPluginBase);
+      }
+      return this;
     }
-    return this;
+    finally {}
   }
   
   public void onAttach() {}
@@ -27,42 +31,59 @@ public class TPPluginManager
   
   public void onEvent(int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.mPluginList != null)
+    try
     {
-      Iterator localIterator = this.mPluginList.iterator();
-      while (localIterator.hasNext())
+      if (this.mPluginList != null)
       {
-        ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
-        if (localITPPluginBase != null) {
-          localITPPluginBase.onEvent(paramInt1, paramInt2, paramInt3, paramString, paramObject);
+        Iterator localIterator = this.mPluginList.iterator();
+        while (localIterator.hasNext())
+        {
+          ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
+          if (localITPPluginBase != null) {
+            localITPPluginBase.onEvent(paramInt1, paramInt2, paramInt3, paramString, paramObject);
+          }
         }
       }
     }
+    finally {}
   }
   
   public void release()
   {
-    if (this.mPluginList != null)
+    try
     {
-      Iterator localIterator = this.mPluginList.iterator();
-      while (localIterator.hasNext())
+      if (this.mPluginList != null)
       {
-        ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
-        if (localITPPluginBase != null) {
-          localITPPluginBase.onDetach();
+        Iterator localIterator = this.mPluginList.iterator();
+        while (localIterator.hasNext())
+        {
+          ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
+          if (localITPPluginBase != null) {
+            localITPPluginBase.onDetach();
+          }
+          localIterator.remove();
         }
-        localIterator.remove();
       }
+      this.mPluginList = null;
     }
-    this.mPluginList = null;
+    finally {}
   }
   
   public void removePlugin(ITPPluginBase paramITPPluginBase)
   {
-    if (this.mPluginList != null)
+    try
     {
-      paramITPPluginBase.onDetach();
-      this.mPluginList.remove(paramITPPluginBase);
+      if (this.mPluginList != null)
+      {
+        paramITPPluginBase.onDetach();
+        this.mPluginList.remove(paramITPPluginBase);
+      }
+      return;
+    }
+    finally
+    {
+      paramITPPluginBase = finally;
+      throw paramITPPluginBase;
     }
   }
 }

@@ -1,22 +1,41 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.io.File;
 
-public class atmx
-  implements aqck
+class atmx
+  implements bliz
 {
-  public ColorNote getColorNote()
+  atmx(atmw paramatmw, FileInfo paramFileInfo, blir paramblir) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    aqcs localaqcs = new aqcs();
-    localaqcs.a(17039360);
-    String str = atwt.b(-1, "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    if ((!auog.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (auog.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
+    {
+      aunj.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
+      this.jdField_a_of_type_Atmw.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
     }
-    localaqcs.a(str);
-    localaqcs.b("default_file");
-    localaqcs.c("0MB");
-    localaqcs.d("resdrawable://2130844375");
-    return localaqcs.a();
+    try
+    {
+      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
+      this.jdField_a_of_type_Atmw.a.a.a.sendBroadcast(paramView);
+      label104:
+      this.jdField_a_of_type_Atmw.a.a.f();
+      if (this.jdField_a_of_type_Blir.isShowing()) {
+        this.jdField_a_of_type_Blir.dismiss();
+      }
+      return;
+      auna.a(2131692076);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      break label104;
+    }
   }
 }
 

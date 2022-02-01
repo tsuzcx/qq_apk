@@ -1,19 +1,37 @@
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
-class aiuj
-  implements QQPermissionCallback
+public class aiuj
+  implements aiuh
 {
-  aiuj(aiui paramaiui, boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(MessageForStructing paramMessageForStructing, aggl paramaggl, View paramView, boolean paramBoolean)
   {
-    aiui.a(this.jdField_a_of_type_Aiui).i();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      aiui.a(this.jdField_a_of_type_Aiui, this.jdField_a_of_type_JavaLangString, this.b);
+    if (!paramMessageForStructing.structingMsg.hasFlag(4))
+    {
+      if (paramMessageForStructing.isSend()) {
+        if (paramBoolean) {
+          i = 2130850005;
+        }
+      }
+      for (;;)
+      {
+        agej.a(paramaggl.a, i);
+        return;
+        i = 2130850006;
+        continue;
+        if (paramBoolean) {
+          i = 2130849829;
+        } else {
+          i = 2130849830;
+        }
+      }
+    }
+    if (paramBoolean) {}
+    for (int i = 2130838326;; i = 2130838310)
+    {
+      paramView.setBackgroundResource(i);
+      return;
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import amkg;
-import amzq;
-import bgln;
+import amwa;
+import anlk;
+import bhlo;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloRender$5
@@ -17,14 +17,14 @@ class ApolloRender$5
   
   public void run()
   {
-    if ((ApolloRender.getRenderViewByThreadId() instanceof amkg)) {}
-    for (int i = ((amkg)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
+    if ((ApolloRender.getRenderViewByThreadId() instanceof amwa)) {}
+    for (int i = ((amwa)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
     {
       int j = i;
       if (i == 0) {
-        j = (int)bgln.j();
+        j = (int)bhlo.j();
       }
-      String str = amzq.b(this.a, this.b, j);
+      String str = anlk.b(this.a, this.b, j);
       ApolloRender.access$300(this.this$0).a(str);
       if (QLog.isColorLevel()) {
         QLog.d("sava_ApolloRender", 2, new Object[] { "addOnCommonScript:", str });

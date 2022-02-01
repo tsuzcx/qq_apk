@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.emosm;
 
-import arox;
-import arqk;
-import bgnt;
+import asel;
+import asfy;
+import bhnv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class CameraRoamingStrategy$5
   implements Runnable
 {
-  public CameraRoamingStrategy$5(arox paramarox) {}
+  public CameraRoamingStrategy$5(asel paramasel) {}
   
   public void run()
   {
-    if ((this.this$0.a == null) || (!bgnt.d(this.this$0.a.getApp()))) {
+    if ((this.this$0.a == null) || (!bhnv.d(this.this$0.a.getApp()))) {
       return;
     }
-    ((arqk)this.this$0.a.getManager(334)).b();
+    ((asfy)this.this$0.a.getManager(334)).b();
   }
 }
 

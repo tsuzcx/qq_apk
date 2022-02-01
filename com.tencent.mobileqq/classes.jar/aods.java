@@ -1,38 +1,48 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aods
+class aods
+  extends ClickableSpan
 {
-  public FriendListHandler a;
-  protected QQAppInterface a;
+  Context jdField_a_of_type_AndroidContentContext;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public aods(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  public aods(Context paramContext, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramString1;
   }
   
-  protected final void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(paramInt, paramBoolean, paramObject);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (a(paramFromServiceMsg.getServiceCmd())) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    try
+    {
+      paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      QLog.d("PrivacyPolicyHelper", 1, "no system browser exp=", paramView);
     }
   }
   
-  public abstract boolean a(String paramString);
-  
-  protected abstract void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aods
  * JD-Core Version:    0.7.0.1
  */

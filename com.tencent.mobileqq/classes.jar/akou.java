@@ -1,15 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
-class akou
-  extends RecyclerView.ViewHolder
+public class akou
+  implements DialogInterface.OnClickListener
 {
-  akov jdField_a_of_type_Akov;
+  public akou(DialogBaseActivity paramDialogBaseActivity) {}
   
-  akou(akot paramakot, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_Akov = ((akov)paramView);
+    this.a.finish();
   }
 }
 

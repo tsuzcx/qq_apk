@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.widget.AdaptiveLayout;
-
-public class bhuc
+public abstract interface bhuc
 {
-  public int a;
-  public int b;
+  public abstract void a();
   
-  public bhuc(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(String paramString, long paramLong, boolean paramBoolean);
+  
+  public abstract boolean a();
 }
 
 

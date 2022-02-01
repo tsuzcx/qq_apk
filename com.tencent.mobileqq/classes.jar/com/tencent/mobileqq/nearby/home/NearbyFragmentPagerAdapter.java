@@ -9,6 +9,7 @@ import com.tencent.mobileqq.fragment.NearbyBaseFragment;
 import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 import com.tencent.mobileqq.fragment.NearbyMsgFragment;
 import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.nearby.matchmaker.MatchMakerFragment;
 import java.util.List;
 
 public class NearbyFragmentPagerAdapter
@@ -126,6 +127,10 @@ public class NearbyFragmentPagerAdapter
       else if (localNearbyTabInfo.tabType == 8)
       {
         localObject1 = new CommonTabFragment();
+      }
+      else if (localNearbyTabInfo.tabType == 7)
+      {
+        localObject1 = new MatchMakerFragment();
       }
       else
       {

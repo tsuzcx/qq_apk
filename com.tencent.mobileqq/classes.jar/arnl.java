@@ -1,55 +1,50 @@
-import android.content.Context;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.dtreport.api.IDTReport;
-import java.util.Map;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.support.annotation.NonNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter;", "Lcom/tencent/qqlive/module/videoreport/dtreport/api/IDTReport;", "()V", "dtEvent", "", "obj", "", "eventKey", "", "params", "", "isImmediatelyUpload", "appkey", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class arnl
-  implements IDTReport
+public class arnl
+  extends armf<arnk>
 {
-  private static volatile arnl a;
-  public static final arnm a;
-  
-  static
+  @NonNull
+  public static arnk c()
   {
-    jdField_a_of_type_Arnm = new arnm(null);
+    arnk localarnk2 = (arnk)aran.a().a(618);
+    arnk localarnk1 = localarnk2;
+    if (localarnk2 == null) {
+      localarnk1 = new arnk();
+    }
+    return localarnk1;
   }
   
-  @Nullable
-  public static final arnl b()
+  @NonNull
+  public arnk a()
   {
-    return jdField_a_of_type_Arnm.a();
+    return new arnk();
   }
   
-  public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString, @Nullable Map<String, String> paramMap, boolean paramBoolean)
+  @NonNull
+  public arnk a(@NonNull araj[] paramArrayOfaraj)
   {
-    if (paramString == null) {
-      return false;
-    }
-    UserAction.onDTUserAction((Context)BaseApplication.context, paramString, true, -1L, -1L, paramMap, paramBoolean, paramBoolean);
-    return true;
+    return arnk.a(paramArrayOfaraj[0].a);
   }
   
-  public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString1, @Nullable Map<String, String> paramMap, boolean paramBoolean, @Nullable String paramString2)
+  @NonNull
+  public arnk b()
   {
-    if (paramString1 == null) {
-      return false;
-    }
-    if (paramString2 == null)
-    {
-      dtEvent(paramObject, paramString1, paramMap, paramBoolean);
-      return false;
-    }
-    UserAction.onDTUserActionToTunnel((Context)BaseApplication.context, paramString2, paramString1, paramMap, paramBoolean, paramBoolean);
-    return false;
+    return new arnk();
+  }
+  
+  public Class<arnk> clazz()
+  {
+    return arnk.class;
+  }
+  
+  public int type()
+  {
+    return 618;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnl
  * JD-Core Version:    0.7.0.1
  */

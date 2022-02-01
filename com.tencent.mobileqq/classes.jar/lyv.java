@@ -1,28 +1,36 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
-final class lyv
-  implements Animation.AnimationListener
+class lyv
+  extends aojs
 {
-  lyv(View paramView, boolean paramBoolean) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private lyv(lyr paramlyr) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramAnimation.setVisibility(i);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (paramTroopInfo == null) {}
+    do
+    {
+      return;
+      paramTroopInfo = paramTroopInfo.troopuin;
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
+    this.jdField_a_of_type_Lyr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    if (this == this.jdField_a_of_type_Lyr.jdField_a_of_type_Lyv) {
+      this.jdField_a_of_type_Lyr.jdField_a_of_type_Lyv = null;
+    }
+    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
+    this.jdField_a_of_type_Lyr.a();
   }
 }
 

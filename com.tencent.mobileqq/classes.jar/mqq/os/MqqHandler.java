@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MqqHandler
   implements IMqqMessageCallback
 {
-  private static boolean isEnableInited;
+  private static boolean isEnableInited = false;
   private static boolean isMqqHandlerEnable;
   public static AtomicInteger sInjectCount = new AtomicInteger(0);
   public static MqqRegulatorCallback sRegulatorCallback;
@@ -22,6 +22,11 @@ public class MqqHandler
   private MqqHandler.NativeHandler mNativeHandler;
   MessageQueue mQueue;
   MqqMessageQueue mSubQueue;
+  
+  static
+  {
+    isMqqHandlerEnable = false;
+  }
   
   public MqqHandler()
   {

@@ -1,29 +1,20 @@
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class bcmk
+  extends bclc
 {
-  private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINESE);
+  private Comparator<bcfn> a = new bcml(this);
   
-  public static String a()
+  public bcmk(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    synchronized (a)
-    {
-      int i = new Random().nextInt(10000);
-      String str = a.format(new Date()) + "_" + i;
-      return str;
-    }
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
   }
   
-  public static String a(File paramFile)
+  public Comparator<bcfn> a()
   {
-    if (paramFile == null) {
-      return null;
-    }
-    return paramFile.getName();
+    return this.a;
   }
 }
 

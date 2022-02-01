@@ -1,20 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.PeakAppInterface;
+import android.widget.RelativeLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.manager.FileBannerTianshuManger.4;
 
-class bnvw
+public class bnvw
   implements View.OnClickListener
 {
-  bnvw(bnvr parambnvr) {}
+  public bnvw(FileBannerTianshuManger.4 param4) {}
   
   public void onClick(View paramView)
   {
-    bnvr.e(this.a);
-    bnvr.b(this.a).setVisibility(8);
-    bnyp.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
-    PeakAppInterface.a.a(1010);
+    this.a.this$0.a.setVisibility(8);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

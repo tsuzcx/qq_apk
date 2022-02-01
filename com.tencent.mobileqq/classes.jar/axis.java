@@ -1,123 +1,92 @@
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class axis
+public abstract class axis
+  extends axir
 {
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new axit(this);
-  axin jdField_a_of_type_Axin;
-  private axiq jdField_a_of_type_Axiq;
-  axiv jdField_a_of_type_Axiv = new axiu(this);
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  protected MsgBackupResEntity a;
+  protected Map<String, String> a;
   
-  public axis(AppInterface paramAppInterface, axiq paramaxiq)
+  public axis(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Axiq = paramaxiq;
+    this.jdField_a_of_type_JavaUtilMap = a(paramMsgBackupResEntity.extraDataStr);
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity = paramMsgBackupResEntity;
   }
   
-  public Message a(Message paramMessage)
+  protected static int a()
   {
-    if ((this.jdField_a_of_type_Axin == null) || (paramMessage == null)) {}
-    for (;;)
+    return antf.ba.length();
+  }
+  
+  public static HashMap<String, String> a(String paramString)
+  {
+    localHashMap = new HashMap();
+    try
     {
-      return null;
-      try
+      paramString = new JSONObject(paramString);
+      Iterator localIterator = paramString.keys();
+      while (localIterator.hasNext())
       {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.jdField_a_of_type_Axin != null) {
-            break label49;
-          }
-          return null;
-        }
-        if (!QLog.isDevelopLevel()) {}
+        String str = localIterator.next().toString();
+        localHashMap.put(str, paramString.get(str).toString());
       }
-      catch (RemoteException paramMessage) {}
+      return localHashMap;
     }
-    paramMessage.printStackTrace();
-    return null;
-    label49:
-    paramMessage = this.jdField_a_of_type_Axin.a(paramMessage);
-    return paramMessage;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
+  
+  public abstract axgr a();
+  
+  public abstract String a();
   
   public void a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ConnectNearbyProcService.class);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "bindService");
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Axin != null;
-  }
-  
-  public Object[] a(int paramInt)
-  {
-    return a(paramInt, new Object[0]);
-  }
-  
-  public Object[] a(int paramInt, Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Axin == null) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    a("import resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
+    localObject = b();
+    String str = a();
+    try
     {
-      return null;
-      try
-      {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.jdField_a_of_type_Axin != null) {
-            break label45;
-          }
-          return null;
-        }
-        if (!QLog.isDevelopLevel()) {}
-      }
-      catch (RemoteException paramVarArgs) {}
+      a(str, (String)localObject);
+      return;
     }
-    paramVarArgs.printStackTrace();
-    return null;
-    label45:
-    paramVarArgs = this.jdField_a_of_type_Axin.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
-    if (paramVarArgs == null) {
-      return null;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    paramVarArgs = paramVarArgs.a;
-    return paramVarArgs;
   }
   
-  Message b(Message paramMessage)
+  protected void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Axiq != null) {
-      return this.jdField_a_of_type_Axiq.a(paramMessage);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      a("importFile null error ");
     }
-    return null;
+    int i;
+    do
+    {
+      return;
+      i = bhmi.a(paramString1, paramString2);
+    } while (!QLog.isColorLevel());
+    File localFile = new File(paramString2);
+    paramString2 = new StringBuilder().append("restore,quickMove: ").append(paramString1).append(" to ").append(paramString2).append(" status:").append(i).append(" size:");
+    if ((localFile != null) && (localFile.exists())) {}
+    for (paramString1 = Long.valueOf(localFile.length());; paramString1 = "-1")
+    {
+      a(paramString1);
+      return;
+    }
   }
   
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-  }
-  
-  Object[] b(int paramInt, Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Axiq != null) {
-      return this.jdField_a_of_type_Axiq.a(paramInt, paramVarArgs);
-    }
-    return null;
-  }
+  public abstract String b();
 }
 
 

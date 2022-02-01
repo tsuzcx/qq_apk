@@ -2,8 +2,8 @@ package com.tencent.biz.qqcircle.widgets;
 
 import android.support.v7.widget.RecyclerView;
 import com.tencent.common.app.BaseApplicationImpl;
-import uyc;
-import zlx;
+import uzl;
+import zps;
 
 class QCircleCommentListView$4
   implements Runnable
@@ -14,7 +14,7 @@ class QCircleCommentListView$4
   {
     int i = QCircleCommentListView.a(this.this$0).a(this.a);
     if ((QCircleCommentListView.a(this.this$0) != null) && (i != 0)) {
-      QCircleCommentListView.a(this.this$0).scrollBy(0, -((i - 1) * zlx.a(BaseApplicationImpl.getContext(), 50.0F)));
+      QCircleCommentListView.a(this.this$0).scrollBy(0, -((i - 1) * zps.a(BaseApplicationImpl.getContext(), 50.0F)));
     }
   }
 }

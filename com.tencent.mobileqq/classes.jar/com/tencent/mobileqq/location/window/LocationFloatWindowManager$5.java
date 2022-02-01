@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.window;
 
-import awbw;
+import awuo;
 
 public class LocationFloatWindowManager$5
   implements Runnable
 {
-  public LocationFloatWindowManager$5(awbw paramawbw, int paramInt) {}
+  public LocationFloatWindowManager$5(awuo paramawuo, int paramInt) {}
   
   public void run()
   {

@@ -1,22 +1,41 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface agnz
+class agnz
+  implements Animator.AnimatorListener
 {
-  public abstract View a();
+  agnz(agnx paramagnx, LottieDrawable paramLottieDrawable, int paramInt, ImageView paramImageView) {}
   
-  public abstract void a();
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationCancel drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    }
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationEnd drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    }
+    agnx.a(this.jdField_a_of_type_Agnx, paramAnimator, this.jdField_a_of_type_Int);
+  }
   
-  public abstract void b();
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void j();
-  
-  public abstract void n();
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationStart drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    }
+    if ((agoc.a(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getSpeed() > 0.0F)) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.reverseAnimationSpeed();
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.invalidateDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+  }
 }
 
 

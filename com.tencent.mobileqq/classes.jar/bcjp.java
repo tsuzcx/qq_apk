@@ -1,33 +1,44 @@
-public class bcjp
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+
+class bcjp
+  implements View.OnClickListener
 {
-  static int jdField_a_of_type_Int = 3;
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b;
-  int c;
+  bcjp(bcjk parambcjk, bcgk parambcgk, Context paramContext) {}
   
-  public bcjp(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.c = paramInt;
-    paramString = paramString.split(" ");
-    if (paramString.length != 2) {
-      throw new Exception("data illegal");
-    }
-    if (paramString[1].equals("1")) {}
-    for (this.b = 1;; this.b = 0)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcgk.m))
     {
-      paramString = paramString[0].toCharArray();
-      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
-      paramInt = i;
-      while (paramInt < paramString.length)
+      Object localObject = bcnf.a(this.jdField_a_of_type_Bcgk.a(), 0, bcjy.a(this.jdField_a_of_type_Bcgk.c));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", (String)localObject);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      localObject = new StringBuilder();
+      int i = 0;
+      if (i < this.jdField_a_of_type_Bcgk.a.size())
       {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
-        paramInt += 1;
+        if (i != this.jdField_a_of_type_Bcgk.a.size() - 1) {
+          ((StringBuilder)localObject).append(((bcfx)this.jdField_a_of_type_Bcgk.a.get(i)).b).append("::");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          ((StringBuilder)localObject).append(((bcfx)this.jdField_a_of_type_Bcgk.a.get(i)).b);
+        }
       }
-      if (!paramString[1].equals("0")) {
-        break;
-      }
+      bcjy.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Bcgk.g).ver2(bcjy.a(UniteSearchActivity.d)).ver4(((StringBuilder)localObject).toString()).ver5("1").ver6("2").ver7("{experiment_id:" + bcjy.b + "}"));
     }
-    throw new Exception("data illegal");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

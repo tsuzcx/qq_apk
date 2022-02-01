@@ -1,23 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.text.Editable;
+import android.widget.EditText;
 
-public class ojs
-  implements bkhw
+public final class ojs
+  implements axfu<char[]>
 {
-  public ojs(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ojs(EditText paramEditText) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(char[] paramArrayOfChar)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.a(this.a, false);
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-    }
+    int i = this.a.getSelectionStart();
+    int j = this.a.getSelectionEnd();
+    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
+    this.a.requestFocus();
   }
 }
 

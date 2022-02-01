@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -13,10 +13,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
-import bhys;
-import bhzy;
-import bhzz;
-import biaa;
+import bizq;
+import bjaw;
+import bjax;
+import bjay;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -24,12 +24,12 @@ import java.util.List;
 
 public class ProfileCardVideoCoverShowView
   extends FrameLayout
-  implements AdapterView.OnItemClickListener, bhys
+  implements AdapterView.OnItemClickListener, bizq
 {
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new bhzy(this);
-  private bhzz jdField_a_of_type_Bhzz;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new bjaw(this);
+  private bjax jdField_a_of_type_Bjax;
   private OverScrollCallbackHorizontalListView jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView;
-  private ArrayList<biaa> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  private ArrayList<bjay> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
   
   public ProfileCardVideoCoverShowView(@NonNull Context paramContext)
   {
@@ -51,10 +51,10 @@ public class ProfileCardVideoCoverShowView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131561376, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView = ((OverScrollCallbackHorizontalListView)findViewById(2131369954));
+    LayoutInflater.from(getContext()).inflate(2131561417, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView = ((OverScrollCallbackHorizontalListView)findViewById(2131370052));
     this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setDividerWidth(afur.a(2.0F, getResources()));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setDividerWidth(agej.a(2.0F, getResources()));
     this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(1);
@@ -65,8 +65,8 @@ public class ProfileCardVideoCoverShowView
     if (QLog.isColorLevel()) {
       QLog.i("ProfileCardMicroVideoContentView", 2, "onOverScrollRight");
     }
-    if (this.jdField_a_of_type_Bhzz != null) {
-      this.jdField_a_of_type_Bhzz.a(this);
+    if (this.jdField_a_of_type_Bjax != null) {
+      this.jdField_a_of_type_Bjax.a(this);
     }
   }
   
@@ -75,18 +75,18 @@ public class ProfileCardVideoCoverShowView
     if (QLog.isColorLevel()) {
       QLog.i("ProfileCardMicroVideoContentView", 2, "onItemClick " + paramInt);
     }
-    if (this.jdField_a_of_type_Bhzz != null) {
-      this.jdField_a_of_type_Bhzz.a(this, paramView, (biaa)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    if (this.jdField_a_of_type_Bjax != null) {
+      this.jdField_a_of_type_Bjax.a(this, paramView, (bjay)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
   
-  public void setCallback(bhzz parambhzz)
+  public void setCallback(bjax parambjax)
   {
-    this.jdField_a_of_type_Bhzz = parambhzz;
+    this.jdField_a_of_type_Bjax = parambjax;
   }
   
-  public void setData(List<biaa> paramList)
+  public void setData(List<bjay> paramList)
   {
     Object localObject;
     if (QLog.isColorLevel())
@@ -117,7 +117,7 @@ public class ProfileCardVideoCoverShowView
       break;
       label116:
       int i = getResources().getDisplayMetrics().widthPixels;
-      int j = afur.a(114.0F, getResources());
+      int j = agej.a(114.0F, getResources());
       if (paramList.size() > i * 1.0F / j) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(0);
       } else {

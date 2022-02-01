@@ -1,146 +1,42 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyModule.Companion.instance.2;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.oidb_0xe9d.oidb_0xe9d.ReqBody;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.LazyThreadSafetyMode;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class qij
-  extends ViewBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "", "()V", "requestUpdatePushStatus", "", "isOpenPushNotify", "", "isDefaultOpen", "uin", "", "type", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "errorCode", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qij
 {
-  private NativeAvatarView a;
+  @NotNull
+  private static final Lazy a;
+  public static final qik a;
   
-  public qij(VafContext paramVafContext)
+  static
   {
-    super(paramVafContext);
-    this.a = new NativeAvatarView(paramVafContext.getContext());
+    jdField_a_of_type_Qik = new qik(null);
+    jdField_a_of_type_KotlinLazy = LazyKt.lazy(LazyThreadSafetyMode.SYNCHRONIZED, (Function0)RIJPushNotifyModule.Companion.instance.2.INSTANCE);
   }
   
-  private boolean a(Object paramObject)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, @NotNull String paramString, int paramInt, @NotNull Function1<? super Integer, Unit> paramFunction1)
   {
-    if ((paramObject instanceof Long))
-    {
-      this.a.setUin(((Long)paramObject).longValue());
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean a(String paramString)
-  {
-    this.a.setLiveStatusUrl(paramString);
-    return true;
-  }
-  
-  private boolean b(String paramString)
-  {
-    this.a.setLiveRingUrl(paramString);
-    return true;
-  }
-  
-  private boolean c(String paramString)
-  {
-    try
-    {
-      this.a.setUin(Long.valueOf(paramString).longValue());
-      return true;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("AvatarView", 1, paramString, new Object[0]);
-    }
-    return false;
-  }
-  
-  public void a(pxk parampxk)
-  {
-    this.a.setModel(parampxk);
-  }
-  
-  public void a(pxk parampxk, boolean paramBoolean)
-  {
-    this.a.setModel(parampxk, paramBoolean);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public boolean onClick()
-  {
-    super.onClick();
-    return true;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    boolean bool2 = false;
-    switch (paramInt)
-    {
-    }
-    for (boolean bool1 = false;; bool1 = a(paramObject))
-    {
-      if (!bool1)
-      {
-        bool1 = bool2;
-        if (!super.setAttribute(paramInt, paramObject)) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
-    }
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    switch (paramInt)
-    {
-    case 1076: 
-    default: 
-      bool1 = false;
-    }
-    for (;;)
-    {
-      if (!bool1)
-      {
-        bool1 = bool2;
-        if (!super.setAttribute(paramInt, paramString)) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
-      bool1 = c(paramString);
-      continue;
-      bool1 = b(paramString);
-      continue;
-      bool1 = a(paramString);
-    }
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "callback");
+    QLog.i("RIJPushNotifyModule", 1, "requestUpdatePushStatus " + "isOpenPushNotify: " + paramBoolean1 + ", isDefaultOpen: " + paramBoolean2 + ", " + "uin: " + paramString + ", type: " + paramInt);
+    oidb_0xe9d.ReqBody localReqBody = new oidb_0xe9d.ReqBody();
+    localReqBody.bool_default_on.set(paramBoolean2);
+    localReqBody.string_request_param.set("{\"type\":" + paramInt + ",\"unique_id\":[\"" + paramString + "\"]}");
+    localReqBody.bool_special_follow.set(paramBoolean1);
+    nkm.a(ozs.a(), (nkq)new qil(paramFunction1), localReqBody.toByteArray(), "OidbSvc.0xe9d", 3741, 1, new Bundle(), 5000L);
   }
 }
 

@@ -1,20 +1,21 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nwd
-  implements DialogInterface.OnCancelListener
+public class nwd
+  implements View.OnClickListener
 {
-  nwd(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
+  public nwd(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nvu.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1;
 
 public class bbij
-  implements View.OnClickListener
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public bbij(UniteSearchActivity paramUniteSearchActivity) {}
+  public bbij(FollowCaptureView paramFollowCaptureView) {}
   
-  public void onClick(View paramView)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    this.a.f();
-    this.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    FollowCaptureView.a(this.a, paramSurfaceTexture);
+    this.a.queueEvent(new FollowCaptureView.1.1(this, paramSurfaceTexture));
+    if (!FollowCaptureView.a(this.a)) {
+      FollowCaptureView.a(this.a, true);
+    }
   }
 }
 

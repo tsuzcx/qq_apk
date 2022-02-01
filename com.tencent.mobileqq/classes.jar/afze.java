@@ -1,24 +1,100 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.ArrayList;
 
-class afze
-  implements View.OnClickListener
+public class afze
+  implements bliz
 {
-  afze(afyw paramafyw) {}
+  public afze(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, afzm paramafzm, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
+    if ((this.jdField_a_of_type_Afzm.a instanceof Friends)) {}
+    for (paramView = ((Friends)this.jdField_a_of_type_Afzm.a).uin;; paramView = ((PhoneContact)this.jdField_a_of_type_Afzm.a).mobileCode) {
+      switch (paramInt)
+      {
+      default: 
+        this.jdField_a_of_type_Blir.dismiss();
+        do
+        {
+          return;
+        } while (!(this.jdField_a_of_type_Afzm.a instanceof PhoneContact));
+      }
+    }
+    Object localObject = agej.a(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), SplashActivity.class), null);
+    if ((this.jdField_a_of_type_Afzm.a instanceof Friends))
+    {
+      ((Intent)localObject).putExtra("uintype", 0);
+      ((Intent)localObject).putExtra("uin", paramView);
+      ((Intent)localObject).putExtra("uinname", bhlg.m(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, paramView));
+      ((Intent)localObject).putExtra("entrance", 2);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
-      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
-      bcst.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.startActivity((Intent)localObject);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C51", "0X8004C51", 0, 0, "", "", "", "");
+      break;
+      if ((this.jdField_a_of_type_Afzm.a instanceof PhoneContact))
+      {
+        ((Intent)localObject).putExtra("uintype", 1006);
+        ((Intent)localObject).putExtra("uin", paramView);
+        ((Intent)localObject).putExtra("uinname", ((PhoneContact)this.jdField_a_of_type_Afzm.a).name);
+        ((Intent)localObject).putExtra("entrance", 2);
+      }
+    }
+    if ((this.jdField_a_of_type_Afzm.a instanceof Friends))
+    {
+      paramView = new ProfileActivity.AllInOne(paramView, 1);
+      paramView.jdField_h_of_type_Int = 59;
+      paramView.j = 2;
+    }
+    for (;;)
+    {
+      ProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), paramView);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C52", "0X8004C52", 0, 0, "", "", "", "");
+      break;
+      if ((this.jdField_a_of_type_Afzm.a instanceof PhoneContact))
+      {
+        localObject = (PhoneContact)this.jdField_a_of_type_Afzm.a;
+        paramView = new ProfileActivity.AllInOne(((PhoneContact)localObject).mobileCode, 34);
+        paramView.jdField_h_of_type_Int = 59;
+        paramView.jdField_h_of_type_JavaLangString = ((PhoneContact)localObject).name;
+        paramView.j = 2;
+        continue;
+        if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity())) {
+          if ((this.jdField_a_of_type_Afzm.a instanceof Friends))
+          {
+            localObject = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.a(1);
+            ArrayList localArrayList = new ArrayList();
+            localArrayList.add(paramView);
+            ((FriendListHandler)localObject).a((short)1, localArrayList, false);
+          }
+        }
+        for (;;)
+        {
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C53", "0X8004C53", 0, 0, "", "", "", "");
+          break;
+          if ((this.jdField_a_of_type_Afzm.a instanceof PhoneContact))
+          {
+            ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getManager(11)).a(((PhoneContact)this.jdField_a_of_type_Afzm.a).mobileCode, false);
+            continue;
+            this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131694009, 0);
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(paramView);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C54", "0X8004C54", 0, 0, "", "", "", "");
+        break;
+      }
+      paramView = null;
     }
   }
 }

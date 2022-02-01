@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -104,7 +104,7 @@ public abstract class PttThemeBaseView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP);
     this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    this.i = afur.a(paramInt, getContext().getResources());
+    this.i = agej.a(paramInt, getContext().getResources());
   }
   
   protected abstract void a(Canvas paramCanvas);

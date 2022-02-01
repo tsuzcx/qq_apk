@@ -1,23 +1,19 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ContactBinded;
 
-class ajly
-  implements ajlv
+public class ajly
+  extends ajmf
 {
-  ajly(ajlx paramajlx) {}
+  public ContactBinded a;
   
-  public void a(String paramString, int paramInt)
+  public ajly(ContactBinded paramContactBinded)
   {
-    ((anpk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      return;
-    }
-    if (this.a.jdField_a_of_type_Ajlb != null) {
-      this.a.jdField_a_of_type_Ajlb.a();
-    }
-    ajlx.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqDataContactBinded = paramContactBinded;
+    this.jdField_a_of_type_Long = paramContactBinded.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactBinded.isReaded;
   }
 }
 

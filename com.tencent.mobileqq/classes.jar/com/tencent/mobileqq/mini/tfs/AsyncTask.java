@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.tfs;
 import android.content.Context;
 import android.os.Looper;
 import com.tencent.mobileqq.mini.appbrand.utils.ThreadPools;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 public abstract class AsyncTask
   extends BaseTask

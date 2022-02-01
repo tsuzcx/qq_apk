@@ -1,59 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
+import java.lang.ref.WeakReference;
 import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acuq
-  implements acup
+class acuq
+  implements acoi
 {
-  private acur a;
+  acuq(acup paramacup) {}
   
-  public acuq(acur paramacur)
+  public void onResponse(acoh paramacoh)
   {
-    this.a = paramacur;
-  }
-  
-  private String a()
-  {
-    Object localObject2 = null;
-    if (this.a != null) {}
-    for (Activity localActivity = this.a.a();; localActivity = null)
-    {
-      Object localObject1 = localObject2;
-      if (localActivity != null)
-      {
-        localObject1 = localObject2;
-        if (localActivity.getIntent() != null)
-        {
-          long l = localActivity.getIntent().getLongExtra("GdtNocoId", -1L);
-          localObject1 = localObject2;
-          if (l != -1L) {
-            localObject1 = String.valueOf(l);
-          }
-        }
-      }
-      return localObject1;
+    if ((paramacoh == null) || (paramacoh.a() == null) || (acup.a(this.a) == null) || (acup.a(this.a).get() == null)) {
+      return;
     }
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934594L) {}
+    String str = (String)acup.a(this.a).get(paramacoh);
+    acup.a(this.a).remove(paramacoh);
+    Object localObject1 = acvb.a(paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
+    Object localObject2 = acvb.a(paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+    paramacoh = new JSONObject();
     try
     {
-      paramString = a();
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.a.callJs("!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv=\"1.0\";v.bt=2;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,\"script\",\"//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js\");gdt(\"init\",\"userActionSetId\");gdt(\"track\",\"PAGE_VIEW\");".replace("userActionSetId", paramString));
-        acqy.a("GdtWebReportNoco", "GdtWebReportPlugin Report nocoId :" + paramString);
-      }
-      return false;
+      paramacoh.put("request", localObject1);
+      paramacoh.put("response", localObject2);
+      ((acts)acup.a(this.a).get()).callJs(str, new String[] { paramacoh.toString() });
+      return;
     }
-    catch (Exception paramString)
+    catch (JSONException localJSONException)
     {
-      paramString.printStackTrace();
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
-    return false;
   }
 }
 

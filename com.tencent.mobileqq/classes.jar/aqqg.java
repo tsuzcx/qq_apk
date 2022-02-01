@@ -1,74 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
 
 public class aqqg
-  extends aqkz<aqqf>
+  implements Camera.PreviewCallback
 {
-  public static aqqf a()
-  {
-    return (aqqf)aqlk.a().a(572);
-  }
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqpw jdField_a_of_type_Aqpw;
+  private final aqpx jdField_a_of_type_Aqpx;
   
-  @NonNull
-  public aqqf a(int paramInt)
+  @TargetApi(8)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    return new aqqf();
-  }
-  
-  @Nullable
-  public aqqf a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      new aqqf();
-      return aqqf.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(aqqf paramaqqf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramaqqf.toString());
-    }
-  }
-  
-  public Class<aqqf> clazz()
-  {
-    return aqqf.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 572;
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqg
  * JD-Core Version:    0.7.0.1
  */

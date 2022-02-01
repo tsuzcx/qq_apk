@@ -1,11 +1,81 @@
-import android.support.annotation.IntRange;
-import android.support.annotation.Nullable;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public abstract interface bnyw
+public class bnyw
+  extends MSFServlet
 {
-  public abstract void a(@IntRange(from=0L, to=100L) int paramInt);
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Object localObject;
+    long l;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onReceive... ");
+      if (paramFromServiceMsg != null)
+      {
+        localObject = ",failCode=" + paramFromServiceMsg.getBusinessFailCode() + "  errMsg:" + paramFromServiceMsg.getBusinessFailMsg();
+        QLog.d("WadlBusinessServlet", 2, (String)localObject);
+      }
+    }
+    else
+    {
+      l = 0L;
+      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess())) {
+        break label217;
+      }
+      bool = true;
+      label93:
+      if (QLog.isColorLevel())
+      {
+        l = System.currentTimeMillis();
+        QLog.d("WadlBusinessServlet", 2, "onReceive success=" + bool);
+      }
+      if (!bool) {
+        break label223;
+      }
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      localObject = new byte[i];
+      bhvd.a((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    label217:
+    label223:
+    for (paramFromServiceMsg = (FromServiceMsg)localObject;; paramFromServiceMsg = null)
+    {
+      bnyy.a().a(paramIntent, bool, paramFromServiceMsg);
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlBusinessServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
+      return;
+      localObject = "";
+      break;
+      bool = false;
+      break label93;
+    }
+  }
   
-  public abstract void a(@Nullable bdwt parambdwt);
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlBusinessServlet", 2, "onSend...");
+    }
+    paramIntent = paramIntent.getByteArrayExtra("webssoReq");
+    paramPacket.setSSOCommand("QQVacCommSvc.web_sso");
+    if (paramIntent != null)
+    {
+      byte[] arrayOfByte = new byte[paramIntent.length + 4];
+      bhvd.a(arrayOfByte, 0, paramIntent.length + 4);
+      bhvd.a(arrayOfByte, 4, paramIntent, paramIntent.length);
+      paramPacket.putSendData(arrayOfByte);
+      return;
+    }
+    paramIntent = new byte[4];
+    bhvd.a(paramIntent, 0, 4L);
+    paramPacket.putSendData(paramIntent);
+  }
 }
 
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import adrm;
-import adrt;
+import aean;
+import aeau;
 import android.os.Bundle;
-import anyq;
-import anyr;
-import anyu;
-import bglf;
+import aolc;
+import aold;
+import aole;
+import bhlg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ActivateFriendsManager$3
   implements Runnable
 {
-  public ActivateFriendsManager$3(anyr paramanyr, int paramInt1, long[] paramArrayOfLong1, String paramString, int paramInt2, long[] paramArrayOfLong2) {}
+  public ActivateFriendsManager$3(aold paramaold, int paramInt1, long[] paramArrayOfLong1, String paramString, int paramInt2, long[] paramArrayOfLong2) {}
   
   public void run()
   {
@@ -28,29 +28,29 @@ public class ActivateFriendsManager$3
         localSessionInfo = new SessionInfo();
         localSessionInfo.jdField_a_of_type_JavaLangString = String.valueOf(l);
         localSessionInfo.jdField_a_of_type_Int = 0;
-        localSessionInfo.d = bglf.m(anyr.a(this.this$0), String.valueOf(l));
-        localadrt = new adrt();
-        localadrt.a = false;
-        adrm.a(anyr.a(this.this$0), anyr.a(this.this$0).getApp(), localSessionInfo, this.jdField_a_of_type_JavaLangString, null, localadrt);
+        localSessionInfo.d = bhlg.m(aold.a(this.this$0), String.valueOf(l));
+        localaeau = new aeau();
+        localaeau.a = false;
+        aean.a(aold.a(this.this$0), aold.a(this.this$0).getApp(), localSessionInfo, this.jdField_a_of_type_JavaLangString, null, localaeau);
         i += 1;
       }
       this.this$0.a(this.jdField_a_of_type_ArrayOfLong, 1);
       localObject = new Bundle();
       ((Bundle)localObject).putInt("key_rt_type", 0);
-      anyr.a(this.this$0).notifyObservers(anyu.class, 113, true, (Bundle)localObject);
+      aold.a(this.this$0).notifyObservers(aole.class, 113, true, (Bundle)localObject);
     }
-    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int == -1) || (anyq.a(anyr.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong, this.jdField_b_of_type_ArrayOfLong, this.jdField_b_of_type_Int)))
+    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int == -1) || (aolc.a(aold.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong, this.jdField_b_of_type_ArrayOfLong, this.jdField_b_of_type_Int)))
     {
       int j;
       int i;
       long l;
       SessionInfo localSessionInfo;
-      adrt localadrt;
+      aeau localaeau;
       return;
     }
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_rt_type", 2);
-    anyr.a(this.this$0).notifyObservers(anyu.class, 113, false, (Bundle)localObject);
+    aold.a(this.this$0).notifyObservers(aole.class, 113, false, (Bundle)localObject);
   }
 }
 

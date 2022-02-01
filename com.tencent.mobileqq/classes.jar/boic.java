@@ -1,17 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class boic
-  implements View.OnClickListener
+public class boic
+  implements Animator.AnimatorListener
 {
-  boic(boib paramboib) {}
+  public boic(AECropperImageView paramAECropperImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    bnyh.a().z();
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    AECropperImageView.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    AECropperImageView.c(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
   }
 }
 

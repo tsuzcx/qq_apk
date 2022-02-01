@@ -1,15 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 
 public class bhun
-  extends GestureDetector.SimpleOnGestureListener
+  implements blkf
 {
-  public bhun(BounceScrollView paramBounceScrollView) {}
+  public bhun(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a()
   {
-    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+    if (ambu.a().c()) {
+      ambu.a().d();
+    }
   }
 }
 

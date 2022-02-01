@@ -1,9 +1,23 @@
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
-class rqz
+public class rqz
+  implements anui
 {
-  public int a;
-  public TextView a;
+  public rqz(rqy paramrqy) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
+    while (!paramBoolean) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    rqy.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
+    bnrf.a();
+    bnrf.a(rqy.a(this.a));
+    rqy.a(this.a, rqy.a(this.a));
+  }
 }
 
 

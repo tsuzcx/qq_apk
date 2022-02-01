@@ -1,11 +1,19 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface xjd
+public final class xjd
+  implements woy<xck, xei>
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<xix> paramList, boolean paramBoolean);
+  xjd(xjk paramxjk) {}
   
-  public abstract void b(ErrorMessage paramErrorMessage, List<xiy> paramList, boolean paramBoolean);
+  public void a(@NonNull xck paramxck, @Nullable xei paramxei, @NonNull ErrorMessage paramErrorMessage)
+  {
+    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramxei, paramErrorMessage));
+  }
 }
 
 

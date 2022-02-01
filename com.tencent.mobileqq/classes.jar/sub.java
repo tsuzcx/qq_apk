@@ -1,31 +1,45 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class sub
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class sub
+  extends aoki
 {
-  public sub(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  sub(sua paramsua) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public void handleSearchDiscoveryError(int paramInt1, String paramString, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
     }
-    for (;;)
+  }
+  
+  public void handleSearchDiscoveryResult(List<bcgy> paramList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    }
+    if (paramInt != 10) {}
+    String str;
+    bcgy localbcgy;
+    do
     {
-      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
-      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
-      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
       return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+      while (!paramList.hasNext())
+      {
+        do
+        {
+          str = bbzo.b;
+        } while ((paramList == null) || (paramList.size() <= 0));
+        paramList = paramList.iterator();
+      }
+      localbcgy = (bcgy)paramList.next();
+    } while (((localbcgy.c != 1) || (!TextUtils.equals(str, "Hot_word"))) && ((localbcgy.c != 7) || (!TextUtils.equals(str, "Recom_word"))));
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localbcgy);
+    sua.jdField_a_of_type_Int = 0;
+    this.a.a(true, -1, -1);
   }
 }
 

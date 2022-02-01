@@ -1,11 +1,11 @@
 package dov.com.qq.im;
 
-import bnbz;
+import bodh;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$11
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$11(bnbz parambnbz) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$11(bodh parambodh) {}
   
   public void run()
   {

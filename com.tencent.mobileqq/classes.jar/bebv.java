@@ -1,36 +1,31 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bebv
+class bebv
+  implements View.OnClickListener
 {
-  public int a;
-  bdxe jdField_a_of_type_Bdxe;
-  beck jdField_a_of_type_Beck = new beck();
-  public bedc a;
-  public ProtoReqManager a;
-  public String a;
-  public List<becg> a;
-  public byte[] a;
+  bebv(bebt parambebt, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public bebv()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localStringBuilder.append("index:");
-      localStringBuilder.append(i);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(((becg)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
-      i += 1;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bebt, 0);
     }
-    return localStringBuilder.toString();
+    try
+    {
+      if (this.jdField_a_of_type_Bebt.isShowing()) {
+        this.jdField_a_of_type_Bebt.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label38;
+    }
   }
 }
 

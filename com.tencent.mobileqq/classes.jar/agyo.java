@@ -1,17 +1,52 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
-class agyo
-  extends ahbl
+public class agyo
+  extends beqz
 {
-  agyo(agwz paramagwz)
+  public static final String a(int paramInt)
   {
-    super(paramagwz, null);
+    return annv.d + paramInt + "/panelGif.gif";
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new ahdk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadStarted();
+    }
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
+    {
+      paramDownloadParams = (Integer)paramDownloadParams.tag;
+      paramOutputStream = new File(a(paramDownloadParams.intValue()));
+      if (paramOutputStream.exists())
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+      paramOutputStream.getParentFile().mkdirs();
+      if ((BaseApplicationImpl.sApplication != null) && (!bhnv.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+      }
+      paramDownloadParams = new bihu("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
+      paramDownloadParams.b = 1;
+      paramDownloadParams.p = false;
+      if (bihw.a(paramDownloadParams, null) == 0)
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+    }
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadFailed(0);
+    }
+    return null;
   }
 }
 

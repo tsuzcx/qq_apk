@@ -1,12 +1,13 @@
-public abstract interface bnev
+import cooperation.qzone.plugin.PluginRecord;
+
+class bnev
 {
-  public abstract void a(float paramFloat);
+  bnew jdField_a_of_type_Bnew;
+  bnex jdField_a_of_type_Bnex;
+  PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
+  String jdField_a_of_type_JavaLangString;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(float paramFloat);
+  bnev(bnet parambnet) {}
 }
 
 

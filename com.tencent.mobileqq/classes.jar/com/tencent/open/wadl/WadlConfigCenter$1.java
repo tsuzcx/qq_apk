@@ -1,10 +1,10 @@
 package com.tencent.open.wadl;
 
 import android.text.TextUtils;
-import bgmg;
-import bizg;
-import bizh;
-import bmxq;
+import bhmi;
+import bkaf;
+import bkag;
+import bnyy;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
@@ -12,29 +12,29 @@ import java.util.HashMap;
 public class WadlConfigCenter$1
   implements Runnable
 {
-  public WadlConfigCenter$1(bizh parambizh) {}
+  public WadlConfigCenter$1(bkag parambkag) {}
   
   public void run()
   {
-    ??? = bmxq.a();
+    ??? = bnyy.a();
     String str = null;
     if (((File)???).exists()) {
-      str = bgmg.a((File)???);
+      str = bhmi.a((File)???);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WadlConfigCenter", 2, "loadConfig content=" + str);
     }
-    synchronized (bizh.a(this.this$0))
+    synchronized (bkag.a(this.this$0))
     {
-      bizh.a(this.this$0).clear();
+      bkag.a(this.this$0).clear();
       boolean bool = TextUtils.isEmpty(str);
       if (!bool) {}
       try
       {
-        bizg localbizg = new bizg();
-        localbizg.a = "comminfo";
-        localbizg.a(str);
-        bizh.a(this.this$0).put("comminfo", localbizg);
+        bkaf localbkaf = new bkaf();
+        localbkaf.a = "comminfo";
+        localbkaf.a(str);
+        bkag.a(this.this$0).put("comminfo", localbkaf);
         return;
       }
       catch (Exception localException)

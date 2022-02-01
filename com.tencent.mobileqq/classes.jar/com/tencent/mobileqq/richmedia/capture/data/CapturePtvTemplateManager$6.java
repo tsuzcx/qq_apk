@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import bamd;
-import bamj;
+import bbew;
+import bbfc;
 
 public class CapturePtvTemplateManager$6
   implements Runnable
 {
-  public CapturePtvTemplateManager$6(bamd parambamd) {}
+  public CapturePtvTemplateManager$6(bbew parambbew) {}
   
   public void run()
   {
-    bamd.a(this.this$0);
+    bbew.a(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.a();
     }

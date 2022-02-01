@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.redpoint;
 
-import vqr;
+import vtc;
 
 public class EeveeRedPointManagerDelegate$2
   implements Runnable
 {
-  public EeveeRedPointManagerDelegate$2(vqr paramvqr) {}
+  public EeveeRedPointManagerDelegate$2(vtc paramvtc) {}
   
   public void run()
   {
-    vqr.b(this.this$0);
+    vtc.b(this.this$0);
   }
 }
 

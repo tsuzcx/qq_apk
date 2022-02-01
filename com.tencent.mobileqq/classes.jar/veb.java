@@ -1,17 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import androidx.annotation.RequiresApi;
 
 class veb
-  implements Observer<vup<FeedCloudMeta.StTagInfo>>
+  extends AnimatorListenerAdapter
 {
-  veb(vea paramvea) {}
+  veb(vdr paramvdr) {}
   
-  public void a(@Nullable vup<FeedCloudMeta.StTagInfo> paramvup)
+  @RequiresApi(api=16)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramvup != null) {
-      vea.a(this.a, (FeedCloudMeta.StTagInfo)paramvup.a());
-    }
+    super.onAnimationEnd(paramAnimator);
+    vdr.a(this.a).setAlpha(1.0F);
+    vdr.a(this.a).setVisibility(8);
   }
 }
 

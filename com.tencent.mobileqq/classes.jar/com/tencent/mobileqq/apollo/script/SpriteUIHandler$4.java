@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amug;
 import android.view.ViewGroup;
+import anga;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ class SpriteUIHandler$4
       if (SpriteUIHandler.a(this.this$0).a() == null) {
         return;
       }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131376788);
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131376925);
       if (1 == this.a)
       {
         if (localXPanelContainer.a() != 21) {

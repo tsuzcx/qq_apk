@@ -1,25 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class aspt
-  implements View.OnClickListener
 {
-  public aspt(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString, View paramView) {}
+  public int a;
+  public EmoticonPackage a;
+  public int b;
   
-  public void onClick(View paramView)
+  public aspt(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(new aspu(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof aspt)) {
+        return false;
+      }
+      paramObject = (aspt)paramObject;
+      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
+        break;
+      }
+    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
+    return false;
+    return false;
+  }
+  
+  public String toString()
+  {
+    String str = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
+      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+    }
+    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
   }
 }
 

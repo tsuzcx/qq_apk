@@ -1,47 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.database.PromoteTaskEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.PromoteTask;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wun
-  extends wfi
+public class wun
 {
-  wun(wui paramwui) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void a()
+  public static wun a(qqstory_service.PromoteTask paramPromoteTask)
   {
-    yqp.b(wui.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      yqp.e(wui.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
-    }
-    wsl localwsl = (wsl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
-    if (localwsl.a()) {
-      if (this.a.a()) {
-        this.a.jdField_a_of_type_Wtu.a("exp_story", 3);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!localwsl.b()) {
-          break;
-        }
-      } while (!this.a.a());
-      this.a.jdField_a_of_type_Wtu.a("exp_story", 2);
-      return;
-      if (!this.a.jdField_a_of_type_Wus.a()) {
-        break;
-      }
-    } while (!this.a.a());
-    this.a.jdField_a_of_type_Wtu.a("exp_story", 5);
-    return;
-    if (localwsl.c())
-    {
-      this.a.g();
-      localwsl.a();
-      this.a.jdField_a_of_type_Wtu.a("exp_hide", 0);
-      return;
-    }
-    this.a.jdField_a_of_type_Wtu.a("exp_hide", 0);
+    wun localwun = new wun();
+    localwun.jdField_a_of_type_Long = paramPromoteTask.uint64_taskid.get();
+    localwun.jdField_a_of_type_Int = paramPromoteTask.uint32_promote_type.get();
+    localwun.jdField_a_of_type_JavaLangString = paramPromoteTask.bytes_union_id.get().toStringUtf8();
+    localwun.jdField_b_of_type_JavaLangString = paramPromoteTask.bytes_feed_id.get().toStringUtf8();
+    localwun.jdField_b_of_type_Long = paramPromoteTask.uint64_limit_count.get();
+    localwun.c = paramPromoteTask.uint64_minimal_video_count.get();
+    localwun.d = paramPromoteTask.uint64_expire_time.get();
+    return localwun;
+  }
+  
+  public PromoteTaskEntry a()
+  {
+    PromoteTaskEntry localPromoteTaskEntry = new PromoteTaskEntry();
+    localPromoteTaskEntry.taskId = this.jdField_a_of_type_Long;
+    localPromoteTaskEntry.type = this.jdField_a_of_type_Int;
+    localPromoteTaskEntry.unionId = this.jdField_a_of_type_JavaLangString;
+    localPromoteTaskEntry.feedId = this.jdField_b_of_type_JavaLangString;
+    localPromoteTaskEntry.limitPromoteCount = this.jdField_b_of_type_Long;
+    localPromoteTaskEntry.minimalVideoCount = this.c;
+    localPromoteTaskEntry.expireTime = this.d;
+    localPromoteTaskEntry.promoteCount = this.e;
+    return localPromoteTaskEntry;
+  }
+  
+  public String toString()
+  {
+    return "PromoteTaskItem{taskId=" + this.jdField_a_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", limitPromoteCount=" + this.jdField_b_of_type_Long + ", minimalVideoCount=" + this.c + ", expireTime=" + this.d + ", promoteCount=" + this.e + '}';
   }
 }
 

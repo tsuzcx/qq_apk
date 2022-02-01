@@ -1,28 +1,13 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
-import java.util.Arrays;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class aupm
+  implements bjhv
 {
-  public int a;
-  public Class<? extends FTSEntity> a;
-  public String a;
-  public boolean a;
-  public aupo[] a;
-  public String b;
+  public aupm(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public aupm(Class<? extends FTSEntity> paramClass, aupo[] paramArrayOfaupo, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_ArrayOfAupo = paramArrayOfaupo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAupo) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
+    QfileEditBottomBar.a(this.a);
   }
 }
 

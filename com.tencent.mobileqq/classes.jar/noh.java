@@ -1,37 +1,58 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class noh
-  extends Handler
+  extends WebViewPlugin
 {
-  public noh(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public noh()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramMessage.what)
+    this.mPluginNameSpace = "coupon";
+  }
+  
+  public void a(String paramString)
+  {
+    Activity localActivity = this.mRuntime.a();
+    int i;
+    if ((localActivity instanceof CouponActivity))
     {
-    case -1: 
-    default: 
-      return;
-    case 0: 
-      this.a.a.jdField_a_of_type_Byte = 0;
-      LebaSearchPluginManagerActivity.a(this.a);
-      localStringBuilder.append(this.a.getString(2131695340));
-      localStringBuilder.append(this.a.getString(2131695338));
-      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
-      QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+      localObject = (CouponActivity)localActivity;
+      i = ((CouponActivity)localObject).a;
+      if ((i & 0x8) != 0)
+      {
+        paramString = new Intent();
+        paramString.putExtra("toPage", 2);
+        ((CouponActivity)localObject).setResult(-1, paramString);
+        ((CouponActivity)localObject).superFinish();
+      }
+    }
+    else
+    {
       return;
     }
-    this.a.a.jdField_a_of_type_Byte = 1;
-    LebaSearchPluginManagerActivity.a(this.a);
-    localStringBuilder.append(this.a.getString(2131695340));
-    localStringBuilder.append(this.a.getString(2131695334));
-    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
-    QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+    Object localObject = new Intent(localActivity, CouponActivity.class);
+    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
+    if (!TextUtils.isEmpty(paramString)) {
+      ((Intent)localObject).putExtra("jsonParams", paramString);
+    }
+    localActivity.startActivity((Intent)localObject);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("coupon".equals(paramString2))
+    {
+      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        paramJsBridgeListener.a(null);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

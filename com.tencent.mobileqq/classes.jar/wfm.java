@@ -1,46 +1,166 @@
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore.Images.Media;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-class wfm
-  implements Executor
+public class wfm
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private int b;
+  private Context a = QQStoryContext.a().a().getBaseContext();
   
-  private wfm(@NonNull String paramString, int paramInt1, @IntRange(from=0L) int paramInt2)
+  private boolean a(wgh paramwgh)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    if ((paramwgh.jdField_a_of_type_Int <= 240) || (paramwgh.jdField_b_of_type_Int <= 240))
+    {
+      yuk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramwgh.jdField_a_of_type_Int), Integer.valueOf(paramwgh.jdField_b_of_type_Int), paramwgh.jdField_a_of_type_JavaLangString);
+      return false;
+    }
+    if (paramwgh.jdField_b_of_type_Int / paramwgh.jdField_a_of_type_Int <= 0.2F)
+    {
+      yuk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramwgh.jdField_a_of_type_Int), Integer.valueOf(paramwgh.jdField_b_of_type_Int), paramwgh.jdField_a_of_type_JavaLangString);
+      return false;
+    }
+    if (paramwgh.jdField_b_of_type_Int / paramwgh.jdField_a_of_type_Int >= 2.2F)
+    {
+      yuk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramwgh.jdField_a_of_type_Int), Integer.valueOf(paramwgh.jdField_b_of_type_Int), paramwgh.jdField_a_of_type_JavaLangString);
+      return false;
+    }
+    return true;
   }
   
-  public void execute(@NonNull Runnable paramRunnable)
+  public List<wgh> a(Context paramContext, long paramLong, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
-    int i = this.jdField_a_of_type_JavaUtilQueue.size();
-    if (i > Runtime.getRuntime().availableProcessors()) {
-      yqp.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
+    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "queryFromMediaStore : " + paramLong);
+    Object localObject1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+    String str = "/DCIM/";
+    Object localObject3 = ((File)localObject1).listFiles();
+    localObject1 = str;
+    int j;
+    int i;
+    if (localObject3 != null)
     {
-      yqp.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
+      j = localObject3.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      localObject1 = str;
+      ArrayList localArrayList;
+      if (i < j)
       {
-        paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (paramRunnable != null) {
-          ThreadManager.excute(paramRunnable, this.b, new wfn(this, paramRunnable), false);
+        localObject1 = localObject3[i];
+        if (TextUtils.equals(((File)localObject1).getName().toLowerCase(), "camera")) {
+          localObject1 = "/DCIM/" + ((File)localObject1).getName() + "/";
         }
       }
+      else
+      {
+        localArrayList = new ArrayList();
+        localObject3 = QQStoryContext.a().a().createEntityManager();
+        Object localObject4 = "date_modified >=" + paramLong + " and ";
+        str = "_size<=12582912 and (_data like '%" + (String)localObject1 + "%' or " + "_data" + anzj.a(2131712401);
+        localObject1 = str;
+        if (paramLong > 0L) {
+          localObject1 = (String)localObject4 + str;
+        }
+        if (paramBoolean) {}
+        for (;;)
+        {
+          try
+          {
+            str = " asc limit " + paramInt;
+            paramContext = paramContext.getContentResolver();
+            localObject4 = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            str = "date_modified" + str;
+            paramContext = paramContext.query((Uri)localObject4, new String[] { "_id", "_data", "date_added", "date_modified", "latitude", "longitude", "_size", "width", "height", "orientation", "mime_type" }, (String)localObject1, null, str);
+          }
+          catch (Exception paramContext)
+          {
+            yuk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "query cursor error:" + paramContext);
+            paramContext = null;
+            continue;
+            yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "queryFromMediaStore DB result = " + paramContext.getCount());
+            if (paramContext.getCount() != 0) {
+              continue;
+            }
+            paramContext.close();
+            return localArrayList;
+            try
+            {
+              ((EntityManager)localObject3).getTransaction().begin();
+              paramContext.moveToFirst();
+              paramInt = paramContext.getColumnIndex("_id");
+              i = paramContext.getColumnIndex("date_modified");
+              j = paramContext.getColumnIndex("latitude");
+              int k = paramContext.getColumnIndex("longitude");
+              int m = paramContext.getColumnIndex("_size");
+              int n = paramContext.getColumnIndex("height");
+              int i1 = paramContext.getColumnIndex("width");
+              int i2 = paramContext.getColumnIndex("orientation");
+              int i3 = paramContext.getColumnIndex("_data");
+              int i4 = paramContext.getColumnIndex("mime_type");
+              int i5 = paramContext.getColumnIndex("date_added");
+              localObject1 = new wgh();
+              ((wgh)localObject1).jdField_a_of_type_Long = paramContext.getInt(paramInt);
+              ((wgh)localObject1).jdField_b_of_type_Long = paramContext.getLong(i);
+              ((wgh)localObject1).jdField_a_of_type_Double = paramContext.getDouble(j);
+              ((wgh)localObject1).jdField_b_of_type_Double = paramContext.getDouble(k);
+              ((wgh)localObject1).jdField_b_of_type_Int = paramContext.getInt(n);
+              ((wgh)localObject1).jdField_a_of_type_Int = paramContext.getInt(i1);
+              ((wgh)localObject1).jdField_c_of_type_Int = paramContext.getInt(i2);
+              ((wgh)localObject1).jdField_a_of_type_JavaLangString = paramContext.getString(i3);
+              ((wgh)localObject1).e = paramContext.getLong(m);
+              ((wgh)localObject1).jdField_b_of_type_JavaLangString = "";
+              ((wgh)localObject1).jdField_d_of_type_JavaLangString = paramContext.getString(i4);
+              ((wgh)localObject1).jdField_c_of_type_Long = paramContext.getLong(i5);
+              ((wgh)localObject1).jdField_d_of_type_Long = ((wgh)localObject1).jdField_b_of_type_Long;
+              if (auog.b(((wgh)localObject1).jdField_a_of_type_JavaLangString)) {
+                continue;
+              }
+              if (paramContext.moveToNext()) {
+                continue;
+              }
+              ((EntityManager)localObject3).getTransaction().commit();
+            }
+            catch (Exception localException)
+            {
+              yuk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "write to db error:" + localException);
+              paramContext.close();
+              ((EntityManager)localObject3).getTransaction().end();
+              continue;
+            }
+            finally
+            {
+              paramContext.close();
+              ((EntityManager)localObject3).getTransaction().end();
+            }
+            yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "queryFromMediaStore match result = " + localArrayList.size());
+            return localArrayList;
+            if (!a((wgh)localObject1)) {
+              continue;
+            }
+            ((EntityManager)localObject3).persistOrReplace(((wgh)localObject1).a());
+            localArrayList.add(localObject1);
+            continue;
+            if (paramContext != null) {
+              continue;
+            }
+            return localArrayList;
+          }
+          str = " desc limit " + paramInt;
+        }
+      }
+      i += 1;
     }
   }
 }

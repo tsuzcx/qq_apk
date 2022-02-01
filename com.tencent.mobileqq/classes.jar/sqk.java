@@ -1,34 +1,54 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import org.json.JSONObject;
 
-public class sqk
-  extends AnimatorListenerAdapter
+class sqk
+  extends spi
 {
-  public sqk(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  private Container a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public sqk(View paramView, BaseData paramBaseData)
   {
-    super.onAnimationEnd(paramAnimator);
-    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
-    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
-    this.a.a.setAlpha(1.0F);
-    if (ReadInJoyListViewGroup.a(this.a) != null) {
-      ReadInJoyListViewGroup.a(this.a).i();
-    }
-    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.a = ((Container)paramView);
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  private JSONObject a(ProteusBookData paramProteusBookData)
   {
-    super.onAnimationStart(paramAnimator);
+    if (paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo != null) {
+      return paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a(paramProteusBookData.b);
+    }
+    return null;
+  }
+  
+  private void b()
+  {
+    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new sql(this));
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    switch (paramBaseData2.r)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a == null);
+    paramBaseData1 = (ProteusBookData)paramBaseData2;
+    if (paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
+    {
+      paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.putDynamicJson(a(paramBaseData1));
+      oyj.a(this.a.getVirtualView(), paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
+    }
+    b();
   }
 }
 

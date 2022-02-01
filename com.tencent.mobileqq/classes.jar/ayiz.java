@@ -1,18 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ayiz
-  implements ValueAnimator.AnimatorUpdateListener
+class ayiz
+  implements Animation.AnimationListener
 {
-  public ayiz(ScanOcrView paramScanOcrView, ayja paramayja) {}
+  ayiz(ayix paramayix) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_Ayja.e = i;
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

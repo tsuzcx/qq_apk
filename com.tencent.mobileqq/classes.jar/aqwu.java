@@ -1,104 +1,152 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class aqwu
+  implements aqxz
 {
-  @NonNull
-  public final aqwv a;
-  @NonNull
-  public final aqwv b;
-  @NonNull
-  public final aqwv c;
+  public aqwu(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  private aqwu()
+  public int a()
   {
-    this(a(null, ""), a(null, ""), a(null, ""));
-  }
-  
-  private aqwu(aqwv paramaqwv1, aqwv paramaqwv2, aqwv paramaqwv3)
-  {
-    this.a = paramaqwv1;
-    this.b = paramaqwv2;
-    this.c = paramaqwv3;
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, toString());
+    int j = 1;
+    int i;
+    if (this.a.i == 0) {
+      i = 2;
     }
-  }
-  
-  @NonNull
-  public static aqwu a()
-  {
-    return new aqwu();
-  }
-  
-  @NonNull
-  public static aqwu a(@Nullable String paramString)
-  {
-    try
+    for (;;)
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = new JSONObject(paramString);
-        return new aqwu(a(paramString, "AIO"), a(paramString, "group"), a(paramString, "download"));
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getColumnCount|pickerType : " + this.a.i + ", count : " + i);
       }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramString);
-        paramString = null;
-      }
-    }
-  }
-  
-  @NonNull
-  private static aqwv a(JSONObject paramJSONObject, String paramString)
-  {
-    boolean bool = false;
-    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramString))) {
-      try
-      {
-        Object localObject = paramJSONObject.optJSONObject(paramString);
-        paramJSONObject = ((JSONObject)localObject).optString("content", null);
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("keyWords");
-        localObject = ((JSONObject)localObject).optJSONArray("actionUrls");
-        String[] arrayOfString1 = new String[localJSONArray.length()];
-        String[] arrayOfString2 = new String[localJSONArray.length()];
-        int i = 0;
-        while (i < localJSONArray.length())
+      return i;
+      i = j;
+      if (this.a.i != 3) {
+        if (this.a.i != 1)
         {
-          arrayOfString1[i] = localJSONArray.optString(i, null);
-          arrayOfString2[i] = ((JSONArray)localObject).optString(i, null);
-          i += 1;
+          i = j;
+          if (this.a.i != 2) {}
         }
-        if (paramJSONObject != null) {
-          bool = true;
+        else
+        {
+          i = this.a.h;
         }
-        paramJSONObject = new aqwv(paramString, bool, paramJSONObject, arrayOfString1, arrayOfString2);
-        return paramJSONObject;
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramJSONObject);
       }
     }
-    return new aqwv();
   }
   
-  public String toString()
+  public int a(int paramInt)
   {
-    return "KingCardConfig{aio=" + this.a + ", group=" + this.b + ", download=" + this.c + '}';
+    int j = 0;
+    int i;
+    if (this.a.i == 0) {
+      i = anve.b.length - 17;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getRowCount|pickerType : " + this.a.i + ", column : " + paramInt + ", count : " + i);
+      }
+      return i;
+      if (this.a.i == 3)
+      {
+        i = anve.c.length;
+      }
+      else if (this.a.i != 1)
+      {
+        i = j;
+        if (this.a.i != 2) {}
+      }
+      else
+      {
+        i = j;
+        if (paramInt < this.a.h)
+        {
+          i = j;
+          if (paramInt >= 0)
+          {
+            i = j;
+            if (this.a.a[paramInt] != null) {
+              i = ((List)this.a.a[paramInt]).size();
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    int i;
+    String str;
+    if (this.a.i == 0)
+    {
+      if (paramInt2 >= 0)
+      {
+        i = paramInt2;
+        if (paramInt2 < anve.b.length) {}
+      }
+      else
+      {
+        i = 0;
+      }
+      paramInt2 = ConditionSearchFriendActivity.b(this.a, i);
+      str = anve.b[paramInt2];
+      paramInt2 = i;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getText|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2 + ", result : " + str);
+      }
+      return str;
+      if (this.a.i == 3)
+      {
+        if (paramInt2 >= 0)
+        {
+          i = paramInt2;
+          if (paramInt2 < anve.c.length) {}
+        }
+        else
+        {
+          i = 0;
+        }
+        str = anve.c[i];
+        paramInt2 = i;
+      }
+      else if (((this.a.i == 1) || (this.a.i == 2)) && (paramInt1 < this.a.a.length) && (this.a.a[paramInt1] != null) && (((List)this.a.a[paramInt1]).size() > 0))
+      {
+        if (paramInt2 >= 0)
+        {
+          i = paramInt2;
+          if (paramInt2 < ((List)this.a.a[paramInt1]).size()) {}
+        }
+        else
+        {
+          i = 0;
+        }
+        if (((BaseAddress)((List)this.a.a[paramInt1]).get(i)).code.equals("0"))
+        {
+          str = ConditionSearchFriendActivity.a();
+          paramInt2 = i;
+        }
+        else
+        {
+          str = ((BaseAddress)((List)this.a.a[paramInt1]).get(i)).name;
+          paramInt2 = i;
+        }
+      }
+      else
+      {
+        str = "";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
-import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout;
+import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.PanelState;
+import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
 
-class bpch
-  implements ViewTreeObserver.OnScrollChangedListener
+public class bpch
+  implements View.OnClickListener
 {
-  bpch(bpcg parambpcg) {}
+  public bpch(MoreLyricLayout paramMoreLyricLayout) {}
   
-  public void onScrollChanged()
+  public void onClick(View paramView)
   {
-    bpcg.a(this.a);
+    MoreLyricLayout.a(this.a).setPanelState(AESlidingUpPanelLayout.PanelState.COLLAPSED);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

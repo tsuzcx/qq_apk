@@ -1,20 +1,20 @@
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class nuf
-  implements nvk
+class nuf
+  implements View.OnClickListener
 {
-  public nuf(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  nuf(ntc paramntc, int paramInt, oag paramoag) {}
   
-  public boolean a(int paramInt)
+  public void onClick(View paramView)
   {
-    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
+    aavs.a((BaseActivity)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get(), new aavu(this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, ntc.a(this.jdField_a_of_type_Ntc), this.jdField_a_of_type_Int);
+    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

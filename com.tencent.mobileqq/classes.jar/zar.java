@@ -1,39 +1,35 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
-import java.util.LinkedList;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
 
+@TargetApi(14)
 public class zar
-  extends zan
 {
-  public Path a;
-  List<Integer> a;
-  public int b;
-  List<Integer> b;
-  public int c;
-  
-  public zar(Path paramPath, int paramInt)
+  public static float a(View paramView)
   {
-    super(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_b_of_type_JavaUtilList = new LinkedList();
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getX();
   }
   
-  public zar(zan paramzan, float paramFloat)
+  public static void a(View paramView, float paramFloat)
   {
-    super(paramzan.jdField_a_of_type_Int);
-    if ((paramzan instanceof zar))
-    {
-      paramzan = (zar)paramzan;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramzan.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = paramzan.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = paramzan.jdField_b_of_type_Int;
-      this.c = ((int)(paramzan.c * paramFloat));
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
     }
+    paramView.setAlpha(paramFloat);
+  }
+  
+  public static float b(View paramView)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getY();
   }
 }
 

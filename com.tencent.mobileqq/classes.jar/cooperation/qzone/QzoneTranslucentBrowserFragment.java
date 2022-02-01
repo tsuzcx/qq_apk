@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import blup;
+import bmvr;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.smtt.sdk.WebView;
@@ -42,8 +42,8 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = a(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130848577));
-      localImageView.setOnClickListener(new blup(this));
+      localImageView.setImageDrawable(getResources().getDrawable(2130848596));
+      localImageView.setOnClickListener(new bmvr(this));
     }
   }
   

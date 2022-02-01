@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
-import anld;
-import anry;
-import anzm;
+import anwz;
+import aoeg;
+import aolw;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -19,7 +19,7 @@ import mqq.app.MobileQQ;
 public class CheckPublicAccount
   extends AsyncStep
 {
-  anry a;
+  aoeg a;
   
   public int a()
   {
@@ -46,9 +46,9 @@ public class CheckPublicAccount
       long l = System.currentTimeMillis();
       if (l - ((SharedPreferences)localObject).getLong("eqqlist_login_update_ts", 0L) > 86400000L)
       {
-        anld localanld = (anld)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(21);
-        if (localanld != null) {
-          localanld.a(SystemClock.uptimeMillis());
+        anwz localanwz = (anwz)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(21);
+        if (localanwz != null) {
+          localanwz.a(SystemClock.uptimeMillis());
         }
         ((SharedPreferences)localObject).edit().putLong("eqqlist_login_update_ts", l);
       }
@@ -63,19 +63,19 @@ public class CheckPublicAccount
   
   void a()
   {
-    if (this.jdField_a_of_type_Anry == null)
+    if (this.jdField_a_of_type_Aoeg == null)
     {
-      this.jdField_a_of_type_Anry = new anzm(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anry);
+      this.jdField_a_of_type_Aoeg = new aolw(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Aoeg);
     }
   }
   
-  public void d()
+  public void c()
   {
-    if (this.jdField_a_of_type_Anry != null)
+    if (this.jdField_a_of_type_Aoeg != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anry);
-      this.jdField_a_of_type_Anry = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aoeg);
+      this.jdField_a_of_type_Aoeg = null;
     }
   }
 }

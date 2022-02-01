@@ -202,6 +202,13 @@ public class BlurMaskFilter
     return localFrame;
   }
   
+  public void reset()
+  {
+    if ((this.mBlurMaskFactory instanceof ImageMaskFactory)) {
+      ((ImageMaskFactory)this.mBlurMaskFactory).reset();
+    }
+  }
+  
   public void resumeMask()
   {
     if (this.mBlurMaskFactory != null) {

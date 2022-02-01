@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class bnoi
-  implements DialogInterface.OnClickListener
+  implements bnok
 {
-  bnoi(bnod parambnod) {}
+  bnoi(bnog parambnog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
+  {
+    paramJSONObject.put("status", paramBundle.getInt("status", 1));
+  }
 }
 
 

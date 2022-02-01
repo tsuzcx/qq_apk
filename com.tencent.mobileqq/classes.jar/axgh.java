@@ -1,18 +1,16 @@
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class axgh
+class axgh
+  implements Handler.Callback
 {
-  public int a;
-  public View a;
-  public ImageButton a;
-  public ImageView a;
-  public TextView a;
+  axgh(axgg paramaxgg) {}
   
-  private axgh(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public boolean handleMessage(Message paramMessage)
+  {
+    axgg.a(this.a, paramMessage);
+    return true;
+  }
 }
 
 

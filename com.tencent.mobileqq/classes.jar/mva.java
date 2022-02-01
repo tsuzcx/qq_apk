@@ -1,25 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.widget.RatingBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class mva
-  implements View.OnClickListener
+public abstract interface mva
 {
-  public mva(RatingBar paramRatingBar) {}
-  
-  public void onClick(View paramView)
-  {
-    if (RatingBar.a(this.a))
-    {
-      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
-      this.a.setStar(RatingBar.a(this.a), true);
-      if (RatingBar.a(this.a) != null) {
-        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

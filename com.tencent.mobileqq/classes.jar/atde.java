@@ -1,9 +1,46 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
 
-class atde
-  implements atdk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/extendfriend/wiget/ColdPalaceTipDialog$init$1$3"}, k=3, mv={1, 1, 16})
+final class atde
+  implements View.OnClickListener
 {
-  atde(atdc paramatdc, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle) {}
+  atde(atdb paramatdb, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt) {}
+  
+  public final void onClick(View paramView)
+  {
+    if (!bhnv.d(this.jdField_a_of_type_AndroidContentContext))
+    {
+      if (this.jdField_a_of_type_Atdb.isShowing()) {
+        this.jdField_a_of_type_Atdb.dismiss();
+      }
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, (CharSequence)this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691989), 0).a();
+    }
+    for (;;)
+    {
+      bdll.b(null, "dc00898", "", "", "0X800B2CF", "0X800B2CF", 1, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_JavaLangString != null)
+      {
+        anud localanud = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
+        if (localanud == null) {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.extendfriend.ExtendFriendHandler");
+        }
+        ((asvg)localanud).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Atdb.isShowing()) {
+          this.jdField_a_of_type_Atdb.dismiss();
+        }
+      }
+    }
+  }
 }
 
 

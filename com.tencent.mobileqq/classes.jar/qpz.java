@@ -1,7 +1,19 @@
-import kotlin.Metadata;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyParam$Companion;", "", "()V", "STATUS_CLOSED", "", "STATUS_OPENED", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qpz {}
+public class qpz
+  implements View.OnClickListener
+{
+  public qpz(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentHeaderSubscribe.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

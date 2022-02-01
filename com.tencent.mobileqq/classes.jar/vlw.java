@@ -1,21 +1,16 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.fragments.main.QCircleAggregationFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
 
 public class vlw
-  extends RecyclerView.OnScrollListener
+  extends RecyclerView.ViewHolder
 {
-  public vlw(QCircleAggregationFragment paramQCircleAggregationFragment) {}
+  public QCircleContentImage a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public vlw(vlr paramvlr, View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      adcd.a().a("qcircle_follow_tab_page", false);
-      return;
-    }
-    adcd.a().a("qcircle_follow_tab_page");
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage = ((QCircleContentImage)paramView);
   }
 }
 

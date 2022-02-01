@@ -1,6 +1,37 @@
-public abstract interface acpj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class acpj
+  implements View.OnClickListener
 {
-  public abstract void a(Object... paramVarArgs);
+  public acpj(GdtBannerAd paramGdtBannerAd, acpm paramacpm) {}
+  
+  public void onClick(View paramView)
+  {
+    acvc.b("GdtBannerAd", "getView().onClick");
+    if (!GdtBannerAd.access$200(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd)) {
+      acvc.d("GdtBannerAd", "getView().onClick !isValidClick()");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      GdtHandler.Params localParams = GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
+      acpm localacpm = this.jdField_a_of_type_Acpm;
+      localParams.a = acpm.a.onClick(paramView);
+      if (GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
+        GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
+      }
+      GdtHandler.a(GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+      GdtBannerAd.access$400(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
+    }
+  }
 }
 
 

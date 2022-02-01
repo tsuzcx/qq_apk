@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import bkgk;
+import blho;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import tdi;
+import sua;
 
 public class ReadInJoyTabTopSearchHeaderController$6
   implements Runnable
 {
-  public ReadInJoyTabTopSearchHeaderController$6(tdi paramtdi, boolean paramBoolean, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface) {}
+  public ReadInJoyTabTopSearchHeaderController$6(sua paramsua, boolean paramBoolean, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     this.this$0.a.a();
-    bkgk.a(new ReadInJoyTabTopSearchHeaderController.6.1(this));
+    blho.a(new ReadInJoyTabTopSearchHeaderController.6.1(this));
   }
 }
 

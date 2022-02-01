@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import zao;
-import zax;
+import zej;
+import zes;
 
 class DoodleTextureView$1
   implements Runnable
@@ -10,12 +10,12 @@ class DoodleTextureView$1
   
   public void run()
   {
-    zax localzax = (zax)this.this$0.jdField_a_of_type_Zao.a(102);
-    if (localzax != null)
+    zes localzes = (zes)this.this$0.jdField_a_of_type_Zej.a(102);
+    if (localzes != null)
     {
-      localzax.a();
-      localzax.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      this.this$0.jdField_a_of_type_Zao.h();
+      localzes.a();
+      localzes.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      this.this$0.jdField_a_of_type_Zej.h();
       this.this$0.a();
     }
   }

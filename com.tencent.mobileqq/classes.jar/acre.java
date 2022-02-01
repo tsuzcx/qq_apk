@@ -1,32 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 public final class acre
+  implements View.OnClickListener
 {
-  private static acrf a(int paramInt)
-  {
-    acrn localacrn = null;
-    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
-      localacrn = new acrn();
-    }
-    return localacrn;
-  }
+  public acre(Function0 paramFunction0) {}
   
-  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  public final void onClick(View paramView)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
-    acrf localacrf;
-    do
-    {
-      do
-      {
-        acrl.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-        return;
-      } while ((paramInt2 < 0) || (paramInt2 >= 4));
-      localacrf = a(paramInt2);
-    } while (localacrf == null);
-    localacrf.a(paramInt1, paramInt2, paramAdInfo);
+    this.a.invoke();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

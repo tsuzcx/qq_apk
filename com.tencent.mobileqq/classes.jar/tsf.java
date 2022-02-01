@@ -1,22 +1,11 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1.1.1;
-import com.tencent.viola.core.ViolaEnvironment;
-
-public class tsf
-  implements bggu
+class tsf
+  implements tld
 {
-  public tsf(ViolaBaseView.10.1 param1) {}
+  tsf(tse paramtse) {}
   
-  public void onInfo(long paramLong, double paramDouble)
+  public void a(tqt paramtqt, int paramInt1, int paramInt2)
   {
-    if (ViolaBaseView.a(this.a.a.a) == 0.0D)
-    {
-      ViolaBaseView.a(this.a.a.a, paramDouble);
-      ViolaBaseView.a(this.a.a.a).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.a.a)) }));
-    }
-    new Handler().postDelayed(new ViolaBaseView.10.1.1.1(this), 500L);
+    this.a.a(paramtqt, paramInt1, paramInt2);
   }
 }
 

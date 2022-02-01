@@ -74,7 +74,7 @@ public class BaselibLoadAsyncTask
     {
       BaselibLoader.BaselibContent localBaselibContent = new BaselibLoader.BaselibContent();
       String str2 = StorageUtil.getPreference().getString("downloadUrl", "");
-      String str1 = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+      String str1 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
       QMLog.i("BaselibLoadAsyncTask", "execute baseLibLoad task. url=" + str2 + " version=" + str1);
       str2 = BaseLibManager.g().getBaseLibDir(str2, str1);
       try
@@ -91,11 +91,11 @@ public class BaselibLoadAsyncTask
           localBaselibContent.miniappWebviewStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QWebview.js"));
           localBaselibContent.waWorkerStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QWorker.js"));
           localBaselibContent.pageFrameStr = FileUtils.readFileToStr(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QPageFrame.html"));
-          localBaselibContent.version = "1.17.0.00206";
+          localBaselibContent.version = "1.18.0.00132";
         }
         int j = 1;
         int i;
-        if (!BaseLibInfo.needUpdateVersion("1.17.0.00206", str1))
+        if (!BaseLibInfo.needUpdateVersion("1.18.0.00132", str1))
         {
           i = j;
           if (!TextUtils.isEmpty(str2))
@@ -107,7 +107,7 @@ public class BaselibLoadAsyncTask
         else
         {
           i = 0;
-          QMLog.e("BaselibLoadAsyncTask", "download baselib invalid! use assert baselib. download_version=" + str1 + " assert_version=" + "1.17.0.00206");
+          QMLog.e("BaselibLoadAsyncTask", "download baselib invalid! use assert baselib. download_version=" + str1 + " assert_version=" + "1.18.0.00132");
         }
         if ((!localBaselibContent.isBaseLibInited()) && (i != 0))
         {
@@ -133,7 +133,7 @@ public class BaselibLoadAsyncTask
           localBaselibContent.miniappWebviewStr = FileUtils.readFileFromAssets(getContext(), "mini/QWebview.js");
           localBaselibContent.waWorkerStr = FileUtils.readFileFromAssets(getContext(), "mini/QWorker.js");
           localBaselibContent.pageFrameStr = FileUtils.readFileFromAssets(getContext(), "mini/QPageFrame.html");
-          localBaselibContent.version = "1.17.0.00206";
+          localBaselibContent.version = "1.18.0.00132";
         }
       }
       catch (Throwable localThrowable)

@@ -303,9 +303,9 @@ public class fo
         break label176;
         break;
         label379:
-        if ((arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bdoa))
+        if ((arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw))
         {
-          localObject = (bdoa)arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
+          localObject = (begw)arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
           this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
           a((CharacterStyle)localObject, this.jdField_b_of_type_JavaUtilArrayList.indexOf(localObject), m, k, false);
         }
@@ -318,9 +318,9 @@ public class fo
           localETFont.setSize(localRelativeSizeSpan.getSizeChange() * this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize());
           a(((CharSequence)localObject).toString(), m, k, localETFont, false, true);
         }
-        else if ((arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbaw))
+        else if ((arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtp))
         {
-          localObject = (bbaw)arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
+          localObject = (bbtp)arrayOffq[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
           this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
           a((CharacterStyle)localObject, this.jdField_b_of_type_JavaUtilArrayList.indexOf(localObject), m, k, false);
         }
@@ -394,7 +394,7 @@ public class fo
     return new Rect(paramInt, i, this.jdField_b_of_type_Int + paramInt, i + localfs.a());
   }
   
-  public bdoa a(int paramInt1, int paramInt2)
+  public begw a(int paramInt1, int paramInt2)
   {
     int i = 0;
     Rect localRect = new Rect(0, 0, 0, 0);
@@ -441,7 +441,7 @@ public class fo
     {
       if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        if (((CharacterStyle)this.jdField_b_of_type_JavaUtilArrayList.get(i) instanceof bbaw)) {
+        if (((CharacterStyle)this.jdField_b_of_type_JavaUtilArrayList.get(i) instanceof bbtp)) {
           this.d = i;
         }
       }
@@ -786,11 +786,11 @@ public class fo
         localETSegment.x = m;
         localETSegment.y = (i1 - i2 + j);
         localObject2 = localfm.a();
-        if ((localObject2 instanceof bbaw))
+        if ((localObject2 instanceof bbtp))
         {
-          localObject2 = (bbaw)localObject2;
-          ((bbaw)localObject2).jdField_a_of_type_Float = m;
-          ((bbaw)localObject2).b = localETSegment.y;
+          localObject2 = (bbtp)localObject2;
+          ((bbtp)localObject2).jdField_a_of_type_Float = m;
+          ((bbtp)localObject2).b = localETSegment.y;
         }
       }
       localETSegment.textSize = localfm.a();
@@ -856,13 +856,13 @@ public class fo
     int k;
     if ((this.d > -1) && (this.d < this.jdField_b_of_type_JavaUtilArrayList.size()))
     {
-      localObject1 = (bbaw)this.jdField_b_of_type_JavaUtilArrayList.get(this.d);
+      localObject1 = (bbtp)this.jdField_b_of_type_JavaUtilArrayList.get(this.d);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontSize);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontColor);
-      i = ((bbaw)localObject1).b();
-      k = (int)((bbaw)localObject1).b;
-      ((bbaw)localObject1).jdField_a_of_type_Boolean = false;
-      ((bbaw)localObject1).draw(paramCanvas, null, 0, 0, ((bbaw)localObject1).jdField_a_of_type_Float, (int)((bbaw)localObject1).b, 0, i + k, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i = ((bbtp)localObject1).b();
+      k = (int)((bbtp)localObject1).b;
+      ((bbtp)localObject1).jdField_a_of_type_Boolean = false;
+      ((bbtp)localObject1).draw(paramCanvas, null, 0, 0, ((bbtp)localObject1).jdField_a_of_type_Float, (int)((bbtp)localObject1).b, 0, i + k, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     if (this.jdField_a_of_type_ArrayOfFs == null) {}
     for (;;)

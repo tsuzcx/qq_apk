@@ -1,34 +1,27 @@
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class atby
-  implements bkhw
+public class atby
 {
-  atby(atbx paramatbx, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(atbx.a(this.jdField_a_of_type_Atbx).uniseq, this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
-      ChatActivityUtils.a(this.jdField_a_of_type_Atbx.jdField_a_of_type_AndroidContentContext, 2131717747, 1);
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      this.jdField_a_of_type_Bkho.cancel();
+      atbz.a(paramView, paramDrawable);
       return;
-      paramView = atvo.a(this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atbx.a(this.jdField_a_of_type_Atbx));
-      if (paramView.status == 16)
-      {
-        atvf.a(2131692466);
-        this.jdField_a_of_type_Bkho.cancel();
-        return;
-      }
-      atbx.a(this.jdField_a_of_type_Atbx).status = 1002;
-      atvo.a(this.jdField_a_of_type_Atbx.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     }
+    paramView.setBackgroundDrawable(paramDrawable);
+  }
+  
+  public static void a(View paramView, Runnable paramRunnable)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      atbz.a(paramView, paramRunnable);
+      return;
+    }
+    paramView.postDelayed(paramRunnable, 16L);
   }
 }
 

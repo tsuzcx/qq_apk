@@ -1,23 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
 
 public class aspk
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public aspk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public aspk(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Intent localIntent = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
-    localIntent.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
-    this.a.startActivityForResult(localIntent, 100);
-    bcst.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
+      this.a.setVisibility(8);
+    }
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

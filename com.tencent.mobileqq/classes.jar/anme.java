@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class anme
-  extends ayor
 {
-  public anme(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    if (FrameHelperActivity.a(this.a) != null) {
-      FrameHelperActivity.a(this.a).a(paramInt);
-    }
-    this.a.a("OnBatteryChangeObserver");
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "0";
+  public String g = "0";
 }
 
 

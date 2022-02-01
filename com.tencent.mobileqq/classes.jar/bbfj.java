@@ -1,26 +1,49 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class bbfj
-  implements Comparator<bblw>
+  implements beuq
 {
-  bbfj(bbfi parambbfi) {}
+  bbfj(bbfg parambbfg) {}
   
-  public int a(bblw parambblw1, bblw parambblw2)
+  public void onResp(bevm parambevm)
   {
-    int i = parambblw2.a[2] - parambblw1.a[2];
-    if (i != 0) {}
-    int j;
-    do
+    Object localObject = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
+    if (parambevm.jdField_a_of_type_Int != 0) {
+      lbj.c("CaptureVideoFilterManager", "download file failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    }
+    for (;;)
     {
-      return i;
-      j = parambblw1.a[0] - parambblw2.a[0];
-      i = j;
-    } while (j != 0);
-    parambblw1 = parambblw1.c.substring(parambblw1.a[0] + parambblw1.a[1]);
-    parambblw2 = parambblw2.c.substring(parambblw2.a[0] + parambblw2.a[1]);
-    return ChnToSpell.a(parambblw1, 2).compareTo(ChnToSpell.a(parambblw2, 2));
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambevm.jdField_a_of_type_Bevl.c)))
+      {
+        lbj.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
+        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+        return;
+      }
+      lbj.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = bbfg.b;
+        bhmi.a(parambevm.jdField_a_of_type_Bevl.c, (String)localObject, false);
+        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+        if ((bbfg.a(this.a).decrementAndGet() == 0) && (bbfg.a(this.a) != null))
+        {
+          bbfg.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException parambevm)
+      {
+        parambevm.printStackTrace();
+        lbj.c("CaptureVideoFilterManager", "unzip file failed.");
+      }
+    }
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

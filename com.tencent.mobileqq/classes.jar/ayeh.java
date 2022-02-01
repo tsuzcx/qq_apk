@@ -1,111 +1,93 @@
-import com.tencent.mobileqq.nearby.now.model.MedalItem;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.MedalInfo;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RichTitleElement;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-
 public class ayeh
 {
-  public int a;
-  public long a;
-  public MedalItem a;
-  public String a;
-  public List<NowQQLiveHomepageProto.RichTitleElement> a;
-  public boolean a;
-  public int b;
-  private long b = -1L;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public int e = -16711936;
-  public String e;
-  public int f = -16711936;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l = "NOW达人";
-  public String m;
-  public String n;
-  public String o;
-  private String p;
-  
-  public ayeh()
+  public static int a(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public String a()
-  {
-    if (this.p == null) {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0)) {
-        break label37;
+    if (paramCharSequence == null) {
+      return 0;
+    }
+    int m = paramCharSequence.length();
+    int i = 0;
+    int j = 0;
+    if (i < m)
+    {
+      if (paramCharSequence.charAt(i) < '') {}
+      for (int k = 1;; k = 2)
+      {
+        j += k;
+        i += 1;
+        break;
       }
     }
-    label37:
-    String str;
-    for (this.p = "";; this.p = str)
+    return j;
+  }
+  
+  public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int m = paramCharSequence.length();
+    int j = 0;
+    int i = paramInt1;
+    for (;;)
     {
-      return this.p;
-      str = "";
-      int i2 = this.jdField_a_of_type_JavaUtilList.size();
-      int i1 = 0;
-      if (i1 < i2)
-      {
-        NowQQLiveHomepageProto.RichTitleElement localRichTitleElement = (NowQQLiveHomepageProto.RichTitleElement)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (localRichTitleElement.uint32_type.get() == 2) {}
-        for (;;)
-        {
-          i1 += 1;
-          break;
-          str = localRichTitleElement.string_text.get();
+      CharSequence localCharSequence = paramCharSequence;
+      if (i < m) {
+        if (paramCharSequence.charAt(i) >= '') {
+          break label91;
         }
       }
+      label91:
+      for (int k = 1;; k = 2)
+      {
+        j = k + j;
+        if (j <= paramInt2) {
+          break;
+        }
+        paramInt2 = i;
+        if (i > 0)
+        {
+          paramInt2 = i;
+          if (Character.isHighSurrogate(paramCharSequence.charAt(i - 1))) {
+            paramInt2 = i - 1;
+          }
+        }
+        localCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+        return localCharSequence;
+      }
+      i += 1;
     }
   }
   
-  public void a(List<NowQQLiveHomepageProto.MedalInfo> paramList)
+  public static String a(long paramLong)
   {
-    paramList = (NowQQLiveHomepageProto.MedalInfo)paramList.get(0);
-    if (paramList.medal_type.get() != 3)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem == null) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem = new MedalItem();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.jdField_a_of_type_Int = paramList.medal_id.get();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.b = paramList.medal_version.get();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.c = paramList.medal_type.get();
-      if (paramList.medal_name.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.jdField_a_of_type_JavaLangString = paramList.medal_name.get().toStringUtf8();
-      }
-      if (paramList.medal_bg.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.e = paramList.medal_bg.get();
-      }
-      if (paramList.medal_frame.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.f = paramList.medal_frame.get();
-      }
-      if (paramList.medal_level.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.g = paramList.medal_level.get();
-      }
+    paramLong = System.currentTimeMillis() - paramLong;
+    if (paramLong < 3600000L) {
+      return paramLong / 60L / 1000L + 1L + anzj.a(2131701119);
     }
+    if (paramLong < 86400000L) {
+      return paramLong / 60L / 60L / 1000L + anzj.a(2131701126);
+    }
+    return paramLong / 24L / 60L / 60L / 1000L + anzj.a(2131701118);
   }
   
-  public String b()
+  public static String b(long paramLong)
   {
-    if ((a() != null) && (this.p.length() > 0)) {
-      return this.p;
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
     }
-    return this.i;
+    if (paramLong > 100000L) {
+      return "9.9万+";
+    }
+    return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+  }
+  
+  public static String c(long paramLong)
+  {
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if ((paramLong > 10000L) && (paramLong < 10000000L)) {
+      return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+    }
+    return String.format("%d千万", new Object[] { Long.valueOf(paramLong / 10000000L) });
   }
 }
 

@@ -1,78 +1,378 @@
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsShareMsg.1.1;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.comic.VipComicJumpActivity;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Iterator;
 
 public class bdoh
+  implements View.OnClickListener
 {
-  static String jdField_a_of_type_JavaLangString;
-  static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?=.*,)(?=.*#)(\\+*[0-9]+[\\-,]*)?(\\([0-9]+\\)[\\-,]*)?([0-9][0-9\\-,][0-9\\-,#]+#)");
-  public static final String b;
-  public static final Pattern b;
-  public static final Pattern c;
-  static final Pattern d;
-  public static final Pattern e;
-  public static final Pattern f;
-  public static final Pattern g = Pattern.compile(jdField_b_of_type_JavaLangString, 2);
+  private long jdField_a_of_type_Long;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "((100)(00|10|11|50|60|86))|(11185)|(12110)|((123)(10|15|18|20|33|36|45|48|51|55|58|61|65|66|69|80|95|98))|((950)(00|01|03|05|06|08|09|10|11|13|15|16|18|19|22|28|29|30|33|50|51|52|53|55|56|57|58|59|61|63|66|70|71|77|78|80|88|90|95|98|99))|((951)(00|01|02|03|05|06|07|08|09|11|13|15|16|17|18|19|21|22|23|28|30|31|32|33|35|37|38|39|48|51|55|58|60|66|68|69|77|78|80|81|85|86|88|90|95|98|99))|((955)(00|01|02|05|08|09|10|11|12|15|16|18|19|22|28|33|55|56|58|59|61|65|66|67|68|69|77|80|85|86|88|89|90|91|95|96|98|99))|((957)(00|01|02|68|77|88|98|99))|((958)(03|08|10|11|15|16|21|22|25|26|27|28|29|30|32|38|39|55|56|59|65|66|68|82|87|88))|((959)(02|06|09|33|50|51|56|59|63|68|69|93|96|98|99))|((96011))|((961)(02|03|10|30|48|56|89|98))|(96315)|(96677)|(96678)|(96822)|(\\+[0-9]+[\\-]*)?(\\([0-9]+\\)[\\-]*)?([0-9][0-9\\-][0-9\\-]+[0-9])";
-    jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("[\\d]{5,15}");
-    c = Pattern.compile("[\\d,]+");
-    d = Pattern.compile("((100)(00|10|11|50|60|86))|(11185)|(12110)|((123)(10|15|18|20|33|36|45|48|51|55|58|61|65|66|69|80|95|98))|((950)(00|01|03|05|06|08|09|10|11|13|15|16|18|19|22|28|29|30|33|50|51|52|53|55|56|57|58|59|61|63|66|70|71|77|78|80|88|90|95|98|99))|((951)(00|01|02|03|05|06|07|08|09|11|13|15|16|17|18|19|21|22|23|28|30|31|32|33|35|37|38|39|48|51|55|58|60|66|68|69|77|78|80|81|85|86|88|90|95|98|99))|((955)(00|01|02|05|08|09|10|11|12|15|16|18|19|22|28|33|55|56|58|59|61|65|66|67|68|69|77|80|85|86|88|89|90|91|95|96|98|99))|((957)(00|01|02|68|77|88|98|99))|((958)(03|08|10|11|15|16|21|22|25|26|27|28|29|30|32|38|39|55|56|59|65|66|68|82|87|88))|((959)(02|06|09|33|50|51|56|59|63|68|69|93|96|98|99))|((96011))|((961)(02|03|10|30|48|56|89|98))|(96315)|(96677)|(96678)|(96822)");
-    e = Pattern.compile(jdField_a_of_type_JavaLangString);
-    f = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
-    jdField_b_of_type_JavaLangString = bgny.c.pattern() + "|" + bgny.d.pattern() + "|" + "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+" + "|" + "(?=.*,)(?=.*#)(\\+*[0-9]+[\\-,]*)?(\\([0-9]+\\)[\\-,]*)?([0-9][0-9\\-,][0-9\\-,#]+#)" + "|" + "[\\d]{5,15}" + "|" + jdField_a_of_type_JavaLangString;
-  }
+  public bdoh(AbsShareMsg paramAbsShareMsg) {}
   
-  static List<bdni> a(String paramString)
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (a(paramString)) {}
+    if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
+    AbsShareMsg localAbsShareMsg;
+    Context localContext;
+    QQAppInterface localQQAppInterface;
     for (;;)
     {
-      return localArrayList;
-      if (bgny.jdField_b_of_type_JavaUtilRegexPattern.matcher(paramString).find())
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      Object localObject1 = paramView.getTag();
+      if ((localObject1 != null) && (AbsShareMsg.class.isInstance(localObject1)))
       {
-        Matcher localMatcher1 = g.matcher(paramString);
-        while (localMatcher1.find())
-        {
-          int i = localMatcher1.start();
-          int j = localMatcher1.end();
-          String str = paramString.substring(i, j);
-          if (bgny.c.matcher(str).find()) {
-            localArrayList.add(new bdni(str, i, j));
-          } else if (bgny.d.matcher(str).find()) {
-            localArrayList.add(new bdni(str, i, j));
-          } else if (jdField_a_of_type_JavaUtilRegexPattern.matcher(str).find()) {
-            localArrayList.add(new bdni(str, i, j));
-          } else if (c.matcher(str).find())
+        localAbsShareMsg = (AbsShareMsg)localObject1;
+        localContext = paramView.getContext();
+        if ((SplashActivity.class.isInstance(localContext)) || (ChatActivity.class.isInstance(localContext))) {
+          if (localContext == null)
           {
-            if ((j - i >= 5) && (j - i <= 16))
+            QLog.e("StructMsg", 1, "context is null, never do click, return");
+          }
+          else
+          {
+            localObject1 = ((FragmentActivity)localContext).getChatFragment();
+            if (localObject1 == null)
             {
-              Matcher localMatcher2 = d.matcher(str);
-              if (((j - i != 5) || (localMatcher2.find())) && ((i <= 0) || (!a(paramString.charAt(i - 1)))) && ((j >= paramString.length()) || (!a(paramString.charAt(j))))) {
-                localArrayList.add(new bdni(str, i, j));
+              QLog.e("StructMsg", 1, "context.getChatFragment is null, never do click, return");
+            }
+            else
+            {
+              localQQAppInterface = ((ChatFragment)localObject1).a();
+              if (localQQAppInterface != null)
+              {
+                if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData == null) || (!this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData.startsWith("mqqapi://qsubscribe"))) {
+                  break;
+                }
+                QLog.i("StructMsg", 2, "scheme jump to subscribe hybird");
+                try
+                {
+                  localObject1 = new Intent(localContext, JumpActivity.class);
+                  ((Intent)localObject1).setData(Uri.parse(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData));
+                  ((Intent)localObject1).putExtra("from", "from_aio");
+                  localContext.startActivity((Intent)localObject1);
+                }
+                catch (Exception localException1)
+                {
+                  localException1.printStackTrace();
+                }
               }
             }
-          }
-          else {
-            localArrayList.add(new bdni(str, i, j));
           }
         }
       }
     }
-  }
-  
-  public static boolean a(char paramChar)
-  {
-    return (paramChar >= '0') && (paramChar <= '9');
-  }
-  
-  private static boolean a(String paramString)
-  {
-    return (paramString == null) || ("".equals(paramString));
+    Object localObject5 = new bdoj(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, localQQAppInterface, paramView);
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAction;
+    Object localObject2 = localObject3;
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAction.equals("web"))
+    {
+      localObject2 = localObject3;
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl.contains("webcard.mp.qq.com"))
+      {
+        localObject3 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
+        localObject2 = "plugin";
+        ((AbsShareMsg)localObject3).mSourceAction = "plugin";
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.source_puin });
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "mSourceOnClickListener sourceAction = " + (String)localObject2);
+    }
+    if ("app".equals(localObject2)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData.startsWith("comic_plugin.apk")))
+      {
+        localObject2 = new Intent(localContext, VipComicJumpActivity.class);
+        ((Intent)localObject2).putExtra("options", "{\"from\":28}");
+        localContext.startActivity((Intent)localObject2);
+        localObject3 = aics.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData);
+        if ((localObject3 != null) && (localObject3.length >= 8))
+        {
+          if (!localObject3[7].equals("link")) {
+            break label1128;
+          }
+          localObject2 = localObject3[4];
+        }
+      }
+    }
+    for (;;)
+    {
+      bmbt.a(null, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uin, localContext, "3009", "2", "40059", localObject3[0], new String[] { localObject3[2], localObject3[4], localObject2 });
+      localObject2 = "";
+      label527:
+      bjqh.a().a(localQQAppInterface.getAccount(), "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid), "1000", "80", "0", false);
+      label557:
+      noe.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uin, "sourceclick", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, (String)localObject2);
+      bdll.b(localQQAppInterface, "CliOper", "", "", "0X800567C", "0X800567C", 0, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID + "", "", "", "");
+      bdll.b(localQQAppInterface, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID + "", "", "", "");
+      bdll.b(localQQAppInterface, "dc00898", "", "", "0X8007C39", "0X8007C39", 0, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID + "", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, "");
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.adverSign == 1) {
+        bdll.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uin, "0X800631F", "0X800631F", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.msgId, "", "", "");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 114) {
+        ThreadManager.post(new AbsShareMsg.1.1(this, localQQAppInterface), 0, null, false);
+      }
+      label919:
+      label1128:
+      if (((localAbsShareMsg instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)localAbsShareMsg).mIsPAVideoStructMsg))
+      {
+        localObject3 = (StructMsgForGeneralShare)localAbsShareMsg;
+        localObject5 = ((StructMsgForGeneralShare)localObject3).iterator();
+        label876:
+        while (((Iterator)localObject5).hasNext())
+        {
+          localObject2 = (bdol)((Iterator)localObject5).next();
+          if ((localObject2 instanceof bdsg))
+          {
+            Iterator localIterator = ((bdsg)localObject2).a.iterator();
+            bdts localbdts;
+            String str2;
+            String str3;
+            while (localIterator.hasNext())
+            {
+              localObject2 = (bdol)localIterator.next();
+              if ((localObject2 instanceof bdts))
+              {
+                localbdts = (bdts)localObject2;
+                if (localbdts.a())
+                {
+                  localObject2 = new sbg(null, ((StructMsgForGeneralShare)localObject3).source_puin, localbdts.ae, localbdts.aj);
+                  ((sbg)localObject2).a("aio_app_id", Long.valueOf(((StructMsgForGeneralShare)localObject3).mSourceAppid));
+                  str2 = ((sbg)localObject2).a().a();
+                  localObject2 = "";
+                  if (((StructMsgForGeneralShare)localObject3).uinType != 1008) {
+                    break label2149;
+                  }
+                  localObject2 = "1";
+                  ocd.a(null, "CliOper", "", "", "0X80065FE", "0X80065FE", 0, 0, (String)localObject2, Integer.toString(odr.a(localbdts.v, ((StructMsgForGeneralShare)localObject3).mSourceName)), "", str2, false);
+                  str3 = ((StructMsgForGeneralShare)localObject3).source_puin;
+                  if (localbdts.aj == null) {
+                    break label2200;
+                  }
+                }
+              }
+            }
+            for (localObject2 = localbdts.aj;; localObject2 = "0")
+            {
+              ocd.a(localQQAppInterface, str3, "0x8007410", "0x8007410", 0, 0, "1", "", (String)localObject2, str2, false);
+              break label919;
+              break label876;
+              if ((!localObject3[7].equals("scrawl_link")) || (localObject3.length < 9)) {
+                break label2326;
+              }
+              localObject2 = localObject3[8];
+              break;
+              if (((bdoj)localObject5).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData))
+              {
+                localObject3 = "run";
+                if (localAbsShareMsg.mSourceAppid == -1L) {}
+                for (localObject2 = "";; localObject2 = String.valueOf(localAbsShareMsg.mSourceAppid))
+                {
+                  bdll.b(null, "dc00898", "", "", "0X800A86D", "0X800A86D", 0, 0, (String)localObject2, "", "", "");
+                  localObject2 = localObject3;
+                  break;
+                }
+              }
+              if (((bdoj)localObject5).a(((FragmentActivity)localContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, localAbsShareMsg.mSourceName, localAbsShareMsg.mSourceActionData, localAbsShareMsg.mSource_A_ActionData))
+              {
+                localObject3 = "setup";
+                if (localAbsShareMsg.mSourceAppid == -1L) {}
+                for (localObject2 = "";; localObject2 = String.valueOf(localAbsShareMsg.mSourceAppid))
+                {
+                  bdll.b(null, "dc00898", "", "", "0X800A86E", "0X800A86E", 0, 0, (String)localObject2, "", "", "");
+                  localObject2 = localObject3;
+                  break;
+                }
+              }
+              ((bdoj)localObject5).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl);
+              localObject2 = "setup";
+              break label527;
+              if ("web".equals(localObject2))
+              {
+                localObject3 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl;
+                if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 114)
+                {
+                  localObject2 = ((MedalWallMng)localQQAppInterface.getManager(250)).a(true, localQQAppInterface.getCurrentAccountUin(), MedalWallMng.g);
+                  if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals("mqqapi://readinjoy/open?src_type=internal&version=1&target=1"))) {
+                    break label1661;
+                  }
+                  localObject3 = bhni.a(localQQAppInterface, localContext, (String)localObject2);
+                  if (localObject3 == null) {
+                    break label1634;
+                  }
+                  ((bhmr)localObject3).a();
+                  bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, (String)localObject2, "", "", "");
+                }
+                for (;;)
+                {
+                  localObject2 = "setup";
+                  break;
+                  localObject2 = localObject3;
+                  if (localAbsShareMsg.uinType != 1) {
+                    break label1440;
+                  }
+                  if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID != 116)
+                  {
+                    localObject2 = localObject3;
+                    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID != 123) {
+                      break label1440;
+                    }
+                  }
+                  localObject3 = String.format("%s&gc=%s", new Object[] { localObject3, axwz.a(localAbsShareMsg.uin) });
+                  localObject2 = localObject3;
+                  if (!QLog.isColorLevel()) {
+                    break label1440;
+                  }
+                  QLog.i("StructMsg", 2, "GeneralClickHandler clickWebMsg source confess groupUin:" + localAbsShareMsg.uin);
+                  localObject2 = localObject3;
+                  break label1440;
+                  localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject2)));
+                  break label1481;
+                  label1661:
+                  ((bdoj)localObject5).a((String)localObject2);
+                }
+              }
+              if ("plugin".equals(localObject2))
+              {
+                if ((localAbsShareMsg.uinType == 1) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 123))
+                {
+                  this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData = aqzo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, localAbsShareMsg.uin);
+                  boolean bool = aqzo.a(localQQAppInterface, localAbsShareMsg.uin);
+                  localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl;
+                  if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject2)) && ((localContext instanceof FragmentActivity)))
+                  {
+                    localObject5 = ((FragmentActivity)localContext).getChatFragment();
+                    if (localObject5 != null)
+                    {
+                      localObject2 = ((ChatFragment)localObject5).a();
+                      if ((localObject2 != null) && ((localObject2 instanceof TroopChatPie)))
+                      {
+                        localObject3 = "https://ti.qq.com/honest-say/group.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&gc=$GCODE$&src_type=share&from=appstore_aio&adtag=qq_to_qq".replace("$GCODE$", axwz.a(localAbsShareMsg.uin));
+                        if (QLog.isColorLevel()) {
+                          QLog.i("StructMsg", 2, "AbsShareMsg clickWebMsg confess groupUin:" + localAbsShareMsg.uin + ",paramUrl=" + (String)localObject3);
+                        }
+                        localObject5 = ((ChatFragment)localObject5).getActivity().getIntent();
+                        ((Intent)localObject5).putExtra("url", (String)localObject3);
+                        ((Intent)localObject5).putExtra("confess_half_screen_web", true);
+                        aqzo.a((TroopChatPie)localObject2);
+                      }
+                    }
+                  }
+                  if (!bool) {
+                    QQToast.a(BaseApplicationImpl.getContext(), aqzo.a, 0).a();
+                  }
+                  if (QLog.isColorLevel()) {
+                    QLog.i("StructMsg", 2, "GeneralClickHandler clickWebMsg source confess url:" + this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData);
+                  }
+                }
+                for (;;)
+                {
+                  if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName.equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.readInjoy)) {
+                    localObject2 = null;
+                  }
+                  try
+                  {
+                    localObject3 = Uri.parse(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl).getQueryParameter("article_id");
+                    localObject2 = localObject3;
+                  }
+                  catch (Exception localException2)
+                  {
+                    for (;;)
+                    {
+                      localException2.printStackTrace();
+                      continue;
+                      ocd.a(null, "", "0X8007756", "0X8007756", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl, "", "", false);
+                    }
+                  }
+                  if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                    break label2086;
+                  }
+                  ocd.a(null, "", "0X8007756", "0X8007756", 0, 0, (String)localObject2, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl, "", "", false);
+                  localObject2 = "plugin";
+                  break;
+                  ((bdoj)localObject5).c(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData);
+                }
+              }
+              ((bdoj)localObject5).a((String)localObject2, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData);
+              break label557;
+              if (localException2.uinType == 0)
+              {
+                localObject2 = "2";
+                break label1036;
+              }
+              if (localException2.uinType == 1)
+              {
+                localObject2 = "3";
+                break label1036;
+              }
+              if (localException2.uinType != 3000) {
+                break label1036;
+              }
+              localObject2 = "4";
+              break label1036;
+            }
+          }
+        }
+      }
+      label1036:
+      label1440:
+      label1481:
+      label1634:
+      label2149:
+      if ((localAbsShareMsg.mMsgServiceID != 81) || (localAbsShareMsg == null) || (TextUtils.isEmpty(localAbsShareMsg.mMsg_A_ActionData))) {
+        break;
+      }
+      label2086:
+      Object localObject4 = bhni.a(localQQAppInterface, localContext, localAbsShareMsg.mMsg_A_ActionData);
+      label2200:
+      if (localObject4 == null) {
+        break;
+      }
+      localObject2 = ((bhmr)localObject4).b("usertype");
+      localObject4 = ((bhmr)localObject4).b("unionid");
+      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty((CharSequence)localObject4))) {
+        break;
+      }
+      int i = 0;
+      try
+      {
+        int j = Integer.parseInt((String)localObject2);
+        i = j;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        label2298:
+        break label2298;
+      }
+      yup.a("share_uin_obj", "clk_tail", 0, i, new String[] { localObject4 });
+      break;
+      label2326:
+      String str1 = "";
+    }
   }
 }
 

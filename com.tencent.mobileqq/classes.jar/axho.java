@@ -1,23 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class axho
-  implements bkhw
+  implements DialogInterface.OnClickListener
 {
-  public axho(NearbyGuideActivity paramNearbyGuideActivity, bkho parambkho) {}
+  public axho(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bkho.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    paramDialogInterface.dismiss();
   }
 }
 

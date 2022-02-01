@@ -1,89 +1,31 @@
-import KQQ.InfoItem;
-import KQQ.PluginInfo;
-import KQQ.ReqGetPluginSettings;
-import KQQ.RespGetPluginSettings;
-import KQQ.SyncReq;
-import KQQ.SyncRes;
-import com.qq.jce.wup.UniPacket;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.search.HistorySearchEntryModel.2.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import mqq.app.Packet;
 
 public class bbyh
+  implements View.OnClickListener
 {
-  public static List<PluginInfo> a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    Object localObject = new UniPacket(true);
-    try
-    {
-      ((UniPacket)localObject).setEncodeName("utf-8");
-      ((UniPacket)localObject).decode(paramArrayOfByte);
-      paramArrayOfByte = (SyncRes)((UniPacket)localObject).get("SyncRes");
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.result == 0))
-      {
-        paramArrayOfByte = paramArrayOfByte.vecResPkg;
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-        {
-          paramArrayOfByte = (InfoItem)paramArrayOfByte.get(0);
-          if (paramArrayOfByte.vecValue != null)
-          {
-            paramArrayOfByte = new JceInputStream(paramArrayOfByte.vecValue);
-            paramArrayOfByte.setServerEncoding("utf-8");
-            localObject = new RespGetPluginSettings();
-            ((RespGetPluginSettings)localObject).readFrom(paramArrayOfByte);
-            if ((localObject != null) && (((RespGetPluginSettings)localObject).PluginInfoList != null))
-            {
-              paramArrayOfByte = ((RespGetPluginSettings)localObject).PluginInfoList;
-              return paramArrayOfByte;
-            }
-          }
-        }
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      return null;
-    }
-    return null;
-  }
+  bbyh(bbyf parambbyf) {}
   
-  public static void a(Packet paramPacket, List<Long> paramList)
+  public void onClick(View paramView)
   {
-    SyncReq localSyncReq = new SyncReq();
-    ArrayList localArrayList = new ArrayList();
-    InfoItem localInfoItem = new InfoItem();
-    localInfoItem.cOperType = 1;
-    localInfoItem.qwServiceId = 22L;
-    localInfoItem.qwTimeStamp = 0L;
-    localInfoItem.vecValue = a(paramList);
-    localArrayList.add(localInfoItem);
-    localSyncReq.vecReqPkg = localArrayList;
-    paramPacket.setSSOCommand("ProfileService.SyncReq");
-    paramPacket.setServantName("ProfileService");
-    paramPacket.setFuncName("SyncReq");
-    paramPacket.addRequestPacket("SyncReq", localSyncReq);
-  }
-  
-  public static byte[] a(List<Long> paramList)
-  {
-    ReqGetPluginSettings localReqGetPluginSettings = new ReqGetPluginSettings();
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (paramList.size() > 0)) {
-      localArrayList.addAll(paramList);
-    }
+    long l = ((Long)paramView.getTag(-1)).longValue();
+    int i = bbyf.a(this.a, this.a.a, l);
+    if (i == -1) {}
     for (;;)
     {
-      localReqGetPluginSettings.PluginList = localArrayList;
-      paramList = new JceOutputStream();
-      localReqGetPluginSettings.writeTo(paramList);
-      return paramList.toByteArray();
-      localArrayList.add(Long.valueOf(489L));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      SearchHistory localSearchHistory = (SearchHistory)((bbzf)this.a.a.get(i)).a();
+      if (localSearchHistory != null)
+      {
+        bcni.a("home_page", "del_history", new String[] { "" + i });
+        ThreadManager.postImmediately(new HistorySearchEntryModel.2.1(this, localSearchHistory, l), null, true);
+      }
     }
   }
 }

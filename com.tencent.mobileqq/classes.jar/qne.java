@@ -1,50 +1,18 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
 
 public class qne
-  extends MSFServlet
+  extends qng
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public qne(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      txi.a(paramFromServiceMsg);
-      if (getAppRuntime() != null) {
-        qnd.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
-      }
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
+    super(paramContext, paramaoof, paramsel);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public qjh g()
   {
-    if (paramIntent != null)
-    {
-      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      txi.a(localToServiceMsg);
-      if (localToServiceMsg != null)
-      {
-        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
-        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
-        paramPacket.setTimeout(localToServiceMsg.getTimeout());
-        paramPacket.setAttributes(localToServiceMsg.getAttributes());
-        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
-        if (!localToServiceMsg.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-      }
-    }
+    this.jdField_a_of_type_Qjg = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

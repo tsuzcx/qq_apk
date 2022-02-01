@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bnrp
-  implements View.OnClickListener
+public class bnrp
 {
-  bnrp(bnrn parambnrn) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.d();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bnrp
  * JD-Core Version:    0.7.0.1
  */

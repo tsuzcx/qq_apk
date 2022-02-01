@@ -1,30 +1,37 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aezh
-  extends aopa
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public aezh(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  
+  public aezh(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a = new WeakReference(paramVerifyDevLockObserver);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (this.a.get() == null)
     {
-      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
-      }
-      alzv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onReceive mObserver.get() is null");
+      return;
     }
+    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onReceive(paramNotifyType, paramInt, paramObject);
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a.get() == null)
+    {
+      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onVerifyClose mObserver.get() is null");
+      return;
+    }
+    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
   }
 }
 

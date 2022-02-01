@@ -1,22 +1,29 @@
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import java.util.List;
 
-class bguu
-  implements HostnameVerifier
+public class bguu
 {
-  bguu(bgut parambgut, String paramString, bgux parambgux) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b = 0;
+  public String b;
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public String a(int paramInt)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaLangString, paramSSLSession);
-    this.jdField_a_of_type_Bgut.a(this.jdField_a_of_type_Bgux, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.jdField_a_of_type_JavaLangString + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
-    return bool;
+    if ((this.a == null) || (this.a.size() == 0)) {
+      return "";
+    }
+    if (paramInt < this.a.size()) {
+      return (String)this.a.get(paramInt);
+    }
+    return (String)this.a.get(this.a.size() - 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bguu
  * JD-Core Version:    0.7.0.1
  */

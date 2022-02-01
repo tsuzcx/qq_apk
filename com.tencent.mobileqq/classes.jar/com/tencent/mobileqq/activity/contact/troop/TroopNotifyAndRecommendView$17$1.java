@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajdv;
-import ajez;
+import ajpe;
+import ajqi;
 
 public class TroopNotifyAndRecommendView$17$1
   implements Runnable
 {
-  public TroopNotifyAndRecommendView$17$1(ajez paramajez, String paramString) {}
+  public TroopNotifyAndRecommendView$17$1(ajqi paramajqi, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajez.a.a != null) {
-      this.jdField_a_of_type_Ajez.a.a.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Ajqi.a.a != null) {
+      this.jdField_a_of_type_Ajqi.a.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -1,21 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class wib
-  extends SimpleJob<Void>
+class wib
+  implements CompoundButton.OnCheckedChangeListener
 {
-  wib(String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  wib(wia paramwia) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = why.a();
-    yqp.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    if (paramBoolean)
+    {
+      wia.a(this.a);
+      if (wia.a(this.a)) {
+        yup.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
+      }
+    }
+    for (;;)
+    {
+      wia.a(this.a, paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      wia.b(this.a);
+      if (wia.a(this.a)) {
+        yup.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
+      }
+    }
   }
 }
 

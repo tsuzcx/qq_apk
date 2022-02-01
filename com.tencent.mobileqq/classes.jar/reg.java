@@ -1,11 +1,56 @@
-import java.util.HashMap;
+import android.support.v4.util.Pools.SynchronizedPool;
 
-class reg
+public class reg
+  extends ree<rek, rej, rei>
 {
-  int jdField_a_of_type_Int = 0;
-  HashMap<String, red> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final Pools.SynchronizedPool<rei> jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool = new Pools.SynchronizedPool(10);
+  private static final ref<rek, rej, rei> jdField_a_of_type_Ref = new reh();
   
-  reg(rec paramrec) {}
+  public reg()
+  {
+    super(jdField_a_of_type_Ref);
+  }
+  
+  private static rei a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    rei localrei2 = (rei)jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.acquire();
+    rei localrei1 = localrei2;
+    if (localrei2 == null) {
+      localrei1 = new rei();
+    }
+    localrei1.a = paramInt1;
+    localrei1.c = paramInt2;
+    localrei1.b = paramInt3;
+    return localrei1;
+  }
+  
+  public void a(rej paramrej, int paramInt1, int paramInt2)
+  {
+    a(paramrej, 1, a(paramInt1, 0, paramInt2));
+  }
+  
+  public void a(rej paramrej, int paramInt, rei paramrei)
+  {
+    try
+    {
+      super.a(paramrej, paramInt, paramrei);
+      if (paramrei != null) {
+        jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.release(paramrei);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(rej paramrej, int paramInt1, int paramInt2)
+  {
+    a(paramrej, 2, a(paramInt1, 0, paramInt2));
+  }
+  
+  public void c(rej paramrej, int paramInt1, int paramInt2)
+  {
+    a(paramrej, 4, a(paramInt1, 0, paramInt2));
+  }
 }
 
 

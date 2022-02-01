@@ -1,73 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aqtt
-  extends aqkz<aqtu>
+final class aqtt
+  extends aqrh
 {
-  @NonNull
-  public aqtu a(int paramInt)
-  {
-    return new aqtu();
-  }
+  aqtt(aqrf paramaqrf, ColorNote paramColorNote) {}
   
-  @Nullable
-  public aqtu a(aqlg[] paramArrayOfaqlg)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
-      return aqtu.a(paramArrayOfaqlg[0].a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqtu paramaqtu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "onUpdate " + paramaqtu.toString());
-    }
-  }
-  
-  public Class<aqtu> clazz()
-  {
-    return aqtu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 607;
+    this.jdField_a_of_type_Aqrf.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.parseBundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtt
  * JD-Core Version:    0.7.0.1
  */

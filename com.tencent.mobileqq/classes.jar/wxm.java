@@ -1,13 +1,4 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
-
-public class wxm
-  extends wla
-{
-  public wxm(wxk paramwxk, qqstory_service.RspForbidVideo paramRspForbidVideo)
-  {
-    super(paramRspForbidVideo.result);
-  }
-}
+public class wxm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

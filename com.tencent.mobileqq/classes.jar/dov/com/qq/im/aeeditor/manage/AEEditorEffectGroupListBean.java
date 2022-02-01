@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.manage;
 
 import android.text.TextUtils;
-import bnzb;
+import bpam;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class AEEditorEffectGroupListBean
       paramList.add(localAEEditorEffectGroupItem);
       i += 1;
       continue;
-      bnzb.d("AEEditorEffectGroupListBean", "group list empty.");
+      bpam.d("AEEditorEffectGroupListBean", "group list empty.");
     }
   }
   
@@ -63,7 +63,7 @@ public class AEEditorEffectGroupListBean
       paramList.add(localAEEditorEffectItem);
       i += 1;
       continue;
-      bnzb.d("AEEditorEffectGroupListBean", "effect list is empty.");
+      bpam.d("AEEditorEffectGroupListBean", "effect list is empty.");
     }
   }
   
@@ -81,7 +81,7 @@ public class AEEditorEffectGroupListBean
     }
     catch (Exception paramString)
     {
-      bnzb.d("AEEditorEffectGroupListBean", paramString.toString());
+      bpam.d("AEEditorEffectGroupListBean", paramString.toString());
     }
     return localAEEditorEffectGroupListBean;
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import bdjm;
+import bech;
 
 public final class TenDocWebPreLoadHelper$1
   implements Runnable
@@ -9,7 +9,7 @@ public final class TenDocWebPreLoadHelper$1
   
   public void run()
   {
-    bdjm.b(this.a);
+    bech.b(this.a);
   }
 }
 

@@ -1,16 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.9.1;
+import android.os.Handler;
 
-public class bnll
-  implements bnhm
+public abstract interface bnll
 {
-  bnll(bnlc parambnlc) {}
-  
-  public void a(Bitmap paramBitmap)
-  {
-    ThreadManager.excute(new VideoStoryCapturePart.9.1(this, paramBitmap), 64, null, false);
-  }
+  public abstract void a(Handler paramHandler);
 }
 
 

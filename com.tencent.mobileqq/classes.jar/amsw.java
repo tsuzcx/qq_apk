@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class amsw
-  implements DialogInterface.OnKeyListener
+public class amsw
+  implements View.OnClickListener
 {
-  amsw(amsv paramamsv, amtd paramamtd) {}
+  public amsw(ApolloGameNormalStartHandler.3 param3) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4) {
-      this.jdField_a_of_type_Amsv.a(this.jdField_a_of_type_Amtd);
-    }
-    return true;
+    amsv.a(this.a.this$0).dismiss();
+    amsv.a(this.a.this$0, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

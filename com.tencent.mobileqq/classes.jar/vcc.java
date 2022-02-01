@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vcc
-  implements vxe
+  implements DialogInterface.OnClickListener
 {
   vcc(vcb paramvcb) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    vrf.a(vcb.a(this.a).id.get(), 11, 3, 3, String.valueOf(1), "1", "", "", "", this.a.c());
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
-  {
-    vrf.a(vcb.a(this.a).id.get(), 11, 3, 2, String.valueOf(paramInt), "1", "", "", "", this.a.c());
+    vbr.a(this.a.jdField_a_of_type_Vbr).a(this.a.jdField_a_of_type_Vbr.a().hashCode(), vbr.a(this.a.jdField_a_of_type_Vbr), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 

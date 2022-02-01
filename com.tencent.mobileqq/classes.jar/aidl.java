@@ -1,28 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-class aidl
-  implements View.OnClickListener
+public abstract interface aidl
 {
-  aidl(aidf paramaidf) {}
+  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    Object localObject = paramView.getTag();
-    if (!(localObject instanceof Integer)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = this.a.a.jdField_a_of_type_JavaLangString;
-      if (this.a.a.jdField_a_of_type_Int == 1006) {
-        str = this.a.a.f;
-      }
-      aidf.a(this.a, (Integer)localObject, str);
-    }
-  }
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
+  
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

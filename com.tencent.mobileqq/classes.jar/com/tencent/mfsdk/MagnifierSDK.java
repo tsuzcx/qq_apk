@@ -1,25 +1,25 @@
 package com.tencent.mfsdk;
 
-import adbu;
-import adbv;
-import adbx;
-import adby;
-import adbz;
-import adcc;
-import adcg;
-import adcm;
-import adcq;
-import adcr;
-import addd;
-import addf;
-import addh;
-import addk;
-import addl;
+import adks;
+import adkt;
+import adkv;
+import adkw;
+import adkx;
+import adla;
+import adle;
+import adlk;
+import adlo;
+import adlp;
+import admb;
+import admd;
+import admf;
+import admi;
+import admj;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aqlk;
-import ardl;
+import aran;
+import arta;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.config.APMConfRoot;
@@ -34,25 +34,25 @@ import mqq.os.MqqHandler;
 public class MagnifierSDK
 {
   public static long a;
-  public static addl a;
+  public static admj a;
   public static SharedPreferences.Editor a;
   public static SharedPreferences a;
   private static MagnifierSDK jdField_a_of_type_ComTencentMfsdkMagnifierSDK;
   public static Object a;
   public static String a;
   public static MqqHandler a;
-  private adbv jdField_a_of_type_Adbv = new adcq();
-  private adby jdField_a_of_type_Adby = new addd();
-  private adbz jdField_a_of_type_Adbz = new addh();
-  adcc jdField_a_of_type_Adcc = null;
-  private adcg jdField_a_of_type_Adcg = new addf();
-  private adcm jdField_a_of_type_Adcm = new adcm();
-  private addk jdField_a_of_type_Addk = new addk();
+  private adkt jdField_a_of_type_Adkt = new adlo();
+  private adkw jdField_a_of_type_Adkw = new admb();
+  private adkx jdField_a_of_type_Adkx = new admf();
+  adla jdField_a_of_type_Adla = null;
+  private adle jdField_a_of_type_Adle = new admd();
+  private adlk jdField_a_of_type_Adlk = new adlk();
+  private admi jdField_a_of_type_Admi = new admi();
   private APMConfRoot jdField_a_of_type_ComTencentMfsdkConfigAPMConfRoot;
   private APMConfig jdField_a_of_type_ComTencentMfsdkConfigAPMConfig;
   public Config a;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private adcg b = new adcr();
+  private adle b = new adlp();
   
   static
   {
@@ -85,7 +85,7 @@ public class MagnifierSDK
   
   public static String a()
   {
-    return "V 8.4.1." + ardl.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
+    return "V 8.4.5." + arta.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
   }
   
   public static void a(long paramLong)
@@ -103,47 +103,47 @@ public class MagnifierSDK
     return "1";
   }
   
-  public adbu a()
+  public adks a()
   {
     return this.b;
   }
   
-  public adbv a()
+  public adkt a()
   {
-    return this.jdField_a_of_type_Adbv;
+    return this.jdField_a_of_type_Adkt;
   }
   
-  public adbx a()
+  public adkv a()
   {
-    return this.jdField_a_of_type_Adcm;
+    return this.jdField_a_of_type_Adlk;
   }
   
-  public adby a()
+  public adkw a()
   {
-    return this.jdField_a_of_type_Adby;
+    return this.jdField_a_of_type_Adkw;
   }
   
-  public adbz a()
+  public adkx a()
   {
-    return this.jdField_a_of_type_Adbz;
+    return this.jdField_a_of_type_Adkx;
   }
   
-  public adcc a()
+  public adla a()
   {
     try
     {
-      if (this.jdField_a_of_type_Adcc == null) {
-        this.jdField_a_of_type_Adcc = new adcc();
+      if (this.jdField_a_of_type_Adla == null) {
+        this.jdField_a_of_type_Adla = new adla();
       }
-      adcc localadcc = this.jdField_a_of_type_Adcc;
-      return localadcc;
+      adla localadla = this.jdField_a_of_type_Adla;
+      return localadla;
     }
     finally {}
   }
   
-  public adcg a()
+  public adle a()
   {
-    return this.jdField_a_of_type_Adcg;
+    return this.jdField_a_of_type_Adle;
   }
   
   public APMConfig a()
@@ -153,7 +153,7 @@ public class MagnifierSDK
     {
       if (this.jdField_a_of_type_ComTencentMfsdkConfigAPMConfig == null)
       {
-        this.jdField_a_of_type_ComTencentMfsdkConfigAPMConfRoot = ((APMConfRoot)aqlk.a().a(255));
+        this.jdField_a_of_type_ComTencentMfsdkConfigAPMConfRoot = ((APMConfRoot)aran.a().a(255));
         if (this.jdField_a_of_type_ComTencentMfsdkConfigAPMConfRoot != null) {
           this.jdField_a_of_type_ComTencentMfsdkConfigAPMConfig = this.jdField_a_of_type_ComTencentMfsdkConfigAPMConfRoot.pub;
         }
@@ -182,12 +182,12 @@ public class MagnifierSDK
     if (QLog.isColorLevel()) {
       QLog.i("MagnifierSDK.QAPM", 2, "beginScene:" + paramString);
     }
-    this.jdField_a_of_type_Addk.a(paramString);
+    this.jdField_a_of_type_Admi.a(paramString);
   }
   
-  public adbu b()
+  public adks b()
   {
-    return this.jdField_a_of_type_Addk;
+    return this.jdField_a_of_type_Admi;
   }
   
   public void b(String paramString)
@@ -195,7 +195,7 @@ public class MagnifierSDK
     if (QLog.isColorLevel()) {
       QLog.i("MagnifierSDK.QAPM", 2, "endScene:" + paramString);
     }
-    this.jdField_a_of_type_Addk.b(paramString);
+    this.jdField_a_of_type_Admi.b(paramString);
   }
 }
 

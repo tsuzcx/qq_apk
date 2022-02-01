@@ -1,18 +1,17 @@
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+import mqq.app.TicketManagerListener;
+
 public class bipz
+  implements TicketManagerListener
 {
-  public static String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onTicketRefreshed()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("||||||||||");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt2);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt3);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt4);
-    localStringBuilder.append("|");
-    return localStringBuilder.toString();
+    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
+    SwiftBrowserCookieMonster.d();
+    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
   }
 }
 

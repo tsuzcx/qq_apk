@@ -1,16 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-
-public class tiy
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface tiy
 {
-  public tiy(TabLayoutCompat paramTabLayoutCompat) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

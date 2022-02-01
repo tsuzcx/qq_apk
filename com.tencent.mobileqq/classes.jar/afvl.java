@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class afvl
-  implements afvp
+public class afvl
+  implements View.OnClickListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afvl(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 22);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    if (this.a.d == 11) {
+      bdll.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    }
+    this.a.b.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

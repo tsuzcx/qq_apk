@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
+import feedcloud.FeedCloudMeta.StImage;
 
-class wel
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class wel
 {
-  wel(wef paramwef) {}
+  public int a;
+  public FeedCloudMeta.StImage a;
+  public int b;
+  public int c;
   
-  public void onGlobalLayout()
+  public wel(QCircleTimeLineFeedItemView paramQCircleTimeLineFeedItemView, FeedCloudMeta.StImage paramStImage, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = wef.a(this.a).getHeight();
-    if (i != wef.b(this.a)) {
-      wef.a(this.a, i);
-    }
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StImage = paramStImage;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.b = paramInt3;
   }
 }
 

@@ -1,183 +1,84 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleLinearLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XPanelContainer;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 public class agal
-  extends BaseAdapter
+  extends axxn
 {
-  private float jdField_a_of_type_Float = 1.25F;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ArrayList<aihw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public agal(VisitorsActivity paramVisitorsActivity) {}
   
-  public agal(Context paramContext)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841465);
-  }
-  
-  private int a()
-  {
-    return 4;
-  }
-  
-  public Drawable a(String paramString)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    localURLDrawableOptions.mPlayGifImage = true;
-    return URLDrawable.getDrawable(new File(paramString), localURLDrawableOptions);
-  }
-  
-  public void a(List<aihw> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if ((paramList != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    }
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if ((paramBoolean) && (TextUtils.equals("0", paramString)))
     {
-      int i = a();
-      return (this.jdField_a_of_type_JavaUtilArrayList.size() + i - 1) / i;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int k = a();
-    int i = (XPanelContainer.jdField_a_of_type_Int - afur.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2) / 3;
-    int j;
-    if (i >= 0)
-    {
-      j = afur.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      if (i >= j) {
-        break label611;
+      if (this.a.jdField_a_of_type_Agbd != null) {
+        this.a.jdField_a_of_type_Agbd.notifyDataSetChanged();
       }
-      i = j;
+      if (this.a.b != null) {
+        this.a.b.notifyDataSetChanged();
+      }
     }
-    label419:
-    label576:
-    label585:
-    label611:
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
+    do
+    {
+      return;
+      if (paramInt2 == 1)
+      {
+        if (!paramBoolean)
+        {
+          this.a.jdField_a_of_type_Bacz.b(paramString2, paramInt1, false);
+          return;
+        }
+        this.a.jdField_a_of_type_Bacz.a(paramString2, paramInt1, false);
+        return;
+      }
+    } while (paramInt2 != 0);
+    this.a.jdField_a_of_type_Bacz.a(Long.parseLong(paramString2));
+  }
+  
+  protected void a(boolean paramBoolean, ArrayList<axvx> paramArrayList, int paramInt)
+  {
+    if ((paramBoolean) && (paramArrayList != null)) {}
     for (;;)
     {
-      j = (this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4) / 8;
-      Object localObject2;
-      Object localObject3;
-      if (paramView == null)
+      axvx localaxvx;
+      try
       {
-        localObject1 = new StickerBubbleLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-        ((LinearLayout)localObject1).setMinimumHeight(afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + i);
-        ((LinearLayout)localObject1).setOrientation(0);
-        j = 0;
-        for (;;)
+        if (paramArrayList.size() > 0)
         {
-          paramView = (View)localObject1;
-          if (j >= k) {
-            break;
+          paramArrayList = paramArrayList.iterator();
+          if (paramArrayList.hasNext())
+          {
+            localaxvx = (axvx)paramArrayList.next();
+            if (paramInt != 511) {
+              break label121;
+            }
+            if (localaxvx.jdField_a_of_type_Int != 0) {
+              continue;
+            }
+            bacz localbacz = this.a.jdField_a_of_type_Bacz;
+            String str = localaxvx.jdField_a_of_type_Long + "";
+            int i = localaxvx.b;
+            localbacz.a(str, localaxvx.c + i, false);
+            continue;
           }
-          paramView = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-          paramView.setGravity(17);
-          localObject2 = new LinearLayout.LayoutParams(-2, -2);
-          if (j == 0) {}
-          paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-          localObject2 = new LinearLayout.LayoutParams(afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-          ((LinearLayout.LayoutParams)localObject2).topMargin = (i / 2);
-          ((LinearLayout.LayoutParams)localObject2).bottomMargin = (i / 2);
-          localObject3 = new StickerBubbleImageView(this.jdField_a_of_type_AndroidContentContext);
-          ((View)localObject3).setPadding(14, 14, 14, 14);
-          int m = afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-          int n = afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ShapeDrawable localShapeDrawable = new ShapeDrawable(new OvalShape());
-          localShapeDrawable.setIntrinsicHeight(m);
-          localShapeDrawable.setIntrinsicWidth(n);
-          localShapeDrawable.getPaint().setColor(1728053247);
-          ((View)localObject3).setBackgroundDrawable(localShapeDrawable);
-          ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          paramView.addView((View)localObject3);
-          ((LinearLayout)localObject1).addView(paramView);
-          j += 1;
         }
-        i = 0;
-        break;
+        return;
       }
-      Object localObject1 = (ViewGroup)paramView;
-      if (paramInt == 0)
+      catch (Exception paramArrayList)
       {
-        ((ViewGroup)localObject1).setPadding(0, i / 2, 0, 0);
-        i = 0;
-        if (i >= k) {
-          break label585;
-        }
-        j = k * paramInt + i;
-        localObject2 = ((ViewGroup)((ViewGroup)localObject1).getChildAt(i)).getChildAt(0);
-        if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label576;
-        }
-        ((View)localObject2).setVisibility(0);
-        localObject3 = (aihw)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        if (localObject3 != null) {
-          ((ImageView)localObject2).setImageDrawable(a(((aihw)localObject3).jdField_a_of_type_JavaLangString));
-        }
-        ((View)localObject2).setTag(Integer.valueOf(j));
-        if (AppSetting.c) {
-          ((View)localObject2).setContentDescription(aihx.a(((aihw)localObject3).jdField_a_of_type_Int) + anni.a(2131707091));
-        }
+        paramArrayList.printStackTrace();
       }
-      for (;;)
-      {
-        i += 1;
-        break label419;
-        ((ViewGroup)localObject1).setPadding(0, 0, 0, 0);
-        break;
-        ((View)localObject2).setVisibility(4);
+      label121:
+      if (localaxvx.jdField_a_of_type_Int == 0) {
+        this.a.jdField_a_of_type_Bacz.a(localaxvx.jdField_a_of_type_Long);
       }
-      paramView.setOnLongClickListener(null);
-      bgfz.a(paramView, false);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
     }
   }
 }

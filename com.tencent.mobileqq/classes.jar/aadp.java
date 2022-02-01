@@ -1,21 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import com.tencent.biz.richframework.sender.Interceptor.OfflineAndRetryInterceptor.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aadp
-  implements View.OnTouchListener
+public class aadp
+  implements aadq
 {
-  aadp(aadj paramaadj) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String a()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      aadj.a(this.a, 0);
+    return "OfflineAndRetryInterceptor";
+  }
+  
+  public void a(Object paramObject, aadu paramaadu)
+  {
+    if ((paramObject == null) || (paramaadu == null)) {
+      return;
     }
-    if (aadj.a(this.a) != null) {
-      aadj.a(this.a).a(paramMotionEvent);
+    if (!nny.a(BaseApplication.getContext()))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new OfflineAndRetryInterceptor.1(this));
+      paramaadu.a(false, -1L, "", paramObject, null);
+      return;
     }
-    return true;
+    paramaadu.a(paramObject);
   }
 }
 

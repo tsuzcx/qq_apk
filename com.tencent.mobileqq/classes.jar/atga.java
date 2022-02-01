@@ -1,29 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class atga
-  extends atfi
+public class atga
+  implements DialogInterface.OnClickListener
 {
-  public atga(atfe paramatfe)
-  {
-    super(paramatfe);
-  }
+  public atga(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateRefuseByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.b(this.jdField_a_of_type_Atfe, 11, 6);
-    atfe.c(this.jdField_a_of_type_Atfe, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Atfi = new atfy(this.jdField_a_of_type_Atfe);
+    this.a.a = false;
+    this.a.l = false;
+    this.a.doOnBackPressed();
   }
 }
 

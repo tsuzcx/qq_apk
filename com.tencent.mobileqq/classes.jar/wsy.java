@@ -1,87 +1,63 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
 
 public class wsy
-  extends wlf<wsz>
 {
-  static final String jdField_a_of_type_JavaLangString = wjz.a("StorySvc.get_tab_node_vid_list");
-  wrs jdField_a_of_type_Wrs;
-  String b = "";
-  String c = "";
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public wsy(wrs paramwrs, String paramString1, String paramString2)
+  public wsy() {}
+  
+  public wsy(String paramString1, String paramString2, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Wrs = paramwrs;
-    this.b = paramString1;
-    this.c = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public static wsz a(wrs paramwrs, byte[] paramArrayOfByte)
+  public ReportWatchVideoEntry a()
   {
-    qqstory_service.RspMsgTabNodeVideoList localRspMsgTabNodeVideoList = new qqstory_service.RspMsgTabNodeVideoList();
-    if (paramArrayOfByte != null) {}
-    try
-    {
-      localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);
-      return new wsz(paramwrs, localRspMsgTabNodeVideoList, paramArrayOfByte);
-    }
-    catch (InvalidProtocolBufferMicroException paramwrs)
-    {
-      yqp.d("Q.qqstory:ReqMsgTabNodeVideoList", "" + paramwrs);
-    }
-    return null;
+    ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
+    localReportWatchVideoEntry.vid = this.jdField_a_of_type_JavaLangString;
+    localReportWatchVideoEntry.videoUnionId = this.jdField_b_of_type_JavaLangString;
+    localReportWatchVideoEntry.isLiveVideo = this.jdField_a_of_type_Boolean;
+    localReportWatchVideoEntry.createTime = this.jdField_a_of_type_Long;
+    localReportWatchVideoEntry.source = this.jdField_a_of_type_Int;
+    localReportWatchVideoEntry.vidType = this.jdField_b_of_type_Int;
+    return localReportWatchVideoEntry;
   }
   
-  public String a()
+  public void a(ReportWatchVideoEntry paramReportWatchVideoEntry)
   {
-    return jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaLangString = paramReportWatchVideoEntry.vid;
+    this.jdField_b_of_type_JavaLangString = paramReportWatchVideoEntry.videoUnionId;
+    this.jdField_a_of_type_Boolean = paramReportWatchVideoEntry.isLiveVideo;
+    this.jdField_a_of_type_Long = paramReportWatchVideoEntry.createTime;
+    this.jdField_a_of_type_Int = paramReportWatchVideoEntry.source;
+    this.jdField_b_of_type_Int = paramReportWatchVideoEntry.vidType;
   }
   
-  public wsz a(byte[] paramArrayOfByte)
+  public boolean equals(Object paramObject)
   {
-    return a(this.jdField_a_of_type_Wrs, paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgTabNodeVideoList localReqMsgTabNodeVideoList = new qqstory_service.ReqMsgTabNodeVideoList();
-    localReqMsgTabNodeVideoList.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wrs.jdField_a_of_type_JavaLangString));
-    localReqMsgTabNodeVideoList.req_time_stamp.set(this.jdField_a_of_type_Wrs.c);
-    localReqMsgTabNodeVideoList.node_type.set(this.jdField_a_of_type_Wrs.jdField_a_of_type_Int);
-    localReqMsgTabNodeVideoList.recommend_id.set(this.jdField_a_of_type_Wrs.e);
-    localReqMsgTabNodeVideoList.source.set(this.jdField_a_of_type_Wrs.f);
-    if (this.jdField_a_of_type_Wrs.jdField_a_of_type_Int == 12)
-    {
-      if ((TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c))) {
-        localReqMsgTabNodeVideoList.start_vid.set(this.c);
-      }
-      if (!TextUtils.isEmpty(this.b)) {
-        localReqMsgTabNodeVideoList.cookie.set(this.b);
-      }
-      localReqMsgTabNodeVideoList.page_size.set(20);
+    if (this == paramObject) {
+      return true;
     }
-    Long localLong = zkx.a();
-    if (localLong != null) {
-      localReqMsgTabNodeVideoList.adcode.set(localLong.longValue());
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
     }
-    localReqMsgTabNodeVideoList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Wrs.k)) {
-      localReqMsgTabNodeVideoList.passthrough.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wrs.k));
-    }
-    return localReqMsgTabNodeVideoList.toByteArray();
+    paramObject = (wsy)paramObject;
+    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
   }
   
   public String toString()
   {
-    return "MsgTabNodeVidListRequest{nodeInfo.unionId=" + this.jdField_a_of_type_Wrs.jdField_a_of_type_JavaLangString + ", mCookie='" + this.b + '\'' + ", mStartVid='" + this.c + '\'' + "} " + super.toString();
+    return "InnerVideoItem { mVid=" + this.jdField_a_of_type_JavaLangString + " mVideoUid=" + this.jdField_b_of_type_JavaLangString + " mIsLiveVideo=" + this.jdField_a_of_type_Boolean + " mCreateTime=" + this.jdField_a_of_type_Long + " mSource=" + this.jdField_a_of_type_Int + " mVidType=" + this.jdField_b_of_type_Int + "}";
   }
 }
 

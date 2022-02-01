@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class aymk
-  implements View.OnClickListener
+class aymk
+  implements Handler.Callback
 {
-  public aymk(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  aymk(aymj paramaymj) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    AccountOnlineStateActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      aymj.a(this.a);
+    }
   }
 }
 

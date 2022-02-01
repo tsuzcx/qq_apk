@@ -1,21 +1,23 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/tribe/TribeWebViewPlugin$BaseTribePluginProcessor;", "", "plugin", "Lcom/tencent/biz/tribe/TribeWebViewPlugin;", "(Lcom/tencent/biz/tribe/TribeWebViewPlugin;)V", "getPlugin", "()Lcom/tencent/biz/tribe/TribeWebViewPlugin;", "process", "", "json", "Lorg/json/JSONObject;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class aanr
+public class aanr
 {
-  @NotNull
-  private final aanq a;
+  private static SharedPreferences a;
   
-  public aanr(@NotNull aanq paramaanq)
+  public static SharedPreferences a(Context paramContext)
   {
-    this.a = paramaanq;
-  }
-  
-  @NotNull
-  public final aanq a()
-  {
-    return this.a;
+    if (a == null)
+    {
+      if (paramContext == null)
+      {
+        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
+        return null;
+      }
+      a = paramContext.getSharedPreferences("biz_subscribe", 0);
+    }
+    return a;
   }
 }
 

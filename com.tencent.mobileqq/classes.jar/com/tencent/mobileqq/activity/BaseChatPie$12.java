@@ -33,7 +33,7 @@ class BaseChatPie$12
       }
       else
       {
-        str1 = this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131690563);
+        str1 = this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131690559);
       }
       if (QLog.isColorLevel()) {
         QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "set left text from forward: " + str1);

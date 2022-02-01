@@ -1,16 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class bpjp
-  implements View.OnTouchListener
+public abstract interface bpjp
 {
-  bpjp(bpjo parambpjo) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
 }
 
 

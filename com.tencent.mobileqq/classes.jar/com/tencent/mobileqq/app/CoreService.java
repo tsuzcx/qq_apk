@@ -22,26 +22,26 @@ public class CoreService
   extends Service
 {
   static final int NOTIFICATION_ID = ;
+  private static final String S_VIVO_FILE_PATH = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "enableKernelServiceInVivo";
   private static final String TAG = "GuardManager";
   static CoreService sCore = null;
   static boolean sDisableForeground;
-  private static boolean sEnableKernerServiceInVivo = new File(sVivoFilePath).exists();
-  private static final String sVivoFilePath = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "enableKernelServiceInVivo";
+  private static boolean sEnableKernerServiceInVivo = new File(S_VIVO_FILE_PATH).exists();
   
   public static Notification fakeNotification(boolean paramBoolean)
   {
     if (paramBoolean)
     {
       localObject = new Notification();
-      ((Notification)localObject).icon = 2130840337;
-      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2131559653);
+      ((Notification)localObject).icon = 2130840347;
+      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2131559659);
       return localObject;
     }
     Object localObject = new Intent(BaseApplicationImpl.sApplication, SplashActivity.class);
     ((Intent)localObject).addFlags(67108864);
     localObject = PendingIntent.getActivity(BaseApplicationImpl.sApplication, 0, (Intent)localObject, 402653184);
     NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplicationImpl.sApplication);
-    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130840337);
+    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130840347);
     localBuilder.setContentIntent((PendingIntent)localObject);
     return localBuilder.build();
   }
@@ -81,7 +81,7 @@ public class CoreService
     //   32: astore_1
     //   33: invokestatic 205	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   36: ifeq -8 -> 28
-    //   39: ldc 10
+    //   39: ldc 11
     //   41: iconst_2
     //   42: ldc 207
     //   44: aload_1
@@ -149,7 +149,7 @@ public class CoreService
     //   28: astore_0
     //   29: invokestatic 205	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   32: ifeq -8 -> 24
-    //   35: ldc 10
+    //   35: ldc 11
     //   37: iconst_2
     //   38: ldc 207
     //   40: aload_0

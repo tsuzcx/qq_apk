@@ -1,28 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView;
 
 public class ahno
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aggl
 {
-  public ahno(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  PokeEmoItemView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
-    if (UnlimitedBladeWorks.a(this.a)) {
-      paramValueAnimator.leftMargin = 0;
-    }
-    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
-    {
-      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
-      return;
-      paramValueAnimator.leftMargin = i;
-    }
-  }
+  public ahno(ahnm paramahnm) {}
 }
 
 

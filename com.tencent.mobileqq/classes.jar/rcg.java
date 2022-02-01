@@ -1,7 +1,18 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$Companion;", "", "()V", "EXPIRED_OR_DELETED", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rcg {}
+public class rcg
+  extends pfh
+{
+  public rcg(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  
+  public void c(List<TagInfo> paramList)
+  {
+    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
+    pfd.a().b(this);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

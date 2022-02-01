@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bdox;
-import bdpt;
-import bhce;
+import beht;
+import beip;
+import bicq;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 class ThemeJsPlugin$8
-  extends bdox
+  extends beht
 {
   private long startTime = SystemClock.uptimeMillis();
   
@@ -19,7 +19,7 @@ class ThemeJsPlugin$8
   
   public void onComplete(String paramString, int paramInt)
   {
-    if ((paramInt == 0) && (!paramString.startsWith(bhce.a))) {
+    if ((paramInt == 0) && (!paramString.startsWith(bicq.a))) {
       return;
     }
     String str2 = ThemeUtil.getIDFromSCID(paramString);
@@ -37,7 +37,7 @@ class ThemeJsPlugin$8
     QLog.d("ThemeJsPlugin", 1, "onComplete :" + paramInt + ", scid " + paramString + ", themeInfo:" + localThemeInfo);
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.startTime;
-    this.this$0.reportTheme("theme_download", 0, ThemeJsPlugin.access$200(this.this$0), l1 - l2, "VipThemeMallDowned", "ok", "200", 153, bdpt.a, 9, localThemeInfo.version, "");
+    this.this$0.reportTheme("theme_download", 0, ThemeJsPlugin.access$200(this.this$0), l1 - l2, "VipThemeMallDowned", "ok", "200", 153, beip.a, 9, localThemeInfo.version, "");
     if (!str2.equals(ThemeJsPlugin.access$200(this.this$0)))
     {
       QLog.e("ThemeJsPlugin", 1, "onComplete not currentId: " + ThemeJsPlugin.access$200(this.this$0));

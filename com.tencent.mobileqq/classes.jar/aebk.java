@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public class aebk
-  implements DialogInterface.OnClickListener
+public final class aebk
+  implements bivv
 {
-  public aebk(DialogActivity paramDialogActivity) {}
+  public aebk(Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    bdjg.a(this.a.app, this.a);
-    this.a.finish();
-    bcst.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

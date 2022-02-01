@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.widget.HongBaoListView;
 
-public class blhz
-  extends aomz
+public abstract interface blhz
 {
-  public blhz(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
-  {
-    super(paramQQAppInterface, paramProxyManager);
-  }
+  public abstract void a();
   
-  protected void a()
-  {
-    blhx.a().c();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  protected void b()
-  {
-    blhx.a().d();
-  }
+  public abstract void a(HongBaoListView paramHongBaoListView);
+  
+  public abstract void a(HongBaoListView paramHongBaoListView, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(HongBaoListView paramHongBaoListView);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

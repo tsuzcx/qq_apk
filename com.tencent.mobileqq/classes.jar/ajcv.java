@@ -1,30 +1,31 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ajcv<T>
-  extends ajcz<T>
+public class ajcv
+  extends aoau
 {
-  protected int a;
-  protected Context a;
-  protected LayoutInflater a;
+  public ajcv(AddContactsView paramAddContactsView) {}
   
-  public ajcv(Context paramContext, int paramInt)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    a(new ajcw(this, paramInt));
-  }
-  
-  protected abstract ajdf a(Context paramContext, ViewGroup paramViewGroup, int paramInt);
-  
-  protected abstract void a(ajdf paramajdf, T paramT, int paramInt);
-  
-  public ajdf b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
-  {
-    return a(paramContext, paramViewGroup, paramInt);
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
+    }
+    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
+    }
+    if (this.a.c) {
+      this.a.f();
+    }
+    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
+    {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
+      this.a.jdField_a_of_type_Anve.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
   }
 }
 

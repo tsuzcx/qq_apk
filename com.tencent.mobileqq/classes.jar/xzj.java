@@ -1,15 +1,31 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xzj
-  implements xzy
+  extends QQUIEventReceiver<xzh, wmd>
 {
-  public xzj(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a(String paramString)
+  public xzj(@NonNull xzh paramxzh)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
-    }
+    super(paramxzh);
+  }
+  
+  public void a(@NonNull xzh paramxzh, @NonNull wmd paramwmd)
+  {
+    if ((paramxzh.a == null) || (paramwmd.a == null) || (!TextUtils.equals(paramxzh.a.a, paramwmd.a.mVid))) {}
+    do
+    {
+      return;
+      paramxzh.i();
+      paramxzh = (xrb)paramxzh.a(xrb.class);
+    } while (paramxzh == null);
+    paramxzh.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wmd.class;
   }
 }
 

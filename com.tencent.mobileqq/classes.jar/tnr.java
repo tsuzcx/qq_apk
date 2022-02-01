@@ -1,39 +1,104 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import java.lang.ref.WeakReference;
 
-public class tnr
-  implements rqa
+class tnr
+  implements ViewBase.OnClickListener
 {
-  public tnr(BridgeModule paramBridgeModule, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2) {}
+  tnr(tnq paramtnq) {}
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public void onClick(ViewBase paramViewBase)
   {
-    Iterator localIterator = paramList.iterator();
-    UgcVideo localUgcVideo;
-    do
-    {
-      if (!localIterator.hasNext()) {
+    boolean bool1;
+    int i;
+    if ((this.a.jdField_a_of_type_Tnp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData instanceof ProteusItemData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        bool1 = true;
+        i = -1;
+        if (tpp.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) {
+          tpp.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+        }
         break;
       }
-      localUgcVideo = (UgcVideo)localIterator.next();
-    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
-    for (;;)
+    }
+    do
     {
-      if (localUgcVideo != null)
+      do
       {
-        oat.a("0X800AC61", rjh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a());
-        rps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localUgcVideo);
-        BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        do
+        {
+          do
+          {
+            return;
+            ssu.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+          } while (!tno.b);
+          tno.c = true;
+        } while (tnp.a(this.a.jdField_a_of_type_Tnp) == null);
+        tnp.a(this.a.jdField_a_of_type_Tnp).q();
+        tnp.a(this.a.jdField_a_of_type_Tnp).o();
         return;
+        bool1 = true;
+        i = 4;
+        break;
+        bool1 = true;
+        i = 3;
+        break;
+        bool1 = false;
+        i = 5;
+        break;
+        bool1 = true;
+        i = 8;
+        break;
+        bool1 = true;
+        i = 1000;
+        break;
+        bool1 = true;
+        i = 2;
+        break;
+        paramViewBase = tqb.a((ProteusBannerVideoItemData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      } while (paramViewBase == null);
+      if (!ubd.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase)) {
+        break label317;
       }
-      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
+    } while (tnp.a(this.a.jdField_a_of_type_Tnp) == null);
+    tnp.a(this.a.jdField_a_of_type_Tnp).q();
+    return;
+    label317:
+    if (tnp.a(this.a.jdField_a_of_type_Tnp) != null) {}
+    for (boolean bool2 = tnp.a(this.a.jdField_a_of_type_Tnp).a();; bool2 = false)
+    {
+      paramViewBase.setClickPos(i);
+      Object localObject = new tlt(bool2);
+      if (i == 8) {
+        ((tlt)localObject).c = true;
+      }
+      localObject = ubd.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramViewBase, null, 2, bool1, (tlt)localObject);
+      if (localObject == null) {
+        break;
+      }
+      ((GdtHandler.Params)localObject).f = tpz.b((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      ubd.a((GdtHandler.Params)localObject, this.a.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      tno.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = (GdtHandler.Params)localObject;
+      tno.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      paramViewBase.setClickPos(i);
+      tku.a(true, (Context)this.a.jdField_a_of_type_Tnp.jdField_a_of_type_JavaLangRefWeakReference.get(), paramViewBase, 2, nzq.a, 3);
+      if (tnp.a(this.a.jdField_a_of_type_Tnp) == null) {
+        break;
+      }
+      tnp.a(this.a.jdField_a_of_type_Tnp).q();
       return;
-      localUgcVideo = null;
     }
   }
 }

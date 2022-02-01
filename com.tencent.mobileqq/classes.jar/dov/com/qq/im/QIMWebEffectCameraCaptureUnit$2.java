@@ -1,24 +1,24 @@
 package dov.com.qq.im;
 
-import bncs;
+import boea;
 import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class QIMWebEffectCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMWebEffectCameraCaptureUnit$2(bncs parambncs) {}
+  public QIMWebEffectCameraCaptureUnit$2(boea paramboea) {}
   
   public void run()
   {
-    if ((bncs.a(this.this$0)) && (bncs.b(this.this$0))) {
-      this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, bncs.a(this.this$0), bncs.b(this.this$0));
+    if ((boea.a(this.this$0)) && (boea.b(this.this$0))) {
+      this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, boea.a(this.this$0), boea.b(this.this$0));
     }
     do
     {
       return;
-      if ((bncs.c(this.this$0)) && (bncs.d(this.this$0)))
+      if ((boea.c(this.this$0)) && (boea.d(this.this$0)))
       {
-        this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(101, bncs.c(this.this$0), bncs.d(this.this$0));
+        this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(101, boea.c(this.this$0), boea.d(this.this$0));
         return;
       }
       if ((this.this$0.jdField_a_of_type_Boolean) && (this.this$0.y))

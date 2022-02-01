@@ -1,21 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public class bnml
-  extends RecyclerView.ViewHolder
+class bnml
+  implements bmux
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  bnml(bnmk parambnmk, String paramString) {}
   
-  public bnml(View paramView)
+  public void a()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368138));
-    this.b = ((ImageView)paramView.findViewById(2131368533));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366609));
+    if (this.jdField_a_of_type_Bnmk.a != null)
+    {
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
+      this.jdField_a_of_type_Bnmk.a.callJs(str);
+    }
   }
 }
 

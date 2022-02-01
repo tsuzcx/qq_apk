@@ -1,27 +1,57 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.List;
 
 public class uvs
-  implements TextWatcher
+  extends uvh
 {
-  public uvs(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public uvs(urv paramurv)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
+    super(paramurv);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public List<usv> a(ArrayList paramArrayList)
   {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      QQToast.a(this.a, 0, this.a.getString(2131694606), 0).b(this.a.getTitleBarHeight());
+    return WSVerticalDataManager.a().a(paramArrayList);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    uqf.d("WSVerticalForRecommendPresenter", "WSVerticalForRecommendPresenter onPageSelected: " + paramInt);
+    urv localurv = a();
+    if (localurv == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ((paramViewHolder instanceof uuy))
+        {
+          paramViewHolder = new uhe(4, new Object[] { Integer.valueOf(paramInt), ((uuy)paramViewHolder).a });
+          wjj.a().dispatch(paramViewHolder);
+        }
+      } while (paramInt <= 0);
+      if (ugd.a().a(paramInt, 2))
+      {
+        localurv.a(paramInt, 2);
+        return;
+      }
+    } while (ugd.a().d(2) != paramInt);
+    localurv.a(ugd.a().a(2));
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    urv localurv = a();
+    if (localurv == null) {
+      return false;
     }
+    WSVerticalDataManager.a().a(2, paramBoolean1, paramBoolean2, paramString, localurv.a(), this, null);
+    return true;
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

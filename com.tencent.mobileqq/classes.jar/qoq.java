@@ -1,16 +1,33 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSAllInOneJump;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class qoq
-  implements IPTSAllInOneJump
+  implements pre
 {
-  public void allInOneJump(String paramString)
+  public qoq(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
-    if (BaseActivity.sTopActivity != null) {
-      pha.a(BaseActivity.sTopActivity, paramString);
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
     }
+    if (paramBoolean)
+    {
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+        return;
+      }
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131717203, 0).a();
   }
 }
 

@@ -1,6 +1,6 @@
 public abstract interface lsj
 {
-  public abstract void a(int paramInt, lsp paramlsp);
+  public abstract void a(lsh paramlsh, int paramInt1, int paramInt2);
 }
 
 

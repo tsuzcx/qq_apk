@@ -1,24 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenAuthorityAccountView.DelAccountRunnable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class bimd
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public bimd(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
+  public bimd(WebProcessManager paramWebProcessManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new OpenAuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
+    int i = paramIntent.getIntExtra("user_type", 0);
+    int j = paramIntent.getIntExtra("from_type", 0);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramContext instanceof QQAppInterface))
+    {
+      paramContext = (antk)((QQAppInterface)paramContext).a(53);
+      if (paramContext != null) {
+        paramContext.a(i, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
+      }
     }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a = null;
   }
 }
 

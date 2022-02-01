@@ -2,7 +2,7 @@ package cooperation.qqreader.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
-import blpt;
+import bmqv;
 
 public final class QRDebugEnvUrlUtils
 {
@@ -34,8 +34,8 @@ public final class QRDebugEnvUrlUtils
   
   public static void initTestEnv(Context paramContext)
   {
-    jdField_a_of_type_Boolean = blpt.a(paramContext);
-    jdField_a_of_type_JavaLangString = blpt.a(paramContext);
+    jdField_a_of_type_Boolean = bmqv.a(paramContext);
+    jdField_a_of_type_JavaLangString = bmqv.a(paramContext);
   }
   
   public static boolean isDebugEnv()
@@ -45,7 +45,7 @@ public final class QRDebugEnvUrlUtils
   
   public static void setTestEnv(Context paramContext, boolean paramBoolean, String paramString)
   {
-    blpt.a(paramContext, paramBoolean, paramString);
+    bmqv.a(paramContext, paramBoolean, paramString);
     jdField_a_of_type_Boolean = paramBoolean;
     jdField_a_of_type_JavaLangString = paramString;
   }

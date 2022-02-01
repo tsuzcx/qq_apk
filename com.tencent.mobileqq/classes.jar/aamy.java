@@ -1,26 +1,39 @@
+import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aamy
-  implements bkhw
+class aamy
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public aamy(FollowTextView paramFollowTextView, bkho parambkho) {}
+  aamy(aamx paramaamx, Rect paramRect) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
-      return;
-    }
-    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
-    switch (paramInt)
+    switch (paramMotionEvent.getAction())
     {
     }
-    for (;;)
+    int i;
+    int j;
+    do
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
-    }
+      while (!paramMotionEvent.hasNext())
+      {
+        do
+        {
+          return true;
+          i = (int)(paramMotionEvent.getX() + 0.5F);
+          j = (int)(paramMotionEvent.getY() + 0.5F);
+        } while (aamx.a(this.jdField_a_of_type_Aamx) == null);
+        paramMotionEvent = aamx.a(this.jdField_a_of_type_Aamx).iterator();
+      }
+      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
+    return false;
   }
 }
 

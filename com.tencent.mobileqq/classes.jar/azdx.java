@@ -1,36 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import java.util.HashSet;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
 
-public class azdx
-  implements Animator.AnimatorListener
+class azdx
 {
-  public azdx(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, azea paramazea, View paramView) {}
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public ARTipsCircleProgress a;
+  public ViewGroup b;
+  public TextView b;
+  public ViewGroup c;
+  public TextView c;
+  public ViewGroup d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Azea.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Azea.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  private azdx(azdh paramazdh) {}
 }
 
 

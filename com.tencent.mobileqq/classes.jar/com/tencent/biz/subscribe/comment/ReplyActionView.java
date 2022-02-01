@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -34,14 +34,14 @@ public class ReplyActionView
   
   private void a()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131558765, this, true);
-    this.a = ((TextView)((View)localObject).findViewById(2131371319));
-    this.b = ((TextView)((View)localObject).findViewById(2131369786));
-    int i = afur.a(12.0F, getContext().getResources());
-    localObject = getResources().getDrawable(2130850843);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131558763, this, true);
+    this.a = ((TextView)((View)localObject).findViewById(2131371426));
+    this.b = ((TextView)((View)localObject).findViewById(2131369884));
+    int i = agej.a(12.0F, getContext().getResources());
+    localObject = getResources().getDrawable(2130850870);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.a.setCompoundDrawables(null, null, (Drawable)localObject, null);
-    localObject = getResources().getDrawable(2130850844);
+    localObject = getResources().getDrawable(2130850871);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
   }

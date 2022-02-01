@@ -1,15 +1,11 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.View;
 
-class rdk
-  extends rcs
+public class rdk
+  extends blsy<rdu>
 {
-  rdk(rdd paramrdd, AppInterface paramAppInterface) {}
-  
-  public Drawable a()
+  public rdk(rdj paramrdj, View paramView)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
+    super(paramView);
   }
 }
 

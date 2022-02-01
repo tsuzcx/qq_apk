@@ -1,33 +1,49 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public class ppu
-  extends RecyclerView.ItemDecoration
+public abstract interface ppu
 {
-  private int jdField_a_of_type_Int;
+  public abstract int a();
   
-  public ppu(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract ArticleInfo a();
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
-    {
-      paramRect.left = (this.jdField_a_of_type_Int * 2);
-      paramRect.right = this.jdField_a_of_type_Int;
-      return;
-    }
-    paramRect.left = (this.jdField_a_of_type_Int / 2);
-    paramRect.right = this.jdField_a_of_type_Int;
-  }
+  public abstract VafContext a();
+  
+  public abstract sel a();
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract ArticleInfo b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract boolean f();
+  
+  public abstract int g();
+  
+  public abstract boolean g();
+  
+  public abstract int h();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
 }
 
 

@@ -1,37 +1,48 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.remote.IServiceHandler.Stub;
-import cooperation.qzone.remote.RemoteServiceProxy;
-import cooperation.qzone.remote.SendMsg;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.ilive.IliveLaunchFragment;
+import kotlin.Pair;
 
 public class bmfb
-  implements ServiceConnection
+  implements EnterCallback
 {
-  public bmfb(RemoteServiceProxy paramRemoteServiceProxy) {}
+  public bmfb(IliveLaunchFragment paramIliveLaunchFragment) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onCloseLoadingView()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    if (bmfy.a) {
+      IliveLaunchFragment.access$900(this.a);
     }
-    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
-    if (RemoteServiceProxy.access$000(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
-      this.a.sendMsg(paramComponentName);
-    }
-    this.a.onBaseServiceConnected();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onEnterComplete()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    if (bmfy.a) {
+      return;
     }
-    this.a.serviceHandler = null;
+    bmfw.b("IliveLaunch pluginParse");
+    if (bapg.b()) {}
+    for (String str = "1";; str = "0")
+    {
+      biaq.b("live_player_ready", new Pair[] { new Pair("status_msg", str) });
+      if (bmfv.a().a("ANCHOR_ENTER_ROOM"))
+      {
+        bmfv.a().a("ANCHOR_ENTER_ROOM").a("auchor_enter");
+        bmfv.a().a("ANCHOR_ENTER_ROOM");
+      }
+      if (bmfv.a().a("WATCH_ENTER_ROOM"))
+      {
+        bmfv.a().a("WATCH_ENTER_ROOM").a("watch_enter");
+        bmfv.a().a("WATCH_ENTER_ROOM");
+      }
+      bmfv.a().a("PLUGIN_LOAD").a("enter_complete");
+      return;
+    }
+  }
+  
+  public void onShowLoadingView(View paramView)
+  {
+    bmfw.a("IliveLaunch pluginParse");
   }
 }
 

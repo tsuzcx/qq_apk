@@ -1,31 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class bnkj
-  implements Animation.AnimationListener
+final class bnkj
+  implements FilenameFilter
 {
-  bnkj(bnkd parambnkd) {}
+  bnkj(long paramLong1, long paramLong2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean accept(File paramFile, String paramString)
   {
-    if ((bnkd.a(this.a) != null) && (!bnkd.a(this.a)))
+    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
+    long l;
+    do
     {
-      bnkd.a(this.a).setAlpha(1.0F);
-      bnkd.a(this.a).setVisibility(4);
+      File localFile;
+      do
+      {
+        do
+        {
+          return false;
+        } while (paramString.split("_").length == 2);
+        localFile = new File(paramFile + File.separator + paramString);
+      } while ((localFile == null) || (!localFile.exists()));
+      l = localFile.lastModified();
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
+      }
+    } while ((l < this.a) || (l > this.b));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
     }
-    if (bnkd.e(this.a) != null)
-    {
-      bnkd.f(this.a).a(327684, new Object[0]);
-      bnkd.g(this.a).a(196612, new Object[0]);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bnkd.a(this.a).a().a(true, 150);
+    return true;
   }
 }
 

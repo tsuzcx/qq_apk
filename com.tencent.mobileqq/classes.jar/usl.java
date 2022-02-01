@@ -1,19 +1,6 @@
-public class usl
+class usl
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  
-  public usl(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
+  private static final usj a = new usj(null);
 }
 
 

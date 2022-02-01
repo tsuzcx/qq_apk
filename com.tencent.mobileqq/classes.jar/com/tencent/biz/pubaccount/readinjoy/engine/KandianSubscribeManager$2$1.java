@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pmc;
+import pev;
 
 public class KandianSubscribeManager$2$1
   implements Runnable
 {
-  public KandianSubscribeManager$2$1(pmc parampmc) {}
+  public KandianSubscribeManager$2$1(pev parampev) {}
   
   public void run()
   {

@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
-import abcr;
-import abcu;
+import abgu;
+import abgx;
 import android.app.Activity;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 
 public class Share$7$1
   implements Runnable
 {
-  public Share$7$1(abcu paramabcu, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
+  public Share$7$1(abgx paramabgx, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Abcu.a.a(this.jdField_a_of_type_Abcu.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
+    this.jdField_a_of_type_Abgx.a.a(this.jdField_a_of_type_Abgx.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
   }
 }
 

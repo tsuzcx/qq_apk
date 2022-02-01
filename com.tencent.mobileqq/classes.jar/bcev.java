@@ -1,139 +1,99 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcev
-  implements Comparable<bcev>
+  extends bcfs
 {
-  public int a;
-  public long a;
-  public bcef a;
-  public bceh a;
-  public bceu a;
-  public bcfn a;
-  public bcfq a;
-  public MessageForShortVideo a;
-  public String a;
-  public ArrayList<bceh> a;
-  public boolean a;
-  public String[] a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e = 201;
-  public int f;
+  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  public CharSequence a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bcev()
+  public bcev(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = ayxx.a();
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
   
-  public int a(bcev parambcev)
+  public CharSequence a()
   {
-    if (this.e < parambcev.e) {
-      return -1;
-    }
-    if (this.e > parambcev.e) {
-      return 1;
-    }
-    return 0;
+    return bcni.a(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(bcef parambcef)
+  public String a()
   {
-    int j = 6;
-    if (parambcef == null)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    Context localContext = paramView.getContext();
+    if ((localContext != null) && ((localContext instanceof BaseActivity)))
     {
-      ayxi.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "downInfo == null");
-      return;
+      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.class_index.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_flag.get(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), 4);
+      bcni.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
+      bcni.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
     }
-    parambcef.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Bcef = parambcef;
-    int i;
-    if (parambcef.e == 1002) {
-      i = 7;
-    }
-    for (;;)
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
+  }
+  
+  public boolean b()
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.jdField_b_of_type_JavaLangString = ayxi.a(this.jdField_a_of_type_Bcef.jdField_b_of_type_Int, 0, i);
-      return;
-      if (parambcef.e == 1006)
-      {
-        i = 18;
-      }
-      else if (parambcef.e == 1004)
-      {
-        i = 16;
-      }
-      else
-      {
-        i = j;
-        if (parambcef.e != 1001) {
-          if (parambcef.e == 1005)
-          {
-            i = 17;
-          }
-          else
-          {
-            i = j;
-            if (parambcef.e == 1003) {
-              i = 9;
-            }
-          }
-        }
+      localStringBuilder = new StringBuilder().append("name = ").append(this.jdField_a_of_type_JavaLangCharSequence).append(", isCert = ");
+      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
+        break label102;
       }
     }
-  }
-  
-  public void a(bceh parambceh)
-  {
-    if (parambceh == null)
+    label102:
+    for (boolean bool = true;; bool = false)
     {
-      ayxi.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "forwardInfo == null");
-      return;
-    }
-    parambceh.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Bceh = parambceh;
-    this.jdField_b_of_type_JavaLangString = ayxi.a(this.jdField_a_of_type_Bceh.jdField_b_of_type_Int, 2, 20);
-  }
-  
-  public void a(bcfn parambcfn)
-  {
-    int i = 6;
-    if (parambcfn == null)
-    {
-      ayxi.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "upInfo == null");
-      return;
-    }
-    parambcfn.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Bcfn = parambcfn;
-    if (parambcfn.jdField_b_of_type_Int == 0) {}
-    for (;;)
-    {
-      this.jdField_b_of_type_JavaLangString = ayxi.a(this.jdField_a_of_type_Bcfn.jdField_b_of_type_Int, 1, i);
-      return;
-      if (parambcfn.jdField_b_of_type_Int == 3000) {
-        i = 17;
-      } else if (parambcfn.jdField_b_of_type_Int == 1) {
-        i = 9;
+      QLog.d("GroupNetSearchModelPublicAcntItem", 2, bool);
+      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
+        break;
       }
+      return true;
     }
+    return false;
   }
   
-  public void a(bcfq parambcfq)
+  public int c()
   {
-    this.jdField_a_of_type_Bcfq = parambcfq;
+    return 1;
   }
   
-  public void a(MessageForShortVideo paramMessageForShortVideo)
+  public CharSequence c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    return anzj.a(2131704249);
   }
   
-  public void a(ArrayList<bceh> paramArrayList)
+  public CharSequence d()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    return null;
   }
 }
 

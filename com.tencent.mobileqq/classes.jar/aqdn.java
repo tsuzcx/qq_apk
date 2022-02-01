@@ -1,36 +1,84 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.content.Context;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.app.Activity;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aqdn
-  implements aqdf
+class aqdn
+  implements BusinessObserver
 {
-  private String a = "SubscribeColorNoteLauncher";
+  aqdn(aqdm paramaqdm, Activity paramActivity) {}
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
-    {
-      paramColorNote = paramColorNote.getReserve();
-      if (paramColorNote == null) {
-        return;
-      }
-      paramColorNote = (SubscribeColorNoteReserveBean)aajb.a(paramColorNote);
-      if (paramColorNote != null)
-      {
-        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
-        localStFeed.mergeFrom(paramColorNote.feedData);
-        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
-        aaae.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
-        return;
-      }
+    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131690128);
+    localObject1 = str;
+    if (paramBoolean) {
+      localObject2 = str;
     }
-    catch (Exception paramContext)
+    for (;;)
     {
-      paramContext.printStackTrace();
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localObject1 = str;
+        if (paramBundle != null)
+        {
+          localObject2 = str;
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localObject2 = str;
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          localObject1 = str;
+          localObject2 = str;
+          if (localGetAppinfoResponse.has())
+          {
+            localObject1 = str;
+            localObject2 = str;
+            if (localGetAppinfoResponse.ret.get() == 0)
+            {
+              localObject1 = str;
+              localObject2 = str;
+              if (localGetAppinfoResponse.androidInfo != null)
+              {
+                localObject2 = str;
+                paramBundle = localGetAppinfoResponse.androidInfo;
+                localObject2 = str;
+                if (paramBundle.messagetail != null) {
+                  continue;
+                }
+                localObject1 = "";
+                localObject2 = localObject1;
+                ((String)localObject1).trim();
+              }
+            }
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        localObject1 = localObject2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ArkWebModule", 2, paramBundle.getMessage());
+        localObject1 = localObject2;
+        continue;
+      }
+      paramBundle = (Bundle)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramBundle = this.jdField_a_of_type_AndroidAppActivity.getString(2131690128);
+      }
+      localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131690129);
+      this.jdField_a_of_type_Aqdm.a(String.format((String)localObject1, new Object[] { paramBundle }));
+      aqdm.a(this.jdField_a_of_type_Aqdm).show();
+      return;
+      localObject2 = str;
+      localObject1 = paramBundle.messagetail.get();
     }
   }
 }

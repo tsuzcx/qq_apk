@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import aune;
+import avfe;
 
 public class NowLiveFragment$3$3
   implements Runnable
 {
-  public NowLiveFragment$3$3(aune paramaune) {}
+  public NowLiveFragment$3$3(avfe paramavfe) {}
   
   public void run()
   {

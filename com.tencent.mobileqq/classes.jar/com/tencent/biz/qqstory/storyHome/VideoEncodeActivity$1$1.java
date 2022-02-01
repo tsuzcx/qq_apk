@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class VideoEncodeActivity$1$1
@@ -11,7 +11,7 @@ class VideoEncodeActivity$1$1
   public void run()
   {
     this.a.this$0.b();
-    QQToast.a(this.a.this$0, anni.a(2131714805), 0).a();
+    QQToast.a(this.a.this$0, anzj.a(2131714914), 0).a();
   }
 }
 

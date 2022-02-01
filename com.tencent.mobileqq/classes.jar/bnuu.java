@@ -1,25 +1,35 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.view.View;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
-class bnuu
-  implements Observer<Boolean>
+public class bnuu
+  implements ModuleDownloadListener
 {
-  bnuu(bnur parambnur) {}
+  public bnuu(VipARUtils.4 param4) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onDownloadCanceled(String paramString)
   {
-    if (paramBoolean == null) {}
-    while (!bnur.b(this.a)) {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
       return;
     }
-    View localView = bnur.a(this.a);
-    if (paramBoolean.booleanValue()) {}
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bnuq.c(), " onDownloadSucceed = ", bnuq.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bnuq.d());
   }
 }
 

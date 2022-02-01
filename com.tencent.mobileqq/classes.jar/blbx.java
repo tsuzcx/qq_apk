@@ -1,9 +1,8 @@
-public class blbx
+abstract class blbx
 {
-  public int a = -1;
-  public long a;
-  public blbw a;
-  public long b;
+  public void a() {}
+  
+  public abstract boolean a(String paramString, blcq paramblcq);
 }
 
 

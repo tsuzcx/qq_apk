@@ -1,134 +1,246 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.IRequestCallback;
-import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ImageFilterResponse;
-import com.tencent.mobileqq.highway.segment.HwResponse;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import java.util.ArrayList;
 
-class bdsn
-  implements IRequestCallback
+public class bdsn
+  extends bdom
 {
-  bdsn(bdsl parambdsl) {}
-  
-  public void onFailed(int paramInt)
+  public View a(Context paramContext, View paramView, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.f = SystemClock.uptimeMillis();
-    this.a.a(paramInt, "getFilterTimeoutError");
-  }
-  
-  public void onResponse(HwResponse paramHwResponse)
-  {
-    long l1 = 0L;
-    this.a.f = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG>getFilterResponse  retCode : " + paramHwResponse.retCode + " htCost:" + paramHwResponse.htCost + " front:" + paramHwResponse.cacheCost + " onResponse" + paramHwResponse);
-    }
-    Object localObject;
-    if (paramHwResponse.retCode == 0)
+    Resources localResources = paramContext.getResources();
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramView != null)
     {
-      if (!this.a.jdField_a_of_type_Ywj.b.equals(this.a.jdField_a_of_type_Ywl.jdField_a_of_type_JavaLangString)) {
-        return;
+      localObject1 = localObject2;
+      if ((paramView instanceof RelativeLayout))
+      {
+        paramView = (RelativeLayout)paramView;
+        if (paramView.getChildCount() == j)
+        {
+          i = 0;
+          localObject1 = paramView;
+          if (i >= j) {
+            break label1053;
+          }
+          localObject1 = (bdol)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          ((bdol)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject2 = ((bdol)localObject1).jdField_a_of_type_JavaLangString;
+          if ("summary".equals(localObject2))
+          {
+            localObject1 = (bdtj)localObject1;
+            if (paramBoolean)
+            {
+              ((bdtj)localObject1).b("black");
+              label122:
+              localObject2 = ((bdtj)localObject1).f();
+              if ((localObject2 == null) || (!((String)localObject2).equals("1"))) {
+                break label189;
+              }
+              ((bdtj)localObject1).c("22");
+              ((bdtj)localObject1).a(true);
+              ((bdtj)localObject1).a(paramContext, paramView.findViewById(2), paramBundle);
+            }
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            ((bdtj)localObject1).b(null);
+            break label122;
+            label189:
+            if ((localObject2 != null) && (((String)localObject2).equals("2")))
+            {
+              ((bdtj)localObject1).c("44");
+              ((bdtj)localObject1).a(true);
+              ((bdtj)localObject1).a(paramContext, paramView.findViewById(3), paramBundle);
+            }
+            else
+            {
+              ((bdtj)localObject1).c("30");
+              ((bdtj)localObject1).b(20);
+              ((bdtj)localObject1).a(paramContext, paramView.findViewById(4), paramBundle);
+              continue;
+              if ("picture".equals(localObject2))
+              {
+                localObject1 = (bdqo)localObject1;
+                if ((((bdqo)localObject1).c != null) && (!((bdqo)localObject1).c.equals("")))
+                {
+                  localObject2 = ((bdqo)localObject1).a(paramContext, paramView.findViewById(6), true, paramBundle);
+                  ((View)localObject2).setClickable(true);
+                  ((View)localObject2).setOnClickListener((View.OnClickListener)localObject1);
+                }
+                else
+                {
+                  ((bdqo)localObject1).a(paramContext, paramView.findViewById(5), true, paramBundle);
+                }
+              }
+            }
+          }
+        }
+        paramView.removeAllViews();
+        localObject1 = paramView;
       }
-      this.a.jdField_a_of_type_Ywj.jdField_a_of_type_Long = this.a.f;
-      localObject = paramHwResponse.mBuExtendinfo;
-      if ((localObject == null) || (localObject.length <= 0)) {
-        break label493;
-      }
+    }
+    if (localObject1 == null)
+    {
+      localObject1 = new RelativeLayout(paramContext);
+      ((RelativeLayout)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     }
     for (;;)
     {
-      try
+      LinearLayout localLinearLayout = new LinearLayout(paramContext);
+      localLinearLayout.setOrientation(1);
+      localLinearLayout.setGravity(3);
+      localLinearLayout.setId(1);
+      paramView = new RelativeLayout.LayoutParams(-2, -2);
+      paramView.addRule(9, -1);
+      paramView.rightMargin = agej.a(20.0F, localResources);
+      ((RelativeLayout)localObject1).addView(localLinearLayout, paramView);
+      paramView = null;
+      i = 0;
+      Object localObject3;
+      if (i < j)
       {
-        localImageFilterResponse = new CSDataHighwayHead.ImageFilterResponse();
-        localImageFilterResponse.mergeFrom((byte[])localObject);
-        localObject = localImageFilterResponse.image_data.get();
-        i = localImageFilterResponse.cost_time.get();
-        l4 = i;
-        l3 = l1;
-        l2 = l3;
-      }
-      catch (InvalidProtocolBufferMicroException paramHwResponse)
-      {
-        try
+        localObject2 = (bdol)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        ((bdol)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject3 = ((bdol)localObject2).jdField_a_of_type_JavaLangString;
+        if ("summary".equals(localObject3))
         {
-          l2 = paramHwResponse.cacheCost;
-          l3 = l1;
-          l2 = paramHwResponse.htCost + l2;
-          l3 = l2;
-          this.a.b(((ByteStringMicro)localObject).toStringUtf8());
-          l1 = l4;
-          this.a.jdField_a_of_type_JavaUtilHashMap.put("teg_Costtime", String.valueOf(l1));
-          this.a.jdField_a_of_type_JavaUtilHashMap.put("detailPic_Costtime", String.valueOf(l2));
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramHwResponse)
-        {
-          CSDataHighwayHead.ImageFilterResponse localImageFilterResponse;
-          int i;
-          long l4;
-          long l3;
-          long l2;
-          break label270;
-        }
-        paramHwResponse = paramHwResponse;
-        l4 = 0L;
-        l3 = l1;
-      }
-      label270:
-      l1 = l4;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("ArtFilterUploadProcessor", 2, "sendAckToBDHServer onResponse ", paramHwResponse);
-        l2 = l3;
-        l1 = l4;
-        continue;
-        this.a.a(paramHwResponse.buzRetCode, "getFilterError");
-        if (paramHwResponse.retCode == 222)
-        {
-          if (this.a.jdField_a_of_type_Ywj.b.equals(this.a.jdField_a_of_type_Ywl.jdField_a_of_type_JavaLangString))
+          localObject2 = (bdtj)localObject2;
+          if (paramBoolean)
           {
-            this.a.jdField_a_of_type_Ywj.jdField_a_of_type_Long = 0L;
-            this.a.jdField_a_of_type_Ywj.jdField_a_of_type_JavaLangString = null;
-            l3 = 0L;
-            l2 = l1;
-            l1 = l3;
+            ((bdtj)localObject2).b("black");
+            label527:
+            localObject3 = ((bdtj)localObject2).f();
+            if ((localObject3 == null) || (!((String)localObject3).equals("1"))) {
+              break label621;
+            }
+            ((bdtj)localObject2).c("22");
+            ((bdtj)localObject2).a(true);
+            localObject2 = ((bdtj)localObject2).a(paramContext, null, paramBundle);
+            ((View)localObject2).setId(2);
+            ((View)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+            localLinearLayout.addView((View)localObject2, 0);
           }
         }
-        else if (paramHwResponse.retCode == 221)
+      }
+      label1053:
+      label1066:
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((bdtj)localObject2).b(null);
+        break label527;
+        label621:
+        if ((localObject3 != null) && (((String)localObject3).equals("2")))
         {
-          paramHwResponse = paramHwResponse.mBuExtendinfo;
-          if ((paramHwResponse != null) && (paramHwResponse.length > 0)) {
-            try
+          ((bdtj)localObject2).c("44");
+          ((bdtj)localObject2).a(true);
+          localObject2 = ((bdtj)localObject2).a(paramContext, null, paramBundle);
+          ((View)localObject2).setId(3);
+          localObject3 = new LinearLayout.LayoutParams(-2, -2);
+          ((LinearLayout.LayoutParams)localObject3).topMargin = agej.a(-3.5F, localResources);
+          localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+        }
+        else
+        {
+          ((bdtj)localObject2).c("30");
+          ((bdtj)localObject2).b(20);
+          localObject2 = ((bdtj)localObject2).a(paramContext, null, paramBundle);
+          ((View)localObject2).setId(4);
+          localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject3).addRule(1, 1);
+          ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+          continue;
+          if ("picture".equals(localObject3))
+          {
+            localObject3 = (bdqo)localObject2;
+            localObject2 = ((bdqo)localObject3).a(paramContext, null, true, paramBundle);
+            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(agej.a(40.0F, localResources), agej.a(40.0F, localResources));
+            if ((((bdqo)localObject3).c != null) && (!((bdqo)localObject3).c.equals("")))
             {
-              localImageFilterResponse = new CSDataHighwayHead.ImageFilterResponse();
-              localImageFilterResponse.mergeFrom(paramHwResponse);
-              i = localImageFilterResponse.ret_code.get();
-              if (QLog.isColorLevel()) {
-                QLog.e("ArtFilterUploadProcessor", 2, "teg pocess error" + i);
-              }
-              l3 = 0L;
-              l2 = l1;
-              l1 = l3;
+              ((View)localObject2).setId(6);
+              localLayoutParams.addRule(11, -1);
+              ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
+              ((View)localObject2).setClickable(true);
+              ((View)localObject2).setOnClickListener((View.OnClickListener)localObject3);
             }
-            catch (InvalidProtocolBufferMicroException paramHwResponse)
+            else
             {
-              if (QLog.isColorLevel()) {
-                QLog.e("ArtFilterUploadProcessor", 2, "sendAckToBDHServer onResponse ", paramHwResponse);
+              ((View)localObject2).setId(5);
+              paramView = (View)localObject2;
+              continue;
+              if (localLinearLayout.getChildCount() == 0) {
+                localLinearLayout.setVisibility(8);
+              }
+              if (paramView != null)
+              {
+                paramContext = new RelativeLayout.LayoutParams(agej.a(40.0F, localResources), agej.a(40.0F, localResources));
+                if (((RelativeLayout)localObject1).findViewById(6) != null)
+                {
+                  paramContext.addRule(0, 6);
+                  paramContext.rightMargin = agej.a(7.5F, localResources);
+                  ((RelativeLayout)localObject1).addView(paramView, paramContext);
+                }
+              }
+              else
+              {
+                paramContext = ((RelativeLayout)localObject1).findViewById(4);
+                if (paramContext != null)
+                {
+                  paramView = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
+                  if (((RelativeLayout)localObject1).findViewById(5) == null) {
+                    break label1066;
+                  }
+                  paramView.addRule(0, 5);
+                }
+              }
+              for (;;)
+              {
+                paramContext.setLayoutParams(paramView);
+                a((View)localObject1);
+                i = agej.a(22.5F, localResources);
+                j = agej.a(22.5F, localResources);
+                ((RelativeLayout)localObject1).setPadding(i, agej.a(10.75F, localResources), j, agej.a(11.75F, localResources));
+                return localObject1;
+                paramContext.addRule(11, -1);
+                break;
+                if (((RelativeLayout)localObject1).findViewById(6) != null) {
+                  paramView.addRule(0, 6);
+                }
               }
             }
           }
         }
-        label493:
-        l3 = 0L;
-        l2 = l1;
-        l1 = l3;
       }
     }
+  }
+  
+  protected int b()
+  {
+    return 9;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    return a(paramContext, paramView, false, paramBundle);
+  }
+  
+  public String b()
+  {
+    return "Layout9";
   }
 }
 

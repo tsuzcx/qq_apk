@@ -1,15 +1,18 @@
-import android.graphics.Rect;
-import java.net.URL;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahgt
+class ahgt
+  extends ahkx
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  URL jdField_a_of_type_JavaNetURL;
-  boolean jdField_a_of_type_Boolean;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
+  ahgt(ahgk paramahgk)
+  {
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agxy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

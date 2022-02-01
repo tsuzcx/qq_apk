@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import slw;
-import svf;
+import sda;
+import smi;
 
 class ReadinjoyTabbar$1
   implements Runnable
 {
   public void run()
   {
-    ReadinjoyTabbar.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Svf.a.a);
+    ReadinjoyTabbar.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Smi.a.a);
   }
 }
 

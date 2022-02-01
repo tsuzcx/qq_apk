@@ -1,33 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
-
-public class adnj
-  implements bkhw
+class adnj
+  implements adnx
 {
-  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
+  adnj(adni paramadni) {}
   
-  public adnj(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(axeh paramaxeh, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b.dismiss();
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
-  }
-  
-  public void a(SimpleAccount paramSimpleAccount)
-  {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
+    this.a.a = paramaxeh;
+    adni.a(this.a, paramInt);
   }
 }
 

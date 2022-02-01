@@ -1,23 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import java.util.List;
 
-public class asps
-  implements Animation.AnimationListener
+public abstract interface asps
 {
-  public asps(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(List<aspq> paramList);
 }
 
 

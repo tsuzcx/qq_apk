@@ -1,34 +1,17 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bmkr
-  extends JSONObject
+final class bmkr
+  implements DialogInterface.OnClickListener
 {
-  public bmkr(QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo) {}
-  
-  public bmkr a(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return this;
-    }
-    try
-    {
-      put(paramString1, paramString2);
-      return this;
-    }
-    catch (JSONException paramString1)
-    {
-      QZLog.d(QzoneVerticalVideoTopicInfo.a(this.a), 2, "put JSON error", paramString1);
-    }
-    return this;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmkr
  * JD-Core Version:    0.7.0.1
  */

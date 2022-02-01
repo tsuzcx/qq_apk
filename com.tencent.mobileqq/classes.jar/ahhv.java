@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahhv
-  implements View.OnClickListener
+  extends ahkx
 {
-  ahhv(ahhm paramahhm) {}
-  
-  public void onClick(View paramView)
+  ahhv(ahgk paramahgk)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof MessageForShortVideo))
-    {
-      localObject = (MessageForShortVideo)localObject;
-      bcek.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahnz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, ahgk.a(this.a));
   }
 }
 

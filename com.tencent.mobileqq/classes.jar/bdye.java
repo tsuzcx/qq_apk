@@ -1,23 +1,15 @@
-class bdye
-  extends anqd
+import android.graphics.Canvas;
+import android.graphics.Paint;
+
+public abstract interface bdye
 {
-  bdye(bdyc parambdyc) {}
+  public abstract int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint);
   
-  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
-  {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramanqe);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramanqe != null) {
-      this.a.v = paramanqe.d;
-    }
-    this.a.a(-1, "MessageForScribble SEND FAIL", "", this.a.b);
-    this.a.d();
-  }
+  public abstract String a(bdxk parambdxk, String paramString);
+  
+  public abstract void a(int paramInt, String paramString, Paint paramPaint);
+  
+  public abstract boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint);
 }
 
 

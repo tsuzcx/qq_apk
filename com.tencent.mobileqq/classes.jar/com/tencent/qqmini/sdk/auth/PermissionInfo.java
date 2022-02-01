@@ -7,6 +7,7 @@ public class PermissionInfo
   public String id;
   public String name;
   public String rejectDescription;
+  public String reportSubAction;
 }
 
 

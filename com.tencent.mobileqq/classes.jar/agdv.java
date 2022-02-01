@@ -1,24 +1,65 @@
-import android.animation.TypeEvaluator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class agdv
-  implements TypeEvaluator
+public class agdv
 {
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  public static void a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "BaseChatItemLayout onTouchEvent...down ");
+      }
     }
-    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
-      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    while ((paramMotionEvent.getAction() == 2) || (paramMotionEvent.getAction() != 1)) {
+      return;
     }
-    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
-      return Double.valueOf(0.5D);
+    paramView = paramView.findViewById(2131364449);
+    int i;
+    label68:
+    int j;
+    if ((paramView != null) && ((paramView instanceof CheckBox)) && (paramView.getVisibility() == 0))
+    {
+      i = 1;
+      paramMotionEvent = AIOLongShotHelper.a();
+      j = i;
+      if (paramMotionEvent != null)
+      {
+        j = i;
+        if (paramMotionEvent.a())
+        {
+          if ((paramView == null) || (!(paramView instanceof CheckBox))) {
+            break label128;
+          }
+          j = 1;
+        }
+      }
+      label100:
+      if (j == 0) {
+        break label131;
+      }
+      paramView = (CheckBox)paramView;
+      if (paramView.isChecked()) {
+        break label133;
+      }
     }
-    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
-      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    for (;;)
+    {
+      paramView.setChecked(bool);
+      return;
+      i = 0;
+      break label68;
+      label128:
+      j = 0;
+      break label100;
+      label131:
+      break;
+      label133:
+      bool = false;
     }
-    return Double.valueOf(0.0D);
   }
 }
 

@@ -1,39 +1,144 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.menu.AbsMenuFlag;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.data.BaseRecentUser;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class aldt
-  extends AbsMenuFlag
+  extends alds
 {
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  private static volatile aldt a;
+  
+  private aldt(AppRuntime paramAppRuntime)
   {
-    if (!(paramRecentBaseData instanceof RecentUserBaseData)) {
-      return false;
-    }
-    switch (((RecentUserBaseData)paramRecentBaseData).mUser.getType())
+    super(paramAppRuntime);
+    aleb.a().a();
+  }
+  
+  public static aldt a()
+  {
+    return a(BaseApplicationImpl.getApplication().peekAppRuntime());
+  }
+  
+  @Deprecated
+  public static aldt a(AppRuntime paramAppRuntime)
+  {
+    if (jdField_a_of_type_Aldt == null) {}
+    try
     {
-    default: 
-      label116:
-      ((RecentUserBaseData)paramRecentBaseData).updateMsgUnreadStateMenu();
-      paramRecentBaseData.mMenuFlag &= 0xFFFFFF0F;
-      if (((RecentUserBaseData)paramRecentBaseData).mUser.showUpTime != 0L) {
-        break;
+      if (jdField_a_of_type_Aldt == null) {
+        jdField_a_of_type_Aldt = new aldt(paramAppRuntime);
       }
+      return jdField_a_of_type_Aldt;
     }
-    for (paramRecentBaseData.mMenuFlag |= 0x10;; paramRecentBaseData.mMenuFlag |= 0x20)
+    finally {}
+  }
+  
+  public static ResultReceiver a(ResultReceiver paramResultReceiver)
+  {
+    if (paramResultReceiver == null) {
+      return null;
+    }
+    Parcel localParcel = Parcel.obtain();
+    paramResultReceiver.writeToParcel(localParcel, 0);
+    localParcel.setDataPosition(0);
+    paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramResultReceiver;
+  }
+  
+  private void a(String paramString1, Bundle paramBundle, aldl paramaldl, String paramString2)
+  {
+    paramBundle.putParcelable("receiver", a(new PreloadManagerProxy.1(this, null, paramaldl, paramString2)));
+    if (paramString1.equals("downloadModule")) {
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadModule", paramBundle, null);
+    }
+    while (!paramString1.equals("downloadRes")) {
+      return;
+    }
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadRes", paramBundle, null);
+  }
+  
+  public void a(DownloadParam paramDownloadParam, aldq paramaldq)
+  {
+    if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url))) {}
+    do
     {
-      paramRecentBaseData.mMenuFlag &= 0xF0FFFFFF;
-      if (((RecentUserBaseData)paramRecentBaseData).mUser.isHiddenChat != 1) {
-        break;
+      return;
+      if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("method_type", 1);
+        localBundle.putSerializable("download_params", paramDownloadParam);
+        QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new aldv(this, paramaldq, paramDownloadParam));
+        return;
       }
-      paramRecentBaseData.mMenuFlag |= 0x1000000;
-      return false;
-      paramRecentBaseData.mMenuFlag |= 0x1000;
-      break label116;
-      paramRecentBaseData.mMenuFlag |= 0x2000;
-      break label116;
+    } while (paramaldq == null);
+    paramaldq.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadParam.url));
+  }
+  
+  public void a(String paramString, ResultReceiver paramResultReceiver)
+  {
+    if (paramResultReceiver == null) {
+      return;
+    }
+    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("id", paramString);
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "getFilePathByResID", localBundle, new aldu(this, paramResultReceiver));
+      return;
+    }
+    paramResultReceiver.send(0, null);
+  }
+  
+  @Deprecated
+  public void a(String paramString1, String paramString2, aldl paramaldl)
+  {
+    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("id", paramString1);
+      localBundle.putString("config_str", paramString2);
+      a("downloadModule", localBundle, paramaldl, paramString1);
+    }
+  }
+  
+  public String e(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadManagerProxy", 2, "getVideoResPathByID:" + paramString + "|" + (String)localObject1);
+      }
+      return localObject1;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("mid", paramString);
+      aleb.a().a();
+      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getVideoResPathByMID", (Bundle)localObject1);
+      localObject1 = localObject2;
+      if (localEIPCResult != null)
+      {
+        localObject1 = localObject2;
+        if (localEIPCResult.isSuccess()) {
+          localObject1 = localEIPCResult.data.getString("path");
+        }
+      }
     }
   }
 }

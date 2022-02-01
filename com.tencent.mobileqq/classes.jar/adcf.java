@@ -1,21 +1,18 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.List;
 
-class adcf
-  extends AsyncTask<Void, Void, Void>
+public class adcf
+  implements adbu
 {
-  adcf(adce paramadce) {}
+  private adbb<adbt> a = new adbc();
   
-  protected Void a(Void... paramVarArgs)
+  public List<adbt> a()
   {
-    paramVarArgs = adce.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
-    }
-    adce.a(this.a).clear();
-    return null;
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends adbt> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

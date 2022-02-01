@@ -1,12 +1,40 @@
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-public abstract interface boia
+public class boia
+  implements Animator.AnimatorListener
 {
-  public abstract void a(int paramInt, AEEditorTextBean paramAEEditorTextBean);
+  public boia(AECropperImageView paramAECropperImageView) {}
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationCancel(paramAnimator);
+    }
+  }
   
-  public abstract void p();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationEnd(paramAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.onAnimationStart(paramAnimator);
+    }
+  }
 }
 
 

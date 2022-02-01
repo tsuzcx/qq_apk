@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
 
-public class bfoj
-  extends anxg
+class bfoj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bfoj(TroopAppShortcutContainer paramTroopAppShortcutContainer) {}
+  bfoj(bfoi parambfoi, View paramView) {}
   
-  public void a(boolean paramBoolean, Object paramObject1, Object paramObject2, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    TroopAppShortcutContainer.a(this.a, paramBoolean, paramObject1, paramObject2, paramInt);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
 }
 

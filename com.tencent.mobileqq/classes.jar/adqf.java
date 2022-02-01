@@ -1,24 +1,114 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.widget.XPanelContainer;
-import mqq.app.QQPermissionCallback;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.1;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.2;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.3;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class adqf
-  implements QQPermissionCallback
 {
-  public adqf(BaseChatPie paramBaseChatPie) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static int a(int paramInt)
   {
-    bglp.b(this.a.a());
-    ((agni)this.a.a(29)).b(2);
+    switch (paramInt)
+    {
+    default: 
+      return 7;
+    case 2: 
+      return 0;
+    case 3: 
+      return 9;
+    case 4: 
+      return 11;
+    case 5: 
+      return 12;
+    case 6: 
+      return 13;
+    }
+    return 14;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static String a(int paramInt)
   {
-    agec.a().a(this.a.jdField_a_of_type_AndroidContentContext);
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
-    ahqr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return "android";
+    case 2: 
+      return "ark";
+    case 5: 
+      return "limi";
+    case 3: 
+      return "mini_game";
+    case 4: 
+      return "mini_app";
+    case 6: 
+      return "qqpay";
+    }
+    return "web";
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DoraemonOpenAPI.util", 2, "url is empty");
+      }
+    }
+    do
+    {
+      return null;
+      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DoraemonOpenAPI.util", 2, "scheme not match " + paramString);
+    return null;
+    int i = paramString.indexOf('?');
+    int j = paramString.indexOf('#');
+    if (i == -1)
+    {
+      i = j;
+      if (j == -1) {
+        i = paramString.length();
+      }
+    }
+    for (;;)
+    {
+      return paramString.substring(0, i);
+      if (j != -1) {
+        i = Math.min(i, j);
+      }
+    }
+  }
+  
+  public static void a(admy paramadmy, int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.4(paramadmy, paramInt));
+  }
+  
+  public static void a(admy paramadmy, int paramInt, String paramString)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.2(paramadmy, paramInt, paramString));
+  }
+  
+  public static void a(admy paramadmy, JSONObject paramJSONObject)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.1(paramadmy, paramJSONObject));
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.sProcessId == 1;
+  }
+  
+  public static void b(admy paramadmy, JSONObject paramJSONObject)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.3(paramadmy, paramJSONObject));
   }
 }
 

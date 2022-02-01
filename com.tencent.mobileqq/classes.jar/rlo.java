@@ -1,32 +1,16 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
 
-public class rlo
-  implements bkij
+public abstract interface rlo
 {
-  public rlo(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
-    {
-      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
-        break label72;
-      }
-      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
-        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
-      }
-    }
-    label72:
-    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
-  }
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(DragFrameLayout paramDragFrameLayout);
 }
 
 

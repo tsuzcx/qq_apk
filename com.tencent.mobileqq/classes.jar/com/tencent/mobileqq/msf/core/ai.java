@@ -35,7 +35,7 @@ final class ai
     //   43: invokevirtual 67	java/util/Calendar:set	(II)V
     //   46: aload 4
     //   48: invokevirtual 70	java/util/Calendar:getTimeInMillis	()J
-    //   51: lstore_1
+    //   51: lstore_2
     //   52: getstatic 74	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
     //   55: ifnonnull +398 -> 453
     //   58: ldc 76
@@ -56,7 +56,7 @@ final class ai
     //   95: getstatic 89	com/tencent/mobileqq/msf/core/ab:X	I
     //   98: putstatic 108	com/tencent/mobileqq/msf/core/ab:W	I
     //   101: iconst_1
-    //   102: istore_3
+    //   102: istore_1
     //   103: getstatic 89	com/tencent/mobileqq/msf/core/ab:X	I
     //   106: getstatic 108	com/tencent/mobileqq/msf/core/ab:W	I
     //   109: if_icmpge +9 -> 118
@@ -132,7 +132,7 @@ final class ai
     //   279: new 78	java/lang/StringBuilder
     //   282: dup
     //   283: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   286: lload_1
+    //   286: lload_2
     //   287: invokestatic 59	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   290: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   293: ldc 121
@@ -162,13 +162,13 @@ final class ai
     //   349: getstatic 145	com/tencent/mobileqq/msf/core/ab:ab	J
     //   352: invokevirtual 140	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   355: pop
-    //   356: iload_3
+    //   356: iload_1
     //   357: ifeq +17 -> 374
     //   360: aload 5
     //   362: astore 4
     //   364: getstatic 74	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
     //   367: ldc 147
-    //   369: iload_3
+    //   369: iload_1
     //   370: invokevirtual 131	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   373: pop
     //   374: aload 5
@@ -186,20 +186,20 @@ final class ai
     //   403: dup
     //   404: getstatic 156	com/tencent/mobileqq/msf/core/ab:ac	Ljava/lang/String;
     //   407: invokespecial 159	java/io/File:<init>	(Ljava/lang/String;)V
-    //   410: astore 7
+    //   410: astore 8
     //   412: aload 5
     //   414: astore 4
-    //   416: aload 7
+    //   416: aload 8
     //   418: invokevirtual 163	java/io/File:exists	()Z
-    //   421: istore_3
-    //   422: iload_3
+    //   421: istore_1
+    //   422: iload_1
     //   423: ifne +391 -> 814
     //   426: aload 5
     //   428: astore 4
-    //   430: aload 7
+    //   430: aload 8
     //   432: invokevirtual 166	java/io/File:createNewFile	()Z
-    //   435: istore_3
-    //   436: iload_3
+    //   435: istore_1
+    //   436: iload_1
     //   437: ifne +377 -> 814
     //   440: iconst_0
     //   441: ifeq +11 -> 452
@@ -235,7 +235,7 @@ final class ai
     //   515: getstatic 89	com/tencent/mobileqq/msf/core/ab:X	I
     //   518: putstatic 108	com/tencent/mobileqq/msf/core/ab:W	I
     //   521: iconst_0
-    //   522: istore_3
+    //   522: istore_1
     //   523: goto -420 -> 103
     //   526: getstatic 182	com/tencent/mobileqq/msf/core/ab:ae	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   529: invokevirtual 186	java/util/concurrent/atomic/AtomicBoolean:get	()Z
@@ -278,7 +278,7 @@ final class ai
     //   624: invokevirtual 195	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   627: pop
     //   628: iconst_0
-    //   629: istore_3
+    //   629: istore_1
     //   630: goto -527 -> 103
     //   633: getstatic 74	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
     //   636: new 78	java/lang/StringBuilder
@@ -346,7 +346,7 @@ final class ai
     //   792: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   795: invokestatic 102	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   798: iconst_0
-    //   799: istore_3
+    //   799: istore_1
     //   800: goto -697 -> 103
     //   803: getstatic 89	com/tencent/mobileqq/msf/core/ab:X	I
     //   806: putstatic 108	com/tencent/mobileqq/msf/core/ab:W	I
@@ -357,16 +357,16 @@ final class ai
     //   818: new 205	com/tencent/qphone/base/util/Cryptor
     //   821: dup
     //   822: invokespecial 206	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   825: astore 8
+    //   825: astore 7
     //   827: aload 5
     //   829: astore 4
     //   831: new 208	java/io/FileOutputStream
     //   834: dup
-    //   835: aload 7
+    //   835: aload 8
     //   837: invokespecial 211	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   840: astore 5
     //   842: aload 5
-    //   844: aload 8
+    //   844: aload 7
     //   846: getstatic 74	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
     //   849: invokevirtual 148	org/json/JSONObject:toString	()Ljava/lang/String;
     //   852: invokevirtual 215	java/lang/String:getBytes	()[B
@@ -527,8 +527,8 @@ final class ai
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	1227	0	this	ai
-    //   51	236	1	l	long
-    //   102	698	3	bool	boolean
+    //   102	698	1	bool	boolean
+    //   51	236	2	l	long
     //   14	415	4	localObject1	Object
     //   812	1	4	localException1	java.lang.Exception
     //   816	257	4	localObject2	Object
@@ -545,7 +545,7 @@ final class ai
     //   1128	7	6	localObject8	Object
     //   1217	1	6	localException4	java.lang.Exception
     //   30	1048	7	localObject9	Object
-    //   825	241	8	localObject10	Object
+    //   410	656	8	localObject10	Object
     // Exception table:
     //   from	to	target	type
     //   430	436	812	java/lang/Exception

@@ -1,16 +1,6 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-
-class mmb
-  implements TextWatcher
+public abstract interface mmb
 {
-  mmb(mlz parammlz) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a();
 }
 
 

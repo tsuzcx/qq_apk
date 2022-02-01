@@ -1,12 +1,12 @@
-public class yqm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class yqm
+  implements DialogInterface.OnDismissListener
 {
-  public static String a(String paramString)
-  {
-    if (paramString != null) {
-      return "file://" + paramString;
-    }
-    return null;
-  }
+  yqm(yqj paramyqj) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

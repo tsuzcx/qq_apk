@@ -1,17 +1,12 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 
-class agxj
-  extends ahbl
+public class agxj
 {
-  agxj(agwz paramagwz)
+  public static View a(Context paramContext)
   {
-    super(paramagwz, null);
-  }
-  
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new ahcf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    return LayoutInflater.from(paramContext).inflate(2131559271, null);
   }
 }
 

@@ -1,33 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.1;
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.2;
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.3;
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.4;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity.2.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class olz
-  implements olq
+  extends pfh
 {
-  olz(olx paramolx) {}
+  public olz(ReadinjoyJumpActivity paramReadinjoyJumpActivity) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.1(this));
+    super.a(paramString);
+    QLog.d("ReadinjoyJumpActivity", 1, "webCallback : " + paramString);
+    ThreadManager.getUIHandler().post(new ReadinjoyJumpActivity.2.1(this));
   }
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1)
   {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.3(this, paramInt));
-  }
-  
-  public void a(orb paramorb, int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.4(this, paramInt1, paramInt2));
-  }
-  
-  public void b()
-  {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.2(this));
+    QLog.d("ReadinjoyJumpActivity", 1, "68b resp, succ : " + paramBoolean + ", ids : " + paramList + ", articles : " + paramList1);
+    if ((paramList == null) || (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.a(this.a))))) {}
+    do
+    {
+      return;
+      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.a(this.a));
+    } while ((ReadinjoyJumpActivity.a(this.a)) || (ReadinjoyJumpActivity.b(this.a)));
+    if ((paramBoolean) && (paramList1 != null) && (!paramList1.isEmpty()))
+    {
+      int i = 0;
+      while (i < paramList1.size())
+      {
+        paramList = (ArticleInfo)paramList1.get(i);
+        if (paramList.mArticleID == ReadinjoyJumpActivity.a(this.a))
+        {
+          ReadinjoyJumpActivity.a(this.a, paramList);
+          if ((pac.a(ReadinjoyJumpActivity.a(this.a)) == 0) && (ozs.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.a(this.a))))
+          {
+            paramList = pfa.a().a();
+            if (paramList != null)
+            {
+              paramList.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, ReadinjoyJumpActivity.a(this.a).innerUniqueID, ReadinjoyJumpActivity.a(this.a).publishUin + "", 1, this.a);
+              return;
+            }
+          }
+          ReadinjoyJumpActivity.b(this.a);
+          return;
+        }
+        i += 1;
+      }
+    }
+    ReadinjoyJumpActivity.a(this.a);
   }
 }
 

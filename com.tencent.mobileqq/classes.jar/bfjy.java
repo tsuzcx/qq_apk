@@ -1,134 +1,55 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.support.annotation.RequiresApi;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfjy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public static int a;
-  public static boolean a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private bfjz jdField_a_of_type_Bfjz;
-  private int b = 1;
-  private int c;
+  public bfjy(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public bfjy(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public static int a(Activity paramActivity)
-  {
-    paramActivity = paramActivity.getWindow().getDecorView();
-    int i = paramActivity.getHeight();
-    if (a(paramActivity) > i * 3 / 4) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  public static int a(View paramView)
-  {
-    Rect localRect = new Rect();
-    paramView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    jdField_a_of_type_Int = a(paramActivity.getWindow().getDecorView());
-    jdField_a_of_type_Boolean = a(paramActivity);
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
-    }
-    return localRect.top == 0;
-  }
-  
-  @RequiresApi(api=16)
-  public void a()
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    switch (((agjt)paramView.getTag()).a)
+    {
     }
     for (;;)
     {
-      this.b = 1;
-      this.jdField_a_of_type_Bfjz = null;
-      this.c = 0;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(bfjz parambfjz)
-  {
-    if (parambfjz != null) {
-      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
-    }
-    this.b = 1;
-    this.jdField_a_of_type_Bfjz = parambfjz;
-    this.c = 0;
-  }
-  
-  public void onGlobalLayout()
-  {
-    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-    if (localView == null) {}
-    int i;
-    int j;
-    int k;
-    do
-    {
-      return;
-      i = localView.getHeight();
-      j = a(localView);
-      k = i - j;
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      TroopBarReplyActivity.b(this.a);
+      continue;
+      TroopBarReplyActivity.c(this.a);
+      continue;
+      TroopBarReplyActivity.d(this.a);
+      continue;
+      if (this.a.k)
       {
-        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
-        if ((m != this.c) && (this.jdField_a_of_type_Bfjz != null)) {
-          this.jdField_a_of_type_Bfjz.b(this.b, j, this.c);
+        bgqv.a(this.a.m, this.a.n, "Clk_music", this.a.o, "", "", "");
+        bgqv.b("reply_page_new", "Clk_music", this.a.o, "", "", "");
+      }
+      if (!this.a.a(4)) {
+        if ((this.a.a.a() != 0) && (this.a.a.a() != 3))
+        {
+          this.a.a(3);
         }
-        this.c = m;
-      }
-    } while (j == this.c);
-    if (k > i / 4)
-    {
-      this.b = 1;
-      if (this.jdField_a_of_type_Bfjz != null) {
-        this.jdField_a_of_type_Bfjz.a(this.b, j, k);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
-      }
-      this.c = j;
-      return;
-      if (k < i * 3 / 4)
-      {
-        this.b = 2;
-        if (this.jdField_a_of_type_Bfjz != null) {
-          this.jdField_a_of_type_Bfjz.a(this.b, j, k);
+        else
+        {
+          this.a.b(4);
+          continue;
+          if (this.a.k)
+          {
+            bgqv.a(this.a.m, this.a.n, "Clk_video", this.a.o, "", "", "");
+            bgqv.b("reply_page_new", "Clk_video", this.a.o, "", "", "");
+          }
+          if (!this.a.a(8)) {
+            if ((this.a.a.a() != 0) && (this.a.a.a() != 4)) {
+              this.a.a(7);
+            } else {
+              this.a.b(3);
+            }
+          }
         }
       }
     }

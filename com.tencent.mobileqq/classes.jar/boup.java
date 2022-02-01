@@ -1,16 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import com.tencent.common.app.AppInterface;
 
-public class boup
-  implements ValueAnimator.AnimatorUpdateListener
+class boup
+  extends boqk
 {
-  public boup(QIMSlidingTabView paramQIMSlidingTabView) {}
+  boup(boun paramboun, AppInterface paramAppInterface) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    boun.a(this.jdField_a_of_type_Boun).a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
   }
 }
 

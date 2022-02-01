@@ -1,17 +1,29 @@
-import com.tencent.image.URLDrawableHandler;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class bdzq
+  implements AdapterView.OnItemLongClickListener
 {
-  public int a;
-  public URLDrawableHandler a;
-  public String a;
+  public bdzq(TableQueryViewer paramTableQueryViewer, Context paramContext) {}
   
-  public String toString()
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrlFromMsg:" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mStartDownOffset:" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    paramAdapterView = ((bdzk)TableQueryViewer.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer).get(paramInt)).b;
+    paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
+    if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView)))
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText("bigT", paramAdapterView));
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690492), 0).a();
+    }
+    return true;
   }
 }
 

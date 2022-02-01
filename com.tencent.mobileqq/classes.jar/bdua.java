@@ -1,25 +1,23 @@
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import java.lang.ref.WeakReference;
 
 public class bdua
+  extends Handler
 {
-  File a;
+  private WeakReference<bdts> a;
   
-  public bdua(File paramFile)
+  public bdua(bdts parambdts)
   {
-    this.a = paramFile;
+    this.a = new WeakReference(parambdts);
   }
   
-  bdub a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    return new bdub(this, paramString);
-  }
-  
-  File a(String paramString)
-  {
-    if (!this.a.exists()) {
-      this.a.mkdirs();
+    if ((bdts)this.a.get() != null) {
+      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130845431);
     }
-    return new File(this.a, paramString);
   }
 }
 

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/iew" android:background="#0c000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/mj4" android:background="@drawable/qq_status_card_background" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip">
-        <TextView android:textSize="20.0dip" android:textColor="@color/skin_black" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/wh6" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/aka" android:gravity="center|top" android:id="@id/nnt" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:lines="2" android:layout_below="@id/kbs" android:layout_centerHorizontal="true" />
-        <LinearLayout android:orientation="vertical" android:id="@id/fda" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/nnt" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/mh4" android:paddingLeft="88.0dip" android:paddingRight="88.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/fda">
-            <Button android:textSize="@dimen/i9" android:id="@id/aga" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="39.0dip" android:layout_marginRight="12.0dip" android:text="@string/wh7" android:layout_weight="1.0" style="@style/e2" />
-            <Button android:id="@id/mgw" android:layout_width="0.0dip" android:layout_height="39.0dip" android:text="@string/dna" android:layout_weight="1.0" style="@style/et" />
-        </LinearLayout>
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/mh4" android:layout_centerHorizontal="true">
-            <TextView android:textColor="@color/aka" android:ellipsize="end" android:id="@id/mmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/skin_online_status_link_color" android:id="@id/nhi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:drawablePadding="4.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n1f" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nl2" android:layout_width="0.0dip" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center|left" android:id="@id/nve" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="19.0dip" android:lines="1" android:singleLine="true" android:drawableLeft="@drawable/er5" android:drawablePadding="5.0dip" android:layout_toLeftOf="@id/mx4" android:layout_centerVertical="true" android:drawableStart="@drawable/er5" />
+            <ImageView android:id="@id/mx4" android:background="@drawable/common_input_box_clear" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/w_e" />
+        </RelativeLayout>
+        <Button android:textSize="16.0sp" android:textColor="#ff4d94ff" android:id="@id/afr" android:background="@null" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="16.0dip" android:text="@string/cancel" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/mne" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="#ffb0b3bf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_d" android:drawableLeft="@drawable/er5" android:drawablePadding="6.0dip" android:drawableStart="@drawable/er5" />
+    </LinearLayout>
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendLabelFlowLayout android:id="@id/cfy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="-8.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="18.0dip" />
+</LinearLayout>

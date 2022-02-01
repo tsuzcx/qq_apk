@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apaf;
-import apag;
-import apat;
-import apaw;
+import apnv;
+import apnw;
+import apoj;
+import apom;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ARLocalFaceRecog$3
   implements Runnable
 {
-  public ARLocalFaceRecog$3(apat paramapat, apaf paramapaf, long paramLong) {}
+  public ARLocalFaceRecog$3(apoj paramapoj, apnv paramapnv, long paramLong) {}
   
   public void run()
   {
@@ -23,19 +23,19 @@ public class ARLocalFaceRecog$3
       this.this$0.a(this.this$0.jdField_a_of_type_JavaUtilList);
       this.this$0.a(this.this$0.b);
       this.this$0.f = 10;
-      this.this$0.jdField_a_of_type_Apaf = this.jdField_a_of_type_Apaf;
-      if ((this.this$0.jdField_a_of_type_Apaf == null) || (this.this$0.jdField_a_of_type_Apaf.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus == null)) {}
+      this.this$0.jdField_a_of_type_Apnv = this.jdField_a_of_type_Apnv;
+      if ((this.this$0.jdField_a_of_type_Apnv == null) || (this.this$0.jdField_a_of_type_Apnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus == null)) {}
     }
     for (;;)
     {
       int i;
-      apaw localapaw;
+      apom localapom;
       synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
       {
-        if (this.this$0.jdField_a_of_type_Apaf.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length > 2)
+        if (this.this$0.jdField_a_of_type_Apnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length > 2)
         {
-          this.this$0.a(this.this$0.jdField_a_of_type_JavaUtilList, this.this$0.jdField_a_of_type_Apaf);
-          this.this$0.b(this.this$0.jdField_a_of_type_JavaUtilList, this.this$0.jdField_a_of_type_Apaf);
+          this.this$0.a(this.this$0.jdField_a_of_type_JavaUtilList, this.this$0.jdField_a_of_type_Apnv);
+          this.this$0.b(this.this$0.jdField_a_of_type_JavaUtilList, this.this$0.jdField_a_of_type_Apnv);
           long l1 = System.currentTimeMillis();
           long l2 = this.jdField_a_of_type_Long;
           if (QLog.isColorLevel()) {
@@ -48,40 +48,40 @@ public class ARLocalFaceRecog$3
           throw localObject2;
         }
         i = 0;
-        if (i >= this.this$0.jdField_a_of_type_Apaf.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length) {
+        if (i >= this.this$0.jdField_a_of_type_Apnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length) {
           continue;
         }
-        FaceStatus localFaceStatus = this.this$0.jdField_a_of_type_Apaf.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
+        FaceStatus localFaceStatus = this.this$0.jdField_a_of_type_Apnv.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
         if (QLog.isColorLevel()) {
           QLog.d("AREngine_ARLocalFaceRecog", 2, "[ScanStarFace]addFaceCloudRecogResult faceFeature = " + Arrays.toString(localFaceStatus.feature));
         }
-        localapaw = new apaw();
-        localapaw.jdField_a_of_type_Int = 1;
-        localapaw.jdField_a_of_type_JavaLangString = "";
-        if (this.this$0.jdField_a_of_type_Apaf.jdField_a_of_type_JavaUtilArrayList != null)
+        localapom = new apom();
+        localapom.jdField_a_of_type_Int = 1;
+        localapom.jdField_a_of_type_JavaLangString = "";
+        if (this.this$0.jdField_a_of_type_Apnv.jdField_a_of_type_JavaUtilArrayList != null)
         {
-          Iterator localIterator = this.this$0.jdField_a_of_type_Apaf.jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator = this.this$0.jdField_a_of_type_Apnv.jdField_a_of_type_JavaUtilArrayList.iterator();
           if (localIterator.hasNext())
           {
-            apag localapag = (apag)localIterator.next();
-            if (localapag.jdField_a_of_type_Int != i) {
+            apnw localapnw = (apnw)localIterator.next();
+            if (localapnw.jdField_a_of_type_Int != i) {
               continue;
             }
-            localapaw.jdField_a_of_type_Int = 2;
-            localapaw.jdField_a_of_type_JavaLangString = localapag.jdField_a_of_type_JavaLangString;
-            localapaw.jdField_b_of_type_JavaLangString = localapag.jdField_b_of_type_JavaLangString;
-            localapaw.c = String.valueOf(localapag.jdField_a_of_type_Long);
-            localapaw.d = localapag.c;
-            localapaw.e = localapag.d;
-            localapaw.f = localapag.e;
-            localapaw.jdField_a_of_type_Float = localapag.jdField_a_of_type_Float;
+            localapom.jdField_a_of_type_Int = 2;
+            localapom.jdField_a_of_type_JavaLangString = localapnw.jdField_a_of_type_JavaLangString;
+            localapom.jdField_b_of_type_JavaLangString = localapnw.jdField_b_of_type_JavaLangString;
+            localapom.c = String.valueOf(localapnw.jdField_a_of_type_Long);
+            localapom.d = localapnw.c;
+            localapom.e = localapnw.d;
+            localapom.f = localapnw.e;
+            localapom.jdField_a_of_type_Float = localapnw.jdField_a_of_type_Float;
           }
         }
       }
-      localapaw.jdField_a_of_type_Boolean = true;
-      localapaw.jdField_a_of_type_ComTencentYTFaceModelFaceStatus = localObject3;
-      localapaw.jdField_b_of_type_Int = i;
-      this.this$0.jdField_a_of_type_JavaUtilList.add(localapaw);
+      localapom.jdField_a_of_type_Boolean = true;
+      localapom.jdField_a_of_type_ComTencentYTFaceModelFaceStatus = localObject3;
+      localapom.jdField_b_of_type_Int = i;
+      this.this$0.jdField_a_of_type_JavaUtilList.add(localapom);
       i += 1;
     }
   }

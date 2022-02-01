@@ -1,47 +1,62 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class arey
+public class arey
 {
-  private int jdField_a_of_type_Int;
-  private arfa jdField_a_of_type_Arfa;
-  public arfb a;
-  private arfd jdField_a_of_type_Arfd;
-  private arfe jdField_a_of_type_Arfe;
-  public arff a;
-  private arfg jdField_a_of_type_Arfg;
-  private arfi jdField_a_of_type_Arfi;
-  private arfj jdField_a_of_type_Arfj;
-  private List<arfn> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private boolean b;
+  private boolean c = true;
   
-  public arew a()
+  public static arey a(String paramString)
   {
-    return new arew(this, null);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        arey localarey = new arey();
+        paramString = new JSONObject(paramString);
+        localarey.a = paramString.optBoolean("isIPCDivideToTransportEnable", false);
+        localarey.b = paramString.optBoolean("isSleepThreadWhenIPCBlockEnable", false);
+        localarey.c = paramString.optBoolean("isSendQuickHBByDeepSleepEnable", true);
+        return localarey;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("MSFConfigProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public arey a(int paramInt)
+  public static String a(arey paramarey)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    JSONObject localJSONObject = new JSONObject();
+    if (paramarey != null) {}
+    try
+    {
+      localJSONObject.put("isIPCDivideToTransportEnable", paramarey.a);
+      localJSONObject.put("isSleepThreadWhenIPCBlockEnable", paramarey.b);
+      localJSONObject.put("isSendQuickHBByDeepSleepEnable", paramarey.c);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramarey)
+    {
+      for (;;)
+      {
+        paramarey.printStackTrace();
+      }
+    }
   }
   
-  public arey a(arfg paramarfg)
+  public String toString()
   {
-    this.jdField_a_of_type_Arfg = paramarfg;
-    return this;
-  }
-  
-  public arey a(arfn paramarfn)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramarfn);
-    return this;
+    return "MSFConfigBean{isIPCDivideToTransportEnable=" + this.a + ", isSleepThreadWhenIPCBlockEnable=" + this.b + ", isSendQuickHBByDeepSleepEnable=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import acwf;
+import adai;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anhk;
-import anqu;
-import bbzj;
+import antf;
+import aoda;
+import bcsa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -986,14 +986,14 @@ public class NearbyGrayTipsManager
       Object localObject = (Integer)paramGrayTipsConfig.next();
       if (((Integer)localObject).intValue() == 1)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1001).a(anhk.H, 1001);
-        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10002).a(anhk.H, 10002);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1001).a(antf.H, 1001);
+        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10002).a(antf.H, 10002);
         paramList.addAll((Collection)localObject);
         paramList.addAll(localList);
       }
       else if (((Integer)localObject).intValue() == 2)
       {
-        paramList.addAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1010).a(anhk.ab, 1010));
+        paramList.addAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1010).a(antf.ab, 1010));
       }
     }
   }
@@ -2015,10 +2015,10 @@ public class NearbyGrayTipsManager
     {
       paramJSONObject = paramJSONObject.getJSONObject("Frequency");
       if (!paramJSONObject.isNull("SingleTaskTipsCountPerDay")) {
-        paramGrayTipsConfig.singleTask_MaxTipsCountPerDay = paramJSONObject.getInt("SingleTaskTipsCountPerDay");
+        paramGrayTipsConfig.singleTaskMaxTipsCountPerDay = paramJSONObject.getInt("SingleTaskTipsCountPerDay");
       }
       if (!paramJSONObject.isNull("SingleTaskTotalTipsCount")) {
-        paramGrayTipsConfig.singleTask_maxTipsCount = paramJSONObject.getInt("SingleTaskTotalTipsCount");
+        paramGrayTipsConfig.singleTaskMaxTipsCount = paramJSONObject.getInt("SingleTaskTotalTipsCount");
       }
     }
   }
@@ -2046,7 +2046,7 @@ public class NearbyGrayTipsManager
       paramGrayTipsConfig.grayTipsEnable = paramJSONObject.getBoolean("TipEnable");
     }
     if (!paramJSONObject.isNull("GlobalTipsCountPerDay")) {
-      paramGrayTipsConfig.global_MaxTipsCountPerDay = paramJSONObject.getInt("GlobalTipsCountPerDay");
+      paramGrayTipsConfig.globalMaxTipsCountPerDay = paramJSONObject.getInt("GlobalTipsCountPerDay");
     }
     if (!paramJSONObject.isNull("Frequency"))
     {
@@ -2278,7 +2278,7 @@ public class NearbyGrayTipsManager
             else
             {
               this.jdField_b_of_type_Boolean = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).grayTipsEnable;
-              this.jdField_a_of_type_Int = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).global_MaxTipsCountPerDay;
+              this.jdField_a_of_type_Int = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).globalMaxTipsCountPerDay;
               this.jdField_b_of_type_Int = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).maxTipsCount;
               this.jdField_c_of_type_Int = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).messageCount;
             }
@@ -2438,7 +2438,7 @@ public class NearbyGrayTipsManager
           if (i < 0) {
             break label165;
           }
-          if (!bbzj.a(((ChatMessage)paramList.get(i)).msgtype))
+          if (!bcsa.a(((ChatMessage)paramList.get(i)).msgtype))
           {
             k = j + 1;
             j = k;
@@ -2710,7 +2710,7 @@ public class NearbyGrayTipsManager
         localObject3 = new ArrayList();
         a(localObject1, (List)localObject3);
         a(paramLong, localObject1, (List)localObject3);
-        Collections.sort((List)localObject3, new anqu(this));
+        Collections.sort((List)localObject3, new aoda(this));
         localObject2 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(20);
         paramInt1 = 0;
         localObject3 = ((List)localObject3).iterator();

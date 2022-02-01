@@ -1,20 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class apzx
-  implements QQPermissionCallback
+class apzx
+  implements agyz
 {
-  public apzx(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable) {}
+  apzx(apzw paramapzw) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean a(agyw paramagyw)
   {
-    bglp.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramArrayOfString, paramArrayOfInt);
+    if (apzw.a(this.a) != null)
+    {
+      apzw.a(this.a).ar();
+      return true;
+    }
+    return false;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean a(agyw paramagyw, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    return false;
   }
 }
 

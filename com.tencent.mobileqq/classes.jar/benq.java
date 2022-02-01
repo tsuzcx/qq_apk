@@ -1,45 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class benq
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
   benq(benp parambenp) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = (beph)paramView.getTag();
-    String str;
-    if (((beph)localObject).b == 1)
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
+      this.a.b();
+    }
+    do
     {
-      this.a.a.a.a(((beph)localObject).a, null);
-      if (((beph)localObject).a == null) {}
-      for (str = "";; str = ((beph)localObject).a)
+      return;
+      if ("android.intent.action.TIME_SET".equals(paramContext))
       {
-        bcst.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, "", "", "");
-        EventCollector.getInstance().onViewClicked(paramView);
+        this.a.b();
         return;
       }
-    }
-    this.a.a.a.a(((beph)localObject).d, ((beph)localObject).a);
-    if (((beph)localObject).d == null)
-    {
-      str = "";
-      label114:
-      if (((beph)localObject).a != null) {
-        break label157;
-      }
-    }
-    label157:
-    for (localObject = "";; localObject = ((beph)localObject).a)
-    {
-      bcst.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, (String)localObject, "", "");
-      break;
-      str = ((beph)localObject).d;
-      break label114;
-    }
+    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
+    this.a.b();
   }
 }
 

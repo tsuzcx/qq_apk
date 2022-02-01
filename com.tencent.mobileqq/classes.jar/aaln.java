@@ -1,38 +1,16 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class aaln
-  extends zxx
+  implements aadm<Object>
 {
-  public aaln(CommodityListView paramCommodityListView) {}
+  public aaln(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, aaav paramaaav) {}
   
-  public zxy a(ViewGroup paramViewGroup, int paramInt)
+  public void a(Object... paramVarArgs)
   {
-    paramViewGroup = new CommodityItemView(this.a.getContext());
-    paramViewGroup.setIsPublishUI(CommodityListView.a(this.a));
-    paramViewGroup.setCurrentFeed(CommodityListView.a(this.a));
-    return new zxy(this, paramViewGroup);
-  }
-  
-  public int getItemCount()
-  {
-    return this.mDataList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (!bkfj.a(paramInt, this.mDataList))
-    {
-      ((CommodityItemView)paramViewHolder.itemView).setData(this.mDataList.get(paramInt));
-      ((CommodityItemView)paramViewHolder.itemView).b().setOnClickListener(new aalo(this, paramInt));
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_Aaav.onReceive(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
 }
 

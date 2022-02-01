@@ -1,19 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
-final class adre
-  implements DialogInterface.OnClickListener
+public class adre
+  extends aocj
 {
-  adre(adsx paramadsx) {}
+  public adre(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString, bdxd parambdxd)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    if (this.a.isFinishing()) {}
+    bdwt localbdwt;
+    do
+    {
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localbdwt = (bdwt)this.a.app.getManager(62);
+        if (parambdxd.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (bdwt.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localbdwt.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            parambdxd = (Pair)paramString.get(i);
+            localbdwt.a(this.a.app, this.a, parambdxd, new adrf(this, localbdwt, parambdxd));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localbdwt.a(paramString, 1, true);
   }
 }
 

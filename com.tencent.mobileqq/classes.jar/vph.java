@@ -1,47 +1,26 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import android.os.Bundle;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonInfoWidget;
+import com.tencent.biz.qqcircle.requests.QCircleJoinGroupReportRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class vph
-  extends RecyclerView.Adapter<vpi>
+  implements wcr
 {
-  private vph(vpe paramvpe) {}
+  public vph(QCirclePersonInfoWidget paramQCirclePersonInfoWidget) {}
   
-  public vpi a(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = vpy.a(paramViewGroup.getContext(), 512, paramInt);
-    return new vpi(this.a, paramViewGroup);
-  }
+  public void a(long paramLong) {}
   
-  public void a(vpi paramvpi, int paramInt)
+  public void b(long paramLong)
   {
-    if (paramvpi != null) {
-      paramvpi.a((QQCircleFeedBase.StPolyLike)vpe.a(this.a).get(paramInt), paramInt);
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramvpi, paramInt, getItemId(paramInt));
-  }
-  
-  public int getItemCount()
-  {
-    return vpe.a(this.a).size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    QQCircleFeedBase.StPolyLike localStPolyLike = (QQCircleFeedBase.StPolyLike)vpe.a(this.a).get(paramInt);
-    if (localStPolyLike != null)
-    {
-      if (localStPolyLike.articleType.get() == 0) {
-        return 1;
-      }
-      if (localStPolyLike.articleType.get() == 1) {
-        return 2;
-      }
-    }
-    return 0;
+    Bundle localBundle = TroopInfoActivity.a(String.valueOf(paramLong), 0);
+    localBundle.putBoolean("troop_info_from_troopsetting", true);
+    localBundle.putInt("exposureSource", 3);
+    bguq.a(this.a.getContext(), localBundle, 2);
+    VSNetworkHelper.a().a(this.a.getContext(), new QCircleJoinGroupReportRequest(paramLong), new vpi(this));
+    vtq.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 31, 2, "", QCirclePersonInfoWidget.a(this.a));
   }
 }
 

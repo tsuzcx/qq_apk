@@ -1,98 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.qphone.base.util.QLog;
+import PayMQQ.UniPayRequest;
+import PayMQQ.UniPayResponse;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class bcui
-  extends bcuh
+  extends abiv
 {
-  private static bcui jdField_a_of_type_Bcui;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static bcui a()
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (jdField_a_of_type_Bcui != null) {
-      return jdField_a_of_type_Bcui;
+    if (paramFromServiceMsg == null) {
+      return null;
     }
+    paramToServiceMsg = new UniPacket(true);
     try
     {
-      if (jdField_a_of_type_Bcui == null) {
-        jdField_a_of_type_Bcui = new bcui();
-      }
-      bcui localbcui = jdField_a_of_type_Bcui;
-      return localbcui;
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
+      return paramToServiceMsg;
     }
-    finally {}
+    catch (RuntimeException paramToServiceMsg)
+    {
+      return null;
+    }
+    catch (Exception paramToServiceMsg) {}
+    return null;
   }
   
-  public void a()
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    if ((BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != 1) && (bcbv.a(BaseApplicationImpl.sProcessId, BaseApplicationImpl.processName))) {}
-    for (;;)
-    {
-      try
-      {
-        QLog.d("RecordTracer", 1, "SDK Init, processId:" + BaseApplicationImpl.sProcessId + ", processName:" + BaseApplicationImpl.processName);
-        RecordTracer.a().step();
-        Object localObject = MagnifierSDK.a().a().a().split("\\|");
-        if ((localObject.length < 11) || (TextUtils.isEmpty(localObject[10]))) {
-          break label173;
-        }
-        localObject = localObject[10];
-        bcuf.a().a((String)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("RecordTracer", 2, "not init, processId:" + BaseApplicationImpl.sProcessId + ", processName:" + BaseApplicationImpl.processName);
-        continue;
-        label173:
-        String str = "0.1;0.0002;10;5;10;5;2;0;500;1";
-      }
-    }
+    paramUniPacket.setServantName("MQQ.VipSTCheckServer.VipSTCheckObj");
+    paramUniPacket.setFuncName("mobileUniPayCheck");
+    paramUniPacket.put("stRequest", (UniPayRequest)paramToServiceMsg.extraData.getSerializable("UniPayRequest"));
+    return true;
   }
   
-  public void b()
+  public String[] a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject != null)
-    {
-      localObject = (beba)((QQAppInterface)localObject).getManager(233);
-      if (localObject != null) {
-        ((beba)localObject).c();
-      }
-    }
-    bcuf.a().a();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    bcuf.a().b();
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject != null)
-    {
-      localObject = (beba)((QQAppInterface)localObject).getManager(233);
-      if (localObject != null) {
-        ((beba)localObject).b();
-      }
-    }
+    return new String[] { "VipSTCheckServer" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcui
  * JD-Core Version:    0.7.0.1
  */

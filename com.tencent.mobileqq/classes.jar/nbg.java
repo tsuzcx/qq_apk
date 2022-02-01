@@ -1,18 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.gamelogic.data.Player;
+import android.graphics.RectF;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.avgame.gameroom.GameRoomFragment;
 import com.tencent.avgame.gameroom.seat.SeatView;
 
 public class nbg
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public nbg(SeatView paramSeatView, Player paramPlayer) {}
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nbg(GameRoomFragment paramGameRoomFragment) {}
+  
+  public void onGlobalLayout()
   {
-    paramDialogInterface.cancel();
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a.a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+    RectF localRectF = this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a();
+    if (localRectF == null) {
+      return;
+    }
+    if (!this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b)
+    {
+      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_Nbp.a().a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690282), localRectF, 146);
+      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b = true;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidGraphicsRectF = localRectF;
+      return;
+      if ((this.jdField_a_of_type_AndroidGraphicsRectF != null) && ((this.jdField_a_of_type_AndroidGraphicsRectF.left != localRectF.left) || (this.jdField_a_of_type_AndroidGraphicsRectF.top != localRectF.top))) {
+        this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_Nbp.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690282), localRectF, 146);
+      }
     }
   }
 }

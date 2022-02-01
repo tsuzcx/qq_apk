@@ -1,103 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.common.app.AppInterface;
 
-public class bopn
-  implements bokx
+class bopn
+  extends boqk
 {
-  public static final String[] a;
-  public int a;
-  public bokw a;
-  bopo a;
-  public String a;
-  public int b;
+  bopn(bopl parambopl, AppInterface paramAppInterface) {}
   
-  static
+  public void a(boolean paramBoolean, int paramInt)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "NoNeedDown", "NoFound", "NeedDown" };
-  }
-  
-  public int a()
-  {
-    bokw localbokw = a();
-    int i;
-    if (localbokw != null) {
-      if (localbokw.a() == 2) {
-        i = 2;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMPredownManager", 2, String.format("getState %s %s %s %s ", new Object[] { toString(), "" + localbokw, jdField_a_of_type_ArrayOfJavaLangString[i], bopp.jdField_a_of_type_ArrayOfJavaLangString[this.b] }));
-      }
-      return i;
-      i = 0;
-      continue;
-      i = 1;
-    }
-  }
-  
-  public bokw a()
-  {
-    Object localObject1 = this.jdField_a_of_type_Bokw;
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {
-      switch (this.b)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if (paramBoolean) {
+      synchronized (bopl.a(this.jdField_a_of_type_Bopl))
       {
+        bopl.a(this.jdField_a_of_type_Bopl, paramInt);
+        return;
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bokw = ((bokw)localObject1);
-      localObject2 = localObject1;
-      return localObject2;
-      localObject1 = ((bolb)bojv.a(5)).a(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = ((bolb)bojv.a(5)).a(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = booi.a(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = booi.a("", this.jdField_a_of_type_JavaLangString, "forPredownlaod", 0.0F, 0.0F, 0.0F);
-      continue;
-      localObject1 = booi.b(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = booi.a(this.jdField_a_of_type_JavaLangString, new ArrayList(), 0.0F, 0.0F, 0.0F);
-    }
-  }
-  
-  public void a()
-  {
-    bokw localbokw = a();
-    if (localbokw != null)
-    {
-      localbokw.a(this);
-      localbokw.b();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPredownManager", 2, "starDownload: " + this + localbokw);
-    }
-  }
-  
-  public void a(bokw parambokw) {}
-  
-  public void a(bokw parambokw, int paramInt)
-  {
-    this.jdField_a_of_type_Bopo.a(false, this);
-  }
-  
-  public void a(bopo parambopo)
-  {
-    this.jdField_a_of_type_Bopo = parambopo;
-  }
-  
-  public void b(bokw parambokw)
-  {
-    this.jdField_a_of_type_Bopo.a(true, this);
-  }
-  
-  public String toString()
-  {
-    return "QIMPredownJob{" + this.jdField_a_of_type_Int + "," + bopp.jdField_a_of_type_ArrayOfJavaLangString[this.b] + "," + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

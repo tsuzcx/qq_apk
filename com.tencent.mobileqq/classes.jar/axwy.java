@@ -1,30 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class axwy
-  implements View.OnClickListener
+class axwy
+  implements auun
 {
-  public axwy(NearbyProfileFragment paramNearbyProfileFragment, aarz paramaarz) {}
+  axwy(axww paramaxww) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Aarz != null) {}
-    for (String str = this.jdField_a_of_type_Aarz.b;; str = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501")
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
-      bcst.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    QLog.d(axww.a(this.a), 2, "onDownloadFailed,errCode=" + paramInt);
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.d(axww.a(this.a), 2, "onDownloadSucess,filePath:" + paramString);
     }
   }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

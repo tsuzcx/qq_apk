@@ -1,157 +1,100 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.qqstory.view.PressDarkImageButton;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
-class bpoc
-  extends LinearLayout
+@TargetApi(18)
+public class bpoc
+  extends bpny
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
-  private final int d = 5;
+  protected ImageView a;
+  protected LinearLayout a;
+  protected bhpc a;
+  private boolean b;
   
-  public bpoc(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public bpoc(CaptureModeController paramCaptureModeController)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    paramInt1 = bppm.b(getContext(), 6.0F);
-    this.c = ((this.jdField_a_of_type_Int - paramInt1 * ((this.b - 1) * 2)) / this.b);
-    a();
+    super(paramCaptureModeController);
+    this.jdField_a_of_type_Int = 1;
   }
   
-  private void a()
+  public void a()
   {
-    setOrientation(0);
-    setGravity(17);
-    int j = bppm.b(getContext(), 12.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    if (i < this.b)
+    if (this.jdField_a_of_type_Bhpc == null) {
+      this.jdField_a_of_type_Bhpc = bhlq.a(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a(), 230).setMessage(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131697607)).setPositiveButton(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131694098), new bpoe(this)).setNegativeButton(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131717827), new bpod(this));
+    }
+    try
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131559107, null);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.c, this.c);
-      if (i == 0) {
-        localLayoutParams.setMargins(0, j, j / 2, 0);
+      if ((this.jdField_a_of_type_Bhpc != null) && (!this.jdField_a_of_type_Bhpc.isShowing())) {
+        this.jdField_a_of_type_Bhpc.show();
       }
-      for (;;)
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SegmentMode", 2, "segment back dialog error:" + localThrowable);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364193));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364192));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentMode", 2, new Object[] { "handleSelectMode", Boolean.valueOf(paramBoolean) });
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bpof(this));
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    if (paramBoolean)
+    {
+      ((PressDarkImageButton)this.jdField_a_of_type_AndroidWidgetImageView).setEnableDark(true);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+      this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
+      return;
+    }
+    ((PressDarkImageButton)this.jdField_a_of_type_AndroidWidgetImageView).setEnableDark(false);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
+    this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_Bocn.c())
       {
-        localView.setLayoutParams(localLayoutParams);
-        ((ImageView)localView.findViewById(2131370257)).setPadding(k, k, k, k);
-        addView(localView);
-        i += 1;
-        break;
-        if (this.b - 1 == i) {
-          localLayoutParams.setMargins(j / 2, j, 0, 0);
-        } else {
-          localLayoutParams.setMargins(j / 2, j, j / 2, 0);
-        }
+        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bocn.y();
       }
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
+      else if (QLog.isColorLevel())
+      {
+        QLog.e("SegmentMode", 2, "segment video error: jump to edit with no videos");
+        continue;
+        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bocn.A();
       }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
-      }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
-  }
-  
-  public void a(bpni parambpni, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    int i = paramInt1 * this.b;
-    label31:
-    URLImageView localURLImageView;
-    ProgressBar localProgressBar;
-    String str;
-    if (paramInt1 == paramInt2 - 1)
-    {
-      paramInt1 = parambpni.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
-        return;
-      }
-      localObject1 = getChildAt(paramInt2 - i);
-      localObject2 = ((View)localObject1).findViewById(2131370270);
-      localURLImageView = (URLImageView)((View)localObject1).findViewById(2131370257);
-      localObject3 = (TextView)((View)localObject1).findViewById(2131370271);
-      localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131370269);
-      str = parambpni.b(paramInt2);
-      localObject1 = parambpni.a(paramInt2);
-      if (localObject1 != null) {
-        break label146;
-      }
-      yqp.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { parambpni.toString() });
-    }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label146:
-      ((TextView)localObject3).setText(str);
-      ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131378270, Integer.valueOf(paramInt2));
-      if (paramBoolean) {
-        break label193;
-      }
-      localProgressBar.setVisibility(4);
-      localURLImageView.setImageDrawable(null);
-    }
-    label193:
-    localURLImageView.setTag(2131378283, localObject1);
-    localURLImageView.setTag(2131378248, Boolean.valueOf(false));
-    localProgressBar.setVisibility(0);
-    Object localObject2 = new bpod((String)localObject1, localURLImageView, localProgressBar);
-    localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-    Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = bdzx.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = bdzx.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-    Object localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-    if (((URLDrawable)localObject1).getStatus() == 1) {
-      ((bpod)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localURLImageView.setImageDrawable((Drawable)localObject1);
-      break;
-      localObject1 = null;
     }
   }
 }

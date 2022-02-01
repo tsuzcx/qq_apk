@@ -1,51 +1,221 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.1;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class quk
-  extends qqt
 {
-  public quk(Context paramContext, aobu paramaobu, snh paramsnh)
+  private int jdField_a_of_type_Int;
+  public AppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  private qtv jdField_a_of_type_Qtv = new qul(this);
+  qum jdField_a_of_type_Qum;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public quk(AppInterface paramAppInterface, int paramInt)
   {
-    super(paramContext, paramaobu, paramsnh);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public qqt a()
+  @Nullable
+  private RefreshData a(int paramInt1, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt2)
   {
-    return l().s().n();
+    qtq localqtq = (qtq)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(270);
+    RefreshData localRefreshData;
+    if (paramRefreshInfo.has())
+    {
+      paramRefreshInfo = new RefreshData(paramRefreshInfo);
+      localRefreshData = localqtq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramInt2);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.readinjoy.4tab", 2, "onReqGuideInfo 5bd回包 ");
+        if (paramRefreshInfo != null) {
+          break label226;
+        }
+        QLog.d("Q.readinjoy.4tab", 2, "newRefreshData = " + paramRefreshInfo);
+        label89:
+        if (localRefreshData != null) {
+          break label257;
+        }
+        QLog.d("Q.readinjoy.4tab", 2, "oldRefreshData = " + localRefreshData);
+      }
+      label120:
+      if (paramRefreshInfo != null) {
+        break label289;
+      }
+      if (localRefreshData != null)
+      {
+        bhsi.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null, paramInt2);
+        bhmi.b(quo.a());
+        localqtq.a(0, "", -1L, paramInt2);
+      }
+    }
+    for (;;)
+    {
+      if (paramRefreshInfo != null)
+      {
+        paramRefreshInfo.setShowInSource(true, this.jdField_a_of_type_Int);
+        if (localRefreshData != null) {
+          paramRefreshInfo.isShown = localRefreshData.isShown;
+        }
+        bhsi.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramRefreshInfo.toJson().toString(), paramInt2);
+      }
+      return localRefreshData;
+      paramRefreshInfo = null;
+      break;
+      label226:
+      QLog.d("Q.readinjoy.4tab", 2, "newRefreshData = " + paramRefreshInfo.toString());
+      break label89;
+      label257:
+      QLog.d("Q.readinjoy.4tab", 2, "oldRefreshData = " + localRefreshData.toString());
+      break label120;
+      label289:
+      if (((localRefreshData == null) || (!paramRefreshInfo.id.equals(localRefreshData.id)) || (paramRefreshInfo.seq > localRefreshData.seq)) && (paramInt1 <= paramRefreshInfo.endTime))
+      {
+        bhmi.b(quo.a());
+        localqtq.a(paramRefreshInfo, this.jdField_a_of_type_Int);
+      }
+    }
   }
   
-  public qqt d()
+  private void a(int paramInt1, RefreshData paramRefreshData, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo, int paramInt2)
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle);
+    Object localObject;
+    if (paramSkinInfo.has())
+    {
+      paramSkinInfo = new SkinData(paramSkinInfo);
+      localObject = new GuideData(paramGuideInfo, paramInt2);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.4tab", 2, "guideData = " + localObject);
+      }
+      paramGuideInfo = (qtw)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(261);
+      if ((this.jdField_a_of_type_Boolean) || (paramInt1 < ((GuideData)localObject).beginTime) || (paramInt1 > ((GuideData)localObject).endTime)) {
+        break label215;
+      }
+      a(261, "", (BaseResData)localObject);
+      label112:
+      localObject = paramGuideInfo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
+      if ((paramSkinInfo != null) || (paramGuideInfo.a() != 1)) {
+        break label259;
+      }
+      this.jdField_a_of_type_JavaLangString = paramGuideInfo.a();
+      bhsi.s(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);
+      if ((paramRefreshData != null) && (paramInt1 <= paramRefreshData.endTime))
+      {
+        paramRefreshData.isShown = true;
+        bhsi.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramRefreshData.toJson().toString(), paramInt2);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    label215:
+    while ((paramSkinInfo == null) || (localObject == null) || (!((SkinData)localObject).id.equals(paramSkinInfo.id)) || (((SkinData)localObject).seq == paramSkinInfo.seq))
+    {
+      return;
+      paramSkinInfo = null;
+      break;
+      if ((paramInt1 > ((GuideData)localObject).endTime) || (!bhnv.h(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
+        break label112;
+      }
+      paramGuideInfo.a((GuideData)localObject);
+      paramGuideInfo.a(((GuideData)localObject).skinData);
+      break label112;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    label259:
+    bhsi.s(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramSkinInfo.toJson().toString());
+    if (paramSkinInfo.id.equals(paramGuideInfo.a()))
+    {
+      this.jdField_a_of_type_JavaLangString = paramSkinInfo.id;
+      return;
     }
-    a(localLinearLayout);
-    return this;
+    bhmi.a(qtl.a(paramSkinInfo.id));
   }
   
-  public qqt e()
+  private void a(int paramInt, String paramString, BaseResData paramBaseResData)
   {
-    return null;
+    if (this.jdField_a_of_type_Qum != null) {
+      this.jdField_a_of_type_Qum.a(paramInt, paramString, paramBaseResData);
+    }
   }
   
-  public qqt o()
+  private void a(int paramInt1, oidb_0x5bd.GuideInfo paramGuideInfo, int paramInt2)
   {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a(this.jdField_a_of_type_JavaLangObject);
+    qtp localqtp = (qtp)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(271);
+    Object localObject;
+    int i;
+    if (paramGuideInfo.has())
+    {
+      paramGuideInfo = new GuideData(paramGuideInfo, paramInt2);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySkinAndRefreshFacadeManager", 2, "guideData = " + paramGuideInfo);
+      }
+      localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
+      if (paramGuideInfo == null) {
+        break label284;
+      }
+      paramGuideInfo.business = "operation_guide";
+      GuideData localGuideData = (GuideData)((EntityManager)localObject).find(GuideData.class, new String[] { paramGuideInfo.id, paramGuideInfo.uin, paramGuideInfo.business });
+      if ((localGuideData == null) || (localGuideData.showTime == 0)) {
+        ((EntityManager)localObject).persistOrReplace(paramGuideInfo);
+      }
+      paramGuideInfo = localqtp.a("operation_guide", paramGuideInfo.id);
+      if (paramGuideInfo == null) {
+        return;
+      }
+      paramGuideInfo = paramGuideInfo.iterator();
+      i = 0;
+      label167:
+      if (!paramGuideInfo.hasNext()) {
+        return;
+      }
+      localObject = (GuideData)paramGuideInfo.next();
+      if ((i != 0) || (((GuideData)localObject).source != paramInt2) || (paramInt1 < ((GuideData)localObject).beginTime) || (paramInt1 > ((GuideData)localObject).endTime)) {
+        break label249;
+      }
+      a(271, "operation_guide", (BaseResData)localObject);
+      this.jdField_a_of_type_Boolean = true;
     }
-    return this;
+    for (;;)
+    {
+      i += 1;
+      break label167;
+      paramGuideInfo = null;
+      break;
+      label249:
+      if ((paramInt1 <= ((GuideData)localObject).endTime) && (bhnv.h(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
+        localqtp.a("operation_guide", (BaseResData)localObject);
+      }
+    }
+    label284:
+    localqtp.a(paramInt2);
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new ReadInjoySkinAndRefreshFacade.1(this), 5, null, true);
+  }
+  
+  public void a(qum paramqum)
+  {
+    this.jdField_a_of_type_Qum = paramqum;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Qum = null;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Qtv);
   }
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gs8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gs8" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_privilege" style="@style/bw" />
-    <LinearLayout android:orientation="horizontal" style="@style/by">
-        <RelativeLayout android:id="@id/bkm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="27.0dip">
+    <LinearLayout android:orientation="horizontal" android:clipChildren="false" style="@style/by">
+        <RelativeLayout android:id="@id/bkm" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="27.0dip">
             <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/g2l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-            <LinearLayout android:orientation="vertical" android:id="@id/bkn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="vertical" android:id="@id/bkn" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         </RelativeLayout>
     </LinearLayout>
     <ImageView android:id="@id/yw" style="@style/bv" />

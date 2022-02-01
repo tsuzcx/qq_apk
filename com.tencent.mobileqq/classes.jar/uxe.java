@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
-import qqcircle.QQCircleFeedBase.StBusiInfoData;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
-final class uxe
-  implements zxa<FeedCloudRead.StGetBusiInfoRsp>
+public class uxe
+  implements TextView.OnEditorActionListener
 {
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public uxe(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    QLog.i("QCircleGlobalInfo", 1, "updateCircleInfo onReceive: isSuccess=" + paramBoolean + " retCode=" + paramLong);
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      paramString = paramStGetBusiInfoRsp.busiRspData.get();
-      if (paramString != null) {
-        paramStGetBusiInfoRsp = new QQCircleFeedBase.StBusiInfoData();
-      }
-    }
-    try
-    {
-      paramStGetBusiInfoRsp.mergeFrom(paramString.toByteArray());
-      uxc.a(paramStGetBusiInfoRsp.schoolInfos.get(), paramStGetBusiInfoRsp.companyInfos.get());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("QCircleGlobalInfo", 1, "updateCircleInfo error", paramString);
-    }
+    return paramKeyEvent.getKeyCode() == 66;
   }
 }
 

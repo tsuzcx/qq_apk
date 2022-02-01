@@ -1,52 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
 
 public class aqho
-  extends MSFServlet
 {
-  public String[] getPreferSSOCommands()
+  public static float a(double paramDouble)
   {
-    return new String[] { "OnlinePush.ReqPush", "MessageSvc.PushGroupMsg", "MessageSvc.PushForceOffline", "MessageSvc.PushNotify", "MessageSvc.PushForceOffline", "MessageSvc.RequestPushStatus", "MessageSvc.RequestBatchPushFStatus", "MessageSvc.PushFStatus", "AccostSvc.SvrMsg", "ADMsgSvc.PushMsg", "StreamSvr.PushStreamMsg", "friendlist.getOnlineFriend", "MessageSvc.PushReaded", "OnlinePush.PbPushTransMsg", "baseSdk.Msf.NotifyResp", "RegPrxySvc.PushParam", "OnlinePush.PbPushGroupMsg", "OnlinePush.PbPushBindUinGroupMsg", "OnlinePush.PbPushDisMsg", "OnlinePush.PbC2CMsgSync", "OnlinePush.PbPushC2CMsg", "StatSvc.SvcReqKikOut", "NearFieldTranFileSvr.NotifyList", "NearFieldDiscussSvr.NotifyList", "RegPrxySvc.QueryIpwdStat", "StatSvc.SvcReqMSFLoginNotify", "ImStatus.ReqPushStatus" };
+    return (float)(paramDouble - Math.floor(paramDouble / 360.0D) * 360.0D);
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static float a(float paramFloat1, float paramFloat2)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if ((getAppRuntime() instanceof QQAppInterface)) {
-        ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      }
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
+    return (float)Math.asin(paramFloat1 / (2.0F * paramFloat2));
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-      }
-    }
+    return (float)(paramFloat1 * paramFloat2 * paramFloat3 / Math.sqrt((paramFloat1 + paramFloat2 + paramFloat3) * (paramFloat1 - paramFloat2 + paramFloat3) * (paramFloat1 + paramFloat2 - paramFloat3) * (paramFloat2 + paramFloat3 - paramFloat1)));
+  }
+  
+  public static float a(Vector3 paramVector31, Vector3 paramVector32)
+  {
+    return (float)Math.sqrt((paramVector31.x - paramVector32.x) * (paramVector31.x - paramVector32.x) + (paramVector31.y - paramVector32.y) * (paramVector31.y - paramVector32.y) + (paramVector31.z - paramVector32.z) * (paramVector31.z - paramVector32.z));
+  }
+  
+  public static float b(float paramFloat1, float paramFloat2)
+  {
+    return (float)Math.asin(Math.min(1.0F, Math.max(-1.0F, paramFloat1 / (2.0F * paramFloat2))));
   }
 }
 

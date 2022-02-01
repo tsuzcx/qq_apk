@@ -1,27 +1,34 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class azgk
-  implements QQPermissionCallback
+class azgk
+  implements View.OnClickListener
 {
-  public azgk(VipProfileCardPhotoHandlerActivity paramVipProfileCardPhotoHandlerActivity) {}
+  azgk(azgj paramazgj) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user denied");
+    if (azgj.a(this.a).size() > 10) {
+      QQToast.a(azgj.a(this.a), 1, 2131690204, 1).a();
     }
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user grant");
+    while (azgj.a(this.a) == null)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    VipProfileCardPhotoHandlerActivity.a(this.a, ProfileActivity.a(this.a, 5));
+    if (azgj.a(this.a).size() > 1) {}
+    for (int i = azgj.a(this.a).size() - 1;; i = 0)
+    {
+      AutoReplyText localAutoReplyText = new AutoReplyText("", i);
+      localAutoReplyText.getExtra().putBoolean("addFlag", true);
+      azgj.a(this.a).b(localAutoReplyText, false);
+      break;
+    }
   }
 }
 

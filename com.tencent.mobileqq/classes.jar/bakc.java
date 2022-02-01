@@ -1,69 +1,50 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class bakc
-  extends BaseAdapter
+  implements bakg
 {
-  private int jdField_a_of_type_Int = 25;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private int b;
-  private int c;
+  public bakc(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
   
-  public bakc(Context paramContext, int paramInt)
+  public void a(@NotNull View paramView, bakz parambakz)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131167070);
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, paramContext.getDisplayMetrics()));
-    this.c = paramContext.getColor(2131167044);
-  }
-  
-  public View a(int paramInt)
-  {
-    return getView(paramInt, null, null);
-  }
-  
-  public int getCount()
-  {
-    return bakj.jdField_a_of_type_Int;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramView == null)
-    {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    if (bpak.a(paramView)) {
+      return;
     }
-    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    InterestSwitchEditActivity.a(this.a, parambakz);
+    InterestSwitchEditActivity.b(this.a, parambakz);
+  }
+  
+  public void b(@NotNull View paramView, @Nullable bakz parambakz)
+  {
+    int j = 0;
+    if (!bhnv.d(BaseApplication.getContext())) {
+      QQToast.a(BaseApplicationImpl.sApplication, 2131693963, 0).b(this.a.getTitleBarHeight());
+    }
+    while (parambakz == null) {
+      return;
+    }
+    if (parambakz.b()) {}
+    for (int i = 1;; i = 0)
     {
-      localObject2 = paramView;
-      if (paramView == null) {
-        localObject2 = (WheelTextView)localObject1;
+      if (balc.a.a(parambakz.b())) {
+        if (i != 0) {}
       }
-      paramView = bakj.a(paramInt);
-      ((WheelTextView)localObject2).setTextSize(20.0F);
-      ((WheelTextView)localObject2).setTextColor(this.b);
-      ((WheelTextView)localObject2).setGravity(17);
-      ((WheelTextView)localObject2).setText(paramView);
-      ((WheelTextView)localObject2).setBackgroundColor(this.c);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = paramView;
+      for (j = 1;; j = i)
+      {
+        if ((parambakz.b() == 42340) && (j == 1) && (QQPlayerService.a())) {
+          QQPlayerService.c(BaseApplicationImpl.getContext());
+        }
+        InterestSwitchEditActivity.a(this.a, parambakz, j);
+        InterestSwitchEditActivity.c(this.a, parambakz);
+        return;
+      }
     }
   }
 }

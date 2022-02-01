@@ -1,26 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class xwk
-  extends niv
+final class xwk
+  implements URLDrawable.URLDrawableListener
 {
-  xwk(xwg paramxwg, boolean paramBoolean) {}
+  xwk(ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(5, bool);
-        this.a.a(0, this.a.a.getString(2131718828));
-        return;
-      }
-    }
-    ((wfg)this.a.a.app.getManager(181)).c(this.b);
+    yuk.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

@@ -1,16 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public final class blog
+public abstract interface blog
 {
-  public static int a()
-  {
-    return blps.a(BaseApplicationImpl.context);
-  }
+  public abstract void a();
   
-  public static boolean a()
-  {
-    return (blps.b(BaseApplicationImpl.context) == 1) || (blps.c(BaseApplicationImpl.context));
-  }
+  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
 }
 
 

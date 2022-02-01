@@ -1,60 +1,87 @@
-import android.util.Log;
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class boac
-  extends ScheduledThreadPoolExecutor
+public final class boac
+  extends MSFServlet
 {
-  public boac(TimerTaskManager paramTimerTaskManager, int paramInt)
+  private static void a(FromServiceMsg paramFromServiceMsg)
   {
-    super(paramInt);
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      if (i >= 0) {}
+    }
+    else
+    {
+      return;
+    }
+    byte[] arrayOfByte = new byte[i];
+    bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    paramFromServiceMsg.putWupBuffer(arrayOfByte);
   }
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  private static void a(ToServiceMsg paramToServiceMsg)
   {
-    super.afterExecute(paramRunnable, paramThrowable);
-    Throwable localThrowable1 = paramThrowable;
-    if (paramThrowable == null)
+    if (paramToServiceMsg.getWupBuffer() != null)
     {
-      localThrowable1 = paramThrowable;
-      if (!(paramRunnable instanceof Future)) {}
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      bhvd.a(arrayOfByte, 0, 4L + l);
+      bhvd.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
     }
-    try
+  }
+  
+  public String[] getPreferSSOCommands()
+  {
+    return new String[] { "WeiyunV2Svc.TransCmd" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    a(paramFromServiceMsg);
+    if (paramIntent == null) {
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    for (;;)
     {
-      paramRunnable = (Future)paramRunnable;
-      localThrowable1 = paramThrowable;
-      if (paramRunnable.isDone())
-      {
-        paramRunnable.get();
-        localThrowable1 = paramThrowable;
+      bnzz.a().a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      QLog.e("WyServlet", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
       }
-    }
-    catch (CancellationException localCancellationException)
-    {
-      break label46;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      for (;;)
-      {
-        localThrowable2 = paramRunnable.getCause();
+      if (QLog.isColorLevel()) {
+        QLog.d("WyServlet", 1, "onSend : cmd[" + paramIntent.getServiceCmd() + "]");
       }
-    }
-    catch (InterruptedException paramRunnable)
-    {
-      for (;;)
-      {
-        label46:
-        paramRunnable.printStackTrace();
-        Throwable localThrowable2 = paramThrowable;
-      }
-    }
-    if (localThrowable1 != null) {
-      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
-    }
+      a(paramIntent);
+      paramPacket.setSSOCommand("WeiyunV2Svc.TransCmd");
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+      paramPacket.setAttributes(paramIntent.getAttributes());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("WyServlet", 1, "onSend : toMsg is null");
   }
 }
 

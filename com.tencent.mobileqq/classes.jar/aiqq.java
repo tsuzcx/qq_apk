@@ -1,43 +1,68 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.util.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aiqq
-  extends anmu
+public class aiqq
+  extends BroadcastReceiver
 {
-  aiqq(aiqp paramaiqp) {}
+  public aiqq(TroopChatPie paramTroopChatPie) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aiqp.a(this.a).removeMessages(1);
-    if ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing())) {
-      QLog.e("SeparateForward", 1, new Object[] { "onGetFriendNickBatch timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))))
+    {
+      paramContext = paramIntent.getStringExtra("data");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label41;
+      }
     }
     for (;;)
     {
       return;
-      this.a.jdField_a_of_type_Biau.dismiss();
-      awwm.a().b.clear();
-      if ((paramBoolean) && (paramObject != null)) {
-        awwm.a().b.putAll((Map)paramObject);
-      }
-      if (awwm.a().b.size() == 0)
+      try
       {
-        BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-        if (localBaseActivity != null) {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697671, 0).b(localBaseActivity.getTitleBarHeight());
+        label41:
+        Object localObject = new JSONObject(paramContext);
+        paramContext = ((JSONObject)localObject).optString("groupCode");
+        if (TextUtils.equals(paramContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        {
+          paramIntent = ((JSONObject)localObject).optString("content");
+          String str1 = ((JSONObject)localObject).optString("source");
+          int i = ((JSONObject)localObject).optInt("rankId", 333);
+          String str2 = ((JSONObject)localObject).optString("nickName");
+          String str3 = ((JSONObject)localObject).optString("uin");
+          String str4 = ((JSONObject)localObject).optString("course");
+          localObject = ((JSONObject)localObject).optString("name");
+          if ((!"join".equals(str1)) && (TextUtils.equals(str3, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+          {
+            ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str3, str2, i, str4, (String)localObject);
+            if (this.a.jdField_a_of_type_Aivk != null)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
+              }
+              this.a.jdField_a_of_type_Aivk.a(TroopChatPie.a(this.a), false);
+            }
+            if (TroopChatPie.a(this.a) != null) {
+              TroopChatPie.a(this.a).a(i);
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
+            return;
+          }
         }
       }
-      while (QLog.isDevelopLevel())
-      {
-        QLog.d("MultiMsg_TAG", 4, "onGetFriendNickBatch = " + paramObject);
-        return;
-        this.a.a((Map)paramObject, awwm.a().a);
-      }
+      catch (JSONException paramContext) {}
     }
   }
 }

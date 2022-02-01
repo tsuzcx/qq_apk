@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import bayw;
+import bbrp;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
 public class AIOVideoView$10
   implements Runnable
 {
-  public AIOVideoView$10(bayw parambayw) {}
+  public AIOVideoView$10(bbrp parambbrp) {}
   
   public void run()
   {
-    bayw.a(this.this$0, bayw.a(this.this$0, this.this$0.a.getCoverDrawable()));
+    bbrp.a(this.this$0, bbrp.a(this.this$0, this.this$0.a.getCoverDrawable()));
   }
 }
 

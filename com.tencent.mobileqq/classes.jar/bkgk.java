@@ -1,39 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-
 public class bkgk
 {
-  private static Handler a;
+  public String a;
+  public String b;
   
-  public static void a(Runnable paramRunnable)
+  public String toString()
   {
-    try
-    {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
-      }
-      a.post(paramRunnable);
-      return;
-    }
-    finally {}
-  }
-  
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    try
-    {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
-      }
-      a.postDelayed(paramRunnable, paramLong);
-      return;
-    }
-    finally {}
-  }
-  
-  public static boolean a()
-  {
-    return Looper.getMainLooper().getThread() == Thread.currentThread();
+    return "[MediaCodecInfo] name : " + this.a + " ;path = " + this.b;
   }
 }
 

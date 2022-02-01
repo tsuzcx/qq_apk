@@ -1,13 +1,20 @@
-import android.app.Activity;
-import android.view.View;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public abstract interface ayht
+class ayht
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract Activity a();
+  ayht(ayhj paramayhj) {}
   
-  public abstract void a(View paramView);
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return true;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 

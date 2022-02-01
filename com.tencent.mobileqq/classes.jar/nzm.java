@@ -1,22 +1,15 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import com.tencent.qphone.base.util.QLog;
 
-public class nzm
+class nzm
+  implements bljd
 {
-  public nzm(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString, long paramLong) {}
+  nzm(nzl paramnzl) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void ak_()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    SosoInterface.a(new nzy(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
+    }
   }
 }
 

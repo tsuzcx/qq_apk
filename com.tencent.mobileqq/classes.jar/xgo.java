@@ -1,77 +1,107 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class xgo
-  extends BaseAdapter
+public abstract class xgo
+  extends xgp
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  List<TroopInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  protected int a;
+  protected StoryVideoItem a;
+  protected int b = -1;
+  protected int c = -1;
+  protected String c;
+  protected int d;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected String i;
+  protected String j;
+  protected String k;
   
-  public xgo(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView, Context paramContext)
+  public xgo()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_d_of_type_Int = 1;
   }
   
-  public void a(List<TroopInfo> paramList)
+  public final void a(xht paramxht)
   {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+    super.a(paramxht);
+    paramxht.a = a(6);
+  }
+  
+  public final void a(xhv paramxhv)
+  {
+    super.a(paramxhv);
+    paramxhv.b = 0;
+    paramxhv.jdField_d_of_type_JavaLangString = this.k;
+    paramxhv.a = this.a.mVideoThumbnailUrl;
+    paramxhv.jdField_e_of_type_JavaLangString = this.a.mVid;
+    paramxhv.h = a(1);
+    if (this.b != -1) {
+      paramxhv.jdField_d_of_type_Int = this.b;
+    }
+    if (this.c != -1) {
+      paramxhv.jdField_e_of_type_Int = this.c;
     }
   }
   
-  public int getCount()
+  public final void a(xhw paramxhw)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    super.a(paramxhw);
+    paramxhw.a = this.a.mVideoThumbnailUrl;
+    paramxhw.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramxhw.jdField_d_of_type_JavaLangString = this.i;
+    paramxhw.jdField_e_of_type_JavaLangString = a(2);
   }
   
-  public Object getItem(int paramInt)
+  public final void a(xhx paramxhx)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    super.a(paramxhx);
+    paramxhx.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramxhx.jdField_d_of_type_JavaLangString = this.a.mVideoLocalThumbnailPath;
+    if (TextUtils.isEmpty(paramxhx.jdField_d_of_type_JavaLangString)) {
+      paramxhx.jdField_d_of_type_JavaLangString = xif.a(paramxhx.jdField_e_of_type_JavaLangString);
+    }
+    paramxhx.jdField_c_of_type_JavaLangString = a(5);
+    paramxhx.a = this.j;
   }
   
-  public long getItemId(int paramInt)
+  public void a(xhy paramxhy)
   {
-    return paramInt;
+    super.a(paramxhy);
+    paramxhy.jdField_c_of_type_JavaLangString = this.i;
+    paramxhy.a = this.jdField_e_of_type_JavaLangString;
+    paramxhy.jdField_d_of_type_JavaLangString = a(3);
+    paramxhy.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramxhy.jdField_c_of_type_Boolean = true;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected void a_(xhu paramxhu)
   {
-    TroopInfo localTroopInfo = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      paramView = new xgp(this);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561879, null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367877));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371720));
-      localView.setTag(paramView);
+    yuk.b("Q.qqstory.share.ShareModeBase", "prepareCommonShareData");
+    super.a_(paramxhu);
+    if (this.a.isPollVideo()) {
+      paramxhu.a("vote", "1");
     }
     for (;;)
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopName());
-      Object localObject = xfe.a().a(localTroopInfo.troopuin);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (xgp)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
+      paramxhu.a = this.a;
+      return;
+      if (this.a.isInteractVideo()) {
+        paramxhu.a("grade", "1");
+      }
     }
+  }
+  
+  public void b(xhy paramxhy)
+  {
+    super.b(paramxhy);
+    paramxhy.jdField_c_of_type_JavaLangString = this.i;
+    paramxhy.a = this.jdField_d_of_type_JavaLangString;
+    paramxhy.jdField_d_of_type_JavaLangString = a(4);
+    paramxhy.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramxhy.jdField_c_of_type_Boolean = true;
   }
 }
 

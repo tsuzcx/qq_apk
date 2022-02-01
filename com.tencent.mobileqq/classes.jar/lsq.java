@@ -1,61 +1,52 @@
-import android.graphics.Bitmap;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 public class lsq
-  extends lsp
 {
-  public Bitmap a;
-  public byte[] a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public int f;
-  public String f;
-  int g;
-  int h;
+  private static float jdField_a_of_type_Float = (float)(Math.log(0.75D) / Math.log(0.9D));
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static float b = 800.0F;
+  private static float c = 0.4F;
+  private static float d = 1.0F - c;
+  private static float e;
+  private static float f = 1.0F / a(1.0F);
   
-  public lsq()
+  static
   {
-    this.jdField_f_of_type_Int = -1;
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    float f1 = 0.0F;
+    int i = 0;
+    if (i <= 100)
+    {
+      float f4 = i / 100.0F;
+      float f2 = 1.0F;
+      for (;;)
+      {
+        float f3 = (f2 - f1) / 2.0F + f1;
+        float f5 = 3.0F * f3 * (1.0F - f3);
+        float f6 = ((1.0F - f3) * c + d * f3) * f5 + f3 * f3 * f3;
+        if (Math.abs(f6 - f4) < 1.E-005D)
+        {
+          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
+          i += 1;
+          break;
+        }
+        if (f6 > f4) {
+          f2 = f3;
+        } else {
+          f1 = f3;
+        }
+      }
+    }
+    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
+    e = 8.0F;
+    f = 1.0F;
   }
   
-  void a(String paramString)
+  static float a(float paramFloat)
   {
-    super.a(paramString);
-    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
-    {
-      if (this.jdField_b_of_type_Int != 0) {
-        break label205;
-      }
-      this.jdField_f_of_type_Int = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
-      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("peer_gender");
-      this.c = bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
-      this.d = bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
-      this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("headurl", null);
-      if (!this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("oldproto", false)) {
-        break label164;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("RandomWebProtocol", 2, "[1v1] parse method is oldproto");
-      }
-      this.jdField_b_of_type_JavaLangString = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null));
-      this.jdField_a_of_type_ArrayOfByte = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
+    paramFloat = e * paramFloat;
+    if (paramFloat < 1.0F) {}
+    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
+      return paramFloat * f;
     }
-    label164:
-    label205:
-    while (this.jdField_b_of_type_Int != 1)
-    {
-      return;
-      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
-      this.jdField_a_of_type_ArrayOfByte = bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
-      return;
-    }
-    this.h = Math.max(this.jdField_a_of_type_OrgJsonJSONObject.optInt("waittime"), 200);
-    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("uniqkey", null);
   }
 }
 

@@ -1,100 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.api.motivevideo.GdtMvAnimation185H.1;
 
 public class acsm
-  implements DownloadListener
+  extends acsy
 {
-  acsm(acsl paramacsl) {}
+  private Runnable a;
   
-  public void installSucceed(String paramString1, String paramString2)
+  protected acsm(Context paramContext)
   {
-    if ((acsl.a(this.a) == null) || (acsl.a(this.a).getAppId() == null) || (acsl.a(this.a).getAppPackageName() == null) || (!acsl.a(this.a).getAppId().equals(paramString1)) || (!acsl.a(this.a).getAppPackageName().equals(paramString2)))
-    {
-      acqy.d("GdtDownloadReportManager", "no ad or not the same ad");
-      return;
-    }
-    paramString2 = acsl.a(this.a, paramString2);
-    ThreadManager.getFileThreadHandler().post(new GdtDownloadReportManager.1.1(this, paramString2, paramString1));
+    super(paramContext);
+    this.jdField_a_of_type_JavaLangRunnable = new GdtMvAnimation185H.1(this);
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public void a(int paramInt)
   {
-    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
-    do
+    super.a(paramInt);
+    acvc.b("GdtMotiveVideoAd", "185H doAnimation " + this.jdField_a_of_type_Acsl + " targetMode " + paramInt);
+    acsi localacsi;
+    if (this.jdField_a_of_type_Acsl != null)
     {
-      return;
-      acqy.a("GdtDownloadReportManager", "onDownloadFinish: infos:" + paramDownloadInfo.f);
-      if ((acsl.a(this.a).containsKey(paramDownloadInfo.c)) && (acsl.a(this.a).get(paramDownloadInfo.c) != null))
+      localacsi = (acsi)this.jdField_a_of_type_Acsl;
+      a();
+      if (paramInt == 1)
       {
-        acrm.a((Ad)acsl.a(this.a).get(paramDownloadInfo.c), 274);
-        return;
-      }
-    } while (!acsl.a(this.a, paramDownloadInfo, acsl.a(this.a)));
-    acrm.a(acsl.a(this.a), 274);
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
-    do
-    {
-      return;
-      acqy.a("GdtDownloadReportManager", "onDownloadPause: infos:" + paramDownloadInfo.f);
-      if ((acsl.a(this.a).containsKey(paramDownloadInfo.c)) && (acsl.a(this.a).get(paramDownloadInfo.c) != null))
-      {
-        acrm.a((Ad)acsl.a(this.a).get(paramDownloadInfo.c), 273);
-        acsl.b(this.a).put(paramDownloadInfo.c, acsl.a(this.a).get(paramDownloadInfo.c));
-        return;
-      }
-    } while (!acsl.a(this.a, paramDownloadInfo, acsl.a(this.a)));
-    acrm.a(acsl.a(this.a), 273);
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      acqy.a("GdtDownloadReportManager", "onDownloadUpdate: infos:" + paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if ((localDownloadInfo != null) && (!TextUtils.isEmpty(localDownloadInfo.c)))
-        {
-          acqy.a("GdtDownloadReportManager", "onDownloadUpdate: progress:" + localDownloadInfo.f);
-          if ((acsl.b(this.a).containsKey(localDownloadInfo.c)) && (acsl.b(this.a).get(localDownloadInfo.c) != null))
-          {
-            acrm.a((Ad)acsl.b(this.a).get(localDownloadInfo.c), 271);
-            acsl.b(this.a).remove(localDownloadInfo.c);
-          }
+        if (localacsi.jdField_a_of_type_AndroidViewView != null) {
+          localacsi.jdField_a_of_type_AndroidViewView.setVisibility(4);
         }
+        a(localacsi.jdField_f_of_type_AndroidViewView, localacsi.j, localacsi.k, localacsi.i);
+        a(localacsi.jdField_e_of_type_AndroidViewView, localacsi.jdField_g_of_type_Int, localacsi.jdField_h_of_type_Int);
+        a(localacsi.jdField_b_of_type_AndroidViewView, localacsi.jdField_a_of_type_Int, localacsi.jdField_b_of_type_Int);
+        a(localacsi.jdField_d_of_type_AndroidViewView, localacsi.jdField_e_of_type_Int, localacsi.jdField_f_of_type_Int);
+        a(localacsi.jdField_c_of_type_AndroidViewView, localacsi.jdField_c_of_type_Int, localacsi.jdField_d_of_type_Int);
       }
     }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
+    a(localacsi.jdField_f_of_type_AndroidViewView, -localacsi.j, -localacsi.k, -localacsi.i);
+    a(localacsi.jdField_e_of_type_AndroidViewView, -localacsi.jdField_g_of_type_Int, -localacsi.jdField_h_of_type_Int);
+    a(localacsi.jdField_b_of_type_AndroidViewView, -localacsi.jdField_a_of_type_Int, -localacsi.jdField_b_of_type_Int);
+    a(localacsi.jdField_d_of_type_AndroidViewView, -localacsi.jdField_e_of_type_Int, -localacsi.jdField_f_of_type_Int);
+    a(localacsi.jdField_c_of_type_AndroidViewView, -localacsi.jdField_c_of_type_Int, -localacsi.jdField_d_of_type_Int);
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
-  
-  public void packageReplaced(String paramString1, String paramString2)
+  public void a(View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8)
   {
-    installSucceed(paramString1, paramString2);
+    acsi localacsi = new acsi();
+    localacsi.jdField_a_of_type_AndroidViewView = paramView1;
+    localacsi.jdField_f_of_type_AndroidViewView = paramView3;
+    localacsi.jdField_g_of_type_AndroidViewView = paramView2;
+    localacsi.jdField_h_of_type_AndroidViewView = paramView8;
+    localacsi.j = acwn.a(-85, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.k = acwn.a(-588, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.i = acwn.a(416, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    paramView1 = (RelativeLayout.LayoutParams)paramView2.getLayoutParams();
+    float f = acwn.a(400, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    if (f > 0.0F)
+    {
+      localacsi.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / acwn.e(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
+      localacsi.jdField_b_of_type_Float = localacsi.jdField_a_of_type_Float;
+    }
+    localacsi.l = acwn.a(50, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.m = acwn.a(50, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.jdField_b_of_type_AndroidViewView = paramView4;
+    localacsi.jdField_c_of_type_AndroidViewView = paramView5;
+    localacsi.jdField_d_of_type_AndroidViewView = paramView6;
+    localacsi.jdField_e_of_type_AndroidViewView = paramView7;
+    localacsi.jdField_a_of_type_Int = acwn.a(-436, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.jdField_b_of_type_Int = acwn.a(567, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.jdField_c_of_type_Int = acwn.a(-275, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.jdField_d_of_type_Int = ((acwn.e(this.jdField_a_of_type_AndroidContentContext) - paramView5.getWidth()) / 2 - acwn.a(196, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext)));
+    localacsi.jdField_e_of_type_Int = acwn.a(-269, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.jdField_f_of_type_Int = ((acwn.e(this.jdField_a_of_type_AndroidContentContext) - paramView6.getWidth()) / 2 - acwn.a(196, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext)));
+    localacsi.jdField_g_of_type_Int = acwn.a(-257, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    localacsi.jdField_h_of_type_Int = ((acwn.e(this.jdField_a_of_type_AndroidContentContext) - paramView7.getWidth()) / 2 - acwn.a(196, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext)));
+    a(localacsi, paramView8);
+    this.jdField_a_of_type_Acsl = localacsi;
   }
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

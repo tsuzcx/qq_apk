@@ -1,31 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class xet
-  implements Parcelable.Creator
+public class xet
+  extends wov
 {
-  public StoryPushMsg a(Parcel paramParcel)
+  public List<ShareGroupItem> a;
+  
+  public xet(qqstory_service.RspGetShareGroupInfo paramRspGetShareGroupInfo)
   {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
+    super(paramRspGetShareGroupInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspGetShareGroupInfo.share_group_info_list.has())
+    {
+      paramRspGetShareGroupInfo = paramRspGetShareGroupInfo.share_group_info_list.get().iterator();
+      while (paramRspGetShareGroupInfo.hasNext())
+      {
+        qqstory_struct.ShareGroupInfo localShareGroupInfo = (qqstory_struct.ShareGroupInfo)paramRspGetShareGroupInfo.next();
+        ShareGroupItem localShareGroupItem = new ShareGroupItem();
+        localShareGroupItem.convertFrom(localShareGroupInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localShareGroupItem);
+      }
+    }
   }
   
-  public StoryPushMsg[] a(int paramInt)
+  public String toString()
   {
-    return new StoryPushMsg[paramInt];
+    return "GetShareGroupInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", groupItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

@@ -1,28 +1,61 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
-
-class bnkf
-  implements Animation.AnimationListener
+public class bnkf
 {
-  bnkf(bnkd parambnkd) {}
+  private static int jdField_a_of_type_Int;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static bnkf b;
+  private bnkf jdField_a_of_type_Bnkf;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public static bnkf a()
   {
-    if ((bnkd.a(this.a) != null) && (bnkd.b(this.a)))
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      bnkd.a(this.a).setAlpha(1.0F);
-      bnkd.a(this.a).setVisibility(0);
+      if (b != null)
+      {
+        bnkf localbnkf = b;
+        b = localbnkf.jdField_a_of_type_Bnkf;
+        localbnkf.jdField_a_of_type_Bnkf = null;
+        jdField_a_of_type_Int -= 1;
+        return localbnkf;
+      }
+      return new bnkf();
     }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+  }
+  
+  public bnkf a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
+    return this;
+  }
+  
+  public void a()
+  {
+    b();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Int < 50)
+      {
+        this.jdField_a_of_type_Bnkf = b;
+        b = this;
+        jdField_a_of_type_Int += 1;
+      }
+      return;
+    }
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bnkf
  * JD-Core Version:    0.7.0.1
  */

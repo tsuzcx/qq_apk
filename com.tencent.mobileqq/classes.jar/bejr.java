@@ -1,30 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
 public class bejr
-  implements View.OnClickListener
+  implements anui
 {
-  public bejr(TroopBarPublishActivity.16 param16) {}
+  public void a(boolean paramBoolean, String paramString1, String paramString2, List<oidb_0xe61.BeancurdCubeInfoResult> paramList) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("path", this.a.a);
-    PublicFragmentActivity.a(this.a.this$0, localIntent, TribeVideoPreviewFragment.class);
-    this.a.this$0.overridePendingTransition(2130772331, 2130772332);
-    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
+    if (paramInt == 0)
     {
-      bcst.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
     }
   }
 }

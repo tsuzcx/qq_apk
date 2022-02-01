@@ -1,6 +1,14 @@
-public abstract interface rdq
+class rdq
+  implements rdt
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  rdq(rdo paramrdo) {}
+  
+  public void a(int paramInt1, int paramInt2, long paramLong)
+  {
+    rdo.a(this.a).b(paramLong);
+    this.a.a((int)(rdo.a(this.a) * (float)paramLong));
+    rdo.a(this.a).a(rdo.a(this.a), false);
+  }
 }
 
 

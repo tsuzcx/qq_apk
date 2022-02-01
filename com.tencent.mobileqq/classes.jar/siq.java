@@ -1,7 +1,31 @@
-import kotlin.Metadata;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer$Companion;", "", "()V", "PLAYER_INFO_BUFFERING_END", "", "PLAYER_INFO_BUFFERING_START", "PLAYER_INFO_CURRENT_LOOP_END", "PLAYER_INFO_FIRST_VIDEO_FRAME_RENDERED", "PLAYER_SCALE_BOTH_FULLSCREEN", "PLAYER_SCALE_ORIGINAL_FULLSCREEN", "PLAYER_SCALE_ORIGINAL_RATIO", "PLAYER_SCALE_ORIGINAL_RATIO_SQUARE", "SEEK_MODE_ACCURATE_POSITION", "SEEK_MODE_DEFAULT", "SEEK_MODE_FREVIOUS_KFRAME", "SEEK_MODE_NEXT_KFRAME", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class siq {}
+public class siq
+  implements onp
+{
+  public siq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo) {}
+  
+  public void a(ons paramons)
+  {
+    if (paramons.a() == 0)
+    {
+      osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new CommentInfo(), false);
+      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a(), 2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a().getString(2131717057), 0).a();
+    }
+    for (;;)
+    {
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).a();
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup, null);
+      return;
+      QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131711767), 0).a();
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

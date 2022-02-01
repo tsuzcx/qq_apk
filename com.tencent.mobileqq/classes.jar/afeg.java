@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class afeg
-  implements DialogInterface.OnDismissListener
+  extends ayxl
 {
-  public afeg(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public afeg(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.finish();
+    if (PublicAccountListActivity.a(this.a)) {
+      PublicAccountListActivity.a(this.a);
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.colornote.data;
 
-import aqcv;
+import aqry;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class ColorNoteProxy$2
   implements Runnable
 {
-  public ColorNoteProxy$2(aqcv paramaqcv, ColorNote paramColorNote) {}
+  public ColorNoteProxy$2(aqry paramaqry, ColorNote paramColorNote) {}
   
   public void run()
   {
-    if (aqcv.a(this.this$0) != null) {
-      aqcv.a(this.this$0).remove(this.a);
+    if (aqry.a(this.this$0) != null) {
+      aqry.a(this.this$0).remove(this.a);
     }
-    aqcv.a(this.this$0, 2, this.a);
+    aqry.a(this.this$0, 2, this.a);
   }
 }
 

@@ -1,9 +1,13 @@
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
 public class sto
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  stn jdField_a_of_type_Stn;
+  TextView b;
+  TextView c;
 }
 
 

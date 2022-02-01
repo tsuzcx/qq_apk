@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.studyroom.ui;
 
 import android.support.v4.app.FragmentActivity;
-import bddh;
+import bdwc;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.util.WeakReference;
 
 public class StudyRoomLoadingFragment$WeakCallback$1
   implements Runnable
 {
-  public StudyRoomLoadingFragment$WeakCallback$1(bddh parambddh) {}
+  public StudyRoomLoadingFragment$WeakCallback$1(bdwc parambdwc) {}
   
   public void run()
   {
-    StudyRoomLoadingFragment localStudyRoomLoadingFragment = (StudyRoomLoadingFragment)bddh.a(this.this$0).get();
+    StudyRoomLoadingFragment localStudyRoomLoadingFragment = (StudyRoomLoadingFragment)bdwc.a(this.this$0).get();
     if ((localStudyRoomLoadingFragment == null) || (localStudyRoomLoadingFragment.getActivity() == null)) {
       return;
     }
-    QQToast.a(localStudyRoomLoadingFragment.getActivity().getApplicationContext(), 1, 2131697911, 0).a();
+    QQToast.a(localStudyRoomLoadingFragment.getActivity().getApplicationContext(), 1, 2131698011, 0).a();
     StudyRoomLoadingFragment.a(localStudyRoomLoadingFragment);
     localStudyRoomLoadingFragment.a();
   }

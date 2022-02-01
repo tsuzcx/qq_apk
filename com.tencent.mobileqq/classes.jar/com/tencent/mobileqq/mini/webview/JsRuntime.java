@@ -10,6 +10,8 @@ public abstract interface JsRuntime
 {
   public abstract void clearUp();
   
+  public abstract int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2);
+  
   public abstract void evaluateCallbackJs(int paramInt, String paramString);
   
   public abstract void evaluateSubcribeJS(String paramString1, String paramString2, int paramInt);
@@ -17,6 +19,8 @@ public abstract interface JsRuntime
   public abstract ApkgInfo getApkgInfo();
   
   public abstract Context getContextEx();
+  
+  public abstract byte[] getNativeBuffer(int paramInt);
   
   public abstract int getPageWebViewId();
   

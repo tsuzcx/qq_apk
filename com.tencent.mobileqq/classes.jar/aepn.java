@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aepn
-  implements View.OnClickListener
+public final class aepn
+  implements DialogInterface.OnClickListener
 {
-  public void onClick(View paramView)
+  public aepn(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, azxr paramazxr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MainFragment.b(true);
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if (!MainFragment.a()) {
-      localViewGroup.callOnClick();
+    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azxr);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

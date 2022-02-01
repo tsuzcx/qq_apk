@@ -1,14 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class amfv
+  extends antg
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
+  public amfv(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  protected amfv(amfu paramamfu) {}
+  protected void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
+      }
+    } while (TroopDiscussionTroop.a(this.a) == null);
+    TroopDiscussionTroop.a(this.a).c();
+  }
 }
 
 

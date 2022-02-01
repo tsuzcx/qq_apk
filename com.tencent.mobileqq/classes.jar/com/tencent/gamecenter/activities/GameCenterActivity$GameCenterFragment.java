@@ -1,10 +1,10 @@
 package com.tencent.gamecenter.activities;
 
-import abbc;
-import aceb;
-import acec;
-import aceh;
-import acex;
+import abff;
+import acie;
+import acif;
+import acik;
+import aciy;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,11 +16,11 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
-import aurw;
-import aury;
-import ausy;
-import bhmv;
-import bist;
+import avjy;
+import avka;
+import avky;
+import binq;
+import bjts;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -35,8 +35,8 @@ import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension
 import com.tencent.smtt.sdk.WebView;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import nhe;
-import nko;
+import niz;
+import nmj;
 
 public class GameCenterActivity$GameCenterFragment
   extends WebViewFragment
@@ -106,7 +106,7 @@ public class GameCenterActivity$GameCenterFragment
         String str = Uri.parse(this.mUrl).getQueryParameter("uin");
         if (str == null)
         {
-          this.mUrl = nko.a(this.mUrl, "uin=" + this.jdField_a_of_type_JavaLangString);
+          this.mUrl = nmj.a(this.mUrl, "uin=" + this.jdField_a_of_type_JavaLangString);
           this.intent.putExtra("url", this.mUrl);
         }
         return;
@@ -128,7 +128,7 @@ public class GameCenterActivity$GameCenterFragment
   
   private void a(WebView paramWebView)
   {
-    if (!aceh.a("gamecenter_shot_switch")) {
+    if (!acik.a("gamecenter_shot_switch")) {
       return;
     }
     QLog.i("GameCenterFragment", 1, "startMaskOpt murl=" + this.jdField_b_of_type_JavaLangString);
@@ -145,7 +145,7 @@ public class GameCenterActivity$GameCenterFragment
         QLog.e("GameCenterFragment", 1, "GAMECENTER_MASK_KEY error=" + localException.toString());
       }
     }
-    acex.a().b(paramWebView, localObject, new aceb(this, paramWebView));
+    aciy.a().b(paramWebView, localObject, new acie(this, paramWebView));
   }
   
   private boolean a(String paramString)
@@ -198,7 +198,7 @@ public class GameCenterActivity$GameCenterFragment
                 this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
                 super.getActivity().getWindowManager().getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
               }
-              str3 = bist.a(super.getActivity().getApplicationContext());
+              str3 = bjts.a(super.getActivity().getApplicationContext());
               String str4 = this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels + " * " + this.jdField_a_of_type_AndroidUtilDisplayMetrics.heightPixels;
               paramString = ReportInfoManager.getInstance().genClickReportInfo(this.jdField_a_of_type_JavaLangString, str1, paramString, str3, str4);
               ReportInfoManager.getInstance().postClickReportInfo(paramString);
@@ -227,9 +227,9 @@ public class GameCenterActivity$GameCenterFragment
     while ((!this.jdField_c_of_type_Boolean) && (!paramString.startsWith("data")) && (localObject != null))
     {
       localObject = ((WebViewPluginEngine)localObject).a("offline");
-      if ((localObject != null) && ((localObject instanceof abbc)))
+      if ((localObject != null) && ((localObject instanceof abff)))
       {
-        if (((abbc)localObject).b == 0) {
+        if (((abff)localObject).b == 0) {
           b("0");
         }
       }
@@ -239,7 +239,7 @@ public class GameCenterActivity$GameCenterFragment
         localObject = this.webView.getPluginEngine();
         continue;
       }
-      b(nko.a(a(paramString)));
+      b(nmj.a(a(paramString)));
       return;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -309,7 +309,7 @@ public class GameCenterActivity$GameCenterFragment
   {
     int i = 0;
     super.initFinish();
-    if (nhe.a().i(this.mUrl)) {
+    if (niz.a().i(this.mUrl)) {
       a();
     }
     if (a(this.jdField_b_of_type_JavaLangString))
@@ -317,22 +317,22 @@ public class GameCenterActivity$GameCenterFragment
       Object localObject2 = getWebView().getX5WebViewExtension();
       if (localObject2 != null)
       {
-        localObject1 = aurw.a(this.mApp);
-        if ((((aury)localObject1).jdField_b_of_type_Long != 0L) && (((aury)localObject1).jdField_a_of_type_Long != ((aury)localObject1).jdField_b_of_type_Long))
+        localObject1 = avjy.a(this.mApp);
+        if ((((avka)localObject1).jdField_b_of_type_Long != 0L) && (((avka)localObject1).jdField_a_of_type_Long != ((avka)localObject1).jdField_b_of_type_Long))
         {
-          if (!TextUtils.isEmpty(((aury)localObject1).jdField_a_of_type_JavaLangString))
+          if (!TextUtils.isEmpty(((avka)localObject1).jdField_a_of_type_JavaLangString))
           {
             ((IX5WebViewExtension)localObject2).updateServiceWorkerBackground(this.jdField_b_of_type_JavaLangString);
-            localObject2 = nko.a(((aury)localObject1).jdField_a_of_type_JavaLangString, "jump_url=" + this.mUrl);
+            localObject2 = nmj.a(((avka)localObject1).jdField_a_of_type_JavaLangString, "jump_url=" + this.mUrl);
             this.mUrl = ((String)localObject2);
             this.jdField_b_of_type_JavaLangString = ((String)localObject2);
             this.intent.putExtra("url", this.mUrl);
             QLog.e("GameCenterFragment", 1, new Object[] { "doCreateLoopStep_InitWebView: replace url with: ", this.mUrl });
           }
-          aurw.a(this.mApp, ((aury)localObject1).jdField_b_of_type_Long);
+          avjy.a(this.mApp, ((avka)localObject1).jdField_b_of_type_Long);
         }
       }
-      Object localObject1 = aurw.a(getActivity().getIntent());
+      Object localObject1 = avjy.a(getActivity().getIntent());
       if (localObject1 != null)
       {
         if ((((PadFaceAd)localObject1).isValid()) || (((PadFaceAd)localObject1).redPointId > 0)) {
@@ -358,9 +358,9 @@ public class GameCenterActivity$GameCenterFragment
       VipUtils.a(null, "vip", "0X8004BFB", "0X8004BFB", 0, 0, new String[] { String.valueOf(jdField_a_of_type_Long), String.valueOf(jdField_b_of_type_Long), String.valueOf(this.jdField_c_of_type_Long) });
     }
     super.onDestroy();
-    ausy.a().a();
+    avky.a().a();
     System.gc();
-    acex.a().a();
+    aciy.a().a();
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
@@ -370,16 +370,16 @@ public class GameCenterActivity$GameCenterFragment
       if ((this.webView == null) || (!this.webView.canGoBack()) || (this.mSwiftTitleUI.a == null)) {
         break label116;
       }
-      this.mSwiftTitleUI.a.setText(2131690389);
+      this.mSwiftTitleUI.a.setText(2131690384);
     }
     for (;;)
     {
       a(paramString);
       this.jdField_b_of_type_Boolean = false;
-      if ((!TextUtils.isEmpty(paramString)) && (a(paramString)) && (acex.a().a()))
+      if ((!TextUtils.isEmpty(paramString)) && (a(paramString)) && (aciy.a().a()))
       {
-        acex.a().a(paramWebView, new acec(this));
-        acex.a().b();
+        aciy.a().a(paramWebView, new acif(this));
+        aciy.a().b();
       }
       super.onPageFinished(paramWebView, paramString);
       return;

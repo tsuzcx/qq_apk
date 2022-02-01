@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 
 public class asec
-  implements ShareActionSheet.OnItemClickListener
+  extends ased
 {
-  public asec(AIOEmotionFragment paramAIOEmotionFragment) {}
-  
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public asec(QQAppInterface paramQQAppInterface)
   {
-    this.a.a.dismiss();
-    int i = paramActionSheetItem.action;
-    this.a.a(i, paramActionSheetItem);
+    super(e(), paramQQAppInterface);
+  }
+  
+  public static String e()
+  {
+    if (llk.f() <= 2) {
+      return "qq.android.qav.so_665";
+    }
+    return "";
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavSoData.class;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import akht;
-import akhu;
+import akte;
+import aktf;
 import android.content.Intent;
-import bcst;
+import bdll;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import java.util.ArrayList;
 
 public class PhotoListLogicDefault$2
   implements Runnable
 {
-  public PhotoListLogicDefault$2(akhu paramakhu, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
+  public PhotoListLogicDefault$2(aktf paramaktf, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -19,8 +19,8 @@ public class PhotoListLogicDefault$2
     }
     for (;;)
     {
-      bcst.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      bcec.b = System.currentTimeMillis();
+      bdll.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      bcwu.b = System.currentTimeMillis();
       return;
       PhotoUtils.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.mPhotoCommonData.currentQualityType, this.this$0.a.jdField_a_of_type_Boolean);
     }

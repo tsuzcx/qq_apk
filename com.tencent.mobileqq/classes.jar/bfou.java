@@ -1,12 +1,18 @@
-class bfou
-  implements bgbh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo;
+
+public final class bfou
+  implements Parcelable.Creator<InviteToGroupInfo>
 {
-  bfou(bfos parambfos, boolean paramBoolean) {}
-  
-  public void a()
+  public InviteToGroupInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Bfos.a = 1;
-    this.jdField_a_of_type_Bfos.a(this.jdField_a_of_type_Boolean);
+    return new InviteToGroupInfo(paramParcel);
+  }
+  
+  public InviteToGroupInfo[] a(int paramInt)
+  {
+    return new InviteToGroupInfo[paramInt];
   }
 }
 

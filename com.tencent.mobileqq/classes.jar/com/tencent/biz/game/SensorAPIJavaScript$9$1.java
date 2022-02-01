@@ -1,15 +1,15 @@
 package com.tencent.biz.game;
 
-import nnn;
+import npi;
 
 public class SensorAPIJavaScript$9$1
   implements Runnable
 {
-  public SensorAPIJavaScript$9$1(nnn paramnnn, String paramString1, String paramString2) {}
+  public SensorAPIJavaScript$9$1(npi paramnpi, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nnn.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
+    this.jdField_a_of_type_Npi.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
   }
 }
 

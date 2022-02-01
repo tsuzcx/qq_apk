@@ -1,41 +1,18 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
 
-public class zyi
-  extends LinearLayoutManager
+public final class zyi
+  implements Parcelable.Creator<ScannerParams>
 {
-  public zyi(Context paramContext, int paramInt, boolean paramBoolean)
+  public ScannerParams a(Parcel paramParcel)
   {
-    super(paramContext, paramInt, paramBoolean);
+    return new ScannerParams(paramParcel);
   }
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public ScannerParams[] a(int paramInt)
   {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-  }
-  
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
+    return new ScannerParams[paramInt];
   }
 }
 

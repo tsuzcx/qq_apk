@@ -1,14 +1,8 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.image.URLImageView;
 
-public abstract class akqb
-  implements TextWatcher
+public class akqb
 {
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  URLImageView a;
 }
 
 

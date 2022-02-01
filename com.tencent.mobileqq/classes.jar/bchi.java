@@ -1,133 +1,90 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class bchi
+  implements Manager
 {
-  bchj jdField_a_of_type_Bchj = null;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  boolean jdField_a_of_type_Boolean = false;
+  private bchd jdField_a_of_type_Bchd = new bchd("Cahce_");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  bchi()
+  public bchi(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, "GestureMgrAppDownload in QQAppInterface");
-    }
-    this.jdField_a_of_type_Bchj = new bchj();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  static void a(int paramInt)
+  public ArrayList<bchg> a(String paramString)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    Intent localIntent = new Intent("tencent.video.gesturemgr.notify");
-    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
-    localIntent.putExtra("Event_Progress", paramInt);
-    localBaseApplicationImpl.sendBroadcast(localIntent);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, "onEnterBackground");
-    }
-    a();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
-  {
-    bchg.a().a.b(paramQQAppInterface, paramString, paramConfigInfo);
-  }
-  
-  public static void a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = DownloadInfo.getSP();
-    String str;
-    if ((paramInt & 0x1) == 1)
+    if (this.jdField_a_of_type_Bchd != null)
     {
-      str = paramDownloadInfo.MD5_zip_so;
-      localSharedPreferences.edit().putString("so_zip_md5", str).commit();
-      a(paramDownloadInfo.so_name);
-    }
-    if ((paramInt & 0x2) == 2)
-    {
-      str = paramDownloadInfo.MD5_zip_model;
-      localSharedPreferences.edit().putString("model_zip_md5", str).commit();
-    }
-    if ((paramInt & 0x3) == 3)
-    {
-      paramDownloadInfo = paramDownloadInfo.MD5_zip_gamemodel;
-      localSharedPreferences.edit().putString("gamemodel_zip_md5", paramDownloadInfo).commit();
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    BaseApplicationImpl.sApplication.getSharedPreferences("so_sp", 4).edit().putString("key_so_version_" + paramString, AppSetting.g()).commit();
-  }
-  
-  public static boolean a()
-  {
-    return bchg.a().a.b();
-  }
-  
-  void b(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = ((DownloadInfo)paramConfigInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    }
-    QLog.w("QavGesture", 1, "handle_QAG_Gesture_Config, configInfo[" + paramConfigInfo + "], mDownloadInfo[" + this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo + "]");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo != null) {
-        a();
-      }
-    }
-  }
-  
-  boolean b()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    boolean bool2;
-    if ((localObject instanceof QQAppInterface))
-    {
-      if (((QQAppInterface)localObject).getManager(21) == null)
+      paramString = this.jdField_a_of_type_Bchd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      if ((paramString != null) && (paramString.size() > 10))
       {
-        QLog.d("QavGesture", 1, "innerDownload, getNetEngine 为空");
-        bool2 = false;
-        return bool2;
+        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
+        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
+        return localArrayList;
       }
+      return paramString;
     }
-    else
+    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bchd != null)
     {
-      QLog.d("QavGesture", 1, "appRuntime 不是 QQAppInterface");
-      return false;
+      this.jdField_a_of_type_Bchd.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("MostUsedSearchResultManager", 2, "init");
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo;
-    if (localObject == null)
+    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
+    for (String str = paramString2;; str = paramString1)
     {
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    if (11 == bchn.a((DownloadInfo)localObject)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!bool1) {
+      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
+      int i = bchc.a(paramInt);
+      if (!a(i)) {
         break;
       }
-      return this.jdField_a_of_type_Bchj.a((DownloadInfo)localObject);
+      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
+      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
+      return;
+      paramString2 = "";
     }
+  }
+  
+  boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bchd != null) {
+      this.jdField_a_of_type_Bchd.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    b();
+    this.jdField_a_of_type_Bchd = null;
+    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
   }
 }
 

@@ -1,34 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
-import mqq.app.MobileQQ;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class atzz
-  implements bmyw<WeiyunPB.PwdVerifyMsgRsp>
+public class atzz
+  implements bcnz
 {
-  atzz(atzu paramatzu) {}
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
+  public atzz() {}
+  
+  public atzz(ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
-    }
-    atzu.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
+    this.jdField_a_of_type_Int = 2131562883;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
   
-  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
+  public View a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
-    }
-    String str = bnau.a(paramPwdVerifyMsgRsp.cs_sig.get());
-    if (!TextUtils.isEmpty(str)) {
-      bmyx.a(atzu.a(this.a).getApplication().getApplicationContext(), str);
-    }
-    bmyx.c(atzu.a(this.a).getApplication().getApplicationContext(), true);
-    atzu.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368320));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378936));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(begz.a);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131379014).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bekg;
+import bfje;
 
 public class TroopBarPublishLocationSelectActivity$2$1
   implements Runnable
 {
-  public TroopBarPublishLocationSelectActivity$2$1(bekg parambekg) {}
+  public TroopBarPublishLocationSelectActivity$2$1(bfje parambfje) {}
   
   public void run()
   {

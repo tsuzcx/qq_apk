@@ -16,7 +16,7 @@ class CameraUtils$OpenCameraRunnable
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      QLog.w("CameraUtils", 1, "openCamera begin, mCamera[" + this.this$0.a + "], mOpening[" + this.jdField_a_of_type_Boolean + "], seq[" + this.jdField_a_of_type_Long + "]");
+      QLog.w("CameraUtils", 1, "openCamera begin, mCamera[" + CameraUtils.a(this.this$0) + "], mOpening[" + this.jdField_a_of_type_Boolean + "], seq[" + this.jdField_a_of_type_Long + "]");
       return;
     }
     CameraUtils.a(this.this$0, this.jdField_a_of_type_Long);

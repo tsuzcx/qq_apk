@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aiqa;
+import ajbj;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bgkl;
+import bhkm;
 
 public class CountDownView
   extends ImageView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838771, 2130838770, 2130838769 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838841, 2130838831, 2130838823 };
   private int jdField_a_of_type_Int;
-  private aiqa jdField_a_of_type_Aiqa;
+  private ajbj jdField_a_of_type_Ajbj;
   private Runnable jdField_a_of_type_JavaLangRunnable = new CountDownView.1(this);
   private boolean jdField_a_of_type_Boolean;
   
@@ -33,8 +33,8 @@ public class CountDownView
   
   private void b()
   {
-    bgkl.a();
-    bgkl.a(2131230746, 1, null, null);
+    bhkm.a();
+    bhkm.a(2131230746, 1, null, null);
   }
   
   public void a()
@@ -49,9 +49,9 @@ public class CountDownView
     setVisibility(4);
   }
   
-  public void setListener(aiqa paramaiqa)
+  public void setListener(ajbj paramajbj)
   {
-    this.jdField_a_of_type_Aiqa = paramaiqa;
+    this.jdField_a_of_type_Ajbj = paramajbj;
   }
 }
 

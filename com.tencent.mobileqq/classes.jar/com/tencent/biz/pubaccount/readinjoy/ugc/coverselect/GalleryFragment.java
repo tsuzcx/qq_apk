@@ -22,18 +22,18 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.QQPermissionCallback;
 import mqq.os.MqqHandler;
-import riw;
-import rjf;
-import rmd;
-import rme;
-import rmf;
-import rmi;
-import rml;
-import rmn;
+import qzp;
+import qzy;
+import rcy;
+import rcz;
+import rda;
+import rdd;
+import rdg;
+import rdi;
 
 public class GalleryFragment
   extends PublicBaseFragment
-  implements QQPermissionCallback, rml
+  implements QQPermissionCallback, rdg
 {
   private int jdField_a_of_type_Int;
   public Activity a;
@@ -43,9 +43,9 @@ public class GalleryFragment
   private AlbumPermissionView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView;
   private UCropView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView;
   private String jdField_a_of_type_JavaLangString;
-  private List<riw> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private rjf<riw> jdField_a_of_type_Rjf = new rjf();
-  private rmi jdField_a_of_type_Rmi;
+  private List<qzp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private qzy<qzp> jdField_a_of_type_Qzy = new qzy();
+  private rdd jdField_a_of_type_Rdd;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   
@@ -106,9 +106,9 @@ public class GalleryFragment
     ThreadManager.getUIHandler().post(new GalleryFragment.5(this, paramBitmap));
   }
   
-  private void b(riw paramriw)
+  private void b(qzp paramqzp)
   {
-    a(paramriw.b);
+    a(paramqzp.b);
   }
   
   private void c()
@@ -118,7 +118,7 @@ public class GalleryFragment
   
   private void d()
   {
-    this.jdField_a_of_type_Rjf.a();
+    this.jdField_a_of_type_Qzy.a();
   }
   
   private void e()
@@ -139,12 +139,12 @@ public class GalleryFragment
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Rjf.a(paramInt);
+    this.jdField_a_of_type_Qzy.a(paramInt);
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Rmi.a() >= 0) {}
+    if (this.jdField_a_of_type_Rdd.a() >= 0) {}
     for (int i = 1;; i = 0)
     {
       if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (i == 0)) {
@@ -154,22 +154,22 @@ public class GalleryFragment
     }
   }
   
-  public void a(riw paramriw)
+  public void a(qzp paramqzp)
   {
     e();
-    b(paramriw);
+    b(paramqzp);
   }
   
-  public void a(rmn paramrmn)
+  public void a(rdi paramrdi)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView.a().a(Bitmap.CompressFormat.JPEG, 90, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new rmf(this, paramrmn));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView.a().a(Bitmap.CompressFormat.JPEG, 90, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new rda(this, paramrdi));
   }
   
-  public boolean a(int paramInt, riw paramriw)
+  public boolean a(int paramInt, qzp paramqzp)
   {
-    if ((paramriw.a() < this.jdField_a_of_type_Int / 2.0F) || (paramriw.b() < this.jdField_b_of_type_Int / 2.0F))
+    if ((paramqzp.a() < this.jdField_a_of_type_Int / 2.0F) || (paramqzp.b() < this.jdField_b_of_type_Int / 2.0F))
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131717189, 0).show();
+      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131717305, 0).show();
       return false;
     }
     return true;
@@ -192,12 +192,12 @@ public class GalleryFragment
     super.onAttach(paramActivity);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     b();
-    this.jdField_a_of_type_Rjf.a(new rmd(this));
+    this.jdField_a_of_type_Qzy.a(new rcy(this));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559980, null);
+    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559986, null);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -205,19 +205,19 @@ public class GalleryFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367296));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365983);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView = ((UCropView)paramView.findViewById(2131367293));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362592));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370051);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367350));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366029);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView = ((UCropView)paramView.findViewById(2131367347));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362607));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370154);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView.setCallback(this);
-    this.jdField_a_of_type_Rmi = new rmi(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Rmi.a(this);
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Rmi.a();
+    this.jdField_a_of_type_Rdd = new rdd(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Rdd.a(this);
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Rdd.a();
     this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 4);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new rme(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Rmi);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new rcz(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Rdd);
     e();
     c();
     a();

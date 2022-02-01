@@ -1,21 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.AsyncTask;
 
 class auxz
-  implements DialogInterface.OnClickListener
+  extends df
 {
-  auxz(auxw paramauxw) {}
+  auxz(auxu paramauxu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    this.a.a = false;
-    auxw.a(this.a).finish();
+    try
+    {
+      dc.a(this.a.a, paramAsyncTask, paramInt, new auya(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
+    }
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auxz
  * JD-Core Version:    0.7.0.1
  */

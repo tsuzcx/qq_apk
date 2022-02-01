@@ -1,40 +1,4 @@
-import android.content.Context;
-import android.text.TextUtils;
-import cooperation.qqpim.QQPimTipsInfo;
-
-public class blnc
-{
-  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
-  {
-    if (paramQQPimTipsInfo == null)
-    {
-      blna.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
-      return;
-    }
-    blna.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
-  }
-  
-  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
-  {
-    if (paramQQPimTipsInfo == null) {}
-    while (TextUtils.isEmpty(blna.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
-      return;
-    }
-    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    case 2: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    }
-    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-  }
-}
+public class blnc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

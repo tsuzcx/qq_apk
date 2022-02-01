@@ -1,160 +1,50 @@
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class aavd
+public abstract class aavd
+  extends nkq
 {
-  private final aavn jdField_a_of_type_Aavn;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final List<Animator> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private final View[] jdField_a_of_type_ArrayOfAndroidViewView;
-  private boolean b;
-  
-  public aavd(aavn paramaavn, View... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Aavn = paramaavn;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = paramVarArgs;
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  protected float a(float paramFloat)
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0].getContext().getResources().getDisplayMetrics().density * paramFloat;
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
   
-  public aavd a(long paramLong)
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Aavn.a(paramLong);
-    return this;
-  }
-  
-  public aavd a(aavk paramaavk)
-  {
-    this.jdField_a_of_type_Aavn.a(paramaavk);
-    return this;
-  }
-  
-  public aavd a(aavm paramaavm, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
+    if (paramInt != 0)
     {
-      View localView = arrayOfView[i];
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(a(paramVarArgs));
-      if (paramaavm != null) {
-        localValueAnimator.addUpdateListener(new aave(this, paramaavm, localView));
+      a(false, paramInt, paramBundle, "", anzj.a(2131714155));
+      return;
+    }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label133;
       }
-      a(localValueAnimator);
-      i += 1;
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+        return;
+      }
     }
-    return this;
-  }
-  
-  protected aavd a(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramAnimator);
-    return this;
-  }
-  
-  public aavd a(String paramString, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      View localView = arrayOfView[i];
-      this.jdField_a_of_type_JavaUtilList.add(ObjectAnimator.ofFloat(localView, paramString, a(paramVarArgs)));
-      i += 1;
+      a(false, -1, paramBundle, "", anzj.a(2131714151));
+      return;
     }
-    return this;
-  }
-  
-  public aavd a(float... paramVarArgs)
-  {
-    return a("translationY", paramVarArgs);
-  }
-  
-  public aavd a(View... paramVarArgs)
-  {
-    return this.jdField_a_of_type_Aavn.b(paramVarArgs);
-  }
-  
-  public aavn a()
-  {
-    return this.jdField_a_of_type_Aavn.a(new AccelerateInterpolator());
-  }
-  
-  public aavn a(float paramFloat)
-  {
-    return this.jdField_a_of_type_Aavn.a(new DecelerateInterpolator(paramFloat));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0];
-  }
-  
-  public Interpolator a()
-  {
-    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
-  }
-  
-  protected List<Animator> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected float[] a(float... paramVarArgs)
-  {
-    if (!this.b) {
-      return paramVarArgs;
-    }
-    float[] arrayOfFloat = new float[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      arrayOfFloat[i] = a(paramVarArgs[i]);
-      i += 1;
-    }
-    return arrayOfFloat;
-  }
-  
-  public aavd b(float... paramVarArgs)
-  {
-    return a("alpha", paramVarArgs);
-  }
-  
-  public aavn b()
-  {
-    this.jdField_a_of_type_Aavn.a();
-    return this.jdField_a_of_type_Aavn;
-  }
-  
-  public aavd c(float... paramVarArgs)
-  {
-    return a(new aavf(this), paramVarArgs);
-  }
-  
-  public aavd d(float... paramVarArgs)
-  {
-    return a(new aavg(this), paramVarArgs);
+    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+    return;
+    label133:
+    a(false, -1, paramBundle, "", anzj.a(2131714159));
   }
 }
 

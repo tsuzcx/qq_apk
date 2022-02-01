@@ -1,31 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-class agjv
-  implements bowl
+final class agjv
+  implements bljb
 {
-  agjv(agju paramagju) {}
+  agjv(QQAppInterface paramQQAppInterface) {}
   
-  public Activity a()
+  public void onDismiss()
   {
-    return agju.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  }
-  
-  public SessionInfo a()
-  {
-    return agju.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public QQAppInterface a()
-  {
-    return agju.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public boolean a()
-  {
-    return agju.a(this.a).c();
+    bdll.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
   }
 }
 

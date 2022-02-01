@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amhd;
+import amsx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -59,8 +59,8 @@ class ApolloPanel$34
             bool1 = bool3;
             if (localJSONObject != null)
             {
-              amhd localamhd = (amhd)this.this$0.a.a.getManager(153);
-              ApolloPanel.a(this.this$0, localamhd.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
+              amsx localamsx = (amsx)this.this$0.a.a.getManager(153);
+              ApolloPanel.a(this.this$0, localamsx.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
               localObject = ApolloPanel.a(this.this$0);
               bool1 = bool3;
               if (localObject == null) {}

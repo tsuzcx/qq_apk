@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.multioperate;
 
-import aszd;
-import atte;
-import attj;
+import atqx;
+import aukz;
+import aule;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -14,12 +14,12 @@ import java.util.List;
 public class OfflineFileMultiOperate$1
   implements Runnable
 {
-  public OfflineFileMultiOperate$1(atte paramatte, List paramList1, List paramList2, attj paramattj) {}
+  public OfflineFileMultiOperate$1(aukz paramaukz, List paramList1, List paramList2, aule paramaule) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      atte.a(this.this$0).a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+      aukz.a(this.this$0).a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
     }
     while ((this.b != null) && (this.b.size() > 0))
     {
@@ -31,14 +31,14 @@ public class OfflineFileMultiOperate$1
         if (QLog.isDevelopLevel()) {
           QLog.d("OfflineFileMultiOperate", 1, "ChatHistory entity[" + localFileManagerEntity.getId() + "] del File:" + localFileManagerEntity.nSessionId);
         }
-        atte.a(this.this$0).a().b(localFileManagerEntity.nSessionId);
+        aukz.a(this.this$0).a().b(localFileManagerEntity.nSessionId);
       }
       if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        atte.a(this.this$0).a().a(this.jdField_a_of_type_JavaUtilList, false);
+        aukz.a(this.this$0).a().a(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
-    if (this.jdField_a_of_type_Attj != null) {
-      this.jdField_a_of_type_Attj.a(3, 0);
+    if (this.jdField_a_of_type_Aule != null) {
+      this.jdField_a_of_type_Aule.a(3, 0);
     }
   }
 }

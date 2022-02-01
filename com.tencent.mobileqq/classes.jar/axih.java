@@ -1,10 +1,13 @@
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
-public abstract interface axih
+public class axih
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(InterestTagInfo paramInterestTagInfo);
+  public axih(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  public abstract boolean a(InterestTagInfo paramInterestTagInfo);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

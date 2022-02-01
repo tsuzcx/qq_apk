@@ -1,14 +1,19 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class bfoe
+  implements bfqu
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  bfoe(bfod parambfod) {}
+  
+  public void a(ArrayList<Entity> paramArrayList)
+  {
+    if (this.a.a != null) {
+      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
+    }
+  }
 }
 
 

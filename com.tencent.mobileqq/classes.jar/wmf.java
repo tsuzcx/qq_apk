@@ -1,367 +1,359 @@
-import android.app.Activity;
-import android.content.Context;
-import android.util.SparseIntArray;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class wmf
-  extends wni<CommentEntry>
-  implements IEventReceiver
 {
-  public int a;
-  public Activity a;
-  public TextView a;
-  public CommentLikeFeedItem a;
-  public InnerListView a;
-  public List<CommentEntry> a;
-  public wlr a;
-  public wlz a;
-  public wmb a;
-  public wmj a;
-  protected wmk a;
-  private wmq jdField_a_of_type_Wmq;
-  protected woj a;
-  protected woy a;
-  private ycl jdField_a_of_type_Ycl;
-  private yec jdField_a_of_type_Yec;
-  private boolean jdField_a_of_type_Boolean;
-  public List<CommentEntry> b = new ArrayList();
-  public List<StoryVideoItem> c;
+  private static wmf jdField_a_of_type_Wmf = new wmf();
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private Map<String, wmg> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, List<wmi>> b = new HashMap();
   
-  public wmf(Context paramContext, Activity paramActivity, View paramView, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, List<StoryVideoItem> paramList)
+  public static wmf a()
   {
-    super(paramContext, paramView);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Woj = ((woj)wpm.a(17));
-    this.jdField_a_of_type_Woy = ((woy)wpm.a(15));
-    this.jdField_a_of_type_Yec = new yec();
-    this.jdField_a_of_type_Ycl = new ycl(paramActivity, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_Int, true);
-    this.c = paramList;
+    return jdField_a_of_type_Wmf;
   }
   
-  public static int a(int paramInt)
+  private void a(String paramString, int paramInt)
   {
-    int i = 0;
-    if (paramInt == 12) {
-      i = 3;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new StoryVideoUploadProgressManager.1(this, paramString, paramInt));
     }
-    while ((paramInt != 210) && (paramInt != 222) && (paramInt != 23) && (paramInt != 220) && (paramInt != 221) && (paramInt != 211)) {
-      return i;
-    }
-    return 2;
-  }
-  
-  public static void a(int paramInt1, int paramInt2, String paramString, int paramInt3)
-  {
-    paramString = new wmr(a(paramInt1), paramString, paramInt2);
-    if ((paramInt2 == 2) || (paramInt2 == 1)) {
-      paramString.c = paramInt3;
-    }
-    wfo.a().dispatch(paramString);
-  }
-  
-  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry, boolean paramBoolean, int paramInt, wme paramwme)
-  {
-    b(paramCommentLikeFeedItem, paramCommentEntry, paramInt, paramwme, true, paramBoolean);
-    int i;
-    if (paramCommentEntry.isReply())
-    {
-      paramInt = 2;
-      if (!paramBoolean) {
-        break label101;
-      }
-      i = 12;
-      label27:
-      if (!paramCommentLikeFeedItem.getOwner().isMe()) {
-        break label110;
-      }
-      paramwme = "1";
-      label43:
-      if (!a(paramCommentEntry.content)) {
-        break label117;
-      }
-    }
-    label101:
-    label110:
-    label117:
-    for (paramCommentEntry = "2";; paramCommentEntry = "1")
-    {
-      yqu.a("home_page", "send_comment", i, paramInt, new String[] { paramwme, paramCommentEntry, wnh.a().a, paramCommentLikeFeedItem.feedId });
-      return;
-      paramInt = 1;
-      break;
-      i = yqu.a(paramCommentLikeFeedItem);
-      break label27;
-      paramwme = "2";
-      break label43;
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    int j = paramString.length();
-    int i = 0;
     for (;;)
     {
-      if (i >= j) {
-        break label42;
+      return;
+      yuk.a("StoryVideoUploadProgressManager", "notifyListeners, id:%s, progress:%s", paramString, Integer.valueOf(paramInt));
+      Object localObject = (List)this.b.get(paramString);
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          wmh localwmh = ((wmi)((Iterator)localObject).next()).a();
+          if (localwmh != null) {
+            localwmh.a(paramString, paramInt);
+          }
+        }
       }
-      int k = paramString.charAt(i);
-      if (bdnh.a.get(k, -1) < 0) {
-        break;
-      }
-      i += 1;
     }
-    label42:
-    return true;
   }
   
-  private static void b(CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry, int paramInt, wme paramwme, boolean paramBoolean1, boolean paramBoolean2)
+  public int a()
   {
-    a(paramInt, 1, paramCommentEntry.feedId, paramCommentEntry.commentId);
-    wlr.b(paramCommentEntry, new wmh(paramwme, paramCommentEntry, (woj)wpm.a(17), paramBoolean1, paramCommentLikeFeedItem, paramInt, paramBoolean2));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    int j = 0;
+    int i = 0;
+    int k;
+    if (localIterator.hasNext())
+    {
+      wmg localwmg = (wmg)localIterator.next();
+      if (!localwmg.jdField_a_of_type_Boolean) {
+        break label83;
+      }
+      k = localwmg.jdField_b_of_type_Int + j;
+      j = i + 1;
+      i = k;
+    }
+    for (;;)
+    {
+      k = j;
+      j = i;
+      i = k;
+      break;
+      if (i > 0) {
+        return j / i;
+      }
+      return -1;
+      label83:
+      k = i;
+      i = j;
+      j = k;
+    }
   }
   
-  public wnj a()
+  public int a(String paramString)
   {
-    this.jdField_a_of_type_Wlr = new wlr(this);
-    return this.jdField_a_of_type_Wlr;
+    paramString = (wmg)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.jdField_b_of_type_Int;
+    }
+    return -1;
   }
   
-  public wnk a()
+  public String a(String paramString)
   {
-    this.jdField_a_of_type_Wlz = new wlz(this);
-    return this.jdField_a_of_type_Wlz;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      wmg localwmg = (wmg)localIterator.next();
+      if ((localwmg.jdField_b_of_type_JavaLangString != null) && (localwmg.jdField_b_of_type_JavaLangString.equals(paramString))) {
+        return localwmg.jdField_a_of_type_JavaLangString;
+      }
+    }
+    return "";
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Wmk != null) {
-      wfo.a().unRegisterSubscriber(this.jdField_a_of_type_Wmk);
+    try
+    {
+      yuk.b("StoryVideoUploadProgressManager", "startANewUploadSeq");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((wmg)((Map.Entry)localIterator.next()).getValue()).b();
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
+    finally {}
+    this.b.clear();
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+    try
     {
-      QLog.e("FeedCommentLego", 1, "deleteComment but index is : " + paramInt + " and commentlist size is" + this.jdField_a_of_type_JavaUtilList.size());
-      return;
-    }
-    CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedCommentLego", 2, "deleteCommentData: " + localCommentEntry);
-    }
-    if (localCommentEntry.status != 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
-      e();
-      QQToast.a(BaseApplication.getContext(), 2, anni.a(2131703187), 0).a();
-      this.jdField_a_of_type_Woj.d(localCommentEntry);
-      wnb.a().a();
-      a(this.jdField_a_of_type_Int, 2, localCommentEntry.feedId, localCommentEntry.commentId);
-      return;
-    }
-    if (!bgnt.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(BaseApplication.getContext(), 1, anni.a(2131703193), 0).a();
-      yqp.e("FeedCommentLego", "ReqGetLikeList Not Network!");
-      return;
-    }
-    localCommentEntry.status = 1;
-    e();
-    wlr.a(localCommentEntry, new wmi(this, paramInt, localCommentEntry));
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView = ((InnerListView)paramView.findViewById(2131364788));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setOverScrollMode(1);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371238));
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Wmk = new wmk(this);
-    wfo.a().registerSubscriber(this.jdField_a_of_type_Wmk);
-  }
-  
-  public void a(CommentLikeFeedItem paramCommentLikeFeedItem, List<StoryVideoItem> paramList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    if (this.jdField_a_of_type_Wlz != null) {
-      this.jdField_a_of_type_Wlz.a(paramCommentLikeFeedItem);
-    }
-    this.jdField_a_of_type_Ycl.a(paramCommentLikeFeedItem);
-    this.c = paramList;
-  }
-  
-  public void a(String paramString, CommentEntry paramCommentEntry)
-  {
-    if (paramString.length() <= 0) {
-      return;
-    }
-    CommentEntry localCommentEntry = new CommentEntry();
-    if (bdol.a(paramString))
-    {
-      localCommentEntry.content = bbzj.a(paramString);
-      label31:
-      localCommentEntry.replyTime = System.currentTimeMillis();
-      if (paramCommentEntry != null)
+      yuk.a("StoryVideoUploadProgressManager", "preparedSuccess:%s", paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
       {
-        localCommentEntry.replierUnionId = paramCommentEntry.authorUnionId;
-        localCommentEntry.replierName = paramCommentEntry.authorName;
-        localCommentEntry.replierRole = paramCommentEntry.authorRole;
+        wmg localwmg = (wmg)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwmg.jdField_a_of_type_Int = 1;
+        localwmg.jdField_b_of_type_Int = 0;
+        a(paramString, localwmg.jdField_b_of_type_Int);
       }
-      localCommentEntry.authorUin = QQStoryContext.a().c();
-      localCommentEntry.authorUnionId = QQStoryContext.a().b();
-      localCommentEntry.status = 1;
-      localCommentEntry.feedId = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId;
-      localCommentEntry.pbType = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getCommentLikeType();
-      if (((Integer)((wpf)wpm.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue() == 1) {
-        localCommentEntry.authorRole = 2;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mDenyComment != 1) {
-        break label247;
-      }
-      QQToast.a(BaseApplication.getContext(), 1, anni.a(2131703186), 0).a();
-      localCommentEntry.status = 2;
+      return;
     }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    try
+    {
+      yuk.a("StoryVideoUploadProgressManager", "sendProtoSuccess:%s", paramString1);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString1))
+      {
+        wmg localwmg = (wmg)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+        localwmg.jdField_a_of_type_Int = 4;
+        localwmg.jdField_b_of_type_Int = 100;
+        localwmg.jdField_b_of_type_JavaLangString = paramString2;
+        a(paramString1, localwmg.jdField_b_of_type_Int);
+        localwmg.b();
+      }
+      return;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
+  }
+  
+  public void a(String paramString, wmh paramwmh)
+  {
+    yuk.a("StoryVideoUploadProgressManager", "registerListener, id:%s, listener:%s", paramString, paramwmh.getClass().getSimpleName());
+    Object localObject1 = null;
+    Object localObject3 = this.b.entrySet().iterator();
+    Object localObject2;
+    if (((Iterator)localObject3).hasNext())
+    {
+      localObject2 = (Map.Entry)((Iterator)localObject3).next();
+      Object localObject4 = (String)((Map.Entry)localObject2).getKey();
+      localObject4 = ((List)((Map.Entry)localObject2).getValue()).iterator();
+      label84:
+      if (((Iterator)localObject4).hasNext())
+      {
+        localObject2 = (wmi)((Iterator)localObject4).next();
+        if (((wmi)localObject2).a() != paramwmh) {
+          break label205;
+        }
+        ((Iterator)localObject4).remove();
+        localObject1 = localObject2;
+      }
+    }
+    label205:
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
-      e();
-      this.jdField_a_of_type_Woj.b(localCommentEntry);
-      if (!QLog.isColorLevel()) {
-        break;
+      break label84;
+      break;
+      localObject3 = (List)this.b.get(paramString);
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = new ArrayList();
       }
-      QLog.d("FeedCommentLego", 2, "AddComment: " + localCommentEntry.toString());
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = new wmi(paramwmh);
+      }
+      ((List)localObject2).add(localObject3);
+      this.b.put(paramString, localObject2);
       return;
-      localCommentEntry.content = paramString;
-      break label31;
-      label247:
-      wnh.a().a = "";
-      a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, localCommentEntry, false, this.jdField_a_of_type_Int, new wmg(this));
     }
   }
   
-  public void a(List<CommentEntry> paramList)
+  /* Error */
+  public void a(String paramString, boolean paramBoolean)
   {
-    a(paramList, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setOnItemClickListener(this.jdField_a_of_type_Wlz);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setOnItemLongClickListener(this.jdField_a_of_type_Wlz);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_Wlz);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 65
+    //   4: ldc 211
+    //   6: aload_1
+    //   7: invokestatic 169	yuk:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   10: aload_0
+    //   11: getfield 25	wmf:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   14: aload_1
+    //   15: invokeinterface 172 2 0
+    //   20: ifeq +62 -> 82
+    //   23: aload_0
+    //   24: getfield 25	wmf:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   27: aload_1
+    //   28: invokeinterface 84 2 0
+    //   33: checkcast 120	wmg
+    //   36: astore_3
+    //   37: aload_3
+    //   38: aload_1
+    //   39: putfield 139	wmg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   42: aload_3
+    //   43: ldc 141
+    //   45: putfield 131	wmg:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   48: aload_3
+    //   49: iload_2
+    //   50: putfield 123	wmg:jdField_a_of_type_Boolean	Z
+    //   53: aload_3
+    //   54: iconst_0
+    //   55: putfield 174	wmg:jdField_a_of_type_Int	I
+    //   58: aload_3
+    //   59: iconst_0
+    //   60: putfield 126	wmg:jdField_b_of_type_Int	I
+    //   63: aload_3
+    //   64: invokevirtual 213	wmg:a	()V
+    //   67: aload_0
+    //   68: getfield 25	wmf:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   71: aload_1
+    //   72: aload_3
+    //   73: invokeinterface 208 3 0
+    //   78: pop
+    //   79: aload_0
+    //   80: monitorexit
+    //   81: return
+    //   82: new 120	wmg
+    //   85: dup
+    //   86: aload_0
+    //   87: aconst_null
+    //   88: invokespecial 216	wmg:<init>	(Lwmf;Lcom/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$1;)V
+    //   91: astore_3
+    //   92: goto -55 -> 37
+    //   95: astore_1
+    //   96: aload_0
+    //   97: monitorexit
+    //   98: aload_1
+    //   99: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	this	wmf
+    //   0	100	1	paramString	String
+    //   0	100	2	paramBoolean	boolean
+    //   36	56	3	localwmg	wmg
+    // Exception table:
+    //   from	to	target	type
+    //   2	37	95	finally
+    //   37	79	95	finally
+    //   82	92	95	finally
   }
   
-  public void a(List<CommentEntry> paramList, boolean paramBoolean)
+  public void a(wmh paramwmh)
   {
-    c();
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedCommentLego", 2, "renderCommentList:" + paramList);
-    }
-    if (paramList == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Wmj == null)
+    yuk.a("StoryVideoUploadProgressManager", "unregisterListener, listener:%s", paramwmh.getClass().getSimpleName());
+    Iterator localIterator = this.b.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.a(2131561683, 2);
-      this.jdField_a_of_type_Wmj = new wmj(this, 2131561683, this.jdField_a_of_type_JavaUtilList, true);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setAdapter(this.jdField_a_of_type_Wmj);
-    }
-    for (;;)
-    {
-      e();
-      return;
-      if (paramBoolean) {
-        this.jdField_a_of_type_JavaUtilList = paramList;
-      } else {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      Object localObject = (Map.Entry)localIterator.next();
+      String str = (String)((Map.Entry)localObject).getKey();
+      localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((wmi)((Iterator)localObject).next()).a() == paramwmh) {
+          ((Iterator)localObject).remove();
+        }
       }
     }
   }
   
-  public void a(wmb paramwmb)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_Wmb = paramwmb;
-  }
-  
-  public void a(wmq paramwmq)
-  {
-    this.jdField_a_of_type_Wmq = paramwmq;
-  }
-  
-  public void a(wnk paramwnk)
-  {
-    super.a(paramwnk);
-    this.jdField_a_of_type_Wlz = ((wlz)paramwnk);
-  }
-  
-  public void a(boolean paramBoolean, CommentEntry paramCommentEntry)
-  {
-    wml localwml = (wml)a();
-    CommentLikeFeedItem localCommentLikeFeedItem;
-    if (paramBoolean) {
-      localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-    }
-    for (localCommentLikeFeedItem.mCommentCount += 1;; localCommentLikeFeedItem.mCommentCount -= 1)
+    try
     {
-      localwml.a(null);
-      if (paramCommentEntry != null) {
-        localwml.a.a(paramCommentEntry);
+      yuk.a("StoryVideoUploadProgressManager", "mergeVideoSuccess:%s", paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        wmg localwmg = (wmg)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwmg.jdField_a_of_type_Int = 2;
+        localwmg.jdField_b_of_type_Int = 60;
+        a(paramString, localwmg.jdField_b_of_type_Int);
       }
       return;
-      localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
     }
   }
   
-  public void b() {}
-  
-  public void c()
+  public void c(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    try
+    {
+      yuk.a("StoryVideoUploadProgressManager", "uploadVideoSuccess:%s", paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        wmg localwmg = (wmg)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwmg.jdField_a_of_type_Int = 3;
+        localwmg.jdField_b_of_type_Int = 95;
+        a(paramString, localwmg.jdField_b_of_type_Int);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
-  public void d()
+  public void d(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    QQToast.a(BaseApplication.getContext(), 1, anni.a(2131703180), 0).a();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Wmj = new wmj(this, 2131561683, this.jdField_a_of_type_JavaUtilList, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setAdapter(this.jdField_a_of_type_Wmj);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_Wmj = new wmj(this, 2131561683, this.jdField_a_of_type_JavaUtilList, false);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setAdapter(this.jdField_a_of_type_Wmj);
-  }
-  
-  public boolean isValidate()
-  {
-    return this.jdField_a_of_type_Boolean;
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        wmg localwmg = (wmg)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwmg.jdField_a_of_type_Int = 5;
+        localwmg.jdField_b_of_type_Int = 100;
+        a(paramString, localwmg.jdField_b_of_type_Int);
+        localwmg.b();
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 

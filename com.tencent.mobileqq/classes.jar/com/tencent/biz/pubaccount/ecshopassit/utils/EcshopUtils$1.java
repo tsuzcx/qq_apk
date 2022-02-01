@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.ecshopassit.utils;
 
-import ackk;
-import acvy;
-import bcvs;
+import acoo;
+import adab;
+import bdol;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import oda;
-import oer;
+import oek;
+import ofz;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
@@ -41,7 +41,7 @@ public final class EcshopUtils$1
       finally
       {
         if (this.a.a() == null) {
-          break label291;
+          break label290;
         }
         this.a.a().a("3046055438", 1008, false);
       }
@@ -53,12 +53,12 @@ public final class EcshopUtils$1
     this.a.a().a("3046055438", 1008, false);
     return;
     localObject1 = this.a.a().b("3046055438", 1008);
-    localObject3 = oer.a((MessageRecord)localObject1);
-    if ((localObject3 != null) && (((bcvs)localObject3).c != 100))
+    localObject3 = ofz.a((MessageRecord)localObject1);
+    if ((localObject3 != null) && (((bdol)localObject3).c != 100))
     {
-      localObject1 = oda.a((MessageRecord)localObject1);
+      localObject1 = oek.a((MessageRecord)localObject1);
       if (localObject1 != null) {
-        ackk.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+        acoo.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
       }
     }
     while (this.a.a() != null)
@@ -67,12 +67,12 @@ public final class EcshopUtils$1
       return;
       if ((localObject1 instanceof MessageForArkApp))
       {
-        localObject3 = oer.a((MessageRecord)localObject1);
-        if ((localObject3 != null) && (!String.valueOf(100).equals(((JSONObject)localObject3).optString("action_type"))))
+        localObject3 = ofz.a((MessageRecord)localObject1);
+        if ((localObject3 != null) && (String.valueOf(1).equals(((JSONObject)localObject3).optString("action_type"))))
         {
-          localObject1 = oda.a((MessageRecord)localObject1);
+          localObject1 = oek.a((MessageRecord)localObject1);
           if (localObject1 != null) {
-            ackk.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+            acoo.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
           }
         }
       }

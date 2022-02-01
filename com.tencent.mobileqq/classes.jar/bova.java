@@ -1,24 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class bova
-  implements View.OnClickListener
+  extends GifAnimationDrawable
 {
-  public bova(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
-  
-  public void onClick(View paramView)
+  public bova(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
   {
-    if (VideoCoverPickerProviderView.a(this.a) != null)
+    super(paramContext, paramArrayList, paramLong);
+  }
+  
+  public void start()
+  {
+    if (!this.a)
     {
-      bovc localbovc = (bovc)VideoCoverPickerProviderView.a(this.a).get();
-      if (localbovc != null) {
-        localbovc.a(VideoCoverPickerProviderView.a(this.a), true);
+      if (QLog.isColorLevel()) {
+        QLog.d("zswp20pro", 2, "start");
       }
+      this.a = true;
+      this.b = true;
+      this.d = false;
+      a();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("zswp20pro", 2, "start but isRunning");
   }
 }
 

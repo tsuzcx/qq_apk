@@ -1,14 +1,25 @@
-import java.util.List;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.1.1;
+import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.1.2;
+import mqq.os.MqqHandler;
 
-public abstract interface bovc
+public class bovc
+  implements boqp
 {
-  public abstract void a();
+  bovc(bovb parambovb) {}
   
-  public abstract void a(long paramLong);
+  public void a(MetaMaterial paramMetaMaterial)
+  {
+    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.1.1(this, paramMetaMaterial));
+  }
   
-  public abstract void a(long paramLong, boolean paramBoolean);
+  public void a(MetaMaterial paramMetaMaterial, int paramInt) {}
   
-  public abstract void a(List<Long> paramList);
+  public void b(MetaMaterial paramMetaMaterial)
+  {
+    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.1.2(this, paramMetaMaterial));
+  }
 }
 
 

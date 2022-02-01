@@ -1,120 +1,96 @@
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.business.handler.NetAddr;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class lgc
+  extends lgb
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private lgb[] jdField_a_of_type_ArrayOfLgb = new lgb[15];
-  
-  public lgc(VideoAppInterface paramVideoAppInterface)
+  public lgc(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    a(4);
-    a(5);
-    a(12);
-    a(10);
+    super(paramAppInterface);
   }
   
-  public lgb a(int paramInt)
+  protected int a()
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfLgb[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    Object localObject = (VideoAppInterface)this.mApp;
+    if (((VideoAppInterface)localObject).a(0))
     {
-      lgb locallgb = this.jdField_a_of_type_ArrayOfLgb[paramInt];
-      localObject1 = locallgb;
-      if (locallgb == null)
-      {
-        locallgb = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-        localObject1 = locallgb;
-        if (locallgb != null)
-        {
-          this.jdField_a_of_type_ArrayOfLgb[paramInt] = locallgb;
-          localObject1 = locallgb;
-        }
+      localObject = (lix)((VideoAppInterface)localObject).a(0);
+      if (localObject != null) {
+        return ((lix)localObject).b();
       }
-      return localObject1;
     }
+    return 4;
   }
   
-  protected lgb a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
   {
-    Object localObject = null;
-    long l1 = System.currentTimeMillis();
-    switch (paramInt)
+    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
+    lff locallff = localVideoController.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
+    if (paramList == null)
     {
-    case 9: 
-    default: 
-      lbc.c("BusinessManagerFactory", "error-->create Manager unknown name :" + paramInt);
-      paramVideoAppInterface = localObject;
-    }
-    for (;;)
-    {
-      if (paramVideoAppInterface != null) {
-        paramVideoAppInterface.a();
+      localObject = "null";
+      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
+      if (locallff != null) {
+        break label159;
       }
-      long l2 = System.currentTimeMillis();
-      lbc.c("BusinessManagerFactory", "create Manager,cost time:" + (l2 - l1));
-      return paramVideoAppInterface;
-      paramVideoAppInterface = new lip(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lgn(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhp(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhw(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhz(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lgp(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new AVRedPacketManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new moy(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lig(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lif(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lgl(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhe(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhr(paramVideoAppInterface);
+    }
+    label159:
+    for (Object localObject = "null";; localObject = locallff.d)
+    {
+      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
+      if ((localVideoController != null) && (locallff != null)) {
+        localVideoController.a(lcy.a(locallff.d), paramBoolean, paramList, paramLong2);
+      }
+      return;
+      localObject = Integer.valueOf(paramList.size());
+      break;
     }
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  protected void a(Integer paramInteger, Object paramObject)
   {
-    if ((paramInt >= 0) && (paramInt < 15) && (!lgb.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
-      lgb.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
-    }
+    lbj.c("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
+    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
   }
   
-  public boolean a(int paramInt)
+  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    a(Integer.valueOf(6008), new lgi(paramString1, paramString2, paramString3, paramInt));
+  }
+  
+  protected boolean a()
   {
     boolean bool2 = false;
+    Object localObject = (VideoAppInterface)this.mApp;
     boolean bool1 = bool2;
-    if (paramInt >= 0)
+    if (((VideoAppInterface)localObject).a(0))
     {
+      localObject = (lix)((VideoAppInterface)localObject).a(0);
       bool1 = bool2;
-      if (paramInt < 15)
+      if (localObject != null)
       {
+        localObject = (ZimuItem)((lix)localObject).a();
         bool1 = bool2;
-        if (this.jdField_a_of_type_ArrayOfLgb[paramInt] != null) {
-          bool1 = true;
+        if (localObject != null)
+        {
+          localObject = ((ZimuItem)localObject).getId();
+          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
+            break label74;
+          }
         }
       }
     }
-    return bool1;
+    label74:
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
+    }
   }
 }
 

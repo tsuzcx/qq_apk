@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import bagu;
+import bazk;
 
 public class ReceiptMessageDetailFragment$DetailHandler$1
   implements Runnable
 {
-  public ReceiptMessageDetailFragment$DetailHandler$1(bagu parambagu, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ReceiptMessageDetailFragment$DetailHandler$1(bazk parambazk, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {

@@ -1,16 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-class atjf
-  implements View.OnClickListener
+public class atjf
+  implements DialogInterface.OnKeyListener
 {
-  atjf(atje paramatje, bbmy parambbmy) {}
+  public atjf(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Bbmy.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool = false;
+    if (paramInt == 4)
+    {
+      if (this.a.a != null)
+      {
+        this.a.a.dismiss();
+        this.a.a = null;
+      }
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      bool = true;
+    }
+    return bool;
   }
 }
 

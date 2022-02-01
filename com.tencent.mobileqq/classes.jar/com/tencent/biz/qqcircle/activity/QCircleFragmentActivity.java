@@ -11,9 +11,10 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import uxh;
-import vri;
-import vrl;
+import uyn;
+import uys;
+import vtt;
+import vtw;
 
 public class QCircleFragmentActivity
   extends PublicFragmentActivity
@@ -32,7 +33,7 @@ public class QCircleFragmentActivity
     if (300001 == paramInt1)
     {
       QLog.d("QCircleFragmentActivity", 1, "doOnActivityResult，return from qzone publish page");
-      vri.a().d(36);
+      vtt.a().d(36);
     }
   }
   
@@ -49,6 +50,7 @@ public class QCircleFragmentActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     QLog.d("QCircleFragmentActivity", 1, "QCircleFragmentActivity->doOnCreate");
+    uyn.c();
     return super.doOnCreate(paramBundle);
   }
   
@@ -56,9 +58,11 @@ public class QCircleFragmentActivity
   {
     QLog.d("QCircleFragmentActivity", 1, "QCircleFragmentActivity->doOnDestroy");
     super.doOnDestroy();
-    uxh.a();
+    uyn.d();
+    uyn.a(false);
+    uys.a();
     VSNetworkHelper.a().a(this);
-    vrl.a().a();
+    vtw.a().a();
   }
   
   public void doOnNewIntent(Intent paramIntent)

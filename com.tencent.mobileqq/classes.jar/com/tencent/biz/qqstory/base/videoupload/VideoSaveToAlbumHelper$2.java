@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import java.util.ArrayList;
-import wjc;
-import wje;
+import wmx;
+import wmz;
 
 public class VideoSaveToAlbumHelper$2
   extends ArrayList<Object>
 {
-  public VideoSaveToAlbumHelper$2(wjc paramwjc, wje paramwje, int paramInt, String paramString)
+  public VideoSaveToAlbumHelper$2(wmx paramwmx, wmz paramwmz, int paramInt, String paramString)
   {
     add(this.val$taskInfo.c);
     if ((this.val$rotation != 0) && (this.val$rotation != -1)) {}
-    for (paramwjc = this.val$hflipPath;; paramwjc = this.val$taskInfo.jdField_b_of_type_JavaLangString)
+    for (paramwmx = this.val$hflipPath;; paramwmx = this.val$taskInfo.jdField_b_of_type_JavaLangString)
     {
-      add(paramwjc);
+      add(paramwmx);
       add(this.val$taskInfo.d);
       add(Integer.valueOf(this.val$taskInfo.a));
       add(Integer.valueOf(this.val$taskInfo.jdField_b_of_type_Int));

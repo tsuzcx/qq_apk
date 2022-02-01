@@ -1,18 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
 
-public class ayiw
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ayiw
 {
-  public ayiw(ScanOcrView paramScanOcrView) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.e = i;
-    this.a.invalidate();
-  }
+  private ayiw(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
 }
 
 

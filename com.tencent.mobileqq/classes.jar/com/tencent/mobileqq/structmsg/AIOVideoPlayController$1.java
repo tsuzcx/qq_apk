@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.structmsg;
 
-import aqlk;
-import aqmi;
-import bcvn;
+import aran;
+import arbn;
+import bdog;
 
 public class AIOVideoPlayController$1
   implements Runnable
 {
-  public AIOVideoPlayController$1(bcvn parambcvn) {}
+  public AIOVideoPlayController$1(bdog parambdog) {}
   
   public void run()
   {
-    bcvn.a(this.this$0, (aqmi)aqlk.a().a(537));
+    bdog.a(this.this$0, (arbn)aran.a().a(537));
   }
 }
 

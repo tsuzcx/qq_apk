@@ -1,24 +1,22 @@
-import android.os.IInterface;
-import cooperation.qzone.plugin.PluginRecord;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-public abstract interface bmel
-  extends IInterface
+public class bmel
+  extends FlingGestureHandler
 {
-  public abstract PluginRecord a(String paramString);
+  boolean a = true;
   
-  public abstract void a();
+  public bmel(Activity paramActivity)
+  {
+    super(paramActivity);
+  }
   
-  public abstract void a(bmcq parambmcq, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, bmct parambmct, int paramInt);
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean c(String paramString);
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
+    }
+  }
 }
 
 

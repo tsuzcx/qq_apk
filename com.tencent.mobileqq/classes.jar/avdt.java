@@ -1,52 +1,24 @@
-import android.os.SystemClock;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avdt
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  avdu jdField_a_of_type_Avdu;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  int c = 100;
+  public avdt(DeleteFaceFragment paramDeleteFaceFragment) {}
   
-  public avdt(int paramInt, avdu paramavdu)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Avdu = paramavdu;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.b += paramInt;
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        return;
-      }
-    } while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.c);
-    avdu localavdu = this.jdField_a_of_type_Avdu;
-    if (this.b > this.jdField_a_of_type_Int) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localavdu.b(bool);
-      this.jdField_a_of_type_Long = 0L;
-      this.b = 0;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
+    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
+      DeleteFaceFragment.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

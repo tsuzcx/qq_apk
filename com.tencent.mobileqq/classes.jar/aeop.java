@@ -1,58 +1,70 @@
+import android.content.Intent;
+import android.database.DataSetObserver;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.view.View;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class aeop
-  extends WtloginObserver
+  extends DataSetObserver
 {
-  public aeop(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public aeop(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public void onChanged()
   {
-    if (QLog.isColorLevel())
+    super.onChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onChanged() called " + System.identityHashCode(this.a));
+    }
+    if (this.a.e == ForwardRecentActivity.g)
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + bgoc.a(paramString2));
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      localObject1 = ForwardRecentActivity.a(this.a);
+      this.a.getIntent().putParcelableArrayListExtra("result_set", (ArrayList)localObject1);
+      this.a.setResult(-1);
+      this.a.finish();
+    }
+    while (this.a.e != ForwardRecentActivity.f) {
+      return;
+    }
+    Object localObject1 = ForwardRecentActivity.a(this.a).getAdapter();
+    int j = ((ListAdapter)localObject1).getCount();
+    String str = this.a.getIntent().getStringExtra("key_direct_show_uin");
+    int k = this.a.getIntent().getIntExtra("key_direct_show_uin_type", 0);
+    if ((6000 == k) && (TextUtils.equals(antf.z, str)) && (ForwardRecentActivity.a(this.a) != null))
+    {
+      ForwardRecentActivity.a(this.a).callOnClick();
+      return;
+    }
+    int i = 0;
+    label197:
+    Object localObject2;
+    if (i < j)
+    {
+      localObject2 = ((ListAdapter)localObject1).getItem(i);
+      if ((localObject2 instanceof amok)) {
+        break label227;
       }
     }
-    this.a.c();
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt3 == 0)
+    label227:
+    do
     {
-      this.a.a();
-      return;
-    }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(this.a.getString(2131691792), paramString1);
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label299;
-      }
-      paramString1 = this.a.getString(2131717328);
-    }
-    label299:
-    for (;;)
-    {
-      bcst.a(this.a.app, "dc00898", "", LoginPhoneNumActivity.a(this.a), "0X800B107", "0X800B107", LoginPhoneNumActivity.a(this.a), 0, "", "", paramString1, "");
-      return;
-      this.a.a(2131717328, 1);
+      i += 1;
+      break label197;
       break;
-    }
+      localObject2 = (amok)localObject2;
+    } while ((((amok)localObject2).a == null) || (!TextUtils.equals(((amok)localObject2).a.uin, str)) || (k != ((amok)localObject2).a.getType()));
+    localObject1 = ((ListAdapter)localObject1).getView(i, null, ForwardRecentActivity.a(this.a));
+    this.a.a((View)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeop
  * JD-Core Version:    0.7.0.1
  */

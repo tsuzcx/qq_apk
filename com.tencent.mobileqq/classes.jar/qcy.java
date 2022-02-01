@@ -1,12 +1,13 @@
-class qcy
-  implements qvq
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class qcy
+  implements ViewBase.IBuilder
 {
-  qcy(qcw paramqcw, pxk parampxk, snh paramsnh) {}
-  
-  public void a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    pha.a = this.jdField_a_of_type_Pxk.a();
-    pha.a(this.jdField_a_of_type_Snh.a(), this.jdField_a_of_type_Pxk.a(), 2);
+    return new qcx(paramVafContext);
   }
 }
 

@@ -12,14 +12,14 @@ public class am
 {
   public am(LiteActivity paramLiteActivity, ArrayList paramArrayList) {}
   
-  DataLineMsgRecord a(anjx paramanjx, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  DataLineMsgRecord a(anvu paramanvu, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     int i = paramInt1;
     if (paramInt1 == 0) {
-      switch (atvo.a(paramString))
+      switch (aunj.a(paramString))
       {
       default: 
         i = 0;
@@ -28,8 +28,8 @@ public class am
     for (;;)
     {
       DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = anjx.a(i);
-      localDataLineMsgRecord.sessionid = paramanjx.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
+      localDataLineMsgRecord.msgtype = anvu.a(i);
+      localDataLineMsgRecord.sessionid = paramanvu.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
       localDataLineMsgRecord.path = paramString;
       localDataLineMsgRecord.thumbPath = null;
       localDataLineMsgRecord.groupId = paramInt2;
@@ -59,14 +59,14 @@ public class am
   void a(List<String> paramList, int paramInt)
   {
     if (paramList == null) {}
-    anjx localanjx;
+    anvu localanvu;
     int j;
     int i;
     Object localObject;
     for (;;)
     {
       return;
-      localanjx = (anjx)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+      localanvu = (anvu)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
       j = paramList.size();
       if (j > 3) {
         break;
@@ -74,9 +74,9 @@ public class am
       i = 0;
       while (i < j)
       {
-        localObject = a(localanjx, (String)paramList.get(i), paramInt, 0, 0, 0);
+        localObject = a(localanvu, (String)paramList.get(i), paramInt, 0, 0, 0);
         if (localObject != null) {
-          localanjx.a((DataLineMsgRecord)localObject, false);
+          localanvu.a((DataLineMsgRecord)localObject, false);
         }
         i += 1;
       }
@@ -86,11 +86,11 @@ public class am
     if ((j > 3) && (j < 50))
     {
       localObject = new ArrayList();
-      int k = localanjx.a();
+      int k = localanvu.a();
       i = 0;
       if (i < j)
       {
-        localDataLineMsgRecord = a(localanjx, (String)paramList.get(i), paramInt, k, j, i);
+        localDataLineMsgRecord = a(localanvu, (String)paramList.get(i), paramInt, k, j, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -104,7 +104,7 @@ public class am
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localanjx.a((ArrayList)localObject, false);
+          localanvu.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -119,14 +119,14 @@ public class am
       if (((ArrayList)localObject).size() <= 0) {
         break;
       }
-      localanjx.a((ArrayList)localObject, false);
+      localanvu.a((ArrayList)localObject, false);
       return;
       localObject = new ArrayList();
-      j = localanjx.a();
+      j = localanvu.a();
       i = 0;
       if (i < 50)
       {
-        localDataLineMsgRecord = a(localanjx, (String)paramList.get(i), paramInt, j, 50, i);
+        localDataLineMsgRecord = a(localanvu, (String)paramList.get(i), paramInt, j, 50, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -140,7 +140,7 @@ public class am
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localanjx.a((ArrayList)localObject, false);
+          localanvu.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -149,7 +149,7 @@ public class am
         i += 1;
         break label259;
         if (((ArrayList)localObject).size() > 0) {
-          localanjx.a((ArrayList)localObject, false);
+          localanvu.a((ArrayList)localObject, false);
         }
         i = 0;
         while (i < 50)

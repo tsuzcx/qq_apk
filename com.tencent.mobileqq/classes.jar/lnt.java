@@ -1,20 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+
 public class lnt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b = 1280;
-  public int c = 720;
+  public lnt(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public lnt()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 8;
-  }
-  
-  public lnt(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = 8;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    mru.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

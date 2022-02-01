@@ -1,9 +1,22 @@
-import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
-import java.util.List;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.QQPermissionCallback;
 
-public abstract interface axzb
+public class axzb
+  implements QQPermissionCallback
 {
-  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
+  public axzb(GameRoomTransActivity paramGameRoomTransActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQToast.a(this.a, anzj.a(2131703958), 0).a();
+    this.a.finish();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a();
+  }
 }
 
 

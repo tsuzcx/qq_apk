@@ -1,6 +1,8 @@
 public abstract interface vye
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

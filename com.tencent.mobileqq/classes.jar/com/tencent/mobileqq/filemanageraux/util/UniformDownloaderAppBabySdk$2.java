@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import aucw;
+import auur;
 
 public class UniformDownloaderAppBabySdk$2
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$2(aucw paramaucw, String paramString) {}
+  public UniformDownloaderAppBabySdk$2(auur paramauur, String paramString) {}
   
   public void run()
   {
-    aucw.a(this.this$0, this.a, 2);
-    aucw.a(this.this$0);
+    auur.a(this.this$0, this.a, 2);
+    auur.a(this.this$0);
   }
 }
 

@@ -1,21 +1,19 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjsq
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
-  public bjsq(Login paramLogin) {}
+  public bjsq(CommonTitleBar paramCommonTitleBar) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 6)
-    {
-      this.a.b();
-      return true;
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
     }
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

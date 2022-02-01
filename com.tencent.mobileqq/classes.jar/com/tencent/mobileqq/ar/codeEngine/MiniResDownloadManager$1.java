@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apdg;
+import apqw;
 
 public final class MiniResDownloadManager$1
   implements Runnable
 {
-  public MiniResDownloadManager$1(apdg paramapdg, int paramInt1, int paramInt2) {}
+  public MiniResDownloadManager$1(apqw paramapqw, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Apdg != null) {
-      this.jdField_a_of_type_Apdg.a(this.jdField_a_of_type_Int, this.b);
+    if (this.jdField_a_of_type_Apqw != null) {
+      this.jdField_a_of_type_Apqw.a(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

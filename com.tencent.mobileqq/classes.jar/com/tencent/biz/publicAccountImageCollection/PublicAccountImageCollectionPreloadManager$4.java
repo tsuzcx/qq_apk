@@ -12,7 +12,7 @@ class PublicAccountImageCollectionPreloadManager$4
     //   0: new 30	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   7: getstatic 36	anhk:cQ	Ljava/lang/String;
+    //   7: getstatic 36	antf:cQ	Ljava/lang/String;
     //   10: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13: aload_0
     //   14: getfield 17	com/tencent/biz/publicAccountImageCollection/PublicAccountImageCollectionPreloadManager$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -34,7 +34,7 @@ class PublicAccountImageCollectionPreloadManager$4
     //   53: invokestatic 60	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   56: new 62	java/io/File
     //   59: dup
-    //   60: getstatic 36	anhk:cQ	Ljava/lang/String;
+    //   60: getstatic 36	antf:cQ	Ljava/lang/String;
     //   63: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
     //   66: astore_3
     //   67: aload_3

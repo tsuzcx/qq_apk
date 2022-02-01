@@ -12,11 +12,11 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.List;
-import vxn;
-import vxo;
-import vxp;
-import vxq;
-import vxr;
+import wbh;
+import wbi;
+import wbj;
+import wbk;
+import wbl;
 
 public class QCirclePushAsyncTextView
   extends AsyncRichTextView
@@ -25,7 +25,7 @@ public class QCirclePushAsyncTextView
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private String jdField_a_of_type_JavaLangString;
   private List<FeedCloudMeta.StUser> jdField_a_of_type_JavaUtilList;
-  private vxr jdField_a_of_type_Vxr;
+  private wbl jdField_a_of_type_Wbl;
   private boolean jdField_a_of_type_Boolean;
   private String b;
   
@@ -48,28 +48,28 @@ public class QCirclePushAsyncTextView
   {
     SpannableString localSpannableString = new SpannableString(" ");
     localSpannableString.setSpan(new VerticalCenterImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), 0, 1, 33);
-    localSpannableString.setSpan(new vxp(this), 0, 1, 33);
+    localSpannableString.setSpan(new wbj(this), 0, 1, 33);
     return localSpannableString;
   }
   
   private SpannableString a(FeedCloudMeta.StUser paramStUser)
   {
     SpannableString localSpannableString = new SpannableString(paramStUser.nick.get());
-    localSpannableString.setSpan(new vxn(this, paramStUser), 0, localSpannableString.length(), 33);
+    localSpannableString.setSpan(new wbh(this, paramStUser), 0, localSpannableString.length(), 33);
     return localSpannableString;
   }
   
   private SpannableString a(String paramString)
   {
     paramString = new SpannableString(paramString);
-    paramString.setSpan(new vxo(this), 0, paramString.length(), 33);
+    paramString.setSpan(new wbi(this), 0, paramString.length(), 33);
     return paramString;
   }
   
   private SpannableString b()
   {
     SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangString);
-    localSpannableString.setSpan(new vxq(this), 0, localSpannableString.length(), 33);
+    localSpannableString.setSpan(new wbk(this), 0, localSpannableString.length(), 33);
     return localSpannableString;
   }
   
@@ -105,7 +105,7 @@ public class QCirclePushAsyncTextView
     if ((!TextUtils.isEmpty(this.b)) && (this.jdField_a_of_type_Int > this.jdField_a_of_type_JavaUtilList.size())) {
       localSpannableStringBuilder.append(a(this.b));
     }
-    setHighlightColor(getResources().getColor(2131167224));
+    setHighlightColor(getResources().getColor(2131167247));
     setText(localSpannableStringBuilder);
   }
   
@@ -133,9 +133,9 @@ public class QCirclePushAsyncTextView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnClickItemListener(vxr paramvxr)
+  public void setOnClickItemListener(wbl paramwbl)
   {
-    this.jdField_a_of_type_Vxr = paramvxr;
+    this.jdField_a_of_type_Wbl = paramwbl;
   }
 }
 

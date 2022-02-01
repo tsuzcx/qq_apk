@@ -3,22 +3,26 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 import android.os.Parcel;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
 import com.tencent.pts.core.itemview.PTSItemData;
 import org.json.JSONObject;
+import sov;
 
 public class ProteusItemData
   extends BaseData
 {
-  public String W;
-  public String X;
-  public String Y;
+  public final String O = "ProteusItemData";
+  public String P;
+  public String Q;
+  public String R;
   public TemplateBean a;
+  public PTSComposer.IPTSUpdateDataListener a = new sov(this);
   public PTSComposer a;
   public PTSItemData a;
   public JSONObject c;
-  public boolean g = true;
-  public int w = 0;
-  public int x = -1;
+  public boolean e = true;
+  public int u = 0;
+  public int v = -1;
   
   public ProteusItemData(int paramInt)
   {
@@ -32,7 +36,7 @@ public class ProteusItemData
   
   public String a()
   {
-    if ((this.w == 3) && (this.c != null)) {
+    if ((this.u == 3) && (this.c != null)) {
       return this.c.optString("mVideoVid");
     }
     return "";
@@ -40,7 +44,7 @@ public class ProteusItemData
   
   public String b()
   {
-    if ((this.w == 2) && (this.c != null)) {
+    if ((this.u == 2) && (this.c != null)) {
       return this.c.optString("articleImageUrl");
     }
     return "";
@@ -48,7 +52,7 @@ public class ProteusItemData
   
   public String c()
   {
-    if ((this.w == 4) && (this.c != null)) {
+    if ((this.u == 4) && (this.c != null)) {
       return this.c.optString("type");
     }
     return "";
@@ -56,7 +60,7 @@ public class ProteusItemData
   
   public void c(String paramString)
   {
-    this.W = paramString;
+    this.P = paramString;
   }
 }
 

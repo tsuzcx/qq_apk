@@ -1,41 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.fetchGuideBgImg.1;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.AbsListView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$fetchGuideBgImg$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/IBitmapCallback;", "onFail", "", "request", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "exception", "", "onProgress", "progress", "", "onSuccess", "bitmap", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/CloseableBitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shl
-  implements tdu
+public class shl
+  implements blih
 {
-  public void a(@Nullable tdw paramtdw, int paramInt) {}
+  public shl(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a(@Nullable tdw paramtdw, @Nullable Throwable paramThrowable)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("fetch guide bg img fail: ");
-    if (paramThrowable != null) {}
-    for (paramtdw = paramThrowable.getMessage();; paramtdw = null)
-    {
-      QLog.e("VideoColumnGuideManager", 1, paramtdw);
-      return;
-    }
+    this.a.a(new shn(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
   }
   
-  public void a(@Nullable tdw paramtdw, @Nullable tds paramtds)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    shi localshi = this.a.this$0;
-    if (paramtds != null) {}
-    for (paramtdw = paramtds.a();; paramtdw = null)
-    {
-      shi.a(localshi, paramtdw);
-      shi.a(this.a.this$0, true);
-      paramtdw = shi.a(this.a.this$0);
-      if (paramtdw != null) {
-        paramtdw.setImageBitmap(shi.a(this.a.this$0));
-      }
-      shi.b(this.a.this$0);
-      return;
-    }
+    this.a.a(new shm(this, "onScrollStateChanged", paramAbsListView, paramInt));
   }
 }
 

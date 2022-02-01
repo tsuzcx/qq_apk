@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nr1" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="8.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/nrf" android:layout_width="41.0dip" android:layout_height="41.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/nrj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:maxWidth="170.0dip" android:maxLines="1" android:layout_marginStart="4.0dip" android:layout_marginEnd="8.0dip" />
-    <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/nri" android:background="@drawable/cf9" android:paddingLeft="9.5dip" android:paddingRight="9.5dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="25.0dip" android:text="@string/x_x" />
-</LinearLayout>

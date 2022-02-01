@@ -1,19 +1,25 @@
 package com.tencent.mobileqq.data;
 
+import axsr;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.mutualmark.mutualmark.ResourceInfo;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.MutualMarkInfo;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.SpecialWordInfo;
 
 public class IntimateInfo$MutualMarkInfo
 {
   public int days;
-  public String icon_static_url = "";
+  public mutualmark.ResourceInfo gradeResourceInfo = new mutualmark.ResourceInfo();
+  public String iconStaticUrl = "";
   public int level;
+  public long subLevel;
   public int type;
   
   public static MutualMarkInfo copyFrom(oidb_0xcf4.MutualMarkInfo paramMutualMarkInfo)
@@ -23,29 +29,57 @@ public class IntimateInfo$MutualMarkInfo
       return null;
     }
     MutualMarkInfo localMutualMarkInfo = new MutualMarkInfo();
-    if (paramMutualMarkInfo.eMutualMarkNewType.has())
-    {
+    int i;
+    if (paramMutualMarkInfo.eMutualMarkNewType.has()) {
       i = paramMutualMarkInfo.eMutualMarkNewType.get();
-      localMutualMarkInfo.type = i;
-      if (!paramMutualMarkInfo.uint32_level.has()) {
-        break label146;
-      }
     }
-    label146:
-    for (int i = paramMutualMarkInfo.uint32_level.get();; i = 0)
+    for (;;)
     {
-      localMutualMarkInfo.level = i;
-      i = j;
-      if (paramMutualMarkInfo.uint32_days.has()) {
-        i = paramMutualMarkInfo.uint32_days.get();
+      localMutualMarkInfo.type = i;
+      label59:
+      long l;
+      if (paramMutualMarkInfo.uint32_level.has())
+      {
+        i = paramMutualMarkInfo.uint32_level.get();
+        localMutualMarkInfo.level = i;
+        i = j;
+        if (paramMutualMarkInfo.uint32_days.has()) {
+          i = paramMutualMarkInfo.uint32_days.get();
+        }
+        localMutualMarkInfo.days = i;
+        if (!paramMutualMarkInfo.uint64_sub_level.has()) {
+          break label264;
+        }
+        l = paramMutualMarkInfo.uint64_sub_level.get();
+        localMutualMarkInfo.subLevel = l;
+        if (!paramMutualMarkInfo.bytes_grade_resource_info.has()) {}
       }
-      localMutualMarkInfo.days = i;
-      if ((paramMutualMarkInfo.msg_special_word_info.has()) && (((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.has())) {
-        localMutualMarkInfo.icon_static_url = ((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.get().toStringUtf8();
+      try
+      {
+        localMutualMarkInfo.gradeResourceInfo.mergeFrom(paramMutualMarkInfo.bytes_grade_resource_info.get().toByteArray());
+        if ((paramMutualMarkInfo.msg_special_word_info.has()) && (((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.has())) {
+          localMutualMarkInfo.iconStaticUrl = ((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.get().toStringUtf8();
+        }
+        if ((localMutualMarkInfo.gradeResourceInfo != null) && (localMutualMarkInfo.gradeResourceInfo.bytes_static_url.has())) {
+          localMutualMarkInfo.iconStaticUrl = localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
+        }
+        localMutualMarkInfo.iconStaticUrl = axsr.c(localMutualMarkInfo.iconStaticUrl);
+        return localMutualMarkInfo;
+        i = 0;
+        continue;
+        i = 0;
+        break label59;
+        label264:
+        l = 0L;
       }
-      return localMutualMarkInfo;
-      i = 0;
-      break;
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QLog.i("IntimateInfo", 1, "parseFrom error:" + localThrowable.getMessage());
+          localMutualMarkInfo.gradeResourceInfo = null;
+        }
+      }
     }
   }
   
@@ -55,7 +89,8 @@ public class IntimateInfo$MutualMarkInfo
     localMutualMarkInfo.type = paramJSONObject.optInt("type");
     localMutualMarkInfo.level = paramJSONObject.optInt("level");
     localMutualMarkInfo.days = paramJSONObject.optInt("days");
-    localMutualMarkInfo.icon_static_url = paramJSONObject.optString("icon_static_url");
+    localMutualMarkInfo.subLevel = paramJSONObject.optInt("subLevel");
+    localMutualMarkInfo.iconStaticUrl = paramJSONObject.optString("iconStaticUrl");
     return localMutualMarkInfo;
   }
   
@@ -67,7 +102,8 @@ public class IntimateInfo$MutualMarkInfo
       localJSONObject.put("type", this.type);
       localJSONObject.put("level", this.level);
       localJSONObject.put("days", this.days);
-      localJSONObject.put("icon_static_url", this.icon_static_url);
+      localJSONObject.put("subLevel", this.subLevel);
+      localJSONObject.put("iconStaticUrl", this.iconStaticUrl);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -79,7 +115,7 @@ public class IntimateInfo$MutualMarkInfo
   
   public String toString()
   {
-    return "MutualMarkInfo{type=" + this.type + ", level=" + this.level + ", days=" + this.days + ", icon_static_url=" + this.icon_static_url + '}';
+    return "MutualMarkInfo{type=" + this.type + ", level=" + this.level + ", days=" + this.days + ", subLevel=" + this.subLevel + ", iconStaticUrl=" + this.iconStaticUrl + '}';
   }
 }
 

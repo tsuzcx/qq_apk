@@ -1,16 +1,28 @@
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.2.1;
 
-public abstract interface bmdp
+public class bmdp
+  implements bmdx
 {
-  public abstract void a(PluginRecord paramPluginRecord);
+  bmdp(bmdn parambmdn) {}
   
-  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
-  
-  public abstract void b(PluginRecord paramPluginRecord);
-  
-  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
-  
-  public abstract void c(PluginRecord paramPluginRecord);
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "enter room successfully!!!");
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
+      }
+      new Handler(Looper.getMainLooper()).postDelayed(new GMEAVEngineWalper.2.1(this), 500L);
+      return;
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
+    }
+  }
 }
 
 

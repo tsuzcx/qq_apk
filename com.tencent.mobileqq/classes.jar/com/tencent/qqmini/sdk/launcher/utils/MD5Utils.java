@@ -53,33 +53,6 @@ public class MD5Utils
     md5Init();
   }
   
-  private void Decode(long[] paramArrayOfLong, byte[] paramArrayOfByte, int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < paramInt)
-    {
-      paramArrayOfLong[j] = (b2iu(paramArrayOfByte[i]) | b2iu(paramArrayOfByte[(i + 1)]) << 8 | b2iu(paramArrayOfByte[(i + 2)]) << 16 | b2iu(paramArrayOfByte[(i + 3)]) << 24);
-      j += 1;
-      i += 4;
-    }
-  }
-  
-  private void Encode(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < paramInt)
-    {
-      paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
-      paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
-      paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
-      paramArrayOfByte[(i + 3)] = ((byte)(int)(paramArrayOfLong[j] >>> 24 & 0xFF));
-      j += 1;
-      i += 4;
-    }
-  }
-  
   private long F(long paramLong1, long paramLong2, long paramLong3)
   {
     return paramLong1 & paramLong2 | (0xFFFFFFFF ^ paramLong1) & paramLong3;
@@ -140,6 +113,33 @@ public class MD5Utils
     return paramByte;
   }
   
+  private void decode(long[] paramArrayOfLong, byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = 0;
+    int j = 0;
+    while (i < paramInt)
+    {
+      paramArrayOfLong[j] = (b2iu(paramArrayOfByte[i]) | b2iu(paramArrayOfByte[(i + 1)]) << 8 | b2iu(paramArrayOfByte[(i + 2)]) << 16 | b2iu(paramArrayOfByte[(i + 3)]) << 24);
+      j += 1;
+      i += 4;
+    }
+  }
+  
+  private void encode(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
+  {
+    int i = 0;
+    int j = 0;
+    while (i < paramInt)
+    {
+      paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
+      paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
+      paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
+      paramArrayOfByte[(i + 3)] = ((byte)(int)(paramArrayOfLong[j] >>> 24 & 0xFF));
+      j += 1;
+      i += 4;
+    }
+  }
+  
   protected static byte[] encode(byte[] paramArrayOfByte)
   {
     try
@@ -157,33 +157,33 @@ public class MD5Utils
   protected static byte[] encodeFile(String paramString)
   {
     // Byte code:
-    //   0: ldc 146
-    //   2: invokestatic 152	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   0: ldc 145
+    //   2: invokestatic 151	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   5: astore_3
-    //   6: new 169	java/io/File
+    //   6: new 168	java/io/File
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 172	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 171	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore_0
     //   15: aload_0
-    //   16: invokevirtual 176	java/io/File:exists	()Z
+    //   16: invokevirtual 175	java/io/File:exists	()Z
     //   19: ifne +5 -> 24
     //   22: aconst_null
     //   23: areturn
-    //   24: new 178	java/io/BufferedInputStream
+    //   24: new 177	java/io/BufferedInputStream
     //   27: dup
-    //   28: new 180	java/io/FileInputStream
+    //   28: new 179	java/io/FileInputStream
     //   31: dup
     //   32: aload_0
-    //   33: invokespecial 183	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   36: invokespecial 186	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   33: invokespecial 182	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   36: invokespecial 185	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   39: astore_2
     //   40: sipush 4096
     //   43: newarray byte
     //   45: astore_0
     //   46: aload_2
     //   47: aload_0
-    //   48: invokevirtual 190	java/io/BufferedInputStream:read	([B)I
+    //   48: invokevirtual 189	java/io/BufferedInputStream:read	([B)I
     //   51: istore_1
     //   52: iload_1
     //   53: iconst_m1
@@ -192,51 +192,51 @@ public class MD5Utils
     //   58: aload_0
     //   59: iconst_0
     //   60: iload_1
-    //   61: invokevirtual 193	java/security/MessageDigest:update	([BII)V
+    //   61: invokevirtual 192	java/security/MessageDigest:update	([BII)V
     //   64: goto -18 -> 46
     //   67: astore_0
     //   68: aload_0
-    //   69: invokevirtual 196	java/io/IOException:printStackTrace	()V
+    //   69: invokevirtual 195	java/io/IOException:printStackTrace	()V
     //   72: aload_2
-    //   73: invokevirtual 199	java/io/BufferedInputStream:close	()V
+    //   73: invokevirtual 198	java/io/BufferedInputStream:close	()V
     //   76: aconst_null
     //   77: astore_0
     //   78: aload_0
     //   79: areturn
     //   80: aload_3
-    //   81: invokevirtual 159	java/security/MessageDigest:digest	()[B
+    //   81: invokevirtual 158	java/security/MessageDigest:digest	()[B
     //   84: astore_0
     //   85: aload_2
-    //   86: invokevirtual 199	java/io/BufferedInputStream:close	()V
+    //   86: invokevirtual 198	java/io/BufferedInputStream:close	()V
     //   89: goto -11 -> 78
     //   92: astore_2
     //   93: aload_2
-    //   94: invokevirtual 196	java/io/IOException:printStackTrace	()V
+    //   94: invokevirtual 195	java/io/IOException:printStackTrace	()V
     //   97: goto -19 -> 78
     //   100: astore_0
     //   101: aload_0
-    //   102: invokevirtual 200	java/io/FileNotFoundException:printStackTrace	()V
+    //   102: invokevirtual 199	java/io/FileNotFoundException:printStackTrace	()V
     //   105: aconst_null
     //   106: areturn
     //   107: astore_0
     //   108: aload_0
-    //   109: invokevirtual 196	java/io/IOException:printStackTrace	()V
+    //   109: invokevirtual 195	java/io/IOException:printStackTrace	()V
     //   112: aconst_null
     //   113: astore_0
     //   114: goto -36 -> 78
     //   117: astore_0
     //   118: aload_2
-    //   119: invokevirtual 199	java/io/BufferedInputStream:close	()V
+    //   119: invokevirtual 198	java/io/BufferedInputStream:close	()V
     //   122: aload_0
     //   123: athrow
     //   124: astore_0
     //   125: aload_0
-    //   126: invokevirtual 201	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   126: invokevirtual 200	java/security/NoSuchAlgorithmException:printStackTrace	()V
     //   129: aconst_null
     //   130: areturn
     //   131: astore_2
     //   132: aload_2
-    //   133: invokevirtual 196	java/io/IOException:printStackTrace	()V
+    //   133: invokevirtual 195	java/io/IOException:printStackTrace	()V
     //   136: goto -14 -> 122
     // Local variable table:
     //   start	length	slot	name	signature
@@ -349,14 +349,14 @@ public class MD5Utils
   private void md5Final()
   {
     byte[] arrayOfByte = new byte[8];
-    Encode(arrayOfByte, this.count, 8);
+    encode(arrayOfByte, this.count, 8);
     int i = (int)(this.count[0] >>> 3) & 0x3F;
     if (i < 56) {}
     for (i = 56 - i;; i = 120 - i)
     {
       md5Update(PADDING, i);
       md5Update(arrayOfByte, 8);
-      Encode(this.digest, this.state, 16);
+      encode(this.digest, this.state, 16);
       return;
     }
   }
@@ -388,7 +388,7 @@ public class MD5Utils
     long l4 = this.state[2];
     long l3 = this.state[3];
     long[] arrayOfLong = new long[16];
-    Decode(arrayOfLong, paramArrayOfByte, 64);
+    decode(arrayOfLong, paramArrayOfByte, 64);
     l2 = FF(l2, l1, l4, l3, arrayOfLong[0], 7L, 3614090360L);
     l3 = FF(l3, l2, l1, l4, arrayOfLong[1], 12L, 3905402710L);
     l4 = FF(l4, l3, l2, l1, arrayOfLong[2], 17L, 606105819L);

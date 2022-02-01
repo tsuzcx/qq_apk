@@ -1,25 +1,12 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.ArrayList;
 
 public class qxu
-  extends ClickableSpan
 {
-  public qxu(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
-  {
-    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
-    snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(afur.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
-  }
+  public long a;
+  public String a;
+  public ArrayList<qyh> a = new ArrayList();
+  public long b;
+  public long c;
 }
 
 

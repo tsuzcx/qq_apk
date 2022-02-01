@@ -1,133 +1,332 @@
 import android.content.Context;
-import android.graphics.Paint;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqgv
 {
-  public static int a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  private int jdField_a_of_type_Int = 2;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private aqhd jdField_a_of_type_Aqhd;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public aqgv(Context paramContext, int paramInt)
   {
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      return 1;
-    }
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      return 2;
-    }
-    if (atvo.a(paramMessageRecord))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    try
     {
-      paramMessageRecord = ahgl.a(paramQQAppInterface, paramMessageRecord);
-      int i;
-      if ((paramMessageRecord instanceof MessageForFile))
-      {
-        paramQQAppInterface = paramQQAppInterface.a().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-        if (paramQQAppInterface != null)
-        {
-          i = atvo.a(paramQQAppInterface.fileName);
-          if (i == 0) {
-            return 3;
-          }
-          if (i == 2) {
-            return 4;
-          }
-        }
-      }
-      else if ((paramMessageRecord instanceof MessageForTroopFile))
-      {
-        paramQQAppInterface = bfsj.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord);
-        if (paramQQAppInterface != null)
-        {
-          i = atvo.a(paramQQAppInterface.g);
-          if (i == 0) {
-            return 3;
-          }
-          if (i == 2) {
-            return 4;
-          }
-        }
-      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+      return;
     }
-    return 0;
+    catch (Throwable paramContext)
+    {
+      QLog.e("ARSensorManager", 1, "ARSensorManager getSystemService error:" + paramContext.getMessage());
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+    }
   }
   
-  public static final String a(Context paramContext, int paramInt)
+  public aqhd a(int paramInt, SensorManager paramSensorManager, aqgw paramaqgw)
   {
-    if (paramInt < 0) {
-      return "";
+    if (paramSensorManager == null) {
+      return null;
     }
-    int i = paramInt;
-    if (paramInt == 0) {
-      i = 1;
+    if (paramInt == 1) {
+      if (0 != 0) {
+        break label515;
+      }
     }
-    if (i < 60) {
-      return paramContext.getString(2131698213, new Object[] { Integer.valueOf(i) });
-    }
-    if (i < 3600) {
-      return paramContext.getString(2131698214, new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
-    }
-    paramInt = i / 60;
-    return paramContext.getString(2131698215, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
-  }
-  
-  public static final String a(Paint paramPaint, String paramString, int paramInt)
-  {
-    float f1 = paramPaint.measureText(paramString);
-    float f2 = paramPaint.measureText("…");
-    if (f2 > f1) {}
     for (;;)
     {
-      return paramString;
-      if (f2 > paramInt) {
-        return "…";
-      }
-      if (f1 > paramInt)
+      Object localObject7;
+      label89:
+      Object localObject3;
+      try
       {
-        float[] arrayOfFloat = new float[paramString.length()];
-        paramPaint.getTextWidths(paramString, arrayOfFloat);
-        float f3 = paramInt;
-        f1 = 0.0F;
-        paramInt = 0;
-        while (paramInt < arrayOfFloat.length)
+        localObject1 = new aqhi(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+        localObject7 = localObject1;
+        if (localObject1 != null) {}
+      }
+      catch (OrientationProviderNotFound localOrientationProviderNotFound2)
+      {
+        try
         {
-          f1 += arrayOfFloat[paramInt];
-          if (f1 > f3 - f2) {
-            return paramString.substring(0, paramInt) + "…";
-          }
-          paramInt += 1;
+          localObject7 = new aqhg(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+          localObject1 = localObject7;
+          if (localObject7 != null) {}
         }
+        catch (OrientationProviderNotFound localOrientationProviderNotFound2)
+        {
+          try
+          {
+            Object localObject1 = new aqhb(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+            if (localObject1 != null) {
+              break label485;
+            }
+            paramSensorManager = "null";
+            QLog.d("ARSensorManager", 1, "getProvider:" + paramSensorManager);
+            return localObject1;
+            localOrientationProviderNotFound1 = localOrientationProviderNotFound1;
+            Object localObject2 = null;
+            continue;
+            localOrientationProviderNotFound2 = localOrientationProviderNotFound2;
+            localObject7 = null;
+          }
+          catch (OrientationProviderNotFound paramSensorManager)
+          {
+            localObject3 = null;
+            continue;
+          }
+        }
+      }
+      if (paramInt == 0) {
+        if (0 != 0) {
+          break label509;
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject7 = new aqhf(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+          localObject3 = localObject7;
+          if (localObject7 != null) {}
+        }
+        catch (OrientationProviderNotFound localOrientationProviderNotFound5)
+        {
+          try
+          {
+            localObject3 = new aqhg(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+            localObject7 = localObject3;
+            if (localObject3 != null) {}
+          }
+          catch (OrientationProviderNotFound localOrientationProviderNotFound5)
+          {
+            try
+            {
+              localObject7 = new aqhi(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+              localObject8 = localObject7;
+              if (localObject7 != null) {}
+            }
+            catch (OrientationProviderNotFound localOrientationProviderNotFound5)
+            {
+              try
+              {
+                for (;;)
+                {
+                  localObject8 = new aqha(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+                  localObject3 = localObject8;
+                  if (localObject8 != null) {
+                    break;
+                  }
+                  try
+                  {
+                    localObject3 = new aqhc(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+                  }
+                  catch (OrientationProviderNotFound paramSensorManager)
+                  {
+                    localObject3 = null;
+                  }
+                }
+                break;
+                localOrientationProviderNotFound3 = localOrientationProviderNotFound3;
+                localObject7 = null;
+                continue;
+                localOrientationProviderNotFound4 = localOrientationProviderNotFound4;
+                Object localObject4 = null;
+                continue;
+                localOrientationProviderNotFound5 = localOrientationProviderNotFound5;
+                localObject7 = null;
+              }
+              catch (OrientationProviderNotFound localOrientationProviderNotFound6)
+              {
+                Object localObject8 = null;
+                continue;
+              }
+            }
+          }
+        }
+        if ((paramInt == 2) || (paramInt == 3)) {
+          if (0 != 0) {
+            break label503;
+          }
+        }
+        for (;;)
+        {
+          for (;;)
+          {
+            try
+            {
+              localObject7 = new aqhg(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+              localObject5 = localObject7;
+              if (localObject7 != null) {}
+            }
+            catch (OrientationProviderNotFound localOrientationProviderNotFound8)
+            {
+              try
+              {
+                localObject5 = new aqhi(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+                localObject7 = localObject5;
+                if (localObject5 != null) {}
+              }
+              catch (OrientationProviderNotFound localOrientationProviderNotFound8)
+              {
+                try
+                {
+                  for (;;)
+                  {
+                    localObject7 = new aqha(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+                    Object localObject5 = localObject7;
+                    if (localObject7 != null) {
+                      break;
+                    }
+                    try
+                    {
+                      localObject5 = new aqhb(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+                    }
+                    catch (OrientationProviderNotFound paramSensorManager)
+                    {
+                      localObject5 = null;
+                    }
+                  }
+                  break;
+                  localOrientationProviderNotFound7 = localOrientationProviderNotFound7;
+                  localObject7 = null;
+                  continue;
+                  localOrientationProviderNotFound8 = localOrientationProviderNotFound8;
+                  Object localObject6 = null;
+                }
+                catch (OrientationProviderNotFound localOrientationProviderNotFound9)
+                {
+                  localObject7 = null;
+                  continue;
+                }
+              }
+            }
+            if (((paramInt != 4) && (paramInt != 5)) || (0 != 0)) {
+              break label497;
+            }
+            try
+            {
+              localaqhh = new aqhh(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramaqgw);
+            }
+            catch (OrientationProviderNotFound paramSensorManager)
+            {
+              localaqhh = null;
+            }
+          }
+          break;
+          label485:
+          paramSensorManager = localaqhh.getClass().getSimpleName();
+          break label89;
+          label497:
+          localaqhh = null;
+          break;
+          label503:
+          localObject7 = null;
+        }
+        label509:
+        localObject7 = null;
+      }
+      label515:
+      aqhh localaqhh = null;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Aqhd != null) {
+        this.jdField_a_of_type_Aqhd.c();
       }
     }
   }
   
-  public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, String paramString)
+  public boolean a()
   {
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean1)
+    return (a(2)) && ((a(1)) || (a(4)));
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
+    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(paramInt) == null) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(aqgw paramaqgw)
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      str = "1";
-      localHashMap.put("eventSuccess", str);
-      localHashMap.put("statusCode", String.valueOf(paramInt1));
-      localHashMap.put("mediaType", String.valueOf(paramInt2));
-      if (!paramBoolean2) {
-        break label113;
+      this.jdField_a_of_type_Aqhd = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramaqgw);
+      if (this.jdField_a_of_type_Aqhd == null) {
+        break label48;
+      }
+      this.jdField_a_of_type_Aqhd.b();
+    }
+    label48:
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false) {
+      return this.jdField_a_of_type_Boolean;
+    }
+  }
+  
+  public boolean a(aqgw paramaqgw, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Aqhd = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramaqgw);
+      if (this.jdField_a_of_type_Aqhd == null) {
+        break label78;
+      }
+      int i = paramInt;
+      if (paramInt != 2)
+      {
+        i = paramInt;
+        if (paramInt != 1)
+        {
+          i = paramInt;
+          if (paramInt != 0)
+          {
+            i = paramInt;
+            if (paramInt != 3) {
+              i = 2;
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Aqhd.a(i);
+    }
+    label78:
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false) {
+      return this.jdField_a_of_type_Boolean;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      return false;
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    int i;
+    if (this.jdField_a_of_type_Int == 5)
+    {
+      i = 15;
+      localObject = ((SensorManager)localObject).getDefaultSensor(i);
+      if ((this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4) == null) || (localObject == null)) {
+        break label56;
       }
     }
-    label113:
-    for (String str = "1";; str = "0")
+    label56:
+    for (boolean bool = true;; bool = false)
     {
-      localHashMap.put("rspValid", str);
-      localHashMap.put("errInfo", paramString);
-      bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "DanmakuRequestMonitor", paramBoolean1, 0L, 0L, localHashMap, null);
-      return;
-      str = "0";
+      return bool;
+      i = 11;
       break;
     }
   }

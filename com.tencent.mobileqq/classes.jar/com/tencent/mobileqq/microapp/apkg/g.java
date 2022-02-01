@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import aksh;
+import aldt;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.a.c;
@@ -55,7 +55,7 @@ public class g
     }
     if (!TextUtils.isEmpty(str1))
     {
-      aksh.a(BaseApplicationImpl.getApplication().getRuntime()).c(str1, new h(this, paramc, str2, parama));
+      aldt.a(BaseApplicationImpl.getApplication().getRuntime()).c(str1, new h(this, paramc, str2, parama));
       return;
     }
     parama.onInitApkgInfo$76ec3a73(1, null);

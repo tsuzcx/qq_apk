@@ -1,37 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-@Deprecated
-public class otw
+class otw
+  extends ovd
 {
-  public static AtomicBoolean a;
-  
-  public static ArkAppMessage a(req paramreq)
+  otw(otv paramotv)
   {
-    return null;
+    super(paramotv, null);
   }
   
-  public static void a() {}
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(View paramView) {}
-  
-  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
-  
-  public static void a(otu paramotu, int paramInt) {}
-  
-  public static boolean a(ArkAppMessage paramArkAppMessage)
+  void a(ovg paramovg)
   {
-    return false;
+    paramovg.onCommentListLoad(1, true, this.a.a(), otv.a(this.a), 3, 3);
   }
-  
-  public static void b() {}
-  
-  public static void b(int paramInt) {}
-  
-  public static void b(View paramView) {}
 }
 
 

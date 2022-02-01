@@ -1,21 +1,9 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
 
-public class aagy
-  extends aqce
+public abstract interface aagy
 {
-  public aagy(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
-  
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
-  {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
-  }
+  public abstract void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed);
 }
 
 

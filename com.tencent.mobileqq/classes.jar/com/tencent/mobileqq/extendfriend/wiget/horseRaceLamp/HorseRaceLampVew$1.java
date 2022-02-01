@@ -5,10 +5,10 @@ import android.content.res.Resources;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import asoz;
-import aspb;
-import aspc;
-import aspd;
+import atfd;
+import atff;
+import atfg;
+import atfh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -32,12 +32,12 @@ public class HorseRaceLampVew$1
         i = ((WindowManager)this.this$0.getContext().getSystemService("window")).getDefaultDisplay().getWidth();
         QLog.e("HorseRaceLampVew + horserace", 2, "INIT WIDH in screen Width: " + i);
       }
-      int k = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297221);
-      int m = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297225);
+      int k = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297233);
+      int m = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297237);
       j = 0;
       while (j < 4)
       {
-        HorseRaceLampVew.a(this.this$0).add(new aspb(j, i, k, m));
+        HorseRaceLampVew.a(this.this$0).add(new atff(j, i, k, m));
         j += 1;
       }
       if (HorseRaceLampVew.a(this.this$0) == null)
@@ -49,20 +49,20 @@ public class HorseRaceLampVew$1
       Object localObject;
       while (i < HorseRaceLampVew.a(this.this$0).a())
       {
-        localObject = new aspc(HorseRaceLampVew.a(this.this$0).a(i));
-        ((aspb)HorseRaceLampVew.a(this.this$0).get(i % 4)).a((aspc)localObject);
+        localObject = new atfg(HorseRaceLampVew.a(this.this$0).a(i));
+        ((atff)HorseRaceLampVew.a(this.this$0).get(i % 4)).a((atfg)localObject);
         i += 1;
       }
       i = 0;
       while (i < HorseRaceLampVew.a(this.this$0).size())
       {
-        ((aspb)HorseRaceLampVew.a(this.this$0).get(i)).a();
+        ((atff)HorseRaceLampVew.a(this.this$0).get(i)).a();
         i += 1;
       }
       i = 0;
       if (i < HorseRaceLampVew.a(this.this$0).size())
       {
-        localObject = ((aspb)HorseRaceLampVew.a(this.this$0).get(i)).a();
+        localObject = ((atff)HorseRaceLampVew.a(this.this$0).get(i)).a();
         if (localObject == null) {}
         for (;;)
         {
@@ -71,10 +71,10 @@ public class HorseRaceLampVew$1
           j = 0;
           while (j < ((ArrayList)localObject).size())
           {
-            aspc localaspc = (aspc)((ArrayList)localObject).get(j);
-            View localView = HorseRaceLampVew.a(this.this$0).a(this.this$0.getContext(), localaspc.a, this.this$0);
-            localView.setTag(localaspc);
-            localView.setOnClickListener(new asoz(this));
+            atfg localatfg = (atfg)((ArrayList)localObject).get(j);
+            View localView = HorseRaceLampVew.a(this.this$0).a(this.this$0.getContext(), localatfg.a, this.this$0);
+            localView.setTag(localatfg);
+            localView.setOnClickListener(new atfd(this));
             this.this$0.addView(localView);
             localView.setVisibility(4);
             j += 1;

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr;
 
-import aygu;
-import bctj;
+import ayzn;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class OcrControl$5$3
   implements Runnable
 {
-  public OcrControl$5$3(aygu paramaygu, int paramInt1, int paramInt2, int paramInt3) {}
+  public OcrControl$5$3(ayzn paramayzn, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class OcrControl$5$3
     localHashMap.put("ret_code", String.valueOf(this.c));
     try
     {
-      bctj.a(BaseApplicationImpl.getContext()).a("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
+      bdmc.a(BaseApplicationImpl.getContext()).a("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
       return;
     }
     catch (Exception localException)

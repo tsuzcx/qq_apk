@@ -1,29 +1,18 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastMusicInfo;
 
-class bnbd
-  extends Handler
+public final class bnbd
+  implements Parcelable.Creator<BroadcastMusicInfo>
 {
-  public bnbd(Looper paramLooper)
+  public BroadcastMusicInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new BroadcastMusicInfo(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public BroadcastMusicInfo[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3000: 
-      bnaz.c((Activity)paramMessage.obj, paramMessage.arg1);
-      return;
-    }
-    bnaz.a(null);
-    bnaz.a(SystemClock.uptimeMillis());
+    return new BroadcastMusicInfo[paramInt];
   }
 }
 

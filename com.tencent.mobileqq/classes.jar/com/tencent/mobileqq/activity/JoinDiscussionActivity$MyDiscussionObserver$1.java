@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aela;
+import aeud;
 import android.graphics.Bitmap;
-import anks;
+import anwo;
 
 public class JoinDiscussionActivity$MyDiscussionObserver$1
   implements Runnable
 {
-  public JoinDiscussionActivity$MyDiscussionObserver$1(aela paramaela) {}
+  public JoinDiscussionActivity$MyDiscussionObserver$1(aeud paramaeud) {}
   
   public void run()
   {

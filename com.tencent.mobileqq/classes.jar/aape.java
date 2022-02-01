@@ -1,24 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aape
-  extends aapv
+  implements bjig
 {
-  aape(aapa paramaapa, aapi paramaapi, String paramString)
-  {
-    super(paramaapa);
-  }
+  aape(aapa paramaapa) {}
   
-  public void a(boolean paramBoolean)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel())
+    if ((aapa.a(this.a) == null) || (!aapa.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aapa.a));
-      this.jdField_a_of_type_Aapa.a = System.currentTimeMillis();
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(this.a.a, 1, anzj.a(2131713449), 0).a();
+      return;
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Aapi.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
-    }
+    QQToast.a(this.a.a, 2, anzj.a(2131713451), 0).a();
   }
 }
 

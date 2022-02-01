@@ -1,42 +1,25 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.SDKInstallListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class sfg
-  implements siv
+class sfg
+  implements sga
 {
-  private Handler a;
+  sfg(sel paramsel) {}
   
-  public sfg(Handler paramHandler)
+  public void onClick(View paramView)
   {
-    this.a = paramHandler;
-  }
-  
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.excute(new VideoPluginInstall.SDKInstallListener.1(this, paramBoolean, paramInt), 16, null, true);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "onInstalledSuccessed: ");
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof pna))
+    {
+      ((pna)localObject).onClick(paramView);
+      return;
     }
-    a(true, 0);
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "onInstalledFailed: code=" + paramInt);
-    }
-    a(false, paramInt);
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
+    localObject = this.a;
+    if (omu.a() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      sel.a((sel)localObject, paramView, false, bool);
+      pms.a(paramView);
+      return;
     }
   }
 }

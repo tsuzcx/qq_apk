@@ -1,27 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qappcenter.remote.SendMsg;
 
-final class bmih
-  implements ModuleDownloadListener
+class bmih
+  implements ServiceConnection
 {
-  public void onDownloadCanceled(String paramString) {}
+  bmih(bmig parambmig) {}
   
-  public void onDownloadFailed(String paramString)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QZLog.i(bmig.a, "download webp so fail");
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bmig.a(this.a));
+    }
+    this.a.a = bmid.a(paramIBinder);
+    if (bmig.a(this.a) != null)
+    {
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.a = bmig.a(this.a);
+      this.a.b(paramComponentName);
+    }
+    this.a.a();
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (!paramString.equals("animatedWebp.so")) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bmig.a(this.a));
     }
-    bivg.a().edit().putString("PREFERENCE_SO_MD5_KEY", bmig.b).commit();
-    QZLog.i(bmig.a, "download webp so succ");
+    this.a.a = null;
   }
 }
 

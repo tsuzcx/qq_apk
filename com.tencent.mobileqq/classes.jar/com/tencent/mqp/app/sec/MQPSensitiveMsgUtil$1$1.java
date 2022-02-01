@@ -1,14 +1,14 @@
 package com.tencent.mqp.app.sec;
 
-import bihn;
-import biho;
+import bjim;
+import bjin;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class MQPSensitiveMsgUtil$1$1
   implements Runnable
 {
-  public MQPSensitiveMsgUtil$1$1(biho parambiho) {}
+  public MQPSensitiveMsgUtil$1$1(bjin parambjin) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class MQPSensitiveMsgUtil$1$1
     if (localMessageRecord == null) {
       return;
     }
-    bihn.a(localMessageRecord);
+    bjim.a(localMessageRecord);
     try
     {
       localMessageRecord.saveExtInfoToExtStr("sens_msg_confirmed", "1");

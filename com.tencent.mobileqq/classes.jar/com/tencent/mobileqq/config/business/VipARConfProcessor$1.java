@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.config.business;
 
-import aqlk;
-import aquk;
-import aqum;
+import aran;
+import arjw;
+import arjy;
 
 public class VipARConfProcessor$1
   implements Runnable
 {
   public void run()
   {
-    aquk localaquk = (aquk)aqlk.a().a(499);
-    aqum localaqum = this.this$0;
-    if (localaquk != null) {}
+    arjw localarjw = (arjw)aran.a().a(499);
+    arjy localarjy = this.this$0;
+    if (localarjw != null) {}
     for (boolean bool = true;; bool = false)
     {
-      aqum.a(localaqum, bool, localaquk, "loadConfig", "bean = null");
+      arjy.a(localarjy, bool, localarjw, "loadConfig", "bean = null");
       return;
     }
   }

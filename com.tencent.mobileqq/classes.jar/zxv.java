@@ -1,45 +1,22 @@
-import android.os.Handler;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.biz.richframework.part.block.MultiViewBlock.1.1;
-import com.tencent.biz.richframework.part.block.MultiViewBlock.1.2;
-import com.tencent.biz.richframework.part.block.MultiViewBlock.1.3;
-import com.tencent.biz.richframework.part.block.MultiViewBlock.1.4;
-import com.tencent.biz.richframework.part.block.MultiViewBlock.1.5;
-import com.tencent.biz.richframework.part.block.MultiViewBlock.1.6;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class zxv
-  extends RecyclerView.AdapterDataObserver
+  implements Handler.Callback
 {
-  zxv(zxu paramzxu) {}
+  public zxv(ScannerActivity paramScannerActivity) {}
   
-  public void onChanged()
+  public boolean handleMessage(Message paramMessage)
   {
-    zxu.access$000(this.a).post(new MultiViewBlock.1.1(this));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    zxu.access$000(this.a).post(new MultiViewBlock.1.2(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    zxu.access$000(this.a).post(new MultiViewBlock.1.3(this, paramInt1, paramInt2, paramObject));
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    zxu.access$000(this.a).post(new MultiViewBlock.1.4(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    zxu.access$000(this.a).post(new MultiViewBlock.1.6(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    zxu.access$000(this.a).post(new MultiViewBlock.1.5(this, paramInt1, paramInt2));
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

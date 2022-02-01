@@ -1,20 +1,19 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import java.util.Comparator;
 
-public class ajkb
-  extends ajhg
+class ajkb
+  implements Comparator<ajmf>
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public StringBuilder a;
-  public SingleLineTextView c;
+  ajkb(ajka paramajka) {}
   
-  ajkb()
+  public int a(ajmf paramajmf1, ajmf paramajmf2)
   {
-    this.b = 11;
+    if ((!paramajmf1.a()) && (paramajmf2.a())) {
+      return -1;
+    }
+    if ((paramajmf1.a()) && (!paramajmf2.a())) {
+      return 1;
+    }
+    return (int)(paramajmf2.a - paramajmf1.a);
   }
 }
 

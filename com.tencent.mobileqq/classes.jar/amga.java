@@ -1,99 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.mobileqq.addon.DiyPendantSticker;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
 public class amga
-  extends agcb
-  implements amge
+  extends nkq
 {
-  double jdField_a_of_type_Double;
-  amgd jdField_a_of_type_Amgd = amgd.a();
-  String jdField_a_of_type_JavaLangString;
-  List<amgc> jdField_a_of_type_JavaUtilList;
-  Paint b = new Paint();
-  int c;
-  int d;
+  amga(amfz paramamfz) {}
   
-  public amga(Resources paramResources)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramResources);
-  }
-  
-  public List<amgc> a()
-  {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          localList1 = this.jdField_a_of_type_JavaUtilList;
-          return localList1;
-        }
-        List localList1 = this.jdField_a_of_type_Amgd.a(this);
-        if ((localList1 == null) || (localList1.isEmpty())) {
-          break label188;
-        }
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        if (i < localList1.size())
-        {
-          DiyPendantSticker localDiyPendantSticker = (DiyPendantSticker)localList1.get(i);
-          int j = -16777216;
-          try
-          {
-            int k = Color.parseColor(localDiyPendantSticker.fontColor);
-            j = k;
-          }
-          catch (Exception localException)
-          {
-            QLog.e("DiyPendantDrawable", 1, new Object[] { "parse sticker text color failed.", localException.getMessage() });
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(new amgb(this, i, localDiyPendantSticker.angle, localDiyPendantSticker.text, localDiyPendantSticker.fontId, localDiyPendantSticker.fontType, j));
-          i += 1;
-          continue;
-        }
-        localList2 = this.jdField_a_of_type_JavaUtilList;
-      }
-      finally {}
-      continue;
-      label188:
-      List localList2 = null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+      return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-    Object localObject = a();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((amgc)((Iterator)localObject).next()).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-    }
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    int i = paramRect.width();
-    this.c = Math.abs(paramRect.height() - i);
-    this.jdField_a_of_type_Double = (i / 250.0D);
-    this.d = ((int)(100.0D * this.jdField_a_of_type_Double));
+    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
   }
 }
 

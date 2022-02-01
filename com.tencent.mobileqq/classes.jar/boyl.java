@@ -1,128 +1,46 @@
-public class boyl
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class boyl
+  implements TextWatcher
 {
-  public int a;
-  public boolean a;
-  private int b;
-  public boolean b;
-  private int c;
-  public boolean c;
-  private int d;
-  public boolean d;
-  private int e;
-  public boolean e;
-  private boolean f = true;
-  private boolean g = true;
-  private boolean h = true;
-  private boolean i;
-  private boolean j;
-  private boolean k;
-  private boolean l;
-  private boolean m;
-  private boolean n;
+  boyl(boyk paramboyk) {}
   
-  public boyl()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 1;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    int i = 0;
+    int j = paramEditable.length();
+    paramEditable = String.format("%d/%d", new Object[] { Integer.valueOf(j), Integer.valueOf(boyk.a(this.a)) });
+    if (j > boyk.a(this.a))
+    {
+      paramEditable = new SpannableString(paramEditable);
+      int k = String.valueOf(j).length();
+      paramEditable.setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), 0, k, 33);
+      boyk.a(this.a).setText(paramEditable);
+      paramEditable = boyk.a(this.a);
+      if (j <= 0) {
+        break label132;
+      }
+    }
+    for (;;)
+    {
+      paramEditable.setVisibility(i);
+      return;
+      boyk.a(this.a).setText(paramEditable);
+      break;
+      label132:
+      i = 8;
+    }
   }
   
-  public boyj a()
-  {
-    return new boyj(this, null);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public boyl a(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public boyl a(boolean paramBoolean)
-  {
-    this.f = paramBoolean;
-    return this;
-  }
-  
-  public boyl b(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public boyl b(boolean paramBoolean)
-  {
-    this.h = paramBoolean;
-    return this;
-  }
-  
-  public boyl c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public boyl c(boolean paramBoolean)
-  {
-    this.i = paramBoolean;
-    return this;
-  }
-  
-  public boyl d(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyl e(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyl f(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyl g(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyl h(boolean paramBoolean)
-  {
-    this.k = paramBoolean;
-    return this;
-  }
-  
-  public boyl i(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boyl j(boolean paramBoolean)
-  {
-    this.l = paramBoolean;
-    return this;
-  }
-  
-  public boyl k(boolean paramBoolean)
-  {
-    this.m = paramBoolean;
-    return this;
-  }
-  
-  public boyl l(boolean paramBoolean)
-  {
-    this.n = paramBoolean;
-    return this;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,42 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class asxm
-  implements View.OnClickListener
 {
-  public asxm(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<asxh> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public asxm()
   {
-    if (paramView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
-      if (localFileManagerEntity != null)
+      bool1 = bool2;
+      if ((paramObject instanceof asxm))
       {
-        if (this.a.jdField_a_of_type_Asti != null) {
-          this.a.jdField_a_of_type_Asti.a(null);
-        }
-        this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
-        if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
-          this.a.a(localFileManagerEntity);
+        paramObject = (asxm)paramObject;
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_JavaLangString != null)
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+            bool1 = true;
+          }
         }
       }
-      this.a.jdField_a_of_type_Asti.a(Integer.valueOf(-1));
-      paramView.setVisibility(4);
-      this.a.g();
     }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
+    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
+    return localStringBuilder.toString();
   }
 }
 

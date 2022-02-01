@@ -3,7 +3,6 @@ package com.tencent.qqmini.miniapp.widget;
 import android.webkit.JavascriptInterface;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.action.ServiceSubscribeEvent;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,9 +14,6 @@ class InnerWebView$QQJSCoreInterface
   public String invokeHandler(String paramString1, String paramString2, int paramInt)
   {
     int i = 0;
-    if (QMLog.isColorLevel()) {
-      QMLog.d("InnerWebView", "invokeHandler : " + paramString1 + "; jsonParams : " + paramString2 + "； callbackId ： " + paramInt);
-    }
     if ("preVerifyJSAPI".equals(paramString1)) {
       InnerWebView.access$1700(this.this$0, paramString1, null, paramInt);
     }
@@ -30,7 +26,7 @@ class InnerWebView$QQJSCoreInterface
         {
           paramString2 = new JSONObject(paramString2);
           if (InnerWebView.access$600(this.this$0) == null) {
-            break label152;
+            break label104;
           }
           InnerWebView.access$600(this.this$0).performAction(ServiceSubscribeEvent.obtain("onWebInvokeAppService", paramString2.toString(), 0));
           InnerWebView.access$1700(this.this$0, paramString1, null, paramInt);
@@ -40,7 +36,7 @@ class InnerWebView$QQJSCoreInterface
           InnerWebView.access$1800(this.this$0, paramString1, null, null, paramInt);
         }
         continue;
-        label152:
+        label104:
         InnerWebView.access$1800(this.this$0, paramString1, null, null, paramInt);
       }
       else if ("checkJsApi".equals(paramString1))

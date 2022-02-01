@@ -1,27 +1,19 @@
-class llh
+import com.tencent.av.core.VcControllerImpl;
+
+public class llh
 {
-  static final float[] a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
   
-  static
+  public llh(VcControllerImpl paramVcControllerImpl) {}
+  
+  public String toString()
   {
-    int k = 0;
-    a = new float[16384];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 16384) {
-        break;
-      }
-      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
-      i += 1;
-    }
-    while (j < 360)
-    {
-      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" uin : " + this.jdField_a_of_type_Long + " operation : " + this.jdField_a_of_type_Int + " opvalue : " + this.b + " nickname : " + this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

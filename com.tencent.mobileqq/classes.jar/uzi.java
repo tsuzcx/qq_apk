@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-public final class uzi
-  implements Parcelable.Creator<QCircleFakeFeed>
+public class uzi
+  extends FlingGestureHandler
 {
-  public QCircleFakeFeed a(Parcel paramParcel)
+  public uzi(Activity paramActivity)
   {
-    return new QCircleFakeFeed(paramParcel);
+    super(paramActivity);
   }
   
-  public QCircleFakeFeed[] a(int paramInt)
+  public void flingLToR()
   {
-    return new QCircleFakeFeed[paramInt];
+    vtq.a("", 22, 10);
+    super.flingLToR();
   }
 }
 

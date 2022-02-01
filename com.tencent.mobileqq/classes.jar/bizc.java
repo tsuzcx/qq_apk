@@ -1,24 +1,6 @@
-public class bizc
+public abstract interface bizc
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public bizc(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.d = paramString3;
-    this.c = paramString4;
-    this.e = paramString5;
-  }
-  
-  public String toString()
-  {
-    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
-  }
+  public abstract void a(String paramString);
 }
 
 

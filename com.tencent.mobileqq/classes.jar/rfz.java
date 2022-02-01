@@ -1,39 +1,102 @@
+import android.util.Base64;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.ReqBody;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetReq;
+import tencent.kandian.ugc.topic_info.TopicInfo;
 
 public class rfz
-  implements Cloneable
+  implements rfv
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  private QQAppInterface a;
   
-  protected Object clone()
+  public rfz(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      rfz localrfz = (rfz)super.clone();
-      return localrfz;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackVideoInfo item clone failed. exception = " + localCloneNotSupportedException);
-    }
-    return null;
+    this.a = paramQQAppInterface;
   }
   
-  public String toString()
+  private void a(@NotNull ColumnInfo paramColumnInfo, rft paramrft, int paramInt)
   {
-    return "PackVideoInfo{businessType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", xgFileSize=" + this.jdField_a_of_type_Long + ", thirdUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", shareUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", thirdUin=" + this.jdField_b_of_type_Long + ", thirdUinName='" + this.jdField_d_of_type_JavaLangString + '\'' + ", thirdName='" + this.e + '\'' + ", thirdIcon='" + this.f + '\'' + ", thirdAction='" + this.g + '\'' + '}';
+    oidb_0xe33.TopicInfoSetReq localTopicInfoSetReq;
+    if (QLog.isColorLevel())
+    {
+      if (paramInt == 1) {
+        QLog.e("RIJUGC.ManagerColumnModel", 2, "ManageColumnModel createColumn: columnInfo : " + paramColumnInfo.toString());
+      }
+    }
+    else
+    {
+      localTopicInfoSetReq = new oidb_0xe33.TopicInfoSetReq();
+      if (paramInt != 1) {
+        break label155;
+      }
+      localTopicInfoSetReq.operate_type.set(1);
+    }
+    for (;;)
+    {
+      localTopicInfoSetReq.info.set(paramColumnInfo.parseToTopicInfo());
+      paramColumnInfo = new oidb_0xe33.ReqBody();
+      paramColumnInfo.topic_info_set_req.set(localTopicInfoSetReq);
+      nkm.a(this.a, new rga(this, paramrft, paramInt), paramColumnInfo.toByteArray(), "OidbSvc.0xe33", 3635, 1);
+      return;
+      if (paramInt != 2) {
+        break;
+      }
+      QLog.e("RIJUGC.ManagerColumnModel", 2, "ManageColumnModel editColumn: columnInfo : " + paramColumnInfo.toString());
+      break;
+      label155:
+      if (paramInt == 2) {
+        localTopicInfoSetReq.operate_type.set(2);
+      }
+    }
+  }
+  
+  @Nullable
+  public ColumnInfo a()
+  {
+    Object localObject1 = (String)bnrf.a("key_sp_readinjoy_column_info_sketch", "");
+    if (((String)localObject1).isEmpty()) {
+      return null;
+    }
+    topic_info.TopicInfo localTopicInfo = new topic_info.TopicInfo();
+    try
+    {
+      localTopicInfo.mergeFrom(Base64.decode((String)localObject1, 0));
+      localObject1 = new ColumnInfo(localTopicInfo);
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("RIJUGC.ManagerColumnModel", 1, "getColumnSketch exception, e=" + localException.getMessage());
+        Object localObject2 = null;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    bnrf.a("key_sp_readinjoy_column_info_sketch", "");
+  }
+  
+  public void a(@NotNull ColumnInfo paramColumnInfo)
+  {
+    bnrf.a("key_sp_readinjoy_column_info_sketch", Base64.encodeToString(paramColumnInfo.parseToTopicInfo().toByteArray(), 0));
+  }
+  
+  public void a(@NotNull ColumnInfo paramColumnInfo, rft paramrft)
+  {
+    a(paramColumnInfo, paramrft, 1);
+  }
+  
+  public void b(@NotNull ColumnInfo paramColumnInfo, rft paramrft)
+  {
+    a(paramColumnInfo, paramrft, 2);
   }
 }
 

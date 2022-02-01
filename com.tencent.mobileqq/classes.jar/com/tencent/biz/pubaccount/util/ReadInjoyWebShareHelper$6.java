@@ -8,20 +8,20 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nmb;
-import uat;
+import nnw;
+import uav;
 
 public class ReadInjoyWebShareHelper$6
   implements Runnable
 {
-  public ReadInjoyWebShareHelper$6(uat paramuat, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
+  public ReadInjoyWebShareHelper$6(uav paramuav, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebShareHelper", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = nmb.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    String str = nnw.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
       QLog.d("WebShareHelper", 2, "shareMsgToSina path:" + str);
     }

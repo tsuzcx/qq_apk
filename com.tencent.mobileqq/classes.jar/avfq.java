@@ -1,68 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
 public class avfq
+  extends Handler
 {
-  private static avfq jdField_a_of_type_Avfq;
-  private static final String jdField_a_of_type_JavaLangString = avfq.class.getSimpleName();
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private JSONObject b;
+  public avfq(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public static avfq a()
+  public void handleMessage(Message paramMessage)
   {
-    try
-    {
-      if (jdField_a_of_type_Avfq == null) {
-        jdField_a_of_type_Avfq = new avfq();
-      }
-      avfq localavfq = jdField_a_of_type_Avfq;
-      return localavfq;
-    }
-    finally {}
-  }
-  
-  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode a(int paramInt)
-  {
-    YtSDKKitFramework.YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
-    switch (paramInt)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
     default: 
-      return localYtSDKKitFrameworkWorkMode;
     case 0: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
     case 1: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_OCR_TYPE;
-    case 2: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE;
-    case 3: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE;
-    case 4: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_REFLECT_TYPE;
+      do
+      {
+        return;
+        if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
+        {
+          this.a.jdField_a_of_type_Bjbs.a(this.a.getString(2131690709));
+          this.a.jdField_a_of_type_Bjbs.d(2130849677);
+          this.a.jdField_a_of_type_Bjbs.b(false);
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+        return;
+      } while ((this.a.jdField_a_of_type_Bjbs == null) || (!this.a.jdField_a_of_type_Bjbs.isShowing()));
+      this.a.jdField_a_of_type_Bjbs.cancel();
+      this.a.jdField_a_of_type_Bjbs.a(this.a.getString(2131690711));
+      this.a.jdField_a_of_type_Bjbs.c(true);
+      this.a.jdField_a_of_type_Bjbs.a(false);
+      this.a.jdField_a_of_type_Bjbs.b(true);
+      return;
     }
-    return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
-  }
-  
-  public int a(String paramString1, String paramString2)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString1).getJSONObject("sdk_settings");
-      this.b = new JSONObject(paramString2).getJSONObject("ui_basic_config");
-      return 0;
-    }
-    catch (JSONException paramString1)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "initWithConfig error " + paramString1.getMessage());
-    }
-    return -1;
-  }
-  
-  public JSONObject a(int paramInt)
-  {
-    return YtSDKKitConfigHelper.getSDKConfig(a(paramInt), this.jdField_a_of_type_OrgJsonJSONObject);
+    QQSettingChatOperationFragment.b(this.a);
   }
 }
 

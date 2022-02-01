@@ -1,29 +1,29 @@
 package com.tencent.biz.qqcircle.picload;
 
-import atwl;
+import auog;
 import com.tencent.qphone.base.util.QLog;
 import org.jetbrains.annotations.NotNull;
-import vou;
-import vox;
-import voy;
-import voz;
+import vrd;
+import vrg;
+import vrh;
+import vri;
 
 public class QCircleFeedPicLoader$PicDownLoadTask
   implements Runnable
 {
   protected volatile int a;
-  public vou a;
-  public voy a;
+  protected vrd a;
+  public vrh a;
   
-  public QCircleFeedPicLoader$PicDownLoadTask(QCircleFeedPicLoader paramQCircleFeedPicLoader, @NotNull vou paramvou)
+  public QCircleFeedPicLoader$PicDownLoadTask(QCircleFeedPicLoader paramQCircleFeedPicLoader, @NotNull vrd paramvrd)
   {
-    this.jdField_a_of_type_Vou = paramvou;
+    this.jdField_a_of_type_Vrd = paramvrd;
     this.jdField_a_of_type_Int = QCircleFeedPicLoader.jdField_a_of_type_Int;
   }
   
-  public vou a()
+  public vrd a()
   {
-    return this.jdField_a_of_type_Vou;
+    return this.jdField_a_of_type_Vrd;
   }
   
   public void a()
@@ -31,15 +31,15 @@ public class QCircleFeedPicLoader$PicDownLoadTask
     if (this.jdField_a_of_type_Int != QCircleFeedPicLoader.f)
     {
       this.jdField_a_of_type_Int = QCircleFeedPicLoader.d;
-      if (this.jdField_a_of_type_Voy != null) {
-        this.jdField_a_of_type_Voy.a(QCircleFeedPicLoader.d, this.jdField_a_of_type_Vou);
+      if (this.jdField_a_of_type_Vrh != null) {
+        this.jdField_a_of_type_Vrh.a(QCircleFeedPicLoader.d, this.jdField_a_of_type_Vrd);
       }
     }
   }
   
-  public void a(voy paramvoy)
+  public void a(vrh paramvrh)
   {
-    this.jdField_a_of_type_Voy = paramvoy;
+    this.jdField_a_of_type_Vrh = paramvrh;
   }
   
   public void run()
@@ -48,20 +48,20 @@ public class QCircleFeedPicLoader$PicDownLoadTask
       return;
     }
     long l = System.currentTimeMillis();
-    QLog.d(QCircleFeedPicLoader.jdField_a_of_type_JavaLangString, 1, "seq = " + this.jdField_a_of_type_Vou.a() + " , download start cost in queue: " + (l - this.jdField_a_of_type_Vou.b.longValue()) + " ifFromPreload:" + this.jdField_a_of_type_Vou.b());
-    if (atwl.a(this.this$0.b(this.jdField_a_of_type_Vou)))
+    QLog.i(QCircleFeedPicLoader.jdField_a_of_type_JavaLangString, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " cacheKey = " + this.jdField_a_of_type_Vrd.b() + " download start cost in queue: " + (l - this.jdField_a_of_type_Vrd.b.longValue()) + " ifFromPreload:" + this.jdField_a_of_type_Vrd.b());
+    if (auog.a(this.this$0.b(this.jdField_a_of_type_Vrd)))
     {
-      if (this.jdField_a_of_type_Vou.a()) {
-        QCircleFeedPicLoader.a(this.this$0, this.jdField_a_of_type_Vou, this.jdField_a_of_type_Voy);
+      if (this.jdField_a_of_type_Vrd.a()) {
+        QCircleFeedPicLoader.a(this.this$0, this.jdField_a_of_type_Vrd, this.jdField_a_of_type_Vrh);
       }
-      QLog.d(QCircleFeedPicLoader.jdField_a_of_type_JavaLangString, 1, "seq = " + this.jdField_a_of_type_Vou.a() + " , return in downLoad file exist " + (l - this.jdField_a_of_type_Vou.b.longValue()) + " ifFromPreload:" + this.jdField_a_of_type_Vou.b());
+      QLog.i(QCircleFeedPicLoader.jdField_a_of_type_JavaLangString, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " cacheKey = " + this.jdField_a_of_type_Vrd.b() + " return in downLoad file exist " + (l - this.jdField_a_of_type_Vrd.b.longValue()) + " ifFromPreload:" + this.jdField_a_of_type_Vrd.b());
       return;
     }
     this.jdField_a_of_type_Int = QCircleFeedPicLoader.b;
-    if (this.jdField_a_of_type_Voy != null) {
-      this.jdField_a_of_type_Voy.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Vou);
+    if (this.jdField_a_of_type_Vrh != null) {
+      this.jdField_a_of_type_Vrh.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Vrd);
     }
-    voz.a().a(this.jdField_a_of_type_Vou, new vox(this, l));
+    vri.a().a(this.jdField_a_of_type_Vrd, new vrg(this, this.jdField_a_of_type_Vrd, l));
   }
 }
 

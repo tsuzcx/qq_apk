@@ -1,14 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
+import android.support.v7.widget.RecyclerView.State;
+import android.util.DisplayMetrics;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
 class bpvc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends LinearSmoothScroller
 {
-  bpvc(bpuy parambpuy) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bpvc(bpva parambpva, Context paramContext)
   {
-    this.a.invalidateSelf();
+    super(paramContext);
+  }
+  
+  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  {
+    return 100.0F / paramDisplayMetrics.densityDpi;
+  }
+  
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return null;
+  }
+  
+  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
+  {
+    paramView = this.a.a(this.a.a.getLayoutManager(), paramView);
+    int i = paramView[0];
+    int j = paramView[1];
+    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
+    if (k > 0) {
+      paramAction.update(i, j, k, this.mDecelerateInterpolator);
+    }
   }
 }
 

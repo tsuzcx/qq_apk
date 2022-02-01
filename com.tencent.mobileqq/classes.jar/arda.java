@@ -1,32 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import android.text.TextUtils;
 
-public class arda
-  extends Handler
+class arda
 {
-  public arda(ContactSyncManager paramContactSyncManager, Looper paramLooper)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  
+  public String a()
   {
-    super(paramLooper);
+    return this.a + this.b;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ContactSyncManager.a(this.a);
-      return;
-    }
-    ContactSyncManager.b(this.a);
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arda
  * JD-Core Version:    0.7.0.1
  */

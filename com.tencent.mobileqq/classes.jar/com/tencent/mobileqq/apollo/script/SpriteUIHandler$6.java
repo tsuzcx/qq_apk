@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amkg;
+import amwa;
 
 class SpriteUIHandler$6
   implements Runnable
 {
-  SpriteUIHandler$6(SpriteUIHandler paramSpriteUIHandler, amkg paramamkg, boolean paramBoolean) {}
+  SpriteUIHandler$6(SpriteUIHandler paramSpriteUIHandler, amwa paramamwa, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Amkg != null)
+    if (this.jdField_a_of_type_Amwa != null)
     {
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Amkg.setVisibility(8);
+        this.jdField_a_of_type_Amwa.setVisibility(8);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Amkg.setVisibility(0);
+    this.jdField_a_of_type_Amwa.setVisibility(0);
   }
 }
 

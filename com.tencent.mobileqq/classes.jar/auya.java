@@ -1,24 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
 class auya
-  implements DialogInterface.OnDismissListener
+  implements aumz
 {
-  auya(auxw paramauxw) {}
+  auya(auxz paramauxz) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (this.a.a)
-    {
-      this.a.a = false;
-      auxw.a(this.a).finish();
-    }
+    dc.b(this.a.a.a, 0);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auya
  * JD-Core Version:    0.7.0.1
  */

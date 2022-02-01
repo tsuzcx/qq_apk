@@ -1,11 +1,37 @@
-import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
-import java.util.HashMap;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgBody;
 
-public abstract interface adgp
+public class adgp
+  implements adci
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2);
+  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xeb");
+    }
+    try
+    {
+      submsgtype0xeb.MsgBody localMsgBody = new submsgtype0xeb.MsgBody();
+      if (paramadan.a(paramMsgType0x210)) {
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      }
+      aold.a(paramadan.a(), localMsgBody);
+      return;
+    }
+    catch (Exception paramadan)
+    {
+      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xeb], errInfo->" + paramadan.getMessage());
+    }
+  }
   
-  public abstract void a(String paramString, HashMap<String, APIQuotaItem> paramHashMap);
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan, paramMsgType0x210);
+    return null;
+  }
 }
 
 

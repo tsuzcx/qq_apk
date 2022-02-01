@@ -1,59 +1,19 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
 
-public class artd
-  extends bhhl
+class artd
+  implements nks
 {
-  public artd(MessengerService paramMessengerService) {}
+  artd(artb paramartb, nkr[] paramArrayOfnkr) {}
   
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (this.a.a != null) {}
-    try
+    if (!paramBoolean)
     {
-      Message localMessage = Message.obtain(null, 5);
-      if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
-      {
-        ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
-        paramBundle.putString("name", localChatBackgroundInfo.name);
-        paramBundle.putString("url", localChatBackgroundInfo.url);
+      artb.a(this.jdField_a_of_type_Artb).removeCallbacks(artb.a(this.jdField_a_of_type_Artb));
+      artb.a(this.jdField_a_of_type_Artb).run();
+      if (this.jdField_a_of_type_ArrayOfNkr[0] != null) {
+        this.jdField_a_of_type_ArrayOfNkr[0].a();
       }
-      paramBundle.putInt("type", 2);
-      paramBundle.putInt("id", (int)paramLong);
-      paramBundle.putInt("result", paramInt);
-      localMessage.setData(paramBundle);
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    Message localMessage;
-    if (this.a.a != null)
-    {
-      localMessage = Message.obtain(null, 5);
-      localMessage.setData(paramBundle);
-    }
-    try
-    {
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
     }
   }
 }

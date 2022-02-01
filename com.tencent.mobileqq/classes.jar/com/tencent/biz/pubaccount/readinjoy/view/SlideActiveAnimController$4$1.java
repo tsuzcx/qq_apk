@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import svo;
+import smr;
 
 public class SlideActiveAnimController$4$1
   implements Runnable
 {
-  public SlideActiveAnimController$4$1(svo paramsvo) {}
+  public SlideActiveAnimController$4$1(smr paramsmr) {}
   
   public void run()
   {

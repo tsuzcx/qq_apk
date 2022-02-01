@@ -1,18 +1,24 @@
-import android.view.View;
-import java.util.List;
+import android.media.MediaCodec.BufferInfo;
 
-public abstract interface bbmx
-  extends bbmw
+class bbmx
 {
-  public abstract int a();
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final int b;
+  private final int c;
   
-  public abstract String a();
+  private bbmx(int paramInt1, int paramInt2, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Long = paramBufferInfo.presentationTimeUs;
+    this.c = paramBufferInfo.flags;
+  }
   
-  public abstract List<bbmy> a();
-  
-  public abstract void a(View paramView);
-  
-  public abstract String b();
+  private void a(MediaCodec.BufferInfo paramBufferInfo, int paramInt)
+  {
+    paramBufferInfo.set(paramInt, this.b, this.jdField_a_of_type_Long, this.c);
+  }
 }
 
 

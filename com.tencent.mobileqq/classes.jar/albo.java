@@ -1,27 +1,21 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class albo
-  extends albv
+  implements View.OnClickListener
 {
-  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
+  public albo(SendHbMainFragment paramSendHbMainFragment, TipsBar paramTipsBar, SharedPreferences paramSharedPreferences, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof albw))) {}
-    paramObject = super.a(paramInt, paramObject, paramalby, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramaled);
-    paramalby = (albw)paramObject.getTag();
-    paramViewGroup = paramContext.getResources();
-    paramView = paramViewGroup.getColorStateList(2131167060);
-    paramViewGroup = paramViewGroup.getColorStateList(2131166986);
-    paramalby.a.setTextColor(paramViewGroup);
-    paramalby.b.setTextColor(paramView);
-    paramalby.a.setExtendTextColor(paramView, 0);
-    paramObject.findViewById(2131376353).setBackgroundResource(2130839391);
-    return paramObject;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

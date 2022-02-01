@@ -1,70 +1,47 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class qsg
-  extends qqt
+public abstract class qsg
+  extends Binder
+  implements qsf
 {
-  public qsg(Context paramContext, aobu paramaobu, snh paramsnh)
+  public static qsf a(IBinder paramIBinder)
   {
-    super(paramContext, paramaobu, paramsnh);
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof qsf))) {
+      return (qsf)localIInterface;
+    }
+    return new qsh(paramIBinder);
   }
   
-  public qqt a()
+  public IBinder asBinder()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return h().i().k().l().n();
-  }
-  
-  public qqt d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
     return this;
   }
   
-  public qqt e()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    return null;
-  }
-  
-  public qqt o()
-  {
-    return super.o();
-  }
-  
-  public qqt p()
-  {
-    return super.p();
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
+    if (paramParcel1.readInt() != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
+      paramParcel2.writeNoException();
+      return true;
+    }
   }
 }
 

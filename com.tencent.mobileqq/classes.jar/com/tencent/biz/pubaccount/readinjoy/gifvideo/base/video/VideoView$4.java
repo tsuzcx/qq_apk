@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import rzt;
+import rzv;
+import sac;
+import sad;
 
 class VideoView$4
   implements Runnable
@@ -13,16 +14,16 @@ class VideoView$4
   {
     synchronized (this.this$0)
     {
-      VideoView.access$602(this.this$0, TVK_SDKMgr.getProxyFactory());
+      VideoView.access$602(this.this$0, sac.a.a());
       if (VideoView.access$600(this.this$0) != null)
       {
         VideoView.access$702(this.this$0, VideoView.access$800(this.this$0));
-        VideoView.access$902(this.this$0, VideoView.access$600(this.this$0).createMediaPlayer(VideoView.access$1000(this.this$0), VideoView.access$700(this.this$0)));
+        VideoView.access$902(this.this$0, VideoView.access$600(this.this$0).a(VideoView.access$700(this.this$0)));
         if (VideoView.access$900(this.this$0) != null)
         {
-          VideoView.access$900(this.this$0).updatePlayerVideoView(VideoView.access$700(this.this$0));
-          VideoView.access$1100(this.this$0, false);
-          VideoView.access$1200(this.this$0);
+          VideoView.access$900(this.this$0).a(VideoView.access$700(this.this$0));
+          VideoView.access$1000(this.this$0, false);
+          VideoView.access$1100(this.this$0);
           this.a.run();
         }
       }

@@ -1,18 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class agke
-  implements CompoundButton.OnCheckedChangeListener
+class agke
 {
-  public agke(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b = "";
+  public String c = "";
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private agke()
   {
-    AIOLongShotHelper.a(this.a, paramCompoundButton, paramBoolean);
-    AIOLongShotHelper.a("0X8009DE8");
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

@@ -1,24 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 import java.util.Map;
 
-class awlv
-  extends awls<awlu>
+public class awlv
+  implements DialogInterface.OnClickListener
 {
-  public awlv(awlu paramawlu)
-  {
-    super(paramawlu);
-  }
+  public awlv(ListenTogetherManager paramListenTogetherManager, int paramInt, String paramString) {}
   
-  public void a(awlu paramawlu, boolean paramBoolean, awlp paramawlp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramawlu == null) {
-      return;
-    }
-    if (paramBoolean)
+    if (paramInt == 1)
     {
-      awlu.a(paramawlu, (awlm)awlu.a(paramawlu).get(paramawlp.h));
+      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a();
+      paramDialogInterface.dismiss();
+    }
+    while (paramInt != 0) {
       return;
     }
-    awlu.a(paramawlu, paramawlp.jdField_a_of_type_JavaLangString, paramawlp.jdField_a_of_type_Int, 1001);
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.b();
+    paramDialogInterface.dismiss();
+    ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager, (ListenTogetherSession)ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager).get(awml.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)));
   }
 }
 

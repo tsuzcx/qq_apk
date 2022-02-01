@@ -1,19 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract interface aixx
+public class aixx
 {
-  public abstract QQAppInterface a();
+  String a = "";
+  String b = "";
   
-  public abstract void a();
+  public String a()
+  {
+    return this.b;
+  }
   
-  public abstract boolean a();
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
   
-  public abstract void b();
+  public String b()
+  {
+    return this.a;
+  }
   
-  public abstract void c();
-  
-  public abstract Activity getActivity();
+  public void b(String paramString)
+  {
+    this.a = paramString;
+  }
 }
 
 

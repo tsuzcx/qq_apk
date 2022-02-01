@@ -8,8 +8,9 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bnsi;
-import bnss;
+import botw;
+import bouf;
+import bpam;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.qq.im.BaseVMPeakActivity;
 import dov.com.qq.im.ae.SessionWrap;
@@ -20,7 +21,8 @@ public class AEStoryGIFPreviewActivity
   private SessionWrap jdField_a_of_type_DovComQqImAeSessionWrap;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private String b = "";
+  private String b;
+  private String c = "";
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -56,25 +58,29 @@ public class AEStoryGIFPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    setContentView(2131558569);
+    setContentView(2131558571);
     paramBundle = getIntent().getStringExtra("KEY_PREVIEW_SOURCE_PATH");
     getIntent().getIntExtra("AECAMERA_MODE", 200);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("KEY_MATERIAL_APPLIED", false);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("ARG_GIF_MATERIAL_ID");
-    this.b = getIntent().getStringExtra("KEY_AVAILABLE_SAVENAME");
+    this.c = getIntent().getStringExtra("KEY_AVAILABLE_SAVENAME");
     this.jdField_a_of_type_DovComQqImAeSessionWrap = ((SessionWrap)getIntent().getParcelableExtra("ARG_SESSION_INFO"));
     boolean bool = getIntent().getBooleanExtra("ARG_GIF_SEND_TO_AIO", false);
     long l = getIntent().getLongExtra("KEY_AVAILABLE_EMO_COUNT", 9223372036854775807L);
+    if (getIntent().hasExtra("KEY_FONT_ID")) {
+      this.b = getIntent().getStringExtra("KEY_FONT_ID");
+    }
     FragmentManager localFragmentManager = getFragmentManager();
+    bpam.a("BaseActivity2", "[onCreate], materialApplied=" + this.jdField_a_of_type_Boolean + ", materialId=" + this.jdField_a_of_type_JavaLangString);
     if ((!this.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      if (localFragmentManager.findFragmentByTag(bnsi.class.getSimpleName()) == null) {
-        localFragmentManager.beginTransaction().add(2131367067, bnsi.a(paramBundle, l), bnsi.class.getSimpleName()).commit();
+      if (localFragmentManager.findFragmentByTag(botw.class.getSimpleName()) == null) {
+        localFragmentManager.beginTransaction().add(2131367118, botw.a(paramBundle, l, this.b), botw.class.getSimpleName()).commit();
       }
     }
-    while (localFragmentManager.findFragmentByTag(bnss.class.getSimpleName()) != null) {
+    while (localFragmentManager.findFragmentByTag(bouf.class.getSimpleName()) != null) {
       return;
     }
-    localFragmentManager.beginTransaction().add(2131367067, bnss.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool), bnss.class.getSimpleName()).commit();
+    localFragmentManager.beginTransaction().add(2131367118, bouf.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool, this.b), bouf.class.getSimpleName()).commit();
   }
 }
 

@@ -1,13 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import java.util.ArrayList;
 
-public class sre
-  implements bkqc
+class sre
+  implements srh
 {
-  public sre(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  sre(sqr paramsqr) {}
   
-  public void a()
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    this.a.a(new srf(this, "onListViewDrawFinished"));
+    if (((sqq.a(this.a.a) instanceof sop)) && ((paramContext instanceof FastWebActivity)))
+    {
+      if (sqr.a(this.a) == null) {
+        sqr.a(this.a, new ArrayList());
+      }
+      sru.a(paramProteusItemData.b, paramProteusItemData.a, (FastWebActivity)paramContext, paramProteusItemData.c, ((sop)sqq.a(this.a.a)).a(), sqr.a(this.a));
+    }
   }
 }
 

@@ -1,20 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class acte
-  implements View.OnClickListener
+class acte
+  implements SDKInitListener
 {
-  public acte(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment) {}
+  acte(acsz paramacsz) {}
   
-  public void onClick(View paramView)
+  public void onSDKInited(boolean paramBoolean)
   {
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().finish();
+    QLog.i("VideoGdtGdtMvViewController", 1, "onSDKInited " + paramBoolean);
+    if (paramBoolean) {
+      acsz.a(this.a).sendEmptyMessage(3);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

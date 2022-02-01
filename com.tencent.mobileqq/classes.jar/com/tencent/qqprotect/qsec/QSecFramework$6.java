@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.qsec;
 
-import bkbd;
+import blch;
 
 class QSecFramework$6
   implements Runnable

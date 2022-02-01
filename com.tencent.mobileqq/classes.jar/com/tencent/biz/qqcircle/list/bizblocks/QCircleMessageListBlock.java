@@ -1,5 +1,11 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
+import aaak;
+import aabe;
+import aabj;
+import aabu;
+import aacv;
+import aacw;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,13 +23,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.qqcircle.QCircleGlobalBroadcastHelper;
 import com.tencent.biz.qqcircle.events.QCircleAtUpdateEvent;
 import com.tencent.biz.qqcircle.fragments.message.item.QCircleCommentOrReplyMessageItemView;
 import com.tencent.biz.qqcircle.fragments.message.item.QCircleDefaultMessageItemView;
 import com.tencent.biz.qqcircle.fragments.message.item.QCircleFollowMessageItemView;
 import com.tencent.biz.qqcircle.fragments.message.item.QCircleUnsupportedMessageItemView;
+import com.tencent.biz.qqcircle.launchbean.QCircleFolderBean;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.qqcircle.requests.QCircleMessageNoticeRequest;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
@@ -40,22 +48,16 @@ import feedcloud.FeedCloudRead.StGetNoticeListRsp;
 import java.util.ArrayList;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StGetNoticeListRspData;
-import uxo;
-import vbt;
-import voe;
-import vqs;
-import vrf;
-import vri;
+import uyx;
+import vdj;
+import vqm;
 import vtd;
-import zwp;
-import zxj;
-import zxo;
-import zxz;
-import zyz;
-import zza;
+import vtq;
+import vtt;
+import vvz;
 
 public class QCircleMessageListBlock
-  extends voe<FeedCloudMeta.StNotice, FeedCloudRead.StGetNoticeListRsp>
+  extends vqm<FeedCloudMeta.StNotice, FeedCloudRead.StGetNoticeListRsp>
 {
   private static final int MESSAGE_TYPE_UNSUPPORTED = SUPPORT_MESSAGE_TYPES.length;
   private static final int[] SUPPORT_MESSAGE_TYPES = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
@@ -82,15 +84,15 @@ public class QCircleMessageListBlock
   
   public int getContentLayoutId()
   {
-    return 2131560730;
+    return 2131560751;
   }
   
-  public List<zxj> getCustomParts()
+  public List<aabe> getCustomParts()
   {
     ArrayList localArrayList = new ArrayList();
-    vbt localvbt = new vbt();
-    localvbt.a(getReportBean());
-    localArrayList.add(localvbt);
+    vdj localvdj = new vdj();
+    localvdj.a(getReportBean());
+    localArrayList.add(localvdj);
     return localArrayList;
   }
   
@@ -101,7 +103,7 @@ public class QCircleMessageListBlock
   
   public String getEmptyHint()
   {
-    return anni.a(2131697192);
+    return anzj.a(2131697260);
   }
   
   public boolean getIsFinishFromRsp(FeedCloudRead.StGetNoticeListRsp paramStGetNoticeListRsp)
@@ -133,7 +135,7 @@ public class QCircleMessageListBlock
     return MESSAGE_TYPE_UNSUPPORTED;
   }
   
-  public void getListDataAsync(zza<FeedCloudMeta.StNotice> paramzza, String paramString) {}
+  public void getListDataAsync(aacw<FeedCloudMeta.StNotice> paramaacw, String paramString) {}
   
   public List<FeedCloudMeta.StNotice> getListDataFromRsp(FeedCloudRead.StGetNoticeListRsp paramStGetNoticeListRsp)
   {
@@ -162,16 +164,16 @@ public class QCircleMessageListBlock
   
   public String getTitle()
   {
-    return anni.a(2131697193);
+    return anzj.a(2131697261);
   }
   
   public View getTitleTabView(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560737, paramViewGroup, false);
-    this.mTvTitle = ((TextView)paramViewGroup.findViewById(2131379933));
-    this.mBottomLine = paramViewGroup.findViewById(2131380429);
-    this.mTvUnReadNum = ((TextView)paramViewGroup.findViewById(2131379860));
-    this.mTvTitle.setText(anni.a(2131697193));
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560758, paramViewGroup, false);
+    this.mTvTitle = ((TextView)paramViewGroup.findViewById(2131380117));
+    this.mBottomLine = paramViewGroup.findViewById(2131380615);
+    this.mTvUnReadNum = ((TextView)paramViewGroup.findViewById(2131380040));
+    this.mTvTitle.setText(anzj.a(2131697261));
     this.mBottomLine.setVisibility(8);
     this.mTvUnReadNum.setVisibility(8);
     return paramViewGroup;
@@ -192,7 +194,7 @@ public class QCircleMessageListBlock
     {
       paramString1.mergeFrom(paramStGetNoticeListRsp.busiRspData.get().toByteArray());
       if (paramString1.rspTimestamp.has()) {
-        vqs.a(paramString1.rspTimestamp.get());
+        vtd.a(paramString1.rspTimestamp.get());
       }
       return;
     }
@@ -204,25 +206,25 @@ public class QCircleMessageListBlock
   
   public void initTitleBar(View paramView) {}
   
-  public void loadData(zxz paramzxz)
+  public void loadData(aabu paramaabu)
   {
-    super.loadData(paramzxz);
-    if (paramzxz.c())
+    super.loadData(paramaabu);
+    if (paramaabu.c())
     {
-      vtd.a().a();
+      vvz.a().a();
       QCircleGlobalBroadcastHelper.a().c();
     }
-    while (!paramzxz.d()) {
+    while (!paramaabu.d()) {
       return;
     }
-    vtd.a().a();
+    vvz.a().a();
     QCircleGlobalBroadcastHelper.a().c();
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    if (vri.a().d()) {
-      vri.a().a(59, getActivity().getIntent());
+    if (vtt.a().d()) {
+      vtt.a().a(59, getActivity().getIntent());
     }
   }
   
@@ -231,25 +233,25 @@ public class QCircleMessageListBlock
   public void onActivityPaused(Activity paramActivity)
   {
     super.onActivityPaused(paramActivity);
-    vri.a().d(59);
+    vtt.a().d(59);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (37858 == paramInt1) {
-      zwp.a().a(new QCircleAtUpdateEvent(paramIntent));
+      aaak.a().a(new QCircleAtUpdateEvent(paramIntent));
     }
   }
   
   public void onActivityResumed(Activity paramActivity)
   {
     super.onActivityResumed(paramActivity);
-    vri.a().c(59);
+    vtt.a().c(59);
   }
   
   public void onActivityStarted(Activity paramActivity)
   {
-    vrf.a("", 17, 1);
+    vtq.a("", 17, 1);
   }
   
   public boolean onBackEvent()
@@ -257,8 +259,8 @@ public class QCircleMessageListBlock
     if (this.mFromPush)
     {
       QLog.d("QCircleMessageListBlock", 1, "mFromPush back launchFolderPage");
-      if (vri.a().b() <= 1) {
-        uxo.a(getContext(), null);
+      if (vtt.a().b() <= 1) {
+        uyx.a(getContext(), new QCircleFolderBean());
       }
       getActivity().finish();
       return true;
@@ -270,19 +272,19 @@ public class QCircleMessageListBlock
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     if (this.mDataList != null) {
-      ((zyz)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
+      ((aacv)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
     }
     QLog.d("QCircleMessageListBlock", 4, "onBindViewHolder:" + paramInt + "  " + paramViewHolder + "  " + this);
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
-  public zyz onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public aacv onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     switch (paramInt)
     {
     default: 
       QLog.e("QCircleMessageListBlock", 2, "onCreateViewHolder()  return new QCircleDefaultFeedWidget()");
-      return new zyz(new QCircleUnsupportedMessageItemView(getParentFragment().getActivity()));
+      return new aacv(new QCircleUnsupportedMessageItemView(getParentFragment().getActivity()));
     case 0: 
     case 3: 
     case 5: 
@@ -296,17 +298,17 @@ public class QCircleMessageListBlock
     case 13: 
       paramViewGroup = new QCircleDefaultMessageItemView(getParentFragment().getActivity(), paramInt, getBlockMerger().a());
       paramViewGroup.setReportBean(getReportBean());
-      return new zyz(paramViewGroup);
+      return new aacv(paramViewGroup);
     case 1: 
     case 2: 
       paramViewGroup = new QCircleCommentOrReplyMessageItemView(getParentFragment().getActivity(), paramInt);
       paramViewGroup.setRecyclerView(getParentRecyclerView());
       paramViewGroup.setReportBean(getReportBean());
-      return new zyz(paramViewGroup);
+      return new aacv(paramViewGroup);
     }
     paramViewGroup = new QCircleFollowMessageItemView(getParentFragment().getActivity(), paramInt);
     paramViewGroup.setReportBean(getReportBean());
-    return new zyz(paramViewGroup);
+    return new aacv(paramViewGroup);
   }
   
   public void onDrawItemDecoration(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, RecyclerView.State paramState) {}
@@ -317,13 +319,19 @@ public class QCircleMessageListBlock
     super.onInitBlock(paramBundle);
     if (paramBundle != null)
     {
-      String str = paramBundle.getString("key_jump_from");
-      if (!TextUtils.isEmpty(str)) {
-        this.mFromPush = str.equals(String.valueOf(7));
+      paramBundle = (QCircleInitBean)paramBundle.getSerializable("key_bundle_common_init_bean");
+      if (paramBundle == null) {
+        break label82;
       }
-      int i = paramBundle.getInt("key_page_id", 0);
-      int j = paramBundle.getInt("key_from_page_id", 0);
-      setReportBean(new QCircleReportBean().setPageId(i).setFromPageId(j).setPageIdStr(getPageIdStr()));
+    }
+    label82:
+    for (paramBundle = paramBundle.getLaunchFrom();; paramBundle = null)
+    {
+      if (!TextUtils.isEmpty(paramBundle)) {
+        this.mFromPush = paramBundle.equals(String.valueOf(7));
+      }
+      setReportBean(new QCircleReportBean().setPageId(59).setPageIdStr(getPageIdStr()));
+      return;
     }
   }
   
@@ -354,7 +362,7 @@ public class QCircleMessageListBlock
     label77:
     label83:
     label91:
-    for (int i = 2131165343;; i = 2131166240)
+    for (int i = 2131165343;; i = 2131166241)
     {
       ((TextView)localObject).setTextColor(paramView.getColor(i));
       return;

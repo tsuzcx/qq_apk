@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import besm;
+import bfrt;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import java.util.UUID;
@@ -75,7 +75,7 @@ public class TroopFileTansferItemEntity
   
   public void postRead()
   {
-    this.Status = besm.a(this._sStatus);
+    this.Status = bfrt.a(this._sStatus);
     this._sStatus = null;
     this.Id = UUID.fromString(this._sId);
     this._sId = null;
@@ -88,7 +88,7 @@ public class TroopFileTansferItemEntity
   
   public void prewrite()
   {
-    this._sStatus = besm.a(this.Status);
+    this._sStatus = bfrt.a(this.Status);
     this._sId = this.Id.toString();
   }
 }

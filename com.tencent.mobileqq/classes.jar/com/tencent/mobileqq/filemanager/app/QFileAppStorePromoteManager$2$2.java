@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atae;
+import atrz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ class QFileAppStorePromoteManager$2$2
     if (QLog.isColorLevel()) {
       QLog.i("QFileAppStorePromoteManager<QFile>", 1, "request appInfo. add reqId[" + this.jdField_a_of_type_Int + "]");
     }
-    atae.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.a);
+    atrz.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.a);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import arpd;
-import arph;
-import arui;
+import aser;
+import asev;
+import asjw;
 
 class BubbleUiPlugin$1
   implements Runnable
@@ -15,8 +15,8 @@ class BubbleUiPlugin$1
     Bundle localBundle = new Bundle();
     localBundle.putString("optype", "Bubble");
     localBundle.putString("opname", "Clk_bubble_setting");
-    localBundle = arph.a("reportActionCount", "", this.this$0.mOnRemoteResp.key, localBundle);
-    arui.a().a(localBundle);
+    localBundle = asev.a("reportActionCount", "", this.this$0.mOnRemoteResp.key, localBundle);
+    asjw.a().a(localBundle);
   }
 }
 

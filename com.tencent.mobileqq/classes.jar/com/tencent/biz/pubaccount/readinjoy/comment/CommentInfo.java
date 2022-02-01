@@ -4,22 +4,22 @@ import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import anni;
-import bbzj;
-import bdnt;
+import anzj;
+import bcsa;
+import begp;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import ooz;
+import opa;
+import opb;
 import org.json.JSONArray;
-import owl;
-import owm;
-import own;
 
 public class CommentInfo
-  extends own
+  extends opb
   implements Serializable
 {
   public static final int HOT_AREA = 1;
@@ -42,7 +42,7 @@ public class CommentInfo
   public String commentId = "";
   public long commentTime;
   public int commentType;
-  public transient bdnt decodedCommentContent;
+  public transient begp decodedCommentContent;
   public int disLikeCount;
   public boolean disLiked;
   public transient JSONArray giftList;
@@ -66,9 +66,9 @@ public class CommentInfo
   public void createDecodedCommentContent()
   {
     if ((TextUtils.isEmpty(this.commentContent)) && (this.giftList == null)) {
-      this.commentContent = anni.a(2131700989);
+      this.commentContent = anzj.a(2131701096);
     }
-    this.decodedCommentContent = new bdnt(bbzj.b(this.commentContent), 7, 16);
+    this.decodedCommentContent = new begp(bcsa.b(this.commentContent), 7, 16);
   }
   
   public void createProcessedAuthorComment()
@@ -78,7 +78,7 @@ public class CommentInfo
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append("作者回复：");
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 0, localSpannableStringBuilder.length(), 33);
-      localSpannableStringBuilder.append(new bdnt(bbzj.b(this.authorComment), 7, 16));
+      localSpannableStringBuilder.append(new begp(bcsa.b(this.authorComment), 7, 16));
       this.authorRealCommentSpanSb = localSpannableStringBuilder;
     }
   }
@@ -117,18 +117,18 @@ public class CommentInfo
       if (!TextUtils.isEmpty(localCommentInfo.authorNickName))
       {
         localSpannableStringBuilder.append(localCommentInfo.authorNickName);
-        localSpannableStringBuilder.setSpan(new owl(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new ooz(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
       }
       if ((localCommentInfo.hasTarget) && (!TextUtils.isEmpty(localCommentInfo.toNickName)))
       {
         localSpannableStringBuilder.append(" 回复 ");
         int k = localSpannableStringBuilder.length();
         localSpannableStringBuilder.append(localCommentInfo.toNickName);
-        localSpannableStringBuilder.setSpan(new owm(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new opa(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
       }
       localSpannableStringBuilder.append("：");
       if (!TextUtils.isEmpty(localCommentInfo.commentContent)) {
-        localSpannableStringBuilder.append(new bdnt(bbzj.b(localCommentInfo.commentContent), 7, 16));
+        localSpannableStringBuilder.append(new begp(bcsa.b(localCommentInfo.commentContent), 7, 16));
       }
       this.secondLevelCommentSpanSbList.add(localSpannableStringBuilder);
     }

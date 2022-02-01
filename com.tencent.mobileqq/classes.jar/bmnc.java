@@ -1,31 +1,106 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
 public class bmnc
-  extends bmmk
 {
-  private void a(WebViewPlugin paramWebViewPlugin, bhod parambhod, String[] paramArrayOfString)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (parambhod == null)) {
-      return;
+    if ((paramBaseApplicationImpl == null) || (paramString == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() application == null || processName == null");
+      }
+      return null;
     }
-    QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);
-    paramWebViewPlugin = new Intent("ReactNativeMsgDeliver");
-    paramWebViewPlugin.putExtra("args", paramArrayOfString[0]);
-    BaseApplication.getContext().sendBroadcast(paramWebViewPlugin);
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"Qzone".equals(paramString2)) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!"deliverMsg".equalsIgnoreCase(paramString3)) {
-      return false;
+    try
+    {
+      Class localClass1 = Class.forName("com.qqindividuality.application.QQIndividualityRuntime");
+      if (localClass1 != null) {}
     }
-    a(this.a, this.a.mRuntime, paramVarArgs);
-    return true;
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() cls == null");
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          ClassLoader localClassLoader;
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        localClassNotFoundException = localClassNotFoundException;
+        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqindividuality_plugin.apk");
+        Class localClass2 = localClassLoader.loadClass("com.qqindividuality.application.QQIndividualityRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        continue;
+        do
+        {
+          return null;
+          if (QLog.isColorLevel()) {
+            QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() 1 ");
+          }
+          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
+        } while (!(paramBaseApplicationImpl instanceof AppRuntime));
+        if (QLog.isColorLevel()) {
+          QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() succ");
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 

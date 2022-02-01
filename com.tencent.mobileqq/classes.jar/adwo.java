@@ -1,20 +1,22 @@
-import android.os.MessageQueue.IdleHandler;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.widget.XListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adwo
-  implements MessageQueue.IdleHandler
+public class adwo
+  implements View.OnClickListener
 {
-  adwo(adwn paramadwn) {}
+  public adwo(AuthDevActivity paramAuthDevActivity) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    int i = localView.getTop();
-    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
-    return false;
+    AuthDevActivity.h(this.a);
+    Intent localIntent = new Intent(this.a, AuthDevOpenUgActivity.class);
+    localIntent.putExtra("DevlockInfo", AuthDevActivity.a(this.a));
+    this.a.startActivityForResult(localIntent, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

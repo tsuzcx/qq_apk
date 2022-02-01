@@ -1,31 +1,47 @@
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.IliveLaunchFragment;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 
-class bldx
-  implements SDKInitListener
+public class bldx
 {
-  bldx(bldw parambldw) {}
+  private static ConcurrentHashMap<String, bldy> a = new ConcurrentHashMap();
   
-  public void onSDKInited(boolean paramBoolean)
+  public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    blet.b("IliveLaunch initSDKAsync");
-    HashMap localHashMap = new HashMap();
-    if (azwq.b()) {}
-    for (String str = "sucess";; str = "error")
+    if (paramFromServiceMsg != null)
     {
-      localHashMap.put("status_msg", str);
-      localHashMap.put("isDebug", "0");
-      bhak.a("live_player_load", localHashMap, System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
-      QLog.e("IliveLaunchActivity", 1, "initVideoSDK status = " + azwq.b());
-      IliveLaunchFragment.access$202(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment, azwq.b());
-      QLog.e("IliveLaunchActivity", 1, "initVideoSDK onSDKInited = " + paramBoolean);
-      if (!IliveLaunchFragment.access$200(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment)) {
-        this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
+      Object localObject = paramFromServiceMsg.getServiceCmd();
+      localObject = (bldy)a.get(localObject);
+      if (localObject != null) {
+        ((bldy)localObject).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
-      return;
     }
+  }
+  
+  public static void a(String paramString, bldy parambldy)
+  {
+    if ((paramString != null) && (parambldy != null)) {
+      a.put(paramString, parambldy);
+    }
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localQQAppInterface == null) {
+      return false;
+    }
+    paramString = new ToServiceMsg("mobileqq.service", localQQAppInterface.getCurrentAccountUin(), paramString);
+    paramString.putWupBuffer(paramArrayOfByte);
+    paramString.extraData.putBoolean("req_pb_protocol_flag", true);
+    localQQAppInterface.sendToService(paramString);
+    return true;
   }
 }
 

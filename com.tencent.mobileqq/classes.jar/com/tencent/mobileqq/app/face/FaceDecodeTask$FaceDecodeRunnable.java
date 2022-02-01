@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.face;
 
 import android.os.Process;
 import android.text.TextUtils;
-import aobs;
+import aood;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
 

@@ -1,25 +1,21 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ufl
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  ufl(ufh paramufh) {}
+  ufl(ufj paramufj) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.onClick(ufh.a(this.a));
-      return;
-    }
-    ufh.a(this.a, 0, 8);
-    this.a.b(paramView);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ufl
  * JD-Core Version:    0.7.0.1
  */

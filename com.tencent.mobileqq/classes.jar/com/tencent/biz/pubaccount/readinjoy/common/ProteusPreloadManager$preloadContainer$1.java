@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import kotlin.Metadata;
-import pfp;
+import oyh;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class ProteusPreloadManager$preloadContainer$1
@@ -13,7 +13,7 @@ public final class ProteusPreloadManager$preloadContainer$1
   
   public final void run()
   {
-    pfp.a(pfp.a, this.jdField_a_of_type_JavaLangString + '#' + this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
+    oyh.a(oyh.a, this.jdField_a_of_type_JavaLangString + '#' + this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
   }
 }
 

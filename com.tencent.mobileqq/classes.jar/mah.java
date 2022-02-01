@@ -1,112 +1,74 @@
-public abstract class mah
+import android.content.IntentFilter;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
+public class mah
 {
-  protected int a;
-  protected String a;
-  protected int b = 0;
-  protected int c = 3;
-  protected int d;
-  protected int e = 1;
+  int jdField_a_of_type_Int = 0;
+  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
+  ArrayList<mad> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  protected mah(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  mah()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.c = paramInt3;
-    this.e = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = maj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
+    QLog.d("QavSo", 1, String.format("SoMgr, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
   
-  public static boolean a(mah parammah1, mah parammah2)
+  DownloadInfo a()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (parammah2 == null) {
-      bool1 = false;
+    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo == null) {
+      this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
     }
-    do
+    return this.jdField_a_of_type_ComTencentAvSoDownloadInfo;
+  }
+  
+  boolean a()
+  {
+    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = maj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, String.format("checkResReady, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    }
+    return 11 != this.jdField_a_of_type_Int;
+  }
+  
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.somgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new mai(this), localIntentFilter) != null;
+  }
+  
+  boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  boolean c()
+  {
+    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = maj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
+    if (this.jdField_a_of_type_Int == 11)
     {
-      do
-      {
-        int i;
-        int j;
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (parammah1 == null);
-          i = parammah2.e();
-          j = parammah1.e();
-          lif.a("CheckAvTipsItemLevelCanShow, lvNew[" + i + "], lvOld[" + j + "], idNew[" + parammah2.b() + "], idOld[" + parammah1.b() + "]");
-          bool1 = bool2;
-        } while (i < j);
-        if (i > j) {
-          return false;
-        }
-        bool1 = bool2;
-      } while (parammah1.a());
-      if (parammah2.a()) {
-        return false;
+      this.jdField_a_of_type_Int = 12;
+      BusinessCommonConfig.notifyQQDownload(3, null, 0);
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSo", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusSo[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
       }
-      bool1 = bool2;
-    } while (parammah2.c() <= parammah1.c());
-    return false;
-  }
-  
-  public abstract int a();
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      return bool;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.c == 0;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.e;
-  }
-  
-  public int e()
-  {
-    return this.d;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof mah))) {}
-    do
-    {
-      return false;
-      paramObject = (mah)paramObject;
-    } while (b() != paramObject.b());
-    return true;
   }
 }
 

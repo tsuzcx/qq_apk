@@ -1,5 +1,8 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
+import aabe;
+import aacv;
+import aacw;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -7,8 +10,8 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
-import com.tencent.biz.qqcircle.QCircleInitBean;
+import anzj;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.requests.QCircleGetRecomUserListRequest;
 import com.tencent.biz.qqcircle.widgets.QCircleFollowUserListItemView;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
@@ -22,14 +25,11 @@ import feedcloud.FeedCloudMeta.StUserRecomInfo;
 import feedcloud.FeedCloudRead.StGetRecomUserListRsp;
 import java.util.ArrayList;
 import java.util.List;
-import voe;
-import vrf;
-import zxj;
-import zyz;
-import zza;
+import vqm;
+import vtq;
 
 public class QCircleFollowUserListBlock
-  extends voe<FeedCloudMeta.StUserRecomInfo, FeedCloudRead.StGetRecomUserListRsp>
+  extends vqm<FeedCloudMeta.StUserRecomInfo, FeedCloudRead.StGetRecomUserListRsp>
 {
   private static final int LOAD_COUNT_PER_PAGE = 20;
   private static final String TAG = "QCircleFollowUserListBlock";
@@ -51,7 +51,7 @@ public class QCircleFollowUserListBlock
     return paramStGetRecomUserListRsp.attachInfo.get();
   }
   
-  public List<zxj> getCustomParts()
+  public List<aabe> getCustomParts()
   {
     return null;
   }
@@ -71,7 +71,7 @@ public class QCircleFollowUserListBlock
     return paramStGetRecomUserListRsp.isFinish.get() == 1;
   }
   
-  public void getListDataAsync(zza<FeedCloudMeta.StUserRecomInfo> paramzza, String paramString) {}
+  public void getListDataAsync(aacw<FeedCloudMeta.StUserRecomInfo> paramaacw, String paramString) {}
   
   public List<FeedCloudMeta.StUserRecomInfo> getListDataFromRsp(FeedCloudRead.StGetRecomUserListRsp paramStGetRecomUserListRsp)
   {
@@ -100,7 +100,7 @@ public class QCircleFollowUserListBlock
   
   public String getTitle()
   {
-    return anni.a(2131697167);
+    return anzj.a(2131697230);
   }
   
   public View getTitleTabView(ViewGroup paramViewGroup)
@@ -118,7 +118,7 @@ public class QCircleFollowUserListBlock
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     if (this.mDataList != null) {
-      ((zyz)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
+      ((aacv)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
     }
     QLog.d("QCircleFollowUserListBlock", 4, "onBindViewHolder:" + paramInt + "  " + paramViewHolder + "  " + this);
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -126,7 +126,7 @@ public class QCircleFollowUserListBlock
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new zyz(new QCircleFollowUserListItemView(getParentFragment().getActivity(), this.mUin, 1));
+    return new aacv(new QCircleFollowUserListItemView(getParentFragment().getActivity(), this.mUin, 1));
   }
   
   public void onInitBlock(Bundle paramBundle)
@@ -141,7 +141,7 @@ public class QCircleFollowUserListBlock
         this.mUin = paramBundle.getUser().id.get();
       }
     }
-    vrf.a("", 11, 30, 1);
+    vtq.a("", 11, 30, 1);
   }
   
   public void onTitleTabSelectedChanged(View paramView, boolean paramBoolean) {}

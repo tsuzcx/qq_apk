@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="52.0dip"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/nkw" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/du6" android:background="@drawable/ggg" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/gg2" android:layout_centerVertical="true" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/kbs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="咖啡瘾者" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/muf" android:background="@drawable/ggg" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/gg_" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="18.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/nv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="x" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
+    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="28.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/nv1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
+</merge>

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import bcvr;
-import bcvx;
+import bdok;
+import bdoq;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -11,24 +11,24 @@ public final class TroopHandler$8
 {
   public void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    bcvr localbcvr = new bcvr(this, new bcvx());
+    bdok localbdok = new bdok(this, new bdoq());
     try
     {
-      localbcvr.setOutput(paramByteArrayOutputStream, paramString);
-      localbcvr.startDocument(paramString, null);
-      localbcvr.startTag(null, "msg");
-      localbcvr.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localbcvr.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      localbdok.setOutput(paramByteArrayOutputStream, paramString);
+      localbdok.startDocument(paramString, null);
+      localbdok.startTag(null, "msg");
+      localbdok.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localbdok.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
       if (this.mMsgBrief == null) {}
       for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mMsgBrief)
       {
-        localbcvr.attribute(null, "brief", paramByteArrayOutputStream);
-        toContentXml(localbcvr);
-        localbcvr.startTag(null, "source");
-        localbcvr.endTag(null, "source");
-        localbcvr.endTag(null, "msg");
-        localbcvr.endDocument();
-        localbcvr.flush();
+        localbdok.attribute(null, "brief", paramByteArrayOutputStream);
+        toContentXml(localbdok);
+        localbdok.startTag(null, "source");
+        localbdok.endTag(null, "source");
+        localbdok.endTag(null, "msg");
+        localbdok.endDocument();
+        localbdok.flush();
         return;
       }
       return;

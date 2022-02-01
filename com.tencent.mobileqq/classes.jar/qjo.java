@@ -1,14 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
 
-public class qjo
-  implements ViewBase.IBuilder
+class qjo
+  implements Animation.AnimationListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qjo(qjh paramqjh, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, Object paramObject) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new qjm(paramVafContext);
+    qjh.a(this.jdField_a_of_type_Qjh, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

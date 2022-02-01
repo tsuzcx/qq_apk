@@ -1,29 +1,13 @@
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function3;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$1", "Lcom/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyObserver;", "onChannelRefreshed", "", "success", "", "channelID", "", "articleSeqList", "", "", "noMoreData", "onPushNotifyDialogDismiss", "needAnimation", "uin", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qqb
-  extends pmn
+public class qqb
+  implements DialogInterface.OnDismissListener
 {
-  public void a(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2)
-  {
-    this.a.b(true);
-    qqa.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qqa.a(this.a)), Integer.valueOf(0));
-  }
+  public qqb(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void b(boolean paramBoolean, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    if ((Intrinsics.areEqual(paramString, qqa.a(this.a).b())) || (Intrinsics.areEqual(paramString, "MATCH_ALL_UIN")))
-    {
-      this.a.b(paramBoolean);
-      qqa.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qqa.a(this.a)), Integer.valueOf(0));
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,78 +1,101 @@
-import android.os.IBinder;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class rbk
-  implements rbi
+public class rbk
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private IBinder a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<Long> jdField_a_of_type_JavaUtilList;
   
-  rbk(IBinder paramIBinder)
+  public rbk(Context paramContext, List<Long> paramList)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  /* Error */
-  public void a(boolean paramBoolean, java.lang.String paramString)
+  public int getCount()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   10: astore 5
-    //   12: aload 4
-    //   14: ldc 25
-    //   16: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   19: iload_1
-    //   20: ifeq +47 -> 67
-    //   23: aload 4
-    //   25: iload_3
-    //   26: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   29: aload 4
-    //   31: aload_2
-    //   32: invokevirtual 36	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   35: aload_0
-    //   36: getfield 15	rbk:a	Landroid/os/IBinder;
-    //   39: iconst_1
-    //   40: aload 4
-    //   42: aload 5
-    //   44: iconst_0
-    //   45: invokeinterface 42 5 0
-    //   50: pop
-    //   51: aload 5
-    //   53: invokevirtual 45	android/os/Parcel:readException	()V
-    //   56: aload 5
-    //   58: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   61: aload 4
-    //   63: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   66: return
-    //   67: iconst_0
-    //   68: istore_3
-    //   69: goto -46 -> 23
-    //   72: astore_2
-    //   73: aload 5
-    //   75: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   78: aload 4
-    //   80: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   83: aload_2
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	rbk
-    //   0	85	1	paramBoolean	boolean
-    //   0	85	2	paramString	java.lang.String
-    //   1	68	3	i	int
-    //   5	74	4	localParcel1	android.os.Parcel
-    //   10	64	5	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   12	19	72	finally
-    //   23	56	72	finally
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
   
-  public IBinder asBinder()
+  public Object getItem(int paramInt)
   {
-    return this.a;
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt))
+    {
+      localObject = null;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560245, paramViewGroup, false);
+      localObject = new rbl();
+      ((rbl)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376935));
+      ((rbl)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131369234));
+      ((rbl)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131379965));
+      paramView.setTag(localObject);
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
+        ((rbl)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(l);
+        ((rbl)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(l);
+        ((rbl)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131376203, Integer.valueOf(paramInt));
+        ((rbl)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+      }
+      localObject = paramView;
+      break;
+      if ((paramView.getTag() instanceof rbl)) {
+        localObject = (rbl)paramView.getTag();
+      } else {
+        localObject = null;
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getTag(2131376203) != null)
+      {
+        int i = ((Integer)paramView.getTag(2131376203)).intValue();
+        if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > i)) {
+          osp.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
+        }
+      }
+    }
   }
 }
 

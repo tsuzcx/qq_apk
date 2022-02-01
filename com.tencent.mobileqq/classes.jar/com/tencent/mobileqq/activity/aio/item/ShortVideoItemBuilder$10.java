@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahhm;
-import ahhx;
+import ahqw;
+import ahrh;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -9,20 +9,20 @@ import android.widget.TextView;
 public class ShortVideoItemBuilder$10
   implements Runnable
 {
-  public ShortVideoItemBuilder$10(ahhm paramahhm, boolean paramBoolean, ahhx paramahhx) {}
+  public ShortVideoItemBuilder$10(ahqw paramahqw, boolean paramBoolean, ahrh paramahrh) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Ahhx.d.setVisibility(8);
+      this.jdField_a_of_type_Ahrh.d.setVisibility(8);
     }
     for (;;)
     {
-      this.this$0.a(this.jdField_a_of_type_Ahhx);
-      this.jdField_a_of_type_Ahhx.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_Ahhx.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.this$0.a(this.jdField_a_of_type_Ahrh);
+      this.jdField_a_of_type_Ahrh.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.jdField_a_of_type_Ahrh.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       return;
-      this.jdField_a_of_type_Ahhx.d.setVisibility(0);
+      this.jdField_a_of_type_Ahrh.d.setVisibility(0);
     }
   }
 }

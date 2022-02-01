@@ -1,8 +1,16 @@
-import android.content.Intent;
+import android.support.annotation.IntRange;
 
 public abstract interface agmn
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract void a();
+  
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
+  
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

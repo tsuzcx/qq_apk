@@ -1,32 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
 
 public class bcas
-  implements bcba
+  implements View.OnTouchListener
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  public bcas(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PCWalletPayDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x66");
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    {
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
     }
-    long l1 = paramMsg.msg_head.from_uin.get();
-    int i = paramMsg.msg_head.msg_seq.get();
-    long l2 = paramMsg.msg_head.msg_uid.get();
-    int j = paramMsg.msg_head.msg_type.get();
-    bbzf.a(paramMessageHandler, l1, i, l2, j);
-    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    akmq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramMsgType0x210, l1, i, l2, j);
+    return false;
   }
 }
 

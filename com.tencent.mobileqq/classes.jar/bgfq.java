@@ -1,32 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
 
-final class bgfq
-  implements DownloadParams.DecodeHandler
+class bgfq
+  implements View.OnKeyListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bgfq(bgfo parambgfo, bgfu parambgfu) {}
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "mRoundCornerDecoder---------------");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bgfu.a.getSelectionStart() == 0))
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bgmo.b(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+      this.jdField_a_of_type_Bgfo.a.b(this.jdField_a_of_type_Bgfu);
+      return true;
+    }
+    return false;
   }
 }
 

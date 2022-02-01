@@ -1,51 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.callback.IVasUpdateFactory;
-import com.tencent.vas.update.callback.VasBusinessManager;
-import mqq.manager.Manager;
-
 public class bhdg
-  extends VasBusinessManager
-  implements Manager
 {
-  private bhdt a;
+  public int a;
+  public String a;
   
-  public bhdg(QQAppInterface paramQQAppInterface)
+  public bhdg() {}
+  
+  public bhdg(int paramInt, String paramString)
   {
-    QLog.e("VasUpdate_QQVasUpdateManager", 1, "QQVasUpdateManager onCreate");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static boolean a()
+  public void a(bhdg parambhdg)
   {
-    return true;
+    if (parambhdg != null)
+    {
+      this.jdField_a_of_type_Int = parambhdg.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaLangString = parambhdg.jdField_a_of_type_JavaLangString;
+    }
   }
   
-  public bhdt a()
+  public Object clone()
   {
-    return this.a;
+    return new bhdg(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
   
-  public IVasUpdateFactory createVasUpdateFactory()
+  public boolean equals(Object paramObject)
   {
-    this.a = new bhdt();
-    return this.a;
-  }
-  
-  public void onDestroy()
-  {
-    QLog.e("VasUpdate_QQVasUpdateManager", 1, "onDestroy");
-    super.onDestory();
-  }
-  
-  public BaseUpdateBusiness[] registerBusinessCallback()
-  {
-    return new BaseUpdateBusiness[] { new bhdk() };
-  }
-  
-  public BaseUpdateBusiness registerCommonBusinessCallback()
-  {
-    return new bhdj();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof bhdg))
+    {
+      paramObject = (bhdg)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (bhjx.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

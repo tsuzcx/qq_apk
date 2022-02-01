@@ -1,29 +1,13 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
 
 public class aljq
-  implements aaob
+  implements bljb
 {
-  public aljq(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
+  public aljq(AppletsFolderManager.2 param2) {}
   
-  public void callback(Bundle paramBundle)
+  public void onDismiss()
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
-      localIntent.putExtras(paramBundle);
-      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("photo_path", this.b);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, anni.a(2131706245), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getTitleBarHeight());
+    aljo.a(this.a.this$0, false);
   }
 }
 

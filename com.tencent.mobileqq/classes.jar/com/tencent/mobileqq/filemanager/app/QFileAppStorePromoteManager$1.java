@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atae;
+import atrz;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistant.appinfo.GetAppInfoManager;
@@ -9,7 +9,7 @@ import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
 public class QFileAppStorePromoteManager$1
   implements Runnable
 {
-  public QFileAppStorePromoteManager$1(atae paramatae) {}
+  public QFileAppStorePromoteManager$1(atrz paramatrz) {}
   
   public void run()
   {

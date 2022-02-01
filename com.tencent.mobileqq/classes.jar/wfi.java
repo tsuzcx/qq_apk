@@ -1,267 +1,128 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.biz.qqstory.pgc.model.UserInfo;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import android.graphics.Rect;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
+import qqcircle.QQCircleFeedBase.StTagPageData;
 
 public class wfi
-  implements anil
+  implements aabg<QCircleReportBean>, View.OnClickListener
 {
-  public void a() {}
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
+  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
+  private QQCircleFeedBase.StTagPageData jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData;
+  private wfl jdField_a_of_type_Wfl;
+  private TextView b;
   
-  public void a(byte paramByte) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(StoryPushMsg paramStoryPushMsg) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt, List<Object> paramList) {}
-  
-  public void a(boolean paramBoolean1, int paramInt, List<UserInfo> paramList, boolean paramBoolean2, String paramString, List<String> paramList1) {}
-  
-  public void a(boolean paramBoolean, UserInfo paramUserInfo) {}
-  
-  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo) {}
-  
-  public void a(boolean paramBoolean, List<String> paramList) {}
-  
-  public void a(boolean paramBoolean1, List<QQStoryUserInfo> paramList, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString) {}
-  
-  public void a(boolean paramBoolean, wfd paramwfd) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  private void a()
   {
-    if (!paramBoolean1)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null) && (this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getContext() instanceof FragmentActivity)))
     {
-      if (!paramBoolean2) {
-        break label58;
+      Object localObject = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidViewView.getContext()).getWindow().getDecorView();
+      View localView = ((ViewGroup)localObject).getChildAt(0);
+      if ((localView instanceof DragFrameLayout)) {
+        localObject = (ViewGroup)localView;
       }
-      paramString = "";
-      if (paramInt != 0) {
-        break label68;
+      localObject = ((ViewGroup)localObject).getChildAt(0);
+      if ((localObject instanceof TopGestureLayout)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localObject);
       }
     }
-    label58:
-    label68:
-    for (String str = anni.a(2131709732);; str = anni.a(2131709730))
-    {
-      biti.a().a(paramString + str + anni.a(2131709733));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null) {
       return;
-      paramString = anni.a(2131709731);
-      break;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new wfj(this));
+  }
+  
+  public QCircleReportBean a()
+  {
+    return QCircleReportBean.getReportBean(a(), this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+  }
+  
+  protected String a()
+  {
+    return "QCircleFuelListView";
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379857));
+    this.b = ((TextView)paramView.findViewById(2131379858));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369119));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376995));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376787));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(paramView.getContext(), 0, false));
+    this.b.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    a();
+  }
+  
+  public void a(QCircleReportBean paramQCircleReportBean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (!(paramObject instanceof QQCircleFeedBase.StTagPageData)) {
+      return;
+    }
+    this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData = ((QQCircleFeedBase.StTagPageData)paramObject);
+    if (this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData.fuelCircleRankItem.get().size() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData.rankName.get())) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData.rankName.get());
+      }
+      if (this.jdField_a_of_type_Wfl == null) {
+        this.jdField_a_of_type_Wfl = new wfl(this, null);
+      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wfl);
+      this.jdField_a_of_type_Wfl.notifyDataSetChanged();
+      return;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
-  
-  public void b() {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
-  
-  public void d(boolean paramBoolean) {}
-  
-  public void e(boolean paramBoolean) {}
-  
-  public void f(boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.protocol", 2, "QQStoryObserver onUpdate. type=" + paramInt + " isSuccess=" + paramBoolean);
-    }
-    switch (paramInt)
+    switch (paramView.getId())
     {
-    case 1008: 
-    case 1013: 
-    case 1014: 
-    case 1025: 
-    default: 
-    case 1003: 
-    case 1018: 
-    case 1004: 
-    case 1019: 
-    case 1001: 
-    case 1002: 
-    case 1005: 
-    case 1006: 
-    case 1007: 
-    case 1009: 
-    case 1010: 
-    case 1011: 
-    case 1015: 
-    case 1016: 
-    case 1017: 
-    case 1012: 
-    case 1020: 
-    case 1021: 
-    case 1022: 
-    case 1023: 
-    case 1024: 
-      label503:
-      label509:
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  a(((Integer)paramObject).intValue());
-                  return;
-                  b(((Integer)paramObject).intValue());
-                  return;
-                  a(paramBoolean);
-                  return;
-                  b(paramBoolean);
-                  return;
-                  paramObject = (Object[])paramObject;
-                  if (paramBoolean)
-                  {
-                    a(paramBoolean, (List)paramObject[0], (byte[])paramObject[1], ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
-                    return;
-                  }
-                  a(false, null, null, true, null);
-                  return;
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
-                  return;
-                  a(paramBoolean, (QQStoryUserInfo)paramObject);
-                  return;
-                  a(paramBoolean, (List)paramObject);
-                  return;
-                  if (paramBoolean)
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (List)paramObject[1]);
-                    return;
-                  }
-                  a(paramBoolean, 0, null);
-                  return;
-                  Object localObject2 = (UserInfo)paramObject;
-                  Object localObject3;
-                  if (localObject2 != null)
-                  {
-                    localObject3 = (wpy)wpm.a(2);
-                    localObject1 = ((wpy)localObject3).b(((UserInfo)localObject2).uid);
-                    paramObject = localObject1;
-                    if (localObject1 == null)
-                    {
-                      paramObject = new QQUserUIItem();
-                      paramObject.uid = ((UserInfo)localObject2).uid;
-                      paramObject.setUnionId(((UserInfo)localObject2).unionId);
-                    }
-                    if (((UserInfo)localObject2).type != 1) {
-                      break label503;
-                    }
-                    bool = true;
-                    paramObject.isVip = bool;
-                    paramObject.headUrl = ((UserInfo)localObject2).headUrl;
-                    paramObject.nickName = ((UserInfo)localObject2).nick;
-                    paramObject.remark = ((UserInfo)localObject2).remark;
-                    if (!((UserInfo)localObject2).isSubscribe) {
-                      break label509;
-                    }
-                  }
-                  for (paramInt = i;; paramInt = 0)
-                  {
-                    paramObject.isSubscribe = paramInt;
-                    paramObject.symbolUrl = ((UserInfo)localObject2).authTypeIcon;
-                    ((wpy)localObject3).a(paramObject);
-                    a(paramBoolean, (UserInfo)localObject2);
-                    return;
-                    bool = false;
-                    break;
-                  }
-                  if (paramBoolean)
-                  {
-                    localObject3 = (Object[])paramObject;
-                    paramInt = ((Integer)localObject3[0]).intValue();
-                    paramObject = (List)localObject3[1];
-                    localObject1 = (Boolean)localObject3[2];
-                    localObject2 = (String)localObject3[3];
-                    localObject3 = (List)localObject3[4];
-                    a(paramBoolean, paramInt, paramObject, ((Boolean)localObject1).booleanValue(), (String)localObject2, (List)localObject3);
-                    return;
-                  }
-                  a(false, 0, null, false, null, null);
-                  return;
-                  Object localObject1 = (Object[])paramObject;
-                  paramInt = ((Integer)localObject1[0]).intValue();
-                  paramObject = (String)localObject1[1];
-                  localObject1 = (Boolean)localObject1[2];
-                  if (paramBoolean)
-                  {
-                    Bosses.get().postJob(new wfj(this, "QQStoryObserver", paramObject, (Boolean)localObject1, paramBoolean, paramInt));
-                    return;
-                  }
-                  localObject1 = ((wpy)wpm.a(2)).b(paramObject);
-                  if (localObject1 != null)
-                  {
-                    if (!((QQUserUIItem)localObject1).isSubscribe()) {}
-                    for (paramBoolean = bool;; paramBoolean = false)
-                    {
-                      a(false, paramBoolean, paramInt, paramObject);
-                      return;
-                    }
-                  }
-                  a(false, false, paramInt, paramObject);
-                  return;
-                  if (paramBoolean)
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-                    return;
-                  }
-                  a(paramBoolean, 0, null);
-                  return;
-                  c(paramBoolean);
-                  return;
-                  if (paramBoolean)
-                  {
-                    a(true, (wfd)paramObject);
-                    return;
-                  }
-                  a(false, null);
-                  return;
-                } while (!(paramObject instanceof StoryPushMsg));
-                a((StoryPushMsg)paramObject);
-                return;
-              } while (!paramBoolean);
-              d(((Boolean)paramObject).booleanValue());
-              return;
-            } while (!paramBoolean);
-            b();
-            return;
-          } while (!paramBoolean);
-          e(((Boolean)paramObject).booleanValue());
-          return;
-        } while (!paramBoolean);
-        f(((Boolean)paramObject).booleanValue());
-        return;
-      } while (!paramBoolean);
-      a(((Byte)paramObject).byteValue());
-      return;
     }
-    a();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData != null) && (this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData.urlInfo.has())) {
+        uyx.a(this.jdField_a_of_type_AndroidViewView.getContext(), uyw.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTagPageData.urlInfo.get(), "tagFuelRankUrl"), null, -1);
+      }
+    }
   }
 }
 

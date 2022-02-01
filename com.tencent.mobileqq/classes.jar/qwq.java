@@ -1,24 +1,23 @@
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class qwq
-  extends pmn
+  implements Cloneable
 {
-  public qwq(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  public String a;
+  public String b;
   
-  public void b(long paramLong, boolean paramBoolean)
+  protected Object clone()
   {
-    ComponentContentRecommendFollowList.6.1 local1 = new ComponentContentRecommendFollowList.6.1(this, paramLong, paramBoolean);
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
+    try
     {
-      ThreadManager.getUIHandler().post(local1);
-      return;
+      qwq localqwq = (qwq)super.clone();
+      return localqwq;
     }
-    local1.run();
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
   }
 }
 

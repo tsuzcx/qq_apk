@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aijp;
+import aiti;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class StickerRecManager$2
   implements Runnable
 {
-  public StickerRecManager$2(aijp paramaijp, String paramString, boolean paramBoolean, SessionInfo paramSessionInfo) {}
+  public StickerRecManager$2(aiti paramaiti, String paramString, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
   public void run()
   {

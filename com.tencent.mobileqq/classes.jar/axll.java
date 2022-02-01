@@ -1,29 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.animation.Interpolator;
 
-class axll
-  implements bihh
+public final class axll
+  implements Interpolator
 {
-  axll(axlj paramaxlj) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public float getInterpolation(float paramFloat)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Axlm != null) {
-        this.a.jdField_a_of_type_Axlm.a(true);
-      }
-    }
-    label59:
-    while (this.a.jdField_a_of_type_Axlm == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Axlm.a(false);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pwb;
+import pon;
 
 public class ArticleInfoModule$16
   implements Runnable
 {
-  public ArticleInfoModule$16(pwb parampwb, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean) {}
+  public ArticleInfoModule$16(pon parampon, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    pwb.a(this.this$0, this.jdField_a_of_type_Int);
-    pwb.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    pon.a(this.this$0, this.jdField_a_of_type_Int);
+    pon.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

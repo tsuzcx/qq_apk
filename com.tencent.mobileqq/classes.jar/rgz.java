@@ -1,54 +1,90 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.articlesummary.BuluoInfo;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class rgz
+  extends omp
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString = "";
+  @Nullable
+  private rgk jdField_a_of_type_Rgk;
+  @NotNull
+  private rgl jdField_a_of_type_Rgl;
+  @NotNull
+  private rgo jdField_a_of_type_Rgo;
+  private rjy jdField_a_of_type_Rjy;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public static rgz a(articlesummary.BuluoInfo paramBuluoInfo)
+  public rgz(@NotNull QQAppInterface paramQQAppInterface, @NotNull rgl paramrgl, @Nullable rgk paramrgk)
   {
-    rgz localrgz = new rgz();
-    String str;
-    if (paramBuluoInfo.bytes_wording.has())
+    super(paramrgl, true, "UploadCoverTaskStep");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Rgo = ((rgo)paramQQAppInterface.getManager(356));
+    this.jdField_a_of_type_Rgl = paramrgl;
+    this.jdField_a_of_type_Rgk = paramrgk;
+  }
+  
+  public void a()
+  {
+    super.a();
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Rgl.a();
+    if ((this.jdField_a_of_type_Rjy != null) && (localUgcVideo.status == UgcVideo.STATUS_UPLOADING)) {
+      this.jdField_a_of_type_Rjy.b();
+    }
+  }
+  
+  public boolean a()
+  {
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Rgl.a();
+    if (!TextUtils.isEmpty(localUgcVideo.coverUrl))
     {
-      str = paramBuluoInfo.bytes_wording.get().toStringUtf8();
-      localrgz.jdField_a_of_type_JavaLangString = str;
-      if (!paramBuluoInfo.bytes_head_url.has()) {
-        break label131;
+      i = 1;
+      if (i != 0) {
+        localUgcVideo.coverProgress = 100;
       }
-      str = paramBuluoInfo.bytes_head_url.get().toStringUtf8();
-      label55:
-      localrgz.d = str;
-      localrgz.jdField_a_of_type_Long = paramBuluoInfo.uint64_buluo_id.get();
-      if (!paramBuluoInfo.bytes_jump_url.has()) {
-        break label137;
-      }
-      str = paramBuluoInfo.bytes_jump_url.get().toStringUtf8();
-      label92:
-      localrgz.b = str;
-      if (!paramBuluoInfo.bytes_name.has()) {
-        break label143;
+      if ((i != 0) || (localUgcVideo.status == UgcVideo.STATUS_PAUSE)) {
+        break label64;
       }
     }
-    label131:
-    label137:
-    label143:
-    for (paramBuluoInfo = paramBuluoInfo.bytes_name.get().toStringUtf8();; paramBuluoInfo = "")
+    label64:
+    for (int i = 1;; i = 0)
     {
-      localrgz.c = paramBuluoInfo;
-      return localrgz;
-      str = "";
+      if ((!super.a()) || (i == 0)) {
+        break label69;
+      }
+      return true;
+      i = 0;
       break;
-      str = "";
-      break label55;
-      str = "";
-      break label92;
+    }
+    label69:
+    return false;
+  }
+  
+  public boolean b()
+  {
+    Object localObject = this.jdField_a_of_type_Rgl.a();
+    if (((UgcVideo)localObject).coverPath != null) {}
+    for (String str = ((UgcVideo)localObject).coverPath;; str = "")
+    {
+      if ((!this.jdField_a_of_type_Boolean) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str)))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangString = str;
+        QLog.i("RIJUGC.UploadCoverTaskStep", 1, "onStep begin upload cover:" + str);
+        localObject = new rha(this, (UgcVideo)localObject);
+        if (this.jdField_a_of_type_Rjy != null) {
+          this.jdField_a_of_type_Rjy.b();
+        }
+        this.jdField_a_of_type_Rjy = new rkb(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+        this.jdField_a_of_type_Rjy.a((rjx)localObject);
+        this.jdField_a_of_type_Rjy.a();
+      }
+      return false;
     }
   }
 }

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="255.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="9.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/myn" android:background="@drawable/bwy" android:paddingLeft="5.5dip" android:paddingRight="5.5dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="@dimen/mp" android:layout_centerHorizontal="true" />
-    <com.tencent.mobileqq.now.widget.DecoratorViewPager android:id="@id/kwk" android:layout_width="fill_parent" android:layout_height="245.0dip" android:layout_marginTop="@dimen/mu" />
-    <com.tencent.mobileqq.now.widget.SimpleCircleIndicator android:layout_gravity="center_horizontal" android:id="@id/mht" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" app:dot_interval="10.0dip" app:selected_color="#ff42adfb" app:selected_radius="3.0dip" app:unselected_color="#ffcccccc" app:unselected_radius="3.0dip" />
-</RelativeLayout>
+<LinearLayout android:orientation="horizontal" android:id="@id/n7o" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bbp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:background="@drawable/bx6" android:layout_width="@dimen/bbq" android:layout_height="@dimen/bbp" android:scaleType="center" />
+    <FrameLayout android:id="@id/n7n" android:paddingLeft="12.0dip" android:paddingTop="@dimen/bbr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <FrameLayout android:id="@id/nk4" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <include android:layout_gravity="end|center|top" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/cj7" />
+        <LinearLayout android:layout_gravity="end|bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
+            <TextView android:textAppearance="@style/ze" android:layout_gravity="center" android:id="@id/info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <ImageView android:layout_gravity="center" android:id="@id/ia2" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:scaleType="center" android:alpha="0.7" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

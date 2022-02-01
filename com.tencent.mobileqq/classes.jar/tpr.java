@@ -1,24 +1,16 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
-
 public class tpr
-  extends tpg
 {
-  tpr(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
+  public static boolean a(int paramInt)
   {
-    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
-  {
-    if ((paramString2 != null) && (paramString2.contains("kandianshare.html5.qq.com")))
-    {
-      tpd.a(this.a).mShareHelper.b(paramString2);
-      return;
+    if (!oyi.a()) {
+      return false;
     }
-    tpd.a(this.a).mShareHelper.b(paramString1);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
   }
 }
 

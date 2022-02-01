@@ -1,53 +1,32 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aovy
-  implements apcd
+public class aovy
+  extends aoxh
 {
-  aovy(aovw paramaovw, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
-  
-  public void a()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    apcd localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localapcd != null) {
-      localapcd.a();
+    paramQQAppInterface = new aovx(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "avgame";
+    paramQQAppInterface.c = "create_room";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    apcd localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localapcd != null) {
-      localapcd.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, apce paramapce)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramapce.c + ", url = " + paramapce.a);
-    if (paramBoolean) {
-      if (!aovw.a(this.jdField_a_of_type_Aovw, paramapce.c, paramapce.b))
-      {
-        aovw.a(this.jdField_a_of_type_Aovw, paramapce.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    apcd localapcd;
-    do
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    while (i < paramContext.length)
     {
-      return;
-      if (this.jdField_a_of_type_Aovw.a(paramapce.d, paramapce.c, paramapce.b) == 0) {}
-      localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    } while (localapcd == null);
-    localapcd.a(paramBoolean, paramapce);
-  }
-  
-  public void b()
-  {
-    apcd localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localapcd != null) {
-      localapcd.b();
+      paramString = paramContext[i];
+      if (paramString.split("=").length == 2)
+      {
+        int j = paramString.indexOf("=");
+        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
+      }
+      i += 1;
     }
+    return paramQQAppInterface;
   }
 }
 

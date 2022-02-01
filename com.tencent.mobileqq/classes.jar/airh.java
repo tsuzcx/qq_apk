@@ -1,20 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-
 class airh
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aogx
 {
-  airh(aire paramaire) {}
+  airh(airg paramairg) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(String paramString, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    super.a(paramString, paramInt);
+    airg.a(this.a).b();
   }
 }
 

@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-class akza
-  implements View.OnClickListener
+public class akza
+  implements bivv
 {
-  akza(akyh paramakyh) {}
+  public akza(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if (this.a.jdField_b_of_type_Long == 77313L) {
-      this.a.jdField_b_of_type_Boolean = true;
-    }
-    this.a.c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
   }
 }
 

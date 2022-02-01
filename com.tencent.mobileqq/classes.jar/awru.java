@@ -1,38 +1,25 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awru
-  extends awte
+  implements View.OnClickListener
 {
-  public awru(MultiAIOFragment paramMultiAIOFragment) {}
+  public awru(LocationPickFragment paramLocationPickFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+    if (LocationPickFragment.a(this.a).b()) {
+      LocationPickFragment.a(this.a).b();
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    for (;;)
     {
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 0: 
-      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
-      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-      return;
-    case 1: 
-      MultiAIOFragment.c(this.a);
-      return;
+      LocationPickFragment.a(this.a).a();
     }
-    MultiAIOFragment.c(this.a);
   }
 }
 

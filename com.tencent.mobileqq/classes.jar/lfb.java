@@ -1,49 +1,73 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class lfb
-  extends ldg
+class lfb
+  extends lwy
 {
-  protected int ag;
-  protected long l;
+  lfb(lfa paramlfa) {}
   
-  public long b()
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    return this.l;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.ag = paramInt;
-  }
-  
-  public void d(long paramLong)
-  {
-    QLog.i("SessionInfoBase", 1, "setRoomId old room id[" + this.l + "], new room id[" + paramLong + "].");
-    this.l = paramLong;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
+    }
+    switch (paramInt1)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+    default: 
+      return null;
+    }
+    paramString = new Bundle();
+    paramString.putString("camera_used_desc", lju.a);
+    return paramString;
+  }
+  
+  public void a(RecvMsg paramRecvMsg)
+  {
+    if (paramRecvMsg != null) {
+      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
+  
+  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
+  {
+    if (TextUtils.equals(paramString, "avChatRoom"))
+    {
+      ljz localljz = this.a.a.a();
+      if (localljz != null) {
+        localljz.a(paramInt, paramArrayOfByte);
       }
-      paramObject = (lfb)paramObject;
-    } while (this.l == paramObject.l);
-    return false;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder().append("onReceivePushMsg , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
+      if (paramArrayOfByte != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (paramInt = 0;; paramInt = paramArrayOfByte.length)
+    {
+      QLog.i("ChatRoomMng", 4, paramInt + "]");
+      return;
+    }
   }
   
-  public int f()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    return this.ag;
+    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
   }
   
-  public int hashCode()
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
   {
-    return (int)(this.l ^ this.l >>> 32);
+    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
+      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
+    }
   }
 }
 

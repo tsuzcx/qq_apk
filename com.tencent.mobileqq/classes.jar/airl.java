@@ -1,25 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.graphics.RectF;
 
 public class airl
-  implements View.OnTouchListener
 {
-  public airl(AddContactsView paramAddContactsView) {}
+  public int a;
+  public airm a;
+  public airn a;
+  public RectF a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public airl()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_Airn = new airn(0.0D, 0.0D);
+    this.jdField_a_of_type_Airm = new airm(0.0D, 0.0D);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "ItemStatus{rect=" + this.jdField_a_of_type_AndroidGraphicsRectF + ", velocity=" + this.jdField_a_of_type_Airn + ", acceleration=" + this.jdField_a_of_type_Airm + '}';
   }
 }
 

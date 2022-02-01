@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.dating;
 
-import anhk;
-import axby;
-import bcsy;
+import antf;
+import axup;
+import bdlq;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 
 class MsgBoxListActivity$7
   implements Runnable
 {
-  MsgBoxListActivity$7(MsgBoxListActivity paramMsgBoxListActivity, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, axby paramaxby) {}
+  MsgBoxListActivity$7(MsgBoxListActivity paramMsgBoxListActivity, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, axup paramaxup) {}
   
   public void run()
   {
@@ -16,16 +16,16 @@ class MsgBoxListActivity$7
     int i;
     String str2;
     label42:
-    bcsy localbcsy;
+    bdlq localbdlq;
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving)
     {
       str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.startLiveWordingType);
-      i = this.jdField_a_of_type_Axby.b();
+      i = this.jdField_a_of_type_Axup.b();
       if (!this.this$0.d) {
         break label157;
       }
       str2 = "1";
-      localbcsy = new bcsy(this.this$0.app).a("dc00899").b("grp_lbs").c("msg_box");
+      localbdlq = new bdlq(this.this$0.app).a("dc00899").b("grp_lbs").c("msg_box");
       if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
         break label163;
       }
@@ -34,7 +34,7 @@ class MsgBoxListActivity$7
     label163:
     for (String str3 = "clk_livepush";; str3 = "clk_relivepush")
     {
-      localbcsy.d(str3).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - anhk.g)).a(new String[] { str1, String.valueOf(i), str2 }).a();
+      localbdlq.d(str3).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - antf.g)).a(new String[] { str1, String.valueOf(i), str2 }).a();
       return;
       str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.endLiveWordingType);
       break;

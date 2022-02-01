@@ -1,8 +1,34 @@
-public abstract interface thh
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.OfflineBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.OfflineBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.OfflineBridgeInvokeHandler.register.3;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/OfflineBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class thh
+  extends tgo
 {
-  public abstract void a(int paramInt);
+  public static final thi a = new thi(null);
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public thh(@NotNull BridgeModule paramBridgeModule)
+  {
+    super(paramBridgeModule);
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return "offline";
+  }
+  
+  public void a()
+  {
+    a("updateIfNeed", (Function2)new OfflineBridgeInvokeHandler.register.1(this));
+    a("batchCheckUpdate", (Function2)new OfflineBridgeInvokeHandler.register.2(this));
+    a("isCached", (Function2)new OfflineBridgeInvokeHandler.register.3(this));
+  }
 }
 
 

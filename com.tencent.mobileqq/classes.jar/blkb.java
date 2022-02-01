@@ -1,20 +1,42 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.ProxyDrawable;
+import com.tencent.widget.BubblePopupWindow;
 
-public abstract interface blkb
+public class blkb
+  extends ProxyDrawable
 {
-  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
+  int jdField_a_of_type_Int;
+  int b;
   
-  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
+  public blkb(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
+  {
+    super(paramDrawable);
+  }
   
-  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    invalidateSelf();
+  }
   
-  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    if (this.b > this.jdField_a_of_type_Int)
+    {
+      int i = paramCanvas.save();
+      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
+      this.mCurrDrawable.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blkb
  * JD-Core Version:    0.7.0.1
  */

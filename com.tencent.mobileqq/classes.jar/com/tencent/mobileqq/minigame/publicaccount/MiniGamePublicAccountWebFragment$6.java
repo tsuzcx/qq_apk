@@ -2,10 +2,10 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import biea;
+import bjey;
 
 class MiniGamePublicAccountWebFragment$6
-  implements biea
+  implements bjey
 {
   MiniGamePublicAccountWebFragment$6(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment) {}
   

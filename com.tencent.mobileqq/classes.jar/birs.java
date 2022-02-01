@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class birs
-  implements View.OnClickListener
+public abstract class birs
 {
-  public birs(CommonTitleBar paramCommonTitleBar) {}
+  public final int a;
   
-  public void onClick(View paramView)
+  public birs(int paramInt)
   {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramInt;
   }
+  
+  public abstract int a();
 }
 
 

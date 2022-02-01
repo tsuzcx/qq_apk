@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aryq
-  implements bhlk
+class aryq
+  implements DialogInterface.OnClickListener
 {
-  public aryq(EmoticonPanelMallHelper.3 param3) {}
+  aryq(aryn paramaryn) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.this$0.a.a.a();
-    }
+    paramDialogInterface.cancel();
+    QLog.d(aryn.a(), 1, "showConfirmDialog, cancel click");
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, aryn.d, aryn.d, 0, 0, "", "", "", "");
   }
 }
 

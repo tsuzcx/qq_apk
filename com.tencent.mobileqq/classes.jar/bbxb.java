@@ -1,10 +1,23 @@
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.WindowInsetsCompat;
+import android.view.View;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class bbxb
+  implements OnApplyWindowInsetsListener
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean;
-  private float b;
+  public bbxb(ScreenShotFragment paramScreenShotFragment) {}
   
-  public bbxb(bbxa parambbxa) {}
+  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onApplyWindowInsets current is liuhai style!");
+    }
+    ScreenShotFragment.b(this.a);
+    return ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
+  }
 }
 
 

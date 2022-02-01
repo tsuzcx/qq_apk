@@ -1,78 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aleq
-  extends alej
+class aleq
+  implements aldq
 {
-  private String d;
+  aleq(alep paramalep, File paramFile, AtomicBoolean paramAtomicBoolean) {}
   
-  public aleq a(String paramString)
+  public void onResult(int paramInt, PreloadManager.PathResult arg2)
   {
-    this.d = paramString;
-    return this;
-  }
-  
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.d;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
+    synchronized (this.jdField_a_of_type_JavaIoFile)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.d = paramArrayOfByte.getString("senderUin");
-      if (this.jdField_a_of_type_Beps == null) {
-        this.jdField_a_of_type_Beps = new beps();
-      }
-      this.jdField_a_of_type_Beps.a(paramArrayOfByte.getString("messageNavInfo"));
+      this.jdField_a_of_type_JavaIoFile.notify();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("senderUin", this.d);
-      if (this.jdField_a_of_type_Beps != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Beps.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
     }
   }
 }

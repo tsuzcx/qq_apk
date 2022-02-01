@@ -1,12 +1,15 @@
 package com.tencent.qqmini.minigame.utils;
 
 import android.os.Process;
-import com.tencent.mobileqq.triton.sdk.ITLog;
+import com.tencent.mobileqq.triton.utils.LogDelegate;
+import com.tencent.mobileqq.triton.utils.LogDelegate.Level;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.utils.GameWnsUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class GameLog
-  implements ITLog
+  implements LogDelegate
 {
   public static final String MINIAPP_TAG = "[miniapp] ";
   public static final String MINIGAME_DEBUGGER_TAG = "[debugger].";
@@ -100,50 +103,46 @@ public class GameLog
     return 0;
   }
   
-  public void printNativeLog(int paramInt, String paramString1, String paramString2)
+  public void printConsoleLog(@NotNull LogDelegate.Level paramLevel, @NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
   {
-    if (getInstance() == null)
+    printLog(paramLevel, paramString1, paramString2, paramThrowable);
+    switch (GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()])
     {
-      QMLog.i("[minigame] ", "g_printNativeLog getLog null");
-      QMLog.i("[minigame] " + paramString1, paramString2);
+    case 3: 
+    default: 
+      paramLevel = "log";
     }
-    label154:
     for (;;)
     {
+      printVconsoleLog(paramLevel, paramString2);
       return;
-      int i;
-      if (paramInt >= 100)
-      {
-        i = paramInt - 100 + 3;
-        label51:
-        if (i > 3) {
-          break label101;
-        }
-        getInstance().d(paramString1, paramString2);
-      }
-      for (;;)
-      {
-        if (paramInt < 100) {
-          break label154;
-        }
-        paramInt -= 100;
-        if (paramInt >= VCONSOLE_LOG_ARRAY.length) {
-          break;
-        }
-        printVconsoleLog(VCONSOLE_LOG_ARRAY[paramInt], paramString2);
-        return;
-        i = paramInt;
-        break label51;
-        label101:
-        if (i == 4) {
-          getInstance().i(paramString1, paramString2);
-        } else if (i == 5) {
-          getInstance().w(paramString1, paramString2);
-        } else if (i == 6) {
-          getInstance().e(paramString1, paramString2);
-        }
-      }
+      paramLevel = "info";
+      continue;
+      paramLevel = "warn";
+      continue;
+      paramLevel = "error";
     }
+  }
+  
+  public void printLog(@NotNull LogDelegate.Level paramLevel, @NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
+  {
+    if (enableLog()) {}
+    switch (GameLog.1.$SwitchMap$com$tencent$mobileqq$triton$utils$LogDelegate$Level[paramLevel.ordinal()])
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      QMLog.i("[minigame] " + paramString1, paramString2, paramThrowable);
+      return;
+    case 3: 
+      QMLog.d("[minigame] " + paramString1, paramString2, paramThrowable);
+      return;
+    case 4: 
+      QMLog.w("[minigame] " + paramString1, paramString2, paramThrowable);
+      return;
+    }
+    QMLog.e("[minigame] " + paramString1, paramString2, paramThrowable);
   }
   
   public int w(String paramString1, String paramString2)

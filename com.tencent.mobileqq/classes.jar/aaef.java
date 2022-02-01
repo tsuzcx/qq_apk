@@ -1,16 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.qphone.base.util.QLog;
 
-class aaef
-  implements zxa<CertifiedAccountWrite.StDoCommentRsp>
+final class aaef
+  implements aaav<CertifiedAccountRead.StGetMainPageRsp>
 {
-  aaef(aaec paramaaec, CertifiedAccountMeta.StComment paramStComment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    wfo.a().dispatch(this.jdField_a_of_type_Aaec.a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Aaec.hashCode()) }));
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      if (paramStGetMainPageRsp != null) {
+        aaee.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
+      }
+    }
+    else {
+      return;
+    }
+    QLog.w(aaee.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.app;
 
 import android.os.Handler;
 import android.os.Message;
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,7 +25,7 @@ class InternalAppUIProxy$2
         QQToast.a(localBaseApplication, 1, str, 1).a();
         InternalAppUIProxy.access$100(this.this$0).postDelayed(new InternalAppUIProxy.2.1(this), 1000L);
         return;
-        str = anni.a(2131704599);
+        str = anzj.a(2131704706);
       }
       return;
     }

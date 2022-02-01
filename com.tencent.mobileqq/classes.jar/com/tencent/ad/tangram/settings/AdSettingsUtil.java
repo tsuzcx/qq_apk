@@ -172,7 +172,7 @@ public enum AdSettingsUtil
     }
     label78:
     label85:
-    for (Object localObject = this.currentSettings.urlForSettings;; localObject = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-4-1.json")
+    for (Object localObject = this.currentSettings.urlForSettings;; localObject = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-4-5.json")
     {
       localObject = AdUriUtil.replaceHttpsWithHttpForVivoY67OnAndroidM((String)localObject);
       if ((this.loadSettingsTimeMillis == -2147483648L) || (System.currentTimeMillis() - this.loadSettingsTimeMillis >= i)) {

@@ -1,24 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.eqq.CrmIvrText.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public final class noi
-  extends Handler
+public class noi
+  extends begp
 {
-  public noi(Looper paramLooper, nok paramnok)
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  
+  public noi(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    super(paramCharSequence, paramInt1, paramInt2, paramMessageRecord);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void handleMessage(Message paramMessage)
+  static void a(View paramView, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    if (paramMessage.arg1 == 0)
+    paramView.post(new CrmIvrText.1(paramQQAppInterface, paramView, paramString1));
+  }
+  
+  protected void a()
+  {
+    super.a();
+    Matcher localMatcher = Pattern.compile(behd.b + "|" + "QQ语音").matcher(this.e);
+    while (localMatcher.find())
     {
-      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
-      return;
+      int i = localMatcher.start();
+      int j = localMatcher.end();
+      a(new noj(this, this.e.substring(i, j)), i, j, 33);
     }
-    this.a.a(paramMessage.arg1, null);
   }
 }
 

@@ -1,6 +1,6 @@
 public abstract interface aqat
 {
-  public abstract void a(byte[] paramArrayOfByte, aqav paramaqav);
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

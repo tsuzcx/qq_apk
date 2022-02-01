@@ -36,11 +36,6 @@ public class AppForegroundSession
     reset();
   }
   
-  private String getAppSessionId()
-  {
-    return this.mAppSessionId;
-  }
-  
   private long getHeartBeatInterval()
   {
     return this.mHeartBeatInterval;
@@ -117,16 +112,11 @@ public class AppForegroundSession
       paramMap.setEventDynamicParams("dt_app_heartbeat", localFinalData.getEventParams());
     }
     FinalDataTarget.handle(null, localFinalData);
-    ThreadUtils.execTask(new AppForegroundSession.3());
   }
   
-  public static void reportLastHeartBeat()
+  public static void reportLastHeartBeat(String paramString)
   {
-    Map localMap = AppHeartBeatSpUtils.getLastHeartBeat();
-    if (localMap == null) {
-      return;
-    }
-    reportHeartBeat(localMap);
+    ThreadUtils.execTask(new AppForegroundSession.3(paramString));
   }
   
   private void triggerTiming()
@@ -146,6 +136,11 @@ public class AppForegroundSession
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  public String getAppSessionId()
+  {
+    return this.mAppSessionId;
   }
   
   public long getBackgroundDuration()

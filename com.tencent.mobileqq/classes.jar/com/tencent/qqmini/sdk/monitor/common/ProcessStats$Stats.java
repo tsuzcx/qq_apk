@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.monitor.common;
 public class ProcessStats$Stats
   extends RecyclablePool.Recyclable
 {
-  public long base_stime;
-  public long base_utime;
+  public long baseStime;
+  public long baseUtime;
   public int cpuUsage;
   public String name;
-  public long rel_stime;
-  public long rel_utime;
+  public long relStime;
+  public long relUtime;
   
   public void recycle()
   {

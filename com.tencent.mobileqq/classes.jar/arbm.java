@@ -1,85 +1,71 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class arbm
+  extends arac<arbn>
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
-  
-  public static arbm a(aqlg[] paramArrayOfaqlg)
+  @NonNull
+  public arbn a(int paramInt)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      paramArrayOfaqlg = null;
+    return new arbn();
+  }
+  
+  @Nullable
+  public arbn a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
     }
-    arbm localarbm;
-    for (;;)
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      return paramArrayOfaqlg;
-      localarbm = new arbm();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[0].a);
-        if (localJSONObject.has("flag"))
-        {
-          localarbm.d = localJSONObject.getInt("flag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localarbm.d);
-          }
-        }
-        if (localJSONObject.has("showCount"))
-        {
-          localarbm.c = localJSONObject.getInt("showCount");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localarbm.c);
-          }
-        }
-        if (localJSONObject.has("groupFlag"))
-        {
-          localarbm.b = localJSONObject.getInt("groupFlag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localarbm.b);
-          }
-        }
-        paramArrayOfaqlg = localarbm;
-        if (localJSONObject.has("groupShowCount"))
-        {
-          localarbm.a = localJSONObject.getInt("groupShowCount");
-          paramArrayOfaqlg = localarbm;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localarbm.a);
-            return localarbm;
-          }
-        }
+      paramArrayOfaraj = paramArrayOfaraj[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfaraj);
       }
-      catch (Exception paramArrayOfaqlg)
-      {
-        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfaqlg.toString());
-      }
+      return arbn.a(paramArrayOfaraj);
     }
-    return localarbm;
+    return new arbn();
   }
   
-  public int a()
+  public void a(arbn paramarbn)
   {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
+    }
+    bdog.a().a(paramarbn);
   }
   
-  public int b()
+  public Class clazz()
   {
-    return this.b;
+    return arbn.class;
   }
   
-  public int c()
+  public boolean isNeedCompressed()
   {
-    return this.c;
+    return true;
   }
   
-  public int d()
+  public boolean isNeedStoreLargeFile()
   {
-    return this.d;
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 537;
   }
 }
 

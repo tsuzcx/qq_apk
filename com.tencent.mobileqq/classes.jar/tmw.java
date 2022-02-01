@@ -1,28 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.IntentFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class tmw
-  implements DialogInterface.OnCancelListener
+public class tmw
 {
-  tmw(tmt paramtmt, String paramString) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private tmx jdField_a_of_type_Tmx;
+  private tmy jdField_a_of_type_Tmy;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public tmw(Context paramContext)
   {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("index", tmt.a(this.jdField_a_of_type_Tmt));
-      paramDialogInterface.put("type", 1);
-      if (tmt.a(this.jdField_a_of_type_Tmt) != null) {
-        ((BridgeModule)tmt.a(this.jdField_a_of_type_Tmt).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      }
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Tmx != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Tmx, this.jdField_a_of_type_AndroidContentIntentFilter);
     }
-    catch (JSONException paramDialogInterface) {}
+  }
+  
+  public void a(tmy paramtmy)
+  {
+    this.jdField_a_of_type_Tmy = paramtmy;
+    this.jdField_a_of_type_Tmx = new tmx(this);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Tmx != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Tmx);
+    }
   }
 }
 

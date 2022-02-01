@@ -1,32 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class pzn
-  implements pze<BEAN>
+public class pzn
+  implements ViewBase.OnClickListener
 {
-  pzn(pzl parampzl) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  sel jdField_a_of_type_Sel;
   
-  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString)
+  public pzn(ArticleInfo paramArticleInfo, Context paramContext, sel paramsel)
   {
-    if (pzl.a(this.a) != null)
-    {
-      if (!paramBoolean) {
-        break label69;
-      }
-      pzl.a(this.a).setListData(paramList, true);
-      if (pzl.a(this.a).a()) {
-        pzl.a(this.a).setFooterHasMore();
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Sel = paramsel;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 4);
     }
-    else
+    for (;;)
     {
+      oxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Sel);
+      pzu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009441", "0X8009444");
       return;
+      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 4);
     }
-    pzl.a(this.a).setFooterNoMore();
-    return;
-    label69:
-    QLog.i("ListPresenter", 2, "loadNextPage error, errorCode=" + paramInt + ", errorMsg= " + paramString);
-    pzl.a(this.a).setFooterError(paramInt, paramString);
   }
 }
 

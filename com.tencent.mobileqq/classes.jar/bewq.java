@@ -1,16 +1,64 @@
-import android.os.Bundle;
-
-public abstract interface bewq
+public class bewq
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  public int a = 40000;
+  public int b = 30000;
+  public int c = 20000;
+  public int d = 20000;
+  public int e = 15000;
+  public int f = 10000;
+  private int g;
   
-  public abstract void a(String paramString);
+  public bewq() {}
   
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
+  private bewq(bewq parambewq)
+  {
+    this.a = parambewq.a;
+    this.b = parambewq.b;
+    this.c = parambewq.c;
+    this.d = parambewq.d;
+    this.e = parambewq.e;
+    this.f = parambewq.f;
+  }
   
-  public abstract void b(String paramString);
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return this.a;
+    case 1: 
+    case 4: 
+    case 5: 
+      return this.c;
+    }
+    return this.b;
+  }
   
-  public abstract void d();
+  public bewq a()
+  {
+    return new bewq(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.g = (paramInt * 2000);
+  }
+  
+  public int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return this.d + this.g;
+    case 1: 
+    case 4: 
+    case 5: 
+      return this.f + this.g;
+    }
+    return this.e + this.g;
+  }
 }
 
 

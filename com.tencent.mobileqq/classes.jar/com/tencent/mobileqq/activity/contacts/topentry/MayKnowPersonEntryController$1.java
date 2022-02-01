@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ajld;
-import ajlq;
+import ajwm;
+import ajwz;
 import android.os.Message;
-import bkgm;
+import blhq;
 import java.util.List;
 
 public class MayKnowPersonEntryController$1
   implements Runnable
 {
-  public MayKnowPersonEntryController$1(ajlq paramajlq) {}
+  public MayKnowPersonEntryController$1(ajwz paramajwz) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bkgm.removeMessages(2);
-    if (this.this$0.jdField_a_of_type_Ajld != null)
+    this.this$0.jdField_a_of_type_Blhq.removeMessages(2);
+    if (this.this$0.jdField_a_of_type_Ajwm != null)
     {
-      List localList = this.this$0.jdField_a_of_type_Ajld.b();
-      this.this$0.jdField_a_of_type_Bkgm.removeMessages(1);
-      Message.obtain(this.this$0.jdField_a_of_type_Bkgm, 1, 0, 0, localList).sendToTarget();
+      List localList = this.this$0.jdField_a_of_type_Ajwm.b();
+      this.this$0.jdField_a_of_type_Blhq.removeMessages(1);
+      Message.obtain(this.this$0.jdField_a_of_type_Blhq, 1, 0, 0, localList).sendToTarget();
     }
   }
 }

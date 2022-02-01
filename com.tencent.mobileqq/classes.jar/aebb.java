@@ -1,18 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-class aebb
+public final class aebb
   implements DialogInterface.OnClickListener
 {
-  aebb(aeba paramaeba) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a();
-    DevlockQuickLoginActivity.b(this.a.a);
-    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

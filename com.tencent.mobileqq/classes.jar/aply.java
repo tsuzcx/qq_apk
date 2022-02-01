@@ -1,16 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.IBinder;
+import android.os.Parcel;
 
 class aply
-  implements bmre
+  implements aplw
 {
-  aply(aplx paramaplx, QQAppInterface paramQQAppInterface) {}
+  private IBinder a;
+  
+  aply(IBinder paramIBinder)
+  {
+    this.a = paramIBinder;
+  }
   
   public void a(int paramInt)
   {
-    if (paramInt == 0)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aplx.jdField_a_of_type_Anxg);
-      ((anwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(anie.a(this.jdField_a_of_type_Aplx.jdField_a_of_type_JavaLangString), true, 0);
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
 }

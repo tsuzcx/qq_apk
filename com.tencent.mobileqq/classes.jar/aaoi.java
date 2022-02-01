@@ -1,31 +1,23 @@
-import android.content.Intent;
-import com.tencent.biz.troop.TroopMemberApiService;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
 public class aaoi
-  extends WtloginListener
+  implements aarb
 {
-  public aaoi(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
+  public aaoi(VideoPlayerView paramVideoPlayerView) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
+    if (VideoPlayerView.a(this.a) != null)
     {
-      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
-      return;
+      abbe.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
+      VideoPlayerView.a(this.a).poster.followState.set(1);
+      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
   }
 }
 

@@ -1,24 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.List;
 
 class asfp
-  extends anmu
+  implements aset
 {
-  asfp(asfo paramasfo) {}
+  asfp(asfn paramasfn) {}
   
-  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList<amgn> paramArrayList)
+  public void a(List<asmu> paramList)
   {
-    if (paramBoolean) {
-      asfr.a().a(paramArrayList);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
     }
-    for (;;)
-    {
-      asfo.a(this.a, false);
-      asfo.b(this.a, false);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
-      }
+    if (this.a.a != null) {
+      this.a.a.a((List)localObject);
     }
   }
 }

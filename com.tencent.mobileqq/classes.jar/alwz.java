@@ -1,10 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class alwz
-  implements DialogInterface.OnClickListener
+public abstract interface alwz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void b(int paramInt);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void i();
 }
 
 

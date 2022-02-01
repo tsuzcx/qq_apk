@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.ViewParent;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
 
-class avsc
-  implements View.OnClickListener
+public class avsc
+  extends RelativeLayout
 {
-  avsc(avsa paramavsa, avrz paramavrz, avse paramavse) {}
-  
-  public void onClick(View paramView)
+  public avsc(RichTextPanel paramRichTextPanel, Context paramContext)
   {
-    avsa.a(this.jdField_a_of_type_Avsa).b(avsa.a(this.jdField_a_of_type_Avsa), this.jdField_a_of_type_Avsa, this.jdField_a_of_type_Avrz, this.jdField_a_of_type_Avse);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 0) && (getParent() != null)) {
+      getParent().requestDisallowInterceptTouchEvent(true);
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 

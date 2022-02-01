@@ -1,12 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class aibt
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  aibt(aiay paramaiay) {}
+  aibt(aibr paramaibr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.a.h) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    }
+  }
 }
 
 

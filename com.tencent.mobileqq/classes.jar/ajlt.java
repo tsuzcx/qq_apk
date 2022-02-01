@@ -1,18 +1,23 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ajlt
-  extends amcl
+public class ajlt
+  extends anuw
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public ajlt(SystemMsgListView paramSystemMsgListView) {}
+  
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramBoolean)
+    {
+      if (SystemMsgListView.a(this.a) != null) {
+        SystemMsgListView.a(this.a).c();
+      }
+      QQToast.a(this.a.getContext(), 2131698208, 3000).a();
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131698207, 1).a();
+  }
 }
 
 

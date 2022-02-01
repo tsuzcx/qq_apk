@@ -1,26 +1,64 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bngw
-  extends GestureDetector.SimpleOnGestureListener
+  implements TextWatcher
 {
-  private bngw(AECropperImageView paramAECropperImageView) {}
+  public bngw(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!AECropperImageView.a(this.a)) {}
-    do
-    {
-      return false;
-      if (AECropperImageView.b(this.a))
+    if (((paramInt2 == 1) || (paramInt2 == 2)) && (paramInt3 == 0)) {
+      try
       {
-        bnzb.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
-        return false;
+        QZoneShareActivity.b(this.a, QZoneShareActivity.a(this.a, paramCharSequence, paramInt1 + paramInt2));
+        if (QZoneShareActivity.b(this.a) == -1)
+        {
+          QZoneShareActivity.g(this.a);
+          return;
+        }
+        QZoneShareActivity.c(this.a, paramInt1);
+        QZoneShareActivity.a(this.a, paramCharSequence.toString().substring(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a) + paramInt2));
+        return;
       }
-    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
-    this.a.a(paramFloat1, paramFloat2);
-    return false;
+      catch (Exception paramCharSequence)
+      {
+        QZoneShareActivity.g(this.a);
+      }
+    }
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.a.removeTextChangedListener(this);
+    if (paramCharSequence == null)
+    {
+      this.a.a.addTextChangedListener(this);
+      QZoneShareActivity.g(this.a);
+      return;
+    }
+    if ((paramInt3 == 1) && (paramInt2 == 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")))
+    {
+      this.a.a(false);
+      this.a.g = true;
+      paramCharSequence = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
+      paramCharSequence.putExtra("param_only_friends", true);
+      paramCharSequence.putExtra("param_min", 1);
+      this.a.startActivityForResult(paramCharSequence, 1000);
+    }
+    if (QZoneShareActivity.a(this.a, QZoneShareActivity.a(this.a), false)) {
+      this.a.a.getEditableText().delete(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a));
+    }
+    QZoneShareActivity.g(this.a);
+    this.a.i();
+    this.a.a.addTextChangedListener(this);
   }
 }
 

@@ -1,39 +1,58 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import aftv;
-import bgmg;
+import agce;
+import agdj;
+import agdq;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.activateFriend.biz.entity.ReminderEntity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReminderDataManager$4
   implements Runnable
 {
-  public ReminderDataManager$4(aftv paramaftv) {}
+  public ReminderDataManager$4(agdj paramagdj, agdq paramagdq) {}
   
   public void run()
   {
-    File[] arrayOfFile = aftv.b(this.this$0, aftv.a(this.this$0));
-    if (arrayOfFile.length > 0)
-    {
-      int j = arrayOfFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        File localFile = arrayOfFile[i];
-        if (QLog.isColorLevel()) {
-          QLog.i(aftv.a(), 2, "delete file name: " + localFile.getName());
-        }
-        if ((localFile != null) && (localFile.isFile()) && (localFile.exists()))
-        {
-          AcsMsg localAcsMsg = this.this$0.a(localFile);
-          if (bgmg.d(localFile.getAbsolutePath())) {
-            aftv.a(this.this$0, localAcsMsg);
-          }
-        }
-        i += 1;
+    ArrayList localArrayList = new ArrayList();
+    agdj.a(this.this$0);
+    Object localObject = agdj.a(this.this$0, NetConnInfoCenter.getServerTimeMillis());
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReminderDataManagerNew", 1, "async from db, msg list is null");
       }
     }
+    while (!agdj.a(this.this$0).get())
+    {
+      localObject = localArrayList.iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject).hasNext())
+        {
+          AcsMsg localAcsMsg = (AcsMsg)((Iterator)localObject).next();
+          agdj.a(this.this$0, localAcsMsg, 1);
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from db, msg count: ", Integer.valueOf(((List)localObject).size()) });
+          }
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            localArrayList.add(((ReminderEntity)((Iterator)localObject).next()).getAcsMsg());
+          }
+          break;
+        }
+      }
+      agdj.a(this.this$0).set(true);
+      agdj.a(this.this$0).edit().putString("sp_key_cache_list_time", agce.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
+    }
+    this.a.a(localArrayList);
   }
 }
 

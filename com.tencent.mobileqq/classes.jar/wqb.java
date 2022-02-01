@@ -1,17 +1,17 @@
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+
 class wqb
-  implements wri
+  extends wpz
 {
   wqb(wqa paramwqa) {}
   
-  public void a(boolean paramBoolean, wre paramwre)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    yqp.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramwre != null))
-    {
-      this.a.a(paramwre.b, paramwre.a);
-      return;
+    this.a.e();
+    if (paramBoolean) {
+      this.a.a(true, paramCommentEntry);
     }
-    this.a.a(false, null);
   }
 }
 

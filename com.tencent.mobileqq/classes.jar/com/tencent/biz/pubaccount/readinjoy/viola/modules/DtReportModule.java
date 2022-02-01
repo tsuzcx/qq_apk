@@ -6,7 +6,7 @@ import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.module.BaseModule;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.utils.ViolaUtils;
-import tre;
+import thz;
 
 public class DtReportModule
   extends BaseModule
@@ -30,7 +30,7 @@ public class DtReportModule
         }
       }
     }
-    tre.a(paramString1, paramObject, localObject1);
+    thz.a(paramString1, paramObject, localObject1);
   }
   
   public String getModuleName()

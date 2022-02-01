@@ -1,32 +1,23 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.graphics.Point;
+import android.graphics.Rect;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
 
 public class azxj
-  extends QzoneExternalRequest
+  implements Comparator<Rect>
 {
-  public JceStruct a;
+  Point jdField_a_of_type_AndroidGraphicsPoint;
   
-  public azxj(long paramLong, operation_red_touch_req paramoperation_red_touch_req)
+  public azxj(TagCloudView paramTagCloudView, Point paramPoint)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.a = paramoperation_red_touch_req;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
   }
   
-  public String getCmdString()
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    return "QzoneNewService.asy_photo.OperationRedTouch";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "OperationRedTouch";
+    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
+    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
+    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
   }
 }
 

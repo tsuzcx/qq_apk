@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import biip;
+import bjjo;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -288,6 +288,11 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppMaxRangeNumber", 4);
   }
   
+  public static String getMiniGamePublicAccountGameStoreButtonUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "publicAccountGameStoreButtonUrl", "https://sola.gtimg.cn/aoi/sola/20200713192038_XEvd27FTxi.png");
+  }
+  
   public static int getNoPresentDurationLimit()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameNoPresentDurationLimit", 5000);
@@ -467,7 +472,7 @@ public class GameWnsUtils
         localThrowable.printStackTrace();
       }
     }
-    l = biip.a().a() % 100L;
+    l = bjjo.a().a() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }

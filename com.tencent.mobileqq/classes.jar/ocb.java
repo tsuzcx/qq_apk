@@ -1,22 +1,40 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountMenuBar;
+import java.util.List;
+
 public class ocb
+  implements bliz
 {
-  public int a = 5;
-  public String a;
-  public int b = 10;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  public ocb(PublicAccountMenuBar paramPublicAccountMenuBar, List paramList, blir paramblir) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    try
+    {
+      if (PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar)) {
+        return;
+      }
+      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, true);
+      if (paramInt == 0)
+      {
+        PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
+        return;
+      }
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+      return;
+    }
+    paramView = (aayp)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+    if (paramView == null)
+    {
+      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
+      return;
+    }
+    PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, paramView);
+    this.jdField_a_of_type_Blir.dismiss();
+  }
 }
 
 

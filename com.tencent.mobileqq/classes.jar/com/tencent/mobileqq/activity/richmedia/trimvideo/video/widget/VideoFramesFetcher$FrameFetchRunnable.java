@@ -19,12 +19,12 @@ class VideoFramesFetcher$FrameFetchRunnable
     //   17: invokestatic 38	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   20: return
     //   21: aload_3
-    //   22: getfield 44	alov:jdField_a_of_type_Int	I
+    //   22: getfield 44	aman:jdField_a_of_type_Int	I
     //   25: i2l
     //   26: aload_3
-    //   27: getfield 47	alov:b	I
+    //   27: getfield 47	aman:b	I
     //   30: i2l
-    //   31: invokestatic 52	alog:b	(JJ)Landroid/graphics/Bitmap;
+    //   31: invokestatic 52	alzy:b	(JJ)Landroid/graphics/Bitmap;
     //   34: astore_2
     //   35: aload_2
     //   36: ifnonnull +69 -> 105
@@ -46,7 +46,7 @@ class VideoFramesFetcher$FrameFetchRunnable
     //   74: getfield 12	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher$FrameFetchRunnable:this$0	Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;
     //   77: invokestatic 62	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher:a	(Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;)Ljava/util/concurrent/BlockingQueue;
     //   80: invokeinterface 68 1 0
-    //   85: checkcast 40	alov
+    //   85: checkcast 40	aman
     //   88: astore_3
     //   89: aload_0
     //   90: getfield 12	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher$FrameFetchRunnable:this$0	Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;
@@ -56,36 +56,36 @@ class VideoFramesFetcher$FrameFetchRunnable
     //   98: ifeq -77 -> 21
     //   101: invokestatic 71	com/tencent/maxvideo/trim/TrimNative:release	()V
     //   104: return
-    //   105: new 73	alop
+    //   105: new 73	amah
     //   108: dup
-    //   109: invokespecial 74	alop:<init>	()V
+    //   109: invokespecial 74	amah:<init>	()V
     //   112: astore 4
     //   114: aload 4
     //   116: aload_2
     //   117: getstatic 80	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
     //   120: iconst_1
     //   121: invokevirtual 86	android/graphics/Bitmap:copy	(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
-    //   124: putfield 89	alop:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   124: putfield 89	amah:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   127: aload 4
     //   129: aload_3
-    //   130: getfield 44	alov:jdField_a_of_type_Int	I
+    //   130: getfield 44	aman:jdField_a_of_type_Int	I
     //   133: aload_0
     //   134: getfield 12	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher$FrameFetchRunnable:this$0	Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;
     //   137: invokestatic 92	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher:b	(Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;)I
     //   140: idiv
-    //   141: putfield 93	alop:jdField_a_of_type_Int	I
+    //   141: putfield 93	amah:jdField_a_of_type_Int	I
     //   144: aload_2
     //   145: invokevirtual 96	android/graphics/Bitmap:recycle	()V
     //   148: aload_0
     //   149: getfield 12	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher$FrameFetchRunnable:this$0	Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;
-    //   152: invokestatic 99	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher:a	(Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;)Lalok;
+    //   152: invokestatic 99	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher:a	(Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;)Lamac;
     //   155: aload 4
-    //   157: invokevirtual 104	alok:a	(Lalop;)V
+    //   157: invokevirtual 104	amac:a	(Lamah;)V
     //   160: aload_0
     //   161: getfield 12	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher$FrameFetchRunnable:this$0	Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;
     //   164: invokestatic 107	com/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher:a	(Lcom/tencent/mobileqq/activity/richmedia/trimvideo/video/widget/VideoFramesFetcher;)Ljava/util/concurrent/ConcurrentHashMap;
     //   167: aload_3
-    //   168: getfield 44	alov:jdField_a_of_type_Int	I
+    //   168: getfield 44	aman:jdField_a_of_type_Int	I
     //   171: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   174: invokevirtual 119	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   177: pop
@@ -112,8 +112,8 @@ class VideoFramesFetcher$FrameFetchRunnable
     //   34	111	2	localBitmap	android.graphics.Bitmap
     //   181	10	2	localInterruptedException	java.lang.InterruptedException
     //   202	5	2	localObject	Object
-    //   21	147	3	localalov	alov
-    //   112	44	4	localalop	alop
+    //   21	147	3	localaman	aman
+    //   112	44	4	localamah	amah
     // Exception table:
     //   from	to	target	type
     //   21	35	181	java/lang/InterruptedException

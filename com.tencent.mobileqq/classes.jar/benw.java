@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.data.Friends;
-
-class benw
+public class benw
 {
-  public int a;
-  public Friends a;
-  
-  public benw(Friends paramFriends, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public long a;
+  public String a;
+  public String b;
 }
 
 

@@ -1,77 +1,113 @@
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DetailHandler.1;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
 public class bazk
-  extends BaseAdapter
+  extends Handler
 {
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  private WeakReference<ReceiptMessageDetailFragment> a;
   
-  public bazk(ArrayList<Integer> paramArrayList)
+  public bazk(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  public int getCount()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bazj localbazj;
-    if (paramView == null)
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
+    if ((localReceiptMessageDetailFragment == null) || (!localReceiptMessageDetailFragment.isAdded())) {}
+    label124:
+    int i;
+    label126:
+    do
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131562919, paramViewGroup, false);
-      localbazj = new bazj(null);
-      localbazj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377990));
-      localbazj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377991));
-      paramView.setTag(localbazj);
-    }
-    for (;;)
+      return;
+      switch (paramMessage.what)
+      {
+      case 8: 
+      case 9: 
+      case 12: 
+      case 13: 
+      case 14: 
+      case 15: 
+      case 16: 
+      case 17: 
+      case 18: 
+      case 19: 
+      default: 
+        i = 0;
+      }
+    } while (i == 0);
+    localReceiptMessageDetailFragment.stopTitleProgress();
+    ReceiptMessageDetailFragment.m(localReceiptMessageDetailFragment);
+    if ((ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment)))
     {
-      localbazj = (bazj)paramView.getTag();
-      bazh localbazh = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
-      if ((localbazh != null) && (localbazj.jdField_a_of_type_Int != localbazh.jdField_a_of_type_Int))
-      {
-        localbazj.jdField_a_of_type_Int = localbazh.jdField_a_of_type_Int;
-        localbazj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new bico(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(localbazh.jdField_a_of_type_Int, 201), false, false));
-        localbazj.jdField_a_of_type_AndroidWidgetTextView.setText(localbazh.c);
-        if (localbazh.b != 1) {
-          break label226;
-        }
-        localbazj.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      if (!ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment)) {
+        break label399;
       }
-      for (;;)
-      {
-        paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label226:
-        localbazj.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130839273), null);
-        localbazj.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 1, true);
+    }
+    while (ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment))
+    {
+      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+      return;
+      if (!(paramMessage.obj instanceof MessageForText)) {
+        break;
       }
+      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 1);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForText)paramMessage.obj);
+      i = 1;
+      break label126;
+      if (!(paramMessage.obj instanceof MessageForPic)) {
+        break;
+      }
+      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 2);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPic)paramMessage.obj);
+      i = 1;
+      break label126;
+      if (!(paramMessage.obj instanceof MessageForPtt)) {
+        break;
+      }
+      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 3);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPtt)paramMessage.obj);
+      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+      i = 1;
+      break label126;
+      ReceiptMessageDetailFragment.i(localReceiptMessageDetailFragment);
+      i = 0;
+      break label126;
+      ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment);
+      i = 0;
+      break label126;
+      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+      i = 0;
+      break label126;
+      QQToast.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getApp(), 1, 2131697803, 0).a(localReceiptMessageDetailFragment);
+      i = 0;
+      break label126;
+      i = ahnz.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment));
+      localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), i, false);
+      i = 0;
+      break label126;
+      ReceiptMessageDetailFragment.k(localReceiptMessageDetailFragment);
+      i = 0;
+      break label126;
+      ThreadManager.post(new ReceiptMessageDetailFragment.DetailHandler.1(this, localReceiptMessageDetailFragment), 8, null, false);
+      i = 0;
+      break label126;
+      ReceiptMessageDetailFragment.l(localReceiptMessageDetailFragment);
+      break label124;
+      label399:
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 0, true);
     }
   }
 }

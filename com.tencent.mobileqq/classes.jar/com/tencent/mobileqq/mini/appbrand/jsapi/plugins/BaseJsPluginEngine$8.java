@@ -14,7 +14,7 @@ class BaseJsPluginEngine$8
   {
     if (this.this$0.authDialog != null)
     {
-      this.this$0.authDialog.setRefuse(true);
+      this.this$0.authDialog.setConfirm(true);
       this.this$0.authDialog.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);

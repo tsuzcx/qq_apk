@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import acwh;
+import adak;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.text.SimpleDateFormat;
@@ -48,7 +48,7 @@ public class QCallRecord
   
   public static String getTableName(String paramString, int paramInt)
   {
-    return "qc_" + paramInt + "_" + acwh.a(paramString);
+    return "qc_" + paramInt + "_" + adak.a(paramString);
   }
   
   public void createMessageUniseq()
@@ -75,10 +75,10 @@ public class QCallRecord
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.setTimeInMillis(System.currentTimeMillis());
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6))) {
-      return anni.a(2131708352);
+      return anzj.a(2131708461);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) + 1 == localCalendar2.get(6))) {
-      return anni.a(2131708350);
+      return anzj.a(2131708459);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) > localCalendar2.get(6) - 7)) {}
     switch (localCalendar1.get(7))
@@ -86,19 +86,19 @@ public class QCallRecord
     default: 
       return new SimpleDateFormat("yy-MM-dd").format(localDate);
     case 1: 
-      return anni.a(2131708344);
+      return anzj.a(2131708453);
     case 2: 
-      return anni.a(2131708347);
+      return anzj.a(2131708456);
     case 3: 
-      return anni.a(2131708346);
+      return anzj.a(2131708455);
     case 4: 
-      return anni.a(2131708348);
+      return anzj.a(2131708457);
     case 5: 
-      return anni.a(2131708351);
+      return anzj.a(2131708460);
     case 6: 
-      return anni.a(2131708354);
+      return anzj.a(2131708463);
     }
-    return anni.a(2131708349);
+    return anzj.a(2131708458);
   }
   
   public String getTableName()
@@ -147,14 +147,14 @@ public class QCallRecord
     {
       label189:
       if (k != 0) {}
-      for (localObject = "" + k + anni.a(2131708345);; localObject = "")
+      for (localObject = "" + k + anzj.a(2131708454);; localObject = "")
       {
         if (j != 0) {
-          localObject = (String)localObject + j + anni.a(2131708353);
+          localObject = (String)localObject + j + anzj.a(2131708462);
         }
         for (;;)
         {
-          return (String)localObject + i + anni.a(2131708343);
+          return (String)localObject + i + anzj.a(2131708452);
           label283:
           localObject = String.format(Locale.CHINA, "%02d:%02d", new Object[] { Long.valueOf(l3), Long.valueOf(l1) });
           break;

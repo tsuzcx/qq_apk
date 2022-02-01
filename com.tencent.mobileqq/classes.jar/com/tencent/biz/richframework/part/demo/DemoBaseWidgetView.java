@@ -1,5 +1,8 @@
 package com.tencent.biz.richframework.part.demo;
 
+import aaak;
+import aaam;
+import aach;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -7,13 +10,10 @@ import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import java.util.ArrayList;
-import zwp;
-import zwr;
-import zyl;
 
 public class DemoBaseWidgetView
   extends BaseWidgetView
-  implements zwr
+  implements aaam
 {
   public DemoBaseWidgetView(@NonNull Context paramContext)
   {
@@ -27,7 +27,7 @@ public class DemoBaseWidgetView
   
   public void a(Context paramContext, View paramView)
   {
-    VSNetworkHelper.a().a(getContext().hashCode(), new DemoBaseRequest(""), new zyl(this));
+    VSNetworkHelper.a().a(getContext().hashCode(), new DemoBaseRequest(""), new aach(this));
   }
   
   public void a(Object paramObject)
@@ -43,13 +43,13 @@ public class DemoBaseWidgetView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent) {}

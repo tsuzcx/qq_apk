@@ -2,22 +2,22 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bmqa;
+import bnrf;
 import com.tencent.mobileqq.app.QQAppInterface;
-import rfo;
+import qwh;
 
 public class KandianOx210MsgInfo$9
   implements Runnable
 {
-  public KandianOx210MsgInfo$9(rfo paramrfo, QQAppInterface paramQQAppInterface) {}
+  public KandianOx210MsgInfo$9(qwh paramqwh, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bmqa.a(this.a, true, false).edit();
+    SharedPreferences.Editor localEditor = bnrf.a(this.a, true, false).edit();
     localEditor.remove("kandian_push_0x210_msg_sys");
     localEditor.remove("kandian_push_0x210_msg_sys_count");
     localEditor.remove("kandian_push_0x210_c5_msg_time");
-    bmqa.a(localEditor, true);
+    bnrf.a(localEditor, true);
   }
 }
 

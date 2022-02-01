@@ -7,21 +7,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import biau;
+import bjbs;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URLDecoder;
 import mqq.app.NewIntent;
-import zrv;
-import ztf;
-import ztg;
+import zvq;
+import zxa;
+import zxb;
 
 public class QRJumpActivity
   extends BaseActivity
 {
-  protected biau a;
+  protected bjbs a;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -45,9 +45,9 @@ public class QRJumpActivity
     if (isFinishing()) {
       return false;
     }
-    this.a = new biau(this, super.getTitleBarHeight());
-    this.a.c(2131715864);
-    this.a.setOnCancelListener(new ztf(this));
+    this.a = new bjbs(this, super.getTitleBarHeight());
+    this.a.c(2131715973);
+    this.a.setOnCancelListener(new zxa(this));
     this.a.show();
     String str1;
     try
@@ -117,8 +117,8 @@ public class QRJumpActivity
       if (QLog.isColorLevel()) {
         QLog.i("QRJumpActivity", 2, String.format("JumpUrl authSig=%s oriUrl=%s", new Object[] { paramBundle, str3 }));
       }
-      paramBundle = new ztg(this, (String)localObject1, paramBundle, this, str1);
-      localObject1 = new NewIntent(this, zrv.class);
+      paramBundle = new zxb(this, (String)localObject1, paramBundle, this, str1);
+      localObject1 = new NewIntent(this, zvq.class);
       ((NewIntent)localObject1).putExtra("d", str1);
       ((NewIntent)localObject1).putExtra("cmd", "QRCodeSvc.decode");
       ((NewIntent)localObject1).putExtra("bqq", "1");

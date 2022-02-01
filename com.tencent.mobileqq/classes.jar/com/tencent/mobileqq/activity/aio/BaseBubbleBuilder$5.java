@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afwr;
+import aggl;
 import com.tencent.mobileqq.data.ChatMessage;
 
 class BaseBubbleBuilder$5
   implements Runnable
 {
-  BaseBubbleBuilder$5(BaseBubbleBuilder paramBaseBubbleBuilder, afwr paramafwr, ChatMessage paramChatMessage) {}
+  BaseBubbleBuilder$5(BaseBubbleBuilder paramBaseBubbleBuilder, aggl paramaggl, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Afwr.jdField_a_of_type_Apwt);
+    this.this$0.a(this.jdField_a_of_type_Aggl.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Aggl.jdField_a_of_type_Aqkt);
   }
 }
 

@@ -24,6 +24,7 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.utils.DebugUtil;
 import com.tencent.qqmini.sdk.widget.MiniToast;
 

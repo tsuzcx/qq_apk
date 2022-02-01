@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import ayta;
+import azll;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class OnlineStatusHandler$2
   implements Runnable
 {
-  public OnlineStatusHandler$2(ayta paramayta, String paramString) {}
+  public OnlineStatusHandler$2(azll paramazll, String paramString) {}
   
   public void run()
   {

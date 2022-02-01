@@ -1,33 +1,46 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorView;
 
 public class beqm
-  extends anwn
+  implements ActionMode.Callback
 {
-  beqm(beqk parambeqk, MessageRecord paramMessageRecord, beqn parambeqn) {}
+  public beqm(WriteTogetherEditorView paramWriteTogetherEditorView) {}
   
-  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (paramBoolean)
-    {
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        beqk.a(this.jdField_a_of_type_Beqk, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Beqn);
-        synchronized (this.jdField_a_of_type_Beqk.b)
-        {
-          this.jdField_a_of_type_Beqk.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
-          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
-          return;
-        }
-      }
-      beqk.a(this.jdField_a_of_type_Beqk, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Beqn);
-      return;
+    if (!WriteTogetherEditorView.a(this.a)) {}
+    while (paramMenuItem.getItemId() != 1) {
+      return false;
     }
-    beqk.a(this.jdField_a_of_type_Beqk, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Beqn);
+    WriteTogetherEditorView.a(this.a).a(this.a.getText().toString(), this.a.getSelectionStart(), this.a.getSelectionEnd());
+    paramActionMode.finish();
+    bdll.b(null, "dc00898", "", "", "0X800AF34", "0X800AF34", 5, 0, "", "", "", "");
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    if (!WriteTogetherEditorView.a(this.a)) {
+      return false;
+    }
+    if (Build.VERSION.SDK_INT >= 23) {
+      paramMenu.removeItem(16908341);
+    }
+    if (WriteTogetherEditorView.a(this.a).a()) {
+      paramMenu.add(0, 1, 196608, "举报");
+    }
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

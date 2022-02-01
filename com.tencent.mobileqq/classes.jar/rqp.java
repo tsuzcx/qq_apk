@@ -1,21 +1,34 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class rqp
-  implements View.OnKeyListener
+class rqp
+  implements View.OnClickListener
 {
-  public rqp(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  rqp(rqm paramrqm) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0) && (TextUtils.isEmpty(ReadInJoySelectMemberFragment.a(this.a).getText()))) {
-      ReadInJoySelectMemberFragment.a(this.a).a();
+    if (rqm.a(this.a) != null) {
+      rqm.a(this.a).a(rqm.a(this.a));
     }
-    return false;
+    rqm.a(this.a).c.setVisibility(8);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uin", rqm.a(this.a).getCurrentAccountUin());
+      label67:
+      ocd.a(null, null, "0X8009BF1", "0X8009BF1", 0, 0, "", "", "", odr.a(null, null, rqm.a(this.a).a.a.a, rqm.a(this.a).a.a.g, localJSONObject), false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label67;
+    }
   }
 }
 

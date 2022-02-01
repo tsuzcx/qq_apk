@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import areb;
-import arej;
-import aren;
-import arga;
-import argk;
+import artq;
+import arty;
+import aruc;
+import arvp;
+import arvz;
 
 public class DanmakuManager$1
   implements Runnable
 {
-  DanmakuManager$1(DanmakuManager paramDanmakuManager, aren paramaren, argk paramargk) {}
+  DanmakuManager$1(DanmakuManager paramDanmakuManager, aruc paramaruc, arvz paramarvz) {}
   
   public void run()
   {
     if (DanmakuManager.a(this.this$0) == null) {
       return;
     }
-    if (this.jdField_a_of_type_Aren == null)
+    if (this.jdField_a_of_type_Aruc == null)
     {
       DanmakuManager.a(this.this$0).a(false);
       return;
     }
-    this.jdField_a_of_type_Argk.a(this.jdField_a_of_type_Aren.h(), this.jdField_a_of_type_Aren.i());
-    arga localarga = this.jdField_a_of_type_Aren.a(this.jdField_a_of_type_Argk);
-    if (DanmakuManager.a(this.this$0, localarga))
+    this.jdField_a_of_type_Arvz.a(this.jdField_a_of_type_Aruc.h(), this.jdField_a_of_type_Aruc.i());
+    arvp localarvp = this.jdField_a_of_type_Aruc.a(this.jdField_a_of_type_Arvz);
+    if (DanmakuManager.a(this.this$0, localarvp))
     {
       DanmakuManager.a(this.this$0).a(true);
-      if (localarga.a) {
-        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Aren);
+      if (localarvp.a) {
+        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Aruc);
       }
-      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Aren, this.jdField_a_of_type_Argk, localarga);
+      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Aruc, this.jdField_a_of_type_Arvz, localarvp);
       return;
     }
     DanmakuManager.a(this.this$0).a(false);

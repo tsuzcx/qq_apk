@@ -1,18 +1,17 @@
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class sen
-  extends bkfi
+  implements View.OnClickListener
 {
-  sen(sek paramsek, AlphaAnimation paramAlphaAnimation) {}
+  sen(sel paramsel, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Sek.a.q.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    ocd.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,24 +1,14 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+
 public class bfnm
+  implements bjbn
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int[] a;
-  public int b;
-  public boolean b;
-  public int[] b;
-  public int c = -1;
-  public int d = -1;
+  public bfnm(NewTroopContactView paramNewTroopContactView) {}
   
-  public bfnm()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public void a(Bundle paramBundle) {}
   
-  public String toString()
-  {
-    return "rankId = " + this.jdField_a_of_type_Int + ",realLevel = " + this.jdField_b_of_type_Int + ",rankTitle = " + this.jdField_a_of_type_JavaLangString + ",isShowLevel" + this.jdField_a_of_type_Boolean + ",isShowRank = " + this.jdField_b_of_type_Boolean;
-  }
+  public void b(Bundle paramBundle) {}
 }
 
 

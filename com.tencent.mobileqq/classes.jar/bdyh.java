@@ -1,57 +1,258 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.LinkedList;
 
-class bdyh
-  implements ITransactionCallback
+public class bdyh
+  extends bdyr
 {
-  bdyh(bdyg parambdyg, long paramLong) {}
+  private long jdField_a_of_type_Long;
+  public bdyi a;
+  private LinkedList<bdyu> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private bdyu[] jdField_a_of_type_ArrayOfBdyu;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public boolean b;
+  private boolean c;
+  private boolean d;
+  private boolean e;
+  private boolean f;
+  public int g;
+  private int h = 10;
+  private int i = -1;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public bdyh(SpriteGLView paramSpriteGLView, String[] paramArrayOfString)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_Bdyg.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bdyg.b);
-    this.jdField_a_of_type_Bdyg.d();
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_ArrayOfBdyu = new bdyu[paramArrayOfString.length];
+    e(10);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  private bdyu a(int paramInt)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long));
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilLinkedList != null)
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(this.jdField_a_of_type_ArrayOfBdyu[paramInt]);
+        bdyu localbdyu = this.jdField_a_of_type_ArrayOfBdyu[paramInt];
+        return localbdyu;
+      }
+      return null;
     }
-    this.jdField_a_of_type_Bdyg.b.b();
-    this.jdField_a_of_type_Bdyg.b.a = 1;
-    this.jdField_a_of_type_Bdyg.s = this.jdField_a_of_type_Bdyg.jdField_q_of_type_Long;
-    this.jdField_a_of_type_Bdyg.a.a = paramArrayOfByte;
-    this.jdField_a_of_type_Bdyg.e();
-    this.jdField_a_of_type_Bdyg.a.a();
+    finally {}
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  private void a(int paramInt, bdyu parambdyu)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    if ((this.jdField_a_of_type_ArrayOfBdyu != null) && (this.jdField_a_of_type_ArrayOfBdyu.length > paramInt)) {
+      this.jdField_a_of_type_ArrayOfBdyu[paramInt] = parambdyu;
     }
-    this.jdField_a_of_type_Bdyg.b.a();
   }
   
-  public void onUpdateProgress(int paramInt)
+  private void e()
   {
-    bdyg localbdyg = this.jdField_a_of_type_Bdyg;
-    bduk localbduk = this.jdField_a_of_type_Bdyg.a;
-    long l = paramInt;
-    localbduk.e = l;
-    localbdyg.s = l;
-    if ((paramInt < this.jdField_a_of_type_Bdyg.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Bdyg.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Bdyg.m)) {
-      this.jdField_a_of_type_Bdyg.j();
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilLinkedList != null)
+      {
+        int j = 0;
+        while (j < this.jdField_a_of_type_JavaUtilLinkedList.size())
+        {
+          ((bdyu)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).c();
+          j += 1;
+        }
+        this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      }
+      return;
     }
+    finally {}
+  }
+  
+  private void f(int paramInt)
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_ArrayOfBdyu != null) && (this.jdField_a_of_type_ArrayOfBdyu.length > paramInt) && (this.jdField_a_of_type_ArrayOfBdyu[paramInt] != null))
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.add(this.jdField_a_of_type_ArrayOfBdyu[paramInt]);
+        this.jdField_a_of_type_ArrayOfBdyu[paramInt].a();
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ArrayOfBdyu != null)
+    {
+      int j = 0;
+      while (j < this.jdField_a_of_type_ArrayOfBdyu.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfBdyu[j] != null)
+        {
+          this.jdField_a_of_type_ArrayOfBdyu[j].c();
+          this.jdField_a_of_type_ArrayOfBdyu[j] = null;
+        }
+        j += 1;
+      }
+    }
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilLinkedList != null) {
+        this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      }
+      this.jdField_a_of_type_JavaUtilLinkedList = null;
+      this.jdField_a_of_type_ArrayOfBdyu = null;
+      this.e = true;
+      this.jdField_a_of_type_Bdyi = null;
+      super.a();
+      return;
+    }
+    finally {}
+  }
+  
+  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  {
+    int j;
+    if ((this.c) && (this.jdField_a_of_type_ArrayOfBdyu != null))
+    {
+      j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
+      if (j <= this.i) {
+        break label370;
+      }
+      if (j <= this.i + 1) {
+        break label220;
+      }
+      this.i += 1;
+      if (this.i >= this.jdField_a_of_type_ArrayOfBdyu.length) {
+        break label268;
+      }
+      if ((this.jdField_a_of_type_ArrayOfBdyu[this.i] == null) || (!this.jdField_a_of_type_ArrayOfBdyu[this.i].a)) {
+        break label229;
+      }
+      if (this.jdField_a_of_type_Bdyu != null) {
+        this.jdField_a_of_type_Bdyu.c();
+      }
+      this.jdField_a_of_type_Bdyu = a(this.i);
+      if (QLog.isColorLevel()) {
+        QLog.d("FrameSprite", 2, "FrameSprite: mTexture = " + this.jdField_a_of_type_Bdyu);
+      }
+      g();
+      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+      if (QLog.isColorLevel()) {
+        QLog.d("FrameSprite", 2, "FrameSprite: draw1:" + this.i);
+      }
+    }
+    label220:
+    label229:
+    label370:
+    do
+    {
+      for (;;)
+      {
+        return;
+        this.i = j;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("FrameSprite", 2, "FrameSprite: mTexture = null:" + this.i);
+        }
+        e();
+        return;
+        if (this.d)
+        {
+          super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+          if (QLog.isColorLevel()) {
+            QLog.d("FrameSprite", 2, "FrameSprite: draw3:" + this.i);
+          }
+        }
+        while (this.jdField_a_of_type_Bdyi != null)
+        {
+          this.jdField_a_of_type_Bdyi.a();
+          this.jdField_a_of_type_Bdyi = null;
+          return;
+          this.c = false;
+          if (this.jdField_a_of_type_Bdyu != null) {
+            this.jdField_a_of_type_Bdyu.c();
+          }
+        }
+      }
+      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+    } while (!QLog.isColorLevel());
+    label268:
+    QLog.d("FrameSprite", 2, "FrameSprite: draw2:" + this.i);
+  }
+  
+  public void a(Context paramContext, SpriteGLView paramSpriteGLView)
+  {
+    ThreadManager.post(new FrameSprite.1(this, paramContext, paramSpriteGLView), 8, null, true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public void aJ_()
+  {
+    this.c = true;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  protected void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  {
+    if (this.c)
+    {
+      int j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
+      if (j >= this.jdField_a_of_type_ArrayOfBdyu.length) {
+        break label67;
+      }
+      this.jdField_a_of_type_Bdyu = this.jdField_a_of_type_ArrayOfBdyu[j];
+    }
+    for (;;)
+    {
+      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+      return;
+      label67:
+      if (this.b)
+      {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Bdyu = this.jdField_a_of_type_ArrayOfBdyu[0];
+      }
+      else if (this.d)
+      {
+        this.jdField_a_of_type_Bdyu = this.jdField_a_of_type_ArrayOfBdyu[(this.jdField_a_of_type_ArrayOfBdyu.length - 1)];
+      }
+      else
+      {
+        this.jdField_a_of_type_Bdyu = null;
+        if (this.jdField_a_of_type_Bdyi != null)
+        {
+          this.jdField_a_of_type_Bdyi.a();
+          this.jdField_a_of_type_Bdyi = null;
+        }
+      }
+    }
+  }
+  
+  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  {
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+    }
+    while (this.jdField_a_of_type_ArrayOfBdyu == null) {
+      return;
+    }
+    b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+  }
+  
+  public void e(int paramInt)
+  {
+    this.h = paramInt;
+    this.g = ((int)(this.h * 0.8D));
   }
 }
 

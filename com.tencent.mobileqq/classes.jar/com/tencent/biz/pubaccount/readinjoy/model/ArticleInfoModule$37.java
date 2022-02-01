@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import pha;
-import pwb;
-import qnf;
-import rii;
-import rik;
+import ozs;
+import pon;
+import qfq;
+import qzb;
+import qzd;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ControlParam;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqBody;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo;
@@ -26,7 +26,7 @@ import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo;
 public class ArticleInfoModule$37
   implements Runnable
 {
-  public ArticleInfoModule$37(pwb parampwb, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public ArticleInfoModule$37(pon parampon, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
@@ -56,7 +56,7 @@ public class ArticleInfoModule$37
       }
       localObject1 = new ConcurrentHashMap();
       Object localObject2 = new oidb_cmd0x8c8.ReqBody();
-      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(pha.a()).longValue());
+      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(ozs.a()).longValue());
       ((oidb_cmd0x8c8.ReqBody)localObject2).uint32_version.set(1);
       ArrayList localArrayList = new ArrayList();
       localObject3 = ((List)localObject3).iterator();
@@ -78,8 +78,8 @@ public class ArticleInfoModule$37
           Iterator localIterator = localArticleInfo.mTopicRecommendFeedsInfo.a.iterator();
           while (localIterator.hasNext())
           {
-            rik localrik = (rik)localIterator.next();
-            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localrik.jdField_a_of_type_Int));
+            qzd localqzd = (qzd)localIterator.next();
+            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localqzd.jdField_a_of_type_Int));
           }
         }
         localArrayList.add(localReqMsgInfo);
@@ -88,7 +88,7 @@ public class ArticleInfoModule$37
       ((oidb_cmd0x8c8.ReqBody)localObject2).rpt_msg_info_list.set(localArrayList);
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.set(new oidb_cmd0x8c8.ControlParam());
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.uint32_need_follow_status.set(1);
-      localObject2 = qnf.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
+      localObject2 = qfq.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_retry_times", Integer.valueOf(0));
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_articleMap", localObject1);
       ((ToServiceMsg)localObject2).addAttribute("isUpdateByAccount", Boolean.valueOf(this.jdField_a_of_type_Boolean));

@@ -1,16 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
 
-final class akoe
-  implements DialogInterface.OnClickListener
+public class akoe
+  implements View.OnClickListener
 {
-  akoe(Activity paramActivity, List paramList1, List paramList2) {}
+  public akoe(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    aknz.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
+    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.a(this.a, null);
+    bmof.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
+    QQPimGetTipsInfoIPC.a().c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

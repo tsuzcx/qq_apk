@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.freshnews;
 
-import acdz;
+import acid;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -17,12 +17,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import anni;
-import arxd;
-import arxg;
-import auop;
-import bdol;
-import bkft;
+import anzj;
+import asmr;
+import asmu;
+import avgp;
+import behh;
+import blgx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.dating.widget.InputBar;
@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 
 public class QQInputView
   extends RelativeLayout
-  implements TextWatcher, View.OnClickListener, arxd
+  implements TextWatcher, View.OnClickListener, asmr
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
@@ -44,7 +44,7 @@ public class QQInputView
   private Button jdField_a_of_type_AndroidWidgetButton;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private auop jdField_a_of_type_Auop;
+  private avgp jdField_a_of_type_Avgp;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private InputBar jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar;
   private SystemAndEmojiEmoticonPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel;
@@ -77,7 +77,7 @@ public class QQInputView
       this.jdField_a_of_type_AndroidOsHandler.post(new QQInputView.2(this));
       return;
     }
-    bkft.b(this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    blgx.b(this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
     if (this.c == this.d)
     {
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQInputView.3(this), 50L);
@@ -88,13 +88,13 @@ public class QQInputView
   
   private void a(Context paramContext)
   {
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131561190, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131561227, this, true);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365878));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)super.findViewById(2131368651));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377184));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131369583));
-    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar = ((InputBar)super.findViewById(2131368652));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365923));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)super.findViewById(2131368725));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377324));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131369677));
+    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar = ((InputBar)super.findViewById(2131368726));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = TroopBarPublishUtils.a(getContext(), this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -102,10 +102,10 @@ public class QQInputView
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnClickListener(this);
     if (AppSetting.c)
     {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setContentDescription(anni.a(2131709166));
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(anni.a(2131709162));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setContentDescription(anzj.a(2131709275));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(anzj.a(2131709271));
     }
-    acdz.a(getContext(), this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    acid.a(getContext(), this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
   }
   
   private void e()
@@ -115,18 +115,18 @@ public class QQInputView
     str = Pattern.compile("^ +").matcher(str).replaceAll("");
     str = Pattern.compile(" +$").matcher(str).replaceAll("");
     if (!a(str.length())) {}
-    while (this.jdField_a_of_type_Auop == null) {
+    while (this.jdField_a_of_type_Avgp == null) {
       return;
     }
-    this.jdField_a_of_type_Auop.b(str);
+    this.jdField_a_of_type_Avgp.b(str);
   }
   
   private void f()
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847887);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847906);
     if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131709163));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131709272));
     }
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(8);
   }
@@ -141,26 +141,26 @@ public class QQInputView
     a(this.jdField_a_of_type_Int);
   }
   
-  public void a(arxg paramarxg)
+  public void a(asmu paramasmu)
   {
     if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() == null) {}
     for (Object localObject = null;; localObject = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString())
     {
       if ((TextUtils.isEmpty((CharSequence)localObject)) || ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).length() < 49))) {
-        paramarxg.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+        paramasmu.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
       }
       return;
     }
   }
   
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
+  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
   
   public boolean a(int paramInt)
   {
     return true;
   }
   
-  public boolean a(arxg paramarxg)
+  public boolean a(asmu paramasmu)
   {
     return false;
   }
@@ -182,10 +182,10 @@ public class QQInputView
   
   public void b()
   {
-    bdol.a(this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    behh.a(this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
   }
   
-  public void b(arxg paramarxg) {}
+  public void b(asmu paramasmu) {}
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
@@ -208,8 +208,8 @@ public class QQInputView
           if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() == 8) {}
           for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
           {
-            if (this.jdField_a_of_type_Auop != null) {
-              this.jdField_a_of_type_Auop.b();
+            if (this.jdField_a_of_type_Avgp != null) {
+              this.jdField_a_of_type_Avgp.b();
             }
             a();
             break;
@@ -259,7 +259,7 @@ public class QQInputView
         if (QLog.isColorLevel()) {
           QLog.d("input", 2, "inputview hide");
         }
-        if (this.jdField_a_of_type_Auop != null)
+        if (this.jdField_a_of_type_Avgp != null)
         {
           str = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
           str = Pattern.compile("\n").matcher(str).replaceAll("");
@@ -269,7 +269,7 @@ public class QQInputView
           if ((paramInt3 == 0) || (paramInt3 < 0) || (paramInt3 > this.b)) {
             str = "";
           }
-          this.jdField_a_of_type_Auop.a(str);
+          this.jdField_a_of_type_Avgp.a(str);
         }
         this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(a());
         f();
@@ -282,8 +282,8 @@ public class QQInputView
         if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))
         {
           str = null;
-          if (this.jdField_a_of_type_Auop != null) {
-            str = this.jdField_a_of_type_Auop.b();
+          if (this.jdField_a_of_type_Avgp != null) {
+            str = this.jdField_a_of_type_Avgp.b();
           }
           if (!TextUtils.isEmpty(str))
           {
@@ -292,22 +292,22 @@ public class QQInputView
             this.jdField_a_of_type_AndroidWidgetButton.setSelected(false);
           }
         }
-        if (this.jdField_a_of_type_Auop != null) {
-          this.jdField_a_of_type_Auop.aO_();
+        if (this.jdField_a_of_type_Avgp != null) {
+          this.jdField_a_of_type_Avgp.aO_();
         }
       }
-      else if ((paramInt2 != this.f) && (this.jdField_a_of_type_Auop != null))
+      else if ((paramInt2 != this.f) && (this.jdField_a_of_type_Avgp != null))
       {
-        this.jdField_a_of_type_Auop.a(paramInt2);
+        this.jdField_a_of_type_Avgp.a(paramInt2);
       }
     }
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void setCallback(auop paramauop)
+  public void setCallback(avgp paramavgp)
   {
-    this.jdField_a_of_type_Auop = paramauop;
+    this.jdField_a_of_type_Avgp = paramavgp;
     this.jdField_a_of_type_AndroidOsHandler.post(new QQInputView.1(this));
   }
   

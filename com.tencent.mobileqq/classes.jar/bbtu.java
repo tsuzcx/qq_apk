@@ -1,71 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-final class bbtu
-  implements Comparator<bbmu>
+public class bbtu
+  implements DialogInterface.OnClickListener
 {
-  private final anmw jdField_a_of_type_Anmw;
-  private final awmz jdField_a_of_type_Awmz;
+  public bbtu(SignatureEditFragment paramSignatureEditFragment) {}
   
-  bbtu(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Awmz = ((awmz)paramQQAppInterface.getManager(11));
-    this.jdField_a_of_type_Anmw = ((anmw)paramQQAppInterface.getManager(51));
-  }
-  
-  public int a(bbmu parambbmu1, bbmu parambbmu2)
-  {
-    int i = -1;
-    parambbmu1 = this.jdField_a_of_type_Awmz.c(((bblq)parambbmu1).e());
-    parambbmu2 = this.jdField_a_of_type_Awmz.c(((bblq)parambbmu2).e());
-    if ((parambbmu1 == null) || (parambbmu2 == null)) {
-      if ((parambbmu1 == null) && (parambbmu2 == null)) {
-        i = 0;
-      }
-    }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return i;
-          } while (parambbmu2 == null);
-          return 1;
-          if ((parambbmu1.uin.equals("0")) && (parambbmu2.uin.equals("0"))) {
-            break;
-          }
-          if ((!parambbmu1.uin.equals("0")) && (!parambbmu2.uin.equals("0"))) {
-            return 0;
-          }
-        } while (!parambbmu2.uin.equals("0"));
-        return 1;
-        bool1 = this.jdField_a_of_type_Anmw.a(parambbmu1.unifiedCode, true);
-        bool2 = this.jdField_a_of_type_Anmw.a(parambbmu2.unifiedCode, true);
-        if ((!bool1) && (!bool2)) {
-          break;
-        }
-        if ((bool1) && (bool2)) {
-          return 0;
-        }
-      } while (bool2);
-      return 1;
-      boolean bool1 = TextUtils.isEmpty(parambbmu1.pinyinFirst);
-      bool2 = TextUtils.isEmpty(parambbmu2.pinyinFirst);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return parambbmu1.pinyinFirst.toLowerCase().charAt(0) - parambbmu2.pinyinFirst.toLowerCase().charAt(0);
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_know", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,30 +1,8 @@
-import java.util.List;
-
-public class bbzp
-  implements bbzo
+public abstract interface bbzp
 {
-  private acwu<bbzr> jdField_a_of_type_Acwu = new acwv();
-  private acww<Integer, bbzr> jdField_a_of_type_Acww = new acwx();
+  public abstract void a(boolean paramBoolean);
   
-  public bbzr a(Integer paramInteger)
-  {
-    return (bbzr)this.jdField_a_of_type_Acww.a(paramInteger);
-  }
-  
-  public List<bbzr> a()
-  {
-    return this.jdField_a_of_type_Acwu.a();
-  }
-  
-  public void a(Class<? extends bbzr> paramClass)
-  {
-    this.jdField_a_of_type_Acwu.a(paramClass);
-  }
-  
-  public void a(Integer paramInteger, Class<? extends bbzr> paramClass)
-  {
-    this.jdField_a_of_type_Acww.a(paramInteger, paramClass);
-  }
+  public abstract boolean b();
 }
 
 

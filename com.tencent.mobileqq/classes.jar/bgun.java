@@ -1,12 +1,25 @@
-public abstract interface bgun
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class bgun
+  extends bguw
 {
-  public abstract bguo a(float paramFloat1, float paramFloat2);
-  
-  public abstract void a(bguo parambguo, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(bgup parambgup, bguo parambguo, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(bguo parambguo, float paramFloat1, float paramFloat2);
+  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
+  {
+    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED)) {
+      this.a = ((TroopUploadingThread)bguv.a(paramClass));
+    }
+    if (this.a == null) {}
+    do
+    {
+      return;
+      this.a.a(paramArrayList, paramHashMap, paramList, this);
+    } while (this.a.isAlive());
+    this.a.start();
+  }
 }
 
 

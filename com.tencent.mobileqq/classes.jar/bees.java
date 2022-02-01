@@ -1,66 +1,20 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 public class bees
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  befh jdField_a_of_type_Befh;
-  ArrayList<beff> jdField_a_of_type_JavaUtilArrayList;
+  public bees(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, View paramView) {}
   
-  protected bees(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void a(ArrayList<beff> paramArrayList, befh parambefh)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Befh = parambefh;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity()).inflate(2131560546, paramViewGroup, false);
-    }
-    for (;;)
-    {
-      PressEffectTextView localPressEffectTextView = (PressEffectTextView)paramView;
-      if (TextUtils.isEmpty(((beff)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a)) {
-        localPressEffectTextView.setVisibility(8);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localPressEffectTextView.setVisibility(0);
-        localPressEffectTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_JavaUtilArrayList.size(), ((beff)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a));
-        localPressEffectTextView.setOnClickListener(new beet(this, paramInt));
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
+    bhsi.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.c(), 1, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

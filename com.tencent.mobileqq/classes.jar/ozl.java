@@ -1,31 +1,6 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class ozl
-  implements pah
 {
-  public ozl(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
-  
-  public void a()
-  {
-    if (ReadInJoyCommentListFragment.a(this.a) != null) {
-      ReadInJoyCommentListFragment.a(this.a).a();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a(false, null, null);
-    }
-  }
+  public static void a() {}
 }
 
 

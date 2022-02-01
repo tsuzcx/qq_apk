@@ -1,22 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.os.Environment;
+import android.os.StatFs;
+import java.io.File;
 
-class aidt
-  implements ValueAnimator.AnimatorUpdateListener
+public class aidt
 {
-  aidt(aidp paramaidp, View paramView, int paramInt1, int paramInt2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static long a()
   {
-    if ((paramValueAnimator == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
-    }
-    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    float f2 = this.jdField_a_of_type_Int;
-    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    long l = localStatFs.getBlockSize();
+    return localStatFs.getAvailableBlocks() * l / 1024L;
   }
 }
 

@@ -1,6 +1,11 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import aauw;
+import aaaf;
+import aaah;
+import aaai;
+import aaak;
+import aaam;
+import aadt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -27,32 +32,32 @@ import common.config.service.QzoneConfig;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StPushList;
 import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudWrite.StDoPushRsp;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Timer;
 import qqcircle.QQCircleFeedBase.StFeedBusiReqData;
-import uwz;
-import uxp;
-import uxx;
-import vtm;
-import vxz;
-import vya;
-import vyb;
-import vyc;
-import vye;
-import zvh;
-import zwk;
-import zwm;
-import zwn;
-import zwp;
-import zwr;
+import uyk;
+import uyy;
+import uzg;
+import vqt;
+import vux;
+import vuy;
+import vva;
+import vvd;
+import vwl;
+import wbt;
+import wbu;
+import wbv;
+import wbw;
+import zzc;
 
 public class QCircleRecommendImageView
   extends FrameAnimationView
-  implements zwr
+  implements aaam, aadt
 {
-  private static Map<String, zwm> jdField_a_of_type_JavaUtilMap;
-  private static zwk jdField_a_of_type_Zwk = new zwk();
+  private static aaaf jdField_a_of_type_Aaaf = new aaaf();
+  private static Map<String, aaah> jdField_a_of_type_JavaUtilMap;
   private static boolean jdField_a_of_type_Boolean;
   private static int g = 300;
   private static final int h = QzoneConfig.getQQCircleMaxPushCount();
@@ -65,7 +70,7 @@ public class QCircleRecommendImageView
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   private FeedCloudMeta.StPushList jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList;
   private Timer jdField_a_of_type_JavaUtilTimer;
-  private vye jdField_a_of_type_Vye;
+  private wbw jdField_a_of_type_Wbw;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private QQAnimationDrawable jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable;
@@ -85,8 +90,9 @@ public class QCircleRecommendImageView
   
   static
   {
-    jdField_a_of_type_Zwk.a(new zwn("https://downv6.qq.com/video_story/qcircle/animation/rocket_start.zip", uwz.a()));
-    jdField_a_of_type_Zwk.a(new zwn("https://downv6.qq.com/video_story/qcircle/animation/rocket_end.zip", uwz.a()));
+    jdField_a_of_type_Aaaf.a(new aaai("https://downv6.qq.com/video_story/qcircle/animation/rocket_start.zip", uyk.a()));
+    jdField_a_of_type_Aaaf.a(new aaai("https://downv6.qq.com/video_story/qcircle/animation/rocket_end.zip", uyk.a()));
+    jdField_a_of_type_Aaaf.a();
   }
   
   public QCircleRecommendImageView(Context paramContext)
@@ -113,10 +119,10 @@ public class QCircleRecommendImageView
     {
       if ((jdField_a_of_type_JavaUtilMap != null) && (jdField_a_of_type_JavaUtilMap.containsKey(paramString)))
       {
-        paramString = (zwm)jdField_a_of_type_JavaUtilMap.get(paramString);
+        paramString = (aaah)jdField_a_of_type_JavaUtilMap.get(paramString);
         if (paramString != null)
         {
-          paramString = zvh.a(paramString.b);
+          paramString = zzc.a(paramString.b);
           if ((paramString != null) && (paramString.length > 0))
           {
             QQAnimationDrawable localQQAnimationDrawable = new QQAnimationDrawable();
@@ -144,8 +150,8 @@ public class QCircleRecommendImageView
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Vye != null) {
-      this.jdField_a_of_type_Vye.a(paramInt);
+    if (this.jdField_a_of_type_Wbw != null) {
+      this.jdField_a_of_type_Wbw.a(paramInt);
     }
   }
   
@@ -154,31 +160,40 @@ public class QCircleRecommendImageView
     if (paramInt1 == 0)
     {
       QLog.d(a(), 1, "fuel is use up: " + paramInt2);
-      uxp.a().a(getContext(), getContext().getString(2131697132, new Object[] { Integer.valueOf(paramInt2) }));
-      k();
-      return;
+      if (paramInt2 == 0)
+      {
+        uyy.a().a(getContext(), getContext().getString(2131697236));
+        k();
+      }
     }
-    if (paramInt1 <= i)
+    do
     {
-      QLog.d(a(), 1, "fuel is not enough: " + paramInt2);
-      uxp.a().a(getContext(), getContext().getString(2131697173, new Object[] { Integer.valueOf(paramInt2) }));
       return;
-    }
-    QLog.d(a(), 1, "fuel is enough: " + paramInt2);
-    uxp.a().a(getContext(), getResources().getString(2131697248, new Object[] { Integer.valueOf(paramInt2) }));
+      uyy.a().a(getContext(), getContext().getString(2131697193, new Object[] { Integer.valueOf(paramInt2) }));
+      break;
+      if (paramInt1 <= i)
+      {
+        QLog.d(a(), 1, "fuel is not enough: " + paramInt2);
+        uyy.a().a(getContext(), getContext().getString(2131697237, new Object[] { Integer.valueOf(paramInt2) }));
+        return;
+      }
+      QLog.d(a(), 1, "fuel is enough: " + paramInt2);
+    } while (!uyk.a().g());
+    uyy.a().a(getContext(), getResources().getString(2131697323, new Object[] { Integer.valueOf(paramInt2) }));
+    uyk.a().h();
   }
   
   private void a(String paramString)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new QCircleRecommendImageView.7(this, paramString));
+    ThreadManagerV2.getUIHandlerV2().post(new QCircleRecommendImageView.6(this, paramString));
   }
   
   private void a(boolean paramBoolean)
   {
     if (!jdField_a_of_type_Boolean)
     {
-      jdField_a_of_type_Zwk.a(new vyb(this, paramBoolean));
-      jdField_a_of_type_Zwk.a();
+      jdField_a_of_type_Aaaf.a(new wbv(this, paramBoolean));
+      jdField_a_of_type_Aaaf.a();
       return;
     }
     try
@@ -216,7 +231,7 @@ public class QCircleRecommendImageView
         this.jdField_a_of_type_Int = paramInt;
         this.jdField_b_of_type_Int = paramInt;
         QLog.d(a(), 1, "hasLikeCount" + this.jdField_a_of_type_Int);
-        vtm.a(localStFeedBusiReqData.pushList, paramInt);
+        vwl.a(localStFeedBusiReqData.pushList, paramInt);
         this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList = localStFeedBusiReqData.pushList;
         this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.busiData.set(ByteStringMicro.copyFrom(localStFeedBusiReqData.toByteArray()));
         return;
@@ -255,15 +270,15 @@ public class QCircleRecommendImageView
     setPadding(this.j, this.k, this.l, this.m);
     try
     {
-      setImageResource(2130843963);
+      setImageResource(2130843980);
       if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3))
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843993));
+        setBackgroundDrawable(getResources().getDrawable(2130844013));
         return;
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843991));
+        setBackgroundDrawable(getResources().getDrawable(2130844011));
         return;
       }
     }
@@ -280,14 +295,14 @@ public class QCircleRecommendImageView
     {
       if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3))
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843992));
-        setImageResource(2130843962);
+        setBackgroundDrawable(getResources().getDrawable(2130844012));
+        setImageResource(2130843979);
         return;
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843991));
-        setImageResource(2130843961);
+        setBackgroundDrawable(getResources().getDrawable(2130844011));
+        setImageResource(2130843978);
         return;
       }
     }
@@ -304,13 +319,13 @@ public class QCircleRecommendImageView
       if (this.jdField_d_of_type_Int != 2) {
         break label30;
       }
-      setBackgroundDrawable(getResources().getDrawable(2130843991));
+      setBackgroundDrawable(getResources().getDrawable(2130844011));
     }
     label30:
     while ((this.jdField_d_of_type_Int != 1) && (this.jdField_d_of_type_Int != 3)) {
       return;
     }
-    setBackgroundDrawable(getResources().getDrawable(2130843993));
+    setBackgroundDrawable(getResources().getDrawable(2130844013));
     setWillNotDraw(true);
   }
   
@@ -327,12 +342,11 @@ public class QCircleRecommendImageView
       if (this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null)
       {
         QLog.d(a(), 1, "mStartAnimationDrawable is null");
-        h();
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.b(true);
       this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(480L);
-      this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new vxz(this));
+      this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new wbt(this));
       setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
       this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
     } while (this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener == null);
@@ -347,10 +361,8 @@ public class QCircleRecommendImageView
     if ((this.jdField_d_of_type_Int == 2) || (this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3))
     {
       this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = a("https://downv6.qq.com/video_story/qcircle/animation/rocket_end.zip");
-      if (this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null)
-      {
+      if (this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null) {
         QLog.d(a(), 1, "mStartAnimationDrawable is null");
-        h();
       }
     }
     else
@@ -360,7 +372,7 @@ public class QCircleRecommendImageView
     }
     this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.b(true);
     this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(250L);
-    this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new vya(this));
+    this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new wbu(this));
     postDelayed(new QCircleRecommendImageView.3(this), 250L);
     setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
     this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
@@ -368,23 +380,28 @@ public class QCircleRecommendImageView
   
   private void h()
   {
-    aauw.b(QCircleDoRecommendRequest.class.getSimpleName(), g, new vyc(this));
+    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList != null))
+    {
+      a(1);
+      QCircleDoRecommendRequest localQCircleDoRecommendRequest = new QCircleDoRecommendRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 1, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList, 0);
+      vuy.a().a().a(new vva()).a(new vvd()).a(localQCircleDoRecommendRequest, this);
+    }
   }
   
   private void i()
   {
-    uxp.a().a(getContext(), getContext().getResources().getString(2131697121));
+    uyy.a().a(getContext(), getContext().getResources().getString(2131697182));
   }
   
   private void j()
   {
-    uxp.a().a(getContext(), getContext().getString(2131697186, new Object[] { Integer.valueOf(h) }));
+    uyy.a().a(getContext(), getContext().getString(2131697252, new Object[] { Integer.valueOf(h) }));
   }
   
   private void k()
   {
     QCircleTaskCenterEvent localQCircleTaskCenterEvent = new QCircleTaskCenterEvent(getContext().hashCode(), true);
-    zwp.a().a(localQCircleTaskCenterEvent);
+    aaak.a().a(localQCircleTaskCenterEvent);
   }
   
   private void l()
@@ -415,6 +432,50 @@ public class QCircleRecommendImageView
     b(a());
   }
   
+  public void a(boolean paramBoolean, long paramLong, String paramString, Object paramObject1, Object paramObject2)
+  {
+    if (!paramBoolean)
+    {
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      ThreadManagerV2.getUIHandlerV2().post(new QCircleRecommendImageView.7(this));
+    }
+    if (((paramObject1 instanceof QCircleDoRecommendRequest)) && ((paramObject2 instanceof FeedCloudWrite.StDoPushRsp)))
+    {
+      paramObject1 = (QCircleDoRecommendRequest)paramObject1;
+      paramObject2 = (FeedCloudWrite.StDoPushRsp)paramObject2;
+      if (paramLong != 0L) {
+        break label209;
+      }
+      QLog.d(a(), 1, "req traceId:" + paramObject1.getTraceId());
+      QLog.d(a(), 1, "QCircleDoRecommendRequest push success myFuel:" + paramObject2.myFuel.get() + "consumeFuel" + paramObject2.consumeFuel.get());
+      this.jdField_a_of_type_Int += paramObject2.consumeFuel.get();
+      b(this.jdField_a_of_type_Int);
+      a(paramObject2.myFuel.get(), paramObject2.consumeFuel.get());
+    }
+    for (;;)
+    {
+      b(b());
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      return;
+      label209:
+      if (paramLong == 700207L)
+      {
+        QLog.d(a(), 1, "CW_HAVE_PUSH_MAX_CNT");
+        j();
+      }
+      else if (paramLong == 700202L)
+      {
+        uyy.a().a(getContext(), getContext().getString(2131697235));
+        k();
+      }
+      else
+      {
+        QLog.d(a(), 1, "net_error" + paramLong);
+        a(paramString);
+      }
+    }
+  }
+  
   protected void b()
   {
     this.j = getPaddingLeft();
@@ -426,20 +487,18 @@ public class QCircleRecommendImageView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int n = 0;
-    int i1 = (int)paramMotionEvent.getX();
-    int i2 = (int)paramMotionEvent.getY();
+    int n = (int)paramMotionEvent.getX();
+    int i1 = (int)paramMotionEvent.getY();
     switch (paramMotionEvent.getAction())
     {
-    default: 
-    case 0: 
-    case 2: 
+    }
+    do
+    {
       do
       {
         return true;
-        this.jdField_e_of_type_Int = i1;
-        this.f = i2;
-        this.jdField_c_of_type_Boolean = false;
+        this.jdField_e_of_type_Int = n;
+        this.f = i1;
         this.jdField_d_of_type_Boolean = false;
         this.jdField_a_of_type_Long = System.currentTimeMillis();
         if (this.jdField_b_of_type_Int >= h)
@@ -447,41 +506,63 @@ public class QCircleRecommendImageView
           j();
           return true;
         }
-        if ((a() != null) && (uxx.a((FeedCloudMeta.StUser)a().poster.get())))
+        if ((a() != null) && (uzg.a((FeedCloudMeta.StUser)a().poster.get())))
         {
           i();
           return true;
         }
+        if (uyk.a().a() <= 0)
+        {
+          a(0, 0);
+          return true;
+        }
+        this.jdField_c_of_type_Boolean = true;
         l();
         return true;
-      } while ((this.jdField_d_of_type_Boolean) || ((Math.abs(this.jdField_e_of_type_Int - i1) <= 20) && (Math.abs(this.f - i2) <= 20)));
+      } while ((!this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean) || ((Math.abs(this.jdField_e_of_type_Int - n) <= 20) && (Math.abs(this.f - i1) <= 20)));
       this.jdField_d_of_type_Boolean = true;
       m();
       return true;
-    }
+    } while (!this.jdField_c_of_type_Boolean);
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     m();
-    if ((a() != null) && (!TextUtils.isEmpty(a().id.get())) && (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long < g) && (this.jdField_b_of_type_Int < h))
+    if ((a() != null) && (!TextUtils.isEmpty(a().id.get())))
     {
-      this.jdField_b_of_type_Int += 1;
-      if (this.jdField_b_of_type_Long - this.jdField_c_of_type_Long > g) {
+      if (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long >= g) {
+        break label424;
+      }
+      if (this.jdField_b_of_type_Int < h)
+      {
+        this.jdField_b_of_type_Int += 1;
+        if (this.jdField_b_of_type_Long - this.jdField_c_of_type_Long <= g) {
+          break label374;
+        }
         n = 1;
+        a(true);
+        if (n == 0) {
+          break label379;
+        }
+        this.jdField_c_of_type_Int = 1;
+        aaak.a().a(new QCirclePushAnimationEvent(a().id.get(), 1, 1, this.jdField_d_of_type_Int));
+        label341:
+        uyk.a().a(uyk.a().a() - 1);
+        h();
       }
-      a(true);
-      if (n == 0) {
-        break label327;
-      }
-      this.jdField_c_of_type_Int = 1;
-      zwp.a().a(new QCirclePushAnimationEvent(a().id.get(), 1, 1, this.jdField_d_of_type_Int));
     }
     for (;;)
     {
       this.jdField_c_of_type_Long = this.jdField_b_of_type_Long;
-      this.jdField_c_of_type_Boolean = true;
+      this.jdField_c_of_type_Boolean = false;
       return true;
-      label327:
+      label374:
+      n = 0;
+      break;
+      label379:
       this.jdField_c_of_type_Int += 1;
-      zwp.a().a(new QCirclePushAnimationEvent(a().id.get(), this.jdField_c_of_type_Int, 2, this.jdField_d_of_type_Int));
+      aaak.a().a(new QCirclePushAnimationEvent(a().id.get(), this.jdField_c_of_type_Int, 2, this.jdField_d_of_type_Int));
+      break label341;
+      label424:
+      this.jdField_c_of_type_Int = 0;
     }
   }
   
@@ -497,13 +578,13 @@ public class QCircleRecommendImageView
   {
     super.onAttachedToWindow();
     a();
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -539,7 +620,7 @@ public class QCircleRecommendImageView
     QQCircleFeedBase.StFeedBusiReqData localStFeedBusiReqData;
     if ((paramStFeed != null) && (paramStFeed.busiData.get() != null))
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = uxx.b(paramStFeed);
+      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = uzg.b(paramStFeed);
       localStFeedBusiReqData = new QQCircleFeedBase.StFeedBusiReqData();
     }
     try
@@ -548,18 +629,19 @@ public class QCircleRecommendImageView
       this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList = localStFeedBusiReqData.pushList;
       if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList != null)
       {
+        vqt.a().a(paramStFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList);
         this.jdField_a_of_type_Int = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList.hasClickCount.get();
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
         if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList.status.get() != 1) {
-          break label175;
+          break label192;
         }
       }
       for (;;)
       {
         b(bool);
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
         QLog.d(a(), 1, "hashCode" + hashCode() + "feedId:" + this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get() + "  hasClickCount" + this.jdField_a_of_type_Int);
         return;
-        label175:
+        label192:
         bool = false;
       }
       return;
@@ -580,9 +662,9 @@ public class QCircleRecommendImageView
     this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = paramAnimationListener;
   }
   
-  public void setReportListener(vye paramvye)
+  public void setReportListener(wbw paramwbw)
   {
-    this.jdField_a_of_type_Vye = paramvye;
+    this.jdField_a_of_type_Wbw = paramwbw;
   }
 }
 

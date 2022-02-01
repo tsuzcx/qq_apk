@@ -1,14 +1,16 @@
-public class bcje
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bcje
+  implements View.OnClickListener
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  bcje(bcjd parambcjd, bcfq parambcfq) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
+    this.jdField_a_of_type_Bcfq.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

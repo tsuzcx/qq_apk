@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import afur;
+import agej;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,12 +19,12 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
-import arzb;
-import arzc;
-import arzd;
-import asbf;
-import bgtn;
-import bkmr;
+import asop;
+import asoq;
+import asor;
+import asqt;
+import bhtq;
+import blnu;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -54,7 +54,7 @@ public class HorizontalListViewEx
   public HorizontalListViewEx(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = afur.a(51.0F, paramContext.getResources());
+    this.jdField_b_of_type_Int = agej.a(51.0F, paramContext.getResources());
     paramAttributeSet = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(paramAttributeSet);
     this.c = paramAttributeSet.widthPixels;
@@ -81,9 +81,9 @@ public class HorizontalListViewEx
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166499));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166503));
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.e = bgtn.a(18.0F);
+    this.e = bhtq.a(18.0F);
   }
   
   private void d()
@@ -95,9 +95,9 @@ public class HorizontalListViewEx
       View localView = getChildAt(i);
       if (localView.getTag() != null)
       {
-        arzd localarzd = (arzd)localView.getTag();
+        asor localasor = (asor)localView.getTag();
         localView.setSelected(false);
-        localarzd.a.setSelected(false);
+        localasor.a.setSelected(false);
       }
       i += 1;
     }
@@ -138,7 +138,7 @@ public class HorizontalListViewEx
         ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i, j });
         localValueAnimator.setDuration(200L);
         this.jdField_b_of_type_Boolean = true;
-        localValueAnimator.addUpdateListener(new asbf(this, localView, j));
+        localValueAnimator.addUpdateListener(new asqt(this, localView, j));
         localValueAnimator.start();
         return;
         if (this.d < getFirstVisiblePosition()) {
@@ -192,25 +192,25 @@ public class HorizontalListViewEx
       return;
       j = getChildCount();
     } while (getAdapter() == null);
-    paramCanvas = (arzb)getAdapter();
+    paramCanvas = (asop)getAdapter();
     int i = 0;
     label149:
     Object localObject2;
-    arzd localarzd;
+    asor localasor;
     if (i < j)
     {
       localObject1 = getChildAt(i);
       localObject2 = paramCanvas.getItem(this.mLeftViewAdapterIndex + i);
       if (((View)localObject1).getTag() != null)
       {
-        localarzd = (arzd)((View)localObject1).getTag();
+        localasor = (asor)((View)localObject1).getTag();
         if (localObject1 != getSelectedView()) {
           break label240;
         }
         ((View)localObject1).setSelected(true);
-        localarzd.a.setSelected(true);
+        localasor.a.setSelected(true);
         if (localObject2 != null) {
-          ((View)localObject1).setContentDescription(((arzc)localObject2).b);
+          ((View)localObject1).setContentDescription(((asoq)localObject2).b);
         }
       }
     }
@@ -221,9 +221,9 @@ public class HorizontalListViewEx
       break;
       label240:
       ((View)localObject1).setSelected(false);
-      localarzd.a.setSelected(false);
+      localasor.a.setSelected(false);
       if (localObject2 != null) {
-        ((View)localObject1).setContentDescription(((arzc)localObject2).b);
+        ((View)localObject1).setContentDescription(((asoq)localObject2).b);
       }
     }
   }

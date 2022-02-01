@@ -1,146 +1,138 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhle
 {
-  public static long a;
-  public static WebViewPluginEngine a;
-  public static final Object a;
-  public static HashMap<Integer, bhlg> a;
-  public static volatile boolean a;
-  public static WebViewPluginEngine b;
-  public static HashMap<Integer, bhlg> b;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static volatile boolean d;
-  
-  static
+  public static String a(Context paramContext, String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaLangObject = new Object();
+    paramContext = bhmi.a(String.format(Locale.getDefault(), "%s_%s_config_content", new Object[] { paramString1, paramString2 }));
+    if (paramContext == null) {
+      return null;
+    }
+    return (String)paramContext;
   }
   
-  public static void a()
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      bhlg localbhlg;
-      HashMap localHashMap;
-      while (localIterator.hasNext())
+    bhmi.a(String.format(Locale.getDefault(), "%s_%s_config_content", new Object[] { paramString1, paramString2 }), paramString3);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, aqzt paramaqzt)
+  {
+    str1 = paramQQAppInterface.c();
+    if ("confess_config".equals(paramString)) {
+      if (paramQQAppInterface.a(269))
       {
-        localbhlg = (bhlg)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbhlg.a));
-        localHashMap.put("totalNum", String.valueOf(localbhlg.b));
-        localHashMap.put("hasProc", String.valueOf(localbhlg.c));
-        localHashMap.put("noProc", String.valueOf(localbhlg.d));
-        bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
+        paramString = ((aqyp)paramQQAppInterface.getManager(269)).a();
+        paramaqzt.jdField_b_of_type_Boolean = paramString.a(paramaqzt.jdField_a_of_type_JavaLangString);
+        ((aqym)paramQQAppInterface.a(125)).a(paramQQAppInterface, paramString);
+        paramaqzt.jdField_a_of_type_Boolean = true;
       }
-      localIterator = b.values().iterator();
-      while (localIterator.hasNext())
+    }
+    Object localObject;
+    String str2;
+    do
+    {
+      return;
+      paramaqzt.jdField_b_of_type_Boolean = aqyl.b(paramaqzt.jdField_a_of_type_JavaLangString);
+      break;
+      if ("extend_friend_config_785".equals(paramString))
       {
-        localbhlg = (bhlg)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbhlg.a));
-        localHashMap.put("totalNum", String.valueOf(localbhlg.b));
-        localHashMap.put("hasProc", String.valueOf(localbhlg.c));
-        localHashMap.put("noProc", String.valueOf(localbhlg.d));
-        bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
+        paramaqzt.jdField_a_of_type_Boolean = true;
+        if (TextUtils.isEmpty(paramaqzt.jdField_a_of_type_JavaLangString))
+        {
+          QLog.e("ConfigUtil", 2, "processExtendFriendConfig is emtpy !! configParseResult version:" + paramaqzt.jdField_b_of_type_Int + " localVersion " + paramaqzt.jdField_a_of_type_Int);
+          paramaqzt.jdField_b_of_type_Boolean = false;
+          return;
+        }
+        a(paramQQAppInterface.getApp(), str1, paramString, paramaqzt.jdField_a_of_type_JavaLangString);
+        if (paramQQAppInterface.a(264)) {
+          ((asvi)paramQQAppInterface.getManager(264)).a(paramaqzt.jdField_a_of_type_JavaLangString);
+        }
+        paramaqzt.jdField_b_of_type_Boolean = true;
+        return;
       }
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      b.clear();
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "reportInterval...");
+      if ("sosointerface_config".equals(paramString))
+      {
+        paramaqzt.jdField_b_of_type_Boolean = SosoInterface.a(paramaqzt.jdField_a_of_type_JavaLangString);
+        paramaqzt.jdField_a_of_type_Boolean = true;
+        return;
       }
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_accelerator_mode_", 3);
-    localBundle.putInt("from", paramInt);
-    bhrb.a().a(localBundle);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
-  }
-  
-  public static void b(int paramInt)
-  {
-    int j = 0;
-    Object localObject = (aqup)aqlk.a().a(158);
-    if ((localObject != null) && (((aqup)localObject).b == 1)) {
+      if ("register_invitation_config".equals(paramString)) {
+        try
+        {
+          localObject = new JSONObject(paramaqzt.jdField_a_of_type_JavaLangString);
+          paramString = ((JSONObject)localObject).optString("entranceTitle");
+          str2 = ((JSONObject)localObject).optString("entranceSubtitle");
+          localObject = ((JSONObject)localObject).optString("entranceUrl");
+          bhsi.b(paramQQAppInterface.getApp(), str1, "register_invitation_sp_firstline", paramString);
+          bhsi.b(paramQQAppInterface.getApp(), str1, "register_invitation_sp_secondline", str2);
+          bhsi.b(paramQQAppInterface.getApp(), str1, "register_invitation_sp_entry", (String)localObject);
+          paramaqzt.jdField_a_of_type_Boolean = false;
+          paramaqzt.jdField_b_of_type_Boolean = true;
+          return;
+        }
+        catch (JSONException paramQQAppInterface)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("ConfigUtil", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
+            }
+          }
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("ConfigUtil", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
+            }
+          }
+        }
+      }
+    } while (!"account_logout_config".equals(paramString));
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject(paramaqzt.jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject).optInt("isShowEntrance") != 1) {
+          continue;
+        }
+        bool = true;
+        paramString = ((JSONObject)localObject).optString("webUrl");
+        str2 = ((JSONObject)localObject).optString("successText");
+        localObject = ((JSONObject)localObject).optString("boldText");
+        bhsi.b(paramQQAppInterface.getApp(), str1, "account_logout_url", paramString);
+        bhsi.a(paramQQAppInterface.getApp(), str1, "account_logout_entrance", bool);
+        bhsi.b(paramQQAppInterface.getApp(), str1, "account_logout_success_text", str2);
+        bhsi.b(paramQQAppInterface.getApp(), str1, "account_logout_bold_text", (String)localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ConfigUtil", 2, String.format("update account logout config, showEntrance:%s, webUrl: %s, successText: %s, boldText: %s", new Object[] { Boolean.valueOf(bool), paramString, str2, localObject }));
+        }
+      }
+      catch (Exception paramString)
+      {
+        boolean bool;
+        QLog.e("ConfigUtil", 1, paramString.getMessage(), paramString);
+        bhsi.b(paramQQAppInterface.getApp(), str1, "account_logout_url", "");
+        bhsi.a(paramQQAppInterface.getApp(), str1, "account_logout_entrance", false);
+        bhsi.b(paramQQAppInterface.getApp(), str1, "account_logout_success_text", "");
+        bhsi.b(paramQQAppInterface.getApp(), str1, "account_logout_bold_text", "");
+        continue;
+      }
+      paramaqzt.jdField_a_of_type_Boolean = false;
+      paramaqzt.jdField_b_of_type_Boolean = true;
       return;
+      bool = false;
     }
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (!bool)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("from", 305);
-      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
-      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "preloadWebview...");
-      }
-    }
-    localObject = new bhlg(paramInt);
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      localObject = (bhlg)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    }
-    ((bhlg)localObject).b += 1;
-    int k = ((bhlg)localObject).c;
-    if (bool)
-    {
-      i = 1;
-      label184:
-      ((bhlg)localObject).c = (i + k);
-      k = ((bhlg)localObject).d;
-      if (!bool) {
-        break label244;
-      }
-    }
-    label244:
-    for (int i = j;; i = 1)
-    {
-      ((bhlg)localObject).d = (k + i);
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
-      if (((bhlg)localObject).b <= 3) {
-        break;
-      }
-      a();
-      return;
-      i = 0;
-      break label184;
-    }
-  }
-  
-  public static boolean b(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 

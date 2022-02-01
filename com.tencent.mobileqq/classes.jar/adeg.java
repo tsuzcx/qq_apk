@@ -1,55 +1,49 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x67.submsgtype0x67.MsgBody;
 
 public class adeg
+  implements adci
 {
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  
-  public adeg(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
+  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+    if (QLog.isColorLevel()) {
+      QLog.d("nearbyTroopPush", 2, "receive msgtype0x210.submsgtype0x67 group recmd push: " + paramadan.a(paramMsgType0x210));
+    }
+    submsgtype0x67.MsgBody localMsgBody = new submsgtype0x67.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      if (localMsgBody.rpt_msg_grpinfo.has())
+      {
+        paramMsgType0x210 = localMsgBody.rpt_msg_grpinfo.get();
+        paramadan = (aoat)paramadan.a().a(3);
+        if (paramadan != null) {
+          paramadan.a(paramMsgType0x210);
+        }
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramMsgType0x210)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("nearbyTroopPush", 2, "receive msgtype0x210.submsgtype0x67 mergeFrom exception: " + paramMsgType0x210.toString());
+        }
+      }
+    }
   }
   
-  public static void a(int paramInt, Bundle paramBundle, adeh paramadeh)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("key_sub_cmd", paramInt);
-    if (paramadeh != null)
-    {
-      aanz.a().a(118, localBundle, paramadeh);
-      return;
-    }
-    aanz.a().a(118, localBundle);
-  }
-  
-  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
-  {
-    switch (paramBundle.getInt("key_sub_cmd"))
-    {
-    default: 
-      return;
-    case 1: 
-      paramBundle.putBundle("key_result", adfk.a());
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
-      return;
-    case 2: 
-      str1 = paramBundle.getString("key");
-      paramInt1 = paramBundle.getInt("type");
-      paramBundle = paramBundle.getString("appid");
-      adgu.a().b(str1, paramInt1, paramBundle);
-      return;
-    }
-    String str1 = paramBundle.getString("key");
-    paramInt1 = paramBundle.getInt("type");
-    String str2 = paramBundle.getString("appid");
-    paramBundle = paramBundle.getString("api");
-    adgu.a().b(str1, paramInt1, str2, paramBundle);
+    a(paramadan, paramMsgType0x210);
+    return null;
   }
 }
 

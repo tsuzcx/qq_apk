@@ -1,27 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
 public class agrp
-  extends afwr
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  public String b;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString;
-  public int e = 544;
-  public int f = 960;
+  public int a;
+  TItemViewHolder jdField_a_of_type_JavaLangObject;
   
-  public agrp()
+  public agrp(int paramInt, TItemViewHolder paramTItemViewHolder)
   {
-    this.jdField_b_of_type_JavaLangString = "https://v.qqstory.qq.com/shg_1206944563_50009_a1390c0bd23148e29d598d780ad1vid.f30.mp4";
+    this.jdField_a_of_type_Int = paramTItemViewHolder;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
 }
 

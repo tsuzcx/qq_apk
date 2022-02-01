@@ -1,22 +1,43 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
 public class aknn
-  implements OnCompositionLoadedListener
+  extends Handler
 {
-  public aknn(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment, ImageView paramImageView) {}
+  private WeakReference<BaseActivityView> a;
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public aknn(BaseActivityView paramBaseActivityView)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
+    this.a = new WeakReference(paramBaseActivityView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 

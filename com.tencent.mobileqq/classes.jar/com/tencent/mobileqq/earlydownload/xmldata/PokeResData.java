@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public class PokeResData
   extends XmlData
 {
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public long SoLength;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String SoMD5 = "";
   
   public String getSharedPreferencesName()

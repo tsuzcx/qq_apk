@@ -1,22 +1,37 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class ofv
-  implements ViewBase.OnClickListener
+public class ofv
 {
-  ofv(ofu paramofu) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g;
   
-  public void onClick(ViewBase paramViewBase)
+  public ofv()
   {
-    if (paramViewBase.getEventAttachedData() == null)
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
-      return;
-    }
-    ofk.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
-    pha.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (ofv)paramObject;
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

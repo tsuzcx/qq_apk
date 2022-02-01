@@ -1,28 +1,48 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.2;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class agcj
-  extends View
+  extends QIPCModule
+  implements agcq
 {
-  agcj(agci paramagci, Context paramContext)
+  private static volatile agcj a;
+  
+  public agcj(String paramString)
   {
-    super(paramContext);
+    super(paramString);
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public static agcj a()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new agcj("QQNotifyIPCModule");
+      }
+      return a;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("newSubscribe".equals(paramString)) {}
+    for (;;)
+    {
+      return EIPCResult.createResult(-100, null);
+      if ("query".equals(paramString)) {
+        agdi.c((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle.getString("msgid"), new agck(this, agcp.a(paramInt)));
+      }
     }
-    return true;
+  }
+  
+  public void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2)
+  {
+    callbackResult(agcp.a(paramBundle2), EIPCResult.createResult(0, paramBundle1));
   }
 }
 

@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Context;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class biwm
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public biwm(ContextMenuTextView paramContextMenuTextView) {}
   
-  public biwm(biwe parambiwe, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = biuh.a(paramString1, "NEWYYB");
-    this.b = paramString2;
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Biwe.a(this.b);
-    biuh.a("720", this.jdField_a_of_type_JavaLangString, this.b);
+    if (paramView.getId() == 2131365191)
+    {
+      Context localContext = ContextMenuTextView.a(this.a);
+      ContextMenuTextView.a(this.a);
+      ((ClipboardManager)localContext.getSystemService("clipboard")).setText(this.a.getText().toString());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

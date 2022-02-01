@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.drawer;
 
-import agiw;
+import agrx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class IntimateInfoChatDrawer$2
   implements Runnable
 {
-  public IntimateInfoChatDrawer$2(agiw paramagiw) {}
+  public IntimateInfoChatDrawer$2(agrx paramagrx) {}
   
   public void run()
   {

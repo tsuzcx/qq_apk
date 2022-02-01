@@ -1,67 +1,10 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.biz.richframework.part.block.BlockContainer;
-import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import java.util.ArrayList;
-
-public class zyp
-  extends zyr
+public abstract interface zyp
 {
-  public zyp(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
+  public abstract void a(zyr paramzyr);
   
-  private void a()
-  {
-    setDatas(new ArrayList());
-    setShareData("share_key_subscribe_user", new zxs(new ExtraTypeInfo()));
-    notifyLoadingComplete(true);
-  }
+  public abstract void b(zyr paramzyr);
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public zys a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return null;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
-  
-  public void a(HorizontalRvInnerView paramHorizontalRvInnerView)
-  {
-    paramHorizontalRvInnerView.setOrientation(1);
-  }
-  
-  protected void handleBlockChange(zxu paramzxu, int paramInt)
-  {
-    super.handleBlockChange(paramzxu, paramInt);
-  }
-  
-  public boolean isEnableRefresh()
-  {
-    return false;
-  }
-  
-  public void loadData(zxz paramzxz)
-  {
-    if ((paramzxz.d()) || (paramzxz.c())) {
-      a();
-    }
-  }
-  
-  public void onInitBlock(Bundle paramBundle)
-  {
-    getBlockContainer().setEnableRefresh(true);
-    addFloatView(new Button(getContext()));
-    getBlockContainer().a();
-  }
+  public abstract void c(zyr paramzyr);
 }
 
 

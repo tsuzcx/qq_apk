@@ -5,8 +5,8 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import java.util.Iterator;
 import java.util.List;
-import ley;
-import mie;
+import lff;
+import mja;
 import mqq.app.BaseActivity;
 
 class QavPanelSoundWaveView$1
@@ -57,12 +57,12 @@ class QavPanelSoundWaveView$1
         label190:
         if (((Iterator)localObject).hasNext())
         {
-          mie localmie = (mie)((Iterator)localObject).next();
-          localmie.a(this.this$0.c, f);
+          mja localmja = (mja)((Iterator)localObject).next();
+          localmja.a(this.this$0.c, f);
           if (i == 0) {
             break label319;
           }
-          if (Float.compare(localmie.d, 0.0F) == 0) {
+          if (Float.compare(localmja.d, 0.0F) == 0) {
             i = 1;
           }
         }

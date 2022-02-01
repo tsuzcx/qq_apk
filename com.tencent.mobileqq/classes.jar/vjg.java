@@ -1,15 +1,29 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
 
-public class vjg
-  implements zwi
+public abstract interface vjg
 {
-  public vjg(QCircleBaseFragment paramQCircleBaseFragment) {}
+  public abstract View a();
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    QLog.i("QCircleBaseFragment", 1, paramBoolean + paramString);
-  }
+  public abstract void a(TextCell paramTextCell);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void invalidate();
+  
+  public abstract boolean isPressed();
+  
+  public abstract void postInvalidate();
+  
+  public abstract void requestLayout();
+  
+  public abstract void setLongClickTrig(boolean paramBoolean);
+  
+  public abstract void setPressed(boolean paramBoolean);
 }
 
 

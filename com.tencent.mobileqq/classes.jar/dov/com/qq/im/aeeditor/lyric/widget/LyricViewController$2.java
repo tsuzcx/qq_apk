@@ -1,17 +1,17 @@
 package dov.com.qq.im.aeeditor.lyric.widget;
 
-import bobe;
+import bpcz;
 import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.TimerTaskRunnable;
 
 public class LyricViewController$2
   extends TimerTaskManager.TimerTaskRunnable
 {
-  public LyricViewController$2(bobe parambobe) {}
+  public LyricViewController$2(bpcz parambpcz) {}
   
   public void a()
   {
     if (!a()) {
-      bobe.a(this.this$0, 0, false);
+      bpcz.a(this.this$0, 0, false);
     }
   }
 }

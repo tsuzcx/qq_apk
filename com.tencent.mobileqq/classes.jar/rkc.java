@@ -1,27 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1.1.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 
 public class rkc
-  implements uwv
+  implements rkm
 {
-  public rkc(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public rkc(RIJUgcImageUploader.1 param1) {}
   
-  public void a(URL paramURL, int paramInt) {}
+  public void a() {}
   
-  public void a(URL paramURL, Throwable paramThrowable) {}
+  public void a(float paramFloat)
+  {
+    rkb.a(this.a.this$0).a(paramFloat);
+  }
   
-  public void a(URL paramURL, tds paramtds)
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
+      QLog.i(rkb.a, 2, "uploadImage finish, url=" + paramString1);
     }
-    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramtds.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
-    }
-    this.a.setRightViewTextDisable(1);
+    rkb.a(this.a.this$0, false);
+    ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1.1.1(this, paramInt, paramString1));
+    rkb.a(this.a.this$0).b();
   }
 }
 

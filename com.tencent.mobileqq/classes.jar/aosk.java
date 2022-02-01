@@ -1,65 +1,115 @@
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aosk
 {
-  public final int a;
-  long jdField_a_of_type_Long = 0L;
-  apte jdField_a_of_type_Apte = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  boolean jdField_a_of_type_Boolean = true;
-  public int b;
-  long b;
-  public String b;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  public String c;
-  int d;
-  public String d;
-  public final String e;
-  
-  public aosk(String paramString, int paramInt)
+  public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = -1;
-    this.e = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    paramMessageRecord = a(paramMessageRecord);
+    int j;
+    if (paramMessageRecord != null)
     {
-      if (this.jdField_c_of_type_Int == 1) {
-        return;
+      paramMessageRecord = paramMessageRecord.iterator();
+      int i = 0;
+      j = i;
+      if (!paramMessageRecord.hasNext()) {
+        break label62;
       }
-      if (this.jdField_c_of_type_Int == -1) {
-        QLog.w(PromotionConfigInfo.TAG, 1, "clearDownladFlag, ZipItem[" + this + "]");
+      aosl localaosl = (aosl)paramMessageRecord.next();
+      if (localaosl.a != paramInt) {
+        break label64;
       }
-      a(0);
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_c_of_type_Long = 0L;
-      return;
+      i = localaosl.b + i;
+    }
+    label62:
+    label64:
+    for (;;)
+    {
+      break;
+      j = 0;
+      return j;
     }
   }
   
-  void a(int paramInt)
+  public static List<aosl> a(MessageRecord paramMessageRecord)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    ArrayList localArrayList;
+    String str;
+    int j;
+    int i;
+    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
     {
-      this.jdField_c_of_type_Int = paramInt;
-      return;
+      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMessageRecord.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          paramMessageRecord = (bdol)localIterator.next();
+          if (paramMessageRecord != null)
+          {
+            str = anzj.a(2131704162);
+            j = 1;
+            if ((paramMessageRecord instanceof bdqx))
+            {
+              i = ((bdqx)paramMessageRecord).a.getInt("count");
+              j = 1;
+              paramMessageRecord = str;
+            }
+          }
+        }
+      }
     }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", id[" + this.e + "], index[" + this.jdField_a_of_type_Int + "], net_type[" + this.jdField_b_of_type_Int + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], zipFilePath[" + this.jdField_c_of_type_JavaLangString + "], unzipDirPath[" + this.jdField_d_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_a_of_type_Boolean + "], downloadType[" + this.jdField_c_of_type_Int + "]";
+    for (;;)
+    {
+      localArrayList.add(new aosl(paramMessageRecord, j, i));
+      break;
+      Object localObject = paramMessageRecord.h;
+      if (localObject != null)
+      {
+        i = j;
+        paramMessageRecord = str;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = j;
+          paramMessageRecord = str;
+          str = ((JSONObject)localObject).getString("giftName");
+          i = j;
+          paramMessageRecord = str;
+          j = ((JSONObject)localObject).getInt("giftType");
+          i = j;
+          paramMessageRecord = str;
+          int k = ((JSONObject)localObject).getInt("giftCount");
+          i = k;
+          paramMessageRecord = str;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          j = i;
+          i = 0;
+        }
+        continue;
+        return localArrayList;
+        return null;
+      }
+      else
+      {
+        i = 0;
+        j = 1;
+        paramMessageRecord = localJSONException;
+      }
+    }
   }
 }
 

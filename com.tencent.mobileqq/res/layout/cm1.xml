@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:id="@id/nx4" android:background="@color/by" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center" android:id="@id/mr0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wke" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/nx5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/mxu" android:layout_width="fill_parent" android:layout_height="240.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.5dip" android:layout_marginRight="15.0dip" android:scaleType="fitXY" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/mxv" android:layout_width="19.5dip" android:layout_height="19.5dip" android:layout_marginTop="32.5dip" android:layout_marginRight="15.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
 </RelativeLayout>

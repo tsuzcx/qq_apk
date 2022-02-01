@@ -1,32 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
 class aaig
-  implements Animator.AnimatorListener
+  implements aaav<CertifiedAccountWrite.StDoCommentRsp>
 {
-  aaig(aaid paramaaid) {}
+  aaig(aaid paramaaid, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
   {
-    aaid.a(this.a, null);
+    wjj.a().dispatch(this.jdField_a_of_type_Aaid.a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Aaid.hashCode()) }));
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (aaid.a(this.a) != null) {
-      aaid.a(this.a).a(3);
-    }
-    if (aaid.a(this.a) != null)
-    {
-      aaid.a(this.a).setAlpha(0.0F);
-      aaid.a(this.a, null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

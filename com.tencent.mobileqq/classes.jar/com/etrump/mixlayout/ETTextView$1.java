@@ -1,8 +1,8 @@
 package com.etrump.mixlayout;
 
 import android.view.View;
-import bdoc;
-import bhue;
+import begy;
+import biuz;
 import com.tencent.qphone.base.util.QLog;
 import fo;
 
@@ -13,19 +13,19 @@ public class ETTextView$1
   
   public void run()
   {
-    if (this.this$0.getTag(2131368238) != null) {}
-    for (boolean bool = ((Boolean)this.this$0.getTag(2131368238)).booleanValue();; bool = false)
+    if (this.this$0.getTag(2131368312) != null) {}
+    for (boolean bool = ((Boolean)this.this$0.getTag(2131368312)).booleanValue();; bool = false)
     {
       if ((this.this$0.isSingleClick) && (this.this$0.onSingleClick != null) && (!bool))
       {
         if (this.this$0.isUsingHYFont())
         {
           Object localObject = this.this$0.mLayout.a(this.this$0.mEmojiX, this.this$0.mEmojiY);
-          if ((localObject instanceof bdoc))
+          if ((localObject instanceof begy))
           {
-            localObject = (bdoc)localObject;
-            this.this$0.mClickEpId = ((bdoc)localObject).e;
-            this.this$0.mClickcEId = ((bdoc)localObject).f;
+            localObject = (begy)localObject;
+            this.this$0.mClickEpId = ((begy)localObject).e;
+            this.this$0.mClickcEId = ((begy)localObject).f;
             if (QLog.isColorLevel()) {
               QLog.d("ETTextView", 2, "click span: " + this.this$0.mClickEpId);
             }
@@ -33,7 +33,7 @@ public class ETTextView$1
         }
         this.this$0.onSingleClick.a(this.this$0);
       }
-      this.this$0.setTag(2131368238, Boolean.valueOf(false));
+      this.this$0.setTag(2131368312, Boolean.valueOf(false));
       return;
     }
   }

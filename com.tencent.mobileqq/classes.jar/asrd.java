@@ -1,17 +1,29 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class asrd
-  implements View.OnClickListener
 {
-  public asrd(FMActivity paramFMActivity) {}
+  private ArrayList<View> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public View a()
   {
-    FMActivity.c(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.size() > 0) {
+      return (View)this.a.remove(0);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.add(paramView);
   }
 }
 

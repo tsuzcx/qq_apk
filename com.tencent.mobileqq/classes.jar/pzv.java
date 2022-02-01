@@ -1,28 +1,75 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class pzv
-  implements aaob
+public class pzv
+  implements ViewBase.OnClickListener
 {
-  pzv(pzs parampzs, String paramString) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void callback(Bundle paramBundle)
+  public pzv(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    QLog.d("ReadInJoyWebviewPlugin", 4, "receive readSkinAndSound callback resp:" + paramBundle.toString());
-    JSONObject localJSONObject = new JSONObject();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData))) {}
     try
     {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
-      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData);
+      QLog.d("OnSuperTopicClickListener", 2, new Object[] { "mArticleInfo.proteusItemsData = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData });
+      Iterator localIterator = ((JSONObject)localObject).keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ("id_super_topic".equals(str))
+        {
+          localObject = ((JSONObject)localObject).getJSONObject(str).getString("super_topic_jump_url");
+          QLog.d("OnSuperTopicClickListener", 2, new Object[] { "jumpToSuperTopic, jumpUrl = ", localObject });
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            ozs.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, null);
+          }
+        }
+      }
       return;
     }
-    catch (JSONException paramBundle)
+    catch (JSONException localJSONException)
     {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+      QLog.d("OnSuperTopicClickListener", 2, "jumpToSuperTopic", localJSONException);
     }
+  }
+  
+  public static void a(ArticleInfo paramArticleInfo, Context paramContext)
+  {
+    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a;
+    if (paramArticleInfo != null)
+    {
+      paramArticleInfo = paramArticleInfo.d;
+      ozs.c(paramContext, paramArticleInfo);
+      QLog.i("OnSuperTopicClickListener", 2, "jumpToWendaRefer jumpUrl +" + paramArticleInfo);
+    }
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((ozs.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (ozs.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
+    {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
+      ocd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return;
+    }
+    a();
+    ocd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

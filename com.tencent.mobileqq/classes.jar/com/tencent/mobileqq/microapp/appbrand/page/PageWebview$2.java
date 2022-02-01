@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import Override;
 import android.graphics.Bitmap;
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
@@ -21,7 +21,7 @@ class PageWebview$2
     if (QLog.isColorLevel()) {
       QLog.d(PageWebview.access$100(), 2, "---finish loadHtml---");
     }
-    if (bgsp.a(PageWebview.access$300(this.this$0))) {
+    if (bhsr.a(PageWebview.access$300(this.this$0))) {
       PageWebview.access$302(this.this$0, this.this$0.apkgInfo$5475ea27.e());
     }
     this.this$0.evaluteJs(PageWebview.access$300(this.this$0), new PageWebview.2.1(this));
@@ -165,7 +165,7 @@ class PageWebview$2
     //   263: aload_0
     //   264: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   267: invokestatic 177	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$200	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;)Ljava/lang/String;
-    //   270: invokestatic 46	bgsp:a	(Ljava/lang/String;)Z
+    //   270: invokestatic 46	bhsr:a	(Ljava/lang/String;)Z
     //   273: ifeq +19 -> 292
     //   276: aload 5
     //   278: astore_2

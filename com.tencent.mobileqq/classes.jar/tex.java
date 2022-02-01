@@ -1,14 +1,22 @@
-class tex
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+
+public class tex
+  extends apck
 {
-  String a;
-  String b;
-  String c;
-  
-  public tex(String paramString1, String paramString2, String paramString3)
+  public tex(BridgeModule paramBridgeModule, String paramString1, String paramString2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      BridgeModule.access$1800(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramSosoLbsInfo, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    BridgeModule.access$1900(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_JavaLangString, "errorCode: " + paramInt);
   }
 }
 

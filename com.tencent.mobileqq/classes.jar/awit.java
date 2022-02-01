@@ -1,81 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MedalInfo;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import java.io.File;
 import org.json.JSONObject;
 
 public class awit
+  extends biht
 {
-  public int a;
-  public MedalInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
+  public awit(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
   
-  public awit()
+  public void onDone(bihu parambihu)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (;;)
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      return;
+    }
+    if (parambihu.a == 0)
     {
-      try
+      parambihu = beqz.d(this.jdField_a_of_type_JavaLangString);
+      if (new File(parambihu).exists())
       {
-        localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
-        localJSONObject = null;
-        i = localJSONArray.length();
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount <= 1) || (i <= this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
         }
-        localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
-        if ((localJSONObject != null) && (localJSONObject.has("owned3d"))) {
-          this.jdField_a_of_type_JavaLangString = MedalWallMng.a(localJSONObject.getString("owned3d"));
-        }
-        if ((localJSONObject != null) && (localJSONObject.has("share"))) {
-          this.c = MedalWallMng.a(localJSONObject.getString("share"));
-        }
-      }
-      catch (Exception localException)
-      {
-        JSONArray localJSONArray;
-        JSONObject localJSONObject;
-        int i;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("MedalWallMng", 2, "parse res json fail", localException);
-        continue;
-        if (this.jdField_a_of_type_Int != 1) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-        if (!bgmg.b(this.b)) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b))) {
-        this.b = (MedalWallMng.b + bita.d(this.jdField_a_of_type_JavaLangString));
-      }
-      if (this.jdField_a_of_type_Int != 2) {
-        continue;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return this.jdField_a_of_type_Boolean;
-      if (i > 1) {
-        localJSONObject = localJSONArray.getJSONObject(1);
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambihu, 0);
+        return;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
   }
 }
 

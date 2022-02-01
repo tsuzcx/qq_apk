@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.web;
 
 import android.support.v4.app.FragmentActivity;
-import auvw;
+import avnw;
 import com.tencent.qphone.base.util.QLog;
 
 class QQGameFeedWebFragment$MessageQGameReceiver$2$1

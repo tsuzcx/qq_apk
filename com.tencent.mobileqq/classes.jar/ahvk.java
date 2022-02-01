@@ -1,6 +1,17 @@
-public abstract interface ahvk
+import android.view.View;
+import android.widget.TextView;
+
+public class ahvk
+  extends aggl
 {
-  public abstract void a();
+  public TextView a;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  
+  public ahvk(ahvj paramahvj) {}
 }
 
 

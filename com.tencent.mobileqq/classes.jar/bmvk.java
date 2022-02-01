@@ -1,60 +1,15 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public class bmvk
-  extends MSFServlet
+public final class bmvk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    String str2;
-    label151:
-    do
-    {
-      do
-      {
-        return;
-        str2 = paramFromServiceMsg.getServiceCmd();
-      } while (str2 == null);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        boolean bool = paramFromServiceMsg.isSuccess();
-        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-        if (!bool) {
-          break label151;
-        }
-      }
-      for (String str1 = "";; str1 = "not")
-      {
-        QLog.d("MonitorServlet", 2, str1 + " success");
-        if (!str2.equals("TianShu.UserActionMultiReport")) {
-          break;
-        }
-        bmvi.a().a(paramIntent, paramFromServiceMsg);
-        return;
-      }
-    } while (!str2.equals("TianShu.GetAds"));
-    bmvi.a().b(paramIntent, paramFromServiceMsg);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    String str = paramIntent.getStringExtra("cmd");
-    long l = paramIntent.getLongExtra("timeout", 10000L);
-    paramPacket.setSSOCommand(str);
-    paramPacket.setTimeout(l);
-    paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
-    }
+    LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

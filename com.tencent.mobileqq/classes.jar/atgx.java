@@ -1,24 +1,53 @@
-import java.util.List;
-
-public abstract interface atgx
+public class atgx
+  extends atha
 {
-  public abstract List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public abstract void a(long paramLong, int paramInt, atgw paramatgw);
+  public atgx(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    super(2, paramString1);
+    this.a = paramString2;
+    this.b = paramString3;
+    this.c = paramString4;
+    this.d = paramString5;
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.e == null) {
+      this.e = "";
+    }
+  }
   
-  public abstract void a(long paramLong, atgw paramatgw);
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof atgx))
+    {
+      paramObject = (atgx)paramObject;
+      bool1 = bool2;
+      if (this.b.equals(paramObject.b))
+      {
+        bool1 = bool2;
+        if (this.e.equals(paramObject.e)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
   
-  public abstract void a(long paramLong, bgux parambgux);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, atgw paramatgw);
-  
-  public abstract boolean a(long paramLong, atgw paramatgw);
-  
-  public abstract void b(long paramLong, atgw paramatgw);
+  public String toString()
+  {
+    return this.e + "_" + this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgx
  * JD-Core Version:    0.7.0.1
  */

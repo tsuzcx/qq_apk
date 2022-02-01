@@ -1,24 +1,22 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import java.util.Comparator;
 
 public class tui
-  extends zyu
+  implements Comparator<tua>
 {
-  public tui(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
+  public tui(tug paramtug) {}
+  
+  public int a(tua paramtua1, tua paramtua2)
   {
-    super(paramBundle);
+    long l1 = paramtua1.a;
+    long l2 = paramtua2.a;
+    if (l2 > l1) {
+      return 1;
+    }
+    if (l2 < l1) {
+      return -1;
+    }
+    return 0;
   }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
-  {
-    return FolderFollowTabFragment.a(this.a);
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

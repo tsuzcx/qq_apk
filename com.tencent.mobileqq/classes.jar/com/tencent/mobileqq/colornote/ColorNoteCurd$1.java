@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.colornote;
 
 import android.os.Bundle;
-import aqcc;
+import aqrf;
 
 public class ColorNoteCurd$1
   implements Runnable
 {
-  public ColorNoteCurd$1(aqcc paramaqcc, Bundle paramBundle) {}
+  public ColorNoteCurd$1(aqrf paramaqrf, Bundle paramBundle) {}
   
   public void run()
   {

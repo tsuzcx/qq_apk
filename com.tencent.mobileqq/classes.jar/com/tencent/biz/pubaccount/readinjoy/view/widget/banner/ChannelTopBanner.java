@@ -14,8 +14,8 @@ import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import bgtn;
-import bovg;
+import bhtq;
+import bpxb;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
@@ -23,14 +23,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import pkn;
-import ric;
-import snh;
-import tjt;
-import tju;
-import tjv;
-import ube;
-import zlx;
+import pdg;
+import qyv;
+import sel;
+import tan;
+import tao;
+import tap;
+import ubg;
+import zps;
 
 public class ChannelTopBanner
   extends RelativeLayout
@@ -45,7 +45,7 @@ public class ChannelTopBanner
   protected LinearLayout a;
   public BannerAdapter a;
   public RollViewPager a;
-  private tjv jdField_a_of_type_Tjv;
+  private tap jdField_a_of_type_Tap;
   protected boolean a;
   protected View[] a;
   protected Drawable b;
@@ -57,7 +57,7 @@ public class ChannelTopBanner
   {
     super(paramActivity);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new tjt(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new tan(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
     a(paramActivity);
   }
@@ -75,11 +75,11 @@ public class ChannelTopBanner
     View localView1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(paramInt);
     View localView2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(paramInt - 1);
     View localView3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(paramInt + 1);
-    if ((this.jdField_a_of_type_Tjv != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() > 1))
+    if ((this.jdField_a_of_type_Tap != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() > 1))
     {
-      this.jdField_a_of_type_Tjv.transformPage(localView1, 0.0F);
-      this.jdField_a_of_type_Tjv.transformPage(localView2, -1.0F);
-      this.jdField_a_of_type_Tjv.transformPage(localView3, 1.0F);
+      this.jdField_a_of_type_Tap.transformPage(localView1, 0.0F);
+      this.jdField_a_of_type_Tap.transformPage(localView2, -1.0F);
+      this.jdField_a_of_type_Tap.transformPage(localView3, 1.0F);
     }
   }
   
@@ -90,7 +90,7 @@ public class ChannelTopBanner
   
   private void a(TemplateBean paramTemplateBean)
   {
-    ube.a(paramTemplateBean, null, "expose_T");
+    ubg.a(paramTemplateBean, null, "expose_T");
   }
   
   protected View a()
@@ -98,10 +98,10 @@ public class ChannelTopBanner
     View localView = new View(this.jdField_a_of_type_AndroidContentContext);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(zlx.a(this.jdField_a_of_type_AndroidContentContext, 11.0F), zlx.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = zlx.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849326);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849327);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(zps.a(this.jdField_a_of_type_AndroidContentContext, 11.0F), zps.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = zps.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849345);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849346);
     }
     localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
     localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -146,25 +146,25 @@ public class ChannelTopBanner
   
   protected void a(Activity paramActivity)
   {
-    LayoutInflater.from(paramActivity).inflate(2131559968, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager = ((RollViewPager)findViewById(2131380955));
+    LayoutInflater.from(paramActivity).inflate(2131559974, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager = ((RollViewPager)findViewById(2131381135));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOffscreenPageLimit(5);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setPageMargin(bgtn.a(-10.0F));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370014));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setPageMargin(bhtq.a(-10.0F));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370114));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnPageChangeListener(new ChannelTopBanner.RollerChangeListener(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnTouchStateChangeListener(new tju(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnTouchStateChangeListener(new tao(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter = new BannerAdapter(paramActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager, BannerAdapter.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Tjv = new tjv(this, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setPageTransformer(true, this.jdField_a_of_type_Tjv);
+    this.jdField_a_of_type_Tap = new tap(this, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setPageTransformer(true, this.jdField_a_of_type_Tap);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter);
-    paramActivity = new bovg(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
+    paramActivity = new bpxb(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
     paramActivity.a(400);
     paramActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager);
     setClipChildren(false);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370010));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370110));
   }
   
-  public void a(snh paramsnh, TopBannerInfo paramTopBannerInfo)
+  public void a(sel paramsel, TopBannerInfo paramTopBannerInfo)
   {
     int i;
     label73:
@@ -194,16 +194,16 @@ public class ChannelTopBanner
       if (j >= paramTopBannerInfo.dynamicItems.size()) {
         return;
       }
-      ric localric = (ric)paramTopBannerInfo.dynamicItems.get(j);
-      if ((localric == null) || (TextUtils.isEmpty(localric.a))) {
+      qyv localqyv = (qyv)paramTopBannerInfo.dynamicItems.get(j);
+      if ((localqyv == null) || (TextUtils.isEmpty(localqyv.a))) {
         break label255;
       }
-      QLog.d("ChannelTopBanner", 2, new Object[] { "json = ", localric.a });
-      ProteusItemView localProteusItemView = pkn.a(paramsnh.a(), "default_feeds", pkn.a(localric.a));
+      QLog.d("ChannelTopBanner", 2, new Object[] { "json = ", localqyv.a });
+      ProteusItemView localProteusItemView = pdg.a(paramsel.a(), "default_feeds", pdg.a(localqyv.a));
       if (localProteusItemView == null) {
         break label243;
       }
-      pkn.a(localProteusItemView, paramsnh.a(), "default_feeds", localric.a);
+      pdg.a(localProteusItemView, paramsel.a(), "default_feeds", localqyv.a);
       a(localProteusItemView);
       if (i != 0) {
         a(localProteusItemView.a());

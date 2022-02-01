@@ -1,46 +1,20 @@
-import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
-import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class addj
-  implements IMemoryCellingListener
+  implements adci
 {
-  static void a(long paramLong) {}
-  
-  public void onBeforeUploadJson()
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeUploadJson");
+    new ayur(paramQQAppInterface).a(paramMsgType0x210.vProtobuf);
   }
   
-  public boolean onCanDump(long paramLong)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramLong);
-    return false;
-  }
-  
-  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
-  
-  public void onHprofDumped(@NotNull String paramString) {}
-  
-  public void onLowMemory(long paramLong)
-  {
-    addc.a().a(paramLong);
-  }
-  
-  @NotNull
-  public List<String> onPrepareDump(@NotNull String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = DumpMemInfoHandler.generateHprof(paramString);
-    boolean bool = ((Boolean)paramString[0]).booleanValue();
-    if ((bool) && (paramString[1] != null)) {
-      localArrayList.add((String)paramString[1]);
-    }
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeDump " + bool);
-    return localArrayList;
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

@@ -1,24 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-public class bpky
-  implements Animation.AnimationListener
+public abstract interface bpky
 {
-  public bpky(DoodleLayout paramDoodleLayout) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Bplg != null) {
-      this.a.jdField_a_of_type_Bplg.a(null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(int paramInt);
 }
 
 

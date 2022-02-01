@@ -1,129 +1,51 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import mqq.app.MobileQQ;
 
 public class leo
-  implements INetInfoHandler
 {
-  private lep a;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private lep jdField_a_of_type_Lep;
   
-  public leo(lep paramlep)
+  public leo(VideoAppInterface paramVideoAppInterface)
   {
-    this.a = paramlep;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
-  public static int a()
+  public void a()
   {
-    int j = 1;
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    for (;;)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSFNetInfoMonitor", 2, "getApn: " + i + " mobileType:" + j);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.jdField_a_of_type_Lep = new lep();
+      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Lep, localIntentFilter);
       }
-      return i;
-      if (AppNetConnInfo.isMobileConn())
-      {
-        j = AppNetConnInfo.getMobileInfo();
-        switch (j)
-        {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
-        }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Lep != null)) {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Lep);
       }
-      else
-      {
-        j = -1;
-        i = 0;
-      }
+      return;
     }
-  }
-  
-  public static int b()
-  {
-    int i = -1;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    return AppNetConnInfo.getMobileInfo();
-  }
-  
-  public void onNetMobile2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
-    }
-    if (this.a != null) {
-      this.a.a(0);
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
-    }
-    if (this.a != null) {
-      this.a.a(1);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
-    }
-    if (this.a != null) {
-      this.a.a(2);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
-    }
-    if (this.a != null) {
-      this.a.a(1);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
-    }
-    if (this.a != null) {
-      this.a.a(2);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
-    }
-    if (this.a != null) {
-      this.a.a(0);
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }

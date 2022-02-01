@@ -1,6 +1,14 @@
-public abstract interface afso
+import android.widget.Button;
+import android.widget.TextView;
+
+class afso
+  extends amof
 {
-  public abstract void a(int paramInt);
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
+  private afso(afsn paramafsn) {}
 }
 
 

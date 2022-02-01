@@ -1,6 +1,27 @@
-public abstract interface ovc
+import java.util.ArrayList;
+
+class ovc
+  extends ovd
 {
-  public abstract void a(ovf paramovf);
+  ovc(otv paramotv, int paramInt)
+  {
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    if (paramovg == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        paramovg.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    paramovg.onCommentLoadMore(1, false, new ArrayList(), false, 2);
+  }
 }
 
 

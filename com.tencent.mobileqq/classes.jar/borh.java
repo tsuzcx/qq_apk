@@ -1,18 +1,16 @@
-import android.text.Spanned;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class borh
-  extends bpkc
+  extends bezw
 {
-  borh(borf paramborf, int paramInt)
+  borh(borg paramborg, QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
   {
-    super(paramInt);
+    super(paramQQAppInterface, paramString, paramRunnable, paramLong);
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  protected void realCancel()
   {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bfsj.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    bpam.b("AEResManager", "[startPreDownLoad], preDownloadTask.realCancel()");
   }
 }
 

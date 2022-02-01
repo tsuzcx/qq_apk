@@ -1,13 +1,14 @@
-import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public abstract interface acxb
+class acxb
+  extends AdHttp.Params
 {
-  public abstract boolean a(Context paramContext, QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage, int paramInt, MsgSummary paramMsgSummary, String paramString, boolean paramBoolean1, boolean paramBoolean2);
+  public int a = -2147483648;
   
-  public abstract boolean a(QQMessageFacade.Message paramMessage);
+  public boolean isSuccess()
+  {
+    return (super.isSuccess()) && (this.responseData != null);
+  }
 }
 
 

@@ -40,35 +40,38 @@ public class TcpConnection
   private ConnReportInfo connInfo = new ConnReportInfo();
   private IConnectionListener connListener;
   private ConnManager connManager;
-  private int continueHeartBreak;
+  private int continueHeartBreak = 0;
   private TcpProtocolDataCodec dataCodec;
   private AtomicBoolean isConn = new AtomicBoolean(false);
   private boolean isIpv6;
   private AtomicBoolean isRunning = new AtomicBoolean(false);
-  private volatile boolean isUrgent;
+  private volatile boolean isUrgent = false;
   private AtomicBoolean isWritting = new AtomicBoolean(false);
-  private long lastHeartBreakTime;
+  private long lastHeartBreakTime = 0L;
   private ReentrantLock lock = new ReentrantLock();
   private TcpConnection.ConnWorker mConnHandler;
   private HandlerThread mConnThread;
-  private int mConnTimeOut;
+  private int mConnTimeOut = 0;
   private EndPoint mEp;
-  private MsfSocketInputBuffer mInputBuffer;
-  public int mLastDataSegSize;
-  public long mLastDataTransTime;
-  private int mNetFlowDw;
-  private int mNetFlowUp;
+  private MsfSocketInputBuffer mInputBuffer = null;
+  public int mLastDataSegSize = 0;
+  public long mLastDataTransTime = 0L;
+  private int mNetFlowDw = 0;
+  private int mNetFlowUp = 0;
   private OutputStream mOutputStream;
   private int mReadBufferSize;
   private TcpConnection.ReadThread mReadThread;
   private int mReadTimeout;
-  public long mRtt;
-  private Handler mServletHandler;
+  public long mRtt = 0L;
+  private Handler mServletHandler = null;
   private Socket mSocket;
-  private InetSocketAddress serverAddress;
+  private InetSocketAddress serverAddress = null;
   private AtomicBoolean shouldCloseConn = new AtomicBoolean(false);
   
-  static {}
+  static
+  {
+    initRuntimShutDownHook();
+  }
   
   public TcpConnection(ConnManager paramConnManager, int paramInt1, EndPoint paramEndPoint, int paramInt2, int paramInt3, boolean paramBoolean)
   {
@@ -105,300 +108,300 @@ public class TcpConnection
     //   12: istore 10
     //   14: iconst_0
     //   15: istore 6
-    //   17: ldc 234
+    //   17: ldc 252
     //   19: iconst_1
-    //   20: new 104	java/lang/StringBuilder
+    //   20: new 112	java/lang/StringBuilder
     //   23: dup
-    //   24: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   27: ldc 236
-    //   29: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokespecial 165	java/lang/StringBuilder:<init>	()V
+    //   27: ldc 254
+    //   29: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: aload_0
-    //   33: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
-    //   36: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   39: ldc 238
-    //   41: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: iload_1
-    //   45: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 244	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   54: aload_0
-    //   55: getfield 102	com/tencent/mobileqq/highway/conn/TcpConnection:isRunning	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   58: iconst_0
-    //   59: invokevirtual 247	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   62: iload 9
-    //   64: istore 4
-    //   66: iload 10
-    //   68: istore 5
-    //   70: aload_0
-    //   71: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
-    //   74: ifnull +451 -> 525
-    //   77: iload 9
-    //   79: istore 4
-    //   81: iload 10
-    //   83: istore 5
-    //   85: aload_0
-    //   86: getfield 96	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   89: invokevirtual 253	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   92: ifne +4 -> 96
-    //   95: return
-    //   96: iload 9
-    //   98: istore 4
-    //   100: iload 10
-    //   102: istore 5
-    //   104: aload_0
-    //   105: getfield 89	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   108: ldc2_w 254
-    //   111: getstatic 261	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   114: invokevirtual 265	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
-    //   117: ifeq +340 -> 457
-    //   120: iload 9
-    //   122: istore 4
-    //   124: iload 10
-    //   126: istore 5
-    //   128: aload_0
-    //   129: getfield 204	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
-    //   132: ifnull +42 -> 174
-    //   135: iload 9
-    //   137: istore 4
-    //   139: iload 10
-    //   141: istore 5
-    //   143: aload_0
-    //   144: getfield 204	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
-    //   147: getfield 271	com/tencent/qphone/base/util/MsfSocketInputBuffer:instream	Ljava/io/InputStream;
-    //   150: astore 11
-    //   152: aload 11
-    //   154: ifnull +20 -> 174
-    //   157: iload 9
-    //   159: istore 4
-    //   161: iload 10
-    //   163: istore 5
-    //   165: iconst_0
-    //   166: aload 11
-    //   168: invokevirtual 272	java/lang/Object:toString	()Ljava/lang/String;
-    //   171: invokestatic 276	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
-    //   174: iload 9
-    //   176: istore 4
-    //   178: iload 10
-    //   180: istore 5
-    //   182: aload_0
-    //   183: getfield 278	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
-    //   186: ifnull +22 -> 208
-    //   189: iload 9
-    //   191: istore 4
-    //   193: iload 10
-    //   195: istore 5
-    //   197: iconst_0
-    //   198: aload_0
-    //   199: getfield 278	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
-    //   202: invokevirtual 272	java/lang/Object:toString	()Ljava/lang/String;
-    //   205: invokestatic 276	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
-    //   208: aload_0
-    //   209: getfield 196	com/tencent/mobileqq/highway/conn/TcpConnection:mConnHandler	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker;
-    //   212: astore 11
-    //   214: aload 11
-    //   216: ifnull +8 -> 224
-    //   219: aload 11
-    //   221: invokevirtual 283	com/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker:notifyToQuit	()V
-    //   224: aload_0
-    //   225: aconst_null
-    //   226: putfield 204	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
-    //   229: aload_0
-    //   230: aconst_null
-    //   231: putfield 278	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
-    //   234: aload_0
-    //   235: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
-    //   238: ifnull +10 -> 248
-    //   241: aload_0
-    //   242: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
-    //   245: invokevirtual 288	java/net/Socket:close	()V
-    //   248: aload_0
-    //   249: getfield 96	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   252: iconst_0
-    //   253: invokevirtual 247	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   256: aload_0
-    //   257: aconst_null
-    //   258: putfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
-    //   261: aload_0
-    //   262: aconst_null
-    //   263: putfield 290	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
-    //   266: aload_0
-    //   267: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
-    //   270: iconst_1
-    //   271: putfield 293	com/tencent/mobileqq/highway/conn/ConnReportInfo:finished	Z
-    //   274: aload_0
-    //   275: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
-    //   278: invokestatic 299	android/os/SystemClock:uptimeMillis	()J
-    //   281: aload_0
-    //   282: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
-    //   285: getfield 302	com/tencent/mobileqq/highway/conn/ConnReportInfo:connStartTime	J
-    //   288: lsub
-    //   289: putfield 305	com/tencent/mobileqq/highway/conn/ConnReportInfo:connLifeLong	J
-    //   292: aload_0
-    //   293: getfield 307	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowUp	I
-    //   296: istore_1
-    //   297: aload_0
-    //   298: getfield 208	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowDw	I
-    //   301: istore_2
-    //   302: aload_0
-    //   303: iconst_0
-    //   304: putfield 307	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowUp	I
-    //   307: aload_0
-    //   308: iconst_0
-    //   309: putfield 208	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowDw	I
-    //   312: getstatic 309	com/tencent/mobileqq/highway/conn/TcpConnection:IsRunTimeShutDown	Z
-    //   315: ifne +26 -> 341
-    //   318: new 311	java/lang/Thread
-    //   321: dup
-    //   322: new 313	com/tencent/mobileqq/highway/conn/TcpConnection$2
-    //   325: dup
-    //   326: aload_0
-    //   327: iload_1
-    //   328: iload_2
-    //   329: invokespecial 316	com/tencent/mobileqq/highway/conn/TcpConnection$2:<init>	(Lcom/tencent/mobileqq/highway/conn/TcpConnection;II)V
-    //   332: ldc_w 318
-    //   335: invokespecial 321	java/lang/Thread:<init>	(Ljava/lang/Runnable;Ljava/lang/String;)V
-    //   338: invokevirtual 324	java/lang/Thread:start	()V
-    //   341: aload_0
-    //   342: getfield 89	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   345: invokevirtual 327	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   348: aload_0
-    //   349: getfield 329	com/tencent/mobileqq/highway/conn/TcpConnection:connListener	Lcom/tencent/mobileqq/highway/conn/IConnectionListener;
-    //   352: astore 11
-    //   354: aload 11
-    //   356: ifnull +15 -> 371
-    //   359: aload 11
-    //   361: aload_0
-    //   362: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
-    //   365: aload_0
-    //   366: invokeinterface 335 3 0
-    //   371: ldc_w 337
-    //   374: new 104	java/lang/StringBuilder
-    //   377: dup
-    //   378: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   381: ldc_w 339
-    //   384: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: aload_0
-    //   388: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
-    //   391: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   394: ldc_w 341
-    //   397: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   400: iload_3
-    //   401: invokevirtual 344	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   404: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   407: invokestatic 350	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   410: return
-    //   411: astore 11
-    //   413: iload 6
-    //   415: istore_3
-    //   416: iload_3
-    //   417: istore 4
-    //   419: iload_3
-    //   420: istore 5
-    //   422: aload_0
-    //   423: getfield 89	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   426: invokevirtual 327	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   429: iload_3
-    //   430: istore 4
-    //   432: iload_3
-    //   433: istore 5
-    //   435: aload 11
-    //   437: athrow
-    //   438: astore 11
-    //   440: iload 4
-    //   442: istore_3
-    //   443: ldc_w 337
-    //   446: ldc_w 352
-    //   449: aload 11
-    //   451: invokestatic 356	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   454: goto -106 -> 348
-    //   457: iload 9
-    //   459: istore 4
-    //   461: iload 10
-    //   463: istore 5
-    //   465: aload_0
-    //   466: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   469: iconst_1
-    //   470: invokevirtual 247	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   473: iconst_0
-    //   474: istore_3
-    //   475: goto -127 -> 348
-    //   478: astore 11
-    //   480: iload 5
-    //   482: istore_3
-    //   483: ldc_w 337
-    //   486: ldc_w 352
-    //   489: aload 11
-    //   491: invokestatic 356	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   494: goto -146 -> 348
-    //   497: astore 11
-    //   499: iload 8
-    //   501: istore_3
-    //   502: goto -19 -> 483
-    //   505: astore 11
-    //   507: iload 7
-    //   509: istore_3
-    //   510: goto -67 -> 443
-    //   513: astore 11
-    //   515: iconst_1
-    //   516: istore_3
-    //   517: goto -101 -> 416
-    //   520: astore 11
-    //   522: goto -274 -> 248
-    //   525: return
+    //   33: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   36: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   39: ldc_w 256
+    //   42: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: iload_1
+    //   46: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokestatic 262	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   55: aload_0
+    //   56: getfield 110	com/tencent/mobileqq/highway/conn/TcpConnection:isRunning	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   59: iconst_0
+    //   60: invokevirtual 265	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   63: iload 9
+    //   65: istore 4
+    //   67: iload 10
+    //   69: istore 5
+    //   71: aload_0
+    //   72: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   75: ifnull +451 -> 526
+    //   78: iload 9
+    //   80: istore 4
+    //   82: iload 10
+    //   84: istore 5
+    //   86: aload_0
+    //   87: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   90: invokevirtual 271	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   93: ifne +4 -> 97
+    //   96: return
+    //   97: iload 9
+    //   99: istore 4
+    //   101: iload 10
+    //   103: istore 5
+    //   105: aload_0
+    //   106: getfield 91	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   109: ldc2_w 272
+    //   112: getstatic 279	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   115: invokevirtual 283	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
+    //   118: ifeq +340 -> 458
+    //   121: iload 9
+    //   123: istore 4
+    //   125: iload 10
+    //   127: istore 5
+    //   129: aload_0
+    //   130: getfield 104	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
+    //   133: ifnull +42 -> 175
+    //   136: iload 9
+    //   138: istore 4
+    //   140: iload 10
+    //   142: istore 5
+    //   144: aload_0
+    //   145: getfield 104	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
+    //   148: getfield 289	com/tencent/qphone/base/util/MsfSocketInputBuffer:instream	Ljava/io/InputStream;
+    //   151: astore 11
+    //   153: aload 11
+    //   155: ifnull +20 -> 175
+    //   158: iload 9
+    //   160: istore 4
+    //   162: iload 10
+    //   164: istore 5
+    //   166: iconst_0
+    //   167: aload 11
+    //   169: invokevirtual 290	java/lang/Object:toString	()Ljava/lang/String;
+    //   172: invokestatic 294	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
+    //   175: iload 9
+    //   177: istore 4
+    //   179: iload 10
+    //   181: istore 5
+    //   183: aload_0
+    //   184: getfield 296	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
+    //   187: ifnull +22 -> 209
+    //   190: iload 9
+    //   192: istore 4
+    //   194: iload 10
+    //   196: istore 5
+    //   198: iconst_0
+    //   199: aload_0
+    //   200: getfield 296	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
+    //   203: invokevirtual 290	java/lang/Object:toString	()Ljava/lang/String;
+    //   206: invokestatic 294	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
+    //   209: aload_0
+    //   210: getfield 218	com/tencent/mobileqq/highway/conn/TcpConnection:mConnHandler	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker;
+    //   213: astore 11
+    //   215: aload 11
+    //   217: ifnull +8 -> 225
+    //   220: aload 11
+    //   222: invokevirtual 301	com/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker:notifyToQuit	()V
+    //   225: aload_0
+    //   226: aconst_null
+    //   227: putfield 104	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
+    //   230: aload_0
+    //   231: aconst_null
+    //   232: putfield 296	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
+    //   235: aload_0
+    //   236: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   239: ifnull +10 -> 249
+    //   242: aload_0
+    //   243: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   246: invokevirtual 306	java/net/Socket:close	()V
+    //   249: aload_0
+    //   250: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   253: iconst_0
+    //   254: invokevirtual 265	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   257: aload_0
+    //   258: aconst_null
+    //   259: putfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   262: aload_0
+    //   263: aconst_null
+    //   264: putfield 308	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
+    //   267: aload_0
+    //   268: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   271: iconst_1
+    //   272: putfield 311	com/tencent/mobileqq/highway/conn/ConnReportInfo:finished	Z
+    //   275: aload_0
+    //   276: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   279: invokestatic 317	android/os/SystemClock:uptimeMillis	()J
+    //   282: aload_0
+    //   283: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   286: getfield 320	com/tencent/mobileqq/highway/conn/ConnReportInfo:connStartTime	J
+    //   289: lsub
+    //   290: putfield 323	com/tencent/mobileqq/highway/conn/ConnReportInfo:connLifeLong	J
+    //   293: aload_0
+    //   294: getfield 129	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowUp	I
+    //   297: istore_1
+    //   298: aload_0
+    //   299: getfield 131	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowDw	I
+    //   302: istore_2
+    //   303: aload_0
+    //   304: iconst_0
+    //   305: putfield 129	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowUp	I
+    //   308: aload_0
+    //   309: iconst_0
+    //   310: putfield 131	com/tencent/mobileqq/highway/conn/TcpConnection:mNetFlowDw	I
+    //   313: getstatic 78	com/tencent/mobileqq/highway/conn/TcpConnection:IsRunTimeShutDown	Z
+    //   316: ifne +26 -> 342
+    //   319: new 325	java/lang/Thread
+    //   322: dup
+    //   323: new 327	com/tencent/mobileqq/highway/conn/TcpConnection$2
+    //   326: dup
+    //   327: aload_0
+    //   328: iload_1
+    //   329: iload_2
+    //   330: invokespecial 330	com/tencent/mobileqq/highway/conn/TcpConnection$2:<init>	(Lcom/tencent/mobileqq/highway/conn/TcpConnection;II)V
+    //   333: ldc_w 332
+    //   336: invokespecial 335	java/lang/Thread:<init>	(Ljava/lang/Runnable;Ljava/lang/String;)V
+    //   339: invokevirtual 338	java/lang/Thread:start	()V
+    //   342: aload_0
+    //   343: getfield 91	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   346: invokevirtual 341	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   349: aload_0
+    //   350: getfield 343	com/tencent/mobileqq/highway/conn/TcpConnection:connListener	Lcom/tencent/mobileqq/highway/conn/IConnectionListener;
+    //   353: astore 11
+    //   355: aload 11
+    //   357: ifnull +15 -> 372
+    //   360: aload 11
+    //   362: aload_0
+    //   363: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   366: aload_0
+    //   367: invokeinterface 349 3 0
+    //   372: ldc_w 351
+    //   375: new 112	java/lang/StringBuilder
+    //   378: dup
+    //   379: invokespecial 165	java/lang/StringBuilder:<init>	()V
+    //   382: ldc_w 353
+    //   385: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   388: aload_0
+    //   389: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   392: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   395: ldc_w 355
+    //   398: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: iload_3
+    //   402: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   405: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   408: invokestatic 364	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   411: return
+    //   412: astore 11
+    //   414: iload 6
+    //   416: istore_3
+    //   417: iload_3
+    //   418: istore 4
+    //   420: iload_3
+    //   421: istore 5
+    //   423: aload_0
+    //   424: getfield 91	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   427: invokevirtual 341	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   430: iload_3
+    //   431: istore 4
+    //   433: iload_3
+    //   434: istore 5
+    //   436: aload 11
+    //   438: athrow
+    //   439: astore 11
+    //   441: iload 4
+    //   443: istore_3
+    //   444: ldc_w 351
+    //   447: ldc_w 366
+    //   450: aload 11
+    //   452: invokestatic 370	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   455: goto -106 -> 349
+    //   458: iload 9
+    //   460: istore 4
+    //   462: iload 10
+    //   464: istore 5
+    //   466: aload_0
+    //   467: getfield 100	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   470: iconst_1
+    //   471: invokevirtual 265	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   474: iconst_0
+    //   475: istore_3
+    //   476: goto -127 -> 349
+    //   479: astore 11
+    //   481: iload 5
+    //   483: istore_3
+    //   484: ldc_w 351
+    //   487: ldc_w 366
+    //   490: aload 11
+    //   492: invokestatic 370	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   495: goto -146 -> 349
+    //   498: astore 11
+    //   500: iload 8
+    //   502: istore_3
+    //   503: goto -19 -> 484
+    //   506: astore 11
+    //   508: iload 7
+    //   510: istore_3
+    //   511: goto -67 -> 444
+    //   514: astore 11
+    //   516: iconst_1
+    //   517: istore_3
+    //   518: goto -101 -> 417
+    //   521: astore 11
+    //   523: goto -274 -> 249
+    //   526: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	526	0	this	TcpConnection
-    //   0	526	1	paramInt	int
-    //   301	28	2	i	int
-    //   7	510	3	bool1	boolean
-    //   64	396	4	bool2	boolean
-    //   68	413	5	bool3	boolean
-    //   15	399	6	bool4	boolean
-    //   1	507	7	bool5	boolean
-    //   4	496	8	bool6	boolean
-    //   9	449	9	bool7	boolean
-    //   12	450	10	bool8	boolean
-    //   150	210	11	localObject1	Object
-    //   411	25	11	localObject2	Object
-    //   438	12	11	localInterruptedException1	java.lang.InterruptedException
-    //   478	12	11	localException1	Exception
-    //   497	1	11	localException2	Exception
-    //   505	1	11	localInterruptedException2	java.lang.InterruptedException
-    //   513	1	11	localObject3	Object
-    //   520	1	11	localException3	Exception
+    //   0	527	0	this	TcpConnection
+    //   0	527	1	paramInt	int
+    //   302	28	2	i	int
+    //   7	511	3	bool1	boolean
+    //   65	396	4	bool2	boolean
+    //   69	413	5	bool3	boolean
+    //   15	400	6	bool4	boolean
+    //   1	508	7	bool5	boolean
+    //   4	497	8	bool6	boolean
+    //   9	450	9	bool7	boolean
+    //   12	451	10	bool8	boolean
+    //   151	210	11	localObject1	Object
+    //   412	25	11	localObject2	Object
+    //   439	12	11	localInterruptedException1	java.lang.InterruptedException
+    //   479	12	11	localException1	Exception
+    //   498	1	11	localException2	Exception
+    //   506	1	11	localInterruptedException2	java.lang.InterruptedException
+    //   514	1	11	localObject3	Object
+    //   521	1	11	localException3	Exception
     // Exception table:
     //   from	to	target	type
-    //   208	214	411	finally
-    //   219	224	411	finally
-    //   224	234	411	finally
-    //   234	248	411	finally
-    //   248	266	411	finally
-    //   70	77	438	java/lang/InterruptedException
-    //   85	95	438	java/lang/InterruptedException
-    //   104	120	438	java/lang/InterruptedException
-    //   128	135	438	java/lang/InterruptedException
-    //   143	152	438	java/lang/InterruptedException
-    //   165	174	438	java/lang/InterruptedException
-    //   182	189	438	java/lang/InterruptedException
-    //   197	208	438	java/lang/InterruptedException
-    //   422	429	438	java/lang/InterruptedException
-    //   435	438	438	java/lang/InterruptedException
-    //   465	473	438	java/lang/InterruptedException
-    //   70	77	478	java/lang/Exception
-    //   85	95	478	java/lang/Exception
-    //   104	120	478	java/lang/Exception
-    //   128	135	478	java/lang/Exception
-    //   143	152	478	java/lang/Exception
-    //   165	174	478	java/lang/Exception
-    //   182	189	478	java/lang/Exception
-    //   197	208	478	java/lang/Exception
-    //   422	429	478	java/lang/Exception
-    //   435	438	478	java/lang/Exception
-    //   465	473	478	java/lang/Exception
-    //   341	348	497	java/lang/Exception
-    //   341	348	505	java/lang/InterruptedException
-    //   266	341	513	finally
-    //   234	248	520	java/lang/Exception
+    //   209	215	412	finally
+    //   220	225	412	finally
+    //   225	235	412	finally
+    //   235	249	412	finally
+    //   249	267	412	finally
+    //   71	78	439	java/lang/InterruptedException
+    //   86	96	439	java/lang/InterruptedException
+    //   105	121	439	java/lang/InterruptedException
+    //   129	136	439	java/lang/InterruptedException
+    //   144	153	439	java/lang/InterruptedException
+    //   166	175	439	java/lang/InterruptedException
+    //   183	190	439	java/lang/InterruptedException
+    //   198	209	439	java/lang/InterruptedException
+    //   423	430	439	java/lang/InterruptedException
+    //   436	439	439	java/lang/InterruptedException
+    //   466	474	439	java/lang/InterruptedException
+    //   71	78	479	java/lang/Exception
+    //   86	96	479	java/lang/Exception
+    //   105	121	479	java/lang/Exception
+    //   129	136	479	java/lang/Exception
+    //   144	153	479	java/lang/Exception
+    //   166	175	479	java/lang/Exception
+    //   183	190	479	java/lang/Exception
+    //   198	209	479	java/lang/Exception
+    //   423	430	479	java/lang/Exception
+    //   436	439	479	java/lang/Exception
+    //   466	474	479	java/lang/Exception
+    //   342	349	498	java/lang/Exception
+    //   342	349	506	java/lang/InterruptedException
+    //   267	342	514	finally
+    //   235	249	521	java/lang/Exception
   }
   
   private void doSendData()
@@ -520,172 +523,172 @@ public class TcpConnection
   private int openConn(EndPoint paramEndPoint)
   {
     // Byte code:
-    //   0: ldc 234
+    //   0: ldc 252
     //   2: iconst_1
-    //   3: new 104	java/lang/StringBuilder
+    //   3: new 112	java/lang/StringBuilder
     //   6: dup
-    //   7: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   10: ldc_w 513
-    //   13: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7: invokespecial 165	java/lang/StringBuilder:<init>	()V
+    //   10: ldc_w 515
+    //   13: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: aload_1
-    //   17: getfield 517	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
-    //   20: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: ldc_w 519
-    //   26: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: getfield 519	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
+    //   20: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: ldc_w 521
+    //   26: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: aload_1
-    //   30: getfield 522	com/tencent/mobileqq/highway/utils/EndPoint:port	I
-    //   33: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   36: ldc_w 524
-    //   39: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: getfield 524	com/tencent/mobileqq/highway/utils/EndPoint:port	I
+    //   33: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   36: ldc_w 526
+    //   39: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_0
-    //   43: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
-    //   46: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   49: ldc_w 526
-    //   52: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   46: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   49: ldc_w 528
+    //   52: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: aload_1
-    //   56: getfield 121	com/tencent/mobileqq/highway/utils/EndPoint:protoType	I
-    //   59: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   62: ldc_w 528
-    //   65: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   71: invokestatic 244	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   56: getfield 147	com/tencent/mobileqq/highway/utils/EndPoint:protoType	I
+    //   59: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   62: ldc_w 530
+    //   65: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokestatic 262	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   74: aload_0
-    //   75: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   78: invokevirtual 253	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   75: getfield 100	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   78: invokevirtual 271	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   81: ifne +13 -> 94
     //   84: aload_0
-    //   85: getfield 96	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   88: invokevirtual 253	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   85: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   88: invokevirtual 271	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   91: ifeq +26 -> 117
     //   94: aload_0
-    //   95: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   98: invokevirtual 253	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   95: getfield 100	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   98: invokevirtual 271	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   101: ifeq +16 -> 117
     //   104: aload_0
-    //   105: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   105: getfield 100	com/tencent/mobileqq/highway/conn/TcpConnection:shouldCloseConn	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   108: iconst_0
-    //   109: invokevirtual 247	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   109: invokevirtual 265	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   112: aload_0
     //   113: iconst_2
-    //   114: invokespecial 220	com/tencent/mobileqq/highway/conn/TcpConnection:closeConn	(I)V
+    //   114: invokespecial 238	com/tencent/mobileqq/highway/conn/TcpConnection:closeConn	(I)V
     //   117: bipush 14
     //   119: istore_2
-    //   120: invokestatic 299	android/os/SystemClock:uptimeMillis	()J
+    //   120: invokestatic 317	android/os/SystemClock:uptimeMillis	()J
     //   123: lstore 8
-    //   125: ldc2_w 529
+    //   125: ldc2_w 531
     //   128: lstore 6
     //   130: aload_0
-    //   131: getfield 89	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   134: ldc2_w 254
-    //   137: getstatic 261	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   140: invokevirtual 265	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
+    //   131: getfield 91	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   134: ldc2_w 272
+    //   137: getstatic 279	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   140: invokevirtual 283	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
     //   143: istore 10
     //   145: iload 10
     //   147: ifeq +1250 -> 1397
     //   150: lload 6
     //   152: lstore 4
     //   154: aload_0
-    //   155: new 532	java/net/InetSocketAddress
+    //   155: new 534	java/net/InetSocketAddress
     //   158: dup
     //   159: aload_1
-    //   160: getfield 517	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
+    //   160: getfield 519	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
     //   163: aload_1
-    //   164: getfield 522	com/tencent/mobileqq/highway/utils/EndPoint:port	I
-    //   167: invokespecial 535	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
-    //   170: putfield 537	com/tencent/mobileqq/highway/conn/TcpConnection:serverAddress	Ljava/net/InetSocketAddress;
+    //   164: getfield 524	com/tencent/mobileqq/highway/utils/EndPoint:port	I
+    //   167: invokespecial 537	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
+    //   170: putfield 102	com/tencent/mobileqq/highway/conn/TcpConnection:serverAddress	Ljava/net/InetSocketAddress;
     //   173: lload 6
     //   175: lstore 4
     //   177: aload_0
-    //   178: getfield 96	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   178: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   181: iconst_0
-    //   182: invokevirtual 247	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   182: invokevirtual 265	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   185: lload 6
     //   187: lstore 4
     //   189: aload_0
-    //   190: new 285	java/net/Socket
+    //   190: new 303	java/net/Socket
     //   193: dup
     //   194: invokespecial 538	java/net/Socket:<init>	()V
-    //   197: putfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   197: putfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   200: lload 6
     //   202: lstore 4
     //   204: aload_0
-    //   205: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   205: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   208: iconst_1
     //   209: invokevirtual 541	java/net/Socket:setKeepAlive	(Z)V
     //   212: lload 6
     //   214: lstore 4
     //   216: aload_0
-    //   217: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   217: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   220: iconst_1
     //   221: invokevirtual 544	java/net/Socket:setTcpNoDelay	(Z)V
     //   224: lload 6
     //   226: lstore 4
     //   228: aload_0
-    //   229: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   229: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   232: aload_0
-    //   233: getfield 132	com/tencent/mobileqq/highway/conn/TcpConnection:mReadTimeout	I
+    //   233: getfield 158	com/tencent/mobileqq/highway/conn/TcpConnection:mReadTimeout	I
     //   236: invokevirtual 547	java/net/Socket:setSoTimeout	(I)V
     //   239: lload 6
     //   241: lstore 4
     //   243: aload_0
-    //   244: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   244: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   247: ldc 19
     //   249: invokevirtual 550	java/net/Socket:setSendBufferSize	(I)V
     //   252: lload 6
     //   254: lstore 4
-    //   256: invokestatic 299	android/os/SystemClock:uptimeMillis	()J
+    //   256: invokestatic 317	android/os/SystemClock:uptimeMillis	()J
     //   259: lstore 6
     //   261: lload 6
     //   263: lstore 4
     //   265: aload_0
-    //   266: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   266: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   269: aload_0
-    //   270: getfield 537	com/tencent/mobileqq/highway/conn/TcpConnection:serverAddress	Ljava/net/InetSocketAddress;
+    //   270: getfield 102	com/tencent/mobileqq/highway/conn/TcpConnection:serverAddress	Ljava/net/InetSocketAddress;
     //   273: aload_0
-    //   274: getfield 138	com/tencent/mobileqq/highway/conn/TcpConnection:mConnTimeOut	I
+    //   274: getfield 106	com/tencent/mobileqq/highway/conn/TcpConnection:mConnTimeOut	I
     //   277: invokevirtual 554	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
     //   280: lload 6
     //   282: lstore 4
     //   284: aload_0
-    //   285: invokestatic 299	android/os/SystemClock:uptimeMillis	()J
+    //   285: invokestatic 317	android/os/SystemClock:uptimeMillis	()J
     //   288: lload 6
     //   290: lsub
-    //   291: putfield 362	com/tencent/mobileqq/highway/conn/TcpConnection:mRtt	J
+    //   291: putfield 137	com/tencent/mobileqq/highway/conn/TcpConnection:mRtt	J
     //   294: lload 6
     //   296: lstore 4
     //   298: aload_0
     //   299: aload_0
-    //   300: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   300: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   303: invokevirtual 558	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
-    //   306: putfield 278	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
+    //   306: putfield 296	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
     //   309: lload 6
     //   311: lstore 4
     //   313: aload_0
-    //   314: new 267	com/tencent/qphone/base/util/MsfSocketInputBuffer
+    //   314: new 285	com/tencent/qphone/base/util/MsfSocketInputBuffer
     //   317: dup
     //   318: aload_0
-    //   319: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   319: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   322: aload_0
-    //   323: getfield 130	com/tencent/mobileqq/highway/conn/TcpConnection:mReadBufferSize	I
+    //   323: getfield 156	com/tencent/mobileqq/highway/conn/TcpConnection:mReadBufferSize	I
     //   326: ldc_w 560
     //   329: iconst_m1
     //   330: invokespecial 563	com/tencent/qphone/base/util/MsfSocketInputBuffer:<init>	(Ljava/net/Socket;ILjava/lang/String;I)V
-    //   333: putfield 204	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
+    //   333: putfield 104	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
     //   336: lload 6
     //   338: lstore 4
     //   340: iconst_1
     //   341: aload_0
-    //   342: getfield 204	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
-    //   345: getfield 271	com/tencent/qphone/base/util/MsfSocketInputBuffer:instream	Ljava/io/InputStream;
-    //   348: invokevirtual 272	java/lang/Object:toString	()Ljava/lang/String;
-    //   351: invokestatic 276	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
+    //   342: getfield 104	com/tencent/mobileqq/highway/conn/TcpConnection:mInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
+    //   345: getfield 289	com/tencent/qphone/base/util/MsfSocketInputBuffer:instream	Ljava/io/InputStream;
+    //   348: invokevirtual 290	java/lang/Object:toString	()Ljava/lang/String;
+    //   351: invokestatic 294	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
     //   354: lload 6
     //   356: lstore 4
     //   358: iconst_1
     //   359: aload_0
-    //   360: getfield 278	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
-    //   363: invokevirtual 272	java/lang/Object:toString	()Ljava/lang/String;
-    //   366: invokestatic 276	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
+    //   360: getfield 296	com/tencent/mobileqq/highway/conn/TcpConnection:mOutputStream	Ljava/io/OutputStream;
+    //   363: invokevirtual 290	java/lang/Object:toString	()Ljava/lang/String;
+    //   366: invokestatic 294	com/tencent/mobileqq/highway/conn/TcpConnection:setExclusiveStream	(ZLjava/lang/String;)V
     //   369: lload 6
     //   371: lstore 4
     //   373: aload_0
@@ -693,173 +696,173 @@ public class TcpConnection
     //   377: dup
     //   378: aload_0
     //   379: invokespecial 567	com/tencent/mobileqq/highway/conn/TcpConnection$ReadThread:<init>	(Lcom/tencent/mobileqq/highway/conn/TcpConnection;)V
-    //   382: putfield 290	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
+    //   382: putfield 308	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
     //   385: lload 6
     //   387: lstore 4
     //   389: aload_0
-    //   390: getfield 290	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
+    //   390: getfield 308	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
     //   393: ldc_w 569
     //   396: invokevirtual 572	com/tencent/mobileqq/highway/conn/TcpConnection$ReadThread:setName	(Ljava/lang/String;)V
     //   399: lload 6
     //   401: lstore 4
     //   403: aload_0
-    //   404: getfield 102	com/tencent/mobileqq/highway/conn/TcpConnection:isRunning	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   404: getfield 110	com/tencent/mobileqq/highway/conn/TcpConnection:isRunning	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   407: iconst_1
-    //   408: invokevirtual 247	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   408: invokevirtual 265	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   411: lload 6
     //   413: lstore 4
     //   415: aload_0
-    //   416: getfield 290	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
+    //   416: getfield 308	com/tencent/mobileqq/highway/conn/TcpConnection:mReadThread	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ReadThread;
     //   419: invokevirtual 573	com/tencent/mobileqq/highway/conn/TcpConnection$ReadThread:start	()V
     //   422: lload 6
     //   424: lstore 4
     //   426: aload_0
-    //   427: getfield 96	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   427: getfield 98	com/tencent/mobileqq/highway/conn/TcpConnection:isConn	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   430: iconst_1
-    //   431: invokevirtual 247	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   431: invokevirtual 265	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   434: iconst_1
     //   435: istore 10
-    //   437: new 104	java/lang/StringBuilder
+    //   437: new 112	java/lang/StringBuilder
     //   440: dup
     //   441: ldc_w 575
-    //   444: invokespecial 109	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   444: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   447: astore 12
     //   449: aload_0
-    //   450: getfield 136	com/tencent/mobileqq/highway/conn/TcpConnection:mEp	Lcom/tencent/mobileqq/highway/utils/EndPoint;
-    //   453: getfield 517	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
+    //   450: getfield 162	com/tencent/mobileqq/highway/conn/TcpConnection:mEp	Lcom/tencent/mobileqq/highway/utils/EndPoint;
+    //   453: getfield 519	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
     //   456: ldc_w 577
     //   459: invokevirtual 583	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   462: ifeq +58 -> 520
     //   465: aload_0
-    //   466: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   466: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   469: invokevirtual 587	java/net/Socket:getRemoteSocketAddress	()Ljava/net/SocketAddress;
     //   472: astore 13
     //   474: aload 13
     //   476: ifnull +44 -> 520
     //   479: aload 13
-    //   481: instanceof 532
+    //   481: instanceof 534
     //   484: ifeq +36 -> 520
     //   487: aload 13
-    //   489: checkcast 532	java/net/InetSocketAddress
+    //   489: checkcast 534	java/net/InetSocketAddress
     //   492: invokevirtual 591	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
     //   495: invokevirtual 596	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   498: astore 13
     //   500: aload 12
     //   502: ldc_w 598
-    //   505: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   505: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   508: aload 13
-    //   510: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   510: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   513: ldc_w 600
-    //   516: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   516: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   519: pop
     //   520: iconst_0
     //   521: istore_2
-    //   522: ldc_w 337
-    //   525: new 104	java/lang/StringBuilder
+    //   522: ldc_w 351
+    //   525: new 112	java/lang/StringBuilder
     //   528: dup
-    //   529: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   529: invokespecial 165	java/lang/StringBuilder:<init>	()V
     //   532: ldc_w 602
-    //   535: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   535: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   538: aload_1
-    //   539: getfield 517	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
-    //   542: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   545: ldc_w 519
-    //   548: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   539: getfield 519	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
+    //   542: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   545: ldc_w 521
+    //   548: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   551: aload_1
-    //   552: getfield 522	com/tencent/mobileqq/highway/utils/EndPoint:port	I
-    //   555: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   558: ldc_w 524
-    //   561: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   552: getfield 524	com/tencent/mobileqq/highway/utils/EndPoint:port	I
+    //   555: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   558: ldc_w 526
+    //   561: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: aload_0
-    //   565: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
-    //   568: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   565: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   568: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   571: ldc_w 604
-    //   574: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   574: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   577: lload 6
-    //   579: invokevirtual 412	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   579: invokevirtual 414	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   582: ldc_w 606
-    //   585: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   585: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   588: aload 12
-    //   590: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   593: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   590: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   593: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   596: ldc_w 608
-    //   599: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   599: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   602: aload_0
-    //   603: getfield 249	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
+    //   603: getfield 267	com/tencent/mobileqq/highway/conn/TcpConnection:mSocket	Ljava/net/Socket;
     //   606: invokevirtual 611	java/net/Socket:getLocalPort	()I
-    //   609: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   612: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   615: invokestatic 350	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   609: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   612: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokestatic 364	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   618: aload_0
-    //   619: getfield 89	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   622: invokevirtual 327	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   619: getfield 91	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   622: invokevirtual 341	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   625: iconst_1
     //   626: istore 10
     //   628: aload_0
-    //   629: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   629: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
     //   632: iload 10
     //   634: putfield 614	com/tencent/mobileqq/highway/conn/ConnReportInfo:result	Z
     //   637: aload_0
-    //   638: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
-    //   641: invokestatic 299	android/os/SystemClock:uptimeMillis	()J
+    //   638: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   641: invokestatic 317	android/os/SystemClock:uptimeMillis	()J
     //   644: aload_0
-    //   645: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
-    //   648: getfield 302	com/tencent/mobileqq/highway/conn/ConnReportInfo:connStartTime	J
+    //   645: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   648: getfield 320	com/tencent/mobileqq/highway/conn/ConnReportInfo:connStartTime	J
     //   651: lsub
     //   652: putfield 617	com/tencent/mobileqq/highway/conn/ConnReportInfo:connElapseTime	J
-    //   655: invokestatic 299	android/os/SystemClock:uptimeMillis	()J
+    //   655: invokestatic 317	android/os/SystemClock:uptimeMillis	()J
     //   658: lstore 4
     //   660: aload_0
-    //   661: getfield 329	com/tencent/mobileqq/highway/conn/TcpConnection:connListener	Lcom/tencent/mobileqq/highway/conn/IConnectionListener;
+    //   661: getfield 343	com/tencent/mobileqq/highway/conn/TcpConnection:connListener	Lcom/tencent/mobileqq/highway/conn/IConnectionListener;
     //   664: ifnull +98 -> 762
-    //   667: ldc 234
+    //   667: ldc 252
     //   669: iconst_1
-    //   670: new 104	java/lang/StringBuilder
+    //   670: new 112	java/lang/StringBuilder
     //   673: dup
-    //   674: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   674: invokespecial 165	java/lang/StringBuilder:<init>	()V
     //   677: ldc_w 619
-    //   680: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   680: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   683: aload_0
-    //   684: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
-    //   687: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   684: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   687: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   690: ldc_w 621
-    //   693: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   693: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   696: iload 10
-    //   698: invokevirtual 344	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   698: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   701: ldc_w 623
-    //   704: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   704: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   707: iload_2
-    //   708: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   708: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   711: ldc_w 625
-    //   714: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   714: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   717: lload 4
     //   719: lload 8
     //   721: lsub
-    //   722: invokevirtual 412	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   722: invokevirtual 414	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   725: ldc_w 627
-    //   728: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   731: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   734: invokestatic 244	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   728: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   731: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   734: invokestatic 262	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   737: aload_0
-    //   738: getfield 329	com/tencent/mobileqq/highway/conn/TcpConnection:connListener	Lcom/tencent/mobileqq/highway/conn/IConnectionListener;
+    //   738: getfield 343	com/tencent/mobileqq/highway/conn/TcpConnection:connListener	Lcom/tencent/mobileqq/highway/conn/IConnectionListener;
     //   741: iload 10
     //   743: aload_0
-    //   744: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   744: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
     //   747: aload_0
     //   748: aload_0
-    //   749: getfield 136	com/tencent/mobileqq/highway/conn/TcpConnection:mEp	Lcom/tencent/mobileqq/highway/utils/EndPoint;
+    //   749: getfield 162	com/tencent/mobileqq/highway/conn/TcpConnection:mEp	Lcom/tencent/mobileqq/highway/utils/EndPoint;
     //   752: iload_2
     //   753: aload_0
-    //   754: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   754: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
     //   757: invokeinterface 631 7 0
     //   762: iload 10
     //   764: ifeq +549 -> 1313
     //   767: aload_0
-    //   768: getfield 116	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
-    //   771: invokestatic 299	android/os/SystemClock:uptimeMillis	()J
+    //   768: getfield 142	com/tencent/mobileqq/highway/conn/TcpConnection:connInfo	Lcom/tencent/mobileqq/highway/conn/ConnReportInfo;
+    //   771: invokestatic 317	android/os/SystemClock:uptimeMillis	()J
     //   774: putfield 634	com/tencent/mobileqq/highway/conn/ConnReportInfo:connLifeBegin	J
     //   777: aload_0
-    //   778: getfield 196	com/tencent/mobileqq/highway/conn/TcpConnection:mConnHandler	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker;
+    //   778: getfield 218	com/tencent/mobileqq/highway/conn/TcpConnection:mConnHandler	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker;
     //   781: invokevirtual 637	com/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker:wakeupToWrite	()V
     //   784: iload_2
     //   785: ireturn
@@ -871,41 +874,41 @@ public class TcpConnection
     //   794: iload_2
     //   795: istore_3
     //   796: aload_0
-    //   797: getfield 128	com/tencent/mobileqq/highway/conn/TcpConnection:connManager	Lcom/tencent/mobileqq/highway/conn/ConnManager;
+    //   797: getfield 154	com/tencent/mobileqq/highway/conn/TcpConnection:connManager	Lcom/tencent/mobileqq/highway/conn/ConnManager;
     //   800: invokevirtual 640	com/tencent/mobileqq/highway/conn/ConnManager:hasNet	()Z
     //   803: istore 11
     //   805: iload_2
     //   806: istore_3
-    //   807: ldc_w 337
-    //   810: new 104	java/lang/StringBuilder
+    //   807: ldc_w 351
+    //   810: new 112	java/lang/StringBuilder
     //   813: dup
-    //   814: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   814: invokespecial 165	java/lang/StringBuilder:<init>	()V
     //   817: ldc_w 642
-    //   820: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   820: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   823: aload_1
-    //   824: getfield 517	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
-    //   827: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   830: ldc_w 519
-    //   833: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   824: getfield 519	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
+    //   827: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   830: ldc_w 521
+    //   833: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   836: aload_1
-    //   837: getfield 522	com/tencent/mobileqq/highway/utils/EndPoint:port	I
-    //   840: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   843: ldc_w 524
-    //   846: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   837: getfield 524	com/tencent/mobileqq/highway/utils/EndPoint:port	I
+    //   840: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   843: ldc_w 526
+    //   846: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   849: aload_0
-    //   850: getfield 134	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
-    //   853: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   850: getfield 160	com/tencent/mobileqq/highway/conn/TcpConnection:connId	I
+    //   853: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   856: ldc_w 604
-    //   859: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   859: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   862: lload 4
-    //   864: invokevirtual 412	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   864: invokevirtual 414	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   867: ldc_w 644
-    //   870: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   870: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   873: iload 11
-    //   875: invokevirtual 344	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   878: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   875: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   878: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   881: aload 12
-    //   883: invokestatic 356	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   883: invokestatic 370	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   886: iload_2
     //   887: istore_3
     //   888: aload 12
@@ -917,27 +920,27 @@ public class TcpConnection
     //   903: iconst_3
     //   904: istore_2
     //   905: aload_0
-    //   906: getfield 89	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   909: invokevirtual 327	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   906: getfield 91	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   909: invokevirtual 341	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   912: goto -284 -> 628
     //   915: astore 12
-    //   917: ldc_w 337
-    //   920: new 104	java/lang/StringBuilder
+    //   917: ldc_w 351
+    //   920: new 112	java/lang/StringBuilder
     //   923: dup
-    //   924: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   924: invokespecial 165	java/lang/StringBuilder:<init>	()V
     //   927: ldc_w 650
-    //   930: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   930: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   933: aload_1
-    //   934: getfield 517	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
-    //   937: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   940: ldc_w 519
-    //   943: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   934: getfield 519	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
+    //   937: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   940: ldc_w 521
+    //   943: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   946: aload_1
-    //   947: getfield 522	com/tencent/mobileqq/highway/utils/EndPoint:port	I
-    //   950: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   953: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   947: getfield 524	com/tencent/mobileqq/highway/utils/EndPoint:port	I
+    //   950: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   953: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   956: aload 12
-    //   958: invokestatic 356	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   958: invokestatic 370	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   961: goto -333 -> 628
     //   964: iload_2
     //   965: istore_3
@@ -1111,15 +1114,15 @@ public class TcpConnection
     //   1295: iconst_0
     //   1296: istore 10
     //   1298: aload_0
-    //   1299: getfield 89	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   1302: invokevirtual 327	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   1299: getfield 91	com/tencent/mobileqq/highway/conn/TcpConnection:lock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   1302: invokevirtual 341	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   1305: aload 12
     //   1307: athrow
     //   1308: astore 12
     //   1310: goto -393 -> 917
     //   1313: aload_0
-    //   1314: getfield 196	com/tencent/mobileqq/highway/conn/TcpConnection:mConnHandler	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker;
-    //   1317: invokevirtual 283	com/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker:notifyToQuit	()V
+    //   1314: getfield 218	com/tencent/mobileqq/highway/conn/TcpConnection:mConnHandler	Lcom/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker;
+    //   1317: invokevirtual 301	com/tencent/mobileqq/highway/conn/TcpConnection$ConnWorker:notifyToQuit	()V
     //   1320: iload_2
     //   1321: ireturn
     //   1322: astore 12

@@ -1,36 +1,33 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oic
-  implements bkhw
+  implements AladdinConfigHandler
 {
-  public oic(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity, boolean paramBoolean1, long paramLong, boolean paramBoolean2, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean = true;
-    switch (paramInt)
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Bkho.dismiss();
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.moveTaskToBack(true);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.finish();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.e();
-      if (this.b) {
-        oat.a(null, "", "0X8008661", "0X8008661", 0, 0, this.jdField_a_of_type_Int + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
+        bnrf.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
       }
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bnrf.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
   }
 }
 

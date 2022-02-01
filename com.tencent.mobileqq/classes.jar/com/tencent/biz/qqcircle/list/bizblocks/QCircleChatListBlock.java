@@ -1,7 +1,11 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
-import aleb;
-import aled;
+import aabe;
+import aabj;
+import aacv;
+import aacw;
+import alpt;
+import alpv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anni;
-import bglf;
+import anzj;
+import bhlg;
 import com.tencent.biz.qqcircle.fragments.chat.QCircleRecentChatListData;
 import com.tencent.biz.qqcircle.fragments.chat.item.QCircleChatItemView;
 import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
@@ -47,18 +51,14 @@ import java.util.Observer;
 import mqq.os.MqqHandler;
 import qqcircle.QQCirclePrivateMsgShow.StBatchGetPMGiftInfoRsp;
 import qqcircle.QQCirclePrivateMsgShow.UserPMGiftInfo;
-import uxx;
-import vhk;
-import vjl;
-import voe;
-import zxj;
-import zxo;
-import zyz;
-import zza;
+import uzg;
+import vjo;
+import vlp;
+import vqm;
 
 public class QCircleChatListBlock
-  extends voe<QCircleRecentChatListData, QQCirclePrivateMsgShow.StBatchGetPMGiftInfoRsp>
-  implements aleb, aled, Observer
+  extends vqm<QCircleRecentChatListData, QQCirclePrivateMsgShow.StBatchGetPMGiftInfoRsp>
+  implements alpt, alpv, Observer
 {
   private static final int LOAD_COUNT_PER_PAGE = 20;
   private static final String TAG = "QCircleChatListBlock";
@@ -94,7 +94,7 @@ public class QCircleChatListBlock
           ArrayList localArrayList = new ArrayList();
           localArrayList.add(localQCircleRecentChatListData.getRecentUserUin());
           QLog.d("QCircleChatListBlock", 1, "clearChatUnRead uin" + localQCircleRecentChatListData.getRecentUserUin());
-          vhk.a(this.mApp, localArrayList, false);
+          vjo.a(this.mApp, localArrayList, false);
         }
       }
       return;
@@ -114,7 +114,7 @@ public class QCircleChatListBlock
     localIntent.putExtra("open_chatfragment", true);
     localIntent.putExtra("PREVIOUS_WINDOW", QCirclePersonalDetailFragment.class.getName());
     localIntent.putExtra("uin", paramString);
-    if (uxx.a(getContext(), paramString)) {
+    if (uzg.a(getContext(), paramString)) {
       localIntent.putExtra("uintype", 0);
     }
     for (;;)
@@ -123,7 +123,7 @@ public class QCircleChatListBlock
         localIntent.putExtra("qcirlce_chat_gift_info_bytes_key", paramUserPMGiftInfo.toByteArray());
       }
       localIntent.putExtra("aio_msg_source", 3);
-      paramUserPMGiftInfo = bglf.b(this.mApp, paramString, true);
+      paramUserPMGiftInfo = bhlg.b(this.mApp, paramString, true);
       paramString = paramUserPMGiftInfo;
       if (paramUserPMGiftInfo == null) {
         paramString = "";
@@ -147,7 +147,7 @@ public class QCircleChatListBlock
       QLog.d("QCircleChatListBlock", 1, "updateTabUnReadNum value:" + paramInt);
       if (paramInt > 0)
       {
-        this.mTvUnReadNum.setText(vhk.a(paramInt));
+        this.mTvUnReadNum.setText(vjo.a(paramInt));
         this.mTvUnReadNum.setVisibility(0);
       }
     }
@@ -172,7 +172,7 @@ public class QCircleChatListBlock
     while (localIterator.hasNext())
     {
       QCircleRecentChatListData localQCircleRecentChatListData = (QCircleRecentChatListData)localIterator.next();
-      localQCircleRecentChatListData.a(vjl.a().a(localQCircleRecentChatListData.getRecentUserUin()));
+      localQCircleRecentChatListData.a(vlp.a().a(localQCircleRecentChatListData.getRecentUserUin()));
     }
   }
   
@@ -186,7 +186,7 @@ public class QCircleChatListBlock
     return null;
   }
   
-  public List<zxj> getCustomParts()
+  public List<aabe> getCustomParts()
   {
     return null;
   }
@@ -206,9 +206,9 @@ public class QCircleChatListBlock
     return true;
   }
   
-  public void getListDataAsync(zza<QCircleRecentChatListData> paramzza, String paramString)
+  public void getListDataAsync(aacw<QCircleRecentChatListData> paramaacw, String paramString)
   {
-    ThreadManager.getSubThreadHandler().post(new QCircleChatListBlock.3(this, paramzza));
+    ThreadManager.getSubThreadHandler().post(new QCircleChatListBlock.3(this, paramaacw));
   }
   
   public List<QCircleRecentChatListData> getListDataFromRsp(QQCirclePrivateMsgShow.StBatchGetPMGiftInfoRsp paramStBatchGetPMGiftInfoRsp)
@@ -238,17 +238,17 @@ public class QCircleChatListBlock
   
   public String getTitle()
   {
-    return anni.a(2131697126);
+    return anzj.a(2131697187);
   }
   
   public View getTitleTabView(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560737, paramViewGroup, false);
-    this.mTvTitle = ((TextView)paramViewGroup.findViewById(2131379933));
-    this.mBottomLine = paramViewGroup.findViewById(2131380429);
-    this.mTvUnReadNum = ((DragTextView)paramViewGroup.findViewById(2131379860));
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560758, paramViewGroup, false);
+    this.mTvTitle = ((TextView)paramViewGroup.findViewById(2131380117));
+    this.mBottomLine = paramViewGroup.findViewById(2131380615);
+    this.mTvUnReadNum = ((DragTextView)paramViewGroup.findViewById(2131380040));
     this.mTvUnReadNum.setDragViewType(2);
-    this.mTvTitle.setText(anni.a(2131697126));
+    this.mTvTitle.setText(anzj.a(2131697187));
     this.mBottomLine.setVisibility(8);
     this.mTvUnReadNum.setVisibility(8);
     return paramViewGroup;
@@ -275,7 +275,7 @@ public class QCircleChatListBlock
       {
         QCircleRecentChatListData localQCircleRecentChatListData = new QCircleRecentChatListData(localMessageRecord);
         localQCircleRecentChatListData.a(this.mApp, getContext());
-        localQCircleRecentChatListData.a(vjl.a().a(localMessageRecord.senderuin));
+        localQCircleRecentChatListData.a(vlp.a().a(localMessageRecord.senderuin));
         localArrayList.add(localQCircleRecentChatListData);
       }
     }
@@ -321,7 +321,7 @@ public class QCircleChatListBlock
   {
     if (this.mDataList != null)
     {
-      ((zyz)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
+      ((aacv)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
       paramViewHolder.itemView.setOnClickListener(new QCircleChatListBlock.5(this, paramInt));
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -336,7 +336,7 @@ public class QCircleChatListBlock
         break label70;
       }
       QLog.d("QCircleChatListBlock", 1, "dragTabRed clear unRead");
-      vhk.a(this.mApp, vhk.a(getDataList()), false);
+      vjo.a(this.mApp, vjo.a(getDataList()), false);
     }
     label70:
     do
@@ -354,7 +354,7 @@ public class QCircleChatListBlock
   {
     paramViewGroup = new QCircleChatItemView(getContext());
     paramViewGroup.setDragFrameLayout(this.mDragHost);
-    return new zyz(paramViewGroup);
+    return new aacv(paramViewGroup);
   }
   
   public List<View> onGetVisiableDragView()
@@ -428,7 +428,7 @@ public class QCircleChatListBlock
     label77:
     label83:
     label91:
-    for (int i = 2131165343;; i = 2131166240)
+    for (int i = 2131165343;; i = 2131166241)
     {
       ((TextView)localObject).setTextColor(paramView.getColor(i));
       return;
@@ -446,7 +446,7 @@ public class QCircleChatListBlock
     do
     {
       return;
-      paramList = vhk.a(paramList);
+      paramList = vjo.a(paramList);
     } while ((paramList == null) || (paramList.size() <= 0));
     paramList = new QCircleChatBatchGetPMGiftInfoRequest(paramList);
     QLog.d("QCircleChatListBlock", 1, "reqCmd" + paramList.getCmdName());
@@ -456,7 +456,7 @@ public class QCircleChatListBlock
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof MessageRecord)) {
-      if (vhk.a(((MessageRecord)paramObject).istroop)) {}
+      if (vjo.a(((MessageRecord)paramObject).istroop)) {}
     }
     while (!(paramObject instanceof RecentUser))
     {

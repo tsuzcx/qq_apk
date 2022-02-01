@@ -1,9 +1,20 @@
 import android.view.View;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zph
+class zph
+  implements View.OnClickListener
 {
-  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
+  zph(zpg paramzpg) {}
+  
+  public void onClick(View paramView)
+  {
+    zpc localzpc = this.a.jdField_a_of_type_Zpc;
+    if (localzpc != null) {
+      localzpc.a(this.a.jdField_a_of_type_Zpi, this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

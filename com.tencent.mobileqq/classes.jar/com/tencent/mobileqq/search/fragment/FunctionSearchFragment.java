@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
 import android.view.View;
-import bbgu;
-import bbio;
-import bbjs;
-import bbjt;
-import bbtj;
+import bbzo;
+import bcbi;
+import bccm;
+import bccn;
+import bcmc;
 import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 
@@ -23,19 +23,19 @@ public class FunctionSearchFragment
     return 120;
   }
   
-  protected bbio a()
+  protected bcbi a()
   {
-    return new bbjt(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu);
+    return new bccn(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof);
   }
   
-  protected bbtj a()
+  protected bcmc a()
   {
     return new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1);
   }
   
   protected String a()
   {
-    return bbgu.a();
+    return bbzo.a();
   }
   
   protected void a(String paramString, int paramInt)
@@ -46,7 +46,7 @@ public class FunctionSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new bbjs(this));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new bccm(this));
   }
 }
 

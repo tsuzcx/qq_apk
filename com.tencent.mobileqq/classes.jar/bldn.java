@@ -1,92 +1,84 @@
-public class bldn
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
+
+class bldn
 {
-  public static final byte[] a;
-  private static final char[] a;
-  public static final byte[] b;
-  public static final byte[] c;
-  public static final byte[] d;
+  private bldo a;
   
-  static
+  public bldn(bldo parambldo)
   {
-    jdField_a_of_type_ArrayOfByte = b("00A40400");
-    b = b("6A82");
-    c = b("9000");
-    d = b("0000");
-    jdField_a_of_type_ArrayOfChar = "0123456789ABCDEF".toCharArray();
+    this.a = parambldo;
   }
   
-  public static String a(byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    label348:
+    try
     {
-      int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = jdField_a_of_type_ArrayOfChar[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-      i += 1;
+      localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (localObject1 == null) {
+        return;
+      }
     }
-    return new String(arrayOfChar);
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    byte[] arrayOfByte = b(String.format("%02X", new Object[] { Integer.valueOf(paramString.length() / 2) }));
-    paramString = b(paramString);
-    return a(jdField_a_of_type_ArrayOfByte, new byte[][] { arrayOfByte, paramString });
-  }
-  
-  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > paramInt2) {
-      throw new IllegalArgumentException();
-    }
-    int i = paramArrayOfByte.length;
-    if ((paramInt1 < 0) || (paramInt1 > i)) {
-      throw new ArrayIndexOutOfBoundsException();
-    }
-    paramInt2 -= paramInt1;
-    i = Math.min(paramInt2, i - paramInt1);
-    byte[] arrayOfByte = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, i);
-    return arrayOfByte;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, byte[]... paramVarArgs)
-  {
-    int j = paramArrayOfByte.length;
-    int k = paramVarArgs.length;
-    int i = 0;
-    while (i < k)
+    catch (Exception localException)
     {
-      j += paramVarArgs[i].length;
-      i += 1;
+      Object localObject1;
+      Iterator localIterator1;
+      localException.printStackTrace();
+      return;
+      return;
     }
-    byte[] arrayOfByte = a(paramArrayOfByte, 0, j);
-    j = paramArrayOfByte.length;
-    k = paramVarArgs.length;
-    i = 0;
-    while (i < k)
+    finally
     {
-      paramArrayOfByte = paramVarArgs[i];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, j, paramArrayOfByte.length);
-      j += paramArrayOfByte.length;
-      i += 1;
+      if (this.a == null) {
+        break label348;
+      }
+      this.a.a();
     }
-    return arrayOfByte;
-  }
-  
-  public static byte[] b(String paramString)
-  {
-    int j = paramString.length();
-    byte[] arrayOfByte = new byte[j / 2];
-    int i = 0;
-    while (i < j)
+    localObject1 = new bled((QQAppInterface)localObject1).a(1L);
+    if (localObject1 != null)
     {
-      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
-      i += 2;
+      localIterator1 = ((List)localObject1).iterator();
+      while (localIterator1.hasNext())
+      {
+        localObject1 = (blei)localIterator1.next();
+        if ((((blei)localObject1).b == paramInt) && (((blei)localObject1).a != null))
+        {
+          Iterator localIterator2 = ((blei)localObject1).a.iterator();
+          while (localIterator2.hasNext())
+          {
+            Object localObject3 = (bleh)localIterator2.next();
+            if (!TextUtils.isEmpty(((bleh)localObject3).i))
+            {
+              localObject1 = ((bleh)localObject3).f;
+              if (!TextUtils.isEmpty(((bleh)localObject3).g)) {
+                localObject1 = ((bleh)localObject3).g;
+              }
+              if (localObject1 != null)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("QQProtect.QSec", 2, String.format("ExtraInfo: %s path: %s", new Object[] { ((bleh)localObject3).i, localObject1 }));
+                }
+                localObject3 = new JSONObject(((bleh)localObject3).i);
+                int i = ((JSONObject)localObject3).getInt("id");
+                int j = ((JSONObject)localObject3).getInt("type");
+                int k = ((JSONObject)localObject3).getInt("flag");
+                int m = ((JSONObject)localObject3).getInt("mode");
+                localObject3 = ((JSONObject)localObject3).getString("ver");
+                if (this.a != null) {
+                  this.a.a((String)localObject1, (String)localObject3, i, j, k, m);
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    return arrayOfByte;
   }
 }
 

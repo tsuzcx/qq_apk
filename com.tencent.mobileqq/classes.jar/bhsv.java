@@ -1,11 +1,6 @@
 public abstract interface bhsv
-  extends bhni
 {
-  public abstract int a();
-  
   public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
 }
 
 

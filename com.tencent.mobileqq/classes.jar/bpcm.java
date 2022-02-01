@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.EditText;
+import android.view.animation.Interpolator;
 
-class bpcm
-  implements DialogInterface.OnDismissListener
+final class bpcm
+  implements Interpolator
 {
-  bpcm(bpcg parambpcg, bpqa parambpqa) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public float getInterpolation(float paramFloat)
   {
-    this.jdField_a_of_type_Bpcg.a.a(0);
-    bpcg.a(this.jdField_a_of_type_Bpcg).setText(this.jdField_a_of_type_Bpqa.a());
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

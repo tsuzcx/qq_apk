@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.soload.config;
 
-import bcoo;
+import bdhg;
 
 public class SoLoadConfProcessor$1
   implements Runnable
 {
-  public SoLoadConfProcessor$1(bcoo parambcoo) {}
+  public SoLoadConfProcessor$1(bdhg parambdhg) {}
   
   public void run()
   {
-    bcoo.a(this.this$0, -1);
+    bdhg.a(this.this$0, -1);
   }
 }
 

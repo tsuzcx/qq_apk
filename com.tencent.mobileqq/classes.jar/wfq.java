@@ -1,30 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class wfq
-  extends anmu
+public class wfq
 {
-  wfq(wfp paramwfp) {}
+  public List<String> a;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
   
-  protected void onAddFriend(String paramString)
+  public wfq(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
-    }
-    try
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public wfq a(JSONObject paramJSONObject, int paramInt)
+  {
+    this.d = paramJSONObject.optString("transId", "");
+    this.g = paramJSONObject.optInt("min_limit", paramInt);
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.f = paramJSONObject.optInt("text_id", -1);
+    paramJSONObject = paramJSONObject.optJSONArray("transList");
+    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
-      paramString = Long.valueOf(paramString);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramString);
-      this.a.a(3, localArrayList);
-      this.a.a();
-      return;
+      this.a = new ArrayList();
+      paramInt = 0;
+      while (paramInt < paramJSONObject.length())
+      {
+        this.a.add(paramJSONObject.getString(paramInt));
+        paramInt += 1;
+      }
     }
-    catch (NumberFormatException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
-    }
+    return this;
   }
 }
 

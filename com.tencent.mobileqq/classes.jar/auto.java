@@ -1,17 +1,32 @@
-public class auto
-  implements anil
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+public abstract interface auto
 {
-  protected void a(Object paramObject) {}
+  public abstract int a();
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramObject);
-  }
+  public abstract long a();
+  
+  public abstract autp a();
+  
+  public abstract BaseActivity a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract String c();
 }
 
 

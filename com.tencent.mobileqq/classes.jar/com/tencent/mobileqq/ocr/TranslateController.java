@@ -3,8 +3,8 @@ package com.tencent.mobileqq.ocr;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import aoyp;
-import ayey;
+import apmf;
+import ayxr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
 import java.util.HashMap;
@@ -13,33 +13,33 @@ public class TranslateController
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private aoyp jdField_a_of_type_Aoyp;
-  private ayey jdField_a_of_type_Ayey;
+  private apmf jdField_a_of_type_Apmf;
+  private ayxr jdField_a_of_type_Ayxr;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   HashMap<String, TranslateController.ImageTranslateTask> jdField_a_of_type_JavaUtilHashMap;
   
   public TranslateController(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aoyp = new aoyp(paramQQAppInterface);
-    this.jdField_a_of_type_Aoyp.a();
+    this.jdField_a_of_type_Apmf = new apmf(paramQQAppInterface);
+    this.jdField_a_of_type_Apmf.a();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("TranslateFileUpload_" + System.currentTimeMillis());
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Ayey = ((ayey)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(113));
+    this.jdField_a_of_type_Ayxr = ((ayxr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(113));
   }
   
   private void a(boolean paramBoolean, String paramString, TranslateResult arg3)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_Ayey == null) {
+    while (this.jdField_a_of_type_Ayxr == null) {
       return;
     }
     if (??? != null) {
       ???.c = paramString;
     }
-    this.jdField_a_of_type_Ayey.notifyUI(2, paramBoolean, new Object[] { Integer.valueOf(2), ??? });
+    this.jdField_a_of_type_Ayxr.notifyUI(2, paramBoolean, new Object[] { Integer.valueOf(2), ??? });
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
@@ -59,18 +59,18 @@ public class TranslateController
       this.jdField_a_of_type_AndroidOsHandlerThread.quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
-    if (this.jdField_a_of_type_Aoyp != null)
+    if (this.jdField_a_of_type_Apmf != null)
     {
-      this.jdField_a_of_type_Aoyp.a();
-      this.jdField_a_of_type_Aoyp.b();
-      this.jdField_a_of_type_Aoyp = null;
+      this.jdField_a_of_type_Apmf.a();
+      this.jdField_a_of_type_Apmf.b();
+      this.jdField_a_of_type_Apmf = null;
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_Ayey != null) {
-      this.jdField_a_of_type_Ayey.a(paramString1, paramString2, paramString3);
+    if (this.jdField_a_of_type_Ayxr != null) {
+      this.jdField_a_of_type_Ayxr.a(paramString1, paramString2, paramString3);
     }
   }
   

@@ -1,71 +1,242 @@
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tfy
-  extends qkz
+  extends ual
 {
-  private final long jdField_a_of_type_Long;
-  private final ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private final String jdField_a_of_type_JavaLangString;
+  public static String a;
+  private SparseArray<tgb> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private BridgeModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<two> jdField_a_of_type_JavaUtilList;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private boolean jdField_a_of_type_Boolean;
+  private List<two> b;
   
-  public tfy(long paramLong, String paramString, ArticleInfo paramArticleInfo)
+  static
   {
-    super(-15504151, 13421772, 860716207);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_JavaLangString = "SheetItemClickProcessor";
   }
   
-  public tfy(long paramLong, String paramString, ArticleInfo paramArticleInfo, int paramInt)
+  public tfy(boolean paramBoolean, List<two> paramList1, List<two> paramList2, JSONObject paramJSONObject, WeakReference<Activity> paramWeakReference, String paramString, BridgeModule paramBridgeModule)
   {
-    super(paramInt, 13421772, 860716207);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    BridgeModule.shareCallBackId = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule = paramBridgeModule;
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_OrgJsonJSONObject);
   }
   
-  private void a(long paramLong, Context paramContext)
+  private void a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null)) {}
-    ArticleInfo localArticleInfo;
-    String str;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      BridgeModule localBridgeModule1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+      localBridgeModule1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+      localJSONObject.put("type", BridgeModule.shareCallBackType);
+      localBridgeModule1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+      localBridgeModule1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+      localJSONObject.put("action", BridgeModule.shareCallBackName);
+      localBridgeModule1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+      localJSONObject.put("fromCallback", 0);
+      localBridgeModule1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+      if (!TextUtils.isEmpty(BridgeModule.shareCallBackId))
+      {
+        localBridgeModule1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+        BridgeModule localBridgeModule2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+        localBridgeModule1.invokeCallJS(BridgeModule.shareCallBackId, localJSONObject);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "processClick error=" + localJSONException.getMessage());
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    String str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("rowkey", "");
+    int i = this.jdField_a_of_type_OrgJsonJSONObject.optInt("source", -1);
+    int j = this.jdField_a_of_type_OrgJsonJSONObject.optInt("report_from", -1);
+    String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("vid", "");
+    String str3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("algorithmId", "");
+    String str4 = this.jdField_a_of_type_OrgJsonJSONObject.optString("articleId", "");
+    String str5 = this.jdField_a_of_type_OrgJsonJSONObject.optString("topicId", "");
+    if ((j == 4) || (j == 11)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.reportVideoShareClick(str1, str2, i, a(paramInt), b(paramInt), false, j, str3, str4, str5);
+    }
+  }
+  
+  private void a(WeakReference<Activity> paramWeakReference, JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, new tgc(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(5, new tgh(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(4, new tgm(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(6, new tge(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, new tgg(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(21, new tgj(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(26, new tgk(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(35, new tfz(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(37, new tgf(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(31, new tgl(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(39, new tgi(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(134, new tga(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(133, new tgn(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(-111, new tgd(this, (Activity)paramWeakReference.get(), this, paramJSONObject));
+  }
+  
+  private boolean b(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.mShareHelper;
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
+    int i;
+    if (paramInt == 72) {
+      i = 2;
+    }
+    for (;;)
+    {
+      localObject1 = ((uak)localObject1).a((List)localObject2, localList, i);
+      if ((localObject1 != null) && (((two)localObject1).jdField_a_of_type_Boolean))
+      {
+        localObject1 = new JSONObject();
+        if (paramInt == 72)
+        {
+          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+          BridgeModule.shareCallBackName = "qq_friend";
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.shareToFriendUin = paramActionSheetItem.uin;
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.shareToFriendUinType = paramActionSheetItem.uinType;
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.shareToFriendUinName = paramActionSheetItem.label;
+        }
+        try
+        {
+          paramActionSheetItem = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+          paramActionSheetItem = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+          ((JSONObject)localObject1).put("type", BridgeModule.shareCallBackType);
+          paramActionSheetItem = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+          paramActionSheetItem = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+          ((JSONObject)localObject1).put("action", BridgeModule.shareCallBackName);
+          paramActionSheetItem = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+          ((JSONObject)localObject1).put("fromCallback", 0);
+          paramActionSheetItem = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+          if (!TextUtils.isEmpty(BridgeModule.shareCallBackId))
+          {
+            paramActionSheetItem = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+            localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+            paramActionSheetItem.invokeCallJS(BridgeModule.shareCallBackId, localObject1);
+          }
+          return true;
+          i = paramInt;
+        }
+        catch (JSONException paramActionSheetItem)
+        {
+          for (;;)
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 1, "processClick webhandle error=" + paramActionSheetItem.getMessage());
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 13: 
+      return 0;
+    case 2: 
+    case 72: 
+    case 73: 
+      return 1;
+    case 5: 
+      return 6;
+    case 4: 
+      return 7;
+    case 3: 
+      return 2;
+    case 9: 
+      return 3;
+    case 10: 
+      return 4;
+    case 12: 
+      return 5;
+    }
+    return 8;
+  }
+  
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      bool1 = false;
+    }
     do
     {
-      return;
-      QLog.d("UserSpan", 1, new Object[] { "openPersonUrl, uin = ", Long.valueOf(paramLong) });
-      pha.a(paramContext, pgc.g + bgku.encodeToString(String.valueOf(paramLong).getBytes(), 2));
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      pha.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
-      str = pha.a(this.jdField_a_of_type_JavaLangString, localArticleInfo, paramLong);
-      if (ube.a(localArticleInfo.mChannelID)) {}
-      for (paramContext = "0X800935C"; TextUtils.equals(this.jdField_a_of_type_JavaLangString, "3"); paramContext = "0X8007BA3")
+      do
       {
-        oat.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rha.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
-        snh.a(localArticleInfo, (int)localArticleInfo.mChannelID);
-        return;
+        return bool1;
+        bool1 = bool2;
+      } while (this.jdField_a_of_type_OrgJsonJSONObject == null);
+      BridgeModule.shareCallBackType = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.mShareUtils.a(paramInt);
+      BridgeModule.shareCallBackName = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.mShareHelper.a(paramInt);
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
       }
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "5"))
-      {
-        if (qva.a(localArticleInfo))
-        {
-          oat.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
-          snh.a(localArticleInfo, (int)localArticleInfo.mChannelID);
-          return;
-        }
-        oat.a(null, localArticleInfo.mSubscribeID, paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), "" + localArticleInfo.mStrategyId, str, false);
-        return;
-      }
-    } while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "2"));
-    oat.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rha.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+      bool1 = bool2;
+    } while (b(paramInt, paramActionSheetItem));
+    String str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("share_url");
+    String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("aio_share_url");
+    String str3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("puin");
+    tgb localtgb = (tgb)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localtgb != null) {
+      localtgb.a(str1, str2, str3, paramActionSheetItem, paramInt);
+    }
+    for (;;)
+    {
+      a();
+      a(paramInt);
+      return super.a(paramInt, paramActionSheetItem);
+      ((tgb)this.jdField_a_of_type_AndroidUtilSparseArray.get(-111)).a(str1, str2, str3, paramActionSheetItem, paramInt);
+    }
   }
   
-  public void onClick(View paramView)
+  public int b(int paramInt)
   {
-    a(this.jdField_a_of_type_Long, paramView.getContext());
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 72: 
+      return 19;
+    case 1: 
+      return 3;
+    case 11: 
+      return 5;
+    case 6: 
+      return 4;
+    case 44: 
+      return 7;
+    }
+    return 2;
   }
 }
 

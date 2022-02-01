@@ -1,42 +1,25 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class adkk
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public adkk(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
-  public void onGlobalLayout()
+  public static String a(String paramString)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    String str2 = (String)a.get(paramString);
+    String str1 = str2;
+    if (str2 == null)
     {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
-      }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
+      str2 = SecUtil.getFileMd5(paramString);
+      str1 = str2;
+      if (str2 != null)
+      {
+        a.put(paramString, str2);
+        str1 = str2;
       }
     }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
-    {
-      return;
-      i = 0;
-      break;
-    }
-    ((EditText)localObject).setCursorVisible(true);
+    return str1;
   }
 }
 

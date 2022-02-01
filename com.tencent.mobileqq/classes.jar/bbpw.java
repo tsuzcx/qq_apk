@@ -1,8 +1,33 @@
-import android.view.View;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
 
-public abstract interface bbpw
+class bbpw
+  implements IGalleryImageListener
 {
-  public abstract void a(View paramView);
+  bbpw(bbpv parambbpv, URLDrawable paramURLDrawable, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
+  
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Bbpv.a.b.setVisibility(8);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Bbpv.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
+      this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.orientation = paramInt;
+      if (this.jdField_a_of_type_Bbpv.a.a != null) {
+        this.jdField_a_of_type_Bbpv.a.a.initDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_Bbpv.a.mScreenWidthPx, this.jdField_a_of_type_Bbpv.a.mScreenHeightPx, this.jdField_a_of_type_Bbpv.getRotation(paramInt));
+      }
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Bbpv.a.mContext, this.jdField_a_of_type_Bbpv.a.mContext.getString(2131694455), 0).a();
+  }
 }
 
 

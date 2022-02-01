@@ -1,18 +1,18 @@
 package com.tencent.mqpsdk.secsrv;
 
-import biid;
+import bjjc;
 
 public class MQPAPPScanService$1
   extends Thread
 {
-  public MQPAPPScanService$1(biid parambiid, byte[] paramArrayOfByte) {}
+  public MQPAPPScanService$1(bjjc parambjjc, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     try
     {
-      biid.a += 1;
-      biid.a(this.this$0, this.a);
+      bjjc.a += 1;
+      bjjc.a(this.this$0, this.a);
       return;
     }
     finally {}

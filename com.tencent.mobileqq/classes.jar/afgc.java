@@ -1,38 +1,46 @@
-import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Adapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView;
 
 public class afgc
-  implements View.OnClickListener
+  implements bljm
 {
-  public afgc(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public afgc(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
-    }
-    Object localObject = (bdeh)this.a.app.getManager(61);
-    if (localObject != null) {}
-    for (int i = ((bdeh)localObject).a();; i = 0)
+    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
+    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
+    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
     {
-      if (i < 2)
-      {
-        localObject = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject).putExtra("fromWhere", this.a.b);
-        this.a.startActivity((Intent)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "mRecentList is double click");
       }
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        bddy.a(this.a.app, this.a);
-      }
+      QQLSActivity.a(this.a, -1L);
+      QQLSActivity.b(this.a, 0L);
+      QQLSActivity.a(this.a, paramView);
+      QQLSActivity.a(this.a, true);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("QQLSActivity", 2, "mRecentList  click once");
+    }
+    QQLSActivity.a(this.a, paramLong);
+    QQLSActivity.b(this.a, System.currentTimeMillis());
+    if (QQLSActivity.a(this.a)) {
+      QQLSActivity.a(this.a).setText(2131698151);
+    }
+    for (;;)
+    {
+      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
+      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+      return;
+      QQLSActivity.a(this.a).setText(2131698150);
     }
   }
 }

@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.report;
 import android.text.TextUtils;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import upe;
-import uur;
+import uqf;
+import uvt;
 
 public final class GdtAdWsVideoReport$1
   implements Runnable
@@ -30,13 +30,13 @@ public final class GdtAdWsVideoReport$1
         if (i == 200)
         {
           bool = true;
-          upe.a(uur.a(), "@getGdtInfo exporsure rspCode " + i + "， request thirdparty" + bool + " url =" + this.a);
+          uqf.a(uvt.a(), "@getGdtInfo exporsure rspCode " + i + "， request thirdparty" + bool + " url =" + this.a);
           return;
         }
       }
       catch (Exception localException)
       {
-        upe.a(uur.a(), 2, localException.toString());
+        uqf.a(uvt.a(), 2, localException.toString());
         return;
       }
       boolean bool = false;

@@ -1,107 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.RectF;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Random;
 
-class bpuj
-  implements Animator.AnimatorListener
+public class bpuj
 {
-  bpuj(bpuh parambpuh) {}
+  private static Random a = new Random();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public static bpuk a()
   {
-    if (bpuh.b(this.a))
-    {
-      bpuh.a(this.a, false);
-      bpuh.g(this.a, bpuh.e(this.a));
-      if (bpuh.e(this.a) != 1) {
-        break label53;
-      }
-      this.a.a(2);
-    }
-    label53:
-    do
-    {
-      return;
-      if (bpuh.e(this.a) == 3)
-      {
-        this.a.a(0);
-        return;
-      }
-    } while (bpuh.e(this.a) != 4);
-    if ((bpuh.a(this.a)) && (bpuh.a(this.a) != null))
-    {
-      paramAnimator = (bpus)bpuh.a(this.a).get();
-      if (paramAnimator != null)
-      {
-        RectF localRectF = bpuh.a(this.a).a(bpuh.f(this.a));
-        if (localRectF == null) {
-          break label183;
-        }
-        paramAnimator.a(bpuh.e(this.a), bpuh.f(this.a), localRectF);
-      }
-    }
-    for (;;)
-    {
-      bpuh.b(this.a, false);
-      this.a.a(0);
-      return;
-      label183:
-      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error 2 !! rc is null:" + bpuh.f(this.a));
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.a.isRunning())
-    {
-      bpuh.a(this.a, false);
-      bpuh.f(this.a, bpuh.e(this.a));
-      if (bpuh.e(this.a) != 1) {
-        break label53;
-      }
-      this.a.a(2);
-    }
-    label53:
-    do
-    {
-      return;
-      if (bpuh.e(this.a) == 3)
-      {
-        this.a.a(0);
-        return;
-      }
-    } while (bpuh.e(this.a) != 4);
-    if ((bpuh.a(this.a)) && (bpuh.a(this.a) != null))
-    {
-      paramAnimator = (bpus)bpuh.a(this.a).get();
-      if (paramAnimator != null)
-      {
-        RectF localRectF = bpuh.a(this.a).a(bpuh.f(this.a));
-        if (localRectF == null) {
-          break label183;
-        }
-        paramAnimator.a(bpuh.e(this.a), bpuh.f(this.a), localRectF);
-      }
-    }
-    for (;;)
-    {
-      bpuh.b(this.a, false);
-      this.a.a(0);
-      return;
-      label183:
-      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error!! rc is null:" + bpuh.f(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.isRunning()) {
-      bpuh.e(this.a, bpuh.e(this.a));
-    }
+    int i = brkm.a / 4;
+    int j = a.nextInt(brkm.a / 2);
+    int k = brkm.a / 4;
+    int m = a.nextInt(brkm.a / 2);
+    return new bpuk(i - j + brkm.a / 2, k - m + (brkm.b - brkm.a(249.0F)) / 2);
   }
 }
 

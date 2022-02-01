@@ -1,100 +1,70 @@
-public class bose
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import dov.com.qq.im.ae.data.AEGifCategoryWrapper;
+import java.util.Iterator;
+import java.util.List;
+
+class bose
+  implements Observer<boqz>
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt;
-  public long[] a;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int[] jdField_b_of_type_ArrayOfInt;
-  int c;
+  bose(bory parambory) {}
   
-  public bose()
+  public void a(@Nullable boqz paramboqz)
   {
-    this.jdField_a_of_type_ArrayOfLong = new long[4];
-  }
-  
-  public bose(int paramInt)
-  {
-    this.jdField_a_of_type_ArrayOfLong = new long[4];
-    this.jdField_a_of_type_ArrayOfLong = new long[paramInt];
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    label4:
+    Object localObject1;
+    Object localObject2;
+    if (paramboqz == null)
     {
-      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
-      i += 1;
-    }
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfLong[paramInt] == 0L)) {
-      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
-    }
-  }
-  
-  public void a(Integer... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (this.jdField_b_of_type_Int >= 400)) {
       return;
     }
-    if (paramVarArgs.length == 1)
+    else
     {
-      if (this.jdField_a_of_type_ArrayOfInt == null) {
-        this.jdField_a_of_type_ArrayOfInt = new int[400];
+      localObject1 = bory.a(this.a).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (boqw)((Iterator)localObject1).next();
+        if (((boqw)localObject2).jdField_a_of_type_JavaLangString.equals(paramboqz.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id))
+        {
+          if (((boqw)localObject2).jdField_a_of_type_Int != paramboqz.jdField_a_of_type_Int)
+          {
+            ((boqw)localObject2).jdField_a_of_type_Int = paramboqz.jdField_a_of_type_Int;
+            bory.a(this.a).notifyItemChanged(bory.a(this.a).indexOf(localObject2));
+          }
+          if ((((boqw)localObject2).jdField_a_of_type_Int == 2) && (((boqw)localObject2).jdField_a_of_type_JavaLangString.equals(bory.b(this.a)))) {
+            bory.a(this.a).b((boqw)localObject2);
+          }
+        }
       }
-      this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
+      localObject2 = bory.b(this.a).iterator();
     }
     for (;;)
     {
-      this.jdField_b_of_type_Int += 1;
-      return;
-      if (paramVarArgs.length == 2)
+      if (!((Iterator)localObject2).hasNext()) {
+        break label4;
+      }
+      localObject1 = (AEGifCategoryWrapper)((Iterator)localObject2).next();
+      if ((localObject1 == null) || (CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject1).materialWrapperList))) {
+        break;
+      }
+      Iterator localIterator = ((AEGifCategoryWrapper)localObject1).materialWrapperList.iterator();
+      do
       {
-        if (this.jdField_a_of_type_ArrayOfInt == null) {
-          this.jdField_a_of_type_ArrayOfInt = new int[400];
+        if (!localIterator.hasNext()) {
+          break;
         }
-        if (this.jdField_b_of_type_ArrayOfInt == null) {
-          this.jdField_b_of_type_ArrayOfInt = new int[400];
-        }
-        this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
-        this.jdField_b_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[1].intValue();
+        localObject1 = (boqw)localIterator.next();
+      } while ((localObject1 == null) || (TextUtils.isEmpty(((boqw)localObject1).jdField_a_of_type_JavaLangString)) || (!((boqw)localObject1).jdField_a_of_type_JavaLangString.equals(paramboqz.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)));
+      while (localObject1 != null)
+      {
+        ((boqw)localObject1).jdField_a_of_type_Int = paramboqz.jdField_a_of_type_Int;
+        return;
+        localObject1 = null;
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= paramInt;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    a();
   }
 }
 

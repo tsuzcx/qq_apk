@@ -1,15 +1,10 @@
-import android.text.Spanned;
-import java.util.Comparator;
-
-final class bfqv
-  implements Comparator<Object>
+public abstract interface bfqv
 {
-  bfqv(Spanned paramSpanned) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
-  }
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(String paramString);
 }
 
 

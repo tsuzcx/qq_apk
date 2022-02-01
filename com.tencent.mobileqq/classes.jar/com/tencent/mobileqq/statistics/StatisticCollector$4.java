@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.statistics;
 
-import abev;
-import bctj;
+import abiz;
+import bdmc;
 
 public class StatisticCollector$4
   implements Runnable
 {
-  public StatisticCollector$4(bctj parambctj) {}
+  public StatisticCollector$4(bdmc parambdmc) {}
   
   public void run()
   {
-    abev.a(bctj.a(), 1);
+    abiz.a(bdmc.a(), 1);
   }
 }
 

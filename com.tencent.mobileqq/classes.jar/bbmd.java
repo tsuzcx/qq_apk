@@ -1,70 +1,54 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.view.Surface;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
+@TargetApi(14)
 public class bbmd
-  implements bbmx
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<bbmy> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private bbma jdField_a_of_type_Bbma;
+  private bbmb jdField_a_of_type_Bbmb;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
   
-  public bbmd(aitt paramaitt, List<bbmy> paramList, String paramString, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return anni.a(2131704138);
-  }
-  
-  public List<bbmy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    bbup.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject2 = "https://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject1 = (String)localObject2 + "&show_tab=hot";
+    if (this.jdField_a_of_type_AndroidViewSurface != null)
+    {
+      this.jdField_a_of_type_AndroidViewSurface.release();
+      this.jdField_a_of_type_AndroidViewSurface = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("search", 2, "lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
+    if (this.jdField_a_of_type_Bbmb != null)
+    {
+      this.jdField_a_of_type_Bbmb.a();
+      this.jdField_a_of_type_Bbmb = null;
     }
-    localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    ((Intent)localObject2).putExtra("uin", ((BaseActivity)paramView.getContext()).app.getCurrentAccountUin());
-    ((Intent)localObject2).putExtra("portraitOnly", true);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    paramView.getContext().startActivity((Intent)localObject2);
+    if (this.jdField_a_of_type_Bbma != null)
+    {
+      this.jdField_a_of_type_Bbma.a();
+      this.jdField_a_of_type_Bbma = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
   }
   
-  public String b()
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+    this.jdField_a_of_type_Bbmb.a(paramLong);
+    this.jdField_a_of_type_Bbmb.a();
+  }
+  
+  public void a(bbmc parambbmc, Surface paramSurface)
+  {
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    this.jdField_a_of_type_Bbma = new bbma(parambbmc.a(), 1);
+    this.jdField_a_of_type_Bbmb = new bbmb(this.jdField_a_of_type_Bbma);
+    this.jdField_a_of_type_Bbmb.a(paramSurface);
+    this.jdField_a_of_type_Bbmb.b();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
   }
 }
 

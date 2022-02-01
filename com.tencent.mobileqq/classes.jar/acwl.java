@@ -1,15 +1,6 @@
-import IMMsgBodyPack.MsgType0x210;
-
-class acwl
-  implements lxe
+public abstract interface acwl
 {
-  acwl(acwk paramacwk, MsgType0x210 paramMsgType0x210) {}
-  
-  public void a(lxd paramlxd)
-  {
-    paramlxd.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
-    paramlxd.a();
-  }
+  public abstract void a(acwm paramacwm);
 }
 
 

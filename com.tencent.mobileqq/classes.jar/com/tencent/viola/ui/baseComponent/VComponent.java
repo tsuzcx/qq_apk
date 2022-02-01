@@ -173,6 +173,29 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  private void execAssocioationJSFuncByName(JSONObject paramJSONObject1, String paramString, List<JSParam> paramList, JSONObject paramJSONObject2)
+  {
+    if ((paramJSONObject1 == null) || (TextUtils.isEmpty(paramString)) || (!paramJSONObject1.has(paramString))) {}
+    JSONObject localJSONObject;
+    do
+    {
+      return;
+      paramJSONObject1 = paramJSONObject1.optJSONObject(paramString);
+      Iterator localIterator = paramJSONObject1.keys();
+      localJSONObject = new JSONObject();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = paramJSONObject1.optString(str);
+        localObject = ViolaBridgeManager.getInstance().execJSFuncByNameWithResult((String)localObject, paramList);
+        if ((localObject != null) && (((JSParam)localObject).data != null)) {
+          localJSONObject.put(str, ((JSParam)localObject).data);
+        }
+      }
+    } while (paramJSONObject1.length() <= 0);
+    paramJSONObject2.put(paramString, localJSONObject);
+  }
+  
   private void exportClickAction(String paramString)
   {
     if (!containVR(this.mDomObj)) {}
@@ -403,6 +426,50 @@ public abstract class VComponent<T extends View>
     {
       this.fromTransformOpacityAnimator.cancel();
       this.fromTransformOpacityAnimator = null;
+    }
+  }
+  
+  private void internalRichGesture(JSParam paramJSParam)
+  {
+    int i = 0;
+    if ((this.mAssocioationEvents == null) || (this.mAssocioationEvents.mProps == null) || (paramJSParam == null)) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramJSParam);
+    for (;;)
+    {
+      Object localObject;
+      try
+      {
+        paramJSParam = this.mAssocioationEvents.mProps;
+        if (i >= paramJSParam.length()) {
+          break;
+        }
+        localObject = new JSONObject();
+        JSONObject localJSONObject = paramJSParam.optJSONObject(i);
+        if ((localJSONObject == null) || (!localJSONObject.has(AssocioationEvents.ASSOCIOATION_PROPS_KEY_TARGET))) {
+          break label243;
+        }
+        String str = localJSONObject.optString(AssocioationEvents.ASSOCIOATION_PROPS_KEY_TARGET);
+        execAssocioationJSFuncByName(localJSONObject, AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE, localArrayList, (JSONObject)localObject);
+        execAssocioationJSFuncByName(localJSONObject, AssocioationEvents.ASSOCIOATION_PROPS_KEY_ATTR, localArrayList, (JSONObject)localObject);
+        if (!ViolaUtils.isStyleOrAttrChange(str, getInstance().getInstanceId(), (JSONObject)localObject)) {
+          break label243;
+        }
+        localObject = new MethodUpdateElement(str, (JSONObject)localObject, this.mAssocioationEvents.sync, this.mAssocioationEvents.applyLayout);
+        if (this.mAssocioationEvents.sync) {
+          ((MethodUpdateElement)localObject).executeAsync(getInstance().getInstanceId());
+        }
+      }
+      catch (Exception paramJSParam)
+      {
+        ViolaLogUtils.e("VComponent", "[internalRichGesture]: " + paramJSParam.getMessage());
+        return;
+      }
+      ViolaSDKManager.getInstance().getDomManager().postTransitionTask(getInstance().getInstanceId(), (DOMAction)localObject, false);
+      label243:
+      i += 1;
     }
   }
   
@@ -920,6 +987,11 @@ public abstract class VComponent<T extends View>
   
   final void doRichGestrue(JSParam paramJSParam)
   {
+    if (this.mAssocioationEvents.sync)
+    {
+      internalRichGesture(paramJSParam);
+      return;
+    }
     ViolaBridgeManager.getInstance().post(new VComponent.2(this, paramJSParam));
   }
   
@@ -1483,7 +1555,7 @@ public abstract class VComponent<T extends View>
   
   public boolean needInterceptTouchEvent()
   {
-    return this.mNeedInterceptTouchEvent;
+    return (this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("disableTouchPenetrate")) && (ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("disableTouchPenetrate")));
   }
   
   public void notifyChange()

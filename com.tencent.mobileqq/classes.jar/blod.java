@@ -1,22 +1,28 @@
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-class blod
-  implements blfn
+public class blod
+  implements View.OnTouchListener
 {
-  blod(blnz paramblnz) {}
+  public blod(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!paramBoolean)
+    if (paramMotionEvent.getAction() == 1)
     {
-      blpu.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
-      if (blnz.a(this.a) != null) {
-        blnz.a(this.a).setText("跳转失败，请返回重试");
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((this.a.jdField_a_of_type_Bllm == null) || (!this.a.jdField_a_of_type_Bllm.a(this.a, paramView, i, this.a.jdField_a_of_type_Blof.getGroupId(i)))) {
+          this.a.b(i);
+        }
       }
-      return;
     }
-    blpu.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
-    blnz.b(this.a);
+    return true;
   }
 }
 

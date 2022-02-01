@@ -1,160 +1,36 @@
-import UserGrowth.stPublisherGuide;
-import UserGrowth.stPublisherRsp;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.image.URLImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-public class udi
-  extends aagd
-  implements View.OnClickListener
+class udi
+  implements URLDrawableDownListener
 {
-  private int jdField_a_of_type_Int;
-  private stPublisherRsp jdField_a_of_type_UserGrowthStPublisherRsp;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private udf jdField_a_of_type_Udf;
-  private TextView b;
+  udi(udh paramudh) {}
   
-  public udi(Context paramContext)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this(paramContext, -1, -1);
+    udh.a(this.a);
   }
   
-  public udi(Context paramContext, int paramInt1, int paramInt2)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this(paramContext, 2131755939, paramInt1, paramInt2);
+    udh.a(this.a);
   }
   
-  protected udi(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramContext, paramInt1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    b();
-    paramContext = getWindow();
-    if (paramContext == null)
-    {
-      upe.b("WSPublisherDialog", 2, "ScrollMoreDialog() window == null.");
-      return;
-    }
-    paramContext = paramContext.getAttributes();
-    if (paramContext == null)
-    {
-      upe.b("WSPublisherDialog", 2, "ScrollMoreDialog() params == null.");
-      return;
-    }
-    paramContext.width = paramInt2;
-    paramContext.height = paramInt3;
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  private void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (String str = "focus";; str = "feeds")
-    {
-      WSPublicAccReport.getInstance().reportPublisher(paramString1, str, paramString2, paramInt);
-      return;
-    }
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  private void b()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560008, null, false);
-    setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381320));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381321));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381293));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381294));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381296));
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381304);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    localRelativeLayout.setOnClickListener(this);
-    a("gzh_exposure", "publish_popup", 0);
-  }
-  
-  private void c()
-  {
-    if (isShowing()) {
-      dismiss();
-    }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_UserGrowthStPublisherRsp == null) {
-      return;
-    }
-    ups.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStPublisherRsp.weishiSchema, this.jdField_a_of_type_UserGrowthStPublisherRsp.h5Url, this.jdField_a_of_type_UserGrowthStPublisherRsp.miniAppSchema, 0, new udj(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(stPublisherRsp paramstPublisherRsp)
-  {
-    this.jdField_a_of_type_UserGrowthStPublisherRsp = paramstPublisherRsp;
-    paramstPublisherRsp = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841680);
-    if ((this.jdField_a_of_type_UserGrowthStPublisherRsp != null) && (this.jdField_a_of_type_UserGrowthStPublisherRsp.guide != null))
-    {
-      String str = this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.imageUrl;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.desc);
-      this.b.setText(this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.btnText);
-      this.jdField_a_of_type_Udf = new udf();
-      this.jdField_a_of_type_Udf.a(this.jdField_a_of_type_ComTencentImageURLImageView, paramstPublisherRsp, str, true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramstPublisherRsp);
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_Udf != null)
-    {
-      this.jdField_a_of_type_Udf.a();
-      this.jdField_a_of_type_Udf = null;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      d();
-      c();
-      continue;
-      a("gzh_click", "publish_popup", 1000001);
-      c();
-      continue;
-      a("gzh_click", "publish_popup", 1000005);
-      c();
-    }
+    udh.a(this.a);
+    AbstractGifImage.resumeAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udi
  * JD-Core Version:    0.7.0.1
  */

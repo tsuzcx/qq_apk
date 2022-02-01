@@ -1,19 +1,15 @@
-public class wdh
+import android.view.View;
+import android.view.View.OnLongClickListener;
+
+class wdh
+  implements View.OnLongClickListener
 {
-  public static int a(int paramInt)
+  wdh(wdg paramwdg) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 5: 
-    case 6: 
-    default: 
-      return 6;
-    case 4: 
-      return 10;
-    }
-    return 10;
+    wdg.a(this.a, paramView);
+    return true;
   }
 }
 

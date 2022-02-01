@@ -1,10 +1,35 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
+import java.util.List;
 
-public abstract interface astm
+public class astm
+  extends RecyclerView.OnScrollListener
 {
-  public abstract String a(FileInfo paramFileInfo);
+  public astm(RelatedEmotionPanel paramRelatedEmotionPanel) {}
   
-  public abstract void a(FileInfo paramFileInfo, boolean paramBoolean);
+  public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      return;
+    }
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void onScrolled(@NonNull RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if ((!paramRecyclerView.canScrollVertically(1)) && (RelatedEmotionPanel.a(this.a) == 1) && (!RelatedEmotionPanel.a(this.a)) && (RelatedEmotionPanel.a(this.a).a() != null))
+    {
+      RelatedEmotionPanel.a(this.a, true);
+      bdll.b(RelatedEmotionPanel.a(this.a), "dc00898", "", this.a.a, "0X800B156", "0X800B156", 0, 0, RelatedEmotionPanel.a(this.a).a().size() + "", "", "", "");
+    }
+  }
 }
 
 

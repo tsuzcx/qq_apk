@@ -1,32 +1,58 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-final class bgft
-  implements DownloadParams.DecodeHandler
+class bgft
+  implements TextWatcher
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bgft(bgfo parambgfo, bgfu parambgfu, bgep parambgep) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "PART_ROUND_CORNER_DECODER");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    int i;
+    int k;
+    if (this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b() != 0)
     {
-      do
+      int j = this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
+      i = this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
+      j -= i;
+      k = paramInt3 - paramInt2;
+      if (k > j)
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bgmo.e(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
+        QQToast.a(bgfo.a(this.jdField_a_of_type_Bgfo), "最多可以输入500个字", 1).a();
+        paramInt2 = j + paramInt2;
+        this.jdField_a_of_type_Bgfu.a.removeTextChangedListener(this);
+        CharSequence localCharSequence = paramCharSequence.subSequence(0, paramInt1 + paramInt2);
+        paramCharSequence = paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length());
+        paramCharSequence = localCharSequence.toString() + paramCharSequence.toString();
+        this.jdField_a_of_type_Bgfu.a.setText(paramCharSequence);
+        this.jdField_a_of_type_Bgfu.a.addTextChangedListener(this);
+        this.jdField_a_of_type_Bgfu.a.setSelection(paramInt1 + paramInt2);
+        this.jdField_a_of_type_Bgfo.jdField_a_of_type_Bgfd.a(i, i + paramInt2);
+        this.jdField_a_of_type_Bgep.jdField_a_of_type_Int = (paramInt2 + paramInt1);
+        this.jdField_a_of_type_Bgep.b(paramCharSequence);
+      }
+    }
+    for (;;)
+    {
+      QLog.i("xmediaEditor", 1, "onTextChanged, mData.position:" + this.jdField_a_of_type_Bgep.c + ", text:" + this.jdField_a_of_type_Bgep.jdField_a_of_type_JavaLangString + ",Listener:" + toString());
+      return;
+      this.jdField_a_of_type_Bgfo.jdField_a_of_type_Bgfd.a(i, i + k);
+      this.jdField_a_of_type_Bgep.jdField_a_of_type_Int = (paramInt1 + k);
+      this.jdField_a_of_type_Bgep.b(paramCharSequence.toString());
+      continue;
+      i = this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
+      this.jdField_a_of_type_Bgfo.jdField_a_of_type_Bgfd.a(i, i + paramInt3 - paramInt2);
+      this.jdField_a_of_type_Bgep.jdField_a_of_type_Int = (paramInt1 + paramInt3);
+      this.jdField_a_of_type_Bgep.b(paramCharSequence.toString());
+    }
   }
 }
 

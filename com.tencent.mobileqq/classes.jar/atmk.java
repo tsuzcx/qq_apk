@@ -1,43 +1,19 @@
-import android.app.Activity;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-public abstract interface atmk
+public class atmk
+  implements bdhy
 {
-  public abstract int a();
+  public atmk(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public abstract RelativeLayout a();
+  public void a()
+  {
+    FileAssistantActivity.c(this.a);
+  }
   
-  public abstract QQAppInterface a();
-  
-  public abstract ForwardFileInfo a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
-  
-  public abstract boolean f();
-  
-  public abstract void g();
-  
-  public abstract Activity getActivity();
+  public void b()
+  {
+    FileAssistantActivity.c(this.a);
+  }
 }
 
 

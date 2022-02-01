@@ -1,16 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahiu
-  implements ValueAnimator.AnimatorUpdateListener
+final class ahiu
+  implements ahky
 {
-  public ahiu(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    return attw.a(paramQQAppInterface, paramChatMessage);
   }
 }
 

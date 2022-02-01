@@ -1,19 +1,14 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
 
-class bmnq
-  implements QQPermissionCallback
+public class bmnq
 {
-  bmnq(bmnp parambmnp, String[] paramArrayOfString, Activity paramActivity) {}
+  public int a;
+  public Bundle a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  bmnq(bmno parambmno, int paramInt, Bundle paramBundle)
   {
-    bglp.b(bmnp.a(this.jdField_a_of_type_AndroidAppActivity));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bmnp.a(this.jdField_a_of_type_Bmnp, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

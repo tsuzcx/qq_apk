@@ -1,5 +1,9 @@
 public abstract interface biel
 {
+  public abstract void a();
+  
+  public abstract void a(biem parambiem);
+  
   public abstract void b();
 }
 

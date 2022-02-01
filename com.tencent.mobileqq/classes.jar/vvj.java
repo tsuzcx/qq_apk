@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import android.widget.FrameLayout;
 
 class vvj
-  implements DialogInterface.OnClickListener
+  implements vvs
 {
-  vvj(vvi paramvvi) {}
+  vvj(vvh paramvvh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    if (vvh.a(this.a) != null) {
+      vvh.a(this.a).a(3);
+    }
+    vvh.a(this.a).setAlpha(0.0F);
+    vvh.a(null);
   }
 }
 

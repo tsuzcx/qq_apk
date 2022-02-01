@@ -9,25 +9,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import anmw;
-import azrc;
-import azrd;
-import azrh;
-import azrj;
-import azrl;
-import azrm;
-import azrn;
-import azro;
-import azrp;
-import azrq;
-import azsj;
-import azsm;
-import azsn;
-import bcst;
-import bgnt;
-import biab;
-import bkho;
-import bkif;
+import anyw;
+import bajs;
+import bajt;
+import bajx;
+import bajz;
+import bakb;
+import bakc;
+import bakd;
+import bake;
+import bakf;
+import bakg;
+import bakz;
+import balc;
+import bald;
+import bdll;
+import bhnv;
+import bjaz;
+import blir;
+import blji;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -39,27 +39,27 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ulo;
+import umm;
 
 public class InterestSwitchEditActivity
   extends IphoneTitleBarActivity
 {
-  private LinearLayoutManager jdField_a_of_type_AndroidxRecyclerviewWidgetLinearLayoutManager = new azrn(this, this);
+  private LinearLayoutManager jdField_a_of_type_AndroidxRecyclerviewWidgetLinearLayoutManager = new bakd(this, this);
   private RecyclerView jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView;
-  private azrh jdField_a_of_type_Azrh;
-  private azrj jdField_a_of_type_Azrj = new azrl(this);
-  private azrp jdField_a_of_type_Azrp;
-  private azrq jdField_a_of_type_Azrq = new azrm(this);
-  private biab jdField_a_of_type_Biab;
+  private bajx jdField_a_of_type_Bajx;
+  private bajz jdField_a_of_type_Bajz = new bakb(this);
+  private bakf jdField_a_of_type_Bakf;
+  private bakg jdField_a_of_type_Bakg = new bakc(this);
+  private bjaz jdField_a_of_type_Bjaz;
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
-  private ArrayList<azsj> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bakz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  private int a(azsj paramazsj)
+  private int a(bakz parambakz)
   {
-    if (paramazsj == null) {
+    if (parambakz == null) {
       return -1;
     }
-    switch (paramazsj.b())
+    switch (parambakz.b())
     {
     default: 
       return -1;
@@ -94,74 +94,74 @@ public class InterestSwitchEditActivity
   
   private void a()
   {
-    this.jdField_a_of_type_Azrp.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Bakf.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  private void a(int paramInt, azsj paramazsj)
+  private void a(int paramInt, bakz parambakz)
   {
-    int i = a(paramazsj);
+    int i = a(parambakz);
     switch (paramInt)
     {
     default: 
       return;
     case 0: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D7", "0X800B1D7", i, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D7", "0X800B1D7", i, 0, "", "", "", "");
       return;
     case 1: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D9", "0X800B1D9", i, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D9", "0X800B1D9", i, 0, "", "", "", "");
       return;
     }
-    bcst.b(this.app, "dc00898", "", "", "0X800B1D8", "0X800B1D8", i, 0, "", "", "", "");
+    bdll.b(this.app, "dc00898", "", "", "0X800B1D8", "0X800B1D8", i, 0, "", "", "", "");
   }
   
-  private void a(azsj paramazsj)
+  private void a(bakz parambakz)
   {
     QQAppInterface localQQAppInterface;
     int i;
-    switch (paramazsj.b())
+    switch (parambakz.b())
     {
     default: 
       return;
     case 42172: 
-      if (paramazsj.b())
+      if (parambakz.b())
       {
-        bcst.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
+        bdll.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
         return;
       }
-      bcst.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
       return;
     case 42128: 
       localQQAppInterface = this.app;
-      if (paramazsj.b()) {}
+      if (parambakz.b()) {}
       for (i = 1;; i = 2)
       {
-        bcst.b(localQQAppInterface, "dc00898", "", "", "0X8008407", "0X8008407", i, 0, "", "", "", "");
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0X8008407", "0X8008407", i, 0, "", "", "", "");
         return;
       }
     case 42340: 
       localQQAppInterface = this.app;
-      if (paramazsj.b()) {}
+      if (parambakz.b()) {}
       for (i = 1;; i = 2)
       {
-        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A7DA", "qq_vip", i, 0, "", "", "", "");
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A7DA", "qq_vip", i, 0, "", "", "", "");
         return;
       }
     case 42356: 
-      bcst.b(this.app, "dc00898", "", "", "0X800AB37", "0X800AB37", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800AB37", "0X800AB37", 0, 0, "", "", "", "");
       return;
     }
-    ulo.b(paramazsj.b());
+    umm.b(parambakz.b());
   }
   
-  private void a(azsj paramazsj, int paramInt)
+  private void a(bakz parambakz, int paramInt)
   {
-    if ((paramazsj != null) && (paramazsj.b() != -1))
+    if ((parambakz != null) && (parambakz.b() != -1))
     {
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new ReqSetSettingItem(paramazsj.b(), paramazsj.e(), paramInt));
-      paramazsj.c(paramInt);
-      paramazsj.a(true);
-      this.jdField_a_of_type_Azrh.b(localArrayList);
+      localArrayList.add(new ReqSetSettingItem(parambakz.b(), parambakz.e(), paramInt));
+      parambakz.c(paramInt);
+      parambakz.a(true);
+      this.jdField_a_of_type_Bajx.b(localArrayList);
     }
   }
   
@@ -171,73 +171,73 @@ public class InterestSwitchEditActivity
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      azsj localazsj = (azsj)localIterator.next();
-      if (localazsj.b() != -1) {
-        localArrayList.add(Integer.valueOf(localazsj.b()));
+      bakz localbakz = (bakz)localIterator.next();
+      if (localbakz.b() != -1) {
+        localArrayList.add(Integer.valueOf(localbakz.b()));
       }
     }
-    this.jdField_a_of_type_Azrh.a(localArrayList);
+    this.jdField_a_of_type_Bajx.a(localArrayList);
   }
   
-  private void b(azsj paramazsj)
+  private void b(bakz parambakz)
   {
-    bkho localbkho = (bkho)bkif.a(this, null);
-    RecyclerView localRecyclerView = (RecyclerView)View.inflate(this, 2131561389, null);
+    blir localblir = (blir)blji.a(this, null);
+    RecyclerView localRecyclerView = (RecyclerView)View.inflate(this, 2131561430, null);
     localRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-    azrc localazrc = new azrc(this, paramazsj);
-    localazrc.a(new azro(this, paramazsj, localbkho));
-    paramazsj = new ArrayList();
-    paramazsj.add(new azrd(0, getString(2131694500)));
-    paramazsj.add(new azrd(1, getString(2131694515)));
-    paramazsj.add(new azrd(2, getString(2131694516)));
-    localazrc.a(paramazsj);
-    localRecyclerView.setAdapter(localazrc);
-    localbkho.a(localRecyclerView);
-    localbkho.c(2131690582);
-    localbkho.b(true);
+    bajs localbajs = new bajs(this, parambakz);
+    localbajs.a(new bake(this, parambakz, localblir));
+    parambakz = new ArrayList();
+    parambakz.add(new bajt(0, getString(2131694542)));
+    parambakz.add(new bajt(1, getString(2131694557)));
+    parambakz.add(new bajt(2, getString(2131694558)));
+    localbajs.a(parambakz);
+    localRecyclerView.setAdapter(localbajs);
+    localblir.a(localRecyclerView);
+    localblir.c(2131690580);
+    localblir.b(true);
     if (!isFinishing()) {
-      localbkho.show();
+      localblir.show();
     }
   }
   
-  private void c(azsj paramazsj)
+  private void c(bakz parambakz)
   {
-    switch (paramazsj.b())
+    switch (parambakz.b())
     {
     default: 
       return;
     case 41611: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1CC", "0X800B1CC", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1CC", "0X800B1CC", 0, 0, "", "", "", "");
       return;
     case 41610: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D5", "0X800B1D5", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D5", "0X800B1D5", 0, 0, "", "", "", "");
       return;
     case 41607: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1CD", "0X800B1CD", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1CD", "0X800B1CD", 0, 0, "", "", "", "");
       return;
     case 41609: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D6", "0X800B1D6", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D6", "0X800B1D6", 0, 0, "", "", "", "");
       return;
     case 41618: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1CF", "0X800B1CF", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1CF", "0X800B1CF", 0, 0, "", "", "", "");
       return;
     case 41619: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1CE", "0X800B1CE", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1CE", "0X800B1CE", 0, 0, "", "", "", "");
       return;
     case 41614: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D1", "0X800B1D1", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D1", "0X800B1D1", 0, 0, "", "", "", "");
       return;
     case 41613: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D2", "0X800B1D2", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D2", "0X800B1D2", 0, 0, "", "", "", "");
       return;
     case 41622: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D3", "0X800B1D3", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D3", "0X800B1D3", 0, 0, "", "", "", "");
       return;
     case 41623: 
-      bcst.b(this.app, "dc00898", "", "", "0X800B1D4", "0X800B1D4", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00898", "", "", "0X800B1D4", "0X800B1D4", 0, 0, "", "", "", "");
       return;
     }
-    bcst.b(this.app, "dc00898", "", "", "0X800B1D0", "0X800B1D0", 0, 0, "", "", "", "");
+    bdll.b(this.app, "dc00898", "", "", "0X800B1D0", "0X800B1D0", 0, 0, "", "", "", "");
   }
   
   @Override
@@ -251,26 +251,26 @@ public class InterestSwitchEditActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561388);
-    this.app.addObserver(this.jdField_a_of_type_Azrj);
-    setTitle(getString(2131694473));
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)findViewById(2131363308));
-    this.jdField_a_of_type_Azrp = new azrp(this, this.jdField_a_of_type_Azrq);
+    super.setContentView(2131561429);
+    this.app.addObserver(this.jdField_a_of_type_Bajz);
+    setTitle(getString(2131694515));
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)findViewById(2131363332));
+    this.jdField_a_of_type_Bakf = new bakf(this, this.jdField_a_of_type_Bakg);
     this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidxRecyclerviewWidgetLinearLayoutManager);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azrp);
-    this.jdField_a_of_type_Biab = new biab(this.app, null);
-    ulo.a(this.jdField_a_of_type_Biab.a(11));
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((anmw)this.app.getManager(51)).c(this.app.c());
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bakf);
+    this.jdField_a_of_type_Bjaz = new bjaz(this.app, null);
+    umm.a(this.jdField_a_of_type_Bjaz.a(11));
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((anyw)this.app.getManager(51)).c(this.app.c());
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    azsm.a.a(this.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_Biab, this.jdField_a_of_type_JavaUtilArrayList);
-    boolean bool = azsm.a.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Azrh = ((azrh)this.app.a(182));
+    balc.a.a(this.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_Bjaz, this.jdField_a_of_type_JavaUtilArrayList);
+    boolean bool = balc.a.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Bajx = ((bajx)this.app.a(182));
     if (bool)
     {
-      if (bgnt.d(BaseApplication.getContext())) {
+      if (bhnv.d(BaseApplication.getContext())) {
         break label272;
       }
-      QQToast.a(BaseApplicationImpl.sApplication, 2131693946, 0).b(getTitleBarHeight());
+      QQToast.a(BaseApplicationImpl.sApplication, 2131693963, 0).b(getTitleBarHeight());
     }
     for (;;)
     {
@@ -287,37 +287,37 @@ public class InterestSwitchEditActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Biab != null)
+    if (this.jdField_a_of_type_Bjaz != null)
     {
-      this.jdField_a_of_type_Biab.a();
-      this.jdField_a_of_type_Biab = null;
+      this.jdField_a_of_type_Bjaz.a();
+      this.jdField_a_of_type_Bjaz = null;
     }
-    this.app.removeObserver(this.jdField_a_of_type_Azrj);
+    this.app.removeObserver(this.jdField_a_of_type_Bajz);
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    ulo.b();
+    umm.b();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    ulo.a();
+    umm.a();
   }
   
   public void finish()
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("param_switches_changed", Boolean.valueOf(azsm.a.b(this.jdField_a_of_type_JavaUtilArrayList)));
-    azsj localazsj = azsm.a.a(42377, this.jdField_a_of_type_JavaUtilArrayList);
-    if ((localazsj != null) && (localazsj.a()) && (localazsj.b())) {
+    localIntent.putExtra("param_switches_changed", Boolean.valueOf(balc.a.b(this.jdField_a_of_type_JavaUtilArrayList)));
+    bakz localbakz = balc.a.a(42377, this.jdField_a_of_type_JavaUtilArrayList);
+    if ((localbakz != null) && (localbakz.a()) && (localbakz.b())) {
       localIntent.putExtra("key_weishi_switch", true);
     }
-    localazsj = azsm.a.a(42128, this.jdField_a_of_type_JavaUtilArrayList);
-    if ((localazsj != null) && (localazsj.a())) {
-      localIntent.putExtra("key_personality_label_switch", localazsj.b());
+    localbakz = balc.a.a(42128, this.jdField_a_of_type_JavaUtilArrayList);
+    if ((localbakz != null) && (localbakz.a())) {
+      localIntent.putExtra("key_personality_label_switch", localbakz.b());
     }
     setResult(-1, localIntent);
     super.finish();

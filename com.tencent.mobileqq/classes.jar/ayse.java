@@ -1,18 +1,16 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class ayse
+  extends ayqn
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
+  public ImageView e;
+  public ImageView f;
+  public TextView g;
   
-  public ayse() {}
-  
-  public ayse(String paramString1, String paramString2, String paramString3, String paramString4)
+  public ayse(aysd paramaysd)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    super(paramaysd);
   }
 }
 

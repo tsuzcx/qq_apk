@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
-import nbo;
+import ndb;
 
 class GuessStarStageView$1
   implements Runnable
@@ -24,8 +24,8 @@ class GuessStarStageView$1
         this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       }
       GuessStarStageView.a(this.this$0, (String)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int)).second);
-      if (this.this$0.jdField_a_of_type_Nbo != null) {
-        this.this$0.jdField_a_of_type_Nbo.b(this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (this.this$0.jdField_a_of_type_Ndb != null) {
+        this.this$0.jdField_a_of_type_Ndb.b(this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout);
       }
       if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size() - 1)
       {

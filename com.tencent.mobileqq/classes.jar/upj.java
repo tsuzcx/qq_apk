@@ -1,18 +1,23 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 final class upj
-  implements bihh
+  extends ClickableSpan
 {
-  public void onWXShareResp(BaseResp paramBaseResp)
+  upj(upg paramupg, String paramString) {}
+  
+  public void onClick(@NonNull View paramView)
   {
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      biti.a().a(2131718007);
+    if (this.jdField_a_of_type_Upg != null) {
+      this.jdField_a_of_type_Upg.b(this.jdField_a_of_type_JavaLangString);
     }
-    WXShareHelper.a().b(this);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

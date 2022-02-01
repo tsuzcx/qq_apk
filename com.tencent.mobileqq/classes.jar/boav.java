@@ -1,11 +1,22 @@
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-final class boav
-  extends boaw<TimerTaskManager, Void>
+class boav
+  implements ThreadPool.Job<Void>
 {
-  protected TimerTaskManager a(Void paramVoid)
+  boav(boan paramboan, List paramList) {}
+  
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    return new TimerTaskManager();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Boan.a(l, true, false, false);
+    }
+    return null;
   }
 }
 

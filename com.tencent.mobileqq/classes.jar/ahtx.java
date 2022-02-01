@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface ahtx
+public class ahtx
+  extends aggl
 {
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  long jdField_a_of_type_Long;
+  agjk jdField_a_of_type_Agjk;
+  public ambx a;
+  public ImageView b;
+  public View c;
+  public ImageView c;
+  public TextView d;
 }
 
 

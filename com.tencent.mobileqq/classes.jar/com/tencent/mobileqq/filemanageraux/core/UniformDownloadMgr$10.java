@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
 import android.os.Bundle;
-import atzj;
+import aure;
 
 public class UniformDownloadMgr$10
   implements Runnable
 {
-  public UniformDownloadMgr$10(atzj paramatzj, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$10(aure paramaure, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    atzj.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    atzj.b(this.this$0);
+    aure.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    aure.b(this.this$0);
   }
 }
 

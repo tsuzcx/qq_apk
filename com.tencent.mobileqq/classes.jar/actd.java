@@ -1,27 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-public class actd
-  implements TextView.OnEditorActionListener
+class actd
+  implements DialogInterface.OnKeyListener
 {
-  public actd(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  actd(acsz paramacsz) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 6)
-    {
-      acqy.b("GdtFormItemTextBoxView", "onEditorActionDone " + GdtFormItemTextBoxView.b(this.a));
-      GdtFormItemTextBoxView.a(this.a).clearFocus();
-      GdtFormItemTextBoxView.a(paramTextView);
-    }
-    for (;;)
-    {
-      return false;
-      acqy.b("GdtFormItemTextBoxView", "onEditorAction " + paramInt + " " + GdtFormItemTextBoxView.c(this.a));
-    }
+    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
   }
 }
 

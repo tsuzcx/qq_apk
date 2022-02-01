@@ -1,14 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.game_component.VideoFeedsGameAdComManager.3;
-import com.tencent.biz.pubaccount.readinjoy.ad.game_component.VideoFeedsGameAdComManager.3.1;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class onb
-  implements ort
+  extends anyu
 {
-  public onb(VideoFeedsGameAdComManager.3.1 param1) {}
+  public onb(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.a.a.this$0.b(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
+    }
   }
 }
 

@@ -1,12 +1,29 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alrv
-  extends afnj
+  implements View.OnClickListener
 {
-  public CheckBox a;
+  public alrv(LoginView paramLoginView) {}
   
-  private alrv(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public void onClick(View paramView)
+  {
+    if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
+    LoginView.c(this.a);
+    libsafeedit.clearPassBuffer();
+    LoginView.d(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afxy;
-import afxz;
+import aghs;
+import aght;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CustomizeStrategyFactory$ThemeCustomizeStrategy$1
   implements Runnable
 {
-  public CustomizeStrategyFactory$ThemeCustomizeStrategy$1(afxy paramafxy, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public CustomizeStrategyFactory$ThemeCustomizeStrategy$1(aghs paramaghs, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
@@ -18,13 +18,13 @@ public class CustomizeStrategyFactory$ThemeCustomizeStrategy$1
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy");
       }
-      if ((afxy.a(this.this$0) == null) || (TextUtils.isEmpty(this.a.templateId)))
+      if ((aghs.a(this.this$0) == null) || (TextUtils.isEmpty(this.a.templateId)))
       {
         CustomizeStrategyFactory.a().a(this.a);
         return;
       }
       String str = this.a.templateId + ".png";
-      afxy.a(this.this$0).b(str, new afxz(this));
+      aghs.a(this.this$0).b(str, new aght(this));
       return;
     }
     catch (Throwable localThrowable)

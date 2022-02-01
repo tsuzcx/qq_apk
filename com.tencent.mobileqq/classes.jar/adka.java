@@ -1,254 +1,373 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity.StartRecommendPageTask;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.kingkong.Common;
+import com.tencent.kingkong.PatchManager;
+import java.io.File;
 import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adka
-  extends anxg
+  extends adkf
 {
-  public adka(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  private static String f = File.separator;
+  private int jdField_a_of_type_Int;
+  private ArrayList<adke> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int jdField_b_of_type_Int;
+  private ArrayList<adkb> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private int jdField_c_of_type_Int;
+  private ArrayList<adkc> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<adkd> d;
   
-  protected void a(int paramInt1, int paramInt2)
+  public adka(String paramString1, String paramString2)
   {
-    if (paramInt1 == 1)
-    {
-      this.a.jdField_a_of_type_Biau.dismiss();
-      bfup.a(this.a, paramInt2);
-      AddFriendVerifyActivity.b(this.a, 1002);
-    }
+    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  private int a()
   {
-    if (1 == paramInt1) {}
-    switch (paramInt2)
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-    case -1: 
-    default: 
-      AddFriendVerifyActivity.b(this.a, 1002);
-      this.a.jdField_a_of_type_Biau.dismiss();
-      QQToast.a(this.a, 1, 2131717328, 1).b(this.a.getTitleBarHeight());
-    case -2: 
-      do
-      {
-        return;
-        this.a.jdField_a_of_type_Biau.dismiss();
-        AddFriendVerifyActivity.b(this.a, 1004);
-      } while ((this.a.getIntent() == null) || (this.a.getIntent().getExtras() == null));
-      if (this.a.getIntent().getExtras().getShort("group_option", (short)2) == 4)
-      {
-        if (AddFriendVerifyActivity.c(this.a) != null) {
-          AddFriendVerifyActivity.c(this.a).setVisibility(0);
-        }
-        AddFriendVerifyActivity.b(this.a, 1002);
-        return;
+      adke localadke = (adke)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localadke.jdField_b_of_type_JavaUtilArrayList.size() != this.jdField_a_of_type_Int) || (localadke.jdField_c_of_type_JavaUtilArrayList.size() != this.jdField_b_of_type_Int) || (localadke.jdField_d_of_type_JavaUtilArrayList.size() != this.jdField_a_of_type_Int)) {
+        adjv.a("KingKongNativePatch", "Skip fingerprint/hookpoint count mismatch subpatch " + i);
       }
-      ((anwd)this.a.app.a(20)).b(Long.parseLong(this.a.jdField_a_of_type_JavaLangString), Long.parseLong(this.a.app.getAccount()));
-      AddFriendVerifyActivity.a(this.a, true);
-      return;
-    case 0: 
-    case 1: 
-      this.a.jdField_a_of_type_Biau.dismiss();
-      Object localObject = this.a.getIntent().getStringExtra("param_return_addr");
-      AddFriendVerifyActivity.b(this.a, 1003);
-      if (localObject != null) {
-        QQToast.a(this.a, 2, 2131717329, 1).b(this.a.getTitleBarHeight());
-      }
+      label294:
       for (;;)
       {
-        try
+        i += 1;
+        break;
+        int j = 0;
+        for (;;)
         {
-          paramString = Class.forName((String)localObject);
-          localObject = new Intent();
-          ((Intent)localObject).setComponent(new ComponentName("com.tencent.mobileqq", paramString.getName()));
-          ((Intent)localObject).setFlags(67108864);
-          this.a.startActivity((Intent)localObject);
-          if (TextUtils.isEmpty(this.a.d)) {
-            break;
+          if (j >= this.jdField_a_of_type_Int) {
+            break label294;
           }
-          paramString = new ArrayList(1);
-          paramString.add("admin.qun.qq.com");
-          avob.a("closeJoinWebView", null, paramString, null);
-          return;
-        }
-        catch (ClassNotFoundException paramString)
-        {
-          paramString.printStackTrace();
-          this.a.setResult(-1);
-          this.a.finish();
-          continue;
-        }
-        if (this.a.getIntent().getBooleanExtra("from_newer_guide", false))
-        {
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("has_operation", true);
-          ((Intent)localObject).putExtra("uin", paramString);
-          this.a.setResult(-1, (Intent)localObject);
-          this.a.finish();
-        }
-        else if (this.a.getIntent().getBooleanExtra("from_babyq", false))
-        {
-          this.a.app.a().b("babyq_add_troop");
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("has_operation", true);
-          ((Intent)localObject).putExtra("uin", paramString);
-          this.a.setResult(-1, (Intent)localObject);
-          this.a.finish();
-        }
-        else
-        {
-          paramInt1 = this.a.getIntent().getExtras().getShort("group_option", (short)2);
-          paramString = (anwd)this.a.app.a(20);
-          if ((paramInt1 == 1) || (paramInt1 == 4)) {
-            paramString.b(this.a.jdField_a_of_type_JavaLangString, false);
-          } else {
-            paramString.b(Long.parseLong(this.a.jdField_a_of_type_JavaLangString), Long.parseLong(this.a.app.getAccount()));
+          Object localObject = (adkb)this.jdField_b_of_type_JavaUtilArrayList.get(j);
+          String str1 = ((adkb)localObject).jdField_a_of_type_JavaLangString;
+          String str2 = ((adkb)localObject).jdField_b_of_type_JavaLangString;
+          int k = ((adkb)localObject).jdField_a_of_type_Int;
+          int m = ((Integer)localadke.jdField_d_of_type_JavaUtilArrayList.get(j)).intValue();
+          localObject = (String)localadke.jdField_b_of_type_JavaUtilArrayList.get(j);
+          if ((m == -1) || ("null".equals(localObject)))
+          {
+            adjv.a("KingKongNativePatch", "Skip null fingerprint ");
+            if (j == this.jdField_a_of_type_Int - 1)
+            {
+              adjv.a("KingKongNativePatch", "Well done, all fingerprints matched!");
+              return i;
+            }
           }
+          else
+          {
+            str1 = a(str1, str2, m, k);
+            if ((str1 == null) || (!str1.equals(localObject))) {
+              break;
+            }
+            adjv.a("KingKongNativePatch", "Matches fingerprint " + str1);
+            if (j == this.jdField_a_of_type_Int - 1)
+            {
+              adjv.a("KingKongNativePatch", "Well done, all fingerprints matched!");
+              return i;
+            }
+          }
+          j += 1;
         }
       }
     }
-    AddFriendVerifyActivity.b(this.a, 1002);
-    this.a.jdField_a_of_type_Biau.dismiss();
-    QQToast.a(this.a, 1, 2131718791, 1).b(this.a.getTitleBarHeight());
+    adjv.a("KingKongNativePatch", "Unable to get valid subpatch by offset!");
+    return -1;
   }
   
-  protected void a(String paramString)
+  private int a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.a, 2, 2131717329, 1).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      if ((this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null) && (AddFriendVerifyActivity.a(this.a) != null))
-      {
-        this.a.getWindow().setSoftInputMode(2);
-        this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-        AddFriendVerifyActivity.a(this.a).clearFocus();
-      }
-      AddFriendVerifyActivity.a(this.a, false);
-      this.a.finish();
+    int i = 1;
+    if (paramInt == 1) {
+      i = 2;
     }
+    return i;
+  }
+  
+  public static adkf a(String paramString, adkg paramadkg)
+  {
+    paramString = new adka(paramString, paramadkg.jdField_a_of_type_JavaLangString);
+    if ((paramString.a(paramString.a())) && (paramString.b())) {
+      return paramString;
+    }
+    return null;
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    paramString1 = PatchManager.nativeGetFingerprint(paramString1, paramString2, paramInt1, paramInt2);
+    if ((paramString1 != null) && (paramString1.length != 0)) {
+      return adki.a(paramString1);
+    }
+    return "";
+  }
+  
+  private ArrayList<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+    {
+      localArrayList.add(((adkb)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  private boolean a(String paramString)
+  {
+    paramString = adki.a(paramString);
     for (;;)
     {
-      AddFriendVerifyActivity.b(this.a, 1004);
-      return;
-      paramString = new AddFriendVerifyActivity.StartRecommendPageTask(this.a, paramString);
-      this.a.jdField_a_of_type_AndroidOsHandler.post(paramString);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
-  {
-    if (paramBoolean)
-    {
-      int i = this.a.getIntent().getExtras().getShort("group_option", (short)2);
-      if (i == 4) {
-        if (paramTroopInfo != null)
-        {
-          paramString = afur.a(new Intent(this.a, SplashActivity.class), null);
-          paramString.putExtra("uin", paramTroopInfo.troopuin);
-          paramString.putExtra("uintype", 1);
-          paramString.putExtra("uinname", paramTroopInfo.getTroopName());
-          this.a.startActivity(paramString);
-        }
-      }
-      while ((TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.a.app.getAccount())) || (i != 1)) {
-        return;
-      }
-      paramString = this.a.app.a();
-      RecentUser localRecentUser = (RecentUser)paramString.a().findRecentUserByUin(paramTroopInfo.troopuin, 1);
-      localRecentUser.displayName = paramTroopInfo.troopname;
-      localRecentUser.msgData = null;
-      localRecentUser.msg = null;
-      localRecentUser.msgType = 0;
-      long l = NetConnInfoCenter.getServerTime();
-      if (localRecentUser.lastmsgtime < l) {
-        localRecentUser.lastmsgtime = l;
-      }
-      paramString.a().saveRecentUser(localRecentUser);
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
-    }
-    this.a.setResult(-1);
-    if ((this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null) && (AddFriendVerifyActivity.a(this.a) != null))
-    {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
-    }
-    this.a.finish();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    boolean bool = true;
-    if ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a, this.a.getString(2131695493), 0).b(this.a.getTitleBarHeight());
-      AddFriendVerifyActivity.b(this.a);
-    }
-    paramString = this.a;
-    if (paramInt3 == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramString.c = paramBoolean;
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (!bgjw.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) {}
-    label262:
-    do
-    {
-      do
+      try
       {
-        do
+        paramString = new JSONObject(paramString);
+        this.jdField_c_of_type_JavaLangString = paramString.getString("name");
+        this.jdField_d_of_type_JavaLangString = paramString.getString("ver");
+        this.e = paramString.getString("type");
+        JSONObject localJSONObject = paramString.getJSONObject("basic_group");
+        this.jdField_a_of_type_Int = localJSONObject.getInt("fingerprint_count");
+        this.jdField_c_of_type_Int = localJSONObject.getInt("param_count");
+        this.jdField_b_of_type_Int = localJSONObject.getInt("hookpoint_count");
+        adjv.a("KingKongNativePatch", "--> Fingerprint count : " + this.jdField_a_of_type_Int);
+        adjv.a("KingKongNativePatch", "--> Parameter count : " + this.jdField_c_of_type_Int);
+        adjv.a("KingKongNativePatch", "--> HookPoint count : " + this.jdField_b_of_type_Int);
+        i = 0;
+        if (i < this.jdField_b_of_type_Int)
         {
-          return;
-          if (!paramBoolean) {
-            break label262;
-          }
-          long l = paramTroopInfo.dwGroupClassExt;
-          if (QLog.isColorLevel()) {
-            QLog.d("zivonchen", 2, "AddFriendVerifyActivity onOIDB0X88D_10_Ret isSuccess = " + paramBoolean + ", troopuin = " + paramLong + ", nFlag = " + paramInt1 + ", troopInfo = " + paramTroopInfo + ", dwGroupClassExt = " + l + ", onResult = " + paramInt2 + ", strErrorMsg = " + paramString);
-          }
-          if ((l != 10009L) && (l != 10010L) && (l != 10011L) && (l != 10012L) && (!paramTroopInfo.isHomeworkTroop())) {
+          localJSONObject = paramString.getJSONObject("hookpoint_definition_" + String.valueOf(i + 1));
+          Object localObject = new adkc(this);
+          if (!((adkc)localObject).a(localJSONObject)) {
             break;
           }
-        } while (!QLog.isColorLevel());
-        QLog.d("zivonchen", 2, "AddFriendVerifyActivity onOIDB0X88D_10_Ret: 不需要显示城市、星座、性别这一交友信息~");
-        return;
-        paramTroopInfo = AddFriendVerifyActivity.b(this.a);
-      } while (TextUtils.isEmpty(paramTroopInfo));
-      paramTroopInfo = this.a.getString(2131696821, new Object[] { this.a.app.getCurrentNickname() }) + paramTroopInfo;
-      this.a.d(paramTroopInfo);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("zivonchen", 2, "AddFriendVerifyActivity onOIDB0X88D_10_Ret isSuccess = " + paramBoolean + ", troopuin = " + paramLong + ", nFlag = " + paramInt1 + ", troopInfo = " + paramTroopInfo + ", onResult = " + paramInt2 + ", strErrorMsg = " + paramString);
+          adjv.a("KingKongNativePatch", "--> HookPoint : " + localObject);
+          this.jdField_c_of_type_JavaUtilArrayList.add(localObject);
+          i += 1;
+          continue;
+          if (i >= this.jdField_a_of_type_Int) {
+            break label510;
+          }
+          localJSONObject = paramString.getJSONObject("fingerprint_definition_" + String.valueOf(i + 1));
+          localObject = new adkb(this);
+          if (!((adkb)localObject).a(localJSONObject)) {
+            break;
+          }
+          this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
+          adjv.a("KingKongNativePatch", "--> Fingerprint " + localObject);
+          i += 1;
+          continue;
+          if (i < this.jdField_c_of_type_Int)
+          {
+            localJSONObject = paramString.getJSONObject("parameter_definition_" + String.valueOf(i + 1));
+            localObject = new adkd(this);
+            if (!((adkd)localObject).a(localJSONObject)) {
+              break;
+            }
+            if (((adkd)localObject).jdField_a_of_type_Int != i)
+            {
+              adjv.a("KingKongNativePatch", "Parameter index error!");
+              return false;
+            }
+            adjv.a("KingKongNativePatch", "--> Parameter definition : " + localObject);
+            this.jdField_d_of_type_JavaUtilArrayList.add(localObject);
+            i += 1;
+            continue;
+          }
+          return true;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        adjv.a("KingKongNativePatch", "Parse sub patches failed : " + paramString);
+        return false;
+      }
+      int i = 0;
+      continue;
+      label510:
+      i = 0;
+    }
+    return false;
+  }
+  
+  private int[] a()
+  {
+    int[] arrayOfInt1 = Common.a(this.jdField_c_of_type_JavaLangString);
+    if (arrayOfInt1 == null)
+    {
+      adjv.a("KingKongNativePatch", "No GOT Hookpoint found");
+      return null;
+    }
+    if (arrayOfInt1.length != this.jdField_b_of_type_Int)
+    {
+      adjv.a("KingKongNativePatch", "Got Hookpoint length mismatch " + this.jdField_b_of_type_Int + ", " + arrayOfInt1.length);
+      return null;
+    }
+    int[] arrayOfInt2 = new int[this.jdField_b_of_type_Int];
+    int i = 0;
+    while (i < this.jdField_b_of_type_Int)
+    {
+      arrayOfInt2[i] = PatchManager.nativeCalcParameter(2, ((adkc)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString, "", arrayOfInt1[i]);
+      if (arrayOfInt2[i] == -1)
+      {
+        adjv.a("KingKongNativePatch", "Calculate GOT Hookpoint failed " + i);
+        return null;
+      }
+      i += 1;
+    }
+    return arrayOfInt2;
+  }
+  
+  private String b()
+  {
+    return this.jdField_b_of_type_JavaLangString + f + this.jdField_c_of_type_JavaLangString + ".subpatch";
+  }
+  
+  private boolean b()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = adke.a(b());
+    return this.jdField_a_of_type_JavaUtilArrayList != null;
+  }
+  
+  private int[] b()
+  {
+    int[] arrayOfInt1 = Common.b(this.jdField_c_of_type_JavaLangString);
+    if (arrayOfInt1 == null)
+    {
+      adjv.a("KingKongNativePatch", "No Jumper point found");
+      return null;
+    }
+    if (arrayOfInt1.length != this.jdField_b_of_type_Int)
+    {
+      adjv.a("KingKongNativePatch", "Jumper point length mismatch " + this.jdField_b_of_type_Int + ", " + arrayOfInt1.length);
+      return null;
+    }
+    int[] arrayOfInt2 = new int[this.jdField_b_of_type_Int];
+    int i = 0;
+    while (i < this.jdField_b_of_type_Int)
+    {
+      arrayOfInt2[i] = PatchManager.nativeCalcParameter(2, ((adkc)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString, "", arrayOfInt1[i]);
+      if (arrayOfInt2[i] == -1)
+      {
+        adjv.a("KingKongNativePatch", "Calculate Jumper point failed " + i);
+        return null;
+      }
+      i += 1;
+    }
+    return arrayOfInt2;
+  }
+  
+  public int a(Context paramContext)
+  {
+    adjv.a("KingKongNativePatch", "---> Patching " + this.jdField_c_of_type_JavaLangString + "  <-------");
+    int i = Common.a(this.jdField_c_of_type_JavaLangString, a());
+    if ((i == -1) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size()))
+    {
+      adjv.a("KingKongNativePatch", "Unable to find valid subpatch index " + i);
+      return 12;
+    }
+    paramContext = (adke)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+    if ((paramContext.jdField_c_of_type_JavaUtilArrayList.size() != this.jdField_b_of_type_Int) || (this.jdField_c_of_type_JavaUtilArrayList.size() != this.jdField_b_of_type_Int))
+    {
+      adjv.a("KingKongNativePatch", "SubPatch Hookpoint count mismatch ");
+      return 11;
+    }
+    int[] arrayOfInt1 = a();
+    int[] arrayOfInt2 = b();
+    if ((arrayOfInt1 == null) || (arrayOfInt2 == null))
+    {
+      adjv.a("KingKongNativePatch", "Unable to get GOT HookPoint or Jumper point");
+      return 8;
+    }
+    int j = paramContext.jdField_a_of_type_Int;
+    i = 0;
+    if (i < this.jdField_b_of_type_Int)
+    {
+      Object localObject2 = (adkc)this.jdField_c_of_type_JavaUtilArrayList.get(i);
+      Object localObject1 = paramContext.jdField_a_of_type_JavaUtilArrayList;
+      int n = ((Integer)paramContext.jdField_c_of_type_JavaUtilArrayList.get(i)).intValue();
+      int k = arrayOfInt2[i];
+      int m = arrayOfInt1[i];
+      int i1 = ((adkc)localObject2).jdField_a_of_type_Int;
+      String str = ((adkc)localObject2).jdField_a_of_type_JavaLangString;
+      localObject2 = ((adkc)localObject2).jdField_b_of_type_JavaLangString;
+      if (n == -1) {
+        adjv.a("KingKongNativePatch", "Skip empty hook point " + i);
+      }
+      do
+      {
+        i += 1;
+        break;
+        n = PatchManager.nativeCalcParameter(a(i1), str, (String)localObject2, n);
+        if (n == -1)
+        {
+          adjv.a("KingKongNativePatch", "Calculate hookPoint failed");
+          return 7;
+        }
+        localObject1 = a(this.jdField_d_of_type_JavaUtilArrayList, (ArrayList)localObject1);
+        if (localObject1 == null) {
+          return 6;
+        }
+      } while (PatchManager.nativeDoPatch(Common.b("lib" + this.jdField_c_of_type_JavaLangString + ".so"), str, (String)localObject2, n, k, m, (int[])localObject1, this.jdField_c_of_type_Int, j));
+      adjv.a("KingKongNativePatch", "Native do patch failed");
+      return 10;
+    }
+    adjv.a("KingKongNativePatch", "---> Do patch OK <----");
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    int j = a();
+    if (j == -1) {
+      return false;
+    }
+    adjv.a("KingKongNativePatch", "Valid subpatch index : " + this.jdField_c_of_type_JavaLangString + " : " + j);
+    int[] arrayOfInt1 = new int[this.jdField_b_of_type_Int];
+    int[] arrayOfInt2 = new int[this.jdField_b_of_type_Int];
+    int i = 0;
+    while (i < this.jdField_b_of_type_Int)
+    {
+      String str = ((adkc)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
+      int k = PatchManager.nativeCalcJumperPoint(str);
+      int m = PatchManager.nativeCalcGotHookPoint(str);
+      if ((k == -1) || (m == -1))
+      {
+        adjv.a("KingKongNativePatch", "Calculate jumper/got point failed");
+        return false;
+      }
+      adjv.a("KingKongNativePatch", "Patch params " + i + ", " + str + ", " + k + ", " + m);
+      arrayOfInt1[i] = k;
+      arrayOfInt2[i] = m;
+      i += 1;
+    }
+    Common.a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, arrayOfInt1, arrayOfInt2);
+    Common.a(this.jdField_c_of_type_JavaLangString, j, a());
+    return true;
+  }
+  
+  public int[] a(ArrayList<adkd> paramArrayList, ArrayList<Integer> paramArrayList1)
+  {
+    int[] arrayOfInt = new int[paramArrayList.size()];
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      adkd localadkd = (adkd)paramArrayList.get(i);
+      int j = ((Integer)paramArrayList1.get(i)).intValue();
+      arrayOfInt[i] = PatchManager.nativeCalcParameter(localadkd.jdField_b_of_type_Int, localadkd.jdField_a_of_type_JavaLangString, localadkd.jdField_b_of_type_JavaLangString, j);
+      if (arrayOfInt[i] == -1)
+      {
+        adjv.a("KingKongNativePatch", "Calculate parameter failed " + i);
+        return null;
+      }
+      i += 1;
+    }
+    return arrayOfInt;
   }
 }
 

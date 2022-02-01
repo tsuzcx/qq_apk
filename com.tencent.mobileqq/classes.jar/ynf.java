@@ -1,27 +1,57 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ynf
-  implements zow
+  extends QQUIEventReceiver<ymx, wqu>
 {
-  public void a(SegmentList paramSegmentList)
+  public ynf(@NonNull ymx paramymx)
   {
-    if (!(paramSegmentList instanceof MystoryListView)) {
-      throw new IllegalArgumentException("arg should match type!");
+    super(paramymx);
+  }
+  
+  public void a(@NonNull ymx paramymx, @NonNull wqu paramwqu)
+  {
+    if ((TextUtils.isEmpty(paramwqu.jdField_a_of_type_JavaLangString)) || (paramwqu.jdField_a_of_type_Int == 0) || (paramwqu.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(paramwqu.b)))
+    {
+      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramwqu.jdField_a_of_type_JavaLangString, Integer.valueOf(paramwqu.jdField_a_of_type_Int), Long.valueOf(paramwqu.jdField_a_of_type_Long), paramwqu.b });
+      return;
     }
-    paramSegmentList = (MystoryListView)paramSegmentList;
-    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
-    Object localObject = paramSegmentList.jdField_a_of_type_Ync;
-    boolean bool = paramSegmentList.a();
-    paramSegmentList.a(wjz.a(localActivity, 5));
-    paramSegmentList.a(new ypb(localActivity, (ync)localObject));
-    paramSegmentList.a(new ypa(localActivity));
-    paramSegmentList.a(new yor(localActivity));
-    localObject = new ynm(localActivity, localActivity, 10, (ync)localObject, bool);
-    paramSegmentList.a((zpa)localObject);
-    paramSegmentList.a(new ypu(localActivity, "FeedSegment", anni.a(2131705839) + wes.a + "\n拍摄一段视频，分享眼前的世界", 2130846595, 2130846596));
-    ((ynm)localObject).e_(true);
+    Object localObject1 = paramymx.a(paramwqu.jdField_a_of_type_JavaLangString);
+    if ((localObject1 == null) || (!(localObject1 instanceof ynv)))
+    {
+      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramwqu.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    Object localObject2 = (ynv)localObject1;
+    localObject1 = ygl.a(paramwqu.jdField_a_of_type_JavaLangString, paramwqu.jdField_a_of_type_Int, paramwqu.jdField_a_of_type_Long, paramwqu.b, paramwqu.c, paramwqu.d, paramwqu.e, paramwqu.f);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localObject1);
+    ((ynv)localObject2).a(localArrayList, false);
+    localObject2 = (CommentLikeFeedItem)((ynv)localObject2).a;
+    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
+    if (ymx.a((CommentLikeFeedItem)localObject2)) {
+      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
+    }
+    for (;;)
+    {
+      ymx.a(paramymx).b(paramwqu.jdField_a_of_type_JavaLangString);
+      ThreadManager.post(new HomeFeedPresenter.GamePKCommentReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1, paramwqu), 5, null, false);
+      ymx.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
+      return;
+      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqu.class;
   }
 }
 

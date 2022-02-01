@@ -1,17 +1,11 @@
-import android.graphics.Bitmap;
-import com.tencent.component.media.utils.LruCache;
+import java.util.Comparator;
 
-class vgy
-  extends LruCache<Integer, Bitmap>
+public final class vgy
+  implements Comparator<vhb>
 {
-  vgy(vgx paramvgx, int paramInt)
+  public int a(vhb paramvhb1, vhb paramvhb2)
   {
-    super(paramInt);
-  }
-  
-  protected int a(Integer paramInteger, Bitmap paramBitmap)
-  {
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+    return vjk.a(paramvhb1, paramvhb2);
   }
 }
 

@@ -1,56 +1,40 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageShakeAnimView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class azbo
-  implements bgtg<Float>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public azbo(ImageShakeAnimView paramImageShakeAnimView) {}
+  public azbo(ScanOcrView paramScanOcrView) {}
   
-  public void a(bgta<Float> parambgta, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      if (paramFloat1.floatValue() < 180.0F)
-      {
-        this.a.jdField_a_of_type_Float = (1.0F - paramFloat1.floatValue() * 0.01F / 180.0F);
-        this.a.b = (0.02F * paramFloat1.floatValue() / 180.0F + 1.0F);
-        return;
-      }
-      if (paramFloat1.floatValue() < 360.0F)
-      {
-        parambgta = Float.valueOf(paramFloat1.floatValue() - 180.0F);
-        this.a.jdField_a_of_type_Float = (0.99F + 0.03F * parambgta.floatValue() / 180.0F);
-        this.a.b = (1.02F - parambgta.floatValue() * 0.04F / 180.0F);
-        return;
-      }
-      if (paramFloat1.floatValue() < 540.0F)
-      {
-        parambgta = Float.valueOf(paramFloat1.floatValue() - 360.0F);
-        this.a.jdField_a_of_type_Float = (1.02F - 0.03F * parambgta.floatValue() / 180.0F);
-        this.a.b = (parambgta.floatValue() * 0.03F / 180.0F + 0.98F);
-        return;
-      }
-      parambgta = Float.valueOf(paramFloat1.floatValue() - 540.0F);
-      this.a.jdField_a_of_type_Float = (0.99F + parambgta.floatValue() * 0.01F / 180.0F);
-      this.a.b = (1.01F - parambgta.floatValue() * 0.01F / 180.0F);
-      return;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.a.a.a * f);
+    int i = (int)(f * this.a.a.jdField_b_of_type_Int);
+    int m = j - this.a.a.a;
+    int k = i - this.a.a.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    if (paramFloat1.floatValue() < 120.0F)
-    {
-      this.a.jdField_a_of_type_Float = (1.0F - 0.02F * paramFloat1.floatValue() / 120.0F);
-      this.a.b = (paramFloat1.floatValue() * 0.04F / 120.0F + 1.0F);
-      return;
+    j = i;
+    if (i < 0) {
+      j = 0;
     }
-    if (paramFloat1.floatValue() < 380.0F)
-    {
-      parambgta = Float.valueOf(paramFloat1.floatValue() - 120.0F);
-      this.a.jdField_a_of_type_Float = (0.98F + parambgta.floatValue() * 0.04F / 260.0F);
-      this.a.b = (1.04F - parambgta.floatValue() * 0.08F / 260.0F);
-      return;
-    }
-    parambgta = Float.valueOf(paramFloat1.floatValue() - 380.0F);
-    this.a.jdField_a_of_type_Float = (1.02F - 0.02F * parambgta.floatValue() / 120.0F);
-    this.a.b = (parambgta.floatValue() * 0.04F / 120.0F + 0.96F);
+    i = this.a.a.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.a.a.e = j;
+    this.a.a.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.a.invalidate();
   }
 }
 

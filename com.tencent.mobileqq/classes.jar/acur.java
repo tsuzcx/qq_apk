@@ -1,73 +1,51 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.ArrayList;
-import java.util.Map;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.qqproxy.GdtLocationUtil;
+import org.json.JSONObject;
 
-public class acur
-  extends WebViewPlugin
+class acur
+  implements acun
 {
-  private ArrayList<acup> a = new ArrayList();
-  
-  public acur()
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    this.mPluginNameSpace = "GdtWebReportPlugin";
-    acuq localacuq = new acuq(this);
-    acus localacus = new acus(this);
-    oos localoos = new oos();
-    this.a.add(localacuq);
-    this.a.add(localacus);
-    this.a.add(localoos);
-  }
-  
-  public Activity a()
-  {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
+    Object localObject = null;
+    if (paramacts != null) {}
+    for (;;)
     {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
+      try
+      {
+        paramVarArgs = paramacts.a();
+        paramVarArgs = GdtLocationUtil.INSTANCE.getLocation(paramVarArgs);
+        localJSONObject = new JSONObject();
+        if (paramVarArgs == null) {
+          continue;
+        }
+        localJSONObject.put("lat", paramVarArgs[0]);
+        localJSONObject.put("lon", paramVarArgs[1]);
+        paramacts.callJs(paramString, new String[] { localJSONObject.toString() });
       }
-      return localActivity2;
+      catch (Exception paramString)
+      {
+        JSONObject localJSONObject;
+        paramString.printStackTrace();
+        continue;
+        paramString = null;
+        continue;
+      }
+      if (paramacts == null) {
+        continue;
+      }
+      paramString = paramacts.a();
+      paramVarArgs = localObject;
+      if (paramacts != null) {
+        paramVarArgs = paramacts.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
+      return true;
+      paramVarArgs = null;
+      continue;
+      localJSONObject.put("lat", JSONObject.NULL);
+      localJSONObject.put("lon", JSONObject.NULL);
     }
-  }
-  
-  public void callJs(String paramString)
-  {
-    super.callJs(paramString);
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    int i = 0;
-    while (i < this.a.size())
-    {
-      ((acup)this.a.get(i)).a(paramString, paramLong, paramMap);
-      i += 1;
-    }
-    return false;
-  }
-  
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
-  {
-    return super.handleSchemaRequest(paramString1, paramString2);
-  }
-  
-  public void onActivityReady()
-  {
-    super.onActivityReady();
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
   }
 }
 

@@ -1,27 +1,13 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
 public class bbvv
-  extends bbvn
+  implements View.OnClickListener
 {
-  private LinearLayout a;
+  public bbvv(LikesView paramLikesView) {}
   
-  public bbvv(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(paramViewGroup, paramInt);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    this.a = ((LinearLayout)a(this.c).findViewById(2131370012));
-  }
-  
-  public View b()
-  {
-    return this.a;
-  }
+  public void onClick(View paramView) {}
 }
 
 

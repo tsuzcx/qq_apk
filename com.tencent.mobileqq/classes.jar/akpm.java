@@ -1,21 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
 
 public class akpm
-  implements View.OnClickListener
+  extends azov
 {
-  public akpm(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  public akpm(RebindActivity paramRebindActivity) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (KuaKuaHbFragment.a(this.a) != null) {
-      KuaKuaHbFragment.a(this.a).a(KuaKuaHbFragment.a(this.a).getText().toString());
+    this.a.b();
+    if (paramBoolean)
+    {
+      paramBundle = new Intent(this.a, BindVerifyActivity.class);
+      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
+      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
+      paramBundle.putExtra("keyReqBindMode", 1);
+      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
+      paramBundle.addFlags(67108864);
+      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
+      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
+      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
+      this.a.startActivityForResult(paramBundle, 1);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(2131717454);
   }
 }
 

@@ -1,18 +1,28 @@
-import android.app.Notification;
-import android.os.IInterface;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract interface lno
-  extends IInterface
+public class lno
+  extends lef
 {
-  public abstract int a(long paramLong, int paramInt);
+  public lno(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public abstract void a();
+  protected void a(long paramLong, ArrayList<lcv> paramArrayList, int paramInt1, int paramInt2)
+  {
+    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+  }
   
-  public abstract void a(lvv paramlvv);
-  
-  public abstract void a(boolean paramBoolean, Notification paramNotification);
-  
-  public abstract void a(byte[] paramArrayOfByte);
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onMembersChange");
+    }
+    if ((paramLong != this.a.a) || (paramBoolean)) {}
+    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
+      return;
+    }
+    GaInviteLockActivity.a(this.a, paramInt);
+  }
 }
 
 

@@ -1,41 +1,18 @@
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.mobileqq.shortvideo.filter.QQTextEjectaFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQTextEjectaFilter.EjectaTextureCallBack;
-import com.tencent.qg.StoryQGSurfaceView;
+import android.graphics.Rect;
 
-class bozb
-  implements QQTextEjectaFilter.EjectaTextureCallBack
+public class bozb
 {
-  bozb(boza paramboza) {}
+  public Rect a;
+  public float[] a;
   
-  public int[] onDrawFrame()
+  public bozb(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int[] arrayOfInt1 = new int[2];
-    int[] tmp5_4 = arrayOfInt1;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    int[] arrayOfInt2 = new int[2];
-    int[] tmp19_18 = arrayOfInt2;
-    tmp19_18[0] = 0;
-    int[] tmp23_19 = tmp19_18;
-    tmp23_19[1] = 0;
-    tmp23_19;
-    if (!this.a.b) {
-      return new int[0];
-    }
-    arrayOfInt1[0] = boza.a(this.a).getCanvasTexture("offscreen_richard");
-    if (((boza.a(this.a) != null) || (boza.a(this.a).f)) && (!boza.a(this.a)))
-    {
-      if (boza.a(this.a) == 0) {
-        boza.a(this.a, GlUtil.createTexture(3553, boza.a(this.a)));
-      }
-      arrayOfInt1[1] = boza.a(this.a);
-      arrayOfInt2[1] = 1;
-    }
-    boza.a(this.a).setIsNeedReverseTexture(arrayOfInt2);
-    return arrayOfInt1;
+    this.a = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public int a()
+  {
+    return Math.abs(this.a.left - this.a.right) * Math.abs(this.a.top - this.a.bottom);
   }
 }
 

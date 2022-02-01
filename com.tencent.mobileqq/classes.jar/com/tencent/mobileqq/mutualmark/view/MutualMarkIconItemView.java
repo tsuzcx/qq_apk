@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import awzv;
-import axap;
+import axso;
+import axtj;
 
 public class MutualMarkIconItemView
   extends ImageView
 {
-  awzv jdField_a_of_type_Awzv;
-  axap jdField_a_of_type_Axap;
+  axso jdField_a_of_type_Axso;
+  axtj jdField_a_of_type_Axtj;
   
   public MutualMarkIconItemView(Context paramContext)
   {
@@ -31,31 +31,31 @@ public class MutualMarkIconItemView
   
   public int a()
   {
-    if (this.jdField_a_of_type_Awzv != null) {
-      return this.jdField_a_of_type_Awzv.getIntrinsicWidth();
+    if (this.jdField_a_of_type_Axso != null) {
+      return this.jdField_a_of_type_Axso.getIntrinsicWidth();
     }
     return getMeasuredWidth();
   }
   
   public long a()
   {
-    if (this.jdField_a_of_type_Axap != null) {
-      return this.jdField_a_of_type_Axap.a;
+    if (this.jdField_a_of_type_Axtj != null) {
+      return this.jdField_a_of_type_Axtj.a;
     }
     return 0L;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Awzv != null) {
-      this.jdField_a_of_type_Awzv.b();
+    if (this.jdField_a_of_type_Axso != null) {
+      this.jdField_a_of_type_Axso.b();
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Awzv != null) {
-      this.jdField_a_of_type_Awzv.a(paramString);
+    if (this.jdField_a_of_type_Axso != null) {
+      this.jdField_a_of_type_Axso.a(paramString);
     }
   }
   
@@ -65,22 +65,22 @@ public class MutualMarkIconItemView
     setAlpha(paramFloat);
   }
   
-  public void setIconResource(axap paramaxap)
+  public void setIconResource(axtj paramaxtj)
   {
-    if (this.jdField_a_of_type_Axap == paramaxap) {}
+    if (this.jdField_a_of_type_Axtj == paramaxtj) {}
     do
     {
       return;
-      this.jdField_a_of_type_Axap = paramaxap;
-      if (!TextUtils.isEmpty(paramaxap.jdField_c_of_type_JavaLangString))
+      this.jdField_a_of_type_Axtj = paramaxtj;
+      if (!TextUtils.isEmpty(paramaxtj.jdField_c_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_Awzv = new awzv(getContext(), paramaxap.jdField_c_of_type_JavaLangString);
-        setImageDrawable(this.jdField_a_of_type_Awzv);
+        this.jdField_a_of_type_Axso = new axso(getContext(), paramaxtj.jdField_c_of_type_JavaLangString);
+        setImageDrawable(this.jdField_a_of_type_Axso);
         return;
       }
-    } while (paramaxap.jdField_c_of_type_Int == 0);
-    this.jdField_a_of_type_Awzv = new awzv(getContext(), paramaxap.jdField_c_of_type_Int);
-    setImageDrawable(this.jdField_a_of_type_Awzv);
+    } while (paramaxtj.jdField_c_of_type_Int == 0);
+    this.jdField_a_of_type_Axso = new axso(getContext(), paramaxtj.jdField_c_of_type_Int);
+    setImageDrawable(this.jdField_a_of_type_Axso);
   }
 }
 

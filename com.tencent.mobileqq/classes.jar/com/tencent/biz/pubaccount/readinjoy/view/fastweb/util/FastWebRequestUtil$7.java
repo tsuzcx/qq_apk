@@ -8,17 +8,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import nlw;
+import nnr;
 import org.json.JSONObject;
-import pha;
-import rvd;
-import snh;
-import tht;
+import ozs;
+import rlz;
+import sel;
+import syn;
 
 public final class FastWebRequestUtil$7
   implements Runnable
 {
-  public FastWebRequestUtil$7(ArticleInfo paramArticleInfo, tht paramtht) {}
+  public FastWebRequestUtil$7(ArticleInfo paramArticleInfo, syn paramsyn) {}
   
   public void run()
   {
@@ -26,15 +26,15 @@ public final class FastWebRequestUtil$7
     {
       try
       {
-        str2 = pha.a();
-        str3 = ((TicketManager)((QQAppInterface)pha.a()).getManager(2)).getSkey(str2);
+        str2 = ozs.a();
+        str3 = ((TicketManager)((QQAppInterface)ozs.a()).getManager(2)).getSkey(str2);
         localBundle = new Bundle();
         localBundle.putString("type", "1");
         localBundle.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.publishUin));
-        if (snh.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+        if (sel.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
           break label348;
         }
-        if (!snh.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+        if (!sel.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
           break label355;
         }
       }
@@ -45,7 +45,7 @@ public final class FastWebRequestUtil$7
         Bundle localBundle;
         Object localObject;
         int i;
-        if (this.jdField_a_of_type_Tht == null) {
+        if (this.jdField_a_of_type_Syn == null) {
           continue;
         }
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.7.2(this, localException));
@@ -62,18 +62,18 @@ public final class FastWebRequestUtil$7
         }
         localObject = new Bundle();
         ((Bundle)localObject).putString("cookie", "uin=o" + str2 + ";skey=" + str3);
-        localObject = new String(nlw.a(BaseApplicationImpl.getContext(), "https://kandian.qq.com/cgi-bin/social/setNotCare", "GET", localBundle, (Bundle)localObject));
+        localObject = new String(nnr.a(BaseApplicationImpl.getContext(), "https://kandian.qq.com/cgi-bin/social/setNotCare", "GET", localBundle, (Bundle)localObject));
         QLog.d("FastWebRequestUtil", 1, new Object[] { "shieldFeeds result = ", localObject });
         localObject = new JSONObject((String)localObject).getJSONObject("result");
         i = ((JSONObject)localObject).getInt("retCode");
         localObject = ((JSONObject)localObject).getString("retMsg");
-        if (this.jdField_a_of_type_Tht != null) {
+        if (this.jdField_a_of_type_Syn != null) {
           ThreadManager.getUIHandler().post(new FastWebRequestUtil.7.1(this, i, (String)localObject));
         }
       }
       else
       {
-        localObject = rvd.a(str3);
+        localObject = rlz.a(str3);
         continue;
         label348:
         str1 = "1";

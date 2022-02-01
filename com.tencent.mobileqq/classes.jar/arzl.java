@@ -1,13 +1,21 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arzl
-  extends arwg
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public TextView a;
-  public URLImageView a;
-  public ProgressButton a;
+  public arzl(DataReportViewer paramDataReportViewer) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    this.a.a = paramBoolean;
+    if (this.a.a) {
+      this.a.a();
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

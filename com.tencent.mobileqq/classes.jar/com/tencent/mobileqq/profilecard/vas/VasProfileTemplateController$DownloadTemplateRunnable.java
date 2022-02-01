@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profilecard.vas;
 
 import android.os.Message;
-import azfl;
-import bghy;
-import bgmg;
-import bhhf;
-import bhhh;
-import bkgm;
+import azxy;
+import bhhz;
+import bhmi;
+import bihu;
+import bihw;
+import blhq;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -21,164 +21,162 @@ class VasProfileTemplateController$DownloadTemplateRunnable
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<FriendProfileCardActivity> jdField_a_of_type_JavaLangRefWeakReference;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private WeakReference<azfl> b;
+  private WeakReference<azxy> b;
   
-  VasProfileTemplateController$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, azfl paramazfl, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
+  VasProfileTemplateController$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, azxy paramazxy, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFriendProfileCardActivity);
-    this.b = new WeakReference(paramazfl);
+    this.b = new WeakReference(paramazxy);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = paramAtomicBoolean;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void run()
+  private boolean a(FriendProfileCardActivity paramFriendProfileCardActivity, boolean paramBoolean)
   {
-    for (;;)
+    boolean bool1 = paramBoolean;
+    String str;
+    if (!paramBoolean)
     {
-      boolean bool3;
-      int i;
-      boolean bool2;
+      str = bhhz.a(paramFriendProfileCardActivity.app, -1L);
+      bool1 = paramBoolean;
+      if (str != null)
+      {
+        localFile = new File(str);
+        localObject = new File(str + File.separator + "config_black.json");
+        if ((!localFile.isDirectory()) || (!((File)localObject).exists())) {
+          break label109;
+        }
+        if (!QLog.isColorLevel()) {
+          break label332;
+        }
+        QLog.d("ProfileTemplateCheckController", 2, "DownloadTemplateRunnable template already exists");
+        bool1 = true;
+      }
+    }
+    return bool1;
+    label109:
+    File localFile = new File(str + ".zip");
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    Object localObject = new bihu("https://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
+    ((bihu)localObject).f = "profileCardDownload";
+    ((bihu)localObject).e = "VIP_profilecard";
+    int j = bihw.a((bihu)localObject, paramFriendProfileCardActivity.app);
+    if (j == 0) {}
+    boolean bool2;
+    for (int i = 1;; i = 0)
+    {
+      bool2 = paramBoolean;
+      if (i != 0) {}
       try
       {
-        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.b != null))
-        {
-          localFriendProfileCardActivity = (FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          localObject1 = (azfl)this.b.get();
-          if ((localFriendProfileCardActivity != null) && (localObject1 != null))
-          {
-            long l = System.currentTimeMillis();
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileTemplateCheckController", 2, "DownloadTemplateRunnable start");
-            }
-            bool3 = bghy.a(localFriendProfileCardActivity.app);
-            if ((this.jdField_a_of_type_Long != 160L) && (this.jdField_a_of_type_Long != 1600L)) {
-              break label800;
-            }
-            bool1 = bghy.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString);
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable start isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) }));
-            }
-            boolean bool4 = bool1;
-            if (!bool1)
-            {
-              localObject1 = new File(bghy.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString));
-              localObject1 = new bhhf(this.jdField_a_of_type_JavaLangString, (File)localObject1);
-              ((bhhf)localObject1).f = "profileCardDownload";
-              ((bhhf)localObject1).e = "VIP_profilecard";
-              i = bhhh.a((bhhf)localObject1, localFriendProfileCardActivity.app);
-              if ((i != 0) || (!bghy.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString))) {
-                break label806;
-              }
-              bool1 = true;
-              bool4 = bool1;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable download bg resultBgCode=%s isExistBgResource=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1) }));
-                bool4 = bool1;
-              }
-            }
-            bool1 = bool3;
-            if (!bool3)
-            {
-              localObject1 = bghy.a(localFriendProfileCardActivity.app, -1L);
-              bool1 = bool3;
-              if (localObject1 != null)
-              {
-                localFile = new File((String)localObject1);
-                localObject2 = new File((String)localObject1 + File.separator + "config_black.json");
-                if ((!localFile.isDirectory()) || (!((File)localObject2).exists())) {
-                  continue;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label794;
-                }
-                QLog.d("ProfileTemplateCheckController", 2, "DownloadTemplateRunnable template already exists");
-                bool1 = true;
-              }
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable end isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool4) }));
-              QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable end timeCost=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-            }
-            if (localFriendProfileCardActivity.a != null)
-            {
-              localObject1 = localFriendProfileCardActivity.a.obtainMessage();
-              ((Message)localObject1).what = 7;
-              if ((!bool1) || (!bool4)) {
-                break label789;
-              }
-              i = 1;
-              ((Message)localObject1).arg1 = i;
-              ((Message)localObject1).arg2 = 0;
-              localFriendProfileCardActivity.a.sendMessage((Message)localObject1);
-            }
-          }
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-        localFile = new File((String)localObject1 + ".zip");
-        if (localFile.exists()) {
-          localFile.delete();
-        }
-        Object localObject2 = new bhhf("https://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
-        ((bhhf)localObject2).f = "profileCardDownload";
-        ((bhhf)localObject2).e = "VIP_profilecard";
-        j = bhhh.a((bhhf)localObject2, localFriendProfileCardActivity.app);
-        if (j == 0)
-        {
-          i = 1;
-          bool2 = bool3;
-          if (i == 0) {}
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        FriendProfileCardActivity localFriendProfileCardActivity;
-        Object localObject1;
-        File localFile;
-        int j;
-        QLog.e("ProfileTemplateCheckController", 1, "DownloadTemplateRunnable fail.", localThrowable1);
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-      }
-      try
-      {
-        bgmg.a(localFile.getAbsolutePath(), (String)localObject1 + File.separator, false);
-        bghy.a(localFriendProfileCardActivity.app, "common", "583");
-        bool2 = bool3;
-        if (bghy.a(localFriendProfileCardActivity.app))
+        bhmi.a(localFile.getAbsolutePath(), str + File.separator, false);
+        bhhz.a(paramFriendProfileCardActivity.app, "common", "583");
+        bool2 = paramBoolean;
+        if (bhhz.a(paramFriendProfileCardActivity.app))
         {
           localFile.delete();
           bool2 = true;
         }
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable paramFriendProfileCardActivity)
       {
-        QLog.e("ProfileTemplateCheckController", 1, "DownloadTemplateRunnable unzip fail.", localThrowable2);
-        bool2 = bool3;
-        continue;
+        for (;;)
+        {
+          QLog.e("ProfileTemplateCheckController", 1, "DownloadTemplateRunnable unzip fail.", paramFriendProfileCardActivity);
+          bool2 = paramBoolean;
+        }
       }
-      boolean bool1 = bool2;
-      if (QLog.isColorLevel())
+      bool1 = bool2;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable download template resultCode=%s isExistsTemplateDir=%s", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool2) }));
+      return bool2;
+    }
+    label332:
+    return true;
+  }
+  
+  public void run()
+  {
+    label468:
+    for (;;)
+    {
+      try
       {
-        QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable download template resultCode=%s isExistsTemplateDir=%s", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool2) }));
-        bool1 = bool2;
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.b != null))
+        {
+          FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          Object localObject = (azxy)this.b.get();
+          if ((localFriendProfileCardActivity != null) && (localObject != null))
+          {
+            long l = System.currentTimeMillis();
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileTemplateCheckController", 2, "DownloadTemplateRunnable start");
+            }
+            boolean bool3 = bhhz.a(localFriendProfileCardActivity.app);
+            if ((this.jdField_a_of_type_Long != 160L) && (this.jdField_a_of_type_Long != 1600L)) {
+              break label468;
+            }
+            bool1 = bhhz.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString);
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable start isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) }));
+            }
+            boolean bool2 = bool1;
+            if (!bool1)
+            {
+              localObject = new File(bhhz.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString));
+              localObject = new bihu(this.jdField_a_of_type_JavaLangString, (File)localObject);
+              ((bihu)localObject).f = "profileCardDownload";
+              ((bihu)localObject).e = "VIP_profilecard";
+              i = bihw.a((bihu)localObject, localFriendProfileCardActivity.app);
+              if ((i != 0) || (!bhhz.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString))) {
+                continue;
+              }
+              bool1 = true;
+              bool2 = bool1;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable download bg resultBgCode=%s isExistBgResource=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1) }));
+                bool2 = bool1;
+              }
+            }
+            bool1 = a(localFriendProfileCardActivity, bool3);
+            if (QLog.isColorLevel())
+            {
+              QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable end isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+              QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable end timeCost=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
+            }
+            if (localFriendProfileCardActivity.a != null)
+            {
+              localObject = localFriendProfileCardActivity.a.obtainMessage();
+              ((Message)localObject).what = 7;
+              if ((!bool1) || (!bool2)) {
+                continue;
+              }
+              i = 1;
+              ((Message)localObject).arg1 = i;
+              ((Message)localObject).arg2 = 0;
+              localFriendProfileCardActivity.a.sendMessage((Message)localObject);
+            }
+          }
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        return;
+        boolean bool1 = false;
         continue;
-        i = 0;
+        int i = 0;
         continue;
-        label789:
-        i = 0;
-        continue;
-        label794:
         bool1 = true;
-        continue;
-        label800:
-        bool1 = true;
-        continue;
-        label806:
-        bool1 = false;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("ProfileTemplateCheckController", 1, "DownloadTemplateRunnable fail.", localThrowable);
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        return;
       }
     }
   }

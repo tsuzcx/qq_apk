@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.view;
 
-import angf;
+import ansa;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ApolloPanel$39$1
   implements Runnable
 {
-  public ApolloPanel$39$1(angf paramangf) {}
+  public ApolloPanel$39$1(ansa paramansa) {}
   
   public void run()
   {

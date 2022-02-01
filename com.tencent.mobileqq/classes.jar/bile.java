@@ -1,263 +1,519 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bile
-  extends bhzk
+  implements Manager
 {
-  protected LinkedHashMap<String, List<Friend>> a;
-  protected int[] a;
-  protected String[] a;
+  public static String a;
+  public static HashMap<String, bili> a;
+  public static String[] a;
+  biht jdField_a_of_type_Biht = new bilf(this);
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public bile(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame)
+  static
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
-    a();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaLangString = antf.ba + "voiceChange/";
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { null, null, null };
   }
   
-  public int a()
+  public bile(QQAppInterface paramQQAppInterface)
   {
-    return 2131559317;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public int a(String paramString)
+  /* Error */
+  public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
   {
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: iload_0
+    //   4: i2d
+    //   5: dstore 5
+    //   7: dload 5
+    //   9: invokestatic 71	com/tencent/mobileqq/utils/QQRecorder:a	(D)I
+    //   12: istore_0
+    //   13: getstatic 24	bile:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   16: aload_1
+    //   17: invokevirtual 75	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   20: checkcast 77	bili
+    //   23: astore 7
+    //   25: aload 7
+    //   27: ifnull +88 -> 115
+    //   30: aload 7
+    //   32: getfield 80	bili:jdField_a_of_type_Bilj	Lbilj;
+    //   35: ifnull +84 -> 119
+    //   38: aload_1
+    //   39: aload_2
+    //   40: iload_3
+    //   41: invokestatic 85	bilk:a	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   44: aload 7
+    //   46: getfield 80	bili:jdField_a_of_type_Bilj	Lbilj;
+    //   49: aload_1
+    //   50: iload 4
+    //   52: iload_0
+    //   53: invokeinterface 90 4 0
+    //   58: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   61: ifeq +46 -> 107
+    //   64: ldc 98
+    //   66: iconst_2
+    //   67: new 26	java/lang/StringBuilder
+    //   70: dup
+    //   71: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   74: ldc 100
+    //   76: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: aload_1
+    //   80: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: ldc 102
+    //   85: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: iload_0
+    //   89: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   92: ldc 107
+    //   94: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: iload_3
+    //   98: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: getstatic 24	bile:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   110: aload_1
+    //   111: invokevirtual 114	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   114: pop
+    //   115: ldc 2
+    //   117: monitorexit
+    //   118: return
+    //   119: aload 7
+    //   121: iconst_1
+    //   122: putfield 117	bili:jdField_a_of_type_Boolean	Z
+    //   125: aload 7
+    //   127: iload_0
+    //   128: putfield 120	bili:jdField_a_of_type_Int	I
+    //   131: goto -16 -> 115
+    //   134: astore_1
+    //   135: ldc 2
+    //   137: monitorexit
+    //   138: aload_1
+    //   139: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	140	0	paramInt1	int
+    //   0	140	1	paramString1	String
+    //   0	140	2	paramString2	String
+    //   0	140	3	paramInt2	int
+    //   0	140	4	paramInt3	int
+    //   5	3	5	d	double
+    //   23	103	7	localbili	bili
+    // Exception table:
+    //   from	to	target	type
+    //   7	25	134	finally
+    //   30	107	134	finally
+    //   107	115	134	finally
+    //   119	131	134	finally
+  }
+  
+  public static void a(Context paramContext, bilb parambilb, String paramString, bila parambila)
+  {
+    if ((bili)jdField_a_of_type_JavaUtilHashMap.get(parambilb.jdField_a_of_type_JavaLangString) == null) {
+      b(paramContext, parambilb, paramString, parambila);
+    }
+    ((bili)jdField_a_of_type_JavaUtilHashMap.get(parambilb.jdField_a_of_type_JavaLangString)).jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.c();
+  }
+  
+  public static void a(Context paramContext, bilb parambilb, String paramString, bila parambila, bilg parambilg)
+  {
+    bili localbili = (bili)jdField_a_of_type_JavaUtilHashMap.get(parambilb.jdField_a_of_type_JavaLangString);
+    if (localbili != null) {
+      localbili.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.jdField_a_of_type_Boolean = false;
+    }
+    localbili = new bili();
+    localbili.jdField_a_of_type_Bilb = parambilb;
+    localbili.jdField_a_of_type_Bilg = parambilg;
+    localbili.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread = new QQVoiceChangerThread(paramContext, parambilb, parambilg, paramString, parambila);
+    jdField_a_of_type_JavaUtilHashMap.put(parambilb.jdField_a_of_type_JavaLangString, localbili);
+    localbili.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.start();
+  }
+  
+  public static void a(bilb parambilb)
+  {
+    bili localbili = (bili)jdField_a_of_type_JavaUtilHashMap.get(parambilb.jdField_a_of_type_JavaLangString);
+    if (localbili != null)
     {
+      localbili.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.d();
+      jdField_a_of_type_JavaUtilHashMap.remove(parambilb.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public static boolean a(String paramString, bilj parambilj)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "queryStateByPath called path=" + paramString);
+        }
+        bili localbili = (bili)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localbili == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VoiceChangeManager", 2, "no task path=" + paramString);
+          }
+          bool = false;
+          return bool;
+        }
+        if (localbili.jdField_a_of_type_Boolean)
+        {
+          bilk.a(paramString, localbili.jdField_a_of_type_Bilb.jdField_a_of_type_JavaLangString, localbili.jdField_a_of_type_Bilb.f);
+          jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+          parambilj.a(paramString, localbili.jdField_a_of_type_Bilb.e, localbili.jdField_a_of_type_Int);
+          if (QLog.isColorLevel()) {
+            QLog.d("VoiceChangeManager", 2, "queryStateByPath onCompressFinished filePath=" + paramString + " time=" + localbili.jdField_a_of_type_Int + " voiceType=" + localbili.jdField_a_of_type_Bilb.e);
+          }
+        }
+        else
+        {
+          localbili.jdField_a_of_type_Bilj = parambilj;
+        }
+      }
+      finally {}
+      boolean bool = true;
+    }
+  }
+  
+  public static void b(Context paramContext, bilb parambilb, String paramString, bila parambila)
+  {
+    a(paramContext, parambilb, paramString, parambila, bilg.a());
+  }
+  
+  public static void b(bilb parambilb)
+  {
+    bili localbili = (bili)jdField_a_of_type_JavaUtilHashMap.get(parambilb.jdField_a_of_type_JavaLangString);
+    if (localbili != null)
+    {
+      localbili.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.jdField_a_of_type_Boolean = false;
+      jdField_a_of_type_JavaUtilHashMap.remove(parambilb.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public boolean a(ArrayList<bilc> paramArrayList, JSONObject paramJSONObject)
+  {
+    boolean bool = biki.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), "VoiceChangeManager", false);
+    if (!bool)
+    {
+      jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir().getAbsolutePath() + File.separator + "voiceChange" + File.separator;
+      QLog.d("VoiceChangeManager", 2, "preCheckData start haveSDCard:" + bool + ", path=" + jdField_a_of_type_JavaLangString);
+    }
+    Object localObject1 = new File(jdField_a_of_type_JavaLangString);
+    if ((!((File)localObject1).exists()) || (!((File)localObject1).isDirectory())) {
+      ((File)localObject1).mkdirs();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceChangeManager", 2, "preCheckData start");
+    }
+    localObject1 = paramJSONObject;
+    if (paramJSONObject == null) {
+      localObject1 = VasQuickUpdateManager.getJSONFromLocal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "changeVoice_json", false, null);
+    }
+    int[] arrayOfInt = ListenChangeVoicePanel.a;
+    if (localObject1 == null)
+    {
+      QLog.e("VoiceChangeManager", 1, "preCheckData null == xydata");
+      return false;
+    }
+    long l1;
+    int k;
+    Object localObject3;
+    label339:
+    Object localObject2;
+    try
+    {
+      l1 = ((JSONObject)localObject1).optLong("timestamp", 0L);
+      long l2 = System.currentTimeMillis() / 1000L;
+      JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("VoiceChangeModels");
+      k = 0;
+      if (k >= localJSONArray.length()) {
+        break label1129;
+      }
+      localObject3 = localJSONArray.getJSONObject(k);
+      if ((localObject3 == null) || (((JSONObject)localObject3).getJSONArray("baseInfo") == null) || (((JSONObject)localObject3).getJSONArray("baseInfo").getJSONObject(0) == null) || (((JSONObject)localObject3).getJSONArray("operationInfo") == null))
+      {
+        QLog.e("VoiceChangeManager", 1, "preCheckData JsonErr:i=" + k + ", timestamp:" + l1);
+        break label1363;
+      }
+      localObject4 = ((JSONObject)localObject3).getJSONArray("operationInfo");
+      paramJSONObject = null;
       i = 0;
-      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label53;
+      if (i < ((JSONArray)localObject4).length())
+      {
+        localObject2 = ((JSONObject)localObject3).getJSONArray("operationInfo").getJSONObject(i);
+        if ((localObject2 == null) || (!((JSONObject)localObject2).has("platformId"))) {
+          break label1381;
+        }
+        j = ((JSONObject)localObject2).getInt("platformId");
+        label388:
+        paramJSONObject = (JSONObject)localObject2;
+        if (j == 0) {
+          break label1374;
+        }
+        paramJSONObject = (JSONObject)localObject2;
+        if (j == 2) {
+          break label1374;
+        }
+        if (!QLog.isColorLevel()) {
+          break label1372;
+        }
+        QLog.d("VoiceChangeManager", 2, "preCheckData continue platformId=" + j + ", i=" + k + ", timestamp:" + l1 + ", o=" + i);
+        break label1372;
       }
-      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
+      if (paramJSONObject != null) {
+        break label1357;
+      }
+      localObject2 = new JSONObject();
+      if (!QLog.isColorLevel()) {
+        break label1387;
+      }
+      QLog.d("VoiceChangeManager", 2, "preCheckData continue null == itemJsonOpera, i=" + k + ", timestamp:" + l1);
     }
+    catch (Exception paramArrayList)
+    {
+      label533:
+      QLog.e("VoiceChangeManager", 1, "preCheckData jsonEx:" + paramArrayList.getMessage());
+    }
+    Object localObject4 = ((JSONObject)localObject3).getJSONArray("baseInfo").getJSONObject(0);
+    int j = ((JSONObject)localObject4).getInt("voiceID");
+    int i = 6;
     for (;;)
     {
-      if (i >= 0)
+      if (i < arrayOfInt.length)
       {
-        return this.jdField_a_of_type_ArrayOfInt[i];
+        if (arrayOfInt[i] == j)
+        {
+          label576:
+          if (i < 0)
+          {
+            if (!QLog.isColorLevel()) {
+              break label1363;
+            }
+            QLog.d("VoiceChangeManager", 2, "preCheckData not in VOICE_TYPES[] out:i=" + k + ", timestamp:" + l1);
+            break label1363;
+            this.jdField_a_of_type_Biht.onDone(null);
+            return true;
+          }
+        }
+        else
+        {
+          label657:
+          i += 1;
+          continue;
+        }
+        if (paramArrayList == null) {
+          break label1390;
+        }
+        paramJSONObject = (bilc)paramArrayList.get(i);
+        label687:
+        if (paramJSONObject == null)
+        {
+          if (!QLog.isColorLevel()) {
+            break label1363;
+          }
+          QLog.d("VoiceChangeManager", 2, "preCheckData null == voiceChangeData out:i=" + k + ", timestamp:" + l1);
+          break label1363;
+        }
+        if (!((JSONObject)localObject2).has("isShow")) {
+          break label1395;
+        }
+        j = ((JSONObject)localObject2).getInt("isShow");
+        label759:
+        i = j;
+        if (j != 0)
+        {
+          i = j;
+          if (((JSONObject)localObject2).has("QQVersion"))
+          {
+            i = j;
+            if (bhyh.a(((JSONObject)localObject2).getString("QQVersion"), "8.4.5"))
+            {
+              j = 0;
+              i = j;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("VoiceChangeManager", 2, "preCheckData Version out:i=" + k + ", timestamp:" + l1);
+                i = j;
+              }
+            }
+          }
+        }
+        if (i == 0)
+        {
+          paramJSONObject.jdField_b_of_type_Int = i;
+          break label1363;
+        }
+        if (!((JSONObject)localObject2).has("isEnable")) {
+          break label1406;
+        }
+        if (((JSONObject)localObject2).getInt("isEnable") != 1) {
+          break label1401;
+        }
+        i = 2;
+        label891:
+        localObject3 = ((JSONObject)localObject4).getString("icon");
+        if (TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          QLog.e("VoiceChangeManager", 1, "preCheckData url Error null:");
+          label918:
+          paramJSONObject.jdField_b_of_type_Int = i;
+          if (1 != i) {
+            break label1050;
+          }
+          paramJSONObject.d = 1;
+          paramJSONObject.c = 0;
+          if (!TextUtils.isEmpty(((JSONObject)localObject4).getString("name"))) {
+            break label1103;
+          }
+          localObject2 = paramJSONObject.jdField_a_of_type_JavaLangString;
+          label958:
+          paramJSONObject.jdField_a_of_type_JavaLangString = ((String)localObject2);
+          if (!TextUtils.isEmpty(((JSONObject)localObject4).getString("description"))) {
+            break label1116;
+          }
+        }
+        label1050:
+        label1070:
+        label1095:
+        label1103:
+        label1116:
+        for (localObject2 = paramJSONObject.jdField_b_of_type_JavaLangString;; localObject2 = ((JSONObject)localObject4).getString("description"))
+        {
+          paramJSONObject.jdField_b_of_type_JavaLangString = ((String)localObject2);
+          paramJSONObject.jdField_a_of_type_Bild.jdField_a_of_type_JavaLangString = ((String)localObject3);
+          break label1363;
+          localObject3 = bhwl.jdField_b_of_type_JavaLangString + (String)localObject3;
+          if (this.jdField_a_of_type_JavaUtilArrayList.contains(localObject3)) {
+            break label1409;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+          break label1409;
+          if (!((JSONObject)localObject2).has("feeType")) {
+            break label1412;
+          }
+          i = ((JSONObject)localObject2).getInt("feeType");
+          paramJSONObject.d = i;
+          if (!((JSONObject)localObject2).has("tag")) {
+            break label1417;
+          }
+          i = ((JSONObject)localObject2).getInt("tag");
+          paramJSONObject.c = i;
+          break;
+          localObject2 = ((JSONObject)localObject4).getString("name");
+          break label958;
+        }
+        label1129:
+        if ((TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[0])) || (TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[1])) || (TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[2])))
+        {
+          paramArrayList = ((JSONObject)localObject1).getJSONArray("commmonData");
+          if (paramArrayList == null) {
+            break label1429;
+          }
+        }
+      }
+    }
+    label1409:
+    label1412:
+    label1417:
+    label1429:
+    for (paramArrayList = paramArrayList.getJSONObject(0);; paramArrayList = null)
+    {
+      if (paramArrayList != null)
+      {
+        paramJSONObject = new String[3];
+        paramJSONObject[0] = "vipIcon";
+        paramJSONObject[1] = "svipIcon";
+        paramJSONObject[2] = "activityIcon";
+        i = 0;
+      }
+      for (;;)
+      {
+        if (i < paramJSONObject.length)
+        {
+          localObject1 = paramArrayList.getJSONObject(paramJSONObject[i]);
+          if (localObject1 != null)
+          {
+            localObject1 = ((JSONObject)localObject1).getString("src");
+            if (TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              QLog.e("VoiceChangeManager", 1, "preCheckData common url Error null:" + paramJSONObject[i]);
+            }
+            else
+            {
+              localObject1 = bhwl.jdField_b_of_type_JavaLangString + (String)localObject1;
+              if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject1)) {
+                this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+              }
+              jdField_a_of_type_ArrayOfJavaLangString[i] = localObject1;
+            }
+          }
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            break label657;
+          }
+          QLog.d("VoiceChangeManager", 2, "preCheckData run ok");
+          break label657;
+          i = -1;
+          break label576;
+          label1357:
+          localObject2 = paramJSONObject;
+          break label533;
+          label1363:
+          k += 1;
+          break;
+          label1372:
+          paramJSONObject = null;
+          label1374:
+          i += 1;
+          break label339;
+          label1381:
+          j = -1;
+          break label388;
+          label1387:
+          break label533;
+          label1390:
+          paramJSONObject = null;
+          break label687;
+          label1395:
+          j = 2;
+          break label759;
+          label1401:
+          i = 1;
+          break label891;
+          label1406:
+          break label891;
+          break label918;
+          i = 1;
+          break label1070;
+          i = 0;
+          break label1095;
+        }
         i += 1;
-        break;
       }
-      return -1;
-      return -1;
-      label53:
-      i = -1;
     }
   }
   
-  protected void a()
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Object localObject1 = this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_Bipa.a();
-    bisy.c(DeviceFriendListOpenFrame.jdField_a_of_type_JavaLangString, "-->start constructHashStruct()");
-    Object localObject2 = ((List)localObject1).iterator();
-    if (((Iterator)localObject2).hasNext())
-    {
-      Friend localFriend = (Friend)((Iterator)localObject2).next();
-      if ((localFriend.f == null) || (localFriend.f.length() == 0))
-      {
-        localObject1 = "#";
-        label81:
-        i = ((String)localObject1).charAt(0);
-        if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
-          break label186;
-        }
-      }
-      label186:
-      for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "#")
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1) == null) {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).add(localFriend);
-        break;
-        localObject1 = localFriend.f.substring(0, 1);
-        break label81;
-      }
-    }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
-      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
-      }
-    }
-    if (((LinkedHashMap)localObject1).get("#") != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
-    }
-    ((LinkedHashMap)localObject1).clear();
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfInt[0] = 0;
-    int i = 1;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      localObject2 = this.jdField_a_of_type_ArrayOfInt;
-      int j = localObject2[i];
-      int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
-      localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
-      i += 1;
-    }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    i = 0;
-    while (((Iterator)localObject1).hasNext())
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
-      i += 1;
-    }
-    bisy.c(DeviceFriendListOpenFrame.jdField_a_of_type_JavaLangString, "-->end constructHashStruct()");
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    paramInt = i;
-    if (i < 0) {
-      paramInt = -(i + 1) - 1;
-    }
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfJavaLangString.length)) {
-      return;
-    }
-    ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
-  public void b()
-  {
-    a();
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
-      return 0;
-    }
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    if (i >= 0) {
-      return null;
-    }
-    i = -(i + 1) - 1;
-    List localList = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    paramInt = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
-    if ((paramInt >= 0) && (paramInt < localList.size())) {
-      return localList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    View localView;
-    Object localObject;
-    label192:
-    label234:
-    Bitmap localBitmap;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562867, paramViewGroup, false);
-      paramView = new bilf();
-      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376678));
-      paramView.c = ((TextView)localView.findViewById(2131379723));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131364466));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368138));
-      paramView.d = ((TextView)localView.findViewById(2131371539));
-      localView.setTag(paramView);
-      if (i >= 0) {
-        break label465;
-      }
-      i = -(i + 1) - 1;
-      localObject = (Friend)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      if (!this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_Bipa.a(((Friend)localObject).jdField_a_of_type_JavaLangString)) {
-        break label416;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      if ((this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a == null) || (!this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.contains(((Friend)localObject).jdField_a_of_type_JavaLangString))) {
-        break label427;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      if ((((Friend)localObject).d == null) || ("".equals(((Friend)localObject).d))) {
-        ((Friend)localObject).d = biph.a(this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), ((Friend)localObject).jdField_a_of_type_JavaLangString);
-      }
-      paramView.jdField_b_of_type_JavaLangString = ((Friend)localObject).d;
-      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      paramView.c.setVisibility(8);
-      localBitmap = bipe.a().a(((Friend)localObject).d);
-      if (localBitmap != null) {
-        break label438;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840264);
-      bipe.a().a(((Friend)localObject).d, this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame);
-      label347:
-      if ((((Friend)localObject).c != null) && (!"".equals(((Friend)localObject).c))) {
-        break label450;
-      }
-      paramView.d.setText(((Friend)localObject).jdField_b_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bilf)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label416:
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      break label192;
-      label427:
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      break label234;
-      label438:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      break label347;
-      label450:
-      paramView.d.setText(((Friend)localObject).c);
-      continue;
-      label465:
-      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      paramView.c.setVisibility(0);
-      paramView.c.setText(String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]));
-    }
-  }
+  public void onDestroy() {}
 }
 
 

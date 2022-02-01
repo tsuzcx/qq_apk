@@ -1,45 +1,66 @@
-import android.content.Intent;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.QzoneExternalRequest;
-import cooperation.vip.manager.CommonRequestManager.1;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import mqq.os.MqqHandler;
+import android.os.FileObserver;
+import android.os.Handler;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public abstract class bmuj
-  extends MSFServlet
+class bmuj
+  extends FileObserver
 {
-  protected long a()
+  bmuj(bmug parambmug, String paramString, int paramInt)
   {
-    return 10000L;
+    super(paramString, paramInt);
   }
   
-  public abstract QzoneExternalRequest a(Intent paramIntent);
-  
-  public void a(Intent paramIntent)
+  public void onEvent(int paramInt, String paramString)
   {
-    ThreadManager.getSubThreadHandler().post(new CommonRequestManager.1(this, paramIntent));
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    QzoneExternalRequest localQzoneExternalRequest = a(paramIntent);
-    if (localQzoneExternalRequest == null)
+    if (!"qzone_startup_monitor".equals(paramString))
     {
-      QLog.i("CommonRequestManager", 1, " onSend request = null");
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneStartupMonitor", 2, "path:" + paramString + ",非监控文件：" + "qzone_startup_monitor");
+      }
       return;
     }
-    byte[] arrayOfByte = localQzoneExternalRequest.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
+    switch (paramInt & 0xFFF)
     {
-      QLog.e("CommonRequestManager", 1, "onSend request encode result is null.cmd=" + localQzoneExternalRequest.uniKey());
-      paramIntent = new byte[4];
+    default: 
+      return;
+    case 256: 
+      paramInt = QzoneConfig.getInstance().getConfig("QZoneSetting", "startupFailTimeout", 60000);
+      bmug.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneStartupMonitor", 2, "如果" + paramInt + "ms 后，未收到启动成功的消息，则认为启动失败");
+      }
+      bmug.a(this.a).sendEmptyMessageDelayed(1, paramInt);
+      return;
     }
-    paramPacket.setTimeout(a());
-    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneExternalRequest.uniKey());
-    paramPacket.putSendData(paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneStartupMonitor", 2, "启动成功，清理超时，并校验odex和上报");
+    }
+    bmug.a(this.a).removeMessages(1);
+    paramString = bmug.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
+    if (paramString != null) {}
+    for (paramInt = ((Integer)paramString.first).intValue();; paramInt = 0)
+    {
+      bmug.a(this.a, true);
+      bmug.a(this.a, paramInt, bmug.a(this.a), LocalMultiProcConfig.getInt("key_recovery_count", 0));
+      LocalMultiProcConfig.putInt("key_recovery_count", 0);
+      return;
+    }
+  }
+  
+  public void startWatching()
+  {
+    super.startWatching();
+    QLog.i("QZoneStartupMonitor", 1, "startWatching");
+  }
+  
+  public void stopWatching()
+  {
+    super.stopWatching();
+    QLog.i("QZoneStartupMonitor", 1, "stopWatching");
   }
 }
 

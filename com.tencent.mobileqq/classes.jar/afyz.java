@@ -1,26 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.IntimateInfo;
-
-class afyz
-  implements DialogInterface.OnClickListener
+public class afyz
 {
-  afyz(afyw paramafyw) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if ((!TextUtils.isEmpty(this.a.a)) && (afyw.a(this.a) != null))
-    {
-      if (afyw.a(this.a) == 1) {
-        afyw.b(this.a, this.a.a);
-      }
-    }
-    else {
-      return;
-    }
-    afyw.a(this.a, this.a.a, afyw.a(this.a).maskType);
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
 }
 
 

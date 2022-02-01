@@ -1,23 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class bgbs
-  implements Animator.AnimatorListener
 {
-  public bgbs(PhantomPicView.1 param1) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.this$0.c();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public ByteArrayOutputStream a;
+  public File a;
+  public FileOutputStream a;
+  public String a;
 }
 
 

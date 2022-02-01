@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import bgtn;
+import bhtq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
@@ -78,7 +78,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public boolean isMoveToDeleteArea(int paramInt1, int paramInt2)
   {
-    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3600(this.this$1.this$0).getBottom() - bgtn.a(60.0F);
+    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3700(this.this$1.this$0).getBottom() - bhtq.a(60.0F);
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -89,7 +89,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public MiniAppDesktopAdapter.MicroAppViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3400(this.this$1.this$0)).inflate(2131562419, paramViewGroup, false));
+    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3500(this.this$1.this$0)).inflate(2131562460, paramViewGroup, false));
   }
   
   public void onDragFinish(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -124,11 +124,11 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
           if (paramInt1 > 0)
           {
             i = paramInt1;
-            localObject1 = MiniAppDesktopAdapter.access$3700(this.this$1.this$0).findChildViewUnder(i, this.this$1.mRecycleView.getTop() + paramInt2);
+            localObject1 = MiniAppDesktopAdapter.access$3800(this.this$1.this$0).findChildViewUnder(i, this.this$1.mRecycleView.getTop() + paramInt2);
             if ((localObject1 == null) || (!(localObject1 instanceof DragRecyclerView))) {
               break label386;
             }
-            localObject1 = MiniAppDesktopAdapter.access$3800(this.this$1.this$0).getChildViewHolder((View)localObject1);
+            localObject1 = MiniAppDesktopAdapter.access$3900(this.this$1.this$0).getChildViewHolder((View)localObject1);
             if (!(localObject1 instanceof MiniAppDesktopAdapter.DesktopModuleListViewHolder)) {
               break label386;
             }
@@ -149,7 +149,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
           }
           else
           {
-            i = bgtn.a(30.0F) + paramInt1;
+            i = bhtq.a(30.0F) + paramInt1;
             continue;
           }
           Object localObject1 = (DesktopAppInfo)this.mData.get(this.mDragIndex);

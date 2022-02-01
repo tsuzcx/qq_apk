@@ -1,28 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge;
 
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
-import kotlin.jvm.internal.Lambda;
+import kotlin.jvm.internal.FunctionReference;
+import kotlin.reflect.KDeclarationContainer;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tpx;
+import tgs;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "p1", "Lorg/json/JSONObject;", "Lkotlin/ParameterName;", "name", "params", "p2", "", "callback", "invoke"}, k=3, mv={1, 1, 16})
 public final class DataBridgeInvokeHandler$register$5
-  extends Lambda
+  extends FunctionReference
   implements Function2<JSONObject, String, Unit>
 {
-  public DataBridgeInvokeHandler$register$5(tpx paramtpx)
-  {
-    super(2);
-  }
+  public DataBridgeInvokeHandler$register$5(tgs arg1) {}
   
-  public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
-  {
-    this.this$0.a().getPerformance(paramString);
-  }
+  public final String getName() {}
+  
+  public final KDeclarationContainer getOwner() {}
+  
+  public final String getSignature() {}
+  
+  public final void invoke(@Nullable JSONObject arg1, @Nullable String arg2) {}
 }
 
 

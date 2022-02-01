@@ -1,6 +1,24 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForTofuNicePics;
+
 class ahuw
+  extends agen
 {
-  private static final ahuu a = new ahuu(null);
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  MessageForTofuNicePics jdField_a_of_type_ComTencentMobileqqDataMessageForTofuNicePics;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
+  
+  ahuw(ahuv paramahuv) {}
 }
 
 

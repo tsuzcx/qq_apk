@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import bajj;
-import bajk;
+import bbcc;
+import bbcd;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class IceBreakingMng$2
   implements Runnable
 {
-  public IceBreakingMng$2(bajk parambajk, List paramList) {}
+  public IceBreakingMng$2(bbcd parambbcd, List paramList) {}
   
   public void run()
   {
-    if ((bajk.b(this.this$0) != null) && (bajk.b(this.this$0).get() != null)) {
-      ((bajj)bajk.b(this.this$0).get()).a(true, this.a);
+    if ((bbcd.b(this.this$0) != null) && (bbcd.b(this.this$0).get() != null)) {
+      ((bbcc)bbcd.b(this.this$0).get()).a(true, this.a);
     }
   }
 }

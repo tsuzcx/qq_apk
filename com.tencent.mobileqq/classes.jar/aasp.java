@@ -1,42 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 public class aasp
+  extends anyu
 {
-  public String a;
-  public ArrayList<Integer> a;
-  public ArrayList<Object> b;
+  public aasp(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public aasp(JSONObject paramJSONObject)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    try
-    {
-      if (paramJSONObject.has("name")) {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-      }
-      if (paramJSONObject.has("packageIDs"))
-      {
-        paramJSONObject = paramJSONObject.optJSONArray("packageIDs");
-        int j = paramJSONObject.length();
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        this.b = new ArrayList();
-        int i = 0;
-        while (i < j)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopGiftAioPanelData", 2, "PersonalTabItemInfo json:", paramJSONObject);
-      }
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 

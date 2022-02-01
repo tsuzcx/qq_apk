@@ -1,196 +1,304 @@
-import android.graphics.Matrix;
-import android.graphics.Point;
-import android.graphics.PointF;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
-import android.graphics.RectF;
-import com.tencent.mobileqq.ocr.view.gesture.Settings;
-import com.tencent.mobileqq.ocr.view.gesture.Settings.Fit;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.1;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.3;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ayjq
+  extends abkf
 {
-  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private static final Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private static final float[] jdField_a_of_type_ArrayOfFloat = new float[2];
-  private float jdField_a_of_type_Float;
-  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
-  private float jdField_b_of_type_Float;
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private float c;
+  protected Context a;
+  public PicInfo a;
+  int e;
   
-  public ayjq(Settings paramSettings)
+  public ayjq(Context paramContext, PicInfo paramPicInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo = paramPicInfo;
   }
   
-  private void a(Rect paramRect)
+  public int a()
   {
-    ayjw.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsPoint);
-    jdField_a_of_type_ArrayOfFloat[0] = jdField_a_of_type_AndroidGraphicsPoint.x;
-    jdField_a_of_type_ArrayOfFloat[1] = jdField_a_of_type_AndroidGraphicsPoint.y;
-    if (!ayju.a(this.jdField_a_of_type_Float, 0.0F))
-    {
-      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
-      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
-    }
-    this.jdField_b_of_type_AndroidGraphicsRectF.left = (jdField_a_of_type_ArrayOfFloat[0] - paramRect.width());
-    this.jdField_b_of_type_AndroidGraphicsRectF.right = jdField_a_of_type_ArrayOfFloat[0];
-    this.jdField_b_of_type_AndroidGraphicsRectF.top = (jdField_a_of_type_ArrayOfFloat[1] - paramRect.height());
-    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = jdField_a_of_type_ArrayOfFloat[1];
+    return this.e;
   }
   
-  private void a(RectF paramRectF, Rect paramRect)
+  public View a(int paramInt, Handler paramHandler, ayjs paramayjs)
   {
-    if (paramRectF.width() < paramRect.width())
-    {
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = (paramRectF.left - (paramRect.width() - paramRectF.width()));
-      this.jdField_b_of_type_AndroidGraphicsRectF.right = paramRectF.left;
+    File localFile = null;
+    URL localURL = null;
+    URLDrawable localURLDrawable = null;
+    boolean bool2 = true;
+    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
+      return localURLImageView;
     }
-    while (paramRectF.height() < paramRect.height())
+    Object localObject1;
+    Object localObject3;
+    label258:
+    long l;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c))
     {
-      this.jdField_b_of_type_AndroidGraphicsRectF.top = (paramRectF.top - (paramRect.height() - paramRectF.height()));
-      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = paramRectF.top;
-      return;
-      localRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
-      RectF localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
-      f = paramRect.left;
-      localRectF2.right = f;
-      localRectF1.left = f;
+      localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c), null);
+      localObject3 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+      ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
+      ((URLDrawable.URLDrawableOptions)localObject3).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {
+        localObject1 = localURLDrawable;
+      }
     }
-    paramRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-    RectF localRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
-    float f = paramRect.top;
-    localRectF1.bottom = f;
-    paramRectF.top = f;
-  }
-  
-  private void b(RectF paramRectF, Rect paramRect)
-  {
-    if (paramRectF.width() < paramRect.width()) {
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = (paramRectF.left - (paramRect.width() - paramRectF.width()));
-    }
-    for (this.jdField_b_of_type_AndroidGraphicsRectF.right = paramRectF.left; paramRectF.height() < paramRect.height(); this.jdField_b_of_type_AndroidGraphicsRectF.right = (paramRectF.right - paramRect.width()))
+    else
     {
-      this.jdField_b_of_type_AndroidGraphicsRectF.top = (paramRectF.top - (paramRect.height() - paramRectF.height()));
-      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = paramRectF.top;
-      return;
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = paramRectF.left;
-    }
-    this.jdField_b_of_type_AndroidGraphicsRectF.top = paramRectF.top;
-    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (paramRectF.bottom - paramRect.height());
-  }
-  
-  private void c(RectF paramRectF, Rect paramRect)
-  {
-    this.jdField_b_of_type_AndroidGraphicsRectF.left = (paramRectF.left - paramRect.width());
-    this.jdField_b_of_type_AndroidGraphicsRectF.right = paramRectF.right;
-    this.jdField_b_of_type_AndroidGraphicsRectF.top = (paramRectF.top - paramRect.height());
-    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = paramRectF.bottom;
-  }
-  
-  public ayjq a(ayju paramayju)
-  {
-    Object localObject = jdField_a_of_type_AndroidGraphicsRectF;
-    ayjw.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsRect);
-    ((RectF)localObject).set(jdField_a_of_type_AndroidGraphicsRect);
-    Rect localRect = jdField_a_of_type_AndroidGraphicsRect;
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a() == Settings.Fit.OUTSIDE)
-    {
-      this.jdField_a_of_type_Float = paramayju.d();
-      this.jdField_b_of_type_Float = ((RectF)localObject).centerX();
-      this.c = ((RectF)localObject).centerY();
-      if (!ayju.a(this.jdField_a_of_type_Float, 0.0F))
+      try
       {
-        jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
-        jdField_a_of_type_AndroidGraphicsMatrix.mapRect((RectF)localObject);
+        localFile = new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c);
+        localObject1 = localURLDrawable;
+        localURL = localFile.toURL();
+        localObject1 = localURLDrawable;
+        localURLDrawable = URLDrawable.getDrawable(new URL("nearbylocalimage", localURL.getAuthority(), localURL.getFile()), (URLDrawable.URLDrawableOptions)localObject3);
+        localObject1 = localURLDrawable;
+        localURLImageView.setImageDrawable(localURLDrawable);
+        localObject1 = localURLDrawable;
+        if (!localFile.exists()) {
+          break label441;
+        }
+        localObject1 = localURLDrawable;
+        bool1 = localFile.isFile();
+        if (!bool1) {
+          break label441;
+        }
+        bool1 = true;
+        localObject1 = localURLDrawable;
       }
-      paramayju.a(jdField_a_of_type_AndroidGraphicsMatrix);
-      if (!ayju.a(this.jdField_a_of_type_Float, 0.0F)) {
-        jdField_a_of_type_AndroidGraphicsMatrix.postRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
-      }
-      ayjw.a(jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, localRect);
-      switch (ayjr.a[this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a().ordinal()])
+      catch (MalformedURLException localMalformedURLException1)
       {
-      default: 
-        this.jdField_b_of_type_AndroidGraphicsRectF.set(-5.368709E+008F, -5.368709E+008F, 5.368709E+008F, 5.368709E+008F);
+        for (;;)
+        {
+          label315:
+          if (QLog.isDevelopLevel()) {
+            localMalformedURLException1.printStackTrace();
+          }
+          bool1 = false;
+        }
       }
+      if ((localObject1 == null) || (((URLDrawable)localObject1).getStatus() == 1) || (((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 4)) {
+        break label627;
+      }
+      localURLImageView.setURLDrawableDownListener(new ayjr(this, paramayjs, paramInt));
+      if (!bool1) {
+        break label619;
+      }
+      l = 1000L;
+      paramHandler.postDelayed(new PicBrowserImage.3(this, (URLDrawable)localObject1, paramayjs, paramInt), l);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a() != Settings.Fit.OUTSIDE)
+      label441:
+      Object localObject2;
+      for (;;)
       {
-        paramayju.a(jdField_a_of_type_AndroidGraphicsMatrix);
-        paramayju = jdField_a_of_type_AndroidGraphicsRectF;
-        paramayju.set(0.0F, 0.0F, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e(), this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f());
-        jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramayju);
-        localObject = jdField_a_of_type_ArrayOfFloat;
-        jdField_a_of_type_ArrayOfFloat[1] = 0.0F;
-        localObject[0] = 0.0F;
-        jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
-        this.jdField_b_of_type_AndroidGraphicsRectF.offset(jdField_a_of_type_ArrayOfFloat[0] - paramayju.left, jdField_a_of_type_ArrayOfFloat[1] - paramayju.top);
+        return localURLImageView;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b))
+        {
+          String str = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b.replaceFirst("http", "nearbyimage");
+          if (beqz.b(str))
+          {
+            localObject3 = URLDrawable.getDrawable(str, null);
+            localObject1 = localObject3;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("PicBrowser", 2, "PicBrowserGalleryAdapter getView loadingDrawble is: " + str);
+            localObject1 = localObject3;
+            break;
+          }
+          localObject1 = beyq.a;
+          break;
+        }
+        localObject1 = beyq.a;
+        break;
+        bool1 = false;
+        localObject1 = localURLDrawable;
+        break label258;
+        localObject2 = localURL;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a))
+        {
+          localObject1 = localFile;
+          try
+          {
+            localObject2 = bevg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+            localObject1 = localFile;
+            this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a = ((URL)localObject2).toString();
+            localObject1 = localFile;
+            localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
+            localObject1 = localObject2;
+            ((URLDrawable)localObject2).setDownloadListener(new axuh(this.jdField_a_of_type_AndroidContentContext, "actNearbyPicBrowser"));
+            localObject1 = localObject2;
+            localURLImageView.setImageDrawable((Drawable)localObject2);
+            localObject1 = localObject2;
+            bool1 = beqz.b(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+            localObject1 = localObject2;
+          }
+          catch (MalformedURLException localMalformedURLException2)
+          {
+            localObject2 = localObject1;
+            if (QLog.isDevelopLevel())
+            {
+              localMalformedURLException2.printStackTrace();
+              localObject2 = localObject1;
+            }
+          }
+        }
       }
-      return this;
-      this.jdField_a_of_type_Float = 0.0F;
-      this.c = 0.0F;
-      this.jdField_b_of_type_Float = 0.0F;
+      bool1 = false;
+      localObject1 = localObject2;
+      break label258;
+      label619:
+      l = 300L;
+      break label315;
+      label627:
+      if (localObject1 != null) {
+        break label643;
+      }
+      paramayjs.a(paramInt, false);
+    }
+    label643:
+    if (((URLDrawable)localObject1).getStatus() == 1) {}
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramayjs.a(paramInt, bool1);
       break;
-      a((RectF)localObject, localRect);
-      continue;
-      b((RectF)localObject, localRect);
-      continue;
-      c((RectF)localObject, localRect);
-      continue;
-      a(localRect);
     }
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public void a()
   {
-    jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
-    jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
-    if (this.jdField_a_of_type_Float != 0.0F)
-    {
-      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
-      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo != null) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a;
     }
-    this.jdField_b_of_type_AndroidGraphicsRectF.union(jdField_a_of_type_ArrayOfFloat[0], jdField_a_of_type_ArrayOfFloat[1]);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, PointF paramPointF)
-  {
-    jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
-    jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
-    if (this.jdField_a_of_type_Float != 0.0F)
+    try
     {
-      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
-      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
-    }
-    jdField_a_of_type_ArrayOfFloat[0] = ayjx.a(jdField_a_of_type_ArrayOfFloat[0], this.jdField_b_of_type_AndroidGraphicsRectF.left - paramFloat3, this.jdField_b_of_type_AndroidGraphicsRectF.right + paramFloat3);
-    jdField_a_of_type_ArrayOfFloat[1] = ayjx.a(jdField_a_of_type_ArrayOfFloat[1], this.jdField_b_of_type_AndroidGraphicsRectF.top - paramFloat4, this.jdField_b_of_type_AndroidGraphicsRectF.bottom + paramFloat4);
-    if (this.jdField_a_of_type_Float != 0.0F)
-    {
-      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
-      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
-    }
-    paramPointF.set(jdField_a_of_type_ArrayOfFloat[0], jdField_a_of_type_ArrayOfFloat[1]);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, PointF paramPointF)
-  {
-    a(paramFloat1, paramFloat2, 0.0F, 0.0F, paramPointF);
-  }
-  
-  public void a(RectF paramRectF)
-  {
-    if (this.jdField_a_of_type_Float == 0.0F)
-    {
-      paramRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
+      localObject = bevg.a((String)localObject);
+      if (localObject != null)
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+        localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+        ((URLDrawable)localObject).setDownloadListener(new axuh(this.jdField_a_of_type_AndroidContentContext));
+        ThreadManager.postImmediately(new PicBrowserImage.1(this, (URLDrawable)localObject), null, true);
+      }
       return;
     }
-    jdField_a_of_type_AndroidGraphicsMatrix.setRotate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
-    jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramRectF, this.jdField_b_of_type_AndroidGraphicsRectF);
+    catch (Exception localException) {}
   }
+  
+  public void a(View paramView, int paramInt, ayjs paramayjs)
+  {
+    paramView = (URLImageView)paramView;
+    URLDrawable localURLDrawable = (URLDrawable)paramView.getDrawable();
+    if (localURLDrawable == null) {
+      return;
+    }
+    if ((localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 2))
+    {
+      int i = localURLDrawable.getProgress();
+      if (i > 0) {
+        paramayjs.b(paramInt, i / 100);
+      }
+      paramView.setMinimumHeight(10);
+      paramView.setMinimumWidth(10);
+      return;
+    }
+    if (localURLDrawable.getStatus() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramayjs.a(paramInt, bool);
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public Drawable c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
+      return null;
+    }
+    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = beyq.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = beyq.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
+    ((URLDrawable.URLDrawableOptions)localObject1).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {}
+    for (;;)
+    {
+      Object localObject4;
+      Object localObject2;
+      try
+      {
+        localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c).toURL(), (URLDrawable.URLDrawableOptions)localObject1);
+        localObject4 = b();
+        if ((localObject1 == null) || (localObject4 == null)) {
+          break;
+        }
+        this.e = a((Rect)localObject4, (Drawable)localObject1);
+        if (QLog.isColorLevel()) {
+          QLog.d("PicBrowser", 2, "getAnimationDrawable ,cutValue = " + this.e);
+        }
+        return localObject1;
+      }
+      catch (MalformedURLException localMalformedURLException1)
+      {
+        if (QLog.isDevelopLevel()) {
+          localMalformedURLException1.printStackTrace();
+        }
+        localObject2 = null;
+        continue;
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b)) {
+        try
+        {
+          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b);
+          localObject4 = new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile());
+          if (beqz.b(((URL)localObject4).toString()))
+          {
+            localObject2 = URLDrawable.getDrawable((URL)localObject4, (URLDrawable.URLDrawableOptions)localObject2);
+            continue;
+          }
+          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+          localObject2 = URLDrawable.getDrawable(new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile()), (URLDrawable.URLDrawableOptions)localObject2);
+        }
+        catch (MalformedURLException localMalformedURLException2)
+        {
+          if (QLog.isDevelopLevel()) {
+            localMalformedURLException2.printStackTrace();
+          }
+        }
+      } else {
+        Object localObject3 = null;
+      }
+    }
+  }
+  
+  public void c() {}
 }
 
 

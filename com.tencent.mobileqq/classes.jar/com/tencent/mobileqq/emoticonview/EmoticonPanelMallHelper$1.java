@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arya;
-import aryo;
+import asno;
+import asoc;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class EmoticonPanelMallHelper$1
   implements Runnable
 {
-  public EmoticonPanelMallHelper$1(aryo paramaryo, boolean paramBoolean, arya paramarya) {}
+  public EmoticonPanelMallHelper$1(asoc paramasoc, boolean paramBoolean, asno paramasno) {}
   
   public void run()
   {
     this.this$0.a.d(this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Arya != null) {
+    if (this.jdField_a_of_type_Asno != null) {
       ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.1.1(this));
     }
   }

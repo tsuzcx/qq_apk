@@ -1,43 +1,18 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class afsr
-  extends anmu
+  implements DialogInterface.OnClickListener
 {
-  public afsr(ActivateFriendView paramActivateFriendView) {}
+  public afsr(TroopInfoActivity paramTroopInfoActivity, bhpc parambhpc) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = bglf.b(ActivateFriendView.a(this.a), str, false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 0;
-    while (i < ActivateFriendView.a(this.a).size())
-    {
-      String str = bglf.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
-      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
-      i += 1;
+    TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+      this.jdField_a_of_type_Bhpc.cancel();
     }
   }
 }

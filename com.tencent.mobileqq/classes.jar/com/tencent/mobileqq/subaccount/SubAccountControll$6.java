@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.subaccount;
 
-import bddy;
+import bdwt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SubAccountControll$6
   implements Runnable
 {
-  public SubAccountControll$6(bddy parambddy, QQAppInterface paramQQAppInterface) {}
+  public SubAccountControll$6(bdwt parambdwt, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bddy.a(this.a, true);
+    bdwt.a(this.a, true);
   }
 }
 

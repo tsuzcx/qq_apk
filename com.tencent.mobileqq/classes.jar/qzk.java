@@ -1,13 +1,24 @@
-import android.view.animation.Interpolator;
+import java.util.HashMap;
 
-class qzk
-  implements Interpolator
+public class qzk
 {
-  qzk(qzi paramqzi) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
   
-  public float getInterpolation(float paramFloat)
+  public HashMap<String, String> a()
   {
-    return (float)(Math.pow(2.0D, -10.0F * paramFloat) * Math.sin((paramFloat + 0.12F) * 6.283185307179586D / -0.1800000071525574D) + 1.0D);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_vid", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_success", String.valueOf(this.jdField_a_of_type_Boolean).toLowerCase());
+    localHashMap.put("param_costTime", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("param_ret_code", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_err_info", this.jdField_b_of_type_JavaLangString);
+    localHashMap.put("param_retry", String.valueOf(this.jdField_b_of_type_Boolean));
+    return localHashMap;
   }
 }
 

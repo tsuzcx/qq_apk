@@ -1,28 +1,68 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1.1;
-import com.tencent.widget.AbsListView;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 
 public class ascx
-  implements bkhe
+  extends BitmapDrawable
 {
-  public ascx(SystemAndEmojiUniversalPanel.1.1 param1) {}
+  private float jdField_a_of_type_Float = 1920.0F;
+  private int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int b;
+  private int c;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public ascx(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, paramAbsListView);
+    super(paramResources, paramBitmap);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    super.setGravity(17);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void draw(Canvas paramCanvas)
   {
-    if ((paramInt == 0) || (paramInt == 2))
+    if (this.c >>> 24 != 0)
     {
-      URLDrawable.resume();
-      SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, this.a.jdField_a_of_type_JavaUtilList, SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0));
-      return;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    URLDrawable.pause();
+    super.draw(paramCanvas);
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    if (this.b > 0) {
+      return this.b;
+    }
+    return super.getIntrinsicHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.jdField_a_of_type_Int;
+    }
+    return super.getIntrinsicWidth();
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    }
+    super.setAlpha(paramInt);
+  }
+  
+  public void setTargetDensity(int paramInt)
+  {
+    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
+    super.setTargetDensity(paramInt);
   }
 }
 

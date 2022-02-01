@@ -1,44 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import org.json.JSONObject;
 
 public class pji
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements pks
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoSdkConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = phv.a(paramString);
-    Object localObject = paramString.keySet();
-    try
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "readinjoy_video_preplay_download_time_limit")) {
-          bmqa.j(Integer.parseInt(str2));
-        }
-      }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public pji(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void a()
   {
-    super.onWipeConfig(paramInt);
-    bmqa.j(6);
+    ozs.a(this.a.a.getContext(), oyu.n);
+    JSONObject localJSONObject = ozs.a();
+    ocd.a(null, "CliOper", "", "", "0X800845B", "0X800845B", 0, 0, ReadInJoySelfFragment.a(this.a, 13) + "", "", "", localJSONObject.toString(), false);
+    ReadInJoySelfFragment.a(this.a, 13);
   }
 }
 

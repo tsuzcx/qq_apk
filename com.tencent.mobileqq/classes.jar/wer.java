@@ -1,12 +1,6 @@
 public abstract interface wer
 {
-  public abstract void a(wcl paramwcl);
-  
-  public abstract void a(wcl paramwcl, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void e();
+  public abstract void a();
 }
 
 

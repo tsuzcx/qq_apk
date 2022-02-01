@@ -1,24 +1,22 @@
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-public class aish
-  extends nok
+public abstract interface aish
 {
-  public aish(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public abstract int a();
   
-  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
-  {
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
-      }
-      this.a.b = paramList;
-      ClassificationSearchActivity.a(this.a, true);
-    }
-  }
+  public abstract int a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(float paramFloat1, float paramFloat2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

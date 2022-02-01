@@ -1,195 +1,72 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager.TopicInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class amfh
-  extends BaseAdapter
+class amfh
+  implements aoog
 {
-  private amfi jdField_a_of_type_Amfi;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List<SignatureManager.TopicInfo> jdField_a_of_type_JavaUtilList;
-  private List<SignatureManager.TopicInfo> b;
+  protected aoof a;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public amfh(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, amfi paramamfi)
+  public amfh(amez paramamez, Context paramContext, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Amfi = paramamfi;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Aoof = new aoof(paramContext, paramAppInterface);
+    this.jdField_a_of_type_Aoof.a(this);
   }
   
-  private float a(int paramInt)
+  private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
   {
-    return Math.round(paramInt / 10000.0F * 100.0F) / 100.0F;
-  }
-  
-  private String a(SignatureManager.TopicInfo paramTopicInfo)
-  {
-    if ((paramTopicInfo == null) || ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum <= 0))) {
-      return null;
+    Object localObject;
+    if (this.jdField_a_of_type_Aoof == null) {
+      localObject = null;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramTopicInfo.friendNum > 0)
-    {
-      if (paramTopicInfo.friendNum >= 10000)
-      {
-        localStringBuilder.append(a(paramTopicInfo.friendNum));
-        localStringBuilder.append("万好友");
-      }
-    }
-    else
-    {
-      if ((paramTopicInfo.friendNum > 0) && (paramTopicInfo.totalNum > 0)) {
-        localStringBuilder.append("、");
-      }
-      if (paramTopicInfo.totalNum > 0)
-      {
-        if (paramTopicInfo.totalNum < 10000) {
-          break label168;
-        }
-        localStringBuilder.append(a(paramTopicInfo.totalNum));
-        localStringBuilder.append("万人添加该话题");
-      }
-    }
-    for (;;)
-    {
-      if ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum > 0)) {
-        localStringBuilder.append("添加该话题");
-      }
-      return localStringBuilder.toString();
-      localStringBuilder.append(paramTopicInfo.friendNum);
-      localStringBuilder.append("个好友");
-      break;
-      label168:
-      localStringBuilder.append(paramTopicInfo.totalNum);
-      localStringBuilder.append("人添加该话题");
-    }
-  }
-  
-  private String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) && (paramString.length() <= 2)) {}
-    String str;
+    Bitmap localBitmap;
     do
     {
-      return paramString;
-      str = paramString;
-      if (paramString.charAt(0) == '#') {
-        str = paramString.substring(1);
-      }
-      paramString = str;
-    } while (str.charAt(str.length() - 1) != '#');
-    return str.substring(0, str.length() - 1);
+      return localObject;
+      localBitmap = this.jdField_a_of_type_Aoof.b(paramInt1, paramString, paramInt2);
+      localObject = localBitmap;
+    } while (localBitmap != null);
+    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "requestDecodeFace, uin[" + paramString + "]");
+    this.jdField_a_of_type_Aoof.a(paramString, paramInt1, true, paramByte);
+    return bhmq.a();
   }
   
-  public SignatureManager.TopicInfo a(int paramInt)
+  public Bitmap a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return (SignatureManager.TopicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return a(paramTroopMemberInfo.memberuin, 1, (byte)0, 0);
   }
   
-  public List<SignatureManager.TopicInfo> a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a(List<SignatureManager.TopicInfo> paramList, boolean paramBoolean)
-  {
-    if (paramList != this.jdField_a_of_type_JavaUtilList) {
-      this.jdField_a_of_type_JavaUtilList = ((ArrayList)paramList);
-    }
-    for (boolean bool = true;; bool = false)
+    try
     {
-      if ((paramBoolean) && (paramList != this.b)) {
-        this.b = ((ArrayList)paramList);
-      }
-      return bool;
-    }
-  }
-  
-  public List<SignatureManager.TopicInfo> b()
-  {
-    return this.b;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    String str;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562091, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramView = new amfj();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369020));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379970));
-      paramView.b = ((TextView)localView.findViewById(2131379971));
-      localView.setTag(paramView);
-      localObject = a(paramInt);
-      if (localObject != null)
+      if (this.jdField_a_of_type_Aoof != null)
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((SignatureManager.TopicInfo)localObject).topicStr);
-        paramView.jdField_a_of_type_Int = ((SignatureManager.TopicInfo)localObject).topicId;
-        str = a((SignatureManager.TopicInfo)localObject);
-        if (!TextUtils.isEmpty(str)) {
-          break label242;
-        }
-        paramView.b.setVisibility(8);
-        label134:
-        localView.setContentDescription(anni.a(2131713716) + a(((SignatureManager.TopicInfo)localObject).topicStr) + anni.a(2131713715));
+        this.jdField_a_of_type_Aoof.d();
+        this.jdField_a_of_type_Aoof = null;
       }
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label262;
-      }
-      localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839386));
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (amfj)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label242:
-      paramView.b.setVisibility(0);
-      paramView.b.setText(str);
-      break label134;
-      label262:
-      localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839385));
+      for (;;)
+      {
+        this.jdField_a_of_type_Aoof = null;
+      }
     }
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "onDecodeTaskCompleted, uin[" + paramString + "]");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    amez.a(this.jdField_a_of_type_Amez, paramString, paramBitmap);
   }
 }
 

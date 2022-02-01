@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import android.graphics.RectF;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
-class vvq
-  implements DialogInterface.OnClickListener
+public class vvq
+  implements vvm
 {
-  vvq(vvp paramvvp, int paramInt) {}
+  public vvq(QCircleTransitionImageView paramQCircleTransitionImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public float a()
   {
-    QCircleCommentListView.a(this.jdField_a_of_type_Vvp.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(this.jdField_a_of_type_Vvp.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.jdField_a_of_type_Vvp.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.jdField_a_of_type_Vvp.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vvp.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int, QCircleCommentListView.a(this.jdField_a_of_type_Vvp.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView));
+    return (QCircleTransitionImageView.b(this.a).top + QCircleTransitionImageView.b(this.a).bottom) / 2.0F;
   }
 }
 

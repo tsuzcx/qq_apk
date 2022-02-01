@@ -1,115 +1,55 @@
-import android.annotation.TargetApi;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
-@TargetApi(14)
-class znm
+public class znm
+  extends zno
 {
-  static String a(InputStream paramInputStream)
+  public znm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
+    super(paramTroopStoryMemoriesListAdapter, paramView);
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  {
+    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(zof.d(paramTroopStoryItemInfo.publishTime));
+    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846902);
     try
     {
-      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
-      StringBuilder localStringBuilder = new StringBuilder();
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localDrawable;
+      localURLDrawableOptions.mFailedDrawable = localDrawable;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
+      paramTroopStoryItemInfo = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), localURLDrawableOptions);
+      paramTroopStoryItemInfo.setTag(bhez.b(zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
+      paramTroopStoryItemInfo.setDecodeHandler(bhez.j);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
+      paramTroopStoryItemInfo = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130839410);
+      paramTroopStoryItemInfo.setBounds(0, 0, 26, 26);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramTroopStoryItemInfo, null, null, null);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131714574));
+      ((Animatable)paramTroopStoryItemInfo).start();
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new znn(this));
+      return;
+    }
+    catch (Exception paramTroopStoryItemInfo)
+    {
       for (;;)
       {
-        String str = paramInputStream.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuilder.append(str);
-      }
-      paramInputStream = localStringBuilder.toString();
-    }
-    catch (IOException paramInputStream)
-    {
-      yqp.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
-      return null;
-    }
-    return paramInputStream;
-  }
-  
-  static void a(Process paramProcess)
-  {
-    if (paramProcess != null) {
-      paramProcess.destroy();
-    }
-  }
-  
-  static void a(zmu paramzmu)
-  {
-    if ((paramzmu != null) && (!paramzmu.a()))
-    {
-      if (paramzmu.jdField_a_of_type_JavaLangProcess != null)
-      {
-        paramzmu.jdField_a_of_type_JavaLangProcess.destroy();
-        paramzmu.jdField_a_of_type_JavaLangProcess = null;
-      }
-      if (!paramzmu.isCancelled()) {
-        paramzmu.cancel(true);
-      }
-      yqp.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramzmu.jdField_a_of_type_ArrayOfJavaLangString) });
-    }
-  }
-  
-  static boolean a(File paramFile)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFile == null) || (!paramFile.exists())) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramFile.canExecute());
-      bool1 = bool2;
-    } while (paramFile.setExecutable(true));
-    return false;
-  }
-  
-  static boolean a(Process paramProcess)
-  {
-    if (paramProcess == null) {}
-    for (;;)
-    {
-      return true;
-      try
-      {
-        paramProcess.exitValue();
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
-          return true;
-        }
-      }
-      catch (IllegalThreadStateException paramProcess)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
-        }
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
       }
     }
-    return false;
-  }
-  
-  static <T> T[] a(T[] paramArrayOfT1, T[] paramArrayOfT2)
-  {
-    int i = paramArrayOfT1.length;
-    int j = paramArrayOfT2.length;
-    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT1.getClass().getComponentType(), i + j);
-    System.arraycopy(paramArrayOfT1, 0, arrayOfObject, 0, i);
-    System.arraycopy(paramArrayOfT2, 0, arrayOfObject, i, j);
-    return arrayOfObject;
   }
 }
 

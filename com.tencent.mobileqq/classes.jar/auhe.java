@@ -1,19 +1,33 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auhe
+class auhe
   implements View.OnClickListener
 {
-  public auhe(ForwardFileOption paramForwardFileOption) {}
+  auhe(auha paramauha, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    ForwardFileOption.b(this.a);
-    ForwardFileOption.a(this.a, paramView);
-    bcst.b(null, "dc00898", "", "", "0X800AEEA", "0X800AEEA", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Auha.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 1) {
+        break label86;
+      }
+      bdll.b(null, "dc00898", "", "", "0X800A745", "0X800A745", auoo.c(this.jdField_a_of_type_Auha.e()), 0, "", "", "", "");
+      if (this.jdField_a_of_type_Auha.a.d()) {
+        this.jdField_a_of_type_Auha.a.b();
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label86:
+      if (this.jdField_a_of_type_Int == 2) {
+        this.jdField_a_of_type_Auha.a.g();
+      }
+    }
   }
 }
 

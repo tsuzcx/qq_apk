@@ -2,10 +2,10 @@ package com.tencent.mobileqq.tts;
 
 import android.app.Application;
 import android.content.Context;
-import bdol;
-import bgch;
-import bgmj;
-import bita;
+import behh;
+import bhci;
+import bhml;
+import bjtz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -16,7 +16,7 @@ import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import nlw;
+import nnr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +25,7 @@ public class SilkStreamPlayer
   private static long jdField_a_of_type_Long;
   private Application jdField_a_of_type_AndroidAppApplication = BaseApplicationImpl.sApplication;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bgch jdField_a_of_type_Bgch;
+  private bhci jdField_a_of_type_Bhci;
   private SilkStreamPlayer.SilkStreamPlayerThread jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread;
   private InputStream jdField_a_of_type_JavaIoInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -37,7 +37,7 @@ public class SilkStreamPlayer
   public SilkStreamPlayer(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = bdol.e(paramString1).replaceAll("/", " ");
+    this.jdField_a_of_type_JavaLangString = behh.e(paramString1).replaceAll("/", " ");
     this.b = paramString2;
     this.d = paramString3;
   }
@@ -72,12 +72,12 @@ public class SilkStreamPlayer
         ((JSONObject)localObject1).put("uin", Long.valueOf(this.b));
         ((JSONObject)localObject1).put("sendUin", Long.valueOf(this.c));
         ((JSONObject)localObject1).put("text", this.jdField_a_of_type_JavaLangString);
-        ((JSONObject)localObject1).put("textmd5", bita.d(this.jdField_a_of_type_JavaLangString));
+        ((JSONObject)localObject1).put("textmd5", bjtz.d(this.jdField_a_of_type_JavaLangString));
         long l = jdField_a_of_type_Long;
         jdField_a_of_type_Long = 1L + l;
         ((JSONObject)localObject1).put("seq", l);
-        ((JSONObject)localObject1).put("clientVersion", "AND_" + AppSetting.a() + "_" + "8.4.1");
-        ((JSONObject)localObject1).put("net", nlw.a());
+        ((JSONObject)localObject1).put("clientVersion", "AND_" + AppSetting.a() + "_" + "8.4.5");
+        ((JSONObject)localObject1).put("net", nnr.a());
         DataOutputStream localDataOutputStream = new DataOutputStream(this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getOutputStream());
         localDataOutputStream.write(new String(((JSONObject)localObject1).toString().getBytes(), "utf-8").getBytes());
         localDataOutputStream.flush();
@@ -106,7 +106,7 @@ public class SilkStreamPlayer
   private boolean a(byte[] paramArrayOfByte)
   {
     boolean bool2 = true;
-    byte[] arrayOfByte = bgmj.a("02232153494C4B5F5633");
+    byte[] arrayOfByte = bhml.a("02232153494C4B5F5633");
     int i = 1;
     for (;;)
     {
@@ -139,9 +139,9 @@ public class SilkStreamPlayer
     ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, 128, null, true);
   }
   
-  public void a(bgch parambgch)
+  public void a(bhci parambhci)
   {
-    this.jdField_a_of_type_Bgch = parambgch;
+    this.jdField_a_of_type_Bhci = parambhci;
   }
   
   public void a(String paramString)
@@ -161,15 +161,15 @@ public class SilkStreamPlayer
       SilkStreamPlayer.SilkStreamPlayerThread.a(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, false);
       this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = null;
     }
-    this.jdField_a_of_type_Bgch = null;
-    if (this.jdField_a_of_type_Bgch != null) {
-      this.jdField_a_of_type_Bgch.c();
+    this.jdField_a_of_type_Bhci = null;
+    if (this.jdField_a_of_type_Bhci != null) {
+      this.jdField_a_of_type_Bhci.c();
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Bgch = null;
+    this.jdField_a_of_type_Bhci = null;
   }
 }
 

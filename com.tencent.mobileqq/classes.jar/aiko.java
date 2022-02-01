@@ -1,9 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForStructing;
-
-public abstract interface aiko
+class aiko
 {
-  public abstract void a(MessageForStructing paramMessageForStructing, afwr paramafwr, View paramView, boolean paramBoolean);
+  public int a;
+  public String a;
+  public String b;
+  
+  aiko(aikg paramaikg) {}
 }
 
 

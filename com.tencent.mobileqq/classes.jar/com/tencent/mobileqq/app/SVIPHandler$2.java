@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import amgd;
-import anuk;
-import anum;
+import amrx;
+import aogu;
+import aogw;
 
 public class SVIPHandler$2
   implements Runnable
 {
-  public SVIPHandler$2(anuk paramanuk, String paramString) {}
+  public SVIPHandler$2(aogu paramaogu, String paramString) {}
   
   public void run()
   {
-    amgd localamgd = amgd.a();
-    localamgd.a(this.this$0.app, this.a, new anum(this, localamgd));
+    amrx localamrx = amrx.a();
+    localamrx.a(this.this$0.app, this.a, new aogw(this, localamrx));
   }
 }
 

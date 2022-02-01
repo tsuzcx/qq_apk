@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class awou
-  implements DialogInterface.OnClickListener
+final class awou
+  implements beup
 {
-  public awou(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bevl parambevl, bevm parambevm)
   {
-    if (this.a.getActivity() != null)
+    if ((parambevl == null) || (parambevm == null)) {}
+    do
     {
-      this.a.getActivity().setResult(1001);
-      this.a.getActivity().finish();
-    }
+      do
+      {
+        return;
+      } while (!(parambevl instanceof beum));
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.c;
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+      if (parambevm.contains("range="))
+      {
+        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
+        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + parambevm);
   }
 }
 

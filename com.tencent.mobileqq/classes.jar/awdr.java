@@ -1,59 +1,89 @@
-import android.util.Log;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awdr
-  extends ScheduledThreadPoolExecutor
+  extends awax
+  implements aasd
 {
-  public awdr(TimerTaskManager paramTimerTaskManager, int paramInt)
+  private String c;
+  
+  public awdr()
   {
-    super(paramInt);
+    this.mPluginNameSpace = "odapp";
   }
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public void callback(Bundle paramBundle)
   {
-    super.afterExecute(paramRunnable, paramThrowable);
-    Throwable localThrowable1 = paramThrowable;
-    if (paramThrowable == null)
-    {
-      localThrowable1 = paramThrowable;
-      if (!(paramRunnable instanceof Future)) {}
+    if (paramBundle == null) {}
+    while ((!"onOpenRoomResult".equals(paramBundle.getString("method"))) || (this.c == null)) {
+      return;
     }
+    int i = paramBundle.getInt("code", 0);
+    paramBundle = new JSONObject();
     try
     {
-      paramRunnable = (Future)paramRunnable;
-      localThrowable1 = paramThrowable;
-      if (paramRunnable.isDone())
-      {
-        paramRunnable.get();
-        localThrowable1 = paramThrowable;
-      }
+      paramBundle.put("code", i);
+      callJs(this.c, new String[] { paramBundle.toString() });
+      return;
     }
-    catch (CancellationException localCancellationException)
-    {
-      break label46;
-    }
-    catch (ExecutionException paramRunnable)
+    catch (JSONException localJSONException)
     {
       for (;;)
       {
-        localThrowable2 = paramRunnable.getCause();
+        localJSONException.printStackTrace();
       }
     }
-    catch (InterruptedException paramRunnable)
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"odapp".equals(paramString2)) {}
+    label129:
+    do
     {
-      for (;;)
-      {
-        label46:
-        Throwable localThrowable2 = paramThrowable;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.i("XProxy|ODAppJSPlugin", 2, "handleJsRequest: url = " + paramString1 + ", pkgName = " + paramString2 + ", method = " + paramString3 + ", args = " + paramVarArgs);
       }
-    }
-    if (localThrowable1 != null) {
-      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
-    }
+      if ((TextUtils.equals(paramString3, "open")) || (TextUtils.equals(paramString3, "cancelPage")))
+      {
+        super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+        return false;
+      }
+      paramString2 = "";
+      paramString1 = "";
+      paramJsBridgeListener = null;
+      try
+      {
+        localObject = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener = (JsBridgeListener)localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        Object localObject;
+        break label129;
+        int j = 0;
+        int i = 0;
+        paramJsBridgeListener = paramString2;
+        continue;
+      }
+      if (paramJsBridgeListener == null) {
+        break;
+      }
+      localObject = paramJsBridgeListener.optString("callback");
+      i = paramJsBridgeListener.optInt("roomid");
+      paramString2 = paramJsBridgeListener.optString("vasname");
+      paramString1 = paramJsBridgeListener.optString("userdata");
+      j = paramJsBridgeListener.optInt("fromid");
+      this.c = ((String)localObject);
+      paramJsBridgeListener = paramString2;
+    } while ((!"odOpenRoom".equals(paramString3)) || (paramVarArgs.length != 1));
+    this.a.a(0, i, paramJsBridgeListener, paramString1, j);
+    return true;
   }
 }
 

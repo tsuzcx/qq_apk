@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
 import android.text.TextUtils;
-import bita;
+import bjtz;
 import com.tencent.qphone.base.util.QLog;
-import tsh;
+import tje;
 
 public class ViolaBaseView$16$1
   implements Runnable
 {
-  public ViolaBaseView$16$1(tsh paramtsh, String paramString) {}
+  public ViolaBaseView$16$1(tje paramtje, String paramString) {}
   
   public void run()
   {
     String str2 = ViolaBaseView.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("loadJSSource process from downJsFromNet url: ").append(this.jdField_a_of_type_Tsh.a.jdField_a_of_type_JavaLangString).append(" , js source Md5 :");
-    if (!TextUtils.isEmpty(ViolaBaseView.b(this.jdField_a_of_type_Tsh.a))) {}
-    for (String str1 = ViolaBaseView.b(this.jdField_a_of_type_Tsh.a);; str1 = "")
+    StringBuilder localStringBuilder = new StringBuilder().append("loadJSSource process from downJsFromNet url: ").append(this.jdField_a_of_type_Tje.a.jdField_a_of_type_JavaLangString).append(" , js source Md5 :");
+    if (!TextUtils.isEmpty(ViolaBaseView.b(this.jdField_a_of_type_Tje.a))) {}
+    for (String str1 = ViolaBaseView.b(this.jdField_a_of_type_Tje.a);; str1 = "")
     {
-      QLog.d(str2, 2, bita.d(str1) + " js down source MD5 " + bita.d(this.jdField_a_of_type_JavaLangString));
+      QLog.d(str2, 2, bjtz.d(str1) + " js down source MD5 " + bjtz.d(this.jdField_a_of_type_JavaLangString));
       return;
     }
   }

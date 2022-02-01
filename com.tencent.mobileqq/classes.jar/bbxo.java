@@ -1,300 +1,108 @@
-import MQQ.GuanjiaReportReq;
-import MQQ.GuanjiaReportRsp;
-import MQQ.PrivExtV2Req;
-import MQQ.PrivExtV2Rsp;
-import QC.UniGetRsp;
-import QC.UniSetRsp;
-import VIP.GetCustomOnlineStatusReq;
-import VIP.GetCustomOnlineStatusRsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.AsyncTask;
 import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NamePlateCfgInfo;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.MessageForScribble;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.io.ByteArrayOutputStream;
 
-public class bbxo
-  extends aber
+class bbxo
+  extends AsyncTask<Void, Void, Integer>
 {
-  private static final String[] a = { "ClubInfoSvc", "VipCustom", "QCUniBusinessLogic" };
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private bbxn jdField_a_of_type_Bbxn;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString = "";
+  private String d = "";
+  private String e = "SendAfterCombinePicAndDataTask";
   
-  private long a(String paramString)
+  public bbxo(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, bbxn parambbxn)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)))
-    {
-      long l = bhhv.a((QQAppInterface)localAppRuntime, "name_plate_config_version", 0L);
-      if (TextUtils.isEmpty(NamePlateCfgInfo.getVipNamePlateCfgInfo((QQAppInterface)localAppRuntime, paramString))) {
-        return 0L;
-      }
-      return l;
-    }
-    return 0L;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bbxn = parambbxn;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  private <T> T a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, T paramT)
+  int a()
   {
-    if (paramFromServiceMsg == null) {
-      return null;
+    String str1 = bbxm.a() + "temp/" + System.currentTimeMillis();
+    String str2 = bbxm.a() + "temp/" + System.currentTimeMillis() + "_data";
+    boolean bool = false;
+    if (this.jdField_a_of_type_Bbxn != null) {
+      bool = this.jdField_a_of_type_Bbxn.a(str2);
     }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = paramToServiceMsg.getByClass("rsp", paramT);
-      return paramToServiceMsg;
+    if (!bool) {
+      return bbxm.g;
     }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.e("VIPService", 1, "decodeWUP: ", paramToServiceMsg);
+    if (!auog.a(str2)) {
+      return bbxm.h;
     }
-    return null;
+    Object localObject = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_c_of_type_Int = localObject.length;
+    if (!bbxv.a((byte[])localObject, str2, str1)) {
+      return bbxm.e;
+    }
+    localObject = bbxv.a(str1);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return bbxm.f;
+    }
+    this.jdField_b_of_type_JavaLangString = ((String)localObject);
+    this.jdField_c_of_type_JavaLangString = bbxm.a(this.jdField_b_of_type_JavaLangString);
+    this.d = bbxm.b(this.jdField_b_of_type_JavaLangString);
+    if (!bbxv.a(str1, this.jdField_c_of_type_JavaLangString).booleanValue()) {
+      return bbxm.e;
+    }
+    if (!bbxv.a(str2, this.d).booleanValue()) {
+      return bbxm.e;
+    }
+    auog.c(str1);
+    auog.c(str2);
+    return bbxm.d;
   }
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  protected Integer a(Void... paramVarArgs)
   {
-    paramUniPacket.setServantName("MQQ.PrivInfoServer.PrivInfoObj");
-    paramUniPacket.setFuncName("queryPrivInfoExtV2");
-    String str3 = paramToServiceMsg.extraData.getString(anyj.a);
-    Object localObject = paramToServiceMsg.extraData.getString(anyj.c);
-    long l1 = paramToServiceMsg.extraData.getLong(anyj.m);
-    boolean bool3 = bgzk.a();
-    boolean bool1 = false;
-    boolean bool2 = false;
-    PrivExtV2Req localPrivExtV2Req = new PrivExtV2Req();
-    localPrivExtV2Req.sUin = str3;
-    localPrivExtV2Req.sKey = ((String)localObject);
-    localPrivExtV2Req.iGetType = 0;
-    localPrivExtV2Req.qua = blru.a();
-    QLog.e("VIPService", 1, "Ilive handleGetVipInfoReq qua = " + blru.a());
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + str3, 4);
-    String str4 = bhhb.a(0, BaseApplicationImpl.getContext());
-    localObject = bhhb.a(1, BaseApplicationImpl.getContext());
-    String str2 = localSharedPreferences.getString("imsiOne", "");
-    String str1 = localSharedPreferences.getString("imsiTwo", "");
-    long l2 = localSharedPreferences.getLong("kingCardLastRequest", 0L);
-    long l3 = localSharedPreferences.getInt("kingCardRequestInterval", 0);
-    long l4 = System.currentTimeMillis() / 1000L;
-    localPrivExtV2Req.lastVisitTime = l1;
-    localPrivExtV2Req.iItemCfgVer = a(str3);
-    if (!TextUtils.isEmpty(str4))
+    return Integer.valueOf(a());
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    QLog.i(this.e, 2, "doBeforeSendScribble result = " + paramInteger);
+    if (paramInteger.intValue() == bbxm.d)
     {
-      localPrivExtV2Req.sImsi1 = str4;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label660;
-      }
+      bbxi localbbxi = new bbxi(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      MessageForScribble localMessageForScribble = localbbxi.a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      localMessageForScribble.mExistInfo.mCombineFileExist = true;
+      localMessageForScribble.mExistInfo.mDataFileExist = true;
+      localMessageForScribble.mExistInfo.mLocalPathExist = true;
+      localMessageForScribble.mExistInfo.mInit = true;
+      localbbxi.a(localMessageForScribble);
     }
-    for (;;)
-    {
-      for (;;)
-      {
-        localPrivExtV2Req.sImsi2 = ((String)localObject);
-        localObject = paramToServiceMsg.extraData.getString(anyj.d);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals("vip_drawer")))
-        {
-          localPrivExtV2Req.trace_info = blen.a("drawer_trace_info");
-          QLog.e("VIPService", 1, "handleGetVipInfoReq getVipInfo set trace_info " + localPrivExtV2Req.trace_info);
-        }
-        int k = localSharedPreferences.getInt("kingCardSdk", -1);
-        if ((!bool3) || (k < 0)) {
-          break label667;
-        }
-        localPrivExtV2Req.sImsi2 = "";
-        localPrivExtV2Req.sImsi1 = "";
-        localPrivExtV2Req.iWkOrderState1 = k;
-        localPrivExtV2Req.iToastVer = localSharedPreferences.getInt("toast_version", 0);
-        localPrivExtV2Req.iPopupVer = localSharedPreferences.getInt("popup_version_v2", 0);
-        localPrivExtV2Req.pullPayRuleCfgTime = bhhv.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "last_pull_pay_rule", 0L);
-        localPrivExtV2Req.clientLangugeId = 0;
-        QLog.e("VIPService", 1, "handleGetVipInfoReq, pullPayRuleCfgTime=" + localPrivExtV2Req.pullPayRuleCfgTime);
-        if (QLog.isColorLevel()) {
-          QLog.i("VIPService", 2, "handleGetVipInfoReq, iPopupVer: " + localPrivExtV2Req.iPopupVer + " iToastVer:" + localPrivExtV2Req.iToastVer + " canUseTMS:" + bool3 + " sdkCardStatus:" + k + ", send sim1: " + bool1 + ", send sim2:" + bool2);
-        }
-        paramToServiceMsg.extraData.putBoolean(anyj.i, bool1);
-        paramToServiceMsg.extraData.putBoolean(anyj.j, bool2);
-        paramUniPacket.put("req", localPrivExtV2Req);
-        return true;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localPrivExtV2Req.sImsi1 = ((String)localObject);
-          localObject = null;
-          break;
-        }
-        try
-        {
-          localPrivExtV2Req.sImsi1 = bkfy.b("a4bd32");
-        }
-        catch (Exception localException)
-        {
-          QLog.e("VIPService", 1, "handleGetVipInfoReq", localException);
-        }
-      }
-      break;
-      label660:
-      localObject = "";
-    }
-    label667:
-    if ((TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (TextUtils.isEmpty(localPrivExtV2Req.sImsi2))) {
-      localPrivExtV2Req.iGetType = 1;
-    }
-    int j = 0;
-    int i;
-    if (((!TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (!localPrivExtV2Req.sImsi1.equals(str2))) || (TextUtils.isEmpty(localPrivExtV2Req.sImsi1)))
-    {
-      localObject = localSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putString("imsiOne", "");
-      ((SharedPreferences.Editor)localObject).putInt("kingCard", -1);
-      ((SharedPreferences.Editor)localObject).commit();
-      i = 1;
-      label776:
-      if (((TextUtils.isEmpty(localPrivExtV2Req.sImsi2)) || (localPrivExtV2Req.sImsi2.equals(str1))) && (!TextUtils.isEmpty(localPrivExtV2Req.sImsi2))) {
-        break label1031;
-      }
-      localObject = localSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putString("imsiTwo", "");
-      ((SharedPreferences.Editor)localObject).putInt("kingCard2", -1);
-      ((SharedPreferences.Editor)localObject).commit();
-      j = 1;
-      label855:
-      if (TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) {
-        break label1058;
-      }
-      bool1 = true;
-      label869:
-      if (TextUtils.isEmpty(localPrivExtV2Req.sImsi2)) {
-        break label1064;
-      }
-    }
-    label1031:
-    label1058:
-    label1064:
-    for (bool2 = true;; bool2 = false)
-    {
-      if (bool1) {
-        paramToServiceMsg.extraData.putString(anyj.k, localPrivExtV2Req.sImsi1);
-      }
-      if (bool2) {
-        paramToServiceMsg.extraData.putString(anyj.l, localPrivExtV2Req.sImsi2);
-      }
-      localPrivExtV2Req.iWkOrderState1 = localSharedPreferences.getInt("kingCard", -1);
-      localPrivExtV2Req.iWkOrderState2 = localSharedPreferences.getInt("kingCard2", -1);
-      if (j != 0)
-      {
-        localObject = localSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putInt("toast_version", 0);
-        ((SharedPreferences.Editor)localObject).putInt("popup_version_v2", 0);
-        ((SharedPreferences.Editor)localObject).commit();
-      }
-      break;
-      i = j;
-      if (l4 - l2 >= l3) {
-        break label776;
-      }
-      localPrivExtV2Req.sImsi1 = "";
-      i = j;
-      break label776;
-      j = i;
-      if (l4 - l2 >= l3) {
-        break label855;
-      }
-      localPrivExtV2Req.sImsi2 = "";
-      j = i;
-      break label855;
-      bool1 = false;
-      break label869;
+    if (this.jdField_a_of_type_Bbxn != null) {
+      this.jdField_a_of_type_Bbxn.a(paramInteger.intValue());
     }
   }
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public byte[] a(Bitmap paramBitmap)
   {
-    if ("ClubInfoSvc.queryPrivExt".equals(paramToServiceMsg.getServiceCmd())) {
-      return a(paramToServiceMsg, paramFromServiceMsg, new PrivExtV2Rsp());
-    }
-    if ("ClubInfoSvc.guanjiaReport".equals(paramToServiceMsg.getServiceCmd())) {
-      return a(paramToServiceMsg, paramFromServiceMsg, new GuanjiaReportRsp());
-    }
-    if ("VipCustom.GetCustomOnlineStatus".equals(paramToServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("CustomOnlineStatusManager", 4, "decode");
-      }
-      return a(paramToServiceMsg, paramFromServiceMsg, new GetCustomOnlineStatusRsp());
-    }
-    if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd())) {
-      return a(paramToServiceMsg, paramFromServiceMsg, new UniSetRsp());
-    }
-    if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd())) {
-      return a(paramToServiceMsg, paramFromServiceMsg, new UniGetRsp());
-    }
-    return null;
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  protected void onPreExecute()
   {
-    boolean bool = true;
-    if ("ClubInfoSvc.queryPrivExt".equals(paramToServiceMsg.getServiceCmd())) {
-      bool = b(paramToServiceMsg, paramUniPacket);
-    }
-    do
-    {
-      return bool;
-      if ("ClubInfoSvc.guanjiaReport".equals(paramToServiceMsg.getServiceCmd()))
-      {
-        paramUniPacket.setServantName("MQQ.PrivInfoServer.PrivInfoObj");
-        paramUniPacket.setFuncName("guanjiaDoReport");
-        localObject = paramToServiceMsg.extraData.getString(anyj.a);
-        GuanjiaReportReq localGuanjiaReportReq = new GuanjiaReportReq();
-        localGuanjiaReportReq.sPkgName = "mobileQQ";
-        localGuanjiaReportReq.uin = Long.parseLong((String)localObject);
-        localGuanjiaReportReq.iImplat = 109;
-        localGuanjiaReportReq.sPhoneNum = paramToServiceMsg.extraData.getString(anyj.e);
-        localGuanjiaReportReq.bKingCard = paramToServiceMsg.extraData.getBoolean(anyj.f);
-        localGuanjiaReportReq.iCardType = paramToServiceMsg.extraData.getInt(anyj.g);
-        localGuanjiaReportReq.iCardStatus = paramToServiceMsg.extraData.getInt(anyj.h);
-        localGuanjiaReportReq.bReportFlag = false;
-        paramUniPacket.put("req", localGuanjiaReportReq);
-        return true;
-      }
-      if (!"VipCustom.GetCustomOnlineStatus".equals(paramToServiceMsg.getServiceCmd())) {
-        break;
-      }
-      paramUniPacket.setServantName("VIP.CustomOnlineStatusServer.CustomOnlineStatusObj");
-      paramUniPacket.setFuncName("GetCustomOnlineStatus");
-      Object localObject = new GetCustomOnlineStatusReq();
-      ((GetCustomOnlineStatusReq)localObject).lUin = paramToServiceMsg.extraData.getLong(anyj.n);
-      ((GetCustomOnlineStatusReq)localObject).sIMei = MsfSdkUtils.getIMEIForMain("bussiness_id_customize_online_status");
-      paramUniPacket.put("req", localObject);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("CustomOnlineStatusManager", 4, "encodeReqMsg");
-    return true;
-    if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd()))
-    {
-      paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
-      paramUniPacket.setFuncName("uniSet");
-      paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
-      return true;
-    }
-    if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd()))
-    {
-      paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
-      paramUniPacket.setFuncName("uniGet");
-      paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
-      return true;
-    }
-    return false;
-  }
-  
-  public String[] a()
-  {
-    return a;
+    super.onPreExecute();
   }
 }
 

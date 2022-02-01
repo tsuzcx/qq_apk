@@ -1,6 +1,16 @@
-public abstract interface zxa<T>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
+
+public class zxa
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void onReceive(boolean paramBoolean, long paramLong, String paramString, T paramT);
+  public zxa(QRJumpActivity paramQRJumpActivity) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

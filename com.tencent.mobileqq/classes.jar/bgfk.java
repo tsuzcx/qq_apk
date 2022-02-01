@@ -1,26 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import java.util.List;
 
 final class bgfk
-  implements DownloadParams.DecodeHandler
+  implements DialogInterface.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bgfk(XMediaEditor paramXMediaEditor, List paramList) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
-    {
-      paramDownloadParams = (int[])paramDownloadParams;
-      return bgmo.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
-    }
-    return bgmo.c(paramBitmap, 50, 50);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 

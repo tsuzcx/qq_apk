@@ -1,136 +1,125 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class alce
-  extends bkov
+public class alce
 {
-  alce(alcd paramalcd, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  private SparseArray<alfa> a = new SparseArray();
   
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  public alce()
   {
-    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {
-      return;
-    }
-    if ((paramObject instanceof RecentBaseData)) {}
-    label146:
-    label407:
-    label433:
-    for (int k = ((RecentBaseData)paramObject).mMenuFlag;; k = 0)
+    localObject = alil.a();
+    JSONArray localJSONArray;
+    if (localObject != null)
     {
-      if (((paramObject instanceof RecentBaseData)) && ((((RecentBaseData)paramObject).getRecentUserType() == 1008) || (((RecentBaseData)paramObject).getRecentUserType() == 7220)))
-      {
-        if ((!alcv.a(((RecentBaseData)paramObject).getRecentUserUin())) || (!aldb.a().a()) || (aldb.a().a(((RecentBaseData)paramObject).getRecentUserUin()))) {
-          break label473;
-        }
-        paramArrayOfbkou[0].b = 6;
-        paramArrayOfbkou[0].a = 1;
+      localJSONArray = ((alao)((QQAppInterface)localObject).getManager(245)).a("redPackPanel", new String[] { "panelRedPkgList" });
+      if (localJSONArray != null) {
+        break label63;
       }
-      label203:
-      label467:
-      label473:
-      for (int i = 1;; i = 0)
+      QLog.i("ConfigLogic", 2, "no pkg list...");
+    }
+    for (;;)
+    {
+      return;
+      label63:
+      localObject = null;
+      int i = 0;
+      while (i < localJSONArray.length())
       {
-        paramInt = i;
-        if (i < paramArrayOfbkou.length)
+        try
         {
-          paramArrayOfbkou[i].b = 0;
-          paramArrayOfbkou[i].a = 0;
-          paramInt = i + 1;
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          localObject = localJSONObject;
         }
-        while (paramInt < paramArrayOfbkou.length)
+        catch (JSONException localJSONException)
         {
-          paramArrayOfbkou[paramInt].b = -1;
-          paramArrayOfbkou[paramInt].a = -1;
-          paramInt += 1;
-          continue;
-          paramInt = k & 0xF0;
-          if (paramInt != 32) {
-            break label407;
-          }
-          paramArrayOfbkou[0].b = 2;
-          paramArrayOfbkou[0].a = 1;
-          i = 1;
-        }
-        for (;;)
-        {
-          paramInt = i;
-          int j;
-          if (i < paramArrayOfbkou.length)
-          {
-            paramInt = i;
-            if ((paramObject instanceof RecentBaseData))
-            {
-              paramInt = i;
-              if (((RecentBaseData)paramObject).isUnreadMsgNumInTabNum())
-              {
-                j = 0xF0000 & k;
-                if (j != 65536) {
-                  break label433;
-                }
-                paramArrayOfbkou[i].b = 4;
-                paramArrayOfbkou[i].a = 1;
-                paramInt = i + 1;
-              }
-            }
-          }
           for (;;)
           {
-            i = paramInt;
-            if (paramInt < paramArrayOfbkou.length)
-            {
-              i = paramInt;
-              if ((0xF000000 & k) == 16777216)
-              {
-                paramArrayOfbkou[paramInt].b = 9;
-                paramArrayOfbkou[paramInt].a = 1;
-                i = paramInt + 1;
-              }
+            localJSONException.printStackTrace();
+            continue;
+            alfa localalfa = new alfa();
+            localalfa.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("id", "");
+            localalfa.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type", -1);
+            localalfa.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("name", "");
+            localalfa.c = ((JSONObject)localObject).optString("icon_pic", "");
+            localalfa.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject).optJSONObject("params");
+            if (QLog.isColorLevel()) {
+              QLog.i("ConfigLogic", 2, "panelData = " + localalfa);
             }
-            j = i;
-            if (i < paramArrayOfbkou.length)
-            {
-              j = i;
-              if ((k & 0xF) == 1)
-              {
-                paramArrayOfbkou[i].b = 0;
-                paramArrayOfbkou[i].a = 0;
-                j = i + 1;
-              }
-            }
-            paramInt = j;
-            if (j >= paramArrayOfbkou.length) {
-              break label146;
-            }
-            paramInt = j;
-            if ((k & 0x300000) != 2097152) {
-              break label146;
-            }
-            paramArrayOfbkou[j].b = 6;
-            paramArrayOfbkou[j].a = 1;
-            paramInt = j + 1;
-            break label146;
-            break;
-            if (paramInt != 16) {
-              break label467;
-            }
-            paramArrayOfbkou[0].b = 3;
-            paramArrayOfbkou[0].a = 0;
-            i = 1;
-            break label203;
-            paramInt = i;
-            if (j == 131072)
-            {
-              paramArrayOfbkou[i].b = 5;
-              paramArrayOfbkou[i].a = 1;
-              paramInt = i + 1;
-            }
+            this.a.put(localalfa.jdField_a_of_type_Int, localalfa);
           }
-          i = 0;
+        }
+        if (localObject != null) {
+          break label104;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public alfa a(int paramInt1, int paramInt2)
+  {
+    paramInt2 = alcg.a(paramInt1, paramInt2);
+    QLog.i("ConfigLogic", 2, "channel: " + paramInt1 + ", type = " + paramInt2);
+    return (alfa)this.a.get(paramInt2);
+  }
+  
+  public String a(int paramInt1, int paramInt2, String paramString)
+  {
+    Object localObject = a(paramInt1, paramInt2);
+    String str = paramString;
+    if (localObject != null)
+    {
+      str = paramString;
+      if (((alfa)localObject).jdField_a_of_type_OrgJsonJSONObject != null)
+      {
+        localObject = ((alfa)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("hint");
+        QLog.i("ConfigLogic", 2, "channel: " + paramInt1 + ", hint array: " + localObject);
+        str = paramString;
+        if (localObject != null)
+        {
+          str = paramString;
+          if (((JSONArray)localObject).length() > 0) {
+            str = ((JSONArray)localObject).optString(0, paramString);
+          }
         }
       }
     }
+    return str;
+  }
+  
+  public ArrayList<alcc> a(int paramInt, bmry parambmry)
+  {
+    int i = 2;
+    if (parambmry != null) {
+      i = bmrq.a(parambmry.bus_type, 2);
+    }
+    parambmry = new ArrayList();
+    Object localObject = a(paramInt, i);
+    if ((localObject != null) && (((alfa)localObject).jdField_a_of_type_OrgJsonJSONObject != null))
+    {
+      localObject = ((alfa)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("labels");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+      {
+        paramInt = 0;
+        while (paramInt < ((JSONArray)localObject).length())
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(paramInt);
+          alcc localalcc = new alcc();
+          localalcc.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
+          localalcc.jdField_a_of_type_Int = localJSONObject.optInt("sub_channel");
+          localalcc.jdField_b_of_type_Int = localJSONObject.optInt("max_length", 0);
+          localalcc.jdField_b_of_type_JavaLangString = localJSONObject.optString("hint");
+          parambmry.add(localalcc);
+          paramInt += 1;
+        }
+      }
+    }
+    return parambmry;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profilecard.bussiness.circle;
 
-import azfe;
-import aznl;
-import aznm;
+import azxr;
+import bafx;
+import bafy;
 
 public class ProfileCircleComponent$1$1
   implements Runnable
 {
-  public ProfileCircleComponent$1$1(aznm paramaznm) {}
+  public ProfileCircleComponent$1$1(bafy parambafy) {}
   
   public void run()
   {
-    aznl.a(this.a.a, ((azfe)aznl.a(this.a.a)).a);
+    bafx.a(this.a.a, ((azxr)bafx.a(this.a.a)).a);
   }
 }
 

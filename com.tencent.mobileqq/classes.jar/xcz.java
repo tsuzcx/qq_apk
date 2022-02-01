@@ -1,37 +1,24 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xcz
-  extends xbw
+public class xcz
+  extends wou
 {
-  xcz(xcu paramxcu, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramStoryVideoItem);
-  }
+  public List<ylw> a = new ArrayList();
   
-  public boolean b()
+  public xcz(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
   {
-    Object localObject = (String)a("result");
-    try
+    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
+    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspProfileStoryFeedIdList.hasNext())
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
+      this.a.add(new ylw(localFeedSeqInfo));
     }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      yqp.c(this.b, "Error: 评分投票失败", localURISyntaxException);
-    }
-    return false;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.search;
 
-import bbge;
-import bkgk;
+import bbyy;
+import blho;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 
 public class HotWordSearchEntryModel$5
   implements Runnable
 {
-  public HotWordSearchEntryModel$5(bbge parambbge, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  public HotWordSearchEntryModel$5(bbyy parambbyy, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
   
   public void run()
   {
     this.a.a();
-    bkgk.a(new HotWordSearchEntryModel.5.1(this));
+    blho.a(new HotWordSearchEntryModel.5.1(this));
   }
 }
 

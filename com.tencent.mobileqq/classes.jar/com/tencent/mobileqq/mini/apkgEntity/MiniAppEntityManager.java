@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
 import android.text.TextUtils;
-import bgmg;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -36,16 +36,16 @@ public class MiniAppEntityManager
         {
           File localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile db : " + localFile.getPath());
-          bgmg.d(localFile.getPath());
+          bhmi.d(localFile.getPath());
           localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-journal");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbJournal : " + localFile.getPath());
-          bgmg.d(localFile.getPath());
+          bhmi.d(localFile.getPath());
           localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-wal");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbWal : " + localFile.getPath());
-          bgmg.d(localFile.getPath());
+          bhmi.d(localFile.getPath());
           localObject = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-shm");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbShm : " + ((File)localObject).getPath());
-          bgmg.d(((File)localObject).getPath());
+          bhmi.d(((File)localObject).getPath());
         }
       }
       return;

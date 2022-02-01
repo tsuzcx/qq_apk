@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aihx;
+import airq;
 
 public final class PokeItemHelper$4
   implements Runnable

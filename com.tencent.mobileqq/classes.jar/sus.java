@@ -1,6 +1,10 @@
-// INTERNAL ERROR //
+public abstract interface sus<V>
+{
+  public abstract void a(V paramV);
+}
+
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sus
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit.13;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bnbj
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public bnbj(QIMCameraCaptureUnit.13 param13) {}
+  public bnbj(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    this.a.getPlayMode();
   }
 }
 

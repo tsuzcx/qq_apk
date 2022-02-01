@@ -1,245 +1,54 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class biax
-  implements DialogInterface.OnCancelListener, Handler.Callback
+  extends ReportDialog
 {
-  int a;
-  public biau a;
-  protected final WeakReference<Activity> a;
-  protected final ArrayList<DialogInterface.OnCancelListener> a;
-  protected final Handler b;
+  private static int jdField_a_of_type_Int = 150;
+  private static int b = 56;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new biay(this);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  biaz jdField_a_of_type_Biaz;
   
-  public biax(Activity paramActivity)
+  public biax(Context paramContext)
   {
-    this(paramActivity, -1);
+    super(paramContext, 2131755174);
   }
   
-  public biax(Activity paramActivity, int paramInt)
+  public void a(biaz parambiaz)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = new bkgm(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Biaz = parambiaz;
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  protected void onCreate(Bundle paramBundle)
   {
-    a(paramInt1, paramString, paramInt2, null);
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
-      }
-      return;
-    }
-    if (paramOnCancelListener != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnCancelListener);
-    }
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
-    if ((paramInt1 == 0) && (paramInt2 > 0))
-    {
-      paramOnCancelListener = Message.obtain();
-      paramOnCancelListener.what = 1;
-      paramOnCancelListener.arg1 = paramInt1;
-      paramOnCancelListener.arg2 = 0;
-      paramOnCancelListener.obj = paramString;
-      this.b.sendMessageDelayed(paramOnCancelListener, paramInt2);
-      return;
-    }
-    if (this.jdField_a_of_type_Biau == null)
-    {
-      if (this.jdField_a_of_type_Int > 0) {
-        this.jdField_a_of_type_Biau = new biau(localActivity, 0, this.jdField_a_of_type_Int, 17);
-      }
-    }
-    else
-    {
-      label147:
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        break label290;
-      }
-      this.jdField_a_of_type_Biau.setOnCancelListener(null);
-      label165:
-      if (paramInt1 != 0) {
-        break label320;
-      }
-      if ((paramString != null) && (!"".equals(paramString.trim()))) {
-        break label301;
-      }
-      this.jdField_a_of_type_Biau.a(localActivity.getString(2131717771));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Biau.a(false);
-      this.jdField_a_of_type_Biau.b(true);
-      if (!localActivity.isFinishing()) {
-        break label312;
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
-      return;
-      this.jdField_a_of_type_Biau = new biau(localActivity, localActivity.getResources().getDimensionPixelSize(2131298998));
-      break label147;
-      label290:
-      this.jdField_a_of_type_Biau.setOnCancelListener(this);
-      break label165;
-      label301:
-      this.jdField_a_of_type_Biau.a(paramString);
-    }
-    label312:
-    this.jdField_a_of_type_Biau.show();
-    return;
-    label320:
-    if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
-    {
-      this.jdField_a_of_type_Biau.a(paramString);
-      this.jdField_a_of_type_Biau.d(2130839571);
-      this.jdField_a_of_type_Biau.a(true);
-      this.jdField_a_of_type_Biau.b(false);
-      if (!this.jdField_a_of_type_Biau.isShowing())
-      {
-        if (!localActivity.isFinishing()) {
-          break label485;
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
-        }
-      }
-      paramString = Message.obtain();
-      paramString.what = 2;
-      paramString.arg1 = paramInt1;
-      paramOnCancelListener = this.b;
-      if (paramInt2 <= 0) {
-        break label495;
-      }
-    }
-    label427:
-    label485:
-    label495:
-    for (long l = paramInt2;; l = 1000L)
-    {
-      paramOnCancelListener.sendMessageDelayed(paramString, l);
-      return;
-      this.jdField_a_of_type_Biau.a(paramString);
-      this.jdField_a_of_type_Biau.d(2130839584);
-      break;
-      this.jdField_a_of_type_Biau.show();
-      break label427;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing());
-  }
-  
-  public void b()
-  {
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
-    try
-    {
-      if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-        this.jdField_a_of_type_Biau.dismiss();
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
-      }
-      return;
-    }
-    a(paramInt1, localActivity.getString(paramInt2), paramInt3);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return true;
-        } while (paramMessage.what != 2);
-        b();
-      } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
-      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localActivity != null)
-      {
-        if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
-        {
-          paramMessage = new Intent();
-          paramMessage.putExtra("isNeedFinish", true);
-          localActivity.setResult(-1, paramMessage);
-        }
-        for (;;)
-        {
-          localActivity.finish();
-          return true;
-          localActivity.setResult(-1);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("QQProgressNotifier", 2, "handleMessage baseActivity is null");
-    return true;
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQProgressNotifier", 4, "onCancel");
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      paramDialogInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramDialogInterface.hasNext())
-      {
-        DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)paramDialogInterface.next();
-        if (localOnCancelListener != null) {
-          localOnCancelListener.onCancel(this.jdField_a_of_type_Biau);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    super.onCreate(paramBundle);
+    setContentView(2131562124);
+    findViewById(2131375043).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    findViewById(2131375044).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    findViewById(2131375045).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375046));
+    paramBundle = new ColorDrawable(15856629);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    Resources localResources = BaseApplicationImpl.sApplication.getResources();
+    float f = localResources.getDisplayMetrics().density;
+    localURLDrawableOptions.mRequestWidth = ((int)(localResources.getDisplayMetrics().widthPixels - b * f));
+    localURLDrawableOptions.mRequestHeight = ((int)(jdField_a_of_type_Int * f));
+    localURLDrawableOptions.mFailedDrawable = paramBundle;
+    localURLDrawableOptions.mLoadingDrawable = paramBundle;
+    paramBundle = URLDrawable.getDrawable("https://gxh.vip.qq.com/xydata/like/app/zanDoubleConfig/single.png", localURLDrawableOptions);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
   }
 }
 

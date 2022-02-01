@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public abstract interface acwy
+class acwy
+  extends AdHttp.Params
 {
-  public abstract MessageRecord a(int paramInt);
+  public int a = -2147483648;
+  
+  public boolean isSuccess()
+  {
+    return (super.isSuccess()) && (this.responseData != null);
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import ascv;
+import assj;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -12,7 +12,7 @@ public class SystemAndEmojiUniversalPanel$1
   
   public void run()
   {
-    List localList = ascv.a(this.a, SystemAndEmojiUniversalPanel.a(this.this$0), true, SystemAndEmojiUniversalPanel.b(this.this$0));
+    List localList = assj.a(this.a, SystemAndEmojiUniversalPanel.a(this.this$0), true, SystemAndEmojiUniversalPanel.b(this.this$0));
     ThreadManager.getUIHandler().post(new SystemAndEmojiUniversalPanel.1.1(this, localList));
   }
 }

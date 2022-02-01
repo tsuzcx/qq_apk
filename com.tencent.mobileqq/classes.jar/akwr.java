@@ -1,239 +1,118 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletPayBridge;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class akwr
+  extends SQLiteOpenHelper
 {
-  public static String a(String paramString)
+  public akwr(Context paramContext, String paramString)
   {
-    String str = "";
-    if (paramString.contains("pre_code="))
-    {
-      str = paramString.substring(paramString.indexOf("pre_code="));
-      paramString = str;
-      if (str.contains("&")) {
-        paramString = str.substring(0, str.indexOf("&"));
-      }
-      str = paramString;
-      if (paramString.contains("=")) {
-        str = paramString.split("=")[1];
-      }
-    }
-    return str;
+    super(paramContext, "passwd_red_bag_" + paramString + ".db", null, 5);
   }
   
-  public static JSONObject a(int paramInt, Bundle paramBundle, Activity paramActivity)
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    if (paramInt == 0)
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagDBHelper", 2, " onCreate execSQL sqlRedBags=" + "CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);" + " sqlRedBagRelation=" + "CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );" + " sqlUpdateTimes=" + "CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+      }
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);");
+      return;
+    }
+    catch (SQLException localSQLException2)
     {
       try
       {
-        Object localObject = paramBundle.getString("grapH5CommonHbResult");
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          paramBundle = new JSONObject((String)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.i("H5HbUtil", 2, "grapH5Json: " + paramBundle);
-          }
-          if (paramBundle.optJSONObject("hb_data") != null)
-          {
-            localObject = new JSONObject();
-            ((JSONObject)localObject).put("viewTag", "showHbDetail");
-            ((JSONObject)localObject).put("extra_data", paramBundle.optJSONObject("hb_data"));
-            paramBundle = new Bundle();
-            paramBundle.putString("json", ((JSONObject)localObject).toString());
-            paramBundle.putString("callbackSn", "0");
-            PayBridgeActivity.a(paramActivity, 5, paramBundle, null);
-            return null;
-          }
-          paramActivity = a(paramBundle.optJSONObject("detail"));
-          paramBundle.remove("detail");
-          paramBundle.put("detail_data", paramActivity);
-        }
-        else
-        {
-          paramActivity = new JSONObject();
-          paramBundle = paramBundle.getString("detail");
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            paramBundle = a(new JSONObject(paramBundle));
-            paramBundle.remove("retcode");
-            paramBundle.remove("retmsg");
-            paramActivity.put("detail_data", paramBundle);
-          }
-          paramActivity.put("retcode", 0);
-          paramActivity.put("retmsg", "ok");
-          paramBundle = paramActivity;
-        }
+        paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );");
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        paramBundle = null;
-      }
-    }
-    else
-    {
-      paramActivity = new JSONObject();
-      for (;;)
+      catch (SQLException localSQLException2)
       {
         try
         {
-          paramBundle = paramBundle.getString("retmsg");
-          if (!TextUtils.isEmpty(paramBundle))
+          for (;;)
           {
-            paramActivity.put("retmsg", new JSONObject(paramBundle).optString("err_msg"));
-            paramActivity.put("retcode", paramInt);
-            paramBundle = paramActivity;
+            paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+            return;
+            localSQLException1 = localSQLException1;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException1);
+              continue;
+              localSQLException2 = localSQLException2;
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException2);
+              }
+            }
           }
         }
-        catch (JSONException paramBundle)
+        catch (SQLException paramSQLiteDatabase)
         {
-          paramBundle.printStackTrace();
-          paramBundle = paramActivity;
+          while (!QLog.isColorLevel()) {}
+          QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", paramSQLiteDatabase);
         }
-        paramActivity.put("retmsg", "error when grap hb");
       }
     }
-    return paramBundle;
   }
   
-  public static JSONObject a(AppInterface paramAppInterface, JSONObject paramJSONObject)
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    String str4 = paramJSONObject.optString("listid");
-    String str1 = paramJSONObject.optString("uin");
-    if ((!bgsp.a(str1)) && (str1.equals(paramAppInterface.getCurrentAccountUin())) && (!bgsp.a(str4)))
+    int i = paramInt1;
+    if (QLog.isColorLevel())
     {
-      String str2 = paramJSONObject.optString("feedsid");
-      String str3 = paramJSONObject.optString("token");
-      str4 = str4 + "_" + a(str3);
-      if (QLog.isColorLevel()) {
-        QLog.i("H5HbUtil", 2, "cache key: " + str4);
-      }
-      blqx localblqx = blqx.a();
-      paramJSONObject = localblqx.b(str4);
-      paramAppInterface = paramJSONObject;
-      if (bgsp.a(paramJSONObject))
+      QLog.d("PasswdRedBagDBHelper", 2, "onUpgrade<<<<<oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
+      i = paramInt1;
+    }
+    if (i < paramInt2)
+    {
+      switch (i)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("H5HbUtil", 2, "get cache from disk");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ");
         }
-        paramAppInterface = localblqx.a(str1, str4, SharedPreferencesProxyManager.getInstance().getProxy("qb_tenpay_h5_common_hb_" + str1, 4));
+        catch (Exception localException1) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ", localException1);
+          continue;
+          try
+          {
+            paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0");
+          }
+          catch (Exception localException2) {}
+          if (QLog.isColorLevel())
+          {
+            QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0", localException2);
+            continue;
+            try
+            {
+              paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ");
+            }
+            catch (Exception localException3) {}
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ", localException3);
+              continue;
+              try
+              {
+                paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ");
+              }
+              catch (Exception localException4) {}
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ", localException4);
+              }
+            }
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("H5HbUtil", 2, "paramForGarpH5CommonHb:" + paramAppInterface);
-      }
-      if (!TextUtils.isEmpty(paramAppInterface))
-      {
-        paramAppInterface = new JSONObject(paramAppInterface);
-        paramAppInterface.put("feedsid", str2);
-        paramAppInterface.put("uin", str1);
-        paramAppInterface.put("token", str3);
-        paramAppInterface.put("viewTag", "grapH5CommonHb");
-        return paramAppInterface;
-      }
-    }
-    return null;
-  }
-  
-  private static JSONObject a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramJSONObject != null)
-    {
-      localJSONObject = paramJSONObject.optJSONObject("send_object");
-      String str = localJSONObject.optString("lucky_uin");
-      localJSONObject.remove("lucky_uin");
-      if (!bgsp.a(str)) {
-        localJSONObject.put("lucky_name", akwm.a(str));
-      }
-      paramJSONObject.remove("send_object");
-      paramJSONObject.put("send_object", localJSONObject);
-      return paramJSONObject;
-    }
-    return localJSONObject;
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString, ResultReceiver paramResultReceiver)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("extra_data", paramString);
-    localBundle.putString("callbackSn", "0");
-    paramString = new Bundle();
-    paramString.putInt("PayInvokerId", 22);
-    Parcel localParcel = Parcel.obtain();
-    paramResultReceiver.writeToParcel(localParcel, 0);
-    localParcel.setDataPosition(0);
-    paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-    localParcel.recycle();
-    paramString.putParcelable("_qwallet_payresult_receiver", paramResultReceiver);
-    paramString.putBundle("_qwallet_payparams_data", localBundle);
-    paramString.putString("_qwallet_payparams_tag", "grapH5CommonHb");
-    QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
-  }
-  
-  public static void a(AppInterface paramAppInterface, JSONObject paramJSONObject, String paramString, ResultReceiver paramResultReceiver)
-  {
-    String str1 = paramJSONObject.optString("listid");
-    String str2 = paramJSONObject.optString("uin");
-    String str3 = paramJSONObject.optString("offset");
-    String str4 = paramJSONObject.optString("limit");
-    if ((!TextUtils.isEmpty(str2)) && (str2.equals(paramAppInterface.getCurrentAccountUin())) && (!TextUtils.isEmpty(str1)))
-    {
-      paramJSONObject = new JSONObject();
-      paramJSONObject.put("listid", str1);
-      paramJSONObject.put("uin", str2);
-      paramJSONObject.put("offset", str3);
-      paramJSONObject.put("limit", str4);
-      paramJSONObject.put("viewTag", paramString);
-      b(paramAppInterface, paramJSONObject.toString(), paramResultReceiver);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("H5HbUtil", 2, "notifyViewUpdate extstr = " + paramJSONObject);
-  }
-  
-  private static void b(AppInterface paramAppInterface, String paramString, ResultReceiver paramResultReceiver)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    try
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("extra_data", paramString);
-      localBundle.putString("callbackSn", "0");
-      paramString = new Bundle();
-      paramString.putInt("PayInvokerId", 22);
-      Parcel localParcel = Parcel.obtain();
-      paramResultReceiver.writeToParcel(localParcel, 0);
-      localParcel.setDataPosition(0);
-      paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-      localParcel.recycle();
-      paramString.putParcelable("_qwallet_payresult_receiver", paramResultReceiver);
-      paramString.putBundle("_qwallet_payparams_data", localBundle);
-      paramString.putString("_qwallet_payparams_tag", "redgiftH5CommonDetail");
-      QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
-      return;
-    }
-    catch (Throwable paramAppInterface)
-    {
-      paramAppInterface.printStackTrace();
     }
   }
 }

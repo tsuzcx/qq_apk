@@ -1,14 +1,30 @@
-public abstract interface tsu
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+
+public class tsu
+  implements TVK_SDKMgr.InstallListener
 {
-  public abstract void a();
+  public tsu(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
   
-  public abstract void a(int paramInt);
+  public void onInstallProgress(float paramFloat)
+  {
+    acvc.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  public void onInstalledFailed(int paramInt)
+  {
+    acvc.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+  }
   
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(int paramInt);
+  public void onInstalledSuccessed()
+  {
+    acvc.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
+    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
+      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
+    }
+  }
 }
 
 

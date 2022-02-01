@@ -1,25 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahzq
-  implements View.OnClickListener
+public class ahzq
+  implements ahyf
 {
-  ahzq(ahzo paramahzo, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if ((ahzo.a(this.jdField_a_of_type_Ahzo) != null) && (ahzo.a(this.jdField_a_of_type_Ahzo).isShowing())) {
-      ahzo.a(this.jdField_a_of_type_Ahzo).dismiss();
-    }
-    if ((this.jdField_a_of_type_Ahzo.a != null) && (this.jdField_a_of_type_Ahzo.a.isShowing()))
-    {
-      this.jdField_a_of_type_Ahzo.a.dismiss();
-      this.jdField_a_of_type_Ahzo.a = null;
-    }
-    ahzo.a(this.jdField_a_of_type_Ahzo, this.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramahed.d(paramMessageRecord, paramahfq, paramString);
   }
 }
 

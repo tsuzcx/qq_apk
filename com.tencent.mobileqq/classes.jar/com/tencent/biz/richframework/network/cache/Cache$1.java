@@ -1,6 +1,6 @@
 package com.tencent.biz.richframework.network.cache;
 
-import zwu;
+import aaap;
 
 public class Cache$1
   implements Runnable

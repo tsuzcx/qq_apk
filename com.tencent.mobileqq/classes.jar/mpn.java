@@ -1,20 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.CameraUtils;
 
-class mpn
-  extends mbx
+public class mpn
+  extends mrc
 {
-  mpn(mpj parammpj) {}
+  public lfl a;
+  public ljl a;
+  public mct a;
   
-  protected void b(mcb parammcb)
+  mpn(mpv parammpv)
   {
-    if (parammcb.jdField_b_of_type_Boolean) {
-      return;
-    }
-    parammcb.jdField_b_of_type_Boolean = this.a.a(false, 2);
-    if (parammcb.jdField_b_of_type_Boolean) {
-      parammcb.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammcb.jdField_b_of_type_Boolean + "]");
+    super(parammpv);
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_Ljl = new mpo(this);
+    this.jdField_a_of_type_Lfl = new mpp(this);
+    this.jdField_a_of_type_Mct = new mpq(this);
+    CameraUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication()).a(this.jdField_a_of_type_Ljl);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lfl);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mct);
   }
 }
 

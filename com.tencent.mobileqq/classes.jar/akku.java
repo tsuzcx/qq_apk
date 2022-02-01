@@ -1,82 +1,104 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akku
-  extends akif
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private static final akku jdField_a_of_type_Akku = new akku();
+  private Map<String, List<WeakReference<akkr>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  akku(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  private int a(List<WeakReference<akkr>> paramList, akkr paramakkr)
   {
-    super(paramNewPhotoPreviewActivity);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        akkr localakkr = (akkr)((WeakReference)paramList.next()).get();
+        if ((localakkr != null) && (localakkr == paramakkr)) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
   }
   
-  protected void d()
+  public static akku a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    return jdField_a_of_type_Akku;
+  }
+  
+  public void a(int paramInt, String paramString, akkr paramakkr)
+  {
+    try
     {
-      zgo.a(this.mActivity, this.mPhotoCommonData.selectedPhotoList);
-      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setClickable(true);
+      String str = adak.a(paramString, paramInt);
+      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
+      paramString = localList;
+      if (localList == null)
+      {
+        paramString = new ArrayList(2);
+        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+      }
+      if (a(paramString, paramakkr) < 0) {
+        paramString.add(new WeakReference(paramakkr));
+      }
       return;
     }
-    super.d();
+    finally {}
   }
   
-  public void initData(Intent paramIntent)
+  public boolean a(int paramInt, String paramString)
   {
-    super.initData(paramIntent);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("from_tribe_slideshow", false);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("from_tribe_class_name");
-    ((akib)this.mOtherCommonData).a(this.jdField_a_of_type_Boolean, this.mPhotoCommonData);
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt1 == 10012)
+    for (;;)
     {
-      if ((paramInt2 == -1) && (this.jdField_a_of_type_Boolean))
+      try
       {
-        ((NewPhotoPreviewActivity)this.mActivity).setResult(paramInt2, paramIntent);
-        ((NewPhotoPreviewActivity)this.mActivity).finish();
-      }
-      do
-      {
-        do
+        paramString = adak.a(paramString, paramInt);
+        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        if ((paramString != null) && (paramString.size() > 0))
         {
-          return;
-        } while (!this.jdField_a_of_type_Boolean);
-        paramIntent = paramIntent.getStringExtra("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA");
-      } while (TextUtils.isEmpty(paramIntent));
-      bgmg.a(new File(paramIntent).getParent());
-      return;
+          paramString = paramString.iterator();
+          if (paramString.hasNext())
+          {
+            if ((akkr)((WeakReference)paramString.next()).get() == null) {
+              continue;
+            }
+            bool = true;
+            if (QLog.isColorLevel()) {
+              QLog.d(akmh.a, 2, "hasOtherInstance -->" + bool);
+            }
+            return bool;
+          }
+        }
+      }
+      finally {}
+      boolean bool = false;
     }
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  public void b(int paramInt, String paramString, akkr paramakkr)
   {
-    super.onMagicStickClick(paramView, paramInt1, paramBundle, paramInt2, paramIntent);
-    if ((this.jdField_a_of_type_Akic.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    try
     {
-      if (!TroopBarPublishActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
-        break label60;
+      paramString = adak.a(paramString, paramInt);
+      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if ((paramString != null) && (paramString.size() > 0) && (paramakkr != null))
+      {
+        paramInt = a(paramString, paramakkr);
+        if (paramInt >= 0) {
+          paramString.remove(paramInt);
+        }
       }
-      bfqh.a("pub_page_new", "clk_photo_edit", 0, 0, new String[0]);
-    }
-    label60:
-    while (!TroopBarReplyActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    bfqh.a("reply", "clk_photo_edit", 0, 0, new String[0]);
+    finally {}
   }
 }
 

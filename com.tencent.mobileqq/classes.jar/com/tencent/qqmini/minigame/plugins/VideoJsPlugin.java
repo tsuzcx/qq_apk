@@ -53,7 +53,7 @@ public class VideoJsPlugin
       ((CoverVideoView)localObject).setVideoPlayerId(paramInt);
       ((CoverVideoView)localObject).setParentId(paramInt);
       this.mCoverViewSparseArray.put(paramInt, localObject);
-      GameVideoPlayerManager.getInstance().addPlayerView((ViewGroup)localObject);
+      GameVideoPlayerManager.addPlayerView(paramIMiniAppContext, (ViewGroup)localObject);
     }
     for (paramIJsService = (IJsService)localObject;; paramIJsService = (IJsService)localObject)
     {
@@ -79,15 +79,15 @@ public class VideoJsPlugin
       if ((localCoverView1 != null) && (localCoverView1.getParentId() == paramInt))
       {
         if (localCoverView1.getParentId() != 0) {
-          break label72;
+          break label73;
         }
-        GameVideoPlayerManager.getInstance().removeView(localCoverView1);
+        GameVideoPlayerManager.removeView(this.mMiniAppContext, localCoverView1);
       }
       for (;;)
       {
         i += 1;
         break;
-        label72:
+        label73:
         CoverView localCoverView2 = (CoverView)this.mCoverViewSparseArray.get(localCoverView1.getParentId());
         if (localCoverView2 != null) {
           localCoverView2.removeView(localCoverView1);
@@ -103,7 +103,7 @@ public class VideoJsPlugin
       return;
     }
     removeCoverChildView(paramInt);
-    GameVideoPlayerManager.getInstance().removeView(localCoverView);
+    GameVideoPlayerManager.removeView(this.mMiniAppContext, localCoverView);
   }
   
   private void updateVideoPlayer(int paramInt, JSONObject paramJSONObject)

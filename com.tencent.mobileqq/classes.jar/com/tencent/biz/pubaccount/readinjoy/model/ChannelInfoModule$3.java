@@ -1,17 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pmk;
-import pwn;
+import pfd;
+import poz;
+import pqw;
 
 public class ChannelInfoModule$3
   implements Runnable
 {
-  public ChannelInfoModule$3(pwn parampwn, List paramList) {}
+  public ChannelInfoModule$3(poz parampoz, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    pmk.a().c(true, this.a);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      pfd.a().d(false, null);
+      return;
+    }
+    pqw.a().a(this.jdField_a_of_type_JavaUtilList);
+    this.this$0.f(this.jdField_a_of_type_JavaUtilList);
+    pfd.a().d(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

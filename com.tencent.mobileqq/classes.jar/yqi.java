@@ -1,29 +1,8 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
+import com.tribe.async.dispatch.IEventReceiver;
 
-class yqi
-{
-  public TextView a;
-  
-  public yqi(View paramView)
-  {
-    this.a = ((TextView)paramView.findViewById(2131378227));
-  }
-  
-  public void a(zhq paramzhq, yqh paramyqh)
-  {
-    if (TextUtils.isEmpty(paramzhq.a))
-    {
-      this.a.setVisibility(8);
-      return;
-    }
-    this.a.setVisibility(0);
-    this.a.setText(yqd.a(paramzhq));
-    yqd.a(this.a);
-    this.a.setOnClickListener(new yqj(this, paramyqh, paramzhq));
-  }
-}
+public abstract interface yqi
+  extends IEventReceiver
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

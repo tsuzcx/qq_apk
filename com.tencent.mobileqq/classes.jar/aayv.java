@@ -1,53 +1,45 @@
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
 
-class aayv
-  implements aayz
+public class aayv
+  implements blnt
 {
-  aayv(aayr paramaayr) {}
+  public aayv(RefreshView paramRefreshView) {}
   
-  public void a(int paramInt, aazd paramaazd)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (aayr.a(this.a)) {
-      aayr.a(this.a);
-    }
-    VsMusicItemInfo localVsMusicItemInfo = aayr.a(this.a).a(paramInt);
-    if ((aayr.c(this.a) != null) && (localVsMusicItemInfo != null))
+    if (this.a.jdField_a_of_type_Int == 2)
     {
-      QLog.i("EditVideoSmartMusicPart", 1, "onPositionChange:" + paramInt + ", music name:" + localVsMusicItemInfo.mMusicName + ", musicSongMid:" + localVsMusicItemInfo.mSongMid + ", musicCoverUrl:" + localVsMusicItemInfo.mAlbumUrl + ", musicUrl:" + localVsMusicItemInfo.mUrl);
-      aayr.b(this.a);
-      aayr.c(this.a).setText(localVsMusicItemInfo.mMusicName);
-      aayr.a(this.a, localVsMusicItemInfo, paramInt, paramaazd);
-    }
-    aayr.c(this.a);
-  }
-  
-  public void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo)
-  {
-    boolean bool = false;
-    if (paramInt == this.a.a) {
+      this.a.jdField_a_of_type_Aayo.aq_();
       return;
     }
-    aayr.a(this.a).setHasAutoSet(false);
-    if (aayr.a(this.a) != null)
-    {
-      paramVsMusicItemInfo = aayr.a(this.a);
-      if (!aayr.a(this.a)) {
-        bool = true;
-      }
-      paramVsMusicItemInfo.a(bool);
-      aayr.a(this.a).b();
-    }
-    aayr.a(this.a).smoothScrollToPosition(paramInt);
+    this.a.jdField_a_of_type_Aayo.c(0L);
   }
   
-  public void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    if ((paramBoolean) && (aayr.a(this.a) != null) && (aayr.a(this.a).mSongMid != null) && (aayr.a(this.a).mSongMid.equals(paramVsMusicItemInfo.mSongMid))) {
-      aayr.a(this.a, paramVsMusicItemInfo, paramInt, null);
+    if (this.a.jdField_a_of_type_Int != 2)
+    {
+      RefreshView.a(this.a, false);
+      this.a.a(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_Aayo.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
     }
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_Aayo.b(0L);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.a();
   }
 }
 

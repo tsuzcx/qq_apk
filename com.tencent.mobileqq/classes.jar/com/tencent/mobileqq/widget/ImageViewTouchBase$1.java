@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.widget;
 
-import bibq;
+import bjco;
 
 class ImageViewTouchBase$1
   implements Runnable
 {
-  ImageViewTouchBase$1(ImageViewTouchBase paramImageViewTouchBase, bibq parambibq, boolean paramBoolean) {}
+  ImageViewTouchBase$1(ImageViewTouchBase paramImageViewTouchBase, bjco parambjco, boolean paramBoolean) {}
   
   public void run()
   {
-    this.this$0.setImageRotateBitmapResetBase(this.jdField_a_of_type_Bibq, this.jdField_a_of_type_Boolean);
+    this.this$0.setImageRotateBitmapResetBase(this.jdField_a_of_type_Bjco, this.jdField_a_of_type_Boolean);
   }
 }
 

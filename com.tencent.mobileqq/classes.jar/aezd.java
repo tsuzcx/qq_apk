@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class aezd
-  implements bhao
+  implements Handler.Callback
 {
-  public aezd(QQSettingMe paramQQSettingMe) {}
+  public aezd(NearbyActivity paramNearbyActivity) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a.a != null)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.a.c)
+      {
+        this.a.g();
+        this.a.b.removeMessages(1000);
+        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
+        continue;
+        NearbyActivity.a(this.a);
       }
-      this.a.c(this.a.a.getAccount());
     }
   }
 }

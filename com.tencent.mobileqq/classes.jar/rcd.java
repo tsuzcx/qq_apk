@@ -1,23 +1,30 @@
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function3;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IModel;", "", "failedToast", "", "getFailedToast", "()Ljava/lang/String;", "successToast", "getSuccessToast", "copyToClipboard", "", "watchWord", "url", "title", "isOpen", "", "type", "", "fetchTopicWatchWord", "topicId", "callback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "fetchVideoWatchWord", "rowkey", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rcd
+public class rcd
+  implements View.OnTouchListener
 {
-  @NotNull
-  public abstract String a();
+  public rcd(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @Nullable String paramString3, @NotNull String paramString4, @Nullable Function3<? super String, ? super String, ? super Boolean, Unit> paramFunction3);
-  
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @Nullable Function3<? super String, ? super String, ? super Boolean, Unit> paramFunction3);
-  
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, boolean paramBoolean, int paramInt);
-  
-  @NotNull
-  public abstract String b();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
+    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
+    {
+      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
+      if (paramMotionEvent.getRawX() >= f)
+      {
+        ReadInJoyVideoSearchTagFragment.a(this.a);
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 

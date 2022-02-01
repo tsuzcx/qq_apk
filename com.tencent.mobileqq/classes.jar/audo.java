@@ -1,35 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class audo
-  implements BusinessObserver
+public abstract interface audo
 {
-  public void a() {}
+  public abstract View a();
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
   
-  public void b() {}
+  public abstract void a(boolean paramBoolean);
   
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  public abstract boolean a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 967: 
-      b(paramBoolean, paramBundle);
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 969: 
-      b();
-      return;
-    }
-    a();
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

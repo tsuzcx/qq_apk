@@ -1,242 +1,256 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.VideoView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.Vector;
 
+@Deprecated
 public class ypv
-  extends ReportDialog
+  extends yqc
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int = -1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VideoView jdField_a_of_type_AndroidWidgetVideoView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
-  private String e;
+  public volatile int a;
+  protected Handler a;
+  protected ErrorMessage a;
+  private String a;
+  protected LinkedHashMap<String, yqf> a;
+  protected Vector<yqf> a;
+  protected boolean a;
+  private Handler b = new Handler(paramLooper, this);
+  private Handler c;
   
-  public ypv(Context paramContext, int paramInt)
+  public ypv(Looper paramLooper)
   {
-    super(paramContext, paramInt);
+    this.jdField_a_of_type_JavaLangString = "ParallelStepExecutor";
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private void a()
+  private void b(String paramString)
   {
-    if (!TextUtils.isEmpty(this.e))
-    {
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVideoPath(this.e);
-      this.jdField_a_of_type_AndroidWidgetVideoView.setZOrderOnTop(true);
-      this.jdField_a_of_type_AndroidWidgetVideoView.start();
-      return;
+    if (paramString == null) {
+      yuk.e("Q.qqstory.home.ParallelStepExecutor", "occur error ! step key is null!!");
     }
-    this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "story_rename_guide";
-      ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = zlx.a(getContext(), 3.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = zlx.a(getContext(), 155.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = zlx.a(getContext(), 307.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bdzx.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = bdzx.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
-        if (((URLDrawable)localObject).getStatus() != 1) {
-          ((URLDrawable)localObject).restartDownload();
-        }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        return;
+      return;
+      yuk.e("Q.qqstory.home.ParallelStepExecutor", "%s have been finish", new Object[] { paramString });
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
+    } while (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() != 0);
+    yuk.b("Q.qqstory.home.ParallelStepExecutor", "all step have finish");
+    if (this.jdField_a_of_type_Yqd != null)
+    {
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
       }
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      if (((URLDrawable)localObject).getStatus() != 1) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      zlx.a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, zlx.a(getContext(), 307.0F), zlx.a(getContext(), 155.0F), new ykh(zlx.a(getContext(), 4.0F), 0, 0.504886F, null, null));
-      return;
-    }
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Int);
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public ypv a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public ypv a(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public ypv a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public ypv b(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public ypv b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public ypv b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public ypv c(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public ypv c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public ypv d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void dismiss()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetVideoView != null) && (this.jdField_a_of_type_AndroidWidgetVideoView.isPlaying())) {
-      this.jdField_a_of_type_AndroidWidgetVideoView.stopPlayback();
-    }
-    super.dismiss();
-  }
-  
-  public ypv e(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2131561704);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374485));
-    this.jdField_a_of_type_AndroidWidgetVideoView = ((VideoView)findViewById(2131380834));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374486));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374484));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374483));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131374488));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131374489));
-    a();
-    b();
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (!TextUtils.isEmpty(this.d)) {
-        break label256;
-      }
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      label148:
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        break label314;
-      }
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_Yqe.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
     }
     for (;;)
     {
-      if (this.jdField_c_of_type_AndroidViewView$OnClickListener == null) {
-        break label372;
-      }
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
+      d();
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString) > zlx.a(getContext(), 280.0F)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-        break;
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      }
-      label256:
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.d);
-      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        break label148;
-      }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ypw(this));
-      break label148;
-      label314:
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetButton.setTag(this.jdField_c_of_type_JavaLangString);
-      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      } else {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ypx(this));
-      }
+      label99:
+      this.jdField_a_of_type_Yqd.a();
     }
-    label372:
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new ypy(this));
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public ypv a(yqd paramyqd)
+  {
+    this.jdField_a_of_type_Yqd = paramyqd;
+    return this;
+  }
+  
+  public ypv a(yqe paramyqe)
+  {
+    this.jdField_a_of_type_Yqe = paramyqe;
+    return this;
+  }
+  
+  public ypv a(yqf paramyqf)
+  {
+    yuk.a("Q.qqstory.home.ParallelStepExecutor", "add Step:%s", paramyqf.a());
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramyqf.a(), paramyqf);
+    this.jdField_a_of_type_Int = 0;
+    return this;
+  }
+  
+  /* Error */
+  public void a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 61
+    //   4: ldc 133
+    //   6: iconst_1
+    //   7: anewarray 73	java/lang/Object
+    //   10: dup
+    //   11: iconst_0
+    //   12: aload_0
+    //   13: getfield 33	ypv:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
+    //   16: invokevirtual 84	java/util/LinkedHashMap:size	()I
+    //   19: invokestatic 139	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   22: aastore
+    //   23: invokestatic 141	yuk:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   26: aload_0
+    //   27: getfield 52	ypv:jdField_a_of_type_Int	I
+    //   30: iconst_2
+    //   31: if_icmpne +13 -> 44
+    //   34: ldc 61
+    //   36: ldc 143
+    //   38: invokestatic 69	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   41: aload_0
+    //   42: monitorexit
+    //   43: return
+    //   44: aload_0
+    //   45: iconst_1
+    //   46: putfield 52	ypv:jdField_a_of_type_Int	I
+    //   49: aload_0
+    //   50: getfield 145	ypv:c	Landroid/os/Handler;
+    //   53: ifnonnull +18 -> 71
+    //   56: aload_0
+    //   57: new 40	android/os/Handler
+    //   60: dup
+    //   61: invokestatic 148	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   64: aload_0
+    //   65: invokespecial 55	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   68: putfield 145	ypv:c	Landroid/os/Handler;
+    //   71: aload_0
+    //   72: getfield 33	ypv:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
+    //   75: invokevirtual 152	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
+    //   78: invokeinterface 158 1 0
+    //   83: astore_1
+    //   84: aload_1
+    //   85: invokeinterface 164 1 0
+    //   90: ifeq -49 -> 41
+    //   93: aload_1
+    //   94: invokeinterface 168 1 0
+    //   99: checkcast 170	java/util/Map$Entry
+    //   102: invokeinterface 173 1 0
+    //   107: checkcast 122	yqf
+    //   110: astore_2
+    //   111: aload_2
+    //   112: aload_0
+    //   113: invokeinterface 176 2 0
+    //   118: aload_2
+    //   119: aload_0
+    //   120: invokeinterface 179 2 0
+    //   125: aload_0
+    //   126: getfield 57	ypv:b	Landroid/os/Handler;
+    //   129: iconst_2
+    //   130: aload_2
+    //   131: invokevirtual 183	android/os/Handler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   134: invokevirtual 188	android/os/Message:sendToTarget	()V
+    //   137: goto -53 -> 84
+    //   140: astore_1
+    //   141: aload_0
+    //   142: monitorexit
+    //   143: aload_1
+    //   144: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	145	0	this	ypv
+    //   83	11	1	localIterator	Iterator
+    //   140	4	1	localObject	Object
+    //   110	21	2	localyqf	yqf
+    // Exception table:
+    //   from	to	target	type
+    //   2	41	140	finally
+    //   44	71	140	finally
+    //   71	84	140	finally
+    //   84	137	140	finally
+  }
+  
+  public void a(ErrorMessage paramErrorMessage)
+  {
+    yuk.e("Q.qqstory.home.ParallelStepExecutor", "occur error:%s", new Object[] { paramErrorMessage.getErrorMessage() });
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    a(paramErrorMessage.extraMsg);
+  }
+  
+  public void a(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        int i = this.jdField_a_of_type_Int;
+        if (i == 3) {
+          return;
+        }
+        if (this.c != null)
+        {
+          this.c.obtainMessage(1, paramString).sendToTarget();
+          continue;
+        }
+        yuk.e("Q.qqstory.home.ParallelStepExecutor", "there is no mCompletedHandler !!!!");
+      }
+      finally {}
+      b(paramString);
+    }
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int = 3;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+      if (this.c != null) {
+        this.c.removeMessages(1);
+      }
+      if (this.b != null) {
+        this.b.removeMessages(2);
+      }
+      yuk.b("Q.qqstory.home.ParallelStepExecutor", "reset!");
+      if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
+      {
+        yuk.b("Q.qqstory.home.ParallelStepExecutor", "reset premissSteps");
+        ((yqf)this.jdField_a_of_type_JavaUtilVector.get(0)).c();
+        this.jdField_a_of_type_JavaUtilVector.clear();
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        yqf localyqf = (yqf)((Map.Entry)localIterator.next()).getValue();
+        if (localyqf != null) {
+          localyqf.c();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    }
+    finally {}
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      b((String)paramMessage.obj);
+      continue;
+      ((yqf)paramMessage.obj).a();
+    }
   }
 }
 

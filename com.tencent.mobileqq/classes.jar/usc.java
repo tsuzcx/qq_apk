@@ -1,17 +1,33 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-class usc
-  implements AdExposureChecker.ExposureCallback
+public class usc
 {
-  usc(usb paramusb) {}
-  
-  public void onExposure(WeakReference<View> paramWeakReference)
+  @NonNull
+  public static uru a(String paramString, urv paramurv)
   {
-    FLog.e("AdExposureChecker", "onExposure");
-    urv.a(usb.a(this.a), (uru)this.a.a());
+    if (TextUtils.equals(paramString, "recommend_tab")) {
+      return new uvs(paramurv);
+    }
+    if (TextUtils.equals(paramString, "follow_tab")) {
+      return new uvk(paramurv);
+    }
+    if ((TextUtils.equals(paramString, "mini_app_personal_main")) || (TextUtils.equals(paramString, "mini_app_personal_guest"))) {
+      return new uvq(paramurv);
+    }
+    if (TextUtils.equals(paramString, "vertical_layer_collection")) {
+      return new uvj(paramurv);
+    }
+    if (TextUtils.equals(paramString, "friend_feed")) {
+      return new uvm(paramurv);
+    }
+    if (TextUtils.equals(paramString, "aio_home_page")) {
+      return new uvn(paramurv);
+    }
+    if (TextUtils.equals(paramString, "qqchat")) {
+      return new uvi(paramurv);
+    }
+    return new uvs(paramurv);
   }
 }
 

@@ -1,13 +1,47 @@
-import com.tencent.ttpic.openapi.listener.MaterialLoadFinishListener;
-
-class bnie
-  implements MaterialLoadFinishListener
+public abstract class bnie
 {
-  bnie(bnid parambnid) {}
+  protected String a;
+  protected boolean a;
   
-  public void onLoadFinish(long paramLong)
+  public bnie(String paramString, boolean paramBoolean)
   {
-    bnyh.a().a(bnid.a(this.a), paramLong);
+    a(paramString);
+    a(paramBoolean);
+  }
+  
+  public abstract String a();
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String d()
+  {
+    if (a()) {
+      return a();
+    }
+    return null;
   }
 }
 

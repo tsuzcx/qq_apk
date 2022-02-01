@@ -1,63 +1,267 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.mobileqq.data.CustomEmotionData;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.1;
+import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.2;
+import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.3;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.manager.Manager;
 
-public abstract class ases
+public abstract class ases<T extends CustomEmotionBase>
+  implements Manager
 {
-  public static ases a(Bundle paramBundle)
+  public QQAppInterface a;
+  protected List<T> a;
+  
+  public ases(QQAppInterface paramQQAppInterface)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    int i;
-    if (paramBundle != null)
-    {
-      localObject1 = localObject2;
-      if (paramBundle.containsKey("cur_data_source_type"))
-      {
-        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
-        i = paramBundle.getInt("cur_data_source_type");
-        if (i != 0) {
-          break label53;
-        }
-        localObject1 = new asfd(null).b(paramBundle);
-      }
-    }
-    label53:
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public abstract asmu a(T paramT);
+  
+  public T a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
     do
     {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (i != 1);
-    return new asfb(null).b(paramBundle);
+      EntityManager localEntityManager;
+      do
+      {
+        return null;
+        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+      } while (localEntityManager == null);
+      paramString = localEntityManager.query(a(), false, "url=?", new String[] { paramString }, null, null, null, null);
+      localEntityManager.close();
+    } while ((paramString == null) || (paramString.size() != 1));
+    return (CustomEmotionBase)paramString.get(0);
   }
   
-  public abstract int a(List<ases> paramList);
+  public abstract Class a();
   
-  public abstract long a();
+  public abstract List<T> a();
   
-  public abstract Drawable a(Context paramContext);
-  
-  public abstract arxg a();
-  
-  public abstract CustomEmotionData a();
-  
-  public void a(Bundle paramBundle, int paramInt)
+  public List<String> a(String paramString)
   {
-    paramBundle.putInt("cur_data_source_type", paramInt);
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(paramString)) {
+      return localArrayList;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from getCustomEmoticonResIdsByType.");
+    }
+    Object localObject = a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)((Iterator)localObject).next();
+        String str = localCustomEmotionBase.resid;
+        if ((localCustomEmotionBase.RomaingType.equals(paramString)) && (str != null) && (!"".equals(str))) {
+          localArrayList.add(str);
+        }
+      }
+    }
+    return localArrayList;
   }
   
-  public abstract boolean a();
+  public void a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
+      if (localCustomEmotionBase.RomaingType.equals("failed")) {
+        localArrayList.add(localCustomEmotionBase);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList.removeAll(localArrayList);
+    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+  }
   
-  public abstract boolean a(ases paramases);
+  public void a(aset paramaset)
+  {
+    if (paramaset == null) {
+      return;
+    }
+    ThreadManager.post(new CustomEmotionRoamingDBManagerBase.3(this, paramaset), 5, null, true);
+  }
   
-  public abstract boolean b();
+  public void a(T paramT)
+  {
+    if (paramT != null)
+    {
+      b(paramT, 4);
+      a(paramT, 4);
+    }
+  }
   
-  public abstract boolean c();
+  public void a(T paramT, int paramInt)
+  {
+    if (paramT == null) {
+      return;
+    }
+    a(new CustomEmotionRoamingDBManagerBase.2(this, paramInt, paramT), 8);
+  }
   
-  public abstract boolean d();
+  public void a(Runnable paramRunnable, int paramInt)
+  {
+    if (paramRunnable != null)
+    {
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        paramRunnable.run();
+      }
+    }
+    else {
+      return;
+    }
+    ThreadManager.post(paramRunnable, paramInt, null, true);
+  }
+  
+  public void a(List<T> paramList)
+  {
+    if ((paramList == null) || (paramList.size() < 1)) {
+      return;
+    }
+    int i = 0;
+    while (i < paramList.size())
+    {
+      b((CustomEmotionBase)paramList.get(i), 4);
+      i += 1;
+    }
+    a(paramList, 4);
+  }
+  
+  protected void a(List<T> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() < 1)) {
+      return;
+    }
+    a(new CustomEmotionRoamingDBManagerBase.1(this, paramList, paramInt), 8);
+  }
+  
+  public abstract List<asmu> b();
+  
+  public List<T> b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    List localList;
+    do
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from getEmoticonDatasByType.");
+      }
+      localList = a();
+    } while ((localList == null) || (localList.size() <= 0));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localList.get(i);
+      if (localCustomEmotionBase.RomaingType.equals(paramString)) {
+        localArrayList.add(localCustomEmotionBase);
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void b(T paramT)
+  {
+    if (paramT != null)
+    {
+      b(paramT, 2);
+      a(paramT, 2);
+    }
+  }
+  
+  protected void b(T paramT, int paramInt)
+  {
+    if (paramT == null) {}
+    CustomEmotionBase localCustomEmotionBase;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext())
+      {
+        do
+        {
+          switch (paramInt)
+          {
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("CustomEmotionRoamingDBManagerBase", 2, "can not update fav emoticon cache data, type:" + paramInt);
+        return;
+        this.jdField_a_of_type_JavaUtilList.add(paramT);
+        return;
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
+        } while (localCustomEmotionBase.emoId != paramT.emoId);
+        localCustomEmotionBase.replace(paramT);
+        return;
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      }
+      localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
+    } while (localCustomEmotionBase.emoId != paramT.emoId);
+    this.jdField_a_of_type_JavaUtilList.remove(localCustomEmotionBase);
+  }
+  
+  public abstract List<asmu> c();
+  
+  public List<T> c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from findMagicEmosById.");
+    }
+    List localList = a();
+    ArrayList localArrayList = new ArrayList();
+    if ((localList != null) && (localList.size() > 0))
+    {
+      int i = 0;
+      while (i < localList.size())
+      {
+        CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localList.get(i);
+        if ((localCustomEmotionBase != null) && (localCustomEmotionBase.emoPath.equals(paramString))) {
+          localArrayList.add(localCustomEmotionBase);
+        }
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void c(T paramT)
+  {
+    if (paramT != null)
+    {
+      b(paramT, 1);
+      a(paramT, 1);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
 }
 
 

@@ -1,30 +1,29 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+
 public class azfb
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public azfb(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public boolean a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.b != null)
-    {
-      bool1 = bool2;
-      if (this.b.trim().length() > 0) {
-        bool1 = false;
-      }
+    ScanIconAnimateView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    return bool1;
   }
   
-  public String toString()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.c).append(",").append(this.d).append("]");
-    return localStringBuilder.toString();
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 

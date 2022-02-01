@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-
-public class ztr
-  implements DialogInterface.OnClickListener
+public abstract interface ztr
 {
-  public ztr(QRLoginMgrActivity paramQRLoginMgrActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(ztp paramztp, float paramFloat);
 }
 
 

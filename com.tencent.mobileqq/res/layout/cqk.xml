@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cqh" />
-    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/ngp" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
-</FrameLayout>
+<RelativeLayout android:id="@id/naq" android:background="#ffe3ebeb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:id="@id/nar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="@string/wuc" android:layout_centerVertical="true" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nbg" android:layout_width="47.0dip" android:layout_height="26.0dip" android:layout_marginRight="8.5dip" android:text="@string/wrv" />
+        <com.tencent.biz.subscribe.widget.ShadowCardView android:id="@id/nbi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginRight="12.0dip" app:shadowBlur="5.0dip" app:shadowBottomHeight="5.0dip" app:shadowCardColor="#ffecedf5" app:shadowCardOffsetY="0.0dip" app:shadowHeightColor="#99a6abbd" app:shadowLeftHeight="0.0dip" app:shadowRightHeight="3.0dip" app:shadowRound="1.0dip" app:shadowTopHeight="0.0dip">
+            <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:gravity="center" android:id="@id/nbh" android:layout_width="54.0dip" android:layout_height="26.0dip" android:text="@string/ws1" />
+        </com.tencent.biz.subscribe.widget.ShadowCardView>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/nbj" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/grh" />
+    </LinearLayout>
+</RelativeLayout>

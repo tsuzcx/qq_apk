@@ -1,36 +1,61 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.widget.HorizontalLabelLayout;
 
-final class spr
-  implements DialogInterface.OnClickListener
+public class spr
+  implements spj
 {
-  spr(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(BaseData paramBaseData)
   {
-    if (paramInt == 1)
+    switch (paramBaseData.r)
     {
-      bmqa.d(1);
-      bmqa.a(true);
-      ohp.b(this.a, 9);
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    default: 
+      throw new IllegalArgumentException();
+    case 7: 
+    case 13: 
+      return 7;
+    case 8: 
+    case 14: 
+      return 8;
+    case 15: 
+      return 13;
     }
-    for (;;)
+    return 14;
+  }
+  
+  public spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramContext);
+    switch (a(paramBaseData))
     {
-      if ((this.a instanceof Activity)) {
-        ((Activity)this.a).finish();
-      }
-      return;
-      paramDialogInterface = new Intent(this.a, SplashActivity.class);
-      paramDialogInterface.putExtra("fragment_id", 1);
-      paramDialogInterface.putExtra("open_kandian_tab_fragment", true);
-      paramDialogInterface.putExtra("arg_channel_cover_id", 0);
-      paramDialogInterface.setFlags(335544320);
-      this.a.startActivity(paramDialogInterface);
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    default: 
+      throw new IllegalArgumentException();
+    case 7: 
+      return new spv(this, localLayoutInflater.inflate(2131560179, paramViewGroup, false), paramBaseData);
+    case 8: 
+      return new spt(this, localLayoutInflater.inflate(2131560176, paramViewGroup, false), paramBaseData);
+    case 13: 
+      paramViewGroup = new HorizontalLabelLayout(paramContext);
+      int i = agej.a(15.0F, paramContext.getResources());
+      paramViewGroup.setPadding(i, 0, i, 0);
+      return new sps(this, paramViewGroup, paramBaseData);
     }
+    return new spu(this, localLayoutInflater.inflate(2131560099, paramViewGroup, false), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData.r == 7) || (paramBaseData.r == 8) || (paramBaseData.r == 13) || (paramBaseData.r == 14) || (paramBaseData.r == 15) || (paramBaseData.r == 16);
   }
 }
 

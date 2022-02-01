@@ -1,50 +1,99 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.ark.ark;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.utils.ArkPubicEventWrap.QWalletArkNotify.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONObject;
 
 public class alhz
-  implements View.OnTouchListener
+  extends apwi
+  implements apwk
 {
-  public alhz(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public alhz(alhw paramalhw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    if (!this.a.l) {}
-    while (((!this.a.f) && (!this.a.c)) || (paramView.getId() != 2131366770)) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
-      }
-      if (!this.a.b.isLongClickable()) {
-        this.a.a.e();
-      }
-      this.a.b.setText(null);
-      return false;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
+      QLog.i("ArkPubicEventWrap", 2, String.format(Locale.getDefault(), "appName:%1$s;eventName:%2$s;params:%3$s;", new Object[] { paramString1, paramString2, paramString3 }));
     }
-    if (this.a.a != null) {
-      this.a.a.e();
+    if ("ad_query_mute".equals(paramString2)) {
+      alhw.a(this.a, paramString1);
     }
-    if (this.a.b != null) {
-      this.a.b.setText(2131692285);
+    do
+    {
+      do
+      {
+        return true;
+        if (!"event_query_package".equals(paramString2)) {
+          break;
+        }
+      } while (TextUtils.isEmpty(paramString3));
+      for (;;)
+      {
+        try
+        {
+          paramString2 = new JSONObject(paramString3).optString("packageName");
+          paramString2 = bhny.a(BaseApplicationImpl.getContext(), paramString2);
+          paramString3 = new JSONObject();
+          if ("0".equals(paramString2))
+          {
+            paramString3.put("errCode", 0);
+            paramString3.put("isInstall", false);
+            ark.arkNotify(paramString1, "event_query_package_callback", paramString3.toString(), "json");
+            return true;
+          }
+        }
+        catch (Throwable paramString2)
+        {
+          paramString2.printStackTrace();
+          ark.arkNotify(paramString1, "event_query_package_callback", "", "json");
+          return true;
+        }
+        paramString3.put("errCode", 0);
+        paramString3.put("isInstall", true);
+        paramString3.put("version", paramString2);
+      }
+      if (!"event_fullscreen_play".equals(paramString2)) {
+        break;
+      }
+    } while (TextUtils.isEmpty(paramString3));
+    try
+    {
+      paramString1 = new JSONObject(paramString3);
+      paramString1.optString("videoUrl");
+      paramString1.optString("playRate");
+      paramString1.optString("totalRate");
+      return true;
     }
-    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
-    FlowCameraActivity2.a(this.a);
-    return false;
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+      return true;
+    }
+    if ("beacon_report".equals(paramString2)) {
+      try
+      {
+        paramString1 = new JSONObject(paramString3);
+        alis.a("000004B5DU3Q3LD1", paramString1.optString("event_name"), paramString1.optJSONObject("params"));
+        return true;
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("ArkPubicEventWrap", 1, paramString1, new Object[0]);
+        return true;
+      }
+    }
+    if ("get_view_location".equals(paramString2))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new ArkPubicEventWrap.QWalletArkNotify.1(this, paramString1, paramString3));
+      return true;
+    }
+    alhw.a(this.a);
+    this.a.notifyObservers(new alhy(this.a, paramString1, paramString2, paramString3));
+    return super.notify(paramString1, paramString2, paramString3);
   }
 }
 

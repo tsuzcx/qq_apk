@@ -10,9 +10,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
-import bctj;
-import bdzx;
-import beai;
+import bdmc;
+import beyq;
+import bezb;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class ThumbDecoder
-  implements beai
+  implements bezb
 {
   private static final String TAG = "ThumbDecoder";
   private float mDensity;
@@ -96,11 +96,11 @@ public class ThumbDecoder
             {
               localObject1 = localSafeDecodeOption.getInfo();
               ((HashMap)localObject1).put("from", "ThumbDecoder");
-              localObject2 = bctj.a(BaseApplication.getContext());
+              localObject2 = bdmc.a(BaseApplication.getContext());
               bool = localSafeDecodeOption.isGetBitmap;
               l = localSafeDecodeOption.runTime;
               i = localSafeDecodeOption.rawHeight;
-              ((bctj)localObject2).a(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
+              ((bdmc)localObject2).a(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
             }
             if (paramURL != null) {
               break;
@@ -124,7 +124,7 @@ public class ThumbDecoder
           localObject1 = localOutOfMemoryError2;
         }
       }
-      i = bdzx.a(localLocalMediaInfo.path);
+      i = beyq.a(localLocalMediaInfo.path);
       if ((i == 0) && (paramURL.getWidth() == localLocalMediaInfo.thumbWidth) && (paramURL.getHeight() == localLocalMediaInfo.thumbWidth) && (paramURL.getConfig() == Bitmap.Config.RGB_565)) {
         return paramURL;
       }

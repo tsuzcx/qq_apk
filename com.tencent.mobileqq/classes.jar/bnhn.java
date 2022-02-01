@@ -1,16 +1,8 @@
-import android.graphics.SurfaceTexture;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public abstract interface bnhn
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(BaseResp paramBaseResp);
 }
 
 

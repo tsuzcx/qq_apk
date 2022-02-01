@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent;
 
-import acwh;
+import adak;
 import android.content.Context;
 import android.text.TextUtils;
-import anni;
-import annl;
-import bdnt;
-import bglf;
-import bgnr;
+import anzj;
+import anzm;
+import begp;
+import bhlg;
+import bhnt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -28,9 +28,9 @@ public class RecentHotChatCenterItem
   
   public void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    String str = bglf.a(paramQQAppInterface, paramMessage.frienduin, true);
-    bgnr.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), paramMsgSummary, str, false, false);
-    if ((paramMessage.istroop == 1) && (acwh.m(paramMessage.msgtype))) {
+    String str = bhlg.a(paramQQAppInterface, paramMessage.frienduin, true);
+    bhnt.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), paramMsgSummary, str, false, false);
+    if ((paramMessage.istroop == 1) && (adak.m(paramMessage.msgtype))) {
       paramMsgSummary.strPrefix = str;
     }
   }
@@ -38,7 +38,7 @@ public class RecentHotChatCenterItem
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.mStatus = 0;
-    HotChatItemData localHotChatItemData = ((annl)paramQQAppInterface.getManager(255)).a();
+    HotChatItemData localHotChatItemData = ((anzm)paramQQAppInterface.getManager(255)).a();
     if ((localHotChatItemData == null) || (TextUtils.isEmpty(localHotChatItemData.mTroopUin))) {}
     do
     {
@@ -61,11 +61,11 @@ public class RecentHotChatCenterItem
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = paramContext.getString(2131692925);
+      this.mTitleName = paramContext.getString(2131692933);
     }
     MsgSummary localMsgSummary = null;
-    annl localannl = (annl)paramQQAppInterface.getManager(255);
-    HotChatItemData localHotChatItemData = localannl.a();
+    anzm localanzm = (anzm)paramQQAppInterface.getManager(255);
+    HotChatItemData localHotChatItemData = localanzm.a();
     QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
     Object localObject = localMsgSummary;
     if (localQQMessageFacade != null)
@@ -78,7 +78,7 @@ public class RecentHotChatCenterItem
     localMsgSummary = getMsgSummaryTemp();
     if (localObject != null)
     {
-      this.mUnreadNum = localannl.a();
+      this.mUnreadNum = localanzm.a();
       this.mDisplayTime = ((QQMessageFacade.Message)localObject).time;
       a((QQMessageFacade.Message)localObject, 1, paramQQAppInterface, paramContext, localMsgSummary);
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
@@ -91,7 +91,7 @@ public class RecentHotChatCenterItem
       {
         localMsgSummary.strPrefix = null;
         if ((localHotChatItemData != null) && (localHotChatItemData.mState == 1)) {
-          localMsgSummary.strContent = anni.a(2131711927);
+          localMsgSummary.strContent = anzj.a(2131712036);
         }
       }
       a(paramQQAppInterface);
@@ -104,19 +104,19 @@ public class RecentHotChatCenterItem
       if (this.mUnreadNum <= 0) {
         break label304;
       }
-      this.mContentDesc = String.format(anni.a(2131711928), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
+      this.mContentDesc = String.format(anzj.a(2131712037), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
       return;
       this.mUnreadNum = 0;
       this.mDisplayTime = 0L;
     }
     label304:
-    this.mContentDesc = String.format(anni.a(2131711926), new Object[] { this.mLastMsg, this.mShowTime });
+    this.mContentDesc = String.format(anzj.a(2131712035), new Object[] { this.mLastMsg, this.mShowTime });
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     super.a(paramQQAppInterface, paramContext, paramMsgSummary);
-    paramQQAppInterface = ((annl)paramQQAppInterface.getManager(255)).a();
+    paramQQAppInterface = ((anzm)paramQQAppInterface.getManager(255)).a();
     if (paramQQAppInterface != null) {
       if ((!paramQQAppInterface.mIsRead4Folder) && (!TextUtils.isEmpty(paramQQAppInterface.mADsContent))) {
         this.mLastMsg = (" " + paramQQAppInterface.mADsContent);
@@ -129,7 +129,7 @@ public class RecentHotChatCenterItem
         return;
         if (paramQQAppInterface.mState == 1)
         {
-          this.mLastMsg = anni.a(2131711930);
+          this.mLastMsg = anzj.a(2131712039);
           return;
         }
       } while (this.mUnreadNum <= 0);
@@ -154,20 +154,20 @@ public class RecentHotChatCenterItem
       do
       {
         return;
-        localHotChatItemData = ((annl)paramQQAppInterface.getManager(255)).a();
+        localHotChatItemData = ((anzm)paramQQAppInterface.getManager(255)).a();
       } while ((localHotChatItemData == null) || (TextUtils.isEmpty(localHotChatItemData.mTroopUin)) || (this.mDisplayTime >= localHotChatItemData.mDraftSec));
       localObject = ((QQMessageFacade)localObject).getDraftSummaryInfo(localHotChatItemData.mTroopUin, 1);
     } while ((localObject == null) || (TextUtils.isEmpty(((DraftSummaryInfo)localObject).getSummary())));
     this.mDisplayTime = ((DraftSummaryInfo)localObject).getTime();
     paramMsgSummary.bShowDraft = true;
     localObject = ((DraftSummaryInfo)localObject).getSummary();
-    paramQQAppInterface = bglf.a(paramQQAppInterface, localHotChatItemData.mTroopUin, true);
-    paramMsgSummary.mDraft = new bdnt(paramQQAppInterface + ": " + (String)localObject, 3, 16);
+    paramQQAppInterface = bhlg.a(paramQQAppInterface, localHotChatItemData.mTroopUin, true);
+    paramMsgSummary.mDraft = new begp(paramQQAppInterface + ": " + (String)localObject, 3, 16);
   }
   
   public void b(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    ((annl)paramQQAppInterface.getManager(255)).a();
+    ((anzm)paramQQAppInterface.getManager(255)).a();
     this.mMsgExtroInfo = "";
   }
 }

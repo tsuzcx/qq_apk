@@ -2508,7 +2508,7 @@ public class c
       try
       {
         HashMap localHashMap;
-        m.a(this.V, this.b, this.c, this.U, this.T);
+        m.a(this.V, this.b, this.c, this.U, this.T, this.p.g);
         m.d.configManager.a(localHashMap, "");
         QLog.d("MSF.C.QualityTestManager", 1, "QualityClient finish, succ: " + this.S);
         return;
@@ -2598,24 +2598,24 @@ public class c
   public static String d()
   {
     // Byte code:
-    //   0: new 953	java/io/BufferedReader
+    //   0: new 955	java/io/BufferedReader
     //   3: dup
-    //   4: new 955	java/io/FileReader
+    //   4: new 957	java/io/FileReader
     //   7: dup
-    //   8: ldc_w 957
-    //   11: invokespecial 958	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   8: ldc_w 959
+    //   11: invokespecial 960	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   14: sipush 8192
-    //   17: invokespecial 961	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   17: invokespecial 963	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   20: astore_1
     //   21: aload_1
     //   22: astore_0
     //   23: aload_1
-    //   24: invokevirtual 964	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   27: ldc_w 966
+    //   24: invokevirtual 966	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   27: ldc_w 968
     //   30: ldc 120
-    //   32: invokevirtual 970	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokevirtual 972	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   35: ldc_w 645
-    //   38: invokevirtual 974	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   38: invokevirtual 976	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   41: astore_2
     //   42: aload_1
     //   43: astore_0
@@ -2628,7 +2628,7 @@ public class c
     //   55: new 242	java/lang/StringBuilder
     //   58: dup
     //   59: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   62: ldc_w 976
+    //   62: ldc_w 978
     //   65: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: aload_2
     //   69: iconst_1
@@ -2637,7 +2637,7 @@ public class c
     //   74: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   77: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   80: aload_1
-    //   81: invokevirtual 977	java/io/BufferedReader:close	()V
+    //   81: invokevirtual 979	java/io/BufferedReader:close	()V
     //   84: aload_2
     //   85: iconst_1
     //   86: aaload
@@ -2653,32 +2653,32 @@ public class c
     //   100: astore_0
     //   101: ldc 240
     //   103: iconst_4
-    //   104: ldc_w 979
+    //   104: ldc_w 981
     //   107: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   110: aload_1
     //   111: astore_0
     //   112: aload_2
     //   113: invokevirtual 485	java/lang/Exception:printStackTrace	()V
     //   116: aload_1
-    //   117: invokevirtual 977	java/io/BufferedReader:close	()V
-    //   120: ldc_w 981
+    //   117: invokevirtual 979	java/io/BufferedReader:close	()V
+    //   120: ldc_w 983
     //   123: areturn
     //   124: astore_0
     //   125: invokestatic 238	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   128: ifeq +12 -> 140
     //   131: ldc 240
     //   133: iconst_4
-    //   134: ldc_w 983
+    //   134: ldc_w 985
     //   137: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   140: aload_0
     //   141: invokevirtual 485	java/lang/Exception:printStackTrace	()V
-    //   144: ldc_w 981
+    //   144: ldc_w 983
     //   147: areturn
     //   148: astore_1
     //   149: aconst_null
     //   150: astore_0
     //   151: aload_0
-    //   152: invokevirtual 977	java/io/BufferedReader:close	()V
+    //   152: invokevirtual 979	java/io/BufferedReader:close	()V
     //   155: aload_1
     //   156: athrow
     //   157: astore_0
@@ -2686,7 +2686,7 @@ public class c
     //   161: ifeq +12 -> 173
     //   164: ldc 240
     //   166: iconst_4
-    //   167: ldc_w 983
+    //   167: ldc_w 985
     //   170: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: aload_0
     //   174: invokevirtual 485	java/lang/Exception:printStackTrace	()V
@@ -2696,7 +2696,7 @@ public class c
     //   184: ifeq +12 -> 196
     //   187: ldc 240
     //   189: iconst_4
-    //   190: ldc_w 983
+    //   190: ldc_w 985
     //   193: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   196: aload_0
     //   197: invokevirtual 485	java/lang/Exception:printStackTrace	()V
@@ -2740,21 +2740,21 @@ public class c
   public static String e()
   {
     // Byte code:
-    //   0: new 953	java/io/BufferedReader
+    //   0: new 955	java/io/BufferedReader
     //   3: dup
-    //   4: new 955	java/io/FileReader
+    //   4: new 957	java/io/FileReader
     //   7: dup
-    //   8: ldc_w 985
-    //   11: invokespecial 958	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   8: ldc_w 987
+    //   11: invokespecial 960	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   14: sipush 8192
-    //   17: invokespecial 961	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   17: invokespecial 963	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   20: astore_3
     //   21: aload_3
     //   22: astore_1
     //   23: aload_3
-    //   24: invokevirtual 964	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   27: ldc_w 987
-    //   30: invokevirtual 974	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   24: invokevirtual 966	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   27: ldc_w 989
+    //   30: invokevirtual 976	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   33: astore 4
     //   35: iconst_2
     //   36: istore_0
@@ -2777,7 +2777,7 @@ public class c
     //   64: iload_0
     //   65: aaload
     //   66: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: ldc_w 989
+    //   69: ldc_w 991
     //   72: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   78: astore_2
@@ -2797,27 +2797,27 @@ public class c
     //   99: astore_1
     //   100: ldc 240
     //   102: iconst_4
-    //   103: ldc_w 991
+    //   103: ldc_w 993
     //   106: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   109: aload_2
     //   110: astore_1
     //   111: aload 4
     //   113: invokevirtual 485	java/lang/Exception:printStackTrace	()V
-    //   116: ldc_w 993
+    //   116: ldc_w 995
     //   119: astore_1
     //   120: aload_2
-    //   121: invokevirtual 977	java/io/BufferedReader:close	()V
+    //   121: invokevirtual 979	java/io/BufferedReader:close	()V
     //   124: aload_1
     //   125: areturn
     //   126: astore_2
     //   127: aconst_null
     //   128: astore_1
     //   129: aload_1
-    //   130: invokevirtual 977	java/io/BufferedReader:close	()V
+    //   130: invokevirtual 979	java/io/BufferedReader:close	()V
     //   133: aload_2
     //   134: athrow
     //   135: aload_3
-    //   136: invokevirtual 977	java/io/BufferedReader:close	()V
+    //   136: invokevirtual 979	java/io/BufferedReader:close	()V
     //   139: aload_2
     //   140: astore_1
     //   141: invokestatic 238	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
@@ -2827,7 +2827,7 @@ public class c
     //   150: new 242	java/lang/StringBuilder
     //   153: dup
     //   154: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   157: ldc_w 995
+    //   157: ldc_w 997
     //   160: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload_2
     //   164: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2840,7 +2840,7 @@ public class c
     //   179: ifeq +12 -> 191
     //   182: ldc 240
     //   184: iconst_4
-    //   185: ldc_w 983
+    //   185: ldc_w 985
     //   188: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   191: aload_1
     //   192: invokevirtual 485	java/lang/Exception:printStackTrace	()V
@@ -2850,18 +2850,18 @@ public class c
     //   202: ifeq +12 -> 214
     //   205: ldc 240
     //   207: iconst_4
-    //   208: ldc_w 983
+    //   208: ldc_w 985
     //   211: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   214: aload_1
     //   215: invokevirtual 485	java/lang/Exception:printStackTrace	()V
-    //   218: ldc_w 993
+    //   218: ldc_w 995
     //   221: areturn
     //   222: astore_1
     //   223: invokestatic 238	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   226: ifeq +12 -> 238
     //   229: ldc 240
     //   231: iconst_4
-    //   232: ldc_w 983
+    //   232: ldc_w 985
     //   235: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   238: aload_1
     //   239: invokevirtual 485	java/lang/Exception:printStackTrace	()V
@@ -2913,32 +2913,32 @@ public class c
     //   1: istore_0
     //   2: aconst_null
     //   3: astore_1
-    //   4: getstatic 1013	android/os/Build$VERSION:SDK_INT	I
+    //   4: getstatic 1015	android/os/Build$VERSION:SDK_INT	I
     //   7: bipush 21
     //   9: if_icmplt +158 -> 167
-    //   12: invokestatic 1019	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   15: ldc_w 1021
-    //   18: invokevirtual 1025	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   21: checkcast 1027	android/net/ConnectivityManager
+    //   12: invokestatic 1021	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   15: ldc_w 1023
+    //   18: invokevirtual 1027	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   21: checkcast 1029	android/net/ConnectivityManager
     //   24: astore_1
     //   25: aload_1
-    //   26: invokevirtual 1031	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   26: invokevirtual 1033	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   29: astore_2
     //   30: aload_2
-    //   31: invokevirtual 1036	android/net/NetworkInfo:getType	()I
+    //   31: invokevirtual 1038	android/net/NetworkInfo:getType	()I
     //   34: pop
     //   35: aload_2
-    //   36: invokevirtual 1036	android/net/NetworkInfo:getType	()I
+    //   36: invokevirtual 1038	android/net/NetworkInfo:getType	()I
     //   39: ifne +67 -> 106
-    //   42: ldc_w 1027
-    //   45: ldc_w 1038
+    //   42: ldc_w 1029
+    //   45: ldc_w 1040
     //   48: iconst_1
-    //   49: anewarray 1040	java/lang/Class
+    //   49: anewarray 1042	java/lang/Class
     //   52: dup
     //   53: iconst_0
-    //   54: getstatic 1044	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   54: getstatic 1046	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   57: aastore
-    //   58: invokevirtual 1048	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   58: invokevirtual 1050	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   61: astore_2
     //   62: aload_2
     //   63: aload_1
@@ -2949,25 +2949,25 @@ public class c
     //   70: iload_0
     //   71: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   74: aastore
-    //   75: invokevirtual 1054	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   75: invokevirtual 1056	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   78: astore_1
     //   79: aload_1
-    //   80: invokevirtual 1058	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   83: ldc_w 1060
-    //   86: invokevirtual 1064	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   80: invokevirtual 1060	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   83: ldc_w 1062
+    //   86: invokevirtual 1066	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   89: astore_2
     //   90: aload_2
     //   91: iconst_1
-    //   92: invokevirtual 1069	java/lang/reflect/Field:setAccessible	(Z)V
+    //   92: invokevirtual 1071	java/lang/reflect/Field:setAccessible	(Z)V
     //   95: aload_2
     //   96: aload_1
-    //   97: invokevirtual 1070	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: invokevirtual 1072	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   100: checkcast 333	java/util/ArrayList
     //   103: astore_1
     //   104: aload_1
     //   105: areturn
     //   106: aload_2
-    //   107: invokevirtual 1036	android/net/NetworkInfo:getType	()I
+    //   107: invokevirtual 1038	android/net/NetworkInfo:getType	()I
     //   110: iconst_1
     //   111: if_icmpne -69 -> 42
     //   114: iconst_1
@@ -2975,34 +2975,34 @@ public class c
     //   116: goto -74 -> 42
     //   119: astore_1
     //   120: aload_1
-    //   121: invokevirtual 1071	java/lang/SecurityException:printStackTrace	()V
+    //   121: invokevirtual 1073	java/lang/SecurityException:printStackTrace	()V
     //   124: aconst_null
     //   125: astore_1
     //   126: goto -22 -> 104
     //   129: astore_1
     //   130: aload_1
-    //   131: invokevirtual 1072	java/lang/NoSuchFieldException:printStackTrace	()V
+    //   131: invokevirtual 1074	java/lang/NoSuchFieldException:printStackTrace	()V
     //   134: aconst_null
     //   135: astore_1
     //   136: goto -32 -> 104
     //   139: astore_1
     //   140: aload_1
-    //   141: invokevirtual 1073	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   141: invokevirtual 1075	java/lang/IllegalArgumentException:printStackTrace	()V
     //   144: aconst_null
     //   145: areturn
     //   146: astore_1
     //   147: aload_1
-    //   148: invokevirtual 1074	java/lang/NoSuchMethodException:printStackTrace	()V
+    //   148: invokevirtual 1076	java/lang/NoSuchMethodException:printStackTrace	()V
     //   151: aconst_null
     //   152: areturn
     //   153: astore_1
     //   154: aload_1
-    //   155: invokevirtual 1075	java/lang/IllegalAccessException:printStackTrace	()V
+    //   155: invokevirtual 1077	java/lang/IllegalAccessException:printStackTrace	()V
     //   158: aconst_null
     //   159: areturn
     //   160: astore_1
     //   161: aload_1
-    //   162: invokevirtual 1076	java/lang/reflect/InvocationTargetException:printStackTrace	()V
+    //   162: invokevirtual 1078	java/lang/reflect/InvocationTargetException:printStackTrace	()V
     //   165: aconst_null
     //   166: areturn
     //   167: invokestatic 284	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -3012,11 +3012,11 @@ public class c
     //   176: new 242	java/lang/StringBuilder
     //   179: dup
     //   180: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   183: ldc_w 1078
+    //   183: ldc_w 1080
     //   186: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: getstatic 1013	android/os/Build$VERSION:SDK_INT	I
+    //   189: getstatic 1015	android/os/Build$VERSION:SDK_INT	I
     //   192: invokevirtual 252	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   195: ldc_w 1080
+    //   195: ldc_w 1082
     //   198: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   201: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   204: invokestatic 261	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V

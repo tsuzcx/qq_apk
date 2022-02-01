@@ -1,18 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
-
-public class ypo
-  implements ymj
+public abstract interface ypo
 {
-  ypo(ypb paramypb) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
-  {
-    yqp.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
-  }
+  public abstract void a(ypq paramypq);
 }
 
 

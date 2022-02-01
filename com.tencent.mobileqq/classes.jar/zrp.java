@@ -1,26 +1,23 @@
-import android.annotation.SuppressLint;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeProvider;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
+import android.database.DataSetObserver;
+import android.support.v4.view.PagerAdapter;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
 
-@SuppressLint({"NewApi"})
 public class zrp
-  extends View.AccessibilityDelegate
+  extends DataSetObserver
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
-  private zrq jdField_a_of_type_Zrq;
+  public zrp(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public zrp(View paramView, zrq paramzrq)
+  public void onChanged()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Zrq = paramzrq;
-  }
-  
-  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
-  {
-    return new zrr(this);
+    PagerAdapter localPagerAdapter = this.a.getAdapter();
+    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    {
+      this.a.a(8);
+      EmptySupportViewPager.a(this.a, 0);
+      return;
+    }
+    this.a.a(0);
+    EmptySupportViewPager.b(this.a, 8);
   }
 }
 

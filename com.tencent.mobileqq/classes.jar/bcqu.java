@@ -1,29 +1,22 @@
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.trackrecordlib.core.IRecordConfig;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcqu
-  implements IRecordConfig
+class bcqu
+  extends Handler
 {
-  public bcqu(RecordTracer paramRecordTracer) {}
+  bcqu(bcqt parambcqt) {}
   
-  public int getCachedEventSize()
+  public void handleMessage(Message paramMessage)
   {
-    return 0;
-  }
-  
-  public String getTitleBarId()
-  {
-    return "com.tencent.mobileqq:id/ivTitleName";
-  }
-  
-  public boolean isEnableRelease()
-  {
-    return true;
-  }
-  
-  public boolean isFilterUGC()
-  {
-    return false;
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 0)
+    {
+      bcqt.a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
+      }
+    }
   }
 }
 

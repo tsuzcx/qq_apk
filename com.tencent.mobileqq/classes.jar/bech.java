@@ -1,49 +1,61 @@
-import com.qq.taf.jce.HexUtil;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bech
-  extends becg
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  public static volatile String a = "";
   
-  public String toString()
+  public static TouchWebView a(Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" clientType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" seq:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" fileId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" troopUin:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" agentType:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" fileType:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" downType:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" sceneType:");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.j);
-    return localStringBuilder.toString();
+    beci localbeci = beci.a();
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseApplicationImpl.sApplication;
+    }
+    return localbeci.a((Context)localObject);
+  }
+  
+  public static void a(String paramString)
+  {
+    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preCreateWebViewNoWebProcess ");
+    beci.a().a(paramString);
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString)
+  {
+    if (!arqw.a().a()) {}
+    while ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) && (!becb.c(paramString))) || (!beci.a().a()) || ((!paramString.contains(a)) && (a != null))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b(String paramString)
+  {
+    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preloadTenDocUrl ");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      a = paramString;
+      if (Looper.getMainLooper() != Looper.myLooper()) {
+        break label61;
+      }
+      if ((becb.c(paramString)) && (!beci.a().a(paramString)))
+      {
+        beci.a().a(paramString);
+        beci.a().a(paramString);
+      }
+    }
+    return;
+    label61:
+    new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
   }
 }
 

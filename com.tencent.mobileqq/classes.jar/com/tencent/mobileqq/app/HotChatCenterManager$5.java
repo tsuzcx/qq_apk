@@ -2,15 +2,15 @@ package com.tencent.mobileqq.app;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import annl;
-import bgsh;
+import anzm;
+import bhsj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
 public class HotChatCenterManager$5
   implements Runnable
 {
-  public HotChatCenterManager$5(annl paramannl) {}
+  public HotChatCenterManager$5(anzm paramanzm) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class HotChatCenterManager$5
       }
     }
     if ((localObject1 != null) && (this.this$0.jdField_a_of_type_AndroidContentSharedPreferences != null)) {
-      bgsh.a(this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit(), "hotchat_new_unread_list", (Object[])localObject1).commit();
+      bhsj.a(this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit(), "hotchat_new_unread_list", (Object[])localObject1).commit();
     }
   }
 }

@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class anes
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  anes(aneq paramaneq) {}
+  anes(anep paramanep, anex paramanex) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Anex != null) {
+      this.jdField_a_of_type_Anex.a(this.jdField_a_of_type_Anep.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
+    }
   }
 }
 

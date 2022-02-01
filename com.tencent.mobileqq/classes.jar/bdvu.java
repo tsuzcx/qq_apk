@@ -1,8 +1,18 @@
+import com.tencent.hlyyb.downloader.DownloaderTask;
+
 public abstract interface bdvu
 {
-  public abstract void a(bdws parambdws);
+  public abstract void a(DownloaderTask paramDownloaderTask);
   
-  public abstract void b(bdws parambdws);
+  public abstract void b(DownloaderTask paramDownloaderTask);
+  
+  public abstract void c(DownloaderTask paramDownloaderTask);
+  
+  public abstract void d(DownloaderTask paramDownloaderTask);
+  
+  public abstract void e(DownloaderTask paramDownloaderTask);
+  
+  public abstract void f(DownloaderTask paramDownloaderTask);
 }
 
 

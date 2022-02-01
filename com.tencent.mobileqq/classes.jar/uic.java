@@ -1,16 +1,17 @@
-public class uic
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class uic
+  implements View.OnTouchListener
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  uic(uhz paramuhz) {}
   
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return "Type{cardType=" + this.jdField_a_of_type_Int + ", isOuterDescStyle=" + this.jdField_a_of_type_Boolean + ", isInnerInfoStyle=" + this.b + ", isPlayAndLikeStyle=" + this.c + ", isOnlyInnerStyle=" + this.d + ", isOnlyOuterStyle=" + this.e + ", isPlayCountStyle=" + this.f + '}';
+    uhz.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

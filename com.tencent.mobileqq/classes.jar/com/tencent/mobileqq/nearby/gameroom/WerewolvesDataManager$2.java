@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import anmw;
-import aong;
-import axbp;
-import axhc;
-import axhd;
-import axhe;
-import bgjw;
-import bglf;
+import anyw;
+import apaw;
+import axug;
+import axzv;
+import axzw;
+import axzx;
+import bhjx;
+import bhlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -19,12 +19,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
-import nmp;
+import nok;
 
 public class WerewolvesDataManager$2
   implements Runnable
 {
-  public WerewolvesDataManager$2(axhc paramaxhc, String paramString1, String paramString2, ArrayList paramArrayList, axhd paramaxhd) {}
+  public WerewolvesDataManager$2(axzv paramaxzv, String paramString1, String paramString2, ArrayList paramArrayList, axzw paramaxzw) {}
   
   public void run()
   {
@@ -32,25 +32,25 @@ public class WerewolvesDataManager$2
     ArrayList localArrayList2 = new ArrayList();
     Random localRandom = new Random(System.currentTimeMillis());
     Object localObject1 = (TroopManager)this.this$0.a.getManager(52);
-    Object localObject2 = ((TroopManager)localObject1).a();
+    Object localObject2 = ((TroopManager)localObject1).b();
     ((List)localObject2).size();
     Object localObject3 = this.this$0.b();
     int i = 0;
     while ((i < ((List)localObject3).size()) && (localArrayList2.size() < 8))
     {
       localObject4 = (RecentInviteUser)((List)localObject3).get(i);
-      localObject5 = new axhe(this.this$0);
+      localObject5 = new axzx(this.this$0);
       if (((TroopManager)localObject1).b(((RecentInviteUser)localObject4).uin) == null)
       {
         i += 1;
       }
       else
       {
-        ((axhe)localObject5).jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject4).uin;
-        ((axhe)localObject5).jdField_a_of_type_Int = ((RecentInviteUser)localObject4).uinType;
-        ((axhe)localObject5).b = bglf.a(this.this$0.a, ((axhe)localObject5).jdField_a_of_type_JavaLangString, false);
-        ((axhe)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((axhe)localObject5).jdField_a_of_type_JavaLangString, ((axhe)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject5)) && (!((axhe)localObject5).jdField_a_of_type_JavaLangString.equals(this.b))) {
+        ((axzx)localObject5).jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject4).uin;
+        ((axzx)localObject5).jdField_a_of_type_Int = ((RecentInviteUser)localObject4).uinType;
+        ((axzx)localObject5).b = bhlg.a(this.this$0.a, ((axzx)localObject5).jdField_a_of_type_JavaLangString, false);
+        ((axzx)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((axzx)localObject5).jdField_a_of_type_JavaLangString, ((axzx)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        if ((!localArrayList2.contains(localObject5)) && (!((axzx)localObject5).jdField_a_of_type_JavaLangString.equals(this.b))) {
           localArrayList2.add(localObject5);
         }
         i += 1;
@@ -61,14 +61,14 @@ public class WerewolvesDataManager$2
     while ((localArrayList2.size() < 8) && (i < ((List)localObject1).size()))
     {
       localObject3 = (RecentUser)((List)localObject1).get(i);
-      if ((((RecentUser)localObject3).getType() == 1) && (!axbp.a(this.this$0.a, (RecentUser)localObject3)) && (!bgjw.a(((RecentUser)localObject3).uin)) && (((RecentUser)localObject3).lFlag != 16L))
+      if ((((RecentUser)localObject3).getType() == 1) && (!axug.a(this.this$0.a, (RecentUser)localObject3)) && (!bhjx.a(((RecentUser)localObject3).uin)) && (((RecentUser)localObject3).lFlag != 16L))
       {
-        localObject4 = new axhe(this.this$0);
-        ((axhe)localObject4).jdField_a_of_type_JavaLangString = ((RecentUser)localObject3).uin;
-        ((axhe)localObject4).jdField_a_of_type_Int = ((RecentUser)localObject3).getType();
-        ((axhe)localObject4).b = bglf.a(this.this$0.a, ((axhe)localObject4).jdField_a_of_type_JavaLangString, false);
-        ((axhe)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((axhe)localObject4).jdField_a_of_type_JavaLangString, ((axhe)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject4)) && (!((axhe)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
+        localObject4 = new axzx(this.this$0);
+        ((axzx)localObject4).jdField_a_of_type_JavaLangString = ((RecentUser)localObject3).uin;
+        ((axzx)localObject4).jdField_a_of_type_Int = ((RecentUser)localObject3).getType();
+        ((axzx)localObject4).b = bhlg.a(this.this$0.a, ((axzx)localObject4).jdField_a_of_type_JavaLangString, false);
+        ((axzx)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((axzx)localObject4).jdField_a_of_type_JavaLangString, ((axzx)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        if ((!localArrayList2.contains(localObject4)) && (!((axzx)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
           localArrayList2.add(localObject4);
         }
       }
@@ -83,12 +83,12 @@ public class WerewolvesDataManager$2
         if ((localObject3 instanceof TroopInfo))
         {
           localObject3 = (TroopInfo)localObject3;
-          localObject4 = new axhe(this.this$0);
-          ((axhe)localObject4).jdField_a_of_type_JavaLangString = ((TroopInfo)localObject3).troopuin;
-          ((axhe)localObject4).jdField_a_of_type_Int = 1;
-          ((axhe)localObject4).b = ((TroopInfo)localObject3).getTroopName();
-          ((axhe)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((axhe)localObject4).jdField_a_of_type_JavaLangString, ((axhe)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!localArrayList2.contains(localObject4)) && (!((axhe)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
+          localObject4 = new axzx(this.this$0);
+          ((axzx)localObject4).jdField_a_of_type_JavaLangString = ((TroopInfo)localObject3).troopuin;
+          ((axzx)localObject4).jdField_a_of_type_Int = 1;
+          ((axzx)localObject4).b = ((TroopInfo)localObject3).getTroopName();
+          ((axzx)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((axzx)localObject4).jdField_a_of_type_JavaLangString, ((axzx)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          if ((!localArrayList2.contains(localObject4)) && (!((axzx)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
             localArrayList2.add(localObject4);
           }
         }
@@ -97,8 +97,8 @@ public class WerewolvesDataManager$2
     }
     localObject2 = this.this$0.a.getCurrentAccountUin();
     localObject3 = new ArrayList();
-    Object localObject5 = (anmw)this.this$0.a.getManager(51);
-    Object localObject4 = ((anmw)localObject5).d();
+    Object localObject5 = (anyw)this.this$0.a.getManager(51);
+    Object localObject4 = ((anyw)localObject5).d();
     int j;
     Object localObject7;
     if (localObject4 == null)
@@ -126,17 +126,17 @@ public class WerewolvesDataManager$2
             j = ((List)localObject4).size();
             break;
           }
-          int k = bglf.a(((Friends)localObject6).detalStatusFlag, ((Friends)localObject6).iTermType);
+          int k = bhlg.a(((Friends)localObject6).detalStatusFlag, ((Friends)localObject6).iTermType);
           if ((k != 4) && (k != 3))
           {
             i += 1;
             continue;
           }
-          localObject7 = new axhe(this.this$0);
-          ((axhe)localObject7).jdField_a_of_type_JavaLangString = ((Friends)localObject6).uin;
-          ((axhe)localObject7).jdField_a_of_type_Int = 0;
-          ((axhe)localObject7).b = bglf.i(this.this$0.a, ((axhe)localObject7).jdField_a_of_type_JavaLangString);
-          ((axhe)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axhe)localObject7).jdField_a_of_type_JavaLangString, ((axhe)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          localObject7 = new axzx(this.this$0);
+          ((axzx)localObject7).jdField_a_of_type_JavaLangString = ((Friends)localObject6).uin;
+          ((axzx)localObject7).jdField_a_of_type_Int = 0;
+          ((axzx)localObject7).b = bhlg.i(this.this$0.a, ((axzx)localObject7).jdField_a_of_type_JavaLangString);
+          ((axzx)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axzx)localObject7).jdField_a_of_type_JavaLangString, ((axzx)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
           if (!((List)localObject3).contains(localObject7)) {
             ((List)localObject3).add(localObject7);
           }
@@ -154,19 +154,19 @@ public class WerewolvesDataManager$2
       {
         i += 1;
       }
-      else if ((j < 1000) && (!((anmw)localObject5).b(((RecentInviteUser)localObject7).uin)))
+      else if ((j < 1000) && (!((anyw)localObject5).b(((RecentInviteUser)localObject7).uin)))
       {
         i += 1;
       }
       else
       {
-        axhe localaxhe = new axhe(this.this$0);
-        localaxhe.jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject7).uin;
-        localaxhe.jdField_a_of_type_Int = ((RecentInviteUser)localObject7).uinType;
-        localaxhe.b = bglf.i(this.this$0.a, localaxhe.jdField_a_of_type_JavaLangString);
-        localaxhe.jdField_a_of_type_Boolean = this.this$0.a(localaxhe.jdField_a_of_type_JavaLangString, localaxhe.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if (!((List)localObject3).contains(localaxhe)) {
-          ((List)localObject3).add(localaxhe);
+        axzx localaxzx = new axzx(this.this$0);
+        localaxzx.jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject7).uin;
+        localaxzx.jdField_a_of_type_Int = ((RecentInviteUser)localObject7).uinType;
+        localaxzx.b = bhlg.i(this.this$0.a, localaxzx.jdField_a_of_type_JavaLangString);
+        localaxzx.jdField_a_of_type_Boolean = this.this$0.a(localaxzx.jdField_a_of_type_JavaLangString, localaxzx.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        if (!((List)localObject3).contains(localaxzx)) {
+          ((List)localObject3).add(localaxzx);
         }
         i += 1;
       }
@@ -177,17 +177,17 @@ public class WerewolvesDataManager$2
       while ((((List)localObject3).size() < 8) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
       {
         localObject6 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((((String)localObject2).equals(localObject6)) || (!((anmw)localObject5).b((String)localObject6)))
+        if ((((String)localObject2).equals(localObject6)) || (!((anyw)localObject5).b((String)localObject6)))
         {
           i += 1;
         }
         else
         {
-          localObject7 = new axhe(this.this$0);
-          ((axhe)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
-          ((axhe)localObject7).jdField_a_of_type_Int = 0;
-          ((axhe)localObject7).b = bglf.i(this.this$0.a, ((axhe)localObject7).jdField_a_of_type_JavaLangString);
-          ((axhe)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axhe)localObject7).jdField_a_of_type_JavaLangString, ((axhe)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          localObject7 = new axzx(this.this$0);
+          ((axzx)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
+          ((axzx)localObject7).jdField_a_of_type_Int = 0;
+          ((axzx)localObject7).b = bhlg.i(this.this$0.a, ((axzx)localObject7).jdField_a_of_type_JavaLangString);
+          ((axzx)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axzx)localObject7).jdField_a_of_type_JavaLangString, ((axzx)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
           if (!((List)localObject3).contains(localObject7)) {
             ((List)localObject3).add(localObject7);
           }
@@ -205,14 +205,14 @@ public class WerewolvesDataManager$2
       }
       else
       {
-        if ((((RecentUser)localObject6).getType() == 0) && (!bgjw.a(((RecentUser)localObject6).uin)) && (((RecentUser)localObject6).lFlag != 16L) && (!nmp.b(this.this$0.a, ((RecentUser)localObject6).uin, ((RecentUser)localObject6).getType())))
+        if ((((RecentUser)localObject6).getType() == 0) && (!bhjx.a(((RecentUser)localObject6).uin)) && (((RecentUser)localObject6).lFlag != 16L) && (!nok.b(this.this$0.a, ((RecentUser)localObject6).uin, ((RecentUser)localObject6).getType())))
         {
-          localObject7 = new axhe(this.this$0);
-          ((axhe)localObject7).jdField_a_of_type_JavaLangString = ((RecentUser)localObject6).uin;
-          ((axhe)localObject7).jdField_a_of_type_Int = ((RecentUser)localObject6).getType();
-          ((axhe)localObject7).b = bglf.i(this.this$0.a, ((axhe)localObject7).jdField_a_of_type_JavaLangString);
-          ((axhe)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axhe)localObject7).jdField_a_of_type_JavaLangString, ((axhe)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!((List)localObject3).contains(localObject7)) && (((anmw)localObject5).b(((RecentUser)localObject6).uin))) {
+          localObject7 = new axzx(this.this$0);
+          ((axzx)localObject7).jdField_a_of_type_JavaLangString = ((RecentUser)localObject6).uin;
+          ((axzx)localObject7).jdField_a_of_type_Int = ((RecentUser)localObject6).getType();
+          ((axzx)localObject7).b = bhlg.i(this.this$0.a, ((axzx)localObject7).jdField_a_of_type_JavaLangString);
+          ((axzx)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axzx)localObject7).jdField_a_of_type_JavaLangString, ((axzx)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          if ((!((List)localObject3).contains(localObject7)) && (((anyw)localObject5).b(((RecentUser)localObject6).uin))) {
             ((List)localObject3).add(localObject7);
           }
         }
@@ -233,11 +233,11 @@ public class WerewolvesDataManager$2
             i += 1;
             continue;
           }
-          localObject5 = new axhe(this.this$0);
-          ((axhe)localObject5).jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
-          ((axhe)localObject5).jdField_a_of_type_Int = 0;
-          ((axhe)localObject5).b = bglf.i(this.this$0.a, ((axhe)localObject5).jdField_a_of_type_JavaLangString);
-          ((axhe)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((axhe)localObject5).jdField_a_of_type_JavaLangString, ((axhe)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          localObject5 = new axzx(this.this$0);
+          ((axzx)localObject5).jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
+          ((axzx)localObject5).jdField_a_of_type_Int = 0;
+          ((axzx)localObject5).b = bhlg.i(this.this$0.a, ((axzx)localObject5).jdField_a_of_type_JavaLangString);
+          ((axzx)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((axzx)localObject5).jdField_a_of_type_JavaLangString, ((axzx)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
           if (!((List)localObject3).contains(localObject5)) {
             ((List)localObject3).add(localObject5);
           }
@@ -252,7 +252,7 @@ public class WerewolvesDataManager$2
     }
     for (;;)
     {
-      this.jdField_a_of_type_Axhd.a(localArrayList1, true);
+      this.jdField_a_of_type_Axzw.a(localArrayList1, true);
       return;
       if ((localArrayList2.size() < 4) && (((List)localObject3).size() < 4))
       {

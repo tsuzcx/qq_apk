@@ -1,37 +1,20 @@
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.net.URL;
 
-public class beyw
+class beyw
+  implements bezb
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  beyw(beyv parambeyv) {}
   
-  public beyw()
+  public Bitmap getBitmap(URL paramURL)
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-  }
-  
-  public boolean a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ("default".equals(this.jdField_a_of_type_JavaLangString))) {}
-    while ((this.b < 0) || (this.c < 0) || (this.d <= 0) || (this.e <= 0)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    return "Item{subject='" + this.jdField_a_of_type_JavaLangString + '\'' + ", correct=" + this.jdField_a_of_type_Boolean + ", confidence=" + this.jdField_a_of_type_Int + ", x=" + this.b + ", y=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
+    return ShortVideoUtils.a(null, paramURL.getPath());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beyw
  * JD-Core Version:    0.7.0.1
  */

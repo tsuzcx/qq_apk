@@ -1,6 +1,12 @@
 public abstract interface aamn
 {
-  public abstract void a(String paramString);
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

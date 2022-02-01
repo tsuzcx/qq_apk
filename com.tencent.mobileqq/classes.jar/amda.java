@@ -1,14 +1,26 @@
-import java.util.Comparator;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class amda
-  implements Comparator<JSONObject>
+public class amda
+  implements View.OnClickListener
 {
-  amda(amcz paramamcz) {}
+  public amda(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public void onClick(View paramView)
   {
-    return Long.valueOf(paramJSONObject2.optLong("time")).compareTo(Long.valueOf(paramJSONObject1.optLong("time")));
+    if (this.a.c) {
+      bdll.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      bdll.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
+      this.a.finish();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdll.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+    }
   }
 }
 

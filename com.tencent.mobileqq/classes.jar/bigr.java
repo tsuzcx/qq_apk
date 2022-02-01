@@ -1,28 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin;
 
-final class bigr
-  implements DialogInterface.OnClickListener
+public class bigr
+  extends VasWebviewUiPlugin
 {
-  bigr(bigw parambigw, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public long getPluginBusiness()
   {
-    this.jdField_a_of_type_Bigw.a(3);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bigl.a("0X80094FB");
-    }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
-      {
-        bigl.a("0X80094FA");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 3);
-    bigl.a("0X80094FC");
+    return 1048576L;
   }
 }
 

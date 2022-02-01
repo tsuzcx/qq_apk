@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import oda;
+import oek;
 
 class PublicAccountHandler$2
   implements Runnable
@@ -9,9 +9,9 @@ class PublicAccountHandler$2
   
   public void run()
   {
-    oda localoda = (oda)this.this$0.app.getManager(88);
-    if (localoda != null) {
-      localoda.a(null, "FollowList");
+    oek localoek = (oek)this.this$0.app.getManager(88);
+    if (localoek != null) {
+      localoek.a(null, "FollowList");
     }
   }
 }

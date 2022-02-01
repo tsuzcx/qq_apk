@@ -1,7 +1,18 @@
+import android.view.animation.Animation;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
+
 public class bajd
+  extends baje
 {
-  public static final String a = anni.a(2131698893);
-  public static final String b = anni.a(2131698892);
+  public bajd(VasProfileSimpleView paramVasProfileSimpleView, Animation paramAnimation)
+  {
+    super(null);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
 }
 
 

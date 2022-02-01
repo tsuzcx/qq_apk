@@ -1,14 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class atgf
-  extends atfq
+  implements DialogInterface.OnClickListener
 {
-  public atgf(atfe paramatfe)
-  {
-    super(paramatfe);
-  }
+  atgf(atgd paramatgd) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateSenderCancelSend";
+    atgd.a(this.a).dismiss();
   }
 }
 

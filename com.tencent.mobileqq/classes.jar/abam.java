@@ -1,162 +1,69 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class abam
-  extends WebViewPlugin
 {
-  bfos a = null;
+  private String a = "1";
+  private String b = "1";
+  private String c = abac.c;
+  private String d = "1";
+  private String e = "1";
   
-  public abam()
+  public static abam a(String paramString)
   {
-    this.mPluginNameSpace = "NearbyTroopsPlugin";
-  }
-  
-  protected void a(String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString);
-        }
-        localActivity = this.mRuntime.a();
-        localIntent = new Intent();
-        try
-        {
-          paramString = new JSONObject(paramString).getJSONObject("data");
-          if (paramString == null) {
-            continue;
-          }
-          localIntent.putExtra("data", paramString.toString());
-          localActivity.setResult(-1, localIntent);
-          localActivity.finish();
-          return;
-        }
-        catch (Exception paramString)
-        {
-          if (!QLog.isColorLevel()) {
-            break label170;
-          }
-        }
-        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
-      }
-      catch (Exception paramString)
-      {
-        Activity localActivity;
-        Intent localIntent;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
-        return;
-      }
-      localActivity.setResult(0, localIntent);
-      continue;
-      label170:
-      paramString = null;
-    }
-  }
-  
-  protected void b(String paramString)
-  {
+    abam localabam = new abam();
+    if (paramString != null) {}
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyTroopsPlugin", 2, "giftAnimation:" + paramString);
-      }
-      localActivity = this.mRuntime.a();
-      if (localActivity != null)
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
       {
-        if (localActivity.isFinishing()) {
-          return;
-        }
-        localObject = new JSONObject(paramString);
-        i = ((JSONObject)localObject).optInt("id");
-        long l1 = ((JSONObject)localObject).optLong("senderUin", 0L);
-        long l2 = ((JSONObject)localObject).optLong("receiveUin", 0L);
-        paramString = ((JSONObject)localObject).optString("brief");
-        boolean bool = ((JSONObject)localObject).optBoolean("showClose", false);
-        String str1 = ((JSONObject)localObject).optString("senderAvatarURL");
-        String str2 = ((JSONObject)localObject).optString("receiverAvatarURL");
-        localObject = ((JSONObject)localObject).optString("callback");
-        localMessageForDeliverGiftTips = new MessageForDeliverGiftTips();
-        localMessageForDeliverGiftTips.animationPackageId = i;
-        localMessageForDeliverGiftTips.senderUin = l1;
-        localMessageForDeliverGiftTips.receiverUin = l2;
-        localMessageForDeliverGiftTips.showCloseBtn = bool;
-        localMessageForDeliverGiftTips.animationBrief = paramString;
-        localMessageForDeliverGiftTips.senderAvatarUrl = str1;
-        localMessageForDeliverGiftTips.receiveAvatarUrl = str2;
-        localMessageForDeliverGiftTips.frienduin = String.valueOf(10000L);
-        if (this.a == null)
-        {
-          callJs((String)localObject, new String[] { "{\"result\":10,\"message\":\"troopGiftManager is null\"}" });
-          return;
-        }
+        localabam.a = paramString.optString("subscribe_entrance_enable", "1");
+        localabam.b = paramString.optString("is_open_sharing", "1");
+        localabam.c = paramString.optString("subscribe_account_title", abac.c);
+        localabam.d = paramString.optString("newfollowlist", "1");
+        localabam.e = paramString.optString("subscribe_publish_entrance_enable", "1");
       }
+      return localabam;
     }
-    catch (Exception paramString)
+    catch (JSONException paramString)
     {
-      Activity localActivity;
-      Object localObject;
-      int i;
-      MessageForDeliverGiftTips localMessageForDeliverGiftTips;
-      if (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
-        return;
-        this.a.a(localActivity);
-        if (this.a.a(localMessageForDeliverGiftTips))
-        {
-          this.a.a = new aban(this, (String)localObject);
-          callJs((String)localObject, new String[] { "{\"result\":0,\"id\":" + i + "}" });
-          return;
-        }
-        callJs((String)localObject, new String[] { "{\"result\":2}" });
+        paramString.printStackTrace();
+        paramString = null;
       }
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public String a()
   {
-    if ("NearbyTroopsPlugin".equals(paramString2))
-    {
-      if (("setSelectTypeResult".equals(paramString3)) && (paramVarArgs.length > 0))
-      {
-        a(paramVarArgs[0]);
-        return true;
-      }
-      if (("giftAnimation".equals(paramString3)) && (paramVarArgs.length > 0))
-      {
-        b(paramVarArgs[0]);
-        return true;
-      }
-    }
-    return false;
+    return this.a;
   }
   
-  public void onCreate()
+  public String b()
   {
-    AppInterface localAppInterface = this.mRuntime.a();
-    Activity localActivity = this.mRuntime.a();
-    if ((localAppInterface == null) || (localActivity == null)) {
-      return;
-    }
-    this.a = ((bfos)localAppInterface.getManager(223));
+    return this.b;
   }
   
-  public void onDestroy()
+  public String c()
   {
-    if (this.a != null) {
-      this.a.d();
-    }
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public String toString()
+  {
+    return "k =subscribe_entrance_enable , value = " + this.a + ",k =is_open_sharing , value = " + this.b + ",k =subscribe_account_title , value = " + this.c + ",k =subscribeAccountNewFollowListSwitch , value = " + this.d + ",k =subscribeAccountPublishEntranceSwitch , value = " + this.e;
   }
 }
 

@@ -1,51 +1,51 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusRecommendItemData;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class srj
-  implements View.OnClickListener
+class srj
+  extends DefaultPTSLiteEventListener
 {
-  public srj(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  srj(sri paramsri) {}
   
-  public void onClick(View paramView)
+  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
   {
-    ReadInJoyListViewGroup.c(this.a);
-    Object localObject = ((KandianMergeManager)pha.a().getManager(162)).a();
-    if ((localObject != null) && (((KandianMsgBoxRedPntInfo)localObject).isFromNotification))
+    if (QLog.isColorLevel())
     {
-      pha.a(this.a.getContext(), 5, false, ((KandianMsgBoxRedPntInfo)localObject).mMsgId);
-      if (Aladdin.getConfig(338).getIntegerFromString("allow_report_in_dau", 0) == 1)
+      paramView = new StringBuilder();
+      paramView.append("identifier = ").append(paramString).append("\n");
+      if (paramHashMap != null)
       {
-        if (!(this.a.getContext() instanceof ReadInJoyNewFeedsActivity)) {
-          break label115;
-        }
-        ((ReadInJoyNewFeedsActivity)this.a.getContext()).g(2);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      pha.a(this.a.getContext(), 3);
-      break;
-      label115:
-      if ((this.a.getContext() instanceof SplashActivity))
-      {
-        localObject = pha.a(this.a.getContext());
-        if (localObject != null) {
-          ((ReadinjoyTabFrame)localObject).a(2);
+        Iterator localIterator = paramHashMap.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          paramView.append("dataSet [ ").append((String)localEntry.getKey()).append(" ] = ").append((String)localEntry.getValue()).append("\n");
         }
       }
+      QLog.i("WebPtsLiteViewCreator", 2, "[onTapEventTriggered], " + paramView.toString());
     }
+    qgf.a.a(paramPTSComposer, paramHashMap);
+    if ((paramHashMap == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      do
+      {
+        return;
+        paramString = (BaseData)sri.a(this.a).get(paramString);
+      } while (!(paramString instanceof ProteusRecommendItemData));
+      paramString = (ProteusRecommendItemData)paramString;
+      ssy.a("id_native_recommend_small_container", paramString, null);
+    } while (TextUtils.isEmpty((CharSequence)paramHashMap.get("jumpUrl")));
+    paramString = ozs.a((String)paramHashMap.get("jumpUrl"), paramString.c);
+    ozs.d(sri.a(this.a), paramString);
   }
 }
 

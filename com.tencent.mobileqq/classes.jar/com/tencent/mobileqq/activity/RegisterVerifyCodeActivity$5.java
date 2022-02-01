@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import afbn;
+import afkq;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -9,7 +9,7 @@ import android.text.method.LinkMovementMethod;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aywm;
+import azoz;
 import com.tencent.qphone.base.util.QLog;
 
 public class RegisterVerifyCodeActivity$5
@@ -30,8 +30,8 @@ public class RegisterVerifyCodeActivity$5
       bool2 = this.a.getBoolean("checked", false);
       str1 = this.a.getString("openDevLockText");
       str2 = this.a.getString("openDevLockHelpText");
-      RegisterVerifyCodeActivity.e(this.this$0, this.a.getString("openDevLockHelpURL"));
-    } while ((!bool1) || (TextUtils.isEmpty(str1)) || (RegisterVerifyCodeActivity.a(this.this$0, "8.4.1", (String)localObject) < 0));
+      RegisterVerifyCodeActivity.f(this.this$0, this.a.getString("openDevLockHelpURL"));
+    } while ((!bool1) || (TextUtils.isEmpty(str1)) || (RegisterVerifyCodeActivity.a(this.this$0, "8.4.5", (String)localObject) < 0));
     if (QLog.isColorLevel()) {
       QLog.d("RegisterVerifyCodeActivity", 2, "update ui.");
     }
@@ -41,9 +41,9 @@ public class RegisterVerifyCodeActivity$5
     Object localObject = SpannableString.valueOf(str1);
     if (!TextUtils.isEmpty(str2))
     {
-      afbn localafbn = new afbn(this, str1);
+      afkq localafkq = new afkq(this, str1);
       int i = str1.indexOf(str2);
-      ((SpannableString)localObject).setSpan(localafbn, i, str2.length() + i, 33);
+      ((SpannableString)localObject).setSpan(localafkq, i, str2.length() + i, 33);
     }
     RegisterVerifyCodeActivity.b(this.this$0).setText((CharSequence)localObject);
     RegisterVerifyCodeActivity.a(this.this$0).setContentDescription((CharSequence)localObject);
@@ -53,11 +53,11 @@ public class RegisterVerifyCodeActivity$5
     }
     if (this.this$0.getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false))
     {
-      RegisterVerifyCodeActivity.a(this.this$0).setChecked(aywm.a().a);
+      RegisterVerifyCodeActivity.a(this.this$0).setChecked(azoz.a().a);
       RegisterVerifyCodeActivity.a(this.this$0).setEnabled(false);
       return;
     }
-    aywm.a().a = bool2;
+    azoz.a().a = bool2;
   }
 }
 

@@ -1,38 +1,111 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aeim
-  implements bkhw
+  extends aoib
 {
-  public aeim(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bkho parambkho) {}
+  public aeim(Conversation paramConversation) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, bdxd parambdxd)
   {
-    this.jdField_a_of_type_Bkho.dismiss();
-    switch (paramInt)
+    Object localObject2;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-    default: 
+      localObject2 = new StringBuilder().append("Conversation.onGetBindSubAccount() return, isSucc=").append(paramBoolean).append(" mSubUin=");
+      if (parambdxd == null)
+      {
+        localObject1 = null;
+        QLog.d("SUB_ACCOUNT", 2, (String)localObject1);
+      }
+    }
+    else
+    {
+      if ((paramBoolean) && (parambdxd != null)) {
+        break label113;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder().append("Conversation.onGetBindSubAccount() return:");
+        if (!paramBoolean) {
+          break label107;
+        }
+      }
+    }
+    label107:
+    for (parambdxd = "data=null";; parambdxd = "isSucc=false")
+    {
+      QLog.d("SUB_ACCOUNT", 4, parambdxd);
       return;
-    case 0: 
-      FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, "1", "", "", "");
-      return;
-    case 1: 
-      FriendProfilePicBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, "1", "", "", "");
-      return;
-    case 2: 
-      FriendProfilePicBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C14", "0X8007C14", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.a, 0, "", "", "", "");
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, "1", "", "", "");
-      return;
-    case 3: 
-      FriendProfilePicBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, "1", "", "", "");
+      localObject1 = parambdxd.c;
+      break;
+    }
+    label113:
+    if (parambdxd.jdField_a_of_type_Int == 1008)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onGetBindSubAccount() delete all subAccountType RU, and add default RU.");
+      }
+      bdwt.a(this.a.a, 0);
+    }
+    if (parambdxd.a())
+    {
+      bdwt.a(this.a.a, parambdxd.a(), 2);
+      this.a.a.c = true;
+    }
+    if (parambdxd.b())
+    {
+      localObject1 = parambdxd.b();
+      if (localObject1 != null)
+      {
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          bdwt.c(this.a.a, (String)localObject2);
+        }
+      }
+    }
+    parambdxd.a();
+    this.a.a(0L);
+    Conversation.o(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, bdxd parambdxd)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() isSucc=" + paramBoolean);
+      if (parambdxd != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() mainAccount=" + parambdxd.b + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((paramBoolean) && (parambdxd != null) && (parambdxd.c())) {
+      bdwt.a(this.a.a, parambdxd.c(), 1);
+    }
+    this.a.a(0L);
+  }
+  
+  protected void c(boolean paramBoolean, bdxd parambdxd)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() isSucc=" + paramBoolean);
+      if (parambdxd != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() mainAccount=" + parambdxd.b + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if (parambdxd == null) {}
+    while ((!paramBoolean) || (parambdxd.c == null) || (parambdxd.c.length() <= 4)) {
       return;
     }
-    FriendProfilePicBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C15", "0X8007C15", 0, 0, "", "", "", "");
+    this.a.a.a().c(parambdxd.c, 7000);
+    bdwt.c(this.a.a, parambdxd.c);
+    this.a.a(0L);
   }
 }
 

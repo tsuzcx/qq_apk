@@ -1,123 +1,26 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
-import java.util.concurrent.Executor;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import java.util.List;
 
 public class bfpn
-  extends bitm<HashMap<String, Object>, Void, JSONObject>
+  extends bfpu
 {
-  protected int a;
-  protected Bundle a;
-  protected bfpo a;
-  protected boolean a;
+  public bfpn(TroopAioKeywordTipBar.4 param4, List paramList, bfpr parambfpr) {}
   
-  public bfpn(String paramString1, String paramString2, bfpo parambfpo, int paramInt, Bundle paramBundle)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_Bfpo = parambfpo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public bfpn(String paramString1, String paramString2, bfpo parambfpo, int paramInt, Bundle paramBundle, boolean paramBoolean)
-  {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_Bfpo = parambfpo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
-  {
-    if (isCancelled()) {
-      return null;
-    }
-    Object localObject = paramVarArgs[0];
-    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
+    do
     {
-      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
-      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
-    }
-    for (;;)
-    {
-      try
-      {
-        Bundle localBundle = new Bundle();
-        String str1 = ((Bundle)localObject).getString("Cookie");
-        String str2 = ((Bundle)localObject).getString("Referer");
-        String str3 = ((Bundle)localObject).getString("Host");
-        if (str1 != null)
-        {
-          localBundle.putString("Cookie", str1);
-          ((Bundle)localObject).remove("Cookie");
-        }
-        if (str2 != null)
-        {
-          localBundle.putString("Referer", str2);
-          ((Bundle)localObject).remove("Referer");
-        }
-        if (str3 != null)
-        {
-          localBundle.putString("Host", str3);
-          ((Bundle)localObject).remove(str3);
-        }
-        localObject = new JSONObject(nlw.a(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
-        paramVarArgs = (HashMap<String, Object>[])localObject;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          paramVarArgs = (HashMap<String, Object>[])localObject;
-          if (((JSONObject)localObject).getInt("retcode") == 0) {
-            paramVarArgs = ((JSONObject)localObject).getJSONObject("result");
-          }
-        }
-      }
-      catch (IOException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-      }
-      return paramVarArgs;
-      paramVarArgs = null;
-    }
-  }
-  
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public void a(HashMap<String, Object> paramHashMap)
-  {
-    Executor localExecutor = a();
-    if (localExecutor != null)
-    {
-      executeOnExecutor(localExecutor, new HashMap[] { paramHashMap });
       return;
-    }
-    execute(new HashMap[] { paramHashMap });
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    if (isCancelled()) {}
-    while (this.jdField_a_of_type_Bfpo == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bfpo.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (bfpj.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
+    this.jdField_a_of_type_Bfpr.a(this.jdField_a_of_type_JavaUtilList, null, 2, new bfpo(this));
+    return;
+    bfpj.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

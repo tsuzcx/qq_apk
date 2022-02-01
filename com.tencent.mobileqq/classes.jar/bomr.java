@@ -1,15 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 class bomr
-  extends AnimatorListenerAdapter
+  implements View.OnTouchListener
 {
   bomr(bomp parambomp) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.a().setVisibility(8);
+    if ((bomp.a(this.a) != null) && (bomp.b(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bomp.b(this.a), bomp.a(this.a));
+    }
+    return true;
   }
 }
 

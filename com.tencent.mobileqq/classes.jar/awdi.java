@@ -1,18 +1,21 @@
-public class awdi
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
+
+class awdi
+  implements Callable<Bundle>
 {
-  public int a;
-  public String a;
-  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
+  awdi(awde paramawde, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public awdi()
+  public Bundle a()
   {
-    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
-    this.jdField_a_of_type_Int = 360;
-  }
-  
-  public String toString()
-  {
-    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
+    avzd localavzd = new avzd();
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    Bundle[] arrayOfBundle = new Bundle[1];
+    localavzd.a(this.jdField_a_of_type_Awde.a.c(), this.jdField_a_of_type_JavaLangString, this.b, this.c, new awdj(this, localavzd, arrayOfBundle, localCountDownLatch), true, this.d);
+    localCountDownLatch.await();
+    return arrayOfBundle[0];
   }
 }
 

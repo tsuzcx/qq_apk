@@ -1,35 +1,37 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class lwt
-  extends axeu
+class lwt
+  implements lwr
 {
-  public lwt(QQServiceForAV paramQQServiceForAV) {}
+  private IBinder a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, int paramInt1, int paramInt2)
+  lwt(IBinder paramIBinder)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(", nickname=").append(paramString).append(", gender=").append(paramInt1).append(", age=").append(paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "QQServiceForAV.onNearbyCardDownload(), isSuccess: " + paramBoolean + ", card = " + ((StringBuilder)localObject).toString());
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      this.a.transact(1, localParcel, null, 1);
+      return;
     }
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.q2v.getNearByProfile");
-    localIntent.putExtra("uin", String.valueOf(paramLong));
-    localIntent.putExtra("nickname", paramString);
-    localIntent.putExtra("gender", paramInt1);
-    localIntent.putExtra("age", paramInt2);
-    localObject = (QQAppInterface)this.a.a();
-    paramString = (String)localObject;
-    if (localObject == null) {
-      paramString = (QQAppInterface)this.a.a();
+    finally
+    {
+      localParcel.recycle();
     }
-    if (paramString != null) {
-      paramString.getApp().sendBroadcast(localIntent);
-    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

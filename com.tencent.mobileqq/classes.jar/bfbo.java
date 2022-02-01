@@ -1,24 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bfbo
-  implements View.OnClickListener
+  extends bfbw
 {
-  public bfbo(ComplexGuidViewPager paramComplexGuidViewPager) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<bewy> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c = false;
   
-  public void onClick(View paramView)
+  public bfbo()
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" fileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" blockSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" netChg:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfbo
  * JD-Core Version:    0.7.0.1
  */

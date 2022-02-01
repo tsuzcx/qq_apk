@@ -1,4 +1,4 @@
-public class nwq {}
+class nwq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

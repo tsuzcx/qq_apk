@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
-final class pvn
-  implements DialogInterface.OnClickListener
+class pvn
+  implements View.OnAttachStateChangeListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  pvn(pvl parampvl) {}
+  
+  public void onViewAttachedToWindow(View paramView)
   {
-    paramDialogInterface.dismiss();
+    pfd.a().a(pvl.a(this.a));
+  }
+  
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    pfd.a().b(pvl.a(this.a));
   }
 }
 

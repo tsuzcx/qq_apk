@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import bpjo;
+import bqlj;
 import dov.com.qq.im.capture.text.DynamicTextItem;
 import dov.com.qq.im.capture.text.EditTextPreView;
 
 public class EditTextDialog$14
   implements Runnable
 {
-  public EditTextDialog$14(bpjo parambpjo) {}
+  public EditTextDialog$14(bqlj parambqlj) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
-    if (bpjo.d(this.this$0) != 1) {
+    if (bqlj.d(this.this$0) != 1) {
       this.this$0.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(this.this$0.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(), true);
     }
     this.this$0.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();

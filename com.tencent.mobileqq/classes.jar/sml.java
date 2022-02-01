@@ -1,25 +1,8 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class sml
-  implements View.OnClickListener
+public abstract interface sml
 {
-  sml(smj paramsmj, Activity paramActivity) {}
+  public abstract void a(tay paramtay);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
-      spn.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772315);
-      this.jdField_a_of_type_Smj.b();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b(tay paramtay);
 }
 
 

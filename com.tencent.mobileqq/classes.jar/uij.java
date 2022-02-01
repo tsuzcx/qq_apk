@@ -1,24 +1,24 @@
+import UserGrowth.stFeed;
+import android.view.ViewGroup;
+
 public class uij
-  implements uih
 {
-  public void a()
+  public static blsy<stFeed> a(int paramInt, ViewGroup paramViewGroup, ucr paramucr)
   {
-    upe.e("OnJumpListener", "[OnJumpListener.java][onJumpWSClient]");
-  }
-  
-  public void b()
-  {
-    upe.e("OnJumpListener", "[OnJumpListener.java][onJumpMiniApp]");
-  }
-  
-  public void c()
-  {
-    upe.e("OnJumpListener", "[OnJumpListener.java][onJumpWebH5]");
-  }
-  
-  public void d()
-  {
-    upe.e("OnJumpListener", "[OnJumpListener.java][onDownloadWSApp]");
+    switch (paramInt)
+    {
+    default: 
+      return uhz.a(paramViewGroup, paramucr);
+    case 1: 
+      return uik.a(paramViewGroup, paramucr);
+    case 2: 
+      return uhz.a(paramViewGroup, paramucr);
+    case 101: 
+      return uil.a(paramViewGroup, paramucr);
+    case 102: 
+      return uim.a(paramViewGroup, paramucr);
+    }
+    return uih.a(paramViewGroup, paramucr);
   }
 }
 

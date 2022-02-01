@@ -1,35 +1,8 @@
-class zlo
-  implements zlg
+public class zlo
 {
-  zlo(zln paramzln) {}
-  
-  public void a(zll paramzll, boolean paramBoolean)
-  {
-    int i = 0;
-    if (paramBoolean)
-    {
-      zll[] arrayOfzll = this.a.a();
-      j = arrayOfzll.length;
-      i = 0;
-      while (i < j)
-      {
-        zll localzll = arrayOfzll[i];
-        if (localzll != paramzll) {
-          localzll.b(false);
-        }
-        i += 1;
-      }
-    }
-    paramzll = this.a.a();
-    int j = paramzll.length;
-    for (;;)
-    {
-      if ((i >= j) || (paramzll[i].a())) {
-        return;
-      }
-      i += 1;
-    }
-  }
+  private zlp jdField_a_of_type_Zlp;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
 }
 
 

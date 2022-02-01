@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anni;
+import anzj;
 import com.tencent.mobileqq.minigame.utils.DpUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import org.json.JSONException;
@@ -38,18 +38,18 @@ public class KeyboardLayout
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
     localLayoutParams.rightMargin = DpUtil.dip2px(getContext(), 2.0F);
     localLayoutParams.topMargin = DpUtil.dip2px(getContext(), 2.0F);
-    this.mConfirmBT.setText(anni.a(2131704736));
+    this.mConfirmBT.setText(anzj.a(2131704843));
     this.mConfirmBT.setTextColor(-1);
-    this.mConfirmBT.setBackgroundResource(2130840997);
+    this.mConfirmBT.setBackgroundResource(2130841008);
     this.mConfirmBT.setMinHeight(0);
     this.mConfirmBT.setMinimumHeight(0);
     this.mConfirmBT.setPadding(DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F), DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F));
     addView(this.mConfirmBT, localLayoutParams);
-    this.mConfirmBT.setId(2131371091);
+    this.mConfirmBT.setId(2131371196);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(0, this.mConfirmBT.getId());
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
-    this.mInputET.setBackgroundResource(2130841000);
+    this.mInputET.setBackgroundResource(2130841011);
     addView(this.mInputET, localLayoutParams);
     setBackgroundColor(-1);
     setPadding(0, DpUtil.dip2px(getContext(), 5.0F), 0, DpUtil.dip2px(getContext(), 2.0F));
@@ -91,11 +91,11 @@ public class KeyboardLayout
           boolean bool2 = paramString.optBoolean("confirmHold", false);
           String str = paramString.optString("confirmType");
           int i = 6;
-          paramString = anni.a(2131704735);
+          paramString = anzj.a(2131704842);
           if ("send".equals(str))
           {
             i = 4;
-            paramString = anni.a(2131704734);
+            paramString = anzj.a(2131704841);
             this.mInputET.setText((CharSequence)localObject);
             if (j >= 0)
             {
@@ -116,20 +116,20 @@ public class KeyboardLayout
             if ("search".equals(str))
             {
               i = 3;
-              paramString = anni.a(2131704737);
+              paramString = anzj.a(2131704844);
               continue;
             }
             if ("next".equals(str))
             {
               i = 5;
-              paramString = anni.a(2131704733);
+              paramString = anzj.a(2131704840);
               continue;
             }
             if (!"go".equals(str)) {
               continue;
             }
             i = 2;
-            paramString = anni.a(2131704732);
+            paramString = anzj.a(2131704839);
             continue;
           }
           this.mInputET.setFilters(new InputFilter[0]);

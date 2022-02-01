@@ -1,164 +1,109 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rib
+  extends BaseAdapter
+  implements rek<ObservableArrayList<ResultRecord>>
 {
-  public final int a;
-  public long a;
-  public String a;
-  public List<ria> a;
-  public boolean a;
-  public String b;
-  public List<ria> b;
-  public String c;
-  public String d;
-  public String e;
+  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = new PorterDuffColorFilter(-1711276033, PorterDuff.Mode.SRC_ATOP);
+  private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = new ObservableArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public rib(int paramInt)
+  public rib(@NonNull ObservableArrayList<ResultRecord> paramObservableArrayList)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = paramObservableArrayList;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.addOnListChangedCallback(this);
   }
   
-  public static rib a(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  public void a()
   {
-    rib localrib = null;
-    if (paramBannerItem.uint32_banner_type.has())
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
+    if (i > 0)
     {
-      if (paramBannerItem.uint32_banner_type.get() == 2) {
-        localrib = rif.b(paramBannerItem);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.remove(i - 1);
       }
     }
     else {
-      return localrib;
+      return;
     }
-    return rid.b(paramBannerItem);
+    this.jdField_a_of_type_Boolean = true;
+    notifyDataSetChanged();
   }
   
-  protected static void a(rib paramrib, oidb_cmd0xbc9.BannerItem paramBannerItem)
+  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList)
   {
-    boolean bool = true;
-    if (paramrib != null)
+    notifyDataSetChanged();
+  }
+  
+  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2) {}
+  
+  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    notifyDataSetChanged();
+  }
+  
+  public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramView != null)
     {
-      if (paramBannerItem.uint32_is_ad.get() == 1) {}
-      Object localObject;
-      for (;;)
-      {
-        paramrib.jdField_a_of_type_Boolean = bool;
-        paramrib.jdField_a_of_type_Long = paramBannerItem.uint64_banner_id.get();
-        localObject = paramBannerItem.msg_ad_click_report.get();
-        if ((localObject == null) || (((List)localObject).size() <= 0)) {
-          break;
-        }
-        paramrib.jdField_a_of_type_JavaUtilList = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          oidb_cmd0xbc9.AdReport localAdReport = (oidb_cmd0xbc9.AdReport)((Iterator)localObject).next();
-          paramrib.jdField_a_of_type_JavaUtilList.add(ria.a(localAdReport));
-        }
-        bool = false;
+      localObject1 = (ReadInJoyHeadImageView)paramView.getTag();
+      Object localObject2 = getItem(paramInt);
+      if ((localObject2 != null) && ((localObject2 instanceof ResultRecord))) {
+        ((ReadInJoyHeadImageView)localObject1).setHeadImgByUin(((ResultRecord)localObject2).a());
       }
-      paramBannerItem = paramBannerItem.msg_ad_exposure_report.get();
-      if ((paramBannerItem != null) && (paramBannerItem.size() > 0))
-      {
-        paramrib.jdField_b_of_type_JavaUtilList = new ArrayList();
-        paramBannerItem = paramBannerItem.iterator();
-        while (paramBannerItem.hasNext())
-        {
-          localObject = (oidb_cmd0xbc9.AdReport)paramBannerItem.next();
-          paramrib.jdField_b_of_type_JavaUtilList.add(ria.a((oidb_cmd0xbc9.AdReport)localObject));
-        }
+      int i = getCount();
+      localObject1 = paramView.findViewById(2131368441);
+      if ((!this.jdField_a_of_type_Boolean) || (paramInt != i - 1)) {
+        break label132;
       }
+      ((View)localObject1).setVisibility(0);
     }
-  }
-  
-  public static void a(oidb_cmd0xbc9.BannerItem paramBannerItem, rib paramrib)
-  {
-    if (paramBannerItem.bytes_superscript_color.has()) {
-      paramrib.jdField_a_of_type_JavaLangString = paramBannerItem.bytes_superscript_color.get().toStringUtf8();
-    }
-    if (paramBannerItem.bytes_superscript_text.has()) {
-      paramrib.jdField_b_of_type_JavaLangString = paramBannerItem.bytes_superscript_text.get().toStringUtf8();
-    }
-    if (paramBannerItem.bytes_banner_title.has()) {
-      paramrib.d = paramBannerItem.bytes_banner_title.get().toStringUtf8();
-    }
-  }
-  
-  public List<String> a(List<ria> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(((ria)paramList.next()).jdField_a_of_type_JavaLangString);
-    }
-    return localArrayList;
-  }
-  
-  public oidb_cmd0xbc9.BannerItem a()
-  {
-    oidb_cmd0xbc9.BannerItem localBannerItem = new oidb_cmd0xbc9.BannerItem();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localBannerItem.bytes_superscript_text.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localBannerItem.bytes_superscript_color.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localBannerItem.bytes_banner_title.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    localBannerItem.uint32_banner_type.set(this.jdField_a_of_type_Int);
-    a(localBannerItem);
-    return localBannerItem;
-  }
-  
-  protected void a(oidb_cmd0xbc9.BannerItem paramBannerItem)
-  {
-    Object localObject = paramBannerItem.uint32_is_ad;
-    if (this.jdField_a_of_type_Boolean) {}
-    Iterator localIterator;
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      ((PBUInt32Field)localObject).set(i);
-      paramBannerItem.uint64_banner_id.set(this.jdField_a_of_type_Long);
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label114;
-      }
-      localObject = new ArrayList();
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((List)localObject).add(((ria)localIterator.next()).a());
-      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560268, paramViewGroup, false);
+      localObject1 = (ReadInJoyHeadImageView)paramView.findViewById(2131368440);
+      paramView.setTag(localObject1);
+      break;
+      label132:
+      ((View)localObject1).setVisibility(4);
     }
-    paramBannerItem.msg_ad_click_report.addAll((Collection)localObject);
-    label114:
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0))
-    {
-      localObject = new ArrayList();
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((List)localObject).add(((ria)localIterator.next()).a());
-      }
-      paramBannerItem.msg_ad_exposure_report.addAll((Collection)localObject);
-    }
-  }
-  
-  public String toString()
-  {
-    return "rowkey:" + this.e + " title:" + this.d + "tagText:" + this.jdField_b_of_type_JavaLangString + "tagColor:" + this.jdField_a_of_type_JavaLangString;
   }
 }
 

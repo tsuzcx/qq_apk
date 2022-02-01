@@ -1,39 +1,78 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.selectable.ChatSelCurPageForLSSHelper.1;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class alqi
+  extends alqb
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ChatSelCurPageForLSSHelper.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private String d;
   
-  public alqi(BaseChatPie paramBaseChatPie)
+  public alqi a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.d = paramString;
+    return this;
   }
   
-  public void a()
+  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = true;
+    return null;
   }
   
-  public void b()
+  public String a()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
+    return this.d;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.d = paramArrayOfByte.getString("senderUin");
+      if (this.jdField_a_of_type_Bfoz == null) {
+        this.jdField_a_of_type_Bfoz = new bfoz();
+      }
+      this.jdField_a_of_type_Bfoz.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
-      this.jdField_a_of_type_Boolean = false;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afwy == null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.post(this.jdField_a_of_type_JavaLangRunnable);
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
   
-  public void c()
+  public byte[] a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("senderUin", this.d);
+      if (this.jdField_a_of_type_Bfoz != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bfoz.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

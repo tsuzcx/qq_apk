@@ -18,10 +18,6 @@ public class AttaEntity
   public static final String osmodel_key = "osmodel";
   public static final String osversion_key = "osversion";
   public static final String platform_key = "platform";
-  public static final String reserved2_key = "reserved2";
-  public static final String reserved3_key = "reserved3";
-  public static final String reserved4_key = "reserved4";
-  public static final String reserved_key = "reserved";
   public static final String resolution_key = "resolution";
   public static final String sdkversion_key = "sdkversion";
   public String appid = "";
@@ -40,10 +36,6 @@ public class AttaEntity
   public String osmodel = "";
   public String osversion = "";
   public String platform = "";
-  public String reserved = "";
-  public String reserved2 = "";
-  public String reserved3 = "";
-  public String reserved4 = "";
   public String resolution = "";
   public String sdkversion = "";
 }

@@ -1,10 +1,19 @@
-public abstract interface bnat
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiBasicInfo;
+
+public final class bnat
+  implements Parcelable.Creator<WeishiBasicInfo>
 {
-  public abstract void a(long paramLong, float paramFloat);
+  public WeishiBasicInfo a(Parcel paramParcel)
+  {
+    return new WeishiBasicInfo(paramParcel);
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public WeishiBasicInfo[] a(int paramInt)
+  {
+    return new WeishiBasicInfo[paramInt];
+  }
 }
 
 

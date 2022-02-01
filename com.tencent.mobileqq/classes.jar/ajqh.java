@@ -1,54 +1,75 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class ajqh
-  implements View.OnClickListener
+public class ajqh
+  implements ajqa
 {
-  ajqh(ajqf paramajqf, String paramString, ajqk paramajqk, MessageRecord paramMessageRecord) {}
+  public ajqh(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    Object localObject2;
-    if (!this.jdField_a_of_type_Ajqf.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        localObject1 = null;
-        int i = this.jdField_a_of_type_JavaLangString.lastIndexOf("#");
-        if (i > 0) {
-          localObject1 = this.jdField_a_of_type_JavaLangString.substring(i);
-        }
-        localObject2 = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-        if (localObject1 == null) {
-          break label188;
-        }
-      }
-    }
-    label188:
-    for (Object localObject1 = (String)localObject2 + (String)localObject1;; localObject1 = localObject2)
+    int i;
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
     {
-      localObject2 = new Intent(this.jdField_a_of_type_Ajqf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      this.jdField_a_of_type_Ajqf.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      boolean bool = ajqk.a(this.jdField_a_of_type_Ajqk).isChecked();
-      ajqf.a(this.jdField_a_of_type_Ajqf).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      localObject1 = ajqk.a(this.jdField_a_of_type_Ajqk);
-      if (!bool) {}
-      for (bool = true;; bool = false)
-      {
-        ((CheckBox)localObject1).setChecked(bool);
-        break;
+      i = 1;
+      if (i == 0) {
+        break label157;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotifyAndRecommendView", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      ajpz.a(this.a.jdField_a_of_type_AndroidContentContext, paramString, "");
+      ajpz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
+        this.a.jdField_a_of_type_Bjbs.dismiss();
+      }
+      bdll.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
+    }
+    label157:
+    do
+    {
+      return;
+      i = 0;
+      break;
+      paramStructMsg = ajpz.a(paramString);
+      if (paramStructMsg == null) {
+        break label295;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotifyAndRecommendView", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
+      }
+      TroopNotifyAndRecommendView.a(this.a, 1, (structmsg.StructMsg)paramStructMsg.get());
+    } while (paramStructMsg.msg.group_msg_type.get() != 2);
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
+    bdll.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
+    return;
+    label295:
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopNotifyAndRecommendView", 2, "NotificationView onTroopPrivilege cache error--------------");
+    }
+    bdll.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop_error", "", "", "");
+  }
+  
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  {
+    if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
+      this.a.jdField_a_of_type_Bjbs.dismiss();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopNotifyAndRecommendView", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+    }
+    paramString1 = this.a.jdField_a_of_type_AndroidContentContext;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131689976;; paramInt1 = 2131689975)
+    {
+      QQToast.a(paramString1, paramInt1, 1).a();
+      bdll.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
+      return;
     }
   }
 }

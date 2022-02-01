@@ -1,88 +1,213 @@
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.SecurePhoneBannerManager.7;
+import com.tencent.mobileqq.widget.TipsBar;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.os.MqqHandler;
 
-class bhiu
-  extends AccountObserver
+public class bhiu
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final bhiw jdField_a_of_type_Bhiw;
-  final String jdField_a_of_type_JavaLangString;
+  private static volatile bhiu jdField_a_of_type_Bhiu;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  bhiu(Intent paramIntent, String paramString, bhiw parambhiw)
+  private Dialog a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bhiw = parambhiw;
+    ReportDialog localReportDialog = new ReportDialog(paramContext, 2131755229);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561097, null);
+    Object localObject1 = localReportDialog.getWindow();
+    if ((localObject1 != null) && (ImmersiveUtils.isSupporImmersive() == 1)) {
+      ((Window)localObject1).addFlags(67108864);
+    }
+    ImmersiveUtils.a((Window)localObject1, true);
+    localReportDialog.setContentView(localView);
+    Object localObject2 = (TextView)localView.findViewById(2131379971);
+    localObject1 = (TextView)localView.findViewById(2131379730);
+    TextView localTextView1 = (TextView)localView.findViewById(2131379683);
+    TextView localTextView2 = (TextView)localView.findViewById(2131379761);
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131370152);
+    ((TextView)localObject2).setText(this.c);
+    localTextView2.setText(this.d);
+    localObject2 = new GradientDrawable();
+    int i = bhtq.b(10.0F);
+    ((GradientDrawable)localObject2).setCornerRadii(new float[] { i, i, i, i, 0.0F, 0.0F, 0.0F, 0.0F });
+    ((GradientDrawable)localObject2).setColor(paramContext.getResources().getColor(2131167154));
+    localLinearLayout.setBackgroundDrawable((Drawable)localObject2);
+    i = paramContext.getResources().getColor(2131167097);
+    if (blqj.a())
+    {
+      localLinearLayout.setBackgroundResource(2130849714);
+      i = -16777216;
+    }
+    localObject2 = new GradientDrawable();
+    ((GradientDrawable)localObject2).setCornerRadius(agej.a(6.0F, paramContext.getResources()));
+    ((TextView)localObject1).setBackgroundDrawable((Drawable)localObject2);
+    ((GradientDrawable)localObject2).setColor(i);
+    localTextView1.setOnClickListener(new bhix(this, paramQQAppInterface, paramContext, localReportDialog));
+    ((TextView)localObject1).setOnClickListener(new bhiy(this, paramContext, paramQQAppInterface, localReportDialog));
+    localLinearLayout.setOnClickListener(new bhiz(this));
+    localView.setOnClickListener(new bhja(this, paramContext, localReportDialog, paramQQAppInterface));
+    return localReportDialog;
   }
   
-  public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public static bhiu a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
-    if (paramArrayOfByte2 != null) {}
-    for (;;)
+    if (jdField_a_of_type_Bhiu == null) {}
+    try
     {
-      try
+      if (jdField_a_of_type_Bhiu == null) {
+        jdField_a_of_type_Bhiu = new bhiu();
+      }
+      return jdField_a_of_type_Bhiu;
+    }
+    finally {}
+  }
+  
+  private void a(Context paramContext)
+  {
+    paramContext.startActivity(new Intent(paramContext, QQBrowserActivity.class).putExtra("url", this.jdField_a_of_type_JavaLangString));
+  }
+  
+  private void a(Context paramContext, Dialog paramDialog)
+  {
+    if (paramDialog == null) {
+      QLog.e("SecurePhoneBannerManager", 1, "showDialogEnterAnim dialog is null");
+    }
+    do
+    {
+      return;
+      if (paramContext == null)
       {
-        paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig isSuccess: %s, code: %s, uin: %s, error: %s, contactSig: %s, lhsig: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString, paramArrayOfByte2, MD5.toMD5(paramArrayOfByte1), MD5.toMD5(paramArrayOfByte3) }));
-        }
-        if (paramInt != 0) {
-          break label311;
-        }
-        paramBoolean = true;
-        if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label283;
-        }
-        paramBoolean = false;
-        if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0)) {
-          break label298;
-        }
-        paramBoolean = false;
-        if (!TextUtils.isEmpty(paramArrayOfByte2)) {
-          break label316;
-        }
-        paramString = BaseApplicationImpl.getContext().getString(2131715770);
-        localIntent.putExtra("key_register_prompt_info", paramString);
-        if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0)) {
-          localIntent.putExtra("key_register_lhsig", paramArrayOfByte3);
-        }
-        if (QLog.isDevelopLevel()) {
-          bhix.a("LHLoginMng -- onRegisterCommitPassRespWithLhSig", localIntent);
-        }
-        if (this.jdField_a_of_type_Bhiw != null) {
-          this.jdField_a_of_type_Bhiw.a(localIntent, paramBoolean, this.jdField_a_of_type_JavaLangString, paramArrayOfByte3, paramString);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
-        }
+        QLog.e("SecurePhoneBannerManager", 1, "showDialogEnterAnim context is null");
         return;
       }
-      catch (UnsupportedEncodingException paramArrayOfByte2)
-      {
-        paramArrayOfByte2.printStackTrace();
-      }
-      paramArrayOfByte2 = null;
-      continue;
-      label283:
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      continue;
-      label298:
-      localIntent.putExtra("key_register_sign", paramArrayOfByte1);
-      continue;
-      label311:
-      paramBoolean = false;
-      continue;
-      label316:
-      paramString = paramArrayOfByte2;
+      paramDialog = (LinearLayout)paramDialog.findViewById(2131370152);
+    } while (paramDialog == null);
+    paramDialog.startAnimation(AnimationUtils.loadAnimation(paramContext, 2130772334));
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
+  {
+    QLog.d("SecurePhoneBannerManager", 1, "dismiss banner");
+    paramQQAppInterface.getHandler(Conversation.class).sendEmptyMessage(1134070);
+    this.jdField_a_of_type_Boolean = false;
+    bhsi.a(paramContext, paramQQAppInterface.getAccount(), true, "sp_key_secure_phone_notice_time", Integer.valueOf(this.jdField_a_of_type_Int));
+    if (paramInt == 1) {
+      ThreadManager.getUIHandler().post(new SecurePhoneBannerManager.7(this, paramContext));
     }
+    bcvd.b(paramQQAppInterface, paramInt, null);
+  }
+  
+  private void b(Context paramContext, Dialog paramDialog)
+  {
+    if (paramDialog == null) {
+      QLog.e("SecurePhoneBannerManager", 1, "showDialogExitAnim dialog is null");
+    }
+    LinearLayout localLinearLayout;
+    do
+    {
+      return;
+      if (paramContext == null)
+      {
+        QLog.e("SecurePhoneBannerManager", 1, "showDialogExitAnim context is null");
+        return;
+      }
+      localLinearLayout = (LinearLayout)paramDialog.findViewById(2131370152);
+    } while (localLinearLayout == null);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772335);
+    paramContext.setAnimationListener(new bhiw(this, paramDialog));
+    localLinearLayout.startAnimation(paramContext);
+  }
+  
+  public TipsBar a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SecurePhoneBannerManager", 2, "initSecurePhoneBanner");
+    }
+    TipsBar localTipsBar = new TipsBar(paramContext);
+    localTipsBar.setVisibility(8);
+    localTipsBar.a().setText(this.jdField_b_of_type_JavaLangString);
+    localTipsBar.setTipsIcon(paramContext.getResources().getDrawable(2130839284));
+    localTipsBar.setOriginalOnClickListener(new bhiv(this, paramQQAppInterface, paramContext));
+    return localTipsBar;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      QLog.d("SecurePhoneBannerManager", 1, "destory");
+      jdField_a_of_type_Bhiu = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    QLog.d("SecurePhoneBannerManager", 1, "getSecurePhoneState");
+    if (paramQQAppInterface == null) {
+      QLog.d("SecurePhoneBannerManager", 1, "getSecurePhoneState, app is null");
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, isShowing");
+        }
+        paramQQAppInterface.getHandler(Conversation.class).sendEmptyMessage(1134069);
+        return;
+      }
+      if (paramQQAppInterface.isLogin()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, but not login");
+    return;
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    if (this.jdField_a_of_type_Int == 0) {}
+    for (int i = ((Integer)bhsi.a(paramContext, str, "sp_key_secure_phone_notice_time", Integer.valueOf(0))).intValue();; i = this.jdField_a_of_type_Int)
+    {
+      long l = i;
+      if (System.currentTimeMillis() >= l * 1000L) {
+        break label156;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("SecurePhoneBannerManager", 2, "getSecurePhoneState, but not time");
+      return;
+    }
+    label156:
+    bcvd.b(paramQQAppInterface, new bhjb(this, paramQQAppInterface, paramContext, str));
   }
 }
 

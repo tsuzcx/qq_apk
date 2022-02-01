@@ -1,35 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-
-public final class aqgu
-  implements Parcelable.Creator<DanmuItemBean>
+public abstract interface aqgu
 {
-  public DanmuItemBean a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
-    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.d = paramParcel.readLong();
-    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
-      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
-      return localDanmuItemBean;
-      bool = false;
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public DanmuItemBean[] a(int paramInt)
-  {
-    return new DanmuItemBean[paramInt];
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject);
+  
+  public abstract void b();
 }
 
 

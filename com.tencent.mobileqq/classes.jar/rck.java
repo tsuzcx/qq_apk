@@ -1,7 +1,57 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWatchWordJumpDialog$Companion;", "", "()V", "CLICK_CANCEL", "", "CLICK_JUMP", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rck {}
+public class rck
+  extends ArrayAdapter<TagInfo>
+{
+  final Set<TagInfo> a = new LinkedHashSet();
+  
+  public rck(@NonNull Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+  }
+  
+  public void a(@Nullable TagInfo paramTagInfo)
+  {
+    if (!this.a.contains(paramTagInfo))
+    {
+      this.a.add(paramTagInfo);
+      super.add(paramTagInfo);
+    }
+  }
+  
+  public void a(TagInfo... paramVarArgs)
+  {
+    addAll(Arrays.asList(paramVarArgs));
+  }
+  
+  public void addAll(@NonNull Collection<? extends TagInfo> paramCollection)
+  {
+    paramCollection = new LinkedHashSet(paramCollection);
+    paramCollection.removeAll(this.a);
+    this.a.addAll(paramCollection);
+    super.addAll(paramCollection);
+  }
+  
+  public void b(@Nullable TagInfo paramTagInfo)
+  {
+    this.a.remove(paramTagInfo);
+    super.remove(paramTagInfo);
+  }
+  
+  public void clear()
+  {
+    super.clear();
+    this.a.clear();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

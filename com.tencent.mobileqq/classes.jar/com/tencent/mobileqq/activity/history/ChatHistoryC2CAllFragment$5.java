@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.history;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anqg;
-import aopx;
+import aocm;
+import apdn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -67,11 +67,11 @@ class ChatHistoryC2CAllFragment$5
         localEditor.putInt("setting_guide_tips_show_time" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i).commit();
         this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10, this.this$0.jdField_b_of_type_AndroidViewView));
       }
-      if (this.this$0.jdField_a_of_type_Anqg.b() == 0)
+      if (this.this$0.jdField_a_of_type_Aocm.b() == 0)
       {
-        localObject = (aopx)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(59);
+        localObject = (apdn)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(59);
         if (localObject != null) {
-          ((aopx)localObject).a();
+          ((apdn)localObject).a();
         }
       }
       return;

@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import org.json.JSONObject;
-import teh;
+import suz;
 
 public class TitleData
   extends ProteusItemData
@@ -23,11 +23,11 @@ public class TitleData
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("style_ID", "ReadInjoy_article_title_cell");
       localJSONObject.put("id_attribute_text", this.jdField_a_of_type_JavaLangString);
-      Object localObject1 = this.W;
+      Object localObject1 = this.P;
       if (localObject1 != null) {
         try
         {
-          localObject1 = new JSONObject(this.W);
+          localObject1 = new JSONObject(this.P);
           Iterator localIterator = ((JSONObject)localObject1).keys();
           if (localIterator == null) {
             break label131;
@@ -37,7 +37,7 @@ public class TitleData
             String str = (String)localIterator.next();
             localJSONObject.put(str, ((JSONObject)localObject1).opt(str));
           }
-          localObject2 = teh.a("native_article", true);
+          localObject2 = suz.a("native_article", true);
         }
         catch (Exception localException1)
         {
@@ -50,7 +50,7 @@ public class TitleData
       }
       label131:
       label162:
-      for (Object localObject2 = ((teh)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
+      for (Object localObject2 = ((suz)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
       {
         if (localObject2 != null)
         {

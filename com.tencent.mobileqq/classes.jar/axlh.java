@@ -1,30 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.widget.ListView;
 
-final class axlh
-  implements bihh
+public abstract interface axlh
 {
-  axlh(String paramString, axlm paramaxlm) {}
+  public abstract ListView a();
   
-  public void onWXShareResp(BaseResp paramBaseResp)
-  {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Axlm != null) {
-        this.jdField_a_of_type_Axlm.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Axlm == null) {
-      return;
-    }
-    this.jdField_a_of_type_Axlm.a(false);
-  }
+  public abstract void a();
 }
 
 

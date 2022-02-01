@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import tte;
+import tka;
 
 public class WormholeView
   extends FrameLayout
@@ -17,7 +17,7 @@ public class WormholeView
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private tte jdField_a_of_type_Tte;
+  private tka jdField_a_of_type_Tka;
   private boolean jdField_a_of_type_Boolean;
   
   public WormholeView(@NonNull Context paramContext)
@@ -40,8 +40,8 @@ public class WormholeView
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Tte != null) {
-        this.jdField_a_of_type_Tte.a(this);
+      if (this.jdField_a_of_type_Tka != null) {
+        this.jdField_a_of_type_Tka.a(this);
       }
     }
   }
@@ -51,8 +51,8 @@ public class WormholeView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Tte != null) {
-        this.jdField_a_of_type_Tte.b(this);
+      if (this.jdField_a_of_type_Tka != null) {
+        this.jdField_a_of_type_Tka.b(this);
       }
     }
   }
@@ -64,9 +64,9 @@ public class WormholeView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381277));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131381279);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381278));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381451));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381453);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381452));
   }
   
   public void b()
@@ -116,9 +116,9 @@ public class WormholeView
     f();
   }
   
-  public void setLifeListener(tte paramtte)
+  public void setLifeListener(tka paramtka)
   {
-    this.jdField_a_of_type_Tte = paramtte;
+    this.jdField_a_of_type_Tka = paramtka;
   }
   
   public void setOnErrorViewClickListener(View.OnClickListener paramOnClickListener)

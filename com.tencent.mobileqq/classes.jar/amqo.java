@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import java.util.Comparator;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class amqo
-  implements Comparator<amqp>
+class amqo
 {
-  public amqo(CmGameCmdChannel paramCmGameCmdChannel) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public int a(amqp paramamqp1, amqp paramamqp2)
-  {
-    return paramamqp1.a() - paramamqp2.a();
-  }
+  amqo(amqh paramamqh) {}
 }
 
 

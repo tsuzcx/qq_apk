@@ -1,56 +1,181 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.RspBody;
-import tencent.im.oidb.cmd0x885.oidb_0x885.RspBody;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.HashSet;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ool
-  extends niv
+public class ool
+  implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-  ool(ook paramook) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  private String jdField_a_of_type_JavaLangString;
+  private HashSet<Long> jdField_a_of_type_JavaUtilHashSet;
+  private ooi jdField_a_of_type_Ooi;
+  private qzb jdField_a_of_type_Qzb;
+  private TextView b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private void b()
   {
-    for (boolean bool = true;; bool = false) {
+    if ((this.jdField_a_of_type_Qzb != null) && (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList != null))
+    {
+      int i = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      while (i <= this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition())
+      {
+        if ((i >= 1) && (i <= this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.size()))
+        {
+          qzd localqzd = (qzd)this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.get(i - 1);
+          pfa.a().a(Long.valueOf(localqzd.a));
+          this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(localqzd.a));
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Qzb == null) || (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
+        this.jdField_a_of_type_ComTencentWidgetListView.removeHeaderView(this.jdField_a_of_type_AndroidViewView);
+      }
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount() < 1)) {
+      this.jdField_a_of_type_ComTencentWidgetListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if ((this.jdField_a_of_type_Qzb.jdField_a_of_type_Qzc != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Qzb.jdField_a_of_type_Qzc.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Qzb.jdField_a_of_type_Qzc.jdField_a_of_type_JavaLangString);
+      }
+    }
+    else
+    {
+      if ((this.b == null) || (this.jdField_a_of_type_Qzb.b == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Qzb.b.jdField_b_of_type_JavaLangString))) {
+        break label272;
+      }
+      this.b.setVisibility(0);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Qzb.b.jdField_a_of_type_JavaLangString)) {
+        break label257;
+      }
+      this.b.setText(this.jdField_a_of_type_Qzb.b.jdField_a_of_type_JavaLangString);
+      label220:
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Qzb.b.jdField_b_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ooi.notifyDataSetChanged();
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131703564));
+      break;
+      label257:
+      this.b.setText(anzj.a(2131703565));
+      break label220;
+      label272:
+      if (this.b != null)
+      {
+        this.b.setVisibility(8);
+        this.jdField_a_of_type_JavaLangString = null;
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    str3 = "";
+    for (;;)
+    {
       try
       {
-        paramBundle = new oidb_0x6cf.RspBody();
-        if (paramArrayOfByte != null) {
-          paramBundle.mergeFrom(paramArrayOfByte);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("folder_status", "" + ozs.d);
+        if (!bhnv.h(this.jdField_a_of_type_AndroidContentContext)) {
+          continue;
         }
-        paramBundle = (oidb_0x885.RspBody)paramBundle.msg_ad_rsp.get();
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          paramBundle.mergeFrom(paramArrayOfByte);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info.has = " + paramBundle.bytes_ad_user_info.has());
-        }
-        if ((paramBundle != null) && (paramBundle.bytes_ad_user_info.has()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info = " + paramBundle.bytes_ad_user_info.get().toStringUtf8());
-          }
-          paramArrayOfByte = this.a;
-          if (paramInt == 0)
-          {
-            paramArrayOfByte.notifyUI(1, bool, paramBundle.bytes_ad_user_info.get().toStringUtf8());
-            oon.a(null, true, "no error", paramBundle.bytes_ad_user_info.get().toStringUtf8());
-          }
-        }
-        else
-        {
-          oon.a(null, false, "error with errorcode: " + paramInt, null);
-          return;
-        }
+        str1 = "2";
+        localJSONObject.put("network_type", str1);
+        str1 = localJSONObject.toString();
       }
-      catch (Exception paramArrayOfByte)
+      catch (JSONException localJSONException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(paramArrayOfByte));
-        }
-        return;
+        String str1;
+        localJSONException.printStackTrace();
+        String str2 = str3;
+        continue;
       }
+      ocd.a(null, "", "0X8008451", "0X8008451", 0, 0, "", "", "", str1, false);
+      break;
+      str1 = "1";
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if ((paramInt == 0) || (paramInt == this.jdField_a_of_type_Ooi.getCount() - 1)) {}
+    qzd localqzd;
+    do
+    {
+      do
+      {
+        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+        return;
+      } while ((this.jdField_a_of_type_Qzb == null) || (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 1) || (paramInt > this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.size()));
+      localqzd = (qzd)this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.get(paramInt - 1);
+    } while ((localqzd == null) || (TextUtils.isEmpty(localqzd.jdField_b_of_type_JavaLangString)));
+    ozs.a(this.jdField_a_of_type_AndroidContentContext, localqzd.jdField_b_of_type_JavaLangString);
+    str3 = "";
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("folder_status", "" + ozs.d);
+        if (!bhnv.h(this.jdField_a_of_type_AndroidContentContext)) {
+          continue;
+        }
+        str1 = "2";
+        localJSONObject.put("network_type", str1);
+        str1 = localJSONObject.toString();
+      }
+      catch (JSONException localJSONException)
+      {
+        String str1;
+        localJSONException.printStackTrace();
+        String str2 = str3;
+        continue;
+      }
+      ocd.a(null, "", "0X8008450", "0X8008450", 0, 0, String.valueOf(localqzd.a), String.valueOf(paramInt - 1), String.valueOf(localqzd.jdField_b_of_type_Int), str1, false);
+      localqzd.jdField_b_of_type_Int = 0;
+      pfa.a().a(this.jdField_a_of_type_Qzb);
+      this.jdField_a_of_type_Ooi.a(this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList);
+      a();
+      break;
+      str1 = "1";
     }
   }
 }

@@ -1,13 +1,34 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
-public abstract interface adwk
+public class adwk
+  implements bliz
 {
-  public abstract void a(Activity paramActivity);
+  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
   
-  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
+  public adwk(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public abstract void b(QQAppInterface paramQQAppInterface, int paramInt);
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
+  }
+  
+  public void a(SimpleAccount paramSimpleAccount)
+  {
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
+  }
 }
 
 

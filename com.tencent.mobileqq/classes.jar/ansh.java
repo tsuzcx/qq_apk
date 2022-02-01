@@ -1,62 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ansh
-  extends Handler
+class ansh
+  implements DialogInterface.OnClickListener
 {
-  public ansh(QQAppInterface paramQQAppInterface, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ansh(ansf paramansf, Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    paramDialogInterface.dismiss();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131690046), 0).b(0);
+    if (ansf.a(this.jdField_a_of_type_Ansf))
     {
+      ansf.a(this.jdField_a_of_type_Ansf, 1);
+      ansf.b(this.jdField_a_of_type_Ansf);
+      this.jdField_a_of_type_Ansf.a.r();
     }
-    do
-    {
-      return;
-      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
-      if (paramMessage != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
-    return;
-    long l1 = QQAppInterface.e;
-    long l3 = SystemClock.uptimeMillis();
-    long l2 = Math.abs(l3 - this.a.c);
-    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.e))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, "getOnlineFriend");
-      }
-      this.a.c = l3;
-      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
-      if (localFriendListHandler != null) {
-        localFriendListHandler.d(paramMessage.getCurrentAccountUin(), (byte)0);
-      }
-    }
-    if (l2 < QQAppInterface.e) {
-      l1 = QQAppInterface.e - l2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAppInterface", 2, "getOnlineFriend send next msg " + l1);
-    }
-    paramMessage = this.a.a.obtainMessage(0, new WeakReference(paramMessage));
-    this.a.a.sendMessageDelayed(paramMessage, l1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansh
  * JD-Core Version:    0.7.0.1
  */

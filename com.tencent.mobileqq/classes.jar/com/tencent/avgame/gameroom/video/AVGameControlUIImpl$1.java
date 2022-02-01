@@ -1,7 +1,7 @@
 package com.tencent.avgame.gameroom.video;
 
-import bjce;
-import bjcm;
+import bkdd;
+import bkdl;
 
 class AVGameControlUIImpl$1
   implements Runnable
@@ -10,7 +10,7 @@ class AVGameControlUIImpl$1
   
   public void run()
   {
-    bjce.a().a().c();
+    bkdd.a().a().c();
   }
 }
 

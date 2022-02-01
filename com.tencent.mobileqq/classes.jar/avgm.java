@@ -1,159 +1,71 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.inputstatus.InputStatusPushManager.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.manager.Manager;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
 
 public class avgm
-  implements Manager
+  implements TextWatcher
 {
-  private static final String jdField_a_of_type_JavaLangString = avgm.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusPushManager.1(this);
-  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
+  public int a;
+  public CharSequence a;
+  public boolean a;
+  int b = -1;
+  int c = -1;
   
-  public avgm(QQAppInterface paramQQAppInterface)
+  public avgm(BlockableEditTextView paramBlockableEditTextView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangCharSequence = "";
   }
   
-  private Handler a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  private avgi a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      return (avgi)((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(16);
-    }
-    return null;
-  }
-  
-  private boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof aicl))) {
-      return c();
-    }
-    return b();
-  }
-  
-  private boolean b()
-  {
-    try
-    {
-      avgg localavgg = (avgg)aqlk.a().a(445);
-      if (localavgg != null)
-      {
-        boolean bool = localavgg.a;
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return false;
-  }
-  
-  private boolean c()
-  {
-    try
-    {
-      avgg localavgg = (avgg)aqlk.a().a(445);
-      if (localavgg != null)
-      {
-        boolean bool = localavgg.b;
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return true;
-  }
-  
-  void a()
-  {
-    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "receive fromUin =" + paramLong1 + "，toUin，timeStamp =" + paramLong3 + "，interval =" + paramInt1 + "，showTime =" + paramInt2 + "，eventType = " + paramInt3 + "，statusText =" + paramString);
-    }
-    String str1;
-    boolean bool;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (a()))
-    {
-      a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (a() != null)
-      {
-        a().a = (paramInt1 * 1000);
-        a().b = paramLong3;
-      }
-      str1 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      String str2 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if ((TextUtils.equals(str1, String.valueOf(paramLong1))) && (TextUtils.equals(str2, String.valueOf(paramLong2))))
-      {
-        if (paramInt3 == 2) {
-          break label284;
-        }
-        bool = true;
-        if (!bool) {
-          break label300;
-        }
-        str1 = paramString;
-        if (TextUtils.isEmpty(paramString))
-        {
-          if (paramInt3 != 1) {
-            break label290;
-          }
-          str1 = anni.a(2131704582);
-        }
-        label246:
-        a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt2 * 1000);
-      }
-    }
-    for (;;)
-    {
-      if (a() != null) {
-        a().a(bool, str1);
-      }
+    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
+    while (this.jdField_a_of_type_Int >= 0) {
       return;
-      label284:
-      bool = false;
-      break;
-      label290:
-      str1 = anni.a(2131704583);
-      break label246;
-      label300:
-      str1 = "";
     }
+    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
   }
   
-  public void a(BaseChatPie paramBaseChatPie)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
+    do
+    {
+      Editable localEditable;
+      avgn[] arrayOfavgn;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_a_of_type_Int = 0;
+          } while (paramInt3 == paramInt2);
+          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
+        } while (localEditable == null);
+        arrayOfavgn = (avgn[])localEditable.getSpans(paramInt1, paramInt1, avgn.class);
+      } while ((arrayOfavgn == null) || (arrayOfavgn.length <= 0));
+      this.b = localEditable.getSpanStart(arrayOfavgn[0]);
+      this.c = localEditable.getSpanEnd(arrayOfavgn[0]);
+    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
+    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

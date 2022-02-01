@@ -1,25 +1,19 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class alkp
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  alkp(alko paramalko) {}
+  alkp(aljw paramaljw) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
     }
-    for (;;)
-    {
-      return false;
-      this.a.a(null);
-      continue;
-      if (alko.a(this.a) != null) {
-        alko.a(this.a).j();
-      }
-    }
+    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

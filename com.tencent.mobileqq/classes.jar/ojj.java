@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ojj
-  implements rdt
+  implements bljb
 {
-  public ojj(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public ojj(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
+  public void onDismiss()
   {
-    this.a.a(paramInt, paramString, paramBaseResData);
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
+    }
+    this.a.a = false;
   }
 }
 

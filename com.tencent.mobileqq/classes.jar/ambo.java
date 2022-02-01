@@ -1,10 +1,16 @@
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
 public class ambo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a = 1;
-  public ImageView a;
-  public String a;
+  public ambo(RotationSeekBar paramRotationSeekBar) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+  }
 }
 
 

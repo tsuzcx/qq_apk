@@ -1,77 +1,90 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqwc
-  extends aqkz<aqwb>
+  extends arac<aqwd>
 {
-  @NonNull
-  public aqwb a(int paramInt)
+  private static boolean a;
+  private static boolean b;
+  
+  public static boolean a()
   {
-    return new aqwb();
+    aqwd localaqwd = (aqwd)aran.a().a(579);
+    if ((localaqwd != null) && (!TextUtils.isEmpty(localaqwd.a))) {
+      a = "1".equals(localaqwd.a);
+    }
+    return a;
   }
   
-  @Nullable
-  public aqwb a(aqlg[] paramArrayOfaqlg)
+  public static boolean b()
   {
-    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          paramArrayOfaqlg = (aqwb)aqlu.a(paramArrayOfaqlg[0].a, aqwb.class);
-          return paramArrayOfaqlg;
-        }
+    aqwd localaqwd = (aqwd)aran.a().a(579);
+    if ((localaqwd != null) && (!TextUtils.isEmpty(localaqwd.b))) {
+      b = "1".equals(localaqwd.b);
+    }
+    return b;
+  }
+  
+  @NonNull
+  public aqwd a(int paramInt)
+  {
+    return new aqwd();
+  }
+  
+  public aqwd a(String paramString)
+  {
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).optString("IsImageImmersiveEnable");
+      localObject = ((JSONObject)localObject).optString("IsVideoImmersiveEnable");
+      if (QLog.isColorLevel()) {
+        QLog.e("ImmersiveConfProcessor", 2, "ImmersiveConfBean, isImgEnable:" + paramString + ", isVdoEnable:" + (String)localObject);
       }
-      catch (QStorageInstantiateException paramArrayOfaqlg)
-      {
-        QLog.e("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaqlg.getMessage());
-      }
+      paramString = new aqwd(paramString.trim(), ((String)localObject).trim());
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
   }
   
-  public void a(aqwb paramaqwb)
+  @Nullable
+  public aqwd a(araj[] paramArrayOfaraj)
   {
-    if (paramaqwb != null)
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
+      aqwd localaqwd = a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ImmersiveConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
       }
+      return localaqwd;
     }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    return new aqwd();
+  }
+  
+  public void a(aqwd paramaqwd)
+  {
+    if (paramaqwd != null)
     {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaqwb.a)) {
-          paramaqwb.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("c2cfile_excitingupload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_c2cfile_excitingupload", paramaqwb.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramaqwb.a + "]");
-        localObject = (atam)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((atam)localObject).a(paramaqwb);
-        }
+      if (TextUtils.isEmpty(paramaqwd.a)) {
+        a = "1".equals(paramaqwd.a);
       }
-      return;
+      if (TextUtils.isEmpty(paramaqwd.b)) {
+        b = "1".equals(paramaqwd.b);
+      }
     }
   }
   
-  public Class<aqwb> clazz()
+  public Class<aqwd> clazz()
   {
-    return aqwb.class;
+    return aqwd.class;
   }
   
   public boolean isNeedCompressed()
@@ -89,19 +102,16 @@ public class aqwc
     return 0;
   }
   
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
+  public void onReqFailed(int paramInt) {}
   
   public int type()
   {
-    return 557;
+    return 579;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwc
  * JD-Core Version:    0.7.0.1
  */

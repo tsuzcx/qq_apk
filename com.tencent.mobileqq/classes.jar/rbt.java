@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RedPacketTaskData;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "redPacketTaskData", "Lcom/tencent/biz/pubaccount/readinjoy/redpacket/RedPacketTaskData;", "onGetRedPacketData"}, k=3, mv={1, 1, 16})
-final class rbt
-  implements qyy
+public class rbt
+  implements View.OnClickListener
 {
-  rbt(rbr paramrbr, String paramString) {}
+  public rbt(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public final void a(@Nullable RedPacketTaskData paramRedPacketTaskData)
+  public void onClick(View paramView)
   {
-    if (paramRedPacketTaskData != null) {
-      this.jdField_a_of_type_Rbr.b(this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

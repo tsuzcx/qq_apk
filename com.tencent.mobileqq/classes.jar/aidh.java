@@ -1,84 +1,51 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
-class aidh
-  extends anuw
+public class aidh
+  extends azre
 {
-  aidh(aidf paramaidf) {}
+  public aidh(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void a(int paramInt, azql paramazql)
   {
-    ChatActivityUtils.b();
-    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
-    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
-    int i;
-    if (paramBoolean)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
+    if (localObject != null)
     {
-      i = 2131718056;
-      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.a());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        break label69;
+      if (paramazql.jdField_a_of_type_Int != 0) {
+        break label139;
       }
+      ((aiec)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramazql.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
-    label69:
-    do
+    for (;;)
     {
-      int k;
-      do
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aidl;
+      if (localObject != null)
       {
-        return;
-        i = 2131718045;
-        break;
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          k = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bgjw.a(String.valueOf(paramList.get(j)), localObject)) {
-              k = 1;
-            }
-            j += 1;
-          }
+        if (paramazql.jdField_a_of_type_Int != 0) {
+          break;
         }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-    } while (!paramBoolean);
-    this.a.m();
+        ((aidl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramazql.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      label139:
+      ((aiec)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramazql.jdField_a_of_type_Azqh.jdField_a_of_type_JavaLangString + ", desc:" + paramazql.jdField_a_of_type_Azqh.b, paramazql.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+    }
+    ((aidl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramazql.jdField_a_of_type_Azqh.jdField_a_of_type_JavaLangString + ", desc:" + paramazql.jdField_a_of_type_Azqh.b, paramazql.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList)
+  public void a_(int paramInt, boolean paramBoolean)
   {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.b();
-    } while (!paramBoolean);
-    this.a.m();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
+    if (localObject != null) {
+      ((aiec)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aidl;
+    if (localObject != null) {
+      ((aidl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    }
   }
 }
 

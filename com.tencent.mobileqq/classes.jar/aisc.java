@@ -1,25 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.annotation.SuppressLint;
 
-public class aisc
-  implements View.OnClickListener
+class aisc
 {
-  public aisc(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((localInputMethodManager != null) && (localInputMethodManager.isActive())) {
-      localInputMethodManager.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    this.a.setResult(1);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  @SuppressLint({"StaticFieldLeak"})
+  private static airy a = new airy(null);
 }
 
 

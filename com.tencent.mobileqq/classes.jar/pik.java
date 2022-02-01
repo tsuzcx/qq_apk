@@ -1,18 +1,38 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
 public class pik
-  extends SimpleConfigHandler
+  implements sdm
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public ChannelCoverInfo a;
+  public String a;
+  private boolean a;
+  public String b;
+  
+  public pik(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2)
   {
-    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
-    bmqa.a("daily_header_proteus_bid", paramString);
-    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
-    return bool;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

@@ -1,32 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class zww
+  implements Comparator<String>
 {
-  private static final String jdField_a_of_type_JavaLangString = zww.class.getName();
-  private static volatile zwu jdField_a_of_type_Zwu;
-  private static String b;
-  private static String c;
+  public zww(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public static zwu a()
+  public int a(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Zwu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Zwu == null)
-      {
-        if (b == null) {
-          b = BaseApplicationImpl.getApplication().getPackageName();
-        }
-        if (c == null) {
-          c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
-        }
-        jdField_a_of_type_Zwu = new zwx(b, c);
-      }
-      yqp.b(jdField_a_of_type_JavaLangString, "init FileCache");
-      return jdField_a_of_type_Zwu;
+    int i = 1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
     }
-    finally {}
+    while (paramString1 != null) {
+      return i;
+    }
+    if (paramString2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

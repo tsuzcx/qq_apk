@@ -1,91 +1,81 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aqqk
-  extends aqkz<aqqj>
 {
-  @NonNull
-  public aqqj a(int paramInt)
-  {
-    return new aqqj();
-  }
+  private static final aqqk jdField_a_of_type_Aqqk = new aqqk();
+  private static String jdField_a_of_type_JavaLangString = aqqk.class.getSimpleName();
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "motorola", "mot", "FIH", "Sony Ericsson", "samsung", "HTC", "HUN", "LGE", "alps", "OPPO", "TCL", "LENOVO", "ZTE", "Meizu", "Xiaomi", "HUAWEI", "TIANYU", "sprd", "K-Touch", "YuLong", "CoolPad", "Amazon", "Hisense", "Acer", "GIONEE", "Philips", "asus", "snda.com", "koobee", "AMOI", "Fason", "ainol", "Dell", "dlkjl12389", "haier", "sharp", "BBK", "nubia", "KONKA" };
+  private static final String[] b = { "MOTOROLA", "MOTOROLA", "MOTOROLA", "SONYERICSSON", "SAMSUNG", "HTC", "HTC", "LG", "OPPO", "OPPO", "TCL", "LENOVO", "ZTE", "MEIZU", "XIAOMI", "HUAWEI", "TIANYU", "TIANYU", "TIANYU", "COOLPAD", "COOLPAD", "AMAZON", "HISENSE", "ACER", "JINLI", "PHILIPS", "GOOGLE", "SHENGDA", "KUBI", "XIAXIN", "FANSHANG", "AINUO", "DELL", "DPD", "HAIER", "SHARP", "BBK", "NUBIA", "KONKA" };
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  @Nullable
-  public aqqj a(aqlg[] paramArrayOfaqlg)
+  private aqqk()
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    int i = 0;
+    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      aqqj localaqqj = aqqj.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      this.jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_ArrayOfJavaLangString[i].toUpperCase(), b[i]);
+      i += 1;
+    }
+    a();
+  }
+  
+  public static aqqk a()
+  {
+    return jdField_a_of_type_Aqqk;
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo  (+) *****");
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_KEYS.len = " + jdField_a_of_type_ArrayOfJavaLangString.length);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_NAMES.len = " + b.length);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DeviceTypeName = " + a());
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "SubTagName = " + a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase());
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "MODEL = " + Build.MODEL);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "SDK_INT = " + Build.VERSION.SDK_INT);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND = " + Build.BRAND);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DEVICE = " + Build.DEVICE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DISPLAY = " + Build.DISPLAY);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "HARDWARE = " + Build.HARDWARE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "MANUFACTURER = " + Build.MANUFACTURER);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "PRODUCT = " + Build.PRODUCT);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "TAGS = " + Build.TAGS);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "USER = " + Build.USER);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "TYPE = " + Build.TYPE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo (-) *****");
+    }
+  }
+  
+  public String a()
+  {
+    String str;
+    if (Build.MODEL.equalsIgnoreCase("K-Touch W619")) {
+      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("TIANYU") + " " + Build.MODEL;
+    }
+    for (;;)
+    {
+      return str.replace(" ", "_").replace("+", "").replace("(t)", "");
+      if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD"))) {
+        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("COOLPAD") + " " + Build.MODEL;
+      } else {
+        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(Build.MANUFACTURER.toUpperCase()) + " " + Build.MODEL;
       }
-      return localaqqj;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqqj paramaqqj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "onUpdate " + paramaqqj.toString());
-    }
-    paramaqqj = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (paramaqqj == null) {
-      return;
-    }
-    ((aypj)paramaqqj.getManager(369)).d(paramaqqj.getExtOnlineStatus());
-  }
-  
-  public Class<aqqj> clazz()
-  {
-    return aqqj.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    QLog.d("OnlineStatusConfProcessor", 1, "isNeedUpgradeReset ");
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
-  public int type()
+  public String b()
   {
-    return 578;
+    return a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqk
  * JD-Core Version:    0.7.0.1
  */

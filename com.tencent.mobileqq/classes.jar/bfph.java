@@ -1,6 +1,9 @@
-public abstract interface bfph
+import java.util.List;
+
+public class bfph
 {
-  public abstract void a(String paramString1, String paramString2);
+  public String a;
+  public List<Integer> a;
 }
 
 

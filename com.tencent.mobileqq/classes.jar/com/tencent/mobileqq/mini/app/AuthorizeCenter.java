@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import anni;
-import aqpv;
+import anzj;
+import arfd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApiScopeEntry;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
@@ -35,6 +35,7 @@ public class AuthorizeCenter
   public static final int AUTH_FLAG_NONE = 1;
   public static final int AUTH_FLAG_TRUE = 2;
   public static final String IS_ONCE_SUB_ITEM_MAINTAIN = "once_sub_item_maintain";
+  public static final String IS_SYS_SUB_ITEM_MAINTAIN = "sys_sub_item_maintain";
   public static final String KEY_API_NAME = "api_name";
   public static final String KEY_API_NAME_CLICK_ADVERT = "advert_tap";
   public static final String KEY_API_NAME_GET_ADVERT = "webapi_getadvert";
@@ -51,6 +52,7 @@ public class AuthorizeCenter
   public static final String KEY_AUTHORITY_SYNCHRONIZED = "authority_synchronized";
   public static final String KEY_IS_REQUEST_USER_INFO_AUTH_BY_USER = "from_component";
   public static final String SCOPE_ADDRESS = "scope.address";
+  public static final String SCOPE_BOOKSHELF_INSERT = "scope.insertBookShelf";
   public static final String SCOPE_CAMERA = "scope.camera";
   public static final String SCOPE_GET_PHONE_NUMBER = "scope.getPhoneNumber";
   public static final String SCOPE_INVOICE = "scope.invoice";
@@ -64,6 +66,7 @@ public class AuthorizeCenter
   public static final String SETTING_ADD_FRIEND = "setting.addFriend";
   public static final String SETTING_APP_MSG_SUBSCRIBED = "setting.appMsgSubscribed";
   public static final String SETTING_APP_ONCE_MSG_SUBSCRIBED = "setting.onceMsgSubscribed";
+  public static final String SETTING_SYS_MSG_SUBSCRIBED = "setting.sysMsgSubscribed";
   public static final String TAG = "AuthorizeCenter";
   private static ExtConfigInfo extConfigInfo;
   public static final HashMap<String, String> negativeButtonDesMap = new HashMap();
@@ -72,9 +75,10 @@ public class AuthorizeCenter
   public static final HashMap<String, String> scopeDescMap;
   public static final List<String> scopeList;
   private static final HashMap<String, String> scopeMap;
+  public static final HashMap<String, String> scopeReportMap;
   public static final HashMap<String, String> scopeTitleMap;
   public static final HashMap<String, String> settingScopeTitleMap;
-  private static String systemPermissionConfig = aqpv.a("miniappsustempermissionconfig", "{\"chooseLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"openLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"getLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"chooseVideo\":\"android.permission.CAMERA\",\"chooseImage\":\"android.permission.CAMERA\",\"saveImageToPhotosAlbum\":\"android.permission.WRITE_EXTERNAL_STORAGE\",\"saveVideoToPhotosAlbum\":\"android.permission.WRITE_EXTERNAL_STORAGE\",\"startRecord\":\"android.permission.RECORD_AUDIO\",\"operateRecorder\":\"android.permission.RECORD_AUDIO\",\"joinVoIPChat\":\"android.permission.RECORD_AUDIO\",\"operateCamera\":\"android.permission.CAMERA\",\"updateCamera\":\"android.permission.CAMERA\",\"insertCamera\":\"android.permission.CAMERA\"}");
+  private static String systemPermissionConfig = arfd.a("miniappsustempermissionconfig", "{\"chooseLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"openLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"getLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"chooseVideo\":\"android.permission.CAMERA\",\"chooseImage\":\"android.permission.CAMERA\",\"saveImageToPhotosAlbum\":\"android.permission.WRITE_EXTERNAL_STORAGE\",\"saveVideoToPhotosAlbum\":\"android.permission.WRITE_EXTERNAL_STORAGE\",\"startRecord\":\"android.permission.RECORD_AUDIO\",\"operateRecorder\":\"android.permission.RECORD_AUDIO\",\"joinVoIPChat\":\"android.permission.RECORD_AUDIO\",\"operateCamera\":\"android.permission.CAMERA\",\"updateCamera\":\"android.permission.CAMERA\",\"insertCamera\":\"android.permission.CAMERA\"}");
   public static final HashMap<String, String> systemPermissionMap;
   private int ANTH_DELAY = 60;
   private String appid;
@@ -86,6 +90,7 @@ public class AuthorizeCenter
     scopeList = new ArrayList();
     scopeTitleMap = new HashMap();
     scopeDescMap = new HashMap();
+    scopeReportMap = new HashMap();
     settingScopeTitleMap = new HashMap();
     systemPermissionMap = new HashMap();
   }
@@ -380,18 +385,22 @@ public class AuthorizeCenter
       scopeMap.put("startRecord", "scope.record");
       scopeMap.put("operateWXData", "scope.userInfo");
       scopeMap.put("chooseInvoiceTitle", "scope.invoiceTitle");
+      scopeMap.put("chooseInvoice", "scope.invoice");
       scopeMap.put("openAddress", "scope.address");
       scopeMap.put("openWeRunSetting", "scope.qqrun");
       scopeMap.put("getNativeWeRunData", "scope.qqrun");
       scopeMap.put("subscribeAppMsg", "setting.appMsgSubscribed");
       scopeMap.put("subscribeOnceAppMsg", "setting.onceMsgSubscribed");
+      scopeMap.put("requestSubscribeSystemMessage", "setting.sysMsgSubscribed");
       scopeMap.put("insertCamera", "scope.camera");
       scopeMap.put("Personalize", "scope.personalize");
       scopeMap.put("getPhoneNumber", "scope.getPhoneNumber");
+      scopeMap.put("insertBookshelf", "scope.insertBookShelf");
       scopeList.add("scope.userLocation");
       scopeList.add("scope.userInfo");
       scopeList.add("scope.address");
       scopeList.add("scope.invoiceTitle");
+      scopeList.add("scope.invoice");
       scopeList.add("scope.qqrun");
       scopeList.add("scope.record");
       scopeList.add("scope.writePhotosAlbum");
@@ -400,42 +409,63 @@ public class AuthorizeCenter
       scopeList.add("setting.appMsgSubscribed");
       scopeList.add("setting.addFriend");
       scopeList.add("scope.getPhoneNumber");
-      scopeTitleMap.put("scope.userLocation", anni.a(2131699619));
-      scopeTitleMap.put("scope.userInfo", anni.a(2131699618));
-      scopeTitleMap.put("scope.address", anni.a(2131699625));
-      scopeTitleMap.put("scope.invoiceTitle", anni.a(2131699630));
-      scopeTitleMap.put("scope.qqrun", anni.a(2131693688));
-      scopeTitleMap.put("scope.record", anni.a(2131699631));
-      scopeTitleMap.put("scope.writePhotosAlbum", anni.a(2131699633));
-      scopeTitleMap.put("scope.camera", anni.a(2131699639));
-      scopeTitleMap.put("scope.personalize", anni.a(2131699627));
-      scopeTitleMap.put("setting.appMsgSubscribed", anni.a(2131699643));
-      scopeTitleMap.put("setting.addFriend", anni.a(2131699641));
-      scopeTitleMap.put("scope.getPhoneNumber", anni.a(2131693687));
+      scopeList.add("scope.insertBookShelf");
+      scopeTitleMap.put("scope.userLocation", anzj.a(2131699726));
+      scopeTitleMap.put("scope.userInfo", anzj.a(2131699725));
+      scopeTitleMap.put("scope.address", anzj.a(2131699732));
+      scopeTitleMap.put("scope.invoiceTitle", anzj.a(2131699737));
+      scopeTitleMap.put("scope.invoice", "获取你的发票信息");
+      scopeTitleMap.put("scope.qqrun", anzj.a(2131693705));
+      scopeTitleMap.put("scope.record", anzj.a(2131699738));
+      scopeTitleMap.put("scope.writePhotosAlbum", anzj.a(2131699740));
+      scopeTitleMap.put("scope.camera", anzj.a(2131699746));
+      scopeTitleMap.put("scope.personalize", anzj.a(2131699734));
+      scopeTitleMap.put("setting.appMsgSubscribed", anzj.a(2131699750));
+      scopeTitleMap.put("setting.addFriend", anzj.a(2131699748));
+      scopeTitleMap.put("scope.getPhoneNumber", anzj.a(2131693704));
+      scopeTitleMap.put("scope.insertBookShelf", anzj.a(2131693697));
       scopeDescMap.put("scope.userLocation", "");
-      scopeDescMap.put("scope.userInfo", anni.a(2131693682));
+      scopeDescMap.put("scope.userInfo", anzj.a(2131693699));
       scopeDescMap.put("scope.address", "");
       scopeDescMap.put("scope.invoiceTitle", "");
+      scopeDescMap.put("scope.invoice", "");
       scopeDescMap.put("scope.qqrun", "");
       scopeDescMap.put("scope.record", "");
       scopeDescMap.put("scope.writePhotosAlbum", "");
       scopeDescMap.put("scope.camera", "");
       scopeDescMap.put("scope.personalize", "");
-      scopeDescMap.put("setting.appMsgSubscribed", anni.a(2131699626));
+      scopeDescMap.put("setting.appMsgSubscribed", anzj.a(2131699733));
       scopeDescMap.put("setting.addFriend", "");
       scopeDescMap.put("scope.getPhoneNumber", "");
-      settingScopeTitleMap.put("scope.userLocation", anni.a(2131699620));
-      settingScopeTitleMap.put("scope.userInfo", anni.a(2131699621));
-      settingScopeTitleMap.put("scope.address", anni.a(2131699616));
-      settingScopeTitleMap.put("scope.invoiceTitle", anni.a(2131699637));
-      settingScopeTitleMap.put("scope.qqrun", anni.a(2131699617));
-      settingScopeTitleMap.put("scope.record", anni.a(2131699638));
-      settingScopeTitleMap.put("scope.writePhotosAlbum", anni.a(2131699644));
-      settingScopeTitleMap.put("scope.camera", anni.a(2131699629));
-      settingScopeTitleMap.put("scope.personalize", anni.a(2131699622));
-      settingScopeTitleMap.put("setting.appMsgSubscribed", anni.a(2131693683));
-      settingScopeTitleMap.put("setting.addFriend", anni.a(2131699642));
-      negativeButtonDesMap.put("setting.appMsgSubscribed", anni.a(2131699632));
+      scopeDescMap.put("scope.insertBookShelf", anzj.a(2131693698));
+      scopeReportMap.put("scope.userLocation", "userLocation");
+      scopeReportMap.put("scope.userInfo", "userinfo");
+      scopeReportMap.put("scope.address", "chooseAddress");
+      scopeReportMap.put("scope.invoiceTitle", "invoiceTitle");
+      scopeReportMap.put("scope.invoice", "invoice");
+      scopeReportMap.put("scope.qqrun", "qqrun");
+      scopeReportMap.put("scope.record", "record");
+      scopeReportMap.put("scope.writePhotosAlbum", "writePhotosAlbum");
+      scopeReportMap.put("scope.camera", "camera");
+      scopeReportMap.put("scope.personalize", "personalize");
+      scopeReportMap.put("setting.appMsgSubscribed", "appMsgSubscribed");
+      scopeReportMap.put("setting.addFriend", "addFriend");
+      scopeReportMap.put("scope.getPhoneNumber", "getphonenumber");
+      scopeReportMap.put("setting.onceMsgSubscribed", "onceMsgSubscribed");
+      scopeReportMap.put("scope.insertBookShelf", "insertBookShelf");
+      settingScopeTitleMap.put("scope.userLocation", anzj.a(2131699727));
+      settingScopeTitleMap.put("scope.userInfo", anzj.a(2131699728));
+      settingScopeTitleMap.put("scope.address", anzj.a(2131699723));
+      settingScopeTitleMap.put("scope.invoiceTitle", anzj.a(2131699744));
+      settingScopeTitleMap.put("scope.invoice", "发票信息");
+      settingScopeTitleMap.put("scope.qqrun", anzj.a(2131699724));
+      settingScopeTitleMap.put("scope.record", anzj.a(2131699745));
+      settingScopeTitleMap.put("scope.writePhotosAlbum", anzj.a(2131699751));
+      settingScopeTitleMap.put("scope.camera", anzj.a(2131699736));
+      settingScopeTitleMap.put("scope.personalize", anzj.a(2131699729));
+      settingScopeTitleMap.put("setting.appMsgSubscribed", anzj.a(2131693700));
+      settingScopeTitleMap.put("setting.addFriend", anzj.a(2131699749));
+      negativeButtonDesMap.put("setting.appMsgSubscribed", anzj.a(2131699739));
       scopeAuthTypeMap.put("scope.getPhoneNumber", Integer.valueOf(1));
       mergeExtConfigInfo();
     }
@@ -548,6 +578,11 @@ public class AuthorizeCenter
   public boolean isOnceSubMaintain()
   {
     return this.sp.getBoolean("once_sub_item_maintain", false);
+  }
+  
+  public boolean isSystemSubscribeMaintain()
+  {
+    return this.sp.getBoolean("sys_sub_item_maintain", false);
   }
   
   public void setAuthorize(String paramString, boolean paramBoolean)
@@ -687,19 +722,24 @@ public class AuthorizeCenter
     this.sp.edit().putBoolean("once_sub_item_maintain", paramBoolean).apply();
   }
   
-  public void updateOnceSubMsgSetting(boolean paramBoolean, List<INTERFACE.StSubscribeMessage> paramList, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void updateIsSysSubMsgMaintain(boolean paramBoolean)
+  {
+    this.sp.edit().putBoolean("sys_sub_item_maintain", paramBoolean).apply();
+  }
+  
+  public void updateOnceSubMsgSetting(String paramString, boolean paramBoolean, List<INTERFACE.StSubscribeMessage> paramList, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     INTERFACE.StUserSettingInfo localStUserSettingInfo = new INTERFACE.StUserSettingInfo();
-    localStUserSettingInfo.settingItem.set("setting.onceMsgSubscribed");
-    Object localObject = (String)scopeTitleMap.get("setting.onceMsgSubscribed");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      localStUserSettingInfo.desc.set((String)localObject);
+    localStUserSettingInfo.settingItem.set(paramString);
+    paramString = (String)scopeTitleMap.get(paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      localStUserSettingInfo.desc.set(paramString);
     }
-    localObject = localStUserSettingInfo.authState;
+    paramString = localStUserSettingInfo.authState;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      ((PBInt32Field)localObject).set(i);
+      paramString.set(i);
       localStUserSettingInfo.subItems.set(paramList);
       MiniAppCmdUtil.getInstance().updateUserSetting(null, this.appid, localStUserSettingInfo, new AuthorizeCenter.2(this, paramMiniAppCmdInterface));
       return;

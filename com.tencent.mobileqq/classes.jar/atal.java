@@ -1,10 +1,6 @@
-import com.tencent.tmassistant.appinfo.data.AppDetail;
-
 public abstract interface atal
 {
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean, AppDetail paramAppDetail);
+  public abstract void a(int paramInt, aswv paramaswv, String paramString1, String paramString2);
 }
 
 

@@ -1,22 +1,28 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class rsy
-  extends pmn
+class rsy
+  implements DialogInterface.OnDismissListener
 {
-  public rsy(SelectVideoTabFragment paramSelectVideoTabFragment) {}
+  rsy(rsx paramrsx) {}
   
-  public void i(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.i(paramInt);
-    if ((SelectVideoTabFragment.a(this.a) != null) && (paramInt != 0) && (!SelectVideoTabFragment.a(this.a).isEmpty()))
+    paramDialogInterface = this.a;
+    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if (!rsx.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_column_id", paramInt);
-      localIntent.putExtra("arg_callback", SelectVideoTabFragment.a(this.a));
-      SelectVideoTabFragment.a(this.a).setResult(3, localIntent);
-      SelectVideoTabFragment.a(this.a).finish();
+      rsx.a(paramDialogInterface, bool);
+      if ((rsx.a(this.a) != null) && (rsx.a(this.a).b()) && (rsx.b(this.a)) && (rsx.a(this.a))) {
+        rsx.a(this.a).c();
+      }
+      if (rsx.a(this.a) != null) {
+        rsx.a(this.a).f();
+      }
+      rsx.a(this.a, false);
+      return;
     }
   }
 }

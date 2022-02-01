@@ -1,11 +1,24 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
+import eipc.EIPCResult;
+
 public class becd
-  extends becg
+  extends QIPCModule
 {
-  public String a;
-  
-  public String toString()
+  public becd()
   {
-    return this.a;
+    super("Module_TDFileChangeNameQIPCModule");
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    bjtx.c(becb.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    if (paramString.equals("Action_url_2_fmdb")) {
+      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
+    }
+    return null;
   }
 }
 

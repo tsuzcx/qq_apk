@@ -1,127 +1,30 @@
-import android.view.View;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class bbqm
-  implements bbps<bbmw, bbvf>
 {
-  private aobu a;
-  protected bbpr a;
+  public int a;
+  public long a;
+  public MessageForShortVideo a;
+  String jdField_a_of_type_JavaLangString;
+  public String[] a;
   
-  public bbqm(aobu paramaobu)
+  public bbqm(bbqj parambbqj, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Aobu = paramaobu;
-    this.jdField_a_of_type_Bbpr = a(paramaobu);
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public bbqm(aobu paramaobu, int paramInt)
+  public boolean a()
   {
-    this.jdField_a_of_type_Aobu = paramaobu;
-    this.jdField_a_of_type_Bbpr = a(paramaobu, paramInt);
-  }
-  
-  public bbqm(aobu paramaobu, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Aobu = paramaobu;
-    this.jdField_a_of_type_Bbpr = a(paramaobu, paramBoolean);
-  }
-  
-  public bbpr a()
-  {
-    return this.jdField_a_of_type_Bbpr;
-  }
-  
-  protected bbpr<bbmy, bbvg> a(aobu paramaobu)
-  {
-    return new bbqp(paramaobu);
-  }
-  
-  protected bbpr<bbmy, bbvg> a(aobu paramaobu, int paramInt)
-  {
-    return new bboz(paramaobu, paramInt);
-  }
-  
-  protected bbpr<bbmy, bbvg> a(aobu paramaobu, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      return a(paramaobu);
-    }
-    return new bbpp(paramaobu);
-  }
-  
-  public void a(bbmw parambbmw, bbvf parambbvf)
-  {
-    int i = 0;
-    Object localObject = (bbmx)parambbmw;
-    a(parambbvf, (bbmx)localObject);
-    int n = ((bbmx)localObject).a();
-    parambbmw = parambbvf.a();
-    if ((parambbmw != null) && (parambbmw != null))
-    {
-      localObject = ((bbmx)localObject).a();
-      if (localObject != null)
-      {
-        i = 0;
-        int j;
-        label68:
-        int k;
-        if (i < parambbmw.size())
-        {
-          j = 1;
-          if (i >= ((List)localObject).size()) {
-            break label296;
-          }
-          k = 1;
-          label82:
-          if (i >= n) {
-            break label302;
-          }
-        }
-        label296:
-        label302:
-        for (int m = 1;; m = 0)
-        {
-          if ((m & k & j) == 0) {
-            break label308;
-          }
-          ((bbvg)parambbmw.get(i)).a().setVisibility(0);
-          ((bbvg)parambbmw.get(i)).a().setTag(2131380929, ((List)localObject).get(i));
-          ((bbvg)parambbmw.get(i)).a().setTag(2131380935, parambbmw.get(i));
-          ((bbvg)parambbmw.get(i)).a().setTag(2131380930, Integer.valueOf(i));
-          ((bbvg)parambbmw.get(i)).a().setTag(2131380928, Integer.valueOf(parambbmw.size()));
-          ((bbvg)parambbmw.get(i)).a().setTag(2131380931, this.jdField_a_of_type_Bbpr);
-          this.jdField_a_of_type_Bbpr.a((bbmw)((List)localObject).get(i), (bbvh)parambbmw.get(i));
-          i += 1;
-          break;
-          j = 0;
-          break label68;
-          k = 0;
-          break label82;
-        }
-        label308:
-        i = Math.min(((List)localObject).size(), n);
-        while (i < parambbmw.size())
-        {
-          ((bbvg)parambbmw.get(i)).a().setVisibility(8);
-          i += 1;
-        }
-      }
-      while (i < parambbmw.size())
-      {
-        ((bbvg)parambbmw.get(i)).a().setVisibility(8);
-        i += 1;
-      }
-    }
-    if (parambbvf.b() != null) {
-      parambbvf.b().setVisibility(8);
-    }
-  }
-  
-  protected void a(bbvf parambbvf, bbmx parambbmx)
-  {
-    if (parambbvf.a() != null) {
-      parambbvf.a().setText(parambbmx.a());
-    }
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + bbqj.a());
+    return l2 < bbqj.a();
   }
 }
 

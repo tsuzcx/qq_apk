@@ -6,9 +6,9 @@ import android.net.Uri;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.view.View;
-import ankp;
-import bhpm;
-import bhre;
+import anwm;
+import biqh;
+import birz;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -26,7 +26,7 @@ import com.tencent.sonic.sdk.SonicConfig.Builder;
 import com.tencent.sonic.sdk.SonicEngine;
 import java.util.Arrays;
 import java.util.List;
-import nmj;
+import noe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -135,7 +135,7 @@ public class WebAccelerateHelper
   
   public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, WebAccelerateHelper.CommonJsPluginFactory paramCommonJsPluginFactory, List<WebViewPlugin> paramList)
   {
-    nmj.a("createWebViewPluginEngine");
+    noe.a("createWebViewPluginEngine");
     if ((paramAppInterface != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList == null))
     {
       if (QLog.isColorLevel()) {
@@ -145,7 +145,7 @@ public class WebAccelerateHelper
     }
     for (;;)
     {
-      nmj.b("createWebViewPluginEngine");
+      noe.b("createWebViewPluginEngine");
       if (paramAppInterface != null)
       {
         if (QLog.isColorLevel()) {
@@ -256,7 +256,7 @@ public class WebAccelerateHelper
         }
         Integer[] arrayOfInteger = new Integer[15];
         Arrays.fill(arrayOfInteger, Integer.valueOf(-1));
-        DeviceProfileManager.a(str, arrayOfInteger, new ankp());
+        DeviceProfileManager.a(str, arrayOfInteger, new anwm());
         sWebViewFeatureParams = arrayOfInteger;
         if (QLog.isColorLevel()) {
           QLog.d("WebAccelerateHelper", 2, "WebView feature params=" + Arrays.toString(sWebViewFeatureParams));
@@ -294,9 +294,9 @@ public class WebAccelerateHelper
   
   public void preCheckOffline(String paramString)
   {
-    bhpm localbhpm = bhpm.a(paramString);
-    if (localbhpm != null) {
-      localbhpm.a(new WebAccelerateHelper.4(this), paramString);
+    biqh localbiqh = biqh.a(paramString);
+    if (localbiqh != null) {
+      localbiqh.a(new WebAccelerateHelper.4(this), paramString);
     }
   }
   
@@ -353,7 +353,7 @@ public class WebAccelerateHelper
   
   public void preGetKey(Intent paramIntent, AppInterface paramAppInterface)
   {
-    preGetKey(bhre.a(paramIntent), paramIntent, paramAppInterface);
+    preGetKey(birz.a(paramIntent), paramIntent, paramAppInterface);
   }
   
   public void preGetKey(String paramString, Intent paramIntent, AppInterface paramAppInterface)

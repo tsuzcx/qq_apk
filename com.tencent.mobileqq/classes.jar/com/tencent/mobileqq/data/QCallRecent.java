@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import acwh;
-import bgnr;
+import adak;
+import bhnt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
@@ -87,9 +87,9 @@ public class QCallRecent
           bool1 = bool3;
         } while (!this.uin.equals(paramObject.uin));
         bool1 = bool3;
-      } while (!acwh.d(this.type));
+      } while (!adak.d(this.type));
       bool1 = bool3;
-    } while (!acwh.d(paramObject.type));
+    } while (!adak.d(paramObject.type));
     return true;
   }
   
@@ -110,7 +110,7 @@ public class QCallRecent
   
   public boolean isSend()
   {
-    return bgnr.a(this.sendFlag);
+    return bhnt.a(this.sendFlag);
   }
   
   public boolean isVideo()

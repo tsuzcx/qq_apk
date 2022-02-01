@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aeda;
+import aeme;
 import android.content.Intent;
 import com.tencent.mobileqq.data.TroopMemberCard;
 
 public class EditInfoActivity$11$2
   implements Runnable
 {
-  public EditInfoActivity$11$2(aeda paramaeda, TroopMemberCard paramTroopMemberCard) {}
+  public EditInfoActivity$11$2(aeme paramaeme, TroopMemberCard paramTroopMemberCard) {}
   
   public void run()
   {
@@ -15,9 +15,9 @@ public class EditInfoActivity$11$2
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("nick", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.colorCard);
-      localIntent.putExtra("edit_action", this.jdField_a_of_type_Aeda.a.g);
-      this.jdField_a_of_type_Aeda.a.setResult(-1, localIntent);
-      EditInfoActivity.d(this.jdField_a_of_type_Aeda.a);
+      localIntent.putExtra("edit_action", this.jdField_a_of_type_Aeme.a.g);
+      this.jdField_a_of_type_Aeme.a.setResult(-1, localIntent);
+      EditInfoActivity.d(this.jdField_a_of_type_Aeme.a);
     }
   }
 }

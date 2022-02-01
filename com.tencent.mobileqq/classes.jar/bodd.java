@@ -1,15 +1,13 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
-import java.util.List;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class bodd
+  implements bret
 {
-  public String a;
-  public List<YoutuResultItem> a;
+  public bodd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public bodd(String paramString, List<YoutuResultItem> paramList)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    QIMEffectCameraCaptureUnit.d(this.a);
   }
 }
 

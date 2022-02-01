@@ -1,52 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.1;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitFrameworkEventListener;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avfj
-  implements YtSDKKitFramework.IYtSDKKitFrameworkEventListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  avfj(avfh paramavfh) {}
+  public avfj(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void onFrameworkEvent(HashMap<String, Object> paramHashMap)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    avfh.a(this.a, new IdentificationPoseReflect.5.1(this, paramHashMap));
-  }
-  
-  public void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
-  {
-    paramHashMap = avfq.a().a(5);
-    if (paramHashMap == null) {
-      QLog.e("qq_Identification.Model", 1, "post face data error : config is empty");
-    }
-    do
+    Object localObject = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    int i;
+    if (paramBoolean)
     {
-      return;
-      paramHashMap = paramHashMap.optString("result_api_url", "");
-      if (TextUtils.isEmpty(paramHashMap))
-      {
-        QLog.e("qq_Identification.Model", 1, "post face data error : config url is empty");
-        return;
+      i = 1;
+      bdll.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Download_new", 0, i, "", "", "", "");
+      localObject = (anvl)QQSettingAutoDownloadAndSaveFragment.a(this.a).a(4);
+      ((anvl)localObject).d();
+      anvl.a(QQSettingAutoDownloadAndSaveFragment.a(this.a), paramBoolean);
+      if (!paramBoolean) {
+        break label136;
       }
-    } while (!paramHashMap.equals(paramString1));
-    QLog.d("qq_Identification.Model", 1, "start upload face data");
-    if (this.a.jdField_a_of_type_Aven == null) {
-      this.a.jdField_a_of_type_Aven = new avel(avfh.a(this.a), paramString2, this.a.jdField_a_of_type_Avfm);
+      if (bhdu.a().a() != 4) {
+        bhdu.a().a();
+      }
+      bdll.b(null, "CliOper", "", "", "0X8007212", "0X8007212", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      avfh.a(this.a, new IdentificationPoseReflect.5.2(this));
-      if (!bgnt.g(BaseApplicationImpl.getApplication())) {
-        break;
-      }
-      ((avel)this.a.jdField_a_of_type_Aven).b();
+      ((anvl)localObject).a(paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      ((avel)this.a.jdField_a_of_type_Aven).a(paramString2);
+      i = 0;
+      break;
+      label136:
+      bhdu.a().b();
+      bdll.b(null, "CliOper", "", "", "0X8007213", "0X8007213", 0, 0, "", "", "", "");
     }
   }
 }

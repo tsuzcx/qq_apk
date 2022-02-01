@@ -1,65 +1,13 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahxy
-  implements BusinessObserver
+public class ahxy
+  implements ahyf
 {
-  ahxy(ahxt paramahxt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-          nmp.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-          this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
-          ahxt.a(this.a, paramBundle);
-          this.a.b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail ret code error: " + paramInt);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail data is null");
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail isSuccess is null");
-          return;
-        }
-      }
-    }
+    paramahed.d(paramMessageRecord, paramahfq);
   }
 }
 

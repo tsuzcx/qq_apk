@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import axtp;
+import aymj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -13,7 +13,7 @@ public class NearbyProfileDisplayTribePanel$17
     EntityManager localEntityManager = this.this$0.a.app.a().createEntityManager();
     if (localEntityManager != null)
     {
-      localEntityManager.update(axtp.a(this.this$0));
+      localEntityManager.update(aymj.a(this.this$0));
       localEntityManager.close();
     }
   }

@@ -1,23 +1,23 @@
-public abstract interface amns
-  extends amld
+import java.util.Comparator;
+
+final class amns
+  implements Comparator<String>
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public int a(String paramString1, String paramString2)
+  {
+    if ("★".equals(paramString2)) {}
+    do
+    {
+      return 1;
+      if ("★".equals(paramString1)) {
+        return -1;
+      }
+      if ("#".equals(paramString2)) {
+        return -1;
+      }
+    } while ("#".equals(paramString1));
+    return paramString1.compareTo(paramString2);
+  }
 }
 
 

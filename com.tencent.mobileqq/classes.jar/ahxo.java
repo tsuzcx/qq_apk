@@ -1,43 +1,18 @@
-import com.tencent.ark.ArkDebugger.DebuggerCallback;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.1;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.2;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.3;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.4;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahxo
-  implements ArkDebugger.DebuggerCallback
+class ahxo
+  implements View.OnClickListener
 {
-  public ahxo(ArkDebugChatPie.1 param1) {}
+  ahxo(ahxm paramahxm) {}
   
-  public void Accepted()
+  public void onClick(View paramView)
   {
-    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.1(this));
-    QLog.d(this.a.this$0.a, 1, "ArkDebugger Accepted");
-  }
-  
-  public boolean ReadyToRun(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    ArkAppCenter.a().postToMainThread(new ArkDebugChatPie.1.1.4(this, paramString4, paramString3, paramString1, paramString2));
-    QLog.d(this.a.this$0.a, 1, String.format("ArkDebugger ReadyToRun viewId: %s, metaData: %s, mode: %s", new Object[] { paramString1, paramString2, paramString3 }));
-    return true;
-  }
-  
-  public void ReceivedPackage(String paramString1, String paramString2)
-  {
-    ahxn.a(this.a.this$0, paramString1);
-    ahxn.b(this.a.this$0, paramString2);
-    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.3(this, paramString1, paramString2));
-    QLog.d(this.a.this$0.a, 1, String.format("ArkDebugger ReceivedPackage appid: %s, appview: %s", new Object[] { paramString1, paramString2 }));
-  }
-  
-  public void Stopped(int paramInt)
-  {
-    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.2(this, paramInt));
-    QLog.d(this.a.this$0.a, 1, "ArkDebugger Stopped");
+    ChatMessage localChatMessage = agej.a(paramView);
+    ahxm.a(this.a, localChatMessage, 5);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

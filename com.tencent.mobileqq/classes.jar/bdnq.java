@@ -1,28 +1,11 @@
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-
-class bdnq
-  extends bdns
+public abstract class bdnq
 {
-  private bdoa a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  bdnq(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    super(2, paramString);
-    this.a = new bdoa(paramInt1, paramInt2, 1);
-  }
-  
-  float a(@NonNull Paint paramPaint)
-  {
-    float f = this.a.a().getBounds().width();
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
-    }
-    return f;
-  }
+  public abstract String a(int paramInt);
 }
 
 

@@ -1,17 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
 
 public class ajmb
-  extends ajhg
+  extends ajmf
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public boolean a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  public ConnectsExplorationBanner a;
+  
+  public ajmb(ConnectsExplorationBanner paramConnectsExplorationBanner)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
+    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner.uin;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

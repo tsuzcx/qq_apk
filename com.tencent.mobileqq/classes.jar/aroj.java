@@ -1,121 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aroj
-  extends arnz
+class aroj
+  implements DialogInterface.OnClickListener
 {
-  public aroj(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.ptt.so.658", paramQQAppInterface);
-  }
+  aroj(arof paramarof, Runnable paramRunnable, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 10007;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PttSilkAndChangeVoiceSoData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPttSilkAndChangeVoiceSo";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
-    }
-    for (;;)
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangRunnable.run();
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
     {
-      try
-      {
-        str = aztm.a();
-        if ((str != null) && (!str.equals("")))
-        {
-          bgmg.a(str);
-          if (new File(str).mkdir())
-          {
-            bgmg.a(paramString, str, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
-            }
-          }
-        }
+      paramDialogInterface = "0X800AE6B";
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!this.b) {
+        break label99;
       }
-      catch (Exception localException)
-      {
-        String str;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
-        continue;
+      str = "size";
+      label41:
+      arof.a(paramDialogInterface, (String)localObject, str);
+      localObject = bmzn.a();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label105;
       }
-      try
-      {
-        if (!aztm.a)
-        {
-          bgmg.a(aztm.b());
-          bgmg.c(str, aztm.b());
-        }
-        super.a(paramString);
-        return;
+      paramDialogInterface = "2";
+      label63:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label111;
       }
-      finally {}
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    Object localObject = (PttSilkAndChangeVoiceSoData)a();
-    if (localObject == null) {
-      return false;
-    }
-    int i = lkw.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.4.1" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
-    }
-    localObject = this.a.getPreferences();
-    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
+    label99:
+    label105:
+    label111:
+    for (String str = "2";; str = "1")
     {
-      bdxh.a();
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-    if (i > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
-      }
-      return bool;
+      ((bmzn)localObject).a("Later", "4", "platform898", paramDialogInterface, str, 102, 1, System.currentTimeMillis());
+      return;
+      paramDialogInterface = "0X800AE65";
+      break;
+      str = "full";
+      break label41;
+      paramDialogInterface = "3";
+      break label63;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aroj
  * JD-Core Version:    0.7.0.1
  */

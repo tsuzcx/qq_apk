@@ -1,84 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class aqsl
-  extends aqkz<aqsk>
+  implements aqsi
 {
-  public static aqsk a()
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    return (aqsk)aqlk.a().a(631);
-  }
-  
-  @NonNull
-  public aqsk a(int paramInt)
-  {
-    return new aqsk();
-  }
-  
-  @Nullable
-  public aqsk a(aqlg[] paramArrayOfaqlg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePreloadConfProcessor", 2, "onParsed ");
+    String str = paramColorNote.getSubType();
+    Object localObject = str.split("-");
+    if (localObject.length > 0) {
+      str = localObject[0];
     }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      new aqsk();
-      return aqsk.a(paramArrayOfaqlg);
+    if (localObject.length > 1) {
+      localObject = localObject[1];
     }
-    return null;
-  }
-  
-  public void a(aqsk paramaqsk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePreloadConfProcessor", 2, "onUpdate " + paramaqsk.toString());
-    }
-  }
-  
-  public Class<aqsk> clazz()
-  {
-    return aqsk.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePreloadConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void onReqNoReceive() {}
-  
-  public int type()
-  {
-    return 631;
+    paramColorNote = paramColorNote.getReserve();
+    bmkq.a(paramContext, "", Long.parseLong(str), paramColorNote);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsl
  * JD-Core Version:    0.7.0.1
  */

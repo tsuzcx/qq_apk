@@ -1,4 +1,21 @@
-public class bpkm {}
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
+
+public class bpkm
+  implements Animation.AnimationListener
+{
+  public bpkm(VideoEditToolBar paramVideoEditToolBar) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.setVisibility(0);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

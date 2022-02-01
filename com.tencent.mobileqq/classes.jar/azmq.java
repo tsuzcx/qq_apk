@@ -1,37 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.os.Bundle;
 
-public class azmq
+class azmq
+  extends azms
 {
-  public static void a(View paramView, int paramInt, String paramString, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
-  {
-    bbdu.a(paramBaseActivity, bbdu.a(paramInt, paramString), -1);
-    paramView.setVisibility(8);
-    azfy.a().b(paramQQAppInterface);
-    bcst.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "1", "0", "", "");
-  }
+  azmq(azmm paramazmm) {}
   
-  public static void a(azfe paramazfe, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-      bgtl.a(paramBaseActivity, paramQQAppInterface, 0, "signature_ziliaoka");
+    super.a(paramBoolean, paramBundle);
+    this.a.a();
+    if ((azmm.a(this.a)) && (azmm.a(this.a) != null)) {
+      azmm.b(this.a).a();
     }
-    while (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-    {
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8006A79", "0X8006A79", 0, 0, "", "", "", "");
-      return;
-      Intent localIntent = new Intent(paramBaseActivity, PublicFragmentActivity.class);
-      localIntent.putExtra("key_uin", paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_uin_name", paramazfe.jdField_a_of_type_Bgdg.a.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_open_via", "history-kerentaiziliaoka");
-      aevv.a(paramBaseActivity, localIntent, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-    }
-    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8006A8D", "0X8006A8D", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,71 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-public class aqmc
-  extends aqwr<aqmb>
+class aqmc
+  implements bixo
 {
-  @NonNull
-  public aqmb a()
-  {
-    return new aqmb();
-  }
+  aqmc(aqmb paramaqmb) {}
   
-  @NonNull
-  public aqmb a(@NonNull aqlg[] paramArrayOfaqlg)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    QLog.e("VasUpdateConfProcessor", 1, "onParsed ");
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          int j = paramArrayOfaqlg.length;
-          int i = 0;
-          while (i < j)
-          {
-            aqlg localaqlg = paramArrayOfaqlg[i];
-            if (localaqlg != null)
-            {
-              aqmb localaqmb = aqmb.a(localaqlg.a);
-              if (QLog.isColorLevel()) {
-                QLog.d("VasUpdateConfProcessor", 2, "onParsed " + localaqlg.a);
-              }
-              if (localaqmb != null) {
-                return localaqmb;
-              }
-            }
-            i += 1;
-          }
-        }
-        return new aqmb();
-      }
-      catch (Exception paramArrayOfaqlg)
-      {
-        paramArrayOfaqlg.printStackTrace();
-        QLog.e("VasUpdateConfProcessor", 1, "onParsed Exception = " + paramArrayOfaqlg.getMessage());
-      }
-    }
-  }
-  
-  @NonNull
-  public aqmb b()
-  {
-    return new aqmb();
-  }
-  
-  public Class<aqmb> clazz()
-  {
-    return aqmb.class;
-  }
-  
-  public int type()
-  {
-    return 649;
+    return aqmb.a(this.a, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmc
  * JD-Core Version:    0.7.0.1
  */

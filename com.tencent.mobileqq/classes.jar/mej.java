@@ -1,19 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mej
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public mej(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
+  public mej(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b(2);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickIgnore", true, null, -1);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickIgnore");
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

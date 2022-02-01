@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import agsn;
-import ahnu;
+import ahcb;
+import ahxe;
 import android.graphics.drawable.Drawable.ConstantState;
-import anni;
+import anzj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONException;
@@ -32,8 +32,8 @@ public class MessageForPoke
   public int interactType = 0;
   public boolean isPlayed;
   public Drawable.ConstantState mBubbleBgState;
-  public agsn mFrameState = new agsn();
-  public ahnu mUnlimitedState = new ahnu();
+  public ahcb mFrameState = new ahcb();
+  public ahxe mUnlimitedState = new ahxe();
   public String minVersion;
   public String name;
   public int state;
@@ -68,25 +68,25 @@ public class MessageForPoke
     switch (this.interactType)
     {
     default: 
-      this.msg = anni.a(2131705405);
+      this.msg = anzj.a(2131705512);
       return;
     case 1: 
-      this.msg = anni.a(2131705400);
+      this.msg = anzj.a(2131705507);
       return;
     case 2: 
-      this.msg = anni.a(2131705379);
+      this.msg = anzj.a(2131705486);
       return;
     case 3: 
-      this.msg = anni.a(2131705380);
+      this.msg = anzj.a(2131705487);
       return;
     case 4: 
-      this.msg = anni.a(2131705367);
+      this.msg = anzj.a(2131705474);
       return;
     case 5: 
       this.msg = "[666]";
       return;
     case 6: 
-      this.msg = anni.a(2131705382);
+      this.msg = anzj.a(2131705489);
       return;
     }
     this.msg = ("[" + this.name + "]");

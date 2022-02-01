@@ -1,30 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.qphone.base.util.QLog;
 
 class aqch
-  extends BroadcastReceiver
+  implements ArkAppPreloader.PreloadAppCallback
 {
-  aqch(aqcg paramaqcg) {}
+  aqch(aqcf paramaqcf) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void beginAppload(String paramString, int paramInt)
   {
-    if (paramIntent != null)
+    if (paramInt == 1) {
+      aqbz.a(paramString);
+    }
+  }
+  
+  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramInt == 1)
     {
-      paramContext = paramIntent.getAction();
-      if (paramContext != null)
-      {
-        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
-          break label57;
-        }
-        this.a.a();
+      aqbz.b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
       }
     }
-    label57:
-    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
-      return;
-    }
-    this.a.b();
+  }
+  
+  public void onReleaseAndReload(String paramString, int paramInt)
+  {
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
+    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new aqci(this, paramString));
   }
 }
 

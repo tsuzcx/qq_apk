@@ -1,54 +1,65 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Map;
 
-public class mux
+class mux
 {
-  public static String a;
-  public static String b = jdField_a_of_type_JavaLangString + "test/";
-  public static String c = "min_sdk";
-  public static String d = "disable_sdk";
-  public static String e = "flag";
-  public static String f = b + c;
-  public static String g = b + d;
-  public static String h = b + e;
-  @Deprecated
-  ljz a;
+  private Map<String, muy> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  static
+  public mux(String[] paramArrayOfString)
   {
-    jdField_a_of_type_JavaLangString = "sharp/video_effect/";
-  }
-  
-  public mux()
-  {
-    this.jdField_a_of_type_Ljz = null;
-  }
-  
-  public int a(ljz paramljz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoEffectConfigParser", 2, "getVideoEffectTestFlag sdk: " + Build.VERSION.SDK_INT);
-    }
-    try
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    if (paramArrayOfString != null)
     {
-      int[] arrayOfInt = paramljz.a(h);
-      if (arrayOfInt != null)
+      int j = paramArrayOfString.length;
+      int i = 0;
+      if (i < j)
       {
-        if ((arrayOfInt[0] & 0x1) != 1) {
-          return 0;
+        String str = paramArrayOfString[i];
+        if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
+          this.jdField_a_of_type_JavaUtilMap.put(str, new muy(this, 2130842244, anzj.a(2131713834), str));
         }
-        arrayOfInt = paramljz.a(f);
-        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
+        for (;;)
         {
-          boolean bool = mqp.a(paramljz.a(g), Build.VERSION.SDK_INT);
-          if (!bool) {
-            return 1;
+          i += 1;
+          break;
+          if ("DEVICE_EARPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new muy(this, 2130842246, anzj.a(2131713835), str));
+          } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new muy(this, 2130842249, anzj.a(2131713838), str));
+          } else if ("DEVICE_WIREDHEADSET".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new muy(this, 2130842251, anzj.a(2131713836), str));
           }
         }
       }
     }
-    catch (Exception paramljz) {}
-    return 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap.size();
+  }
+  
+  public muy a(String paramString)
+  {
+    return (muy)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      muy localmuy = (muy)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
+      if (localmuy != null) {
+        localmuy.b = (anzj.a(2131713837) + paramString + "）");
+      }
+    }
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

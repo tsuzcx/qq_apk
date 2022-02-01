@@ -1,68 +1,60 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 class ainy
-  implements bdvw
+  extends apee
 {
-  private Handler a;
+  ainy(ainh paramainh, String paramString) {}
   
-  ainy(Handler paramHandler)
+  public int a()
   {
-    this.a = paramHandler;
+    return 5;
   }
   
-  public void onResp(bdwt parambdwt)
+  public void a(Object paramObject)
   {
-    Object localObject = this.a.obtainMessage(8);
-    ((Message)localObject).obj = parambdwt.jdField_a_of_type_Bdws;
-    this.a.sendMessage((Message)localObject);
-    Bundle localBundle = (Bundle)parambdwt.jdField_a_of_type_Bdws.a();
-    localObject = localBundle.getString("ReqUniqueKey");
-    int i = localBundle.getInt("IdxInRes");
-    if (QLog.isColorLevel())
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      long l = localBundle.getLong("StartTs");
-      QLog.d("ZhituManager", 2, ains.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + parambdwt.jdField_a_of_type_Long + " file.path = " + parambdwt.jdField_a_of_type_Bdws.c + " resp.result = " + parambdwt.jdField_a_of_type_Int + " take time: " + Long.toString(System.currentTimeMillis() - l)));
-    }
-    if (parambdwt.jdField_a_of_type_Int == 3)
-    {
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
       if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ains.a((String)localObject, "OnResp", i, "result downloading, "));
+        QLog.d(this.jdField_a_of_type_Ainh.jdField_a_of_type_JavaLangString, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
       }
+      ainh.a(this.jdField_a_of_type_Ainh, ainh.a(this.jdField_a_of_type_Ainh));
+      ocd.a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      ((bgre)this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      ainh.b(this.jdField_a_of_type_Ainh, false);
+      if ((this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.appid.get() + ""))) {
+        this.jdField_a_of_type_Ainh.b(1);
+      }
+    }
+    else
+    {
       return;
     }
-    if (parambdwt.jdField_a_of_type_Int == 0)
-    {
-      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
-      ains.a(parambdwt.jdField_a_of_type_Bdws.c);
-      if (localZhituImgResponse != null)
-      {
-        parambdwt = this.a.obtainMessage(3);
-        parambdwt.obj = localBundle;
-        this.a.sendMessage(parambdwt);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ains.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
-      }
-      parambdwt = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", 99999);
-      parambdwt.obj = localBundle;
-    }
-    for (;;)
-    {
-      break;
-      localObject = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", parambdwt.b);
-      ((Message)localObject).obj = localBundle;
-      parambdwt = (bdwt)localObject;
-    }
+    this.jdField_a_of_type_Ainh.c(this.jdField_a_of_type_Ainh.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    this.jdField_a_of_type_Ainh.A(2131694659);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    ainh.c(this.jdField_a_of_type_Ainh);
+    if (ainh.d(this.jdField_a_of_type_Ainh) == 0) {
+      this.jdField_a_of_type_Ainh.bp();
+    }
+  }
 }
 
 

@@ -1,38 +1,16 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.widget.Switch;
 
 public class ammu
 {
-  public String a;
-  
-  public ammu(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int i = amhd.a(paramQQAppInterface);
-    if ((paramamux == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
-      return;
-      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
-      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramContext, true));
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
-    }
-    amuo.a(paramamux, paramString, 3, 0);
-    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
-  }
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
+  Switch jdField_a_of_type_ComTencentWidgetSwitch;
 }
 
 

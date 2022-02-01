@@ -1,10 +1,23 @@
-import android.content.DialogInterface;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 
-public abstract interface aagb
+public class aagb
 {
-  public abstract void a(DialogInterface paramDialogInterface);
+  public int a;
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
   
-  public abstract void m();
+  public aagb(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public aagb(CertifiedAccountMeta.StUser paramStUser)
+  {
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
+    this.jdField_a_of_type_Int = 1;
+  }
 }
 
 

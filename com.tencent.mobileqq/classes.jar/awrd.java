@@ -1,14 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import com.tencent.mobileqq.location.ui.LocationMapWidget;
 
-class awrd
-  implements DialogInterface.OnClickListener
+public class awrd
+  implements azlh
 {
-  awrd(awqv paramawqv) {}
+  public awrd(LocationMapWidget paramLocationMapWidget) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    LocationMapWidget.a(this.a).finish();
+  }
+  
+  public void a(azld paramazld, Double paramDouble, boolean paramBoolean)
+  {
+    LocationMapWidget localLocationMapWidget = this.a;
+    if (paramazld == null) {}
+    for (paramazld = null;; paramazld = paramazld.a)
+    {
+      localLocationMapWidget.a(paramazld, paramDouble, paramBoolean);
+      return;
+    }
   }
 }
 

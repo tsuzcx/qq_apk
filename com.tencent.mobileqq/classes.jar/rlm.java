@@ -1,17 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rlm
-  extends pmn
+public abstract interface rlm
 {
-  public rlm(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public abstract long a();
   
-  public void c(List<TagInfo> paramList)
-  {
-    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
-    pmk.a().b(this);
-  }
+  public abstract View a();
+  
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
 }
 
 

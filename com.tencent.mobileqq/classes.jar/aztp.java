@@ -1,8 +1,21 @@
-import android.view.MotionEvent;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aztp
+class aztp
+  extends blgm
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  aztp(azti paramazti) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+  }
 }
 
 

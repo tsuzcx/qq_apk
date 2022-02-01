@@ -1,18 +1,12 @@
 public class bnrj
 {
-  private Boolean a;
-  public String a;
-  
-  public bnrj(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b = true;
+  public boolean c = true;
 }
 
 

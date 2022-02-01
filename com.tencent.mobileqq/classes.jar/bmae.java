@@ -1,13 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import common.config.service.QzoneConfig;
+import common.config.service.QzoneConfig.3.1;
 
 public class bmae
-  implements bmar
+  extends BroadcastReceiver
 {
-  public bmae(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public bmae(QzoneConfig paramQzoneConfig) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_JavaLangString);
+    ThreadManagerV2.excute(new QzoneConfig.3.1(this, paramIntent), 16, null, true);
   }
 }
 

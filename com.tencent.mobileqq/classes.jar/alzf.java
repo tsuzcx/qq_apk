@@ -1,29 +1,78 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Random;
 
-public class alzf
-  implements aohj
+class alzf
 {
-  public alzf(SessionClearFragment paramSessionClearFragment) {}
+  private int jdField_a_of_type_Int;
+  private LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int b;
   
-  public void a()
+  public alzf(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel())
+    this.b = paramInt1;
+    if (paramInt2 > 0)
     {
-      QLog.d("SessionClearFragment", 2, "onLoadStart");
-      this.a.a();
+      this.jdField_a_of_type_ArrayOfInt = new int[paramInt2];
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        this.jdField_a_of_type_ArrayOfInt[paramInt1] = -1;
+        paramInt1 += 1;
+      }
+    }
+    this.jdField_a_of_type_ArrayOfInt = null;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0)
+    {
+      i = 0;
+      if (i < this.b)
+      {
+        if (a(i)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          this.jdField_a_of_type_JavaUtilLinkedList.add(Integer.valueOf(i));
+        }
+      }
+    }
+    int i = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_JavaUtilLinkedList.size()) % this.b;
+    int j = ((Integer)this.jdField_a_of_type_JavaUtilLinkedList.get(i)).intValue();
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
+    a(j);
+    return j;
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = paramInt;
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Int %= this.jdField_a_of_type_ArrayOfInt.length;
     }
   }
   
-  public void a(List<aohd> paramList)
+  public boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SessionClearFragment", 2, "onLoadFinish");
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length == 0)) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfInt[i] == paramInt) {
+          return true;
+        }
+        i += 1;
+      }
     }
-    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 

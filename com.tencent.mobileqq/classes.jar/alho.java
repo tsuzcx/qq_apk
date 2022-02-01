@@ -1,14 +1,43 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alho
-  implements bkhy
+  implements View.OnClickListener
 {
-  public alho(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public alho(ViewPagerTabLayout paramViewPagerTabLayout) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    String str = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + anni.a(2131702433);
-    bluy.a().c(str);
+    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
+    if (i != -1)
+    {
+      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
+        break label92;
+      }
+      if (ViewPagerTabLayout.a(this.a)) {
+        break label81;
+      }
+      this.a.setCurrentTab(i, false);
+      if (ViewPagerTabLayout.a(this.a) != null) {
+        ViewPagerTabLayout.a(this.a).a(i);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label81:
+      this.a.setCurrentTab(i);
+      break;
+      label92:
+      if (ViewPagerTabLayout.a(this.a) != null) {
+        ViewPagerTabLayout.a(this.a).b(i);
+      }
+    }
   }
 }
 

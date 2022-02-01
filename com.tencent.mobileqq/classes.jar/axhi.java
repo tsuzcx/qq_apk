@@ -1,22 +1,47 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import java.util.List;
 
 public class axhi
-  extends aopa
 {
-  public axhi(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private List<Integer> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
+  
+  public axhi a(int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public axhi a(String paramString)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      axhf.jdField_a_of_type_ArrayOfLong[0] = ((paramSosoLbsInfo.a.b * 1000000.0D));
-      axhf.jdField_a_of_type_ArrayOfLong[1] = ((paramSosoLbsInfo.a.a * 1000000.0D));
-      axhf.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public axhi a(List<Integer> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public MsgBackupUserData a()
+  {
+    return new MsgBackupUserData(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.c, this.jdField_a_of_type_Int, null);
+  }
+  
+  public axhi b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public axhi c(String paramString)
+  {
+    this.c = paramString;
+    return this;
   }
 }
 

@@ -4,12 +4,12 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
-import ujn;
-import uju;
-import umw;
-import una;
-import unb;
-import uni;
+import ukh;
+import uko;
+import unx;
+import uob;
+import uoc;
+import uoj;
 
 public class WSStatisticsReporter
 {
@@ -38,8 +38,8 @@ public class WSStatisticsReporter
   
   private void beaconData2Server()
   {
-    uju localuju = new uju(new uni(this.mEventName, this.mReportParams), null, new una(this), 4009);
-    ujn.a().a(localuju);
+    uko localuko = new uko(new uoj(this.mEventName, this.mReportParams), null, new uob(this), 4009);
+    ukh.a().a(localuko);
   }
   
   private void reportRequestFailure(String paramString1, String paramString2, String paramString3)
@@ -67,8 +67,8 @@ public class WSStatisticsReporter
     localHashMap.put("err_type", paramString1);
     localHashMap.put("err_code", paramString2);
     localHashMap.put("err_msg", paramString3);
-    umw.a(localHashMap);
-    unb.a().a(localHashMap);
+    unx.a(localHashMap);
+    uoc.a().a(localHashMap);
   }
   
   public void report()

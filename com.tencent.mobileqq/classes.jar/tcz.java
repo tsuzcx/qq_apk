@@ -1,31 +1,47 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.viola.adapter.IBridgeAdapter;
+import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.ArrayList;
 
-class tcz
-  extends anxw
+public class tcz
+  implements IBridgeAdapter
 {
-  tcz(tcx paramtcx) {}
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public tcz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
+    registerModuleFunction();
   }
   
-  public void a(List<bbof> paramList, int paramInt)
+  public ArrayList<String> getAdapterUnRegisterFunction()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    return null;
+  }
+  
+  public void registerModuleFunction() {}
+  
+  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
+  {
+    if (paramViolaInstance == null) {
+      break label5;
     }
-    if (paramInt != 6) {}
-    while (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() != 0)) || (paramList == null) || (paramList.size() <= 0) || (!(paramList.get(0) instanceof HotWordSearchEntryDataModel))) {
+    for (;;)
+    {
+      label5:
       return;
+      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
+      {
+        paramString = paramViolaInstance.getFragment();
+        if (paramString == null) {
+          break;
+        }
+        if ((paramString instanceof ViolaFragment)) {}
+        for (paramString = ((ViolaFragment)paramString).getTtileChangelistener(); paramString != null; paramString = null)
+        {
+          paramString.a(((Boolean)paramObject).booleanValue());
+          return;
+        }
+      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
-    tcx.jdField_a_of_type_Int = 0;
-    this.a.f();
   }
 }
 

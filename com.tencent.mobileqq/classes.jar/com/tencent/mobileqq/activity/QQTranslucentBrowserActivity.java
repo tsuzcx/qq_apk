@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aezq;
-import aezr;
-import aezs;
+import afix;
+import afiy;
+import afiz;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import avmc;
+import awen;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 
@@ -32,7 +32,7 @@ public class QQTranslucentBrowserActivity
     {
       return;
       if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        this.jdField_a_of_type_AndroidAppDialog = new aezs(this);
+        this.jdField_a_of_type_AndroidAppDialog = new afiz(this);
       }
     } while (this.jdField_a_of_type_AndroidAppDialog == null);
     this.jdField_a_of_type_AndroidAppDialog.show();
@@ -65,10 +65,10 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131167224);
-    View localView = findViewById(2131363653);
+    getWindow().setBackgroundDrawableResource(2131167247);
+    View localView = findViewById(2131363678);
     if (localView != null) {
-      localView.setBackgroundResource(2131167224);
+      localView.setBackgroundResource(2131167247);
     }
     int i;
     if (paramBundle != null)
@@ -85,14 +85,14 @@ public class QQTranslucentBrowserActivity
       return bool;
       if (i == 4)
       {
-        this.jdField_a_of_type_AndroidAppDialog = avmc.a(this);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aezq(this));
+        this.jdField_a_of_type_AndroidAppDialog = awen.a(this);
+        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new afix(this));
         a();
         return bool;
       }
     } while (i != 5);
-    this.jdField_a_of_type_AndroidAppDialog = avmc.a(this, paramBundle);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aezr(this));
+    this.jdField_a_of_type_AndroidAppDialog = awen.a(this, paramBundle);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new afiy(this));
     a();
     return bool;
   }

@@ -1,49 +1,67 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.image.URLDrawable;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.1;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.5;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.6;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class tux
-  implements bkhe
+  extends MqqHandler
 {
-  public tux(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public tux(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.isFinishing()) {}
+    do
     {
-    default: 
-      adcd.a().a("list_subscript");
-    }
-    for (;;)
-    {
-      return;
-      adcd.a().a("list_subscript", false);
-      paramInt = 0;
-      while (paramInt <= paramAbsListView.getChildCount())
+      do
       {
-        Object localObject = paramAbsListView.getChildAt(paramInt);
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof tvc)))
+        do
         {
-          localObject = (tvc)((View)localObject).getTag();
-          Drawable localDrawable = ((tvc)localObject).b.getDrawable();
-          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
+          return;
+          switch (paramMessage.what)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((tvc)localObject).a);
+          default: 
+            return;
+          case 1002: 
+            try
+            {
+              paramMessage = twk.a().b(this.a.app);
+              this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
+              return;
             }
-            ((URLDrawable)localDrawable).startDownload();
-            ((URLDrawable)localDrawable).setAutoDownload(true);
+            catch (Exception paramMessage) {}
           }
-        }
-        paramInt += 1;
-      }
+        } while (!QLog.isColorLevel());
+        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
+        return;
+        this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
+        return;
+        paramMessage = paramMessage.getData();
+      } while ((paramMessage == null) || (!bnrf.a()));
+      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
+    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
+    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
+      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
     }
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.3(this, paramMessage));
+    return;
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.4(this));
+    return;
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.5(this));
+    return;
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.6(this));
   }
 }
 

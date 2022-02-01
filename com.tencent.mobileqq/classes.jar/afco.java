@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afco
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public afco(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public afco(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("PhoneUnityBindInfoActivity", 1, "bindMiBaoReceiver onReceive");
+    if (PhoneUnityBindInfoActivity.a(this.a) == 1) {
+      bdll.b(this.a.app, "dc00898", "", "", "0X800B316", "0X800B316", 0, 0, "", "", "", "");
+    }
+    while (PhoneUnityBindInfoActivity.a(this.a) != 2) {
+      return;
+    }
+    bdll.b(this.a.app, "dc00898", "", "", "0X800B326", "0X800B326", 0, 0, "", "", "", "");
   }
 }
 

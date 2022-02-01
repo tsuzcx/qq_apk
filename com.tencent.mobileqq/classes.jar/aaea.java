@@ -1,20 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import android.os.Handler;
+import com.tencent.biz.richframework.widget.BaseVideoView;
+import com.tencent.biz.richframework.widget.BaseVideoView.1.1;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
 
 public class aaea
-  implements Animation.AnimationListener
+  implements SDKInitListener
 {
-  public aaea(CommentBottomBar paramCommentBottomBar) {}
+  public aaea(BaseVideoView paramBaseVideoView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onSDKInited(boolean paramBoolean)
   {
-    CommentBottomBar.a(this.a, true);
+    this.a.a().post(new BaseVideoView.1.1(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1;
 
 public class aglh
-  implements agma
+  extends blgm
 {
-  private BaseChatPie a;
+  aglh(agle paramagle) {}
   
-  public aglh(BaseChatPie paramBaseChatPie)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.a != null)) {
-      ((awxi)this.a.a.getManager(324)).onDestroy();
+    if ((agle.a(this.a) != null) && (agle.a(this.a).isShown())) {
+      this.a.a.post(new ComboAnimation3.3.1(this));
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 13 };
   }
 }
 

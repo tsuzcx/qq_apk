@@ -9,14 +9,14 @@ import com.tencent.qphone.base.util.QLog;
 class OtherJsPlugin$4
   implements MiniAppController.ActivityResultListener
 {
-  OtherJsPlugin$4(OtherJsPlugin paramOtherJsPlugin, String paramString, JsRuntime paramJsRuntime, int paramInt) {}
+  OtherJsPlugin$4(OtherJsPlugin paramOtherJsPlugin, String paramString1, JsRuntime paramJsRuntime, int paramInt, String paramString2) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     QLog.d(OtherJsPlugin.access$000(), 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
     if (paramInt1 == 5)
     {
-      OtherJsPlugin.access$400(this.this$0, this.val$eventName, this.val$webview, this.val$callbackId);
+      OtherJsPlugin.access$400(this.this$0, this.val$eventName, this.val$webview, this.val$callbackId, this.val$jsonParams);
       MiniAppController.getInstance().removeActivityResultListener(this);
       return true;
     }

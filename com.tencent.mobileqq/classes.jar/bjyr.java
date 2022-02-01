@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.2.1;
-
 public class bjyr
-  implements DialogInterface.OnClickListener
 {
-  public bjyr(ShareProxyImpl.2.1 param1) {}
+  public static final bjyr a;
+  public static final bjyr b;
+  public static final bjyr c = new bjyr("ANDROID.QQ.NEWYYBAPK", "7001");
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  static
+  {
+    jdField_a_of_type_Bjyr = new bjyr("ANDROID.QQ.WLISTAPK", "7003");
+    jdField_b_of_type_Bjyr = new bjyr("ANDROID.QQ.YYBAPK", "7002");
+  }
+  
+  bjyr(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
 }
 
 

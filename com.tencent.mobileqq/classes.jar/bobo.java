@@ -1,39 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
-
-public class bobo
-  implements View.OnTouchListener
+abstract interface bobo
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
-  public bobo(LyricWithBuoyView paramLyricWithBuoyView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      for (;;)
-      {
-        return false;
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-      }
-    } while ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) >= 10.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) >= 10.0F));
-    if (LyricWithBuoyView.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricWithBuoyView) != null) {
-      LyricWithBuoyView.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricWithBuoyView).a();
-    }
-    for (;;)
-    {
-      return true;
-      bnzb.a("LyricWithBuoyView", "onClick() mOnLyricWithBuoyViewOperationListener == null.");
-    }
-  }
+  public static final String[] a = { "_id", "uid", "file_name", "p_dir_key", "file_id", "cloud_sha", "file_size", "local_dir", "insert_time", "thumb_uri", "state", "error_code", "error_msg", "total_size", "cur_size", "local_path", "file_version", "p_dir_uid", "group_root_dir_key" };
 }
 
 

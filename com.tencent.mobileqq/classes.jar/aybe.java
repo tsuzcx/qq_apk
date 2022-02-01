@@ -1,35 +1,18 @@
-import android.os.Handler;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1;
-import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class aybe
-  implements URLDrawable.DownloadListener
+public final class aybe
+  implements Parcelable.Creator<BasicTypeDataParcel>
 {
-  aybe(aybd paramaybd) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public BasicTypeDataParcel a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
-    }
-    this.a.a.post(new NearbyActivityDialog.2.2(this));
+    return new BasicTypeDataParcel(paramParcel);
   }
   
-  public void onFileDownloadStarted()
+  public BasicTypeDataParcel[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadStarted");
-    }
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
-    }
-    this.a.a.post(new NearbyActivityDialog.2.1(this));
+    return new BasicTypeDataParcel[paramInt];
   }
 }
 

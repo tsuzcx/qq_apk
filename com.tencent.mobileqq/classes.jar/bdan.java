@@ -1,112 +1,157 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
 public class bdan
-  extends bdaq
 {
-  private String aq;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  long[] jdField_a_of_type_ArrayOfLong = new long[3];
+  int jdField_b_of_type_Int = 0;
+  public long b;
+  long[] jdField_b_of_type_ArrayOfLong = new long[3];
+  int c;
+  public long c;
+  int d;
+  public long d;
+  long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public long p;
+  long q = 9223372036854775807L;
+  long r = 0L;
+  long s = 9223372036854775807L;
+  long t = 0L;
   
-  public bdan()
+  public bdan(SVHwEncoder.HwEncode paramHwEncode)
   {
-    this.a = "price";
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  public bdan(String paramString)
+  public long a()
   {
-    this();
-    this.ag = paramString;
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long;
   }
   
-  public bdan(String paramString1, String paramString2)
+  public void a()
   {
-    this(paramString1);
-    this.aq = paramString2;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    if ((paramBoolean) && (this.jdField_a_of_type_Int < 3))
     {
-      paramContext = (LinearLayout)paramView;
-      ((TextView)paramContext.findViewById(2131379820)).setText(this.ag);
-      ((TextView)paramContext.findViewById(2131379822)).setText(this.aq);
-      return paramContext;
+      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      i1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i1 + 1);
+      arrayOfLong[i1] = System.currentTimeMillis();
     }
-    paramView = new LinearLayout(paramContext);
-    paramView.setOrientation(0);
-    paramBundle = new TextView(paramContext);
-    paramBundle.setId(2131379820);
-    paramBundle.setText(this.ag);
-    paramBundle.setTextColor(-65536);
-    paramBundle.setTextSize(14.0F);
-    paramBundle.setSingleLine();
-    paramBundle.setEllipsize(a());
-    paramBundle.setGravity(3);
-    paramContext = new TextView(paramContext);
-    paramContext.setId(2131379822);
-    paramContext.setText(this.aq);
-    paramContext.setSingleLine();
-    paramContext.setEllipsize(a());
-    paramContext.setTextSize(10.0F);
-    paramContext.setTextColor(-65536);
-    paramContext.setGravity(80);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(5, 0, 0, 0);
-    paramContext.setLayoutParams(localLayoutParams);
-    paramView.addView(paramBundle);
-    paramView.addView(paramContext);
-    paramView.setTag(this);
-    return paramView;
-  }
-  
-  public String a()
-  {
-    return "Price";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.aq = bbzj.a(paramObjectInput.readUTF(), false);
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.aq == null) {}
-    for (String str = "";; str = this.aq)
-    {
-      paramObjectOutput.writeUTF(str);
+    while (this.jdField_b_of_type_Int >= 3) {
       return;
     }
+    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+    int i1 = this.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = (i1 + 1);
+    arrayOfLong[i1] = System.currentTimeMillis();
   }
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public long b()
   {
-    paramXmlSerializer.startTag(null, "price");
-    if (!TextUtils.isEmpty(this.aq)) {
-      paramXmlSerializer.attribute(null, "unit", this.aq);
+    if (this.jdField_c_of_type_Int < 3) {
+      return 0L;
     }
-    paramXmlSerializer.text(this.ag);
-    paramXmlSerializer.endTag(null, "price");
+    return this.jdField_a_of_type_ArrayOfLong[0];
   }
   
-  public boolean a(bcxj parambcxj)
+  public void b(boolean paramBoolean)
   {
-    if (parambcxj == null) {
-      return true;
+    if ((paramBoolean) && (this.jdField_c_of_type_Int < 3))
+    {
+      this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int] = (System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]);
+      this.jdField_c_of_type_Int += 1;
+      if (this.jdField_c_of_type_Int == 3)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:cnt20=" + this.jdField_a_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_a_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_a_of_type_ArrayOfLong[2]);
+        this.jdField_a_of_type_ArrayOfLong[0] = ((this.jdField_a_of_type_ArrayOfLong[0] + this.jdField_a_of_type_ArrayOfLong[1] + this.jdField_a_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:timeout=" + this.jdField_a_of_type_ArrayOfLong[0]);
+      }
     }
-    this.aq = bbzj.a(parambcxj.a("unit"), false);
-    this.ag = bbzj.a(bcwd.a(parambcxj), false);
-    return true;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_d_of_type_Int >= 3);
+      this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int] = (System.currentTimeMillis() - this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int]);
+      this.jdField_d_of_type_Int += 1;
+    } while (this.jdField_d_of_type_Int != 3);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:cnt20=" + this.jdField_b_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_b_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_b_of_type_ArrayOfLong[2]);
+    this.jdField_b_of_type_ArrayOfLong[0] = ((this.jdField_b_of_type_ArrayOfLong[0] + this.jdField_b_of_type_ArrayOfLong[1] + this.jdField_b_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:timeout=" + this.jdField_b_of_type_ArrayOfLong[0]);
+  }
+  
+  public long c()
+  {
+    if (this.jdField_d_of_type_Int < 3) {
+      return 0L;
+    }
+    return this.jdField_b_of_type_ArrayOfLong[0];
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    long l1 = a();
+    if (paramBoolean)
+    {
+      if (l1 > this.r) {
+        this.r = l1;
+      }
+      if (l1 < this.q) {
+        this.q = l1;
+      }
+    }
+    do
+    {
+      return;
+      if (l1 > this.t) {
+        this.t = l1;
+      }
+    } while (l1 >= this.s);
+    this.s = l1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mThumbGen=").append(this.l).append(" ");
+    localStringBuilder.append("mThumbGenFunc=").append(this.m).append(" ");
+    localStringBuilder.append("mMuxerCreate=").append(this.n).append(" ");
+    localStringBuilder.append("mMuxerAdd=").append(this.o).append(" ");
+    localStringBuilder.append("mMuxerStart=").append(this.p).append(" ");
+    localStringBuilder.append("mWriteVideoMax=").append(this.r).append(" ");
+    localStringBuilder.append("mWriteVideoMIn=").append(this.q).append(" ");
+    localStringBuilder.append("mWriteAudioMax=").append(this.t).append(" ");
+    localStringBuilder.append("mWriteAudioMIn=").append(this.s).append(" ");
+    localStringBuilder.append("vConfig=").append(this.jdField_b_of_type_Long).append(" ");
+    localStringBuilder.append("vInit=").append(this.jdField_c_of_type_Long).append(" ");
+    localStringBuilder.append("vStart=").append(this.jdField_d_of_type_Long).append(" ");
+    localStringBuilder.append("vStop=").append(this.e).append(" ");
+    localStringBuilder.append("vRelease=").append(this.f).append(" ");
+    localStringBuilder.append("aConfig=").append(this.g).append(" ");
+    localStringBuilder.append("aInit=").append(this.h).append(" ");
+    localStringBuilder.append("aStart=").append(this.i).append(" ");
+    localStringBuilder.append("aStop=").append(this.j).append(" ");
+    localStringBuilder.append("aRelease=").append(this.k).append(" ");
+    return localStringBuilder.toString();
   }
 }
 

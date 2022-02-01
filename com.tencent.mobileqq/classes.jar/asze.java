@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-class asze
-  implements atvk
+public class asze
+  implements atds
 {
-  asze(aszd paramaszd, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
+  public asze(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
   
-  public void a(String paramString1, String paramString2)
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString2;
-    this.jdField_a_of_type_Aszd.a.a().a().a(paramString2, new aszf(this));
+    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
+    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
+    ExtendFriendSearchBaseFragment.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asze
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.tribe.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import bgmg;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -23,7 +23,7 @@ class TribeVideoPreviewFragment$4
       if (((String)localObject2).endsWith("mp4.tmp.mp4")) {
         localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 11) + "_" + System.currentTimeMillis() + ".mp4";
       }
-      bgmg.d(this.a, (String)localObject1);
+      bhmi.d(this.a, (String)localObject1);
       localObject2 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       ((Intent)localObject2).setData(Uri.parse("file://" + (String)localObject1));
       BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject2);

@@ -1,18 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class nxd
-  implements View.OnClickListener
+class nxd
+  extends Handler
 {
-  public nxd(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
-  
-  public void onClick(View paramView)
+  nxd(nxc paramnxc, Looper paramLooper)
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 

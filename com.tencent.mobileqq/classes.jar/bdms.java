@@ -1,47 +1,33 @@
-import com.tencent.widget.AbsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
 
-class bdms
-  implements bkhe
+public final class bdms
+  implements Parcelable.Creator<UEC.UECItem>
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  
-  bdms(bdmq parambdmq) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public UEC.UECItem a(Parcel paramParcel)
   {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    UEC.UECItem localUECItem = new UEC.UECItem();
+    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
+    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.c = paramParcel.readString();
+    localUECItem.d = paramParcel.readString();
+    localUECItem.e = paramParcel.readString();
+    localUECItem.f = paramParcel.readString();
+    return localUECItem;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public UEC.UECItem[] a(int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        int i = this.jdField_a_of_type_Bdmq.jdField_a_of_type_Int;
-        if (i > 0) {
-          return;
-        }
-        if ((paramInt != 0) || (this.jdField_a_of_type_Bdmq.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_Bdmq.e)
-        {
-          this.jdField_a_of_type_Bdmq.c(true);
-          continue;
-        }
-        this.jdField_a_of_type_Bdmq.c(false);
-      }
-      finally {}
-      this.jdField_a_of_type_Bdmq.a(this.jdField_a_of_type_Bdmq.jdField_a_of_type_Long, this.jdField_a_of_type_Bdmq.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bdmq.c, 50, 0);
-    }
+    return new UEC.UECItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdms
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,39 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
+import cooperation.qzone.contentbox.BaseMsgView;
+import java.lang.ref.WeakReference;
 
-final class bmxu
-  implements INetEventHandler
+public class bmxu
+  extends Handler
 {
-  public void onNetChangeEvent(boolean paramBoolean)
+  private WeakReference<BaseMsgView> a;
+  
+  public bmxu(BaseMsgView paramBaseMsgView)
   {
-    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
+    this.a = new WeakReference(paramBaseMsgView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    BaseMsgView localBaseMsgView = (BaseMsgView)this.a.get();
+    if (localBaseMsgView == null) {}
+    ViewPager localViewPager;
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        localBaseMsgView.a(paramMessage);
+        return;
+      }
+      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
+    } while (localViewPager == null);
+    int i = paramMessage.arg1;
+    localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
+    localBaseMsgView.a();
   }
 }
 

@@ -1,14 +1,13 @@
-public class akth
+class akth
+  implements bjhv
 {
-  public int a;
-  public long a;
-  public String a;
+  akth(aktf paramaktf, Runnable paramRunnable) {}
   
-  public akth(String paramString, long paramLong, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

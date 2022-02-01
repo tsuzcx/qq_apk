@@ -1,23 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime.Status;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aynk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aynk(aymu paramaymu, AppRuntime.Status paramStatus, long paramLong) {}
+  aynk(aymj paramaymj, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!bgnt.g(aymu.a(this.jdField_a_of_type_Aymu)))
+    Intent localIntent = new Intent(this.jdField_a_of_type_Aymj.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Aymj.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aymj.a.j)) {}
+    for (localObject = "1";; localObject = "2")
     {
-      this.jdField_a_of_type_Aymu.c();
-      QQToast.a(aymu.a(this.jdField_a_of_type_Aymu), 1, 2131718205, 1).a();
+      localIntent.putExtra("url", (String)localObject);
+      this.jdField_a_of_type_Aymj.a.startActivity(localIntent);
+      bdll.b(this.jdField_a_of_type_Aymj.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    aymu.a(this.jdField_a_of_type_Aymu, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, true);
-    bcst.b(aymu.a(this.jdField_a_of_type_Aymu), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
   }
 }
 

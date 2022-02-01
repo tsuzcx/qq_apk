@@ -1,19 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oxe
-  implements ViewBase.OnClickListener
+public class oxe
+  implements ViewBase.IBuilder
 {
-  oxe(pan parampan) {}
-  
-  public final void onClick(ViewBase paramViewBase)
+  public ViewBase build(VafContext paramVafContext)
   {
-    paramViewBase = this.a;
-    if (paramViewBase != null) {
-      paramViewBase.i();
-    }
+    return new oxd(paramVafContext);
   }
 }
 

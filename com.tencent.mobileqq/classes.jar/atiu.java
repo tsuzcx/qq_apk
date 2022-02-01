@@ -1,24 +1,22 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atiu
+public class atiu
   implements View.OnClickListener
 {
-  atiu(atis paramatis, bbmy parambbmy) {}
+  public atiu(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
   
   public void onClick(View paramView)
   {
-    atir localatir = (atir)this.jdField_a_of_type_Bbmy;
-    localatir.a(paramView);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131366568);
-    if (localCheckBox.getVisibility() == 0) {
-      localCheckBox.setChecked(localatir.b());
-    }
-    if (atis.a(this.jdField_a_of_type_Atis) != null) {
-      atis.a(this.jdField_a_of_type_Atis).a();
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, localIntent);
+    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

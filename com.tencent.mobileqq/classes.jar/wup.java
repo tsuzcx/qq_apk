@@ -1,18 +1,51 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.QimVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class wup
-  extends DataSetObserver
 {
-  wup(wui paramwui) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onChanged()
+  public wup(qqstory_struct.QimVideoInfo paramQimVideoInfo)
   {
-    if (this.a.a == 0) {
-      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
+    this.a = paramQimVideoInfo.qim_unionid.get().toStringUtf8();
+    this.b = paramQimVideoInfo.qim_feedID.get().toStringUtf8();
+    this.c = paramQimVideoInfo.qim_vid.get().toStringUtf8();
+  }
+  
+  public static wup a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+      return null;
     }
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+    try
+    {
+      localQimVideoInfo.mergeFrom(paramArrayOfByte);
+      return new wup(localQimVideoInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+    localQimVideoInfo.qim_vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    localQimVideoInfo.qim_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
+    localQimVideoInfo.qim_feedID.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localQimVideoInfo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "QimVideoInfoItem{mOwnerUnionId='" + this.a + '\'' + ", mFeedId='" + this.b + '\'' + ", mVid='" + this.c + '\'' + '}';
   }
 }
 

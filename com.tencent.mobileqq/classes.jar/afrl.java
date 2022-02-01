@@ -1,17 +1,32 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afrl
-  extends bkfi
+  implements View.OnClickListener
 {
-  public afrl(VisitorsActivity paramVisitorsActivity) {}
+  public afrl(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.d.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    if (this.a.isFinishing()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.c = false;
+      if (this.a.a != null)
+      {
+        this.a.a.a(4);
+        this.a.d();
+        this.a.c();
+      }
+      if (axan.a().c()) {
+        axan.a().f(this.a.app);
+      }
+      TroopAssistantActivity.b(this.a);
+    }
   }
 }
 

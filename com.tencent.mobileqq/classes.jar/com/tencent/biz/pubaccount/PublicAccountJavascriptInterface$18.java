@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount;
 import com.tencent.common.app.AppInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tzo;
+import tzq;
 
 class PublicAccountJavascriptInterface$18
   implements Runnable
@@ -12,7 +12,7 @@ class PublicAccountJavascriptInterface$18
   
   public void run()
   {
-    boolean bool = tzo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
+    boolean bool = tzq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
     try
     {
       this.jdField_a_of_type_OrgJsonJSONObject.put("follow", bool);

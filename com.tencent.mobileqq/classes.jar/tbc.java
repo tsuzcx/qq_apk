@@ -1,92 +1,204 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class tbc
 {
-  public static void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase)
+  private static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramTemplateBean == null) || (paramViewBase == null)) {
-      return;
-    }
-    paramArticleInfo = (String)paramTemplateBean.getDataAttribute(paramViewBase.getName(), "click_T");
-    if (TextUtils.isEmpty(paramArticleInfo))
+    return Math.min(paramInt1, Math.min(paramInt2, paramInt3));
+  }
+  
+  private static int a(char[] paramArrayOfChar, int paramInt, Set<Character> paramSet)
+  {
+    while (paramInt < paramArrayOfChar.length)
     {
-      QLog.d("FastWebProteusReportUtils", 2, "customClickReport bigT is null");
-      return;
+      if (!paramSet.contains(Character.valueOf(paramArrayOfChar[paramInt]))) {
+        return paramInt;
+      }
+      paramInt += 1;
     }
-    paramTemplateBean = paramTemplateBean.getDataAttribute(paramViewBase.getName());
-    paramFastWebArticleInfo = new phi();
-    if (paramTemplateBean != null)
+    return paramArrayOfChar.length;
+  }
+  
+  private static void a(List<Integer> paramList, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    while (i < paramInt1)
     {
-      paramTemplateBean = paramTemplateBean.entrySet().iterator();
-      while (paramTemplateBean.hasNext())
+      paramList.add(Integer.valueOf(paramInt2));
+      i += 1;
+    }
+  }
+  
+  private static void a(List<Integer> paramList, char[] paramArrayOfChar1, char[] paramArrayOfChar2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt2 -= paramInt1;
+    paramInt4 -= paramInt3;
+    int j = Math.max(paramInt2, paramInt4);
+    if (paramInt2 == paramInt4) {
+      a(paramList, j, 0);
+    }
+    for (;;)
+    {
+      return;
+      int k = paramInt2 + 1;
+      int m = paramInt4 + 1;
+      int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { k, m });
+      paramInt2 = 0;
+      while (paramInt2 < k)
       {
-        Object localObject = (Map.Entry)paramTemplateBean.next();
-        paramViewBase = (String)((Map.Entry)localObject).getKey();
-        localObject = ((Map.Entry)localObject).getValue();
-        if (!TextUtils.equals(paramViewBase, "click_T")) {
-          paramFastWebArticleInfo.b(paramViewBase, localObject.toString());
+        arrayOfInt[paramInt2][0] = paramInt2;
+        paramInt2 += 1;
+      }
+      paramInt2 = 0;
+      while (paramInt2 < m)
+      {
+        arrayOfInt[0][paramInt2] = paramInt2;
+        paramInt2 += 1;
+      }
+      paramInt2 = 1;
+      int i;
+      while (paramInt2 < k)
+      {
+        paramInt4 = 1;
+        if (paramInt4 < m)
+        {
+          if (paramArrayOfChar1[(paramInt2 - 1 + paramInt1)] == paramArrayOfChar2[(paramInt4 - 1 + paramInt3)]) {}
+          for (i = 0;; i = 1)
+          {
+            arrayOfInt[paramInt2][paramInt4] = a(arrayOfInt[(paramInt2 - 1)][paramInt4] + 1, arrayOfInt[paramInt2][(paramInt4 - 1)] + 1, i + arrayOfInt[(paramInt2 - 1)][(paramInt4 - 1)]);
+            paramInt4 += 1;
+            break;
+          }
+        }
+        paramInt2 += 1;
+      }
+      paramArrayOfChar1 = new ArrayList(j * 2);
+      paramInt2 = k - 1;
+      paramInt1 = m - 1;
+      while ((paramInt2 > 0) || (paramInt1 > 0)) {
+        if (paramInt2 == 0)
+        {
+          paramArrayOfChar1.add(Integer.valueOf(1));
+          paramInt1 -= 1;
+        }
+        else if (paramInt1 == 0)
+        {
+          paramArrayOfChar1.add(Integer.valueOf(2));
+          paramInt2 -= 1;
+        }
+        else
+        {
+          paramInt3 = arrayOfInt[paramInt2][(paramInt1 - 1)];
+          paramInt4 = arrayOfInt[(paramInt2 - 1)][paramInt1];
+          i = arrayOfInt[(paramInt2 - 1)][(paramInt1 - 1)];
+          if ((paramInt3 < paramInt4) && (paramInt3 < i))
+          {
+            paramArrayOfChar1.add(Integer.valueOf(1));
+            paramInt1 -= 1;
+          }
+          else if (paramInt4 < i)
+          {
+            paramArrayOfChar1.add(Integer.valueOf(2));
+            paramInt2 -= 1;
+          }
+          else
+          {
+            paramArrayOfChar1.add(Integer.valueOf(0));
+            paramInt2 -= 1;
+            paramInt1 -= 1;
+          }
         }
       }
+      paramInt1 = paramArrayOfChar1.size() - 1;
+      while (paramInt1 >= 0)
+      {
+        paramList.add(paramArrayOfChar1.get(paramInt1));
+        paramInt1 -= 1;
+      }
     }
-    oat.a(null, "", paramArticleInfo, paramArticleInfo, 0, 0, "", "", "", paramFastWebArticleInfo.a(), false);
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, TemplateBean paramTemplateBean)
+  public static int[] a(char[] paramArrayOfChar1, char[] paramArrayOfChar2, Set<Character> paramSet)
   {
-    if (paramTemplateBean == null)
+    int n = 0;
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    int i = 0;
+    for (;;)
     {
-      QLog.d("FastWebProteusReportUtils", 2, "data is null!");
-      return;
+      int k;
+      int m;
+      if (i == paramArrayOfChar1.length)
+      {
+        k = 1;
+        if (j != paramArrayOfChar2.length) {
+          break label100;
+        }
+        m = 1;
+        label36:
+        if ((k == 0) || (m == 0)) {
+          break label106;
+        }
+      }
+      for (;;)
+      {
+        paramArrayOfChar1 = new int[localArrayList.size()];
+        i = n;
+        while (i < localArrayList.size())
+        {
+          paramArrayOfChar1[i] = ((Integer)localArrayList.get(i)).intValue();
+          i += 1;
+        }
+        k = 0;
+        break;
+        label100:
+        m = 0;
+        break label36;
+        label106:
+        if (k != 0)
+        {
+          a(localArrayList, paramArrayOfChar2.length - j, 1);
+        }
+        else
+        {
+          if (m == 0) {
+            break label143;
+          }
+          a(localArrayList, paramArrayOfChar1.length - i, 2);
+        }
+      }
+      label143:
+      boolean bool1 = paramSet.contains(Character.valueOf(paramArrayOfChar1[i]));
+      boolean bool2 = paramSet.contains(Character.valueOf(paramArrayOfChar2[j]));
+      if ((bool1) && (bool2))
+      {
+        k = a(paramArrayOfChar1, i + 1, paramSet);
+        m = a(paramArrayOfChar2, j + 1, paramSet);
+        a(localArrayList, paramArrayOfChar1, paramArrayOfChar2, i, k, j, m);
+        j = m;
+        i = k;
+      }
+      else if (bool1)
+      {
+        localArrayList.add(Integer.valueOf(1));
+        j += 1;
+      }
+      else if (bool2)
+      {
+        localArrayList.add(Integer.valueOf(2));
+        i += 1;
+      }
+      else
+      {
+        localArrayList.add(Integer.valueOf(0));
+        i += 1;
+        j += 1;
+      }
     }
-    paramFastWebArticleInfo = paramTemplateBean.getDataAttribute(null);
-    if ((paramFastWebArticleInfo == null) || (paramFastWebArticleInfo.isEmpty()))
-    {
-      QLog.d("FastWebProteusReportUtils", 2, "cellDataAttr null or empty!");
-      return;
-    }
-    paramBaseArticleInfo = new phi();
-    paramFastWebArticleInfo = paramFastWebArticleInfo.entrySet().iterator();
-    while (paramFastWebArticleInfo.hasNext())
-    {
-      paramTemplateBean = (Map.Entry)paramFastWebArticleInfo.next();
-      paramBaseArticleInfo.b((String)paramTemplateBean.getKey(), paramTemplateBean.getValue().toString());
-    }
-    oat.a(null, "", "0X800A9B3", "0X800A9B3", 0, 0, "", "", "", paramBaseArticleInfo.a(), false);
-  }
-  
-  public static void b(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase)
-  {
-    if ((paramTemplateBean == null) || (paramViewBase == null)) {
-      return;
-    }
-    paramArticleInfo = new HashMap();
-    paramFastWebArticleInfo = paramTemplateBean.getDataAttribute(null);
-    paramTemplateBean = paramTemplateBean.getDataAttribute(paramViewBase.getViewId());
-    if (paramFastWebArticleInfo != null) {
-      paramArticleInfo.putAll(paramFastWebArticleInfo);
-    }
-    if (paramTemplateBean != null) {
-      paramArticleInfo.putAll(paramTemplateBean);
-    }
-    paramFastWebArticleInfo = new phi();
-    paramArticleInfo = paramArticleInfo.entrySet().iterator();
-    while (paramArticleInfo.hasNext())
-    {
-      paramTemplateBean = (Map.Entry)paramArticleInfo.next();
-      paramFastWebArticleInfo.b((String)paramTemplateBean.getKey(), paramTemplateBean.getValue().toString());
-    }
-    oat.a(null, "", "0X800A9B2", "0X800A9B2", 0, 0, "", "", "", paramFastWebArticleInfo.a(), false);
+    return paramArrayOfChar1;
   }
 }
 

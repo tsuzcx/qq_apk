@@ -1,13 +1,17 @@
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
 public class tuu
-  extends anqd
+  implements blrf
 {
   public tuu(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a()
   {
-    this.a.b();
+    if ((!this.a.c) && (this.a.d))
+    {
+      this.a.c = true;
+      uae.a("SUBSCRIPT_FEEDS_COST", null);
+    }
   }
 }
 

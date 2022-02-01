@@ -1,21 +1,24 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-final class bmjm
-  implements QQPermissionCallback
+public class bmjm
+  implements DialogInterface.OnDismissListener
 {
-  bmjm(Activity paramActivity) {}
+  public bmjm(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bglp.b(bmjl.a(this.a));
+    if (QlinkShareJumpActivity.a(this.a))
+    {
+      QlinkShareJumpActivity.a(this.a, false);
+      this.a.finish();
+    }
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmjm
  * JD-Core Version:    0.7.0.1
  */

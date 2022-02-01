@@ -8,7 +8,7 @@ public class SkinEngineInitBridge
 {
   public static void init(Context paramContext)
   {
-    SkinEngine.init(paramContext, 8191, 2130837504, 2130850872, 1264, 2131165184, null);
+    SkinEngine.init(paramContext, 8191, 2130837504, 2130850901, 1264, 2131165184, null);
   }
   
   public static void initSkin(Context paramContext)

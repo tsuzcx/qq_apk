@@ -1,51 +1,50 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.json.JSONObject;
 
-public class bhtm
-  extends Handler
+final class bhtm
+  extends biht
 {
-  public bhtm()
-  {
-    super(Looper.getMainLooper());
-  }
+  bhtm(QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(bihu parambihu)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (String[])paramMessage.obj;
-    Object localObject = paramMessage[0];
-    CharSequence localCharSequence = paramMessage[1];
-    WeakReference localWeakReference = (WeakReference)bhte.a.remove(localObject);
-    if ((localWeakReference != null) && (localWeakReference.get() != null))
+    super.onDone(parambihu);
+    parambihu = new File(bhtl.jdField_a_of_type_JavaLangString);
+    if (parambihu.exists())
     {
-      if (!(((TextView)localWeakReference.get()).getTag() instanceof String[])) {
-        break label142;
-      }
-      paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
-    }
-    for (;;)
-    {
-      if ((paramMessage != null) && (paramMessage.length == 2) && (paramMessage[0].equals(localObject))) {}
+      parambihu = bhmi.a(parambihu, -1);
+      if (!TextUtils.isEmpty(parambihu)) {}
       try
       {
-        ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
-        ((TextView)localWeakReference.get()).setText(localCharSequence);
-        return;
-        label142:
-        paramMessage = null;
-      }
-      catch (Exception paramMessage)
-      {
-        for (;;)
-        {
-          ((TextView)localWeakReference.get()).setText(localCharSequence);
+        parambihu = Base64.decode(parambihu, 0);
+        SecretKeySpec localSecretKeySpec = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
+        IvParameterSpec localIvParameterSpec = new IvParameterSpec("xydata3456789012".getBytes());
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+        localCipher.init(2, localSecretKeySpec, localIvParameterSpec);
+        parambihu = new JSONObject(new String(localCipher.doFinal(parambihu)));
+        if (QLog.isColorLevel()) {
+          QLog.d("VasResourceCheckUtil", 2, "decode json success, content = " + parambihu.toString());
         }
+        bhtl.a(this.a);
+        bhtl.jdField_a_of_type_AndroidOsHandler.sendMessage(bhtl.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
+        return;
+      }
+      catch (Exception parambihu)
+      {
+        QLog.e("VasResourceCheckUtil", 1, "decode json fail: " + parambihu.getMessage());
+        bhtl.jdField_a_of_type_AndroidOsHandler.sendMessage(bhtl.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
+        return;
       }
     }
+    bhtl.jdField_a_of_type_AndroidOsHandler.sendMessage(bhtl.jdField_a_of_type_AndroidOsHandler.obtainMessage(258));
   }
 }
 

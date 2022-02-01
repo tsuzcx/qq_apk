@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.channel;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import wla;
-import wle;
-import wlf;
+import wov;
+import woz;
+import wpa;
 
 public class CmdTaskManger$UIThreadCallback$1
   implements Runnable
 {
-  public CmdTaskManger$UIThreadCallback$1(wle paramwle, wlf paramwlf, wla paramwla, ErrorMessage paramErrorMessage) {}
+  public CmdTaskManger$UIThreadCallback$1(woz paramwoz, wpa paramwpa, wov paramwov, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Wlf, this.jdField_a_of_type_Wla, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.this$0.b(this.jdField_a_of_type_Wpa, this.jdField_a_of_type_Wov, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

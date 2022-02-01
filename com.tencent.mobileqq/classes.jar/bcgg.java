@@ -1,8 +1,97 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
+
 public class bcgg
+  extends bcga
+  implements View.OnClickListener
 {
-  public static boolean a()
+  public static final String a;
+  public int a;
+  public JSONObject a;
+  public String b;
+  public String j;
+  
+  static
   {
-    return false;
+    jdField_a_of_type_JavaLangString = bcgg.class.getSimpleName();
+  }
+  
+  protected bcgg(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramInt2;
+    b(paramJSONObject);
+  }
+  
+  protected bcgg(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramInt2;
+    b(paramJSONObject);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
+    }
+    return i;
+  }
+  
+  public void a(View paramView)
+  {
+    bbzy localbbzy;
+    JSONObject localJSONObject;
+    if (bbzx.b.containsKey(this))
+    {
+      localbbzy = (bbzy)bbzx.b.get(this);
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("project", bcjy.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localbbzy.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      localJSONObject.put("extra_info", this.b);
+      localJSONObject.put("tepl", this.f);
+      bcjy.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(this.jdField_a_of_type_Long + "").obj2(this.j).ver1(this.g).ver2(bcjy.a(this.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + bbzx.jdField_a_of_type_Long));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
+    }
+  }
+  
+  public void a(bcol parambcol) {}
+  
+  public void b(JSONObject paramJSONObject) {}
+  
+  public void onClick(View paramView)
+  {
+    a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

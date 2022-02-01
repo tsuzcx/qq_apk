@@ -10,7 +10,7 @@ public final class FastWebAnimationUtils$1
   
   public void run()
   {
-    ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131368994)).setText("");
+    ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369088)).setText("");
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
 }

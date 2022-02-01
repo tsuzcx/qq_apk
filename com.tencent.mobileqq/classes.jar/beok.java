@@ -1,32 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class beok
-  implements View.OnTouchListener
+class beok
+  extends beou
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
-  public beok(NewTroopContactView paramNewTroopContactView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  beok(beoh parambeoh, EditorState paramEditorState, List paramList)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
-      }
-    }
+    super(parambeoh, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    beoh.a(this.a).c();
+    beoh.a(this.a).b(true);
   }
 }
 

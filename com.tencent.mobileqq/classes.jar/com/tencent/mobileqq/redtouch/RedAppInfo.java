@@ -3,14 +3,14 @@ package com.tencent.mobileqq.redtouch;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import baib;
+import bbar;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RedAppInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedAppInfo> CREATOR = new baib();
+  public static final Parcelable.Creator<RedAppInfo> CREATOR = new bbar();
   private int jdField_a_of_type_Int;
   private RedDisplayInfo jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo;
   private String jdField_a_of_type_JavaLangString;

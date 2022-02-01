@@ -1,14 +1,14 @@
-public abstract interface bnks
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
+public class bnks
+  implements FileFilter
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+  }
 }
 
 

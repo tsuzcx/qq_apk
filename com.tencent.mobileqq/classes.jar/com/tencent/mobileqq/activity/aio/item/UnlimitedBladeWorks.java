@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afur;
-import agwj;
-import ahed;
-import aheh;
-import ahnn;
-import ahno;
+import agej;
+import ahfx;
 import ahnp;
-import ahnq;
-import ahnr;
 import ahnt;
-import ahnu;
+import ahwx;
+import ahwy;
+import ahwz;
+import ahxa;
+import ahxb;
+import ahxd;
+import ahxe;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -29,8 +29,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bclx;
-import bgmo;
+import bdep;
+import bhmq;
 import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.utils.PokeBigResHandler;
@@ -41,13 +41,13 @@ import mqq.util.WeakReference;
 
 public class UnlimitedBladeWorks
   extends RelativeLayout
-  implements agwj
+  implements ahfx
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private ahnr jdField_a_of_type_Ahnr;
-  private ahnt jdField_a_of_type_Ahnt;
-  private ahnu jdField_a_of_type_Ahnu;
+  private ahxb jdField_a_of_type_Ahxb;
+  private ahxd jdField_a_of_type_Ahxd;
+  private ahxe jdField_a_of_type_Ahxe;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -76,7 +76,7 @@ public class UnlimitedBladeWorks
   public UnlimitedBladeWorks(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131563040, this, true);
+    LayoutInflater.from(paramContext).inflate(2131563075, this, true);
   }
   
   private AnimationSet a(int paramInt)
@@ -105,7 +105,7 @@ public class UnlimitedBladeWorks
     int j = arrayOfInt.length;
     while (i < j)
     {
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, afur.a(new int[] { paramInt * 5, paramInt * -12, paramInt * 15, paramInt * -15, paramInt * 12, paramInt * -8, paramInt * 6, paramInt * 0 }[i], getResources()), 0.0F, afur.a(new int[] { paramInt * 1, paramInt * -3, paramInt * 2, paramInt * -2, paramInt * 1, paramInt * -1, paramInt * 1, paramInt * 0 }[i], getResources()));
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, agej.a(new int[] { paramInt * 5, paramInt * -12, paramInt * 15, paramInt * -15, paramInt * 12, paramInt * -8, paramInt * 6, paramInt * 0 }[i], getResources()), 0.0F, agej.a(new int[] { paramInt * 1, paramInt * -3, paramInt * 2, paramInt * -2, paramInt * 1, paramInt * -1, paramInt * 1, paramInt * 0 }[i], getResources()));
       localTranslateAnimation.setDuration(arrayOfInt[i]);
       localTranslateAnimation.setStartOffset(l);
       localAnimationSet.addAnimation(localTranslateAnimation);
@@ -141,33 +141,33 @@ public class UnlimitedBladeWorks
     this.jdField_b_of_type_AndroidWidgetImageView.getLocationOnScreen(arrayOfInt);
     int i = arrayOfInt[0];
     int j = arrayOfInt[1];
-    ahed.a().a(10);
+    ahnp.a().a(10);
     if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null))
     {
-      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131362279)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke, this.jdField_a_of_type_Boolean, this);
+      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131362291)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke, this.jdField_a_of_type_Boolean, this);
       if (QLog.isColorLevel()) {
         QLog.d("fangdazhao", 2, "[x :" + i + ", y : " + j + "]");
       }
     }
   }
   
-  public ahnu a()
+  public ahxe a()
   {
-    ahnu localahnu = this.jdField_a_of_type_Ahnu;
+    ahxe localahxe = this.jdField_a_of_type_Ahxe;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.f();
-    localahnu.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
+    localahxe.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())
     {
-      localahnu.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidAnimationValueAnimator.getCurrentPlayTime();
+      localahxe.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidAnimationValueAnimator.getCurrentPlayTime();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
     }
     for (;;)
     {
       this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.f();
-      localahnu.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-      return localahnu;
-      localahnu.jdField_a_of_type_Long = -1L;
+      localahxe.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
+      return localahxe;
+      localahxe.jdField_a_of_type_Long = -1L;
     }
   }
   
@@ -179,8 +179,8 @@ public class UnlimitedBladeWorks
     ((BitmapFactory.Options)localObject).inMutable = true;
     try
     {
-      localObject = bgmo.a(str + "01.png", (BitmapFactory.Options)localObject);
-      localObject = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject, ahed.a().a());
+      localObject = bhmq.a(str + "01.png", (BitmapFactory.Options)localObject);
+      localObject = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject, ahnp.a().a());
       ((CustomFrameAnimationDrawable)localObject).i();
       i = 0;
       for (;;)
@@ -217,20 +217,20 @@ public class UnlimitedBladeWorks
   
   public void a()
   {
-    this.jdField_a_of_type_Ahnu.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Ahnu.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ahxe.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Ahxe.jdField_a_of_type_Boolean = false;
     d();
-    if (this.jdField_a_of_type_Ahnt != null) {
-      this.jdField_a_of_type_Ahnt.a();
+    if (this.jdField_a_of_type_Ahxd != null) {
+      this.jdField_a_of_type_Ahxd.a();
     }
   }
   
   public void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, float paramFloat)
   {
     this.jdField_c_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368726));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363238));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363540));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368800));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363262));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363563));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = b();
     this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = a();
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
@@ -242,17 +242,17 @@ public class UnlimitedBladeWorks
     localOptions.inMutable = true;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a(PokeBigResHandler.d, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bhmq.a(PokeBigResHandler.d, localOptions);
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = aheh.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ahnt.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
       this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
       setParams(this.jdField_a_of_type_Boolean);
       if (paramBoolean2) {
         ThreadManager.postImmediately(new UnlimitedBladeWorks.1(this), null, true);
       }
-      this.jdField_a_of_type_Ahnr = new ahnr(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new ahnn(this));
+      this.jdField_a_of_type_Ahxb = new ahxb(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new ahwx(this));
       this.jdField_b_of_type_Boolean = true;
       return;
     }
@@ -271,7 +271,7 @@ public class UnlimitedBladeWorks
   public void a(MessageForPoke paramMessageForPoke, float paramFloat)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke = paramMessageForPoke;
-    this.jdField_a_of_type_Ahnu = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mUnlimitedState;
+    this.jdField_a_of_type_Ahxe = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mUnlimitedState;
     this.jdField_a_of_type_Float = paramFloat;
   }
   
@@ -279,34 +279,34 @@ public class UnlimitedBladeWorks
   {
     if ((paramFloat == 2.0F) && (GreatMoveCombolEffectView.jdField_a_of_type_Boolean == true))
     {
-      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131362279)).a().a(paramMessageForPoke, this);
+      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131362291)).a().a(paramMessageForPoke, this);
       return;
     }
-    this.jdField_a_of_type_Ahnu = paramMessageForPoke.mUnlimitedState;
-    this.jdField_a_of_type_Ahnu.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Ahnu.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Ahxe = paramMessageForPoke.mUnlimitedState;
+    this.jdField_a_of_type_Ahxe.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Ahxe.jdField_b_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
-      QLog.d("fangdazhao", 2, "[" + this.jdField_a_of_type_Ahnu.jdField_a_of_type_Int + "," + this.jdField_a_of_type_Ahnu.jdField_a_of_type_Long + "," + this.jdField_a_of_type_Ahnu.jdField_b_of_type_Int + "]");
+      QLog.d("fangdazhao", 2, "[" + this.jdField_a_of_type_Ahxe.jdField_a_of_type_Int + "," + this.jdField_a_of_type_Ahxe.jdField_a_of_type_Long + "," + this.jdField_a_of_type_Ahxe.jdField_b_of_type_Int + "]");
     }
-    if (this.jdField_a_of_type_Ahnu.jdField_a_of_type_Int < 23)
+    if (this.jdField_a_of_type_Ahxe.jdField_a_of_type_Int < 23)
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
       this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_Ahnu.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_Ahxe.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new ahnp(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new ahwz(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.d();
       return;
     }
-    if ((this.jdField_a_of_type_Ahnu.jdField_a_of_type_Int >= 23) && (this.jdField_a_of_type_Ahnu.jdField_a_of_type_Int < 29))
+    if ((this.jdField_a_of_type_Ahxe.jdField_a_of_type_Int >= 23) && (this.jdField_a_of_type_Ahxe.jdField_a_of_type_Int < 29))
     {
       this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_Ahnu.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Ahnu.jdField_a_of_type_Long != -1L) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_Ahxe.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Ahxe.jdField_a_of_type_Long != -1L) {
           break label347;
         }
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
@@ -320,7 +320,7 @@ public class UnlimitedBladeWorks
         break;
         label347:
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setCurrentPlayTime(this.jdField_a_of_type_Ahnu.jdField_a_of_type_Long);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setCurrentPlayTime(this.jdField_a_of_type_Ahxe.jdField_a_of_type_Long);
       }
     }
     int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
@@ -332,34 +332,34 @@ public class UnlimitedBladeWorks
       for (;;)
       {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setCurrentPlayTime(this.jdField_a_of_type_Ahnu.jdField_a_of_type_Long);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setCurrentPlayTime(this.jdField_a_of_type_Ahxe.jdField_a_of_type_Long);
         return;
         this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
     }
-    if ((i <= 0) && (this.jdField_a_of_type_Ahnu.jdField_b_of_type_Int >= 0) && (this.jdField_a_of_type_Ahnu.jdField_b_of_type_Int < 9))
+    if ((i <= 0) && (this.jdField_a_of_type_Ahxe.jdField_b_of_type_Int >= 0) && (this.jdField_a_of_type_Ahxe.jdField_b_of_type_Int < 9))
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
       this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new ahnq(this));
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new ahxa(this));
       this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(paramBoolean);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_Ahnu.jdField_b_of_type_Int);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_Ahxe.jdField_b_of_type_Int);
       this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.d();
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
     this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
-    if (this.jdField_a_of_type_Ahnt != null)
+    if (this.jdField_a_of_type_Ahxd != null)
     {
-      this.jdField_a_of_type_Ahnt.a();
+      this.jdField_a_of_type_Ahxd.a();
       if (this.jdField_c_of_type_Boolean) {
         HapticManager.a().c(this.jdField_a_of_type_Int);
       }
       this.jdField_a_of_type_Int = 0;
     }
-    this.jdField_a_of_type_Ahnu.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ahnu.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Ahxe.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ahxe.jdField_b_of_type_Boolean = true;
   }
   
   public boolean a()
@@ -375,8 +375,8 @@ public class UnlimitedBladeWorks
     ((BitmapFactory.Options)localObject).inMutable = true;
     try
     {
-      localObject = bgmo.a(str + "01.png", (BitmapFactory.Options)localObject);
-      localObject = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject, ahed.a().a());
+      localObject = bhmq.a(str + "01.png", (BitmapFactory.Options)localObject);
+      localObject = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject, ahnp.a().a());
       ((CustomFrameAnimationDrawable)localObject).i();
       i = 0;
       for (;;)
@@ -413,21 +413,21 @@ public class UnlimitedBladeWorks
   
   public void b()
   {
-    int i = bclx.jdField_a_of_type_Int;
-    int j = bclx.a(142.0F);
-    int k = (int)(bclx.jdField_a_of_type_Int - bclx.a(142.0F) * this.jdField_a_of_type_Float);
+    int i = bdep.jdField_a_of_type_Int;
+    int j = bdep.a(142.0F);
+    int k = (int)(bdep.jdField_a_of_type_Int - bdep.a(142.0F) * this.jdField_a_of_type_Float);
     float f = k * 1.0F / (i - j);
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllListeners();
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { k, -bclx.a(80.0F) });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ahno(this));
-    if (this.jdField_a_of_type_Ahnr == null) {
-      this.jdField_a_of_type_Ahnr = new ahnr(this, null);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { k, -bdep.a(80.0F) });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ahwy(this));
+    if (this.jdField_a_of_type_Ahxb == null) {
+      this.jdField_a_of_type_Ahxb = new ahxb(this, null);
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_Ahnr);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_Ahxb);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration((f * 600.0F));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(this.jdField_b_of_type_AndroidWidgetImageView);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
@@ -438,11 +438,11 @@ public class UnlimitedBladeWorks
     if (QLog.isColorLevel()) {
       QLog.i("placeholder", 2, "SHOW_PLACEHOLDER Unlimited");
     }
-    this.jdField_a_of_type_Ahnu.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Ahnu.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Ahnu.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Ahnu.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Ahnu.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Ahxe.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Ahxe.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Ahxe.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Ahxe.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Ahxe.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
     this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
     this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
@@ -452,9 +452,9 @@ public class UnlimitedBladeWorks
     }
   }
   
-  public void setEndListener(ahnt paramahnt)
+  public void setEndListener(ahxd paramahxd)
   {
-    this.jdField_a_of_type_Ahnt = paramahnt;
+    this.jdField_a_of_type_Ahxd = paramahxd;
   }
   
   public void setMirror(boolean paramBoolean)
@@ -478,7 +478,7 @@ public class UnlimitedBladeWorks
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = afur.a(100.0F, getResources());
+      localLayoutParams.rightMargin = agej.a(100.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
     for (;;)
@@ -498,7 +498,7 @@ public class UnlimitedBladeWorks
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
       localLayoutParams.rightMargin = 0;
-      localLayoutParams.leftMargin = afur.a(100.0F, getResources());
+      localLayoutParams.leftMargin = agej.a(100.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
   }
@@ -511,22 +511,22 @@ public class UnlimitedBladeWorks
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      localLayoutParams.height = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.width = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.height = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.width = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
       this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.height = ((int)(bclx.a(34.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(bclx.a(48.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(bdep.a(34.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.width = ((int)(bdep.a(48.0F) * this.jdField_a_of_type_Float));
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = afur.a(100.0F, getResources());
+      localLayoutParams.rightMargin = agej.a(100.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
     for (;;)
@@ -536,22 +536,22 @@ public class UnlimitedBladeWorks
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.height = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.width = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      localLayoutParams.height = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(bclx.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.width = ((int)(bdep.a(90.0F) * this.jdField_a_of_type_Float));
       this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      localLayoutParams.height = ((int)(bclx.a(34.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(bclx.a(48.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(bdep.a(34.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.width = ((int)(bdep.a(48.0F) * this.jdField_a_of_type_Float));
       localLayoutParams.rightMargin = 0;
-      localLayoutParams.leftMargin = afur.a(100.0F, getResources());
+      localLayoutParams.leftMargin = agej.a(100.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
   }

@@ -1,214 +1,192 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyFollowingMemberPrefetcher.1;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyFollowingMemberPrefetcher.2;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyFollowingMemberPrefetcher.3;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyFollowingMemberPrefetcher.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyFollowingUserBriefInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
+import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class pmg
-  extends pmn
 {
-  private long jdField_a_of_type_Long;
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private Set<Long> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
-  private WeakReference<pxd> jdField_b_of_type_JavaLangRefWeakReference;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  
-  public pmg(AppInterface paramAppInterface, pxd parampxd)
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parampxd);
-    ThreadManager.executeOnSubThread(new ReadInJoyFollowingMemberPrefetcher.1(this));
-  }
-  
-  private void a(long paramLong)
-  {
-    Object localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (QQAppInterface)ozs.a();
     if (localObject != null)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + ((AppInterface)localObject).getAccount(), 4);
-      if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putLong("readinjoy_last_request_prefetch_following_time", paramLong).commit();
-      }
-    }
-  }
-  
-  private void a(EntityManager paramEntityManager, long paramLong, int paramInt)
-  {
-    if (paramEntityManager == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyFollowingMemberPrefetcher", 0, "update follow status error, entity manager is null!");
-      }
-      return;
-    }
-    if ((paramInt == 1) || (paramInt == 0))
-    {
-      ReadinjoyFollowingUserBriefInfo localReadinjoyFollowingUserBriefInfo = (ReadinjoyFollowingUserBriefInfo)paramEntityManager.find(ReadinjoyFollowingUserBriefInfo.class, String.valueOf(paramLong));
-      if (localReadinjoyFollowingUserBriefInfo != null) {
-        paramEntityManager.remove(localReadinjoyFollowingUserBriefInfo);
-      }
-      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(paramLong));
-      return;
-    }
-    paramEntityManager.persistOrReplace(new ReadinjoyFollowingUserBriefInfo(paramLong, paramInt));
-    this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong));
-  }
-  
-  private void a(List<rfi> paramList, int paramInt)
-  {
-    if (paramList == null) {}
-    for (;;)
-    {
-      return;
-      Object localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null)
+      localObject = (pfg)((QQAppInterface)localObject).getManager(163);
+      if ((localObject != null) && (((pfg)localObject).a() != null))
       {
-        localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-        paramList = paramList.iterator();
-        while (paramList.hasNext()) {
-          a((EntityManager)localObject, ((rfi)paramList.next()).a().longValue(), paramInt);
-        }
-      }
-    }
-  }
-  
-  private void a(List<rfi> paramList, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      q();
-      this.jdField_a_of_type_Boolean = false;
-    }
-    a(System.currentTimeMillis());
-    a(paramList, 2);
-    if (!paramBoolean) {
-      this.jdField_b_of_type_Boolean = false;
-    }
-    do
-    {
-      return;
-      paramList = (pxd)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    } while (paramList == null);
-    paramList.a(1000, 1, true);
-  }
-  
-  private void q()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyFollowingMemberPrefetcher", 0, "clear all following members in cache and db");
-    }
-    this.jdField_a_of_type_JavaUtilSet.clear();
-    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localAppInterface != null) {
-      localAppInterface.getEntityManagerFactory().createEntityManager().drop(ReadinjoyFollowingUserBriefInfo.class);
-    }
-  }
-  
-  private void r()
-  {
-    Object localObject1 = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject1 != null)
-    {
-      Object localObject2 = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + ((AppInterface)localObject1).getAccount(), 4);
-      if (localObject2 != null) {
-        this.jdField_a_of_type_Long = ((SharedPreferences)localObject2).getLong("readinjoy_last_request_prefetch_following_time", 0L);
-      }
-      this.jdField_a_of_type_JavaUtilSet.clear();
-      localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager().query(ReadinjoyFollowingUserBriefInfo.class);
-      if (localObject1 != null)
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        localObject = ((pfg)localObject).a().b();
+        if ((localObject == null) || (((List)localObject).isEmpty()))
         {
-          localObject2 = (ReadinjoyFollowingUserBriefInfo)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(((ReadinjoyFollowingUserBriefInfo)localObject2).uin));
+          QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = false, myChannelList is empty.");
+          return false;
+        }
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (paramInt == ((TabChannelCoverInfo)((Iterator)localObject).next()).mChannelCoverId)
+          {
+            QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = true, channelID = " + paramInt);
+            return true;
+          }
         }
       }
     }
+    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = false, channelID = " + paramInt);
+    return false;
   }
   
-  public long a()
+  public static boolean a(Context paramContext, String paramString)
   {
-    return this.jdField_a_of_type_Long;
+    return a(paramContext, paramString, true);
   }
   
-  public void a(long paramLong, int paramInt)
+  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localAppInterface != null) {
-      a(localAppInterface.getEntityManagerFactory().createEntityManager(), paramLong, paramInt);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.d("ReadInJoyChannelGuidingJumpUtils", 1, "context or scheme is null");
+      return false;
     }
-  }
-  
-  public void a(boolean paramBoolean1, List<rfi> paramList, long paramLong, boolean paramBoolean2)
-  {
-    if ((!this.jdField_b_of_type_Boolean) || (!paramBoolean1)) {
-      return;
-    }
-    ThreadManager.executeOnSubThread(new ReadInJoyFollowingMemberPrefetcher.2(this, paramList, paramBoolean2));
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - a() > 86400000L;
-  }
-  
-  public boolean a(Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyFollowingMemberPrefetcher", 0, "[isFollowingPgcUin] uin:" + paramLong + ", size:" + this.jdField_a_of_type_JavaUtilSet.size());
-    }
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramLong);
-  }
-  
-  public void b(boolean paramBoolean1, List<rfi> paramList, long paramLong, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      ThreadManager.executeOnSubThread(new ReadInJoyFollowingMemberPrefetcher.3(this, paramList));
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && ((a()) || (paramBoolean))) {
-      ThreadManager.executeOnSubThread(new ReadInJoyFollowingMemberPrefetcher.4(this, paramBoolean));
-    }
-  }
-  
-  public void d()
-  {
+    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], scheme = " + paramString);
+    Object localObject = Uri.parse(paramString);
+    String str1 = ((Uri)localObject).getQueryParameter("target");
+    String str2 = ((Uri)localObject).getQueryParameter("channelid");
+    String str3 = ((Uri)localObject).getQueryParameter("ispush");
+    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], target = " + str1 + ", channelID = " + str2 + ", isPush = " + str3 + ",doDynamicOrder = " + paramBoolean);
+    int i = -1;
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyFollowingMemberPrefetcher", 0, "uninitialize");
-      }
-      this.c = true;
-      pmk.a().b(this);
-      return;
+      int j = Integer.parseInt(str2);
+      i = j;
     }
-    finally {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], e = " + localNumberFormatException);
+      }
+      if (!paramBoolean) {
+        break label301;
+      }
+      paramBoolean = bnrf.B();
+      if ((!paramBoolean) || (!b(i))) {
+        break label362;
+      }
+      if (c(i)) {
+        break label318;
+      }
+      QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] channelID = " + str2 + " not my channel");
+      pfa.a().c(i, 1);
+      if (!a(str3, i)) {
+        break label400;
+      }
+      ozs.a(paramContext, paramString, null);
+      for (;;)
+      {
+        return true;
+        QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] channelID = " + str2 + " is my channel");
+        pfa.a().a(i, 1, false, true);
+        break;
+        QLog.d("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] isDynamicOrderSwitchOn = " + paramBoolean + ", channelID = " + str2);
+        break;
+        paramContext.startActivity(oix.b(paramContext, 0, i));
+      }
+      QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] failed, target = " + str1 + ", scheme = " + paramString);
+    }
+    localObject = ((Uri)localObject).getQueryParameter("v_url_base64");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      ReadInJoyViolaChannelFragment.a(i, (String)localObject);
+    }
+    if (("2".equals(str1)) && (!TextUtils.isEmpty(str2))) {
+      if (pmj.a(paramContext, paramString))
+      {
+        QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], jump to recommend channel, using floating window.");
+        return true;
+      }
+    }
+    label301:
+    label318:
+    label362:
+    return false;
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    boolean bool1 = TextUtils.equals(paramString, "1");
+    boolean bool2 = bnrf.h();
+    boolean bool3 = a(paramInt);
+    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[shouldPushNewPage, isPushBoolean = " + bool1 + ", KDTab = " + bool2 + ", isInMyChannel = " + bool3 + ", channelID = " + paramInt);
+    return (bool1) || (!bool2) || (!bool3);
+  }
+  
+  private static boolean b(int paramInt)
+  {
+    boolean bool2 = false;
+    List localList = pfa.a().a();
+    boolean bool1 = bool2;
+    int i;
+    if (localList != null)
+    {
+      bool1 = bool2;
+      if (localList.size() > 0) {
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      qvr localqvr;
+      int j;
+      if (i < localList.size())
+      {
+        localqvr = (qvr)localList.get(i);
+        j = 0;
+      }
+      while (j < localqvr.a.size())
+      {
+        if (paramInt == ((TabChannelCoverInfo)localqvr.a.get(j)).mChannelCoverId)
+        {
+          bool1 = true;
+          return bool1;
+        }
+        j += 1;
+      }
+      i += 1;
+    }
+  }
+  
+  private static boolean c(int paramInt)
+  {
+    boolean bool2 = false;
+    Object localObject = pfa.a().a();
+    boolean bool1 = bool2;
+    int i;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((List)localObject).size() > 0)
+      {
+        localObject = (qvr)((List)localObject).get(0);
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < ((qvr)localObject).a.size())
+      {
+        if (paramInt == ((TabChannelCoverInfo)((qvr)localObject).a.get(i)).mChannelCoverId) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
 }
 

@@ -1,55 +1,70 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.widget.HongBaoListView;
 
-public abstract class blmc
-  extends Binder
-  implements blmb
+public class blmc
+  implements Handler.Callback
 {
-  public blmc()
-  {
-    attachInterface(this, "cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-  }
+  public blmc(HongBaoListView paramHongBaoListView) {}
   
-  public static blmb a(IBinder paramIBinder)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof blmb))) {
-      return (blmb)localIInterface;
-    }
-    return new blmd(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    switch (paramMessage.what)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-      return true;
     }
-    paramParcel1.enforceInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-    paramInt1 = paramParcel1.readInt();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    do
     {
-      a(paramInt1, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            this.a.setIsShowingPreguide(true);
+            this.a.jdField_a_of_type_Aztw.a(this.a.d / 5, 300L);
+            this.a.springBackTo(-this.a.d);
+            if (this.a.jdField_a_of_type_Blmd != null) {
+              this.a.jdField_a_of_type_Blmd.b(false);
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
+            this.a.invalidate();
+            return false;
+            this.a.a(300L);
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
+          } while (this.a.jdField_a_of_type_Blmd == null);
+          this.a.jdField_a_of_type_Blmd.a(false);
+          return false;
+          this.a.setIsShowingPreguide(true);
+          i = this.a.d / 2;
+          this.a.setSpringbackOffset(-this.a.d);
+          if (paramMessage.arg1 != 0) {
+            i = paramMessage.arg1;
+          }
+          this.a.springBackTo(-i);
+          this.a.jdField_a_of_type_Aztw.a(this.a.d / 5, 300L);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
+        } while (this.a.jdField_a_of_type_Blmd == null);
+        this.a.jdField_a_of_type_Blmd.b(false);
+        return false;
+        this.a.a(300L);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
+      } while (this.a.jdField_a_of_type_Blmd == null);
+      this.a.jdField_a_of_type_Blmd.a(false);
+      return false;
+      this.a.setIsShowingPreguide(false);
+      this.a.setSpringbackOffset(0);
+      return false;
+      if (!this.a.isStackFromBottom()) {
+        this.a.setStackFromBottom(true);
+      }
+      this.a.setStackFromBottom(false);
+    } while (this.a.k);
+    int i = (int)this.a.getResources().getDimension(2131298138);
+    this.a.springBackTo(-i);
+    return false;
   }
 }
 

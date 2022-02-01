@@ -1,27 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.1;
-import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.2;
-import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.3;
+import java.util.ArrayList;
 
-public class aqbb
-  implements aqas
+class aqbb
+  implements aqbh
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqas jdField_a_of_type_Aqas;
+  aqbb(aqay paramaqay) {}
   
-  public void a(int paramInt)
+  public void a(aqbk paramaqbk, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.1(this, paramInt));
-  }
-  
-  public void a(aqao paramaqao)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.3(this, paramaqao));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.2(this, paramInt));
+    int i = 0;
+    while (i < paramaqbk.b.size())
+    {
+      aqbg localaqbg = (aqbg)paramaqbk.b.get(i);
+      if (localaqbg != null) {
+        localaqbg.b(paramBoolean, paramaqbk.a, paramArrayOfByte);
+      }
+      i += 1;
+    }
   }
 }
 

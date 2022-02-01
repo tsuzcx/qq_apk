@@ -1,13 +1,13 @@
 package com.tencent.av.ui;
 
-import mdt;
+import mep;
 
 class VideoLayerUI$10
   implements Runnable
 {
   long jdField_a_of_type_Long = 0L;
   
-  VideoLayerUI$10(VideoLayerUI paramVideoLayerUI, long paramLong, mdt parammdt, float paramFloat) {}
+  VideoLayerUI$10(VideoLayerUI paramVideoLayerUI, long paramLong, mep parammep, float paramFloat) {}
   
   public void run()
   {
@@ -15,11 +15,11 @@ class VideoLayerUI$10
     this.jdField_a_of_type_Long = (1L + l);
     if (l < this.b)
     {
-      this.jdField_a_of_type_Mdt.a(this.jdField_a_of_type_Float, VideoLayerUI.c(this.this$0), VideoLayerUI.d(this.this$0));
-      this.jdField_a_of_type_Mdt.a(this, 10L);
+      this.jdField_a_of_type_Mep.a(this.jdField_a_of_type_Float, VideoLayerUI.c(this.this$0), VideoLayerUI.d(this.this$0));
+      this.jdField_a_of_type_Mep.a(this, 10L);
       return;
     }
-    this.jdField_a_of_type_Mdt.a(0, 0, true);
+    this.jdField_a_of_type_Mep.a(0, 0, true);
     VideoLayerUI.a(this.this$0, -1);
     VideoLayerUI.b(this.this$0, -1);
   }

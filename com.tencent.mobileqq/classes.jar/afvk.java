@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
 
-final class afvk
-  implements afvp
+public class afvk
+  implements DialogInterface.OnDismissListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afvk(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramSessionInfo = new ProfileActivity.AllInOne(paramString, 70);
-    paramSessionInfo.h = bglf.i(paramQQAppInterface, paramString);
-    return paramSessionInfo;
+    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 

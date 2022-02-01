@@ -1,29 +1,41 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wuu
-  implements View.OnClickListener
 {
-  public wuu(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
+  @zoq(a="gametype")
+  public int a;
+  @zoq(a="gameid")
+  public String a;
+  @zoq(a="name")
+  public String b;
+  @zoq(a="result")
+  public String c;
   
-  public void onClick(View paramView)
+  public static wuu a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
-    for (int i = 1;; i = 0)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      yqu.a("msg_tab", "clk_all", 0, i, new String[0]);
-      bgmp localbgmp = bgng.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
-      zkb.a(localbgmp);
-      if (localbgmp != null) {
-        localbgmp.a();
+      paramString = (wuu)JsonORM.a(new JSONObject(paramString), wuu.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
   }
 }

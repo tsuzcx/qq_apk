@@ -1,27 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
 
-class bpjr
-  implements View.OnClickListener
+public class bpjr
+  implements Animator.AnimatorListener
 {
-  bpjr(bpjo parambpjo) {}
+  public bpjr(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem != null)
-    {
-      bpjo.a(this.a, false);
-      this.a.a = this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem;
-      this.a.a.a(bpjo.a(this.a), this.a.jdField_b_of_type_JavaLangString);
-      this.a.a.c(this.a.i);
-      if ((this.a.a instanceof bork)) {
-        ((bork)this.a.a).a(this.a.h);
-      }
-      this.a.a(false);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    AEEditorTextControlPanel.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEEditorTextControlPanel.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.setVisibility(0);
   }
 }
 

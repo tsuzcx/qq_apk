@@ -1,11 +1,14 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.content.DialogInterface;
 
-public abstract interface aloj
+class aloj
+  extends bhme
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  aloj(alof paramalof) {}
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

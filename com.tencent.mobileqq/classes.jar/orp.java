@@ -1,46 +1,66 @@
+import android.text.TextPaint;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class orp
-  implements orw
+public class orp
 {
-  orp(oro paramoro) {}
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
   
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public orp(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    Object localObject = oro.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
-    {
-      oro.a(this.a, paramGiftServiceBean);
-      oro.a(this.a).setText(paramGiftServiceBean.t);
-      oro.b(this.a, null);
-      if (oro.a(this.a)) {
-        oro.c(this.a, null);
-      }
-      oro.b(this.a).setText("");
-      oro.c(this.a).setText("");
-      oro.a(this.a, new ArrayList());
-      localObject = oro.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
-        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
-          oro.b(this.a).add(localGiftServiceBean);
-        }
-      }
-      if (oro.b(this.a).size() <= 0)
-      {
-        paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = anni.a(2131704061);
-        paramGiftServiceBean.v = "0";
-        oro.b(this.a).add(paramGiftServiceBean);
-      }
-      oro.a(this.a);
+    this(paramReadInJoyCommentComponentFragment, paramString, paramLong, paramCharSequence, 0);
+  }
+  
+  public orp(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramReadInJoyCommentComponentFragment = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramReadInJoyCommentComponentFragment = "";
     }
+    this.b = paramReadInJoyCommentComponentFragment;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(bhlg.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+        break label79;
+      }
+      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "nick name is " + this.jdField_a_of_type_JavaLangCharSequence);
+      }
+      return;
+      label79:
+      if ((int)Math.ceil(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString())) <= 0) {
+        this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    int i = 0;
+    if (!TextUtils.isEmpty(this.b)) {
+      i = this.b.length();
+    }
+    return "UserBiuInfo {uin=" + this.jdField_a_of_type_JavaLangString + ", nickName=" + this.jdField_a_of_type_JavaLangCharSequence + ", comment=" + this.b + ", length=" + i + ", feedid=" + this.jdField_a_of_type_Long + "}";
   }
 }
 

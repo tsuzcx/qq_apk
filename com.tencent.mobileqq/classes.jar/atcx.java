@@ -1,97 +1,122 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter.2;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Observable;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import java.io.File;
 
 public class atcx
-  extends Observable
 {
-  public QQAppInterface a;
-  MqqHandler a;
+  public static final View.OnTouchListener a = new atcy();
   
-  public atcx(QQAppInterface paramQQAppInterface)
+  public static Dialog a(Context paramContext)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new atcy(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+    Object localObject3 = null;
+    View localView1 = LayoutInflater.from(paramContext).inflate(2131561202, null);
+    View localView2 = localView1.findViewById(2131374840);
+    View localView3 = localView1.findViewById(2131363801);
+    ImageView localImageView = (ImageView)localView1.findViewById(2131374844);
+    localView2.setOnTouchListener(a);
+    localView3.setOnTouchListener(a);
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(agej.a(320.0F, paramContext.getResources()), -2);
+    String str = atcj.a("expand_question_dialog.png");
+    Object localObject1 = localObject3;
+    if (new File(str).exists()) {}
+    try
+    {
+      localObject1 = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject1).inPreferredConfig = Bitmap.Config.RGB_565;
+      localObject1 = atcj.a(str, (BitmapFactory.Options)localObject1);
+      localImageView.setImageBitmap((Bitmap)localObject1);
+      localObject1 = new ReportDialog(paramContext, 2131755266);
+      ((Dialog)localObject1).addContentView(localView1, localLayoutParams);
+      ((Dialog)localObject1).setCanceledOnTouchOutside(false);
+      localView2.setOnClickListener(new atcz(paramContext, (Dialog)localObject1));
+      localView3.setOnClickListener(new atda((Dialog)localObject1));
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ProfileGuideDialogUtils", 1, "createQuestionDialog decode bitmap fail.", localException);
+        Object localObject2 = localObject3;
+      }
+    }
   }
   
-  private void b(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
+  public static Dialog a(Context paramContext, int paramInt, View.OnClickListener paramOnClickListener)
   {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("averageSpeed", String.valueOf(0.0F));
-    ((HashMap)localObject).put("peerUin", String.valueOf(paramFileManagerEntity.peerUin));
-    ((HashMap)localObject).put("fileType", atwl.a(paramFileManagerEntity.fileName));
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131561201, null);
+    Object localObject3 = ((View)localObject1).findViewById(2131363801);
+    ((View)localObject3).setOnTouchListener(a);
+    ((View)localObject3).setOnClickListener(paramOnClickListener);
+    ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131368521);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131380285);
+    Button localButton = (Button)((View)localObject1).findViewById(2131363874);
+    localButton.setOnClickListener(paramOnClickListener);
+    paramOnClickListener = new ViewGroup.LayoutParams(agej.a(320.0F, paramContext.getResources()), -2);
+    ReportDialog localReportDialog = new ReportDialog(paramContext, 2131755266);
+    localReportDialog.addContentView((View)localObject1, paramOnClickListener);
+    localReportDialog.setCanceledOnTouchOutside(false);
+    int i;
     switch (paramInt)
     {
     default: 
-      QLog.e("FileManagerNotifyCenter<FileAssistant>", 1, "what type is report?!nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "],may be not report!");
-      return;
-    case 5: 
-      return;
-    case 6: 
-      localObject = "actFileOf2Of";
+      localObject1 = atcj.a("expand_guide_profile.png");
+      paramOnClickListener = anzj.a(2131707367);
+      localObject3 = anzj.a(2131707366);
+      i = agej.a(163.0F, paramContext.getResources());
+      paramInt = agej.a(102.0F, paramContext.getResources());
+      paramContext = (Context)localObject3;
+      if (!new File((String)localObject1).exists()) {
+        break;
+      }
     }
     for (;;)
     {
-      atvo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
-      return;
-      localObject = "actFileOf2Wy";
-      continue;
-      localObject = "actFileWy2Of";
-      continue;
-      localObject = "actFileDisc2Of";
-      continue;
-      localObject = "actFileDisc2Disc";
-      continue;
-      localObject = "actFileTroop2Of";
-      continue;
-      localObject = "actFileTroop2Disc";
-      continue;
-      localObject = "actFileFav2Disc";
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, Object paramObject, int paramInt3, String paramString2)
-  {
-    setChanged();
-    if (paramObject == null)
-    {
-      notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), paramString2 });
-      return;
-    }
-    notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), paramObject });
-  }
-  
-  public void a(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
-  {
-    b(paramFileManagerEntity, paramInt, paramString);
-    ThreadManager.executeOnSubThread(new FileManagerNotifyCenter.2(this, paramFileManagerEntity, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, Object paramObject)
-  {
-    try
-    {
-      setChanged();
-      notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject });
-      return;
-    }
-    finally
-    {
-      paramObject = finally;
-      throw paramObject;
+      try
+      {
+        localObject3 = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject3).inPreferredConfig = Bitmap.Config.RGB_565;
+        localObject1 = atcj.a((String)localObject1, (BitmapFactory.Options)localObject3);
+        localImageView.setImageBitmap((Bitmap)localObject1);
+        localTextView.setText(paramOnClickListener);
+        localButton.setText(paramContext);
+        paramContext = localImageView.getLayoutParams();
+        paramContext.width = i;
+        paramContext.height = paramInt;
+        localImageView.setLayoutParams(paramContext);
+        return localReportDialog;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ProfileGuideDialogUtils", 1, "showFirstGuide decode bitmap fail.", localException);
+      }
+      localObject1 = atcj.a("expand_guide_switch.png");
+      paramOnClickListener = anzj.a(2131707368);
+      localObject3 = anzj.a(2131707369);
+      i = agej.a(180.0F, paramContext.getResources());
+      paramInt = agej.a(102.0F, paramContext.getResources());
+      paramContext = (Context)localObject3;
+      break;
+      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ains;
+import aiyz;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
@@ -12,25 +12,25 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anig;
-import anih;
-import anii;
-import aopl;
-import avmc;
-import avob;
-import axem;
-import bctj;
-import bdvu;
-import bdwr;
-import bfst;
-import bgfz;
-import bgln;
-import bgso;
-import bgzc;
-import bhhh;
-import bhqu;
-import blby;
-import blpd;
+import anub;
+import anuc;
+import anud;
+import apdb;
+import awen;
+import awgm;
+import axxf;
+import bdmc;
+import beuo;
+import bevk;
+import bgsu;
+import bhga;
+import bhlo;
+import bhsq;
+import bhzh;
+import bihw;
+import birp;
+import bmdb;
+import bmqf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -63,13 +63,13 @@ import mqq.app.MSFServlet;
 import mqq.app.TicketManagerImpl;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nko;
-import nle;
-import nlf;
-import nmg;
+import nmj;
 import nmz;
-import odu;
-import pmm;
+import nna;
+import nob;
+import nou;
+import ofe;
+import pfg;
 
 public class BrowserAppInterface
   extends AppInterface
@@ -81,15 +81,15 @@ public class BrowserAppInterface
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
   public Intent a;
-  aopl jdField_a_of_type_Aopl = new aopl(this);
-  protected axem a;
-  private bdwr jdField_a_of_type_Bdwr;
-  public bgzc a;
+  apdb jdField_a_of_type_Apdb = new apdb(this);
+  protected axxf a;
+  private bevk jdField_a_of_type_Bevk;
+  public bhzh a;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  protected pmm a;
+  protected pfg a;
   public boolean a;
-  private anii[] jdField_a_of_type_ArrayOfAnii = new anii[1];
+  private anud[] jdField_a_of_type_ArrayOfAnud = new anud[1];
   public int b;
   public boolean b;
   private int c;
@@ -111,7 +111,7 @@ public class BrowserAppInterface
   
   private void a()
   {
-    QbSdk.setTbsLogClient(new anig(this, BaseApplicationImpl.getContext()));
+    QbSdk.setTbsLogClient(new anub(this, BaseApplicationImpl.getContext()));
   }
   
   public static void a(int paramInt)
@@ -255,7 +255,7 @@ public class BrowserAppInterface
         if ((paramContext != null) && (paramContext.a())) {
           return true;
         }
-        if (!avmc.a())
+        if (!awen.a())
         {
           int i = j;
           if (paramIntent != null)
@@ -355,46 +355,46 @@ public class BrowserAppInterface
     }
   }
   
-  private anii b(int paramInt)
+  private anud b(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     }
-    return new odu(this);
+    return new ofe(this);
   }
   
-  public anii a(int paramInt)
+  public anud a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAnii[paramInt];
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAnud[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAnii)
+    synchronized (this.jdField_a_of_type_ArrayOfAnud)
     {
-      anii localanii = this.jdField_a_of_type_ArrayOfAnii[paramInt];
-      localObject1 = localanii;
-      if (localanii == null)
+      anud localanud = this.jdField_a_of_type_ArrayOfAnud[paramInt];
+      localObject1 = localanud;
+      if (localanud == null)
       {
-        localanii = b(paramInt);
-        localObject1 = localanii;
-        if (localanii != null)
+        localanud = b(paramInt);
+        localObject1 = localanud;
+        if (localanud != null)
         {
-          this.jdField_a_of_type_ArrayOfAnii[paramInt] = localanii;
-          localObject1 = localanii;
+          this.jdField_a_of_type_ArrayOfAnud[paramInt] = localanud;
+          localObject1 = localanud;
         }
       }
       return localObject1;
     }
   }
   
-  public axem a()
+  public axxf a()
   {
-    if (this.jdField_a_of_type_Axem == null) {
-      this.jdField_a_of_type_Axem = new axem(this);
+    if (this.jdField_a_of_type_Axxf == null) {
+      this.jdField_a_of_type_Axxf = new axxf(this);
     }
-    return this.jdField_a_of_type_Axem;
+    return this.jdField_a_of_type_Axxf;
   }
   
   public String a()
@@ -402,12 +402,12 @@ public class BrowserAppInterface
     return null;
   }
   
-  public pmm a()
+  public pfg a()
   {
-    if (this.jdField_a_of_type_Pmm == null) {
-      this.jdField_a_of_type_Pmm = new pmm(this);
+    if (this.jdField_a_of_type_Pfg == null) {
+      this.jdField_a_of_type_Pfg = new pfg(this);
     }
-    return this.jdField_a_of_type_Pmm;
+    return this.jdField_a_of_type_Pfg;
   }
   
   public void a(boolean paramBoolean)
@@ -442,7 +442,7 @@ public class BrowserAppInterface
         QbSdk.setUploadCode(BaseApplication.getContext(), 154);
         long l = System.currentTimeMillis();
         localObject = ((Context)localObject).getSharedPreferences(((Context)localObject).getPackageName() + "_preferences", 4);
-        QbSdk.setTbsListener(new anih(this, (SharedPreferences)localObject, l));
+        QbSdk.setTbsListener(new anuc(this, (SharedPreferences)localObject, l));
         QLog.d("TBS_update", 1, "tbs start download");
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("tbs_downloading", true);
@@ -521,19 +521,19 @@ public class BrowserAppInterface
         return localObject1;
       }
       finally {}
-      localObject1 = new bhhh(this);
+      localObject1 = new bihw(this);
       continue;
-      Object localObject3 = new bfst(this);
+      Object localObject3 = new bgsu(this);
       continue;
       localObject3 = new TicketManagerImpl(this);
       continue;
-      localObject3 = new blby(this);
+      localObject3 = new bmdb(this);
       continue;
       localObject3 = new PathTraceManager(this);
       continue;
-      localObject3 = new ains(this);
+      localObject3 = new aiyz(this);
       continue;
-      localObject3 = new blpd();
+      localObject3 = new bmqf();
       continue;
       label239:
       localObject4 = localObject3;
@@ -552,7 +552,7 @@ public class BrowserAppInterface
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
   {
-    return new Class[] { nmz.class };
+    return new Class[] { nou.class };
   }
   
   public String getModuleId()
@@ -560,12 +560,12 @@ public class BrowserAppInterface
     return "modular_web";
   }
   
-  public bdvu getNetEngine(int paramInt)
+  public beuo getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Bdwr == null) {
-      this.jdField_a_of_type_Bdwr = new bdwr();
+    if (this.jdField_a_of_type_Bevk == null) {
+      this.jdField_a_of_type_Bevk = new bevk();
     }
-    return this.jdField_a_of_type_Bdwr.a(this, paramInt);
+    return this.jdField_a_of_type_Bevk.a(this, paramInt);
   }
   
   public void onBeforeExitProc()
@@ -594,7 +594,7 @@ public class BrowserAppInterface
   
   public void onCreate(Bundle paramBundle)
   {
-    bgso.a(null, "web_browserAppinterface_onCreate");
+    bhsq.a(null, "web_browserAppinterface_onCreate");
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     try
@@ -602,22 +602,22 @@ public class BrowserAppInterface
       if (Build.VERSION.SDK_INT >= 28) {
         android.webkit.WebView.setDataDirectorySuffix("tool");
       }
-      bhqu.a(this);
+      birp.a(this);
       a();
       str = getAccount();
       if (TextUtils.isEmpty(str))
       {
         paramBundle = null;
         QbSdk.setCurrentID(paramBundle);
-        nko.a(new nmg());
-        nko.a(new nlf());
-        nko.a(new nle());
-        nko.a(BaseApplicationImpl.getContext());
+        nmj.a(new nob());
+        nmj.a(new nna());
+        nmj.a(new nmz());
+        nmj.a(BaseApplicationImpl.getContext());
         if (getLongAccountUin() % 10L != 6L) {
           break label261;
         }
         bool = true;
-        nko.jdField_a_of_type_Boolean = bool;
+        nmj.jdField_a_of_type_Boolean = bool;
         if (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
         {
           if (QLog.isColorLevel()) {
@@ -629,8 +629,8 @@ public class BrowserAppInterface
         if (!paramBundle.getBoolean("is_set", false)) {
           paramBundle.edit().putBoolean("hide_back_text", true).putBoolean("is_set", true).commit();
         }
-        bhqc.A = SystemClock.elapsedRealtime();
-        bgso.a("web_browserAppinterface_onCreate", null);
+        biqx.A = SystemClock.elapsedRealtime();
+        bhsq.a("web_browserAppinterface_onCreate", null);
       }
     }
     catch (Throwable paramBundle)
@@ -651,21 +651,21 @@ public class BrowserAppInterface
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Axem != null) {}
+    if (this.jdField_a_of_type_Axxf != null) {}
     try
     {
-      this.jdField_a_of_type_Axem.onDestroy();
-      this.jdField_a_of_type_Axem = null;
-      if (this.jdField_a_of_type_Bdwr != null) {
-        this.jdField_a_of_type_Bdwr.onDestroy();
+      this.jdField_a_of_type_Axxf.onDestroy();
+      this.jdField_a_of_type_Axxf = null;
+      if (this.jdField_a_of_type_Bevk != null) {
+        this.jdField_a_of_type_Bevk.onDestroy();
       }
     }
     catch (Exception localException1)
     {
       try
       {
-        this.jdField_a_of_type_Bdwr.onDestroy();
-        this.jdField_a_of_type_Bdwr = null;
+        this.jdField_a_of_type_Bevk.onDestroy();
+        this.jdField_a_of_type_Bevk = null;
         synchronized (this.jdField_a_of_type_JavaUtilMap)
         {
           Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet();
@@ -712,16 +712,16 @@ public class BrowserAppInterface
     for (;;)
     {
       int i;
-      synchronized (this.jdField_a_of_type_ArrayOfAnii)
+      synchronized (this.jdField_a_of_type_ArrayOfAnud)
       {
-        anii[] arrayOfanii2 = this.jdField_a_of_type_ArrayOfAnii;
-        int j = arrayOfanii2.length;
+        anud[] arrayOfanud2 = this.jdField_a_of_type_ArrayOfAnud;
+        int j = arrayOfanud2.length;
         i = 0;
         if (i < j)
         {
-          anii localanii = arrayOfanii2[i];
-          if (localanii != null) {
-            localanii.onDestroy();
+          anud localanud = arrayOfanud2[i];
+          if (localanud != null) {
+            localanud.onDestroy();
           }
         }
         else
@@ -729,10 +729,10 @@ public class BrowserAppInterface
           if (InnerDns.mInstance != null) {
             InnerDns.getInstance().onAppDestroy();
           }
-          avob.a();
+          awgm.a();
           UiApiPlugin.f();
-          if (this.jdField_a_of_type_Pmm != null) {
-            this.jdField_a_of_type_Pmm.b();
+          if (this.jdField_a_of_type_Pfg != null) {
+            this.jdField_a_of_type_Pfg.b();
           }
           return;
         }
@@ -767,22 +767,22 @@ public class BrowserAppInterface
     if (bool) {
       getHandler(BrowserAppInterface.class).postDelayed(new BrowserAppInterface.4(this), 3000L);
     }
-    if ((WebCoreService.jdField_a_of_type_Boolean) && (bgln.e() >>> 20 < 20L)) {
+    if ((WebCoreService.jdField_a_of_type_Boolean) && (bhlo.e() >>> 20 < 20L)) {
       WebCoreService.b();
     }
     try
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(bgln.d()));
-      localHashMap.put("param_availableMem", String.valueOf(bgln.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(bgln.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(bgln.a()));
+      localHashMap.put("param_totalMem", String.valueOf(bhlo.d()));
+      localHashMap.put("param_availableMem", String.valueOf(bhlo.e()));
+      localHashMap.put("param_cpuNum", String.valueOf(bhlo.b()));
+      localHashMap.put("param_cpuFreq", String.valueOf(bhlo.a()));
       localHashMap.put("param_releaseType", String.valueOf(1));
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, "releaseWebCoreServiceReport:" + localHashMap.toString());
       }
-      bctj.a(getApplication()).a(getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, localHashMap, "");
+      bdmc.a(getApplication()).a(getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Exception localException) {}
@@ -793,12 +793,12 @@ public class BrowserAppInterface
     super.onRunningForeground();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentIntent = null;
-    bgfz.a(getApp());
+    bhga.a(getApp());
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Aopl.a(paramToServiceMsg);
+    this.jdField_a_of_type_Apdb.a(paramToServiceMsg);
   }
 }
 

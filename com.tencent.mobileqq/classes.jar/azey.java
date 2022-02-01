@@ -1,20 +1,16 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class azey
-  implements Comparator<azet>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public azey(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public azey(TagCloudView paramTagCloudView, Point paramPoint)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public int a(azet paramazet1, azet paramazet2)
-  {
-    return TagCloudView.a(paramazet1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramazet2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

@@ -1,21 +1,29 @@
 package com.tencent.avgame.gameresult;
 
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mzn;
-import mzq;
+import naq;
+import nat;
 
 public class GameResultUploadMgrForRemote$3
   implements Runnable
 {
-  public GameResultUploadMgrForRemote$3(mzn parammzn, mzq parammzq, String paramString) {}
+  public GameResultUploadMgrForRemote$3(naq paramnaq, nat paramnat, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mzq.jdField_b_of_type_Boolean = true;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("GameResultUploadMgrForRemote_GameRC", 1, this.jdField_a_of_type_JavaLangString + " upload video");
-    }
-    mzn.a(this.this$0, this.this$0.a, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Mzq.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Nat.jdField_b_of_type_JavaLangString == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      this.jdField_a_of_type_Nat.jdField_b_of_type_Boolean = true;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, this.jdField_a_of_type_JavaLangString + " upload video");
+      }
+      localQQAppInterface = naq.a(this.this$0);
+    } while (localQQAppInterface == null);
+    naq.a(this.this$0, localQQAppInterface, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Nat.jdField_b_of_type_JavaLangString);
   }
 }
 

@@ -1,51 +1,38 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class zac
-  implements zbe
+  extends bezs
 {
-  private zac(DoodleLayout paramDoodleLayout) {}
-  
-  private void a()
+  public zac(ArtFilterManager paramArtFilterManager, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, File paramFile, String paramString4)
   {
-    this.a.a(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-    this.a.a(false);
-    this.a.b(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView });
-    this.a.setDoodleGLViewVisibility(0);
-    this.a.c(0);
-    this.a.d(0);
+    super(paramQQAppInterface, paramString1);
   }
   
-  public void a(yya paramyya, float paramFloat1, float paramFloat2, float paramFloat3)
+  protected void realCancel()
   {
-    yqp.a("DoodleLayout", "onNormalFaceSelected, item : %s , x : %s , y : %s , scale : %s ", paramyya, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
-    a();
-    yxg localyxg = new yxg(paramFloat1, paramFloat2 + this.a.a(), paramFloat3, 0.0F, 0.0F, 0.0F, paramyya.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramyya.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3))
-    {
-      LpReportInfo_pf00064.allReport(615, 6);
-      LpReportInfo_pf00064.allReport(615, 4, 2);
-    }
-    if (this.a.a().a(paramyya.jdField_a_of_type_JavaLangString, paramyya.b, paramyya.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localyxg))
-    {
-      DoodleLayout.a("clk_oneface");
-      yqv.a("0X80076CA");
-      yqv.b("0X80075DF");
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterManager", 2, "realCancel download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
     }
   }
   
-  public void a(zbg paramzbg)
+  protected void realStart()
   {
-    yqp.b("DoodleLayout", "onLocationFaceSelected, pictureUrl:" + paramzbg.d);
-    a();
-    this.a.a(paramzbg);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3) {
-      LpReportInfo_pf00064.report(615, 6);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterManager", 2, "realStart download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
     }
-    yqv.b("0X80075E3");
+    bihz localbihz = ((bihw)ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager).getManager(47)).a(1);
+    bihu localbihu = new bihu(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+    localbihu.n = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("md5", this.c);
+    localBundle.putString("path", this.b);
+    localbihz.a(localbihu, ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager), localBundle);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.startup.step;
 
-import blte;
+import bmug;
 
 public class QzoneTracer
   extends Step
 {
   protected boolean doStep()
   {
-    blte.a();
+    bmug.a();
     return super.doStep();
   }
 }

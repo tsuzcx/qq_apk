@@ -1,16 +1,16 @@
 package cooperation.liveroom;
 
-import abbc;
-import abbl;
-import abcg;
-import abcl;
-import abdf;
-import acur;
-import amgh;
-import avob;
-import bhma;
-import bhmb;
-import bhta;
+import abff;
+import abfo;
+import abgj;
+import abgo;
+import abhi;
+import acyv;
+import amsb;
+import awgm;
+import bimv;
+import bimw;
+import bitv;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
 import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
@@ -28,20 +28,20 @@ class LiveRoomWebViewBuilder$1
   public List<WebViewPlugin> getCommonJsPlugin()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new amgh());
-    localArrayList.add(new bhma());
-    localArrayList.add(new bhmb());
+    localArrayList.add(new amsb());
+    localArrayList.add(new bimv());
+    localArrayList.add(new bimw());
     localArrayList.add(new VasWebReport());
-    localArrayList.add(new abdf());
-    localArrayList.add(new abcl());
-    localArrayList.add(new abbc());
-    localArrayList.add(new abbl());
-    localArrayList.add(new bhta());
-    localArrayList.add(new avob());
+    localArrayList.add(new abhi());
+    localArrayList.add(new abgo());
+    localArrayList.add(new abff());
+    localArrayList.add(new abfo());
+    localArrayList.add(new bitv());
+    localArrayList.add(new awgm());
     localArrayList.add(new OpenCenterPlugin());
     localArrayList.add(new MiniAppPlugin());
-    localArrayList.add(new abcg());
-    localArrayList.add(new acur());
+    localArrayList.add(new abgj());
+    localArrayList.add(new acyv());
     localArrayList.add(new SonicJsPlugin());
     return localArrayList;
   }

@@ -1,20 +1,28 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import android.view.View;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import org.json.JSONObject;
 
-public class stu
-  extends RecyclerViewWithHeaderFooterFix
+class stu
+  implements URLDrawableDownListener
 {
-  public stu(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  stu(stp paramstp) {}
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
+    AbstractGifImage.resumeAll();
+    stp.a(this.a).setVisibility(0);
+    this.a.a("0X800920C", new JSONObject());
   }
 }
 

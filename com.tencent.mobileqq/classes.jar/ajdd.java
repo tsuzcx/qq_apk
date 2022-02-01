@@ -1,11 +1,14 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-public abstract interface ajdd
+public class ajdd
+  implements anvj
 {
-  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public ajdd(AddContactsView paramAddContactsView) {}
   
-  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void a()
+  {
+    this.a.c = false;
+  }
 }
 
 

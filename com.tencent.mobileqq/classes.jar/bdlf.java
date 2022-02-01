@@ -1,26 +1,95 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
 
-class bdlf
-  implements URLDrawable.DownloadListener
+public class bdlf
 {
-  bdlf(bdle parambdle, String paramString) {}
+  public static boolean a;
   
-  public void onFileDownloadFailed(int paramInt)
+  private static String a(QQAppInterface paramQQAppInterface)
   {
-    if (!bdle.a(this.jdField_a_of_type_Bdle).contains(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
-      }
-      bdle.a(this.jdField_a_of_type_Bdle).add(this.jdField_a_of_type_JavaLangString);
+    if (paramQQAppInterface == null) {
+      return "unknown";
     }
+    switch (bhnv.b(paramQQAppInterface.getApp()))
+    {
+    default: 
+      return "unknown";
+    case 0: 
+      return "none";
+    case 1: 
+      return "Wi-Fi";
+    case 2: 
+      return "2G";
+    case 3: 
+      return "3G";
+    case 4: 
+      return "4G";
+    }
+    return "5G";
   }
   
-  public void onFileDownloadStarted() {}
+  private static String a(QQAppInterface paramQQAppInterface, bdlg parambdlg)
+  {
+    parambdlg.a = bhlo.d();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
+      parambdlg.c = localSosoLbsInfo.a.e;
+    }
+    parambdlg.b = a(paramQQAppInterface);
+    return parambdlg.toString();
+  }
   
-  public void onFileDownloadSucceed(long paramLong) {}
+  public static void a(QQAppInterface paramQQAppInterface, bdlg parambdlg)
+  {
+    parambdlg = a(paramQQAppInterface, parambdlg);
+    if (QLog.isColorLevel()) {
+      QLog.i("PushReportController", 1, "reportPushEvent detail=" + parambdlg);
+    }
+    if (paramQQAppInterface == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PushReportController", 1, "not Rumtime");
+      }
+      paramQQAppInterface = new Intent();
+      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramQQAppInterface.putExtra("reporting_tag", "dc03266");
+      paramQQAppInterface.putExtra("reporting_detail", parambdlg);
+      paramQQAppInterface.putExtra("reporting_count", 1);
+      paramQQAppInterface.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("PushReportController", 1, " Rumtime");
+    }
+    bdll.b(paramQQAppInterface, "dc03266", parambdlg, 1);
+  }
+  
+  public static void a(String paramString, bdlg parambdlg)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("&")))
+    {
+      paramString = paramString.split("&");
+      int i = 0;
+      while (i < paramString.length)
+      {
+        if (paramString[i].contains("pushfrom"))
+        {
+          String[] arrayOfString = paramString[i].split("=");
+          if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
+            parambdlg.g = arrayOfString[1];
+          }
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 

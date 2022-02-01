@@ -10,25 +10,23 @@ import oicq.wlogin_sdk.request.WtTicketPromise;
 public abstract interface TicketManager
   extends Manager
 {
-  public abstract Ticket GetLocalTicket(String paramString, int paramInt);
-  
-  public abstract Ticket GetPskey(String paramString, long paramLong, String[] paramArrayOfString, WtTicketPromise paramWtTicketPromise);
-  
-  public abstract Ticket GetSkey(String paramString, long paramLong, WtTicketPromise paramWtTicketPromise);
-  
-  public abstract Ticket GetTicket(String paramString, long paramLong, int paramInt, WtTicketPromise paramWtTicketPromise, Bundle paramBundle);
-  
   public abstract String getA2(String paramString);
   
   public abstract byte[] getDA2(String paramString);
+  
+  public abstract Ticket getLocalTicket(String paramString, int paramInt);
   
   public abstract String getOpenSdkKey(String paramString, int paramInt);
   
   public abstract String getPskey(String paramString1, String paramString2);
   
+  public abstract Ticket getPskey(String paramString, long paramLong, String[] paramArrayOfString, WtTicketPromise paramWtTicketPromise);
+  
   public abstract String getPt4Token(String paramString1, String paramString2);
   
   public abstract String getSkey(String paramString);
+  
+  public abstract Ticket getSkey(String paramString, long paramLong, WtTicketPromise paramWtTicketPromise);
   
   public abstract byte[] getSt(String paramString, int paramInt);
   
@@ -37,6 +35,8 @@ public abstract interface TicketManager
   public abstract String getStweb(String paramString);
   
   public abstract String getSuperkey(String paramString);
+  
+  public abstract Ticket getTicket(String paramString, long paramLong, int paramInt, WtTicketPromise paramWtTicketPromise, Bundle paramBundle);
   
   public abstract String getVkey(String paramString);
   

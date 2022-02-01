@@ -1,40 +1,6 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-
-public class awoc
+public abstract interface awoc
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public awob a()
-  {
-    return new awob(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
-  }
-  
-  public awoc a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public awoc a(MsgBackupUserData paramMsgBackupUserData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
-  }
-  
-  public awoc a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public awoc b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
+  public abstract void a(int paramInt);
 }
 
 

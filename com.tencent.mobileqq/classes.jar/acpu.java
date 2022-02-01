@@ -1,32 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.graphics.Canvas;
+import com.tencent.image.URLImageView;
 
-class acpu
-  implements View.OnClickListener
+public final class acpu
+  extends URLImageView
 {
-  acpu(acps paramacps) {}
+  private acxl a = new acxl();
   
-  public void onClick(View paramView)
+  public acpu(Context paramContext)
   {
-    if (this.a.a() == null) {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!this.a.a().isLoaded()) {
-        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
-      } else if (this.a.a().isInvalidated()) {
-        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
-      } else {
-        this.a.a();
-      }
-    }
+    super(paramContext);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.a.a(Double.valueOf(paramFloat * 2.0F).intValue(), Double.valueOf(paramFloat * 2.0F).intValue());
+    this.a.a(paramFloat, paramFloat);
+    this.a.a(paramFloat);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    this.a.a(paramCanvas, getDrawable());
   }
 }
 

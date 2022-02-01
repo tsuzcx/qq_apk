@@ -1,4 +1,11 @@
-public abstract class azsq {}
+public final class azsq
+  extends azsa
+{
+  protected int a()
+  {
+    return 512;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

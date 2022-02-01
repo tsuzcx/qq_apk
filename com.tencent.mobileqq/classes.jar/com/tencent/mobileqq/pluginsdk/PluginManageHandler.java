@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PluginManageHandler
 {
-  public static Handler handler;
+  public static Handler handler = null;
   private static volatile PluginManageHandler sInstance;
   RemotePluginManager mClientProxy;
   private PluginManageHandler.IPluginManagerProvider mManagerProvider;

@@ -2,17 +2,17 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bjyo;
+import bkzs;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ShareProxyImpl$3
   implements Runnable
 {
-  public ShareProxyImpl$3(bjyo parambjyo, Activity paramActivity) {}
+  public ShareProxyImpl$3(bkzs parambkzs, Activity paramActivity) {}
   
   public void run()
   {
-    QQToast.a(this.a, 0, 2131719199, 1).b(this.a.getResources().getDimensionPixelSize(2131298998));
+    QQToast.a(this.a, 0, 2131719399, 1).b(this.a.getResources().getDimensionPixelSize(2131299011));
   }
 }
 

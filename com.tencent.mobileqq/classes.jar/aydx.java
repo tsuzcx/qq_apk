@@ -1,8 +1,18 @@
-public abstract interface aydx
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
+
+public class aydx
+  implements ayeg
 {
-  public abstract void a(int paramInt, String paramString);
+  aydx(aydv paramaydv) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (axup)this.a.a.getManager(106)), 16, null, false);
+    }
+  }
 }
 
 

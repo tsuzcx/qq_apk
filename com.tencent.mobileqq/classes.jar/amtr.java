@@ -1,23 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.ImageView;
-
-class amtr
-  implements DialogInterface.OnClickListener
+public abstract interface amtr
 {
-  amtr(amtp paramamtp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (amtp.a(this.a) != null)
-    {
-      amtp.b(this.a).setVisibility(8);
-      amtp.c(this.a).setVisibility(8);
-      amtp.b(this.a, false);
-      amtp.a(this.a).a();
-    }
-    this.a.a(6, 3, true);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

@@ -73,12 +73,15 @@ public class TVKCGIVideoInfoBuilder
       {
         str = ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)this.videoInfo.getUrlInfos().get(i)).getUrl();
         if (!TextUtils.isEmpty(paramString)) {
-          break label446;
+          break label456;
         }
       }
-      label446:
+      label456:
       for (str = generateMp4url(str + generateClipMp4Filename(this.fn, ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getIdx()), ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getVkey(), ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getKeyid());; str = ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getUrl())
       {
+        if (i == 0) {
+          ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).setUrl(str);
+        }
         ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).addUrlList(str);
         i += 1;
         break label349;

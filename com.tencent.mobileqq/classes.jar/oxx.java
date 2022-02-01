@@ -1,38 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 final class oxx
-  implements ViewBase.OnClickListener
+  extends apcq
 {
-  oxx(pay parampay, pan parampan, Container paramContainer) {}
-  
-  public final void onClick(ViewBase paramViewBase)
+  oxx(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (opu.a(this.jdField_a_of_type_Pay))
-    {
-      paramViewBase = this.jdField_a_of_type_Pan.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      opu.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pay, 1000);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    oxw.a(false);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
+      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Pay.a == null);
-      Object localObject = this.jdField_a_of_type_Pan.a();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "adapter.vafContext");
-      localObject = ((VafContext)localObject).getContext();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "viewBase");
-      pha.a((Context)localObject, paramViewBase.getEventAttachedData());
-    } while (this.jdField_a_of_type_Pan.a() == null);
-    this.jdField_a_of_type_Pan.a().e(this.jdField_a_of_type_Pay);
   }
 }
 

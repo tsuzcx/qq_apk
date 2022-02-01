@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.subscript;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import tvx;
+import tvz;
 
 public class SubscriptRecommendController$9
   implements Runnable
 {
-  public SubscriptRecommendController$9(tvx paramtvx) {}
+  public SubscriptRecommendController$9(tvz paramtvz) {}
   
   public void run()
   {

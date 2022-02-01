@@ -1,29 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 class qck
-  implements ViewBase.OnClickListener
+  implements pre
 {
-  qck(qcj paramqcj, BaseArticleInfo paramBaseArticleInfo, pxk parampxk, ViewBase paramViewBase) {}
+  qck(qcf paramqcf, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      qcf.a(this.jdField_a_of_type_Qcf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      qcf.a(this.jdField_a_of_type_Qcf).notifyDataSetChanged();
       return;
     }
-    QLog.i("BigImageVideoProteusItem", 1, "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances);
-    paramViewBase = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
-    QLog.i("BigImageVideoProteusItem", 1, "" + paramViewBase);
-    if ((paramViewBase.a != null) && (paramViewBase.a.a != 3)) {
-      ryx.a(this.jdField_a_of_type_Pxk.a().getContext(), paramViewBase.a);
-    }
-    pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    QQToast.a(qcf.c(this.jdField_a_of_type_Qcf).getContext(), 1, 2131717203, 0).a();
   }
 }
 

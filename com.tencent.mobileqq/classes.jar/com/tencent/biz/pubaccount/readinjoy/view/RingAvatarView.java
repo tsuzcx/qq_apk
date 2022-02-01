@@ -30,7 +30,7 @@ public class RingAvatarView
   
   public void showStarRing()
   {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130849469));
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130849477));
   }
 }
 

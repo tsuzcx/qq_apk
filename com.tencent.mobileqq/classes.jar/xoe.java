@@ -1,35 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class xoe<T>
-  extends SimpleObserver<T>
+class xoe
+  implements Animation.AnimationListener
 {
-  private xoe(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xoe(xoa paramxoa) {}
   
-  public void onCancel()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.onCancel();
-    yqp.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    this.a.dismiss();
   }
   
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    yqp.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onNext(T paramT)
-  {
-    super.onNext(paramT);
-    yqp.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

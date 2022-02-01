@@ -1,21 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
 
-public class tka
-  extends AnimatorListenerAdapter
+public abstract interface tka
 {
-  public tka(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public abstract void a(WormholeView paramWormholeView);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a();
-  }
+  public abstract void b(WormholeView paramWormholeView);
 }
 
 

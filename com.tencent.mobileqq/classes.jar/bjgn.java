@@ -1,38 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.os.Handler;
+import java.lang.ref.WeakReference;
 
 public class bjgn
-  implements View.OnClickListener
+  extends Handler
 {
-  public bjgn(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  WeakReference<Context> a;
   
-  public void onClick(View paramView)
+  public bjgn(Context paramContext)
   {
-    boolean bool = true;
-    Object localObject = QidianProfileCardActivity.a(this.a);
-    int i;
-    if (QidianProfileCardActivity.a(this.a))
-    {
-      i = 1;
-      ((TextView)localObject).setMaxLines(i);
-      localObject = this.a;
-      if (QidianProfileCardActivity.a(this.a)) {
-        break label65;
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a((QidianProfileCardActivity)localObject, bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 3;
-      break;
-      label65:
-      bool = false;
-    }
+    this.a = new WeakReference(paramContext);
   }
 }
 

@@ -3,25 +3,24 @@ package com.tencent.mobileqq.vas.qvip.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhcn;
-import bhcp;
-import bhcq;
-import bhcr;
-import blyl;
+import bicz;
+import bidb;
+import bidc;
+import bidd;
+import bmzn;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 import com.tencent.mobileqq.widget.RoundImageView;
-import zlx;
+import zps;
 
 public class ImgHeaderView
   extends RelativeLayout
-  implements bhcp
+  implements bidb
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -40,10 +39,10 @@ public class ImgHeaderView
     paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
     paramString1.putExtra("url", this.jdField_a_of_type_JavaLangString);
     paramActivity.startActivity(paramString1);
-    blyl.a().a("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
+    bmzn.a().a("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
     try
     {
-      bhcn.a(118, paramQQVipMsgInfo, paramInt);
+      bicz.a(118, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramActivity)
@@ -56,22 +55,20 @@ public class ImgHeaderView
   {
     try
     {
-      Object localObject = paramQQVipMsgInfo.coverUrl;
-      String str = paramQQVipMsgInfo.title;
       this.jdField_a_of_type_JavaLangString = paramQQVipMsgInfo.url;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561894, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561935, this, false));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368418));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(zlx.a(getContext(), 6.0F), true);
-      localObject = URLDrawable.getDrawable((String)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable((Drawable)localObject);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378445));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365380));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bhcq(this, paramActivity, paramQQVipMsgInfo, paramInt));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bhcr(this, paramActivity, paramQQVipMsgInfo, paramInt));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368491));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(zps.a(getContext(), 6.0F), true);
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(paramQQVipMsgInfo.coverUrl);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(localURLDrawable);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378603));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramQQVipMsgInfo.title);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365424));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bidc(this, paramActivity, paramQQVipMsgInfo, paramInt));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bidd(this, paramActivity, paramQQVipMsgInfo, paramInt));
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      bhcn.a(117, paramQQVipMsgInfo, paramInt);
+      bicz.a(117, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramQQVipMsgInfo)

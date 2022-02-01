@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
-
-public final class bamv
-  implements Parcelable.Creator<FilterCategory>
+public class bamv
 {
-  public FilterCategory a(Parcel paramParcel)
+  public int a;
+  public byte[] a;
+  public int b;
+  
+  public bamv(byte[] paramArrayOfByte, int paramInt)
   {
-    return new FilterCategory(paramParcel);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = 0;
   }
   
-  public FilterCategory[] a(int paramInt)
+  public bamv(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return new FilterCategory[paramInt];
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = paramInt1;
   }
 }
 

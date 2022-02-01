@@ -14,7 +14,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.ViewParent;
 import android.widget.ImageView;
-import bclx;
+import bdep;
 import com.tencent.qphone.base.util.QLog;
 
 public class CircleProgressView
@@ -30,7 +30,7 @@ public class CircleProgressView
   private int b = -1;
   private int c = -9013368;
   private int d = 6;
-  private int e = bclx.a(9.0F);
+  private int e = bdep.a(9.0F);
   
   public CircleProgressView(Context paramContext)
   {

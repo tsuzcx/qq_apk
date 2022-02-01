@@ -1,13 +1,7 @@
-public class rik
-{
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public int c;
-  public String c = "";
-  public String d = "";
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "", "()V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public class rik {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

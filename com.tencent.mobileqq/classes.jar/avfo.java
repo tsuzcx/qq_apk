@@ -1,22 +1,13 @@
-import android.view.View;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
 public class avfo
-  implements avex
+  extends aogx
 {
-  public void a(avey paramavey)
-  {
-    paramavey.a();
-  }
+  public avfo(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public void a(View... paramVarArgs)
+  public void a(String paramString, int paramInt)
   {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramVarArgs[i].setVisibility(0);
-      i += 1;
-    }
+    QQSettingChatOperationFragment.a(this.a);
   }
 }
 

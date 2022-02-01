@@ -918,7 +918,7 @@ public class VRecyclerList
         ViolaLogUtils.d("VRecyclerList", "disAppear position: " + paramVH.position + ", ref: " + localDomObject.getRef());
       }
     } while ((getInstance() == null) || (getHostView() == null));
-    ((DomObjectCell)localDomObject).resetComponentState(getInstance().getInstanceId(), paramVH.position, paramVH.itemView, ((VRecyclerView)getHostView()).isScrollDown());
+    ((DomObjectCell)localDomObject).resetComponentState(getInstance().getInstanceId(), ((VRecyclerView)getHostView()).isScrollDown());
   }
   
   public void onDispatchTouchEvent(int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
@@ -960,6 +960,7 @@ public class VRecyclerList
     if (this.mOrientation == 1) {
       tryScrollEvent(paramVRecyclerView, paramInt3, paramInt4);
     }
+    onRichGestureScroll(paramInt1, paramInt2);
     if (isCompatMode())
     {
       paramVRecyclerView = (VListCompat)getCompator();
@@ -971,7 +972,6 @@ public class VRecyclerList
     for (;;)
     {
       listFireScrollEvent("scroll", paramInt1, paramInt2);
-      onRichGestureScroll(paramInt1, paramInt2);
       return;
       label59:
       paramVRecyclerView.onScroll();
@@ -1045,6 +1045,15 @@ public class VRecyclerList
       this.mChildren.remove(paramVComponent);
     } while (!paramBoolean);
     paramVComponent.destroy();
+  }
+  
+  public void scrollByDistance(int paramInt)
+  {
+    VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
+    if (localVRecyclerView == null) {
+      return;
+    }
+    scrollByDistance(localVRecyclerView.getContentOffsetX(), localVRecyclerView.getContentOffsetY(), 0, paramInt);
   }
   
   @JSMethod(uiThread=true)
@@ -1302,6 +1311,14 @@ public class VRecyclerList
         continue;
       }
       int i = Integer.valueOf(localException).intValue();
+    }
+  }
+  
+  @JSMethod(uiThread=true)
+  public void snapToTargetPosition(int paramInt)
+  {
+    if (getHostView() != null) {
+      ((VRecyclerView)getHostView()).snapToTargetPosition(paramInt);
     }
   }
   

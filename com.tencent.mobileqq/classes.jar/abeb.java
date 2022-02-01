@@ -1,25 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.GamePartyPlugin;
 
-class abeb
-  implements View.OnClickListener
+public class abeb
+  extends aser
 {
-  abeb(abea paramabea, DialogInterface.OnClickListener paramOnClickListener) {}
+  public abeb(GamePartyPlugin paramGamePartyPlugin) {}
   
-  public void onClick(View paramView)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Abea, -2);
+    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
+    {
+      String str = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response").getString("result");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
+        this.a.callJs(str, new String[] { paramBundle });
+      }
     }
-    this.jdField_a_of_type_Abea.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abeb
  * JD-Core Version:    0.7.0.1
  */

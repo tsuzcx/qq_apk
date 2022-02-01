@@ -1,38 +1,17 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public class bnmf
-  implements SeekBar.OnSeekBarChangeListener
+class bnmf
+  implements bmux
 {
-  public bnmf(AEBeautyProviderView paramAEBeautyProviderView) {}
+  bnmf(bnme parambnme, String paramString) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a()
   {
-    if (AEBeautyProviderView.a(this.a) != null)
+    if (this.jdField_a_of_type_Bnme.a != null)
     {
-      AEBeautyProviderView.a(this.a).a(paramInt);
-      this.a.a.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
+      this.jdField_a_of_type_Bnme.a.callJs(str);
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
-    }
-    AEBeautyProviderView.a(this.a, paramSeekBar.getProgress());
-    bnyl.a().d(paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

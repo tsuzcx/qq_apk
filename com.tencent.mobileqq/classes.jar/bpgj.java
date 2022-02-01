@@ -1,7 +1,18 @@
+import com.tencent.tavcut.bean.TextEditorData;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+
 public class bpgj
-  implements bqfp
+  implements bpke
 {
-  bpgj(bpgi parambpgi) {}
+  public bpgj(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  
+  public void a() {}
+  
+  public void a(TextEditorData paramTextEditorData)
+  {
+    this.a.a(true);
+    this.a.a = paramTextEditorData;
+  }
 }
 
 

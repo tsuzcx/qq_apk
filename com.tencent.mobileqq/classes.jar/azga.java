@@ -1,6 +1,25 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime.Status;
+
 class azga
+  extends azms
 {
-  private static final azfy a = new azfy(null);
+  azga(azfn paramazfn) {}
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    super.a(paramBoolean, paramBundle);
+    paramBundle = azfn.a(this.a).getOnlineStatus();
+    long l = azhq.a().a(azfn.a(this.a));
+    if ((paramBoolean) && (paramBundle == AppRuntime.Status.online) && (l == 1030L))
+    {
+      if (azfn.a(this.a) != null) {
+        azfn.a(this.a).a(paramBundle);
+      }
+      this.a.c();
+    }
+  }
 }
 
 

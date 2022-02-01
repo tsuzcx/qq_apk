@@ -1,78 +1,33 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bols
-  implements Cloneable
+class bols
+  implements Observer<bowc>
 {
-  public int a;
-  public String a;
-  public List<MusicItemInfo> a;
-  public boolean a;
-  public boolean b = true;
+  bols(boll paramboll) {}
   
-  public bols() {}
-  
-  public bols(JSONObject paramJSONObject)
+  public void a(@Nullable bowc parambowc)
   {
-    if (paramJSONObject.has("categoryName")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("categoryName");
-    }
-    if (paramJSONObject.has("tagid")) {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("tagid");
-    }
-    if (paramJSONObject.has("enabled")) {
-      this.b = paramJSONObject.getBoolean("enabled");
-    }
-    this.jdField_a_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position"));
-    if (paramJSONObject.has("content"))
+    if (parambowc == null) {}
+    do
     {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
+      return;
+      this.a.jdField_a_of_type_Bofh.o();
+      boll.a(this.a, parambowc.b);
+      if (boll.a(this.a) == AECaptureMode.NORMAL)
       {
-        MusicItemInfo localMusicItemInfo = new MusicItemInfo(paramJSONObject.optString(i));
-        localMusicItemInfo.mTagName = this.jdField_a_of_type_JavaLangString;
-        if (localMusicItemInfo.isWsBanner()) {}
-        localArrayList.add(localMusicItemInfo);
-        i += 1;
+        boll.a(this.a);
+        return;
       }
-      this.jdField_a_of_type_JavaUtilList = localArrayList;
-    }
-  }
-  
-  public bols a()
-  {
-    try
-    {
-      bols localbols = (bols)super.clone();
-      return localbols;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public MusicItemInfo a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if (boll.a(this.a) == AECaptureMode.GIF)
       {
-        MusicItemInfo localMusicItemInfo = (MusicItemInfo)localIterator.next();
-        if (localMusicItemInfo.mItemId == paramInt) {
-          return localMusicItemInfo;
-        }
+        this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(8);
+        return;
       }
-    }
-    return null;
+    } while (boll.a(this.a) != AECaptureMode.PLAY);
+    this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(8);
   }
 }
 

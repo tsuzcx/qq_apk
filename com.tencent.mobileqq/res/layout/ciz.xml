@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.navbar.NavBarAIO android:gravity="center_vertical" android:id="@id/n42" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignTop="@id/root" />
-    <FrameLayout android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <android.support.v7.widget.RecyclerView android:id="@id/i4m" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-    </FrameLayout>
+    <include android:id="@id/title" android:layout_width="fill_parent" android:layout_height="@dimen/b8m" layout="@layout/ap9" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/nom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nol" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/n86" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
+    <ListView android:id="@id/n85" android:visibility="gone" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="@null" android:overScrollMode="never" />
 </LinearLayout>

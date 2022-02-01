@@ -1,60 +1,288 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.Cryptor;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class araa
-  extends aqkz<aqzz>
 {
-  public static aqzz a()
+  public static HashMap<String, String> a(String paramString)
   {
-    return (aqzz)aqlk.a().a(334);
-  }
-  
-  @NonNull
-  public aqzz a(int paramInt)
-  {
-    return new aqzz();
-  }
-  
-  @Nullable
-  public aqzz a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqzz.a(paramArrayOfaqlg);
+    HashMap localHashMap = new HashMap();
+    try
+    {
+      a(localHashMap, DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + paramString).getBytes())).getDocumentElement().getChildNodes());
+      return localHashMap;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
   }
   
-  public void a(aqzz paramaqzz) {}
-  
-  public Class<aqzz> clazz()
+  private static void a(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    return aqzz.class;
+    paramArrayOfByte = new Cryptor().decrypt(paramArrayOfByte, a());
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+    case 4: 
+      do
+      {
+        return;
+        paramString = aqzw.a();
+      } while (paramString == null);
+      a(paramString.a, paramArrayOfByte);
+      return;
+    case 24: 
+      aqzw.a.b();
+      aqzw.a.a(false);
+      a(aqzw.a, paramArrayOfByte, paramString);
+      return;
+    }
+    aqzw.b.b();
+    aqzw.b.a(false);
+    a(aqzw.b, paramArrayOfByte);
   }
   
-  public boolean isNeedCompressed()
+  private static void a(aqzz paramaqzz, byte[] paramArrayOfByte)
   {
+    int i = bhvd.a(paramArrayOfByte, 0);
+    paramaqzz.jdField_a_of_type_JavaLangString = bhvd.a(paramArrayOfByte, 2, i);
+    i += 2;
+    paramaqzz.jdField_a_of_type_Byte = paramArrayOfByte[i];
+    i += 1;
+    paramaqzz.jdField_b_of_type_Byte = paramArrayOfByte[i];
+    int j = i + 1;
+    i = bhvd.a(paramArrayOfByte, j);
+    j += 2;
+    paramaqzz.jdField_b_of_type_JavaLangString = bhvd.a(paramArrayOfByte, j, i);
+  }
+  
+  private static void a(arab paramarab) {}
+  
+  private static void a(arab paramarab, String paramString)
+  {
+    int k = 2;
+    int m = 0;
+    int n = bhvd.a(paramarab.jdField_a_of_type_ArrayOfByte, 0);
+    int i = m;
+    int j = k;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--itemNum = " + n);
+      j = k;
+      i = m;
+    }
+    while (i < n)
+    {
+      k = bhvd.a(paramarab.jdField_a_of_type_ArrayOfByte, j);
+      m = j + 2;
+      j = bhvd.a(paramarab.jdField_a_of_type_ArrayOfByte, m);
+      m += 2;
+      byte[] arrayOfByte = new byte[j];
+      bhvd.b(paramarab.jdField_a_of_type_ArrayOfByte, m, arrayOfByte, j);
+      j = m + j;
+      a(k, arrayOfByte, paramString);
+      i += 1;
+    }
+    paramarab = aqzw.a();
+    if (paramarab != null) {
+      paramarab.c();
+    }
+  }
+  
+  private static void a(arsk paramarsk, byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--buildItem_FlashLogo = ");
+    }
+    paramarsk.jdField_a_of_type_Long = bhvd.a(paramArrayOfByte, 0);
+    paramarsk.b = (bhvd.a(paramArrayOfByte, 4) * 1000L);
+    paramarsk.c = (bhvd.a(paramArrayOfByte, 8) * 1000L);
+    int k = paramArrayOfByte[12];
+    int m;
+    int n;
+    for (int j = 13; i < k; j = n + m)
+    {
+      long l = bhvd.a(paramArrayOfByte, j);
+      m = j + 4;
+      j = paramArrayOfByte[m];
+      n = m + 1 + 1;
+      m = bhvd.a(paramArrayOfByte, n);
+      n += 2;
+      String str1 = bhvd.a(paramArrayOfByte, n, m);
+      n += m;
+      m = bhvd.a(paramArrayOfByte, n);
+      n += 2;
+      String str2 = bhvd.a(paramArrayOfByte, n, m);
+      if (j == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShanPing", 2, "flashlogo desc= " + str1 + " src addr = " + str2);
+        }
+        str2 = paramarsk.a(str1, (byte)3);
+        paramarsk.c(str2);
+        paramarsk.a(paramarsk.a(l, str1, str2, null, ""));
+      }
+      i += 1;
+    }
+  }
+  
+  private static void a(arsk paramarsk, byte[] paramArrayOfByte, String paramString)
+  {
+    paramarsk.jdField_a_of_type_Long = bhvd.a(paramArrayOfByte, 0);
+    paramarsk.b = (bhvd.a(paramArrayOfByte, 4) * 1000L);
+    paramarsk.c = (bhvd.a(paramArrayOfByte, 8) * 1000L);
+    int k = paramArrayOfByte[12];
+    int j = 13;
+    if (k > 0)
+    {
+      paramarsk.c();
+      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + paramString, true).commit();
+    }
+    int i = 0;
+    while (i < k)
+    {
+      long l1 = bhvd.a(paramArrayOfByte, j);
+      int m = j + 4;
+      j = paramArrayOfByte[m];
+      m = m + 1 + 1;
+      long l2 = bhvd.a(paramArrayOfByte, m);
+      int n = m + 4;
+      m = bhvd.a(paramArrayOfByte, n);
+      int i1 = n + 2;
+      n = bhvd.a(paramArrayOfByte, i1);
+      i1 += 2;
+      paramString = bhvd.a(paramArrayOfByte, i1, n);
+      i1 += n;
+      n = bhvd.a(paramArrayOfByte, i1);
+      i1 += 2;
+      String str2 = bhvd.a(paramArrayOfByte, i1, n);
+      i1 += n;
+      n = bhvd.a(paramArrayOfByte, i1);
+      i1 += 2;
+      String str1 = bhvd.a(paramArrayOfByte, i1, n);
+      if (j == 1)
+      {
+        str2 = paramarsk.a(str2, (byte)3);
+        if (!a(String.valueOf(l1))) {
+          paramarsk.c(str2);
+        }
+        paramarsk.a(paramarsk.a(l1, paramString, str2, str1, BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + l1, "" + l2, (short)m));
+      }
+      i += 1;
+      j = n + i1;
+    }
+  }
+  
+  private static void a(HashMap<String, String> paramHashMap, NodeList paramNodeList)
+  {
+    if ((paramNodeList == null) || (paramNodeList.getLength() == 0)) {
+      return;
+    }
+    int i = 0;
+    label16:
+    Node localNode;
+    if (i < paramNodeList.getLength())
+    {
+      localNode = paramNodeList.item(i);
+      if (!(localNode instanceof Element)) {
+        break label67;
+      }
+      if (localNode.hasChildNodes()) {
+        a(paramHashMap, localNode.getChildNodes());
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label16;
+      break;
+      label67:
+      if (localNode.getParentNode() != null) {
+        paramHashMap.put(localNode.getParentNode().getNodeName(), localNode.getNodeValue());
+      }
+    }
+  }
+  
+  private static void a(byte[] paramArrayOfByte, arab paramarab)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 11)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfByte[0] == 2)
+      {
+        paramarab.b = bhvd.a(paramArrayOfByte, 1);
+        paramarab.jdField_a_of_type_Short = bhvd.a(paramArrayOfByte, 3);
+        paramarab.jdField_a_of_type_Long = (bhvd.a(paramArrayOfByte, 5) * 1000L);
+        paramarab.jdField_a_of_type_Byte = paramArrayOfByte[9];
+        int i = paramArrayOfByte.length - 10 - 1;
+        if (paramarab.jdField_a_of_type_Byte == 0)
+        {
+          paramarab.jdField_a_of_type_ArrayOfByte = new byte[i];
+          bhvd.b(paramArrayOfByte, 10, paramarab.jdField_a_of_type_ArrayOfByte, i);
+        }
+        while (paramArrayOfByte.length != i + 10 + 1)
+        {
+          return;
+          paramarab.jdField_a_of_type_JavaLangString = bhvd.a(paramArrayOfByte, 10, i);
+        }
+      }
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + paramString).exists();
+  }
+  
+  public static boolean a(byte[] paramArrayOfByte, arab paramarab, String paramString)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
+    do
+    {
+      do
+      {
+        return false;
+        a(paramArrayOfByte, paramarab);
+      } while (paramarab.b != 768);
+      if (paramarab.jdField_a_of_type_Byte != 0)
+      {
+        a(paramarab);
+        return false;
+      }
+    } while ((paramarab.jdField_a_of_type_ArrayOfByte == null) || (paramarab.jdField_a_of_type_ArrayOfByte.length == 0));
+    a(paramarab, paramString);
     return true;
   }
   
-  public boolean isNeedStoreLargeFile()
+  private static byte[] a()
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 334;
+    String str = MD5.toMD5(aqzw.a() + AppSetting.d() + "E1D84CC825147ECD").substring(0, 16);
+    try
+    {
+      byte[] arrayOfByte = str.getBytes("ISO8859_1");
+      return arrayOfByte;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+    return str.getBytes();
   }
 }
 

@@ -12,6 +12,7 @@ public class ActivityResultManager
   public static final int ACTION_REQUEST_API_PERMISSION = 5;
   public static final int ACTION_REQUEST_CODE_CAMERA = 4;
   public static final int ACTION_REQUEST_CODE_CHOOSE_LOCATION = 3;
+  public static final int ACTION_REQUEST_CODE_CHOOSE_MESSAGE_FILE = 6001;
   public static final int ACTION_REQUEST_CODE_GAME_PAY_BY_FRIEND_H5 = 3004;
   public static final int ACTION_REQUEST_CODE_GAME_PAY_BY_H5 = 3003;
   public static final int ACTION_REQUEST_CODE_GAME_PAY_BY_WX_H5 = 3005;

@@ -1,12 +1,19 @@
-public class seq
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+
+class seq
+  implements sga
 {
-  int jdField_a_of_type_Int;
-  ruh jdField_a_of_type_Ruh;
+  seq(sel paramsel) {}
   
-  public seq(ruh paramruh, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ruh = paramruh;
-    this.jdField_a_of_type_Int = paramInt;
+    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
+    if (localBaseArticleInfo == null) {
+      return;
+    }
+    this.a.b(localBaseArticleInfo);
+    pms.a(paramView);
   }
 }
 

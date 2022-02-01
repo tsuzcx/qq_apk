@@ -1,23 +1,8 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class wsp
-  implements ankk
+public abstract interface wsp
 {
-  wsp(wsm paramwsm) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null) {
-        ((wff)((QQAppInterface)localObject).a(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
-      }
-      return;
-    }
-  }
+  public abstract void b();
 }
 
 

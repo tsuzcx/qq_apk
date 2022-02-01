@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
-import amhd;
-import ammr;
+import amsx;
+import amyl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Message;
-import anni;
-import arti;
+import anzj;
+import asiw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$29
   implements Runnable
 {
-  public MessengerService$IncomingHandler$29(arti paramarti, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$29(asiw paramasiw, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -61,7 +61,7 @@ public class MessengerService$IncomingHandler$29
               return;
             }
             localJSONObject.put("result", 1);
-            localJSONObject.put("msg", anni.a(2131705451));
+            localJSONObject.put("msg", anzj.a(2131705558));
             continue;
             QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
           }
@@ -105,7 +105,7 @@ public class MessengerService$IncomingHandler$29
             else
             {
               localJSONException.put("result", 1);
-              localJSONException.put("msg", anni.a(2131705471));
+              localJSONException.put("msg", anzj.a(2131705578));
             }
           }
           else
@@ -133,7 +133,7 @@ public class MessengerService$IncomingHandler$29
     }
     for (;;)
     {
-      ammr.a(bool);
+      amyl.a(bool);
       break;
       QLog.e("ApolloJsApi", 1, "drawerVoice has no val");
       i = 0;
@@ -149,7 +149,7 @@ public class MessengerService$IncomingHandler$29
         break;
       }
       localObject1 = ((JSONObject)localObject1).optString("lastShopScheme");
-      ((amhd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
+      ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
       break;
       label787:
       label788:

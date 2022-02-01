@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bcgx;
+import bczp;
 
 class EditVideoActivity$4
   implements Runnable

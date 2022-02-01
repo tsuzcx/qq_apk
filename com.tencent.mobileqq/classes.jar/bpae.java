@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import android.content.Context;
+import android.media.AudioManager;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public final class bpae
-  implements Parcelable.Creator<EditLocalGifSource>
+public class bpae
 {
-  public EditLocalGifSource a(Parcel paramParcel)
+  private AudioManager a;
+  
+  public void a()
   {
-    return new EditLocalGifSource(paramParcel);
+    this.a = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+    this.a.requestAudioFocus(null, 3, 2);
   }
   
-  public EditLocalGifSource[] a(int paramInt)
+  public void b()
   {
-    return new EditLocalGifSource[paramInt];
+    if (this.a != null) {
+      this.a.abandonAudioFocus(null);
+    }
   }
 }
 

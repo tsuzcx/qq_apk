@@ -1,90 +1,9 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
-public class blll
-  extends blle
+public abstract interface blll
 {
-  private WeakReference<LocationDetailActivity> a;
-  
-  public blll(LocationDetailActivity paramLocationDetailActivity)
-  {
-    this.a = new WeakReference(paramLocationDetailActivity);
-  }
-  
-  public int a()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return 0;
-    }
-    return LocationDetailActivity.a(localLocationDetailActivity);
-  }
-  
-  public void a()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.b(true);
-    bljv.a(null, "User_Modify", 7, 0, localLocationDetailActivity.getIntent().getIntExtra("category", 1));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.a(paramBundle);
-  }
-  
-  public void b()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    LocationDetailActivity.a(localLocationDetailActivity);
-  }
-  
-  public void c()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {}
-    while (!localLocationDetailActivity.d()) {
-      return;
-    }
-    localLocationDetailActivity.finish();
-  }
-  
-  public void d()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.A();
-  }
-  
-  public void e()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
-    if (localIntent != null)
-    {
-      aufz.a(localLocationDetailActivity, localIntent, 103);
-      return;
-    }
-    QQToast.a(localLocationDetailActivity, 2131692007, 1, 2000).b(5);
-  }
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
 }
 
 

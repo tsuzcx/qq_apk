@@ -1,78 +1,47 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.ProgressUIHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
+import java.util.List;
+import mqq.util.WeakReference;
 
 public class psn
-  extends Handler
+  implements pqr
 {
-  WeakReference<ReadInjoyIMAXAdFragment> a;
+  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = pfa.a().a();
+  private WeakReference<pso> jdField_a_of_type_MqqUtilWeakReference;
   
-  public psn(Looper paramLooper, ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
+  public psn(pso parampso)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampso);
   }
   
-  public void handleMessage(Message paramMessage)
+  private void b(List<psl> paramList)
   {
-    ReadInjoyIMAXAdFragment localReadInjoyIMAXAdFragment = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (localReadInjoyIMAXAdFragment == null) {
-      return;
+    pso localpso = (pso)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localpso != null) && (paramList != null)) {
+      localpso.a(paramList);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+  }
+  
+  public void a()
+  {
+    SelectPositionModule localSelectPositionModule = pfa.a().a();
+    if (localSelectPositionModule != null) {
+      b(localSelectPositionModule.a());
     }
-    long l1;
-    if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) != null)
-    {
-      l1 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getCurrentPostion();
-      long l2 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getDuration();
-      if (l1 >= l2 - 300L)
-      {
-        ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, true);
-        int i = (int)(l2 - l1);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: pos=" + l1 + ", duration=" + l2 + ", remainDuration=" + i + ", mHasCallEndingSoon=" + ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment));
-        }
-        if (!ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment))
-        {
-          ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, true);
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: !!!");
-          }
-          ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment);
-        }
-        ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, l1);
-      }
-    }
-    for (;;)
-    {
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).sendEmptyMessageDelayed(-2, 100);
-      return;
-      if ((l1 > 500L) || (l1 < 0L) || (!ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment))) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoReplayOnLoop: pos=" + l1);
-      }
-      ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, false);
-      ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, false);
-      if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) == null) {
-        break;
-      }
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).pause();
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).post(new ReadInjoyIMAXAdFragment.ProgressUIHandler.1(this));
-      break;
-      ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment) + 100);
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment));
-    }
+  }
+  
+  public void a(SelectPositionModule.PositionData paramPositionData)
+  {
+    bkdz.a().post(new SelectCityPresenter.2(this, paramPositionData));
+  }
+  
+  public void a(List<psl> paramList)
+  {
+    bkdz.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 

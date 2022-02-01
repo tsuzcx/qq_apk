@@ -1,127 +1,208 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyHeaderAdDownloadView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.image.URLImageView;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkRequest.Builder;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.jetbrains.annotations.Nullable;
 
 public class rxy
-  extends rxq
-  implements ssb
+  implements Handler.Callback
 {
-  public ViewGroup A;
-  TextView A;
-  TextView B;
-  TextView C;
-  TextView D;
-  public TextView E;
-  public TextView F;
-  public TextView G;
-  public TextView H;
-  TextView I;
-  TextView J;
-  TextView K;
-  TextView L;
-  public TextView M;
-  public TextView N;
-  public TextView O;
-  public TextView P;
-  public TextView Q;
-  public TextView R;
-  public TextView S;
-  public Button a;
-  public ReadInjoyHeaderAdDownloadView a;
-  VideoFeedsUGView a;
-  public ReadInJoyNickNameTextView a;
-  public ruq a;
-  ViewStub jdField_b_of_type_AndroidViewViewStub;
-  public FrameLayout b;
-  public ReadInjoyHeaderAdDownloadView b;
-  VideoFeedsUGView jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsUGView;
-  KandianUrlImageView jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  public ReadInJoyHeadImageView b;
-  ViewStub c;
-  URLImageView e;
-  public URLImageView f;
-  URLImageView g;
-  public URLImageView h;
-  public URLImageView i;
-  public URLImageView j;
-  public ViewGroup m;
-  ImageView m;
-  public ViewGroup n;
-  ImageView n;
-  public ViewGroup o;
-  ImageView o;
-  ViewGroup p;
-  public ImageView p;
-  ViewGroup q;
-  View r;
-  public ViewGroup r;
-  public View s;
-  ViewGroup s;
-  View jdField_t_of_type_AndroidViewView;
-  ViewGroup jdField_t_of_type_AndroidViewViewGroup;
-  View jdField_u_of_type_AndroidViewView;
-  ViewGroup jdField_u_of_type_AndroidViewViewGroup;
-  public View v;
-  public ViewGroup v;
-  public View w;
-  ViewGroup w;
-  public View x;
-  ViewGroup x;
-  public View y;
-  public ViewGroup y;
-  public View z;
-  public ViewGroup z;
-  public TextView z;
+  private static rxy jdField_a_of_type_Rxy;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private final ArrayList<rye> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long = 600000L;
+  private final ArrayList<ryf> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private long c = SystemClock.elapsedRealtime();
+  private long d;
+  private long e;
   
-  public rxy(View paramView, int paramInt)
+  private rxy()
   {
-    super(paramView, paramInt);
-    this.jdField_r_of_type_AndroidViewView = paramView;
-    this.z = ((TextView)paramView.findViewById(2131378871));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsUGView = ((VideoFeedsUGView)paramView.findViewById(2131380159));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsUGView = ((VideoFeedsUGView)paramView.findViewById(2131380157));
-    this.jdField_m_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367912));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367889));
-    VideoFeedsAccessibilityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView, this);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367885));
-    this.jdField_a_of_type_Ruq = ((ruq)paramView.findViewById(2131367879));
-    this.jdField_o_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366982));
-    this.n = ((ImageView)paramView.findViewById(2131366969));
-    if ((paramInt == 2) || (paramInt == 4) || (paramInt == 5) || (paramInt == 7)) {
-      this.q = ((ViewGroup)paramView.findViewById(2131371937));
-    }
-    this.jdField_o_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366976));
-    this.p = ((ViewGroup)paramView.findViewById(2131366992));
-    this.jdField_m_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366970));
-    this.A = ((TextView)paramView.findViewById(2131366972));
-    this.s = paramView.findViewById(2131366991);
-    this.B = ((TextView)paramView.findViewById(2131366979));
-    this.C = ((TextView)paramView.findViewById(2131366967));
-    this.t = ((ViewGroup)paramView.findViewById(2131380653));
-    this.u = ((ViewGroup)paramView.findViewById(2131380651));
-    this.jdField_r_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380630));
-    this.jdField_b_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373613));
-    this.c = ((ViewStub)paramView.findViewById(2131373610));
+    float f = Aladdin.getConfig(230).getFloatFromString("exo_weight_factor", 5.0F);
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ryc());
+    this.jdField_b_of_type_JavaUtilArrayList.add(new ryd(f));
+    a();
   }
   
-  public void a(String paramString)
+  public static rxy a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView != null)
+    if (jdField_a_of_type_Rxy == null) {}
+    try
     {
-      VideoFeedsAccessibilityHelper.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView, paramString);
-      VideoFeedsAccessibilityHelper.c(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView, paramString);
+      if (jdField_a_of_type_Rxy == null) {
+        jdField_a_of_type_Rxy = new rxy();
+      }
+      return jdField_a_of_type_Rxy;
     }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      ((ConnectivityManager)BaseApplicationImpl.getApplication().getSystemService("connectivity")).registerNetworkCallback(new NetworkRequest.Builder().build(), new rya(this, null));
+      return;
+    }
+    BaseApplicationImpl.getApplication().registerReceiver(new ryb(this, null), new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+  }
+  
+  private long b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    long l1 = 0L;
+    while (localIterator.hasNext())
+    {
+      long l2 = ((rye)localIterator.next()).a();
+      l1 = l2;
+      if (l2 > 0L) {
+        l1 = l2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BandwidthPredictor", 2, "getCurrentBandwidth: bandwidth=" + l1);
+    }
+    return l1;
+  }
+  
+  private void b()
+  {
+    long l = b();
+    Iterator localIterator;
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Int = 0;
+      if (this.e > this.jdField_a_of_type_Long)
+      {
+        localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext()) {
+          ((ryf)localIterator.next()).a(this.e);
+        }
+      }
+      this.e = l;
+    }
+    for (;;)
+    {
+      return;
+      localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ryf localryf = (ryf)localIterator.next();
+        if (this.e > localryf.jdField_a_of_type_Long) {
+          localryf.a(this.e);
+        }
+      }
+      this.e = 0L;
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int >= 5)
+      {
+        localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext()) {
+          ((ryf)localIterator.next()).a();
+        }
+        if (SystemClock.elapsedRealtime() - this.c > this.jdField_b_of_type_Long) {}
+        for (int i = 1; i != 0; i = 0)
+        {
+          d();
+          return;
+        }
+      }
+    }
+  }
+  
+  private void c()
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    long l1 = 0L;
+    while (localIterator.hasNext())
+    {
+      ryf localryf = (ryf)localIterator.next();
+      long l2 = Math.max(localryf.jdField_a_of_type_Long, l1);
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("BandwidthPredictor", 2, "predict: predictor=" + localryf + ", currentPrediction=" + localryf.jdField_b_of_type_Long + ", prediction=" + localryf.jdField_a_of_type_Long);
+        l1 = l2;
+      }
+    }
+    this.jdField_a_of_type_Long = (((float)l1 / 10.0F));
+    this.d = l1;
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BandwidthPredictor", 2, "reset: ");
+    }
+    this.c = SystemClock.elapsedRealtime();
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ryf)localIterator.next()).b();
+    }
+    if (bhnv.h(BaseApplicationImpl.getContext()))
+    {
+      this.jdField_b_of_type_Long = (Aladdin.getConfig(230).getIntegerFromString("reset_time_threshold_wifi", 3600) * 1000L);
+      return;
+    }
+    this.jdField_b_of_type_Long = (Aladdin.getConfig(230).getIntegerFromString("reset_time_threshold_xg", 600) * 1000L);
+  }
+  
+  public final long a()
+  {
+    return this.d;
+  }
+  
+  public void a(Context paramContext)
+  {
+    if ((Aladdin.getConfig(230).getIntegerFromString("bandwidth_enable", 1) == 1) && (this.jdField_b_of_type_Int <= 0))
+    {
+      this.jdField_b_of_type_Int = paramContext.hashCode();
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
+  }
+  
+  public void b(Context paramContext)
+  {
+    if (paramContext.hashCode() == this.jdField_b_of_type_Int)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_b_of_type_Int = 0;
+    }
+  }
+  
+  public boolean handleMessage(@Nullable Message paramMessage)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMessage != null)
+    {
+      bool1 = bool2;
+      if (paramMessage.what == 0)
+      {
+        b();
+        c();
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1000L);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

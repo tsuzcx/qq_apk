@@ -1,59 +1,14 @@
-import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
 
-public class xwf
-  extends wfi
+class xwf
+  implements MediaPlayer.OnInfoListener
 {
-  public xwf(QQStoryBasicSettingsActivity paramQQStoryBasicSettingsActivity) {}
+  xwf(xvy paramxvy, xvs paramxvs) {}
   
-  public void b(int paramInt)
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    QQStoryBasicSettingsActivity.a(this.a);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-    case 1001: 
-      this.a.a(0);
-      return;
-    case 2: 
-      this.a.a(1);
-      return;
-    case 3: 
-      this.a.a(2);
-      return;
-    }
-    QQToast.a(this.a, anni.a(2131709577), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Biax != null) {
-      this.a.jdField_a_of_type_Biax.b();
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Wfg.a(this.a.b(this.a.jdField_a_of_type_Int));
-      this.a.jdField_a_of_type_Wfg.b(this.a.b(this.a.jdField_a_of_type_Int));
-      if (this.a.jdField_a_of_type_Int == 2) {
-        yqu.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
-      }
-      do
-      {
-        return;
-        if (this.a.jdField_a_of_type_Int == 0)
-        {
-          yqu.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
-          return;
-        }
-      } while (this.a.jdField_a_of_type_Int != 1);
-      yqu.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
-      return;
-    }
-    QQToast.a(this.a, 2131694182, 0).b(this.a.getTitleBarHeight());
-    this.a.a(this.a.b);
-    this.a.jdField_a_of_type_Wff.d();
+    return this.jdField_a_of_type_Xvs.a_(this.jdField_a_of_type_Xvy, paramInt1, paramInt2);
   }
 }
 

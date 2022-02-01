@@ -1,39 +1,34 @@
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.collector.ResultObject;
-import com.tencent.mfsdk.reporter.ReporterMachine;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
-import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0x35.Submsgtype0x35.MsgBody;
 
 public class adds
-  implements Observer
+  implements adci
 {
-  public void update(Observable paramObservable, Object paramObject)
+  private static void a(MsgType0x210 paramMsgType0x210)
   {
-    Object localObject = ((addr)paramObservable).a;
-    if ("t_held_thread".equals((String)((HashMap)localObject).get("key_type"))) {}
     try
     {
-      paramObservable = new JSONObject();
-      paramObject = new JSONObject();
-      paramObject.put("fileObj1", ((HashMap)localObject).get("filePath"));
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("p_id", MagnifierSDK.b());
-      paramObservable.put("fileObj", paramObject);
-      paramObservable.put("clientinfo", localObject);
-      paramObservable.put("newplugin", 123);
-      ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, paramObservable, true, true, MagnifierSDK.a));
+      int i = ((Submsgtype0x35.MsgBody)new Submsgtype0x35.MsgBody().mergeFrom(paramMsgType0x210.vProtobuf)).uint32_bubble_timestamp.get();
       if (QLog.isColorLevel()) {
-        QLog.d("StackObserver", 2, "report apm suc");
+        QLog.d("Q.msg.BaseMessageProcessor", 2, "bubble push timestamp=" + i);
       }
       return;
     }
-    catch (Exception paramObservable)
+    catch (Exception paramMsgType0x210)
     {
-      QLog.e("StackObserver", 1, "report apm fail", paramObservable);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decodeC2CMsgPkg_SecretfileReport parse failed.", paramMsgType0x210);
     }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramMsgType0x210);
+    return null;
   }
 }
 

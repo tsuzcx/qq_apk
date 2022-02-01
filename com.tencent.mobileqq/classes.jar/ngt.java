@@ -1,14 +1,16 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface ngt
+class ngt
+  implements View.OnClickListener
 {
-  public abstract ArrayList<ngm> a();
+  ngt(ngq paramngq) {}
   
-  public abstract boolean a();
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ngt
  * JD-Core Version:    0.7.0.1
  */

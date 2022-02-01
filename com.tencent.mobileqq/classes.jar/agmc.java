@@ -1,33 +1,8 @@
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Bitmap;
 
-class agmc
-  implements bajj
+public abstract interface agmc
 {
-  agmc(agmb paramagmb) {}
-  
-  public void a(boolean paramBoolean, List<aiit> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
-    int i;
-    if (paramList == null)
-    {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 1, i);
-      if (paramBoolean) {
-        break label59;
-      }
-    }
-    label59:
-    while (this.a.a == null)
-    {
-      return;
-      i = paramList.size();
-      break;
-    }
-    this.a.a.a(paramList);
-  }
+  public abstract Bitmap a();
 }
 
 

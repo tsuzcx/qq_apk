@@ -1,18 +1,24 @@
-import android.view.View;
-import android.widget.BaseAdapter;
+import android.graphics.Bitmap;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public abstract class bhzk
-  extends BaseAdapter
+public final class bhzk
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract int a();
+  public bhzk(int paramInt) {}
   
-  public abstract void a(View paramView, int paramInt);
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public abstract boolean a(int paramInt);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public boolean a(View paramView, int paramInt)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return false;
+    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable)) {
+      ((RegionDrawable)paramURLDrawable.getCurrDrawable()).getBitmap().setDensity(this.a);
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aegv;
-import azfe;
+import aepz;
+import azxr;
 
 public class FriendProfileCardActivity$6$1
   implements Runnable
 {
-  public FriendProfileCardActivity$6$1(aegv paramaegv) {}
+  public FriendProfileCardActivity$6$1(aepz paramaepz) {}
   
   public void run()
   {

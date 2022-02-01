@@ -1,36 +1,28 @@
 public class bdxe
 {
   public int a;
-  public bdxd a;
-  public bdxf a;
-  public Object a;
   public String a;
-  public boolean a;
-  public byte[] a;
   public int b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
+  public String b;
+  public int c;
+  public int d = 0;
   
   public bdxe()
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void a()
+  public String toString()
   {
-    this.jdField_a_of_type_Int = 30000;
-    this.jdField_b_of_type_Int = 1;
-    this.c = 1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("result:").append(this.jdField_b_of_type_Int).append(" mainAccount:").append(this.jdField_a_of_type_JavaLangString).append(" errorType:").append(this.jdField_a_of_type_Int).append(" errorMsg:").append(this.jdField_b_of_type_JavaLangString).append(" interval:").append(this.c).append(" allLastMsgTime:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdxe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import zpu;
+import ztp;
 
 public class RateWidget$2
   implements Runnable
 {
-  public RateWidget$2(zpu paramzpu) {}
+  public RateWidget$2(ztp paramztp) {}
   
   public void run()
   {
-    if (zpu.a(this.this$0))
+    if (ztp.a(this.this$0))
     {
-      zpu.a(this.this$0, false);
+      ztp.a(this.this$0, false);
       this.this$0.c(false);
     }
   }

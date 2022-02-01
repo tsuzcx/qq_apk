@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class pfj
-  implements INetInfoHandler
+final class pfj
+  extends apck
 {
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  pfj(String paramString, boolean paramBoolean)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(pfh.a());
-    pfh.a();
+    super(paramString, paramBoolean);
   }
   
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(pfh.a());
-    pfh.a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
-    bivr.a().a("101480433");
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
-    bivr.a().a("101480433");
+    pfi.a(false);
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      tzq.a(100, new ArrayList());
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.qwallet.report;
 
-import akwc;
-import akwd;
+import alhr;
+import alhs;
 import com.tencent.qphone.base.util.QLog;
 
 public class VACDReportMgr$1
   implements Runnable
 {
-  public VACDReportMgr$1(akwd paramakwd) {}
+  public VACDReportMgr$1(alhs paramalhs) {}
   
   public void run()
   {
     synchronized ()
     {
-      akwd.a(this.this$0).a(akwd.a(this.this$0));
+      alhs.a(this.this$0).a(alhs.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.i("VACDReport", 2, "loadAllLocalInfos finished.");
       }

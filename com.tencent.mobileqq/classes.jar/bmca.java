@@ -1,36 +1,54 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import cooperation.qzone.panorama.widget.PanoramaGuideAnimate;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmca
-  extends Handler
+  extends RemoteCommand
 {
-  public bmca(PanoramaGuideAnimate paramPanoramaGuideAnimate) {}
+  private boolean a;
   
-  @TargetApi(11)
-  public void handleMessage(Message paramMessage)
+  public bmca(String paramString, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
+    super(paramString);
+    this.a = paramBoolean;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bmca("qqcomicemoticonipccmd", false));
+    }
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
+      }
     }
     do
     {
-      return;
-      PanoramaGuideAnimate.a(this.a).setRotationY(PanoramaGuideAnimate.a(this.a));
-      PanoramaGuideAnimate.a(this.a).setTranslationX(PanoramaGuideAnimate.b(this.a));
-      return;
-      if (PanoramaGuideAnimate.c(this.a) > 0.0F) {
-        break;
-      }
-    } while (PanoramaGuideAnimate.a(this.a) == null);
-    PanoramaGuideAnimate.a(this.a).a();
-    return;
-    PanoramaGuideAnimate.a(this.a, PanoramaGuideAnimate.c(this.a) - 0.05F);
-    this.a.setAlpha(PanoramaGuideAnimate.c(this.a));
-    PanoramaGuideAnimate.a(this.a).sendEmptyMessage(292);
+      do
+      {
+        return null;
+        localObject = (QQAppInterface)localObject;
+      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
+      localObject = (bmby)((QQAppInterface)localObject).getManager(147);
+    } while (localObject == null);
+    ((bmby)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
+    return null;
+  }
+  
+  public boolean isSynchronized()
+  {
+    return this.a;
   }
 }
 

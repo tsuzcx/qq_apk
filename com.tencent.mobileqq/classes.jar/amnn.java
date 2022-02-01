@@ -1,17 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-class amnn
-  implements ValueCallback<String>
+public class amnn
+  implements Cloneable
 {
-  amnn(amnm paramamnm) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public TextView b;
   
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
-    }
-  }
+  public amnn(amnm paramamnm) {}
 }
 
 

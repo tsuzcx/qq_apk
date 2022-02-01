@@ -1,155 +1,73 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.NetworkState;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PointF;
+import android.graphics.drawable.shapes.Shape;
 
 public class blrv
+  extends Shape
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "0";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "2";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
+  private int jdField_a_of_type_Int;
+  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   
-  public blrv()
+  public blrv(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = NetworkState.getNetworkType();
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public blrv(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, ArrayList<String> paramArrayList)
+  private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    this();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.jdField_c_of_type_JavaLangString = paramString4;
-    this.d = paramString5;
-    this.jdField_b_of_type_Int = paramInt;
-    this.e = paramString6;
-    this.g = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public blrv(long paramLong, String paramString, Map<String, String> paramMap)
-  {
-    this();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = true;
-    if (paramMap != null)
+    PointF localPointF1 = null;
+    PointF localPointF3;
+    PointF localPointF2;
+    if (paramInt == 33)
     {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
+      localPointF3 = new PointF(0.0F, paramFloat2);
+      localPointF2 = new PointF(paramFloat1, paramFloat2);
+      localPointF1 = new PointF(paramFloat1 / 2.0F, 0.0F);
     }
-  }
-  
-  public blrv(String paramString)
-  {
-    this();
-    this.f = paramString;
-    this.jdField_c_of_type_JavaLangString = "12";
-  }
-  
-  public JSONObject a()
-  {
-    if (!TextUtils.isEmpty(this.h)) {}
-    Object localObject;
-    for (JSONObject localJSONObject = new JSONObject(this.h);; localJSONObject = new JSONObject())
+    for (;;)
     {
-      localJSONObject.put("touin", this.jdField_a_of_type_Long);
-      localJSONObject.put("network_type", String.valueOf(this.jdField_a_of_type_Int));
-      localJSONObject.put("tabletype", this.jdField_b_of_type_Int);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
+      if (localPointF3 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localPointF3.x, localPointF3.y);
       }
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (this.jdField_a_of_type_JavaUtilMap.isEmpty())) {
-        break label366;
+      if (localPointF2 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF2.x, localPointF2.y);
       }
-      localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
+      if (localPointF1 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF1.x, localPointF1.y);
+      }
+      return;
+      if (paramInt == 34)
       {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+        localPointF3 = new PointF(0.0F, 0.0F);
+        localPointF2 = new PointF(paramFloat1, 0.0F);
+        localPointF1 = new PointF(paramFloat1 / 2.0F, paramFloat2);
       }
-    }
-    if (!localJSONObject.has("refer")) {
-      localJSONObject.put("refer", this.jdField_b_of_type_JavaLangString);
-    }
-    localJSONObject.put("actiontype", this.jdField_c_of_type_JavaLangString);
-    localJSONObject.put("subactiontype", this.d);
-    localJSONObject.put("tabletype", this.jdField_b_of_type_Int);
-    localJSONObject.put("domain_type", this.j);
-    localJSONObject.put("reserves", this.e);
-    localJSONObject.put("source_type", this.l);
-    localJSONObject.put("source_from", this.m);
-    localJSONObject.put("source_to", this.n);
-    localJSONObject.put("mergenum", this.jdField_c_of_type_Int);
-    localJSONObject.put("reserves10", this.i);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      int i2 = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i1 = 0;
-      while (i1 < i2)
+      else if (paramInt == 35)
       {
-        localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localJSONObject.put("reserves" + (i1 + 2), localObject);
-        }
-        i1 += 1;
+        localPointF3 = new PointF(0.0F, 0.0F);
+        localPointF2 = new PointF(0.0F, paramFloat2);
+        localPointF1 = new PointF(paramFloat1, paramFloat2 / 2.0F);
+      }
+      else if (paramInt == 36)
+      {
+        localPointF3 = new PointF(paramFloat1, 0.0F);
+        localPointF2 = new PointF(0.0F, paramFloat2 / 2.0F);
+        localPointF1 = new PointF(paramFloat1, paramFloat2);
+      }
+      else
+      {
+        localPointF2 = null;
+        localPointF3 = null;
       }
     }
-    label366:
-    localJSONObject.put("read_source", this.f);
-    localJSONObject.put("time", String.valueOf(this.jdField_b_of_type_Long));
-    localJSONObject.put("info", this.g);
-    localJSONObject.put("pushstatkey", this.k);
-    return localJSONObject;
   }
   
-  public void a(long paramLong)
+  public void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.e = paramString;
+    a(getWidth(), getHeight(), this.jdField_a_of_type_Int);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
   }
 }
 

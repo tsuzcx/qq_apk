@@ -1,18 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bimy
-  implements ValueAnimator.AnimatorUpdateListener
+class bimy
+  implements nks
 {
-  public bimy(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  bimy(bimw parambimw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
+    if (paramBoolean) {
+      if (this.a.a)
+      {
+        if ((localObject != null) && ((localObject instanceof bitr))) {
+          ((bitr)localObject).setWarnToastVisible(true, 1, 2131691304);
+        }
+      }
+      else {
+        bimw.a(this.a);
+      }
+    }
+    while ((localObject == null) || (!(localObject instanceof bitr))) {
+      for (;;)
+      {
+        return;
+        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691304, 1);
+        ((QQToast)localObject).b(((QQToast)localObject).c());
+      }
+    }
+    ((bitr)localObject).setWarnToastVisible(false, 0, 0);
   }
 }
 

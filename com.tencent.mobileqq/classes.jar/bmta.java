@@ -1,29 +1,48 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import NS_MOBILE_MAIN_PAGE.PhotoWall;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_del_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-class bmta
-  implements GLSurfaceView.EGLContextFactory
+public class bmta
+  extends QzoneExternalRequest
 {
-  private int jdField_a_of_type_Int = 12440;
+  public JceStruct a;
   
-  private bmta(bmsv parambmsv) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public bmta(long paramLong1, long paramLong2, String paramString, Long paramLong)
   {
-    int i = this.jdField_a_of_type_Int;
-    bmsv.a(this.jdField_a_of_type_Bmsv, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
-    return bmsv.a(this.jdField_a_of_type_Bmsv);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_del_photo_wall_req localmobile_sub_del_photo_wall_req = new mobile_sub_del_photo_wall_req();
+    PhotoWall localPhotoWall = new PhotoWall();
+    localPhotoWall.photoId = paramString;
+    localPhotoWall.ctime = paramLong.longValue();
+    localmobile_sub_del_photo_wall_req.vecUrls = new ArrayList();
+    localmobile_sub_del_photo_wall_req.vecUrls.add(localPhotoWall);
+    this.a = localmobile_sub_del_photo_wall_req;
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public static JceStruct a(byte[] paramArrayOfByte)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    return decode(paramArrayOfByte, "delPhotoWall");
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.delPhotoWall";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "delPhotoWall";
   }
 }
 

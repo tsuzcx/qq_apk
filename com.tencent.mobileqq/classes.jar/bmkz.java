@@ -1,235 +1,104 @@
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.model.PublishEventTag;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class bmkz
-  extends bmmk
-  implements bmfh
 {
-  public static String a;
-  public static String b = "addfriends";
-  private String c;
+  private static bmkz jdField_a_of_type_Bmkz;
+  private ArrayList<bmla> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
   
-  static
+  public static bmkz a()
   {
-    jdField_a_of_type_JavaLangString = "Qzone";
-  }
-  
-  private void a(WebViewPlugin paramWebViewPlugin, bhod parambhod, String[] paramArrayOfString)
-  {
+    if (jdField_a_of_type_Bmkz == null) {}
     try
     {
-      paramWebViewPlugin = new JSONObject(paramArrayOfString[0]);
-      long l = paramWebViewPlugin.getLong("uin");
-      int i = paramWebViewPlugin.optInt("sourceId", 3011);
-      int j = paramWebViewPlugin.optInt("subSourceId", 21);
-      paramWebViewPlugin = parambhod.a();
-      paramWebViewPlugin.startActivity(AddFriendLogicActivity.a(paramWebViewPlugin, 1, String.valueOf(l), "", i, j, null, null, null, null, null));
-      return;
-    }
-    catch (JSONException paramWebViewPlugin)
-    {
-      paramWebViewPlugin.printStackTrace();
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    try
-    {
-      this.c = new JSONObject(paramString).optString("callback");
-      if (!TextUtils.isEmpty(this.c)) {
-        bmfd.a().a().s();
+      if (jdField_a_of_type_Bmkz == null) {
+        jdField_a_of_type_Bmkz = new bmkz();
       }
-      return;
+      return jdField_a_of_type_Bmkz;
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("QZoneEventTagJsPlugin", 1, "getHistoryEventTag error", paramString);
-    }
+    finally {}
   }
   
-  private void b(String paramString)
+  public bmla a(long paramLong)
   {
-    try
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      paramString = new JSONObject(paramString).getJSONArray("list");
-      if ((paramString != null) && (paramString.length() > 0))
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
       {
-        paramString = paramString.optJSONObject(0);
-        Bundle localBundle = new Bundle();
-        localBundle.putString("uin", paramString.optString("uin"));
-        localBundle.putString("time", paramString.optString("time"));
-        localBundle.putString("title", paramString.optString("title"));
-        localBundle.putString("picUrl", paramString.optString("picUrl"));
-        localBundle.putString("id", paramString.optString("id"));
-        bmfd.a().a().d(localBundle);
-        return;
-      }
-      bmfd.a().a().d(null);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QZoneEventTagJsPlugin", 1, "setHistoryEventTag error", paramString);
-    }
-  }
-  
-  private void c(String paramString)
-  {
-    try
-    {
-      Object localObject = new JSONObject(paramString);
-      paramString = new Bundle();
-      paramString.putString("uin", ((JSONObject)localObject).optString("uin"));
-      paramString.putString("time", ((JSONObject)localObject).optString("time"));
-      paramString.putString("title", ((JSONObject)localObject).optString("title"));
-      paramString.putString("picUrl", ((JSONObject)localObject).optString("picUrl"));
-      paramString.putString("id", ((JSONObject)localObject).optString("id"));
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localObject = ((JSONObject)localObject).optJSONObject("joinList");
-      if (localObject != null)
-      {
-        if (((JSONObject)localObject).has("names")) {
-          localStringBuilder1.append(((JSONObject)localObject).optString("names"));
+        if (QLog.isColorLevel()) {
+          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
         }
-        if (((JSONObject)localObject).has("middle"))
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        bmla localbmla = (bmla)localIterator.next();
+        if (localbmla.jdField_a_of_type_Long == paramLong)
         {
-          String str = ((JSONObject)localObject).optString("middle");
-          localStringBuilder1.append(str);
-          localStringBuilder2.append(str);
-        }
-        if (((JSONObject)localObject).has("suffix"))
-        {
-          localObject = ((JSONObject)localObject).optString("suffix");
-          localStringBuilder1.append((String)localObject);
-          localStringBuilder2.append((String)localObject);
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localbmla);
+          if (QLog.isColorLevel()) {
+            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          }
+          return localbmla;
         }
       }
-      paramString.putString("desc", localStringBuilder1.toString());
-      paramString.putString("truncateNum", localStringBuilder2.toString());
-      bmfd.a().a().e(paramString);
-      return;
     }
-    catch (JSONException paramString)
+    return null;
+  }
+  
+  public List<Bundle> a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+    localParcel.setDataPosition(0);
+    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramArrayOfByte.getParcelableArrayList("pendingData");
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      QLog.e("QZoneEventTagJsPlugin", 1, "selectHistoryEventTag error", paramString);
+      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+      return bool;
     }
   }
   
-  private void d(String paramString)
+  public byte[] a()
   {
-    if (paramString == null) {
-      return;
-    }
-    QLog.w("QZoneEventTagJsPlugin", 1, "errorCallBack error");
-    try
+    ArrayList localArrayList1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", -1);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.w("QZoneEventTagJsPlugin", 1, "errorCallBack error", paramString);
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (!paramString3.equals(b)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramVarArgs == null);
-      bool1 = bool2;
-    } while (paramVarArgs.length <= 0);
-    a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-    return true;
-    if ("getHistoryEventTag".equals(paramString3))
-    {
-      bmfd.a().a(this);
-      a(paramVarArgs[0]);
-      return true;
-    }
-    if ("setHistoryEventTag".equals(paramString3))
-    {
-      b(paramVarArgs[0]);
-      return true;
-    }
-    if ("selectEventTag".equals(paramString3))
-    {
-      c(paramVarArgs[0]);
-      return true;
-    }
-    return false;
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!"cmd.getHistoryEventTag".equals(paramString))) {}
-    do
-    {
-      return;
-      if (!paramBundle.containsKey("data")) {
-        break;
+      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        return null;
       }
-      paramString = paramBundle.getBundle("data");
-      if (paramString == null)
-      {
-        QLog.e("QZoneEventTagJsPlugin", 1, "call js function,bundle is empty");
-        return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        localArrayList1.add(((bmla)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
       }
-      try
-      {
-        paramBundle = paramString.getParcelableArrayList("event_tag");
-        paramString = new JSONArray();
-        paramBundle = paramBundle.iterator();
-        while (paramBundle.hasNext())
-        {
-          PublishEventTag localPublishEventTag = (PublishEventTag)paramBundle.next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("uin", localPublishEventTag.g);
-          localJSONObject.put("time", localPublishEventTag.h);
-          localJSONObject.put("title", localPublishEventTag.jdField_a_of_type_JavaLangString);
-          localJSONObject.put("picUrl", localPublishEventTag.b);
-          localJSONObject.put("id", localPublishEventTag.c);
-          paramString.put(localJSONObject);
-        }
-        paramBundle = new JSONObject();
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("QZoneEventTagJsPlugin", 1, "onWebEvent error", paramString);
-        return;
-      }
-      paramBundle.put("list", paramString);
-    } while (this.c == null);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { paramBundle.toString() });
-    return;
-    d(this.c);
+    }
+    if (localArrayList2.isEmpty()) {
+      return null;
+    }
+    ??? = new Bundle();
+    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
+    Parcel localParcel = Parcel.obtain();
+    ((Bundle)???).writeToParcel(localParcel, 0);
+    ??? = localParcel.marshall();
+    localParcel.recycle();
+    return ???;
   }
 }
 

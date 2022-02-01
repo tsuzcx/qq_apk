@@ -1,245 +1,100 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.canvas.views.form.AdFormData;
-import com.tencent.ad.tangram.canvas.views.form.AdFormError;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemData;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormTableData;
-import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
-import com.tencent.ad.tangram.net.AdHttp;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import java.io.UnsupportedEncodingException;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.1;
+import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.2;
 
-class acsy
+public class acsy
 {
-  private static acta a(byte[] paramArrayOfByte)
+  public acsl a;
+  protected Context a;
+  protected Handler a;
+  
+  protected acsy(Context paramContext)
   {
-    acta localacta = new acta(null);
-    localacta.setUrl("https://h5.gdt.qq.com/player/api/form/saveForNative");
-    localacta.method = "POST";
-    localacta.contentType = "application/json";
-    localacta.connectTimeoutMillis = 5000;
-    localacta.readTimeoutMillis = 5000;
-    localacta.requestData = paramArrayOfByte;
-    return localacta;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  public static AdFormError a(AdFormData paramAdFormData)
+  private void a(acsl paramacsl)
   {
-    byte[] arrayOfByte = a(paramAdFormData);
-    Object localObject;
-    if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
-    {
-      acqy.d("GdtFormUploadUtil", "upload error");
-      localObject = new AdFormError(4, -1, null);
-      return localObject;
-    }
-    AdFormError localAdFormError = new AdFormError(4, -1, null);
-    int i = 0;
-    for (;;)
-    {
-      acta localacta;
-      if (i < 3)
-      {
-        localacta = a(arrayOfByte);
-        if (localacta != null) {}
-      }
-      else
-      {
-        acqy.d("GdtFormUploadUtil", "upload error");
-        return localAdFormError;
-      }
-      AdHttp.send(localacta);
-      if (localacta.isSuccess()) {
-        localAdFormError = a(paramAdFormData, localacta);
-      }
-      localObject = localAdFormError;
-      if (localacta.a == 0) {
-        break;
-      }
-      localObject = localAdFormError;
-      if (localacta.a == 1) {
-        break;
-      }
-      localObject = localAdFormError;
-      if (localacta.a == 2) {
-        break;
-      }
-      localObject = localAdFormError;
-      if (localacta.a == 4) {
-        break;
-      }
-      i += 1;
-    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramacsl.h.getLayoutParams();
+    localLayoutParams.height = paramacsl.n;
+    localLayoutParams.width = paramacsl.o;
+    localLayoutParams.addRule(3, 0);
+    localLayoutParams.addRule(12, 0);
+    localLayoutParams.addRule(14);
+    localLayoutParams.addRule(15);
+    paramacsl.h.setLayoutParams(localLayoutParams);
+    paramacsl.h.postInvalidate();
   }
   
-  private static AdFormError a(AdFormData paramAdFormData, acta paramacta)
+  public static void a(View paramView)
   {
-    if ((paramAdFormData == null) || (!paramAdFormData.isValid()) || (paramacta == null) || (!paramacta.isSuccess()))
-    {
-      acqy.d("GdtFormUploadUtil", "commit error");
-      paramacta = new AdFormError(4, -1, null);
-      return paramacta;
+    if ((paramView == null) || (paramView.getVisibility() != 0)) {
+      return;
     }
-    Object localObject1;
-    try
-    {
-      localObject2 = new JSONObject(new String(paramacta.responseData, "UTF-8"));
-      paramacta.a = ((JSONObject)localObject2).getInt("code");
-      localObject1 = ((JSONObject)localObject2).optString("message");
-      acqy.b("GdtFormUploadUtil", "parseResponse code:" + paramacta.a + " message:" + (String)localObject1);
-      if (paramacta.a == 0)
-      {
-        paramAdFormData = new AdFormError(1, -1, null);
-        return paramAdFormData;
-      }
-    }
-    catch (UnsupportedEncodingException paramAdFormData)
-    {
-      acqy.d("GdtFormUploadUtil", "parseResponse", paramAdFormData);
-      return new AdFormError(4, -1, null);
-      if (paramacta.a != 1) {
-        break label452;
-      }
-      localObject1 = new AdFormError(4, -1, null);
-      paramacta = ((JSONObject)localObject2).getJSONObject("data");
-      if ((paramacta == null) || (JSONObject.NULL.equals(paramacta)))
-      {
-        acqy.d("GdtFormUploadUtil", "parseResponse error");
-        return localObject1;
-      }
-    }
-    catch (JSONException paramAdFormData)
-    {
-      acqy.d("GdtFormUploadUtil", "parseResponse", paramAdFormData);
-      return new AdFormError(4, -1, null);
-    }
-    Object localObject2 = paramacta.getJSONArray("items");
-    if (((JSONArray)localObject2).length() != paramAdFormData.table.getSize())
-    {
-      acqy.d("GdtFormUploadUtil", "parseResponse error");
-      return localObject1;
-    }
-    for (;;)
-    {
-      paramacta = (acta)localObject1;
-      int i;
-      if (i >= ((JSONArray)localObject2).length()) {
-        break;
-      }
-      paramacta = paramAdFormData.table.getItem(i);
-      if ((paramacta == null) || (!paramacta.isValid()))
-      {
-        acqy.d("GdtFormUploadUtil", "parseResponse error");
-        return new AdFormError(4, -1, null);
-      }
-      JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-      if ((localJSONObject == null) || (JSONObject.NULL.equals(localJSONObject)))
-      {
-        acqy.d("GdtFormUploadUtil", "parseResponse error");
-        return new AdFormError(4, i, paramacta.title.text);
-      }
-      int j = localJSONObject.getInt("errorCode");
-      if (j == 0)
-      {
-        i += 1;
-      }
-      else
-      {
-        if (j == 1) {
-          return new AdFormError(5, i, paramacta.title.text);
-        }
-        if (j == 2) {
-          return new AdFormError(6, i, paramacta.title.text);
-        }
-        acqy.d("GdtFormUploadUtil", "parseResponse error");
-        return new AdFormError(4, i, paramacta.title.text);
-        label452:
-        if (paramacta.a == 3) {
-          return new AdFormError(4, -1, null);
-        }
-        if (paramacta.a == 4) {
-          return new AdFormError(7, -1, null);
-        }
-        paramAdFormData = new AdFormError(4, -1, null);
-        return paramAdFormData;
-        i = 0;
-      }
-    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(200L);
+    paramView.startAnimation(localAlphaAnimation);
+    paramView.setVisibility(8);
   }
   
-  public static JSONArray a(AdFormData paramAdFormData)
+  public static void b(View paramView)
   {
-    if ((paramAdFormData == null) || (!paramAdFormData.isValid()))
-    {
-      acqy.d("GdtFormUploadUtil", "toJson error");
-      return null;
+    if (paramView == null) {
+      return;
     }
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    if (i < paramAdFormData.table.getSize())
-    {
-      Object localObject = paramAdFormData.table.getItem(i);
-      if ((localObject == null) || (!((AdFormItemData)localObject).isValid())) {
-        acqy.d("GdtFormUploadUtil", "toJson error");
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("name", ((AdFormItemData)localObject).title.text);
-          localJSONObject.put("require", ((AdFormItemData)localObject).required);
-          if ((localObject instanceof GdtFormItemTextBoxData))
-          {
-            localObject = (GdtFormItemTextBoxData)GdtFormItemTextBoxData.class.cast(localObject);
-            localJSONObject.put("regexType", ((GdtFormItemTextBoxData)localObject).regexType);
-            localJSONObject.put("value", ((GdtFormItemTextBoxData)localObject).getResult());
-          }
-          localJSONArray.put(i, localJSONObject);
-        }
-        catch (JSONException localJSONException)
-        {
-          acqy.d("GdtFormUploadUtil", "toJson", localJSONException);
-        }
-      }
-    }
-    return localJSONArray;
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setDuration(100L);
+    paramView.startAnimation(localAlphaAnimation);
+    paramView.setVisibility(0);
   }
   
-  private static byte[] a(AdFormData paramAdFormData)
+  public void a()
   {
-    JSONArray localJSONArray = a(paramAdFormData);
-    if ((paramAdFormData == null) || (!paramAdFormData.isValid()) || (localJSONArray == null) || (JSONObject.NULL.equals(localJSONArray)))
-    {
-      acqy.d("GdtFormUploadUtil", "getRequestData error");
-      return null;
+    if ((this.jdField_a_of_type_Acsl == null) || (this.jdField_a_of_type_Acsl.g == null)) {
+      return;
     }
-    if (TextUtils.isEmpty(paramAdFormData.tokenForUpload)) {}
-    for (String str = "";; str = paramAdFormData.tokenForUpload) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("token", str);
-        localJSONObject.put("formId", paramAdFormData.formId);
-        localJSONObject.put("formValue", localJSONArray.toString());
-        paramAdFormData = localJSONObject.toString().getBytes("UTF-8");
-        return paramAdFormData;
-      }
-      catch (JSONException paramAdFormData)
-      {
-        acqy.d("GdtFormUploadUtil", "getRequestData", paramAdFormData);
-        return null;
-      }
-      catch (UnsupportedEncodingException paramAdFormData)
-      {
-        acqy.d("GdtFormUploadUtil", "getRequestData", paramAdFormData);
-      }
+    a(this.jdField_a_of_type_Acsl.g);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.1(this), 300L);
+  }
+  
+  public void a(int paramInt) {}
+  
+  protected void a(acsl paramacsl, View paramView)
+  {
+    paramacsl.h = paramView;
+    paramacsl.o = acwn.a(470, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
+    paramacsl.n = acwn.a(470, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2)
+  {
+    a(paramView, paramInt1, paramInt2, -1);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramView == null) {
+      return;
     }
-    return null;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    int i = localLayoutParams.topMargin;
+    int j = localLayoutParams.leftMargin;
+    int k = localLayoutParams.rightMargin;
+    a(paramView);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.2(this, localLayoutParams, i, paramInt1, j, paramInt2, paramInt3, k, paramView), 200L);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
 }
 

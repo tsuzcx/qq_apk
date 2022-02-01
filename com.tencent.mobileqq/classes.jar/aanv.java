@@ -1,59 +1,20 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aanv
-  implements TextWatcher
+class aanv
+  implements View.OnClickListener
 {
-  public aanv(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  aanv(aanu paramaanu, ahbd paramahbd) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    int i;
-    if (str.equals(""))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      i = str.length();
-      ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      if (i <= 6) {
-        break label215;
-      }
-      EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(0.5F);
-      }
-    }
-    for (paramEditable = this.a.getResources().getColorStateList(2131167121);; paramEditable = this.a.getResources().getColorStateList(2131167066))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
-      int j = 6 - str.length();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131695444), new Object[] { Integer.valueOf(i) }));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      break;
-      label215:
-      EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(1.0F);
-      }
-    }
+    aanu.a(this.jdField_a_of_type_Aanu).removeCallbacks(aanu.a(this.jdField_a_of_type_Aanu));
+    aanu.a(this.jdField_a_of_type_Aanu, true);
+    aanu.a(this.jdField_a_of_type_Aanu, this.jdField_a_of_type_Ahbd, this.jdField_a_of_type_Ahbd.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

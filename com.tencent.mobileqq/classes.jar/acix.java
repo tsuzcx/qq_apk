@@ -1,24 +1,17 @@
-import android.view.View;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
-import com.tencent.ark.ArkViewImplement.InputCallback;
-
-class acix
-  implements ArkViewImplement.InputCallback
+public class acix
 {
-  acix(aciu paramaciu, AdArkAdapter.Callback paramCallback) {}
-  
-  public void onFocusChanged(View paramView, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
-    }
-  }
-  
-  public void onHideMenu(View paramView) {}
-  
-  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "-1";
+  public int c;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "0";
 }
 
 

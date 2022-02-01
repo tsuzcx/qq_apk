@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import acvy;
-import aldk;
+import adab;
+import alpb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import twi;
-import tzo;
+import twk;
+import tzq;
 
 public class TroopBarAssistantManager$3
   implements Runnable
 {
-  public TroopBarAssistantManager$3(twi paramtwi, QQAppInterface paramQQAppInterface) {}
+  public TroopBarAssistantManager$3(twk paramtwk, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    acvy localacvy = this.a.a();
+    adab localadab = this.a.a();
     Object localObject1 = this.a.a();
-    if ((localacvy == null) || (localObject1 == null))
+    if ((localadab == null) || (localObject1 == null))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TroopBarAssistantManager", 2, "clearAllSubscriptionUnreadMsgLite getConversationFacade fail");
@@ -43,12 +43,12 @@ public class TroopBarAssistantManager$3
               break label192;
             }
             localObject1 = this.a.a().b(localTroopBarData.mUin, 1008);
-            if ((localObject1 == null) || (localacvy.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
+            if ((localObject1 == null) || (localadab.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
               continue;
             }
-            int i = tzo.b(this.a, ((MessageRecord)localObject1).frienduin);
-            aldk.b(this.a, ((MessageRecord)localObject1).frienduin, i);
-            localacvy.a(((MessageRecord)localObject1).frienduin, i, true);
+            int i = tzq.b(this.a, ((MessageRecord)localObject1).frienduin);
+            alpb.b(this.a, ((MessageRecord)localObject1).frienduin, i);
+            localadab.a(((MessageRecord)localObject1).frienduin, i, true);
           }
         }
       }

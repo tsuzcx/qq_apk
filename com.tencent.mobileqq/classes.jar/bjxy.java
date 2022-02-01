@@ -1,17 +1,182 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnLoopStartListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnLoopStartListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.open.downloadnew.WebViewDownloadListener.1;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjxy
-  implements IMediaPlayer.OnLoopStartListener
+public class bjxy
+  implements DownloadListener
 {
-  bjxy(bjxx parambjxx, ReliableVideoPlayer.OnLoopStartListener paramOnLoopStartListener) {}
+  protected static bjxy a;
+  protected Handler a;
   
-  public void onLoopStart(IMediaPlayer paramIMediaPlayer)
+  protected bjxy()
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnLoopStartListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnLoopStartListener.onLoopStart(this.jdField_a_of_type_Bjxx);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public static bjxy a()
+  {
+    if (jdField_a_of_type_Bjxy == null) {
+      jdField_a_of_type_Bjxy = new bjxy();
     }
+    return jdField_a_of_type_Bjxy;
+  }
+  
+  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("packagename", paramString2);
+      localJSONObject.put("appid", paramString1);
+      localJSONObject.put("state", paramInt1);
+      localJSONObject.put("pro", paramInt2);
+      localJSONObject.put("ismyapp", paramInt3);
+      localJSONObject.put("errorMsg", paramString3);
+      localJSONObject.put("errorCode", paramInt4);
+      localJSONObject.put("writecodestate", paramInt5);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        bjtx.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
+      }
+    }
+  }
+  
+  protected String a(String paramString1, int paramInt, String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("packagename", paramString2);
+      localJSONObject.put("appid", paramString1);
+      localJSONObject.put("state", paramInt);
+      localJSONObject.put("pro", 0);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        bjtx.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
+      }
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    bjvd localbjvd = bjvd.a();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int j = localbjvd.a().size();
+        i = 0;
+        if (i < j)
+        {
+          Object localObject = (bjvc)localbjvd.a().get(i);
+          WebView localWebView = ((bjvc)localObject).getWebview();
+          if (localWebView != null) {
+            if (TextUtils.isEmpty(((bjvc)localObject).getJsCallbackMethod()))
+            {
+              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
+              bjtx.a("WebViewDownloadListener", " commonJsCallBack >>> " + (String)localObject);
+              this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
+            }
+            else
+            {
+              localObject = "javascript:" + ((bjvc)localObject).getJsCallbackMethod() + "(" + paramString + ")";
+              continue;
+            }
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        bjtx.c("WebViewDownloadListener", "doJsCallback >>> ", paramString);
+      }
+      i += 1;
+    }
+  }
+  
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    a(a(paramString1, 6, paramString2));
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(paramDownloadInfo.a().toString());
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(paramDownloadInfo.a().toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(paramDownloadInfo.a().toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localJSONArray.put(((DownloadInfo)paramList.next()).a());
+      }
+      a(localJSONArray.toString());
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(paramDownloadInfo.a().toString());
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    a(a(paramString1, 13, paramString2));
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    a(a(paramString1, 9, paramString2));
   }
 }
 

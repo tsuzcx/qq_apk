@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaet;
-import aafz;
+import aaiu;
+import aaka;
 
 public class CommentPresenter$1
   implements Runnable
 {
-  public CommentPresenter$1(aaet paramaaet) {}
+  public CommentPresenter$1(aaiu paramaaiu) {}
   
   public void run()
   {
-    aaet.a(this.this$0).notifyDataSetChanged();
+    aaiu.a(this.this$0).notifyDataSetChanged();
   }
 }
 

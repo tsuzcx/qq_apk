@@ -1,39 +1,66 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.CompanyShowCaseInfo;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class bjhe
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public bjhe() {}
-  
-  public bjhe(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
+  private void a()
   {
-    a(paramCompanyShowCaseInfo);
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    {
+      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+      }
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    }
   }
   
-  public mobileqq_qidian.CompanyShowCaseInfo a()
+  private void a(View paramView)
   {
-    mobileqq_qidian.CompanyShowCaseInfo localCompanyShowCaseInfo = new mobileqq_qidian.CompanyShowCaseInfo();
-    localCompanyShowCaseInfo.string_show_case_title.set(this.a);
-    localCompanyShowCaseInfo.string_show_case_link.set(this.b);
-    localCompanyShowCaseInfo.string_show_case_image.set(this.c);
-    return localCompanyShowCaseInfo;
+    if (paramView != null)
+    {
+      paramView = paramView.getParent();
+      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
+        a((ViewGroup)paramView);
+      }
+    }
   }
   
-  public void a(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
+  private void a(ViewGroup paramViewGroup)
   {
-    if (paramCompanyShowCaseInfo.string_show_case_title.has()) {
-      this.a = paramCompanyShowCaseInfo.string_show_case_title.get();
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
     }
-    if (paramCompanyShowCaseInfo.string_show_case_link.has()) {
-      this.b = paramCompanyShowCaseInfo.string_show_case_link.get();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
     }
-    if (paramCompanyShowCaseInfo.string_show_case_image.has()) {
-      this.c = paramCompanyShowCaseInfo.string_show_case_image.get();
+  }
+  
+  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
+  {
+    a(this.jdField_a_of_type_AndroidViewView);
+    a(paramView);
+    if (paramView != null) {
+      paramView.setLayoutParams(paramLayoutParams);
     }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 

@@ -1,19 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpau;
+import bqcp;
 
 public class EditPicSave$4
   implements Runnable
 {
-  public EditPicSave$4(bpau parambpau) {}
+  public EditPicSave$4(bqcp parambqcp) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bpau localbpau = this.this$0;
-    localbpau.jdField_a_of_type_Int += this.this$0.b;
+    bqcp localbqcp = this.this$0;
+    localbqcp.jdField_a_of_type_Int += this.this$0.b;
     if (this.this$0.jdField_a_of_type_Int > 99)
     {
       this.this$0.jdField_a_of_type_Int = 99;

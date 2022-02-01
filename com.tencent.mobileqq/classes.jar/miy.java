@@ -1,39 +1,14 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoControlUI;
-
-public class miy
-  implements GestureDetector.OnGestureListener
+public abstract interface miy
 {
-  public miy(VideoControlUI paramVideoControlUI) {}
+  public abstract long a();
   
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public abstract void a();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
+  public abstract boolean a();
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if ((this.a.f != null) && (this.a.f.isShown())) {
-      this.a.r(false);
-    }
-    return false;
-  }
+  public abstract boolean b();
 }
 
 

@@ -1,53 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class asub
+class asub
   implements View.OnClickListener
 {
-  public asub(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  asub(asua paramasua, String paramString) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    int i;
-    if ((localObject instanceof asun))
+    if (asua.a(this.jdField_a_of_type_Asua).a(this.jdField_a_of_type_JavaLangString) == null)
     {
-      localObject = (asun)paramView.getTag();
-      i = ((asun)localObject).c;
-      localObject = (WeiYunFileInfo)((asun)localObject).a;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    for (;;)
+    boolean bool = asua.a(this.jdField_a_of_type_Asua).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asua.jdField_a_of_type_Int, this.jdField_a_of_type_Asua.jdField_a_of_type_JavaUtilList);
+    String str2 = asua.a(this.jdField_a_of_type_Asua) + "";
+    if (bool) {}
+    for (String str1 = "1";; str1 = "2")
     {
-      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
-      if (localObject != null)
-      {
-        if ((paramView.getId() == 2131366555) && (QfileBaseCloudFileTabView.c(this.a))) {
-          bcst.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        localQfileBaseCloudFileTabView = this.a;
-        if (paramView.getId() != 2131366555) {
-          break label155;
-        }
-      }
-      label155:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!(localObject instanceof asth)) {
-          break label160;
-        }
-        localObject = (WeiYunFileInfo)((asth)paramView.getTag()).a;
-        i = -1;
-        break;
-      }
-      label160:
-      i = 0;
-      localObject = null;
+      bdll.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 2, 0, str2, str1, "", "");
+      this.jdField_a_of_type_Asua.notifyDataSetChanged();
+      break;
     }
   }
 }

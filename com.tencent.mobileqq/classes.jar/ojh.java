@@ -1,19 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.11.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ojh
-  implements nkl
+  implements bljb
 {
-  public ojh(ReadInJoyNewFeedsActivity.2 param2) {}
+  public ojh(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.11.1(this), 300L);
     }
+    this.a.a = false;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -1,187 +1,190 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.widget.TextView;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x935.oidb_0x935.GPS;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class ajcl
+public class ajcl
+  extends VasWebviewJsPlugin
 {
-  public ajcf a;
-  protected ajco a;
-  protected Context a;
-  protected TextView a;
-  protected antq a;
-  private anxg jdField_a_of_type_Anxg = new ajcn(this);
-  private bkhe jdField_a_of_type_Bkhe = new ajcm(this);
-  protected QQAppInterface a;
-  protected XListView a;
-  public boolean c = true;
-  protected boolean d = true;
-  protected boolean e = true;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public ajcl() {}
-  
-  public ajcl(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajco paramajco)
+  public ajcl()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Ajco = paramajco;
-    d();
+    this.mPluginNameSpace = "addContact_SecCheck";
   }
   
-  private void a()
+  private int a(Activity paramActivity, int paramInt)
   {
-    g();
-    this.jdField_a_of_type_Ajcf = a();
-    this.jdField_a_of_type_Ajcf.a(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajcf);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(0);
-    if (this.e) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bkhe);
-    }
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131712032));
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
-    int i = afur.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167064));
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-  }
-  
-  private void h()
-  {
-    b();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    if (a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131712033));
-    }
-  }
-  
-  protected abstract ajcf a();
-  
-  public XListView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXListView;
-  }
-  
-  protected oidb_0x935.GPS a()
-  {
-    Object localObject = aoor.a("recommend_troop");
-    double d1;
-    int k;
-    double d2;
-    String str;
+    WebViewFragment localWebViewFragment = this.mRuntime.a();
     int i;
-    if (localObject != null)
+    if ((paramActivity instanceof bioz)) {
+      i = ((bioz)paramActivity).switchRequestCode(this, (byte)paramInt);
+    }
+    do
     {
-      d1 = ((SosoInterface.SosoLbsInfo)localObject).a.e;
-      k = (int)((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Float;
-      d2 = ((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Long;
-      str = ((SosoInterface.SosoLbsInfo)localObject).a.f;
-      i = 0;
-    }
-    try
-    {
-      int j = Integer.parseInt(str);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      label66:
-      double d3;
-      double d4;
-      break label66;
-    }
-    d3 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Double * 1000000.0D).intValue();
-    d4 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.b * 1000000.0D).intValue();
-    localObject = new oidb_0x935.GPS();
-    ((oidb_0x935.GPS)localObject).uint32_latitude.set((int)d3);
-    ((oidb_0x935.GPS)localObject).uint32_longitude.set((int)d4);
-    ((oidb_0x935.GPS)localObject).uint32_altitude.set((int)d1);
-    ((oidb_0x935.GPS)localObject).uint32_accuracy.set(k);
-    ((oidb_0x935.GPS)localObject).uint32_time.set((int)d2);
-    ((oidb_0x935.GPS)localObject).uint32_cityid.set(i);
-    ((oidb_0x935.GPS)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.4.1"));
-    ((oidb_0x935.GPS)localObject).uint32_client.set(2);
-    return localObject;
-    return null;
+      return i;
+      i = paramInt;
+    } while (localWebViewFragment == null);
+    return localWebViewFragment.switchRequestCode(this, (byte)paramInt);
   }
   
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      h();
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3) {}
-  
-  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3) {}
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList) {}
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_Antq.a == 1;
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_Ajcf.a(this.jdField_a_of_type_Antq.b);
-    this.jdField_a_of_type_Ajcf.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Antq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), a(), 21);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anxg);
-  }
-  
-  protected void d()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this.jdField_a_of_type_AndroidContentContext);
-    }
-    this.jdField_a_of_type_Antq = ((antq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22));
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anxg);
-    if ((this.c) && (this.d)) {
-      b(false);
-    }
-  }
-  
-  public void e()
-  {
-    b(false);
-  }
-  
-  public void f()
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopListWrapper", 2, "checkAndLoadMoreRecommList isEnd = " + a());
+      QLog.d("AddContactSecCheckWebPlugin", 2, "openSecCheckWeb, requestCode=" + paramInt + ", url=" + paramString1);
     }
-    if (!a()) {
-      b(true);
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    paramString2 = new Intent(paramContext, QQBrowserActivity.class);
+    paramString2.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+    paramString2.putExtra("url", paramString1);
+    try
+    {
+      ((Activity)paramContext).startActivityForResult(paramString2, paramInt);
+      return;
+    }
+    catch (SecurityException paramQQAppInterface) {}
+  }
+  
+  protected void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optString("ticket");
+      if (this.mRuntime.a() == null) {
+        return;
+      }
+      if (this.mRuntime.a() != null)
+      {
+        Object localObject = this.mRuntime.a();
+        if (localObject != null)
+        {
+          Intent localIntent = new Intent();
+          localIntent.putExtra("ticket", paramString);
+          ((Activity)localObject).setResult(-1, localIntent);
+          if (!((Activity)localObject).isFinishing()) {
+            ((Activity)localObject).finish();
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder().append("setTicket, ticket_len = ");
+            if (TextUtils.isEmpty(paramString)) {}
+            for (int i = 0;; i = paramString.length())
+            {
+              QLog.d("AddContactSecCheckWebPlugin", 2, i);
+              return;
+            }
+          }
+        }
+      }
+      return;
+    }
+    catch (JSONException paramString) {}
+  }
+  
+  protected void b(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("targetAct", 0);
+      this.jdField_a_of_type_JavaLangString = paramString.optString("callBackName", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, mTargetAct=" + this.jdField_a_of_type_Int + ", mCallBackName=" + this.jdField_a_of_type_JavaLangString);
+      }
+      if ((this.jdField_a_of_type_Int <= 0) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, param is illeagal");
+        return;
+      }
+      if ((this.mRuntime == null) || (this.mRuntime.a() == null))
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, runtime is null");
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("AddContactSecCheckWebPlugin", 2, "launchAct,", paramString);
+      return;
+    }
+    paramString = this.mRuntime.a();
+    Intent localIntent;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      localIntent = new Intent(paramString, BindNumberActivity.class);
+      localIntent.putExtra("kSrouce", 21);
+      localIntent.putExtra("cmd_param_is_from_uni", true);
+      paramString.startActivityForResult(localIntent, a(paramString, 1));
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      localIntent = new Intent(paramString, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 21);
+      localIntent.putExtra("kIsWeb", true);
+      paramString.startActivityForResult(localIntent, a(paramString, 2));
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("addContact_SecCheck".equals(paramString2))
+    {
+      if ((!"setTicket".equals(paramString3)) || (paramVarArgs.length != 1)) {
+        break label36;
+      }
+      a(paramVarArgs[0]);
+    }
+    label36:
+    while ((!"launchAct".equals(paramString3)) || (paramVarArgs.length != 1)) {
+      return false;
+    }
+    b(paramVarArgs[0]);
+    return false;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactSecCheckWebPlugin", 2, "doOnActivityResult requestCode = " + paramByte + " resultCode = " + paramInt);
+    }
+    if (this.mRuntime.a() == null) {
+      return;
+    }
+    if (paramInt == -1) {
+      i = 1;
+    }
+    paramIntent = new JSONObject();
+    try
+    {
+      paramIntent.put("targetAct", paramByte);
+      paramIntent.put("status", i);
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramIntent.toString() });
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      QLog.e("AddContactSecCheckWebPlugin", 1, "doOnActivityResult exception:", paramIntent);
     }
   }
 }

@@ -1,16 +1,27 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import dov.com.qq.im.ptv.LightWeightProgress;
 
 public class bpyw
+  extends AnimatorListenerAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public boolean b;
+  public bpyw(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
   
-  private bpyw(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView 50ms delay=90ms end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.setStatus(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView begin");
+    }
   }
 }
 

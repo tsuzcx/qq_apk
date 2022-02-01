@@ -1,15 +1,25 @@
-import com.tencent.biz.qqcircle.widgets.feed.QCircleGridFeedItemView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StRankingItem;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class wan
-  extends voy
+  implements wal
 {
-  public wan(QCircleGridFeedItemView paramQCircleGridFeedItemView, int paramInt) {}
+  public wan(QCircleFuelRankItemView paramQCircleFuelRankItemView, FeedCloudMeta.StRankingItem paramStRankingItem) {}
   
-  public void a(int paramInt, vou paramvou)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    super.a(paramInt, paramvou);
-    QLog.d("QCircleGridFeedItemView1", 4, "pos:" + this.jdField_a_of_type_Int + "state callback:" + paramInt);
+    if (QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView) != null)
+    {
+      vtr.a(89, 5, ((vfu)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.e(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user.id.get());
+      vud.a().a(new vuf().a("followbutton").b("follow").a(((vfu)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a().mFeed).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.a()).c(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user.id.get()).a(((vfu)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a().mDataPosition));
+    }
   }
 }
 

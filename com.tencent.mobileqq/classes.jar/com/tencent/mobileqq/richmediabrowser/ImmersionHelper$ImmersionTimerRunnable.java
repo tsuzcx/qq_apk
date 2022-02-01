@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import baww;
-import baxu;
+import bbpp;
+import bbqn;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 

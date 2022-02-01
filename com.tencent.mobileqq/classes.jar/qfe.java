@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-class qfe
-  implements View.OnAttachStateChangeListener
+public class qfe
+  extends RecyclerView.ViewHolder
 {
-  qfe(qfa paramqfa) {}
+  public TemplateBean a;
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public qfe(qeu paramqeu, Container paramContainer, TemplateBean paramTemplateBean)
   {
-    if (qfa.a(this.a) != null)
-    {
-      qfa.a(this.a).b();
-      qfa.a(this.a, null);
-    }
-    if (qfa.a(this.a) != null)
-    {
-      qfa.a(this.a).a();
-      qfa.a(this.a, null);
-    }
+    super(paramContainer);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = paramTemplateBean;
   }
 }
 

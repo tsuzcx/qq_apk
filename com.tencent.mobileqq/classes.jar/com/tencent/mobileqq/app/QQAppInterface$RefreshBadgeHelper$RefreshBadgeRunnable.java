@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bkfm;
+import blgq;
 import com.tencent.qphone.base.util.QLog;
 
 class QQAppInterface$RefreshBadgeHelper$RefreshBadgeRunnable
@@ -18,7 +18,7 @@ class QQAppInterface$RefreshBadgeHelper$RefreshBadgeRunnable
         break label137;
       }
       QQAppInterface.RefreshBadgeHelper.a(this.a, i);
-      bkfm.a(QQAppInterface.i(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), i);
+      blgq.a(QQAppInterface.i(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), i);
       if (QLog.isColorLevel()) {
         QLog.d("QQAppInterface", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()), Boolean.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l) }));
       }

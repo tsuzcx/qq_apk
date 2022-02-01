@@ -1,43 +1,69 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import android.app.Activity;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class blgx
-  extends Binder
-  implements blgw
+public class blgx
 {
-  public static blgw a(IBinder paramIBinder)
+  public static void a(Activity paramActivity)
   {
-    if (paramIBinder == null) {
-      return null;
+    try
+    {
+      InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
+      if (localInputMethodManager.isActive()) {
+        localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
+      }
+      return;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
-    if ((localIInterface != null) && ((localIInterface instanceof blgw))) {
-      return (blgw)localIInterface;
+    catch (Exception paramActivity)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      paramActivity.printStackTrace();
     }
-    return new blgy(paramIBinder);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public static void a(View paramView)
   {
-    switch (paramInt1)
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).showSoftInput(paramView, 0);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool2 = false;
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
-      return true;
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "default_input_method");
+      bool1 = bool2;
+      if (paramContext != null) {
+        if ((!paramContext.contains("com.sohu.inputmethod.sogou")) && (!paramContext.contains("com.tencent.qqpinyin")))
+        {
+          bool1 = bool2;
+          if (!paramContext.contains("com.sogou.zhuyininput")) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    catch (NullPointerException paramContext)
     {
-      a(paramParcel1);
-      return true;
+      do
+      {
+        boolean bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("InputMethodUtil", 2, "checkSogouInputDefault(), e = " + paramContext.getStackTrace());
     }
+    return bool1;
+    return false;
+  }
+  
+  public static void b(View paramView)
+  {
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
   }
 }
 

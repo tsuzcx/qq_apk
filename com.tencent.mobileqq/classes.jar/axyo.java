@@ -1,14 +1,17 @@
-class axyo
-  implements axza
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21.1.1;
+import java.util.List;
+
+public class axyo
+  implements axzw
 {
-  axyo(axyl paramaxyl, axyq paramaxyq) {}
+  axyo(axyn paramaxyn) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(List<axzx> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Axyl.c(paramString);
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.a(paramBoolean, paramString);
-    }
+    this.a.a.b = paramList;
+    this.a.a.g = paramBoolean;
+    this.a.a.runOnUiThread(new GameRoomInviteActivity.21.1.1(this, paramList, paramBoolean));
   }
 }
 

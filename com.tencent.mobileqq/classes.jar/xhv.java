@@ -1,30 +1,25 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-
-public final class xhv
-  implements TVK_ICacheMgr.IPreloadCallback
+public class xhv
+  extends xhu
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    synchronized ()
-    {
-      xhz localxhz = xht.a();
-      xht.a().post(new TVKPreloader.2.2(this, localxhz, paramString1, paramInt, paramString2));
-      return;
-    }
-  }
-  
-  public void onPreLoadSucess(String arg1, String paramString2)
-  {
-    synchronized ()
-    {
-      paramString2 = xht.a();
-      xht.a().post(new TVKPreloader.2.1(this, paramString2));
-      return;
-    }
-  }
+  public String a;
+  public int b = 0;
+  public int c = 16296448;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 1;
+  public String e;
+  public String f = win.a;
+  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
+  public String h;
+  public String i = "";
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n = "";
+  public String o;
+  public String p;
 }
 
 

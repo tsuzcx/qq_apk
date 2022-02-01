@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.RotateableView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahkt
-  extends ahkn
+class ahkt
+  extends ahkx
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
-  boolean jdField_a_of_type_Boolean = false;
-  public long b;
-  String b;
-  long jdField_c_of_type_Long;
-  View jdField_c_of_type_AndroidViewView;
-  String jdField_c_of_type_JavaLangString;
-  int e;
-  int f;
-  int g;
+  ahkt(ahgk paramahgk)
+  {
+    super(paramahgk, null);
+  }
   
-  public ahkt(ahkp paramahkp) {}
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahwp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

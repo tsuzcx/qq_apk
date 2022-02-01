@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import bbkr;
-import bbtk;
-import bbtx;
+import bcdk;
+import bcmd;
+import bcmq;
 import java.util.List;
 
 public class FTSMessageSearchEngine$2
   implements Runnable
 {
-  public FTSMessageSearchEngine$2(bbkr parambbkr, bbtx parambbtx, bbtk parambbtk) {}
+  public FTSMessageSearchEngine$2(bcdk parambcdk, bcmq parambcmq, bcmd parambcmd) {}
   
   public void run()
   {
-    List localList = this.this$0.b(this.jdField_a_of_type_Bbtx);
-    if (this.jdField_a_of_type_Bbtk != null) {
-      this.jdField_a_of_type_Bbtk.a(localList, 1);
+    List localList = this.this$0.b(this.jdField_a_of_type_Bcmq);
+    if (this.jdField_a_of_type_Bcmd != null) {
+      this.jdField_a_of_type_Bcmd.a(localList, 1);
     }
   }
 }

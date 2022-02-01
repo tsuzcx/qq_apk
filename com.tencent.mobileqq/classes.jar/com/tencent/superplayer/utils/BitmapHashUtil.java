@@ -6,38 +6,6 @@ import java.lang.reflect.Array;
 
 public class BitmapHashUtil
 {
-  private static double[][] DCT(int[] paramArrayOfInt, int paramInt)
-  {
-    double[][] arrayOfDouble1 = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt, paramInt });
-    int i = 0;
-    while (i < paramInt)
-    {
-      int j = 0;
-      while (j < paramInt)
-      {
-        arrayOfDouble1[i][j] = paramArrayOfInt[(i * paramInt + j)];
-        j += 1;
-      }
-      i += 1;
-    }
-    paramArrayOfInt = coefficient(paramInt);
-    double[][] arrayOfDouble2 = transposingMatrix(paramArrayOfInt, paramInt);
-    return matrixMultiply(matrixMultiply(paramArrayOfInt, arrayOfDouble1, paramInt), arrayOfDouble2, paramInt);
-  }
-  
-  private static double[] DCT8(int[] paramArrayOfInt, int paramInt)
-  {
-    paramArrayOfInt = DCT(paramArrayOfInt, paramInt);
-    double[] arrayOfDouble = new double[64];
-    paramInt = 0;
-    while (paramInt < 8)
-    {
-      System.arraycopy(paramArrayOfInt[paramInt], 0, arrayOfDouble, paramInt * 8, 8);
-      paramInt += 1;
-    }
-    return arrayOfDouble;
-  }
-  
   private static double[][] coefficient(int paramInt)
   {
     double[][] arrayOfDouble = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt, paramInt });
@@ -112,9 +80,41 @@ public class BitmapHashUtil
     return arrayOfInt;
   }
   
+  private static double[][] dct(int[] paramArrayOfInt, int paramInt)
+  {
+    double[][] arrayOfDouble1 = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt, paramInt });
+    int i = 0;
+    while (i < paramInt)
+    {
+      int j = 0;
+      while (j < paramInt)
+      {
+        arrayOfDouble1[i][j] = paramArrayOfInt[(i * paramInt + j)];
+        j += 1;
+      }
+      i += 1;
+    }
+    paramArrayOfInt = coefficient(paramInt);
+    double[][] arrayOfDouble2 = transposingMatrix(paramArrayOfInt, paramInt);
+    return matrixMultiply(matrixMultiply(paramArrayOfInt, arrayOfDouble1, paramInt), arrayOfDouble2, paramInt);
+  }
+  
+  private static double[] dct8(int[] paramArrayOfInt, int paramInt)
+  {
+    paramArrayOfInt = dct(paramArrayOfInt, paramInt);
+    double[] arrayOfDouble = new double[64];
+    paramInt = 0;
+    while (paramInt < 8)
+    {
+      System.arraycopy(paramArrayOfInt[paramInt], 0, arrayOfDouble, paramInt * 8, 8);
+      paramInt += 1;
+    }
+    return arrayOfDouble;
+  }
+  
   public static long dctImageHash(Bitmap paramBitmap, boolean paramBoolean)
   {
-    return computeHash(DCT8(createGrayImage(BitmapUtil.scaleBitmap(paramBitmap, paramBoolean, 32), 32), 32));
+    return computeHash(dct8(createGrayImage(BitmapUtil.scaleBitmap(paramBitmap, paramBoolean, 32), 32), 32));
   }
   
   public static int hammingDistance(long paramLong1, long paramLong2)

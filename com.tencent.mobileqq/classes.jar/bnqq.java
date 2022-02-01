@@ -1,41 +1,18 @@
-import android.app.Activity;
-import android.arch.lifecycle.Observer;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import cooperation.qzone.zipanimate.ZipAnimationDrawable.1.1;
 
-class bnqq
-  implements Observer<List<bnpk>>
+public class bnqq
+  implements bnrb
 {
-  bnqq(bnqm parambnqm) {}
+  bnqq(bnqp parambnqp) {}
   
-  public void a(@Nullable List<bnpk> paramList)
+  public void a(int paramInt, Drawable paramDrawable)
   {
-    if (paramList == null) {}
-    for (;;)
+    if (paramInt == 0)
     {
-      return;
-      bnqm.a(this.a).clear();
-      bnqm.a(this.a).addAll(paramList);
-      bnqm.a(this.a).notifyDataSetChanged();
-      paramList = bnqm.a(this.a).a().getIntent().getStringExtra("KEY_CURRENT_SELECT_ID");
-      bnzb.b("AEGIFStickerListPart", "takeSameId=" + paramList);
-      if (!TextUtils.isEmpty(paramList))
-      {
-        int i = 0;
-        while (i < bnqm.a(this.a).size())
-        {
-          bnpk localbnpk = (bnpk)bnqm.a(this.a).get(i);
-          if ((localbnpk != null) && (paramList.equals(localbnpk.a)))
-          {
-            bnqm.a(this.a, localbnpk);
-            bnqm.a(this.a).a(i + 1);
-            return;
-          }
-          i += 1;
-        }
-      }
+      bnqp.a(this.a).a.b(0);
+      this.a.a.post(new ZipAnimationDrawable.1.1(this));
     }
   }
 }

@@ -1,6 +1,9 @@
-public abstract interface bofa
+import java.io.File;
+
+public class bofa
 {
-  public abstract void a(int paramInt);
+  public static final String a = bofc.c + File.separator + "camera_play_show_default_template.json";
+  public static final String b = bofc.c + File.separator + "camera_play_show_updated_template.json";
 }
 
 

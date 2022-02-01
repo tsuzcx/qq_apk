@@ -1,244 +1,125 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.Manager;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class awwg
-  implements Manager
+  extends arac<awwa>
 {
-  public static boolean a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public boolean b;
-  public boolean c;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  public awwg(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    paramMessageRecord.extraflag = 32768;
-    paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-    String str = paramMessageRecord.frienduin;
-    int i = paramMessageRecord.istroop;
-    long l = paramMessageRecord.uniseq;
-    ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, long paramLong, String paramString2)
-  {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg begin! touin:" + paramString1 + ",touinType:" + paramInt + ",uniseq:" + paramLong + ",fileKey:" + paramString2);
-    }
-    awwm.a().a(paramQQAppInterface, paramString2, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, paramLong, 1035, new awwj(paramQQAppInterface, paramString1, paramInt, paramLong, l));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    awwg localawwg = (awwg)paramQQAppInterface.getManager(166);
-    if (!localawwg.b)
-    {
-      String str = paramQQAppInterface.getAccount();
-      paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
-      if (paramQQAppInterface.contains(str + "_" + "long_text_msg_config_version")) {
-        localawwg.c = paramQQAppInterface.getBoolean(str + "_" + "long_text_msg_switch", jdField_a_of_type_Boolean);
-      }
-    }
-    localawwg.b = true;
-    return localawwg.c;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
-  {
-    boolean bool = false;
-    if (paramInt2 == 0) {
-      bool = true;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_resultCode", String.valueOf(paramInt2));
-    localHashMap.put("param_uin", paramQQAppInterface.getCurrentAccountUin());
-    localHashMap.put("param_isTroop", String.valueOf(paramInt1));
-    switch (paramInt3)
-    {
-    default: 
-      return;
-    case 1: 
-      bctj.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "ltextAutoPullResult", bool, 0L, 0L, localHashMap, "");
-      return;
-    }
-    bctj.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "ltextManualPullResult", bool, 0L, 0L, localHashMap, "");
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    if ((paramMessageRecord instanceof MessageForReplyText))
-    {
-      a(paramQQAppInterface, paramMessageRecord, paramBoolean, new awwh(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
-      return;
-    }
-    a(paramQQAppInterface, paramMessageRecord, paramBoolean, new awwi(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean, ayyt paramayyt)
+  @NonNull
+  public awwa a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("StructLongTextMsg", 4, " sendLongTextMsg start");
+      QLog.d("WelcomeConfigProcessor", 2, "migrateOldOrDefaultContent");
     }
-    if (paramMessageRecord == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "step1: sendLongTextMsg saveMessage start currenttime:" + System.currentTimeMillis());
-      }
-      if ((paramMessageRecord instanceof ChatMessage)) {
-        ((ChatMessage)paramMessageRecord).mPendantAnimatable = true;
-      }
-      if ((!paramBoolean) || (TextUtils.isEmpty(paramMessageRecord.extStr)))
-      {
-        paramMessageRecord.saveExtInfoToExtStr("long_text_recv_state", "0");
-        paramQQAppInterface.a().a(paramMessageRecord);
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "saveLongTextMsg reSend:" + paramBoolean + ",extStr:" + paramMessageRecord.extStr);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg saveMessage end and pack longTextMsg start currenttime:" + System.currentTimeMillis());
-      }
-      byte[] arrayOfByte = paramQQAppInterface.a().a().a(paramMessageRecord);
-      if (arrayOfByte == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg pack failed! packData is null.............................");
-        }
-        paramMessageRecord.extraflag = 32768;
-        paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-        paramayyt = paramMessageRecord.frienduin;
-        int i = paramMessageRecord.istroop;
-        long l = paramMessageRecord.uniseq;
-        ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramayyt, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
-        return;
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 1035, paramayyt);
-      if (!paramBoolean) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("StructLongTextMsg", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongTextMsg", 2, "sendLongTextMsg failed! isSuccess:" + paramBoolean);
-    }
-    a(paramQQAppInterface, paramMessageRecord);
+    return new awwa();
   }
   
-  public void a(String paramString, int paramInt1, long paramLong1, int paramInt2, long paramLong2)
+  @Nullable
+  public awwa a(araj[] paramArrayOfaraj)
   {
-    try
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt1).a(paramString, paramInt1, paramLong1);
-      if (localMessageRecord != null)
+      QLog.d("WelcomeConfigProcessor", 2, "onParsed :" + paramArrayOfaraj);
+      if (paramArrayOfaraj != null)
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_istroop", String.valueOf(localMessageRecord.istroop));
-        localHashMap.put("param_msgtype", String.valueOf(localMessageRecord.msgtype));
-        localHashMap.put("param_replycode", String.valueOf(paramInt2));
-        localHashMap.put("param_cost", String.valueOf(paramLong2));
-        localHashMap.put("param_isAnonymous", String.valueOf(njo.a(localMessageRecord)));
-        if (localMessageRecord.msgtype == -1051) {
-          bctj.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ltextNewSendResult", true, 0L, 0L, localHashMap, "");
-        }
-        while (QLog.isColorLevel())
+        j = paramArrayOfaraj.length;
+        i = 0;
+        while (i < j)
         {
-          QLog.d("StructLongTextMsg", 2, "reportSendLongMsg  peerUin:" + paramString + " istroop=" + localMessageRecord.istroop + " issend=" + localMessageRecord.issend + " msgType=" + localMessageRecord.msgtype + " longMsgCount=" + localMessageRecord.longMsgCount + " longMsgId=" + localMessageRecord.longMsgId + " longMsgIndex=" + localMessageRecord.longMsgIndex + " replyCost=" + paramInt2 + " cost=" + paramLong2);
-          return;
-          if ((!localMessageRecord.isLongMsg()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageRecord))) {
-            break;
+          localObject1 = paramArrayOfaraj[i];
+          if (localObject1 != null) {
+            QLog.d("WelcomeConfigProcessor", 2, "onParsed item: " + ((araj)localObject1).jdField_a_of_type_JavaLangString);
           }
-          localHashMap.put("param_longMsgCount", String.valueOf(localMessageRecord.longMsgCount));
-          localHashMap.put("param_longMsgId", String.valueOf(localMessageRecord.longMsgId));
-          localHashMap.put("param_longMsgIndex", String.valueOf(localMessageRecord.longMsgIndex));
-          bctj.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ltextOldSendResult", true, 0L, 0L, localHashMap, "");
+          i += 1;
         }
       }
-      return;
     }
-    catch (Exception paramString)
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      QLog.d("StructLongTextMsg", 1, "longmsg send report error!", paramString);
+      j = paramArrayOfaraj.length;
+      i = 0;
+      while (i < j)
+      {
+        Object localObject2 = paramArrayOfaraj[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((araj)localObject2).jdField_a_of_type_JavaLangString))) {
+          try
+          {
+            localObject1 = new awwa();
+            localObject2 = new JSONObject(((araj)localObject2).jdField_a_of_type_JavaLangString);
+            if (((JSONObject)localObject2).has("popup_url")) {
+              ((awwa)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("popup_url");
+            }
+            if (((JSONObject)localObject2).has("fixed_entrance_url")) {
+              ((awwa)localObject1).b = ((JSONObject)localObject2).getString("fixed_entrance_url");
+            }
+            if (((JSONObject)localObject2).has("request_interval")) {
+              ((awwa)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("request_interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("WelcomeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
+    }
+    return null;
+  }
+  
+  public void a(awwa paramawwa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "onUpdate");
+    }
+    if (paramawwa != null) {
+      ((LoginWelcomeManager)BaseApplicationImpl.sApplication.getRuntime().getManager(146)).a(paramawwa);
     }
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, ayyt paramayyt)
+  public Class<awwa> clazz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongTextMsg", 2, "[sendLongTextMsg]data.length = " + paramArrayOfByte.length);
-    }
-    bdzn localbdzn = new bdzn();
-    localbdzn.jdField_a_of_type_Boolean = true;
-    localbdzn.jdField_b_of_type_Int = 131078;
-    localbdzn.h = 1;
-    localbdzn.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
-    localbdzn.jdField_b_of_type_JavaLangString = paramString1;
-    localbdzn.c = paramString2;
-    localbdzn.d = paramString3;
-    localbdzn.jdField_a_of_type_Int = paramInt1;
-    localbdzn.jdField_a_of_type_Long = paramLong;
-    localbdzn.e = paramInt2;
-    localbdzn.jdField_a_of_type_Ayyt = paramayyt;
-    localbdzn.r = a();
-    paramQQAppInterface.a().a(localbdzn);
+    return awwa.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
     return true;
   }
   
-  public void b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public boolean isNeedStoreLargeFile()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongTextMsg", 2, "reportReceiveLongMsg  istroop=" + paramMessageRecord.istroop + " issend=" + paramMessageRecord.issend + " msgType=" + paramMessageRecord.msgtype + " longMsgCount=" + paramMessageRecord.longMsgCount + " longMsgId=" + paramMessageRecord.longMsgId + " longMsgIndex=" + paramMessageRecord.longMsgIndex);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_istroop", String.valueOf(paramMessageRecord.istroop));
-    localHashMap.put("param_issend", String.valueOf(paramMessageRecord.issend));
-    localHashMap.put("param_msgtype", String.valueOf(paramMessageRecord.msgtype));
-    localHashMap.put("param_isAnonymous", String.valueOf(njo.a(paramMessageRecord)));
-    if (paramMessageRecord.msgtype == -1051) {
-      bctj.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "ltextNewReceiveResult", true, 0L, 0L, localHashMap, "");
-    }
-    while (!paramMessageRecord.isLongMsg()) {
-      return;
-    }
-    localHashMap.put("param_longMsgCount", String.valueOf(paramMessageRecord.longMsgCount));
-    localHashMap.put("param_longMsgId", String.valueOf(paramMessageRecord.longMsgId));
-    localHashMap.put("param_longMsgIndex", String.valueOf(paramMessageRecord.longMsgIndex));
-    bctj.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "ltextOldReceiveResult", true, 0L, 0L, localHashMap, "");
+    return false;
   }
   
-  public void onDestroy() {}
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 454;
+  }
 }
 
 

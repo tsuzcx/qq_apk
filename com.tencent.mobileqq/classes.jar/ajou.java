@@ -1,31 +1,32 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class ajou
-  implements ajrj
+class ajou
+  implements View.OnClickListener
 {
-  public ajou(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  ajou(ajot paramajot) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.j();
-  }
-  
-  public void b()
-  {
-    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
-      this.a.jdField_a_of_type_Ajuw.a();
+    ajov localajov = (ajov)paramView.getTag();
+    if ((localajov == null) || (!(localajov instanceof ajov))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      View localView = (View)paramView.getParent();
+      if ((localView instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView).d();
+      }
+      ajot.a(this.a, localajov.a);
+      this.a.jdField_a_of_type_JavaUtilList.add(ajot.a(this.a).remove(this.a.getCount() - localajov.b - 1));
+      this.a.notifyDataSetChanged();
     }
-    this.a.c = true;
-    this.a.b(true);
-  }
-  
-  public void c()
-  {
-    this.a.jdField_a_of_type_Ajuw.b();
-    this.a.c = false;
-    this.a.b(false);
-    this.a.jdField_a_of_type_Ajuh.a();
   }
 }
 

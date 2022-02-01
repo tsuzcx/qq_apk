@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfzs
-  implements bdet
+class bfzs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bfzs(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  bfzs(bfzr parambfzr, bfzv parambfzv) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
+    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Bfzv.a).troopuin.equals(bfzr.a(this.jdField_a_of_type_Bfzr)))) {
+      this.jdField_a_of_type_Bfzv.b = Boolean.valueOf(paramBoolean);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

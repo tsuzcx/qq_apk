@@ -1,62 +1,80 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class area
-  implements ardz
+  extends arac<ardz>
 {
-  private Handler a;
-  
-  public Resources a()
+  @NonNull
+  public ardz a(int paramInt)
   {
-    return BaseApplicationImpl.getApplication().getResources();
+    return new ardz();
   }
   
-  public Handler a()
+  @Nullable
+  public ardz a(araj[] paramArrayOfaraj)
   {
-    if (this.a == null) {
-      this.a = new Handler(Looper.getMainLooper());
-    }
-    return this.a;
-  }
-  
-  public Object a(Class<?> paramClass, String paramString, Object paramObject)
-  {
-    try
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaraj != null)
     {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
-      return paramClass;
+      localObject1 = localObject2;
+      if (paramArrayOfaraj.length > 0)
+      {
+        localObject1 = localObject2;
+        if (paramArrayOfaraj[0] != null)
+        {
+          localObject1 = ardz.a(paramArrayOfaraj[0].a);
+          paramArrayOfaraj = BaseApplicationImpl.getApplication().getRuntime();
+          if ((paramArrayOfaraj instanceof QQAppInterface)) {
+            ((FlashChatManager)((QQAppInterface)paramArrayOfaraj).getManager(217)).b(((ardz)localObject1).a);
+          }
+        }
+      }
     }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    return localObject1;
   }
   
-  public boolean a()
+  public void a(ardz paramardz)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChatConfProcessor", 2, "onUpdate " + paramardz.toString());
+    }
+  }
+  
+  public Class<ardz> clazz()
+  {
+    return ardz.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
   {
     return false;
   }
   
-  public boolean b()
+  public int migrateOldVersion()
   {
-    return Build.VERSION.SDK_INT >= 26;
+    return 0;
   }
   
-  public boolean c()
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
   {
-    return Build.VERSION.SDK_INT >= 11;
+    return 168;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     area
  * JD-Core Version:    0.7.0.1
  */

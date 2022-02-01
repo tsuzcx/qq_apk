@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ajnk;
-import ajod;
+import ajyt;
+import ajzm;
 import java.util.List;
 
 public class SDKEmotionSettingManager$20
   implements Runnable
 {
-  public SDKEmotionSettingManager$20(ajnk paramajnk, int paramInt1, int paramInt2, int paramInt3) {}
+  public SDKEmotionSettingManager$20(ajyt paramajyt, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    if (ajnk.a(this.this$0) != null) {
-      ajnk.a(this.this$0).dismiss();
+    if (ajyt.a(this.this$0) != null) {
+      ajyt.a(this.this$0).dismiss();
     }
-    ajnk.a(this.this$0, false);
+    ajyt.a(this.this$0, false);
     if (this.a == this.b) {
-      ajnk.a(this.this$0, ajnk.a(this.this$0), Long.valueOf(ajnk.a(this.this$0)).longValue(), true);
+      ajyt.a(this.this$0, ajyt.a(this.this$0), Long.valueOf(ajyt.a(this.this$0)).longValue(), true);
     }
     while (this.a == 1)
     {
       int j = -1;
       int i = j;
-      if (ajnk.c(this.this$0) != null)
+      if (ajyt.c(this.this$0) != null)
       {
         i = j;
-        if (ajnk.c(this.this$0).size() > 0) {
-          i = ((Integer)ajnk.c(this.this$0).get(0)).intValue();
+        if (ajyt.c(this.this$0).size() > 0) {
+          i = ((Integer)ajyt.c(this.this$0).get(0)).intValue();
         }
       }
-      ajnk.a(this.this$0, i, null);
+      ajyt.a(this.this$0, i, null);
       return;
-      ajnk.a(this.this$0, ajnk.a(this.this$0), Long.valueOf(ajnk.a(this.this$0)).longValue(), true, null);
+      ajyt.a(this.this$0, ajyt.a(this.this$0), Long.valueOf(ajyt.a(this.this$0)).longValue(), true, null);
     }
-    ajnk.a(this.this$0, this.b, this.c, null);
+    ajyt.a(this.this$0, this.b, this.c, null);
   }
 }
 

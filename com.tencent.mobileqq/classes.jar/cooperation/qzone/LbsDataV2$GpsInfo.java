@@ -3,12 +3,12 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blro;
+import bmsq;
 
 public class LbsDataV2$GpsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GpsInfo> CREATOR = new blro();
+  public static final Parcelable.Creator<GpsInfo> CREATOR = new bmsq();
   public int accuracy;
   public int alt = -10000000;
   public int gpsType = 0;

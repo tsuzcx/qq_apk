@@ -1,20 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class afat
   implements DialogInterface.OnClickListener
 {
-  public afat(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public afat(NotifyPCActiveActivity paramNotifyPCActiveActivity, anum paramanum) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, false);
-    RegisterChooseLoginActivity.a(this.a, false);
-    bcst.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    bcst.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
-    bcst.a(this.a.app, "new_reg", "next_ask", "no_clk", "", 1, "");
+    this.jdField_a_of_type_Anum.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 

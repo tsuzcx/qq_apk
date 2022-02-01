@@ -1,69 +1,129 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.util.FluencyOptUtils.addUrlStrToCache.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.net.URL;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/FluencyOptUtils;", "", "()V", "config", "Lcom/tencent/aladdin/config/AladdinConfig;", "urlStrToObjMap", "", "", "Ljava/net/URL;", "addUrlObjToCache", "", "url", "addUrlStrToCache", "getUrlObjFromCache", "isEnableCardCreateCostReport", "", "isEnableGestureDataReport", "isEnablePreloadProteusView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class twz
+public abstract class twz
 {
-  private static final AladdinConfig jdField_a_of_type_ComTencentAladdinConfigAladdinConfig;
-  private static final Map<String, URL> jdField_a_of_type_JavaUtilMap;
-  public static final twz a;
+  private final String jdField_a_of_type_JavaLangString = "FeedExposureHelper";
+  private txa jdField_a_of_type_Txa;
   
-  static
+  public int a(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_Twz = new twz();
-    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(330);
-    Intrinsics.checkExpressionValueIsNotNull(localAladdinConfig, "Aladdin.getConfig(QQAlad…ONFIG_FLUENCY_OPT_SWITCH)");
-    jdField_a_of_type_ComTencentAladdinConfigAladdinConfig = localAladdinConfig;
+    return paramInt1 + paramInt2;
   }
   
-  @Nullable
-  public final URL a(@Nullable String paramString)
+  public txa a(AbsListView paramAbsListView)
   {
-    if (paramString == null) {
+    int j = 0;
+    txa localtxa = new txa();
+    localtxa.jdField_a_of_type_Long = System.currentTimeMillis();
+    int k = paramAbsListView.getHeight();
+    int m = paramAbsListView.getFirstVisiblePosition();
+    int n = paramAbsListView.getChildCount();
+    int i = j;
+    if (n == 0)
+    {
+      localtxa.jdField_a_of_type_Int = 0;
+      localtxa.b = 10;
+      i = j;
+    }
+    if (i < n)
+    {
+      if (a(paramAbsListView.getChildAt(i), k)) {
+        localtxa.jdField_a_of_type_Int = a(m, i);
+      }
+    }
+    else {
+      i = paramAbsListView.getLastVisiblePosition() - m;
+    }
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        if (a(paramAbsListView.getChildAt(i), k)) {
+          localtxa.b = a(m, i);
+        }
+      }
+      else
+      {
+        return localtxa;
+        i += 1;
+        break;
+      }
+      i -= 1;
+    }
+  }
+  
+  public txa a(txa paramtxa1, txa paramtxa2)
+  {
+    if ((paramtxa1 == null) || (paramtxa2 == null)) {}
+    while ((paramtxa1.b < paramtxa2.jdField_a_of_type_Int) || (paramtxa1.jdField_a_of_type_Int > paramtxa2.b)) {
       return null;
     }
-    return (URL)jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public final void a(@Nullable String paramString)
-  {
-    if ((paramString != null) && (!jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
-      ThreadManager.executeOnSubThread((Runnable)new FluencyOptUtils.addUrlStrToCache.1(paramString));
+    txa localtxa = new txa();
+    if (paramtxa1.jdField_a_of_type_Int > paramtxa2.jdField_a_of_type_Int)
+    {
+      i = paramtxa1.jdField_a_of_type_Int;
+      localtxa.jdField_a_of_type_Int = i;
+      if (paramtxa1.b >= paramtxa2.b) {
+        break label113;
+      }
+    }
+    label113:
+    for (int i = paramtxa1.b;; i = paramtxa2.b)
+    {
+      localtxa.b = i;
+      localtxa.jdField_a_of_type_Long = Math.abs(paramtxa1.jdField_a_of_type_Long - paramtxa2.jdField_a_of_type_Long);
+      return localtxa;
+      i = paramtxa2.jdField_a_of_type_Int;
+      break;
     }
   }
   
-  public final void a(@NotNull URL paramURL)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramURL, "url");
-    Map localMap = jdField_a_of_type_JavaUtilMap;
-    String str = paramURL.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "url.toString()");
-    localMap.put(str, paramURL);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      paramAbsListView = a(paramAbsListView);
+      QLog.d("FeedExposureHelper", 2, "thisRange: " + paramAbsListView);
+      if (this.jdField_a_of_type_Txa != null)
+      {
+        txa localtxa = a(this.jdField_a_of_type_Txa, paramAbsListView);
+        if ((localtxa != null) && (localtxa.jdField_a_of_type_Long > 1000L))
+        {
+          QLog.d("FeedExposureHelper", 2, "sameRange: " + localtxa);
+          a(localtxa);
+        }
+      }
+      this.jdField_a_of_type_Txa = paramAbsListView;
+    } while (paramInt != 5);
+    this.jdField_a_of_type_Txa = null;
   }
   
-  public final boolean a()
-  {
-    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("card_create_cost_report_switch", 0) == 1;
-  }
+  public abstract void a(txa paramtxa);
   
-  public final boolean b()
+  public boolean a(View paramView, int paramInt)
   {
-    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("asynce_create_view_switch", 0) == 1;
-  }
-  
-  public final boolean c()
-  {
-    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("gesture_data_switch", 0) == 1;
+    if (paramView == null) {
+      return false;
+    }
+    if (paramView.getBottom() > paramInt) {}
+    for (;;)
+    {
+      int i = paramInt;
+      if (paramView.getTop() > 0) {
+        i = paramInt - paramView.getTop();
+      }
+      if (i <= paramView.getHeight() * 0.5F) {
+        break;
+      }
+      return true;
+      paramInt = paramView.getBottom();
+    }
   }
 }
 

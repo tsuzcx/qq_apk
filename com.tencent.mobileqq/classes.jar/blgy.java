@@ -1,69 +1,45 @@
-import android.os.IBinder;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
-class blgy
-  implements blgw
+public class blgy
 {
-  private IBinder a;
-  
-  blgy(IBinder paramIBinder)
+  public static void a(Context paramContext, int paramInt)
   {
-    this.a = paramIBinder;
-  }
-  
-  /* Error */
-  public void a(cooperation.qappcenter.remote.RecvMsg paramRecvMsg)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 39	cooperation/qappcenter/remote/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	blgy:a	Landroid/os/IBinder;
-    //   29: iconst_1
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 45 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	blgy
-    //   0	59	1	paramRecvMsg	cooperation.qappcenter.remote.RecvMsg
-    //   3	51	2	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    if ((paramContext == null) || (!(paramContext instanceof LoginActivity)) || (paramInt != 16908322))
+    {
+      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: params wrong");
+      return;
+    }
+    paramContext = ((LoginActivity)paramContext).a();
+    if ((paramContext == null) || (!(paramContext instanceof LoginView)))
+    {
+      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: fragment wrong");
+      return;
+    }
+    paramContext = ((LoginView)paramContext).a();
+    if (paramContext == null)
+    {
+      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: autoCompleteTextView == null");
+      return;
+    }
+    paramContext = paramContext.getText();
+    if (paramContext == null)
+    {
+      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: editable null");
+      return;
+    }
+    paramContext = paramContext.toString();
+    if ((TextUtils.isEmpty(paramContext)) || (!Friends.isValidUin(paramContext)) || (!zyx.i(paramContext)))
+    {
+      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: uin error");
+      return;
+    }
+    bdll.a(null, "dc00898", "", paramContext, "0X800B29A", "0X800B29A", 1, 0, "", "", "", "");
   }
 }
 

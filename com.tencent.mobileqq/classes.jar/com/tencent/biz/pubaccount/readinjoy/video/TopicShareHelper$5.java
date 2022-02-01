@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import oat;
-import och;
-import rvn;
+import ocd;
+import odr;
+import rmj;
 
 public class TopicShareHelper$5
   implements Runnable
 {
-  public TopicShareHelper$5(rvn paramrvn, String paramString) {}
+  public TopicShareHelper$5(rmj paramrmj, String paramString) {}
   
   public void run()
   {
-    oat.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.a, "", och.a(rvn.a(this.this$0).mChannelID, null), false);
+    ocd.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.a, "", odr.a(rmj.a(this.this$0).mChannelID, null), false);
   }
 }
 

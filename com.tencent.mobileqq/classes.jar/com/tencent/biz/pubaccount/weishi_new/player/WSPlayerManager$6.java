@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import uke;
+import ulc;
 
 class WSPlayerManager$6
   implements Runnable
 {
-  WSPlayerManager$6(WSPlayerManager paramWSPlayerManager, uke paramuke) {}
+  WSPlayerManager$6(WSPlayerManager paramWSPlayerManager, ulc paramulc) {}
   
   public void run()
   {

@@ -1,30 +1,20 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class akzt
-  implements View.OnClickListener
+public class akzt
+  extends anyu
 {
-  akzt(akyh paramakyh) {}
+  public akzt(TransactionActivity paramTransactionActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(akyh.a(this.a), GuideBindPhoneActivity.class);
-    localIntent.putExtra("fromKeyForContactBind", 4);
-    akyh.a(this.a).startActivity(localIntent);
-    akyh.a(this.a).getSharedPreferences("contact_bind_info" + akyh.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
-    this.a.a(16, 0);
-    akyh.a(this.a).removeMessages(11);
-    bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
-    bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    TransactionActivity.c(this.a, bhlg.c(this.a.app, TransactionActivity.c(this.a), false));
+    paramString = alil.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), agej.a(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.c(this.a).getPaint());
+    TransactionActivity.c(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
   }
 }
 

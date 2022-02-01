@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acmi;
+import acqk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public final class GdtInterstitialStatus
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialStatus> CREATOR = new acmi();
+  public static final Parcelable.Creator<GdtInterstitialStatus> CREATOR = new acqk();
   public int a;
   public long a;
   public String a;

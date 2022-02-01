@@ -1,13 +1,13 @@
 package com.tencent.gdtad.jsbridge;
 
-import acko;
-import aclh;
-import acli;
-import aclj;
-import acpq;
-import acps;
-import acqy;
-import acsj;
+import acos;
+import acpl;
+import acpm;
+import acpn;
+import actt;
+import actv;
+import acvc;
+import acwn;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -25,11 +25,11 @@ import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet;
 
 public class GdtBannerFragmentForJS
-  extends acps
+  extends actv
 {
-  private acko jdField_a_of_type_Acko = new acpq(this);
-  private aclh jdField_a_of_type_Aclh;
-  private acli jdField_a_of_type_Acli;
+  private acos jdField_a_of_type_Acos = new actt(this);
+  private acpl jdField_a_of_type_Acpl;
+  private acpm jdField_a_of_type_Acpm;
   private GdtBannerAd jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd;
   
   public GdtAd a()
@@ -39,15 +39,15 @@ public class GdtBannerFragmentForJS
   
   public void a()
   {
-    int i = acsj.a(getActivity(), 1080, 1026);
-    int j = aclj.a(this.jdField_a_of_type_Aclh.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Acli = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.render(getActivity(), i, j);
-    if (this.jdField_a_of_type_Acli == null)
+    int i = acwn.a(getActivity(), 1080, 1026);
+    int j = acpn.a(this.jdField_a_of_type_Acpl.jdField_a_of_type_Int, i);
+    this.jdField_a_of_type_Acpm = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.render(getActivity(), i, j);
+    if (this.jdField_a_of_type_Acpm == null)
     {
       Toast.makeText(getActivity().getApplicationContext(), "ad is rendered", 0).show();
       return;
     }
-    if (this.jdField_a_of_type_Acli.a() == null)
+    if (this.jdField_a_of_type_Acpm.a() == null)
     {
       Toast.makeText(getActivity().getApplicationContext(), "error", 0).show();
       return;
@@ -56,32 +56,33 @@ public class GdtBannerFragmentForJS
     localLayoutParams.gravity = 1;
     localLayoutParams.topMargin = 100;
     localLayoutParams.bottomMargin = 100;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Acli.a(), localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Acpm.a(), localLayoutParams);
+    this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.onDisplay();
     AdThreadManager.INSTANCE.postDelayed(new GdtBannerFragmentForJS.1(this), 0, 5000L);
   }
   
   public void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams)
   {
-    this.jdField_a_of_type_Aclh = new aclh();
-    this.jdField_a_of_type_Aclh.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramQQAdGet;
-    this.jdField_a_of_type_Aclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramParams;
+    this.jdField_a_of_type_Acpl = new acpl();
+    this.jdField_a_of_type_Acpl.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramQQAdGet;
+    this.jdField_a_of_type_Acpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramParams;
     try
     {
       int i = new JSONObject(paramString).getInt("style");
-      this.jdField_a_of_type_Aclh.jdField_a_of_type_Int = i;
-      i = acsj.a(getActivity(), 1080, 1026);
-      int j = aclj.a(this.jdField_a_of_type_Aclh.jdField_a_of_type_Int, i);
-      this.jdField_a_of_type_Aclh.b = i;
-      this.jdField_a_of_type_Aclh.c = j;
-      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = new GdtBannerAd(this.jdField_a_of_type_Aclh);
-      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.setListener(new WeakReference(this.jdField_a_of_type_Acko));
+      this.jdField_a_of_type_Acpl.jdField_a_of_type_Int = i;
+      i = acwn.a(getActivity(), 1080, 1026);
+      int j = acpn.a(this.jdField_a_of_type_Acpl.jdField_a_of_type_Int, i);
+      this.jdField_a_of_type_Acpl.b = i;
+      this.jdField_a_of_type_Acpl.c = j;
+      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = new GdtBannerAd(this.jdField_a_of_type_Acpl);
+      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.setListener(new WeakReference(this.jdField_a_of_type_Acos));
       return;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        acqy.d("GdtBannerFragmentForJS", "createParams error", paramString);
+        acvc.d("GdtBannerFragmentForJS", "createParams error", paramString);
       }
     }
   }
@@ -102,16 +103,16 @@ public class GdtBannerFragmentForJS
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Acli != null) {
-      this.jdField_a_of_type_Acli.c(getActivity());
+    if (this.jdField_a_of_type_Acpm != null) {
+      this.jdField_a_of_type_Acpm.c(getActivity());
     }
     super.onDestroy();
   }
   
   public void onPause()
   {
-    if (this.jdField_a_of_type_Acli != null) {
-      this.jdField_a_of_type_Acli.a(getActivity());
+    if (this.jdField_a_of_type_Acpm != null) {
+      this.jdField_a_of_type_Acpm.a(getActivity());
     }
     super.onPause();
   }
@@ -119,8 +120,8 @@ public class GdtBannerFragmentForJS
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Acli != null) {
-      this.jdField_a_of_type_Acli.b(getActivity());
+    if (this.jdField_a_of_type_Acpm != null) {
+      this.jdField_a_of_type_Acpm.b(getActivity());
     }
   }
 }

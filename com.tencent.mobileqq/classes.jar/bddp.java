@@ -1,17 +1,23 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
 
-class bddp
-  implements Callable<Boolean>
+public class bddp
 {
-  bddp(bddn parambddn, File paramFile) {}
-  
-  public Boolean a()
+  public static String a(Context paramContext)
   {
-    if ((bddn.a(this.jdField_a_of_type_Bddn).exists()) && (this.jdField_a_of_type_JavaIoFile == bddn.a(this.jdField_a_of_type_Bddn))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
     }
+  }
+  
+  public static String b(Context paramContext)
+  {
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.a();
+    return paramContext + str;
   }
 }
 

@@ -1,50 +1,41 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class ojr
-  implements CompoundButton.OnCheckedChangeListener
+public final class ojr
+  implements axfv<asrv, char[]>
 {
-  public ojr(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public char[] a(asrv paramasrv)
   {
-    int j = 1;
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    for (;;)
+    try
     {
-      uaq.a(i);
-      JSONObject localJSONObject = new JSONObject();
-      if (paramBoolean) {
-        i = j;
-      }
-      try
+      int i = Integer.parseInt(paramasrv.a.eId);
+      int j = Integer.parseInt(paramasrv.a.epId);
+      Object localObject = asfa.a(j, i);
+      paramasrv = new char[5];
+      paramasrv[0] = 20;
+      paramasrv[1] = localObject[3];
+      paramasrv[2] = localObject[2];
+      paramasrv[3] = localObject[1];
+      paramasrv[4] = localObject[0];
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
       {
-        for (;;)
-        {
-          localJSONObject.put("click_opt", i);
-          oat.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", localJSONObject.toString(), false);
-          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-          return;
-          i = 1;
-          break;
-          i = 2;
+        localObject = ((axfj)((AppRuntime)localObject).getManager(14)).a(String.valueOf(j));
+        if ((localObject != null) && (((EmoticonPackage)localObject).isAPNG == 2)) {
+          paramasrv[1] = 511;
         }
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      return paramasrv;
     }
+    catch (NumberFormatException paramasrv)
+    {
+      QLog.e("ReadInJoyBaseDeliverActivity", 1, "kandian fail to send small_emotion. id is not Int.");
+    }
+    return null;
   }
 }
 

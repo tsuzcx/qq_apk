@@ -1,37 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class anjr
-  implements Manager
+public abstract interface anjr
 {
-  private bggv jdField_a_of_type_Bggv;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public Object a;
+  public abstract void a(int paramInt);
   
-  public anjr(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public bggv a()
-  {
-    if (this.jdField_a_of_type_Bggv == null) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Bggv == null) {
-        this.jdField_a_of_type_Bggv = new bggv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      return this.jdField_a_of_type_Bggv;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Bggv != null) {
-      this.jdField_a_of_type_Bggv.a();
-    }
-  }
+  public abstract void a(ApolloTextureView paramApolloTextureView);
 }
 
 

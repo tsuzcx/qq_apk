@@ -55,6 +55,11 @@ public abstract class AbsAppBrandService
     }
   }
   
+  public int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
   protected void evaluateWaitJs()
   {
     QMLog.e("AbsAppBrandService", "Evaluate waiting js list!");
@@ -68,6 +73,11 @@ public abstract class AbsAppBrandService
         evaluateJs((String)((Iterator)???).next(), null);
       }
     }
+  }
+  
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return new byte[0];
   }
   
   public abstract void initBaseJs(BaselibLoader.BaselibContent paramBaselibContent);

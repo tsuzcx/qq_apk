@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aeut
-  implements DialogInterface.OnClickListener
+  extends aeuk
 {
-  public aeut(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aeut(JumpActivity paramJumpActivity)
   {
-    this.a.finish();
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeut
  * JD-Core Version:    0.7.0.1
  */

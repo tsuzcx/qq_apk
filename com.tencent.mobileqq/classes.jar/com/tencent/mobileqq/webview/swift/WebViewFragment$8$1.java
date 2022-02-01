@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bhos;
-import bhqg;
+import bipn;
+import birb;
 
 class WebViewFragment$8$1
   implements Runnable
@@ -10,9 +10,9 @@ class WebViewFragment$8$1
   
   public void run()
   {
-    bhqg localbhqg = (bhqg)this.a.this$0.mComponentsProvider.a(16);
-    if (localbhqg != null) {
-      localbhqg.a();
+    birb localbirb = (birb)this.a.this$0.mComponentsProvider.a(16);
+    if (localbirb != null) {
+      localbirb.a();
     }
   }
 }

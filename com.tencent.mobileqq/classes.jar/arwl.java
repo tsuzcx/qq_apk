@@ -1,25 +1,12 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 
-class arwl
-  implements View.OnClickListener
+public abstract interface arwl
 {
-  arwl(arwh paramarwh, IPSiteModel.Game paramGame, String paramString1, String paramString2) {}
+  public abstract boolean getHasPulledSourceMsg();
   
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Game.jumpUrl, -1L, localIntent, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_gameclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  
+  public abstract void setPulledSourceMsg();
 }
 
 

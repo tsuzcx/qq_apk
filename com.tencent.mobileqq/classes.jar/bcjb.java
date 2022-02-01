@@ -1,68 +1,96 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.List;
 
 public class bcjb
+  implements bcil<bcfp, bcny>
 {
-  public static int A = 300;
-  public static int B = 10;
-  public static int C = 23;
-  public static int D = 1;
-  public static int E;
-  public static int F;
-  public static int G;
-  public static int H;
-  public static int I = 65537;
-  public static int J = 0;
-  public static int K = 0;
-  private static int L;
-  public static int a = 1;
-  public static int b;
-  public static int c = 8000;
-  public static int d = 2000;
-  public static int e = 20000;
-  public static int f = 500000;
-  public static int g = 30;
-  public static int h = 2;
-  public static int i = 3;
-  public static int j = 480;
-  public static int k = 360;
-  public static int l = 320;
-  public static int m = 240;
-  public static int n = 64000;
-  public static int o = 16;
-  public static int p = 2;
-  public static int q = 44100;
-  public static int r = 450000;
-  public static int s = 100000;
-  public static int t = 31;
-  public static int u = 1;
-  public static int v = 3;
-  public static int w = 1;
-  public static int x = 1;
-  public static int y = 1000;
-  public static int z = 1;
+  private aoof jdField_a_of_type_Aoof;
+  private bcjf jdField_a_of_type_Bcjf;
+  boolean jdField_a_of_type_Boolean;
   
-  public static void a()
+  public bcjb(aoof paramaoof, boolean paramBoolean)
   {
-    F = 0;
-    G = 0;
-    H = 0;
-    I = 65537;
+    this.jdField_a_of_type_Aoof = paramaoof;
+    this.jdField_a_of_type_Bcjf = new bcjf(paramaoof, paramBoolean);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(boolean paramBoolean)
+  public void a(bcfp parambcfp, bcny parambcny)
   {
-    L = 0;
-    if (paramBoolean) {
-      L = 1;
+    bcfq localbcfq = (bcfq)parambcfp;
+    bcpk localbcpk = (bcpk)parambcny;
+    int i = localbcfq.a();
+    LinearLayout localLinearLayout = localbcpk.a();
+    ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
+    if (localLinearLayout != null)
+    {
+      List localList = localbcfq.a();
+      if ((localList != null) && (!localList.isEmpty()))
+      {
+        localLinearLayout.removeAllViews();
+        int k = Math.min(localList.size(), i);
+        i = 0;
+        if (i < k)
+        {
+          bcfr localbcfr = (bcfr)localList.get(i);
+          View localView;
+          label142:
+          int m;
+          int n;
+          if (this.jdField_a_of_type_Boolean)
+          {
+            localView = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562880, null);
+            parambcfp = new bcnv(localView);
+            localView.setTag(2131381109, localbcfr);
+            localView.setTag(2131381115, parambcfp);
+            localView.setTag(2131381110, Integer.valueOf(i));
+            localView.setTag(2131381108, Integer.valueOf(localList.size()));
+            localView.setTag(2131381111, this.jdField_a_of_type_Bcjf);
+            bcnl.a(localbcfr, k, i);
+            m = localbcfr.a();
+            n = localbcfr.b();
+            if (!(localbcfr instanceof bcfs)) {
+              break label334;
+            }
+          }
+          label334:
+          for (int j = ((bcfs)localbcfr).u;; j = 0)
+          {
+            bcnl.a(m, n, localView, j);
+            localLinearLayout.addView(localView);
+            if (this.jdField_a_of_type_Bcjf.a() != null) {
+              this.jdField_a_of_type_Bcjf.a().a((bcfp)localList.get(i), parambcfp);
+            }
+            i += 1;
+            break;
+            localView = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562879, null);
+            parambcfp = new bcpp(localView);
+            break label142;
+          }
+        }
+      }
     }
-  }
-  
-  public static int[] a()
-  {
-    if (VideoEnvironment.b(5)) {
-      return new int[] { r, s, t, u, v, w, x, y, z, E, F, G, H, I, L, J, K, A, C, D };
+    parambcfp = localbcfq.a();
+    if ((parambcfp == null) || (parambcfp.isEmpty()))
+    {
+      if (parambcny.b() != null) {
+        parambcny.b().setVisibility(8);
+      }
+      localbcpk.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localbcpk.jdField_a_of_type_AndroidViewView.setTag(2131381110, Integer.valueOf(-1));
+      localbcpk.jdField_a_of_type_AndroidWidgetTextView.setText(localbcfq.b());
+      localbcpk.b.setText(anzj.a(2131712528));
+      localbcpk.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846042);
+      localbcpk.jdField_a_of_type_AndroidViewView.setOnClickListener(new bcjc(this, localbcfq));
+      return;
     }
-    return new int[] { r, s, t, u, v, w, x, y, z };
+    localbcpk.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

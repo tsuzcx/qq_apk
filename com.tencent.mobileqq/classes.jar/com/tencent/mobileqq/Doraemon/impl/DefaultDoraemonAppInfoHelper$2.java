@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import adep;
-import adez;
-import awlp;
+import adnn;
+import adnx;
+import axeh;
 
 public class DefaultDoraemonAppInfoHelper$2
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$2(adep paramadep, adez paramadez, awlp paramawlp) {}
+  public DefaultDoraemonAppInfoHelper$2(adnn paramadnn, adnx paramadnx, axeh paramaxeh) {}
   
   public void run()
   {
-    adez localadez = this.jdField_a_of_type_Adez;
-    awlp localawlp = this.jdField_a_of_type_Awlp;
-    if (this.jdField_a_of_type_Awlp.c == 1) {}
+    adnx localadnx = this.jdField_a_of_type_Adnx;
+    axeh localaxeh = this.jdField_a_of_type_Axeh;
+    if (this.jdField_a_of_type_Axeh.c == 1) {}
     for (int i = 2;; i = 3)
     {
-      localadez.a(localawlp, i);
+      localadnx.a(localaxeh, i);
       return;
     }
   }

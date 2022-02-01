@@ -1,22 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afgg
-  implements DialogInterface.OnClickListener
+  implements bliz
 {
-  public afgg(SubAccountUgActivity paramSubAccountUgActivity, bddy parambddy, Pair paramPair) {}
+  public afgg(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, blir paramblir) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bddy.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!bddy.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
+    aean.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    paramView = aean.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    if (paramView != null) {}
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      bddx.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
+      ((MessageForPtt)paramView).c2cViaOffline = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
+      aean.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
+    catch (RuntimeException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
+      }
+    }
   }
 }
 

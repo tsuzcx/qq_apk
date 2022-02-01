@@ -1,38 +1,64 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ulh
-  implements uej
+public class ulh
+  implements TVK_SDKMgr.InstallListener
 {
-  ulh(ulf paramulf, boolean paramBoolean1, boolean paramBoolean2) {}
+  private Handler a;
   
-  public void a(JceStruct paramJceStruct)
+  public ulh(Handler paramHandler)
   {
-    upe.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
-    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {}
-    WSRecommendFragment localWSRecommendFragment;
-    do
+    this.a = paramHandler;
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      do
+      localJSONObject.put("version", "8.4.5");
+      localJSONObject.put("error_code", paramInt);
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        do
-        {
-          do
-          {
-            return;
-            paramJceStruct = (stSimpleGetFeedListRsp)paramJceStruct;
-          } while ((paramJceStruct.feeds == null) || (paramJceStruct.feeds.size() <= 0));
-          ulf.a(this.jdField_a_of_type_Ulf, true);
-        } while (ulf.a(this.jdField_a_of_type_Ulf));
-        paramJceStruct = paramJceStruct.feeds;
-        localWSRecommendFragment = (WSRecommendFragment)this.jdField_a_of_type_Ulf.a();
-      } while (localWSRecommendFragment == null);
-      localWSRecommendFragment.a(paramJceStruct, this.jdField_a_of_type_Boolean, this.b);
-    } while ((this.jdField_a_of_type_Boolean) || (ulf.a(this.jdField_a_of_type_Ulf)));
-    upe.d("WSRecommendFragmentPresenter", "showTopLoading");
-    localWSRecommendFragment.a(true);
+        uqf.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledFailed] JSONException: " + localException.getLocalizedMessage());
+      }
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.4.5");
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        uqf.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledSuccess] JSONException: " + localJSONException.getLocalizedMessage());
+      }
+    }
   }
 }
 

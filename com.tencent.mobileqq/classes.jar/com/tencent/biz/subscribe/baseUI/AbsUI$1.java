@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.baseUI;
 
-import aabr;
+import aafw;
 
 public class AbsUI$1
   implements Runnable

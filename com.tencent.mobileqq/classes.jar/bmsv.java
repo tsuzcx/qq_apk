@@ -1,284 +1,175 @@
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView;
-import android.opengl.Matrix;
-import android.os.Handler;
-import android.support.annotation.RequiresApi;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import android.view.SurfaceHolder;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.ar.controller.VipARCameraController.3;
-import cooperation.vip.ar.controller.VipARCameraController.6;
-import cooperation.vip.ar.controller.VipARCameraController.7;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.opengles.GL10;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.PlatformInfor.1;
+import cooperation.qzone.util.NetworkState;
 
 public class bmsv
-  extends bmtb
 {
-  private int jdField_a_of_type_Int;
-  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
-  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bmsz(this);
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bmsy(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmtc jdField_a_of_type_Bmtc;
-  private bmtf jdField_a_of_type_Bmtf;
-  private bmtg jdField_a_of_type_Bmtg;
-  private bmtn jdField_a_of_type_Bmtn = new bmsw(this);
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int jdField_b_of_type_Int;
-  private bmtn jdField_b_of_type_Bmtn = new bmsx(this);
-  private boolean jdField_b_of_type_Boolean;
-  private float[] jdField_b_of_type_ArrayOfFloat;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private float[] jdField_c_of_type_ArrayOfFloat;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
-  private boolean g = true;
-  private boolean h = true;
-  private boolean i;
-  private boolean j;
+  private static bmsv jdField_a_of_type_Bmsv;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static String e = "";
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  private TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = (TelephonyManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
   
-  static
+  private bmsv()
   {
-    System.loadLibrary("c++_shared");
-  }
-  
-  @RequiresApi(8)
-  public bmsv(Context paramContext, ViewGroup paramViewGroup)
-  {
-    super(paramContext, paramViewGroup);
-    if (paramContext.getResources().getConfiguration().orientation == 2) {}
-    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
+    try
     {
-      bmti.a().b(this.jdField_b_of_type_Bmtn);
-      this.jdField_a_of_type_Bmtc = new bmtc(paramContext, paramViewGroup);
+      e = this.jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName;
       return;
     }
-  }
-  
-  private float[] a(float paramFloat1, float paramFloat2)
-  {
-    float f1;
-    if (this.jdField_a_of_type_Int == 0)
+    catch (Exception localException)
     {
-      paramFloat1 /= this.jdField_b_of_type_Int;
-      paramFloat1 = this.jdField_d_of_type_Int * paramFloat1;
-      f1 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_e_of_type_Int;
-      paramFloat2 = paramFloat1;
+      localException.printStackTrace();
     }
-    for (paramFloat1 = f1;; paramFloat1 = this.jdField_e_of_type_Int - paramFloat1 * f1)
+  }
+  
+  private int a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Int == -1)
     {
-      return new float[] { paramFloat2, paramFloat1 };
-      paramFloat1 /= this.jdField_b_of_type_Int;
-      f1 = this.jdField_e_of_type_Int;
-      paramFloat2 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
+      ThreadManager.executeOnSubThread(new PlatformInfor.1(this, paramContext));
+      return 0;
     }
+    return this.jdField_a_of_type_Int;
   }
   
-  private void g()
+  public static bmsv a()
   {
-    this.jdField_a_of_type_Bmtf = new bmtf();
-    this.jdField_a_of_type_Bmtf.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bmtf.a();
-    this.jdField_e_of_type_Int = this.jdField_a_of_type_Bmtf.b();
-    this.jdField_c_of_type_Boolean = true;
-    ThreadManager.getUIHandler().post(new VipARCameraController.3(this));
-  }
-  
-  private void h()
-  {
-    if (!this.i)
+    if (jdField_a_of_type_Bmsv == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.i = true;
-      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.6(this));
+      if (jdField_a_of_type_Bmsv == null) {
+        jdField_a_of_type_Bmsv = new bmsv();
+      }
+      return jdField_a_of_type_Bmsv;
     }
   }
   
-  private void i()
+  private String g()
   {
-    if (!this.j)
+    String str2 = Build.MODEL;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = bhjr.a("ro.product.marketname");
+    }
+    return str1;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = blhc.a("52b7f2");
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = blhc.b("52b7f2");
+    }
+    return this.b;
+  }
+  
+  public String c()
+  {
+    if ((this.d != null) && (this.d.length() > 0))
     {
-      this.j = true;
-      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.7(this));
+      localObject1 = new StringBuilder(this.d);
+      ((StringBuilder)localObject1).append("sharpP=").append(a(this.jdField_a_of_type_AndroidContentContext)).append('&');
+      ((StringBuilder)localObject1).append("n=").append(d());
+      return ((StringBuilder)localObject1).toString();
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364106));
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextClientVersion(2);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextFactory(new bmta(this, null));
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderer(this);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderMode(1);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setPreserveEGLContextOnPause(true);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378596));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Bmtg == null) {
-      this.jdField_a_of_type_Bmtg = new bmtg();
-    }
-    this.jdField_a_of_type_Bmtg.jdField_a_of_type_Int = bgtn.a();
-    this.jdField_a_of_type_Bmtg.jdField_b_of_type_Int = bgtn.b();
-    this.jdField_a_of_type_Bmtg.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Bmtg.c = paramString2;
-    if (this.jdField_a_of_type_Bmtc != null) {
-      this.jdField_a_of_type_Bmtc.a(this.jdField_a_of_type_Bmtg);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bmtf.a();
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Bmtc != null) {
-      this.jdField_a_of_type_Bmtc.c();
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
-    QLog.d("VipARCameraController", 2, "onActivityResume " + this.jdField_c_of_type_Boolean);
-    this.f = true;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bmtf.a();
-    }
-    if (this.jdField_a_of_type_Bmtc != null) {
-      this.jdField_a_of_type_Bmtc.d();
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    QLog.d("VipARCameraController", 2, "onActivityStop " + this.jdField_c_of_type_Boolean);
-    this.f = false;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bmtf.b();
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    QLog.d("VipARCameraController", 2, "onActivityDestroy " + this.jdField_c_of_type_Boolean);
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bmtf.c();
-    }
-    if (this.jdField_a_of_type_Bmtc != null) {
-      this.jdField_a_of_type_Bmtc.f();
-    }
-  }
-  
-  public void onDrawFrame(GL10 paramGL10)
-  {
-    GLES20.glClear(16640);
-    if (!this.jdField_c_of_type_Boolean) {}
-    do
+    Object localObject2 = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    Object localObject1 = new DisplayMetrics();
+    ((WindowManager)localObject2).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("i=").append(a()).append('&');
+    ((StringBuilder)localObject2).append("imsi=").append(b()).append('&');
+    ((StringBuilder)localObject2).append("mac=").append(e()).append('&');
+    ((StringBuilder)localObject2).append("m=").append(g()).append('&');
+    ((StringBuilder)localObject2).append("o=").append(Build.VERSION.RELEASE).append('&');
+    ((StringBuilder)localObject2).append("a=").append(Build.VERSION.SDK_INT).append('&');
+    StringBuilder localStringBuilder = ((StringBuilder)localObject2).append("sc=");
+    if (Environment.getExternalStorageState().equals("mounted")) {}
+    for (int i = 1;; i = 0)
     {
-      float[] arrayOfFloat;
-      do
-      {
-        do
-        {
-          return;
-          h();
-          if (this.jdField_a_of_type_Bmtf.a(this.jdField_a_of_type_AndroidViewSurfaceHolder, false) == 0) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Bmtc == null);
-        this.jdField_a_of_type_Bmtc.onDrawFrame(null);
-        return;
-        if (this.h)
-        {
-          bmti.a("ar_tar_show", "1");
-          this.h = false;
-        }
-        i();
-        if (this.jdField_a_of_type_ArrayOfFloat == null) {
-          this.jdField_a_of_type_ArrayOfFloat = new float[16];
-        }
-        if (this.jdField_b_of_type_ArrayOfFloat == null) {
-          this.jdField_b_of_type_ArrayOfFloat = new float[16];
-        }
-        if (this.jdField_c_of_type_ArrayOfFloat == null) {
-          this.jdField_c_of_type_ArrayOfFloat = new float[16];
-        }
-        Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-        Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-        Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
-        arrayOfFloat = this.jdField_a_of_type_Bmtf.d();
-      } while (arrayOfFloat == null);
-      this.jdField_b_of_type_ArrayOfFloat[0] = arrayOfFloat[0];
-      this.jdField_b_of_type_ArrayOfFloat[5] = arrayOfFloat[1];
-      this.jdField_b_of_type_ArrayOfFloat[10] = arrayOfFloat[2];
-      Matrix.scaleM(this.jdField_c_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Bmtf.a(), 0, 1.0F / arrayOfFloat[0], 1.0F / arrayOfFloat[1], 1.0F / arrayOfFloat[2]);
-      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Bmtf.b(), 0, this.jdField_c_of_type_ArrayOfFloat, 0);
-    } while (this.jdField_a_of_type_Bmtc == null);
-    this.jdField_a_of_type_Bmtc.a(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Bmtf.c());
-    this.jdField_a_of_type_Bmtc.onDrawFrame(paramGL10);
+      localStringBuilder.append(i).append('&');
+      ((StringBuilder)localObject2).append("sd=").append("0").append('&');
+      ((StringBuilder)localObject2).append("p=").append(((DisplayMetrics)localObject1).widthPixels).append('*').append(((DisplayMetrics)localObject1).heightPixels).append('&');
+      ((StringBuilder)localObject2).append("f=").append(Build.MANUFACTURER).append('&');
+      ((StringBuilder)localObject2).append("mm=").append(bhlo.d() / 1048576L).append('&');
+      ((StringBuilder)localObject2).append("cf=").append(bhlo.a()).append('&');
+      ((StringBuilder)localObject2).append("cc=").append(bhlo.b()).append('&');
+      ((StringBuilder)localObject2).append("aid=").append(bhlo.f()).append('&');
+      ((StringBuilder)localObject2).append("qimei=").append(UserAction.getQIMEI()).append('&');
+      this.d = ((StringBuilder)localObject2).toString();
+      ((StringBuilder)localObject2).append("sharpP=").append(a(this.jdField_a_of_type_AndroidContentContext)).append('&');
+      ((StringBuilder)localObject2).append("n=").append(d());
+      return ((StringBuilder)localObject2).toString();
+    }
   }
   
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  public String d()
   {
-    QLog.d("VipARCameraController", 2, "onSurfaceChanged");
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glClearDepthf(1.0F);
-    GLES20.glEnable(2929);
-    GLES20.glDepthFunc(515);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bmtf.a(0, 0, paramInt1, paramInt2);
+    switch ()
+    {
+    default: 
+      return "wan";
+    case 1: 
+      return "wifi";
+    case 3: 
+      return "3g";
+    case 2: 
+      return "2g";
+    case 4: 
+      return "4g";
     }
-    if (this.jdField_a_of_type_Bmtc != null) {
-      this.jdField_a_of_type_Bmtc.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
-    }
-    this.jdField_b_of_type_Boolean = true;
+    return "5g";
   }
   
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  public String e()
   {
-    QLog.d("VipARCameraController", 2, "onSurfaceCreated" + this.jdField_c_of_type_Boolean);
-    this.jdField_a_of_type_Bmtg.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bmtf.d();
+    if (TextUtils.isEmpty(this.c)) {
+      this.c = blhc.c("52b7f2");
     }
-    if (this.jdField_a_of_type_Bmtc != null) {
-      this.jdField_a_of_type_Bmtc.onSurfaceCreated(paramGL10, paramEGLConfig);
-    }
-    this.jdField_a_of_type_Boolean = true;
+    return this.c;
+  }
+  
+  public String f()
+  {
+    Object localObject = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)localObject).getDefaultDisplay().getMetrics(localDisplayMetrics);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("m=").append(Build.MODEL).append('&');
+    ((StringBuilder)localObject).append("o=").append(Build.VERSION.RELEASE).append('&');
+    ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
+    ((StringBuilder)localObject).append("p=").append(localDisplayMetrics.widthPixels).append('*').append(localDisplayMetrics.heightPixels).append('&');
+    ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
+    ((StringBuilder)localObject).append("mm=").append(bhlo.d() / 1048576L).append('&');
+    ((StringBuilder)localObject).append("cf=").append(bhlo.a()).append('&');
+    ((StringBuilder)localObject).append("cc=").append(bhlo.b()).append('&');
+    ((StringBuilder)localObject).append("qqversion=").append("8.4.5");
+    return ((StringBuilder)localObject).toString();
   }
 }
 

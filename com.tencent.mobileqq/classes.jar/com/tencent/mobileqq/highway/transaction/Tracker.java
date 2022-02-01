@@ -24,7 +24,7 @@ public class Tracker
   public static final String SND_S = "SND_S";
   public static final String SUCES = "SUCES";
   public static final boolean TRACE = true;
-  public boolean bLogTime;
+  public boolean bLogTime = false;
   List<String> logStrings = Collections.synchronizedList(new ArrayList());
   
   public Tracker(int paramInt, long paramLong)

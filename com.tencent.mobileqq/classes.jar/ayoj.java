@@ -1,36 +1,40 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class ayoj
-  implements TextWatcher
+class ayoj
+  implements aqxy
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
+  ayoj(aynp paramaynp, IphonePickerView paramIphonePickerView, blir paramblir) {}
   
-  public ayoj(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (bdol.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 100))
+    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.getActivity(), 1, 2131690184, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+      aynp.a(this.jdField_a_of_type_Aynp, this.jdField_a_of_type_Aynp.c, false);
+      this.jdField_a_of_type_Blir.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.rightViewText.setEnabled(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity, String.valueOf(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity).getText())));
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+      {
+        if ((paramInt1 == 0) || (paramInt1 == 1)) {
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        }
+        this.jdField_a_of_type_Aynp.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      }
+      return;
+      this.jdField_a_of_type_Aynp.e = paramInt2;
+      continue;
+      this.jdField_a_of_type_Aynp.f = paramInt2;
+      continue;
+      this.jdField_a_of_type_Aynp.g = paramInt2;
+    }
   }
 }
 

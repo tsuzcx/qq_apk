@@ -1,66 +1,49 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.qphone.base.util.QLog;
 
-public class actg
-  extends acuc
+class actg
+  implements acuw
 {
-  public actg(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  private actg(acsz paramacsz) {}
   
-  public void onReceivedTitle(WebView paramWebView, String paramString)
+  public String a(String paramString)
   {
-    super.onReceivedTitle(paramWebView, paramString);
-    acqy.b("AbsWebView", "GdtBaseHalfScreenFragment onReceivedTitle" + paramString);
-    if (GdtBaseHalfScreenFragment.a(this.a) != null) {
-      GdtBaseHalfScreenFragment.a(this.a).setText(paramString);
-    }
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    for (;;)
+    int i = 0;
+    if ((acsz.a(this.a) == null) || (acsz.a(this.a).a() == null) || (acsz.a(this.a).a() == null))
     {
-      return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); nhe.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
-      {
-        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
-        paramWebView.addFlags(268435456);
-        try
-        {
-          this.mContext.startActivity(paramWebView);
-          return true;
-        }
-        catch (ActivityNotFoundException paramWebView)
-        {
-          acqy.d("AbsWebView", paramWebView.toString());
-          return true;
-        }
-      }
+      QLog.i("EndCardWeb", 1, "onGetAdInfo fail data empty");
+      i = 1;
     }
+    if (TextUtils.isEmpty(acsz.a(this.a).a().adsContent))
+    {
+      QLog.i("EndCardWeb", 1, "onGetAdInfo fail adsContent empty");
+      i = 1;
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(acsz.a(this.a).a().getTraceId())))
+    {
+      QLog.i("EndCardWeb", 1, "onGetAdInfo fail req=" + paramString + ",local=" + acsz.a(this.a).a().getTraceId());
+      i = 1;
+    }
+    if (i != 0)
+    {
+      if (acsz.a(this.a) != null) {
+        acsz.a(this.a).a();
+      }
+      return "";
+    }
+    return acsz.a(this.a).a().adsContent;
+  }
+  
+  public void a(String paramString)
+  {
+    if (acsz.a(this.a) != null)
+    {
+      acsz.a(this.a).a(2131362124, paramString);
+      return;
+    }
+    QLog.i("EndCardWeb", 1, "mvAnimationController null");
   }
 }
 

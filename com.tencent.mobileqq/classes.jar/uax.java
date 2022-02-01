@@ -1,56 +1,92 @@
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class uax
-  implements aaob
+class uax
+  implements BusinessObserver
 {
-  public uax(ReadInjoyWebShareHelper.4 param4, Bitmap paramBitmap) {}
+  uax(uav paramuav, Intent paramIntent) {}
   
-  public void callback(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int j = 0;
-    int i = 0;
-    int k = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("WebShareHelper", 2, "config = " + k);
-    }
-    if (k == 0)
+    uav.c(this.jdField_a_of_type_Uav);
+    if (paramBoolean) {}
+    for (;;)
     {
-      paramBundle = WxShareHelperFromReadInjoy.a();
-      str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
-      str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
-      str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
-      for (;;)
+      try
       {
-        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
-        return;
-        i = 1;
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
+        {
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          {
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = abgu.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
+            }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          }
+        }
       }
-    }
-    paramBundle = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    String str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
-    String str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
-    for (i = j;; i = 1)
-    {
-      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("WebShareHelper", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        uav.a(this.jdField_a_of_type_Uav).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = bdow.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebShareHelper", 2, "build struct msg fail");
+      }
       return;
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uax
  * JD-Core Version:    0.7.0.1
  */

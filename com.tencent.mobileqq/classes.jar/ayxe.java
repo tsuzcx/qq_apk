@@ -1,21 +1,25 @@
-import android.os.IInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
-public abstract interface ayxe
-  extends IInterface
+class ayxe
+  implements Callback
 {
-  public abstract int a();
+  ayxe(ayxd paramayxd) {}
   
-  public abstract void a();
+  public void onFailure(Call paramCall, IOException paramIOException)
+  {
+    QLog.e("ReportCenter", 4, paramIOException, new Object[0]);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract int[] a();
-  
-  public abstract boolean[] a();
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    if ((paramResponse != null) && (paramResponse.code() == 200)) {
+      QLog.i("ReportCenter", 4, "data report success.");
+    }
+  }
 }
 
 

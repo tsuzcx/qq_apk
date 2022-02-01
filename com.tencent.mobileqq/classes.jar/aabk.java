@@ -1,14 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import java.util.List;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public abstract interface aabk
-  extends aaai<aabj>
+class aabk
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public abstract void a();
+  aabk(aabj paramaabj) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<aabw> paramList, boolean paramBoolean);
+  public int getSpanSize(int paramInt)
+  {
+    paramInt = aabj.a(this.a, paramInt);
+    aabp localaabp = this.a.a(paramInt);
+    if (localaabp != null) {
+      return localaabp.getSpanCount(localaabp.getLocalPosition(paramInt));
+    }
+    return ((GridLayoutManager)aabj.a(this.a)).getSpanCount();
+  }
 }
 
 

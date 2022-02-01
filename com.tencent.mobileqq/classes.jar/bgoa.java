@@ -1,167 +1,227 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.utils.PerformanceReportUtils.1;
-import com.tencent.mobileqq.utils.PerformanceReportUtils.3;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bgoa
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private static long jdField_a_of_type_Long = 14400000L;
-  private static String jdField_a_of_type_JavaLangString = "uiswitchinterval";
-  static String[] jdField_a_of_type_ArrayOfJavaLangString = { jdField_e_of_type_JavaLangString, jdField_f_of_type_JavaLangString, jdField_g_of_type_JavaLangString, jdField_h_of_type_JavaLangString, i, j, k };
-  private static long jdField_b_of_type_Long;
-  private static String jdField_b_of_type_JavaLangString = "uiswitchflag";
-  private static long jdField_c_of_type_Long;
-  private static String jdField_c_of_type_JavaLangString = "fpsinterval";
-  private static long jdField_d_of_type_Long;
-  private static String jdField_d_of_type_JavaLangString = "fpsflag";
-  private static long jdField_e_of_type_Long;
-  private static String jdField_e_of_type_JavaLangString = "actUISwitchC2C";
-  private static long jdField_f_of_type_Long;
-  private static String jdField_f_of_type_JavaLangString = "actUISwitchGroup";
-  private static long jdField_g_of_type_Long;
-  private static String jdField_g_of_type_JavaLangString = "actUISwitchDiscuss";
-  private static long jdField_h_of_type_Long;
-  private static String jdField_h_of_type_JavaLangString = "actUISwitchQzone";
-  private static String i = "actUISwitchUserAlbum";
-  private static String j = "actUISwitchQunAlbum";
-  private static String k = "actUISwitchUserHome";
-  private static String l = "actUISwitchPushBannerMyfeed";
-  private static String m = "actUISwitchNotificationMyfeed";
-  private static String n = "actUISwitchMyfeed";
-  private static String o = "actUISwitchAioPreload";
-  private static String p = "";
+  private int jdField_a_of_type_Int;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private bgnz jdField_a_of_type_Bgnz;
+  private List<bgop> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public static String a()
+  public bgoa(bgnz parambgnz, int paramInt)
   {
-    long l2 = 0L;
-    if (gc.c) {
-      l2 = 0L | 0x200;
-    }
-    long l1 = l2;
-    if (BubbleManager.a) {
-      l1 = l2 | 0x100;
-    }
-    l2 = l1;
-    if (AvatarPendantManager.b) {
-      l2 = l1 | 0x400;
-    }
-    return String.valueOf(l2);
+    this.jdField_a_of_type_Bgnz = parambgnz;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_Bgnz.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static void a()
+  public bgop a(int paramInt)
   {
-    gc.c = false;
-    AvatarPendantManager.b = false;
-    BubbleManager.a = false;
-    apwr.a().d();
-    ThreadManager.executeOnSubThread(new PerformanceReportUtils.3());
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return null;
+    }
+    return (bgop)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt, long paramLong)
+  public void a(List<bgop> paramList)
   {
-    ThreadManager.post(new PerformanceReportUtils.1(paramInt, paramLong, paramString), 8, null, false);
-  }
-  
-  public static void a(Intent paramIntent, int paramInt, String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = paramIntent.getLongExtra("key_time_record", -1L);
-    if (l2 != -1L)
+    if (paramList != null)
     {
-      paramIntent.removeExtra("key_time_record");
-      a(BaseApplicationImpl.getContext(), paramString, paramInt, l1 - l2);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
   }
   
-  public static void a(String paramString1, int paramInt, String paramString2)
+  public int getCount()
   {
-    new bgob(paramString1, paramInt, paramString2).execute(new Void[0]);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public static void a(String paramString, long paramLong)
+  public long getItemId(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS saveCompleteTime ：tag:" + paramString + ",time:" + paramLong);
-    }
-    if ("actFPSAIO".equals(paramString)) {
-      jdField_b_of_type_Long = paramLong;
-    }
-    do
-    {
-      return;
-      if ("actFPSRecent".equals(paramString))
-      {
-        jdField_c_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSFriend".equals(paramString))
-      {
-        jdField_d_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSQZoneFriendFeed".equals(paramString))
-      {
-        jdField_e_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSQZoneMyFeed".equals(paramString))
-      {
-        jdField_f_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSQZoneUserHome".equals(paramString))
-      {
-        jdField_g_of_type_Long = paramLong;
-        return;
-      }
-    } while (!"actFPSQZoneMoodList".equals(paramString));
-    jdField_h_of_type_Long = paramLong;
+    return paramInt;
   }
   
-  private static SharedPreferences b()
+  public int getItemViewType(int paramInt)
   {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i1 = 4;; i1 = 0) {
-      return localBaseApplication.getSharedPreferences("PerformanceReportUtils", i1);
+    bgop localbgop = a(paramInt);
+    if (localbgop != null) {
+      return localbgop.jdField_a_of_type_Int;
     }
+    return 0;
   }
   
-  private static boolean b(String paramString)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    long l1;
-    if ("actFPSAIO".equals(paramString)) {
-      l1 = jdField_b_of_type_Long;
+    int i = getItemViewType(paramInt);
+    Object localObject2;
+    if (paramView == null) {
+      if (i == 0)
+      {
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559863, paramViewGroup, false);
+        localObject1 = new bgob();
+        ((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379344));
+        ((bgob)localObject1).b = ((ImageView)paramView.findViewById(2131379345));
+        ((bgob)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379346));
+        paramView.setTag(localObject1);
+        localObject2 = paramView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject2).height = (this.jdField_a_of_type_Int - 6);
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        if (!this.jdField_a_of_type_Bgnz.c) {
+          break label261;
+        }
+        localObject2 = new GradientDrawable();
+        ((GradientDrawable)localObject2).setCornerRadius(16.0F);
+        ((GradientDrawable)localObject2).setColor(-14934754);
+        paramView.setBackgroundDrawable((Drawable)localObject2);
+      }
     }
     for (;;)
     {
-      if (l1 == 0L) {}
-      while ((float)(SystemClock.uptimeMillis() - l1) / 1000.0F >= 10.0F)
+      localObject2 = a(paramInt);
+      if (localObject2 != null) {
+        break label304;
+      }
+      QLog.e("AppsGridViewBuilder", 2, "getItem() == null position:" + paramInt);
+      for (localObject1 = paramView;; localObject1 = null)
       {
-        return false;
-        if ("actFPSRecent".equals(paramString))
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return localObject1;
+        if (i == 1)
         {
-          l1 = jdField_c_of_type_Long;
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559864, paramViewGroup, false);
+          localObject1 = new bgob();
+          ((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379344));
+          paramView.setTag(localObject1);
           break;
         }
-        if (!"actFPSFriend".equals(paramString)) {
-          break label72;
+      }
+      label261:
+      localObject2 = new GradientDrawable();
+      ((GradientDrawable)localObject2).setCornerRadius(16.0F);
+      ((GradientDrawable)localObject2).setColor(-1);
+      paramView.setBackgroundDrawable((Drawable)localObject2);
+      continue;
+      localObject1 = (bgob)paramView.getTag();
+    }
+    label304:
+    ((bgob)localObject1).jdField_a_of_type_Bgop = ((bgop)localObject2);
+    if (i == 0)
+    {
+      ((bgob)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((bgop)localObject2).jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Bgnz.c) {
+        ((bgob)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
+      }
+    }
+    if (this.jdField_a_of_type_Bgnz.c)
+    {
+      ((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+      label375:
+      if (((bgop)localObject2).jdField_a_of_type_Int != 1) {
+        break label483;
+      }
+      ((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bgnz.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850744));
+      bgqr.a(((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView);
+      ((bgob)localObject1).b.setVisibility(8);
+      label425:
+      if (AppSetting.c) {
+        if (((bgop)localObject2).jdField_a_of_type_JavaLangString == null) {
+          break label580;
         }
-        l1 = jdField_d_of_type_Long;
+      }
+    }
+    label567:
+    label580:
+    for (Object localObject1 = ((bgop)localObject2).jdField_a_of_type_JavaLangString;; localObject1 = "")
+    {
+      paramView.setContentDescription((CharSequence)localObject1);
+      paramView.setClickable(true);
+      paramView.setOnClickListener(this);
+      localObject1 = paramView;
+      break;
+      ((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView.setColorFilter(0, PorterDuff.Mode.SRC_ATOP);
+      break label375;
+      label483:
+      ((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      Context localContext = this.jdField_a_of_type_Bgnz.jdField_a_of_type_AndroidContentContext;
+      ImageView localImageView = ((bgob)localObject1).jdField_a_of_type_AndroidWidgetImageView;
+      String str = ((bgop)localObject2).jdField_b_of_type_JavaLangString;
+      if (((bgop)localObject2).e == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        bgqr.a(localContext, localImageView, str, 24.0F, bool);
+        if (((bgop)localObject2).d == 0) {
+          break label567;
+        }
+        ((bgob)localObject1).b.setVisibility(0);
         break;
       }
-      return true;
-      label72:
-      l1 = 0L;
+      ((bgob)localObject1).b.setVisibility(8);
+      break label425;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    if (localObject == null) {}
+    do
+    {
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if ((localObject instanceof bgob))
+        {
+          localObject = (bgob)localObject;
+          if (((bgob)localObject).jdField_a_of_type_Bgop != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AppsGridViewBuilder", 2, "onItemClick appInfo:" + ((bgob)localObject).jdField_a_of_type_Bgop.toString());
+            }
+            if (((bgob)localObject).jdField_a_of_type_Bgop.jdField_a_of_type_Int != 1) {
+              break;
+            }
+            bgqr.a(1, this.jdField_a_of_type_Bgnz.jdField_a_of_type_Long, this.jdField_a_of_type_Bgnz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bgnz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgnz.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+          }
+        }
+      }
+    } while (((bgob)localObject).jdField_a_of_type_Bgop.jdField_a_of_type_Int != 0);
+    bgqr.a(this.jdField_a_of_type_Bgnz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bgnz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgnz.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Bgnz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((bgob)localObject).jdField_a_of_type_Bgop.jdField_b_of_type_Long, ((bgob)localObject).jdField_a_of_type_Bgop.c, 1, ((bgob)localObject).jdField_a_of_type_Bgop.d);
+    long l1 = this.jdField_a_of_type_Bgnz.jdField_a_of_type_Long;
+    long l2 = this.jdField_a_of_type_Bgnz.jdField_b_of_type_Long;
+    long l3 = ((bgob)localObject).jdField_a_of_type_Bgop.jdField_b_of_type_Long;
+    int i = this.jdField_a_of_type_Bgnz.jdField_a_of_type_Int;
+    if (((bgob)localObject).jdField_a_of_type_Bgop.jdField_a_of_type_Long == 0L) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      bdll.b(null, "dc00898", "", String.valueOf(l1), "0X800AD09", "0X800AD09", 0, 0, String.valueOf(l2), String.valueOf(l3), String.valueOf(i), (String)localObject);
+      break;
     }
   }
 }

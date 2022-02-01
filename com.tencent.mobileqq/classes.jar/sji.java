@@ -1,7 +1,18 @@
-import kotlin.Metadata;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/tvk/TVKPlayer$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sji {}
+class sji
+  extends pmr
+{
+  sji(sjh paramsjh, String paramString, List paramList)
+  {
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.a(this.jdField_a_of_type_JavaUtilList);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

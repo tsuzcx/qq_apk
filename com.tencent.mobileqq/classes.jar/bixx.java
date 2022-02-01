@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.FormEditItem;
 
 public class bixx
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bixx(ApkFileDownloadButton paramApkFileDownloadButton) {}
+  public bixx(FormEditItem paramFormEditItem) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    this.a.b(false, true);
-    paramDialogInterface.dismiss();
-    bisp.b(bisr.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    FormEditItem.a(this.a, this.a.getMeasuredWidth());
+    FormEditItem.a(this.a);
   }
 }
 

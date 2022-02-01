@@ -1,17 +1,37 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import org.json.JSONObject;
 
 public class too
-  extends tou
+  implements pye
 {
-  public too(BridgeModule paramBridgeModule)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramBridgeModule);
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    BridgeModule.access$800(this.a, paramInt2, paramIntent);
+    return ptq.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_artilce_title");
+    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeTextImp)))
+    {
+      paramContainer = (NativeTextImp)paramContainer.getNativeView();
+      paramContainer.setLines(2);
+      paramContainer.setGravity(51);
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

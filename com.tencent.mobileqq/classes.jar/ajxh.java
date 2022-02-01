@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ajxh
-  implements Comparator<ajyc>
+  implements ajxe
 {
   ajxh(ajxg paramajxg) {}
   
-  public int a(ajyc paramajyc1, ajyc paramajyc2)
+  public void a(String paramString, int paramInt)
   {
-    return (int)(paramajyc2.a.time - paramajyc1.a.time);
+    ((aobl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
+    if (paramInt == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      return;
+    }
+    if (this.a.jdField_a_of_type_Ajwk != null) {
+      this.a.jdField_a_of_type_Ajwk.a();
+    }
+    ajxg.a(this.a);
   }
 }
 

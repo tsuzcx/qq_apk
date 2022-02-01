@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
 class bnrv
-  implements View.OnClickListener
+  implements DialogInterface.OnShowListener
 {
-  bnrv(bnrr parambnrr) {}
+  bnrv(bnrt parambnrt, bjbs parambjbs) {}
   
-  public void onClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    bnrr.a(this.a).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Bjbs.hide();
   }
 }
 

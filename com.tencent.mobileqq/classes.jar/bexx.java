@@ -1,50 +1,120 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1.1;
-import java.util.UUID;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class bexx
-  extends aarl
+  extends beuf
 {
-  bexx(bexw parambexw) {}
+  private float a = 2.0F;
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public bexx(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (!paramBoolean) {}
+    try
+    {
+      this.a = paramBaseApplicationImpl.getResources().getDisplayMetrics().density;
+      return;
+    }
+    catch (Exception paramBaseApplicationImpl) {}
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, double paramDouble1, double paramDouble2)
+  {
+    Object localObject;
+    if (paramBitmap == null) {
+      localObject = null;
+    }
+    Bitmap localBitmap;
     do
     {
-      do
+      return localObject;
+      float f1 = paramBitmap.getWidth();
+      float f2 = paramBitmap.getHeight();
+      localObject = new Matrix();
+      ((Matrix)localObject).postScale((float)paramDouble1 / f1, (float)paramDouble2 / f2);
+      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, (int)f1, (int)f2, (Matrix)localObject, true);
+      localObject = localBitmap;
+    } while (localBitmap == paramBitmap);
+    paramBitmap.recycle();
+    return localBitmap;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    URL localURL = paramDownloadParams.url;
+    paramDownloadParams.url = new URL("http", localURL.getAuthority(), localURL.getFile());
+    return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = null;
+    try
+    {
+      paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), null);
+      paramDownloadParams = a(paramFile, this.a * 50.0F, this.a * 50.0F);
+      int i = paramDownloadParams.getWidth();
+      int j = paramDownloadParams.getHeight();
+      paramFile = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      paramFile.setDensity(160);
+      paramURLDrawableHandler = new Canvas(paramFile);
+      Paint localPaint = new Paint(1);
+      localPaint.setColor(-16777216);
+      Rect localRect = new Rect(0, 0, i, j);
+      RectF localRectF = new RectF(localRect);
+      float f = 10.0F * this.a;
+      paramURLDrawableHandler.drawRoundRect(localRectF, f, f, localPaint);
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+      paramURLDrawableHandler.drawBitmap(paramDownloadParams, localRect, localRect, localPaint);
+    }
+    catch (OutOfMemoryError paramFile)
+    {
+      for (;;)
       {
-        do
+        try
         {
-          return;
-          paramString = paramBundle.getString("itemKey");
-        } while (paramString == null);
-        paramString = UUID.fromString(paramString);
-      } while (!paramString.equals(this.a.a()));
-      bevx.c("TroopFileUploadFeedsSender", bevx.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult retCode:" + paramInt1);
-      paramBundle = paramBundle.getString("fileId");
-      bfrm localbfrm = bevv.a(this.a.d);
-      if (localbfrm == null)
-      {
-        bevx.a("TroopFileUploadFeedsSender", bevx.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getTroopFileMgr()=null");
-        return;
+          if (!paramDownloadParams.isRecycled()) {
+            paramDownloadParams.recycle();
+          }
+          return paramFile;
+        }
+        catch (Throwable paramDownloadParams)
+        {
+          paramDownloadParams.printStackTrace();
+        }
+        paramFile = paramFile;
+        paramFile.printStackTrace();
+        paramFile = paramDownloadParams;
       }
-      paramString = localbfrm.a(paramString);
-      if (paramString == null)
+    }
+    catch (Exception paramFile)
+    {
+      for (;;)
       {
-        bevx.a("TroopFileUploadFeedsSender", bevx.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getFileInfo()=null");
-        return;
+        paramFile.printStackTrace();
+        paramFile = paramDownloadParams;
       }
-    } while (paramInt1 != 0);
-    bevx.c("TroopFileUploadFeedsSender", bevx.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult refreshOneFile");
-    aaqt.a(bevv.a(), this.a.d, paramString.a, paramString.b, this.a.jdField_a_of_type_Aarg);
-    ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
+    }
+    return paramFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bexx
  * JD-Core Version:    0.7.0.1
  */

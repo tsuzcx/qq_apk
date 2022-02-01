@@ -1,60 +1,42 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Handler;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05494.1;
+import com.tencent.biz.qqcircle.report.QCircleTaskReportInfo;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StImage;
-import feedcloud.FeedCloudMeta.StImageUrl;
-import feedcloud.FeedCloudMeta.StPushList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
 public class vtm
 {
-  public static void a(FeedCloudMeta.StFeed paramStFeed, int paramInt)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, long paramLong1, String paramString4, int paramInt4, String paramString5, long paramLong2, String paramString6, String paramString7, String paramString8, String paramString9, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString10, String paramString11, long paramLong3, String paramString12)
   {
-    if (paramStFeed == null) {
-      QLog.d("QCircleProtoUtil", 1, "adjustFeedPicUrl stFeed is null");
+    vtw.a().a().post(new QCircleLpReportDc05494.1(paramInt1, paramInt2, paramInt3, paramString1, paramString2, paramString3, paramLong1, paramString4, paramInt4, paramString5, paramLong2, paramString6, paramString7, paramString8, paramString9, paramInt5, paramInt6, paramInt7, paramInt8, paramString10, paramString11, paramLong3, paramString12));
+  }
+  
+  public static void a(ArrayList<QCircleTaskReportInfo> paramArrayList)
+  {
+    if (paramArrayList == null) {
+      QLog.e("QCircleReportHelper_QCircleLpReportDc05494", 2, "taskReportInfos == null");
     }
     for (;;)
     {
       return;
-      if (paramStFeed.images.size() > 0)
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        paramStFeed = (FeedCloudMeta.StImage)paramStFeed.images.get(0);
-        if ((paramStFeed == null) || (paramStFeed.vecImageUrl.size() <= 0)) {
-          break;
-        }
-        Iterator localIterator = paramStFeed.vecImageUrl.get().iterator();
-        while (localIterator.hasNext())
-        {
-          FeedCloudMeta.StImageUrl localStImageUrl = (FeedCloudMeta.StImageUrl)localIterator.next();
-          if (localStImageUrl.levelType.get() == paramInt)
-          {
-            QLog.d("QCircleProtoUtil", 1, "setPic levelType:" + paramInt + "   url:" + localStImageUrl.url.get());
-            paramStFeed.picUrl.set(localStImageUrl.url.get());
-          }
-        }
+        QCircleTaskReportInfo localQCircleTaskReportInfo = (QCircleTaskReportInfo)paramArrayList.get(i);
+        a(localQCircleTaskReportInfo.up_source, localQCircleTaskReportInfo.up_type, localQCircleTaskReportInfo.is_video, localQCircleTaskReportInfo.txtinfo, localQCircleTaskReportInfo.lloc, localQCircleTaskReportInfo.vid, localQCircleTaskReportInfo.client_compress_pic_size, localQCircleTaskReportInfo.feedid, localQCircleTaskReportInfo.total_upload_num, localQCircleTaskReportInfo.shooting_time, localQCircleTaskReportInfo.edited_pic_size, localQCircleTaskReportInfo.place, localQCircleTaskReportInfo.up_place, localQCircleTaskReportInfo.shoot_product, localQCircleTaskReportInfo.shoot_model, localQCircleTaskReportInfo.client_compress_pic_width, localQCircleTaskReportInfo.client_compress_pic_height, localQCircleTaskReportInfo.edited_pic_width, localQCircleTaskReportInfo.edited_pic_height, localQCircleTaskReportInfo.picture_format, localQCircleTaskReportInfo.feed_tag, localQCircleTaskReportInfo.author_uin, localQCircleTaskReportInfo.shoot_place);
+        i += 1;
       }
     }
   }
   
-  public static void a(FeedCloudMeta.StPushList paramStPushList, int paramInt)
+  private static int c()
   {
-    int j = paramInt - paramStPushList.hasClickCount.get();
-    PBUInt32Field localPBUInt32Field = paramStPushList.status;
-    if (paramInt > 0) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      if (j >= 0) {
-        break;
-      }
-      QLog.d("QCircleProtoUtil", 1, "updateTotalPushTimeAndStatus error State");
-      return;
-    }
-    paramStPushList.totalClickCount.set(paramStPushList.totalClickCount.get() + j);
-    paramStPushList.hasClickCount.set(paramInt);
+    return 5494;
+  }
+  
+  private static int d()
+  {
+    return 36;
   }
 }
 

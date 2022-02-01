@@ -51,9 +51,9 @@ public class Transaction
   private static final int MAX_QUERY_HOLE_RSP_SIZE = 5;
   public static final long waitForSessionkeyTimeout = 30000L;
   public byte[] MD5;
-  public Tracker TRACKER;
+  public Tracker TRACKER = null;
   private AtomicBoolean TimerStarted = new AtomicBoolean(false);
-  public volatile boolean bQueryForFIN;
+  public volatile boolean bQueryForFIN = false;
   public byte[] bitmap;
   public int cacheIp;
   ITransactionCallback cb;
@@ -67,7 +67,7 @@ public class Transaction
   public CSDataHighwayHead.LoginSigHead loginSigHead;
   public byte[] mBuExtendinfo;
   public int mBuzCmdId;
-  public int mCurrentQueryFinishCount;
+  public int mCurrentQueryFinishCount = 0;
   public int mErrorCode = -1;
   private AtomicBoolean mIsPause = new AtomicBoolean(false);
   public String mMD5Str;
@@ -81,15 +81,15 @@ public class Transaction
   public String peerUin;
   public int preSendDots;
   private RandomAccessFile raf;
-  public int reUploadHwSeq;
-  public boolean reUploadTransaction;
+  public int reUploadHwSeq = 0;
+  public boolean reUploadTransaction = false;
   private ConcurrentHashMap<Integer, HwRequest> sentRequestsRetry = new ConcurrentHashMap();
   public long startTime;
   public byte[] ticket;
-  public int totalLength;
+  public int totalLength = 0;
   int transationId = -1;
-  private int transferedSize;
-  public int transferedSizeBDH;
+  private int transferedSize = 0;
+  public int transferedSizeBDH = 0;
   
   /* Error */
   public Transaction(String paramString1, int paramInt1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, ITransactionCallback paramITransactionCallback, byte[] paramArrayOfByte2, boolean paramBoolean)

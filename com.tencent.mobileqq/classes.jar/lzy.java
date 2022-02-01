@@ -1,16 +1,47 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.Context;
+import android.view.Display;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 class lzy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends mcd
 {
-  lzy(lzx paramlzx) {}
-  
-  public void onGlobalLayout()
+  public lzy(lzu paramlzu, Context paramContext, int paramInt)
   {
-    if (this.a.a == null) {
+    super(paramContext, paramInt);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    try
+    {
+      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
+      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
+        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
+      }
+      if (this.a.jdField_a_of_type_Lzz != null) {
+        this.a.jdField_a_of_type_Lzz.a(paramInt, paramBoolean);
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
+        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
+      }
+      this.a.g = paramInt;
       return;
     }
-    this.a.a(false);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
+          i = j;
+        }
+      }
+    }
   }
 }
 

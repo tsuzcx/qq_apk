@@ -1,29 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SensorBridgeInvokeHandler.register.1;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SensorBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tqv
-  extends tpt
+public class tqv
+  implements ITMAssistantDownloadClientListener
 {
-  public static final tqw a = new tqw(null);
+  public tqv(ADVideoAppDownloadManager paramADVideoAppDownloadManager) {}
   
-  public tqv(@NotNull BridgeModule paramBridgeModule)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2) {}
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    super(paramBridgeModule);
+    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.6.1(this, paramString1, paramInt1));
   }
   
-  @NotNull
-  public String a()
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
   {
-    return "sensor";
-  }
-  
-  public void a()
-  {
-    a("getLocation", (Function2)new SensorBridgeInvokeHandler.register.1(this));
+    QLog.e("ADVideoAppDownloadManager", 1, "[UniformDL] ABSdkdownload service invalid ");
   }
 }
 

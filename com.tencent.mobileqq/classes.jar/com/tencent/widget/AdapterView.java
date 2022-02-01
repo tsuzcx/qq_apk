@@ -20,10 +20,10 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import bkij;
-import bkik;
-import bkil;
-import bkpj;
+import bljm;
+import bljn;
+import bljo;
+import blqm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
@@ -59,9 +59,9 @@ public abstract class AdapterView<T extends Adapter>
   public int mOldItemCount;
   protected int mOldSelectedPosition = -1;
   long mOldSelectedRowId = -9223372036854775808L;
-  bkij mOnItemClickListener;
-  bkik mOnItemLongClickListener;
-  bkil mOnItemSelectedListener;
+  bljm mOnItemClickListener;
+  bljn mOnItemLongClickListener;
+  bljo mOnItemSelectedListener;
   @ViewDebug.ExportedProperty(category="list")
   public int mSelectedPosition = -1;
   public long mSelectedRowId = -9223372036854775808L;
@@ -152,7 +152,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    bkpj.a(paramString);
+    blqm.a(paramString);
   }
   
   public static void traceEnd() {}
@@ -403,17 +403,17 @@ public abstract class AdapterView<T extends Adapter>
     return this.mFirstPosition + getChildCount() - 1;
   }
   
-  public final bkij getOnItemClickListener()
+  public final bljm getOnItemClickListener()
   {
     return this.mOnItemClickListener;
   }
   
-  public final bkik getOnItemLongClickListener()
+  public final bljn getOnItemLongClickListener()
   {
     return this.mOnItemLongClickListener;
   }
   
-  public final bkil getOnItemSelectedListener()
+  public final bljo getOnItemSelectedListener()
   {
     return this.mOnItemSelectedListener;
   }
@@ -853,22 +853,22 @@ public abstract class AdapterView<T extends Adapter>
     throw new RuntimeException("Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead");
   }
   
-  public void setOnItemClickListener(bkij parambkij)
+  public void setOnItemClickListener(bljm parambljm)
   {
-    this.mOnItemClickListener = parambkij;
+    this.mOnItemClickListener = parambljm;
   }
   
-  public void setOnItemLongClickListener(bkik parambkik)
+  public void setOnItemLongClickListener(bljn parambljn)
   {
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.mOnItemLongClickListener = parambkik;
+    this.mOnItemLongClickListener = parambljn;
   }
   
-  public void setOnItemSelectedListener(bkil parambkil)
+  public void setOnItemSelectedListener(bljo parambljo)
   {
-    this.mOnItemSelectedListener = parambkil;
+    this.mOnItemSelectedListener = parambljo;
   }
   
   public void setSelectedPositionInt(int paramInt)

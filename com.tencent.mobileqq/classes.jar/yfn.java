@@ -1,46 +1,27 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
 class yfn
-  extends QQUIEventReceiver<yfm, wvw>
+  extends ParallelJobSegment<String, yfj>
 {
-  public yfn(@NonNull yfm paramyfm)
+  public int a;
+  
+  public yfn(yfh paramyfh, int paramInt)
   {
-    super(paramyfm);
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull yfm paramyfm, @NonNull wvw paramwvw)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if (!TextUtils.equals(String.valueOf(paramyfm.hashCode()), paramwvw.jdField_a_of_type_JavaLangString)) {
-      return;
+    ygb localygb = new ygb();
+    localygb.jdField_a_of_type_JavaLangString = paramString;
+    localygb.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localygb.c = this.jdField_a_of_type_Int;
     }
-    yqp.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramwvw);
-    if (paramwvw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      if (paramwvw.jdField_a_of_type_Int != -1) {
-        paramyfm.jdField_a_of_type_Int = paramwvw.jdField_a_of_type_Int;
-      }
-      paramyfm.jdField_a_of_type_Boolean = true;
-      paramyfm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-      if (paramwvw.e)
-      {
-        paramyfm.a(paramwvw.jdField_a_of_type_JavaUtilList, paramwvw.c, paramwvw.jdField_a_of_type_Boolean);
-        paramyfm.b = paramwvw.jdField_a_of_type_Boolean;
-      }
-    }
-    for (;;)
-    {
-      yfm.a(paramyfm).a(paramwvw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      return;
-      paramyfm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramwvw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wvw.class;
+    wow.a().a(localygb, new yfo(this, paramJobContext, paramString));
   }
 }
 

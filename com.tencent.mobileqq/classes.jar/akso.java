@@ -1,36 +1,8 @@
-public abstract class akso
-  extends bhhe
+public abstract interface akso
 {
-  private bhhe a;
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  public akso(bhhe parambhhe)
-  {
-    this.a = parambhhe;
-  }
-  
-  public void onDoneFile(bhhf parambhhf)
-  {
-    super.onDoneFile(parambhhf);
-    if (this.a != null) {
-      this.a.onDoneFile(parambhhf);
-    }
-  }
-  
-  public void onProgress(bhhf parambhhf)
-  {
-    super.onProgress(parambhhf);
-    if (this.a != null) {
-      this.a.onProgress(parambhhf);
-    }
-  }
-  
-  public boolean onStart(bhhf parambhhf)
-  {
-    if (this.a != null) {
-      this.a.onStart(parambhhf);
-    }
-    return super.onStart(parambhhf);
-  }
+  public abstract void b(long paramLong);
 }
 
 

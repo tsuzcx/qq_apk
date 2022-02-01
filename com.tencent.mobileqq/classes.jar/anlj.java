@@ -1,6 +1,8 @@
-public class anlj
+import java.io.ByteArrayOutputStream;
+
+public abstract interface anlj
 {
-  public static final String a = bhgg.a(anhk.bg);
+  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
 }
 
 

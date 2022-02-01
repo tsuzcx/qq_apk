@@ -257,14 +257,14 @@ public class AccessibilityNodeInfoCompat
     if (localSparseArray2 == null)
     {
       localSparseArray1 = new SparseArray();
-      paramView.setTag(2131378236, localSparseArray1);
+      paramView.setTag(2131378393, localSparseArray1);
     }
     return localSparseArray1;
   }
   
   private SparseArray<WeakReference<ClickableSpan>> getSpansFromViewTags(View paramView)
   {
-    return (SparseArray)paramView.getTag(2131378236);
+    return (SparseArray)paramView.getTag(2131378393);
   }
   
   private boolean hasSpans()

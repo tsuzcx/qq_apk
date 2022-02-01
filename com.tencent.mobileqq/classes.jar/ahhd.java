@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahhd
-  implements View.OnClickListener
+class ahhd
+  extends ahkx
 {
-  public ahhd(ScribbleItemBuilder paramScribbleItemBuilder) {}
-  
-  public void onClick(View paramView)
+  ahhd(ahgk paramahgk)
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(217)).a(paramView.getContext(), localMessageRecord);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahoi(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

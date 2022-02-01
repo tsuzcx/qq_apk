@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import org.jetbrains.annotations.NotNull;
 
 public final class rgl
-  implements pvb<articlesummary.BiuMultiLevel, rgy>
+  extends omo
 {
-  public rgl(SocializeFeedsInfo paramSocializeFeedsInfo) {}
+  @NotNull
+  private UgcVideo a;
   
-  public rgy a(articlesummary.BiuMultiLevel paramBiuMultiLevel)
+  public rgl(@NotNull UgcVideo paramUgcVideo)
   {
-    return this.a.a(paramBiuMultiLevel);
+    this.a = paramUgcVideo;
+  }
+  
+  @NotNull
+  public final UgcVideo a()
+  {
+    return this.a;
   }
 }
 

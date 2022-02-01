@@ -1,27 +1,27 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpff;
+import bqha;
 
 public class EditVideoSave$5
   implements Runnable
 {
-  public EditVideoSave$5(bpff parambpff) {}
+  public EditVideoSave$5(bqha parambqha) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bpff localbpff;
+    bqha localbqha;
     if (this.this$0.jdField_a_of_type_Float < 50.0F) {
-      localbpff = this.this$0;
+      localbqha = this.this$0;
     }
-    for (localbpff.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbpff.jdField_a_of_type_Float += 1.0F)
+    for (localbqha.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbqha.jdField_a_of_type_Float += 1.0F)
     {
       this.this$0.jdField_a_of_type_Float = 99.0F;
       this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
       return;
-      localbpff = this.this$0;
+      localbqha = this.this$0;
     }
     this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
     this.this$0.d();

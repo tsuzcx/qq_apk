@@ -1,185 +1,222 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.canvas.views.form.AdFormData;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemData;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormTableData;
-import com.tencent.ad.tangram.net.AdHttp;
-import com.tencent.gdtad.views.form.framework.GdtFormUpdateRegexUtil.1;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ExpInfo;
 
 public class acsw
+  implements View.OnClickListener
 {
-  private static acsx a()
-  {
-    acsx localacsx = new acsx(null);
-    localacsx.setUrl("https://h5.gdt.qq.com/player/api/form/getRegexp");
-    localacsx.method = "GET";
-    localacsx.contentType = "application/json";
-    localacsx.connectTimeoutMillis = 5000;
-    localacsx.readTimeoutMillis = 5000;
-    return localacsx;
-  }
+  private int jdField_a_of_type_Int = 0;
+  private acsx jdField_a_of_type_Acsx;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View jdField_b_of_type_AndroidViewView;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private View c;
   
-  private static Map<Integer, String> a(acsx paramacsx, JSONObject paramJSONObject)
+  public void a(float paramFloat)
   {
-    localHashMap = new HashMap();
-    if ((paramacsx != null) && (paramJSONObject != null)) {}
-    label37:
-    do
-    {
-      do
-      {
-        do
-        {
-          try
-          {
-            boolean bool = JSONObject.NULL.equals(paramJSONObject);
-            if (!bool) {
-              break label37;
-            }
-          }
-          catch (JSONException paramacsx)
-          {
-            for (;;)
-            {
-              Object localObject;
-              acqy.d("GdtFormUpdateRegexUtil", "parseRegex", paramacsx);
-            }
-            return localHashMap;
-          }
-          catch (Throwable paramacsx)
-          {
-            for (;;)
-            {
-              acqy.d("GdtFormUpdateRegexUtil", "parseRegex", paramacsx);
-            }
-          }
-          acqy.d("GdtFormUpdateRegexUtil", "parseRegex error");
-          return null;
-          paramacsx.a = paramJSONObject.getInt("code");
-          localObject = paramJSONObject.optString("message");
-          acqy.b("GdtFormUpdateRegexUtil", "onResponse code:" + paramacsx.a + " message:" + (String)localObject);
-        } while (paramacsx.a != 0);
-        paramacsx = paramJSONObject.getJSONObject("data");
-      } while ((paramacsx == null) || (JSONObject.NULL.equals(paramacsx)));
-      paramacsx = paramacsx.getJSONObject("regexMap");
-    } while ((paramacsx == null) || (JSONObject.NULL.equals(paramacsx)));
-    paramJSONObject = paramacsx.keys();
-    while (paramJSONObject.hasNext())
-    {
-      String str = (String)paramJSONObject.next();
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject = Integer.valueOf(str);
-        str = paramacsx.getString(str);
-        if (!TextUtils.isEmpty(str)) {
-          localHashMap.put(localObject, str);
-        }
-      }
-    }
-  }
-  
-  public static void a(WeakReference<AdFormData> paramWeakReference)
-  {
-    ThreadManager.post(new GdtFormUpdateRegexUtil.1(paramWeakReference), 5, null, true);
-  }
-  
-  private static void a(WeakReference<AdFormData> paramWeakReference, acsx paramacsx)
-  {
-    if ((paramacsx == null) || (!paramacsx.isSuccess()) || (paramacsx.responseData == null) || (paramWeakReference == null) || (paramWeakReference.get() == null) || (!((AdFormData)paramWeakReference.get()).isValid()))
-    {
-      acqy.d("GdtFormUpdateRegexUtil", "parseResponse error");
-      label49:
+    if ((this.jdField_b_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)) {
       return;
     }
-    for (;;)
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setAlpha(1.0F - paramFloat);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setAlpha(paramFloat);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Int == 0)
     {
-      Object localObject;
-      int i;
-      try
+      if (paramLong1 > 0L)
       {
-        localObject = Charset.forName("UTF-8");
-        if (localObject == null) {
-          break;
-        }
-        localObject = new String(paramacsx.responseData, (Charset)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        paramacsx = a(paramacsx, new JSONObject((String)localObject));
-        if (paramacsx == null) {
-          break;
-        }
-        i = 0;
-        if (i >= ((AdFormData)paramWeakReference.get()).table.getSize()) {
-          break label49;
-        }
-        localObject = ((AdFormData)paramWeakReference.get()).table.getItem(i);
-        if ((localObject == null) || (!((AdFormItemData)localObject).isValid()))
-        {
-          acqy.d("GdtFormUpdateRegexUtil", "parseResponse error");
-        }
-        else if ((localObject instanceof GdtFormItemTextBoxData))
-        {
-          localObject = (GdtFormItemTextBoxData)GdtFormItemTextBoxData.class.cast(localObject);
-          if (localObject == null) {
-            acqy.d("GdtFormUpdateRegexUtil", "parseResponse error");
-          }
-        }
+        a(anzj.a(2131704113) + paramLong2 + "s", 0);
+        return;
       }
-      catch (JSONException paramWeakReference)
+      a("", 4);
+      return;
+    }
+    if (paramLong1 > 0L)
+    {
+      a(String.format(anzj.a(2131692603), new Object[] { Long.valueOf(paramLong2) }), 0);
+      return;
+    }
+    a(anzj.a(2131692602), 0);
+  }
+  
+  public void a(Activity paramActivity, boolean paramBoolean)
+  {
+    try
+    {
+      if (this.c == null)
       {
-        acqy.d("GdtFormUpdateRegexUtil", "parseResponse", paramWeakReference);
-        break;
-        if (((GdtFormItemTextBoxData)localObject).regexType == -2147483648) {
-          break label262;
-        }
-        if (paramacsx.containsKey(Integer.valueOf(((GdtFormItemTextBoxData)localObject).regexType))) {
-          break label242;
-        }
-        acqy.d("GdtFormUpdateRegexUtil", "parseResponse error");
+        QLog.i("GdtMvTitleHelper", 1, "fitSpecialScreen bar == null");
+        return;
       }
-      catch (Throwable paramWeakReference)
+      if (!paramBoolean)
       {
-        acqy.d("GdtFormUpdateRegexUtil", "parseResponse", paramWeakReference);
+        QLog.i("GdtMvTitleHelper", 1, "fitSpecialScreen !isPortait");
+        return;
       }
-      break;
-      label242:
-      ((GdtFormItemTextBoxData)localObject).regex = ((String)paramacsx.get(Integer.valueOf(((GdtFormItemTextBoxData)localObject).regexType)));
-      label262:
-      i += 1;
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.i("GdtMvTitleHelper", 1, "initView countDownStyle =" + this.jdField_a_of_type_Int);
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+    LiuHaiUtils.a(paramActivity);
+    if (LiuHaiUtils.b())
+    {
+      localLayoutParams.topMargin = LiuHaiUtils.b(paramActivity);
+      this.c.setLayoutParams(localLayoutParams);
+      QLog.i("GdtMvTitleHelper", 1, "fitSpecialScreen addHeight = " + localLayoutParams.topMargin);
     }
   }
   
-  private static void c(WeakReference<AdFormData> paramWeakReference)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    int i = 0;
+    if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_b_of_type_AndroidWidgetImageView == null))
+    {
+      QLog.i("GdtMvTitleHelper", 1, "refreshVoiceIconDrawableInner return");
+      return;
+    }
+    QLog.i("GdtMvTitleHelper", 1, "refreshVoiceIconDrawableInner " + paramBoolean);
+    if (paramBoolean)
+    {
+      paramContext = paramContext.getResources().getDrawable(2130838487);
+      localDrawable = bhmq.a(paramContext, -16777216);
+      a(this.jdField_a_of_type_AndroidWidgetImageView, paramContext, 2131692615);
+      a(this.jdField_b_of_type_AndroidWidgetImageView, localDrawable, 2131692615);
+      return;
+    }
+    paramContext = paramContext.getResources().getDrawable(2130838488);
+    Drawable localDrawable = bhmq.a(paramContext, -16777216);
+    a(this.jdField_a_of_type_AndroidWidgetImageView, paramContext, 2131692614);
+    a(this.jdField_b_of_type_AndroidWidgetImageView, localDrawable, 2131692614);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367656));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367658));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367659));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367657);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131381362));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setAlpha(0.0F);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381364));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381365));
+    ImageView localImageView = (ImageView)paramView.findViewById(2131381363);
+    localImageView.setImageDrawable(bhmq.a(paramView.getContext().getResources().getDrawable(2130840230), -16777216));
+    this.jdField_a_of_type_AndroidViewView = localImageView;
+    paramView.findViewById(2131367665).setVisibility(8);
+    paramView.findViewById(2131381366).setVisibility(8);
+  }
+  
+  public void a(View paramView, acsx paramacsx, acsg paramacsg, acsv paramacsv)
+  {
+    if ((paramacsg != null) && (paramacsg.a() != null) && (paramacsg.a().exp_info.has()) && (paramacsg.a().exp_info.video_countdown_style.has())) {
+      this.jdField_a_of_type_Int = paramacsg.a().exp_info.video_countdown_style.get();
+    }
+    this.jdField_a_of_type_Acsx = paramacsx;
+    this.c = paramView.findViewById(2131367450);
+    if (this.c == null) {
+      QLog.i("GdtMvTitleHelper", 1, "bar == null");
+    }
     for (;;)
     {
-      acsx localacsx;
-      if (i < 3)
-      {
-        localacsx = a();
-        if (localacsx != null) {}
+      return;
+      QLog.i("GdtMvTitleHelper", 1, "initView countDownStyle =" + this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Int == 0) {
+        b(paramView);
       }
-      else
+      while (paramacsv != null)
       {
-        acqy.d("GdtFormUpdateRegexUtil", "update error");
-      }
-      do
-      {
+        paramacsv.a(this.jdField_a_of_type_AndroidWidgetImageView);
+        paramacsv.a(this.jdField_a_of_type_AndroidViewView);
         return;
-        AdHttp.send(localacsx);
-        a(paramWeakReference, localacsx);
-      } while ((localacsx.isSuccess()) && (localacsx.a == 0));
-      i += 1;
+        a(paramView);
+      }
+    }
+  }
+  
+  protected void a(ImageView paramImageView, Drawable paramDrawable, int paramInt)
+  {
+    paramImageView.setImageDrawable(paramDrawable);
+    paramImageView.setContentDescription(anzj.a(paramInt));
+  }
+  
+  protected void a(String paramString, int paramInt)
+  {
+    if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null)) {
+      return;
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
+  }
+  
+  protected void b(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367665));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367667));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367668));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367666);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131381366));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setAlpha(0.0F);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381369));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381370));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131381368);
+    paramView.findViewById(2131367656).setVisibility(8);
+    paramView.findViewById(2131381362).setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_Acsx != null)
+      {
+        this.jdField_a_of_type_Acsx.a();
+        continue;
+        if (this.jdField_a_of_type_Acsx != null) {
+          this.jdField_a_of_type_Acsx.b();
+        }
+      }
     }
   }
 }

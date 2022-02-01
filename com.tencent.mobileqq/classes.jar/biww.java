@@ -1,22 +1,40 @@
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
-class biww
-  implements View.OnClickListener
+public class biww
+  implements View.OnTouchListener
 {
-  biww(biws parambiws, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  public biww(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Biws, this.jdField_a_of_type_Int);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      i = 0;
+      if (i < this.a.getChildCount())
+      {
+        if (this.a.getChildAt(i) != paramView) {
+          break label57;
+        }
+        this.a.jdField_a_of_type_Int = i;
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.invalidate();
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Biws.dismiss();
+    label57:
+    while (paramMotionEvent.getAction() != 1) {
+      for (;;)
+      {
+        int i;
+        return false;
+        i += 1;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.invalidate();
+    return false;
   }
 }
 

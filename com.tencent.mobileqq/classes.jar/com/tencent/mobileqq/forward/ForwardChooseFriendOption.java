@@ -5,17 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import ankw;
-import anmw;
-import anni;
-import aufw;
-import aufz;
-import augm;
-import augn;
-import bcst;
-import bgjw;
-import bglp;
-import bgpa;
+import anws;
+import anyw;
+import anzj;
+import auxr;
+import auxu;
+import auyj;
+import auyk;
+import bdll;
+import bhjx;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.DiscussionInfo;
@@ -25,28 +25,27 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nmp;
+import nok;
 
 public class ForwardChooseFriendOption
-  extends aufz
+  extends auxu
 {
   public ResultReceiver a;
-  int d;
   int e = 0;
+  int f = 0;
   private String h;
   
   public ForwardChooseFriendOption(Intent paramIntent)
   {
     super(paramIntent);
-    this.jdField_d_of_type_Int = 0;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = paramIntent.getIntExtra("choose_friend_businessType", 0);
-    this.e = paramIntent.getIntExtra("choose_friend_businessSubType", 0);
+    this.e = paramIntent.getIntExtra("choose_friend_businessType", 0);
+    this.f = paramIntent.getIntExtra("choose_friend_businessSubType", 0);
   }
   
   private boolean d()
   {
-    return (this.jdField_d_of_type_Int == 1) && (this.e == 1);
+    return (this.e == 1) && (this.f == 1);
   }
   
   public Bundle a(int paramInt, Bundle paramBundle)
@@ -133,7 +132,7 @@ public class ForwardChooseFriendOption
         if (j == 3000)
         {
           localArrayList7.add(Integer.valueOf(8));
-          paramBundle = (ankw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
+          paramBundle = (anws)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
           paramInt = i;
           if (paramBundle != null)
           {
@@ -160,7 +159,7 @@ public class ForwardChooseFriendOption
       String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_dialog_sub_title");
       String str1 = str2;
       if (TextUtils.isEmpty(str2)) {
-        str1 = anni.a(2131703530);
+        str1 = anzj.a(2131703637);
       }
       return str1;
     }
@@ -170,15 +169,15 @@ public class ForwardChooseFriendOption
   public List<RecentUser> a(List<RecentUser> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    anmw localanmw = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aufw.jdField_h_of_type_JavaLangInteger))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!bgjw.a(localRecentUser.uin)) && (!bgjw.c(localRecentUser.uin)) && (!nmp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())) && (a(jdField_b_of_type_JavaLangInteger)))
+      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(auxr.jdField_h_of_type_JavaLangInteger))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
+        if ((localRecentUser.getType() == 0) && (!bhjx.a(localRecentUser.uin)) && (!bhjx.c(localRecentUser.uin)) && (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())) && (a(jdField_b_of_type_JavaLangInteger)))
         {
-          if ((localanmw != null) && (localanmw.b(localRecentUser.uin))) {
+          if ((localanyw != null) && (localanyw.b(localRecentUser.uin))) {
             localArrayList.add(localRecentUser);
           }
         }
@@ -188,7 +187,7 @@ public class ForwardChooseFriendOption
             localArrayList.add(localRecentUser);
           }
         }
-        else if (((localRecentUser.getType() == 1) && (a(c))) || ((localRecentUser.getType() == 3000) && (a(jdField_d_of_type_JavaLangInteger)))) {
+        else if (((localRecentUser.getType() == 1) && (a(c))) || ((localRecentUser.getType() == 3000) && (a(d)))) {
           localArrayList.add(localRecentUser);
         }
       }
@@ -202,10 +201,10 @@ public class ForwardChooseFriendOption
     boolean bool2 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_contacts", false);
     boolean bool3 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_groupchats", false);
     boolean bool4 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_create_group_chat", false);
-    if ((bool1) && (n()))
+    if ((bool1) && (o()))
     {
       this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-      if ((!bool2) || (!k())) {
+      if ((!bool2) || (!l())) {
         break label171;
       }
       this.jdField_a_of_type_JavaUtilSet.add(jdField_h_of_type_JavaLangInteger);
@@ -214,7 +213,7 @@ public class ForwardChooseFriendOption
         break label187;
       }
       this.jdField_a_of_type_JavaUtilSet.add(c);
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_d_of_type_JavaLangInteger);
+      this.jdField_a_of_type_JavaUtilSet.add(d);
       label123:
       if (!bool4) {
         break label216;
@@ -232,7 +231,7 @@ public class ForwardChooseFriendOption
       break label93;
       label187:
       this.jdField_a_of_type_JavaUtilSet.remove(c);
-      this.jdField_a_of_type_JavaUtilSet.remove(jdField_d_of_type_JavaLangInteger);
+      this.jdField_a_of_type_JavaUtilSet.remove(d);
       break label123;
       label216:
       this.jdField_a_of_type_JavaUtilSet.add(l);
@@ -244,8 +243,8 @@ public class ForwardChooseFriendOption
     if (d())
     {
       super.a(paramInt, paramBundle);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerselectpage.list", 0, 0, "", "", "", "");
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerconfirmpage.show", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerselectpage.list", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerconfirmpage.show", 0, 0, "", "", "", "");
     }
     label280:
     label307:
@@ -254,10 +253,10 @@ public class ForwardChooseFriendOption
       do
       {
         return;
-        if ((this.jdField_d_of_type_Int == 1) && (this.e == 2)) {
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.payerselectpage.list", 0, 0, "", "", "", "");
+        if ((this.e == 1) && (this.f == 2)) {
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.payerselectpage.list", 0, 0, "", "", "", "");
         }
-      } while ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing()));
+      } while ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing()));
       boolean bool;
       String str3;
       String str2;
@@ -288,7 +287,7 @@ public class ForwardChooseFriendOption
       }
       for (;;)
       {
-        bglp.a(this.jdField_a_of_type_AndroidAppActivity, 230, str3, str1, anni.a(2131703531), anni.a(2131703529), new augm(this, paramInt, paramBundle), new augn(this)).show();
+        bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230, str3, str1, anzj.a(2131703638), anzj.a(2131703636), new auyj(this, paramInt, paramBundle), new auyk(this)).show();
         return;
         bool = false;
         break;
@@ -319,7 +318,7 @@ public class ForwardChooseFriendOption
     String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_title");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = anni.a(2131703533);
+      str1 = anzj.a(2131703640);
     }
     return str1;
   }
@@ -341,18 +340,18 @@ public class ForwardChooseFriendOption
   
   public void d()
   {
-    String str = this.jdField_a_of_type_Bgpa.getEditString();
+    String str = this.jdField_a_of_type_Bhpc.getEditString();
     this.jdField_a_of_type_AndroidOsBundle.putString("emsg", str);
-    if ((this.jdField_d_of_type_Int <= 0) || (this.jdField_a_of_type_AndroidOsResultReceiver == null)) {}
+    if ((this.e <= 0) || (this.jdField_a_of_type_AndroidOsResultReceiver == null)) {}
     do
     {
       do
       {
         return;
-        Object localObject = a(aufw.a.intValue(), this.jdField_a_of_type_AndroidOsBundle);
+        Object localObject = a(auxr.a.intValue(), this.jdField_a_of_type_AndroidOsBundle);
         ((Bundle)localObject).putString("emsg", str);
         this.jdField_a_of_type_AndroidOsResultReceiver.send(0, (Bundle)localObject);
-        if ((this.e > 0) && (this.jdField_a_of_type_AndroidAppActivity != null))
+        if ((this.f > 0) && (this.jdField_a_of_type_AndroidAppActivity != null))
         {
           localObject = new Intent();
           ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
@@ -360,9 +359,9 @@ public class ForwardChooseFriendOption
           this.jdField_a_of_type_AndroidAppActivity.finish();
         }
       } while (!d());
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "editsay.button", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "editsay.button", 0, 0, "", "", "", "");
     } while ((TextUtils.isEmpty(str)) || (str.equals(this.jdField_h_of_type_JavaLangString)));
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerconfirmpage.send", 0, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerconfirmpage.send", 0, 0, "", "", "", "");
   }
 }
 

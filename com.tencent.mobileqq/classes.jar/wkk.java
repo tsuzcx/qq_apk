@@ -1,104 +1,43 @@
-import android.content.Intent;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
-public class wkk
-  extends wpb
+class wkk
+  implements wkp
 {
-  private boolean a(List<String> paramList)
+  private wkk(wkh paramwkh) {}
+  
+  public void a(wkq paramwkq)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
-    wpf localwpf = (wpf)wpm.a(10);
-    boolean bool;
-    if (paramList.isEmpty())
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    bcxn localbcxn = bcwu.a(2, 2);
+    MessageForShortVideo localMessageForShortVideo = paramwkq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    bcwx localbcwx = localMessageForShortVideo.getDownloadInfo(localbcxn.b);
+    if (paramwkq.jdField_a_of_type_Int == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
-      }
-      localwpf.b("key_story_msg_tab_show", Boolean.valueOf(false));
-      bool = true;
+      localbcwx.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localbcwx.a(localMessageForShortVideo.istroop, 1);
     }
     for (;;)
     {
-      ((wff)localQQAppInterface.a(98)).notifyUI(1021, true, null);
-      return bool;
-      paramList = (String)paramList.get(0);
-      if (paramList != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.infoTabShow", 2, "config content: " + paramList);
-        }
-        try
-        {
-          paramList = new JSONObject(paramList);
-          if (paramList.getInt("StoryShowInMsgTab") != 0) {}
-          for (bool = true;; bool = false)
-          {
-            localwpf.b("key_story_msg_tab_show", Boolean.valueOf(bool));
-            localwpf.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
-            bool = true;
-            break;
-          }
-          bool = false;
-        }
-        catch (JSONException paramList)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
-          }
-        }
-      }
+      localbcxn.a(localbcwx);
+      localbcxn.a(new wkl(this, paramwkq.jdField_a_of_type_JavaLangString));
+      bcwu.a(localbcxn, localQQAppInterface);
+      yuk.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramwkq }));
+      return;
+      localbcwx.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+      localbcwx.a(localMessageForShortVideo.istroop, 0);
     }
   }
   
-  private boolean b(List<String> paramList)
+  public boolean a()
   {
-    if (paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodePreloaderConfigCmd data is null!!!");
-      }
-      return false;
-    }
-    paramList = (String)paramList.get(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.infoTabShow", 2, "handleStoryMsgTabNodePreloaderConfigCmd config content: " + paramList);
-    }
-    try
-    {
-      paramList = new JSONObject(paramList);
-      int i = paramList.getInt("MsgTabPrestrainbNum");
-      paramList = paramList.getString("4G");
-      wpf localwpf = (wpf)wpm.a(10);
-      localwpf.b("key_story_msg_tab_node_preload", Integer.valueOf(i));
-      localwpf.b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
-      return true;
-    }
-    catch (JSONException paramList)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
-      }
-    }
-    return false;
+    return true;
   }
   
-  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig, List<String> paramList)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 243: 
-      return a(paramList);
-    }
-    return b(paramList);
-  }
+  public void b(wkq paramwkq) {}
 }
 
 

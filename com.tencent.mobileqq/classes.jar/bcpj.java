@@ -1,9 +1,23 @@
-import com.tencent.mobileqq.startup.step.InitHook;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class bcpj
-  implements ankk
+  extends bcpo
 {
-  public void a(boolean paramBoolean) {}
+  public View a;
+  public LinearLayout a;
+  public TextView a;
+  
+  public bcpj(ViewGroup paramViewGroup)
+  {
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559247, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131367032));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131367034));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131365649);
+  }
 }
 
 

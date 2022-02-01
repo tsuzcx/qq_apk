@@ -3,9 +3,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import arpd;
-import arph;
-import bhod;
+import aser;
+import asev;
+import bioy;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -67,7 +67,7 @@ public class PraiseJsPlugin
         if (QLog.isColorLevel()) {
           QLog.i("PraiseJsPlugin", 2, "queryLocal " + paramJsBridgeListener.toString());
         }
-        paramString1 = arph.a("queryPraiseLocal", paramString1, this.mOnRemoteResp.key, new Bundle());
+        paramString1 = asev.a("queryPraiseLocal", paramString1, this.mOnRemoteResp.key, new Bundle());
         try
         {
           if (paramJsBridgeListener.has("type")) {
@@ -94,7 +94,7 @@ public class PraiseJsPlugin
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(arph.a("setupPraise", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(asev.a("setupPraise", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
     return true;
   }
   

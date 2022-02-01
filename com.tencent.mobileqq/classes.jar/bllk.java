@@ -1,22 +1,18 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 
 public class bllk
-  extends aqce
+  implements ContextMenu.ContextMenuInfo
 {
-  public bllk(LocationDetailActivity paramLocationDetailActivity) {}
+  public long a;
+  public View a;
+  public long b;
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public bllk(View paramView, long paramLong1, long paramLong2)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
-    if (this.a.v)
-    {
-      bcst.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
-      return;
-    }
-    bcst.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

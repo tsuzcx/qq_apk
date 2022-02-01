@@ -1,38 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahsi
-  implements DialogInterface.OnClickListener
+public class ahsi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahsi(ahsd paramahsd, int paramInt, Object paramObject, ahui paramahui) {}
+  public ahsi(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 2: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
-      ahsd.a(this.jdField_a_of_type_Ahsd, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Ahui);
-      this.jdField_a_of_type_Ahsd.u();
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
-    ahsd.a(this.jdField_a_of_type_Ahsd, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Ahui);
-    this.jdField_a_of_type_Ahui.a.a = true;
-    this.jdField_a_of_type_Ahsd.u();
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

@@ -1,10 +1,23 @@
-public abstract interface wfx
+import java.util.Comparator;
+
+final class wfx
+  implements Comparator<wgg>
 {
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public int a(wgg paramwgg1, wgg paramwgg2)
+  {
+    if (paramwgg1.a() > paramwgg2.a()) {}
+    do
+    {
+      return 1;
+      if (paramwgg1.a() < paramwgg2.a()) {
+        return -1;
+      }
+      if (paramwgg1.d() == paramwgg2.d()) {
+        return 0;
+      }
+    } while (paramwgg1.d() < paramwgg2.d());
+    return -1;
+  }
 }
 
 

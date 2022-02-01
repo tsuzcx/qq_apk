@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager.OpenRedPacketResultStruct;
-
-public final class qzd
-  implements Parcelable.Creator<RIJRedPacketManager.OpenRedPacketResultStruct>
+public class qzd
 {
-  public RIJRedPacketManager.OpenRedPacketResultStruct a(Parcel paramParcel)
-  {
-    return new RIJRedPacketManager.OpenRedPacketResultStruct(paramParcel);
-  }
-  
-  public RIJRedPacketManager.OpenRedPacketResultStruct[] a(int paramInt)
-  {
-    return new RIJRedPacketManager.OpenRedPacketResultStruct[paramInt];
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public String c = "";
+  public String d = "";
 }
 
 

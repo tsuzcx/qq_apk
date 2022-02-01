@@ -1,24 +1,46 @@
-import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import java.util.ArrayList;
 
-class bfiw
-  implements Comparator<TroopMessageNavigateInfo>
+public class bfiw
+  implements Animation.AnimationListener
 {
-  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
+  public bfiw(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
+    boolean bool = false;
+    paramAnimation = this.a;
+    paramAnimation.q -= 1;
+    if (this.a.q == 0)
     {
+      this.a.p = false;
       int i = 0;
-      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
+      while (i < this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getCount())
+      {
+        paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getChildAt(i);
+        if (paramAnimation != null) {
+          paramAnimation.clearAnimation();
+        }
+        i += 1;
       }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
+      this.a.c.clearAnimation();
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(this.a.r);
+      paramAnimation = this.a.jdField_a_of_type_Bfig;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < this.a.s) {
+        bool = true;
       }
-      return 1;
+      paramAnimation.a(bool, true);
+      this.a.jdField_a_of_type_Bfig.a(this.a.jdField_a_of_type_JavaUtilArrayList);
     }
-    return -(bfhu.a(paramTroopMessageNavigateInfo1.type) - bfhu.a(paramTroopMessageNavigateInfo2.type));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

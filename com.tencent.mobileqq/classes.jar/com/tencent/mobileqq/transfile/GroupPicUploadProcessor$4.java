@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdvb;
+import betv;
 
 public class GroupPicUploadProcessor$4
   implements Runnable
 {
-  public GroupPicUploadProcessor$4(bdvb parambdvb) {}
+  public GroupPicUploadProcessor$4(betv parambetv) {}
   
   public void run()
   {

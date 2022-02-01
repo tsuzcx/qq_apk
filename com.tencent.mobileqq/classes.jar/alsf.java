@@ -1,23 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class alsf
-  extends MqqHandler
+  implements Animation.AnimationListener
 {
-  public alsf(PhoneContactTabView paramPhoneContactTabView) {}
+  public alsf(LoginView.4 param4) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    this.a.d();
+    this.a.this$0.c.setVisibility(0);
+    this.a.this$0.c.clearAnimation();
+    this.a.this$0.c.setAnimation(null);
+    this.a.this$0.a.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import anni;
-import bfpg;
+import anzj;
+import bgph;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -12,7 +12,7 @@ import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
 
 public class MessageForTroopEffectPic
   extends MessageForPic
-  implements bfpg
+  implements bgph
 {
   public int effectId;
   
@@ -73,7 +73,7 @@ public class MessageForTroopEffectPic
   
   public String getSummaryMsg()
   {
-    return anni.a(2131705358);
+    return anzj.a(2131705465);
   }
   
   public boolean isReaded()

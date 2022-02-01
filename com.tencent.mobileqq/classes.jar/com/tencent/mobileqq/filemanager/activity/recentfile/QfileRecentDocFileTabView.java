@@ -2,15 +2,15 @@ package com.tencent.mobileqq.filemanager.activity.recentfile;
 
 import android.content.Context;
 import android.text.TextUtils;
-import arav;
-import araw;
-import asti;
-import asxy;
-import asxz;
-import atvo;
-import atwl;
-import atwn;
-import atwr;
+import arqm;
+import arqn;
+import atjm;
+import atoc;
+import atod;
+import aunj;
+import auog;
+import auoi;
+import auom;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ import java.util.Set;
 public class QfileRecentDocFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private atwn jdField_a_of_type_Atwn;
+  private auoi jdField_a_of_type_Auoi;
   private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   
   public QfileRecentDocFileTabView(Context paramContext)
@@ -53,9 +53,9 @@ public class QfileRecentDocFileTabView
         do
         {
           return null;
-          paramString = atwl.a(paramString).toLowerCase();
+          paramString = auog.a(paramString).toLowerCase();
         } while ((paramString == null) || (paramString.length() == 0));
-        if (!atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity)) {
+        if (!aunj.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity)) {
           break;
         }
         paramString = b(paramString);
@@ -115,23 +115,23 @@ public class QfileRecentDocFileTabView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().H();
     }
-    while (this.jdField_a_of_type_Atwn != null)
+    while (this.jdField_a_of_type_Auoi != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Auoi);
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().M();
     }
-    this.jdField_a_of_type_Atwn = new asxy(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
+    this.jdField_a_of_type_Auoi = new atoc(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Auoi);
   }
   
   private void o()
   {
     if (this.jdField_a_of_type_JavaUtilHashMap == null)
     {
-      String str = araw.a().d();
+      String str = arqn.a().d();
       if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_JavaUtilHashMap = atvo.a(str);
+        this.jdField_a_of_type_JavaUtilHashMap = aunj.a(str);
       }
       if (this.jdField_a_of_type_JavaUtilHashMap == null) {
         this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -151,9 +151,9 @@ public class QfileRecentDocFileTabView
     }
   }
   
-  protected asti a()
+  protected atjm a()
   {
-    return new asxz(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new atod(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()
@@ -165,7 +165,7 @@ public class QfileRecentDocFileTabView
     localLinkedHashMap.put("PDF", new ArrayList());
     localLinkedHashMap.put("PPT", new ArrayList());
     Object localObject2;
-    if (atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity))
+    if (aunj.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity))
     {
       localObject1 = a();
       if ((localObject1 != null) && (((List)localObject1).size() > 0))

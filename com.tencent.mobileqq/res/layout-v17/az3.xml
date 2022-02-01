@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/n8q" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="180.0dip" android:src="@drawable/eyb" />
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/ayq" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="center" android:id="@id/n29" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <TextView android:textSize="@dimen/aym" android:textColor="#ffff596a" android:gravity="center" android:id="@id/n8r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/cs3" android:layout_marginStart="6.0dip" />
+                </LinearLayout>
+                <Button android:layout_gravity="center_horizontal" android:id="@id/mit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_marginBottom="41.0dip" android:text="@string/crg" style="@style/i9" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mgc" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="@string/wny" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mgd" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:switchChecked="false" formItem:switchText="@string/wnz" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

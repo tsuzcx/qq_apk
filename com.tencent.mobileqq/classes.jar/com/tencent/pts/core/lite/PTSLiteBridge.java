@@ -20,6 +20,14 @@ public class PTSLiteBridge
     }
     PTSLiteJniHandler.setData(paramPTSAppInstance, paramPTSItemData.getJSONData());
   }
+  
+  public String updateData(String paramString, PTSAppInstance paramPTSAppInstance)
+  {
+    if ((paramString == null) || (paramPTSAppInstance == null)) {
+      return "";
+    }
+    return PTSLiteJniHandler.updateData(paramPTSAppInstance, paramString);
+  }
 }
 
 

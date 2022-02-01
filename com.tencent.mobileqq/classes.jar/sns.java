@@ -1,71 +1,23 @@
-import android.text.TextUtils;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.26.1;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-class sns
-  implements sow
+public class sns
+  implements InvocationHandler
 {
-  sns(snh paramsnh) {}
+  public sns(FastWebActivity.26.1 param1) {}
   
-  public void onClick(View paramView)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
-    String str2 = null;
-    String str1;
-    label65:
-    String str3;
-    long l;
-    if ((!TextUtils.isEmpty(localBaseArticleInfo.getSubscribeUin())) && (!"16888".equals(localBaseArticleInfo.getSubscribeUin())))
-    {
-      str1 = localBaseArticleInfo.getSubscribeUin();
-      if ((str1 == null) || (localBaseArticleInfo.unowned)) {
-        break label279;
-      }
-      snh.a(this.a, str1);
-      str2 = localBaseArticleInfo.mVideoVid;
-      str3 = String.valueOf(localBaseArticleInfo.innerUniqueID);
-      if (this.a.jdField_a_of_type_Seu != null) {
-        break label317;
-      }
-      l = 0L;
-      label94:
-      str3 = new skc(null, str1, str2, str3, l, localBaseArticleInfo.mVideoDuration * 1000).a(this.a.c).a().a();
-      if (TextUtils.isEmpty(localBaseArticleInfo.innerUniqueID)) {
-        break label331;
-      }
-    }
-    label279:
-    label317:
-    label331:
-    for (str2 = String.valueOf(localBaseArticleInfo.innerUniqueID);; str2 = "0")
-    {
-      oat.a(null, str1, "0X8007410", "0X8007410", 0, 0, "2", "", str2, str3, false);
-      ubb.a(this.a.jdField_a_of_type_AndroidAppActivity, (ArticleInfo)localBaseArticleInfo, this.a, 56);
-      ubb.a(this.a.jdField_a_of_type_AndroidAppActivity, (ArticleInfo)localBaseArticleInfo, this.a, 56, true, null);
-      if (paramView.getId() == 2131361876) {
-        puf.a(paramView);
-      }
-      return;
-      str1 = str2;
-      if (TextUtils.isEmpty(localBaseArticleInfo.thirdUin)) {
-        break;
-      }
-      str1 = str2;
-      if ("16888".equals(localBaseArticleInfo.thirdUin)) {
-        break;
-      }
-      str1 = localBaseArticleInfo.thirdUin;
-      break;
-      if (!QLog.isColorLevel()) {
-        break label65;
-      }
-      QLog.d("ReadInJoyBaseAdapter", 2, "onClick: handleAccountViewGroupClick articleinfo unowned = " + localBaseArticleInfo.unowned);
-      break label65;
-      l = this.a.jdField_a_of_type_Seu.a();
-      break label94;
-    }
+    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.a.a).setVisibility(8);
+    QLog.d("FastWebActivity", 1, "open web page, set activity transparent");
+    return null;
   }
 }
 

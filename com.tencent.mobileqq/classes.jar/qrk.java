@@ -1,22 +1,40 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import org.jetbrains.annotations.NotNull;
 
-class qrk
-  implements View.OnTouchListener
+public abstract interface qrk
 {
-  qrk(qrf paramqrf, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
-    }
-    return false;
-  }
+  public abstract String a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(@NotNull String paramString);
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract int c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
+  
+  public abstract int g();
+  
+  public abstract int h();
 }
 
 

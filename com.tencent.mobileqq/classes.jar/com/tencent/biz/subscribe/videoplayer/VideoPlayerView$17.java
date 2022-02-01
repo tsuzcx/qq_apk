@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import aaxb;
+import abbe;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusLi
 import com.tencent.superplayer.api.ISuperPlayer;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import vuq;
+import vxr;
 
 class VideoPlayerView$17
   implements Runnable
@@ -18,8 +18,8 @@ class VideoPlayerView$17
   
   public void run()
   {
-    aaxb.a("subscribe_account_video_play", aaxb.a(aaxb.a(0L, 0L, VideoPlayerView.a(this.this$0), 0L)));
-    aaxb.a("subscribe_account_video_play_first_buffer", aaxb.a(aaxb.a(0L, System.currentTimeMillis() - VideoPlayerView.a(this.this$0), VideoPlayerView.a(this.this$0), 0L)));
+    abbe.a("subscribe_account_video_play", abbe.a(abbe.a(0L, 0L, VideoPlayerView.a(this.this$0), 0L)));
+    abbe.a("subscribe_account_video_play_first_buffer", abbe.a(abbe.a(0L, System.currentTimeMillis() - VideoPlayerView.a(this.this$0), VideoPlayerView.a(this.this$0), 0L)));
     VideoPlayerView.a(this.this$0, 10);
     VideoPlayerView.a(this.this$0, false);
     VideoPlayerView.h(this.this$0);

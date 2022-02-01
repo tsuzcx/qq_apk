@@ -1,74 +1,29 @@
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaql
-  extends aarh
+  implements View.OnClickListener
 {
-  public aaql(MoveFileActivity paramMoveFileActivity, besl parambesl) {}
+  public aaql(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.b();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileId", MoveFileActivity.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
-    localIntent.putExtra("folderId", this.jdField_a_of_type_Besl.b);
-    int i = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity().getResources().getDimensionPixelSize(2131298998);
-    if (paramBoolean)
+    if (!aazb.a("subscribe_draft_click"))
     {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
-      String str = Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a);
-      if (MoveFileActivity.c(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).equals("/"))
-      {
-        paramString = "0";
-        bcst.b(localQQAppInterface, "P_CliOper", "Grp_files", "", "file", "move_suc", 0, 0, str, paramString, "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 2, anni.a(2131705686), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(-1, localIntent);
-      }
+      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
+      localIntent.putExtra("has_shop", bool);
+      localIntent.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
+      bmtd.a((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), localIntent, 0);
+      abbe.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.finish();
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.overridePendingTransition(0, 2130772001);
-      return;
-      paramString = "1";
-      break;
-      switch (paramInt)
-      {
-      default: 
-        paramString = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getString(2131695381);
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, paramString, 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -302: 
-      case -301: 
-      case -103: 
-        bcst.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move_nofile", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705679), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -136: 
-        bcst.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705683), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -107: 
-      case -102: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705682), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -406: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705678), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -407: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705680), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

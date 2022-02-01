@@ -31,7 +31,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   10: ifne +13 -> 23
     //   13: aload_0
     //   14: getfield 20	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   17: invokestatic 43	bgmg:a	(Ljava/lang/String;)Z
+    //   17: invokestatic 43	bhmi:a	(Ljava/lang/String;)Z
     //   20: ifne +47 -> 67
     //   23: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +31 -> 57
@@ -100,7 +100,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   156: return
     //   157: new 76	java/io/File
     //   160: dup
-    //   161: getstatic 115	anhk:bu	Ljava/lang/String;
+    //   161: getstatic 115	antf:bu	Ljava/lang/String;
     //   164: invokespecial 79	java/io/File:<init>	(Ljava/lang/String;)V
     //   167: astore_2
     //   168: goto -75 -> 93

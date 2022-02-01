@@ -8,9 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anni;
-import aufz;
-import bgsp;
+import anzj;
+import auxu;
+import bhsr;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -72,7 +72,7 @@ public class MiniProgramShareUtils
       }
     }
     label77:
-    for (paramJSONObject = anni.a(2131705655);; paramJSONObject = anni.a(2131705656))
+    for (paramJSONObject = anzj.a(2131705762);; paramJSONObject = anzj.a(2131705763))
     {
       paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
       return paramJSONObject;
@@ -228,10 +228,10 @@ public class MiniProgramShareUtils
     }
     int j = 0;
     int i = j;
-    if (!bgsp.a(paramMiniArkShareModel.getTemplateId()))
+    if (!bhsr.a(paramMiniArkShareModel.getTemplateId()))
     {
       i = j;
-      if (!bgsp.a(paramMiniArkShareModel.getTemplateData())) {
+      if (!bhsr.a(paramMiniArkShareModel.getTemplateData())) {
         i = 2;
       }
     }
@@ -312,7 +312,7 @@ public class MiniProgramShareUtils
     localIntent.putExtra("miniAppShareTemplateId", paramString2);
     localIntent.putExtra("miniAppShareEvent", paramString3);
     localIntent.putExtra("miniAppShareCallbackId", paramInt2);
-    aufz.a(paramContext, localIntent);
+    auxu.a(paramContext, localIntent);
   }
   
   public static String updateImagePathToArkMeta(String paramString1, String paramString2)

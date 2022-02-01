@@ -1,164 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.music.MusicHorizontalSeekView;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class zdo
-  extends Handler
+  implements zlu
 {
-  public zdo(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public zdo(DoodleLayout paramDoodleLayout) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    super.handleMessage(paramMessage);
-    QLog.d("Q.qqstory.publish.edit.EditVideoMusicDialog", 1, new Object[] { "TESTLOG, handleMessage: ", Integer.valueOf(paramMessage.what) });
-    switch (paramMessage.what)
-    {
-    case 4: 
-    case 5: 
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.a.d();
-            paramMessage = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a();
-            if (this.a.jdField_a_of_type_Zdt != null)
-            {
-              this.a.jdField_a_of_type_Zdt.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a);
-              this.a.jdField_a_of_type_Zdt.a(paramMessage);
-              this.a.jdField_a_of_type_Zdt.notifyDataSetChanged();
-            }
-          } while (paramMessage == null);
-          if (paramMessage.jdField_b_of_type_Int == 0)
-          {
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-            return;
-          }
-          if ((paramMessage.jdField_b_of_type_Int == 1) && (!this.a.jdField_a_of_type_Boolean))
-          {
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-            return;
-          }
-          if (!TextUtils.isEmpty(paramMessage.g))
-          {
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-            return;
-          }
-        } while (!this.a.jdField_b_of_type_Boolean);
-        this.a.jdField_b_of_type_Boolean = false;
-        this.a.a(paramMessage);
-        return;
-        paramMessage = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a();
-        if ((paramMessage != null) && (paramMessage.g != null)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", 2, "MSG_PLAY_MUSIC music is NULL");
-      return;
-      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
-      if (paramMessage.d < 0) {
-        paramMessage.d = 0;
-      }
-      if (paramMessage.d + this.a.jdField_a_of_type_Int > paramMessage.f) {
-        paramMessage.d = 0;
-      }
-      paramMessage.e = (paramMessage.d + this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(3);
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
-      this.a.a(true);
-      MusicHorizontalSeekView.a((this.a.a() + 500) / 1000, this.a.getContext().getResources().getDisplayMetrics().widthPixels);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
-      this.a.b(paramMessage.d, paramMessage.e);
-      return;
-    case 11: 
-      paramMessage = this.a.jdField_a_of_type_Zdw;
-      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(paramMessage);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(3);
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
-      this.a.a(true);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
-      this.a.b(paramMessage.d, paramMessage.e);
-      return;
-    case 3: 
-      this.a.d();
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(zdw.jdField_a_of_type_Zdw);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(0);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131702504));
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.a.a(true);
-      return;
-    case 6: 
-      if ((this.a.c) && (this.a.jdField_a_of_type_Zdg != null)) {
-        this.a.jdField_a_of_type_Zdg.b();
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(zdw.jdField_b_of_type_Zdw);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(1);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131702630));
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.a.a(true);
-      return;
-    case 7: 
-      paramMessage = (String)paramMessage.obj;
-      QQToast.a(this.a.getContext(), paramMessage, 0).a();
-      this.a.a(true);
-      return;
-    case 8: 
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setPlayedPosition(this.a.jdField_b_of_type_Int);
-      return;
-    case 9: 
-      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg1);
-      return;
-    case 10: 
-      paramMessage = (zdw)paramMessage.obj;
-      paramMessage.jdField_b_of_type_Int = 4;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(paramMessage);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(4);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131702542) + paramMessage.jdField_b_of_type_JavaLangString);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.a.a(true);
-      return;
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
     }
-    paramMessage = (zdw)paramMessage.obj;
-    this.a.b(paramMessage);
   }
 }
 

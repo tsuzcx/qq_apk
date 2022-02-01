@@ -31,30 +31,30 @@ public class MsgAutoMonitorUtil
   public static final String MSG_PROXY_THREAD_NUM_BEGIN = "MSG_PROXY_THREAD_NUM_BEGIN";
   public static final String MSG_PROXY_THREAD_NUM_END = "MSG_PROXY_THREAD_NUM_END";
   public static final String MSG_TABLE_NUM_KEY = "MSG_TableNum";
-  private static MsgAutoMonitorUtil util;
-  private long addMsgNum;
-  private long addMsgTime;
-  private long dbIoNum;
-  private long dbIoTime;
-  private long dbIoTransaction;
-  private long decodeC2CNum;
-  private long decodeC2CTime;
-  private long decodeGrpDisNum;
-  private long decodeGrpDisTime;
-  private long msgFilterNum;
-  private long msgFilterTime;
-  private int msgObserverNotifyNum;
-  private long msgObserverTime;
-  private long msgProxyThreadNumBegin;
-  private long msgProxyThreadNumEnd;
-  private long notifyMsgFinishTime_C2C;
-  private long notifyMsgFinishTime_C2C_S;
-  private long notifyMsgFinishTime_Grp;
-  private long notifyMsgFinishTime_Grp_S;
-  private long notufyMsgFinishTime_Dis;
-  private long notufyMsgFinishTime_Dis_S;
-  private long proxySeqTime_Dis;
-  private long proxySeqTime_Grp;
+  private static MsgAutoMonitorUtil util = null;
+  private long addMsgNum = 0L;
+  private long addMsgTime = 0L;
+  private long dbIoNum = 0L;
+  private long dbIoTime = 0L;
+  private long dbIoTransaction = 0L;
+  private long decodeC2CNum = 0L;
+  private long decodeC2CTime = 0L;
+  private long decodeGrpDisNum = 0L;
+  private long decodeGrpDisTime = 0L;
+  private long msgFilterNum = 0L;
+  private long msgFilterTime = 0L;
+  private int msgObserverNotifyNum = 0;
+  private long msgObserverTime = 0L;
+  private long msgProxyThreadNumBegin = 0L;
+  private long msgProxyThreadNumEnd = 0L;
+  private long notifyMsgFinishTimeC2C = 0L;
+  private long notifyMsgFinishTimeC2CS = 0L;
+  private long notifyMsgFinishTimeDisS = 0L;
+  private long notifyMsgFinishTimeGrp = 0L;
+  private long notifyMsgFinishTimeGrpS = 0L;
+  private long notufyMsgFinishTimeDis = 0L;
+  private long proxySeqTimeDis = 0L;
+  private long proxySeqTimeGrp = 0L;
   
   public static MsgAutoMonitorUtil getInstance()
   {
@@ -111,42 +111,42 @@ public class MsgAutoMonitorUtil
   
   public void addProxySeqTime_Dis(long paramLong)
   {
-    this.proxySeqTime_Dis += paramLong;
+    this.proxySeqTimeDis += paramLong;
   }
   
   public void addProxySeqTime_Grp(long paramLong)
   {
-    this.proxySeqTime_Grp += paramLong;
+    this.proxySeqTimeGrp += paramLong;
   }
   
   public void markC2CFinishCost()
   {
-    this.notifyMsgFinishTime_C2C = (System.currentTimeMillis() - this.notifyMsgFinishTime_C2C_S);
+    this.notifyMsgFinishTimeC2C = (System.currentTimeMillis() - this.notifyMsgFinishTimeC2CS);
   }
   
   public void markC2CFinishTime()
   {
-    this.notifyMsgFinishTime_C2C_S = System.currentTimeMillis();
+    this.notifyMsgFinishTimeC2CS = System.currentTimeMillis();
   }
   
   public void markDisFinishCost()
   {
-    this.notufyMsgFinishTime_Dis = (System.currentTimeMillis() - this.notufyMsgFinishTime_Dis_S);
+    this.notufyMsgFinishTimeDis = (System.currentTimeMillis() - this.notifyMsgFinishTimeDisS);
   }
   
   public void markDisFinishTime()
   {
-    this.notufyMsgFinishTime_Dis_S = System.currentTimeMillis();
+    this.notifyMsgFinishTimeDisS = System.currentTimeMillis();
   }
   
   public void markGrpFinishCost()
   {
-    this.notifyMsgFinishTime_Grp = (System.currentTimeMillis() - this.notifyMsgFinishTime_Grp_S);
+    this.notifyMsgFinishTimeGrp = (System.currentTimeMillis() - this.notifyMsgFinishTimeGrpS);
   }
   
   public void markGrpFinishTime()
   {
-    this.notifyMsgFinishTime_Grp_S = System.currentTimeMillis();
+    this.notifyMsgFinishTimeGrpS = System.currentTimeMillis();
   }
   
   public void markMsgProxyThreadNumBegin(int paramInt)
@@ -189,13 +189,13 @@ public class MsgAutoMonitorUtil
     printKeyAndValue("MSG_AddMsgTime", String.valueOf(this.addMsgTime));
     printKeyAndValue("MSG_MsgFilterNum", String.valueOf(this.msgFilterNum));
     printKeyAndValue("MSG_MsgFilterTime", String.valueOf(this.msgFilterTime));
-    printKeyAndValue("MSG_PROXY_SEQ_DIS_T", String.valueOf(this.proxySeqTime_Dis));
-    printKeyAndValue("MSG_PROXY_SEQ_GRP_T", String.valueOf(this.proxySeqTime_Grp));
+    printKeyAndValue("MSG_PROXY_SEQ_DIS_T", String.valueOf(this.proxySeqTimeDis));
+    printKeyAndValue("MSG_PROXY_SEQ_GRP_T", String.valueOf(this.proxySeqTimeGrp));
     printDbAutoMonitorValue();
     printMsgObserverAutoMonitorValue();
-    printKeyAndValue("MSG_NOTIFY_FIN_C2C", String.valueOf(this.notifyMsgFinishTime_C2C));
-    printKeyAndValue("MSG_NOTIFY_FIN_GRP", String.valueOf(this.notifyMsgFinishTime_Grp));
-    printKeyAndValue("MSG_NOTIFY_FIN_DIS", String.valueOf(this.notufyMsgFinishTime_Dis));
+    printKeyAndValue("MSG_NOTIFY_FIN_C2C", String.valueOf(this.notifyMsgFinishTimeC2C));
+    printKeyAndValue("MSG_NOTIFY_FIN_GRP", String.valueOf(this.notifyMsgFinishTimeGrp));
+    printKeyAndValue("MSG_NOTIFY_FIN_DIS", String.valueOf(this.notufyMsgFinishTimeDis));
     printKeyAndValue("MSG_PROXY_THREAD_NUM_BEGIN", String.valueOf(this.msgProxyThreadNumBegin));
     printKeyAndValue("MSG_PROXY_THREAD_NUM_END", String.valueOf(this.msgProxyThreadNumEnd));
   }

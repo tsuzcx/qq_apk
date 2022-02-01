@@ -1,100 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.drawable.Drawable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class aqtm
-  extends aqkz<aqtn>
 {
-  @NonNull
-  public aqtn a(int paramInt)
+  public static Drawable a(String paramString)
   {
-    return new aqtn();
-  }
-  
-  @Nullable
-  public aqtn a(aqlg[] paramArrayOfaqlg)
-  {
-    aqtn localaqtn = new aqtn();
-    if (QLog.isColorLevel()) {
-      QLog.d("ScencesEmotionConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfaqlg.length);
-    }
-    if (paramArrayOfaqlg.length > 0)
+    String[] arrayOfString1 = paramString.split("&");
+    paramString = "";
+    int m = arrayOfString1.length;
+    int i = 0;
+    int j = 1;
+    if (i < m)
     {
-      paramArrayOfaqlg = paramArrayOfaqlg[0];
-      localaqtn.jdField_a_of_type_Int = paramArrayOfaqlg.jdField_a_of_type_Int;
-      localaqtn.jdField_a_of_type_JavaLangString = paramArrayOfaqlg.jdField_a_of_type_JavaLangString;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScencesEmotionConfigProcessor", 2, "onParsed taskId = " + localaqtn.jdField_a_of_type_Int + " | content = " + localaqtn.jdField_a_of_type_JavaLangString);
-    }
-    return localaqtn;
-  }
-  
-  public void a(aqtn paramaqtn)
-  {
-    if ((paramaqtn != null) && (paramaqtn.jdField_a_of_type_JavaLangString != null)) {
-      try
+      String[] arrayOfString2 = arrayOfString1[i].split("=");
+      if ((arrayOfString2.length == 2) || (arrayOfString2[0].equals("type"))) {}
+      for (;;)
       {
-        String str = paramaqtn.jdField_a_of_type_JavaLangString;
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (QLog.isColorLevel()) {
-          QLog.d("ScencesEmotionConfigProcessor", 2, "onUpdate content = " + paramaqtn.jdField_a_of_type_JavaLangString);
+        try
+        {
+          k = Integer.parseInt(arrayOfString2[1]);
+          i += 1;
+          j = k;
         }
-        aikl.a(localQQAppInterface, str);
-        ScenesRecommendManager.a(localQQAppInterface).a();
-        return;
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("UinToDrawableUtil", 1, "type wrong", localNumberFormatException);
+          k = j;
+          continue;
+        }
+        int k = j;
+        if (localNumberFormatException[0].equals("uin"))
+        {
+          paramString = localNumberFormatException[1];
+          k = j;
+        }
       }
-      catch (Exception paramaqtn)
-      {
-        paramaqtn.printStackTrace();
-        QLog.e("ScencesEmotionConfigProcessor", 2, "onUpdate has exception", paramaqtn);
-        return;
-      }
     }
-    QLog.e("ScencesEmotionConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
+    return a(paramString, j);
   }
   
-  public Class<aqtn> clazz()
+  public static Drawable a(String paramString, int paramInt)
   {
-    return aqtn.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScencesEmotionConfigProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScencesEmotionConfigProcessor", 2, "onReqFailed, code = " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 621;
+    return aoot.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt, 4, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtm
  * JD-Core Version:    0.7.0.1
  */

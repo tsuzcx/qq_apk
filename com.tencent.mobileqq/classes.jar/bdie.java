@@ -1,66 +1,149 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import org.json.JSONObject;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.ReportBean;
+import com.tencent.image.URLDrawable.DebuggableCallback;
+import com.tencent.mobileqq.startup.step.InitUrlDrawable;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class bdie
-  extends bdid
+  implements URLDrawable.DebuggableCallback
 {
-  private aszq jdField_a_of_type_Aszq = new bdif(this);
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private Set<String> a = new HashSet();
   
-  public bdie(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public boolean isNeedSample()
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+    return UnifiedMonitor.a().whetherReportThisTime(2);
   }
   
-  private boolean a(JSONObject paramJSONObject)
+  public void onDebug(int paramInt, Object paramObject)
   {
-    if (paramJSONObject == null) {}
-    while (TextUtils.isEmpty(paramJSONObject.optString("ownertype"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    Exception localException;
+    switch (paramInt)
     {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
-        break label247;
-      }
-      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
-        break label226;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j = localMessageRecord.senderuin;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = atvo.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
-        break label247;
-      }
-      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Aszq);
-    }
-    label226:
-    label247:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
+    default: 
+    case 1: 
+      do
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Bdia.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+        return;
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length != 5);
+      str1 = (String)paramObject[0];
+      str2 = (String)paramObject[1];
+      str3 = (String)paramObject[2];
+      str4 = (String)paramObject[3];
+      localException = (Exception)paramObject[4];
+      if (paramObject.length > 5) {
+        paramObject = (String)paramObject[5];
       }
-      this.jdField_a_of_type_Bdia.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
       break;
+    }
+    label525:
+    for (;;)
+    {
+      try
+      {
+        Object localObject = str1.split("\\(|,|\\)");
+        int j = Integer.parseInt(localObject[1]);
+        int k = Integer.parseInt(localObject[2]);
+        localObject = str2.split("\\(|,|\\)");
+        paramInt = Integer.parseInt(localObject[1]);
+        int i = Integer.parseInt(localObject[2]);
+        if ((paramInt <= 0) || (i <= 0) || (j <= 0) || (k <= 0)) {
+          break;
+        }
+        j = Math.max(Math.round(paramInt / j), Math.round(i / k));
+        if (j >= 2)
+        {
+          paramInt = paramInt * i - i * paramInt / (j * j);
+          if (paramInt <= 0) {
+            break;
+          }
+          paramInt = paramInt * 4 / 1024;
+          HashMap localHashMap = new HashMap(8);
+          localObject = InitUrlDrawable.a(localException, false);
+          String str5 = InitUrlDrawable.a((String)localObject, 1);
+          if (localObject == null) {
+            break label525;
+          }
+          localHashMap.put("stack", localObject);
+          localHashMap.put("title", str5);
+          localHashMap.put("viewsize", str1);
+          localHashMap.put("picsize", str2);
+          localHashMap.put("req_info", paramObject);
+          if (str3 != null)
+          {
+            localObject = str3.replace('&', ' ');
+            localHashMap.put("img_url", localObject);
+            UnifiedMonitor.a().addEvent(2, str4, paramInt, 0, localHashMap);
+            if (paramInt < 512) {
+              break;
+            }
+            InitUrlDrawable.a(localException, str5, str4, str1 + paramObject, str2, str3, paramInt);
+            return;
+          }
+          localObject = "";
+          continue;
+          paramObject = (Object[])paramObject;
+          if (paramObject.length != 2) {
+            break;
+          }
+          localObject = (String)paramObject[0];
+          paramObject = (Exception)paramObject[1];
+          return;
+          paramObject = (Long)paramObject;
+          if (SystemClock.uptimeMillis() % 100L != 0L) {
+            break;
+          }
+          bdmc.a(BaseApplicationImpl.sApplication).a(null, "AioPicDownloadWait", true, paramObject.longValue(), 0L, null, null);
+          return;
+          paramObject = (Long)paramObject;
+          if (SystemClock.uptimeMillis() % 100L != 0L) {
+            break;
+          }
+          bdmc.a(BaseApplicationImpl.sApplication).a(null, "AioPicDispatchWait", true, paramObject.longValue(), 0L, null, null);
+          return;
+        }
+        paramInt = 0;
+        continue;
+        paramObject = "";
+        continue;
+        localObject = "";
+      }
+      catch (Throwable paramObject)
+      {
+        return;
+      }
+    }
+  }
+  
+  public void onReport(ReportBean paramReportBean)
+  {
+    if ((paramReportBean != null) && (paramReportBean.tag != null)) {
+      bdmc.a(BaseApplicationImpl.sApplication).a(null, paramReportBean.tag, paramReportBean.suc, paramReportBean.time, paramReportBean.size, paramReportBean.params, null);
+    }
+  }
+  
+  public void onReportLoadingDrawableError()
+  {
+    bdkh.a(new IllegalArgumentException(), "ReportURLDrawableError");
+  }
+  
+  public void onReportThread(HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap != null)
+    {
+      paramHashMap.put("version", AppSetting.f());
+      paramHashMap.put("build_type", "pub");
+      bdmc.a(BaseApplicationImpl.sApplication).a(null, "URLDrawableThreadState", true, 0L, 0L, paramHashMap, null);
     }
   }
 }

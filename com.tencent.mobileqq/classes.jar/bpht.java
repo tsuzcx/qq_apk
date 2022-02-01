@@ -1,10 +1,10 @@
-public abstract interface bpht
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean;
+
+class bpht
+  extends TypeToken<AEEditorEffectGroupListBean>
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
-  
-  public abstract boolean a(bphq parambphq);
+  bpht(bphs parambphs) {}
 }
 
 

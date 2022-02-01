@@ -1,19 +1,9 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
 
 public class alsq
-  implements adsx
+  extends bczq
 {
-  public alsq(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.e = 2;
-    this.a.finish();
-  }
+  public alsq(CameraPreviewNew paramCameraPreviewNew) {}
 }
 
 

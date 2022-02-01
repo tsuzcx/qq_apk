@@ -1,41 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
-import java.util.regex.Pattern;
-import org.json.JSONObject;
-
 public class omu
 {
-  public int a;
-  public String a;
-  public Pattern a;
-  public JSONObject a;
-  public String b = "";
-  public String c = "";
-  
-  public omu(ProteusInnerData paramProteusInnerData, int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, Pattern paramPattern)
+  public static int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b = paramString2;
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      this.c = paramString3;
-    }
-    if (paramJSONObject != null) {
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    }
-    if (paramPattern != null) {
-      this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
-    }
+    return ((Integer)bnrf.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
   }
   
-  public String toString()
+  public static void a()
   {
-    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
+    bnrf.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bnrf.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
+  }
+  
+  public static int b()
+  {
+    return ((Integer)bnrf.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 

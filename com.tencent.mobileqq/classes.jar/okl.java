@@ -1,39 +1,17 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.3;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class okl
-  implements bfpo
+  implements View.OnClickListener
 {
-  public okl(ReadInJoyUploadAvatarFragment.3 param3) {}
+  public okl(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyUploadAvatarFragment.a, 2, "uploadImage->onResult");
-    }
-    if (paramJSONObject != null)
-    {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramJSONObject.optJSONObject("result") != null) {}
-      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
-      {
-        paramBundle = new Message();
-        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
-        {
-          paramBundle.what = 1003;
-          paramBundle.obj = paramJSONObject;
-        }
-        this.a.a.sendMessage(paramBundle);
-        return;
-      }
-    }
-    this.a.a.sendMessage(new Message());
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

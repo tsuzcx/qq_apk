@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.forward;
 
-import aevv;
-import agjf;
+import afez;
+import agsg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import anni;
-import aufz;
-import auja;
-import bakq;
+import anzj;
+import auxu;
+import avaz;
+import bbdj;
 import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
 import com.tencent.mobileqq.activity.miniaio.MiniMultiForwardFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,40 +27,40 @@ public class ForwardReplyMsgOption
     super(paramIntent);
   }
   
-  public static void a(aufz paramaufz, long paramLong)
+  public static void a(auxu paramauxu, long paramLong)
   {
-    String str2 = paramaufz.c();
+    String str2 = paramauxu.c();
     String str1 = str2;
     if (!TextUtils.isEmpty(str2))
     {
-      if (!str2.startsWith(anni.a(2131703571))) {
+      if (!str2.startsWith(anzj.a(2131703678))) {
         break label216;
       }
       str1 = str2.substring(4);
     }
     for (;;)
     {
-      str2 = paramaufz.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      int i = paramaufz.jdField_a_of_type_AndroidOsBundle.getInt("uintype", 0);
+      str2 = paramauxu.jdField_a_of_type_AndroidOsBundle.getString("uin");
+      int i = paramauxu.jdField_a_of_type_AndroidOsBundle.getInt("uintype", 0);
       Intent localIntent = new Intent();
-      localIntent.setClass(paramaufz.jdField_a_of_type_AndroidAppActivity, MiniChatActivity.class);
+      localIntent.setClass(paramauxu.jdField_a_of_type_AndroidAppActivity, MiniChatActivity.class);
       localIntent.addFlags(268435456);
       localIntent.putExtra("uin", str2);
       localIntent.putExtra("uintype", i);
       localIntent.putExtra("uinname", str1);
       localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("minaio_scaled_ration", paramaufz.a(0.78F));
+      localIntent.putExtra("minaio_scaled_ration", paramauxu.a(0.78F));
       localIntent.putExtra("minaio_height_ration", 0.86F);
       localIntent.putExtra("member_dialog_title", str1);
       localIntent.putExtra("structmsg_uniseq", paramLong);
-      localIntent.putExtra("multi_forward_title", anni.a(2131703563));
+      localIntent.putExtra("multi_forward_title", anzj.a(2131703670));
       localIntent.putExtra("multi_forward_type", 3);
       localIntent.putExtra("key_mini_from", 4);
-      aevv.a(paramaufz.jdField_a_of_type_AndroidAppActivity, localIntent, MiniChatActivity.class, MiniMultiForwardFragment.class);
+      afez.a(paramauxu.jdField_a_of_type_AndroidAppActivity, localIntent, MiniChatActivity.class, MiniMultiForwardFragment.class);
       return;
       label216:
       str1 = str2;
-      if (str2.startsWith(anni.a(2131703564))) {
+      if (str2.startsWith(anzj.a(2131703671))) {
         str1 = str2.substring(3);
       }
     }
@@ -70,7 +70,7 @@ public class ForwardReplyMsgOption
   {
     View localView = super.a();
     if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-      localView.findViewById(2131367047).setOnClickListener(new auja(this));
+      localView.findViewById(2131367098).setOnClickListener(new avaz(this));
     }
     return localView;
   }
@@ -80,20 +80,20 @@ public class ForwardReplyMsgOption
     String str2 = super.a();
     String str1 = str2;
     if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-      str1 = anni.a(2131703565) + str2;
+      str1 = anzj.a(2131703672) + str2;
     }
     return str1;
   }
   
   public void a()
   {
-    if (l()) {
+    if (m()) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if (m()) {
+    if (n()) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if (n()) {
+    if (o()) {
       this.jdField_a_of_type_JavaUtilSet.add(b);
     }
   }
@@ -105,7 +105,7 @@ public class ForwardReplyMsgOption
     if (l == -1L) {
       return bool;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((bakq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(l);
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((bbdj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(l);
     if (QLog.isColorLevel()) {
       QLog.d("ForwardReplyMsgOption", 2, "ForwardReplyMsgOption preloadData mChatMessage=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
     }
@@ -114,7 +114,7 @@ public class ForwardReplyMsgOption
   
   public boolean b(String paramString1, String paramString2, int paramInt)
   {
-    int i = agjf.a().a();
+    int i = agsg.a().a();
     this.jdField_a_of_type_AndroidOsBundle.putInt("KEY_MSG_FORWARD_ID", i);
     return super.b(paramString1, paramString2, paramInt);
   }

@@ -1,18 +1,17 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tfi
+  extends tfp
 {
-  public static tfd a(Context paramContext, int paramInt)
+  public tfi(BridgeModule paramBridgeModule)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new tfg(paramContext);
-    case 2: 
-      return new ReadInJoySkinAnimManager(paramContext);
-    }
-    return new tfh(paramContext);
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$700(this.a, paramInt2, paramIntent);
   }
 }
 

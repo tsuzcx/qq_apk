@@ -1,88 +1,33 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class lgo
 {
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString = "EffectFilterTools";
-  static boolean jdField_a_of_type_Boolean;
+  int jdField_a_of_type_Int = 0;
+  public String a;
+  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+  final lgr jdField_a_of_type_Lgr;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  lgo(lgr paramlgr, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    if (paramVideoAppInterface.a(1))
-    {
-      paramVideoAppInterface = (FilterItem)((lgn)paramVideoAppInterface.a(1)).a();
-      a(paramVideoAppInterface);
-      lbc.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramVideoAppInterface + "|" + jdField_a_of_type_Boolean);
-      if (!jdField_a_of_type_Boolean) {
-        break label77;
-      }
+    this.jdField_a_of_type_Lgr = paramlgr;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
     }
-    label77:
-    for (paramVideoAppInterface = "0X80076B2";; paramVideoAppInterface = "0X80076B1")
-    {
-      a(paramVideoAppInterface);
-      return;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  static void a(FilterItem paramFilterItem)
+  boolean a()
   {
-    long l1 = System.currentTimeMillis();
-    lbc.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramFilterItem + "|" + jdField_a_of_type_Long);
-    if ((paramFilterItem != null) && (!paramFilterItem.isEmptyFilter()))
-    {
-      if (jdField_a_of_type_Long != 0L)
-      {
-        long l2 = l1 - jdField_a_of_type_Long;
-        lbc.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + l2);
-        if (l2 > 5000L)
-        {
-          jdField_a_of_type_Boolean = true;
-          a(paramFilterItem, l2 / 1000L);
-        }
-      }
-      lbc.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter 33:" + jdField_a_of_type_Long);
-    }
-    jdField_a_of_type_Long = l1;
+    return this.jdField_a_of_type_Int >= 3;
   }
   
-  public static void a(FilterItem paramFilterItem, long paramLong)
+  public String toString()
   {
-    paramFilterItem = paramFilterItem.getId();
-    lbc.c(jdField_a_of_type_JavaLangString, "DataReport onStateReport:" + paramFilterItem + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("filterName", paramFilterItem);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatFilter", true, -1L, -1L, localHashMap, true);
-    try
-    {
-      UserAction.flushObjectsToDB(true);
-      return;
-    }
-    catch (Exception paramFilterItem)
-    {
-      lbc.e(jdField_a_of_type_JavaLangString, paramFilterItem.getMessage());
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    bcst.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    lbc.c(jdField_a_of_type_JavaLangString, "DataReport onSupport:" + paramBoolean);
-    if (paramBoolean) {}
-    for (String str = "0X80076AF";; str = "0X80076B0")
-    {
-      a(str);
-      return;
-    }
+    return "ItemRecord{" + this.jdField_a_of_type_Lgr + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
   }
 }
 

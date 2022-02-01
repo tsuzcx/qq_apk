@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
-class bgaj
-  implements bdfn
+public class bgaj
+  implements bgpp
 {
-  bgaj(bgai parambgai) {}
+  public bgaj(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.a.a.this$0.a();
-    if (this.a.a.a.jdField_a_of_type_Bdfn != null) {
-      this.a.a.a.jdField_a_of_type_Bdfn.a();
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
+    {
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0) {
+        this.a.j();
+      }
     }
-    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
+    else
+    {
+      return;
+    }
+    if (paramInt == 111000)
+    {
+      QQToast.a(this.a.getActivity(), 2131696766, 0).a();
+      return;
+    }
+    QQToast.a(this.a.getActivity(), 2131696826, 0).a();
   }
 }
 

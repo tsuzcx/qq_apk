@@ -1,25 +1,23 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
+import android.view.View;
 
-public class aanh
-  implements ISuperPlayer.OnVideoPreparedListener
+class aanh
+  implements bliz
 {
-  public aanh(TribeVideoPlugin paramTribeVideoPlugin, aanp paramaanp) {}
+  aanh(aanf paramaanf, String paramString1, String paramString2, aanq paramaanq, blir paramblir) {}
   
-  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramISuperPlayer.getCurrentPositionMs() == 0L) {
-      bcst.b(null, "dc00899", "BizTechReport", ((BaseActivity)TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin)).getCurrentAccountUin(), "tribe_video", "video_prepared_time", 0, 0, Long.toString(System.currentTimeMillis() - aanp.a(this.jdField_a_of_type_Aanp)), Integer.toString(bgnt.b(TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin))), "", "");
-    }
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    switch (paramInt)
     {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(5, aanp.a(this.jdField_a_of_type_Aanp));
-      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramISuperPlayer.obj = aanp.a(this.jdField_a_of_type_Aanp);
-      paramISuperPlayer.what = 5;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      do
+      {
+        return;
+      } while (aazb.a("subScribe_delete_draft"));
+      this.jdField_a_of_type_Aanf.a(this.jdField_a_of_type_JavaLangString, this.b, new aani(this));
     }
   }
 }

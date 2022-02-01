@@ -1,31 +1,28 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
-
 public class airm
-  extends anot
 {
-  public airm(AddContactsView paramAddContactsView) {}
+  public double a;
+  public double b;
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public airm(double paramDouble1, double paramDouble2)
   {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
-    }
-    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
-    }
-    if (this.a.c) {
-      this.a.f();
-    }
-    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
-    {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
-      this.a.jdField_a_of_type_Anjh.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    }
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public airm(airm paramairm)
+  {
+    a(paramairm);
+  }
+  
+  public void a(airm paramairm)
+  {
+    this.a = paramairm.a;
+    this.b = paramairm.b;
+  }
+  
+  public String toString()
+  {
+    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
   }
 }
 

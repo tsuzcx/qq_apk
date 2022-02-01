@@ -2,20 +2,20 @@ package com.tencent.mobileqq.activity.history;
 
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import anmw;
-import bglj;
+import anyw;
+import bhlk;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.List;
 
 class ChatHistoryTroopMemberFragment$3
   implements Runnable
 {
-  ChatHistoryTroopMemberFragment$3(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, anmw paramanmw) {}
+  ChatHistoryTroopMemberFragment$3(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, anyw paramanyw) {}
   
   public void run()
   {
-    Object localObject1 = bglj.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
-    bglj.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
+    Object localObject1 = bhlk.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
+    bhlk.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
     if ((localObject1 != null) && (this.a != null))
     {
       this.this$0.a(this.this$0.w);

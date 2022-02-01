@@ -1,14 +1,16 @@
-public class teu
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+
+class teu
+  implements rgw
 {
-  public final String a;
-  public final tev a;
-  public final String b;
+  teu(tet paramtet, String paramString) {}
   
-  public teu(String paramString1, String paramString2)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Tev = new tev(paramString1, paramString2);
+    BridgeModule.access$1700(this.jdField_a_of_type_Tet.a, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
   }
 }
 

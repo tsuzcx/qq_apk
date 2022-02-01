@@ -1,16 +1,24 @@
-import android.os.Bundle;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sln
-  implements BusinessObserver
+public class sln
+  implements View.OnClickListener
 {
-  sln(slm paramslm, NewIntent paramNewIntent, String paramString1, String paramString2, slp paramslp, long paramLong) {}
+  public sln(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    slm.a(this.jdField_a_of_type_Slm, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Slp, this.jdField_a_of_type_Long, paramBoolean, paramBundle);
+    ReadinjoyTabFrame.a(this.a).setText("");
+    ReadinjoyTabFrame.a(this.a).setVisibility(8);
+    ubg.a(this.a.a, true);
+    ((KandianMergeManager)this.a.a.getManager(162)).d(true);
+    ozs.a(this.a.a(), 1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

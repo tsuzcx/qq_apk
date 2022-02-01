@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aufz;
-import bgnt;
+import auxu;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
@@ -24,7 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ForwardH5HongBaoOption
-  extends aufz
+  extends auxu
 {
   private List<Integer> jdField_a_of_type_JavaUtilList;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
@@ -38,7 +38,7 @@ public class ForwardH5HongBaoOption
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 20	aufz:<init>	(Landroid/content/Intent;)V
+    //   2: invokespecial 20	auxu:<init>	(Landroid/content/Intent;)V
     //   5: aload_0
     //   6: new 22	java/util/ArrayList
     //   9: dup
@@ -233,7 +233,7 @@ public class ForwardH5HongBaoOption
     while (localIterator.hasNext())
     {
       int k = ((Integer)localIterator.next()).intValue();
-      if (l()) {
+      if (m()) {
         this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(k));
       }
     }
@@ -287,9 +287,9 @@ public class ForwardH5HongBaoOption
   
   public boolean c()
   {
-    if (!bgnt.d(BaseApplication.getContext()))
+    if (!bhnv.d(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131693946, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298998));
+      QQToast.a(BaseApplicationImpl.sApplication, 2131693963, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299011));
       return true;
     }
     for (;;)

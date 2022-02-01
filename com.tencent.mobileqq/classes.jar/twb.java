@@ -1,12 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 class twb
-  implements View.OnClickListener
+  extends aoeg
 {
-  twb(tvx paramtvx) {}
+  twb(tvz paramtvz) {}
   
-  public void onClick(View paramView) {}
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.h();
+    }
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.h();
+    }
+  }
 }
 
 

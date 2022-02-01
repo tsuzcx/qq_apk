@@ -1,9 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.manager.Manager;
 
-public abstract interface avcd
+public class avcd
+  implements Manager
 {
-  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
+  private auym jdField_a_of_type_Auym;
+  private Map<String, Map<String, Object>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  public avcd()
+  {
+    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> init");
+    this.jdField_a_of_type_Auym = new auym();
+  }
+  
+  public auym a()
+  {
+    return this.jdField_a_of_type_Auym;
+  }
+  
+  public Map<String, Object> a(String paramString)
+  {
+    return (Map)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public void a(String paramString, Map<String, Object> paramMap)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
+  }
+  
+  public void onDestroy()
+  {
+    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> onDestroy");
+    this.jdField_a_of_type_Auym.a();
+  }
 }
 
 

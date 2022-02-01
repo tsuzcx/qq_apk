@@ -1,15 +1,15 @@
 package com.tencent.biz.richframework.part.list.base;
 
+import aabu;
+import aacr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import zxz;
-import zyv;
 
 public class BaseListBlock$1
   implements Runnable
 {
-  public BaseListBlock$1(zyv paramzyv, List paramList, boolean paramBoolean1, boolean paramBoolean2) {}
+  public BaseListBlock$1(aacr paramaacr, List paramList, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class BaseListBlock$1
       if (this.jdField_a_of_type_Boolean)
       {
         this.this$0.addAll(this.jdField_a_of_type_JavaUtilList);
-        zyv.access$000(this.this$0);
+        aacr.access$000(this.this$0);
         this.this$0.getLoadInfo().a(this.b);
       }
     }

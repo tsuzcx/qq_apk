@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aegh;
+import aepl;
 
 public class ForwardTroopListFragment$MyTroopObserver$1
   implements Runnable
 {
-  public ForwardTroopListFragment$MyTroopObserver$1(aegh paramaegh) {}
+  public ForwardTroopListFragment$MyTroopObserver$1(aepl paramaepl) {}
   
   public void run()
   {

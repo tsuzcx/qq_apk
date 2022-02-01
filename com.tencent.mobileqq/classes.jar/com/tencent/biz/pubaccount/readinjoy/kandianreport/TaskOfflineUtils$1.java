@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import nko;
+import nmj;
 
 final class TaskOfflineUtils$1
   implements Runnable
@@ -13,7 +13,7 @@ final class TaskOfflineUtils$1
   {
     try
     {
-      nko.a(this.val$bid, BaseApplicationImpl.getApplication().getRuntime(), new TaskOfflineUtils.TaskAsyncBack(this.val$bid, this.val$supportVersion, this.val$offlineCallBack), true, 5, true);
+      nmj.a(this.val$bid, BaseApplicationImpl.getApplication().getRuntime(), new TaskOfflineUtils.TaskAsyncBack(this.val$bid, this.val$supportVersion, this.val$offlineCallBack), true, 5, true);
       return;
     }
     catch (Throwable localThrowable)

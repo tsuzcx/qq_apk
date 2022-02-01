@@ -1,59 +1,18 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import org.json.JSONObject;
 
-public abstract class bfrb
-  extends niv
+class bfrb
+  implements bgpp
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  bfrb(bfra parambfra, bgre parambgre, int paramInt) {}
+  
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    boolean bool2 = false;
-    mobileqq_mp.FollowResponse localFollowResponse;
-    if (paramInt == 0) {
-      localFollowResponse = new mobileqq_mp.FollowResponse();
-    }
-    for (;;)
-    {
-      try
-      {
-        localFollowResponse.mergeFrom(paramArrayOfByte);
-        if (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has()) {
-          break label146;
-        }
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt != 0) {
-          break label146;
-        }
-        bool1 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
-        bool1 = bool2;
-        continue;
-      }
-      a(bool1, paramBundle);
-      return;
-      boolean bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("TroopBindPubAccountProtocol", 2, "follow pubAccount failed, errorCode=" + paramInt);
-        bool1 = bool2;
-        continue;
-        label146:
-        bool1 = false;
-      }
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
+      this.jdField_a_of_type_Bgre.a(this.jdField_a_of_type_Bfra.a.a.a, 0, this.jdField_a_of_type_Int);
     }
   }
-  
-  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

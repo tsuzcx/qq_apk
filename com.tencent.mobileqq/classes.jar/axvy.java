@@ -1,46 +1,22 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.DragShadowBuilder;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import tencent.im.oidb.oidb_0x8e7.oidb_0x8e7.WarnMsg;
 
-@TargetApi(11)
-class axvy
-  extends View.DragShadowBuilder
+public class axvy
 {
   public int a;
+  public String a;
+  public oidb_0x8e7.WarnMsg a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public axvy(axuv paramaxuv, View paramView)
+  public String toString()
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Axuv.a.f * 1.4D));
-  }
-  
-  public void onDrawShadow(Canvas paramCanvas)
-  {
-    getView().setDrawingCacheEnabled(false);
-    getView().setDrawingCacheEnabled(true);
-    Object localObject = new Paint();
-    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
-    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
-    localObject = getView().getDrawingCache();
-    Matrix localMatrix = new Matrix();
-    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
-    localMatrix.postScale(f, f);
-    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
-  }
-  
-  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
-  {
-    int i = this.jdField_a_of_type_Int + 20;
-    int j = this.jdField_a_of_type_Int + 20;
-    paramPoint1.set(i, j);
-    paramPoint2.set(i / 2, j / 2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[level=").append(this.jdField_a_of_type_Int).append(",stockPerLike=").append(this.jdField_b_of_type_Int).append(",freeLikePeopleLimit=").append(this.c).append(",freeLikeOneLimit=").append(this.d).append(",stockCount=").append(this.e).append(",freeLikePeopleCount=").append(this.f).append(",buyStockUrl=").append(this.jdField_a_of_type_JavaLangString).append(",updateLevelUrl=").append(this.jdField_b_of_type_JavaLangString).append("]");
+    return localStringBuilder.toString();
   }
 }
 

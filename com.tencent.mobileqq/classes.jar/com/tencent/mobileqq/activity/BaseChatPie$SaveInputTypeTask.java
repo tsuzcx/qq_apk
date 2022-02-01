@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anmw;
+import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
@@ -32,14 +32,14 @@ public class BaseChatPie$SaveInputTypeTask
         return;
         localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      localObject = (anmw)((QQAppInterface)localObject).getManager(51);
+      localObject = (anyw)((QQAppInterface)localObject).getManager(51);
       if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof ExtensionInfo))
       {
-        ((anmw)localObject).a((ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
+        ((anyw)localObject).a((ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
         return;
       }
     } while (!(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof NoC2CExtensionInfo));
-    ((anmw)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, true);
+    ((anyw)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, true);
   }
 }
 

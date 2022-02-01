@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.widget.AppShortcutBarScrollView android:id="@id/ics" android:visibility="gone" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="39.0dip" android:layout_marginRight="9.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/n4m" android:layout_width="wrap_content" android:layout_height="39.0dip">
-        <LinearLayout android:orientation="horizontal" android:id="@id/n4k" android:layout_width="wrap_content" android:layout_height="39.0dip" />
-        <View android:id="@id/n4l" android:background="#ffbdbfc9" android:visibility="visible" android:layout_width="1.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="14.5dip" android:layout_marginRight="8.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/n8f" android:layout_width="wrap_content" android:layout_height="39.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/n8d" android:layout_width="wrap_content" android:layout_height="39.0dip" />
+        <View android:id="@id/n8e" android:background="#ffbdbfc9" android:visibility="visible" android:layout_width="1.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="14.5dip" android:layout_marginRight="8.0dip" />
         <LinearLayout android:orientation="horizontal" android:id="@id/h53" android:layout_width="wrap_content" android:layout_height="39.0dip" />
     </LinearLayout>
 </com.tencent.mobileqq.widget.AppShortcutBarScrollView>

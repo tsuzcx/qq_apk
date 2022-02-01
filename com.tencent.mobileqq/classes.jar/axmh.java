@@ -1,27 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
 public class axmh
-  implements bkhw
+  implements axmd
 {
-  public axmh(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bkho parambkho) {}
+  public axmh(TabPageIndicator paramTabPageIndicator) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bkho != null) {
-        this.jdField_a_of_type_Bkho.dismiss();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-      continue;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-    }
+    TabPageIndicator.a(this.a);
+    return false;
   }
 }
 

@@ -1,14 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class aicb
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aicb(aibv paramaibv, bgpa parambgpa) {}
+  aicb(aibr paramaibr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (aibr.a(this.a) != null)) {
+      this.a.r();
+    }
   }
 }
 

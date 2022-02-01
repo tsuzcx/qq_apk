@@ -1,37 +1,19 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nua
-  implements bkhw
+class nua
+  implements View.OnClickListener
 {
-  public nua(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  nua(ntc paramntc, String paramString, oag paramoag) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    if (paramView != null)
-    {
-      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-      }
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (!paramView.equals(this.a.getResources().getString(2131692389))) {
-          break label91;
-        }
-        PublicAccountAdvertisementActivity.d(this.a);
-      }
-    }
-    label91:
-    while (!paramView.equals(this.a.getResources().getString(2131692941))) {
-      return;
-    }
-    avfs.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-    bcst.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+    ntc.c(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_JavaLangString);
+    PublicAccountHandler.a(this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
+    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

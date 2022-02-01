@@ -1,56 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 public class oep
-  extends aqkz<oeo>
+  implements anui
 {
-  public static oeo a()
-  {
-    return new oeo();
-  }
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  @NonNull
-  public oeo a(int paramInt)
-  {
-    return new oeo();
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  @Nullable
-  public oeo a(aqlg[] paramArrayOfaqlg)
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      return new oeo();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    case 2: 
+      c(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 4: 
+      e(paramBoolean, paramObject);
+      return;
+    case 5: 
+      f(paramBoolean, paramObject);
+      return;
     }
-    return oeo.a(paramArrayOfaqlg[0].a);
-  }
-  
-  public void a(oeo paramoeo) {}
-  
-  public Class<oeo> clazz()
-  {
-    return oeo.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 650;
+    g(paramBoolean, paramObject);
   }
 }
 

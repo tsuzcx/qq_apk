@@ -1,36 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
-class biwj
-  implements DialogInterface.OnClickListener
+public class biwj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  biwj(biwe parambiwe, Bundle paramBundle, boolean paramBoolean, Activity paramActivity, String paramString1, DialogInterface.OnClickListener paramOnClickListener, String paramString2) {}
+  public biwj(ContainerView paramContainerView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    bisy.c("MyAppApi", "---onConfirm--onClick");
-    if (!this.jdField_a_of_type_Biwe.b())
+    if (!ContainerView.a(this.a))
     {
-      this.jdField_a_of_type_Biwe.a = new biwp(this.jdField_a_of_type_Biwe);
-      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Biwe.a.b = true;
-      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
-      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_Int = 2;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Biwe.c = true;
-      biuh.a("201", biuh.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
-      return;
-      new biwo(this.jdField_a_of_type_Biwe, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Biwe.a).execute(new Void[0]);
-      continue;
-      this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
     }
   }
 }

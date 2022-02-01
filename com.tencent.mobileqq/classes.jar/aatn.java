@@ -1,29 +1,25 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import java.io.File;
+import java.util.ArrayList;
 
-class aatn
-  implements ActionMode.Callback
+public class aatn
 {
-  aatn(aatm paramaatm, TroopGiftPanel paramTroopGiftPanel) {}
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public ArrayList<String> a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public ArrayList<String> b;
+  boolean b;
+  public String c;
+  public ArrayList<File> c = new ArrayList();
+  public String d;
+  public String e;
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public aatn(aatd paramaatd)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 

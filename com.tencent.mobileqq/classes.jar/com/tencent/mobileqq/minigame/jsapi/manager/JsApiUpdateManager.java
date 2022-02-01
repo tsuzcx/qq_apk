@@ -6,17 +6,14 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
 import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.MiniAppSubProcessorInfo;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager;
-import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class JsApiUpdateManager
 {
@@ -25,22 +22,22 @@ public class JsApiUpdateManager
   private static MiniAppConfig newerMiniAppConfig;
   private static MiniAppConfig olderMiniAppConfig;
   
-  public static void checkForUpdate(MiniAppConfig paramMiniAppConfig, GameJsPluginEngine paramGameJsPluginEngine)
+  public static void checkForUpdate(MiniAppConfig paramMiniAppConfig, MiniAppFileManager paramMiniAppFileManager, JsApiUpdateManager.IUpdateListener paramIUpdateListener)
   {
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
     {
       olderMiniAppConfig = paramMiniAppConfig;
-      QLog.d("JsApiUpdateManager", 1, "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppConfig + "], gameJsPluginEngine = [" + paramGameJsPluginEngine + "]");
+      QLog.d("JsApiUpdateManager", 1, "checkUpdate() called with: olderMiniAppInfo = [" + paramMiniAppConfig + "], callback = [" + paramIUpdateListener + "]");
       if (paramMiniAppConfig.config.verType != 3)
       {
         QLog.w("JsApiUpdateManager", 2, "checkForUpdate skip check for not online version");
-        handleUpdateCheckResult(paramGameJsPluginEngine, false);
+        handleUpdateCheckResult(paramIUpdateListener, false);
         return;
       }
-      MiniAppCmdUtil.getInstance().getAppInfoById(null, paramMiniAppConfig.config.appId, null, null, new JsApiUpdateManager.1(paramMiniAppConfig, paramGameJsPluginEngine));
+      MiniAppCmdUtil.getInstance().getAppInfoById(null, paramMiniAppConfig.config.appId, null, null, new JsApiUpdateManager.1(paramMiniAppConfig, paramIUpdateListener, paramMiniAppFileManager));
       return;
     }
-    QLog.e("JsApiUpdateManager", 1, "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppConfig + "], gameJsPluginEngine = [" + paramGameJsPluginEngine + "]");
+    QLog.e("JsApiUpdateManager", 1, "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppConfig + "], callback = [" + paramIUpdateListener + "]");
   }
   
   public static void handleUpdateApp()
@@ -77,54 +74,28 @@ public class JsApiUpdateManager
     QLog.e("JsApiUpdateManager", 1, "handleUpdateAppForMiniGame subProcessInfo = " + localMiniAppSubProcessorInfo + " sTopActivity = " + BaseActivity.sTopActivity);
   }
   
-  public static void handleUpdateCheckResult(GameJsPluginEngine paramGameJsPluginEngine, boolean paramBoolean)
+  public static void handleUpdateCheckResult(JsApiUpdateManager.IUpdateListener paramIUpdateListener, boolean paramBoolean)
   {
-    try
-    {
-      QLog.d("JsApiUpdateManager", 1, "handleUpdateCheckResult() called with: gameJsPluginEngine = [" + paramGameJsPluginEngine + "], hasUpdate = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("hasUpdate", paramBoolean);
-      if (paramGameJsPluginEngine != null) {
-        paramGameJsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onUpdateCheckResult", localJSONObject.toString(), -1);
-      }
-      return;
-    }
-    catch (JSONException paramGameJsPluginEngine)
-    {
-      QLog.e("JsApiUpdateManager", 1, "handleNativeRequest", paramGameJsPluginEngine);
+    QLog.d("JsApiUpdateManager", 1, "handleUpdateCheckResult hasUpdate:" + paramBoolean + ", callback:" + paramIUpdateListener);
+    if (paramIUpdateListener != null) {
+      paramIUpdateListener.onCheckResult(paramBoolean);
     }
   }
   
-  private static void handleUpdateDownload(GameJsPluginEngine paramGameJsPluginEngine, MiniAppConfig paramMiniAppConfig)
+  private static void handleUpdateDownload(MiniAppFileManager paramMiniAppFileManager, MiniAppConfig paramMiniAppConfig, JsApiUpdateManager.IUpdateListener paramIUpdateListener)
   {
     if (paramMiniAppConfig != null)
     {
-      QLog.d("JsApiUpdateManager", 1, "handleUpdateDownload() called with: gameJsPluginEngine = [" + paramGameJsPluginEngine + "], miniAppConfig = [" + paramMiniAppConfig + "]");
-      GpkgManager.getGpkgInfoByConfig(paramMiniAppConfig, new JsApiUpdateManager.2(paramGameJsPluginEngine));
+      QLog.d("JsApiUpdateManager", 1, "handleUpdateDownload() called with: callback = [" + paramIUpdateListener + "], miniAppConfig = [" + paramMiniAppConfig + "]");
+      GpkgManager.getGpkgInfoByConfig(paramMiniAppConfig, new JsApiUpdateManager.2(paramMiniAppFileManager, paramIUpdateListener));
     }
   }
   
-  private static void handleUpdateDownloadResult(GameJsPluginEngine paramGameJsPluginEngine, boolean paramBoolean)
+  private static void handleUpdateDownloadResult(JsApiUpdateManager.IUpdateListener paramIUpdateListener, boolean paramBoolean)
   {
-    try
-    {
-      QLog.d("JsApiUpdateManager", 1, "handleUpdateDownloadResult() called with: gameJsPluginEngine = [" + paramGameJsPluginEngine + "], success = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      if (paramBoolean) {}
-      for (String str = "success";; str = "failed")
-      {
-        localJSONObject.put("updateResult", str);
-        if (paramGameJsPluginEngine == null) {
-          break;
-        }
-        paramGameJsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onUpdateDownloadResult", localJSONObject.toString(), -1);
-        return;
-      }
-      return;
-    }
-    catch (JSONException paramGameJsPluginEngine)
-    {
-      QLog.e("JsApiUpdateManager", 1, "handleUpdateDownloadResult", paramGameJsPluginEngine);
+    QLog.d("JsApiUpdateManager", 1, "handleUpdateDownloadResult success:" + paramBoolean + ", callback:" + paramIUpdateListener);
+    if (paramIUpdateListener != null) {
+      paramIUpdateListener.onDownloadResult(paramBoolean);
     }
   }
 }

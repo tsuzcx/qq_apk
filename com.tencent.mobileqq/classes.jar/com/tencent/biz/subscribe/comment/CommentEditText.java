@@ -1,7 +1,7 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaen;
-import aaeo;
+import aaio;
+import aaip;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -16,7 +16,7 @@ public class CommentEditText
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 140;
-  private aaeo jdField_a_of_type_Aaeo;
+  private aaip jdField_a_of_type_Aaip;
   
   public CommentEditText(Context paramContext)
   {
@@ -26,7 +26,7 @@ public class CommentEditText
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    addTextChangedListener(new aaen(this));
+    addTextChangedListener(new aaio(this));
   }
   
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -59,9 +59,9 @@ public class CommentEditText
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnInputBackListener(aaeo paramaaeo)
+  public void setOnInputBackListener(aaip paramaaip)
   {
-    this.jdField_a_of_type_Aaeo = paramaaeo;
+    this.jdField_a_of_type_Aaip = paramaaip;
   }
 }
 

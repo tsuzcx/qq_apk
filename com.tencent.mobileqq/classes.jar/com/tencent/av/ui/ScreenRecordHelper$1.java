@@ -1,20 +1,20 @@
 package com.tencent.av.ui;
 
 import java.util.TimerTask;
-import miu;
-import miv;
+import mjq;
+import mjr;
 
 public class ScreenRecordHelper$1
   extends TimerTask
 {
-  public ScreenRecordHelper$1(miu parammiu) {}
+  public ScreenRecordHelper$1(mjq parammjq) {}
   
   public void run()
   {
-    if (miu.a(this.this$0) != null)
+    if (mjq.a(this.this$0) != null)
     {
-      miu.a(this.this$0, miu.a(this.this$0) + 1000L);
-      miu.a(this.this$0).a(miu.a(this.this$0));
+      mjq.a(this.this$0, mjq.a(this.this$0) + 1000L);
+      mjq.a(this.this$0).a(mjq.a(this.this$0));
     }
   }
 }

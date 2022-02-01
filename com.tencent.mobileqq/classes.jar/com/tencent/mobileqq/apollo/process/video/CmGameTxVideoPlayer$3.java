@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import amtm;
+import anfg;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
@@ -10,22 +10,22 @@ import java.util.Map;
 public class CmGameTxVideoPlayer$3
   implements Runnable
 {
-  public CmGameTxVideoPlayer$3(amtm paramamtm, String paramString, int paramInt) {}
+  public CmGameTxVideoPlayer$3(anfg paramanfg, String paramString, int paramInt) {}
   
   public void run()
   {
-    if ((amtm.a(this.this$0) == null) || (amtm.a(this.this$0) == null))
+    if ((anfg.a(this.this$0) == null) || (anfg.a(this.this$0) == null))
     {
       QLog.w("cmgame_process.CmGameTxVideoPlayer", 1, "player NOT init.");
       return;
     }
-    amtm.a(this.this$0).setVid(this.jdField_a_of_type_JavaLangString);
-    amtm.a(this.this$0).setPlayType(2);
+    anfg.a(this.this$0).setVid(this.jdField_a_of_type_JavaLangString);
+    anfg.a(this.this$0).setPlayType(2);
     TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
     HashMap localHashMap = new HashMap();
     localHashMap.put("shouq_bus_type", "bus_type_apollo");
     localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    amtm.a(this.this$0).openMediaPlayerByUrl(amtm.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0L, localTVK_PlayerVideoInfo);
+    anfg.a(this.this$0).openMediaPlayerByUrl(anfg.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0L, localTVK_PlayerVideoInfo);
   }
 }
 

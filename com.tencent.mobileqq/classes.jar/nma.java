@@ -1,17 +1,69 @@
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+
 public class nma
+  extends anud
 {
-  public final int a;
-  public final String a;
-  
-  private nma(String paramString, int paramInt)
+  public nma(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramQQAppInterface);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    if (paramObject == null)
+    {
+      notifyUI(1001, false, null);
+      return;
+    }
+    int i = ((Bundle)paramObject).getInt("result");
+    paramToServiceMsg = (BmqqUserSimpleInfo)((Bundle)paramObject).getParcelable("info");
+    boolean bool1 = bool2;
+    if (i == 0)
+    {
+      bool1 = bool2;
+      if (paramToServiceMsg != null)
+      {
+        ((bkgt)this.mApp.getManager(165)).a(paramToServiceMsg);
+        bool1 = true;
+      }
+    }
+    notifyUI(1001, bool1, paramToServiceMsg);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!nmd.a(this.app.getApplication(), paramString)) {
+      return;
+    }
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("hrtxformqq.service", this.app.getCurrentAccountUin(), "hrtxformqq.getUsrSimpleInfo");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("uin", Long.valueOf(paramString));
+    localToServiceMsg.setAttributes(localHashMap);
+    send(localToServiceMsg);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return nmb.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("hrtxformqq.getUsrSimpleInfo".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nma
  * JD-Core Version:    0.7.0.1
  */

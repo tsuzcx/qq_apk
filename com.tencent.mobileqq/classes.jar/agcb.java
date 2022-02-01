@@ -1,123 +1,69 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import common.config.service.QzoneConfig;
+import mqq.util.WeakReference;
 
 public class agcb
-  extends Drawable
+  implements View.OnClickListener
 {
-  protected int a;
-  agcc jdField_a_of_type_Agcc;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  protected Paint a;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  protected Object a;
-  protected int b = 50;
+  public agcb(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public agcb(Resources paramResources)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.b = 50;
-  }
-  
-  public void a(agcc paramagcc)
-  {
-    this.jdField_a_of_type_Agcc = paramagcc;
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof agcd)) && (((agcd)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((agcd)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
-      return;
+    Object localObject2;
+    long[] arrayOfLong;
+    Object localObject1;
+    if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
+    {
+      localObject2 = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/giftv2/detail?_wv=131075&_fv=0&_wwv=128&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
+      arrayOfLong = this.a.a.a();
+      String[] arrayOfString = this.a.a.a();
+      if (arrayOfLong.length <= 0) {
+        break label378;
+      }
+      localObject1 = "";
+      int i = 0;
+      while (i < arrayOfLong.length)
+      {
+        localObject1 = (String)localObject1 + arrayOfLong[i];
+        localObject1 = (String)localObject1 + "_";
+        String str = (String)localObject1 + arrayOfString[i];
+        int j = i + 1;
+        i = j;
+        localObject1 = str;
+        if (j < arrayOfLong.length)
+        {
+          localObject1 = str + "|";
+          i = j;
+        }
+      }
+      localObject1 = ((String)localObject2).replace("{uin_uin}", Uri.encode((String)localObject1)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
+      localObject2 = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      ((Intent)localObject2).putExtra("injectrecommend", true);
+      ((Intent)localObject2).setData(Uri.parse((String)localObject1));
+      ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject2, 1000);
+      bdll.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
     }
-    a();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangObject = new agcd(this, paramString);
-  }
-  
-  public void a(String[] paramArrayOfString, int paramInt)
-  {
-    if (paramArrayOfString == null) {}
     for (;;)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("BirthdayActivatePage", 2, "friends length=" + arrayOfLong.length + " url = " + (String)localObject1);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      try
-      {
-        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof agcd)))
-        {
-          boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
-          if (bool) {
-            continue;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("VipPendantDrawable", 1, "setPngPaths, exception=" + MsfSdkUtils.getStackTraceString(localException));
-        }
-      }
+      label378:
+      localObject1 = localObject2;
     }
-    a();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangObject = paramArrayOfString;
-    this.b = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Int == -1) {}
-    Bitmap localBitmap;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Agcc == null);
-      localBitmap = this.jdField_a_of_type_Agcc.a();
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      invalidateSelf();
-    }
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    invalidateSelf();
-  }
-  
-  public void setDither(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
-    invalidateSelf();
   }
 }
 

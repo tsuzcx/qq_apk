@@ -1,135 +1,57 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.MD5;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bexa
-  extends bewu
+class bexa
+  implements ITransactionCallback
 {
-  aare a;
-  protected List<String> a;
-  protected boolean a;
-  protected String f;
-  protected String g;
+  bexa(bewz parambewz, long paramLong) {}
   
-  protected bexa(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle, beww parambeww)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    super(paramLong, paramItem, paramBundle, parambeww);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Aare = new bexb(this);
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
+    }
+    this.jdField_a_of_type_Bewz.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bewz.b);
+    this.jdField_a_of_type_Bewz.d();
   }
   
-  public static bexa a(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle, beww parambeww)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if (paramLong == 0L)
-    {
-      bevx.a("TroopZipInnerFileDownloadWorker", bevx.a, "getWoker. troopuin=0");
-      return null;
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long));
     }
-    if (paramItem == null)
-    {
-      bevx.a("TroopZipInnerFileDownloadWorker", bevx.a, "getWoker. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      bevx.a("TroopZipInnerFileDownloadWorker", bevx.a, "getWoker. item.id=null");
-      return null;
-    }
-    if (TextUtils.isEmpty(paramItem.zipFilePath))
-    {
-      bevx.a("TroopZipInnerFileDownloadWorker", bevx.a, "getWoker. zipFilePath=null");
-      return null;
-    }
-    if (TextUtils.isEmpty(paramItem.zipInnerPath))
-    {
-      bevx.a("TroopZipInnerFileDownloadWorker", bevx.a, "getWoker. zipInnerPath=null");
-      return null;
-    }
-    return new bexa(paramLong, paramItem, paramBundle, parambeww);
+    this.jdField_a_of_type_Bewz.b.b();
+    this.jdField_a_of_type_Bewz.b.a = 1;
+    this.jdField_a_of_type_Bewz.s = this.jdField_a_of_type_Bewz.jdField_q_of_type_Long;
+    this.jdField_a_of_type_Bewz.a.a = paramArrayOfByte;
+    this.jdField_a_of_type_Bewz.e();
+    this.jdField_a_of_type_Bewz.a.a();
   }
   
-  String a(long paramLong)
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
   {
-    return (paramLong & 0xFF) + "." + (paramLong >> 8 & 0xFF) + "." + (paramLong >> 16 & 0xFF) + "." + (paramLong >> 24 & 0xFF);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    }
+    this.jdField_a_of_type_Bewz.b.a();
   }
   
-  public boolean a()
+  public void onUpdateProgress(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    return super.a();
-  }
-  
-  protected void f()
-  {
-    bevg.a(this.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 8);
-    QQAppInterface localQQAppInterface = bevv.a();
-    if (localQQAppInterface == null)
-    {
-      bevx.a("TroopZipInnerFileDownloadWorker", bevx.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqDownload app=null");
-      this.jdField_a_of_type_Bevi.c = 9;
-      this.jdField_a_of_type_Bevi.d = 902;
-      a(true, bfuj.b, bfuj.w, 1);
-      return;
+    bewz localbewz = this.jdField_a_of_type_Bewz;
+    bete localbete = this.jdField_a_of_type_Bewz.a;
+    long l = paramInt;
+    localbete.e = l;
+    localbewz.s = l;
+    if ((paramInt < this.jdField_a_of_type_Bewz.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Bewz.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Bewz.m)) {
+      this.jdField_a_of_type_Bewz.j();
     }
-    bevx.c("TroopZipInnerFileDownloadWorker", bevx.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqDownload");
-    Object localObject = bevv.a(this.b);
-    if (localObject != null)
-    {
-      besl localbesl = ((bfrm)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-      if (localbesl != null)
-      {
-        localObject = ((bfrm)localObject).a(localbesl.f);
-        if (localObject != null)
-        {
-          localbesl.e = 8;
-          ((besl)localObject).a(localbesl);
-        }
-      }
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.g = null;
-    this.jdField_a_of_type_Bevk = aaqt.a(localQQAppInterface, this.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipFilePath, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipBusId, this.jdField_a_of_type_Aare);
-    b(1);
-    bfui.b();
-  }
-  
-  protected void g()
-  {
-    QQAppInterface localQQAppInterface = bevv.a();
-    if (localQQAppInterface == null)
-    {
-      bevx.a("TroopZipInnerFileDownloadWorker", bevx.a, "[" + this.jdField_a_of_type_JavaLangString + "] startDownload app=null");
-      this.jdField_a_of_type_Bevi.c = 9;
-      this.jdField_a_of_type_Bevi.d = 902;
-      a(true, bfuj.b, bfuj.w, 1);
-      return;
-    }
-    String str = MD5.toMD5(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-    this.d = (this.jdField_c_of_type_JavaLangString + str);
-    if (this.jdField_a_of_type_Bewp != null)
-    {
-      this.jdField_a_of_type_Bewp.c();
-      this.jdField_a_of_type_Bewp = null;
-    }
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bevi.a = atwl.a(this.d);
-    long l = bevv.a();
-    bevx.c("TroopZipInnerFileDownloadWorker", bevx.a, "[" + this.jdField_a_of_type_JavaLangString + "] startDownload. nSessionId:" + l + " firstIP=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " urlParams:" + this.f + " mTmpFilePath:" + this.d);
-    this.jdField_a_of_type_Bewp = bewx.a(localQQAppInterface, l, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal, this.jdField_a_of_type_JavaUtilList, this.f, null, this.jdField_a_of_type_Boolean, this.g);
-    if (this.jdField_a_of_type_Bewp == null)
-    {
-      this.jdField_a_of_type_Bevi.c = 9;
-      this.jdField_a_of_type_Bevi.d = 903;
-      a(true, bfuj.b, bfuj.w, 1);
-      return;
-    }
-    this.jdField_a_of_type_Bewp.a(this);
-    this.jdField_a_of_type_Bewp.b();
-    b(2);
   }
 }
 

@@ -1,27 +1,75 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDateCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class xcl
-  implements URLDrawable.URLDrawableListener
+public class xcl
+  extends wpa
 {
-  xcl(xck paramxck) {}
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public xcl()
   {
-    xck.c(this.a, false);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public String a()
   {
-    xck.b(this.a, false);
+    if (QQStoryContext.a().a(this.jdField_b_of_type_JavaLangString)) {
+      return wnu.a("StorySvc.get_date_collection_list");
+    }
+    return wnu.a("StorySvc.get_others_video_list");
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public wov a(byte[] paramArrayOfByte)
   {
-    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
-    xck.a(this.a, true);
+    qqstory_service.RspDateVideoCollectionList localRspDateVideoCollectionList = new qqstory_service.RspDateVideoCollectionList();
+    try
+    {
+      localRspDateVideoCollectionList.mergeFrom(paramArrayOfByte);
+      return new xej(this.jdField_b_of_type_JavaLangString, localRspDateVideoCollectionList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.b("Q.qqstory.memories:GetDateCollectionListRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDateCollectionList localReqDateCollectionList = new qqstory_service.ReqDateCollectionList();
+    localReqDateCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqDateCollectionList.collection_count.set(this.c);
+    localReqDateCollectionList.collection_video_count.set(this.d);
+    localReqDateCollectionList.seqno.set(this.jdField_b_of_type_Long);
+    PBInt32Field localPBInt32Field = localReqDateCollectionList.is_friend;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBInt32Field.set(i);
+      if (this.e != -1) {
+        localReqDateCollectionList.time_zone.set(this.e);
+      }
+      localReqDateCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+      return localReqDateCollectionList.toByteArray();
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetDateCollectionListRequest{startCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", collectionPageSize=" + this.c + ", collectionVideoCount=" + this.d + ", seq=" + this.jdField_b_of_type_Long + ", timeZoneOffset=" + this.e + ", uin=" + this.jdField_b_of_type_JavaLangString + ", isFriend=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

@@ -1,64 +1,55 @@
 import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.lang.ref.WeakReference;
 
-public class rlv
+class rlv
+  extends OrientationEventListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private qnw jdField_a_of_type_Qnw;
-  
-  public rlv(Context paramContext, ViewGroup paramViewGroup)
+  rlv(rlu paramrlu, Context paramContext, WeakReference paramWeakReference)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Qnw = new qnw(paramContext);
-    b();
-    a(paramViewGroup);
+    super(paramContext);
   }
   
-  private String a()
+  public void onOrientationChanged(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("tips", RIJUGCAddAccountFragment.a() + " " + rlt.a());
-      localJSONObject.put("edit_profile_text", rlt.c());
-      localJSONObject.put("use_origin_account_text", rlt.b());
-      localJSONObject.put("accountUin", pha.a());
-      return localJSONObject.toString();
+    if (!rlu.a(this.jdField_a_of_type_Rlu, paramInt)) {
+      break label11;
     }
-    catch (JSONException localJSONException)
+    label11:
+    label159:
+    for (;;)
     {
-      for (;;)
+      return;
+      if (!(this.jdField_a_of_type_Rlu.a() instanceof SplashActivity))
       {
-        QLog.e("RIJUGCPopupPtsLiteBuilder", 1, "[getJsonData] error, e = " + localJSONException);
+        int i = rlu.a(this.jdField_a_of_type_Rlu);
+        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
+          paramInt = 1;
+        }
+        for (;;)
+        {
+          if (paramInt == rlu.a(this.jdField_a_of_type_Rlu)) {
+            break label159;
+          }
+          rlu.a(this.jdField_a_of_type_Rlu, paramInt);
+          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            break;
+          }
+          ((rlw)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+          return;
+          if ((paramInt > 70) && (paramInt <= 110)) {
+            paramInt = 8;
+          } else if ((paramInt > 150) && (paramInt <= 210)) {
+            paramInt = 9;
+          } else if ((paramInt > 250) && (paramInt <= 290)) {
+            paramInt = 0;
+          } else {
+            paramInt = i;
+          }
+        }
       }
     }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup == null) {
-      return;
-    }
-    Object localObject = qpn.a().a("default_feeds", "ugc_account_popup");
-    String str = a();
-    localObject = new PTSItemData.Builder().withItemID("RIJUGCPopupPtsLiteBuilder").withPageName("ugc_account_popup").withFrameTreeJson((String)localObject).withJsonData(str).build();
-    paramViewGroup.addView(this.jdField_a_of_type_Qnw.a(null, (PTSItemData)localObject));
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Qnw.a(new rlw(this));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Qnw.a();
   }
 }
 

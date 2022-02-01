@@ -1,12 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class awvu
-  extends RecyclerView.ViewHolder
+public class awvu
+  implements URLDrawable.URLDrawableListener
 {
-  public awvu(awvo paramawvo, View paramView)
+  public awvu(LoginWelcomeManager paramLoginWelcomeManager, awvy paramawvy, RecentUser paramRecentUser) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    super(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "tryShowCGRU drawable onLoadSuccessed");
+    }
+    this.jdField_a_of_type_Awvy.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Awvy.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.jdField_a_of_type_Awvy.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
+    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
   }
 }
 

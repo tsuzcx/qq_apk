@@ -1,26 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class zdy
-  implements View.OnClickListener
+public class zdy
 {
-  zdy(zdx paramzdx, zea paramzea) {}
+  public final ArrayList<zbn> a;
+  @NonNull
+  public final zas a;
+  @NonNull
+  public final zat a;
+  @NonNull
+  public final zbd a;
+  @NonNull
+  public final zbh a;
   
-  public void onClick(View paramView)
+  public zdy(@NonNull zbh paramzbh, @NonNull zbd paramzbd, @NonNull zat paramzat, @NonNull zas paramzas)
   {
-    if (!this.jdField_a_of_type_Zea.a()) {
-      this.jdField_a_of_type_Zea.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Zdx.a != null) {
-        this.jdField_a_of_type_Zdx.a.a(this.jdField_a_of_type_Zdx);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Zea.c();
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Zbh = paramzbh;
+    this.jdField_a_of_type_Zbd = paramzbd;
+    this.jdField_a_of_type_Zat = paramzat;
+    this.jdField_a_of_type_Zas = paramzas;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramzat);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramzbd);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramzbh);
   }
 }
 

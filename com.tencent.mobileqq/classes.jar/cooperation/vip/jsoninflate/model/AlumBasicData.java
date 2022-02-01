@@ -4,8 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bmty;
-import bmtz;
+import bnvg;
+import bnvh;
+import com.tencent.gdtad.statistics.GdtReporter;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -13,6 +14,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
 import cooperation.vip.pb.vac_adv_get.DefaultConf;
 import cooperation.vip.pb.vac_adv_get.DropList;
 import cooperation.vip.pb.vac_adv_get.VacAdvMetaMsg;
@@ -33,12 +35,13 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class AlumBasicData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AlumBasicData> CREATOR = new bmty();
+  public static final Parcelable.Creator<AlumBasicData> CREATOR = new bnvg();
   public int a;
   public long a;
   public String a;
-  public List<bmtz> a;
+  public List<bnvh> a;
   public qq_ad_get.QQAdGetRsp.AdInfo a;
+  public boolean a;
   public int b;
   public String b;
   public int c;
@@ -93,7 +96,7 @@ public class AlumBasicData
       this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.mergeFrom(arrayOfByte);
       this.jdField_h_of_type_JavaLangString = paramParcel.readString();
       this.i = paramParcel.readString();
-      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, bmtz.class.getClassLoader());
+      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, bnvh.class.getClassLoader());
       this.jdField_d_of_type_Int = paramParcel.readInt();
       this.k = paramParcel.readString();
       this.jdField_e_of_type_Int = paramParcel.readInt();
@@ -287,7 +290,7 @@ public class AlumBasicData
         m = n;
         while (m < ((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().size())
         {
-          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(bmtz.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().get(m)));
+          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(bnvh.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().get(m)));
           m += 1;
         }
       }
@@ -303,6 +306,96 @@ public class AlumBasicData
       }
       return localAlumBasicData;
     }
+  }
+  
+  private String a(AlumBasicData paramAlumBasicData, boolean paramBoolean)
+  {
+    localObject1 = "";
+    Object localObject2 = localObject1;
+    if (paramAlumBasicData != null)
+    {
+      localObject2 = localObject1;
+      if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null)
+      {
+        localObject2 = localObject1;
+        if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info != null)
+        {
+          localObject2 = localObject1;
+          if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.original_exposure_url != null)
+          {
+            localObject2 = localObject1;
+            if (TextUtils.isEmpty(paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.original_exposure_url.get())) {}
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      String str;
+      try
+      {
+        str = paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.original_exposure_url.get();
+        localObject2 = str;
+        localObject1 = str;
+        if (!TextUtils.isEmpty(str))
+        {
+          localObject1 = str;
+          if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.product_type.get() != 12) {
+            continue;
+          }
+          localObject1 = str;
+          paramAlumBasicData = new StringBuilder();
+          if (!paramBoolean) {
+            continue;
+          }
+          m = 2;
+          localObject1 = str;
+          paramAlumBasicData = str.replace("__ACTION_TYPE__", m + "");
+          localObject1 = paramAlumBasicData;
+          paramAlumBasicData = (AlumBasicData)localObject1;
+        }
+      }
+      catch (Exception paramAlumBasicData) {}
+      try
+      {
+        localObject1 = ((String)localObject1).replace("__VIEW_PERCENT__", "1");
+        paramAlumBasicData = (AlumBasicData)localObject1;
+        localObject2 = ((String)localObject1).replace("__VIEW_TIME__", "0");
+        return localObject2;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localObject1 = paramAlumBasicData;
+          paramAlumBasicData = localException;
+        }
+      }
+      int m = 1;
+      continue;
+      localObject1 = str;
+      paramAlumBasicData = str.replace("__ACTION_TYPE__", "0");
+      localObject1 = paramAlumBasicData;
+    }
+    paramAlumBasicData.printStackTrace();
+    return localObject1;
+  }
+  
+  public void a(AlumBasicData paramAlumBasicData, boolean paramBoolean)
+  {
+    if (paramAlumBasicData == null) {}
+    String str;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramAlumBasicData == null);
+      str = a(paramAlumBasicData, paramBoolean);
+    } while ((TextUtils.isEmpty(str)) || (paramAlumBasicData.jdField_a_of_type_Boolean));
+    GdtReporter.doCgiReport(str);
+    paramAlumBasicData.jdField_a_of_type_Boolean = true;
+    QZLog.i("AlumBasicData", "GDT_CGI_REPORT" + str);
   }
   
   public boolean a(AlumBasicData paramAlumBasicData)

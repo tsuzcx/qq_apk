@@ -40,22 +40,6 @@ public class BubbleLayout
     a(paramContext, paramAttributeSet);
   }
   
-  private void a()
-  {
-    switch (this.d)
-    {
-    default: 
-      return;
-    case 1: 
-    case 3: 
-      localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
-      localPoint.y += this.e;
-      return;
-    }
-    Point localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint.x += this.e;
-  }
-  
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AddContactBubbleLayout);
@@ -96,6 +80,22 @@ public class BubbleLayout
       this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(localCornerPathEffect);
     }
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  private void b()
+  {
+    switch (this.d)
+    {
+    default: 
+      return;
+    case 1: 
+    case 3: 
+      localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+      localPoint.y += this.e;
+      return;
+    }
+    Point localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint.x += this.e;
   }
   
   private void b(Canvas paramCanvas)
@@ -165,6 +165,22 @@ public class BubbleLayout
     }
   }
   
+  public void a()
+  {
+    switch (this.d)
+    {
+    default: 
+      return;
+    case 1: 
+    case 3: 
+      localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+      localPoint.y -= this.e;
+      return;
+    }
+    Point localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint.x -= this.e;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
@@ -207,7 +223,7 @@ public class BubbleLayout
     for (;;)
     {
       if (this.e != 0) {
-        a();
+        b();
       }
       return;
       this.jdField_a_of_type_AndroidGraphicsPoint.x = getPaddingLeft();
@@ -245,8 +261,9 @@ public class BubbleLayout
   
   public void setTriangleOffset(int paramInt)
   {
-    this.e = paramInt;
     a();
+    this.e = paramInt;
+    b();
     invalidate();
   }
   

@@ -9,6 +9,8 @@ public class TVKLiveVideoInfo
 {
   public static final int ERR_CGI = 10001;
   public static final int ERR_NETWORK = 10000;
+  public static final int SHOT_DIRECTION_DOWN = 2;
+  public static final int SHOT_DIRECTION_UP = 1;
   private static final long serialVersionUID = -1L;
   private int aCode;
   private int live360;
@@ -18,7 +20,8 @@ public class TVKLiveVideoInfo
   private int mErrModule;
   private boolean mGetDlnaUrl = false;
   private boolean mGetPreviewInfo = false;
-  private TVKLiveVideoInfo.SHOT_DIRECTION mLensDirection;
+  @TVKLiveVideoInfo.ShotDirection
+  private int mLensDirection;
   private String mOriginalPlayUrl = "";
   private String mPlayUrl = null;
   private String mProgramId;
@@ -54,7 +57,7 @@ public class TVKLiveVideoInfo
     return this.mErrModule;
   }
   
-  public TVKLiveVideoInfo.SHOT_DIRECTION getLens_direction()
+  public int getLensDirection()
   {
     return this.mLensDirection;
   }
@@ -177,9 +180,9 @@ public class TVKLiveVideoInfo
     this.mGetPreviewInfo = paramBoolean;
   }
   
-  public void setLens_direction(TVKLiveVideoInfo.SHOT_DIRECTION paramSHOT_DIRECTION)
+  public void setLensDirection(@TVKLiveVideoInfo.ShotDirection int paramInt)
   {
-    this.mLensDirection = paramSHOT_DIRECTION;
+    this.mLensDirection = paramInt;
   }
   
   public void setLive360(int paramInt)

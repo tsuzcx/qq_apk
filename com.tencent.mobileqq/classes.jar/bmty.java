@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
 
 public final class bmty
-  implements Parcelable.Creator<AlumBasicData>
+  implements DialogInterface.OnDismissListener
 {
-  public AlumBasicData a(Parcel paramParcel)
-  {
-    return new AlumBasicData(paramParcel);
-  }
+  public bmty(FragmentActivity paramFragmentActivity) {}
   
-  public AlumBasicData[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new AlumBasicData[paramInt];
+    this.a.finish();
   }
 }
 

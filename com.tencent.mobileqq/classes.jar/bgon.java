@@ -1,8 +1,108 @@
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.AppsListViewAdapter.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+
 public class bgon
+  extends BaseAdapter
 {
-  long a;
-  public String a;
-  public String b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LinkedHashMap<Integer, ArrayList<bgny>> jdField_a_of_type_JavaUtilLinkedHashMap = new TroopAppShortcutContainer.AppsListViewAdapter.1(this);
+  
+  public bgon(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public bgny a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      int j = i + ((ArrayList)localEntry.getValue()).size();
+      i = j;
+      if (paramInt < j)
+      {
+        int k = paramInt - (j - ((ArrayList)localEntry.getValue()).size());
+        i = j;
+        if (k >= 0)
+        {
+          i = j;
+          if (k < ((ArrayList)localEntry.getValue()).size()) {
+            return (bgny)((ArrayList)localEntry.getValue()).get(k);
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, bgny parambgny)
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).clear();
+      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).add(parambgny);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void a(int paramInt, List<bgny> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).clear();
+      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getCount()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((ArrayList)((Map.Entry)localIterator.next()).getValue()).size() + i) {}
+    return i;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    bgny localbgny = a(paramInt);
+    if (localbgny != null) {
+      return localbgny.a();
+    }
+    return -1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = a(paramInt);
+    if (localObject != null) {}
+    for (localObject = ((bgny)localObject).a(paramInt, paramView, paramViewGroup);; localObject = null)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 4;
+  }
 }
 
 

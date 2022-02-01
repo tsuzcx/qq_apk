@@ -1,29 +1,47 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bajf
-  implements Animator.AnimatorListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public bajf(AIOIceBreakShow paramAIOIceBreakShow) {}
+  public bajf(VasProfileTagView paramVasProfileTagView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AIOIceBreakShow.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+    }
+    VasProfileTagView.a(this.a, true);
+    paramFloat1 = paramFloat2;
+    if (paramMotionEvent1 != null)
+    {
+      paramFloat1 = paramFloat2;
+      if (paramMotionEvent2 != null) {
+        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
+    }
+    if (Math.abs(paramFloat1) > VasProfileTagView.a(this.a))
+    {
+      if ((paramFloat1 > 0.0F) && (this.a.b)) {
+        if (this.a.a())
+        {
+          this.a.g();
+          VasProfileTagView.a(this.a).b(null);
+        }
+      }
+      while ((paramFloat1 >= 0.0F) || (this.a.b)) {
+        return true;
+      }
+      this.a.a();
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="56.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.widget.RoundImageView android:id="@id/bb4" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" app:qwRadius="6.0dip" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="16.0dip" android:layout_toRightOf="@id/bb4" android:layout_centerVertical="true">
-        <TextView android:textSize="14.0dip" android:textColor="@color/c3" android:id="@id/jq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:includeFontPadding="false" />
-        <TextView android:textSize="12.0dip" android:textColor="#ff737373" android:id="@id/nsn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="2.0dip" android:singleLine="true" android:includeFontPadding="false" />
-    </LinearLayout>
-    <ImageView android:id="@id/nlh" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:src="@drawable/g15" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nxc" android:background="@drawable/d0d" android:paddingLeft="2.0dip" android:paddingRight="7.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/nxr" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="centerCrop" />
+    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/nxv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="7.0dip" android:maxWidth="100.0dip" android:maxLines="1" />
+    <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/nxu" android:background="@drawable/d08" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="27.0dip" android:text="关注" />
+</LinearLayout>

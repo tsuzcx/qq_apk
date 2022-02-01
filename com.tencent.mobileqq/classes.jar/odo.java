@@ -1,18 +1,18 @@
-import android.app.Activity;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.Bundle;
 
-class odo
-  implements PopupWindow.OnDismissListener
+public class odo
+  implements anui
 {
-  odo(odn paramodn) {}
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public void onDismiss()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
-    localLayoutParams.alpha = 1.0F;
-    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
+    if (paramObject != null)
+    {
+      a(paramBoolean, (Bundle)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 

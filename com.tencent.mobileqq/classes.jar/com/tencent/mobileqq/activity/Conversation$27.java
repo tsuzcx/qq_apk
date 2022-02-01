@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import nzz;
+import bhnv;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class Conversation$27
   implements Runnable
@@ -9,7 +11,25 @@ class Conversation$27
   
   public void run()
   {
-    nzz.a().a(this.this$0.a);
+    PullRefreshHeader localPullRefreshHeader;
+    if (this.this$0.g)
+    {
+      Conversation.a(this.this$0, 800L);
+      boolean bool = bhnv.d(BaseApplication.getContext());
+      if (this.this$0.a != null)
+      {
+        localPullRefreshHeader = this.this$0.a;
+        if (!bool) {
+          break label57;
+        }
+      }
+    }
+    label57:
+    for (int i = 0;; i = 2)
+    {
+      localPullRefreshHeader.a(i);
+      return;
+    }
   }
 }
 

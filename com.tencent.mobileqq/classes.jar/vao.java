@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 class vao
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  vao(val paramval) {}
+  vao(van paramvan) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    vab.a(this.a.jdField_a_of_type_Vab).b(this.a.jdField_a_of_type_Vab.a().hashCode(), vab.a(this.a.jdField_a_of_type_Vab), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((van.a(this.a) instanceof StaggeredGridLayoutManager))
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)van.a(this.a);
+      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
+      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
+      if ((this.a.getLocalPosition(arrayOfInt[0]) <= 0) && (!van.a(this.a)))
+      {
+        van.a(this.a, true);
+        paramRecyclerView.invalidateSpanAssignments();
+      }
+      if (arrayOfInt[0] > 2) {
+        van.a(this.a, false);
+      }
+    }
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,18 +1,16 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bhep
-  implements TouchWebView.OnScrollChangedListener
+  implements DialogInterface.OnClickListener
 {
-  public bhep(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public bhep(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.scrollBy(0, paramInt2 - paramInt4);
-    }
+    UpgradeActivity.a(this.a, true);
+    bdll.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bhdt.b(), String.valueOf(0), bhdu.a(), "");
   }
 }
 

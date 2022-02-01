@@ -1,358 +1,143 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.MessageDigest;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class amyk
 {
-  private static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  public int a;
+  Handler a;
+  protected boolean a;
+  public boolean b;
+  public boolean c = true;
   
-  public static InputStream a(String paramString)
+  public amyk(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = new BufferedInputStream(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("apollo_client_ApolloClientUtil", 2, "toInputStream error:" + paramString.getMessage());
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    File localFile = new File(ancb.a + "/webview/");
-    localFile.mkdirs();
-    return new File(localFile, "apolloWebviewConfig.txt").getAbsolutePath();
-  }
-  
-  public static String a(File paramFile)
-  {
-    try
-    {
-      paramFile = bgmg.b(paramFile);
-      return paramFile;
-    }
-    catch (IOException paramFile)
-    {
-      QLog.e("apollo_client_ApolloClientUtil", 1, "readFileSafety ", paramFile);
-      return "";
-    }
-    catch (OutOfMemoryError paramFile)
-    {
-      label17:
-      break label17;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    String str1 = "text/html";
-    String str2 = Uri.parse(paramString).getPath();
-    if (str2.contains(".css")) {
-      paramString = "text/css";
-    }
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (paramQQAppInterface == null) {}
+    int i;
+    int j;
     do
     {
-      return paramString;
-      if (str2.contains(".js")) {
-        return "application/x-javascript";
-      }
-      if ((str2.contains(".jpg")) || (str2.contains(".gif")) || (str2.contains(".png"))) {
-        break;
-      }
-      paramString = str1;
-    } while (!str2.contains(".jpeg"));
-    return "image/*";
+      return;
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+      i = localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_count_" + ApolloUtil.b(), 0);
+      j = localSharedPreferences.getInt("bubble_max_count", 3);
+      this.c = a(paramQQAppInterface);
+    } while (i < j);
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("AplloDrawerStatus", 1, "Bubble show count limited:" + i + "," + j);
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public int a(angr paramangr, int paramInt1, int paramInt2, AppInterface paramAppInterface, Context paramContext)
   {
-    StringBuilder localStringBuilder;
-    int j;
-    int i;
-    String str1;
-    String str2;
-    int m;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localStringBuilder = new StringBuilder(paramString1);
-      j = localStringBuilder.lastIndexOf("/");
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      str1 = "&" + paramString2 + "=";
-      str2 = "?" + paramString2 + "=";
-      m = str1.length();
+    if (QLog.isColorLevel()) {
+      QLog.d("AplloDrawerStatus", 2, new Object[] { "draw execAction default say hi, model:", Integer.valueOf(paramInt1) });
     }
-    for (;;)
+    if (paramInt1 == 3) {}
+    for (paramInt1 = 14;; paramInt1 = 5)
     {
-      try
-      {
-        int k = localStringBuilder.indexOf(str1, i);
-        j = k;
-        if (-1 == k) {
-          j = localStringBuilder.indexOf(str2, i);
-        }
-        if (j <= 0) {
-          break;
-        }
-        k = localStringBuilder.indexOf("&", j + m);
-        if (k > 0)
-        {
-          localStringBuilder.replace(j + 1, k + 1, "");
-          continue;
-          return paramString1;
-        }
-      }
-      catch (Throwable paramString2)
-      {
-        QLog.e("apollo_client_ApolloClientUtil", 2, "addSonicUrlParam error:" + paramString2.getMessage());
-      }
-      localStringBuilder.replace(j, localStringBuilder.length(), "");
-    }
-    if (-1 != localStringBuilder.indexOf("?")) {
-      localStringBuilder.append("&").append(paramString2).append("=").append(paramString3);
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("?").append(paramString2).append("=").append(paramString3);
+      paramAppInterface = new ApolloActionData();
+      paramAppInterface.actionId = -1;
+      paramAppInterface.actionType = 0;
+      angi.a(paramangr, paramInt1, paramAppInterface);
+      return 0;
     }
   }
   
-  private static String a(byte[] paramArrayOfByte)
+  public int a(angr paramangr, int paramInt, AppInterface paramAppInterface, Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = paramArrayOfByte[i];
-      localStringBuilder.append(a[((k & 0xF0) >>> 4)]);
-      localStringBuilder.append(a[(k & 0xF)]);
-      i += 1;
+    paramAppInterface = new ApolloActionData();
+    paramAppInterface.actionId = -1;
+    paramAppInterface.actionType = 0;
+    angi.a(paramangr, 5, paramAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("AplloDrawerStatus", 2, "draw execAction random say hi");
     }
-    return localStringBuilder.toString();
+    return 0;
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  public void a() {}
+  
+  protected void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
-    paramString1 = new File(paramString1);
-    if (!paramString1.exists()) {}
+    Object localObject2 = paramContext.getSharedPreferences("apollo_sp", 0);
+    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_count_";
+    paramContext = (String)localObject1 + ApolloUtil.b();
+    paramQQAppInterface = ((SharedPreferences)localObject2).edit();
+    if (((SharedPreferences)localObject2).contains(paramContext)) {
+      paramQQAppInterface.putInt(paramContext, ((SharedPreferences)localObject2).getInt(paramContext, 0) + 1);
+    }
     for (;;)
     {
-      try
+      paramQQAppInterface.commit();
+      return;
+      Object localObject3 = ((SharedPreferences)localObject2).getAll();
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
       {
-        paramString1.createNewFile();
-        bool1 = true;
-        try
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          paramString1.close();
-          throw paramString2;
-        }
-        catch (IOException paramString1)
-        {
-          for (;;)
-          {
-            QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
+          String str = (String)localEntry.getKey();
+          if ((str != null) && (str.startsWith((String)localObject1))) {
+            ((List)localObject2).add(localEntry.getKey());
           }
         }
-      }
-      catch (IOException localIOException)
-      {
-        try
-        {
-          paramString1 = new FileOutputStream(paramString1, false);
-          if (paramString1 != null) {}
-          for (;;)
-          {
-            try
-            {
-              paramString1.write(paramString2.getBytes());
-              paramString1.flush();
-            }
-            catch (IOException paramString2)
-            {
-              QLog.e("apollo_client_ApolloClientUtil", 1, paramString2.getMessage());
-              bool1 = bool2;
-              if (paramString1 == null) {
-                continue;
-              }
-              try
-              {
-                paramString1.close();
-                return false;
-              }
-              catch (IOException paramString1)
-              {
-                QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
-                return false;
-              }
-            }
-            finally
-            {
-              if (paramString1 == null) {
-                break label155;
-              }
-            }
-            try
-            {
-              paramString1.close();
-              return bool1;
-            }
-            catch (IOException paramString1)
-            {
-              QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
-              return false;
-            }
-          }
-          localIOException = localIOException;
-          QLog.e("apollo_client_ApolloClientUtil", 1, localIOException.getMessage());
-          bool1 = false;
-          continue;
-        }
-        catch (FileNotFoundException paramString1)
-        {
-          QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
-          bool1 = false;
-          paramString1 = null;
-          continue;
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          paramQQAppInterface.remove((String)((Iterator)localObject1).next());
         }
       }
-      label155:
-      boolean bool1 = true;
+      paramQQAppInterface.putInt(paramContext, 1);
     }
   }
   
-  public static boolean a(String paramString, List<String> paramList)
+  public void a(angr paramangr, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  
+  public void a(angr paramangr, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
+  
+  public void a(QQAppInterface paramQQAppInterface, angr paramangr)
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      try
-      {
-        String[] arrayOfString = new String[paramList.size()];
-        paramList.toArray(arrayOfString);
-        paramList = new HashMap(1);
-        paramList.put(paramString, arrayOfString);
-        CookieManager.getInstance().setCookies(paramList);
-        return true;
+    this.b = false;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(AppInterface paramAppInterface)
+  {
+    if ((paramAppInterface == null) || (!(paramAppInterface instanceof QQAppInterface))) {}
+    boolean bool;
+    do
+    {
+      return false;
+      bool = ApolloGameUtil.b((QQAppInterface)paramAppInterface);
+      if ((bool) && (QLog.isColorLevel())) {
+        QLog.d("AplloDrawerStatus", 2, "isShowDrawerAction current is 3D User");
       }
-      catch (Throwable paramString)
-      {
-        QLog.e("apollo_client_ApolloClientUtil", 1, "setCookies error:" + paramString.getMessage());
-      }
-    }
-    return false;
+    } while (bool);
+    return true;
   }
   
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    try
-    {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramString.getBytes(), 0, paramString.getBytes().length);
-      paramString = a(localMessageDigest.digest());
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  public static String c(String paramString)
-  {
-    return SwiftBrowserCookieMonster.c(paramString);
-  }
-  
-  public static String d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    String str = ancb.a + "/";
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    str = str + "webview/";
-    localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    str = str + paramString + "/";
-    localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return str + paramString + ".txt";
-  }
-  
-  public static String e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    int i = paramString.indexOf("?");
-    String str = paramString;
-    if (i != -1) {
-      str = paramString.substring(0, i);
-    }
-    try
-    {
-      paramString = MessageDigest.getInstance("MD5");
-      paramString.update(str.getBytes(), 0, str.getBytes().length);
-      paramString = a(paramString.digest());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("apollo_client_ApolloClientUtil", 1, paramString.getMessage());
-    }
-    return String.valueOf(str.hashCode());
-  }
-  
-  public static String f(String paramString)
-  {
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return "";
-      }
-      String str = Uri.parse(paramString).getHost();
-      int i = paramString.indexOf(str);
-      if (i >= 0)
-      {
-        paramString = paramString.substring(0, str.length() + i);
-        return paramString;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("apollo_client_ApolloClientUtil", 2, "getOrigin error:" + paramString.getMessage());
-    }
-    return "";
-  }
+  public void b(angr paramangr, Context paramContext, QQAppInterface paramQQAppInterface) {}
 }
 
 

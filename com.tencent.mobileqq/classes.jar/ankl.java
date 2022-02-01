@@ -1,129 +1,48 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import java.util.List;
+import org.json.JSONArray;
 
-public class ankl
-  extends DefaultHandler
+class ankl
+  implements amve
 {
-  private int jdField_a_of_type_Int;
-  public String a;
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  public HashMap<String, ankm> a;
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^([0-9]{1,5}|\\{([\\s\\S]*)\\})$");
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "0";
+  ankl(ankk paramankk) {}
   
-  public ankl(HashMap<String, ankm> paramHashMap)
+  public void a(boolean paramBoolean, String paramString1, List<amvb> paramList, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-  }
-  
-  private boolean a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return false;
-    }
-    return this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaLangStringBuffer.append(paramArrayOfChar, paramInt1, paramInt2);
-    }
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (!a(this.jdField_a_of_type_JavaLangStringBuffer.toString()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("DeviceProfileManager", 2, "DPCXmlHandler format is error: " + paramString2 + "-" + this.jdField_a_of_type_JavaLangStringBuffer.toString());
-        }
-        return;
-      }
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) {
-        break label229;
-      }
-      paramString1 = (ankm)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update oldInfo: " + paramString2 + "-" + paramString1.toString());
-      }
-      if (paramString1.jdField_a_of_type_Int < this.jdField_a_of_type_Int)
-      {
-        paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-        paramString1.c = this.b;
-        paramString1.d = this.jdField_a_of_type_JavaLangString;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update newInfo: " + paramString2 + "-" + paramString1.toString());
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      label229:
-      paramString1 = new ankm();
-      paramString1.jdField_a_of_type_JavaLangString = paramString2;
-      paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-      paramString1.c = this.b;
-      paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      paramString1.d = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP add: " + paramString2 + "-" + paramString1.toString());
-      }
-    }
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
     int i = 0;
-    if (paramString2.equals("features"))
+    if (i < this.a.jdField_a_of_type_ArrayOfInt.length)
     {
-      if (i < paramAttributes.getLength())
+      paramString1 = amva.a().a(8, this.a.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramString1 != null)
       {
-        if (paramAttributes.getLocalName(i).equals("weight")) {
-          this.jdField_a_of_type_Int = Integer.parseInt(paramAttributes.getValue(i));
-        }
-        for (;;)
+        paramList = this.a.jdField_a_of_type_Ankf;
+        int k = paramString1.b;
+        if (paramString1.a())
         {
-          i += 1;
-          break;
-          if (paramAttributes.getLocalName(i).equals("taskId")) {
-            this.b = paramAttributes.getValue(i);
-          } else if (paramAttributes.getLocalName(i).equals("testType")) {
-            this.jdField_a_of_type_JavaLangString = paramAttributes.getValue(i);
-          }
+          j = 0;
+          label88:
+          paramString1 = ankf.a(paramList, 8, String.valueOf(k), j);
+          this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
         }
       }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label88;
+        paramString1 = ankf.a(this.a.jdField_a_of_type_Ankf, 8, String.valueOf(this.a.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+      }
     }
-    else
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.jdField_a_of_type_JavaLangStringBuffer.length());
-    }
+    this.a.jdField_a_of_type_Ankf.a(this.a.jdField_a_of_type_JavaLangString, anzj.a(2131699415), this.a.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankl
  * JD-Core Version:    0.7.0.1
  */

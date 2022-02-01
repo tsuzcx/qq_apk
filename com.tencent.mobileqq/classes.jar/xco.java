@@ -1,78 +1,56 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class xco
-  extends xct
+  extends wpa
 {
   public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&type=" + "onedaylist" + "&feedid=%s&identify=%d";
-  private int[] a;
+  public ylv a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + wjz.a(2131698491);
+    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.feed_comment_list_775");
   }
   
-  public xco(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
+  public String a()
   {
-    Object localObject = ((yij)wpm.a(11)).a(paramString);
-    if (localObject == null) {
-      return;
-    }
-    wpy localwpy = (wpy)wpm.a(2);
-    localObject = (QQUserUIItem)((FeedItem)localObject).getOwner();
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_d_of_type_JavaLangString = (((QQUserUIItem)localObject).nickName + anni.a(2131703229) + wes.jdField_a_of_type_JavaLangString);
-    this.e = (((QQUserUIItem)localObject).nickName + anni.a(2131703228) + wes.jdField_a_of_type_JavaLangString);
-    this.f = localwpy.a(((QQUserUIItem)localObject).getUnionId(), false);
-    int i;
-    if (((QQUserUIItem)localObject).isMe())
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
+    try
     {
-      i = 0;
-      this.jdField_a_of_type_Int = i;
-      this.h = paramString;
-      this.jdField_d_of_type_Int = paramInt;
-      this.jdField_c_of_type_JavaLangString = ((QQUserUIItem)localObject).nickName;
-      this.g = ((QQUserUIItem)localObject).getUnionId();
-      this.k = a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime);
-      paramStoryVideoItem = new SimpleDateFormat("M月d日").format(Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime));
-      this.i = (paramStoryVideoItem + " · " + this.jdField_d_of_type_Int + anni.a(2131703231));
-      this.j = ("#" + wes.jdField_a_of_type_JavaLangString + "# " + this.jdField_c_of_type_JavaLangString + anni.a(2131703230) + wes.jdField_a_of_type_JavaLangString + "（" + this.i + "）");
-      if (this.jdField_a_of_type_Int != 0) {
-        break label400;
+      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
+      return new xcp(localRspFeedCommentList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
       }
     }
-    label400:
-    for (paramInt = 8;; paramInt = 9)
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label406;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 81, 82, 83, 84, 85, 45 };
-      return;
-      i = 1;
-      break;
-    }
-    label406:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 69, 70, 71, 72, 73, 45 };
   }
   
-  protected String a(int paramInt)
+  protected byte[] a()
   {
-    if (paramInt == 1) {
-      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&type=onedaylist&feedid=%s&identify=%d&sharefromtype=%d", new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), this.h, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
+    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
+    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ylv.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Ylv.jdField_b_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Ylv.jdField_b_of_type_JavaLangString = "";
     }
-    return String.format(b, new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), this.h, Integer.valueOf(this.jdField_a_of_type_Int) });
-  }
-  
-  public String a(String paramString, long paramLong)
-  {
-    String str = new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
-    return paramString + anni.a(2131703224) + str;
+    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ylv.jdField_b_of_type_JavaLangString));
+    localReqFeedCommentList.source.set(this.jdField_a_of_type_Ylv.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ylv.jdField_b_of_type_Int != -1) {
+      localReqFeedCommentList.type.set(this.jdField_a_of_type_Ylv.jdField_b_of_type_Int);
+    }
+    return localReqFeedCommentList.toByteArray();
   }
 }
 

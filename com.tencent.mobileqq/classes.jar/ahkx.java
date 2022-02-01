@@ -1,45 +1,28 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class ahkx
-  extends bhhe
+abstract class ahkx<T extends aghc>
 {
-  ahkx(ahku paramahku, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  private T a;
   
-  public void onCancel(bhhf parambhhf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambhhf);
-    }
-  }
+  private ahkx(ahgk paramahgk) {}
   
-  public void onDone(bhhf parambhhf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambhhf);
-    }
-    if (parambhhf.b()) {}
-    do
-    {
-      return;
-      parambhhf.a().getInt("type");
-    } while (parambhhf.a() == -1);
-    parambhhf = new Message();
-    parambhhf.what = ahku.jdField_a_of_type_Int;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambhhf);
-  }
+  protected abstract T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter);
   
-  public boolean onStart(bhhf parambhhf)
+  protected boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambhhf);
-    }
     return true;
+  }
+  
+  protected T b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    if (this.a == null) {
+      this.a = a(paramChatMessage, paramBaseAdapter);
+    }
+    if (a()) {
+      this.b.a(this.a, paramBaseAdapter);
+    }
+    return this.a;
   }
 }
 

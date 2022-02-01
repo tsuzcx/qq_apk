@@ -1,61 +1,11 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
-import java.util.Random;
+import kotlin.Metadata;
 
-public class rzz
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "", "onInstalledFailed", "", "errorCode", "", "onInstalledSuccessed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rzz
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
-  public float g = 0.8F;
-  public float h = 0.4F;
+  public abstract void a();
   
-  public rzz(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
-  {
-    this.jdField_a_of_type_Int = 360;
-    b();
-  }
-  
-  private void b()
-  {
-    c();
-    a();
-  }
-  
-  private void c()
-  {
-    if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {}
-    for (int i = this.jdField_b_of_type_Int;; i = VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).nextInt() * (this.jdField_a_of_type_Int - this.jdField_b_of_type_Int) + this.jdField_b_of_type_Int)
-    {
-      double d1 = Math.toRadians(i);
-      this.e = ((float)(0.9F * Math.cos(d1)));
-      this.f = ((float)(0.9F * Math.sin(d1)));
-      return;
-    }
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_Float = (VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getWidth() / 2);
-    this.jdField_b_of_type_Float = (VideoFeedsLikeAnimate.b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getHeight() / 2);
-    this.c = this.jdField_a_of_type_Float;
-    this.d = this.jdField_b_of_type_Float;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.c = (this.jdField_a_of_type_Float + this.e * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-    this.d = (this.jdField_b_of_type_Float + this.f * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-  }
-  
-  public void a(Canvas paramCanvas) {}
+  public abstract void a(int paramInt);
 }
 
 

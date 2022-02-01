@@ -1,31 +1,65 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
 public class arqh
+  extends arac<arqf>
 {
-  public static int a = 300;
-  
-  public static String a(String paramString)
+  public static arqf a()
   {
-    if (bgsp.a(paramString)) {
-      return "";
-    }
-    paramString = paramString.split("_");
-    if (paramString.length > 2) {
-      return paramString[1];
-    }
-    return "";
+    return (arqf)aran.a().a(569);
   }
   
-  public static String a(String paramString1, String paramString2)
+  @NonNull
+  public arqf a(int paramInt)
   {
-    if ((bgsp.a(paramString1)) || (bgsp.a(paramString2))) {
-      return "";
+    return new arqf();
+  }
+  
+  @Nullable
+  public arqf a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arqf.a(paramArrayOfaraj);
     }
-    paramString2 = bisz.a(paramString2);
-    return anhk.bm + paramString2 + paramString1;
+    return null;
+  }
+  
+  public void a(arqf paramarqf) {}
+  
+  public Class<arqf> clazz()
+  {
+    return arqf.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocFormKeyWordsProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 569;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqh
  * JD-Core Version:    0.7.0.1
  */

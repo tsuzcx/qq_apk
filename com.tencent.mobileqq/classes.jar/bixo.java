@@ -1,20 +1,8 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.MotionEvent;
 
-public class bixo
-  implements View.OnClickListener
+public abstract interface bixo
 {
-  public bixo(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    bisp.b(bisr.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
-    ApkFileDownloadFragment.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

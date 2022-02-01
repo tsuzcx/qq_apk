@@ -1,68 +1,90 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.WeakHashMap;
+import mqq.os.MqqHandler;
 
-class agdy
-  implements ImageAssetDelegate
+public class agdy
 {
-  agdy(agdw paramagdw, String paramString) {}
+  public static volatile boolean a;
+  public static boolean b;
+  public static boolean c;
+  private static boolean d;
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inScaled = true;
-    ((BitmapFactory.Options)localObject).inDensity = agdw.a(this.jdField_a_of_type_Agdw).a.getResources().getDisplayMetrics().densityDpi;
-    try
+    return paramQQAppInterface.getApp().getSharedPreferences("sp_aio_input_helper_" + paramQQAppInterface.getAccount(), 0);
+  }
+  
+  public static void a()
+  {
+    c = true;
+    BaseApplication.getContext().getSharedPreferences("sp_upgrade", 0).edit().putBoolean("upgrade", true).commit();
+  }
+  
+  /* Error */
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: ifnull +11 -> 15
+    //   7: getstatic 70	agdy:d	Z
+    //   10: istore_1
+    //   11: iload_1
+    //   12: ifeq +7 -> 19
+    //   15: ldc 2
+    //   17: monitorexit
+    //   18: return
+    //   19: aload_0
+    //   20: invokestatic 72	agdy:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Landroid/content/SharedPreferences;
+    //   23: ldc 74
+    //   25: iconst_1
+    //   26: invokeinterface 78 3 0
+    //   31: putstatic 80	agdy:a	Z
+    //   34: iconst_1
+    //   35: putstatic 70	agdy:d	Z
+    //   38: goto -23 -> 15
+    //   41: astore_0
+    //   42: ldc 2
+    //   44: monitorexit
+    //   45: aload_0
+    //   46: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	47	0	paramQQAppInterface	QQAppInterface
+    //   10	2	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   7	11	41	finally
+    //   19	38	41	finally
+  }
+  
+  @TargetApi(9)
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = false;
+    if (!d) {
+      a(paramQQAppInterface);
+    }
+    if (a)
     {
-      String str = this.jdField_a_of_type_JavaLangString + File.separator + paramLottieImageAsset.getFileName();
-      if (agdw.a(this.jdField_a_of_type_Agdw) != null)
+      a = false;
+      ThreadManager.getFileThreadHandler().post(new AIOInputTypeHelper.1(paramQQAppInterface));
+      boolean bool2 = true;
+      bool1 = bool2;
+      if (QLog.isColorLevel())
       {
-        paramLottieImageAsset = (Bitmap)agdw.a(this.jdField_a_of_type_Agdw).get(str);
-        if (paramLottieImageAsset != null) {
-          localObject = paramLottieImageAsset;
-        }
-        for (;;)
-        {
-          return localObject;
-          try
-          {
-            Bitmap localBitmap = BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
-            localObject = localBitmap;
-            paramLottieImageAsset = localBitmap;
-            if (agdw.a(this.jdField_a_of_type_Agdw) != null)
-            {
-              paramLottieImageAsset = localBitmap;
-              agdw.a(this.jdField_a_of_type_Agdw).put(str, localBitmap);
-              return localBitmap;
-            }
-          }
-          catch (Exception localException1) {}
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopEggLottieAnimView", 2, "playNextAnim setImageAssetDelegate Exception");
-        }
-        localException1.printStackTrace();
-        return paramLottieImageAsset;
+        QLog.d("Q.aio.BaseChatPie", 2, "inputhelper : need guide");
+        bool1 = bool2;
       }
     }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        paramLottieImageAsset = null;
-        continue;
-        paramLottieImageAsset = null;
-      }
-    }
+    return bool1;
   }
 }
 

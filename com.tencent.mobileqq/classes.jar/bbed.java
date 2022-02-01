@@ -1,43 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public class bbed
+public abstract interface bbed
+  extends IInterface
 {
-  private boolean a = true;
+  public abstract Bundle a(int paramInt, Bundle paramBundle);
   
-  public static bbed a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      bbed localbbed = new bbed();
-      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
-      for (;;)
-      {
-        localbbed.a = bool;
-        return localbbed;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
-    }
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
-  }
+  public abstract void a(CompressInfo paramCompressInfo);
 }
 
 

@@ -1,90 +1,113 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class ayjk
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, ayjp
+  extends ayjn
+  implements View.OnClickListener
 {
-  private GestureController a;
+  private int jdField_a_of_type_Int;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public ayjk(GestureController paramGestureController)
+  public ayjk(PicBrowserActivity paramPicBrowserActivity, abjt paramabjt)
   {
-    this.a = paramGestureController;
+    super(paramPicBrowserActivity, paramabjt);
   }
   
-  public void a(ayjo paramayjo)
+  protected RelativeLayout a()
   {
-    this.a.a(paramayjo);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559509, null);
   }
   
-  public boolean a(ayjo paramayjo)
+  public void b(ViewGroup paramViewGroup)
   {
-    return this.a.b(paramayjo);
+    super.b(paramViewGroup);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377420));
+    this.b = ((TextView)paramViewGroup.findViewById(2131365355));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.b.setOnClickListener(this);
   }
   
-  public boolean b(ayjo paramayjo)
+  protected void c(int paramInt)
   {
-    return this.a.a(paramayjo);
+    if (paramInt == this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Ayjt.a() <= 1)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.b.setVisibility(8);
+      }
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void l()
   {
-    return false;
+    ArrayList localArrayList = this.jdField_a_of_type_Ayjt.a();
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int < localArrayList.size())) {
+      localArrayList.add(0, (PicInfo)localArrayList.remove(this.jdField_a_of_type_Int));
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("intent_param_pic_infos", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.setResult(-1, localIntent);
+    super.l();
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return this.a.e(paramMotionEvent);
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131377420: 
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Ayjt.b();
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131693955), 0).a();
+      }
+    }
+    int i = this.jdField_a_of_type_Ayjt.b();
+    if (i < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Int -= 1;
+    }
+    for (;;)
+    {
+      d();
+      c(this.jdField_a_of_type_Ayjt.b());
+      break;
+      if (i == this.jdField_a_of_type_Int) {
+        if (i == this.jdField_a_of_type_Ayjt.a() - 1) {
+          this.jdField_a_of_type_Int = (i - 1);
+        } else {
+          this.jdField_a_of_type_Int = i;
+        }
+      }
+    }
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.b(paramScaleGestureDetector);
-  }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.a(paramScaleGestureDetector);
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.a.a(paramScaleGestureDetector);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return this.a.d(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return this.a.c(paramMotionEvent);
+    super.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    c(paramInt);
   }
 }
 

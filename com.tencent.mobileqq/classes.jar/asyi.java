@@ -1,39 +1,26 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class asyi
-  extends atwn
+  implements DialogInterface.OnClickListener
 {
-  public asyi(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
+  public asyi(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = athc.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    String str = "";
+    paramDialogInterface = str;
+    if (ExtendFriendEditFragment.a(this.a) != null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (atha.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          bcst.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
-        }
+      paramDialogInterface = str;
+      if (ExtendFriendEditFragment.a(this.a).app != null) {
+        paramDialogInterface = ((asvi)ExtendFriendEditFragment.a(this.a).app.getManager(264)).f();
       }
     }
-  }
-  
-  public void e() {}
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    atcb.a(this.a.getActivity(), paramDialogInterface);
   }
 }
 

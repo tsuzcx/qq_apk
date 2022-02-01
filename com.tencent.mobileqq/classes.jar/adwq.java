@@ -1,37 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class adwq
-  implements bkhw
+  implements DialogInterface.OnDismissListener
 {
-  public adwq(ChatSettingForTroop paramChatSettingForTroop, bkho parambkho) {}
+  public adwq(AuthDevActivity paramAuthDevActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = this.jdField_a_of_type_Bkho.a(paramInt);
-    if (paramView != null)
-    {
-      paramInt = paramView.c;
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      paramInt = -1;
-      break;
-      ChatSettingForTroop.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-      bgjt.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bgjt.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-      continue;
-      bfup.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
-      continue;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bgbw != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bgbw.e();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bgbw = bfup.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
+    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
+      AuthDevActivity.a(this.a, null);
     }
   }
 }

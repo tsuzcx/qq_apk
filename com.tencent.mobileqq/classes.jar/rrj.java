@@ -1,79 +1,146 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class rrj
-  implements bbmy
+  extends Handler
 {
-  private String jdField_a_of_type_JavaLangString;
-  private rfi jdField_a_of_type_Rfi;
-  
-  public rrj(rfi paramrfi)
+  public rrj(VideoFeedsPlayManager paramVideoFeedsPlayManager, Looper paramLooper)
   {
-    this.jdField_a_of_type_Rfi = paramrfi;
+    super(paramLooper);
   }
   
-  public int a()
+  public void dispatchMessage(Message paramMessage)
   {
-    return 0;
+    if (VideoFeedsPlayManager.e(this.a)) {}
+    do
+    {
+      return;
+      if (!(paramMessage.obj instanceof rrm)) {
+        break;
+      }
+    } while (!VideoFeedsPlayManager.a(this.a, (rrm)paramMessage.obj));
+    super.dispatchMessage(paramMessage);
+    return;
+    super.dispatchMessage(paramMessage);
   }
   
-  public CharSequence a()
+  public void handleMessage(Message paramMessage)
   {
-    return bbup.b(this.jdField_a_of_type_Rfi.a(), this.jdField_a_of_type_JavaLangString, 6, true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case -3: 
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsPlayManager.preplay", 2, "prePlay timeout, try rePlay");
+      }
+      if ((VideoFeedsPlayManager.a(this.a, VideoFeedsPlayManager.a(this.a)) != null) && (VideoFeedsPlayManager.a(this.a, VideoFeedsPlayManager.a(this.a)).d()) && (VideoFeedsPlayManager.a(this.a, VideoFeedsPlayManager.a(this.a)).a() == VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountVideoInfo))
+      {
+        VideoFeedsPlayManager.a(this.a).e(VideoFeedsPlayManager.a(this.a, VideoFeedsPlayManager.a(this.a)));
+        return;
+      }
+      VideoFeedsPlayManager.a(this.a).jdField_a_of_type_Boolean = false;
+      this.a.c(VideoFeedsPlayManager.a(this.a));
+      VideoFeedsPlayManager.a(this.a, VideoFeedsPlayManager.a(this.a), false);
+      return;
+    }
+    paramMessage = VideoFeedsPlayManager.a(this.a);
+    rrm localrrm = VideoFeedsPlayManager.a(this.a);
+    long l1;
+    boolean bool;
+    if ((paramMessage != null) && (paramMessage.f()) && ((localrrm.jdField_a_of_type_Rlr == null) || (!localrrm.jdField_a_of_type_Rlr.a(localrrm))) && (!paramMessage.n()))
+    {
+      l1 = paramMessage.a();
+      long l2 = paramMessage.b();
+      if (localrrm.jdField_a_of_type_Rlr != null) {
+        localrrm.jdField_a_of_type_Rlr.a(localrrm, l1, l2);
+      }
+      if (l1 < l2 - 300L) {
+        break label495;
+      }
+      VideoFeedsPlayManager.d(this.a, true);
+      int i = (int)(l2 - l1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "onVideoEndSoon: pos=" + l1 + ", duration=" + l2 + ", remainDuration=" + i + ", mHasCallEndingSoon=" + VideoFeedsPlayManager.f(this.a));
+      }
+      if ((!VideoFeedsPlayManager.f(this.a)) && (VideoFeedsPlayManager.a(this.a) != null))
+      {
+        VideoFeedsPlayManager.e(this.a, true);
+        if ((localrrm.jdField_a_of_type_Rlr != null) && (!VideoFeedsPlayManager.g(this.a)))
+        {
+          if ((!VideoFeedsPlayManager.h(this.a)) && (!VideoFeedsPlayManager.i(this.a))) {
+            break label489;
+          }
+          bool = true;
+          localrrm.jdField_a_of_type_Rlr.a(VideoFeedsPlayManager.a(this.a), i, bool);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (VideoFeedsPlayManager.a(this.a) != null) {
+        VideoFeedsPlayManager.a(this.a).a(l1);
+      }
+      VideoFeedsPlayManager.a(this.a).sendEmptyMessageDelayed(-2, 100);
+      return;
+      label489:
+      bool = false;
+      break;
+      label495:
+      if ((l1 <= 500L) && (l1 >= 0L) && (VideoFeedsPlayManager.j(this.a)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "onVideoReplayOnLoop: pos=" + l1);
+        }
+        VideoFeedsPlayManager.f(this.a, false);
+        VideoFeedsPlayManager.e(this.a, false);
+        VideoFeedsPlayManager.d(this.a, false);
+        VideoFeedsPlayManager.a(this.a);
+        paramMessage.m();
+        if ((VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c) && (tpz.a(VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a)))
+        {
+          VideoFeedsPlayManager.a(this.a).f();
+          VideoFeedsPlayManager.a(this.a).post(new VideoFeedsPlayManager.1.1(this));
+        }
+        else if (VideoFeedsPlayManager.a(this.a) != null)
+        {
+          paramMessage = VideoFeedsPlayManager.a(this.a).iterator();
+          while (paramMessage.hasNext()) {
+            ((rro)paramMessage.next()).a(VideoFeedsPlayManager.a(this.a), VideoFeedsPlayManager.b(this.a));
+          }
+        }
+      }
+    }
   }
   
-  public String a()
+  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public rfi a()
-  {
-    return this.jdField_a_of_type_Rfi;
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this.jdField_a_of_type_Rfi.a().contains(paramString);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public CharSequence b()
-  {
-    return "";
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_Rfi.a().toString();
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    return anni.a(2131703459);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    if (VideoFeedsPlayManager.e(this.a)) {
+      return false;
+    }
+    if ((Looper.myLooper() == Looper.getMainLooper()) && (paramLong <= SystemClock.uptimeMillis()))
+    {
+      if (paramMessage.getCallback() != null) {
+        paramMessage.getCallback().run();
+      }
+      for (;;)
+      {
+        return true;
+        handleMessage(paramMessage);
+      }
+    }
+    if (paramMessage.obj == null) {
+      paramMessage.obj = VideoFeedsPlayManager.a(this.a);
+    }
+    return super.sendMessageAtTime(paramMessage, paramLong);
   }
 }
 

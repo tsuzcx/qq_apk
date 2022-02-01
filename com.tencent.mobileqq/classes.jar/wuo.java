@@ -1,38 +1,49 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wuo
-  extends RecyclerView.OnScrollListener
+public class wuo
+  implements wiq
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public String a;
+  public String b;
   
-  wuo(wui paramwui) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public wuo(String paramString1, String paramString2)
   {
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
-    {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Wui.jdField_a_of_type_Wtu.d();
-      }
-      return;
-    }
-    wui.a(this.jdField_a_of_type_Wui);
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public qqstory_struct.UserId a()
   {
-    if (paramInt1 > 0) {}
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      if (this.jdField_a_of_type_Wui.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
-        this.jdField_a_of_type_Wui.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
-      }
-      return;
+    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
+    if (!TextUtils.isEmpty(this.a)) {
+      localUserId.uid.set(Long.valueOf(this.a).longValue());
     }
+    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localUserId;
+  }
+  
+  public boolean a()
+  {
+    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
+  }
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof wuo))
+    {
+      this.a = ((wuo)paramObject).a;
+      this.b = ((wuo)paramObject).b;
+    }
+  }
+  
+  public String toString()
+  {
+    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
   }
 }
 

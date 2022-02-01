@@ -1,38 +1,14 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.text.TextUtils;
 
-public class acpv
-  implements acqj
+public final class acpv
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  public String a;
+  public String b;
+  public String c;
+  
+  public boolean a()
   {
-    Object localObject = null;
-    try
-    {
-      paramString = new JSONObject(paramVarArgs[0]);
-      acqy.a("GdtC2SJsCallHandler", paramString.toString());
-      int i = paramString.optInt("operationType");
-      int j = paramString.optInt("businessType");
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString.getJSONObject("adInfo")));
-      acre.a(i, j, localAdInfo);
-      if (paramacpp != null) {}
-      for (paramString = paramacpp.a();; paramString = null)
-      {
-        paramVarArgs = localObject;
-        if (paramacpp != null) {
-          paramVarArgs = paramacpp.a();
-        }
-        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
-        return true;
-      }
-      return true;
-    }
-    catch (Exception paramacpp)
-    {
-      acqy.d("GdtC2SJsCallHandler", "handleJsCallRequest", paramacpp);
-    }
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 

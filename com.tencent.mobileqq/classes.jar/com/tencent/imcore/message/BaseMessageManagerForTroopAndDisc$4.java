@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import acvk;
-import acwh;
-import acwr;
+import aczn;
+import adak;
+import aday;
 import android.os.Handler;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
@@ -12,11 +12,11 @@ import java.util.List;
 public class BaseMessageManagerForTroopAndDisc$4
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$4(acvk paramacvk, acwr paramacwr, String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean) {}
+  public BaseMessageManagerForTroopAndDisc$4(aczn paramaczn, aday paramaday, String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Acwr);
+    this.this$0.b(this.jdField_a_of_type_Aday);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageManager", 2, "refreshTroopUnreadMessage begin");
     }
@@ -34,7 +34,7 @@ public class BaseMessageManagerForTroopAndDisc$4
           break;
         }
         localChatMessage = (ChatMessage)((Iterator)localObject).next();
-      } while (acwh.a(localChatMessage));
+      } while (adak.a(localChatMessage));
     }
     for (int i = (int)localChatMessage.shmsgseq;; i = 0)
     {
@@ -42,10 +42,10 @@ public class BaseMessageManagerForTroopAndDisc$4
       for (boolean bool = true; (j == i) || (i <= this.jdField_a_of_type_Long); bool = false)
       {
         if ((bool) && (this.jdField_a_of_type_Boolean)) {
-          acvk.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
+          aczn.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
         }
-        this.jdField_a_of_type_Acwr.g = bool;
-        this.this$0.a.a(this.jdField_a_of_type_Acwr);
+        this.jdField_a_of_type_Aday.g = bool;
+        this.this$0.a.a(this.jdField_a_of_type_Aday);
         this.this$0.a.a.post(new BaseMessageManagerForTroopAndDisc.4.1(this));
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.BaseMessageManager", 2, "refreshTroopUnreadMessage end");
@@ -64,9 +64,9 @@ public class BaseMessageManagerForTroopAndDisc$4
           j = 15;
         }
       }
-      this.jdField_a_of_type_Acwr.e = j;
-      this.jdField_a_of_type_Acwr.jdField_a_of_type_Int = 0;
-      this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, j, this.jdField_a_of_type_Acwr);
+      this.jdField_a_of_type_Aday.e = j;
+      this.jdField_a_of_type_Aday.jdField_a_of_type_Int = 0;
+      this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, j, this.jdField_a_of_type_Aday);
       j = i;
       break;
     }

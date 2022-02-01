@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import java.io.File;
 
-public final class bpbq
-  implements Parcelable.Creator<EditTakeGifSource>
+public class bpbq
 {
-  public EditTakeGifSource a(Parcel paramParcel)
-  {
-    return new EditTakeGifSource(paramParcel);
-  }
-  
-  public EditTakeGifSource[] a(int paramInt)
-  {
-    return new EditTakeGifSource[paramInt];
-  }
+  public static final String a = bofe.a + File.separator + "ae_editor";
+  public static final String b = a + File.separator + "resources";
+  public static final String c = a + File.separator + "generated_images";
+  public static final String d = a + File.separator + "generated_videos";
+  public static final String e = a + File.separator + "generated_videos" + File.separator + "cover";
+  public static final String f = a + File.separator + "effect";
 }
 
 

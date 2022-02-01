@@ -12,12 +12,12 @@ import android.view.View.OnClickListener;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import bcst;
-import bdzx;
-import bgmg;
-import bgmp;
-import bgng;
+import anzj;
+import bdll;
+import beyq;
+import bhmi;
+import bhmr;
+import bhni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -36,7 +36,7 @@ import mqq.os.MqqHandler;
 public class CarrierHelper
   implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anni.a(2131700263), anni.a(2131700266), anni.a(2131700269), anni.a(2131700267), anni.a(2131700264), anni.a(2131700263), anni.a(2131700268) };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anzj.a(2131700370), anzj.a(2131700373), anzj.a(2131700376), anzj.a(2131700374), anzj.a(2131700371), anzj.a(2131700370), anzj.a(2131700375) };
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
@@ -134,16 +134,16 @@ public class CarrierHelper
   
   public void a(View paramView, AdData paramAdData)
   {
-    Object localObject = (ImageView)paramView.findViewById(2131362072);
-    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131362089);
-    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131362109);
-    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131362088);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131362031);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131362033);
-    View localView = paramView.findViewById(2131364219);
+    Object localObject = (ImageView)paramView.findViewById(2131362077);
+    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131362094);
+    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131362115);
+    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131362093);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131362036);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131362038);
+    View localView = paramView.findViewById(2131364264);
     localBorderTextView.setTextSize(1, 11.0F);
     localBorderTextView.setBorderWidth(Math.round(localBorderTextView.getResources().getDisplayMetrics().density * 1.0F));
-    ((ImageView)localObject).setImageDrawable(bdzx.a(paramAdData.img_url));
+    ((ImageView)localObject).setImageDrawable(beyq.a(paramAdData.img_url));
     int i;
     if ((paramAdData.wording != null) && (paramAdData.wording.length() > 0))
     {
@@ -173,7 +173,7 @@ public class CarrierHelper
       paramView.setContentDescription((CharSequence)localObject);
       localView.setContentDescription((CharSequence)localObject);
       localView.setTag(paramAdData.jump_url);
-      localView.setTag(2131374206, Integer.valueOf(paramAdData.ad_source));
+      localView.setTag(2131374345, Integer.valueOf(paramAdData.ad_source));
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       return;
       localBorderTextView.setVisibility(4);
@@ -190,7 +190,7 @@ public class CarrierHelper
       return;
     }
     int i = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.a();
-    bgmg.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
+    bhmi.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
   }
   
   public void a(List<AdData> paramList, int paramInt, ArrayList<CarrierHelper.EntranceConfig> paramArrayList)
@@ -214,7 +214,7 @@ public class CarrierHelper
   
   public void onClick(View paramView)
   {
-    Object localObject1 = (Integer)paramView.getTag(2131374206);
+    Object localObject1 = (Integer)paramView.getTag(2131374345);
     String str = (String)paramView.getTag();
     if ((localObject1 == null) || (str == null)) {}
     for (;;)
@@ -222,19 +222,19 @@ public class CarrierHelper
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       if ((this.b == 2) || (this.b == 1)) {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject1), "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject1), "", "", "");
       }
       if (((Integer)localObject1).intValue() == 5) {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
       }
       if (this.jdField_a_of_type_AndroidAppActivity == null) {}
       for (localObject1 = BaseApplicationImpl.getContext();; localObject1 = this.jdField_a_of_type_AndroidAppActivity)
       {
-        localObject2 = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject1, str);
+        localObject2 = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject1, str);
         if (localObject2 == null) {
           break label182;
         }
-        ((bgmp)localObject2).a();
+        ((bhmr)localObject2).a();
         break;
       }
       label182:

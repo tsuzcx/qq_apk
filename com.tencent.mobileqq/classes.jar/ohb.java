@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class ohb
-  extends bkfi
+class ohb
+  implements QQPermissionCallback
 {
-  public ohb(ReadInJoyNaviController.1 param1, View paramView) {}
+  ohb(ogs paramogs, Runnable paramRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, oha.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new ohc(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    ogs.a(this.jdField_a_of_type_Ogs, 3);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    oha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

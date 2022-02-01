@@ -1,15 +1,21 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
+import java.io.InputStream;
 
-class bjuo
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+public class bjuo
 {
-  bjuo(bjul parambjul, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener) {}
+  public int a;
+  public long a;
+  public InputStream a;
+  public String a;
+  public long b;
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public bjuo(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoPreparedListener.onVideoPrepared(this.jdField_a_of_type_Bjul);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.b = this.jdField_a_of_type_JavaLangString.length();
+    }
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bhru;
+import bisp;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppUtils$5
@@ -18,13 +18,13 @@ final class MiniAppUtils$5
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bhru))
+    if ((paramMessage.obj instanceof bisp))
     {
-      bhru localbhru = (bhru)paramMessage.obj;
-      if (localbhru.c == 0)
+      bisp localbisp = (bisp)paramMessage.obj;
+      if (localbisp.c == 0)
       {
         QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbhru.d);
+        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbisp.d);
       }
     }
   }

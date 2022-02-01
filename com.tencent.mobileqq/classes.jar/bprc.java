@@ -1,12 +1,19 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class bprc
+class bprc
+  implements TextWatcher
 {
-  public int a;
-  public List<String> a;
-  public boolean a;
-  public List<Bitmap> b;
+  bprc(bpqz parambpqz) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    bpqz.a(this.a);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

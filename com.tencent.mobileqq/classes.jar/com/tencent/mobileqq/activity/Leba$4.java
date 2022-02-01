@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aezt;
-import ajvi;
-import anov;
-import arcs;
-import aval;
-import bccf;
-import bccv;
-import bctj;
-import blrv;
-import blsb;
+import afja;
+import akgr;
+import aoaw;
+import arsh;
+import avsm;
+import bcux;
+import bcvn;
+import bdmc;
+import bmsx;
+import bmtd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.LebaPluginInfo;
@@ -19,9 +19,9 @@ import cooperation.qzone.QZoneClickReport;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import njg;
-import noq;
-import yqu;
+import nlb;
+import nql;
+import yup;
 
 class Leba$4
   implements Runnable
@@ -30,52 +30,52 @@ class Leba$4
   
   public void run()
   {
-    Object localObject = ajvi.a().a(this.this$0.a);
+    Object localObject = akgr.a().a(this.this$0.a);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        arcs localarcs = (arcs)((Iterator)localObject).next();
-        if ((localarcs != null) && (localarcs.a.uiResId == noq.a)) {
-          yqu.a("dynamic", "exp_story", 0, ((njg)this.this$0.a.getManager(70)).c(), new String[0]);
+        arsh localarsh = (arsh)((Iterator)localObject).next();
+        if ((localarsh != null) && (localarsh.a.uiResId == nql.a)) {
+          yup.a("dynamic", "exp_story", 0, ((nlb)this.this$0.a.getManager(70)).c(), new String[0]);
         }
       }
     }
     Leba.a(this.this$0).a();
-    blsb.a(this.this$0.a, "Leba");
+    bmtd.a(this.this$0.a, "Leba");
     Leba.a(this.this$0);
-    localObject = (bccv)this.this$0.a.getManager(10);
+    localObject = (bcvn)this.this$0.a.getManager(10);
     boolean bool;
     if (localObject != null)
     {
       if ((this.this$0.a.a() != null) && (this.this$0.a.a().a()))
       {
         bool = true;
-        aezt.a((bccv)localObject, true, bool);
-        if (((bccv)localObject).a(1) <= 0) {
+        afja.a((bcvn)localObject, true, bool);
+        if (((bcvn)localObject).a(1) <= 0) {
           break label467;
         }
-        localObject = new blrv();
-        ((blrv)localObject).c = "1";
-        ((blrv)localObject).d = "5";
-        QZoneClickReport.report(this.this$0.a.getAccount(), (blrv)localObject, false);
+        localObject = new bmsx();
+        ((bmsx)localObject).c = "1";
+        ((bmsx)localObject).d = "5";
+        QZoneClickReport.report(this.this$0.a.getAccount(), (bmsx)localObject, false);
         localObject = new HashMap();
         ((HashMap)localObject).put("unread_type", "5");
-        bctj.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "actQZUnreadDataReport", true, 0L, 0L, (HashMap)localObject, null);
+        bdmc.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "actQZUnreadDataReport", true, 0L, 0L, (HashMap)localObject, null);
       }
     }
     else {
       label268:
-      if (System.currentTimeMillis() - LocalMultiProcConfig.getLong(BaseApplicationImpl.getContext().getString(2131717426) + this.this$0.a.getAccount(), 0L) > 86400000L)
+      if (System.currentTimeMillis() - LocalMultiProcConfig.getLong(BaseApplicationImpl.getContext().getString(2131717557) + this.this$0.a.getAccount(), 0L) > 86400000L)
       {
         localObject = new HashMap();
-        if (!LocalMultiProcConfig.getBool(BaseApplicationImpl.getContext().getString(2131717425) + this.this$0.a.getAccount(), true)) {
+        if (!LocalMultiProcConfig.getBool(BaseApplicationImpl.getContext().getString(2131717556) + this.this$0.a.getAccount(), true)) {
           break label556;
         }
         ((HashMap)localObject).put("myfeednotifypush", "0");
         label375:
-        if (!bccf.a(BaseApplicationImpl.getContext(), "com.qzone")) {
+        if (!bcux.a(BaseApplicationImpl.getContext(), "com.qzone")) {
           break label568;
         }
         ((HashMap)localObject).put("qzoneinstalled", "0");
@@ -83,22 +83,22 @@ class Leba$4
     }
     for (;;)
     {
-      bctj.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "qzonepushstate", true, 0L, 0L, (HashMap)localObject, null);
-      LocalMultiProcConfig.putLong(BaseApplicationImpl.getContext().getString(2131717426) + this.this$0.a.getAccount(), System.currentTimeMillis());
+      bdmc.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "qzonepushstate", true, 0L, 0L, (HashMap)localObject, null);
+      LocalMultiProcConfig.putLong(BaseApplicationImpl.getContext().getString(2131717557) + this.this$0.a.getAccount(), System.currentTimeMillis());
       return;
       bool = false;
       break;
       label467:
-      if (((bccv)localObject).a(2) <= 0) {
+      if (((bcvn)localObject).a(2) <= 0) {
         break label268;
       }
-      localObject = new blrv();
-      ((blrv)localObject).c = "1";
-      ((blrv)localObject).d = "6";
-      QZoneClickReport.report(this.this$0.a.getAccount(), (blrv)localObject, false);
+      localObject = new bmsx();
+      ((bmsx)localObject).c = "1";
+      ((bmsx)localObject).d = "6";
+      QZoneClickReport.report(this.this$0.a.getAccount(), (bmsx)localObject, false);
       localObject = new HashMap();
       ((HashMap)localObject).put("unread_type", "6");
-      bctj.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "actQZUnreadDataReport", true, 0L, 0L, (HashMap)localObject, null);
+      bdmc.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "actQZUnreadDataReport", true, 0L, 0L, (HashMap)localObject, null);
       break label268;
       label556:
       ((HashMap)localObject).put("myfeednotifypush", "1");

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-class quu
-  implements View.OnClickListener
+public class quu
 {
-  quu(qus paramqus) {}
-  
-  public void onClick(View paramView)
+  public static void a(BaseArticleInfo paramBaseArticleInfo)
   {
-    pha.a(this.a.jdField_a_of_type_AndroidContentContext, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
-    snh.a(((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), ((pxk)this.a.jdField_a_of_type_JavaLangObject).e());
-    EventCollector.getInstance().onViewClicked(paramView);
+    qva localqva = qva.a(paramBaseArticleInfo);
+    if (localqva == null) {
+      return;
+    }
+    localqva.a(paramBaseArticleInfo);
   }
 }
 

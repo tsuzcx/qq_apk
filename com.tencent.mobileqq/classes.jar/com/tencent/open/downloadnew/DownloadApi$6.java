@@ -1,27 +1,27 @@
 package com.tencent.open.downloadnew;
 
-import bisy;
-import bivl;
-import bivr;
-import bivy;
+import bjtx;
+import bjwk;
+import bjwq;
+import bjwx;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DownloadApi$6
   implements Runnable
 {
-  public DownloadApi$6(String paramString, bivy parambivy) {}
+  public DownloadApi$6(String paramString, bjwx parambjwx) {}
   
   public void run()
   {
-    bisy.a(bivl.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
+    bjtx.a(bjwk.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
     try
     {
       new ArrayList();
-      List localList = bivr.a().b(this.jdField_a_of_type_JavaLangString);
-      bisy.a(bivl.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
-      if (this.jdField_a_of_type_Bivy != null) {
-        this.jdField_a_of_type_Bivy.a(localList);
+      List localList = bjwq.a().b(this.jdField_a_of_type_JavaLangString);
+      bjtx.a(bjwk.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
+      if (this.jdField_a_of_type_Bjwx != null) {
+        this.jdField_a_of_type_Bjwx.a(localList);
       }
       return;
     }
@@ -29,9 +29,9 @@ public final class DownloadApi$6
     {
       do
       {
-        bisy.c(bivl.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      } while (this.jdField_a_of_type_Bivy == null);
-      this.jdField_a_of_type_Bivy.a(-1, localException.getMessage());
+        bjtx.c(bjwk.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
+      } while (this.jdField_a_of_type_Bjwx == null);
+      this.jdField_a_of_type_Bjwx.a(-1, localException.getMessage());
     }
   }
 }

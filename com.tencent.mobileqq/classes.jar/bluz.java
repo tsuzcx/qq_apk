@@ -1,337 +1,234 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.util.QZLog;
-import eipc.EIPCClient;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.telephony.TelephonyManager;
 
 public class bluz
-  implements bhkl, bhku
 {
-  private static bluz jdField_a_of_type_Bluz;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  public bhkm a;
-  private bmlj jdField_a_of_type_Bmlj;
-  private String jdField_a_of_type_JavaLangString = mts.a(BaseApplicationImpl.getContext());
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  
-  private bluz()
+  public static final int a(Context paramContext)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
+    Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (localObject == null) {
+      return -1;
     }
-  }
-  
-  public static bluz a()
-  {
-    if (jdField_a_of_type_Bluz == null) {}
-    try
+    localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
+    if ((localObject == null) || (!((NetworkInfo)localObject).isAvailable())) {
+      return -1;
+    }
+    if (((NetworkInfo)localObject).getType() == 1) {
+      return 0;
+    }
+    switch (((TelephonyManager)paramContext.getSystemService("phone")).getNetworkType())
     {
-      if (jdField_a_of_type_Bluz == null) {
-        jdField_a_of_type_Bluz = new bluz();
-      }
-      return jdField_a_of_type_Bluz;
+    case 3: 
+    default: 
+      return 1;
+    case 4: 
+      return 2;
+    case 2: 
+      return 2;
     }
-    finally {}
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    Intent localIntent = new Intent("com.tencent.qq.syncSecretShuoshuoMsg");
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("com.tencent.qq.syncSecretShuoshuoMsgType", paramInt);
-    localIntent.putExtras(localBundle);
-    paramContext.sendBroadcast(localIntent);
+    return 2;
   }
   
   /* Error */
-  public String a(String paramString)
+  public static java.lang.String a()
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: new 101	java/io/File
-    //   8: dup
-    //   9: aload_1
-    //   10: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: astore 5
-    //   15: new 104	java/io/FileInputStream
-    //   18: dup
-    //   19: aload 5
-    //   21: invokespecial 107	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   24: astore_3
-    //   25: aload_3
-    //   26: astore_1
-    //   27: aload 4
-    //   29: astore_2
-    //   30: aload 5
-    //   32: invokevirtual 111	java/io/File:length	()J
-    //   35: l2i
-    //   36: newarray byte
-    //   38: astore 4
-    //   40: aload_3
-    //   41: astore_1
-    //   42: aload 4
-    //   44: astore_2
-    //   45: aload_3
-    //   46: aload 4
-    //   48: invokevirtual 115	java/io/FileInputStream:read	([B)I
-    //   51: pop
-    //   52: aload 4
-    //   54: astore_1
-    //   55: aload_3
-    //   56: ifnull +10 -> 66
-    //   59: aload_3
-    //   60: invokevirtual 118	java/io/FileInputStream:close	()V
-    //   63: aload 4
-    //   65: astore_1
-    //   66: aload_1
-    //   67: ifnull +105 -> 172
-    //   70: aload_1
-    //   71: iconst_0
-    //   72: invokestatic 124	com/tencent/smtt/utils/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   75: areturn
-    //   76: astore_1
-    //   77: ldc 66
-    //   79: iconst_1
+    //   1: astore_2
+    //   2: invokestatic 46	android/os/Process:myPid	()I
+    //   5: istore_0
+    //   6: new 48	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   13: ldc 54
+    //   15: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: iload_0
+    //   19: invokestatic 64	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   22: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc 66
+    //   27: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: astore_1
+    //   34: ldc 71
+    //   36: astore 4
+    //   38: new 73	java/io/FileReader
+    //   41: dup
+    //   42: aload_1
+    //   43: invokespecial 76	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   46: astore_3
+    //   47: new 78	java/io/BufferedReader
+    //   50: dup
+    //   51: aload_3
+    //   52: sipush 8192
+    //   55: invokespecial 81	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   58: astore 5
+    //   60: aload 5
+    //   62: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   65: pop
+    //   66: aload 5
+    //   68: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   71: pop
+    //   72: aload 5
+    //   74: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   77: astore_1
+    //   78: aload_1
+    //   79: astore_2
     //   80: aload_1
-    //   81: iconst_0
-    //   82: anewarray 4	java/lang/Object
-    //   85: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   88: aload 4
-    //   90: astore_1
-    //   91: goto -25 -> 66
-    //   94: astore 4
-    //   96: aconst_null
-    //   97: astore_3
-    //   98: aload_3
-    //   99: astore_1
-    //   100: ldc 66
-    //   102: iconst_1
-    //   103: aload 4
-    //   105: iconst_0
-    //   106: anewarray 4	java/lang/Object
-    //   109: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   112: aload_2
-    //   113: astore_1
-    //   114: aload_3
-    //   115: ifnull -49 -> 66
-    //   118: aload_3
-    //   119: invokevirtual 118	java/io/FileInputStream:close	()V
-    //   122: aload_2
-    //   123: astore_1
-    //   124: goto -58 -> 66
-    //   127: astore_1
-    //   128: ldc 66
-    //   130: iconst_1
-    //   131: aload_1
-    //   132: iconst_0
-    //   133: anewarray 4	java/lang/Object
-    //   136: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   139: aload_2
-    //   140: astore_1
-    //   141: goto -75 -> 66
-    //   144: astore_2
-    //   145: aconst_null
-    //   146: astore_1
-    //   147: aload_1
-    //   148: ifnull +7 -> 155
-    //   151: aload_1
-    //   152: invokevirtual 118	java/io/FileInputStream:close	()V
-    //   155: aload_2
-    //   156: athrow
-    //   157: astore_1
-    //   158: ldc 66
-    //   160: iconst_1
-    //   161: aload_1
-    //   162: iconst_0
-    //   163: anewarray 4	java/lang/Object
-    //   166: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   169: goto -14 -> 155
-    //   172: ldc 132
-    //   174: areturn
-    //   175: astore_2
-    //   176: goto -29 -> 147
-    //   179: astore 4
-    //   181: goto -83 -> 98
+    //   81: ifnull +9 -> 90
+    //   84: aload 5
+    //   86: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   89: astore_2
+    //   90: aload 4
+    //   92: astore_1
+    //   93: aload_2
+    //   94: ifnull +22 -> 116
+    //   97: aload_2
+    //   98: ldc 86
+    //   100: invokevirtual 90	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   103: astore_1
+    //   104: aload_1
+    //   105: arraylength
+    //   106: bipush 9
+    //   108: if_icmplt +35 -> 143
+    //   111: aload_1
+    //   112: bipush 8
+    //   114: aaload
+    //   115: astore_1
+    //   116: aload_3
+    //   117: ifnull +7 -> 124
+    //   120: aload_3
+    //   121: invokevirtual 93	java/io/FileReader:close	()V
+    //   124: aload_1
+    //   125: astore 4
+    //   127: aload 5
+    //   129: ifnull +11 -> 140
+    //   132: aload 5
+    //   134: invokevirtual 94	java/io/BufferedReader:close	()V
+    //   137: aload_1
+    //   138: astore 4
+    //   140: aload 4
+    //   142: areturn
+    //   143: ldc 96
+    //   145: astore_1
+    //   146: goto -30 -> 116
+    //   149: astore_2
+    //   150: aload_2
+    //   151: invokevirtual 99	java/io/IOException:printStackTrace	()V
+    //   154: aload_1
+    //   155: areturn
+    //   156: astore_3
+    //   157: aconst_null
+    //   158: astore_1
+    //   159: aload_3
+    //   160: invokevirtual 99	java/io/IOException:printStackTrace	()V
+    //   163: aload_2
+    //   164: ifnull +7 -> 171
+    //   167: aload_2
+    //   168: invokevirtual 93	java/io/FileReader:close	()V
+    //   171: aload_1
+    //   172: ifnull -32 -> 140
+    //   175: aload_1
+    //   176: invokevirtual 94	java/io/BufferedReader:close	()V
+    //   179: ldc 71
+    //   181: areturn
+    //   182: astore_1
+    //   183: aload_1
+    //   184: invokevirtual 99	java/io/IOException:printStackTrace	()V
+    //   187: ldc 71
+    //   189: areturn
+    //   190: astore_2
+    //   191: aconst_null
+    //   192: astore_1
+    //   193: aconst_null
+    //   194: astore_3
+    //   195: aload_3
+    //   196: ifnull +7 -> 203
+    //   199: aload_3
+    //   200: invokevirtual 93	java/io/FileReader:close	()V
+    //   203: aload_1
+    //   204: ifnull +7 -> 211
+    //   207: aload_1
+    //   208: invokevirtual 94	java/io/BufferedReader:close	()V
+    //   211: aload_2
+    //   212: athrow
+    //   213: astore_1
+    //   214: aload_1
+    //   215: invokevirtual 99	java/io/IOException:printStackTrace	()V
+    //   218: goto -7 -> 211
+    //   221: astore_2
+    //   222: aconst_null
+    //   223: astore_1
+    //   224: goto -29 -> 195
+    //   227: astore_2
+    //   228: aload 5
+    //   230: astore_1
+    //   231: goto -36 -> 195
+    //   234: astore 4
+    //   236: aload_2
+    //   237: astore_3
+    //   238: aload 4
+    //   240: astore_2
+    //   241: goto -46 -> 195
+    //   244: astore 5
+    //   246: aconst_null
+    //   247: astore_1
+    //   248: aload_3
+    //   249: astore_2
+    //   250: aload 5
+    //   252: astore_3
+    //   253: goto -94 -> 159
+    //   256: astore_1
+    //   257: aload_3
+    //   258: astore_2
+    //   259: aload_1
+    //   260: astore_3
+    //   261: aload 5
+    //   263: astore_1
+    //   264: goto -105 -> 159
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	184	0	this	bluz
-    //   0	184	1	paramString	String
-    //   4	136	2	arrayOfByte1	byte[]
-    //   144	12	2	localObject1	Object
-    //   175	1	2	localObject2	Object
-    //   24	95	3	localFileInputStream	java.io.FileInputStream
-    //   1	88	4	arrayOfByte2	byte[]
-    //   94	10	4	localThrowable1	java.lang.Throwable
-    //   179	1	4	localThrowable2	java.lang.Throwable
-    //   13	18	5	localFile	java.io.File
+    //   5	14	0	i	int
+    //   33	143	1	localObject1	Object
+    //   182	2	1	localIOException1	java.io.IOException
+    //   192	16	1	localObject2	Object
+    //   213	2	1	localIOException2	java.io.IOException
+    //   223	25	1	localObject3	Object
+    //   256	4	1	localIOException3	java.io.IOException
+    //   263	1	1	localObject4	Object
+    //   1	97	2	localObject5	Object
+    //   149	19	2	localIOException4	java.io.IOException
+    //   190	22	2	localObject6	Object
+    //   221	1	2	localObject7	Object
+    //   227	10	2	localObject8	Object
+    //   240	19	2	localObject9	Object
+    //   46	75	3	localFileReader	java.io.FileReader
+    //   156	4	3	localIOException5	java.io.IOException
+    //   194	67	3	localObject10	Object
+    //   36	105	4	localObject11	Object
+    //   234	5	4	localObject12	Object
+    //   58	171	5	localBufferedReader	java.io.BufferedReader
+    //   244	18	5	localIOException6	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   59	63	76	java/lang/Exception
-    //   15	25	94	java/lang/Throwable
-    //   118	122	127	java/lang/Exception
-    //   15	25	144	finally
-    //   151	155	157	java/lang/Exception
-    //   30	40	175	finally
-    //   45	52	175	finally
-    //   100	112	175	finally
-    //   30	40	179	java/lang/Throwable
-    //   45	52	179	java/lang/Throwable
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = mts.a(BaseApplicationImpl.getContext());
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131712051), 1);
-      }
-    }
-    while (this.jdField_a_of_type_Bhkm == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bhkm.f = paramInt;
-    bhkp.b(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Bhkm, this.jdField_a_of_type_JavaLangString, this);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a(Intent paramIntent, int paramInt)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("key_record_path");
-    this.jdField_a_of_type_Long = paramIntent.getLongExtra("key_record_time", 0L);
-    int i = paramIntent.getIntExtra("key_record_param_sample_rate", 0);
-    int j = paramIntent.getIntExtra("key_record_param_bit_rate", 0);
-    int k = paramIntent.getIntExtra("key_record_param_audio_type", 0);
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_Long > 0L))
-    {
-      this.jdField_a_of_type_Bhkm = new bhkm(this.jdField_b_of_type_JavaLangString, i, j, k, 0);
-      switch (paramInt)
-      {
-      default: 
-        return;
-      case 0: 
-        a(BaseApplicationImpl.getContext(), 1);
-        return;
-      }
-      bmll.c();
-      return;
-    }
-    a(BaseApplicationImpl.getContext(), 6);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder("data:audio/amr;base64,");
-      localStringBuilder.append(a(paramString));
-      QZLog.d("RecordAndChangeVoiceService", 2, "base64=" + localStringBuilder.toString());
-      this.jdField_a_of_type_Bmlj.a(this.c, localStringBuilder.toString());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(String paramString, int paramInt, bmlj parambmlj)
-  {
-    QZLog.d("RecordAndChangeVoiceService", 2, "playMoodVoice voiceID: " + paramInt);
-    if (paramInt == 3) {
-      this.jdField_b_of_type_Long = (((float)this.jdField_a_of_type_Long / 0.6F));
-    }
-    for (;;)
-    {
-      long l = (this.jdField_b_of_type_Long + 500L) / 1000L;
-      parambmlj.b(paramString, l);
-      QZLog.d("RecordAndChangeVoiceService", 2, "onReplyPlayMoodVoice changeVoiceTime=" + this.jdField_b_of_type_Long + ", time = " + l);
-      a(paramInt);
-      return;
-      if (paramInt == 4) {
-        this.jdField_b_of_type_Long = (((float)this.jdField_a_of_type_Long * 0.5833333F));
-      } else {
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      }
-    }
-  }
-  
-  public void a(String paramString, bmlj parambmlj)
-  {
-    QZLog.d("RecordAndChangeVoiceService", 2, "getMoodVoiceRecordTime");
-    if (this.jdField_a_of_type_Bhkm == null) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Int == 0) || ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Long == 0L)))
-    {
-      l = (this.jdField_a_of_type_Long + 500L) / 1000L;
-      parambmlj.a(paramString, l);
-      QZLog.d("RecordAndChangeVoiceService", 2, "onReplyGetMoodVoiceRecordTime: " + l);
-      return;
-    }
-    long l = (this.jdField_b_of_type_Long + 500L) / 1000L;
-    parambmlj.a(paramString, l);
-    QZLog.d("RecordAndChangeVoiceService", 2, "onReplyGetMoodVoiceRecordTime: " + l);
-  }
-  
-  public void ai_() {}
-  
-  public void aj_() {}
-  
-  public void b(String paramString, int paramInt, bmlj parambmlj)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = mts.a(BaseApplicationImpl.getContext());
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131712052), 1);
-      }
-      return;
-    }
-    QZLog.d("RecordAndChangeVoiceService", 2, "getMoodVoiceData callback" + paramString + " voiceID " + paramInt);
-    this.c = paramString;
-    this.jdField_a_of_type_Bmlj = parambmlj;
-    bhkp.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Bhkm, this.jdField_a_of_type_JavaLangString, this);
-    bhkp.a(this.jdField_b_of_type_JavaLangString, this);
-  }
-  
-  public void d()
-  {
-    QZLog.d("RecordAndChangeVoiceService", 2, "stopPlayingMoodVoice");
-    if (this.jdField_a_of_type_Bhkm != null) {
-      bhkp.b(this.jdField_a_of_type_Bhkm);
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.c = null;
-    this.jdField_a_of_type_Bhkm = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Bmlj = null;
+    //   120	124	149	java/io/IOException
+    //   132	137	149	java/io/IOException
+    //   38	47	156	java/io/IOException
+    //   167	171	182	java/io/IOException
+    //   175	179	182	java/io/IOException
+    //   38	47	190	finally
+    //   199	203	213	java/io/IOException
+    //   207	211	213	java/io/IOException
+    //   47	60	221	finally
+    //   60	78	227	finally
+    //   84	90	227	finally
+    //   97	111	227	finally
+    //   159	163	234	finally
+    //   47	60	244	java/io/IOException
+    //   60	78	256	java/io/IOException
+    //   84	90	256	java/io/IOException
+    //   97	111	256	java/io/IOException
   }
 }
 

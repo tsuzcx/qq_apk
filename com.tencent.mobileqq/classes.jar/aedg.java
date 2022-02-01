@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aedg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aedg(aedf paramaedf) {}
+  aedg(aede paramaede, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bgzo.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Aede.a.app.a(this.jdField_a_of_type_JavaLangString, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

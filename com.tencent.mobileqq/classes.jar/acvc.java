@@ -1,66 +1,58 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class acvc
-  extends acuy
 {
-  private boolean a;
-  private String c;
-  private String d;
-  
-  public acvc(JSONObject paramJSONObject)
+  public static void a(String paramString1, String paramString2)
   {
-    a(paramJSONObject);
+    a(paramString1, paramString2, null);
   }
   
-  public String a()
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    String str = super.a();
-    try
-    {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("driverVersion", this.c);
-      ((JSONObject)localObject).put("previousPatch", this.d);
-      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
-    }
-    return str;
   }
   
-  protected void a(JSONObject paramJSONObject)
+  public static void b(String paramString1, String paramString2)
   {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.c = paramJSONObject.optString("driverVersion", null);
-    this.d = paramJSONObject.optString("previousPatch", null);
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
+    b(paramString1, paramString2, null);
   }
   
-  public boolean a(String paramString)
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
     }
-    return super.a(paramString);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(paramString1, paramString2, null);
+  }
+  
+  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvc
  * JD-Core Version:    0.7.0.1
  */

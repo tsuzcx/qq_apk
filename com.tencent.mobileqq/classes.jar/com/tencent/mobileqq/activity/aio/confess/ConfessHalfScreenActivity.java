@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
 import Override;
-import agfq;
+import agor;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -46,10 +46,10 @@ public class ConfessHalfScreenActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167224);
-    paramBundle = findViewById(2131363653);
+    getWindow().setBackgroundDrawableResource(2131167247);
+    paramBundle = findViewById(2131363678);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131167224);
+      paramBundle.setBackgroundResource(2131167247);
     }
     this.jdField_a_of_type_Int = getIntent().getIntExtra("confessDstHeight", 0);
     if (this.jdField_a_of_type_Int <= 0)
@@ -60,7 +60,7 @@ public class ConfessHalfScreenActivity
       finish();
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agfq(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agor(this);
     }
     try
     {

@@ -8,25 +8,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import aqvq;
-import aqvs;
-import aqwh;
-import aszd;
-import atam;
-import atcq;
-import atee;
-import atyr;
-import atys;
-import atyt;
-import atyu;
-import atyv;
-import atyw;
-import atyx;
-import atyy;
-import atyz;
-import atza;
-import atzb;
-import atzc;
+import arle;
+import arlg;
+import arlv;
+import atqx;
+import atsh;
+import atul;
+import atvy;
+import auqm;
+import auqn;
+import auqo;
+import auqp;
+import auqq;
+import auqr;
+import auqs;
+import auqt;
+import auqu;
+import auqv;
+import auqw;
+import auqx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
@@ -35,85 +35,85 @@ import com.tencent.mobileqq.widget.FormSwitchItem;
 public class QFileDebugSettingFragment
   extends IphoneTitleBarFragment
 {
-  private atam a;
+  private atsh a;
   
   private void a()
   {
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131381383);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131381572);
     localFormSwitchItem.setChecked(this.a.a().a);
-    localFormSwitchItem.setOnCheckedChangeListener(new atyr(this));
-    localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131381384);
+    localFormSwitchItem.setOnCheckedChangeListener(new auqm(this));
+    localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131381573);
     localFormSwitchItem.setChecked(this.a.a().a);
-    localFormSwitchItem.setOnCheckedChangeListener(new atyv(this));
+    localFormSwitchItem.setOnCheckedChangeListener(new auqq(this));
   }
   
   private void b()
   {
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131373623);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131373742);
     localFormSwitchItem.setChecked(this.a.a().a);
-    localFormSwitchItem.setOnCheckedChangeListener(new atyw(this));
+    localFormSwitchItem.setOnCheckedChangeListener(new auqr(this));
   }
   
   private void c()
   {
-    Object localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368744);
-    ((FormSwitchItem)localObject1).setChecked(atcq.a().b());
-    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new atyx(this));
-    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368740);
-    ((FormSwitchItem)localObject1).setChecked(atcq.a().c());
-    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new atyy(this));
-    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368743);
-    ((FormSwitchItem)localObject1).setChecked(atcq.a().d());
-    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new atyz(this));
-    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368742);
-    ((FormSwitchItem)localObject1).setChecked(atcq.a().e());
-    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new atza(this));
-    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368741);
-    ((FormSwitchItem)localObject1).setChecked(atcq.a().f());
-    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new atzb(this));
-    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368739);
-    ((FormSwitchItem)localObject1).setChecked(atcq.a());
-    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new atzc(this));
-    localObject1 = (RadioGroup)this.mContentView.findViewById(2131377907);
+    Object localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368818);
+    ((FormSwitchItem)localObject1).setChecked(atul.a().b());
+    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new auqs(this));
+    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368814);
+    ((FormSwitchItem)localObject1).setChecked(atul.a().c());
+    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new auqt(this));
+    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368817);
+    ((FormSwitchItem)localObject1).setChecked(atul.a().d());
+    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new auqu(this));
+    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368816);
+    ((FormSwitchItem)localObject1).setChecked(atul.a().e());
+    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new auqv(this));
+    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368815);
+    ((FormSwitchItem)localObject1).setChecked(atul.a().f());
+    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new auqw(this));
+    localObject1 = (FormSwitchItem)this.mContentView.findViewById(2131368813);
+    ((FormSwitchItem)localObject1).setChecked(atul.a());
+    ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new auqx(this));
+    localObject1 = (RadioGroup)this.mContentView.findViewById(2131378060);
     Object localObject2;
     TextView localTextView;
-    switch (atcq.a().a())
+    switch (atul.a().a())
     {
     default: 
-      ((RadioGroup)localObject1).setOnCheckedChangeListener(new atys(this));
-      localObject2 = (TextView)this.mContentView.findViewById(2131370295);
+      ((RadioGroup)localObject1).setOnCheckedChangeListener(new auqn(this));
+      localObject2 = (TextView)this.mContentView.findViewById(2131370396);
       localObject1 = "当前登录协议栈：IPv4";
       if (MsfServiceSdk.get().getConnectedIPFamily() == 2) {
         localObject1 = "当前登录协议栈：IPv6";
       }
       ((TextView)localObject2).setText((CharSequence)localObject1);
-      localObject2 = (atam)getActivity().app.getManager(317);
-      localTextView = (TextView)this.mContentView.findViewById(2131364900);
+      localObject2 = (atsh)getActivity().app.getManager(317);
+      localTextView = (TextView)this.mContentView.findViewById(2131364947);
       localObject1 = "c2c开关：关闭";
-      if (((atam)localObject2).d()) {
+      if (((atsh)localObject2).d()) {
         localObject1 = "c2c开关：打开";
       }
       localTextView.setText((CharSequence)localObject1);
-      localTextView = (TextView)this.mContentView.findViewById(2131364903);
+      localTextView = (TextView)this.mContentView.findViewById(2131364950);
       localObject1 = "group开关：关闭";
-      if (((atam)localObject2).e()) {
+      if (((atsh)localObject2).e()) {
         localObject1 = "group开关：打开";
       }
       localTextView.setText((CharSequence)localObject1);
-      localTextView = (TextView)this.mContentView.findViewById(2131364902);
+      localTextView = (TextView)this.mContentView.findViewById(2131364949);
       localObject1 = "disc开关：关闭";
-      if (((atam)localObject2).f()) {
+      if (((atsh)localObject2).f()) {
         localObject1 = "disc开关：打开";
       }
       localTextView.setText((CharSequence)localObject1);
-      localTextView = (TextView)this.mContentView.findViewById(2131364901);
+      localTextView = (TextView)this.mContentView.findViewById(2131364948);
       localObject1 = "数据线开关：关闭";
-      if (((atam)localObject2).g()) {
+      if (((atsh)localObject2).g()) {
         localObject1 = "数据线开关：打开";
       }
       localTextView.setText((CharSequence)localObject1);
-      localTextView = (TextView)this.mContentView.findViewById(2131364908);
-      if (((atam)localObject2).a() == 0) {
+      localTextView = (TextView)this.mContentView.findViewById(2131364955);
+      if (((atsh)localObject2).a() == 0) {
         localObject1 = "IPv6策略：v4优先";
       }
       break;
@@ -122,15 +122,15 @@ public class QFileDebugSettingFragment
     {
       localTextView.setText((CharSequence)localObject1);
       return;
-      ((RadioGroup)localObject1).check(2131377904);
+      ((RadioGroup)localObject1).check(2131378057);
       break;
-      ((RadioGroup)localObject1).check(2131377905);
+      ((RadioGroup)localObject1).check(2131378058);
       break;
-      ((RadioGroup)localObject1).check(2131377906);
+      ((RadioGroup)localObject1).check(2131378059);
       break;
-      if (((atam)localObject2).a() == 1) {
+      if (((atsh)localObject2).a() == 1) {
         localObject1 = "IPv6策略：v6优先";
-      } else if (((atam)localObject2).a() == 2) {
+      } else if (((atsh)localObject2).a() == 2) {
         localObject1 = "IPv6策略：跟随登录";
       } else {
         localObject1 = "IPv6策略：unkonw";
@@ -144,18 +144,18 @@ public class QFileDebugSettingFragment
     if (localQQAppInterface == null) {
       return;
     }
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131362707);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131362725);
     localFormSwitchItem.setChecked(localQQAppInterface.a().a().a());
-    localFormSwitchItem.setOnCheckedChangeListener(new atyt(this, localQQAppInterface));
-    localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131362706);
+    localFormSwitchItem.setOnCheckedChangeListener(new auqo(this, localQQAppInterface));
+    localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131362724);
     localFormSwitchItem.setChecked(localQQAppInterface.a().a().b());
-    localFormSwitchItem.setOnCheckedChangeListener(new atyu(this, localQQAppInterface));
+    localFormSwitchItem.setOnCheckedChangeListener(new auqp(this, localQQAppInterface));
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.a = ((atam)getActivity().app.getManager(317));
+    this.a = ((atsh)getActivity().app.getManager(317));
     a();
     c();
     b();
@@ -164,7 +164,7 @@ public class QFileDebugSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131560873;
+    return 2131560904;
   }
 }
 

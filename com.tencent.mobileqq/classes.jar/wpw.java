@@ -1,10 +1,12 @@
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class wpw
-  extends weu
+public abstract interface wpw
 {
-  public String a;
-  public List<String> a;
+  public abstract void a(wqa paramwqa, View paramView, String paramString);
+  
+  public abstract void a(wqa paramwqa, ViewGroup paramViewGroup, View paramView, int paramInt, CommentEntry paramCommentEntry);
 }
 
 

@@ -1,28 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-
-public class poe
-  implements View.OnClickListener
+class poe
+  implements ppm
 {
-  public poe(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
+  poe(pod parampod) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.doOnBackEvent();
-    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("stat_src", "5");
-      nxw.a(new omp().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nxw.u).b(nxw.ag).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nxw.a(localHashMap)).a());
-    }
+    poc.a(this.a.a, paramInt);
   }
 }
 

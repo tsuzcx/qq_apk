@@ -1,24 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.2.1;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alfo
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public alfo(CareNotificationBar.3 param3) {}
+  public alfo(ChooseItemView paramChooseItemView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a.post(new CareNotificationBar.3.2.1(this));
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

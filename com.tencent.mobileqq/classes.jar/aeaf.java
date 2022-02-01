@@ -1,20 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeaf
-  extends GestureDetector.SimpleOnGestureListener
+final class aeaf
+  implements DialogInterface.OnClickListener
 {
-  public aeaf(Conversation paramConversation) {}
+  aeaf(aebz paramaebz) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    if (this.a != null) {
+      this.a.a();
     }
-    Conversation.n(this.a);
-    return super.onDoubleTap(paramMotionEvent);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

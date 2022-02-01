@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import mqq.app.QQPermissionCallback;
-
-class bilb
-  implements QQPermissionCallback
+public class bilb
 {
-  bilb(bila parambila) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c = 2;
+  public int d;
+  public int e;
+  public int f;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bilb(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bglp.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
   }
 }
 

@@ -1,36 +1,14 @@
-import android.graphics.Bitmap;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.app.Activity;
+import com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1;
 
-class xwy
-  extends SimpleObserver<Bitmap>
+public class xwy
+  implements xxg
 {
-  xwy(xwx paramxwx) {}
+  public xwy(BottomVideoInfoWidget.8.1 param1, Activity paramActivity) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a()
   {
-    super.onNext(paramBitmap);
-    xwv.b(xwx.a(this.a), "onNext, oldResult=%s, newResult=%s", xwx.a(this.a), paramBitmap);
-    xwx.a(this.a, paramBitmap);
-    xwx.a(this.a, true);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    xwv.a(xwx.a(this.a), "onCancel");
-    onError(new ErrorMessage(-1, "onCancel"));
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    xwv.c(xwx.a(this.a), "onError, oldError=%s, newError=%s", xwx.a(this.a), paramError);
-    xwx.a(this.a, paramError);
-    xwx.a(this.a, SystemClock.uptimeMillis());
-    xwx.a(this.a, false);
+    xwr.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_Xwr, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.c, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.e, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.f, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
   }
 }
 

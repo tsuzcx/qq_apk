@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class xzu
-  implements View.OnClickListener
+  implements xiv
 {
   xzu(xzt paramxzt) {}
   
-  public void onClick(View paramView)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

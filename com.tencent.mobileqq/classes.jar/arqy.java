@@ -1,37 +1,61 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class arqy
-  implements View.OnClickListener
+public class arqy
+  extends arac<arqx>
 {
-  arqy(arqx paramarqx, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public static arqx a()
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    arro localarro = (arro)this.jdField_a_of_type_Arqx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_Arqx.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-    asaz localasaz = new asaz();
-    localasaz.c = 4;
-    localasaz.e = localarro.a(localCustomEmotionData);
-    localasaz.jdField_d_of_type_Int = 2;
-    localasaz.jdField_d_of_type_JavaLangString = localCustomEmotionData.eId;
-    localasaz.f = localCustomEmotionData.url;
-    localasaz.h = localCustomEmotionData.RomaingType;
-    localasaz.jdField_g_of_type_Int = localCustomEmotionData.emoId;
-    localasaz.jdField_g_of_type_JavaLangString = localCustomEmotionData.resid;
-    AIOEmotionFragment.a(this.jdField_a_of_type_Arqx.jdField_a_of_type_AndroidContentContext, localasaz, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (arqx)aran.a().a(451);
+  }
+  
+  @NonNull
+  public arqx a(int paramInt)
+  {
+    return new arqx();
+  }
+  
+  @Nullable
+  public arqx a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arqx.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(arqx paramarqx) {}
+  
+  public Class<arqx> clazz()
+  {
+    return arqx.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 451;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqy
  * JD-Core Version:    0.7.0.1
  */

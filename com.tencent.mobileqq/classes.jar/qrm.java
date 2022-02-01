@@ -1,70 +1,55 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Handler;
+import java.util.TimeZone;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class qrm
-  extends qsq
 {
-  public qrm(Context paramContext, aobu paramaobu, snh paramsnh)
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  @NotNull
+  private qrk jdField_a_of_type_Qrk;
+  @Nullable
+  private qrl jdField_a_of_type_Qrl;
+  
+  private long a(long paramLong)
   {
-    super(paramContext, paramaobu, paramsnh);
+    return (TimeZone.getDefault().getOffset(paramLong) + paramLong) / 86400000L;
   }
   
-  public qqt a()
+  private boolean a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).q().l().n().g().j();
+    long l = paramLong1 - paramLong2;
+    return (l < 86400000L) && (l > -86400000L) && (a(paramLong1) == a(paramLong2));
   }
   
-  public qqt c(snh paramsnh, aobu paramaobu)
+  public void a()
   {
-    super.c(paramsnh, paramaobu);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.c = true;
-    return this;
-  }
-  
-  public qqt d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    int i = this.jdField_a_of_type_Qrk.b();
+    if (!this.jdField_a_of_type_Qrk.a()) {}
+    while ((i <= 100) && (this.jdField_a_of_type_Qrk.g() + i < this.jdField_a_of_type_Qrk.h())) {
+      return;
     }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
+    String str = this.jdField_a_of_type_Qrk.a();
+    this.jdField_a_of_type_Qrk.a(str, this.jdField_a_of_type_Qrk.a(), i);
+    this.jdField_a_of_type_Qrk.b(0);
+    this.jdField_a_of_type_Qrk.a("");
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Qrl == null) {
+      return;
     }
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentBigImageVideo)))
+    int i = this.jdField_a_of_type_Qrk.g();
+    int j = this.jdField_a_of_type_Qrk.d();
+    if ((i <= 0) || (i >= this.jdField_a_of_type_Qrk.h()))
     {
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout2.setOrientation(1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLinearLayout2.setLayoutParams(localLayoutParams);
-      localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Qqs);
-      ((ComponentContentBigImageVideo)this.jdField_a_of_type_Qqs).setOnClickListener(new qrn(this));
-      localLinearLayout1.addView(localLinearLayout2);
+      this.jdField_a_of_type_Qrl.a(0);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public qqt g()
-  {
-    this.jdField_a_of_type_Qqs = new ComponentContentPgcVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    this.jdField_a_of_type_Qrl.a(1);
+    this.jdField_a_of_type_Qrl.a(i % j / j * 100.0F);
   }
 }
 

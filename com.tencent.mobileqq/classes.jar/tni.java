@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class tni
-  implements tol
+class tni
+  implements ViewFactory.FoundClickableViewListener
 {
-  public tni(BridgeModule paramBridgeModule) {}
+  tni(tnh paramtnh, BaseData paramBaseData, Context paramContext) {}
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.a.invokeCallJS(paramString, paramJSONObject);
+    paramViewBase.setOnClickListener(new tnj(this));
   }
 }
 

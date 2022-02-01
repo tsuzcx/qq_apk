@@ -1,12 +1,12 @@
 package cooperation.ilive.plugin;
 
 import NS_KING_PUBLIC.stAuth;
-import blel;
-import blet;
+import bmfo;
+import bmfw;
 import com.tencent.qphone.base.util.QLog;
 
 final class LiveAuth$1
-  implements blel
+  implements bmfo
 {
   public void onGetAuthInfo(boolean paramBoolean, stAuth paramstAuth)
   {
@@ -20,7 +20,7 @@ final class LiveAuth$1
       return;
     }
     LiveAuth.liveToken(paramstAuth.sUid, paramstAuth.sSessionKey);
-    blet.b("refreshToken");
+    bmfw.b("refreshToken");
   }
 }
 

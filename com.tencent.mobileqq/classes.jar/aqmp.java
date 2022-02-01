@@ -1,62 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public class aqmp
+class aqmp
+  implements bliz
 {
-  protected String a = "";
+  aqmp(aqmo paramaqmo, Context paramContext, blir paramblir) {}
   
-  public aqmp() {}
-  
-  public aqmp(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramString != null) {
-      this.a = paramString;
+    switch (paramInt)
+    {
     }
-  }
-  
-  public aqmq a()
-  {
-    if ((this instanceof aqmq)) {
-      return (aqmq)this;
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      do
+      {
+        return;
+        paramView = this.jdField_a_of_type_Aqmo.b + this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangString;
+      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        bdll.b((QQAppInterface)this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangString, "");
+      }
     }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
-    return null;
-  }
-  
-  public aqmr a()
-  {
-    if ((this instanceof aqmr)) {
-      return (aqmr)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
-    return null;
-  }
-  
-  public aqmt a()
-  {
-    if ((this instanceof aqmt)) {
-      return (aqmt)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
-    return null;
-  }
-  
-  public aqmu a()
-  {
-    if ((this instanceof aqmu)) {
-      return (aqmu)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmp
  * JD-Core Version:    0.7.0.1
  */

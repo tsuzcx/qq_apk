@@ -1,113 +1,61 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class axqq
-  extends axqt
-  implements View.OnClickListener
+public abstract class axqq
+  extends Binder
+  implements axqp
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.music.IQQPlayerCallback";
+  static final int TRANSACTION_onPlaySongChanged = 2;
+  static final int TRANSACTION_onPlayStateChanged = 1;
   
-  public axqq(PicBrowserActivity paramPicBrowserActivity, abfp paramabfp)
+  public axqq()
   {
-    super(paramPicBrowserActivity, paramabfp);
+    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
   }
   
-  protected RelativeLayout a()
+  public static axqp asInterface(IBinder paramIBinder)
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559504, null);
-  }
-  
-  public void b(ViewGroup paramViewGroup)
-  {
-    super.b(paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377280));
-    this.b = ((TextView)paramViewGroup.findViewById(2131365311));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-  }
-  
-  protected void c(int paramInt)
-  {
-    if (paramInt == this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    if (paramIBinder == null) {
+      return null;
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Axqz.a() <= 1)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.b.setVisibility(8);
-      }
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof axqp))) {
+      return (axqp)localIInterface;
     }
+    return new axqr(paramIBinder);
   }
   
-  public void l()
+  public IBinder asBinder()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_Axqz.a();
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int < localArrayList.size())) {
-      localArrayList.add(0, (PicInfo)localArrayList.remove(this.jdField_a_of_type_Int));
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("intent_param_pic_infos", localArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.setResult(-1, localIntent);
-    super.l();
+    return this;
   }
   
-  public void onClick(View paramView)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramView.getId())
+    switch (paramInt1)
     {
     default: 
-    case 2131377280: 
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_Axqz.b();
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131693938), 0).a();
-      }
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+      onPlayStateChanged(paramParcel1.readInt());
+      return true;
     }
-    int i = this.jdField_a_of_type_Axqz.b();
-    if (i < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_Int -= 1;
-    }
-    for (;;)
+    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
     {
-      d();
-      c(this.jdField_a_of_type_Axqz.b());
-      break;
-      if (i == this.jdField_a_of_type_Int) {
-        if (i == this.jdField_a_of_type_Axqz.a() - 1) {
-          this.jdField_a_of_type_Int = (i - 1);
-        } else {
-          this.jdField_a_of_type_Int = i;
-        }
-      }
+      onPlaySongChanged(paramParcel1);
+      return true;
     }
-  }
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    super.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    c(paramInt);
   }
 }
 

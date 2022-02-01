@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import albs;
+import alni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ final class AddAccountActivity$5
   
   public void run()
   {
-    albs.a().a(this.a, BaseApplicationImpl.sApplication, false, true);
+    alni.a().a(this.a, BaseApplicationImpl.sApplication, false, true);
   }
 }
 

@@ -1,10 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class axzt
-  extends axzs
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public long b;
+  public axzt(RecentUserInvitePanel paramRecentUserInvitePanel) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

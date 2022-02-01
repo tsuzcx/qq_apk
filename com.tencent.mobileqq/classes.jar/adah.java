@@ -1,42 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import org.jetbrains.annotations.NotNull;
 
 public class adah
-  implements acxp
 {
-  public int a()
-  {
-    return 1037;
-  }
+  protected ConcurrentHashMap<String, Lock> a;
+  private ConcurrentHashMap<String, List<MessageRecord>> b;
+  private ConcurrentHashMap<String, List<MessageRecord>> c;
   
-  public boolean a()
+  public adah()
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(159);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().b(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgPool", 2, "MsgPool() called " + this);
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
+    this.c = new ConcurrentHashMap();
+    this.a = new ConcurrentHashMap();
+    this.b = a();
   }
   
-  public int b()
+  public Map<String, List<MessageRecord>> a()
   {
-    return 0;
+    return this.c;
+  }
+  
+  @NotNull
+  protected ConcurrentHashMap<String, List<MessageRecord>> a()
+  {
+    return new ConcurrentHashMap();
+  }
+  
+  public Lock a(String paramString)
+  {
+    if (!this.a.containsKey(paramString)) {}
+    synchronized (this.a)
+    {
+      if (!this.a.containsKey(paramString)) {
+        this.a.put(paramString, new ReentrantLock());
+      }
+      return (Lock)this.a.get(paramString);
+    }
+  }
+  
+  public Lock a(String paramString, int paramInt)
+  {
+    return a(adak.a(paramString, paramInt));
+  }
+  
+  public ConcurrentHashMap<String, List<MessageRecord>> b()
+  {
+    return this.b;
   }
 }
 

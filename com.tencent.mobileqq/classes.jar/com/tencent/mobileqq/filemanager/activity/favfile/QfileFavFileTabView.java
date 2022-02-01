@@ -6,21 +6,21 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import asti;
-import asve;
-import asvf;
-import asvh;
-import asvi;
-import asvp;
-import asvq;
-import asvr;
-import asvs;
-import asvt;
-import atcv;
-import athc;
-import atxd;
-import bcst;
-import bljn;
+import atjm;
+import atli;
+import atlj;
+import atll;
+import atlm;
+import atlt;
+import atlu;
+import atlv;
+import atlw;
+import atlx;
+import atup;
+import atyw;
+import auoy;
+import bdll;
+import bmkq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FavFileInfo;
@@ -35,15 +35,15 @@ public class QfileFavFileTabView
   protected Drawable a;
   public View.OnClickListener a;
   protected TextView a;
-  asvh a;
+  atll a;
   public ViewerMoreRelativeLayout a;
-  public View.OnClickListener b = new asvq(this);
+  public View.OnClickListener b = new atlu(this);
   
-  public QfileFavFileTabView(Context paramContext, asvi paramasvi, asve paramasve)
+  public QfileFavFileTabView(Context paramContext, atlm paramatlm, atli paramatli)
   {
-    super(paramContext, paramasvi, paramasve);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new asvp(this);
-    this.jdField_a_of_type_Asvh = new asvr(this);
+    super(paramContext, paramatlm, paramatli);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new atlt(this);
+    this.jdField_a_of_type_Atll = new atlv(this);
   }
   
   public int a()
@@ -51,21 +51,21 @@ public class QfileFavFileTabView
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.getHeight();
   }
   
-  protected asti a()
+  protected atjm a()
   {
-    return new asvf(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.b, null, null, this.jdField_a_of_type_Asvh);
+    return new atlj(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.b, null, null, this.jdField_a_of_type_Atll);
   }
   
   protected String a(FavFileInfo paramFavFileInfo)
   {
-    return atxd.a(paramFavFileInfo.c);
+    return auoy.a(paramFavFileInfo.c);
   }
   
   public void a()
   {
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839402);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839410);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
     }
@@ -75,9 +75,9 @@ public class QfileFavFileTabView
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b();
     if ((g()) && (!paramBoolean)) {
-      if (athc.a(paramFavFileInfo))
+      if (atyw.a(paramFavFileInfo))
       {
-        athc.b(paramFavFileInfo);
+        atyw.b(paramFavFileInfo);
         w();
         q();
       }
@@ -88,7 +88,7 @@ public class QfileFavFileTabView
       do
       {
         return;
-        athc.a(paramFavFileInfo);
+        atyw.a(paramFavFileInfo);
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.h(true);
         break;
         if (c()) {
@@ -99,13 +99,13 @@ public class QfileFavFileTabView
       return;
       label87:
       u();
-      bljn.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramFavFileInfo.a);
+      bmkq.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramFavFileInfo.a);
     }
   }
   
   protected void a(boolean paramBoolean)
   {
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AFB3", "0X800AFB3", 0, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AFB3", "0X800AFB3", 0, 0, "", "", "", "");
   }
   
   protected int b()
@@ -138,12 +138,12 @@ public class QfileFavFileTabView
   
   protected void o()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupExpandListener(new asvs(this));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupCollapseListener(new asvt(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupExpandListener(new atlw(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupCollapseListener(new atlx(this));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout = new ViewerMoreRelativeLayout(a());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.findViewById(2131380942));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.findViewById(2131381122));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.addFooterView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout);
   }
   

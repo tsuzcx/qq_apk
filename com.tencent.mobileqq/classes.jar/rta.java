@@ -1,19 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class rta
-  implements tja
+class rta
+  implements DialogInterface.OnShowListener
 {
-  public rta(SelectVideoTabFragment paramSelectVideoTabFragment) {}
+  rta(rsx paramrsx) {}
   
-  public void a(tjf paramtjf)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    SelectVideoTabFragment.a(this.a).setCurrentItem(paramtjf.a());
+    rsx.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    rsx.a(this.a).getWindow().clearFlags(8);
   }
-  
-  public void b(tjf paramtjf) {}
-  
-  public void c(tjf paramtjf) {}
 }
 
 

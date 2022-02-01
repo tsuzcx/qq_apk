@@ -1,9 +1,18 @@
-import java.io.File;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-public class bndn
+final class bndn
+  implements bndq
 {
-  public static final String a = bndu.c + "/app_lib/qq_filter" + File.separator;
-  public static final String b = a + "final_ptu_res_file" + File.separator;
+  public void a(boolean paramBoolean, Context paramContext, bndr parambndr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bndl.d(paramContext, parambndr);
+    }
+  }
 }
 
 

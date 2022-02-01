@@ -1,16 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
-class tnx
-  implements rqa
+public class tnx
+  implements anui
 {
-  tnx(tnw paramtnw, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public void a(boolean paramBoolean, List<MaterialData> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    BridgeModule.access$1700(this.jdField_a_of_type_Tnw.a, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (String)paramObject);
+      return;
+    }
+    a(paramBoolean, (List)paramObject);
   }
 }
 

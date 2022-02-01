@@ -1,8 +1,14 @@
-import android.view.View;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
-public abstract interface vmg
+class vmg
+  implements aadm
 {
-  public abstract void a(View paramView, uzk paramuzk);
+  vmg(vmf paramvmf) {}
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    vmf.a(this.a, ((Boolean)paramArrayOfObject[0]).booleanValue(), ((Long)paramArrayOfObject[1]).longValue(), (String)paramArrayOfObject[2], (FeedCloudRead.StGetFeedListRsp)paramArrayOfObject[3], false);
+  }
 }
 
 

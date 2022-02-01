@@ -21,7 +21,7 @@ public class DTReportComponent
   implements IVideoReportComponent
 {
   private static final String TAG = "DTReportComponent";
-  private static final int VISIT_BACKGROUND_TIME = 30000;
+  private static final long VISIT_BACKGROUND_TIME = 900000L;
   private Configuration mConfiguration = createDefaultConfiguration(paramBuilder);
   
   private DTReportComponent(DTReportComponent.Builder paramBuilder)
@@ -46,7 +46,7 @@ public class DTReportComponent
   
   private Configuration createDefaultConfiguration(DTReportComponent.Builder paramBuilder)
   {
-    return DTReportComponent.Builder.access$300(paramBuilder).visitBackgroundTime(30000L).formatter(getFormatter(DTReportComponent.Builder.access$000(paramBuilder))).build();
+    return DTReportComponent.Builder.access$300(paramBuilder).visitBackgroundTime(900000L).formatter(getFormatter(DTReportComponent.Builder.access$000(paramBuilder))).build();
   }
   
   private IFormatter getFormatter(@DTConfigConstants.ElementFormatMode int paramInt)

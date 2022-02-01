@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public abstract interface ahry
+public class ahry
+  implements View.OnTouchListener
 {
-  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
+  public ahry(SixCombolEffectView paramSixCombolEffectView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

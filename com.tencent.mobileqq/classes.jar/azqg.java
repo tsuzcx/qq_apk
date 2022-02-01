@@ -1,30 +1,24 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
-
 public class azqg
-  extends azpu
 {
-  public azqg(azlw paramazlw, azfe paramazfe)
-  {
-    super(paramazlw, paramazfe);
-  }
+  public azqh a;
   
   public String a()
   {
-    return "VasProfileHeaderWZRYComponent";
+    return null;
   }
   
-  protected void a()
+  public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
-    {
-      VasProfileWZRYView localVasProfileWZRYView = new VasProfileWZRYView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
-      localVasProfileWZRYView.setClickListener(this);
-      localVasProfileWZRYView.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileWZRYView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    if (this.a == null) {
+      this.a = new azqh();
     }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
 import cooperation.qzone.LocalMultiProcConfig;
-import vga;
+import vie;
 
 public final class FontManager$1
   implements Runnable
 {
   public void run()
   {
-    vga.a(Boolean.valueOf(LocalMultiProcConfig.getBool("qzone_font_enabled", true)));
-    vga.b(Boolean.valueOf(LocalMultiProcConfig.getBool("qzone_super_font_enabled", true)));
-    vga.c(Boolean.valueOf(LocalMultiProcConfig.getBool("qzone_barrage_effect_enabled", true)));
+    vie.a(Boolean.valueOf(LocalMultiProcConfig.getBool("qzone_font_enabled", true)));
+    vie.b(Boolean.valueOf(LocalMultiProcConfig.getBool("qzone_super_font_enabled", true)));
+    vie.c(Boolean.valueOf(LocalMultiProcConfig.getBool("qzone_barrage_effect_enabled", true)));
   }
 }
 

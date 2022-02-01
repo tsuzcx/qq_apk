@@ -1,139 +1,31 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class awvn
-  extends awuc
+  extends apck
 {
-  private agol a;
+  public int a;
+  public boolean a;
+  public int b;
   
-  public awvn(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
+  public awvn(String paramString)
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramViewGroup);
+    super(paramString);
   }
   
-  public void a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    super.a();
-    if (this.jdField_a_of_type_Agol != null)
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      this.jdField_a_of_type_Agol.a(null);
-      this.jdField_a_of_type_Agol = null;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      this.b = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Agol == null) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Agol.c(true);
-      this.jdField_a_of_type_Agol.b(true);
-      this.jdField_a_of_type_Agol.d();
-      return;
-    }
-    this.jdField_a_of_type_Agol.b(false);
-    this.jdField_a_of_type_Agol.c(false);
-  }
-  
-  public void a(awtw paramawtw)
-  {
-    super.a(paramawtw);
-    if (this.jdField_a_of_type_Agol != null)
-    {
-      if (a() != 0) {
-        this.jdField_a_of_type_Agol.b(false);
-      }
-      this.jdField_a_of_type_Agol.a(a(), a());
-      this.jdField_a_of_type_Agol.b();
-    }
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Agol == null)
-    {
-      paramBundle = null;
-      Bundle localBundle = a();
-      if (localBundle != null) {
-        paramBundle = localBundle.getString("uin");
-      }
-      this.jdField_a_of_type_Agol = new agol(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
-      this.jdField_a_of_type_Agol.a(this);
-      b(1);
-      a(this.jdField_a_of_type_Agol.a());
-    }
-    b(this.jdField_a_of_type_Agol.a());
-    if (a() != null) {
-      this.jdField_a_of_type_Agol.a(a(), a());
-    }
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("StrangerIntimateViewDelegete", 2, "doOnResume() called");
-    }
-    if (this.jdField_a_of_type_Agol == null) {
-      return;
-    }
-    if (a() == 0)
-    {
-      this.jdField_a_of_type_Agol.b(true);
-      this.jdField_a_of_type_Agol.d();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agol.n();
-      return;
-      this.jdField_a_of_type_Agol.b(false);
-      this.jdField_a_of_type_Agol.e();
+      QLog.i("LoginUserGuideHelper", 2, String.format("onLocationFinish [%s, %s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
     }
   }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StrangerIntimateViewDelegete", 2, "doOnPause() called");
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Agol == null) {
-      return;
-    }
-    this.jdField_a_of_type_Agol.a(true);
-    this.jdField_a_of_type_Agol.b();
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Agol == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Agol.a());
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
-    }
-    this.jdField_a_of_type_Agol.j();
-  }
-  
-  public void h() {}
 }
 
 

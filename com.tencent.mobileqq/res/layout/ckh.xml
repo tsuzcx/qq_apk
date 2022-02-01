@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="145.0dip" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/mlc" android:background="@drawable/di3" android:layout_width="280.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="5.0" />
-        <ImageView android:background="@drawable/ew_" android:layout_width="17.0dip" android:layout_height="9.0dip" android:layout_alignParentRight="true" />
-        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="4.0" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/mxj" android:background="@drawable/e_8" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/ayo" android:textColor="@color/bp" android:gravity="center" android:layout_width="192.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n9" android:text="公众号会根据你的浏览兴趣推荐更多优质内容" />
+    <TextView android:textSize="@dimen/ayk" android:textColor="@color/bp" android:id="@id/o34" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="0.0dip" android:text="暂不需要，去设置 >" android:alpha="0.4082" />
+    <View android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/n2" android:alpha="0.19" />
+    <TextView android:textSize="@dimen/ayq" android:textColor="#ff1b1b1b" android:gravity="center" android:id="@id/o33" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="55.0dip" android:text="好的" />
 </LinearLayout>

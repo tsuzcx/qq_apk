@@ -1,16 +1,36 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public abstract interface bhov
+public class bhov
+  implements ArkViewImplement.LoadCallback
 {
-  public abstract Activity a();
+  bhov(bhot parambhot) {}
   
-  public abstract bhos a();
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  {
+    onLoadState(paramInt1);
+  }
   
-  public abstract WebViewFragment a();
-  
-  public abstract WebView a();
+  public void onLoadState(int paramInt)
+  {
+    WeakReference localWeakReference = new WeakReference(this.a);
+    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
+    if (paramInt == 0) {}
+    do
+    {
+      return;
+      bhot.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bhot.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bhot.b(this.a)) });
+      }
+    } while (!bhot.a(this.a));
+    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+  }
 }
 
 

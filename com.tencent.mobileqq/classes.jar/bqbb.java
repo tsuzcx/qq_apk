@@ -1,17 +1,16 @@
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class bqbb
-  implements atve
+class bqbb
+  extends AnimatorListenerAdapter
 {
-  public bqbb(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bqbb(bqav parambqav) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    bqav.a(this.a).setVisibility(8);
   }
-  
-  public void b() {}
 }
 
 

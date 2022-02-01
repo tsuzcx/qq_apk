@@ -1,81 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.5;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
-public class bbez
-  implements bdvw
+class bbez
+  implements beuq
 {
-  public bbez(ScribbleResMgr.5 param5) {}
+  bbez(bbew parambbew, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcwn parambcwn) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onResp(bevm parambevm)
   {
-    int j = 2;
-    QLog.i("ScribbleResMgr", 2, "DownloadResIcon onResp resp.mResult:  " + parambdwt.a);
-    int i = j;
-    Object localObject;
-    String str1;
-    String str2;
-    if (parambdwt.a == 0)
-    {
-      localObject = "";
-      str1 = "";
-      if (this.a.a == 3)
-      {
-        localObject = ScribbleResMgr.a(this.a.this$0);
-        str1 = ScribbleResMgr.b(this.a.this$0);
-      }
-      if (this.a.a == 4)
-      {
-        localObject = ScribbleResMgr.c(this.a.this$0);
-        str1 = ScribbleResMgr.d(this.a.this$0);
-      }
-      str2 = bgmg.c((String)localObject);
-      if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1))) {
-        break label259;
-      }
-      str1 = ScribbleResMgr.a;
-      i = nmk.a((String)localObject, str1);
-      if (i == 0) {
-        break label334;
-      }
-      QLog.e("ScribbleResMgr", 2, "unZipFolder  failed, filepath=" + (String)localObject + " destDir= " + str1 + " result: " + i);
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + parambevm.c);
     }
-    label259:
-    label334:
-    for (i = 0;; i = 1)
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Bbew.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    parambevm = this.jdField_a_of_type_Bbew.a.iterator();
+    while (parambevm.hasNext())
     {
-      if (i != 0) {
-        i = 1;
+      Object localObject = (bbfs)parambevm.next();
+      if (((bbfs)localObject).a != null)
+      {
+        localObject = ((bbfs)localObject).a.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
+          if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+            localPtvTemplateInfo.usable = this.jdField_a_of_type_Bbew.a(localPtvTemplateInfo);
+          }
+        }
       }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    try
+    {
+      nof.a(new File(bbew.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), bbew.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
+      if (this.jdField_a_of_type_Bcwn != null) {
+        this.jdField_a_of_type_Bcwn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
+      }
+      return;
+    }
+    catch (IOException parambevm)
+    {
       for (;;)
       {
-        if (parambdwt.a == 3) {
-          i = 4;
-        }
-        parambdwt = new ScribbleResMgr.ResInfo();
-        parambdwt.resType = this.a.a;
-        parambdwt.sourceId = 0;
-        ScribbleResMgr.a(this.a.this$0, parambdwt, i);
-        return;
-        if (str2 == null) {}
-        for (localObject = "";; localObject = str2)
-        {
-          str2 = str1;
-          if (str1 == null) {
-            str2 = "";
-          }
-          QLog.e("ScribbleResMgr", 2, "check wrong md5 =" + (String)localObject + " desMd5 = " + str2);
-          i = j;
-          break;
-        }
-        i = 2;
+        parambevm.printStackTrace();
       }
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bcwn != null) {
+      this.jdField_a_of_type_Bcwn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
+    }
+  }
 }
 
 

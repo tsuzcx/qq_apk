@@ -1,109 +1,48 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadReport;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
-public class bgsj
-  implements SoLoadReport
+class bgsj
+  extends anua
 {
-  private static SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+  bgsj(bgsi parambgsi) {}
   
-  private HashMap<String, String> a(String paramString, long paramLong)
+  protected void a(Object paramObject)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("osVersion", Build.VERSION.RELEASE);
-    localHashMap.put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    localHashMap.put("time", a.format(new Date(System.currentTimeMillis())));
-    localHashMap.put("libName", paramString);
-    localHashMap.put("costTime", paramLong + "");
-    localHashMap.put("processName", BaseApplicationImpl.processName);
-    return localHashMap;
-  }
-  
-  private void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap)
-  {
-    bctj.a(paramHashMap, paramInt);
-    bctj localbctj = bctj.a(BaseApplicationImpl.getContext());
-    if (paramBoolean)
-    {
-      localbctj.a("", "loadSoNew", false, 0L, 0L, paramHashMap, "");
-      return;
-    }
-    localbctj.a("", "loadSoOld", false, 0L, 0L, paramHashMap, "");
-  }
-  
-  public void report(int paramInt, String paramString, long paramLong)
-  {
-    HashMap localHashMap1 = a(paramString, paramLong);
-    HashMap localHashMap2 = a(paramString, paramLong);
-    boolean bool;
-    int i;
-    if (((paramInt & 0x2) == 2) || ((paramInt & 0x40000) == 262144))
-    {
-      a(true, 0, localHashMap1);
-      bool = true;
-      QLog.i("SoLoadUtilNew", 1, "load " + paramString + " result:" + bool + " code " + paramInt);
-      if ((paramInt & 0x2) != 2) {
-        break label189;
-      }
-      if (((paramInt & 0x8000) != 32768) || ((paramInt & 0x1000) != 4096) || ((paramInt & 0x800) != 0)) {
-        break label149;
-      }
-      i = 0;
-    }
+    if (this.a.a == null) {}
     for (;;)
     {
-      a(false, i, localHashMap2);
       return;
-      a(true, paramInt, localHashMap1);
-      bool = false;
-      break;
-      label149:
-      i = paramInt;
-      if ((paramInt & 0x200) == 512)
+      paramObject = (bftf)paramObject;
+      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.jdField_b_of_type_Int != 1)) && (paramObject.jdField_b_of_type_Int == 12))
       {
-        i = paramInt;
-        if ((paramInt & 0x40) == 0)
+        long l = paramObject.jdField_b_of_type_Long;
+        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1).iterator();
+        while (localIterator.hasNext())
         {
-          i = paramInt;
-          if ((paramInt & 0x8) == 0)
+          Object localObject = (ChatMessage)localIterator.next();
+          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
           {
-            i = 0;
-            continue;
-            label189:
-            i = paramInt;
-            if ((paramInt & 0x40000) == 262144) {
-              i = 0;
+            localObject = (MessageForTroopFile)localObject;
+            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
             }
           }
         }
       }
     }
   }
-  
-  public void reportThrowable(Throwable paramThrowable, String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramThrowable == null) || (!(paramThrowable instanceof UnsatisfiedLinkError)));
-      paramThrowable = paramThrowable.getMessage();
-    } while ((paramThrowable == null) || (paramThrowable.indexOf("too many libraries") < 0));
-    bctj.a(BaseApplicationImpl.getContext()).a("", "SoCountLimit", false, 0L, 0L, a(paramString, 0L), "");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgsj
  * JD-Core Version:    0.7.0.1
  */

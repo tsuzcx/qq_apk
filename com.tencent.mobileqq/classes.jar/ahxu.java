@@ -1,18 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahxu
-  extends Handler
+public class ahxu
+  implements ahyf
 {
-  ahxu(ahxt paramahxt) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.o.isShown()) {
-      this.a.o.setVisibility(8);
-    }
+    paramahed.c(paramahfq.b);
   }
 }
 

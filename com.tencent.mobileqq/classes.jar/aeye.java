@@ -1,82 +1,51 @@
-import android.os.AsyncTask;
-import android.widget.TextView;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.qphone.base.util.QLog;
-import org.apache.http.client.HttpClient;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class aeye
-  extends AsyncTask<GeoPoint, Void, String>
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected GeoPoint a;
-  protected HttpClient a;
+  public aeye(MainFragment paramMainFragment, Dialog paramDialog) {}
   
-  public aeye(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
-  }
-  
-  protected String a(GeoPoint... paramVarArgs)
-  {
-    int i = 0;
-    if (i < 3)
+    QLog.flushLog();
+    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364495)).isChecked();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d = bool;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getString(2131717380), "qqsetting_receivemsg_whenexit_key", bool);
+    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d);
+    int i = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().b();
+    int j = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().a();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().getSharedPreferences("unreadcount", 4).edit();
+    ((SharedPreferences.Editor)localObject).putInt("unread", i + j);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.g();
+    MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d;
+    MainFragment.c = true;
+    if (QQPlayerService.a())
     {
-      if (isCancelled())
-      {
-        localObject = "";
-        label17:
-        return localObject;
-      }
-      paramVarArgs = bgrp.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
-        if (paramVarArgs != null) {
-          break label125;
-        }
-      }
-      label125:
-      for (Object localObject = "";; localObject = paramVarArgs)
-      {
-        QLog.i("fetch_address", 2, (String)localObject);
-        if (paramVarArgs != null)
-        {
-          localObject = paramVarArgs;
-          if (paramVarArgs.length() > 0) {
-            break label17;
-          }
-        }
-        i += 1;
-        break;
-      }
+      localObject = new Intent();
+      ((Intent)localObject).setAction("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().sendBroadcast((Intent)localObject);
     }
-    return "";
-  }
-  
-  protected void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
-      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-          break label115;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-    }
-    return;
-    label115:
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.g = paramString;
+    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().finish();
+    bdll.b(MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment), "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "0", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

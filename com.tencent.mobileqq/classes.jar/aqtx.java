@@ -1,69 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqtx
-  extends aqkz<aqtv>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  @NonNull
-  public aqtv a(int paramInt)
-  {
-    return new aqtv();
-  }
+  public aqtx(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  @Nullable
-  public aqtv a(aqlg[] paramArrayOfaqlg)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    aqre.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    if (!paramBoolean) {
+      new aqrf().c(null);
+    }
+    ((aqrw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      new aqtv();
-      return aqtv.a(paramArrayOfaqlg);
+      bdll.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-    return null;
-  }
-  
-  public void a(aqtv paramaqtv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramaqtv.toString());
-    }
-  }
-  
-  public Class<aqtv> clazz()
-  {
-    return aqtv.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 418;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtx
  * JD-Core Version:    0.7.0.1
  */

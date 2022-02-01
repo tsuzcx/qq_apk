@@ -1,12 +1,23 @@
-public class bgza
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.TextView;
+
+class bgza
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  bgza(bgyz parambgyz) {}
   
-  public bgza(bgyy parambgyy) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(100L);
+    this.a.a.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.search.fragment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbjk;
+import bcce;
 
 public class AssociateSearchWordsFragment$AssociateItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<AssociateItem> CREATOR = new bbjk();
+  public static final Parcelable.Creator<AssociateItem> CREATOR = new bcce();
   public int a;
   public String a;
   public int b;

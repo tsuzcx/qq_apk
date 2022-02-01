@@ -1,25 +1,21 @@
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class bcmu
+  extends bclc
 {
-  public float a;
-  public int a;
-  public long a = -1L;
-  public File a;
-  public boolean a;
-  public int b;
-  public long b = -1L;
-  public boolean b;
-  public int c = 1;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public int f = -1;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  private Comparator<bcfn> a = new bcmv(this);
+  
+  public bcmu(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  {
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+  }
+  
+  public Comparator<bcfn> a()
+  {
+    return this.a;
+  }
 }
 
 

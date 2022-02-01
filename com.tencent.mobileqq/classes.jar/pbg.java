@@ -1,22 +1,36 @@
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pbg
-  extends pcm
+public class pbg
+  implements AladdinConfigHandler
 {
-  pbg(pbe parampbe, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampbe, null);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("readinjoyClickChannelView", str1)) {
+        bnrf.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      } else if (TextUtils.equals("readinjoySlideChannelView", str1)) {
+        bnrf.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      } else if (TextUtils.equals("readinjoyClickDiversionCard", str1)) {
+        bnrf.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      }
+    }
+    return true;
   }
   
-  void a(pcp parampcp)
+  public void onWipeConfig(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      parampcp.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    parampcp.onCommentLoadMore(1, false, new ArrayList(), false, 3);
+    bnrf.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
+    bnrf.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
+    bnrf.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
   }
 }
 

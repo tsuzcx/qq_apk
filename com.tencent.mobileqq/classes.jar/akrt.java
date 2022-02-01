@@ -1,43 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.util.Map;
 
-class akrt
-  extends akso
+final class akrt
+  implements DialogInterface.OnClickListener
 {
-  akrt(akrs paramakrs, bhhe parambhhe)
-  {
-    super(parambhhe);
-  }
+  akrt(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
   
-  public void onDoneFile(bhhf parambhhf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l2 = -1L;
-    super.onDoneFile(parambhhf);
-    if ((parambhhf != null) && (parambhhf.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambhhf.jdField_a_of_type_JavaLangString)))
+    switch (paramInt)
     {
-      File localFile = (File)parambhhf.jdField_a_of_type_JavaUtilMap.get(parambhhf.jdField_a_of_type_JavaLangString);
-      if (localFile != null)
-      {
-        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null)
-        {
-          localObject = (beaw)((QQAppInterface)localObject).getManager(193);
-          String str = parambhhf.jdField_a_of_type_JavaLangString;
-          long l1 = l2;
-          if (parambhhf.jdField_a_of_type_Int == 0)
-          {
-            l1 = l2;
-            if (localFile.exists()) {
-              l1 = localFile.length();
-            }
-          }
-          ((beaw)localObject).a(str, l1);
-        }
-      }
+    default: 
+      return;
+    case 0: 
+      akrn.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFC", "0X8009DFC", 0, 0, this.b, "", "", "");
+      return;
     }
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFD", "0X8009DFD", 0, 0, this.b, "", "", "");
   }
 }
 

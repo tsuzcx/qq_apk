@@ -6,39 +6,91 @@
             "name": "热门",
             "thumbUrl": "https://www.baidu.com",
             "materials": [
-                {
-                    "id": "video_baisemaoerduo1",
-                    "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1.png",
-                    "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1Android.zip",
-                    "packageMd5": "e22e4483fb0591ed97cd30e3c9f8267e"
-                },
-                {
-                    "id": "video_lovehunsha",
-                    "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_lovehunsha.png",
-                    "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_lovehunshaAndroid.zip",
-                    "packageMd5": "6d8b6dd6114673bc492b8d73509a2ae9"
-                },
-                {
-                    "id": "video_zhuzhuyanjing",
-                    "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjing.png",
-                    "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjingAndroid.zip",
-                    "packageMd5": "0b2e7b1d592619582030688ff7042fca"
-                },
-                {
-                    "id": "video_liuhaifadai",
-                    "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_liuhaifadai.png",
-                    "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_liuhaifadaiAndroid.zip",
-                    "packageMd5": "7236e579a1bfce2b57a472722b9a5175"
-                },
-                {
-                    "id": "video_maoerweiba",
-                    "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_maoerweiba.png",
-                    "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_maoerweibaAndroid.zip",
-                    "packageMd5": "5badf9435c7d2c3dfedae61d526e6d3f"
-                }
+              {
+                "id": "video_baisemaoerduo1",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1.png",
+                "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1Android.zip",
+                "packageMd5": "e22e4483fb0591ed97cd30e3c9f8267e"
+              },
+              {
+                "id": "video_lovehunsha",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_lovehunsha.png",
+                "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_lovehunshaAndroid.zip",
+                "packageMd5": "6d8b6dd6114673bc492b8d73509a2ae9"
+              },
+              {
+                "id": "video_zhuzhuyanjing",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjing.png",
+                "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjingAndroid.zip",
+                "packageMd5": "0b2e7b1d592619582030688ff7042fca"
+              },
+              {
+                "id": "video_liuhaifadai",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_liuhaifadai.png",
+                "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_liuhaifadaiAndroid.zip",
+                "packageMd5": "7236e579a1bfce2b57a472722b9a5175"
+              },
+              {
+                "id": "video_maoerweiba",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_maoerweiba.png",
+                "packageUrl": "https://res.tu.qq.com/qqpitu/materials/video_maoerweibaAndroid.zip",
+                "packageMd5": "5badf9435c7d2c3dfedae61d526e6d3f"
+              }
             ]
         },
-        {
+      {
+        "id": "12020",
+        "name": "特效",
+        "thumbUrl": "https://www.baidu.com",
+        "materials": [
+          {
+                "additionalFields": {
+                  "showEntry": "circleCamera"
+                },
+            "id": "video_baisemaoerduo1_circle",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1.png",
+            "packageUrl": "https://xmaterial.tu.qq.com/xeffect/material-op/material/015d625a-d6ef-11ea-98a3-f64d1afda721-video_baisemaoerduo1_circleAndroid.zip",
+            "packageMd5": "7ec52cffabaf5c27ec11803730c09e82"
+              },
+              {
+                "additionalFields": {
+                  "showEntry": "circleCamera"
+                },
+                "id": "video_lovehunsha_circle",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_lovehunsha.png",
+                "packageUrl": "https://xmaterial.tu.qq.com/xeffect/material-op/material/27d8a232-d6ef-11ea-98a3-f64d1afda721-video_lovehunsha_circleAndroid.zip",
+                "packageMd5": "b9d867dc98b9efd19efe08d4e2082cf9"
+              },
+              {
+                "additionalFields": {
+                  "showEntry": "circleCamera"
+                },
+                "id": "video_zhuzhuyanjing_circle",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjing.png",
+                "packageUrl": "https://xmaterial.tu.qq.com/xeffect/material-op/material/4e9541a0-d6ef-11ea-98a3-f64d1afda721-video_zhuzhuyanjing_circleAndroid.zip",
+                "packageMd5": "509d2ed0a651a40c6d484fb5665a0c7f"
+              },
+              {
+                "additionalFields": {
+                  "showEntry": "circleCamera"
+                },
+                "id": "video_liuhaifadai_circle",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_liuhaifadai.png",
+                "packageUrl": "https://xmaterial.tu.qq.com/xeffect/material-op/material/162cedf4-d6ef-11ea-98a3-f64d1afda721-video_liuhaifadai_circleAndroid.zip",
+                "packageMd5": "d590daccc1a1df38b536662d47cfebf3"
+              },
+              {
+                "additionalFields": {
+                  "showEntry": "circleCamera"
+                },
+                "id": "video_maoerweiba_circle",
+                "thumbUrl": "https://res.tu.qq.com/qqpitu/materials/video_maoerweiba.png",
+                "packageUrl": "https://xmaterial.tu.qq.com/xeffect/material-op/material/3ab71eb0-d6ef-11ea-98a3-f64d1afda721-video_maoerweiba_circleAndroid.zip",
+                "packageMd5": "382d716b68b1f5dfbb4009a6499dd070"
+              }
+            ]
+        },
+      {
             "id": "10100",
             "name": "装饰",
             "thumbUrl": "https://www.baidu.com",

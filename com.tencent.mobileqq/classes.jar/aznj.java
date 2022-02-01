@@ -1,192 +1,186 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class aznj
-  extends azkr
+  extends OGAbstractDao
 {
-  private aniz a;
-  
-  public aznj(azlw paramazlw, azfe paramazfe)
+  public aznj()
   {
-    super(paramazlw, paramazfe);
-    this.jdField_a_of_type_Aniz = new aznk(this);
+    this.columnLen = 12;
   }
   
-  private void a(Card paramCard, boolean paramBoolean, LifeAchivementPanelView paramLifeAchivementPanelView)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    a(paramLifeAchivementPanelView, true);
-    if (paramBoolean)
+    boolean bool = true;
+    paramBoolean = true;
+    paramEntity = (ContactCard)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      i = paramCard.lifeAchievementTotalCount;
-      String str = String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698040), new Object[] { Integer.valueOf(i) });
-      TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      localTextView.setText(str);
-      paramLifeAchivementPanelView.d.removeAllViews();
-      paramLifeAchivementPanelView.d.addView(localTextView);
-      paramLifeAchivementPanelView.d.setVisibility(0);
-      paramLifeAchivementPanelView.a(paramCard.lifeAchivementList, paramCard.lifeAchievementTotalCount);
-      a(null, localTextView);
-      return;
-    }
-    paramLifeAchivementPanelView.d.removeAllViews();
-    paramLifeAchivementPanelView.d.setVisibility(8);
-    paramLifeAchivementPanelView.b();
-    paramBoolean = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (((azfe)this.b).jdField_a_of_type_Azfl != null) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((paramBoolean) || (i != 0)) {
-        ((URLImageView)paramLifeAchivementPanelView.findViewById(2131369502)).setVisibility(4);
-      }
-      paramCard = (TextView)paramLifeAchivementPanelView.findViewById(2131379471);
-      paramLifeAchivementPanelView = (TextView)paramLifeAchivementPanelView.findViewById(2131379472);
-      a(paramCard, null);
-      a(paramLifeAchivementPanelView, null);
-      return;
-    }
-  }
-  
-  private void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    Object localObject;
-    azhb localazhb;
-    if (!paramBoolean) {
-      if ((((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard != null) && (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.lifeAchivementList != null))
+      paramEntity.mobileNo = paramCursor.getString(paramCursor.getColumnIndex("mobileNo"));
+      paramEntity.nationCode = paramCursor.getString(paramCursor.getColumnIndex("nationCode"));
+      paramEntity.mobileCode = paramCursor.getString(paramCursor.getColumnIndex("mobileCode"));
+      paramEntity.strContactName = paramCursor.getString(paramCursor.getColumnIndex("strContactName"));
+      paramEntity.nickName = paramCursor.getString(paramCursor.getColumnIndex("nickName"));
+      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramEntity.bSex = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bSex")));
+      paramEntity.bAge = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bAge")));
+      paramEntity.strProvince = paramCursor.getString(paramCursor.getColumnIndex("strProvince"));
+      paramEntity.strCity = paramCursor.getString(paramCursor.getColumnIndex("strCity"));
+      paramEntity.strCountry = paramCursor.getString(paramCursor.getColumnIndex("strCountry"));
+      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("bindQQ"))) {}
+      for (;;)
       {
-        localObject = ((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.lifeAchivementList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localazhb = (azhb)((Iterator)localObject).next();
-          if (localazhb.b == paramInt2)
-          {
-            if (paramInt1 != 1) {
-              break label151;
-            }
-            localazhb.c -= 1;
-            localazhb.a = false;
-          }
-        }
+        paramEntity.bindQQ = paramBoolean;
+        return paramEntity;
+        paramBoolean = false;
       }
+    }
+    int i = paramCursor.getColumnIndex("mobileNo");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mobileNo", String.class));
+      i = paramCursor.getColumnIndex("nationCode");
+      if (i != -1) {
+        break label673;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("nationCode", String.class));
+      label313:
+      i = paramCursor.getColumnIndex("mobileCode");
+      if (i != -1) {
+        break label688;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mobileCode", String.class));
+      label347:
+      i = paramCursor.getColumnIndex("strContactName");
+      if (i != -1) {
+        break label703;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strContactName", String.class));
+      label381:
+      i = paramCursor.getColumnIndex("nickName");
+      if (i != -1) {
+        break label718;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("nickName", String.class));
+      label415:
+      i = paramCursor.getColumnIndex("uin");
+      if (i != -1) {
+        break label733;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+      label449:
+      i = paramCursor.getColumnIndex("bSex");
+      if (i != -1) {
+        break label748;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bSex", Byte.TYPE));
+      label484:
+      i = paramCursor.getColumnIndex("bAge");
+      if (i != -1) {
+        break label764;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bAge", Byte.TYPE));
+      label519:
+      i = paramCursor.getColumnIndex("strProvince");
+      if (i != -1) {
+        break label780;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strProvince", String.class));
+      label553:
+      i = paramCursor.getColumnIndex("strCity");
+      if (i != -1) {
+        break label795;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strCity", String.class));
+      label587:
+      i = paramCursor.getColumnIndex("strCountry");
+      if (i != -1) {
+        break label810;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strCountry", String.class));
     }
     for (;;)
     {
-      localObject = BaseApplicationImpl.getApplication();
-      QQToast.a((Context)localObject, ((Context)localObject).getString(2131694157), 0).a();
-      if (this.jdField_a_of_type_JavaLangObject != null) {
-        a(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+      i = paramCursor.getColumnIndex("bindQQ");
+      if (i != -1) {
+        break label825;
       }
-      return;
-      label151:
-      if (paramInt1 == 2)
-      {
-        localazhb.c += 1;
-        localazhb.a = true;
-      }
-    }
-  }
-  
-  private boolean a(Card paramCard, boolean paramBoolean)
-  {
-    int i = 2;
-    if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
-    {
-      paramBoolean = true;
-      if ((paramCard == null) || (paramCard.lifeAchivementList == null) || (paramCard.lifeAchivementList.size() <= 0)) {
-        break label125;
-      }
-    }
-    label125:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = azhc.a(paramCard, this.jdField_a_of_type_Biab, paramBoolean, bool1);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileAchievementComponent", 2, String.format("makeOrRefreshLifeAchievement isSelf=%s hasLifeAchievement=%s showLifeAchievement=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      }
-      if (bool2) {
-        break label131;
-      }
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        break label263;
-      }
-      this.jdField_a_of_type_JavaLangObject = null;
-      return true;
-      paramBoolean = false;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bindQQ", Boolean.TYPE));
+      return paramEntity;
+      paramEntity.mobileNo = paramCursor.getString(i);
       break;
+      label673:
+      paramEntity.nationCode = paramCursor.getString(i);
+      break label313;
+      label688:
+      paramEntity.mobileCode = paramCursor.getString(i);
+      break label347;
+      label703:
+      paramEntity.strContactName = paramCursor.getString(i);
+      break label381;
+      label718:
+      paramEntity.nickName = paramCursor.getString(i);
+      break label415;
+      label733:
+      paramEntity.uin = paramCursor.getString(i);
+      break label449;
+      label748:
+      paramEntity.bSex = ((byte)paramCursor.getShort(i));
+      break label484;
+      label764:
+      paramEntity.bAge = ((byte)paramCursor.getShort(i));
+      break label519;
+      label780:
+      paramEntity.strProvince = paramCursor.getString(i);
+      break label553;
+      label795:
+      paramEntity.strCity = paramCursor.getString(i);
+      break label587;
+      label810:
+      paramEntity.strCountry = paramCursor.getString(i);
     }
-    label131:
-    LifeAchivementPanelView localLifeAchivementPanelView;
-    if (this.jdField_a_of_type_JavaLangObject == null)
+    label825:
+    if (1 == paramCursor.getShort(i)) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      localLifeAchivementPanelView = new LifeAchivementPanelView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      localLifeAchivementPanelView.setCardHandler((anip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2));
-      localLifeAchivementPanelView.setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691032));
-      this.jdField_a_of_type_JavaLangObject = localLifeAchivementPanelView;
+      paramEntity.bindQQ = paramBoolean;
+      return paramEntity;
     }
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      localLifeAchivementPanelView = (LifeAchivementPanelView)this.jdField_a_of_type_JavaLangObject;
-      localLifeAchivementPanelView.a(paramCard, (azfe)this.b);
-      a(paramCard, bool1, localLifeAchivementPanelView);
-      if (paramBoolean) {
-        i = 1;
-      }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "", "", "0X800AE53", "0X800AE53", i, 0, "", "", "", "");
-      return bool2;
-    }
-    label263:
-    return false;
   }
   
-  public int a()
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    return 1007;
+    paramEntity = (ContactCard)paramEntity;
+    paramContentValues.put("mobileNo", paramEntity.mobileNo);
+    paramContentValues.put("nationCode", paramEntity.nationCode);
+    paramContentValues.put("mobileCode", paramEntity.mobileCode);
+    paramContentValues.put("strContactName", paramEntity.strContactName);
+    paramContentValues.put("nickName", paramEntity.nickName);
+    paramContentValues.put("uin", paramEntity.uin);
+    paramContentValues.put("bSex", Byte.valueOf(paramEntity.bSex));
+    paramContentValues.put("bAge", Byte.valueOf(paramEntity.bAge));
+    paramContentValues.put("strProvince", paramEntity.strProvince);
+    paramContentValues.put("strCity", paramEntity.strCity);
+    paramContentValues.put("strCountry", paramEntity.strCountry);
+    paramContentValues.put("bindQQ", Boolean.valueOf(paramEntity.bindQQ));
   }
   
-  public String a()
+  public String getCreateTableSql(String paramString)
   {
-    return "ProfileAchievementComponent";
-  }
-  
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aniz);
-  }
-  
-  public boolean a(azfe paramazfe)
-  {
-    boolean bool = super.a(paramazfe);
-    return a(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, ((azfe)this.b).d) | bool;
-  }
-  
-  public String a_()
-  {
-    return "map_key_life_achievement";
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aniz);
-    super.f();
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,mobileNo TEXT UNIQUE ,nationCode TEXT ,mobileCode TEXT ,strContactName TEXT ,nickName TEXT ,uin TEXT ,bSex INTEGER ,bAge INTEGER ,strProvince TEXT ,strCity TEXT ,strCountry TEXT ,bindQQ INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznj
  * JD-Core Version:    0.7.0.1
  */

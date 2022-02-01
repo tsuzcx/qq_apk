@@ -1,14 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-
-public class pri
-  implements prw
+public abstract interface pri<T>
 {
-  public pri(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public abstract void a();
   
-  public void a()
-  {
-    ReadInJoySelfFragment.n(this.a);
-  }
+  public abstract void a(T paramT);
 }
 
 

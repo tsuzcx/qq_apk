@@ -1,20 +1,24 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aeis
-  implements TopGestureLayout.InterceptTouchEventListener
+  extends BroadcastReceiver
 {
-  public aeis(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aeis(Conversation paramConversation) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
+    if ("login".equals(paramIntent.getStringExtra("status")))
+    {
+      this.a.a.a(29, 2);
+      this.a.a.b = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
+      this.a.a.a(-1, null);
+      return;
     }
-    return true;
+    this.a.a.k();
   }
 }
 

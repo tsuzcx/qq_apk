@@ -21,19 +21,19 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import arxd;
-import asdi;
-import asdn;
-import asdr;
-import asdt;
-import asdu;
-import asdv;
-import asdw;
-import asdx;
-import asdy;
-import asdz;
-import bcst;
-import bgtn;
+import asmr;
+import assw;
+import astb;
+import astf;
+import asth;
+import asti;
+import astj;
+import astk;
+import astl;
+import astm;
+import astn;
+import bdll;
+import bhtq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
@@ -51,16 +51,16 @@ import java.util.List;
 
 public class RelatedEmotionPanel
   extends LinearLayout
-  implements DialogInterface.OnDismissListener, View.OnClickListener, asdt
+  implements DialogInterface.OnDismissListener, View.OnClickListener, asth
 {
   protected int a;
   private Dialog jdField_a_of_type_AndroidAppDialog;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   protected View a;
-  private arxd jdField_a_of_type_Arxd;
-  private asdn jdField_a_of_type_Asdn;
-  private asdr jdField_a_of_type_Asdr;
-  private asdz jdField_a_of_type_Asdz;
+  private asmr jdField_a_of_type_Asmr;
+  private astb jdField_a_of_type_Astb;
+  private astf jdField_a_of_type_Astf;
+  private astn jdField_a_of_type_Astn;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
   public String a;
@@ -95,15 +95,15 @@ public class RelatedEmotionPanel
     LinearLayout localLinearLayout = new LinearLayout(getContext());
     localLinearLayout.setOrientation(1);
     localLinearLayout.setGravity(1);
-    Object localObject1 = new LinearLayout.LayoutParams(bgtn.a(80.0F), bgtn.a(80.0F));
-    ((LinearLayout.LayoutParams)localObject1).topMargin = bgtn.a(6.0F);
+    Object localObject1 = new LinearLayout.LayoutParams(bhtq.a(80.0F), bhtq.a(80.0F));
+    ((LinearLayout.LayoutParams)localObject1).topMargin = bhtq.a(6.0F);
     localLinearLayout.addView(localURLImageView, (ViewGroup.LayoutParams)localObject1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(13);
     TextView localTextView = new TextView(getContext());
-    localTextView.setId(2131378792);
+    localTextView.setId(2131378952);
     localTextView.setTextSize(12.0F);
     View localView1;
     View localView2;
@@ -111,7 +111,7 @@ public class RelatedEmotionPanel
     {
       localObject1 = "#8D8D93";
       localTextView.setTextColor(Color.parseColor((String)localObject1));
-      localTextView.setText(getContext().getResources().getString(2131717296));
+      localTextView.setText(getContext().getResources().getString(2131717424));
       localTextView.setGravity(17);
       localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       localObject2 = new RelativeLayout(getContext());
@@ -124,40 +124,40 @@ public class RelatedEmotionPanel
     label621:
     for (localObject1 = "#3D3D41";; localObject1 = "#EBEDF5")
     {
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, bgtn.a(0.5F));
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, bhtq.a(0.5F));
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(15);
-      localLayoutParams.addRule(0, 2131378792);
-      localLayoutParams.leftMargin = bgtn.a(14.0F);
-      localLayoutParams.rightMargin = bgtn.a(12.0F);
+      localLayoutParams.addRule(0, 2131378952);
+      localLayoutParams.leftMargin = bhtq.a(14.0F);
+      localLayoutParams.rightMargin = bhtq.a(12.0F);
       localView1.setBackgroundColor(Color.parseColor((String)localObject1));
       localView1.setLayoutParams(localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, bgtn.a(0.5F));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, bhtq.a(0.5F));
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(15);
-      localLayoutParams.addRule(1, 2131378792);
-      localLayoutParams.leftMargin = bgtn.a(12.0F);
-      localLayoutParams.rightMargin = bgtn.a(14.0F);
+      localLayoutParams.addRule(1, 2131378952);
+      localLayoutParams.leftMargin = bhtq.a(12.0F);
+      localLayoutParams.rightMargin = bhtq.a(14.0F);
       localView2.setBackgroundColor(Color.parseColor((String)localObject1));
       localView2.setLayoutParams(localLayoutParams);
       ((RelativeLayout)localObject2).addView(localTextView);
       ((RelativeLayout)localObject2).addView(localView1);
       ((RelativeLayout)localObject2).addView(localView2);
       localObject1 = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject1).bottomMargin = bgtn.a(16.0F);
-      ((LinearLayout.LayoutParams)localObject1).topMargin = bgtn.a(20.0F);
+      ((LinearLayout.LayoutParams)localObject1).bottomMargin = bhtq.a(16.0F);
+      ((LinearLayout.LayoutParams)localObject1).topMargin = bhtq.a(20.0F);
       localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376267));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376407));
       localURLImageView.setImageDrawable(paramURLDrawable);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVerticalScrollBarEnabled(false);
-      this.jdField_a_of_type_Asdn = new asdn(paramQQAppInterface, getContext(), this.jdField_a_of_type_Arxd);
-      this.jdField_a_of_type_Asdn.a(this.jdField_a_of_type_JavaLangString, this.c);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Asdn);
-      this.jdField_a_of_type_Asdn.a(localLinearLayout, a(), new ArrayList());
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new asdy(this));
-      this.jdField_a_of_type_Asdr = new asdr(paramQQAppInterface, this);
-      this.jdField_a_of_type_Asdr.a(paramChatMessage, this.c);
+      this.jdField_a_of_type_Astb = new astb(paramQQAppInterface, getContext(), this.jdField_a_of_type_Asmr);
+      this.jdField_a_of_type_Astb.a(this.jdField_a_of_type_JavaLangString, this.c);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Astb);
+      this.jdField_a_of_type_Astb.a(localLinearLayout, a(), new ArrayList());
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new astm(this));
+      this.jdField_a_of_type_Astf = new astf(paramQQAppInterface, this);
+      this.jdField_a_of_type_Astf.a(paramChatMessage, this.c);
       return;
       localObject1 = "#878B99";
       break;
@@ -172,14 +172,14 @@ public class RelatedEmotionPanel
     if (QLog.isColorLevel()) {
       QLog.d("RelatedEmotionPanel", 2, "notifyFooterViewChange.");
     }
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368100);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368172);
     localTextView1.setTextSize(14.0F);
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368099);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370226);
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368171);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370327);
     localTextView2.setTextSize(14.0F);
     localTextView1.setOnClickListener(this);
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    int i = bgtn.a(74.0F);
+    int i = bhtq.a(74.0F);
     if (localLayoutParams.height != i)
     {
       localLayoutParams.height = i;
@@ -188,22 +188,22 @@ public class RelatedEmotionPanel
     if (this.b == 0)
     {
       localView.setVisibility(0);
-      localTextView2.setText(2131689852);
+      localTextView2.setText(2131689857);
       localTextView1.setVisibility(4);
       return;
     }
     if (this.b == 2)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131689857);
+      localTextView1.setText(2131689862);
       localView.setVisibility(4);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B11B", "0X800B11B", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B11B", "0X800B11B", 0, 0, "", "", "", "");
       return;
     }
     if (this.b == 1)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131717298);
+      localTextView1.setText(2131717426);
       localTextView1.setClickable(false);
       localView.setVisibility(4);
       return;
@@ -211,7 +211,7 @@ public class RelatedEmotionPanel
     if (this.b == 3)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131717297);
+      localTextView1.setText(2131717425);
       localTextView1.setClickable(false);
       localView.setVisibility(4);
       return;
@@ -226,9 +226,9 @@ public class RelatedEmotionPanel
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131558611, null);
+      this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131558613, null);
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RecyclerView.LayoutParams(-1, bgtn.a(74.0F)));
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RecyclerView.LayoutParams(-1, bhtq.a(74.0F)));
     }
     b();
     return this.jdField_a_of_type_AndroidViewView;
@@ -243,11 +243,11 @@ public class RelatedEmotionPanel
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Asdn == null)) {
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Astb == null)) {
       return;
     }
     this.b = 2;
-    if ((this.jdField_a_of_type_Asdn.a() == null) || (this.jdField_a_of_type_Asdn.a().isEmpty())) {
+    if ((this.jdField_a_of_type_Astb.a() == null) || (this.jdField_a_of_type_Astb.a().isEmpty())) {
       if (QLog.isColorLevel()) {
         QLog.e("RelatedEmotionPanel", 4, " first load error " + paramInt);
       }
@@ -262,12 +262,12 @@ public class RelatedEmotionPanel
     }
   }
   
-  public void a(asdu paramasdu)
+  public void a(asti paramasti)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Asdn == null) || (paramasdu == null)) {
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Astb == null) || (paramasti == null)) {
       return;
     }
-    if ((a(this.jdField_a_of_type_Asdn.a())) && (a(paramasdu.jdField_a_of_type_JavaUtilList))) {
+    if ((a(this.jdField_a_of_type_Astb.a())) && (a(paramasti.jdField_a_of_type_JavaUtilList))) {
       this.b = 3;
     }
     for (;;)
@@ -277,22 +277,22 @@ public class RelatedEmotionPanel
       this.b = 1;
       ArrayList localArrayList = new ArrayList();
       int i = 0;
-      while (i < paramasdu.jdField_a_of_type_JavaUtilList.size())
+      while (i < paramasti.jdField_a_of_type_JavaUtilList.size())
       {
-        asdi localasdi = new asdi((asdv)paramasdu.jdField_a_of_type_JavaUtilList.get(i), paramasdu.jdField_a_of_type_Int);
-        localasdi.a(this.jdField_a_of_type_JavaLangString, this.c, i);
-        localArrayList.add(localasdi);
+        assw localassw = new assw((astj)paramasti.jdField_a_of_type_JavaUtilList.get(i), paramasti.jdField_a_of_type_Int);
+        localassw.a(this.jdField_a_of_type_JavaLangString, this.c, i);
+        localArrayList.add(localassw);
         i += 1;
       }
-      this.jdField_a_of_type_Asdn.a(localArrayList);
+      this.jdField_a_of_type_Astb.a(localArrayList);
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, arxd paramarxd, asdz paramasdz)
+  public void a(QQAppInterface paramQQAppInterface, asmr paramasmr, astn paramastn)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Asdz = paramasdz;
-    this.jdField_a_of_type_Arxd = paramarxd;
+    this.jdField_a_of_type_Astn = paramastn;
+    this.jdField_a_of_type_Asmr = paramasmr;
   }
   
   public void a(ChatMessage paramChatMessage, URLDrawable paramURLDrawable, int paramInt)
@@ -308,17 +308,17 @@ public class RelatedEmotionPanel
     paramChatMessage = new RelatedEmoSlideBottomPanel(getContext());
     paramChatMessage.setContentHeight(paramInt);
     paramChatMessage.setContentView(this);
-    paramChatMessage.setCallback(new asdw(this));
+    paramChatMessage.setCallback(new astk(this));
     if (this.jdField_a_of_type_AndroidAppDialog == null) {
-      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(getContext(), 2131755173);
+      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(getContext(), 2131755174);
     }
     this.jdField_a_of_type_AndroidAppDialog.setContentView(paramChatMessage);
     this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this);
-    this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new asdx(this, paramChatMessage));
+    this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new astl(this, paramChatMessage));
     paramURLDrawable = this.jdField_a_of_type_AndroidAppDialog.getWindow();
     if (paramURLDrawable != null)
     {
-      int i = bgtn.b() - bgtn.a(getContext());
+      int i = bhtq.b() - bhtq.a(getContext());
       paramInt = i;
       if (i == 0) {
         paramInt = -1;
@@ -339,31 +339,30 @@ public class RelatedEmotionPanel
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368100)
+    if (paramView.getId() == 2131368172)
     {
       this.b = 0;
       b();
-      if (this.jdField_a_of_type_Asdr != null) {
-        this.jdField_a_of_type_Asdr.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.c);
+      if (this.jdField_a_of_type_Astf != null) {
+        this.jdField_a_of_type_Astf.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.c);
       }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B11C", "0X800B11C", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B11C", "0X800B11C", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Asdz != null) {
-      this.jdField_a_of_type_Asdz.a();
+    if (this.jdField_a_of_type_Astn != null) {
+      this.jdField_a_of_type_Astn.a();
     }
-    if (this.jdField_a_of_type_Asdr != null) {
-      this.jdField_a_of_type_Asdr.a();
+    if (this.jdField_a_of_type_Astf != null) {
+      this.jdField_a_of_type_Astf.a();
     }
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B11A", "0X800B11A", 2, 0, "", "", "", "");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = null;
-    this.jdField_a_of_type_Asdn = null;
-    this.jdField_a_of_type_Asdr = null;
+    this.jdField_a_of_type_Astb = null;
+    this.jdField_a_of_type_Astf = null;
   }
 }
 

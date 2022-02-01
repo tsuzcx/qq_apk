@@ -1,21 +1,12 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
-
-class sdm
-  implements DialogInterface.OnClickListener
+public abstract interface sdm
 {
-  sdm(sdl paramsdl, String paramString) {}
+  public abstract String a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Sdl, sce.a(this.jdField_a_of_type_Sdl.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
 }
 
 

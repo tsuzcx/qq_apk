@@ -1,19 +1,16 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
 
-class bfgv
-  implements Comparator<bfgy>
+public class bfgv
+  implements bljn
 {
-  bfgv(bfgu parambfgu) {}
+  public bfgv(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public int a(bfgy parambfgy1, bfgy parambfgy2)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (parambfgy1.b < parambfgy2.b) {
-      return -1;
-    }
-    if (parambfgy1.b > parambfgy2.b) {
-      return 1;
-    }
-    return 0;
+    TroopAvatarWallEditActivity.a(this.a);
+    return true;
   }
 }
 

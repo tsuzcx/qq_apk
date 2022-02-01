@@ -1,20 +1,34 @@
-import com.tencent.mobileqq.search.fragment.searchresult.KDSearchResultFragment;
-import com.tencent.mobileqq.search.fragment.searchresult.KDSearchResultFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 
 public class bbkf
-  implements ValueCallback<String>
 {
-  public bbkf(KDSearchResultFragment paramKDSearchResultFragment) {}
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  static String jdField_a_of_type_JavaLangString = "DataCollector";
+  Handler jdField_a_of_type_AndroidOsHandler = new bbkg(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public boolean a;
   
-  public void a(String paramString)
+  static
   {
-    QLog.d("KDSearchResultFragment", 2, "onReceiveValue: " + paramString);
-    if (!KDSearchResultFragment.a(this.a, paramString)) {
-      bkgk.a(new KDSearchResultFragment.3.1(this));
-    }
+    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
+    jdField_a_of_type_AndroidOsHandlerThread.start();
   }
+  
+  public bbkf(Context paramContext)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+  }
+  
+  static Looper a()
+  {
+    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
+  }
+  
+  protected void a(Message paramMessage) {}
 }
 
 

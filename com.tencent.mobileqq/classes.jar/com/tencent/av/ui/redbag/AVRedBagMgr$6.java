@@ -1,11 +1,11 @@
 package com.tencent.av.ui.redbag;
 
-import moy;
+import mpv;
 
 public class AVRedBagMgr$6
   implements Runnable
 {
-  public AVRedBagMgr$6(moy parammoy) {}
+  public AVRedBagMgr$6(mpv parammpv) {}
   
   public void run()
   {

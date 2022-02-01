@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import blvu;
+import bmww;
 
 class ExtendFriendFragment$7$1
   implements Runnable
@@ -10,7 +10,7 @@ class ExtendFriendFragment$7$1
   public void run()
   {
     if (ExtendFriendFragment.a()) {
-      blvu.a();
+      bmww.a();
     }
     ExtendFriendFragment.c(this.a.this$0);
   }

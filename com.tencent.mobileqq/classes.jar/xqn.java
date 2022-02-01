@@ -1,52 +1,43 @@
-import android.content.Context;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public class xqn
+public abstract class xqn
 {
-  static volatile xqn jdField_a_of_type_Xqn;
-  Context jdField_a_of_type_AndroidContentContext;
-  xqo jdField_a_of_type_Xqo;
+  public abstract Activity a();
   
-  private xqn(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-  }
+  public abstract OpenPlayerBuilder.Data a();
   
-  public static xqn a(Context paramContext)
-  {
-    if (jdField_a_of_type_Xqn == null) {}
-    try
-    {
-      if (jdField_a_of_type_Xqn == null) {
-        jdField_a_of_type_Xqn = new xqn(paramContext);
-      }
-      return jdField_a_of_type_Xqn;
-    }
-    finally {}
-  }
+  public abstract XViewPager a();
   
-  public xqo a()
-  {
-    if (this.jdField_a_of_type_Xqo == null) {
-      this.jdField_a_of_type_Xqo = new xqo();
-    }
-    return this.jdField_a_of_type_Xqo;
-  }
+  public abstract String a(String paramString);
   
-  public void a()
-  {
-    TVK_SDKMgr.setOnLogListener(a());
-  }
+  public abstract xms a();
   
-  public void a(Context paramContext)
-  {
-    TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-  }
+  public abstract xmv a();
   
-  public boolean a()
-  {
-    return TVK_SDKMgr.isInstalled(null);
-  }
+  public abstract xqf a();
+  
+  public abstract xqy a();
+  
+  public abstract void a();
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(wjd paramwjd);
+  
+  public abstract void a(xpd paramxpd);
+  
+  public abstract void a(xrg paramxrg);
+  
+  public abstract boolean a();
+  
+  public abstract void b(wjd paramwjd);
+  
+  public abstract void b(xpd paramxpd);
+  
+  public abstract boolean b();
 }
 
 

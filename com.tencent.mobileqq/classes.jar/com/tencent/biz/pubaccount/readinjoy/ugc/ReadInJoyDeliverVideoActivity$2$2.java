@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import rka;
+import rau;
 
 public class ReadInJoyDeliverVideoActivity$2$2
   implements Runnable
 {
-  public ReadInJoyDeliverVideoActivity$2$2(rka paramrka) {}
+  public ReadInJoyDeliverVideoActivity$2$2(rau paramrau) {}
   
   public void run()
   {
     QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: error, show toast");
-    QQToast.a(this.a.a, 2131716999, 0).a();
+    QQToast.a(this.a.a, 2131717115, 0).a();
   }
 }
 

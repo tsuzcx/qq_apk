@@ -1,39 +1,80 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
 
-public class aqoh
+public final class aqoh
 {
-  public int a;
-  
-  public static aqoh a(String paramString)
+  public static void a(View paramView, float paramFloat)
   {
-    if (paramString == null) {}
-    do
+    if (aqog.a)
     {
-      return null;
-      try
-      {
-        aqoh localaqoh = new aqoh();
-        localaqoh.a = new JSONObject(paramString).optInt("kDeviceManageShowMuteKey", 0);
-        QLog.d("DeviceManageConfProcessor", 2, "confBean = " + localaqoh.toString());
-        return localaqoh;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("DeviceManageConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+      aqog.a(paramView).a(paramFloat);
+      return;
+    }
+    aqoi.c(paramView, paramFloat);
   }
   
-  public String toString()
+  public static void b(View paramView, float paramFloat)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kDeviceManageShowMuteKey:").append(this.a);
-    return localStringBuilder.toString();
+    if (aqog.a)
+    {
+      aqog.a(paramView).d(paramFloat);
+      return;
+    }
+    aqoi.d(paramView, paramFloat);
+  }
+  
+  public static void c(View paramView, float paramFloat)
+  {
+    if (aqog.a)
+    {
+      aqog.a(paramView).e(paramFloat);
+      return;
+    }
+    aqoi.e(paramView, paramFloat);
+  }
+  
+  public static void d(View paramView, float paramFloat)
+  {
+    if (aqog.a)
+    {
+      aqog.a(paramView).b(paramFloat);
+      return;
+    }
+    aqoi.a(paramView, paramFloat);
+  }
+  
+  public static void e(View paramView, float paramFloat)
+  {
+    if (aqog.a)
+    {
+      aqog.a(paramView).c(paramFloat);
+      return;
+    }
+    aqoi.b(paramView, paramFloat);
+  }
+  
+  public static void f(View paramView, float paramFloat)
+  {
+    if (aqog.a)
+    {
+      aqog.a(paramView).g(paramFloat);
+      return;
+    }
+    aqoi.f(paramView, paramFloat);
+  }
+  
+  public static void g(View paramView, float paramFloat)
+  {
+    if (aqog.a)
+    {
+      aqog.a(paramView).h(paramFloat);
+      return;
+    }
+    aqoi.g(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqoh
  * JD-Core Version:    0.7.0.1
  */

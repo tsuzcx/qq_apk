@@ -1,36 +1,30 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.3.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-public class bdpj
-  implements bgyv
+class bdpj
+  extends QIPCModule
 {
-  bdpj(bdpg parambdpg) {}
-  
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  bdpj(bdpi parambdpi, String paramString)
   {
-    if (paramQQAppInterface != null)
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("receipt_set_read".equals(paramString)) {
+      bdpi.a(this.a, paramBundle);
+    }
+    for (;;)
     {
-      paramQQAppInterface = bhbz.a.getDir(paramQQAppInterface.getApp().getApplicationContext(), paramString1);
-      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (bdpg.a(this.a) != null))
-      {
-        bdpg.a(this.a, true);
-        this.a.a(paramQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.i("FloatViewSkin", 2, "onCompleted: mSkinRootPath" + this.a.jdField_a_of_type_JavaLangString);
-        }
-        if (this.a.jdField_a_of_type_Boolean) {
-          ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.3.1(this));
-        }
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
       }
     }
   }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

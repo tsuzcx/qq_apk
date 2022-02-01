@@ -1,19 +1,29 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class xxt
-  extends xzi
+  extends wjm<xxn, wqm>
 {
-  public xxt(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
-  
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
+  public xxt(xxn paramxxn)
   {
-    wxy localwxy = new wxy();
-    localwxy.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    localwxy.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
-    wfo.a().dispatch(localwxy);
+    super(paramxxn);
   }
+  
+  public void a(@NonNull xxn paramxxn, @NonNull wqm paramwqm)
+  {
+    if ((paramxxn.a != null) && (TextUtils.equals(paramxxn.a.b, paramwqm.a)))
+    {
+      yuk.a(this.TAG, "receive feed info change event. %s.", paramwqm.toString());
+      paramxxn.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqm.class;
+  }
+  
+  public void b(@NonNull xxn paramxxn, @NonNull wqm paramwqm) {}
 }
 
 

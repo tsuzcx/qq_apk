@@ -1,19 +1,17 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class bgnu
 {
-  public static long a(String paramString)
-  {
-    return a(paramString, -1L);
-  }
+  public View a;
+  public ImageView a;
+  TextView a;
+  public String a;
   
-  public static long a(String paramString, long paramLong)
+  public bgnu(View paramView)
   {
-    try
-    {
-      long l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (NumberFormatException paramString) {}
-    return paramLong;
+    this.a = paramView;
   }
 }
 

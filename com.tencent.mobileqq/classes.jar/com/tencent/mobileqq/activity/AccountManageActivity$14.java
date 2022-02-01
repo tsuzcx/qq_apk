@@ -4,10 +4,10 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aoch;
-import bdeh;
-import bglf;
-import bgsp;
+import aoot;
+import bdxc;
+import bhlg;
+import bhsr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountInfo;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -38,13 +38,13 @@ class AccountManageActivity$14
         }
         if ((!AccountManageActivity.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString)) || (AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) == null))
         {
-          aoch localaoch = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
-          String str2 = bglf.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          localObject2 = (bdeh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
+          aoot localaoot = aoot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+          String str2 = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+          localObject2 = (bdxc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
           if (localObject2 == null) {
             break label398;
           }
-          localObject2 = ((bdeh)localObject2).a(this.jdField_a_of_type_JavaLangString);
+          localObject2 = ((bdxc)localObject2).a(this.jdField_a_of_type_JavaLangString);
           String str1;
           if (!this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.isLogined())
           {
@@ -66,18 +66,18 @@ class AccountManageActivity$14
           }
           else
           {
-            str1 = bglf.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+            str1 = bhlg.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
           }
           if ((TextUtils.isEmpty(str1)) || (this.b.equals(str1)) || (str1.equals(this.jdField_a_of_type_JavaLangString))) {
             break label393;
           }
-          if ((localaoch instanceof aoch)) {
-            ((aoch)localaoch).a(false);
+          if ((localaoot instanceof aoot)) {
+            ((aoot)localaoot).a(false);
           }
           if (QLog.isColorLevel()) {
-            QLog.i("AccountManageActivity", 2, String.format("updateAccountListView %b [uin,nick]=[%s,%s]", new Object[] { Boolean.valueOf(bool), bgsp.e(this.jdField_a_of_type_JavaLangString), str1 }));
+            QLog.i("AccountManageActivity", 2, String.format("updateAccountListView %b [uin,nick]=[%s,%s]", new Object[] { Boolean.valueOf(bool), bhsr.e(this.jdField_a_of_type_JavaLangString), str1 }));
           }
-          this.this$0.runOnUiThread(new AccountManageActivity.14.1(this, bool, str1, localBitmap, localaoch));
+          this.this$0.runOnUiThread(new AccountManageActivity.14.1(this, bool, str1, localBitmap, localaoot));
           return;
         }
       }
@@ -87,7 +87,7 @@ class AccountManageActivity$14
         return;
       }
       Bitmap localBitmap = (Bitmap)AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+      aoot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
       Object localObject1 = null;
       continue;
       label372:

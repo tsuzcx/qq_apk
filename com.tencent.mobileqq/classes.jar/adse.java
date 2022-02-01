@@ -1,17 +1,28 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
-public final class adse
-  implements bgop
+public class adse
+  implements TextWatcher
 {
-  public adse(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  public adse(AddAccountActivity paramAddAccountActivity) {}
   
-  public void a(String paramString, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    if (paramCharSequence.length() > 0) {
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
+      }
+    }
+    while ((this.a.a == null) || (!this.a.a.isShown())) {
+      return;
+    }
+    this.a.a.setVisibility(8);
   }
 }
 

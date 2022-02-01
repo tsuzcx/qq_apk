@@ -1,17 +1,29 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ofl
+public class ofl
   implements View.OnClickListener
 {
-  ofl(ofk paramofk) {}
+  public ofl(ShopWebViewFragment paramShopWebViewFragment) {}
   
   public void onClick(View paramView)
   {
-    ((Activity)paramView.getContext()).onBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.jdField_a_of_type_Ofa != null) {
+      this.a.jdField_a_of_type_Ofa.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
+    try
+    {
+      this.a.jdField_a_of_type_Ofa.a.a(134248548, null, null, null, null, 0L, false);
+      label57:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label57;
+    }
   }
 }
 

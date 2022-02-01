@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.widgets.feed;
 
-import waw;
+import wem;
 
 public class QCircleTimeLineFeedItemView$QCircleTimeFlowFeedInnerImageAdapter$1
   implements Runnable
 {
-  public QCircleTimeLineFeedItemView$QCircleTimeFlowFeedInnerImageAdapter$1(waw paramwaw) {}
+  public QCircleTimeLineFeedItemView$QCircleTimeFlowFeedInnerImageAdapter$1(wem paramwem) {}
   
   public void run()
   {

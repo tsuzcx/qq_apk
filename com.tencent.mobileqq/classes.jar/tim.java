@@ -1,22 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-
-public class tim
-  implements tin
+public abstract interface tim
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public abstract void a(til paramtil, int paramInt);
   
-  public tim(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
+  public abstract void a(til paramtil, int paramInt1, int paramInt2, String paramString);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) + this.jdField_a_of_type_Int);
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) + this.b);
-  }
+  public abstract void a(til paramtil, long paramLong);
+  
+  public abstract void a(til paramtil, boolean paramBoolean);
+  
+  public abstract void b(til paramtil);
+  
+  public abstract void b(til paramtil, int paramInt);
+  
+  public abstract void c(til paramtil);
+  
+  public abstract void d(til paramtil);
+  
+  public abstract void e(til paramtil);
+  
+  public abstract void f(til paramtil);
+  
+  public abstract void g(til paramtil);
+  
+  public abstract void h(til paramtil);
 }
 
 

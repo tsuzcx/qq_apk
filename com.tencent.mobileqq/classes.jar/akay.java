@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class akay
-  extends anqd
+public class akay
+  implements DialogInterface.OnDismissListener
 {
-  akay(akax paramakax) {}
+  public akay(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (akax.a(this.a) != null) {
-      akax.a(this.a).a(paramString1);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
-  {
-    if (akax.a(this.a) != null) {
-      akax.a(this.a).a(paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (akax.a(this.a) != null) {
-      akax.a(this.a).a(paramString);
+    paramDialogInterface = (akir)paramDialogInterface;
+    paramDialogInterface.a();
+    int i = paramDialogInterface.a();
+    paramDialogInterface = (aocm)this.a.a.getManager(92);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.history.C2CAllFragment", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.e());
     }
   }
 }

@@ -1,21 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-
-class nsh
-  implements View.OnClickListener
+public class nsh
 {
-  nsh(nre paramnre, int paramInt, nyl paramnyl) {}
-  
-  public void onClick(View paramView)
-  {
-    aarp.a((BaseActivity)this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangRefWeakReference.get(), new aarr(this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nre.a(this.jdField_a_of_type_Nre), this.jdField_a_of_type_Int);
-    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

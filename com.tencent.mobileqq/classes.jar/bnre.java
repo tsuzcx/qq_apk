@@ -1,34 +1,25 @@
-import android.graphics.PointF;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bnre
-  extends BaseFilter
 {
-  private Frame a = new Frame();
-  
-  public bnre()
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+    return paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).getInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), 0);
   }
   
-  public Frame a(int paramInt1, List<PointF> paramList, int paramInt2, int paramInt3)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    float[] arrayOfFloat = new float[8];
-    bncx.a(paramList, paramInt2, paramInt3, arrayOfFloat);
-    paramList = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-    paramList.apply();
-    paramList.setTexCords(arrayOfFloat);
-    paramList.setRotationAndFlip(0, 1, 1);
-    paramList.RenderProcess(paramInt1, paramInt2, paramInt3, 64, 64, -1, 0.0D, this.a);
-    return this.a;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).edit();
+    paramQQAppInterface.putInt("hot_shortvideo_multi_video_support_799", paramInt);
+    paramQQAppInterface.commit();
   }
   
-  public void clearGLSLSelf()
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    super.clearGLSLSelf();
-    this.a.clear();
+    paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).edit().putInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
 }
 

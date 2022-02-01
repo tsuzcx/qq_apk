@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.plugins;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.auth.AuthState;
@@ -9,13 +10,17 @@ import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.auth.SubscribeMessage;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,32 +32,34 @@ public class SettingsJsPlugin
   private static final String TAG = "SettingsJsPlugin";
   private ChannelProxy mProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
   
-  private void callbackSettingEvent(AuthState paramAuthState, RequestEvent paramRequestEvent)
+  private void callbackSettingEvent(AuthState paramAuthState, RequestEvent paramRequestEvent, boolean paramBoolean, Map<String, String> paramMap)
   {
     if (paramAuthState == null) {
       return;
     }
-    Object localObject = paramAuthState.getAuthStateList(6);
-    JSONArray localJSONArray;
+    Object localObject2 = paramAuthState.getAuthStateList(6);
+    Object localObject1;
+    Object localObject3;
+    Object localObject4;
     for (;;)
     {
       try
       {
         paramAuthState = new JSONObject();
-        localJSONArray = new JSONArray();
-        localObject = ((List)localObject).iterator();
-        if (!((Iterator)localObject).hasNext()) {
+        localObject1 = new JSONArray();
+        localObject2 = ((List)localObject2).iterator();
+        if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        AuthStateItem localAuthStateItem = (AuthStateItem)((Iterator)localObject).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("scope", localAuthStateItem.scopeName);
+        localObject3 = (AuthStateItem)((Iterator)localObject2).next();
+        localObject4 = new JSONObject();
+        ((JSONObject)localObject4).put("scope", ((AuthStateItem)localObject3).scopeName);
         int i;
-        if (localAuthStateItem.authFlag == 2)
+        if (((AuthStateItem)localObject3).authFlag == 2)
         {
           i = 1;
-          localJSONObject.put("state", i);
-          localJSONArray.put(localJSONObject);
+          ((JSONObject)localObject4).put("state", i);
+          ((JSONArray)localObject1).put(localObject4);
         }
         else
         {
@@ -66,13 +73,74 @@ public class SettingsJsPlugin
         return;
       }
     }
-    paramAuthState.put("authSetting", localJSONArray);
+    paramAuthState.put("authSetting", localObject1);
+    if (paramBoolean)
+    {
+      localObject1 = new JSONObject();
+      localObject2 = new JSONObject();
+      if ((paramMap != null) && (paramMap.size() > 0))
+      {
+        localObject3 = paramMap.keySet().iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (String)((Iterator)localObject3).next();
+          ((JSONObject)localObject2).put((String)localObject4, paramMap.get(localObject4));
+        }
+      }
+      ((JSONObject)localObject1).put("itemSettings", localObject2);
+      paramAuthState.put("subscriptionsSetting", localObject1);
+    }
     paramRequestEvent.ok(paramAuthState);
   }
   
   private void callbackSettingEvent(RequestEvent paramRequestEvent)
   {
-    callbackSettingEvent(MiniAppEnv.g().getAuthSate(this.mApkgInfo.appId), paramRequestEvent);
+    AuthState localAuthState = MiniAppEnv.g().getAuthSate(this.mApkgInfo.appId);
+    if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {}
+    boolean bool;
+    for (;;)
+    {
+      try
+      {
+        bool = new JSONObject(paramRequestEvent.jsonParams).optBoolean("withSubscriptions");
+        if (!bool) {
+          break;
+        }
+        requestAuthList(bool, paramRequestEvent, this.mApkgInfo.appId, localAuthState);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        QMLog.e("SettingsJsPlugin", "openSetting parse jsonParams exception", localJSONException);
+      }
+      bool = false;
+    }
+    callbackSettingEvent(localAuthState, paramRequestEvent, bool, null);
+  }
+  
+  private Map<String, String> getInteractiveSubscribeList(List<SubscribeMessage> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      SubscribeMessage localSubscribeMessage = (SubscribeMessage)paramList.next();
+      if (localSubscribeMessage.authState != 0)
+      {
+        String str = localSubscribeMessage.templateId;
+        if (localSubscribeMessage.authState == 1) {
+          localHashMap.put(str, "accept");
+        } else if (localSubscribeMessage.authState == 2) {
+          localHashMap.put(str, "reject");
+        } else if (localSubscribeMessage.authState == 3) {
+          localHashMap.put(str, "ban");
+        }
+      }
+    }
+    return localHashMap;
   }
   
   private void openSettingActivity(Activity paramActivity, ApkgInfo paramApkgInfo)
@@ -85,6 +153,11 @@ public class SettingsJsPlugin
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(paramActivity, paramApkgInfo.appId, paramApkgInfo.apkgName);
   }
   
+  private void requestAuthList(boolean paramBoolean, RequestEvent paramRequestEvent, String paramString, AuthState paramAuthState)
+  {
+    this.mProxy.getAuthList(paramString, new SettingsJsPlugin.2(this, paramAuthState, paramBoolean, paramRequestEvent));
+  }
+  
   @JsEvent({"getSetting"})
   public void getSetting(RequestEvent paramRequestEvent)
   {
@@ -95,12 +168,31 @@ public class SettingsJsPlugin
       QMLog.e("SettingsJsPlugin", "getSetting, but authorizeCenter is null?!");
       return;
     }
-    if (localAuthState.isSynchronized())
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {}
+    try
     {
-      callbackSettingEvent(localAuthState, paramRequestEvent);
+      bool1 = new JSONObject(paramRequestEvent.jsonParams).optBoolean("withSubscriptions");
+      if (localAuthState.isSynchronized()) {
+        if (bool1)
+        {
+          requestAuthList(bool1, paramRequestEvent, str, localAuthState);
+          return;
+        }
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QMLog.e("SettingsJsPlugin", "getSetting parse jsonParams exception", localJSONException);
+        bool1 = bool2;
+      }
+      callbackSettingEvent(localAuthState, paramRequestEvent, bool1, null);
       return;
     }
-    this.mProxy.getAuthList(str, new SettingsJsPlugin.2(this, localAuthState, paramRequestEvent));
+    requestAuthList(bool1, paramRequestEvent, str, localAuthState);
   }
   
   @JsEvent({"openSetting"})

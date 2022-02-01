@@ -1,63 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.os.Build.VERSION;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class uab
+final class uab
+  extends apee
 {
-  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt)
+  uab(aoeg paramaoeg, String paramString, AppInterface paramAppInterface, Context paramContext) {}
+  
+  public int a()
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(paramFloat);
-    localGradientDrawable.setColor(paramInt);
-    if (paramView != null) {
-      a(paramView, localGradientDrawable);
-    }
-    return localGradientDrawable;
+    return 4;
   }
   
-  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt1, int paramInt2)
+  public void a(Object paramObject)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    if (paramFloat > 0.0F) {
-      localGradientDrawable.setCornerRadius(paramFloat);
+    if (this.jdField_a_of_type_Aoeg != null) {
+      this.jdField_a_of_type_Aoeg.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
     }
-    localGradientDrawable.setStroke(paramInt2, paramInt1);
-    if (paramView != null) {
-      a(paramView, localGradientDrawable);
-    }
-    return localGradientDrawable;
+    tzq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
   
-  public static StateListDrawable a(View paramView, @NonNull Drawable paramDrawable1, @NonNull Drawable paramDrawable2)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
   {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842910 }, paramDrawable1);
-    localStateListDrawable.addState(new int[0], paramDrawable2);
-    if (paramView != null) {
-      a(paramView, localStateListDrawable);
+    if (this.jdField_a_of_type_Aoeg != null) {
+      this.jdField_a_of_type_Aoeg.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
     }
-    return localStateListDrawable;
+    tzq.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
   }
   
-  public static void a(@NonNull View paramView, @NonNull Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT < 16)
-    {
-      paramView.setBackgroundDrawable(paramDrawable);
-      return;
-    }
-    paramView.setBackground(paramDrawable);
-  }
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uab
  * JD-Core Version:    0.7.0.1
  */

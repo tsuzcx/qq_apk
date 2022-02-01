@@ -1,24 +1,24 @@
-import android.support.annotation.Nullable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.music.AEEditorMusicPanelDialog.3.1;
 
-class bpjd
-  extends bpjk
+public class bpjd
+  implements Animation.AnimationListener
 {
-  bpjd(bpja parambpja, DoodleEmojiItem paramDoodleEmojiItem)
+  bpjd(bpja parambpja) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramDoodleEmojiItem);
+    bpja.b(this.a, false);
+    bpja.a(this.a).post(new AEEditorMusicPanelDialog.3.1(this));
   }
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super.onResult(???);
-    yqp.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.d();
-      return;
-    }
+    bpja.b(this.a, true);
   }
 }
 

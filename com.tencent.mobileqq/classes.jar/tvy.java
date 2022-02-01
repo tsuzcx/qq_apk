@@ -1,36 +1,33 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-class tvy
-  extends tvk
+public class tvy
+  extends aoeg
 {
-  tvy(tvx paramtvx) {}
+  tvt jdField_a_of_type_Tvt = null;
   
-  protected void a(boolean paramBoolean, List<tvp> paramList)
+  public tvy(tvs paramtvs, tvt paramtvt)
+  {
+    this.jdField_a_of_type_Tvt = paramtvt;
+  }
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendList isSuccess: " + paramBoolean + " | data: " + paramList + " | isShowRecommend: " + this.a.jdField_a_of_type_Boolean);
+      QLog.d("SubscriptRecommendAdapter", 2, "onFollowPublicAccount isSuccess: " + paramBoolean + " | uin: " + paramString + " | mRecommendItem: " + this.jdField_a_of_type_Tvt);
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Boolean))
+    if (this.jdField_a_of_type_Tvt != null)
     {
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label145;
-      }
-      this.a.a(paramList);
-      paramList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-      if ((paramList != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
-        paramList.sendEmptyMessage(1004);
+      paramString = this.jdField_a_of_type_Tvt;
+      if (!paramBoolean) {
+        break label76;
       }
     }
-    label145:
-    while (!QLog.isColorLevel()) {
+    label76:
+    for (int i = 1;; i = 0)
+    {
+      paramString.a(i);
       return;
     }
-    QLog.d("SubscriptObserver", 2, "onGetRecommendList data is null or empty");
   }
 }
 

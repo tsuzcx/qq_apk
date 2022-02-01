@@ -1,36 +1,16 @@
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class apwd
-  extends apvy
+public abstract interface apwd
 {
-  public apwd(RockDownloaderManager.2 param2) {}
+  public abstract String a();
   
-  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
-    }
-  }
+  public abstract void a(apvx paramapvx, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
   
-  public void a(ArrayList<RockDownloadInfo> paramArrayList)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
-      }
-      boolean bool = apwe.b(localRockDownloadInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
-      }
-    }
-  }
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
 }
 
 

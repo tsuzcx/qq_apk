@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
@@ -8,9 +8,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import anni;
-import bbzj;
-import bdnt;
+import anzj;
+import bcsa;
+import begp;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -21,27 +21,27 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pha;
-import pxk;
-import qqs;
-import qrb;
-import qva;
-import qwu;
-import qwv;
-import qww;
-import qxa;
-import rgy;
-import rhs;
-import rhu;
-import snh;
+import ozs;
+import ppu;
+import qjg;
+import qjp;
+import qno;
+import qpi;
+import qpj;
+import qpk;
+import qpo;
+import qxr;
+import qyl;
+import qyn;
+import sel;
 
 public class ComponentContentUgcOriginalHeader
   extends LinearLayout
-  implements qqs
+  implements qjg
 {
   private SpannableStringBuilder a;
   public ReadInJoyYAFolderTextView a;
-  public qva a;
+  public qno a;
   
   public ComponentContentUgcOriginalHeader(Context paramContext)
   {
@@ -64,13 +64,13 @@ public class ComponentContentUgcOriginalHeader
     {
       localObject1 = ((ReadInJoyUserInfo)localObject1).nick;
       this.jdField_a_of_type_AndroidTextSpannableStringBuilder = new SpannableStringBuilder();
-      this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(pha.e((String)localObject1));
-      this.jdField_a_of_type_AndroidTextSpannableStringBuilder.setSpan(new qww(this, l, -3355444), 0, this.jdField_a_of_type_AndroidTextSpannableStringBuilder.length(), 33);
+      this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(ozs.e((String)localObject1));
+      this.jdField_a_of_type_AndroidTextSpannableStringBuilder.setSpan(new qpk(this, l, -3355444), 0, this.jdField_a_of_type_AndroidTextSpannableStringBuilder.length(), 33);
       this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(": ");
-      if ((!qva.c(paramArticleInfo)) || (snh.q(paramArticleInfo))) {
+      if ((!qno.c(paramArticleInfo)) || (sel.q(paramArticleInfo))) {
         break label199;
       }
-      localObject1 = ((rhu)paramArticleInfo.mSocialFeedInfo.a.b.get(0)).e;
+      localObject1 = ((qyn)paramArticleInfo.mSocialFeedInfo.a.b.get(0)).e;
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
       }
@@ -79,14 +79,14 @@ public class ComponentContentUgcOriginalHeader
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(this.jdField_a_of_type_AndroidTextSpannableStringBuilder);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qwv(this, paramArticleInfo, -3355444));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qpj(this, paramArticleInfo, -3355444));
       return;
       localObject1 = ReadInJoyUserInfoModule.a();
       break;
       label199:
-      if (pha.a(paramArticleInfo.mSocialFeedInfo.a))
+      if (ozs.a(paramArticleInfo.mSocialFeedInfo.a))
       {
-        List localList = paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Rgy.a;
+        List localList = paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Qxr.a;
         StringBuilder localStringBuilder = new StringBuilder();
         Object localObject3 = new ArrayList();
         int i = localList.size();
@@ -122,10 +122,10 @@ public class ComponentContentUgcOriginalHeader
         for (localObject2 = "";; localObject2 = localBiuCommentInfo.jdField_a_of_type_JavaLangString)
         {
           localStringBuilder.append((String)localObject1).append((String)localObject2);
-          localObject2 = new qxa();
-          ((qxa)localObject2).jdField_a_of_type_Int = j;
-          ((qxa)localObject2).b = (((String)localObject1).length() + j);
-          ((qxa)localObject2).jdField_a_of_type_Long = l;
+          localObject2 = new qpo();
+          ((qpo)localObject2).jdField_a_of_type_Int = j;
+          ((qpo)localObject2).b = (((String)localObject1).length() + j);
+          ((qpo)localObject2).jdField_a_of_type_Long = l;
           ((List)localObject3).add(localObject2);
           j = localStringBuilder.length();
           i -= 1;
@@ -139,12 +139,12 @@ public class ComponentContentUgcOriginalHeader
           localObject1 = ReadInJoyUserInfoModule.a();
           break label372;
         }
-        localObject1 = new SpannableStringBuilder(new bdnt(localStringBuilder, 7, 16));
+        localObject1 = new SpannableStringBuilder(new begp(localStringBuilder, 7, 16));
         localObject2 = ((List)localObject3).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (qxa)((Iterator)localObject2).next();
-          ((SpannableStringBuilder)localObject1).setSpan(new qww(this, ((qxa)localObject3).jdField_a_of_type_Long, -3355444), ((qxa)localObject3).jdField_a_of_type_Int, ((qxa)localObject3).b, 17);
+          localObject3 = (qpo)((Iterator)localObject2).next();
+          ((SpannableStringBuilder)localObject1).setSpan(new qpk(this, ((qpo)localObject3).jdField_a_of_type_Long, -3355444), ((qpo)localObject3).jdField_a_of_type_Int, ((qpo)localObject3).b, 17);
         }
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
@@ -152,7 +152,7 @@ public class ComponentContentUgcOriginalHeader
       }
       else if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject1 = new bdnt(bbzj.b((String)localObject2), 7, 16);
+        localObject1 = new begp(bcsa.b((String)localObject2), 7, 16);
         this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
       }
     }
@@ -160,10 +160,10 @@ public class ComponentContentUgcOriginalHeader
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_Qva = new qva();
+    this.jdField_a_of_type_Qno = new qno();
     setOrientation(0);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.setMargins(afur.a(12.0F, paramContext.getResources()), afur.a(12.0F, paramContext.getResources()), afur.a(20.0F, paramContext.getResources()), 0);
+    localLayoutParams.setMargins(agej.a(12.0F, paramContext.getResources()), agej.a(12.0F, paramContext.getResources()), agej.a(20.0F, paramContext.getResources()), 0);
     setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = new ReadInJoyYAFolderTextView(paramContext);
     paramContext = new LinearLayout.LayoutParams(-1, -2);
@@ -171,18 +171,18 @@ public class ComponentContentUgcOriginalHeader
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextColor(Color.parseColor("#606060"));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextSize(2, 16.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(anni.a(2131701144));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(anzj.a(2131701251));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qwu(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qpi(this));
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pxk))
+    if ((paramObject instanceof ppu))
     {
-      this.jdField_a_of_type_Qva.a((pxk)paramObject);
-      paramObject = ((pxk)paramObject).a();
+      this.jdField_a_of_type_Qno.a((ppu)paramObject);
+      paramObject = ((ppu)paramObject).a();
       if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.a != null)) {
         break label66;
       }
@@ -195,13 +195,13 @@ public class ComponentContentUgcOriginalHeader
     {
       return;
       a(paramObject);
-    } while ((!snh.m(paramObject)) || (!TextUtils.isEmpty(paramObject.businessName)));
+    } while ((!sel.m(paramObject)) || (!TextUtils.isEmpty(paramObject.businessName)));
     paramObject = (LinearLayout.LayoutParams)getLayoutParams();
-    paramObject.bottomMargin = afur.a(12.0F, getContext().getResources());
+    paramObject.bottomMargin = agej.a(12.0F, getContext().getResources());
     setLayoutParams(paramObject);
   }
   
-  public void a(qrb paramqrb) {}
+  public void a(qjp paramqjp) {}
 }
 
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.text;
 
 import android.graphics.drawable.Drawable;
-import bdol;
-import bdom;
+import behh;
+import behi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class TextUtils$2
   implements Runnable
 {
-  public TextUtils$2(int paramInt, bdom parambdom) {}
+  public TextUtils$2(int paramInt, behi parambehi) {}
   
   public void run()
   {
-    Drawable localDrawable = bdol.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_Bdom != null)) {
-      this.jdField_a_of_type_Bdom.a(localDrawable);
+    Drawable localDrawable = behh.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
+    if ((localDrawable != null) && (this.jdField_a_of_type_Behi != null)) {
+      this.jdField_a_of_type_Behi.a(localDrawable);
     }
   }
 }

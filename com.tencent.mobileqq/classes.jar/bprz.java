@@ -1,58 +1,112 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Canvas;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 import java.util.List;
 
 public class bprz
-  implements View.OnClickListener
+  extends DynamicTextItem
 {
-  public bprz(PermissionSettingActivity paramPermissionSettingActivity) {}
+  private float jdField_a_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private float jdField_b_of_type_Float;
+  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
   
-  public void onClick(View paramView)
+  public bprz(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface)
   {
-    Intent localIntent = new Intent();
-    Object localObject = PermissionSettingActivity.a(this.a).a();
-    int i = 10000;
-    if (localObject != null)
+    super(paramInt, paramList);
+    if (paramTypeface != null)
     {
-      i = ((bprx)localObject).b();
-      yqp.a("Q.qqstory.QQStoryBaseActivity", "onCompleteBtnClick, partType:%s", Integer.valueOf(i));
-      localIntent.putExtra("PERMISSION_TYPE_KEY", i);
-      localIntent.putExtra("PERMISSION_CURRENT_UIN_KEY", PermissionSettingActivity.a(this.a));
-      switch (i)
-      {
-      }
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
     }
     for (;;)
     {
-      PermissionSettingActivity.a(this.a, i);
-      this.a.setResult(1, localIntent);
-      this.a.finish();
-      ArrayList localArrayList;
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        localArrayList = new ArrayList();
-        localObject = ((bprp)localObject).a();
-        if (!((List)localObject).isEmpty()) {
-          break;
-        }
-        yqp.d("Q.qqstory.QQStoryBaseActivity", "onCompleteBtnClick, empty friend list.");
-        QQToast.a(this.a, anni.a(2131706709), 0).a();
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(agej.a(22.0F, BaseApplicationImpl.getContext().getResources()));
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+      this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
+      this.jdField_b_of_type_AndroidTextTextPaint.setStrokeJoin(Paint.Join.ROUND);
+      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(agej.a(22.0F, BaseApplicationImpl.getContext().getResources()));
+      this.jdField_b_of_type_AndroidTextTextPaint.setColor(-16777216);
+      this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(agej.a(6.0F, BaseApplicationImpl.getContext().getResources()));
+      if (!paramList.isEmpty()) {
+        a(0, (String)paramList.get(0));
       }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(((bprr)((Iterator)localObject).next()).a());
-      }
-      localIntent.putExtra("PERMISSION_UIN_LIST_KEY", localArrayList);
-      yqp.a("Q.qqstory.QQStoryBaseActivity", "select uin list:%s", localArrayList.toString());
+      return;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
     }
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    super.a(paramInt, paramString);
+    String str = super.b(paramInt);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "　　";
+    }
+    paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(anzj.a(2131700078));
+    this.jdField_b_of_type_AndroidTextStaticLayout = bptt.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
+    this.jdField_a_of_type_AndroidTextStaticLayout = bptt.a(paramString, 0, paramString.length(), this.jdField_b_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
+    this.jdField_a_of_type_Float = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
+    this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
+    {
+      paramCanvas.save();
+      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+      if (b(0))
+      {
+        this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
+        this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
+        this.jdField_a_of_type_AndroidGraphicsRectF.right = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
+        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
+        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+      }
+      paramCanvas.restore();
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
   }
 }
 

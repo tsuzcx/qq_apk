@@ -1,15 +1,9 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class agox
-  extends afuv
+public class agox
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView b;
-  TextView c;
-  TextView d;
-  
-  agox(agov paramagov) {}
+  long a;
+  long b;
+  long c;
+  long d;
 }
 
 

@@ -1,18 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
+import com.tencent.qphone.base.util.QLog;
 
-final class anns
-  implements DialogInterface.OnClickListener
+public class anns
+  implements amtn
 {
-  anns(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public anns(ApolloConfigDataReport.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 200)) {
+      annr.b();
+    }
   }
 }
 

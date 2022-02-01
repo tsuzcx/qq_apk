@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import UserGrowth.stSimpleGetFeedDetailReq;
+import UserGrowth.stSimpleGetFeedDetailRsp;
 
 public class uoq
-  implements DialogInterface.OnClickListener
+  extends ukl<stSimpleGetFeedDetailRsp>
 {
-  public uoq(OuterInterceptManager.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uoq(String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    super("SimpleGetFeedDetail", 10002);
+    stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
+    localstSimpleGetFeedDetailReq.feedid = paramString;
+    this.a = localstSimpleGetFeedDetailReq;
+    uqf.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
   }
 }
 

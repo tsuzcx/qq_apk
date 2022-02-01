@@ -5,28 +5,28 @@ import android.content.pm.PackageManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
-import ogc;
-import seh;
-import sei;
+import ohk;
+import rvl;
+import rvm;
 
 public class VideoFeedsUGDownloadListener$2
   implements Runnable
 {
-  public VideoFeedsUGDownloadListener$2(seh paramseh, String paramString) {}
+  public VideoFeedsUGDownloadListener$2(rvl paramrvl, String paramString) {}
   
   public void run()
   {
-    sei localsei = (sei)seh.a(this.this$0).get(this.a);
-    if (localsei != null)
+    rvm localrvm = (rvm)rvl.a(this.this$0).get(this.a);
+    if (localrvm != null)
     {
-      ogc.a(ogc.b(localsei.a, "19", localsei.b));
+      ohk.a(ohk.b(localrvm.a, "19", localrvm.b));
       Intent localIntent = BaseApplicationImpl.getContext().getPackageManager().getLaunchIntentForPackage(this.a);
       if (localIntent != null)
       {
         localIntent.setFlags(268435456);
         localIntent.putExtra("big_brother_source_key", "biz_src_kandian_videos");
         BaseApplicationImpl.getContext().startActivity(localIntent);
-        ogc.a(ogc.b(localsei.a, "106", localsei.b));
+        ohk.a(ohk.b(localrvm.a, "106", localrvm.b));
       }
     }
   }

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqcircle.events;
 
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import qqcircle.QQCircleCounter.CountInfoRsp;
+import qqcircle.QQCircleCounter.RedPointInfo;
 
 public class QCircleRedPointEvent
   extends SimpleBaseEvent
 {
-  public QQCircleCounter.CountInfoRsp mCountInfoRsp;
+  public QQCircleCounter.RedPointInfo mRedPointInfo;
   public int mRedPointMainMsgType;
   
-  public QCircleRedPointEvent(int paramInt, QQCircleCounter.CountInfoRsp paramCountInfoRsp)
+  public QCircleRedPointEvent(int paramInt, QQCircleCounter.RedPointInfo paramRedPointInfo)
   {
     this.mRedPointMainMsgType = paramInt;
-    this.mCountInfoRsp = paramCountInfoRsp;
+    this.mRedPointInfo = paramRedPointInfo;
   }
 }
 

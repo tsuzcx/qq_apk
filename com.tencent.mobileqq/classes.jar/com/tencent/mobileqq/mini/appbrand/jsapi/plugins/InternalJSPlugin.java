@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import biqa;
-import bivl;
-import bivp;
-import blru;
+import bjqz;
+import bjwk;
+import bjwo;
+import bmsw;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -32,6 +32,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,17 +62,44 @@ public class InternalJSPlugin
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bivp.b, paramString1);
-    localBundle.putString(bivp.j, paramString4);
-    localBundle.putString(bivp.f, paramString2);
-    localBundle.putInt(bivp.k, 2);
-    localBundle.putString(bivp.i, "MiniApp");
-    localBundle.putString(bivp.l, paramString3);
-    localBundle.putInt(bivp.H, 1);
-    bivl.a(this.mDownloadListener);
-    bivl.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    localBundle.putString(bjwo.b, paramString1);
+    localBundle.putString(bjwo.j, paramString4);
+    localBundle.putString(bjwo.f, paramString2);
+    localBundle.putInt(bjwo.k, 2);
+    localBundle.putString(bjwo.i, "MiniApp");
+    localBundle.putString(bjwo.l, paramString3);
+    localBundle.putInt(bjwo.H, 1);
+    bjwk.a(this.mDownloadListener);
+    bjwk.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
     QQToast.a(paramActivity, "开始下载", 1).a();
     InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "qqdownload");
+  }
+  
+  @NotNull
+  private JSONObject getLaunchAppRetJsonObject(int paramInt)
+  {
+    try
+    {
+      localJSONObject = new JSONObject();
+      QLog.e("InternalJSPlugin", 1, "startExistedApp error, ", localJSONException1);
+    }
+    catch (JSONException localJSONException1)
+    {
+      try
+      {
+        localJSONObject.put("errCode", paramInt);
+        return localJSONObject;
+      }
+      catch (JSONException localJSONException2)
+      {
+        JSONObject localJSONObject;
+        break label21;
+      }
+      localJSONException1 = localJSONException1;
+      localJSONObject = null;
+    }
+    label21:
+    return localJSONObject;
   }
   
   private void onOpenThridApp(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, String paramString5, String paramString6, JsRuntime paramJsRuntime, int paramInt2)
@@ -81,7 +109,8 @@ public class InternalJSPlugin
       if (QLog.isColorLevel()) {
         QLog.d("InternalJSPlugin", 2, "onOpenThridApp - appid : " + paramString1 + "; packageName : " + paramString2 + "; appName : " + paramString3);
       }
-      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString6, null, "invalid parameter", paramInt2);
+      paramActivity = getLaunchAppRetJsonObject(-1);
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString6, paramActivity, "invalid parameter", paramInt2);
       return;
     }
     PackageManager localPackageManager = paramActivity.getPackageManager();
@@ -96,7 +125,7 @@ public class InternalJSPlugin
     catch (PackageManager.NameNotFoundException paramString5)
     {
       if (paramInt1 == 1) {
-        break label224;
+        break label241;
       }
       confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString4, paramString6, paramJsRuntime, paramInt2);
       return;
@@ -114,9 +143,10 @@ public class InternalJSPlugin
     if (QLog.isColorLevel()) {
       QLog.d("InternalJSPlugin", 2, "only open");
     }
-    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString6, null, "app not installed", paramInt2);
+    paramString5 = getLaunchAppRetJsonObject(3);
+    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString6, paramString5, "app not installed", paramInt2);
     return;
-    label224:
+    label241:
     if (QLog.isColorLevel()) {
       QLog.d("InternalJSPlugin", 2, "only open");
     }
@@ -134,13 +164,13 @@ public class InternalJSPlugin
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      biqa.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      bjqz.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      biqa.b((Activity)paramContext, localBundle);
+      bjqz.b((Activity)paramContext, localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
@@ -217,7 +247,7 @@ public class InternalJSPlugin
             }
           }
         }
-        label287:
+        label288:
         label320:
         label371:
         Bundle localBundle;
@@ -234,7 +264,7 @@ public class InternalJSPlugin
             paramopenUrlCallback.openResult(true, null);
             break;
             QLog.d("InternalJSPlugin", 2, "openUrl by system webview error.");
-            break label287;
+            break label288;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             continue;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772302, 0);
@@ -391,7 +421,7 @@ public class InternalJSPlugin
                 {
                   j = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam.scene;
                   if (!this.jsPluginEngine.appBrandRuntime.canLaunchApp()) {
-                    break label808;
+                    break label832;
                   }
                   i = this.jsPluginEngine.appBrandRuntime.getLaunchAppScene();
                 }
@@ -408,11 +438,14 @@ public class InternalJSPlugin
       catch (Exception paramString2)
       {
         QLog.e("InternalJSPlugin", 1, paramString1 + " error,", paramString2);
-        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+        paramString2 = getLaunchAppRetJsonObject(-1);
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, paramString2, paramInt);
         continue;
       }
       return "";
       QLog.e("InternalJSPlugin", 1, "launchApplication error, appBrandRuntime or getApkgInfo is null.");
+      paramString2 = getLaunchAppRetJsonObject(-1);
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, paramString2, paramInt);
       continue;
       if ("getQua".equals(paramString1))
       {
@@ -425,7 +458,7 @@ public class InternalJSPlugin
       {
         try
         {
-          ((JSONObject)localObject1).put("qua", blru.a());
+          ((JSONObject)localObject1).put("qua", bmsw.a());
           this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject1, paramInt);
           return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
         }
@@ -471,7 +504,7 @@ public class InternalJSPlugin
           MiniAppUtils.getMiniAppStoreAppList(paramString2, paramJsRuntime, paramString1, paramInt, this.jsPluginEngine);
         }
       }
-      label808:
+      label832:
       int i = j;
     }
   }

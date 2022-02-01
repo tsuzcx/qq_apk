@@ -1,48 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqdl
-  implements aqdf
+class aqdl
+  implements View.OnClickListener
 {
-  private String a = "ReadInJoyLauncher";
+  aqdl(aqdj paramaqdj) {}
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void onClick(View paramView)
   {
-    paramColorNote = paramColorNote.getReserve();
-    if (paramColorNote == null) {
-      return;
+    if ((aqdj.a(this.a) == 0) && (!TextUtils.isEmpty(aqdj.b(this.a)))) {
+      aqdj.a(this.a, null);
     }
-    try
-    {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
-      localParcel.setDataPosition(0);
-      paramColorNote = new ArticleInfo(localParcel);
-      if (paramColorNote == null)
-      {
-        QLog.d(this.a, 2, "init color error something is null");
-        return;
-      }
-    }
-    catch (Exception paramColorNote)
-    {
-      for (;;)
-      {
-        QLog.e(this.a, 2, "unmarshall error");
-        paramColorNote.printStackTrace();
-        paramColorNote = null;
-      }
-      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
-      paramColorNote = phk.b(paramContext, paramColorNote);
-      paramColorNote.addFlags(268435456);
-      paramColorNote.putExtra("from_color_note", true);
-      paramColorNote.putExtra("native_article_launch_from", 1004);
-      paramContext.startActivity(paramColorNote);
-    }
+    aqdj.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,10 +1,13 @@
 package com.tencent.mobileqq.mini.appbrand.page.embedded;
 
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidgetClient;
 
 public abstract interface IExtendedEmbeddedWidgetClient
   extends IEmbeddedWidgetClient
 {
+  public abstract AppBrandRuntime getAppBrandRuntime();
+  
   public abstract void nativeDestroy();
   
   public abstract void nativePause();

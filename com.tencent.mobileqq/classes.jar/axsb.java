@@ -1,41 +1,23 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-
-public abstract class axsb
+public class axsb
 {
-  protected Context a;
-  protected View a;
+  public final long a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public axsb(Context paramContext)
+  public axsb(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
-  
-  protected abstract int a();
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    int i = a();
-    if (i > 0)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
-      a(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidViewView = null;
-    }
-  }
-  
-  protected void a(View paramView) {}
-  
-  public abstract void a(NearbyPeopleCard paramNearbyPeopleCard);
 }
 
 

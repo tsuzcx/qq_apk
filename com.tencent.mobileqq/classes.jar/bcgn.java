@@ -1,40 +1,49 @@
-import android.os.Handler;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureCallback;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgn
-  extends SCameraCaptureProcessor.CaptureCallback
+  extends bcga
 {
-  public bcgn(Camera2Control paramCamera2Control, long paramLong) {}
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
+  public boolean b;
   
-  public void onError(int paramInt)
+  public bcgn(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    bcgu.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void onPictureAvailable(ByteBuffer paramByteBuffer)
+  public bcgn(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    bcgu.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
-    bcgt.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
-    {
-      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
-      paramByteBuffer.get(arrayOfByte);
-      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
-      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    for (boolean bool = true;; bool = false) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_JavaLangCharSequence = bcni.a(paramString.optJSONArray("leftText"));
+        this.jdField_b_of_type_JavaLangCharSequence = bcni.a(paramString.optJSONArray("rightText"));
+        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
+        if (paramString.optInt("needCenter") == 1)
+        {
+          this.jdField_b_of_type_Boolean = bool;
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(c, 0, paramString.toString());
+      }
     }
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
-    Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a(0);
-    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control);
-  }
-  
-  public void onShutter()
-  {
-    bcgu.a(1, "[Camera2]samsungCapture onShutter!");
   }
 }
 

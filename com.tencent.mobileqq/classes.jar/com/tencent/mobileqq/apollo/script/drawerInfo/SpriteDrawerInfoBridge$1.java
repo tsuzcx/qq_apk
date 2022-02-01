@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo.script.drawerInfo;
 
-import amut;
-import amuw;
+import angn;
+import angq;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
 public class SpriteDrawerInfoBridge$1
   implements Runnable
 {
-  public SpriteDrawerInfoBridge$1(amuw paramamuw, SpriteTaskParam paramSpriteTaskParam) {}
+  public SpriteDrawerInfoBridge$1(angq paramangq, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    if (amuw.a(this.this$0) != null)
+    if (angq.a(this.this$0) != null)
     {
-      if (amuw.a(this.this$0).a()) {
+      if (angq.a(this.this$0).a()) {
         this.a.j = 1;
       }
       this.a.a = this.this$0;
-      amuw.a(this.this$0).a(this.a);
+      angq.a(this.this$0).a(this.a);
     }
   }
 }

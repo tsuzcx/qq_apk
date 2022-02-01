@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lxk
-  implements DialogInterface.OnClickListener
+  implements baoi
 {
-  public lxk(AVSchema paramAVSchema, String paramString) {}
+  public lxk(QQServiceForAV paramQQServiceForAV) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
+    }
+    new lxz(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lxl(this, paramString));
   }
 }
 

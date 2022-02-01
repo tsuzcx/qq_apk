@@ -1,53 +1,17 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class akzj
-  implements View.OnClickListener
+public class akzj
+  extends BroadcastReceiver
 {
-  akzj(akyh paramakyh, Bundle paramBundle) {}
+  public akzj(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (akyh.a(this.jdField_a_of_type_Akyh) != null)
-    {
-      localObject1 = akyh.a(this.jdField_a_of_type_Akyh).obtainMessage(1134042);
-      akyh.a(this.jdField_a_of_type_Akyh).sendMessage((Message)localObject1);
-    }
-    Object localObject1 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    try
-    {
-      localObject1 = Class.forName((String)localObject1);
-      if (localObject1 != null)
-      {
-        localObject1 = new Intent(akyh.a(this.jdField_a_of_type_Akyh).getApplicationContext(), (Class)localObject1);
-        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).setAction(str);
-        }
-        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).addCategory(str);
-        }
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        akyh.a(this.jdField_a_of_type_Akyh).startActivity((Intent)localObject1);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
+      this.a.finish();
     }
   }
 }

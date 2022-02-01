@@ -1,24 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class afqz
   implements DialogInterface.OnClickListener
 {
-  public afqz(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public afqz(TranslucentTRansferFragment paramTranslucentTRansferFragment, bhpc parambhpc) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.l();
-    this.a.b(this.a.n);
-    if (VipUtils.b(this.a.app)) {}
-    for (paramDialogInterface = "4";; paramDialogInterface = "3")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nlw.a(), paramDialogInterface, "1");
-      return;
-    }
+    this.jdField_a_of_type_Bhpc.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
+    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
+    bdll.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
   }
 }
 

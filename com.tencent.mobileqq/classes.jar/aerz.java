@@ -1,35 +1,35 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class aerz
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public aerz(NotifyPushSettingActivity paramNotifyPushSettingActivity, anip paramanip) {}
+  public aerz(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if ((bgnt.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Anip.d(paramBoolean);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    }
+    do
+    {
       return;
-    }
-    NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    FormSwitchItem localFormSwitchItem = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localFormSwitchItem.setChecked(bool);
-      NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131694179), 0).b(5);
-      break;
-    }
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bjbs.a(this.a.getString(2131690709));
+        this.a.jdField_a_of_type_Bjbs.d(2130849677);
+        this.a.jdField_a_of_type_Bjbs.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bjbs == null) || (!this.a.jdField_a_of_type_Bjbs.isShowing()));
+    this.a.jdField_a_of_type_Bjbs.cancel();
+    this.a.jdField_a_of_type_Bjbs.a(this.a.getString(2131690711));
+    this.a.jdField_a_of_type_Bjbs.c(true);
+    this.a.jdField_a_of_type_Bjbs.a(false);
+    this.a.jdField_a_of_type_Bjbs.b(true);
   }
 }
 

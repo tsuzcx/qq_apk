@@ -1,52 +1,142 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.util.HashSet;
+import android.content.Context;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wrl
+public abstract class wrl<M, VH extends wro<M>>
+  extends wrp<M, VH>
 {
-  final int jdField_a_of_type_Int;
-  public final Bundle a;
-  String jdField_a_of_type_JavaLangString = "";
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = true;
+  private List<M> a;
   
-  public wrl(int paramInt)
+  public wrl(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public static wrl a()
+  public abstract int a(int paramInt);
+  
+  public int a(M paramM)
   {
-    return new wrl(20);
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i < 0) {
+      return i;
+    }
+    this.jdField_a_of_type_JavaUtilList.set(i, paramM);
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      notifyItemChanged(i);
+      return i;
+    }
+    notifyItemChanged(i + 1);
+    return i;
+  }
+  
+  public M a(int paramInt)
+  {
+    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + b())) {
+      return null;
+    }
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+  }
+  
+  public List<M> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
   }
   
-  public void a(String paramString)
+  public void a(M paramM)
   {
-    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i < 0) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.remove(i);
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      a();
+      notifyItemRemoved(i);
+      return;
+    }
+    notifyItemRemoved(i + 1);
+  }
+  
+  public void a(M paramM, int paramInt)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i != -1) {
+      this.jdField_a_of_type_JavaUtilList.remove(i);
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramM);
+    if (i != -1)
+    {
+      if (this.jdField_a_of_type_AndroidViewView == null)
+      {
+        notifyItemMoved(i, paramInt);
+        notifyItemChanged(paramInt);
+        return;
+      }
+      notifyItemMoved(i + 1, paramInt + 1);
+      notifyItemChanged(paramInt + 1);
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      notifyItemInserted(paramInt);
+      return;
+    }
+    notifyItemInserted(paramInt + 1);
+  }
+  
+  public boolean a(List<M> paramList)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      if (bool) {
+        notifyDataSetChanged();
+      }
+      return bool;
     }
   }
   
-  public boolean a()
+  public boolean b(List<M> paramList)
   {
-    return this.jdField_a_of_type_Boolean;
+    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (bool) {
+      notifyDataSetChanged();
+    }
+    return bool;
   }
   
-  public boolean b()
+  public int getItemCount()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.jdField_a_of_type_JavaUtilList.size() + a();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
+      return 1024;
+    }
+    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + b())) {
+      return 1025;
+    }
+    return a(paramInt);
   }
 }
 

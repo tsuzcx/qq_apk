@@ -1,56 +1,185 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class wsx
-  extends wla
+  implements wsp
 {
-  public String a;
-  public ArrayList<wrs> a;
-  public boolean a;
-  public boolean b;
-  public String c;
+  private final LinkedList<wsy> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private ConcurrentHashMap<Integer, xdy> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public wsx(qqstory_service.RspMsgTabNodeList paramRspMsgTabNodeList)
+  private void e()
   {
-    super(paramRspMsgTabNodeList.result);
-    this.jdField_a_of_type_JavaLangString = paramRspMsgTabNodeList.list_seq.get().toStringUtf8();
-    this.c = paramRspMsgTabNodeList.next_cookie.get().toStringUtf8();
-    if (paramRspMsgTabNodeList.is_animate.get() > 0) {}
-    for (boolean bool1 = true;; bool1 = false)
+    Object localObject = QQStoryContext.a().a().createEntityManager().query(ReportWatchVideoEntry.class, ReportWatchVideoEntry.class.getSimpleName(), false, null, null, null, null, null, null);
+    if (localObject == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramRspMsgTabNodeList.is_end.has())
+      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        bool1 = bool2;
-        if (paramRspMsgTabNodeList.is_end.get() != 1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      this.b = bool1;
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
-      paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
-      while (paramRspMsgTabNodeList.hasNext())
-      {
-        qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramRspMsgTabNodeList.next();
-        wrs localwrs = new wrs();
-        localwrs.a(localMsgTabNodeInfo);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localwrs);
+        ReportWatchVideoEntry localReportWatchVideoEntry = (ReportWatchVideoEntry)((Iterator)localObject).next();
+        wsy localwsy = new wsy();
+        localwsy.a(localReportWatchVideoEntry);
+        this.jdField_a_of_type_JavaUtilLinkedList.add(localwsy);
       }
     }
   }
   
-  public String toString()
+  private void f()
   {
-    return "MsgTabNodeListResponse{shouldAnimate=" + this.jdField_a_of_type_Boolean + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cookie='" + this.c + '\'' + ", isEnd=" + this.b + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + "} " + super.toString();
+    ArrayList localArrayList = new ArrayList();
+    long l = System.currentTimeMillis();
+    Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList.size());
+    ((ArrayList)localObject).addAll(this.jdField_a_of_type_JavaUtilLinkedList);
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      wsy localwsy = (wsy)((Iterator)localObject).next();
+      if (localwsy.jdField_a_of_type_Long < l - 86400000L)
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(localwsy);
+        localArrayList.add(localwsy);
+      }
+    }
+    a(localArrayList);
+  }
+  
+  private void g()
+  {
+    Object localObject = new ArrayList(xbu.a);
+    int i = 0;
+    while ((this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) && (i < xbu.a))
+    {
+      ((ArrayList)localObject).add(this.jdField_a_of_type_JavaUtilLinkedList.removeFirst());
+      i += 1;
+    }
+    if (((ArrayList)localObject).size() > 0)
+    {
+      localObject = new xbu().a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet(), (ArrayList)localObject);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(((xdy)localObject).c), localObject);
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean1, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean2)
+  {
+    a(new wsy(paramString1, paramString2, paramBoolean1, paramLong, paramInt1, paramInt2), paramBoolean2);
+  }
+  
+  public void a(wsy paramwsy, boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramwsy))
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.add(paramwsy);
+        yuk.d("Q.qqstory:ReportWatchVideoManager", String.format("saveWatchVid vid=%s, videoUid=%s, list size=%d", new Object[] { paramwsy.jdField_a_of_type_JavaLangString, paramwsy.b, Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
+      }
+      if (paramBoolean) {
+        QQStoryContext.a().a().createEntityManager().persistOrReplace(paramwsy.a());
+      }
+      return;
+    }
+  }
+  
+  public void a(@NonNull xdy paramxdy)
+  {
+    try
+    {
+      yuk.d("Q.qqstory:ReportWatchVideoManager", "handleResponse. requestHashMap.size()=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramxdy.c));
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
+        {
+          paramxdy = new wsz();
+          wjj.a().dispatch(paramxdy);
+        }
+      }
+      return;
+    }
+    finally
+    {
+      paramxdy = finally;
+      throw paramxdy;
+    }
+  }
+  
+  public boolean a(List<wsy> paramList)
+  {
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
+    try
+    {
+      localEntityTransaction.begin();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        wsy localwsy = (wsy)paramList.next();
+        ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
+        localReportWatchVideoEntry.setStatus(1001);
+        localEntityManager.remove(localReportWatchVideoEntry, "vid=?", new String[] { localwsy.jdField_a_of_type_JavaLangString });
+      }
+    }
+    finally
+    {
+      localEntityTransaction.end();
+    }
+    localEntityTransaction.end();
+    return false;
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+      {
+        e();
+        yuk.d("Q.qqstory:ReportWatchVideoManager", String.format("init. reportWatchVideoList.size=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
+      }
+      f();
+      yuk.d("Q.qqstory:ReportWatchVideoManager", String.format("startSendRequests. data size=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0)
+      {
+        wsz localwsz = new wsz();
+        wjj.a().dispatch(localwsz);
+        return;
+      }
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) {
+        g();
+      }
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

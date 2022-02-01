@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
@@ -83,8 +83,8 @@ public class ReadInJoyCapsuleView
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 17);
-    localLayoutParams.leftMargin = afur.a(12.0F, paramContext.getResources());
-    localLayoutParams.rightMargin = afur.a(12.0F, paramContext.getResources());
+    localLayoutParams.leftMargin = agej.a(12.0F, paramContext.getResources());
+    localLayoutParams.rightMargin = agej.a(12.0F, paramContext.getResources());
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   

@@ -3,10 +3,10 @@ package com.tencent.YTFace.cluster;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aowk;
-import atwl;
-import bnpt;
-import bnpy;
+import apka;
+import auog;
+import borf;
+import bork;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.YTFace.model.FaceTarget;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -35,8 +35,8 @@ public class FaceCluster
   {
     try
     {
-      String str1 = aowk.a("YTFaceExtFeature");
-      String str2 = aowk.a("YTFaceClusterJNI_V841");
+      String str1 = apka.a("YTFaceExtFeature");
+      String str2 = apka.a("YTFaceClusterJNI_V841");
       BaseApplicationImpl.sApplication.getSharedPreferences("StatisticCollector", 4).edit().putString("facefeature_ext_so_md5", str1).commit();
       QLog.d("FaceCluster", 1, "FaceCluster faceFeatureExtSoMD5 = " + str1 + " faceJniSoMD5 =  " + str2);
       return;
@@ -73,7 +73,7 @@ public class FaceCluster
     //   4: istore 7
     //   6: ldc 2
     //   8: monitorenter
-    //   9: invokestatic 113	aowk:a	()Z
+    //   9: invokestatic 113	apka:a	()Z
     //   12: istore 9
     //   14: iload 9
     //   16: ifne +9 -> 25
@@ -88,26 +88,26 @@ public class FaceCluster
     //   36: goto -17 -> 19
     //   39: iconst_1
     //   40: putstatic 115	com/tencent/YTFace/cluster/FaceCluster:soLoaded	Z
-    //   43: invokestatic 118	aowk:c	()Ljava/lang/String;
-    //   46: invokestatic 122	aowk:b	(Ljava/lang/String;)B
+    //   43: invokestatic 118	apka:c	()Ljava/lang/String;
+    //   46: invokestatic 122	apka:b	(Ljava/lang/String;)B
     //   49: istore_0
-    //   50: invokestatic 125	aowk:e	()Ljava/lang/String;
-    //   53: invokestatic 122	aowk:b	(Ljava/lang/String;)B
+    //   50: invokestatic 125	apka:e	()Ljava/lang/String;
+    //   53: invokestatic 122	apka:b	(Ljava/lang/String;)B
     //   56: istore_1
-    //   57: invokestatic 127	aowk:d	()Ljava/lang/String;
-    //   60: invokestatic 122	aowk:b	(Ljava/lang/String;)B
+    //   57: invokestatic 127	apka:d	()Ljava/lang/String;
+    //   60: invokestatic 122	apka:b	(Ljava/lang/String;)B
     //   63: istore_2
     //   64: ldc 129
-    //   66: invokestatic 131	aowk:c	(Ljava/lang/String;)B
+    //   66: invokestatic 131	apka:c	(Ljava/lang/String;)B
     //   69: istore_3
-    //   70: invokestatic 134	aowk:f	()Ljava/lang/String;
-    //   73: invokestatic 122	aowk:b	(Ljava/lang/String;)B
+    //   70: invokestatic 134	apka:f	()Ljava/lang/String;
+    //   73: invokestatic 122	apka:b	(Ljava/lang/String;)B
     //   76: istore 4
     //   78: ldc 34
-    //   80: invokestatic 131	aowk:c	(Ljava/lang/String;)B
+    //   80: invokestatic 131	apka:c	(Ljava/lang/String;)B
     //   83: istore 5
     //   85: ldc 42
-    //   87: invokestatic 131	aowk:c	(Ljava/lang/String;)B
+    //   87: invokestatic 131	apka:c	(Ljava/lang/String;)B
     //   90: istore 6
     //   92: iload 8
     //   94: istore 7
@@ -239,8 +239,8 @@ public class FaceCluster
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = (ModelInfo)((Iterator)localObject1).next();
-          localObject2 = bnpy.a(bnpt.b) + ((ModelInfo)localObject2).fileName;
-          if (!atwl.a((String)localObject2)) {
+          localObject2 = bork.a(borf.b) + ((ModelInfo)localObject2).fileName;
+          if (!auog.a((String)localObject2)) {
             if (QLog.isColorLevel())
             {
               QLog.d("FaceCluster", 2, "checkFaceTrackModelExistOrNot false,path = " + (String)localObject2);
@@ -311,7 +311,7 @@ public class FaceCluster
         {
           try
           {
-            j = initTrackPro(bnpy.a(bnpt.b));
+            j = initTrackPro(bork.a(borf.b));
             QLog.d("FaceCluster", 1, "init initTrackPro ret = " + j);
             if (j != 0)
             {

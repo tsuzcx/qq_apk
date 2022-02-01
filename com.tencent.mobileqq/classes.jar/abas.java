@@ -1,28 +1,24 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class abas
-  implements QQPermissionCallback
+class abas
+  implements Animation.AnimationListener
 {
-  public abas(NewerGuidePlugin paramNewerGuidePlugin, BaseActivity paramBaseActivity) {}
+  abas(abaq paramabaq) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
+    if (abaq.a(this.a) != null)
+    {
+      abaq.a(this.a).clearAnimation();
+      abaq.a(this.a).startAnimation(abaq.a(this.a));
     }
-    bgpa.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, anni.a(2131706213));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
-    }
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

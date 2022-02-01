@@ -1,53 +1,82 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class advw
-  extends aniz
+  extends aoib
 {
-  public advw(ChatSettingActivity paramChatSettingActivity) {}
+  public advw(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, bdxd parambdxd)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onGetBindSubAccount() isSuccess=" + paramBoolean);
+    }
+    if ((parambdxd == null) || (!TextUtils.equals(parambdxd.b, this.a.app.c()))) {}
+    do
     {
-      if ((paramBoolean) && (paramObject != null))
+      do
       {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
-        {
-          String str = bglf.a(this.a.app, ChatSettingActivity.b(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
-        }
+        return;
+      } while (!paramBoolean);
+      parambdxd = parambdxd.c();
+    } while ((parambdxd == null) || (this.a.a == null));
+    Iterator localIterator = this.a.a.iterator();
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
       }
+    } while (parambdxd.contains(((SubAccountInfo)localIterator.next()).subuin));
+    for (int i = 1;; i = 0)
+    {
+      if (parambdxd.size() != this.a.a.size()) {
+        i = j;
+      }
+      while (i != 0)
+      {
+        AssociatedAccountActivity.b(this.a, false);
+        return;
+      }
+      break;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, bdxd parambdxd)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() isSuccess=" + paramBoolean);
+      if (parambdxd != null) {
+        QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() mainAccount=" + parambdxd.b + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((parambdxd == null) || (!TextUtils.equals(parambdxd.b, this.a.app.c()))) {}
+    while (!paramBoolean) {
       return;
     }
+    AssociatedAccountActivity.b(this.a, false);
   }
   
-  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  protected void c(boolean paramBoolean, bdxd parambdxd)
   {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
+    if (QLog.isColorLevel())
     {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
+      QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() isSuccess=" + paramBoolean);
+      if (parambdxd != null) {
+        QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() mainAccount=" + parambdxd.b + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
+      }
     }
-  }
-  
-  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
+    if ((parambdxd == null) || (!TextUtils.equals(parambdxd.b, this.a.app.c()))) {}
+    while (!paramBoolean) {
+      return;
     }
+    AssociatedAccountActivity.b(this.a, false);
   }
 }
 

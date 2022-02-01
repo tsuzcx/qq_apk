@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import akbu;
+import aknf;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
 
 public class AvatarPendantActivity$AnimationScrollListener$1
   implements Runnable
 {
-  public AvatarPendantActivity$AnimationScrollListener$1(akbu paramakbu) {}
+  public AvatarPendantActivity$AnimationScrollListener$1(aknf paramaknf) {}
   
   public void run()
   {

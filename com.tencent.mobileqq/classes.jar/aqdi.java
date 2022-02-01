@@ -1,21 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 
 public class aqdi
-  implements aqdf
+  implements biqw
 {
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public aqdi(ArkBrowserFragment paramArkBrowserFragment) {}
+  
+  public void a(String paramString)
   {
-    String str = paramColorNote.getSubType();
-    Object localObject = str.split("-");
-    if (localObject.length > 0) {
-      str = localObject[0];
+    this.a.a = paramString;
+    paramString = this.a.getWebView();
+    if (paramString != null) {
+      paramString.callJs("NativeApi.lightappGetShareData();");
     }
-    if (localObject.length > 1) {
-      localObject = localObject[1];
-    }
-    paramColorNote = paramColorNote.getReserve();
-    bljn.a(paramContext, "", Long.parseLong(str), paramColorNote);
   }
 }
 

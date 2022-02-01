@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ocr;
 
-import apah;
-import apai;
-import aygt;
-import aygv;
+import apnx;
+import apny;
+import ayzm;
+import ayzo;
 
 public class OcrControl$3
   implements Runnable
 {
-  public OcrControl$3(aygt paramaygt, String paramString, apah paramapah) {}
+  public OcrControl$3(ayzm paramayzm, String paramString, apnx paramapnx) {}
   
   public void run()
   {
-    apai localapai = aygt.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if ((localapai != null) && (aygt.a(this.this$0) != null))
+    apny localapny = ayzm.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((localapny != null) && (ayzm.a(this.this$0) != null))
     {
       long l1 = System.currentTimeMillis();
-      long l2 = localapai.c;
-      aygt.a(this.this$0).a(4, null, this.jdField_a_of_type_Apah.b, l1 - l2);
+      long l2 = localapny.c;
+      ayzm.a(this.this$0).a(4, null, this.jdField_a_of_type_Apnx.b, l1 - l2);
     }
   }
 }

@@ -6,8 +6,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import apii;
-import aprv;
+import apvy;
+import aqfl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
@@ -30,15 +30,15 @@ public class ArkAuthorityInfoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558691);
-    super.setTitle(2131690085);
+    setContentView(2131558693);
+    super.setTitle(2131690093);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("intent_extra_authority_app_name");
-    ((TextView)super.findViewById(2131362915)).setText(getString(2131690091, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((TextView)super.findViewById(2131362933)).setText(getString(2131690099, new Object[] { this.jdField_a_of_type_JavaLangString }));
     int i = 0;
     while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362909, 2131362905, 2131362908, 2131362906, 2131362907 }[i]);
-      int j = apii.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
+      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362927, 2131362923, 2131362926, 2131362924, 2131362925 }[i]);
+      int j = apvy.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
       if (j == 0)
       {
         paramBundle.setVisibility(8);
@@ -51,7 +51,7 @@ public class ArkAuthorityInfoActivity
         for (boolean bool = true;; bool = false)
         {
           paramBundle.setChecked(bool);
-          paramBundle.setOnCheckedChangeListener(new aprv(this, i));
+          paramBundle.setOnCheckedChangeListener(new aqfl(this, i));
           break;
         }
       }

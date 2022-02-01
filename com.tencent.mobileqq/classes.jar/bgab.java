@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
 public class bgab
-  implements bdge
+  implements DialogInterface.OnClickListener
 {
-  public bgab(TroopInteractGiftAnimationController.1.1 param1) {}
+  public bgab(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a(int paramInt)
-  {
-    if (this.a.a.this$0.a != null) {
-      this.a.a.this$0.a.setProgress(paramInt / 30);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

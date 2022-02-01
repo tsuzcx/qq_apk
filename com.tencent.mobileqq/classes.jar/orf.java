@@ -1,17 +1,6 @@
 class orf
-  implements old
 {
-  orf(ore paramore, orb paramorb) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Ore.c(this.jdField_a_of_type_Orb);
-      return;
-    }
-    this.jdField_a_of_type_Ore.d(this.jdField_a_of_type_Orb);
-  }
+  private static final ord a = new ord(null);
 }
 
 

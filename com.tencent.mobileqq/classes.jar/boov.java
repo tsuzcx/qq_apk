@@ -1,8 +1,24 @@
-public abstract interface boov
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class boov
+  implements Animation.AnimationListener
 {
-  public abstract void a(float paramFloat, String paramString, int paramInt);
+  boov(boou paramboou) {}
   
-  public abstract void a(boolean paramBoolean, String paramString, bpnf parambpnf);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (boou.a(this.a) != null)
+    {
+      boou.a(this.a).clearAnimation();
+      boou.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

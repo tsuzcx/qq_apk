@@ -1,34 +1,19 @@
-import android.text.Editable;
-import android.text.Selection;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
 
 public class axmu
-  implements TextWatcher
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public axmu(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public axmu(MultiCardCustomLayout paramMultiCardCustomLayout) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (ShortVideoCommentsView.a(this.a) == null) {}
-    while (axln.a(paramEditable.toString()) <= 140) {
-      return;
+    if (MultiCardCustomLayout.a(this.a) != null) {
+      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
     }
-    int j = Selection.getSelectionEnd(paramEditable);
-    paramEditable = axln.a(paramEditable.toString(), 0, 140).toString();
-    ShortVideoCommentsView.a(this.a).setText(paramEditable);
-    paramEditable = ShortVideoCommentsView.a(this.a).getText();
-    int i = j;
-    if (j > paramEditable.length()) {
-      i = paramEditable.length();
-    }
-    Selection.setSelection(paramEditable, i);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

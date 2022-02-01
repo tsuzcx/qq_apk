@@ -1,37 +1,29 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class adts
-  implements afwa
+  implements anui
 {
-  public adts(ChatHistory paramChatHistory) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference<AddFriendVerifyActivity> jdField_a_of_type_MqqUtilWeakReference;
   
-  public void a(AudioPlayerBase paramAudioPlayerBase)
+  public adts(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_Adun != null) {
-      this.a.jdField_a_of_type_Adun.d();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAddFriendVerifyActivity);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    AddFriendVerifyActivity localAddFriendVerifyActivity = (AddFriendVerifyActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localAddFriendVerifyActivity != null) && (!localAddFriendVerifyActivity.isFinishing()))
+    {
+      localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
+      return;
     }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
   }
-  
-  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt)
-  {
-    this.a.b(2131694342);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
-  
-  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

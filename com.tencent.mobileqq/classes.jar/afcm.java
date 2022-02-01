@@ -1,12 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afcm
+  extends avhb
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public afcm(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onBandIntimateRelationship");
+    }
+    PermisionPrivacyActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    super.a(paramBoolean1, paramString, paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onDisbandIntimateRelationship");
+    }
+    PermisionPrivacyActivity.a(this.a);
+  }
 }
 
 

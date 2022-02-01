@@ -1,16 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
 public class ypn
-  implements ymi
+  implements woy<ypp, ypq>
 {
-  ypn(ypb paramypb) {}
+  private WeakReference<ypm> a;
   
-  public void a()
+  public ypn(ypm paramypm)
   {
-    yqp.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
+    this.a = new WeakReference(paramypm);
+  }
+  
+  public void a(@NonNull ypp paramypp, @Nullable ypq paramypq, @NonNull ErrorMessage paramErrorMessage)
+  {
+    yuk.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    ypm localypm = (ypm)this.a.get();
+    if (localypm == null) {
+      return;
+    }
+    localypm.a(paramypp, paramypq, paramErrorMessage);
   }
 }
 

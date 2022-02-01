@@ -1,14 +1,20 @@
-import android.os.Environment;
-import android.os.StatFs;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class ahuf
+class ahuf
+  extends Handler
 {
-  public static long a()
+  ahuf(ahue paramahue, Looper paramLooper)
   {
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-    long l = localStatFs.getBlockSize();
-    return localStatFs.getAvailableBlocks() * l / 1024L;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == ahue.a) {
+      this.a.b();
+    }
   }
 }
 

@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.automator.step.RegisterPush;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-public abstract class aomz
+public class aomz
+  extends AccountObserver
 {
-  public QQAppInterface a;
-  public ProxyManager a;
+  private aomz(RegisterPush paramRegisterPush) {}
   
-  public aomz(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onOnlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean3 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean4);
+    }
+    if (paramBoolean1)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
-  
-  public abstract void a();
-  
-  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomz
  * JD-Core Version:    0.7.0.1
  */

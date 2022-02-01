@@ -1,78 +1,131 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticon.EPRecommendTask.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import mqq.util.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aska
-  extends RecyclerView.OnScrollListener
 {
-  public aska(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public VasQuickUpdateManager.CallBacker a;
+  Runnable a;
+  public String a;
+  public WeakReference<QQAppInterface> a;
+  public String b;
   
-  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
+  public aska(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if (this.a.jdField_a_of_type_Aobu != null)
+    this.jdField_a_of_type_JavaLangRunnable = new EPRecommendTask.1(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new askb(this);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public static awyj a(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = null;
+    try
     {
-      if (paramInt != 0) {
-        break label94;
-      }
-      this.a.c = false;
-      this.a.jdField_a_of_type_Aobu.b();
-      this.a.av_();
-    }
-    for (;;)
-    {
-      if (paramInt == 0)
+      Object localObject = paramJSONObject.optJSONArray("emojiAioConfig");
+      if (localObject != null)
       {
-        ExtendFriendSquareFragment.c(this.a);
-        this.a.g();
-        this.a.b(false);
-      }
-      return;
-      label94:
-      this.a.c = true;
-      this.a.jdField_a_of_type_Aobu.c();
-      this.a.jdField_a_of_type_Aobu.a();
-      synchronized (ExtendFriendBaseFragment.a)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        if (((JSONArray)localObject).length() == 0) {
+          return null;
         }
+        paramJSONObject = new awyj();
       }
+      label116:
+      return null;
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        localObject = (JSONObject)((JSONArray)localObject).get(0);
+        paramJSONObject.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("hide");
+        paramJSONObject.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("version");
+        paramJSONObject.c = ((JSONObject)localObject).optString("url");
+        localJSONObject = ((JSONObject)localObject).optJSONObject("gifUrl");
+        if (localJSONObject != null) {
+          paramJSONObject.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
+        }
+        localObject = ((JSONObject)localObject).optJSONObject("imgUrl");
+        if (localObject != null) {
+          paramJSONObject.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("src");
+        }
+        return paramJSONObject;
+      }
+      catch (Exception localException2)
+      {
+        break label116;
+      }
+      localException1 = localException1;
+      paramJSONObject = localJSONObject;
+      localException1.printStackTrace();
+      return paramJSONObject;
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public aska a(String paramString1, String paramString2)
   {
-    this.a.h = this.a.d();
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (this.a.e != -1L)
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    return this;
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    SharedPreferences localSharedPreferences;
+    do
     {
-      long l = System.currentTimeMillis() - this.a.e;
-      f1 = f2;
-      if (l > 0L)
+      for (;;)
       {
-        f1 = f2;
-        if (l < 2000L) {
-          f1 = paramInt2 * 1.0F / (float)l;
+        return;
+        try
+        {
+          paramJSONObject = a(paramJSONObject);
+          if (paramJSONObject != null)
+          {
+            localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("mobileQQ", 0);
+            localSharedPreferences.edit().putInt("magic_promotion_hide", paramJSONObject.jdField_a_of_type_Int).commit();
+            if (QLog.isColorLevel()) {
+              QLog.d("EPRecommendTask", 2, "promotionInfo:[hide]:" + paramJSONObject.jdField_a_of_type_Int + ",[ver]:" + paramJSONObject.jdField_b_of_type_Int);
+            }
+            if (1 != paramJSONObject.jdField_a_of_type_Int) {
+              if ((TextUtils.isEmpty(paramJSONObject.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(paramJSONObject.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramJSONObject.c)))
+              {
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d("EPRecommendTask", 2, "promotionInfo: imgUrl = " + paramJSONObject.jdField_b_of_type_JavaLangString + " gifUrl = " + paramJSONObject.jdField_a_of_type_JavaLangString + " jumpUrl = " + paramJSONObject.c);
+              }
+            }
+          }
+        }
+        catch (Exception paramJSONObject)
+        {
+          paramJSONObject.printStackTrace();
+          return;
         }
       }
-    }
-    this.a.e = System.currentTimeMillis();
-    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
-    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Askg != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Askg.getItemCount() - 2) != null))
-    {
-      this.a.a(true);
-      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
-    }
+      localSharedPreferences.edit().putString("magic_promotion_jump_url", paramJSONObject.c).commit();
+      localSharedPreferences.edit().putString("magic_promotion_imgUrl", "https://gxh.vip.qq.com/xydata/" + paramJSONObject.jdField_b_of_type_JavaLangString).commit();
+      localSharedPreferences.edit().putString("magic_promotion_gifUrl", "https://gxh.vip.qq.com/xydata/" + paramJSONObject.jdField_a_of_type_JavaLangString).commit();
+    } while (localSharedPreferences.getInt("magic_promotion_old_ver_" + asde.a(), -1) >= paramJSONObject.jdField_b_of_type_Int);
+    localSharedPreferences.edit().putBoolean("magic_promotion_is_new_content_" + asde.a(), true).commit();
+    localSharedPreferences.edit().putInt("magic_promotion_old_ver_" + asde.a(), paramJSONObject.jdField_b_of_type_Int).commit();
   }
 }
 

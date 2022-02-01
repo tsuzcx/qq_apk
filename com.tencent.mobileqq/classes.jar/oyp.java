@@ -1,50 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class oyp
+class oyp
+  implements ViewBase.OnClickListener
 {
-  private static List<pcp> a;
+  oyp(oyo paramoyo, int paramInt, ViewBase paramViewBase) {}
   
-  private oyp()
+  public void onClick(ViewBase paramViewBase)
   {
-    a = new ArrayList();
-  }
-  
-  public static oyp a()
-  {
-    return oyr.a();
-  }
-  
-  public List<pcp> a()
-  {
-    if (a == null) {
-      return null;
-    }
-    return a;
-  }
-  
-  public void a()
-  {
-    if (a != null) {
-      a.clear();
-    }
-  }
-  
-  public void a(pcp parampcp)
-  {
-    if ((parampcp == null) || (a == null)) {}
-    while (a.contains(parampcp)) {
+    try
+    {
+      oyg.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Oyo.jdField_a_of_type_Int, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Oyo.jdField_a_of_type_Aoof, this.jdField_a_of_type_Oyo.jdField_a_of_type_Sel, this.jdField_a_of_type_Oyo.jdField_a_of_type_Ppu, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
       return;
     }
-    a.add(parampcp);
-  }
-  
-  public void b(pcp parampcp)
-  {
-    if ((a == null) || (a.size() == 0)) {
-      return;
+    catch (Exception paramViewBase)
+    {
+      QLog.d("ProteusSupportUtil", 1, "invokeListener error! cmd=" + this.jdField_a_of_type_Int + " msg=" + paramViewBase);
     }
-    a.remove(parampcp);
   }
 }
 

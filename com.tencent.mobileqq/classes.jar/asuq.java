@@ -1,18 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class asuq
-  implements View.OnClickListener
+public class asuq
+  extends asuj
 {
-  asuq(asup paramasup) {}
+  public ases a;
   
-  public void onClick(View paramView)
+  public asuq(QQAppInterface paramQQAppInterface, asup paramasup)
   {
-    QfileCloudFileTabView.a(this.a.a, false);
-    this.a.a.h();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramasup.a instanceof asmg)) {}
+    for (int i = 333;; i = 149)
+    {
+      this.a = ((ases)paramQQAppInterface.getManager(i));
+      return;
+    }
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public List<asug> a(boolean paramBoolean)
+  {
+    Object localObject = this.a.b();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(new asup((asmu)((Iterator)localObject).next()));
+    }
+    return localArrayList;
+  }
+  
+  public void a() {}
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

@@ -1,5 +1,5 @@
 public abstract interface adca
-  extends adbu
+  extends adbd<Integer, adbz>
 {}
 
 

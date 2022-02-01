@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-
-public class asta
-  implements bkhy
+public abstract interface asta
 {
-  public asta(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public abstract void a();
   
-  public void onDismiss()
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

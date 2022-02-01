@@ -1,23 +1,12 @@
-import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
 
 public class apaw
+  extends aolh
 {
-  public float a;
-  public int a;
-  public FaceStatus a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public String toString()
+  public apaw(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
   {
-    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
+    super(paramQQAppInterface, paramDBDelayManager);
   }
 }
 

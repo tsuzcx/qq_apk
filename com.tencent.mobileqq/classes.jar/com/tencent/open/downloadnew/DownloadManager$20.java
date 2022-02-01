@@ -1,25 +1,25 @@
 package com.tencent.open.downloadnew;
 
-import bisy;
-import bivr;
-import bivz;
+import bjtx;
+import bjwq;
+import bjwy;
 
 public class DownloadManager$20
   implements Runnable
 {
-  public DownloadManager$20(bivr parambivr, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$20(bjwq parambjwq, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      bisy.c("DownloadManager_", this.a.e + " begin getApkCode ......");
-      bivr.a(this.this$0).a(this.a.e, this.a.b, bivr.a(this.this$0));
+      bjtx.c("DownloadManager_", this.a.e + " begin getApkCode ......");
+      bjwq.a(this.this$0).a(this.a.e, this.a.b, bjwq.a(this.this$0));
       return;
     }
     catch (Exception localException)
     {
-      bisy.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bjtx.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.biz.subscribe.utils;
 
-import aaje;
-import aaji;
+import aanf;
+import aanj;
 import android.text.TextUtils;
 import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
 import com.tencent.qphone.base.util.QLog;
@@ -10,20 +10,20 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import txf;
+import txh;
 
 public class SubscribeDraftManager$2
   implements Runnable
 {
-  public SubscribeDraftManager$2(aaje paramaaje, String paramString, aaji paramaaji) {}
+  public SubscribeDraftManager$2(aanf paramaanf, String paramString, aanj paramaanj) {}
   
   public void run()
   {
-    Object localObject1 = new File(aaje.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
+    Object localObject1 = new File(aanf.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();
-      QLog.d(aaje.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
+      QLog.d(aanf.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
       localArrayList = new ArrayList();
       j = localObject1.length;
       i = 0;
@@ -35,10 +35,10 @@ public class SubscribeDraftManager$2
         localObject2 = localObject1[i];
         try
         {
-          localObject2 = aaje.a(this.this$0, ((File)localObject2).getAbsolutePath());
+          localObject2 = aanf.a(this.this$0, ((File)localObject2).getAbsolutePath());
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            localObject2 = (SubscribeDraftBean)txf.a().a((String)localObject2, SubscribeDraftBean.class);
+            localObject2 = (SubscribeDraftBean)txh.a().a((String)localObject2, SubscribeDraftBean.class);
             if (localObject2 != null) {
               localArrayList.add(localObject2);
             }
@@ -48,7 +48,7 @@ public class SubscribeDraftManager$2
         {
           for (;;)
           {
-            QLog.d(aaje.jdField_a_of_type_JavaLangString, 4, "readString failed:");
+            QLog.d(aanf.jdField_a_of_type_JavaLangString, 4, "readString failed:");
           }
         }
         i += 1;
@@ -56,12 +56,12 @@ public class SubscribeDraftManager$2
       label181:
       Collections.sort(localArrayList);
       if (!localArrayList.isEmpty()) {
-        if (this.jdField_a_of_type_Aaji != null) {
-          this.jdField_a_of_type_Aaji.a(4, true, "", new Object[] { localArrayList });
+        if (this.jdField_a_of_type_Aanj != null) {
+          this.jdField_a_of_type_Aanj.a(4, true, "", new Object[] { localArrayList });
         }
       }
     }
-    while (this.jdField_a_of_type_Aaji == null)
+    while (this.jdField_a_of_type_Aanj == null)
     {
       ArrayList localArrayList;
       int j;
@@ -70,11 +70,11 @@ public class SubscribeDraftManager$2
       do
       {
         return;
-      } while (this.jdField_a_of_type_Aaji == null);
-      this.jdField_a_of_type_Aaji.a(4, false, "", null);
+      } while (this.jdField_a_of_type_Aanj == null);
+      this.jdField_a_of_type_Aanj.a(4, false, "", null);
       return;
     }
-    this.jdField_a_of_type_Aaji.a(4, false, "", null);
+    this.jdField_a_of_type_Aanj.a(4, false, "", null);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.text.TextUtils;
-import bdkg;
-import besl;
-import bevv;
-import bevx;
-import bexw;
-import bexx;
+import bedb;
+import bfrs;
+import bfvp;
+import bfvr;
+import bfxq;
+import bfxr;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForTroopFile;
@@ -15,27 +15,27 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class TroopFileUploadFeedsSender$1$1
   implements Runnable
 {
-  public TroopFileUploadFeedsSender$1$1(bexx parambexx, String paramString, besl parambesl) {}
+  public TroopFileUploadFeedsSender$1$1(bfxr parambfxr, String paramString, bfrs parambfrs) {}
   
   public void run()
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Besl.b)) {
-      localObject = this.jdField_a_of_type_Besl.b;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bfrs.b)) {
+      localObject = this.jdField_a_of_type_Bfrs.b;
     }
-    QQAppInterface localQQAppInterface = bevv.a();
+    QQAppInterface localQQAppInterface = bfvp.a();
     if (localQQAppInterface == null)
     {
-      bevx.a("TroopFileUploadFeedsSender", bevx.a, "[" + this.jdField_a_of_type_Bexx.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
+      bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "[" + this.jdField_a_of_type_Bfxr.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
       return;
     }
-    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Bexx.a.d), 1, (String)localObject);
+    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Bfxr.a.d), 1, (String)localObject);
     if (localObject != null)
     {
-      ((bdkg)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
+      ((bedb)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
       return;
     }
-    bevx.a("TroopFileUploadFeedsSender", bevx.a, "[" + this.jdField_a_of_type_Bexx.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bexx.a.d + "], id:" + this.jdField_a_of_type_Besl.b);
+    bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "[" + this.jdField_a_of_type_Bfxr.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bfxr.a.d + "], id:" + this.jdField_a_of_type_Bfrs.b);
   }
 }
 

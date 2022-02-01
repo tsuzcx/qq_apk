@@ -1,22 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-class avca
-  implements Animation.AnimationListener
+public class avca
+  extends nkq
 {
-  avca(avbz paramavbz) {}
+  public avca(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
-    }
+    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
+    do
+    {
+      return;
+      this.a.z();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if (paramInt == 16)
+      {
+        this.a.N();
+        return;
+      }
+    } while (!ForwardSdkShareOption.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", auxr.e.intValue());
+    this.a.m();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

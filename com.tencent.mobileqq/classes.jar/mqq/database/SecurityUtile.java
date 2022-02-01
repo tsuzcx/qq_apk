@@ -8,7 +8,7 @@ import android.telephony.TelephonyManager;
 class SecurityUtile
 {
   private static char[] codeKey = { 0, 1, 0, 1 };
-  private static int codeKeyLen;
+  private static int codeKeyLen = 0;
   
   public static String decode(String paramString)
   {

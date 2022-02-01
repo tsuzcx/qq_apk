@@ -1,9 +1,13 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public abstract interface aaxg
+public class aaxg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong);
+  public aaxg(TroopGiftPanel paramTroopGiftPanel) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

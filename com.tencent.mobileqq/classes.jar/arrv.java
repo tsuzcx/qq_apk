@@ -1,14 +1,14 @@
-import java.util.List;
+import java.util.ArrayList;
 
-public abstract interface arrv
+public class arrv
 {
-  public abstract void a(float paramFloat, List<Integer> paramList);
-  
-  public abstract void a(List<Integer> paramList);
+  public int a;
+  public ArrayList<String> a = new ArrayList();
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arrv
  * JD-Core Version:    0.7.0.1
  */

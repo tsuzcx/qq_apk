@@ -1,28 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
-
-public final class blro
-  implements Parcelable.Creator<LbsDataV2.GpsInfo>
+public abstract interface blro
 {
-  public LbsDataV2.GpsInfo a(Parcel paramParcel)
-  {
-    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    if (paramParcel != null)
-    {
-      localGpsInfo.lat = paramParcel.readInt();
-      localGpsInfo.lon = paramParcel.readInt();
-      localGpsInfo.alt = paramParcel.readInt();
-      localGpsInfo.gpsType = paramParcel.readInt();
-      localGpsInfo.accuracy = paramParcel.readInt();
-    }
-    return localGpsInfo;
-  }
-  
-  public LbsDataV2.GpsInfo[] a(int paramInt)
-  {
-    return null;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

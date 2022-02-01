@@ -1,6 +1,10 @@
-public abstract interface ajkt
+import android.view.View;
+import android.widget.TextView;
+
+public class ajkt
 {
-  public abstract long a();
+  public View a;
+  public TextView a;
 }
 
 

@@ -1,42 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.List;
 
-class amgm
-  extends Handler
+public class amgm
+  extends aojs
 {
-  amgm(amgl paramamgl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public amgm(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (paramMessage.what == amgl.a(this.a))
-    {
-      QLog.d(amgl.a(this.a), 4, "Receive Message!");
-      this.a.a();
+    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+      return;
     }
-    for (;;)
-    {
-      try
-      {
-        bcst.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == amgl.b(this.a))
-      {
-        QLog.d(amgl.a(this.a), 4, "Receive Message!");
-        try
-        {
-          bcst.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
-      }
-    }
+    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
   }
 }
 

@@ -1,26 +1,190 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.message.TinyInfo;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class autg
+  extends aufz
 {
-  public static String a(MessageRecord paramMessageRecord)
+  private long jdField_a_of_type_Long = -1L;
+  private abwg jdField_a_of_type_Abwg;
+  private long b = -1L;
+  
+  public autg(QQAppInterface paramQQAppInterface, Activity paramActivity, List<auei> paramList, int paramInt)
   {
-    TinyInfo localTinyInfo = new TinyInfo();
-    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
-    if (paramMessageRecord.isSend()) {
-      return localTinyInfo.fromRoleId;
+    super(paramQQAppInterface, paramActivity);
+    if (QLog.isColorLevel()) {
+      QLog.i("DeviceFileModel<FileAssistant>", 1, "FileBrowserModel init: type = device");
     }
-    return localTinyInfo.toRoleId;
+    a(paramList, paramInt);
   }
   
-  public static String b(MessageRecord paramMessageRecord)
+  private boolean m()
   {
-    TinyInfo localTinyInfo = new TinyInfo();
-    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
-    if (paramMessageRecord.isSend()) {
-      return localTinyInfo.toRoleId;
+    Object localObject = this.jdField_a_of_type_Auei.a();
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
+      }
+      return false;
     }
-    return localTinyInfo.fromRoleId;
+    if (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath())) {
+      return false;
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (MessageForDeviceSingleStruct)localObject;
+    abyv localabyv = ((abzb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a();
+    if ((((MessageForDeviceSingleStruct)localObject).nMediaSessionID > 0L) && (localabyv.a((MessageForDeviceSingleStruct)localObject)))
+    {
+      this.jdField_a_of_type_Long = ((MessageForDeviceSingleStruct)localObject).nMediaSessionID;
+      return true;
+    }
+    return false;
+  }
+  
+  private void o()
+  {
+    Object localObject = this.jdField_a_of_type_Auei.a();
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath()));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
+    } while (localObject == null);
+    localObject = (MessageForDeviceSingleStruct)localObject;
+    this.jdField_a_of_type_Long = ((abzb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a((MessageForDeviceSingleStruct)localObject);
+  }
+  
+  private void p()
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Auei.a();
+    if (localFileManagerEntity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
+      }
+    }
+    do
+    {
+      return;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.msgSeq);
+    } while (localObject == null);
+    Object localObject = (MessageForDeviceSingleStruct)localObject;
+    ((abzb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().b((MessageForDeviceSingleStruct)localObject);
+    localFileManagerEntity.status = 3;
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public int a()
+  {
+    int i = e();
+    int j = super.a();
+    if (j != 0) {
+      return j;
+    }
+    switch (i)
+    {
+    case 1: 
+    default: 
+      return 1;
+    case 0: 
+      return 6;
+    }
+    return 2;
+  }
+  
+  public auey a()
+  {
+    if (this.jdField_a_of_type_Auey == null) {
+      this.jdField_a_of_type_Auey = new auti(this);
+    }
+    return this.jdField_a_of_type_Auey;
+  }
+  
+  public aufa a()
+  {
+    return new autk(this);
+  }
+  
+  public aufb a()
+  {
+    return null;
+  }
+  
+  public List<augl> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(new aufe((auei)localIterator.next()));
+      }
+    }
+    return localArrayList;
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Abwg != null) {
+      return;
+    }
+    this.jdField_a_of_type_Abwg = new auth(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Abwg);
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Abwg != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Abwg);
+      this.jdField_a_of_type_Abwg = null;
+    }
+  }
+  
+  public int d()
+  {
+    if (aunj.b(d())) {
+      return 3;
+    }
+    return super.d();
+  }
+  
+  public int h()
+  {
+    return 2;
+  }
+  
+  public int i()
+  {
+    if (aunj.b(d())) {
+      return 2;
+    }
+    if (m()) {
+      return 4;
+    }
+    return 3;
+  }
+  
+  public boolean i()
+  {
+    return bhnv.h(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

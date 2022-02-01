@@ -22,6 +22,8 @@ public class MedalList
       MedalList.Info localInfo = new MedalList.Info();
       localInfo.type = ((VipMedalInfo)paramVipMedalList.medalInfo.get(i)).type;
       localInfo.value = ((VipMedalInfo)paramVipMedalList.medalInfo.get(i)).value;
+      localInfo.isRemind = ((VipMedalInfo)paramVipMedalList.medalInfo.get(i)).is_remind;
+      localInfo.tipsTimes = ((VipMedalInfo)paramVipMedalList.medalInfo.get(i)).tips_times;
       localMedalList.infoList.add(localInfo);
       i += 1;
     }
@@ -46,6 +48,8 @@ public class MedalList
         MedalList.Info localInfo = new MedalList.Info();
         localInfo.type = localJSONObject.optInt("t");
         localInfo.value = localJSONObject.getString("v");
+        localInfo.isRemind = localJSONObject.optInt("i");
+        localInfo.tipsTimes = localJSONObject.optInt("ti");
         localMedalList.infoList.add(localInfo);
         i += 1;
       }
@@ -68,6 +72,8 @@ public class MedalList
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("t", localInfo.type);
       localJSONObject2.put("v", localInfo.value);
+      localJSONObject2.put("i", localInfo.isRemind);
+      localJSONObject2.put("ti", localInfo.tipsTimes);
       localJSONArray.put(localJSONObject2);
       i += 1;
     }

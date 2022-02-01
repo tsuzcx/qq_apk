@@ -1,488 +1,278 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ListAdapter;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.LRULinkedHashMap;
-import com.tencent.widget.GridView;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ambe
-  extends BaseAdapter
 {
-  static LRULinkedHashMap<String, URLDrawable> jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(15);
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  View jdField_a_of_type_AndroidViewView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  bkij jdField_a_of_type_Bkij;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  List<Object> jdField_a_of_type_JavaUtilList;
-  public boolean a;
-  final int b;
-  final int c = 1;
-  final int d = 2;
-  final int e = 3;
-  int f;
-  int g;
-  int h;
-  int i;
-  int j = 4;
-  int k;
-  int l;
-  int m;
-  int n;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public ArrayList<Double> b;
+  public int c;
+  public String c;
+  public ArrayList<String> c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
   
-  public ambe(Context paramContext, View.OnClickListener paramOnClickListener, bkij parambkij, int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2)
+  public ambe()
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Bkij = parambkij;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.f = paramInt2;
-    this.i = bggq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-    this.g = ((this.jdField_a_of_type_Int - this.i * (this.j + 1)) / this.j);
-    this.h = (this.g * 176 / 150);
-    this.k = (this.g - bggq.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
-    this.l = (this.h - bggq.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
   }
   
-  public void a()
+  public static int a(String paramString)
   {
-    jdField_a_of_type_ComTencentUtilLRULinkedHashMap.clear();
-  }
-  
-  public void a(List<bgwg> paramList, List<bgwe> paramList1)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList1 != null) && (paramList1.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramList1);
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    paramList = ((anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_Long = paramList.pendantId;
-      this.m = paramList.faceId;
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
-    }
-    List localList = akbv.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (!localList.isEmpty()))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      int i1 = 0;
-      if (i1 < localList.size())
-      {
-        Object localObject1 = (akbw)localList.get(i1);
-        View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561920, null);
-        Object localObject2 = (ImageView)localView.findViewById(2131363116);
-        TextView localTextView1 = (TextView)localView.findViewById(2131365612);
-        TextView localTextView2 = (TextView)localView.findViewById(2131365610);
-        ImageView localImageView = (ImageView)localView.findViewById(2131378112);
-        if (!TextUtils.isEmpty(((akbw)localObject1).jdField_a_of_type_JavaLangString)) {
-          ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable(((akbw)localObject1).jdField_a_of_type_JavaLangString));
-        }
-        localTextView1.setText(((akbw)localObject1).c);
-        localTextView2.setText(((akbw)localObject1).d);
-        switch (((akbw)localObject1).jdField_b_of_type_Int)
-        {
-        case 1: 
-        case 2: 
-        case 3: 
-        default: 
-          localImageView.setVisibility(8);
-        }
-        for (;;)
-        {
-          if (localImageView.getVisibility() == 0)
-          {
-            localObject2 = localImageView.getDrawable();
-            if (localObject2 != null) {
-              localImageView.setLayoutParams(new LinearLayout.LayoutParams(((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight()));
-            }
-          }
-          localView.setOnClickListener(new ambf(this, (akbw)localObject1, i1));
-          localView.addOnLayoutChangeListener(new ambg(this));
-          if (i1 != 0) {
-            localView.findViewById(2131377774).setVisibility(0);
-          }
-          localObject1 = new LinearLayout.LayoutParams(0, afur.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-          ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView, (ViewGroup.LayoutParams)localObject1);
-          i1 += 1;
-          break;
-          localImageView.setImageResource(2130847052);
-          localImageView.setVisibility(0);
-          continue;
-          localImageView.setImageResource(2130847053);
-          localImageView.setVisibility(0);
-          continue;
-          localImageView.setImageResource(2130838561);
-          localImageView.setVisibility(0);
-          continue;
-          localImageView.setVisibility(8);
-        }
-      }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (paramInt > 0) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == 0) {
+    if (TextUtils.isEmpty(paramString)) {
       return 0;
     }
-    if ((this.jdField_a_of_type_JavaUtilList.get(paramInt - 1) instanceof bgwg)) {
-      return 1;
+    String str = paramString.trim();
+    paramString = str;
+    if (!str.startsWith("#")) {
+      paramString = "#" + str;
     }
-    return 2;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i2 = 1;
-    Object localObject1;
-    if ((paramInt >= getCount()) || (paramInt < 0))
+    try
     {
-      localObject1 = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      i = Color.parseColor(paramString);
+      return i;
     }
-    int i1 = getItemViewType(paramInt);
-    Object localObject2;
-    Object localObject3;
-    if (paramView == null)
+    catch (Exception paramString)
     {
-      localObject1 = new ambl(this);
-      if (i1 == 0)
+      for (;;)
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561923, paramViewGroup, false);
-        localObject2 = paramView.findViewById(2131380190);
-        localObject3 = (LinearLayout.LayoutParams)((View)localObject2).getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject3).height = this.f;
-        ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366052));
-        this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380191);
-        b();
-        paramView.setTag(localObject1);
-      }
-    }
-    label147:
-    label1965:
-    label1990:
-    label2130:
-    label2136:
-    for (;;)
-    {
-      ((ambl)localObject1).jdField_a_of_type_Int = paramInt;
-      bgwg localbgwg;
-      if (i1 == 1)
-      {
-        localbgwg = (bgwg)getItem(paramInt);
-        ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setTag(localbgwg);
-        if (localbgwg.c != null)
-        {
-          if (localbgwg.c.equals("1"))
-          {
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847440));
-          }
-        }
-        else
-        {
-          label231:
-          if (localbgwg.jdField_a_of_type_JavaLangString != null)
-          {
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(localbgwg.jdField_a_of_type_JavaLangString + "(" + localbgwg.jdField_a_of_type_JavaUtilList.size() + ")");
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setContentDescription(localbgwg.jdField_a_of_type_JavaLangString);
-          }
-          ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(localbgwg.jdField_b_of_type_Int));
-          switch (localbgwg.jdField_b_of_type_Int)
-          {
-          default: 
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            label378:
-            if ((localbgwg.e != null) && (localbgwg.e.equals("actLiTpl")))
-            {
-              if (localbgwg.jdField_a_of_type_JavaLangString == null) {
-                break label2130;
-              }
-              ((ambl)localObject1).jdField_c_of_type_AndroidWidgetTextView.setText(localbgwg.jdField_a_of_type_JavaLangString);
-              ((ambl)localObject1).jdField_c_of_type_AndroidWidgetTextView.setContentDescription(localbgwg.jdField_a_of_type_JavaLangString);
-              ((ambl)localObject1).jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-            }
-            break;
-          }
-        }
-      }
-      for (i1 = 1;; i1 = 0)
-      {
-        if (localbgwg.jdField_b_of_type_JavaLangString != null)
-        {
-          ((ambl)localObject1).d.setText(localbgwg.jdField_b_of_type_JavaLangString);
-          ((ambl)localObject1).d.setVisibility(0);
-          i1 = i2;
-        }
-        for (;;)
-        {
-          if (i1 != 0)
-          {
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-            ((ambl)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-            ((ambj)((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.a()).a(localbgwg);
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTag(Integer.valueOf(localbgwg.jdField_a_of_type_Int));
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(localbgwg.jdField_a_of_type_Int));
-            if ((localbgwg.jdField_a_of_type_JavaUtilList.size() <= 4) || ((localbgwg.e != null) && (!localbgwg.e.equals("")))) {
-              break label1990;
-            }
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-            if (localbgwg.jdField_a_of_type_Boolean) {
-              break label1965;
-            }
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(2131694533);
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130849761);
-            if (paramInt != getCount() - 1) {
-              break label2013;
-            }
-            ((ambl)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(8);
-          }
-          for (;;)
-          {
-            localObject1 = paramView;
-            break;
-            if (i1 == 1)
-            {
-              paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561922, paramViewGroup, false);
-              ((ambl)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372267));
-              ((ambl)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372271));
-              ((ambl)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372273));
-              ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372272));
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131372260));
-              ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372265));
-              ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372264));
-              ((ambl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372251));
-              ((ambl)localObject1).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372253));
-              ((ambl)localObject1).d = ((TextView)paramView.findViewById(2131372252));
-              ((ambl)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365599);
-              localObject2 = new ambj(this);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setAdapter((ListAdapter)localObject2);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(this.j);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setColumnWidth(this.g);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setHorizontalSpacing(this.i);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setVerticalSpacing(this.i);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setSelector(new ColorDrawable(0));
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setClickable(true);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_Bkij);
-              ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setAddStatesFromChildren(true);
-              ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-              ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-              paramView.setTag(localObject1);
-              break label147;
-            }
-            if (i1 != 2) {
-              break label2136;
-            }
-            paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561917, paramViewGroup, false);
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366195));
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366213));
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366215));
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366214));
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131374732));
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366193));
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366192));
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366169));
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366171));
-            ((ambl)localObject1).d = ((TextView)paramView.findViewById(2131366170));
-            ((ambl)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365599);
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setAdapter(new ambh(this));
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131699687) + AvatarPendantManager.jdField_a_of_type_Int + ")");
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(this.j);
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setColumnWidth(this.g);
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setHorizontalSpacing(this.i);
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setVerticalSpacing(this.i);
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setSelector(new ColorDrawable(0));
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setClickable(true);
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_Bkij);
-            ((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setAddStatesFromChildren(true);
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-            paramView.setTag(localObject1);
-            break label147;
-            localObject1 = (ambl)paramView.getTag();
-            break label147;
-            if (localbgwg.c.equals("3"))
-            {
-              ((ambl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-              ((ambl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847439));
-              break label231;
-            }
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label231;
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847053));
-            break label378;
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847052));
-            break label378;
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847441));
-            break label378;
-            File localFile = new File(bgks.c + "/free.png");
-            if (localFile.exists())
-            {
-              ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-              localObject3 = (URLDrawable)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_free.png");
-              localObject2 = localObject3;
-              if (localObject3 == null)
-              {
-                localObject2 = URLDrawable.URLDrawableOptions.obtain();
-                ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                localObject3 = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject2);
-                localObject2 = localObject3;
-                if (((URLDrawable)localObject3).getStatus() == 1)
-                {
-                  jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_free.png", localObject3);
-                  localObject2 = localObject3;
-                }
-              }
-              ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-              break label378;
-            }
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label378;
-            localFile = new File(bgks.c + "/rare.png");
-            if (localFile.exists())
-            {
-              ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-              localObject3 = (URLDrawable)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_rare.png");
-              localObject2 = localObject3;
-              if (localObject3 == null)
-              {
-                localObject2 = URLDrawable.URLDrawableOptions.obtain();
-                ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                localObject3 = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject2);
-                localObject2 = localObject3;
-                if (((URLDrawable)localObject3).getStatus() == 1)
-                {
-                  jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_rare.png", localObject3);
-                  localObject2 = localObject3;
-                }
-              }
-              ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-              break label378;
-            }
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label378;
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847447));
-            break label378;
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847446));
-            break label378;
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-            break label513;
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-            ((ambl)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-            break label513;
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(2131716020);
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130849764);
-            break label645;
-            ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-            ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label645;
-            label2013:
-            ((ambl)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-            continue;
-            if (i1 == 2)
-            {
-              localObject2 = (List)getItem(paramInt);
-              ((ambh)((ambl)localObject1).jdField_a_of_type_ComTencentWidgetGridView.a()).a((List)localObject2);
-              if (((List)localObject2).size() == 8)
-              {
-                ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-                ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131699674));
-              }
-              else
-              {
-                ((ambl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-                ((ambl)localObject1).jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-              }
-            }
-          }
-        }
+        paramString.printStackTrace();
+        int i = 0;
       }
     }
   }
   
-  public int getViewTypeCount()
+  public static ambe a(String paramString)
   {
-    return 3;
+    ambe localambe = new ambe();
+    localambe.a(paramString);
+    return localambe;
+  }
+  
+  /* Error */
+  public void a(String paramString)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 4
+    //   3: new 83	org/json/JSONObject
+    //   6: dup
+    //   7: aload_1
+    //   8: invokespecial 85	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   11: astore_1
+    //   12: aload_0
+    //   13: aload_1
+    //   14: ldc 87
+    //   16: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   19: putfield 32	ambe:jdField_a_of_type_Int	I
+    //   22: aload_0
+    //   23: aload_1
+    //   24: ldc 92
+    //   26: invokevirtual 96	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   29: putfield 98	ambe:jdField_a_of_type_Long	J
+    //   32: aload_0
+    //   33: aload_1
+    //   34: ldc 100
+    //   36: invokevirtual 104	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   39: putfield 34	ambe:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   42: aload_0
+    //   43: aload_1
+    //   44: ldc 106
+    //   46: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   49: putfield 108	ambe:jdField_b_of_type_Int	I
+    //   52: aload_0
+    //   53: aload_1
+    //   54: ldc 110
+    //   56: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   59: putfield 112	ambe:jdField_c_of_type_Int	I
+    //   62: aload_0
+    //   63: aload_1
+    //   64: ldc 114
+    //   66: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   69: putfield 116	ambe:jdField_d_of_type_Int	I
+    //   72: aload_0
+    //   73: aload_1
+    //   74: ldc 118
+    //   76: invokevirtual 104	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   79: putfield 36	ambe:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   82: aload_1
+    //   83: ldc 120
+    //   85: invokevirtual 124	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   88: astore 5
+    //   90: aload 5
+    //   92: ifnonnull +44 -> 136
+    //   95: iconst_0
+    //   96: istore_2
+    //   97: aload_0
+    //   98: new 126	java/util/ArrayList
+    //   101: dup
+    //   102: invokespecial 127	java/util/ArrayList:<init>	()V
+    //   105: putfield 129	ambe:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   108: iconst_0
+    //   109: istore_3
+    //   110: iload_3
+    //   111: iload_2
+    //   112: if_icmpge +40 -> 152
+    //   115: aload_0
+    //   116: getfield 129	ambe:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   119: aload 5
+    //   121: iload_3
+    //   122: invokevirtual 135	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   125: invokevirtual 139	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   128: pop
+    //   129: iload_3
+    //   130: iconst_1
+    //   131: iadd
+    //   132: istore_3
+    //   133: goto -23 -> 110
+    //   136: aload 5
+    //   138: invokevirtual 143	org/json/JSONArray:length	()I
+    //   141: istore_2
+    //   142: goto -45 -> 97
+    //   145: astore 5
+    //   147: aload 5
+    //   149: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   152: aload_0
+    //   153: new 126	java/util/ArrayList
+    //   156: dup
+    //   157: invokespecial 127	java/util/ArrayList:<init>	()V
+    //   160: putfield 145	ambe:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   163: aload_1
+    //   164: ldc 147
+    //   166: invokevirtual 124	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   169: astore 5
+    //   171: aload 5
+    //   173: ifnonnull +37 -> 210
+    //   176: iconst_0
+    //   177: istore_2
+    //   178: goto +149 -> 327
+    //   181: iload_3
+    //   182: iload_2
+    //   183: if_icmpge +43 -> 226
+    //   186: aload_0
+    //   187: getfield 145	ambe:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   190: aload 5
+    //   192: iload_3
+    //   193: invokevirtual 151	org/json/JSONArray:getDouble	(I)D
+    //   196: invokestatic 157	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   199: invokevirtual 139	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   202: pop
+    //   203: iload_3
+    //   204: iconst_1
+    //   205: iadd
+    //   206: istore_3
+    //   207: goto -26 -> 181
+    //   210: aload 5
+    //   212: invokevirtual 143	org/json/JSONArray:length	()I
+    //   215: istore_2
+    //   216: goto +111 -> 327
+    //   219: astore 5
+    //   221: aload 5
+    //   223: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   226: aload_0
+    //   227: aload_1
+    //   228: ldc 159
+    //   230: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   233: putfield 161	ambe:jdField_e_of_type_Int	I
+    //   236: aload_0
+    //   237: new 126	java/util/ArrayList
+    //   240: dup
+    //   241: invokespecial 127	java/util/ArrayList:<init>	()V
+    //   244: putfield 163	ambe:jdField_c_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   247: aload_1
+    //   248: ldc 165
+    //   250: invokevirtual 124	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   253: astore 5
+    //   255: aload 5
+    //   257: ifnonnull +34 -> 291
+    //   260: iconst_0
+    //   261: istore_2
+    //   262: iload 4
+    //   264: istore_3
+    //   265: iload_3
+    //   266: iload_2
+    //   267: if_icmpge +43 -> 310
+    //   270: aload_0
+    //   271: getfield 163	ambe:jdField_c_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   274: aload 5
+    //   276: iload_3
+    //   277: invokevirtual 135	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   280: invokevirtual 139	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   283: pop
+    //   284: iload_3
+    //   285: iconst_1
+    //   286: iadd
+    //   287: istore_3
+    //   288: goto -23 -> 265
+    //   291: aload 5
+    //   293: invokevirtual 143	org/json/JSONArray:length	()I
+    //   296: istore_2
+    //   297: iload 4
+    //   299: istore_3
+    //   300: goto -35 -> 265
+    //   303: astore 5
+    //   305: aload 5
+    //   307: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   310: aload_0
+    //   311: aload_1
+    //   312: ldc 167
+    //   314: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   317: putfield 169	ambe:jdField_f_of_type_Int	I
+    //   320: return
+    //   321: astore_1
+    //   322: aload_1
+    //   323: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   326: return
+    //   327: iconst_0
+    //   328: istore_3
+    //   329: goto -148 -> 181
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	332	0	this	ambe
+    //   0	332	1	paramString	String
+    //   96	201	2	i	int
+    //   109	220	3	j	int
+    //   1	297	4	k	int
+    //   88	49	5	localJSONArray1	org.json.JSONArray
+    //   145	3	5	localException1	Exception
+    //   169	42	5	localJSONArray2	org.json.JSONArray
+    //   219	3	5	localException2	Exception
+    //   253	39	5	localJSONArray3	org.json.JSONArray
+    //   303	3	5	localException3	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   82	90	145	java/lang/Exception
+    //   97	108	145	java/lang/Exception
+    //   115	129	145	java/lang/Exception
+    //   136	142	145	java/lang/Exception
+    //   163	171	219	java/lang/Exception
+    //   186	203	219	java/lang/Exception
+    //   210	216	219	java/lang/Exception
+    //   247	255	303	java/lang/Exception
+    //   270	284	303	java/lang/Exception
+    //   291	297	303	java/lang/Exception
+    //   3	82	321	java/lang/Exception
+    //   147	152	321	java/lang/Exception
+    //   152	163	321	java/lang/Exception
+    //   221	226	321	java/lang/Exception
+    //   226	247	321	java/lang/Exception
+    //   305	310	321	java/lang/Exception
+    //   310	320	321	java/lang/Exception
   }
 }
 

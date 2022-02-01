@@ -1,15 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
 
-public class bmwl
+class bmwl
+  implements bnjy
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public bmwk a;
+  bmwl(bmwk parambmwk, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
   
-  public bmwl(bmwe parambmwe) {}
+  public void onNetworkConnect(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
+    }
+    bmwk.a(this.jdField_a_of_type_Bmwk, paramBoolean);
+    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
+  }
 }
 
 

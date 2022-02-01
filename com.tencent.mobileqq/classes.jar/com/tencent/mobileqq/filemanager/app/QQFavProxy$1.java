@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import atbt;
+import atto;
 import java.util.List;
 
 public class QQFavProxy$1
   implements Runnable
 {
-  public QQFavProxy$1(atbt paramatbt, long paramLong, List paramList, Bundle paramBundle) {}
+  public QQFavProxy$1(atto paramatto, long paramLong, List paramList, Bundle paramBundle) {}
   
   public void run()
   {
-    atbt.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidOsBundle);
+    atto.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

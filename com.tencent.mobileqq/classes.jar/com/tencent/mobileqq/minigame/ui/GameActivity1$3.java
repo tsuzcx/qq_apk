@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.os.Bundle;
-import aqce;
-import bjwg;
+import aqrh;
+import bkxg;
 import com.tencent.qphone.base.util.QLog;
 
 class GameActivity1$3
-  extends aqce
+  extends aqrh
 {
   GameActivity1$3(GameActivity1 paramGameActivity1) {}
   

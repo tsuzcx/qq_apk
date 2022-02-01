@@ -5,15 +5,15 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import anni;
-import bgfz;
+import anzj;
+import bhga;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.common.config.AppSetting;
-import rxl;
-import rxv;
-import rxy;
-import ryx;
-import ssb;
+import rog;
+import roq;
+import rot;
+import rpt;
+import sjf;
 
 public class VideoFeedsAccessibilityHelper
 {
@@ -39,13 +39,13 @@ public class VideoFeedsAccessibilityHelper
     do
     {
       return;
-      if ((paramViewHolder instanceof rxl))
+      if ((paramViewHolder instanceof rog))
       {
-        bgfz.a(((rxl)paramViewHolder).c);
+        bhga.a(((rog)paramViewHolder).c);
         return;
       }
-    } while (!(paramViewHolder instanceof rxy));
-    bgfz.a(((rxy)paramViewHolder).z);
+    } while (!(paramViewHolder instanceof rot));
+    bhga.a(((rot)paramViewHolder).z);
   }
   
   public static void a(RecyclerView paramRecyclerView)
@@ -61,7 +61,7 @@ public class VideoFeedsAccessibilityHelper
     if (!AppSetting.c) {
       return;
     }
-    a(paramView, ryx.a(paramInt, anni.a(2131714846)));
+    a(paramView, rpt.a(paramInt, anzj.a(2131714955)));
   }
   
   public static void a(View paramView, long paramLong)
@@ -73,11 +73,11 @@ public class VideoFeedsAccessibilityHelper
       do
       {
         return;
-        localObject = ryx.a(paramLong);
+        localObject = rpt.a(paramLong);
       } while (localObject == null);
       localObject = ((StringBuilder)localObject).toString();
     } while (TextUtils.isEmpty((CharSequence)localObject));
-    a(paramView, anni.a(2131714844) + (String)localObject);
+    a(paramView, anzj.a(2131714953) + (String)localObject);
   }
   
   public static void a(View paramView, String paramString)
@@ -94,28 +94,28 @@ public class VideoFeedsAccessibilityHelper
       return;
     }
     if (paramBoolean) {}
-    for (String str = anni.a(2131714881);; str = anni.a(2131714883))
+    for (String str = anzj.a(2131714990);; str = anzj.a(2131714992))
     {
       a(paramView, str);
       return;
     }
   }
   
-  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, ssb paramssb)
+  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, sjf paramsjf)
   {
     if ((!AppSetting.c) || (paramReadInJoyNickNameTextView == null)) {
       return;
     }
-    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramssb);
+    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramsjf);
   }
   
-  public static void a(rxv paramrxv, View.OnClickListener paramOnClickListener)
+  public static void a(roq paramroq, View.OnClickListener paramOnClickListener)
   {
-    if ((!AppSetting.c) || (paramrxv == null) || (paramrxv.b == null)) {
+    if ((!AppSetting.c) || (paramroq == null) || (paramroq.b == null)) {
       return;
     }
-    paramrxv.b.setOnClickListener(paramOnClickListener);
-    paramrxv.b.setTag(paramrxv);
+    paramroq.b.setOnClickListener(paramOnClickListener);
+    paramroq.b.setTag(paramroq);
   }
   
   public static void b(View paramView, String paramString)
@@ -123,7 +123,7 @@ public class VideoFeedsAccessibilityHelper
     if ((TextUtils.isEmpty(paramString)) || (!AppSetting.c)) {
       return;
     }
-    a(paramView, anni.a(2131714863) + paramString);
+    a(paramView, anzj.a(2131714972) + paramString);
   }
   
   public static void c(View paramView, String paramString)
@@ -131,7 +131,7 @@ public class VideoFeedsAccessibilityHelper
     if ((!AppSetting.c) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    a(paramView, paramString + anni.a(2131714859));
+    a(paramView, paramString + anzj.a(2131714968));
   }
 }
 

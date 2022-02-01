@@ -1,27 +1,61 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankIndicator;
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
 import java.util.List;
-import qqcircle.QQCircleDitto.StItemContainer;
 
 public class vxu
-  implements ViewPager.OnPageChangeListener
+  extends blji
 {
-  public vxu(QCirclePushRankTopView paramQCirclePushRankTopView) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public static vxt a(Context paramContext, View paramView)
   {
-    paramInt %= QCirclePushRankTopView.a(this.a).a().size();
-    if (QCirclePushRankTopView.a(this.a) != null) {
-      QCirclePushRankTopView.a(this.a).a(paramInt);
+    paramContext = vxt.a(paramContext);
+    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
+    return paramContext;
+  }
+  
+  public static vxt a(Context paramContext, List<bliq> paramList, bliz parambliz)
+  {
+    return a(paramContext, null, paramList, parambliz);
+  }
+  
+  public static vxt a(Context paramContext, vxt paramvxt, List<bliq> paramList, bliz parambliz)
+  {
+    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
+      return null;
     }
-    QCirclePushRankTopView.a(this.a, paramInt);
-    QQCircleDitto.StItemContainer localStItemContainer = (QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(this.a).get(paramInt);
-    QCirclePushRankTopView.a(this.a, localStItemContainer);
+    int i;
+    if (paramvxt == null)
+    {
+      paramvxt = a(paramContext, null);
+      i = 0;
+      label32:
+      if (i >= paramList.size()) {
+        break label113;
+      }
+      paramContext = (bliq)paramList.get(i);
+      if (paramContext.d == 0)
+      {
+        if (paramContext.a != 1) {
+          break label96;
+        }
+        paramvxt.a(paramContext, 1);
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label32;
+      paramvxt.c();
+      paramvxt.a();
+      break;
+      label96:
+      if (paramContext.a == 2) {
+        paramvxt.a(paramContext, 3);
+      }
+    }
+    label113:
+    paramvxt.a(parambliz);
+    return paramvxt;
   }
 }
 

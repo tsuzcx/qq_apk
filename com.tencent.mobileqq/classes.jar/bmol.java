@@ -1,114 +1,79 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import cooperation.qqreader.QRBridgeActivity;
+import java.io.File;
 
 public class bmol
-  extends WebViewPlugin
-  implements bhmo
 {
-  private BroadcastReceiver a = new bmom(this);
+  private static final bmol jdField_a_of_type_Bmol = new bmol();
+  private int jdField_a_of_type_Int = 300;
+  private long jdField_a_of_type_Long = 100L;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 300;
+  private boolean jdField_b_of_type_Boolean;
+  private int c = 100;
   
-  public void a()
+  public static bmol a()
   {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("QZoneCardPreDownload");
-    localIntentFilter.addAction("action_facade_qzone2js");
-    BaseApplication.getContext().registerReceiver(this.a, localIntentFilter);
+    return jdField_a_of_type_Bmol;
   }
   
-  public void b()
+  private boolean a()
   {
-    BaseApplication.getContext().unregisterReceiver(this.a);
-  }
-  
-  public String[] getMultiNameSpace()
-  {
-    return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 2L) && (paramString.equals(bmoi.a))) {
-      bmoi.a(this.mRuntime, null);
-    }
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
-    }
-    if (bmld.a(paramString3))
+    if (!bmom.a().a())
     {
-      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
-      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
+      bmom.a().a();
+      return false;
     }
-    if (paramString2.equals("qzcardstorre"))
-    {
-      if (paramString3.equals("closecardpreview")) {
-        return true;
-      }
-      if (paramString3.equals("setcardfinish")) {
-        bmoa.a(this, this.mRuntime, paramVarArgs);
-      }
-      if (paramString3.equals("downloadcard"))
-      {
-        bmoa.a(this.mRuntime, paramVarArgs);
-        return true;
-      }
-    }
-    else
-    {
-      if (!paramString2.equals("QzAvatar")) {
-        break label208;
-      }
-      if (!paramString3.equals("downloadAvatar")) {
-        break label162;
-      }
-      bmog.b(this.mRuntime, paramVarArgs);
-    }
-    label162:
-    label208:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return false;
-          if (paramString3.equals("setAvatar")) {
-            bmog.a(this.mRuntime, paramVarArgs);
-          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
-            bmog.c(this.mRuntime, new String[0]);
-          }
-        }
-      } while (!paramString2.equals("QzFloat"));
-      if (paramString3.equals("downloadFloat"))
-      {
-        bmoi.a(this.mRuntime, paramVarArgs);
-        return true;
-      }
-    } while (!paramString3.equals("setFloat"));
-    bmoi.b(this.mRuntime, paramVarArgs);
     return true;
   }
   
-  public void onCreate()
+  public void a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    super.onCreate();
-    a();
+    Intent localIntent1 = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent1.putExtra("readtype", "31");
+    localIntent1.putExtra("stay", "1");
+    Intent localIntent2 = new Intent();
+    localIntent2.putExtra("com.qqreader.pureader.FILE_PATH", paramString);
+    if (paramBoolean) {
+      localIntent2.putExtra("ChannelID", "100328");
+    }
+    for (;;)
+    {
+      localIntent1.putExtras(localIntent2);
+      paramContext.startActivity(localIntent1);
+      return;
+      localIntent2.putExtra("ChannelID", "100330");
+    }
   }
   
-  public void onDestroy()
+  public boolean a(@NonNull FileManagerEntity paramFileManagerEntity)
   {
-    super.onDestroy();
-    b();
+    if ((paramFileManagerEntity.status != 1) || (TextUtils.isEmpty(paramFileManagerEntity.getFilePath()))) {
+      return false;
+    }
+    return a(paramFileManagerEntity.getFilePath(), paramFileManagerEntity.fileSize);
+  }
+  
+  public boolean a(String paramString, long paramLong)
+  {
+    if (paramLong < this.jdField_a_of_type_Long * 1024L) {}
+    while ((!this.jdField_a_of_type_Boolean) || (!a()) || (TextUtils.isEmpty(paramString)) || (!new File(paramString).exists())) {
+      return false;
+    }
+    return paramString.toLowerCase().endsWith(".txt");
+  }
+  
+  public boolean b(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity == null) {}
+    while (!paramFileManagerEntity.fileName.toLowerCase().endsWith(".txt")) {
+      return false;
+    }
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

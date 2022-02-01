@@ -1,47 +1,36 @@
+import android.animation.ValueAnimator;
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class bagf
+public class bagf
   extends Handler
 {
-  public bagf(baga parambaga, Looper paramLooper)
+  public static boolean a;
+  
+  public void a(Message paramMessage)
   {
-    super(paramLooper);
+    View localView = (View)paramMessage.obj;
+    int i = paramMessage.getData().getInt("iTipsTimes");
+    long l = paramMessage.getData().getLong("iRemindTime");
+    int j = paramMessage.what;
+    paramMessage = ValueAnimator.ofFloat(new float[] { 3.0F });
+    paramMessage.setEvaluator(new bagi(this));
+    paramMessage.setDuration(3000L);
+    if (i >= 1) {
+      paramMessage.setRepeatCount(i - 1);
+    }
+    paramMessage.addUpdateListener(new bagg(this, localView));
+    paramMessage.addListener(new bagh(this, localView, l, j));
+    paramMessage.start();
   }
   
   public void handleMessage(Message paramMessage)
   {
-    try
-    {
-      switch (paramMessage.what)
-      {
-      case 1: 
-        baga.a(this.a);
-        return;
-      }
+    if (1 == paramMessage.arg1) {
+      a(paramMessage);
     }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleMessage exception = " + paramMessage.getMessage());
-      return;
-    }
-    baga.b(this.a);
-    return;
-    baga.c(this.a);
-    return;
-    baga.d(this.a);
-    return;
-    baga.e(this.a);
-    return;
-    baga.f(this.a);
-    return;
-    baga.g(this.a);
-    return;
-    baga.h(this.a);
-    return;
   }
 }
 

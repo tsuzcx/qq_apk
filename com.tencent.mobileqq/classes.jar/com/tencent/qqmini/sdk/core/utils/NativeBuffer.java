@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.utils;
 
 import android.text.TextUtils;
 import android.util.Base64;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +46,7 @@ public class NativeBuffer
     return paramJSONObject.has("__nativeBuffers__");
   }
   
-  public static void packNativeBuffer(IMiniAppContext paramIMiniAppContext, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, String paramString, JSONObject paramJSONObject)
+  public static void packNativeBuffer(IJsService paramIJsService, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, String paramString, JSONObject paramJSONObject)
   {
     if ((paramJSONObject == null) || (paramString == null)) {
       return;
@@ -67,23 +67,23 @@ public class NativeBuffer
           return;
         }
       }
-      catch (JSONException paramIMiniAppContext)
+      catch (JSONException paramIJsService)
       {
-        QMLog.e("[minigame]", "packNativeBuffer err :", paramIMiniAppContext);
+        QMLog.e("[minigame]", "packNativeBuffer err :", paramIJsService);
         return;
       }
-      if (paramInt3 == TYPE_BUFFER_NATIVE) {
-        localJSONObject.put("id", paramIMiniAppContext.newNativeBuffer(paramArrayOfByte, paramInt1, paramInt2));
+      if ((paramInt3 == TYPE_BUFFER_NATIVE) && (paramIJsService != null)) {
+        localJSONObject.put("id", paramIJsService.createNativeBuffer(paramArrayOfByte, paramInt1, paramInt2));
       }
     }
   }
   
-  public static void packNativeBuffer(IMiniAppContext paramIMiniAppContext, byte[] paramArrayOfByte, int paramInt, String paramString, JSONObject paramJSONObject)
+  public static void packNativeBuffer(IJsService paramIJsService, byte[] paramArrayOfByte, int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    packNativeBuffer(paramIMiniAppContext, paramArrayOfByte, 0, paramArrayOfByte.length, paramInt, paramString, paramJSONObject);
+    packNativeBuffer(paramIJsService, paramArrayOfByte, 0, paramArrayOfByte.length, paramInt, paramString, paramJSONObject);
   }
   
-  public static NativeBuffer unpackNativeBuffer(IMiniAppContext paramIMiniAppContext, JSONObject paramJSONObject, String paramString)
+  public static NativeBuffer unpackNativeBuffer(IJsService paramIJsService, JSONObject paramJSONObject, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -98,47 +98,51 @@ public class NativeBuffer
     int i;
     do
     {
-      String str2;
-      String str1;
       do
       {
+        String str2;
+        String str1;
         do
         {
           do
           {
             do
             {
-              return localObject1;
-              paramJSONObject = paramJSONObject.optJSONArray("__nativeBuffers__");
+              do
+              {
+                return localObject1;
+                paramJSONObject = paramJSONObject.optJSONArray("__nativeBuffers__");
+                localObject1 = localObject2;
+              } while (paramJSONObject == null);
               localObject1 = localObject2;
-            } while (paramJSONObject == null);
+            } while (paramJSONObject.length() == 0);
+            paramJSONObject = paramJSONObject.optJSONObject(0);
             localObject1 = localObject2;
-          } while (paramJSONObject.length() == 0);
-          paramJSONObject = paramJSONObject.optJSONObject(0);
+          } while (paramJSONObject == null);
+          str2 = paramJSONObject.optString("key");
+          str1 = paramJSONObject.optString("base64");
+          i = paramJSONObject.optInt("id", -1);
           localObject1 = localObject2;
-        } while (paramJSONObject == null);
-        str2 = paramJSONObject.optString("key");
-        str1 = paramJSONObject.optString("base64");
-        i = paramJSONObject.optInt("id", -1);
-        localObject1 = localObject2;
-      } while (!paramString.equals(str2));
-      paramJSONObject = new NativeBuffer();
-      if (!TextUtils.isEmpty(str1))
-      {
-        paramJSONObject.buf = Base64.decode(str1, 2);
-        paramJSONObject.type = TYPE_BUFFER_BASE64;
-        return paramJSONObject;
-      }
+        } while (!paramString.equals(str2));
+        paramJSONObject = new NativeBuffer();
+        if (!TextUtils.isEmpty(str1))
+        {
+          paramJSONObject.buf = Base64.decode(str1, 2);
+          paramJSONObject.type = TYPE_BUFFER_BASE64;
+          return paramJSONObject;
+        }
+        localObject1 = paramJSONObject;
+      } while (i == -1);
       localObject1 = paramJSONObject;
-    } while (i == -1);
-    paramJSONObject.buf = paramIMiniAppContext.getNativeBuffer(i);
+    } while (paramIJsService == null);
+    paramJSONObject.buf = paramIJsService.getNativeBuffer(i);
     paramJSONObject.type = TYPE_BUFFER_NATIVE;
     return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.NativeBuffer
  * JD-Core Version:    0.7.0.1
  */

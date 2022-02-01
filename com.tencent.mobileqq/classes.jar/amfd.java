@@ -1,7 +1,8 @@
 import android.widget.TextView;
 
-public class amfd
+class amfd
 {
+  public int a;
   public TextView a;
 }
 

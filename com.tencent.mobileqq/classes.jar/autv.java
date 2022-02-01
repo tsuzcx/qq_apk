@@ -1,399 +1,595 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletPicHelper;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class autv
+public final class autv
+  implements Handler.Callback
 {
-  private static long jdField_a_of_type_Long;
-  private static View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new autw();
-  private static Map<Object, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final auto jdField_a_of_type_Auto;
+  private bjbs jdField_a_of_type_Bjbs;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private final MqqHandler b;
   
-  private static int a(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  public autv(auto paramauto, ViewGroup paramViewGroup)
   {
-    paramString = a(paramString, "", paramMessageRecord);
-    if (TextUtils.isEmpty(paramString)) {
-      return paramInt;
-    }
-    try
+    this.jdField_a_of_type_Auto = paramauto;
+    this.jdField_a_of_type_AndroidViewView = paramauto.a().getLayoutInflater().inflate(2131560909, paramViewGroup, false);
+    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.jdField_a_of_type_AndroidViewView.measure(i, i);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374770);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374768);
+    paramViewGroup = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374769);
+    String str = paramauto.a();
+    int j = paramauto.a();
+    localTextView1.setText(aunj.a(str, true, localTextView1.getMeasuredWidth(), localTextView1.getPaint(), 2));
+    localTextView2.setText(auog.a(paramauto.a()));
+    paramViewGroup.setImageResource(aunj.b(str));
+    if ((j == 5) || (j == 0))
     {
-      int i = Integer.parseInt(paramString);
-      return i;
-    }
-    catch (Throwable paramString) {}
-    return paramInt;
-  }
-  
-  public static TextView a(Context paramContext, RelativeLayout paramRelativeLayout)
-  {
-    Resources localResources = paramContext.getResources();
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    paramRelativeLayout.addView(localLinearLayout);
-    paramRelativeLayout = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
-    paramRelativeLayout.width = -1;
-    paramRelativeLayout.height = -2;
-    paramRelativeLayout.addRule(12, -1);
-    paramRelativeLayout.addRule(0, 2131374217);
-    paramRelativeLayout.rightMargin = afur.a(20.0F, localResources);
-    paramContext = new TextView(paramContext);
-    localLinearLayout.addView(paramContext);
-    paramRelativeLayout = (LinearLayout.LayoutParams)paramContext.getLayoutParams();
-    int i = afur.a(16.0F, localResources);
-    paramRelativeLayout.bottomMargin = i;
-    paramRelativeLayout.leftMargin = i;
-    paramRelativeLayout.height = afur.a(28.0F, localResources);
-    paramContext.setBackgroundResource(2130844402);
-    paramContext.setTextColor(-1);
-    paramContext.setTextSize(1, 12.0F);
-    paramContext.setGravity(16);
-    paramContext.setSingleLine(true);
-    paramContext.setEllipsize(TextUtils.TruncateAt.END);
-    return paramContext;
-  }
-  
-  public static autz a(StructMsgForImageShare paramStructMsgForImageShare)
-  {
-    if ((paramStructMsgForImageShare == null) || (TextUtils.isEmpty(paramStructMsgForImageShare.mMsgActionData))) {
-      return null;
-    }
-    try
-    {
-      paramStructMsgForImageShare = new JSONObject(paramStructMsgForImageShare.mMsgActionData);
-      autz localautz = new autz();
-      localautz.jdField_a_of_type_JavaLangString = paramStructMsgForImageShare.optString("game_source_pic_txt");
-      localautz.jdField_b_of_type_JavaLangString = paramStructMsgForImageShare.optString("game_source_pic_url");
-      localautz.jdField_a_of_type_Int = paramStructMsgForImageShare.optInt("game_source_type_pic", 0);
-      localautz.jdField_b_of_type_Int = paramStructMsgForImageShare.optInt("game_source_subtype_pic", 0);
-      localautz.jdField_a_of_type_Boolean = paramStructMsgForImageShare.optBoolean("game_source_pic_has_data");
-      return localautz;
-    }
-    catch (Throwable paramStructMsgForImageShare)
-    {
-      QLog.e("GameShare.Util", 1, paramStructMsgForImageShare, new Object[0]);
-    }
-    return null;
-  }
-  
-  private static String a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      paramString1 = paramMessageRecord.getExtInfoFromExtStr(paramString1);
-      if (!TextUtils.isEmpty(paramString1)) {}
-    }
-    else
-    {
-      return paramString2;
-    }
-    return paramString1;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public static void a(View paramView, RelativeLayout paramRelativeLayout, boolean paramBoolean, Resources paramResources, Context paramContext, AbsStructMsg paramAbsStructMsg)
-  {
-    try
-    {
-      if (!a(paramAbsStructMsg)) {
-        return;
-      }
-      localAbsShareMsg = (AbsShareMsg)paramAbsStructMsg;
-      if ((paramView == null) || (paramRelativeLayout == null) || (paramResources == null) || (paramContext == null) || (paramAbsStructMsg == null) || (paramAbsStructMsg.message == null)) {
-        return;
-      }
-      if (!(paramView instanceof TextView)) {
-        break label739;
-      }
-      paramView = (TextView)paramView;
-      paramView.setBackgroundDrawable(null);
-      localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      localLayoutParams.addRule(15, -1);
-      paramView.setLayoutParams(localLayoutParams);
-    }
-    catch (Throwable paramView)
-    {
-      AbsShareMsg localAbsShareMsg;
-      RelativeLayout.LayoutParams localLayoutParams;
-      int i;
-      int j;
-      while (QLog.isColorLevel())
+      paramauto = paramauto.b();
+      if (auog.b(paramauto))
       {
-        QLog.e("GameShare.Util", 1, paramView, new Object[0]);
-        return;
-        localLayoutParams.rightMargin = afur.a(10.0F, paramResources);
-        continue;
-        label736:
-        continue;
-        label739:
-        paramView = null;
-      }
-    }
-    paramRelativeLayout.setBackgroundResource(2130842569);
-    localLayoutParams = (RelativeLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
-    if (paramBoolean)
-    {
-      localLayoutParams.addRule(7, 2131364379);
-      localLayoutParams.rightMargin = afur.a(10.0F, paramResources);
-      paramRelativeLayout.setLayoutParams(localLayoutParams);
-      paramContext = new TextView(paramContext);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(6, 2131377928);
-      localLayoutParams.addRule(1, 2131377928);
-      localLayoutParams.addRule(11, -1);
-      localLayoutParams.addRule(8, 2131377928);
-      localLayoutParams.addRule(15, -1);
-      localLayoutParams.rightMargin = afur.a(8.0F, paramResources);
-      paramRelativeLayout.addView(paramContext, localLayoutParams);
-      paramContext.setGravity(21);
-      paramContext.setEllipsize(TextUtils.TruncateAt.END);
-      paramContext.setSingleLine(true);
-      paramContext.setTextColor(-1);
-      paramContext.setTextSize(2, 12.0F);
-      paramContext.setCompoundDrawablePadding(afur.a(5.0F, paramResources));
-      paramRelativeLayout = paramResources.getDrawable(2130848522);
-      paramRelativeLayout.setBounds(0, 0, afur.a(6.0F, paramResources), afur.a(10.0F, paramResources));
-      paramContext.setCompoundDrawables(null, null, paramRelativeLayout, null);
-      paramRelativeLayout = "https://speed.gamecenter.qq.com/pushgame/v1/detail?_wv=2164260896&_wwv=448&autodownload=1&autolaunch=1&autosubscribe=1&ADTAG=87006&appid=" + localAbsShareMsg.mSourceAppid;
-      if (paramView != null)
-      {
-        paramView.setTag(-1, paramRelativeLayout);
-        paramView.setTag(-5, Integer.valueOf(0));
-        paramView.setOnClickListener(jdField_a_of_type_AndroidViewView$OnClickListener);
-        akww.a(paramView, 0.5F);
-      }
-      paramView = a("game_source_aio_txt", "", paramAbsStructMsg.message);
-      if (!TextUtils.isEmpty(paramView)) {
-        break label736;
-      }
-      auts.a().a(localAbsShareMsg.mSourceAppid, localAbsShareMsg.message);
-      paramView = "有新动态";
-      paramResources = a("game_source_aio_url", "", paramAbsStructMsg.message);
-      paramRelativeLayout = paramResources;
-      if (TextUtils.isEmpty(paramResources)) {
-        paramRelativeLayout = "https://speed.gamecenter.qq.com/pushgame/v1/detail?_wv=2164260896&_wwv=448&ADTAG=87006&appid=" + localAbsShareMsg.mSourceAppid;
-      }
-      i = a("game_source_type_aio", 0, paramAbsStructMsg.message);
-      j = a("game_source_subtype_aio", 0, paramAbsStructMsg.message);
-      paramResources = localAbsShareMsg.mSourceAppid + "";
-      paramContext.setText(paramView);
-      paramContext.setTag(-1, paramRelativeLayout);
-      paramContext.setTag(-2, Integer.valueOf(i));
-      paramContext.setTag(-3, Integer.valueOf(j));
-      paramContext.setTag(-4, paramResources);
-      paramContext.setTag(-5, Integer.valueOf(1));
-      paramContext.setOnClickListener(jdField_a_of_type_AndroidViewView$OnClickListener);
-      akww.a(paramContext, 0.5F);
-      paramView = (Integer)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramAbsStructMsg.message.uniseq));
-      if ((paramView != null) && (paramView.intValue() == j)) {
-        return;
-      }
-      paramView = new HashMap();
-      paramView.put(Integer.valueOf(2), j + "");
-      paramView.put(Integer.valueOf(4), "8");
-      aceh.a(null, "870", "206672", paramResources, "87006", "1", "145", paramView);
-      jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramAbsStructMsg.message.uniseq), Integer.valueOf(j));
-    }
-  }
-  
-  public static void a(TextView paramTextView, Context paramContext, AIOImageData paramAIOImageData, ahte paramahte)
-  {
-    if ((paramTextView == null) || (paramContext == null) || (paramAIOImageData == null)) {
-      return;
-    }
-    StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)bcwd.a((byte[])paramAIOImageData.a);
-    autz localautz = a(localStructMsgForImageShare);
-    if ((localautz != null) && (!TextUtils.isEmpty(localautz.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localautz.jdField_b_of_type_JavaLangString)))
-    {
-      Object localObject1 = localStructMsgForImageShare.mSourceAppid + "";
-      paramTextView.setVisibility(0);
-      paramTextView.setText(localautz.jdField_a_of_type_JavaLangString);
-      paramTextView.setTag(-1, localautz.jdField_b_of_type_JavaLangString);
-      paramTextView.setTag(-4, localObject1);
-      paramTextView.setTag(-2, Integer.valueOf(localautz.jdField_a_of_type_Int));
-      paramTextView.setTag(-3, Integer.valueOf(localautz.jdField_b_of_type_Int));
-      paramTextView.setTag(-5, Integer.valueOf(2));
-      a((String)localObject1, localautz.jdField_b_of_type_Int, paramAIOImageData);
-      paramTextView.setOnClickListener(jdField_a_of_type_AndroidViewView$OnClickListener);
-      akww.a(paramTextView, 0.5F);
-      localObject1 = localStructMsgForImageShare.mSourceIcon;
-      Object localObject2 = paramContext.getResources();
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        Object localObject3 = ((Resources)localObject2).getDrawable(2130850449);
-        ((Drawable)localObject3).setBounds(0, 0, afur.a(20.0F, (Resources)localObject2), afur.a(20.0F, (Resources)localObject2));
-        Object localObject4 = new BitmapDrawable(bcxv.a((Drawable)localObject3));
-        paramTextView.setCompoundDrawablePadding(afur.a(3.0F, (Resources)localObject2));
-        ((Drawable)localObject4).setBounds(0, 0, afur.a(20.0F, (Resources)localObject2), afur.a(20.0F, (Resources)localObject2));
-        paramTextView.setCompoundDrawables((Drawable)localObject4, null, null, null);
-        localObject4 = ((Resources)localObject2).getDrawable(2130850450);
-        ((Drawable)localObject4).setBounds(0, 0, afur.a(20.0F, (Resources)localObject2), afur.a(20.0F, (Resources)localObject2));
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (Drawable)localObject3, (Drawable)localObject4);
-        localObject2 = new WeakReference(paramContext);
-        localObject3 = new WeakReference(paramTextView);
-        paramahte = new WeakReference(paramahte);
-        long l1 = paramAIOImageData.jdField_f_of_type_Long;
-        long l2 = paramAIOImageData.jdField_f_of_type_Int;
-        QWalletPicHelper.decodeDrawable((Drawable)localObject1, new autx((WeakReference)localObject2, (WeakReference)localObject3, paramahte, l1, l2));
-        if (!localautz.jdField_a_of_type_Boolean) {
-          auts.a().a(localStructMsgForImageShare.mSourceAppid, new auty((WeakReference)localObject2, (WeakReference)localObject3, paramahte, l1, l2, paramAIOImageData));
+        if (j != 5) {
+          break label268;
         }
+        paramViewGroup.setApkIconAsyncImage(paramauto);
       }
     }
     for (;;)
     {
-      paramContext = paramContext.getResources();
-      paramTextView.setPadding(afur.a(5.0F, paramContext), 0, afur.a(14.0F, paramContext), 0);
+      paramViewGroup.setSupportMaskView(false);
+      ((AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374749)).setSupportMaskView(false);
+      this.jdField_a_of_type_AndroidViewView.measure(i, i);
+      this.jdField_a_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+      this.jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this, true);
+      this.b = new blha(ThreadManagerV2.getFileThreadLooper(), this, false);
       return;
-      paramTextView.setCompoundDrawables(null, null, null, null);
+      label268:
+      paramViewGroup.setAsyncImage(paramauto);
     }
   }
   
-  public static void a(AIOImageData paramAIOImageData, StructMsgForImageShare paramStructMsgForImageShare)
+  private Bitmap a(Bitmap paramBitmap, int paramInt, String paramString)
   {
-    if ((paramAIOImageData == null) || (paramStructMsgForImageShare == null)) {
-      return;
+    if (paramBitmap == null) {
+      return null;
     }
-    String str1 = a("game_source_pic_txt", "", paramStructMsgForImageShare.message);
-    String str2 = a("game_source_pic_url", "", paramStructMsgForImageShare.message);
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {}
-    for (boolean bool = true;; bool = false)
+    localAsyncImageView = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374749);
+    localAsyncImageView.setImageBitmap(paramBitmap);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374772);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    if (TextUtils.isEmpty(paramString))
     {
-      if (!bool)
-      {
-        str1 = "有新动态";
-        str2 = "https://speed.gamecenter.qq.com/pushgame/v1/detail?_wv=2164260896&_wwv=448&ADTAG=87007&appid=" + paramStructMsgForImageShare.mSourceAppid;
-      }
-      a(paramAIOImageData, paramStructMsgForImageShare, str1, str2, a("game_source_type_pic", 0, paramStructMsgForImageShare.message), a("game_source_subtype_pic", 0, paramStructMsgForImageShare.message), bool);
-      return;
-    }
-  }
-  
-  public static void a(AIOImageData paramAIOImageData, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("game_source_pic_txt", paramString1);
-      localJSONObject.put("game_source_pic_url", paramString2);
-      localJSONObject.put("game_source_type_pic", paramInt1);
-      localJSONObject.put("game_source_subtype_pic", paramInt2);
-      localJSONObject.put("game_source_pic_has_data", paramBoolean);
-      paramStructMsgForImageShare.mMsgActionData = localJSONObject.toString();
-      paramAIOImageData.a = paramStructMsgForImageShare.getBytes();
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      for (;;)
-      {
-        QLog.e("GameShare.Util", 1, paramString1, new Object[0]);
+      paramBitmap = new StringBuilder().append(BaseApplicationImpl.sApplication.getString(2131697519)).append(":");
+      paramString = BaseApplicationImpl.sApplication;
+      if (paramInt == 1) {
+        paramInt = 2131697517;
       }
     }
-  }
-  
-  public static void a(StructMsgForImageShare paramStructMsgForImageShare, View paramView)
-  {
-    if ((paramStructMsgForImageShare == null) || (!a(paramStructMsgForImageShare.mSourceAppid)) || (paramView == null) || (paramView.getResources() == null)) {
-      return;
-    }
-    try
+    for (paramBitmap = paramString.getString(paramInt);; paramBitmap = BaseApplicationImpl.sApplication.getString(2131697520) + ":" + paramString)
     {
-      int j = paramStructMsgForImageShare.width;
-      int k = paramStructMsgForImageShare.height;
-      int i = afur.a(251.0F, paramView.getResources());
-      j = i * (k / j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      paramStructMsgForImageShare = localLayoutParams;
-      if (localLayoutParams == null) {
-        paramStructMsgForImageShare = new ViewGroup.LayoutParams(i, j);
-      }
-      paramStructMsgForImageShare.width = i;
-      paramStructMsgForImageShare.height = j;
-      paramView.setLayoutParams(paramStructMsgForImageShare);
-      return;
-    }
-    catch (Throwable paramStructMsgForImageShare) {}
-  }
-  
-  public static void a(String paramString, int paramInt, Object paramObject)
-  {
-    Object localObject = (Integer)jdField_a_of_type_JavaUtilMap.get(paramObject);
-    if ((localObject == null) || (((Integer)localObject).intValue() != paramInt))
-    {
-      localObject = new HashMap();
-      ((Map)localObject).put(Integer.valueOf(2), paramInt + "");
-      ((Map)localObject).put(Integer.valueOf(4), "8");
-      aceh.a(null, "870", "206673", paramString, "87007", "1", "145", (Map)localObject);
-      jdField_a_of_type_JavaUtilMap.put(paramObject, Integer.valueOf(paramInt));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramString2))) {
-      paramMessageRecord.saveExtInfoToExtStr(paramString1, paramString2);
-    }
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    try
-    {
-      autq localautq = autr.a();
-      if (localautq != null)
+      localTextView.setText(localBaseApplicationImpl.getString(2131697510, new Object[] { paramBitmap }));
+      try
       {
-        boolean bool = localautq.a(paramLong + "");
-        if (bool) {
-          return true;
+        paramBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        this.jdField_a_of_type_AndroidViewView.draw(new Canvas(paramBitmap));
+        return paramBitmap;
+      }
+      catch (Throwable paramBitmap)
+      {
+        QLog.e("WeiyunShareQrController<FileAssistant>", 2, "mergeQrPanel error", paramBitmap);
+        return null;
+      }
+      finally
+      {
+        localAsyncImageView.setImageDrawable(null);
+      }
+      if (paramInt == 2)
+      {
+        paramInt = 2131697516;
+        break;
+      }
+      paramInt = 2131697518;
+      break;
+    }
+  }
+  
+  private static String a(Bitmap paramBitmap)
+  {
+    String str = "qfile_qrcode_share_" + System.currentTimeMillis() + ".png";
+    try
+    {
+      paramBitmap = zyx.a(BaseApplicationImpl.sApplication, str, paramBitmap);
+      return paramBitmap;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      QLog.w("WeiyunShareQrController<FileAssistant>", 2, "saveTemp error", paramBitmap);
+    }
+    return "";
+  }
+  
+  private void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, Bitmap paramBitmap, String paramString)
+  {
+    if (paramActionSheetItem == null) {}
+    int i;
+    Object localObject;
+    do
+    {
+      return;
+      i = paramActionSheetItem.action;
+      localObject = this.jdField_a_of_type_Auto.a();
+    } while ((localObject == null) || (((BaseActivity)localObject).isFinishing()));
+    if (this.jdField_a_of_type_Bjbs != null) {
+      this.jdField_a_of_type_Bjbs.dismiss();
+    }
+    if ("".equals(paramString))
+    {
+      autq.a(1, 2131695817, true);
+      return;
+    }
+    if (paramString == null)
+    {
+      if (i == 39) {}
+      for (i = 2131715964;; i = 2131695816)
+      {
+        autq.a(1, i, true);
+        return;
+      }
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    case 2: 
+      paramActionSheetItem = new Intent();
+      paramActionSheetItem.putExtra("isFromShare", true);
+      paramActionSheetItem.putExtra("forward_type", 1);
+      paramActionSheetItem.putExtra("forward_filepath", paramString);
+      paramActionSheetItem.putExtra("forward_thumb", paramString);
+      paramActionSheetItem.putExtra("forward_urldrawable_big_url", paramString);
+      paramActionSheetItem.putExtra("forward_extra", paramString);
+      auxu.a((Activity)localObject, paramActionSheetItem, 1, -1);
+      return;
+    case 3: 
+      paramActionSheetItem = bmtk.a();
+      paramBitmap = ((BaseActivity)localObject).getAppInterface();
+      paramActionSheetItem.a = paramBitmap.getAccount();
+      paramActionSheetItem.b = paramBitmap.getDisplayName(0, paramBitmap.getCurrentAccountUin(), null);
+      bmtd.a((Activity)localObject, paramActionSheetItem, paramString, ((BaseActivity)localObject).getString(2131691912), ((BaseActivity)localObject).getString(2131697510, new Object[] { "" }), 2);
+      return;
+    case 9: 
+    case 10: 
+      paramActionSheetItem = this.jdField_a_of_type_Auto.c();
+      localObject = WXShareHelper.a();
+      if (i == 9) {}
+      for (i = 0;; i = 1)
+      {
+        ((WXShareHelper)localObject).a(paramString, paramBitmap, i, true, paramActionSheetItem);
+        return;
+      }
+    case 39: 
+      paramActionSheetItem = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      paramActionSheetItem.setData(Uri.parse("file://" + paramString));
+      ((BaseActivity)localObject).sendBroadcast(paramActionSheetItem);
+      autq.a(2, ((BaseActivity)localObject).getString(2131715966, new Object[] { paramString }), true);
+      return;
+    }
+    paramBitmap = new Bundle();
+    paramBitmap.putInt("key_req", ForwardRecentActivity.f);
+    paramBitmap.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
+    paramBitmap.putString("key_direct_show_uin", paramActionSheetItem.uin);
+    paramActionSheetItem = new Intent();
+    paramActionSheetItem.putExtra("isFromShare", true);
+    paramActionSheetItem.putExtra("forward_type", 1);
+    paramActionSheetItem.putExtra("forward_filepath", paramString);
+    paramActionSheetItem.putExtra("forward_thumb", paramString);
+    paramActionSheetItem.putExtra("forward_urldrawable_big_url", paramString);
+    paramActionSheetItem.putExtra("forward_extra", paramString);
+    paramActionSheetItem.putExtras(paramBitmap);
+    auxu.a((Activity)localObject, paramActionSheetItem, ForwardRecentTranslucentActivity.class, 1, -1, "");
+  }
+  
+  private void a(Object[] paramArrayOfObject)
+  {
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 3)) {
+      throw new IllegalArgumentException("handleSaveBitmap: args are invalid");
+    }
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)paramArrayOfObject[0];
+    Bitmap localBitmap = (Bitmap)paramArrayOfObject[1];
+    if (((Boolean)paramArrayOfObject[2]).booleanValue()) {}
+    for (paramArrayOfObject = a(localBitmap);; paramArrayOfObject = b(localBitmap))
+    {
+      Message localMessage = new Message();
+      localMessage.what = 2;
+      localMessage.obj = new Object[] { localActionSheetItem, localBitmap, paramArrayOfObject };
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  /* Error */
+  private static String b(Bitmap paramBitmap)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: iconst_2
+    //   7: istore_1
+    //   8: aload_0
+    //   9: ifnull +365 -> 374
+    //   12: aload_0
+    //   13: invokevirtual 455	android/graphics/Bitmap:isRecycled	()Z
+    //   16: ifne +358 -> 374
+    //   19: new 457	com/tencent/mm/vfs/VFSFile
+    //   22: dup
+    //   23: getstatic 462	antf:bg	Ljava/lang/String;
+    //   26: invokespecial 463	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   29: astore_3
+    //   30: aload_3
+    //   31: invokevirtual 466	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
+    //   34: pop
+    //   35: aload_3
+    //   36: invokevirtual 469	com/tencent/mm/vfs/VFSFile:canWrite	()Z
+    //   39: ifeq +335 -> 374
+    //   42: invokestatic 236	java/lang/System:currentTimeMillis	()J
+    //   45: invokestatic 473	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   48: astore_3
+    //   49: new 457	com/tencent/mm/vfs/VFSFile
+    //   52: dup
+    //   53: new 169	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 170	java/lang/StringBuilder:<init>	()V
+    //   60: getstatic 462	antf:bg	Ljava/lang/String;
+    //   63: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: ldc_w 475
+    //   69: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokestatic 236	java/lang/System:currentTimeMillis	()J
+    //   75: invokevirtual 239	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   78: ldc_w 477
+    //   81: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokespecial 463	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   90: astore 5
+    //   92: aload 5
+    //   94: invokevirtual 480	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   97: ifeq +68 -> 165
+    //   100: iload_1
+    //   101: ldc_w 481
+    //   104: if_icmpge +61 -> 165
+    //   107: new 457	com/tencent/mm/vfs/VFSFile
+    //   110: dup
+    //   111: new 169	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 170	java/lang/StringBuilder:<init>	()V
+    //   118: getstatic 462	antf:bg	Ljava/lang/String;
+    //   121: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: ldc_w 475
+    //   127: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: aload_3
+    //   131: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: ldc_w 483
+    //   137: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: iload_1
+    //   141: invokevirtual 486	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   144: ldc_w 488
+    //   147: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokespecial 463	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   156: astore 5
+    //   158: iload_1
+    //   159: iconst_1
+    //   160: iadd
+    //   161: istore_1
+    //   162: goto -70 -> 92
+    //   165: new 490	java/io/BufferedOutputStream
+    //   168: dup
+    //   169: new 492	com/tencent/mm/vfs/VFSFileOutputStream
+    //   172: dup
+    //   173: aload 5
+    //   175: invokespecial 495	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   178: invokespecial 498	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   181: astore_3
+    //   182: aload_3
+    //   183: astore 4
+    //   185: aload_0
+    //   186: getstatic 504	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   189: bipush 100
+    //   191: aload_3
+    //   192: invokevirtual 508	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   195: istore_2
+    //   196: aload_3
+    //   197: ifnull +172 -> 369
+    //   200: aload_3
+    //   201: invokevirtual 511	java/io/BufferedOutputStream:close	()V
+    //   204: aconst_null
+    //   205: astore_0
+    //   206: iload_2
+    //   207: ifne +120 -> 327
+    //   210: aload 5
+    //   212: invokevirtual 480	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   215: ifeq +112 -> 327
+    //   218: aload 5
+    //   220: invokevirtual 514	com/tencent/mm/vfs/VFSFile:delete	()Z
+    //   223: pop
+    //   224: aload_0
+    //   225: areturn
+    //   226: astore_0
+    //   227: aconst_null
+    //   228: astore_0
+    //   229: goto -23 -> 206
+    //   232: astore_3
+    //   233: aload 6
+    //   235: astore_0
+    //   236: aload_0
+    //   237: astore 4
+    //   239: ldc 218
+    //   241: iconst_2
+    //   242: ldc_w 516
+    //   245: aload_3
+    //   246: invokestatic 251	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   249: ldc 253
+    //   251: astore_3
+    //   252: aload_0
+    //   253: ifnull +109 -> 362
+    //   256: aload_0
+    //   257: invokevirtual 511	java/io/BufferedOutputStream:close	()V
+    //   260: iconst_0
+    //   261: istore_2
+    //   262: aload_3
+    //   263: astore_0
+    //   264: goto -58 -> 206
+    //   267: astore_0
+    //   268: iconst_0
+    //   269: istore_2
+    //   270: aload_3
+    //   271: astore_0
+    //   272: goto -66 -> 206
+    //   275: astore_0
+    //   276: aconst_null
+    //   277: astore_3
+    //   278: aload_3
+    //   279: astore 4
+    //   281: ldc 218
+    //   283: iconst_2
+    //   284: ldc_w 516
+    //   287: aload_0
+    //   288: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   291: aload_3
+    //   292: ifnull +63 -> 355
+    //   295: aload_3
+    //   296: invokevirtual 511	java/io/BufferedOutputStream:close	()V
+    //   299: aconst_null
+    //   300: astore_0
+    //   301: iconst_0
+    //   302: istore_2
+    //   303: goto -97 -> 206
+    //   306: astore_0
+    //   307: aconst_null
+    //   308: astore_0
+    //   309: iconst_0
+    //   310: istore_2
+    //   311: goto -105 -> 206
+    //   314: astore_0
+    //   315: aload 4
+    //   317: ifnull +8 -> 325
+    //   320: aload 4
+    //   322: invokevirtual 511	java/io/BufferedOutputStream:close	()V
+    //   325: aload_0
+    //   326: athrow
+    //   327: aload 5
+    //   329: invokevirtual 519	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
+    //   332: areturn
+    //   333: astore_3
+    //   334: goto -9 -> 325
+    //   337: astore_0
+    //   338: goto -23 -> 315
+    //   341: astore_0
+    //   342: goto -64 -> 278
+    //   345: astore 4
+    //   347: aload_3
+    //   348: astore_0
+    //   349: aload 4
+    //   351: astore_3
+    //   352: goto -116 -> 236
+    //   355: aconst_null
+    //   356: astore_0
+    //   357: iconst_0
+    //   358: istore_2
+    //   359: goto -153 -> 206
+    //   362: iconst_0
+    //   363: istore_2
+    //   364: aload_3
+    //   365: astore_0
+    //   366: goto -160 -> 206
+    //   369: aconst_null
+    //   370: astore_0
+    //   371: goto -165 -> 206
+    //   374: aconst_null
+    //   375: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	376	0	paramBitmap	Bitmap
+    //   7	155	1	i	int
+    //   195	169	2	bool	boolean
+    //   29	172	3	localObject1	Object
+    //   232	14	3	localOutOfMemoryError1	OutOfMemoryError
+    //   251	45	3	str	String
+    //   333	15	3	localThrowable	Throwable
+    //   351	14	3	localOutOfMemoryError2	OutOfMemoryError
+    //   1	320	4	localObject2	Object
+    //   345	5	4	localOutOfMemoryError3	OutOfMemoryError
+    //   90	238	5	localVFSFile	com.tencent.mm.vfs.VFSFile
+    //   4	230	6	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   200	204	226	java/lang/Throwable
+    //   165	182	232	java/lang/OutOfMemoryError
+    //   256	260	267	java/lang/Throwable
+    //   165	182	275	java/lang/Throwable
+    //   295	299	306	java/lang/Throwable
+    //   165	182	314	finally
+    //   239	249	314	finally
+    //   320	325	333	java/lang/Throwable
+    //   185	196	337	finally
+    //   281	291	337	finally
+    //   185	196	341	java/lang/Throwable
+    //   185	196	345	java/lang/OutOfMemoryError
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  private void b(Object[] paramArrayOfObject)
+  {
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 3)) {
+      throw new IllegalArgumentException("handleShareRelay: args are invalid");
+    }
+    a((ShareActionSheetBuilder.ActionSheetItem)paramArrayOfObject[0], (Bitmap)paramArrayOfObject[1], (String)paramArrayOfObject[2]);
+  }
+  
+  public List<ShareActionSheetBuilder.ActionSheetItem> a(Context paramContext)
+  {
+    paramContext = new ArrayList();
+    paramContext.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+    paramContext.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+    paramContext.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+    paramContext.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+    return paramContext;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    b();
+    if (this.jdField_a_of_type_Bjbs != null)
+    {
+      this.jdField_a_of_type_Bjbs.dismiss();
+      this.jdField_a_of_type_Bjbs = null;
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.b.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    boolean bool = true;
+    if (paramActionSheetItem == null) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramActionSheetItem.action;
+        if ((i == 39) || (bhnv.d(this.jdField_a_of_type_Auto.a()))) {
+          break;
         }
-      }
+        autq.a(0, 2131691989, false);
+      } while (!QLog.isColorLevel());
+      QLog.i("WeiyunShareQrController<FileAssistant>", 2, "toShare: net is not supported");
+      return;
+    } while ((i != 2) && (i != 3) && (i != 9) && (i != 10) && (i != 72) && (i != 39));
+    if (this.jdField_a_of_type_Bjbs == null)
+    {
+      this.jdField_a_of_type_Bjbs = new bjbs(this.jdField_a_of_type_Auto.a());
+      this.jdField_a_of_type_Bjbs.c(2131694176);
+    }
+    if (!this.jdField_a_of_type_Bjbs.isShowing()) {
+      this.jdField_a_of_type_Bjbs.show();
+    }
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (i != 39) {}
+    for (;;)
+    {
+      localMessage.obj = new Object[] { paramActionSheetItem, localBitmap, Boolean.valueOf(bool) };
+      this.b.sendMessage(localMessage);
+      return;
+      bool = false;
+    }
+  }
+  
+  public boolean a(Bitmap paramBitmap, int paramInt, String paramString)
+  {
+    paramBitmap = a(paramBitmap, paramInt, paramString);
+    if (paramBitmap == null)
+    {
+      autq.a(1, BaseApplicationImpl.sApplication.getResources().getString(2131697504, new Object[] { Integer.valueOf(-2) }), true);
       return false;
     }
-    catch (Throwable localThrowable)
+    this.jdField_a_of_type_Auto.a(paramBitmap);
+    if (paramBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
+      b();
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    return true;
+  }
+  
+  public List<ShareActionSheetBuilder.ActionSheetItem> b(Context paramContext)
+  {
+    paramContext = new ArrayList();
+    paramContext.add(ShareActionSheetBuilder.ActionSheetItem.build(39));
+    return paramContext;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GameShare.Util", 1, localThrowable, new Object[0]);
-      }
     }
-    return false;
-  }
-  
-  public static boolean a(AbsShareMsg paramAbsShareMsg)
-  {
-    return (paramAbsShareMsg != null) && (a(paramAbsShareMsg.mSourceAppid));
-  }
-  
-  private static boolean a(AbsStructMsg paramAbsStructMsg)
-  {
-    if ((paramAbsStructMsg instanceof AbsShareMsg)) {
-      return a((AbsShareMsg)paramAbsStructMsg);
+    for (;;)
+    {
+      return true;
+      a((Object[])paramMessage.obj);
+      continue;
+      b((Object[])paramMessage.obj);
     }
-    return false;
   }
 }
 

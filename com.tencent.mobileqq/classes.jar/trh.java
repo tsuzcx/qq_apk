@@ -1,34 +1,45 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
-import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class trh
-  implements VComponentAdapter.OnVideoViewMethodListener
+class trh
+  implements tro
 {
-  public trh(VVideo paramVVideo) {}
+  trh(trg paramtrg) {}
   
-  public void OnMethodError(String paramString, JSONObject paramJSONObject)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    try
+    Object localObject = trg.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramString);
-      localJSONObject.put("extra", paramJSONObject);
-      this.a.videoFireEvent("error", localJSONObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void OnMethodSuccess(String paramString, Object paramObject)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      VVideo.access$000(this.a, paramString, paramObject);
+      trg.a(this.a, paramGiftServiceBean);
+      trg.a(this.a).setText(paramGiftServiceBean.t);
+      trg.b(this.a, null);
+      if (trg.a(this.a)) {
+        trg.c(this.a, null);
+      }
+      trg.b(this.a).setText("");
+      trg.c(this.a).setText("");
+      trg.a(this.a, new ArrayList());
+      localObject = trg.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
+        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
+          trg.b(this.a).add(localGiftServiceBean);
+        }
+      }
+      if (trg.b(this.a).size() <= 0)
+      {
+        paramGiftServiceBean = new GiftServiceBean();
+        paramGiftServiceBean.t = anzj.a(2131704168);
+        paramGiftServiceBean.v = "0";
+        trg.b(this.a).add(paramGiftServiceBean);
+      }
+      trg.a(this.a);
     }
   }
 }

@@ -1,63 +1,119 @@
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StFeed;
-import qqcircle.QQCircleDitto.StCircleDittoDataNew;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
 public class uys
-  extends uzx
 {
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-  private QQCircleDitto.StCircleDittoDataNew jdField_a_of_type_QqcircleQQCircleDitto$StCircleDittoDataNew;
-  private vtz jdField_a_of_type_Vtz;
-  
-  public uys(Bundle paramBundle)
+  @NotNull
+  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
-    super(paramBundle);
-    a(false);
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
-  {
-    paramViewGroup = new QCirclePushRankTopView(paramViewGroup.getContext());
-    paramViewGroup.setReportBean(a());
-    return paramViewGroup;
-  }
-  
-  protected String a()
-  {
-    return "QCircleRankTopBlock";
-  }
-  
-  public void a(vtz paramvtz, LifecycleOwner paramLifecycleOwner)
-  {
-    this.jdField_a_of_type_Vtz = paramvtz;
-    this.jdField_a_of_type_Vtz.a().observe(paramLifecycleOwner, new uyt(this));
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((a() != null) && ((a() instanceof QCirclePushRankTopView)))
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846618);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844021);
+    if (paramURLImageView.getLayoutParams() != null)
     {
-      if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.busiReport != null)) {
-        ((QCirclePushRankTopView)a()).setReportInfo(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.busiReport.get().toByteArray());
-      }
-      ((QCirclePushRankTopView)a()).setData(this.jdField_a_of_type_QqcircleQQCircleDitto$StCircleDittoDataNew);
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+    return localURLDrawableOptions;
   }
   
-  public void onInitBlock(Bundle paramBundle) {}
+  public static void a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      BaseApplicationImpl.sImageCache.evict(0);
+      return;
+    }
+    BaseApplicationImpl.sImageCache.evictAll();
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView)
+  {
+    a(paramString, paramURLImageView, null, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, Drawable paramDrawable)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = b(paramURLImageView);
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+    a(paramString, paramURLImageView, localURLDrawableOptions, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
+  {
+    a(paramString, paramURLImageView, paramURLDrawableOptions, paramBoolean, null);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean, URLDrawableDownListener paramURLDrawableDownListener)
+  {
+    WeakReference localWeakReference = new WeakReference(paramURLImageView);
+    Object localObject = paramURLDrawableOptions;
+    if (paramURLDrawableOptions == null) {}
+    for (;;)
+    {
+      try
+      {
+        localObject = a(paramURLImageView);
+        long l = 0L;
+        if (paramBoolean)
+        {
+          paramURLDrawableOptions = URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+          if ((paramURLDrawableOptions == null) || (localWeakReference.get() == null)) {
+            break label158;
+          }
+          paramURLImageView.setURLDrawableDownListener(new uyt(paramURLDrawableDownListener, l, paramString));
+          ((ImageView)localWeakReference.get()).setImageDrawable(paramURLDrawableOptions);
+          return;
+        }
+        localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+        paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+        switch (((URLDrawable)localObject).getStatus())
+        {
+        case 1: 
+        case 3: 
+          l = System.currentTimeMillis();
+          ((URLDrawable)localObject).startDownload();
+          paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+          break;
+        case 2: 
+          l = System.currentTimeMillis();
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      ((URLDrawable)localObject).restartDownload();
+      paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+      continue;
+      label158:
+      return;
+    }
+  }
+  
+  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841623);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844021);
+    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
+  }
 }
 
 

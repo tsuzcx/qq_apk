@@ -1,48 +1,48 @@
-import android.content.res.XmlResourceParser;
-import org.xmlpull.v1.XmlPullParser;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.manager.TicketManager;
 
 public class beaq
+  extends anud
+  implements Handler.Callback
 {
-  private bear jdField_a_of_type_Bear;
-  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  private String[] a = { "docs.qq.com" };
   
-  private void a()
+  public beaq(QQAppInterface paramQQAppInterface)
   {
-    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
-    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
-    this.jdField_a_of_type_Bear.a(str1, str2);
+    super(paramQQAppInterface);
   }
   
-  public bear a()
+  private void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Bear = new bear();
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    if (i != 1)
-    {
-      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-      if (i == 2) {
-        if (!str.equals("MimeTypes")) {}
-      }
-      for (;;)
-      {
-        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-        break;
-        if (str.equals("type"))
-        {
-          a();
-          continue;
-          if ((i != 3) || (!str.equals("MimeTypes"))) {}
-        }
-      }
+    if (this.app == null) {}
+    while (((TicketManager)this.app.getManager(2)).getPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bear(this, paramRunnable)) == null) {
+      return;
     }
-    return this.jdField_a_of_type_Bear;
+    ThreadManager.executeOnNetWorkThread(paramRunnable);
   }
   
-  public bear a(XmlResourceParser paramXmlResourceParser)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
-    return a();
+    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
   }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return beao.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

@@ -3,14 +3,14 @@ package com.tencent.mobileqq.service.friendlist.remote;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbya;
+import bcqr;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FriendListInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FriendListInfo> CREATOR = new bbya();
+  public static final Parcelable.Creator<FriendListInfo> CREATOR = new bcqr();
   public int a;
   public List<FriendSingleInfo> a;
   

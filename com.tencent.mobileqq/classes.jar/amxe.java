@@ -1,68 +1,89 @@
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
-final class amxe
-  extends bhhe
+public class amxe
+  extends amwz<Canvas>
 {
-  amxe(File paramFile, amhd paramamhd, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, amxl paramamxl, String paramString, List paramList) {}
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  public void onDone(bhhf parambhhf)
+  public boolean a(Canvas paramCanvas, float paramFloat)
   {
-    boolean bool = true;
-    super.onDone(parambhhf);
-    if (3 == parambhhf.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    boolean bool = false;
+    if (paramCanvas == null) {
+      return bool;
     }
+    label25:
+    amxc localamxc;
+    Bitmap localBitmap;
     for (;;)
     {
       try
       {
-        nmk.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-        amxb.a(this.jdField_a_of_type_Amhd, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.c.get()) {
-          break label413;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break label360;
         }
-        if (this.jdField_a_of_type_Amxl != null)
+        localamxc = (amxc)localIterator.next();
+        localamxc.b();
+        if (!localamxc.a())
         {
-          parambhhf = this.jdField_a_of_type_Amxl;
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
-            bool = false;
+          localIterator.remove();
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          parambhhf.a(bool, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.c.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          }
-        }
-        this.jdField_a_of_type_JavaIoFile.delete();
-        return;
-      }
-      catch (Exception parambhhf)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
+          QLog.d("CanvasDisplay", 2, "remove invalidate barrage:" + localamxc);
           continue;
         }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambhhf.getMessage());
-        continue;
+        localBitmap = localamxc.a();
       }
-      catch (OutOfMemoryError parambhhf)
+      finally {}
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
-          continue;
+        paramCanvas.save();
+        if (paramFloat == 1.0F)
+        {
+          if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localamxc.d) {
+            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localamxc.d);
+          }
+          label165:
+          if (localamxc.h <= 0.0F) {
+            break label388;
+          }
         }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambhhf.getMessage());
-        continue;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambhhf.a());
-      continue;
-      label413:
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.c.get());
+    }
+    label388:
+    for (float f1 = localamxc.h;; f1 = 1.0F)
+    {
+      float f2 = localamxc.jdField_e_of_type_Float;
+      float f3 = localamxc.jdField_f_of_type_Float;
+      float f4 = localamxc.jdField_e_of_type_Float;
+      float f5 = localamxc.jdField_e_of_type_Int;
+      float f6 = localamxc.jdField_f_of_type_Float;
+      paramCanvas.clipRect(f2, f3, f4 + f5 * f1, f1 * localamxc.jdField_f_of_type_Int + f6);
+      paramCanvas.translate(localamxc.jdField_e_of_type_Float, localamxc.jdField_f_of_type_Float);
+      if (localamxc.h != 0.0F) {
+        paramCanvas.scale(localamxc.h, localamxc.h);
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      this.b.set(0, 0, localamxc.jdField_e_of_type_Int, localamxc.jdField_f_of_type_Int);
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
+      break label25;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
+      break label165;
+      label360:
+      bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+      if (!bool) {}
+      for (bool = true;; bool = false) {
+        break;
       }
     }
   }

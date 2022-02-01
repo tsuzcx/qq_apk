@@ -1,24 +1,21 @@
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
-public class alco
-  extends alcf
+class alco
+  implements DialogInterface.OnClickListener
 {
-  public Button a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  alco(alcn paramalcn, alch paramalch) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = this.jdField_a_of_type_Alch.a.pop_dialog.left_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      bmrq.a(alck.a(this.jdField_a_of_type_Alcn.a), paramDialogInterface);
+    }
+  }
 }
 
 

@@ -1,58 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajrb
-  implements awxg
+  implements View.OnClickListener
 {
-  public ajrb(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, awwz paramawwz, awxi paramawxi, List paramList) {}
+  public ajrb(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Awwz.a(new ajrc(this));
-    this.jdField_a_of_type_Awwz.show();
-  }
-  
-  public void a(awxe paramawxe)
-  {
-    if ((paramawxe != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity().isFinishing())) {
-      switch (paramawxe.a)
-      {
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Awwz.isShowing()) {
-        this.jdField_a_of_type_Awwz.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
-      this.jdField_a_of_type_Awxi.b();
-      return;
-      awxf.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      awxf.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      awxf.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-    }
-  }
-  
-  public void a(awxe paramawxe, int paramInt)
-  {
-    this.jdField_a_of_type_Awwz.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Awwz.isShowing()) {
-      this.jdField_a_of_type_Awwz.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
-    this.jdField_a_of_type_Awxi.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
+    TroopSuspiciousFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

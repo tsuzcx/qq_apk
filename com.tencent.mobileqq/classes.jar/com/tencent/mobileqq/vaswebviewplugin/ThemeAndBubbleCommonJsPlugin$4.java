@@ -3,13 +3,13 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import bgpp;
+import bhpr;
 import org.json.JSONObject;
 
 class ThemeAndBubbleCommonJsPlugin$4
   implements DialogInterface.OnKeyListener
 {
-  ThemeAndBubbleCommonJsPlugin$4(ThemeAndBubbleCommonJsPlugin paramThemeAndBubbleCommonJsPlugin, bgpp parambgpp, String paramString) {}
+  ThemeAndBubbleCommonJsPlugin$4(ThemeAndBubbleCommonJsPlugin paramThemeAndBubbleCommonJsPlugin, bhpr parambhpr, String paramString) {}
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {

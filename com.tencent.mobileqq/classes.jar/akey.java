@@ -1,37 +1,19 @@
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akey
+  implements View.OnClickListener
 {
-  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public akey(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public akey(PhotoCropActivity paramPhotoCropActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
-    {
-      bkho localbkho = (bkho)bkif.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        localbkho.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
-        i += 1;
-      }
-      localbkho.c(2131690582);
-      localbkho.a(new akez(this, localbkho));
-      localbkho.show();
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,32 +1,62 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aoep
-  extends aniz
+  extends Handler
 {
-  public aoep(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
-  
-  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
+  public aoep(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    super.onSetHiddenSession(paramBoolean, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    if (paramInt == 42318) {
-      if (!paramBoolean) {
-        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), aoeq.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+    do
+    {
+      return;
+      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
+      if (paramMessage != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
+    return;
+    long l1 = QQAppInterface.e;
+    long l3 = SystemClock.uptimeMillis();
+    long l2 = Math.abs(l3 - this.a.c);
+    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "getOnlineFriend");
+      }
+      this.a.c = l3;
+      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
+      if (localFriendListHandler != null) {
+        localFriendListHandler.d(paramMessage.getCurrentAccountUin(), (byte)0);
       }
     }
-    while ((paramInt != 42319) || (paramBoolean)) {
-      return;
+    if (l2 < QQAppInterface.e) {
+      l1 = QQAppInterface.e - l2;
     }
-    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), aoeq.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, "getOnlineFriend send next msg " + l1);
+    }
+    paramMessage = this.a.a.obtainMessage(0, new WeakReference(paramMessage));
+    this.a.a.sendMessageDelayed(paramMessage, l1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoep
  * JD-Core Version:    0.7.0.1
  */

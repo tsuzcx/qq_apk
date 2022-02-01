@@ -1,11 +1,10 @@
-import android.widget.ImageView;
-
-class rkm
+public abstract interface rkm
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
+  public abstract void a();
   
-  private rkm(rkk paramrkk) {}
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

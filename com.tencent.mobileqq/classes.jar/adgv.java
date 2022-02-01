@@ -1,38 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.io.IOException;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adgv
-  implements CompoundButton.OnCheckedChangeListener
+  implements adci
 {
-  public adgv(TestAppFragment paramTestAppFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, int paramInt)
   {
-    File localFile;
-    if (paramBoolean)
-    {
-      new File(this.a.a).mkdirs();
-      localFile = new File(this.a.a, this.a.b);
-    }
-    for (;;)
-    {
-      try
-      {
-        localFile.createNewFile();
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-        continue;
-      }
-      new File(this.a.a, this.a.b).delete();
-    }
+    ((avya)paramQQAppInterface.getManager(268)).a(paramArrayOfByte, paramInt);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210.vProtobuf, 1);
+    bcrw.a(paramadan.a().a(), paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+    return null;
   }
 }
 

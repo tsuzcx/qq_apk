@@ -1,39 +1,82 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class ovn
+class ovn
+  implements BusinessObserver
 {
-  private ovp jdField_a_of_type_Ovp;
-  private wip jdField_a_of_type_Wip = new wip();
+  ovn(ovm paramovm, BaseCommentData paramBaseCommentData) {}
   
-  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Ovp != null) {
-      this.jdField_a_of_type_Ovp.a(paramPublishVideoEntry, paramInt, paramString);
+    int i = 1;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label253;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramInt = localWebSsoResponseBody.ret.get();
+        paramBundle = localWebSsoResponseBody.data.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
+        }
+        paramBundle = new JSONObject(paramBundle);
+        if (paramInt != 0)
+        {
+          paramBundle.optString("msg");
+          paramInt = 0;
+          i = paramInt;
+          if ((i == 0) && (ovm.a(this.jdField_a_of_type_Ovm) != null)) {
+            ovm.a(this.jdField_a_of_type_Ovm).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+          }
+          return;
+        }
+        paramInt = paramBundle.optInt("ret");
+        if (paramInt != 0) {
+          break label253;
+        }
+        paramInt = i;
+        try
+        {
+          if (ovm.a(this.jdField_a_of_type_Ovm) == null) {
+            continue;
+          }
+          ovm.a(this.jdField_a_of_type_Ovm).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+          paramInt = i;
+        }
+        catch (Exception paramBundle)
+        {
+          paramInt = 1;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+        continue;
+      }
+      paramBundle.getLocalizedMessage();
+      paramBundle.printStackTrace();
+      i = paramInt;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+        i = paramInt;
+        continue;
+        label253:
+        paramInt = 0;
+      }
     }
-  }
-  
-  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (this.jdField_a_of_type_Ovp != null) {
-      this.jdField_a_of_type_Ovp.a(paramPublishVideoEntry, paramString);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    wip.a(wip.a(paramString));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    paramString1 = wip.a(paramString1);
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Wip.a(paramString1, paramString2 + ".tmp.mp4", false, true, new ovo(this, l, paramString1));
-  }
-  
-  public void a(ovp paramovp)
-  {
-    this.jdField_a_of_type_Ovp = paramovp;
   }
 }
 

@@ -1,6 +1,23 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
 class ampi
+  implements Animation.AnimationListener
 {
-  private static ampb a = new ampb("cm_game_module");
+  ampi(ampf paramampf, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof ampl))) {
+      ((ampl)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
+    }
+    ampf.a(this.jdField_a_of_type_Ampf);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import bgtl;
+import bhto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import gc;
@@ -14,7 +14,7 @@ public class FontManager$1
   
   public void run()
   {
-    switch (bgtl.a(bgtl.a(), "libFounderColorFont_818.so"))
+    switch (bhto.a(bhto.a(), "libFounderColorFont_818.so"))
     {
     default: 
       return;
@@ -23,7 +23,7 @@ public class FontManager$1
       return;
     }
     l.a().b.set(true);
-    bgtl.a(this.this$0.a);
+    bhto.a(this.this$0.a);
     gc.a(this.this$0);
   }
 }

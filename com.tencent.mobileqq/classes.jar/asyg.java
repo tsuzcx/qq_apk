@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class asyg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public asyg(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public asyg(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QfileRecentPicFileTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,19 +1,24 @@
 package com.tencent.mobileqq.mini.widget;
 
-import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 class AuthDialog$4
   implements View.OnClickListener
 {
-  AuthDialog$4(AuthDialog paramAuthDialog, List paramList) {}
+  AuthDialog$4(AuthDialog paramAuthDialog) {}
   
   public void onClick(View paramView)
   {
-    AuthDialog.access$600(this.this$0, (INTERFACE.StSubscribeMessage)this.val$subMsgNoMaintainAuth.get(0));
+    this.this$0.getData().putBoolean("key_once_sub_cb1", AuthDialog.access$100(this.this$0).isChecked());
+    this.this$0.getData().putBoolean("key_once_sub_cb2", AuthDialog.access$300(this.this$0).isChecked());
+    this.this$0.getData().putBoolean("key_once_sub_cb3", AuthDialog.access$500(this.this$0).isChecked());
+    this.this$0.getData().putBoolean("key_once_sub_cb_maintain", AuthDialog.access$900(this.this$0).isChecked());
+    this.this$0.setConfirm(true);
+    this.this$0.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

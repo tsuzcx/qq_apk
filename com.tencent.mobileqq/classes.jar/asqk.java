@@ -1,15 +1,26 @@
-import android.view.animation.Interpolator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 
-class asqk
-  implements Interpolator
+public class asqk
+  implements Animator.AnimatorListener
 {
-  asqk(asqe paramasqe) {}
+  public asqk(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public float getInterpolation(float paramFloat)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramFloat -= 1.0F;
-    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
+    if (!EmotionSearchPanel.b(this.a, true))
+    {
+      EmotionSearchPanel.a(this.a, 1.0F);
+      EmotionSearchPanel.b(this.a);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

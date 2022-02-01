@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video.playfeedback;
 
-import bctj;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ public final class PlayFeedbackHelper$3
       QLog.d("PlayFeedbackHelper", 2, "report actVideoPlayFeedback, data=" + ((StringBuilder)localObject).toString());
     }
     Object localObject = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
-    bctj.a(BaseApplicationImpl.getContext()).a((String)localObject, "actVideoPlayFeedback", true, -1L, 0L, this.a, null);
+    bdmc.a(BaseApplicationImpl.getContext()).a((String)localObject, "actVideoPlayFeedback", true, -1L, 0L, this.a, null);
     BeaconAdapter.onUserActionToTunnel("00000U7O8S3BLETM", "actVideoPlayFeedback", true, -1L, -1L, this.a, true, true);
   }
 }

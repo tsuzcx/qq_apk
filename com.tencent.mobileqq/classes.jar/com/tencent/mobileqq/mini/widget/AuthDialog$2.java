@@ -1,25 +1,78 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 class AuthDialog$2
-  implements View.OnClickListener
+  implements MiniAppController.ActivityResultListener
 {
   AuthDialog$2(AuthDialog paramAuthDialog) {}
   
-  public void onClick(View paramView)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.this$0.getData().putBoolean("key_once_sub_cb1", AuthDialog.access$200(this.this$0).isChecked());
-    this.this$0.getData().putBoolean("key_once_sub_cb2", AuthDialog.access$300(this.this$0).isChecked());
-    this.this$0.getData().putBoolean("key_once_sub_cb3", AuthDialog.access$400(this.this$0).isChecked());
-    this.this$0.getData().putBoolean("key_once_sub_cb_maintain", AuthDialog.access$500(this.this$0).isChecked());
-    this.this$0.setRefuse(true);
-    this.this$0.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("AuthDialog", 2, "doOnActivityResult : " + paramInt1);
+    if (paramInt1 == 1089) {
+      if (paramInt2 == -1) {
+        if (paramIntent == null) {}
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramIntent = new JSONArray(paramIntent.getStringExtra("phoneNumberArray"));
+        if (AuthDialog.access$700(this.this$0) != null)
+        {
+          AuthDialog.access$700(this.this$0).setPhoneNumberList(paramIntent);
+          AuthDialog.access$800(this.this$0, AuthDialog.access$700(this.this$0).getPhoneNumberList());
+        }
+        return true;
+      }
+      catch (Throwable paramIntent)
+      {
+        QLog.e("AuthDialog", 1, "REQUEST_CODE_PHONE_MANAGER error, ", paramIntent);
+        return true;
+      }
+      QLog.e("AuthDialog", 1, "REQUEST_CODE_PHONE_MANAGER " + paramInt2);
+      return true;
+      if (paramInt1 != 1088) {
+        break label331;
+      }
+      if (paramInt2 == -1)
+      {
+        if (paramIntent == null) {
+          continue;
+        }
+        try
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("phoneType", 1);
+          localJSONObject.put("purePhoneNumber", paramIntent.getStringExtra("phoneNumber"));
+          localJSONObject.put("countryCode", "+86");
+          localJSONObject.put("iv", paramIntent.getStringExtra("iv"));
+          localJSONObject.put("encryptedData", paramIntent.getStringExtra("encryptedData"));
+          QLog.d("AuthDialog", 1, "REQUEST_CODE_ADD_PHONENUMBER stPhoneNumberObj : " + localJSONObject);
+          if (AuthDialog.access$700(this.this$0) != null)
+          {
+            AuthDialog.access$700(this.this$0).getPhoneNumberList().put(localJSONObject);
+            AuthDialog.access$800(this.this$0, AuthDialog.access$700(this.this$0).getPhoneNumberList());
+            return true;
+          }
+        }
+        catch (Throwable paramIntent)
+        {
+          QLog.e("AuthDialog", 1, "REQUEST_CODE_ADD_PHONENUMBER error, ", paramIntent);
+          return true;
+        }
+      }
+    }
+    QLog.e("AuthDialog", 1, "REQUEST_CODE_ADD_PHONENUMBER " + paramInt2);
+    return true;
+    label331:
+    return false;
   }
 }
 

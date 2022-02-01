@@ -1,21 +1,13 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aemm
-  implements ViewSwitcher.ViewFactory
+  extends bhwt
 {
-  public aemm(Leba paramLeba) {}
+  public aemm(EditInfoActivity paramEditInfoActivity) {}
   
-  public View makeView()
+  public void a()
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
   }
 }
 

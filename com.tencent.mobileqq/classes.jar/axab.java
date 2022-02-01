@@ -1,206 +1,211 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.text.style.ImageSpan;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.PushSwitchGrayTipsInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.managers.PushNotificationManager.1;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class axab
-  extends ImageSpan
+  implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Drawable.Callback> jdField_a_of_type_MqqUtilWeakReference;
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  private long jdField_a_of_type_Long;
+  private arhc jdField_a_of_type_Arhc;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private int d = -1;
   
-  public axab(Context paramContext, int paramInt1, String paramString, int paramInt2, Drawable.Callback paramCallback)
+  static
   {
-    super(paramContext, paramInt1, 0);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (paramCallback != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramCallback);
-    }
+    jdField_a_of_type_Int = 1;
   }
   
-  public axab(Context paramContext, int paramInt, String paramString, Drawable.Callback paramCallback)
+  public axab(QQAppInterface paramQQAppInterface)
   {
-    this(paramContext, paramInt, paramString, 0, paramCallback);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    ThreadManager.executeOnSubThread(new PushNotificationManager.1(this, paramQQAppInterface));
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  private int a()
   {
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {
-      return;
-    }
-    if ((paramCharSequence instanceof URLDrawable))
-    {
-      paramInt2 = 0;
-      paramInt1 = 0;
-      if (((URLDrawable)paramCharSequence).getStatus() == 1)
-      {
-        paramInt4 = paramCharSequence.getIntrinsicWidth();
-        i = paramCharSequence.getIntrinsicHeight();
-        paramInt1 = i;
-        paramInt2 = paramInt4;
-        if (i > this.jdField_a_of_type_Int)
-        {
-          paramInt1 = i;
-          paramInt2 = paramInt4;
-          if (this.jdField_a_of_type_Int > 0)
-          {
-            paramInt2 = paramInt4 * this.jdField_a_of_type_Int / i;
-            paramInt1 = this.jdField_a_of_type_Int;
-          }
-        }
-        paramPaint = this.jdField_a_of_type_ComTencentImageURLDrawable;
-        if (paramInt2 <= 0) {
-          break label221;
-        }
-        paramInt4 = paramInt2;
-        if (paramInt1 <= 0) {
-          break label227;
-        }
-      }
-    }
-    label221:
-    label227:
-    for (int i = paramInt1;; i = 0)
-    {
-      paramPaint.setBounds(0, 0, paramInt4, i);
+    Long localLong = Long.valueOf(System.currentTimeMillis());
+    if ((this.d >= 0) && (localLong.longValue() - this.jdField_a_of_type_Long < 86400000L)) {
       if (QLog.isColorLevel()) {
-        QLog.i("UrlBottomImageSpan", 2, "draw status:" + ((URLDrawable)paramCharSequence).getStatus() + " width:" + paramInt2 + " height:" + paramInt1);
-      }
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      paramInt4 = 0;
-      break;
-    }
-  }
-  
-  public Drawable getDrawable()
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      return this.jdField_a_of_type_ComTencentImageURLDrawable;
-    }
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      for (;;)
-      {
-        try
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject1);
-          if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-          {
-            localObject1 = (Drawable.Callback)this.jdField_a_of_type_MqqUtilWeakReference.get();
-            if (localObject1 != null) {
-              this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback((Drawable.Callback)localObject1);
-            }
-            this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new axac(this));
-            if (QLog.isColorLevel())
-            {
-              StringBuilder localStringBuilder = new StringBuilder().append("getDrawable. first get url:").append(this.jdField_a_of_type_JavaLangString).append("  cb:");
-              if (localObject1 == null) {
-                break label180;
-              }
-              bool = true;
-              QLog.i("UrlBottomImageSpan", 2, bool);
-            }
-            return this.jdField_a_of_type_ComTencentImageURLDrawable;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-          QLog.e("UrlBottomImageSpan", 2, "getDrawable error: " + localThrowable.getMessage());
-          return super.getDrawable();
-        }
-        Object localObject2 = null;
-        continue;
-        label180:
-        boolean bool = false;
-      }
-    }
-    return super.getDrawable();
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramInt2 = 0;
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {
-      return 0;
-    }
-    int i;
-    int j;
-    if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1))
-    {
-      i = paramCharSequence.getIntrinsicWidth();
-      j = paramCharSequence.getIntrinsicHeight();
-      paramInt2 = j;
-      paramInt1 = i;
-      if (j > this.jdField_a_of_type_Int)
-      {
-        paramInt2 = j;
-        paramInt1 = i;
-        if (this.jdField_a_of_type_Int > 0)
-        {
-          paramInt1 = i * this.jdField_a_of_type_Int / j;
-          paramInt2 = this.jdField_a_of_type_Int;
-        }
-      }
-      URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
-      if (paramInt1 > 0)
-      {
-        i = paramInt1;
-        if (paramInt2 <= 0) {
-          break label293;
-        }
-        j = paramInt2;
-        label113:
-        localURLDrawable.setBounds(0, 0, i, j);
+        QLog.d("PushNotificationManager", 2, "mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
       }
     }
     for (;;)
     {
-      paramCharSequence = paramCharSequence.getBounds();
-      if (paramFontMetricsInt != null)
+      return this.d;
+      if (this.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_Long = bhsi.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      }
+      if (localLong.longValue() - this.jdField_a_of_type_Long > 86400000L)
       {
-        paramPaint = paramPaint.getFontMetricsInt();
-        j = paramPaint.bottom - paramPaint.top;
-        int k = paramCharSequence.bottom - paramCharSequence.top;
-        i = k / 2 - j / 4;
-        k /= 2;
-        j = j / 4 + k;
-        paramFontMetricsInt.ascent = (-j);
-        paramFontMetricsInt.top = (-j);
-        paramFontMetricsInt.bottom = i;
-        paramFontMetricsInt.descent = i;
+        this.jdField_a_of_type_Long = bhsw.a(localLong.longValue());
+        bhsi.l(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Long);
+        bhsi.ai(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
+        this.d = 0;
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "Today First Query, mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("UrlBottomImageSpan", 2, "getSize size:" + paramCharSequence.right + " width:" + paramInt1 + " height:" + paramInt2 + " imageUrl:" + this.jdField_a_of_type_JavaLangString);
+      else
+      {
+        this.d = bhsi.aW(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "Query, mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+        }
       }
-      return paramCharSequence.right;
-      i = 0;
-      break;
-      label293:
-      j = 0;
-      break label113;
-      paramInt1 = 0;
     }
+  }
+  
+  private boolean a(SessionInfo paramSessionInfo)
+  {
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {}
+    for (String str = paramSessionInfo.jdField_a_of_type_JavaLangString;; str = "") {
+      for (;;)
+      {
+        if ((QLog.isColorLevel()) && (TextUtils.isEmpty(str))) {
+          QLog.d("PushNotificationManager", 2, "sessionInfo.curType=" + paramSessionInfo.jdField_a_of_type_Int + " uin==null sessionInfo.realTroopUin=" + paramSessionInfo.c);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "uin=" + str + "mApp.getAccount()=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        }
+        try
+        {
+          List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PushSwitchGrayTipsInfo.class, true, "uin=? and toUin=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), str }, null, null, null, null);
+          if ((localList == null) || (localList.size() == 0))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PushNotificationManager", 2, "result == null || result.size() == 0");
+            }
+            paramSessionInfo = new PushSwitchGrayTipsInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), str, paramSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 1);
+            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramSessionInfo);
+            return true;
+            if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
+              str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+            }
+          }
+          else
+          {
+            paramSessionInfo = (PushSwitchGrayTipsInfo)localList.get(0);
+            if (QLog.isColorLevel()) {
+              QLog.d("PushNotificationManager", 2, "pushSwitchGrayTipsInfo.lastShowTime=" + paramSessionInfo.lastShowTime + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+            }
+            if (paramSessionInfo.lastShowTime >= this.jdField_a_of_type_Long) {
+              return false;
+            }
+            paramSessionInfo.lastShowTime = this.jdField_a_of_type_Long;
+            paramSessionInfo.showCount += 1;
+            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramSessionInfo);
+            return true;
+          }
+        }
+        finally {}
+      }
+    }
+  }
+  
+  private void b(SessionInfo paramSessionInfo, int paramInt)
+  {
+    String str2 = "";
+    String str1 = "";
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      str2 = a().a();
+    }
+    for (str1 = a().b();; str1 = a().d())
+    {
+      do
+      {
+        avpd localavpd = new avpd(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str2, paramSessionInfo.jdField_a_of_type_Int, -5023, 655383, 0L);
+        if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+          localavpd.jdField_a_of_type_Long = (bcrg.a() + 1L);
+        }
+        int i = str2.indexOf(str1);
+        if (i >= 0)
+        {
+          paramSessionInfo = new Bundle();
+          paramSessionInfo.putInt("key_action", 40);
+          paramSessionInfo.putString("textColor", "");
+          paramSessionInfo.putString("image_resource", null);
+          paramSessionInfo.putString("key_action_DATA", paramInt + "");
+          localavpd.a(i, str1.length() + i, paramSessionInfo);
+        }
+        paramSessionInfo = new MessageForUniteGrayTip();
+        paramSessionInfo.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localavpd);
+        avpe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo);
+        bdll.b(null, "dc00898", "", "", "0X8009ACE", "0X8009ACE", paramInt, paramInt, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "add gray tip =" + str2 + " fromType=" + paramInt);
+        }
+        return;
+      } while ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000));
+      str2 = a().c();
+    }
+  }
+  
+  public arhc a()
+  {
+    if (this.jdField_a_of_type_Arhc == null)
+    {
+      this.jdField_a_of_type_Arhc = new arhc();
+      this.jdField_a_of_type_Arhc.a(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("PushNotificationManager", 2, "pushNotificationBean=null, general new bean");
+      }
+    }
+    return this.jdField_a_of_type_Arhc;
+  }
+  
+  public void a(arhc paramarhc)
+  {
+    this.jdField_a_of_type_Arhc = paramarhc;
+  }
+  
+  public void a(SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (QQToast.a() == 0) {
+      if (a().a())
+      {
+        if (a() < a().a()) {
+          break label46;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "getmTodayHadShowCount > showCount");
+        }
+      }
+    }
+    label46:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+      } while (!a(paramSessionInfo));
+      this.d += 1;
+      bhsi.ai(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.d);
+      b(paramSessionInfo, paramInt);
+      return;
+    }
+    QLog.d("PushNotificationManager", 2, "isNotificationEnabled=" + QQToast.a());
+  }
+  
+  public void onDestroy()
+  {
+    this.d = -1;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

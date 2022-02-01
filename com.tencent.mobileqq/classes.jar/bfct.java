@@ -1,23 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-
 public class bfct
-  implements DialogInterface.OnClickListener
 {
-  public bfct(ReciteRecordLayout paramReciteRecordLayout) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a(this.a.a);
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).f();
-    }
-  }
+  public static int a = 100001;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfct
  * JD-Core Version:    0.7.0.1
  */

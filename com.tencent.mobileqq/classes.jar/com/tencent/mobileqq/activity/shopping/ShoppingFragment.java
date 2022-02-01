@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.shopping;
 
-import aaaf;
-import aacp;
-import aevv;
-import aluy;
-import aluz;
-import alva;
-import alvb;
-import alvc;
-import alvd;
+import aabu;
+import aaek;
+import aagu;
+import afez;
+import amgq;
+import amgr;
+import amgs;
+import amgt;
+import amgu;
+import amgv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,11 +21,11 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import bhhu;
-import bkfv;
-import blep;
-import blev;
-import blyl;
+import biij;
+import blha;
+import bmfs;
+import bmfy;
+import bmzn;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.subscribe.network.GetSubscribeFeedListRequest;
@@ -44,20 +45,19 @@ import cooperation.vip.pb.VacAdvGetAccess.VacMemberGetOrderCntRsp;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import zxz;
 
 public class ShoppingFragment
   extends IphoneTitleBarFragment
   implements Handler.Callback
 {
   public static String a;
-  private aacp jdField_a_of_type_Aacp;
+  private aagu jdField_a_of_type_Aagu;
   private Activity jdField_a_of_type_AndroidAppActivity;
   protected View a;
   private BlockContainer jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer;
   private ShoppingHeadView jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this, true);
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this, true);
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -76,10 +76,10 @@ public class ShoppingFragment
     }
   }
   
-  private void a(aacp paramaacp)
+  private void a(aagu paramaagu)
   {
     e();
-    b(paramaacp);
+    b(paramaagu);
   }
   
   public static void a(Context paramContext, String paramString)
@@ -91,7 +91,7 @@ public class ShoppingFragment
       PublicFragmentActivity.a(paramContext, localIntent, ShoppingFragment.class);
       return;
     }
-    aevv.a(localIntent, PublicFragmentActivity.class, ShoppingFragment.class);
+    afez.a(localIntent, PublicFragmentActivity.class, ShoppingFragment.class);
   }
   
   private void a(VacAdvGetAccess.VacMemberGetOrderCntRsp paramVacMemberGetOrderCntRsp)
@@ -136,7 +136,7 @@ public class ShoppingFragment
   
   private void b()
   {
-    String str = getString(2131693388);
+    String str = getString(2131693400);
     Object localObject2 = "";
     FragmentActivity localFragmentActivity = getActivity();
     Object localObject1 = localObject2;
@@ -154,29 +154,29 @@ public class ShoppingFragment
     setTitle((CharSequence)localObject2);
   }
   
-  private void b(aacp paramaacp)
+  private void b(aagu paramaagu)
   {
     GetSubscribeFeedListRequest localGetSubscribeFeedListRequest = new GetSubscribeFeedListRequest(2, null, null);
     localGetSubscribeFeedListRequest.setEnableCache(true);
-    VSNetworkHelper.a().a(localGetSubscribeFeedListRequest, new alvc(this, localGetSubscribeFeedListRequest, paramaacp));
+    VSNetworkHelper.a().a(localGetSubscribeFeedListRequest, new amgu(this, localGetSubscribeFeedListRequest, paramaagu));
   }
   
   private void c()
   {
-    IliveShareHelper.reportAction("qq_live", "shopcart_page", "", "", "", 100, IliveShareHelper.getFollowInfo("", blep.jdField_a_of_type_JavaLangString, "", "", ""));
-    blep.jdField_a_of_type_JavaLangString = "3";
-    blyl.a().a("", "", "qq_live", "shopcart_page", "my_order", 100, 1, System.currentTimeMillis(), "");
+    IliveShareHelper.reportAction("qq_live", "shopcart_page", "", "", "", 100, IliveShareHelper.getFollowInfo("", bmfs.jdField_a_of_type_JavaLangString, "", "", ""));
+    bmfs.jdField_a_of_type_JavaLangString = "3";
+    bmzn.a().a("", "", "qq_live", "shopcart_page", "my_order", 100, 1, System.currentTimeMillis(), "");
   }
   
-  private void c(aacp paramaacp)
+  private void c(aagu paramaagu)
   {
-    GetSubscribeFeedListRequest localGetSubscribeFeedListRequest = new GetSubscribeFeedListRequest(2, null, paramaacp.getLoadInfo().c(), paramaacp.getLoadInfo().d());
-    VSNetworkHelper.a().a(localGetSubscribeFeedListRequest, new alvd(this, paramaacp));
+    GetSubscribeFeedListRequest localGetSubscribeFeedListRequest = new GetSubscribeFeedListRequest(2, null, paramaagu.getLoadInfo().c(), paramaagu.getLoadInfo().d());
+    VSNetworkHelper.a().a(localGetSubscribeFeedListRequest, new amgv(this, paramaagu));
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setOnClickEventListener(new aluy(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setOnClickEventListener(new amgq(this));
   }
   
   private void e()
@@ -188,23 +188,23 @@ public class ShoppingFragment
     localVacMemberGetOrderCntReq.ware_house_id.set(102);
     localVacMemberGetOrderCntReq.media_type.set(4);
     localVacMemberGetOrderCntReq.buyer_id.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    bhhu.a("QQLive.MemberGetOrderCnt", localVacMemberGetOrderCntReq, VacAdvGetAccess.VacMemberGetOrderCntRsp.class, new aluz(this));
+    biij.a("QQLive.MemberGetOrderCnt", localVacMemberGetOrderCntReq, VacAdvGetAccess.VacMemberGetOrderCntRsp.class, new amgr(this));
   }
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131369999));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131370098));
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setParentFragment(this);
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setLayoutManagerType(3, 1);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setLayoutManagerType(3, 2);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setEnableLoadMore(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView = new ShoppingHeadView(getActivity());
-    this.jdField_a_of_type_Aacp = new aacp(null);
-    this.jdField_a_of_type_Aacp.b(2);
-    this.jdField_a_of_type_Aacp.c(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Aacp.b(false);
-    this.jdField_a_of_type_Aacp.setOnLoadDataDelegate(new alva(this));
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(new alvb(this, null));
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aacp);
+    this.jdField_a_of_type_Aagu = new aagu(null);
+    this.jdField_a_of_type_Aagu.b(2);
+    this.jdField_a_of_type_Aagu.c(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aagu.b(false);
+    this.jdField_a_of_type_Aagu.setOnLoadDataDelegate(new amgs(this));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(new amgt(this, null));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aagu);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setEnableRefresh(true);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
   }
@@ -250,7 +250,7 @@ public class ShoppingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = aaaf.a();
+    this.jdField_a_of_type_Boolean = aaek.a();
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
     }
@@ -259,7 +259,7 @@ public class ShoppingFragment
       b();
       a();
       c();
-      blev.a(getActivity(), 3);
+      bmfy.a(getActivity(), 3);
       return;
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-657670);
     }

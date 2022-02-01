@@ -1,72 +1,30 @@
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.io.UnsupportedEncodingException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ntd
-  extends Handler
+class ntd
+  implements View.OnClickListener
 {
-  public ntd(AccountDetailActivity paramAccountDetailActivity) {}
+  ntd(ntc paramntc, oag paramoag, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3: 
-      this.a.R();
-      return;
-    case 1: 
-      if (this.a.c)
-      {
-        AccountDetailActivity.e(this.a);
-        this.a.M();
-      }
-      for (;;)
-      {
-        this.a.c(this.a.getIntent());
-        return;
-        AccountDetailActivity.e(this.a);
-      }
-    case 2: 
-      paramMessage = new Intent();
-      paramMessage.putExtra("isNeedFinish", true);
-      this.a.setResult(-1, paramMessage);
-      this.a.finish();
-      return;
-    case 4: 
-      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      paramMessage.putExtra("BSafeReportPost", true);
-      try
-      {
-        if (this.a.a != null) {
-          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
-        }
-        paramMessage.putExtra("hide_more_buttonbutton", true);
-        paramMessage.putExtra("ishiderefresh", true);
-        paramMessage.putExtra("ishidebackforward", true);
-        this.a.startActivity(paramMessage.putExtra("url", "https://jubao.mp.qq.com/mobile/reportAccount"));
-        return;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-        }
-      }
+    Intent localIntent = new Intent((Context)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
+    localIntent.putExtra("lat", this.jdField_a_of_type_Oag.g);
+    localIntent.putExtra("lon", this.jdField_a_of_type_Oag.f);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localIntent.putExtra("loc", this.jdField_a_of_type_JavaLangString);
     }
-    paramMessage = new AlphaAnimation(1.0F, 0.0F);
-    paramMessage.setDuration(500L);
-    this.a.d.startAnimation(paramMessage);
-    this.a.d.setVisibility(8);
+    ((BaseActivity)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(localIntent);
+    bdll.b(this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangString, "", "", "");
+    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

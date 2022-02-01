@@ -1,27 +1,19 @@
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.app.QQPermissionCallback;
+
 public class bnhc
+  implements QQPermissionCallback
 {
-  public final bnhb a;
-  public final bnhd a;
+  public bnhc(QZoneShareActivity paramQZoneShareActivity) {}
   
-  private bnhc(bnhb parambnhb, bnhd parambnhd)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Bnhb = parambnhb;
-    this.jdField_a_of_type_Bnhd = parambnhd;
+    bhlq.b(this.a);
   }
   
-  public static bnhc a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new bnhc(null, bnhd.d);
-  }
-  
-  public static bnhc a(bnhb parambnhb)
-  {
-    return new bnhc(parambnhb, bnhd.b);
-  }
-  
-  public static bnhc b()
-  {
-    return new bnhc(null, bnhd.c);
+    QZoneShareActivity.a(this.a);
   }
 }
 

@@ -1,24 +1,54 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
 
-public final class bhpb
-  implements ThreadExcutor.IThreadListener
+public class bhpb
+  extends bhpc
 {
-  long a = 0L;
+  private int jdField_a_of_type_Int = 2131558996;
+  bhuk jdField_a_of_type_Bhuk;
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public bhpb(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
-    }
-    this.a = 0L;
+    super(paramContext, paramInt);
   }
   
-  public void onPreRun()
+  public void a(int paramInt)
   {
-    this.a = System.currentTimeMillis();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(bhuk parambhuk, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (parambhuk == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Bhuk = parambhuk;
+      String[] arrayOfString = new String[parambhuk.a()];
+      int i = 0;
+      while (i < parambhuk.a())
+      {
+        arrayOfString[i] = parambhuk.a(i).a();
+        i += 1;
+      }
+      setItems(arrayOfString, paramOnClickListener);
+      parambhuk = parambhuk.a();
+    } while (parambhuk == null);
+    setTitle(parambhuk);
+  }
+  
+  protected int customWhichToCallBack(int paramInt)
+  {
+    bhum localbhum = this.jdField_a_of_type_Bhuk.a(paramInt);
+    if (localbhum != null) {
+      return localbhum.a();
+    }
+    return -1;
+  }
+  
+  protected int getDialogListItemLayout()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

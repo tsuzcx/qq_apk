@@ -1,6 +1,7 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class bfrn
@@ -13,38 +14,39 @@ class bfrn
   
   public void handleMessage(Message paramMessage)
   {
-    super.handleMessage(paramMessage);
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
     switch (paramMessage.what)
     {
     default: 
-      return;
-    case 1: 
-      paramMessage = (List)arrayOfObject[0];
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      String str = (String)arrayOfObject[2];
-      long l = ((Long)arrayOfObject[3]).longValue();
-      this.a.a(paramMessage, bool, str, l);
-      return;
     case 2: 
-      paramMessage = (besl)arrayOfObject[0];
-      this.a.f(paramMessage);
-      return;
     case 3: 
-      paramMessage = (besl)arrayOfObject[0];
-      this.a.g(paramMessage);
-      return;
     case 4: 
-      paramMessage = (besl)arrayOfObject[0];
-      this.a.h(paramMessage);
+      do
+      {
+        do
+        {
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          this.a.a(1000);
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          bfrm.a(this.a);
+          this.a.notifyObservers(Integer.valueOf(101));
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
+        return;
+        this.a.a = ((List)paramMessage.obj);
+        bfrm.b(this.a);
+        this.a.notifyObservers(Integer.valueOf(105));
+      } while (!QLog.isColorLevel());
+      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
       return;
     case 5: 
-      int i = paramMessage.arg1;
-      this.a.a(i);
+      bfrm.c(this.a);
+      this.a.notifyObservers(Integer.valueOf(1010));
       return;
     }
-    paramMessage = (besl)arrayOfObject[0];
-    this.a.j(paramMessage);
+    bfrm.d(this.a);
+    this.a.notifyObservers(Integer.valueOf(103));
   }
 }
 

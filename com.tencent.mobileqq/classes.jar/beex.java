@@ -1,12 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class beex
-  implements View.OnClickListener
+public abstract interface beex
 {
-  beex(beeu parambeeu) {}
+  public abstract int getCloudFileType();
   
-  public void onClick(View paramView) {}
+  public abstract boolean isClickable();
 }
 
 

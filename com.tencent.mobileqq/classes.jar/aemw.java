@@ -1,19 +1,66 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aemw
-  extends asgf
+  extends LinkMovementMethod
 {
-  public aemw(Leba paramLeba) {}
+  private aemy jdField_a_of_type_Aemy;
   
-  protected void a(int paramInt)
+  private aemw(EditInfoActivity paramEditInfoActivity) {}
+  
+  private aemy a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
+    int i = (int)paramMotionEvent.getX();
+    int j = (int)paramMotionEvent.getY();
+    int k = paramTextView.getTotalPaddingLeft();
+    int m = paramTextView.getTotalPaddingTop();
+    int n = paramTextView.getScrollX();
+    int i1 = paramTextView.getScrollY();
+    paramTextView = paramTextView.getLayout();
+    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
+    paramTextView = (aemy[])paramSpannable.getSpans(i, i, aemy.class);
+    if (paramTextView.length > 0) {
+      return paramTextView[0];
     }
-    if (Leba.a(this.a) != null) {
-      Leba.a(this.a).b();
+    return null;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Aemy = a(paramTextView, paramSpannable, paramMotionEvent);
+      if (this.jdField_a_of_type_Aemy != null)
+      {
+        this.jdField_a_of_type_Aemy.a(true);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_Aemy), paramSpannable.getSpanEnd(this.jdField_a_of_type_Aemy));
+      }
     }
+    do
+    {
+      return true;
+      if (paramMotionEvent.getAction() != 2) {
+        break;
+      }
+      paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
+    } while ((this.jdField_a_of_type_Aemy == null) || (paramTextView == this.jdField_a_of_type_Aemy));
+    this.jdField_a_of_type_Aemy.a(false);
+    this.jdField_a_of_type_Aemy = null;
+    Selection.removeSelection(paramSpannable);
+    return true;
+    if (this.jdField_a_of_type_Aemy != null)
+    {
+      this.jdField_a_of_type_Aemy.a(false);
+      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    }
+    this.jdField_a_of_type_Aemy = null;
+    Selection.removeSelection(paramSpannable);
+    return true;
   }
 }
 

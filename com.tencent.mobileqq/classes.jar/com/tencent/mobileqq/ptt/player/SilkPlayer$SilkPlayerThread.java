@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ptt.player;
 
-import aher;
+import ahod;
 import android.app.Application;
 import android.media.AudioTrack;
 import android.os.Process;
-import aztq;
-import azts;
-import bgrn;
+import bamg;
+import bami;
+import bhrp;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.ptt.pttspeed.Sonic;
 import com.tencent.mobileqq.utils.SilkCodecWrapper;
@@ -29,9 +29,9 @@ class SilkPlayer$SilkPlayerThread
   
   public SilkPlayer$SilkPlayerThread(SilkPlayer paramSilkPlayer, Application paramApplication)
   {
-    this.d = bgrn.a(SilkPlayer.a(paramSilkPlayer));
+    this.d = bhrp.a(SilkPlayer.a(paramSilkPlayer));
     this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = new SilkCodecWrapper(paramApplication, false);
-    this.c = bgrn.a(this.d);
+    this.c = bhrp.a(this.d);
     this.jdField_a_of_type_ArrayOfByte = new byte[this.c];
     this.jdField_b_of_type_ArrayOfByte = new byte[this.c];
     if (QLog.isColorLevel()) {
@@ -87,7 +87,7 @@ class SilkPlayer$SilkPlayerThread
   
   private void a(Sonic paramSonic, int paramInt, byte[] paramArrayOfByte)
   {
-    if ((MediaPlayerManager.a(SilkPlayer.a(this.this$0))) && (paramArrayOfByte != null) && (aher.c)) {
+    if ((MediaPlayerManager.a(SilkPlayer.a(this.this$0))) && (paramArrayOfByte != null) && (ahod.c)) {
       if (paramInt > 0)
       {
         paramSonic.a(this.jdField_b_of_type_ArrayOfByte, paramInt);
@@ -122,6 +122,9 @@ class SilkPlayer$SilkPlayerThread
       this.jdField_a_of_type_AndroidMediaAudioTrack.pause();
       this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
       this.jdField_a_of_type_AndroidMediaAudioTrack.release();
+      if (QLog.isColorLevel()) {
+        QLog.d("SilkPlayer", 2, "SilkPlayerThread onEnd, release mAudioTrack.");
+      }
       this.jdField_a_of_type_AndroidMediaAudioTrack = null;
       this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.b();
       if (paramBoolean) {
@@ -198,11 +201,11 @@ class SilkPlayer$SilkPlayerThread
       this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a(this.d, 0, 1);
       i = j;
       if (!MediaPlayerManager.a(SilkPlayer.a(this.this$0))) {
-        break label599;
+        break label600;
       }
       i = j;
-      if (!aher.c) {
-        break label599;
+      if (!ahod.c) {
+        break label600;
       }
       i = j;
       localSonic = new Sonic(this.d, 1);
@@ -252,7 +255,7 @@ class SilkPlayer$SilkPlayerThread
       try
       {
         if ((!this.jdField_a_of_type_Boolean) || (localFileInputStream == null)) {
-          break label590;
+          break label591;
         }
         i = localFileInputStream.read(arrayOfByte, 0, 2);
         this.jdField_a_of_type_Int += 2;
@@ -299,12 +302,12 @@ class SilkPlayer$SilkPlayerThread
       }
       else
       {
-        i = bgrn.a(arrayOfByte);
+        i = bhrp.a(arrayOfByte);
         if (i <= 0)
         {
           this.this$0.c(1);
           if (!QLog.isColorLevel()) {
-            break label590;
+            break label591;
           }
           QLog.d("SilkPlayer", 2, "silk decode error: error frame size=" + i);
           bool1 = false;

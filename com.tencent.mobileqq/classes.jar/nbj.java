@@ -1,37 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.gameroom.GameRoomFragment.9;
 
 public class nbj
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  public nbj(TalkingEffectLayout paramTalkingEffectLayout) {}
+  public nbj(GameRoomFragment.9 param9) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationCancel(paramAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationEnd(paramAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationRepeat(paramAnimator);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationStart(paramAnimator);
+    paramDialogInterface.dismiss();
+    if (this.a.a != null) {
+      this.a.a.onClick(paramDialogInterface, paramInt);
     }
   }
 }

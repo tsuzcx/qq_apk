@@ -1,15 +1,22 @@
-public abstract interface blfy
-  extends blgf
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+
+public class blfy
+  implements PtuFilterResource
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public boolean checkPendantVersionOK()
+  {
+    return bork.a(borf.b);
+  }
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public String getPortraitPathDir()
+  {
+    return getSoPathDir();
+  }
   
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public String getSoPathDir()
+  {
+    return bork.b();
+  }
 }
 
 

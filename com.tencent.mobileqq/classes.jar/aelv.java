@@ -1,22 +1,13 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.widget.TextView;
 
 public class aelv
-  extends aelh
+  extends amof
 {
-  public aelv(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.b.g();
-  }
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelv
  * JD-Core Version:    0.7.0.1
  */

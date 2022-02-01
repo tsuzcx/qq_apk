@@ -1,24 +1,16 @@
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.MessageForMedalNews;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import java.util.List;
 
 class ahcy
-  extends afuv
+  extends agen
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  MessageForMedalNews jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  List<ImageView> jdField_a_of_type_JavaUtilList;
   TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
   
-  ahcy(ahcw paramahcw) {}
+  ahcy(ahcx paramahcx) {}
 }
 
 

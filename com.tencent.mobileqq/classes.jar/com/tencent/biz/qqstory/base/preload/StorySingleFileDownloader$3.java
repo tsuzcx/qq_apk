@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.base.preload;
 
 import java.util.Map;
-import wgv;
-import whl;
+import wkq;
+import wlg;
 
 public class StorySingleFileDownloader$3
   implements Runnable
 {
-  public StorySingleFileDownloader$3(whl paramwhl, String paramString, int paramInt) {}
+  public StorySingleFileDownloader$3(wlg paramwlg, String paramString, int paramInt) {}
   
   public void run()
   {
-    Object localObject = wgv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    localObject = (wgv)whl.a(this.this$0).get(localObject);
+    Object localObject = wkq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    localObject = (wkq)wlg.a(this.this$0).get(localObject);
     if (localObject != null) {
-      ((wgv)localObject).a.remove("DOWNLOAD_TASK_KEY_LISTENER");
+      ((wkq)localObject).a.remove("DOWNLOAD_TASK_KEY_LISTENER");
     }
   }
 }

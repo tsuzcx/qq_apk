@@ -1,10 +1,6 @@
-import java.util.List;
-
-public abstract interface ukm
+public abstract interface ukm<T extends ukb>
 {
-  public abstract List<ukn> a(int paramInt, boolean paramBoolean);
-  
-  public abstract boolean a();
+  public abstract void a(T paramT);
 }
 
 

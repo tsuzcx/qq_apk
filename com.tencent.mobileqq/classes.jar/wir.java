@@ -1,51 +1,93 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-class wir
-  extends bomw
+public class wir<KEY, VALUE extends wiq>
 {
-  private long jdField_a_of_type_Long;
+  public int a;
+  public LruCache<KEY, VALUE> a;
+  public ConcurrentHashMap<KEY, WeakReference<VALUE>> a;
   
-  wir(wip paramwip, PublishVideoEntry paramPublishVideoEntry, wiv paramwiv, String paramString) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
+  public wir(int paramInt)
   {
-    this.jdField_a_of_type_Wiv.a(-3);
-    this.jdField_a_of_type_Wiv.a("task canceled");
-    wip.a(this.jdField_a_of_type_Wip, "needAndStartDownloadMusic");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new wis(this, paramInt);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
   }
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  private void b()
   {
-    yqp.c(wip.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    yqp.c(wip.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download onFinish ");
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = paramString;
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    switch (paramInt)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      this.jdField_a_of_type_Wiv.a(paramInt);
-      this.jdField_a_of_type_Wiv.a("unknown error the music download failed");
+      Object localObject = localIterator.next();
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if ((localWeakReference != null) && (localWeakReference.get() == null))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
+        yuk.b("OneObjectCacheList", String.format("key :%s had been remove by jvm", new Object[] { localObject }));
+      }
     }
-    for (;;)
+  }
+  
+  public VALUE a(KEY paramKEY)
+  {
+    wiq localwiq2 = (wiq)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramKEY);
+    wiq localwiq1 = localwiq2;
+    if (localwiq2 == null)
     {
-      aaxb.a("edit_music_download", aaxb.a(this.jdField_a_of_type_Wiv.a(), l1 - l2, this.jdField_a_of_type_JavaLangString, zkr.a(paramString)));
-      wip.a(this.jdField_a_of_type_Wip, "needAndStartDownloadMusic");
-      return;
-      this.jdField_a_of_type_Wiv.a(0);
-      this.jdField_a_of_type_Wiv.a("music downloadSuccess");
-      continue;
-      this.jdField_a_of_type_Wiv.a(-2);
-      this.jdField_a_of_type_Wiv.a("none network");
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramKEY);
+      localwiq1 = localwiq2;
+      if (localWeakReference != null)
+      {
+        localwiq2 = (wiq)localWeakReference.get();
+        localwiq1 = localwiq2;
+        if (localwiq2 != null)
+        {
+          yuk.b("OneObjectCacheList", String.format("revert key %s from second cache", new Object[] { paramKEY }));
+          a(paramKEY, localwiq2);
+          localwiq1 = localwiq2;
+        }
+      }
+    }
+    return localwiq1;
+  }
+  
+  public VALUE a(KEY paramKEY, VALUE paramVALUE)
+  {
+    wiq localwiq = a(paramKEY);
+    if (localwiq == null)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramKEY, paramVALUE);
+      return paramVALUE;
+    }
+    localwiq.copy(paramVALUE);
+    return localwiq;
+  }
+  
+  public void a()
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+    if (i - this.jdField_a_of_type_Int > 50)
+    {
+      b();
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+      yuk.a("OneObjectCacheList", "evict second cache data count:%d", Integer.valueOf(i - this.jdField_a_of_type_Int));
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.trimToSize(paramInt);
+  }
+  
+  public void a(KEY paramKEY)
+  {
+    wiq localwiq = (wiq)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramKEY);
+    if (localwiq != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramKEY, new WeakReference(localwiq));
     }
   }
 }

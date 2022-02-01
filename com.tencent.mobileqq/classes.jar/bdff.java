@@ -1,11 +1,31 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 class bdff
-  implements bdet
+  extends BroadcastReceiver
 {
-  bdff(bdfc parambdfc) {}
+  bdff(bdfe parambdfe) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bdfc.a(this.a).a();
+    if (paramIntent.getAction() == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = this.a.jdField_a_of_type_JavaLangString;
+        this.a.c();
+      } while ((this.a.jdField_a_of_type_Bdfg == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
+      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
+      {
+        this.a.b();
+        this.a.jdField_a_of_type_Bdfg.a(0, this.a.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
+    this.a.jdField_a_of_type_Bdfg.a(1, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

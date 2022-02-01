@@ -1,84 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
 
 public class arol
-  extends arnz
+  extends armf<arof>
 {
-  public arol(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public static arof c()
   {
-    super("qq.android.dingdong.ring", paramQQAppInterface);
+    arof localarof2 = (arof)aran.a().a(628);
+    arof localarof1 = localarof2;
+    if (localarof2 == null) {
+      localarof1 = arof.a();
+    }
+    return localarof1;
   }
   
-  public int a()
+  @NonNull
+  public arof a()
   {
-    return 10050;
+    return arof.a();
   }
   
-  public Class<? extends XmlData> a()
-  {
-    return QQDingdongSoundData.class;
-  }
-  
-  public String a()
-  {
-    return "dingdongDownloadAudioSoundDuration";
-  }
-  
-  public void a(String paramString)
+  @NonNull
+  public arof a(@NonNull araj[] paramArrayOfaraj)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
+      QLog.d("QVIP.TROOP_FILE.ConfigProcessor", 1, paramArrayOfaraj[0].a);
     }
-    try
-    {
-      bgmg.a(paramString, mra.a(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return arof.a(paramArrayOfaraj[0].a);
   }
   
-  public void a(boolean paramBoolean)
+  @NonNull
+  public arof b()
   {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
-    {
-      localQQDingdongSoundData.autoDownload = true;
-      arnn.a(localQQDingdongSoundData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
+    return arof.a();
   }
   
-  public boolean a()
+  public Class<arof> clazz()
   {
-    return true;
+    return arof.class;
   }
   
-  public String b()
+  public int type()
   {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if (localQQDingdongSoundData == null) {
-      return super.h();
-    }
-    return localQQDingdongSoundData.autoDownload;
+    return 628;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arol
  * JD-Core Version:    0.7.0.1
  */

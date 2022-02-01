@@ -1,30 +1,14 @@
-import android.app.Activity;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2;
+import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class bffg
-  implements bmrk
+  implements bfjp
 {
-  public bfel a;
+  public bffg(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public bffg(bffd parambffd, bfel parambfel)
+  public void a(Uri paramUri)
   {
-    this.jdField_a_of_type_Bfel = parambfel;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Bfel.g = 3;
-    this.jdField_a_of_type_Bfel.c(paramString);
-    ((Activity)bffd.a(this.jdField_a_of_type_Bffd)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Bfel.g = 2;
-    ((Activity)bffd.a(this.jdField_a_of_type_Bffd)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
+    this.a.a = paramUri;
   }
 }
 

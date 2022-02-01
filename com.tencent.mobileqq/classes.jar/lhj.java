@@ -1,191 +1,166 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.AVEffectPendantReport.1;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build.VERSION;
+import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
+import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
 import java.io.File;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class lhj
+  extends lhf
 {
-  private static int jdField_a_of_type_Int;
-  private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
-  private static int b;
-  
-  private static Class<?> a()
+  public lhj()
   {
-    return PendantItem.class;
+    lbj.c("MagicfaceNormalDecoder", "==init==");
   }
   
-  private static String a()
+  @TargetApi(16)
+  private Bitmap a(String paramString, Bitmap paramBitmap)
   {
-    return "content";
-  }
-  
-  private static String a(PendantItem paramPendantItem)
-  {
-    String str = null;
-    if (paramPendantItem != null) {
-      str = lbf.c() + paramPendantItem.getName();
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramString, localOptions);
+    if (localOptions.outWidth * localOptions.outHeight == 0) {
+      return null;
     }
-    return str;
-  }
-  
-  private static ArrayList<PendantItem> a(String paramString)
-  {
-    localArrayList = new ArrayList();
-    b = 0;
-    jdField_a_of_type_Int = 0;
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        int j = mue.b();
-        Object localObject = a();
-        if (paramString.has((String)localObject))
-        {
-          paramString = paramString.getJSONArray((String)localObject);
-          localObject = a();
-          int i = 0;
-          while (i < paramString.length())
-          {
-            PendantItem localPendantItem = (PendantItem)bghp.a((JSONObject)paramString.get(i), (Class)localObject);
-            if ((localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())) && (localPendantItem.isShow()))
-            {
-              int k = localPendantItem.getPlatform();
-              if ((k == 0) || (j >= k))
-              {
-                boolean bool = b(localPendantItem);
-                localPendantItem.setUsable(bool);
-                localArrayList.add(localPendantItem);
-                b += 1;
-                if (bool) {
-                  jdField_a_of_type_Int += 1;
-                }
-              }
-            }
-            i += 1;
-          }
-        }
-        return localArrayList;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+    int i = localOptions.outWidth * localOptions.outHeight;
+    if (Build.VERSION.SDK_INT >= 15) {
+      localOptions.inBitmap = paramBitmap;
     }
-  }
-  
-  public static void a()
-  {
-    bgsg.b(jdField_a_of_type_Int, b);
-    lbc.c("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
-  }
-  
-  private static String b()
-  {
-    return lbq.b(e()).a;
-  }
-  
-  public static void b()
-  {
-    bgsg.c();
-    lbc.c("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
-  }
-  
-  private static boolean b(PendantItem paramPendantItem)
-  {
-    if ((e() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId()))) {
-      lbc.e("AVEffectPendantReport", "isTemplateUsable:" + e() + "|");
-    }
-    do
+    for (;;)
     {
-      return false;
-      if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
-        return true;
+      localOptions.inJustDecodeBounds = false;
+      localOptions.inSampleSize = 1;
+      while (i > 921600)
+      {
+        localOptions.inSampleSize *= 2;
+        i /= 4;
       }
-    } while (!new File(a(paramPendantItem)).exists());
-    System.currentTimeMillis();
-    String str = SecUtil.getFileMd5(a(paramPendantItem));
-    System.currentTimeMillis();
-    return paramPendantItem.getMd5().equalsIgnoreCase(str);
-  }
-  
-  public static void c()
-  {
-    ThreadManager.getFileThreadHandler().post(new AVEffectPendantReport.1());
-  }
-  
-  public static void d()
-  {
-    String str = b();
-    jdField_a_of_type_JavaUtilArrayList = null;
-    jdField_a_of_type_JavaUtilArrayList = a(str);
-  }
-  
-  private static int e()
-  {
-    return 106;
-  }
-  
-  public static void e()
-  {
-    long l1 = -1L;
+      if (paramBitmap != null) {
+        paramBitmap.recycle();
+      }
+    }
     try
     {
-      localHashMap = new HashMap();
-      bool = bgsg.b();
-      arrayOfInt = bgsg.b();
-      l2 = bgsg.b();
-      if ((!bool) && (arrayOfInt[1] <= 0))
-      {
-        bamd.a().b(false);
-        bgsg.d();
-      }
-      if (l2 <= 0L) {
-        break label380;
-      }
-      l1 = (System.currentTimeMillis() - l2) / 1000L;
+      paramString = BitmapFactory.decodeFile(paramString, localOptions);
+      return paramString;
     }
-    catch (Throwable localThrowable)
+    catch (OutOfMemoryError paramString)
     {
-      int[] arrayOfInt;
-      do
+      paramString.printStackTrace();
+      lbj.e("MagicfaceNormalDecoder", "getBitmap|decodeFile failed.");
+    }
+    return null;
+  }
+  
+  public int a()
+  {
+    long l2 = 0L;
+    long l1 = 0L;
+    long l4 = 1000 / this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.fps;
+    long l3 = 0L;
+    int m = this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.repeat_count;
+    String str = this.jdField_a_of_type_Lhi.b();
+    Bitmap localBitmap2 = null;
+    if (this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasbackground) {
+      localBitmap2 = a(this.jdField_a_of_type_JavaLangString + "background/background.png", null);
+    }
+    Bitmap localBitmap1 = null;
+    int i = 0;
+    int j = 0;
+    int k;
+    Object localObject;
+    long l5;
+    long l6;
+    for (;;)
+    {
+      if (j < m)
       {
-        HashMap localHashMap;
-        boolean bool;
-        long l2;
-        BigDecimal localBigDecimal;
-        if (!QLog.isColorLevel()) {
-          break;
+        k = 0;
+        if ((k >= this.jdField_a_of_type_Lhi.a()) || (!this.jdField_a_of_type_Boolean))
+        {
+          j += 1;
         }
-        QLog.d("AVEffectPendantReport", 2, "reportAVPendantDownloadInfo", localThrowable);
-        return;
-        if ((arrayOfInt[0] <= 0) && (arrayOfInt[1] <= 0)) {
-          break;
+        else
+        {
+          this.jdField_a_of_type_Lhi.a(i, j);
+          localObject = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Lhi.a(k) + File.separator + this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.src_prefix + k + ".png";
+          lbj.c("MagicfaceNormalDecoder", "maigcfaceDecoder:" + this.jdField_a_of_type_Lhi.a() + "|" + (String)localObject);
+          l5 = System.currentTimeMillis();
+          localBitmap1 = a((String)localObject, localBitmap1);
+          l6 = System.currentTimeMillis();
+          l3 = System.currentTimeMillis() - l3;
+          if (l3 >= l4) {
+            break;
+          }
         }
-      } while (arrayOfInt[0] <= arrayOfInt[1]);
+      }
     }
-    localBigDecimal = new BigDecimal(arrayOfInt[0] * 1.0F / arrayOfInt[1]);
-    localHashMap.put("filter_download", String.valueOf(arrayOfInt[0]));
-    localHashMap.put("filter_total", String.valueOf(arrayOfInt[1]));
-    localHashMap.put("filter_ratio", String.valueOf(localBigDecimal.setScale(2, 4).floatValue()));
-    localHashMap.put("filter_spacing", String.valueOf(l1));
-    if (QLog.isColorLevel()) {
-      QLog.d("DailyReport", 2, "reportAVPendantDownloadInfo filter_download = " + arrayOfInt[0] + ",filter_total = " + arrayOfInt[1] + ",filter_spacing" + l1);
+    label464:
+    label610:
+    for (;;)
+    {
+      try
+      {
+        Thread.sleep(l4 - l3);
+        if ((k == this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.frame_index) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+        {
+          a(str, this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.is_repeat);
+          l3 = System.currentTimeMillis();
+          if (localBitmap1 != null) {
+            continue;
+          }
+          lbj.c("MagicfaceNormalDecoder", "maigcfaceDecoder bmp null:" + (String)localObject);
+          k += 1;
+          l2 += l6 - l5;
+          i += 1;
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        continue;
+        if ((k != this.jdField_a_of_type_Lhi.c) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
+          continue;
+        }
+        c(str);
+        continue;
+        if (this.b == null) {
+          break label610;
+        }
+      }
+      if (this.b.get() != null)
+      {
+        localObject = (lhh)this.b.get();
+        long l7 = System.currentTimeMillis();
+        boolean bool1;
+        if (this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width == -1)
+        {
+          bool1 = true;
+          if (this.jdField_a_of_type_Lhi.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height != -1) {
+            break label525;
+          }
+        }
+        for (boolean bool2 = true;; bool2 = false)
+        {
+          ((lhh)localObject).a(localBitmap1, localBitmap2, bool1, bool2, false, false, this.jdField_a_of_type_Lhi.b);
+          l1 = System.currentTimeMillis() - l7 + l1;
+          break;
+          bool1 = false;
+          break label464;
+        }
+        lbj.c("MagicfaceNormalDecoder", String.format("maigcfaceDecoder| readCost=%s(ms), renderCost=%s(ms), r=(%s), frame(%s)", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(m), Integer.valueOf(this.jdField_a_of_type_Lhi.a()) }));
+        if (localBitmap1 != null) {
+          localBitmap1.recycle();
+        }
+        if (i == this.jdField_a_of_type_Lhi.a() * m) {
+          return 1;
+        }
+        return 0;
+      }
     }
-    bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
-    UserAction.flushObjectsToDB(true);
-    lbc.c("AVEffectPendantReport", "reportAVPendantDownloadInfo, filter_download[" + (String)localHashMap.get("filter_download") + "], filter_total[" + (String)localHashMap.get("filter_total") + "],filter_total[" + (String)localHashMap.get("filter_ratio") + "],filter_ratio[" + (String)localHashMap.get("filter_spacing") + "], lastUserTime = " + l2 + "    ret[" + bool + "]");
-    return;
-    label380:
   }
 }
 

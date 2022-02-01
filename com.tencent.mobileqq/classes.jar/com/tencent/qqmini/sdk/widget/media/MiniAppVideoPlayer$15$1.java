@@ -10,9 +10,9 @@ class MiniAppVideoPlayer$15$1
   
   public void run()
   {
-    ((CoverVideoView)this.this$1.this$0.getParent()).setLayoutParams(MiniAppVideoPlayer.access$4700(this.this$1.this$0));
+    ((CoverVideoView)this.this$1.this$0.getParent()).setLayoutParams(MiniAppVideoPlayer.access$4800(this.this$1.this$0));
     if (this.this$1.this$0.getParent().getParent() != null) {
-      ((ViewGroup)this.this$1.this$0.getParent().getParent()).scrollTo(0, MiniAppVideoPlayer.access$4800(this.this$1.this$0));
+      ((ViewGroup)this.this$1.this$0.getParent().getParent()).scrollTo(0, MiniAppVideoPlayer.access$4900(this.this$1.this$0));
     }
     this.this$1.this$0.isBusyInChangeScreen = false;
   }

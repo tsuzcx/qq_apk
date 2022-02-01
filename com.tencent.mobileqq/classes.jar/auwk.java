@@ -1,31 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.Map;
 
-class auwk
-  extends Handler
+public abstract class auwk
+  implements MethodChannel.MethodCallHandler
 {
-  auwk(auwj paramauwj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void handleMessage(Message paramMessage)
+  protected abstract void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)auwj.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    String str = paramMethodCall.method;
+    QLog.d("SSOChannelHandler", 1, String.format("onMethodCall: %s", new Object[] { str }));
+    if (TextUtils.isEmpty(str))
     {
-    default: 
+      paramResult.notImplemented();
       return;
     }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+    if (str.equals("sendRequest"))
+    {
+      paramMethodCall = paramMethodCall.argument("req");
+      if ((paramMethodCall instanceof Map))
+      {
+        a(RequestPacket.fromMap((Map)paramMethodCall), paramResult);
+        return;
+      }
+      paramResult.notImplemented();
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 

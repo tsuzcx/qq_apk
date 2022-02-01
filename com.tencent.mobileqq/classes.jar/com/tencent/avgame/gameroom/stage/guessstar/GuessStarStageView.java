@@ -12,35 +12,41 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.avgame.gamelogic.data.Player;
 import com.tencent.avgame.session.AVGameUserInfo;
+import com.tencent.avgame.ui.AVGameText;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
-import mxq;
-import myn;
-import nak;
-import nbl;
-import nbm;
-import nbn;
+import myp;
+import mzq;
 import nbo;
-import ncg;
-import nch;
-import ngk;
+import ncy;
+import ncz;
+import nda;
+import ndb;
+import ndt;
+import ndu;
+import nif;
 
 public class GuessStarStageView
   extends RelativeLayout
-  implements nbm
+  implements ncz
 {
   int jdField_a_of_type_Int = 0;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   public LinearLayout a;
   public TextView a;
+  AVGameText jdField_a_of_type_ComTencentAvgameUiAVGameText;
   public Runnable a;
   ArrayList<Pair<Integer, String>> jdField_a_of_type_JavaUtilArrayList;
-  public nbl a;
-  nbo jdField_a_of_type_Nbo;
-  TextView b;
+  public ncy a;
+  ndb jdField_a_of_type_Ndb;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  AVGameText jdField_b_of_type_ComTencentAvgameUiAVGameText;
+  public Runnable b;
+  public Runnable c = new GuessStarStageView.3(this);
   
   public GuessStarStageView(Context paramContext)
   {
@@ -56,22 +62,26 @@ public class GuessStarStageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_JavaLangRunnable = new GuessStarStageView.1(this);
+    this.jdField_b_of_type_JavaLangRunnable = new GuessStarStageView.2(this);
     a();
   }
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558718, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365106));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379066));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379037));
-    this.b = ((TextView)findViewById(2131379039));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367572);
+    LayoutInflater.from(getContext()).inflate(2131558719, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365152));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379230));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379201));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379203));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367641);
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379711));
+    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379712));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370139);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.b.setTextSize(0, ngk.b());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = ngk.a();
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nif.b());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = nif.a();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_Nbl = new ncg(this);
+    this.jdField_a_of_type_Ncy = new ndt(this);
   }
   
   private void a(String paramString)
@@ -81,14 +91,14 @@ public class GuessStarStageView
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     if ((paramString != null) && (paramString.length() > 5)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, ngk.d());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nif.d());
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new nch(this, paramString));
+      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ndu(this, paramString));
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, ngk.c());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nif.c());
     }
   }
   
@@ -97,14 +107,14 @@ public class GuessStarStageView
     return this.jdField_a_of_type_AndroidWidgetImageView;
   }
   
-  public nbl a()
+  public ncy a()
   {
-    return this.jdField_a_of_type_Nbl;
+    return this.jdField_a_of_type_Ncy;
   }
   
   public void a(Player paramPlayer, AVGameUserInfo paramAVGameUserInfo)
   {
-    if (nak.k <= 0)
+    if (nbo.o <= 0)
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
@@ -112,24 +122,41 @@ public class GuessStarStageView
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(mxq parammxq)
+  public void a(myp parammyp)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GuessStarStageView", 2, "onUpdateCurTopic topic = " + parammxq);
+      QLog.d("GuessStarStageView", 2, "onUpdateCurTopic topic = " + parammyp);
     }
-    if (parammxq == null) {}
-    do
-    {
+    if (parammyp == null) {
       return;
-      this.jdField_a_of_type_JavaUtilArrayList = ((myn)parammxq).jdField_a_of_type_JavaUtilArrayList;
-    } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
-    this.jdField_a_of_type_Int = 0;
-    ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).first).intValue() * 1000);
+    }
+    parammyp = (mzq)parammyp;
+    String[] arrayOfString = parammyp.a();
+    if ((arrayOfString[0] != null) && (arrayOfString[0].length() != 0) && (arrayOfString[1] != null) && (arrayOfString[1].length() != 0) && (arrayOfString[2] != null) && (arrayOfString[2].length() != 0))
+    {
+      this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFFFFF", arrayOfString[2]);
+      this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setText(arrayOfString[0]);
+      this.jdField_b_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFC000", "#FFFFFF");
+      this.jdField_b_of_type_ComTencentAvgameUiAVGameText.setText(arrayOfString[1]);
+      ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList = parammyp.jdField_a_of_type_JavaUtilArrayList;
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
+        break;
+      }
+      this.jdField_a_of_type_Int = 0;
+      ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).first).intValue() * 1000);
+      return;
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.c);
+      ThreadManager.getUIHandlerV2().post(this.c);
+    }
   }
   
-  public void a(nbn paramnbn)
+  public void a(nda paramnda)
   {
-    this.jdField_a_of_type_Nbl.a(paramnbn);
+    this.jdField_a_of_type_Ncy.a(paramnda);
   }
   
   public void a(boolean paramBoolean)
@@ -157,8 +184,8 @@ public class GuessStarStageView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Nbo != null) {
-        this.jdField_a_of_type_Nbo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (this.jdField_a_of_type_Ndb != null) {
+        this.jdField_a_of_type_Ndb.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
       }
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -166,9 +193,9 @@ public class GuessStarStageView
     }
   }
   
-  public void setStageRecordPresenter(nbo paramnbo)
+  public void setStageRecordPresenter(ndb paramndb)
   {
-    this.jdField_a_of_type_Nbo = paramnbo;
+    this.jdField_a_of_type_Ndb = paramndb;
   }
 }
 

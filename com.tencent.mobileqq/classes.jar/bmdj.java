@@ -1,85 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.comic.webbundle.WebBundleReportUtils.1;
 
-class bmdj
-  extends IPConfigStrategy
-  implements bkzc
+public class bmdj
 {
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
+  public static String a = "0";
+  public static String b = "1";
+  public static String c = "2";
+  public static String d = "3";
+  public static String e = "4";
   
-  public bmdj()
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    a();
-    QzoneConfig.getInstance().addListener(this);
+    ThreadManager.post(new WebBundleReportUtils.1(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramString3, paramString4, paramString5, paramString6), 5, null, false);
   }
   
-  private void a()
+  public static void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadDirectIP");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadDirectIPVideo");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "optimumip_qzvv", "video_host_qzvv", "qzvv.video.qq.com");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "qzpb.qq.com", "video_host_qzpb", "qzpb.qq.com");
-    super.setConfig(this.jdField_a_of_type_JavaUtilMap);
-  }
-  
-  private void a(Map<String, String> paramMap, String paramString1, String paramString2)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
+    String str = "0";
+    if (paramBoolean) {
+      str = "1";
     }
-    String str = paramString1 + "||" + paramString2;
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
-    }
-    paramMap.put(str, paramString1);
-  }
-  
-  private void a(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    Object localObject = null;
-    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
-    paramString3 = paramString1 + "||" + paramString2;
-    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    paramString1 = localObject;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString4)) {
-        paramString1 = paramString2.replace("ips", paramString4);
-      }
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramMap.put(paramString3, paramString2);
-      return;
-    }
-    paramMap.put(paramString3, paramString1);
-  }
-  
-  public void onConfigChange()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneIPStracyConfig", 2, "QzoneIPStracyConfig receive change");
-    }
-    a();
+    a("hybrid", "webBundle_open", 0, 0, 0, 0, paramString1, str, paramString2, "");
   }
 }
 

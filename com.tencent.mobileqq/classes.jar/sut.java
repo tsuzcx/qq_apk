@@ -1,27 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import com.tencent.qphone.base.util.QLog;
 
 public class sut
-  implements View.OnClickListener
+  implements suu
 {
-  public sut(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public sut(RunningJob paramRunningJob, StringBuilder paramStringBuilder) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (RIJRedPacketManager.a().b()) {
-      RIJRedPacketManager.a().a(this.a.a(), 1, 1, 0);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Suo.b = paramString;
+  }
+  
+  public void doCancel() {}
+  
+  public boolean isCancelled()
+  {
+    return false;
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    QLog.d(RunningJob.jdField_a_of_type_JavaLangString, 1, "receive image data error: " + paramInt + " progress: " + this.jdField_a_of_type_JavaLangStringBuilder);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Suo.e = paramInt;
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    pnj.b(3, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Suo);
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Suo.d == 0) {
+      pnj.b(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Suo);
     }
-    for (;;)
-    {
-      ReadinjoyTabFrame.a(this.a).b(1, false, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ReadinjoyTabFrame.a(this.a).a(1, 1, 0);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_Suo.i = paramLong;
+    QLog.d(RunningJob.jdField_a_of_type_JavaLangString, 1, "receive image data success, total size: " + paramLong + " progress: " + this.jdField_a_of_type_JavaLangStringBuilder);
+  }
+  
+  public void publishProgress(int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.append(System.currentTimeMillis() + " " + paramInt + " ");
   }
 }
 

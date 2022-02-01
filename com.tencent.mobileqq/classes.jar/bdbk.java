@@ -1,42 +1,16 @@
-import org.xmlpull.v1.XmlSerializer;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdbk
-  extends bcxv
+class bdbk
+  implements Camera.AutoFocusCallback
 {
-  public bdbk()
-  {
-    this.a = "vote";
-  }
+  bdbk(bdbj parambdbj) {}
   
-  public String a()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    return "VoteCover";
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "vote");
-    if (this.aa == null) {}
-    for (String str = "";; str = this.aa)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "vote");
-      return;
-    }
-  }
-  
-  public boolean a(bcxj parambcxj)
-  {
-    if (parambcxj == null) {
-      return true;
-    }
-    parambcxj = parambcxj.a("cover");
-    if (parambcxj != null) {}
-    for (;;)
-    {
-      this.aa = parambcxj;
-      return true;
-      parambcxj = "";
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
     }
   }
 }

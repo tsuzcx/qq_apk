@@ -1,32 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uww
-  extends GestureDetector.SimpleOnGestureListener
+class uww
+  implements View.OnClickListener
 {
-  private final uwx jdField_a_of_type_Uwx;
+  uww(uwt paramuwt) {}
   
-  public uww(PublicAccountImageView paramPublicAccountImageView, uwx paramuwx)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Uwx = paramuwx;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return false;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

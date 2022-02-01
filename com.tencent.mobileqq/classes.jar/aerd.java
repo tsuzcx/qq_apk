@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class aerd
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aerd(NotificationActivity paramNotificationActivity) {}
+  public aerd(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerd
  * JD-Core Version:    0.7.0.1
  */

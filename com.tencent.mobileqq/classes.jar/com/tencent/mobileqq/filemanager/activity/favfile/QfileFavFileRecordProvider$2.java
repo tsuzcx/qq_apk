@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity.favfile;
 
-import asvi;
-import asvo;
-import aszd;
-import atbt;
+import atlm;
+import atls;
+import atqx;
+import atto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,26 +12,26 @@ import java.util.List;
 public class QfileFavFileRecordProvider$2
   implements Runnable
 {
-  public QfileFavFileRecordProvider$2(asvi paramasvi) {}
+  public QfileFavFileRecordProvider$2(atlm paramatlm) {}
   
   public void run()
   {
-    if (!asvi.a(this.this$0)) {
+    if (!atlm.a(this.this$0)) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    long l = asvi.a(this.this$0).a().a().a(asvi.a(this.this$0), localArrayList);
-    QLog.e(asvi.a, 1, asvi.b + "get favList timeout!!! gettedsize:" + localArrayList.size() + " nextTimestamp:" + l);
+    long l = atlm.a(this.this$0).a().a().a(atlm.a(this.this$0), localArrayList);
+    QLog.e(atlm.a, 1, atlm.b + "get favList timeout!!! gettedsize:" + localArrayList.size() + " nextTimestamp:" + l);
     if (localArrayList.size() > 0)
     {
-      asvo localasvo = new asvo(this.this$0);
-      this.this$0.a(localArrayList, localasvo);
-      this.this$0.a(localasvo);
+      atls localatls = new atls(this.this$0);
+      this.this$0.a(localArrayList, localatls);
+      this.this$0.a(localatls);
     }
-    asvi.a(this.this$0).a().a().a(asvi.a(this.this$0));
-    asvi.a(this.this$0, l);
-    asvi.a(this.this$0);
-    asvi.d(this.this$0);
+    atlm.a(this.this$0).a().a().a(atlm.a(this.this$0));
+    atlm.a(this.this$0, l);
+    atlm.a(this.this$0);
+    atlm.d(this.this$0);
     this.this$0.notifyObservers(new Object[] { Integer.valueOf(1), { Integer.valueOf(65535) } });
   }
 }

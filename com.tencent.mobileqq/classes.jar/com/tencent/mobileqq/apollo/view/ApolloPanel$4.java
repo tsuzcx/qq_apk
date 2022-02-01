@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ancd;
+import annx;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionPackage;
@@ -16,12 +16,12 @@ class ApolloPanel$4
   {
     if ((this.this$0.a != null) && (this.this$0.a.a != null))
     {
-      ancd localancd = (ancd)this.this$0.a.a.getManager(155);
-      if (localancd != null)
+      annx localannx = (annx)this.this$0.a.a.getManager(155);
+      if (localannx != null)
       {
         Iterator localIterator = this.a.iterator();
         while (localIterator.hasNext()) {
-          localancd.a((ApolloActionPackage)localIterator.next());
+          localannx.a((ApolloActionPackage)localIterator.next());
         }
       }
     }

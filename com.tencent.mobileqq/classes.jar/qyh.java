@@ -1,22 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
-
 public class qyh
-  implements Animation.AnimationListener
 {
-  public qyh(ComponentSocialOperation paramComponentSocialOperation) {}
+  public int a;
+  public long a;
+  public String a;
+  public qyi a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String toString()
   {
-    this.a.a.post(new ComponentSocialOperation.1.1(this));
+    return "PGCPicInfo{picWidth=" + this.jdField_a_of_type_Int + ", picHeight=" + this.jdField_b_of_type_Int + ", picMd5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", picUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnailUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", isAnimation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Qyi + '}';
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

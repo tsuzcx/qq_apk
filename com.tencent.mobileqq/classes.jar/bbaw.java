@@ -1,95 +1,79 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import org.json.JSONObject;
 
-public class bbaw
-  extends bhyq
+class bbaw
+  extends bbap
 {
-  public float a;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  public float b;
-  private int b;
-  private int c;
+  bbaw(bbav parambbav, vtg paramvtg, int paramInt) {}
   
-  public bbaw(Drawable paramDrawable1, int paramInt1, String paramString, int paramInt2, Drawable paramDrawable2, float paramFloat)
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
-    super(paramDrawable1, paramInt1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ArrayOfFloat = new float[this.jdField_a_of_type_JavaLangString.length()];
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt2);
-  }
-  
-  public int a()
-  {
-    getSize(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt());
-    return this.b;
-  }
-  
-  public int b()
-  {
-    Rect localRect = getDrawable().getBounds();
-    Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    int i = localRect.bottom;
-    int j = -localFontMetricsInt.top;
-    this.c = Math.max(i, localFontMetricsInt.bottom + j);
-    return this.c;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().top + paramInt4;; i = paramInt4)
+    ArraySet localArraySet = new ArraySet();
+    ArrayList localArrayList = new ArrayList();
+    if ("QQCircleRedCircle".equals(paramString))
     {
-      if ((this.b > 0) && (this.c > 0))
+      QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle updateNumMsg");
+      if (paramList != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, i, this.b, this.c + i);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      }
-      super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-      float f = getDrawable().getBounds().right;
-      paramInt1 = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().ascent;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramFloat + f, paramInt4, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        paramInt4 -= paramInt1;
+        paramString = paramList.iterator();
+        while (paramString.hasNext())
+        {
+          paramList = (NumRedMsg.NumMsgBusi)paramString.next();
+          if ((paramList != null) && (paramList.str_ext.get() != null)) {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject(paramList.str_ext.get());
+              localArraySet.add(localJSONObject.optString("_red_ext_uin"));
+              long l = bbav.a(this.jdField_a_of_type_Bbav);
+              if (l > 0L) {
+                try
+                {
+                  if (Long.parseLong(localJSONObject.optString("_red_ext_feed_time")) < bbav.a(this.jdField_a_of_type_Bbav))
+                  {
+                    localArrayList.add(Long.valueOf(paramList.ui64_msgid.get()));
+                    bbav.a(this.jdField_a_of_type_Bbav, 140000, (int)paramList.ui64_msgid.get(), 3);
+                  }
+                }
+                catch (Exception paramList)
+                {
+                  paramList.printStackTrace();
+                  QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle ", paramList);
+                }
+              }
+            }
+            catch (Exception paramList)
+            {
+              paramList.printStackTrace();
+              QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle ", paramList);
+            }
+          }
+        }
+        paramString = new ArrayList(localArraySet);
+        if (this.jdField_a_of_type_Vtg != null)
+        {
+          this.jdField_a_of_type_Vtg.a(paramString, this.b);
+          QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle listener returns successfully: " + paramString.size() + ", num = " + this.b);
+        }
+        if (bbav.a(this.jdField_a_of_type_Bbav) > 0L)
+        {
+          bbav.a(this.jdField_a_of_type_Bbav, 0L);
+          if (localArrayList.size() > 0)
+          {
+            paramString = this.jdField_a_of_type_Bbav.a("140000");
+            bbav.a(this.jdField_a_of_type_Bbav, paramString, 9, false, null, localArrayList, "");
+            QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle updateNumMsg updateMsgId: " + localArrayList);
+          }
+        }
       }
     }
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = getDrawable().getBounds();
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextWidths(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfFloat);
-    paramInt1 = paramCharSequence.right;
-    paramFontMetricsInt = this.jdField_a_of_type_ArrayOfFloat;
-    int i = paramFontMetricsInt.length;
-    paramInt2 = 0;
-    while (paramInt2 < i)
-    {
-      float f = paramFontMetricsInt[paramInt2];
-      paramInt1 = (int)(paramInt1 + f);
-      paramInt2 += 1;
-    }
-    this.b = paramInt1;
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt2 = paramCharSequence.bottom;
-    i = -paramPaint.top;
-    this.c = Math.max(paramInt2, paramPaint.bottom + i);
-    return paramInt1;
   }
 }
 

@@ -1,93 +1,132 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
-class avzt
-  implements avwu
+public class avzt
+  extends WebViewPlugin
 {
-  avzt(avzs paramavzs) {}
+  protected aasb a;
+  protected BroadcastReceiver a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bjbs jdField_a_of_type_Bjbs;
   
-  public void a(avwp paramavwp, int paramInt)
+  public avzt()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramavwp + " mRoomKey: " + avzs.a(this.a));
-    }
-    QQToast.a(avzs.a(this.a), "已在其他设备进行共享", 0).a();
-    avzs.a(this.a).finish();
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new avzv(this);
+    this.mPluginNameSpace = "groupVideo";
   }
   
-  public void a(avwp paramavwp, int paramInt1, int paramInt2)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramavwp, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
+      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " args:" + paramVarArgs);
     }
-    if (!paramavwp.equals(avzs.a(this.a))) {}
+    if ((!TextUtils.equals(paramString2, "groupVideo")) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
     do
     {
-      do
-      {
-        do
+      return false;
+      int i;
+      if (TextUtils.equals(paramString3, "closeGroupVideoAPI")) {
+        try
         {
-          return;
-          if (paramInt1 != 10100) {
+          paramJsBridgeListener = getJsonFromJSBridge(paramString1);
+          if (paramJsBridgeListener == null) {
             break;
           }
-          if ((paramInt2 == 2) && (avzs.a(this.a).a() == 1))
+          i = paramJsBridgeListener.optInt("type");
+          paramJsBridgeListener = new Intent("tencent.video.webjs.cmd");
+          paramJsBridgeListener.putExtra("type", i);
+          switch (i)
           {
-            if (avzs.a(this.a) != null)
-            {
-              avzs.a(this.a).a.a(1, avzs.a(this.a).a(), avzs.a(this.a).a());
-              QLog.d("LocationShareController", 1, new Object[] { "onOperateRoomResponse: invoked. 兜底处理房间关闭状态，在进房失败后创建房间。 ", " errorCode: ", Integer.valueOf(paramInt1) });
-              return;
-            }
-            QLog.e("LocationShareController", 1, "onOperateRoomResponse: failed. not valid room key. ", new RuntimeException());
-            return;
+          case 1: 
+          case 2: 
+            this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramJsBridgeListener);
           }
-        } while ((avzs.a(this.a) == null) || (avzs.a(this.a).isFinishing()));
-        avxq.a(avzs.a(this.a));
-        return;
-      } while (paramInt1 != 10101);
-      if ((avzs.a(this.a) != null) && (!avzs.a(this.a).isFinishing()))
-      {
-        avxq.b(avzs.a(this.a));
-        return;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("LocationShareController", 2, new Object[] { "join limit, onOperateRoomResponse: invoked. ", " roomKey: ", paramavwp });
-  }
-  
-  public void a(avwp paramavwp, LocationRoom.Venue paramVenue, List<avwn> paramList)
-  {
-    if ((!paramavwp.equals(avzs.a(this.a))) || (avzs.a(this.a).isFinishing())) {
-      return;
-    }
-    paramVenue = paramList.iterator();
-    while (paramVenue.hasNext())
+      if (TextUtils.equals(paramString3, "openRoom"))
+      {
+        try
+        {
+          Object localObject = getJsonFromJSBridge(paramString1);
+          if (localObject != null)
+          {
+            paramJsBridgeListener = ((JSONObject)localObject).optString("roomCode");
+            i = ((JSONObject)localObject).optInt("isGroupCode");
+            paramString1 = ((JSONObject)localObject).optString("fromId");
+            paramString2 = ((JSONObject)localObject).optString("backType");
+            paramString3 = ((JSONObject)localObject).optString("action");
+            paramVarArgs = ((JSONObject)localObject).optString("openType");
+            localObject = ((JSONObject)localObject).optString("extra");
+            this.jdField_a_of_type_Aasb.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
+            awaa.a("group_video", new avzu(this, paramString3));
+          }
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
+        }
+        return true;
+      }
+    } while (!TextUtils.equals(paramString3, "preload"));
+    try
     {
-      avwn localavwn = (avwn)paramVenue.next();
-      Bitmap localBitmap = this.a.a(localavwn.a());
-      if (localBitmap != null)
+      QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "preload url:" + paramString1);
+      this.jdField_a_of_type_Aasb.e(null);
+      return true;
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      for (;;)
       {
-        localBitmap = bgmo.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        avzs.a(this.a).a(localavwn.a(), localBitmap);
+        paramJsBridgeListener.printStackTrace();
       }
     }
-    avzs.a(this.a).a(paramList);
-    avzs.a(this.a).a(paramavwp);
+    return true;
   }
   
-  public void b(avwp paramavwp, int paramInt)
+  public void onCreate()
   {
-    if (!paramavwp.equals(avzs.a(this.a))) {}
-    while ((paramInt == 2) || (paramInt == 1)) {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
+    this.jdField_a_of_type_Aasb = aasb.a();
+    this.jdField_a_of_type_Aasb.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "GVideoWebPlugin onCreate");
+    }
+    IntentFilter localIntentFilter = new IntentFilter(awax.a("com.tencent.od"));
+    localIntentFilter.addAction(awax.b("com.tencent.od"));
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Bjbs = new bjbs(this.mRuntime.a());
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Aasb != null) {
+      this.jdField_a_of_type_Aasb.b();
+    }
+    try
+    {
+      this.jdField_a_of_type_Bjbs.dismiss();
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       return;
     }
-    avxq.a(avzs.a(this.a));
+    catch (Throwable localThrowable) {}
   }
 }
 

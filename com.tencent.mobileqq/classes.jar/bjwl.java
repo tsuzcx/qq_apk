@@ -1,26 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qqmini.proxyimpl.KingCardProxyImpl.1;
-import com.tencent.qqmini.sdk.launcher.action.ActionBridge.UpdateUIActionBridge;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bjwl
-  implements Animator.AnimatorListener
+final class bjwl
+  implements DialogInterface.OnClickListener
 {
-  public bjwl(KingCardProxyImpl.1 param1) {}
+  bjwl(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ActionBridge.UpdateUIActionBridge.updateRedDot(this.a.a);
+    bjwk.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    bdll.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bjqw.a().a(25, paramDialogInterface);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ActionBridge.UpdateUIActionBridge.updateRedDot(this.a.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

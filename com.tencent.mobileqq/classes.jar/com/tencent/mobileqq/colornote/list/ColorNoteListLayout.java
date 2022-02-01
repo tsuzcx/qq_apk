@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aqeh;
+import aqtk;
 
 public class ColorNoteListLayout
   extends LinearLayout
@@ -20,7 +20,7 @@ public class ColorNoteListLayout
   private int jdField_a_of_type_Int;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
-  private aqeh jdField_a_of_type_Aqeh;
+  private aqtk jdField_a_of_type_Aqtk;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int b;
   private int c = -1;
@@ -50,7 +50,7 @@ public class ColorNoteListLayout
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364676);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364722);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, paramContext);
   }
@@ -64,8 +64,8 @@ public class ColorNoteListLayout
   {
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Aqeh != null)) {
-        this.jdField_a_of_type_Aqeh.b();
+      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Aqtk != null)) {
+        this.jdField_a_of_type_Aqtk.b();
       }
       return true;
     }
@@ -136,9 +136,9 @@ public class ColorNoteListLayout
     this.b = paramInt2;
   }
   
-  public void setHideListener(aqeh paramaqeh)
+  public void setHideListener(aqtk paramaqtk)
   {
-    this.jdField_a_of_type_Aqeh = paramaqeh;
+    this.jdField_a_of_type_Aqtk = paramaqtk;
   }
 }
 

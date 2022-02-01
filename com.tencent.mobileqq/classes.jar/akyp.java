@@ -1,28 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
-class akyp
-  implements View.OnClickListener
+public class akyp
+  implements MediaPlayer.OnCompletionListener
 {
-  akyp(akyh paramakyh) {}
+  public akyp(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    try
-    {
-      bglp.a(akyh.a(this.a), 0, null, anni.a(2131699723), 2131690582, 2131694081, new akyq(this), new akyr(this)).show();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + localThrowable.getMessage());
-      }
-    }
+    RedPacketKSongFragment.a(this.a, false);
+    paramMediaPlayer.release();
   }
 }
 

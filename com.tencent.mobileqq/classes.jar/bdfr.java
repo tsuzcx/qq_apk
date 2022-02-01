@@ -1,6 +1,6 @@
 public abstract interface bdfr
 {
-  public abstract void a(bdfw parambdfw);
+  public abstract void f(boolean paramBoolean);
 }
 
 

@@ -1,21 +1,21 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aemb
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aemb(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public aemb(EditActivity paramEditActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (!this.a.a)
-    {
-      bcst.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
     }
-    return false;
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

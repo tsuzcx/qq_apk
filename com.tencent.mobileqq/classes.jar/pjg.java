@@ -1,56 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pjg
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements pks
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoDynamicBufferConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = phv.a(paramString);
-    Object localObject = paramString.keySet();
-    for (;;)
-    {
-      String str1;
-      String str2;
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "dynamic_buffer_switch")) {
-            bmqa.k(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "dynamic_buffer_config_json")) {
-        bmqa.f(str2);
-      }
-    }
-  }
+  public pjg(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void a()
   {
-    super.onWipeConfig(paramInt);
-    bmqa.k(0);
-    bmqa.f("");
+    ReadInJoySelfFragment.b(this.a);
   }
 }
 

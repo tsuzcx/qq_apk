@@ -1,15 +1,44 @@
-import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.kwstudio.office.base.IGlobal;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
+import java.io.File;
+import java.io.InputStream;
+import java.util.concurrent.Executor;
 
-public class ausz
-  implements SDKInitListener
+public final class ausz
+  implements IGlobal
 {
-  public ausz(GameCenterVideoViewController paramGameCenterVideoViewController) {}
+  private final TdsReaderGlobal a;
   
-  public void onSDKInited(boolean paramBoolean)
+  private ausz(TdsReaderGlobal paramTdsReaderGlobal)
   {
-    QLog.d("GameCenterVideoViewController", 4, "onSDKInited result:" + paramBoolean);
+    this.a = paramTdsReaderGlobal;
+  }
+  
+  public Context getApplicationContext()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public Executor getExecutor()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public String getFileDir()
+  {
+    Context localContext = getApplicationContext();
+    File localFile2 = localContext.getExternalFilesDir(null);
+    File localFile1 = localFile2;
+    if (localFile2 == null) {
+      localFile1 = localContext.getFilesDir();
+    }
+    return localFile1.getAbsolutePath();
+  }
+  
+  public InputStream getResourceAsStream(String paramString)
+  {
+    return null;
   }
 }
 

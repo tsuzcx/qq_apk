@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
 
-class quy
-  implements View.OnClickListener
+public class quy
 {
-  quy(qux paramqux) {}
-  
-  public void onClick(View paramView)
-  {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public List<oidb_cmd0x68b.BackOffGroupInfo> a;
+  public List<ArticleInfo> b;
 }
 
 

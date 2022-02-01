@@ -1,32 +1,63 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.net.Uri;
+import android.view.Surface;
+import java.util.Map;
 
-public class xvo
-  extends QQUIEventReceiver<xvm, wii>
+public abstract interface xvo
 {
-  public xvo(@NonNull xvm paramxvm)
-  {
-    super(paramxvm);
-  }
+  public abstract int a();
   
-  public void a(@NonNull xvm paramxvm, @NonNull wii paramwii)
-  {
-    if ((paramxvm.a == null) || (paramwii.a == null) || (!TextUtils.equals(paramxvm.a.a, paramwii.a.mVid))) {}
-    do
-    {
-      return;
-      paramxvm.i();
-      paramxvm = (xng)paramxvm.a(xng.class);
-    } while (paramxvm == null);
-    paramxvm.d();
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
   
-  public Class acceptEventClass()
-  {
-    return wii.class;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Context paramContext, Uri paramUri, Map<String, String> paramMap);
+  
+  public abstract void a(Surface paramSurface);
+  
+  public abstract void a(xvp paramxvp);
+  
+  public abstract void a(xvq paramxvq);
+  
+  public abstract void a(xvr paramxvr);
+  
+  public abstract void a(xvs paramxvs);
+  
+  public abstract void a(xvt paramxvt);
+  
+  public abstract void a(xvu paramxvu);
+  
+  public abstract void a(xvw paramxvw);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract int e();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

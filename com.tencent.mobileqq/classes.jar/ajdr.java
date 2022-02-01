@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class ajdr
-  implements View.OnClickListener
+  extends pfh
 {
-  public ajdr(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
+  public ajdr(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(View paramView)
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    azgc.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Ajdg.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean)
+    {
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
+      }
+      ClassificationSearchActivity.b(this.a, true);
+    }
   }
 }
 

@@ -1,19 +1,32 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetSessionInfoRsp;
 
 class vrj
-  implements zxa<FeedCloudRead.StGetSessionInfoRsp>
+  implements beuq
 {
-  vrj(vri paramvri, int paramInt) {}
+  vrj(vri paramvri, vrd paramvrd) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetSessionInfoRsp paramStGetSessionInfoRsp)
+  public void onResp(bevm parambevm)
   {
-    if (((!paramBoolean) || (paramLong != 0L) || (paramStGetSessionInfoRsp == null)) && (!TextUtils.isEmpty(paramString))) {
-      QLog.e("QCircleReportHelper", 1, "requestReportSession error:" + paramString);
+    if (parambevm.a == 0)
+    {
+      QLog.i(vri.a, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " download success return");
+      vri.a(this.jdField_a_of_type_Vri, this.jdField_a_of_type_Vrd, true, 0);
     }
-    vri.a(this.jdField_a_of_type_Vri, paramStGetSessionInfoRsp, this.jdField_a_of_type_Int);
+    do
+    {
+      return;
+      if ((parambevm.a == 1) || (parambevm.a == 2))
+      {
+        QLog.i(vri.a, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " download failed return:" + parambevm.b);
+        vri.a(this.jdField_a_of_type_Vri, this.jdField_a_of_type_Vrd, false, parambevm.b);
+        return;
+      }
+    } while (parambevm.a == 3);
+    QLog.i(vri.a, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " download failed return" + parambevm.b);
+    vri.a(this.jdField_a_of_type_Vri, this.jdField_a_of_type_Vrd, false, parambevm.b);
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

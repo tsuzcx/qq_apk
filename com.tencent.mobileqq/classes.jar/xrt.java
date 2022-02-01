@@ -1,63 +1,28 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.Surface;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public abstract interface xrt
+public class xrt
+  extends xrz<StoryVideoItem>
 {
-  public abstract int a();
+  public xrt(VideoViewVideoHolder paramVideoViewVideoHolder)
+  {
+    super(paramVideoViewVideoHolder, null);
+  }
   
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Context paramContext, Uri paramUri, Map<String, String> paramMap);
-  
-  public abstract void a(Surface paramSurface);
-  
-  public abstract void a(xru paramxru);
-  
-  public abstract void a(xrv paramxrv);
-  
-  public abstract void a(xrw paramxrw);
-  
-  public abstract void a(xrx paramxrx);
-  
-  public abstract void a(xry paramxry);
-  
-  public abstract void a(xrz paramxrz);
-  
-  public abstract void a(xsb paramxsb);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract int e();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    yuk.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+  }
 }
 
 

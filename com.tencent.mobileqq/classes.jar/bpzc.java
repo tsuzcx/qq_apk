@@ -1,19 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
 public class bpzc
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnTouchListener
 {
-  public bpzc(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public bpzc(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
-    {
-      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
-      this.a.a.a(paramMediaPlayer);
-    }
+    return this.a.a(paramView, paramMotionEvent);
   }
 }
 

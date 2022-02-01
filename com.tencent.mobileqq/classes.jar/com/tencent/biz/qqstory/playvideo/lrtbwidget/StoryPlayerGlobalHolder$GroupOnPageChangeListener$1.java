@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.view.Gravity;
-import xmu;
-import xmv;
-import yqu;
+import xqp;
+import xqq;
+import yup;
 
 public class StoryPlayerGlobalHolder$GroupOnPageChangeListener$1
   implements Runnable
 {
-  public StoryPlayerGlobalHolder$GroupOnPageChangeListener$1(xmv paramxmv) {}
+  public StoryPlayerGlobalHolder$GroupOnPageChangeListener$1(xqq paramxqq) {}
   
   public void run()
   {
     if (Gravity.isVertical(this.a.a.a.b()))
     {
-      yqu.a("play_video", "slide_up_down", 0, 0, new String[] { "1", "", "", "" });
+      yup.a("play_video", "slide_up_down", 0, 0, new String[] { "1", "", "", "" });
       return;
     }
-    yqu.a("play_video", "slide_zuoyou", 0, 0, new String[] { "1", "", "", "" });
+    yup.a("play_video", "slide_zuoyou", 0, 0, new String[] { "1", "", "", "" });
   }
 }
 

@@ -1,138 +1,43 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.viola.adapter.HttpResponse;
+import com.tencent.viola.adapter.IHttpAdapter.OnHttpListener;
+import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
 import java.util.List;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class tdo
+  implements IHttpAdapter.OnHttpListener
 {
-  public static final String a;
-  int a;
-  public List<byte[]> a;
-  public tdq a;
-  public tea<Bitmap> a;
-  int jdField_b_of_type_Int = 0;
-  final List<SoftReference<Bitmap>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  public tdo(KdLottieView paramKdLottieView, String paramString, VLottie.IVLottieLoadListener paramIVLottieLoadListener) {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "zimage." + tdo.class.getSimpleName();
-  }
+  public void onHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
   
-  tdo(int paramInt)
+  public void onHttpFinish(HttpResponse paramHttpResponse)
   {
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
-    this.jdField_a_of_type_Tdq = new tdq(2097152);
-    this.jdField_a_of_type_Int = 0;
-    while (paramInt < 5)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new byte[16384]);
-      paramInt += 1;
+    int i = Integer.parseInt(paramHttpResponse.statusCode);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i == 200) {
+      bool1 = bool2;
     }
-    this.jdField_a_of_type_Tea = new tdp(this);
-  }
-  
-  public Bitmap a(BitmapFactory.Options paramOptions)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        this.jdField_b_of_type_Int += 1;
-        ArrayList localArrayList = new ArrayList();
-        List localList = this.jdField_b_of_type_JavaUtilList;
-        i = 0;
-        try
-        {
-          if (i < this.jdField_b_of_type_JavaUtilList.size())
-          {
-            localBitmap = (Bitmap)((SoftReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
-            if (localBitmap != null)
-            {
-              if (ted.a(localBitmap, paramOptions))
-              {
-                localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-                str = "cache";
-                if (!localArrayList.isEmpty()) {
-                  this.jdField_b_of_type_JavaUtilList.removeAll(localArrayList);
-                }
-                if (localBitmap != null) {
-                  this.jdField_a_of_type_Int += 1;
-                }
-                if (QLog.isColorLevel()) {
-                  ted.a(jdField_a_of_type_JavaLangString, "getReuseableBitmap found:" + str + " picSize:" + paramOptions.outWidth + "x" + paramOptions.outHeight + " bitmap:" + localBitmap + " state:" + toString());
-                }
-                return localBitmap;
-              }
-            }
-            else {
-              localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-            }
-          }
-        }
-        finally {}
-        String str = "notFound";
-      }
-      finally {}
-      Bitmap localBitmap = null;
-      continue;
-      i += 1;
-    }
-  }
-  
-  tds a(tdw paramtdw)
-  {
-    if (paramtdw == null) {}
-    do
-    {
-      return null;
-      paramtdw = bglc.a(paramtdw.a());
-    } while ((paramtdw == null) || (!paramtdw.a()));
-    return paramtdw.a();
-  }
-  
-  public void a()
-  {
     try
     {
-      this.jdField_a_of_type_Tdq.a();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(tdw paramtdw, tds paramtds)
-  {
-    if (paramtdw == null) {}
-    for (;;)
-    {
-      return;
-      try
+      if (paramHttpResponse.originalData != null)
       {
-        bglc.a(paramtdw.a(), paramtds);
+        paramHttpResponse = new JSONObject(new String(paramHttpResponse.originalData, "utf-8"));
+        bool1 = true;
+        LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.getContext().getResources(), paramHttpResponse, new tdp(this));
       }
-      finally {}
+      this.jdField_a_of_type_ComTencentViolaUiComponentVLottie$IVLottieLoadListener.onResult(bool1);
+      return;
     }
+    catch (Exception paramHttpResponse) {}
   }
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("total:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" reuse:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public void onHttpStart() {}
 }
 
 

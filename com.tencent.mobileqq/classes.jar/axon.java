@@ -1,31 +1,12 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 class axon
-  implements axjr
+  extends RecyclerView.ViewHolder
 {
-  axon(axol paramaxol) {}
-  
-  public void a(Comments.Comment paramComment)
+  public axon(axoh paramaxoh, View paramView)
   {
-    if (axol.a(this.a) != null)
-    {
-      axol.a(this.a).a(paramComment);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
-      }
-    }
-  }
-  
-  public void a(Comments.Comment paramComment, int paramInt, String paramString)
-  {
-    if (axol.a(this.a) != null)
-    {
-      axol.a(this.a).a(paramComment, paramInt, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
-      }
-    }
+    super(paramView);
   }
 }
 

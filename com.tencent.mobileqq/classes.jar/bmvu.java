@@ -1,24 +1,21 @@
-import cooperation.qzone.util.QZLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class bmvu
+  implements View.OnClickListener
 {
-  public static int a = 2;
-  public static int b = 1;
-  public static int c = 4;
+  public bmvu(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public static void a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    QZLog.d(paramString1, c, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    QZLog.d(paramString1, b, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    QZLog.e(paramString1, paramString2, null);
+    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
+    {
+      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
+      QzoneVerticalVideoDownloadActivity.access$400(this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

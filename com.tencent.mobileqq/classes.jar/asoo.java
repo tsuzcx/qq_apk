@@ -1,30 +1,95 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class asoo
-  implements OnCompositionLoadedListener
 {
-  public asoo(MatchingView.1 param1) {}
+  public static long a;
+  public int a;
+  public boolean a;
+  public long b;
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  static
   {
-    if (paramLottieComposition == null)
+    jdField_a_of_type_Long = 86400000L;
+  }
+  
+  public static asoo a(String paramString, boolean paramBoolean)
+  {
+    Object localObject = null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    paramString = localBaseApplicationImpl.getSharedPreferences("emosm_sp_is_recommend", 4).getString(localBaseApplicationImpl.getRuntime().getAccount() + "_" + paramString, null);
+    if (paramString != null) {}
+    do
     {
-      QLog.e("MatchingView", 1, "onCompositionLoaded lottieComposition is null");
-      return;
+      try
+      {
+        paramString = new asoo().a(new JSONObject(paramString));
+        return paramString;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("EmoticonRecDressup", 1, "getEmotionRecommend failed", paramString);
+      }
+      paramString = localObject;
+    } while (!paramBoolean);
+    paramString = new asoo();
+    paramString.jdField_a_of_type_Boolean = true;
+    return paramString;
+  }
+  
+  private asoo a(JSONObject paramJSONObject)
+  {
+    this.b = paramJSONObject.optLong("0");
+    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("1");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("2");
+    return this;
+  }
+  
+  public static void a(long paramLong)
+  {
+    jdField_a_of_type_Long = 1000L * paramLong;
+    QLog.i("EmoticonRecDressup", 1, "EmotionPanelViewPagerAdapter.RECOMMEND_EXPIRED_TIME update to " + jdField_a_of_type_Long);
+  }
+  
+  public void a(int paramInt)
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    SharedPreferences localSharedPreferences = localBaseApplicationImpl.getSharedPreferences("emosm_sp_is_recommend", 4);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    long l1 = localSharedPreferences.getLong("createTime", 0L);
+    long l2 = System.currentTimeMillis();
+    if (l2 - l1 > 2592000000L)
+    {
+      localEditor.clear();
+      localEditor.putLong("createTime", l2);
     }
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    MatchingView.a(this.a.this$0, localLottieDrawable);
-    ThreadManager.getUIHandler().post(new MatchingView.1.1.1(this));
+    this.b = l2;
+    localEditor.putString(localBaseApplicationImpl.getRuntime().getAccount() + "_" + paramInt, toString());
+    localEditor.commit();
+  }
+  
+  public String toString()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("0", this.b);
+      localJSONObject.put("1", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("2", this.jdField_a_of_type_Int);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("EmoticonRecDressup", 1, "toString failed", localJSONException);
+      }
+    }
   }
 }
 

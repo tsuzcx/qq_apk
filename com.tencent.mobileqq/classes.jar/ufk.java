@@ -1,38 +1,22 @@
-import android.content.SharedPreferences.Editor;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1;
 
-class ufk
-  implements aagf
+public class ufk
+  implements aaip
 {
-  ufk(ufh paramufh) {}
+  ufk(ufj paramufj) {}
   
-  public void a()
+  public void a(View paramView)
   {
-    if (ufh.a(this.a).a()) {
-      ufh.a(this.a).b();
+    if (this.a.isShowing()) {
+      ufj.a(this.a).runOnUiThread(new WsCommentInputPopupWindow.1.1(this));
     }
-    for (;;)
-    {
-      ufh.a(this.a, false);
-      return;
-      this.a.dismiss();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (ufh.a(this.a) != paramInt)
-    {
-      ufh.a(this.a, paramInt);
-      ufh.a(this.a);
-      ufh.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      ufh.a(this.a).commit();
-    }
-    ufh.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ufk
  * JD-Core Version:    0.7.0.1
  */

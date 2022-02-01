@@ -16,14 +16,14 @@ public class BaseCacheManager
   private int[] baseCache = new int[0];
   private BaseCache[] cacheArray = new BaseCache[4];
   protected DBDelayManager dbDelayManager;
-  private boolean isInit;
-  private boolean isLazyInit;
+  private boolean isInit = false;
+  private boolean isLazyInit = false;
   private int[] lazyBaseCache = new int[0];
   
   public BaseCacheManager(IMCoreAppRuntime paramIMCoreAppRuntime)
   {
     this.app = paramIMCoreAppRuntime;
-    this.dbDelayManager = new DBDelayManager(this.app);
+    this.dbDelayManager = new DBDelayManager(paramIMCoreAppRuntime);
   }
   
   private void initCaches(int[] paramArrayOfInt)
@@ -68,7 +68,7 @@ public class BaseCacheManager
           this.cacheArray[paramInt] = localBaseCache;
         }
         if ((QLog.isColorLevel()) && (localBaseCache != null)) {
-          QLog.d("Q.db.Cache", 2, "get cache instance:" + localBaseCache.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
+          QLog.d("Q.db.Cache", 2, "get cache instance:" + localBaseCache.getClass().getName() + " cost time =[" + (System.currentTimeMillis() - l) + "]");
         }
         return localBaseCache;
       }

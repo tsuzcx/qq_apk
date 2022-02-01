@@ -3,14 +3,14 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdhi;
+import bead;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReSendCmd
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReSendCmd> CREATOR = new bdhi();
+  public static final Parcelable.Creator<ReSendCmd> CREATOR = new bead();
   public int a;
   public String a;
   List<String> a;

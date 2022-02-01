@@ -1,11 +1,17 @@
-import tencent.im.oidb.articlesummary.articlesummary.BuluoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rgu
-  implements pvb<articlesummary.BuluoInfo, rgz>
+class rgu
+  implements rgk
 {
-  public rgz a(articlesummary.BuluoInfo paramBuluoInfo)
+  rgu(rgo paramrgo, UgcVideo paramUgcVideo) {}
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    return rgz.a(paramBuluoInfo);
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.getProgress();
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.RIJUgcVideoPublishManager", 2, "uploadCallback: taskType = " + paramInt + ",isSuccess = " + paramBoolean1 + "isFinish = " + paramBoolean2 + "errorMsg = " + paramString + "progress = " + i);
+    }
   }
 }
 

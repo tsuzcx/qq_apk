@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bayr
-  implements DialogInterface.OnCancelListener
+  implements Downloader.DownloadListener
 {
-  bayr(bayi parambayi) {}
+  bayr(bayq parambayq) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.a.b) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
-    }
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
   }
 }
 

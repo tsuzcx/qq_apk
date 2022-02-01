@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm;
 
-import arpf;
+import aset;
 import java.util.List;
 
 class CustomEmotionRoamingDBManagerBase$4$1

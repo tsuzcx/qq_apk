@@ -1,11 +1,14 @@
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import java.util.List;
-
 public abstract interface aqgq
 {
-  public abstract void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList);
+  public abstract String a(aqgt paramaqgt);
   
-  public abstract void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean);
+  public abstract boolean a(aqgt paramaqgt);
+  
+  public abstract boolean a(aqgt paramaqgt, boolean paramBoolean);
+  
+  public abstract String b(aqgt paramaqgt);
+  
+  public abstract boolean b(aqgt paramaqgt);
 }
 
 

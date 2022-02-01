@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcdr;
-import bdvs;
-import bdvu;
-import bdwu;
-import bgnt;
+import bcwj;
+import beum;
+import beuo;
+import bevn;
+import bhnv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -32,13 +32,13 @@ public class PtvTemplateManager$15
       } while (!QLog.isColorLevel());
       QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "reqApp:" + localQQAppInterface);
       return;
-      bdvs localbdvs = new bdvs();
-      localbdvs.jdField_a_of_type_Bdvw = new bcdr(this);
-      localbdvs.jdField_a_of_type_JavaLangString = this.a.doodleUrl;
-      localbdvs.jdField_a_of_type_Int = 0;
-      localbdvs.c = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
-      localbdvs.b = bgnt.a(bdwu.a().a());
-      localQQAppInterface.getNetEngine(0).a(localbdvs);
+      beum localbeum = new beum();
+      localbeum.jdField_a_of_type_Beuq = new bcwj(this);
+      localbeum.jdField_a_of_type_JavaLangString = this.a.doodleUrl;
+      localbeum.jdField_a_of_type_Int = 0;
+      localbeum.c = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
+      localbeum.b = bhnv.a(bevn.a().a());
+      localQQAppInterface.getNetEngine(0).a(localbeum);
     } while (!QLog.isColorLevel());
     QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.doodleUrl);
   }

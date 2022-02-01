@@ -1,25 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
+import java.util.HashMap;
 
-class akte
-  implements akse
+public class akte
+  extends PhotoListBaseData
 {
-  akte(aktd paramaktd, File paramFile, AtomicBoolean paramAtomicBoolean) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult arg2)
-  {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
-    synchronized (this.jdField_a_of_type_JavaIoFile)
-    {
-      this.jdField_a_of_type_JavaIoFile.notify();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      return;
-      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
-    }
-  }
+  public int a;
+  public long a = -1L;
+  public SessionInfo a;
+  public String a;
+  public HashMap<String, PhotoSendParams> a;
+  public zkk a;
+  public boolean a;
+  public String b;
+  public HashMap<String, byte[]> b;
+  public boolean b;
+  public String c;
+  public HashMap<LocalMediaInfo, LocalMediaInfo> c = new HashMap();
+  public boolean c;
+  public String d;
+  public boolean d = true;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.fragments.main;
 
+import aabe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,55 +14,42 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
-import vab;
-import vbf;
-import vbt;
-import zxj;
+import vbr;
+import vcv;
+import vdj;
 
 public class QCircleAggregationActivityFragment
   extends QCircleBaseFragment
 {
   private QCircleAggregationFragmentsPart jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart;
-  private List<zxj> jdField_a_of_type_JavaUtilList;
+  private List<aabe> jdField_a_of_type_JavaUtilList;
   
   private void a()
   {
-    Intent localIntent = getActivity().getIntent();
-    int i;
+    getActivity().getIntent();
     if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart != null) {
-      i = -1;
+      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart.a(-1);
     }
-    try
-    {
-      int j = Integer.parseInt(localIntent.getStringExtra("key_first_show_tab"));
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      label29:
-      break label29;
-    }
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart.a(i);
   }
   
   public int a()
   {
-    return 2131560669;
+    return 2131560684;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      Object localObject = new vbf();
-      ((vbf)localObject).a(this);
+      Object localObject = new vcv();
+      ((vcv)localObject).a(this);
       this.jdField_a_of_type_JavaUtilList.add(localObject);
-      localObject = new vbt();
-      ((vbt)localObject).a(this);
+      localObject = new vdj();
+      ((vdj)localObject).a(this);
       this.jdField_a_of_type_JavaUtilList.add(localObject);
-      localObject = new vab();
-      ((vab)localObject).a(this);
+      localObject = new vbr();
+      ((vbr)localObject).a(this);
       this.jdField_a_of_type_JavaUtilList.add(localObject);
       localObject = this.jdField_a_of_type_JavaUtilList;
       QCircleAggregationFragmentsPart localQCircleAggregationFragmentsPart = new QCircleAggregationFragmentsPart();
@@ -130,21 +118,11 @@ public class QCircleAggregationActivityFragment
   
   public void onNewIntent(Intent paramIntent)
   {
-    int i = 1;
     QLog.d("QCircleAggregationActivityFragment", 1, "QCircleAggregationActivityFragment->onNewIntent");
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart != null) {}
-    try
-    {
-      int j = Integer.parseInt(paramIntent.getStringExtra("key_first_show_tab"));
-      i = j;
+    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart != null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart.a(1, false, false);
     }
-    catch (Exception paramIntent)
-    {
-      label34:
-      break label34;
-    }
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleAggregationFragmentsPart.a(i, false, false);
   }
   
   public void onResume()

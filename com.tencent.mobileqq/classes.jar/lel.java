@@ -1,6 +1,8 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -12,22 +14,23 @@ class lel
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    if ((paramIntent != null) && ("com.tencent.process.exit".equals(paramIntent.getAction())))
     {
-      do
+      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+      paramIntent = paramIntent.getExtras().getString("verify");
+      if ((lek.a(this.a, paramIntent, paramContext)) && (lek.a(this.a, paramContext)))
       {
-        return;
         paramContext = lek.a(this.a).a();
-      } while (paramContext == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("GVipFunCallMonitor", 2, "recv vipfuncall msg broadcast: " + paramIntent.getAction());
+        if ((paramContext == null) || (paramContext.a().f()))
+        {
+          if (paramContext != null) {
+            paramContext.B();
+          }
+          QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
+          Process.killProcess(Process.myPid());
+        }
       }
-    } while (!paramIntent.getAction().equals("tencent.video.q2v.AnnimateDownloadFinish"));
-    if (QLog.isColorLevel()) {
-      QLog.d("GVipFunCallMonitor", 2, "ACTION_ANNIMATE_DOWNLOAD_FINISH");
     }
-    paramContext.e(paramIntent.getIntExtra("fun_call_id", 0));
   }
 }
 

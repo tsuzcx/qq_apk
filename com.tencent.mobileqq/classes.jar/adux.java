@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class adux
-  implements atve
+  implements View.OnClickListener
 {
-  public adux(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aszd paramaszd) {}
+  public adux(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_Aszd.b(localFileManagerEntity);
-      }
-    }
-  }
-  
-  public void b() {}
+  public void onClick(View paramView) {}
 }
 
 

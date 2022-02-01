@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agkt;
+import agtu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class AIOShakeHelper$3
   implements Runnable
 {
-  public AIOShakeHelper$3(agkt paramagkt, MessageForShakeWindow paramMessageForShakeWindow) {}
+  public AIOShakeHelper$3(agtu paramagtu, MessageForShakeWindow paramMessageForShakeWindow) {}
   
   public void run()
   {
     this.this$0.a();
-    agkt.a(this.this$0).a(this.a.frienduin, false);
+    agtu.a(this.this$0).a(this.a.frienduin, false);
   }
 }
 

@@ -11,9 +11,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import bgmp;
-import bgng;
-import bhij;
+import bhmr;
+import bhni;
+import biiy;
 import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.MemoryManager;
@@ -33,24 +33,24 @@ import feedcloud.FeedCloudToastshowsvr.StShowTime;
 import feedcloud.FeedCloudToastshowsvr.StToast;
 import feedcloud.FeedCloudToastshowsvr.StToastBackgroundImg;
 import feedcloud.FeedCloudToastshowsvr.StToastContent;
-import uxo;
-import vrf;
-import vtu;
-import vxy;
+import uyx;
+import vtq;
+import vwt;
+import wbs;
 
 public class QCirclePushToastView
   extends QCircleBaseWidgetView<FeedCloudToastshowsvr.StToast>
   implements View.OnClickListener
 {
   private View jdField_a_of_type_AndroidViewView;
-  private bhij jdField_a_of_type_Bhij;
+  private biiy jdField_a_of_type_Biiy;
   private CellTextView jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextCellTextView;
   private CornerURLImageView jdField_a_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView;
   private QCircleLottileAnimView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private vxy jdField_a_of_type_Vxy;
-  private bhij jdField_b_of_type_Bhij;
+  private wbs jdField_a_of_type_Wbs;
+  private biiy jdField_b_of_type_Biiy;
   private CellTextView jdField_b_of_type_ComTencentBizQqcircleBizpartsDanmakuTextCellTextView;
   private CornerURLImageView jdField_b_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView;
   private QCircleLottileAnimView jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView;
@@ -77,13 +77,13 @@ public class QCirclePushToastView
   
   private void d()
   {
-    this.jdField_a_of_type_Vxy.removeMessages(1);
-    this.jdField_a_of_type_Vxy.removeMessages(2);
+    this.jdField_a_of_type_Wbs.removeMessages(1);
+    this.jdField_a_of_type_Wbs.removeMessages(2);
   }
   
   public int a()
   {
-    return 2131560772;
+    return 2131560797;
   }
   
   protected String a()
@@ -104,7 +104,7 @@ public class QCirclePushToastView
     if (l2 < 3000L) {
       l1 = 3000L;
     }
-    this.jdField_a_of_type_Vxy.sendEmptyMessageDelayed(2, l1);
+    this.jdField_a_of_type_Wbs.sendEmptyMessageDelayed(2, l1);
     Object localObject = localStToast.toastContent.coverLayerAnimation.animationUrl.get();
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView.setVisibility(8);
@@ -114,10 +114,10 @@ public class QCirclePushToastView
       localObject = AnimationUtils.loadAnimation(getContext(), 2130772218);
       this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
       postDelayed(new QCirclePushToastView.1(this, localStToast), 320L);
-      vrf.a("", 43, 1, 0, "", "", localStToast.toastId.get(), String.valueOf(localStToast.toastType.get()), "");
+      vtq.a("", 43, 1, 0, "", "", localStToast.toastId.get(), String.valueOf(localStToast.toastType.get()), "");
       return;
       this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView.setVisibility(0);
-      this.jdField_b_of_type_Bhij.a(this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView, (String)localObject);
+      this.jdField_b_of_type_Biiy.a(this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView, (String)localObject);
     }
   }
   
@@ -125,30 +125,30 @@ public class QCirclePushToastView
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373122);
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView = ((CornerURLImageView)paramView.findViewById(2131363225));
-      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView = ((CornerURLImageView)paramView.findViewById(2131365124));
-      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView.setRadius(vtu.b(4.0F));
-      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextCellTextView = ((CellTextView)paramView.findViewById(2131378870));
-      this.jdField_b_of_type_ComTencentBizQqcircleBizpartsDanmakuTextCellTextView = ((CellTextView)paramView.findViewById(2131365029));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364548));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView = ((QCircleLottileAnimView)paramView.findViewById(2131376540));
-      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView = ((QCircleLottileAnimView)paramView.findViewById(2131365130));
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373235);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView = ((CornerURLImageView)paramView.findViewById(2131363249));
+      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView = ((CornerURLImageView)paramView.findViewById(2131365169));
+      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView.setRadius(vwt.b(4.0F));
+      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextCellTextView = ((CellTextView)paramView.findViewById(2131379032));
+      this.jdField_b_of_type_ComTencentBizQqcircleBizpartsDanmakuTextCellTextView = ((CellTextView)paramView.findViewById(2131365077));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364593));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView = ((QCircleLottileAnimView)paramView.findViewById(2131376672));
+      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView = ((QCircleLottileAnimView)paramView.findViewById(2131365175));
       paramView = this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView.getLayoutParams();
       if (paramView != null)
       {
-        paramView.width = vtu.a();
+        paramView.width = vwt.a();
         paramView.height = (paramView.width * 7 / 15);
         this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView.setLayoutParams(paramView);
       }
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-      this.jdField_a_of_type_Vxy = new vxy(this, Looper.getMainLooper(), null);
-      this.jdField_a_of_type_Bhij = new bhij(null, paramContext);
-      this.jdField_b_of_type_Bhij = new bhij(null, paramContext);
+      this.jdField_a_of_type_Wbs = new wbs(this, Looper.getMainLooper(), null);
+      this.jdField_a_of_type_Biiy = new biiy(null, paramContext);
+      this.jdField_b_of_type_Biiy = new biiy(null, paramContext);
       int i = (int)(MemoryManager.a() / 4L);
-      this.jdField_a_of_type_Bhij.a(i);
-      this.jdField_b_of_type_Bhij.a(i);
+      this.jdField_a_of_type_Biiy.a(i);
+      this.jdField_b_of_type_Biiy.a(i);
     }
   }
   
@@ -170,7 +170,7 @@ public class QCirclePushToastView
           if (!TextUtils.isEmpty(str1)) {
             this.jdField_a_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView.setImageURL(str1);
           }
-          float f = vtu.a(((FeedCloudToastshowsvr.StToastContent)localObject).toastBackgroundImg.cornerRadius.get() / 2.0F);
+          float f = vwt.a(((FeedCloudToastshowsvr.StToastContent)localObject).toastBackgroundImg.cornerRadius.get() / 2.0F);
           this.jdField_a_of_type_ComTencentBizQqcircleWidgetsCornerURLImageView.setRadius(f);
           this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView.setRadius(f);
           if (!TextUtils.isEmpty(paramStToast.toastContent.rightIconAnimation.animationUrl.get())) {
@@ -201,8 +201,8 @@ public class QCirclePushToastView
           this.jdField_a_of_type_ComTencentImageURLImageView.setImageURL(localThrowable);
           this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
           continue;
-          this.jdField_a_of_type_Vxy.removeMessages(1);
-          this.jdField_a_of_type_Vxy.sendEmptyMessageDelayed(1, 1000L);
+          this.jdField_a_of_type_Wbs.removeMessages(1);
+          this.jdField_a_of_type_Wbs.sendEmptyMessageDelayed(1, 1000L);
           return;
         }
         str1 = ((FeedCloudToastshowsvr.StToastContent)localObject).title.get();
@@ -227,11 +227,11 @@ public class QCirclePushToastView
           this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLottileAnimView.setVisibility(4);
         }
       }
-      this.jdField_a_of_type_Vxy.removeMessages(1);
-      this.jdField_a_of_type_Vxy.sendEmptyMessageDelayed(1, paramStToast.showControl.showTime.value.get());
+      this.jdField_a_of_type_Wbs.removeMessages(1);
+      this.jdField_a_of_type_Wbs.sendEmptyMessageDelayed(1, paramStToast.showControl.showTime.value.get());
       return;
-      this.jdField_a_of_type_Vxy.removeMessages(1);
-      this.jdField_a_of_type_Vxy.sendEmptyMessageAtTime(1, paramStToast.showControl.showTime.value.get());
+      this.jdField_a_of_type_Wbs.removeMessages(1);
+      this.jdField_a_of_type_Wbs.sendEmptyMessageAtTime(1, paramStToast.showControl.showTime.value.get());
       return;
     }
     QLog.e("QCirclePushToastView", 2, "bindData: data is null!");
@@ -262,23 +262,23 @@ public class QCirclePushToastView
         }
         if (i == 1)
         {
-          bgmp localbgmp = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), str);
-          if (localbgmp != null) {
-            localbgmp.a();
+          bhmr localbhmr = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), str);
+          if (localbhmr != null) {
+            localbhmr.a();
           }
         }
         for (;;)
         {
-          vrf.a("", 43, 2, 0, "", "", localStToast.toastId.get(), String.valueOf(localStToast.toastType.get()), "");
+          vtq.a("", 43, 2, 0, "", "", localStToast.toastId.get(), String.valueOf(localStToast.toastType.get()), "");
           break;
           QLog.e("QCirclePushToastView", 2, "Push toast content clicked, but jumpAction is null! jumpUrl: " + str);
           continue;
-          uxo.a(getContext(), str);
+          uyx.a(getContext(), str, null, -1);
         }
         c();
         localStToast = (FeedCloudToastshowsvr.StToast)a();
         if (localStToast != null) {
-          vrf.a("", 43, 3, 0, "", "", localStToast.toastId.get(), String.valueOf(localStToast.toastType.get()), "");
+          vtq.a("", 43, 3, 0, "", "", localStToast.toastId.get(), String.valueOf(localStToast.toastType.get()), "");
         }
       }
     }

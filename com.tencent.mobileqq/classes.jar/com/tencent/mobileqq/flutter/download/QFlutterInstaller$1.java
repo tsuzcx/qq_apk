@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.flutter.download;
 
-import aufb;
+import auww;
 
 public final class QFlutterInstaller$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Aufb.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Auww.a(this.jdField_a_of_type_Int);
   }
 }
 

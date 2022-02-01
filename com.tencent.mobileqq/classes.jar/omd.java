@@ -1,33 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.1;
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.2;
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.3;
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.SwipListView;
 
-public class omd
-  implements olq
+class omd
+  implements View.OnClickListener
 {
-  omd(omb paramomb) {}
+  omd(omc paramomc, View paramView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.3(this, paramInt));
-  }
-  
-  public void a(orb paramorb, int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.4(this, paramInt1, paramInt2));
-  }
-  
-  public void b()
-  {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.2(this));
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Omc.a).a(this.jdField_a_of_type_AndroidViewView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,56 +1,48 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anqj
-  extends anii
+class anqj
+  implements View.OnClickListener
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private apcy jdField_a_of_type_Apcy;
+  anqj(anqh paramanqh) {}
   
-  public anqj(AppInterface paramAppInterface)
+  public void onClick(View paramView)
   {
-    super(paramAppInterface);
-  }
-  
-  public void a(Context paramContext)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    Object localObject;
+    if ((!TextUtils.isEmpty(anqh.a(this.a))) && (!anqh.a(this.a).equals("0")))
     {
-      if (this.jdField_a_of_type_Apcy == null)
+      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+      int i = this.a.a.jdField_a_of_type_Int;
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null)
       {
-        this.jdField_a_of_type_Apcy = apcy.a();
-        this.jdField_a_of_type_Apcy.a(paramContext, hashCode(), "MiniCodePeakHandler");
+        localObject = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { localObject });
+        localObject = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
+        ((Intent)localObject).putExtra("uin", anqh.a(this.a));
+        ((Intent)localObject).putExtra("uintype", 1008);
+        this.a.a.getActivity().startActivity((Intent)localObject);
       }
-      return;
     }
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return null;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      if (this.jdField_a_of_type_Apcy != null)
-      {
-        this.jdField_a_of_type_Apcy.a(hashCode(), "MiniCodePeakHandler");
-        this.jdField_a_of_type_Apcy = null;
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      localObject = "";
+      break;
+      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
     }
   }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import anni;
+import anzj;
 import com.tencent.av.so.DownloadInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
-import lzi;
+import mae;
 
 public class QAVSoConfigHandler
   extends ConfigHandler<DownloadInfo>
@@ -17,20 +17,20 @@ public class QAVSoConfigHandler
   public int getConfigVer()
   {
     if (AudioHelper.e()) {
-      throw new IllegalArgumentException(this.TAG + anni.a(2131707714));
+      throw new IllegalArgumentException(this.TAG + anzj.a(2131707823));
     }
     return 0;
   }
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DownloadInfo paramDownloadInfo)
   {
-    lzi.a(paramQQAppInterface, paramString, paramDownloadInfo);
+    mae.a(paramQQAppInterface, paramString, paramDownloadInfo);
   }
   
   public void saveConfig(String paramString, int paramInt)
   {
     if (AudioHelper.e()) {
-      throw new IllegalArgumentException(this.TAG + anni.a(2131707713));
+      throw new IllegalArgumentException(this.TAG + anzj.a(2131707822));
     }
   }
 }

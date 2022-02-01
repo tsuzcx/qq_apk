@@ -1,24 +1,29 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-final class bftz
-  extends ClickableSpan
+class bftz
+  implements View.OnTouchListener
 {
-  bftz(String paramString, MessageRecord paramMessageRecord) {}
+  bftz(bftx parambftx, String paramString, bfug parambfug) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    awri.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      paramView = new Intent(this.jdField_a_of_type_Bftx.a.getContext(), QQBrowserActivity.class);
+      paramMotionEvent = bhyk.a("troopEnterEffect");
+      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Bftx.b);
+      this.jdField_a_of_type_Bftx.a.getContext().startActivity(paramView);
+      bfui.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Bftx.b });
+      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Bfug.a), "");
+    }
+    return true;
   }
 }
 

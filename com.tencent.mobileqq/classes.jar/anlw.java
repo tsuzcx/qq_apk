@@ -1,14 +1,24 @@
+import com.tencent.qphone.base.util.QLog;
+
 class anlw
-  implements bcpg
+  implements anmf
 {
-  anlw(anlv paramanlv) {}
+  anlw(anlu paramanlu) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    this.a.A();
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "EnterRoom successfully!!!");
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
+      }
+      return;
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
+    }
   }
-  
-  public void b() {}
 }
 
 

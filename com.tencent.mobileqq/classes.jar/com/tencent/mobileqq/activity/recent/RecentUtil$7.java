@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import bcst;
+import bdll;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nuk;
-import nun;
-import nve;
+import nwf;
+import nwh;
+import nwy;
 
 public final class RecentUtil$7
   implements Runnable
 {
-  public RecentUtil$7(QQAppInterface paramQQAppInterface, String paramString, int paramInt, nuk paramnuk) {}
+  public RecentUtil$7(QQAppInterface paramQQAppInterface, String paramString, int paramInt, nwf paramnwf) {}
   
   public void run()
   {
@@ -26,12 +26,12 @@ public final class RecentUtil$7
       {
         localMessage.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessage.frienduin, localMessage.msgtype, localMessage.uniseq, "extStr", localMessage.extStr);
-        if (this.jdField_a_of_type_Nuk.a != null) {
-          bcst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nuk.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nuk.a.c, "", nve.a(), this.jdField_a_of_type_Nuk.a.b);
+        if (this.jdField_a_of_type_Nwf.a != null) {
+          bdll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nwf.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nwf.a.c, "", nwy.a(), this.jdField_a_of_type_Nwf.a.b);
         }
       }
-      if (this.jdField_a_of_type_Nuk.a != null) {
-        bcst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nuk.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nuk.a.c, "", "", this.jdField_a_of_type_Nuk.a.b);
+      if (this.jdField_a_of_type_Nwf.a != null) {
+        bdll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nwf.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nwf.a.c, "", "", this.jdField_a_of_type_Nwf.a.b);
       }
     }
   }

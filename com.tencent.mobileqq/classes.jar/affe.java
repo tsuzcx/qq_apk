@@ -1,25 +1,28 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class affe
-  extends ClickableSpan
+class affe
+  implements DialogInterface.OnClickListener
 {
-  public affe(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  affe(affd paramaffd) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SoundAndVibrateActivity.a(this.a);
-    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.a.getResources().getColor(2131166994));
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_Affc.a.app.a().b(this.a.jdField_a_of_type_Affc.a.a(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Affc.a.b();
+      return;
+    } while (this.a.jdField_a_of_type_Affc.a.jdField_a_of_type_Affc.getCount() <= 0);
+    this.a.jdField_a_of_type_Affc.a.app.a().a(this.a.jdField_a_of_type_Affc.a.a(), 0);
+    this.a.jdField_a_of_type_Affc.a.jdField_a_of_type_Affc.changeCursor(this.a.jdField_a_of_type_Affc.getCursor());
   }
 }
 

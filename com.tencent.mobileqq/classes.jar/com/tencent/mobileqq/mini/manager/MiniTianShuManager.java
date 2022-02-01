@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.manager;
 
-import bmvg;
-import bmvh;
-import bmvi;
+import bnwo;
+import bnwp;
+import bnwq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,17 +10,17 @@ import java.util.List;
 public class MiniTianShuManager
 {
   public static final String TAG = "MiniTianShuManager";
-  private static List<bmvh> mCallbackList = new ArrayList();
+  private static List<bnwp> mCallbackList = new ArrayList();
   
-  public static void requestAdv(List<bmvg> paramList, bmvh parambmvh)
+  public static void requestAdv(List<bnwo> paramList, bnwp parambnwp)
   {
-    if ((paramList == null) || (paramList.size() <= 0) || (parambmvh == null)) {
+    if ((paramList == null) || (paramList.size() <= 0) || (parambnwp == null)) {
       return;
     }
-    parambmvh = new MiniTianShuManager.1(parambmvh);
-    mCallbackList.add(parambmvh);
+    parambnwp = new MiniTianShuManager.1(parambnwp);
+    mCallbackList.add(parambnwp);
     QLog.i("MiniTianShuManager", 1, "add callback " + mCallbackList.size());
-    bmvi.a().a(paramList, parambmvh);
+    bnwq.a().a(paramList, parambnwp);
   }
 }
 

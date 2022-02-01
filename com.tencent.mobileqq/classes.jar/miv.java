@@ -1,12 +1,6 @@
 public abstract interface miv
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(lvj paramlvj, int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt);
+  public abstract void a();
 }
 
 

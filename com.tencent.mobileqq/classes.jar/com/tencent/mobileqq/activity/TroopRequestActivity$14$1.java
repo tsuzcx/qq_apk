@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import afno;
-import anmw;
+import afws;
+import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
@@ -9,18 +9,18 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopRequestActivity$14$1
   implements Runnable
 {
-  public TroopRequestActivity$14$1(afno paramafno, String paramString) {}
+  public TroopRequestActivity$14$1(afws paramafws, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Afno.a.app != null)
+    if (this.jdField_a_of_type_Afws.a.app != null)
     {
-      localObject = (anmw)this.jdField_a_of_type_Afno.a.app.getManager(51);
+      localObject = (anyw)this.jdField_a_of_type_Afws.a.app.getManager(51);
       if (localObject != null)
       {
-        localObject = ((anmw)localObject).b(this.jdField_a_of_type_JavaLangString);
+        localObject = ((anyw)localObject).b(this.jdField_a_of_type_JavaLangString);
         if (localObject != null) {
-          this.jdField_a_of_type_Afno.a.runOnUiThread(new TroopRequestActivity.14.1.1(this, (Card)localObject));
+          this.jdField_a_of_type_Afws.a.runOnUiThread(new TroopRequestActivity.14.1.1(this, (Card)localObject));
         }
       }
     }

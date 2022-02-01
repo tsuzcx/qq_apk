@@ -1,72 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class aqus
-  extends aqkz<aqur>
+  extends OrientationEventListener
 {
-  @NonNull
-  public aqur a(int paramInt)
+  public aqus(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    return new aqur();
+    super(paramContext, paramInt);
   }
   
-  @Nullable
-  public aqur a(aqlg[] paramArrayOfaqlg)
+  public void onOrientationChanged(int paramInt)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
-    {
-      aqur localaqur = aqur.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqur;
-    }
-    return null;
-  }
-  
-  public void a(aqur paramaqur)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramaqur.toString());
-    }
-  }
-  
-  public Class<aqur> clazz()
-  {
-    return aqur.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 361;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqus
  * JD-Core Version:    0.7.0.1
  */

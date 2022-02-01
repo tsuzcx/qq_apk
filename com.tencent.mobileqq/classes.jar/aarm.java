@@ -1,43 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
 
-public abstract class aarm
-  extends niv
+public class aarm
+  implements ISPlayerVideoView.IVideoViewCallBack
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aarm(TribeVideoPlugin paramTribeVideoPlugin) {}
+  
+  public void onSurfaceChanged(Object paramObject)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
   }
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.ResendRspBody paramResendRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onSurfaceCreated(Object paramObject)
   {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null, paramBundle);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
     }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.ResendRspBody)localRspBody.resend_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
-      }
+  }
+  
+  public void onSurfaceDestroy(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
-      return;
-    }
-    a(false, -1, null, paramBundle);
   }
 }
 

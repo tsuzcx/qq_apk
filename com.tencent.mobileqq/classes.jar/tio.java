@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
 
 public class tio
-  implements View.OnClickListener
+  implements rpk
 {
-  public tio(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher, tir paramtir) {}
+  public tio(ViolaVideoView paramViolaVideoView) {}
   
-  public void onClick(View paramView)
+  public long a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_Tir);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return ViolaVideoView.a(this.a).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    ViolaVideoView.a(this.a).d(paramInt);
+  }
+  
+  public long b()
+  {
+    return ViolaVideoView.a(this.a).b();
   }
 }
 

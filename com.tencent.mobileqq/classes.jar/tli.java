@@ -1,22 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
-import com.tencent.qphone.base.util.QLog;
-
-public class tli
-  implements tlm
+class tli
+  implements tld
 {
-  public tli(ViolaAccessHelper.2 param2) {}
+  tli(tlf paramtlf) {}
   
-  public void a()
+  public void a(tqt paramtqt, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
+    if (this.a.a.a(paramtqt)) {
+      this.a.a.a(tlf.a(this.a), tlf.a(this.a), paramInt1, paramInt2);
     }
   }
 }

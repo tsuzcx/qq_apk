@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class bbtt
-  extends bbsj
+  implements DialogInterface.OnClickListener
 {
-  public final bbtu a;
+  public bbtt(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public bbtt(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-    this.a = new bbtu(paramQQAppInterface);
-  }
-  
-  public Comparator<bbmu> a()
-  {
-    return this.a;
+    paramDialogInterface.dismiss();
+    this.a.getActivity().finish();
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_close", "click_close", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

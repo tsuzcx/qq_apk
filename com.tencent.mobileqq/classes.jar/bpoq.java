@@ -1,176 +1,315 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.view.animation.LinearInterpolator;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
 public class bpoq
-  extends bpoz
+  extends bqgi
+  implements View.OnClickListener, bpos, bqch
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
-  private int e;
+  private long jdField_a_of_type_Long = -1L;
+  private bpoz jdField_a_of_type_Bpoz = (bpoz)bplq.a().c(8);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c = true;
   
-  public bpoq(Context paramContext, String paramString)
+  public bpoq(@NonNull bqgk parambqgk, boolean paramBoolean)
   {
-    super(paramContext, paramString);
-    a(paramString);
-    b();
-    c();
+    super(parambqgk);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static String a(int paramInt, String paramString)
+  private Bundle a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("type", paramInt);
-      localJSONObject.put("city_bitmap_path", paramString);
-      paramString = localJSONObject.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("CityStickerDrawable", 2, paramString);
-      }
-      return paramString;
+    Bundle localBundle = null;
+    if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_AndroidOsBundle != null) {
+      localBundle = this.jdField_a_of_type_Bqgk.jdField_a_of_type_AndroidOsBundle.getBundle("container");
     }
-    catch (JSONException paramString)
+    return localBundle;
+  }
+  
+  private void a(int paramInt, bqua parambqua, MusicItemInfo paramMusicItemInfo)
+  {
+    boolean bool = parambqua.a.getBooleanExtra("isMixOriginal", this.jdField_a_of_type_Boolean);
+    if (paramMusicItemInfo != null)
     {
-      for (;;)
+      parambqua.a.backgroundMusicOffset = paramMusicItemInfo.musicStart;
+      int j = paramMusicItemInfo.musicEnd - paramMusicItemInfo.musicStart;
+      int i = j;
+      if (!this.jdField_a_of_type_Bqgk.c()) {
+        i = Math.min(j, (int)this.jdField_a_of_type_Bqgk.a(paramInt));
+      }
+      parambqua.a.backgroundMusicDuration = i;
+      parambqua.a.backgroundMusicPath = paramMusicItemInfo.getLocalPath();
+      PublishVideoEntry localPublishVideoEntry = parambqua.a;
+      if (!bool)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CityStickerDrawable", 2, paramString, new Object[0]);
-        }
-        paramString = null;
+        bool = true;
+        localPublishVideoEntry.isMuteRecordVoice = bool;
+        parambqua.a.putExtra("vs_publish_entry_json_key_music_id", Integer.valueOf(paramMusicItemInfo.mItemId));
+        parambqua.a.putExtra("vs_publish_entry_json_key_music_mid_id", paramMusicItemInfo.mSongMid);
+        parambqua.a.putExtra("vs_publish_entry_json_key_song_name", paramMusicItemInfo.mMusicName);
+        parambqua.a.putExtra("vs_publish_entry_json_key_music_album_pic", paramMusicItemInfo.mAlbumUrl);
       }
+    }
+    do
+    {
+      return;
+      bool = false;
+      break;
+      paramMusicItemInfo = this.jdField_a_of_type_Bpoz.b();
+    } while ((paramMusicItemInfo == null) || ((paramMusicItemInfo.mType != 3) && (!paramMusicItemInfo.isDownloading())));
+    parambqua.a.backgroundMusicPath = null;
+  }
+  
+  private MusicItemInfo b()
+  {
+    Object localObject2 = null;
+    Object localObject1 = a();
+    if (localObject1 != null) {}
+    for (localObject1 = ((Bundle)localObject1).getBundle(MusicProviderView.class.getSimpleName());; localObject1 = null)
+    {
+      MusicItemInfo localMusicItemInfo;
+      boolean bool;
+      if (localObject1 != null)
+      {
+        localMusicItemInfo = (MusicItemInfo)((Bundle)localObject1).getParcelable("select_music");
+        localObject2 = ((Bundle)localObject1).getString("select_music_local_path");
+        bool = ((Bundle)localObject1).getBoolean("select_mute");
+        if (localMusicItemInfo == null) {
+          break label111;
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localMusicItemInfo.setPath((String)localObject2);
+        }
+        localObject2 = localMusicItemInfo;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("EditVideoQimMusic", 2, "restore music" + localMusicItemInfo.mMusicName);
+          localObject2 = localMusicItemInfo;
+        }
+      }
+      label111:
+      do
+      {
+        return localObject2;
+        localObject2 = localMusicItemInfo;
+      } while (!bool);
+      localObject1 = new MusicItemInfo();
+      ((MusicItemInfo)localObject1).mType = 3;
+      ((MusicItemInfo)localObject1).mItemId = -2;
+      return localObject1;
     }
   }
   
-  protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
+  private void b(int paramInt, @NonNull bqua parambqua, MusicItemInfo paramMusicItemInfo)
   {
-    int i;
-    int k;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      i = 225;
-      k = this.e;
-      if (paramArrayList == null) {
-        break label200;
+    if (paramMusicItemInfo != null) {
+      if (paramMusicItemInfo.isMyMusicInfo())
+      {
+        parambqua.a.backgroundMusicOffset = paramMusicItemInfo.musicStart;
+        paramInt = Math.min(paramMusicItemInfo.musicEnd - paramMusicItemInfo.musicStart, (int)this.jdField_a_of_type_Bqgk.a(paramInt));
+        parambqua.a.backgroundMusicDuration = paramInt;
+        parambqua.a.backgroundMusicPath = paramMusicItemInfo.getLocalPath();
+        parambqua.a.isMuteRecordVoice = true;
       }
+    }
+    do
+    {
+      return;
+      parambqua.a.backgroundMusicOffset = 0;
+      parambqua.a.backgroundMusicDuration = ((int)this.jdField_a_of_type_Bqgk.a(paramInt));
+      break;
+      paramMusicItemInfo = this.jdField_a_of_type_Bpoz.b();
+    } while ((paramMusicItemInfo == null) || (paramMusicItemInfo.mType != 3));
+    parambqua.a.backgroundMusicPath = null;
+    parambqua.a.isMuteRecordVoice = true;
+  }
+  
+  @Nullable
+  public MusicItemInfo a()
+  {
+    if (this.jdField_a_of_type_Bpoz == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Bpoz.a();
+  }
+  
+  public void a()
+  {
+    super.a();
+    a(bqch.class, this);
+    if (this.jdField_a_of_type_Bpoz != null)
+    {
+      this.jdField_a_of_type_Bpoz.a(this);
+      this.jdField_a_of_type_Bpoz.a(this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(int paramInt, @NonNull bqua parambqua)
+  {
+    super.a(paramInt, parambqua);
+    if (this.jdField_a_of_type_Bpoz == null) {
+      return;
+    }
+    MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_Bpoz.a();
+    if ((this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 14))
+    {
+      a(paramInt, parambqua, localMusicItemInfo);
+      return;
+    }
+    b(paramInt, parambqua, localMusicItemInfo);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Bpoz == null) {}
+    while (this.jdField_a_of_type_Bpoz.a() == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bpoz.a(paramLong);
+  }
+  
+  public void a(bqho parambqho)
+  {
+    MusicItemInfo localMusicItemInfo = a();
+    if (localMusicItemInfo == null)
+    {
+      parambqho.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    if ((localMusicItemInfo.mType != 5) && (localMusicItemInfo.mType != 1))
+    {
+      parambqho.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    switch (localMusicItemInfo.mType)
+    {
     }
     for (;;)
     {
       try
       {
-        j = ((Integer)paramArrayList.get(this.jdField_a_of_type_Int)).intValue();
-        int n;
-        QLog.e("CityStickerDrawable", 1, paramArrayList, new Object[0]);
+        parambqho.jdField_a_of_type_Long = localMusicItemInfo.mItemId;
+        parambqho.jdField_a_of_type_Boolean = true;
+        return;
       }
-      catch (RuntimeException paramArrayList)
+      catch (Exception localException)
       {
-        try
-        {
-          n = ((Integer)paramArrayList.get(this.jdField_b_of_type_Int)).intValue();
-          i = n;
-          m = ((Integer)paramArrayList.get(this.c)).intValue();
-          k = n;
-          i = j;
-          j = m;
-          this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(k);
-          paramCanvas.save();
-          this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect);
-          this.jdField_b_of_type_AndroidGraphicsRect.offset(0, i);
-          paramCanvas.clipRect(0, 0, this.d, j);
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-          paramCanvas.restore();
-          return;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        catch (RuntimeException paramArrayList)
-        {
-          for (;;)
-          {
-            int m = j;
-            j = i;
-            i = m;
-          }
-        }
-        paramArrayList = paramArrayList;
-        j = 225;
-        i = 0;
+        QLog.e("EditVideoQimMusic", 2, "music id is error: title:" + localMusicItemInfo.mMusicName + ", id:" + localMusicItemInfo.mItemId);
+        parambqho.jdField_a_of_type_Boolean = false;
       }
-      m = j;
-      int j = k;
-      k = m;
+      parambqho.jdField_a_of_type_Int = 0;
       continue;
-      label200:
-      j = k;
-      k = 225;
-      i = 0;
+      parambqho.jdField_a_of_type_Int = 1;
     }
   }
   
-  public String[] a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    try
+    bqgu localbqgu = (bqgu)this.jdField_a_of_type_Bqgk.a(bqgu.class);
+    if (localbqgu != null) {
+      localbqgu.a(paramBoolean);
+    }
+  }
+  
+  public void aU_()
+  {
+    super.aU_();
+  }
+  
+  public void aY_()
+  {
+    super.aY_();
+    this.b = true;
+    if (this.jdField_a_of_type_Bpoz != null) {
+      this.jdField_a_of_type_Bpoz.d();
+    }
+  }
+  
+  public void ab_()
+  {
+    if (this.jdField_a_of_type_Bpoz != null) {
+      this.jdField_a_of_type_Bpoz.d();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bpoz == null) {}
+    do
     {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        this.f = paramString.optInt("type", 0);
-        this.jdField_b_of_type_JavaLangString = paramString.optString("city_bitmap_path");
+      return;
+      if (!this.b) {
+        break;
       }
-      return new String[] { this.jdField_b_of_type_JavaLangString };
-    }
-    catch (JSONException paramString)
+    } while (!QLog.isColorLevel());
+    QLog.d("EditVideoQimMusic", 2, "playBgMusic in = null isPause=" + this.b);
+    return;
+    this.jdField_a_of_type_Bpoz = ((bpoz)bplq.a().c(8));
+    MusicItemInfo localMusicItemInfo2;
+    if (this.c)
     {
-      for (;;)
-      {
-        QLog.e("CityStickerDrawable", 1, paramString, new Object[0]);
-        paramString = null;
+      this.c = false;
+      localMusicItemInfo2 = b();
+      localMusicItemInfo1 = localMusicItemInfo2;
+      if (localMusicItemInfo2 == null) {
+        this.jdField_a_of_type_Bpoz.e();
       }
     }
-  }
-  
-  protected void b()
-  {
-    if ((this.jdField_b_of_type_JavaLangString != null) && (new File(this.jdField_b_of_type_JavaLangString).exists()))
+    for (MusicItemInfo localMusicItemInfo1 = localMusicItemInfo2;; localMusicItemInfo1 = this.jdField_a_of_type_Bpoz.a())
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      float f1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 3.0F;
-      float f2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 3.0F;
-      int i = a(f1, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int j = a(f2, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.d = i;
-      this.e = j;
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, i, j);
-      i = a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Bpon.a("offsetY", 0L, 500L, -i, 0, new LinearInterpolator());
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bpon.a("alpha", 0L, 500L, 0, 255, new LinearInterpolator());
-      this.c = this.jdField_a_of_type_Bpon.a("height", 0L, 500L, 0, this.e, new LinearInterpolator());
+      long l = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("EditVideoQimMusic", 2, "playBgMusic in mPreTime=" + this.jdField_a_of_type_Long + " currentTime=" + l);
+      }
+      this.jdField_a_of_type_Bpoz.a(localMusicItemInfo1, true, this.jdField_a_of_type_Bqgk.c());
+      return;
     }
   }
   
-  public int getIntrinsicHeight()
+  public void d()
   {
-    return this.e;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditVideoQimMusic", 2, "resumeClipMusic isPause=" + this.b);
+    }
+    if ((this.jdField_a_of_type_Bpoz == null) || (this.b)) {
+      return;
+    }
+    this.jdField_a_of_type_Bpoz.c();
   }
   
-  public int getIntrinsicWidth()
+  public void f()
   {
-    return this.d;
+    super.f();
+    this.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditVideoQimMusic", 2, "onResume");
+    }
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.jdField_a_of_type_Bpoz.a(null);
+    this.jdField_a_of_type_Bpoz = null;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bqgk.a(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

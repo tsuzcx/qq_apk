@@ -1,193 +1,83 @@
-import android.text.TextUtils;
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class akvv
-  implements bfpg
+  extends aktq
 {
-  public WindowManager a;
-  public SpecifyGiftView a;
-  public MessageForQQWalletMsg a;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public akvv(MessageForQQWalletMsg paramMessageForQQWalletMsg)
+  protected akvv(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = paramMessageForQQWalletMsg;
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public static void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean needShowMultiPhoto()
   {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord.saveExtInfoToExtStr("specify_redpack_is_reply", "1");
-      akww.a(paramQQAppInterface, paramMessageRecord);
-    }
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg)
+  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramQQAppInterface == null) || (paramMessageForQQWalletMsg == null)) {
-      return false;
-    }
-    boolean bool = a(paramMessageForQQWalletMsg, paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "tryScheduleSpecifyAnim isValidAnim=" + bool);
-    }
-    if (bool)
+    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    paramAdapterView = ((NewPhotoPreviewActivity)this.mActivity).adapter.getItem(paramInt);
+    if (((NewPhotoPreviewActivity)this.mActivity).getMediaType(paramAdapterView) == 1)
     {
-      ((bfos)paramQQAppInterface.getManager(223)).a(new akvv(paramMessageForQQWalletMsg), false);
-      return true;
+      paramInt = 1;
+      if (paramInt == 0) {
+        break label96;
+      }
+      ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
+      ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
+      ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
     }
-    return false;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
+    label258:
+    for (;;)
     {
-      try
-      {
-        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("specify_redpack_is_reply"));
-        if (i == 1) {
-          return true;
-        }
-      }
-      catch (Throwable paramMessageRecord)
-      {
-        for (;;)
-        {
-          int i = 0;
-        }
-      }
-      return false;
-    }
-    return false;
-  }
-  
-  public static boolean a(Object paramObject, QQAppInterface paramQQAppInterface)
-  {
-    if (!(paramObject instanceof MessageForQQWalletMsg)) {
-      return false;
-    }
-    paramObject = (MessageForQQWalletMsg)paramObject;
-    int i = paramObject.messageType;
-    if ((i == 7) || (i == 8) || (i == 11) || (i == 12))
-    {
-      if (TextUtils.isEmpty(paramObject.mQQWalletRedPacketMsg.body.feedId)) {
-        return false;
-      }
-      if (paramObject.isRedPackExpired()) {
-        return false;
-      }
-      if ((!aktn.a().a()) && (!paramQQAppInterface.c().equals(paramObject.senderuin)))
-      {
-        if (paramObject.mQQWalletRedPacketMsg.specifyUinList == null) {
-          break label176;
-        }
-        paramObject = paramObject.mQQWalletRedPacketMsg.specifyUinList.iterator();
-        Long localLong;
-        do
-        {
-          if (!paramObject.hasNext()) {
-            break;
-          }
-          localLong = (Long)paramObject.next();
-        } while (!paramQQAppInterface.c().equals(localLong + ""));
-      }
-    }
-    label176:
-    for (i = 1;; i = 0)
-    {
-      return i != 0;
-      return false;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView.removeAllViews();
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView = null;
-      this.jdField_a_of_type_AndroidViewWindowManager = null;
-      this.jdField_a_of_type_Boolean = true;
       return;
-    }
-    catch (Exception localException)
-    {
+      paramInt = 0;
+      break;
+      label96:
+      if (this.a.c)
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
+        if (!this.a.b) {
+          break label227;
+        }
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(0);
+        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(0);
+      }
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e(".troop.send_gift", 2, "closeRedPackGiftAnimation exception ", localException);
+        if ((!this.a.g) && (!this.a.isSingleMode)) {
+          break label258;
         }
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
+        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
+        return;
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
+        break;
+        label227:
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
+        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
       }
     }
   }
   
-  public void a(BaseChatPie paramBaseChatPie, bdfn parambdfn)
+  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
   {
-    akww.a(akww.a(), "212", "only.animation.show");
-    String str = akvt.a() + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.feedId + ".zip";
-    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
-    paramBaseChatPie = new WeakReference(paramBaseChatPie);
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim start");
-    }
-    parambdfn = new akvw(this, parambdfn);
-    this.jdField_a_of_type_JavaLangRunnable = new SpecifyRedPacketAnimMsg.2(this, parambdfn);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
-    PreloadManager.a().c(str, new akvx(this, localWeakReference, parambdfn, paramBaseChatPie));
-  }
-  
-  public String getFriendUin()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin;
-  }
-  
-  public int getLimitType()
-  {
-    return 1;
-  }
-  
-  public long getSenderUin()
-  {
-    try
+    if (paramBundle != null)
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-      return l;
+      paramBundle.putBoolean("key_multi_edit_pic", true);
+      paramBundle.putBoolean("key_enable_edit_title_bar", true);
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  public long getShmsgseq()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.shmsgseq;
-  }
-  
-  public boolean isReaded()
-  {
-    return false;
+    super.onMagicStickClick(paramView, 10000, paramBundle, paramInt2, paramIntent);
   }
 }
 

@@ -1,69 +1,133 @@
-import android.os.Message;
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import java.util.HashMap;
 
-final class auby
-  implements auah
+public class auby
+  extends aubd
 {
-  private final int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<aubw> jdField_a_of_type_MqqUtilWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
-  private final String b;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  ExcitingTransferUploaderRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int = 0;
+  long jdField_c_of_type_Long = 0L;
+  int jdField_d_of_type_Int = 0;
+  long jdField_d_of_type_Long = 0L;
   
-  private auby(aubw paramaubw, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public auby(QQAppInterface paramQQAppInterface)
   {
-    if (paramaubw == null) {}
-    for (paramaubw = null;; paramaubw = new WeakReference(paramaubw))
+    super(paramQQAppInterface);
+  }
+  
+  protected String a(boolean paramBoolean)
+  {
+    return "actC2CXTFUploadSender";
+  }
+  
+  protected HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_TransferType", String.valueOf(0));
+    localHashMap.put("param_Platform", String.valueOf(2));
+    localHashMap.put("param_AppType", String.valueOf(0));
+    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_FileName", String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localHashMap.put("param_Suffix", String.valueOf(this.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_GroupCode", String.valueOf(this.jdField_c_of_type_Long));
+    localHashMap.put("param_FileSize", String.valueOf(this.jdField_d_of_type_Long));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp != null)
     {
-      this.jdField_a_of_type_MqqUtilWeakReference = paramaubw;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.b = paramString2;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
+      localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_nResult));
+      localHashMap.put("param_IsBigData", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_bIsBigData));
+      localHashMap.put("param_HttpTime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_u64HttpTime));
+      localHashMap.put("param_SrvReturCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_nSrvReturCode));
+      localHashMap.put("param_TransferSpeed", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_u64TransferSpeed));
+      localHashMap.put("param_TransferSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_u64TransferSize));
+      localHashMap.put("param_ServerIp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_strServerIp));
+      localHashMap.put("param_ServerPort", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_wServerPort));
+      localHashMap.put("param_FileUrl", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_strFileUrl));
+    }
+    for (;;)
+    {
+      localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_b_of_type_Int));
+      localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_c_of_type_Int));
+      localHashMap.put("param_stackType", String.valueOf(auoo.b()));
+      localHashMap.put("param_loginType", String.valueOf(auoo.c()));
+      localHashMap.put("param_ishttps", String.valueOf(this.jdField_d_of_type_Int));
+      QLog.d("ExcitingTransfer.OfflineSenderRP<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> SenderDataReport:" + localHashMap.toString());
+      return localHashMap;
+      localHashMap.put("param_IsBigData", String.valueOf(false));
+      localHashMap.put("param_HttpTime", String.valueOf(0));
+      localHashMap.put("param_SrvReturCode", String.valueOf(0));
+      localHashMap.put("param_TransferSpeed", String.valueOf(0));
+      localHashMap.put("param_TransferSize", String.valueOf(0));
+      localHashMap.put("param_ServerIp", String.valueOf(0));
+      localHashMap.put("param_ServerPort", String.valueOf(0));
+      localHashMap.put("param_FileUrl", "");
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
-    for (aubw localaubw = null; (localaubw == null) || (aubw.a(localaubw)); localaubw = (aubw)this.jdField_a_of_type_MqqUtilWeakReference.get()) {
-      return;
-    }
-    if ((!bmxr.b(paramInt)) && (!TextUtils.isEmpty(this.b)) && (aubw.a(localaubw) == null))
-    {
-      QLog.w("WeiyunShareProcessController<FileAssistant>", 2, "GetShareLink errorCode=" + paramInt + ", errorMsg=" + paramString);
-      aubw.a(localaubw, this.b);
-      return;
-    }
-    Message localMessage = new Message();
-    localMessage.what = 6;
-    localMessage.obj = new Object[] { Integer.valueOf(paramInt), paramString };
-    aubw.a(localaubw).sendMessage(localMessage);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(Object paramObject)
+  public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
-    for (aubw localaubw = null; (paramObject == null) || (localaubw == null) || (aubw.a(localaubw)); localaubw = (aubw)this.jdField_a_of_type_MqqUtilWeakReference.get()) {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  {
+    this.jdField_b_of_type_Long = paramLong1;
+    this.jdField_c_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_Long = paramLong3;
+  }
+  
+  public void a(ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp = paramExcitingTransferUploaderRp;
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  protected HashMap<String, String> b()
+  {
+    return null;
+  }
+  
+  public void b() {}
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_d_of_type_Int = i;
       return;
     }
-    Object localObject = (String)paramObject;
-    paramObject = localObject;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramObject = localObject;
-      if (!((String)localObject).contains("?weiyun_qr_code=1")) {
-        paramObject = (String)localObject + "?weiyun_qr_code=1";
-      }
-    }
-    localObject = new Message();
-    ((Message)localObject).what = 5;
-    ((Message)localObject).obj = new Object[] { paramObject, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString };
-    aubw.a(localaubw).sendMessage((Message)localObject);
   }
 }
 

@@ -1,14 +1,17 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 class awei
-  implements Comparator<awdw>
+  implements DialogInterface.OnClickListener
 {
-  public int a(awdw paramawdw1, awdw paramawdw2)
+  awei(aweh paramaweh, Bundle paramBundle) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramawdw1.a >= paramawdw2.a) {
-      return 1;
-    }
-    return -1;
+    paramDialogInterface.dismiss();
+    QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_start", this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Aweh);
   }
 }
 

@@ -1,43 +1,41 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class asaf
+  extends aogi
 {
-  public int a;
-  public EmoticonPackage a;
-  public int b;
+  public asaf(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public asaf(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof asaf)) {
-        return false;
-      }
-      paramObject = (asaf)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
-        break;
-      }
-    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
-    return false;
-    return false;
-  }
-  
-  public String toString()
-  {
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+    super.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg_box", 2, "mRedpointObserver.onDataChange(): isSucc=" + paramBoolean);
     }
-    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
+    if ((!this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView == null) || (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
+    label141:
+    for (;;)
+    {
+      return;
+      int i = 0;
+      if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).tabType != 7) {}
+      }
+      for (;;)
+      {
+        if (i < 0) {
+          break label141;
+        }
+        BaseMsgBoxActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(i));
+        return;
+        i += 1;
+        break;
+        i = -1;
+      }
+    }
   }
 }
 

@@ -1,22 +1,11 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.animation.Interpolator;
 
-public final class blpt
+public class blpt
+  implements Interpolator
 {
-  public static String a(Context paramContext)
+  public float getInterpolation(float paramFloat)
   {
-    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean, String paramString)
-  {
-    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 

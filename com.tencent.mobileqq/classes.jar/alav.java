@@ -1,15 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
 
-public abstract interface alav
+public class alav
+  extends albm
 {
-  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
+  public alav(ExclusiveHbFragment paramExclusiveHbFragment) {}
   
-  public abstract void a(View paramView, Object paramObject);
-  
-  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
-  
-  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
+  public void afterTextChanged(Editable paramEditable)
+  {
+    ExclusiveHbFragment.a(this.a);
+  }
 }
 
 

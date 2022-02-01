@@ -6,9 +6,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anni;
-import blfh;
-import blfq;
+import anzj;
+import bmgk;
+import bmgt;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -33,20 +33,20 @@ public class TroopFileProxyActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    blfq localblfq = new blfq(0);
-    localblfq.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
-    localblfq.d = anni.a(2131714006);
-    localblfq.jdField_a_of_type_JavaLangString = paramString2;
-    localblfq.e = paramString1;
-    localblfq.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
-    localblfq.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblfq.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    bmgt localbmgt = new bmgt(0);
+    localbmgt.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
+    localbmgt.d = anzj.a(2131714115);
+    localbmgt.jdField_a_of_type_JavaLangString = paramString2;
+    localbmgt.e = paramString1;
+    localbmgt.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
+    localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbmgt.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localblfq.jdField_b_of_type_Int = paramInt;
-    localblfq.c = 10000;
-    localblfq.f = null;
-    blfh.a(paramActivity, localblfq);
+    localbmgt.jdField_b_of_type_Int = paramInt;
+    localbmgt.c = 10000;
+    localbmgt.f = null;
+    bmgk.a(paramActivity, localbmgt);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, String paramString)

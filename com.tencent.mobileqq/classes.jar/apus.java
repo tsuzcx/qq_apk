@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.ark.ark.VariantWrapper;
 
 class apus
-  implements DialogInterface.OnClickListener
+  implements apvr
 {
-  apus(apur paramapur) {}
+  apus(apun paramapun, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    this.a.a.finish();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apun.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    apuk.a(this.jdField_a_of_type_Apun.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
   }
 }
 

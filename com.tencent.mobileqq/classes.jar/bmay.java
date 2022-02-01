@@ -1,47 +1,89 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Map;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.PluginPreloader.1;
+import cooperation.plugin.PluginInfo;
+import mqq.app.AppRuntime;
 
-class bmay
-  implements Downloader.DownloadListener
+public class bmay
 {
-  bmay(bmax parambmax) {}
+  private static final Handler a;
   
-  public void onDownloadCanceled(String paramString)
+  static
   {
-    Message localMessage = Message.obtain(bmax.a(this.a));
-    localMessage.what = 5;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("PluginPreloader", 0);
+    localHandlerThread.start();
+    a = new Handler(localHandlerThread.getLooper());
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public static void a(bmau parambmau)
   {
-    paramDownloadResult = Message.obtain(bmax.a(this.a));
-    paramDownloadResult.what = 3;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
+    a(parambmau, 0L);
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public static void a(bmau parambmau, long paramLong)
   {
-    paramString = (bmaz)bmax.a(this.a).get(paramString);
-    if (paramString != null) {
-      paramString.a = Float.valueOf(paramFloat);
+    if ((parambmau == null) || (parambmau.jdField_a_of_type_JavaLangString == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloader", 2, "the preload strategy or target process is null.");
+      }
+      return;
     }
-    Message localMessage = Message.obtain(bmax.a(this.a));
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
+    a.postDelayed(new PluginPreloader.1(parambmau), paramLong);
   }
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public static void a(AppRuntime paramAppRuntime, bmau parambmau, int paramInt, bmba parambmba)
   {
-    paramDownloadResult = Message.obtain(bmax.a(this.a));
-    paramDownloadResult.what = 2;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
+    parambmau.a(parambmba);
+    if (parambmau.jdField_b_of_type_JavaLangString != null)
+    {
+      bmgk localbmgk = (bmgk)paramAppRuntime.getManager(27);
+      if (localbmgk == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "pluginType:" + parambmau.jdField_b_of_type_Int + " preload:fail:nopluginmanager");
+        }
+        bmas.a(paramAppRuntime, 1, parambmau.jdField_b_of_type_Int, parambmau.c, 3, "preload:fail:nopluginmanager", paramInt, new String[] { String.valueOf(parambmau.d) });
+        return;
+      }
+      PluginInfo localPluginInfo = localbmgk.a(parambmau.jdField_b_of_type_JavaLangString);
+      if (localPluginInfo == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "pluginType:" + parambmau.jdField_b_of_type_Int + " preload:fail:noplugininfo");
+        }
+        bmas.a(paramAppRuntime, 1, parambmau.jdField_b_of_type_Int, parambmau.c, 3, "preload:fail:noplugininfo", paramInt, new String[] { String.valueOf(parambmau.d) });
+        return;
+      }
+      if (localPluginInfo.mState == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "plugin already installed, do preload.");
+        }
+        bmas.a(paramAppRuntime, 0, parambmau.jdField_b_of_type_Int, parambmau.c, parambmba.jdField_a_of_type_Int, parambmba.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambmau.d) });
+        parambmau.a();
+        return;
+      }
+      if ((parambmau.jdField_a_of_type_Boolean) && (bhnv.h(BaseApplicationImpl.getContext())))
+      {
+        localbmgk.installPlugin(parambmau.jdField_b_of_type_JavaLangString, new bmaz(paramAppRuntime, parambmau, parambmba, paramInt));
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloader", 2, "pluginType:" + parambmau.jdField_b_of_type_Int + " preload:fail:uninstall");
+      }
+      bmas.a(paramAppRuntime, 1, parambmau.jdField_b_of_type_Int, parambmau.c, 3, "preload:fail:uninstall", paramInt, new String[] { String.valueOf(parambmau.d) });
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloader", 2, "do preload");
+    }
+    bmas.a(paramAppRuntime, 0, parambmau.jdField_b_of_type_Int, parambmau.c, parambmba.jdField_a_of_type_Int, parambmba.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambmau.d) });
+    parambmau.a();
   }
 }
 

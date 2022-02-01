@@ -1,72 +1,74 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.opengl.GLES20;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbnf
-  extends bbnh
+  extends bbna
 {
-  public int a;
-  public bbna a;
-  public CharSequence a;
-  public String a;
-  public List<bbna> a;
-  public int b;
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230754);
+  private int jdField_a_of_type_Int = -1;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private int b;
   
-  public bbnf(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public bbnf()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.mFilterType = 6;
   }
   
-  public bbnf(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public void onDestroy()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    if (this.jdField_a_of_type_Int != -1) {
+      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      yuk.b("Q.qqstory.publish.edit GPUNashvilleFilter", "mosaic bitmap recycle");
+    }
   }
   
-  public void a(String paramString)
+  public void onDrawTexture()
   {
+    super.onDrawTexture();
+    GLES20.glActiveTexture(33985);
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      {
+        QLog.w("Q.qqstory.publish.edit GPUNashvilleFilter", 1, "bitmap error");
+        return;
+      }
+      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
+    GLES20.glUniform1i(this.b, 1);
+  }
+  
+  public void onInitialized()
+  {
+    super.onInitialized();
     try
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangCharSequence = bbup.a(paramString.optString("firstLineText"));
-      this.jdField_a_of_type_JavaLangString = paramString.optString("firstLineTextPostfix");
-      Object localObject1 = paramString.optJSONObject("leftImage");
-      if (localObject1 != null) {
-        this.jdField_a_of_type_Bbna = new bbna(((JSONObject)localObject1).optString("url"), ((JSONObject)localObject1).optInt("type"));
-      }
-      this.b = paramString.optInt("allHeight");
-      localObject1 = paramString.optJSONArray("imageList");
-      if (localObject1 != null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(((JSONArray)localObject1).length());
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-          localObject2 = new bbna(((JSONObject)localObject2).optString("url"), ((JSONObject)localObject2).optInt("type"));
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
-          i += 1;
-        }
-      }
-      this.jdField_a_of_type_Int = paramString.optInt("imageTotalCount");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130846130));
+      this.b = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
       return;
     }
-    catch (JSONException paramString)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      paramString.printStackTrace();
+      for (;;)
+      {
+        yuk.e("Q.qqstory.publish.edit GPUNashvilleFilter", "OutOfMemoryError:%s", new Object[] { localOutOfMemoryError.getMessage() });
+      }
     }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      bool = false;
-    }
-    return bool;
   }
 }
 

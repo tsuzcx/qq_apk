@@ -1,108 +1,83 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.os.HandlerThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arec
+  extends arac<areb>
 {
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private final arfz jdField_a_of_type_Arfz = new arfz();
-  
-  public int a()
+  @NonNull
+  public static areb a()
   {
-    return this.jdField_a_of_type_Arfz.a();
+    areb localareb2 = (areb)aran.a().a(455);
+    areb localareb1 = localareb2;
+    if (localareb2 == null) {
+      localareb1 = new areb();
+    }
+    return localareb1;
   }
   
-  public Bitmap a(aren paramaren, arew paramarew)
+  @NonNull
+  public areb a(int paramInt)
   {
-    if (paramaren == null) {
-      throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
-    }
-    try
+    return new areb();
+  }
+  
+  @Nullable
+  public areb a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      if (paramaren.f())
-      {
-        Object localObject2 = paramaren.a();
-        Object localObject1;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_Arfz.a((int)paramaren.f(), (int)paramaren.g());
-        }
-        for (;;)
-        {
-          paramaren.a((Bitmap)localObject1);
-          if (localObject1 != null) {
-            break;
-          }
-          return null;
-          if (((Bitmap)localObject2).getWidth() >= (int)paramaren.f())
-          {
-            localObject1 = localObject2;
-            if (((Bitmap)localObject2).getHeight() >= (int)paramaren.g()) {}
-          }
-          else
-          {
-            this.jdField_a_of_type_Arfz.a((Bitmap)localObject2);
-            localObject1 = this.jdField_a_of_type_Arfz.a((int)paramaren.f(), (int)paramaren.g());
-          }
-        }
-        localObject2 = paramaren.a();
-        if (localObject2 == null)
-        {
-          localObject2 = new Canvas((Bitmap)localObject1);
-          paramaren.a((Canvas)localObject2);
-        }
-        for (;;)
-        {
-          ((Bitmap)localObject1).eraseColor(0);
-          paramaren.c(false);
-          paramarew.a(paramaren).a((Canvas)localObject2, paramaren, paramarew, arew.a().g(), arew.a().c());
-          return localObject1;
-          ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
-        }
+      areb localareb = areb.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
       }
-      paramaren = paramaren.a();
+      return localareb;
     }
-    finally {}
-    return paramaren;
+    return new areb();
   }
   
-  public void a()
+  public void a(areb paramareb)
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramareb);
     }
-    if (argn.a())
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
+  }
+  
+  public Class<areb> clazz()
+  {
+    return areb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
     }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
   
-  public void a(Bitmap paramBitmap)
+  public int type()
   {
-    this.jdField_a_of_type_Arfz.a(paramBitmap);
-  }
-  
-  public void a(aren paramaren, arew paramarew) {}
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Arfz.c();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Arfz.a();
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Arfz.b();
+    return 455;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,17 @@
-public abstract interface bpew
-  extends bpeo
+import java.util.concurrent.CountDownLatch;
+
+final class bpew
+  implements bpdw
 {
-  public abstract int a();
+  bpew(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
 }
 
 

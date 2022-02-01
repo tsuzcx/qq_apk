@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import android.graphics.Rect;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import mdt;
+import mep;
 
 public class VideoLayerUI$MultiVideoOpenAnimation
   implements Runnable
@@ -15,7 +15,7 @@ public class VideoLayerUI$MultiVideoOpenAnimation
   public VideoLayerUI$MultiVideoOpenAnimation(VideoLayerUI paramVideoLayerUI, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfMdt[this.jdField_a_of_type_Int];
+    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfMep[this.jdField_a_of_type_Int];
     Rect localRect = paramVideoLayerUI.b();
     this.jdField_a_of_type_Float = (localRect.width() / 10.0F);
     paramInt = localRect.right;
@@ -36,12 +36,12 @@ public class VideoLayerUI$MultiVideoOpenAnimation
         this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
       }
       return;
-      mdt localmdt = this.this$0.jdField_a_of_type_ArrayOfMdt[this.jdField_a_of_type_Int];
-      Rect localRect = localmdt.b();
+      mep localmep = this.this$0.jdField_a_of_type_ArrayOfMep[this.jdField_a_of_type_Int];
+      Rect localRect = localmep.b();
       int i = (int)(localRect.left - this.jdField_a_of_type_Float);
       int j = localRect.width();
-      localmdt.b(i, localRect.top, j + i, localRect.bottom);
-      localmdt.b();
+      localmep.b(i, localRect.top, j + i, localRect.bottom);
+      localmep.b();
     }
   }
 }

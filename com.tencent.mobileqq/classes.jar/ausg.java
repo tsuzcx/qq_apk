@@ -1,57 +1,99 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ausg
+class ausg
+  extends QIPCModule
 {
-  public static View a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
+  public ausg(ausf paramausf, String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 5: 
-    case 7: 
-      return LayoutInflater.from(paramContext).inflate(2131559194, paramViewGroup, false);
-    }
-    return a(paramContext, paramViewGroup);
+    super(paramString);
   }
   
-  public static View a(Context paramContext, ViewGroup paramViewGroup)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    int i = paramViewGroup.getWidth();
-    ImageView localImageView = new ImageView(paramContext);
-    paramViewGroup = localImageView.getLayoutParams();
-    paramContext = paramViewGroup;
-    if (paramViewGroup == null) {
-      paramContext = new ViewGroup.LayoutParams(-2, -2);
-    }
-    localImageView.setPadding(0, 20, 0, 20);
-    paramContext.width = (i - localImageView.getPaddingLeft() - localImageView.getPaddingRight() - localImageView.getPaddingLeft());
-    paramContext.height = (i * 200 / 718);
-    localImageView.setLayoutParams(paramContext);
-    localImageView.setId(2131363262);
-    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    return localImageView;
-  }
-  
-  public static ausb a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
-  {
-    View localView = a(paramContext, paramInt, paramViewGroup);
-    switch (paramInt)
+    bjtx.c("WeiyunDownloadServiceIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    Object localObject;
+    QQAppInterface localQQAppInterface;
+    if (paramBundle == null)
     {
-    default: 
-      return null;
-    case 5: 
-      return new ausi(paramContext, localView, paramViewGroup);
-    case 7: 
-      return new aush(paramContext, localView, paramViewGroup);
+      localObject = null;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        ausf.a = (String)localObject;
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localQQAppInterface = ausf.a(this.a);
+        if (localQQAppInterface != null) {
+          break label103;
+        }
+        bjtx.c("WeiyunDownloadServiceIPC", "onCall action but appInterface is null");
+      }
     }
-    return new ausc(paramContext, localView, paramViewGroup);
+    label103:
+    do
+    {
+      do
+      {
+        return null;
+        localObject = paramBundle.getString("process");
+        break;
+        if (((!"WeiyunDownloadServiceIPC_Action__Download".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Resume".equals(paramString))) || (paramBundle == null)) {
+          break label394;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : start weiyunDownload");
+        }
+        localObject = (String)paramBundle.get("file_id");
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          bjtx.c("WeiyunDownloadServiceIPC", "onCall action but file_id is null");
+          return null;
+        }
+        FileManagerEntity localFileManagerEntity = localQQAppInterface.a().c((String)localObject);
+        localObject = localFileManagerEntity;
+        if (localFileManagerEntity != null) {
+          break label213;
+        }
+      } while ("WeiyunDownloadServiceIPC_Action__Resume".equals(paramString));
+      localObject = aunj.a(paramBundle);
+      localQQAppInterface.a().b((FileManagerEntity)localObject);
+      paramString = (String)paramBundle.get("downloadId");
+      ((FileManagerEntity)localObject).nOpType = 50;
+      ((FileManagerEntity)localObject).cloudType = 2;
+      ((FileManagerEntity)localObject).miniAppDownloadId = paramString;
+      ausf.a(this.a).put(paramString, Long.valueOf(((FileManagerEntity)localObject).nSessionId));
+      if (aunj.b(((FileManagerEntity)localObject).getFilePath()))
+      {
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putString("filePath", ((FileManagerEntity)localObject).getFilePath());
+        QIPCServerHelper.getInstance().callClient(ausf.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Suc", paramString, null);
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putInt("retCode", 1);
+        paramString.putString("retMsg", "");
+        QIPCServerHelper.getInstance().callClient(ausf.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", paramString, null);
+        return null;
+      }
+      localQQAppInterface.a().a((FileManagerEntity)localObject);
+      localQQAppInterface.a().a(((FileManagerEntity)localObject).nSessionId);
+      return null;
+    } while (((!"WeiyunDownloadServiceIPC_Action__Cancel".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Pause".equals(paramString))) || (paramBundle == null));
+    label213:
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : end weiyunDownload");
+    }
+    label394:
+    paramString = paramBundle.getString("downloadId");
+    localQQAppInterface.a().a(((Long)ausf.a(this.a).get(paramString)).longValue());
+    return null;
   }
 }
 

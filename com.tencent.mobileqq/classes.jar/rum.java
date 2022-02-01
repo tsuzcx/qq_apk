@@ -1,10 +1,18 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$OnCodecReuseInfoUpdateCallback;", "", "onCodecReuseInfoUpdate", "", "debugInfo", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rum
+class rum
+  implements see
 {
-  public abstract void a(@NotNull String paramString);
+  rum(rul paramrul, rot paramrot) {}
+  
+  public void a(@NonNull View paramView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Rot.w.getVisibility() == 0)) {
+      rul.a(this.jdField_a_of_type_Rul).resumeAnimation();
+    }
+  }
 }
 
 

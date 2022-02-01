@@ -1,48 +1,27 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.EffectSettingUi.2.1;
-import com.tencent.av.ui.EffectSettingUi.2.2;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
 public class mcx
-  implements mpd
+  extends mcu
 {
-  public mcx(EffectSettingUi paramEffectSettingUi) {}
+  private View a;
+  public String b;
+  public boolean b;
   
-  public void a(boolean paramBoolean)
+  public mcx(int paramInt, View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "onGetConfig, enable[" + paramBoolean + "]");
-    }
-    if (paramBoolean)
-    {
-      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (AVActivity)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
-        }
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_Mpd = null;
+    super(paramInt);
+    this.a = paramView;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public mcx(View paramView)
   {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onStatusChanged, seq[" + l + "]");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
+    super(0);
+    this.a = paramView;
+  }
+  
+  public View a()
+  {
+    return this.a;
   }
 }
 

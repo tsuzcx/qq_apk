@@ -1,49 +1,59 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.LayerDrawable;
-import android.os.Handler;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable.1;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.util.LRULinkedHashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class azkj
-  extends LayerDrawable
+  extends azki
 {
-  public azkj(int paramInt, Resources paramResources)
+  private LRULinkedHashMap<LatLng, PoiBean> a;
+  
+  azkj(String paramString, int paramInt)
   {
-    super(azkk.a(paramInt, paramResources, a(paramResources)));
+    super(paramString);
+    jdField_a_of_type_JavaLangString = "MemoryLoader";
+    this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(paramInt);
   }
   
-  public static Bitmap a(Resources paramResources)
+  public void a(LatLng paramLatLng, int paramInt, PoiBean paramPoiBean)
   {
-    Paint localPaint = new Paint();
-    localPaint.setColor(paramResources.getColor(2131166563));
-    Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
-    localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
-    paramResources = new Canvas(localBitmap);
-    paramResources.rotate(45.0F);
-    paramResources.translate(0.0F, -88.0F);
-    paramResources.drawRect(56, 56, 126, 126, localPaint);
-    paramResources.drawCircle(56, 91, 35, localPaint);
-    paramResources.drawCircle(91, 56, 35, localPaint);
-    return localBitmap;
-  }
-  
-  public void a(Handler paramHandler, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < getNumberOfLayers())
+    if (a(paramLatLng, paramInt, new azkk(this, paramLatLng, paramInt, paramPoiBean)))
     {
-      HeartRiseLayerDrawable.1 local1 = new HeartRiseLayerDrawable.1(this, i, paramInt1, paramInt2);
-      if (i % 2 == 0) {}
-      for (long l = i * 200;; l = i * 130)
-      {
-        paramHandler.postDelayed(local1, l);
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] memPut [fail already exist]. latLng: " + paramLatLng + " acceptAccuracy: " + paramInt + " poiBean: " + paramPoiBean);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] memPut poiBean: " + paramPoiBean);
+    }
+    a("memPut", paramPoiBean);
+    this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(paramPoiBean.latLng, paramPoiBean);
+  }
+  
+  public boolean a(LatLng paramLatLng, int paramInt, azkr paramazkr)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.keySet().iterator();
+    LatLng localLatLng;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
         break;
       }
+      localLatLng = (LatLng)((Iterator)localObject).next();
+    } while (!a(localLatLng, paramLatLng, paramInt));
+    for (localObject = (PoiBean)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(localLatLng);; localObject = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] memGet latLng: " + paramLatLng + " result: " + localObject);
+      }
+      a("memGet", (PoiBean)localObject);
+      if (localObject != null) {
+        paramazkr.a((PoiBean)localObject);
+      }
+      return localObject != null;
     }
   }
 }

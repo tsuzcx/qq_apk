@@ -1,19 +1,18 @@
-import android.graphics.Bitmap;
-import mqq.app.QQPermissionCallback;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afyv
-  implements QQPermissionCallback
+public class afyv
+  implements View.OnClickListener
 {
-  afyv(afys paramafys, Bitmap paramBitmap) {}
+  public afyv(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bglp.a(afys.a(this.jdField_a_of_type_Afys), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Afys.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

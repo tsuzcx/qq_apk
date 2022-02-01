@@ -1,49 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.FileObserver;
+import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
-class alxs
-  implements DialogInterface.OnDismissListener
+public class alxs
+  extends FileObserver
 {
-  alxs(alxr paramalxr, aohz paramaohz) {}
+  private boolean a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
-    }
-    if (bgnt.g(this.jdField_a_of_type_Alxr.a))
+    if (!this.a)
     {
-      boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Alxr.a).a();
-      boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_Alxr.a).a();
-      paramDialogInterface = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Alxr.a);
-      String str = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Alxr.a);
-      int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Alxr.a);
-      paramDialogInterface.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
-      paramDialogInterface = this.jdField_a_of_type_Alxr.a.a.obtainMessage(8193);
-      paramDialogInterface.obj = this.jdField_a_of_type_Alxr.a.getString(2131698319);
-      this.jdField_a_of_type_Alxr.a.a.sendMessage(paramDialogInterface);
-      if ((bool1) && (bool2))
-      {
-        paramDialogInterface = "0";
-        bcst.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
+      this.a = true;
+      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
+    }
+  }
+  
+  public void onEvent(int paramInt, String paramString)
+  {
+    if ((paramInt & 0x20) == 32) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
       }
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Aohz.a();
       return;
-      paramDialogInterface = "1";
-      break;
-      paramDialogInterface = this.jdField_a_of_type_Alxr.a.a.obtainMessage(8195);
-      paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131691985;
-      this.jdField_a_of_type_Alxr.a.a.sendMessage(paramDialogInterface);
+      if ((paramInt & 0x400) == 1024)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+      if ((paramInt & 0x200) == 512)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+    } while ((paramInt & 0x8) != 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
     }
+    a();
   }
 }
 

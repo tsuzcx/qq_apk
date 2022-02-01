@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-final class alcb
-  implements Animation.AnimationListener
+public class alcb
 {
-  alcb(View paramView, Animation paramAnimation) {}
+  public long a;
+  public List<String> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public alcb()
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_Long = 0L;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

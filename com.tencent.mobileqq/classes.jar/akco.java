@@ -1,52 +1,15 @@
-import android.os.Handler;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class akco
-  extends aywi
+  implements DialogInterface.OnClickListener
 {
-  public akco(BindVerifyActivity paramBindVerifyActivity) {}
+  public akco(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aeef paramaeef) {}
   
-  protected void f(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
-    }
-    BindVerifyActivity.a(this.a, false);
-    BindVerifyActivity.a(this.a).removeMessages(4);
-    this.a.b();
-    if (!paramBoolean)
-    {
-      this.a.a("dc00898", "0X8009F19", 0);
-      this.a.a(1, this.a.getString(2131717326));
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
-      BindVerifyActivity.b(this.a, null);
-      return;
-      if ((paramInt == 0) || (paramInt == 106))
-      {
-        this.a.a();
-      }
-      else if (paramInt == 213)
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        this.a.a(1, anni.a(2131699952));
-        BindVerifyActivity.a(this.a).setEnabled(true);
-      }
-      else
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        String str = anni.a(2131699947);
-        if (paramInt == 107) {
-          str = anni.a(2131699949);
-        }
-        this.a.a(anni.a(2131699953), str);
-      }
-    }
+    this.jdField_a_of_type_Aeef.a(true);
   }
 }
 

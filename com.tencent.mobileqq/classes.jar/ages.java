@@ -1,25 +1,16 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class ages
-  extends AccessibilityDelegateCompat
+final class ages
+  implements agfh
 {
-  public ages(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
-    {
-      PressToSpeakPanel.a(this.a, true);
-      PressToSpeakPanel.b(this.a);
-      bgfz.a(this.a, this.a.getContext().getString(2131690958));
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 74);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
 }
 

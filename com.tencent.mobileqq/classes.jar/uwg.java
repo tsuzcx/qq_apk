@@ -1,21 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-
-public class uwg
-  implements Animation.AnimationListener
+public abstract interface uwg
 {
-  public uwg(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public abstract void a(Object paramObject);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void b(Object paramObject);
 }
 
 

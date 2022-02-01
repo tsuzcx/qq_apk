@@ -1,29 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlAndQQInterface.WorkState;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-class blhk
-  extends BroadcastReceiver
+public class blhk
 {
-  blhk(blhj paramblhj) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static String a(Throwable paramThrowable)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
-      return;
-    }
-    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
-    blhj.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-    blhj.c(this.a);
+    StringWriter localStringWriter = new StringWriter();
+    paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blhk
  * JD-Core Version:    0.7.0.1
  */

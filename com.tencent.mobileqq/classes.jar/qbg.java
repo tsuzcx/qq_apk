@@ -1,57 +1,79 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
 
-public class qbg
+class qbg
+  extends LinearLayout
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private int jdField_b_of_type_Int;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g = -16777216;
+  
+  public qbg(Context paramContext)
   {
-    JSONObject localJSONObject = new JSONObject();
-    String str4 = "";
-    String str5 = "";
-    String str6 = "";
-    qcd.a(paramBaseArticleInfo, localJSONObject, true);
-    qcd.a(paramBaseArticleInfo, localJSONObject);
-    qcd.b(paramBaseArticleInfo, localJSONObject);
-    qcd.l(paramBaseArticleInfo, localJSONObject);
-    qcd.e(paramBaseArticleInfo, localJSONObject);
-    qcd.f(paramBaseArticleInfo, localJSONObject);
-    qcd.X(paramBaseArticleInfo, localJSONObject);
-    qcd.aa(paramBaseArticleInfo, localJSONObject);
-    qcd.ab(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_ad_small_game_triple_img_cell");
-    qcd.a(localJSONObject, paramBaseArticleInfo);
-    String str1 = str6;
-    String str2 = str5;
-    String str3 = str4;
-    if (paramBaseArticleInfo.mSmallMiniGameInfo != null)
+    super(paramContext);
+    setWillNotDraw(false);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Int != 0)
     {
-      str1 = str6;
-      str2 = str5;
-      str3 = str4;
-      if (paramBaseArticleInfo.mSmallMiniGameInfo.a != null)
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
-        str1 = str6;
-        str2 = str5;
-        str3 = str4;
-        if (paramBaseArticleInfo.mSmallMiniGameInfo.a.length() > 2)
-        {
-          str3 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(0);
-          str2 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(1);
-          str1 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(2);
-        }
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+      VirtualViewUtils.drawBackground(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
     }
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url1", str3);
-    localJSONObject.put("id_multi_img_1", paramBaseArticleInfo);
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url2", str2);
-    localJSONObject.put("id_multi_img_2", paramBaseArticleInfo);
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url3", str1);
-    localJSONObject.put("id_multi_img_3", paramBaseArticleInfo);
-    return localJSONObject;
+    super.onDraw(paramCanvas);
+    if (this.f > 0)
+    {
+      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      }
+      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
+      VirtualViewUtils.drawBorder(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+    }
+  }
+  
+  public void setBackgroundColor(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

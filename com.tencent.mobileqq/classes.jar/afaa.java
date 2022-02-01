@@ -1,87 +1,113 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class afaa
-  extends anmu
+  implements DialogInterface.OnClickListener
 {
-  public afaa(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public afaa(NotificationActivity paramNotificationActivity, String paramString1, int paramInt, String paramString2) {}
   
-  protected void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    RecentLoginDevActivity.b(this.a);
-    if (paramBoolean)
+    try
     {
-      bcst.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
-      if ((paramInt > -1) && (RecentLoginDevActivity.a(this.a) != null) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
+      Object localObject;
+      String str;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        RecentLoginDevActivity.a(this.a).remove(paramInt);
-        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.getCurrentAccountUin();
+        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("uin", paramDialogInterface);
+        str = this.jdField_a_of_type_JavaLangString;
+        if (str.indexOf("?") != -1) {
+          break label203;
+        }
+        paramDialogInterface = str + "?uin=" + paramDialogInterface;
       }
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691819), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131693897), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
-  {
-    RecentLoginDevActivity.b(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
-      }
-      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
-      if (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
+        ((Intent)localObject).putExtra("url", paramDialogInterface);
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity((Intent)localObject);
+        try
         {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          paramDialogInterface = new AlertReport.ButtonAction();
+          paramDialogInterface.uint32_cmd.set(1);
+          paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+          paramDialogInterface.str_package_name.set(blbf.c());
+          paramDialogInterface.uint32_app_id.set(AppSetting.a());
+          nkm.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+          bdll.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+          return;
+          label203:
+          paramDialogInterface = str + "&uin=" + paramDialogInterface;
+        }
+        catch (Exception paramDialogInterface)
+        {
+          for (;;)
+          {
+            paramDialogInterface.printStackTrace();
           }
         }
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
       }
-      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
+      try
+      {
+        localObject = new AlertReport.ButtonAction();
+        ((AlertReport.ButtonAction)localObject).uint32_cmd.set(1);
+        ((AlertReport.ButtonAction)localObject).uint32_button_id.set(this.jdField_a_of_type_Int);
+        ((AlertReport.ButtonAction)localObject).str_package_name.set(blbf.c());
+        ((AlertReport.ButtonAction)localObject).uint32_app_id.set(AppSetting.a());
+        nkm.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, ((AlertReport.ButtonAction)localObject).toByteArray(), 34, "SecuritySvc.AlertReport");
+        bdll.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+        throw paramDialogInterface;
       }
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
-    for (;;)
+    catch (Exception paramDialogInterface)
     {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131691830), 0).b(this.a.getTitleBarHeight());
-      return;
-      label288:
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+      paramDialogInterface = paramDialogInterface;
+      paramDialogInterface.printStackTrace();
+      try
+      {
+        paramDialogInterface = new AlertReport.ButtonAction();
+        paramDialogInterface.uint32_cmd.set(1);
+        paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+        paramDialogInterface.str_package_name.set(blbf.c());
+        paramDialogInterface.uint32_app_id.set(AppSetting.a());
+        nkm.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+        bdll.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          paramDialogInterface.printStackTrace();
+        }
+      }
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afaa
  * JD-Core Version:    0.7.0.1
  */

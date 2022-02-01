@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aker;
-import akes;
+import akqc;
+import akqd;
 
 public class FileVideoMediaPlayHelper$4
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$4(aker paramaker) {}
+  public FileVideoMediaPlayHelper$4(akqc paramakqc) {}
   
   public void run()
   {
-    if (aker.a(this.this$0) != null) {
-      aker.a(this.this$0).a(false, "");
+    if (akqc.a(this.this$0) != null) {
+      akqc.a(this.this$0).a(false, "");
     }
   }
 }

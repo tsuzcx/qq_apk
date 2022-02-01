@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apef;
+import aprv;
 
 public class ArFeatureInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new apef();
+  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new aprv();
   public long a;
   public String a;
   public String b;

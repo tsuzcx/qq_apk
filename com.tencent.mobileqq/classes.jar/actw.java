@@ -1,10 +1,35 @@
-public abstract interface actw
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class actw
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  actw(actv paramactv) {}
   
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public void onClick(View paramView)
+  {
+    boolean bool;
+    if (this.a.a() != null)
+    {
+      bool = this.a.a().load(this.a.getActivity());
+      if (!bool) {
+        break label66;
+      }
+    }
+    label66:
+    for (String str = "loading ad data";; str = "load ad data error")
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = false;
+      break;
+    }
+  }
 }
 
 

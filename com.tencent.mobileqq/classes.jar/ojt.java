@@ -1,23 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
 public class ojt
-  implements bkhy
+  implements avvs
 {
-  public ojt(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ojt(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onDismiss()
+  public void a(HotPicData paramHotPicData)
   {
-    boolean bool = true;
-    ReadInJoySettingActivity.a(this.a, true);
-    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
-    if (!ReadInJoySettingActivity.a(this.a)) {}
-    for (;;)
-    {
-      localSwitch.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      bool = false;
+    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
     }
   }
 }

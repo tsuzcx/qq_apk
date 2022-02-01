@@ -1,29 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.lang.ref.WeakReference;
 
 public class xow
-  implements Animator.AnimatorListener
+  implements ygf
 {
-  public xow(XViewPager paramXViewPager) {}
+  private WeakReference<xov> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public xow(xov paramxov)
   {
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(0);
-    }
+    this.a = new WeakReference(paramxov);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString, int paramInt)
   {
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(0);
+    yuk.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    xov localxov = (xov)this.a.get();
+    if ((localxov == null) || (paramInt == 1002) || (paramInt == 1003)) {}
+    do
+    {
+      return;
+      wnu.a(xov.a(localxov), 12, paramString);
+    } while ((localxov.a == null) || (localxov.a.a == null));
+    paramInt = yup.a(localxov.a.a);
+    if (localxov.a.a.getOwner().isMe()) {}
+    for (paramString = "1";; paramString = "2")
+    {
+      yup.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, yup.a(4444), "", localxov.a.a.feedId });
+      return;
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auju
-  implements augr
+class auju
+  implements View.OnClickListener
 {
-  public auju(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  auju(aujr paramaujr) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
-    ((auke)this.a.a.getManager(350)).a().a(null);
-    this.a.y();
-    this.a.a();
+    aujr.a(this.a, true);
+    this.a.jdField_a_of_type_Auku.f(true);
+    this.a.jdField_a_of_type_Auku.d(false);
+    aujr.a(this.a);
+    this.a.jdField_a_of_type_Augj.f();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

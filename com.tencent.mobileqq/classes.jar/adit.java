@@ -1,72 +1,42 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adit
-  implements Animation.AnimationListener
+  implements adbw
 {
-  int jdField_a_of_type_Int = -1;
-  View jdField_a_of_type_AndroidViewView;
-  
-  public adit(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
+    return 1033;
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      paramAnimation.leftMargin += (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-      this.jdField_a_of_type_AndroidViewView.setTag("right");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
-      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      paramAnimation.leftMargin -= (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-      this.jdField_a_of_type_AndroidViewView.setTag("left");
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364446)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
-        continue;
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
+    return false;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(156);
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (paramMessageRecord != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8035;
   }
 }
 

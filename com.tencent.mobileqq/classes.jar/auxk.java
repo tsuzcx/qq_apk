@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class auxk
-  implements DialogInterface.OnClickListener
+  implements EIPCResultCallback
 {
   auxk(auxj paramauxj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
-    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+    if (!paramEIPCResult.isSuccess())
+    {
+      QLog.d("QFlutter.launcher", 1, "install IPC fail");
+      auxe.b();
+      auxj.a(this.a, 1, true);
+    }
   }
 }
 

@@ -1,17 +1,40 @@
-class atob
-  implements atve
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
+
+public class atob
+  extends auoi
 {
-  atob(atoa paramatoa) {}
+  public atob(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
   
   public void a()
   {
-    atny.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
+    this.a.a.a().b();
   }
   
-  public void b() {}
+  public void b()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
+  }
 }
 
 

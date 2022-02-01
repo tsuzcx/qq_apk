@@ -1,15 +1,13 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
 
 public class wad
+  implements DialogInterface.OnClickListener
 {
-  public FrameLayout a;
-  public ImageView a;
-  public URLImageView a;
+  public wad(QCircleFollowTagView paramQCircleFollowTagView) {}
   
-  public wad(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,91 +1,73 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.NetworkState;
+import java.io.File;
 
 class bmed
-  extends bmcu
-  implements bmiv
+  implements beuq
 {
-  private static int jdField_a_of_type_Int;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qzone_live_video_plugin_hack.apk", "qzone_vertical_video_plugin.apk" };
-  private Handler jdField_a_of_type_AndroidOsHandler = new bmee(this, Looper.getMainLooper());
-  private bmdx jdField_a_of_type_Bmdx;
-  private bmef jdField_a_of_type_Bmef;
+  bmed(bmec parambmec, String paramString, bmea parambmea) {}
   
-  bmed(bmdx parambmdx, bmef parambmef)
+  public void onResp(bevm parambevm)
   {
-    this.jdField_a_of_type_Bmef = parambmef;
-    this.jdField_a_of_type_Bmdx = parambmdx;
-    NetworkState.addListener(this);
-  }
-  
-  void a()
-  {
-    if ((bmdx.b()) && (this.jdField_a_of_type_Bmef.a() != null)) {
-      try
-      {
-        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          this.jdField_a_of_type_Bmdx.a(str, this, 0);
-          i += 1;
-        }
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        QLog.e("QZonePluginPreInstaller", 1, localRemoteException, new Object[0]);
-      }
+    beum localbeum = (beum)parambevm.jdField_a_of_type_Bevl;
+    if (this.jdField_a_of_type_Bmec.jdField_a_of_type_Beum == localbeum) {
+      this.jdField_a_of_type_Bmec.jdField_a_of_type_Beum = null;
     }
-  }
-  
-  public void a(String paramString)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallBegin");
+      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbeum.jdField_a_of_type_JavaLangString, Integer.valueOf(parambevm.jdField_a_of_type_Int), Integer.valueOf(parambevm.c), this.jdField_a_of_type_JavaLangString }));
     }
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallError, plugin=" + paramString + ", retryInstallNum=" + jdField_a_of_type_Int);
-    }
-    paramInt = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginRetryDownloadTimes", 1);
-    if ((jdField_a_of_type_Int < paramInt) && (this.jdField_a_of_type_Bmdx != null))
+    if (parambevm.jdField_a_of_type_Int == 0)
     {
-      jdField_a_of_type_Int += 1;
-      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramString);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, jdField_a_of_type_Int * 30 * 1000);
+      parambevm = new File(localbeum.c);
+      if (!parambevm.exists()) {}
     }
+    do
+    {
+      for (;;)
+      {
+        try
+        {
+          parambevm = parambevm.getParent();
+          bhmi.a(localbeum.c, parambevm, false);
+          bmeb.a(this.jdField_a_of_type_Bmea.b);
+          i = 1;
+          if (i == 0) {
+            break;
+          }
+          if (this.jdField_a_of_type_Bmec.jdField_a_of_type_Bmee != null)
+          {
+            this.jdField_a_of_type_Bmec.jdField_a_of_type_Bmee.a(100);
+            this.jdField_a_of_type_Bmec.jdField_a_of_type_Bmee.a(0, "Download Complete!!!");
+          }
+          this.jdField_a_of_type_Bmec.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        catch (Exception parambevm)
+        {
+          parambevm.printStackTrace();
+        }
+        int i = 0;
+      }
+    } while (this.jdField_a_of_type_Bmec.jdField_a_of_type_Bmee == null);
+    this.jdField_a_of_type_Bmec.jdField_a_of_type_Bmee.a(2, "");
   }
   
-  public void b()
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    jdField_a_of_type_Int = 0;
-    NetworkState.removeListener(this);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallFinish");
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
     }
-  }
-  
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    if (bmdx.b()) {
-      a();
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bmec.jdField_a_of_type_Bmee != null) {
+        this.jdField_a_of_type_Bmec.jdField_a_of_type_Bmee.a(i);
+      }
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
     }
   }
 }

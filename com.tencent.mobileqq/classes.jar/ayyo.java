@@ -1,28 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.ReportInfo;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
-public final class ayyo
-  implements Parcelable.Creator<ReportInfo>
+public class ayyo
+  implements PopupWindow.OnDismissListener
 {
-  public ReportInfo a(Parcel paramParcel)
-  {
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localReportInfo.f = paramParcel.readInt();
-    localReportInfo.d = paramParcel.readInt();
-    localReportInfo.e = paramParcel.readInt();
-    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    return localReportInfo;
-  }
+  public ayyo(OCRResultActivity paramOCRResultActivity) {}
   
-  public ReportInfo[] a(int paramInt)
+  public void onDismiss()
   {
-    return new ReportInfo[paramInt];
+    this.a.b = null;
+    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
+    {
+      Drawable localDrawable = this.a.getResources().getDrawable(2130845640);
+      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    }
   }
 }
 

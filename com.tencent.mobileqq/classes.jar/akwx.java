@@ -1,27 +1,34 @@
-import java.io.File;
-import java.util.Comparator;
+import Wallet.GetBroadCastHbIdiomReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 
-final class akwx
-  implements Comparator<File>
+class akwx
+  implements alji
 {
-  private int a(String paramString)
-  {
-    try
-    {
-      int i = paramString.lastIndexOf('.');
-      if (i == -1) {
-        return Integer.parseInt(paramString);
-      }
-      i = Integer.parseInt(paramString.substring(0, i));
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
+  akwx(akwu paramakwu, ArrayList paramArrayList, SessionInfo paramSessionInfo) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(String paramString)
   {
-    return a(paramFile1.getName()) - a(paramFile2.getName());
+    int i = 1;
+    GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
+    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
+    localGetBroadCastHbIdiomReq.sKey = paramString;
+    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) {}
+    for (;;)
+    {
+      localGetBroadCastHbIdiomReq.fromType = i;
+      localGetBroadCastHbIdiomReq.platform = 0;
+      localGetBroadCastHbIdiomReq.qqVersion = "8.4.5";
+      akxq.a(localGetBroadCastHbIdiomReq, new akwy(this));
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000) {
+        i = 2;
+      } else {
+        i = 0;
+      }
+    }
   }
 }
 

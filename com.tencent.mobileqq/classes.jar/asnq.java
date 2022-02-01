@@ -1,22 +1,24 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-public class asnq
+class asnq
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public asnq(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  asnq(asnp paramasnp, int paramInt) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
     }
-    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
+    if (asnp.a(this.jdField_a_of_type_Asnp).getParent() != null) {
+      asnp.a(this.jdField_a_of_type_Asnp).getParent().requestLayout();
+    }
   }
 }
 

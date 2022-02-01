@@ -1,50 +1,21 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 class azfo
-  extends BroadcastReceiver
 {
   azfo(azfn paramazfn) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramContext = this.a.mRuntime.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
-    if ((paramIntent != null) && ((paramIntent instanceof bhsx)))
-    {
-      paramIntent = ((bhsx)paramIntent).getCurrentUrl();
-      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
-        break label232;
-      }
-    }
-    label232:
-    for (this.a.a = bkgj.a(bkgj.a(paramIntent), "entryId", 2);; this.a.a = 2)
-    {
-      paramContext.finish();
-      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
-      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
-      if (this.a.a == 0) {
-        paramContext.setFlags(67108864);
-      }
-      paramContext.putExtra("AllInOne", paramIntent);
-      this.a.mRuntime.a().startActivity(paramContext);
-      paramContext = new Intent();
-      paramContext.putExtra("closeSpecialLogic", true);
-      this.a.mRuntime.a().setResult(-1, paramContext);
-      this.a.mRuntime.a().finish();
-      return;
-    }
+    bhlq.a(azfn.a(this.a), 2131697714, 2131697715);
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    azfn.a(this.a).a(null);
+    azfn.a(this.a).show();
   }
 }
 

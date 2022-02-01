@@ -1,9 +1,12 @@
+import com.tencent.oskplayer.util.Singleton;
+
 public class abca
+  extends Singleton<abbz>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  protected abbz a()
+  {
+    return new abbz();
+  }
 }
 
 

@@ -1,14 +1,31 @@
-public abstract interface mzh
+import android.text.TextUtils;
+
+public class mzh
 {
-  public abstract long a();
+  public int a;
+  public String a;
+  public String b = null;
   
-  public abstract void a();
+  public mzh()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+  }
   
-  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b);
+  }
   
-  public abstract boolean a(long paramLong1, long paramLong2);
+  public boolean b()
+  {
+    return (a()) && (this.jdField_a_of_type_Int == 1);
+  }
   
-  public abstract boolean a(long paramLong1, long paramLong2, boolean paramBoolean);
+  public String toString()
+  {
+    return "{redPoint: " + this.jdField_a_of_type_Int + ", iconUrl: " + this.jdField_a_of_type_JavaLangString + ", jumpUrl: " + this.b + "}";
+  }
 }
 
 

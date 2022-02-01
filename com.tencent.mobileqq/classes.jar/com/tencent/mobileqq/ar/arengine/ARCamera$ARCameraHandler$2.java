@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aoyz;
-import aozb;
+import apmp;
+import apmr;
 
 public class ARCamera$ARCameraHandler$2
   implements Runnable
 {
-  public ARCamera$ARCameraHandler$2(aozb paramaozb) {}
+  public ARCamera$ARCameraHandler$2(apmr paramapmr) {}
   
   public void run()
   {
-    aoyz.a(this.a.a);
+    apmp.a(this.a.a);
   }
 }
 

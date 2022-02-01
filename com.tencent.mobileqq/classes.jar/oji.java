@@ -1,19 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class oji
-  implements nkl
+  implements bliz
 {
-  public oji(ReadInJoyNewFeedsActivity.2 param2) {}
+  public oji(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
+    if (this.a.a) {
+      return;
+    }
+    this.a.a = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      this.a.i();
+      raa.d("1");
+      this.a.finish();
+      continue;
+      this.a.j();
+      raa.d("2");
     }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

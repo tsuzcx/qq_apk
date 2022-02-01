@@ -1,19 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
-class nwb
-  implements DialogInterface.OnClickListener
+public class nwb
+  implements Animation.AnimationListener
 {
-  nwb(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
+  public nwb(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    this.a.setResult(-1);
+    PublicAccountAdvertisementActivity.g(this.a);
+    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

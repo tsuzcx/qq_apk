@@ -1,23 +1,27 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class xhe
-  implements View.OnKeyListener
+class xhe
+  extends xfr
 {
-  public xhe(StoryPlayerFragment paramStoryPlayerFragment) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  xhe(xgp paramxgp, StoryVideoItem paramStoryVideoItem, xhx paramxhx)
   {
-    if (paramInt == 4)
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    znw.a(str);
+    znw.a(this.jdField_a_of_type_Xhx.d);
+    if (this.jdField_a_of_type_Xhx.d == null)
     {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
+      this.jdField_a_of_type_Xhx.d = "";
+      yuk.c(this.b, "imageLocalPath is null", new Throwable());
     }
-    return false;
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Xhx.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Xhx.a));
+    return true;
   }
 }
 

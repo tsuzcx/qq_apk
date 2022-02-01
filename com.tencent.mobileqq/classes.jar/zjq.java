@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.takevideo.slideshow.ConvertRunnable;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.lang.ref.WeakReference;
 
-class zjq
-  implements View.OnClickListener
+public class zjq
 {
-  zjq(zjp paramzjp, TroopStoryItemInfo paramTroopStoryItemInfo) {}
-  
-  public void onClick(View paramView)
-  {
-    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (localStoryVideoItem != null) {
-      ((why)wpm.a().b(3)).a(localStoryVideoItem);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public static int a = 3;
+  public long a;
+  public ConvertRunnable a;
+  public SlideItemInfo a;
+  public WeakReference<zjr> a;
+  public int b;
+  public long b;
+  public int c;
 }
 
 

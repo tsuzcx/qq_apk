@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-final class adrk
-  implements DialogInterface.OnCancelListener
+public class adrk
+  extends AccountObserver
 {
-  adrk(adsy paramadsy, adsx paramadsx) {}
+  public adrk(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    if (this.jdField_a_of_type_Adsy.a) {
-      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
-    }
-    if (this.jdField_a_of_type_Adsx != null) {
-      this.jdField_a_of_type_Adsx.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    AccountManageActivity.b(this.a);
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    AccountManageActivity.b(this.a);
   }
 }
 

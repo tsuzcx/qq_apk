@@ -3,8 +3,8 @@ package com.tencent.mobileqq.data;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import anni;
-import arim;
+import anzj;
+import aryb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ public class ShareHotChatGrayTips
   private static final String JUMP_URL = "jump_url";
   private static final String MSG_CONTENT = "msg_content";
   private static final String MSG_CONTENT_HIGHLIGHT = "msg_content_highlight";
-  public static final String SHARE_GRAY_TIP_CONTENT = anni.a(2131712708);
+  public static final String SHARE_GRAY_TIP_CONTENT = anzj.a(2131712817);
   private static final String TROOP_NAME = "troop_name";
   private static final String TROOP_UIN = "troop_uin";
   public String mHotnamecode;
@@ -120,7 +120,7 @@ public class ShareHotChatGrayTips
       }
       SpannableString localSpannableString = new SpannableString(this.mMsgContent);
       if ((i >= 0) && (j > i)) {
-        localSpannableString.setSpan(new arim(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
+        localSpannableString.setSpan(new aryb(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
       }
       return localSpannableString;
     }

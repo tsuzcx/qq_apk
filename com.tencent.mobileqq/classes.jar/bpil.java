@@ -1,10 +1,17 @@
-public abstract interface bpil
+import android.graphics.Color;
+import android.widget.FrameLayout;
+import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
+
+class bpil
+  implements bpci
 {
-  public abstract void a();
+  bpil(bpij parambpij) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
-  
-  public abstract boolean a(bpim parambpim);
+  public void a(float paramFloat)
+  {
+    bpij.a(this.a).setAlpha(1.0F - paramFloat);
+    bpij.a(this.a).setBackgroundColor(Color.argb((int)(255.0F * paramFloat * 0.7F), 0, 0, 0));
+  }
 }
 
 

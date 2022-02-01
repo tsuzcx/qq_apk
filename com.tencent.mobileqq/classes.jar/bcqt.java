@@ -1,106 +1,315 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.tools.util;
 
 public class bcqt
 {
-  public static int a(Context paramContext, String paramString)
+  protected static boolean a;
+  protected static String b;
+  protected Handler a;
+  protected String a;
+  protected HashMap<String, String> a;
+  protected NewIntent a;
+  protected Handler b;
+  protected boolean b;
+  
+  static
   {
-    if (paramContext != null)
-    {
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getRunningAppProcesses();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.iterator();
-          while (paramContext.hasNext())
-          {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
-              return localRunningAppProcessInfo.pid;
-            }
-          }
-        }
-      }
-    }
-    return -1;
+    jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public bcqt()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
   public static int a(String paramString)
   {
-    int i = -1;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt("pid" + paramString, -1);
+    int j = 0;
+    if (paramString.contains("$OPID$")) {
+      j = 1;
     }
-    return i;
+    int i = j;
+    if (paramString.contains("$AT$")) {
+      i = j | 0x2;
+    }
+    j = i;
+    if (paramString.contains("$PT$")) {
+      j = i | 0x4;
+    }
+    i = j;
+    if (paramString.contains("$PF$")) {
+      i = j | 0x40;
+    }
+    j = i;
+    if (paramString.contains("$ESK$")) {
+      j = i | 0x80;
+    }
+    return j;
   }
   
-  public static long a(String paramString)
+  public static Bundle a(String paramString)
   {
-    long l2 = 0L;
-    int i = a(BaseApplicationImpl.getContext(), paramString);
-    long l1;
-    if (i == -1) {
-      l1 = l2;
-    }
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      long l3;
-      do
+      return localBundle;
+      paramString = paramString.split("&");
+    } while (paramString == null);
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = paramString[i];
+      int k = localObject.indexOf('=');
+      if (k != -1) {}
+      try
       {
-        int j;
-        do
+        localBundle.putString(localObject.substring(0, k), localObject.substring(k + 1));
+        i += 1;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          do
-          {
-            return l1;
-            j = a(paramString);
-            l1 = l2;
-          } while (j == -1);
-          l1 = l2;
-        } while (i != j);
-        l3 = b(paramString);
-        l1 = l2;
-      } while (l3 == -1L);
-      l2 = System.currentTimeMillis() - l3;
+          QLog.d("AppLaucherHelper", 2, localException.getMessage(), localException);
+        }
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    jdField_b_of_type_JavaLangString = "";
+  }
+  
+  private void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    localbcqx = new bcqx(this, System.currentTimeMillis(), paramString3, paramContext, paramInt);
+    if (this.jdField_a_of_type_MqqAppNewIntent == null) {
+      this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(paramContext, nkl.class);
+    }
+    localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
+    long l1 = 0L;
+    try
+    {
+      l2 = Long.parseLong(paramAppInterface.getCurrentAccountUin());
       l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
-    return l2;
-  }
-  
-  public static void a(String paramString)
-  {
-    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
-  }
-  
-  public static long b(String paramString)
-  {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
     }
-    return l;
+    catch (Exception localException)
+    {
+      long l2;
+      label64:
+      break label64;
+    }
+    localAuthorizeRequest.uin.set(l1);
+    l1 = 0L;
+    try
+    {
+      l2 = Long.parseLong(paramString1);
+      l1 = l2;
+    }
+    catch (Exception paramString1)
+    {
+      label87:
+      int i;
+      break label87;
+    }
+    localAuthorizeRequest.client_id.set(l1);
+    localAuthorizeRequest.pf.set("");
+    paramString1 = bjva.a(paramContext);
+    localAuthorizeRequest.qqv.set(paramString1);
+    localAuthorizeRequest.sdkp.set("a");
+    paramString1 = Build.DISPLAY;
+    localAuthorizeRequest.os.set(paramString1);
+    localAuthorizeRequest.skey.set(paramString4);
+    i = a(paramString2);
+    if (i == 0)
+    {
+      bjva.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
+      jdField_a_of_type_Boolean = false;
+      return;
+    }
+    localAuthorizeRequest.flags.set(i);
+    paramString2 = "";
+    paramString1 = paramString2;
+    for (;;)
+    {
+      try
+      {
+        arrayOfSignature = paramContext.getPackageManager().getPackageInfo(paramString3, 64).signatures;
+        paramString1 = paramString2;
+        if (arrayOfSignature != null)
+        {
+          paramString4 = paramString2;
+          paramString1 = paramString2;
+        }
+      }
+      catch (Exception paramString2)
+      {
+        Signature[] arrayOfSignature;
+        MessageDigest localMessageDigest;
+        label302:
+        continue;
+        localAuthorizeRequest.apk_sign.set(paramString1);
+        this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
+        try
+        {
+          this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localAuthorizeRequest.toByteArray());
+          this.jdField_a_of_type_MqqAppNewIntent.setObserver(localbcqx);
+          paramAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 2000L);
+          return;
+        }
+        catch (Exception paramAppInterface)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d(getClass().getSimpleName(), 2, paramAppInterface.getMessage());
+          jdField_a_of_type_Boolean = false;
+          return;
+        }
+      }
+      try
+      {
+        localMessageDigest = MessageDigest.getInstance("MD5");
+        paramString4 = paramString2;
+        paramString1 = paramString2;
+        localMessageDigest.update(arrayOfSignature[0].toByteArray());
+        paramString4 = paramString2;
+        paramString1 = paramString2;
+        paramString2 = bhml.a(localMessageDigest.digest());
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+      {
+        paramString2 = paramString4;
+        paramString1 = paramString2;
+        localNoSuchAlgorithmException1.printStackTrace();
+        paramString1 = paramString2;
+      }
+    }
+    try
+    {
+      paramString1 = paramString2.toLowerCase();
+      paramString2 = paramString1;
+      paramString4 = paramString2;
+      paramString1 = paramString2;
+      localMessageDigest.reset();
+      paramString1 = paramString2;
+    }
+    catch (Exception paramString1)
+    {
+      paramString1 = paramString2;
+      break label302;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+    {
+      break label356;
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "no sign");
+      }
+      jdField_a_of_type_Boolean = false;
+      bjva.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
+      return;
+    }
   }
   
-  private static SharedPreferences b()
+  public boolean a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
+    if (jdField_a_of_type_Boolean) {
+      return false;
     }
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "lauchApp");
+    }
+    jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new bcqw(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
+    }
+    if (paramString2.startsWith("?")) {}
+    for (this.jdField_a_of_type_JavaLangString = paramString2.substring(1);; this.jdField_a_of_type_JavaLangString = paramString2)
+    {
+      a(paramAppInterface, paramContext, paramString1, paramString2, paramString3, ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount()), paramInt);
+      return true;
+    }
+  }
+  
+  public boolean a(String paramString1, Context paramContext, String paramString2, AppInterface paramAppInterface, String paramString3, String paramString4, int paramInt, String paramString5)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "launchAppWithWlogin");
+    }
+    if ((TextUtils.isEmpty(paramString2)) || (!niz.a().h(paramString2))) {
+      return false;
+    }
+    jdField_a_of_type_Boolean = true;
+    if (this.jdField_b_of_type_AndroidOsHandler == null) {
+      this.jdField_b_of_type_AndroidOsHandler = new bcqu(this);
+    }
+    Long localLong = Long.valueOf(0L);
+    try
+    {
+      paramString2 = Long.valueOf(paramString3);
+      long l1 = 1L;
+      try
+      {
+        long l2 = Long.valueOf(paramString5).longValue();
+        l1 = l2;
+      }
+      catch (Exception paramString3)
+      {
+        label99:
+        break label99;
+      }
+      paramString3 = new WtloginHelper(paramAppInterface.getApplication().getApplicationContext());
+      paramString5 = util.getPkgSigFromApkName(paramContext, paramString4);
+      paramString3.GetA1WithA1(paramAppInterface.getAccount(), 16L, 16L, paramString4.getBytes(), 1L, paramString2.longValue(), l1, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
+      paramString3.SetListener(new bcqv(this, paramString1, paramString3, paramInt, paramContext));
+      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+      return true;
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2 = localLong;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("appcenter", 2, "parse appid error = " + paramString3);
+          paramString2 = localLong;
+        }
+      }
+    }
   }
 }
 

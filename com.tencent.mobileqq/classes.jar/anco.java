@@ -1,44 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.1;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 import org.json.JSONObject;
 
-final class anco
-  implements ancs
+public class anco
+  implements anpf
 {
-  anco(int paramInt) {}
+  public anco(CmGameSubProcessHandler.1 param1) {}
   
-  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
-    }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
+    int i = 0;
+    ApolloCmdChannel localApolloCmdChannel = anbd.a();
+    if (localApolloCmdChannel != null) {}
+    for (;;)
     {
-      paramQQAppInterface = ancm.a(paramInt2, paramArrayOfInt);
-      if (paramQQAppInterface == null)
+      try
       {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        if (!QLog.isColorLevel()) {
+          break label106;
+        }
+        QLog.d("cmgame_process.CmGameSubProcessHandler", 2, new Object[] { "createGameShortCut errorCode:", Integer.valueOf(paramInt) });
+      }
+      catch (Exception localException)
+      {
+        JSONObject localJSONObject;
+        QLog.e("cmgame_process.CmGameSubProcessHandler", 1, "createGameShortCut Exception:" + localException);
         return;
       }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      localJSONObject = new JSONObject();
+      localJSONObject.put("ret", i);
+      localApolloCmdChannel.callbackFromRequest(this.a.a, i, "cs.create_xy_shortcut.local", localJSONObject.toString());
       return;
+      label106:
+      if (paramInt == 1) {
+        i = -1;
+      }
     }
-    if (this.a == 1000) {
-      paramQQAppInterface.put("uin", paramString1);
-    }
-    paramQQAppInterface.put("openId", paramString2);
-    paramString1 = new Bundle();
-    paramString1.putString("resData", paramQQAppInterface.toString());
-    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-    ampb.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

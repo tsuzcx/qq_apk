@@ -1,59 +1,46 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
 
-public class bdtw
-  extends bdtr
+class bdtw
+  extends URLDrawableDownListener.Adapter
 {
-  public bdtw(BaseApplicationImpl paramBaseApplicationImpl)
+  bdtw(bdts parambdts) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    super("DataLineFaceDownloader", paramBaseApplicationImpl);
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
+    }
   }
   
-  private String a(Context paramContext, String paramString)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    String str = bgmo.a(paramContext, paramString, 0);
-    ImageInfo localImageInfo = new ImageInfo();
-    bgmo.a(4, paramContext, paramString, str, true, localImageInfo, 0);
-    return localImageInfo.b;
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    if ((paramDownloadParams.tag instanceof MessageForPic)) {}
-    for (paramDownloadParams = ((MessageForPic)paramDownloadParams.tag).path;; paramDownloadParams = null)
-    {
-      if (TextUtils.isEmpty(paramDownloadParams)) {}
-      File localFile1;
-      do
-      {
-        return null;
-        localFile1 = new File(paramDownloadParams);
-      } while (!localFile1.exists());
-      File localFile2;
-      if (localFile1.length() >= 1048576L)
-      {
-        String str = a(this.a.getApplicationContext(), paramDownloadParams);
-        if (!bgmg.a(str)) {
-          break label203;
-        }
-        localFile2 = new File(str);
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage compress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length() + " compressPath:" + str + " compressFileSize:" + localFile2.length());
-      }
-      label203:
-      for (paramDownloadParams = localFile2;; paramDownloadParams = localFile1)
-      {
-        bdtr.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-        return null;
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage uncompress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length());
-      }
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
+    paramView.getLayoutParams().width = i;
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    paramView.requestLayout();
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
     }
   }
 }

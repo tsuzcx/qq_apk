@@ -1,16 +1,19 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
-class abci
-  implements QzoneZipCacheHelperCallBack
+public class abci
+  extends AnimatorListenerAdapter
 {
-  abci(abcg paramabcg, String paramString1, String paramString2, String paramString3) {}
+  public abci(SingleLyricView paramSingleLyricView) {}
   
-  public void onResult(boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
   {
-    abcg.a(this.jdField_a_of_type_Abcg, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
+    }
   }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

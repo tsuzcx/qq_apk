@@ -1,16 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class aluo
-  extends anxg
+  extends hq
 {
-  aluo(alun paramalun) {}
+  private aluo(alum paramalum) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      alun.a(this.a, paramString, localBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    }
+    if ((alum.a(this.a) != null) && (alum.a(this.a).hasMessages(paramInt))) {
+      alum.a(this.a, paramBoolean, paramArrayList, paramInt);
     }
   }
 }

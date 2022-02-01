@@ -1,27 +1,50 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-class abae
-  implements View.OnClickListener
+public class abae
 {
-  abae(abac paramabac, String paramString, Activity paramActivity) {}
+  private String a = abac.b;
+  private String b = "1";
+  private String c = abac.a;
   
-  public void onClick(View paramView)
+  public static abae a(String paramString)
   {
-    this.jdField_a_of_type_Abac.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-    {
-      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((localAppInterface instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)localAppInterface).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
-      }
+    if (paramString == null) {
+      return null;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    try
+    {
+      abae localabae = new abae();
+      paramString = new JSONObject(paramString);
+      localabae.a = paramString.optString("mine_videostory_entrance", abac.b);
+      localabae.b = paramString.optString("enable_click_take_picture", "1");
+      localabae.c = paramString.optString("mine_videostory_drawer_entrance", abac.a);
+      return localabae;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
   }
 }
 

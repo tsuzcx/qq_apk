@@ -1,16 +1,32 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 class bola
-  implements bpyd
+  extends Handler
 {
-  bola(boky paramboky) {}
-  
-  public void a(boolean paramBoolean)
+  bola(bokv parambokv, Looper paramLooper)
   {
-    if (paramBoolean)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.b();
+    default: 
+      return;
+    case 1: 
+      abbe.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
       return;
     }
-    this.a.a(4);
+    abbe.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.b();
   }
 }
 

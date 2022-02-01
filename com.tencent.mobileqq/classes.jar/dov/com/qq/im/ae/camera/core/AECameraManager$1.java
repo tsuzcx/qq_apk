@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnho;
-import bnhs;
+import boiw;
+import boja;
 
 public class AECameraManager$1
   implements Runnable
 {
-  public AECameraManager$1(bnho parambnho, bnhs parambnhs) {}
+  public AECameraManager$1(boiw paramboiw, boja paramboja) {}
   
   public void run()
   {
-    bnho.a(this.this$0, this.a);
+    boiw.a(this.this$0, this.a);
   }
 }
 

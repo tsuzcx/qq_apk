@@ -1,44 +1,87 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
 import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.Comparator;
 
 public class amfq
-  implements Comparator<amfs>
+  implements Comparator<TroopMemberInfo>
 {
-  private int a(amfs paramamfs)
-  {
-    if ((a(paramamfs) == 0L) || (paramamfs.jdField_a_of_type_Int == 4)) {
-      return paramamfs.jdField_a_of_type_Int + 3;
-    }
-    return paramamfs.jdField_a_of_type_Int;
-  }
+  private amfq(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  private long a(amfs paramamfs)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if ((paramamfs.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof TroopInfo)) {
-      return ((TroopInfo)paramamfs.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
+    int j = 0;
+    int k = 0;
+    int i;
+    if (this.a.f == TroopAddFrdsInnerFrame.e)
+    {
+      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
+      if (i == 0) {
+        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
+        {
+          i = 0;
+          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
+            break label189;
+          }
+          j = 0;
+          label56:
+          if ((i != 0) || (j != 0) || (TroopAddFrdsInnerFrame.a(this.a) == null)) {
+            break label257;
+          }
+          if ((!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin)) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
+            break label252;
+          }
+          i = 1;
+          label111:
+          if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin))
+          {
+            j = k;
+            if (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {}
+          }
+          else
+          {
+            j = 1;
+          }
+          j -= i;
+          i = j;
+          if (j == 0) {
+            i = Long.signum(paramTroopMemberInfo2.last_active_time - paramTroopMemberInfo1.last_active_time);
+          }
+        }
+      }
     }
-    if ((paramamfs.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof DiscussionInfo)) {
-      return ((DiscussionInfo)paramamfs.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
+    for (;;)
+    {
+      return i;
+      i = paramTroopMemberInfo1.commonFrdCnt;
+      break;
+      label189:
+      j = paramTroopMemberInfo2.commonFrdCnt;
+      break label56;
+      return i;
+      i = j;
+      if (this.a.f == TroopAddFrdsInnerFrame.d)
+      {
+        i = j;
+        if (paramTroopMemberInfo1 != null)
+        {
+          i = j;
+          if (paramTroopMemberInfo1.displayedNamePinyinFirst != null)
+          {
+            i = j;
+            if (paramTroopMemberInfo2 != null)
+            {
+              return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+              label252:
+              i = 0;
+              break label111;
+              label257:
+              i = j - i;
+            }
+          }
+        }
+      }
     }
-    return 0L;
-  }
-  
-  public int a(amfs paramamfs1, amfs paramamfs2)
-  {
-    if ((paramamfs1 == null) && (paramamfs2 == null)) {
-      return 0;
-    }
-    if (paramamfs1 == null) {
-      return -1;
-    }
-    if (paramamfs2 == null) {
-      return 1;
-    }
-    if (a(paramamfs1) == a(paramamfs2)) {
-      return (int)(a(paramamfs2) - a(paramamfs1));
-    }
-    return a(paramamfs1) - a(paramamfs2);
   }
 }
 

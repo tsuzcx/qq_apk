@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import acvy;
-import awhc;
-import bkpj;
+import adab;
+import awzu;
+import blqm;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
@@ -14,12 +14,12 @@ class QQMessageFacade$1
   
   public void run()
   {
-    bkpj.a("initMsgCache");
+    blqm.a("initMsgCache");
     long l1 = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
     }
-    QQMessageFacade.a(this.this$0, awhc.a(QQMessageFacade.a(this.this$0)));
+    QQMessageFacade.a(this.this$0, awzu.a(QQMessageFacade.a(this.this$0)));
     this.this$0.a().a();
     this.this$0.d();
     QQMessageFacade.a(this.this$0);
@@ -30,7 +30,7 @@ class QQMessageFacade$1
       long l2 = System.currentTimeMillis();
       MsgAutoMonitorUtil.getInstance().printKeyAndValue("MSG_InitCostTime", l2 - l1 + "");
     }
-    bkpj.a();
+    blqm.a();
   }
 }
 

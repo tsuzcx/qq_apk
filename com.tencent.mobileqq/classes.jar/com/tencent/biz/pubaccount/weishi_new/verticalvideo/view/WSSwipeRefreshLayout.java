@@ -5,12 +5,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import uuu;
+import uvw;
 
 public class WSSwipeRefreshLayout
   extends SwipeRefreshLayout
 {
-  private uuu a;
+  private uvw a;
   
   public WSSwipeRefreshLayout(Context paramContext)
   {
@@ -33,9 +33,9 @@ public class WSSwipeRefreshLayout
     }
   }
   
-  public void setOnInterceptTouchEventListener(uuu paramuuu)
+  public void setOnInterceptTouchEventListener(uvw paramuvw)
   {
-    this.a = paramuuu;
+    this.a = paramuvw;
   }
 }
 

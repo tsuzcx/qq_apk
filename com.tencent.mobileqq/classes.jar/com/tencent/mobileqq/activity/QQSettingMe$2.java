@@ -13,12 +13,15 @@ class QQSettingMe$2
   public void run()
   {
     this.this$0.a(Boolean.valueOf(false));
-    QQSettingMe.a(this.this$0).setImageResource(2130846047);
-    QQSettingMe.b(this.this$0).setImageResource(2130846063);
+    QQSettingMe.a(this.this$0).setImageResource(2130846062);
+    QQSettingMe.b(this.this$0).setImageResource(2130846078);
     this.this$0.a.setTextColor(-16777216);
-    TextView localTextView = (TextView)this.this$0.e.findViewById(2131376497);
+    if (this.this$0.b != null) {
+      this.this$0.b.setTextColor(-16777216);
+    }
+    TextView localTextView = (TextView)this.this$0.e.findViewById(2131376629);
     localTextView.setTextColor(Color.parseColor("#FFB0B3BF"));
-    ((ImageView)this.this$0.e.findViewById(2131368155)).setColorFilter(localTextView.getCurrentTextColor());
+    ((ImageView)this.this$0.e.findViewById(2131368229)).setColorFilter(localTextView.getCurrentTextColor());
   }
 }
 

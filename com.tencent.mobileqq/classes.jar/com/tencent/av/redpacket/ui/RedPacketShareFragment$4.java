@@ -28,7 +28,7 @@ class RedPacketShareFragment$4
     //   31: ifne +578 -> 609
     //   34: new 39	java/io/File
     //   37: dup
-    //   38: getstatic 45	anhk:bg	Ljava/lang/String;
+    //   38: getstatic 45	antf:bg	Ljava/lang/String;
     //   41: invokespecial 48	java/io/File:<init>	(Ljava/lang/String;)V
     //   44: astore 5
     //   46: aload 5
@@ -43,7 +43,7 @@ class RedPacketShareFragment$4
     //   68: new 68	java/lang/StringBuilder
     //   71: dup
     //   72: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   75: getstatic 45	anhk:bg	Ljava/lang/String;
+    //   75: getstatic 45	antf:bg	Ljava/lang/String;
     //   78: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: ldc 75
     //   83: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -69,7 +69,7 @@ class RedPacketShareFragment$4
     //   128: new 68	java/lang/StringBuilder
     //   131: dup
     //   132: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   135: getstatic 45	anhk:bg	Ljava/lang/String;
+    //   135: getstatic 45	antf:bg	Ljava/lang/String;
     //   138: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: ldc 75
     //   143: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aeco
-  implements Comparator<aecm>
+  implements DialogInterface.OnClickListener
 {
-  private aeco(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aeco(ChatHistory paramChatHistory) {}
   
-  public int a(aecm paramaecm1, aecm paramaecm2)
-  {
-    return paramaecm1.c.compareToIgnoreCase(paramaecm2.c);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

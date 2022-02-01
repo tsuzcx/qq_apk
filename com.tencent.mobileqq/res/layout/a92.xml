@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.ad.view.ClipLayout android:id="@id/kq5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.view.ClipLayout android:id="@id/kq5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ImageView android:id="@id/fcx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <ImageView android:id="@id/kq_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:orientation="vertical" android:id="@id/eem" android:layout_width="fill_parent" android:layout_height="fill_parent">

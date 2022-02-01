@@ -1,60 +1,29 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract interface alqt
+public class alqt
+  extends alqi
 {
-  public abstract int a();
+  public alqt(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131697791);
+    this.b = this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
-  
-  public abstract int a(int paramInt1, int paramInt2);
-  
-  @Nullable
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(@NonNull alqv paramalqv);
-  
-  public abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@ColorInt int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(@ColorInt int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract boolean f();
+  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof alqt))
+    {
+      paramObject = (alqt)paramObject;
+      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
+      return paramObject;
+    }
+    paramObject = new alqt(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
+    return paramObject;
+  }
 }
 
 

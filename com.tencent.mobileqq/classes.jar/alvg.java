@@ -1,22 +1,16 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.List;
 
-class alvg
-  implements wiw
+public class alvg
+  implements akxo
 {
-  alvg(alvf paramalvf, PublishVideoEntry paramPublishVideoEntry, String paramString, long paramLong) {}
+  public alvg(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
   {
-    if (alvf.a(this.jdField_a_of_type_Alvf)) {}
-    for (int i = -24;; i = paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + alvf.a(this.jdField_a_of_type_Alvf) + ", errCode:" + paramInt);
-      }
-      this.jdField_a_of_type_Alvf.a = true;
-      alvf.a(this.jdField_a_of_type_Alvf).a(i, paramString1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      return;
+    if ((this.a.E) && (paramInt1 > 0)) {
+      NewFlowCameraActivity.c = true;
     }
   }
 }

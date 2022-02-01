@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.app.Activity;
-import atqu;
+import auip;
 import java.util.TimerTask;
 
 public class MusicFilePresenter$5
   extends TimerTask
 {
-  public MusicFilePresenter$5(atqu paramatqu) {}
+  public MusicFilePresenter$5(auip paramauip) {}
   
   public void run()
   {

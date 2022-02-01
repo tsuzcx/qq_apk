@@ -1,84 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbvp
-  implements bbvh
+  implements View.OnClickListener
 {
-  public static final String a;
-  public final int a;
-  public Context a;
-  public View a;
+  public bbvp(CommentsView paramCommentsView, bbvm parambbvm, int paramInt) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = bbvp.class.getSimpleName();
-  }
-  
-  public bbvp(Context paramContext, int paramInt)
-  {
-    if (paramContext == null) {
-      throw new IllegalArgumentException(jdField_a_of_type_JavaLangString + "type is illegal, type = " + paramInt);
+    if ((this.jdField_a_of_type_Bbvm.a()) && (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null)) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
     }
-    int i;
-    if (paramInt >= 0)
-    {
-      i = paramInt;
-      if (paramInt <= 2) {}
-    }
-    else
-    {
-      i = 0;
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "type is illegal, type = " + 0);
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      if (bool) {
-        localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166913));
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView = localRelativeLayout;
-      return localRelativeLayout;
-      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, bggq.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
-      View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-      if (bool) {
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166924));
-      }
-      for (;;)
-      {
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, 1);
-        localLayoutParams.addRule(15);
-        localLayoutParams.leftMargin = bggq.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-        localLayoutParams.rightMargin = bggq.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-        localRelativeLayout.addView(localView, localLayoutParams);
-        break;
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166923));
-      }
-      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, bggq.a(this.jdField_a_of_type_AndroidContentContext, 18.0F)));
-      break;
-      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167279));
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

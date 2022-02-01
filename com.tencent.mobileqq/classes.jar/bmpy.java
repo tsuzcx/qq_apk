@@ -1,6 +1,8 @@
-public abstract interface bmpy
+public final class bmpy
 {
-  public abstract void onZipLoaded(boolean paramBoolean);
+  public static String a = "tab_index";
+  public static String b = "url_params";
+  public static String c = "com.qqreader.redpoint_change";
 }
 
 

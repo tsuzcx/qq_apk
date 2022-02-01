@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
+import android.annotation.SuppressLint;
+import android.util.Pair;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class aosx
-  implements Parcelable.Creator<ARRecognition>
+public class aosx
 {
-  public ARRecognition a(Parcel paramParcel)
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static Map<Integer, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
+  
+  public static int a(int paramInt)
   {
-    return new ARRecognition(paramParcel);
+    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).second).intValue();
   }
   
-  public ARRecognition[] a(int paramInt)
+  public static String a(int paramInt)
   {
-    return new ARRecognition[paramInt];
+    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).first;
+  }
+  
+  public static Map<Integer, Pair<String, Integer>> a()
+  {
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_JavaUtilMap == null) {
+        a();
+      }
+      return jdField_a_of_type_JavaUtilMap;
+    }
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  private static void a()
+  {
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.now.view.player;
 
-import axnt;
-import axny;
-import axnz;
+import aygn;
+import aygs;
+import aygt;
 
 public class VideoViewTVKImpl$1$1
   implements Runnable
 {
-  public VideoViewTVKImpl$1$1(axnz paramaxnz) {}
+  public VideoViewTVKImpl$1$1(aygt paramaygt) {}
   
   public void run()
   {

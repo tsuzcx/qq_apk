@@ -1,56 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class arbj
-  extends aqkz<arbi>
 {
-  public static arbi a()
-  {
-    return (arbi)aqlk.a().a(451);
-  }
+  public double a;
+  public int a;
+  public boolean a = true;
+  public double b;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
   
-  @NonNull
-  public arbi a(int paramInt)
+  public boolean equals(@Nullable Object paramObject)
   {
-    return new arbi();
-  }
-  
-  @Nullable
-  public arbi a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arbi.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(arbi paramarbi) {}
-  
-  public Class<arbi> clazz()
-  {
-    return arbi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
+    if ((paramObject == null) || (!(paramObject instanceof arbj))) {}
+    do
+    {
+      return false;
+      paramObject = (arbj)paramObject;
+    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
     return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 451;
   }
 }
 

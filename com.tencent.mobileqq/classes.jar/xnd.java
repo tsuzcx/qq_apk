@@ -1,34 +1,11 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
-
 public class xnd
+  extends xms
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
+  public ylw a;
   
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
+  public xnd(String paramString)
   {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
-    {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
-    }
-    return null;
-  }
-  
-  public void a(@NonNull Object paramObject)
-  {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
-    }
-    localLinkedList1.offer(paramObject);
+    super(paramString);
   }
 }
 

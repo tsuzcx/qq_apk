@@ -1,40 +1,55 @@
+import android.content.Context;
 import android.text.TextUtils;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zmt
+  extends nme
 {
-  public int a;
-  public String a;
-  public ArrayList<Object> a;
-  public zmv a;
-  public String[] a;
+  public boolean a;
   
-  public zmt() {}
-  
-  public zmt(String[] paramArrayOfString, String paramString, zmv paramzmv)
+  public zmt(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Zmv = paramzmv;
+    super(paramContext, paramString);
   }
   
-  public String toString()
+  public String a()
   {
-    String str1;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    return "key_for_troop_dynamic";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    for (;;)
     {
-      str1 = "null";
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label86;
+      try
+      {
+        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
       }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
     }
-    label86:
-    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
-    {
-      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
-      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
-      break;
-    }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_dynamic_version";
   }
 }
 

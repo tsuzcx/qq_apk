@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import avuv;
-import bctj;
+import awnq;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LyricsController$4
   implements Runnable
 {
-  public LyricsController$4(avuv paramavuv, boolean paramBoolean) {}
+  public LyricsController$4(awnq paramawnq, boolean paramBoolean) {}
   
   public void run()
   {
-    bctj.a(BaseApplicationImpl.getContext()).a("", "listen_together_float_window_permission_quality", this.a, 0L, 0L, null, "", false);
+    bdmc.a(BaseApplicationImpl.getContext()).a("", "listen_together_float_window_permission_quality", this.a, 0L, 0L, null, "", false);
   }
 }
 

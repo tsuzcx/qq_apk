@@ -1,44 +1,59 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aahz
-  extends aaib
+  implements aaav<CertifiedAccountWrite.StDoLikeRsp>
 {
-  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  public aahz(CommentBottomBar paramCommentBottomBar) {}
   
-  public aahz(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    CommentBottomBar.a(this.a, true);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null)) {
+      QQToast.a(this.a.getContext(), 1, paramString, 0).a();
     }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-  }
-  
-  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
-  {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
-    try
+    label291:
+    label295:
+    for (;;)
     {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
+      return;
+      if (paramStDoLikeRsp.like.status.get() == 1)
+      {
+        i = CommentBottomBar.a(this.a).likeInfo.count.get() + 1;
+        if (CommentBottomBar.a(this.a) != null)
+        {
+          CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
+          CommentBottomBar.a(this.a).likeInfo.count.set(i);
+        }
+        aaak.a().a(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
+        if (BaseApplicationImpl.sProcessId != 1) {
+          break label291;
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label295;
+        }
+        paramString = new Bundle();
+        paramString.putString("feed_id", CommentBottomBar.a(this.a).id.get());
+        paramString.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
+        paramString.putInt("feed_like_num", paramStDoLikeRsp.like.count.get());
+        QIPCClientHelper.getInstance().callServer(aaak.a, aaak.b, paramString, null);
+        return;
+        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
+        break;
       }
     }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
   }
 }
 

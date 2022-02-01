@@ -1,44 +1,49 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class alxe
-  implements SurfaceHolder.Callback
+class alxe
+  implements beuq
 {
-  public alxe(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  alxe(alxd paramalxd) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onResp(bevm parambevm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
+    Object localObject = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
+    if (parambevm.jdField_a_of_type_Int != 0) {
+      lbj.c("VideoFilterTools", "download file failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
     }
-    if ((this.a.h == 1) && (this.a.g > 0))
+    for (;;)
     {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
       return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambevm.jdField_a_of_type_Bevl.c)))
+      {
+        lbj.c("VideoFilterTools", "download file failed: md5 is not match.");
+        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+        return;
+      }
+      lbj.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = alxd.b;
+        bhmi.a(parambevm.jdField_a_of_type_Bevl.c, (String)localObject, false);
+        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+        if ((alxd.a(this.a).decrementAndGet() == 0) && (alxd.a(this.a) != null))
+        {
+          alxd.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException parambevm)
+      {
+        parambevm.printStackTrace();
+        lbj.c("VideoFilterTools", "unzip file failed.");
+      }
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.jdField_a_of_type_Bhgl != null) {
-      this.a.jdField_a_of_type_Bhgl.c();
-    }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

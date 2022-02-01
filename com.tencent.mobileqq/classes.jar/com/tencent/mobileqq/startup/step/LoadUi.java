@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import bcow;
+import bdho;
 import mqq.app.AppActivity;
 
 public class LoadUi

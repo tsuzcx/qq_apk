@@ -1,27 +1,26 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class atho
-  implements Cloneable
+  extends bebi
 {
-  public int a;
-  public CheckBox a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public FileInfo a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public atho(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public atho(athn paramathn) {}
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
+  }
 }
 
 

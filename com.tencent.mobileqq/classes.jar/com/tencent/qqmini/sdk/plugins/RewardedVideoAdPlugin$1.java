@@ -20,7 +20,7 @@ class RewardedVideoAdPlugin$1
       RewardedVideoAdPlugin.access$002(this.this$0, false);
       return;
     }
-    RewardedVideoAdPlugin.access$102(this.this$0, localAdProxy.createRewardVideoAdView(this.val$context, this.val$appid, this.val$pos_id, new RewardedVideoAdPlugin.1.1(this), this.val$ext));
+    RewardedVideoAdPlugin.access$102(this.this$0, localAdProxy.createRewardVideoAdView(this.val$context, this.val$appid, this.val$posId, new RewardedVideoAdPlugin.1.1(this), this.val$ext, RewardedVideoAdPlugin.access$1400(this.this$0)));
     try
     {
       if (RewardedVideoAdPlugin.access$100(this.this$0) != null)

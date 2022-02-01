@@ -1,19 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class axwb
-  implements TextWatcher
+  extends aogi
 {
-  axwb(axvz paramaxvz) {}
+  axwb(axwa paramaxwa) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean)
   {
-    axei.a(this.a.f, 90);
+    QLog.d("NearbyNewRedDotManager", 1, "RedpointObserver.onDataChange: isSucc=" + paramBoolean);
+    List localList = this.a.a(axwa.a(this.a));
+    axwa.a(this.a, axwa.a(this.a), localList);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

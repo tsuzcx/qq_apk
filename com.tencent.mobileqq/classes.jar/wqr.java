@@ -1,19 +1,24 @@
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+
 public class wqr
+  extends wrj
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  qqstory_service.RspLikeFeed a;
   
-  public wqr(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public wqr() {}
+  
+  public wqr(qqstory_service.RspLikeFeed paramRspLikeFeed)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    super(paramRspLikeFeed.result);
+    this.a = paramRspLikeFeed;
   }
+  
+  public void a() {}
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 

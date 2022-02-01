@@ -1,36 +1,18 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public abstract class bgwp
-  extends RecyclerView.OnScrollListener
+public class bgwp
+  implements bgug
 {
-  private boolean a;
+  public bgwp(TroopAIORobotLayout paramTroopAIORobotLayout, bgwj parambgwj) {}
   
-  public abstract void a();
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
-    {
-      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
-      if ((((bgwm)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
-        a();
-      }
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.a = bool;
+    if (paramInt == 0) {
       return;
     }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, anzj.a(2131713954) + "", 0).a();
   }
 }
 

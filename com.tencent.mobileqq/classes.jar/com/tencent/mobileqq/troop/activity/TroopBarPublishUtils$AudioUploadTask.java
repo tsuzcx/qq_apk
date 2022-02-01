@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import atwl;
+import auog;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import mqq.util.WeakReference;
-import nlw;
+import nnr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,7 +50,7 @@ public class TroopBarPublishUtils$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if (!atwl.a(this.b))
+    if (!auog.a(this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "Audio is null! mAudioPath=" + this.b);
@@ -75,7 +75,7 @@ public class TroopBarPublishUtils$AudioUploadTask
     HashMap localHashMap3 = new HashMap();
     localHashMap3.put("Connection", "keep-alive");
     localHashMap3.put("Referer", "https://www.qq.com");
-    localObject1 = nlw.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject2, localHashMap1, localHashMap2, localHashMap3);
+    localObject1 = nnr.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject2, localHashMap1, localHashMap2, localHashMap3);
     if (localObject1 != null) {}
     for (;;)
     {

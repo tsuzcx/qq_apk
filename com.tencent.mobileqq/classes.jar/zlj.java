@@ -1,51 +1,59 @@
+import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class zlj
-  extends zll
+class zlj
 {
-  TextView a;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public zlj(zln paramzln, View paramView)
+  public zlj(View paramView)
   {
-    super(paramzln, paramView);
-    this.a = ((TextView)paramView.findViewById(2131378483));
-    this.a.setMaxLines(1);
-    this.a.setSingleLine();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378413));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378436));
+    this.b = ((TextView)paramView.findViewById(2131378404));
+    this.c = ((TextView)paramView.findViewById(2131378403));
+    this.d = ((TextView)paramView.findViewById(2131378441));
   }
   
-  public CharSequence a()
+  private void a(TextView paramTextView, String paramString)
   {
-    return this.a.getText();
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.setText(paramCharSequence);
-    paramCharSequence = zlc.a(this.a, 1);
-    this.a.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (TextUtils.isEmpty(paramString))
     {
-      this.a.setBackgroundResource(2130844592);
+      paramTextView.setVisibility(8);
       return;
     }
-    this.a.setBackgroundResource(0);
+    paramTextView.setVisibility(0);
+    paramTextView.setText(paramString);
   }
   
-  public CharSequence b()
+  public void a(zlk paramzlk1, zlk paramzlk2)
   {
-    return this.a.getHint();
-  }
-  
-  public void b(CharSequence paramCharSequence)
-  {
-    this.a.setHint(paramCharSequence);
-    this.a.setGravity(17);
+    a(this.jdField_a_of_type_AndroidWidgetTextView, paramzlk1.jdField_a_of_type_Zll.jdField_a_of_type_JavaLangString);
+    a(this.b, paramzlk1.jdField_a_of_type_Zll.b);
+    if (paramzlk1.jdField_a_of_type_Int <= 0) {
+      this.c.setVisibility(8);
+    }
+    for (;;)
+    {
+      a(this.d, paramzlk1.jdField_a_of_type_JavaLangString);
+      if (!paramzlk1.equals(paramzlk2)) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846848);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
+      return;
+      a(this.c, paramzlk1.jdField_a_of_type_Int + anzj.a(2131709933));
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846852);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
 }
 

@@ -1,44 +1,55 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class aozh
-  extends aopa
+public class aozh
+  extends aoxg
 {
-  aozh(aozd paramaozd, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public aozh(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private boolean C()
   {
-    aozd.f(this.a, false);
-    if (aozd.a(this.a) != null) {
-      aozd.a(this.a).removeMessages(2);
-    }
-    if (aozd.a(this.a)) {
-      return;
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    for (;;)
     {
-      paramSosoLbsInfo = paramSosoLbsInfo.a;
-      paramInt = (int)(paramSosoLbsInfo.jdField_a_of_type_Double * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.jdField_b_of_type_Double * 1000000.0D);
-      QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info. Lat_02 = " + paramSosoLbsInfo.jdField_a_of_type_Double + ", Lon_02 = " + paramSosoLbsInfo.jdField_b_of_type_Double + ", latitude = " + paramInt + ", longitude = " + i + ", altitude = " + paramSosoLbsInfo.e + ", accuracy = " + paramSosoLbsInfo.jdField_a_of_type_Float + ", name = " + paramSosoLbsInfo.jdField_a_of_type_JavaLangString + ", address = " + paramSosoLbsInfo.jdField_b_of_type_JavaLangString);
-      paramSosoLbsInfo = apad.a(this.a.a.recognitions, aozd.a(this.a));
-      aozd.a(this.a, paramSosoLbsInfo, paramInt, i);
-      return;
+      try
+      {
+        if (TextUtils.isEmpty(str))
+        {
+          str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          bmtd.a((Activity)this.jdField_a_of_type_AndroidContentContext, bmtk.a(), str, 0, 0, 0);
+          return true;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QzoneOpenHomePageAction", 1, localException, new Object[0]);
+        return true;
+      }
     }
-    QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info failed. errCode = " + paramInt);
-    paramSosoLbsInfo = new aozl();
-    paramSosoLbsInfo.a = 2;
-    apad.a(this.a.a.recognitions, aozd.a(this.a), paramSosoLbsInfo);
-    if (aozd.a(this.a) != null) {
-      aozd.a(this.a).a(0, aozd.a(this.a));
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
     }
-    aozd.a(this.a, null);
+    catch (Exception localException)
+    {
+      QLog.e("QzoneOpenHomePageAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneOpenHomePageAction");
+    }
+    return false;
   }
 }
 

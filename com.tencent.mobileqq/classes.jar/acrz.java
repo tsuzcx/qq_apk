@@ -1,12 +1,32 @@
-import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.ResultReceiver;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acrz
+class acrz
+  implements acti
 {
-  List<AdAnalysisEvent> a = new ArrayList();
-  public qq_ad_get.QQAdGet.DeviceInfo a;
+  acrz(acry paramacry) {}
+  
+  public Activity a()
+  {
+    return acry.a(this.a);
+  }
+  
+  public void a()
+  {
+    this.a.dismiss();
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    if (acry.a(this.a) == null)
+    {
+      QLog.i("GdtMotiveVideoDialog", 1, "mResultReceiver == null");
+      return;
+    }
+    acry.a(this.a).send(paramInt, paramIntent.getExtras());
+  }
 }
 
 

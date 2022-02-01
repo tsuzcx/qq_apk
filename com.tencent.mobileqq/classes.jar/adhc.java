@@ -1,142 +1,168 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.annotation.NonNull;
-import android.text.method.ScrollingMovementMethod;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.biz.bmqq.protocol.Crm.CrmCCNotify;
+import com.tencent.biz.bmqq.protocol.Crm.GrayMsg;
+import com.tencent.biz.bmqq.protocol.Crm.QidianGroupMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import org.json.JSONObject;
+import tencent.im.msg.im_msg_body.CrmElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhc
-  extends ReportDialog
+  extends adic
 {
-  public static boolean a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  
-  public adhc(@NonNull Context paramContext)
+  public int a()
   {
-    super(paramContext, 2131755252);
-    a(paramContext);
+    return -1000;
   }
   
-  private void a(Context paramContext)
+  public void a(im_msg_body.Elem paramElem, List<MessageRecord> paramList, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, bcsc parambcsc)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559539, null);
-    setContentView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131362804));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362816));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131363029));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131380363));
-    this.c = ((TextView)a(paramContext, 2131380391));
-    this.d = ((TextView)a(paramContext, 2131363019));
-    this.d.setMovementMethod(ScrollingMovementMethod.getInstance());
-    this.e = ((TextView)a(paramContext, 2131369747));
-    this.f = ((TextView)a(paramContext, 2131376535));
-    setCanceledOnTouchOutside(false);
-    paramContext = getWindow();
-    if (paramContext != null) {
-      paramContext.setGravity(80);
-    }
-  }
-  
-  public <T extends View> T a(View paramView, int paramInt)
-  {
-    return paramView.findViewById(paramInt);
-  }
-  
-  public void a()
-  {
-    try
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1 = localQQAppInterface.a();
+    Object localObject2 = (im_msg_body.CrmElem)paramElem.crm_elem.get();
+    if (localObject2 != null)
     {
-      super.dismiss();
-      return;
+      i = ((im_msg_body.CrmElem)localObject2).uint32_qidian_flag.get();
+      if (QLog.isColorLevel()) {
+        paramStringBuilder.append("has uint32_qidian_flag:").append(i).append(";");
+      }
+      if (i == 1)
+      {
+        if (!paramList.isEmpty()) {
+          ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("crmelem_qidian_flag", i + "");
+        }
+        paramStringBuilder = ((MessageHandler)localObject1).app.getCurrentAccountUin();
+        paramElem = String.valueOf(paramMsg.msg_head.from_uin.get());
+        if (!paramStringBuilder.equals(paramElem))
+        {
+          paramStringBuilder = (bkgt)((MessageHandler)localObject1).app.getManager(165);
+          if (!paramStringBuilder.a.containsKey(paramElem)) {
+            paramStringBuilder.a(new BmqqAccountType(paramElem, 1));
+          }
+        }
+        if ((parambcsc != null) && (parambcsc.a == 1024)) {
+          parambcsc.a = 1025;
+        }
+      }
+      if (((im_msg_body.CrmElem)localObject2).crm_buf.has()) {
+        paramElem = new Crm.CrmCCNotify();
+      }
     }
-    catch (Throwable localThrowable)
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        paramElem.mergeFrom(((im_msg_body.CrmElem)localObject2).crm_buf.get().toByteArray());
+        int i = paramElem.crm_flag.get();
+        int j;
+        long l1;
+        if ((i == 8) && (paramElem.qidian_group_msg.has()))
+        {
+          paramStringBuilder = (Crm.QidianGroupMsg)paramElem.qidian_group_msg.get();
+          j = paramStringBuilder.uint32_group_task_id.get();
+          int k = paramStringBuilder.uint32_group_msg_type.get();
+          l1 = paramStringBuilder.uint64_kfuin.get();
+          int m = paramStringBuilder.uint32_show_tip.get();
+          paramStringBuilder = paramStringBuilder.str_tip_text.get();
+          if (!paramList.isEmpty())
+          {
+            localObject2 = (MessageRecord)paramList.get(0);
+            if (localObject2 != null)
+            {
+              ((MessageRecord)localObject2).mQidianTaskId = j;
+              ((MessageRecord)localObject2).mQidianMasterUin = l1;
+              ((MessageRecord)localObject2).mIsShowQidianTips = m;
+              ((MessageRecord)localObject2).mQidianTipText = paramStringBuilder;
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("CrmFlagsElemDecoder", 2, String.format("received qidian bulk message taskId: %d, msgType: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) }));
+          }
+          bcrw.a((MessageHandler)localObject1, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+          if (j != 0)
+          {
+            paramStringBuilder = (bkib)localQQAppInterface.a(85);
+            localObject1 = new JSONObject();
+            ((JSONObject)localObject1).put("action", "receive");
+            ((JSONObject)localObject1).put("fromUin", String.valueOf(paramMsg.msg_head.from_uin.get()));
+            ((JSONObject)localObject1).put("toUin", localQQAppInterface.getCurrentAccountUin());
+            ((JSONObject)localObject1).put("taskID", String.valueOf(j));
+            ((JSONObject)localObject1).put("clickURL", "");
+            ((JSONObject)localObject1).put("timestamp", String.valueOf(System.currentTimeMillis() / 1000L));
+            paramStringBuilder.a(((JSONObject)localObject1).toString(), String.valueOf(paramMsg.msg_head.from_uin.get()), "", 10009, 0);
+          }
+        }
+        if ((i == 11) && (paramElem.msg_gray_msg.has()))
+        {
+          localObject1 = (Crm.GrayMsg)paramElem.msg_gray_msg.get();
+          i = ((Crm.GrayMsg)localObject1).uint32_type.get();
+          paramStringBuilder = ((Crm.GrayMsg)localObject1).str_text.get();
+          l1 = ((Crm.GrayMsg)localObject1).uint64_from_uin.get();
+          j = paramMsg.msg_head.msg_seq.get();
+          long l2 = paramMsg.msg_head.msg_uid.get();
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(j);
+          ((StringBuilder)localObject1).append(l2);
+          if (QLog.isColorLevel()) {
+            QLog.d("CrmFlagsElemDecoder", 2, String.format("received qidian gray msg type: %d, tips: %s, fromUin: %d", new Object[] { Integer.valueOf(i), paramStringBuilder, Long.valueOf(l1) }));
+          }
+          bkio.a(localQQAppInterface, String.valueOf(l1), paramStringBuilder, 1024, ((StringBuilder)localObject1).toString());
+        }
+        if (paramElem.str_check_id.has()) {
+          bkio.a(localQQAppInterface, paramList, paramMsg, parambcsc, paramElem);
+        }
+        if ((parambcsc != null) && (parambcsc.a == 1024) && (paramElem.str_ext_nick_name.has()))
+        {
+          paramElem = paramElem.str_ext_nick_name.get();
+          if (!paramList.isEmpty())
+          {
+            paramList = (MessageRecord)paramList.get(0);
+            if (paramList != null) {
+              paramList.saveExtInfoToExtStr("qidian_ext_nick_name", paramElem);
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception paramElem)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("CrmFlagsElemDecoder", 2, "receive ccNotify but throw exception " + paramElem.getMessage());
+        return;
+      }
+    }
+    paramStringBuilder.append("has crmElem, but crmElem is null");
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localThrowable.printStackTrace();
+      parambfoy = (im_msg_body.Elem)paramList.next();
+      if (a(parambfoy)) {
+        a(parambfoy, paramList1, paramStringBuilder, paramMsg, parambcsc);
+      }
     }
+    return false;
   }
   
-  public void a(DialogInterface.OnCancelListener paramOnCancelListener)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    setOnCancelListener(new adhf(this, paramOnCancelListener));
-    setOnKeyListener(new adhg(this, paramOnCancelListener));
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.f.setOnClickListener(new adhd(this, paramOnClickListener));
-  }
-  
-  public void a(String paramString)
-  {
-    if (nlw.a(paramString))
-    {
-      paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      paramString.setTag(bgey.b(localLayoutParams.width, localLayoutParams.height, zlx.a(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
-      paramString.setDecodeHandler(bgey.j);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
-    }
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    this.e.setOnClickListener(new adhe(this, paramOnClickListener));
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    this.d.setText(paramString);
-  }
-  
-  public void e(String paramString)
-  {
-    this.f.setText(paramString);
-  }
-  
-  public void f(String paramString)
-  {
-    this.e.setText(paramString);
-  }
-  
-  public void show()
-  {
-    try
-    {
-      super.show();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    return paramElem.crm_elem.has();
   }
 }
 

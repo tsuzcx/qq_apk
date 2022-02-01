@@ -1,18 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class axnf
-  implements View.OnClickListener
+  implements axlo
 {
-  public axnf(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public axnf(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.l();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (MultiCardFragment.a(this.a) != null)
+    {
+      MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      MultiCardFragment.a(this.a).setScrollState(2);
+      MultiCardFragment.a(this.a).fling(-paramInt);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (MultiCardFragment.a(this.a) != null) {
+      return MultiCardFragment.a(this.a).a();
+    }
+    return true;
   }
 }
 

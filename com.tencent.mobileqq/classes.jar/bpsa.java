@@ -1,20 +1,46 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.NinePatch;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import java.util.List;
 
 public class bpsa
-  extends bprx
+  extends DynamicTextItem
 {
-  private boolean d;
+  private static final int jdField_b_of_type_Int = agej.a(20.0F, BaseApplicationImpl.getContext().getResources());
+  private static final int c = agej.a(12.0F, BaseApplicationImpl.getContext().getResources());
+  float jdField_a_of_type_Float;
+  private NinePatch jdField_a_of_type_AndroidGraphicsNinePatch;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  float jdField_b_of_type_Float;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   
-  public bpsa(Context paramContext, String paramString1, String paramString2, int paramInt)
+  public bpsa(int paramInt, List<String> paramList, Typeface paramTypeface, Bitmap paramBitmap)
   {
-    super(paramContext, paramString1, paramString2, paramInt);
+    super(paramInt, paramList);
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(agej.a(20.0F, BaseApplicationImpl.getContext().getResources()));
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(paramBitmap, paramBitmap.getNinePatchChunk(), null);
+    if (!paramList.isEmpty()) {
+      a(0, (String)paramList.get(0));
+    }
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRectF.width() + 20.0F;
   }
   
   public int a()
@@ -22,68 +48,65 @@ public class bpsa
     return 1;
   }
   
-  public int a(int paramInt)
+  public void a(int paramInt, String paramString)
+  {
+    int i = 0;
+    super.a(paramInt, paramString);
+    String str = super.b(paramInt);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "　　";
+    }
+    int j = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(anzj.a(2131700130));
+    this.jdField_a_of_type_AndroidTextStaticLayout = bptt.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, j, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 3);
+    int k = this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount();
+    float f1 = 0.0F;
+    paramInt = i;
+    while (paramInt < k)
+    {
+      f1 = Math.max(f1, this.jdField_a_of_type_AndroidTextStaticLayout.getLineWidth(paramInt));
+      paramInt += 1;
+    }
+    float f2 = this.jdField_a_of_type_AndroidTextStaticLayout.getHeight();
+    float f3 = Math.max(this.jdField_a_of_type_AndroidGraphicsNinePatch.getWidth(), c + jdField_b_of_type_Int + f1);
+    float f4 = this.jdField_a_of_type_AndroidGraphicsNinePatch.getHeight();
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f3, f4 * 0.7F + f2);
+    this.jdField_a_of_type_Float = f1;
+    this.jdField_b_of_type_Float = f2;
+    yuk.b("BubbleTextItem", "set text " + paramString + " max " + j + " tw " + f1 + " th " + f2);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    paramCanvas.translate(10.0F, 10.0F);
+    this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF);
+    paramCanvas.translate(jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsNinePatch.getHeight() * 0.4F);
+    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    if (super.b(0))
+    {
+      float f1 = this.jdField_a_of_type_AndroidTextStaticLayout.getHeight();
+      float f2 = super.a(this.jdField_a_of_type_AndroidTextStaticLayout);
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = 0.0F;
+      this.jdField_b_of_type_AndroidGraphicsRectF.top = 0.0F;
+      this.jdField_b_of_type_AndroidGraphicsRectF.right = f2;
+      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = f1;
+      paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRectF.height() + 20.0F;
+  }
+  
+  public int b()
   {
     return 0;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561759, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131364235);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131364230);
-    TextView localTextView = (TextView)paramView.findViewById(2131364232);
-    paramView = paramView.findViewById(2131364226);
-    localTextView.setText(this.jdField_a_of_type_JavaLangString);
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 10002: 
-    case 10003: 
-    default: 
-      if (this.jdField_a_of_type_Boolean) {
-        localImageView1.setVisibility(0);
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (!this.d) {
-        break label177;
-      }
-      paramInt = -2170912;
-      QQStoryContext.a();
-      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-        paramInt = -16444373;
-      }
-      paramView.setBackgroundColor(paramInt);
-      paramView.setVisibility(0);
-      return;
-      localImageView2.setImageResource(2130846695);
-      break;
-      localImageView2.setImageResource(2130846691);
-      break;
-      localImageView2.setImageResource(2130846694);
-      break;
-      localImageView1.setVisibility(4);
-    }
-    label177:
-    paramView.setVisibility(4);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
   }
 }
 

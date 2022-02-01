@@ -1,10 +1,29 @@
-public abstract interface tdu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+class tdu
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(tdw paramtdw, int paramInt);
+  tdu(tdr paramtdr, String paramString) {}
   
-  public abstract void a(tdw paramtdw, Throwable paramThrowable);
-  
-  public abstract void a(tdw paramtdw, tds paramtds);
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("index", tdr.a(this.jdField_a_of_type_Tdr));
+      paramDialogInterface.put("type", 1);
+      if (tdr.a(this.jdField_a_of_type_Tdr) != null) {
+        ((BridgeModule)tdr.a(this.jdField_a_of_type_Tdr).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
+      return;
+    }
+    catch (JSONException paramDialogInterface) {}
+  }
 }
 
 

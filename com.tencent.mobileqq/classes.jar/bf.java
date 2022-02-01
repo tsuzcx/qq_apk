@@ -14,9 +14,9 @@ public class bf
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    anjx localanjx = (anjx)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-    localanjx.b(113);
-    localanjx.a(116);
+    anvu localanvu = (anvu)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+    localanvu.b(113);
+    localanvu.a(116);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
@@ -27,14 +27,14 @@ public class bf
       }
       localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
     }
-    localanjx.a(localArrayList);
+    localanvu.a(localArrayList);
     this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bf
  * JD-Core Version:    0.7.0.1
  */

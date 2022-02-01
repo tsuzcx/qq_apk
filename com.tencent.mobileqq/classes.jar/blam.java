@@ -1,64 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicJumpActivity;
+import com.tencent.mobileqq.minigame.utils.thread.TTHandleThread;
+import com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
 
+@ProxyService(proxy=UploaderProxy.class)
 public class blam
-  extends BroadcastReceiver
+  extends UploaderProxy
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public ConcurrentHashMap<String, Call> a = new ConcurrentHashMap();
   
-  public blam(VipComicJumpActivity paramVipComicJumpActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void abort(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    paramContext = paramIntent.getStringExtra("pluginsdk_launchReceiver");
-    String str = paramIntent.getAction();
-    if (((!TextUtils.isEmpty(str)) && ("com.tencent.mobileqq.PreLoadComicProcess".equals(str))) || ((paramContext != null) && (paramContext.equals("com.qqcomic.app.VipPreloadComicProcess")))) {
-      if (!this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "do handle launch activity in receiver.");
-        }
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bkgm.removeMessages(1000);
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b = true;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c = false;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Blak);
-      }
+    Call localCall = (Call)this.a.get(paramString);
+    if (localCall != null) {
+      localCall.cancel();
     }
-    while ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("comic_plugin.apk")))
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "skip handle launch activity in receiver.");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.b = paramIntent.getStringExtra("pluginsdk_extraInfo");
-    if ((this.b != null) && ("success".equals(this.b))) {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Blak, 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.finish();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQComicDebug", 2, "launch activity finish, leave jump activity.");
-      return;
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Blak, -2);
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive mExtraInfo: " + this.b);
-      }
-    }
+    this.a.remove(paramString);
+  }
+  
+  public boolean upload(String paramString1, Map<String, String> paramMap1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap2, int paramInt, UploaderProxy.UploadListener paramUploadListener)
+  {
+    TTHandleThread.getInstance().post(new UploaderProxyImpl.1(this, paramString1, paramMap1, paramString2, paramMap2, paramString3, paramString4, paramUploadListener));
+    return true;
   }
 }
 

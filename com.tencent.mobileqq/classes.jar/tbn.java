@@ -1,34 +1,67 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class tbn
-  implements bihh
+public class tbn<T>
 {
-  tbn(tbm paramtbm, ArticleInfo paramArticleInfo, int paramInt) {}
+  private T jdField_a_of_type_JavaLangObject;
+  private List<tbo<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public tbn(T paramT)
   {
-    boolean bool = true;
-    if ((tbm.a(this.jdField_a_of_type_Tbm) == null) || (!tbm.a(this.jdField_a_of_type_Tbm).equals(paramBaseResp.transaction))) {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((tbo)localIterator.next()).a(this);
+      }
+    }
+    finally {}
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+  }
+  
+  public void a(tbo<T> paramtbo)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramtbo)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramtbo);
+      }
       return;
     }
-    switch (paramBaseResp.errCode)
+    finally
     {
-    case -1: 
-    default: 
-      zvc.b(1, 2131718007);
-      bool = false;
+      paramtbo = finally;
+      throw paramtbo;
     }
-    for (;;)
+  }
+  
+  public void b(tbo<T> paramtbo)
+  {
+    try
     {
-      paramBaseResp = (AppInterface)pha.a();
-      tcc.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
+      this.jdField_a_of_type_JavaUtilList.remove(paramtbo);
       return;
-      zvc.b(2, 2131718025);
-      continue;
-      bool = false;
+    }
+    finally
+    {
+      paramtbo = finally;
+      throw paramtbo;
     }
   }
 }

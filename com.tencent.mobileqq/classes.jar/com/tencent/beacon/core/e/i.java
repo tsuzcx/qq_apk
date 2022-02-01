@@ -26,7 +26,7 @@ public class i
       if (localb.a().equals(localb.b())) {
         break label79;
       }
-      if (j.c(localb.b(null))) {
+      if (j.b(localb.b(null))) {
         break label69;
       }
       if ((!a.b(paramContext, "android.permission.INTERNET")) || (!a.b(paramContext, "android.permission.ACCESS_NETWORK_STATE"))) {

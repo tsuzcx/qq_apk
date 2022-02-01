@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ExpandableListView;
 
-class astk
-  implements zrq
+public class astk
+  implements asta
 {
-  astk(asti paramasti, int paramInt) {}
+  public astk(RelatedEmotionPanel paramRelatedEmotionPanel) {}
   
-  public void a()
+  public void a() {}
+  
+  public void a(float paramFloat)
   {
-    String str = (String)this.jdField_a_of_type_Asti.getGroup(this.jdField_a_of_type_Int);
-    if (asti.a(this.jdField_a_of_type_Asti).c(this.jdField_a_of_type_Int))
-    {
-      QQAppInterface.f(str + anni.a(2131708396));
-      return;
+    if (RelatedEmotionPanel.a(this.a) != null) {
+      RelatedEmotionPanel.a(this.a).a(paramFloat);
     }
-    QQAppInterface.f(str + anni.a(2131708376));
   }
   
-  public void b()
+  public void a(int paramInt)
   {
-    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
+    if (QLog.isColorLevel()) {
+      QLog.d("RelatedEmotionPanel", 4, "dismiss type: " + paramInt);
+    }
+    if (paramInt > -1) {
+      bdll.b(RelatedEmotionPanel.a(this.a), "dc00898", "", this.a.a, "0X800B11A", "0X800B11A", paramInt, 0, "", "", "", "");
+    }
+    this.a.a();
+    if (paramInt == 2) {
+      AbstractGifImage.resumeAll();
+    }
   }
+  
+  public void b() {}
 }
 
 

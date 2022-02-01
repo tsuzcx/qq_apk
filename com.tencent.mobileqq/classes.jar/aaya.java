@@ -1,24 +1,39 @@
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
+import android.app.Activity;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 
 public class aaya
-  implements aaxy
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public aaya(SingleLyricView paramSingleLyricView) {}
+  public aaya(PluginJumpManager paramPluginJumpManager, aayb paramaayb, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, aayc paramaayc, String paramString4) {}
   
-  public void a()
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    SingleLyricView.a(this.a).b();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.post(new SingleLyricView.1.1(this, paramLong));
-  }
-  
-  public void b()
-  {
-    SingleLyricView.a(this.a).c();
+    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
+    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_Aayb.b);
+    int i;
+    if (paramPluginManagerClient != null) {
+      if (paramPluginManagerClient.mState == 4)
+      {
+        i = 1;
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aayb.b, this.jdField_a_of_type_Aayb.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Aayc.b, this.jdField_a_of_type_Aayc.a);
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
+      }
+      return;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_Aayc.b, null, null);
+      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_Aayb.b);
+      i = 0;
+      continue;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_Aayc.b, null, null);
+      i = 0;
+    }
   }
 }
 

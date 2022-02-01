@@ -1,26 +1,17 @@
 package com.tencent.qqmini.minigame.task;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.EnvConfig;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.TTEngineBuilder;
-import com.tencent.mobileqq.triton.sdk.TTEngineBuilder.EngineCreationException;
-import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
-import com.tencent.qqmini.minigame.manager.GameEngineWrapper;
-import com.tencent.qqmini.minigame.manager.GameEnvManager;
+import com.tencent.mobileqq.triton.TritonPlatform;
+import com.tencent.mobileqq.triton.exception.TritonInitException;
+import com.tencent.qqmini.minigame.api.MiniEnginePackage;
+import com.tencent.qqmini.minigame.api.TritonPlatformManager;
+import com.tencent.qqmini.minigame.manager.EnginePackageManager;
 import com.tencent.qqmini.minigame.utils.GameLog;
 import com.tencent.qqmini.sdk.annotation.ClassTag;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.utils.WnsConfig;
-import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
-import com.tencent.qqmini.sdk.manager.BaseLibManager;
 import com.tencent.qqmini.sdk.manager.EngineVersion;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
 import com.tencent.qqmini.sdk.report.MiniAppStartState;
@@ -30,8 +21,6 @@ import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader;
 import com.tencent.qqmini.sdk.task.AsyncTask;
 import com.tencent.qqmini.sdk.task.TaskExecutionStatics;
-import com.tencent.qqmini.sdk.utils.GameWnsUtils;
-import com.tencent.qqmini.sdk.utils.MiniAppClassloader;
 import java.io.File;
 
 @ClassTag(tag="TritonEngineInitTask")
@@ -52,149 +41,75 @@ public class TritonEngineInitTask
   public static final int SUCCEED = 0;
   public final String LOG_TAG = toString();
   private int mEngineLoadResult = -1;
-  private EnvConfig mEnvConfig;
-  private GameEngineWrapper mGameEngine;
-  private final IJSEngine mJSEngine;
   private MiniAppInfo mMiniAppInfo;
-  private IQQEnv mQQEnv;
+  private TritonPlatform mTritonPlatform;
   
-  public TritonEngineInitTask(Context paramContext, BaseRuntimeLoader paramBaseRuntimeLoader, IQQEnv paramIQQEnv, IJSEngine paramIJSEngine)
+  public TritonEngineInitTask(Context paramContext, BaseRuntimeLoader paramBaseRuntimeLoader)
   {
     super(paramContext, paramBaseRuntimeLoader);
     GameLog.getInstance().i(this.LOG_TAG, "new TritonEngineInitTask");
-    this.mQQEnv = paramIQQEnv;
-    this.mJSEngine = paramIJSEngine;
-    this.mGameEngine = new GameEngineWrapper();
   }
   
-  private String getTritonDexPath(String paramString)
+  private boolean isGameSatisfy(@NonNull MiniEnginePackage paramMiniEnginePackage, MiniAppInfo paramMiniAppInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append(paramString);
-    if (paramString.endsWith(File.separator)) {}
-    for (paramString = "";; paramString = File.separator) {
-      return paramString + "triton.jar";
-    }
-  }
-  
-  private boolean hasNewEngineDex(String paramString)
-  {
-    if (!GameWnsUtils.gameEnableDexLoader()) {
-      return false;
-    }
-    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-    if ((localChannelProxy != null) && (localChannelProxy.isGooglePlayVersion()))
-    {
-      if (WnsConfig.getConfig("qqminiapp", "mini_app_google_play_load_so_switch", 0) == 1) {}
-      for (int i = 1; i == 0; i = 0) {
-        return false;
-      }
-    }
-    paramString = getTritonDexPath(paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return new File(paramString).exists();
-  }
-  
-  private boolean isGameSatisfy(EnvConfig paramEnvConfig, MiniAppInfo paramMiniAppInfo)
-  {
-    boolean bool = true;
-    if (paramEnvConfig == null)
-    {
-      GameLog.getInstance().e(this.LOG_TAG, "[MiniEng]isGameSatisfy envConfig == null");
-      return false;
-    }
+    boolean bool2 = true;
+    boolean bool1 = true;
     if (paramMiniAppInfo == null)
     {
       GameLog.getInstance().e(this.LOG_TAG, "[MiniEng]isGameSatisfy info == null");
-      return false;
+      bool1 = false;
     }
-    paramMiniAppInfo = paramMiniAppInfo.baselibMiniVersion;
-    GameLog.getInstance().i(this.LOG_TAG, "[MiniEng]isGameSatisfy minVersion=" + paramMiniAppInfo);
-    if (TextUtils.isEmpty(paramMiniAppInfo)) {
-      return true;
-    }
+    do
+    {
+      return bool1;
+      paramMiniAppInfo = paramMiniAppInfo.baselibMiniVersion;
+      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng]isGameSatisfy minVersion=" + paramMiniAppInfo);
+    } while (TextUtils.isEmpty(paramMiniAppInfo));
     paramMiniAppInfo = new EngineVersion(paramMiniAppInfo);
-    paramEnvConfig = EngineVersion.fromFolderName(paramEnvConfig.getJSPath());
-    if ((paramEnvConfig != null) && (EngineVersion.compareVersion(paramEnvConfig.mMinor, paramMiniAppInfo.mMinor) >= 0)) {}
-    for (;;)
+    paramMiniEnginePackage = EngineVersion.fromFolderName(paramMiniEnginePackage.getBaseLibDir().getAbsolutePath());
+    if ((paramMiniEnginePackage != null) && (EngineVersion.compareVersion(paramMiniEnginePackage.mMinor, paramMiniAppInfo.mMinor) >= 0)) {}
+    for (bool1 = bool2;; bool1 = false)
     {
-      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng]isGameSatisfy appMinVersion=" + paramMiniAppInfo + ", jsSdkVersion=" + paramEnvConfig + ",ret=" + bool);
-      return bool;
-      bool = false;
+      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng]isGameSatisfy appMinVersion=" + paramMiniAppInfo + ", jsSdkVersion=" + paramMiniEnginePackage + ",ret=" + bool1);
+      return bool1;
     }
   }
   
-  private int loadEngine(EnvConfig paramEnvConfig)
+  private int loadEnginePlatform()
   {
-    for (;;)
+    try
     {
+      MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1014, "1");
+      MiniEnginePackage localMiniEnginePackage = EnginePackageManager.getEnginePackage();
+      if (localMiniEnginePackage.getEngineJar() != null) {
+        MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1003, "1");
+      }
       try
       {
-        localObject = paramEnvConfig.getJSPath();
-        boolean bool = BaseLibManager.g().isBaseLibDirValid4MiniGame((String)localObject);
-        if (!bool)
-        {
-          i = 105;
-          return i;
+        this.mTritonPlatform = TritonPlatformManager.getTritonPlatform(this.mContext);
+        if (localMiniEnginePackage.getEngineJar() != null) {
+          MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1004, "1");
         }
-        MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1014, "1");
-        TTEngineBuilder localTTEngineBuilder = new TTEngineBuilder();
-        localTTEngineBuilder.setContext(this.mContext).setQQEnv(this.mQQEnv).setLog(GameLog.getInstance()).setJsEngine(this.mJSEngine).setEnvConfig(paramEnvConfig);
-        ClassLoader localClassLoader = getClass().getClassLoader();
-        localObject = null;
-        try
-        {
-          if (hasNewEngineDex(paramEnvConfig.getTritonPath()))
-          {
-            GameLog.getInstance().i(this.LOG_TAG, "[MiniEng] TTEngineBuilder create TTEngine from dex");
-            MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1003, "1");
-            paramEnvConfig = localTTEngineBuilder.build(new MiniAppClassloader(getTritonDexPath(paramEnvConfig.getTritonPath()), this.mContext.getApplicationInfo().nativeLibraryDir, getClass().getClassLoader()));
-            localObject = paramEnvConfig;
-            if (paramEnvConfig == null) {}
-          }
-        }
-        catch (TTEngineBuilder.EngineCreationException localEngineCreationException2)
-        {
-          paramEnvConfig = (EnvConfig)localObject;
-          localObject = localEngineCreationException2;
-        }
+        long l = System.currentTimeMillis();
+        GameLog.getInstance().i(this.LOG_TAG, "[MiniEng] initEngine");
+        QMLog.e("[minigame][timecost] ", "[MiniEng] step[initTTEngine] cost time " + (System.currentTimeMillis() - l) + ", includes steps[load so, cache jssdk]");
+        MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1015, "1");
+        i = 0;
       }
-      finally {}
-      try
+      catch (TritonInitException localTritonInitException)
       {
-        MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1004, "1");
-        localObject = paramEnvConfig;
-        if (localObject != null) {
-          continue;
+        for (;;)
+        {
+          GameLog.getInstance().e(this.LOG_TAG, "[MiniEng] TTEngineBuilder create TTEngine failed with exception", localTritonInitException);
+          int i = 106;
         }
-        GameLog.getInstance().e(this.LOG_TAG, "[MiniEng] TTEngineBuilder create TTEngine return null");
-        i = 106;
       }
-      catch (TTEngineBuilder.EngineCreationException localEngineCreationException1)
-      {
-        continue;
-      }
-      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng] TTEngineBuilder create TTEngine from local lib");
-      paramEnvConfig = localTTEngineBuilder.build(localClassLoader);
-      Object localObject = paramEnvConfig;
-      continue;
-      GameLog.getInstance().e(this.LOG_TAG, "[MiniEng] TTEngineBuilder create TTEngine failed with exception", (Throwable)localObject);
-      localObject = paramEnvConfig;
-      continue;
-      this.mGameEngine.setBaseEngine((ITTEngine)localObject);
-      long l = System.currentTimeMillis();
-      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng] initEngine");
-      QMLog.e("[minigame][timecost] ", "[MiniEng] step[initTTEngine] cost time " + (System.currentTimeMillis() - l) + ", includes steps[load so, cache jssdk]");
-      MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1015, "1");
-      int i = 0;
+      return i;
     }
+    finally {}
   }
   
-  private void loadTritonEngine(EnvConfig paramEnvConfig)
+  private void loadTritonEngine()
   {
     if (this.mMiniAppInfo == null)
     {
@@ -203,7 +118,7 @@ public class TritonEngineInitTask
         GameLog.getInstance().w(this.LOG_TAG, "[MiniEng] engine already loaded! status=" + this.mEngineLoadResult);
         return;
       }
-      this.mEngineLoadResult = loadEngine(paramEnvConfig);
+      this.mEngineLoadResult = loadEnginePlatform();
       if (this.mEngineLoadResult == 0)
       {
         onTaskSucceed();
@@ -212,7 +127,7 @@ public class TritonEngineInitTask
       onTaskFailed(this.mEngineLoadResult, "加载引擎失败");
       return;
     }
-    if (isGameSatisfy(paramEnvConfig, this.mMiniAppInfo))
+    if (isGameSatisfy(EnginePackageManager.getEnginePackage(), this.mMiniAppInfo))
     {
       MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1012, "1");
       if (this.mEngineLoadResult != -1)
@@ -220,7 +135,7 @@ public class TritonEngineInitTask
         GameLog.getInstance().w(this.LOG_TAG, "[MiniEng] engine already loaded! status=" + this.mEngineLoadResult);
         return;
       }
-      this.mEngineLoadResult = loadEngine(paramEnvConfig);
+      this.mEngineLoadResult = loadEnginePlatform();
       if (this.mEngineLoadResult == 0)
       {
         onTaskSucceed();
@@ -239,15 +154,12 @@ public class TritonEngineInitTask
   
   public void executeAsync()
   {
-    this.mEnvConfig = GameEnvManager.getEnvConfig();
-    this.mEnvConfig.setDisplayMetrics(DisplayUtil.getDisplayMetrics(this.mContext));
-    this.mEnvConfig.setScreenRefreshRate(DisplayUtil.getScreenRefreshRate(this.mContext));
-    loadTritonEngine(this.mEnvConfig);
+    loadTritonEngine();
   }
   
-  public EnvConfig getEnvConfig()
+  public MiniEnginePackage getEnginePackage()
   {
-    return this.mEnvConfig;
+    return EnginePackageManager.getEnginePackage();
   }
   
   @NonNull
@@ -256,14 +168,14 @@ public class TritonEngineInitTask
     return super.getExecutionStatics();
   }
   
-  public ITTEngine getGameEngine()
-  {
-    return this.mGameEngine;
-  }
-  
   public MiniAppInfo getMiniAppInfo()
   {
     return this.mMiniAppInfo;
+  }
+  
+  public TritonPlatform getTritonPlatform()
+  {
+    return this.mTritonPlatform;
   }
   
   public void reset()

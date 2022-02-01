@@ -1,8 +1,25 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 
-public abstract interface bajj
+public class bajj
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(boolean paramBoolean, List<aiit> paramList);
+  public bajj(VasProfileTagView paramVasProfileTagView, View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
+    this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
+    if (VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView) == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b();
+    }
+    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView));
+  }
 }
 
 

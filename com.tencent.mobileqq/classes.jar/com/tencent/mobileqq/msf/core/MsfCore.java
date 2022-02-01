@@ -19,7 +19,7 @@ import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.msf.sdk.y;
+import com.tencent.mobileqq.msf.sdk.aa;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -772,9 +772,9 @@ public class MsfCore
     this.pushManager.q().a(paramString1, paramBoolean);
   }
   
-  public void proxyRegister(y paramy, ToServiceMsg paramToServiceMsg)
+  public void proxyRegister(z paramz, ToServiceMsg paramToServiceMsg)
   {
-    this.pushManager.a(paramy, paramToServiceMsg);
+    this.pushManager.a(paramz, paramToServiceMsg);
   }
   
   public void proxyUnRegister(String paramString, ToServiceMsg paramToServiceMsg)
@@ -813,7 +813,7 @@ public class MsfCore
   
   public void registerCmdCall(ToServiceMsg paramToServiceMsg)
   {
-    CommandCallbackerInfo localCommandCallbackerInfo = z.a(paramToServiceMsg);
+    CommandCallbackerInfo localCommandCallbackerInfo = aa.a(paramToServiceMsg);
     this.pushManager.a(localCommandCallbackerInfo, paramToServiceMsg);
   }
   
@@ -994,13 +994,13 @@ public class MsfCore
   
   public void unRegisterCmdCall(ToServiceMsg paramToServiceMsg)
   {
-    CommandCallbackerInfo localCommandCallbackerInfo = z.a(paramToServiceMsg);
+    CommandCallbackerInfo localCommandCallbackerInfo = aa.a(paramToServiceMsg);
     this.pushManager.b(localCommandCallbackerInfo, paramToServiceMsg);
   }
   
   public void unRegisterPush(ToServiceMsg paramToServiceMsg)
   {
-    PushRegisterInfo localPushRegisterInfo = z.b(paramToServiceMsg);
+    PushRegisterInfo localPushRegisterInfo = aa.b(paramToServiceMsg);
     this.pushManager.a(localPushRegisterInfo, paramToServiceMsg);
     if ((this.accountCenter != null) && (!TextUtils.isEmpty(paramToServiceMsg.getUin())) && (this.accountCenter.i().equals(paramToServiceMsg.getUin()))) {
       this.accountCenter.c("0", "unRegPush");

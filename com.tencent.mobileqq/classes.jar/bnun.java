@@ -1,70 +1,118 @@
-import android.graphics.Bitmap;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.common.GifUtil;
-import com.tencent.filter.BaseFilter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.view.RendererUtils;
-import dov.com.qq.im.ae.gif.video.VideoGIFCreator.1;
-import dov.com.qq.im.video.GifEncoder;
-import java.io.File;
+import android.content.Context;
+import android.view.SurfaceHolder;
 
 public class bnun
-  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public bnun(VideoGIFCreator.1 param1, String paramString) {}
+  private Object a = bnjq.a("com.tencent.tar.TarInterface", null, new Object[0]);
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public int a()
   {
-    QLog.d(bnum.a(), 4, "gif creator onFrameAvailable()");
-    paramSurfaceTexture.updateTexImage();
-    bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(bnum.c(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), 960, 480, -1, 0.0D, bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0));
-    bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(true);
-    paramSurfaceTexture = bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), 480, 480);
-    if (bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0) != null)
-    {
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(770, 771);
-      float f1 = bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).jdField_a_of_type_Float * 2.0F - 1.0F;
-      float f2 = bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).b * 2.0F - 1.0F;
-      float f3 = bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).c * 2.0F + f1;
-      float f4 = bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).d * 2.0F + f2;
-      bnum.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).setPositions(new float[] { f1, f2, f1, f4, f3, f4, f3, f2 });
-      bnum.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).jdField_a_of_type_Int, paramSurfaceTexture.width, paramSurfaceTexture.height, -1, 0.0D, paramSurfaceTexture);
-      GLES20.glDisable(3042);
+    Object localObject = bnjq.a(this.a, "getConfigWith", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
     }
-    paramSurfaceTexture = bnum.c(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(paramSurfaceTexture.getTextureId(), bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), bnum.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0));
-    Bitmap localBitmap = RendererUtils.saveTexture(paramSurfaceTexture);
-    paramSurfaceTexture.unlock();
-    bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(localBitmap, 55);
-    localBitmap.recycle();
-    QLog.d(bnum.a(), 4, "gif creator decodeToSurface()");
-    if (!bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a())
-    {
-      QLog.d(bnum.a(), 4, "gifEncoder.close() start");
-      bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a();
-      QLog.d(bnum.a(), 4, "gifEncoder.close() end");
-      QLog.d(bnum.a(), 4, "gif encode complete");
-      paramSurfaceTexture = bndq.b + File.separator + System.currentTimeMillis() + "_compressed.gif";
-      atwl.c(paramSurfaceTexture);
-      QLog.d(bnum.a(), 4, "gif compress start");
-      int i = GifUtil.compressGif(this.jdField_a_of_type_JavaLangString, paramSurfaceTexture, 30);
-      QLog.d(bnum.a(), 4, "gif compress end, ret = " + i);
-      atwl.c(this.jdField_a_of_type_JavaLangString);
-      if (i <= 0) {
-        break label563;
-      }
-      bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(paramSurfaceTexture);
+    return -1;
+  }
+  
+  public int a(SurfaceHolder paramSurfaceHolder, boolean paramBoolean)
+  {
+    paramSurfaceHolder = bnjq.a(this.a, "onDrawFrame", false, a(new Class[] { SurfaceHolder.class, Boolean.TYPE }), new Object[] { paramSurfaceHolder, Boolean.valueOf(paramBoolean) });
+    if ((paramSurfaceHolder instanceof Integer)) {
+      return ((Integer)paramSurfaceHolder).intValue();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0.a();
-      return;
-      label563:
-      bnum.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a();
+    return 0;
+  }
+  
+  public void a()
+  {
+    bnjq.a(this.a, "onResume", false, null, new Object[0]);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    bnjq.a(this.a, "setTrackingPoint", false, a(new Class[] { Float.TYPE, Float.TYPE }), new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    bnjq.a(this.a, "onSurfaceChanged", false, a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    bnjq.a(this.a, "init", false, a(new Class[] { Context.class, Integer.TYPE }), new Object[] { paramContext, Integer.valueOf(paramInt) });
+  }
+  
+  public float[] a()
+  {
+    Object localObject = bnjq.a(this.a, "getModelMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
     }
+    return null;
+  }
+  
+  public Class[] a(Class... paramVarArgs)
+  {
+    Class[] arrayOfClass = new Class[paramVarArgs.length];
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      arrayOfClass[i] = paramVarArgs[i];
+      i += 1;
+    }
+    return arrayOfClass;
+  }
+  
+  public int b()
+  {
+    Object localObject = bnjq.a(this.a, "getConfigHeight", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
+    }
+    return -1;
+  }
+  
+  public void b()
+  {
+    bnjq.a(this.a, "onStop", false, null, new Object[0]);
+  }
+  
+  public float[] b()
+  {
+    Object localObject = bnjq.a(this.a, "getViewMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public void c()
+  {
+    bnjq.a(this.a, "onDestroy", false, null, new Object[0]);
+  }
+  
+  public float[] c()
+  {
+    Object localObject = bnjq.a(this.a, "getProjectionMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public void d()
+  {
+    bnjq.a(this.a, "onSurfaceCreated", false, null, new Object[0]);
+  }
+  
+  public float[] d()
+  {
+    Object localObject = bnjq.a(this.a, "getScaleMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
   }
 }
 

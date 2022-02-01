@@ -417,6 +417,11 @@ public class TPSystemClipPlayer
     return l;
   }
   
+  public int getNativePlayerId()
+  {
+    return 0;
+  }
+  
   public long getPlayableDurationMs()
   {
     if (!this.mStateChecker.validStateCall(15))

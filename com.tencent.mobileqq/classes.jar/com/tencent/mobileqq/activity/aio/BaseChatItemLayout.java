@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afud;
-import afur;
-import afws;
-import afwt;
-import afwu;
-import afwv;
-import afww;
-import agar;
-import agas;
-import agau;
-import ahvz;
-import alqs;
-import alqt;
+import agdv;
+import agej;
+import aggm;
+import aggn;
+import aggo;
+import aggp;
+import aggq;
+import agkl;
+import agkm;
+import agko;
+import aifn;
+import amck;
+import amcl;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -47,27 +47,27 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anmw;
-import anni;
-import apyb;
-import aqye;
-import aqyf;
-import aruy;
-import aruz;
-import awwm;
-import axbp;
-import axci;
-import bbdx;
-import bcnj;
-import bcst;
-import bfup;
-import bggq;
-import bgsu;
-import bgtn;
-import bgtv;
-import bgyg;
-import bhbe;
-import bhyj;
+import anyw;
+import anzj;
+import aqmb;
+import arnv;
+import arnw;
+import askm;
+import askn;
+import axpf;
+import axug;
+import axuz;
+import bbwq;
+import bdgb;
+import bdll;
+import bguq;
+import bhgr;
+import bhsw;
+import bhtq;
+import bhty;
+import bhyk;
+import bibk;
+import bizh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
@@ -98,7 +98,7 @@ import java.util.Iterator;
 
 public class BaseChatItemLayout
   extends ChatItemAnimLayout
-  implements agas, alqs
+  implements agkm, amck
 {
   public static final int A;
   public static int B;
@@ -125,7 +125,7 @@ public class BaseChatItemLayout
   public static int W;
   public static final float a;
   public static final int a;
-  public static afww a;
+  public static aggq a;
   public static CompoundButton.OnCheckedChangeListener a;
   public static boolean a;
   private static final int ab;
@@ -161,8 +161,8 @@ public class BaseChatItemLayout
   public static final int z;
   int X = 0;
   int Y;
-  afwv jdField_a_of_type_Afwv = null;
-  private alqt jdField_a_of_type_Alqt;
+  aggp jdField_a_of_type_Aggp = null;
+  private amcl jdField_a_of_type_Amcl;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
@@ -172,15 +172,15 @@ public class BaseChatItemLayout
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public ProgressBar a;
   public TextView a;
-  public aruz a;
+  public askn a;
   public URLImageView a;
   ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
   public TroopHonorView a;
   public TroopMemberNewLevelView a;
   TroopRobotNextTipsView jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView;
   public VasAvatar a;
-  public ArrayList<aruy> a;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  public ArrayList<askm> a;
+  protected int[] a;
   private int ad = -1;
   private int ae = -1;
   private int af = -1;
@@ -220,69 +220,69 @@ public class BaseChatItemLayout
   
   static
   {
-    jdField_a_of_type_Int = bgtn.b(5.0F);
-    ab = bgtn.b(2.0F);
-    ac = bgtn.b(18.0F);
+    jdField_a_of_type_Int = bhtq.b(5.0F);
+    ab = bhtq.b(2.0F);
+    ac = bhtq.b(18.0F);
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     DisplayMetrics localDisplayMetrics = localBaseApplication.getResources().getDisplayMetrics();
     jdField_d_of_type_Float = localDisplayMetrics.density;
-    jdField_a_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131296401);
-    jdField_b_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131298952);
-    jdField_c_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131296401);
-    jdField_h_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296330);
-    jdField_i_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296329);
-    jdField_j_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296328);
-    k = localBaseApplication.getResources().getDimensionPixelSize(2131296327);
-    l = localBaseApplication.getResources().getDimensionPixelSize(2131296326);
-    m = localBaseApplication.getResources().getDimensionPixelSize(2131296397);
-    n = localBaseApplication.getResources().getDimensionPixelSize(2131296396);
-    o = localBaseApplication.getResources().getDimensionPixelSize(2131296395);
-    p = localBaseApplication.getResources().getDimensionPixelSize(2131296394);
-    s = localBaseApplication.getResources().getDimensionPixelSize(2131296386);
-    r = localBaseApplication.getResources().getDimensionPixelSize(2131296336);
-    q = localBaseApplication.getResources().getDimensionPixelSize(2131296379);
+    jdField_a_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131296405);
+    jdField_b_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131298965);
+    jdField_c_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131296405);
+    jdField_h_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296334);
+    jdField_i_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296333);
+    jdField_j_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296332);
+    k = localBaseApplication.getResources().getDimensionPixelSize(2131296331);
+    l = localBaseApplication.getResources().getDimensionPixelSize(2131296330);
+    m = localBaseApplication.getResources().getDimensionPixelSize(2131296401);
+    n = localBaseApplication.getResources().getDimensionPixelSize(2131296400);
+    o = localBaseApplication.getResources().getDimensionPixelSize(2131296399);
+    p = localBaseApplication.getResources().getDimensionPixelSize(2131296398);
+    s = localBaseApplication.getResources().getDimensionPixelSize(2131296390);
+    r = localBaseApplication.getResources().getDimensionPixelSize(2131296340);
+    q = localBaseApplication.getResources().getDimensionPixelSize(2131296383);
     jdField_b_of_type_Int = localDisplayMetrics.widthPixels;
     jdField_c_of_type_Int = localDisplayMetrics.heightPixels;
     jdField_d_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
     jdField_e_of_type_Int = (int)(jdField_d_of_type_Int - 108.0F * jdField_d_of_type_Float);
     jdField_f_of_type_Int = jdField_e_of_type_Int - jdField_j_of_type_Int - k;
     jdField_g_of_type_Int = jdField_f_of_type_Int - s * 2;
-    t = localBaseApplication.getResources().getDimensionPixelSize(2131296373);
-    u = localBaseApplication.getResources().getDimensionPixelSize(2131296374);
-    v = localBaseApplication.getResources().getDimensionPixelSize(2131296375);
-    w = localBaseApplication.getResources().getDimensionPixelSize(2131296371);
-    x = localBaseApplication.getResources().getDimensionPixelSize(2131296361);
-    y = localBaseApplication.getResources().getDimensionPixelSize(2131296359);
-    B = localBaseApplication.getResources().getDimensionPixelSize(2131298903);
+    t = localBaseApplication.getResources().getDimensionPixelSize(2131296377);
+    u = localBaseApplication.getResources().getDimensionPixelSize(2131296378);
+    v = localBaseApplication.getResources().getDimensionPixelSize(2131296379);
+    w = localBaseApplication.getResources().getDimensionPixelSize(2131296375);
+    x = localBaseApplication.getResources().getDimensionPixelSize(2131296365);
+    y = localBaseApplication.getResources().getDimensionPixelSize(2131296363);
+    B = localBaseApplication.getResources().getDimensionPixelSize(2131298916);
     B = Math.min(B, jdField_f_of_type_Int);
-    int i1 = jdField_d_of_type_Int - t - u - localBaseApplication.getResources().getDimensionPixelSize(2131298898) * 2;
+    int i1 = jdField_d_of_type_Int - t - u - localBaseApplication.getResources().getDimensionPixelSize(2131298911) * 2;
     int i2 = jdField_j_of_type_Int + k + B;
     z = Math.min(i1, i2);
     if (jdField_d_of_type_Int < 1441) {}
     for (A = i1;; A = Math.min(i1, i2))
     {
-      C = localBaseApplication.getResources().getDimensionPixelSize(2131296369);
-      D = localBaseApplication.getResources().getDimensionPixelSize(2131296368);
-      E = localBaseApplication.getResources().getDimensionPixelSize(2131296367);
-      F = localBaseApplication.getResources().getDimensionPixelSize(2131296357);
-      G = localBaseApplication.getResources().getDimensionPixelSize(2131296356);
-      H = localBaseApplication.getResources().getDimensionPixelSize(2131296355);
-      I = localBaseApplication.getResources().getDimensionPixelSize(2131296350);
-      J = localBaseApplication.getResources().getDimensionPixelSize(2131296352);
-      K = localBaseApplication.getResources().getDimensionPixelSize(2131296351);
-      M = localBaseApplication.getResources().getDimensionPixelSize(2131296354);
-      L = localBaseApplication.getResources().getDimensionPixelSize(2131296353);
-      N = localBaseApplication.getResources().getDimensionPixelSize(2131296404);
-      O = localBaseApplication.getResources().getDimensionPixelSize(2131296403);
-      P = localBaseApplication.getResources().getDimensionPixelSize(2131296405);
-      Q = afur.a(26.0F, localBaseApplication.getResources());
-      R = localBaseApplication.getResources().getDimensionPixelSize(2131296360);
-      S = localBaseApplication.getResources().getDimensionPixelSize(2131296378);
-      T = localBaseApplication.getResources().getDimensionPixelSize(2131296376);
-      U = localBaseApplication.getResources().getDimensionPixelSize(2131296377);
-      V = localBaseApplication.getResources().getDimensionPixelSize(2131296363);
-      W = localBaseApplication.getResources().getDimensionPixelSize(2131296362);
-      jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new afwu();
+      C = localBaseApplication.getResources().getDimensionPixelSize(2131296373);
+      D = localBaseApplication.getResources().getDimensionPixelSize(2131296372);
+      E = localBaseApplication.getResources().getDimensionPixelSize(2131296371);
+      F = localBaseApplication.getResources().getDimensionPixelSize(2131296361);
+      G = localBaseApplication.getResources().getDimensionPixelSize(2131296360);
+      H = localBaseApplication.getResources().getDimensionPixelSize(2131296359);
+      I = localBaseApplication.getResources().getDimensionPixelSize(2131296354);
+      J = localBaseApplication.getResources().getDimensionPixelSize(2131296356);
+      K = localBaseApplication.getResources().getDimensionPixelSize(2131296355);
+      M = localBaseApplication.getResources().getDimensionPixelSize(2131296358);
+      L = localBaseApplication.getResources().getDimensionPixelSize(2131296357);
+      N = localBaseApplication.getResources().getDimensionPixelSize(2131296408);
+      O = localBaseApplication.getResources().getDimensionPixelSize(2131296407);
+      P = localBaseApplication.getResources().getDimensionPixelSize(2131296409);
+      Q = agej.a(26.0F, localBaseApplication.getResources());
+      R = localBaseApplication.getResources().getDimensionPixelSize(2131296364);
+      S = localBaseApplication.getResources().getDimensionPixelSize(2131296382);
+      T = localBaseApplication.getResources().getDimensionPixelSize(2131296380);
+      U = localBaseApplication.getResources().getDimensionPixelSize(2131296381);
+      V = localBaseApplication.getResources().getDimensionPixelSize(2131296367);
+      W = localBaseApplication.getResources().getDimensionPixelSize(2131296366);
+      jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new aggo();
       return;
     }
   }
@@ -300,6 +300,7 @@ public class BaseChatItemLayout
   public BaseChatItemLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_ArrayOfInt = new int[2];
     setWillNotDraw(false);
     setClipChildren(false);
     setClipToPadding(false);
@@ -362,7 +363,7 @@ public class BaseChatItemLayout
         i1 = (int)(paramInt - Math.ceil(15.0F * jdField_d_of_type_Float));
       }
       if (paramBoolean3) {
-        i1 = afur.a(136.0F, getContext().getResources());
+        i1 = agej.a(136.0F, getContext().getResources());
       }
       paramInt = i1;
       if (i1 < 0) {
@@ -371,7 +372,7 @@ public class BaseChatItemLayout
       paramCharSequence1 = new SpannableStringBuilder(TextUtils.ellipsize(paramCharSequence1, paramTextView.getPaint(), paramInt, paramColorStateList));
       if (paramBoolean1)
       {
-        paramTextView = getResources().getDrawable(2130847415);
+        paramTextView = getResources().getDrawable(2130847432);
         paramTextView.setBounds(0, 0, (int)(13.0F * jdField_d_of_type_Float), (int)(13.0F * jdField_d_of_type_Float));
         paramTextView = new ImageSpan(paramTextView, 0);
         paramColorStateList = new SpannableString(" ");
@@ -402,10 +403,10 @@ public class BaseChatItemLayout
   
   private void a(Canvas paramCanvas)
   {
-    Object localObject = findViewById(2131364379);
+    Object localObject = findViewById(2131364423);
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)((View)localObject).getTag(2131364423));
+      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)((View)localObject).getTag(2131364467));
       this.an = ((View)localObject).getLeft();
       this.ao = ((View)localObject).getMeasuredWidth();
       this.ap = ((View)localObject).getTop();
@@ -420,50 +421,50 @@ public class BaseChatItemLayout
       i1 = 0;
       if (i2 <= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
       {
-        aruy localaruy = (aruy)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
+        askm localaskm = (askm)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
         label151:
         int i4;
         boolean bool;
         if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.stickerHidden))
         {
-          if (localaruy.jdField_a_of_type_Int + this.an + localaruy.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2)
+          if (localaskm.jdField_a_of_type_Int + this.an + localaskm.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2)
           {
             i3 = -400;
-            localaruy.jdField_e_of_type_Int = i3;
-            localaruy.jdField_f_of_type_Int = 0;
+            localaskm.jdField_e_of_type_Int = i3;
+            localaskm.jdField_f_of_type_Int = 0;
           }
         }
         else
         {
           i4 = paramCanvas.getSaveCount();
           paramCanvas.save();
-          i3 = localaruy.jdField_a_of_type_Int + this.an;
-          int i5 = (int)((localaruy.jdField_a_of_type_Float - 1.0F) * localaruy.jdField_c_of_type_Int);
-          int i6 = (int)((localaruy.jdField_a_of_type_Float - 1.0F) * localaruy.jdField_d_of_type_Int);
-          paramCanvas.translate(localaruy.jdField_e_of_type_Int + i3 - i5 / 2, localaruy.jdField_b_of_type_Int - i6 / 2);
-          paramCanvas.rotate((float)localaruy.jdField_a_of_type_Double, localaruy.jdField_c_of_type_Int * localaruy.jdField_a_of_type_Float / 2.0F, localaruy.jdField_d_of_type_Int * localaruy.jdField_a_of_type_Float / 2.0F);
-          localaruy.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(localaruy.jdField_f_of_type_Int);
-          localaruy.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)(localaruy.jdField_c_of_type_Int * localaruy.jdField_a_of_type_Float), (int)(localaruy.jdField_d_of_type_Int * localaruy.jdField_a_of_type_Float));
-          localaruy.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          i3 = localaskm.jdField_a_of_type_Int + this.an;
+          int i5 = (int)((localaskm.jdField_a_of_type_Float - 1.0F) * localaskm.jdField_c_of_type_Int);
+          int i6 = (int)((localaskm.jdField_a_of_type_Float - 1.0F) * localaskm.jdField_d_of_type_Int);
+          paramCanvas.translate(localaskm.jdField_e_of_type_Int + i3 - i5 / 2, localaskm.jdField_b_of_type_Int - i6 / 2);
+          paramCanvas.rotate((float)localaskm.jdField_a_of_type_Double, localaskm.jdField_c_of_type_Int * localaskm.jdField_a_of_type_Float / 2.0F, localaskm.jdField_d_of_type_Int * localaskm.jdField_a_of_type_Float / 2.0F);
+          localaskm.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(localaskm.jdField_f_of_type_Int);
+          localaskm.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)(localaskm.jdField_c_of_type_Int * localaskm.jdField_a_of_type_Float), (int)(localaskm.jdField_d_of_type_Int * localaskm.jdField_a_of_type_Float));
+          localaskm.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
           paramCanvas.restoreToCount(i4);
-          if ((!localaruy.jdField_a_of_type_Boolean) && ((!(localaruy.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) || (((URLDrawable)localaruy.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getStatus() == 1)))
+          if ((!localaskm.jdField_a_of_type_Boolean) && ((!(localaskm.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) || (((URLDrawable)localaskm.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getStatus() == 1)))
           {
-            if ((localaruy.jdField_c_of_type_Int - localaruy.jdField_g_of_type_Int >= 0) && (localaruy.jdField_d_of_type_Int - localaruy.jdField_h_of_type_Int >= 0)) {
+            if ((localaskm.jdField_c_of_type_Int - localaskm.jdField_g_of_type_Int >= 0) && (localaskm.jdField_d_of_type_Int - localaskm.jdField_h_of_type_Int >= 0)) {
               break label677;
             }
             bool = true;
             label417:
-            localaruy.jdField_a_of_type_Boolean = bool;
-            if (localaruy.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo != null) {
-              localaruy.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo.isShown = localaruy.jdField_a_of_type_Boolean;
+            localaskm.jdField_a_of_type_Boolean = bool;
+            if (localaskm.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo != null) {
+              localaskm.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo.isShown = localaskm.jdField_a_of_type_Boolean;
             }
-            if (!localaruy.jdField_a_of_type_Boolean)
+            if (!localaskm.jdField_a_of_type_Boolean)
             {
               i4 = paramCanvas.getSaveCount();
               paramCanvas.save();
-              paramCanvas.translate(localaruy.jdField_e_of_type_Int + i3 - localaruy.jdField_c_of_type_Int / 2 + localaruy.jdField_g_of_type_Int, localaruy.jdField_b_of_type_Int - localaruy.jdField_d_of_type_Int / 2 + localaruy.jdField_h_of_type_Int);
-              paramCanvas.clipRect(0, 0, localaruy.jdField_c_of_type_Int, localaruy.jdField_d_of_type_Int);
-              if (localaruy.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
+              paramCanvas.translate(localaskm.jdField_e_of_type_Int + i3 - localaskm.jdField_c_of_type_Int / 2 + localaskm.jdField_g_of_type_Int, localaskm.jdField_b_of_type_Int - localaskm.jdField_d_of_type_Int / 2 + localaskm.jdField_h_of_type_Int);
+              paramCanvas.clipRect(0, 0, localaskm.jdField_c_of_type_Int, localaskm.jdField_d_of_type_Int);
+              if (localaskm.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
                 break label683;
               }
             }
@@ -471,21 +472,21 @@ public class BaseChatItemLayout
         }
         label677:
         label683:
-        for (localObject = EmojiStickerManager.a().a(getContext()).mutate();; localObject = localaruy.jdField_b_of_type_AndroidGraphicsDrawableDrawable)
+        for (localObject = EmojiStickerManager.a().a(getContext()).mutate();; localObject = localaskm.jdField_b_of_type_AndroidGraphicsDrawableDrawable)
         {
-          ((Drawable)localObject).setBounds(0, 0, localaruy.jdField_c_of_type_Int, localaruy.jdField_d_of_type_Int);
+          ((Drawable)localObject).setBounds(0, 0, localaskm.jdField_c_of_type_Int, localaskm.jdField_d_of_type_Int);
           ((Drawable)localObject).draw(paramCanvas);
           paramCanvas.restoreToCount(i4);
-          localaruy.jdField_g_of_type_Int += EmojiStickerManager.jdField_j_of_type_Int;
-          localaruy.jdField_h_of_type_Int += EmojiStickerManager.jdField_j_of_type_Int;
-          localaruy.jdField_a_of_type_Float -= EmojiStickerManager.jdField_a_of_type_Float;
-          if (localaruy.jdField_a_of_type_Float < 1.0F) {
-            localaruy.jdField_a_of_type_Float = 1.0F;
+          localaskm.jdField_g_of_type_Int += EmojiStickerManager.jdField_j_of_type_Int;
+          localaskm.jdField_h_of_type_Int += EmojiStickerManager.jdField_j_of_type_Int;
+          localaskm.jdField_a_of_type_Float -= EmojiStickerManager.jdField_a_of_type_Float;
+          if (localaskm.jdField_a_of_type_Float < 1.0F) {
+            localaskm.jdField_a_of_type_Float = 1.0F;
           }
-          if (localaruy.jdField_a_of_type_Boolean) {
-            localaruy.jdField_a_of_type_Float = 1.0F;
+          if (localaskm.jdField_a_of_type_Boolean) {
+            localaskm.jdField_a_of_type_Float = 1.0F;
           }
-          if (localaruy.jdField_a_of_type_Boolean) {
+          if (localaskm.jdField_a_of_type_Boolean) {
             break label808;
           }
           i1 = 1;
@@ -535,20 +536,99 @@ public class BaseChatItemLayout
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        aruy localaruy = (aruy)localIterator.next();
-        int i2 = localaruy.jdField_a_of_type_Int;
+        askm localaskm = (askm)localIterator.next();
+        int i2 = localaskm.jdField_a_of_type_Int;
         int i3 = this.an;
-        int i4 = (int)((localaruy.jdField_a_of_type_Float - 1.0F) * localaruy.jdField_c_of_type_Int);
-        int i1 = (int)((localaruy.jdField_a_of_type_Float - 1.0F) * localaruy.jdField_d_of_type_Int);
-        i2 = i2 + i3 + localaruy.jdField_e_of_type_Int - i4 / 2;
-        i1 = localaruy.jdField_b_of_type_Int - i1 / 2;
-        if ((paramFloat1 > i2) && (paramFloat1 < i2 + localaruy.jdField_a_of_type_Float * localaruy.jdField_c_of_type_Int) && (paramFloat2 > i1))
+        int i4 = (int)((localaskm.jdField_a_of_type_Float - 1.0F) * localaskm.jdField_c_of_type_Int);
+        int i1 = (int)((localaskm.jdField_a_of_type_Float - 1.0F) * localaskm.jdField_d_of_type_Int);
+        i2 = i2 + i3 + localaskm.jdField_e_of_type_Int - i4 / 2;
+        i1 = localaskm.jdField_b_of_type_Int - i1 / 2;
+        if ((paramFloat1 > i2) && (paramFloat1 < i2 + localaskm.jdField_a_of_type_Float * localaskm.jdField_c_of_type_Int) && (paramFloat2 > i1))
         {
           float f1 = i1;
-          float f2 = localaruy.jdField_a_of_type_Float;
-          if (paramFloat2 < localaruy.jdField_d_of_type_Int * f2 + f1) {
+          float f2 = localaskm.jdField_a_of_type_Float;
+          if (paramFloat2 < localaskm.jdField_d_of_type_Int * f2 + f1) {
             return true;
           }
+        }
+      }
+    }
+    return false;
+  }
+  
+  private boolean a(MotionEvent paramMotionEvent)
+  {
+    int i1 = paramMotionEvent.getAction();
+    int i2;
+    if (!this.jdField_f_of_type_Boolean)
+    {
+      i2 = a(paramMotionEvent.getX(), paramMotionEvent.getY());
+      if ((i2 != -1) && (i1 == 0))
+      {
+        g();
+        this.jdField_f_of_type_Boolean = true;
+        this.ak = i2;
+        this.al = this.jdField_a_of_type_Amcl.b();
+        this.am = this.jdField_a_of_type_Amcl.c();
+        if (paramMotionEvent.getSource() != -1) {
+          this.jdField_a_of_type_Amcl.a(this.ak, false);
+        }
+        if (this.jdField_a_of_type_Amcl.a()) {
+          this.jdField_a_of_type_Amcl.b();
+        }
+        return true;
+      }
+    }
+    else
+    {
+      g();
+      if ((i1 == 1) || (i1 == 3))
+      {
+        this.jdField_f_of_type_Boolean = false;
+        this.ah = -1;
+        this.ai = -1;
+        this.jdField_a_of_type_Amcl.a(-1, true);
+        this.jdField_a_of_type_Amcl.a();
+        if (i1 == 1)
+        {
+          if (paramMotionEvent.getSource() != -1) {
+            break label218;
+          }
+          i1 = 2;
+          bdll.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
+        }
+      }
+      label218:
+      while (i1 != 2) {
+        for (;;)
+        {
+          return true;
+          i1 = 1;
+        }
+      }
+      int i3 = (int)paramMotionEvent.getRawX();
+      int i4 = (int)paramMotionEvent.getRawY();
+      int[] arrayOfInt;
+      if (this.ak == 1)
+      {
+        i1 = this.ad;
+        i2 = this.ae;
+        int i5 = ac;
+        arrayOfInt = a(i3, i4, i1, i2, jdField_a_of_type_Int * 2 + i5, -ac, this.jdField_d_of_type_Boolean, jdField_a_of_type_Int * 2);
+        i1 = arrayOfInt[0];
+        i2 = arrayOfInt[1];
+      }
+      for (;;)
+      {
+        c(i1, i2, paramMotionEvent.getSource());
+        break;
+        i1 = i3;
+        i2 = i4;
+        if (this.ak == 2)
+        {
+          arrayOfInt = a(i3, i4, this.af, this.ag, 0, jdField_a_of_type_Int * 2, this.jdField_e_of_type_Boolean, -jdField_a_of_type_Int * 2);
+          i1 = arrayOfInt[0];
+          i2 = arrayOfInt[1];
         }
       }
     }
@@ -569,132 +649,31 @@ public class BaseChatItemLayout
     return true;
   }
   
-  private void c(int paramInt1, int paramInt2, int paramInt3)
+  private int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, int paramInt7)
   {
-    int i2;
-    int i1;
-    if (this.ak == 1)
+    int i2 = jdField_a_of_type_Int;
+    int i3 = jdField_a_of_type_Int;
+    int i1 = paramInt2;
+    if (paramInt1 >= paramInt3 - i2 * 3)
     {
-      i2 = this.al;
-      i1 = this.jdField_a_of_type_Alqt.a(paramInt1, paramInt2);
-      if (paramInt3 == -1) {
-        this.jdField_a_of_type_Alqt.a(this.ak, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i1 + ", type=" + this.ak);
-      }
-      if (i1 != -1) {
-        break label109;
+      i1 = paramInt2;
+      if (paramInt1 <= i3 * 3 + paramInt3)
+      {
+        i1 = paramInt2;
+        if (paramInt2 >= paramInt4 - paramInt5)
+        {
+          i1 = paramInt2;
+          if (paramInt2 <= paramInt4 + paramInt6)
+          {
+            i1 = paramInt2;
+            if (paramBoolean) {
+              i1 = paramInt2 + paramInt7;
+            }
+          }
+        }
       }
     }
-    label109:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          i2 = this.am;
-          break;
-          if (i1 == i2) {
-            break label562;
-          }
-          if (this.ak == 1) {
-            if (i1 < this.al)
-            {
-              paramInt3 = this.am;
-              this.al = i1;
-            }
-          }
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i1 + ", e=" + paramInt3);
-            }
-            this.jdField_a_of_type_Alqt.a(i1, paramInt3);
-            this.jdField_a_of_type_Alqt.b(paramInt1, paramInt2);
-            if (this.ak != 1) {
-              break label530;
-            }
-            if (this.ah == -1) {
-              break;
-            }
-            this.jdField_a_of_type_Alqt.a(paramInt1, this.ah, true);
-            return;
-            if ((i1 > this.al) && (i1 < this.am))
-            {
-              paramInt3 = this.am;
-              this.al = i1;
-            }
-            else if (i1 == this.al)
-            {
-              i1 = this.al;
-              paramInt3 = this.am;
-            }
-            else if (i1 == this.am)
-            {
-              i1 = this.am - 1;
-              paramInt3 = this.am;
-            }
-            else
-            {
-              i2 = this.am;
-              this.al = this.am;
-              this.am = i1;
-              this.ak = 2;
-              this.jdField_a_of_type_Alqt.a(this.ak);
-              paramInt3 = i1;
-              i1 = i2;
-              continue;
-              if (i1 > this.am)
-              {
-                i2 = this.al;
-                this.am = i1;
-                paramInt3 = i1;
-                i1 = i2;
-              }
-              else if ((i1 < this.am) && (i1 > this.al))
-              {
-                i2 = this.al;
-                this.am = i1;
-                paramInt3 = i1;
-                i1 = i2;
-              }
-              else if (i1 == this.am)
-              {
-                i1 = this.al;
-                paramInt3 = this.am;
-              }
-              else if (i1 == this.al)
-              {
-                i1 = this.al;
-                paramInt3 = this.al + 1;
-              }
-              else
-              {
-                paramInt3 = this.al;
-                this.am = this.al;
-                this.al = i1;
-                this.ak = 1;
-                this.jdField_a_of_type_Alqt.a(this.ak);
-              }
-            }
-          }
-        } while ((this.ak != 2) || (this.ai == -1));
-        this.jdField_a_of_type_Alqt.a(paramInt1, this.ai, true);
-        return;
-        if (this.ak != 1) {
-          break label594;
-        }
-      } while (this.ah == -1);
-      this.jdField_a_of_type_Alqt.a(paramInt1, this.ah, false);
-      return;
-    } while ((this.ak != 2) || (this.ai == -1));
-    label530:
-    label562:
-    label594:
-    this.jdField_a_of_type_Alqt.a(paramInt1, this.ai, false);
+    return new int[] { paramInt1, i1 };
   }
   
   private void d(int paramInt)
@@ -742,21 +721,21 @@ public class BaseChatItemLayout
       {
         localObject1 = localObject2;
         if (localAIOLongShotHelper.b()) {
-          localObject1 = new bhyj(10);
+          localObject1 = new bizh(10);
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setMosaicEffect((bhyj)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setMosaicEffect((bizh)localObject1);
   }
   
   private void e(int paramInt)
   {
     if (paramInt > 0)
     {
-      String str = bgtv.a(bgyg.a("extendnameplateiconurl", this.jdField_f_of_type_AndroidWidgetImageView), String.valueOf(paramInt));
+      String str = bhty.a(bhyk.a("extendnameplateiconurl", this.jdField_f_of_type_AndroidWidgetImageView), String.valueOf(paramInt));
       this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-      VipUtils.a(getResources(), this.jdField_f_of_type_AndroidWidgetImageView, str, getResources().getDrawable(2130847051));
-      str = bgyg.a("extendnameplatejumpurl_" + paramInt, this.jdField_f_of_type_AndroidWidgetImageView);
+      VipUtils.a(getResources(), this.jdField_f_of_type_AndroidWidgetImageView, str, getResources().getDrawable(2130847068));
+      str = bhyk.a("extendnameplatejumpurl_" + paramInt, this.jdField_f_of_type_AndroidWidgetImageView);
       this.jdField_f_of_type_AndroidWidgetImageView.setTag(str);
     }
   }
@@ -841,9 +820,22 @@ public class BaseChatItemLayout
     this.jdField_e_of_type_AndroidWidgetTextView.setMaxWidth(jdField_f_of_type_Int);
   }
   
+  private void f(int paramInt)
+  {
+    if (this.ak == 1) {
+      if (this.ah != -1) {
+        this.jdField_a_of_type_Amcl.a(paramInt, this.ah, false);
+      }
+    }
+    while ((this.ak != 2) || (this.ai == -1)) {
+      return;
+    }
+    this.jdField_a_of_type_Amcl.a(paramInt, this.ai, false);
+  }
+  
   private void g()
   {
-    if (this.jdField_a_of_type_Alqt == null) {
+    if (this.jdField_a_of_type_Amcl == null) {
       throw new IllegalStateException("Has no bound delegate!");
     }
   }
@@ -851,43 +843,43 @@ public class BaseChatItemLayout
   private void h()
   {
     boolean bool;
-    aruy localaruy;
+    askm localaskm;
     if ((this.jdField_i_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       bool = false;
       if (localIterator.hasNext())
       {
-        localaruy = (aruy)localIterator.next();
-        if (localaruy.jdField_a_of_type_Int + this.an + localaruy.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2) {
-          if (Math.abs(localaruy.jdField_e_of_type_Int) > 200)
+        localaskm = (askm)localIterator.next();
+        if (localaskm.jdField_a_of_type_Int + this.an + localaskm.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2) {
+          if (Math.abs(localaskm.jdField_e_of_type_Int) > 200)
           {
-            localaruy.jdField_e_of_type_Int -= EmojiStickerManager.jdField_i_of_type_Int;
-            localaruy.jdField_f_of_type_Int -= Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
-            localaruy.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaruy.jdField_f_of_type_Int));
+            localaskm.jdField_e_of_type_Int -= EmojiStickerManager.jdField_i_of_type_Int;
+            localaskm.jdField_f_of_type_Int -= Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
+            localaskm.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaskm.jdField_f_of_type_Int));
             label138:
-            if (localaruy.jdField_e_of_type_Int > 0)
+            if (localaskm.jdField_e_of_type_Int > 0)
             {
-              localaruy.jdField_e_of_type_Int = 0;
+              localaskm.jdField_e_of_type_Int = 0;
               if (EmojiStickerManager.jdField_a_of_type_AndroidViewView == null) {
-                localaruy.jdField_f_of_type_Int = 255;
+                localaskm.jdField_f_of_type_Int = 255;
               }
               this.jdField_i_of_type_Boolean = false;
               bool = false;
             }
             label170:
-            if (localaruy.jdField_e_of_type_Int < -400)
+            if (localaskm.jdField_e_of_type_Int < -400)
             {
-              localaruy.jdField_e_of_type_Int = -400;
-              localaruy.jdField_f_of_type_Int = 0;
+              localaskm.jdField_e_of_type_Int = -400;
+              localaskm.jdField_f_of_type_Int = 0;
               this.jdField_i_of_type_Boolean = false;
               bool = true;
             }
-            if (localaruy.jdField_e_of_type_Int <= 400) {
+            if (localaskm.jdField_e_of_type_Int <= 400) {
               break label446;
             }
-            localaruy.jdField_e_of_type_Int = 400;
-            localaruy.jdField_f_of_type_Int = 0;
+            localaskm.jdField_e_of_type_Int = 400;
+            localaskm.jdField_f_of_type_Int = 0;
             this.jdField_i_of_type_Boolean = false;
             bool = true;
           }
@@ -899,29 +891,29 @@ public class BaseChatItemLayout
     for (;;)
     {
       break;
-      localaruy.jdField_f_of_type_Int += Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
-      localaruy.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaruy.jdField_f_of_type_Int));
-      localaruy.jdField_e_of_type_Int += EmojiStickerManager.jdField_i_of_type_Int;
+      localaskm.jdField_f_of_type_Int += Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
+      localaskm.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaskm.jdField_f_of_type_Int));
+      localaskm.jdField_e_of_type_Int += EmojiStickerManager.jdField_i_of_type_Int;
       break label138;
-      if (Math.abs(localaruy.jdField_e_of_type_Int) < 200)
+      if (Math.abs(localaskm.jdField_e_of_type_Int) < 200)
       {
-        localaruy.jdField_f_of_type_Int += Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
-        localaruy.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaruy.jdField_f_of_type_Int));
+        localaskm.jdField_f_of_type_Int += Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
+        localaskm.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaskm.jdField_f_of_type_Int));
       }
-      for (localaruy.jdField_e_of_type_Int -= EmojiStickerManager.jdField_i_of_type_Int;; localaruy.jdField_e_of_type_Int += EmojiStickerManager.jdField_i_of_type_Int)
+      for (localaskm.jdField_e_of_type_Int -= EmojiStickerManager.jdField_i_of_type_Int;; localaskm.jdField_e_of_type_Int += EmojiStickerManager.jdField_i_of_type_Int)
       {
-        if (localaruy.jdField_e_of_type_Int >= 0) {
+        if (localaskm.jdField_e_of_type_Int >= 0) {
           break label424;
         }
-        localaruy.jdField_e_of_type_Int = 0;
+        localaskm.jdField_e_of_type_Int = 0;
         if (EmojiStickerManager.jdField_a_of_type_AndroidViewView == null) {
-          localaruy.jdField_f_of_type_Int = 255;
+          localaskm.jdField_f_of_type_Int = 255;
         }
         this.jdField_i_of_type_Boolean = false;
         bool = false;
         break;
-        localaruy.jdField_f_of_type_Int -= Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
-        localaruy.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaruy.jdField_f_of_type_Int));
+        localaskm.jdField_f_of_type_Int -= Math.abs(EmojiStickerManager.jdField_i_of_type_Int / 2);
+        localaskm.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaskm.jdField_f_of_type_Int));
       }
       break label170;
       if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
@@ -942,7 +934,7 @@ public class BaseChatItemLayout
     if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_e_of_type_Boolean)) {
       return -1;
     }
-    return new agar(this, this.jdField_a_of_type_Alqt).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
+    return new agkl(this, this.jdField_a_of_type_Amcl).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
   }
   
   public int a(int paramInt)
@@ -989,7 +981,7 @@ public class BaseChatItemLayout
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(11, 0);
       if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.getVisibility() != 8)) {
-        localLayoutParams.leftMargin = afur.a(25.0F, getContext().getResources());
+        localLayoutParams.leftMargin = agej.a(25.0F, getContext().getResources());
       } else {
         localLayoutParams.leftMargin = 0;
       }
@@ -1015,7 +1007,7 @@ public class BaseChatItemLayout
     {
       int i1;
       label45:
-      aruy localaruy;
+      askm localaskm;
       int i2;
       if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.stickerHidden))
       {
@@ -1024,28 +1016,28 @@ public class BaseChatItemLayout
         if (!localIterator.hasNext()) {
           break label419;
         }
-        localaruy = (aruy)localIterator.next();
+        localaskm = (askm)localIterator.next();
         if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (i1 != 0))
         {
-          if (localaruy.jdField_a_of_type_Int + this.an + localaruy.jdField_c_of_type_Int / 2 >= getMeasuredWidth() / 2) {
+          if (localaskm.jdField_a_of_type_Int + this.an + localaskm.jdField_c_of_type_Int / 2 >= getMeasuredWidth() / 2) {
             break label267;
           }
           i2 = -400;
           label110:
-          localaruy.jdField_e_of_type_Int = i2;
-          localaruy.jdField_f_of_type_Int = 0;
+          localaskm.jdField_e_of_type_Int = i2;
+          localaskm.jdField_f_of_type_Int = 0;
         }
-        if ((paramInt2 != EmojiStickerManager.jdField_h_of_type_Int) || (localaruy.jdField_e_of_type_Int != 0))
+        if ((paramInt2 != EmojiStickerManager.jdField_h_of_type_Int) || (localaskm.jdField_e_of_type_Int != 0))
         {
           if (paramInt2 != EmojiStickerManager.jdField_g_of_type_Int) {
             break label290;
           }
-          if (localaruy.jdField_a_of_type_Int + this.an + localaruy.jdField_c_of_type_Int / 2 >= getMeasuredWidth() / 2) {
+          if (localaskm.jdField_a_of_type_Int + this.an + localaskm.jdField_c_of_type_Int / 2 >= getMeasuredWidth() / 2) {
             break label275;
           }
-          localaruy.jdField_e_of_type_Int -= paramInt1;
-          localaruy.jdField_f_of_type_Int -= Math.abs(paramInt1 / 2);
-          localaruy.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaruy.jdField_f_of_type_Int));
+          localaskm.jdField_e_of_type_Int -= paramInt1;
+          localaskm.jdField_f_of_type_Int -= Math.abs(paramInt1 / 2);
+          localaskm.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaskm.jdField_f_of_type_Int));
         }
       }
       label267:
@@ -1054,36 +1046,36 @@ public class BaseChatItemLayout
       while (paramInt2 != EmojiStickerManager.jdField_h_of_type_Int) {
         for (;;)
         {
-          if (localaruy.jdField_e_of_type_Int < -400) {
-            localaruy.jdField_e_of_type_Int = -400;
+          if (localaskm.jdField_e_of_type_Int < -400) {
+            localaskm.jdField_e_of_type_Int = -400;
           }
-          if (localaruy.jdField_e_of_type_Int <= 400) {
+          if (localaskm.jdField_e_of_type_Int <= 400) {
             break label45;
           }
-          localaruy.jdField_e_of_type_Int = 400;
+          localaskm.jdField_e_of_type_Int = 400;
           break label45;
           i1 = 0;
           break;
           i2 = 400;
           break label110;
-          localaruy.jdField_e_of_type_Int += paramInt1;
+          localaskm.jdField_e_of_type_Int += paramInt1;
         }
       }
-      if (localaruy.jdField_a_of_type_Int + this.an + localaruy.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2)
+      if (localaskm.jdField_a_of_type_Int + this.an + localaskm.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2)
       {
-        localaruy.jdField_e_of_type_Int += paramInt1;
-        if (localaruy.jdField_e_of_type_Int > 0) {
-          localaruy.jdField_e_of_type_Int = 0;
+        localaskm.jdField_e_of_type_Int += paramInt1;
+        if (localaskm.jdField_e_of_type_Int > 0) {
+          localaskm.jdField_e_of_type_Int = 0;
         }
       }
       for (;;)
       {
-        localaruy.jdField_f_of_type_Int += Math.abs(paramInt1 / 2);
-        localaruy.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaruy.jdField_f_of_type_Int));
+        localaskm.jdField_f_of_type_Int += Math.abs(paramInt1 / 2);
+        localaskm.jdField_f_of_type_Int = Math.min(255, Math.max(0, localaskm.jdField_f_of_type_Int));
         break;
-        localaruy.jdField_e_of_type_Int -= paramInt1;
-        if (localaruy.jdField_e_of_type_Int < 0) {
-          localaruy.jdField_e_of_type_Int = 0;
+        localaskm.jdField_e_of_type_Int -= paramInt1;
+        if (localaskm.jdField_e_of_type_Int < 0) {
+          localaskm.jdField_e_of_type_Int = 0;
         }
       }
       label419:
@@ -1104,23 +1096,23 @@ public class BaseChatItemLayout
     this.am = (paramInt1 + paramInt2);
   }
   
-  public void a(alqt paramalqt)
+  public void a(amcl paramamcl)
   {
-    this.jdField_a_of_type_Alqt = paramalqt;
+    this.jdField_a_of_type_Amcl = paramamcl;
   }
   
   public void a(Context paramContext, BaseAdapter paramBaseAdapter)
   {
-    paramBaseAdapter = (ImageView)findViewById(2131364402);
+    paramBaseAdapter = (ImageView)findViewById(2131364446);
     Object localObject;
     if (paramBaseAdapter == null)
     {
       localObject = new ImageView(paramContext);
-      ((ImageView)localObject).setId(2131364402);
-      ((ImageView)localObject).setImageResource(2130838074);
+      ((ImageView)localObject).setId(2131364446);
+      ((ImageView)localObject).setImageResource(2130838084);
       paramBaseAdapter = new RelativeLayout.LayoutParams(V, V);
       paramBaseAdapter.leftMargin = (paramContext.getResources().getDisplayMetrics().widthPixels + W - getPaddingLeft());
-      paramBaseAdapter.addRule(15, 2131364379);
+      paramBaseAdapter.addRule(15, 2131364423);
       addView((View)localObject, paramBaseAdapter);
       ((ImageView)localObject).setVisibility(4);
       paramContext = (Context)localObject;
@@ -1139,7 +1131,7 @@ public class BaseChatItemLayout
           paramContext = paramContext.a();
           if (paramContext != null)
           {
-            paramContext = (apyb)paramContext.a(50);
+            paramContext = (aqmb)paramContext.a(50);
             if (paramContext != null) {
               paramContext.a(this);
             }
@@ -1159,7 +1151,7 @@ public class BaseChatItemLayout
       paramImageView = (RelativeLayout.LayoutParams)paramImageView.getLayoutParams();
       if (paramBoolean)
       {
-        paramImageView.addRule(0, 2131364379);
+        paramImageView.addRule(0, 2131364423);
         paramImageView.addRule(1, 0);
       }
     }
@@ -1167,7 +1159,7 @@ public class BaseChatItemLayout
     {
       return;
     }
-    paramImageView.addRule(1, 2131364379);
+    paramImageView.addRule(1, 2131364423);
     paramImageView.addRule(0, 0);
   }
   
@@ -1178,7 +1170,7 @@ public class BaseChatItemLayout
       paramProgressBar = (RelativeLayout.LayoutParams)paramProgressBar.getLayoutParams();
       if (paramBoolean)
       {
-        paramProgressBar.addRule(0, 2131364379);
+        paramProgressBar.addRule(0, 2131364423);
         paramProgressBar.addRule(1, 0);
       }
     }
@@ -1186,7 +1178,7 @@ public class BaseChatItemLayout
     {
       return;
     }
-    paramProgressBar.addRule(1, 2131364379);
+    paramProgressBar.addRule(1, 2131364423);
     paramProgressBar.addRule(0, 0);
   }
   
@@ -1197,15 +1189,15 @@ public class BaseChatItemLayout
       if (this.jdField_d_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_d_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_d_of_type_AndroidWidgetTextView.setId(2131364415);
+        this.jdField_d_of_type_AndroidWidgetTextView.setId(2131364459);
         this.jdField_d_of_type_AndroidWidgetTextView.setGravity(16);
         this.jdField_d_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-        this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(afur.a(2.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()));
-        this.jdField_d_of_type_AndroidWidgetTextView.setPadding(afur.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0, afur.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0);
+        this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(agej.a(2.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()));
+        this.jdField_d_of_type_AndroidWidgetTextView.setPadding(agej.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0, agej.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0);
         this.jdField_d_of_type_AndroidWidgetTextView.setText("LV" + paramInt);
         this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
-        paramQQAppInterface = this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130845508);
-        arrayOfInt = axci.a(this.jdField_d_of_type_AndroidWidgetTextView.getContext());
+        paramQQAppInterface = this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130845523);
+        arrayOfInt = axuz.a(this.jdField_d_of_type_AndroidWidgetTextView.getContext());
         i2 = Color.parseColor("#FFCC59");
         i1 = i2;
         if (arrayOfInt != null)
@@ -1215,15 +1207,15 @@ public class BaseChatItemLayout
             i1 = arrayOfInt[paramInt];
           }
         }
-        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundDrawable(bfup.a(this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources(), i1, paramQQAppInterface));
+        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundDrawable(bguq.a(this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources(), i1, paramQQAppInterface));
         this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
         paramQQAppInterface = new RelativeLayout.LayoutParams(-2, -2);
-        paramQQAppInterface.bottomMargin = bggq.a(getContext(), 1.0F);
-        paramQQAppInterface.topMargin = bggq.a(getContext(), 1.0F);
-        paramQQAppInterface.addRule(6, 2131364397);
+        paramQQAppInterface.bottomMargin = bhgr.a(getContext(), 1.0F);
+        paramQQAppInterface.topMargin = bhgr.a(getContext(), 1.0F);
+        paramQQAppInterface.addRule(6, 2131364441);
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
-          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364397);
+          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364441);
           if (QLog.isColorLevel()) {
             QLog.d("BubbleView", 2, " setTroopMemberGlamour mTopId = R.id.chat_item_nick_name");
           }
@@ -1233,14 +1225,14 @@ public class BaseChatItemLayout
       paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
       if (b())
       {
-        paramQQAppInterface.rightMargin = afur.a(2.0F, getContext().getResources());
+        paramQQAppInterface.rightMargin = agej.a(2.0F, getContext().getResources());
         if ((this.jdField_g_of_type_AndroidWidgetTextView != null) && (this.jdField_g_of_type_AndroidWidgetTextView.getVisibility() == 0))
         {
-          paramQQAppInterface.addRule(0, 2131364397);
+          paramQQAppInterface.addRule(0, 2131364441);
           paramQQAppInterface.addRule(1, 0);
-          paramQQAppInterface.leftMargin = afur.a(2.0F, getContext().getResources());
+          paramQQAppInterface.leftMargin = agej.a(2.0F, getContext().getResources());
           paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_g_of_type_AndroidWidgetTextView.getLayoutParams();
-          paramQQAppInterface.addRule(0, 2131364415);
+          paramQQAppInterface.addRule(0, 2131364459);
           paramQQAppInterface.addRule(1, 0);
           this.jdField_d_of_type_AndroidWidgetTextView.setText("LV" + paramInt);
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -1255,21 +1247,21 @@ public class BaseChatItemLayout
         int i1;
         return;
         paramQQAppInterface.leftMargin = 0;
-        paramQQAppInterface.addRule(0, 2131364397);
+        paramQQAppInterface.addRule(0, 2131364441);
         paramQQAppInterface.addRule(1, 0);
         continue;
         if ((this.jdField_g_of_type_AndroidWidgetTextView != null) && (this.jdField_g_of_type_AndroidWidgetTextView.getVisibility() == 0))
         {
-          paramQQAppInterface.leftMargin = afur.a(2.0F, getContext().getResources());
+          paramQQAppInterface.leftMargin = agej.a(2.0F, getContext().getResources());
           paramQQAppInterface.rightMargin = 0;
-          paramQQAppInterface.addRule(1, 2131364389);
+          paramQQAppInterface.addRule(1, 2131364433);
           paramQQAppInterface.addRule(0, 0);
         }
         else
         {
           paramQQAppInterface.leftMargin = E;
           paramQQAppInterface.rightMargin = 0;
-          paramQQAppInterface.addRule(1, 2131364388);
+          paramQQAppInterface.addRule(1, 2131364432);
           paramQQAppInterface.addRule(0, 0);
         }
       }
@@ -1284,24 +1276,24 @@ public class BaseChatItemLayout
       if (this.jdField_d_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_d_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_d_of_type_AndroidWidgetTextView.setId(2131364415);
+        this.jdField_d_of_type_AndroidWidgetTextView.setId(2131364459);
         this.jdField_d_of_type_AndroidWidgetTextView.setGravity(16);
         this.jdField_d_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-        this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(afur.a(2.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()));
-        this.jdField_d_of_type_AndroidWidgetTextView.setPadding(afur.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0, afur.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0);
+        this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(agej.a(2.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()));
+        this.jdField_d_of_type_AndroidWidgetTextView.setPadding(agej.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0, agej.a(4.0F, this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources()), 0);
         this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
         this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
-        paramQQAppInterface = this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130845508);
+        paramQQAppInterface = this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130845523);
         i1 = Color.parseColor("#12B7F5");
-        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundDrawable(bfup.a(this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources(), i1, paramQQAppInterface));
+        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundDrawable(bguq.a(this.jdField_d_of_type_AndroidWidgetTextView.getContext().getResources(), i1, paramQQAppInterface));
         this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
         paramQQAppInterface = new RelativeLayout.LayoutParams(-2, -2);
-        paramQQAppInterface.bottomMargin = bggq.a(getContext(), 1.0F);
-        paramQQAppInterface.topMargin = bggq.a(getContext(), 1.0F);
-        paramQQAppInterface.addRule(6, 2131364397);
+        paramQQAppInterface.bottomMargin = bhgr.a(getContext(), 1.0F);
+        paramQQAppInterface.topMargin = bhgr.a(getContext(), 1.0F);
+        paramQQAppInterface.addRule(6, 2131364441);
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
-          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364397);
+          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364441);
           if (QLog.isColorLevel()) {
             QLog.d("BubbleView", 2, " setTroopMemberGlamour mTopId = R.id.chat_item_nick_name");
           }
@@ -1311,14 +1303,14 @@ public class BaseChatItemLayout
       paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
       if (b())
       {
-        paramQQAppInterface.rightMargin = afur.a(2.0F, getContext().getResources());
+        paramQQAppInterface.rightMargin = agej.a(2.0F, getContext().getResources());
         if ((this.jdField_g_of_type_AndroidWidgetTextView != null) && (this.jdField_g_of_type_AndroidWidgetTextView.getVisibility() == 0))
         {
-          paramQQAppInterface.addRule(0, 2131364397);
+          paramQQAppInterface.addRule(0, 2131364441);
           paramQQAppInterface.addRule(1, 0);
-          paramQQAppInterface.leftMargin = afur.a(2.0F, getContext().getResources());
+          paramQQAppInterface.leftMargin = agej.a(2.0F, getContext().getResources());
           paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_g_of_type_AndroidWidgetTextView.getLayoutParams();
-          paramQQAppInterface.addRule(0, 2131364415);
+          paramQQAppInterface.addRule(0, 2131364459);
           paramQQAppInterface.addRule(1, 0);
           this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -1331,21 +1323,21 @@ public class BaseChatItemLayout
         int i1;
         return;
         paramQQAppInterface.leftMargin = 0;
-        paramQQAppInterface.addRule(0, 2131364397);
+        paramQQAppInterface.addRule(0, 2131364441);
         paramQQAppInterface.addRule(1, 0);
         continue;
         if ((this.jdField_g_of_type_AndroidWidgetTextView != null) && (this.jdField_g_of_type_AndroidWidgetTextView.getVisibility() == 0))
         {
-          paramQQAppInterface.leftMargin = afur.a(2.0F, getContext().getResources());
+          paramQQAppInterface.leftMargin = agej.a(2.0F, getContext().getResources());
           paramQQAppInterface.rightMargin = 0;
-          paramQQAppInterface.addRule(1, 2131364389);
+          paramQQAppInterface.addRule(1, 2131364433);
           paramQQAppInterface.addRule(0, 0);
         }
         else
         {
           paramQQAppInterface.leftMargin = E;
           paramQQAppInterface.rightMargin = 0;
-          paramQQAppInterface.addRule(1, 2131364388);
+          paramQQAppInterface.addRule(1, 2131364432);
           paramQQAppInterface.addRule(0, 0);
         }
       }
@@ -1365,17 +1357,17 @@ public class BaseChatItemLayout
         return;
         if (this.jdField_a_of_type_AndroidViewView == null)
         {
-          this.jdField_a_of_type_AndroidViewView = bbdx.a(getContext());
+          this.jdField_a_of_type_AndroidViewView = bbwq.a(getContext());
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
-            this.jdField_a_of_type_AndroidViewView.setId(2131364419);
-            paramQQAppInterface = new RelativeLayout.LayoutParams(-2, bggq.a(getContext(), 16.0F));
-            paramQQAppInterface.addRule(6, 2131364397);
+            this.jdField_a_of_type_AndroidViewView.setId(2131364463);
+            paramQQAppInterface = new RelativeLayout.LayoutParams(-2, bhgr.a(getContext(), 16.0F));
+            paramQQAppInterface.addRule(6, 2131364441);
             addView(this.jdField_a_of_type_AndroidViewView, paramQQAppInterface);
             paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-            paramQQAppInterface.topMargin = afur.a(-1.0F, getContext().getResources());
-            paramQQAppInterface.leftMargin = afur.a(4.0F, getContext().getResources());
-            paramQQAppInterface.addRule(1, 2131364397);
+            paramQQAppInterface.topMargin = agej.a(-1.0F, getContext().getResources());
+            paramQQAppInterface.leftMargin = agej.a(4.0F, getContext().getResources());
+            paramQQAppInterface.addRule(1, 2131364441);
           }
         }
       } while (this.jdField_a_of_type_AndroidViewView == null);
@@ -1389,12 +1381,12 @@ public class BaseChatItemLayout
   {
     if ((paramChatMessage.istroop == 1) || (paramChatMessage.istroop == 3000))
     {
-      paramChatMessage.isShowQimStyleAvater = ahvz.a().a(paramObject, paramQQAppInterface, paramChatMessage);
-      paramChatMessage.isShowQIMStyleGroup = ahvz.a().a(paramObject, paramQQAppInterface, paramChatMessage, false);
+      paramChatMessage.isShowQimStyleAvater = aifn.a().a(paramObject, paramQQAppInterface, paramChatMessage);
+      paramChatMessage.isShowQIMStyleGroup = aifn.a().a(paramObject, paramQQAppInterface, paramChatMessage, false);
       if (!paramChatMessage.isShowQimStyleAvater) {
         break label359;
       }
-      paramObject = ahvz.a().b(1);
+      paramObject = aifn.a().b(1);
       if (paramObject != null) {
         break label65;
       }
@@ -1406,35 +1398,35 @@ public class BaseChatItemLayout
       do
       {
         return;
-        int i1 = getContext().getResources().getDimensionPixelSize(2131296361);
-        int i2 = afur.a(28.0F, getContext().getResources());
+        int i1 = getContext().getResources().getDimensionPixelSize(2131296365);
+        int i2 = agej.a(28.0F, getContext().getResources());
         if (this.jdField_a_of_type_AndroidWidgetImageView == null)
         {
           this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-          this.jdField_a_of_type_AndroidWidgetImageView.setId(2131364400);
+          this.jdField_a_of_type_AndroidWidgetImageView.setId(2131364444);
           this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-          int i3 = afur.a(13.0F, getContext().getResources());
+          int i3 = agej.a(13.0F, getContext().getResources());
           this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramObject);
           paramObject = new RelativeLayout.LayoutParams(i3, i3);
           paramObject.topMargin = (i1 + i2);
           paramObject.leftMargin = i2;
-          paramObject.addRule(7, 2131364388);
-          paramObject.addRule(8, 2131364388);
+          paramObject.addRule(7, 2131364432);
+          paramObject.addRule(8, 2131364432);
           addView(this.jdField_a_of_type_AndroidWidgetImageView, paramObject);
         }
         while (paramChatMessage.istroop == 1)
         {
-          bcst.b(paramQQAppInterface, "CliOper", "", "", "0X80085A6", "0X80085A6", 1, 0, "", "", "", "");
+          bdll.b(paramQQAppInterface, "CliOper", "", "", "0X80085A6", "0X80085A6", 1, 0, "", "", "", "");
           return;
           RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
           localLayoutParams.topMargin = (i1 + i2);
           localLayoutParams.leftMargin = i2;
-          localLayoutParams.addRule(7, 2131364388);
-          localLayoutParams.addRule(8, 2131364388);
+          localLayoutParams.addRule(7, 2131364432);
+          localLayoutParams.addRule(8, 2131364432);
           this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramObject);
         }
       } while (paramChatMessage.istroop != 3000);
-      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X80085A5", "0X80085A5", 1, 0, "", "", "", "");
+      bdll.b(paramQQAppInterface, "CliOper", "", "", "0X80085A5", "0X80085A5", 1, 0, "", "", "", "");
       return;
       paramChatMessage.isShowQimStyleAvater = false;
     } while (this.jdField_a_of_type_AndroidWidgetImageView == null);
@@ -1448,30 +1440,30 @@ public class BaseChatItemLayout
       if (this.jdField_g_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_g_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_g_of_type_AndroidWidgetTextView.setId(2131364389);
+        this.jdField_g_of_type_AndroidWidgetTextView.setId(2131364433);
         this.jdField_g_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
         this.jdField_g_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-        this.jdField_g_of_type_AndroidWidgetTextView.setPadding(afur.a(5.0F, getContext().getResources()), 0, afur.a(5.0F, getContext().getResources()), 0);
+        this.jdField_g_of_type_AndroidWidgetTextView.setPadding(agej.a(5.0F, getContext().getResources()), 0, agej.a(5.0F, getContext().getResources()), 0);
         this.jdField_g_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
         this.jdField_g_of_type_AndroidWidgetTextView.setSingleLine();
         this.jdField_g_of_type_AndroidWidgetTextView.setGravity(17);
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.topMargin = this.jdField_g_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296369);
-        localLayoutParams.bottomMargin = this.jdField_g_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296368);
+        localLayoutParams.topMargin = this.jdField_g_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296373);
+        localLayoutParams.bottomMargin = this.jdField_g_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296372);
         localLayoutParams.addRule(3, this.Y);
         if (this.jdField_b_of_type_AndroidViewView != null) {
-          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364397);
+          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364441);
         }
         addView(this.jdField_g_of_type_AndroidWidgetTextView, localLayoutParams);
       }
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_g_of_type_AndroidWidgetTextView.getLayoutParams();
-      localLayoutParams.leftMargin = this.jdField_g_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296367);
+      localLayoutParams.leftMargin = this.jdField_g_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296371);
       localLayoutParams.rightMargin = 0;
-      localLayoutParams.addRule(1, 2131364388);
+      localLayoutParams.addRule(1, 2131364432);
       localLayoutParams.addRule(0, 0);
       this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(-1);
-      axbp.a(this.jdField_g_of_type_AndroidWidgetTextView, paramInt);
-      this.jdField_g_of_type_AndroidWidgetTextView.setPadding(afur.a(5.0F, getContext().getResources()), 0, afur.a(5.0F, getContext().getResources()), 0);
+      axug.a(this.jdField_g_of_type_AndroidWidgetTextView, paramInt);
+      this.jdField_g_of_type_AndroidWidgetTextView.setPadding(agej.a(5.0F, getContext().getResources()), 0, agej.a(5.0F, getContext().getResources()), 0);
       if (this.jdField_g_of_type_AndroidWidgetTextView.getVisibility() != 0) {
         this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
       }
@@ -1495,7 +1487,7 @@ public class BaseChatItemLayout
       if (!paramBoolean) {
         break label76;
       }
-      localLayoutParams.addRule(0, 2131364388);
+      localLayoutParams.addRule(0, 2131364432);
       localLayoutParams.addRule(1, 0);
     }
     for (;;)
@@ -1506,7 +1498,7 @@ public class BaseChatItemLayout
       }
       return;
       label76:
-      localLayoutParams.addRule(1, 2131364388);
+      localLayoutParams.addRule(1, 2131364432);
       localLayoutParams.addRule(0, 0);
     }
   }
@@ -1525,14 +1517,14 @@ public class BaseChatItemLayout
         this.jdField_a_of_type_AndroidWidgetLinearLayout = new RightLinearLayout(getContext());
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(53);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setId(2131364397);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setId(2131364441);
         paramString = new RelativeLayout.LayoutParams(-2, -2);
-        paramString.topMargin = getContext().getResources().getDimensionPixelSize(2131296369);
-        paramString.bottomMargin = getContext().getResources().getDimensionPixelSize(2131296368);
+        paramString.topMargin = getContext().getResources().getDimensionPixelSize(2131296373);
+        paramString.bottomMargin = getContext().getResources().getDimensionPixelSize(2131296372);
         paramString.addRule(3, this.Y);
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
-          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364397);
+          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364441);
           if (QLog.isColorLevel()) {
             QLog.d("BubbleView", 2, " setNick mTopId = R.id.chat_item_nick_name");
           }
@@ -1542,15 +1534,15 @@ public class BaseChatItemLayout
       if (this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView = new TroopHonorView(getContext());
-        this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView.setId(2131364416);
+        this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView.setId(2131364460);
         paramString = new RelativeLayout.LayoutParams(-2, -2);
-        paramString.leftMargin = bgtn.a(2.0F);
+        paramString.leftMargin = bhtq.a(2.0F);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView, paramString);
       }
       if (this.jdField_f_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_f_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_f_of_type_AndroidWidgetTextView.setId(2131364370);
+        this.jdField_f_of_type_AndroidWidgetTextView.setId(2131364414);
         this.jdField_f_of_type_AndroidWidgetTextView.setGravity(48);
         this.jdField_f_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
         this.jdField_f_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
@@ -1561,25 +1553,25 @@ public class BaseChatItemLayout
       if (this.jdField_f_of_type_AndroidWidgetImageView == null)
       {
         this.jdField_f_of_type_AndroidWidgetImageView = new ImageView(getContext());
-        this.jdField_f_of_type_AndroidWidgetImageView.setId(2131380987);
+        this.jdField_f_of_type_AndroidWidgetImageView.setId(2131381167);
         paramString = new LinearLayout.LayoutParams(-2, -2);
-        paramString.leftMargin = afur.a(1.0F, getContext().getResources());
+        paramString.leftMargin = agej.a(1.0F, getContext().getResources());
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_f_of_type_AndroidWidgetImageView, paramString);
-        this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new afws(this));
+        this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new aggm(this));
       }
       if (this.jdField_e_of_type_AndroidWidgetImageView == null)
       {
         this.jdField_e_of_type_AndroidWidgetImageView = new ImageView(getContext());
-        this.jdField_e_of_type_AndroidWidgetImageView.setId(2131380990);
+        this.jdField_e_of_type_AndroidWidgetImageView.setId(2131381170);
         paramString = new LinearLayout.LayoutParams(-2, -2);
-        paramString.leftMargin = afur.a(5.0F, getContext().getResources());
+        paramString.leftMargin = agej.a(5.0F, getContext().getResources());
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_e_of_type_AndroidWidgetImageView, paramString);
-        this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(new afwt(this));
+        this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(new aggn(this));
       }
       if (this.jdField_e_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_e_of_type_AndroidWidgetTextView = new ColorNickTextView(getContext());
-        this.jdField_e_of_type_AndroidWidgetTextView.setId(2131364396);
+        this.jdField_e_of_type_AndroidWidgetTextView.setId(2131364440);
         this.jdField_e_of_type_AndroidWidgetTextView.setGravity(48);
         this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
         this.jdField_e_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
@@ -1591,25 +1583,25 @@ public class BaseChatItemLayout
       if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopMemberLevelTroopMemberNewLevelView == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqTroopTroopMemberLevelTroopMemberNewLevelView = new TroopMemberNewLevelView(getContext());
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopMemberLevelTroopMemberNewLevelView.setId(2131364418);
+        this.jdField_a_of_type_ComTencentMobileqqTroopTroopMemberLevelTroopMemberNewLevelView.setId(2131364462);
         this.jdField_a_of_type_ComTencentMobileqqTroopTroopMemberLevelTroopMemberNewLevelView.setGravity(16);
         paramString = new RelativeLayout.LayoutParams(-2, -2);
-        paramString.rightMargin = bgtn.a(2.0F);
+        paramString.rightMargin = bhtq.a(2.0F);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopTroopMemberLevelTroopMemberNewLevelView, paramString);
       }
       paramString = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       if (paramBoolean2)
       {
-        paramString.rightMargin = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getDimensionPixelSize(2131296367);
+        paramString.rightMargin = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getDimensionPixelSize(2131296371);
         paramString.leftMargin = 0;
-        paramString.addRule(0, 2131364388);
+        paramString.addRule(0, 2131364432);
         paramString.addRule(1, 0);
         if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0)
         {
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
           if (this.jdField_b_of_type_AndroidViewView != null)
           {
-            ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364397);
+            ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364441);
             if (QLog.isColorLevel()) {
               QLog.d("BubbleView", 2, " setNick mTopId = R.id.chat_item_nick_name_layout");
             }
@@ -1629,24 +1621,24 @@ public class BaseChatItemLayout
         if (paramColorStateList1 != null) {
           this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList1);
         }
-        if ((aqyf.c().jdField_a_of_type_Boolean) && (!bcnj.b()))
+        if ((arnw.c().jdField_a_of_type_Boolean) && (!bdgb.b()))
         {
-          paramBoolean1 = ((anmw)BaseActivity.sTopActivity.app.getManager(51)).jdField_c_of_type_Boolean;
+          paramBoolean1 = ((anyw)BaseActivity.sTopActivity.app.getManager(51)).jdField_c_of_type_Boolean;
           if ((paramInt3 == 0) || (paramInt3 == -100)) {
             break label1481;
           }
           if (!paramBoolean1) {
             break label1461;
           }
-          this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167123));
+          this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167133));
           label969:
           this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
           paramInt1 = 3;
           if ((paramInt3 & 0x2) != 0) {
             paramInt1 = 259;
           }
-          paramCharSequence1 = bgtv.a(paramInt1, paramInt4, paramInt5);
-          VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramCharSequence1, getResources().getDrawable(2130847054));
+          paramCharSequence1 = bhty.a(paramInt1, paramInt4, paramInt5);
+          VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramCharSequence1, getResources().getDrawable(2130847071));
           NamePlateCfgInfo.vipNamePlateExposeReport(BaseActivity.sTopActivity.app, paramInt5);
           paramCharSequence1 = new NamePlateCfgInfo(paramInt1, paramInt5);
           this.jdField_e_of_type_AndroidWidgetImageView.setTag(paramCharSequence1);
@@ -1657,7 +1649,7 @@ public class BaseChatItemLayout
         }
         paramCharSequence1 = BaseActivity.sTopActivity.app;
         label1077:
-        if ((paramCharSequence1 != null) && (((((TroopManager)paramCharSequence1.getManager(52)).jdField_d_of_type_Boolean) && (paramInt7 == 0)) || ((paramInt7 == -100) && (paramInt3 != 0) && (paramInt3 != -100) && (!bcnj.b()))))
+        if ((paramCharSequence1 != null) && (((((TroopManager)paramCharSequence1.getManager(52)).jdField_d_of_type_Boolean) && (paramInt7 == 0)) || ((paramInt7 == -100) && (paramInt3 != 0) && (paramInt3 != -100) && (!bdgb.b()))))
         {
           this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
           paramInt1 = 3;
@@ -1665,8 +1657,8 @@ public class BaseChatItemLayout
             paramInt1 = 259;
           }
           NamePlateCfgInfo.vipNamePlateExposeReport(BaseActivity.sTopActivity.app, paramInt5);
-          paramCharSequence1 = bgtv.a(paramInt1, paramInt4, paramInt5);
-          VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramCharSequence1, getResources().getDrawable(2130847054));
+          paramCharSequence1 = bhty.a(paramInt1, paramInt4, paramInt5);
+          VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramCharSequence1, getResources().getDrawable(2130847071));
           paramCharSequence1 = new NamePlateCfgInfo(paramInt1, paramInt5);
           this.jdField_e_of_type_AndroidWidgetImageView.setTag(paramCharSequence1);
           e(paramInt6);
@@ -1675,7 +1667,7 @@ public class BaseChatItemLayout
         if ((paramCharSequence1 == null) || (!paramCharSequence1.a()) || (!paramCharSequence1.b())) {
           break label1814;
         }
-        ((ColorNickTextView)this.jdField_e_of_type_AndroidWidgetTextView).setMosaicEffect(new bhyj(10));
+        ((ColorNickTextView)this.jdField_e_of_type_AndroidWidgetTextView).setMosaicEffect(new bizh(10));
         label1262:
         f();
       }
@@ -1690,8 +1682,8 @@ public class BaseChatItemLayout
         return;
         if ((this.jdField_d_of_type_AndroidWidgetTextView != null) && (this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() == 0))
         {
-          paramString.leftMargin = afur.a(4.0F, getContext().getResources());
-          paramString.addRule(1, 2131364415);
+          paramString.leftMargin = agej.a(4.0F, getContext().getResources());
+          paramString.addRule(1, 2131364459);
         }
         for (;;)
         {
@@ -1700,70 +1692,70 @@ public class BaseChatItemLayout
           break;
           if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() == 0))
           {
-            paramString.leftMargin = afur.a(2.0F, getContext().getResources());
-            paramString.addRule(1, 2131364417);
+            paramString.leftMargin = agej.a(2.0F, getContext().getResources());
+            paramString.addRule(1, 2131364461);
           }
           else if ((this.jdField_g_of_type_AndroidWidgetTextView != null) && (this.jdField_g_of_type_AndroidWidgetTextView.getVisibility() == 0))
           {
-            paramString.leftMargin = afur.a(2.0F, getContext().getResources());
-            paramString.addRule(1, 2131364389);
+            paramString.leftMargin = agej.a(2.0F, getContext().getResources());
+            paramString.addRule(1, 2131364433);
           }
           else
           {
-            paramString.leftMargin = this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296367);
-            paramString.addRule(1, 2131364388);
+            paramString.leftMargin = this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources().getDimensionPixelSize(2131296371);
+            paramString.addRule(1, 2131364432);
           }
         }
         this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
         break label875;
-        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166993));
+        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166997));
         break label969;
         paramCharSequence1 = new NamePlateCfgInfo();
         paramCharSequence1.mNamePlateId = paramInt5;
         switch (VipUtils.a(paramInt1))
         {
         default: 
-          this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166993));
+          this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166997));
           this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
           this.jdField_e_of_type_AndroidWidgetImageView.setTag(paramCharSequence1);
           break;
         case 1: 
         case 3: 
           if (paramBoolean1) {
-            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167123));
+            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167133));
           }
           for (;;)
           {
             this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
             paramCharSequence1.mVipType = 1;
             break;
-            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166993));
+            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166997));
           }
         case 2: 
           if (paramBoolean1) {
-            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167123));
+            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167133));
           }
           for (;;)
           {
             this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramColorStateList1 = bgtv.a(2, paramInt2, paramInt5);
-            VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramColorStateList1, getResources().getDrawable(2130847052));
+            paramColorStateList1 = bhty.a(2, paramInt2, paramInt5);
+            VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramColorStateList1, getResources().getDrawable(2130847069));
             paramCharSequence1.mVipType = 2;
             break;
-            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166993));
+            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166997));
           }
         case 4: 
           if (paramBoolean1) {
-            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167123));
+            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167133));
           }
           for (;;)
           {
             this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramColorStateList1 = bgtv.a(258, paramInt2, paramInt5);
-            VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramColorStateList1, getResources().getDrawable(2130847054));
+            paramColorStateList1 = bhty.a(258, paramInt2, paramInt5);
+            VipUtils.a(getResources(), this.jdField_e_of_type_AndroidWidgetImageView, paramColorStateList1, getResources().getDrawable(2130847071));
             paramCharSequence1.mVipType = 258;
             break;
-            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166993));
+            this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166997));
           }
           paramCharSequence1 = null;
           break label1077;
@@ -1808,22 +1800,22 @@ public class BaseChatItemLayout
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() < EmojiStickerManager.jdField_f_of_type_Int)
     {
-      aruy localaruy = new aruy();
+      askm localaskm = new askm();
       if (paramDrawable != null)
       {
-        localaruy.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
+        localaskm.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
         paramDrawable.setCallback(this);
       }
-      localaruy.jdField_a_of_type_Int = paramInt1;
-      localaruy.jdField_b_of_type_Int = paramInt2;
-      localaruy.jdField_c_of_type_Int = paramInt3;
-      localaruy.jdField_d_of_type_Int = paramInt4;
-      localaruy.jdField_a_of_type_Double = paramDouble;
-      localaruy.jdField_a_of_type_JavaLangString = paramString;
-      localaruy.jdField_a_of_type_Boolean = paramBoolean;
-      localaruy.jdField_a_of_type_Float = paramFloat;
-      localaruy.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo = paramStickerInfo;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaruy);
+      localaskm.jdField_a_of_type_Int = paramInt1;
+      localaskm.jdField_b_of_type_Int = paramInt2;
+      localaskm.jdField_c_of_type_Int = paramInt3;
+      localaskm.jdField_d_of_type_Int = paramInt4;
+      localaskm.jdField_a_of_type_Double = paramDouble;
+      localaskm.jdField_a_of_type_JavaLangString = paramString;
+      localaskm.jdField_a_of_type_Boolean = paramBoolean;
+      localaskm.jdField_a_of_type_Float = paramFloat;
+      localaskm.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo = paramStickerInfo;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaskm);
       return true;
     }
     return false;
@@ -1953,7 +1945,7 @@ public class BaseChatItemLayout
     if ((this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar != null) && (this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.getVisibility() == 0))
     {
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.getLayoutParams();
-      i1 = afur.a(5.0F, getContext().getResources());
+      i1 = agej.a(5.0F, getContext().getResources());
       if (paramBoolean)
       {
         localLayoutParams.addRule(11);
@@ -1970,7 +1962,7 @@ public class BaseChatItemLayout
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(11, 0);
     if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.getVisibility() != 8)) {}
-    for (localLayoutParams.leftMargin = afur.a(30.0F, getContext().getResources());; localLayoutParams.leftMargin = i1)
+    for (localLayoutParams.leftMargin = agej.a(30.0F, getContext().getResources());; localLayoutParams.leftMargin = i1)
     {
       localLayoutParams.rightMargin = 0;
       break;
@@ -1995,10 +1987,109 @@ public class BaseChatItemLayout
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        aruy localaruy = (aruy)localIterator.next();
-        localaruy.jdField_b_of_type_Int += paramInt;
+        askm localaskm = (askm)localIterator.next();
+        localaskm.jdField_b_of_type_Int += paramInt;
       }
     }
+  }
+  
+  protected void c(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.ak == 1) {}
+    int i1;
+    for (int i2 = this.al;; i2 = this.am)
+    {
+      i1 = this.jdField_a_of_type_Amcl.a(paramInt1, paramInt2);
+      if (paramInt3 == -1) {
+        this.jdField_a_of_type_Amcl.a(this.ak, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i1 + ", type=" + this.ak);
+      }
+      if (i1 != -1) {
+        break;
+      }
+      return;
+    }
+    if (i1 != i2)
+    {
+      if (this.ak == 1) {
+        if (i1 < this.al)
+        {
+          paramInt3 = this.am;
+          this.al = i1;
+        }
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i1 + ", e=" + paramInt3);
+        }
+        this.jdField_a_of_type_Amcl.a(i1, paramInt3);
+        this.jdField_a_of_type_Amcl.b(paramInt1, paramInt2);
+        f(paramInt1);
+        return;
+        if ((i1 > this.al) && (i1 < this.am))
+        {
+          paramInt3 = this.am;
+          this.al = i1;
+        }
+        else if (i1 == this.al)
+        {
+          i1 = this.al;
+          paramInt3 = this.am;
+        }
+        else if (i1 == this.am)
+        {
+          i1 = this.am - 1;
+          paramInt3 = this.am;
+        }
+        else
+        {
+          i2 = this.am;
+          this.al = this.am;
+          this.am = i1;
+          this.ak = 2;
+          this.jdField_a_of_type_Amcl.a(this.ak);
+          paramInt3 = i1;
+          i1 = i2;
+          continue;
+          if (i1 > this.am)
+          {
+            i2 = this.al;
+            this.am = i1;
+            paramInt3 = i1;
+            i1 = i2;
+          }
+          else if ((i1 < this.am) && (i1 > this.al))
+          {
+            i2 = this.al;
+            this.am = i1;
+            paramInt3 = i1;
+            i1 = i2;
+          }
+          else if (i1 == this.am)
+          {
+            i1 = this.al;
+            paramInt3 = this.am;
+          }
+          else if (i1 == this.al)
+          {
+            i1 = this.al;
+            paramInt3 = this.al + 1;
+          }
+          else
+          {
+            paramInt3 = this.al;
+            this.am = this.al;
+            this.al = i1;
+            this.ak = 1;
+            this.jdField_a_of_type_Amcl.a(this.ak);
+          }
+        }
+      }
+    }
+    f(paramInt1);
   }
   
   public boolean c()
@@ -2009,15 +2100,15 @@ public class BaseChatItemLayout
   public void d()
   {
     setPendantImageVisible(false);
-    View localView = findViewById(2131365738);
+    View localView = findViewById(2131365781);
     if ((localView != null) && (localView.getVisibility() != 8)) {
       localView.setVisibility(8);
     }
-    localView = findViewById(2131366854);
+    localView = findViewById(2131366905);
     if ((localView != null) && (localView.getVisibility() != 8)) {
       localView.setVisibility(8);
     }
-    localView = findViewById(2131366853);
+    localView = findViewById(2131366904);
     if ((localView != null) && (localView.getVisibility() != 8)) {
       localView.setVisibility(8);
     }
@@ -2085,7 +2176,7 @@ public class BaseChatItemLayout
     if (((this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Boolean)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
     {
       g();
-      this.jdField_a_of_type_Alqt.c();
+      this.jdField_a_of_type_Amcl.c();
       return true;
     }
     label100:
@@ -2104,7 +2195,7 @@ public class BaseChatItemLayout
       if (i1 >= 0)
       {
         Object localObject = getChildAt(i1);
-        if ((localObject == null) || (((View)localObject).getId() != 2131364379)) {
+        if ((localObject == null) || (((View)localObject).getId() != 2131364423)) {
           break label254;
         }
         localObject = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
@@ -2112,15 +2203,15 @@ public class BaseChatItemLayout
         int i3 = 0;
         while (paramInt2 < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          aruy localaruy = (aruy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
-          localaruy.jdField_f_of_type_Int = 255;
-          localaruy.jdField_e_of_type_Int = 0;
+          askm localaskm = (askm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
+          localaskm.jdField_f_of_type_Int = 255;
+          localaskm.jdField_e_of_type_Int = 0;
           int i2 = paramInt1;
-          if (localaruy.jdField_b_of_type_Int + localaruy.jdField_d_of_type_Int > paramInt1)
+          if (localaskm.jdField_b_of_type_Int + localaskm.jdField_d_of_type_Int > paramInt1)
           {
             i3 = 1;
-            ((RelativeLayout.LayoutParams)localObject).bottomMargin = (localaruy.jdField_b_of_type_Int + localaruy.jdField_d_of_type_Int - paramInt1);
-            i2 = localaruy.jdField_b_of_type_Int + localaruy.jdField_d_of_type_Int;
+            ((RelativeLayout.LayoutParams)localObject).bottomMargin = (localaskm.jdField_b_of_type_Int + localaskm.jdField_d_of_type_Int - paramInt1);
+            i2 = localaskm.jdField_b_of_type_Int + localaskm.jdField_d_of_type_Int;
           }
           paramInt2 += 1;
           paramInt1 = i2;
@@ -2153,29 +2244,31 @@ public class BaseChatItemLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    Object localObject = null;
     if (this.jdField_b_of_type_Boolean)
     {
       if ((paramMotionEvent.getAction() == 1) && (!this.jdField_c_of_type_Boolean))
       {
-        if (this.jdField_a_of_type_Afwv != null)
-        {
-          this.jdField_a_of_type_Afwv.a_(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-          QQToast.a(BaseApplication.getContext(), 0, anni.a(2131699794), 0).a();
+        if (this.jdField_a_of_type_Aggp == null) {
+          break label64;
         }
+        this.jdField_a_of_type_Aggp.a_(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        QQToast.a(BaseApplication.getContext(), 0, anzj.a(2131699901), 0).a();
       }
-      else {
-        return true;
-      }
-      if (BaseActivity.sTopActivity != null) {}
-      for (paramMotionEvent = BaseActivity.sTopActivity.app;; paramMotionEvent = null)
+      for (;;)
       {
-        bcst.b(paramMotionEvent, "dc00898", "", "", "0X800A5A7", "0X800A5A7", 0, 0, "8", "", "", "");
-        break;
+        return true;
+        label64:
+        paramMotionEvent = localObject;
+        if (BaseActivity.sTopActivity != null) {
+          paramMotionEvent = BaseActivity.sTopActivity.app;
+        }
+        bdll.b(paramMotionEvent, "dc00898", "", "", "0X800A5A7", "0X800A5A7", 0, 0, "8", "", "", "");
       }
     }
     if (jdField_a_of_type_Boolean)
     {
-      afud.a(this, paramMotionEvent);
+      agdv.a(this, paramMotionEvent);
       return true;
     }
     if (a(paramMotionEvent.getX(), paramMotionEvent.getY()))
@@ -2184,8 +2277,8 @@ public class BaseChatItemLayout
         if ((this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent)))
         {
           this.jdField_j_of_type_Boolean = true;
-          if (this.jdField_a_of_type_Aruz != null) {
-            this.jdField_a_of_type_Aruz.a(this);
+          if (this.jdField_a_of_type_Askn != null) {
+            this.jdField_a_of_type_Askn.a(this);
           }
         }
       }
@@ -2203,134 +2296,8 @@ public class BaseChatItemLayout
         }
       }
     }
-    if ((this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Boolean))
-    {
-      int i1 = paramMotionEvent.getAction();
-      int i2;
-      if (!this.jdField_f_of_type_Boolean)
-      {
-        i2 = a(paramMotionEvent.getX(), paramMotionEvent.getY());
-        if ((i2 != -1) && (i1 == 0))
-        {
-          g();
-          this.jdField_f_of_type_Boolean = true;
-          this.ak = i2;
-          this.al = this.jdField_a_of_type_Alqt.b();
-          this.am = this.jdField_a_of_type_Alqt.c();
-          if (paramMotionEvent.getSource() != -1) {
-            this.jdField_a_of_type_Alqt.a(this.ak, false);
-          }
-          if (this.jdField_a_of_type_Alqt.a()) {
-            this.jdField_a_of_type_Alqt.b();
-          }
-          return true;
-        }
-      }
-      else
-      {
-        g();
-        if ((i1 == 1) || (i1 == 3))
-        {
-          this.jdField_f_of_type_Boolean = false;
-          this.ah = -1;
-          this.ai = -1;
-          this.jdField_a_of_type_Alqt.a(-1, true);
-          this.jdField_a_of_type_Alqt.a();
-          if (i1 == 1)
-          {
-            if (paramMotionEvent.getSource() != -1) {
-              break label462;
-            }
-            i1 = 2;
-            bcst.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
-          }
-        }
-        label462:
-        while (i1 != 2) {
-          for (;;)
-          {
-            return true;
-            i1 = 1;
-          }
-        }
-        int i3 = (int)paramMotionEvent.getRawX();
-        i2 = (int)paramMotionEvent.getRawY();
-        int i4;
-        int i5;
-        int i6;
-        int i7;
-        int i8;
-        int i9;
-        int i10;
-        if (this.ak == 1)
-        {
-          i4 = this.ad;
-          i5 = jdField_a_of_type_Int;
-          i6 = this.ad;
-          i7 = jdField_a_of_type_Int;
-          i8 = this.ae;
-          i9 = ac;
-          i10 = jdField_a_of_type_Int;
-          int i11 = this.ae;
-          int i12 = ac;
-          i1 = i2;
-          if (i3 >= i4 - i5 * 3)
-          {
-            i1 = i2;
-            if (i3 <= i6 + i7 * 3)
-            {
-              i1 = i2;
-              if (i2 >= i8 - i9 - i10 * 2)
-              {
-                i1 = i2;
-                if (i2 <= i11 - i12)
-                {
-                  i1 = i2;
-                  if (this.jdField_d_of_type_Boolean) {
-                    i1 = i2 + jdField_a_of_type_Int * 2;
-                  }
-                }
-              }
-            }
-          }
-        }
-        for (;;)
-        {
-          c(i3, i1, paramMotionEvent.getSource());
-          break;
-          i1 = i2;
-          if (this.ak == 2)
-          {
-            i4 = this.af;
-            i5 = jdField_a_of_type_Int;
-            i6 = this.af;
-            i7 = jdField_a_of_type_Int;
-            i8 = this.ag;
-            i9 = this.ag;
-            i10 = jdField_a_of_type_Int;
-            i1 = i2;
-            if (i3 >= i4 - i5 * 3)
-            {
-              i1 = i2;
-              if (i3 <= i6 + i7 * 3)
-              {
-                i1 = i2;
-                if (i2 >= i8)
-                {
-                  i1 = i2;
-                  if (i2 <= i9 + i10 * 2)
-                  {
-                    i1 = i2;
-                    if (this.jdField_e_of_type_Boolean) {
-                      i1 = i2 - jdField_a_of_type_Int * 2;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    if (((this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Boolean)) && (a(paramMotionEvent))) {
+      return true;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -2346,17 +2313,17 @@ public class BaseChatItemLayout
       }
       addView(paramView);
       this.jdField_b_of_type_AndroidViewView = paramView;
-      this.jdField_b_of_type_AndroidViewView.setId(2131364379);
+      this.jdField_b_of_type_AndroidViewView.setId(2131364423);
       if (!(paramView instanceof HorizontalListView))
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-        int i1 = paramView.getContext().getResources().getDimensionPixelSize(2131296331);
+        int i1 = paramView.getContext().getResources().getDimensionPixelSize(2131296335);
         localLayoutParams.leftMargin = i1;
         localLayoutParams.rightMargin = i1;
         if (this.X != 1) {
           break label197;
         }
-        localLayoutParams.addRule(0, 2131364388);
+        localLayoutParams.addRule(0, 2131364432);
         localLayoutParams.addRule(1, 0);
       }
     }
@@ -2364,7 +2331,7 @@ public class BaseChatItemLayout
     paramView = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
     if ((this.jdField_e_of_type_AndroidWidgetTextView != null) && (this.jdField_e_of_type_AndroidWidgetTextView.getVisibility() == 0))
     {
-      paramView.addRule(3, 2131364397);
+      paramView.addRule(3, 2131364441);
       paramView.topMargin = 0;
       if (QLog.isColorLevel()) {
         QLog.d("BubbleView", 2, " setBubbleView mTopId = R.id.chat_item_nick_name_layout, bubbleView = " + this.jdField_b_of_type_AndroidViewView.isPressed());
@@ -2377,7 +2344,7 @@ public class BaseChatItemLayout
       return;
       addView(paramView, 0);
       break;
-      localLayoutParams.addRule(1, 2131364388);
+      localLayoutParams.addRule(1, 2131364432);
       localLayoutParams.addRule(0, 0);
       break label107;
       paramView.addRule(3, this.Y);
@@ -2392,10 +2359,10 @@ public class BaseChatItemLayout
       if (this.jdField_a_of_type_AndroidWidgetCheckBox == null)
       {
         this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839088);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364405);
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839096);
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364449);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-        paramBaseChatItemLayout = new RelativeLayout.LayoutParams(afur.a(24.0F, getContext().getResources()), afur.a(24.0F, getContext().getResources()));
+        paramBaseChatItemLayout = new RelativeLayout.LayoutParams(agej.a(24.0F, getContext().getResources()), agej.a(24.0F, getContext().getResources()));
         paramBaseChatItemLayout.topMargin = x;
         paramBaseChatItemLayout.addRule(9);
         paramBaseChatItemLayout.addRule(3, this.Y);
@@ -2418,14 +2385,14 @@ public class BaseChatItemLayout
       for (;;)
       {
         return;
-        paramBaseChatItemLayout = new RelativeLayout.LayoutParams(afur.a(24.0F, getContext().getResources()), afur.a(24.0F, getContext().getResources()));
+        paramBaseChatItemLayout = new RelativeLayout.LayoutParams(agej.a(24.0F, getContext().getResources()), agej.a(24.0F, getContext().getResources()));
         paramBaseChatItemLayout.topMargin = x;
         paramBaseChatItemLayout.addRule(9);
         paramBaseChatItemLayout.addRule(3, this.Y);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams(paramBaseChatItemLayout);
       }
       this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      if (awwm.a().a(paramChatMessage))
+      if (axpf.a().a(paramChatMessage))
       {
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
         return;
@@ -2450,15 +2417,15 @@ public class BaseChatItemLayout
     if (this.jdField_c_of_type_AndroidWidgetImageView == null)
     {
       this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_c_of_type_AndroidWidgetImageView.setId(2131364386);
-      this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131689891));
+      this.jdField_c_of_type_AndroidWidgetImageView.setId(2131364430);
+      this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131689897));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.bottomMargin = afur.a(16.0F, getContext().getResources());
-      localLayoutParams.addRule(8, 2131364379);
+      localLayoutParams.bottomMargin = agej.a(16.0F, getContext().getResources());
+      localLayoutParams.addRule(8, 2131364423);
       if (this.X != 1) {
         break label157;
       }
-      localLayoutParams.addRule(0, 2131364379);
+      localLayoutParams.addRule(0, 2131364423);
       localLayoutParams.addRule(1, 0);
     }
     for (;;)
@@ -2470,7 +2437,7 @@ public class BaseChatItemLayout
       this.jdField_c_of_type_AndroidWidgetImageView.setTag(paramObject);
       return;
       label157:
-      localLayoutParams.addRule(1, 2131364379);
+      localLayoutParams.addRule(1, 2131364423);
       localLayoutParams.addRule(0, 0);
     }
   }
@@ -2478,7 +2445,7 @@ public class BaseChatItemLayout
   public void setFailedIconVisable(boolean paramBoolean, View.OnClickListener paramOnClickListener)
   {
     if (paramBoolean) {
-      setFailedIconResource(2130838259, paramOnClickListener);
+      setFailedIconResource(2130838269, paramOnClickListener);
     }
     for (;;)
     {
@@ -2500,10 +2467,10 @@ public class BaseChatItemLayout
       if (this.jdField_b_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_b_of_type_AndroidWidgetTextView.setId(2131364387);
-        int i1 = afur.a(12.0F, getContext().getResources());
-        int i2 = afur.a(5.0F, getContext().getResources());
-        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130844771);
+        this.jdField_b_of_type_AndroidWidgetTextView.setId(2131364431);
+        int i1 = agej.a(12.0F, getContext().getResources());
+        int i2 = agej.a(5.0F, getContext().getResources());
+        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130844785);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
         if (paramColorStateList != null) {
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
@@ -2515,12 +2482,12 @@ public class BaseChatItemLayout
         {
           paramInt = -2;
           paramColorStateList = new RelativeLayout.LayoutParams(paramInt, -2);
-          paramColorStateList.bottomMargin = getContext().getResources().getDimensionPixelOffset(2131296403);
-          paramInt = afur.a(45.0F, getContext().getResources());
+          paramColorStateList.bottomMargin = getContext().getResources().getDimensionPixelOffset(2131296407);
+          paramInt = agej.a(45.0F, getContext().getResources());
           paramColorStateList.leftMargin = paramInt;
           paramColorStateList.rightMargin = paramInt;
           paramColorStateList.addRule(14);
-          paramColorStateList.addRule(3, 2131364410);
+          paramColorStateList.addRule(3, 2131364454);
           addView(this.jdField_b_of_type_AndroidWidgetTextView, paramColorStateList);
         }
       }
@@ -2532,9 +2499,9 @@ public class BaseChatItemLayout
           this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
           this.jdField_b_of_type_AndroidWidgetTextView.setTag(paramCharSequence);
         }
-        d(2131364387);
+        d(2131364431);
         label282:
-        if ((this.Y != 2131364410) || (this.jdField_a_of_type_AndroidWidgetTextView == null)) {
+        if ((this.Y != 2131364454) || (this.jdField_a_of_type_AndroidWidgetTextView == null)) {
           break label409;
         }
         paramCharSequence = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
@@ -2546,24 +2513,24 @@ public class BaseChatItemLayout
       }
     }
     label409:
-    while ((this.Y != 2131364387) || (this.jdField_b_of_type_AndroidWidgetTextView == null))
+    while ((this.Y != 2131364431) || (this.jdField_b_of_type_AndroidWidgetTextView == null))
     {
       return;
-      paramInt = afur.a(paramInt, getContext().getResources());
+      paramInt = agej.a(paramInt, getContext().getResources());
       break;
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
         break label282;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0)) {}
-      for (paramInt = 2131364410;; paramInt = 0)
+      for (paramInt = 2131364454;; paramInt = 0)
       {
         d(paramInt);
         break;
       }
     }
     paramChatMessage = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-    paramChatMessage.topMargin = afur.a(10.0F, getContext().getResources());
+    paramChatMessage.topMargin = agej.a(10.0F, getContext().getResources());
     this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(paramChatMessage);
   }
   
@@ -2604,17 +2571,17 @@ public class BaseChatItemLayout
   
   public void setHeaderIcon(Object paramObject)
   {
-    int i1 = getContext().getResources().getDimensionPixelSize(2131296361);
-    int i2 = afur.a(5.0F, getContext().getResources());
+    int i1 = getContext().getResources().getDimensionPixelSize(2131296365);
+    int i2 = agej.a(5.0F, getContext().getResources());
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar = new VasAvatar(getContext());
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setId(2131364388);
+      this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setId(2131364432);
       this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setScaleType(ImageView.ScaleType.FIT_XY);
       localLayoutParams = new RelativeLayout.LayoutParams(R, R);
       localLayoutParams.topMargin = i1;
-      localLayoutParams.addRule(3, 2131364387);
+      localLayoutParams.addRule(3, 2131364431);
       if (this.X == 1)
       {
         localLayoutParams.addRule(11);
@@ -2640,14 +2607,14 @@ public class BaseChatItemLayout
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(11, 0);
       if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.getVisibility() != 8)) {}
-      for (localLayoutParams.leftMargin = afur.a(30.0F, getContext().getResources());; localLayoutParams.leftMargin = i2)
+      for (localLayoutParams.leftMargin = agej.a(30.0F, getContext().getResources());; localLayoutParams.leftMargin = i2)
       {
         localLayoutParams.rightMargin = 0;
         break;
       }
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.getLayoutParams();
       localLayoutParams.topMargin = i1;
-      localLayoutParams.addRule(3, 2131364387);
+      localLayoutParams.addRule(3, 2131364431);
       if (this.X == 1)
       {
         localLayoutParams.addRule(11);
@@ -2660,13 +2627,13 @@ public class BaseChatItemLayout
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(11, 0);
       if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.getVisibility() != 8)) {}
-      for (localLayoutParams.leftMargin = afur.a(30.0F, getContext().getResources());; localLayoutParams.leftMargin = i2)
+      for (localLayoutParams.leftMargin = agej.a(30.0F, getContext().getResources());; localLayoutParams.leftMargin = i2)
       {
         localLayoutParams.rightMargin = 0;
         break;
       }
       label407:
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setLoader(null, (bhbe)paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setLoader(null, (bibk)paramObject);
     }
   }
   
@@ -2721,9 +2688,9 @@ public class BaseChatItemLayout
     }
   }
   
-  public void setMiniAioShieldItemTouchListener(afwv paramafwv)
+  public void setMiniAioShieldItemTouchListener(aggp paramaggp)
   {
-    this.jdField_a_of_type_Afwv = paramafwv;
+    this.jdField_a_of_type_Aggp = paramaggp;
   }
   
   public void setNetIconVisible(boolean paramBoolean) {}
@@ -2733,10 +2700,10 @@ public class BaseChatItemLayout
     if (this.jdField_a_of_type_ComTencentImageURLImageView == null)
     {
       this.jdField_a_of_type_ComTencentImageURLImageView = new MosaicURLImageView(getContext());
-      this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131364399);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131364443);
       this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       localLayoutParams = new RelativeLayout.LayoutParams(S, T);
-      localLayoutParams.addRule(3, 2131364387);
+      localLayoutParams.addRule(3, 2131364431);
       localLayoutParams.topMargin = U;
       if (this.X == 1)
       {
@@ -2762,14 +2729,14 @@ public class BaseChatItemLayout
         localLayoutParams.addRule(9);
         localLayoutParams.addRule(11, 0);
         if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.getVisibility() != 8)) {
-          localLayoutParams.leftMargin = afur.a(25.0F, getContext().getResources());
+          localLayoutParams.leftMargin = agej.a(25.0F, getContext().getResources());
         } else {
           localLayoutParams.leftMargin = 0;
         }
       }
     }
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    localLayoutParams.addRule(3, 2131364387);
+    localLayoutParams.addRule(3, 2131364431);
     if (this.X == 1)
     {
       localLayoutParams.addRule(11);
@@ -2784,7 +2751,7 @@ public class BaseChatItemLayout
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(11, 0);
       if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.getVisibility() != 8)) {
-        localLayoutParams.leftMargin = afur.a(25.0F, getContext().getResources());
+        localLayoutParams.leftMargin = agej.a(25.0F, getContext().getResources());
       } else {
         localLayoutParams.leftMargin = 0;
       }
@@ -2815,17 +2782,17 @@ public class BaseChatItemLayout
       if (this.jdField_a_of_type_AndroidWidgetProgressBar == null)
       {
         this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(getContext(), null, 0);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setId(2131364406);
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setId(2131364450);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839402));
-        i1 = afur.a(16.0F, getContext().getResources());
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839410));
+        i1 = agej.a(16.0F, getContext().getResources());
         localLayoutParams = new RelativeLayout.LayoutParams(i1, i1);
-        localLayoutParams.bottomMargin = afur.a(18.0F, getContext().getResources());
-        localLayoutParams.addRule(8, 2131364379);
+        localLayoutParams.bottomMargin = agej.a(18.0F, getContext().getResources());
+        localLayoutParams.addRule(8, 2131364423);
         if (this.X == 1)
         {
-          localLayoutParams.rightMargin = afur.a(4.0F, getContext().getResources());
-          localLayoutParams.addRule(0, 2131364379);
+          localLayoutParams.rightMargin = agej.a(4.0F, getContext().getResources());
+          localLayoutParams.addRule(0, 2131364423);
           localLayoutParams.addRule(1, 0);
           addView(this.jdField_a_of_type_AndroidWidgetProgressBar, localLayoutParams);
         }
@@ -2841,8 +2808,8 @@ public class BaseChatItemLayout
         int i1;
         RelativeLayout.LayoutParams localLayoutParams;
         return;
-        localLayoutParams.leftMargin = afur.a(4.0F, getContext().getResources());
-        localLayoutParams.addRule(1, 2131364379);
+        localLayoutParams.leftMargin = agej.a(4.0F, getContext().getResources());
+        localLayoutParams.addRule(1, 2131364423);
         localLayoutParams.addRule(0, 0);
       }
     }
@@ -2864,8 +2831,8 @@ public class BaseChatItemLayout
           i2 = p;
           i1 = o;
         }
-        paramContext.addRule(3, 2131364379);
-        paramContext.addRule(5, 2131364379);
+        paramContext.addRule(3, 2131364423);
+        paramContext.addRule(5, 2131364423);
         this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView.setPadding(i2, 0, i1, 0);
         addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView, paramContext);
       }
@@ -2901,24 +2868,24 @@ public class BaseChatItemLayout
       if (this.jdField_h_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_h_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_h_of_type_AndroidWidgetTextView.setId(2131364408);
+        this.jdField_h_of_type_AndroidWidgetTextView.setId(2131364452);
         if (paramBoolean2)
         {
-          this.jdField_h_of_type_AndroidWidgetTextView.setBackgroundResource(2130849720);
+          this.jdField_h_of_type_AndroidWidgetTextView.setBackgroundResource(2130849731);
           this.jdField_h_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
           this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(-1);
           this.jdField_h_of_type_AndroidWidgetTextView.setGravity(17);
           this.jdField_h_of_type_AndroidWidgetTextView.setPadding(24, 0, 24, 0);
           localObject = new RelativeLayout.LayoutParams(-2, -2);
-          ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364379);
-          ((RelativeLayout.LayoutParams)localObject).addRule(5, 2131364379);
+          ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364423);
+          ((RelativeLayout.LayoutParams)localObject).addRule(5, 2131364423);
           ((RelativeLayout.LayoutParams)localObject).addRule(7, 0);
           ((RelativeLayout.LayoutParams)localObject).bottomMargin = jdField_i_of_type_Int;
           addView(this.jdField_h_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
           localObject = new View(getContext());
           localLayoutParams = new RelativeLayout.LayoutParams(0, 0);
-          localLayoutParams.addRule(3, 2131364408);
-          localLayoutParams.addRule(5, 2131364379);
+          localLayoutParams.addRule(3, 2131364452);
+          localLayoutParams.addRule(5, 2131364423);
           addView((View)localObject, localLayoutParams);
         }
       }
@@ -2943,7 +2910,7 @@ public class BaseChatItemLayout
         Object localObject;
         RelativeLayout.LayoutParams localLayoutParams;
         return;
-        this.jdField_h_of_type_AndroidWidgetTextView.setBackgroundResource(2130841560);
+        this.jdField_h_of_type_AndroidWidgetTextView.setBackgroundResource(2130841570);
         continue;
         paramCharSequence.leftMargin = jdField_j_of_type_Int;
       }
@@ -2964,8 +2931,8 @@ public class BaseChatItemLayout
         if (this.jdField_a_of_type_AndroidWidgetTextView == null)
         {
           this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-          this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364410);
-          i1 = afur.a(14.0F, getContext().getResources());
+          this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364454);
+          i1 = agej.a(14.0F, getContext().getResources());
           this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
           this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i1, 0, i1, 0);
           this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
@@ -2991,7 +2958,7 @@ public class BaseChatItemLayout
             break label310;
           }
         }
-        for (i1 = 2131364387;; i1 = 2131364410)
+        for (i1 = 2131364431;; i1 = 2131364454)
         {
           d(i1);
           paramColorStateList = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
@@ -3000,9 +2967,9 @@ public class BaseChatItemLayout
             i1 = N + P;
           }
           paramColorStateList.topMargin = i1;
-          agau.a(null, paramChatMessage);
+          agko.a(null, paramChatMessage);
           return;
-          paramColorStateList = bgsu.a(getContext(), 3, l1 * 1000L);
+          paramColorStateList = bhsw.a(getContext(), 3, l1 * 1000L);
           this.jdField_a_of_type_AndroidWidgetTextView.setText(paramColorStateList);
           break;
         }
@@ -3010,7 +2977,7 @@ public class BaseChatItemLayout
     } while (this.jdField_a_of_type_AndroidWidgetTextView == null);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)) {}
-    for (int i1 = 2131364387;; i1 = 0)
+    for (int i1 = 2131364431;; i1 = 0)
     {
       d(i1);
       return;
@@ -3026,10 +2993,10 @@ public class BaseChatItemLayout
       if (this.jdField_c_of_type_AndroidWidgetTextView == null)
       {
         this.jdField_c_of_type_AndroidWidgetTextView = new ColorNickTextView(getContext());
-        this.jdField_c_of_type_AndroidWidgetTextView.setId(2131364417);
+        this.jdField_c_of_type_AndroidWidgetTextView.setId(2131364461);
         this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
         this.jdField_c_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-        this.jdField_c_of_type_AndroidWidgetTextView.setPadding(afur.a(4.0F, getContext().getResources()), 0, afur.a(4.0F, getContext().getResources()), 0);
+        this.jdField_c_of_type_AndroidWidgetTextView.setPadding(agej.a(4.0F, getContext().getResources()), 0, agej.a(4.0F, getContext().getResources()), 0);
         this.jdField_c_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
         this.jdField_c_of_type_AndroidWidgetTextView.setSingleLine();
         this.jdField_c_of_type_AndroidWidgetTextView.setGravity(17);
@@ -3040,7 +3007,7 @@ public class BaseChatItemLayout
         ((RelativeLayout.LayoutParams)localObject).addRule(3, this.Y);
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
-          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364397);
+          ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).addRule(3, 2131364441);
           if (QLog.isColorLevel()) {
             QLog.d("BubbleView", 2, " setTroopMemberLevel mTopId = R.id.chat_item_nick_name_layout");
           }
@@ -3050,13 +3017,13 @@ public class BaseChatItemLayout
       localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
       if ((paramBoolean2) || (b()))
       {
-        ((RelativeLayout.LayoutParams)localObject).rightMargin = afur.a(2.0F, getContext().getResources());
-        ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131364397);
+        ((RelativeLayout.LayoutParams)localObject).rightMargin = agej.a(2.0F, getContext().getResources());
+        ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131364441);
         ((RelativeLayout.LayoutParams)localObject).addRule(1, 0);
         if (jdField_a_of_type_Boolean)
         {
           ((RelativeLayout.LayoutParams)localObject).leftMargin = Q;
-          ((RelativeLayout.LayoutParams)localObject).addRule(4, 2131364396);
+          ((RelativeLayout.LayoutParams)localObject).addRule(4, 2131364440);
           this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramInt2);
           if (paramInt1 != -1)
           {
@@ -3074,7 +3041,7 @@ public class BaseChatItemLayout
       localObject = paramQQAppInterface;
       if (paramQQAppInterface == null)
       {
-        paramQQAppInterface = bfup.a(getResources(), paramInt1);
+        paramQQAppInterface = bguq.a(getResources(), paramInt1);
         localObject = paramQQAppInterface;
         if (localTroopManager != null)
         {
@@ -3083,15 +3050,15 @@ public class BaseChatItemLayout
         }
       }
       this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
-      this.jdField_c_of_type_AndroidWidgetTextView.setPadding(afur.a(4.0F, getContext().getResources()), 0, afur.a(4.0F, getContext().getResources()), 0);
+      this.jdField_c_of_type_AndroidWidgetTextView.setPadding(agej.a(4.0F, getContext().getResources()), 0, agej.a(4.0F, getContext().getResources()), 0);
       if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 0) {
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       }
       this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(anni.a(2131699768) + paramString);
+      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(anzj.a(2131699875) + paramString);
       paramQQAppInterface = AIOLongShotHelper.a();
       if ((paramQQAppInterface != null) && (paramQQAppInterface.a()) && (paramQQAppInterface.b())) {
-        ((ColorNickTextView)this.jdField_c_of_type_AndroidWidgetTextView).setMosaicEffect(new bhyj(10));
+        ((ColorNickTextView)this.jdField_c_of_type_AndroidWidgetTextView).setMosaicEffect(new bizh(10));
       }
       do
       {
@@ -3102,7 +3069,7 @@ public class BaseChatItemLayout
           break;
           ((RelativeLayout.LayoutParams)localObject).leftMargin = E;
           ((RelativeLayout.LayoutParams)localObject).rightMargin = 0;
-          ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131364388);
+          ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131364432);
           ((RelativeLayout.LayoutParams)localObject).addRule(0, 0);
           break;
           ((ColorNickTextView)this.jdField_c_of_type_AndroidWidgetTextView).setMosaicEffect(null);
@@ -3129,12 +3096,12 @@ public class BaseChatItemLayout
       return;
       this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(getContext());
       paramOnClickListener = new RelativeLayout.LayoutParams(-2, -2);
-      paramOnClickListener.topMargin = afur.a(8.0F, getContext().getResources());
-      paramOnClickListener.leftMargin = afur.a(-3.0F, getContext().getResources());
-      paramOnClickListener.addRule(6, 2131364379);
-      paramOnClickListener.addRule(1, 2131364379);
+      paramOnClickListener.topMargin = agej.a(8.0F, getContext().getResources());
+      paramOnClickListener.leftMargin = agej.a(-3.0F, getContext().getResources());
+      paramOnClickListener.addRule(6, 2131364423);
+      paramOnClickListener.addRule(1, 2131364423);
       addView(this.jdField_d_of_type_AndroidWidgetImageView, paramOnClickListener);
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130850389);
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130850401);
       return;
     }
     this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(null);

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aevv;
-import afur;
+import afez;
+import agej;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,11 +16,11 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import asal;
-import asbx;
-import asbz;
-import bcst;
-import bkil;
+import aspz;
+import asrl;
+import asrn;
+import bdll;
+import bljo;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.emotionintegrate.EmotionGallery;
@@ -37,14 +37,14 @@ import java.util.Iterator;
 
 public class EmotionPreviewFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, asbz, bkil
+  implements View.OnClickListener, asrn, bljo
 {
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private asal jdField_a_of_type_Asal;
-  private asbx jdField_a_of_type_Asbx;
+  private aspz jdField_a_of_type_Aspz;
+  private asrl jdField_a_of_type_Asrl;
   private EmotionGallery jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery;
   private NumberCheckBox jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
@@ -100,7 +100,7 @@ public class EmotionPreviewFragment
   private void a()
   {
     this.jdField_a_of_type_JavaUtilArrayList = getActivity().getIntent().getParcelableArrayListExtra("preview_data");
-    this.jdField_a_of_type_Asal.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Aspz.a(this.jdField_a_of_type_JavaUtilArrayList);
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
@@ -108,13 +108,13 @@ public class EmotionPreviewFragment
       while (localIterator.hasNext()) {
         localArrayList.add(((EmotionPreviewInfo)localIterator.next()).jdField_a_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_Asbx = new asbx(getActivity(), this);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Asbx);
+      this.jdField_a_of_type_Asrl = new asrl(getActivity(), this);
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Asrl);
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this.jdField_a_of_type_Asbx);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(afur.a(14.0F, getResources()));
-      this.jdField_a_of_type_Asbx.a(localArrayList);
-      this.jdField_a_of_type_Asbx.a(((EmotionPreviewInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this.jdField_a_of_type_Asrl);
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(agej.a(14.0F, getResources()));
+      this.jdField_a_of_type_Asrl.a(localArrayList);
+      this.jdField_a_of_type_Asrl.a(((EmotionPreviewInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString);
     }
     c();
     b(1);
@@ -148,7 +148,7 @@ public class EmotionPreviewFragment
         localArrayList.add(localEmotionPreviewInfo);
       }
       paramIntent.putParcelableArrayListExtra("preview_data", localArrayList);
-      aevv.a(paramActivity, paramIntent, PublicFragmentActivity.class, EmotionPreviewFragment.class, 100015);
+      afez.a(paramActivity, paramIntent, PublicFragmentActivity.class, EmotionPreviewFragment.class, 100015);
     }
   }
   
@@ -156,7 +156,7 @@ public class EmotionPreviewFragment
   {
     Intent localIntent = getActivity().getIntent();
     localIntent.setClass(getActivity(), NewPhotoListActivity.class);
-    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_Asbx.a());
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_Asrl.a());
     localIntent.addFlags(603979776);
     startActivity(localIntent);
     getActivity().finish();
@@ -176,7 +176,7 @@ public class EmotionPreviewFragment
     if (this.jdField_a_of_type_AndroidWidgetButton != null)
     {
       i = a();
-      localStringBuffer = new StringBuffer(getResources().getString(2131694304));
+      localStringBuffer = new StringBuffer(getResources().getString(2131694346));
       if (i < 1) {
         this.jdField_a_of_type_AndroidWidgetButton.setText(localStringBuffer.toString());
       }
@@ -195,9 +195,9 @@ public class EmotionPreviewFragment
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Asbx != null)
+    if (this.jdField_a_of_type_Asrl != null)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_Asbx.a();
+      ArrayList localArrayList = this.jdField_a_of_type_Asrl.a();
       if ((localArrayList != null) && (paramInt < localArrayList.size()))
       {
         int i = a((String)localArrayList.get(paramInt));
@@ -215,29 +215,29 @@ public class EmotionPreviewFragment
   
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377184));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377324));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366867);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131378796));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366918);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131378956));
     ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery = ((EmotionGallery)paramView.findViewById(2131367288));
-    this.jdField_a_of_type_Asal = new asal(getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setAdapter(this.jdField_a_of_type_Asal);
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSpacing(getActivity().getResources().getDimensionPixelSize(2131297079));
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery = ((EmotionGallery)paramView.findViewById(2131367342));
+    this.jdField_a_of_type_Aspz = new aspz(getActivity());
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setAdapter(this.jdField_a_of_type_Aspz);
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSpacing(getActivity().getResources().getDimensionPixelSize(2131297091));
     this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setOnItemSelectedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setOnNoBlankListener(this.jdField_a_of_type_Asal);
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setOnNoBlankListener(this.jdField_a_of_type_Aspz);
     this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.b(false);
     this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.a(false);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131366868));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131366919));
     a();
   }
   
   protected void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368947));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368994));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377140));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131377161));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369042));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369088));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377280));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131377301));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
   }
@@ -264,8 +264,8 @@ public class EmotionPreviewFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131368947: 
-    case 2131377140: 
+    case 2131369042: 
+    case 2131377280: 
       EmotionPreviewInfo localEmotionPreviewInfo;
       boolean bool;
       do
@@ -288,9 +288,9 @@ public class EmotionPreviewFragment
         localEmotionPreviewInfo.jdField_a_of_type_Boolean = bool;
         this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(localEmotionPreviewInfo.jdField_a_of_type_Boolean);
         c();
-      } while (this.jdField_a_of_type_Asbx == null);
-      this.jdField_a_of_type_Asbx.a(localEmotionPreviewInfo.jdField_a_of_type_JavaLangString);
-      localArrayList = this.jdField_a_of_type_Asbx.a();
+      } while (this.jdField_a_of_type_Asrl == null);
+      this.jdField_a_of_type_Asrl.a(localEmotionPreviewInfo.jdField_a_of_type_JavaLangString);
+      localArrayList = this.jdField_a_of_type_Asrl.a();
       if (localEmotionPreviewInfo.jdField_a_of_type_Boolean) {
         localArrayList.add(localEmotionPreviewInfo.jdField_a_of_type_JavaLangString);
       }
@@ -304,7 +304,7 @@ public class EmotionPreviewFragment
           }
           this.jdField_a_of_type_AndroidViewView.setVisibility(8);
           this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-          this.jdField_a_of_type_Asbx.a(localArrayList);
+          this.jdField_a_of_type_Asrl.a(localArrayList);
           break;
           bool = false;
         }
@@ -324,8 +324,8 @@ public class EmotionPreviewFragment
       }
     }
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_Asbx != null) {
-      localArrayList = this.jdField_a_of_type_Asbx.a();
+    if (this.jdField_a_of_type_Asrl != null) {
+      localArrayList = this.jdField_a_of_type_Asrl.a();
     }
     for (;;)
     {
@@ -340,7 +340,7 @@ public class EmotionPreviewFragment
           }
         }
       }
-      bcst.b(null, "dc00898", "", "", "0X800A6DE", "0X800A6DE", 0, 0, String.valueOf(localArrayList.size()), "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X800A6DE", "0X800A6DE", 0, 0, String.valueOf(localArrayList.size()), "", "", "");
       Object localObject = new Intent();
       ((Intent)localObject).putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
       getActivity().setResult(-1, (Intent)localObject);
@@ -361,18 +361,18 @@ public class EmotionPreviewFragment
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     int i;
-    if ((this.jdField_a_of_type_Asbx != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    if ((this.jdField_a_of_type_Asrl != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
       paramAdapterView = (EmotionPreviewInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (paramAdapterView.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Asbx.a())) {
+      if (paramAdapterView.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Asrl.a())) {
         break label132;
       }
       i = 1;
-      this.jdField_a_of_type_Asbx.a(paramAdapterView.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Asrl.a(paramAdapterView.jdField_a_of_type_JavaLangString);
       if (i != 0) {
-        this.jdField_a_of_type_Asbx.notifyDataSetChanged();
+        this.jdField_a_of_type_Asrl.notifyDataSetChanged();
       }
-      paramView = this.jdField_a_of_type_Asbx.a();
+      paramView = this.jdField_a_of_type_Asrl.a();
       if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView.jdField_a_of_type_JavaLangString)))
       {
         i = paramView.indexOf(paramAdapterView.jdField_a_of_type_JavaLangString);

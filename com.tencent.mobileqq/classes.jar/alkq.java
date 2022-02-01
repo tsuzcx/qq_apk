@@ -1,30 +1,39 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class alkq
-  implements alku
+  implements View.OnClickListener
 {
-  alkq(alko paramalko) {}
+  alkq(aljw paramaljw) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
-    }
-    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      do
-      {
-        return;
-        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      } while (localPtvTemplateInfo == null);
-      this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPositionFromLeftOrRight(paramInt, (int)(-this.a.jdField_a_of_type_Int * (0.75F + this.a.c - 1.0F)), 400);
-    } while (localPtvTemplateInfo.usable);
-    alio.b("", "0X8006A1A");
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        this.a.jdField_b_of_type_Boolean = true;
+      }
+      this.a.c();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent(aljw.a(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("appType", this.a.jdField_b_of_type_Int);
+      localIntent.putExtra("subappid", this.a.a);
+      localIntent.putExtra("clientType", this.a.jdField_b_of_type_Long);
+      aljw.a(this.a).startActivity(localIntent);
+      bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        bdll.b(aljw.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

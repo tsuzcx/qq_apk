@@ -1,102 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class aqro
-  extends aqkz<aqrp>
 {
-  @NonNull
-  public aqrp a(int paramInt)
+  private float jdField_a_of_type_Float;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
+  private View jdField_a_of_type_AndroidViewView;
+  private float b;
+  
+  public aqro(View paramView)
   {
-    return new aqrp();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
   
-  @Nullable
-  public aqrp a(aqlg[] paramArrayOfaqlg)
+  private void b()
   {
-    aqrp localaqrp = new aqrp();
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfaqlg.length);
-    }
-    if (paramArrayOfaqlg.length > 0)
+    this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_AndroidViewView.setPivotY(this.b);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 0.0F });
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
     {
-      paramArrayOfaqlg = paramArrayOfaqlg[0];
-      localaqrp.jdField_a_of_type_Int = paramArrayOfaqlg.jdField_a_of_type_Int;
-      localaqrp.jdField_a_of_type_JavaLangString = paramArrayOfaqlg.jdField_a_of_type_JavaLangString;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onParsed taskId = " + localaqrp.jdField_a_of_type_Int + " | content = " + localaqrp.jdField_a_of_type_JavaLangString);
-    }
-    return localaqrp;
-  }
-  
-  public void a(aqrp paramaqrp)
-  {
-    if ((paramaqrp != null) && (paramaqrp.jdField_a_of_type_JavaLangString != null)) {
-      try
-      {
-        String str = paramaqrp.jdField_a_of_type_JavaLangString;
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (QLog.isColorLevel()) {
-          QLog.d("QAssistantConfigProcessor", 2, "onUpdate content = " + paramaqrp.jdField_a_of_type_JavaLangString);
-        }
-        azuv.a(localQQAppInterface, str);
-        paramaqrp = (azux)localQQAppInterface.getManager(352);
-        if (paramaqrp != null) {
-          paramaqrp.a();
-        }
-        return;
-      }
-      catch (Exception paramaqrp)
-      {
-        paramaqrp.printStackTrace();
-        QLog.e("QAssistantConfigProcessor", 2, "onUpdate has exception", paramaqrp);
-        return;
-      }
-    }
-    QLog.e("QAssistantConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
-  }
-  
-  public Class<aqrp> clazz()
-  {
-    return aqrp.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(500L);
     }
   }
   
-  public int type()
+  public void a()
   {
-    return 568;
+    b();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public void a(aqvd paramaqvd, boolean paramBoolean, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      Animator localAnimator = zvi.a(this.jdField_a_of_type_AndroidViewView, (int)this.jdField_a_of_type_Float + paramInt, (int)this.b, this.jdField_a_of_type_AndroidViewView.getHeight() / 2, 1.0F);
+      localAnimator.addListener(new aqrp(this, paramaqvd, paramBoolean));
+      localAnimator.setDuration(300L);
+      localAnimator.start();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqro
  * JD-Core Version:    0.7.0.1
  */

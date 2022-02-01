@@ -1,27 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import java.util.Map;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class avta
-  implements DialogInterface.OnClickListener
+public final class avta
+  extends biht
 {
-  public avta(ListenTogetherManager paramListenTogetherManager, int paramInt, String paramString) {}
+  public avta(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDone(bihu parambihu)
   {
-    if (paramInt == 1)
+    PayLikeFloatViewBuilder.a(false);
+    if (parambihu.a == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a();
-      paramDialogInterface.dismiss();
+      parambihu = new File(this.a + ".tmp");
+      if (parambihu.exists()) {
+        parambihu.renameTo(new File(this.a));
+      }
     }
-    while (paramInt != 0) {
+    while (!QLog.isColorLevel()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.b();
-    paramDialogInterface.dismiss();
-    ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager, (ListenTogetherSession)ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager).get(avtq.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)));
+    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
   }
 }
 

@@ -1,27 +1,7 @@
-public class pgm
-{
-  public static int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public long c;
-  public long d;
-  
-  static
-  {
-    jdField_a_of_type_Int = 300000;
-  }
-  
-  public pgm()
-  {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-  }
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/feedsinsert/RIJFeedsInsertModule$Companion;", "", "()V", "ANDROID_OS_TYPE", "", "CMD_GET_FEEDS_INSERT_RECOMMEND_INFO", "", "KEY_ARTICLE_ROW_KEY", "KEY_CHANNEL_ID", "KEY_SUBSCRIBE_ID", "SERVICE_TYPE_DEFAULT", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

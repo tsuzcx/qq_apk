@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import awnk;
-import awnr;
+import axgc;
+import axgj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.List;
 public class MsgBackupManager$5
   implements Runnable
 {
-  public MsgBackupManager$5(awnr paramawnr) {}
+  public MsgBackupManager$5(axgj paramaxgj) {}
   
   public void run()
   {
-    List localList = awnr.a(this.this$0).a().b();
-    if (awnr.a(this.this$0) != null) {
-      awnr.a(this.this$0).a(localList);
+    List localList = axgj.a(this.this$0).a().b();
+    if (axgj.a(this.this$0) != null) {
+      axgj.a(this.this$0).a(localList);
     }
   }
 }

@@ -1,40 +1,36 @@
-import UserGrowth.stSimpleMetaGdtAdInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
-public class uru<I>
+public abstract interface uru
+  extends ucm<urv>
 {
-  private stSimpleMetaGdtAdInfo jdField_a_of_type_UserGrowthStSimpleMetaGdtAdInfo;
-  private I jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean;
+  public abstract int a();
   
-  public stSimpleMetaGdtAdInfo a()
-  {
-    return this.jdField_a_of_type_UserGrowthStSimpleMetaGdtAdInfo;
-  }
+  public abstract int a(int paramInt);
   
-  public I a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
+  public abstract long a();
   
-  public void a(stSimpleMetaGdtAdInfo paramstSimpleMetaGdtAdInfo)
-  {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaGdtAdInfo = paramstSimpleMetaGdtAdInfo;
-  }
+  public abstract List<usv> a(ArrayList paramArrayList);
   
-  public void a(I paramI)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramI;
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

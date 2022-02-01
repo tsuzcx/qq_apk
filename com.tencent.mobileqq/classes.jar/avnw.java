@@ -1,31 +1,51 @@
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.1;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.2;
+import java.util.ArrayList;
 
-class avnw
-  extends WtloginListener
+public class avnw
+  extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
+  private avnw(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public avnw(avnu paramavnu, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-  }
-  
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      this.jdField_a_of_type_Avnu.a(this.jdField_a_of_type_JavaLangString, paramWUserSigInfo, this.b, paramInt1, this.c, this.d);
+      do
+      {
+        do
+        {
+          return;
+          if (!"action_qgame_tool_messgae".equals(paramContext)) {
+            break;
+          }
+          paramContext = paramIntent.getExtras();
+        } while (paramContext == null);
+        paramContext = (ArrayList)paramContext.getSerializable("key_get_msg");
+      } while ((paramContext == null) || (paramContext.size() <= 0));
+      ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.1(this, paramContext));
       return;
-    }
-    this.jdField_a_of_type_Avnu.b(this.b, "getTicket fail code = " + paramInt2);
+      if ("action_qgame_jaspi_webloaded".equals(paramContext))
+      {
+        ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.2(this));
+        return;
+      }
+      if ("action_qgame_h5_video_play".equals(paramContext))
+      {
+        avlb.b(2);
+        return;
+      }
+    } while (!"action_qgame_h5_video_pause".equals(paramContext));
+    avlb.b(1);
   }
 }
 

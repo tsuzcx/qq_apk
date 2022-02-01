@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class vzf
-  implements View.OnClickListener
+public abstract interface vzf
 {
-  vzf(vzd paramvzd, long paramLong) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (vyz.a(this.jdField_a_of_type_Vzd.a.a) != null) {
-      vyz.a(this.jdField_a_of_type_Vzd.a.a).a(this.jdField_a_of_type_Long);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

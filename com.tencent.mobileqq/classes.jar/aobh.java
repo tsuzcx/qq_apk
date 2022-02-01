@@ -1,43 +1,62 @@
-import com.tencent.common.app.AppInterface;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import mqq.os.MqqMessageQueue;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-class aobh
-  extends mwq
+final class aobh
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  aobh(aobd paramaobd, long paramLong, Map paramMap, AppInterface paramAppInterface, aobj paramaobj) {}
-  
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3)
+  public void onThreadMonitorEnd(int paramInt)
   {
-    if (paramLong3 != this.jdField_a_of_type_Long) {
-      QLog.e("AvGameRoomListObserver", 1, "onShareInviteBackflow fail: observer not match");
+    if (paramInt == 0)
+    {
+      Looper.getMainLooper().setMessageLogging(null);
+      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
     }
     do
     {
-      return;
-      QLog.d("AvGameRoomListObserver", 1, "onShareInviteBackflow isSuccess: " + paramBoolean + " roomId: " + paramLong1 + " shareUin: " + paramLong2 + " mark: " + paramLong3);
-      mwq localmwq = (mwq)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
-      if (localmwq == null)
+      Object localObject;
+      do
       {
-        QLog.e("AvGameRoomListObserver", 1, "onShareInviteBackflow fail: observer not exist");
         return;
-      }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(localmwq);
-    } while (this.jdField_a_of_type_Aobj == null);
-    try
-    {
-      this.jdField_a_of_type_Aobj.a(paramBoolean, paramLong1, paramLong2);
+        if (paramInt == 4)
+        {
+          ThreadManager.getSubThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 5)
+        {
+          ThreadManager.getFileThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 14)
+        {
+          Looper.getMainLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt != 18) {
+          break;
+        }
+        localObject = MsfCore.sCore;
+        if (localObject == null)
+        {
+          QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
+          return;
+        }
+        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
+      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
+      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AvGameRoomListObserver", 1, "onShareInviteBackflow exception: " + localException.getMessage());
-    }
+    } while (paramInt != 19);
+    Looper.getMainLooper().setMessageLogging(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobh
  * JD-Core Version:    0.7.0.1
  */

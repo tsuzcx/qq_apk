@@ -1,29 +1,20 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.qphone.base.util.QLog;
 
 class mpz
-  implements View.OnTouchListener
+  implements mqf
 {
-  mpz(mpw parammpw) {}
+  mpz(mpv parammpv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(mqe parammqe)
   {
-    try
+    if (parammqe == this.a.jdField_a_of_type_Mqe)
     {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a("result_root OnTouch");
-      return true;
+      this.a.jdField_a_of_type_Mqe = null;
+      this.a.jdField_a_of_type_Mqf = null;
+      this.a.a("onGetRedBagResult", mpv.d(this.a), parammqe.a);
+      return;
     }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
-      }
-    }
+    QLog.w("AVRedBag", 1, "onGetRedBagResult,  GetRedBag不一致，callback[" + parammqe + "], src[" + this.a.jdField_a_of_type_Mqe + "]");
   }
 }
 

@@ -1,30 +1,211 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Notification;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class aurn
-  implements View.OnClickListener
+  extends Handler
+  implements auun
 {
-  aurn(aurl paramaurl, String paramString) {}
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  Notification jdField_a_of_type_AndroidAppNotification;
+  final Bundle jdField_a_of_type_AndroidOsBundle;
+  int b = 0;
+  int c = 0;
   
-  public void onClick(View paramView)
+  public aurn(aurm paramaurm, Looper paramLooper, int paramInt, Bundle paramBundle, long paramLong)
   {
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi://miniapp/")) {
-      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Aurl.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
+    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramBundle.clone());
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidOsBundle.putInt("_notify_param_Id", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    {
+      this.jdField_a_of_type_AndroidAppNotification = paramaurm.a(paramBundle);
+      return;
+    }
+    QLog.e(aurm.a, 1, "[UniformDL][" + paramLong + "]. notify runable, param is null");
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, NF");
+    paramBundle = Message.obtain();
+    paramBundle.what = 1;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    localBundle.putInt("_START_WAITING_", 0);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, sendMessage failed, NF");
+    }
+  }
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, NF");
+    if (paramBundle != null)
+    {
+      paramBundle = paramBundle.getBundle("_CB_USERDATA");
+      if ((paramBundle != null) && (paramBundle.getBoolean("tbs_new_report", false))) {
+        audj.a().a("stat_download_failed");
+      }
+    }
+    paramBundle = Message.obtain();
+    paramBundle.what = 5;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_ERR_CODE_", paramInt);
+    localBundle.putString("_FILE_ERR_STRING_", paramString);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, sendMessage failed, NF");
+    }
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    int i = aurm.a(this.jdField_a_of_type_Aurm);
+    String str1 = auuf.a(paramString);
+    if (str1 != null)
+    {
+      localObject = new aurl(str1, i);
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.getBundle("_CB_USERDATA");
+        if (paramBundle != null)
+        {
+          ((aurl)localObject).b = paramBundle.getString("_open_with_qq_browser_", "");
+          String str2 = paramBundle.getString("params_open_with_yyb", "");
+          if (!TextUtils.isEmpty(str2))
+          {
+            ((aurl)localObject).jdField_a_of_type_AndroidOsBundle.putString("params_open_with_yyb", str2);
+            atrz.b();
+          }
+          boolean bool = paramBundle.getBoolean("tbs_new_report", false);
+          ((aurl)localObject).jdField_a_of_type_AndroidOsBundle.putBoolean("tbs_new_report", bool);
+          if (bool) {
+            audj.a().a("stat_download_success");
+          }
+          aurm.a(this.jdField_a_of_type_Aurm, paramBundle);
+        }
+      }
+      aure.a().a((aurl)localObject);
+    }
+    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, NF");
+    paramBundle = Message.obtain();
+    paramBundle.what = 4;
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("_FILE_PATH_", paramString);
+    ((Bundle)localObject).putLong("_FILE_SIZE_", paramLong);
+    ((Bundle)localObject).putInt("_NEW_N_ID_", i);
+    if (str1 != null) {
+      ((Bundle)localObject).putString("_PKG_NAME_", str1);
+    }
+    paramBundle.setData((Bundle)localObject);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, sendMessage failed, NF");
+    }
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    paramBundle = Message.obtain();
+    paramBundle.what = 2;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadProgress, sendMessage failed, NF");
+    }
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, NF");
+    paramBundle = Message.obtain();
+    paramBundle.what = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, sendMessage failed, NF");
+    }
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume progress=" + paramInt + ", NF ");
+    paramBundle = Message.obtain();
+    paramBundle.what = 7;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume, sendMessage failed, NF");
+    }
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = false;
+    super.handleMessage(paramMessage);
+    Object localObject = paramMessage.getData();
+    switch (paramMessage.what)
+    {
     }
     for (;;)
     {
-      aceh.a(ampj.a(), "769", "205647", this.jdField_a_of_type_Aurl.jdField_a_of_type_Auqu.a().gameAppId, "76903", "1", "160", new String[] { "", "", "20" });
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.b = paramMessage.what;
       return;
-      Intent localIntent = new Intent(this.jdField_a_of_type_Aurl.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aurl.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_START, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Aurm.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      int i = ((Bundle)localObject).getInt("_START_WAITING_");
+      localObject = aure.a();
+      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url");
+      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename");
+      String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", "");
+      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize");
+      Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata");
+      int j = this.jdField_a_of_type_Int;
+      if (i == 1) {
+        bool = true;
+      }
+      ((aure)localObject).a(str1, str2, str3, l, localBundle, j, bool);
+      this.c = 1;
+      continue;
+      this.jdField_a_of_type_Aurm.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      if (2 != this.c) {
+        aure.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, false);
+      }
+      this.c = 2;
+      continue;
+      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_PAUSE, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Aurm.c(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 3;
+      continue;
+      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_SUC, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Aurm.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 4;
+      continue;
+      this.jdField_a_of_type_Aurm.d(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 5;
+      continue;
+      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_RESUME, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Aurm.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      aure.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, true);
+      this.c = 7;
+      continue;
+      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_CLR, NF. NId = " + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aurm.a(this.jdField_a_of_type_Int);
+      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
     }
   }
 }

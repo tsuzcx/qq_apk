@@ -1,8 +1,11 @@
-public class bmqd
+import cooperation.qqreader.net.BaseCgiTask;
+
+public abstract class bmqd
+  implements bmqa
 {
-  public int a;
-  public String a;
-  public String b;
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
+  
+  public void b(bmqc parambmqc) {}
 }
 
 

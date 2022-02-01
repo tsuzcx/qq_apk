@@ -1,7 +1,7 @@
 package com.tencent.av.gaudio;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import msb;
+import msz;
 
 class AVNotifyCenter$1
   implements Runnable
@@ -11,7 +11,7 @@ class AVNotifyCenter$1
   public void run()
   {
     if (this.this$0.a != null) {
-      AVNotifyCenter.a(this.this$0, new msb(this.this$0.a.getApp(), null));
+      AVNotifyCenter.a(this.this$0, new msz(this.this$0.a.getApp(), null));
     }
   }
 }

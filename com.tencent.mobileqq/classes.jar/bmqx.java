@@ -1,33 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.support.annotation.Nullable;
 
-class bmqx
-  extends RemoteCommand
+public class bmqx
 {
-  bmqx(bmqu parambmqu, String paramString)
+  @Nullable
+  public static Activity a(Context paramContext)
   {
-    super(paramString);
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if (paramBundle == null) {
-      paramBundle = null;
+    if ((paramContext instanceof Activity)) {
+      return (Activity)paramContext;
     }
-    Bundle localBundle;
-    do
+    if ((paramContext instanceof ContextWrapper))
     {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = this.a.b(paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
+      paramContext = (ContextWrapper)paramContext;
+      if ((paramContext.getBaseContext() instanceof Activity)) {
+        return (Activity)paramContext.getBaseContext();
       }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+    }
+    return null;
   }
 }
 

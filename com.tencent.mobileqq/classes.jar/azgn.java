@@ -1,32 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azgn
-  extends azjf
+class azgn
+  implements View.OnClickListener
 {
-  public azgn(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  azgn(azgj paramazgj, AutoReplyText paramAutoReplyText) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if ((azgj.a(this.jdField_a_of_type_Azgj) != null) && (paramView != null))
     {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
+      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+      azgj.a(this.jdField_a_of_type_Azgj, (View)paramView.getParent(), i);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,51 +1,20 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
+import android.content.Intent;
 import com.tencent.av.app.VideoAppInterface;
-import mqq.app.MobileQQ;
 
-public class leh
+class leh
+  extends BroadcastReceiver
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private lei jdField_a_of_type_Lei;
+  leh(leg paramleg) {}
   
-  public leh(VideoAppInterface paramVideoAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  public void a()
-  {
-    try
+    int i = paramIntent.getIntExtra("level", 0);
+    if ((leg.a(this.a) != null) && (leg.a(this.a).a != null))
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_Lei = new lei();
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Lei, localIntentFilter);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Lei != null)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Lei);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      ((lie)leg.a(this.a).a(4)).a(i);
+      lic.a(18, i);
     }
   }
 }

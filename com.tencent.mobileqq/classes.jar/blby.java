@@ -1,107 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Observable;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class blby
-  extends Observable
-  implements Manager
+class blby
+  extends Handler
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  
-  public blby(AppInterface paramAppInterface)
+  public blby(blbq paramblbq, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new blbz(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.redpoint.broadcast.push.av"));
+    super(paramLooper);
   }
   
-  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramArrayList == null) {}
-    do
+    switch (paramMessage.what)
     {
-      do
-      {
-        return null;
-        localObject = new Bundle();
-        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
-        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getRedTouchInfo", (Bundle)localObject);
-      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
-      paramArrayList = paramArrayList.data;
-      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
-      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
-    } while (localObject == null);
-    paramArrayList = new HashMap();
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
-      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
-    }
-    return paramArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
+    default: 
+      return;
+    case 1: 
+      blbq.a(this.a, blbq.a(this.a, paramMessage.obj));
+      return;
+    case 2: 
+      blbq.a(this.a, true);
+      blbq.a(this.a);
+      blbq.a(this.a, false);
+      return;
+    case 3: 
+      blbq.a(this.a, paramMessage.obj);
       return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString);
-    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "reportRedTouchClick", localBundle);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool2 = false;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("appId", paramInt);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "isLebaItemOpen", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).code == 0)
-      {
-        bool1 = bool2;
-        if (((EIPCResult)localObject).data != null) {
-          bool1 = ((EIPCResult)localObject).data.getBoolean("isLebaItemOpen", false);
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public void onDestroy()
-  {
-    super.deleteObservers();
-    try
-    {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    blbq.b(this.a, paramMessage.obj);
   }
 }
 

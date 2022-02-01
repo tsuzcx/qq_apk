@@ -1,16 +1,16 @@
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler$Companion;", "", "()V", "KEY_FROM_SOURCE", "", "TAG", "detectConfigInDebug", "", "isViolaVideoFeeds", "videoFromType", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pjo
+public class pjo
+  implements pks
 {
-  @JvmStatic
-  public final boolean a(int paramInt)
+  public pjo(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
   {
-    if ("all".equals((String)bmqa.a("viola_video_feeds_config", ""))) {
-      return true;
-    }
-    return bmqa.b(paramInt, "\\|", "viola_video_feeds_config");
+    ozs.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), oyu.r);
+    ocd.a(null, "CliOper", "", "", "0X8008E3C", "0X8008E3C", 0, 0, "", "", "", ozs.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), "8.4.5".replace("", ""), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()), false);
   }
 }
 

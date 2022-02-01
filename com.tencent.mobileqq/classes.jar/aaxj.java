@@ -1,14 +1,25 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaxj
-  implements SurfaceTexture.OnFrameAvailableListener
+public class aaxj
+  implements View.OnClickListener
 {
-  aaxj(aaxi paramaaxi) {}
+  public aaxj(TroopGiftPanel paramTroopGiftPanel, aawt paramaawt) {}
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void onClick(View paramView)
   {
-    aaxi.c(this.a);
+    if (this.jdField_a_of_type_Aawt.jdField_a_of_type_Int == 1) {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_Aawt.c);
+    }
+    for (;;)
+    {
+      bdll.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_Aawt.jdField_a_of_type_JavaLangString);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_Aawt.c);
+    }
   }
 }
 

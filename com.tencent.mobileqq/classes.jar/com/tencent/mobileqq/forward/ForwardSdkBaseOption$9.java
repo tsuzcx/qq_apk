@@ -7,7 +7,7 @@ class ForwardSdkBaseOption$9
   
   public void run()
   {
-    this.this$0.L();
+    this.this$0.M();
   }
 }
 

@@ -1,24 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
 
-class apxl
-  extends AnimatorListenerAdapter
+public class apxl
+  implements DialogInterface.OnClickListener
 {
-  apxl(apxi paramapxi, ObjectAnimator paramObjectAnimator) {}
+  public apxl(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bhpc parambhpc) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Apxi.c != null) {
-      this.jdField_a_of_type_Apxi.c.setVisibility(0);
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_Bhpc.dismiss();
+      return;
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    catch (Exception paramDialogInterface) {}
   }
 }
 

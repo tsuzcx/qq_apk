@@ -1,82 +1,102 @@
-import java.io.BufferedReader;
+import android.graphics.Canvas;
+import android.graphics.PointF;
+import com.tencent.av.doodle.MySurfaceView;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class llm
-  extends llo
+public abstract class llm
 {
-  private static float[] b;
-  float[] a;
-  private float[] c = { 1.0F, 1.0F, 1.0F };
-  
-  static
-  {
-    jdField_b_of_type_ArrayOfFloat = new float[4];
-  }
+  public int a;
+  public long a;
+  public PointF a;
+  final String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e = -65536;
   
   public llm()
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      this.c = new float[lll.a(paramBufferedReader, "colorsCount")];
-      int i = 0;
-      while (i < this.c.length)
-      {
-        this.c[i] = lll.a(paramBufferedReader, "colors" + i);
-        i += 1;
-      }
-      this.jdField_a_of_type_ArrayOfFloat = new float[lll.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = lll.a(paramBufferedReader, "timeline" + i);
-        i += 1;
-      }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangString = "unused";
+    this.jdField_b_of_type_Int = 12;
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = ("DoodleItem_" + getClass().getSimpleName() + "_" + AudioHelper.b());
+    if (AudioHelper.f()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, getClass().getSimpleName());
     }
   }
   
-  public float[] a(float paramFloat)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    int k = arrayOfFloat.length;
-    int i = 1;
-    int j = 0;
-    if (i < k) {
-      if (arrayOfFloat[i] <= paramFloat) {}
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+  }
+  
+  public abstract void a(long paramLong);
+  
+  public void a(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
+  {
+    float f2 = 0.0F;
+    int i = paramMySurfaceView.getWidth();
+    int j = paramMySurfaceView.getHeight();
+    int k = this.d;
+    int m = this.c;
+    float f3;
+    if (i * k < j * m) {
+      f3 = i / m;
     }
-    for (;;)
+    for (float f1 = (j - k * f3) / 2.0F;; f1 = 0.0F)
     {
-      float f4 = arrayOfFloat[j];
-      j *= 3;
-      float f1 = this.c[j];
-      float f2 = this.c[(j + 1)];
-      float f3 = this.c[(j + 2)];
-      if (i == -1)
+      if (paramCanvas != null)
       {
-        jdField_b_of_type_ArrayOfFloat[0] = f1;
-        jdField_b_of_type_ArrayOfFloat[1] = f2;
-        jdField_b_of_type_ArrayOfFloat[2] = f3;
-        return jdField_b_of_type_ArrayOfFloat;
-        j = i;
-        i += 1;
-        break;
+        paramCanvas.save();
+        paramCanvas.translate(f2, f1);
+        paramCanvas.scale(f3, f3);
+        b(paramCanvas, paramMySurfaceView, paramBoolean);
       }
-      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
-      i *= 3;
-      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
-      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
-      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
-      return jdField_b_of_type_ArrayOfFloat;
-      i = -1;
+      try
+      {
+        paramCanvas.restore();
+        return;
+      }
+      catch (Exception paramCanvas)
+      {
+        lbj.e(this.jdField_a_of_type_JavaLangString, paramCanvas.getMessage());
+      }
+      f3 = j / k;
+      f2 = (i - m * f3) / 2.0F;
     }
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    float f1 = Math.abs(paramFloat1 - this.jdField_a_of_type_AndroidGraphicsPointF.x);
+    float f2 = Math.abs(paramFloat2 - this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    if ((f1 >= 8.0F) || (f2 >= 8.0F)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        b(paramFloat1, paramFloat2);
+        this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+        this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+      }
+      return bool;
+    }
+  }
+  
+  public abstract void b(float paramFloat1, float paramFloat2);
+  
+  public abstract void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean);
+  
+  public abstract void c(float paramFloat1, float paramFloat2);
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ", mPenType[" + this.jdField_a_of_type_Int + "], mPoint[" + this.jdField_a_of_type_AndroidGraphicsPointF.x + "," + this.jdField_a_of_type_AndroidGraphicsPointF.y + "]";
   }
 }
 

@@ -1,20 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.gdtad.util.GdtSmartBlur;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class bgfl
-  implements DownloadParams.DecodeHandler
+  implements DialogInterface.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDownloadParams = paramDownloadParams.tag;
-    if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
-    {
-      int i = ((int[])(int[])paramDownloadParams)[0];
-      GdtSmartBlur.a().a(paramBitmap, i);
-    }
-    return paramBitmap;
+    paramDialogInterface.dismiss();
   }
 }
 

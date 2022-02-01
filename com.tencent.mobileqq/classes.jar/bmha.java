@@ -1,15 +1,8 @@
-public abstract class bmha
+class bmha
 {
-  public static bmha a = new bmhb();
-  
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public String toString()
-  {
-    return a() + ':' + a();
-  }
+  private beum jdField_a_of_type_Beum;
+  private bezs jdField_a_of_type_Bezs;
+  private bmhb jdField_a_of_type_Bmhb;
 }
 
 

@@ -1,6 +1,23 @@
-public abstract class bout
+import android.app.Dialog;
+import android.app.FragmentManager;
+
+class bout
+  implements bovv
 {
-  public abstract boolean a(int paramInt1, int paramInt2);
+  bout(boun paramboun, String paramString) {}
+  
+  public void a()
+  {
+    boun.a(this.jdField_a_of_type_Boun).dismiss();
+    this.jdField_a_of_type_Boun.getFragmentManager().popBackStack();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Boun.a.a(this.jdField_a_of_type_JavaLangString, paramString);
+    boun.a(this.jdField_a_of_type_Boun).dismiss();
+    this.jdField_a_of_type_Boun.getFragmentManager().popBackStack();
+  }
 }
 
 

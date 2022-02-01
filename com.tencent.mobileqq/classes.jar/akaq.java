@@ -1,44 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import mqq.os.MqqHandler;
 
 public class akaq
+  extends ProxyObserver
 {
-  public static akaj a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public akaq(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  
+  public void onProxySaveToDbFinished()
   {
-    int i = paramSessionInfo.a;
-    Object localObject = null;
-    if (paramSessionInfo.f == 3) {
-      paramSessionInfo = new akat(paramContext, paramSessionInfo, paramQQAppInterface);
-    }
-    do
-    {
-      return paramSessionInfo;
-      switch (i)
-      {
-      default: 
-        paramContext = localObject;
-        paramSessionInfo = paramContext;
-      }
-    } while (!QLog.isColorLevel());
-    paramQQAppInterface = new StringBuilder().append("getChatPie uinType = ").append(i).append(" miniPie ");
-    if (paramContext == null) {}
-    for (paramSessionInfo = "null";; paramSessionInfo = Integer.valueOf(paramContext.hashCode()))
-    {
-      QLog.i("MiniPieFactory", 2, paramSessionInfo);
-      return paramContext;
-      paramContext = new akar(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new akas(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new akaw(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new akav(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new akau(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-    }
+    this.a.a.sendEmptyMessage(41);
   }
 }
 

@@ -1,71 +1,98 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class oaf
-  implements BusinessObserver
+public class oaf
 {
-  oaf(nzz paramnzz, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public List<oag> a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public oaf()
   {
-    Object localObject1 = null;
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean) {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public oaf(int paramInt, mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramConfigGroupInfo == null) {}
+    for (;;)
+    {
       return;
+      paramConfigGroupInfo = paramConfigGroupInfo.config_info.get();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramConfigGroupInfo.size());
+      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
+      while (paramConfigGroupInfo.hasNext()) {
+        this.jdField_a_of_type_JavaUtilList.add(new oag((mobileqq_mp.ConfigInfo)paramConfigGroupInfo.next()));
+      }
+    }
+  }
+  
+  public oaf(mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  {
+    this(0, paramConfigGroupInfo);
+  }
+  
+  public static List<oaf> a(List<mobileqq_mp.ConfigGroupInfo> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new oaf((mobileqq_mp.ConfigGroupInfo)paramList.next()));
+    }
+    return localArrayList;
+  }
+  
+  public static List<oaf> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray == null) {
+      return localArrayList;
     }
     for (;;)
     {
       try
       {
-        localObject2 = paramBundle.getByteArray("data");
-        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+        int k = paramJSONArray.length();
+        int i = 0;
+        if (i >= k) {
+          break;
+        }
+        Object localObject = paramJSONArray.getJSONObject(i);
+        oaf localoaf = new oaf();
+        localoaf.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
+        localObject = ((JSONObject)localObject).getJSONArray("config");
+        int m = ((JSONArray)localObject).length();
+        int j = 0;
+        if (j < m)
+        {
+          oag localoag = oag.a(((JSONArray)localObject).getJSONObject(j));
+          if (localoag != null) {
+            localoaf.jdField_a_of_type_JavaUtilList.add(localoag);
+          }
+        }
+        else
+        {
+          localArrayList.add(localoaf);
+          i += 1;
+          continue;
+        }
+        j += 1;
       }
-      catch (Exception paramBundle)
+      catch (Exception paramJSONArray)
       {
-        try
-        {
-          paramBundle.mergeFrom((byte[])localObject2);
-          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
-          localObject1 = paramBundle;
-          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
-          {
-            localObject1 = paramBundle;
-            if (paramBundle.seqno.has())
-            {
-              localObject1 = paramBundle;
-              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
-              {
-                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-                  this.jdField_a_of_type_Nzz.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
-                }
-                localObject1 = ((SharedPreferences)localObject2).edit();
-                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
-                ((SharedPreferences.Editor)localObject1).commit();
-                localObject1 = paramBundle;
-              }
-            }
-          }
-          if (localObject1 != null) {
-            break;
-          }
-          return;
-        }
-        catch (Exception localException)
-        {
-          break label187;
-        }
-        paramBundle = paramBundle;
-        paramBundle = (Bundle)localObject1;
+        paramJSONArray.printStackTrace();
+        return localArrayList;
       }
-      label187:
-      localObject1 = paramBundle;
     }
   }
 }

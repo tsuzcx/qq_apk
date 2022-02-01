@@ -1,26 +1,49 @@
-import android.view.View;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import mqq.app.AppActivity;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import java.util.List;
 
 class zuf
-  extends zub
+  extends RecyclerView.AdapterDataObserver
 {
   zuf(zue paramzue) {}
   
-  public void a()
+  public void onChanged()
   {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
-    {
-      this.a.jdField_a_of_type_Zuk.a();
-      return;
+    this.a.notifyDataSetChanged();
+    if (zue.a(this.a) != null) {
+      zue.a(this.a).a(zue.a(this.a));
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
-    {
-      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
-      return;
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeChanged(zue.a(this.a).size() + paramInt1, paramInt2);
+    if (zue.a(this.a) != null) {
+      zue.a(this.a).a(zue.a(this.a));
     }
-    this.a.jdField_a_of_type_Zuk.b();
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(zue.a(this.a).size() + paramInt1, paramInt2);
+    if (zue.a(this.a) != null) {
+      zue.a(this.a).a(zue.a(this.a));
+    }
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.notifyItemMoved(zue.a(this.a).size() + paramInt1, zue.a(this.a).size() + paramInt2);
+    if (zue.a(this.a) != null) {
+      zue.a(this.a).a(zue.a(this.a));
+    }
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(zue.a(this.a).size() + paramInt1, paramInt2);
+    if (zue.a(this.a) != null) {
+      zue.a(this.a).a(zue.a(this.a));
+    }
   }
 }
 

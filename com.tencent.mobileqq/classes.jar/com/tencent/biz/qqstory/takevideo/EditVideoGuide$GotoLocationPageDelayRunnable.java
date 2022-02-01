@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import yrd;
+import yuy;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,9 +9,9 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    yrd localyrd = (yrd)this.this$0.a(yrd.class);
-    if (localyrd != null) {
-      localyrd.b();
+    yuy localyuy = (yuy)this.this$0.a(yuy.class);
+    if (localyuy != null) {
+      localyuy.b();
     }
   }
 }

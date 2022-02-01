@@ -1,18 +1,29 @@
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
+
 class bdwe
-  extends anqd
+  implements Callable<File>
 {
   bdwe(bdwd parambdwd) {}
   
-  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
+  public File a()
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramanqe);
-    if (paramBoolean)
+    if ((!bdwd.a(this.a).exists()) || (!bdwd.a(this.a)))
     {
-      this.a.e();
-      return;
+      long l = System.currentTimeMillis();
+      if (!bdwd.a(this.a, bdwd.a(this.a), bdwd.a(this.a), bdwd.a(this.a).getAbsolutePath())) {
+        break label111;
+      }
+      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm success, cost=" + (System.currentTimeMillis() - l));
     }
-    this.a.d();
+    while (bdwd.a(this.a).exists())
+    {
+      return bdwd.a(this.a);
+      label111:
+      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm fail");
+    }
+    return null;
   }
 }
 

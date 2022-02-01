@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.widget.TextView;
-import ryx;
-import sek;
+import rpt;
+import rvo;
 
 public class VideoFeedsVideoUIDelegate$8
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$8(sek paramsek, TextView paramTextView) {}
+  public VideoFeedsVideoUIDelegate$8(rvo paramrvo, TextView paramTextView) {}
   
   public void run()
   {
-    ryx.a(this.a, 8);
+    rpt.a(this.a, 8);
   }
 }
 

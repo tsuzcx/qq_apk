@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo;
 
-import rsn;
-import rss;
+import rjj;
+import rjo;
 
 public class SelectVideoPresenter$5$1
   implements Runnable
 {
-  public SelectVideoPresenter$5$1(rss paramrss) {}
+  public SelectVideoPresenter$5$1(rjo paramrjo) {}
   
   public void run()
   {
-    rsn.a(this.a.a);
+    rjj.a(this.a.a);
   }
 }
 

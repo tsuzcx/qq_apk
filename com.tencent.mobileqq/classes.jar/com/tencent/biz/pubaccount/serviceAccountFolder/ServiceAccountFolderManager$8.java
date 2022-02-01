@@ -5,12 +5,12 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tue;
+import tug;
 
 public class ServiceAccountFolderManager$8
   implements Runnable
 {
-  public ServiceAccountFolderManager$8(tue paramtue, QQAppInterface paramQQAppInterface) {}
+  public ServiceAccountFolderManager$8(tug paramtug, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -18,16 +18,16 @@ public class ServiceAccountFolderManager$8
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_display_time", tue.c(this.this$0));
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_time", tue.a(this.this$0));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_operation_time", tue.d(this.this$0));
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_brief", tue.a(this.this$0).toString());
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_extend", tue.b(this.this$0));
-      ((SharedPreferences.Editor)localObject).putInt("service_account_folder_unreadnum", tue.a(this.this$0));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_maxunreadtime", tue.e(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_display_time", tug.c(this.this$0));
+      ((SharedPreferences.Editor)localObject).putString("service_account_folder_time", tug.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_operation_time", tug.d(this.this$0));
+      ((SharedPreferences.Editor)localObject).putString("service_account_folder_brief", tug.a(this.this$0).toString());
+      ((SharedPreferences.Editor)localObject).putString("service_account_folder_extend", tug.b(this.this$0));
+      ((SharedPreferences.Editor)localObject).putInt("service_account_folder_unreadnum", tug.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_maxunreadtime", tug.e(this.this$0));
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "saveFolderLocalData->mFolderDisplayTime:" + tue.c(this.this$0) + ", mFolderShowTime:" + tue.a(this.this$0) + ", mFolderOperationTime:" + tue.d(this.this$0) + ", mFolderMsgBrief:" + tue.a(this.this$0));
+        QLog.d("ServiceAccountFolderManager", 2, "saveFolderLocalData->mFolderDisplayTime:" + tug.c(this.this$0) + ", mFolderShowTime:" + tug.a(this.this$0) + ", mFolderOperationTime:" + tug.d(this.this$0) + ", mFolderMsgBrief:" + tug.a(this.this$0));
       }
     }
   }

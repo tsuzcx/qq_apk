@@ -1,14 +1,24 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface syk
+class syk
+  extends blgm
 {
-  public abstract int a(BaseData paramBaseData);
+  syk(syi paramsyi) {}
   
-  public abstract syj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
-  
-  public abstract boolean a(BaseData paramBaseData);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    super.onAnimationEnd(paramAnimation);
+    if (syh.a(this.a.a) != null)
+    {
+      paramAnimation = new ArrayList();
+      paramAnimation.add(syh.a(this.a.a));
+      syh.a(this.a.a).a(paramAnimation, syh.a(this.a.a));
+      QQToast.a(this.a.a.a, 2, 2131717146, 0).a();
+    }
+  }
 }
 
 

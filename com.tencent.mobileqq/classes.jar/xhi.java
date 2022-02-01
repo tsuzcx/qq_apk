@@ -1,15 +1,17 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class xhi
-  implements AudioManager.OnAudioFocusChangeListener
+  extends xfr
 {
-  xhi(xhf paramxhf) {}
-  
-  public void onAudioFocusChange(int paramInt)
+  xhi(xgp paramxgp, StoryVideoItem paramStoryVideoItem, xhy paramxhy)
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (xhf.a(this.a))) {
-      this.a.a();
-    }
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Xhy.e = ((String)a("result"));
+    return true;
   }
 }
 

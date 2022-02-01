@@ -1,53 +1,22 @@
-import android.graphics.Color;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 
-public class ahwf
-  extends ahwb
+public abstract class ahwf
+  extends aggl
 {
-  aklj a;
-  
-  public ahwf(QQAppInterface paramQQAppInterface, ahwv paramahwv, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afxp paramafxp)
-  {
-    super(paramQQAppInterface, paramahwv, paramQQWalletBaseMsgElem, paramInt, paramafxp);
-    this.jdField_a_of_type_Aklj = ((aklj)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Aklj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
-    {
-      this.i = 0;
-      return;
-    }
-    this.i = paramQQWalletBaseMsgElem.effectsId;
-  }
-  
-  public boolean b()
-  {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Ahwv.b.setVisibility(0);
-    this.jdField_a_of_type_Ahwv.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Ahwv.b.setText(ahwg.m);
-    return true;
-  }
-  
-  public void f()
-  {
-    super.f();
-    try
-    {
-      this.jdField_a_of_type_Ahwv.a.setTextColor(Color.parseColor("#604121"));
-      this.jdField_a_of_type_Ahwv.a.setText(akww.a(this.jdField_a_of_type_Ahwv.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, 330, this.jdField_a_of_type_Ahwv.a.getPaint()));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public TextView e;
 }
 
 

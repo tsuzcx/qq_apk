@@ -1,25 +1,85 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype11;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
-class adhe
-  implements View.OnClickListener
+public class adhe
+  extends adic
 {
-  adhe(adhc paramadhc, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
-      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
-    }
-    for (;;)
+    paramList = paramList.iterator();
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-      bcst.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
+      if (!paramList.hasNext()) {
+        break;
+      }
+      paramMsg = (im_msg_body.Elem)paramList.next();
+    } while (!paramMsg.common_elem.has());
+    for (paramList = (im_msg_body.CommonElem)paramMsg.common_elem.get();; paramList = null)
+    {
+      if (paramList == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        paramStringBuilder.append("decodePBMsgElems_ScribbleMsg;\n");
+      }
+      paramStringBuilder = new hummer_commelem.MsgElemInfo_servtype11();
+      try
+      {
+        paramStringBuilder.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
+        paramList = (MessageForScribble)bcry.a(-7001);
+        paramList.msgtype = -7001;
+        if (paramStringBuilder.bytes_Doodle_md5.has()) {
+          paramList.combineFileMd5 = new String(paramStringBuilder.bytes_Doodle_md5.get().toByteArray());
+        }
+        if (paramStringBuilder.bytes_Doodle_url.has()) {
+          paramList.combineFileUrl = new String(paramStringBuilder.bytes_Doodle_url.get().toByteArray());
+        }
+        if (paramStringBuilder.uint32_doodleData_offset.has()) {
+          paramList.offSet = paramStringBuilder.uint32_doodleData_offset.get();
+        }
+        if (paramStringBuilder.uint32_doodle_gif_id.has()) {
+          paramList.gifId = paramStringBuilder.uint32_doodle_gif_id.get();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("DoodleElemDecoderscribble msg", 1, " decodePBMsgElems_ScribbleMsg " + paramList.combineFileMd5 + " " + paramList.combineFileUrl);
+        }
+        paramList.prewrite();
+        paramList1.add(paramList);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramList)
+      {
+        QLog.e("DoodleElemDecoderscribble msg", 1, paramList, new Object[0]);
+        return;
+      }
     }
+  }
+  
+  public int a()
+  {
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    a(paramList, paramList1, paramStringBuilder, paramMsg);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (11 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

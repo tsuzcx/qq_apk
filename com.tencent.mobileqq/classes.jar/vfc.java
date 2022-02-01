@@ -1,6 +1,16 @@
-public abstract interface vfc
+import mqq.app.QQPermissionCallback;
+
+class vfc
+  implements QQPermissionCallback
 {
-  public abstract void a();
+  vfc(vfa paramvfa) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    vfa.a(this.a);
+  }
 }
 
 

@@ -1,67 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayxz
-  extends QIPCModule
+  implements View.OnClickListener
 {
-  private static volatile ayxz a;
+  public ayxz(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public ayxz(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public static ayxz a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ayxz("PicSTWXQIPCModule");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicSTWXQIPCModule", 2, "onCall, action = " + paramString);
-    }
-    paramString = paramBundle.getString("param_pic_path", "");
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "path is empty");
-      }
-    }
-    int i;
-    do
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, path = " + paramString);
-      }
-      i = paramBundle.getInt("param_from_type", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, fromType = " + i);
-      }
-      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle instanceof QQAppInterface)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PicSTWXQIPCModule", 2, "cannot get QQAppInterface.");
-    return null;
-    paramBundle = (QQAppInterface)paramBundle;
-    PicShareToWX.a().a(this, paramInt, paramBundle, paramString, i);
-    return null;
+    ayyb.a("0X800AADF", 0);
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

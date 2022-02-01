@@ -1,126 +1,146 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
 import android.text.TextUtils;
-import com.tencent.biz.lebasearch.Utils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class nny
-  extends WebViewPlugin
 {
-  aanz jdField_a_of_type_Aanz = null;
-  public anil a;
-  bgpa jdField_a_of_type_Bgpa;
-  String jdField_a_of_type_JavaLangString = null;
-  bgpa b = null;
-  
-  public nny()
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_Anil = new nnz(this);
-    this.mPluginNameSpace = "lebaPlugin";
-  }
-  
-  private void a(int paramInt, long paramLong, String paramString1, String paramString2)
-  {
-    if ((this.mRuntime.a() == null) || (this.mRuntime.a().isFinishing())) {}
-    do
+    try
     {
-      return;
-      if (this.jdField_a_of_type_Bgpa == null) {
-        this.jdField_a_of_type_Bgpa = Utils.createPluginSetDialogForWeb(this.mRuntime.a(), this.jdField_a_of_type_Aanz, this.jdField_a_of_type_Anil, paramInt, paramLong, paramString1, paramString2);
+      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (paramContext == null) {
+        break label269;
       }
-    } while (this.jdField_a_of_type_Bgpa.isShowing());
-    this.jdField_a_of_type_Bgpa.show();
+      paramContext = paramContext.getActiveNetworkInfo();
+      if ((paramContext == null) || (!paramContext.isConnected())) {
+        break label195;
+      }
+      i = paramContext.getType();
+      if (!QLog.isColorLevel()) {
+        break label305;
+      }
+      QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType type = ", Integer.valueOf(i) });
+    }
+    catch (IllegalStateException paramContext)
+    {
+      if (!QLog.isColorLevel()) {
+        break label343;
+      }
+      QLog.d("NetworkUtil", 2, "getNetworkType IllegalStateException", paramContext);
+      break label343;
+      if (!QLog.isColorLevel()) {
+        break label343;
+      }
+      QLog.d("NetworkUtil", 2, "getNetworkType could not get ConnectivityManager");
+      break label343;
+    }
+    catch (Exception paramContext)
+    {
+      int i;
+      label195:
+      while (QLog.isColorLevel())
+      {
+        QLog.d("NetworkUtil", 2, "getNetworkType exception", paramContext);
+        break;
+        switch (i)
+        {
+        case 0: 
+        default: 
+          return -1;
+        }
+        return 1;
+      }
+      label269:
+      label305:
+      return -1;
+      return 2;
+      return 3;
+      return 4;
+    }
+    i = paramContext.getSubtype();
+    switch (i)
+    {
+    default: 
+      if (QLog.isColorLevel())
+      {
+        QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType subType = ", Integer.valueOf(i) });
+        break;
+        if (paramContext == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NetworkUtil", 2, "getNetworkType networkInfo = null");
+          }
+        }
+        else if (QLog.isColorLevel()) {
+          QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType networkInfo isConnected =", Boolean.valueOf(paramContext.isConnected()) });
+        }
+      }
+      break;
+    }
+    label343:
+    return 0;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static String a(String paramString, int paramInt)
   {
-    paramJsBridgeListener = paramVarArgs[0];
-    if (paramString3 == null) {
-      return false;
-    }
-    if (paramString3.equals("showOpenDialog")) {}
-    for (;;)
-    {
-      long l;
+    if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        paramString1 = new JSONObject(paramJsBridgeListener);
-        l = paramString1.optLong("id", -1L);
-        paramJsBridgeListener = paramString1.optString("msg");
-        paramString1 = paramString1.optString("callback");
-        if (l != -1L)
+        String str = new URL(paramString).getHost();
+        Object localObject2 = InnerDns.getInstance().reqDns(str, paramInt);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          paramString2 = new Bundle();
-          paramString2.putInt("reqCode", 10000);
-          paramString2.putLong("uiResId", l);
-          paramString2.putString("msg", paramJsBridgeListener);
-          paramString2.putString("callback", paramString1);
-          paramString2.putInt("dialogType", 1);
-          this.jdField_a_of_type_Aanz.a(18, paramString2, this.jdField_a_of_type_Anil);
-        }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        continue;
-      }
-      return true;
-      if (paramString3.equals("getPluginStatus")) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener);
-          l = paramJsBridgeListener.optLong("id", -1L);
-          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-          if (l == -1L) {
-            continue;
-          }
-          paramString1 = new Bundle();
-          paramString1.putInt("reqCode", 10002);
-          paramString1.putLong("uiResId", l);
-          paramString1.putString("callback", paramJsBridgeListener);
-          this.jdField_a_of_type_Aanz.a(18, paramString1, this.jdField_a_of_type_Anil);
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-        }
-      } else if (paramString3.equals("search")) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener).optString("keyWord");
-          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          Object localObject1 = localObject2;
+          if (!((String)localObject2).contains(":"))
           {
-            if (this.mRuntime.a() != null) {}
-            bbup.a("hot_list", "clk_hot_list", new String[] { paramJsBridgeListener });
+            localObject2 = new StringBuilder().append((String)localObject2);
+            if (!paramString.startsWith("https")) {
+              break label89;
+            }
+          }
+          label89:
+          for (localObject1 = ":443";; localObject1 = ":80")
+          {
+            localObject1 = (String)localObject1;
+            return paramString.replaceFirst(str, (String)localObject1);
           }
         }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-        }
+        return paramString;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        QLog.e("NetworkUtil", 1, "MalformedURLException", localMalformedURLException);
       }
     }
   }
   
-  public void onCreate()
+  public static boolean a(Context paramContext)
   {
-    super.onCreate();
-    this.jdField_a_of_type_Aanz = aanz.a();
-    this.jdField_a_of_type_Aanz.a();
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Aanz != null) {
-      this.jdField_a_of_type_Aanz.b();
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {}
+    for (;;)
+    {
+      return false;
+      paramContext = paramContext.getAllNetworkInfo();
+      if (paramContext != null)
+      {
+        int i = 0;
+        while (i < paramContext.length)
+        {
+          if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
+            return true;
+          }
+          i += 1;
+        }
+      }
     }
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
-      this.jdField_a_of_type_Bgpa.dismiss();
-    }
-    super.onDestroy();
   }
 }
 

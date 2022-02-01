@@ -1,10 +1,25 @@
-import com.tencent.mobileqq.data.MessageForPtt;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
 
-public abstract interface bdbs
+public class bdbs
 {
-  public abstract void a(String paramString, MessageForPtt paramMessageForPtt);
+  public final Object a;
+  public final Runnable a;
   
-  public abstract void a(boolean paramBoolean, MessageForPtt paramMessageForPtt);
+  bdbs()
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
+  }
+  
+  static void a(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while (!(paramMessage.obj instanceof bdbs)) {
+      return;
+    }
+    ((bdbs)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

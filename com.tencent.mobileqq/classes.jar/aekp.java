@@ -1,36 +1,16 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aekp
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public aekp(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public aekp(DialogActivity paramDialogActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramEditable = paramEditable.toString();
-    int i = 0;
-    if (!TextUtils.isEmpty(paramEditable)) {
-      i = paramEditable.getBytes().length / 3;
-    }
-    if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131167060));
-    }
-    for (;;)
-    {
-      this.a.a.setText("" + (40 - i));
-      return;
-      this.a.a.setTextColor(-65536);
-    }
+    this.a.finish();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.statistics.WtloginReporter.1;
 
-class bdmx
-  implements View.OnClickListener
+public class bdmx
 {
-  bdmx(bdmq parambdmq) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.a.a.setText("");
-    this.a.c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.microapp.appbrand;
 
 import Wallet.ApkgConfig;
-import akwm;
+import alib;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Base64;
-import bgsc;
-import bgsp;
+import bhse;
+import bhsr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
@@ -244,7 +244,7 @@ public final class a
       }
     }
     paramString2 = ((JSONObject)localObject2).toString();
-    bgsc.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
+    bhse.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -347,7 +347,7 @@ public final class a
   
   public void f()
   {
-    akwm.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
+    alib.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
   }
   
   public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)
@@ -406,7 +406,7 @@ public final class a
         if ((!com.tencent.mobileqq.microapp.a.c.a(this.c)) || (!paramString1.startsWith("page/QQ/forward.html"))) {
           break label407;
         }
-        boolean bool = bgsp.a(paramString2);
+        boolean bool = bhsr.a(paramString2);
         if (bool) {
           break label407;
         }

@@ -1,36 +1,47 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class wwp
-  extends wla
+  extends wpa<wwq>
 {
-  public List<xzg> a = new ArrayList();
+  static final String a = wnu.a("StorySvc.msgtab_node_click");
+  public long b;
+  public String b;
+  public int c;
   
-  public wwp(qqstory_service.RspConvertGroupId paramRspConvertGroupId)
+  public String a()
   {
-    super(paramRspConvertGroupId.result);
-    if (paramRspConvertGroupId.group_rsp_list.has())
-    {
-      paramRspConvertGroupId = paramRspConvertGroupId.group_rsp_list.get().iterator();
-      while (paramRspConvertGroupId.hasNext())
-      {
-        Object localObject = (qqstory_struct.GroupId)paramRspConvertGroupId.next();
-        localObject = new xzg(String.valueOf(((qqstory_struct.GroupId)localObject).group_uin.get()), ((qqstory_struct.GroupId)localObject).group_union_id.get().toStringUtf8());
-        this.a.add(localObject);
-      }
-    }
+    return a;
   }
   
-  public String toString()
+  public wov a(byte[] paramArrayOfByte)
   {
-    return "GetUserGroupUnionIDResponse{groupIDList=" + this.a + '}';
+    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
+    try
+    {
+      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
+      return new wwq(localRspMsgTabNodeWatched);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
+    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqMsgTabNodeWatched.node_type.set(this.c);
+    localReqMsgTabNodeWatched.operation.set(3);
+    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
+    return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 

@@ -1,65 +1,112 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.1;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.2;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.3;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.4;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.5;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.6;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.Random;
 
 public class aphz
-  implements INetInfoHandler
+  extends aphs
 {
-  aphz(aphx paramaphx) {}
+  public Boolean a;
+  public ArrayList<apfp> a;
+  public Boolean b;
+  public String b;
+  public String c;
+  public int d = 3;
+  public int e = 1;
   
-  public void onNetMobile2None()
+  public aphz(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3, ArrayList<apfp> paramArrayList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt4, int paramInt5)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2None mLastNetType=" + aphx.b(this.a));
-    }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.6(this));
+    super(paramString1, paramInt1, 2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangBoolean = paramBoolean1;
+    this.jdField_b_of_type_JavaLangBoolean = paramBoolean2;
+    this.e = paramInt4;
+    this.d = paramInt5;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public apfp a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2Wifi mLastNetType=" + aphx.b(this.a));
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromRandFunction");
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
     }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.5(this));
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      apfp localapfp = (apfp)localIterator.next();
+      if (localapfp.b == 3) {
+        localArrayList.add(localapfp);
+      }
+    }
+    if (localArrayList.isEmpty()) {
+      return null;
+    }
+    return (apfp)localArrayList.get(new Random().nextInt(localArrayList.size()));
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public apfp a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Mobile mLastNetType=" + aphx.b(this.a));
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromClickOperation");
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
     }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.4(this));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      apfp localapfp = (apfp)localIterator.next();
+      if ((paramInt <= localapfp.d) && (paramInt >= localapfp.jdField_c_of_type_Int) && (localapfp.b == 1)) {
+        return localapfp;
+      }
+    }
+    return null;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Wifi mLastNetType=" + aphx.b(this.a));
+    if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)) {
+      return null;
     }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.3(this));
+    return ((apfp)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_JavaLangString;
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  public boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2Mobile mLastNetType=" + aphx.b(this.a));
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return false;
     }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.2(this));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((apfp)localIterator.next()).b == paramInt) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public void onNetWifi2None()
+  public apfp b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2None mLastNetType=" + aphx.b(this.a));
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromTime");
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
     }
-    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.1(this));
+    int i = Calendar.getInstance().get(11);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      apfp localapfp = (apfp)localIterator.next();
+      if ((i < localapfp.d) && (i >= localapfp.jdField_c_of_type_Int) && (localapfp.b == 2)) {
+        return localapfp;
+      }
+    }
+    return null;
   }
 }
 

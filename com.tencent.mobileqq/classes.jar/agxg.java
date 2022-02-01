@@ -1,22 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
 
-class agxg
-  extends ahbl
+public class agxg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agxg(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public agxg(IntimateScoreCardView paramIntimateScoreCardView) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ahjf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f < 0.5F)
+    {
+      IntimateScoreCardView.a(this.a).setAlpha(1.0F - f * 2.0F);
+      return;
+    }
+    IntimateScoreCardView.a(this.a).setAlpha(f * 2.0F - 1.0F);
   }
 }
 

@@ -1,6 +1,11 @@
+import android.view.View;
+import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.PanelState;
+
 public abstract interface bpcc
 {
-  public abstract void a(int paramInt);
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, AESlidingUpPanelLayout.PanelState paramPanelState1, AESlidingUpPanelLayout.PanelState paramPanelState2);
 }
 
 

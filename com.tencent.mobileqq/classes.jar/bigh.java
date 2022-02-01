@@ -1,110 +1,71 @@
-import java.io.UnsupportedEncodingException;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
-public class bigh
+class bigh
+  implements Handler.Callback
 {
-  static
+  bigh(bige parambige) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!bigh.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if (paramMessage.what == 1)
     {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public static String a(byte[] paramArrayOfByte, int paramInt)
-  {
-    try
-    {
-      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
-      return paramArrayOfByte;
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      throw new AssertionError(paramArrayOfByte);
-    }
-  }
-  
-  public static byte[] a(String paramString, int paramInt)
-  {
-    return a(paramString.getBytes(), paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bigj localbigj = new bigj(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localbigj.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
-    }
-    if (localbigj.jdField_a_of_type_Int == localbigj.jdField_a_of_type_ArrayOfByte.length) {
-      return localbigj.jdField_a_of_type_ArrayOfByte;
-    }
-    paramArrayOfByte = new byte[localbigj.jdField_a_of_type_Int];
-    System.arraycopy(localbigj.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbigj.jdField_a_of_type_Int);
-    return paramArrayOfByte;
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
-  {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bigk localbigk = new bigk(paramInt3, null);
-    int i = paramInt2 / 3 * 4;
-    int j;
-    if (localbigk.jdField_a_of_type_Boolean)
-    {
-      paramInt3 = i;
-      if (paramInt2 % 3 > 0) {
-        paramInt3 = i + 4;
-      }
-      i = paramInt3;
-      if (localbigk.b)
+      paramMessage = bige.a();
+      int i = paramMessage.getInt("timer2_interval", 0);
+      int m = paramMessage.getInt("timer2_retry_times", 0);
+      int j = paramMessage.getInt("timer2_start_hour", 0);
+      int k = paramMessage.getInt("timer2_end_hour", 0);
+      if ((bigb.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - bigb.a < i))
       {
-        i = paramInt3;
-        if (paramInt2 > 0)
-        {
-          j = (paramInt2 - 1) / 57;
-          if (!localbigk.c) {
-            break label186;
-          }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
+        return true;
+      }
+      if (this.a.jdField_a_of_type_Int >= m)
+      {
+        QLog.i("SportManager", 2, "retry time enough cancel task.");
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        return true;
+      }
+      paramMessage = Calendar.getInstance();
+      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+      m = paramMessage.get(11);
+      if (m >= j)
+      {
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += 1;
+        this.a.a("timer2 callback report1");
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
+        return true;
+        if (m >= k) {
+          break;
         }
+        paramMessage.set(11, 0);
+        paramMessage.set(12, 0);
+        paramMessage.set(13, 0);
+        paramMessage.set(14, 0);
+        if (bigb.a - paramMessage.getTimeInMillis() > 0L)
+        {
+          QLog.i("SportManager", 2, "already report cancel task.");
+          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+          return true;
+        }
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += 1;
+        this.a.a("timer2 callback report2");
       }
+      QLog.i("SportManager", 2, "over time cancel task.");
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      return true;
     }
-    label186:
-    for (i = 2;; i = 1)
-    {
-      i = paramInt3 + i * (j + 1);
-      localbigk.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localbigk.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localbigk.jdField_a_of_type_Int == i)) {
-        break label192;
-      }
-      throw new AssertionError();
-      paramInt3 = i;
-      switch (paramInt2 % 3)
-      {
-      case 0: 
-      default: 
-        paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
-        break;
-      case 2: 
-        paramInt3 = i + 3;
-        break;
-      }
-    }
-    label192:
-    return localbigk.jdField_a_of_type_ArrayOfByte;
+    return false;
   }
 }
 

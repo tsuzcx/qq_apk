@@ -1,53 +1,19 @@
 import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zta
-  implements bkhw
+  implements View.OnClickListener
 {
-  public zta(QRDisplayActivity paramQRDisplayActivity) {}
+  public zta(InnerListView paramInnerListView, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.h) {
-      return;
+    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
+      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
     }
-    this.a.h = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      if (!this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.g();
-        if ((this.a.g & 0x1) != 0)
-        {
-          bcst.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
-          continue;
-          if (!this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.h();
-            if ((this.a.g & 0x1) != 0)
-            {
-              bcst.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
-              continue;
-              if (!this.a.jdField_a_of_type_Boolean)
-              {
-                this.a.e();
-                if ((this.a.g & 0x1) != 0) {
-                  bcst.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
-                }
-                if (this.a.jdField_c_of_type_Int == 2) {
-                  bcst.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

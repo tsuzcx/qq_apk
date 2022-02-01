@@ -1,9 +1,17 @@
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
-
-public class vfl
-  implements vfo
+class vfl
+  implements vlb
 {
-  public vfl(CellTextView paramCellTextView) {}
+  vfl(vfi paramvfi) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.b("rich_meida_download_progress", Integer.valueOf(paramInt));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.b("rich_media_download_status", Boolean.valueOf(paramBoolean));
+  }
 }
 
 

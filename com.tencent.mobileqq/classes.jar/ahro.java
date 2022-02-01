@@ -1,22 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.AudioAnimationView;
+import com.tencent.mobileqq.widget.CircleProgressView;
 
 public class ahro
-  implements atve
+  extends aggl
 {
-  public ahro(AIOFileVideoData paramAIOFileVideoData, Context paramContext, akhc paramakhc) {}
+  ahrl jdField_a_of_type_Ahrl;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
+  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_Akhc.b();
-      this.jdField_a_of_type_Akhc.f();
-    }
-  }
-  
-  public void b() {}
+  public ahro(ahri paramahri) {}
 }
 
 

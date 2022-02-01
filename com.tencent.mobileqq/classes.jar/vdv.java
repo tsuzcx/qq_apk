@@ -1,16 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.requests.QCircleSetUnCareRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 class vdv
-  implements Observer<vup<List<FeedCloudMeta.StFeed>>>
+  implements DialogInterface.OnClickListener
 {
-  vdv(vdt paramvdt) {}
+  vdv(vdr paramvdr) {}
   
-  public void a(@Nullable vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    vdt.b(this.a, paramvup);
+    VSNetworkHelper.a().a(new QCircleSetUnCareRequest(vdr.a(this.a).id.get(), 1, 1, null), new vdw(this));
+    paramDialogInterface.dismiss();
   }
 }
 

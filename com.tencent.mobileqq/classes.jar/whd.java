@@ -1,73 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
-import java.util.Map;
+import java.util.List;
 
-class whd
-  extends whk
+public class whd
 {
-  public whd(wha paramwha)
-  {
-    super("Q.qqstory.download.preload.PlayingListPreloader");
-  }
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, wgv paramwgv)
-  {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramwgv);
-    a(paramString, paramInt1, paramErrorMessage, paramwgv);
-  }
+  public whd() {}
   
-  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, wgv paramwgv)
+  public whd(wfq paramwfq)
   {
-    whc localwhc = this.a.jdField_a_of_type_Whc;
-    if (localwhc == null) {}
-    label14:
-    label169:
-    do
+    this.jdField_a_of_type_Int = paramwfq.jdField_e_of_type_Int;
+    if (paramwfq.g > 0) {}
+    for (int i = paramwfq.g;; i = whc.a(this.jdField_a_of_type_Int))
     {
-      break label14;
-      do
-      {
-        return;
-      } while (!TextUtils.equals(paramString, localwhc.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localwhc.b)) {
-          break label136;
-        }
-      }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
-      {
-        localwhc.b = paramErrorMessage;
-        localwhc.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramwgv.a.containsKey("handleCallback")) || (localwhc.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localwhc.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label169;
-        }
-        if (this.a.jdField_a_of_type_Whe == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_Whe.a(paramString, paramwgv.d, paramInt);
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Whe == null);
-    label136:
-    this.a.jdField_a_of_type_Whe.a(paramString, paramwgv.d, localwhc.a(), paramInt);
+      this.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_JavaLangString = paramwfq.jdField_e_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = paramwfq.d;
+      this.c = paramwfq.f;
+      this.jdField_a_of_type_JavaUtilList = paramwfq.jdField_a_of_type_JavaUtilList;
+      return;
+    }
   }
   
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, wgv paramwgv)
+  public String toString()
   {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramwgv);
-    a(paramString, paramInt1, new ErrorMessage(), paramwgv);
-  }
-  
-  public void b(String paramString, int paramInt, wgv paramwgv)
-  {
-    super.b(paramString, paramInt, paramwgv);
-    if ((this.a.jdField_a_of_type_Whe != null) && ((paramInt == 0) || (paramInt == 1))) {
-      this.a.jdField_a_of_type_Whe.b(paramString, paramwgv.d, paramInt);
+    StringBuilder localStringBuilder1 = new StringBuilder("BaseSplitConfig =[");
+    localStringBuilder1.append(" type=").append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(" mTransId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(" mTextId=").append(this.c);
+    localStringBuilder1.append(" mAlbumMinPicCount=").append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(" mAlbumDesc=").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(" mTransList=");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_JavaUtilList.toString())
+    {
+      localStringBuilder2.append(str);
+      localStringBuilder1.append("]");
+      return localStringBuilder1.toString();
     }
   }
 }

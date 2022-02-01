@@ -33,7 +33,7 @@ public class BaseProxyManager
   protected SQLiteDatabase db;
   private DBDelayManager dbDelayManager;
   volatile boolean isDestroyed;
-  private boolean isSaveDBAtOnceFlag;
+  private boolean isSaveDBAtOnceFlag = false;
   private ArrayList<ProxyObserver> listenerArray = new ArrayList();
   protected Vector<MsgQueueItem> msgQueue;
   protected final Object msgQueueLock = new Object();
@@ -144,7 +144,7 @@ public class BaseProxyManager
           }
         }
       }
-    } while (!this.app.isBackground_Pause);
+    } while (!this.app.isBackgroundPause);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MsgProxy", 2, "addMsgQueue write notify");
     }
@@ -161,7 +161,7 @@ public class BaseProxyManager
       }
       saveNotify();
     }
-    while (!this.app.isBackground_Pause) {
+    while (!this.app.isBackgroundPause) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -331,7 +331,7 @@ public class BaseProxyManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 60	com/tencent/mobileqq/app/proxy/BaseProxyManager:transSaveLock	Ljava/lang/Object;
+    //   1: getfield 62	com/tencent/mobileqq/app/proxy/BaseProxyManager:transSaveLock	Ljava/lang/Object;
     //   4: astore_2
     //   5: aload_2
     //   6: monitorenter
@@ -350,13 +350,13 @@ public class BaseProxyManager
     //   30: ldc_w 334
     //   33: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: aload_0
-    //   37: getfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   37: getfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
     //   40: invokevirtual 337	java/util/Vector:size	()I
     //   43: invokevirtual 340	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   49: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   52: aload_0
-    //   53: getfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   53: getfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
     //   56: invokevirtual 341	java/util/Vector:isEmpty	()Z
     //   59: ifeq +8 -> 67
     //   62: aload_3
@@ -365,13 +365,13 @@ public class BaseProxyManager
     //   65: monitorexit
     //   66: return
     //   67: aload_0
-    //   68: getfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   68: getfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
     //   71: astore 4
     //   73: aload_0
-    //   74: new 85	java/util/Vector
+    //   74: new 87	java/util/Vector
     //   77: dup
-    //   78: invokespecial 86	java/util/Vector:<init>	()V
-    //   81: putfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   78: invokespecial 88	java/util/Vector:<init>	()V
+    //   81: putfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
     //   84: aload_3
     //   85: monitorexit
     //   86: aload_0

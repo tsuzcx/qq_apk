@@ -1,17 +1,6 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc010001.1;
-
-public class vqz
+class vqz
 {
-  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt4)
-  {
-    vrl.a().a().post(new QCircleLpReportDc010001.1(paramInt1, paramInt2, paramInt3, paramString1, paramString2, paramString3, paramString4, paramInt4));
-  }
-  
-  private static int b()
-  {
-    return 10001;
-  }
+  private static final vqu a = new vqu(null);
 }
 
 

@@ -1,37 +1,42 @@
-import android.content.Intent;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import mqq.app.AppRuntime.Status;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 class ayni
-  extends ClickableSpan
+  implements Animation.AnimationListener
 {
-  ayni(aymu paramaymu, AppRuntime.Status paramStatus, long paramLong) {}
+  ayni(aymj paramaymj) {}
   
-  public void onClick(@NonNull View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = new Intent();
-    paramView.putExtra("KEY_ONLINE_STATUS", this.jdField_a_of_type_MqqAppAppRuntime$Status);
-    paramView.putExtra("KEY_ONLINE_EXT_STATUS", this.jdField_a_of_type_Long);
-    PublicFragmentActivity.a(aymu.a(this.jdField_a_of_type_Aymu), paramView, AccountOnlineStateActivity.class, 234);
-    if ((aymu.a(this.jdField_a_of_type_Aymu) != null) && (aymu.a(this.jdField_a_of_type_Aymu).isShowing()))
+    if (paramAnimation == aymj.b(this.a))
     {
-      aymu.a(this.jdField_a_of_type_Aymu).dismiss();
-      aymu.a(this.jdField_a_of_type_Aymu, null);
+      aymj.a(this.a).setVisibility(8);
+      aymj.a(this.a).setVisibility(4);
+      aymj.a(this.a).clearAnimation();
+      aymj.a(this.a).clearAnimation();
+      aymj.a(this.a).setBackgroundResource(2130849155);
+      aymj.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166690));
+      aymj.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166690));
     }
-    bcst.b(aymu.a(this.jdField_a_of_type_Aymu), "dc00898", "", "", "0X8009DE2", "0X8009DE2", 0, 0, "", "", "", "");
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
+    if (paramAnimation == aymj.a(this.a))
+    {
+      aymj.a(this.a).setVisibility(0);
+      aymj.a(this.a).setVisibility(0);
+      aymj.a(this.a).setBackgroundResource(2130850668);
+      aymj.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166984));
+      aymj.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166984));
+    }
   }
 }
 

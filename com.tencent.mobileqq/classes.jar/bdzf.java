@@ -1,100 +1,88 @@
-import android.annotation.TargetApi;
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
+import android.media.MediaMetadataRetriever;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.vpng.view.VPNGImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import org.apache.http.conn.scheme.LayeredSocketFactory;
-import org.apache.http.conn.ssl.StrictHostnameVerifier;
-import org.apache.http.params.HttpParams;
 
-@TargetApi(17)
 public class bdzf
-  implements LayeredSocketFactory
+  extends bdzd
 {
-  static final HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier = new StrictHostnameVerifier();
-  SSLCertificateSocketFactory jdField_a_of_type_AndroidNetSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(0, null);
-  private String jdField_a_of_type_JavaLangString;
+  protected VPNGImageView a;
   
-  public bdzf(String paramString)
+  public bdzf(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Socket connectSocket(Socket paramSocket, String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2, HttpParams paramHttpParams)
-  {
-    paramSocket.connect(new InetSocketAddress(paramString, paramInt1));
-    return paramSocket;
-  }
-  
-  public Socket createSocket()
-  {
-    return new Socket();
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SNISocketFactory", 2, "createSocket " + paramSocket.toString() + " host:" + paramString + " port:" + paramInt + " autoClose:" + paramBoolean);
-    }
-    paramSocket = (SSLSocket)this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.createSocket(paramSocket, paramString, paramInt, paramBoolean);
-    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    int i = 10;
-    if (Build.VERSION.SDK_INT >= 17)
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView(paramSpriteNativeView.getContext());
+    paramSpriteNativeView = new MediaMetadataRetriever();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SNISocketFactory", 2, "Setting SNI hostname");
-      }
-      this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.setHostname(paramSocket, paramString);
+      paramSpriteNativeView.setDataSource(paramString);
+      paramString = paramSpriteNativeView.extractMetadata(18);
+      String str = paramSpriteNativeView.extractMetadata(19);
+      this.jdField_a_of_type_Float = (Integer.parseInt(paramString) / 2);
+      this.b = Integer.parseInt(str);
+      paramString = new FrameLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.b);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setLayoutParams(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotX(this.jdField_a_of_type_Float / 2.0F);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotY(this.b / 2.0F);
+      return;
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      SSLSession localSSLSession = paramSocket.getSession();
-      if (jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(paramString, localSSLSession)) {
-        break;
-      }
-      bdvl.a(i + 4, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
-      paramSocket.close();
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
-      if (QLog.isColorLevel()) {
-        QLog.i("SNISocketFactory", 2, "No documented SNI support on Android <4.2, trying with reflection");
-      }
-      i = 20;
-      int j;
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
-      }
-      catch (Exception localException)
-      {
-        j = 30;
-        i = j;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("SNISocketFactory", 2, "SNI not useable");
-        i = j;
-      }
+      QLog.e("VideoSprite", 2, "MediaMetadataRetriever exception " + paramString);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("SNISocketFactory", 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
+    finally
+    {
+      paramSpriteNativeView.release();
     }
-    bdvl.a(i, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
-    return paramSocket;
   }
   
-  public boolean isSecure(Socket paramSocket)
+  public void a()
   {
-    if ((paramSocket instanceof SSLSocket)) {
-      return ((SSLSocket)paramSocket).isConnected();
-    }
-    return false;
+    super.a();
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setVideo(paramString, paramBoolean);
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onPause();
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onResume();
+  }
+  
+  public boolean c()
+  {
+    boolean bool = super.c();
+    a(this.jdField_a_of_type_Bdxm);
+    float f1 = this.jdField_a_of_type_Bdxm.jdField_a_of_type_Float;
+    float f2 = b();
+    float f3 = this.jdField_a_of_type_Float / 2.0F;
+    float f4 = this.f;
+    float f5 = this.jdField_a_of_type_Bdxm.b;
+    float f6 = b();
+    float f7 = this.b / 2.0F;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setX(f1 * f2 - f3);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setY(f4 - f5 * f6 - f7);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setRotation(this.g);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    return bool;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
   }
 }
 

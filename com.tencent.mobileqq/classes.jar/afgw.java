@@ -1,26 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class afgw
-  implements bkhw
+  extends BroadcastReceiver
 {
-  public afgw(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, bkho parambkho) {}
+  public afgw(QQMapActivity paramQQMapActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
     {
-    default: 
-      return;
-    case 0: 
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment, true);
-      this.jdField_a_of_type_Bkho.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getShareUrl());
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
+      }
+      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+      QQMapActivity.a(this.a, paramContext);
+      this.a.q = true;
     }
-    this.jdField_a_of_type_Bkho.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getActivity().finish();
   }
 }
 

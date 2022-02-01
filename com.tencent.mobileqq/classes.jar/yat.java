@@ -1,22 +1,36 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 class yat
-  implements yaw
+  extends SimpleObserver<Bitmap>
 {
-  yat(yas paramyas, PublishParam paramPublishParam, String paramString, int paramInt) {}
+  yat(yas paramyas) {}
   
-  public void a()
+  public void a(Bitmap paramBitmap)
   {
-    yqp.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    yas.a(this.jdField_a_of_type_Yas, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    super.onNext(paramBitmap);
+    yaq.b(yas.a(this.a), "onNext, oldResult=%s, newResult=%s", yas.a(this.a), paramBitmap);
+    yas.a(this.a, paramBitmap);
+    yas.a(this.a, true);
   }
   
-  public void b()
+  public void onCancel()
   {
-    yqp.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    yas.a(this.jdField_a_of_type_Yas).finish();
-    yas.a(this.jdField_a_of_type_Yas).overridePendingTransition(0, 0);
+    super.onCancel();
+    yaq.a(yas.a(this.a), "onCancel");
+    onError(new ErrorMessage(-1, "onCancel"));
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    yaq.c(yas.a(this.a), "onError, oldError=%s, newError=%s", yas.a(this.a), paramError);
+    yas.a(this.a, paramError);
+    yas.a(this.a, SystemClock.uptimeMillis());
+    yas.a(this.a, false);
   }
 }
 

@@ -1,16 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.UiApiPlugin.8;
-import com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class avqs
-  implements bgis
+class avqs
+  implements DialogInterface.OnClickListener
 {
-  public avqs(UiApiPlugin.8 param8) {}
+  avqs(avqr paramavqr, BaseChatPie paramBaseChatPie, String paramString) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.post(new UiApiPlugin.8.1.1(this, paramBitmap), 8, null, true);
+    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    Intent localIntent = new Intent(localBaseActivity, QQVasH5PayBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localBaseActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

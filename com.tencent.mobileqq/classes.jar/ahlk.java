@@ -1,23 +1,95 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForTofuIntimateAnniversary;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.qphone.base.util.QLog;
 
 class ahlk
-  extends afuv
+  implements biuz
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  MessageForTofuIntimateAnniversary jdField_a_of_type_ComTencentMobileqqDataMessageForTofuIntimateAnniversary;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  ahlk(ahlj paramahlj, boolean paramBoolean) {}
   
-  ahlk(ahlj paramahlj) {}
+  public void a(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LongMsgItemBuilder", 2, "SingleTap invoked!");
+    }
+    Object localObject;
+    float f1;
+    float f2;
+    float f3;
+    int k;
+    boolean bool2;
+    int j;
+    boolean bool1;
+    if ((paramView instanceof AnimationTextView))
+    {
+      localObject = (AnimationTextView)paramView;
+      f1 = ((AnimationTextView)localObject).touchL - ahlj.b();
+      f2 = ((AnimationTextView)localObject).touchT;
+      f3 = ahlj.c();
+      if (this.jdField_a_of_type_Boolean) {
+        f1 = ((AnimationTextView)localObject).touchL - ahlj.d();
+      }
+      localObject = ((AnimationTextView)localObject).getText();
+      if ((localObject instanceof begp))
+      {
+        localObject = (begp)localObject;
+        localObject = (begw[])((begp)localObject).getSpans(0, ((begp)localObject).length(), begw.class);
+        if (!(paramView instanceof ETTextView)) {
+          break label332;
+        }
+        paramView = (ETTextView)paramView;
+        k = paramView.mClickEpId;
+        int m = paramView.mClickcEId;
+        if ((paramView.mFont == null) || (paramView.mFont.mFontId == 0) || (paramView.mFont.mFontType != 1)) {
+          break label314;
+        }
+        bool2 = true;
+        i = k;
+        j = m;
+        bool1 = bool2;
+        if (bool2)
+        {
+          i = k;
+          j = m;
+          bool1 = bool2;
+          if (paramView.getETLayout() != null)
+          {
+            paramView = paramView.getETLayout();
+            if (QLog.isColorLevel()) {
+              QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
+            }
+            if (paramView.jdField_a_of_type_Boolean) {
+              break label320;
+            }
+            bool1 = true;
+            label248:
+            j = m;
+          }
+        }
+      }
+    }
+    for (int i = k;; i = -1)
+    {
+      if ((i != -1) && (j != -1)) {}
+      for (bool2 = true;; bool2 = false)
+      {
+        asos.a((begw[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Ahlj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahlj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Ahlj.jdField_a_of_type_AndroidContentContext, bool1);
+        return;
+        label314:
+        bool2 = false;
+        break;
+        label320:
+        bool1 = false;
+        break label248;
+      }
+      label332:
+      bool1 = false;
+      j = -1;
+    }
+  }
 }
 
 

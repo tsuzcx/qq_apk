@@ -1,64 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class bfkc
-  extends ajcf
+  implements bgyp
 {
-  public bfkc(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramBoolean);
-  }
+  public bfkc(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  protected int a()
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    return 10100;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      bcst.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
+      TroopBarReplyActivity.a(this.a, false);
     }
-  }
-  
-  protected int b()
-  {
-    return 39;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = String.valueOf(paramRecommendTroopItem.uin);
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      bcst.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_add", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
-    }
-  }
-  
-  protected int c()
-  {
-    return 10101;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      bcst.b(null, "dc00899", "Grp_recom", "", "set_page", "exp_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
-    }
+    return false;
   }
 }
 

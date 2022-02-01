@@ -1,17 +1,12 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class amdk
+  extends afwn
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public arcs a;
-  public ThemeImageView a;
+  public CheckBox a;
   
-  public amdk(amdj paramamdj) {}
+  private amdk(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

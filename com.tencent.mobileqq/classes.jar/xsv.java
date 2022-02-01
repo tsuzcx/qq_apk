@@ -1,8 +1,8 @@
+import android.support.v4.view.PagerAdapter;
+
 public abstract interface xsv
 {
-  public abstract void b(String paramString);
-  
-  public abstract void d();
+  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 

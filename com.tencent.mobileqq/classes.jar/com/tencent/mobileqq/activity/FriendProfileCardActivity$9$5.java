@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aegy;
-import anni;
-import azfe;
+import aeqc;
+import anzj;
+import azxr;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.widget.QQToast;
 public class FriendProfileCardActivity$9$5
   implements Runnable
 {
-  public FriendProfileCardActivity$9$5(aegy paramaegy) {}
+  public FriendProfileCardActivity$9$5(aeqc paramaeqc) {}
   
   public void run()
   {
@@ -20,13 +20,13 @@ public class FriendProfileCardActivity$9$5
       this.a.a.g = true;
       if (localPhoneContactManagerImp.b(this.a.a.a.a.k, this.a.a.a.a.a))
       {
-        QQToast.a(this.a.a.getApplicationContext(), 2, anni.a(2131703684), 0).a();
+        QQToast.a(this.a.a.getApplicationContext(), 2, anzj.a(2131703791), 0).a();
         return;
       }
-      QQToast.a(this.a.a.getApplicationContext(), 1, anni.a(2131703714), 0).a();
+      QQToast.a(this.a.a.getApplicationContext(), 1, anzj.a(2131703821), 0).a();
       return;
     }
-    QQToast.a(this.a.a.getApplicationContext(), anni.a(2131703674), 0).a();
+    QQToast.a(this.a.a.getApplicationContext(), anzj.a(2131703781), 0).a();
   }
 }
 

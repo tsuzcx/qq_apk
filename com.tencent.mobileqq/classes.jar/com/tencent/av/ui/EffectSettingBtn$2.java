@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import android.view.View;
-import mct;
+import mdp;
 
 public class EffectSettingBtn$2
   implements Runnable
@@ -10,10 +10,10 @@ public class EffectSettingBtn$2
   {
     if (!this.this$0.b)
     {
-      this.this$0.a.postDelayed(mct.a(this.this$0), 1000L);
+      this.this$0.a.postDelayed(mdp.a(this.this$0), 1000L);
       return;
     }
-    mct.a(this.this$0);
+    mdp.a(this.this$0);
   }
 }
 

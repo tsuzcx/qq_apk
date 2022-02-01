@@ -1,13 +1,18 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
 
-class bfub
-  implements bfuf
+public class bfub
+  implements bdyf
 {
-  bfub(bftx parambftx, String paramString) {}
+  public bfub(TroopEnterEffectController.3 param3) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramInt == 0) {}
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.this$0.a.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = paramInt2;
+    this.a.this$0.a.setLayoutParams(localLayoutParams);
   }
 }
 

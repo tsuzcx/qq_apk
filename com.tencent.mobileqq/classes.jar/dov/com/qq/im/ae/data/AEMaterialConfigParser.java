@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.data;
 
 import android.text.TextUtils;
-import bnpb;
-import bnpc;
-import bnpf;
+import boqq;
+import boqr;
+import boqu;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaAdditionalPackage;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
@@ -33,60 +33,12 @@ public class AEMaterialConfigParser
     jdField_a_of_type_Int = 5;
   }
   
-  public static MetaMaterial a(MetaMaterial paramMetaMaterial)
-  {
-    boolean bool;
-    for (;;)
-    {
-      String[] arrayOfString1;
-      String[] arrayOfString2;
-      int i;
-      try
-      {
-        bool = a(paramMetaMaterial.additionalPackage);
-        if (bool) {
-          return paramMetaMaterial;
-        }
-        arrayOfString1 = new String[5];
-        arrayOfString1[0] = paramMetaMaterial.additionalPackage.superLowPackageUrl;
-        arrayOfString1[1] = paramMetaMaterial.additionalPackage.lowPackageUrl;
-        arrayOfString1[2] = paramMetaMaterial.additionalPackage.midPackageUrl;
-        arrayOfString1[3] = paramMetaMaterial.additionalPackage.highPackageUrl;
-        arrayOfString1[4] = paramMetaMaterial.packageUrl;
-        arrayOfString2 = new String[5];
-        arrayOfString2[0] = paramMetaMaterial.additionalPackage.superLowPackageMd5;
-        arrayOfString2[1] = paramMetaMaterial.additionalPackage.lowPackageMd5;
-        arrayOfString2[2] = paramMetaMaterial.additionalPackage.midPackageMd5;
-        arrayOfString2[3] = paramMetaMaterial.additionalPackage.highPackageMd5;
-        arrayOfString2[4] = paramMetaMaterial.packageMd5;
-        int j = jdField_a_of_type_Int - 1;
-        i = j;
-        if (!TextUtils.isEmpty(arrayOfString1[j]))
-        {
-          paramMetaMaterial.packageUrl = arrayOfString1[j];
-          paramMetaMaterial.packageMd5 = arrayOfString2[j];
-          continue;
-          i += 1;
-        }
-      }
-      finally {}
-      if (i < 5)
-      {
-        if (TextUtils.isEmpty(arrayOfString1[i])) {
-          break;
-        }
-        paramMetaMaterial.packageUrl = arrayOfString1[i];
-        paramMetaMaterial.packageMd5 = arrayOfString2[i];
-      }
-    }
-  }
-  
   public static VideoMaterial a(String paramString)
   {
     return VideoSDKMaterialParser.parseVideoMaterial(paramString, "params");
   }
   
-  public static ArrayList<bnpb> a(String paramString)
+  public static ArrayList<boqq> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -109,32 +61,32 @@ public class AEMaterialConfigParser
     localObject1 = ((GetCategoryMaterialRsp)localObject1).Categories.iterator();
     for (;;)
     {
-      bnpb localbnpb;
+      boqq localboqq;
       Object localObject3;
-      bnpf localbnpf;
+      boqu localboqu;
       Map localMap;
       if (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (MetaCategory)((Iterator)localObject1).next();
-        localbnpb = new bnpb();
-        localbnpb.b = ((MetaCategory)localObject2).name;
-        localbnpb.a = new ArrayList();
+        localboqq = new boqq();
+        localboqq.b = ((MetaCategory)localObject2).name;
+        localboqq.a = new ArrayList();
         localObject2 = ((MetaCategory)localObject2).materials.iterator();
         for (;;)
         {
           if (((Iterator)localObject2).hasNext())
           {
             localObject3 = (MetaMaterial)((Iterator)localObject2).next();
-            if (((!((MetaMaterial)localObject3).id.contains("_3DFaceFila")) || (bnpc.a())) && ((!((MetaMaterial)localObject3).id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor))))) {
+            if (((!((MetaMaterial)localObject3).id.contains("_3DFaceFila")) || (boqr.b())) && ((!((MetaMaterial)localObject3).id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor))))) {
               if ((paramString.containsKey(((MetaMaterial)localObject3).id)) && (paramString.get(((MetaMaterial)localObject3).id) != null))
               {
-                localObject3 = (bnpf)paramString.get(((MetaMaterial)localObject3).id);
-                localbnpb.a.add(localObject3);
+                localObject3 = (boqu)paramString.get(((MetaMaterial)localObject3).id);
+                localboqq.a.add(localObject3);
               }
               else
               {
-                localbnpf = new bnpf();
-                localbnpf.jdField_c_of_type_JavaLangString = ((MetaMaterial)localObject3).thumbUrl;
+                localboqu = new boqu();
+                localboqu.jdField_c_of_type_JavaLangString = ((MetaMaterial)localObject3).thumbUrl;
                 localMap = ((MetaMaterial)localObject3).additionalFields;
                 if (localMap == null) {
                   break;
@@ -146,40 +98,40 @@ public class AEMaterialConfigParser
       }
       try
       {
-        localbnpf.jdField_c_of_type_Int = Integer.parseInt((String)localMap.get("kind"));
+        localboqu.jdField_c_of_type_Int = Integer.parseInt((String)localMap.get("kind"));
         try
         {
           for (;;)
           {
             label357:
-            localbnpf.jdField_d_of_type_Int = Integer.parseInt((String)localMap.get("displayType"));
+            localboqu.jdField_d_of_type_Int = Integer.parseInt((String)localMap.get("displayType"));
             label377:
-            localbnpf.g = ((String)localMap.get("qq_camera_top_title"));
-            localbnpf.h = ((String)localMap.get("qq_camera_scheme"));
-            localbnpf.l = ((String)localMap.get("playshow_cover_img"));
-            localbnpf.m = ((String)localMap.get("playshow_display_text"));
-            localbnpf.i = ((String)localMap.get("takeSameName"));
+            localboqu.g = ((String)localMap.get("qq_camera_top_title"));
+            localboqu.h = ((String)localMap.get("qq_camera_scheme"));
+            localboqu.l = ((String)localMap.get("playshow_cover_img"));
+            localboqu.m = ((String)localMap.get("playshow_display_text"));
+            localboqu.i = ((String)localMap.get("takeSameName"));
             try
             {
               if (!TextUtils.isEmpty((String)localMap.get("showCircleTakeSame"))) {}
-              for (localbnpf.jdField_f_of_type_Int = Integer.valueOf((String)localMap.get("showCircleTakeSame")).intValue();; localbnpf.jdField_f_of_type_Int = 0)
+              for (localboqu.jdField_f_of_type_Int = Integer.valueOf((String)localMap.get("showCircleTakeSame")).intValue();; localboqu.jdField_f_of_type_Int = 0)
               {
-                label509:
-                localbnpf.j = ((String)localMap.get("showEntry"));
-                localbnpf.jdField_a_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
-                a(localbnpf, (MetaMaterial)localObject3);
-                localbnpf.jdField_f_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
-                localbnpb.a.add(localbnpf);
-                paramString.put(((MetaMaterial)localObject3).id, localbnpf);
+                label503:
+                localboqu.j = ((String)localMap.get("showEntry"));
+                localboqu.jdField_a_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
+                a(localboqu, (MetaMaterial)localObject3);
+                localboqu.jdField_f_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
+                localboqq.a.add(localboqu);
+                paramString.put(((MetaMaterial)localObject3).id, localboqu);
                 break;
               }
             }
             catch (Throwable localThrowable1)
             {
-              break label509;
+              break label503;
             }
           }
-          localArrayList.add(localbnpb);
+          localArrayList.add(localboqq);
           continue;
           return localArrayList;
         }
@@ -195,23 +147,23 @@ public class AEMaterialConfigParser
     }
   }
   
-  private static void a(bnpf parambnpf, MetaMaterial paramMetaMaterial)
+  private static void a(boqu paramboqu, MetaMaterial paramMetaMaterial)
   {
     if (paramMetaMaterial.additionalPackage == null)
     {
-      parambnpf.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
-      parambnpf.e = paramMetaMaterial.packageMd5;
+      paramboqu.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
+      paramboqu.e = paramMetaMaterial.packageMd5;
     }
     for (;;)
     {
-      if ((paramMetaMaterial.packageUrl != null) && (!paramMetaMaterial.packageUrl.equals(parambnpf.jdField_d_of_type_JavaLangString))) {
-        parambnpf.jdField_d_of_type_Boolean = true;
+      if ((paramMetaMaterial.packageUrl != null) && (!paramMetaMaterial.packageUrl.equals(paramboqu.jdField_d_of_type_JavaLangString))) {
+        paramboqu.jdField_d_of_type_Boolean = true;
       }
       return;
       if ((TextUtils.isEmpty(paramMetaMaterial.additionalPackage.superLowPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.lowPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.midPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.highPackageUrl)))
       {
-        parambnpf.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
-        parambnpf.e = paramMetaMaterial.packageMd5;
+        paramboqu.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
+        paramboqu.e = paramMetaMaterial.packageMd5;
       }
       else
       {
@@ -231,8 +183,8 @@ public class AEMaterialConfigParser
         int i = j;
         if (!TextUtils.isEmpty(arrayOfString1[j]))
         {
-          parambnpf.jdField_d_of_type_JavaLangString = arrayOfString1[j];
-          parambnpf.e = arrayOfString2[j];
+          paramboqu.jdField_d_of_type_JavaLangString = arrayOfString1[j];
+          paramboqu.e = arrayOfString2[j];
         }
         else
         {
@@ -243,16 +195,11 @@ public class AEMaterialConfigParser
               break;
             }
           } while (TextUtils.isEmpty(arrayOfString1[i]));
-          parambnpf.jdField_d_of_type_JavaLangString = arrayOfString1[i];
-          parambnpf.e = arrayOfString2[i];
+          paramboqu.jdField_d_of_type_JavaLangString = arrayOfString1[i];
+          paramboqu.e = arrayOfString2[i];
         }
       }
     }
-  }
-  
-  private static boolean a(MetaAdditionalPackage paramMetaAdditionalPackage)
-  {
-    return (paramMetaAdditionalPackage == null) || ((TextUtils.isEmpty(paramMetaAdditionalPackage.superLowPackageUrl)) && (TextUtils.isEmpty(paramMetaAdditionalPackage.lowPackageUrl)) && (TextUtils.isEmpty(paramMetaAdditionalPackage.midPackageUrl)) && (TextUtils.isEmpty(paramMetaAdditionalPackage.highPackageUrl)));
   }
 }
 

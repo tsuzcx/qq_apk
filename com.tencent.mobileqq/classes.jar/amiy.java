@@ -1,32 +1,41 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amiy
-  implements GLSurfaceView.EGLConfigChooser
+  implements bihd
 {
-  private int a;
+  public amiy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public amiy(int paramInt)
+  public void a(biha parambiha)
   {
-    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
-    this.a = paramInt;
-  }
-  
-  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int i = this.a;
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0)
-    {
-      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
     }
-    return arrayOfEGLConfig[0];
+    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
+      auna.a(2131691151);
+    }
+    do
+    {
+      do
+      {
+        return;
+        bhjk.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Biha.d(), this.a.jdField_a_of_type_Biha.e());
+      } while (this.a.j != 10);
+      parambiha.a(localSurfaceHolder);
+      this.a.jdField_a_of_type_Int = parambiha.c();
+    } while (this.a.jdField_a_of_type_Int <= 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
+    }
+    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
+    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
   }
 }
 

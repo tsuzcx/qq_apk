@@ -1,27 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.1;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.2;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-
-public class rka
-  implements ovp
+public abstract interface rka
 {
-  public rka(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public abstract void a();
   
-  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
-  {
-    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.2(this));
-  }
+  public abstract void a(String paramString);
   
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
-    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.1(this));
-  }
+  public abstract void a(rjz<String> paramrjz);
+  
+  public abstract void b(String paramString);
 }
 
 

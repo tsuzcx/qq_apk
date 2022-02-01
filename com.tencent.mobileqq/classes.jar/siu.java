@@ -1,11 +1,18 @@
-import kotlin.Metadata;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "", "onPreloadFailed", "", "onPreloadSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface siu
+public class siu
+  implements Function1<Canvas, Unit>
 {
-  public abstract void a();
+  public siu(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public abstract void b();
+  public Unit a(Canvas paramCanvas)
+  {
+    ReadInJoyListViewGroup.b(this.a, paramCanvas);
+    return null;
+  }
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.update;
 
 import com.tencent.qphone.base.util.QLog;
-import nkl;
+import nmg;
 
 class HippyQQLibraryManager$3$1
-  implements nkl
+  implements nmg
 {
   HippyQQLibraryManager$3$1(HippyQQLibraryManager.3 param3) {}
   

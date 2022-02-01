@@ -1,12 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
 public class aiwq
-  extends amcl
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public PublicRecommendAccountInfo a;
-  public TextView b;
+  public aiwq(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mru.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

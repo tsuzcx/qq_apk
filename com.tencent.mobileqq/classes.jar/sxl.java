@@ -1,18 +1,13 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class sxl
-  extends aqce
+class sxl
+  implements PopupWindow.OnDismissListener
 {
-  public sxl(FastWebActivity paramFastWebActivity) {}
+  sxl(sxk paramsxk) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void onDismiss()
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    tcc.a(this.a.a, FastWebActivity.a(this.a), this.a.getApplicationContext());
-    if (paramBundle.getInt("color_note_curd_from_type") != 1) {
-      this.a.finish();
-    }
+    this.a.a(1.0F);
   }
 }
 

@@ -2,14 +2,14 @@ package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
 import android.os.Bundle;
-import anmw;
-import anni;
-import aufw;
-import aufz;
-import aulj;
-import bcst;
-import bgjw;
-import bgpa;
+import anyw;
+import anzj;
+import auxr;
+import auxu;
+import avdj;
+import bdll;
+import bhjx;
+import bhpc;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nmp;
+import nok;
 
 public class ForwardVoiceCallOption
-  extends aufz
+  extends auxu
 {
   boolean i;
   
@@ -34,15 +34,15 @@ public class ForwardVoiceCallOption
   public List<RecentUser> a(List<RecentUser> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    anmw localanmw = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aufw.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!bgjw.a(localRecentUser.uin)) && (!bgjw.c(localRecentUser.uin)) && (!nmp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
+      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(auxr.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
+        if ((localRecentUser.getType() == 0) && (!bhjx.a(localRecentUser.uin)) && (!bhjx.c(localRecentUser.uin)) && (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
         {
-          if ((localanmw != null) && (localanmw.b(localRecentUser.uin))) {
+          if ((localanyw != null) && (localanyw.b(localRecentUser.uin))) {
             localArrayList.add(localRecentUser);
           }
         }
@@ -56,34 +56,34 @@ public class ForwardVoiceCallOption
   
   public void a()
   {
-    if (n()) {
+    if (o()) {
       this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
     }
     this.jdField_a_of_type_JavaUtilSet.add(jdField_i_of_type_JavaLangInteger);
-    if (k()) {
+    if (l()) {
       this.jdField_a_of_type_JavaUtilSet.add(h);
     }
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
       return;
     }
-    aulj localaulj = new aulj(this);
+    avdj localavdj = new avdj(this);
     paramInt = paramBundle.getInt("uintype");
     String str1 = paramBundle.getString("troop_uin");
     String str2 = paramBundle.getString("uin");
     paramBundle = paramBundle.getString("uinname");
     if ((paramInt == 0) || (paramInt == 1004)) {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, str2, paramBundle, "", true, str1, true, true, localaulj, "from_internal");
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, str2, paramBundle, "", true, str1, true, true, localavdj, "from_internal");
     }
     for (;;)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "10", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "10", "", "", "");
       return;
       if (paramInt == 1006) {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, "0", paramBundle, str2, true, str1, true, true, localaulj, "from_internal");
+        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, "0", paramBundle, str2, true, str1, true, true, localavdj, "from_internal");
       }
     }
   }
@@ -97,20 +97,20 @@ public class ForwardVoiceCallOption
   
   public String b()
   {
-    return anni.a(2131703643);
+    return anzj.a(2131703750);
   }
   
   public void f()
   {
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_cate", 0, 0, "2", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_cate", 0, 0, "2", "", "", "");
     if (this.jdField_i_of_type_Boolean) {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D9C", "0X8004D9C", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D9C", "0X8004D9C", 0, 0, "", "", "", "");
     }
   }
   
   public void g()
   {
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_search", 0, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_search", 0, 0, "", "", "", "");
   }
 }
 

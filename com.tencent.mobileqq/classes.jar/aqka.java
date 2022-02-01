@@ -1,44 +1,81 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.Foreground;
 
 public class aqka
+  implements aqji, aqjn
 {
-  public int a;
-  public Rect a;
-  public aqkh a;
-  public ArrayList<aqkb> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 1;
+  @Nullable
+  private Object jdField_a_of_type_JavaLangObject;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public aqka(aqkh paramaqkh, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
+  aqka(Context paramContext, @Nullable aqji paramaqji)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 24;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Aqkh = paramaqkh;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.e = paramInt3;
-    if (paramaqkh.jdField_a_of_type_Int > 0) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      paramaqkh.jdField_a_of_type_Int += 1;
-      return;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangObject = paramaqji;
+  }
+  
+  aqka(Context paramContext, @Nullable aqjn paramaqjn)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangObject = paramaqjn;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof aqjn)) {
+      ((aqjn)this.jdField_a_of_type_JavaLangObject).a(paramBoolean, paramInt1, paramInt2, paramString);
     }
   }
   
-  public String toString()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Aqkh.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
-    return localStringBuilder.toString();
+    if ((this.jdField_a_of_type_JavaLangObject instanceof aqji)) {
+      ((aqji)this.jdField_a_of_type_JavaLangObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
+    }
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof aqji)) {
+      return ((aqji)this.jdField_a_of_type_JavaLangObject).a();
+    }
+    return false;
+  }
+  
+  void b(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("TeleScreenListenerWrapper", 1, "jump | jump: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
+    a(paramBoolean, paramInt1, paramInt2, paramString);
+  }
+  
+  void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
+  {
+    QLog.d("TeleScreenListenerWrapper", 1, "download | pass: " + paramBoolean2 + ", errCode: " + paramInt + ", errMsg: " + paramString1);
+    a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
+    if (((this.jdField_a_of_type_JavaLangObject instanceof aqji)) && (!((aqji)this.jdField_a_of_type_JavaLangObject).a())) {}
+    Context localContext;
+    do
+    {
+      return;
+      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localContext == null) || (!paramBoolean1) || (paramBoolean2) || (TextUtils.isEmpty(paramString2)));
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString2);
+    if ((localContext instanceof Activity)) {}
+    for (paramString1 = (Activity)localContext; paramString1 == null; paramString1 = Foreground.getTopActivity())
+    {
+      localIntent.addFlags(268435456);
+      localContext.startActivity(localIntent);
+      return;
+    }
+    paramString1.startActivity(localIntent);
   }
 }
 

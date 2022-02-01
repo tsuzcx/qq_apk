@@ -1,18 +1,28 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class yfv
-  extends weu
+  extends SimpleObserver<yfw>
 {
-  public String a;
-  public ArrayList<String> a;
-  public List<String> a;
-  public boolean a;
+  public yfv(yfr paramyfr) {}
   
-  public yfv(String paramString)
+  public void a(yfw paramyfw)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super.onNext(paramyfw);
+    yfr.a(this.a, paramyfw, false, new ErrorMessage());
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    yuk.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    yfr.a(this.a, null, false, (ErrorMessage)paramError);
   }
 }
 

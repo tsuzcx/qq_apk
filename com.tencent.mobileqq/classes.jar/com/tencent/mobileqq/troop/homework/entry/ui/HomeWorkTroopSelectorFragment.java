@@ -9,9 +9,9 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
-import bezw;
-import bezx;
+import anzj;
+import bfzq;
+import bfzr;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,7 +29,7 @@ public class HomeWorkTroopSelectorFragment
   extends IphoneTitleBarFragment
   implements Runnable
 {
-  private bezx jdField_a_of_type_Bezx;
+  private bfzr jdField_a_of_type_Bfzr;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
@@ -53,15 +53,15 @@ public class HomeWorkTroopSelectorFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      this.jdField_a_of_type_Bezx = new bezx(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bezx);
+      this.jdField_a_of_type_Bfzr = new bfzr(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bfzr);
     }
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131368027));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131368099));
     this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetListView.setDividerHeight(0);
     if (getActivity() == null) {}
@@ -75,8 +75,8 @@ public class HomeWorkTroopSelectorFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    setRightButton(2131696724, new bezw(this));
-    setTitle(anni.a(2131704299));
+    setRightButton(2131696773, new bfzq(this));
+    setTitle(anzj.a(2131704406));
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
     {
@@ -94,7 +94,7 @@ public class HomeWorkTroopSelectorFragment
   
   public int getContentLayoutId()
   {
-    return 2131560621;
+    return 2131560636;
   }
   
   public boolean onBackEvent()

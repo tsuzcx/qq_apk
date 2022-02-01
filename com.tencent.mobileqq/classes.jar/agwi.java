@@ -1,16 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-public class agwi
-  implements View.OnTouchListener
+class agwi
+  implements bive
 {
-  public agwi(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  agwi(agwg paramagwg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    if ((agwg.a(this.a) != null) && (agwg.a(this.a).a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel.reportAppShortcutBarItem()");
+      }
+      agwg.a(this.a).d();
+    }
+    for (;;)
+    {
+      if ((agwg.a(this.a) != null) && (agwg.a(this.a).a())) {
+        agwg.a(this.a).d();
+      }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel is null");
+      }
+    }
   }
 }
 

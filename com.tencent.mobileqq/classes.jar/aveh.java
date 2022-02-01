@@ -1,82 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.fragment.MineFragment.2;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import tencent.im.oidb.cmd0x91f.oidb_0x91f.ReqBody;
 
 public class aveh
 {
-  private static volatile aveh jdField_a_of_type_Aveh;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avej(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new avei(this);
-  private ArrayList<avek> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  
-  private aveh(Context paramContext)
+  public static void a(NearbyAppInterface paramNearbyAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    a(true);
-  }
-  
-  public static aveh a(Context paramContext)
-  {
-    if (jdField_a_of_type_Aveh == null) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby", 2, "clearLbsInfoAndExit");
+    }
+    axws.a(paramNearbyAppInterface.getAccount(), "nearby_enter_time", Long.valueOf(0L));
+    if ((aodb)paramNearbyAppInterface.a(3) != null)
     {
-      if (jdField_a_of_type_Aveh == null) {
-        jdField_a_of_type_Aveh = new aveh(paramContext);
-      }
-      return jdField_a_of_type_Aveh;
+      oidb_0x91f.ReqBody localReqBody = new oidb_0x91f.ReqBody();
+      localReqBody.uint32_state.set(0);
+      nkm.a(paramNearbyAppInterface, new avei(paramNearbyAppInterface), localReqBody.toByteArray(), "OidbSvc.0x91f", 2335, 5, null, 0L);
     }
-    finally {}
+    axws.a(paramNearbyAppInterface.getAccount(), false);
+    axws.a(paramNearbyAppInterface.getAccount(), "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(false));
+    paramNearbyAppInterface.c = false;
+    ThreadManager.post(new MineFragment.2(paramNearbyAppInterface), 10, null, true);
   }
   
-  public void a(avek paramavek)
+  public static void b(NearbyAppInterface paramNearbyAppInterface)
   {
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramavek)) && (paramavek != null)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramavek);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    if (paramBoolean)
+    File localFile = BaseApplicationImpl.getContext().getFileStreamPath(paramNearbyAppInterface.getCurrentAccountUin() + "v5.3.nb");
+    if (localFile.exists())
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      localIntentFilter.addAction("VolumeBtnDown");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-      return;
+      localFile.delete();
+      axxb.a("Q.nearby", "clearNearbyCache", new Object[0]);
     }
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void b(avek paramavek)
-  {
-    if ((paramavek != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavek))) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramavek);
-    }
+    axws.a(paramNearbyAppInterface.getAccount(), "history_valid", Boolean.valueOf(false));
   }
 }
 

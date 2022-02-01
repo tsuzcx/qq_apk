@@ -1,31 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 class yyk
-  implements wld<wzc, xaw>
+  extends wve
 {
-  yyk(yye paramyye, WeakReference paramWeakReference) {}
-  
-  public void a(@NonNull wzc paramwzc, @Nullable xaw paramxaw, @NonNull ErrorMessage paramErrorMessage)
+  yyk(yyj paramyyj, String paramString)
   {
-    if (paramxaw == null)
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      paramwzc = (yyr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramwzc != null) {
-        paramwzc.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      this.a.jdField_a_of_type_Yyg.a = paramSosoLbsInfo.a.a;
+      this.a.jdField_a_of_type_Yyg.b = paramSosoLbsInfo.a.b;
+      yuk.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Yyg.a + " longitude=" + this.a.jdField_a_of_type_Yyg.b);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_Yyg.f();
       }
       return;
     }
-    paramwzc = (yyr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramwzc != null)
-    {
-      paramwzc.a(0, paramxaw.a);
-      return;
-    }
-    yqp.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+    this.a.jdField_a_of_type_Yyg.a = 0.0D;
+    this.a.jdField_a_of_type_Yyg.b = 0.0D;
+    yuk.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 

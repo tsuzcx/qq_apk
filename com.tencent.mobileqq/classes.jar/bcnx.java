@@ -1,26 +1,9 @@
-import com.tencent.mobileqq.soload.LoadOptions;
+import android.widget.ImageView;
 
-public class bcnx
+public abstract interface bcnx
+  extends bcoa
 {
-  private LoadOptions a = new LoadOptions();
-  
-  bcnx a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x1;
-      return this;
-    }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFFE;
-    return this;
-  }
-  
-  public LoadOptions a()
-  {
-    return this.a;
-  }
+  public abstract ImageView b();
 }
 
 

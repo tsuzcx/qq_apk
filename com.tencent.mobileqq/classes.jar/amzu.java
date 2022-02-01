@@ -1,237 +1,77 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.os.Message;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadRsp;
+import tencent.im.cs.cmd0x346.cmd0x346.DownloadInfo;
+import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 
 public class amzu
-  implements amus
+  extends beyf
 {
-  public static boolean a;
-  private int jdField_a_of_type_Int = 1;
-  amug jdField_a_of_type_Amug;
-  private boolean b;
-  private boolean c;
+  QQAppInterface a;
   
-  public amzu(amug paramamug)
+  public amzu(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Amug = paramamug;
+    this.a = paramQQAppInterface;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
-    if (paramQQAppInterface != null)
-    {
-      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
-      if (localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0) >= localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3)) {
-        bool = true;
-      }
-      jdField_a_of_type_Boolean = bool;
-    }
-  }
-  
-  private void b()
-  {
-    if (!this.b) {}
-    Object localObject;
-    amgz localamgz;
-    amhd localamhd;
+    Object localObject = (bete)paramMessage.obj;
+    if ((localObject == null) || (((bete)localObject).c != 36)) {}
     do
     {
+      int i;
       do
       {
-        return;
-        this.b = false;
-        localObject = this.jdField_a_of_type_Amug.a();
-      } while (localObject == null);
-      localamgz = (amgz)((QQAppInterface)localObject).getManager(211);
-      localamhd = (amhd)((QQAppInterface)localObject).getManager(153);
-      localObject = null;
-      if (localamgz.jdField_a_of_type_Amzs != null) {
-        localObject = localamgz.jdField_a_of_type_Amzs.a();
-      }
-    } while ((localObject == null) || ((((DrawerPushItem)localObject).msg_type != 7) && (((DrawerPushItem)localObject).msg_type != 9) && (((DrawerPushItem)localObject).msg_type != 2) && (((DrawerPushItem)localObject).msg_type != 10)));
-    QLog.i("ApolloBubbleLogic", 1, "checkIfPanelBubble remove panel bubble");
-    localamhd.a((DrawerPushItem)localObject);
-    localamgz.jdField_a_of_type_Amzs.a();
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp", 0);
-    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_";
-    String str1 = (String)localObject1 + ApolloUtil.b();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
-    if (((SharedPreferences)localObject2).contains(str1)) {
-      localEditor.putInt(str1, ((SharedPreferences)localObject2).getInt(str1, 0) + 1);
-    }
-    for (;;)
-    {
-      localEditor.commit();
-      a(paramQQAppInterface);
-      return;
-      Object localObject3 = ((SharedPreferences)localObject2).getAll();
-      localObject2 = new ArrayList();
-      if (localObject3 != null)
-      {
-        localObject3 = ((Map)localObject3).entrySet().iterator();
-        while (((Iterator)localObject3).hasNext())
+        do
         {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
-          String str2 = (String)localEntry.getKey();
-          if ((str2 != null) && (str2.startsWith((String)localObject1))) {
-            ((List)localObject2).add(localEntry.getKey());
-          }
-        }
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          localEditor.remove((String)((Iterator)localObject1).next());
-        }
-      }
-      localEditor.putInt(str1, 1);
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Amug != null)
-    {
-      amgz localamgz = (amgz)this.jdField_a_of_type_Amug.a().getManager(211);
-      localamgz.jdField_a_of_type_Int = -1;
-      localamgz.a(-1, -1);
-    }
-    this.jdField_a_of_type_Amug = null;
-    this.c = false;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
-    {
-    }
-    label304:
-    for (;;)
-    {
-      return;
-      b();
-      return;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_Amug.a();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_Amug.a() != null) && (amuo.a(localQQAppInterface) != null))
-      {
-        SharedPreferences localSharedPreferences = localQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
-        int i = localSharedPreferences.getInt(localQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0);
-        int j = localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3);
-        if (i >= j)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO Bubble show count limited:", Integer.valueOf(j) });
-          }
-        }
-        else if (this.c)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, "current AIO has play bubble, wait for next time");
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, "start play bubble");
-          }
-          if (a(localQQAppInterface)) {
-            paramInt = 2;
-          }
-          for (;;)
+          return;
+          switch (paramMessage.what)
           {
-            if (paramInt <= 0) {
-              break label304;
-            }
-            this.b = true;
-            this.c = true;
-            b(localQQAppInterface);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO bubble play type:", Integer.valueOf(paramInt), ",current count:", Integer.valueOf(i), ",maxCount:", Integer.valueOf(j) });
+          case 1002: 
+          default: 
             return;
-            if (b(localQQAppInterface)) {
-              paramInt = 3;
-            } else {
-              paramInt = 0;
-            }
           }
+        } while (!QLog.isColorLevel());
+        QLog.d("CmGameTemp_CmGameAudioManager", 0, "start upload cmshow record");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameTemp_CmGameAudioManager", 0, "finish upload cmshow record" + ((bete)localObject).g);
         }
-      }
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    amgz localamgz = (amgz)paramQQAppInterface.getManager(211);
-    if (localamgz.jdField_a_of_type_Amzs != null) {}
-    for (DrawerPushItem localDrawerPushItem = localamgz.jdField_a_of_type_Amzs.a();; localDrawerPushItem = null)
-    {
-      if ((localDrawerPushItem != null) && (localDrawerPushItem.msg_type != 7) && (localamgz.jdField_a_of_type_Amzs.a(paramQQAppInterface, this.jdField_a_of_type_Amug.jdField_a_of_type_Int)))
-      {
-        if (localDrawerPushItem.reddotGameId > 0)
+        try
         {
-          localamgz.jdField_a_of_type_Int = localDrawerPushItem.reddotGameId;
-          localamgz.a(localDrawerPushItem.reddotGameId, 3);
-          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_msg_display", ApolloUtil.b(this.jdField_a_of_type_Amug.jdField_a_of_type_Int), 3, new String[] { String.valueOf(localDrawerPushItem.reddotGameId), String.valueOf(localDrawerPushItem.reddotRedId) });
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, new Object[] { "show aio bubble for reddot game, game id=", Integer.valueOf(localDrawerPushItem.reddotGameId) });
+          paramMessage = new cmd0x346.RspBody();
+          paramMessage.mergeFrom(((bete)localObject).a);
+          paramMessage = (cmd0x346.ApplyDownloadRsp)paramMessage.msg_apply_download_rsp.get();
+          i = paramMessage.int32_ret_code.get();
+          if (i != 0) {
+            break;
           }
+          paramMessage = (cmd0x346.DownloadInfo)paramMessage.msg_download_info.get();
+          if ((paramMessage != null) && (paramMessage.str_download_url.has())) {}
+          paramMessage = paramMessage.str_download_url.get();
+          QLog.i("CmGameTemp_CmGameAudioManager", 1, "[uploadFile] url:" + paramMessage);
+          localObject = (amsx)this.a.getManager(153);
+          amzq localamzq = ((amsx)localObject).a();
+          ((amsx)localObject).a().a(this.a.c(), paramMessage, localamzq.a);
+          return;
         }
-        return true;
-      }
-      return false;
-    }
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = false;
-    amgz localamgz = (amgz)paramQQAppInterface.getManager(211);
-    if (localamgz.jdField_a_of_type_Amzs != null) {}
-    for (Object localObject = localamgz.jdField_a_of_type_Amzs.a();; localObject = null)
-    {
-      boolean bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (((DrawerPushItem)localObject).msg_type == 7)
-        {
-          localObject = (amhd)paramQQAppInterface.getManager(153);
-          bool1 = bool2;
-          if (localamgz.jdField_a_of_type_Amzs.a(paramQQAppInterface, this.jdField_a_of_type_Amug.jdField_a_of_type_Int))
-          {
-            if (localObject != null) {
-              ((amhd)localObject).o = true;
-            }
-            VipUtils.a(null, "cmshow", "Apollo", "peoplebubble", ApolloUtil.b(this.jdField_a_of_type_Amug.jdField_a_of_type_Int), 0, new String[] { String.valueOf(1) });
-            bool1 = true;
-          }
-        }
-      }
-      return bool1;
-    }
+        catch (Exception paramMessage) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("CmGameTemp_CmGameAudioManager", 0, "upload cmshow record response error e=" + paramMessage.toString());
+      return;
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[TransProcessorHandler] upload fail," + i);
+      paramMessage = ((amsx)this.a.getManager(153)).a();
+    } while ((paramMessage.b == null) || (paramMessage.b.get() == null));
+    ((amzv)paramMessage.b.get()).a(-1);
+    return;
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[TransProcessorHandler] upload error:" + ((bete)localObject).g);
+    return;
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "upload cmshow cancel:" + ((bete)localObject).g);
   }
 }
 

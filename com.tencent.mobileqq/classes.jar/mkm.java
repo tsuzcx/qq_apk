@@ -1,5 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoInviteActivity;
 
 class mkm
   implements DialogInterface.OnClickListener
@@ -8,10 +9,7 @@ class mkm
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mqw.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
   }
 }
 

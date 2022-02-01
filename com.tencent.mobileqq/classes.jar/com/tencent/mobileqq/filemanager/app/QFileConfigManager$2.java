@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import atam;
+import atsh;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileConfigManager$2
   implements Runnable
 {
-  public QFileConfigManager$2(atam paramatam, Bundle paramBundle) {}
+  public QFileConfigManager$2(atsh paramatsh, Bundle paramBundle) {}
   
   public void run()
   {
     if ((!this.a.containsKey("troop_video_preivew")) || (!this.a.containsKey("troop_video_preivew_for_svip")) || (!this.a.containsKey("troop_video_preivew_for_yearsvip")) || (!this.a.containsKey("enable_file_media_platform"))) {
       return;
     }
-    atam.a(this.this$0, this.a.getBoolean("troop_video_preivew", false));
-    atam.b(this.this$0, this.a.getBoolean("troop_video_preivew_for_svip", false));
-    atam.c(this.this$0, this.a.getBoolean("troop_video_preivew_for_yearsvip", false));
-    atam.d(this.this$0, this.a.getBoolean("enable_file_media_platform", false));
-    QLog.i("QFileConfigManager", 1, "setFileCommonConfig: set common config. enableTroopVidePreview[" + atam.a(this.this$0) + "] enableTroopVidePreviewForSVIP[" + atam.b(this.this$0) + "] enableTroopVidePreviewForYearSVIP[" + atam.c(this.this$0) + "] UseMediaPlatform enabled[" + atam.d(this.this$0) + "]");
+    atsh.a(this.this$0, this.a.getBoolean("troop_video_preivew", false));
+    atsh.b(this.this$0, this.a.getBoolean("troop_video_preivew_for_svip", false));
+    atsh.c(this.this$0, this.a.getBoolean("troop_video_preivew_for_yearsvip", false));
+    atsh.d(this.this$0, this.a.getBoolean("enable_file_media_platform", false));
+    QLog.i("QFileConfigManager", 1, "setFileCommonConfig: set common config. enableTroopVidePreview[" + atsh.a(this.this$0) + "] enableTroopVidePreviewForSVIP[" + atsh.b(this.this$0) + "] enableTroopVidePreviewForYearSVIP[" + atsh.c(this.this$0) + "] UseMediaPlatform enabled[" + atsh.d(this.this$0) + "]");
   }
 }
 

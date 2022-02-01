@@ -1,69 +1,60 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
+import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
-public class bkzq
+class bkzq
+  implements Callback
 {
-  private final int jdField_a_of_type_Int;
-  public avaj a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c = 0;
-  private int d;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public bkzq(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    c();
-  }
+  bkzq(bkzp parambkzp, String paramString, RequestProxy.RequestListener paramRequestListener) {}
   
-  private void b()
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_b_of_type_Boolean) {}
-    for (int i = 0;; i = 1)
+    QLog.e("RequestProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_JavaLangString, paramIOException);
+    if ("Canceled".equals(paramIOException.getLocalizedMessage()))
     {
-      bkzp.a(localAppRuntime, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(this.d) });
-      c();
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(-5, "request error:cancel");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzp.a.remove(this.jdField_a_of_type_JavaLangString);
+      return;
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(bkxi.a(paramIOException, -1), "request error:network");
+    }
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.d = 0;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
+    int i = paramResponse.code();
+    Map localMap = paramResponse.headers().toMultimap();
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestHeadersReceived(i, localMap);
+    paramCall = null;
+    try
+    {
+      paramResponse = paramResponse.body().bytes();
+      paramCall = paramResponse;
     }
-    this.jdField_b_of_type_Boolean = true;
-    b();
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    bkzq localbkzq = (bkzq)bkzp.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if ((localbkzq != null) && (localbkzq.jdField_a_of_type_Boolean)) {
-      localbkzq.b();
+    catch (IOException paramResponse)
+    {
+      for (;;)
+      {
+        paramResponse.printStackTrace();
+      }
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.c = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    bkzp.a().put(Integer.valueOf(this.jdField_a_of_type_Int), this);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestSucceed(i, paramCall, localMap);
+    this.jdField_a_of_type_Bkzp.a.remove(this.jdField_a_of_type_JavaLangString);
   }
 }
 

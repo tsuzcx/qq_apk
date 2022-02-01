@@ -1,20 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
 
-class vlh
-  implements View.OnClickListener
+public class vlh
+  extends var
 {
-  vlh(vlg paramvlg) {}
+  public vlh(QCircleBaseAggregationFragment paramQCircleBaseAggregationFragment) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    vlg.a(this.a, false);
-    this.a.b();
-    if (vlg.a(this.a) != null) {
-      vlg.a(this.a).a();
+    if (this.a.jdField_a_of_type_Aabe != null)
+    {
+      Object localObject = this.a.jdField_a_of_type_Aabe.a().a("get_current_page_index", null);
+      if ((localObject instanceof Integer)) {
+        return ((Integer)localObject).intValue();
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return -1;
+  }
+  
+  public QCirclePolyLikeAniView a()
+  {
+    return this.a.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView;
+  }
+  
+  public String a()
+  {
+    if (this.a.jdField_a_of_type_Vbe != null) {
+      return this.a.jdField_a_of_type_Vbe.b();
+    }
+    return "";
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.a.jdField_a_of_type_Vfi != null) {
+      this.a.jdField_a_of_type_Vfi.a("share_action_show_share_sheet", paramObject);
+    }
+  }
+  
+  public void a(String paramString, vas paramvas)
+  {
+    if (this.a.jdField_a_of_type_Aabe != null) {
+      this.a.jdField_a_of_type_Aabe.a().a(paramString, paramvas);
+    }
+  }
+  
+  public void a(vdq paramvdq)
+  {
+    if (this.a.jdField_a_of_type_Aabe != null) {
+      this.a.jdField_a_of_type_Aabe.a().a("light_interact_list_show", paramvdq);
+    }
   }
 }
 

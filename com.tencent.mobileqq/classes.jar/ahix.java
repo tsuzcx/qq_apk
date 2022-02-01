@@ -1,33 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahix
-  extends AnimatorListenerAdapter
+class ahix
+  extends ahkx
 {
-  public ahix(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  ahix(ahgk paramahgk)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
-      return;
-    }
-    SixCombolEffectView.b(this.a).start();
+    super(paramahgk, null);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 2;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    return new ahbx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

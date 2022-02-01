@@ -7,12 +7,12 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aqci;
-import aqff;
-import aqfg;
-import bcst;
-import bglp;
-import bgpa;
+import aqrl;
+import aqui;
+import aquj;
+import bdll;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -53,12 +53,12 @@ public class ColorNoteSmallScreenPermissionDialogFragment
       if (i == 2)
       {
         j = 2131690753;
-        localObject = bglp.a(getActivity(), 230).setMessage(j).setPositiveButton(2131690754, new aqff(this));
-        ((bgpa)localObject).setTitle(2131690755);
-        ((bgpa)localObject).setCancelable(true);
-        ((bgpa)localObject).setOnCancelListener(new aqfg(this));
-        ((bgpa)localObject).setCanceledOnTouchOutside(false);
-        ((bgpa)localObject).show();
+        localObject = bhlq.a(getActivity(), 230).setMessage(j).setPositiveButton(2131690754, new aqui(this));
+        ((bhpc)localObject).setTitle(2131690755);
+        ((bhpc)localObject).setCancelable(true);
+        ((bhpc)localObject).setOnCancelListener(new aquj(this));
+        ((bhpc)localObject).setCanceledOnTouchOutside(false);
+        ((bhpc)localObject).show();
         a = true;
         if (i != 2) {
           break label197;
@@ -67,7 +67,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
       label197:
       for (i = k;; i = 2)
       {
-        bcst.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", i, 0, "", "", "", "");
+        bdll.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", i, 0, "", "", "", "");
         paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
         V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
         return paramLayoutInflater;
@@ -75,7 +75,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
         if (i != 3) {
           break;
         }
-        aqci.b(true);
+        aqrl.b(true);
         j = m;
         break;
       }

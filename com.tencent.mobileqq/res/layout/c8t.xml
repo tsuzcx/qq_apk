@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mxy" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:background="@drawable/eqg" android:layout_width="97.0dip" android:layout_height="35.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView android:id="@id/mi4" android:paddingLeft="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/nfl" />
-    <RelativeLayout android:id="@id/nfl" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b90" android:layout_marginTop="8.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:id="@id/mrw" android:layout_width="120.0dip" android:layout_height="16.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/ekh" android:layout_centerHorizontal="true" />
-        <android.support.v7.widget.RecyclerView android:id="@id/nip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ba0" android:layout_marginTop="0.0dip" android:layout_marginRight="@dimen/ba0" android:layout_below="@id/mrw" />
-    </RelativeLayout>
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/mxc" android:layout_width="54.0dip" android:layout_height="35.0dip" android:src="@drawable/eqh" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="7.0dip" android:paddingRight="7.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="12.0sp" android:gravity="center" android:id="@id/nun" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/w99" android:layout_weight="1.0" />
+        <TextView android:textSize="12.0sp" android:gravity="center" android:id="@id/nsk" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/w8q" android:layout_weight="1.0" />
+    </LinearLayout>
+</merge>

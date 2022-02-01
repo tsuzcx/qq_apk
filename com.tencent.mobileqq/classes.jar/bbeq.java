@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class bbeq
-  implements Comparable<bbeq>
+  implements bcwn
 {
-  public int a;
-  public MessageForScribble a;
+  bbeq(bbeo parambbeo) {}
   
-  bbeq(MessageForScribble paramMessageForScribble, int paramInt)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    this.jdField_a_of_type_Int = 200;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
-    if (paramInt >= 200)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
     }
-    QLog.e("ScribbleDownloadInfo", 1, "err priority");
   }
   
-  public int a(bbeq parambbeq)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int < parambbeq.jdField_a_of_type_Int) {
-      return -1;
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
     }
-    if (this.jdField_a_of_type_Int > parambbeq.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
   }
 }
 

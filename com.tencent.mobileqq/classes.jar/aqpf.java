@@ -1,75 +1,62 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class aqpf
-  extends aqkz<aqpe>
+  implements aqpo
 {
-  @NonNull
-  public aqpe a(int paramInt)
+  private aqpg jdField_a_of_type_Aqpg;
+  private aqph jdField_a_of_type_Aqph;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public aqpf(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, List<aqon> paramList, aqpg paramaqpg, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GroupIntimateRelationshipConfProcessor", 2, "migrateOldOrDefaultContent ");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aqpg = paramaqpg;
+    a(paramContext, paramQQAppInterface, paramString, paramList, paramBoolean);
+  }
+  
+  private void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, List<aqon> paramList, boolean paramBoolean)
+  {
+    boolean bool1 = aqpe.b(paramQQAppInterface);
+    boolean bool2 = aqpe.a(paramQQAppInterface, paramString);
+    if (paramBoolean) {
+      bool1 = false;
     }
-    return new aqpe();
+    this.jdField_a_of_type_Aqph = new aqph(paramQQAppInterface, paramContext, paramString, bool1, bool2, paramList, this);
   }
   
-  @Nullable
-  public aqpe a(aqlg[] paramArrayOfaqlg)
+  public void a()
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      aqpe localaqpe = aqpe.a(paramArrayOfaqlg[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqpe;
+    this.jdField_a_of_type_Aqph.show();
+  }
+  
+  public void a(int paramInt, aqon paramaqon)
+  {
+    if (this.jdField_a_of_type_Aqpg != null) {
+      this.jdField_a_of_type_Aqpg.a(paramInt, paramaqon);
     }
-    return new aqpe();
+    b();
   }
   
-  public void a(aqpe paramaqpe)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramaqpe);
-    }
+    ((aqpc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(380)).a(paramBoolean, paramString);
   }
   
-  public Class<aqpe> clazz()
+  public void b()
   {
-    return aqpe.class;
+    this.jdField_a_of_type_Aqph.dismiss();
   }
   
-  public boolean isNeedCompressed()
+  public void c()
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 492;
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpf
  * JD-Core Version:    0.7.0.1
  */

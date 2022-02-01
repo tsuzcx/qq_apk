@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alsa;
+import amds;
 import android.view.View;
 
 public class FriendTeamListInnerFrame$2$1
   implements Runnable
 {
-  public FriendTeamListInnerFrame$2$1(alsa paramalsa, View paramView) {}
+  public FriendTeamListInnerFrame$2$1(amds paramamds, View paramView) {}
   
   public void run()
   {

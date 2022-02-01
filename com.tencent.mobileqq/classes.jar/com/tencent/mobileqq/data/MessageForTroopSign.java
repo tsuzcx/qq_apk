@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anni;
-import bcvs;
-import bcxv;
-import bcyl;
-import bdaq;
+import anzj;
+import bdol;
+import bdqo;
+import bdre;
+import bdtj;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
@@ -45,19 +45,19 @@ public class MessageForTroopSign
     localObject1 = ((StructMsgForGeneralShare)localObject1).mStructMsgItemLists;
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      localObject1 = (bcvs)((List)localObject1).get(0);
-      if ((localObject1 instanceof bcyl))
+      localObject1 = (bdol)((List)localObject1).get(0);
+      if ((localObject1 instanceof bdre))
       {
-        Object localObject2 = (bcyl)localObject1;
-        localObject1 = ((bcyl)localObject2).a;
+        Object localObject2 = (bdre)localObject1;
+        localObject1 = ((bdre)localObject2).a;
         try
         {
           if (QLog.isColorLevel()) {
-            QLog.d("MessageForTroopSign", 2, "doParse, mCommonData=" + ((bcyl)localObject2).i);
+            QLog.d("MessageForTroopSign", 2, "doParse, mCommonData=" + ((bdre)localObject2).i);
           }
-          if (!TextUtils.isEmpty(((bcyl)localObject2).i))
+          if (!TextUtils.isEmpty(((bdre)localObject2).i))
           {
-            localObject2 = new JSONObject(((bcyl)localObject2).i);
+            localObject2 = new JSONObject(((bdre)localObject2).i);
             this.markType = ((JSONObject)localObject2).getInt("markType");
             this.positonType = ((JSONObject)localObject2).getInt("positonType");
             this.markIconUrl = ((JSONObject)localObject2).getString("markIconUrl");
@@ -77,8 +77,8 @@ public class MessageForTroopSign
               continue;
               if ("summary".equals(str))
               {
-                if ((localException instanceof bdaq)) {
-                  this.msgContent = ((bdaq)localException).b();
+                if ((localException instanceof bdtj)) {
+                  this.msgContent = ((bdtj)localException).b();
                 }
               }
               else if (("title".equals(str)) && ((localException instanceof StructMsgItemTitle))) {
@@ -93,13 +93,13 @@ public class MessageForTroopSign
           if (!((Iterator)localObject1).hasNext()) {
             break label372;
           }
-          localObject2 = (bcvs)((Iterator)localObject1).next();
-          str = ((bcvs)localObject2).a;
+          localObject2 = (bdol)((Iterator)localObject1).next();
+          str = ((bdol)localObject2).a;
           if (!"vote".equals(str)) {
             break;
           }
-          if ((localObject2 instanceof bcxv)) {
-            this.msgCoverUrl = ((bcxv)localObject2).aa;
+          if ((localObject2 instanceof bdqo)) {
+            this.msgCoverUrl = ((bdqo)localObject2).ac;
           }
         }
       }
@@ -114,7 +114,7 @@ public class MessageForTroopSign
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msgBrief)) {
-      this.msgBrief = anni.a(2131705387);
+      this.msgBrief = anzj.a(2131705494);
     }
     return this.msgBrief;
   }

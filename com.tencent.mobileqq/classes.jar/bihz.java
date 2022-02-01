@@ -1,8 +1,14 @@
+import android.os.Bundle;
+
 public abstract interface bihz
 {
-  public abstract Object decode(Object paramObject);
+  public abstract int a(boolean paramBoolean, String paramString);
   
-  public abstract Object encode(Object paramObject);
+  public abstract bihu a(String paramString);
+  
+  public abstract void a(bihu parambihu, biht parambiht, Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 

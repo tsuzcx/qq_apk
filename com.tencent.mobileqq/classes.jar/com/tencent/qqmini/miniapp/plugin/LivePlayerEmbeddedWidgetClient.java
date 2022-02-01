@@ -156,6 +156,11 @@ public class LivePlayerEmbeddedWidgetClient
     return true;
   }
   
+  public IMiniAppContext getMiniAppContext()
+  {
+    return this.mMiniAppContext;
+  }
+  
   public void handleInsertXWebLivePlayer(JSONObject paramJSONObject, IJsService paramIJsService)
   {
     this.callBackWebview = paramIJsService;

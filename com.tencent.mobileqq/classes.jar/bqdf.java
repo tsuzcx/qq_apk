@@ -1,18 +1,45 @@
-public abstract interface bqdf
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+class bqdf
+  implements Handler.Callback
 {
-  public abstract void a();
+  bqdf(bqdc parambqdc) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (bqdc.a(this.a)) {
+        return false;
+      }
+      bqdc.a(this.a, new bppn());
+      paramMessage = Message.obtain();
+      paramMessage.what = 111;
+      bqdc.b(this.a).sendMessageDelayed(paramMessage, 1000L);
+      continue;
+      paramMessage = this.a.a();
+      if ((paramMessage != null) && (paramMessage.exists()))
+      {
+        bqdc.a(this.a).a(paramMessage);
+        bqdc.a(this.a).a(this.a.a());
+        bqdc.a(this.a).a();
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("EditRecognitionPart", 2, "handleMessage: invoked. info: Failed to get audioFile. audioFile = " + paramMessage);
+        }
+        bjuh.a().a(2131697594);
+      }
+    }
+  }
 }
 
 

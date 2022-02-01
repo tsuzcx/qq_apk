@@ -1,33 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"setBackgroundDrawableCompat", "", "Landroid/view/View;", "background", "Landroid/graphics/drawable/Drawable;", "setOnClickListener", "listener", "Lkotlin/Function0;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class axbh
+public class axbh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static final void a(@NotNull View paramView, @Nullable Drawable paramDrawable)
-  {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$setBackgroundDrawableCompat");
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramView.setBackground(paramDrawable);
-      return;
-    }
-    paramView.setBackgroundDrawable(paramDrawable);
-  }
+  public axbh(MedalGuideView paramMedalGuideView) {}
   
-  public static final void a(@NotNull View paramView, @NotNull Function0<Unit> paramFunction0)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$setOnClickListener");
-    Intrinsics.checkParameterIsNotNull(paramFunction0, "listener");
-    paramView.setOnClickListener((View.OnClickListener)new axbi(paramFunction0));
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    f = paramValueAnimator.getAnimatedFraction();
+    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(3);
+    }
+    if (f >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 

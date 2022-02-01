@@ -1,59 +1,38 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class avkf
-  implements adea
+  implements View.OnClickListener
 {
-  avkf(avju paramavju, WeakReference paramWeakReference, Bundle paramBundle) {}
+  avkf(avke paramavke, FeedsItemData paramFeedsItemData) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Avke.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
+      }
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131702365), 0).a();
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131702366), 0).a();
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    try
+    for (;;)
     {
-      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
-      this.jdField_a_of_type_Avju.b = paramJSONObject.optString("access_token");
-      this.jdField_a_of_type_Avju.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
-      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Avju.b);
-      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Avju.jdField_a_of_type_JavaLangString);
-      avju.a(this.jdField_a_of_type_Avju);
-      this.jdField_a_of_type_Avju.jdField_a_of_type_Avko.a(this.jdField_a_of_type_AndroidOsBundle);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
+      Intent localIntent = new Intent(this.jdField_a_of_type_Avke.a, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
+      this.jdField_a_of_type_Avke.a.startActivity(localIntent);
+      continue;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId)) {
+        avmd.a(this.jdField_a_of_type_Avke.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId);
+      }
     }
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

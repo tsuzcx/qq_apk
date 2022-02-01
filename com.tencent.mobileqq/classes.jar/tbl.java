@@ -1,46 +1,38 @@
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.TypedValue;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+
 public class tbl
 {
+  public float a;
+  public int a;
   public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
   
-  public String a(int paramInt)
+  public tbl(TickerView paramTickerView, Resources paramResources)
   {
-    if (paramInt == 72) {
-      return this.d;
-    }
-    if (paramInt == 73) {
-      return this.d;
-    }
-    if (paramInt == 2) {
-      return this.d;
-    }
-    if (paramInt == 3) {
-      return this.e;
-    }
-    if (paramInt == 12) {
-      return this.a;
-    }
-    if (paramInt == 9) {
-      return this.c;
-    }
-    if (paramInt == 10) {
-      return this.b;
-    }
-    return null;
+    this.jdField_c_of_type_Int = -16777216;
+    this.jdField_d_of_type_Float = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
+    this.jdField_a_of_type_Int = 8388611;
   }
   
-  public String toString()
+  public void a(TypedArray paramTypedArray)
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("weibo : ").append(this.a).append("\n");
-    localStringBuilder.append("qq : ").append(this.d).append("\n");
-    localStringBuilder.append("wx : ").append(this.c).append("\n");
-    localStringBuilder.append("pyq : ").append(this.b).append("\n");
-    localStringBuilder.append("qzone : ").append(this.e).append("\n");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Int = paramTypedArray.getInt(4, this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = paramTypedArray.getColor(6, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Float = paramTypedArray.getFloat(7, this.jdField_a_of_type_Float);
+    this.jdField_b_of_type_Float = paramTypedArray.getFloat(8, this.jdField_b_of_type_Float);
+    this.jdField_c_of_type_Float = paramTypedArray.getFloat(9, this.jdField_c_of_type_Float);
+    this.jdField_a_of_type_JavaLangString = paramTypedArray.getString(5);
+    this.jdField_c_of_type_Int = paramTypedArray.getColor(3, this.jdField_c_of_type_Int);
+    this.jdField_d_of_type_Float = paramTypedArray.getDimension(1, this.jdField_d_of_type_Float);
+    this.jdField_d_of_type_Int = paramTypedArray.getInt(2, this.jdField_d_of_type_Int);
   }
 }
 

@@ -1,51 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
 class awcn
-  extends Handler
+  implements ActionCallback
 {
-  public awcn(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  awcn(awcc paramawcc, awcx paramawcx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onResult(String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      try
-      {
-        awcm.a(System.currentTimeMillis());
-        awcm.a.removeMessages(1);
-        awcm.a.sendEmptyMessageDelayed(1, 300000L);
-        return;
-      }
-      catch (Throwable paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
-    }
     try
     {
-      awcm.b(System.currentTimeMillis());
-      awcm.a.removeMessages(2);
-      awcm.a.sendEmptyMessageDelayed(2, 300000L);
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Awcx.a(i, "");
       return;
     }
-    catch (Throwable paramMessage)
+    catch (Exception paramString)
     {
-      paramMessage.printStackTrace();
+      for (;;)
+      {
+        int i = -1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awcn
  * JD-Core Version:    0.7.0.1
  */

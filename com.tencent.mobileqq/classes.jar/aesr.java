@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.activity.Now;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aesr
-  implements View.OnClickListener
+  extends anyu
 {
-  public aesr(Now paramNow) {}
+  public aesr(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (Now.a(this.a) != null) {
-      Now.a(this.a).m();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 

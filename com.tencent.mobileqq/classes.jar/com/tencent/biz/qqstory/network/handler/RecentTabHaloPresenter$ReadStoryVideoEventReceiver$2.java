@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.network.handler;
 
-import wxc;
-import wxf;
+import xax;
+import xba;
 
 public class RecentTabHaloPresenter$ReadStoryVideoEventReceiver$2
   implements Runnable
 {
-  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$2(wxf paramwxf, wxc paramwxc) {}
+  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$2(xba paramxba, xax paramxax) {}
   
   public void run()
   {
-    wxc.a(this.a);
+    xax.a(this.a);
   }
 }
 

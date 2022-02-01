@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import afur;
+import agej;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -16,14 +16,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import bqcr;
-import bqcs;
-import bqct;
-import bqcu;
-import bqcv;
-import bqcw;
-import bqjk;
+import anzj;
+import brec;
+import bred;
+import bree;
+import bref;
+import breg;
+import breh;
+import brkw;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
@@ -33,22 +33,22 @@ public class CameraCaptureButtonLayout
   extends RelativeLayout
 {
   private float jdField_a_of_type_Float = 10000.0F;
-  private int jdField_a_of_type_Int = afur.a(45.0F, getResources());
+  private int jdField_a_of_type_Int = agej.a(45.0F, getResources());
   private long jdField_a_of_type_Long;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bqcu(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bqct(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bref(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bree(this);
   private View jdField_a_of_type_AndroidViewView;
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
   public ImageView a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bqcv jdField_a_of_type_Bqcv;
-  private bqcw jdField_a_of_type_Bqcw;
+  private breg jdField_a_of_type_Breg;
+  private breh jdField_a_of_type_Breh;
   private CameraCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView;
   private CircleProgress jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
   public AtomicBoolean a;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = afur.a(70.0F, getResources());
+  private int jdField_b_of_type_Int = agej.a(70.0F, getResources());
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   public AtomicBoolean b;
@@ -88,16 +88,16 @@ public class CameraCaptureButtonLayout
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131561182, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366786);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366869));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366045));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131365143));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366770));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366771));
+    LayoutInflater.from(getContext()).inflate(2131561219, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366837);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366920));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366091));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131365187));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366821));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366822));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131167279), 100, getResources().getColor(2131165368));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131167302), 100, getResources().getColor(2131165367));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(4.5F);
   }
   
@@ -105,11 +105,11 @@ public class CameraCaptureButtonLayout
   private void d()
   {
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    bqjk.a(this.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.0F, 0.1F, 1.2F, 400, null);
+    brkw.a(this.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.0F, 0.1F, 1.2F, 400, null);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 1.1333F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bqcr(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bqcs(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new brec(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bred(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -144,10 +144,10 @@ public class CameraCaptureButtonLayout
   
   private void g()
   {
-    Object localObject = this.jdField_a_of_type_Bqcw;
+    Object localObject = this.jdField_a_of_type_Breh;
     if (localObject != null)
     {
-      this.jdField_a_of_type_Boolean = ((bqcw)localObject).a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, this.jdField_a_of_type_Long, this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_Boolean = ((breh)localObject).a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, this.jdField_a_of_type_Long, this.jdField_a_of_type_Float);
       if (this.jdField_a_of_type_Boolean) {
         h();
       }
@@ -167,7 +167,7 @@ public class CameraCaptureButtonLayout
     label189:
     for (int i = 100;; i = (int)((float)l / this.jdField_a_of_type_Float * 100.0F))
     {
-      localObject = (int)l / 1000 + anni.a(2131700109);
+      localObject = (int)l / 1000 + anzj.a(2131700216);
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i);
       if (!QLog.isColorLevel()) {
@@ -229,9 +229,9 @@ public class CameraCaptureButtonLayout
     this.jdField_c_of_type_Boolean = false;
   }
   
-  public void setCaptureButtonProgressInterceptor(bqcw parambqcw)
+  public void setCaptureButtonProgressInterceptor(breh parambreh)
   {
-    this.jdField_a_of_type_Bqcw = parambqcw;
+    this.jdField_a_of_type_Breh = parambreh;
   }
   
   public void setFunctionFlag(int paramInt)

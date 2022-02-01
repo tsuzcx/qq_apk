@@ -1,55 +1,37 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.Nullable;
 
 public class ylv
-  extends wla
 {
+  public int a;
   public String a;
   public int b;
-  public String c;
-  public String d;
-  public String e;
+  public String b;
   
-  public ylv(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
+  public ylv(String paramString1, int paramInt, @Nullable String paramString2)
   {
-    if (paramRspGetUserGuide.pic_url.has())
-    {
-      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
-      this.a = ((String)localObject1);
-      if (!paramRspGetUserGuide.word.has()) {
-        break label129;
-      }
-      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
-      label53:
-      this.c = ((String)localObject1);
-      this.b = paramRspGetUserGuide.seqno.get();
-      if (!paramRspGetUserGuide.confirm_word.has()) {
-        break label134;
-      }
-    }
-    label129:
-    label134:
-    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
-    {
-      this.d = ((String)localObject1);
-      localObject1 = localObject2;
-      if (paramRspGetUserGuide.cancel_word.has()) {
-        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
-      }
-      this.e = ((String)localObject1);
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = null;
-      break label53;
-    }
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public ylv(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
+  {
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
   }
   
   public String toString()
   {
-    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
+    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

@@ -1,20 +1,32 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class pwc
-  implements Comparator<ArticleInfo>
+  implements ViewBase.OnClickListener
 {
-  pwc(pwb parampwb) {}
+  pwc(pwa parampwa, ppu paramppu, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
+    EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
+    TemplateBean localTemplateBean = this.jdField_a_of_type_Ppu.a().mProteusTemplateBean;
+    if (localTemplateBean != null)
+    {
+      paramViewBase = pwa.a(this.jdField_a_of_type_Pwa, localTemplateBean, paramViewBase);
+      if (tqa.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
+        tqa.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Ppu.a().getContext(), this.jdField_a_of_type_Ppu.h());
+      }
     }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
+    else
+    {
+      return;
     }
-    return 1;
+    this.jdField_a_of_type_Ppu.a().a(false, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (ArticleInfo)this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, paramViewBase);
   }
 }
 

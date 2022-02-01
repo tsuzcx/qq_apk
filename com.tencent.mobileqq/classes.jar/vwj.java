@@ -1,18 +1,23 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class vwj
-  implements vux
 {
-  public vwj(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StComment paramStComment) {}
-  
-  public void a()
+  public static void a(vau paramvau)
   {
-    vrc.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.d());
-    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.a().clone().setElementIdStr("portrait"));
+    aamq localaamq = new aamq();
+    localaamq.a = paramvau.a;
+    localaamq.b = paramvau.b;
+    localaamq.c = paramvau.c;
+    localaamq.e = paramvau.d;
+    localaamq.f = paramvau.e;
+    localaamq.g = paramvau.f;
+    localaamq.h = paramvau.g;
+    localaamq.d = paramvau.h;
+    localaamq.j = paramvau.i;
+    localaamq.i = paramvau.j;
+    aamo.a(BaseApplicationImpl.getContext(), localaamq);
+    QLog.d("QCircleInformUtils", 1, "report  success");
   }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/n4z" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/n8u" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/efm" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/common_loading2" android:layout_centerInParent="true" />
     <ImageButton android:id="@id/gqo" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="25.0dip" android:src="@drawable/aq" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/ipr" />
@@ -17,6 +17,6 @@
     <TextView android:textSize="14.0sp" android:textColor="@color/bless_btn_text" android:id="@id/gqs" android:background="@drawable/a5n" android:padding="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginBottom="23.0dip" android:text="@string/d0a" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="@string/d0a" />
     <LinearLayout android:id="@id/x7" android:background="@drawable/i4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="34.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="59.0dip" android:layout_alignParentBottom="true">
         <ImageView android:layout_gravity="center_vertical" android:id="@id/wn" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="11.0dip" android:src="@drawable/hx" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/bless_btn_text" android:layout_gravity="center_vertical" android:id="@id/xu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="11.0dip" android:text="@string/wit" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/bless_btn_text" android:layout_gravity="center_vertical" android:id="@id/xu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="11.0dip" android:text="@string/wj0" />
     </LinearLayout>
 </RelativeLayout>

@@ -1,19 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class oiu
-  implements nkl
+class oiu
+  implements qej
 {
-  public oiu(ReadInJoyFeedsActivity.1 param1) {}
+  oiu(oit paramoit, ViewBase paramViewBase) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
-    }
+    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData();
+    ozs.a(ois.a(this.jdField_a_of_type_Oit.jdField_a_of_type_Ois).getContext(), str);
+    oyj.a(this.jdField_a_of_type_Oit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

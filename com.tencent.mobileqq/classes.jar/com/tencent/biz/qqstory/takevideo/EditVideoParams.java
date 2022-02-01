@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ytv;
+import yxq;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<EditVideoParams> CREATOR = new ytv();
+  public static final Parcelable.Creator<EditVideoParams> CREATOR = new yxq();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;

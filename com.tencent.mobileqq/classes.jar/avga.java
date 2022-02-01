@@ -1,66 +1,24 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.RadioGroup;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
 
-class avga
-  implements INetInfoHandler
+public class avga
+  implements bjey
 {
-  avfx a;
+  public avga(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public avga(avfx paramavfx1, avfx paramavfx2)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    this.a = paramavfx2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    avfw.b("onNetMobile2None");
-    if (this.a != null) {
-      avfx.c(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    avfw.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      avfx.c(this.a);
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    {
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    avfw.b("onNetNone2Mobile");
-    if (this.a != null) {
-      avfx.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    avfw.b("onNetNone2Wifi");
-    if (this.a != null) {
-      avfx.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    avfw.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      avfx.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    avfw.b("onNetWifi2None");
-    if (this.a != null) {
-      avfx.c(this.a);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aope;
+import apcu;
 import com.tencent.map.geolocation.TencentPoi;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public final class SosoInterface$SosoLocation
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoLocation> CREATOR = new aope();
+  public static final Parcelable.Creator<SosoLocation> CREATOR = new apcu();
   public double a;
   public float a;
   public int a;

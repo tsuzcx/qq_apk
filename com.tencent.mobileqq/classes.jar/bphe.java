@@ -1,29 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bphe
-  extends JobSegment<Bitmap, Bitmap>
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public final float a;
-  public final boolean a;
+  public bphe(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public bphe(float paramFloat, boolean paramBoolean)
+  public void onShowPress(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    paramJobContext = zkh.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    super.onShowPress(paramMotionEvent);
+    AEEditorVideoEditFragment.a(this.a).toggleAEKit(false);
   }
 }
 

@@ -1,9 +1,28 @@
-import android.support.v4.view.PagerAdapter;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awsz
+class awsz
+  implements View.OnClickListener
 {
-  public abstract void a(MultiAIOBaseViewPager paramMultiAIOBaseViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  awsz(awsu paramawsu, awsk paramawsk) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!paramView.isSelected())
+      {
+        this.jdField_a_of_type_Awsu.a(paramView);
+        this.jdField_a_of_type_Awsu.jdField_a_of_type_Int = 3;
+        awsk.a(this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk, Integer.valueOf(3));
+        bdll.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
+      }
+    }
+  }
 }
 
 

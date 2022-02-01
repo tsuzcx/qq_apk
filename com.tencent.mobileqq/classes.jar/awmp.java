@@ -1,46 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
 
-public class awmp
-  extends Handler
+public final class awmp
+  implements Parcelable.Creator<MusicInfo>
 {
-  public awmp() {}
-  
-  public awmp(Looper paramLooper)
+  public MusicInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new MusicInfo(paramParcel, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public MusicInfo[] a(int paramInt)
   {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
-    {
-      if (ChatBackgroundManager.c < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, bctj.a(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
-        }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
-      }
-    }
-    else {
-      return;
-    }
-    ChatBackgroundManager.c = 0;
+    return new MusicInfo[paramInt];
   }
 }
 

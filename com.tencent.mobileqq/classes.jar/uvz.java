@@ -1,18 +1,16 @@
-import java.net.URL;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.functions.Action1;
 
 public class uvz
+  implements Action1<Bitmap>
 {
-  public int a;
-  public URL a;
-  public int b;
+  public uvz(RoundImageView paramRoundImageView) {}
   
-  public static uvz a(URL paramURL, int paramInt1, int paramInt2)
+  public void a(Bitmap paramBitmap)
   {
-    uvz localuvz = new uvz();
-    localuvz.jdField_a_of_type_JavaNetURL = paramURL;
-    localuvz.jdField_a_of_type_Int = paramInt1;
-    localuvz.b = paramInt2;
-    return localuvz;
+    RoundImageView.a(this.a, paramBitmap);
+    RoundImageView.a(this.a);
   }
 }
 

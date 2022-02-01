@@ -1,6 +1,23 @@
-public abstract interface awtk
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+
+public class awtk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  public awtk(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
+  
+  public void onGlobalLayout()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
+      return;
+    }
+    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+  }
 }
 
 

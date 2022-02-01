@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.soload.config;
 
-import akww;
+import alil;
 
 class SoConfig$2
   implements Runnable
@@ -11,7 +11,7 @@ class SoConfig$2
   {
     synchronized ()
     {
-      akww.a(this.this$0, SoConfig.access$100());
+      alil.a(this.this$0, SoConfig.access$100());
       return;
     }
   }

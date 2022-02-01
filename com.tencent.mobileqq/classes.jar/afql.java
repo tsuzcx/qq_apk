@@ -1,38 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class afql
-  implements View.OnClickListener
+  implements aqmt
 {
-  public afql(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public afql(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((str == null) || (str.length() == 0)) {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131691774), 0).show();
-    }
-    for (;;)
+    aqmo.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
+    paramArrayOfHotWordItem = bhwz.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
       return;
-      if (str != null)
-      {
-        this.a.a(str);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        VerifyCodeActivity.b(this.a, false);
-      }
     }
+    this.a.jdField_a_of_type_JavaLangCharSequence = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
+    this.a.i = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afql
  * JD-Core Version:    0.7.0.1
  */

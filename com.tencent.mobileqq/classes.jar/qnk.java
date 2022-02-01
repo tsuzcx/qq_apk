@@ -1,24 +1,19 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qnk
+class qnk
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<Long> a;
-  public qnl a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
+  qnk(qnj paramqnj) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "channelID:" + this.jdField_a_of_type_Int + " channelType:" + this.jdField_b_of_type_Int + " upDateTimes：" + this.jdField_c_of_type_Int + " beginRecommendSeq：" + this.jdField_a_of_type_Long + " endRecommendSeq：" + this.jdField_b_of_type_Long + " beginCollectionID:" + this.jdField_c_of_type_Long + " endCollectionID:" + this.d + "   subscriptionArticleList:" + this.jdField_a_of_type_JavaUtilList + " innerMsg:" + this.jdField_a_of_type_Qnl;
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(paramView, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

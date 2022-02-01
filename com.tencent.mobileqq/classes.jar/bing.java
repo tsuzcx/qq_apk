@@ -1,44 +1,17 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bing
-  extends bkov
+  implements View.OnClickListener
 {
-  bing(bine parambine, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  bing(binf parambinf) {}
   
-  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
+  public void onClick(View paramView)
   {
-    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
-    if ((parambkou instanceof SimpleTextView)) {
-      parambkou.setTag(paramObject);
-    }
-    return parambkou;
-  }
-  
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
-  {
-    paramInt = 0;
-    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfbkou.length < 0)
-      {
-        paramArrayOfbkou[0].b = 0;
-        paramArrayOfbkou[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbkou.length)
-      {
-        paramArrayOfbkou[paramInt].b = -1;
-        paramArrayOfbkou[paramInt].a = -1;
-        paramInt += 1;
-      }
-    }
+    this.a.mInActivity.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

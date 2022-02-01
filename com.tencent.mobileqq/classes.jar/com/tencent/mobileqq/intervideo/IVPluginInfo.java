@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avgy;
+import avzb;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class IVPluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new avgy();
+  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new avzb();
   public int a;
   public long a;
   public Bundle a;

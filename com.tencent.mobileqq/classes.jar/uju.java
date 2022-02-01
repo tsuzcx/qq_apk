@@ -1,112 +1,52 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.qq.jce.wup.UniAttribute;
-import com.qq.taf.jce.JceStruct;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 
 public class uju
-  implements uji
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  protected static final ujq a;
-  public static boolean a;
-  public int a;
-  public long a;
-  public transient UniAttribute a;
-  public Object a;
-  public transient String a;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
-  public HashMap<Object, Object> a;
-  public transient ujj a;
-  public ujk a;
-  public ujr a;
-  public int b;
-  public int c;
-  public int d;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  static
+  private IMiniMsgUnreadCallback a()
   {
-    jdField_a_of_type_Ujq = ujq.a();
+    return new ujv(this);
   }
   
-  public uju()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return this.jdField_a_of_type_Int;
   }
   
-  public uju(ujr paramujr, Handler paramHandler, ujj paramujj, int paramInt)
+  public MiniMsgUserParam a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Ujr = paramujr;
-    this.c = paramInt;
-    this.jdField_a_of_type_Ujj = paramujj;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (paramHandler != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
-    }
+    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
+    localMiniMsgUserParam.businessName = 6;
+    localMiniMsgUserParam.accessType = 2;
+    localMiniMsgUserParam.filterMsgType = 0;
+    localMiniMsgUserParam.unreadCallback = a();
+    return localMiniMsgUserParam;
   }
   
-  private String a(int paramInt)
+  public void a(View paramView)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(MiniMsgUser paramMiniMsgUser)
+  {
+    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
     {
-    case 1000005: 
-    default: 
-      return "";
-    case 1000006: 
-      QZLog.i("QZLog", 1, "WeishiTask\t 网络无连接");
-      return QzoneConfig.getInstance().getConfig("QZoneTextSetting", "NetWorkNotConnect", "网络无连接");
-    case 1000004: 
-      return "";
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Ujr != null)
-    {
-      this.jdField_a_of_type_Ujr.a(this.d);
-      if (jdField_a_of_type_Boolean)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (this.jdField_a_of_type_Ujr.a != null) {
-          this.jdField_a_of_type_Ujr.a.display(localStringBuilder, 0);
-        }
-      }
-      upe.a("WeishiTask", "startRunTask: " + this.jdField_a_of_type_Ujr.getCmdString() + ", " + this.jdField_a_of_type_Ujr.toString());
-    }
-    int i = jdField_a_of_type_Ujq.a(this.jdField_a_of_type_Ujr, this);
-    if (i != 0) {
-      a(null, i, i, a(i), false, this.jdField_a_of_type_Ujk);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
-  public void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, ujk paramujk)
+  public void a(boolean paramBoolean)
   {
-    if ((paramObject instanceof UniAttribute)) {
-      this.jdField_a_of_type_ComQqJceWupUniAttribute = ((UniAttribute)paramObject);
-    }
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ujk = paramujk;
-    if (1000006 == paramInt1) {
-      this.jdField_a_of_type_JavaLangString = anni.a(2131715590);
-    }
-    ujn.a().b(this);
-  }
-  
-  public boolean a()
-  {
-    return (this.b == 0) || (this.b == 1000) || ((Math.abs(this.b) <= 19999) && (Math.abs(this.b) >= 19000));
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bmdx;
+import bnez;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneHelper$7
@@ -10,9 +10,9 @@ public final class QZoneHelper$7
   
   public void run()
   {
-    bmdx localbmdx = (bmdx)this.a.getManager(175);
-    if (localbmdx != null) {
-      localbmdx.b();
+    bnez localbnez = (bnez)this.a.getManager(175);
+    if (localbnez != null) {
+      localbnez.b();
     }
   }
 }

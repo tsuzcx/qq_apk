@@ -1,12 +1,18 @@
-class axbk
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.medalwall.MedalID;
+
+public final class axbk
+  implements Parcelable.Creator<MedalID>
 {
-  public int a;
-  public String a;
-  
-  public axbk()
+  public MedalID a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    return new MedalID(paramParcel);
+  }
+  
+  public MedalID[] a(int paramInt)
+  {
+    return new MedalID[paramInt];
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import anrj;
+import aodp;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
@@ -38,7 +38,7 @@ public class InitMagnifierSDK
   
   protected boolean doStep()
   {
-    if (anrj.a()) {
+    if (aodp.a()) {
       MagnifierSDK.a().a();
     }
     return true;

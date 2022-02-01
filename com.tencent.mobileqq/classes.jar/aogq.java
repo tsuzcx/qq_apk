@@ -1,32 +1,75 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-class aogq
-  implements acvn
+public class aogq
+  extends FriendListHandler
+  implements bcuc
 {
-  aogq(aogp paramaogp, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
+  private ToServiceMsg a;
   
-  public ToServiceMsg a()
+  public aogq(QQAppInterface paramQQAppInterface)
   {
-    long l = System.currentTimeMillis();
-    ToServiceMsg localToServiceMsg = aogp.a(this.jdField_a_of_type_Aogp).createToServiceMsg("MessageSvc.PbMultiMsgSend");
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
-    localToServiceMsg.extraData.putBoolean(bbyw.h, this.jdField_a_of_type_Boolean);
-    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.setTimeout(15000L);
-    localToServiceMsg.setEnableFastResend(true);
-    if (QLog.isColorLevel())
+    super(paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    Object localObject1;
+    if (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a == 2)
     {
-      int i = bbzj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
-      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
+      localObject1 = (bhru)this.app.getManager(31);
+      if (localObject1 != null) {
+        ((bhru)localObject1).a(true, this);
+      }
     }
-    return localToServiceMsg;
+    if (this.a != null)
+    {
+      Object localObject2 = this.app.jdField_a_of_type_Bcpt.a(this.a.getServiceCmd());
+      if (localObject2 != null)
+      {
+        localObject1 = new UniPacket(true);
+        ((UniPacket)localObject1).setEncodeName("utf-8");
+        if (((abiv)localObject2).a(this.a, (UniPacket)localObject1))
+        {
+          localObject2 = new ReqItem();
+          ((ReqItem)localObject2).eServiceID = 115;
+          ((ReqItem)localObject2).vecParam = ((UniPacket)localObject1).encode();
+          return localObject2;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 115) && (paramRespItem.cResult == 2))
+    {
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.ReqGetSettings");
+      localFromServiceMsg.setMsgSuccess();
+      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
+      this.app.a(this.a, localFromServiceMsg);
+    }
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "ReqGetSettingsItem.send...");
+    }
+    this.a = paramToServiceMsg;
   }
 }
 

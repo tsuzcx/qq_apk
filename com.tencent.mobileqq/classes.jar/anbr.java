@@ -1,57 +1,46 @@
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.BlockingQueue;
+import org.json.JSONObject;
 
-public class anbr
+class anbr
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public int a;
-  public long a;
-  public anbq a;
-  public Map<Integer, Long> a;
-  public BlockingQueue<anbo> a;
-  public boolean a;
-  public long b;
-  public long c;
+  anbr(anbl paramanbl) {}
   
-  public anbr(int paramInt)
+  public void onAudioFocusChange(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{").append("spanId:").append(this.jdField_a_of_type_Int).append(",result:").append(this.jdField_a_of_type_Anbq);
-    Iterator localIterator;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameAudioPlayer", 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+    }
+    for (;;)
     {
-      localStringBuilder.append(",extra:[");
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      JSONObject localJSONObject;
+      try
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (QLog.isColorLevel()) {
-          localStringBuilder.append("{").append(localEntry.getKey()).append(",").append(localEntry.getValue()).append("}");
-        } else {
-          localStringBuilder.append("{").append(localEntry.getKey()).append("}");
+        localJSONObject = new JSONObject();
+        if (paramInt != 1) {
+          break label105;
         }
+        localJSONObject.put("event", 2);
+        ande localande = anbd.a(anbl.a(this.a));
+        if ((localande == null) || (localande.a() == null)) {
+          break label104;
+        }
+        anbd.a().callbackFromRequest(localande.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
+        return;
       }
-      localStringBuilder.append("]");
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
-    {
-      localStringBuilder.append(",anno:[");
-      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append(((anbo)localIterator.next()).toString());
+      catch (Throwable localThrowable) {}
+      localJSONObject.put("event", 1);
+      continue;
+      label104:
+      return;
+      label105:
+      if (paramInt != -1) {
+        if (paramInt != -2) {}
       }
-      localStringBuilder.append("]");
     }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
   }
 }
 

@@ -2,19 +2,16 @@ package com.tencent.qqmini.sdk.plugins.engine;
 
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import java.util.List;
 import org.json.JSONObject;
 
 class BaseJsPluginEngine$8
   implements AsyncResult
 {
-  BaseJsPluginEngine$8(BaseJsPluginEngine paramBaseJsPluginEngine, RequestEvent paramRequestEvent, List paramList) {}
+  BaseJsPluginEngine$8(BaseJsPluginEngine paramBaseJsPluginEngine, RequestEvent paramRequestEvent) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramBoolean) {
-      this.this$0.onceSubMsgCallbackSuc(this.val$req, this.val$allSubMsg);
-    }
+    BaseJsPluginEngine.access$1000(this.this$0, this.val$req, paramBoolean, paramJSONObject);
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vip;
 
-import bhhx;
-import bhhz;
+import biim;
+import biio;
 import com.tencent.qphone.base.util.QLog;
 
 public class TMSManager$2
   implements Runnable
 {
-  public TMSManager$2(bhhx parambhhx) {}
+  public TMSManager$2(biim parambiim) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("KC.TMSManager", 2, "no file and requestDownloadDepends");
     }
-    bhhx.a().a();
+    biim.a().a();
   }
 }
 

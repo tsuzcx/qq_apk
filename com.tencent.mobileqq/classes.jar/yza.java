@@ -1,34 +1,25 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
 class yza
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements blih
 {
-  private yza(yys paramyys) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onGlobalLayout()
+  yza(yyy paramyyy) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
-    if (this.a.c < 0)
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == yyy.a(this.jdField_a_of_type_Yyy, yyy.a(this.jdField_a_of_type_Yyy)).a().size()) && (!yyy.a(this.jdField_a_of_type_Yyy, yyy.a(this.jdField_a_of_type_Yyy)).a()))
     {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Yyz.a();
+      paramAbsListView = yyy.a(this.jdField_a_of_type_Yyy);
+      yyy.a(this.jdField_a_of_type_Yyy, yyy.a(this.jdField_a_of_type_Yyy)).b(paramAbsListView);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Yyz == null);
-    this.a.jdField_a_of_type_Yyz.a(true, null);
-    this.a.jdField_a_of_type_Yyz.a(this.a.a());
   }
 }
 

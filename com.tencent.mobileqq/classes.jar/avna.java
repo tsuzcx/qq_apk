@@ -1,85 +1,19 @@
-import android.app.Activity;
 import android.content.Context;
-import android.view.View;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.lang.reflect.Field;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 
-class avna
-  implements HookMethodCallback
+public class avna
+  extends RadioButton
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public avna(QQGameIndicator paramQQGameIndicator, Context paramContext)
   {
-    if (paramMethodHookParam.throwable == null) {}
-    View localView;
-    do
-    {
-      return;
-      localView = (View)paramMethodHookParam.args[0];
-    } while (localView == null);
-    Object localObject1 = localView.getContext();
-    Object localObject2 = localObject1;
-    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
-    label295:
-    for (;;)
-    {
-      try
-      {
-        localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
-        ((Field)localObject2).setAccessible(true);
-        localObject2 = ((Field)localObject2).get(localView.getContext());
-        if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
-          break label295;
-        }
-        localObject2 = (Context)localObject2;
-        localObject1 = localObject2;
-        localObject2 = localObject1;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        bgjw.a(localClassNotFoundException);
-        Object localObject3 = localObject1;
-        continue;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        bgjw.a(localNoSuchFieldException);
-        Object localObject4 = localObject1;
-        continue;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        bgjw.a(localIllegalArgumentException);
-        Object localObject5 = localObject1;
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        bgjw.a(localIllegalAccessException);
-        Object localObject6 = localObject1;
-        continue;
-        localObject1 = paramMethodHookParam.throwable;
-        continue;
-        paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + " -- context is " + localObject6.getClass().getName(), paramMethodHookParam.throwable);
-        return;
-      }
-      if (paramMethodHookParam.throwable.getCause() != null)
-      {
-        localObject1 = paramMethodHookParam.throwable.getCause();
-        if ((!(localObject2 instanceof Activity)) || (((Activity)localObject2).isFinishing()) || (!(localObject1 instanceof WindowManager.BadTokenException))) {
-          continue;
-        }
-        avmy.a(1, localObject2.getClass().getName(), paramMethodHookParam.throwable.getMessage(), 0);
-        avmy.a(2, localObject2.getClass().getName(), null, 10000);
-        avmy.a(3, localObject2.getClass().getName(), null, 60000);
-        paramMethodHookParam.throwable = null;
-        ((Activity)localObject2).finish();
-      }
-    }
+    super(paramContext);
   }
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  public boolean performClick()
+  {
+    return true;
+  }
 }
 
 

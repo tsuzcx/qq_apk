@@ -1,33 +1,16 @@
-import java.util.ArrayList;
+import android.util.Log;
 
-public class lgg
+class lgg
 {
-  int jdField_a_of_type_Int = 0;
-  public String a;
-  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  final lgj jdField_a_of_type_Lgj;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
+  Class<?> jdField_a_of_type_JavaLangClass;
+  String jdField_a_of_type_JavaLangString;
+  Class<?> b;
   
-  lgg(lgj paramlgj, ArrayList<String> paramArrayList, boolean paramBoolean)
+  void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Lgj = paramlgj;
-    this.jdField_a_of_type_Int = 0;
-    if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    if ((this.b == null) || (this.jdField_a_of_type_JavaLangClass == null)) {
+      Log.d(paramString, "check ClassInfo, seq[" + paramLong + "], " + this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Int >= 3;
-  }
-  
-  public String toString()
-  {
-    return "ItemRecord{" + this.jdField_a_of_type_Lgj + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
   }
 }
 

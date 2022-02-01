@@ -1,52 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-
-public class uja
+class uja
+  implements upr
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean = true;
+  uja(uiz paramuiz, uix paramuix, upr paramupr) {}
   
-  private IMiniMsgUnreadCallback a()
+  public void a()
   {
-    return new ujb(this);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MiniMsgUserParam a()
-  {
-    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
-    localMiniMsgUserParam.businessName = 6;
-    localMiniMsgUserParam.accessType = 2;
-    localMiniMsgUserParam.filterMsgType = 0;
-    localMiniMsgUserParam.unreadCallback = a();
-    return localMiniMsgUserParam;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(MiniMsgUser paramMiniMsgUser)
-  {
-    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
+    uiz.a(this.jdField_a_of_type_Uiz, this.jdField_a_of_type_Uix);
+    if (this.jdField_a_of_type_Upr != null) {
+      this.jdField_a_of_type_Upr.a();
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void b()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Upr != null) {
+      this.jdField_a_of_type_Upr.b();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Upr != null) {
+      this.jdField_a_of_type_Upr.c();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Upr != null) {
+      this.jdField_a_of_type_Upr.d();
+    }
   }
 }
 

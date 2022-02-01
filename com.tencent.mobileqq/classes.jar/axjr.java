@@ -1,10 +1,21 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public abstract interface axjr
+class axjr
+  implements axpu
 {
-  public abstract void a(Comments.Comment paramComment);
+  axjr(axjq paramaxjq) {}
   
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
+  public void a()
+  {
+    if ((axjo.a(this.a.jdField_a_of_type_Axjo) != null) && (axjo.a(this.a.jdField_a_of_type_Axjo).a != null)) {
+      this.a.jdField_a_of_type_Axqb.a(this.a.jdField_a_of_type_JavaUtilList, 2, axjo.a(this.a.jdField_a_of_type_Axjo).a.a);
+    }
+    this.a.jdField_a_of_type_Axqb.a();
+    if (axjo.a(this.a.jdField_a_of_type_Axjo) != null) {
+      axjo.a(this.a.jdField_a_of_type_Axjo).a(false, null, false);
+    }
+  }
 }
 
 

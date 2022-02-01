@@ -1,83 +1,61 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class algg
-  implements TextWatcher
+class algg
+  implements aldq
 {
-  public algg(LoginView paramLoginView) {}
+  algg(algd paramalgd, algh paramalgh) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
-      LoginView.a(this.a, null);
+    if (this.jdField_a_of_type_Algh != null) {
+      this.jdField_a_of_type_Algh.a(false);
     }
-    String str;
-    SimpleAccount localSimpleAccount;
-    for (;;)
+  }
+  
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      return;
-      if (paramCharSequence != null)
+      try
       {
-        str = paramCharSequence.toString();
-        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
-          break;
-        }
-        paramInt1 = 0;
-        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        String str = new File(paramPathResult.folderPath, "quickDraw.tflite").toString();
+        paramPathResult = new File(paramPathResult.folderPath, "classes.txt").toString();
+        if ((!new File(str).exists()) || (!new File(paramPathResult).exists()))
         {
-          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
-          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
-            break label110;
-          }
-          paramInt1 += 1;
+          QLog.e("DrawClassifier", 1, "init fail file not exist");
+          a();
+          return;
         }
+        algd.a(this.jdField_a_of_type_Algd, new alfw(str, paramPathResult));
+        if (this.jdField_a_of_type_Algh != null) {
+          this.jdField_a_of_type_Algh.a(true);
+        }
+        algd.a(this.jdField_a_of_type_Algd, true);
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("DrawClassifier", 2, "init success");
+        return;
+      }
+      catch (Throwable paramPathResult)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("DrawClassifier", 2, "init recog fail:" + paramPathResult);
+        }
+        paramPathResult.printStackTrace();
+        a();
+        return;
       }
     }
-    label110:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    else
     {
-      paramCharSequence = localSimpleAccount.getUin();
-      label126:
-      if (!str.equals(paramCharSequence)) {
-        break label298;
+      if (QLog.isColorLevel()) {
+        QLog.d("DrawClassifier", 2, "init download fail");
       }
-      if ((localSimpleAccount != null) && (localSimpleAccount.isLogined())) {
-        if (!LoginView.h(this.a))
-        {
-          LoginView.i(this.a, true);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-          paramCharSequence = this.a.c;
-          if ((!LoginView.d(this.a)) && (!LoginView.e(this.a)) && (!LoginView.f(this.a))) {
-            break label300;
-          }
-        }
-      }
-    }
-    label298:
-    label300:
-    for (paramInt1 = 2130846965;; paramInt1 = 2130844697)
-    {
-      paramCharSequence.setImageResource(paramInt1);
-      this.a.c.setContentDescription(anni.a(2131705136));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
-      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
-      LoginView.c(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
-      return;
-      paramCharSequence = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin());
-      break label126;
-      break;
+      a();
     }
   }
 }

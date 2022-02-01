@@ -7,9 +7,9 @@ import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
-import bpgz;
+import bqiu;
 import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import yqp;
+import yuk;
 
 public class TrimTextureVideoView
   extends com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView
@@ -37,7 +37,7 @@ public class TrimTextureVideoView
   
   private float a(int paramInt1, int paramInt2)
   {
-    return Math.max(1.0F / bpgz.a(getResources()), Math.min(paramInt2, paramInt1) * 1.0F / Math.max(paramInt2, paramInt1));
+    return Math.max(1.0F / bqiu.a(getResources()), Math.min(paramInt2, paramInt1) * 1.0F / Math.max(paramInt2, paramInt1));
   }
   
   private Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -74,7 +74,7 @@ public class TrimTextureVideoView
         f = a(paramInt2, paramInt3);
         setScaleX(f);
         setScaleY(f);
-        yqp.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        yuk.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return true;
       }
       DisplayMetrics localDisplayMetrics;
@@ -92,7 +92,7 @@ public class TrimTextureVideoView
           this.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
           setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-          yqp.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+          yuk.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
           return false;
           this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
         }
@@ -103,7 +103,7 @@ public class TrimTextureVideoView
         f = a(paramInt2, paramInt3);
         setScaleX(f);
         setScaleY(f);
-        yqp.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        yuk.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return false;
       }
       if (paramInt2 == paramInt3)
@@ -119,12 +119,12 @@ public class TrimTextureVideoView
           this.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
           setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-          yqp.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+          yuk.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
           return false;
           this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
         }
       }
-      yqp.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      yuk.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
   }

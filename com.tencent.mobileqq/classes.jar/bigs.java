@@ -1,11 +1,11 @@
-import com.tencent.wifisdk.TMSDKCustomConfig.ICustomReporter;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
 
-final class bigs
-  implements TMSDKCustomConfig.ICustomReporter
+public class bigs
+  extends QWalletPayJsPlugin
 {
-  public void reportAction(String paramString, int paramInt)
+  public bigs()
   {
-    bigl.a(paramString);
+    this.mPluginNameSpace = "qw_pay";
   }
 }
 

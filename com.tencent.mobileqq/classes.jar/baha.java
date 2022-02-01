@@ -1,64 +1,29 @@
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
-public class baha
-  implements ayxc
+class baha
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  baha(bagy parambagy) {}
   
-  public baha(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(ayxd paramayxd)
-  {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    if ((paramayxd.b == 0) && (paramayxd.a != null))
+    paramContext = paramIntent.getBundleExtra("key_bundle_data");
+    if (paramContext != null)
     {
-      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
-      Object localObject = localMessageRecord;
-      if (localMessageRecord == null)
-      {
-        localObject = new MessageForStructing();
-        ((MessageRecord)localObject).senderuin = "0";
-        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
+      boolean bool = paramContext.getBoolean("onTagChanged");
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfilePersonalityLabelComponent", 2, String.format("onReceive addTag=%s", new Object[] { Boolean.valueOf(bool) }));
       }
-      paramayxd = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramayxd.a, null, (MessageRecord)localObject, null);
-      if ((paramayxd != null) && (!paramayxd.isEmpty()))
-      {
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
-        return;
+      if (bool) {
+        ((azww)bagy.b(this.a).a(112)).a(((azxr)bagy.k(this.a)).a.a, 0);
       }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramayxd.b);
-    }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 3)
-    {
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
   }
 }
 

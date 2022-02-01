@@ -1,34 +1,15 @@
-import android.os.Build.VERSION;
-import android.os.HandlerThread;
+import UserGrowth.stReportItem;
+import UserGrowth.stWeishiReportReq;
+import UserGrowth.stWeishiReportRsp;
+import java.util.ArrayList;
 
 public class upa
+  extends ukl<stWeishiReportRsp>
 {
-  private HandlerThread a;
-  
-  public HandlerThread a()
+  public upa(ArrayList<stReportItem> paramArrayList)
   {
-    if (this.a == null) {
-      this.a = new HandlerThread("WeishiHandlerThread");
-    }
-    return this.a;
-  }
-  
-  public void a()
-  {
-    if (this.a != null)
-    {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label29;
-      }
-      this.a.quitSafely();
-    }
-    for (;;)
-    {
-      this.a = null;
-      return;
-      label29:
-      this.a.quit();
-    }
+    super("WeishiReport");
+    this.a = new stWeishiReportReq(paramArrayList);
   }
 }
 

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bgtn;
+import bhtq;
 import com.tencent.mobileqq.minigame.data.BlockAdInfo;
 import com.tencent.mobileqq.minigame.manager.BlockAdManager;
 import com.tencent.widget.HorizontalListView;
@@ -16,19 +16,19 @@ import com.tencent.widget.ListView;
 public class BlockAdView
   extends RelativeLayout
 {
-  public final int horizontalHeight = bgtn.b(65.0F);
-  public final int horizontalSingleBlockWidth = bgtn.b(65.0F);
+  public final int horizontalHeight = bhtq.b(65.0F);
+  public final int horizontalSingleBlockWidth = bhtq.b(65.0F);
   protected ImageView mAdIcon;
   protected BlockAdView.BlockAdapter mAdapter;
   private Context mContext;
   private boolean mIsHorizontal;
   private int mRealAdNum;
-  public final int sideGapHeightHorizontal = bgtn.b(4.0F);
-  public final int sideGapHeightVertical = bgtn.b(4.0F);
-  public final int sideGapWidthHorizontal = bgtn.b(4.0F);
+  public final int sideGapHeightHorizontal = bhtq.b(4.0F);
+  public final int sideGapHeightVertical = bhtq.b(4.0F);
+  public final int sideGapWidthHorizontal = bhtq.b(4.0F);
   public final int sideGapWidthVertical = 0;
-  public final int verticalSingleBlockHeight = bgtn.b(73.0F);
-  public final int verticalWidth = bgtn.b(65.0F);
+  public final int verticalSingleBlockHeight = bhtq.b(73.0F);
+  public final int verticalWidth = bhtq.b(65.0F);
   
   public BlockAdView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, boolean paramBoolean)
   {
@@ -113,8 +113,8 @@ public class BlockAdView
     label404:
     for (;;)
     {
-      paramBlockAdInfo.setRealWidth(bgtn.c(j));
-      paramBlockAdInfo.setRealHeight(bgtn.c(i));
+      paramBlockAdInfo.setRealWidth(bhtq.c(j));
+      paramBlockAdInfo.setRealHeight(bhtq.c(i));
       return paramBlockAdInfo;
       i = this.verticalWidth;
       if (i2 == 1) {}
@@ -135,7 +135,7 @@ public class BlockAdView
         n = this.verticalSingleBlockHeight;
         i = m;
         if (k == 1) {
-          i = bgtn.b(8.0F);
+          i = bhtq.b(8.0F);
         }
         i = n * k - i;
         if (k == 0) {
@@ -182,8 +182,8 @@ public class BlockAdView
     for (;;)
     {
       this.mAdIcon = new ImageView(paramContext);
-      this.mAdIcon.setImageDrawable(getResources().getDrawable(2130840993));
-      paramContext = new RelativeLayout.LayoutParams(bgtn.b(19.299999F), bgtn.b(11.3F));
+      this.mAdIcon.setImageDrawable(getResources().getDrawable(2130841004));
+      paramContext = new RelativeLayout.LayoutParams(bhtq.b(19.299999F), bhtq.b(11.3F));
       paramContext.addRule(9);
       paramContext.addRule(10);
       this.mAdIcon.setLayoutParams(paramContext);
@@ -218,10 +218,10 @@ public class BlockAdView
   {
     if (paramBoolean)
     {
-      setBackgroundDrawable(getResources().getDrawable(2130840995));
+      setBackgroundDrawable(getResources().getDrawable(2130841006));
       return;
     }
-    setBackgroundColor(getResources().getColor(2131166613));
+    setBackgroundColor(getResources().getColor(2131166617));
   }
   
   public int getRealAdNum()

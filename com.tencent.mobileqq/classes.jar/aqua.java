@@ -1,72 +1,55 @@
-import android.graphics.Color;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aqua
+  implements aque
 {
-  public int a;
-  public ArrayList<bdrj> a;
-  public boolean a;
-  
-  public aqua()
+  public String a()
   {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692037);
   }
   
-  public static aqua a(String paramString)
+  public void a(View paramView, int paramInt)
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    boolean bool2 = true;
+    Context localContext = paramView.getContext();
+    boolean bool1;
+    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
     {
-      aqua localaqua = new aqua();
-      paramString = new JSONObject(paramString);
-      localaqua.jdField_a_of_type_Boolean = paramString.optBoolean("showEntrance", false);
-      localaqua.jdField_a_of_type_Int = paramString.optInt("bannerInterval", 10);
-      paramString = paramString.optJSONArray("array");
-      if (paramString != null)
-      {
-        int i = 0;
-        while (i < paramString.length())
-        {
-          JSONObject localJSONObject = (JSONObject)paramString.get(i);
-          bdrj localbdrj = new bdrj();
-          localbdrj.jdField_b_of_type_Int = localJSONObject.optInt("id");
-          localbdrj.jdField_c_of_type_Int = localJSONObject.optInt("order");
-          localbdrj.a = localJSONObject.optString("title");
-          localbdrj.jdField_b_of_type_JavaLangString = localJSONObject.optString("subTitle");
-          localbdrj.d = Color.parseColor(localJSONObject.optString("bgColor"));
-          localbdrj.jdField_c_of_type_JavaLangString = localJSONObject.optString("imageUrl");
-          localaqua.jdField_a_of_type_JavaUtilArrayList.add(localbdrj);
-          i += 1;
-        }
+      bool1 = true;
+      if (!(localContext instanceof BaseActivity)) {
+        break label121;
       }
-      Collections.sort(localaqua.jdField_a_of_type_JavaUtilArrayList, new aqub());
-      QLog.d("TogetherEntryConfProcessor", 2, "confBean = " + localaqua.toString());
-      return localaqua;
+      if (((BaseActivity)localContext).isInMultiWindow()) {
+        break label116;
+      }
+      bool1 = bool2;
     }
-    catch (Exception paramString)
+    label116:
+    label121:
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-      }
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bmkq.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
+      bmky.b(paramView, 6, 0);
+      bmlc.a(paramView.getCurrentAccountUin());
+      bdll.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
     }
-    return null;
-  }
-  
-  public String toString()
-  {
-    return 50;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqua
  * JD-Core Version:    0.7.0.1
  */

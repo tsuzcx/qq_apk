@@ -1,48 +1,17 @@
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajkj
-  extends anry
+  implements View.OnClickListener
 {
-  public ajkj(PublicAccountFragment paramPublicAccountFragment) {}
+  public ajkj(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
   
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if (PublicAccountFragment.a(this.a))
-      {
-        if (PublicAccountFragment.a(this.a) != null) {
-          PublicAccountFragment.b(this.a).a(this.a.b(), true, null);
-        }
-        PublicAccountFragment.a(this.a, false);
-      }
-      this.a.i();
-    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

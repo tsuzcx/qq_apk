@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Override;
-import akww;
+import alil;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,10 +11,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
-import anni;
-import bctj;
-import bggo;
-import bglf;
+import anzj;
+import bdmc;
+import bhgp;
+import bhlg;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -70,7 +70,7 @@ public class TenpayJumpActivity
   {
     try
     {
-      int j = paramContext.getResources().getDimensionPixelSize(2131298998);
+      int j = paramContext.getResources().getDimensionPixelSize(2131299011);
       float f1 = paramContext.getResources().getDisplayMetrics().density;
       return j - (int)(f1 * 5.0F);
     }
@@ -112,13 +112,13 @@ public class TenpayJumpActivity
       {
         if (this.jdField_a_of_type_JavaLangString.equals(str2))
         {
-          a(anni.a(2131713535));
+          a(anzj.a(2131713644));
           finish();
           return;
         }
         if (!this.jdField_a_of_type_JavaLangString.equals(str1))
         {
-          a(anni.a(2131713536));
+          a(anzj.a(2131713645));
           finish();
           return;
         }
@@ -132,7 +132,7 @@ public class TenpayJumpActivity
         ((Bundle)localObject1).putString("json", localJSONObject.toString());
         ((Bundle)localObject1).putString("callbackSn", "0");
         PayBridgeActivity.a(this, 9, (Bundle)localObject1);
-        akww.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
+        alil.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
         return;
       }
       a("verifyqrcode", localJSONObject.toString());
@@ -184,7 +184,7 @@ public class TenpayJumpActivity
     paramString5.append("|0|1|0|android.");
     paramString5.append(6);
     paramString5.append("|");
-    paramString5.append(bggo.a());
+    paramString5.append(bhgp.a());
     paramString5.append("|");
     if ((!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
     {
@@ -199,7 +199,7 @@ public class TenpayJumpActivity
       paramString5.append(this.e.replace("|", ","));
     }
     paramString5.append("|");
-    bctj.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
+    bdmc.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
   }
   
   @Override
@@ -246,7 +246,7 @@ public class TenpayJumpActivity
           continue;
         }
         this.i = "1";
-        paramBundle = bglf.m(this.app, this.g);
+        paramBundle = bhlg.m(this.app, this.g);
         if ((!TextUtils.isEmpty(paramBundle)) && (!paramBundle.equals(this.g))) {
           this.h = paramBundle;
         }
@@ -374,7 +374,7 @@ public class TenpayJumpActivity
     //   215: ifne +41 -> 256
     //   218: aload_0
     //   219: ldc_w 403
-    //   222: invokestatic 161	anni:a	(I)Ljava/lang/String;
+    //   222: invokestatic 161	anzj:a	(I)Ljava/lang/String;
     //   225: invokevirtual 164	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/CharSequence;)V
     //   228: aload_0
     //   229: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
@@ -417,7 +417,7 @@ public class TenpayJumpActivity
     //   301: getfield 193	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   304: aload_0
     //   305: getfield 356	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
-    //   308: invokestatic 376	bglf:m	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   308: invokestatic 376	bhlg:m	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   311: astore 5
     //   313: aload 5
     //   315: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z

@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.ocr.view.OcrImageTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayfe
-  implements ayiq
+  implements View.OnClickListener
 {
-  public ayfe(OCRPerformFragment paramOCRPerformFragment) {}
+  public ayfe(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ayfi.a("0X800AAE1", 0);
-    if (OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(false);
-    }
-  }
-  
-  public void b()
-  {
-    if (!OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(true);
-    }
+    ShortVideoCommentsView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

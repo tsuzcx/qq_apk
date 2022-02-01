@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
 public class amwj
-  implements DialogInterface.OnClickListener
+  extends aocj
 {
-  public amwj(ApolloGameActivity paramApolloGameActivity, andl paramandl, int paramInt) {}
+  public amwj(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_Andl != null) {
-      this.jdField_a_of_type_Andl.a(1);
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-    paramDialogInterface.dismiss();
+    this.a.b();
   }
+  
+  protected void b() {}
 }
 
 

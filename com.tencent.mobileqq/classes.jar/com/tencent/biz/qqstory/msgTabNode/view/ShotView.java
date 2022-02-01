@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
+import anzj;
 
 @Deprecated
 public class ShotView
@@ -20,9 +20,9 @@ public class ShotView
   public ShotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2131561746, this);
-    ((TextView)findViewById(2131378776)).setText(anni.a(2131712858));
-    ((ImageView)findViewById(2131367834)).setImageResource(2130846627);
+    LayoutInflater.from(paramContext).inflate(2131561787, this);
+    ((TextView)findViewById(2131378936)).setText(anzj.a(2131712967));
+    ((ImageView)findViewById(2131367903)).setImageResource(2130846644);
   }
 }
 

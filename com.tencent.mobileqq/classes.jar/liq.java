@@ -1,87 +1,135 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
 
-public class liq
+public abstract class liq
+  implements mor
 {
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean;
+  protected int a;
+  protected Bitmap a;
+  protected Canvas a;
+  protected Paint a;
+  protected lgi a;
+  protected mos a;
+  protected boolean a;
+  protected int b;
+  protected boolean b;
   
-  static long a(String paramString)
+  public liq(lgi paramlgi, boolean paramBoolean)
   {
-    long l1 = 0L;
-    long l2 = l1;
-    if (!lrz.a(paramString, jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_Int = 32;
+    this.jdField_b_of_type_Int = 255;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Lgi = paramlgi;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public abstract int a();
+  
+  public int a(long paramLong)
+  {
+    return 0;
+  }
+  
+  Bitmap a()
+  {
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Lgi.a))
     {
-      long l3 = System.currentTimeMillis();
-      lbc.c("EffectZimuManager", "DataReport calTime zimu:" + paramString + "|" + jdField_a_of_type_JavaLangString + "|" + jdField_a_of_type_Long);
-      l2 = l1;
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      lbj.c("ARZimuItemTask", "TextUtils.isEmpty(mSentenceInfo.src_text) == null");
+      localObject3 = localObject1;
+    }
+    do
+    {
+      for (;;)
       {
-        if (jdField_a_of_type_Long != 0L)
+        return localObject3;
+        lbj.c("ARZimuItemTask", "build:" + toString());
+        localObject1 = localObject3;
+        Object localObject2 = localObject4;
+        try
         {
-          l1 = l3 - jdField_a_of_type_Long;
-          lbc.c("EffectZimuManager", "DataReport zimu:" + l1);
-          jdField_a_of_type_Boolean = true;
-          l1 /= 1000L;
-          a(jdField_a_of_type_JavaLangString, l1);
-          bcst.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
-          if (lio.a(jdField_a_of_type_JavaLangString)) {
-            bcst.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          int i = a();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          int j = b();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
+          return localObject3;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localObject3 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("ARZimuItemTask", 2, localOutOfMemoryError.getMessage());
+            return localObject1;
           }
         }
-        lbc.c("EffectZimuManager", "DataReport zimu 33:" + l1);
-        l2 = l1;
+        catch (Exception localException)
+        {
+          localObject3 = localOutOfMemoryError;
+        }
       }
-      jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_Long = l3;
-    }
-    return l2;
+    } while (!QLog.isColorLevel());
+    QLog.e("ARZimuItemTask", 2, localException.getMessage());
+    return localOutOfMemoryError;
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
+  
+  public void a(Typeface paramTypeface, int paramInt, mos parammos)
   {
-    if (paramVideoAppInterface.a(0))
-    {
-      paramVideoAppInterface = (ZimuItem)((lip)paramVideoAppInterface.a(0)).a();
-      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
-        a(null);
-      }
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
     }
+    this.jdField_a_of_type_Mos = parammos;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
   }
   
-  public static void a(String paramString, long paramLong)
+  public void a(lgi paramlgi)
   {
-    lbc.c("EffectZimuManager", "DataReport zimu:" + paramString + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("zimuName", paramString);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatZimu", true, -1L, -1L, localHashMap, true);
-    try
-    {
-      UserAction.flushObjectsToDB(true);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      lbc.e("EffectZimuManager", paramString.getMessage());
-    }
+    this.jdField_a_of_type_Lgi = paramlgi;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
   {
-    lbc.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2);
-    bcst.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    return false;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public abstract int b();
+  
+  public Bitmap b()
   {
-    lbc.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2 + "|" + paramString3);
-    bcst.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

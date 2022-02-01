@@ -1,22 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aeal
-  implements Handler.Callback
+final class aeal
+  implements DialogInterface.OnCancelListener
 {
-  public aeal(Conversation paramConversation) {}
+  aeal(aeca paramaeca, aebz paramaebz) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    awhd.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      this.a.a(1134013, 0L, false);
-      return true;
+    if (this.jdField_a_of_type_Aeca.a) {
+      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    this.a.d(true);
-    return true;
+    if (this.jdField_a_of_type_Aebz != null) {
+      this.jdField_a_of_type_Aebz.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

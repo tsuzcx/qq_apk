@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -20,19 +20,18 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import autd;
-import autf;
-import auud;
-import auuk;
-import auul;
-import auum;
-import auun;
-import auuo;
-import auup;
-import auvy;
-import auwb;
-import auwe;
-import bmxq;
+import avld;
+import avlf;
+import avmd;
+import avmk;
+import avml;
+import avmm;
+import avmn;
+import avmo;
+import avmp;
+import avny;
+import avob;
+import avoe;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -50,7 +49,7 @@ import mqq.os.MqqHandler;
 
 public class GameSessionView
   extends RelativeLayout
-  implements Handler.Callback, View.OnClickListener, auwb
+  implements Handler.Callback, View.OnClickListener, avob
 {
   public static final String a;
   private static boolean e;
@@ -60,8 +59,8 @@ public class GameSessionView
   private View jdField_a_of_type_AndroidViewView;
   private ScaleAnimation jdField_a_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.75F, 1, 0.0F);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private auum jdField_a_of_type_Auum;
-  private auwe jdField_a_of_type_Auwe;
+  private avmm jdField_a_of_type_Avmm;
+  private avoe jdField_a_of_type_Avoe;
   private List<GameCenterSessionInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   private boolean jdField_a_of_type_Boolean;
@@ -100,12 +99,12 @@ public class GameSessionView
     }
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
     {
-      autf.a(((autd)this.jdField_a_of_type_MqqAppAppRuntime.getManager(358)).b(), paramContext, paramGameCenterSessionInfo);
+      avlf.a(((avld)this.jdField_a_of_type_MqqAppAppRuntime.getManager(358)).b(), paramContext, paramGameCenterSessionInfo);
       return;
     }
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof ToolAppRuntime))
     {
-      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsgUrl", null, new auul(this, paramContext, paramGameCenterSessionInfo));
+      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsgUrl", null, new avml(this, paramContext, paramGameCenterSessionInfo));
       return;
     }
     QLog.w(jdField_a_of_type_JavaLangString, 1, "[initData] unknown interface:" + this.jdField_a_of_type_MqqAppAppRuntime.getClass().getSimpleName());
@@ -123,8 +122,8 @@ public class GameSessionView
     }
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof ToolAppRuntime))
     {
-      auvy.a().a("task_get_qgame_session_msg", true);
-      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsg", null, new auuk(this));
+      avny.a().a("task_get_qgame_session_msg", true);
+      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsg", null, new avmk(this));
       return;
     }
     QLog.i(jdField_a_of_type_JavaLangString, 1, "[initData] unknown interface:" + this.jdField_a_of_type_MqqAppAppRuntime.getClass().getSimpleName());
@@ -136,48 +135,48 @@ public class GameSessionView
     FrameLayout localFrameLayout = new FrameLayout(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840168);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840177);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("查看全部游戏消息");
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#80333333"));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131371281);
-    FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(-1, afur.a(17.0F, getResources()));
-    localLayoutParams1.rightMargin = afur.a(25.0F, getResources());
-    localLayoutParams1.leftMargin = afur.a(25.0F, getResources());
-    localLayoutParams1.topMargin = afur.a(60.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131371388);
+    FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(-1, agej.a(17.0F, getResources()));
+    localLayoutParams1.rightMargin = agej.a(25.0F, getResources());
+    localLayoutParams1.leftMargin = agej.a(25.0F, getResources());
+    localLayoutParams1.topMargin = agej.a(60.0F, getResources());
     localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams1);
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559203, null);
-    this.jdField_a_of_type_AndroidViewView.setTag(new auuo(this.jdField_a_of_type_AndroidViewView));
-    this.jdField_a_of_type_AndroidViewView.setId(2131367299);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(auud.a(getContext()));
-    localLayoutParams1 = new FrameLayout.LayoutParams(-1, afur.a(64.0F, getResources()));
-    localLayoutParams1.leftMargin = afur.a(15.0F, getResources());
-    localLayoutParams1.rightMargin = afur.a(15.0F, getResources());
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559202, null);
+    this.jdField_a_of_type_AndroidViewView.setTag(new avmo(this.jdField_a_of_type_AndroidViewView));
+    this.jdField_a_of_type_AndroidViewView.setId(2131367355);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(avmd.a(getContext()));
+    localLayoutParams1 = new FrameLayout.LayoutParams(-1, agej.a(64.0F, getResources()));
+    localLayoutParams1.leftMargin = agej.a(15.0F, getResources());
+    localLayoutParams1.rightMargin = agej.a(15.0F, getResources());
     localFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams1);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     addView(localFrameLayout, localLayoutParams);
-    this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559204, null);
-    this.jdField_b_of_type_AndroidViewView.setId(2131367300);
+    this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559203, null);
+    this.jdField_b_of_type_AndroidViewView.setId(2131367356);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView.setTag(new auup(this.jdField_b_of_type_AndroidViewView));
-    localObject = new RelativeLayout.LayoutParams(afur.a(172.0F, getResources()), afur.a(64.0F, getResources()));
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = afur.a(33.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject).bottomMargin = afur.a(4.0F, getResources());
+    this.jdField_b_of_type_AndroidViewView.setTag(new avmp(this.jdField_b_of_type_AndroidViewView));
+    localObject = new RelativeLayout.LayoutParams(agej.a(172.0F, getResources()), agej.a(64.0F, getResources()));
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = agej.a(33.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = agej.a(4.0F, getResources());
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     addView(this.jdField_b_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_Auum = new auum(this, null);
+    this.jdField_a_of_type_Avmm = new avmm(this, null);
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("action_qgame_messgae_change");
     ((IntentFilter)localObject).addAction("action_qgame_unread_change");
-    paramContext.registerReceiver(this.jdField_a_of_type_Auum, (IntentFilter)localObject);
+    paramContext.registerReceiver(this.jdField_a_of_type_Avmm, (IntentFilter)localObject);
   }
   
   public void a(View paramView, GameCenterSessionInfo paramGameCenterSessionInfo)
   {
-    if ((paramView.getTag() instanceof auun)) {
-      ((auun)paramView.getTag()).a(paramGameCenterSessionInfo);
+    if ((paramView.getTag() instanceof avmn)) {
+      ((avmn)paramView.getTag()).a(paramGameCenterSessionInfo);
     }
   }
   
@@ -215,16 +214,16 @@ public class GameSessionView
     a(paramAppRuntime, null);
   }
   
-  public void a(AppRuntime paramAppRuntime, auwe paramauwe)
+  public void a(AppRuntime paramAppRuntime, avoe paramavoe)
   {
     if (paramAppRuntime == null) {}
     do
     {
       return;
       this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-      this.jdField_a_of_type_Auwe = paramauwe;
+      this.jdField_a_of_type_Avoe = paramavoe;
       this.jdField_b_of_type_Boolean = false;
-      auvy.a().a("task_get_qgame_session_msg", this);
+      avny.a().a("task_get_qgame_session_msg", this);
     } while (this.jdField_a_of_type_MqqAppAppRuntime == null);
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
     {
@@ -233,7 +232,7 @@ public class GameSessionView
     }
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof ToolAppRuntime))
     {
-      auvy.a().a("task_get_qgame_session_msg", true);
+      avny.a().a("task_get_qgame_session_msg", true);
       return;
     }
     QLog.i(jdField_a_of_type_JavaLangString, 1, "[initData] unknown interface:" + this.jdField_a_of_type_MqqAppAppRuntime.getClass().getSimpleName());
@@ -242,7 +241,7 @@ public class GameSessionView
   public void b()
   {
     if (getContext() != null) {
-      getContext().unregisterReceiver(this.jdField_a_of_type_Auum);
+      getContext().unregisterReceiver(this.jdField_a_of_type_Avmm);
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
@@ -258,8 +257,8 @@ public class GameSessionView
       this.jdField_a_of_type_Boolean = false;
       setVisibility(8);
       requestLayout();
-    } while (this.jdField_a_of_type_Auwe == null);
-    this.jdField_a_of_type_Auwe.c();
+    } while (this.jdField_a_of_type_Avoe == null);
+    this.jdField_a_of_type_Avoe.c();
     return false;
   }
   
@@ -283,29 +282,53 @@ public class GameSessionView
       }
     } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0));
     GameCenterSessionInfo localGameCenterSessionInfo = (GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    int i = this.jdField_a_of_type_JavaUtilList.size();
+    int k = this.jdField_a_of_type_JavaUtilList.size();
     if (this.jdField_a_of_type_JavaUtilList.size() > 2) {
-      i = 3;
+      k = 3;
     }
     for (;;)
     {
-      a(getContext(), localGameCenterSessionInfo);
-      bmxq.a().a(localGameCenterSessionInfo.e(), "1", "145", "920", "92001", "206342", localGameCenterSessionInfo.a() + "", this.jdField_a_of_type_Int + "", "20", "" + i);
-      a(paramView, localGameCenterSessionInfo);
-      break;
-      a(getContext(), null);
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break;
-      }
-      localGameCenterSessionInfo = (GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      if (this.jdField_a_of_type_JavaUtilList.size() > 2) {
-        i = 3;
+      int j;
+      int i;
+      if (localGameCenterSessionInfo.a() == 0)
+      {
+        if (!e) {
+          break label508;
+        }
+        j = 0;
+        i = 0;
       }
       for (;;)
       {
-        bmxq.a().a("", "1", "145", "920", "92001", "206342", localGameCenterSessionInfo.a() + "", this.jdField_a_of_type_Int + "", "20", "" + i);
+        a(getContext(), localGameCenterSessionInfo);
+        avlf.a(localGameCenterSessionInfo.e(), "1", "145", "920", "92001", "206342", i + "", localGameCenterSessionInfo.a() + "", this.jdField_a_of_type_Int + "", "20", "" + k, "", j + "");
+        a(paramView, localGameCenterSessionInfo);
         break;
+        j = localGameCenterSessionInfo.c();
+        if (j > 0)
+        {
+          i = 0;
+          continue;
+          a(getContext(), null);
+          if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+            break;
+          }
+          localGameCenterSessionInfo = (GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+          i = this.jdField_a_of_type_JavaUtilList.size();
+          if (this.jdField_a_of_type_JavaUtilList.size() > 2) {
+            i = 3;
+          }
+          for (;;)
+          {
+            avlf.a("", "1", "145", "920", "92001", "206342", localGameCenterSessionInfo.a() + "", this.jdField_a_of_type_Int + "", "20", "" + i);
+            break;
+          }
+        }
+        i = 1;
+        continue;
+        label508:
+        j = 0;
+        i = 1;
       }
     }
   }
@@ -321,11 +344,42 @@ public class GameSessionView
       super.onMeasure(paramInt1, paramInt2);
     } while (this.c);
     String str = "";
-    if (this.jdField_a_of_type_JavaUtilList.get(0) != null) {
-      str = ((GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0)).e();
+    GameCenterSessionInfo localGameCenterSessionInfo;
+    if (this.jdField_a_of_type_JavaUtilList.get(0) != null)
+    {
+      localGameCenterSessionInfo = (GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+      str = localGameCenterSessionInfo.e();
+      if (localGameCenterSessionInfo.a() == 0)
+      {
+        if (!e) {
+          break label230;
+        }
+        paramInt2 = 0;
+        paramInt1 = 0;
+      }
     }
-    bmxq.a().a(str, "1", "145", "920", "92001", "206341", "0", this.jdField_a_of_type_Int + "", "8", "");
-    this.c = true;
+    for (;;)
+    {
+      avlf.a(str, "1", "145", "920", "92001", "206341", paramInt1 + "", "0", this.jdField_a_of_type_Int + "", "8", "", "", paramInt2 + "");
+      this.c = true;
+      return;
+      paramInt2 = localGameCenterSessionInfo.c();
+      if (paramInt2 > 0)
+      {
+        paramInt1 = 0;
+      }
+      else
+      {
+        paramInt1 = 1;
+        continue;
+        label230:
+        paramInt2 = 0;
+        paramInt1 = 1;
+        continue;
+        paramInt2 = 0;
+        paramInt1 = 1;
+      }
+    }
   }
   
   public void setData(List<GameCenterSessionInfo> paramList)
@@ -335,8 +389,8 @@ public class GameSessionView
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
       setVisibility(8);
       requestLayout();
-      if (this.jdField_a_of_type_Auwe != null) {
-        this.jdField_a_of_type_Auwe.c();
+      if (this.jdField_a_of_type_Avoe != null) {
+        this.jdField_a_of_type_Avoe.c();
       }
       return;
     }
@@ -376,45 +430,43 @@ public class GameSessionView
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
           setVisibility(0);
           requestLayout();
-          if (this.jdField_a_of_type_Auwe == null) {
+          if (this.jdField_a_of_type_Avoe == null) {
             break;
           }
-          this.jdField_a_of_type_Auwe.c();
+          this.jdField_a_of_type_Avoe.c();
           return;
           this.jdField_a_of_type_AndroidWidgetTextView.setText("查看全部游戏消息");
         }
       }
-      if ((this.jdField_a_of_type_Auwe != null) && ((this.jdField_a_of_type_Auwe instanceof QQGameFeedWebFragment)))
+      int j;
+      if ((this.jdField_a_of_type_Avoe != null) && ((this.jdField_a_of_type_Avoe instanceof QQGameFeedWebFragment)))
       {
-        paramList = "";
         if (this.jdField_a_of_type_JavaUtilList.get(0) == null) {
-          break label587;
+          break label576;
         }
         paramList = ((GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0)).e();
+        j = ((GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0)).a();
       }
-      label575:
-      label587:
-      for (int j = ((GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0)).a();; j = -1)
+      for (;;)
       {
-        ((QQGameFeedWebFragment)this.jdField_a_of_type_Auwe).a(i, j);
+        ((QQGameFeedWebFragment)this.jdField_a_of_type_Avoe).a(i, j);
         if (!this.d)
         {
-          localObject = bmxq.a();
-          String str1 = j + "";
-          String str2 = this.jdField_a_of_type_Int + "";
+          localObject = j + "";
+          String str = this.jdField_a_of_type_Int + "";
           StringBuilder localStringBuilder = new StringBuilder().append("");
           if (i > 0)
           {
             i = 1;
-            label459:
-            ((bmxq)localObject).a(paramList, "1", "145", "920", "92001", "206829", str1, str2, "8", i);
+            label450:
+            avlf.a(paramList, "1", "145", "920", "92001", "206829", (String)localObject, str, "8", i);
             this.d = true;
           }
         }
         else
         {
           if (!this.jdField_a_of_type_Boolean) {
-            break label575;
+            break label564;
           }
           this.jdField_b_of_type_AndroidViewView.setVisibility(0);
           a(this.jdField_b_of_type_AndroidViewView, (GameCenterSessionInfo)this.jdField_a_of_type_JavaUtilList.get(0));
@@ -426,9 +478,13 @@ public class GameSessionView
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
           break;
           i = 0;
-          break label459;
+          break label450;
+          label564:
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
+        label576:
+        j = -1;
+        paramList = "";
       }
       i = 0;
     }

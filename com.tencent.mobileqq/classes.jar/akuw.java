@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class akuw
-  implements View.OnClickListener
+  extends aktf
 {
-  public akuw(DrawHbFragment paramDrawHbFragment) {}
-  
-  public void onClick(View paramView)
+  protected akuw(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if ((paramView instanceof TextView))
-    {
-      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 

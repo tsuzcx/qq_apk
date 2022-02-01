@@ -1,20 +1,22 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.RedbagToolbar;
 
 public class mjh
-  implements View.OnTouchListener
+  implements mql
 {
-  public mjh(VideoControlUI paramVideoControlUI) {}
+  public mjh(RedbagToolbar paramRedbagToolbar, mpv parammpv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    {
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Mpv.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      }
+      return;
     }
-    return false;
   }
 }
 

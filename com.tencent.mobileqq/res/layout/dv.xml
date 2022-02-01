@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bag" android:layout_width="wrap_content" android:layout_height="12.0dip" android:src="@drawable/c_x" android:scaleType="fitXY" />
-    <ImageView android:id="@id/baj" android:layout_width="210.0dip" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/bai" android:layout_width="wrap_content" android:layout_height="12.0dip" android:src="@drawable/c_x" android:scaleType="fitXY" />
-</LinearLayout>

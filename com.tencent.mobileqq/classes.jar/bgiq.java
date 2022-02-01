@@ -1,66 +1,55 @@
-import android.animation.AnimatorSet;
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-final class bgiq
-  implements bgir<T>
+public class bgiq
+  extends bghr
 {
-  bgiq(AtomicBoolean paramAtomicBoolean, ayjb paramayjb, bgir parambgir, WebView paramWebView, AnimatorSet paramAnimatorSet) {}
-  
-  public T a(Bitmap paramBitmap)
+  public bgiq(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish isCanceled");
-      this.jdField_a_of_type_Ayjb.dismiss();
-      return null;
-    }
-    if (paramBitmap == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish bitmap is null");
-      this.jdField_a_of_type_Ayjb.dismiss();
-      return null;
-    }
-    return this.jdField_a_of_type_Bgir.a(paramBitmap);
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 22;
   }
   
-  public void a(Exception paramException)
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    this.jdField_a_of_type_Bgir.a(paramException);
-    this.jdField_a_of_type_Ayjb.dismiss();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    if ((localObject != null) && (a((MessageRecord)localObject, paramLong2, paramLong3)))
+    {
+      paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131697017);
+      paramObject = bfpe.a(paramInt1, ((MessageRecord)localObject).shmsgseq, paramInt2);
+      localObject = ((MessageRecord)localObject).senderuin;
+      MessageForReplyText.reportReplyMsg(null, "AIOchat", "Appear_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+      return new bghs(true, paramList, paramObject, (String)localObject);
+    }
+    return null;
   }
   
-  public void a(T paramT, Bitmap paramBitmap)
+  public void a(int paramInt, Object paramObject, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {}
+    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
     {
-      QLog.e("ScreenShotUtil", 1, "postBitmap isCanceled");
-      this.jdField_a_of_type_Ayjb.dismiss();
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "exp_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
       return;
     }
-    if (paramT == null)
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    MessageForReplyText.reportReplyMsg(null, "AIOchat", "Clk_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {}
+    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
     {
-      QLog.e("ScreenShotUtil", 1, "postBitmap t is null");
-      this.jdField_a_of_type_Ayjb.dismiss();
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "clk_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
       return;
     }
-    if (paramBitmap == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "postBitmap bitmap is null");
-      this.jdField_a_of_type_Ayjb.dismiss();
-      this.jdField_a_of_type_Bgir.a(new NullPointerException("postBitmap bitmap is null"));
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext() != null) && (this.jdField_a_of_type_Ayjb.isShowing()))
-    {
-      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
-      }
-      this.jdField_a_of_type_Ayjb.dismiss();
-    }
-    this.jdField_a_of_type_Bgir.a(paramT, paramBitmap);
   }
 }
 

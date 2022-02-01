@@ -1,94 +1,106 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class akan
-  implements arxd
+public class akan
+  implements Handler.Callback
 {
-  akan(akaj paramakaj) {}
+  public akan(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void a(arxg paramarxg)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i;
-    int j;
-    if ((paramarxg instanceof asdb))
-    {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.C2CAllFragment", 2, new Object[] { "handleMessage ", Integer.valueOf(paramMessage.what) });
     }
-    ascv localascv;
-    int k;
-    int m;
-    do
+    switch (paramMessage.what)
     {
-      this.a.a.getEditableText().replace(i, j, bdol.b(((asdb)paramarxg).a));
+    case 6: 
+    case 7: 
+    case 11: 
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    case 9: 
+    case 22: 
+    case 23: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    case 21: 
+    case 65537: 
+    case 65538: 
+    case 65539: 
+    case 65540: 
+    case 24: 
+    case 25: 
+    case 27: 
+    case 28: 
+    case 33: 
+    case 14: 
+    case 15: 
+    case 26: 
+    case 34: 
+    case 13: 
       do
       {
-        return;
-      } while (!(paramarxg instanceof ascv));
-      localascv = (ascv)paramarxg;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localascv.a;
-      m = localascv.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
+        return true;
+        this.a.g(paramMessage);
+        return true;
+        this.a.a(paramMessage);
+        return true;
+        this.a.f(paramMessage);
+        return true;
+        this.a.e(paramMessage);
+        return true;
+        this.a.b(paramMessage);
+        return true;
+        this.a.d(paramMessage);
+        return true;
+        this.a.c(paramMessage);
+        return true;
+        ChatHistoryC2CAllFragment.a(this.a);
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.history.C2CAllFragment", 2, "handle_get_roam_msg_auth_mode notify UI");
+        }
+        if (this.a.jdField_a_of_type_Aocm.f())
+        {
+          this.a.c(false);
+          return true;
+        }
+        this.a.u();
+        return true;
+      } while (paramMessage.obj == null);
+      ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = this.a;
+      BaseApplication localBaseApplication = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      if (((Boolean)paramMessage.obj).booleanValue() == true) {}
+      for (int i = 2131691905;; i = 2131691904)
+      {
+        localChatHistoryC2CAllFragment.a(localBaseApplication.getString(i));
+        return true;
       }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramarxg = bdol.b(m);; paramarxg = bdol.a(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramarxg);
-      this.a.a.requestFocus();
-      localascv.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      arvk.a().a(k).a(m, 2);
-      return;
+    case 39: 
+      ChatHistoryC2CAllFragment.a(this.a, paramMessage);
+      return true;
+    case 40: 
+      ChatHistoryC2CAllFragment.b(this.a, paramMessage);
+      return true;
+    case 41: 
+      ChatHistoryC2CAllFragment.c(this.a, paramMessage);
+      return true;
     }
-  }
-  
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
-  
-  public boolean a(arxg paramarxg)
-  {
+    ChatHistoryC2CAllFragment.d(this.a, paramMessage);
     return true;
   }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(arxg paramarxg) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

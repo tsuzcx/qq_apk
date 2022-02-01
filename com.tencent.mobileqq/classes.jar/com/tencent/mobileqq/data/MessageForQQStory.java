@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import anni;
-import bkgj;
+import anzj;
+import blhn;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -55,9 +55,9 @@ public class MessageForQQStory
   public static String buildCompatibleText(String paramString1, String paramString2, String paramString3)
   {
     if (TextUtils.isEmpty(paramString1)) {
-      return paramString2 + anni.a(2131705402) + paramString3 + anni.a(2131705398) + "QQ" + anni.a(2131705370);
+      return paramString2 + anzj.a(2131705509) + paramString3 + anzj.a(2131705505) + "QQ" + anzj.a(2131705477);
     }
-    return paramString1 + "-" + paramString2 + anni.a(2131705381) + paramString3 + anni.a(2131705396) + "QQ" + anni.a(2131705365);
+    return paramString1 + "-" + paramString2 + anzj.a(2131705488) + paramString3 + anzj.a(2131705503) + "QQ" + anzj.a(2131705472);
   }
   
   public void doParse()
@@ -76,7 +76,7 @@ public class MessageForQQStory
       this.briefBgColor = localJSONObject.optInt("briefBgColor");
       this.mHeadTip = localJSONObject.optString("headtip");
       this.mVid = localJSONObject.optString("vid");
-      this.mAttrMap = bkgj.a(this.msgAction);
+      this.mAttrMap = blhn.a(this.msgAction);
       if (TextUtils.isEmpty(this.mVid))
       {
         this.mVid = ((String)this.mAttrMap.get("videoId"));

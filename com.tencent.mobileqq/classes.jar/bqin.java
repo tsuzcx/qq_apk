@@ -1,23 +1,30 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
+import android.graphics.Bitmap;
 
 public class bqin
+  extends bqix
 {
-  public static String a(Context paramContext)
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
+  
+  public bqin(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
-    }
+    super(paramInt, paramBitmap);
+    this.a = paramLong1;
+    this.b = paramLong2;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.d = paramLong4;
   }
   
-  public static String b(Context paramContext)
+  public bqin a(Bitmap paramBitmap)
   {
-    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
-    String str = VideoEnvironment.a();
-    return paramContext + str;
+    return new bqin(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+  }
+  
+  public String toString()
+  {
+    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
   }
 }
 

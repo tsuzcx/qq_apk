@@ -1,9 +1,18 @@
-import java.util.List;
-
-public class beqa
+class beqa
+  implements bepy
 {
-  public String a;
-  public List<Integer> a;
+  beqa(bepz parambepz) {}
+  
+  public void a()
+  {
+    bepz.a(this.a);
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

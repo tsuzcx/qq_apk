@@ -1,24 +1,26 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
 
-public abstract interface bapl
+class bapl
+  implements bdgt
 {
-  public abstract void a(long paramLong);
+  bapl(bapk parambapk, LoadSoCallback paramLoadSoCallback) {}
   
-  public abstract void a(VideoMaterial paramVideoMaterial);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
-  
-  public abstract boolean a(boolean paramBoolean);
-  
-  public abstract void a_(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
-  
-  public abstract void c(boolean paramBoolean);
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "initSDKAsync, onLoadResult, resCode = " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_Bapk.a = true;
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(true);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(false);
+    this.jdField_a_of_type_Bapk.a = false;
+  }
 }
 
 

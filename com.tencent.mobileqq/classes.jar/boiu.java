@@ -1,8 +1,8 @@
+import android.graphics.Bitmap;
+
 public abstract interface boiu
 {
-  public abstract void aQ_();
-  
-  public abstract void aR_();
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

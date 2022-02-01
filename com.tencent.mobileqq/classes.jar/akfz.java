@@ -1,21 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 class akfz
-  implements DialogInterface.OnKeyListener
 {
-  akfz(akfu paramakfu) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
-    {
-      this.a.a.dismiss();
-      akfu.a(this.a, akfu.a(this.a), true, Long.valueOf(akfu.b(this.a)).longValue(), true);
-    }
-    return false;
-  }
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

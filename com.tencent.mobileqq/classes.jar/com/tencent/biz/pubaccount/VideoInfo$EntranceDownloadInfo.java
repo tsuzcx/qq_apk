@@ -5,13 +5,13 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import obt;
-import tkf;
+import odc;
+import tay;
 
 public class VideoInfo$EntranceDownloadInfo
-  implements Parcelable, tkf
+  implements Parcelable, tay
 {
-  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new obt();
+  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new odc();
   public UrlJumpInfo a;
   public String a;
   public boolean a;
@@ -34,7 +34,7 @@ public class VideoInfo$EntranceDownloadInfo
     }
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
   }

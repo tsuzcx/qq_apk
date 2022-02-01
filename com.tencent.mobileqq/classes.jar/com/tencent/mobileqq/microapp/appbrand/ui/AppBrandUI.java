@@ -12,9 +12,9 @@ import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
-import bbut;
-import bbuu;
-import bgln;
+import bcnm;
+import bcnn;
+import bhlo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
@@ -38,8 +38,8 @@ public class AppBrandUI
   private FrameLayout d;
   private boolean e;
   private boolean f;
-  private bbut g;
-  private bbuu h = new a(this);
+  private bcnm g;
+  private bcnn h = new a(this);
   
   private void a()
   {
@@ -179,7 +179,7 @@ public class AppBrandUI
     if (this.a == null) {
       this.a = new j(this, this.d);
     }
-    this.g = new bbut(this.d);
+    this.g = new bcnm(this.d);
     this.g.a(this.h);
     return true;
   }
@@ -276,7 +276,7 @@ public class AppBrandUI
         b(localObject1);
         a(localObject1);
         if (QLog.isColorLevel()) {
-          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + bgln.a());
+          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + bhlo.a());
         }
         localObject2 = localObject1.config.mini_appid;
         locala = this.a.a((String)localObject2, localObject1.getRuntimeType());

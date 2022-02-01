@@ -1,12 +1,6 @@
 public abstract interface raf
 {
-  public abstract void setFinishRound(int paramInt);
-  
-  public abstract void setProgress(float paramFloat);
-  
-  public abstract void setRound(int paramInt1, int paramInt2);
-  
-  public abstract void setState(int paramInt);
+  public abstract void a(boolean paramBoolean);
 }
 
 

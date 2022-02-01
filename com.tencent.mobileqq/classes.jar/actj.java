@@ -1,38 +1,37 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Context;
+import android.content.IntentFilter;
 
-class actj
-  implements URLDrawable.URLDrawableListener
+public class actj
 {
-  actj(acti paramacti) {}
+  private actl jdField_a_of_type_Actl;
+  private actm jdField_a_of_type_Actm;
+  private Context jdField_a_of_type_AndroidContentContext;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public actj(Context paramContext)
   {
-    acti.a(this.a, paramURLDrawable);
-    acqy.b("GdtDrawableLoader", "onLoadCanceled " + acti.a(this.a));
-    acti.a(this.a, false);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a()
   {
-    acti.a(this.a, paramURLDrawable);
-    acqy.d("GdtDrawableLoader", "onLoadFialed " + acti.a(this.a), paramThrowable);
-    if (!acti.a(this.a)) {
-      acti.a(this.a, false);
+    this.jdField_a_of_type_Actl = new actl(this, null);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Actl, localIntentFilter);
+  }
+  
+  public void a(actm paramactm)
+  {
+    this.jdField_a_of_type_Actm = paramactm;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Actl != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Actl);
+      this.jdField_a_of_type_Actm = null;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    acti.a(this.a, paramURLDrawable);
-    acqy.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + acti.a(this.a));
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    acti.a(this.a, paramURLDrawable);
-    acqy.b("GdtDrawableLoader", "onLoadSuccessed " + acti.a(this.a));
-    acti.a(this.a, true);
   }
 }
 

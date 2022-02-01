@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adyd
-  implements DialogInterface.OnClickListener
+  implements blro
 {
-  public adyd(ContactBindedActivity paramContactBindedActivity) {}
+  public adyd(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    ContactBindedActivity.a(this.a, null);
+    if (paramBoolean)
+    {
+      BaseChatPie.a(this.a);
+      BaseChatPie.b(this.a);
+    }
   }
 }
 

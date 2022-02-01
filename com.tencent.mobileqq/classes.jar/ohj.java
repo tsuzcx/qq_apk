@@ -1,35 +1,39 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.widget.ListView;
-import java.util.List;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 public class ohj
-  extends tcj
+  extends Handler
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  protected pmn a;
-  private sta jdField_a_of_type_Sta;
+  private WeakReference<ohf> a;
   
-  protected void a() {}
-  
-  public void a(ListView paramListView)
+  public ohj(ohf paramohf)
   {
-    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.a = new WeakReference(paramohf);
   }
   
-  public void a(Map<Integer, rev> paramMap)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Sta != null) {
-      this.jdField_a_of_type_Sta.a(paramMap);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    pmk.a().b(this.jdField_a_of_type_Pmn);
+    ohf localohf = (ohf)this.a.get();
+    if (localohf == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          ohf.a(localohf);
+          return;
+        }
+      } while (ohf.a(localohf) == null);
+      ohf.a(localohf).a(ohf.a(localohf));
+      return;
+    } while (ohf.a(localohf) == null);
+    ohf.a(localohf).b();
   }
 }
 

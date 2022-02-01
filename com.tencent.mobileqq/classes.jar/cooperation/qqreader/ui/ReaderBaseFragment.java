@@ -13,10 +13,10 @@ import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bhql;
-import bloh;
-import blop;
-import blpx;
+import birg;
+import bmpj;
+import bmpr;
+import bmqz;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -95,12 +95,12 @@ public abstract class ReaderBaseFragment
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         c();
       }
-      bloh.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
+      bmpj.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
     }
     for (;;)
     {
       return true;
-      bloh.a().a();
+      bmpj.a().a();
     }
   }
   
@@ -152,7 +152,7 @@ public abstract class ReaderBaseFragment
     {
       localObject = ((ReaderBaseWebActivity)localObject).a(this.webView);
       if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-        ((blop)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
+        ((bmpr)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
       }
     }
     this.webView.getView().setVerticalScrollBarEnabled(false);
@@ -161,14 +161,14 @@ public abstract class ReaderBaseFragment
   public void onDetectedBlankScreen(String paramString, int paramInt)
   {
     super.onDetectedBlankScreen(paramString, paramInt);
-    blpx.b(getActivity(), paramInt, paramString);
+    bmqz.b(getActivity(), paramInt, paramString);
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
     this.jdField_a_of_type_Boolean = false;
-    bloh.a().a();
+    bmpj.a().a();
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -179,13 +179,13 @@ public abstract class ReaderBaseFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       c();
     }
-    bloh.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+    bmpj.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    bloh.a().a();
+    bmpj.a().a();
   }
   
   public boolean showPreview()

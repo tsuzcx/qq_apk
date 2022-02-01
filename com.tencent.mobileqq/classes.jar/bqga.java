@@ -1,6 +1,17 @@
-public abstract interface bqga
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bqga
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bqga(bqfy parambqfy) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.a(0);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

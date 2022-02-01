@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import amkz;
-import amlc;
-import ampb;
-import amqc;
-import amqo;
-import amqp;
+import amwt;
+import amww;
+import anav;
+import anbw;
+import anci;
+import ancj;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bkgm;
+import blhq;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,18 +23,18 @@ import java.util.List;
 public class CmGameCmdChannel
 {
   private static CmGameCmdChannel jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameCmdChannel;
-  private amkz jdField_a_of_type_Amkz;
-  private amqc jdField_a_of_type_Amqc;
-  private bkgm jdField_a_of_type_Bkgm;
+  private amwt jdField_a_of_type_Amwt;
+  private anbw jdField_a_of_type_Anbw;
+  private blhq jdField_a_of_type_Blhq;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  final List<amqp> jdField_a_of_type_JavaUtilList;
+  final List<ancj> jdField_a_of_type_JavaUtilList;
   
   private CmGameCmdChannel(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Amkz = new amkz();
-    this.jdField_a_of_type_Amqc = new amqc(paramQQAppInterface);
+    this.jdField_a_of_type_Amwt = new amwt();
+    this.jdField_a_of_type_Anbw = new anbw(paramQQAppInterface);
     b();
   }
   
@@ -121,10 +121,10 @@ public class CmGameCmdChannel
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkgm = new bkgm(ThreadManager.getSubThreadLooper(), null);
+      this.jdField_a_of_type_Blhq = new blhq(ThreadManager.getSubThreadLooper(), null);
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        Collections.sort(this.jdField_a_of_type_JavaUtilList, new amqo(this));
+        Collections.sort(this.jdField_a_of_type_JavaUtilList, new anci(this));
         return;
         if (!QLog.isColorLevel()) {
           continue;
@@ -151,20 +151,20 @@ public class CmGameCmdChannel
     {
       return "{}";
       if (paramBoolean) {
-        this.jdField_a_of_type_Bkgm.post((Runnable)localObject2);
+        this.jdField_a_of_type_Blhq.post((Runnable)localObject2);
       } else {
         synchronized (this.jdField_a_of_type_JavaUtilList)
         {
           localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            amlc localamlc = ((amqp)((Iterator)localObject2).next()).a(paramString1, paramString2, paramInt1, paramInt2);
-            if (localamlc != null)
+            amww localamww = ((ancj)((Iterator)localObject2).next()).a(paramString1, paramString2, paramInt1, paramInt2);
+            if (localamww != null)
             {
-              if (localamlc.jdField_a_of_type_Boolean) {
+              if (localamww.jdField_a_of_type_Boolean) {
                 ((Iterator)localObject2).remove();
               }
-              paramString1 = localamlc.jdField_a_of_type_JavaLangString;
+              paramString1 = localamww.jdField_a_of_type_JavaLangString;
               return paramString1;
             }
           }
@@ -176,30 +176,30 @@ public class CmGameCmdChannel
   public void a()
   {
     QLog.i("apollochannel_ApolloDataChannel", 1, "onDestroy app:" + this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    this.jdField_a_of_type_Amkz.a();
+    this.jdField_a_of_type_Amwt.a();
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       if (localIterator.hasNext()) {
-        ((amqp)localIterator.next()).a();
+        ((ancj)localIterator.next()).a();
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Amqc != null)
+    this.jdField_a_of_type_Blhq.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Anbw != null)
     {
-      this.jdField_a_of_type_Amqc.a();
-      this.jdField_a_of_type_Amqc = null;
+      this.jdField_a_of_type_Anbw.a();
+      this.jdField_a_of_type_Anbw = null;
     }
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    while (this.jdField_a_of_type_Amqc == null) {
+    while (this.jdField_a_of_type_Anbw == null) {
       return;
     }
-    this.jdField_a_of_type_Amqc.a(paramInt1, paramString, paramInt2);
+    this.jdField_a_of_type_Anbw.a(paramInt1, paramString, paramInt2);
   }
   
   public void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
@@ -211,35 +211,35 @@ public class CmGameCmdChannel
     localBundle.putString("cmd", paramString1);
     localBundle.putString("respData", paramString2);
     paramString1 = EIPCResult.createResult(paramInt1, localBundle);
-    ampb.a().callbackResult(paramInt2, paramString1);
+    anav.a().callbackResult(paramInt2, paramString1);
   }
   
-  public void a(amqp paramamqp)
+  public void a(ancj paramancj)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramamqp);
-      this.jdField_a_of_type_JavaUtilList.add(paramamqp);
+      this.jdField_a_of_type_JavaUtilList.remove(paramancj);
+      this.jdField_a_of_type_JavaUtilList.add(paramancj);
       if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_ApolloDataChannel", 2, "addCmdHandler class:" + paramamqp.getClass().getName() + ", size: " + this.jdField_a_of_type_JavaUtilList.size());
+        QLog.d("apollochannel_ApolloDataChannel", 2, "addCmdHandler class:" + paramancj.getClass().getName() + ", size: " + this.jdField_a_of_type_JavaUtilList.size());
       }
       return;
     }
   }
   
-  public void b(amqp paramamqp)
+  public void b(ancj paramancj)
   {
-    if (paramamqp == null) {}
+    if (paramancj == null) {}
     for (;;)
     {
       return;
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        this.jdField_a_of_type_JavaUtilList.remove(paramamqp);
+        this.jdField_a_of_type_JavaUtilList.remove(paramancj);
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("apollochannel_ApolloDataChannel", 2, "removeCmdHandler class:" + paramamqp.getClass().getName() + ", size: " + this.jdField_a_of_type_JavaUtilList.size());
+        QLog.d("apollochannel_ApolloDataChannel", 2, "removeCmdHandler class:" + paramancj.getClass().getName() + ", size: " + this.jdField_a_of_type_JavaUtilList.size());
         return;
       }
     }

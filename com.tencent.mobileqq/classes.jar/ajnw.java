@@ -1,23 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.recommendtroop.RecommendTroopListWrapper.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ajnw
-  implements DialogInterface.OnClickListener
+public class ajnw
+  extends aojs
 {
-  ajnw(ajnk paramajnk, boolean paramBoolean, String paramString) {}
+  ajnw(ajnu paramajnu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    bcst.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, ajnk.a(this.jdField_a_of_type_Ajnk), "", "", "");
-    if (this.jdField_a_of_type_Boolean) {
-      ajnk.a(this.jdField_a_of_type_Ajnk, ajnk.a(this.jdField_a_of_type_Ajnk), Long.valueOf(ajnk.a(this.jdField_a_of_type_Ajnk)).longValue(), false);
+    if (1 == paramInt1) {
+      ThreadManager.getUIHandler().post(new RecommendTroopListWrapper.2.1(this, paramString));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ajnk.f();
-      return;
-      ajnk.a(this.jdField_a_of_type_Ajnk, ajnk.a(this.jdField_a_of_type_Ajnk), Long.valueOf(ajnk.a(this.jdField_a_of_type_Ajnk)).longValue(), false, this.jdField_a_of_type_JavaLangString);
-    }
+  }
+  
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
+  {
+    this.a.a(paramBoolean1, paramInt1, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
+  }
+  
+  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
+  {
+    this.a.a(paramBoolean1, paramInt1, paramString, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
+  }
+  
+  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
+  {
+    this.a.a(paramBoolean1, paramLong, paramInt, paramBoolean2, paramArrayList);
+  }
+  
+  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
+  {
+    this.a.a(paramBoolean);
   }
 }
 

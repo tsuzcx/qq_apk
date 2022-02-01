@@ -1,613 +1,125 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.richmediabrowser.listener.IBrowserAnimationListener;
+import com.tencent.richmediabrowser.model.BrowserAnimation;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
 
 public class bboo
+  extends BrowserAnimation
+  implements IBrowserAnimationListener
 {
-  public static int a = 3;
+  public int a;
+  public Rect a;
+  private RichMediaBaseData a;
+  Rect b;
   
-  public static int a(bbmx parambbmx)
+  public bboo() {}
+  
+  public bboo(RichMediaBaseData paramRichMediaBaseData)
   {
-    int j = 1;
-    int i;
-    if ((parambbmx instanceof bbmm)) {
-      i = 2;
-    }
-    do
+    this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData = paramRichMediaBaseData;
+    this.isImgCenterCropMode = true;
+  }
+  
+  public Drawable getAnimationDrawable()
+  {
+    for (;;)
     {
-      do
+      try
       {
-        return i;
-        i = j;
-      } while ((parambbmx instanceof bbmi));
-      i = j;
-    } while ((parambbmx instanceof bbmk));
-    if ((parambbmx instanceof bbmh)) {
-      return 3;
+        Drawable localDrawable;
+        if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOPictureData))
+        {
+          localDrawable = new bbpn().a((AIOPictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localObject2 = getThumbRect();
+          if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
+            this.isImgCenterCropMode = false;
+          }
+          if ((localDrawable != null) && (localObject2 != null))
+          {
+            this.jdField_a_of_type_Int = getCutValue((Rect)localObject2, localDrawable);
+            if (localDrawable.getIntrinsicHeight() == -1) {
+              break;
+            }
+            localObject2 = localDrawable;
+            if (localDrawable.getIntrinsicWidth() != -1) {
+              return localObject2;
+            }
+            break;
+          }
+        }
+        else
+        {
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
+          {
+            localDrawable = new bbpo().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
+          {
+            localDrawable = new bbpj().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if (!(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFileVideoData)) {
+            break label219;
+          }
+          localDrawable = new bbpk().a((AIOFileVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          continue;
+        }
+        return null;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AIOImageInfo", 2, "getAnimationBitmap ", localThrowable);
+        }
+        return null;
+      }
+      label219:
+      Object localObject1 = null;
     }
+    Object localObject2 = null;
+    return localObject2;
+  }
+  
+  public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
+  {
+    paramRichMediaBaseData = new bboo(paramRichMediaBaseData);
+    paramRichMediaBaseData.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    return paramRichMediaBaseData;
+  }
+  
+  public int getCutValue()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Rect getStartSrcRect()
+  {
+    return this.b;
+  }
+  
+  public int getStartX()
+  {
     return 0;
   }
   
-  private static int a(bbon parambbon, List<bbmy> paramList)
+  public int getStartY()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return -1;
-    }
-    int j = 0;
-    while (j < paramList.size())
-    {
-      bbmy localbbmy = (bbmy)paramList.get(j);
-      String str = "";
-      Object localObject;
-      int i;
-      if ((localbbmy instanceof bbmu))
-      {
-        localObject = (bbmu)localbbmy;
-        if ((((bbmu)localObject).a() instanceof String)) {
-          str = (String)((bbmu)localObject).a();
-        }
-        i = ((bbmu)localObject).e();
-      }
-      while ((str.equals(parambbon.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identify)) && (i == parambbon.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identifyType))
-      {
-        parambbon.jdField_a_of_type_Boolean = true;
-        parambbon.jdField_a_of_type_Bbmy = localbbmy;
-        QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "bEffective ");
-        return j;
-        if ((localbbmy instanceof bblw))
-        {
-          localObject = (bblw)localbbmy;
-          str = ((bblw)localObject).e();
-          i = ((bblw)localObject).e();
-        }
-        else
-        {
-          QLog.e("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "unknown type extends ISearchResultModel");
-          i = -1;
-        }
-      }
-      j += 1;
-    }
-    return -1;
+    return 0;
   }
   
-  private static bbmx a(Object paramObject)
+  public Rect getThumbRect()
   {
-    if ((paramObject instanceof bbmm))
-    {
-      paramObject = (bbmm)paramObject;
-      return new bbmm(new ArrayList(paramObject.jdField_a_of_type_JavaUtilList), paramObject.b(), paramObject.b());
+    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+      return this.jdField_a_of_type_AndroidGraphicsRect;
     }
-    if ((paramObject instanceof bbmi))
-    {
-      paramObject = (bbmi)paramObject;
-      return new bbmi(new ArrayList(paramObject.jdField_a_of_type_JavaUtilList), paramObject.b(), paramObject.b());
-    }
-    if ((paramObject instanceof bbmk))
-    {
-      paramObject = (bbmk)paramObject;
-      return new bbmk(new ArrayList(paramObject.jdField_a_of_type_JavaUtilList), paramObject.b(), paramObject.b());
-    }
-    if ((paramObject instanceof bbmh))
-    {
-      paramObject = (bbmh)paramObject;
-      return new bbmh(new ArrayList(paramObject.jdField_a_of_type_JavaUtilList), paramObject.b(), paramObject.b());
-    }
-    return null;
-  }
-  
-  public static ArrayList a(String paramString, ArrayList<bbon> paramArrayList, List paramList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return new ArrayList(paramList);
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    Object localObject2;
-    if (i < paramList.size())
-    {
-      localObject1 = paramList.get(i);
-      localObject2 = a(localObject1);
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      for (;;)
-      {
-        QLog.d("MostUsedFilterForMultiGroupResultListsMostUsed", 2, "the i name " + localArrayList.get(i).getClass().getName());
-        i += 1;
-        break;
-        localArrayList.add(localObject1);
-      }
-    }
-    Object localObject1 = new ArrayList();
-    int j = 0;
-    i = 0;
-    int k;
-    label161:
-    boolean bool;
-    if (j < paramArrayList.size())
-    {
-      localObject2 = (bbon)paramArrayList.get(j);
-      k = 0;
-      if (k < localArrayList.size())
-      {
-        if ((localArrayList.get(k) instanceof bbmx))
-        {
-          int m = a((bbmx)localArrayList.get(k));
-          if ((m == 0) || (((bbon)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.businessType != m)) {
-            break label465;
-          }
-          bool = a((bbon)localObject2, (bbmx)localArrayList.get(k));
-          label234:
-          if (!bool) {}
-        }
-      }
-      else
-      {
-        if (((bbon)localObject2).jdField_a_of_type_Boolean != true) {
-          break label456;
-        }
-        if ((((bbon)localObject2).jdField_a_of_type_Bbmy instanceof bbmu)) {
-          ((bbmu)((bbon)localObject2).jdField_a_of_type_Bbmy).a(((bbon)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.searchKey);
-        }
-        if ((((bbon)localObject2).jdField_a_of_type_Bbmy instanceof bblw)) {
-          ((bblw)((bbon)localObject2).jdField_a_of_type_Bbmy).a(((bbon)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.searchKey);
-        }
-        ((ArrayList)localObject1).add(((bbon)localObject2).jdField_a_of_type_Bbmy);
-        k = i + 1;
-        i = k;
-        if (k != 3) {
-          break label456;
-        }
-      }
-    }
-    for (;;)
-    {
-      a(localArrayList);
-      if (k > 0)
-      {
-        paramString = new bbmo((List)localObject1, paramString);
-        localArrayList.add(0, paramString);
-        localArrayList.add(0, new bbmf(paramString, paramString.a(), false));
-        QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "add GroupSearchModelMostUsed");
-      }
-      QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "the finish Wash orgList size " + paramList.size() + " match mostUsedList size" + paramArrayList.size() + " resultlist " + localArrayList.size());
-      return localArrayList;
-      k += 1;
-      break label161;
-      label456:
-      j += 1;
-      break;
-      label465:
-      bool = false;
-      break label234;
-      k = i;
-    }
-  }
-  
-  private static ArrayList<String> a(List paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    Object localObject;
-    do
-    {
-      if (!paramList.hasNext()) {
-        break;
-      }
-      localObject = paramList.next();
-    } while (!(localObject instanceof bbmo));
-    for (paramList = (bbmo)localObject;; paramList = null)
-    {
-      if (paramList != null)
-      {
-        paramList = paramList.a();
-        if ((paramList != null) && (paramList.size() > 0))
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            localObject = (bbmy)paramList.next();
-            if ((localObject != null) && ((localObject instanceof bbnd)))
-            {
-              localObject = (bbnd)localObject;
-              if ((localObject != null) && (((bbnd)localObject).a != null))
-              {
-                localObject = ((bbnd)localObject).a.appId;
-                if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-                  localArrayList.add(localObject);
-                }
-              }
-            }
-          }
-        }
-      }
-      return localArrayList;
-    }
-  }
-  
-  private static void a(List paramList, int paramInt1, List<bbmy> paramList1, bblv parambblv, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
-  {
-    if ((paramList == null) || (paramList1 == null) || (paramList1.size() == 0))
-    {
-      QLog.e("MostUsedFilterForMultiGroupResultLists", 2, " no list to add");
-      return;
-    }
-    int i = paramInt1;
-    if (paramList.size() < paramInt1)
-    {
-      i = paramList.size();
-      QLog.e("MostUsedFilterForMultiGroupResultLists", 2, " INDEX OUT OF RANGE");
-    }
-    QLog.d("MostUsedFilterForMultiGroupResultLists", 2, "addListAndTitleToIndex " + paramList1.size());
-    if ((paramInt2 > 0) && (paramList1.size() > paramInt2))
-    {
-      paramInt1 = paramList1.size() - 1;
-      while (paramInt1 >= paramInt2)
-      {
-        paramList1.remove(paramInt1);
-        paramInt1 -= 1;
-      }
-    }
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (parambblv != null)
-      {
-        parambblv = new bblv(parambblv.b(), parambblv.jdField_a_of_type_Long, parambblv.a(), paramList1, paramList1.size(), parambblv.d(), parambblv.c(), parambblv.jdField_b_of_type_JavaUtilList, parambblv.jdField_a_of_type_Boolean, parambblv.jdField_b_of_type_Boolean, parambblv.c, parambblv.d, parambblv.e);
-        if ((!paramBoolean1) || (paramInt1 == 0)) {
-          break label303;
-        }
-        if (TextUtils.isEmpty(parambblv.d())) {
-          break label288;
-        }
-        paramBoolean1 = true;
-      }
-      for (;;)
-      {
-        if (paramList1.size() <= 0) {
-          break label307;
-        }
-        paramInt1 = paramList1.size() - 1;
-        while (paramInt1 >= 0)
-        {
-          paramList.add(i, paramList1.get(paramInt1));
-          paramInt1 -= 1;
-        }
-        parambblv = new bblv();
-        parambblv.jdField_a_of_type_JavaUtilList = paramList1;
-        QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "oldTitleGroupMode is empty");
-        break;
-        label288:
-        paramBoolean1 = false;
-        QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "newModel.getMoreUrl() is empty");
-        continue;
-        label303:
-        paramBoolean1 = false;
-      }
-      label307:
-      break;
-      paramList1 = new bbmf(parambblv, paramBoolean1, parambblv.jdField_b_of_type_Boolean);
-      if (paramBoolean2) {
-        paramList1.jdField_b_of_type_Boolean = true;
-      }
-      paramList.add(i, paramList1);
-      return;
-    }
-  }
-  
-  public static void a(List paramList, String paramString)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList5 = a(paramList);
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Object localObject2 = null;
-    Object localObject1 = null;
-    int i = paramList.size() - 1;
-    Object localObject5;
-    Object localObject3;
-    if (i >= 0)
-    {
-      localObject5 = paramList.get(i);
-      if ((localObject5 instanceof bbmf))
-      {
-        localObject3 = ((bbmf)localObject5).a();
-        if (((localObject3 instanceof bblv)) && (((bblv)localObject3).jdField_a_of_type_Long == 1701L))
-        {
-          localObject3 = (bblv)localObject3;
-          paramList.remove(i);
-          localObject2 = localObject1;
-          localObject1 = localObject3;
-        }
-      }
-    }
-    for (;;)
-    {
-      label148:
-      localObject3 = localObject1;
-      Object localObject4 = localObject2;
-      for (;;)
-      {
-        i -= 1;
-        localObject1 = localObject4;
-        localObject2 = localObject3;
-        break;
-        if ((!(localObject3 instanceof bblv)) || (((bblv)localObject3).jdField_a_of_type_Long != 1003L)) {
-          break label1020;
-        }
-        localObject3 = (bblv)localObject3;
-        paramList.remove(i);
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        break label148;
-        if (((localObject5 instanceof bbmg)) && ((((bbmg)localObject5).jdField_a_of_type_Long == 1701L) || (((bbmg)localObject5).jdField_a_of_type_Long == 1003L)))
-        {
-          paramList.remove(i);
-          localObject4 = localObject1;
-          localObject3 = localObject2;
-        }
-        else if ((localObject5 instanceof bbnq))
-        {
-          localObject5 = (bbnq)localObject5;
-          localObject4 = localObject1;
-          localObject3 = localObject2;
-          if (((bbnq)localObject5).a != null)
-          {
-            localObject4 = localObject1;
-            localObject3 = localObject2;
-            if (((bbnq)localObject5).a.a != null)
-            {
-              String str = ((bbnq)localObject5).a.a.appId;
-              paramList.remove(i);
-              localObject4 = localObject1;
-              localObject3 = localObject2;
-              if (!a(str, localArrayList5)) {
-                if (((bbnq)localObject5).jdField_b_of_type_Boolean)
-                {
-                  localArrayList3.add(0, localObject5);
-                  localObject4 = localObject1;
-                  localObject3 = localObject2;
-                }
-                else
-                {
-                  localArrayList4.add(0, localObject5);
-                  localObject4 = localObject1;
-                  localObject3 = localObject2;
-                }
-              }
-            }
-          }
-        }
-        else
-        {
-          localObject4 = localObject1;
-          localObject3 = localObject2;
-          if ((localObject5 instanceof bbnx))
-          {
-            localObject5 = (bbnx)localObject5;
-            localObject4 = localObject1;
-            localObject3 = localObject2;
-            if (((bbnx)localObject5).jdField_a_of_type_Long == 1003L)
-            {
-              paramList.remove(i);
-              if ((a((bbnx)localObject5, paramString)) && (localArrayList1.size() == 0))
-              {
-                ((bbnx)localObject5).c = true;
-                localArrayList1.add(0, localObject5);
-                bcst.b(null, "dc00898", "", "", "0X800AC11", "0X800AC11", 0, 0, "", "", "", "");
-                localObject4 = localObject1;
-                localObject3 = localObject2;
-              }
-              else
-              {
-                localArrayList2.add(0, localObject5);
-                localObject4 = localObject1;
-                localObject3 = localObject2;
-              }
-            }
-          }
-        }
-      }
-      int k = 0;
-      i = 0;
-      int j = 0;
-      label568:
-      if (k < paramList.size())
-      {
-        localObject3 = paramList.get(k);
-        if (!(localObject3 instanceof bbmo)) {
-          break label1017;
-        }
-        j = k + 1;
-      }
-      label1008:
-      label1017:
-      for (;;)
-      {
-        if ((((localObject3 instanceof bbmh)) && (a((bbmh)localObject3, paramString))) || ((((localObject3 instanceof bbmo)) || ((localObject3 instanceof bbmi)) || ((localObject3 instanceof bbmk)) || ((localObject3 instanceof bboh))) && (i <= k))) {
-          i = k + 1;
-        }
-        for (;;)
-        {
-          k += 1;
-          break label568;
-          if (localArrayList3.size() > 0)
-          {
-            a(paramList, j, localArrayList3, localObject2, false, a, true);
-            j = localArrayList3.size() + i + 1;
-            if (paramList.size() >= j)
-            {
-              QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "OUT OF INDEX OF MINI");
-              i = j;
-            }
-          }
-          for (;;)
-          {
-            if (localArrayList4.size() > 0) {
-              a(paramList, i, localArrayList4, localObject2, true, a, false);
-            }
-            k = 0;
-            i = 0;
-            j = 0;
-            label762:
-            if (k < paramList.size())
-            {
-              localObject2 = paramList.get(k);
-              if ((!(localObject2 instanceof bbmo)) && ((!(localObject2 instanceof bbnq)) || (((bbnq)localObject2).jdField_b_of_type_Boolean != true)) && ((!(localObject2 instanceof bbmh)) || (!a((bbmh)localObject2, paramString)))) {
-                break label1008;
-              }
-              j = k + 1;
-            }
-            for (;;)
-            {
-              if ((((localObject2 instanceof bbmh)) || ((localObject2 instanceof bbmo)) || ((localObject2 instanceof bbmi)) || ((localObject2 instanceof bbmk)) || ((localObject2 instanceof bboh)) || ((localObject2 instanceof bbnq)) || ((localObject2 instanceof bbml)) || ((localObject2 instanceof bbkq))) && (i <= k)) {
-                i = k + 1;
-              }
-              for (;;)
-              {
-                k += 1;
-                break label762;
-                if (localArrayList1.size() > 0)
-                {
-                  a(paramList, j, localArrayList1, localObject1, false, a, true);
-                  j = localArrayList1.size() + i + 1;
-                  if (paramList.size() >= j)
-                  {
-                    QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "OUT OF INDEX OF PUBLLIC");
-                    i = j;
-                  }
-                }
-                while (localArrayList2.size() > 0)
-                {
-                  a(paramList, i, localArrayList2, localObject1, true, a, false);
-                  return;
-                }
-                break;
-              }
-            }
-          }
-        }
-      }
-      label1020:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-    }
-  }
-  
-  private static boolean a(bbmh parambbmh, String paramString)
-  {
-    return (parambbmh != null) && (parambbmh.jdField_a_of_type_JavaUtilList != null) && (parambbmh.jdField_a_of_type_JavaUtilList.size() > 0) && ((parambbmh.jdField_a_of_type_JavaUtilList.get(0) instanceof bblw)) && (((bblw)parambbmh.jdField_a_of_type_JavaUtilList.get(0)).c.equals(paramString));
-  }
-  
-  private static boolean a(bbnx parambbnx, String paramString)
-  {
-    if ((parambbnx == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    if ((parambbnx.jdField_a_of_type_JavaUtilArrayList != null) && (parambbnx.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      parambbnx = (bboa)parambbnx.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if ((parambbnx != null) && (parambbnx.a.toString().equalsIgnoreCase(paramString))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean a(bbon parambbon, bbmx parambbmx)
-  {
-    if (parambbmx == null) {}
-    int i;
-    do
-    {
-      return false;
-      i = a(parambbon, parambbmx.a());
-    } while (i < 0);
-    parambbmx.a().remove(i);
-    return true;
-  }
-  
-  public static boolean a(String paramString, ArrayList<String> paramArrayList)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return false;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      if (paramString.equalsIgnoreCase((String)paramArrayList.next())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(ArrayList paramArrayList)
-  {
-    boolean bool2;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool2 = false;
-    }
-    int i;
-    boolean bool1;
-    do
-    {
-      return bool2;
-      i = paramArrayList.size() - 1;
-      bool1 = false;
-      bool2 = bool1;
-    } while (i < 0);
-    bbmx localbbmx;
-    if ((paramArrayList.get(i) instanceof bbmx))
-    {
-      localbbmx = (bbmx)paramArrayList.get(i);
-      if ((localbbmx.a() != null) && (localbbmx.a().size() == 0)) {
-        if ((i - 1 < 0) || (!(paramArrayList.get(i - 1) instanceof bbmf)) || (!((bbmf)paramArrayList.get(i - 1)).a().equals(localbbmx.a()))) {
-          break label323;
-        }
-      }
-    }
-    label323:
-    for (int j = 1;; j = 0)
-    {
-      paramArrayList.remove(i);
-      if (j != 0)
-      {
-        i -= 1;
-        paramArrayList.remove(i);
-      }
-      for (;;)
-      {
-        bool1 = true;
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if ((a(localbbmx) != 0) && (i - 1 >= 0) && ((paramArrayList.get(i - 1) instanceof bbmf)) && (((bbmf)paramArrayList.get(i - 1)).a().equals(localbbmx.a())))
-          {
-            bbmf localbbmf = (bbmf)paramArrayList.get(i - 1);
-            if ((localbbmf.a() != null) && (localbbmx.a() != null)) {
-              if (localbbmf.a().a() != null) {
-                if (localbbmf.a().a().size() != localbbmx.a().size())
-                {
-                  QLog.d("MostUsedFilterForMultiGroupResultLists", 2, "add new group title");
-                  paramArrayList.remove(i - 1);
-                  paramArrayList.add(i - 1, new bbmf(localbbmx));
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    return super.getThumbRect();
   }
 }
 

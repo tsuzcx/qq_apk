@@ -32,23 +32,6 @@ public class StoryLoadingView
   private void a()
   {
     this.a = new AnimationDrawable();
-    this.a.addFrame(getResources().getDrawable(2130846559), 50);
-    this.a.addFrame(getResources().getDrawable(2130846560), 50);
-    this.a.addFrame(getResources().getDrawable(2130846561), 50);
-    this.a.addFrame(getResources().getDrawable(2130846562), 50);
-    this.a.addFrame(getResources().getDrawable(2130846563), 50);
-    this.a.addFrame(getResources().getDrawable(2130846564), 50);
-    this.a.addFrame(getResources().getDrawable(2130846565), 50);
-    this.a.addFrame(getResources().getDrawable(2130846566), 50);
-    this.a.addFrame(getResources().getDrawable(2130846567), 50);
-    this.a.addFrame(getResources().getDrawable(2130846568), 50);
-    this.a.addFrame(getResources().getDrawable(2130846569), 50);
-    this.a.addFrame(getResources().getDrawable(2130846570), 50);
-    this.a.addFrame(getResources().getDrawable(2130846571), 50);
-    this.a.addFrame(getResources().getDrawable(2130846572), 50);
-    this.a.addFrame(getResources().getDrawable(2130846573), 50);
-    this.a.addFrame(getResources().getDrawable(2130846574), 50);
-    this.a.addFrame(getResources().getDrawable(2130846575), 50);
     this.a.addFrame(getResources().getDrawable(2130846576), 50);
     this.a.addFrame(getResources().getDrawable(2130846577), 50);
     this.a.addFrame(getResources().getDrawable(2130846578), 50);
@@ -61,6 +44,23 @@ public class StoryLoadingView
     this.a.addFrame(getResources().getDrawable(2130846585), 50);
     this.a.addFrame(getResources().getDrawable(2130846586), 50);
     this.a.addFrame(getResources().getDrawable(2130846587), 50);
+    this.a.addFrame(getResources().getDrawable(2130846588), 50);
+    this.a.addFrame(getResources().getDrawable(2130846589), 50);
+    this.a.addFrame(getResources().getDrawable(2130846590), 50);
+    this.a.addFrame(getResources().getDrawable(2130846591), 50);
+    this.a.addFrame(getResources().getDrawable(2130846592), 50);
+    this.a.addFrame(getResources().getDrawable(2130846593), 50);
+    this.a.addFrame(getResources().getDrawable(2130846594), 50);
+    this.a.addFrame(getResources().getDrawable(2130846595), 50);
+    this.a.addFrame(getResources().getDrawable(2130846596), 50);
+    this.a.addFrame(getResources().getDrawable(2130846597), 50);
+    this.a.addFrame(getResources().getDrawable(2130846598), 50);
+    this.a.addFrame(getResources().getDrawable(2130846599), 50);
+    this.a.addFrame(getResources().getDrawable(2130846600), 50);
+    this.a.addFrame(getResources().getDrawable(2130846601), 50);
+    this.a.addFrame(getResources().getDrawable(2130846602), 50);
+    this.a.addFrame(getResources().getDrawable(2130846603), 50);
+    this.a.addFrame(getResources().getDrawable(2130846604), 50);
     this.a.setOneShot(false);
     super.setImageDrawable(this.a);
     if ((this.a != null) && (!this.a.isRunning())) {

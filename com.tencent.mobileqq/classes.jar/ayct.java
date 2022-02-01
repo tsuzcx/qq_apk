@@ -1,29 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-class ayct
-  implements View.OnClickListener
+public final class ayct
+  implements Parcelable.Creator<Comments.Comment>
 {
-  ayct(aycs paramaycs) {}
-  
-  public void onClick(View paramView)
+  public Comments.Comment a(Parcel paramParcel)
   {
-    if (System.currentTimeMillis() < aycs.a(this.a) + 1000L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aycs.a(this.a, System.currentTimeMillis());
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", ayck.a());
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.addFlags(536870912);
-      paramView.getContext().startActivity(localIntent);
-    }
+    return new Comments.Comment(paramParcel);
+  }
+  
+  public Comments.Comment[] a(int paramInt)
+  {
+    return new Comments.Comment[paramInt];
   }
 }
 

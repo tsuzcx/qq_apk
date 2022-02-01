@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import awao;
+import awtg;
 
 class LocationShareFragment$3
   implements Runnable
@@ -9,7 +9,7 @@ class LocationShareFragment$3
   
   public void run()
   {
-    awao.a();
+    awtg.a();
   }
 }
 

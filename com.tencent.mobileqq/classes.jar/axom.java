@@ -1,30 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class axom
-  implements axjq
+public class axom
 {
+  public Button a;
+  public ImageView a;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
   axom(axol paramaxol) {}
-  
-  public void a()
-  {
-    if (axol.a(this.a) != null)
-    {
-      axol.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695676));
-      axol.a(this.a).b();
-      axol.a(this.a).c();
-    }
-  }
-  
-  public void a(Comments paramComments)
-  {
-    if (axol.a(this.a) != null)
-    {
-      axol.a(this.a);
-      axol.a(this.a).a(paramComments);
-      axol.a(this.a).b();
-    }
-  }
 }
 
 

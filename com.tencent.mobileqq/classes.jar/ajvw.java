@@ -1,33 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ajvw
-  implements ajvq
+public class ajvw
+  extends amof
 {
-  ajvw(ajvr paramajvr) {}
-  
-  public void a()
-  {
-    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-  }
-  
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    boolean bool = true;
-    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    localObject = pmy.a();
-    if (paramRedTypeInfo != null) {}
-    for (;;)
-    {
-      ((pmy)localObject).b(bool);
-      return;
-      bool = false;
-    }
-  }
+  public ajvt a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

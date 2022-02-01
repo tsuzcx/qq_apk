@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.GetVirtualListResult;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import java.lang.ref.WeakReference;
 
-public final class biyf
-  implements Parcelable.Creator<GetVirtualListResult>
+public class biyf
+  extends Handler
 {
-  public GetVirtualListResult a(Parcel paramParcel)
+  private final WeakReference<GifAnimationDrawable> a;
+  
+  public biyf(GifAnimationDrawable paramGifAnimationDrawable)
   {
-    return new GetVirtualListResult(paramParcel);
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramGifAnimationDrawable);
   }
   
-  public GetVirtualListResult[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new GetVirtualListResult[paramInt];
+    switch (paramMessage.what)
+    {
+    }
+    GifAnimationDrawable localGifAnimationDrawable;
+    do
+    {
+      return;
+      localGifAnimationDrawable = (GifAnimationDrawable)this.a.get();
+    } while (localGifAnimationDrawable == null);
+    GifAnimationDrawable.a(localGifAnimationDrawable, (biye)paramMessage.obj);
   }
 }
 

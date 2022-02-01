@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
 import android.app.Activity;
-import blvu;
+import bmww;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
 
@@ -16,8 +16,8 @@ class QZoneMsgFragment$1
     try
     {
       QzonePluginProxyActivity.a(this.a);
-      blvu.b(this.a, this.this$0.a);
-      blvu.a(this.a, this.this$0.a);
+      bmww.b(this.a, this.this$0.a);
+      bmww.a(this.a, this.this$0.a);
       return;
     }
     catch (Throwable localThrowable)

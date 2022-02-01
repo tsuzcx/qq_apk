@@ -1,19 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
-class xki
-  implements Animation.AnimationListener
+public class xki
+  extends GestureDetector.SimpleOnGestureListener
 {
-  xki(xkf paramxkf) {}
+  public xki(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.a.dismiss();
+    return true;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    {
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+    }
+    return false;
+  }
 }
 
 

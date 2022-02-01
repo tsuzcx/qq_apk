@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-import bgtn;
-import bkpg;
+import bhtq;
+import blqj;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
@@ -42,8 +42,8 @@ public class MiniAppDesktopAdapter$MicroAppViewHolder
     super(paramView);
     try
     {
-      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131370964);
-      int i = (int)((bgtn.a() - bgtn.a(10.0F)) / 4.5F);
+      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131371069);
+      int i = (int)((bhtq.a() - bhtq.a(10.0F)) / 4.5F);
       LinearLayout.LayoutParams localLayoutParams2 = (LinearLayout.LayoutParams)localViewGroup.getLayoutParams();
       LinearLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
       if (localLayoutParams2 == null) {
@@ -59,16 +59,16 @@ public class MiniAppDesktopAdapter$MicroAppViewHolder
         QLog.e("MiniAppDesktopAdapter", 1, localThrowable, new Object[0]);
       }
     }
-    this.imageView = ((ImageView)paramView.findViewById(2131371179));
+    this.imageView = ((ImageView)paramView.findViewById(2131371286));
     if ((this.imageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.imageView).setMaskShape(bkpg.c);
+      ((ThemeImageView)this.imageView).setMaskShape(blqj.c);
     }
-    this.textView = ((TextView)paramView.findViewById(2131371180));
-    this.versionTypeMark = ((TextView)paramView.findViewById(2131371181));
-    this.recommendBadge = ((ImageView)paramView.findViewById(2131371028));
-    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131371071));
-    this.anpgImagView = ((ImageView)paramView.findViewById(2131371069));
-    this.redDot = ((TextView)paramView.findViewById(2131371033));
+    this.textView = ((TextView)paramView.findViewById(2131371287));
+    this.versionTypeMark = ((TextView)paramView.findViewById(2131371288));
+    this.recommendBadge = ((ImageView)paramView.findViewById(2131371133));
+    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131371176));
+    this.anpgImagView = ((ImageView)paramView.findViewById(2131371174));
+    this.redDot = ((TextView)paramView.findViewById(2131371138));
   }
   
   private void startSwitchAnimation()
@@ -102,7 +102,7 @@ public class MiniAppDesktopAdapter$MicroAppViewHolder
     if ((this.miniAppInfo.motionPics != null) && (this.miniAppInfo.motionPics.size() > 0))
     {
       this.isPlayAnim = true;
-      Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130840979, 48);
+      Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130840989, 48);
       this.imageView.setImageDrawable(localDrawable);
       this.imageView.invalidate();
       QLog.d("MiniAppDesktopAdapter", 1, "[mini_app_anim].startAnimation, picCount = " + this.picCount + ", pic Url = " + this.miniAppInfo.appStoreAnimPicUrl + ", drawable = " + localDrawable + ", appId: " + this.miniAppInfo.appId);

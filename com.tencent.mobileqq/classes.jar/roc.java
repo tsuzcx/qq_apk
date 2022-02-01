@@ -1,52 +1,25 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class roc
-  extends BaseAdapter
+class roc
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public roc(EditVideoFragment paramEditVideoFragment) {}
+  roc(rob paramrob) {}
   
-  public ColumnInfo a(int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return (ColumnInfo)EditVideoFragment.a(this.a).get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return EditVideoFragment.a(this.a).size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    rod localrod;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.a.getActivity()).inflate(2131560156, paramViewGroup, false);
-      localrod = new rod(this.a.getActivity(), (ViewGroup)localView);
-      localView.setTag(localrod);
+    if ((rob.a(this.a) != null) && (rob.a(this.a).a != null)) {
+      this.a.a.a(rob.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
-    for (;;)
-    {
-      if (EditVideoFragment.a(this.a) != null) {
-        localrod.a(a(paramInt), EditVideoFragment.a(this.a).columnID);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localrod = (rod)paramView.getTag();
-      localView = paramView;
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((rob.a(this.a) != null) && (rob.a(this.a).b != null)) {
+      this.a.a.onClick(rob.a(this.a).b);
     }
+    return true;
   }
 }
 

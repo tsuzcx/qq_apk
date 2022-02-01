@@ -1,16 +1,26 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 class awgl
-  implements SoundPool.OnLoadCompleteListener
+  implements asbt
 {
-  awgl(awgk paramawgk, int paramInt, String paramString) {}
+  awgl(awgk paramawgk) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void a(asbs paramasbs)
   {
-    if ((this.jdField_a_of_type_Awgk.a.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_Int, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      paramasbs.dismiss();
+      this.a.mRuntime.a().finish();
+      bdll.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (Throwable paramasbs)
+    {
+      for (;;)
+      {
+        QLog.e("DocxApiPlugin", 1, "handleEvent", paramasbs);
+      }
     }
   }
 }

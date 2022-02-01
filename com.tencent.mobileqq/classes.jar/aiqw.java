@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.widget.AbsListView;
-
 public class aiqw
-  implements bkhe
+  implements bgrl
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public String a;
   
-  public aiqw(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public aiqw(String paramString)
   {
-    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Airb.getCount();
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.a = paramString;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public long a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
-    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
-      return;
+    try
+    {
+      long l = Long.parseLong(this.a);
+      return l;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 

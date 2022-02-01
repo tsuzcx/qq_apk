@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-
-class ajwk
-  implements DialogInterface.OnClickListener
+public abstract interface ajwk
 {
-  ajwk(ajvr paramajvr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
-  }
+  public abstract void a();
 }
 
 

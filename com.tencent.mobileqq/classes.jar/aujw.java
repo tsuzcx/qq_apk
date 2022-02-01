@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aujw
-  implements DialogInterface.OnClickListener
+class aujw
+  implements View.OnClickListener
 {
-  public aujw(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  aujw(aujr paramaujr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.c) {
-      bipi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
     }
-    ForwardSdkBaseOption.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

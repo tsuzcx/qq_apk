@@ -1,6 +1,15 @@
-public abstract interface bhyi
+public class bhyi
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public String a;
+  public String b;
+  public String c;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BannerConfig: ").append("backgroudImgUrl=").append(this.a).append(";").append("cornerMarkLevel=").append(this.b).append(";").append("linkUrl=").append(this.c);
+    return localStringBuilder.toString();
+  }
 }
 
 

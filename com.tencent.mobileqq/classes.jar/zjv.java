@@ -1,22 +1,28 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.media.MediaFormat;
 
 public class zjv
 {
-  public TextView a;
-  public TextView b;
+  public int a;
+  public long a;
+  public MediaFormat a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
   
-  public zjv(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public zjv()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381368));
-    this.b = ((TextView)paramView.findViewById(2131380604));
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(zkk.c(paramTroopStoryItemInfo.publishTime));
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("Image2result.result ").append("src: ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("result ").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

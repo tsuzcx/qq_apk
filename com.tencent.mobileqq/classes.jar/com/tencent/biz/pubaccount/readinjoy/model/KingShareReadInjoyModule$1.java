@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pmk;
-import pxm;
-import rfr;
+import pfd;
+import ppw;
+import qwk;
 
 public class KingShareReadInjoyModule$1
   implements Runnable
 {
-  public KingShareReadInjoyModule$1(pxm parampxm, int paramInt, rfr paramrfr) {}
+  public KingShareReadInjoyModule$1(ppw paramppw, int paramInt, qwk paramqwk) {}
   
   public void run()
   {
-    pmk.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rfr);
+    pfd.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Qwk);
   }
 }
 

@@ -1,10 +1,17 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
 
-public abstract interface bmxa
-  extends IInterface
+class bmxa
+  implements afey
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  public View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    if (!"com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView".equals(paramString)) {
+      return null;
+    }
+    return bmww.a(paramContext, paramAttributeSet);
+  }
 }
 
 

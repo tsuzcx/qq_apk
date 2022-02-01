@@ -1,23 +1,20 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import java.io.File;
 
-public class xlr
-  extends xlt
+final class xlr
+  implements wkd
 {
-  private ElasticImageView a;
+  xlr(File paramFile, String paramString) {}
   
-  public xlr(@NonNull ViewGroup paramViewGroup)
+  public void a(wkb paramwkb)
   {
-    super(paramViewGroup);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364554));
-    this.a.setOnClickListener(new xls(this));
-    return this.a;
+    String str = paramwkb.b;
+    if (str != null)
+    {
+      if ((paramwkb.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!wkr.a(this.jdField_a_of_type_JavaIoFile))) {
+        this.jdField_a_of_type_JavaIoFile.delete();
+      }
+      xlo.a(new xlu(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
+    }
   }
 }
 

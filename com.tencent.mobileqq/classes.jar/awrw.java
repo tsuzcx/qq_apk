@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awrw
-  implements awtr
+  implements View.OnClickListener
 {
-  public awrw(MultiAIOFragment paramMultiAIOFragment) {}
+  public awrw(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
-      return;
-    case 1: 
-      MultiAIOFragment.c(this.a);
-      return;
-    }
-    MultiAIOFragment.c(this.a);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    bdll.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

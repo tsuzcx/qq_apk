@@ -1,30 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-
 public class bfbb
-  implements DialogInterface.OnClickListener
+  extends bfbf
 {
-  public bfbb(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, beyq parambeyq) {}
+  public int a;
+  public long a;
+  public byte[] a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_Beyq);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_Beyq);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" storeType:");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfbb
  * JD-Core Version:    0.7.0.1
  */

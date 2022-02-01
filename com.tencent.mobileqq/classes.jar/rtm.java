@@ -1,62 +1,19 @@
-public class rtm
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+
+class rtm
+  extends sbh
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  rtm(rsx paramrsx) {}
   
-  private rtm(rto paramrto)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = rto.a(paramrto);
-    this.jdField_b_of_type_JavaLangString = rto.b(paramrto);
-    this.c = rto.c(paramrto);
-    this.d = rto.d(paramrto);
-    this.jdField_a_of_type_Long = rto.a(paramrto);
-    this.e = rto.e(paramrto);
-    this.jdField_b_of_type_Long = rto.b(paramrto);
+    return 3;
   }
   
-  public static rto a()
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    return new rto(null);
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
-  }
-  
-  public String e()
-  {
-    return this.e;
+    this.a.a.c(paramString + "&sourcefrom=6");
   }
 }
 

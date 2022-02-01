@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acqy;
+import acvc;
 import java.lang.ref.WeakReference;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask$1
@@ -10,7 +10,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   
   public void run()
   {
-    acqy.a("FirstLoadDataTask", "run() called");
+    acvc.a("FirstLoadDataTask", "run() called");
     if (GdtMvDownloadBtnManager.FirstLoadDataTask.a(this.this$0)) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do

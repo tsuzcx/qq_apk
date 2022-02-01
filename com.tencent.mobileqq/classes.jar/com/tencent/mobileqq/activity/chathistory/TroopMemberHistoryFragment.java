@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import acwh;
-import aiqv;
-import aiqw;
-import aiqx;
-import aiqy;
-import aira;
-import airb;
+import adak;
+import ajce;
+import ajcf;
+import ajcg;
+import ajch;
+import ajcj;
+import ajck;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -18,14 +18,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anni;
-import bcst;
-import bcwd;
-import bdnf;
-import bdnt;
-import bglf;
-import bgwv;
-import bkfv;
+import anzj;
+import bdll;
+import bdow;
+import begb;
+import begp;
+import bhlg;
+import bhwz;
+import blha;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -53,8 +53,8 @@ public class TroopMemberHistoryFragment
 {
   public static final String a;
   private long jdField_a_of_type_Long = 9223372036854775807L;
-  public airb a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aiqx(this);
+  public ajck a;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ajcg(this);
   public View.OnClickListener a;
   public View a;
   public TextView a;
@@ -62,7 +62,7 @@ public class TroopMemberHistoryFragment
   public QQAppInterface a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(this.jdField_a_of_type_AndroidOsHandler$Callback);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(this.jdField_a_of_type_AndroidOsHandler$Callback);
   public boolean a;
   public String b;
   boolean b;
@@ -79,7 +79,7 @@ public class TroopMemberHistoryFragment
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiqy(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ajch(this);
   }
   
   private void a(Bundle paramBundle)
@@ -112,7 +112,7 @@ public class TroopMemberHistoryFragment
     b();
   }
   
-  public List<aira> a()
+  public List<ajcj> a()
   {
     boolean bool = false;
     if (this.jdField_c_of_type_Boolean) {
@@ -120,7 +120,7 @@ public class TroopMemberHistoryFragment
     }
     Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
     Object localObject4 = MessageRecord.getTableName(this.jdField_b_of_type_JavaLangString, 1);
-    Object localObject1 = acwh.b();
+    Object localObject1 = adak.b();
     if ((this.jdField_c_of_type_JavaLangString.equals("0")) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       localObject2 = new StringBuilder();
@@ -165,7 +165,7 @@ public class TroopMemberHistoryFragment
       switch (((MessageRecord)localObject4).msgtype)
       {
       default: 
-        localObject1 = anni.a(2131714291);
+        localObject1 = anzj.a(2131714400);
       }
     }
     for (;;)
@@ -173,9 +173,9 @@ public class TroopMemberHistoryFragment
       if (this.jdField_a_of_type_Long > ((MessageRecord)localObject4).shmsgseq) {
         this.jdField_a_of_type_Long = ((MessageRecord)localObject4).shmsgseq;
       }
-      ((List)localObject2).add(new aira(this, ((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).time, (CharSequence)localObject1, ((MessageRecord)localObject4).shmsgseq, (MessageRecord)localObject4));
+      ((List)localObject2).add(new ajcj(this, ((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).time, (CharSequence)localObject1, ((MessageRecord)localObject4).shmsgseq, (MessageRecord)localObject4));
       break;
-      localObject1 = bgwv.a(((MessageRecord)localObject4).msg, (MessageRecord)localObject4, 32, 13);
+      localObject1 = bhwz.a(((MessageRecord)localObject4).msg, (MessageRecord)localObject4, 32, 13);
       continue;
       if ((localObject4 instanceof MessageForPic))
       {
@@ -183,7 +183,7 @@ public class TroopMemberHistoryFragment
       }
       else
       {
-        localObject1 = BaseApplicationImpl.getApplication().getString(2131692942);
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131692951);
         continue;
         localObject1 = BaseApplicationImpl.getApplication().getString(2131691134);
         continue;
@@ -193,33 +193,33 @@ public class TroopMemberHistoryFragment
         ((MessageForMixedMsg)localObject1).msgData = ((MessageRecord)localObject4).msgData;
         ((MessageForMixedMsg)localObject1).parse();
         if (((MessageForMixedMsg)localObject1).msg == null) {}
-        for (localObject1 = anni.a(2131714262);; localObject1 = new bdnt(((MessageForMixedMsg)localObject1).msg, 13, 32, 1)) {
+        for (localObject1 = anzj.a(2131714371);; localObject1 = new begp(((MessageForMixedMsg)localObject1).msg, 13, 32, 1)) {
           break;
         }
         if ((localObject4 instanceof MessageForMarketFace))
         {
           localObject1 = ((MessageForMarketFace)localObject4).mMarkFaceMessage;
           if ((localObject1 != null) && (!TextUtils.isEmpty(((MarkFaceMessage)localObject1).faceName))) {}
-          for (localObject1 = "[" + ((MarkFaceMessage)localObject1).faceName + "]";; localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131691739)) {
+          for (localObject1 = "[" + ((MarkFaceMessage)localObject1).faceName + "]";; localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131691742)) {
             break;
           }
         }
-        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131691739);
+        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131691742);
         continue;
-        localObject1 = BaseApplicationImpl.getApplication().getString(2131692058);
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131692063);
         continue;
         try
         {
-          localObject1 = bcwd.a(((MessageRecord)localObject4).msgData);
+          localObject1 = bdow.a(((MessageRecord)localObject4).msgData);
           if (localObject1 == null) {
-            localObject1 = anni.a(2131714233);
+            localObject1 = anzj.a(2131714342);
           } else {
             localObject1 = ((AbsStructMsg)localObject1).mMsgBrief;
           }
         }
         catch (Exception localException)
         {
-          String str = anni.a(2131714225);
+          String str = anzj.a(2131714334);
         }
         continue;
         return localObject2;
@@ -229,26 +229,26 @@ public class TroopMemberHistoryFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131370471));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131365977);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378459));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131378665).setVisibility(8);
-    this.jdField_a_of_type_Airb = new airb(this, getActivity());
-    this.d = bglf.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Airb);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new aiqv(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new aiqw(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131370573));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131366022);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378617));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131378826).setVisibility(8);
+    this.jdField_a_of_type_Ajck = new ajck(this, getActivity());
+    this.d = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajck);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ajce(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new ajcf(this));
     if ((this.jdField_c_of_type_JavaLangString.equals("0")) && (this.jdField_a_of_type_JavaUtilArrayList != null)) {
-      setTitle(anni.a(2131714243));
+      setTitle(anzj.a(2131714352));
     }
     for (;;)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
       return;
       if (this.d != null)
       {
         SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-        localSpannableStringBuilder.append(new bdnf(this.d, 32).a()).append("的发言");
+        localSpannableStringBuilder.append(new begb(this.d, 32).a()).append("的发言");
         setTitle(localSpannableStringBuilder);
       }
     }
@@ -269,7 +269,7 @@ public class TroopMemberHistoryFragment
       ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment$LoadMsgThread, 8, null, true);
       return;
     } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696867);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696916);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
   
@@ -297,7 +297,7 @@ public class TroopMemberHistoryFragment
   
   public int getContentLayoutId()
   {
-    return 2131560572;
+    return 2131560587;
   }
   
   public void onClick(View paramView) {}

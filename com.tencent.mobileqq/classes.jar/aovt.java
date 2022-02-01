@@ -1,166 +1,177 @@
-import android.util.Xml;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class aovt
 {
-  public static int a(String paramString)
+  private static String jdField_a_of_type_JavaLangString = "en.lang";
+  private static String b = "en-release.zip";
+  private aovs jdField_a_of_type_Aovs;
+  private aovw jdField_a_of_type_Aovw;
+  
+  public static aovt a()
+  {
+    return aovu.a();
+  }
+  
+  private static String a()
+  {
+    File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "/multi_language");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile.getAbsolutePath() + File.separator;
+  }
+  
+  private void a(Context paramContext, String paramString)
+  {
+    long l;
+    String str;
+    if (!new File(paramString).exists())
+    {
+      QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLanguage need unzip:", b });
+      l = System.currentTimeMillis();
+      paramString = "language" + File.separator + b;
+      str = a() + b;
+      bhmi.a(paramContext, paramString, str);
+    }
+    try
+    {
+      nof.a(new File(str), a());
+      if (QLog.isColorLevel()) {
+        QLog.e("MultiLanguageEngine", 2, new Object[] { "copy and unzip success! cost:", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()) });
+      }
+      return;
+    }
+    catch (IOException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  private boolean a(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString);
+    try
+    {
+      long l = System.currentTimeMillis();
+      AssetManager localAssetManager = (AssetManager)AssetManager.class.getConstructor(new Class[0]).newInstance(new Object[0]);
+      Object localObject = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+      ((Method)localObject).setAccessible(true);
+      ((Method)localObject).invoke(localAssetManager, new Object[] { paramString });
+      Resources localResources = new Resources(localAssetManager, this.jdField_a_of_type_Aovw.b().getDisplayMetrics(), this.jdField_a_of_type_Aovw.b().getConfiguration());
+      localObject = paramContext.getPackageName();
+      paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 1);
+      if (paramContext != null) {}
+      for (paramContext = paramContext.packageName;; paramContext = (Context)localObject)
+      {
+        this.jdField_a_of_type_Aovw.a(localResources, paramContext);
+        QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLangPkg:", localAssetManager.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
+        return true;
+        QLog.d("MultiLanguageEngine", 1, "pkgInfo is null");
+      }
+      return false;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.d("MultiLanguageEngine", 1, paramContext, new Object[0]);
+    }
+  }
+  
+  private void e(Context paramContext)
   {
     try
     {
-      int i = aovv.a("arfeature", "v8.0.0", aovv.b("arfeature", "v8.0.0", "arfeature"), paramString);
-      return i;
+      long l = System.currentTimeMillis();
+      Object localObject1 = Class.forName("android.app.ContextImpl");
+      Object localObject2 = ((Class)localObject1).getDeclaredField("mResources");
+      ((Field)localObject2).setAccessible(true);
+      Object localObject3 = ((Field)localObject2).get(paramContext);
+      ((Field)localObject2).set(paramContext, this.jdField_a_of_type_Aovs);
+      QLog.d("MultiLanguageEngine", 1, new Object[] { "success in delegate ContextImpl resources:", this.jdField_a_of_type_Aovs.toString(), " ,old:", localObject3.toString() });
+      localObject1 = ((Class)localObject1).getDeclaredField("mPackageInfo");
+      ((Field)localObject1).setAccessible(true);
+      paramContext = ((Field)localObject1).get(paramContext);
+      localObject1 = Class.forName("android.app.LoadedApk").getDeclaredField("mResources");
+      ((Field)localObject1).setAccessible(true);
+      localObject2 = ((Field)localObject1).get(paramContext);
+      ((Field)localObject1).set(paramContext, this.jdField_a_of_type_Aovs);
+      QLog.d("MultiLanguageEngine", 1, new Object[] { "success in delegate LoadedApk resources:", this.jdField_a_of_type_Aovs.toString(), " ,old:", localObject2.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
+      return;
     }
-    finally
+    catch (Exception paramContext)
     {
-      paramString = finally;
-      throw paramString;
+      paramContext.printStackTrace();
     }
   }
   
-  public static int a(String paramString1, String paramString2)
+  public void a(Activity paramActivity)
   {
-    int i = -5;
-    for (;;)
+    if (aobf.a()) {}
+    long l;
+    do
     {
-      try
-      {
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
-        aovv.a("arfeature", "v8.0.0", "arfeature", paramString2);
-        try
-        {
-          aovr.a(paramString1, aovv.a("arfeature", "v8.0.0", aovv.b("arfeature", "v8.0.0", "arfeature")));
-          paramString2 = aovv.a("arfeature", "v8.0.0", aovv.b("arfeature", "v8.0.0", "arfeature")) + File.separator + "md5_config.xml";
-          localObject = new File(paramString2);
-          if (!((File)localObject).exists()) {
-            break label644;
-          }
-          new HashMap();
-        }
-        catch (IOException paramString2)
-        {
-          Object localObject;
-          File localFile;
-          String str;
-          i = -6;
-          bgmg.a(aovv.a("arfeature", "v8.0.0", aovv.b("arfeature", "v8.0.0", "arfeature")), false);
-          paramString2 = new File(paramString1);
-          if (paramString2.exists()) {
-            paramString2.delete();
-          }
-          QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
-          continue;
-        }
-      }
-      finally {}
-      try
-      {
-        paramString2 = a(bgmg.b((File)localObject));
-        if (paramString2.size() <= 0) {
-          break label614;
-        }
-        paramString2 = paramString2.entrySet().iterator();
-        if (!paramString2.hasNext()) {
-          break label685;
-        }
-        localObject = (Map.Entry)paramString2.next();
-        paramString1 = "";
-        if (((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libARFeature"))
-        {
-          paramString1 = aovv.a("arfeature", "v8.0.0", aovv.b("arfeature", "v8.0.0", "arfeature")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
-          aovv.a("arfeature", "v8.0.0", "libARFeature", (String)((Map.Entry)localObject).getValue());
-        }
-        localFile = new File(paramString1);
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + paramString1);
-        if (!localFile.exists()) {
-          break label573;
-        }
-        str = azby.a(paramString1);
-        localObject = (String)((Map.Entry)localObject).getValue();
-        if (((String)localObject).equalsIgnoreCase(str)) {
-          continue;
-        }
-        localFile.delete();
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + paramString1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject);
-        i = -3;
-      }
-      catch (IOException paramString2)
-      {
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-      }
-      catch (OutOfMemoryError paramString2)
-      {
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + paramString1);
-        i = -2;
-        continue;
-        i = -1;
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
-        continue;
-      }
-      return i;
-      label573:
-      label614:
-      QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + paramString2);
-      label644:
-      i = -2;
-      continue;
-      label685:
-      QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
-      i = 0;
-    }
+      return;
+      l = System.currentTimeMillis();
+      LayoutInflater.from(paramActivity).setFactory2(new aovv(paramActivity));
+    } while (!QLog.isColorLevel());
+    QLog.d("MultiLanguageEngine", 2, new Object[] { "register cost:", Long.valueOf(System.currentTimeMillis() - l) });
   }
   
-  private static HashMap<String, String> a(String paramString)
+  public void a(Context paramContext)
   {
-    HashMap localHashMap = new HashMap();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception localException)
-      {
-        XmlPullParser localXmlPullParser;
-        QLog.e("AREngine_ArFeatureSwepNativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
-        return localHashMap;
-      }
-      int i = localXmlPullParser.next();
-      if (localXmlPullParser.getName().equalsIgnoreCase("libARFeature"))
-      {
-        localHashMap.put("libARFeature", localXmlPullParser.nextText());
-        while (i == 1)
-        {
-          QLog.d("AREngine_ArFeatureSwepNativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
-          return localHashMap;
-        }
-        switch (i)
-        {
-        }
-      }
+    boolean bool = false;
+    if (!aobf.a()) {
+      bool = true;
     }
+    QLog.d("MultiLanguageEngine", 1, new Object[] { "initAndDelegate:", Boolean.valueOf(bool), ", context:", paramContext });
+    if (paramContext == null) {}
+    while (aobf.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Aovw = new aovw(paramContext);
+    this.jdField_a_of_type_Aovs = new aovs(this.jdField_a_of_type_Aovw);
+    e(paramContext);
   }
   
-  public static boolean a()
+  public void b(Context paramContext)
   {
-    return new File(aovv.a("arfeature", "v8.0.0", aovv.b("arfeature", "v8.0.0", "arfeature")) + File.separator + "libARFeature" + ".so").exists();
+    if (aobf.b()) {
+      a(paramContext, a() + jdField_a_of_type_JavaLangString);
+    }
+    while (this.jdField_a_of_type_Aovw == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aovw.a(null, null);
+  }
+  
+  public void c(Context paramContext)
+  {
+    long l = System.currentTimeMillis();
+    bhmi.a(a());
+    b(paramContext);
+    QLog.d("MultiLanguageEngine", 1, new Object[] { "update lang pkg! cost:", Long.valueOf(System.currentTimeMillis() - l) });
+  }
+  
+  public void d(Context paramContext)
+  {
+    a(paramContext, a() + jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aovt
  * JD-Core Version:    0.7.0.1
  */

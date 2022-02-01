@@ -1,16 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.AudioAnimationView;
-import com.tencent.mobileqq.widget.CircleProgressView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahie
-  extends afwr
+class ahie
+  extends ahkx
 {
-  ahib jdField_a_of_type_Ahib;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
-  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
+  ahie(ahgk paramahgk)
+  {
+    super(paramahgk, null);
+  }
   
-  public ahie(ahhy paramahhy) {}
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahxi(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

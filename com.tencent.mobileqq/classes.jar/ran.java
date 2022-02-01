@@ -1,15 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RedPacketTaskData;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ran
-  implements qyy
+public class ran
+  implements szc
 {
-  ran(ram paramram, String paramString) {}
+  public ran(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(@Nullable RedPacketTaskData paramRedPacketTaskData)
+  public void a(int paramInt)
   {
-    if (paramRedPacketTaskData != null) {
-      this.jdField_a_of_type_Ram.b(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
+    {
+      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
+      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
+      ocd.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", ozs.g(), false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
+      }
     }
   }
 }

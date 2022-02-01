@@ -1,8 +1,24 @@
-import eipc.EIPCResult;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
-public abstract interface auwb
+public class auwb
+  extends auvz
 {
-  public abstract void a(String paramString, EIPCResult paramEIPCResult);
+  public auwb(String paramString, BinaryMessenger paramBinaryMessenger)
+  {
+    super(paramString, paramBinaryMessenger);
+  }
+  
+  public MethodChannel.MethodCallHandler a()
+  {
+    return new auwc(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return auwd.a;
+  }
 }
 
 

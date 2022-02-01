@@ -3,14 +3,14 @@ package com.tencent.mobileqq.app.automator.step;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import niz;
+import nku;
 
 public class GetTroopRedPointInfoStep
   extends AsyncStep
 {
   public int a()
   {
-    ((niz)this.a.app.a(43)).a();
+    ((nku)this.a.app.a(43)).a();
     return 7;
   }
 }

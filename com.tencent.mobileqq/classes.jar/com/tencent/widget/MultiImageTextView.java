@@ -7,9 +7,9 @@ import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.TextView.BufferType;
-import bkmk;
-import bkmm;
-import bkol;
+import blnn;
+import blnp;
+import blpo;
 import com.tencent.mobileqq.widget.ColorNickTextView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ public class MultiImageTextView
   extends ColorNickTextView
 {
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private ArrayList<bkol> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<blpo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean b;
   
   public MultiImageTextView(Context paramContext)
@@ -38,10 +38,10 @@ public class MultiImageTextView
   
   public MultiImageTextView a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    bkmk localbkmk = new bkmk(null);
-    localbkmk.a = paramDrawable;
-    localbkmk.a.setBounds(0, 0, paramInt1, paramInt2);
-    a(localbkmk);
+    blnn localblnn = new blnn(null);
+    localblnn.a = paramDrawable;
+    localblnn.a.setBounds(0, 0, paramInt1, paramInt2);
+    a(localblnn);
     return this;
   }
   
@@ -52,18 +52,18 @@ public class MultiImageTextView
   
   public void a(int paramInt)
   {
-    bkmm localbkmm = new bkmm(null);
-    localbkmm.a = paramInt;
-    a(localbkmm);
+    blnp localblnp = new blnp(null);
+    localblnp.a = paramInt;
+    a(localblnp);
   }
   
-  public void a(bkol parambkol)
+  public void a(blpo paramblpo)
   {
-    parambkol.a = ("[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "]");
-    parambkol.b = this.jdField_a_of_type_JavaLangStringBuilder.length();
-    parambkol.c = (parambkol.b + parambkol.a.length());
-    this.jdField_a_of_type_JavaLangStringBuilder.append(parambkol.a);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambkol);
+    paramblpo.a = ("[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "]");
+    paramblpo.b = this.jdField_a_of_type_JavaLangStringBuilder.length();
+    paramblpo.c = (paramblpo.b + paramblpo.a.length());
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramblpo.a);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramblpo);
   }
   
   public void append(CharSequence paramCharSequence, int paramInt1, int paramInt2)
@@ -78,7 +78,7 @@ public class MultiImageTextView
     SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangStringBuilder);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bkol)localIterator.next()).a(localSpannableString);
+      ((blpo)localIterator.next()).a(localSpannableString);
     }
     setText(localSpannableString);
   }

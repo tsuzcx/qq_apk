@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.text.Editable;
 import android.widget.EditText;
-import bgjw;
+import bhjx;
 
 class RegisterVerifyCodeActivity$4
   implements Runnable
@@ -12,10 +12,10 @@ class RegisterVerifyCodeActivity$4
   public void run()
   {
     int j = 0;
-    String str = bgjw.a(this.a, this.b);
+    String str = bhjx.a(this.a, this.b);
     if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.this$0) != null) && (!str.equals(RegisterVerifyCodeActivity.a(this.this$0))))
     {
-      RegisterVerifyCodeActivity.d(this.this$0, str);
+      RegisterVerifyCodeActivity.e(this.this$0, str);
       i = 0;
       if (i >= 6) {
         break label160;

@@ -1,66 +1,169 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aslm
-  extends asll
 {
-  public final String b;
+  int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private Map<Integer, aslo> jdField_a_of_type_JavaUtilMap;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  aslm(asln paramasln, int paramInt)
+  public aslm(Activity paramActivity)
   {
-    super(paramasln, paramInt);
-    this.jdField_b_of_type_JavaLangString = "ExtendFriendLimitChatIdleStateHandler";
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func SogouEmojiTaskController begins");
+    }
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    d();
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func SogouEmojiTaskController ends");
+    }
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LinkedHashMap(10, 1.1F, true));
+  }
+  
+  public int a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func addTask begins, packId:" + paramString1 + ",exprId:" + paramString2);
+    }
+    aslo localaslo = new aslo();
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    localaslo.jdField_a_of_type_JavaLangString = paramString1;
+    localaslo.b = paramString2;
+    localaslo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localaslo);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func addTask ends, mCurTaskId:" + this.jdField_a_of_type_Int);
+    }
+    b(2131694337);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDestroy begins");
+    }
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.jdField_a_of_type_JavaUtilMap = null;
+    }
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDestroy ends");
+    }
   }
   
   public void a(int paramInt)
   {
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "requestMatch id" + paramInt);
-    Object localObject = new ashh();
-    ((ashh)localObject).jdField_b_of_type_Int = paramInt;
-    this.a.a(101, (ashh)localObject);
-    localObject = (asfs)this.a.a.a(127);
-    if (localObject != null)
-    {
-      int i = askk.a(this.a.a);
-      ((asfs)localObject).a(this.a.a.getCurrentAccountUin(), i, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func removeTask begins, taskId:" + paramInt + ",mEmojiTaskHashMap:" + this.jdField_a_of_type_JavaUtilMap);
+    }
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func removeTask ends");
     }
   }
   
-  void a(boolean paramBoolean)
+  public boolean a(int paramInt)
   {
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCancelMatchMsg 取消匹配: " + paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func isTaskInMap begins, taskId:" + paramInt);
+    }
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      if ((aslo)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmojiTaskController", 2, "func isTaskInMap ends, taskId:" + paramInt + ",exists=" + bool);
+        }
+        return bool;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func isTaskInMap ends, taskId:" + paramInt + " NOT exist, cause map is null.");
+    }
+    return false;
   }
   
-  void a(boolean paramBoolean, int paramInt, ashh paramashh, String paramString)
+  public void b()
   {
-    if ((paramBoolean) && (paramashh != null))
-    {
-      QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配 " + paramInt + paramashh.toString());
-      return;
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    paramashh = paramString;
-    if (paramString == null) {
-      paramashh = "";
-    }
-    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配失败 suc:" + paramBoolean + " ret:" + paramInt + " errMsg : " + paramashh);
   }
   
-  void a(boolean paramBoolean, ashh paramashh)
+  void b(int paramInt)
   {
-    if (paramashh == null)
-    {
-      QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg null indo");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func showProgressDialog begins, textResId:" + paramInt);
     }
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
-    if (paramBoolean)
+    for (;;)
     {
-      a(paramashh.jdField_b_of_type_JavaLangString, paramashh.jdField_a_of_type_JavaLangString, paramashh.jdField_a_of_type_ArrayOfByte);
-      c(paramashh);
-      a(paramashh.jdField_b_of_type_JavaLangString, paramashh.e);
+      try
+      {
+        if (this.jdField_a_of_type_AndroidAppProgressDialog == null) {
+          continue;
+        }
+        c();
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+        if (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
+          this.jdField_a_of_type_AndroidAppProgressDialog.show();
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("SogouEmojiTaskController", 2, "func showProgressDialog ends, ERROR! msg:" + localThrowable.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmojiTaskController", 2, "func showProgressDialog ends");
+      }
       return;
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755824);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new asln(this));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
+      this.jdField_a_of_type_AndroidAppProgressDialog.show();
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559572);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372578));
     }
-    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
+  }
+  
+  void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func cancleProgressDailog begins");
+    }
+    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func cancleProgressDailog ends");
+    }
   }
 }
 

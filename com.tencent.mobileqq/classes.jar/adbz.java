@@ -1,13 +1,6 @@
-import com.tencent.qapmsdk.base.meta.DumpResult;
-
 public abstract interface adbz
-  extends adbu
 {
-  public abstract DumpResult a(String paramString, adcb paramadcb);
-  
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(Object paramObject, String paramString);
+  public abstract void a(bcre parambcre, byte[] paramArrayOfByte);
 }
 
 

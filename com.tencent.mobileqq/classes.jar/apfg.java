@@ -1,53 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class apfg
+class apfg
+  implements MediaPlayer.OnPreparedListener
 {
-  public static int a(String paramString)
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
-  }
+  apfg(apfb paramapfb) {}
   
-  public static void a(Context paramContext, View paramView)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
+    try
     {
-      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
-      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      paramContext.topMargin = i;
-      paramView.setLayoutParams(paramContext);
-    }
-  }
-  
-  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    int i;
-    if (bclx.a(paramContext))
-    {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      i = paramInt;
-      if (paramBoolean) {
-        i = paramInt + bclx.d(paramContext);
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + apfb.b(this.a));
       }
-      if (localMarginLayoutParams.bottomMargin != i) {}
-    }
-    else
-    {
+      this.a.a.seekTo(0);
+      apfb.b(this.a, true);
+      if (apfb.b(this.a))
+      {
+        this.a.a.start();
+        apfb.c(this.a, false);
+      }
       return;
     }
-    localMarginLayoutParams.bottomMargin = i;
-    paramView.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

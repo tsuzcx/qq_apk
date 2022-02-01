@@ -1,48 +1,44 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.biz.qqstory.album.view.AlbumImageView;
-import java.util.List;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
 
-class web
-  extends Handler
+public class web
+  extends wcw
 {
-  public web(wdx paramwdx, Looper paramLooper)
+  private QCircleRocketView a;
+  
+  protected String a()
   {
-    super(paramLooper);
+    return "QCircleRockeyAnimationPresenter";
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(ViewStub paramViewStub)
   {
-    switch (paramMessage.what)
+    if (paramViewStub != null)
     {
+      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRocketView = ((QCircleRocketView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373277));
     }
-    do
+  }
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = paramInt;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
     {
-      return;
-      yqp.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop");
-    } while ((wdx.a(this.a) != 1) || (wdx.a(this.a) == null));
-    Object localObject = wdx.a(this.a);
-    int i = wdx.a(this.a, (List)localObject, wdx.c(this.a));
-    int j = wdx.a(this.a, (List)localObject, i + 1);
-    if ((((List)localObject).size() <= 1) || (i == j) || (i < 0))
-    {
-      wdx.b(this.a);
-      yqp.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, pick count not enougth , dont play loop");
-      return;
+      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRocketView != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRocketView.setFeedId(localStFeed.id.get());
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRocketView.setPageType(1);
+      }
     }
-    wdx.a(this.a, j);
-    paramMessage = (wcm)((List)localObject).get(i);
-    localObject = (wcm)((List)localObject).get(j);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setVisibility(0);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(paramMessage.a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, wdx.a(this.a));
-    this.a.jdField_a_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(((wcm)localObject).a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, wdx.a(this.a));
-    paramMessage = AnimationUtils.loadAnimation(wdx.a(this.a), 2130772244);
-    paramMessage.setAnimationListener(new wec(this));
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.startAnimation(paramMessage);
-    yqp.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, start play loop , ani index = %d , rear index = %d", Integer.valueOf(i), Integer.valueOf(j));
   }
 }
 

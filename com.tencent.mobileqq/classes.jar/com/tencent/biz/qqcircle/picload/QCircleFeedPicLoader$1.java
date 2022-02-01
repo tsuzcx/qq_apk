@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.picload;
 
-import bgmg;
+import bhmi;
 
 class QCircleFeedPicLoader$1
   implements Runnable
@@ -9,7 +9,7 @@ class QCircleFeedPicLoader$1
   
   public void run()
   {
-    bgmg.c(QCircleFeedPicLoader.a() + ".nomedia");
+    bhmi.c(QCircleFeedPicLoader.a() + ".nomedia");
   }
 }
 

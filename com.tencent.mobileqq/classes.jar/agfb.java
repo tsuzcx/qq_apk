@@ -1,23 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agfb
-  implements View.OnClickListener
+final class agfb
+  implements agfh
 {
-  public agfb(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
-      QQToast.a(this.a.getContext(), anni.a(2131715528), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131298998));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 94);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
 }
 

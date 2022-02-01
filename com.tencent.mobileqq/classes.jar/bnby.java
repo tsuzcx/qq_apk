@@ -1,49 +1,83 @@
+import android.text.TextUtils;
+
 public class bnby
 {
-  public static boyo a(int paramInt, boyn paramboyn, boym paramboym)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private bnbx jdField_a_of_type_Bnbx;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
+  private String e = "";
+  private String f = "";
+  private String g;
+  
+  public bnbx a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return new bncn(paramboyn, paramboym);
-    case 10026: 
-      return new bncy(paramboyn, paramboym);
-    case 10023: 
-    case 10024: 
-      return new bndy(paramboyn, paramboym);
-    case -1000: 
-      return new bndy();
-    case 10000: 
-      return new bnbe(paramboyn, paramboym);
-    case 10001: 
-      return new bncj(paramboyn, paramboym);
-    case 10002: 
-      return new bncn(paramboyn, paramboym);
-    case 10014: 
-      return new bnco(paramboyn, paramboym);
-    case 10004: 
-      return new bnch(paramboyn, paramboym);
-    case 10007: 
-      return new bncs(paramboyn, paramboym);
-    case 10012: 
-      return new bncq(paramboyn, paramboym);
-    case 10013: 
-      return new bnck(paramboyn, paramboym);
-    case 10017: 
-      return new rkp(paramboyn, paramboym);
-    case 10019: 
-      return new beyr(paramboyn, paramboym);
-    case 10021: 
-      return new bnbf(paramboyn, paramboym);
-    case 10022: 
-      return new bnbz(paramboyn, paramboym);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      throw new IllegalArgumentException("moduleId can not be null");
     }
-    return new ajon(paramboyn, paramboym);
+    return new bnbx(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, this.g, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bnbx);
+  }
+  
+  public bnby a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bnby a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public bnby a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bnby b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public bnby c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public bnby d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public bnby e(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public bnby f(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public bnby g(String paramString)
+  {
+    this.g = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bnby
  * JD-Core Version:    0.7.0.1
  */

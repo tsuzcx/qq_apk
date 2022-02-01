@@ -1,21 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.util.List;
 
-final class zkz
-  implements INetEventHandler
+public class zkz
+  extends zkw
 {
-  zkz(Context paramContext) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      zky.a(this.a);
-      return;
-    }
-    zky.a("");
-    zky.b("");
-  }
+  public int a;
+  public Activity a;
+  public Handler a;
+  public String a;
+  public List<SlideItemInfo> a;
+  public zla a;
+  public int b;
 }
 
 

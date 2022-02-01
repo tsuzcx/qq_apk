@@ -1,57 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afnm
-  extends anqd
+  implements View.OnClickListener
 {
-  public afnm(TroopRequestActivity paramTroopRequestActivity) {}
+  public afnm(ShowReactiveActivity paramShowReactiveActivity, arnb paramarnb) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    this.a.i();
-    paramString = this.a.getString(2131718381);
-    QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    this.a.a(2130839584, this.a.getString(2131718056));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    long l2 = bdgn.a().b();
-    long l1 = l2;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      l1 = Long.parseLong(paramString1);
-      if (!paramBoolean)
-      {
-        this.a.i();
-        if (bdgo.a(bdgn.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
-          this.a.finish();
-        }
-        return;
-      }
-      this.a.i();
-      this.a.finish();
-      bdgo.a(bdgn.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        l1 = l2;
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    this.a.a(2130839584, this.a.getString(2131718042));
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Arnb.c);
+    this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

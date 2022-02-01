@@ -1,25 +1,11 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
-class ahga
-  implements View.OnClickListener
+public class ahga
 {
-  ahga(ahfz paramahfz) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
-  {
-    String str = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(str))
-    {
-      akwv.b(this.a.jdField_a_of_type_AndroidContentContext, str);
-      if ((this.a.m > 0) && ((this.a.n == 2) || (this.a.n == 3))) {
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aiotail.click", 0, 0, "" + this.a.m, "", "", "");
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public ahga(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
 }
 
 

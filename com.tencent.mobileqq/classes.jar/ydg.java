@@ -1,13 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class ydg
-  extends zpq
+  implements ztk
 {
-  public ydg(StoryDetailFragment paramStoryDetailFragment) {}
+  public ydg(StoryPickerFragment paramStoryPickerFragment) {}
+  
+  public void a() {}
   
   public boolean a(boolean paramBoolean)
   {
-    this.a.d();
+    if (this.a.jdField_a_of_type_Yjl != null) {
+      this.a.jdField_a_of_type_Yjl.a(this.a.jdField_a_of_type_Ydu.a());
+    }
     return true;
   }
 }

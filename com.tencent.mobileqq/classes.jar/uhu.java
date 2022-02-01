@@ -1,24 +1,25 @@
-import UserGrowth.stFeed;
-import android.view.ViewGroup;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uhu
+class uhu
+  implements View.OnClickListener
 {
-  public static bkrv<stFeed> a(int paramInt, ViewGroup paramViewGroup, ucp paramucp)
+  uhu(uht paramuht, uhv paramuhv, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (uqt.b()) {}
+    for (;;)
     {
-    default: 
-      return uhk.a(paramViewGroup, paramucp);
-    case 1: 
-      return uhv.a(paramViewGroup, paramucp);
-    case 2: 
-      return uhk.a(paramViewGroup, paramucp);
-    case 101: 
-      return uhw.a(paramViewGroup, paramucp);
-    case 102: 
-      return uhx.a(paramViewGroup, paramucp);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Bundle localBundle = TroopInfoActivity.a(this.jdField_a_of_type_Uhv.c, this.jdField_a_of_type_Uhv.d, 60006);
+      bguq.a(uht.a(this.jdField_a_of_type_Uht), localBundle, 2);
+      uht.a(this.jdField_a_of_type_Uht, this.jdField_a_of_type_Uhv, this.jdField_a_of_type_Int);
     }
-    return uhs.a(paramViewGroup, paramucp);
   }
 }
 

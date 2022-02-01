@@ -1,56 +1,26 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aipk
-  implements beqz
+class aipk
+  implements bgwh
 {
-  public aipk(BlessResultActivity paramBlessResultActivity) {}
+  aipk(aipj paramaipj) {}
   
-  public void a()
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
+    {
+      paramString = (agwy)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_Bkfv.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bkfv.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Bkfv.sendEmptyMessage(1001);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
-    }
-    if (this.a.jdField_a_of_type_Bkfv.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bkfv.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Bkfv.sendEmptyMessage(1003);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    long l = bgmg.a(this.a.jdField_a_of_type_Aipl.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
-    }
+    do
+    {
+      return;
+      paramString = (agwy)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

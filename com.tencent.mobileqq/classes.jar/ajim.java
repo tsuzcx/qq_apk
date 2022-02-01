@@ -1,6 +1,22 @@
-public abstract interface ajim
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
+
+public class ajim
 {
-  public abstract int a(int paramInt, boolean paramBoolean);
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public AddFriendBlockedInfo a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  
+  public ajim(ajil paramajil) {}
 }
 
 

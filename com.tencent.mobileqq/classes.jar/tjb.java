@@ -1,52 +1,64 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.viola.core.ViolaInstance;
+import com.tencent.viola.core.ViolaInstance.ViolaPageListener;
 
 public class tjb
-  extends DataSetObserver
+  implements ViolaInstance.ViolaPageListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public tjb(ViolaBaseView paramViolaBaseView) {}
   
-  public tjb(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  void a()
+  public void onComponentTopIndex(View paramView, float paramFloat)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a != null) && (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null))
+    if (((ViolaBaseView.a(this.a) instanceof ViolaFragment)) && (((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout() != null)) {
+      ((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout().a(paramView, paramFloat);
+    }
+  }
+  
+  public void onDispatchTouchEvent(String paramString, int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
+  {
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef())) {
+      ViolaBaseView.b(this.a, paramInt2);
+    }
+  }
+  
+  public void onScroll(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
     {
-      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a.getCurrentItem();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == i) {
-        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).b(i, 300);
+      ViolaBaseView.b(this.a, paramInt5);
+      ViolaBaseView.b(this.a, true);
+      if (ViolaBaseView.a(this.a) != null) {
+        ViolaBaseView.a(this.a).a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean);
       }
     }
-    if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) {
-      TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a();
+  }
+  
+  public void onScrollStateChanged(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).a(paramString, paramInt1);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onChanged()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
-      return;
+      ViolaBaseView.b(this.a, paramInt2);
+      ViolaBaseView.b(this.a, true);
     }
-    a();
   }
   
-  public void onInvalidated()
+  public void pageOpenSuccess()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
-      return;
+    ViolaBaseView.a(this.a, 3);
+    ThreadManager.post(new ViolaBaseView.10.1(this), 8, null, true);
+    if ((!TextUtils.isEmpty(this.a.a)) && (this.a.a.contains("VideoFeeds.js"))) {
+      ocd.a(null, null, "0X800AF0E", "0X800AF0E", 0, 0, null, null, null, "" + System.currentTimeMillis(), false);
     }
-    a();
   }
 }
 

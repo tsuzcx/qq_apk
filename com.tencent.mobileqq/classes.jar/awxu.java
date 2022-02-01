@@ -1,34 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-
-class awxu
-  implements atty
+public class awxu
 {
-  awxu(awxi paramawxi, String paramString, awxd paramawxd) {}
+  public int a;
+  public long a;
+  public ahmg a;
+  public awxs a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
   
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Awxd != null) && (this.jdField_a_of_type_Awxd.a != null))
-    {
-      String str = this.jdField_a_of_type_Awxd.a.a();
-      awxe localawxe = this.jdField_a_of_type_Awxi.a(str);
-      if ((localawxe != null) && (!localawxe.a))
-      {
-        localawxe.c = paramInt;
-        this.jdField_a_of_type_Awxi.a(str, localawxe);
-        awxi.a(this.jdField_a_of_type_Awxi, localawxe, paramInt);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
-    }
-    awxi.a(this.jdField_a_of_type_Awxi, this.jdField_a_of_type_Awxd, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
+  public awxu(awxo paramawxo) {}
 }
 
 

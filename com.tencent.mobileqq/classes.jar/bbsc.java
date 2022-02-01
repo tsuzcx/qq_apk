@@ -1,6 +1,11 @@
-public abstract interface bbsc
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class bbsc
 {
-  public abstract void a();
+  public int a;
+  public ImageView a;
+  public TextView a;
 }
 
 

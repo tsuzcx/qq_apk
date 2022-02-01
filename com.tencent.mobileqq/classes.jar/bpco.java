@@ -1,36 +1,19 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.1;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.2;
+import android.os.Handler;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
 
 public class bpco
-  implements ModuleDownloadListener
 {
-  bpco(bpcg parambpcg) {}
+  private static final bpcr<Handler, Void> a = new bpcp();
+  private static bpcr<TimerTaskManager, Void> b = new bpcq();
   
-  public void onDownloadCanceled(String paramString)
+  public static Handler a()
   {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadCanceled " + paramString);
+    return (Handler)a.b(null);
   }
   
-  public void onDownloadFailed(String paramString)
+  public static TimerTaskManager a()
   {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadFailed " + paramString);
-    if ((this.a.a != null) && (this.a.a.getActivity() != null)) {
-      this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.2(this));
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("cyber_clink_version_2.jar")) {}
-    while ((this.a.a == null) || (this.a.a.getActivity() == null)) {
-      return;
-    }
-    this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.1(this));
+    return (TimerTaskManager)b.b(null);
   }
 }
 

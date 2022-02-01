@@ -1,27 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-class bgaw
-  implements ValueAnimator.AnimatorUpdateListener
+public class bgaw
+  implements bljd
 {
-  bgaw(bgau parambgau) {}
+  public bgaw(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void ak_()
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if (paramValueAnimator.intValue() <= -bgau.jdField_a_of_type_Int + this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298998))
-    {
-      if (this.a.jdField_a_of_type_Beqr != null) {
-        this.a.jdField_a_of_type_Beqr.a(false);
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
-    }
+    this.a.a.a();
+    this.a.i();
   }
 }
 

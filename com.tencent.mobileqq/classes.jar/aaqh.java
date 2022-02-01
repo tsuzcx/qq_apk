@@ -1,33 +1,124 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.2;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class aaqh
-  implements URLDrawableDownListener
+public class aaqh
+  extends RecyclerView.Adapter
+  implements aoog
 {
-  aaqh(aaqa paramaaqa) {}
+  private alno jdField_a_of_type_Alno;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
+  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<tua> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b = true;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public aaqh(Context paramContext, RecyclerView paramRecyclerView)
   {
-    this.a.a(false, "onLoadCancelled");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Alno = new alno(((BaseActivity)paramContext).app, this, false);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private void c()
   {
-    this.a.a(false, "onLoadFailed");
+    ThreadManager.getUIHandler().post(new ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.2(this));
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public void a()
   {
-    this.a.a(false, "onLoadInterrupted");
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new aaqi(this));
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a(DragFrameLayout paramDragFrameLayout)
   {
-    this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = paramDragFrameLayout;
+  }
+  
+  public void a(List<tua> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    c();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+    if (this.jdField_a_of_type_Alno != null) {
+      this.jdField_a_of_type_Alno.a();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = null;
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    ((aaqj)paramViewHolder).a(this.jdField_a_of_type_Boolean);
+    ((aaqj)paramViewHolder).a((tua)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new aaqj(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559642, paramViewGroup, false), this.jdField_a_of_type_Alno, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (paramString == null) || (paramString.length() == 0)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
+      paramBitmap = (LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+      paramInt1 = 0;
+      while (paramInt1 < getItemCount())
+      {
+        Object localObject = paramBitmap.findViewByPosition(paramInt1);
+        if (localObject != null)
+        {
+          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+          if (((localObject instanceof aaqj)) && (paramString.equals(((aaqj)localObject).a.a)))
+          {
+            ((aaqj)localObject).a(aaqj.a((aaqj)localObject), paramString);
+            return;
+          }
+        }
+        paramInt1 += 1;
+      }
+    }
   }
 }
 

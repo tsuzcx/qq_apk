@@ -1,55 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusRecommendItemData;
-import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
-class tan
-  extends DefaultPTSLiteEventListener
+public class tan
+  extends Handler
 {
-  tan(tam paramtam) {}
-  
-  public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
-  
-  public void onSwiperDragTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
-  
-  public void onSwiperItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
-  
-  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
+  public tan(ChannelTopBanner paramChannelTopBanner, Looper paramLooper)
   {
-    if (QLog.isColorLevel())
-    {
-      paramView = new StringBuilder();
-      paramView.append("identifier = ").append(paramString).append("\n");
-      if (paramHashMap != null)
-      {
-        Iterator localIterator = paramHashMap.entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          paramView.append("dataSet [ ").append((String)localEntry.getKey()).append(" ] = ").append((String)localEntry.getValue()).append("\n");
-        }
-      }
-      QLog.i("WebPtsLiteViewCreator", 2, "[onTapEventTriggered], " + paramView.toString());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((ChannelTopBanner.a(this.a)) || (!ChannelTopBanner.b(this.a))) {}
+    while (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() <= 1) {
+      return;
     }
-    if ((paramHashMap == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      do
-      {
-        return;
-        paramString = (BaseData)tam.a(this.a).get(paramString);
-      } while (!(paramString instanceof ProteusRecommendItemData));
-      paramString = (ProteusRecommendItemData)paramString;
-      tcc.a("id_native_recommend_small_container", paramString, null);
-    } while (TextUtils.isEmpty((CharSequence)paramHashMap.get("jumpUrl")));
-    paramString = pha.a((String)paramHashMap.get("jumpUrl"), paramString.c);
-    pha.d(tam.a(this.a), paramString);
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount();
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
   }
 }
 

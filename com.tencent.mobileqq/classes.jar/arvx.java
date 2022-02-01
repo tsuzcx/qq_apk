@@ -1,58 +1,21 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
-
-class arvx
-  extends anlc
+final class arvx<T>
 {
-  final WeakReference<arvt> a;
+  public arvx<T> a;
+  public final T a;
+  public arvx<T> b;
   
-  public arvx(arvt paramarvt)
+  public arvx()
   {
-    this.a = new WeakReference(paramarvt);
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_Arvx = this;
+    this.b = this;
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public arvx(T paramT, arvx<T> paramarvx1, arvx<T> paramarvx2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
-    }
-    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
-    do
-    {
-      arvt localarvt;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localarvt = (arvt)this.a.get();
-            if (localarvt == null)
-            {
-              QLog.d("SogouEmoji", 2, "WeakReference error");
-              return;
-            }
-            paramObject = (EmoticonResp)paramObject;
-          } while (paramObject.data == null);
-          paramObject = (ArrayList)paramObject.data;
-        } while (paramObject.size() == 0);
-        paramBoolean = localarvt.a.a(localarvt.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
-        }
-        if (paramBoolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
-      return;
-      localarvt.a((Emoticon)paramObject.get(0));
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Arvx = paramarvx1;
+    this.b = paramarvx2;
   }
 }
 

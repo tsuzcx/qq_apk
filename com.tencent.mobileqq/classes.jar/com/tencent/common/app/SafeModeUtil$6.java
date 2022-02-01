@@ -2,7 +2,7 @@ package com.tencent.common.app;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.QLog;
 
 public final class SafeModeUtil$6
@@ -16,7 +16,7 @@ public final class SafeModeUtil$6
     this.a.edit().putBoolean("allowAutoRestart", true);
     this.a.edit().putInt("crashcount", 0);
     this.a.edit().commit();
-    bctj.a(BaseApplicationImpl.sApplication).a(null, "suicideCount", true, System.currentTimeMillis(), 0L, null, null);
+    bdmc.a(BaseApplicationImpl.sApplication).a(null, "suicideCount", true, System.currentTimeMillis(), 0L, null, null);
     QLog.flushLog();
     System.exit(0);
   }

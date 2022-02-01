@@ -1,46 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.3;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-final class tll
-  implements tsq
+public class tll
+  implements tky
 {
+  tll(tlj paramtlj) {}
+  
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is fail");
-    }
+    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.1(this));
   }
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      JSONArray localJSONArray = (JSONArray)paramString.get("preload_bids");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        tlg.a((String)localJSONArray.get(i), null);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is success");
-      }
-      tlg.jdField_a_of_type_JavaLangString = pha.a();
-      tlg.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (paramString.has("use_main")) {
-        tlg.jdField_a_of_type_Boolean = ((Boolean)paramString.get("use_main")).booleanValue();
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ViolaAccessHelper", 2, "pre load all offline from net is exception:" + paramString.getMessage());
-    }
+    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.3(this, paramInt));
+  }
+  
+  public void a(tqt paramtqt, int paramInt1, int paramInt2)
+  {
+    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.4(this, paramInt1, paramInt2));
+  }
+  
+  public void b()
+  {
+    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.2(this));
   }
 }
 

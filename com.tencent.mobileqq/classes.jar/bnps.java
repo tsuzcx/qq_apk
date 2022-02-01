@@ -1,179 +1,223 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bnps
-  implements bdvw
+public class bnps
+  extends bnnn
 {
-  bnps(bcfe parambcfe, bnpt parambnpt) {}
+  private bnpr jdField_a_of_type_Bnpr = new bnpr();
+  private String jdField_a_of_type_JavaLangString = "";
+  private bnpr jdField_b_of_type_Bnpr = new bnpr();
+  private String jdField_b_of_type_JavaLangString = "";
   
-  public void onResp(bdwt parambdwt)
+  private String a()
   {
-    bnzb.b("AEResDownload", "[onResp] start");
-    bdws localbdws = parambdwt.jdField_a_of_type_Bdws;
-    String str3 = (String)localbdws.a();
-    bnzb.b("AEResDownload", "[onResp] key:" + str3);
-    if (str3 == null)
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      bnzb.d("AEResDownload", "[onResp] key=null ");
-      this.jdField_a_of_type_Bcfe.a("", -1, "");
-      return;
-    }
-    try
-    {
-      if (parambdwt.jdField_a_of_type_Int != 0) {
-        break label767;
-      }
-      bnzb.b("AEResDownload", "[onResp] NetResp.ResultOk");
-      localObject2 = (ShortVideoResourceManager.SVConfigItem)bnpr.a().get(str3);
-      str4 = localbdws.c;
-      bnzb.b("AEResDownload", "[onResp]filePath=" + str4 + ",resp.mResult=" + parambdwt.jdField_a_of_type_Int + ",mHttpCode=" + parambdwt.c + ",mErrCode=" + parambdwt.b + ",mErrDesc=" + parambdwt.jdField_a_of_type_JavaLangString);
-      if ((!bcgg.a()) || (!((ShortVideoResourceManager.SVConfigItem)localObject2).check64BitReady())) {
-        break label497;
-      }
-      String str2 = ((ShortVideoResourceManager.SVConfigItem)localObject2).arm64v8a_md5;
-      i = bnpy.a(str3, str2, str4);
-      if (i != 0) {
-        break label727;
-      }
-      bnzb.b("AEResDownload", "[onResp] verifyResource:success=");
-      str1 = bnpy.a((String)localbdws.a());
-      try
+      if (!Environment.getExternalStorageState().equals("mounted"))
       {
-        if (!bgmg.c(str4, str1)) {
-          break label699;
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "no sdcard");
         }
-        localObject2 = ((ShortVideoResourceManager.SVConfigItem)localObject2).name.substring(this.jdField_a_of_type_Bnpt.jdField_b_of_type_JavaLangString.length());
-        str2 = str2 + '_' + (String)localObject2;
-        str4 = bnpy.a();
-        str4 = str4 + str2 + File.separator;
-        File localFile = new File(str4);
-        bool = localFile.mkdirs();
-        bnzb.b("AEResDownload", "[onResp] unzipFile:[exists]mkOK=" + bool);
-        if (localFile.exists()) {
-          break label507;
-        }
-        bnzb.d("AEResDownload", "[onResp] unzipFile.exists=false[error]");
-        this.jdField_a_of_type_Bcfe.a(str3, -118, str1);
-        return;
+        return "";
       }
-      catch (SecurityException localSecurityException1) {}
-    }
-    catch (SecurityException localSecurityException2)
-    {
-      for (;;)
+      Object localObject = bmxr.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject + "tencent/Qzone/tinyprogram/");
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (!((File)localObject).exists())
       {
-        Object localObject2;
-        String str4;
-        int i;
-        boolean bool;
-        String str1 = "";
+        if (!((File)localObject).mkdirs())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("QzoneSoundPlugin", 2, "make dir fail");
+          }
+          return "";
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "make dir suc");
+        }
       }
     }
-    bnzb.a("AEResDownload", "[SecurityException]", localSecurityException1);
-    i = -1;
     for (;;)
     {
-      try
+      return this.jdField_a_of_type_JavaLangString;
+      if (QLog.isColorLevel())
       {
-        if (this.jdField_a_of_type_Bnpt.jdField_b_of_type_Boolean)
-        {
-          localObject1 = (beaw)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getManager(193);
-          if ((localObject1 != null) && (((beaw)localObject1).a()))
-          {
-            if (i != 0) {
-              continue;
-            }
-            ((beaw)localObject1).a((String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("param_url"), parambdwt.jdField_a_of_type_Long);
-          }
-        }
-      }
-      catch (Throwable parambdwt)
-      {
-        Object localObject1;
-        label497:
-        label507:
-        label767:
-        bnzb.a("AEResDownload", "[onResp] isPredownload callback ERROR", parambdwt);
-        label699:
-        label727:
+        QLog.i("QzoneSoundPlugin", 2, "dir is exists");
         continue;
-      }
-      this.jdField_a_of_type_Bcfe.a(str3, i, str1);
-      return;
-      localObject1 = ((ShortVideoResourceManager.SVConfigItem)localObject2).armv7a_md5;
-      break;
-      try
-      {
-        bgmg.a(str1, str4, false);
-        bool = bnpy.a((String)localObject2, str4);
-        bnzb.b("AEResDownload", "[onResp]  copyResFileToFinalDir copyOK=" + bool);
-        if (!bool) {
-          continue;
-        }
-        if (bnpy.a((String)localObject2)) {
-          if (bnpy.a((String)localObject1, this.jdField_a_of_type_Bnpt))
-          {
-            bnzb.d("AEResDownload", "[onResp] copyResFileToFinalDir.SUCCESS");
-            i = 0;
-          }
-          else
-          {
-            bnzb.d("AEResDownload", "[onResp] storeNewPendantUnzipPath.error");
-            i = -118;
-            bgmg.d(localbdws.c);
-            bgmg.d(str1);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "cache root found use : " + this.jdField_a_of_type_JavaLangString);
         }
       }
-      catch (IOException localIOException)
-      {
-        bnzb.a("AEResDownload", "[onResp] unzip.error:", localIOException);
-        i = -118;
-        bgmg.d(localbdws.c);
-        bgmg.d(str1);
-      }
-      bnzb.d("AEResDownload", "[onResp] saveAEResUnzipFinalPath.error");
-      i = -118;
-      bgmg.d(localbdws.c);
-      bgmg.d(str1);
-      break label861;
-      bnzb.d("AEResDownload", "[onResp] storeUnzipFinalPath.error");
-      i = -118;
-      bgmg.d(localbdws.c);
-      bgmg.d(str1);
-      break label861;
-      i = -3;
-      bnzb.d("AEResDownload", "[onResp] ShortVideoResourceStatus.RES_RENAME_VERIFY_ERROR");
-      bgmg.d(localbdws.c);
-      bgmg.d(str1);
-      break label861;
-      bnzb.d("AEResDownload", "[onResp] verifyResource.error:" + i);
-      bgmg.d(localbdws.c);
-      str1 = "";
-      break label861;
-      bnzb.d("AEResDownload", "[onResp] download.error:" + parambdwt.jdField_a_of_type_Int);
-      bgmg.d(localbdws.c);
-      i = parambdwt.jdField_a_of_type_Int;
-      str1 = "";
-      break label861;
-      localIOException.a((String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("param_url"), -1L);
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  private void a(String... paramVarArgs)
   {
-    parambdws = (String)parambdws.a();
-    if (parambdws == null)
+    if (this.jdField_a_of_type_Bnpr != null) {
+      this.jdField_a_of_type_Bnpr.b();
+    }
+  }
+  
+  private void b(String... paramVarArgs)
+  {
+    if (this.jdField_b_of_type_Bnpr != null) {
+      this.jdField_b_of_type_Bnpr.b();
+    }
+  }
+  
+  private void c(String... paramVarArgs)
+  {
+    try
     {
-      bnzb.d("AEResDownload", "[onUpdateProgeress] key = null");
+      paramVarArgs = bjtz.d(new JSONObject(paramVarArgs[0]).optString("url"));
+      paramVarArgs = a() + paramVarArgs + ".mp3";
+      QLog.d("QzoneSoundPlugin", 2, "playLocalSound : " + paramVarArgs);
+      if (new File(paramVarArgs).exists())
+      {
+        this.jdField_b_of_type_Bnpr.a(paramVarArgs);
+        this.jdField_b_of_type_Bnpr.a();
+      }
       return;
     }
-    this.jdField_a_of_type_Bcfe.a(parambdws, paramLong1, paramLong2);
+    catch (Exception paramVarArgs) {}
+  }
+  
+  private void d(String... paramVarArgs)
+  {
+    try
+    {
+      paramVarArgs = bjtz.d(new JSONObject(paramVarArgs[0]).optString("url"));
+      paramVarArgs = a() + paramVarArgs + ".mp3";
+      QLog.d("QzoneSoundPlugin", 2, "playLocalBackSound : " + paramVarArgs);
+      if (new File(paramVarArgs).exists())
+      {
+        this.jdField_a_of_type_Bnpr.a(paramVarArgs);
+        this.jdField_a_of_type_Bnpr.a();
+      }
+      return;
+    }
+    catch (Exception paramVarArgs) {}
+  }
+  
+  private void e(String... paramVarArgs)
+  {
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+      try
+      {
+        Object localObject2 = new JSONObject(paramVarArgs[0]);
+        paramVarArgs = ((JSONObject)localObject2).optString("callback");
+        Object localObject1 = ((JSONObject)localObject2).optString("url");
+        localObject2 = bjtz.d(((JSONObject)localObject2).optString("url"));
+        QLog.d("QzoneSoundPlugin", 2, "downloadMusicUrl : " + (String)localObject1);
+        QLog.d("QzoneSoundPlugin", 2, "downloadMusicMD5 : " + (String)localObject2);
+        this.jdField_b_of_type_JavaLangString = (a() + (String)localObject2 + ".mp3");
+        QLog.d("QzoneSoundPlugin", 2, "mDownloadMusicFinalCachePath : " + this.jdField_b_of_type_JavaLangString);
+        if (!new File(this.jdField_b_of_type_JavaLangString).exists())
+        {
+          DownloaderFactory.getInstance(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.jdField_b_of_type_JavaLangString, new bnpt(this, paramVarArgs));
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneSoundPlugin", 2, "The Music File is Exist");
+        }
+        try
+        {
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("code", 0);
+          ((JSONObject)localObject1).put("message", "success");
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramVarArgs, new String[] { ((JSONObject)localObject1).toString() });
+          return;
+        }
+        catch (Exception paramVarArgs)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+        }
+        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramVarArgs.getMessage());
+        return;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneSoundPlugin", 2, "METHOD_DOWNLOAD_SUPER_LIKE_MUSIC: ", paramVarArgs);
+        }
+      }
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDestroy");
+    }
+    if (this.jdField_a_of_type_Bnpr != null)
+    {
+      this.jdField_a_of_type_Bnpr.a();
+      this.jdField_a_of_type_Bnpr = null;
+    }
+    if (this.jdField_b_of_type_Bnpr != null)
+    {
+      this.jdField_b_of_type_Bnpr.a();
+      this.jdField_b_of_type_Bnpr = null;
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if (paramString3.equalsIgnoreCase("playLocalSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "playLocalSound");
+      }
+      c(paramVarArgs);
+      return true;
+    }
+    if (paramString3.equalsIgnoreCase("playLocalBackSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "playLocalBackSound");
+      }
+      d(paramVarArgs);
+      return true;
+    }
+    if (paramString3.equalsIgnoreCase("preloadSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "preloadSound");
+      }
+      e(paramVarArgs);
+      return true;
+    }
+    if (paramString3.equalsIgnoreCase("stopLocalSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "stopLocalSound");
+      }
+      b(new String[0]);
+      return true;
+    }
+    if (paramString3.equalsIgnoreCase("stopLocalBackSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "stopLocalBackSound");
+      }
+      a(new String[0]);
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,33 +1,24 @@
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class adef
+  implements adci
 {
-  public static adee a(Class<? extends adee> paramClass, aded paramaded)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    if (paramClass == adfe.class) {
-      paramClass = new adfe();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qwallet.push", 2, "receive msg0x210submsg0x66");
     }
-    for (;;)
-    {
-      if (paramClass != null) {
-        paramClass.a(paramaded);
-      }
-      return paramClass;
-      if (paramClass == adfk.class) {
-        paramClass = new adfk();
-      } else {
-        try
-        {
-          adee localadee = (adee)paramClass.newInstance();
-          paramClass = localadee;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
-          paramClass = null;
-        }
-      }
-    }
+    akyb.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

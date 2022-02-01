@@ -1,41 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class lvm
+  extends lur
 {
-  public int a;
-  public final lvj a;
   public int b;
   public int c;
-  private int d;
+  public int d;
+  public int e;
   
-  lvm()
-  {
-    this.jdField_a_of_type_Lvj = new lvj();
-  }
+  public void a(long paramLong) {}
   
-  public void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, lvj paramlvj)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.d += 1;
-    StringBuilder localStringBuilder;
-    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (!this.jdField_a_of_type_Lvj.equals(paramlvj)) || (this.c != paramInt3)) {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("updateFrame, frameIndex[").append(this.d).append("], data[");
-        if (paramArrayOfByte != null) {
-          break label198;
-        }
-      }
-    }
-    label198:
-    for (paramArrayOfByte = "null";; paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length))
-    {
-      QLog.i("AVShare", 2, paramArrayOfByte + "], imgFormat[" + this.b + "-->" + paramInt2 + "], recordParam[" + this.jdField_a_of_type_Lvj + "--->" + paramlvj + "], angle[" + this.c + "-->" + paramInt3 + "]");
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.jdField_a_of_type_Lvj.a(paramlvj);
-      this.c = paramInt3;
-      return;
-    }
+    paramInt2 = this.b * paramInt1 / 750;
+    paramInt3 = this.c * paramInt1 / 750;
+    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
   }
 }
 

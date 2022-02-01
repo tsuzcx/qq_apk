@@ -1,61 +1,103 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Map;
+import java.util.HashMap;
 
-class awlx
-  extends QQUIEventReceiver<awlu, awlo>
+public class awlx
+  implements awog
 {
-  public awlx(@NonNull awlu paramawlu)
-  {
-    super(paramawlu);
-  }
+  public awlx(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(@NonNull awlu paramawlu, @NonNull awlo paramawlo)
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppManager", 2, "receive event:" + paramawlo.toString());
-    }
-    switch (paramawlo.jdField_a_of_type_Int)
+    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + awob.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
+    HashMap localHashMap = new HashMap();
+    if (paramInt == 8)
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!"MiniAppLauncher".equals(paramawlo.jdField_a_of_type_JavaLangString)) || (awln.a((String)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[0]) != 1) || (((Integer)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue() == 2));
-      String str = (String)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[1];
-      if (paramawlo.jdField_a_of_type_Boolean)
-      {
-        QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131705609), 0).a();
-        awlp localawlp = awlu.a(paramawlu).a(str, 2, 0, false);
-        if (localawlp != null)
-        {
-          localawlp.jdField_a_of_type_AndroidOsBundle.putString("unzipped_path", (String)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[3]);
-          awlu.b(paramawlu, (awlm)awlu.a(paramawlu).get(localawlp.h));
-          return;
-        }
+      ListenTogetherManager.a(this.a);
+      if (paramInt != 2) {
+        break label302;
       }
-      paramawlo = awlp.a(str);
-      awlu.a(paramawlu, paramawlo[1], Integer.parseInt(paramawlo[0]), 1003);
+      if (ListenTogetherManager.a(this.a).c())
+      {
+        ListenTogetherManager.a(this.a).k();
+        ListenTogetherManager.a(this.a).m();
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      localHashMap.put("status", String.valueOf(paramInt));
+      label190:
+      if (paramInt != 2) {
+        break label381;
+      }
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, awlq.a().a);
+    }
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a, paramString, paramInt);
+      if (!localHashMap.isEmpty()) {
+        bdmc.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
+      }
+      if (QQMusicPlayService.a() != null) {
+        azlk.a().a(paramInt);
+      }
       return;
-      awlu.a(paramawlu, (MiniAppActivity)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[0], (String)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[1], ((Integer)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue(), (MiniAppOptions)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[3]);
-      return;
-      awlu.a(paramawlu, awlp.a((String)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue()));
-      return;
-    } while (paramawlo.jdField_a_of_type_Boolean);
-    awlu.a(paramawlu, paramawlo.jdField_a_of_type_Awlp.jdField_a_of_type_JavaLangString, paramawlo.jdField_a_of_type_Awlp.jdField_a_of_type_Int, 1004);
+      if ((paramInt != 5) && (paramInt != 7)) {
+        break;
+      }
+      localHashMap.put("status", String.valueOf(paramInt));
+      break;
+      label302:
+      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
+        break label190;
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      break label190;
+      label381:
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+    }
   }
   
-  public Class acceptEventClass()
+  public void a(boolean paramBoolean)
   {
-    return awlo.class;
+    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
+    if (paramBoolean) {
+      ListenTogetherManager.b(this.a);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
+    ListenTogetherManager.a(this.a, paramBoolean1);
+    if (paramBoolean1)
+    {
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a, 0L);
+      return;
+    }
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+    if (paramBoolean2)
+    {
+      ListenTogetherManager.a(this.a, 0L);
+      return;
+    }
+    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
   }
 }
 

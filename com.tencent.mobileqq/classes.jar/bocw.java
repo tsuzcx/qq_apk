@@ -1,22 +1,89 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
-
 public class bocw
-  implements Animator.AnimatorListener
+  extends bpli
 {
-  public bocw(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
+  public int a;
+  private boolean jdField_a_of_type_Boolean;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[2];
+  private int jdField_b_of_type_Int = 1;
+  private String[] jdField_b_of_type_ArrayOfJavaLangString = new String[2];
+  private int c;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public bocw()
   {
-    this.a.a();
+    this.jdField_a_of_type_Int = 2;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangString[this.c] = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt == 1) || ((this.jdField_b_of_type_Int & paramInt) != 0);
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public void b() {}
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_ArrayOfJavaLangString[this.c] = paramString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 14;
+  }
+  
+  public String[] b()
+  {
+    return this.jdField_b_of_type_ArrayOfJavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt > -1) && (paramInt < 2)) {
+      this.c = paramInt;
+    }
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = null;
+    this.jdField_b_of_type_ArrayOfJavaLangString[paramInt] = null;
+  }
 }
 
 

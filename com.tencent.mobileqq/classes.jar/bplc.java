@@ -1,16 +1,10 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
-public class bplc
-  implements bplz
+public abstract interface bplc
 {
-  public bplc(DoodleLayout paramDoodleLayout) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.r();
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

@@ -1,28 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-
 public class ajme
-  implements View.OnTouchListener
+  extends ajmf
 {
-  public ajme(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
+  public final arfk a;
+  public final boolean a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ajme(arfk paramarfk, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_Arfk = paramarfk;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

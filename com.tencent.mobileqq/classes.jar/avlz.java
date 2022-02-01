@@ -1,17 +1,10 @@
-import android.content.DialogInterface.OnClickListener;
-
-class avlz
+public class avlz
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  public avlz(avlw paramavlw, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

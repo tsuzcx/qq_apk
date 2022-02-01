@@ -1,21 +1,11 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.widget.XEditTextEx;
-
-public class adpe
-  implements View.OnLongClickListener
+public abstract class adpe
+  extends adnc
 {
-  public adpe(BaseChatPie paramBaseChatPie) {}
+  protected adpf a;
   
-  public boolean onLongClick(View paramView)
+  protected void a()
   {
-    if ("//findcrash".equals(this.a.a.getText().toString())) {
-      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
-    }
-    return true;
+    this.jdField_a_of_type_Adpf = new adpf(this.jdField_a_of_type_Adnb.a());
   }
 }
 

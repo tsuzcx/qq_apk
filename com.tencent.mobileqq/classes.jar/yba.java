@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.util.LruCache;
 
 class yba
-  implements View.OnClickListener
+  extends LruCache<String, yas>
 {
-  yba(yay paramyay) {}
-  
-  public void onClick(View paramView)
+  yba(yaz paramyaz, int paramInt)
   {
-    this.a.b();
-    this.a.a.i();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, yas paramyas1, yas paramyas2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramyas1, paramyas2);
+    yaq.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
+    paramyas1.a();
   }
 }
 

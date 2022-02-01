@@ -1,21 +1,34 @@
-import java.net.URL;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class twh
 {
-  public int a;
-  public String a;
-  public URL a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  
-  public twh()
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
+    String str1;
+    if ((paramString != null) && (paramString.length() < 5)) {
+      str1 = (String)tut.a.get(paramString);
+    }
+    for (;;)
+    {
+      String str3 = str1;
+      if (str1 == null) {
+        str3 = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptUtil", 2, "getUin subscribeID[" + paramString + "]'s uin: " + str3);
+      }
+      return str3;
+      try
+      {
+        int i = Integer.parseInt(paramString);
+        str1 = String.valueOf(i);
+      }
+      catch (Exception localException)
+      {
+        String str2 = (String)tut.a.get(paramString);
+      }
+    }
   }
 }
 

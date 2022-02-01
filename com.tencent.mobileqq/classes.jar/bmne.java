@@ -1,18 +1,10 @@
 import android.os.Bundle;
-import org.json.JSONObject;
+import android.os.IInterface;
 
-class bmne
-  implements bmnh
+public abstract interface bmne
+  extends IInterface
 {
-  bmne(bmnd parambmnd) {}
-  
-  public void a(JSONObject paramJSONObject, Bundle paramBundle)
-  {
-    paramJSONObject.put("recommend_on", paramBundle.getString("recommend_on"));
-    paramJSONObject.put("recommendPush_on", paramBundle.getString("recommendPush_on"));
-    paramJSONObject.put("recommendNotification_on", paramBundle.getString("recommendNotification_on"));
-    paramJSONObject.put("recommendChatCachePhoto_on", paramBundle.getString("recommendChatCachePhoto_on"));
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

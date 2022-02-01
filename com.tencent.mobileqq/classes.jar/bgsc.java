@@ -1,351 +1,255 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.ShareMsgHelper.1;
-import com.tencent.mobileqq.utils.ShareMsgHelper.2;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpDownload;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpDownloadThumbnail;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
 public class bgsc
-  implements anhk
+  extends aavn
 {
-  public static Intent a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, Intent paramIntent, int paramInt3, String paramString19, long paramLong)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null)
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("key_flag_from_plugin", true);
-      localIntent.setClass(paramContext, ForwardRecentActivity.class);
-    }
-    localIntent.putExtra("isFromShare", true);
-    localIntent.putExtra("forward_type", paramInt1);
-    localIntent.putExtra("pluginName", paramString1);
-    localIntent.putExtra("req_type", paramInt2);
-    localIntent.putExtra("detail_url", paramString7);
-    localIntent.putExtra("image_url_remote", paramString3);
-    localIntent.putExtra("source_url", paramString19);
-    if (paramLong != -1L) {
-      localIntent.putExtra("req_share_id", paramLong);
-    }
-    localIntent.putExtra("pubUin", paramString2);
-    localIntent.putExtra("struct_uin", paramString2);
-    if ((paramContext instanceof bhne))
-    {
-      paramString2 = ((bhne)paramContext).a();
-      if (paramString2 != null)
-      {
-        localIntent.putExtra("strurt_msgid", paramString2.msgid);
-        localIntent.putExtra("emoInputType", 1);
-        localIntent.putExtra("forward _key_nojump", true);
-      }
-    }
-    if ((paramInt2 == 44) || (paramInt2 == 1) || (paramInt2 == 95)) {
-      localIntent.putExtra("forward _key_nojump", true);
-    }
-    paramString2 = paramString4;
-    if (paramString4 != null)
-    {
-      paramString2 = paramString4;
-      if (paramString4.length() > 45) {
-        paramString2 = paramString4.substring(0, 45) + "…";
-      }
-    }
-    localIntent.putExtra("title", paramString2);
-    paramString2 = paramString5;
-    if (paramString5 != null)
-    {
-      paramString2 = paramString5;
-      if (paramString5.length() > 60) {
-        paramString2 = paramString5.substring(0, 60) + "…";
-      }
-    }
-    localIntent.putExtra("desc", paramString2);
-    localIntent.putExtra("forward_thumb", paramString18);
-    localIntent.putExtra("struct_share_key_content_action", paramString8);
-    localIntent.putExtra("struct_share_key_content_a_action_DATA", paramString10);
-    localIntent.putExtra("struct_share_key_content_i_action_DATA", paramString11);
-    localIntent.putExtra("struct_share_key_content_action_DATA", paramString9);
-    localIntent.putExtra("req_share_id", -1L);
-    localIntent.putExtra("struct_share_key_source_action", paramString12);
-    localIntent.putExtra("struct_share_key_source_action_data", paramString13);
-    localIntent.putExtra("struct_share_key_source_a_action_data", paramString14);
-    localIntent.putExtra("struct_share_key_source_i_action_data", paramString15);
-    localIntent.putExtra("struct_share_key_source_icon", paramString16);
-    localIntent.putExtra("app_name", paramString17);
-    localIntent.putExtra("brief_key", paramString6);
-    if ("struct_favorite".equals(paramString1))
-    {
-      localIntent.putExtra("k_favorites", false);
-      localIntent.putExtra("forward _key_nojump", true);
-    }
-    paramString1 = bcwd.a(localIntent.getExtras());
-    if (paramString1 != null)
-    {
-      localIntent.putExtra("stuctmsg_bytes", paramString1.getBytes());
-      if ((paramInt3 >= 0) && ((paramContext instanceof Activity))) {}
-      do
-      {
-        do
-        {
-          do
-          {
-            return localIntent;
-          } while (((1001 != paramInt1) && (38 != paramInt1)) || (!(paramContext instanceof bhne)));
-          paramContext = ((bhne)paramContext).a();
-        } while (paramContext == null);
-        localIntent.putExtra("strurt_msgid", paramContext.msgid);
-        localIntent.putExtra("struct_uin", paramContext.publicUin);
-        localIntent.putExtra("struct_url", paramContext.mUrl);
-        localIntent.putExtra("from_web", true);
-      } while ((paramContext.sourcePuin == null) || ("".equals(paramContext.sourcePuin)));
-      localIntent.putExtra("source_puin", paramContext.sourcePuin);
-      return localIntent;
-    }
-    return null;
-  }
+  public bgsc(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AbsStructMsg paramAbsStructMsg)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    String str = null;
-    switch (paramInt)
+    long l = paramBundle.getLong("troopUin");
+    Object localObject2;
+    Object localObject1;
+    try
     {
-    default: 
-      paramQQAppInterface = str;
-    }
-    for (;;)
-    {
-      return paramQQAppInterface;
+      localObject2 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (localObject2 == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
+        }
+        return;
+      }
+      String str = paramBundle.getString("itemKey");
+      if (str == null) {
+        return;
+      }
+      localObject1 = UUID.fromString(str);
       try
       {
-        str = paramQQAppInterface.getCurrentAccountUin();
-        int i = bbxc.a;
-        bbxc.a = i + 1;
-        paramString = bbzh.a(paramQQAppInterface, str, paramString, str, paramInt, i, paramAbsStructMsg);
-        agjf.a().a(paramString.uniseq, 0L, paramAbsStructMsg.forwardID);
-        paramQQAppInterface.a().a(paramString, 0);
-        paramQQAppInterface = paramString;
+        localObject1 = (TroopFileTransferManager.Item)((TroopFileTransferManager)localObject2).jdField_a_of_type_JavaUtilMap.get(localObject1);
+        if (localObject1 == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + str);
+          }
+          return;
+        }
       }
       finally {}
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AbsStructMsg paramAbsStructMsg, anil paramanil)
-  {
-    if (paramAbsStructMsg != null) {
-      bcsb.a(paramAbsStructMsg);
-    }
-    ThreadManager.post(new ShareMsgHelper.1(paramQQAppInterface, paramString, paramInt, paramAbsStructMsg, paramanil), 8, null, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, AbsStructMsg paramAbsStructMsg, anil paramanil, String paramString2, String paramString3)
-  {
-    switch (paramInt)
+    finally {}
+    int i = aunj.a(auog.a(((TroopFileTransferManager.Item)localObject1).FileName));
+    paramInt = paramBundle.getInt("thumbNail");
+    boolean bool2 = paramBundle.getBoolean("isPreview", false);
+    paramBundle = new bgsg();
+    paramBundle.jdField_a_of_type_Int = -1;
+    try
     {
-    default: 
-      return;
-    }
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    int i = bbxc.a;
-    bbxc.a = i + 1;
-    long l = i;
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (paramanil = str;; paramanil = paramString1)
-    {
-      paramAbsStructMsg = bbzh.a(paramQQAppInterface, str, paramString1, paramanil, paramInt, l, paramAbsStructMsg);
-      QLog.i(bdhn.i, 1, "sendDocsStructingMsg. disUin = " + paramString1 + ", disUinType = " + paramInt + ", seq = " + l + ", shmsgseq = " + paramAbsStructMsg.shmsgseq + ", time = " + paramAbsStructMsg.time);
-      paramQQAppInterface.a().a(paramAbsStructMsg, null);
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break;
+      paramBundle.e = ((TroopFileTransferManager.Item)localObject1).Id.toString();
+      if (QLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder().append("isSuccess=").append(paramBoolean).append(", resp=");
+        if (paramDownloadFileRspBody != null)
+        {
+          bool1 = true;
+          QLog.i("TroopFileTransferManager", 4, bool1);
+        }
       }
-      bdjg.a(paramQQAppInterface, paramString1, paramInt, paramAbsStructMsg.shmsgseq, paramAbsStructMsg.time + 1L, paramString2, paramString3);
-      return;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg, anil paramanil)
-  {
-    if (paramAbsStructMsg != null) {
-      bcsb.a(paramAbsStructMsg);
-    }
-    ThreadManager.getSubThreadHandler().post(new ShareMsgHelper.2(paramQQAppInterface, paramString1, paramString2, paramInt, paramAbsStructMsg, paramanil));
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, Intent paramIntent, int paramInt3)
-  {
-    return a(paramContext, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, "", paramIntent, paramInt3, null, -1L);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18)
-  {
-    return a(paramContext, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, "", null, -1, paramString18, -1L);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, Intent paramIntent, int paramInt3, String paramString19, long paramLong)
-  {
-    paramString1 = a(paramContext, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, paramString18, paramIntent, paramInt3, paramString19, paramLong);
-    if (paramString1 != null)
-    {
-      if ((paramInt3 >= 0) && ((paramContext instanceof Activity))) {
-        ((Activity)paramContext).startActivityForResult(paramString1, paramInt3);
+      else
+      {
+        if ((paramDownloadFileRspBody != null) && (paramBoolean)) {
+          break label504;
+        }
+        if ((i == 2) && (QLog.isColorLevel()))
+        {
+          localObject2 = new StringBuilder().append("mReqDownloadFileObserver failed return, fn=").append(((TroopFileTransferManager.Item)localObject1).FileName).append(", isSucc").append(paramBoolean).append(", resp=");
+          if (paramDownloadFileRspBody == null) {
+            break label390;
+          }
+          paramBoolean = true;
+          QLog.e(".troop.troop_file_video.thumb", 2, paramBoolean);
+        }
+        if (paramInt != 128) {
+          break label395;
+        }
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Small = false;
+        return;
       }
+    }
+    catch (NullPointerException localNullPointerException)
+    {
       for (;;)
       {
-        return true;
-        paramContext.startActivity(paramString1);
+        paramBundle.e = null;
+        continue;
+        boolean bool1 = false;
+        continue;
+        label390:
+        paramBoolean = false;
       }
-    }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, boolean paramBoolean)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_flag_from_plugin", true);
-    localIntent.putExtra("forward _key_nojump", true);
-    localIntent.putExtra("k_back", false);
-    localIntent.setClass(paramContext, ForwardRecentActivity.class);
-    localIntent.putExtra("isFromShare", true);
-    localIntent.putExtra("forward_type", paramInt1);
-    localIntent.putExtra("pluginName", paramString1);
-    localIntent.putExtra("req_type", paramInt2);
-    localIntent.putExtra("detail_url", paramString7);
-    localIntent.putExtra("image_url_remote", paramString3);
-    localIntent.putExtra("source_url", paramString18);
-    localIntent.putExtra("pubUin", paramString2);
-    localIntent.putExtra("struct_uin", paramString2);
-    paramString1 = paramString4;
-    if (paramString4 != null)
-    {
-      paramString1 = paramString4;
-      if (paramString4.length() > 45) {
-        paramString1 = paramString4.substring(0, 45) + "…";
-      }
-    }
-    localIntent.putExtra("title", paramString1);
-    paramString1 = paramString5;
-    if (paramString5 != null)
-    {
-      paramString1 = paramString5;
-      if (paramString5.length() > 60) {
-        paramString1 = paramString5.substring(0, 60) + "…";
-      }
-    }
-    localIntent.putExtra("desc", paramString1);
-    localIntent.putExtra("forward_thumb", "");
-    localIntent.putExtra("struct_share_key_content_action", paramString8);
-    localIntent.putExtra("struct_share_key_content_a_action_DATA", paramString10);
-    localIntent.putExtra("struct_share_key_content_i_action_DATA", paramString11);
-    localIntent.putExtra("struct_share_key_content_action_DATA", paramString9);
-    localIntent.putExtra("req_share_id", -1L);
-    localIntent.putExtra("struct_share_key_source_action", paramString12);
-    localIntent.putExtra("struct_share_key_source_action_data", paramString13);
-    localIntent.putExtra("struct_share_key_source_a_action_data", paramString14);
-    localIntent.putExtra("struct_share_key_source_i_action_data", paramString15);
-    localIntent.putExtra("struct_share_key_source_icon", paramString16);
-    localIntent.putExtra("app_name", paramString17);
-    localIntent.putExtra("brief_key", paramString6);
-    localIntent.putExtra("compatible_text", paramString19);
-    localIntent.putExtra("flag", 2);
-    if (paramBoolean) {
-      localIntent.putExtra("icon_need_round", "1");
-    }
-    localIntent.putExtra("emoInputType", 2);
-    paramString1 = bcwd.a(localIntent.getExtras());
-    if (paramString1 != null)
-    {
-      localIntent.putExtra("stuctmsg_bytes", paramString1.getBytes());
-      paramContext.startActivity(localIntent);
-      return true;
-    }
-    return false;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg, anil paramanil)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
+      label395:
+      if (paramInt == 640)
       {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Large = false;
         return;
-        paramanil = paramQQAppInterface.getCurrentAccountUin();
-        i = bbxc.a;
-        bbxc.a = i + 1;
-        long l = i;
-        i = paramAbsStructMsg.forwardID;
-        if (paramAbsStructMsg.mMsgServiceID == 80)
+      }
+      if (paramInt == 383)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle = false;
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle_Fail = true;
+        this.a.d((TroopFileTransferManager.Item)localObject1);
+        return;
+      }
+      if (bool2)
+      {
+        bgri.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, 700);
+        paramBundle.jdField_a_of_type_Boolean = false;
+        ((antz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).c(paramBundle);
+        return;
+      }
+      this.a.a((TroopFileTransferManager.Item)localObject1, 10, 103);
+      return;
+    }
+    label504:
+    i = paramDownloadFileRspBody.int32_ret_code.get();
+    paramBundle.jdField_a_of_type_Int = i;
+    if (bool2)
+    {
+      paramBundle.jdField_a_of_type_Boolean = false;
+      paramBundle.jdField_a_of_type_JavaLangString = paramDownloadFileRspBody.str_download_ip.get();
+      if ((TextUtils.isEmpty(paramBundle.jdField_a_of_type_JavaLangString)) || (paramBundle.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
+        paramBundle.jdField_a_of_type_JavaLangString = paramDownloadFileRspBody.str_download_dns.get().toString();
+      }
+      paramBundle.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
+      paramBundle.c = paramDownloadFileRspBody.str_ret_msg.get();
+      paramBundle.d = bhml.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_file_video.thumb", 2, "mReqDownloadFileObserver, fn=" + ((TroopFileTransferManager.Item)localObject1).FileName + ", retCode=" + i + ", bPreview=" + bool2);
+    }
+    ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle_Fail = false;
+    if (i < 0)
+    {
+      if (paramInt == 128)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Small = false;
+        return;
+      }
+      if (paramInt == 640)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Large = false;
+        return;
+      }
+      if (paramInt == 383)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle = false;
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle_Fail = true;
+        if ((i == -103) || (i == -302) || (i == -301))
         {
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString2 = paramanil;
-          }
-          for (;;)
-          {
-            paramString2 = bbzh.a(paramQQAppInterface, paramanil, paramString1, paramString2, paramInt, l, paramAbsStructMsg);
-            if (paramAbsStructMsg.mMsgServiceID != 41) {
-              break;
-            }
-            agjf.a().a(paramString2.uniseq, paramAbsStructMsg.parentUniseq, i);
-            paramQQAppInterface.a().b(paramString2, null);
-            return;
-          }
-        }
-        if (paramAbsStructMsg.mMsgServiceID == 118)
-        {
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString2 = paramanil;
-          }
-          for (;;)
-          {
-            paramString2 = bbzh.a(paramQQAppInterface, paramanil, paramString1, paramString2, paramInt, l, paramAbsStructMsg);
-            break;
-          }
-        }
-        if (TextUtils.isEmpty(paramString2)) {
-          paramString2 = paramanil;
-        }
-        for (;;)
-        {
-          paramString2 = bbzh.a(paramQQAppInterface, paramanil, paramString1, paramString2, paramInt, l, paramAbsStructMsg);
-          break;
-        }
-        if (paramAbsStructMsg.mMsgServiceID == 100)
-        {
-          paramAbsStructMsg.mMsgServiceID = 1;
-          paramString1 = bbzh.a(paramQQAppInterface, paramanil, paramString1, paramanil, paramInt, l, paramAbsStructMsg);
-          agjf.a().a(paramString1.uniseq, paramAbsStructMsg.parentUniseq, i);
-          paramQQAppInterface.a().a(paramString1, new bgsd());
+          TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject1);
           return;
         }
-        agjf.a().a(paramString2.uniseq, paramAbsStructMsg.parentUniseq, i);
-        paramQQAppInterface.a().a(paramString2, null);
-        return;
-      } while (paramAbsStructMsg == null);
-      if (paramAbsStructMsg.mMsgServiceID == 1)
-      {
-        paramString2 = paramQQAppInterface.getCurrentAccountUin();
-        i = bbxc.a;
-        bbxc.a = i + 1;
-        paramString1 = bbzh.a(paramQQAppInterface, paramString2, paramString1, paramString2, paramInt, i, paramAbsStructMsg);
-        paramQQAppInterface.a().a(paramString1, null);
+        this.a.d((TroopFileTransferManager.Item)localObject1);
         return;
       }
-    } while (paramAbsStructMsg.mMsgServiceID != 41);
-    paramString2 = paramQQAppInterface.getCurrentAccountUin();
-    int i = bbxc.a;
-    bbxc.a = i + 1;
-    paramString1 = bbzh.a(paramQQAppInterface, paramString2, paramString1, paramString2, paramInt, i, paramAbsStructMsg);
-    paramQQAppInterface.a().b(paramString1, null);
+      if (bool2)
+      {
+        bgri.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, 700);
+        if (TextUtils.isEmpty(paramBundle.c)) {
+          paramBundle.c = anzj.a(2131714142);
+        }
+        paramBundle.jdField_a_of_type_Boolean = false;
+        ((antz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).c(paramBundle);
+        return;
+      }
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+      QLog.i("TroopFileTransferManager", 1, "download_failed,troopUin=" + this.a.e + ",fileName=" + ((TroopFileTransferManager.Item)localObject1).FileName + ",filePath=" + ((TroopFileTransferManager.Item)localObject1).FilePath + ",retCode=" + i);
+    }
+    switch (i)
+    {
+    case -134: 
+    default: 
+      if (bool2)
+      {
+        paramBundle.jdField_a_of_type_Boolean = true;
+        ((antz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).c(paramBundle);
+        return;
+      }
+      break;
+    case -107: 
+    case -102: 
+      this.a.a((TroopFileTransferManager.Item)localObject1, 10, 101);
+      if (paramInt != 0) {
+        return;
+      }
+      bguj.b(bguk.c, i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject1, 301);
+      if (((TroopFileTransferManager.Item)localObject1).TmpFile != null) {
+        new File(((TroopFileTransferManager.Item)localObject1).TmpFile).delete();
+      }
+      ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.e, 128);
+      ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.e, 640);
+      TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject1);
+      if (paramInt != 0) {
+        return;
+      }
+      bguj.b(bguk.c, i);
+      return;
+    }
+    ((TroopFileTransferManager.Item)localObject1).cookieValue = bhml.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+    if (((TroopFileTransferManager.Item)localObject1).cookieValue != null) {
+      ((TroopFileTransferManager.Item)localObject1).cookieValue = ((TroopFileTransferManager.Item)localObject1).cookieValue.toLowerCase();
+    }
+    ((TroopFileTransferManager.Item)localObject1).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+    ((TroopFileTransferManager.Item)localObject1).DownloadUrl = bhml.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    ((TroopFileTransferManager.Item)localObject1).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+    ((TroopFileTransferManager.Item)localObject1).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+    if (TextUtils.isEmpty(((TroopFileTransferManager.Item)localObject1).DownloadIp)) {
+      bguj.a("gfile", "ipnull", "", "", "", "");
+    }
+    if ((i == -133) || (i == -132)) {
+      this.a.a((TroopFileTransferManager.Item)localObject1, ((TroopFileTransferManager.Item)localObject1).Status, 309);
+    }
+    while ((paramInt == 128) || (paramInt == 383) || (paramInt == 640))
+    {
+      paramDownloadFileRspBody = new TroopFileTransferManager.TaskHttpDownloadThumbnail(this.a, (TroopFileTransferManager.Item)localObject1, paramInt, String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get()));
+      this.a.jdField_a_of_type_ArrayOfBgsh[4].a(paramDownloadFileRspBody);
+      return;
+      if (i == -134)
+      {
+        this.a.a((TroopFileTransferManager.Item)localObject1, 10, 302);
+        if (paramInt != 0) {
+          return;
+        }
+        bguj.b(bguk.c, i);
+        return;
+      }
+    }
+    if (!this.a.c((TroopFileTransferManager.Item)localObject1)) {
+      this.a.jdField_a_of_type_ArrayOfBgsh[3].a(new TroopFileTransferManager.TaskHttpDownload(this.a, (TroopFileTransferManager.Item)localObject1));
+    }
   }
 }
 

@@ -1,26 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-class wgd
-  extends SimpleJob<Object>
+public class wgd
+  extends wga
 {
-  wgd(wfy paramwfy, String paramString1, String paramString2, wgh paramwgh)
+  public wgd(whe paramwhe)
   {
-    super(paramString1);
+    super(paramwhe.a);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter " + paramwhe.c);
+    whg localwhg = new whg();
+    localwhg.a(paramwhe);
+    a(localwhg);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    wfy.a(this.jdField_a_of_type_Wfy, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wgh);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 4;
-  }
+  protected void c(List<wgg> paramList) {}
 }
 
 

@@ -98,8 +98,8 @@
         {
           "view_type": "UIButton",
           "align_parent_center_vertical": "YES",
-          "event_type": "cmd_share_click",
-          "view_id": "id_share_button_style_a",
+          "event_type": "cmd_biu_click",
+          "view_id": "id_biu_button_style_a",
           "height": {
                "type": "relative",
                "value": "30"
@@ -109,11 +109,10 @@
               "value": "104"
           },
           "attributes": {
-            "setFrameString:": "$share_button_frame",
-            "setTitle:": "$share_text",
+            "setTitle:": "$biu_count_style_a",
             "setImages:forStates:": [
               [
-                "social_bottom_style_a_share"
+                "biu_comment_icon"
               ],
               [
                 "0"
@@ -122,13 +121,14 @@
             "setTitleColors:forStates:":[["#262626"],["0"]],
             "setInnerMargin:": "8",
             "setFontSizeString:": "12",
-            "setAlphaString:":"$share_alpha",
-            "setEnableString:":"$share_enable"
+            "setAlphaString:":"1",
+            "setEnableString:":"1"
           }
         },
         {
           "view_type": "UIButton",
           "view_id": "id_bottom_dislike_button_style_a",
+          "default_visible" : "YES",
           "event_type": "cmd_dislike_click",
           "align_parent_center_vertical": "YES",
           "height": {
@@ -140,7 +140,7 @@
             "value": "27"
           },
           "attributes": {
-            "setImage:": "$dislike_img"
+            "setImage:": "feeds_dislike"
           }
         }
       ]

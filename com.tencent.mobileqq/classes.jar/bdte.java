@@ -1,28 +1,112 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class bdte
-  extends anqd
+  implements View.OnClickListener
 {
   bdte(bdtd parambdtd) {}
   
-  protected void a(boolean paramBoolean, bbza parambbza)
+  public void onClick(View paramView)
   {
-    if ((parambbza != null) && (QLog.isColorLevel())) {
-      QLog.e("streamptt.send", 2, "onUpdateUploadStreamFinished Key:" + parambbza.jdField_a_of_type_JavaLangString + " seq:" + parambbza.jdField_a_of_type_Short + " Layer:" + parambbza.jdField_a_of_type_Int + " RespCode:" + parambbza.b);
-    }
-    if ((this.a.a != null) && (QLog.isColorLevel())) {
-      QLog.e("streamptt.send", 2, "isSuccess:" + paramBoolean + "　FilePath:" + this.a.a.c + " isStreamPttSuccess:" + this.a.d);
-    }
-    this.a.c(2);
-    if ((parambbza == null) || (parambbza.jdField_a_of_type_JavaLangString == null) || (!parambbza.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.a.a.c))) {
-      return;
-    }
-    if (!paramBoolean)
+    Context localContext = paramView.getContext();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("file_send_path", bdtd.a(this.a));
+    localBundle.putInt("video_play_caller", 2);
+    localBundle.putLong("message_click_start", System.currentTimeMillis());
+    Object localObject2 = "";
+    Object localObject1 = null;
+    try
     {
-      bdtd.a(this.a, false, parambbza);
-      return;
+      localObject3 = agej.a(paramView);
+      localObject1 = localObject3;
     }
-    bdtd.a(this.a, true, parambbza);
+    catch (ClassCastException localClassCastException)
+    {
+      for (;;)
+      {
+        Object localObject3;
+        continue;
+        String str = "";
+      }
+    }
+    if (localObject1 != null) {
+      localObject2 = ((ChatMessage)localObject1).getExtInfoFromExtStr("gdt_msgClick");
+    }
+    localBundle.putString("ad_gdt", (String)localObject2);
+    localObject2 = this.a.a(paramView);
+    if (localObject2 == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("structmsg.StructMsgItemVideoForPA", 2, "StructMsgForGeneralShare == NULL");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localBundle.putString("msg_id", String.valueOf(((StructMsgForGeneralShare)localObject2).msgId));
+      localObject1 = "";
+      if ((bdtd.b(this.a) == null) || (bdtd.b(this.a).equals(""))) {
+        break label520;
+      }
+      localBundle.putString("struct_msg_video_info", bdtd.b(this.a));
+      localBundle.putString("from_uin", ((StructMsgForGeneralShare)localObject2).currentAccountUin);
+      localBundle.putInt("from_uin_type", 1008);
+      localBundle.putString("from_session_uin", ((StructMsgForGeneralShare)localObject2).uin);
+      try
+      {
+        localObject3 = new JSONObject(bdtd.b(this.a));
+        if (localObject3 != null) {
+          localObject1 = ((JSONObject)localObject3).getString("file_uuid");
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          str = "";
+        }
+      }
+      localObject3 = new Intent(localContext, ShortVideoPlayActivity.class);
+      ((Intent)localObject3).putExtras(localBundle);
+      localContext.startActivity((Intent)localObject3);
+      localObject3 = ((FragmentActivity)localContext).getChatFragment().a();
+      bdll.b((QQAppInterface)localObject3, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9A", "0X8005C9A", 0, 1, 0, ((StructMsgForGeneralShare)localObject2).uin, ((StructMsgForGeneralShare)localObject2).currentAccountUin, bdtd.a(this.a), (String)localObject1);
+      if ((((StructMsgForGeneralShare)localObject2).message != null) && ("1".equals(((StructMsgForGeneralShare)localObject2).message.getExtInfoFromExtStr("is_AdArrive_Msg")))) {
+        try
+        {
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("puin", ((StructMsgForGeneralShare)localObject2).message.frienduin);
+          ((JSONObject)localObject1).put("type", this.a.l);
+          ((JSONObject)localObject1).put("index", this.a.j);
+          ((JSONObject)localObject1).put("name", this.a.k);
+          ((JSONObject)localObject1).put("net", String.valueOf(nnr.a()));
+          ((JSONObject)localObject1).put("mobile_imei", bhlo.a());
+          ((JSONObject)localObject1).put("obj", "");
+          ((JSONObject)localObject1).put("gdt_cli_data", ((StructMsgForGeneralShare)localObject2).message.getExtInfoFromExtStr("gdt_msgClick"));
+          ((JSONObject)localObject1).put("view_id", ((StructMsgForGeneralShare)localObject2).message.getExtInfoFromExtStr("gdt_view_id"));
+          txt.a((AppInterface)localObject3, ((StructMsgForGeneralShare)localObject2).message.selfuin, ((JSONObject)localObject1).toString(), "" + ((StructMsgForGeneralShare)localObject2).msgId);
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

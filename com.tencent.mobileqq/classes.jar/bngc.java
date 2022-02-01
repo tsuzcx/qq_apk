@@ -1,18 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.remote.RecvMsg;
 
-class bngc
-  implements bial
+public final class bngc
+  implements Parcelable.Creator<RecvMsg>
 {
-  bngc(bnfz parambnfz) {}
-  
-  public void a(biaj parambiaj)
+  public RecvMsg a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListLogicAECircle", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
-    }
+    return new RecvMsg(paramParcel);
   }
   
-  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
+  }
 }
 
 

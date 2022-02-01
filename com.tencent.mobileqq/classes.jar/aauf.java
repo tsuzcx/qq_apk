@@ -1,30 +1,26 @@
-import android.content.res.Resources;
 import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class aauf
-  implements PopupWindow.OnDismissListener
+class aauf
+  extends Handler
 {
-  public aauf(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
+  aauf(aaud paramaaud) {}
   
-  public void onDismiss()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843195);
-    if (CustomMenuBar.a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131166051));
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
+    default: 
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131166050));
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Bfrq + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Bfrr);
+    }
+    if (this.a.jdField_a_of_type_Bfrr != null) {
+      this.a.a(this.a.jdField_a_of_type_Bfrr);
+    }
+    this.a.a();
   }
 }
 

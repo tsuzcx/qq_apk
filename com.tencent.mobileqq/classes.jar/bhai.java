@@ -1,10 +1,20 @@
-public abstract interface bhai
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+
+class bhai
+  implements bdyi
 {
-  public abstract void a();
+  bhai(bhah parambhah) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void a()
+  {
+    this.a.a.a.a.this$0.a();
+    if (this.a.a.a.a.jdField_a_of_type_Bdyi != null) {
+      this.a.a.a.a.jdField_a_of_type_Bdyi.a();
+    }
+    this.a.a.a.a.this$0.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.this$0.a, true);
+  }
 }
 
 

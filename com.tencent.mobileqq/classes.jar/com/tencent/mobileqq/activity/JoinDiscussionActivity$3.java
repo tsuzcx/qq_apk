@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.text.format.DateFormat;
 import android.widget.TextView;
-import anni;
-import bgsp;
+import anzj;
+import bhsr;
 import java.util.List;
 
 class JoinDiscussionActivity$3
@@ -13,14 +13,14 @@ class JoinDiscussionActivity$3
   
   public void run()
   {
-    String str1 = bgsp.a(this.this$0.c, 0, 32);
-    String str2 = bgsp.a(this.this$0.e, 0, 32);
+    String str1 = bhsr.a(this.this$0.c, 0, 32);
+    String str2 = bhsr.a(this.this$0.e, 0, 32);
     if (this.this$0.jdField_a_of_type_JavaUtilList != null) {
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()) }));
     }
     for (;;)
     {
-      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + anni.a(2131704670) + DateFormat.format("yy-M-d", this.this$0.jdField_b_of_type_Long));
+      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + anzj.a(2131704777) + DateFormat.format("yy-M-d", this.this$0.jdField_b_of_type_Long));
       return;
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
     }

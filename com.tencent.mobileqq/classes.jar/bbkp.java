@@ -1,30 +1,21 @@
-import java.util.List;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.view.Surface;
 
-public abstract class bbkp
-  implements bbmx
+@TargetApi(14)
+public class bbkp
 {
-  protected String a;
-  protected List<bbmy> a;
+  public int a;
+  public SurfaceTexture a;
+  public Surface a;
   
-  public bbkp(List<bbmy> paramList, String paramString)
+  public bbkp(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public List<bbmy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
   }
 }
 

@@ -1,11 +1,34 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class bamh
+public abstract interface bamh
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<String, bamk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  ArrayList<baml> b = new ArrayList();
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, byte paramByte);
+  
+  public abstract void a(bami parambami);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

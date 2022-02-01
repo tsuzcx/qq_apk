@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.utils;
 
-import bgmg;
+import bhmi;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import tfc;
+import svu;
 
 public final class ProteusCDNUtils$1
   implements Runnable
@@ -16,17 +16,17 @@ public final class ProteusCDNUtils$1
     File localFile = new File(this.a);
     if (localFile.exists())
     {
-      bgmg.d(this.a);
+      bhmi.d(this.a);
       QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], bid = " + this.b + ", delete old compressFile, path = " + this.a);
     }
     boolean bool = HttpDownloadUtil.a(null, this.c, localFile);
     QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], bid = " + this.b + ", isDownloadSucc = " + bool);
     if (bool)
     {
-      tfc.a(this.b);
+      svu.a(this.b);
       return;
     }
-    tfc.b("0X800AC00", this.b);
+    svu.b("0X800AC00", this.b);
   }
 }
 

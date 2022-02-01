@@ -1,29 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public final class bhpa
-  implements WtTicketPromise
+public class bhpa
 {
-  public void Done(Ticket paramTicket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService : Done");
-    }
-  }
+  public float a;
+  public SessionInfo a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e = "";
   
-  public void Failed(ErrMsg paramErrMsg)
+  public bhpa(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
+    this.b = paramBundle.getString("appView");
+    this.c = paramBundle.getString("appMinVersion");
+    this.d = paramBundle.getString("metaData");
+    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+    paramBundle = paramBundle.getString("troopUin");
+    if (paramBundle != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
     }
   }
 }

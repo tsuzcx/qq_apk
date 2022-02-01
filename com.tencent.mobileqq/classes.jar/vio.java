@@ -1,14 +1,12 @@
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-
 public class vio
-  implements vuw
 {
-  public vio(QCircleCommentItemView paramQCircleCommentItemView) {}
+  public int a;
+  public boolean a;
   
-  public void a(String paramString)
+  private vio()
   {
-    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = vim.jdField_a_of_type_Int;
   }
 }
 

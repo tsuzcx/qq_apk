@@ -1,16 +1,19 @@
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class waa
-  extends voy
+class waa
+  implements Animation.AnimationListener
 {
-  public waa(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter) {}
+  waa(vzy paramvzy) {}
   
-  public void a(int paramInt, vou paramvou)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.a(paramInt, paramvou);
-    QLog.d("QCircleFeedItemPicPresent1", 1, paramvou.a() + "\n, state callback:" + paramInt);
+    vzy.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

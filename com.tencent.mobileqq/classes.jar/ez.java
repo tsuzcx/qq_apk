@@ -13,13 +13,13 @@ public class ez
   
   public static short a()
   {
-    if (bgnt.h(BaseApplication.getContext())) {
+    if (bhnv.h(BaseApplication.getContext())) {
       return 18;
     }
-    if (bgnt.c(BaseApplication.getContext())) {
+    if (bhnv.c(BaseApplication.getContext())) {
       return 19;
     }
-    if (bgnt.g(BaseApplication.getContext())) {
+    if (bhnv.g(BaseApplication.getContext())) {
       return 20;
     }
     return 17;
@@ -51,7 +51,7 @@ public class ez
       l4 = paramReportItem.uStartPos;
       l1 = paramInt;
       if ((paramQQAppInterface != null) && (paramInt == b)) {
-        ((antz)paramQQAppInterface.a(10)).a();
+        ((aogj)paramQQAppInterface.a(10)).a();
       }
       l1 = 1L;
       if ((paramReportItem.uDevType != 0) && (paramReportItem.uDevType != 1)) {
@@ -126,7 +126,7 @@ public class ez
       if (QLog.isColorLevel()) {
         QLog.d("StatisticCollector", 2, "dataline event report: " + str + "session id = " + (String)localHashMap.get("sessionid") + " FILEASSISTANT_MOBILETERM = " + (String)localHashMap.get("mobileterm") + "  Report FILEASSISTANT_OTHERTERM  =  " + (String)localHashMap.get("otherterm"));
       }
-      bctj.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), str, bool, l2, l3 - l4, localHashMap, null);
+      bdmc.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), str, bool, l2, l3 - l4, localHashMap, null);
       return;
       str = "actFAFileDown";
       break;

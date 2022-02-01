@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.image.URLImageView;
 
-public class stt
-  extends ThreadLocal<Boolean>
+class stt
+  implements txf
 {
-  public stt(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
+  stt(stp paramstp, ChannelCoverInfo paramChannelCoverInfo) {}
   
-  protected Boolean a()
+  public void a()
   {
-    return Boolean.valueOf(false);
+    stp.a(this.jdField_a_of_type_Stp).setImageDrawable(stp.a(this.jdField_a_of_type_Stp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
   }
 }
 

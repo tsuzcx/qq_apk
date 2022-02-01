@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Activity;
-import bgbw;
+import bhbx;
 import com.tencent.mobileqq.app.QQAppInterface;
-import zvc;
+import zyx;
 
 final class DiscussionInfoCardActivity$17
   implements Runnable
@@ -13,7 +13,7 @@ final class DiscussionInfoCardActivity$17
   public void run()
   {
     String str = "temp_discuss_link_share_" + this.jdField_a_of_type_JavaLangString + ".png";
-    str = zvc.a(this.jdField_a_of_type_AndroidAppActivity, str, bgbw.a(this.b, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+    str = zyx.a(this.jdField_a_of_type_AndroidAppActivity, str, bhbx.a(this.b, this.jdField_a_of_type_AndroidAppActivity.getResources()));
     this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new DiscussionInfoCardActivity.17.1(this, str));
   }
 }

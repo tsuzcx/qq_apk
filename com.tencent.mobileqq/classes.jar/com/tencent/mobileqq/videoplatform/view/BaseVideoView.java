@@ -3,6 +3,7 @@ package com.tencent.mobileqq.videoplatform.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -46,14 +47,15 @@ public class BaseVideoView
     this.mID = paramLong;
     this.mScaleFullScreen = paramBoolean;
     this.mParams = paramVideoPlayParam;
-    if (paramVideoPlayerInnerCallback == null) {}
-    for (this.mVPProxy = new VideoPlayerProxy(paramContext, paramLong, paramVideoPlayParam, this, this.mScaleFullScreen);; this.mVPProxy = new VideoPlayerProxy(paramContext, paramLong, paramVideoPlayParam, paramVideoPlayerInnerCallback, this.mScaleFullScreen))
-    {
-      this.mCoverImage = paramImageView;
-      addVideoView();
-      addCoverImageView();
-      return;
-    }
+    this.mCoverImage = paramImageView;
+    init(paramVideoPlayerInnerCallback);
+  }
+  
+  public BaseVideoView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    this.mContext = paramContext;
+    init(null);
   }
   
   private void addCoverImageView()
@@ -90,15 +92,15 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131380850) != null)
+      if (findViewById(2131381028) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addDebugView, debugTextView is exist");
         }
-        removeView(findViewById(2131380850));
+        removeView(findViewById(2131381028));
       }
       this.mDebugTextView = new TextView(this.mContext);
-      this.mDebugTextView.setId(2131380850);
+      this.mDebugTextView.setId(2131381028);
       this.mDebugTextView.setText(String.valueOf(this.mID));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
       localLayoutParams.leftMargin = UIUtil.dp2px(6.0F, this.mContext.getResources());
@@ -120,12 +122,12 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131380851) != null)
+      if (findViewById(2131381029) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addVideoView, videoView is exist");
         }
-        removeView(findViewById(2131380851));
+        removeView(findViewById(2131381029));
       }
       View localView = this.mVPProxy.getVideoView();
       if (localView == null)
@@ -134,7 +136,7 @@ public class BaseVideoView
         return;
       }
       localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView.setId(2131380851);
+      localView.setId(2131381029);
       addView(localView, 0);
       if (LogUtil.isColorLevel())
       {
@@ -230,6 +232,17 @@ public class BaseVideoView
       return this.mVPProxy.getVideoDurationMs();
     }
     return 0L;
+  }
+  
+  public void init(VideoPlayerInnerCallback paramVideoPlayerInnerCallback)
+  {
+    if (paramVideoPlayerInnerCallback == null) {}
+    for (this.mVPProxy = new VideoPlayerProxy(this.mContext, this.mID, this.mParams, this, this.mScaleFullScreen);; this.mVPProxy = new VideoPlayerProxy(this.mContext, this.mID, this.mParams, paramVideoPlayerInnerCallback, this.mScaleFullScreen))
+    {
+      addVideoView();
+      addCoverImageView();
+      return;
+    }
   }
   
   public boolean isLocalPlay()

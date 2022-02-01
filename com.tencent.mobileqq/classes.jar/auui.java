@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper.3;
-import com.tencent.qphone.base.util.QLog;
-
-public class auui
-  implements nkl
+public abstract interface auui
 {
-  public auui(QQGameHelper.3 param3) {}
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameHelper", 2, "load 4235 html web resource finish code:" + paramInt);
-    }
-  }
-  
-  public void progress(int paramInt) {}
+  public abstract void a(String paramString);
 }
 
 

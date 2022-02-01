@@ -1,10 +1,43 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
 
 public class wpr
-  extends weu
+  extends wrj
 {
-  public Map<String, wyx> a = new HashMap();
+  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
+  wrk jdField_a_of_type_Wrk;
+  
+  public wpr(qqstory_service.RspDelFeedComment paramRspDelFeedComment, wrk paramwrk)
+  {
+    super(paramRspDelFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
+    this.jdField_a_of_type_Wrk = paramwrk;
+  }
+  
+  public wpr(wrk paramwrk)
+  {
+    this.jdField_a_of_type_Wrk = paramwrk;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Wrk.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Wrk.a(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Wrk.a(paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Wrk.a(paramBoolean, paramBundle);
+  }
 }
 
 

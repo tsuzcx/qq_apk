@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import anim;
-import arqk;
-import arqr;
+import anuj;
+import asfy;
+import asgf;
 import java.util.List;
 
 public class CameraEmoRoamingManager$2
   implements Runnable
 {
-  public CameraEmoRoamingManager$2(arqk paramarqk, arqr paramarqr, anim paramanim) {}
+  public CameraEmoRoamingManager$2(asfy paramasfy, asgf paramasgf, anuj paramanuj) {}
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_Arqr.a("needDel");
+    List localList = this.jdField_a_of_type_Asgf.a("needDel");
     if (localList.size() > 0) {
-      this.jdField_a_of_type_Anim.a(localList, true);
+      this.jdField_a_of_type_Anuj.a(localList, true);
     }
     while (localList.size() != 0) {
       return;

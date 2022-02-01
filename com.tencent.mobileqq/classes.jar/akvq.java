@@ -1,31 +1,14 @@
-public class akvq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class akvq
+  implements DialogInterface.OnClickListener
 {
-  private static volatile akvq jdField_a_of_type_Akvq;
-  private boolean jdField_a_of_type_Boolean;
+  akvq(akvn paramakvn, Runnable paramRunnable) {}
   
-  public static akvq a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Akvq == null) {}
-    try
-    {
-      if (jdField_a_of_type_Akvq == null) {
-        jdField_a_of_type_Akvq = new akvq();
-      }
-      return jdField_a_of_type_Akvq;
-    }
-    finally {}
-  }
-  
-  public void a(akvs paramakvs)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (paramakvs != null) {
-        paramakvs.a(true);
-      }
-      return;
-    }
-    bcof.a().a("tensorflowlite_jni", new akvr(this, paramakvs));
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

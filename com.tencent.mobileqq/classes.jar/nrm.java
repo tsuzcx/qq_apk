@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class nrm
-  implements DialogInterface.OnDismissListener
+  implements Animation.AnimationListener
 {
-  nrm(nre paramnre) {}
+  nrm(nrk paramnrk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.f = false;
+    this.a.a.a.setVisibility(0);
+    this.a.a.a.startAnimation(this.a.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,111 +1,70 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class yja
-  extends JobSegment<Integer, yig>
+  implements IEventReceiver
 {
-  private int jdField_a_of_type_Int;
-  private wre jdField_a_of_type_Wre;
-  private yif jdField_a_of_type_Yif;
+  private int jdField_a_of_type_Int = -1;
+  private anyu jdField_a_of_type_Anyu = new yjb(this);
+  public QQUserUIItem a;
+  public String a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private yjc jdField_a_of_type_Yjc;
+  private yjd jdField_a_of_type_Yjd;
+  private yje jdField_a_of_type_Yje;
+  private yjf jdField_a_of_type_Yjf;
+  private yjg jdField_a_of_type_Yjg;
+  private int b = -1;
   
-  public yja(@NonNull yif paramyif, wre paramwre)
+  public yja(String paramString, @NonNull yjf paramyjf)
   {
-    this.jdField_a_of_type_Yif = paramyif;
-    this.jdField_a_of_type_Wre = paramwre;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Yjf = paramyjf;
   }
   
-  public static boolean a(@Nullable wzn paramwzn, AtomicBoolean paramAtomicBoolean)
+  public void a()
   {
-    Object localObject2 = "";
-    Object localObject1 = null;
-    List localList = ((wpj)wpm.a(5)).a(true);
-    Iterator localIterator = paramwzn.a.iterator();
-    paramwzn = (wzn)localObject1;
-    if (localIterator.hasNext())
-    {
-      yib localyib = (yib)localIterator.next();
-      localObject1 = localObject2;
-      if (!((String)localObject2).equals(localyib.c)) {
-        localObject1 = localyib.c;
-      }
-      if (!a(localyib, localList)) {
-        break label121;
-      }
-      localyib.jdField_b_of_type_Boolean = true;
-      paramAtomicBoolean.set(true);
-      paramwzn = localyib;
-    }
-    label121:
-    for (;;)
-    {
-      localObject2 = localObject1;
-      break;
-      return (paramwzn != null) && (((String)localObject2).equals(paramwzn.c));
-    }
+    this.jdField_a_of_type_Yjg = new yjg(this);
+    wjj.a().registerSubscriber(this.jdField_a_of_type_Yjg);
+    xiz.a().addObserver(this.jdField_a_of_type_Anyu);
+    this.jdField_a_of_type_Yjc = new yjc(this);
+    wjj.a().registerSubscriber(this.jdField_a_of_type_Yjc);
+    this.jdField_a_of_type_Yjd = new yjd(this);
+    wjj.a().registerSubscriber(this.jdField_a_of_type_Yjd);
+    this.jdField_a_of_type_Yje = new yje(this);
+    wjj.a().registerSubscriber(this.jdField_a_of_type_Yje);
   }
   
-  private static boolean a(yib paramyib, List<StoryVideoItem> paramList)
+  public void a(boolean paramBoolean)
   {
-    Object localObject2;
-    do
+    yuk.b("Q.qqstory.memories.MemoriesProfilePresenter", "request refresh user info data. from cache : %s.", Boolean.valueOf(paramBoolean));
+    if (paramBoolean)
     {
-      paramList = paramList.iterator();
-      Object localObject1;
-      while (!((Iterator)localObject1).hasNext())
-      {
-        do
-        {
-          do
-          {
-            if (!paramList.hasNext()) {
-              break;
-            }
-            localObject1 = (StoryVideoItem)paramList.next();
-          } while (!paramyib.c.equals(((StoryVideoItem)localObject1).mPublishDate));
-          if ((((StoryVideoItem)localObject1).isLocalAddShareGroupVideo()) && (paramyib.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).shareGroupId)))
-          {
-            yqp.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has *add* fail video:%s", new Object[] { paramyib });
-            return true;
-          }
-          localObject2 = wjr.a(((StoryVideoItem)localObject1).mVid);
-          if ((localObject2 != null) && (((PublishVideoEntry)localObject2).getBooleanExtra("ignorePersonalPublish", false))) {}
-          for (int i = 1; (i == 0) && (paramyib.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).mOwnerUid)); i = 0)
-          {
-            yqp.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this personal feed  has fail video:%s", new Object[] { paramyib });
-            return true;
-          }
-          localObject1 = ((StoryVideoItem)localObject1).mVideoSpreadGroupList;
-        } while ((localObject1 == null) || (((wrd)localObject1).b == null));
-        localObject1 = ((wrd)localObject1).b.iterator();
-      }
-      localObject2 = (String)((Iterator)localObject1).next();
-    } while (!paramyib.jdField_b_of_type_JavaLangString.equals(localObject2));
-    yqp.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has fail video:%s", new Object[] { paramyib });
-    return true;
-    return false;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.jdField_a_of_type_Yif.a(paramInteger.intValue(), 5);
-    if ((((yig)localObject).a.size() > 0) || (((yig)localObject).jdField_b_of_type_Boolean))
-    {
-      yqp.b("Q.qqstory.home.data.HomeFeedListPageLoader", "hit feed id cache");
-      notifyResult(localObject);
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((wtt)wth.a(2)).b(this.jdField_a_of_type_JavaLangString);
+      yuk.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
       return;
     }
-    localObject = new AtomicBoolean(false);
-    wzm localwzm = new wzm();
-    localwzm.jdField_a_of_type_Wre = this.jdField_a_of_type_Wre;
-    localwzm.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Yif.a();
-    wlb.a().a(localwzm, new yjb(this, paramJobContext, (AtomicBoolean)localObject, paramInteger));
+    yuk.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.jdField_a_of_type_JavaLangString);
+    new xaq().a(1, new wuo("", this.jdField_a_of_type_JavaLangString), String.valueOf(hashCode()), true, true);
+  }
+  
+  public void b()
+  {
+    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Yjg);
+    xiz.a().removeObserver(this.jdField_a_of_type_Anyu);
+    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Yjc);
+    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Yjd);
+    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Yje);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

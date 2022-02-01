@@ -1,11 +1,63 @@
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.tencent.qphone.base.util.QLog;
+import org.apache.http.Header;
+
 public class kzv
-  extends kzs
+  extends kzp
 {
-  private final byte[] a = { -89, -34, -67, 60, 35, 96, 30, -47, 119, 15, 33, -8, 27, -105, 120, -21, -107, 19, 72, 121, 115, 87, -7, 41, -2, 121, -54, -113, 33, -87, -47, 43, -103, -61, 84, -9, 115, 74, 69, 19, -31, -19, 67, 12, -110, -104, 34, -109, 48, -110, 20, -113, 71, 84, -39, -90 };
+  public kzv(AITranslator paramAITranslator, Context paramContext) {}
   
-  public String a()
+  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
   {
-    return a(this.a, a());
+    if (paramString.equalsIgnoreCase("1"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Translator", 2, "[policy update]: GOOGLE");
+      }
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 0L);
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 200000L);
+    }
+    do
+    {
+      return;
+      if (paramString.equals("2"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Translator", 2, "[policy update]: MS");
+        }
+        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
+        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 0L);
+        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 200000L);
+        return;
+      }
+      if (paramString.equals("0"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Translator", 2, "[policy update]: stop service");
+        }
+        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false));
+        return;
+      }
+      if (paramString.equals("3"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Translator", 2, "[policy update]: decide by Client");
+        }
+        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Translator", 2, "[policy update]: Update Failed");
+  }
+  
+  public void a(Throwable paramThrowable, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "update policy error" + paramString);
+    }
   }
 }
 

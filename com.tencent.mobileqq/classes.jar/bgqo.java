@@ -1,24 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.util.SparseArray;
 
 class bgqo
-  implements View.OnTouchListener
+  extends bgqq
 {
-  bgqo(bgqn parambgqn) {}
+  bgqo(bgqm parambgqm) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean)
   {
-    this.a.a.setImageResource(2130847288);
-    this.a.a.setTag(Integer.valueOf(2130847288));
-    this.a.a();
-    return false;
+    if (paramBoolean) {}
+    synchronized (this.a.a)
+    {
+      this.a.a.clear();
+      this.a.b();
+      bgqm.a(this.a);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqo
  * JD-Core Version:    0.7.0.1
  */

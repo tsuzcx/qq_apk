@@ -1,13 +1,22 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
 class zse
-  implements bkiz
+  implements View.OnTouchListener
 {
-  zse(zsd paramzsd, View paramView) {}
+  zse(zsd paramzsd) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.dismiss();
+    }
   }
 }
 

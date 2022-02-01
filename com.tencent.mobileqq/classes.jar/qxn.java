@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import tencent.im.oidb.articlesummary.articlesummary.BuluoInfo;
 
-public class qxn
-  implements DialogInterface.OnDismissListener
+public final class qxn
+  implements pno<articlesummary.BuluoInfo, qxs>
 {
-  public qxn(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public qxs a(articlesummary.BuluoInfo paramBuluoInfo)
+  {
+    return qxs.a(paramBuluoInfo);
+  }
 }
 
 

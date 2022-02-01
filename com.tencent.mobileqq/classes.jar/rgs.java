@@ -1,11 +1,14 @@
-import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-public final class rgs
-  implements pvb<feeds_info.LocationInfo, rhf>
+class rgs
+  implements omq
 {
-  public rhf a(feeds_info.LocationInfo paramLocationInfo)
+  rgs(rgo paramrgo) {}
+  
+  public void a(@NotNull String paramString1, @NotNull String paramString2)
   {
-    return rhf.a(paramLocationInfo);
+    QLog.d(paramString1, 1, paramString2);
   }
 }
 

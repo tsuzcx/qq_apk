@@ -1,19 +1,19 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
 
-public class bcqq
-  extends SQLiteOpenHelper
+public final class bcqq
+  implements Parcelable.Creator<FriendGroupListInfo>
 {
-  public bcqq(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
+  public FriendGroupListInfo a(Parcel paramParcel)
   {
-    super(paramContext, paramString, null, paramInt);
+    return new FriendGroupListInfo(paramParcel);
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
+  public FriendGroupListInfo[] a(int paramInt)
+  {
+    return new FriendGroupListInfo[paramInt];
+  }
 }
 
 

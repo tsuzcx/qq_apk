@@ -1,6 +1,11 @@
-public abstract interface yck
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+
+public abstract class yck
 {
-  public abstract void a(String paramString, int paramInt);
+  public int a;
+  
+  public abstract void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt);
 }
 
 

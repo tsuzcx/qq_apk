@@ -1,44 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
 
-public class sfl
+class sfl
+  implements sga
 {
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 4;
-  public static int f = 1;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  sfl(sel paramsel) {}
   
-  public sfl(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.m = paramInt1;
-    this.n = paramInt2;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_hitCount", String.valueOf(this.g));
-    localHashMap.put("param_notHitCount", String.valueOf(this.h));
-    localHashMap.put("param_triggerCount", String.valueOf(this.i));
-    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
-    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
-    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
-    localHashMap.put("param_sceneType", String.valueOf(this.m));
-    localHashMap.put("param_strategy", String.valueOf(this.n));
-    if (QLog.isColorLevel()) {
-      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
+    pmz localpmz = (pmz)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = this.a.b(localpmz.a());
+    if ((this.a.jdField_a_of_type_Rvy.a() != null) && (this.a.jdField_a_of_type_Rvy.a().a() != null) && (this.a.jdField_a_of_type_Rvy.a().a().a())) {
+      this.a.jdField_a_of_type_Rvy.a().a().a(5);
     }
-    return localHashMap;
+    int i;
+    do
+    {
+      return;
+      if (rpt.a(localBaseArticleInfo, this.a.a())) {
+        break;
+      }
+      if (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))
+      {
+        ubd.a(this.a.jdField_a_of_type_AndroidAppActivity, (ArticleInfo)localBaseArticleInfo, this.a, 56);
+        ubd.a(this.a.jdField_a_of_type_AndroidAppActivity, (ArticleInfo)localBaseArticleInfo, this.a, 56, true, null);
+        return;
+      }
+      if ((!rpt.d()) || (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))) {
+        break label297;
+      }
+      i = 1;
+      if (((sel.a(this.a).a()) || (bnrf.a(sel.a()) <= 0)) && (i == 0)) {
+        break label302;
+      }
+    } while (localBaseArticleInfo == null);
+    if (i != 0) {
+      ocd.a(null, "", "0X8008E28", "0X8008E28", 0, 0, "", "", "", new sbg(null, null, localBaseArticleInfo.mVideoVid, localBaseArticleInfo.innerUniqueID).a((int)localBaseArticleInfo.mChannelID).N((int)sel.b(this.a)).Q(1).a().a(), false);
+    }
+    this.a.a(localpmz.a(), localBaseArticleInfo, false);
+    for (;;)
+    {
+      pms.a(paramView);
+      return;
+      label297:
+      i = 0;
+      break;
+      label302:
+      this.a.jdField_a_of_type_Rvy.a().c(paramView);
+    }
   }
 }
 

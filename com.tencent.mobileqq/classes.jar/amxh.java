@@ -1,57 +1,77 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-final class amxh
-  extends bhhe
+public class amxh
+  extends MSFServlet
 {
-  amxh(String paramString, File paramFile, amxn paramamxn) {}
-  
-  public void onDone(bhhf parambhhf)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super.onDone(parambhhf);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambhhf.a());
-    }
-    if (3 == parambhhf.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    while (this.jdField_a_of_type_Amxn == null)
+    long l = 0L;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        try
-        {
-          nmk.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-          if (this.jdField_a_of_type_Amxn != null) {
-            this.jdField_a_of_type_Amxn.a(true, 0);
-          }
-          return;
-        }
-        catch (Exception parambhhf)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambhhf.getMessage());
-            }
-          }
-        }
-        catch (OutOfMemoryError parambhhf)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambhhf.getMessage());
-            }
-          }
-        }
-      } while (this.jdField_a_of_type_Amxn == null);
-      this.jdField_a_of_type_Amxn.a(false, 0);
-      return;
+      l = System.currentTimeMillis();
+      QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
     }
-    this.jdField_a_of_type_Amxn.a(false, 0);
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
+      localBundle.putSerializable("serializable", paramIntent.getSerializableExtra("serializable"));
+      localBundle.putString("key1", paramIntent.getStringExtra("key1"));
+      localBundle.putString("key2", paramIntent.getStringExtra("key2"));
+      localBundle.putString("key3", paramIntent.getStringExtra("key3"));
+      localBundle.putString("key4", paramIntent.getStringExtra("key4"));
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
+      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_cmGame_CmGameServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      bhvd.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

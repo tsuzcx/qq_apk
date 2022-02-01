@@ -1,36 +1,26 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.text.TextUtils;
 
 public class bhyb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bhye
 {
-  public bhyb(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 20;
   
-  public void onGlobalLayout()
+  public bhyb()
   {
-    int i;
-    if (this.a.a != null)
-    {
-      i = InputMethodRelativeLayout.a(this.a);
-      if (i != InputMethodRelativeLayout.b(this.a))
-      {
-        int j = this.a.getRootView().getHeight();
-        if (j - i <= j / 4) {
-          break label102;
-        }
-        InputMethodRelativeLayout.a(this.a, true);
-      }
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 100;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.a)) {
+      return "";
     }
-    for (;;)
-    {
-      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
-      this.a.requestLayout();
-      InputMethodRelativeLayout.a(this.a, i);
-      return;
-      label102:
-      InputMethodRelativeLayout.a(this.a, false);
-    }
+    return this.a;
   }
 }
 

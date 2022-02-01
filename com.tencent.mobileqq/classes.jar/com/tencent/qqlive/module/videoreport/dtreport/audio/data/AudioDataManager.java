@@ -10,7 +10,7 @@ public class AudioDataManager
 {
   private static final String TAG = "AudioDataManager";
   
-  public static AudioDataManager getInstance()
+  public static IAudioDataManager getInstance()
   {
     return AudioDataManager.InstanceHolder.sInstance;
   }

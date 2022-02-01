@@ -1,25 +1,51 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arqz
-  implements View.OnClickListener
+public class arqz
 {
-  arqz(arqx paramarqx, Dialog paramDialog) {}
+  private boolean a;
   
-  public void onClick(View paramView)
+  public static arqz a(araj[] paramArrayOfaraj)
   {
-    if ((!((Activity)this.jdField_a_of_type_Arqx.a).isFinishing()) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    boolean bool = true;
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0))
+    {
+      paramArrayOfaraj = null;
+      return paramArrayOfaraj;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    arqz localarqz = new arqz();
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[0].a);
+        paramArrayOfaraj = localarqz;
+        if (!localJSONObject.has("SendAsTxDoc")) {
+          break;
+        }
+        if (localJSONObject.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc") == 1)
+        {
+          localarqz.a = bool;
+          return localarqz;
+        }
+      }
+      catch (JSONException paramArrayOfaraj)
+      {
+        paramArrayOfaraj.printStackTrace();
+        return localarqz;
+      }
+      bool = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqz
  * JD-Core Version:    0.7.0.1
  */

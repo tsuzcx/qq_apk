@@ -1,19 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import android.widget.EditText;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 class akki
   implements View.OnClickListener
 {
-  akki(akkh paramakkh) {}
+  akki(akkg paramakkg) {}
   
   public void onClick(View paramView)
   {
-    AIOLongShotHelper.a(this.a.mActivity, (String)akkh.a(this.a).selectedPhotoList.get(0), new akkj(this));
-    AIOLongShotHelper.a("0X8009DEE");
+    this.a.a.setText("");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

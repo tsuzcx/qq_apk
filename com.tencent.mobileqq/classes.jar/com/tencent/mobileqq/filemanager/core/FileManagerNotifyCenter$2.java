@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atcv;
-import atcx;
-import atvo;
-import bbyp;
+import atup;
+import atur;
+import aunj;
+import bcrg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FileManagerNotifyCenter$2
   implements Runnable
 {
-  public FileManagerNotifyCenter$2(atcx paramatcx, FileManagerEntity paramFileManagerEntity, int paramInt) {}
+  public FileManagerNotifyCenter$2(atur paramatur, FileManagerEntity paramFileManagerEntity, int paramInt) {}
   
   public void run()
   {
@@ -46,8 +46,8 @@ public class FileManagerNotifyCenter$2
         {
         default: 
           this.this$0.a.a().a(true, 3, null);
-          atvo.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime = bbyp.a();
+          aunj.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime = bcrg.a();
           this.this$0.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
           return;
           FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;

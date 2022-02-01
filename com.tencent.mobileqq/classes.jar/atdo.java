@@ -1,24 +1,31 @@
-import android.os.Bundle;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public abstract interface atdo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onGlobalLayout"}, k=3, mv={1, 1, 16})
+final class atdo
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(long paramLong);
+  atdo(LinearLayout paramLinearLayout) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
-  
-  public abstract byte[] a(Bundle paramBundle);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public final void onGlobalLayout()
+  {
+    Object localObject = new int[2];
+    this.a.getLocationOnScreen((int[])localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "onGlobalLayout x = " + localObject[0] + ",y = " + localObject[1]);
+    }
+    int i = bhtq.b(120.0F);
+    if (localObject[1] < i)
+    {
+      int j = bhtq.b();
+      localObject = this.a.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).height = (j - i);
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+  }
 }
 
 

@@ -1,18 +1,31 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
-import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class avkl
-  extends CustomizedDownloader
+public class avkl
+  implements ArkViewImplement.LoadCallback
 {
-  avkl(avju paramavju) {}
+  public avkl(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
   
-  public void onDownload(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    paramBundle = new Bundle();
-    paramBundle.putString("url", paramString1);
-    paramBundle.putString("path", paramString2);
-    avkt.a().a(paramBundle, paramDownloadCallback);
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    if ((QLog.isColorLevel()) || (paramInt == -1)) {
+      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
+    }
+    if (paramInt == 1) {
+      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
+    QQGamePadFaceFragment.b(this.a);
   }
 }
 

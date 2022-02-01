@@ -1,23 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.TextParcelData;
 
-public class bptx
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bptx
+  implements Parcelable.Creator<TextParcelData>
 {
-  public bptx(SlideBottomPanel paramSlideBottomPanel, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public TextParcelData a(Parcel paramParcel)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
-    {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.b - this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.j));
-      }
-    }
+    return new TextParcelData(paramParcel);
+  }
+  
+  public TextParcelData[] a(int paramInt)
+  {
+    return new TextParcelData[paramInt];
   }
 }
 

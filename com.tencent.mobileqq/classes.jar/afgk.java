@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class afgk
-  implements DialogInterface.OnDismissListener
+  extends afgn
 {
-  public afgk(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.b = false;
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
 }
 
 

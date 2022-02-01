@@ -1,18 +1,24 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+
 public class acvs
+  extends acvt
 {
-  public long a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public boolean c;
+  acvs(acvr paramacvr) {}
   
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramBoolean;
+    acvc.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
+    acvp.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_Long = -2147483648L;
+    if (acvr.a(this.a).equals(paramString2))
+    {
+      bdll.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", acvr.a(this.a), "");
+      if ((paramInt != 1) && (paramInt != 2)) {
+        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
+      }
+    }
   }
 }
 

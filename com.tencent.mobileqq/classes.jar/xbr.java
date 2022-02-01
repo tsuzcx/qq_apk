@@ -1,35 +1,62 @@
-class xbr
-  implements xei
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class xbr
+  extends wzl
+  implements woy<xdf, xev>
 {
-  xbr(xbo paramxbo) {}
+  protected String a;
+  protected List<String> a;
+  
+  public xbr(String paramString, List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+  }
   
   public void a()
   {
-    if (xbo.a(this.a) != null) {
-      xbo.a(this.a).c();
-    }
+    xdf localxdf = new xdf();
+    localxdf.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    wow.a().a(localxdf, this);
   }
   
-  public void a(int paramInt)
+  public void a(@NonNull xdf paramxdf, @Nullable xev paramxev, @NonNull ErrorMessage paramErrorMessage)
   {
-    xbo.a(this.a).a(paramInt);
-    if (xbo.a(this.a) != null) {
-      xbo.a(this.a).b(paramInt);
+    xbt localxbt = new xbt();
+    if ((paramxev == null) || (paramErrorMessage.isFail()))
+    {
+      c();
+      wjj.a().dispatch(localxbt);
+      return;
     }
+    yuk.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: request.count=" + paramxdf.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramxdf.jdField_a_of_type_JavaUtilList.toString());
+    yuk.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: count=" + paramxev.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramxev.toString());
+    b();
+    paramxev.jdField_a_of_type_JavaUtilList = ((wte)wth.a(5)).a(paramxev.jdField_a_of_type_JavaUtilList);
+    localxbt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramxdf = paramxev.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramxdf.hasNext())
+    {
+      paramxev = (StoryVideoItem)paramxdf.next();
+      paramxev = new ykj(paramxev.mVid, paramxev);
+      localxbt.jdField_a_of_type_JavaUtilList.add(paramxev);
+    }
+    wjj.a().dispatch(localxbt);
   }
   
-  public void b()
+  public String toString()
   {
-    if (xbo.a(this.a) != null) {
-      xbo.a(this.a).d();
-    }
-  }
-  
-  public void c()
-  {
-    if (xbo.a(this.a) != null) {
-      xbo.a(this.a).d(-1);
-    }
+    return "VidToShareGroupVideoInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

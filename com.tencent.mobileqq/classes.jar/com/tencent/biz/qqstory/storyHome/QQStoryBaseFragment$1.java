@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import wpm;
-import wpy;
+import wth;
+import wtt;
 
 class QQStoryBaseFragment$1
   implements Runnable
@@ -10,7 +10,7 @@ class QQStoryBaseFragment$1
   
   public void run()
   {
-    ((wpy)wpm.a(2)).c();
+    ((wtt)wth.a(2)).c();
   }
 }
 

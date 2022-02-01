@@ -1,84 +1,34 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastImageViewCreator.ImageViewHolder.1.1;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-public class szb
-  implements URLDrawableDownListener
+class szb
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  szb(sza paramsza) {}
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  szb(sza paramsza, int paramInt1, int paramInt2)
   {
-    if (paramURLDrawable == null) {
-      return;
-    }
-    QLog.d("Q.readinjoy.fast_web", 2, " onLoadFailed: " + paramURLDrawable.getURL().toString() + " retryCnt: " + sza.a(this.a));
-    paramThrowable = (ImageData)this.a.a;
-    boolean bool = syz.a(paramURLDrawable.getURL().getFile());
-    if (bool) {}
-    for (paramView = syz.a(paramThrowable.jdField_a_of_type_JavaLangString, paramThrowable);; paramView = paramThrowable.jdField_a_of_type_JavaLangString)
-    {
-      paramView = tyc.a(paramView, 4);
-      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
-        break;
-      }
-      if (sza.b(this.a) < 2) {
-        sza.c(this.a);
-      }
-      sza.d(this.a);
-      if ((bool) && (sza.a(this.a) < 3))
-      {
-        paramThrowable.jdField_a_of_type_Boolean = false;
-        ThreadManager.getUIHandler().post(new WebFastImageViewCreator.ImageViewHolder.1.1(this, paramThrowable));
-      }
-      paramView = new HashMap();
-      paramView.put("isSharpP", String.valueOf(bool));
-      paramView.put("url", paramThrowable.jdField_a_of_type_JavaLangString);
-      bctj.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", false, 0L, 0L, paramView, "", true);
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public boolean onPreDraw()
   {
-    if (paramURLDrawable == null) {
-      return;
+    this.jdField_a_of_type_Sza.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a) + sza.a(this.jdField_a_of_type_Sza));
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Sza.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Sza.a) + sza.b(this.jdField_a_of_type_Sza));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a).setVisibility(0);
     }
-    ImageData localImageData = (ImageData)this.a.a;
-    boolean bool = syz.a(paramURLDrawable.getURL().getFile());
-    if (bool) {}
-    for (paramView = syz.a(localImageData.jdField_a_of_type_JavaLangString, localImageData);; paramView = localImageData.jdField_a_of_type_JavaLangString)
-    {
-      paramView = tyc.a(paramView, 4);
-      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
-        break;
-      }
-      if ((localImageData.jdField_a_of_type_Int == 0) || (localImageData.b == 0))
-      {
-        sza.a(this.a, paramURLDrawable);
-        sza.a(this.a).setImageDrawable(paramURLDrawable);
-      }
-      paramView = new HashMap();
-      paramView.put("isSharpP", String.valueOf(bool));
-      paramView.put("url", localImageData.jdField_a_of_type_JavaLangString);
-      bctj.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", true, 0L, 0L, paramView, "", true);
-      return;
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a, this.jdField_a_of_type_Sza.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a)));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a).setVisibility(4);
     }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 

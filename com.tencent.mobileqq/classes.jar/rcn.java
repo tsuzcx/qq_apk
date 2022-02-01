@@ -1,7 +1,49 @@
-import kotlin.Metadata;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rcn {}
+public class rcn
+{
+  private static final String a = anzj.a(2131719074);
+  private static final String b = anzj.a(2131719077);
+  private static final String c = anzj.a(2131719075);
+  private static final String d = anzj.a(2131719073);
+  private static final String e = anzj.a(2131719076);
+  
+  public static int a()
+  {
+    return a().getIntegerFromString("ugc_add_account_tips_show_time", 2);
+  }
+  
+  private static AladdinConfig a()
+  {
+    return Aladdin.getConfig(303);
+  }
+  
+  public static String a()
+  {
+    return a().getString("ugc_add_account_description", a);
+  }
+  
+  public static String b()
+  {
+    return a().getString("ugc_add_account_use_original_account_button_description", b);
+  }
+  
+  public static String c()
+  {
+    return a().getString("ugc_add_account_edit_account_button_description", c);
+  }
+  
+  public static String d()
+  {
+    return a().getString("ugc_add_account_complete_toast_wording", d);
+  }
+  
+  public static String e()
+  {
+    return a().getString("ugc_add_account_tips_wording", e);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

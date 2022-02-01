@@ -1,8 +1,7 @@
 public abstract interface nnx
+  extends nmg
 {
   public abstract void a();
-  
-  public abstract void a(String paramString);
 }
 
 

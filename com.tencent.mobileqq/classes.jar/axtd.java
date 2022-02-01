@@ -1,76 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.List;
+import java.util.HashMap;
 
-class axtd
-  implements DownloadListener
+public class axtd
 {
-  axtd(axsd paramaxsd) {}
+  public static HashMap<String, Integer> a = new HashMap();
   
-  public void installSucceed(String paramString1, String paramString2)
+  static
   {
-    this.a.jdField_a_of_type_Int = 4;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    if (axsd.a(this.a) != null) {
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, axsd.a(this.a).uin, "", "yes", "android");
-    }
+    a.put("skin_icon_small_ship_svip", Integer.valueOf(2130850198));
+    a.put("skin_icon_big_ship_svip", Integer.valueOf(2130850157));
+    a.put("skin_icon_small_ship_unionvip", Integer.valueOf(2130850199));
+    a.put("skin_icon_big_ship_unionvip", Integer.valueOf(2130850158));
+    a.put("skin_icon_small_fire_svip", Integer.valueOf(2130850194));
+    a.put("skin_icon_big_fire_svip", Integer.valueOf(2130850153));
+    a.put("skin_icon_small_fire_unionvip", Integer.valueOf(2130850195));
+    a.put("skin_icon_big_fire_unionvip", Integer.valueOf(2130850154));
+    a.put("skin_icon_intimate_lover_vip_1", Integer.valueOf(2130850178));
+    a.put("skin_icon_intimate_lover_vip_2", Integer.valueOf(2130850179));
+    a.put("skin_icon_intimate_lover_vip_3", Integer.valueOf(2130850180));
+    a.put("hot_reactive_gray_intimate_guimi_svip_1_icon", Integer.valueOf(2130840306));
+    a.put("hot_reactive_gray_intimate_guimi_svip_2_icon", Integer.valueOf(2130840307));
+    a.put("hot_reactive_gray_intimate_guimi_svip_3_icon", Integer.valueOf(2130840308));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_1_icon", Integer.valueOf(2130840309));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_2_icon", Integer.valueOf(2130840310));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_3_icon", Integer.valueOf(2130840311));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_1_icon", Integer.valueOf(2130840312));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_2_icon", Integer.valueOf(2130840313));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_3_icon", Integer.valueOf(2130840314));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_1_icon", Integer.valueOf(2130840315));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_2_icon", Integer.valueOf(2130840316));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_3_icon", Integer.valueOf(2130840317));
   }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if (this.a.jdField_a_of_type_Axxf != null) {
-      this.a.jdField_a_of_type_Axxf.a(5);
-    }
-    if (axsd.a(this.a) != null) {
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, axsd.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = (DownloadInfo)paramList.get(0);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 2;
-      localMessage.arg1 = paramList.f;
-      localMessage.sendToTarget();
-      if ((paramList.f == 0) && (axsd.a(this.a) != null)) {
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, axsd.a(this.a).uin, "", "yes", "android");
-      }
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

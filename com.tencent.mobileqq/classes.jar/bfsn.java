@@ -1,49 +1,15 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class bfsn
+class bfsn
+  implements bjhv
 {
-  public int a;
-  public bfso a;
-  public bfsp a;
-  public bfsq a;
-  public bfsr a;
-  public String a;
-  public ArrayList<anxb> a;
-  public int b = -1;
+  bfsn(bfsf parambfsf, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
-  public bfsn(String paramString, bfso parambfso)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bfso = parambfso;
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  public bfsn(String paramString, bfsp parambfsp)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bfsp = parambfsp;
-    this.jdField_a_of_type_Int = 4;
-  }
-  
-  public bfsn(String paramString, bfsq parambfsq)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bfsq = parambfsq;
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public bfsn(String paramString, bfsr parambfsr)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bfsr = parambfsr;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public bfsn(String paramString, ArrayList<anxb> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Int = 3;
+    if (paramInt == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    }
   }
 }
 

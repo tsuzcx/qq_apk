@@ -1,88 +1,73 @@
 import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Iterator;
 
 public class advv
-  extends anmu
+  extends anyu
 {
-  public advv(ChatSettingActivity paramChatSettingActivity) {}
+  public advv(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  private void a(String paramString, ArrayList<bdwr> paramArrayList, ammv paramammv)
   {
-    if (paramBoolean) {
-      if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a) != null) && (ChatSettingActivity.b(this.a).equals(paramString1)) && (paramString2 != null) && (!ChatSettingActivity.e(this.a).equals(paramString2)))
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo  uin = " + paramString);
+    }
+    Iterator localIterator = paramArrayList.iterator();
+    boolean bool1 = false;
+    bdwr localbdwr;
+    if (localIterator.hasNext())
+    {
+      localbdwr = (bdwr)localIterator.next();
+      if ((localbdwr.jdField_a_of_type_Int == 2) && (localbdwr.jdField_a_of_type_JavaLangObject != null) && ((localbdwr.jdField_a_of_type_JavaLangObject instanceof ArrayList)))
       {
-        if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+        paramArrayList = ((ArrayList)localbdwr.jdField_a_of_type_JavaLangObject).iterator();
+        do
         {
-          ChatSettingActivity.a(this.a, 2131693027, 2);
-          ChatSettingActivity.a(this.a).dismiss();
+          bool2 = bool1;
+          if (!paramArrayList.hasNext()) {
+            break;
+          }
+        } while (!paramString.equals(((SubAccountInfo)((bdwr)paramArrayList.next()).jdField_a_of_type_JavaLangObject).subuin));
+        String str = bhlg.c(this.a.app, paramString, true);
+        paramArrayList = str;
+        if (TextUtils.isEmpty(str)) {
+          paramArrayList = paramString;
         }
-        ChatSettingActivity.b(this.a, paramString2);
-        ChatSettingActivity.b(this.a, paramString2);
-        ChatSettingActivity.c(this.a, paramString2);
+        boolean bool2 = bool1;
+        if (!paramArrayList.equals(localbdwr.jdField_a_of_type_JavaLangString))
+        {
+          localbdwr.jdField_a_of_type_JavaLangString = paramArrayList;
+          bool2 = true;
+        }
+        bool1 = bool2;
       }
     }
-    while (ChatSettingActivity.a(this.a) != 0) {
-      return;
-    }
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing()) && (!this.a.isFinishing())) {
-      ChatSettingActivity.a(this.a).dismiss();
-    }
-    ChatSettingActivity.b(this.a, ChatSettingActivity.e(this.a));
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap) {}
-  
-  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
-      QLog.e("tag_hidden_chat", 1, "data not right");
-    }
-    label270:
     for (;;)
     {
-      return;
-      Object localObject = (String[])paramArrayOfObject[0];
-      boolean[] arrayOfBoolean = (boolean[])paramArrayOfObject[1];
-      if (QLog.isColorLevel()) {
-        QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(localObject.length), " len2:", Integer.valueOf(arrayOfBoolean.length) });
-      }
-      if (paramBoolean)
+      break;
+      if ((localbdwr.jdField_a_of_type_Int == 6) && (localbdwr.jdField_a_of_type_JavaLangObject != null) && ((localbdwr.jdField_a_of_type_JavaLangObject instanceof SimpleAccount)))
       {
-        int i = 0;
-        for (;;)
+        paramArrayList = (SimpleAccount)localbdwr.jdField_a_of_type_JavaLangObject;
+        if (paramString.equals(paramArrayList.getUin()))
         {
-          if (i >= localObject.length) {
-            break label270;
-          }
-          paramArrayOfObject = localObject[i];
-          paramBoolean = arrayOfBoolean[i];
-          if (paramArrayOfObject.equals(ChatSettingActivity.b(this.a)))
+          paramArrayList = bdwt.a(this.a.app, paramArrayList);
+          if (!paramArrayList.equals(localbdwr.jdField_a_of_type_JavaLangString))
           {
-            this.a.b.setOnCheckedChangeListener(null);
-            this.a.b.setChecked(paramBoolean);
-            this.a.a();
-            localObject = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-            if ((!this.a.b.a()) && (!this.a.c.a())) {}
-            for (i = 0;; i = 8)
-            {
-              ((FormSwitchItem)localObject).setVisibility(i);
-              this.a.b.setOnCheckedChangeListener(this.a);
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("tag_hidden_chat", 2, new Object[] { "uin:", paramArrayOfObject, " switch:", Boolean.valueOf(paramBoolean) });
-              return;
+            localbdwr.jdField_a_of_type_JavaLangString = paramArrayList;
+            bool1 = true;
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo needUpdate = " + bool1);
             }
+            if (bool1) {
+              paramammv.notifyDataSetInvalidated();
+            }
+            return;
           }
-          i += 1;
         }
       }
     }
@@ -90,126 +75,76 @@ public class advv
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (paramString != null) && (paramString.equals(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.a(this.a) != null))
+    int k = 0;
+    int i = 0;
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    Iterator localIterator;
+    label54:
+    boolean bool;
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      if ((ChatSettingActivity.a(this.a) == 1010) || (ChatSettingActivity.a(this.a) == 1001) || (ChatSettingActivity.a(this.a) == 10002))
-      {
-        paramString = aoch.a(this.a.app, 200, ChatSettingActivity.b(this.a), true);
-        ChatSettingActivity.a(this.a, new WeakReference(paramString));
-        ChatSettingActivity.a(this.a).setImageDrawable(paramString);
+      localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramBoolean = false;
+      bool = paramBoolean;
+      if (!localIterator.hasNext()) {
+        break label95;
       }
+      if (!TextUtils.equals(paramString, ((SubAccountInfo)localIterator.next()).subuin)) {
+        break label248;
+      }
+      paramBoolean = true;
     }
-    else {
-      return;
-    }
-    if (ChatSettingActivity.a(this.a) == 1006)
+    label95:
+    label248:
+    for (;;)
     {
-      paramString = aoch.b(this.a.app, ChatSettingActivity.b(this.a), (byte)3);
-      ChatSettingActivity.a(this.a).setImageDrawable(paramString);
+      break label54;
+      bool = false;
+      int j = k;
+      if (this.a.jdField_b_of_type_JavaUtilArrayList != null)
+      {
+        j = k;
+        if (this.a.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+        {
+          localIterator = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
+          for (;;)
+          {
+            j = i;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            if (TextUtils.equals(paramString, ((SimpleAccount)localIterator.next()).getUin())) {
+              i = 1;
+            }
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onUpdateCustomHead uin = " + paramString + " needUpdate=" + bool);
+      }
+      if (bool) {
+        this.a.jdField_b_of_type_Ammv.notifyDataSetInvalidated();
+      }
+      if (j == 0) {
+        break;
+      }
+      this.a.jdField_a_of_type_Ammv.notifyDataSetInvalidated();
       return;
-    }
-    paramString = aoch.a(this.a.app, 1, ChatSettingActivity.b(this.a));
-    ChatSettingActivity.a(this.a, new WeakReference(paramString));
-    ChatSettingActivity.a(this.a).setImageDrawable(paramString);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    QLog.i(ChatSettingActivity.a(this.a), 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if ((paramBoolean) && (String.valueOf(paramObject).equals(ChatSettingActivity.b(this.a))) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
     }
   }
   
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, ChatSettingActivity.b(this.a))))
-    {
-      ChatSettingActivity.b(this.a, ChatSettingActivity.d(this.a, ChatSettingActivity.b(this.a)));
-      if (ChatSettingActivity.e(this.a) == null) {
-        ChatSettingActivity.b(this.a, "");
-      }
-      ChatSettingActivity.b(this.a, ChatSettingActivity.e(this.a));
-      ChatSettingActivity.f(this.a);
-    }
-  }
-  
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
-  {
-    ChatSettingActivity.g(this.a);
-    ChatSettingActivity.e(this.a);
-    if (paramBoolean2) {
-      if (!ChatSettingActivity.b(this.a).endsWith(paramLong + "")) {}
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        ChatSettingActivity.a(this.a, paramString, 1);
-        return;
-      }
-    } while (!ChatSettingActivity.b(this.a).endsWith(paramLong + ""));
-    if (paramBoolean1)
-    {
-      ChatSettingActivity.a(this.a, 2131718045, 1);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    ChatSettingActivity.a(this.a, 2131718043, 1);
-  }
-  
-  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
-  {
-    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
-    if ((ChatSettingActivity.a(this.a) == 0) && (paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(ChatSettingActivity.b(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(ChatSettingActivity.a(this.a), 2, "onUpdateHotFriendLevel");
-      }
-      ChatSettingActivity.f(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
     }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null) && (ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.c(this.a) != null) && (paramString.equals(ChatSettingActivity.c(this.a))))
-    {
-      paramString = aoch.b(this.a.app, paramString, (byte)3);
-      ChatSettingActivity.a(this.a).setImageDrawable(paramString);
-    }
-  }
-  
-  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    int j;
-    int i;
-    if ((paramBoolean) && (paramArrayOfString != null) && (this.a.f != null) && (ChatSettingActivity.a(this.a) == 0) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))))
-    {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        String str = paramArrayOfString[i];
-        if (ChatSettingActivity.b(this.a).equals(str)) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  protected void onUpdateStrangerRichStatus(boolean paramBoolean, String[] paramArrayOfString, Map<String, RichStatus> paramMap)
-  {
-    if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (paramMap != null) && (paramMap.containsKey(ChatSettingActivity.b(this.a)))) {
-      ChatSettingActivity.a(this.a, (RichStatus)paramMap.get(ChatSettingActivity.b(this.a)), this.a.f);
-    }
+    a(paramString, this.a.d, this.a.jdField_b_of_type_Ammv);
+    a(paramString, this.a.c, this.a.jdField_a_of_type_Ammv);
   }
 }
 

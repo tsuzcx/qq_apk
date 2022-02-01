@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_horizontal" android:id="@id/mv2" android:layout_width="197.0dip" android:layout_height="@dimen/n_" />
-    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/nqg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:maxWidth="200.0dip" />
+    <TextView android:textSize="@dimen/ayn" android:textColor="@color/co" android:id="@id/o35" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/ayn" android:textColor="@color/co" android:id="@id/o36" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </LinearLayout>

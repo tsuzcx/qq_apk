@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.face;
 
 import android.util.Pair;
-import anks;
-import aocy;
+import anwo;
+import aopk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,26 +17,56 @@ class GroupIconHelper$CheckDisIconThread
   
   private GroupIconHelper$CheckDisIconThread(GroupIconHelper paramGroupIconHelper) {}
   
-  private int a(int paramInt, long paramLong, ArrayList<Pair<String, aocy>> paramArrayList, ArrayList<String> paramArrayList1, String paramString, aocy paramaocy)
+  private int a(int paramInt, long paramLong, ArrayList<Pair<String, aopk>> paramArrayList, ArrayList<String> paramArrayList1)
+  {
+    Iterator localIterator = GroupIconHelper.a(this.this$0).keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      aopk localaopk = (aopk)GroupIconHelper.a(this.this$0).get(str);
+      if ((localaopk != null) && (localaopk.jdField_b_of_type_Int >= 8))
+      {
+        if ((GroupIconHelper.a(this.this$0) instanceof anwo)) {
+          ((anwo)GroupIconHelper.a(this.this$0)).a(false, true, str);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + str + ",crateIconCount=" + localaopk.jdField_b_of_type_Int);
+        }
+      }
+      else if ((localaopk != null) && (!localaopk.e))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqhead.dih", 2, "CheckDisIcon isFromCreate: " + str + ",fromCreate is false");
+        }
+      }
+      else if ((localaopk != null) && (localaopk.jdField_a_of_type_JavaLangString != null) && (localaopk.jdField_a_of_type_Byte != 3))
+      {
+        paramInt = a(paramInt, paramLong, paramArrayList, paramArrayList1, str, localaopk);
+      }
+    }
+    return paramInt;
+  }
+  
+  private int a(int paramInt, long paramLong, ArrayList<Pair<String, aopk>> paramArrayList, ArrayList<String> paramArrayList1, String paramString, aopk paramaopk)
   {
     boolean bool2 = false;
     boolean bool1 = false;
     int i;
-    if ((paramaocy.jdField_a_of_type_Byte == 1) && (paramLong - paramaocy.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
+    if ((paramaopk.jdField_a_of_type_Byte == 1) && (paramLong - paramaopk.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
     {
       paramArrayList1 = paramString;
       if (GroupIconHelper.a(paramString)) {
         paramArrayList1 = GroupIconHelper.b(paramString);
       }
-      i = paramaocy.jdField_a_of_type_JavaUtilArrayList.size();
-      paramaocy.jdField_a_of_type_Byte = 2;
+      i = paramaopk.jdField_a_of_type_JavaUtilArrayList.size();
+      paramaopk.jdField_a_of_type_Byte = 2;
       if (i > 0)
       {
-        if (paramaocy.jdField_b_of_type_JavaLangString == null) {
+        if (paramaopk.jdField_b_of_type_JavaLangString == null) {
           break label299;
         }
-        paramString = GroupIconHelper.a(paramaocy.jdField_a_of_type_JavaUtilArrayList, false);
-        if (!paramaocy.jdField_b_of_type_JavaLangString.equals(paramString)) {
+        paramString = GroupIconHelper.a(paramaopk.jdField_a_of_type_JavaUtilArrayList, false);
+        if (!paramaopk.jdField_b_of_type_JavaLangString.equals(paramString)) {
           break label299;
         }
       }
@@ -46,27 +76,27 @@ class GroupIconHelper$CheckDisIconThread
       bool2 = bool1;
       if (bool1)
       {
-        paramArrayList.add(Pair.create(paramArrayList1, paramaocy));
+        paramArrayList.add(Pair.create(paramArrayList1, paramaopk));
         GroupIconHelper.a(this.this$0).remove(paramArrayList1);
         bool2 = bool1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + paramArrayList1 + ", isTryCreate: " + bool2 + paramaocy.toString());
+        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + paramArrayList1 + ", isTryCreate: " + bool2 + paramaopk.toString());
       }
       i = paramInt + 1;
       do
       {
         return i;
-        if ((paramaocy.jdField_a_of_type_Byte == 2) && (paramLong - paramaocy.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
+        if ((paramaopk.jdField_a_of_type_Byte == 2) && (paramLong - paramaopk.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + paramString + paramaocy.toString());
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + paramString + paramaopk.toString());
           }
           paramArrayList1.add(paramString);
           return paramInt + 1;
         }
         i = paramInt;
-      } while (paramaocy.jdField_a_of_type_Byte == 3);
+      } while (paramaopk.jdField_a_of_type_Byte == 3);
       return paramInt + 1;
       label299:
       bool1 = true;
@@ -82,66 +112,37 @@ class GroupIconHelper$CheckDisIconThread
     {
       if (this.a)
       {
-        int i = 0;
         long l = System.currentTimeMillis();
-        Object localObject2 = new ArrayList();
-        ArrayList localArrayList1 = new ArrayList();
-        for (;;)
-        {
-          String str;
-          aocy localaocy;
-          synchronized (GroupIconHelper.a(this.this$0))
-          {
-            Iterator localIterator = GroupIconHelper.a(this.this$0).keySet().iterator();
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            str = (String)localIterator.next();
-            localaocy = (aocy)GroupIconHelper.a(this.this$0).get(str);
-            if ((localaocy != null) && (localaocy.jdField_b_of_type_Int >= 8))
-            {
-              if ((GroupIconHelper.a(this.this$0) instanceof anks)) {
-                ((anks)GroupIconHelper.a(this.this$0)).a(false, true, str);
-              }
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + str + ",crateIconCount=" + localaocy.jdField_b_of_type_Int);
-            }
-          }
-          if ((localaocy != null) && (!localaocy.e))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqhead.dih", 2, "CheckDisIcon isFromCreate: " + str + ",fromCreate is false");
-            }
-          }
-          else if ((localaocy != null) && (localaocy.jdField_a_of_type_JavaLangString != null) && (localaocy.jdField_a_of_type_Byte != 3)) {
-            i = a(i, l, (ArrayList)localObject2, localArrayList2, str, localaocy);
-          }
-        }
+        Object localObject3 = new ArrayList();
+        ArrayList localArrayList = new ArrayList();
         int j;
-        if ((this.a) && (localObject2 != null))
+        int i;
+        synchronized (GroupIconHelper.a(this.this$0))
         {
-          j = 0;
-          while ((j < ((ArrayList)localObject2).size()) && (this.a))
+          j = a(0, l, (ArrayList)localObject3, localArrayList);
+          if ((this.a) && (localObject3 != null))
           {
-            ??? = (Pair)((ArrayList)localObject2).get(j);
-            GroupIconHelper.a(this.this$0, (String)((Pair)???).first, (aocy)((Pair)???).second, true);
-            j += 1;
+            i = 0;
+            if ((i < ((ArrayList)localObject3).size()) && (this.a))
+            {
+              ??? = (Pair)((ArrayList)localObject3).get(i);
+              GroupIconHelper.a(this.this$0, (String)((Pair)???).first, (aopk)((Pair)???).second, true);
+              i += 1;
+            }
           }
         }
-        if ((this.a) && (localArrayList2 != null))
+        if ((this.a) && (localObject1 != null))
         {
-          j = 0;
-          while ((j < localArrayList2.size()) && (this.a))
+          i = 0;
+          while ((i < localObject1.size()) && (this.a))
           {
-            localObject2 = (String)localArrayList2.get(j);
-            this.this$0.b((String)localObject2);
-            j += 1;
+            localObject3 = (String)localObject1.get(i);
+            this.this$0.b((String)localObject3);
+            i += 1;
           }
         }
-        if (i != 0) {
-          break label502;
+        if (j != 0) {
+          break label269;
         }
       }
       synchronized (GroupIconHelper.a(this.this$0))
@@ -151,23 +152,23 @@ class GroupIconHelper$CheckDisIconThread
           QLog.d("Q.qqhead.dih", 2, "CheckDisIconThread exit. isRunning=" + this.a);
         }
         return;
-        label502:
+        label269:
         if (!this.a) {}
       }
     }
     try
     {
-      label542:
+      label309:
       synchronized (GroupIconHelper.a(this.this$0))
       {
         GroupIconHelper.a(this.this$0).wait(GroupIconHelper.a(this.this$0) / 10);
       }
-      localObject4 = finally;
-      throw localObject4;
+      localObject5 = finally;
+      throw localObject5;
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label542;
+      break label309;
     }
   }
 }

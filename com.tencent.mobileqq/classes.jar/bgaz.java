@@ -1,26 +1,24 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-class bgaz
-  implements anwz
+public class bgaz
+  implements View.OnTouchListener
 {
-  public bgba a;
+  public bgaz(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  private bgaz(bgax parambgax) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Bgba != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Bgba.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
+    switch (paramMotionEvent.getAction())
     {
-      paramTroopMemberInfo = new bdnf(((TroopManager)this.jdField_a_of_type_Bgax.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
-      this.jdField_a_of_type_Bgba.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
-      if (AppSetting.c) {
-        bgax.a(this.jdField_a_of_type_Bgax, this.jdField_a_of_type_Bgba);
-      }
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

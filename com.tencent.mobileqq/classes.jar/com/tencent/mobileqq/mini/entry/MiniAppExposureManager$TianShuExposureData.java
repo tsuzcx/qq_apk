@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.util.Log;
-import bmvi;
-import bmvj;
+import bnwq;
+import bnwr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -28,22 +28,22 @@ public class MiniAppExposureManager$TianShuExposureData
   {
     try
     {
-      bmvj localbmvj = new bmvj();
+      bnwr localbnwr = new bnwr();
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       String str = "";
       if (localAppRuntime != null) {
         str = localAppRuntime.getAccount();
       }
       long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-      localbmvj.b = (str + "_" + l);
-      localbmvj.jdField_a_of_type_Int = 1;
-      localbmvj.jdField_e_of_type_JavaLangString = this.appId;
-      localbmvj.f = this.pageId;
-      localbmvj.g = this.itemId;
-      localbmvj.d = this.actionId;
-      localbmvj.jdField_e_of_type_Int = 1;
-      localbmvj.jdField_a_of_type_Long = l;
-      bmvi.a().a(localbmvj);
+      localbnwr.b = (str + "_" + l);
+      localbnwr.jdField_a_of_type_Int = 1;
+      localbnwr.jdField_e_of_type_JavaLangString = this.appId;
+      localbnwr.f = this.pageId;
+      localbnwr.g = this.itemId;
+      localbnwr.d = this.actionId;
+      localbnwr.jdField_e_of_type_Int = 1;
+      localbnwr.jdField_a_of_type_Long = l;
+      bnwq.a().a(localbnwr);
       if (QLog.isColorLevel()) {
         QLog.i("MiniAppExposureManager", 2, "TianShuExposureData, report itemId: " + this.itemId);
       }

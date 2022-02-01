@@ -1,56 +1,29 @@
-import UserGrowth.stGetPersonalFeedListRsp;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import java.util.ArrayList;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
 
-class urg
-  implements ujj
+final class urg
+  extends uiy
 {
-  urg(urf paramurf, long paramLong, boolean paramBoolean1, ure paramure, boolean paramBoolean2, Object paramObject) {}
+  urg(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2) {}
   
-  public void a(uju paramuju)
+  public void a()
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    upe.a("weishi-beacon", "请求播放页（推荐)耗时：" + l + "毫秒");
-    unb.a().a(true, l, paramuju.jdField_a_of_type_Ujr.d(), 10007, "chat_page", this.jdField_a_of_type_Boolean);
-    if (!paramuju.a())
-    {
-      upe.d("WSArkCardDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramuju.jdField_a_of_type_Int + ", msg:" + paramuju.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Ure != null) {
-        this.jdField_a_of_type_Ure.a(paramuju.jdField_a_of_type_Int, paramuju.jdField_a_of_type_JavaLangString);
-      }
-    }
-    do
-    {
-      return;
-      if ((paramuju.jdField_a_of_type_JavaLangObject instanceof stGetPersonalFeedListRsp))
-      {
-        stGetPersonalFeedListRsp localstGetPersonalFeedListRsp = (stGetPersonalFeedListRsp)paramuju.jdField_a_of_type_JavaLangObject;
-        if (this.jdField_a_of_type_Boolean) {
-          urf.a(this.jdField_a_of_type_Urf, localstGetPersonalFeedListRsp, this.jdField_a_of_type_Ure);
-        }
-        urf.a(this.jdField_a_of_type_Urf, localstGetPersonalFeedListRsp.attach_info);
-        urf.a(this.jdField_a_of_type_Urf, localstGetPersonalFeedListRsp.is_finished);
-        ArrayList localArrayList = localstGetPersonalFeedListRsp.feeds;
-        List localList = WSVerticalDataManager.a().a(localArrayList);
-        StringBuilder localStringBuilder = new StringBuilder().append("[WSVerticalDataManager.java][onTaskResponse] itemDataList size:").append(localList.size()).append(", isFirst = ").append(this.jdField_a_of_type_Boolean).append(", mAttachInfo = ").append(urf.a(this.jdField_a_of_type_Urf)).append(", isFinish = ").append(localstGetPersonalFeedListRsp.is_finished).append(", size = ");
-        if (localArrayList != null) {}
-        for (int i = localArrayList.size();; i = 0)
-        {
-          upe.e("WSArkCardDataManagerLog", i);
-          if (paramuju.jdField_a_of_type_Ujk != null) {
-            ugb.a().a(localstGetPersonalFeedListRsp.traceId, paramuju.jdField_a_of_type_Ujk.a);
-          }
-          if (this.jdField_a_of_type_Ure == null) {
-            break;
-          }
-          this.jdField_a_of_type_Ure.a(localList, this.b, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
-          return;
-        }
-      }
-      upe.d("WSArkCardDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
-    } while (this.jdField_a_of_type_Ure == null);
-    this.jdField_a_of_type_Ure.a(paramuju.b, paramuju.jdField_a_of_type_JavaLangString);
+    super.a();
+    ure.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000003);
+    ure.a("videolay_tag_clk_ws", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public void c()
+  {
+    super.c();
+    ure.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000004);
+    ure.a("videolay_tag_clk_h5", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public void d()
+  {
+    super.d();
+    ure.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000002);
+    ure.a("videolay_tag_dl_ws", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
 }
 

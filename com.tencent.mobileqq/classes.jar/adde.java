@@ -1,31 +1,20 @@
-import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adde
-  implements IMemoryDumpListener
+public class adde
+  implements adci
 {
-  adde(addd paramaddd, adcb paramadcb) {}
-  
-  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
-  
-  public void onHprofDumped(@NotNull String paramString)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    this.jdField_a_of_type_Adcb.a();
+    awpn.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.shMsgSeq, paramMsgInfo.uRealMsgTime, false);
   }
   
-  @NotNull
-  public List<String> onPrepareDump(@NotNull String paramString)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    long l1 = Runtime.getRuntime().totalMemory();
-    long l2 = Runtime.getRuntime().freeMemory();
-    ArrayList localArrayList = new ArrayList(4);
-    localArrayList.addAll(adct.b());
-    localArrayList.add(adct.b());
-    localArrayList.add(adct.a());
-    localArrayList.add(adct.a(paramString, l1 - l2));
-    return localArrayList;
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

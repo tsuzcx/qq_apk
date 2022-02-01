@@ -1,20 +1,20 @@
 package com.tencent.open.agent;
 
-import binj;
-import binn;
+import bjoi;
+import bjom;
 import java.util.ArrayList;
 
 public class OpenSdkFriendService$GetFriendListCallback$1
   implements Runnable
 {
-  public OpenSdkFriendService$GetFriendListCallback$1(binn parambinn, ArrayList paramArrayList, String paramString) {}
+  public OpenSdkFriendService$GetFriendListCallback$1(bjom parambjom, ArrayList paramArrayList, String paramString) {}
   
   public void run()
   {
-    if ("action_invite".equals(this.jdField_a_of_type_Binn.a.d))
+    if ("action_invite".equals(this.jdField_a_of_type_Bjom.a.d))
     {
-      this.jdField_a_of_type_Binn.a.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Binn.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bjom.a.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Bjom.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

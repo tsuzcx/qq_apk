@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.cache;
 
 import android.app.Activity;
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -22,11 +22,11 @@ final class MiniCacheFreeManager$1
       return;
       try
       {
-        bgpa localbgpa = bglp.a(this.val$activity, 230, null, this.val$dialogContext, anni.a(2131708990), anni.a(2131708991), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
-        localbgpa.setCanceledOnTouchOutside(false);
+        bhpc localbhpc = bhlq.a(this.val$activity, 230, null, this.val$dialogContext, anzj.a(2131709099), anzj.a(2131709100), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
+        localbhpc.setCanceledOnTouchOutside(false);
         if ((this.val$activity != null) && (!this.val$activity.isFinishing()))
         {
-          localbgpa.show();
+          localbhpc.show();
           return;
         }
       }

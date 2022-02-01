@@ -1,79 +1,34 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.avgame.session.AVGameSession;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.avgame.gameroom.video.AVGameNetWorkQualityManager;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class nem
+  implements aonu
 {
-  private AVGameSession jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
-  private final Map<String, AVGameSession> jdField_a_of_type_JavaUtilMap = new HashMap(3);
+  public nem(AVGameNetWorkQualityManager paramAVGameNetWorkQualityManager, Context paramContext, String paramString) {}
   
-  public AVGameSession a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
-  }
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public AVGameSession a(int paramInt, String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = null;
-    if (!TextUtils.isEmpty(paramString))
+    QLog.d("AVGameNetWorkQualityManager", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      AVGameSession localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      localObject = localAVGameSession;
-      if (localAVGameSession == null)
-      {
-        localAVGameSession = new AVGameSession(paramInt, paramString);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localAVGameSession);
-        if (this.jdField_a_of_type_JavaUtilMap.size() != 1)
-        {
-          localObject = localAVGameSession;
-          if (!paramBoolean) {}
-        }
-        else
-        {
-          a(paramString);
-          localObject = localAVGameSession;
-        }
-      }
+      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      StringBuilder localStringBuilder = new StringBuilder("https://act.qzone.qq.com/vip/meteor/blockly/p/4861x6970f?env=uat");
+      Intent localIntent = new Intent(localActivity, QQTranslucentBrowserActivity.class);
+      localIntent.putExtra("isTransparentTitle", true);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("avgame_share_link", paramString);
+      localIntent.putExtra("avgame_share_name", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("url", localStringBuilder.toString());
+      localIntent.putExtra("big_brother_source_key", "biz_src_jc_av_game");
+      localActivity.startActivity(localIntent);
     }
-    return localObject;
-  }
-  
-  public AVGameSession a(String paramString)
-  {
-    AVGameSession localAVGameSession = null;
-    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-      localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    return localAVGameSession;
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (!paramString.a))
-    {
-      if (this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession != null) {
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
-      }
-      paramString.a = true;
-      this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = paramString;
-    }
-  }
-  
-  public AVGameSession b(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
-    {
-      paramString = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      if ((paramString != null) && (paramString == this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession))
-      {
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = null;
-      }
-      return paramString;
-    }
-    return null;
   }
 }
 

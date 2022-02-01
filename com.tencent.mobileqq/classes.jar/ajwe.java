@@ -1,26 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-
-class ajwe
-  implements DialogInterface.OnClickListener
+public abstract interface ajwe
 {
-  ajwe(ajvr paramajvr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    if (this.a.a.getIntent().getExtras() != null) {
-      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
-    }
-    paramDialogInterface.addFlags(268435456);
-    paramDialogInterface.addFlags(67108864);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.b.dismiss();
-  }
+  public abstract void c();
 }
 
 

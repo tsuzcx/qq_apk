@@ -11,7 +11,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import bknr;
+import blou;
 import com.tencent.qphone.base.util.QLog;
 
 public class PullToZoomListView
@@ -33,7 +33,7 @@ public class PullToZoomListView
   
   static
   {
-    jdField_a_of_type_AndroidViewAnimationInterpolator = new bknr();
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new blou();
   }
   
   public PullToZoomListView(Context paramContext)

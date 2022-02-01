@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import bctj;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -11,7 +11,7 @@ class OlympicToolBaseActivity$1
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(-1003));
-    bctj.a(BaseApplicationImpl.getContext()).a("", "ocr_entrance", true, 0L, 0L, localHashMap, "", false);
+    bdmc.a(BaseApplicationImpl.getContext()).a("", "ocr_entrance", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

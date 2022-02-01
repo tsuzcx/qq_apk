@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.os.SystemClock;
-import bcpt;
-import bcpu;
-import bcpv;
-import bcpw;
-import bcpx;
-import bcpy;
-import bcpz;
-import bcqa;
-import bcqb;
-import bcqc;
-import bcqd;
-import bcqe;
-import bcqf;
-import bcqg;
-import bcqh;
-import bcqi;
-import bcqj;
-import bcqk;
-import bcql;
-import bcqm;
-import bcqn;
+import bdil;
+import bdim;
+import bdin;
+import bdio;
+import bdip;
+import bdiq;
+import bdir;
+import bdis;
+import bdit;
+import bdiu;
+import bdiv;
+import bdiw;
+import bdix;
+import bdiy;
+import bdiz;
+import bdja;
+import bdjb;
+import bdjc;
+import bdjd;
+import bdje;
+import bdjf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.imcore.IMCore;
@@ -57,16 +57,16 @@ import mqq.os.MqqHandler;
 public class LoadModule
   extends Step
 {
-  private static IMCoreProxyRoute.ExceptionTracker.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$ExceptionTracker$Proxy = new bcqf();
-  private static IMCoreProxyRoute.GetStaticProxy<AppRuntime> jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$GetStaticProxy = new bcqb();
+  private static IMCoreProxyRoute.ExceptionTracker.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$ExceptionTracker$Proxy = new bdix();
+  private static IMCoreProxyRoute.GetStaticProxy<AppRuntime> jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$GetStaticProxy = new bdit();
   private static IMCoreProxyRoute.MsgProxyUtils.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$MsgProxyUtils$Proxy;
-  private static IMCoreProxyRoute.OGEntityDaoManager.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$OGEntityDaoManager$Proxy = new bcqc();
-  private static IMCoreProxyRoute.TableBuilder.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$TableBuilder$Proxy = new bcqg();
+  private static IMCoreProxyRoute.OGEntityDaoManager.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$OGEntityDaoManager$Proxy = new bdiu();
+  private static IMCoreProxyRoute.TableBuilder.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$TableBuilder$Proxy = new bdiy();
   public static volatile boolean a;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$MsgProxyUtils$Proxy = new bcqe();
+    jdField_a_of_type_ComTencentMobileqqImcoreProxyIMCoreProxyRoute$MsgProxyUtils$Proxy = new bdiw();
   }
   
   private static void b()
@@ -90,36 +90,36 @@ public class LoadModule
     if (QLog.isColorLevel()) {
       QLog.d("LoadModule", 2, new Object[] { "initModuleProxyNotImport Start, process=", BaseApplicationImpl.processName });
     }
-    IMCoreProxyRoute.StatisticCollector.registerProxy(new bcqd());
-    IMCoreProxyRoute.CaughtExceptionReport.registerProxy(new bcqh());
-    IMCoreProxyRoute.SQLiteFTSUtils.registerProxy(new bcqi());
-    IMCoreProxyRoute.ThreadTraceHelper.registerProxy(new bcqj());
-    IMCoreProxyRoute.AIOUtils.registerProxy(new bcqk());
+    IMCoreProxyRoute.StatisticCollector.registerProxy(new bdiv());
+    IMCoreProxyRoute.CaughtExceptionReport.registerProxy(new bdiz());
+    IMCoreProxyRoute.SQLiteFTSUtils.registerProxy(new bdja());
+    IMCoreProxyRoute.ThreadTraceHelper.registerProxy(new bdjb());
+    IMCoreProxyRoute.AIOUtils.registerProxy(new bdjc());
     if (QLog.isColorLevel()) {
       QLog.d("LoadModule", 2, new Object[] { "initModuleProxyNotImport finish, process=", BaseApplicationImpl.processName });
     }
-    IMCoreProxyRoute.ThreadRegulator.registerProxy(new bcql());
-    IMCoreProxyRoute.TalkBack.registerProxy(new bcqm());
-    RecentRoute.MsgUtils.registerProxy(new bcqn());
-    RecentRoute.QQTextProxy.registerProxy(new bcpt());
-    RecentRoute.TimeFormatterUtils.registerProxy(new bcpu());
-    RecentRoute.ConversationFacadeProxy.registerProxy(new bcpv());
-    RecentRoute.ContactUtilsProxy.registerProxy(new bcpw());
-    RecentRoute.ColorNickManagerProxy.registerProxy(new bcpx());
-    RecentRoute.TroopManagerProxy.registerProxy(new bcpy());
-    RecentRoute.HotChatManagerProxy.registerProxy(new bcpz());
-    RecentRoute.TroopAssistantManagerProxy.registerProxy(new bcqa());
+    IMCoreProxyRoute.ThreadRegulator.registerProxy(new bdjd());
+    IMCoreProxyRoute.TalkBack.registerProxy(new bdje());
+    RecentRoute.MsgUtils.registerProxy(new bdjf());
+    RecentRoute.QQTextProxy.registerProxy(new bdil());
+    RecentRoute.TimeFormatterUtils.registerProxy(new bdim());
+    RecentRoute.ConversationFacadeProxy.registerProxy(new bdin());
+    RecentRoute.ContactUtilsProxy.registerProxy(new bdio());
+    RecentRoute.ColorNickManagerProxy.registerProxy(new bdip());
+    RecentRoute.TroopManagerProxy.registerProxy(new bdiq());
+    RecentRoute.HotChatManagerProxy.registerProxy(new bdir());
+    RecentRoute.TroopAssistantManagerProxy.registerProxy(new bdis());
   }
   
   private static void d()
   {
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.recent_icon_failed = 2130849552;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.recent_icon_sending = 2130849553;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.skin_orange = 2131167092;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.skin_gray2_theme_version2 = 2131167064;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.troop_assistant_num_unreadmsg = 2131718710;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.troop_assistant_detail = 2131718700;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.troop_assistant = 2131718696;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.recent_icon_failed = 2130849558;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.recent_icon_sending = 2130849559;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.skin_orange = 2131167102;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.skin_gray2_theme_version2 = 2131167074;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.troop_assistant_num_unreadmsg = 2131718846;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.troop_assistant_detail = 2131718836;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.troop_assistant = 2131718832;
   }
   
   private static void e()

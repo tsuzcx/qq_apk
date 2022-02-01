@@ -1,147 +1,152 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.Locale;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Pattern;
 
 public class argn
+  extends arac<argm>
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy年M月d日 hh:mm:ss");
-  private static final Date jdField_a_of_type_JavaUtilDate = new Date();
-  private static final Formatter jdField_a_of_type_JavaUtilFormatter;
-  
-  static
+  @NonNull
+  public argm a(int paramInt)
   {
-    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    jdField_a_of_type_JavaUtilFormatter = new Formatter(jdField_a_of_type_JavaLangStringBuilder, Locale.getDefault());
+    return new argm();
   }
   
-  public static int a(float paramFloat)
+  @Nullable
+  public argm a(araj[] paramArrayOfaraj)
   {
-    if (jdField_a_of_type_Float < 0.0F) {
-      jdField_a_of_type_Float = ardw.a().a().a().getDisplayMetrics().density;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicPreDownloadConfProcessor", 2, "onParsed " + paramArrayOfaraj.length);
     }
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaraj != null)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfaraj.length > 0) {
+        localObject1 = argm.a(paramArrayOfaraj);
+      }
+    }
+    return localObject1;
   }
   
-  public static int a(aren paramaren1, aren paramaren2)
+  public void a(argm paramargm)
   {
-    int i = 0;
-    if (paramaren1 == paramaren2) {}
-    int j;
-    do
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicPreDownloadConfProcessor", 2, "onUpdate " + paramargm.toString());
+    }
+    if (Pattern.matches("(\\d+?\\|){7}\\d+", paramargm.jdField_a_of_type_JavaLangString)) {
+      azqi.a("flowCombination", paramargm.jdField_a_of_type_JavaLangString, true);
+    }
+    if (Pattern.matches("(\\d+?\\|){3}\\d+", paramargm.jdField_b_of_type_JavaLangString)) {
+      azqi.a("troopCombination", paramargm.jdField_b_of_type_JavaLangString, true);
+    }
+    if (paramargm.g > 0L) {
+      azqi.a("maxRequest", paramargm.g, true);
+    }
+    if ((paramargm.jdField_a_of_type_Long == 0L) || (paramargm.jdField_a_of_type_Long == 1L)) {
+      if (paramargm.jdField_a_of_type_Long != 1L) {
+        break label483;
+      }
+    }
+    label483:
+    for (boolean bool1 = true;; bool1 = false)
     {
-      do
+      azqi.a("PicPreDownSwitchNew", bool1, true);
+      if ((paramargm.jdField_b_of_type_Long == 0L) || (paramargm.jdField_b_of_type_Long == 1L) || (paramargm.jdField_b_of_type_Long == 2L) || (paramargm.jdField_b_of_type_Long == 3L)) {
+        azqi.a("PicAuDownTimePoint", paramargm.jdField_b_of_type_Long, true);
+      }
+      if (paramargm.jdField_c_of_type_Long > 0L) {
+        azqi.a("MaxWifiFlow", paramargm.jdField_c_of_type_Long, true);
+      }
+      if (paramargm.jdField_d_of_type_Long > 0L) {
+        azqi.a("Max4GFlow", paramargm.jdField_d_of_type_Long, true);
+      }
+      if (paramargm.e > 0L) {
+        azqi.a("Max3GFlow", paramargm.e, true);
+      }
+      if (paramargm.f > 0L) {
+        azqi.a("Max2GFlow", paramargm.f, true);
+      }
+      if (Pattern.matches("^[0-9A-Fa-f]+$", paramargm.jdField_c_of_type_JavaLangString)) {
+        azqi.a("xGPreDownPolicy", Long.valueOf(paramargm.jdField_c_of_type_JavaLangString, 16).longValue(), true);
+      }
+      if (paramargm.h > 0L) {
+        azqi.a("AFBFlowHitXG", paramargm.h, true);
+      }
+      if (paramargm.i > 0L) {
+        azqi.a("AFBFlowMissXG", paramargm.i, true);
+      }
+      if (paramargm.j > 0L) {
+        azqi.a("APicAvgSize", paramargm.j, true);
+      }
+      if (paramargm.k > 0L) {
+        azqi.a("APicMaxSize", paramargm.k, true);
+      }
+      if ((paramargm.l == 0L) || (paramargm.l == 1L))
       {
-        return i;
-        if (paramaren1 == null) {
-          return -1;
+        bool1 = bool2;
+        if (paramargm.l == 1L) {
+          bool1 = true;
         }
-        if (paramaren2 == null) {
-          return 1;
-        }
-      } while (paramaren1.equals(paramaren2));
-      long l = paramaren1.d() - paramaren2.d();
-      if (l > 0L) {
-        return 1;
+        azqi.a("enablePeakFlow", bool1, true);
       }
-      if (l < 0L) {
-        return -1;
+      if (Pattern.matches("^((([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]);)*+([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]))$", paramargm.jdField_d_of_type_JavaLangString)) {
+        azqi.a("PeakFlowTimePeriod", paramargm.jdField_d_of_type_JavaLangString, true);
       }
-      i = paramaren1.b() - paramaren2.b();
-      if (i > 0) {
-        return -1;
+      if (paramargm.m > 0L) {
+        azqi.a("PeakFlowMaxPicSize", paramargm.m, true);
       }
-      if (i < 0) {
-        return 1;
+      if ((paramargm.jdField_a_of_type_Int > 0) && (paramargm.jdField_b_of_type_Int > 0))
+      {
+        azqi.a("gifWifiPreDownloadLimit", paramargm.jdField_a_of_type_Int, true);
+        azqi.a("gifXgPreDownloadLimit", paramargm.jdField_b_of_type_Int, true);
       }
-      i = paramaren1.e() - paramaren2.e();
-      if (i > 0) {
-        return 1;
-      }
-      if (i < 0) {
-        return -1;
-      }
-      i = paramaren1.c() - paramaren2.c();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      l = paramaren1.c() - paramaren2.c();
-      if (l > 0L) {
-        return -1;
-      }
-      if (l < 0L) {
-        return 1;
-      }
-      j = paramaren1.a() - paramaren2.a();
-      if (j > 0) {
-        return 1;
-      }
-      i = j;
-    } while (j >= 0);
-    return -1;
-  }
-  
-  public static int a(aren paramaren1, aren paramaren2, long paramLong)
-  {
-    if ((paramaren1.b(paramLong)) || (paramaren2.b(paramLong))) {}
-    float[] arrayOfFloat2;
-    do
-    {
-      return -1;
-      arrayOfFloat1 = paramaren1.a(paramaren1.e());
-      arrayOfFloat2 = paramaren2.a(paramaren1.e());
-    } while ((arrayOfFloat1 == null) || (arrayOfFloat2 == null));
-    int i = (int)((arrayOfFloat2[0] - arrayOfFloat1[2]) / paramaren2.a());
-    float[] arrayOfFloat1 = paramaren1.a(paramaren1.b());
-    return Math.max(i, (int)((paramaren2.a(paramaren1.b())[0] - arrayOfFloat1[2]) / paramaren2.a()));
-  }
-  
-  public static String a(long paramLong)
-  {
-    if (paramLong < 86400000L)
-    {
-      paramLong /= 1000L;
-      long l1 = paramLong % 60L;
-      long l2 = paramLong / 60L % 60L;
-      long l3 = paramLong / 3600L;
-      paramLong = l1;
-      if (l1 < 0L) {
-        paramLong = 0L;
-      }
-      l1 = l2;
-      if (l2 < 0L) {
-        l1 = 0L;
-      }
-      l2 = l3;
-      if (l3 < 0L) {
-        l2 = 0L;
-      }
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      if (l2 > 0L) {
-        return jdField_a_of_type_JavaUtilFormatter.format("%d:%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
-      }
-      return jdField_a_of_type_JavaUtilFormatter.format("%02d:%02d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
+      return;
     }
-    jdField_a_of_type_JavaUtilDate.setTime(paramLong);
-    return jdField_a_of_type_JavaTextSimpleDateFormat.format(jdField_a_of_type_JavaUtilDate);
   }
   
-  public static boolean a()
+  public Class<argm> clazz()
   {
-    return Build.VERSION.SDK_INT >= 18;
+    return argm.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicPreDownloadConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 616;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class qci
-  implements qft
+class qci
+  implements pre
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  qci(qcf paramqcf, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return qbl.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = parampxk.a();
-    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
-      qhv.a(paramContainer, parampxk);
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
     }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
-  {
-    return false;
+    if (paramBoolean)
+    {
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        qcf.a(this.jdField_a_of_type_Qcf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        qcf.a(this.jdField_a_of_type_Qcf).notifyDataSetChanged();
+        return;
+      }
+    }
+    QQToast.a(qcf.a(this.jdField_a_of_type_Qcf).getContext(), 1, 2131717203, 0).a();
   }
 }
 

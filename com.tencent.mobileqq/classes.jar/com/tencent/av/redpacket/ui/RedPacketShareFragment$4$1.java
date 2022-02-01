@@ -5,7 +5,7 @@ import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
-import zvc;
+import zyx;
 
 class RedPacketShareFragment$4$1
   implements Runnable
@@ -22,14 +22,14 @@ class RedPacketShareFragment$4$1
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$4.this$0.getActivity().sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$4.this$0.getString(2131715857, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$4.this$0.getActivity().getTitleBarHeight());
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$4.this$0.getString(2131715966, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$4.this$0.getActivity().getTitleBarHeight());
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$4.this$0.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$4.this$0.b = true;
       return;
-      zvc.a(1, 2131695185);
+      zyx.a(1, 2131695228);
     }
   }
 }

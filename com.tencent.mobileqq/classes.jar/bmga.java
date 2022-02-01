@@ -1,21 +1,8 @@
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.photo.album.QAlbumConstants;
 
-public class bmga
-  implements QQPermissionCallback
-{
-  public bmga(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bglp.b(this.a);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QZoneShareActivity.a(this.a);
-  }
-}
+public abstract interface bmga
+  extends QAlbumConstants
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

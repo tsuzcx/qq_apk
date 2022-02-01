@@ -1,154 +1,619 @@
-import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLImageView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager.1;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Observer;
+import mqq.os.MqqHandler;
 
 public class aiwh
-  extends BaseAdapter
+  implements aiwg, Handler.Callback
 {
-  private aiwj jdField_a_of_type_Aiwj;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<aiwi> jdField_a_of_type_JavaUtilList = new ArrayList();
+  int jdField_a_of_type_Int = zft.b(BaseApplicationImpl.getContext(), 50.0F);
+  private aged jdField_a_of_type_Aged;
+  private aiwf jdField_a_of_type_Aiwf;
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new aiwi(this);
+  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private XPanelContainer jdField_a_of_type_ComTencentWidgetXPanelContainer;
+  private ArrayList<aiwj> jdField_a_of_type_JavaUtilArrayList;
+  public List<QQOperationViopTipTask> a;
+  private Observer jdField_a_of_type_JavaUtilObserver;
+  protected final MqqHandler a;
+  int jdField_b_of_type_Int = zft.b(BaseApplicationImpl.getContext(), 30.0F);
+  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  Animation c;
   
-  public aiwh(Context paramContext)
+  public aiwh(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aged paramaged, XPanelContainer paramXPanelContainer, List<QQOperationViopTipTask> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Aged = paramaged;
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  private int a(float paramFloat, int paramInt)
+  /* Error */
+  private RelativeLayout a()
   {
-    return (Math.min(255, Math.max(0, (int)(255.0F * paramFloat))) << 24) + (0xFFFFFF & paramInt);
+    // Byte code:
+    //   0: invokestatic 52	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3: ldc 94
+    //   5: aconst_null
+    //   6: invokestatic 100	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   9: checkcast 102	android/widget/RelativeLayout
+    //   12: astore_1
+    //   13: aload_0
+    //   14: aload_1
+    //   15: ldc 103
+    //   17: invokevirtual 107	android/widget/RelativeLayout:findViewById	(I)Landroid/view/View;
+    //   20: checkcast 109	com/tencent/image/URLImageView
+    //   23: putfield 111	aiwh:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   26: aload_1
+    //   27: astore_2
+    //   28: new 113	java/io/File
+    //   31: dup
+    //   32: getstatic 119	oek:h	Ljava/lang/String;
+    //   35: invokespecial 122	java/io/File:<init>	(Ljava/lang/String;)V
+    //   38: invokevirtual 126	java/io/File:exists	()Z
+    //   41: ifeq +62 -> 103
+    //   44: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   47: ifeq +11 -> 58
+    //   50: ldc 133
+    //   52: iconst_2
+    //   53: ldc 135
+    //   55: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   58: new 141	java/net/URL
+    //   61: dup
+    //   62: new 143	java/lang/StringBuilder
+    //   65: dup
+    //   66: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   69: ldc 146
+    //   71: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: getstatic 119	oek:h	Ljava/lang/String;
+    //   77: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokespecial 155	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   86: invokestatic 161	com/tencent/image/URLDrawable$URLDrawableOptions:obtain	()Lcom/tencent/image/URLDrawable$URLDrawableOptions;
+    //   89: invokestatic 167	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   92: astore_2
+    //   93: aload_0
+    //   94: getfield 111	aiwh:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   97: aload_2
+    //   98: invokevirtual 171	com/tencent/image/URLImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   101: aload_1
+    //   102: astore_2
+    //   103: aload_2
+    //   104: areturn
+    //   105: astore_3
+    //   106: aconst_null
+    //   107: astore_1
+    //   108: aload_3
+    //   109: invokevirtual 174	java/net/MalformedURLException:printStackTrace	()V
+    //   112: aload_1
+    //   113: astore_2
+    //   114: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   117: ifeq -14 -> 103
+    //   120: ldc 133
+    //   122: iconst_2
+    //   123: new 143	java/lang/StringBuilder
+    //   126: dup
+    //   127: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   130: ldc 176
+    //   132: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: aload_3
+    //   136: invokevirtual 179	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
+    //   139: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   148: aload_1
+    //   149: areturn
+    //   150: astore_1
+    //   151: aconst_null
+    //   152: areturn
+    //   153: astore_2
+    //   154: aload_1
+    //   155: areturn
+    //   156: astore_3
+    //   157: goto -49 -> 108
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	160	0	this	aiwh
+    //   12	137	1	localRelativeLayout	RelativeLayout
+    //   150	5	1	localThrowable1	Throwable
+    //   27	87	2	localObject	Object
+    //   153	1	2	localThrowable2	Throwable
+    //   105	31	3	localMalformedURLException1	java.net.MalformedURLException
+    //   156	1	3	localMalformedURLException2	java.net.MalformedURLException
+    // Exception table:
+    //   from	to	target	type
+    //   0	13	105	java/net/MalformedURLException
+    //   0	13	150	java/lang/Throwable
+    //   13	26	153	java/lang/Throwable
+    //   28	58	153	java/lang/Throwable
+    //   58	101	153	java/lang/Throwable
+    //   13	26	156	java/net/MalformedURLException
+    //   28	58	156	java/net/MalformedURLException
+    //   58	101	156	java/net/MalformedURLException
   }
   
-  private ColorStateList a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static String a(int paramInt)
   {
-    return new ColorStateList(new int[][] { { 16842919, 16842910 }, { 16842910, 16842908 }, { 16842910 }, { 16842908 }, { 16842909 }, new int[0] }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
+    switch (paramInt)
+    {
+    default: 
+      return " [Unknow] ";
+    case 4: 
+      return " [TIPS_BAR_TYPE_DISC_FREQ_CALL] ";
+    case 0: 
+      return " [TIPS_BAR_TYPE_FRAUD] ";
+    case 5: 
+      return " [TIPS_BAR_TYPE_HOT_FRIEND_CALL] ";
+    case 2: 
+      return " [TIPS_BAR_TYPE_VIDEO_STATUS] ";
+    case 3: 
+      return " [TIPS_BAR_TYPE_TROOP_ASSIST] ";
+    case 6: 
+      return "[TIPS_QQ_OPERATE] ";
+    case 7: 
+      return " [TIPS_BAR_TYPE_PUB_ACCOUNT_ASSIT] ";
+    case 1: 
+      return " [TIPS_BAR_TYPE_READER] ";
+    case 1001: 
+      return " [GRAY_TIPS_DISC_FREQ_PTT] ";
+    case 1000: 
+      return " [GRAY_TIPS_FRIEND_FREQ] ";
+    case 1002: 
+      return " [GRAY_TIPS_SOUGOU_INPUT] ";
+    case 1003: 
+      return " [GRAY_TIPS_GATHER_CONTACTS] ";
+    case 9: 
+      return " [TIPS_TYPE_RED_PACKET] ";
+    case 10: 
+      return " [TIPS_BAR_TYPE_FUN_CALL]";
+    case 12: 
+      return "[TIPS_TYPE_BAR_LIGHTALK]";
+    case 1004: 
+      return " [TIPS_TYPE_GRAY_HONGBAO_KEYWORDS] ";
+    case 2001: 
+      return " [TIPS_TYPE_GRAY_SPECIALCARE]";
+    case 15: 
+      return " [TIPS_TYPE_BAR_APOLLO_GAME_PARTY]";
+    case 17: 
+      return " [TIPS_TYPE_MOVIE_TICKET]";
+    case 19: 
+      return " [TIPS_TYPE_BAR_HW_TROOP]";
+    case 20: 
+      return "[TIPS_TYPE_BAR_HW_TROOP_SURVEY]";
+    case 27: 
+      return "[TIPS_TYPE_BAR_HW_TROOP_CLASS_INFO]";
+    case 22: 
+      return "[TIPS_TYPE_C2B]";
+    case 26: 
+      return "[TIPS_TYPE_TOGETHER_BUSINESS_TIPS]";
+    case 2002: 
+      return "[TIPS_TYPE_AV_GAME]";
+    }
+    return "[TIPS_TYPE_STUDY_ROOM]";
   }
   
-  private Drawable a(int paramInt)
+  private boolean a(aiwj paramaiwj)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(42.0F);
-    localGradientDrawable.setColor(paramInt);
-    return localGradientDrawable;
+    boolean bool3 = false;
+    Object localObject1 = a(paramaiwj.b());
+    int i = -1;
+    int[] arrayOfInt = paramaiwj.a();
+    boolean bool1;
+    if (arrayOfInt != null)
+    {
+      if (this.jdField_a_of_type_Aiwf != null) {
+        i = this.jdField_a_of_type_Aiwf.b();
+      }
+      boolean bool2 = true;
+      int j = 0;
+      Object localObject2 = localObject1;
+      if (j < arrayOfInt.length)
+      {
+        switch (arrayOfInt[j])
+        {
+        default: 
+          bool1 = bool2;
+          localObject1 = localObject2;
+        }
+        for (;;)
+        {
+          j += 1;
+          localObject2 = localObject1;
+          bool2 = bool1;
+          break;
+          localObject1 = localObject2;
+          bool1 = bool2;
+          if (i == arrayOfInt[j])
+          {
+            localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_BAR_DISC_ACTIVE ";
+            bool1 = false;
+            continue;
+            localObject1 = localObject2;
+            bool1 = bool2;
+            if (i == arrayOfInt[j])
+            {
+              localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_BAR_FRAUD ";
+              bool1 = false;
+              continue;
+              localObject1 = localObject2;
+              bool1 = bool2;
+              if (i == arrayOfInt[j])
+              {
+                localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_BAR_FRIEND_HOT ";
+                bool1 = false;
+                continue;
+                localObject1 = localObject2;
+                bool1 = bool2;
+                if (i == arrayOfInt[j])
+                {
+                  localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_BAR_READER ";
+                  bool1 = false;
+                  continue;
+                  localObject1 = localObject2;
+                  bool1 = bool2;
+                  if (i == arrayOfInt[j])
+                  {
+                    localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_BAR_TROOP_ASSIST ";
+                    bool1 = false;
+                    continue;
+                    localObject1 = localObject2;
+                    bool1 = bool2;
+                    if (i == arrayOfInt[j])
+                    {
+                      localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_BAR_VIDEO_STATUS ";
+                      bool1 = false;
+                      continue;
+                      localObject1 = localObject2;
+                      bool1 = bool2;
+                      if (i == arrayOfInt[j])
+                      {
+                        localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_QQ_OPERATE ";
+                        bool1 = false;
+                        continue;
+                        localObject1 = localObject2;
+                        bool1 = bool2;
+                        if (i == arrayOfInt[j])
+                        {
+                          localObject1 = localObject2 + ", not allowed by excludeType: TIPS_TYPE_BAR_PUB_ACCOUNT_ASSIST ";
+                          bool1 = false;
+                          continue;
+                          localObject1 = localObject2;
+                          bool1 = bool2;
+                          if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer != null)
+                          {
+                            localObject1 = localObject2;
+                            bool1 = bool2;
+                            if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0)
+                            {
+                              localObject1 = localObject2 + ", not allowed by excludeType: EXCLUDE_TYPE_EXT_PANEL ";
+                              bool1 = false;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      bool1 = bool2;
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      if ((bool1) && ((paramaiwj instanceof aiwf)) && (this.jdField_a_of_type_Aiwf != null) && (this.jdField_a_of_type_Aiwf.a() > ((aiwf)paramaiwj).a()))
+      {
+        localObject1 = (String)localObject1 + ", not allowed: priority is low ";
+        bool1 = bool3;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TipsManager", 2, "allowShow(): result = " + bool1 + " | " + (String)localObject1 + "|curTipsBarType" + i);
+        }
+        return bool1;
+      }
+      bool1 = true;
+      i = -1;
+    }
   }
   
-  private Drawable a(int paramInt1, int paramInt2)
+  public int a()
   {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable = a(paramInt1);
-    localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
-    localDrawable = a(paramInt1);
-    localStateListDrawable.addState(new int[] { 16842908 }, localDrawable);
-    localDrawable = a(paramInt1);
-    localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
-    localDrawable = a(paramInt2);
-    localStateListDrawable.addState(new int[0], localDrawable);
-    return localStateListDrawable;
+    if (this.jdField_a_of_type_Aiwf != null) {
+      return this.jdField_a_of_type_Aiwf.b();
+    }
+    return -1;
   }
   
-  public aiwi a(int paramInt)
+  public aiwf a()
   {
-    return (aiwi)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.jdField_a_of_type_Aiwf;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      if (this.jdField_a_of_type_Aged != null) {
+        this.jdField_a_of_type_Aged.a(this.jdField_a_of_type_Aiwf);
+      }
+      this.jdField_a_of_type_Aiwf = null;
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilList.clear();
+      }
+      return;
+    }
+    TipsManager.2 local2 = new TipsManager.2(this);
+    this.jdField_a_of_type_MqqOsMqqHandler.post(local2);
   }
   
-  public void a(aiwi paramaiwi)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramaiwi);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((aiwj)localIterator.next()).a(paramInt, paramVarArgs);
+      }
+    }
   }
   
   public void a(aiwj paramaiwj)
   {
-    this.jdField_a_of_type_Aiwj = paramaiwj;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    aiwi localaiwi;
-    Object localObject;
-    label104:
-    int i;
-    if (paramView == null)
+    if (paramaiwj == null) {}
+    do
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561201, null, false);
-      paramView = new aiwk(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379934));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramView);
-      localView.setTag(paramView);
-      localaiwi = a(paramInt);
-      if (localaiwi != null)
-      {
-        paramView.jdField_a_of_type_JavaLangString = localaiwi.jdField_a_of_type_JavaLangString;
-        paramView.jdField_a_of_type_Int = paramInt;
-        TextView localTextView = paramView.jdField_a_of_type_AndroidWidgetTextView;
-        if (!TextUtils.isEmpty(localaiwi.jdField_a_of_type_JavaLangString)) {
-          break label216;
-        }
-        localObject = "";
-        localTextView.setText((CharSequence)localObject);
-        if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-          break label226;
-        }
-        i = Color.parseColor("#A8A8A8");
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845306));
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+    } while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramaiwj));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramaiwj);
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+    {
+      this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, -(this.jdField_b_of_type_Int + this.jdField_a_of_type_Int), 0.0F);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(208L);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    }
+    if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null)
+    {
+      this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 10.0F, -10.0F);
+      this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(150L);
+      this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatCount(-1);
+      this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatMode(2);
+    }
+    if (this.c == null)
+    {
+      this.c = new TranslateAnimation(0.0F, 0.0F, 0.0F, -(this.jdField_b_of_type_Int + this.jdField_a_of_type_Int));
+      this.c.setDuration(208L);
+      this.c.setFillAfter(true);
+      this.c.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = a();
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setId(2131368110);
+    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramOnClickListener);
+    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentWidgetXPanelContainer.findViewById(2131364389));
+    }
+    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131368110) == null) {
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    }
+    c();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void a(Observer paramObserver)
+  {
+    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
+  }
+  
+  public boolean a(aivg paramaivg, Object... paramVarArgs)
+  {
+    if (paramaivg != null)
+    {
+      if (a(paramaivg)) {
+        break label29;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TipsManager", 2, "showGrayTips() failure: mTipsMgr not allow");
       }
     }
+    label29:
+    do
+    {
+      return false;
+      paramVarArgs = paramaivg.a(paramVarArgs);
+      if (paramVarArgs != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs, paramVarArgs.selfuin);
+        if (QLog.isColorLevel()) {
+          QLog.d("TipsManager", 2, "showGrayTips() success: from " + a(paramaivg.b()));
+        }
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TipsManager", 2, "showGrayTips() failure: MessageRecord null, from " + a(paramaivg.b()));
+    return false;
+  }
+  
+  public boolean a(aiwf paramaiwf, Object... paramVarArgs)
+  {
+    if (agej.l) {}
+    label136:
+    do
+    {
+      do
+      {
+        return false;
+        if (paramaiwf == null) {
+          break label136;
+        }
+        if (a(paramaiwf)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("TipsManager", 2, "showTipsBar() failure: mTipsMgr not allow");
+      return false;
+      if (Thread.currentThread() == Looper.getMainLooper().getThread())
+      {
+        paramVarArgs = paramaiwf.a(paramVarArgs);
+        this.jdField_a_of_type_Aged.a(paramVarArgs, paramaiwf);
+        this.jdField_a_of_type_Aiwf = paramaiwf;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TipsManager", 2, "showTipsBar() success: from " + a(paramaiwf.b()));
+        }
+        return true;
+        paramVarArgs = new TipsManager.1(this, paramaiwf, paramVarArgs);
+        this.jdField_a_of_type_MqqOsMqqHandler.post(paramVarArgs);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TipsManager", 2, "showTipsBar() failure: tipsBar == null");
+    return false;
+  }
+  
+  public void b()
+  {
+    a(1004, new Object[0]);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    a();
+    if (this.jdField_a_of_type_Aged != null) {
+      this.jdField_a_of_type_Aged.a();
+    }
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    }
+    if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = null;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    }
+  }
+  
+  public void c()
+  {
+    int i = 2131379332;
+    int j = 2131379326;
+    if ((this.jdField_a_of_type_ComTencentImageURLImageView == null) || (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)) {
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    localLayoutParams.addRule(11);
+    View localView1 = this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379332);
+    View localView2 = this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379326);
+    if ((localView1 != null) && (localView1.getVisibility() == 0)) {}
     for (;;)
     {
-      int j = a(0.5F, i);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(i, j, j, i));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (aiwk)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label216:
-      localObject = localaiwi.jdField_a_of_type_JavaLangString;
-      break label104;
-      label226:
-      if (localaiwi.b == null)
-      {
-        i = Color.parseColor("#03081A");
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845305));
+      if ((localView2 != null) && (localView2.getVisibility() == 0)) {
+        i = j;
       }
-      else
+      for (;;)
       {
-        i = Color.parseColor(localaiwi.b);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(a(0.1F, i), a(0.2F, i)));
+        j = this.jdField_b_of_type_Int;
+        int k = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299011);
+        if (i == -1) {
+          localLayoutParams.addRule(10);
+        }
+        for (i = j + k;; i = j)
+        {
+          localLayoutParams.topMargin = i;
+          localLayoutParams.rightMargin = zft.b(BaseApplicationImpl.getContext(), 40.0F);
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+          return;
+          localLayoutParams.addRule(3, i);
+        }
       }
+      i = -1;
     }
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TipsManager", 2, "[removeJdEntry]");
+    }
+    try
+    {
+      if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131368110) != null))
+      {
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366924));
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366925));
+        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+        }
+        if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+          this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
+        }
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.c);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("TipsManager", 2, localThrowable.getMessage());
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

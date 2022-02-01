@@ -3,13 +3,13 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aopd;
+import apct;
 import java.util.ArrayList;
 
 public class SosoInterface$SosoLbsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoLbsInfo> CREATOR = new aopd();
+  public static final Parcelable.Creator<SosoLbsInfo> CREATOR = new apct();
   public long a;
   public SosoInterface.SosoAttribute a;
   public SosoInterface.SosoLocation a;

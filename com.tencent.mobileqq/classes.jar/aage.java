@@ -1,95 +1,40 @@
-import android.graphics.Rect;
-import android.os.Build.VERSION;
+import NS_COMM.COMM.StCommonExt;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
 
-public class aage
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aage
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final List<aagf> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  aage(aagd paramaagd) {}
   
-  public aage(View paramView)
+  public void onClick(View paramView)
   {
-    this(paramView, false);
-  }
-  
-  public aage(View paramView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-  }
-  
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder(aaed.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (this.a.a() != null) {}
+    for (;;)
     {
-      aagf localaagf = (aagf)localIterator.next();
-      if (localaagf != null) {
-        localaagf.a(paramInt);
-      }
-    }
-  }
-  
-  private void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      aagf localaagf = (aagf)localIterator.next();
-      if (localaagf != null) {
-        localaagf.a();
-      }
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (Build.VERSION.SDK_INT < 16)
-    {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-  }
-  
-  public void a(aagf paramaagf)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramaagf);
-  }
-  
-  public void onGlobalLayout()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.height();
-    if (this.b == 0) {
-      this.b = i;
-    }
-    do
-    {
-      return;
-      i = this.b - i;
-      if ((!this.jdField_a_of_type_Boolean) && (i >= 250))
+      try
       {
-        this.jdField_a_of_type_Boolean = true;
-        a(i);
+        localStringBuilder.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
+        abbe.b("auth_follow", "clk_more", 0, 0, new String[0]);
+        aaej.a(localStringBuilder.toString());
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
       }
-    } while ((!this.jdField_a_of_type_Boolean) || (i >= 100));
-    this.jdField_a_of_type_Boolean = false;
-    b();
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        continue;
+      }
+      QLog.d(aagd.a, 0, "jump more recommend H5 page with no attach info!");
+    }
   }
 }
 

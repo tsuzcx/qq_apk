@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahzy;
+import aijm;
 import android.os.Bundle;
 import android.os.Message;
 import mqq.os.MqqHandler;
@@ -8,15 +8,15 @@ import mqq.os.MqqHandler;
 public class FriendChatPie$7
   implements Runnable
 {
-  public FriendChatPie$7(ahzy paramahzy) {}
+  public FriendChatPie$7(aijm paramaijm) {}
   
   public void run()
   {
-    Message localMessage = ahzy.c(this.this$0).obtainMessage(42);
+    Message localMessage = aijm.c(this.this$0).obtainMessage(42);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("showRedDot", false);
     localMessage.setData(localBundle);
-    ahzy.d(this.this$0).sendMessage(localMessage);
+    aijm.d(this.this$0).sendMessage(localMessage);
   }
 }
 

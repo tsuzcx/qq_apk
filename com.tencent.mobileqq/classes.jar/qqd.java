@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$initCallback$1", "Landroid/view/View$OnAttachStateChangeListener;", "onViewAttachedToWindow", "", "v", "Landroid/view/View;", "onViewDetachedFromWindow", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qqd
-  implements View.OnAttachStateChangeListener
+public class qqd
+  implements pre
 {
-  public void onViewAttachedToWindow(@Nullable View paramView)
-  {
-    pmk.a().a(qqa.a(this.a));
-  }
+  public qqd(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void onViewDetachedFromWindow(@Nullable View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    pmk.a().b(qqa.a(this.a));
+    if ((paramBoolean) && (paramInt == 2)) {
+      ThreadManager.post(new ComponentHeaderTopicRecommend.4.1(this), 5, null, true);
+    }
   }
 }
 

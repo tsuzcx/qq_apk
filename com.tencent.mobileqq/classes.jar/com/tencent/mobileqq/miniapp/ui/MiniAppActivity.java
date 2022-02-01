@@ -8,27 +8,27 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
-import awlo;
-import awlp;
-import awlu;
+import axeg;
+import axeh;
+import axem;
 import com.tencent.mobileqq.miniapp.MiniAppOptions;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import wfo;
+import wjj;
 
 public class MiniAppActivity
   extends FragmentActivity
 {
   protected int a;
-  public awlp a;
+  public axeh a;
   private MiniAppBaseFragment a;
   protected String a;
   
   public void a(MiniAppBaseFragment paramMiniAppBaseFragment)
   {
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    localFragmentTransaction.replace(2131367058, paramMiniAppBaseFragment);
+    localFragmentTransaction.replace(2131367109, paramMiniAppBaseFragment);
     localFragmentTransaction.commit();
     this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppBaseFragment = paramMiniAppBaseFragment;
   }
@@ -50,26 +50,26 @@ public class MiniAppActivity
     Object localObject = new MiniAppLoadingFragment();
     ((MiniAppLoadingFragment)localObject).setArguments(paramBundle);
     a((MiniAppBaseFragment)localObject);
-    awlu.a();
+    axem.a();
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_appid");
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_appType", 0);
     paramBundle = (MiniAppOptions)getIntent().getParcelableExtra("key_options");
-    localObject = new awlo();
-    ((awlo)localObject).jdField_a_of_type_Int = 2;
-    ((awlo)localObject).jdField_a_of_type_Boolean = true;
-    ((awlo)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
-    wfo.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
+    localObject = new axeg();
+    ((axeg)localObject).jdField_a_of_type_Int = 2;
+    ((axeg)localObject).jdField_a_of_type_Boolean = true;
+    ((axeg)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
+    wjj.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    awlo localawlo = new awlo();
-    localawlo.jdField_a_of_type_Int = 3;
-    localawlo.jdField_a_of_type_Boolean = true;
-    localawlo.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
-    wfo.a().dispatch("MiniAppManager", localawlo);
+    axeg localaxeg = new axeg();
+    localaxeg.jdField_a_of_type_Int = 3;
+    localaxeg.jdField_a_of_type_Boolean = true;
+    localaxeg.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
+    wjj.a().dispatch("MiniAppManager", localaxeg);
   }
   
   public boolean isWrapContent()

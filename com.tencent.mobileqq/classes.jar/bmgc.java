@@ -1,48 +1,46 @@
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.4.1;
-import cooperation.qzone.share.QZoneShareActivity.4.2;
-import eipc.EIPCClient;
-import java.util.Map;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.photoplus.PhotoPlusManager;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bmgc
-  implements MiniAppCmdInterface
+  extends biht
 {
-  public bmgc(QZoneShareActivity paramQZoneShareActivity) {}
+  public bmgc(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onCancel(bihu parambihu)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(bihu parambihu)
+  {
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+    if (parambihu.a() == 3)
     {
-      String str = paramJSONObject.optString("jump_url");
-      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
-      if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).a != null)) {
-        QZoneShareActivity.a(this.a).a.put("xcxFakeLink", str);
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
       }
-      if (!QZoneShareActivity.a(this.a)) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+      if (TextUtils.isEmpty(this.c)) {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
       }
-      QZoneShareActivity.c(this.a);
-      this.a.runOnUiThread(new QZoneShareActivity.4.1(this));
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      parambihu = azul.a(this.jdField_a_of_type_JavaLangString);
+      if (this.c.equalsIgnoreCase(parambihu))
+      {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
+      }
+      bhmi.d(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    long l = -1L;
-    if (paramJSONObject != null)
-    {
-      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
-      l = paramJSONObject.optLong("retCode");
-    }
-    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = null)
-    {
-      if (!QZoneShareActivity.a(this.a)) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-      }
-      this.a.runOnUiThread(new QZoneShareActivity.4.2(this, l, paramJSONObject));
-      return;
-    }
+    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + parambihu.b + " code=" + parambihu.a);
   }
 }
 

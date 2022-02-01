@@ -1,28 +1,26 @@
 import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDynamicFragment;
-import com.tencent.biz.richframework.part.BasePartFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
 
-public class vnt
-  implements Observer<vup<List<FeedCloudMeta.StFeed>>>
+class vnt
+  implements Observer<vbf>
 {
-  public vnt(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
+  vnt(vnp paramvnp) {}
   
-  public void a(@Nullable vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public void a(@Nullable vbf paramvbf)
   {
-    QLog.d("QCirclePersonalDynamicFragment", 4, "initViewData:getFeedListRequestRsp");
-    this.a.a(paramvup);
-    if ((uxx.a(this.a.jdField_a_of_type_JavaLangString)) && (paramvup != null) && (paramvup.a() == 0) && (!this.a.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a())) {
-      this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(false));
+    if ((paramvbf != null) && (vnp.a(this.a) != null))
+    {
+      vnp.a(this.a, paramvbf);
+      if (vnp.a(this.a)) {
+        break label41;
+      }
+      vnp.b(this.a, paramvbf);
     }
-    while ((!uxx.a(this.a.jdField_a_of_type_JavaLangString)) || (paramvup == null) || (paramvup.a() == 1)) {
+    label41:
+    while (vnp.a(this.a) == null) {
       return;
     }
-    this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(true));
+    vnp.a(this.a).clearData();
   }
 }
 

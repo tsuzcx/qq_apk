@@ -1,39 +1,25 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.annotation.NonNull;
 
-class yno
-  implements INetInfoHandler
+public class yno
+  extends wjm<ymx, xbi>
 {
-  yno(ynm paramynm) {}
-  
-  public void onNetMobile2None()
+  public yno(ymx paramymx)
   {
-    ynm.b(this.a, ynm.a(3));
+    super(paramymx);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(@NonNull ymx paramymx, @NonNull xbi paramxbi)
   {
-    ynm.b(this.a, ynm.a(1));
+    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramxbi);
+    ymx.a(paramymx, paramxbi.a);
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public Class acceptEventClass()
   {
-    ynm.b(this.a, ynm.a(2));
+    return xbi.class;
   }
   
-  public void onNetNone2Wifi(String paramString)
-  {
-    ynm.b(this.a, ynm.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ynm.b(this.a, ynm.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    ynm.b(this.a, ynm.a(3));
-  }
+  public void b(@NonNull ymx paramymx, @NonNull xbi paramxbi) {}
 }
 
 

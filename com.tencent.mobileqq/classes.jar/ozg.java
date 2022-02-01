@@ -1,6 +1,17 @@
-public abstract interface ozg
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.util.Pair;
+import java.util.Comparator;
+
+class ozg
+  implements Comparator<Pair<Long, Pair<View, BaseArticleInfo>>>
 {
-  public abstract void onScroll(int paramInt);
+  ozg(ozf paramozf) {}
+  
+  public int a(Pair<Long, Pair<View, BaseArticleInfo>> paramPair1, Pair<Long, Pair<View, BaseArticleInfo>> paramPair2)
+  {
+    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
+  }
 }
 
 

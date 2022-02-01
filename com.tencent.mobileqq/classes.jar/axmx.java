@@ -1,10 +1,6 @@
-import android.view.View;
-
 public abstract interface axmx
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(String paramString, View paramView, int paramInt);
+  public abstract void a(axmv paramaxmv);
 }
 
 

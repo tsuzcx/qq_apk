@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pmk;
-import pwb;
+import pfd;
+import pon;
 
 public class ArticleInfoModule$13
   implements Runnable
 {
-  public ArticleInfoModule$13(pwb parampwb, int paramInt, List paramList) {}
+  public ArticleInfoModule$13(pon parampon, int paramInt, List paramList) {}
   
   public void run()
   {
-    pmk.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    pfd.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

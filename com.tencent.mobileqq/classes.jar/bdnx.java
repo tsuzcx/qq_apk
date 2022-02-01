@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
 class bdnx
-  implements bkhy
+  implements Comparator
 {
-  bdnx(bdnt parambdnt, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void onDismiss()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramObject1 = (bdnu)paramObject1;
+    paramObject2 = (bdnu)paramObject2;
+    if (paramObject1.b > paramObject2.b) {
+      return -1;
+    }
+    if (paramObject1.b < paramObject2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 

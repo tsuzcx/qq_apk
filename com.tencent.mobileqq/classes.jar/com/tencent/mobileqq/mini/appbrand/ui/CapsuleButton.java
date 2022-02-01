@@ -24,10 +24,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import aqcb;
-import bhhb;
-import bhij;
+import anzj;
+import aqre;
+import bihq;
+import biiy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
@@ -48,6 +48,8 @@ import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.JsPluginEngine;
+import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OpenDataPlugin;
+import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
@@ -63,6 +65,7 @@ import com.tencent.mobileqq.mini.sdk.EntryModel;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
@@ -72,7 +75,6 @@ import com.tencent.mobileqq.mini.utils.TroopApplicationListUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
-import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
 import com.tencent.mobileqq.minigame.manager.GameCloseManager;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
@@ -80,8 +82,6 @@ import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.debug.JankTraceLevel;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
@@ -135,7 +135,7 @@ public class CapsuleButton
   private boolean isMiniMsgTabShow;
   private boolean isOpenMonitorPanel;
   private int launchFrom = -1;
-  private bhij lottieLoader;
+  private biiy lottieLoader;
   private AppBrandRuntime mAppBrandRuntime;
   private Drawable mCloseBtnBgDrawable;
   private Drawable mCloseBtnWhiteBgDrawable;
@@ -210,28 +210,28 @@ public class CapsuleButton
   private View getContainerView()
   {
     this.mMoreView = new DiniFlyAnimationView(getContext());
-    this.mMoreView.setId(2131363832);
-    this.mMoreView.setContentDescription(anni.a(2131700158));
+    this.mMoreView.setId(2131363856);
+    this.mMoreView.setContentDescription(anzj.a(2131700265));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(9, -1);
     this.mMoreView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView(this.mMoreView, (ViewGroup.LayoutParams)localObject);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131363741);
-    ((ImageView)localObject).setContentDescription(anni.a(2131700154));
+    ((ImageView)localObject).setId(2131363765);
+    ((ImageView)localObject).setContentDescription(anzj.a(2131700261));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(1, 2131363832);
+    localLayoutParams.addRule(1, 2131363856);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new View(getContext());
-    ((View)localObject).setId(2131369873);
+    ((View)localObject).setId(2131369970);
     localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 0.5F), DisplayUtil.dip2px(getContext(), 18.0F));
     localLayoutParams.addRule(13, -1);
     ((View)localObject).setBackgroundColor(436207616);
     addView((View)localObject, localLayoutParams);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setId(2131375405);
+    ((TextView)localObject).setId(2131375545);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, DisplayUtil.dip2px(getContext(), 19.0F));
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 21.5F);
     localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), -9.5F);
@@ -279,8 +279,9 @@ public class CapsuleButton
     JSONObject localJSONObject = new JSONObject();
     Object localObject2 = "onShareAppMessage";
     Object localObject1 = localObject2;
-    label213:
-    label247:
+    label207:
+    label220:
+    label225:
     do
     {
       do
@@ -300,42 +301,34 @@ public class CapsuleButton
               localObject1 = str;
               localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexQQ"));
               localObject1 = "showActionSheet";
-              localObject2 = localObject1;
             }
           }
           catch (JSONException localJSONException1) {}
           try
           {
-            if (!isMiniGameRuntime())
-            {
-              localObject2 = localObject1;
-              if (this.mAppBrandRuntime != null)
-              {
-                localObject2 = localObject1;
-                if (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)
-                {
-                  localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
-                  localObject2 = localObject1;
-                }
-              }
+            if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
+              localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
             }
             if (!isMiniGameRuntime()) {
-              break label257;
-            }
-            this.mGameBrandRuntime.fromShareMenuBtn = 0;
-            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
-              break label247;
-            }
-            if (this.launchFrom != 1) {
               break;
             }
-            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject2, localJSONObject, this.actionSheetCallbackId);
+            this.mGameBrandRuntime.fromShareMenuBtn = 0;
+            if (this.launchFrom != 1) {
+              break label225;
+            }
+            if (this.mGameJsPluginEngine == null) {
+              break label220;
+            }
+            localObject2 = (UIJsPlugin)this.mGameJsPluginEngine.getPlugin(UIJsPlugin.class);
+            if (localObject2 != null) {
+              ((UIJsPlugin)localObject2).handleShareCallback(this.actionSheetCallbackId, ApiUtil.wrapCallbackOk((String)localObject1, localJSONObject).toString());
+            }
             return;
           }
           catch (JSONException localJSONException2)
           {
             Object localObject3;
-            break label213;
+            break label207;
           }
           localObject1 = localObject2;
           localJSONObject.put("fromShareButton", 0);
@@ -344,25 +337,28 @@ public class CapsuleButton
           localObject1 = localObject2;
           continue;
           QLog.e("CapsuleButton", 1, "on forward aio click exception ", localJSONException1);
-          localObject3 = localObject1;
+          continue;
+          localObject3 = null;
+          continue;
+          if (this.mGameJsPluginEngine != null) {}
+          for (localObject3 = (OpenDataPlugin)this.mGameJsPluginEngine.getPlugin(OpenDataPlugin.class); localObject3 != null; localObject3 = null)
+          {
+            ((OpenDataPlugin)localObject3).handleShareEvent((String)localObject1, localJSONObject.toString());
+            return;
+          }
         }
-        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localObject3, localJSONObject.toString(), -1);
-        return;
-        QLog.e("CapsuleButton", 1, "on forward aio click exception mGameJsPluginEngine==null");
-        return;
       } while (this.mAppBrandRuntime == null);
       if (this.launchFrom == 1)
       {
-        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, (String)localObject1, localJSONObject, this.actionSheetCallbackId);
         return;
       }
       if (this.mAppBrandRuntime.getPageWebView() != null) {
         this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
       }
-      localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
-    } while (localObject1 == null);
-    label257:
-    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localObject3, localJSONObject.toString(), ((PageWebview)localObject1).pageWebviewId);
+      localObject3 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject3 == null);
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS((String)localObject1, localJSONObject.toString(), ((PageWebview)localObject3).pageWebviewId);
   }
   
   private void handleForwardQZoneClick()
@@ -370,8 +366,9 @@ public class CapsuleButton
     JSONObject localJSONObject = new JSONObject();
     Object localObject2 = "onShareAppMessage";
     Object localObject1 = localObject2;
-    label213:
-    label247:
+    label207:
+    label220:
+    label225:
     do
     {
       do
@@ -391,42 +388,34 @@ public class CapsuleButton
               localObject1 = str;
               localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexQZONE"));
               localObject1 = "showActionSheet";
-              localObject2 = localObject1;
             }
           }
           catch (JSONException localJSONException1) {}
           try
           {
-            if (!isMiniGameRuntime())
-            {
-              localObject2 = localObject1;
-              if (this.mAppBrandRuntime != null)
-              {
-                localObject2 = localObject1;
-                if (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)
-                {
-                  localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
-                  localObject2 = localObject1;
-                }
-              }
+            if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
+              localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
             }
             if (!isMiniGameRuntime()) {
-              break label257;
-            }
-            this.mGameBrandRuntime.fromShareMenuBtn = 1;
-            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
-              break label247;
-            }
-            if (this.launchFrom != 1) {
               break;
             }
-            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject2, localJSONObject, this.actionSheetCallbackId);
+            this.mGameBrandRuntime.fromShareMenuBtn = 1;
+            if (this.launchFrom != 1) {
+              break label225;
+            }
+            if (this.mGameJsPluginEngine == null) {
+              break label220;
+            }
+            localObject2 = (UIJsPlugin)this.mGameJsPluginEngine.getPlugin(UIJsPlugin.class);
+            if (localObject2 != null) {
+              ((UIJsPlugin)localObject2).handleShareCallback(this.actionSheetCallbackId, ApiUtil.wrapCallbackOk((String)localObject1, localJSONObject).toString());
+            }
             return;
           }
           catch (JSONException localJSONException2)
           {
             Object localObject3;
-            break label213;
+            break label207;
           }
           localObject1 = localObject2;
           localJSONObject.put("fromShareButton", 0);
@@ -435,80 +424,92 @@ public class CapsuleButton
           localObject1 = localObject2;
           continue;
           QLog.e("CapsuleButton", 1, "on forward qzone click exception ", localJSONException1);
-          localObject3 = localObject1;
+          continue;
+          localObject3 = null;
+          continue;
+          if (this.mGameJsPluginEngine != null) {}
+          for (localObject3 = (OpenDataPlugin)this.mGameJsPluginEngine.getPlugin(OpenDataPlugin.class); localObject3 != null; localObject3 = null)
+          {
+            ((OpenDataPlugin)localObject3).handleShareEvent((String)localObject1, localJSONObject.toString());
+            return;
+          }
         }
-        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localObject3, localJSONObject.toString(), -1);
-        return;
-        QLog.e("CapsuleButton", 1, "on forward qzone click exception mGameJsPluginEngine==null");
-        return;
       } while (this.mAppBrandRuntime == null);
       if (this.launchFrom == 1)
       {
-        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, (String)localObject1, localJSONObject, this.actionSheetCallbackId);
         return;
       }
       if (this.mAppBrandRuntime.getPageWebView() != null) {
         this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 1;
       }
-      localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
-    } while (localObject1 == null);
-    label257:
-    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localObject3, localJSONObject.toString(), ((PageWebview)localObject1).pageWebviewId);
+      localObject3 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject3 == null);
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS((String)localObject1, localJSONObject.toString(), ((PageWebview)localObject3).pageWebviewId);
   }
   
   private void handleForwardWeChatFriends()
   {
+    Object localObject3 = null;
+    Object localObject2 = null;
     JSONObject localJSONObject = new JSONObject();
     Object localObject1 = "onShareAppMessage";
-    Object localObject2;
-    label214:
-    label224:
     do
     {
       do
       {
-        try
+        for (;;)
         {
-          if (this.launchFrom == 1)
+          try
           {
-            localObject2 = "showActionSheet";
-            localObject1 = localObject2;
-            if (this.tapIndexMap != null)
+            if (this.launchFrom == 1)
             {
-              localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexWX"));
-              localObject1 = localObject2;
+              String str = "showActionSheet";
+              localObject1 = str;
+              if (this.tapIndexMap != null)
+              {
+                localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexWX"));
+                localObject1 = str;
+              }
+              if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
+                localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+              }
+              if (!isMiniGameRuntime()) {
+                break;
+              }
+              this.mGameBrandRuntime.fromShareMenuBtn = 3;
+              if (this.launchFrom == 1)
+              {
+                if (this.mGameJsPluginEngine != null) {
+                  localObject2 = (UIJsPlugin)this.mGameJsPluginEngine.getPlugin(UIJsPlugin.class);
+                }
+                if (localObject2 != null) {
+                  ((UIJsPlugin)localObject2).handleShareCallback(this.actionSheetCallbackId, ApiUtil.wrapCallbackOk((String)localObject1, localJSONObject).toString());
+                }
+              }
             }
+            else
+            {
+              localJSONObject.put("fromShareButton", 0);
+              localJSONObject.put("shareTarget", 3);
+              continue;
+            }
+            localObject2 = localObject3;
           }
-          for (;;)
+          catch (JSONException localJSONException)
           {
-            if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
-              localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
-            }
-            if (!isMiniGameRuntime()) {
-              break label224;
-            }
-            this.mGameBrandRuntime.fromShareMenuBtn = 3;
-            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
-              break label214;
-            }
-            if (this.launchFrom != 1) {
-              break;
-            }
-            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject1, localJSONObject, this.actionSheetCallbackId);
+            QLog.e("CapsuleButton", 1, "on forward wechat friends click exception ", localJSONException);
             return;
-            localJSONObject.put("fromShareButton", 0);
-            localJSONObject.put("shareTarget", 3);
           }
-          this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localJSONException, localJSONObject.toString(), -1);
+          if (this.mGameJsPluginEngine != null) {
+            localObject2 = (OpenDataPlugin)this.mGameJsPluginEngine.getPlugin(OpenDataPlugin.class);
+          }
+          if (localObject2 != null)
+          {
+            ((OpenDataPlugin)localObject2).handleShareEvent(localJSONException, localJSONObject.toString());
+            return;
+          }
         }
-        catch (JSONException localJSONException)
-        {
-          QLog.e("CapsuleButton", 1, "on forward wechat friends click exception ", localJSONException);
-          return;
-        }
-        return;
-        QLog.e("CapsuleButton", 1, "on forward wechat friends click exception mGameJsPluginEngine==null");
-        return;
       } while (this.mAppBrandRuntime == null);
       if (this.launchFrom == 1)
       {
@@ -528,8 +529,9 @@ public class CapsuleButton
     JSONObject localJSONObject = new JSONObject();
     Object localObject2 = "onShareAppMessage";
     Object localObject1 = localObject2;
-    label213:
-    label247:
+    label207:
+    label220:
+    label225:
     do
     {
       do
@@ -549,42 +551,34 @@ public class CapsuleButton
               localObject1 = str;
               localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexWXMoments"));
               localObject1 = "showActionSheet";
-              localObject2 = localObject1;
             }
           }
           catch (JSONException localJSONException1) {}
           try
           {
-            if (!isMiniGameRuntime())
-            {
-              localObject2 = localObject1;
-              if (this.mAppBrandRuntime != null)
-              {
-                localObject2 = localObject1;
-                if (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)
-                {
-                  localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
-                  localObject2 = localObject1;
-                }
-              }
+            if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
+              localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
             }
             if (!isMiniGameRuntime()) {
-              break label257;
-            }
-            this.mGameBrandRuntime.fromShareMenuBtn = 4;
-            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
-              break label247;
-            }
-            if (this.launchFrom != 1) {
               break;
             }
-            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject2, localJSONObject, this.actionSheetCallbackId);
+            this.mGameBrandRuntime.fromShareMenuBtn = 4;
+            if (this.launchFrom != 1) {
+              break label225;
+            }
+            if (this.mGameJsPluginEngine == null) {
+              break label220;
+            }
+            localObject2 = (UIJsPlugin)this.mGameJsPluginEngine.getPlugin(UIJsPlugin.class);
+            if (localObject2 != null) {
+              ((UIJsPlugin)localObject2).handleShareCallback(this.actionSheetCallbackId, ApiUtil.wrapCallbackOk((String)localObject1, localJSONObject).toString());
+            }
             return;
           }
           catch (JSONException localJSONException2)
           {
             Object localObject3;
-            break label213;
+            break label207;
           }
           localObject1 = localObject2;
           localJSONObject.put("fromShareButton", 0);
@@ -593,25 +587,28 @@ public class CapsuleButton
           localObject1 = localObject2;
           continue;
           QLog.e("CapsuleButton", 1, "on forward wechat moment exception ", localJSONException1);
-          localObject3 = localObject1;
+          continue;
+          localObject3 = null;
+          continue;
+          if (this.mGameJsPluginEngine != null) {}
+          for (localObject3 = (OpenDataPlugin)this.mGameJsPluginEngine.getPlugin(OpenDataPlugin.class); localObject3 != null; localObject3 = null)
+          {
+            ((OpenDataPlugin)localObject3).handleShareEvent((String)localObject1, localJSONObject.toString());
+            return;
+          }
         }
-        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localObject3, localJSONObject.toString(), -1);
-        return;
-        QLog.e("CapsuleButton", 1, "on forward wechat moment exception mGameJsPluginEngine==null");
-        return;
       } while (this.mAppBrandRuntime == null);
       if (this.launchFrom == 1)
       {
-        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, (String)localObject1, localJSONObject, this.actionSheetCallbackId);
         return;
       }
       if (this.mAppBrandRuntime.getPageWebView() != null) {
         this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 4;
       }
-      localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
-    } while (localObject1 == null);
-    label257:
-    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localObject3, localJSONObject.toString(), ((PageWebview)localObject1).pageWebviewId);
+      localObject3 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject3 == null);
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS((String)localObject1, localJSONObject.toString(), ((PageWebview)localObject3).pageWebviewId);
   }
   
   private void handleMoreClick()
@@ -824,11 +821,11 @@ public class CapsuleButton
                 n = i1;
                 if (localObject4 != null)
                 {
-                  bool11 = ((aqcb)localObject4).a();
+                  bool11 = ((aqre)localObject4).a();
                   if (!bool11) {
                     break label2065;
                   }
-                  if (!((aqcb)localObject4).c()) {
+                  if (!((aqre)localObject4).c()) {
                     break label1368;
                   }
                   k = 2;
@@ -982,10 +979,10 @@ public class CapsuleButton
                   i = i4;
                   if (localObject4 != null)
                   {
-                    bool9 = ((aqcb)localObject4).a();
+                    bool9 = ((aqre)localObject4).a();
                     i = i3;
                     if (bool9) {
-                      if (!((aqcb)localObject4).c()) {
+                      if (!((aqre)localObject4).c()) {
                         break label1896;
                       }
                     }
@@ -1071,16 +1068,16 @@ public class CapsuleButton
   
   private void handleShareChatDirectly(Bundle paramBundle)
   {
-    Object localObject = paramBundle.getString("key_mini_app_share_chat_uin");
+    Object localObject1 = paramBundle.getString("key_mini_app_share_chat_uin");
     int i = paramBundle.getInt("key_mini_app_share_chat_type");
     paramBundle = paramBundle.getString("key_mini_app_share_chat_name");
     long l2 = -1L;
     long l1 = l2;
-    if (localObject != null) {}
+    if (localObject1 != null) {}
     JSONObject localJSONObject;
-    label309:
-    label342:
-    label352:
+    label314:
+    label328:
+    label334:
     do
     {
       ShareChatModel localShareChatModel;
@@ -1090,11 +1087,11 @@ public class CapsuleButton
         {
           try
           {
-            l1 = Long.valueOf((String)localObject).longValue();
+            l1 = Long.valueOf((String)localObject1).longValue();
             localShareChatModel = new ShareChatModel(i, l1, paramBundle);
             localJSONObject = new JSONObject();
-            localObject = "onShareAppMessage";
-            paramBundle = (Bundle)localObject;
+            localObject1 = "onShareAppMessage";
+            paramBundle = (Bundle)localObject1;
           }
           catch (Throwable localThrowable)
           {
@@ -1103,7 +1100,7 @@ public class CapsuleButton
               if (this.launchFrom == 1)
               {
                 String str = "showActionSheet";
-                localObject = str;
+                localObject1 = str;
                 paramBundle = str;
                 if (this.tapIndexMap == null) {
                   continue;
@@ -1121,23 +1118,26 @@ public class CapsuleButton
               }
               localJSONObject.put("chatDataHash", localShareChatModel.getEntryHash());
               if (!isMiniGameRuntime()) {
-                break label352;
+                break;
               }
               this.mGameBrandRuntime.fromShareMenuBtn = 0;
               this.mGameBrandRuntime.shareChatModel = localShareChatModel;
-              if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
-                break label342;
-              }
               if (this.launchFrom != 1) {
-                break;
+                break label334;
               }
-              this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), paramBundle, localJSONObject, this.actionSheetCallbackId);
+              if (this.mGameJsPluginEngine == null) {
+                break label328;
+              }
+              localObject1 = (UIJsPlugin)this.mGameJsPluginEngine.getPlugin(UIJsPlugin.class);
+              if (localObject1 != null) {
+                ((UIJsPlugin)localObject1).handleShareCallback(this.actionSheetCallbackId, ApiUtil.wrapCallbackOk(paramBundle, localJSONObject).toString());
+              }
               return;
             }
             catch (JSONException localJSONException2)
             {
-              PageWebview localPageWebview;
-              break label309;
+              Object localObject2;
+              break label314;
             }
             localThrowable = localThrowable;
             QLog.e("CapsuleButton", 1, "handleShareChatDirectly get an exception ", localThrowable);
@@ -1151,11 +1151,16 @@ public class CapsuleButton
             continue;
           }
           QLog.e("CapsuleButton", 1, "on forward aio click exception ", localJSONException1);
+          continue;
+          localObject2 = null;
+          continue;
+          if (this.mGameJsPluginEngine != null) {}
+          for (localObject2 = (OpenDataPlugin)this.mGameJsPluginEngine.getPlugin(OpenDataPlugin.class); localObject2 != null; localObject2 = null)
+          {
+            ((OpenDataPlugin)localObject2).handleShareEvent(paramBundle, localJSONObject.toString());
+            return;
+          }
         }
-        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(paramBundle, localJSONObject.toString(), -1);
-        return;
-        QLog.e("CapsuleButton", 1, "on forward aio click exception mGameJsPluginEngine==null");
-        return;
       } while (this.mAppBrandRuntime == null);
       if (this.mAppBrandRuntime.getPageWebView() != null) {
         this.mAppBrandRuntime.getPageWebView().shareChatModel = localShareChatModel;
@@ -1168,9 +1173,9 @@ public class CapsuleButton
       if (this.mAppBrandRuntime.getPageWebView() != null) {
         this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
       }
-      localPageWebview = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
-    } while (localPageWebview == null);
-    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(paramBundle, localJSONObject.toString(), localPageWebview.pageWebviewId);
+      localObject2 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject2 == null);
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(paramBundle, localJSONObject.toString(), ((PageWebview)localObject2).pageWebviewId);
   }
   
   private boolean hasKingCardGuideShowed()
@@ -1183,29 +1188,29 @@ public class CapsuleButton
   {
     setClipChildren(false);
     getContainerView();
-    this.mCloseView = ((ImageView)findViewById(2131363741));
-    this.mRedDot = ((TextView)findViewById(2131375405));
-    this.mSplider = findViewById(2131369873);
+    this.mCloseView = ((ImageView)findViewById(2131363765));
+    this.mRedDot = ((TextView)findViewById(2131375545));
+    this.mSplider = findViewById(2131369970);
     this.mRedDot.setTextSize(12.0F);
     this.mRedDot.setTextColor(-1);
     this.mRedDot.setGravity(17);
     this.mRedDot.setIncludeFontPadding(false);
     this.mMoreView.setOnClickListener(this);
     this.mCloseView.setOnClickListener(this);
-    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130841238);
-    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130841232);
-    this.mMoreBtnBgDrawable = getResources().getDrawable(2130841235);
-    this.mCloseBtnBgDrawable = getResources().getDrawable(2130841229);
+    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130841248);
+    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130841242);
+    this.mMoreBtnBgDrawable = getResources().getDrawable(2130841245);
+    this.mCloseBtnBgDrawable = getResources().getDrawable(2130841239);
     if ((!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) && (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_DARK_URL)))
     {
-      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130841232, 40, 30);
-      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130841229, 40, 30);
+      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130841242, 40, 30);
+      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130841239, 40, 30);
     }
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131693679))
+    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131693693))
     {
       this.mKingCardText = str;
-      this.lottieLoader = new bhij(null, super.getContext());
+      this.lottieLoader = new biiy(null, super.getContext());
       int i = (int)(MemoryManager.a() / 2L);
       this.lottieLoader.a(i);
       return;
@@ -1414,7 +1419,7 @@ public class CapsuleButton
       QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bhhb.a();
+    i = bihq.a();
     QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -1465,7 +1470,7 @@ public class CapsuleButton
           localObject2 = null;
           localMiniAppConfig = null;
         }
-        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + anni.a(2131700157);
+        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + anzj.a(2131700264);
         localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("url", (String)localObject3);
         localObject3 = new Bundle();
@@ -1660,88 +1665,79 @@ public class CapsuleButton
   
   public boolean handleMessage(Message paramMessage)
   {
-    Object localObject = null;
-    ITTEngine localITTEngine = null;
+    Object localObject2 = null;
+    Object localObject1 = null;
     if (paramMessage == null) {
       if (QLog.isColorLevel()) {
         QLog.e("CapsuleButton", 2, "handleMessage error, msg is null.");
       }
     }
-    label394:
+    label346:
+    label351:
     int i;
-    label520:
+    label477:
     do
     {
       do
       {
-        boolean bool;
         do
         {
-          do
-          {
-            return false;
-            switch (paramMessage.what)
-            {
-            case 4: 
-            default: 
-              return false;
-            case 1: 
-              onMoreClick();
-              return false;
-            case 1000: 
-              handleMoreClick();
-              return false;
-            case 2: 
-              handleForwardClick();
-              return false;
-            case 6: 
-              handleForwardQZoneClick();
-              return false;
-            case 7: 
-              handleForwardWeChatFriends();
-              return false;
-            case 8: 
-              handleForwardWeChatMoment();
-              return false;
-            case 13: 
-              handleShareChatDirectly(paramMessage.getData());
-              return false;
-            case 3: 
-              if (getEnableDebug()) {
-                setEnableDebug(false);
-              }
-              for (;;)
-              {
-                AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().exitProcess();
-                return false;
-                setEnableDebug(true);
-              }
-            case 5: 
-              if (!isMiniGameRuntime()) {
-                break label394;
-              }
-            }
-          } while ((this.mGameBrandRuntime == null) || (this.mGameBrandRuntime.activity == null));
-          paramMessage = this.mGameBrandRuntime.activity;
-          if (((paramMessage instanceof GameActivity)) && (((GameActivity)paramMessage).getNavBar() != null))
-          {
-            ((GameActivity)paramMessage).clickMonitorPanel();
-            if (this.isOpenMonitorPanel) {
-              break;
-            }
-            bool = true;
-            this.isOpenMonitorPanel = bool;
-          }
-          setIsOpenMonitorPanel(this.isOpenMonitorPanel);
-          localITTEngine = GameRuntimeLoaderManager.g().getBindRuntimeLoader(paramMessage).getGameEngine();
-        } while (localITTEngine == null);
-        if (this.isOpenMonitorPanel) {}
-        for (paramMessage = JankTraceLevel.DETAIL;; paramMessage = JankTraceLevel.NONE)
-        {
-          localITTEngine.setJankTraceLevel(paramMessage);
           return false;
-          bool = false;
-          break;
+          switch (paramMessage.what)
+          {
+          case 4: 
+          default: 
+            return false;
+          case 1: 
+            onMoreClick();
+            return false;
+          case 1000: 
+            handleMoreClick();
+            return false;
+          case 2: 
+            handleForwardClick();
+            return false;
+          case 6: 
+            handleForwardQZoneClick();
+            return false;
+          case 7: 
+            handleForwardWeChatFriends();
+            return false;
+          case 8: 
+            handleForwardWeChatMoment();
+            return false;
+          case 13: 
+            handleShareChatDirectly(paramMessage.getData());
+            return false;
+          case 3: 
+            if (getEnableDebug()) {
+              setEnableDebug(false);
+            }
+            for (;;)
+            {
+              AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().exitProcess();
+              return false;
+              setEnableDebug(true);
+            }
+          case 5: 
+            if (!isMiniGameRuntime()) {
+              break label351;
+            }
+          }
+        } while ((this.mGameBrandRuntime == null) || (this.mGameBrandRuntime.activity == null));
+        paramMessage = this.mGameBrandRuntime.activity;
+        if (((paramMessage instanceof GameActivity)) && (((GameActivity)paramMessage).getNavBar() != null))
+        {
+          ((GameActivity)paramMessage).clickMonitorPanel();
+          if (this.isOpenMonitorPanel) {
+            break label346;
+          }
+        }
+        for (boolean bool = true;; bool = false)
+        {
+          this.isOpenMonitorPanel = bool;
+          setIsOpenMonitorPanel(this.isOpenMonitorPanel);
+          return false;
         }
       } while (this.mAppBrandRuntime == null);
       setIsOpenMonitorPanel(((AppBrandPageContainer)this.mAppBrandRuntime.getContainer()).clickMonitorPanel());
@@ -1755,7 +1751,7 @@ public class CapsuleButton
           paramMessage.topType = i;
           sendSetUserAppTopRequest(this.mGameBrandRuntime.getApkgInfo().appConfig.config);
           if (this.mGameBrandRuntime.getApkgInfo().appConfig.config.topType != 1) {
-            break label520;
+            break label477;
           }
         }
         for (paramMessage = "settop_on";; paramMessage = "settop_off")
@@ -1774,10 +1770,10 @@ public class CapsuleButton
       paramMessage.topType = i;
       sendSetUserAppTopRequest(this.mAppBrandRuntime.apkgInfo.appConfig.config);
       if (this.mAppBrandRuntime.apkgInfo.appConfig.config.topType != 1) {
-        break label627;
+        break label584;
       }
     }
-    label627:
+    label584:
     for (paramMessage = "settop_on";; paramMessage = "settop_off")
     {
       reportClick(paramMessage);
@@ -1788,7 +1784,7 @@ public class CapsuleButton
     if (isMiniGameRuntime()) {
       if (this.mGameBrandRuntime.activity != null)
       {
-        paramMessage = localITTEngine;
+        paramMessage = localObject1;
         if ((this.mGameBrandRuntime.activity instanceof BaseActivity)) {
           paramMessage = (BaseActivity)this.mGameBrandRuntime.activity;
         }
@@ -1801,7 +1797,7 @@ public class CapsuleButton
       return false;
       if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.activity != null))
       {
-        paramMessage = localObject;
+        paramMessage = localObject2;
         if ((this.mAppBrandRuntime.activity instanceof BaseActivity)) {
           paramMessage = (BaseActivity)this.mAppBrandRuntime.activity;
         }
@@ -1815,7 +1811,7 @@ public class CapsuleButton
     if (isMiniGameRuntime())
     {
       if ((this.mGameBrandRuntime.activity == null) || (!(this.mGameBrandRuntime.activity instanceof GameActivity))) {
-        break label946;
+        break label903;
       }
       paramMessage = ((GameActivity)this.mGameBrandRuntime.activity).getColorNoteController();
     }
@@ -1854,7 +1850,7 @@ public class CapsuleButton
         addToCurrentTroop();
         return false;
       }
-      label946:
+      label903:
       paramMessage = null;
     }
   }
@@ -1866,7 +1862,7 @@ public class CapsuleButton
     switch (paramView.getId())
     {
     default: 
-    case 2131363832: 
+    case 2131363856: 
       for (;;)
       {
         EventCollector.getInstance().onViewClicked(paramView);
@@ -2235,16 +2231,16 @@ public class CapsuleButton
     {
       if (paramInt == -1)
       {
-        this.mMoreView.setImageResource(2130841238);
-        this.mCloseView.setImageResource(2130841232);
+        this.mMoreView.setImageResource(2130841248);
+        this.mCloseView.setImageResource(2130841242);
         this.mSplider.setBackgroundColor(Color.parseColor("#4DFFFFFF"));
       }
     }
     else {
       return;
     }
-    this.mMoreView.setImageResource(2130841235);
-    this.mCloseView.setImageResource(2130841229);
+    this.mMoreView.setImageResource(2130841245);
+    this.mCloseView.setImageResource(2130841239);
     this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
   }
   

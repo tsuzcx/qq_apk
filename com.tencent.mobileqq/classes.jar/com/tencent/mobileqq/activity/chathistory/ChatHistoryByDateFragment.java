@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import acwf;
-import acwh;
-import aiqk;
+import adai;
+import adak;
+import ajbt;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import anni;
-import ayvj;
-import aywe;
-import bcst;
-import bidp;
+import anzj;
+import aznw;
+import azor;
+import bdll;
+import bjen;
 import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,9 +28,9 @@ public class ChatHistoryByDateFragment
   extends IphoneTitleBarFragment
 {
   private static String c;
-  private ayvj jdField_a_of_type_Ayvj;
-  private aywe jdField_a_of_type_Aywe;
-  public bidp a;
+  private aznw jdField_a_of_type_Aznw;
+  private azor jdField_a_of_type_Azor;
+  public bjen a;
   public QQAppInterface a;
   public CalendarDay a;
   public DatePickerView a;
@@ -55,12 +55,12 @@ public class ChatHistoryByDateFragment
   {
     long l1 = CalendarDay.dayToTimeMillis(paramInt1, paramInt2, paramInt3) / 1000L;
     long l2 = 86400L + l1;
-    Object localObject = acwh.b();
+    Object localObject = adak.b();
     localObject = String.format("select * from %s m where m.time>=%s and m.time<%s and m.isValid=1 and m.msgtype %s limit 1", new Object[] { this.jdField_b_of_type_JavaLangString, Long.valueOf(l1), Long.valueOf(l2), localObject });
     List localList;
     if ((this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay != null) && (l2 * 1000L < this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.getTimeInMillis()))
     {
-      localList = this.jdField_a_of_type_Aywe.a((String)localObject);
+      localList = this.jdField_a_of_type_Azor.a((String)localObject);
       localObject = localList;
       if (localList != null)
       {
@@ -70,7 +70,7 @@ public class ChatHistoryByDateFragment
         }
       }
     }
-    for (localObject = localList; (localObject != null) && (((List)localObject).size() > 0); localObject = this.jdField_a_of_type_Ayvj.rawQuery(MessageRecord.class, (String)localObject, null)) {
+    for (localObject = localList; (localObject != null) && (((List)localObject).size() > 0); localObject = this.jdField_a_of_type_Aznw.rawQuery(MessageRecord.class, (String)localObject, null)) {
       return (MessageRecord)((List)localObject).get(0);
     }
     return null;
@@ -117,13 +117,13 @@ public class ChatHistoryByDateFragment
   
   public int getContentLayoutId()
   {
-    return 2131560570;
+    return 2131560585;
   }
   
   public void init(Bundle paramBundle)
   {
     super.init(paramBundle);
-    super.setTitle(anni.a(2131700478));
+    super.setTitle(anzj.a(2131700585));
     Object localObject = getActivity();
     AppInterface localAppInterface;
     if (localObject == null)
@@ -152,11 +152,11 @@ public class ChatHistoryByDateFragment
     return;
     label119:
     this.jdField_b_of_type_JavaLangString = MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, 1);
-    this.jdField_a_of_type_Ayvj = ((ayvj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createMessageRecordEntityManager());
+    this.jdField_a_of_type_Aznw = ((aznw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createMessageRecordEntityManager());
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1).b(this.jdField_a_of_type_JavaLangString, 1);
     localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, 1);
-    this.jdField_a_of_type_Aywe = ((aywe)localAppInterface.getManager(201));
-    long l = this.jdField_a_of_type_Aywe.b(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_Azor = ((azor)localAppInterface.getManager(201));
+    long l = this.jdField_a_of_type_Azor.b(this.jdField_b_of_type_JavaLangString);
     if (paramBundle != null) {
       this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(paramBundle.time * 1000L);
     }
@@ -171,11 +171,11 @@ public class ChatHistoryByDateFragment
     for (this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());; this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(((MessageRecord)localObject).time * 1000L))
     {
       QLog.i(jdField_c_of_type_JavaLangString, 1, "firstMessage : " + this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay + " lastMssage : " + this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView = ((DatePickerView)this.mContentView.findViewById(2131372562));
-      this.jdField_a_of_type_Bidp = new aiqk(this, this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView.setController(this.jdField_a_of_type_Bidp);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView = ((DatePickerView)this.mContentView.findViewById(2131372673));
+      this.jdField_a_of_type_Bjen = new ajbt(this, this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView.setController(this.jdField_a_of_type_Bjen);
       a(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_exp", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_exp", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
       return;
       if ((l != 0L) && (l < paramBundle.time))
       {

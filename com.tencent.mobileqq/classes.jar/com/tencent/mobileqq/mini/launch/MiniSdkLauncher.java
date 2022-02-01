@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqpv;
-import bgln;
+import arfd;
+import bhlo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
@@ -388,7 +388,7 @@ public class MiniSdkLauncher
         String str1 = paramString.optString("ver");
         String str2 = paramString.optString("minjs");
         if (!TextUtils.isEmpty(str1)) {
-          paramString.putOpt("app_version", "8.4.1.4680");
+          paramString.putOpt("app_version", "8.4.5.4745");
         }
         MiniDynamicManager.g().updateDexConfig(paramString.toString());
         if (!TextUtils.isEmpty(str2))
@@ -415,7 +415,7 @@ public class MiniSdkLauncher
       {
         try
         {
-          if (aqpv.a("mini_sdk_prelaunch_enable", 1) == 1)
+          if (arfd.a("mini_sdk_prelaunch_enable", 1) == 1)
           {
             i = 1;
             if (i != 0) {
@@ -548,7 +548,7 @@ public class MiniSdkLauncher
   
   private static boolean shouldForbidLowPerf()
   {
-    int i = bgln.f();
+    int i = bhlo.f();
     QLog.d("MiniSdkLauncher", 1, "shouldForbidLowPerf " + i);
     return i == 3;
   }

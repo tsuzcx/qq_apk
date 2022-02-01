@@ -7,20 +7,20 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import nlw;
-import tbm;
+import nnr;
+import ssi;
 
 public class FastWebShareUtils$3
   implements Runnable
 {
-  public FastWebShareUtils$3(tbm paramtbm, String paramString, boolean paramBoolean, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
+  public FastWebShareUtils$3(ssi paramssi, String paramString, boolean paramBoolean, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
   
   public void run()
   {
     label149:
     try
     {
-      localObject = nlw.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      localObject = nnr.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       if (localObject == null) {
         break label127;
       }

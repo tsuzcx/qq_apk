@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import blvq;
-import blvr;
-import blvs;
+import bmws;
+import bmwt;
+import bmwu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
 import java.util.Collections;
@@ -38,11 +38,11 @@ public class FeedListView
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(blvs paramblvs) {}
+  public void a(bmwu parambmwu) {}
   
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
   
-  public boolean a(String paramString, blvs paramblvs)
+  public boolean a(String paramString, bmwu parambmwu)
   {
     return false;
   }
@@ -69,7 +69,7 @@ public class FeedListView
   
   public void m() {}
   
-  public void setExpandHead(blvq paramblvq) {}
+  public void setExpandHead(bmws parambmws) {}
   
   public void setExtArgs(Map<String, String> paramMap)
   {
@@ -83,7 +83,7 @@ public class FeedListView
     this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  public void setFeedUinChangedListener(blvr paramblvr) {}
+  public void setFeedUinChangedListener(bmwt parambmwt) {}
   
   public void setLongClickValid(boolean paramBoolean)
   {

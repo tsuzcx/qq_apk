@@ -1,19 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpaz;
-import bpbb;
-import bpbc;
-import bpep;
+import bqcu;
+import bqcw;
+import bqcx;
+import bqgk;
 
 public class EditProviderPart$2$1$1$1
   implements Runnable
 {
-  public EditProviderPart$2$1$1$1(bpbc parambpbc) {}
+  public EditProviderPart$2$1$1$1(bqcx parambqcx) {}
   
   public void run()
   {
-    if ((this.a.a.a.this$0.jdField_a_of_type_Bpfx != null) && (this.a.a.a.this$0.jdField_a_of_type_Bpep != null)) {
-      this.a.a.a.this$0.jdField_a_of_type_Bpep.a(0);
+    if ((this.a.a.a.this$0.jdField_a_of_type_Bqhs != null) && (this.a.a.a.this$0.jdField_a_of_type_Bqgk != null)) {
+      this.a.a.a.this$0.jdField_a_of_type_Bqgk.a(0);
     }
   }
 }

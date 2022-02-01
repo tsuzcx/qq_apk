@@ -1,24 +1,44 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
 
-class ajjd
-  implements View.OnLongClickListener
+public class ajjd
 {
-  private WeakReference<ajiy> a;
+  public int a;
+  public boolean a;
+  public int b = 0;
   
-  public ajjd(ajiy paramajiy)
+  public ajjd()
   {
-    this.a = new WeakReference(paramajiy);
+    this.jdField_a_of_type_Int = 23;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public boolean onLongClick(View paramView)
+  public void a()
   {
-    ajiy localajiy = (ajiy)this.a.get();
-    if (localajiy != null) {
-      return localajiy.onLongClick(paramView);
-    }
-    return false;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
   }
 }
 

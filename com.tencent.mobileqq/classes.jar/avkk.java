@@ -1,26 +1,20 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowEntryData;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
 
-class avkk
-  extends CustomizedReport
+public class avkk
+  implements View.OnLayoutChangeListener
 {
-  avkk(avju paramavju) {}
+  public avkk(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
   
-  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
-  
-  public void onReport(Bundle paramBundle)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    avjl localavjl = avkt.a().a();
-    if (localavjl != null) {
-      localavjl.a(paramBundle);
-    }
-    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
-      umq.a(avks.jdField_a_of_type_JavaLangString, "", "", avks.b, avks.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
+    if ((!QQGamePadFaceFragment.a(this.a)) && (paramInt3 - paramInt1 > 0) && (paramInt4 - paramInt2 > 0))
+    {
+      QQGamePadFaceFragment.a(this.a, true);
+      QQGamePadFaceFragment.a(this.a);
     }
   }
-  
-  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 

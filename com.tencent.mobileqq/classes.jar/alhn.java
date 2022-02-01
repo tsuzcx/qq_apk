@@ -1,18 +1,17 @@
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.3.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alhn
-  implements bkhw
+  implements View.OnClickListener
 {
-  public alhn(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
+  public alhn(SpecifyRedPacketAnimMsg.3.1 param1) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + anni.a(2131702452);
-    bluy.a().c(paramView);
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
+    this.a.a.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

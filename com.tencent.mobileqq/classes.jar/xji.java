@@ -1,11 +1,18 @@
-public class xji
-  extends xix
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+public final class xji
+  extends wip
 {
-  public yib a;
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public xji(String paramString)
+  public xji(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 

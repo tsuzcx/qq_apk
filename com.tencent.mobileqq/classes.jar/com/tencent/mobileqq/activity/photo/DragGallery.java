@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bkkt;
+import bllw;
 import com.tencent.qphone.base.util.QLog;
 
 public class DragGallery
@@ -33,8 +33,8 @@ public class DragGallery
       if (((this.j == 1) || (this.j == -1)) && (f >= 6.0F) && (this.h < 10))
       {
         getParent().requestDisallowInterceptTouchEvent(false);
-        if (this.jdField_a_of_type_Bkkt != null) {
-          this.jdField_a_of_type_Bkkt.b(this.mSelectedPosition);
+        if (this.jdField_a_of_type_Bllw != null) {
+          this.jdField_a_of_type_Bllw.b(this.mSelectedPosition);
         }
       }
       return;

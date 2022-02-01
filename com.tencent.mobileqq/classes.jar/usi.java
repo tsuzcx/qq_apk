@@ -1,18 +1,6 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
 class usi
-  implements View.OnTouchListener
 {
-  usi(usg paramusg) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    usg.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
-  }
+  private static final usg a = new usg(null);
 }
 
 

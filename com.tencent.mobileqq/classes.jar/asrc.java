@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.widget.RelativeLayout;
 
 public class asrc
-  implements DialogInterface.OnClickListener
+  extends aslu
 {
-  public asrc(FMActivity paramFMActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
-    this.a.finish();
-  }
+  RelativeLayout[] a;
 }
 
 

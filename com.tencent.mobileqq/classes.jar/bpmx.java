@@ -1,37 +1,31 @@
-public class bpmx
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class bpmx
+  implements Handler.Callback
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public int d;
+  bpmx(bpmw parambpmw) {}
   
-  static
+  public boolean handleMessage(Message paramMessage)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-  }
-  
-  public bpmx() {}
-  
-  public bpmx(int paramInt, float paramFloat1, float paramFloat2)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  public bpmx(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.jdField_d_of_type_Float = paramFloat4;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.removeMessages(1);
+      if (this.a.a())
+      {
+        this.a.a.sendEmptyMessageDelayed(1, 50L);
+        continue;
+        this.a.a.removeMessages(3);
+        if (this.a.b()) {
+          this.a.a.sendEmptyMessageDelayed(3, 50L);
+        }
+      }
+    }
   }
 }
 

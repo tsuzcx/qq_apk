@@ -1,16 +1,22 @@
-public class acnu
+import android.os.Looper;
+import com.tencent.ad.tangram.offline.AdOfflineAdapter;
+
+public final class acnu
+  implements AdOfflineAdapter
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  
-  public acnu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public String getAppVersion()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    return acvf.a();
+  }
+  
+  public String getVersionIfExists(String paramString)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      acvc.d("GdtOfflineAdapter", "getVersionIfExists error");
+      return null;
+    }
+    return nmj.a(paramString);
   }
 }
 

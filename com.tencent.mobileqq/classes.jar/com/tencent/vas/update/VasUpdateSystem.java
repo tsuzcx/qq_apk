@@ -61,7 +61,9 @@ public class VasUpdateSystem
     synchronized (this.mTempTaskMaps)
     {
       VasUpdateWrapper.getLog().e("VasUpdate_System", "start addItemVersionForStartRun itemId = " + paramBusinessUpdateParams.mItemId + " mGetUrlTimerFinish = " + this.mGetUrlTimerFinish);
-      if (this.mTempTaskMaps.containsKey(paramItemUpdateVerPtr.mItemId)) {
+      if (this.mTempTaskMaps.containsKey(paramItemUpdateVerPtr.mItemId))
+      {
+        VasUpdateWrapper.getLog().e("VasUpdate_System", "addItemVersionForStartRun mTempTaskMaps hasContain itemid = " + paramItemUpdateVerPtr.mItemId);
         return;
       }
       str = paramItemUpdateVerPtr.mItemId;
@@ -83,25 +85,14 @@ public class VasUpdateSystem
     paramItemUpdateVerPtr = new BaseItemTask(paramBusinessUpdateParams, paramItemUpdateVerPtr, (BusinessItemInfo)localObject);
     paramItemUpdateVerPtr.setDLFrom(paramInt);
     this.mTempTaskMaps.put(str, paramItemUpdateVerPtr);
-    long l;
     if (this.mGetUrlTimerFinish)
     {
-      if (paramInt != 3) {
-        break label314;
+      if (paramInt == 3) {}
+      for (long l = 0L; l == 0L; l = VasUpdateWrapper.getCommonManager().getTimerDelay())
+      {
+        onTime(1);
+        return;
       }
-      l = 0L;
-      if (l != 0L) {
-        break label327;
-      }
-      onTime(1);
-    }
-    for (;;)
-    {
-      return;
-      label314:
-      l = VasUpdateWrapper.getCommonManager().getTimerDelay();
-      break;
-      label327:
       this.mTimerModule.setTimer(1, l, false);
       this.mGetUrlTimerFinish = false;
     }
@@ -311,13 +302,9 @@ public class VasUpdateSystem
     for (boolean bool = true;; bool = false)
     {
       localIVasLog.i("VasUpdate_System", bool);
-      if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
-        break;
-      }
       ThreadManager.getInstance().post(new VasUpdateSystem.1(this, paramBusinessUpdateParams));
       return;
     }
-    selfDownloadItem(paramBusinessUpdateParams);
   }
   
   public DownloadModule getDownloadModule()
@@ -335,37 +322,48 @@ public class VasUpdateSystem
     return this.mNotificationModule.getObserver(Long.valueOf(paramLong));
   }
   
-  public void onPbResponse(int paramInt, String arg2, String paramString2)
+  public void onPbResponse(int paramInt, String paramString1, String arg3)
   {
     if (VasUpdateWrapper.getLog().isColorLevel()) {
-      VasUpdateWrapper.getLog().i("VasUpdate_System", "onPbResponse cmd = " + ??? + " result = " + paramInt + " response = " + paramString2);
+      VasUpdateWrapper.getLog().i("VasUpdate_System", "onPbResponse cmd = " + paramString1 + " result = " + paramInt + " response = " + ???);
     }
-    if ("GetUrlRsp".equalsIgnoreCase(???))
+    TaskBatchUrlRsp localTaskBatchUrlRsp;
+    if ("GetUrlRsp".equalsIgnoreCase(paramString1))
     {
-      paramString2 = TaskBatchUrlRsp.parseResponse(paramString2);
-      if (paramString2 != null) {}
+      localTaskBatchUrlRsp = TaskBatchUrlRsp.parseResponse(???);
+      if (localTaskBatchUrlRsp == null) {
+        return;
+      }
+      VasUpdateWrapper.getLog().i("VasUpdate_System", "onPbResponse response cookie = " + localTaskBatchUrlRsp.mCookie);
     }
-    while ((!"SyncVCRRsp".equalsIgnoreCase(???)) || (this.mTaskSyncReq == null))
+    for (;;)
     {
-      return;
-      VasUpdateWrapper.getLog().i("VasUpdate_System", "onPbResponse response cookie = " + paramString2.mCookie);
       synchronized (this.mRequestUrlList)
       {
         Iterator localIterator = this.mRequestUrlList.iterator();
-        while (localIterator.hasNext())
-        {
-          TaskBatchUrlReq localTaskBatchUrlReq = (TaskBatchUrlReq)localIterator.next();
-          if ((localTaskBatchUrlReq != null) && (localTaskBatchUrlReq.getCookieId() == paramString2.mCookie))
-          {
-            localTaskBatchUrlReq.handlePbResponse(paramInt, paramString2);
-            localIterator.remove();
-          }
+        if (!localIterator.hasNext()) {
+          break label230;
         }
+        paramString1 = (TaskBatchUrlReq)localIterator.next();
+        if ((paramString1 == null) || (paramString1.getCookieId() != localTaskBatchUrlRsp.mCookie)) {
+          continue;
+        }
+        localIterator.remove();
+        if (paramString1 == null) {
+          break;
+        }
+        paramString1.handlePbResponse(paramInt, localTaskBatchUrlRsp);
+        return;
       }
+      if ((!"SyncVCRRsp".equalsIgnoreCase(paramString1)) || (this.mTaskSyncReq == null)) {
+        break;
+      }
+      paramString1 = TaskSyncRsp.parseResponseJson(???);
+      this.mTaskSyncReq.handlePbResponse(paramInt, paramString1);
       return;
+      label230:
+      paramString1 = null;
     }
-    ??? = TaskSyncRsp.parseResponseJson(paramString2);
-    this.mTaskSyncReq.handlePbResponse(paramInt, ???);
   }
   
   public void onTaskItemComplete(@NonNull BusinessUpdateParams paramBusinessUpdateParams, int paramInt1, int paramInt2, int paramInt3, String paramString, DLReportInfo paramDLReportInfo)

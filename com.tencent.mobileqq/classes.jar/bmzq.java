@@ -1,6 +1,55 @@
-public abstract interface bmzq
+import NS_USER_ACTION_REPORT.ActionInfo;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import java.util.ArrayList;
+
+public class bmzq
 {
-  public abstract void a(bmyy parambmyy, boolean paramBoolean, int paramInt, String paramString);
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<ActionInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String b = "";
+  private String c;
+  private String d = "";
+  
+  public ItemInfo a()
+  {
+    ItemInfo localItemInfo = new ItemInfo();
+    localItemInfo.item_id = this.jdField_a_of_type_JavaLangString;
+    localItemInfo.action_infos = this.jdField_a_of_type_JavaUtilArrayList;
+    localItemInfo.busi_info = this.c;
+    localItemInfo.module_id = this.d;
+    localItemInfo.item_type = this.b;
+    return localItemInfo;
+  }
+  
+  public bmzq a(ActionInfo paramActionInfo)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramActionInfo);
+    return this;
+  }
+  
+  public bmzq a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bmzq b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public bmzq c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public bmzq d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
 }
 
 

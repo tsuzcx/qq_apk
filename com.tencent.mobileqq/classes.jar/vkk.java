@@ -1,14 +1,12 @@
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-
-public class vkk
-  implements vuw
+class vkk
 {
-  public vkk(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public void a(String paramString)
+  public String toString()
   {
-    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", hasResponse='" + this.b + '\'' + '}';
   }
 }
 

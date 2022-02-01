@@ -1,26 +1,62 @@
-final class argi<T>
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class argi
 {
-  public argi<T> a;
-  public final T a;
-  public argi<T> b;
+  public int a = -1;
   
-  public argi()
+  public static argi a(araj[] paramArrayOfaraj)
   {
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Argi = this;
-    this.b = this;
+    argi localargi = new argi();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      int j = paramArrayOfaraj.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramArrayOfaraj[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((araj)localObject).a;
+          try
+          {
+            a(new JSONObject((String)localObject), localargi);
+            if (QLog.isColorLevel()) {
+              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localargi);
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+    return localargi;
   }
   
-  public argi(T paramT, argi<T> paramargi1, argi<T> paramargi2)
+  private static void a(JSONObject paramJSONObject, argi paramargi)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Argi = paramargi1;
-    this.b = paramargi2;
+    if (paramJSONObject.has("showMode")) {
+      paramargi.a = paramJSONObject.optInt("showMode");
+    }
+  }
+  
+  public String toString()
+  {
+    return "PhotoListPanelBean{showMode=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argi
  * JD-Core Version:    0.7.0.1
  */

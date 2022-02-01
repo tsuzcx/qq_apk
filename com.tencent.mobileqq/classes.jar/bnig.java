@@ -1,165 +1,53 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import cooperation.qzone.util.NetworkState;
 
-public abstract class bnig
+public class bnig
+  extends bnia
 {
-  protected double a;
-  protected int a;
-  private long jdField_a_of_type_Long;
-  protected SurfaceTexture a;
-  private bnhm jdField_a_of_type_Bnhm;
-  protected bnif a;
-  private boolean jdField_a_of_type_Boolean;
-  protected final float[] a;
-  protected int[] a;
-  protected double b;
-  protected int b;
-  private long b;
-  protected volatile boolean b;
-  protected float[] b;
-  protected int c;
-  private boolean c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
-  protected int k;
-  protected int l = 90;
-  protected final int m = 1080;
+  public static final String a = bnig.class.getName();
+  public int b = -1;
   
-  public bnig()
+  public bnig(String paramString)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_b_of_type_Long = ((Long)aavz.a().a("SmartCutPicSpacing", Long.valueOf(500L))).longValue();
-    this.jdField_b_of_type_ArrayOfFloat = new float[16];
+    super(paramString);
   }
   
-  public SurfaceTexture a()
+  public static boolean a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    if (bnio.a() == null) {
+      return false;
     }
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.k = arrayOfInt[0];
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.k);
-    this.jdField_a_of_type_Boolean = true;
-    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    return NetworkState.isWap();
   }
   
-  protected abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public void a(int paramInt1, int paramInt2)
+  public int a(String paramString, int paramInt)
   {
-    this.i = paramInt1;
-    this.j = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    this.jdField_b_of_type_Double = (paramInt1 / paramInt2);
-    if ((paramInt3 > 0) && (paramInt4 > 0))
+    if (this.b == -1)
     {
-      this.g = paramInt3;
-      this.h = paramInt4;
-      this.jdField_a_of_type_Double = (this.g / this.h);
-    }
-    this.e = paramInt5;
-    this.f = ((int)(this.e / this.jdField_b_of_type_Double));
-    this.jdField_c_of_type_Int = paramInt5;
-    this.d = ((int)(this.jdField_c_of_type_Int / this.jdField_b_of_type_Double));
-    this.jdField_a_of_type_Int = 1080;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / this.jdField_b_of_type_Double));
-  }
-  
-  public void a(bnhm parambnhm)
-  {
-    this.jdField_a_of_type_Bnhm = parambnhm;
-  }
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public void a(boolean paramBoolean, int paramInt, bnif parambnif)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.l = paramInt;
-    this.jdField_a_of_type_Bnif = parambnif;
-  }
-  
-  public void a(float[] paramArrayOfFloat)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+      int j = super.a(paramString, paramInt);
+      int i = j;
+      if (a())
       {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        System.arraycopy(paramArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0, 16);
+        if (j != 0)
+        {
+          this.b = 1;
+          i = super.a(paramString, paramInt);
+        }
       }
-      return;
-    }
-    catch (Exception paramArrayOfFloat)
-    {
-      paramArrayOfFloat.printStackTrace();
-    }
-  }
-  
-  public abstract int[] a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bnhm != null)
-    {
-      long l1 = System.currentTimeMillis();
-      if (l1 - this.jdField_a_of_type_Long >= this.jdField_b_of_type_Long)
-      {
-        this.jdField_a_of_type_Bnhm.a(GlUtil.captureFrame(paramInt, this.e, this.f, 0));
-        this.jdField_a_of_type_Long = l1;
+      else {
+        return i;
       }
+      this.b = 0;
+      return j;
     }
+    return super.a(paramString, paramInt);
   }
   
-  protected abstract void d();
-  
-  public abstract void e();
-  
-  public boolean f()
+  public bnic a()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean);
-  }
-  
-  public void g()
-  {
-    if (!this.jdField_c_of_type_Boolean)
-    {
-      a();
-      this.jdField_c_of_type_Boolean = true;
+    if ((a()) && (this.b == 1)) {
+      return bnic.a;
     }
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.k;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if (this.jdField_c_of_type_Boolean)
-    {
-      d();
-      this.jdField_c_of_type_Boolean = false;
-    }
+    return null;
   }
 }
 

@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import java.util.List;
 
-public final class yrl
-  implements Parcelable.Creator<EditLocalPhotoSource>
+class yrl
+  implements bljb
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  yrl(yrh paramyrh, int paramInt) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public void onDismiss()
   {
-    return new EditLocalPhotoSource[paramInt];
+    ynt localynt = (ynt)this.jdField_a_of_type_Yrh.a.a().get(this.jdField_a_of_type_Int);
+    yrh.a(this.jdField_a_of_type_Yrh, localynt, "clk_hide");
   }
 }
 

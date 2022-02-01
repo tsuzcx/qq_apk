@@ -1,27 +1,51 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.activity.FunctionSearchActivity;
+import java.util.List;
 
 public class bcfa
-  implements INetInfoHandler
+  implements bcfq
 {
-  public bcfa(ShortVideoResourceManager paramShortVideoResourceManager) {}
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  public final List<bcfr> a;
   
-  public void onNetMobile2None()
+  public bcfa(List<bcfr> paramList, String paramString, int paramInt)
   {
-    ShortVideoResourceManager.a(this.a);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
+  public int a()
   {
-    ShortVideoResourceManager.a(this.a);
+    return bbzo.a("fts_native_function_maxnum", 3);
+  }
+  
+  public String a()
+  {
+    return bbzo.a();
+  }
+  
+  public List<bcfr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    FunctionSearchActivity.a((BaseActivity)paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    bcjy.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4B", 0, 0, null, null);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

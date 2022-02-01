@@ -1,22 +1,22 @@
 package cooperation.qzone.webviewplugin;
 
-import bmic;
-import bmlo;
+import bnje;
+import bnmr;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class QZoneSharePictureJsPlugin$1
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$1(bmlo parambmlo, String[] paramArrayOfString) {}
+  public QZoneSharePictureJsPlugin$1(bnmr parambnmr, String[] paramArrayOfString) {}
   
   public void run()
   {
-    if (bmic.a().a(bmic.a, true))
+    if (bnje.a().a(bnje.a, true))
     {
-      bmlo.a(this.this$0, this.this$0.a.mRuntime, this.a);
+      bnmr.a(this.this$0, this.this$0.a.mRuntime, this.a);
       return;
     }
-    bmlo.a(this.this$0, this.a);
+    bnmr.a(this.this$0, this.a);
   }
 }
 

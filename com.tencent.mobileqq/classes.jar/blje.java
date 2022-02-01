@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class blje
-  implements DialogInterface.OnClickListener
+public abstract interface blje
 {
-  blje(blja paramblja) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.b = true;
-    blja.a(this.a, 1);
-    blja.c(this.a);
-  }
+  public abstract void a();
 }
 
 

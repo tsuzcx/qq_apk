@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-final class afuy
-  implements afvp
+public class afuy
+  implements View.OnTouchListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afuy(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 47);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    paramQQAppInterface.e = paramSessionInfo.b;
-    return paramQQAppInterface;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 

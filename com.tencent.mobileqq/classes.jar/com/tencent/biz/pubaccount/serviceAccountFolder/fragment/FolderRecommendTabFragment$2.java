@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import bmvg;
-import bmvi;
+import bnwo;
+import bnwq;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +13,11 @@ class FolderRecommendTabFragment$2
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    bmvg localbmvg = new bmvg();
-    localbmvg.a = 476;
-    localbmvg.b = 6;
-    localArrayList.add(localbmvg);
-    bmvi.a().a(localArrayList, FolderRecommendTabFragment.a(this.this$0));
+    bnwo localbnwo = new bnwo();
+    localbnwo.a = 476;
+    localbnwo.b = 6;
+    localArrayList.add(localbnwo);
+    bnwq.a().a(localArrayList, FolderRecommendTabFragment.a(this.this$0));
   }
 }
 

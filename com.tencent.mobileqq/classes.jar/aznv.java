@@ -1,625 +1,548 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.ExtendFriendPublicFragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.profilecard.bussiness.extendfriend.ProfileExtendFriendComponent.3;
-import com.tencent.mobileqq.profilecard.bussiness.extendfriend.ProfileExtendFriendComponent.7;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class aznv
-  extends azkr
-  implements View.OnClickListener
+  extends OGAbstractDao
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private aniz jdField_a_of_type_Aniz = new aznw(this);
-  private asgf jdField_a_of_type_Asgf;
-  private biau jdField_a_of_type_Biau;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ProfileExtendFriendComponent.3(this);
-  private boolean jdField_a_of_type_Boolean;
-  private Dialog jdField_b_of_type_AndroidAppDialog;
-  private asgf jdField_b_of_type_Asgf = new aznx(this);
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  private boolean e;
-  
-  public aznv(azlw paramazlw, azfe paramazfe)
+  public aznv()
   {
-    super(paramazlw, paramazfe);
+    this.columnLen = 38;
   }
   
-  private void a()
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    if (TextUtils.equals(((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-      if (c()) {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          i = 2;
-          bcst.b(null, "dc00898", "", "", "kuolie", "0X80097DB", i, 0, "", "", "", "");
-        }
-      }
-    }
-    while (this.jdField_b_of_type_Boolean)
-    {
-      for (;;)
-      {
-        return;
-        int i = 1;
-      }
-      ExtendFriendProfileEditFragment.ExtendFriendInfo localExtendFriendInfo = new ExtendFriendProfileEditFragment.ExtendFriendInfo(((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_extend_friend_info", localExtendFriendInfo);
-      PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localIntent, ExtendFriendEditFragment.class, 4097);
-      return;
-    }
-    ExtendFriendPublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  private void a(ViewGroup paramViewGroup, Card paramCard)
-  {
-    if (paramViewGroup != null)
-    {
-      if ((paramCard != null) && (!TextUtils.isEmpty(paramCard.schoolName)))
-      {
-        paramViewGroup.setVisibility(8);
-        asme.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-      }
-    }
-    else {
-      return;
-    }
-    if (asme.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-    {
-      paramViewGroup.setVisibility(0);
-      paramCard = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561137, null);
-      TextView localTextView = (TextView)paramCard.findViewById(2131379539);
-      paramViewGroup.addView(paramCard);
-      a(null, localTextView, null);
-      return;
-    }
-    paramViewGroup.setVisibility(8);
-  }
-  
-  private void a(Card paramCard, ProfileCardFavorShowView paramProfileCardFavorShowView)
-  {
-    boolean bool2 = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    int j;
-    Object localObject;
-    int i;
-    if (((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl != null)
-    {
-      j = 1;
-      localObject = paramProfileCardFavorShowView.a(0);
-      if (localObject == null) {
-        break label509;
-      }
-      if (j == 0) {
-        break label374;
-      }
-      azfl localazfl = (azfl)((View)localObject).getTag(2131372899);
-      if ((localazfl != null) && (localazfl.equals(((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl))) {
-        break label509;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      label79:
-      boolean bool1;
-      if ((localObject == null) || (!Boolean.FALSE.equals(((View)localObject).getTag(2131372900))) || (!Boolean.valueOf(bool2).equals(((View)localObject).getTag(2131372901))) || (i != 0))
-      {
-        paramProfileCardFavorShowView.removeAllViews();
-        paramProfileCardFavorShowView.setFocusable(false);
-        paramProfileCardFavorShowView.setClickable(false);
-        if (j == 0) {
-          break label503;
-        }
-        localObject = ((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl.a.get("commonItemContentColor");
-        if (localObject == null) {
-          break label498;
-        }
-        if ((localObject instanceof ColorStateList))
-        {
-          i = ((ColorStateList)localObject).getDefaultColor();
-          label183:
-          localObject = new float[3];
-          Color.colorToHSV(i, (float[])localObject);
-          if (localObject[2] <= 0.5F) {
-            break label424;
-          }
-          bool1 = true;
-        }
-      }
-      for (;;)
-      {
-        label208:
-        if (bool2)
-        {
-          localObject = new ProfileCardExtendFriendView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl, true);
-          label237:
-          if ((((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 96) || (this.jdField_a_of_type_Boolean)) {
-            ((ProfileCardExtendFriendView)localObject).setFold(false);
-          }
-          ((ProfileCardExtendFriendView)localObject).setClickable(true);
-          ((ProfileCardExtendFriendView)localObject).setTag(2131372900, Boolean.valueOf(false));
-          ((ProfileCardExtendFriendView)localObject).setTag(2131372901, Boolean.valueOf(bool2));
-          ((ProfileCardExtendFriendView)localObject).setTag(2131372899, ((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl);
-          paramProfileCardFavorShowView.addView((View)localObject);
-          if (!azfl.a(((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Long)) {
-            break label489;
-          }
-          ((ProfileCardExtendFriendView)localObject).setDiyCard(true);
-          ((ProfileCardExtendFriendView)localObject).setProfileCardFavorShowView(paramProfileCardFavorShowView);
-        }
-        for (;;)
-        {
-          label320:
-          ((ProfileCardExtendFriendView)localObject).setIsFromLimitChat(this.jdField_b_of_type_Boolean);
-          ((ProfileCardExtendFriendView)localObject).a(paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          return;
-          j = 0;
-          break;
-          label374:
-          if (((View)localObject).getTag(2131372899) == null) {
-            break label509;
-          }
-          i = 1;
-          break label79;
-          if (!(localObject instanceof String)) {
-            break label498;
-          }
-          localObject = (String)localObject;
-          if (!((String)localObject).startsWith("#")) {
-            break label498;
-          }
-          i = Color.parseColor((String)localObject);
-          break label183;
-          label424:
-          bool1 = false;
-          break label208;
-          if (j != 0)
-          {
-            localObject = new ProfileCardExtendFriendView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl, bool1);
-            break label237;
-          }
-          localObject = new ProfileCardExtendFriendView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-          break label237;
-          localObject = (ProfileCardExtendFriendView)localObject;
-          break label320;
-          label489:
-          ((ProfileCardExtendFriendView)localObject).setDiyCard(false);
-        }
-        label498:
-        i = 0;
-        break label183;
-        label503:
-        bool1 = false;
-      }
-      label509:
-      i = 0;
-    }
-  }
-  
-  private void a(ProfileCardFavorShowView paramProfileCardFavorShowView, Card paramCard, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    Object localObject1 = paramProfileCardFavorShowView.getChildAt(0);
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    if ((localObject1 == null) || (!Boolean.TRUE.equals(((View)localObject1).getTag(0))) || (!Boolean.valueOf(paramBoolean1).equals(((View)localObject1).getTag(1))) || (!((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl.equals(((View)localObject1).getTag(2))))
-    {
-      paramProfileCardFavorShowView.removeAllViews();
-      if ((!paramBoolean1) && (!paramBoolean2)) {
-        break label315;
-      }
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561411, null);
-      ((View)localObject1).setTag(2131372900, Boolean.valueOf(true));
-      ((View)localObject1).setTag(2131372901, Boolean.valueOf(paramBoolean1));
-      ((View)localObject1).setTag(2131372899, ((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl);
-      localObject2 = (TextView)((View)localObject1).findViewById(2131379471);
-      localObject3 = (TextView)((View)localObject1).findViewById(2131379472);
-      if (paramBoolean2)
-      {
-        localObject4 = ((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl.a.get("commonItemContentColor");
-        if (localObject4 != null)
-        {
-          if (!(localObject4 instanceof ColorStateList)) {
-            break label266;
-          }
-          ((TextView)localObject2).setTextColor((ColorStateList)localObject4);
-          ((TextView)localObject3).setTextColor((ColorStateList)localObject4);
-        }
-      }
-    }
-    for (;;)
-    {
-      ((View)localObject1).setClickable(true);
-      localObject2 = ((View)localObject1).findViewById(2131379470);
-      ((View)localObject2).setOnClickListener(new azny(this, paramCard));
-      paramProfileCardFavorShowView.addView((View)localObject1);
-      if (paramBoolean1) {
-        a(null, (View)localObject2, null);
-      }
-      return;
-      label266:
-      if ((localObject4 instanceof String))
-      {
-        localObject4 = (String)localObject4;
-        if (((String)localObject4).startsWith("#"))
-        {
-          ((TextView)localObject2).setTextColor(Color.parseColor((String)localObject4));
-          ((TextView)localObject3).setTextColor(Color.parseColor((String)localObject4));
-          continue;
-          label315:
-          localObject2 = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561410, null);
-          localObject3 = ((View)localObject2).findViewById(2131376689);
-          localObject4 = asmk.a("expand_summary_default_bg.png");
-          localObject1 = localObject2;
-          if (atwl.a((String)localObject4))
-          {
-            localObject1 = asmk.a((String)localObject4, null);
-            localObject4 = new BitmapDrawable((Bitmap)localObject1);
-            float f = ((Bitmap)localObject1).getWidth() / ((Bitmap)localObject1).getHeight();
-            ((View)localObject3).setLayoutParams(new LinearLayout.LayoutParams(-1, (int)(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().widthPixels / f)));
-            ((View)localObject3).setBackgroundDrawable((Drawable)localObject4);
-            localObject1 = localObject2;
-          }
-        }
-      }
-    }
-  }
-  
-  private boolean a(Card paramCard)
-  {
-    boolean bool = true;
-    if (paramCard == null) {}
-    while ((!paramCard.isShowCard) || (paramCard.extendFriendFlag != 1)) {
-      return false;
-    }
-    if (TextUtils.equals(paramCard.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-      if (paramCard.extendFriendEntryAddFriend == 0) {
-        bool = false;
-      }
-    }
-    label162:
-    label165:
-    for (;;)
-    {
-      SharedPreferences localSharedPreferences;
-      if (!((asfu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264)).d())
-      {
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-        QLog.i("ProfileExtendFriendComponent", 4, "extend friend resource is not ready");
-        return false;
-        localSharedPreferences = bgsg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785");
-        if (!localSharedPreferences.contains("sp_extend_friend_entry_add_friend")) {
-          break label162;
-        }
-      }
-      for (int i = localSharedPreferences.getInt("sp_extend_friend_entry_add_friend", 0);; i = 1)
-      {
-        if ((localSharedPreferences.getInt("sp_extend_friend_entry_add_friend", 0) != 0) && (i == 1) && (!TextUtils.isEmpty(paramCard.declaration))) {
-          break label165;
-        }
-        bool = false;
-        break;
-        return bool;
-      }
-    }
-  }
-  
-  private boolean a(Card paramCard, boolean paramBoolean)
-  {
+    boolean bool2 = true;
     boolean bool1 = true;
-    if (!a(paramCard))
+    paramEntity = (HotChatInfo)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      if (this.jdField_a_of_type_JavaLangObject != null)
+      paramEntity.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
+      paramEntity.troopCode = paramCursor.getString(paramCursor.getColumnIndex("troopCode"));
+      paramEntity.signature = paramCursor.getString(paramCursor.getColumnIndex("signature"));
+      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramEntity.faceId = paramCursor.getInt(paramCursor.getColumnIndex("faceId"));
+      paramEntity.memberCount = paramCursor.getInt(paramCursor.getColumnIndex("memberCount"));
+      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("hasJoined")))
       {
-        this.jdField_a_of_type_JavaLangObject = null;
-        return true;
+        paramBoolean = true;
+        paramEntity.hasJoined = paramBoolean;
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isWifiHotChat"))) {
+          break label764;
+        }
+        paramBoolean = true;
+        label169:
+        paramEntity.isWifiHotChat = paramBoolean;
+        paramEntity.uuid = paramCursor.getString(paramCursor.getColumnIndex("uuid"));
+        paramEntity.iconUrl = paramCursor.getString(paramCursor.getColumnIndex("iconUrl"));
+        paramEntity.hotThemeGroupFlag = paramCursor.getInt(paramCursor.getColumnIndex("hotThemeGroupFlag"));
+        paramEntity.detail = paramCursor.getString(paramCursor.getColumnIndex("detail"));
+        paramEntity.state = paramCursor.getInt(paramCursor.getColumnIndex("state"));
+        paramEntity.leftTime = paramCursor.getLong(paramCursor.getColumnIndex("leftTime"));
+        paramEntity.ruState = paramCursor.getInt(paramCursor.getColumnIndex("ruState"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("supportFlashPic"))) {
+          break label769;
+        }
+        paramBoolean = true;
+        label320:
+        paramEntity.supportFlashPic = paramBoolean;
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("supportDemo"))) {
+          break label774;
+        }
+        paramBoolean = true;
+        label345:
+        paramEntity.supportDemo = paramBoolean;
+        paramEntity.adminLevel = paramCursor.getInt(paramCursor.getColumnIndex("adminLevel"));
+        paramEntity.joinUrl = paramCursor.getString(paramCursor.getColumnIndex("joinUrl"));
+        paramEntity.hotChatType = paramCursor.getInt(paramCursor.getColumnIndex("hotChatType"));
+        paramEntity.memo = paramCursor.getString(paramCursor.getColumnIndex("memo"));
+        paramEntity.memoUrl = paramCursor.getString(paramCursor.getColumnIndex("memoUrl"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("memoShowed"))) {
+          break label779;
+        }
+        paramBoolean = true;
+        label460:
+        paramEntity.memoShowed = paramBoolean;
+        paramEntity.userCreate = paramCursor.getInt(paramCursor.getColumnIndex("userCreate"));
+        paramEntity.strAdminUins = paramCursor.getString(paramCursor.getColumnIndex("strAdminUins"));
+        paramEntity.ownerUin = paramCursor.getString(paramCursor.getColumnIndex("ownerUin"));
+        paramEntity.pkFlag = paramCursor.getInt(paramCursor.getColumnIndex("pkFlag"));
+        paramEntity.subType = paramCursor.getInt(paramCursor.getColumnIndex("subType"));
+        paramEntity.lLastMsgSeq = paramCursor.getLong(paramCursor.getColumnIndex("lLastMsgSeq"));
+        paramEntity.extra1 = paramCursor.getString(paramCursor.getColumnIndex("extra1"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isFavorite"))) {
+          break label784;
+        }
+        paramBoolean = true;
+        label611:
+        paramEntity.isFavorite = paramBoolean;
+        paramEntity.mFissionRoomNum = paramCursor.getInt(paramCursor.getColumnIndex("mFissionRoomNum"));
+        paramEntity.praiseCount = paramCursor.getLong(paramCursor.getColumnIndex("praiseCount"));
+        paramEntity.uint32_group_flag_ext2 = paramCursor.getInt(paramCursor.getColumnIndex("uint32_group_flag_ext2"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isGameRoom"))) {
+          break label789;
+        }
+        paramBoolean = true;
+        label690:
+        paramEntity.isGameRoom = paramBoolean;
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isRobotHotChat"))) {
+          break label794;
+        }
+      }
+      label769:
+      label774:
+      label779:
+      label784:
+      label789:
+      label794:
+      for (paramBoolean = bool1;; paramBoolean = false)
+      {
+        paramEntity.isRobotHotChat = paramBoolean;
+        paramEntity.robotUin = paramCursor.getLong(paramCursor.getColumnIndex("robotUin"));
+        paramEntity.apolloGameId = paramCursor.getInt(paramCursor.getColumnIndex("apolloGameId"));
+        return paramEntity;
+        paramBoolean = false;
+        break;
+        label764:
+        paramBoolean = false;
+        break label169;
+        paramBoolean = false;
+        break label320;
+        paramBoolean = false;
+        break label345;
+        paramBoolean = false;
+        break label460;
+        paramBoolean = false;
+        break label611;
+        paramBoolean = false;
+        break label690;
       }
     }
-    else
+    int i = paramCursor.getColumnIndex("name");
+    if (i == -1)
     {
-      ProfileCardFavorShowView localProfileCardFavorShowView1;
-      if (this.jdField_a_of_type_JavaLangObject == null)
-      {
-        ProfileCardFavorShowView localProfileCardFavorShowView2 = (ProfileCardFavorShowView)this.jdField_a_of_type_Azqi.a(a_());
-        localProfileCardFavorShowView1 = localProfileCardFavorShowView2;
-        if (localProfileCardFavorShowView2 == null)
-        {
-          localProfileCardFavorShowView2 = new ProfileCardFavorShowView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-          localProfileCardFavorShowView2.setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691009));
-          localProfileCardFavorShowView1 = localProfileCardFavorShowView2;
-          if (this.jdField_b_of_type_Boolean)
-          {
-            localProfileCardFavorShowView2.setShowArrow(false);
-            localProfileCardFavorShowView1 = localProfileCardFavorShowView2;
-          }
-        }
-        this.jdField_a_of_type_JavaLangObject = localProfileCardFavorShowView1;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("name", String.class));
+      i = paramCursor.getColumnIndex("troopCode");
+      if (i != -1) {
+        break label2133;
       }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopCode", String.class));
+      label867:
+      i = paramCursor.getColumnIndex("signature");
+      if (i != -1) {
+        break label2148;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("signature", String.class));
+      label901:
+      i = paramCursor.getColumnIndex("troopUin");
+      if (i != -1) {
+        break label2163;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
+      label935:
+      i = paramCursor.getColumnIndex("faceId");
+      if (i != -1) {
+        break label2178;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("faceId", Integer.TYPE));
+      label970:
+      i = paramCursor.getColumnIndex("memberCount");
+      if (i != -1) {
+        break label2193;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("memberCount", Integer.TYPE));
+      label1005:
+      i = paramCursor.getColumnIndex("hasJoined");
+      if (i != -1) {
+        break label2208;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("hasJoined", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("isWifiHotChat");
+      if (i != -1) {
+        break label2235;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isWifiHotChat", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("uuid");
+      if (i != -1) {
+        break label2262;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uuid", String.class));
+      label1109:
+      i = paramCursor.getColumnIndex("iconUrl");
+      if (i != -1) {
+        break label2277;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("iconUrl", String.class));
+      label1143:
+      i = paramCursor.getColumnIndex("hotThemeGroupFlag");
+      if (i != -1) {
+        break label2292;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("hotThemeGroupFlag", Integer.TYPE));
+      label1178:
+      i = paramCursor.getColumnIndex("detail");
+      if (i != -1) {
+        break label2307;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("detail", String.class));
+      label1212:
+      i = paramCursor.getColumnIndex("state");
+      if (i != -1) {
+        break label2322;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("state", Integer.TYPE));
+      label1247:
+      i = paramCursor.getColumnIndex("leftTime");
+      if (i != -1) {
+        break label2337;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("leftTime", Long.TYPE));
+      label1282:
+      i = paramCursor.getColumnIndex("ruState");
+      if (i != -1) {
+        break label2352;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("ruState", Integer.TYPE));
+      label1317:
+      i = paramCursor.getColumnIndex("supportFlashPic");
+      if (i != -1) {
+        break label2367;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("supportFlashPic", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("supportDemo");
+      if (i != -1) {
+        break label2394;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("supportDemo", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("adminLevel");
+      if (i != -1) {
+        break label2421;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("adminLevel", Integer.TYPE));
+      label1422:
+      i = paramCursor.getColumnIndex("joinUrl");
+      if (i != -1) {
+        break label2436;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("joinUrl", String.class));
+      label1456:
+      i = paramCursor.getColumnIndex("hotChatType");
+      if (i != -1) {
+        break label2451;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("hotChatType", Integer.TYPE));
+      label1491:
+      i = paramCursor.getColumnIndex("memo");
+      if (i != -1) {
+        break label2466;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("memo", String.class));
+      label1525:
+      i = paramCursor.getColumnIndex("memoUrl");
+      if (i != -1) {
+        break label2481;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("memoUrl", String.class));
+      label1559:
+      i = paramCursor.getColumnIndex("memoShowed");
+      if (i != -1) {
+        break label2496;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("memoShowed", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("userCreate");
+      if (i != -1) {
+        break label2523;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("userCreate", Integer.TYPE));
+      label1629:
+      i = paramCursor.getColumnIndex("strAdminUins");
+      if (i != -1) {
+        break label2538;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strAdminUins", String.class));
+      label1663:
+      i = paramCursor.getColumnIndex("ownerUin");
+      if (i != -1) {
+        break label2553;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("ownerUin", String.class));
+      label1697:
+      i = paramCursor.getColumnIndex("pkFlag");
+      if (i != -1) {
+        break label2568;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("pkFlag", Integer.TYPE));
+      label1732:
+      i = paramCursor.getColumnIndex("subType");
+      if (i != -1) {
+        break label2583;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("subType", Integer.TYPE));
+      label1767:
+      i = paramCursor.getColumnIndex("lLastMsgSeq");
+      if (i != -1) {
+        break label2598;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lLastMsgSeq", Long.TYPE));
+      label1802:
+      i = paramCursor.getColumnIndex("extra1");
+      if (i != -1) {
+        break label2613;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("extra1", String.class));
+      label1836:
+      i = paramCursor.getColumnIndex("isFavorite");
+      if (i != -1) {
+        break label2628;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isFavorite", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("mFissionRoomNum");
+      if (i != -1) {
+        break label2655;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mFissionRoomNum", Integer.TYPE));
+      label1906:
+      i = paramCursor.getColumnIndex("praiseCount");
+      if (i != -1) {
+        break label2670;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("praiseCount", Long.TYPE));
+      label1941:
+      i = paramCursor.getColumnIndex("uint32_group_flag_ext2");
+      if (i != -1) {
+        break label2685;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uint32_group_flag_ext2", Integer.TYPE));
+      label1976:
+      i = paramCursor.getColumnIndex("isGameRoom");
+      if (i != -1) {
+        break label2700;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isGameRoom", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("isRobotHotChat");
+      if (i != -1) {
+        break label2727;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isRobotHotChat", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("robotUin");
+      if (i != -1) {
+        break label2755;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("robotUin", Long.TYPE));
+    }
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("apolloGameId");
+      if (i != -1) {
+        break label2770;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("apolloGameId", Integer.TYPE));
+      return paramEntity;
+      paramEntity.name = paramCursor.getString(i);
+      break;
+      label2133:
+      paramEntity.troopCode = paramCursor.getString(i);
+      break label867;
+      label2148:
+      paramEntity.signature = paramCursor.getString(i);
+      break label901;
+      label2163:
+      paramEntity.troopUin = paramCursor.getString(i);
+      break label935;
+      label2178:
+      paramEntity.faceId = paramCursor.getInt(i);
+      break label970;
+      label2193:
+      paramEntity.memberCount = paramCursor.getInt(i);
+      break label1005;
+      label2208:
+      if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
-        localProfileCardFavorShowView1 = (ProfileCardFavorShowView)this.jdField_a_of_type_JavaLangObject;
-        boolean bool2 = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        if (((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_Azfl != null)
-        {
-          if (!TextUtils.equals(paramCard.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-            break label252;
-          }
-          if (!TextUtils.isEmpty(paramCard.declaration)) {
-            break label242;
-          }
-          a(localProfileCardFavorShowView1, paramCard, bool2, bool1);
-          label181:
-          a(localProfileCardFavorShowView1.c, paramCard);
-        }
-        for (;;)
-        {
-          paramCard = new azde(87, null);
-          localProfileCardFavorShowView1.b.setTag(paramCard);
-          localProfileCardFavorShowView1.b.setOnClickListener(this);
-          a(localProfileCardFavorShowView1.jdField_a_of_type_AndroidWidgetTextView, null, localProfileCardFavorShowView1.jdField_a_of_type_AndroidWidgetImageView);
-          return paramBoolean;
-          bool1 = false;
-          break;
-          label242:
-          a(paramCard, localProfileCardFavorShowView1);
-          break label181;
-          label252:
-          a(paramCard, localProfileCardFavorShowView1);
-        }
+        paramEntity.hasJoined = paramBoolean;
+        break;
       }
-    }
-    return false;
-  }
-  
-  private boolean c()
-  {
-    boolean bool = false;
-    if (asfu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-    {
-      if (this.jdField_b_of_type_AndroidAppDialog == null) {
-        this.jdField_b_of_type_AndroidAppDialog = asmy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      }
-      if ((!this.jdField_b_of_type_AndroidAppDialog.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-        this.jdField_b_of_type_AndroidAppDialog.show();
-      }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "kuolie", "0X80097DC", 0, 0, "", "", "", "");
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private boolean d()
-  {
-    if (this.jdField_b_of_type_Boolean) {}
-    Card localCard;
-    do
-    {
-      return false;
-      localCard = ((anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    } while (localCard == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileExtendFriendComponent", 2, String.format("showExtendFriendProfileGuide declaration=%s isShowCard=%s", new Object[] { localCard.declaration, Boolean.valueOf(localCard.isShowCard) }));
-    }
-    if ((TextUtils.isEmpty(localCard.declaration)) && (e())) {
-      return true;
-    }
-    int i;
-    boolean bool;
-    if ((TextUtils.isEmpty(localCard.declaration)) || (!localCard.isShowCard))
-    {
-      if (TextUtils.isEmpty(localCard.declaration))
+      label2235:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
       {
-        i = 1;
-        this.jdField_a_of_type_AndroidAppDialog = asmy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, i, new aznz(this, localCard));
+        paramEntity.isWifiHotChat = paramBoolean;
+        break;
       }
-      try
+      label2262:
+      paramEntity.uuid = paramCursor.getString(i);
+      break label1109;
+      label2277:
+      paramEntity.iconUrl = paramCursor.getString(i);
+      break label1143;
+      label2292:
+      paramEntity.hotThemeGroupFlag = paramCursor.getInt(i);
+      break label1178;
+      label2307:
+      paramEntity.detail = paramCursor.getString(i);
+      break label1212;
+      label2322:
+      paramEntity.state = paramCursor.getInt(i);
+      break label1247;
+      label2337:
+      paramEntity.leftTime = paramCursor.getLong(i);
+      break label1282;
+      label2352:
+      paramEntity.ruState = paramCursor.getInt(i);
+      break label1317;
+      label2367:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
       {
-        this.jdField_a_of_type_AndroidAppDialog.show();
-        bool = true;
+        paramEntity.supportFlashPic = paramBoolean;
+        break;
       }
-      catch (Exception localException)
+      label2394:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
       {
-        for (;;)
-        {
-          QLog.e("ProfileExtendFriendComponent", 1, "showExtendFriendProfileGuide fail.", localException);
-          bool = false;
-          continue;
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E7", "0X80092E7", 0, 0, "", "", "", "");
-        }
+        paramEntity.supportDemo = paramBoolean;
+        break;
       }
-      if (TextUtils.isEmpty(localCard.declaration)) {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EA", "0X80092EA", 0, 0, "", "", "", "");
+      label2421:
+      paramEntity.adminLevel = paramCursor.getInt(i);
+      break label1422;
+      label2436:
+      paramEntity.joinUrl = paramCursor.getString(i);
+      break label1456;
+      label2451:
+      paramEntity.hotChatType = paramCursor.getInt(i);
+      break label1491;
+      label2466:
+      paramEntity.memo = paramCursor.getString(i);
+      break label1525;
+      label2481:
+      paramEntity.memoUrl = paramCursor.getString(i);
+      break label1559;
+      label2496:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.memoShowed = paramBoolean;
+        break;
       }
-    }
-    for (;;)
-    {
-      return bool;
-      i = 2;
-      break;
-      bool = false;
-    }
-  }
-  
-  private boolean e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileExtendFriendComponent", 2, String.format("checkUpdateExtendInfo mExtendRequested=%s", new Object[] { Boolean.valueOf(this.e) }));
-    }
-    if ((this.e) || (this.jdField_a_of_type_Asgf != null)) {
-      return false;
-    }
-    this.jdField_a_of_type_Asgf = new azoa(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Asgf);
-    this.jdField_a_of_type_Biau = new biau(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    this.jdField_a_of_type_Biau.c(true);
-    this.jdField_a_of_type_Biau.show();
-    ((asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
-    }
-    return true;
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_Azkz != null) {
-      this.jdField_a_of_type_Azkz.c();
-    }
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ProfileExtendFriendComponent.7(this), 1000L);
-    }
-  }
-  
-  public int a()
-  {
-    return 1008;
-  }
-  
-  public String a()
-  {
-    return "ProfileExtendFriendComponent";
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 4097) && (paramInt2 == 8193))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(8193);
-      if (this.jdField_a_of_type_Azkz != null) {
-        this.jdField_a_of_type_Azkz.a();
+      label2523:
+      paramEntity.userCreate = paramCursor.getInt(i);
+      break label1629;
+      label2538:
+      paramEntity.strAdminUins = paramCursor.getString(i);
+      break label1663;
+      label2553:
+      paramEntity.ownerUin = paramCursor.getString(i);
+      break label1697;
+      label2568:
+      paramEntity.pkFlag = paramCursor.getInt(i);
+      break label1732;
+      label2583:
+      paramEntity.subType = paramCursor.getInt(i);
+      break label1767;
+      label2598:
+      paramEntity.lLastMsgSeq = paramCursor.getLong(i);
+      break label1802;
+      label2613:
+      paramEntity.extra1 = paramCursor.getString(i);
+      break label1836;
+      label2628:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.isFavorite = paramBoolean;
+        break;
       }
-    }
-  }
-  
-  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    paramBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    if (paramBaseActivity != null)
-    {
-      this.jdField_a_of_type_Boolean = paramBaseActivity.getBooleanExtra("key_from_extends_friend", false);
-      this.jdField_b_of_type_Boolean = paramBaseActivity.getBooleanExtra("key_from_extends_friend_limit_chat", false);
-      this.c = paramBaseActivity.getBooleanExtra("key_from_limit_chat_plus", false);
-    }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aniz);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_b_of_type_Asgf);
-  }
-  
-  public boolean a(azfe paramazfe)
-  {
-    boolean bool = super.a(paramazfe);
-    return a(((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard, ((azfe)this.jdField_b_of_type_JavaLangObject).d) | bool;
-  }
-  
-  public String a_()
-  {
-    return "map_key_extend_friend";
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (c())
-    {
-      bcst.b(null, "dc00898", "", "", "kuolie", "0X80097DA", 2, 0, "", "", "", "");
-      bool = true;
-    }
-    while (!d()) {
-      return bool;
-    }
-    return true;
-  }
-  
-  public void d()
-  {
-    super.d();
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof ProfileCardFavorShowView)))
-    {
-      View localView = ((ProfileCardFavorShowView)this.jdField_a_of_type_JavaLangObject).a(0);
-      if ((localView instanceof ProfileCardExtendFriendView)) {
-        ((ProfileCardExtendFriendView)localView).b();
+      label2655:
+      paramEntity.mFissionRoomNum = paramCursor.getInt(i);
+      break label1906;
+      label2670:
+      paramEntity.praiseCount = paramCursor.getLong(i);
+      break label1941;
+      label2685:
+      paramEntity.uint32_group_flag_ext2 = paramCursor.getInt(i);
+      break label1976;
+      label2700:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.isGameRoom = paramBoolean;
+        break;
       }
+      label2727:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        paramEntity.isRobotHotChat = paramBoolean;
+        break;
+      }
+      label2755:
+      paramEntity.robotUin = paramCursor.getLong(i);
     }
+    label2770:
+    paramEntity.apolloGameId = paramCursor.getInt(i);
+    return paramEntity;
   }
   
-  public void f()
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aniz);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_b_of_type_Asgf);
-    if (this.jdField_a_of_type_Asgf != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Asgf);
-      this.jdField_a_of_type_Asgf = null;
-    }
-    if (this.jdField_a_of_type_Biau != null)
-    {
-      this.jdField_a_of_type_Biau.dismiss();
-      this.jdField_a_of_type_Biau = null;
-    }
-    super.f();
+    paramEntity = (HotChatInfo)paramEntity;
+    paramContentValues.put("name", paramEntity.name);
+    paramContentValues.put("troopCode", paramEntity.troopCode);
+    paramContentValues.put("signature", paramEntity.signature);
+    paramContentValues.put("troopUin", paramEntity.troopUin);
+    paramContentValues.put("faceId", Integer.valueOf(paramEntity.faceId));
+    paramContentValues.put("memberCount", Integer.valueOf(paramEntity.memberCount));
+    paramContentValues.put("hasJoined", Boolean.valueOf(paramEntity.hasJoined));
+    paramContentValues.put("isWifiHotChat", Boolean.valueOf(paramEntity.isWifiHotChat));
+    paramContentValues.put("uuid", paramEntity.uuid);
+    paramContentValues.put("iconUrl", paramEntity.iconUrl);
+    paramContentValues.put("hotThemeGroupFlag", Integer.valueOf(paramEntity.hotThemeGroupFlag));
+    paramContentValues.put("detail", paramEntity.detail);
+    paramContentValues.put("state", Integer.valueOf(paramEntity.state));
+    paramContentValues.put("leftTime", Long.valueOf(paramEntity.leftTime));
+    paramContentValues.put("ruState", Integer.valueOf(paramEntity.ruState));
+    paramContentValues.put("supportFlashPic", Boolean.valueOf(paramEntity.supportFlashPic));
+    paramContentValues.put("supportDemo", Boolean.valueOf(paramEntity.supportDemo));
+    paramContentValues.put("adminLevel", Integer.valueOf(paramEntity.adminLevel));
+    paramContentValues.put("joinUrl", paramEntity.joinUrl);
+    paramContentValues.put("hotChatType", Integer.valueOf(paramEntity.hotChatType));
+    paramContentValues.put("memo", paramEntity.memo);
+    paramContentValues.put("memoUrl", paramEntity.memoUrl);
+    paramContentValues.put("memoShowed", Boolean.valueOf(paramEntity.memoShowed));
+    paramContentValues.put("userCreate", Integer.valueOf(paramEntity.userCreate));
+    paramContentValues.put("strAdminUins", paramEntity.strAdminUins);
+    paramContentValues.put("ownerUin", paramEntity.ownerUin);
+    paramContentValues.put("pkFlag", Integer.valueOf(paramEntity.pkFlag));
+    paramContentValues.put("subType", Integer.valueOf(paramEntity.subType));
+    paramContentValues.put("lLastMsgSeq", Long.valueOf(paramEntity.lLastMsgSeq));
+    paramContentValues.put("extra1", paramEntity.extra1);
+    paramContentValues.put("isFavorite", Boolean.valueOf(paramEntity.isFavorite));
+    paramContentValues.put("mFissionRoomNum", Integer.valueOf(paramEntity.mFissionRoomNum));
+    paramContentValues.put("praiseCount", Long.valueOf(paramEntity.praiseCount));
+    paramContentValues.put("uint32_group_flag_ext2", Integer.valueOf(paramEntity.uint32_group_flag_ext2));
+    paramContentValues.put("isGameRoom", Boolean.valueOf(paramEntity.isGameRoom));
+    paramContentValues.put("isRobotHotChat", Boolean.valueOf(paramEntity.isRobotHotChat));
+    paramContentValues.put("robotUin", Long.valueOf(paramEntity.robotUin));
+    paramContentValues.put("apolloGameId", Integer.valueOf(paramEntity.apolloGameId));
   }
   
-  public void onClick(View paramView)
+  public String getCreateTableSql(String paramString)
   {
-    if (((paramView.getTag() instanceof azde)) && (((azde)paramView.getTag()).a == 87)) {
-      a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,name TEXT ,troopCode TEXT ,signature TEXT ,troopUin TEXT UNIQUE ,faceId INTEGER ,memberCount INTEGER ,hasJoined INTEGER ,isWifiHotChat INTEGER ,uuid TEXT ,iconUrl TEXT ,hotThemeGroupFlag INTEGER ,detail TEXT ,state INTEGER ,leftTime INTEGER ,ruState INTEGER ,supportFlashPic INTEGER ,supportDemo INTEGER ,adminLevel INTEGER ,joinUrl TEXT ,hotChatType INTEGER ,memo TEXT ,memoUrl TEXT ,memoShowed INTEGER ,userCreate INTEGER ,strAdminUins TEXT ,ownerUin TEXT ,pkFlag INTEGER ,subType INTEGER ,lLastMsgSeq INTEGER ,extra1 TEXT ,isFavorite INTEGER ,mFissionRoomNum INTEGER ,praiseCount INTEGER ,uint32_group_flag_ext2 INTEGER ,isGameRoom INTEGER ,isRobotHotChat INTEGER ,robotUin INTEGER ,apolloGameId INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
-public class akag
-  implements DialogInterface.OnCancelListener
+public abstract interface akag
 {
-  public akag(MiniMsgTabFragment paramMiniMsgTabFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    MiniMsgTabFragment.a(this.a, -1, null);
-  }
+  public abstract boolean a(TencentDocItem paramTencentDocItem);
 }
 
 

@@ -1,85 +1,129 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.os.Bundle;
+import android.annotation.TargetApi;
+import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.model.ArModelResource;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.io.File;
+import java.util.ArrayList;
 
-class appx
-  implements BusinessObserver
+public class appx
 {
-  appx(appw paramappw, Activity paramActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static String a()
   {
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131690120);
-    localObject1 = str;
-    if (paramBoolean) {
-      localObject2 = str;
+    if (a()) {
+      return bigv.a(antf.ba);
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.i("AREngine_ARResouceDir", 2, "no_sdcard");
+    }
+    float f = bhmi.a();
+    if ((f < 15728640.0F) && (QLog.isColorLevel())) {
+      QLog.i("AREngine_ARResouceDir", 2, "inner memory avail may not enough : " + f);
+    }
+    return BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath() + File.separator;
+  }
+  
+  public static String a(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    return paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d + File.separator;
+  }
+  
+  public static String a(String paramString)
+  {
+    return a() + "ar_cloud_transfer/" + paramString + File.separator;
+  }
+  
+  @TargetApi(18)
+  public static boolean a()
+  {
+    try
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        localObject1 = str;
-        if (paramBundle != null)
-        {
-          localObject2 = str;
-          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-          localObject2 = str;
-          localGetAppinfoResponse.mergeFrom(paramBundle);
-          localObject1 = str;
-          localObject2 = str;
-          if (localGetAppinfoResponse.has())
-          {
-            localObject1 = str;
-            localObject2 = str;
-            if (localGetAppinfoResponse.ret.get() == 0)
-            {
-              localObject1 = str;
-              localObject2 = str;
-              if (localGetAppinfoResponse.androidInfo != null)
-              {
-                localObject2 = str;
-                paramBundle = localGetAppinfoResponse.androidInfo;
-                localObject2 = str;
-                if (paramBundle.messagetail != null) {
-                  continue;
-                }
-                localObject1 = "";
-                localObject2 = localObject1;
-                ((String)localObject1).trim();
-              }
-            }
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        localObject1 = localObject2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArkWebModule", 2, paramBundle.getMessage());
-        localObject1 = localObject2;
-        continue;
-      }
-      paramBundle = (Bundle)localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramBundle = this.jdField_a_of_type_AndroidAppActivity.getString(2131690120);
-      }
-      localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131690121);
-      this.jdField_a_of_type_Appw.a(String.format((String)localObject1, new Object[] { paramBundle }));
-      appw.a(this.jdField_a_of_type_Appw).show();
-      return;
-      localObject2 = str;
-      localObject1 = paramBundle.messagetail.get();
+      boolean bool = Environment.getExternalStorageState().equals("mounted");
+      return bool;
     }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public static String b()
+  {
+    return a() + "ar_relationship/";
+  }
+  
+  public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+        return "";
+      }
+      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator;
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "get3DModelUnzipDir error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
+  }
+  
+  public static String c(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+        return "";
+      }
+      String str1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      String str2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str1 + File.separator + str2;
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "get3DModelLuaFilePath error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
+  }
+  
+  public static String d(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+        return "";
+      }
+      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      if (TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c)) {
+        return "";
+      }
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c;
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "get3DModelMusicFilePath error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
+  }
+  
+  public static String e(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + ((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c + "_model.zip";
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "getVideoFilePath error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
   }
 }
 

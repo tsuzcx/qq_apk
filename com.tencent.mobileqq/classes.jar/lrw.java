@@ -1,255 +1,274 @@
-import java.util.List;
+import android.graphics.Rect;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.WeakHashMap;
 
-public class lrw
+public abstract class lrw
 {
-  private float A;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private lrl jdField_a_of_type_Lrl;
-  private lrx jdField_a_of_type_Lrx;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 1000;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private boolean jdField_e_of_type_Boolean;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j = 1.0F;
-  private float k = 1.0F;
-  private float l;
-  private float m = 1.0F;
-  private float n = 1.0F;
-  private float o = 1.0F;
-  private float p = 1.0F;
-  private float q;
-  private float r;
-  private float s;
-  private float t;
-  private float u;
-  private float v;
-  private float w;
-  private float x;
-  private float y;
-  private float z;
+  private static ThreadLocal<Class<lrw>> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
+  private static WeakHashMap<lrw, Object> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  protected int a;
+  protected lqt a;
+  protected int[] a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e = -1;
+  protected int f = -1;
+  protected int g;
+  protected int h;
+  protected int i;
+  protected int j;
   
-  public float a()
+  protected lrw()
   {
-    return this.jdField_c_of_type_Float;
+    this(null, 0);
   }
   
-  public void a()
+  protected lrw(lqt arg1, int paramInt)
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_d_of_type_Boolean = true;
-    this.m = paramFloat1;
-    this.q = paramFloat1;
-    this.n = paramFloat2;
-    this.r = paramFloat2;
-    this.o = paramFloat3;
-    this.p = paramFloat4;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_c_of_type_Float = paramFloat1;
-    this.jdField_d_of_type_Float = paramFloat2;
-    this.f = paramFloat2;
-    this.g = paramFloat3;
-    this.i = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_e_of_type_Float = paramFloat5;
-    this.h = paramFloat6;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(lrl paramlrl)
-  {
-    this.jdField_a_of_type_Lrl = paramlrl;
-  }
-  
-  public void a(lrx paramlrx)
-  {
-    this.jdField_a_of_type_Lrx = paramlrx;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    a(???);
+    this.b = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
     {
-      b();
-      return this.jdField_a_of_type_Boolean;
-    }
-    if (this.jdField_a_of_type_Long == -1L) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    long l1 = paramLong - this.jdField_a_of_type_Long;
-    if (l1 == 0L) {
-      return false;
-    }
-    paramLong = l1;
-    if (l1 >= this.jdField_b_of_type_Int)
-    {
-      paramLong = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Boolean = true;
-      b();
-    }
-    float f1;
-    if (this.jdField_a_of_type_Int == 0) {
-      f1 = (float)paramLong * 1.0F / this.jdField_b_of_type_Int;
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * f1);
-        this.f = (this.jdField_d_of_type_Float + (this.jdField_e_of_type_Float - this.jdField_d_of_type_Float) * f1);
-        this.i = (this.g + (this.h - this.g) * f1);
-      }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        this.q = (this.m + (this.o - this.m) * f1);
-        this.r = (this.n + (this.p - this.n) * f1);
-      }
-      if (this.jdField_e_of_type_Boolean)
-      {
-        this.y = (this.s + (this.t - this.s) * f1);
-        this.z = (this.u + (this.v - this.u) * f1);
-        this.A = (this.w + (this.x - this.w) * f1);
-      }
-      if (!this.jdField_c_of_type_Boolean) {
-        break;
-      }
-      float f2 = this.j;
-      this.l = (f1 * (this.k - this.j) + f2);
-      break;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        f1 = (float)paramLong;
-        f1 = (float)paramLong * (1.0F * f1) / this.jdField_b_of_type_Int / this.jdField_b_of_type_Int;
-      }
-      else if (this.jdField_a_of_type_Int == 2)
-      {
-        l1 = this.jdField_b_of_type_Int;
-        if (paramLong == 0L)
-        {
-          f1 = 0.0F;
-        }
-        else
-        {
-          f1 = (float)paramLong * 1.0F * (float)paramLong / (float)l1 / (float)l1;
-          f1 = ((float)l1 * 2.0F / (float)paramLong - 1.0F) * f1;
-        }
-      }
-      else
-      {
-        f1 = 1.0F;
-      }
-    }
-  }
-  
-  public float b()
-  {
-    return this.f;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Lrl != null) {}
-    synchronized (this.jdField_a_of_type_Lrl.a())
-    {
-      this.jdField_a_of_type_Lrl.a().remove(this);
-      if (this.jdField_a_of_type_Lrx != null)
-      {
-        this.jdField_a_of_type_Lrx.a();
-        this.jdField_a_of_type_Lrx = null;
-      }
+      jdField_a_of_type_JavaUtilWeakHashMap.put(this, null);
       return;
     }
   }
   
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public static void c()
   {
-    this.jdField_e_of_type_Boolean = true;
-    this.s = paramFloat1;
-    this.y = paramFloat1;
-    this.t = paramFloat2;
-    this.u = paramFloat3;
-    this.z = paramFloat3;
-    this.v = paramFloat4;
-    this.w = paramFloat5;
-    this.A = paramFloat5;
-    this.x = paramFloat6;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = Math.abs(paramInt);
-    if (this.jdField_b_of_type_Int == 0) {
-      this.jdField_b_of_type_Int = 1;
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    {
+      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      if (localIterator.hasNext()) {
+        ((lrw)localIterator.next()).b();
+      }
     }
   }
   
-  public boolean b()
+  public static void d()
   {
-    return this.jdField_d_of_type_Boolean;
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    {
+      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      if (localIterator.hasNext())
+      {
+        lrw locallrw = (lrw)localIterator.next();
+        locallrw.b = 0;
+        locallrw.a(null);
+      }
+    }
   }
   
-  public float c()
+  public static boolean d()
+  {
+    return jdField_a_of_type_JavaLangThreadLocal.get() != null;
+  }
+  
+  private void e()
+  {
+    lqt locallqt = this.jdField_a_of_type_Lqt;
+    if ((locallqt != null) && (this.jdField_a_of_type_ArrayOfInt != null))
+    {
+      locallqt.a(this);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+    this.b = 0;
+    a(null);
+  }
+  
+  public int a()
   {
     return this.i;
   }
   
+  public Rect a()
+  {
+    return new Rect(this.c, this.d, this.c + this.e, this.d + this.f);
+  }
+  
+  protected TextureProgram a()
+  {
+    return lrs.a(this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    e();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.i = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.g = paramInt1;
+    this.h = paramInt2;
+    if (((this.g > 4096) || (this.h > 4096)) && (QLog.isColorLevel())) {
+      QLog.w("BasicTexture", 2, String.format("texture is too large: %d x %d", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h) }), new Exception());
+    }
+    if (this.e == -1)
+    {
+      this.e = paramInt1;
+      this.f = paramInt2;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
+  }
+  
+  protected void a(lqt paramlqt)
+  {
+    this.jdField_a_of_type_Lqt = paramlqt;
+  }
+  
+  public void a(lqt paramlqt, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramlqt.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public abstract boolean a(lqt paramlqt);
+  
+  public byte[] a()
+  {
+    return null;
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(lqt paramlqt)
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public lru[] a(lqt paramlqt)
+  {
+    int k = 0;
+    TextureProgram localTextureProgram = a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    lsv.a();
+    if ((!b()) || (paramlqt.a() < 0.95F)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      lqu.a(bool);
+      if (!a(paramlqt)) {
+        break;
+      }
+      int[] arrayOfInt = a();
+      while (k < arrayOfInt.length)
+      {
+        GLES20.glActiveTexture(33984 + k);
+        lsv.a();
+        GLES20.glBindTexture(g(), arrayOfInt[k]);
+        lsv.a();
+        GLES20.glUniform1i(localTextureProgram.a()[(k + 4)].jdField_a_of_type_Int, k);
+        lsv.a();
+        k += 1;
+      }
+    }
+    GLES20.glUniform1f(localTextureProgram.a()[2].jdField_a_of_type_Int, paramlqt.a());
+    lsv.a();
+    return localTextureProgram.a();
+  }
+  
+  public int b()
+  {
+    return this.j;
+  }
+  
+  public void b()
+  {
+    e();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.j = paramInt;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+  }
+  
+  public abstract boolean b();
+  
+  public byte[] b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.e;
+  }
+  
   public boolean c()
   {
-    return this.jdField_e_of_type_Boolean;
+    return this.b == 1;
   }
   
-  public float d()
+  public int d()
   {
-    return this.q;
+    return this.f;
   }
   
-  public float e()
+  public int e()
   {
-    return this.r;
+    return this.g;
   }
   
-  public float f()
+  public int f()
   {
-    return this.y;
+    return this.h;
   }
   
-  public float g()
+  protected void finalize()
   {
-    return this.z;
+    try
+    {
+      jdField_a_of_type_JavaLangThreadLocal.set(lrw.class);
+      a();
+      jdField_a_of_type_JavaLangThreadLocal.set(null);
+      return;
+    }
+    finally
+    {
+      super.finalize();
+    }
   }
   
-  public float h()
+  public abstract int g();
+  
+  public int h()
   {
-    return this.A;
+    return 0;
+  }
+  
+  public int i()
+  {
+    return 0;
   }
 }
 

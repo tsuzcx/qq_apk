@@ -1,30 +1,74 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.face.FaceDecodeTask;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class aoob
-  extends BroadcastReceiver
+public final class aoob
+  extends MqqHandler
 {
-  aoob(aonz paramaonz) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aoob(Looper paramLooper)
   {
-    if (paramIntent != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    label4:
+    aooc localaooc;
+    label143:
+    label150:
+    do
     {
-      paramContext = paramIntent.getAction();
-      if (paramContext != null)
+      do
       {
-        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
-          break label57;
+        int i;
+        do
+        {
+          break label4;
+          do
+          {
+            return;
+          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
+          if (FaceDecodeTask.b.size() <= 0) {
+            break label150;
+          }
+          i = 0;
+          if (i >= FaceDecodeTask.b.size()) {
+            break label143;
+          }
+          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
+          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+            break;
+          }
+          localaooc = (aooc)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localaooc == null);
+        if (paramMessage.jdField_a_of_type_Boolean)
+        {
+          paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b = 2;
+          localaooc.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
         }
-        aonz.a(this.a);
-      }
-    }
-    label57:
-    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
+        for (;;)
+        {
+          i += 1;
+          break;
+          localaooc.a(paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+        FaceDecodeTask.b.clear();
+        return;
+        paramMessage = (FaceDecodeTask)paramMessage.obj;
+      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      localaooc = (aooc)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaooc == null);
+    if (paramMessage.jdField_a_of_type_Boolean)
+    {
+      paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b = 2;
+      localaooc.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
       return;
     }
-    aonz.b(this.a);
+    localaooc.a(paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

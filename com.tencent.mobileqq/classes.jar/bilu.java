@@ -1,20 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bilu
-  implements View.OnTouchListener
+final class bilu
+  implements EIPCResultCallback
 {
-  public bilu(GroupListOpenFrame paramGroupListOpenFrame) {}
+  bilu(Runnable paramRunnable) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.c();
-    }
-    return true;
+    QLog.d("OpenSdkQIPCClient", 1, "WBQIPCClient installWBSdk onCallback");
+    this.a.run();
   }
 }
 

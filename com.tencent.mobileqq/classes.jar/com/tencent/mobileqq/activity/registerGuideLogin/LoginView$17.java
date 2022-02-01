@@ -21,16 +21,16 @@ class LoginView$17
     do
     {
       return;
-      if ((LoginView.d(this.this$0)) || (LoginView.e(this.this$0)) || (LoginView.f(this.this$0))) {
+      if ((LoginView.d(this.this$0)) || (LoginView.e(this.this$0)) || (LoginView.f(this.this$0)) || (LoginView.g(this.this$0))) {
         LoginView.a(this.this$0).setVisibility(0);
       }
     } while (LoginView.b(this.this$0) != true);
     LoginView.d(this.this$0, false);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(7, 2131369567);
-    localLayoutParams.addRule(5, 2131369567);
+    localLayoutParams.addRule(7, 2131369661);
+    localLayoutParams.addRule(5, 2131369661);
     localLayoutParams.setMargins(0, 0, 0, 0);
-    localLayoutParams.addRule(2, 2131369567);
+    localLayoutParams.addRule(2, 2131369661);
     this.this$0.b.setLayoutParams(localLayoutParams);
     LoginView.b(this.this$0, this.this$0.e.getScrollY());
     LoginView.c(this.this$0, 0);

@@ -1,73 +1,60 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tribe.async.dispatch.Dispatcher;
-import java.io.File;
-import mqq.app.AppRuntime;
-
 public class awlk
-  extends awln
 {
-  public static String a(String paramString1, String paramString2)
+  public static int a = 1;
+  public static int b = 2;
+  private static int c;
+  private static int d;
+  
+  private static int a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return nku.a(paramString1) + paramString1;
+    if (paramInt == 0) {
+      return 1;
     }
-    return nku.a(paramString1) + paramString1 + File.separator + paramString2;
+    if ((paramInt == 1) || (paramInt == 3000)) {
+      return 2;
+    }
+    return 0;
   }
   
-  private static void b(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  public static void a()
   {
-    awlo localawlo = new awlo();
-    int i;
-    if ("MiniAppLauncher".equals(paramString2))
-    {
-      i = 1;
-      localawlo.jdField_a_of_type_Int = i;
-      localawlo.jdField_a_of_type_Boolean = paramBoolean;
-      localawlo.jdField_a_of_type_JavaLangString = paramString2;
-      if (!paramBoolean) {
-        break label107;
-      }
-    }
-    label107:
-    for (localawlo.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt), a(paramString3, "") };; localawlo.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt) })
-    {
-      if (localawlo.jdField_a_of_type_Int != 1) {
-        break label135;
-      }
-      wfo.a().dispatch("MiniAppManager", localawlo);
-      return;
-      i = 5;
-      break;
-    }
-    label135:
-    wfo.a().dispatch(localawlo);
+    bdll.b(null, "dc00898", "", "", "0X80097F3", "0X80097F3", d, 0, String.valueOf(d), "", "", "");
+    bdll.b(null, "dc00898", "", "", "0X8009C74", "0X8009C74", c, 0, String.valueOf(c), "", "", "");
   }
   
-  public void a(String paramString1, String paramString2, Object paramObject)
+  public static void a(int paramInt)
   {
-    String str = paramString1.substring("ak:".length());
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime == null)
-    {
-      b(false, paramString1, paramString2, -1, str, paramObject);
-      return;
-    }
-    nko.b(str, localAppRuntime, new awll(this, str, paramString1, paramString2, paramObject, System.currentTimeMillis()), true, 0, true);
+    d = b;
+    bdll.b(null, "dc00898", "", "", "0X80097F0", "0X80097F0", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
   }
   
-  public boolean a(Bundle paramBundle)
+  public static void b()
   {
-    if (paramBundle == null) {}
-    String str;
-    do
-    {
-      return false;
-      str = paramBundle.getString("bid");
-      paramBundle = paramBundle.getString("path");
-    } while ((!nko.c(str)) || (!nme.a(paramBundle, str)));
-    return true;
+    bdll.b(null, "dc00898", "", "", "0X80097F4", "0X80097F4", d, 0, String.valueOf(d), "", "", "");
+    bdll.b(null, "dc00898", "", "", "0X8009C75", "0X8009C75", c, 0, String.valueOf(c), "", "", "");
+  }
+  
+  public static void b(int paramInt)
+  {
+    d = a;
+    c = 3;
+    bdll.b(null, "dc00898", "", "", "0X80097F1", "0X80097F1", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
+  }
+  
+  public static void c()
+  {
+    bdll.b(null, "dc00898", "", "", "0X8009C73", "0X8009C73", c, 0, String.valueOf(c), "", "", "");
+  }
+  
+  public static void c(int paramInt)
+  {
+    bdll.b(null, "dc00898", "", "", "0X80097F2", "0X80097F2", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
+  }
+  
+  public static void d(int paramInt)
+  {
+    c = paramInt;
+    bdll.b(null, "dc00898", "", "", "0X8009C72", "0X8009C72", c, 0, String.valueOf(c), "", "", "");
   }
 }
 

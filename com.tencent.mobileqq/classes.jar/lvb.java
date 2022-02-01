@@ -1,39 +1,41 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import java.lang.ref.WeakReference;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lvb
-  extends Handler
+  extends lvf
 {
-  WeakReference<RedPacketRollTextView> a;
+  public int b;
   
-  public lvb(RedPacketRollTextView paramRedPacketRollTextView)
+  public lvb()
   {
-    this.a = new WeakReference(paramRedPacketRollTextView);
+    this.jdField_b_of_type_Int = 667;
+    this.c = new lvr[8];
+    this.jdField_b_of_type_Long = 1250L;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong)
   {
-    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
-    if (localRedPacketRollTextView == null) {}
-    do
+    super.a(paramLong);
+    long l = this.a;
+    int i = 0;
+    if (paramLong - l <= this.jdField_b_of_type_Long) {
+      i = 255;
+    }
+    a(i);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int i = 0;
+    while (i < this.c.length)
     {
-      Bundle localBundle;
-      do
-      {
-        return;
-        localBundle = paramMessage.getData();
-      } while (localBundle == null);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      localRedPacketRollTextView.setText(localBundle.getString("content"));
-    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
-    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
+      this.c[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
+      i += 1;
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
   }
 }
 

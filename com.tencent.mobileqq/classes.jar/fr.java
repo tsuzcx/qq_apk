@@ -120,8 +120,8 @@ public class fr
       return;
     }
     int i;
-    if ((paramCharacterStyle instanceof bdoa)) {
-      i = ((bdoa)paramCharacterStyle).a().getBounds().width();
+    if ((paramCharacterStyle instanceof begw)) {
+      i = ((begw)paramCharacterStyle).a().getBounds().width();
     }
     for (;;)
     {
@@ -145,10 +145,10 @@ public class fr
         this.g = 0;
         this.e += 1;
         return;
-        if (!(paramCharacterStyle instanceof bbaw)) {
+        if (!(paramCharacterStyle instanceof bbtp)) {
           break label196;
         }
-        i = ((bbaw)paramCharacterStyle).a();
+        i = ((bbtp)paramCharacterStyle).a();
         break label26;
         if (this.g == 0)
         {

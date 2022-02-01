@@ -1,12 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.widget.TextView;
 
-public class psm
+class psm
 {
-  public int a;
-  public AdvertisementInfo a;
-  public int b;
-  public int c;
-  public int d;
+  int jdField_a_of_type_Int = 2;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  private psm(psj parampsj) {}
 }
 
 

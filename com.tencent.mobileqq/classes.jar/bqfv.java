@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-final class bqfv
-  implements DialogInterface.OnClickListener
+public class bqfv
+  implements Animation.AnimationListener
 {
-  bqfv(String paramString) {}
+  public bqfv(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bqft.a = this.a;
-    bnpy.a();
+    this.a.j();
+    this.a.a.a(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

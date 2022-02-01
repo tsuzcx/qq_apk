@@ -1,21 +1,47 @@
+import android.os.Bundle;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
+import tencent.im.oidb.oidb_0xc2f.RspBody;
 
-class qcn
-  implements ViewBase.OnClickListener
+public class qcn
+  extends nkn
 {
-  qcn(qcl paramqcl, pxk parampxk, Container paramContainer) {}
+  qcn(qcf paramqcf) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramViewBase = this.jdField_a_of_type_Pxk.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    snh.a(paramViewBase, (int)paramViewBase.mChannelID);
-    ube.a(paramViewBase);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new oidb_0xc2f.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        qcf.a(this.a).mRecommendFollowInfos = qwy.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
+        if ((qcf.a(this.a).mRecommendFollowInfos.a != null) && (qcf.a(this.a).mRecommendFollowInfos.a.size() >= 3))
+        {
+          qcf.a(this.a).a(qcf.a(this.a).mRecommendFollowInfos.a);
+          qcf.a(this.a).isShowRecommendList = true;
+          qcf.a(this.a);
+          qcf.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
+      }
+    }
   }
 }
 

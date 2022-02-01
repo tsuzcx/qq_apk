@@ -5,9 +5,9 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import aohk;
-import atut;
-import bcvc;
+import aoup;
+import aumo;
+import bdnv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class ScanSpaceManager
   public static final ArrayList<String> a;
   public long a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private aohk jdField_a_of_type_Aohk;
+  private aoup jdField_a_of_type_Aoup;
   private volatile boolean jdField_a_of_type_Boolean;
   public long b;
   public long c;
@@ -46,8 +46,8 @@ public class ScanSpaceManager
   
   private void c()
   {
-    String str1 = atut.a().b();
-    String str2 = atut.a().a();
+    String str1 = aumo.a().b();
+    String str2 = aumo.a().a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (!TextUtils.isEmpty(str1))
     {
@@ -85,18 +85,18 @@ public class ScanSpaceManager
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Aohk != null)
+      if (this.jdField_a_of_type_Aoup != null)
       {
-        this.jdField_a_of_type_Aohk.b();
-        this.jdField_a_of_type_Aohk.a(0);
+        this.jdField_a_of_type_Aoup.b();
+        this.jdField_a_of_type_Aoup.a(0);
       }
-      bcvc.a().post(new ScanSpaceManager.ScanSpaceTask(this));
+      bdnv.a().post(new ScanSpaceManager.ScanSpaceTask(this));
     }
   }
   
-  public void a(aohk paramaohk)
+  public void a(aoup paramaoup)
   {
-    this.jdField_a_of_type_Aohk = paramaohk;
+    this.jdField_a_of_type_Aoup = paramaoup;
   }
   
   public boolean a()
@@ -115,14 +115,14 @@ public class ScanSpaceManager
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    bcvc.a();
+    bdnv.a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    this.jdField_a_of_type_Aohk = null;
+    this.jdField_a_of_type_Aoup = null;
   }
   
   public long c()
@@ -141,12 +141,12 @@ public class ScanSpaceManager
     for (;;)
     {
       return false;
-      if (this.jdField_a_of_type_Aohk != null)
+      if (this.jdField_a_of_type_Aoup != null)
       {
-        this.jdField_a_of_type_Aohk.a(paramMessage.arg1);
+        this.jdField_a_of_type_Aoup.a(paramMessage.arg1);
         continue;
-        if (this.jdField_a_of_type_Aohk != null) {
-          this.jdField_a_of_type_Aohk.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
+        if (this.jdField_a_of_type_Aoup != null) {
+          this.jdField_a_of_type_Aoup.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
         }
       }
     }

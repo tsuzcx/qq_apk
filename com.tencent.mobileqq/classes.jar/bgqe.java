@@ -1,28 +1,50 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-
-class bgqe
-  implements TextWatcher
+public class bgqe
 {
-  bgqe(bgpw parambgpw, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  private String c;
+  public int d;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public String a()
   {
-    if ((this.jdField_a_of_type_Bgpw.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      this.jdField_a_of_type_Bgpw.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_Bgpw.a.setSelection(this.jdField_a_of_type_Int - 1);
+    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
+      return "classteacher";
     }
+    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
+      return "teacher";
+    }
+    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
+      return "owner";
+    }
+    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
+      return "admin";
+    }
+    return "other";
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = bgqd.a(paramString, "").trim().replaceAll("\\s+", " ");
+  }
+  
+  public String b()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqe
  * JD-Core Version:    0.7.0.1
  */

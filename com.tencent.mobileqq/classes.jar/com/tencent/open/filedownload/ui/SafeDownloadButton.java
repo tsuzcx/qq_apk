@@ -7,15 +7,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import anni;
-import bcst;
-import bisp;
-import bisr;
-import biss;
-import bisy;
-import bivl;
-import bixt;
-import bixv;
+import anzj;
+import bdll;
+import bjto;
+import bjtq;
+import bjtr;
+import bjtx;
+import bjwk;
+import bjys;
+import bjyu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,11 +28,11 @@ import mqq.os.MqqHandler;
 public class SafeDownloadButton
   extends ApkFileDownloadButton
 {
-  private static final String jdField_a_of_type_JavaLangString = anni.a(2131712267);
-  private static final String jdField_b_of_type_JavaLangString = anni.a(2131712270);
+  private static final String jdField_a_of_type_JavaLangString = anzj.a(2131712376);
+  private static final String jdField_b_of_type_JavaLangString = anzj.a(2131712379);
   private long jdField_a_of_type_Long;
   private boolean jdField_a_of_type_Boolean;
-  private bixv jdField_b_of_type_Bixv;
+  private bjyu jdField_b_of_type_Bjyu;
   private boolean jdField_b_of_type_Boolean;
   
   public SafeDownloadButton(Context paramContext)
@@ -54,7 +54,7 @@ public class SafeDownloadButton
   {
     try
     {
-      String str = "tmast://download?downl_url=" + URLEncoder.encode(this.jdField_b_of_type_Bixv.e, "UTF-8") + "&down_ticket=" + URLEncoder.encode(this.jdField_b_of_type_Bixv.e, "UTF-8") + "&oplist=1;2&via=" + this.jdField_b_of_type_Bixv.d;
+      String str = "tmast://download?downl_url=" + URLEncoder.encode(this.jdField_b_of_type_Bjyu.e, "UTF-8") + "&down_ticket=" + URLEncoder.encode(this.jdField_b_of_type_Bjyu.e, "UTF-8") + "&oplist=1;2&via=" + this.jdField_b_of_type_Bjyu.d;
       return str;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -66,15 +66,15 @@ public class SafeDownloadButton
   
   private void k()
   {
-    if ((this.jdField_b_of_type_Bixv == null) || (TextUtils.isEmpty(this.jdField_b_of_type_Bixv.e))) {
+    if ((this.jdField_b_of_type_Bjyu == null) || (TextUtils.isEmpty(this.jdField_b_of_type_Bjyu.e))) {
       return;
     }
-    bisp.b(bisr.a().a("200").k(this.jdField_b_of_type_Bixv.jdField_a_of_type_JavaLangString).j(this.jdField_b_of_type_Bixv.jdField_b_of_type_JavaLangString).l(this.jdField_b_of_type_Bixv.c).m(this.jdField_b_of_type_Bixv.d).a(this.jdField_b_of_type_Bixv.h).b(this.jdField_b_of_type_Bixv.f).g(this.jdField_b_of_type_Bixv.e));
+    bjto.b(bjtq.a().a("200").k(this.jdField_b_of_type_Bjyu.jdField_a_of_type_JavaLangString).j(this.jdField_b_of_type_Bjyu.jdField_b_of_type_JavaLangString).l(this.jdField_b_of_type_Bjyu.c).m(this.jdField_b_of_type_Bjyu.d).a(this.jdField_b_of_type_Bjyu.h).b(this.jdField_b_of_type_Bjyu.f).g(this.jdField_b_of_type_Bjyu.e));
     QQAppInterface localQQAppInterface = ((BaseActivity)getContext()).app;
-    if (this.jdField_a_of_type_Bixv.h == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_Bixv.h)
+    if (this.jdField_a_of_type_Bjyu.h == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_Bjyu.h)
     {
-      bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "1", "", str, "");
+      bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "1", "", str, "");
       l();
       return;
     }
@@ -89,12 +89,12 @@ public class SafeDownloadButton
     try
     {
       BaseApplication.getContext().startActivity(localIntent);
-      bisy.b("SafeDownloadButton_", "goToYYBByTmast success! jumpUrl=" + str);
+      bjtx.b("SafeDownloadButton_", "goToYYBByTmast success! jumpUrl=" + str);
       return;
     }
     catch (ActivityNotFoundException localActivityNotFoundException)
     {
-      bisy.e("SafeDownloadButton_", "ActivityNotFoundException e=" + localActivityNotFoundException.getMessage());
+      bjtx.e("SafeDownloadButton_", "ActivityNotFoundException e=" + localActivityNotFoundException.getMessage());
     }
   }
   
@@ -103,14 +103,14 @@ public class SafeDownloadButton
     String str = c();
     Bundle localBundle = new Bundle();
     localBundle.putString("url", str);
-    bivl.a(localBundle);
-    bivl.b(localBundle);
-    bisy.b("SafeDownloadButton_", "writeTmastCmd success! jumpUrl=" + str);
+    bjwk.a(localBundle);
+    bjwk.b(localBundle);
+    bjtx.b("SafeDownloadButton_", "writeTmastCmd success! jumpUrl=" + str);
   }
   
   protected String a()
   {
-    return anni.a(2131712272);
+    return anzj.a(2131712381);
   }
   
   protected String a(int paramInt)
@@ -132,7 +132,7 @@ public class SafeDownloadButton
   {
     if (TextUtils.equals(paramString, "com.tencent.android.qqdownloader"))
     {
-      bisy.b("SafeDownloadButton_", anni.a(2131712269) + this.jdField_a_of_type_Boolean);
+      bjtx.b("SafeDownloadButton_", anzj.a(2131712378) + this.jdField_a_of_type_Boolean);
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_b_of_type_Boolean = true;
@@ -148,14 +148,14 @@ public class SafeDownloadButton
     if ((paramBoolean) && (("900".equals(paramString)) || ("400".equals(paramString))))
     {
       localQQAppInterface = ((BaseActivity)getContext()).app;
-      if (this.jdField_a_of_type_Bixv.h != null) {
+      if (this.jdField_a_of_type_Bjyu.h != null) {
         break label73;
       }
     }
     label73:
-    for (paramString = "";; paramString = this.jdField_a_of_type_Bixv.h)
+    for (paramString = "";; paramString = this.jdField_a_of_type_Bjyu.h)
     {
-      bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "2", "", paramString, "");
+      bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "2", "", paramString, "");
       return;
     }
   }
@@ -163,16 +163,16 @@ public class SafeDownloadButton
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return anni.a(2131712271);
+      return anzj.a(2131712380);
     }
-    return anni.a(2131712268);
+    return anzj.a(2131712377);
   }
   
   protected void b(boolean paramBoolean)
   {
-    if (bixt.a())
+    if (bjys.a())
     {
-      this.jdField_a_of_type_Bixv.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_Bjyu.jdField_b_of_type_Int = 1;
       g();
       k();
       return;
@@ -190,7 +190,7 @@ public class SafeDownloadButton
   public void j()
   {
     long l = System.currentTimeMillis();
-    bisy.b("SafeDownloadButton_", "onResume " + this.jdField_b_of_type_Boolean + ",currentTimestamp=" + l + ",mYYBInstallSuccessTimestamp= " + this.jdField_a_of_type_Long);
+    bjtx.b("SafeDownloadButton_", "onResume " + this.jdField_b_of_type_Boolean + ",currentTimestamp=" + l + ",mYYBInstallSuccessTimestamp= " + this.jdField_a_of_type_Long);
     if (this.jdField_b_of_type_Boolean)
     {
       if (l - this.jdField_a_of_type_Long < 5000L) {
@@ -200,9 +200,9 @@ public class SafeDownloadButton
     }
   }
   
-  public void setOriApkInfo(bixv parambixv)
+  public void setOriApkInfo(bjyu parambjyu)
   {
-    this.jdField_b_of_type_Bixv = bixv.a(parambixv);
+    this.jdField_b_of_type_Bjyu = bjyu.a(parambjyu);
   }
 }
 

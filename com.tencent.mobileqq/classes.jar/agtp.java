@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agtp
-  implements bdzl
+class agtp
+  implements DialogInterface.OnClickListener
 {
-  public agtp(FlashPicItemBuilder paramFlashPicItemBuilder) {}
+  agtp(agtj paramagtj) {}
   
-  public void a(ArrayList<MessageRecord> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -22,12 +22,13 @@ import com.tencent.viola.ui.baseComponent.VComponentContainer;
 import com.tencent.viola.ui.view.IVView;
 import java.lang.ref.WeakReference;
 import java.util.Map;
-import oat;
-import tri;
-import trj;
-import trk;
-import trr;
-import tsc;
+import ocd;
+import tid;
+import tie;
+import tif;
+import tig;
+import tin;
+import tiz;
 
 public class VVideoView
   extends FrameLayout
@@ -38,8 +39,9 @@ public class VVideoView
   private VVideo jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   private WeakReference<VVideo> jdField_a_of_type_JavaLangRefWeakReference;
-  private trj jdField_a_of_type_Trj;
-  private trk jdField_a_of_type_Trk;
+  private tif jdField_a_of_type_Tif;
+  private tig jdField_a_of_type_Tig;
+  private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Boolean jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(false);
   private int jdField_c_of_type_Int = 1;
@@ -59,6 +61,7 @@ public class VVideoView
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo = paramVVideo;
     setTag("VVideoView");
+    addOnLayoutChangeListener(new tie(this));
   }
   
   public int a()
@@ -74,27 +77,28 @@ public class VVideoView
     return null;
   }
   
-  public trj a()
+  public tif a()
   {
-    return this.jdField_a_of_type_Trj;
+    return this.jdField_a_of_type_Tif;
   }
   
-  public trk a()
+  public tig a()
   {
-    return this.jdField_a_of_type_Trk;
+    return this.jdField_a_of_type_Tig;
   }
   
   public void a()
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo.getInstance() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo.getInstance().getUrl())) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo.getInstance().getUrl().contains("VideoFeeds.js")) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo.getInstance().getMasterVideoRef())))
     {
-      oat.a(null, null, "0X800AF0F", "0X800AF0F", 0, 0, null, null, null, "" + System.currentTimeMillis(), false);
+      ocd.a(null, null, "0X800AF0F", "0X800AF0F", 0, 0, null, null, null, "" + System.currentTimeMillis(), false);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo.getInstance().setMasterVideoRef(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo.getRef());
     }
   }
   
   public void a(int paramInt)
   {
+    this.jdField_a_of_type_Boolean = true;
     this.jdField_d_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = getLayoutParams();
     Object localObject;
@@ -113,14 +117,14 @@ public class VVideoView
           c();
         }
         localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-        if ((a() == null) || (a().getInstance() == null) || (a().getInstance().getFragment() == null) || (!((ViolaFragment)a().getInstance().getFragment()).a())) {
-          break label188;
+        if ((a() == null) || (a().getInstance() == null) || (a().getInstance().getFragment() == null) || (!((ViolaFragment)a().getInstance().getFragment()).isSuspension())) {
+          break label193;
         }
-        ((ViolaFragment)a().getInstance().getFragment()).a().addView(this, localLayoutParams);
+        ((ViolaFragment)a().getInstance().getFragment()).getCommonSuspensionGestureLayout().addView(this, localLayoutParams);
       }
     }
     return;
-    label188:
+    label193:
     ((Window)localObject).addContentView(this, localLayoutParams);
   }
   
@@ -141,7 +145,7 @@ public class VVideoView
       if (paramInt1 != 1) {
         break label222;
       }
-      paramString = new tri(a().getInstance().getActivity(), this, paramInt2, a().getInstance(), paramString, paramBoolean1);
+      paramString = new tid(a().getInstance().getActivity(), this, paramInt2, a().getInstance(), paramString, paramBoolean1);
       setVideoViewControlListener(paramString);
       localObject = ViolaModuleManager.findModuleMapById(a().getInstance().getInstanceId());
       if (localObject != null)
@@ -161,14 +165,14 @@ public class VVideoView
     if (this.jdField_a_of_type_Int == 1)
     {
       paramString = new ViolaVideoView(a().getInstance().getActivity());
-      setVideoViewControlListener(new trr(a().getInstance().getActivity(), paramString, this, a().getInstance()));
+      setVideoViewControlListener(new tin(a().getInstance().getActivity(), paramString, this, a().getInstance()));
       addView(paramString, -1, -1);
       return;
     }
     paramString = new ViolaVideoView(a().getInstance().getActivity());
-    Object localObject = new tsc(a().getInstance().getActivity(), paramString, this, a().getInstance());
-    setVideoViewControlListener((trj)localObject);
-    setVideoViewLifeCycleChangeListener((trk)localObject);
+    Object localObject = new tiz(a().getInstance().getActivity(), paramString, this, a().getInstance());
+    setVideoViewControlListener((tif)localObject);
+    setVideoViewLifeCycleChangeListener((tig)localObject);
     addView(paramString, -1, -1);
   }
   
@@ -184,13 +188,14 @@ public class VVideoView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Trj != null) {
-      this.jdField_a_of_type_Trj.f(this);
+    if (this.jdField_a_of_type_Tif != null) {
+      this.jdField_a_of_type_Tif.f(this);
     }
   }
   
   public void b(int paramInt)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_d_of_type_Int = paramInt;
     if ((a() != null) && (a().getParent() != null) && (a().getParent().getHostView() != null))
     {
@@ -206,8 +211,8 @@ public class VVideoView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Trj != null) {
-      this.jdField_a_of_type_Trj.g(this);
+    if (this.jdField_a_of_type_Tif != null) {
+      this.jdField_a_of_type_Tif.g(this);
     }
   }
   
@@ -222,10 +227,10 @@ public class VVideoView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Trj != null) && (!this.jdField_d_of_type_JavaLangBoolean.booleanValue()) && (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()))
+    if ((this.jdField_a_of_type_Tif != null) && (!this.jdField_d_of_type_JavaLangBoolean.booleanValue()) && (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()))
     {
       this.jdField_d_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      this.jdField_a_of_type_Trj.i();
+      this.jdField_a_of_type_Tif.i();
     }
   }
   
@@ -239,14 +244,14 @@ public class VVideoView
     this.jdField_b_of_type_JavaLangBoolean = paramBoolean;
   }
   
-  public void setVideoViewControlListener(trj paramtrj)
+  public void setVideoViewControlListener(tif paramtif)
   {
-    this.jdField_a_of_type_Trj = paramtrj;
+    this.jdField_a_of_type_Tif = paramtif;
   }
   
-  public void setVideoViewLifeCycleChangeListener(trk paramtrk)
+  public void setVideoViewLifeCycleChangeListener(tig paramtig)
   {
-    this.jdField_a_of_type_Trk = paramtrk;
+    this.jdField_a_of_type_Tig = paramtig;
   }
 }
 

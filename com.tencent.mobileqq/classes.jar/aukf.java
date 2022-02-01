@@ -1,19 +1,6 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
-
-public class aukf
-  implements DialogInterface.OnClickListener
+public abstract interface aukf
 {
-  public aukf(ForwardSendHongBaoOption paramForwardSendHongBaoOption, bgpa parambgpa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.setResult(-1);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.finish();
-  }
+  public abstract void o();
 }
 
 

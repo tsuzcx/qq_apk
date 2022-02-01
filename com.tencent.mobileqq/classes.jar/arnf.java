@@ -1,14 +1,61 @@
-import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QVipGiftConfig;
+import com.tencent.qphone.base.util.QLog;
 
 public class arnf
+  extends armf<QVipGiftConfig>
 {
-  public int a;
-  public Drawable a;
-  public int b;
+  public static QVipGiftConfig a()
+  {
+    QVipGiftConfig localQVipGiftConfig2 = (QVipGiftConfig)aran.a().a(667);
+    QVipGiftConfig localQVipGiftConfig1 = localQVipGiftConfig2;
+    if (localQVipGiftConfig2 == null) {
+      localQVipGiftConfig1 = new QVipGiftConfig();
+    }
+    return localQVipGiftConfig1;
+  }
+  
+  @NonNull
+  public QVipGiftConfig a(@NonNull araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.SDK.QVipGfitProcessor", 1, paramArrayOfaraj[0].a);
+    }
+    Object localObject = null;
+    String str = paramArrayOfaraj[0].a;
+    paramArrayOfaraj = localObject;
+    if (!TextUtils.isEmpty(str)) {
+      paramArrayOfaraj = (QVipGiftConfig)awfy.a(str, QVipGiftConfig.class);
+    }
+    return paramArrayOfaraj;
+  }
+  
+  @NonNull
+  public QVipGiftConfig b()
+  {
+    return new QVipGiftConfig();
+  }
+  
+  @NonNull
+  public QVipGiftConfig c()
+  {
+    return new QVipGiftConfig();
+  }
+  
+  public Class<QVipGiftConfig> clazz()
+  {
+    return QVipGiftConfig.class;
+  }
+  
+  public int type()
+  {
+    return 667;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnf
  * JD-Core Version:    0.7.0.1
  */

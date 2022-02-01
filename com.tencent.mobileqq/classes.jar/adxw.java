@@ -1,64 +1,42 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
 
 public class adxw
-  implements CompoundButton.OnCheckedChangeListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public adxw(ChatSettingForTroop paramChatSettingForTroop) {}
+  public adxw(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
-      paramCompoundButton.setTag(Boolean.FALSE);
-    }
-    int i;
-    do
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
     {
-      do
-      {
-        do
-        {
-          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
-        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      } while (i == -1);
-      if (!paramBoolean) {
-        break;
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
       }
-    } while (i != 1);
-    ChatSettingForTroop.a(this.a, 4);
-    label82:
-    if (ChatSettingForTroop.a(this.a) != null) {
-      ChatSettingForTroop.d(this.a);
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean)
-    {
-      str = "msg_open";
-      label116:
-      bcst.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", str, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      if (!paramBoolean) {
-        break label224;
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
       }
     }
-    label224:
-    for (String str = "msg_open";; str = "msg_close")
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
     {
-      bgjt.a("Grp_msg", "grpData_admin", str, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bgjt.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+      return;
+      i = 0;
       break;
-      if (i == 1) {
-        break;
-      }
-      ChatSettingForTroop.a(this.a, 1);
-      break label82;
-      str = "msg_close";
-      break label116;
     }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

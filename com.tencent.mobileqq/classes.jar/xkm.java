@@ -1,30 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class xkm
-  extends wme
+  extends Handler
 {
-  xkm(xkk paramxkk) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  xkm(xkl paramxkl, Looper paramLooper)
   {
-    yqp.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!xkf.b(this.a.a)) {
-      xkf.a(this.a.a).p();
-    }
+    super(paramLooper);
   }
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public void handleMessage(Message paramMessage)
   {
-    woj localwoj = (woj)wpm.a(17);
-    localwoj.a(paramCommentEntry.commentId);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localwoj.a(paramCommentEntry);
-    return true;
+    if (this.a.a) {
+      return;
+    }
+    xkl.a(this.a, this.a.c);
   }
 }
 

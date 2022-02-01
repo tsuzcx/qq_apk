@@ -1,21 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.widget.AutoFitTextView;
 
 public class phr
-  implements bihh
+  implements bivg
 {
-  public phr(WxShareHelperFromReadInjoy paramWxShareHelperFromReadInjoy) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
+  ImageView b;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public phr(php paramphp) {}
+  
+  public int a()
   {
-    if (paramBaseResp.errCode == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      WXShareHelper.a().b(this);
-      uam.a.a(bool);
-      return;
-    }
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
   }
 }
 

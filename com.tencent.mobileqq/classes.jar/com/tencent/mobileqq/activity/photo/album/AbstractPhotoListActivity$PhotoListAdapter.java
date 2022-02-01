@@ -40,7 +40,7 @@ public class AbstractPhotoListActivity$PhotoListAdapter
   {
     this.mInflater = paramAbstractPhotoListActivity.getLayoutInflater();
     this.mResources = paramAbstractPhotoListActivity.getResources();
-    this.mDefaultPhotoDrawable = this.mResources.getDrawable(2130847826);
+    this.mDefaultPhotoDrawable = this.mResources.getDrawable(2130847845);
   }
   
   public void addPhotoList(List<LocalMediaInfo> paramList)
@@ -119,16 +119,16 @@ public class AbstractPhotoListActivity$PhotoListAdapter
     switch (paramInt)
     {
     default: 
-      localView = this.this$0.photoListAdapter.mInflater.inflate(2131561367, null);
+      localView = this.this$0.photoListAdapter.mInflater.inflate(2131561406, null);
       paramViewGroup = new AbstractPhotoListActivity.Holder(localView);
       localView.setLayoutParams(new AbsListView.LayoutParams(this.this$0.mImageWidth, this.this$0.mImageHeight));
-      paramViewGroup.mImageView = ((ImageView)localView.findViewById(2131372468));
-      paramViewGroup.mImageViewPanoramaIcon = ((ImageView)localView.findViewById(2131372429));
-      paramViewGroup.mMaskView = ((ImageView)localView.findViewById(2131368844));
-      paramViewGroup.mSelectedIconView = ((ImageView)localView.findViewById(2131372473));
-      paramViewGroup.mSelectedBtn = localView.findViewById(2131372470);
-      paramViewGroup.mCheckBox = ((NumberCheckBox)localView.findViewById(2131372471));
-      paramViewGroup.mPhotoFlagView = ((ImageView)localView.findViewById(2131372399));
+      paramViewGroup.mImageView = ((ImageView)localView.findViewById(2131372580));
+      paramViewGroup.mImageViewPanoramaIcon = ((ImageView)localView.findViewById(2131372541));
+      paramViewGroup.mMaskView = ((ImageView)localView.findViewById(2131368936));
+      paramViewGroup.mSelectedIconView = ((ImageView)localView.findViewById(2131372585));
+      paramViewGroup.mSelectedBtn = localView.findViewById(2131372582);
+      paramViewGroup.mCheckBox = ((NumberCheckBox)localView.findViewById(2131372583));
+      paramViewGroup.mPhotoFlagView = ((ImageView)localView.findViewById(2131372511));
       paramViewGroup.mPhotoFlagView.setVisibility(8);
       if (this.this$0.mPhotoListLogic.mPhotoCommonData.maxSelectNum > 100) {
         paramViewGroup.mCheckBox.setTextSize(10.0F);
@@ -150,15 +150,15 @@ public class AbstractPhotoListActivity$PhotoListAdapter
       {
         paramViewGroup.mImageView.setOnClickListener(paramViewGroup.mOnItemClickListener);
         return paramViewGroup;
-        localView = this.this$0.photoListAdapter.mInflater.inflate(2131561628, null);
+        localView = this.this$0.photoListAdapter.mInflater.inflate(2131561669, null);
         paramViewGroup = new AbstractPhotoListActivity.Holder(localView);
         localView.setLayoutParams(new AbsListView.LayoutParams(this.this$0.mImageWidth, this.this$0.mImageHeight));
-        paramViewGroup.mImageView = ((ImageView)localView.findViewById(2131372468));
-        paramViewGroup.mTextView = ((TextView)localView.findViewById(2131372474));
-        paramViewGroup.mMaskView = ((ImageView)localView.findViewById(2131368844));
-        paramViewGroup.mSelectedIconView = ((ImageView)localView.findViewById(2131372473));
-        paramViewGroup.mSelectedBtn = localView.findViewById(2131372470);
-        paramViewGroup.mCheckBox = ((NumberCheckBox)localView.findViewById(2131372471));
+        paramViewGroup.mImageView = ((ImageView)localView.findViewById(2131372580));
+        paramViewGroup.mTextView = ((TextView)localView.findViewById(2131372586));
+        paramViewGroup.mMaskView = ((ImageView)localView.findViewById(2131368936));
+        paramViewGroup.mSelectedIconView = ((ImageView)localView.findViewById(2131372585));
+        paramViewGroup.mSelectedBtn = localView.findViewById(2131372582);
+        paramViewGroup.mCheckBox = ((NumberCheckBox)localView.findViewById(2131372583));
         if (this.this$0.mPhotoListLogic.mPhotoCommonData.maxSelectNum > 100) {
           paramViewGroup.mCheckBox.setTextSize(10.0F);
         }
@@ -171,7 +171,7 @@ public class AbstractPhotoListActivity$PhotoListAdapter
         {
           paramViewGroup.mSelectedBtn.setVisibility(0);
           continue;
-          paramViewGroup = this.this$0.photoListAdapter.mInflater.inflate(2131561082, null);
+          paramViewGroup = this.this$0.photoListAdapter.mInflater.inflate(2131561118, null);
           paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.this$0.mImageWidth, this.this$0.mImageHeight));
           paramViewGroup = new AbstractPhotoListActivity.Holder(paramViewGroup);
         }

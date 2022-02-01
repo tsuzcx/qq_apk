@@ -1,15 +1,16 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bheg
-  implements bheb
+public class bheg
+  implements DialogInterface.OnClickListener
 {
-  bheg(bhef parambhef) {}
+  public bheg(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a(Drawable paramDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("VipWallpaper", 1, "mView#draw");
-    bhef.a(this.a).a(paramDrawable);
+    UpgradeActivity.a(this.a);
+    this.a.finish();
   }
 }
 

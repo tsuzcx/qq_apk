@@ -1,23 +1,24 @@
-public class wdk
-  extends wdi
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+
+class wdk
+  implements uze
 {
-  public int d = -1;
-  public int e = -1;
+  wdk(wdg paramwdg, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public wdk() {}
-  
-  public wdk(wbv paramwbv)
+  public void a(int paramInt)
   {
-    super(paramwbv);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("TreeGatherConfig =[");
-    localStringBuilder.append(" mStartGatherLevel=").append(this.d);
-    localStringBuilder.append(" mEndGatherLevel=").append(this.e);
-    localStringBuilder.append("] ");
-    return localStringBuilder.toString() + super.toString();
+    if (paramInt == uzf.c)
+    {
+      ClipboardManager localClipboardManager = (ClipboardManager)this.jdField_a_of_type_Wdg.a.getContext().getSystemService("clipboard");
+      if (localClipboardManager != null) {
+        localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.content.get()));
+      }
+    }
   }
 }
 

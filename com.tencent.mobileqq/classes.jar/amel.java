@@ -1,19 +1,11 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-class amel
-  implements bkhe
+public class amel
+  extends anyu
 {
-  amel(ameh paramameh) {}
+  public amel(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
-      return;
-    }
-    this.a.d();
-  }
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
 }
 
 

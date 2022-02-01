@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageButton;
-import ayiq;
+import azbj;
 
 public class EyeButton
   extends ImageButton
 {
-  private ayiq a;
+  private azbj a;
   
   public EyeButton(Context paramContext)
   {
@@ -45,9 +45,9 @@ public class EyeButton
     }
   }
   
-  public void setLonTouchListener(ayiq paramayiq)
+  public void setLonTouchListener(azbj paramazbj)
   {
-    this.a = paramayiq;
+    this.a = paramazbj;
   }
 }
 

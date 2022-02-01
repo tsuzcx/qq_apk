@@ -1,61 +1,49 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.format.DateUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class rvb
-  extends ContentObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$Companion;", "", "()V", "DEFAULT_STEENGTHEN_ENABLE", "", "DEFAULT_STRENGTHEN_COUNT_LIMIT", "DEFAULT_STRENGTHEN_INTERVAL", "", "KEY_STRESS_COUNT", "", "KEY_STRESS_TIME", "SP_STRESS_COUNT", "TAG", "nowStressCount", "getNowStressCount", "()I", "setNowStressCount", "(I)V", "showStrengthenInterval", "getShowStrengthenInterval", "()F", "setShowStrengthenInterval", "(F)V", "stressCountLimit", "getStressCountLimit", "setStressCountLimit", "stressEnable", "", "getStressEnable", "()Z", "setStressEnable", "(Z)V", "cleanLastDayStressCount", "", "readStressCount", "saveStressCount", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rvb
 {
-  public rvb(ruy paramruy, Handler paramHandler)
+  private final void a()
   {
-    super(paramHandler);
+    Object localObject = BaseApplicationImpl.getContext().getSharedPreferences("SP_STRESS_FOLLOW_LAYOUT_COUNT", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getC…NT, Context.MODE_PRIVATE)");
+    localObject = ((SharedPreferences)localObject).edit();
+    rvb localrvb = (rvb)this;
+    localrvb.a(localrvb.a() + 1);
+    ((SharedPreferences.Editor)localObject).putInt("KEY_STRESS_FOLLOW_LAYOUT_COUNT", localrvb.a()).putLong("KEY_STRESS_TIME", System.currentTimeMillis()).apply();
   }
   
-  public ContentResolver a()
+  private final void b()
   {
-    if (this.a.a() != null) {
-      return this.a.a().getContentResolver();
-    }
-    return null;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("SP_STRESS_FOLLOW_LAYOUT_COUNT", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localSharedPreferences, "BaseApplicationImpl.getC…NT, Context.MODE_PRIVATE)");
+    ((rvb)this).a(localSharedPreferences.getInt("KEY_STRESS_FOLLOW_LAYOUT_COUNT", 0));
+    ((rvb)this).c();
   }
   
-  public void a()
+  private final void c()
   {
-    if (a() != null) {
-      a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-    }
-  }
-  
-  public void b()
-  {
-    if (a() != null) {
-      a().unregisterContentObserver(this);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("SP_STRESS_FOLLOW_LAYOUT_COUNT", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localSharedPreferences, "BaseApplicationImpl.getC…NT, Context.MODE_PRIVATE)");
+    if (!DateUtils.isToday(localSharedPreferences.getLong("KEY_STRESS_TIME", 0L))) {
+      ((rvb)this).a(0);
     }
   }
   
-  public void onChange(boolean paramBoolean)
+  public final int a()
   {
-    super.onChange(paramBoolean);
-    if (this.a.a() == null) {}
-    for (;;)
-    {
-      return;
-      int i = Settings.System.getInt(this.a.a().getContentResolver(), "accelerometer_rotation", -1);
-      if (i == 1)
-      {
-        ruy.a(this.a, true);
-        this.a.a(true);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(ruy.a, 2, "RotationObserver.onChange() : rotateState=" + i);
-        return;
-        ruy.a(this.a, false);
-        this.a.a(false);
-      }
-    }
+    return ruz.a();
+  }
+  
+  public final void a(int paramInt)
+  {
+    ruz.a(paramInt);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.weishi_new.util;
 import UserGrowth.stSimpleMetaFeed;
 import android.text.TextUtils;
 import java.util.List;
-import ups;
+import uqt;
 
 public final class WeishiUtils$4
   implements Runnable
@@ -15,13 +15,13 @@ public final class WeishiUtils$4
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      String str = ups.a((stSimpleMetaFeed)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Boolean);
+      String str = uqt.a((stSimpleMetaFeed)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Boolean);
       if (TextUtils.isEmpty(str)) {}
       for (;;)
       {
         i += 1;
         break;
-        ups.a(str);
+        uqt.a(str);
       }
     }
   }

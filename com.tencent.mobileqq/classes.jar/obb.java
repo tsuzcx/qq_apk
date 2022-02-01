@@ -1,61 +1,16 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.oac.OACProfilePb.ProfileDataReq;
-import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class obb
-  extends oba
+  implements DialogInterface.OnCancelListener
 {
-  public static void a(Long paramLong, String paramString, obd<OACProfilePb.ProfileDataRsp> paramobd)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    paramString = new OACProfilePb.ProfileDataReq();
-    paramString.puin.set(paramLong.longValue());
-    paramString.attachinfo.set(str);
-    a("officialaccount.clientbusilogic.DataProfile", paramString, OACProfilePb.ProfileDataRsp.class, paramobd);
-  }
+  public obb(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public static <E extends MessageMicro<?>> void a(String paramString, MessageMicro<?> paramMessageMicro, Class<E> paramClass, obd<E> paramobd)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), obb.class);
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    localStQWebReq.Seq.set(-1L);
-    localStQWebReq.qua.set(blru.a());
-    localStQWebReq.deviceInfo.set(blrt.a().c());
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(paramMessageMicro.toByteArray()));
-    paramMessageMicro = aahw.a();
-    if (!TextUtils.isEmpty(paramMessageMicro)) {
-      localStQWebReq.traceid.set(paramMessageMicro);
-    }
-    localNewIntent.putExtra("traceid", paramMessageMicro);
-    localNewIntent.putExtra("cmd", paramString);
-    localNewIntent.putExtra("data", localStQWebReq.toByteArray());
-    localNewIntent.setObserver(new obc(paramobd, paramClass));
-    BaseApplicationImpl.getApplication().peekAppRuntime().startServlet(localNewIntent);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramIntent = paramIntent.getStringExtra("cmd");
-    txi.a(arrayOfByte, paramIntent);
-    paramPacket.setSSOCommand(paramIntent);
-    if (arrayOfByte != null) {
-      paramPacket.putSendData(bguc.a(arrayOfByte));
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

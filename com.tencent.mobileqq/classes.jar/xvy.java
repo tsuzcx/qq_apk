@@ -1,337 +1,199 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.preload.PlayerDataPreLoader.1;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.view.Surface;
 import java.util.Map;
 
+@TargetApi(14)
 public class xvy
-  implements xiz
+  implements xvo
 {
-  private String jdField_a_of_type_JavaLangString;
-  private final wpj jdField_a_of_type_Wpj;
-  public xfa a;
-  private xiu jdField_a_of_type_Xiu;
-  private xiv jdField_a_of_type_Xiv;
-  private xix jdField_a_of_type_Xix;
-  private final yij jdField_a_of_type_Yij;
+  MediaPlayer a = new MediaPlayer();
   
-  public xvy(xiu paramxiu)
+  public int a()
   {
-    this.jdField_a_of_type_Xfa = new xvz(this);
-    this.jdField_a_of_type_Xiu = paramxiu;
-    this.jdField_a_of_type_Wpj = ((wpj)wpm.a(5));
-    this.jdField_a_of_type_Yij = ((yij)wpm.a(11));
+    return this.a.getDuration();
   }
   
-  private xwa a(xiv paramxiv, xix paramxix, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    xwa localxwa = new xwa();
-    if (paramxiv == null) {
-      return localxwa;
-    }
-    int i2 = paramxiv.jdField_a_of_type_JavaUtilList.size();
-    if (i2 == 0) {
-      return localxwa;
-    }
-    int j = 0;
-    if (paramxix != null)
-    {
-      i = paramxiv.jdField_a_of_type_JavaUtilList.indexOf(new xiy(paramxix));
-      j = i;
-      if (i < 0)
-      {
-        yqp.e("Q.qqstory.player.data.PlayerDataPreLoader", "can't find center group:%s", new Object[] { paramxix });
-        j = 0;
-      }
-    }
-    int i1 = j - 1;
-    int n = j + 1;
-    int k = 0;
-    int i = 0;
-    int m;
-    if (i1 >= 0)
-    {
-      m = i1;
-      for (;;)
-      {
-        k = i;
-        if (m < 0) {
-          break label277;
-        }
-        k = i;
-        if (m <= i1 - paramInt1) {
-          break label277;
-        }
-        if (((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_JavaUtilList.size() != 0) {
-          break;
-        }
-        m -= 1;
-      }
-      paramxix = (String)((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_JavaUtilList.get(0);
-      if (a(paramxix)) {
-        break label707;
-      }
-      localxwa.jdField_a_of_type_JavaUtilList.add(paramxix);
-    }
-    label277:
-    label535:
-    label697:
-    label700:
-    label707:
-    for (k = i + 1;; k = i)
-    {
-      paramxix = (String)((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_JavaUtilMap.get(paramxix);
-      i = k;
-      if (b(paramxix)) {
-        break;
-      }
-      localxwa.a(paramxix);
-      i = k;
-      break;
-      i = k;
-      if (n < i2)
-      {
-        i = n;
-        paramInt1 = k;
-        for (;;)
-        {
-          k = i;
-          i = paramInt1;
-          if (k >= i2) {
-            break label464;
-          }
-          i = paramInt1;
-          if (k <= n + paramInt2) {
-            break label464;
-          }
-          if (((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaUtilList.size() != 0) {
-            break;
-          }
-          i = k - 1;
-        }
-        paramxix = (String)((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaUtilList.get(0);
-        if (a(paramxix)) {
-          break label700;
-        }
-        localxwa.jdField_a_of_type_JavaUtilList.add(paramxix);
-      }
-      for (i = paramInt1 + 1;; i = paramInt1)
-      {
-        paramxix = (String)((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaUtilMap.get(paramxix);
-        paramInt1 = i;
-        if (b(paramxix)) {
-          break;
-        }
-        localxwa.a(paramxix);
-        paramInt1 = i;
-        break;
-        label464:
-        paramInt2 = j;
-        String str;
-        if (paramInt2 < i2)
-        {
-          paramxix = ((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilList;
-          paramInt1 = 0;
-          if (j == paramInt2)
-          {
-            k = paramxix.indexOf(paramString) - paramInt3;
-            paramInt1 = k;
-            if (k < 0) {
-              paramInt1 = 0;
-            }
-          }
-          k = paramInt1;
-          paramInt1 = i;
-          if (k < paramxix.size())
-          {
-            str = (String)paramxix.get(k);
-            if ((a(str)) || (localxwa.jdField_a_of_type_JavaUtilList.contains(str))) {
-              break label697;
-            }
-            localxwa.jdField_a_of_type_JavaUtilList.add(str);
-            paramInt1 += 1;
-          }
-        }
-        for (;;)
-        {
-          if (localxwa.b.size() < paramInt4)
-          {
-            str = (String)((xiy)paramxiv.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilMap.get(str);
-            if (!b(str)) {
-              localxwa.a(str);
-            }
-          }
-          if (paramInt1 > paramInt4) {
-            return localxwa;
-          }
-          k += 1;
-          break label535;
-          paramInt2 += 1;
-          i = paramInt1;
-          break;
-          return localxwa;
-        }
-      }
-    }
+    this.a.setVolume(paramFloat1, paramFloat2);
   }
   
-  private void a(List<String> paramList)
+  public void a(int paramInt)
   {
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      if (StoryVideoItem.isFakeVid((String)localIterator.next())) {
-        localIterator.remove();
-      }
-    }
-    if (paramList.size() == 0) {
+    this.a.seekTo(paramInt);
+  }
+  
+  public void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  {
+    this.a.setDataSource(paramContext, paramUri, paramMap);
+  }
+  
+  public void a(Surface paramSurface)
+  {
+    this.a.setSurface(paramSurface);
+  }
+  
+  public void a(xvp paramxvp)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramxvp == null) {}
+    for (paramxvp = null;; paramxvp = new xwb(this, paramxvp))
+    {
+      localMediaPlayer.setOnBufferingUpdateListener(paramxvp);
       return;
     }
-    yqp.a("Q.qqstory.player.data.PlayerDataPreLoader", "start preload sync video info size:%d vid:%s", Integer.valueOf(paramList.size()), paramList);
-    new wxu(paramList, true).a();
   }
   
-  private boolean a(String paramString)
+  public void a(xvq paramxvq)
   {
-    paramString = this.jdField_a_of_type_Wpj.a(paramString);
-    return (paramString != null) && (!this.jdField_a_of_type_Xfa.a(paramString));
-  }
-  
-  private void b(List<String> paramList)
-  {
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      if (FeedItem.isFakeFeedId((String)localIterator.next())) {
-        localIterator.remove();
-      }
-    }
-    if (paramList.size() == 0) {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramxvq == null) {}
+    for (paramxvq = null;; paramxvq = new xwa(this, paramxvq))
+    {
+      localMediaPlayer.setOnCompletionListener(paramxvq);
       return;
     }
-    yqp.a("Q.qqstory.player.data.PlayerDataPreLoader", "start preload sync feed info size:%d feed:%s", Integer.valueOf(paramList.size()), paramList);
-    ((yij)wpm.a(11)).b(paramList);
   }
   
-  private boolean b(String paramString)
+  public void a(xvr paramxvr)
   {
-    return this.jdField_a_of_type_Yij.a(paramString) != null;
-  }
-  
-  private void d()
-  {
-    Bosses.get().postLightWeightJob(new PlayerDataPreLoader.1(this), 100);
-  }
-  
-  private void e()
-  {
-    if ((this.jdField_a_of_type_Xiv == null) || (this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.size() == 0) || (this.jdField_a_of_type_Xix == null) || (this.jdField_a_of_type_JavaLangString == null))
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramxvr == null) {}
+    for (paramxvr = null;; paramxvr = new xwe(this, paramxvr))
     {
-      yqp.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:data empty , cannot preload feature info");
+      localMediaPlayer.setOnErrorListener(paramxvr);
       return;
     }
-    ArrayList localArrayList = new ArrayList();
-    int i = this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.indexOf(new xiy(this.jdField_a_of_type_Xix));
-    if (i < 0)
+  }
+  
+  public void a(xvs paramxvs)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramxvs == null) {}
+    for (paramxvs = null;; paramxvs = new xwf(this, paramxvs))
     {
-      yqp.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center group:%s", new Object[] { this.jdField_a_of_type_Xix });
+      localMediaPlayer.setOnInfoListener(paramxvs);
       return;
     }
-    Object localObject1 = (xiy)this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.get(i);
-    int j = ((xiy)localObject1).jdField_a_of_type_JavaUtilList.indexOf(this.jdField_a_of_type_JavaLangString);
-    if (j < 0)
+  }
+  
+  public void a(xvt paramxvt)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramxvt == null) {}
+    for (paramxvt = null;; paramxvt = new xvz(this, paramxvt))
     {
-      yqp.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      localMediaPlayer.setOnPreparedListener(paramxvt);
       return;
     }
-    int k = j + 1;
-    if (k < ((xiy)localObject1).jdField_a_of_type_JavaUtilList.size())
-    {
-      localObject2 = (String)((xiy)localObject1).jdField_a_of_type_JavaUtilMap.get(((xiy)localObject1).jdField_a_of_type_JavaUtilList.get(k));
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localArrayList.add(localObject2);
-      }
-    }
-    j -= 1;
-    if (j >= 0)
-    {
-      localObject1 = (String)((xiy)localObject1).jdField_a_of_type_JavaUtilMap.get(((xiy)localObject1).jdField_a_of_type_JavaUtilList.get(j));
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        localArrayList.add(localObject1);
-      }
-    }
-    j = i + 1;
-    if ((j >= 0) && (j < this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.size()))
-    {
-      localObject1 = (xiy)this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.get(j);
-      if (((xiy)localObject1).jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        localObject1 = (String)((xiy)localObject1).jdField_a_of_type_JavaUtilMap.get(((xiy)localObject1).jdField_a_of_type_JavaUtilList.get(0));
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localArrayList.add(localObject1);
-        }
-      }
-    }
-    i -= 1;
-    if ((i >= 0) && (i < this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.size()))
-    {
-      localObject1 = (xiy)this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.get(i);
-      if (((xiy)localObject1).jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        localObject1 = (String)((xiy)localObject1).jdField_a_of_type_JavaUtilMap.get(((xiy)localObject1).jdField_a_of_type_JavaUtilList.get(0));
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localArrayList.add(localObject1);
-        }
-      }
-    }
-    localObject1 = new ArrayList();
-    Object localObject2 = (yij)wpm.a(11);
-    Iterator localIterator = localArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!FeedItem.isFakeFeedId(str)) && (!((ArrayList)localObject1).contains(str)))
-      {
-        ((ArrayList)localObject1).add(str);
-        ((yij)localObject2).a(str);
-      }
-    }
-    yqp.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:feed id list:%s , preload feature count:%d", new Object[] { localArrayList, Integer.valueOf(((ArrayList)localObject1).size()) });
   }
   
-  public void a()
+  public void a(xvu paramxvu)
   {
-    this.jdField_a_of_type_Xiv = this.jdField_a_of_type_Xiu.a(this.jdField_a_of_type_Xix, 10);
-    Iterator localIterator = this.jdField_a_of_type_Xiv.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if ((localIterator.next() instanceof xiw)) {
-        localIterator.remove();
-      }
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramxvu == null) {}
+    for (paramxvu = null;; paramxvu = new xwc(this, paramxvu))
+    {
+      localMediaPlayer.setOnSeekCompleteListener(paramxvu);
+      return;
     }
-    d();
   }
   
-  public void a(xix paramxix, String paramString)
+  public void a(xvw paramxvw)
   {
-    this.jdField_a_of_type_Xix = paramxix;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    d();
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramxvw == null) {}
+    for (paramxvw = null;; paramxvw = new xwd(this, paramxvw))
+    {
+      localMediaPlayer.setOnVideoSizeChangedListener(paramxvw);
+      return;
+    }
   }
   
-  public void a(xix paramxix, String paramString, boolean paramBoolean) {}
+  public void a(boolean paramBoolean)
+  {
+    this.a.setLooping(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return this.a.isPlaying();
+  }
+  
+  public int b()
+  {
+    return this.a.getCurrentPosition();
+  }
   
   public void b()
   {
-    this.jdField_a_of_type_Xiu.a(this);
+    this.a.prepareAsync();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.setAudioSessionId(paramInt);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.a.setScreenOnWhilePlaying(paramBoolean);
+  }
+  
+  public int c()
+  {
+    return this.a.getVideoWidth();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Xiu.b(this);
+    this.a.start();
+  }
+  
+  public void c(int paramInt)
+  {
+    this.a.setAudioStreamType(paramInt);
+  }
+  
+  public int d()
+  {
+    return this.a.getVideoHeight();
+  }
+  
+  public void d()
+  {
+    this.a.pause();
+  }
+  
+  public int e()
+  {
+    return this.a.getAudioSessionId();
+  }
+  
+  public void e()
+  {
+    this.a.stop();
+  }
+  
+  public void f()
+  {
+    this.a.release();
+  }
+  
+  public void g()
+  {
+    try
+    {
+      this.a.reset();
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      bdkh.a(localIllegalStateException);
+    }
   }
 }
 

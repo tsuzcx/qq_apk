@@ -1,7 +1,4 @@
-public abstract interface wev
-{
-  public abstract void copy(Object paramObject);
-}
+public abstract interface wev {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

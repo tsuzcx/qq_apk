@@ -1,64 +1,47 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
 class bejh
-  implements BusinessObserver
+  implements Comparator<oidb_0xe61.BeancurdCubeInfoResult>
 {
-  bejh(bejg parambejg) {}
+  private final aggr jdField_a_of_type_Aggr;
+  private final awxb<bejl, QQAppInterface> jdField_a_of_type_Awxb;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bejh(QQAppInterface paramQQAppInterface, aggr paramaggr, awxb<bejl, QQAppInterface> paramawxb)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695571);
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        Object localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt == 0) {
-          continue;
-        }
-        localObject = paramBundle.optString("msg");
-        paramBundle = (Bundle)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695572, new Object[] { Integer.valueOf(paramInt) });
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695572, new Object[] { Integer.valueOf(9992) });
-        continue;
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695572, new Object[] { Integer.valueOf(9991) });
-        continue;
-      }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, paramBundle, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      bfqu.a("two_comment", "fail", this.a.d, "4", "", "");
-      this.a.jdField_c_of_type_Boolean = false;
-      return;
-      paramBundle = paramBundle.getJSONObject("result");
-      bfqu.a("two_comment", "suc", this.a.d, this.a.h, "", "");
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a(this.a.jdField_c_of_type_JavaLangString, paramBundle.toString(), true);
-      this.a.dismiss();
-      return;
-      paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695572, new Object[] { Integer.valueOf(9992) });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aggr = paramaggr;
+    this.jdField_a_of_type_Awxb = paramawxb;
+  }
+  
+  private int a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult)
+  {
+    int i = bejj.b((int)((oidb_0xe61.BeancurdCubeInfo)paramBeancurdCubeInfoResult.beancurdCubeInfo.get()).uint64_busi_id.get());
+    paramBeancurdCubeInfoResult = ((bejl)this.jdField_a_of_type_Awxb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)).a(i);
+    if (paramBeancurdCubeInfoResult != null) {
+      return paramBeancurdCubeInfoResult.a();
     }
+    return 0;
+  }
+  
+  private boolean a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult)
+  {
+    return (paramBeancurdCubeInfoResult != null) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.has()) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.get() != null) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.uint64_busi_id.has());
+  }
+  
+  public int a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult1, oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult2)
+  {
+    if ((a(paramBeancurdCubeInfoResult1)) && (a(paramBeancurdCubeInfoResult2)))
+    {
+      int i = a(paramBeancurdCubeInfoResult1);
+      int j = a(paramBeancurdCubeInfoResult2);
+      return this.jdField_a_of_type_Aggr.b(i) - this.jdField_a_of_type_Aggr.b(j);
+    }
+    return 0;
   }
 }
 

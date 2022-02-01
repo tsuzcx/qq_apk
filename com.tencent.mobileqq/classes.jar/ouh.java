@@ -1,18 +1,16 @@
-public class ouh
+import java.util.List;
+
+class ouh
+  extends ovd
 {
-  public static int a()
+  ouh(otv paramotv, boolean paramBoolean, List paramList)
   {
-    return ((Integer)bmqa.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
+    super(paramotv, null);
   }
   
-  public static void a()
+  void a(ovg paramovg)
   {
-    bmqa.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bmqa.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
-  }
-  
-  public static int b()
-  {
-    return ((Integer)bmqa.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
+    paramovg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.a(this.jdField_a_of_type_Otv), 3);
   }
 }
 

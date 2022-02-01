@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ailb;
-import ailc;
-import aimj;
+import aiuu;
+import aiuv;
+import aiwh;
 
 public class ComicTipsBar$1$1
   implements Runnable
 {
-  public ComicTipsBar$1$1(ailc paramailc) {}
+  public ComicTipsBar$1$1(aiuv paramaiuv) {}
   
   public void run()
   {

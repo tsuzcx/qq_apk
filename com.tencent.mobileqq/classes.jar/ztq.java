@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-
-public class ztq
-  implements DialogInterface.OnClickListener
+public abstract interface ztq
 {
-  public ztq(QRLoginMgrActivity paramQRLoginMgrActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QRLoginMgrActivity.a(this.a, true, 0L);
-    bcst.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
-  }
+  public abstract void a(ztp paramztp);
 }
 
 

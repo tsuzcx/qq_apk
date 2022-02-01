@@ -1,9 +1,9 @@
-import android.view.View;
-
 public class bcyb
 {
-  public View a;
-  public View b;
+  public int a;
+  public azqh a;
+  public bcxn a;
+  public Object a;
 }
 
 

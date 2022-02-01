@@ -1,18 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class utn
-  implements View.OnClickListener
+public class utn
 {
-  utn(utm paramutm) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
   
-  public void onClick(View paramView)
+  public utm a()
   {
-    this.a.g();
-    this.a.i();
-    utm.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new utm(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public utn a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public utn a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public utn a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public utn b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public utn b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
   }
 }
 

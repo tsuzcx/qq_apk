@@ -1,60 +1,24 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import cooperation.qzone.util.QZLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import common.config.service.QzoneConfig;
+import mqq.app.AppRuntime;
 
 public class aafa
-  extends QQUIEventReceiver<aaet, aaep>
+  implements View.OnClickListener
 {
-  public aafa(@NonNull aaet paramaaet)
-  {
-    super(paramaaet);
-  }
+  public aafa(RecommendBannerEntryItemView paramRecommendBannerEntryItemView) {}
   
-  public void a(@NonNull aaet paramaaet, @NonNull aaep paramaaep)
+  public void onClick(View paramView)
   {
-    switch (paramaaep.jdField_a_of_type_Int)
-    {
-    case 4: 
-    case 5: 
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      CertifiedAccountMeta.StFeed localStFeed;
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramaaet.i();
-            return;
-            paramaaet.j();
-            return;
-            aaet.a(paramaaet, false);
-            aaet.a(paramaaet, null);
-            aaet.a(paramaaet, null);
-          } while (!(paramaaep.jdField_a_of_type_JavaLangObject instanceof Object[]));
-          paramaaep = (Object[])paramaaep.jdField_a_of_type_JavaLangObject;
-        } while ((paramaaep.length < 2) || (!(paramaaep[0] instanceof CertifiedAccountMeta.StFeed)) || (!(paramaaep[1] instanceof Integer)));
-        localStFeed = (CertifiedAccountMeta.StFeed)paramaaep[0];
-        i = ((Integer)paramaaep[1]).intValue();
-      } while (!paramaaet.a(localStFeed));
-      aaet.c(paramaaet).put(Integer.valueOf(i), localStFeed);
-      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
-      return;
-    }
-    aaet.a(paramaaet, (Object[])paramaaep.jdField_a_of_type_JavaLangObject);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return aaep.class;
+    String str = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
+    MiniAppLauncher.startMiniApp(this.a.getContext(), str, 2016, null, null);
+    bmtd.a();
+    abbe.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_find", 0, 0, new String[0]);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

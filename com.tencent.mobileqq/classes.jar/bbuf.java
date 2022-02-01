@@ -1,16 +1,18 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bbuf
-  implements Comparator<String>
+public class bbuf
+  implements View.OnClickListener
 {
-  bbuf(bbue parambbue) {}
+  public bbuf(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public int a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
-    }
-    return paramString2.length() - paramString1.length();
+    bdll.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 2, 0, "0", "0", "", "");
+    SignatureHistoryFragment.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

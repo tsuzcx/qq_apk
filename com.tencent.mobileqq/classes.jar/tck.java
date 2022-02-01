@@ -1,30 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 public class tck
-  extends Handler
+  implements aqvd
 {
-  public tck(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public tck(ViolaFragment paramViolaFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onColorNoteAnimFinish()
   {
-    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
-    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Int += 1;
-    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
-    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
-    oat.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
+    ViolaFragment.access$500(this.a);
   }
 }
 

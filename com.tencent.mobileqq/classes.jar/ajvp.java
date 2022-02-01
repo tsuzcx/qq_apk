@@ -1,44 +1,22 @@
-class ajvp
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.5.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class ajvp
+  implements ThreadExcutor.IThreadListener
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  public ajvp(PublicAccountFragment paramPublicAccountFragment) {}
   
-  private ajvp(int paramInt1, int paramInt2)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
   }
   
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ajvp)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0) {
-      return i + j * 31;
-    }
-  }
+  public void onPreRun() {}
 }
 
 

@@ -1,10 +1,22 @@
-import android.graphics.Bitmap;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-public abstract interface agga
+public class agga
+  extends View.AccessibilityDelegate
 {
-  public abstract void a(String paramString, int paramInt);
+  public agga(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    }
+  }
 }
 
 

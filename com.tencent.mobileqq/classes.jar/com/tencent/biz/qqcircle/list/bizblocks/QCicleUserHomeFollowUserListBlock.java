@@ -1,19 +1,19 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
+import aacv;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
-import anni;
-import com.tencent.biz.qqcircle.QCircleInitBean;
+import anzj;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.requests.QCircleGetRecomUserListRequest;
 import com.tencent.biz.qqcircle.widgets.QCircleFollowUserListItemView;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import feedcloud.FeedCloudMeta.StUser;
 import feedcloud.FeedCloudRead.StGetRecomUserListRsp;
-import vrf;
-import zyz;
+import vtq;
 
 public class QCicleUserHomeFollowUserListBlock
   extends QCircleFollowUserListBlock
@@ -46,22 +46,22 @@ public class QCicleUserHomeFollowUserListBlock
     if (this.mUser != null)
     {
       if (this.mUser.sex.get() == 1) {
-        return anni.a(2131697168);
+        return anzj.a(2131697231);
       }
-      return anni.a(2131697169);
+      return anzj.a(2131697232);
     }
-    return anni.a(2131697168);
+    return anzj.a(2131697231);
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new zyz(new QCircleFollowUserListItemView(getParentFragment().getActivity(), this.mUin, 0));
+    return new aacv(new QCircleFollowUserListItemView(getParentFragment().getActivity(), this.mUin, 0));
   }
   
   public void onInitBlock(Bundle paramBundle)
   {
     super.onInitBlock(paramBundle);
-    vrf.a("", 11, 28, 1);
+    vtq.a("", 11, 28, 1);
   }
 }
 

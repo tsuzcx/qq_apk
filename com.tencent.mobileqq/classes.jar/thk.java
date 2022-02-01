@@ -1,11 +1,7 @@
-import android.view.View;
+import kotlin.Metadata;
 
-public abstract interface thk
-{
-  public abstract void a(View paramView, int paramInt, long paramLong);
-  
-  public abstract void b(View paramView, int paramInt, long paramLong);
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$Companion;", "", "()V", "GET_RIJ_APP_TYPE", "", "GET_USER_INFO", "PUBLIC_ACCOUNT_NEW", "SHOW_RIJ_NATIVE_COMMENT_VIEW", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class thk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

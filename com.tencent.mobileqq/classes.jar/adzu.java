@@ -1,26 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.49.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class adzu
-  extends BroadcastReceiver
+class adzu
+  implements aqxy
 {
-  public adzu(Conversation paramConversation) {}
+  private adzu(adzq paramadzq) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getStringExtra("wording");
-    int i = paramIntent.getIntExtra("timetowait", 360000);
-    this.a.jdField_a_of_type_Akyh.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_Akyh.jdField_a_of_type_JavaLangString = paramContext;
-    this.a.jdField_a_of_type_Akyh.a(20, 2);
-    this.a.jdField_a_of_type_Akyh.a(-1, null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.49.1(this), i);
-    bcst.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      adzq.a(this.a);
+      if ((adzq.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        adzq.a(this.a).a(2);
+      }
+      if (this.a.a != null)
+      {
+        paramInt1 = adzq.d(this.a, adzq.a(this.a));
+        paramInt2 = adzq.e(this.a, adzq.b(this.a));
+        int i = adzq.f(this.a, adzq.c(this.a));
+        this.a.a.a(paramInt1, paramInt2, i);
+      }
+      return;
+      adzq.a(this.a, paramInt2);
+      continue;
+      adzq.b(this.a, paramInt2);
+      continue;
+      adzq.c(this.a, paramInt2);
+    }
   }
 }
 

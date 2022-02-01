@@ -1,19 +1,17 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wci
-  extends wcf
+class wci
+  implements View.OnClickListener
 {
-  public wci(wdj paramwdj)
-  {
-    super(paramwdj.a);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter " + paramwdj.c);
-    wdl localwdl = new wdl();
-    localwdl.a(paramwdj);
-    a(localwdl);
-  }
+  wci(wch paramwch) {}
   
-  protected void c(List<wcl> paramList) {}
+  public void onClick(View paramView)
+  {
+    wch.a(this.a, paramView.getContext());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

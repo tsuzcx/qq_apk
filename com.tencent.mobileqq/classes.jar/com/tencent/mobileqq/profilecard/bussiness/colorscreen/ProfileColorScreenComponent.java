@@ -7,16 +7,16 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import anuk;
-import auec;
-import azfe;
-import azfl;
-import azkq;
-import azks;
-import azlw;
-import bcnj;
-import bgzk;
-import bgzp;
+import aogu;
+import auvx;
+import azxr;
+import azxy;
+import badc;
+import bade;
+import baei;
+import bdgb;
+import bhzq;
+import bhzv;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,7 +27,7 @@ import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class ProfileColorScreenComponent
-  extends azkq<FrameLayout>
+  extends badc<FrameLayout>
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
@@ -36,9 +36,9 @@ public class ProfileColorScreenComponent
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  public ProfileColorScreenComponent(azlw paramazlw, azfe paramazfe)
+  public ProfileColorScreenComponent(baei parambaei, azxr paramazxr)
   {
-    super(paramazlw, paramazfe);
+    super(parambaei, paramazxr);
   }
   
   private boolean b()
@@ -69,11 +69,11 @@ public class ProfileColorScreenComponent
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = (azks)this.jdField_a_of_type_Azlw.a(1002);
+      Object localObject = (bade)this.jdField_a_of_type_Baei.a(1002);
       if (localObject == null) {
         break label65;
       }
-      localObject = ((azks)localObject).a();
+      localObject = ((bade)localObject).a();
       if ((!(localObject instanceof VasProfileTagView)) || (!((VasProfileTagView)localObject).jdField_b_of_type_Boolean)) {
         break label65;
       }
@@ -91,23 +91,23 @@ public class ProfileColorScreenComponent
   
   private void l()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (((azxr)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(((azxr)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))) {}
     int i;
     do
     {
       return;
-      if (!auec.jdField_a_of_type_Boolean)
+      if (!auvx.jdField_a_of_type_Boolean)
       {
         QLog.i("ColorScreenManager", 1, "ColorScreenManager.sEnable is false, loadColorScreen fail.");
         return;
       }
-      if (bcnj.b())
+      if (bdgb.b())
       {
         QLog.i("ColorScreenManager", 1, "loadColorScreen, SimpleUIMode is open now");
         return;
       }
       this.jdField_a_of_type_Boolean = true;
-      i = ((anuk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+      i = ((aogu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(((azxr)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
       if (QLog.isColorLevel()) {
         QLog.i("ColorScreenManager", 2, "loadColorScreen " + i + " mLastColorScreen " + this.jdField_a_of_type_Int);
       }
@@ -119,13 +119,13 @@ public class ProfileColorScreenComponent
     return;
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
     this.jdField_a_of_type_Int = i;
-    if (((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {}
+    if (((azxr)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {}
     for (Object localObject = "1";; localObject = "2")
     {
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Bubble", "ShowEffect", (String)localObject, 1, 0, 0, null, Integer.toString(i), null);
-      localObject = ((bgzk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a;
+      localObject = ((bhzq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a;
       this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader = new ProfileColorScreenComponent.ColorScreenLoader(this, i);
-      ((auec)localObject).a(i, bgzp.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
+      ((auvx)localObject).a(i, bhzv.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
       return;
     }
   }
@@ -153,10 +153,10 @@ public class ProfileColorScreenComponent
     this.jdField_b_of_type_Boolean = true;
   }
   
-  public boolean a(azfe paramazfe)
+  public boolean a(azxr paramazxr)
   {
-    boolean bool = super.a(paramazfe);
-    if ((((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != azfl.f) || (((azfe)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f == 1))) {
+    boolean bool = super.a(paramazxr);
+    if ((((azxr)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((((azxr)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != azxy.f) || (((azxr)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f == 1))) {
       l();
     }
     return bool;

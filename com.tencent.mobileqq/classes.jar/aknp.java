@@ -1,20 +1,24 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class aknp
-  implements bhva
+  implements DialogInterface.OnClickListener
 {
-  public aknp(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
+  public aknp(BindNumberActivity paramBindNumberActivity) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
+    BindNumberActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
+      this.a.a("CliOper", "0X8005DE9", 1);
+    }
+    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
+      this.a.a("CliOper", "0X8005DE9", 2);
+    }
   }
 }
 

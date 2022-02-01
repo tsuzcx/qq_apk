@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import android.widget.ListView;
-import ufp;
-import upe;
+import ufr;
+import uqf;
 
 public class WsCommentPresenter$8
   implements Runnable
 {
-  public WsCommentPresenter$8(ufp paramufp) {}
+  public WsCommentPresenter$8(ufr paramufr) {}
   
   public void run()
   {
-    ufp.a(this.this$0, false);
-    ufp.d(this.this$0);
-    upe.d("comment", "onResponse, lastPosition:" + ufp.c(this.this$0) + ",currentPosition:" + ufp.b(this.this$0));
+    ufr.a(this.this$0, false);
+    ufr.d(this.this$0);
+    uqf.d("comment", "onResponse, lastPosition:" + ufr.c(this.this$0) + ",currentPosition:" + ufr.b(this.this$0));
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }

@@ -1,75 +1,43 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 public class aawz
+  extends bgst
 {
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  public aawz(TroopGiftPanel paramTroopGiftPanel, int paramInt, aawl paramaawl) {}
   
-  public aawz(aawv paramaawv, String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public void a(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      localObject = Arrays.asList(((File)localObject).list());
-      String str;
-      if (((List)localObject).contains("bg@2x.png"))
-      {
-        str = paramString + "/" + "bg@2x.png";
-        if (!new File(str).exists()) {
-          break label195;
-        }
-        this.c = str;
-      }
-      if (((List)localObject).contains("camera@2x.png"))
-      {
-        str = paramString + "/" + "camera@2x.png";
-        if (!new File(str).exists()) {
-          break label203;
-        }
-        this.d = str;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    for (;;)
-    {
-      if (((List)localObject).contains("point@2x.png"))
-      {
-        paramString = paramString + "/" + "point@2x.png";
-        if (!new File(paramString).exists()) {
-          break label211;
-        }
-        this.e = paramString;
-      }
-      return;
-      label195:
-      this.jdField_a_of_type_Boolean = false;
-      break;
-      label203:
-      this.jdField_a_of_type_Boolean = false;
-    }
-    label211:
-    this.jdField_a_of_type_Boolean = false;
+    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, anzj.a(2131714211), 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299011));
+    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public boolean a()
+  public void b(int paramInt, String paramString)
   {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
-    return this.jdField_a_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
+    Context localContext = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = anzj.a(2131714196);
+    }
+    QQToast.a(localContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299011));
+    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

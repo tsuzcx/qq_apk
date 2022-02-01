@@ -4,14 +4,14 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import balh;
+import bbea;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class RevokeMsgInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new balh();
+  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new bbea();
   public int a;
   public long a;
   public String a;
@@ -27,15 +27,19 @@ public class RevokeMsgInfo
   public int e;
   public String e;
   public int f;
+  public String f;
+  public int g;
   
   public RevokeMsgInfo()
   {
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_f_of_type_JavaLangString = "";
   }
   
   public RevokeMsgInfo(MessageRecord paramMessageRecord)
   {
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_f_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = paramMessageRecord.istroop;
     this.jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
     this.jdField_a_of_type_Long = paramMessageRecord.shmsgseq;
@@ -55,7 +59,7 @@ public class RevokeMsgInfo
   @SuppressLint({"DefaultLocale"})
   public String toString()
   {
-    return String.format("RevokeMsgInfo[istroop= %d, shmsgseq= %d, frienduin= %s, fromuin= %s msguid= %d, time= %d, senduin= %s, longmsgid= %d, longmsgcount=%d longmsgindex=%d, showGrayTips = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_c_of_type_Long), this.jdField_d_of_type_JavaLangString, Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    return String.format("RevokeMsgInfo[istroop= %d, shmsgseq= %d, frienduin= %s, fromuin= %s msguid= %d, time= %d, senduin= %s, longmsgid= %d, longmsgcount=%d longmsgindex=%d, showGrayTips = %s, grayTipsWordingId = %d, grayTipsWording = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_c_of_type_Long), this.jdField_d_of_type_JavaLangString, Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.g), this.jdField_f_of_type_JavaLangString });
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -72,11 +76,13 @@ public class RevokeMsgInfo
         paramParcel.writeLong(this.jdField_c_of_type_Long);
         paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
         paramParcel.writeInt(this.jdField_e_of_type_Int);
-        paramParcel.writeInt(this.f);
+        paramParcel.writeInt(this.jdField_f_of_type_Int);
         if (this.jdField_a_of_type_Boolean)
         {
           paramInt = 1;
           paramParcel.writeInt(paramInt);
+          paramParcel.writeInt(this.g);
+          paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
           return;
         }
       }

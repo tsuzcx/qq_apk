@@ -1,52 +1,41 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import java.lang.ref.WeakReference;
 
-public class bppy
-  extends bppr
+class bppy
+  implements bpqq
 {
-  public final int c;
+  private float jdField_a_of_type_Float;
+  private WeakReference<bppw> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bppy(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public bppy(bppw parambppw)
   {
-    super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambppw);
   }
   
-  @NonNull
-  public bpps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public float a()
   {
-    return new bppz(this, paramContext, paramViewGroup);
+    return this.jdField_a_of_type_Float;
   }
   
-  @NonNull
-  public Class<? extends bpps> a()
+  public void a(float paramFloat, String paramString, int paramInt)
   {
-    return bppz.class;
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public String toString()
+  public void a(boolean paramBoolean, String paramString, bqpa parambqpa)
   {
-    switch (this.a)
+    if (paramBoolean)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return "";
-    case 0: 
-      return "normal";
-    case 3: 
-      return "slow";
-    case 2: 
-      return "fast";
-    case 9: 
-      return "very slow";
-    case 8: 
-      return "little fast";
+      this.jdField_a_of_type_Float = 1.0F;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+        ((bppw)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
+      }
     }
-    return "rewind";
+    do
+    {
+      return;
+      this.jdField_a_of_type_Float = 0.0F;
+    } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+    ((bppw)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0);
   }
 }
 

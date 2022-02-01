@@ -1,344 +1,229 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
-import com.tencent.biz.qqcircle.adapter.QCircleTimeLineAndGridFeedAdapter.1;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleDefaultFeedItemView;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleGridFeedItemView;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.QCirclePopupWindowHelper.1;
+import com.tencent.biz.qqcircle.widgets.QCirclePushTipView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
+import com.tencent.widget.BubblePopupWindow;
+import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
-import java.util.ArrayList;
-import java.util.Calendar;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
+import mqq.util.WeakReference;
 
 public class uyy
-  extends QCircleFakeAdapter
 {
-  private static String jdField_a_of_type_JavaLangString = "QCircleTimeLineAndGridFeedAdapter";
-  public static final boolean a;
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private vsc jdField_a_of_type_Vsc;
-  private vsg jdField_a_of_type_Vsg;
-  private vsi jdField_a_of_type_Vsi;
-  private vsj jdField_a_of_type_Vsj;
-  private int b;
-  private int c = Calendar.getInstance().get(1);
+  private static volatile uyy jdField_a_of_type_Uyy;
+  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  private WeakReference<uze> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public static uyy a()
   {
-    jdField_a_of_type_Boolean = QzoneConfig.getQQCircleEnablePlayVideoInWorksTab();
-  }
-  
-  public uyy(Bundle paramBundle, int paramInt)
-  {
-    super(paramBundle);
-    this.b = paramInt;
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "QCircleTimeLineAndGridFeedAdapter spanCount:" + paramInt);
-  }
-  
-  private void a(RecyclerView paramRecyclerView)
-  {
-    this.jdField_a_of_type_Vsg = new vsg(getContext(), paramRecyclerView, this);
-    this.jdField_a_of_type_Vsi = new vsi(a());
-    this.jdField_a_of_type_Vsj = new vsj();
-    if (jdField_a_of_type_Boolean)
+    if (jdField_a_of_type_Uyy == null) {}
+    try
     {
-      this.jdField_a_of_type_Vsc = new vsc(a());
-      this.jdField_a_of_type_Vsc.a(false, true);
-      this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_Vsc);
-      this.jdField_a_of_type_Vsg.a(new vsh());
-    }
-    this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_Vsi);
-    this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_Vsj);
-    this.jdField_a_of_type_Vsg.a(new vrx());
-    addOnScrollListener(this.jdField_a_of_type_Vsg);
-    this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_Vsg.a(paramRecyclerView);
-  }
-  
-  private boolean a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    boolean bool = true;
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      if ((paramInt1 + 1) % paramInt2 == 0) {
-        bool = true;
+      if (jdField_a_of_type_Uyy == null) {
+        jdField_a_of_type_Uyy = new uyy();
       }
+      return jdField_a_of_type_Uyy;
     }
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
-        if (!(paramRecyclerView instanceof StaggeredGridLayoutManager)) {
-          break label76;
-        }
-        if (((StaggeredGridLayoutManager)paramRecyclerView).getOrientation() != 1) {
-          break;
-        }
-      } while ((paramInt1 + 1) % paramInt2 == 0);
-      return false;
-    } while (paramInt1 >= paramInt3 - paramInt3 % paramInt2);
-    return false;
-    label76:
-    return false;
+    finally {}
   }
   
-  private boolean b(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3)
+  public static void b()
   {
-    boolean bool = true;
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      if (paramInt1 >= paramInt3 - paramInt3 % paramInt2) {
-        bool = true;
-      }
-    }
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
-        if (!(paramRecyclerView instanceof StaggeredGridLayoutManager)) {
-          break label79;
-        }
-        if (((StaggeredGridLayoutManager)paramRecyclerView).getOrientation() != 1) {
-          break;
-        }
-      } while (paramInt1 >= paramInt3 - paramInt3 % paramInt2);
-      return false;
-    } while ((paramInt1 + 1) % paramInt2 == 0);
-    return false;
-    label79:
-    return false;
-  }
-  
-  protected String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public uyz a(ViewGroup paramViewGroup, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new uyz(new QCircleDefaultFeedItemView(getContext(), paramInt));
-    case 1001: 
-    case 1002: 
-    case 1003: 
-      paramViewGroup = new QCircleTimeLineFeedItemView(getContext(), paramInt);
-      paramViewGroup.setReportBean(a());
-      return new uyz(paramViewGroup);
-    }
-    paramViewGroup = new QCircleGridFeedItemView(getContext(), paramInt);
-    paramViewGroup.setTag(2131376495, Boolean.valueOf(true));
-    paramViewGroup.setReportBean(a());
-    return new uyz(paramViewGroup);
+    jdField_a_of_type_Uyy = null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a(paramInt);
-    }
-  }
-  
-  public void a(ExtraTypeInfo paramExtraTypeInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "setTimeLineVideoPlayState canPlay:" + paramBoolean);
-    if (this.jdField_a_of_type_Vsc == null)
+    QLog.d("QCirclePopupWindowHelper", 1, "release");
+    if (this.jdField_a_of_type_AndroidOsCountDownTimer != null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "playerHelper is null");
+      this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
+      this.jdField_a_of_type_AndroidOsCountDownTimer = null;
+    }
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    }
+    jdField_a_of_type_Uyy = null;
+  }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    if ((paramContext == null) || (paramView == null)) {}
+    while (!uyk.a().f()) {
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new QCircleTimeLineAndGridFeedAdapter.1(this, paramBoolean), 500L);
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new QCirclePopupWindowHelper.1(this, paramContext, paramView), 1000L);
   }
   
-  public void c(int paramInt)
+  public void a(Context paramContext, String paramString)
   {
-    this.b = paramInt;
-  }
-  
-  public int getItemCount()
-  {
-    return this.mDataList.size();
-  }
-  
-  protected void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int i = this.b;
-    int j = paramRecyclerView.getAdapter().getItemCount();
-    int k = paramRecyclerView.getChildLayoutPosition(paramView);
-    if ((k == 0) && (i == 1))
-    {
-      paramRect.set(0, zby.b(getContext(), 24.0F), 0, zby.b(getContext(), 1.0F));
+    if (paramContext == null) {
       return;
     }
-    if (b(paramRecyclerView, k, i, j))
+    try
     {
-      paramRect.set(0, 0, zby.b(getContext(), 1.0F), 0);
+      a();
+      TextView localTextView = new TextView(paramContext);
+      localTextView.setTextColor(paramContext.getResources().getColor(2131167302));
+      localTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130844127));
+      localTextView.setPadding(zft.b(paramContext, 12.0F), zft.b(paramContext, 8.0F), zft.b(paramContext, 12.0F), zft.b(paramContext, 8.0F));
+      localTextView.setText(paramString);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localTextView, -2, -2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(localTextView, 17, 0, 0);
+      this.jdField_a_of_type_AndroidOsCountDownTimer = new uyz(this, 3000L, 3000L, paramContext);
+      this.jdField_a_of_type_AndroidOsCountDownTimer.start();
       return;
     }
-    if (a(paramRecyclerView, k, i, j))
+    catch (Exception paramContext)
     {
-      paramRect.set(0, 0, 0, zby.b(getContext(), 1.0F));
-      return;
+      QLog.e("QCirclePopupWindowHelper", 1, "showRecommendAnimation error" + paramContext.getMessage());
+      paramContext.printStackTrace();
     }
-    paramRect.set(0, 0, zby.b(getContext(), 1.0F), zby.b(getContext(), 1.0F));
   }
   
-  public int getItemViewType(int paramInt)
+  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, uze paramuze, blkc paramblkc)
   {
-    if ((this.mDataList != null) && (this.mDataList.size() > paramInt))
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramuze);
+    paramuze = new bhuk();
+    if (uzg.a(paramStFeed.poster.id.get()))
     {
-      if (this.b == 1)
-      {
-        FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.mDataList.get(paramInt);
-        Calendar localCalendar = Calendar.getInstance();
-        localCalendar.setTimeInMillis(localStFeed.createTime.get() * 1000L);
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "Date:" + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5));
-        int i = localCalendar.get(1);
-        int j = localCalendar.get(6);
-        if (paramInt > 0)
-        {
-          localCalendar.setTimeInMillis(((FeedCloudMeta.StFeed)this.mDataList.get(paramInt - 1)).createTime.get() * 1000L);
-          paramInt = localCalendar.get(1);
-          int k = localCalendar.get(6);
-          if ((this.c != i) && (paramInt != i)) {
-            return 1001;
-          }
-          if (j != k) {
-            return 1002;
-          }
-          return 1003;
-        }
-        if (this.c != i) {
-          return 1001;
-        }
-        return 1002;
-      }
-      if (this.b == 3) {
-        return 2001;
+      if (paramStComment.typeFlag.get() == 0) {
+        paramuze.a(2131373989, BaseApplicationImpl.getContext().getString(2131697257));
       }
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 2, "getItemViewType()  return 0");
-    return 0;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 1;
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    super.onActivityDestroyed(paramActivity);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.e();
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity)
-  {
-    super.onActivityPaused(paramActivity);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.d();
-    }
-  }
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    super.onActivityResumed(paramActivity);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.c();
-    }
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    a(paramRecyclerView);
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.mDataList != null) && ((paramViewHolder instanceof uyz)))
+    else
     {
-      uyz localuyz = (uyz)paramViewHolder;
-      this.mDataList.get(paramInt);
-      localuyz.a(this.mDataList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo, (uzb)this.mInteractor);
+      paramuze.a(2131373986, BaseApplicationImpl.getContext().getString(2131697254));
+      if ((!uzg.a(paramStFeed.poster.id.get())) && (!uzg.a((FeedCloudMeta.StUser)paramStComment.postUser.get()))) {
+        break label252;
+      }
+      paramuze.a(2131373987, BaseApplicationImpl.getContext().getString(2131697255));
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "onBindViewHolder:" + paramInt + "  " + paramViewHolder + "  " + this);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.jdField_a_of_type_Vsg != null)
+    for (;;)
     {
-      removeOnScrollListener(this.jdField_a_of_type_Vsg);
-      this.jdField_a_of_type_Vsg.e();
+      paramStFeed = new uzc(this);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bhkx.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramuze, paramStFeed));
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(paramblkc);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(paramView);
+      return;
+      if (paramStComment.typeFlag.get() != 1) {
+        break;
+      }
+      paramuze.a(2131373985, BaseApplicationImpl.getContext().getString(2131697253));
+      break;
+      label252:
+      paramuze.a(2131373988, BaseApplicationImpl.getContext().getString(2131697256));
     }
   }
   
-  public void onInitBlock(Bundle paramBundle) {}
-  
-  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StReply paramStReply, uze paramuze, blkc paramblkc)
   {
-    super.onViewAttachedToWindow(paramViewHolder);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.a(paramViewHolder);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramuze);
+    paramuze = new bhuk();
+    paramuze.a(2131373986, BaseApplicationImpl.getContext().getString(2131697254));
+    if ((uzg.a(paramStFeed.poster.id.get())) || (uzg.a((FeedCloudMeta.StUser)paramStReply.postUser.get()))) {
+      paramuze.a(2131373987, BaseApplicationImpl.getContext().getString(2131697255));
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "onViewAttachedToWindow:" + paramViewHolder.getAdapterPosition() + "  " + paramViewHolder + "  " + this);
+    for (;;)
+    {
+      paramStFeed = new uzd(this);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bhkx.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramuze, paramStFeed));
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(paramblkc);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(paramView);
+      return;
+      paramuze.a(2131373988, BaseApplicationImpl.getContext().getString(2131697256));
+    }
   }
   
-  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
+  public void a(View paramView, uze paramuze, blkc paramblkc)
   {
-    super.onViewDetachedFromWindow(paramViewHolder);
-    if (this.jdField_a_of_type_Vsg != null) {
-      this.jdField_a_of_type_Vsg.b(paramViewHolder);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramuze);
+    paramuze = new bhuk();
+    paramuze.a(2131373986, BaseApplicationImpl.getContext().getString(2131697254));
+    uzb localuzb = new uzb(this);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bhkx.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramuze, localuzb));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(paramblkc);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(paramView);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(Context paramContext, View paramView, String paramString)
+  {
+    if ((paramContext == null) || (paramView == null)) {
+      return false;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "onViewDetachedFromWindow:" + paramViewHolder.getAdapterPosition() + "  " + paramViewHolder + "  " + this);
+    try
+    {
+      a();
+      paramContext = new QCirclePushTipView(paramContext);
+      paramContext.setText(paramString);
+      paramContext.measure(0, 0);
+      int i = paramContext.getMeasuredWidth();
+      int j = paramContext.getMeasuredHeight();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext, -2, -2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
+      paramContext = new int[2];
+      paramView.getLocationOnScreen(paramContext);
+      QLog.i("QCirclePopupWindowHelper", 1, "popupWidth" + i + " popupHeight" + j);
+      QLog.i("QCirclePopupWindowHelper", 1, "location x:" + paramContext[0] + "    loacation y:" + paramContext[1]);
+      int k = paramView.getWidth() / 2;
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 8388661, zft.b(paramView.getContext(), 10.0F), paramContext[1] - j);
+      QLog.i("QCirclePopupWindowHelper", 1, "x:" + (paramContext[0] + paramView.getWidth() / 2 - i / 2) + "    y:" + (paramContext[1] - j));
+      this.jdField_a_of_type_AndroidOsCountDownTimer = new uza(this, 3000L, 3000L);
+      this.jdField_a_of_type_AndroidOsCountDownTimer.start();
+      return true;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("QCirclePopupWindowHelper", 1, "showRecommendAnimation error" + paramContext.getMessage());
+      paramContext.printStackTrace();
+    }
+    return false;
   }
 }
 

@@ -1,16 +1,47 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aymf
-  implements ValueAnimator.AnimatorUpdateListener
+  extends BaseAdapter
 {
-  public aymf(ScanIconAnimateView paramScanIconAnimateView) {}
+  private List<PicInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aymf(List<PicInfo> paramList, int paramInt)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    int j = i * 6;
+    int i = j;
+    while ((i < paramInt.size()) && (i < j + 6))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
+      i += 1;
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = this.jdField_a_of_type_Aykx.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

@@ -1,27 +1,126 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class alyj
-  implements Animation.AnimationListener
+class alyj
+  implements INetInfoHandler
 {
-  public alyj(SpecailCareListActivity paramSpecailCareListActivity, alyv paramalyv) {}
+  alyj(alyi paramalyi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_Alyv.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131368138);
-    paramAnimation.setMargins(0, (int)(36.0F * SpecailCareListActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(30.0F * SpecailCareListActivity.j(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Alyv.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Alyv.a.setVisibility(0);
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (alyi.a(this.a) == null) {
+        return;
+      }
+      if (alyi.a(this.a).a == null) {
+        return;
+      }
+    }
+    alyi localalyi2 = this.a;
+    if (!alyi.a(this.a).c) {}
+    for (;;)
+    {
+      localalyi2.a(bool, true);
+      return;
+      bool = false;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onNetMobile2Wifi(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(alyi.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (alyi.a(this.a) == null) {
+        return;
+      }
+      if (alyi.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    alyi.a(this.a);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onNetNone2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(alyi.a(), 2, "onNetNone2Mobile ");
+    }
+    synchronized (this.a)
+    {
+      if (alyi.a(this.a) == null) {
+        return;
+      }
+      if (alyi.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    alyi.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(alyi.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (alyi.a(this.a) == null) {
+        return;
+      }
+      if (alyi.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    alyi.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(alyi.a(), 2, "onNetWifi2Mobile, need restore:  ");
+    }
+    synchronized (this.a)
+    {
+      if (alyi.a(this.a) == null) {
+        return;
+      }
+      if (alyi.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    alyi.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (alyi.a(this.a) == null) {
+        return;
+      }
+      if (alyi.a(this.a).a == null) {
+        return;
+      }
+    }
+    alyi localalyi2 = this.a;
+    if (!alyi.a(this.a).c) {}
+    for (;;)
+    {
+      localalyi2.a(bool, true);
+      return;
+      bool = false;
+    }
+  }
 }
 
 

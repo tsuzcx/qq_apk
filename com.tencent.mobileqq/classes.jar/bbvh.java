@@ -1,8 +1,19 @@
-import android.view.View;
-
-public abstract interface bbvh
+class bbvh
+  extends aoho
 {
-  public abstract View a();
+  bbvh(bbvd parambbvd) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject)
+  {
+    int j = ((Integer)paramObject).intValue();
+    paramObject = gm.a();
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      paramObject.b(i, j);
+      return;
+    }
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.imcore.message.ext.codec.decoder.pbelement;
 
-import acyr;
+import adhn;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import msf.msgcomm.msg_comm.MsgHead;
 public class LifeOnlineElemDecoder$2
   implements Runnable
 {
-  public LifeOnlineElemDecoder$2(acyr paramacyr, MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  public LifeOnlineElemDecoder$2(adhn paramadhn, MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
   
   public void run()
   {

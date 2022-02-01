@@ -1,13 +1,13 @@
 package com.tencent.open.downloadnew;
 
-import bivr;
+import bjwq;
 
 public final class DownloadApi$9
   implements Runnable
 {
   public void run()
   {
-    bivr.a().c();
+    bjwq.a().c();
   }
 }
 

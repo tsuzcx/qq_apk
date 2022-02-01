@@ -1,40 +1,25 @@
-import NS_COMM.COMM.StCommonExt;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import mqq.app.AppRuntime;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class aabz
-  implements View.OnClickListener
+public class aabz
+  extends RecyclerView.ViewHolder
 {
-  aabz(aaby paramaaby) {}
+  private final FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
+  public aabz(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder(zzy.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (this.a.a() != null) {}
-    for (;;)
-    {
-      try
-      {
-        localStringBuilder.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
-        aaxb.b("auth_follow", "clk_more", 0, 0, new String[0]);
-        aaae.a(localStringBuilder.toString());
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-        continue;
-      }
-      QLog.d(aaby.a, 0, "jump more recommend H5 page with no attach info!");
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372350));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369594));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380137));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366733));
   }
 }
 

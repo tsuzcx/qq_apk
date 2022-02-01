@@ -1,19 +1,37 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class axwx
-  extends bfss
+  implements auuj
 {
-  public axwx(NearbyProfileFragment paramNearbyProfileFragment) {}
+  axwx(axww paramaxww) {}
   
-  public void a(long paramLong)
+  public void a(String paramString, long paramLong)
   {
-    if (paramLong > 0L)
+    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
+    do
     {
-      NearbyProfileFragment.a(this.a).setText(String.format(anni.a(2131706106), new Object[] { Long.valueOf(paramLong) }));
       return;
-    }
-    NearbyProfileFragment.a(this.a).setText(anni.a(2131706068));
+      localObject = aumo.a().b() + paramString;
+      if (!new File((String)localObject).exists()) {
+        break;
+      }
+      auuf.a((String)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d(axww.a(this.a), 2, "UniformDownloadUtil.installAPK,savePath=" + (String)localObject);
+    return;
+    axww.a(this.a).post(new NearbyTribeAppController.2.1(this));
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("_filename_from_dlg", paramString);
+    ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
+    ((Bundle)localObject).putString("_notify_name_dialog", anzj.a(2131706270));
+    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
+    QLog.e(axww.a(this.a), 1, "这里已经下架，如果依然发现该log，异常case");
+    aure.a().a("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
   }
 }
 

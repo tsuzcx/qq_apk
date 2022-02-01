@@ -1,14 +1,19 @@
-import android.animation.ValueAnimator;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-public abstract interface yzm
+public class yzm
+  implements xvt
 {
-  public abstract void a(ValueAnimator paramValueAnimator);
+  public yzm(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public abstract void b(ValueAnimator paramValueAnimator);
-  
-  public abstract void c(ValueAnimator paramValueAnimator);
-  
-  public abstract void d(ValueAnimator paramValueAnimator);
+  public void a_(xvo paramxvo)
+  {
+    yuk.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.report;
 
-import bgln;
-import blru;
+import bhlo;
+import bmsw;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.mini.appbrand.utils.ThreadPools;
 import com.tencent.mobileqq.mini.tfs.TaskExecutionStatics;
 import com.tencent.mobileqq.mini.tfs.TaskStaticsVisualizer;
 import com.tencent.mobileqq.mini.tfs.TaskStaticsVisualizer.TaskVisitor;
-import com.tencent.mobileqq.triton.sdk.statics.TraceStatistics;
+import com.tencent.mobileqq.triton.statistic.TraceStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -25,7 +25,7 @@ import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/report/MiniGameBeaconReport;", "", "()V", "BEACON_MAX_EVENT_NAME_LENGTH", "", "JANK_TRACE_TOP_RECORDS_COUNT", "MINI_GAME_BEACON_KEY", "", "getTaskName", "stack", "", "Lcom/tencent/mobileqq/mini/tfs/TaskExecutionStatics;", "init", "", "report", "eventCode", "params", "", "reportJankTraceRecords", "statistics", "Lcom/tencent/mobileqq/triton/sdk/statics/TraceStatistics;", "appid", "isSdk", "", "isFirstFrame", "reportLaunchStatics", "statics", "ExclusiveVisitor", "ParamConfigVisitor", "ParamVisitor", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/report/MiniGameBeaconReport;", "", "()V", "BEACON_MAX_EVENT_NAME_LENGTH", "", "JANK_TRACE_TOP_RECORDS_COUNT", "MINI_GAME_BEACON_KEY", "", "getTaskName", "stack", "", "Lcom/tencent/mobileqq/mini/tfs/TaskExecutionStatics;", "init", "", "report", "eventCode", "params", "", "reportJankTraceRecords", "statistics", "Lcom/tencent/mobileqq/triton/statistic/TraceStatistics;", "appid", "isSdk", "", "isFirstFrame", "reportLaunchStatics", "statics", "ExclusiveVisitor", "ParamConfigVisitor", "ParamVisitor", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class MiniGameBeaconReport
 {
   private static final int BEACON_MAX_EVENT_NAME_LENGTH = 59;
@@ -87,7 +87,7 @@ public final class MiniGameBeaconReport
       localMap = MapsKt.toMutableMap(paramMap);
       if (localMap != null)
       {
-        paramMap = blru.a();
+        paramMap = bmsw.a();
         Intrinsics.checkExpressionValueIsNotNull(paramMap, "QUA.getQUA3()");
         localMap.put("qua", paramMap);
         paramMap = BaseApplicationImpl.getApplication();
@@ -99,7 +99,7 @@ public final class MiniGameBeaconReport
           if (paramMap != null)
           {
             localMap.put("uid", paramMap);
-            localMap.put("perfLevel", String.valueOf(bgln.f()));
+            localMap.put("perfLevel", String.valueOf(bhlo.f()));
           }
         }
       }

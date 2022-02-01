@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="false" android:drawable="@drawable/eqv" />
-    <item android:drawable="@drawable/eqx" />
-</selector>
+    <size android:height="2.0dip" android:width="@dimen/n5" />
+    <solid android:color="@android:color/transparent" />
+</shape>

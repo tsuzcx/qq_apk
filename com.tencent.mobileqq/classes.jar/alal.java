@@ -1,104 +1,90 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class alal
-  implements alaf
+public class alal
 {
-  private final int jdField_a_of_type_Int;
-  @Nullable
-  private alah jdField_a_of_type_Alah;
-  @NonNull
-  private final Intent jdField_a_of_type_AndroidContentIntent;
-  @NonNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  @NonNull
-  private final String b;
-  @NonNull
-  private final String c;
-  @Nullable
-  private final String d;
-  @NonNull
-  private final String e;
-  
-  public alal(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull String paramString4, @NonNull Intent paramIntent, @NonNull String paramString5, int paramInt)
+  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.e = paramString5;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(@Nullable alah paramalah)
-  {
-    this.jdField_a_of_type_Alah = paramalah;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Alah == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
-  }
-  
-  public void onEnter()
-  {
-    if (this.jdField_a_of_type_Alah == null) {}
-    QQAppInterface localQQAppInterface;
-    BaseActivity localBaseActivity;
-    do
-    {
-      do
-      {
-        return;
-        localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQQAppInterface == null);
-      localBaseActivity = BaseActivity.sTopActivity;
-    } while ((localBaseActivity == null) || (localBaseActivity.isFinishing()));
+    int i = paramInt;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
     try
     {
-      Class localClass = Class.forName(this.jdField_b_of_type_JavaLangString).asSubclass(Activity.class);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("banner_fromBanner", true);
-      blfq localblfq = new blfq(this.jdField_a_of_type_Int);
-      localblfq.d = this.d;
-      localblfq.e = this.jdField_a_of_type_JavaLangString;
-      localblfq.jdField_a_of_type_JavaLangClass = localClass;
-      localblfq.jdField_b_of_type_JavaLangString = this.c;
-      localblfq.jdField_a_of_type_JavaLangString = this.e;
-      localblfq.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
-      localblfq.jdField_b_of_type_Int = -1;
-      blfh.a(localBaseActivity, localblfq);
-      akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
-      return;
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
+      return i;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      QLog.e("Q.recent.banner", 1, "return to plugin error, can not find the ckass " + this.jdField_b_of_type_JavaLangString);
-    }
+    catch (Throwable paramJSONObject) {}
+    return paramInt;
   }
   
-  public void onOverride() {}
+  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  {
+    String str = paramString;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
+      return str;
+    }
+    catch (Throwable paramJSONObject) {}
+    return paramString;
+  }
+  
+  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONArray localJSONArray = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONArray;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONObject localJSONObject = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONObject;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
+  }
 }
 
 

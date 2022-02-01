@@ -1,13 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahhl
-  extends afwr
+final class ahhl
+  implements ahky
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public ahhl(ahhh paramahhh) {}
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
+      return 59;
+    }
+    return 60;
+  }
 }
 
 

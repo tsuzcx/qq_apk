@@ -1,32 +1,21 @@
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import java.util.Map;
 
 class aksq
-  implements EIPCOnGetConnectionListener
+  implements akso
 {
   aksq(aksp paramaksp) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void a(long paramLong, float paramFloat, String paramString)
   {
-    if (paramEIPCConnection != null) {
-      aksp.a(this.a, paramEIPCConnection.procName);
-    }
-    aksp.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
-    }
+    aksp.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
+    aksp.a(this.a).a(paramLong, paramFloat, paramString);
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public void b(long paramLong)
   {
-    if (paramEIPCConnection != null) {
-      aksp.a(this.a, paramEIPCConnection.procName);
-    }
-    aksp.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
-    }
+    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
+    aksp.a(this.a).b(paramLong);
   }
 }
 

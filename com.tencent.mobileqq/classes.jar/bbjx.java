@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.mobileqq.search.model.BusinessGroupWord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.HashMap;
 
 public class bbjx
-  extends anxw
+  extends bbjz
 {
-  public bbjx(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  public long a = 0L;
+  public long b;
   
-  public void a(int paramInt, String paramString)
+  public bbjx()
   {
-    super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
-    }
+    this.jdField_b_of_type_Long = -1L;
   }
   
-  public void a(int paramInt, List<BusinessGroupWord> paramList)
+  public HashMap<String, String> a(String paramString)
   {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
-    HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    if ("ShortVideo.FullscreenPreview".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_duration", this.a + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
+      return paramString;
     }
+    return null;
   }
 }
 

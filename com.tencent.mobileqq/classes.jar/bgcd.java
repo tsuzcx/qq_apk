@@ -1,6 +1,16 @@
-public abstract interface bgcd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+
+public class bgcd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public bgcd(ReciteFragment paramReciteFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ReciteFragment.a(this.a);
+  }
 }
 
 

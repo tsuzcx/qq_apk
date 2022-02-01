@@ -1,24 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.Comparator;
 
 public class poy
-  extends BroadcastReceiver
+  implements Comparator<TabChannelCoverInfo>
 {
-  public poy(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
+  public poy(ChannelCoverInfoModule.4 param4) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(TabChannelCoverInfo paramTabChannelCoverInfo1, TabChannelCoverInfo paramTabChannelCoverInfo2)
   {
-    if (this.a.getActivity() != null)
-    {
-      if (ReadInJoyDailyFragment.a(this.a) != null) {
-        ReadInJoyDailyFragment.a(this.a).i();
-      }
-      ReadInJoyDailyFragment.a(this.a, true);
-      this.a.getActivity().finish();
-    }
+    return paramTabChannelCoverInfo1.seq - paramTabChannelCoverInfo2.seq;
   }
 }
 

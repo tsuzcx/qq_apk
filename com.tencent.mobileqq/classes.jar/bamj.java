@@ -1,6 +1,18 @@
-public abstract interface bamj
+public class bamj
 {
-  public abstract void a();
+  public int a;
+  public final bamo a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public bamj(int paramInt)
+  {
+    this.jdField_a_of_type_Bamo = new bamo();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bamo.jdField_a_of_type_Int = -2147483648;
+  }
 }
 
 

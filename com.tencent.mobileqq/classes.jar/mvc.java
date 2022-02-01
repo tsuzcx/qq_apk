@@ -1,18 +1,6 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.av.widget.shimmer.ShimmerTextView;
-
-public class mvc
-  extends AccessibilityDelegateCompat
+public abstract interface mvc
 {
-  public mvc(ShimmerTextView paramShimmerTextView) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setVisibleToUser(false);
-  }
+  public abstract int a(String paramString1, String paramString2);
 }
 
 

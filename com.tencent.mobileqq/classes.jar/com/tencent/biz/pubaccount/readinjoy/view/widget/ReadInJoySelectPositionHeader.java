@@ -6,15 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import tis;
-import tit;
+import szm;
+import szn;
 
 public class ReadInJoySelectPositionHeader
   extends RelativeLayout
 {
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private tit jdField_a_of_type_Tit;
+  private szn jdField_a_of_type_Szn;
   private TextView b;
   
   public ReadInJoySelectPositionHeader(Context paramContext)
@@ -37,11 +37,11 @@ public class ReadInJoySelectPositionHeader
   
   private void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131560252, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377162));
-    this.b = ((TextView)localView.findViewById(2131367565));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367566));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tis(this, paramContext));
+    View localView = LayoutInflater.from(paramContext).inflate(2131560264, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377302));
+    this.b = ((TextView)localView.findViewById(2131367634));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367635));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new szm(this, paramContext));
   }
   
   public void setGPSCity(String paramString)
@@ -49,9 +49,9 @@ public class ReadInJoySelectPositionHeader
     this.b.setText(paramString);
   }
   
-  public void setSelectCityListener(tit paramtit)
+  public void setSelectCityListener(szn paramszn)
   {
-    this.jdField_a_of_type_Tit = paramtit;
+    this.jdField_a_of_type_Szn = paramszn;
   }
   
   public void setSelectedCity(String paramString)

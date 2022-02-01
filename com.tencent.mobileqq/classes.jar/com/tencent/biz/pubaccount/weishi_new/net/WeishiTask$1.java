@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.weishi_new.net;
 
-import ujs;
+import ukm;
 
 public class WeishiTask$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Ujs.a(this.jdField_a_of_type_Ujh);
+    this.jdField_a_of_type_Ukm.a(this.jdField_a_of_type_Ukb);
   }
 }
 

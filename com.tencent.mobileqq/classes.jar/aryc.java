@@ -1,24 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 
-class aryc
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aryc
+  implements Parcelable.Creator<SpecialCareInfo>
 {
-  aryc(aryb paramaryb, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public SpecialCareInfo a(Parcel paramParcel)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (aryb.a(this.jdField_a_of_type_Aryb).getParent() != null) {
-      aryb.a(this.jdField_a_of_type_Aryb).getParent().requestLayout();
-    }
+    return new SpecialCareInfo(paramParcel);
+  }
+  
+  public SpecialCareInfo[] a(int paramInt)
+  {
+    return new SpecialCareInfo[paramInt];
   }
 }
 

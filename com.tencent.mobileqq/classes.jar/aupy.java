@@ -1,9 +1,15 @@
-import java.io.Reader;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public abstract class aupy
-  extends aupx
+public class aupy
+  extends bhme
 {
-  protected Reader a;
+  public aupy(SendBottomBar paramSendBottomBar, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.a(this.jdField_a_of_type_Int);
+  }
 }
 
 

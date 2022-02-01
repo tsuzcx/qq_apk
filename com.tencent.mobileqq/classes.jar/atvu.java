@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-final class atvu
-  implements atve
+public abstract interface atvu
 {
-  atvu(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  public abstract void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
   
-  public void a()
-  {
-    atvo.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void b() {}
+  public abstract void a(String paramString);
 }
 
 

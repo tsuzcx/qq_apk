@@ -1,34 +1,18 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class akeb
-  extends aywi
+  implements View.OnTouchListener
 {
-  public akeb(RebindActivity paramRebindActivity) {}
+  public akeb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.b();
-    if (paramBoolean)
-    {
-      paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
-      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
-      paramBundle.putExtra("keyReqBindMode", 1);
-      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
-      paramBundle.addFlags(67108864);
-      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
-      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
-      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
-      this.a.startActivityForResult(paramBundle, 1);
-      return;
-    }
-    this.a.a(2131717326);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

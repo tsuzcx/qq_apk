@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import athc;
-import atxq;
+import atyw;
+import aupl;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 
 class QfileEditBottomBar$1$1$1
@@ -12,10 +12,10 @@ class QfileEditBottomBar$1$1$1
   public void run()
   {
     QfileEditBottomBar.a(this.a.a.a).h();
-    QfileEditBottomBar.a(this.a.a.a).b(athc.b());
-    QfileEditBottomBar.a(this.a.a.a).a(athc.a());
-    QfileEditBottomBar.a(this.a.a.a).c(athc.d());
-    athc.b();
+    QfileEditBottomBar.a(this.a.a.a).b(atyw.b());
+    QfileEditBottomBar.a(this.a.a.a).a(atyw.a());
+    QfileEditBottomBar.a(this.a.a.a).c(atyw.d());
+    atyw.b();
     QfileEditBottomBar.a(this.a.a.a).f(false);
     QfileEditBottomBar.a(this.a.a.a).b();
   }

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
-import sza;
-import szb;
+import spz;
+import sqa;
 
 public class WebFastImageViewCreator$ImageViewHolder$1$1
   implements Runnable
 {
-  public WebFastImageViewCreator$ImageViewHolder$1$1(szb paramszb, ImageData paramImageData) {}
+  public WebFastImageViewCreator$ImageViewHolder$1$1(sqa paramsqa, ImageData paramImageData) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Szb.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataImageData, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataImageData, true);
+    this.jdField_a_of_type_Sqa.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataImageData, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataImageData, true);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import adxt;
-import bglp;
-import bgpa;
+import aegx;
+import bhlq;
+import bhpc;
 
 public class ChatSettingForTroop$51
   implements Runnable
@@ -19,11 +19,11 @@ public class ChatSettingForTroop$51
     do
     {
       return;
-      this.this$0.a = bglp.a(this.this$0, 230);
+      this.this$0.a = bhlq.a(this.this$0, 230);
       this.this$0.a.setMessage(this.a);
-      adxt localadxt = new adxt(this);
-      this.this$0.a.setPositiveButton(2131690912, localadxt);
-      this.this$0.a.setNegativeButton(2131690582, localadxt);
+      aegx localaegx = new aegx(this);
+      this.this$0.a.setPositiveButton(2131690912, localaegx);
+      this.this$0.a.setNegativeButton(2131690580, localaegx);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

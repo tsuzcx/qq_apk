@@ -1,17 +1,13 @@
-class ahzg
-  implements bcpg
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class ahzg
+  implements ahyf
 {
-  ahzg(ahzf paramahzf) {}
-  
-  public void a()
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    ahzf.a(this.a);
-    this.a.I();
-  }
-  
-  public void b()
-  {
-    this.a.I();
+    paramahed.f(paramahfq.b);
   }
 }
 

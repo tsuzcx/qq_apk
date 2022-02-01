@@ -1,28 +1,6 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
-public class onv
-  extends onp
+public abstract interface onv
 {
-  public int a(BaseData paramBaseData)
-  {
-    int i = -1;
-    if ((paramBaseData instanceof ProteusBannerBigPicItemData)) {
-      i = opz.a((ProteusBannerBigPicItemData)paramBaseData);
-    }
-    return i;
-  }
-  
-  protected syj a(View paramView, BaseData paramBaseData)
-  {
-    return new onw(this, paramView, paramBaseData, this.a);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return (paramBaseData != null) && (paramBaseData.t == 10);
-  }
+  public abstract void a(int paramInt);
 }
 
 

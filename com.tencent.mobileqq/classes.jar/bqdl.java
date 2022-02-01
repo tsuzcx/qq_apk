@@ -1,23 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-public class bqdl
-  implements Animator.AnimatorListener
+public final class bqdl
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  public bqdl(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    QIMCameraCaptureButtonLayout.a(this.a).setVisibility(8);
+    return new EditTakeGifSource(paramParcel);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public EditTakeGifSource[] a(int paramInt)
+  {
+    return new EditTakeGifSource[paramInt];
+  }
 }
 
 

@@ -1,131 +1,116 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
 
 public class amjh
+  extends anyu
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public amjh(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public String a()
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (this.jdField_a_of_type_Int == 6) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (this.jdField_b_of_type_JavaLangString.endsWith("/")) {
-        return this.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_Int + "/" + this.jdField_a_of_type_JavaLangString;
-      }
-      return this.jdField_b_of_type_JavaLangString + "/" + this.jdField_b_of_type_Int + "/" + this.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    return (new File(b()).exists()) && (b());
-  }
-  
-  public String b()
-  {
-    if (8 == this.jdField_a_of_type_Int) {
-      return ancb.h + this.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_JavaLangString;
-    }
-    return ancb.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    if ((ApolloUtil.c(b())) && (this.jdField_a_of_type_Int == 8)) {
-      return ApolloUtil.c(ancb.h + this.jdField_b_of_type_Int + File.separator + "room.bin");
-    }
-    return false;
-  }
-  
-  public String c()
-  {
+    int i = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("IdolRscItem", 2, "getFaceDataJson this:" + this);
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean);
     }
-    if (this.jdField_a_of_type_Int == 6)
+    Object localObject;
+    boolean bool;
+    if (!paramBoolean)
     {
-      Object localObject1 = bita.d(this.jdField_a_of_type_JavaLangString);
-      localObject1 = new File(ancb.j + (String)localObject1 + File.separator + "face.json");
-      if (((File)localObject1).exists()) {
-        try
-        {
-          localObject1 = bgmg.b((File)localObject1);
-          return localObject1;
-        }
-        catch (Exception localException1)
-        {
-          QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException1);
-        }
+      localObject = this.a;
+      FormSwitchItem localFormSwitchItem = QQSpecialCareSettingActivity.a(this.a);
+      if (!QQSpecialCareSettingActivity.a(this.a).a())
+      {
+        bool = true;
+        ((QQSpecialCareSettingActivity)localObject).a(localFormSwitchItem, bool);
       }
+    }
+    else
+    {
+      this.a.a.sendEmptyMessage(8194);
+      localObject = this.a.a.obtainMessage(8195);
+      if (paramBoolean) {
+        i = 2;
+      }
+      ((Message)localObject).arg1 = i;
+      if (!paramBoolean) {
+        break label194;
+      }
+      if (!Boolean.valueOf(((boolean[])(boolean[])paramArrayOfObject[2])[0]).booleanValue()) {
+        break label188;
+      }
+      i = 2131698424;
     }
     for (;;)
     {
-      return "";
-      Object localObject2 = new File(ancb.f + this.jdField_b_of_type_Int + File.separator + "blendshape.json");
-      if (((File)localObject2).exists())
-      {
-        try
-        {
-          localObject2 = bgmg.b((File)localObject2);
-          return localObject2;
-        }
-        catch (Exception localException2)
-        {
-          QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException2);
-        }
-        continue;
-        Object localObject3 = new File(ancb.f + this.jdField_b_of_type_Int + File.separator + "face.json");
-        if (((File)localObject3).exists())
-        {
-          try
-          {
-            localObject3 = bgmg.b((File)localObject3);
-            return localObject3;
-          }
-          catch (Exception localException3)
-          {
-            QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException3);
-          }
-        }
-        else
-        {
-          Object localObject4 = new File(ancb.f + this.jdField_b_of_type_Int + File.separator + "blendshape.json");
-          if (((File)localObject4).exists()) {
-            try
-            {
-              localObject4 = bgmg.b((File)localObject4);
-              return localObject4;
-            }
-            catch (Exception localException4)
-            {
-              QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException4);
-            }
-          }
-        }
+      ((Message)localObject).arg2 = i;
+      this.a.a.sendMessage((Message)localObject);
+      QQSpecialCareSettingActivity.b(this.a);
+      bdwt.c(this.a.app);
+      return;
+      bool = false;
+      break;
+      label188:
+      i = 2131698423;
+      continue;
+      label194:
+      if (((boolean[])(boolean[])paramArrayOfObject[2])[0] != 0) {
+        i = 2131698427;
+      } else {
+        i = 2131698419;
       }
     }
   }
   
-  public String toString()
+  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    StringBuffer localStringBuffer = new StringBuffer("IdolRscItem{");
-    localStringBuffer.append("mResType=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mDownFileName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mId=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", mDownPrefixxUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mCacheJsonName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
+    }
+    FormSwitchItem localFormSwitchItem;
+    if (!paramBoolean)
+    {
+      paramArrayOfObject = this.a;
+      localFormSwitchItem = QQSpecialCareSettingActivity.b(this.a);
+      if (QQSpecialCareSettingActivity.b(this.a).a()) {
+        break label77;
+      }
+    }
+    label77:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
+      QQSpecialCareSettingActivity.b(this.a);
+      return;
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
   }
 }
 

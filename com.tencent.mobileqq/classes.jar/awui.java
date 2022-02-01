@@ -1,22 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awui
-  extends AnimatorListenerAdapter
+class awui
+  implements View.OnClickListener
 {
-  public awui(MultiCardFragment paramMultiCardFragment) {}
+  awui(awud paramawud, View.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

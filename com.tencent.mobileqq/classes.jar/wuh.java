@@ -1,31 +1,31 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.List;
 
-public class wuh
-  extends QQUIEventReceiver<wtu, wwx>
+class wuh
+  implements woy<wui, wuj>
 {
-  public wuh(@NonNull wtu paramwtu)
-  {
-    super(paramwtu);
-  }
+  private wuh(wuf paramwuf) {}
   
-  public void a(@NonNull wtu paramwtu, @NonNull wwx paramwwx)
+  public void a(@NonNull wui paramwui, @Nullable wuj paramwuj, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwx.jdField_a_of_type_JavaUtilList != null) && (!paramwwx.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      paramwtu.a.b(paramwwx);
-    }
-    while (!QLog.isColorLevel()) {
+    if ((paramwuj != null) && (paramwuj.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
+    {
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramwuj.jdField_a_of_type_JavaUtilList);
+      yuk.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramwuj.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramwuj.jdField_a_of_type_Boolean), paramwuj.jdField_a_of_type_JavaLangString });
+      if ((paramwuj.jdField_a_of_type_Boolean) || (paramwuj.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        yuk.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramwuj.b) });
+        this.a.a(true, paramwuj.b);
+        return;
+      }
+      this.a.c = paramwuj.jdField_a_of_type_JavaLangString;
+      this.a.c();
       return;
     }
-    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramwwx.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwx.class;
+    yuk.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
 }
 

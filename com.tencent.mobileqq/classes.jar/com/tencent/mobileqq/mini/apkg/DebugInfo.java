@@ -65,6 +65,11 @@ public class DebugInfo
     this.wsUrl = paramString;
   }
   
+  public boolean valid()
+  {
+    return (!TextUtils.isEmpty(this.roomId)) && (!TextUtils.isEmpty(this.wsUrl));
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.roomId);

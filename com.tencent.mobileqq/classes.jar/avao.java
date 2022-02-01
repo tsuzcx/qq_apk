@@ -1,9 +1,20 @@
-public class avao
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+
+class avao
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  avao(avan paramavan) {}
+  
+  public void onGlobalLayout()
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    avan.a(this.a);
+  }
 }
 
 

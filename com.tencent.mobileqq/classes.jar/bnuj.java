@@ -1,8 +1,26 @@
-public abstract interface bnuj
+import android.content.Context;
+import android.opengl.GLSurfaceView.Renderer;
+import android.view.ViewGroup;
+
+public abstract class bnuj
+  implements GLSurfaceView.Renderer
 {
-  public abstract void a();
+  public Context a;
+  protected ViewGroup a;
   
-  public abstract void a(String paramString);
+  public bnuj(Context paramContext, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

@@ -1,42 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.ark.image.ChooseImageIPCModule.2;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class aqen
-  implements aqfa
+public class aqen
+  extends biht
 {
-  aqen(aqel paramaqel, HistoryFormItem paramHistoryFormItem) {}
+  public aqen(ChooseImageIPCModule.2 param2, String paramString) {}
   
-  public void a(View paramView, int paramInt, boolean paramBoolean)
+  public void onDone(bihu parambihu)
   {
-    aqcc localaqcc = new aqcc();
-    ColorNote localColorNote2;
-    if ((aqcf.a()) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a())) {
-      localColorNote2 = (ColorNote)aqel.a(this.jdField_a_of_type_Aqel).get(paramInt);
-    }
-    try
-    {
-      ColorNote localColorNote1 = (ColorNote)localColorNote2.clone();
-      if (localColorNote1 != null)
-      {
-        localColorNote1.setType(0);
-        localaqcc.a(localColorNote1.parseBundle());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.setEnable(false);
-      aqel.a(this.jdField_a_of_type_Aqel, localColorNote2, paramInt);
-      QQToast.a(paramView.getContext(), 2, anni.a(2131690771), 500).a();
-      return;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-        Object localObject = null;
-      }
-    }
+    super.onDone(parambihu);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, String.format("ArkMultiProc.download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambihu.a) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("code", parambihu.a);
+    parambihu = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.this$0.callbackResult(this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.a, parambihu);
   }
 }
 

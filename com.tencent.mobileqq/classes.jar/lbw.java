@@ -1,18 +1,18 @@
 public class lbw
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = null;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = null;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString = null;
-  String d = null;
-  String e = null;
-  String f = null;
+  public int a;
+  public String a;
   
-  public lbw(lbv paramlbv) {}
+  public lbw()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import amuf;
+import anfz;
 
 class BaseChatPie$89
   implements Runnable
@@ -10,7 +10,7 @@ class BaseChatPie$89
   public void run()
   {
     this.this$0.av();
-    amuf.a(this.this$0.a, "receipt_msg", false);
+    anfz.a(this.this$0.a, "receipt_msg", false);
   }
 }
 

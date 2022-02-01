@@ -17,7 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
@@ -28,11 +28,11 @@ import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
-import nxw;
-import omp;
-import oqk;
-import pha;
-import rlr;
+import nzq;
+import ozs;
+import rcl;
+import tlx;
+import tqb;
 
 public class ReadInJoyUninterestComplainFragment
   extends IphoneTitleBarFragment
@@ -48,48 +48,48 @@ public class ReadInJoyUninterestComplainFragment
   private void a(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(nxw.a, paramString2);
-    localBundle.putString(nxw.b, paramString1);
+    localBundle.putString(nzq.a, paramString2);
+    localBundle.putString(nzq.b, paramString1);
     switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1: 
       paramString1 = (AdvertisementInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      if (pha.a(paramString1)) {}
-      for (int i = nxw.S;; i = nxw.N)
+      if (ozs.a(paramString1)) {}
+      for (int i = nzq.S;; i = nzq.N)
       {
-        nxw.a(new omp().a(getActivity()).a(nxw.c).b(i).a(paramString1).a(localBundle).a());
+        nzq.a(new tlx().a(getActivity()).a(nzq.c).b(i).a(paramString1).a(localBundle).a());
         return;
       }
     case 2: 
       paramString1 = (VideoAdInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      nxw.a(new omp().a(getActivity()).a(nxw.c).b(nxw.R).a(nxw.a(paramString1)).a(paramString1).a(localBundle).a());
+      nzq.a(new tlx().a(getActivity()).a(nzq.c).b(nzq.R).a(nzq.a(paramString1)).a(paramString1).a(localBundle).a());
       return;
     }
     paramString1 = (AdData)this.jdField_a_of_type_AndroidOsParcelable;
-    nxw.a(new omp().a(getActivity()).a(nxw.c).b(nxw.M).a(oqk.a(paramString1)).a(localBundle).a());
+    nzq.a(new tlx().a(getActivity()).a(nzq.c).b(nzq.M).a(tqb.a(paramString1)).a(localBundle).a());
   }
   
   private void b()
   {
     this.vg.changeBg(true);
     if (this.leftView != null) {
-      this.leftView.setText(anni.a(2131711571));
+      this.leftView.setText(anzj.a(2131711680));
     }
-    setTitle(anni.a(2131711588));
-    if (ThemeUtil.isInNightMode(pha.a())) {
-      View.inflate(getActivity(), 2131560226, this.titleRoot);
+    setTitle(anzj.a(2131711697));
+    if (ThemeUtil.isInNightMode(ozs.a())) {
+      View.inflate(getActivity(), 2131560238, this.titleRoot);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364878));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364925));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365102));
-    this.b = ((EditText)this.mContentView.findViewById(2131372344));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131378028));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365148));
+    this.b = ((EditText)this.mContentView.findViewById(2131372459));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131378183));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -184,7 +184,7 @@ public class ReadInJoyUninterestComplainFragment
   
   public int getContentLayoutId()
   {
-    return 2131560287;
+    return 2131560299;
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -217,7 +217,7 @@ public class ReadInJoyUninterestComplainFragment
   public void onResume()
   {
     super.onResume();
-    rlr.a(this);
+    rcl.a(this);
     ThreadManager.getUIHandler().postDelayed(new ReadInJoyUninterestComplainFragment.1(this), 300L);
   }
   

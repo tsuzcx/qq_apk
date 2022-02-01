@@ -1,57 +1,74 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfo
+  extends arac<arfn>
 {
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final arec jdField_a_of_type_Arec;
-  private final Rect b = new Rect();
-  
-  public arfo(arec paramarec)
+  public static arfn a()
   {
-    this.jdField_a_of_type_Arec = paramarec;
+    return (arfn)aran.a().a(572);
   }
   
-  private boolean a(Canvas paramCanvas, aren paramaren, arew paramarew, arfn paramarfn)
+  @NonNull
+  public arfn a(int paramInt)
   {
-    paramarew = this.jdField_a_of_type_Arec.a(paramaren, paramarew);
-    if (paramarew == null) {
-      return false;
+    return new arfn();
+  }
+  
+  @Nullable
+  public arfn a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      new arfn();
+      return arfn.a(paramArrayOfaraj);
     }
-    int i = paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, (int)paramaren.f(), (int)paramaren.g());
-    this.b.set((int)paramaren.b(), (int)paramaren.c(), (int)paramaren.d(), (int)paramaren.e());
-    paramCanvas.drawBitmap(paramarew, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restoreToCount(i);
+    return null;
+  }
+  
+  public void a(arfn paramarfn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramarfn.toString());
+    }
+  }
+  
+  public Class<arfn> clazz()
+  {
+    return arfn.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return true;
   }
   
-  private void b(Canvas paramCanvas, aren paramaren, arew paramarew, arfn paramarfn)
+  public boolean isNeedCompressed()
   {
-    int i = paramCanvas.save();
-    paramarfn.a(paramCanvas, paramaren, paramarew, paramaren.h(), paramaren.i());
-    paramCanvas.restoreToCount(i);
+    return true;
   }
   
-  public void a(Canvas paramCanvas, aren paramaren, arew paramarew, arfn paramarfn)
+  public boolean isNeedStoreLargeFile()
   {
-    if (paramCanvas == null) {}
-    do
-    {
-      return;
-      if (!paramaren.e()) {
-        break;
-      }
-    } while (a(paramCanvas, paramaren, paramarew, paramarfn));
-    arfm.a(false);
-    b(paramCanvas, paramaren, paramarew, paramarfn);
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 572;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfo
  * JD-Core Version:    0.7.0.1
  */

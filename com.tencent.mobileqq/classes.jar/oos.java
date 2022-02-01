@@ -1,23 +1,7 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import kotlin.Metadata;
 
-public class oos
-  implements acup
-{
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934598L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
-      }
-      paramString = new Bundle();
-      aanz.a().a(140, paramString);
-    }
-    return false;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule$Companion;", "", "()V", "CMD_GET_CHANNEL_BANNER_INFO", "", "SERVICE_TYPE_DEFAULT", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oos {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,19 +1,33 @@
-class ahdm
-  extends afuv
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10;
+import com.tencent.qphone.base.util.QLog;
+
+public class ahdm
+  implements Animation.AnimationListener
 {
-  public long a;
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public ahdm(GivingHeartItemBuilder.10 param10) {}
   
-  ahdm(ahdk paramahdk) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
+    }
+  }
 }
 
 

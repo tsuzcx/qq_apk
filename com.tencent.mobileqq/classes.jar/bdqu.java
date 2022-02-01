@@ -1,14 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
-class bdqu
-  extends awej<bdqp, QQAppInterface>
+public class bdqu
 {
-  bdqu(bdqs parambdqs) {}
-  
-  protected bdqp a(QQAppInterface paramQQAppInterface)
-  {
-    return new bdqp(paramQQAppInterface);
-  }
+  public View a;
+  public View b;
 }
 
 

@@ -9,8 +9,12 @@ import android.support.annotation.Keep;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForDeferredDeeplink;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.ad.tangram.statistics.b;
+import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,22 +34,35 @@ public class AdAppReceiver
     }
     do
     {
+      String str;
       do
       {
         return;
-        paramContext = paramIntent.getData().getSchemeSpecificPart();
-        AdLog.i("AdAppReceiver", String.format("onReceivePackageAdded %s", new Object[] { paramContext }));
-      } while (!this.data.containsKey(paramContext));
-      paramIntent = (AdClickUtil.Params)this.data.get(paramContext);
-      this.data.remove(paramContext);
+        str = paramIntent.getData().getSchemeSpecificPart();
+        AdLog.i("AdAppReceiver", String.format("onReceivePackageAdded %s", new Object[] { str }));
+      } while (!this.data.containsKey(str));
+      paramIntent = (AdClickUtil.Params)this.data.get(str);
+      this.data.remove(str);
       if (AdClickUtil.isValidForApp(paramIntent))
       {
         b.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 286);
         AdReporterForAnalysis.reportForAppInstalled(paramIntent);
       }
     } while ((!AdClickUtil.isValidForApp(paramIntent)) || (TextUtils.isEmpty(paramIntent.ad.getAppDeeplink())));
-    b.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 297);
-    AdClickUtil.handleAppWithDeeplink(paramIntent, true);
+    long l = 0L;
+    if (paramIntent.ad.isHitWithoutInstallSuccessPage())
+    {
+      paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
+      if (paramContext == null) {
+        break label227;
+      }
+    }
+    label227:
+    for (l = paramContext.settingsForDeferredDeeplink.delayMillis;; l = 1000L)
+    {
+      AdThreadManager.INSTANCE.postDelayed(new AdAppReceiver.1(this, paramIntent), 0, l);
+      return;
+    }
   }
   
   public void observe(AdClickUtil.Params paramParams)

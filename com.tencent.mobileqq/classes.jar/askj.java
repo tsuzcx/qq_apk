@@ -1,13 +1,18 @@
-public class askj
+import com.tencent.mobileqq.data.CustomEmotionData;
+import java.util.List;
+
+class askj
+  extends anxe
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  askj(askd paramaskd, Object paramObject) {}
   
-  public String toString()
+  protected void a(List<CustomEmotionData> arg1)
   {
-    return "CompletePesonalDataTask{type=" + this.jdField_a_of_type_Int + ", rewardCount=" + this.b + ", taskDescription='" + this.jdField_a_of_type_JavaLangString + '\'' + ", taskStatus=" + this.c + '}';
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
 }
 

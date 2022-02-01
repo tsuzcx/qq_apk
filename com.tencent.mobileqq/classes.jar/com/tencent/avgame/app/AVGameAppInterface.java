@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.support.v4.util.MQLruCache;
-import anhk;
-import anil;
-import azwq;
-import bdua;
-import bdvu;
-import bdwr;
-import bhgg;
-import bjcj;
+import antf;
+import anui;
+import bapg;
+import besu;
+import beuo;
+import bevk;
+import bigv;
+import bkdi;
 import com.tencent.avgame.ipc.ProcessMonitor;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -24,6 +24,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.videoplatform.SDKInitListener;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -31,47 +32,47 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.List;
-import leo;
-import lep;
+import lev;
+import lew;
 import mqq.app.MSFServlet;
 import mqq.app.MobileQQ;
-import mvv;
-import mvw;
-import mvx;
-import mwm;
-import mwo;
-import mwt;
 import mwu;
-import mxb;
+import mwv;
+import mww;
 import mxl;
-import myw;
-import ndd;
-import ndm;
-import ndn;
-import ndt;
-import nfu;
-import ngg;
+import mxn;
+import mxs;
+import mxt;
+import mya;
+import myk;
+import mzz;
+import new;
+import nff;
+import nfg;
+import nfm;
+import nhp;
+import nib;
 
 public class AVGameAppInterface
   extends AppInterface
-  implements SDKInitListener, lep, ndm
+  implements SDKInitListener, lew, nff
 {
   private static boolean jdField_a_of_type_Boolean;
   private int jdField_a_of_type_Int = -2147483648;
-  private bdwr jdField_a_of_type_Bdwr;
+  private bevk jdField_a_of_type_Bevk;
   private QQEntityManagerFactory jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
-  private leo jdField_a_of_type_Leo;
-  private mvw jdField_a_of_type_Mvw;
-  private mwo jdField_a_of_type_Mwo;
-  private ndd jdField_a_of_type_Ndd;
-  private ndn jdField_a_of_type_Ndn;
+  private lev jdField_a_of_type_Lev;
+  private mwv jdField_a_of_type_Mwv;
+  private mxn jdField_a_of_type_Mxn;
+  private new jdField_a_of_type_New;
+  private nfg jdField_a_of_type_Nfg;
   
   public AVGameAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
     ProcessMonitor.a().a();
-    nfu.a().a("param_AVGameInit");
-    ngg.a().a("AVGameCostTrace");
+    nhp.a().a("param_AVGameInit");
+    nib.a().a("AVGameCostTrace");
     if (QLog.isColorLevel()) {
       QLog.i("AVGameAppInterface", 2, "init av game app interface [" + paramString + "]");
     }
@@ -88,29 +89,29 @@ public class AVGameAppInterface
       }
     }
     label79:
-    for (File localFile = new File(bhgg.a(anhk.ba));; localFile = localBaseApplication.getCacheDir())
+    for (File localFile = new File(bigv.a(antf.ba));; localFile = localBaseApplication.getCacheDir())
     {
-      URLDrawable.init(localBaseApplication, new mvv(this, localBaseApplication));
+      URLDrawable.init(localBaseApplication, new mwu(this, localBaseApplication));
       localFile = new File(localFile, "diskcache");
-      com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new bdua(localFile);
-      bdzx.a = localFile;
+      com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new besu(localFile);
+      beyq.a = localFile;
       jdField_a_of_type_Boolean = true;
       return;
     }
   }
   
-  public mwm a(int paramInt)
+  public mxl a(int paramInt)
   {
-    mwm localmwm = null;
-    if (this.jdField_a_of_type_Mwo != null) {
-      localmwm = this.jdField_a_of_type_Mwo.a(this, paramInt);
+    mxl localmxl = null;
+    if (this.jdField_a_of_type_Mxn != null) {
+      localmxl = this.jdField_a_of_type_Mxn.a(this, paramInt);
     }
-    return localmwm;
+    return localmxl;
   }
   
-  public ndd a()
+  public new a()
   {
-    return this.jdField_a_of_type_Ndd;
+    return this.jdField_a_of_type_New;
   }
   
   public void a()
@@ -126,46 +127,46 @@ public class AVGameAppInterface
   public void a(int paramInt)
   {
     int i = this.jdField_a_of_type_Int;
-    int j = leo.b();
+    int j = lev.b();
     if (QLog.isColorLevel()) {
       QLog.i("AVGameAppInterface", 2, "onApnChanged, [" + i + "] --> [" + j + "], from[" + paramInt + "]");
     }
     if (i != j)
     {
       this.jdField_a_of_type_Int = j;
-      mwu.a().a(mwt.class, 1, true, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+      mxt.a().a(mxs.class, 1, true, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.jdField_a_of_type_Mvw != null) {
-      this.jdField_a_of_type_Mvw.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    if (this.jdField_a_of_type_Mwv != null) {
+      this.jdField_a_of_type_Mwv.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
     }
   }
   
-  public void addObserver(anil paramanil)
+  public void addObserver(anui paramanui)
   {
-    mwu.a().a(paramanil);
+    mxt.a().a(paramanui);
   }
   
-  public void addObserver(anil paramanil, boolean paramBoolean)
+  public void addObserver(anui paramanui, boolean paramBoolean)
   {
-    mwu.a().a(paramanil, paramBoolean);
+    mxt.a().a(paramanui, paramBoolean);
   }
   
   public void b(int paramInt)
   {
     long l = SystemClock.elapsedRealtime();
     QLog.i("AVGameAppInterface", 1, "exitVideoProcess, reason[" + paramInt + "]");
-    mxl.a().a(2, null, mxl.a().a());
+    myk.a().a(2, null, myk.a().a());
     Intent localIntent = new Intent("tencent.avgame.g2q.exit");
     localIntent.putExtra("key_exit_code", paramInt);
     getApp().sendBroadcast(localIntent);
     QLog.flushLog(true);
     getApplication().otherProcessExit(false);
-    if (this.jdField_a_of_type_Ndd != null) {
-      this.jdField_a_of_type_Ndd.a();
+    if (this.jdField_a_of_type_New != null) {
+      this.jdField_a_of_type_New.a();
     }
     ProcessMonitor.a().b();
     QLog.i("AVGameAppInterface", 1, "exitVideoProcess, cost[" + (SystemClock.elapsedRealtime() - l) + "]");
@@ -194,9 +195,9 @@ public class AVGameAppInterface
     return AppSetting.a();
   }
   
-  public List<anil> getBusinessObserver(int paramInt)
+  public List<anui> getBusinessObserver(int paramInt)
   {
-    return mwu.a().a(paramInt);
+    return mxt.a().a(paramInt);
   }
   
   public String getCurrentAccountUin()
@@ -219,61 +220,62 @@ public class AVGameAppInterface
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
   {
-    return new Class[] { mvx.class, bjcj.class };
+    return new Class[] { mww.class, bkdi.class };
   }
   
-  public bdvu getNetEngine(int paramInt)
+  public beuo getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Bdwr == null) {
-      this.jdField_a_of_type_Bdwr = new bdwr();
+    if (this.jdField_a_of_type_Bevk == null) {
+      this.jdField_a_of_type_Bevk = new bevk();
     }
-    return this.jdField_a_of_type_Bdwr.a(this, paramInt);
+    return this.jdField_a_of_type_Bevk.a(this, paramInt);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     ProcessMonitor.a().a("AVGameAppInterface_onCreate");
-    ngg.a().b("AppInterfaceCreate");
+    nib.a().b("AppInterfaceCreate");
     super.onCreate(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.i("AVGameAppInterface", 2, "onCreate");
     }
+    AudioHelper.a(this.app, getLongAccountUin());
     getEntityManagerFactory(null);
-    this.jdField_a_of_type_Mvw = new mvw(this);
-    this.jdField_a_of_type_Mwo = new mwo();
+    this.jdField_a_of_type_Mwv = new mwv(this);
+    this.jdField_a_of_type_Mxn = new mxn();
     a();
-    this.jdField_a_of_type_Ndd = new ndd(this);
-    this.jdField_a_of_type_Ndn = new ndn(this);
+    this.jdField_a_of_type_New = new new(this);
+    this.jdField_a_of_type_Nfg = new nfg(this);
     ThreadManager.excute(new AVGameAppInterface.1(this), 16, null, true);
-    mxl.a().a(this);
+    myk.a().a(this);
     b();
-    mxb.a().a(this);
-    myw.a().a();
+    mya.a().a(this);
+    mzz.a().a();
     ThreadManager.excute(new AVGameAppInterface.2(this), 16, null, false);
-    this.jdField_a_of_type_Leo = new leo(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Leo);
-    if (!azwq.a()) {
-      azwq.a(BaseApplicationImpl.getContext(), this);
+    this.jdField_a_of_type_Lev = new lev(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Lev);
+    if (!bapg.a()) {
+      bapg.a(BaseApplicationImpl.getContext(), this);
     }
-    ngg.a().c("AppInterfaceCreate");
+    nib.a().c("AppInterfaceCreate");
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Ndd != null) {
-      this.jdField_a_of_type_Ndd.a();
+    if (this.jdField_a_of_type_New != null) {
+      this.jdField_a_of_type_New.a();
     }
-    if (this.jdField_a_of_type_Ndn != null)
+    if (this.jdField_a_of_type_Nfg != null)
     {
-      this.jdField_a_of_type_Ndn.b();
-      this.jdField_a_of_type_Ndn = null;
+      this.jdField_a_of_type_Nfg.b();
+      this.jdField_a_of_type_Nfg = null;
     }
-    mwu.a().a();
-    mxl.a().b();
-    ndt.a();
-    mxb.a().f();
-    myw.a().b();
+    mxt.a().a();
+    myk.a().b();
+    nfm.a();
+    mya.a().f();
+    mzz.a().b();
     if (QLog.isColorLevel()) {
       QLog.i("AVGameAppInterface", 2, "onDestroy");
     }
@@ -284,15 +286,15 @@ public class AVGameAppInterface
     QLog.d("AVGameAppInterface", 1, "onSDKInited " + paramBoolean);
   }
   
-  public void removeObserver(anil paramanil)
+  public void removeObserver(anui paramanui)
   {
-    mwu.a().b(paramanil);
+    mxt.a().b(paramanui);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    if (this.jdField_a_of_type_Mvw != null) {
-      this.jdField_a_of_type_Mvw.a(paramToServiceMsg);
+    if (this.jdField_a_of_type_Mwv != null) {
+      this.jdField_a_of_type_Mwv.a(paramToServiceMsg);
     }
   }
 }

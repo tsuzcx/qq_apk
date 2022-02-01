@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aeif
-  implements DialogInterface.OnClickListener
+  extends aoka
 {
-  public aeif(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aeif(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    bcst.b(this.a.app, "dc00898", "", "", "0X800A0D9", "0X800A0D9", 0, 0, "", "", "", "");
-    if (bgnt.d(this.a)) {
-      FriendProfileMoreInfoActivity.b(this.a);
+    if (!(paramObject instanceof String)) {
+      return;
     }
-    FriendProfileMoreInfoActivity.a(this.a, "https://ti.qq.com/hybrid-h5/school_relation/chooseschool?_wv=67108994");
+    paramObject = (String)paramObject;
+    this.a.a(8, paramObject, -2147483648);
   }
 }
 

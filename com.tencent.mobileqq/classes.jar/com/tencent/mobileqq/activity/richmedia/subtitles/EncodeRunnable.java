@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import almy;
-import alnd;
-import alnj;
-import alnt;
-import alob;
-import azuf;
+import alyq;
+import alyv;
+import alzb;
+import alzl;
+import alzt;
+import bamv;
 import com.tencent.mobileqq.utils.SilkCodecWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -17,10 +17,10 @@ public class EncodeRunnable
   private double jdField_a_of_type_Double = 1.0D;
   public final int a;
   private long jdField_a_of_type_Long = -1L;
-  alnj jdField_a_of_type_Alnj = new alnj();
-  private alnt jdField_a_of_type_Alnt;
+  alzb jdField_a_of_type_Alzb = new alzb();
+  private alzl jdField_a_of_type_Alzl;
   public final String a;
-  private WeakReference<alnd> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<alyv> jdField_a_of_type_JavaLangRefWeakReference;
   private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
   public volatile boolean a;
   public final int b;
@@ -32,7 +32,7 @@ public class EncodeRunnable
   private int g = 44100;
   private int h = 3000;
   
-  public EncodeRunnable(alnd paramalnd, int paramInt)
+  public EncodeRunnable(alyv paramalyv, int paramInt)
   {
     this.jdField_a_of_type_Int = 16000;
     this.jdField_b_of_type_Int = 16000;
@@ -41,28 +41,28 @@ public class EncodeRunnable
     if (QLog.isColorLevel()) {
       QLog.d("EncodeRunnable", 2, "create EncodeRunable:" + paramInt);
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalnd);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalyv);
     try
     {
-      this.jdField_a_of_type_Alnt = new alnt(paramInt * 11 * 2);
-      if (this.jdField_a_of_type_Alnt == null) {
+      this.jdField_a_of_type_Alzl = new alzl(paramInt * 11 * 2);
+      if (this.jdField_a_of_type_Alzl == null) {
         return;
       }
     }
-    catch (OutOfMemoryError paramalnd)
+    catch (OutOfMemoryError paramalyv)
     {
       for (;;)
       {
         QLog.e("EncodeRunnable", 2, "create DataPipe OOM!!");
-        this.jdField_a_of_type_Alnt = null;
+        this.jdField_a_of_type_Alzl = null;
       }
     }
-    catch (Exception paramalnd)
+    catch (Exception paramalyv)
     {
       for (;;)
       {
-        paramalnd.printStackTrace();
-        QLog.e("EncodeRunnable", 2, "DataPipe exception!!" + paramalnd);
+        paramalyv.printStackTrace();
+        QLog.e("EncodeRunnable", 2, "DataPipe exception!!" + paramalyv);
       }
       if (paramInt != 0)
       {
@@ -83,9 +83,9 @@ public class EncodeRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_Alnt != null)
+      if (this.jdField_a_of_type_Alzl != null)
       {
-        paramInt1 = this.jdField_a_of_type_Alnt.b(paramArrayOfByte, paramInt1, paramInt2);
+        paramInt1 = this.jdField_a_of_type_Alzl.b(paramArrayOfByte, paramInt1, paramInt2);
         return paramInt1;
       }
     }
@@ -97,7 +97,7 @@ public class EncodeRunnable
     return -1;
   }
   
-  private void a(SilkCodecWrapper paramSilkCodecWrapper, alnj paramalnj)
+  private void a(SilkCodecWrapper paramSilkCodecWrapper, alzb paramalzb)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EncodeRunnable", 2, "encodethread start runfast, stop:" + this.jdField_a_of_type_Boolean + " sessionid:" + this.jdField_a_of_type_Long + " combinenum:" + this.d + "factor:" + this.jdField_a_of_type_Double + " bufsize:" + 8820);
@@ -117,7 +117,7 @@ public class EncodeRunnable
         arrayOfByte = new byte[8820];
         arrayOfShort1 = new short[4410];
         i = 0;
-        almy localalmy = new almy(this.g / 10 * 15);
+        alyq localalyq = new alyq(this.g / 10 * 15);
         l2 = 0L;
         j = 0;
         if (!this.jdField_a_of_type_Boolean)
@@ -135,20 +135,20 @@ public class EncodeRunnable
                 k += m;
                 i = m;
                 continue;
-                if (paramalnj.a(arrayOfShort1, 0, 4410))
+                if (paramalzb.a(arrayOfShort1, 0, 4410))
                 {
                   l2 = System.currentTimeMillis();
                   l1 = l2;
                   if (j != 0) {
                     break label916;
                   }
-                  short[] arrayOfShort2 = localalmy.a();
-                  localalmy.a();
+                  short[] arrayOfShort2 = localalyq.a();
+                  localalyq.a();
                   if ((arrayOfShort2 == null) || (arrayOfShort2.length <= 0)) {
                     break label902;
                   }
                   j = localByteBuffer.position();
-                  alob.a(arrayOfShort2, 0, arrayOfShort2.length);
+                  alzt.a(arrayOfShort2, 0, arrayOfShort2.length);
                   k = arrayOfShort2.length * 16000 / this.g;
                   if (k > localByteBuffer.remaining())
                   {
@@ -158,7 +158,7 @@ public class EncodeRunnable
                     localByteBuffer.clear();
                     j = 0;
                   }
-                  alob.a(this.g, arrayOfShort2, arrayOfShort2.length, localByteBuffer);
+                  alzt.a(this.g, arrayOfShort2, arrayOfShort2.length, localByteBuffer);
                   if ((QLog.isColorLevel()) && ((localByteBuffer.position() - j) % 160 != 0)) {
                     QLog.e("EncodeRunnable", 2, "Resampler lost precision 1 !!!!!" + localByteBuffer.position() + " - " + j);
                   }
@@ -173,7 +173,7 @@ public class EncodeRunnable
                   }
                   k = 1;
                   j = localByteBuffer.position();
-                  alob.a(arrayOfShort1, 0, 4410);
+                  alzt.a(arrayOfShort1, 0, 4410);
                   m = 70560000 / this.g;
                   if (m > localByteBuffer.remaining())
                   {
@@ -183,7 +183,7 @@ public class EncodeRunnable
                     localByteBuffer.clear();
                     j = 0;
                   }
-                  alob.a(this.g, arrayOfShort1, 4410, localByteBuffer);
+                  alzt.a(this.g, arrayOfShort1, 4410, localByteBuffer);
                   if ((QLog.isColorLevel()) && (localByteBuffer.position() - j != 3200)) {
                     QLog.e("EncodeRunnable", 2, "Resampler lost precision 2 !!!!! " + localByteBuffer.position() + " - " + j);
                   }
@@ -203,7 +203,7 @@ public class EncodeRunnable
                 if (j != 0) {
                   break label916;
                 }
-                localalmy.a(arrayOfShort1, 0, 4410);
+                localalyq.a(arrayOfShort1, 0, 4410);
                 l1 = l2;
                 break label916;
                 j = k / 2;
@@ -211,8 +211,8 @@ public class EncodeRunnable
                 break label925;
                 if (j > 0)
                 {
-                  alob.a(arrayOfShort1, 0, j);
-                  alob.a(this.g, arrayOfShort1, j, localByteBuffer);
+                  alzt.a(arrayOfShort1, 0, j);
+                  alzt.a(this.g, arrayOfShort1, j, localByteBuffer);
                 }
                 if ((this.jdField_a_of_type_Long > 0L) && (this.d > 0)) {
                   a(paramSilkCodecWrapper, localByteBuffer, true);
@@ -365,7 +365,7 @@ public class EncodeRunnable
               this.jdField_a_of_type_JavaNioByteBuffer.flip();
               if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
               {
-                paramArrayOfByte = (alnd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+                paramArrayOfByte = (alyv)this.jdField_a_of_type_JavaLangRefWeakReference.get();
                 if (paramArrayOfByte != null) {
                   paramArrayOfByte.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaNioByteBuffer);
                 }
@@ -491,12 +491,12 @@ public class EncodeRunnable
   private void b()
   {
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Alnt != null) {}
+    if (this.jdField_a_of_type_Alzl != null) {}
     try
     {
-      this.jdField_a_of_type_Alnt.a();
+      this.jdField_a_of_type_Alzl.a();
       label19:
-      this.jdField_a_of_type_Alnt = null;
+      this.jdField_a_of_type_Alzl = null;
       return;
     }
     catch (Exception localException)
@@ -527,28 +527,28 @@ public class EncodeRunnable
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Alnj.a(paramBoolean);
+    this.jdField_a_of_type_Alzb.a(paramBoolean);
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     try
     {
-      if (this.jdField_a_of_type_Alnt == null) {
+      if (this.jdField_a_of_type_Alzl == null) {
         return;
       }
       if (paramArrayOfByte != null)
       {
-        if (this.jdField_a_of_type_Alnt.b() >= paramInt2)
+        if (this.jdField_a_of_type_Alzl.b() >= paramInt2)
         {
-          this.jdField_a_of_type_Alnt.c(paramArrayOfByte, paramInt1, paramInt2);
-          this.jdField_a_of_type_Alnt.b();
+          this.jdField_a_of_type_Alzl.c(paramArrayOfByte, paramInt1, paramInt2);
+          this.jdField_a_of_type_Alzl.b();
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.e("EncodeRunnable", 2, "WritePipe buffer limit!!!, drop data");
         }
-        this.jdField_a_of_type_Alnt.b();
+        this.jdField_a_of_type_Alzl.b();
         return;
       }
     }
@@ -556,12 +556,12 @@ public class EncodeRunnable
     {
       paramArrayOfByte.printStackTrace();
       QLog.e("EncodeRunnable", 2, "writepipe exception:" + paramArrayOfByte);
-      this.jdField_a_of_type_Alnt = null;
+      this.jdField_a_of_type_Alzl = null;
       this.jdField_a_of_type_Boolean = true;
       return;
     }
-    this.jdField_a_of_type_Alnt.a();
-    this.jdField_a_of_type_Alnt = null;
+    this.jdField_a_of_type_Alzl.a();
+    this.jdField_a_of_type_Alzl = null;
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -575,7 +575,7 @@ public class EncodeRunnable
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 100	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:jdField_a_of_type_Alnt	Lalnt;
+    //   1: getfield 100	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:jdField_a_of_type_Alzl	Lalzl;
     //   4: ifnonnull +23 -> 27
     //   7: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   10: ifeq +12 -> 22
@@ -603,10 +603,10 @@ public class EncodeRunnable
     //   58: ldc_w 352
     //   61: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   64: aload_0
-    //   65: getfield 61	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:jdField_a_of_type_Alnj	Lalnj;
+    //   65: getfield 61	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:jdField_a_of_type_Alzb	Lalzb;
     //   68: aload_0
     //   69: getfield 54	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:g	I
-    //   72: invokevirtual 354	alnj:a	(I)V
+    //   72: invokevirtual 354	alzb:a	(I)V
     //   75: bipush 237
     //   77: invokestatic 359	android/os/Process:setThreadPriority	(I)V
     //   80: aload_0
@@ -645,8 +645,8 @@ public class EncodeRunnable
     //   151: aload_0
     //   152: aload_1
     //   153: aload_0
-    //   154: getfield 61	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:jdField_a_of_type_Alnj	Lalnj;
-    //   157: invokespecial 366	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:a	(Lcom/tencent/mobileqq/utils/SilkCodecWrapper;Lalnj;)V
+    //   154: getfield 61	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:jdField_a_of_type_Alzb	Lalzb;
+    //   157: invokespecial 366	com/tencent/mobileqq/activity/richmedia/subtitles/EncodeRunnable:a	(Lcom/tencent/mobileqq/utils/SilkCodecWrapper;Lalzb;)V
     //   160: goto -73 -> 87
     //   163: astore_1
     //   164: aload_1

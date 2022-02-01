@@ -1,95 +1,85 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.pubaccount.readinjoy.channelbanner.RIJChannelBannerReport.reportAllData.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oot
-  extends WebViewPlugin
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport;", "", "()V", "avatarCardClickMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport$R5Builder;", "Lkotlin/collections/HashMap;", "getAvatarCardClickMap", "()Ljava/util/HashMap;", "avatarCardExposureMap", "getAvatarCardExposureMap", "avatarItemClickMap", "getAvatarItemClickMap", "avatarItemExposureMap", "getAvatarItemExposureMap", "getBaseR5Builder", "channelBannerInfo", "Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule$ChannelBannerInfo;", "Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule;", "reportAllData", "", "reportDataImp", "actionName", "r5Builder", "Companion", "R5Builder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oot
 {
+  public static final oou a;
+  @NotNull
+  private final HashMap<String, oov> a;
+  @NotNull
+  private final HashMap<String, oov> b = new HashMap();
+  @NotNull
+  private final HashMap<String, oov> c = new HashMap();
+  @NotNull
+  private final HashMap<String, oov> d = new HashMap();
+  
+  static
+  {
+    jdField_a_of_type_Oou = new oou(null);
+  }
+  
   public oot()
   {
-    this.mPluginNameSpace = "ReadinjoyAdJs";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private final void a(String paramString, oov paramoov)
   {
-    if ((TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountWebviewPlugin", 2, " method null or args == null");
-      }
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountWebviewPlugin", 2, " method:" + paramString3);
-    }
-    if ("setGameSubscribe".equals(paramString3)) {}
-    try
-    {
-      paramString1 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString1.optString("ret");
-      paramString1.optString("appid");
-      paramString1 = paramString1.optString("pkgname");
-      if (("1".equals(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString2)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountWebviewPlugin", 2, " method:pkgname=" + paramString1);
-        }
-        paramJsBridgeListener = new Bundle();
-        paramJsBridgeListener.putBoolean("isSuccess", true);
-        paramJsBridgeListener.putString("pkgname", paramString1);
-        aanz.a().a(132, paramJsBridgeListener);
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
-        }
-      }
-    }
-    if ("setGameLoadState".equals(paramString3)) {}
-    try
-    {
-      paramString1 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString1.optString("adid");
-      long l1 = nya.a(paramString1.optString("navigationStart"), 0L);
-      long l2 = nya.a(paramString1.optString("htmlLoaded"), 0L);
-      long l3 = nya.a(paramString1.optString("domComplete"), 0L);
-      if ((l1 > 0L) || (l2 > 0L) || (l3 > 0L))
-      {
-        paramString1 = new Bundle();
-        paramString1.putString("adid", paramJsBridgeListener);
-        paramString1.putLong("navigationStart", l1);
-        paramString1.putLong("htmlLoaded", l2);
-        paramString1.putLong("domComplete", l3);
-        aanz.a().a(139, paramString1);
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
-        }
-      }
-    }
-    return true;
+    paramoov = paramoov.a();
+    QLog.i("RIJChannelBannerReport", 1, "[reportDataImp], actionName = " + paramString + ", r5 = " + paramoov);
+    ocd.a(null, "", paramString, paramString, 0, 0, "", "", "", paramoov, false);
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  @NotNull
+  public final HashMap<String, oov> a()
   {
-    return super.handleSchemaRequest(paramString1, paramString2);
+    return this.jdField_a_of_type_JavaUtilHashMap;
   }
   
-  public void onCreate()
+  @NotNull
+  public final oov a(@NotNull oor paramoor)
   {
-    super.onCreate();
+    Intrinsics.checkParameterIsNotNull(paramoor, "channelBannerInfo");
+    return new oov().a("channel_id", String.valueOf(paramoor.a())).a(paramoor.d());
+  }
+  
+  public final void a()
+  {
+    Map localMap1 = MapsKt.toMutableMap((Map)this.jdField_a_of_type_JavaUtilHashMap);
+    Map localMap2 = MapsKt.toMutableMap((Map)this.b);
+    Map localMap3 = MapsKt.toMutableMap((Map)this.c);
+    Map localMap4 = MapsKt.toMutableMap((Map)this.d);
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b.clear();
+    this.c.clear();
+    this.d.clear();
+    ThreadManager.executeOnSubThread((Runnable)new RIJChannelBannerReport.reportAllData.1(this, localMap1, localMap2, localMap3, localMap4));
+  }
+  
+  @NotNull
+  public final HashMap<String, oov> b()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final HashMap<String, oov> c()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final HashMap<String, oov> d()
+  {
+    return this.d;
   }
 }
 

@@ -1,11 +1,25 @@
-import tencent.im.oidb.articlesummary.articlesummary.WendaInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public final class rgq
-  implements pvb<articlesummary.WendaInfo, rhw>
+class rgq
+  implements raf
 {
-  public rhw a(articlesummary.WendaInfo paramWendaInfo)
+  rgq(rgo paramrgo, List paramList) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return rhw.a(paramWendaInfo);
+    if (paramBoolean)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        UgcVideo localUgcVideo = (UgcVideo)localIterator.next();
+        this.jdField_a_of_type_Rgo.a(localUgcVideo, true);
+      }
+    }
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
   }
 }
 

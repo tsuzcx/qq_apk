@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import afjg;
+import afsk;
 import android.os.Handler;
-import bfsk;
+import bgsl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
 public class TroopGagActivity$2$1
   implements Runnable
 {
-  public TroopGagActivity$2$1(afjg paramafjg, Handler paramHandler) {}
+  public TroopGagActivity$2$1(afsk paramafsk, Handler paramHandler) {}
   
   public void run()
   {
-    ArrayList localArrayList = ((bfsk)this.jdField_a_of_type_Afjg.a.app.getManager(48)).a(this.jdField_a_of_type_Afjg.a.a, false);
+    ArrayList localArrayList = ((bgsl)this.jdField_a_of_type_Afsk.a.app.getManager(48)).a(this.jdField_a_of_type_Afsk.a.a, false);
     this.jdField_a_of_type_AndroidOsHandler.post(new TroopGagActivity.2.1.1(this, localArrayList));
   }
 }

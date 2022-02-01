@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bnzb;
+import bpam;
 
 class AEEditorVideoEditFragment$12
   implements Runnable
@@ -9,7 +9,7 @@ class AEEditorVideoEditFragment$12
   
   public void run()
   {
-    bnzb.d(AEEditorVideoEditFragment.e(), "[FrameVideoHelper.GetFrameByteArrayListener.onResult], music - extract frame failed");
+    bpam.d(AEEditorVideoEditFragment.e(), "[FrameVideoHelper.GetFrameByteArrayListener.onResult], music - extract frame failed");
   }
 }
 

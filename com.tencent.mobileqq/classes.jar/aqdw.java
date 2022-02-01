@@ -1,27 +1,16 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class aqdw
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aqdw(aqdv paramaqdv) {}
+  aqdw(aqdv paramaqdv, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((aqdv.a(this.a) != null) && (aqdv.a(this.a).getVisibility() == 0) && (aqdv.a(this.a).hasFocus())) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aqdv.a(this.a);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("start_from", 1);
-      ColorNoteSettingFragment.a(aqdv.a(this.a), ColorNoteSettingFragment.class, localBundle);
-      bcst.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_Blir.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 

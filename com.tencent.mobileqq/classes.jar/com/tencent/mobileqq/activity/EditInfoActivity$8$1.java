@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aedp;
+import aemt;
 import android.graphics.Color;
 import android.widget.TextView;
 
 public class EditInfoActivity$8$1
   implements Runnable
 {
-  public EditInfoActivity$8$1(aedp paramaedp) {}
+  public EditInfoActivity$8$1(aemt paramaemt) {}
   
   public void run()
   {

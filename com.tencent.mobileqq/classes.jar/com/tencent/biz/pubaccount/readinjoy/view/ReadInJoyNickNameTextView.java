@@ -11,17 +11,17 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import pha;
-import pyb;
-import ssb;
+import ozs;
+import pql;
+import sjf;
 
 public class ReadInJoyNickNameTextView
   extends TextView
-  implements pyb
+  implements pql
 {
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private ssb jdField_a_of_type_Ssb;
+  private sjf jdField_a_of_type_Sjf;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNickNameTextView(Context paramContext)
@@ -46,11 +46,11 @@ public class ReadInJoyNickNameTextView
     {
       return;
       if (this.jdField_a_of_type_Boolean) {
-        setText(pha.e(paramReadInJoyUserInfo.nick));
+        setText(ozs.e(paramReadInJoyUserInfo.nick));
       }
-      while (this.jdField_a_of_type_Ssb != null)
+      while (this.jdField_a_of_type_Sjf != null)
       {
-        this.jdField_a_of_type_Ssb.a(paramReadInJoyUserInfo.nick);
+        this.jdField_a_of_type_Sjf.a(paramReadInJoyUserInfo.nick);
         return;
         setText(paramReadInJoyUserInfo.nick);
       }
@@ -88,7 +88,7 @@ public class ReadInJoyNickNameTextView
     {
       localObject = str;
       if (this.jdField_a_of_type_Boolean) {
-        localObject = pha.e(str);
+        localObject = ozs.e(str);
       }
       setText((CharSequence)localObject);
       return;
@@ -124,9 +124,9 @@ public class ReadInJoyNickNameTextView
     setNickNameByUin(l1, paramBoolean);
   }
   
-  public void setOnSetNickNameListener(ssb paramssb)
+  public void setOnSetNickNameListener(sjf paramsjf)
   {
-    this.jdField_a_of_type_Ssb = paramssb;
+    this.jdField_a_of_type_Sjf = paramsjf;
   }
   
   public void setPrefix(String paramString)

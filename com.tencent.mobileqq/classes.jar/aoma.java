@@ -1,42 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class aoma
-  extends aojs
+  implements FilenameFilter
 {
-  public aoma(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aoma(CleanCache paramCleanCache) {}
   
-  private boolean C()
+  public boolean accept(File paramFile, String paramString)
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
-    String str3 = blru.a();
-    bltb.a(this.jdField_a_of_type_AndroidContentContext, str1, null, 0, str2, str3);
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QzoneRedpocketShareAction", 1, "doAction error: " + localException.getMessage());
-      a("QzoneRedpocketShareAction");
-    }
-    return false;
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoma
  * JD-Core Version:    0.7.0.1
  */

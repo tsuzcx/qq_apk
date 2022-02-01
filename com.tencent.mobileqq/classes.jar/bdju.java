@@ -1,128 +1,69 @@
-import android.os.Bundle;
-import android.support.v4.util.ArrayMap;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.splashad.SplashADView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bdju
-  extends ProxyWebViewClientExtension
+public final class bdju
+  implements View.OnClickListener
 {
-  ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-  bhnj jdField_a_of_type_Bhnj;
-  final TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  public bdju(bany parambany, banw parambanw, String paramString, bdho parambdho, SplashADView paramSplashADView, Activity paramActivity) {}
   
-  public bdju(bdjq parambdjq, TouchWebView paramTouchWebView, bhnj parambhnj)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_Bhnj = parambhnj;
-  }
-  
-  void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
-    if (localWebViewPluginEngine != null)
+    int j = 0;
+    switch (paramView.getId())
     {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
-      }
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
-      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
     }
-    while (!QLog.isColorLevel()) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if ((this.jdField_a_of_type_Bany != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bany.b))) {
+        banv.a(this.jdField_a_of_type_Bany.b, null, 3);
+      }
+      if ((this.jdField_a_of_type_Banw != null) && (bnua.a(this.jdField_a_of_type_Banw.l))) {
+        bnua.a(this.jdField_a_of_type_JavaLangString + "", 162, this.jdField_a_of_type_Banw.b, this.jdField_a_of_type_Banw.j);
+      }
+      this.jdField_a_of_type_Bdho.a(15, 1, 0L);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.setOnClickListener(null);
+      banv.a = true;
+      int i = j;
+      if (this.jdField_a_of_type_Bany != null) {
+        if (this.jdField_a_of_type_Bany.jdField_d_of_type_Int != 2)
+        {
+          i = j;
+          if (this.jdField_a_of_type_Bany.jdField_d_of_type_Int != 3) {}
+        }
+        else
+        {
+          banv.a = false;
+          i = 2000;
+          if ((this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.a) && (this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b) && (this.jdField_a_of_type_Bany.a == 2)) {
+            this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
+          }
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_Bany.b)) {
+            banv.a(this.jdField_a_of_type_Bany.b, null, 2);
+          }
+          bnuy.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bany.jdField_d_of_type_JavaLangString);
+        }
+      }
+      if ((this.jdField_a_of_type_Banw != null) && (bnua.a(this.jdField_a_of_type_Banw.l)))
+      {
+        bnua.a(this.jdField_a_of_type_JavaLangString + "");
+        bnua.a(this.jdField_a_of_type_JavaLangString + "", 102, this.jdField_a_of_type_Banw.b, this.jdField_a_of_type_Banw.j);
+      }
+      QLog.i("QSplash@QbossSplashUtil", 1, "cover_layer =" + i);
+      this.jdField_a_of_type_Bdho.a(15, 1, i);
     }
-    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
-  }
-  
-  public void computeScroll(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
-  }
-  
-  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
-  }
-  
-  public Object onMiscCallBack(String paramString, Bundle paramBundle)
-  {
-    QLog.d("WebLog_WebViewWrapper", 1, "onMiscCallBack for one args: " + paramString);
-    if (this.jdField_a_of_type_Bhnj != null) {
-      return this.jdField_a_of_type_Bhnj.handlerMiscCallback(paramString, paramBundle);
-    }
-    return null;
-  }
-  
-  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
-      a(paramObject1, paramObject2, paramObject3, paramObject4);
-    }
-    return null;
-  }
-  
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
-  }
-  
-  public void onPrefetchResourceHit(boolean paramBoolean)
-  {
-    QLog.i("WebLog_WebViewWrapper", 1, "now prefetchResource is hit: " + paramBoolean);
-  }
-  
-  public void onPreloadCallback(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Bhnj != null) {
-      this.jdField_a_of_type_Bhnj.handlePreloadCallback(paramInt, paramString);
-    }
-  }
-  
-  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
-  {
-    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
-  }
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
-  }
-  
-  public void onUrlChange(String paramString1, String paramString2)
-  {
-    
-    if (this.jdField_a_of_type_Bhnj != null) {
-      this.jdField_a_of_type_Bhnj.onUrlChange(paramString1, paramString2);
-    }
-  }
-  
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdju
  * JD-Core Version:    0.7.0.1
  */

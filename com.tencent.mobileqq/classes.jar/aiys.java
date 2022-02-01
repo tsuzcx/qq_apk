@@ -1,19 +1,53 @@
-import java.util.Comparator;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPttPlayView;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-class aiys
-  implements Comparator<ajax>
+public class aiys
 {
-  aiys(aiyr paramaiyr) {}
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VoiceTextPttPlayView jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView;
   
-  public int a(ajax paramajax1, ajax paramajax2)
+  public void a()
   {
-    if ((!paramajax1.a()) && (paramajax2.a())) {
-      return -1;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  public void a(VoiceTextPanel paramVoiceTextPanel)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVoiceTextPanel.findViewById(2131377328));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131381278));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView = ((VoiceTextPttPlayView)paramVoiceTextPanel.findViewById(2131377814));
+  }
+  
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, int paramInt, VoiceTextPanel paramVoiceTextPanel)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.setDuration(paramInt, paramString, paramRecorderParam, paramVoiceTextPanel);
     }
-    if ((paramajax1.a()) && (!paramajax2.a())) {
-      return 1;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.a();
     }
-    return (int)(paramajax2.a - paramajax1.a);
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.b();
+    }
   }
 }
 

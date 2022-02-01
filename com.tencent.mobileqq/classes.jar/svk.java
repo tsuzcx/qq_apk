@@ -1,35 +1,58 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class svk
-  extends RecyclerView.RecycledViewPool
+  implements svi
 {
-  public svk(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  public svk(String paramString)
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bksn)))
-    {
-      localObject = (bksn)localObject;
-      if (((bksn)localObject).d(paramInt))
+    if (paramString == null) {
+      throw new IllegalArgumentException("" + paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoFile = new File(paramString);
+  }
+  
+  public InputStream a(String paramString)
+  {
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+    if (((File)localObject).exists()) {
+      try
       {
-        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
+        localObject = new FileInputStream((File)localObject);
+        return localObject;
       }
-      else if ((((bksn)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
+      catch (FileNotFoundException localFileNotFoundException)
       {
-        putRecycledView(localViewHolder);
-        return null;
+        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
       }
     }
-    return localViewHolder;
+    return null;
+  }
+  
+  public List<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = this.jdField_a_of_type_JavaIoFile.list();
+    if (arrayOfString != null)
+    {
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        localArrayList.add(arrayOfString[i]);
+        i += 1;
+      }
+    }
+    return localArrayList;
   }
 }
 

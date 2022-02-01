@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bahg
-  implements bics
+class bahg
+  implements View.OnClickListener
 {
-  public bahg(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  bahg(bahb parambahb, View paramView) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
+    azyk.a().c(bahb.k(this.jdField_a_of_type_Bahb));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aeuu
-  implements DialogInterface.OnClickListener
+  extends aeuk
 {
-  public aeuu(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aeuu(JumpActivity paramJumpActivity)
   {
-    ProfileLabelEditorActivity.a(this.a);
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeuu
  * JD-Core Version:    0.7.0.1
  */

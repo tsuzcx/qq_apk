@@ -2,9 +2,9 @@ package com.tencent.mobileqq.troop.troopCard;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import bfmr;
-import bglp;
-import bgpa;
+import bgms;
+import bhlq;
+import bhpc;
 
 public class VisitorTroopCardFragment$18
   implements Runnable
@@ -21,10 +21,10 @@ public class VisitorTroopCardFragment$18
     do
     {
       return;
-      this.this$0.a = bglp.a(this.this$0.getActivity(), 230);
-      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131718772));
-      bfmr localbfmr = new bfmr(this);
-      this.this$0.a.setPositiveButton(2131690912, localbfmr);
+      this.this$0.a = bhlq.a(this.this$0.getActivity(), 230);
+      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131718922));
+      bgms localbgms = new bgms(this);
+      this.this$0.a.setPositiveButton(2131690912, localbgms);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

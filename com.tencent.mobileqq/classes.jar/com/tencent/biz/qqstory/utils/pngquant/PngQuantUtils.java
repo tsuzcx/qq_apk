@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils.pngquant;
 
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import nko;
-import nku;
-import znt;
+import nmj;
+import nmp;
+import zro;
 
 public final class PngQuantUtils
 {
@@ -15,15 +15,15 @@ public final class PngQuantUtils
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    nko.b("1017", paramAppRuntime, true, new znt());
+    nmj.b("1017", paramAppRuntime, true, new zro());
   }
   
   public static boolean a()
   {
-    if ((!a.get()) && (nko.c("1017")) && (nko.a("1017", "https://libpngquantandroid.so")))
+    if ((!a.get()) && (nmj.c("1017")) && (nmj.a("1017", "https://libpngquantandroid.so")))
     {
-      String str = nku.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
-      if (bgmg.a(str))
+      String str = nmp.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
+      if (bhmi.a(str))
       {
         System.load(str);
         a.set(true);

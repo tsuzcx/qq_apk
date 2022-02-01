@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import aduc;
-import adud;
-import adun;
+import aede;
+import aedf;
+import aedp;
 import android.view.View;
 import android.widget.Toast;
 
 public class ChatHistory$ChatHistoryAdapter$2$1
   implements Runnable
 {
-  public ChatHistory$ChatHistoryAdapter$2$1(adud paramadud, Object paramObject, View paramView) {}
+  public ChatHistory$ChatHistoryAdapter$2$1(aedf paramaedf, Object paramObject, View paramView) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Adud.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
+    if ((this.jdField_a_of_type_Aedf.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
     {
-      Toast.makeText(this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131717598), 0).show();
+      Toast.makeText(this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131717729), 0).show();
       return;
     }
-    if (this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
-      this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new adun(this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
+    if (this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
+      this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new aedp(this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
     }
-    this.jdField_a_of_type_Adud.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Adud.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aedf.jdField_a_of_type_Aede.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aedf.jdField_a_of_type_JavaLangString);
   }
 }
 

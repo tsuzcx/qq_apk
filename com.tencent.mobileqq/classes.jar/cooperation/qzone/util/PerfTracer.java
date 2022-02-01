@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.content.Intent;
 import android.os.SystemClock;
-import bmix;
+import bnka;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -181,16 +181,16 @@ public final class PerfTracer
     traceEnd("click2LoadActivityCreate");
   }
   
-  public static void traceClick2Completed(bmix parambmix)
+  public static void traceClick2Completed(bnka parambnka)
   {
     traceEnd("click2LoadCompleted");
     TimeCostTrace localTimeCostTrace = TimeCostTrace.getTrace("qzone_launch");
     if (localTimeCostTrace == null) {
       return;
     }
-    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambmix != null))
+    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambnka != null))
     {
-      parambmix.reportPerfTime(localTimeCostTrace);
+      parambnka.reportPerfTime(localTimeCostTrace);
       return;
     }
     localTimeCostTrace.destroy();

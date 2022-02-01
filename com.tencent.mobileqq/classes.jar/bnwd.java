@@ -1,47 +1,77 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.Map;
 
 public class bnwd
-  implements bnxm
+  extends bnvr
 {
-  public bnwd(AETemplateInfoFragment paramAETemplateInfoFragment, String paramString, Bitmap paramBitmap, long paramLong) {}
-  
-  public void a(List<bnxn> paramList)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
     {
-      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, new ArrayList());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      paramObject = (sweet_comm_cfg_item)paramObject;
+      if (a() != null)
       {
-        bnxn localbnxn = (bnxn)paramList.next();
-        if (localbnxn.jdField_a_of_type_Boolean)
-        {
-          String str = AETemplateInfoFragment.jdField_a_of_type_JavaLangString + System.currentTimeMillis();
-          BitmapUtils.saveBitmap(localbnxn.jdField_a_of_type_AndroidGraphicsBitmap, str);
-          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(str);
-          BitmapUtils.recycle(localbnxn.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        else
-        {
-          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(this.jdField_a_of_type_JavaLangString);
+        avgv localavgv = (avgv)a().a(153);
+        if (localavgv != null) {
+          localavgv.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
         }
       }
-      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, true);
     }
-    for (;;)
+    do
     {
-      AETemplateInfoFragment.b(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, false);
-      return;
-      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      QLog.e("AETemplateInfoFragment", 1, "changeFace---failed to get face changed bitmaps");
+      do
+      {
+        return;
+      } while (a() == null);
+      paramObject = (avgv)a().a(153);
+    } while (paramObject == null);
+    paramObject.a(false, null, null, null);
+  }
+  
+  public QQAppInterface a()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
+    return null;
+  }
+  
+  public QzoneExternalRequest a(Intent paramIntent)
+  {
+    return new bnwe(this, paramIntent);
+  }
+  
+  public void a(long paramLong)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong);
+    a(localIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    boolean bool = false;
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    {
+      paramIntent = (sweet_comm_cfg_get_rsp)bnke.a(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
+      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
+      {
+        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
+        if (paramIntent != null) {
+          bool = true;
+        }
+        a(bool, paramIntent);
+      }
+      return;
+    }
+    a(false, null);
   }
 }
 

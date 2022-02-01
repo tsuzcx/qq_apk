@@ -1,44 +1,20 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import java.util.Iterator;
-import java.util.List;
-
 public class znv
-  implements ViewPager.OnPageChangeListener
 {
-  public znv(EmptySupportViewPager paramEmptySupportViewPager) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public static String a(int[] paramArrayOfInt)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return null;
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (this.a.a != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramArrayOfInt[0]);
+    int i = 1;
+    while (i < paramArrayOfInt.length)
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramArrayOfInt[i]);
+      i += 1;
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
-    }
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,31 +1,51 @@
+import android.content.Context;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
 
 public class nup
-  implements View.OnTouchListener
+  extends TopGestureLayout.TopGestureDetector
 {
-  public nup(VideoCoverFragment paramVideoCoverFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public nup(ReadInJoyNewFeedsTopGestureLayout paramReadInJoyNewFeedsTopGestureLayout, Context paramContext)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      VideoCoverFragment.a(this.a).b();
-      if (!this.a.a())
+    super(paramReadInJoyNewFeedsTopGestureLayout, paramContext);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {
+      return false;
+    }
+    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    int i;
+    if (this.a.hasGestureFlag(1)) {
+      if (paramMotionEvent1.getX() <= 0.2133333333333334D * bhlo.i())
       {
-        if (!VideoCoverFragment.a(this.a)) {
-          break label47;
+        i = 1;
+        if ((i != 0) && (paramFloat1 < 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
+        {
+          this.a.setGestureFlag(-1);
+          if (!ReadInJoyNewFeedsTopGestureLayout.a(this.a)) {
+            this.a.mOnFlingGesture.flingLToR();
+          }
         }
-        this.a.a(false);
       }
     }
-    return false;
-    label47:
-    this.a.a(true);
-    return false;
+    for (;;)
+    {
+      return false;
+      i = 0;
+      break;
+      if ((this.a.hasGestureFlag(2)) && (paramFloat1 > 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
+      {
+        this.a.setGestureFlag(-1);
+        if (!ReadInJoyNewFeedsTopGestureLayout.b(this.a)) {
+          this.a.mOnFlingGesture.flingRToL();
+        }
+      }
+    }
   }
 }
 

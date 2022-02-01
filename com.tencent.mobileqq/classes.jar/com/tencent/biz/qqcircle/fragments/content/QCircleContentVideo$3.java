@@ -1,9 +1,9 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
+import aadv;
 import android.widget.TextView;
 import com.tencent.superplayer.api.ISuperPlayer;
-import vts;
-import zzr;
+import vwr;
 
 class QCircleContentVideo$3
   implements Runnable
@@ -14,8 +14,8 @@ class QCircleContentVideo$3
   {
     if ((QCircleContentVideo.a(this.this$0) != null) && (QCircleContentVideo.a(this.this$0).f != null))
     {
-      zzr.a(QCircleContentVideo.a(this.this$0).f, false);
-      QCircleContentVideo.a(this.this$0).f.setText(vts.a((int)this.a.getDurationMs()));
+      aadv.a(QCircleContentVideo.a(this.this$0).f, false);
+      QCircleContentVideo.a(this.this$0).f.setText(vwr.a((int)this.a.getDurationMs()));
     }
   }
 }

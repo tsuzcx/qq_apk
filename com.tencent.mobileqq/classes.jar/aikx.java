@@ -1,70 +1,42 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class aikx
-  implements aimh
+class aikx
+  extends biun
 {
-  private long jdField_a_of_type_Long = -1L;
-  private aimj jdField_a_of_type_Aimj;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  aikx(aikq paramaikq) {}
   
-  public aikx(aimj paramaimj, Context paramContext)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aimj = paramaimj;
-  }
-  
-  public int a()
-  {
-    return 55;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558582, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362481));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aiky(this));
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDownLoadedPluginResult result = " + paramInt);
     }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
-      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
+    if (paramInt == 0) {
+      this.a.bw();
     }
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    do
     {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362479);
-      if (localImageView != null) {
-        localImageView.setImageDrawable(paramDrawable);
-      }
+      return;
+      QQToast.a(this.a.a(), anzj.a(2131703998), 0).a();
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
     }
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 16;
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Biup == null)) {}
+    biuo localbiuo;
+    do
+    {
+      return;
+      localbiuo = this.a.jdField_a_of_type_Biup.a();
+    } while (localbiuo == null);
+    localbiuo.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 

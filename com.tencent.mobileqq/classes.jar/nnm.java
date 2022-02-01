@@ -1,29 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
 
-public class nnm
-  implements nkl
+class nnm
+  implements bliz
 {
-  public nnm(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  nnm(nnj paramnnj, Activity paramActivity, String paramString, blir paramblir) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
-    try
+    switch (paramInt)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
     }
-    catch (JSONException paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      nnj.a(this.jdField_a_of_type_Nnj, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      nnj.a(this.jdField_a_of_type_Nnj, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

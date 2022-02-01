@@ -1,26 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.vas.VasApngUtil;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
 public class bgwc
-  implements bgwb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public bgwc(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public bgwc(String paramString, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public URLDrawable a(Drawable paramDrawable)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
-    localBundle.putBoolean("key_use_cache", false);
-    return VasApngUtil.getApngDrawable(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
+    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
+    this.a.invalidate();
   }
 }
 

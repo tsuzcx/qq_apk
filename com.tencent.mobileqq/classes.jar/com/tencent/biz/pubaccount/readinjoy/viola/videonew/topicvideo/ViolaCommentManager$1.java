@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo;
 
 import android.view.ViewGroup;
-import trw;
+import tis;
 
 public class ViolaCommentManager$1
   implements Runnable
 {
-  public ViolaCommentManager$1(trw paramtrw) {}
+  public ViolaCommentManager$1(tis paramtis) {}
   
   public void run()
   {
-    trw.a(this.this$0).setPadding(0, 0, 0, 0);
+    tis.a(this.this$0).setPadding(0, 0, 0, 0);
   }
 }
 

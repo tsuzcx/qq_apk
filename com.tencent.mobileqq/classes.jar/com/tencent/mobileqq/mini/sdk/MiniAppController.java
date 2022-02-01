@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
 import NS_COMM.COMM.StCommonExt;
-import aevv;
+import afez;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -14,10 +14,10 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import aval;
-import bgnt;
-import bjxn;
-import bkgj;
+import avsm;
+import bhnv;
+import bkyr;
+import blhn;
 import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoInviteActivity;
@@ -90,7 +90,7 @@ public class MiniAppController
   private static final int REPORT_FOREGROUND_RESERVES_MINI_PROGRAM = 1;
   private static final int REPORT_NO_FOREGROUND = 0;
   public static final String TAG = "MiniAppController";
-  private static aval hitPluginSession;
+  private static avsm hitPluginSession;
   private static MiniAppController instance;
   private static byte[] lock = new byte[0];
   private static Handler mainHander = new Handler(Looper.getMainLooper());
@@ -103,7 +103,7 @@ public class MiniAppController
   
   static
   {
-    hitPluginSession = new aval("mini_myfile", "com.tencent.mobileqq:mini");
+    hitPluginSession = new avsm("mini_myfile", "com.tencent.mobileqq:mini");
     MINI_PROGRAM_ACTIVITY_SET = new HashSet();
     MINI_GAME_ACTIVITY_SET = new HashSet();
     MINI_PROGRAM_ACTIVITY_SET.addAll(Arrays.asList(new String[] { AppBrandLaunchUI.class.getName(), InternalAppBrandUI.class.getName(), AppBrandUI.class.getName(), AppBrandUI1.class.getName(), AppBrandUI2.class.getName(), AppBrandUI3.class.getName(), AppBrandUI4.class.getName() }));
@@ -204,7 +204,7 @@ public class MiniAppController
     if ((paramLaunchParam != null) && (paramLaunchParam.scene == 2072)) {
       return true;
     }
-    paramString = bkgj.a(paramString);
+    paramString = blhn.a(paramString);
     return (paramString.containsKey("scene")) && (((String)paramString.get("scene")).equals(String.valueOf(2072)));
   }
   
@@ -250,7 +250,7 @@ public class MiniAppController
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      afez.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
@@ -273,7 +273,7 @@ public class MiniAppController
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      afez.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
@@ -290,7 +290,7 @@ public class MiniAppController
   
   public static void preloadPackage(@NonNull MiniAppInfo paramMiniAppInfo)
   {
-    if (bjxn.a(paramMiniAppInfo.isEngineTypeMiniApp()))
+    if (bkyr.a(paramMiniAppInfo.isEngineTypeMiniApp()))
     {
       QLog.w("MiniAppController", 1, "preloadPackage disable for sdk mode.");
       return;
@@ -326,7 +326,7 @@ public class MiniAppController
     if (BaseActivity.sTopActivity != null) {
       QLog.d("MiniAppController", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
     }
-    if (!bgnt.g(paramContext)) {
+    if (!bhnv.g(paramContext)) {
       AppBrandTask.runTaskOnUiThread(new MiniAppController.2(paramContext));
     }
     do
@@ -350,7 +350,7 @@ public class MiniAppController
         localIntent.putExtra("mini_receiver", new MiniAppController.4(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
       }
       localIntent.putExtra("public_fragment_window_feature", 1);
-      aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      afez.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
     } while (!(paramContext instanceof Activity));
     ((Activity)paramContext).overridePendingTransition(0, 0);
   }
@@ -361,7 +361,7 @@ public class MiniAppController
     if (BaseActivity.sTopActivity != null) {
       QLog.d("MiniAppController", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
     }
-    if (!bgnt.g(paramContext))
+    if (!bhnv.g(paramContext))
     {
       AppBrandTask.runTaskOnUiThread(new MiniAppController.6(paramContext));
       return;

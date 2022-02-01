@@ -26,7 +26,7 @@ public class ReadInJoyDAUReport
     //   30: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
     //   33: bipush 51
     //   35: invokevirtual 46	com/tencent/common/app/AppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   38: checkcast 48	anmw
+    //   38: checkcast 48	anyw
     //   41: astore 5
     //   43: aload 5
     //   45: ifnull +602 -> 647
@@ -35,7 +35,7 @@ public class ReadInJoyDAUReport
     //   51: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
     //   54: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
     //   57: invokevirtual 52	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   60: invokevirtual 56	anmw:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   60: invokevirtual 56	anyw:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   63: astore 5
     //   65: aload 5
     //   67: ifnull +580 -> 647
@@ -155,7 +155,7 @@ public class ReadInJoyDAUReport
     //   324: aastore
     //   325: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   328: aconst_null
-    //   329: invokestatic 186	bcst:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   329: invokestatic 186	bdll:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   332: aload_0
     //   333: aload 5
     //   335: getfield 117	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:preActivityList	Ljava/lang/String;
@@ -228,8 +228,8 @@ public class ReadInJoyDAUReport
     //   490: invokestatic 149	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
     //   493: aastore
     //   494: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   497: invokestatic 210	pha:e	()Ljava/lang/String;
-    //   500: invokestatic 186	bcst:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   497: invokestatic 210	ozs:e	()Ljava/lang/String;
+    //   500: invokestatic 186	bdll:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   503: aload 5
     //   505: getfield 95	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
     //   508: invokestatic 195	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -266,8 +266,8 @@ public class ReadInJoyDAUReport
     //   576: invokestatic 149	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
     //   579: aastore
     //   580: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   583: invokestatic 210	pha:e	()Ljava/lang/String;
-    //   586: invokestatic 186	bcst:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   583: invokestatic 210	ozs:e	()Ljava/lang/String;
+    //   586: invokestatic 186	bdll:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   589: goto -487 -> 102
     //   592: astore_3
     //   593: ldc 36

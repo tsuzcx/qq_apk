@@ -1,40 +1,46 @@
-import com.tencent.mobileqq.activity.contact.recommendtroop.RecommendTroopListWrapper.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajcn
-  extends anxg
+  implements ajdw
 {
-  ajcn(ajcl paramajcl) {}
+  public ajcn(AddContactsActivity paramAddContactsActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public Activity a()
   {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new RecommendTroopListWrapper.2.1(this, paramString));
+    return this.a;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public void a()
+  {
+    if (this.a.a) {
+      return;
     }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()) });
+    localValueAnimator.setDuration(250L);
+    localValueAnimator.addUpdateListener(new ajco(this));
+    localValueAnimator.addListener(new ajcp(this));
+    localValueAnimator.start();
+    bhjs.a(true);
   }
   
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
+  public void b()
   {
-    this.a.a(paramBoolean1, paramInt1, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
-  }
-  
-  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
-  {
-    this.a.a(paramBoolean1, paramInt1, paramString, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
-  {
-    this.a.a(paramBoolean1, paramLong, paramInt, paramBoolean2, paramArrayList);
-  }
-  
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
-  {
-    this.a.a(paramBoolean);
+    this.a.findViewById(2131376869).setVisibility(0);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()), 0 });
+    localValueAnimator.setDuration(250L);
+    localValueAnimator.addUpdateListener(new ajcq(this));
+    localValueAnimator.addListener(new ajcr(this));
+    localValueAnimator.start();
   }
 }
 

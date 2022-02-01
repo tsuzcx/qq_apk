@@ -3,6 +3,7 @@ package com.tencent.qqmini.sdk.launcher;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.launcher.core.model.ApkgManager.RootPath;
 import com.tencent.qqmini.sdk.launcher.utils.MD5Utils;
 import java.io.File;
 
@@ -16,7 +17,7 @@ public class MiniSDKConst
   public static final int AuditPass = 6;
   public static final int AuditReject = 7;
   public static final String BASE_LIB_PATH_DIR = PATH_WXAPKG_ROOT + ".baseLib";
-  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.17.0.00206";
+  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.18.0.00132";
   public static final int DO_USE_SDK = 1;
   public static final int Deleted = 5;
   public static final int Develop = 0;
@@ -26,6 +27,7 @@ public class MiniSDKConst
   public static final String KEY_BASELIB_LOCAL_URL = "downloadUrl";
   public static final String KEY_BASELIB_LOCAL_VERSION = "version";
   public static final String KEY_USE_SDK = "usersdk";
+  public static final String LIB_V8RT = "libtv8rt.so";
   public static final int MESSENGER_CMD_NOTIFY_PERIODIC_CACHE_UPDATE = 1002;
   public static final int MESSENGER_CMD_NOTIFY_SHARE_RESULT = 1001;
   public static final String NOTIFY_EVENT_ONPAUSE = "onPause";
@@ -67,6 +69,11 @@ public class MiniSDKConst
     return BASE_LIB_PATH_DIR + File.separator + paramString1 + "_" + paramString2 + File.separator;
   }
   
+  public static String getMiniAppV8rtPath()
+  {
+    return ApkgManager.RootPath.getRoot() + "/miniappv8rt/" + "libtv8rt.so";
+  }
+  
   public static String getQQAppBaseLibDir(String paramString1, String paramString2)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
@@ -96,7 +103,7 @@ public class MiniSDKConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniSDKConst
  * JD-Core Version:    0.7.0.1
  */

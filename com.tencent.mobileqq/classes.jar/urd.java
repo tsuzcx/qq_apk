@@ -1,8 +1,8 @@
-import android.view.MotionEvent;
-
 public abstract interface urd
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

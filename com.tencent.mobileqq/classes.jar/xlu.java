@@ -1,83 +1,80 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class xlu
-  extends xlt
 {
-  protected Map<String, xlt> a = new HashMap();
+  @NonNull
+  public final String a;
+  @NonNull
+  public final String b;
+  @NonNull
+  public final String c;
+  public final String d;
   
-  public xlu(@NonNull ViewGroup paramViewGroup)
+  public xlu(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super(paramViewGroup);
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
+    {
+      yuk.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
+      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public boolean equals(Object paramObject)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561833, paramViewGroup, false);
-  }
-  
-  public void a(int paramInt, xiy paramxiy, @NonNull ArrayList<xne> paramArrayList)
-  {
-    super.a(paramInt, paramxiy, paramArrayList);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xlt)localIterator.next()).a(paramInt, paramxiy, paramArrayList);
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (xlu)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.d != null) {
+      bool1 = this.d.equals(paramObject.d);
+    }
+    for (;;)
+    {
+      return bool1;
+      bool1 = bool2;
+      if (paramObject.d != null) {
+        bool1 = false;
+      }
     }
   }
   
-  public void a(@NonNull xlt paramxlt)
+  public int hashCode()
   {
-    this.a.put(paramxlt.getClass().getName(), paramxlt);
-  }
-  
-  public void a(xlu paramxlu)
-  {
-    super.a(paramxlu);
-    paramxlu = this.a.values().iterator();
-    while (paramxlu.hasNext()) {
-      ((xlt)paramxlu.next()).a(this);
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.d != null) {}
+    for (int i = this.d.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
     }
   }
   
-  public void a(xms paramxms)
+  public String toString()
   {
-    super.a(paramxms);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xlt)localIterator.next()).a(paramxms);
-    }
-  }
-  
-  @Nullable
-  public xlt b(Class<? extends xlt> paramClass)
-  {
-    return (xlt)this.a.get(paramClass.getName());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xlt)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xlt)localIterator.next()).c();
-    }
+    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
   }
 }
 

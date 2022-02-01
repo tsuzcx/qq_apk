@@ -1,16 +1,22 @@
-public abstract interface aotj
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
+class aotj
+  implements Comparator<structmsg.StructMsg>
 {
-  public abstract int a();
+  aotj(aoti paramaoti) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(aotk paramaotk);
-  
-  public abstract void b();
+  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  {
+    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
+      return 1;
+    }
+    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

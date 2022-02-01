@@ -1,20 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.SeekBar;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLike;
+import feedcloud.FeedCloudWrite.StDoCommentRsp;
+import java.util.Map;
 
-public class vkg
-  implements View.OnTouchListener
+class vkg
+  implements aaav<FeedCloudWrite.StDoCommentRsp>
 {
-  public vkg(QCircleContentOperationView paramQCircleContentOperationView) {}
+  vkg(vjy paramvjy, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoCommentRsp paramStDoCommentRsp)
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoCommentRsp == null))
+    {
+      QLog.e("QCircleCommentBusiness", 1, "addFeedComment error:" + paramLong + "  errorMsg:" + paramString);
+      aaak.a().a(new QCircleCommentUpdateEvent(9, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, null, this.jdField_a_of_type_Int));
+      return;
     }
-    return false;
+    QLog.d("QCircleCommentBusiness", 1, "addFeedComment Success");
+    paramString = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get();
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.set(paramStDoCommentRsp.comment.id.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.createTime.set(paramStDoCommentRsp.comment.createTime.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.set(paramStDoCommentRsp.comment.likeInfo.get());
+    paramStDoCommentRsp.comment.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    vjy.a(this.jdField_a_of_type_Vjy).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) + 1));
+    paramStDoCommentRsp = new QCircleCommentUpdateEvent(3, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()), this.jdField_a_of_type_Int);
+    paramStDoCommentRsp.fakeCommentId = paramString;
+    aaak.a().a(paramStDoCommentRsp);
   }
 }
 

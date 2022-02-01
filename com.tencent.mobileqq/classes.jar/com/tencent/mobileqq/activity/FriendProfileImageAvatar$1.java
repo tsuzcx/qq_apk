@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aehr;
-import aehv;
+import aeqv;
+import aeqz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class FriendProfileImageAvatar$1
   implements Runnable
 {
-  public FriendProfileImageAvatar$1(aehr paramaehr, aehv paramaehv) {}
+  public FriendProfileImageAvatar$1(aeqv paramaeqv, aeqz paramaeqz) {}
   
   public void run()
   {

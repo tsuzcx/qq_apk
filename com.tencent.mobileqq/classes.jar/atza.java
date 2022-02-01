@@ -1,18 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class atza
-  implements CompoundButton.OnCheckedChangeListener
+  implements Cloneable
 {
-  public atza(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    atcq.a().e(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public atza(atyz paramatyz) {}
 }
 
 

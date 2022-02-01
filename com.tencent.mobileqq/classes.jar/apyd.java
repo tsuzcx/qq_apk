@@ -1,15 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-class apyd
-  extends AnimatorListenerAdapter
+final class apyd
+  extends apzc
 {
-  apyd(apyb paramapyb) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  apyd(String paramString, ArrayList paramArrayList)
   {
-    super.onAnimationEnd(paramAnimator);
-    apyb.a(this.a, null);
+    super(paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("Nickname", ""));
+    }
   }
 }
 

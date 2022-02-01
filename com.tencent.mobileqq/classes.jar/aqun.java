@@ -1,37 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class aqun
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public int a;
+  public aqun(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public static aqun a(String paramString)
+  public boolean onPreDraw()
   {
-    aqun localaqun = new aqun();
-    try
-    {
-      localaqun.a = new JSONObject(paramString).optInt("preloadPskey", 0);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localaqun.toString());
-      return localaqun;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    }
-    return localaqun;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
-    return localStringBuilder.toString();
+    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ColorNoteSmallScreenRelativeLayout.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqun
  * JD-Core Version:    0.7.0.1
  */

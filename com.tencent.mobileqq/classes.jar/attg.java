@@ -1,28 +1,14 @@
-import java.util.List;
-
-class attg
-  implements atve
+abstract class attg
 {
-  attg(atte paramatte, List paramList, attj paramattj) {}
+  attg(atsi paramatsi) {}
   
-  public void a()
-  {
-    atvo.a(this.jdField_a_of_type_JavaUtilList, atte.a(this.jdField_a_of_type_Atte));
-    if (this.jdField_a_of_type_Attj != null) {
-      this.jdField_a_of_type_Attj.a(2, 0);
-    }
-  }
+  abstract void a(String paramString, int paramInt);
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_Attj != null) {
-      this.jdField_a_of_type_Attj.a(2, 1);
-    }
-  }
+  abstract void a(String paramString, int paramInt, atte paramatte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     attg
  * JD-Core Version:    0.7.0.1
  */

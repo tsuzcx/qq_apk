@@ -22,6 +22,7 @@ public class MiniChatConstants
   public static final String CMD_MINI_REPORT_EVENT = "cmd_mini_report_event";
   public static final String CMD_MINI_SHARE_FAIL_CALLBACK = "cmd_mini_share_fail";
   public static final String CMD_MINI_SHARE_SUC_CALLBACK = "cmd_mini_share_suc";
+  public static final String CMD_MINI_SHARE_UPLOAD_IMAGE = "cmd_mini_share_upload_image";
   public static final String CMD_MSG_TAB_BACK_REFRESH = "cmd_msg_tab_back_refresh";
   public static final String CMD_PROC_BACKGROUND = "cmd_proc_backgound";
   public static final String CMD_PROC_FOREGROUND = "cmd_proc_foregound";
@@ -86,6 +87,7 @@ public class MiniChatConstants
   public static final int MINI_MSG_BUSINESS_XINGQUBULUO = 4;
   public static final int MINI_MSG_BUSINESS_YUEDU = 7;
   public static final int MINI_MSG_ENTRY_COLOR_BLACK = 0;
+  public static final int MINI_MSG_ENTRY_COLOR_CUSTOM = 2;
   public static final int MINI_MSG_ENTRY_COLOR_WHITE = 1;
   public static final int MINI_MSG_ENTRY_TYPE_FIXED = 1;
   public static final int MINI_MSG_ENTRY_TYPE_FLOAT = 0;

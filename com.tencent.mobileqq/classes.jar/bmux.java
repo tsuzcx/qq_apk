@@ -1,10 +1,6 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-public class bmux
-  implements BusinessObserver
+public abstract interface bmux
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public abstract void a();
 }
 
 

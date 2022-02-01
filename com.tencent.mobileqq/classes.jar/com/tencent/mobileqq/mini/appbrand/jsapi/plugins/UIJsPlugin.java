@@ -5,7 +5,7 @@ import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.view.View;
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
@@ -27,6 +27,8 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,6 +73,7 @@ public class UIJsPlugin
   private static final Set<String> S_EVENT_MAP = new UIJsPlugin.1();
   public static final String TAG = "[mini] UIJsPlugin";
   private final int SHARE_PANEL_TYPE = 1;
+  private Map<Integer, JsRuntime> callbackId2Runtime = new HashMap();
   AbsAppBrandPage lastPage = null;
   private int menuButtonHeight = 30;
   private Rect menuButtonRect = new Rect(267, 34, 347, 64);
@@ -189,7 +192,7 @@ public class UIJsPlugin
             localObject5 = ((JSONObject)localObject7).optString("mode");
             localObject7 = ((JSONObject)localObject7).optString("fields");
             if (!"date".equals(localObject5)) {
-              break label648;
+              break label650;
             }
             localObject1 = DateUtils.getSmartDateByTime((String)localObject1);
             if (localObject1 == null)
@@ -204,7 +207,7 @@ public class UIJsPlugin
             QLog.e("[mini] UIJsPlugin", 2, localJSONException4, new Object[0]);
           }
           continue;
-          label648:
+          label650:
           if ("time".equals(localObject5)) {
             AppBrandTask.runTaskOnUiThread(new UIJsPlugin.8(this, DateUtils.getTimeByStrTime(localJSONException4), paramJsRuntime, paramString1, paramInt, (JSONObject)localObject6));
           }
@@ -243,9 +246,9 @@ public class UIJsPlugin
               localObject5 = localJSONObject5.optString("title", "");
               localObject6 = localJSONObject5.optString("content", "");
               bool = localJSONObject5.optBoolean("showCancel", true);
-              localObject7 = localJSONObject5.optString("cancelText", anni.a(2131714529));
+              localObject7 = localJSONObject5.optString("cancelText", anzj.a(2131714638));
               localObject8 = localJSONObject5.optString("cancelColor", "#000000");
-              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", anni.a(2131714528)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
+              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", anzj.a(2131714637)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
             }
             catch (JSONException localJSONException5)
             {
@@ -283,7 +286,7 @@ public class UIJsPlugin
             else
             {
               JSONObject localJSONObject9;
-              label1369:
+              label1372:
               Boolean localBoolean2;
               if ("insertImageView".equals(paramString1)) {
                 for (;;)
@@ -297,7 +300,7 @@ public class UIJsPlugin
                     localObject6 = ((JSONObject)localObject8).optString("data");
                     localObject7 = ((JSONObject)localObject8).optJSONObject("position");
                     if (!((JSONObject)localObject8).has("clickable")) {
-                      break label1369;
+                      break label1372;
                     }
                     Boolean localBoolean1 = Boolean.valueOf(((JSONObject)localObject8).optBoolean("clickable"));
                     localJSONObject9 = ((JSONObject)localObject8).optJSONObject("style");
@@ -314,7 +317,7 @@ public class UIJsPlugin
                   localBoolean2 = null;
                 }
               }
-              label1553:
+              label1556:
               Object localObject2;
               if ("updateImageView".equals(paramString1)) {
                 for (;;)
@@ -326,7 +329,7 @@ public class UIJsPlugin
                     localObject5 = ((JSONObject)localObject7).optString("iconPath");
                     localObject6 = ((JSONObject)localObject7).optJSONObject("position");
                     if (!((JSONObject)localObject7).has("clickable")) {
-                      break label1553;
+                      break label1556;
                     }
                     localBoolean2 = Boolean.valueOf(((JSONObject)localObject7).optBoolean("clickable"));
                     localObject8 = ((JSONObject)localObject7).optJSONObject("style");
@@ -343,7 +346,7 @@ public class UIJsPlugin
                   localObject2 = null;
                 }
               }
-              label1769:
+              label1772:
               JSONObject localJSONObject6;
               if ("scrollWebviewTo".equals(paramString1)) {
                 for (;;)
@@ -356,7 +359,7 @@ public class UIJsPlugin
                     i = (int)(((JSONObject)localObject2).optInt("scrollTop") * f + 0.5F);
                     localObject2 = ((AppBrandPageContainer)this.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(paramJsRuntime.getPageWebViewId());
                     if (localObject2 == null) {
-                      break label1769;
+                      break label1772;
                     }
                     localObject2 = ((AbsAppBrandPage)localObject2).getCurrentPageWebview();
                     if (localObject2 == null) {
@@ -497,15 +500,15 @@ public class UIJsPlugin
                 {
                   localObject3 = getGameBrandRuntime();
                   if ((localObject3 == null) || (!(((GameBrandRuntime)localObject3).activity instanceof GameActivity))) {
-                    break label3341;
+                    break label3344;
                   }
                   localObject3 = ((GameActivity)((GameBrandRuntime)localObject3).activity).getNavBar();
                   if (localObject3 == null) {
-                    break label3341;
+                    break label3344;
                   }
                   localObject3 = ((NavigatorBarForMiniGame)localObject3).getCapsuleButton();
                   if (localObject3 == null) {
-                    break label2977;
+                    break label2980;
                   }
                   i = (int)(((View)localObject3).getWidth() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
                   j = (int)(((View)localObject3).getHeight() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
@@ -564,7 +567,7 @@ public class UIJsPlugin
               }
               break;
               break;
-              label2977:
+              label2980:
               QLog.e("[mini] UIJsPlugin", 1, "EVENT_GET_MENU_BUTTON_RECT menuButtonCantainer is null.");
               this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "json error", paramInt);
               String str = getMenuButtonDefaultValue();
@@ -575,7 +578,7 @@ public class UIJsPlugin
                 break;
               }
               if (!"insertScrollView".equals(paramString1)) {
-                break label3106;
+                break label3109;
               }
               try
               {
@@ -587,9 +590,9 @@ public class UIJsPlugin
               }
             }
             break;
-            label3106:
+            label3109:
             if (!"updateScrollView".equals(paramString1)) {
-              break label3174;
+              break label3177;
             }
             try
             {
@@ -601,9 +604,9 @@ public class UIJsPlugin
             }
           }
           break;
-          label3174:
+          label3177:
           if (!"removeScrollView".equals(paramString1)) {
-            break label3242;
+            break label3245;
           }
           try
           {
@@ -615,14 +618,14 @@ public class UIJsPlugin
           }
         }
         break;
-        label3242:
+        label3245:
         if ("hideHomeButton".equals(paramString1))
         {
           AppBrandTask.runTaskOnUiThread(new UIJsPlugin.34(this, paramJsRuntime, paramString1, paramInt));
           break;
         }
         if (!"showMiniAIOEntrance".equals(paramString1)) {
-          break label3314;
+          break label3317;
         }
         try
         {
@@ -634,14 +637,21 @@ public class UIJsPlugin
         }
       }
       break;
-      label3314:
+      label3317:
       if (!"hideMiniAIOEntrance".equals(paramString1)) {
         break;
       }
       AppBrandTask.runTaskOnUiThread(new UIJsPlugin.36(this, paramJsRuntime, paramString1, paramInt));
       break;
-      label3341:
+      label3344:
       Object localObject4 = null;
+    }
+  }
+  
+  public void handleShareCallback(int paramInt, String paramString)
+  {
+    if (this.callbackId2Runtime.get(Integer.valueOf(paramInt)) != null) {
+      ((JsRuntime)this.callbackId2Runtime.get(Integer.valueOf(paramInt))).evaluateCallbackJs(paramInt, paramString);
     }
   }
   

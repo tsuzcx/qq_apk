@@ -1,41 +1,26 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.Arrays;
+import java.util.List;
 
 class uvo
-  implements uwv
+  implements ulk
 {
-  uvo(uvi paramuvi, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
+  stSimpleMetaFeed a;
   
-  public void a(URL paramURL, int paramInt)
+  uvo(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
-    }
-    uvi.a(this.jdField_a_of_type_Uvi, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+    this.a = paramstSimpleMetaFeed;
   }
   
-  public void a(URL paramURL, Throwable paramThrowable)
+  public List<ull> a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
-    }
-    uvi.a(this.jdField_a_of_type_Uvi, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    return Arrays.asList(new ull[] { new ull(this.a.video_url, this.a.video.duration) });
   }
   
-  public void a(URL paramURL, tds paramtds)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
-    }
-    uvi.a(this.jdField_a_of_type_Uvi, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    return true;
   }
 }
 

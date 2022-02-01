@@ -1,34 +1,34 @@
-import android.graphics.Paint.Align;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface avuu
+public class avuu
+  implements avux
 {
-  public abstract int a();
+  public avuu(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void setAlign(Paint.Align paramAlign);
-  
-  public abstract void setLineMaxWidth(int paramInt);
-  
-  public abstract void setLyric(awdu paramawdu, int paramInt);
-  
-  public abstract void setOnSizeChangeListener(avvf paramavvf);
-  
-  public abstract void setSongId(String paramString);
-  
-  public abstract void setStrokeColor(int paramInt);
-  
-  public abstract void setStrokeWidth(int paramInt);
+  public void onClick(View paramView)
+  {
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Avva != null))
+    {
+      this.a.jdField_a_of_type_Avva.a(0, paramView);
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Avva != null)) {
+      this.a.jdField_a_of_type_Avva.a(4, paramView);
+    }
+    for (;;)
+    {
+      QLog.d("HotVideoRelativeLayout", 2, "click base view");
+      return;
+      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Avva != null)) {
+        this.a.jdField_a_of_type_Avva.a(1, paramView);
+      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Avva != null)) {
+        this.a.jdField_a_of_type_Avva.a(2, paramView);
+      }
+    }
+  }
 }
 
 

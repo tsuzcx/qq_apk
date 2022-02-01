@@ -1,20 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afbj
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public afbj(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public afbj(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    Intent localIntent = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(localIntent);
+    bdll.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

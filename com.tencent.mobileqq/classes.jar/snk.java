@@ -1,17 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class snk
-  implements View.OnClickListener
+public class snk
+  implements DialogInterface.OnDismissListener
 {
-  snk(snh paramsnh, String paramString, View paramView) {}
+  public snk(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    pha.d(this.jdField_a_of_type_Snh.a, this.jdField_a_of_type_JavaLangString);
-    puf.b(this.jdField_a_of_type_AndroidViewView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Context localContext;
+    if (!FastWebActivity.a(this.a))
+    {
+      localContext = this.a.getApplicationContext();
+      if (!FastWebActivity.b(this.a)) {
+        break label80;
+      }
+    }
+    label80:
+    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
+    {
+      ssi.a(localContext, paramDialogInterface, 11, this.a.a);
+      ssy.a(this.a, this.a.getAppInterface(), this.a.a, -1, -1, true, false);
+      FastWebActivity.c(this.a, false);
+      return;
+    }
   }
 }
 

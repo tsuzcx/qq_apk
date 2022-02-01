@@ -1,14 +1,13 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import java.io.File;
 
 public class boes
-  implements bogc
 {
-  public boes(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return AEEditorImageEditFragment.a(this.a).b(AEEditorImageEditFragment.a(this.a)) != paramInt2;
-  }
+  public static final String a = bofe.a + File.separator + "aiscene";
+  public static final String b = a + File.separator + "res";
+  public static final String c = a + File.separator + "res_zip_download";
+  public static final String d = b + File.separator + "AISceneGuide";
+  public static final String e = b + File.separator + "AISceneLoading";
+  public static final String f = b + File.separator + "AutoAISceneAni";
 }
 
 

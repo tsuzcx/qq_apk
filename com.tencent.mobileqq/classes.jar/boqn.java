@@ -1,9 +1,9 @@
-public abstract interface boqn
-{
-  public abstract void a(float paramFloat, String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-}
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
+import com.google.gson.reflect.TypeToken;
+
+final class boqn
+  extends TypeToken<GetCategoryMaterialRsp>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

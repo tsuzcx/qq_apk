@@ -2,31 +2,31 @@ package com.tencent.mobileqq.ark.API;
 
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import apjt;
-import apju;
-import apjv;
-import bglp;
-import bgpa;
+import apxj;
+import apxk;
+import apxl;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class ArkAppSchemeCenter$TelSchemeHandler$1
   implements Runnable
 {
-  public ArkAppSchemeCenter$TelSchemeHandler$1(apjt paramapjt, String paramString) {}
+  public ArkAppSchemeCenter$TelSchemeHandler$1(apxj paramapxj, String paramString) {}
   
   public void run()
   {
-    bgpa localbgpa = bglp.a(BaseActivity.sTopActivity, this.a);
-    TextView localTextView = (TextView)localbgpa.findViewById(2131365475);
+    bhpc localbhpc = bhlq.a(BaseActivity.sTopActivity, this.a);
+    TextView localTextView = (TextView)localbhpc.findViewById(2131365519);
     localTextView.setGravity(17);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
     localTextView.setLayoutParams(localLayoutParams);
-    localbgpa.setPositiveButton(2131691437, new apju(this, localbgpa));
-    localbgpa.setNegativeButton(2131690582, new apjv(this, localbgpa));
+    localbhpc.setPositiveButton(2131691440, new apxk(this, localbhpc));
+    localbhpc.setNegativeButton(2131690580, new apxl(this, localbhpc));
     try
     {
-      localbgpa.show();
+      localbhpc.show();
       return;
     }
     catch (Exception localException) {}

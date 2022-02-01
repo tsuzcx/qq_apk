@@ -1,31 +1,11 @@
-import cooperation.qzone.statistic.access.concept.Key;
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.List;
-
-final class bmhh
-  extends bmhg
+public abstract interface bmhh
+  extends bmhi
 {
-  public String a(List<Statistic> paramList)
-  {
-    Key[] arrayOfKey = ((Statistic)paramList.get(0)).getKeys();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      Statistic localStatistic = (Statistic)paramList.get(i);
-      int k = arrayOfKey.length;
-      int j = 0;
-      while (j < k)
-      {
-        Key localKey = arrayOfKey[j];
-        localStringBuilder.append(localKey).append("→").append(localStatistic.getValue(localKey)).append(",");
-        j += 1;
-      }
-      localStringBuilder.append("\n");
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
+  public abstract void b(boolean paramBoolean, String paramString);
+  
+  public abstract void e(String paramString);
+  
+  public abstract void f(String paramString);
 }
 
 

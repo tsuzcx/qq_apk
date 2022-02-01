@@ -1,6 +1,29 @@
-public abstract interface aghz
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+
+public class aghz
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
+    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("grayTipType:").append(this.jdField_a_of_type_Int).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
+  }
 }
 
 

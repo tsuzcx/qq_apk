@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
 public class afjz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public afjz(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
+  public afjz(RegisterNewBaseActivity.2 param2) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

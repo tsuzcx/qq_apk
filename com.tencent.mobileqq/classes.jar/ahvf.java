@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class ahvf
-  implements DialogInterface.OnClickListener
+  extends aggl
 {
-  public ahvf(PhotoListPanel paramPhotoListPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-  }
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public BubbleImageView a;
+  public TextView b;
 }
 
 

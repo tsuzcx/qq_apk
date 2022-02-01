@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Build.VERSION;
-import baif;
+import bbav;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -10,51 +10,56 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.ReportReqBody;
 import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class RedTouchManager$4
   implements Runnable
 {
-  public RedTouchManager$4(baif parambaif, BusinessInfoCheckUpdate.AppInfo paramAppInfo, long paramLong) {}
+  public RedTouchManager$4(bbav parambbav, BusinessInfoCheckUpdate.AppInfo paramAppInfo, long paramLong) {}
   
   public void run()
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.this$0.a.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("8.4.1.4680");
+    localReportReqBody.clientver.set("8.4.5.4745");
     localReportReqBody.platid.set(109);
-    localReportReqBody.appid.set(baif.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
+    localReportReqBody.appid.set(bbav.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
     localReportReqBody.cmd.set(18);
     localReportReqBody.extend.set(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.extend.get());
     if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.missions.has()) {
       localReportReqBody.missionid.set(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.missions.get());
     }
-    Object localObject1 = new JSONObject();
-    try
+    Object localObject2 = new JSONObject();
+    label231:
+    for (;;)
     {
-      localJSONObject = new JSONObject();
+      try
+      {
+        Object localObject1 = new JSONObject();
+        QLog.e("RedPointLog.RedTouchManager", 1, "residenceReport parse json error " + localObject2);
+      }
+      catch (Exception localException2)
+      {
+        try
+        {
+          ((JSONObject)localObject1).put("time_on_page", this.jdField_a_of_type_Long);
+          localReportReqBody.buffer.set(((JSONObject)localObject1).toString());
+          localObject1 = bbav.a(this.this$0, "RedTouchSvc.ClientReport");
+          ((ToServiceMsg)localObject1).putWupBuffer(localReportReqBody.toByteArray());
+          bbav.a(this.this$0, (ToServiceMsg)localObject1);
+          return;
+        }
+        catch (Exception localException1)
+        {
+          break label231;
+        }
+        localException2 = localException2;
+        localObject1 = localObject2;
+        localObject2 = localException2;
+      }
     }
-    catch (Exception localException2)
-    {
-      JSONObject localJSONObject;
-      label179:
-      break label179;
-    }
-    try
-    {
-      localJSONObject.put("time_on_page", this.jdField_a_of_type_Long);
-      localObject1 = localJSONObject;
-    }
-    catch (Exception localException1)
-    {
-      Object localObject2 = localException2;
-      break label179;
-    }
-    localReportReqBody.buffer.set(((JSONObject)localObject1).toString());
-    localObject1 = baif.a(this.this$0, "RedTouchSvc.ClientReport");
-    ((ToServiceMsg)localObject1).putWupBuffer(localReportReqBody.toByteArray());
-    baif.a(this.this$0, (ToServiceMsg)localObject1);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aaak;
+import aaam;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
@@ -11,12 +13,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
-import zwp;
-import zwr;
 
 public class QCircleSpecialFollowImageView
   extends URLImageView
-  implements zwr<QCircleSpecialFollowUpdateEvent>
+  implements aaam<QCircleSpecialFollowUpdateEvent>
 {
   private FeedCloudMeta.StUser a;
   
@@ -66,14 +66,14 @@ public class QCircleSpecialFollowImageView
   {
     super.onAttachedToWindow();
     if (!isInEditMode()) {
-      zwp.a().a(this);
+      aaak.a().a(this);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)

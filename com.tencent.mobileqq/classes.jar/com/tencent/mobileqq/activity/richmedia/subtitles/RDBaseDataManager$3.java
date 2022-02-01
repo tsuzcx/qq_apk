@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import alne;
-import alno;
-import bdws;
-import bdwt;
+import alyw;
+import alzg;
+import bevl;
+import bevm;
 
 public class RDBaseDataManager$3
   implements Runnable
 {
-  public RDBaseDataManager$3(alno paramalno, alne paramalne, int paramInt, bdwt parambdwt) {}
+  public RDBaseDataManager$3(alzg paramalzg, alyw paramalyw, int paramInt, bevm parambevm) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Alne.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bdwt.a.c, this.jdField_a_of_type_Alne.b);
+    this.this$0.a(this.jdField_a_of_type_Alyw.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bevm.a.c, this.jdField_a_of_type_Alyw.b);
   }
 }
 

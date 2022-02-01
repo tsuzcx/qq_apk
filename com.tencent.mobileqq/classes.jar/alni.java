@@ -1,96 +1,277 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Typeface;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.RecentConfig;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class alni
-  extends alnf
+public class alni
 {
-  int jdField_a_of_type_Int = -1;
-  alnx jdField_a_of_type_Alnx = null;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  alnx b = null;
+  private static alni jdField_a_of_type_Alni;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private RecentConfig jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig;
+  public String a;
+  public final List<RecentBaseData> a;
+  private ConcurrentHashMap<String, RecentBaseData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(109);
+  public boolean a;
+  public List<RecentBaseData> b;
+  private boolean b;
   
-  public alni(long paramLong1, long paramLong2, boolean paramBoolean, String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, Typeface paramTypeface)
+  private alni()
   {
-    super(paramLong1, paramLong2, paramBoolean);
-    a(6, paramFloat3);
-    a(7, paramFloat4);
-    this.jdField_a_of_type_Alnx = new alnx(paramString, paramFloat1, paramInt, paramFloat5, paramFloat6, 2, -1.0F, paramTypeface);
-    this.b = new alnx(paramString, paramFloat1, -16777216, paramFloat5, paramFloat6, 2, paramFloat2, paramTypeface);
-    a(3, this.b.jdField_a_of_type_Float);
-    paramInt = this.b.a();
-    paramFloat1 = this.b.b * 2.0F / paramInt;
-    if (paramInt == 1) {
-      paramFloat1 = this.b.b;
-    }
-    a(4, paramFloat1);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, paramFloat1);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(99);
+  }
+  
+  public static alni a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.b.a(paramString, 0.0F, paramFloat1 - this.b.b);
-      this.jdField_a_of_type_Alnx.a(paramString, 0.0F, paramFloat1 - this.b.b);
+      if (jdField_a_of_type_Alni == null) {
+        jdField_a_of_type_Alni = new alni();
+      }
+      return jdField_a_of_type_Alni;
     }
   }
   
-  public void a(Canvas paramCanvas)
+  public static String a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    return paramString + "-" + paramInt;
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList)
+  {
+    blqm.a("splitRecents");
+    ArrayList localArrayList1 = new ArrayList(4);
+    ArrayList localArrayList2 = new ArrayList(4);
+    ArrayList localArrayList3 = new ArrayList(4);
+    localArrayList1.add(paramQQAppInterface.getCurrentAccountUin());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.b.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
-      this.jdField_a_of_type_Alnx.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      switch (localRecentUser.getType())
+      {
+      default: 
+        break;
+      case 0: 
+        localArrayList1.add(localRecentUser.uin);
+        break;
+      case 1: 
+        localArrayList2.add(localRecentUser.uin);
+        break;
+      case 3000: 
+        localArrayList3.add(localRecentUser.uin);
+      }
+    }
+    blqm.a();
+    if (localArrayList1.size() > 2) {
+      ((anyw)paramQQAppInterface.getManager(51)).a(localArrayList1);
+    }
+    if (localArrayList3.size() > 2) {
+      ((anws)paramQQAppInterface.getManager(53)).a(localArrayList3);
+    }
+    if (localArrayList2.size() > 2) {
+      ((TroopManager)paramQQAppInterface.getManager(52)).a(localArrayList2);
+    }
+  }
+  
+  public RecentBaseData a(String paramString)
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+      {
+        paramString = (RecentBaseData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        return paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, paramString.toString());
+      }
+    }
+    return null;
+  }
+  
+  public RecentConfig a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig = new alpj();
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig;
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      }
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilList.clear();
+      }
       return;
     }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, a(6), a(7), null);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
-  public void a(RenderBuffer paramRenderBuffer)
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
   {
-    if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    if (this.jdField_a_of_type_Int >= 0) {
-      a(paramRenderBuffer, this.jdField_a_of_type_Int, a(3), a(4), null, a(6), a(7));
-    }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (a()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)) && (paramRecentBaseData != null)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramRecentBaseData);
     }
   }
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    float f;
-    do
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+  }
+  
+  public void a(List<RecentBaseData> paramList, String paramString)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentDataListManager", 2, new Object[] { "preloadRecentBaseData, isPreloaded= ", Boolean.valueOf(this.jdField_b_of_type_Boolean), ", forUI=", Boolean.valueOf(paramBoolean2), ", loadMore=", Boolean.valueOf(paramBoolean1) });
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      return true;
+    }
+    if (paramBoolean2) {
+      this.jdField_b_of_type_Boolean = true;
+    }
+    bhsq.a(null, "Recent_LoadData_getManagers");
+    Object localObject1;
+    if (paramQQAppInterface == null)
     {
-      do
-      {
-        return;
-      } while (paramString.equals(this.jdField_a_of_type_Alnx.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Alnx.a(paramString);
-      this.b.a(paramString);
-      int i = this.b.a();
-      f = this.b.b * 2.0F / i;
-      if (i == 1) {
-        f = this.b.b;
+      localObject1 = null;
+      bhsq.a("Recent_LoadData_getManagers", null);
+      if (localObject1 == null) {
+        break label634;
       }
-      a(4, f);
-      a(3, this.b.jdField_a_of_type_Float);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      bhsq.a(null, "Recent_LoadData_query_recent_list");
+      localObject1 = ((apaw)localObject1).getRecentList(true);
+      bhsq.a("Recent_LoadData_query_recent_list", null);
+    }
+    for (;;)
+    {
+      label131:
+      int k;
+      int j;
+      label206:
+      Object localObject2;
+      if (localObject1 == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        i = 0;
+        k = Math.min(10, i);
+        if (k <= 0) {
+          break label557;
+        }
+        bhsq.a(null, "Recent_LoadData_preloadData");
+        if (!alok.a(paramQQAppInterface)) {
+          a(paramQQAppInterface, (List)localObject1);
+        }
+        bhsq.a("Recent_LoadData_preloadData", "Recent_LoadData_convert");
+        this.jdField_b_of_type_JavaUtilList = new ArrayList(k);
+        this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
+        if (!alok.a(paramQQAppInterface)) {
+          break label486;
+        }
+        i = 0;
+        j = 0;
+        if ((i >= ((List)localObject1).size()) || (i >= 10)) {
+          break label326;
+        }
+        localObject2 = (RecentUser)((List)localObject1).get(i);
+        RecentBaseData localRecentBaseData = alok.a(paramQQAppInterface, paramContext, (RecentUser)localObject2);
+        if (localRecentBaseData == null) {
+          break label301;
+        }
+        this.jdField_b_of_type_JavaUtilList.add(localRecentBaseData);
+        j += 1;
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, f);
-    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.b.a(paramString, 0.0F, f - this.b.b);
-    this.jdField_a_of_type_Alnx.a(paramString, 0.0F, f - this.b.b);
+      for (;;)
+      {
+        i += 1;
+        break label206;
+        localObject1 = paramQQAppInterface.a();
+        break;
+        i = ((List)localObject1).size();
+        break label131;
+        label301:
+        localObject2 = almc.a((RecentUser)localObject2, paramQQAppInterface, paramContext, true);
+        this.jdField_b_of_type_JavaUtilList.add(localObject2);
+      }
+      label326:
+      alok.a(((List)localObject1).size(), ((List)localObject1).size() - j);
+      QLog.d("RecentDataListManager", 1, new Object[] { "Recover from parcel, success size=", Integer.valueOf(j), " RU size=", Integer.valueOf(((List)localObject1).size()) });
+      for (;;)
+      {
+        bhsq.a("Recent_LoadData_convert", null);
+        bhsq.a(null, "Recent_LoadMoreData_getFaceDrawable");
+        paramContext = new alno(paramQQAppInterface);
+        if ((paramQQAppInterface.isLogin()) && (Friends.isValidUin(paramQQAppInterface.getCurrentAccountUin()))) {
+          paramContext.a(0, paramQQAppInterface.getCurrentAccountUin());
+        }
+        i = 0;
+        while (i < k)
+        {
+          paramQQAppInterface = (RecentUser)((List)localObject1).get(i);
+          if (paramQQAppInterface != null) {
+            paramContext.a(paramQQAppInterface.getType(), paramQQAppInterface.uin);
+          }
+          i += 1;
+        }
+        label486:
+        almc.a((List)localObject1, paramQQAppInterface, paramContext, this.jdField_b_of_type_JavaUtilList, k);
+        QLog.d("RecentDataListManager", 1, new Object[] { "Recover from old way, success size= RU size=", Integer.valueOf(((List)localObject1).size()), " limit=", Integer.valueOf(k) });
+      }
+      this.jdField_a_of_type_Boolean = true;
+      bhsq.a("Recent_LoadMoreData_getFaceDrawable", null);
+      label557:
+      paramQQAppInterface = this.jdField_b_of_type_JavaUtilList;
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder().append("preloadRecentBaseData end: ").append(this.jdField_b_of_type_Boolean);
+        if (paramQQAppInterface == null) {
+          break label628;
+        }
+      }
+      label628:
+      for (int i = paramQQAppInterface.size();; i = 0)
+      {
+        QLog.d("RecentDataListManager", 2, i);
+        paramBoolean1 = bool;
+        if (k > 0) {
+          paramBoolean1 = true;
+        }
+        return paramBoolean1;
+      }
+      label634:
+      localObject1 = null;
+    }
   }
 }
 

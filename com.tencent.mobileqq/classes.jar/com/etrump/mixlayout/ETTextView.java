@@ -1,8 +1,8 @@
 package com.etrump.mixlayout;
 
-import afur;
-import ahgz;
-import ahkn;
+import agej;
+import ahql;
+import ahtx;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -29,13 +29,13 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import anll;
-import apwt;
-import apym;
-import bdol;
-import bgzt;
-import bgzu;
-import bhud;
+import anxh;
+import aqkt;
+import aqmm;
+import behh;
+import bhzz;
+import biaa;
+import biuy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -192,33 +192,33 @@ public class ETTextView
   
   private void dealSmallEmojiClick(int paramInt1, int paramInt2)
   {
-    apwt localapwt;
+    aqkt localaqkt;
     Object localObject;
     Resources localResources;
     boolean bool;
     if (this.mLayout.a(paramInt1, paramInt2) != null)
     {
-      localapwt = (apwt)getTag(2131363971);
-      localObject = (ChatMessage)getTag(2131364423);
+      localaqkt = (aqkt)getTag(2131363997);
+      localObject = (ChatMessage)getTag(2131364467);
       localResources = getResources();
       bool = false;
       if (localObject != null) {
         bool = ((ChatMessage)localObject).isSend();
       }
       localObject = getBackground();
-      if ((localObject == null) || (!(localObject instanceof apym))) {
+      if ((localObject == null) || (!(localObject instanceof aqmm))) {
         break label82;
       }
-      ((apym)localObject).jdField_a_of_type_Boolean = true;
+      ((aqmm)localObject).jdField_a_of_type_Boolean = true;
     }
     label82:
-    while ((localObject == null) || (localapwt == null)) {
+    while ((localObject == null) || (localaqkt == null)) {
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130849989;; paramInt1 = 2130849813)
+    for (paramInt1 = 2130850000;; paramInt1 = 2130849824)
     {
-      localapwt.a(this, localResources.getDrawable(paramInt1));
+      localaqkt.a(this, localResources.getDrawable(paramInt1));
       return;
     }
   }
@@ -449,7 +449,7 @@ public class ETTextView
   {
     if (!this.hasComputeComplexScript)
     {
-      this.hasComplexScript = bdol.b(getText().toString());
+      this.hasComplexScript = behh.b(getText().toString());
       this.hasComputeComplexScript = true;
     }
     return (this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 4) && (!this.hasComplexScript);
@@ -473,23 +473,23 @@ public class ETTextView
       if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().a != null))
       {
         localObject1 = ((ChatFragment)localObject1).a().a;
-        localObject1 = afur.a((ListView)localObject1, afur.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
+        localObject1 = agej.a((ListView)localObject1, agej.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
         Object localObject2;
-        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof ahkn)))
+        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof ahtx)))
         {
-          localObject2 = (ahkn)((View)localObject1).getTag();
-          if ((((ahkn)localObject2).d == null) || (((ahkn)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131298998))) {}
+          localObject2 = (ahtx)((View)localObject1).getTag();
+          if ((((ahtx)localObject2).d == null) || (((ahtx)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131299011))) {}
         }
         else
         {
           do
           {
             return true;
-            if ((localObject1 == null) || (!(afur.a((View)localObject1) instanceof ahgz))) {
+            if ((localObject1 == null) || (!(agej.a((View)localObject1) instanceof ahql))) {
               break;
             }
-            localObject2 = (ahgz)afur.a((View)localObject1);
-          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131298998));
+            localObject2 = (ahql)agej.a((View)localObject1);
+          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299011));
         }
       }
     }
@@ -711,8 +711,8 @@ public class ETTextView
         this.mLayout.jdField_a_of_type_Long = -1L;
         if ((!mReportError) && (localThrowable.getMessage().contains("textlayout")))
         {
-          bgzu.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
-          bgzt.a("individual_v2_font_measure_error", "font_measure_error");
+          biaa.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
+          bhzz.a("individual_v2_font_measure_error", "font_measure_error");
           mReportError = true;
         }
         super.onMeasure(paramInt1, paramInt2);
@@ -799,7 +799,7 @@ public class ETTextView
         if (this.mLayout.jdField_b_of_type_Boolean)
         {
           f1 = gc.c;
-          if (anll.a() == 18.0F) {
+          if (anxh.a() == 18.0F) {
             f1 = gc.e;
           }
           ((ETFont)localObject2).setSize(f1 * getTextSize());

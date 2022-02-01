@@ -1,72 +1,16 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.handlers.ViolaHandler.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
-import com.tencent.viola.core.ViolaDomManager;
-import com.tencent.viola.core.ViolaSDKManager;
-import com.tencent.widget.AbsListView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pus
-  extends ptx
+class pus
+  implements View.OnClickListener
 {
-  private ttd a = new ttd();
+  pus(puq parampuq, ppu paramppu) {}
   
-  private void a(BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(View paramView)
   {
-    ViolaSDKManager.getInstance().getDomManager().post(new ViolaHandler.1(this, paramBaseArticleInfo));
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560357, paramViewGroup, false);
-      localView.setTag(new put(this.a, (WormholeView)localView, this));
-    }
-    paramView = (put)localView.getTag();
-    paramViewGroup = a(paramInt);
-    if ((paramViewGroup instanceof BaseArticleInfo))
-    {
-      paramViewGroup = (BaseArticleInfo)paramViewGroup;
-      paramView.a(paramInt);
-      paramView.a(paramViewGroup);
-      paramView.a(paramViewGroup, paramInt);
-    }
-    return localView;
-  }
-  
-  public void a(View paramView1, View paramView2, BaseArticleInfo paramBaseArticleInfo, int paramInt)
-  {
-    a(paramBaseArticleInfo);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a != null) {
-      this.a.a(paramAbsListView);
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return paramInt == 136;
-  }
-  
-  public void d()
-  {
-    if (this.a != null) {
-      this.a.b();
-    }
+    sel.a(this.jdField_a_of_type_Ppu.a(), 0, 1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

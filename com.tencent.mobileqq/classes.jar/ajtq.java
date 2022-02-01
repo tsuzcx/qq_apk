@@ -1,19 +1,17 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 
 public class ajtq
-  implements View.OnClickListener
+  extends View.AccessibilityDelegate
 {
-  public ajtq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ajtq(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void onClick(View paramView)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 

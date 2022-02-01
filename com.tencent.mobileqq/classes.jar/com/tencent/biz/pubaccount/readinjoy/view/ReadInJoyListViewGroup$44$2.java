@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import sri;
+import sim;
 
 public class ReadInJoyListViewGroup$44$2
   implements Runnable
 {
-  public ReadInJoyListViewGroup$44$2(sri paramsri) {}
+  public ReadInJoyListViewGroup$44$2(sim paramsim) {}
   
   public void run()
   {

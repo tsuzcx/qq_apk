@@ -1,90 +1,26 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.annotation.SuppressLint;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
 public class azgu
+  implements View.OnTouchListener
 {
-  public static int a;
-  public static SparseArray<String> a;
-  public static String a;
-  private static AtomicBoolean a;
+  public azgu(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  static
+  @SuppressLint({"ClickableViewAccessibility"})
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_Int = 50;
-    jdField_a_of_type_JavaLangString = anni.a(2131715440);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {}
-    JSONObject localJSONObject;
-    JSONArray localJSONArray;
-    for (;;)
+    switch (paramMotionEvent.getAction())
     {
-      try
-      {
-        QLog.e("VipProfileDiyCardConfig", 1, "parseJson, app null");
-        return;
-      }
-      finally {}
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "card.diyFontConfig.json", true, null);
-        if (localJSONObject == null) {
-          break label217;
-        }
-        localJSONArray = localJSONObject.optJSONArray("fontList");
-        if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-          if (jdField_a_of_type_AndroidUtilSparseArray == null)
-          {
-            jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-            break label227;
-          }
-        }
-      }
     }
     for (;;)
     {
-      if (i < localJSONArray.length())
-      {
-        paramAppRuntime = localJSONArray.optJSONObject(i);
-        int j = paramAppRuntime.optInt("id");
-        String str = paramAppRuntime.optString("imgUrl");
-        if (TextUtils.isEmpty(str)) {
-          break label232;
-        }
-        paramAppRuntime = str;
-        if (!str.startsWith("http:"))
-        {
-          paramAppRuntime = str;
-          if (!str.startsWith("https:")) {
-            paramAppRuntime = "http:" + str;
-          }
-        }
-        jdField_a_of_type_AndroidUtilSparseArray.put(j, paramAppRuntime);
-        break label232;
-        jdField_a_of_type_AndroidUtilSparseArray.clear();
-      }
-      else
-      {
-        jdField_a_of_type_Int = localJSONObject.optInt("maxTextLength", jdField_a_of_type_Int);
-        jdField_a_of_type_JavaLangString = localJSONObject.optString("inputTip", jdField_a_of_type_JavaLangString);
-        label217:
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        break;
-      }
-      label227:
-      int i = 0;
+      return false;
+      paramView.setAlpha(0.5F);
       continue;
-      label232:
-      i += 1;
+      paramView.setAlpha(1.0F);
     }
   }
 }

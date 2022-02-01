@@ -1,25 +1,7 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-
-class ahql
-  implements Animation.AnimationListener
+public class ahql
+  extends agen
 {
-  ahql(ahqj paramahqj) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (ahqj.a(this.a) != null) {
-      ahqj.a(this.a).setVisibility(8);
-    }
-    if (ahqj.a(this.a) != null) {
-      ahqj.a(this.a).c();
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public bbvy a;
 }
 
 

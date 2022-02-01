@@ -1,86 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class ohe
-  extends pmn
+  implements ViewBase.OnClickListener
 {
-  ohe(oha paramoha) {}
+  ohe(ohc paramohc) {}
   
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if ((paramList != null) && (paramList.size() > 0)) {
-        this.a.a(paramList);
-      }
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (ChannelCoverInfo)localIterator.next();
-        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
-          for (;;)
-          {
-            int i;
-            try
-            {
-              for (;;)
-              {
-                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
-                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
-                  break;
-                }
-                localObject = ((URL)localObject).getQuery().split("[&]");
-                int j = localObject.length;
-                i = 0;
-                if (i >= j) {
-                  break;
-                }
-                String[] arrayOfString = localObject[i].split("[=]");
-                if (arrayOfString.length <= 1) {
-                  break label272;
-                }
-                boolean bool = "topicid".equals(arrayOfString[0]);
-                if (!bool) {
-                  break label272;
-                }
-                try
-                {
-                  Integer.valueOf(arrayOfString[1]).intValue();
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
-                }
-                catch (Exception localException) {}
-              }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topic is illegal");
-            }
-            catch (MalformedURLException localMalformedURLException) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
-            break;
-            label272:
-            i += 1;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate infos size" + paramList.size());
-      }
+    if (paramViewBase.getEventAttachedData() == null) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate" + paramBoolean);
-    }
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
+    paramViewBase.getNativeView().getContext().startActivity(localIntent);
   }
 }
 

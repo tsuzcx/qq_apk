@@ -1,6 +1,25 @@
-public abstract interface ajhv
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
+
+public class ajhv
+  extends aoeg
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public ajhv(PublicView paramPublicView) {}
+  
+  public void onUpdateRecommendList(boolean paramBoolean)
+  {
+    if (true == paramBoolean)
+    {
+      PublicView.a(this.a).a(0);
+      PublicView.a(this.a).sendEmptyMessage(1);
+      PublicView.a(this.a).sendEmptyMessage(3);
+      return;
+    }
+    PublicView.a(this.a).springBackOverScrollHeaderView();
+    PublicView.a(this.a, 1, 2131718362);
+    PublicView.a(this.a);
+  }
 }
 
 

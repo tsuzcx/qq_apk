@@ -1,16 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aepc
   implements View.OnClickListener
 {
-  public aepc(MainFragment paramMainFragment) {}
+  public aepc(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.g();
+    ForwardTroopListFragment.a(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

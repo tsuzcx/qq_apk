@@ -1,13 +1,50 @@
-import com.tencent.YTFace.model.FaceStatus;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aozz
+  extends aoxg
 {
-  public int a = 3000;
-  public FaceStatus[] a;
-  
-  public String toString()
+  public aozz(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    try
+    {
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      if (TextUtils.isEmpty(arpx.a().h())) {}
+      for (String str = "https://docs.qq.com/desktop/m/index.html?_from=1";; str = arpx.a().h())
+      {
+        this.a.startActivity(localIntent.putExtra("url", str));
+        break;
+      }
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TeamWorkListAction", 1, "doAction error: " + localException.getMessage());
+      a("TeamWorkListAction");
+    }
+    return false;
   }
 }
 

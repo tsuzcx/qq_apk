@@ -1,34 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
 public class bmjy
+  implements DialogInterface.OnDismissListener
 {
-  public static int a(String paramString)
-  {
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      return i;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      a("toInt convert error:" + paramString);
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      a("toInt convert error:" + paramString.getMessage());
-    }
-    return 0;
-  }
+  public bmjy(DatalineBridgeActivity paramDatalineBridgeActivity) {}
   
-  private static final void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      QLog.e("SafeUtil", 1, paramString);
-      return;
-    }
-    catch (Exception paramString) {}
+    this.a.finish();
   }
 }
 

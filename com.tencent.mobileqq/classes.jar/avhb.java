@@ -1,37 +1,104 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.data.IntimateInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class avhb
-  extends WtloginListener
+public class avhb
+  implements anui
 {
-  avhb(avha paramavha, String paramString) {}
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajpy> paramArrayList) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
-  {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.i("XProxy", 2, "获取Now结合版A1票据返回异常，cmd = " + paramInt + " errmsg = " + paramErrMsg.getMessage());
-    }
-    avha.a(this.jdField_a_of_type_Avha, this.jdField_a_of_type_JavaLangString, false, paramInt);
-  }
+  protected void a(boolean paramBoolean, long paramLong) {}
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt2 == 0)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Avha.jdField_a_of_type_Avhd.a = this.jdField_a_of_type_Avha.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_Avha.jdField_a_of_type_Long = System.currentTimeMillis();
-      avha.a(this.jdField_a_of_type_Avha, this.jdField_a_of_type_JavaLangString, true, 0);
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
+                    return;
+                  }
+                  a(false, "", null);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+                    return;
+                  }
+                  a(paramBoolean, "", false);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+                    return;
+                  }
+                  a(false, "");
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  }
+                  a(false, "", -1, -1, -1);
+                  return;
+                  if ((paramBoolean) && ((paramObject instanceof Object[])))
+                  {
+                    a(paramBoolean, (Object[])paramObject);
+                    return;
+                  }
+                  a(false, null);
+                  return;
+                } while (!(paramObject instanceof Object[]));
+                paramObject = (Object[])paramObject;
+              } while (paramObject.length < 2);
+              a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+          } while (paramObject.length < 1);
+          a(paramBoolean, ((Long)paramObject[0]).longValue());
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length < 2);
+      a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("XProxy", 2, "获取Now结合版A1票据返回失败，retCode = " + paramInt2);
-    }
-    avha.a(this.jdField_a_of_type_Avha, this.jdField_a_of_type_JavaLangString, false, paramInt2);
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
   }
 }
 

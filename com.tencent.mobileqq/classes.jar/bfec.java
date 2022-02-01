@@ -1,78 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.List;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import mqq.app.QQPermissionCallback;
 
-public class bfec
+class bfec
+  implements QQPermissionCallback
 {
-  public bfpp a(QQAppInterface paramQQAppInterface, bfpo parambfpo, String paramString, int paramInt)
+  bfec(bfeb parambfeb) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("gid", paramString);
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new bfpp("https://qun.qq.com/cgi-bin/qun/web/kewen/get_search_keywords", "POST", parambfpo, paramInt, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
-    }
+    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
   }
   
-  public bfpp a(QQAppInterface paramQQAppInterface, bfpo parambfpo, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("key", paramString);
-      localBundle.putString("start", String.valueOf(paramInt1));
-      localBundle.putString("num", String.valueOf(paramInt2));
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new bfpp("https://qun.qq.com/cgi-bin/qun/web/kewen/search", "POST", parambfpo, paramInt3, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
-    }
-  }
-  
-  public bfpp a(QQAppInterface paramQQAppInterface, bfpo parambfpo, String paramString, List<Integer> paramList, int paramInt)
-  {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("kid", paramString);
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        localBundle.putString("pid_list", paramList.toString());
-      }
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new bfpp("https://qun.qq.com/cgi-bin/qun/web/kewen/get_kewen_info", "POST", parambfpo, paramInt, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

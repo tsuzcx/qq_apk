@@ -1,35 +1,77 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class awrl
-  implements ValueAnimator.AnimatorUpdateListener
+class awrl
+  implements awpp
 {
-  public awrl(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
+  awrl(awrk paramawrk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(awpk paramawpk, int paramInt)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((this.b - this.jdField_a_of_type_Int) * f1));
-    paramValueAnimator.topMargin = (this.c + Math.round((this.d - this.c) * f1));
-    paramValueAnimator.width = (this.e + Math.round((this.f - this.e) * f1));
-    int i = this.g;
-    int j = MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getHeight() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingTop() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingBottom();
-    if (j > 0) {
-      i = j;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramawpk + " mRoomKey: " + awrk.a(this.a));
     }
-    for (;;)
+    QQToast.a(awrk.a(this.a), "已在其他设备进行共享", 0).a();
+    awrk.a(this.a).setResult(1);
+    awrk.a(this.a).finish();
+  }
+  
+  public void a(awpk paramawpk, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramawpk, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
+    }
+    if (!paramawpk.equals(awrk.a(this.a))) {}
+    do
     {
-      j = this.h;
-      paramValueAnimator.height = (Math.round((i - this.h) * f1) + j);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-      this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+      do
+      {
+        return;
+        if (paramInt1 != 10100) {
+          break;
+        }
+      } while ((awrk.a(this.a) == null) || (awrk.a(this.a).isFinishing()));
+      awrk.a(this.a).setResult(1);
+      awql.a(awrk.a(this.a));
+      return;
+    } while ((paramInt1 != 10101) || (awrk.a(this.a) == null) || (awrk.a(this.a).isFinishing()));
+    awrk.a(this.a).setResult(1);
+    awql.b(awrk.a(this.a));
+  }
+  
+  public void a(awpk paramawpk, LocationRoom.Venue paramVenue, List<awpi> paramList)
+  {
+    if ((!paramawpk.equals(awrk.a(this.a))) || (awrk.a(this.a).isFinishing())) {
       return;
     }
+    paramVenue = paramList.iterator();
+    while (paramVenue.hasNext())
+    {
+      paramList = (awpi)paramVenue.next();
+      Bitmap localBitmap = this.a.a(paramList.a());
+      if (localBitmap != null)
+      {
+        localBitmap = bhmq.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+        awrk.a(this.a).a(paramList.a(), localBitmap);
+      }
+    }
+    awrk.a(this.a).a(paramawpk);
+  }
+  
+  public void b(awpk paramawpk, int paramInt)
+  {
+    if (!paramawpk.equals(awrk.a(this.a))) {}
+    while ((paramInt == 2) || (paramInt == 1)) {
+      return;
+    }
+    awrk.a(this.a).setResult(1);
+    awql.a(awrk.a(this.a));
   }
 }
 

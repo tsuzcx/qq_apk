@@ -1,10 +1,39 @@
-public final class ayzz
-  extends ayzn
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
+
+public class ayzz
+  implements ayzl
 {
-  protected int a()
+  public ayzz(ScanOcrActivity paramScanOcrActivity) {}
+  
+  public void a()
   {
-    return 506;
+    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
   }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    }
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean) {}
 }
 
 

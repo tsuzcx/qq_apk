@@ -1,11 +1,19 @@
-public abstract interface apcs
-  extends apcx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
+
+public final class apcs
+  implements Parcelable.Creator<SosoInterface.SosoCell>
 {
-  public abstract void a(int paramInt);
+  public SosoInterface.SosoCell a(Parcel paramParcel)
+  {
+    return new SosoInterface.SosoCell(paramParcel);
+  }
   
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat);
+  public SosoInterface.SosoCell[] a(int paramInt)
+  {
+    return new SosoInterface.SosoCell[paramInt];
+  }
 }
 
 

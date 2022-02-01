@@ -1,36 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBBoolField;
-import tencent.im.oidb.cmd0x934.cmd0x934.Item;
-
-public class bfwi
+public abstract interface bfwi
 {
-  public bfwj a;
-  public boolean a;
-  public bfwj b;
-  public boolean b;
+  public abstract void a();
   
-  public static bfwi a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    bfwi localbfwi = new bfwi();
-    localbfwi.jdField_a_of_type_Bfwj = bfwj.a(paramString4, paramString3);
-    localbfwi.b = bfwj.a(paramString2, paramString1);
-    localbfwi.jdField_a_of_type_Boolean = false;
-    return localbfwi;
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2, bhva parambhva);
   
-  public static bfwi a(cmd0x934.Item paramItem)
-  {
-    bfwi localbfwi = new bfwi();
-    localbfwi.jdField_a_of_type_Bfwj = bfwj.a(paramItem.off_info);
-    localbfwi.b = bfwj.a(paramItem.on_info);
-    localbfwi.jdField_a_of_type_Boolean = paramItem.hot.get();
-    return localbfwi;
-  }
+  public abstract void a(bhva parambhva);
   
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.b.a);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(byte[] paramArrayOfByte, long paramLong, String paramString);
+  
+  public abstract void b(bhva parambhva);
 }
 
 

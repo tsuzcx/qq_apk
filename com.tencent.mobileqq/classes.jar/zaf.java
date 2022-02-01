@@ -1,24 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-class zaf
-  implements Animation.AnimationListener
+public class zaf
+  implements Comparable<zaf>
 {
-  zaf(zae paramzae) {}
+  public int a;
+  public String a;
+  int b;
+  public String b;
+  public String c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public zaf()
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Yzz != null) {
-      this.a.a.jdField_a_of_type_Yzz.a(null);
-    }
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public zaf(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a(zaf paramzaf)
+  {
+    if (paramzaf == null) {}
+    do
+    {
+      return -1;
+      if (this.jdField_b_of_type_Int < paramzaf.jdField_b_of_type_Int) {
+        return 1;
+      }
+    } while (this.jdField_b_of_type_Int != paramzaf.jdField_b_of_type_Int);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
+  }
 }
 
 

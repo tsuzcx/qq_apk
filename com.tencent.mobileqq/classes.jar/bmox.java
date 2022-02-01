@@ -1,32 +1,17 @@
-import com.tencent.biz.webviewplugin.OpenCenterPlugin;
-import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
 
-final class bmox
-  extends WebAccelerateHelper.CommonJsPluginFactory
+class bmox
+  implements aumz
 {
-  public List<WebViewPlugin> getCommonJsPlugin()
+  bmox(bmow parambmow, Activity paramActivity, Intent paramIntent) {}
+  
+  public void a()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new amgh());
-    localArrayList.add(new abbc());
-    localArrayList.add(new abcl());
-    localArrayList.add(new abbl());
-    localArrayList.add(new bhta());
-    localArrayList.add(new VasWebReport());
-    localArrayList.add(new avob());
-    localArrayList.add(new OpenCenterPlugin());
-    localArrayList.add(new MiniAppPlugin());
-    localArrayList.add(new abcg());
-    localArrayList.add(new QzoneWebMusicJsPlugin());
-    localArrayList.add(new abdf());
-    return localArrayList;
+    auxu.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
   }
+  
+  public void b() {}
 }
 
 

@@ -1,13 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class bqcz
-  implements bqbv
+class bqcz
+  implements bprh
 {
-  public void a(boolean paramBoolean)
+  bqcz(bqcu parambqcu) {}
+  
+  public void aV_()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
-    }
+    bqcu.a(this.a).d();
+  }
+  
+  public void b()
+  {
+    bqcu.a(this.a).d();
+    bqcu.a(this.a).a();
+    bqcu.a(this.a).a(bqcu.a(this.a));
+  }
+  
+  public void c()
+  {
+    bqcu.a(this.a).d();
   }
 }
 

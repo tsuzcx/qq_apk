@@ -1,99 +1,61 @@
 import android.content.Context;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.tofumsg.AIOTofuMsgHelper.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bejg
-  extends behi
+  implements agvc
 {
-  Context a;
-  protected boolean c;
-  String d;
-  String e;
-  String f;
-  String g;
-  String h = "0";
-  protected String i;
+  private int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  bejo jdField_a_of_type_Bejo;
+  public BaseChatPie a;
+  public QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bejg(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public bejg(BaseChatPie paramBaseChatPie)
   {
-    super(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_AndroidContentContext = paramBaseActivity.getApplicationContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   }
   
-  protected void a(Bundle paramBundle)
+  public void a(int paramInt)
   {
-    super.a(paramBundle);
-    this.d = this.jdField_a_of_type_OrgJsonJSONObject.optString("bid");
-    this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("pid");
-    this.f = this.jdField_a_of_type_OrgJsonJSONObject.optString("cid");
-    this.g = this.jdField_a_of_type_OrgJsonJSONObject.optString("rid");
-    if ("detail".equals(this.jdField_a_of_type_OrgJsonJSONObject.optString("from"))) {}
-    for (paramBundle = "0";; paramBundle = "1")
+    switch (paramInt)
     {
-      this.h = paramBundle;
-      this.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("extparam");
-      this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime().getAccount() + "-" + this.d + "-" + this.e + "-" + this.f + "-" + this.g);
-      bfqu.a("two_comment", "exp", this.d, this.h, "", "");
+    }
+    do
+    {
       return;
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (this.jdField_c_of_type_Boolean) {
+      ThreadManager.executeOnSubThread(new AIOTofuMsgHelper.1(this));
       return;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("pid", this.e);
-      localJSONObject.put("cid", this.f);
-      localJSONObject.put("bid", Long.parseLong(this.d));
-      localJSONObject.put("target_rid", this.g);
-      localJSONObject.put("comment", TroopBarPublishUtils.a(paramString, null, null));
-      localJSONObject.put("version", "8.4.1.4680");
-      localJSONObject.put("extparam", this.i);
-      paramString = new NewIntent(this.jdField_a_of_type_AndroidContentContext, niq.class);
-      paramString.putExtra("cmd", "MQUpdateSvc_com_qq_xiaoqu.web.recomment");
-      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-      localWebSsoRequestBody.type.set(0);
-      localWebSsoRequestBody.data.set(localJSONObject.toString());
-      paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      paramString.setObserver(new bejh(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime().startServlet(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131695571, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      this.jdField_c_of_type_Boolean = false;
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_AndroidWidgetEditText.length() > 0)) {}
-    for (String str = "0";; str = "1")
-    {
-      bfqu.a("two_comment", "un", this.d, str, "", "");
-      if (!this.jdField_a_of_type_Boolean) {
-        a(this.jdField_c_of_type_JavaLangString, null, false);
+      QLog.i("Tofu_AIOTofuMsgHelper", 1, "onMoveToState show_first.");
+      if (this.jdField_a_of_type_Bejo == null) {
+        this.jdField_a_of_type_Bejo = ((bejo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(368));
       }
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      localObject = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!((anyw)localObject).b(this.jdField_a_of_type_JavaLangString)));
+    boolean bool = ((ajka)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_Bejo;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (bool) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      ((bejo)localObject).a(str, paramInt);
       return;
     }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13, 7 };
   }
 }
 

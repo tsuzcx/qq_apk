@@ -1,21 +1,22 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
-
 public class apqm
-  extends apqp
 {
-  public apqm(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void a(int paramInt)
+  public int a()
   {
-    if (ArkIDESettingFragment.a(this.a) != null)
-    {
-      TextView localTextView = ArkIDESettingFragment.a(this.a);
-      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
-    }
+    return 0;
+  }
+  
+  public void a() {}
+  
+  public void a(apqn paramapqn) {}
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
   }
 }
 

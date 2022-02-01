@@ -1,11 +1,26 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
-public abstract interface avbd
+class avbd
+  implements DialogInterface.OnClickListener
 {
-  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
+  avbd(avba paramavba) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      ForwardSdkBaseOption.a(avba.a(this.a), false, "shareToQQ", avba.a(this.a));
+      noe.a(avba.a(this.a), 0, "", "");
+      if (avba.a(this.a) != null) {
+        avba.a(this.a).b(1);
+      }
+      avba.a(this.a).moveTaskToBack(true);
+    }
+  }
 }
 
 

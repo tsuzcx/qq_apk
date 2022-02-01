@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-public class bqbz
-  implements DialogInterface.OnCancelListener
+public final class bqbz
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  public bqbz(CaptureQmcfSoDownloadFragment.7 param7) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
+    return new EditLocalGifSource(paramParcel);
+  }
+  
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
   }
 }
 

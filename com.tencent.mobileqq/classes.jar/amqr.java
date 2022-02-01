@@ -1,241 +1,137 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class amqr
-  implements amkw
+  extends amoe
 {
-  public static int a;
-  private SparseArray<amqs> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  public WeakReference<amrk> a;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  public int b;
+  amqu jdField_a_of_type_Amqu;
+  Context jdField_a_of_type_AndroidContentContext;
+  protected View.OnClickListener a;
+  aojs jdField_a_of_type_Aojs = new amqs(this);
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected TroopManager a;
+  XListView jdField_a_of_type_ComTencentWidgetXListView;
+  protected String a;
+  protected List<amqv> a;
+  protected boolean a;
+  protected List<Entity> b;
+  protected boolean b;
+  List<ShowExternalTroop> c;
   
-  static
+  public amqr(Context paramContext, QQAppInterface paramQQAppInterface, amqu paramamqu, XListView paramXListView, boolean paramBoolean, String paramString)
   {
-    jdField_a_of_type_Int = -2147483648;
+    super(paramContext, paramQQAppInterface, paramXListView, 4, true);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new amqt(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Amqu = paramamqu;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Aojs);
   }
   
-  public amqr()
+  public void a(List<ShowExternalTroop> paramList)
   {
-    a(new amqe());
-  }
-  
-  public amqr(amrk paramamrk)
-  {
-    a(new amqe());
-    if (paramamrk != null)
+    this.jdField_b_of_type_Boolean = true;
+    if (paramList != null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamrk);
-      this.b = paramamrk.a();
+      this.c = paramList;
+      notifyDataSetChanged();
     }
   }
   
-  private JSONObject a(String paramString)
+  public void c()
   {
-    try
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aojs);
+    super.c();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("message", paramString);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560602, null);
+      paramView = localView;
     }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        QLog.e("CmGameNetiveMethodHandler", 1, paramString, new Object[0]);
-      }
-    }
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  private void a(long paramLong, String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) && (paramString2 != null)) {
-      ampj.a().callbackFromRequest(paramLong, 0, paramString1, paramString2);
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    a(0L, "cs.native_method_state.local", a(paramString).toString());
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public amlc a(long paramLong, String paramString1, String paramString2)
-  {
     for (;;)
     {
-      int i;
-      try
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      amqv localamqv = (amqv)getItem(paramInt);
+      if (localamqv == null)
       {
-        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-          break label325;
-        }
-        Object localObject = (amrk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null)
+        localView = null;
+      }
+      else
+      {
+        if (paramView != null)
         {
-          localObject = ((amrk)localObject).a();
-          if ((localObject != null) && (((ApolloSurfaceView)localObject).getLuaState() == paramLong))
-          {
-            paramString2 = new JSONObject(paramString2);
-            i = paramString2.optInt("N_R_OBJ");
-            if (this.jdField_a_of_type_AndroidUtilSparseArray != null)
-            {
-              localObject = (amqs)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-              paramString2.put("N_R_CMD", paramString1);
-              paramString2.put("N_R_STATE", paramLong);
-              if (localObject != null)
-              {
-                paramString1 = ((amqs)localObject).a(this, paramString2);
-                if (paramString2.optBoolean("N_R_SYNC"))
-                {
-                  if (paramString1 != null) {
-                    paramString1.put("code", 0);
-                  }
-                  localObject = new amlc();
-                  ((amlc)localObject).b = true;
-                  if (paramString1 == null)
-                  {
-                    paramString1 = paramString2.toString();
-                    ((amlc)localObject).a = paramString1;
-                    return localObject;
-                  }
-                  paramString1 = paramString1.toString();
-                  continue;
-                }
-                a(paramString1);
-              }
-              else
-              {
-                int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-                i = 0;
-                if (i < j)
-                {
-                  int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-                  paramString1 = (amqs)this.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-                  if (paramString1 == null) {
-                    break label327;
-                  }
-                  paramString1 = paramString1.a(this, paramString2);
-                  if (paramString1 == null) {
-                    break label327;
-                  }
-                  a(paramString1);
-                  break label327;
-                }
-              }
-            }
-          }
-          else
-          {
-            QLog.e("CmGameNetiveMethodHandler", 1, "view is null");
-          }
+          localView = paramView;
+          if (paramView.getTag() != null) {}
         }
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("CmGameNetiveMethodHandler", 1, paramString1, new Object[0]);
-        a("handleCmd " + paramString1.getMessage());
-      }
-      QLog.e("CmGameNetiveMethodHandler", 1, "launcher is null");
-      label325:
-      return null;
-      label327:
-      i += 1;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null)
-    {
-      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-      int i = 0;
-      while (i < j)
-      {
-        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-        amqs localamqs = (amqs)this.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-        if (localamqs != null) {
-          localamqs.a();
-        }
-        i += 1;
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      this.jdField_a_of_type_AndroidUtilSparseArray = null;
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-    this.jdField_a_of_type_OrgJsonJSONObject = null;
-  }
-  
-  public void a(amqs paramamqs)
-  {
-    if (paramamqs != null)
-    {
-      int i = paramamqs.c();
-      if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      }
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramamqs);
-      }
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      try
-      {
-        int i = paramJSONObject.optInt("N_R_SE", -1);
-        int j = paramJSONObject.optInt("N_R_OBJ", -1);
-        long l = paramJSONObject.optLong("N_R_STATE");
-        String str = paramJSONObject.optString("N_R_CMD", null);
-        if ((i != -1) && (j != -1) && (!TextUtils.isEmpty(str)))
+        else
         {
-          ampj.a().callbackFromRequest(l, 0, str, paramJSONObject.toString());
-          return;
+          localView = nli.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, false, 1);
+          localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         }
-        QLog.e("CmGameNetiveMethodHandler", 1, "response invalid " + str);
-        a("invalid response " + i + " # " + j + " # " + str);
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        QLog.e("CmGameNetiveMethodHandler", 1, paramJSONObject, new Object[0]);
+        paramView = (bfpc)localView.getTag();
+        paramView.jdField_c_of_type_Int = 4;
+        ShowExternalTroop localShowExternalTroop = localamqv.a;
+        nli.a(localView, this.jdField_a_of_type_AndroidContentContext, localShowExternalTroop);
+        paramView.e.setVisibility(8);
+        paramView.jdField_a_of_type_JavaLangString = localamqv.a.troopUin;
+        paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, localShowExternalTroop.troopUin));
+        paramView = localView;
       }
     }
   }
   
-  public boolean a(Activity paramActivity)
+  public void notifyDataSetChanged()
   {
-    return false;
-  }
-  
-  public void b(amqs paramamqs)
-  {
-    if (paramamqs != null)
+    if (this.c != null)
     {
-      int i = paramamqs.c();
-      paramamqs.a();
-      if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (!this.c.isEmpty()) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        Iterator localIterator = this.c.iterator();
+        while (localIterator.hasNext())
+        {
+          ShowExternalTroop localShowExternalTroop = (ShowExternalTroop)localIterator.next();
+          this.jdField_a_of_type_JavaUtilList.add(new amqv(1, localShowExternalTroop));
+        }
       }
     }
+    super.notifyDataSetChanged();
   }
 }
 

@@ -1,28 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ahuh
-  implements Parcelable.Creator<AIORichMediaData>
+class ahuh
+  extends biht
 {
-  public AIORichMediaData a(Parcel paramParcel)
+  ahuh(ahue paramahue, String paramString1, String paramString2)
   {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(bihu parambihu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambihu);
     }
   }
   
-  public AIORichMediaData[] a(int paramInt)
+  public void onDone(bihu parambihu)
   {
-    return new AIORichMediaData[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambihu);
+    }
+    if (parambihu.b()) {}
+    do
+    {
+      return;
+      parambihu.a().getInt("type");
+    } while (parambihu.a() == -1);
+    parambihu = new Message();
+    parambihu.what = ahue.jdField_a_of_type_Int;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambihu);
+  }
+  
+  public boolean onStart(bihu parambihu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambihu);
+    }
+    return true;
   }
 }
 

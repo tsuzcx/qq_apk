@@ -1,15 +1,15 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class yqk
-  extends DataSetObserver
+class yqk
+  implements DialogInterface.OnClickListener
 {
-  public yqk(TagFlowLayout paramTagFlowLayout) {}
+  yqk(yqj paramyqj) {}
   
-  public void onChanged()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onChanged();
-    this.a.a();
+    this.a.a.a(false, true, 12, null);
+    yup.a("home_page", "guide_open", 0, 0, new String[0]);
   }
 }
 

@@ -1,7 +1,17 @@
-public class aimt
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aimt
+  implements View.OnClickListener
 {
-  public String a = null;
-  public String b = null;
+  aimt(aimn paramaimn) {}
+  
+  public void onClick(View paramView)
+  {
+    aimn.a(this.a, paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

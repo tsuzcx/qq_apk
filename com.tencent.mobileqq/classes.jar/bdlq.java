@@ -1,126 +1,94 @@
-import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class bdlq
-  extends bdmb
 {
-  public bdlq(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  protected int a;
+  protected QQAppInterface a;
+  protected String a;
+  protected List<String> a;
+  protected int b;
+  protected String b;
+  protected int c;
+  protected String c;
+  protected String d = "";
+  protected String e = "";
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public bdlq(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePanInfo success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public bdlq a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bdlq a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bdlq a(String... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(4);
     }
-    if ((paramBoolean) && (paramInt == 0))
+    if (paramVarArgs != null) {
+      Collections.addAll(this.jdField_a_of_type_JavaUtilList, paramVarArgs);
+    }
+    return this;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 5);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691334), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "", "", "", "");
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691327), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+    while (this.jdField_a_of_type_JavaUtilList.size() < 4) {
+      this.jdField_a_of_type_JavaUtilList.add("");
+    }
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, (String)this.jdField_a_of_type_JavaUtilList.get(0), (String)this.jdField_a_of_type_JavaUtilList.get(1), (String)this.jdField_a_of_type_JavaUtilList.get(2), (String)this.jdField_a_of_type_JavaUtilList.get(3));
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, List<GPadInfo> paramList)
+  public bdlq b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadTemplateList success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
-    }
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 2);
-      if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) {
-        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, List<GPadInfo> paramList, int paramInt2, int paramInt3)
+  public bdlq b(String paramString)
   {
-    int i = 1;
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadList success: " + paramBoolean + " \nretCode: " + paramInt1 + " \nerrorMsg: " + paramString + "\n next =" + paramInt2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.b = paramInt2;
-    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
-    {
-      if (paramBoolean)
-      {
-        paramInt2 = 1;
-        paramString = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.obtainMessage(111, paramInt2, 0);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.sendMessageDelayed(paramString, 500L);
-        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
-      }
-    }
-    else
-    {
-      if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
-        GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
-      }
-      if (paramInt3 != 2) {
-        break label211;
-      }
-      paramInt2 = 3;
-    }
-    for (;;)
-    {
-      if ((paramBoolean) && (paramInt1 == 0))
-      {
-        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, paramInt2);
-        paramInt1 = j;
-        if (paramInt1 != 0) {
-          GroupTeamWorkListActivity.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
-        }
-        return;
-        paramInt2 = 2;
-        break;
-        label211:
-        if (paramInt3 != 3) {
-          break label398;
-        }
-        paramInt2 = 4;
-        continue;
-      }
-      if (paramInt2 == 2)
-      {
-        if ((GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) && (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCount() == 0))
-        {
-          GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
-          if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getVisibility() == 0) {
-            GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
-          }
-          GroupTeamWorkListActivity.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(0);
-        }
-      }
-      else
-      {
-        label300:
-        if (paramInt2 != 4) {
-          break label393;
-        }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693389), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-      }
-      label393:
-      for (paramInt1 = i;; paramInt1 = 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
-        break;
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693389), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-        break label300;
-      }
-      label398:
-      paramInt2 = 2;
-    }
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bdlq c(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bdlq d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public bdlq e(String paramString)
+  {
+    this.e = paramString;
+    return this;
   }
 }
 

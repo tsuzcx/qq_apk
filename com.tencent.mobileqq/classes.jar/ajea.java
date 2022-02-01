@@ -1,17 +1,61 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class ajea
-  implements BusinessObserver
+public class ajea
+  extends ReportDialog
 {
-  ajea(ajdz paramajdz) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ajea(Context paramContext)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
+    super(paramContext, 2131755402);
+  }
+  
+  public ajea(Context paramContext, String paramString)
+  {
+    super(paramContext, 2131755402);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public View a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
     }
+    return null;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131561668, null);
+    Object localObject = getWindow();
+    ((Window)localObject).setContentView(paramBundle);
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 48;
+    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299091);
+    ((Window)localObject).setAttributes(localLayoutParams);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = (TextView)paramBundle.findViewById(2131371450);
+      if (localObject != null) {
+        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    this.jdField_a_of_type_AndroidViewView = paramBundle;
+    setCanceledOnTouchOutside(false);
   }
 }
 

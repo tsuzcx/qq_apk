@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import android.graphics.drawable.Drawable;
+import java.util.List;
 
-public final class wob
-  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
+public class wob
 {
-  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
+  public static Drawable a(List<String> paramList)
   {
-    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
-  }
-  
-  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
-  {
-    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
+    return woc.a(paramList);
   }
 }
 

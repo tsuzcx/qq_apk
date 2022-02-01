@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afys;
+import agim;
 import android.graphics.Bitmap;
 
 public class IntimateInfoShareHelper$6
   implements Runnable
 {
-  public IntimateInfoShareHelper$6(afys paramafys, Bitmap paramBitmap) {}
+  public IntimateInfoShareHelper$6(agim paramagim, Bitmap paramBitmap) {}
   
   /* Error */
   public void run()
@@ -14,7 +14,7 @@ public class IntimateInfoShareHelper$6
     // Byte code:
     //   0: new 27	java/io/File
     //   3: dup
-    //   4: getstatic 33	anhk:bg	Ljava/lang/String;
+    //   4: getstatic 33	antf:bg	Ljava/lang/String;
     //   7: invokespecial 36	java/io/File:<init>	(Ljava/lang/String;)V
     //   10: astore_3
     //   11: aload_3
@@ -90,8 +90,8 @@ public class IntimateInfoShareHelper$6
     //   156: aload 5
     //   158: astore_3
     //   159: aload_0
-    //   160: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$6:this$0	Lafys;
-    //   163: invokestatic 114	afys:a	(Lafys;)Landroid/support/v4/app/FragmentActivity;
+    //   160: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$6:this$0	Lagim;
+    //   163: invokestatic 114	agim:a	(Lagim;)Landroid/support/v4/app/FragmentActivity;
     //   166: new 116	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$6$1
     //   169: dup
     //   170: aload_0

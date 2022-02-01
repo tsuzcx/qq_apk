@@ -1,22 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 class aily
-  implements View.OnClickListener
+  implements blnt
 {
-  aily(ailx paramailx) {}
+  aily(ailn paramailn) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    Intent localIntent = new Intent(ailx.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", ailx.a(this.a));
-    ailx.a(this.a).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ailn.a(this.a).setPullType(0);
+    ailn.a(this.a).c(ailn.g);
+    ailn.a(this.a, 0, this.a.a.a());
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView) {}
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

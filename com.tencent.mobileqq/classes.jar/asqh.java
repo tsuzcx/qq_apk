@@ -1,21 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 
-class asqh
-  implements Animation.AnimationListener
+public class asqh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  asqh(asqe paramasqe, int paramInt, boolean paramBoolean) {}
+  public asqh(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Asqe.jdField_a_of_type_Float = this.jdField_a_of_type_Asqe.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Asqe.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    EmotionSearchPanel localEmotionSearchPanel = this.a;
+    int i = EmotionSearchPanel.b(this.a);
+    EmotionSearchPanel.c(localEmotionSearchPanel, ((Integer)paramValueAnimator.getAnimatedValue()).intValue() + i);
+    this.a.a.setAlpha(paramValueAnimator.getAnimatedFraction() * 0.71F);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

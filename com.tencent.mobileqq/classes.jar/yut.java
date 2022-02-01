@@ -1,51 +1,20 @@
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
 
-class yut
-  implements wrk
+public class yut
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  yut(yur paramyur, String paramString) {}
+  public yut(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
   
-  public void a(int paramInt, wrl paramwrl, List<TroopBarPOI> paramList)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_Yur.jdField_a_of_type_Wrl = paramwrl;
-    if (!this.jdField_a_of_type_Yur.isValidate()) {
-      return;
-    }
-    if (paramInt == 0) {
-      if (paramwrl.a()) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool = true;; bool = false)
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
     {
-      this.jdField_a_of_type_Yur.d.setVisibility(0);
-      this.jdField_a_of_type_Yur.a(bool);
-      if (this.jdField_a_of_type_Yur.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_Yur.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_Yur.jdField_a_of_type_Wrl.b()) {
-        this.jdField_a_of_type_Yur.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Yur.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_Yur.jdField_a_of_type_Zej != null)
-      {
-        this.jdField_a_of_type_Yur.jdField_a_of_type_Zej.a(this.jdField_a_of_type_Yur.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_Yur.jdField_a_of_type_Zej.notifyDataSetChanged();
-        if (this.jdField_a_of_type_Yur.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_Yur.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_Yur.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      yqu.b("edit_video", "poi_list_success", 0, i, new String[0]);
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
     }
   }

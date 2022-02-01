@@ -1,57 +1,35 @@
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqcircle.events.QCircleDanmakuEvent;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
+import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
-class vkt
-  implements vtb
+public class vkt
+  implements vyx
 {
-  vkt(vks paramvks) {}
+  public vkt(QCircleReplyItemView paramQCircleReplyItemView) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).a(0, 100);
+    FeedCloudMeta.StComment localStComment;
+    FeedCloudMeta.StReply localStReply;
+    aakb localaakb;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (QCircleReplyItemView.a(this.a) != null)
+    {
+      localStComment = QCircleReplyItemView.a(this.a);
+      localStReply = QCircleReplyItemView.a(this.a);
+      localaakb = QCircleReplyItemView.a(this.a);
+      localQCircleCommentPraiseLayout = QCircleReplyItemView.a(this.a);
+      if (!paramBoolean) {
+        break label83;
+      }
     }
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).animate().alpha(0.0F).setDuration(100L);
+    label83:
+    for (int i = 14;; i = 15)
+    {
+      localaakb.a(localQCircleCommentPraiseLayout, i, QCircleReplyItemView.a(this.a), new Object[] { localStComment, localStReply });
+      return;
     }
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).animate().alpha(0.0F).setDuration(100L);
-    }
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).animate().alpha(0.0F).setDuration(100L);
-    }
-    vks.a(this.a, 1, 0, 100);
-    zwp.a().a(new QCircleDanmakuEvent(7));
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.a.a(paramFloat1, paramFloat2);
-  }
-  
-  public void b()
-  {
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).a(1, 100);
-    }
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).animate().alpha(1.0F).setDuration(100L);
-    }
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).animate().alpha(1.0F).setDuration(100L);
-    }
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).animate().alpha(1.0F).setDuration(100L);
-    }
-    vks.a(this.a, 0, 1, 100);
-    if (vks.a(this.a) != null) {
-      vks.a(this.a).a(true);
-    }
-    zwp.a().a(new QCircleDanmakuEvent(8));
   }
 }
 

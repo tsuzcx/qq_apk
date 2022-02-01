@@ -1,27 +1,72 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_COMM.COMM.StCommonExt;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.Packet;
 
 public class aalz
-  implements ViewPager.OnPageChangeListener
+  extends aalx
 {
-  public aalz(RelativePersonalBottomView paramRelativePersonalBottomView) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    
-    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
-    }
-    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
-      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
+    paramBundle.putByteArray("key_data", paramArrayOfByte);
+    notifyObserver(paramIntent, this.a, true, paramBundle, null);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    Object localObject3 = null;
+    Object localObject1 = null;
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte != null) {}
+    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
+      for (;;)
+      {
+        try
+        {
+          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
+          i = paramIntent.getIntExtra("key_index", -1);
+          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
+          if (arrayOfByte == null) {}
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          try
+          {
+            localObject1 = new CertifiedAccountMeta.StFeed();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            int i;
+            localObject1 = localObject3;
+          }
+          try
+          {
+            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
+            localObject2 = new aaly((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new byte[4];
+            }
+            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.ModifyFeed");
+            paramPacket.putSendData(bhuf.a((byte[])localObject1));
+            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+            super.onSend(paramIntent, paramPacket);
+            return;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
+          {
+            break label166;
+          }
+          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+          QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
+          continue;
+        }
+        label166:
+        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
+      }
     }
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
+import anzj;
 
 class ServiceFolderFollowPBHeadView$3
   implements Runnable
@@ -14,7 +14,7 @@ class ServiceFolderFollowPBHeadView$3
     if (this.a > 0)
     {
       ServiceFolderFollowPBHeadView.a(this.this$0).setVisibility(0);
-      String str = this.a + anni.a(2131706662);
+      String str = this.a + anzj.a(2131706771);
       ServiceFolderFollowPBHeadView.a(this.this$0).setText(str);
       return;
     }

@@ -1,23 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
 
-class ahzw
-  implements DialogInterface.OnClickListener
+public abstract class ahzw
 {
-  ahzw(ahzv paramahzv, String paramString) {}
+  public int a;
+  public Context a;
+  protected BaseChatPie a;
+  protected SessionInfo a;
+  public QQAppInterface a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahzw(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    ((ankw)this.jdField_a_of_type_Ahzv.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Ahzv.a.a.a().a();
-    RecentUser localRecentUser = (RecentUser)paramDialogInterface.findRecentUser(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.delRecentUser(localRecentUser);
-    }
-    this.jdField_a_of_type_Ahzv.a.I();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public long a()
+  {
+    return 0L;
+  }
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public String toString()
+  {
+    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
   }
 }
 

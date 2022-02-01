@@ -1,34 +1,8 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.util.HashMap;
 
-public class bfuu
+public abstract interface bfuu
 {
-  public static <T extends bfuv> T a(Class<T> paramClass)
-  {
-    try
-    {
-      paramClass = (bfuv)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static <T extends Thread> T a(Class<T> paramClass)
-  {
-    try
-    {
-      paramClass = (TroopUploadingThread)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
+  public abstract void a(long paramLong, HashMap<bful, bfum> paramHashMap);
 }
 
 

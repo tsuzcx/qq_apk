@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/o2i" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayn" android:textColor="@color/co" android:id="@id/nwv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/ayn" android:textColor="@color/co" android:id="@id/nww" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/mlc" android:background="@drawable/di3" android:clickable="true" android:layout_width="260.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/ayq" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n5" android:text="什么是好友作品？" />
+        <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/o3g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="0.0dip" android:maxWidth="182.0dip" android:text="好友作品来自在微视中授权的QQ、微信或通讯录好友。" />
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/al3" android:gravity="center" android:id="@id/o3_" android:background="@drawable/di6" android:layout_width="180.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/mp" android:layout_marginBottom="@dimen/n5" android:text="我知道了" />
+    </LinearLayout>
+</FrameLayout>

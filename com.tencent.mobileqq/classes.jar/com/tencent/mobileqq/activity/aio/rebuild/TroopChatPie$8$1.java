@@ -11,7 +11,7 @@ class TroopChatPie$8$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131689870));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131689876));
     this.a.this$0.jdField_a_of_type_AndroidWidgetToast.show();
   }
 }

@@ -1,41 +1,34 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
 
 public class afho
-  extends ayfc
+  extends Handler
 {
-  public afho(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public afho(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public void handleMessage(Message paramMessage)
   {
-    TextPreviewTranslateActivity.b(this.a);
-    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
+    switch (paramMessage.what)
     {
-      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
+    }
+    do
+    {
       return;
-    }
-    String str2 = this.a.getResources().getString(2131698145);
-    String str1 = str2;
-    if (paramTranslateResult != null)
-    {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
+      if (!this.a.isFinishing())
+      {
+        this.a.a.a(this.a.getString(2131690709));
+        this.a.a.d(2130849677);
+        this.a.a.b(false);
       }
-      str1 = paramTranslateResult.e;
-    }
-    for (;;)
-    {
-      QQToast.a(this.a, 1, str1, 0).a();
+      sendEmptyMessageDelayed(1, 1000L);
       return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131698132);
-      }
-    }
+    } while ((this.a.a == null) || (!this.a.a.isShowing()));
+    this.a.a.cancel();
+    this.a.a.a(this.a.getString(2131690711));
+    this.a.a.c(true);
+    this.a.a.a(false);
+    this.a.a.b(true);
   }
 }
 

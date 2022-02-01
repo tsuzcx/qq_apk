@@ -1,67 +1,38 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.graphics.drawable.Drawable;
 
-public class ygy
-  extends zpa
+class ygy
+  implements asmr
 {
-  public static final String KEY = "MemoriesVideoListEmptySegment";
+  ygy(ygw paramygw) {}
   
-  public ygy(Context paramContext, int paramInt, String paramString)
+  public void a(asmu paramasmu)
   {
-    super(paramContext);
-  }
-  
-  private void f()
-  {
-    zpa localzpa = a().a("MemoriesVideoListSegment");
-    if ((localzpa != null) && (localzpa.a() == 0))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
+    if (((paramasmu instanceof assj)) && (ygw.a(this.a) != null)) {
+      ((assj)paramasmu).a(ygw.a(), ygw.a(this.a), ygw.a(this.a), null);
     }
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void T_()
+  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
+  
+  public boolean a(asmu paramasmu)
   {
-    f();
+    return false;
   }
   
-  public int a()
+  public void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return 1;
+    if (ygw.a(this.a) != null) {
+      behh.a(ygw.a(this.a));
     }
-    return 0;
   }
   
-  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
-  {
-    paramInt = zlx.d(this.jdField_a_of_type_AndroidContentContext);
-    int i = zlx.e(this.jdField_a_of_type_AndroidContentContext);
-    int j = zlx.a(this.jdField_a_of_type_AndroidContentContext, 225.0F);
-    int k = zlx.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-    paramynb.a().getLayoutParams().height = (paramInt - i - j - k);
-    return paramynb.a();
-  }
+  public void b(asmu paramasmu) {}
   
-  public String a()
-  {
-    return "MemoriesVideoListEmptySegment";
-  }
+  public void c() {}
   
-  public ynb a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561737, paramViewGroup, false));
-  }
+  public void d() {}
   
-  protected void c()
-  {
-    f();
-  }
+  public void setting() {}
 }
 
 

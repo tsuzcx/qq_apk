@@ -1,64 +1,58 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import mqq.observer.BusinessObserver;
 
-public class ador
-  extends AccountObserver
+class ador
+  implements BusinessObserver
 {
-  ador(adoo paramadoo) {}
+  ador(adom paramadom, String paramString) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), adoo.a(this.a), paramString2, paramString1 }));
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (QLog.isColorLevel()) {
+      QLog.d(adom.jdField_a_of_type_JavaLangString, 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
-    this.a.c = false;
-    adoo.a(this.a);
-    if (adoo.a(this.a) != null)
+    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
+      return;
+    }
+    paramInt = paramBundle.getInt("code");
+    if (paramBoolean)
     {
-      paramString1 = new Intent(adoo.a(this.a), LoginActivity.class);
-      paramString1.putExtra("uin", adoo.a(this.a));
-      paramString1.putExtra("tab_index", MainFragment.b);
-      paramString1.addFlags(131072);
-      adoo.a(this.a).startActivity(paramString1);
-      adoo.a(this.a).finish();
+      localObject = new SdkAuthorize.AuthorizeResponse();
+      try
+      {
+        paramBundle = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = paramBundle.ret.get();
+        localObject = paramBundle.msg.get();
+        if (paramInt != 0)
+        {
+          adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, paramInt, (String)localObject);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(adom.jdField_a_of_type_JavaLangString, 2, "parse do auth result error: \n" + paramBundle.getMessage());
+        }
+        adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, -2, "parse do auth result error");
+        return;
+      }
+      localObject = new adol();
+      ((adol)localObject).jdField_a_of_type_JavaLangString = paramBundle.openid.get().toUpperCase();
+      ((adol)localObject).b = paramBundle.access_token.get().toUpperCase();
+      paramBundle = paramBundle.callbackURL.get();
+      if (QLog.isColorLevel()) {}
+      adom.b(this.jdField_a_of_type_Adom, paramBundle);
+      this.jdField_a_of_type_Adom.jdField_a_of_type_Adoi.a((adol)localObject);
+      adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, ((adol)localObject).a());
+      return;
     }
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    this.a.c = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
-    }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    this.a.c = false;
-    adoo.a(this.a);
-    adoo.a(this.a).a.post(new AutoLoginHelper.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    this.a.c = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
-    }
+    adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, paramInt, "do auth error");
   }
 }
 

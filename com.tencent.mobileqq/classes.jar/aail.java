@@ -1,8 +1,15 @@
-public abstract interface aail
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tribe.async.dispatch.Dispatcher;
+
+class aail
+  implements aaav<CertifiedAccountWrite.StDoLikeRsp>
 {
-  public abstract int a();
+  aail(aaid paramaaid) {}
   
-  public abstract int[] a(int paramInt1, int paramInt2);
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  {
+    wjj.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
+  }
 }
 
 

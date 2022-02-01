@@ -1,22 +1,65 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class mhd
-  extends ClickableSpan
+public class mhd
+  extends lfl
 {
-  mhd(mgv parammgv) {}
+  public mhd(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    this.a.d();
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
+    {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
+      return;
+    }
+    if (paramLong != this.a.jdField_a_of_type_Long)
+    {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
+      this.a.b(paramInt2);
+      return;
+    }
+    if (paramInt3 == -5)
+    {
+      if (this.a.jdField_a_of_type_Boolean) {
+        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
+          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
+        }
+      }
+      for (;;)
+      {
+        QQToast.a(this.a, 2131692842, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131299011));
+        return;
+        this.a.jdField_a_of_type_Mhc.b.setVisibility(8);
+      }
+    }
+    QQToast.a(this.a, 2131692841, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131299011));
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected void c(long paramLong)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    super.c(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
+      }
+      this.a.finish();
+    }
   }
 }
 

@@ -1,24 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import mqq.util.WeakReference;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class afcx
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public afcx(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
+  public afcx(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    super.onCheckDevLockStatus(paramWUserSigInfo, paramDevlockInfo, paramInt, paramErrMsg);
+    paramWUserSigInfo = (PhoneUnityBindInfoActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramWUserSigInfo == null)
+    {
+      QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, activity destroyed");
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    PhoneUnityBindInfoActivity.a(paramWUserSigInfo, paramDevlockInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcx
  * JD-Core Version:    0.7.0.1
  */

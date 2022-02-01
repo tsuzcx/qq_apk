@@ -1,122 +1,209 @@
+import android.app.Activity;
 import android.os.Bundle;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigReq;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialReq;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeReq;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaSdkInfo;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.aekit.api.standard.AEModule;
+import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.2;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.3;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.4;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.5;
 import java.util.ArrayList;
-import java.util.HashMap;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bnos
-  extends aber
+  extends bnnn
+  implements bngj
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "CameraModuleSvc" };
-  public static final HashMap<String, String> b = new HashMap();
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String a;
+  private String b;
   
-  public bnos(AppInterface paramAppInterface)
+  public bnos()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_JavaLangString = bnos.class.getSimpleName();
   }
   
-  private String a(String paramString)
+  private void a(String paramString)
   {
-    return bnyp.a().a(paramString, "", 4);
-  }
-  
-  private ArrayList<MetaSdkInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    MetaSdkInfo localMetaSdkInfo = new MetaSdkInfo();
-    localMetaSdkInfo.sdk = 0;
-    localMetaSdkInfo.sdkVersion = AEModule.getVersion(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
-    localArrayList.add(localMetaSdkInfo);
-    return localArrayList;
-  }
-  
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramToServiceMsg = new GetCameraConfigReq();
-    paramUniPacket.setServantName("CameraModuleSvc");
-    paramUniPacket.setFuncName("CameraModuleSvc.GetCameraConfig");
-    paramUniPacket.put("CameraModuleSvc.GetCameraConfig", paramToServiceMsg);
-    return true;
-  }
-  
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    GetCategoryMaterialReq localGetCategoryMaterialReq = new GetCategoryMaterialReq();
-    localGetCategoryMaterialReq.ServiceId = paramToServiceMsg.extraData.getString("ServiceId");
-    localGetCategoryMaterialReq.ETag = a("CameraModuleSvc.GetCompressedCategoryMaterial" + localGetCategoryMaterialReq.ServiceId);
-    localGetCategoryMaterialReq.SdkInfos = a();
-    paramUniPacket.setServantName("CameraModuleSvc");
-    paramUniPacket.setFuncName("CameraModuleSvc.GetCompressedCategoryMaterial");
-    paramUniPacket.put("CameraModuleSvc.GetCompressedCategoryMaterial", localGetCategoryMaterialReq);
-    return true;
-  }
-  
-  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramToServiceMsg = new GetPlayShowCatMatTreeReq();
-    paramToServiceMsg.ETag = a("CameraModuleSvc.GetPlayShowCatMatTree");
-    paramToServiceMsg.MqVersion = "8.4.1";
-    paramUniPacket.setServantName("CameraModuleSvc");
-    paramUniPacket.setFuncName("CameraModuleSvc.GetPlayShowCatMatTree");
-    paramUniPacket.put("CameraModuleSvc.GetPlayShowCatMatTree", paramToServiceMsg);
-    return true;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
-      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCameraConfig", new GetCameraConfigRsp());
+    try
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getLocalProxyUrl. json=" + paramString);
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getJSONArray("playList");
+      localObject = ((JSONObject)localObject).getString("callback");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        this.b = ((String)localObject);
+      }
+      localObject = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        ((ArrayList)localObject).add(paramString.getJSONObject(i).getString("url"));
+        localArrayList.add(paramString.getJSONObject(i).getString("vid"));
+        i += 1;
+      }
+      if (((ArrayList)localObject).size() > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bnos.class).post(new QzoneVideoTabJsPlugin.2(this, (ArrayList)localObject, localArrayList));
+      }
+      return;
     }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
-      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCompressedCategoryMaterial", new GetCategoryMaterialRsp());
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
-      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetPlayShowCatMatTree", new GetPlayShowCatMatTreeRsp());
-    }
-    return null;
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  private static Activity b(Activity paramActivity)
   {
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
-      return b(paramToServiceMsg, paramUniPacket);
+    Activity localActivity;
+    if (paramActivity == null) {
+      localActivity = null;
     }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
-      return c(paramToServiceMsg, paramUniPacket);
+    do
+    {
+      return localActivity;
+      localActivity = paramActivity;
+    } while (!(paramActivity instanceof BasePluginActivity));
+    return ((BasePluginActivity)paramActivity).getOutActivity();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bnos.class).post(new QzoneVideoTabJsPlugin.4(this));
+  }
+  
+  private void b(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).getJSONArray("state");
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        localArrayList1.add(localJSONObject.getString("url"));
+        localArrayList2.add(localJSONObject.getString("state"));
+        i += 1;
+      }
+      if (localArrayList1.size() > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bnos.class).post(new QzoneVideoTabJsPlugin.3(this, localArrayList1, localArrayList2));
+      }
+      return;
     }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
-      return d(paramToServiceMsg, paramUniPacket);
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optString("url");
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bnos.class).post(new QzoneVideoTabJsPlugin.5(this, paramString));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void a()
+  {
+    bngf.a().b(this);
+    super.a();
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if (("videoProxyGetLocalProxyURL".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      bngf.a().a(this);
+      a(paramVarArgs[0]);
+      return true;
+    }
+    if (("videoProxySetPlayState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      bngf.a().a(this);
+      b(paramVarArgs[0]);
+      return true;
+    }
+    if ("videoProxyStopAll".equals(paramString3))
+    {
+      bngf.a().a(this);
+      b();
+      return true;
+    }
+    if ("videoProxySaveVideoToAlbum".equals(paramString3))
+    {
+      paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+      if ((paramJsBridgeListener != null) && (bnko.a(paramJsBridgeListener, new bnot(this, paramVarArgs, paramJsBridgeListener), 1))) {
+        c(paramVarArgs[0]);
+      }
     }
     return false;
   }
   
-  public String[] a()
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public final <T> T b(byte[] paramArrayOfByte, String paramString, T paramT)
-  {
-    bnpa localbnpa = new bnpa(true);
-    try
+    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
+    do
     {
-      localbnpa.setEncodeName("utf-8");
-      localbnpa.decode(paramArrayOfByte);
-      return localbnpa.getByClass(paramString, paramT);
-    }
-    catch (Exception paramArrayOfByte) {}
-    return null;
+      do
+      {
+        return;
+        paramBundle = paramBundle.getBundle("data");
+        if (paramBundle == null)
+        {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "call js function,bundle is empty");
+          return;
+        }
+      } while (!"cmd.videoGetLocalProxyUrl".equals(paramString));
+      paramString = paramBundle.getStringArrayList("param.videoLocalUrls");
+      ArrayList localArrayList = paramBundle.getStringArrayList("param.videoId");
+      paramBundle = new JSONObject();
+      JSONArray localJSONArray = new JSONArray();
+      if ((paramString != null) && (localArrayList != null)) {}
+      try
+      {
+        if (paramString.size() == localArrayList.size())
+        {
+          int i = 0;
+          while (i < paramString.size())
+          {
+            String str = (String)paramString.get(i);
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("vid", localArrayList.get(i));
+            localJSONObject.put("url", str);
+            localJSONArray.put(localJSONObject);
+            i += 1;
+          }
+        }
+        paramBundle.put("proxyList", localJSONArray);
+      }
+      catch (JSONException paramString)
+      {
+        for (;;)
+        {
+          QLog.w(this.jdField_a_of_type_JavaLangString, 2, "getLocalProxyUrl result is invalid.", paramString);
+        }
+      }
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getLocalProxyUrl result=" + paramBundle);
+    } while (TextUtils.isEmpty(this.b));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.b, new String[] { paramBundle.toString() });
   }
 }
 

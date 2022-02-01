@@ -1,25 +1,13 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 
-class skh
-  implements URLDrawable.URLDrawableListener
+public class skh
+  extends ThreadLocal<Integer>
 {
-  skh(ske paramske) {}
+  public skh(ReadInJoyXListView paramReadInJoyXListView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected Integer a()
   {
-    if ((ske.a(this.a) != null) && (ske.a(this.a).getStatus() == 1) && ((ske.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)ske.a(this.a).getCurrDrawable();
-      ske.a(this.a, paramURLDrawable.getBitmap());
-    }
+    return Integer.valueOf(0);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqcircle.bizparts;
 
 import com.tencent.qphone.base.util.QLog;
-import vbk;
+import vda;
 
 public class QCircleFolderSplashPart$6
   implements Runnable
 {
-  public QCircleFolderSplashPart$6(vbk paramvbk) {}
+  public QCircleFolderSplashPart$6(vda paramvda) {}
   
   public void run()
   {
     QLog.d("QCircleFolderSplashPart", 4, "mDownloadAPacketRunnable run...");
-    vbk.c(this.this$0);
+    vda.c(this.this$0);
   }
 }
 

@@ -1,20 +1,50 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class afcn
-  implements View.OnTouchListener
+  extends aojs
 {
-  public afcn(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public afcn(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    TextView localTextView;
+    if (paramBoolean1)
+    {
+      this.a.f.a().setChecked(paramBoolean2);
+      localTextView = this.a.a;
+      if (!paramBoolean2) {
+        break label59;
+      }
+    }
+    label59:
+    for (int i = 2131692803;; i = 2131692804)
+    {
+      localTextView.setText(i);
+      bhsi.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = true;
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, anzj.a(2131706797), 0).a();
+      Switch localSwitch = this.a.f.a();
+      if (!paramBoolean2) {}
+      for (paramBoolean1 = bool;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    bhsi.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
   }
 }
 

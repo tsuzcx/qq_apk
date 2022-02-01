@@ -1,17 +1,11 @@
-import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
-import cooperation.qqreader.proxy.ReaderJsCallback;
+import android.view.View;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class blob
-  implements ReaderJsCallback
+public abstract interface blob
 {
-  blob(blnz paramblnz) {}
+  public abstract void a();
   
-  public void onCallback(String paramString1, String paramString2) {}
-  
-  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
-  {
-    paramReaderBaseWebViewPlugin.init(blnz.a(this.a), null);
-  }
+  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
 }
 
 

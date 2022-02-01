@@ -1,106 +1,26 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class qcj
-  implements qft
+class qcj
+  implements pre
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  qcj(qcf paramqcf, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return qbm.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
-  {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    if ((NetworkState.isWifiConn()) || (Aladdin.getConfig(299).getIntegerFromString("rij_main_feeds_tips_off", 0) == 1))
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      localObject = localViewBase.findViewBaseByName("id_large_video_icon");
-      if (localObject != null) {
-        ((ViewBase)localObject).setVisibility(0);
-      }
-      localObject = localViewBase.findViewBaseByName("id_video_bg");
-      if (localObject != null) {
-        ((ViewBase)localObject).setVisibility(8);
-      }
-      pgk.a(false, localViewBase, null);
-      if (parampxk != null)
-      {
-        localObject = parampxk.a();
-        if ((localObject != null) && (((BaseArticleInfo)localObject).isAccountShown)) {
-          qhv.a(paramContainer, parampxk);
-        }
-      }
-      sia.a(parampxk.a(), paramContainer.getContext());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      qcf.a(this.jdField_a_of_type_Qcf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      qcf.a(this.jdField_a_of_type_Qcf).notifyDataSetChanged();
       return;
     }
-    Object localObject = localViewBase.findViewBaseByName("id_large_video_icon");
-    if (localObject != null) {
-      ((ViewBase)localObject).setVisibility(8);
-    }
-    localObject = localViewBase.findViewBaseByName("id_video_bg");
-    if (localObject != null) {
-      ((ViewBase)localObject).setVisibility(0);
-    }
-    NativeText localNativeText = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
-    String str;
-    if (localNativeText != null)
-    {
-      str = anni.a(2131699908);
-      if (bhhb.a() == 1)
-      {
-        localObject = anni.a(2131699909);
-        label199:
-        localNativeText.setText((CharSequence)localObject);
-      }
-    }
-    else
-    {
-      if (parampxk == null) {
-        break label292;
-      }
-    }
-    label292:
-    for (localObject = parampxk.a();; localObject = null)
-    {
-      pgk.a(localViewBase, (BaseArticleInfo)localObject);
-      break;
-      localObject = str;
-      if (parampxk == null) {
-        break label199;
-      }
-      localObject = str;
-      if (parampxk.a().mXGFileSize <= 0L) {
-        break label199;
-      }
-      localObject = ryx.b(parampxk.a().mXGFileSize) + anni.a(2131699907);
-      break label199;
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
-  {
-    paramContainer = parampxk.a();
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    default: 
-      return false;
-    }
-    paramViewBase.setOnClickListener(new qck(this, paramContainer, parampxk, paramViewBase));
-    return true;
+    QQToast.a(qcf.b(this.jdField_a_of_type_Qcf).getContext(), 1, 2131717203, 0).a();
   }
 }
 

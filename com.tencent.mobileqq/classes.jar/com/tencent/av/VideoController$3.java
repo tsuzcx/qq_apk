@@ -1,7 +1,7 @@
 package com.tencent.av;
 
-import lcq;
-import msb;
+import lcx;
+import msz;
 
 class VideoController$3
   implements Runnable
@@ -10,8 +10,8 @@ class VideoController$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Msc = new lcq(this.this$0);
-    this.this$0.jdField_a_of_type_Msb = new msb(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_Msc);
+    this.this$0.jdField_a_of_type_Mta = new lcx(this.this$0);
+    this.this$0.jdField_a_of_type_Msz = new msz(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_Mta);
   }
 }
 

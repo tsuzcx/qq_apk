@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import allg;
+import alwy;
 import java.io.File;
 
 class CameraFilterGLView$3$1
@@ -10,7 +10,7 @@ class CameraFilterGLView$3$1
   
   public void run()
   {
-    allg.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    alwy.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
   }
 }
 

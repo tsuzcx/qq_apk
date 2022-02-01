@@ -1,19 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArDefaultSetting;
-
-public final class apee
-  implements Parcelable.Creator<ArDefaultSetting>
+public abstract class apee
 {
-  public ArDefaultSetting a(Parcel paramParcel)
-  {
-    return new ArDefaultSetting(paramParcel);
-  }
+  public abstract int a();
   
-  public ArDefaultSetting[] a(int paramInt)
-  {
-    return new ArDefaultSetting[paramInt];
-  }
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(boolean paramBoolean, Object paramObject);
+  
+  public abstract void b(Object paramObject);
+  
+  public abstract void b(boolean paramBoolean, Object paramObject);
 }
 
 

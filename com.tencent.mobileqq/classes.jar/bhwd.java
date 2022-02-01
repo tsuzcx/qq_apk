@@ -1,21 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
-public class bhwd
-  implements Animation.AnimationListener
+class bhwd
+  extends URLDrawableDownListener.Adapter
 {
-  public bhwd(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2) {}
+  bhwd(bhwc parambhwc) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
+    this.a.onLoadFialed(paramURLDrawable, paramThrowable);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.onLoadSuccessed(paramURLDrawable);
+  }
 }
 
 

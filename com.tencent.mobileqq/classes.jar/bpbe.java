@@ -1,24 +1,8 @@
-class bpbe
-  implements bopm
+public abstract interface bpbe
 {
-  bpbe(bpaz parambpaz) {}
+  public abstract void a(int paramInt);
   
-  public void aV_()
-  {
-    bpaz.a(this.a).d();
-  }
-  
-  public void b()
-  {
-    bpaz.a(this.a).d();
-    bpaz.a(this.a).a();
-    bpaz.a(this.a).a(bpaz.a(this.a));
-  }
-  
-  public void c()
-  {
-    bpaz.a(this.a).d();
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

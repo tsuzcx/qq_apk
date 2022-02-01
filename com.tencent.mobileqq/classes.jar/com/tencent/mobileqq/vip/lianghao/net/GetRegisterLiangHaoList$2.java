@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import bhjg;
-import bhjo;
-import bhjp;
+import bijv;
+import bikd;
+import bike;
 import java.util.List;
 
 public class GetRegisterLiangHaoList$2
   implements Runnable
 {
-  public GetRegisterLiangHaoList$2(bhjo parambhjo, bhjg parambhjg, bhjp parambhjp) {}
+  public GetRegisterLiangHaoList$2(bikd parambikd, bijv parambijv, bike parambike) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bhjg != null) && (this.jdField_a_of_type_Bhjg.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bhjg.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bhjg.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.jdField_a_of_type_Bijv != null) && (this.jdField_a_of_type_Bijv.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bijv.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bijv.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Bhjp.a(this.jdField_a_of_type_Bhjg);
+      this.jdField_a_of_type_Bike.a(this.jdField_a_of_type_Bijv);
       return;
     }
-    this.jdField_a_of_type_Bhjp.a(-1, "");
+    this.jdField_a_of_type_Bike.a(-1, "");
   }
 }
 

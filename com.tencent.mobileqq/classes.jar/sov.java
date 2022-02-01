@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import com.tencent.qphone.base.util.QLog;
 
-class sov
-  implements View.OnClickListener
+public class sov
+  implements PTSComposer.IPTSUpdateDataListener
 {
-  sov(snh paramsnh, String paramString, puh parampuh) {}
+  public sov(ProteusItemData paramProteusItemData) {}
   
-  public void onClick(View paramView)
+  public void onDataUpdated(String paramString)
   {
-    oat.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-    puf.b(this.jdField_a_of_type_Puh.f);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("ProteusItemData", 1, "[onDataUpdated], jsonData = " + paramString);
+    PTSItemData localPTSItemData = this.a.a;
+    if (localPTSItemData != null) {
+      this.a.a = new PTSItemData.Builder().withPageName(localPTSItemData.getPageName()).withItemID(localPTSItemData.getItemID()).withJsonData(paramString).withFrameTreeJson(localPTSItemData.getFrameTreeJson()).build();
+    }
   }
 }
 

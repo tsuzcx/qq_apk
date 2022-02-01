@@ -1,29 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdku
-  extends bdki
 {
-  public bdku(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bdko parambdko)
+  private static int jdField_a_of_type_Int = -1;
+  public static String a;
+  static boolean jdField_a_of_type_Boolean;
+  
+  static
   {
-    super(paramQQAppInterface, paramChatMessage, parambdko);
+    jdField_a_of_type_JavaLangString = "GeneralConfigUtils";
   }
   
-  protected String a()
+  public static void a(String paramString1, String paramString2)
   {
-    return ((MessageForTroopFile)this.a).fileName;
-  }
-  
-  protected void a(bdkj parambdkj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
+    if (!TextUtils.isEmpty(paramString2)) {
+      jdField_a_of_type_Int = -1;
     }
-    ThreadManager.post(new TroopFileAIOMsgTips.1(this, parambdkj), 8, null, true);
+    try
+    {
+      paramString2 = Integer.valueOf(paramString2);
+      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt(paramString1, paramString2.intValue()).commit();
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "parseConfig(): e = " + paramString1);
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Int == -1) {
+      if (BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).getInt("pic_thumb_400Enable", 0) == 1)
+      {
+        jdField_a_of_type_Boolean = true;
+        jdField_a_of_type_Int = 1;
+      }
+    }
+    for (;;)
+    {
+      return jdField_a_of_type_Boolean;
+      jdField_a_of_type_Boolean = false;
+      jdField_a_of_type_Int = 0;
+      continue;
+      if (jdField_a_of_type_Int == 1) {
+        jdField_a_of_type_Boolean = true;
+      } else {
+        jdField_a_of_type_Boolean = false;
+      }
+    }
   }
 }
 

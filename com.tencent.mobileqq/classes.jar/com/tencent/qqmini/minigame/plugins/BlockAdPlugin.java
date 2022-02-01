@@ -49,7 +49,7 @@ import org.json.JSONObject;
 public class BlockAdPlugin
   extends BaseJsPlugin
 {
-  private static final HashMap<Integer, String> AD_ERROR_MSG = MiniSDKConst.AdConst.CodeMsgMap;
+  private static final HashMap<Integer, String> AD_ERROR_MSG = MiniSDKConst.AdConst.CODE_MSG_MAP;
   public static final String API_AD_CREATE_BLOCK_AD = "createBlockAd";
   public static final String API_AD_OPERATE_BLOCK_AD = "operateBlockAd";
   public static final String API_AD_UPDATE_BLOCK_AD = "updateBlockAdSize";

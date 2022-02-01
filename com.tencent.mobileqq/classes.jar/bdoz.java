@@ -1,15 +1,22 @@
-import android.os.IInterface;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-public abstract interface bdoz
-  extends IInterface
+public class bdoz
+  implements View.OnLongClickListener
 {
-  public abstract void beginSwitch();
+  public bdoz(StructMsgForGeneralShare paramStructMsgForGeneralShare, agjk paramagjk) {}
   
-  public abstract void doSwitch(String paramString1, String paramString2);
-  
-  public abstract void onProgress(long paramLong1, long paramLong2);
-  
-  public abstract void postSwitch(int paramInt);
+  public boolean onLongClick(View paramView)
+  {
+    StructMsgForGeneralShare.clickedItemIndex = 0;
+    bdol localbdol = (bdol)paramView.getTag();
+    if (!TextUtils.isEmpty(localbdol.aa)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localbdol.aa).intValue();
+    }
+    return this.jdField_a_of_type_Agjk.onLongClick(paramView);
+  }
 }
 
 

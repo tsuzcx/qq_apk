@@ -1,59 +1,80 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class ykc
-  implements Comparator<yjy>
+  extends wzm
+  implements woy<xde, xeu>
 {
-  public int a(yjy paramyjy1, yjy paramyjy2)
+  public String a;
+  private String b;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  
+  private void d()
   {
-    int k = 1;
-    int i;
-    int j;
-    if (((paramyjy1 instanceof yju)) && (((HotRecommendFeedItem)((yju)paramyjy1).a()).mIsTopLocation))
-    {
-      i = 1;
-      if ((!(paramyjy2 instanceof yju)) || (!((HotRecommendFeedItem)((yju)paramyjy2).a()).mIsTopLocation)) {
-        break label80;
-      }
-      j = 1;
-      label54:
-      if ((j ^ i) == 0) {
-        break label86;
-      }
-      j = k;
-      if (i != 0) {
-        j = -1;
-      }
+    xde localxde = new xde();
+    localxde.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localxde.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localxde.jdField_b_of_type_Long = 0L;
+    localxde.c = 10;
+    localxde.d = 10;
+    wow.a().a(localxde, this);
+    yuk.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localxde.toString());
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    super.a(paramTencentLocation, paramInt);
+    if (this.jdField_c_of_type_Boolean) {
+      return;
     }
-    label80:
-    label86:
-    do
+    this.jdField_b_of_type_JavaLangString = "";
+    d();
+  }
+  
+  public void a(@NonNull xde paramxde, @Nullable xeu paramxeu, @NonNull ErrorMessage paramErrorMessage)
+  {
+    yuk.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
+    if (this.jdField_c_of_type_Boolean)
     {
-      do
-      {
-        return j;
-        i = 0;
-        break;
-        j = 0;
-        break label54;
-        if (paramyjy1.a.dateTimeMillis != paramyjy2.a.dateTimeMillis) {
-          break label146;
-        }
-        if (((paramyjy1 instanceof yka)) && (yka.a((yka)paramyjy1))) {
-          return -1;
-        }
-        if (!(paramyjy2 instanceof yka)) {
-          break label144;
-        }
-        j = k;
-      } while (yka.a((yka)paramyjy2));
-      return 0;
-      j = k;
-    } while (paramyjy1.a.dateTimeMillis <= paramyjy2.a.dateTimeMillis);
-    label144:
-    label146:
-    return -1;
+      yuk.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
+      return;
+    }
+    ykd localykd = new ykd(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
+    localykd.jdField_b_of_type_Boolean = false;
+    if ((paramxeu == null) || (paramErrorMessage.isFail()))
+    {
+      wjj.a().dispatch(localykd);
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = paramxeu.jdField_a_of_type_JavaLangString;
+    localykd.jdField_a_of_type_JavaUtilList = paramxeu.jdField_a_of_type_JavaUtilArrayList;
+    localykd.jdField_a_of_type_Int = paramxeu.b;
+    localykd.jdField_a_of_type_Boolean = paramxeu.jdField_a_of_type_Boolean;
+    localykd.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramxde.jdField_a_of_type_JavaLangString);
+    paramxeu = paramxeu.jdField_a_of_type_JavaUtilArrayList;
+    ((wsu)wth.a(19)).b(paramxeu, paramxde.jdField_b_of_type_JavaLangString, localykd.jdField_c_of_type_Boolean);
+    try
+    {
+      this.jdField_b_of_type_Boolean = true;
+      wjj.a().dispatch(localykd);
+      yuk.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localykd);
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    d();
   }
 }
 

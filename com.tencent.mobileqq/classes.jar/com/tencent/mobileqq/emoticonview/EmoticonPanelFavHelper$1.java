@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aryf;
-import asaf;
+import asnt;
+import aspt;
 import java.util.List;
 
 public class EmoticonPanelFavHelper$1
   implements Runnable
 {
-  public EmoticonPanelFavHelper$1(aryf paramaryf) {}
+  public EmoticonPanelFavHelper$1(asnt paramasnt) {}
   
   public void run()
   {
     List localList = this.this$0.a.b;
     int i;
-    asaf localasaf;
+    aspt localaspt;
     if (localList != null)
     {
       i = 0;
       if (i < localList.size())
       {
-        localasaf = (asaf)localList.get(i);
-        if ((localasaf == null) || (localasaf.a != 4)) {}
+        localaspt = (aspt)localList.get(i);
+        if ((localaspt == null) || (localaspt.a != 4)) {}
       }
     }
     for (;;)
     {
-      if ((localasaf != null) && (this.this$0.a.a != null)) {
-        this.this$0.a.a.a(localasaf);
+      if ((localaspt != null) && (this.this$0.a.a != null)) {
+        this.this$0.a.a.a(localaspt);
       }
       return;
       i += 1;
       break;
-      localasaf = null;
+      localaspt = null;
     }
   }
 }

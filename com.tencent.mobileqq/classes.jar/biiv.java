@@ -1,33 +1,107 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
+import com.tencent.mobileqq.vip.diy.TemplateLikeView;
+import com.tencent.mobileqq.vip.diy.common.DIYImageView;
+import com.tencent.mobileqq.widget.ProfileNameView;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class biiv
-  implements View.OnLayoutChangeListener
+  extends bnvo
 {
-  public biiv(AuthorityAccountView paramAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TemplateLikeView jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
+  private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
+  private String jdField_a_of_type_JavaLangString = "";
+  private HashMap<String, View> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, bnvn> b;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public biiv(HashMap<String, View> paramHashMap, String paramString)
   {
-    paramInt1 = paramView.getHeight();
-    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
+    if (paramHashMap == null) {
+      throw new RuntimeException("create the QVipProfileJsonInflaterFactory with null profileHeaderViewsMap");
     }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramView == null) {
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-    }
-    for (;;)
+    this.b = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public View a(Context paramContext, String paramString)
+  {
+    if ("pf_name".equals(paramString))
     {
-      paramView.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      return;
-      paramView.height = -2;
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView != null) {
+        throw new RuntimeException("It have duplicate " + paramString);
+      }
+      yuk.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了昵称控件");
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = new ProfileNameView(paramContext);
+      paramContext = new ProfileTemplateNickNameContainer(paramContext, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      return paramContext;
     }
+    if ("pf_avatar".equals(paramString))
+    {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        throw new RuntimeException("It have duplicate " + paramString);
+      }
+      yuk.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了头像控件");
+      paramContext = LayoutInflater.from(paramContext).inflate(2131562096, null);
+      this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131374863);
+      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_nick_container", this.jdField_a_of_type_AndroidViewView);
+      return paramContext;
+    }
+    if ("pf_like".equals(paramString))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView != null) {
+        throw new RuntimeException("It have duplicate " + paramString);
+      }
+      yuk.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了点赞控件");
+      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView = new TemplateLikeView(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView.a(0);
+      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView);
+      return this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
+    }
+    if ("image_view".equals(paramString)) {
+      return new DIYImageView(paramContext);
+    }
+    return super.a(paramContext, paramString);
+  }
+  
+  public bnvn a(String paramString, View paramView)
+  {
+    if ("pf_name".equals(paramString)) {
+      return new biit(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    }
+    if ("pf_avatar".equals(paramString)) {
+      return new biir(paramString, paramView, this.b);
+    }
+    if ("pf_like".equals(paramString)) {
+      return new biis(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    }
+    if ("image_view".equals(paramString)) {
+      return new biix(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    }
+    return super.a(paramString, paramView);
+  }
+  
+  public void a(bnvn parambnvn, JSONObject paramJSONObject)
+  {
+    Object localObject = paramJSONObject.optString("id");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (parambnvn != null)) {
+      this.b.put(localObject, parambnvn);
+    }
+    if ("pf_avatar".equals(paramJSONObject.optString("type")))
+    {
+      localObject = paramJSONObject.optString("border", "");
+      localObject = (bnvn)this.b.get(localObject);
+      if (localObject != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_avatar_sticker", ((bnvn)localObject).a());
+      }
+    }
+    super.a(parambnvn, paramJSONObject);
   }
 }
 

@@ -1,33 +1,10 @@
-public class wiv
+public abstract interface wiv<T>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a();
   
-  public wiv(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(wiw<T> paramwiw);
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void c();
 }
 
 

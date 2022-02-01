@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import anpk;
-import anpn;
+import aobl;
+import aobo;
 
 public class MayknowRecommendManager$3$1
   implements Runnable
 {
-  public MayknowRecommendManager$3$1(anpn paramanpn, String paramString) {}
+  public MayknowRecommendManager$3$1(aobo paramaobo, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anpn.a.a(this.jdField_a_of_type_JavaLangString, true);
-    ((FriendListHandler)anpk.a(this.jdField_a_of_type_Anpn.a).a(1)).notifyUI(108, true, null);
+    this.jdField_a_of_type_Aobo.a.a(this.jdField_a_of_type_JavaLangString, true);
+    ((FriendListHandler)aobl.a(this.jdField_a_of_type_Aobo.a).a(1)).notifyUI(108, true, null);
   }
 }
 

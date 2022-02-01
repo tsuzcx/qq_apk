@@ -18,7 +18,7 @@ class UnlimitedBladeWorks$7
     do
     {
       return;
-      localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0).findViewById(2131362279);
+      localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0).findViewById(2131362291);
     } while (localView == null);
     localView.clearAnimation();
   }

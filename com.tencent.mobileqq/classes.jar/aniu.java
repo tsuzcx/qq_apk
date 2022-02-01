@@ -1,16 +1,10 @@
-import java.nio.ByteBuffer;
-
 public class aniu
 {
   public int a;
-  public long a;
-  public ByteBuffer a;
-  public int b;
-  
-  private aniu(anip paramanip)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(1000);
-  }
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
 }
 
 

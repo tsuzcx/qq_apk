@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public final class abba
-  implements Parcelable.Creator<NewerGuidePlugin.PhoneInfo>
+class abba
+  implements Downloader.DownloadListener
 {
-  public NewerGuidePlugin.PhoneInfo a(Parcel paramParcel)
-  {
-    return new NewerGuidePlugin.PhoneInfo(paramParcel);
-  }
+  abba(abay paramabay, abai paramabai, String paramString) {}
   
-  public NewerGuidePlugin.PhoneInfo[] a(int paramInt)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    return new NewerGuidePlugin.PhoneInfo[paramInt];
+    abay.a(this.jdField_a_of_type_Abay, this.jdField_a_of_type_Abai, abav.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 

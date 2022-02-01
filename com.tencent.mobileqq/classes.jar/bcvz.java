@@ -1,496 +1,247 @@
-import android.content.Context;
+import QQService.strupbuff;
+import QQService.strupbuffResp;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
+import com.tencent.mobileqq.msf.sdk.RdmReq;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.report.StrupBuff;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-import tencent.im.babyq.babyq_cookie.BabyQCookie;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcvz
+  extends MSFServlet
 {
-  private static bkho jdField_a_of_type_Bkho;
-  Context jdField_a_of_type_AndroidContentContext;
-  public QQAppInterface a;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  
-  public bcvz(QQAppInterface paramQQAppInterface, View paramView)
+  public String[] getPreferSSOCommands()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    if ((paramQQAppInterface == null) && (FragmentActivity.class.isInstance(this.jdField_a_of_type_AndroidContentContext)))
+    return new String[] { "CliLogSvc.UploadReq" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if ("CliLogSvc.UploadReq".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      paramQQAppInterface = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if (paramQQAppInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface.a().a();
+      boolean bool = paramFromServiceMsg.isSuccess();
+      if (paramIntent.getExtras().getInt("seqKey") != 0) {
+        notifyObserver(paramIntent, paramIntent.getExtras().getInt("sendType"), bool, paramIntent.getExtras(), null);
+      }
+      if (bool) {
+        paramIntent = (strupbuffResp)decodePacket(paramFromServiceMsg.getWupBuffer(), "DataResp", new strupbuffResp());
       }
     }
   }
   
-  public bcvz(QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this(paramQQAppInterface, paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-  }
-  
-  private static void a(Context paramContext, String paramString)
-  {
-    if ((jdField_a_of_type_Bkho == null) || (!jdField_a_of_type_Bkho.getContext().equals(paramContext)))
+    int i = 0;
+    switch (paramIntent.getExtras().getInt("sendType"))
     {
-      jdField_a_of_type_Bkho = bkho.a(paramContext);
-      jdField_a_of_type_Bkho.a(2131691437, 1);
-      jdField_a_of_type_Bkho.a(2131691140, 1);
-      jdField_a_of_type_Bkho.c(2131690582);
-      jdField_a_of_type_Bkho.a(String.format(paramContext.getString(2131694051), new Object[] { paramString }));
-      jdField_a_of_type_Bkho.a(new bcwa(paramString, paramContext));
     }
-    if (!jdField_a_of_type_Bkho.isShowing()) {
-      jdField_a_of_type_Bkho.show();
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return bool1;
-                  localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-                  ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
-                  ((Intent)localObject).putExtra("url", paramString);
-                  ((Intent)localObject).putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
-                  ((Intent)localObject).putExtra("articalChannelId", 1);
-                  tzo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (Intent)localObject, paramString);
-                  this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-                  bool1 = bool2;
-                } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null);
-                bool1 = bool2;
-              } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend());
-              bool1 = bool2;
-            } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 0);
-            bool1 = bool2;
-          } while (!bgjw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin));
-          bool1 = bool2;
-        } while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie")));
-        paramString = bgjw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
-        bool1 = bool2;
-      } while (paramString == null);
-      Object localObject = new babyq_cookie.BabyQCookie();
-      try
-      {
-        ((babyq_cookie.BabyQCookie)localObject).mergeFrom(paramString);
-        switch (((babyq_cookie.BabyQCookie)localObject).uint32_type.get())
-        {
-        case 204: 
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b("babyq_game_strategy");
-          return true;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramString)
-      {
-        bool1 = bool2;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("StructMsg", 2, "babbyq -> sendSpecialMessage:" + paramString.getStackTrace());
-    return true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b("babyq_game_gift");
-    return true;
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, Object... paramVarArgs)
-  {
-    if (com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.isMiniAppScheme(paramString))
-    {
-      com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, paramString, 1211);
-      return true;
-    }
-    if (com.tencent.mobileqq.mini.sdk.MiniAppLauncher.isMiniAppUrl(paramString))
-    {
-      com.tencent.mobileqq.mini.sdk.MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramString, 1043, null);
-      return true;
-    }
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      return false;
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-    localIntent.putExtra("key_isReadModeEnabled", true);
-    localIntent.putExtra("url", paramString);
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
-    {
-      localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if (localObject != null)
-      {
-        int i = ((ChatFragment)localObject).a().b();
-        if (i == 1008)
-        {
-          String str = ((ChatFragment)localObject).a().a();
-          localIntent.putExtra("puin", str);
-          localIntent.putExtra("uin_type", i);
-          localIntent.putExtra("msg_id", String.valueOf(paramLong));
-          localIntent.putExtra("switch_msg_btn", tzo.a());
-          localIntent.putExtra("articalChannelId", 1);
-          localIntent.putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
-          localIntent.putExtra("fromOneCLickCLose", true);
-          localObject = tzo.b(str);
-          if ((!"3046055438".equals(str)) || (paramVarArgs == null) || (paramVarArgs.length <= 0) || (!(paramVarArgs[0] instanceof Boolean)) || (!((Boolean)paramVarArgs[0]).booleanValue())) {
-            break label321;
-          }
-        }
-      }
-    }
-    label321:
-    for (paramVarArgs = "biz_src_ads";; paramVarArgs = (Object[])localObject)
-    {
-      localIntent.putExtra("big_brother_source_key", paramVarArgs);
-      tzo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localIntent, paramString);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return true;
-    }
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      localObject = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if (((FragmentActivity)localObject).getChatFragment() != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("StructMsg", 2, "chatfragment is null");
-      }
-      return true;
-      paramString1 = paramString2;
-    }
-    int i = ((FragmentActivity)localObject).getChatFragment().a().b();
-    paramString2 = ((FragmentActivity)localObject).getChatFragment().a().b();
-    Object localObject = ((FragmentActivity)localObject).getChatFragment().a().a();
-    Intent localIntent = afur.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    localIntent.putExtra("uin", (String)localObject);
-    localIntent.putExtra("uintype", i);
-    localIntent.putExtra("uinname", paramString2);
-    localIntent.putExtra("forward_type", -1);
-    localIntent.putExtra("forward_text", paramString1);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, int paramInt, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      paramString2 = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if (paramString2.getChatFragment() != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("StructMsg", 2, "chatfragment is null");
-      }
-      return true;
-      paramString1 = paramString2;
-    }
-    paramString2 = paramString2.getChatFragment().a().a();
-    nzz.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, false, 0.0D, 0.0D, null, paramInt, paramLong, 2);
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString3)) {}
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        int i = paramString2.indexOf("://");
-        Object localObject = "";
-        if (i == -1)
-        {
-          paramString3 = paramString2;
-          paramString2 = (String)localObject;
-          label39:
-          localObject = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
-        }
-        try
-        {
-          if (((PackageManager)localObject).getPackageInfo(paramString3, 1) != null)
-          {
-            localObject = ((PackageManager)localObject).getLaunchIntentForPackage(paramString3);
-            if (localObject != null)
-            {
-              if (!TextUtils.isEmpty(paramString2)) {
-                ((Intent)localObject).setData(Uri.parse(paramString2));
-              }
-              anvf.a("structmsg", "", paramString3, "1", "structmsgClick", this.jdField_a_of_type_AndroidContentContext.getClass().getName());
-              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-              return true;
-              paramString2 = paramString3;
-              continue;
-              paramString3 = paramString2.substring(0, i);
-              paramString2 = paramString2.substring(i + 3);
-              break label39;
-            }
-            return false;
-          }
-        }
-        catch (Exception paramString2)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, paramString2.getMessage());
-          }
-        }
-      }
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      paramString2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramString2.putExtra("key_isReadModeEnabled", true);
-      paramString2.putExtra("url", paramString1);
-      paramString2.putExtra("fromAio", true);
-      tzo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramString2, paramString1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
-      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return a(paramString1, paramString2, paramString3, paramString4, 0L, new Object[0]);
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, Object... paramVarArgs)
-  {
-    Object localObject2;
     Object localObject1;
-    MessageForStructing localMessageForStructing;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("StructMsgClickHandler doAction action = ").append(paramString1).append(", url = ").append(paramString2).append(", actionData = ").append(paramString3).append(", actionDataA = ").append(paramString4);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        localObject1 = ", args = " + paramVarArgs[0];
-        QLog.d("StructMsg", 2, (String)localObject1);
-      }
-    }
-    else
-    {
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
-      {
-        localObject1 = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-        if (localObject1 != null)
-        {
-          localObject2 = ((ChatFragment)localObject1).a().a();
-          int i = ((ChatFragment)localObject1).a().b();
-          if ((paramString1 != null) && (!paramString1.equals("")) && (i == 1008)) {
-            nzz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2);
-          }
-          if (((((ChatFragment)localObject1).a() instanceof aidp)) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing)))
-          {
-            localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-            localObject1 = "";
-            if (localMessageForStructing.mExJsonObject != null) {
-              localObject1 = localMessageForStructing.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
-            }
-            if (!(localMessageForStructing.structingMsg instanceof StructMsgForHypertext)) {
-              break label338;
-            }
-            aoqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, 0, 2, paramLong, (String)localObject1);
-          }
-        }
-      }
-      label268:
-      if (!"web".equals(paramString1)) {
-        break label417;
-      }
-      if (paramLong <= 0L) {
-        break label407;
-      }
-    }
-    label407:
-    for (boolean bool1 = a(paramString2, paramLong, paramVarArgs);; bool1 = a(paramString2))
-    {
-      boolean bool2 = bool1;
-      if (bool1)
-      {
-        bool2 = bool1;
-        if (paramLong > 0L) {
-          bool2 = a(paramString2, null, 2, paramLong);
-        }
-      }
-      return bool2;
-      localObject1 = "";
-      break;
-      label338:
-      if ((localMessageForStructing.structingMsg instanceof StructMsgForGeneralShare)) {
-        break label268;
-      }
-      if ((localMessageForStructing.structingMsg instanceof StructMsgForImageShare))
-      {
-        aoqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, 0, 1, paramLong, (String)localObject1);
-        break label268;
-      }
-      if (!(localMessageForStructing.structingMsg instanceof StructMsgForAudioShare)) {
-        break label268;
-      }
-      aoqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, 0, 5, paramLong, (String)localObject1);
-      break label268;
-    }
-    label417:
-    if ("app".equals(paramString1)) {
-      return a(paramString2, paramString3, paramString4);
-    }
-    if ("plugin".equals(paramString1))
-    {
-      if ((TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString2))) {
-        return c(paramString2, null);
-      }
-      return c(paramString3, paramString4);
-    }
-    if ("auto".equals(paramString1)) {
-      return b(paramString2);
-    }
-    if ("replyMsg".equals(paramString1)) {
-      return a(paramString3, paramString4);
-    }
-    if ("replyCmd".equals(paramString1))
-    {
-      if (paramLong == 0L) {
-        return b(paramString3, paramString4);
-      }
-      return a(paramString3, null, 1, paramLong);
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (paramString.startsWith("tel:"))
-    {
-      paramString = paramString.substring("tel:".length());
-      a(this.jdField_a_of_type_AndroidContentContext, paramString);
-    }
-    for (;;)
-    {
-      return true;
-      try
-      {
-        paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-        paramString.putExtra("com.android.browser.application_id", this.jdField_a_of_type_AndroidContentContext.getPackageName());
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
-      }
-      catch (Exception paramString) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("HyperTextMsg", 2, paramString.getMessage());
-      }
-    }
-  }
-  
-  public boolean b(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      paramString2 = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if (paramString2.getChatFragment() != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("StructMsg", 2, "chatfragment is null");
-      }
-      return true;
-      paramString1 = paramString2;
-    }
-    paramString2 = paramString2.getChatFragment().a().a();
-    nzz.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, false, 0.0D, 0.0D, null, 1, 0L, 2);
-    return true;
-  }
-  
-  public boolean c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "StructMsgClickHandler clickPluginMsg  actionData = " + paramString1 + ", actionDataA = " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      if (!TextUtils.equals(paramString1, "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&from=recent")) {
-        break label66;
-      }
-    }
-    label66:
+    label514:
+    label1174:
     do
     {
-      for (;;)
+      return;
+      sendToMSF(paramIntent, MsfMsgUtil.getAppDataIncermentMsg(null, paramIntent.getStringExtra("uin"), paramIntent.getStringArrayExtra("tags"), paramIntent.getLongExtra("count", 0L)));
+      return;
+      localObject1 = new StrupBuff();
+      Object localObject2 = paramIntent.getExtras().getString("tag");
+      ((StrupBuff)localObject1).prefix = "";
+      Object localObject3 = paramIntent.getExtras().getByteArray("content");
+      paramIntent = new ArrayList();
+      paramIntent.add(localObject3);
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put(localObject2, paramIntent);
+      ((StrupBuff)localObject1).logstring = new HashMap((Map)localObject3);
+      ((StrupBuff)localObject1).encoding = 0;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
+      paramPacket.setNoResponse();
+      return;
+      localObject1 = new StrupBuff();
+      localObject2 = paramIntent.getExtras().getString("tag");
+      ((StrupBuff)localObject1).prefix = "";
+      localObject3 = paramIntent.getExtras().getStringArrayList("content");
+      paramIntent = new ArrayList();
+      localObject3 = ((List)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        return true;
-        paramString1 = paramString2;
-        break;
+        localObject4 = (String)((Iterator)localObject3).next();
         try
         {
-          paramString1 = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString1);
-          if (paramString1 != null)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-              paramString1.a("msg_uniseq", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
-            }
-            paramString1.a();
-            if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 0) && (bgjw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
-            {
-              paramString1 = bgjw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
-              if (paramString1 != null)
-              {
-                paramString2 = new babyq_cookie.BabyQCookie();
-                paramString2.mergeFrom(paramString1);
-                if (paramString2.uint32_type.get() == 207)
-                {
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b("baqyq_mayknow_people");
-                  return true;
-                }
-              }
-            }
-          }
+          paramIntent.add(((String)localObject4).getBytes("utf-8"));
         }
-        catch (Exception paramString1) {}
+        catch (UnsupportedEncodingException paramIntent)
+        {
+          paramIntent.printStackTrace();
+          return;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("StructMsg", 2, paramString1.getMessage(), paramString1);
-    return true;
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put(localObject2, paramIntent);
+      ((StrupBuff)localObject1).logstring = new HashMap((Map)localObject3);
+      ((StrupBuff)localObject1).encoding = 2;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
+      paramPacket.setNoResponse();
+      return;
+      localObject2 = new StrupBuff();
+      ((StrupBuff)localObject2).prefix = "";
+      localObject3 = paramIntent.getExtras().getStringArrayList("tags");
+      Object localObject4 = paramIntent.getExtras().getStringArrayList("contents");
+      Object localObject5 = new HashMap();
+      while (i < ((List)localObject3).size())
+      {
+        localObject6 = (String)((List)localObject3).get(i);
+        paramIntent = (String)((List)localObject4).get(i);
+        try
+        {
+          localObject7 = paramIntent.getBytes("utf-8");
+          localObject1 = (ArrayList)((HashMap)localObject5).get(localObject6);
+          paramIntent = (Intent)localObject1;
+          if (localObject1 == null)
+          {
+            paramIntent = new ArrayList();
+            ((HashMap)localObject5).put(localObject6, paramIntent);
+          }
+          paramIntent.add(localObject7);
+        }
+        catch (UnsupportedEncodingException paramIntent)
+        {
+          Object localObject7;
+          long l1;
+          long l2;
+          boolean bool1;
+          boolean bool2;
+          String str;
+          break label514;
+        }
+        i += 1;
+      }
+      ((StrupBuff)localObject2).logstring = new HashMap((Map)localObject5);
+      ((StrupBuff)localObject2).encoding = 2;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject2);
+      paramPacket.setNoResponse();
+      return;
+      sendToMSF(paramIntent, MsfMsgUtil.getCurrentDataCountMsg(null, paramIntent.getStringArrayExtra("tags")));
+      return;
+      paramPacket = paramIntent.getExtras().getString("tagName");
+      l1 = paramIntent.getExtras().getLong("duration");
+      l2 = paramIntent.getExtras().getLong("size");
+      bool1 = paramIntent.getExtras().getBoolean("success");
+      localObject1 = (HashMap)paramIntent.getExtras().getSerializable("Params_MAP");
+      bool2 = paramIntent.getExtras().getBoolean("realtime");
+      localObject2 = new RdmReq();
+      ((RdmReq)localObject2).eventName = paramPacket;
+      ((RdmReq)localObject2).elapse = l1;
+      ((RdmReq)localObject2).size = l2;
+      ((RdmReq)localObject2).isSucceed = Boolean.valueOf(bool1).booleanValue();
+      ((RdmReq)localObject2).isRealTime = Boolean.valueOf(bool2).booleanValue();
+      ((RdmReq)localObject2).params = ((Map)localObject1);
+      sendToMSF(paramIntent, MsfMsgUtil.getRdmReportMsg(null, (RdmReq)localObject2));
+      return;
+      localObject1 = new StrupBuff();
+      localObject2 = paramIntent.getExtras().getString("tag");
+      ((StrupBuff)localObject1).prefix = "";
+      localObject3 = paramIntent.getExtras().getString("content");
+      localObject4 = new ArrayList();
+      if (bdll.a((String)localObject2)) {}
+      for (paramIntent = "GBK";; paramIntent = "UTF-8") {
+        try
+        {
+          ((ArrayList)localObject4).add(((String)localObject3).getBytes(paramIntent));
+          paramIntent = new HashMap();
+          paramIntent.put(localObject2, localObject4);
+          ((StrupBuff)localObject1).logstring = new HashMap(paramIntent);
+          ((StrupBuff)localObject1).encoding = 0;
+          paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+          paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+          paramPacket.setFuncName("UploadReq");
+          paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
+          paramPacket.setNoResponse();
+          if ((!QLog.isColorLevel()) || (!"dc02181".equals(localObject2))) {
+            break;
+          }
+          QLog.d("CaptureReport", 2, "[Capture Report Send:runtime] tag = " + (String)localObject2 + ", content = " + (String)localObject3);
+          return;
+        }
+        catch (UnsupportedEncodingException paramIntent)
+        {
+          paramIntent.printStackTrace();
+          return;
+        }
+      }
+      localObject4 = new strupbuff();
+      ((strupbuff)localObject4).prefix = "";
+      localObject5 = paramIntent.getExtras().getStringArrayList("tags");
+      Object localObject6 = paramIntent.getExtras().getStringArrayList("contents");
+      localObject7 = new HashMap();
+      i = 0;
+      localObject1 = null;
+      if (i < ((List)localObject5).size())
+      {
+        str = (String)((List)localObject5).get(i);
+        localObject3 = (String)((List)localObject6).get(i);
+        localObject2 = localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new StringBuilder("[Capture Report Send:not runtime]:\n");
+          }
+          ((StringBuilder)localObject2).append("[").append(i).append("]").append(" tag = ").append(str).append(", content = ").append((String)localObject3).append("\n");
+        }
+        if (bdll.a(str)) {}
+        for (localObject1 = "GBK";; localObject1 = "UTF-8")
+        {
+          try
+          {
+            byte[] arrayOfByte = ((String)localObject3).getBytes((String)localObject1);
+            localObject3 = (ArrayList)((HashMap)localObject7).get(str);
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              localObject1 = new ArrayList();
+              ((HashMap)localObject7).put(str, localObject1);
+            }
+            ((ArrayList)localObject1).add(arrayOfByte);
+          }
+          catch (UnsupportedEncodingException localUnsupportedEncodingException)
+          {
+            break label1174;
+          }
+          i += 1;
+          localObject1 = localObject2;
+          break;
+        }
+      }
+      ((strupbuff)localObject4).logstring = new HashMap((Map)localObject7);
+      ((strupbuff)localObject4).encoding = 0;
+      ((strupbuff)localObject4).seqno = paramIntent.getExtras().getInt("seqKey");
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject4);
+      paramPacket.setTimeout(30000L);
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    QLog.d("CaptureReport", 2, ((StringBuilder)localObject1).toString());
   }
 }
 

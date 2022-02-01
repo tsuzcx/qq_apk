@@ -1,26 +1,6 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-
-public abstract class aoou
+public abstract interface aoou
 {
-  public String businessId;
-  public boolean observerOnUiThread;
-  
-  public aoou(String paramString)
-  {
-    this.businessId = paramString;
-  }
-  
-  public aoou(String paramString, boolean paramBoolean)
-  {
-    this.businessId = paramString;
-    this.observerOnUiThread = paramBoolean;
-  }
-  
-  public void onConsecutiveFailure(int paramInt1, int paramInt2, boolean paramBoolean) {}
-  
-  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
+  public abstract void onLoadingStateChanged(int paramInt1, int paramInt2);
 }
 
 

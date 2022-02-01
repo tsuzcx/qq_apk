@@ -1,21 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
 
 class yep
-  implements ValueAnimator.AnimatorUpdateListener
+  extends SimpleObserver<Void>
 {
-  yep(yen paramyen, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  yep(yen paramyen, yer paramyer) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(Void paramVoid)
   {
-    try
-    {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
-      return;
-    }
-    catch (Exception paramValueAnimator) {}
+    super.onNext(paramVoid);
+    yuk.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Yen.a = 2;
+    this.jdField_a_of_type_Yer.a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    yuk.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Yen.a = -1;
+    this.jdField_a_of_type_Yer.b();
   }
 }
 

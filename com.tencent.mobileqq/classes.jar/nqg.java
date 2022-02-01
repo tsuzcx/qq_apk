@@ -1,59 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.Utils;
 
-public class nqg
+public final class nqg
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  private ArrayList<nqh> a = new ArrayList();
-  public boolean a;
-  public long b;
-  private ArrayList<nqh> b = new ArrayList();
-  public long c;
+  public nqg(int paramInt, anui paramanui, Context paramContext, aasb paramaasb, long paramLong) {}
   
-  public ArrayList<nqh> a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a(ArrayList<nqh> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      this.a.addAll(paramArrayList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("addOldDynamicInfoItemList", 2, "mDynamicInfoList.size():" + this.a.size());
-    }
-  }
-  
-  public ArrayList<nqh> b()
-  {
-    return this.b;
-  }
-  
-  public void b(ArrayList<String> paramArrayList)
-  {
-    this.b.clear();
-    if (paramArrayList == null) {}
-    for (int i = 0;; i = paramArrayList.size())
+    switch (paramInt)
     {
-      int j = 0;
-      while (j < i)
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Int == 1)
       {
-        String str = (String)paramArrayList.get(j);
-        if (!TextUtils.isEmpty(str))
-        {
-          nqh localnqh = new nqh();
-          localnqh.a(str);
-          this.b.add(localnqh);
-        }
-        j += 1;
+        this.jdField_a_of_type_Anui.onUpdate(17, false, null);
+        paramDialogInterface.dismiss();
+        return;
       }
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aasb, this.jdField_a_of_type_Anui, this.jdField_a_of_type_Long, false);
+      return;
     }
-    this.a.addAll(this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("parceJson2DynamicInfoItemList", 2, "mDynamicInfoList.size():" + this.b.size());
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aasb, this.jdField_a_of_type_Anui, this.jdField_a_of_type_Long, true);
+      return;
     }
+    this.jdField_a_of_type_Anui.onUpdate(17, false, null);
+    paramDialogInterface.dismiss();
   }
 }
 

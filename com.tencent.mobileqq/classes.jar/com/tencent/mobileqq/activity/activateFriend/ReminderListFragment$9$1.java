@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aftl;
+import agcz;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
 
 public class ReminderListFragment$9$1
   implements Runnable
 {
-  public ReminderListFragment$9$1(aftl paramaftl) {}
+  public ReminderListFragment$9$1(agcz paramagcz) {}
   
   public void run()
   {

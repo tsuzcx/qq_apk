@@ -1,8 +1,18 @@
-public class bkzg
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnSeekCompleteListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnSeekCompleteListener;
+
+class bkzg
+  implements IMediaPlayer.OnSeekCompleteListener
 {
-  public int a;
-  public long a;
-  public byte[] a;
+  bkzg(bkzb parambkzb, ReliableVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  
+  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bkzb);
+    }
+  }
 }
 
 

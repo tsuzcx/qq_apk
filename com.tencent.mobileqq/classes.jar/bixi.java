@@ -1,160 +1,78 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Point;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.mobileqq.widget.MeasureGridView;
+import com.tencent.widget.ListView;
 
 public class bixi
-  implements DownloadListener
+  implements Animation.AnimationListener
 {
-  protected static bixi a;
-  protected bixk a;
+  private int jdField_a_of_type_Int;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private boolean jdField_a_of_type_Boolean;
+  private Point b;
   
-  public static bixi a()
+  public bixi(DraggableGridView paramDraggableGridView, Point paramPoint1, Point paramPoint2, boolean paramBoolean)
   {
-    try
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramPoint1);
+    this.b = new Point(paramPoint2);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = 0;
+    DraggableGridView.b(paramDraggableGridView, true);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    int i = this.jdField_a_of_type_Int - 1;
+    this.jdField_a_of_type_Int = i;
+    if (i <= 0)
     {
-      if (jdField_a_of_type_Bixi == null) {
-        jdField_a_of_type_Bixi = new bixi();
+      i = 0;
+      while (i < DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildCount())
+      {
+        paramAnimation = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildAt(i);
+        if ((paramAnimation instanceof MeasureGridView))
+        {
+          paramAnimation = (GridView)paramAnimation;
+          int j = 0;
+          if (j < paramAnimation.getChildCount())
+          {
+            paramAnimation.getChildAt(j).clearAnimation();
+            if ((((Integer)paramAnimation.getTag()).intValue() == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y) && (j == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x) && (!this.jdField_a_of_type_Boolean)) {
+              paramAnimation.getChildAt(j).setVisibility(4);
+            }
+            for (;;)
+            {
+              j += 1;
+              break;
+              paramAnimation.getChildAt(j).setVisibility(0);
+            }
+          }
+        }
+        i += 1;
       }
-      bixi localbixi = jdField_a_of_type_Bixi;
-      return localbixi;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label216;
+      }
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).set(-1, -1);
     }
-    finally {}
-  }
-  
-  public void a(Looper paramLooper)
-  {
-    this.jdField_a_of_type_Bixk = new bixk(paramLooper);
-  }
-  
-  protected void a(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Bixk == null) {
-      this.jdField_a_of_type_Bixk = new bixk();
-    }
-    this.jdField_a_of_type_Bixk.sendMessage(paramMessage);
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    bisy.a("NoticeDownloadListener", "onInstallSucceed ,appId" + paramString1);
-    paramString1 = bivr.a().b(paramString2);
-    if (paramString1 != null)
-    {
-      paramString2 = this.jdField_a_of_type_Bixk.obtainMessage();
-      paramString2.what = 6;
-      Bundle localBundle = new Bundle();
-      localBundle.putString(bivp.b, paramString1.jdField_c_of_type_JavaLangString);
-      paramString2.setData(localBundle);
-      a(paramString2);
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    bisy.a("NoticeDownloadListener", "onDownloadError ,downloadInfo" + paramDownloadInfo);
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bixk.obtainMessage();
-    localMessage.what = -2;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    localMessage.obj = paramString;
-    localMessage.arg2 = paramInt2;
-    a(localMessage);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    bisy.a("NoticeDownloadListener", "onDownloadFinish ");
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bixk.obtainMessage();
-    localMessage.what = 4;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {}
-    do
-    {
-      return;
-      bisy.a("NoticeDownloadListener", "onDownloadPause " + paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    } while ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (paramDownloadInfo.b));
-    Message localMessage = this.jdField_a_of_type_Bixk.obtainMessage();
-    localMessage.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    bisy.a("NoticeDownloadListener", "onDownloadUpdate notify enter infos=" + paramList.size());
-    paramList = paramList.iterator();
     for (;;)
     {
-      DownloadInfo localDownloadInfo;
-      if (paramList.hasNext())
-      {
-        localDownloadInfo = (DownloadInfo)paramList.next();
-        if ((localDownloadInfo == null) || (localDownloadInfo.jdField_c_of_type_Int == 1)) {
-          continue;
-        }
-        if (!localDownloadInfo.b) {}
-      }
-      else
-      {
-        return;
-      }
-      Message localMessage = this.jdField_a_of_type_Bixk.obtainMessage();
-      localMessage.what = 2;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("appId", localDownloadInfo.jdField_c_of_type_JavaLangString);
-      localMessage.setData(localBundle);
-      a(localMessage);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
+      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, false);
+      return;
+      label216:
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.b.y, this.b.x);
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Object localObject2 = new StringBuilder().append("onDownloadWait notify enter info.id=");
-    if (paramDownloadInfo == null) {}
-    for (Object localObject1 = "";; localObject1 = paramDownloadInfo.jdField_c_of_type_JavaLangString)
-    {
-      bisy.a("NoticeDownloadListener", (String)localObject1);
-      localObject1 = this.jdField_a_of_type_Bixk.obtainMessage();
-      ((Message)localObject1).what = 20;
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      ((Message)localObject1).setData((Bundle)localObject2);
-      a((Message)localObject1);
-      return;
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

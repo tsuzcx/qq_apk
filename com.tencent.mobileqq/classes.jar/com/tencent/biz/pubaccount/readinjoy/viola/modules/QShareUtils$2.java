@@ -6,19 +6,19 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import nlw;
-import tpa;
+import nnr;
+import tfv;
 
 public class QShareUtils$2
   implements Runnable
 {
-  public QShareUtils$2(tpa paramtpa, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
+  public QShareUtils$2(tfv paramtfv, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      Object localObject = nlw.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      Object localObject = nnr.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       if (localObject != null)
       {
         localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);

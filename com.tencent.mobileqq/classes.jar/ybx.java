@@ -1,24 +1,32 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ybx
-  extends JobSegment<String, ycb>
+  extends QQUIEventReceiver<IEventReceiver, xbc>
 {
-  private wyj jdField_a_of_type_Wyj = new wyj();
-  
-  public ybx(ybw paramybw, @NonNull String paramString)
+  public ybx(@NonNull IEventReceiver paramIEventReceiver)
   {
-    this.jdField_a_of_type_Wyj.a = new ArrayList();
-    paramybw = new yib(paramString, 0, "", "");
-    this.jdField_a_of_type_Wyj.a.add(paramybw);
+    super(paramIEventReceiver);
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull xbc paramxbc)
   {
-    wlb.a().a(this.jdField_a_of_type_Wyj, new yby(this, paramJobContext));
+    if (paramxbc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      QQToast.a(xiz.a(), 2, anzj.a(2131709912), 0).a();
+      yup.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramxbc.jdField_a_of_type_Int), "5" });
+      return;
+    }
+    QQToast.a(xiz.a(), 1, anzj.a(2131709907), 0).a();
+    yup.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xbc.class;
   }
 }
 

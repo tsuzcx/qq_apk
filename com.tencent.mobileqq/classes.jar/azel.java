@@ -1,52 +1,29 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class azel
-  implements anil
+class azel
+  implements bczz
 {
-  public void a(boolean paramBoolean, String paramString, long paramLong1, long paramLong2) {}
+  azel(azej paramazej, AppInterface paramAppInterface) {}
   
-  public void a(boolean paramBoolean, String paramString, long paramLong, PersonalityLabelInfo paramPersonalityLabelInfo, int paramInt, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Azej.jdField_a_of_type_ArrayOfInt[3] = paramInt;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    QLog.w(azej.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[3], bDownloadSuc[" + paramBoolean1 + "]");
+    int[] arrayOfInt = this.jdField_a_of_type_Azej.jdField_a_of_type_ArrayOfInt;
+    if (paramBoolean1) {}
+    for (paramInt = 100;; paramInt = -1)
     {
+      arrayOfInt[3] = paramInt;
+      if (this.jdField_a_of_type_Azej.a() == 100) {
+        azej.a(this.jdField_a_of_type_Azej, "onDownloadProgress1", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
+      }
+      return;
     }
-    do
-    {
-      return;
-      if (paramBoolean)
-      {
-        paramObject = (Object[])paramObject;
-        a(true, (String)paramObject[0], (PersonalityLabel)paramObject[1], (byte[])paramObject[2], ((Integer)paramObject[3]).intValue());
-        return;
-      }
-      a(false, null, null, null, 0);
-      return;
-      paramObject = (Object[])paramObject;
-      if (paramBoolean)
-      {
-        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), (PersonalityLabelInfo)paramObject[2], ((Integer)paramObject[3]).intValue(), (byte[])paramObject[4]);
-        return;
-      }
-      if ((paramObject != null) && (paramObject.length > 0))
-      {
-        a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), null, 0, null);
-        return;
-      }
-      a(false, "", -1L, null, 0, null);
-      return;
-      paramObject = (Object[])paramObject;
-      if (paramBoolean)
-      {
-        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
-        return;
-      }
-    } while (paramObject == null);
-    a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
   }
 }
 

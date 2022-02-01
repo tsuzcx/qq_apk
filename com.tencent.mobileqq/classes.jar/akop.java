@@ -1,23 +1,10 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.widget.TextView;
 
 public class akop
-  implements OnCompositionLoadedListener
 {
-  public akop(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
-  {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
-  }
+  public TextView a;
+  public bhof a;
+  public TextView b;
 }
 
 

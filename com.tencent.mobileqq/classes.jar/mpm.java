@@ -1,28 +1,61 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.ViewStub;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
-class mpm
-  implements View.OnTouchListener
+public class mpm
 {
-  mpm(mpj parammpj) {}
+  public View a;
+  public ViewStub a;
+  public LottieDrawable a;
+  public View b = null;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public mpm()
   {
-    try
+    this.jdField_a_of_type_AndroidViewViewStub = null;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = null;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.w("GuideHelper", 1, "show[" + paramBoolean + "]");
+    int i;
+    if (paramBoolean)
     {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a(false, 3);
-      return true;
-    }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
+      i = 0;
+      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
       {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
+        if (!paramBoolean) {
+          break label113;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
       }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidViewViewStub != null) {
+        this.jdField_a_of_type_AndroidViewViewStub.setVisibility(i);
+      }
+      if (this.b != null) {
+        this.b.setVisibility(i);
+      }
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(i);
+      }
+      return;
+      i = 8;
+      break;
+      label113:
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
     }
   }
 }

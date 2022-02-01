@@ -13,12 +13,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import bikx;
-import biky;
-import bisy;
-import bitt;
-import biuc;
-import biyo;
+import bjlw;
+import bjlx;
+import bjtx;
+import bjus;
+import bjvb;
+import bjzn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -74,7 +74,7 @@ public abstract class ChallengeBragBase
       }
       localBundle.putString("appid_for_getting_config", this.jdField_c_of_type_JavaLangString);
     } while (this.n == null);
-    new bitt(this.n, "GET", new bikx(this)).a(localBundle);
+    new bjus(this.n, "GET", new bjlw(this)).a(localBundle);
   }
   
   protected boolean a()
@@ -108,7 +108,7 @@ public abstract class ChallengeBragBase
     }
     catch (Exception localException)
     {
-      bisy.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
+      bjtx.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
       c();
       return false;
     }
@@ -118,8 +118,8 @@ public abstract class ChallengeBragBase
     if (this.jdField_a_of_type_AndroidOsBundle.containsKey("source")) {
       this.k = this.jdField_a_of_type_AndroidOsBundle.getString("source");
     }
-    this.n = biyo.a().a("https://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
-    this.o = biyo.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
+    this.n = bjzn.a().a("https://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
+    this.o = bjzn.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
     return true;
   }
   
@@ -127,8 +127,8 @@ public abstract class ChallengeBragBase
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", -5);
-    localIntent.putExtra("key_error_msg", biuc.jdField_c_of_type_JavaLangString);
-    bisy.e("qqBaseActivity", "initParams:error code:-5; error msg:" + biuc.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key_error_msg", bjvb.jdField_c_of_type_JavaLangString);
+    bjtx.e("qqBaseActivity", "initParams:error code:-5; error msg:" + bjvb.jdField_c_of_type_JavaLangString);
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -138,7 +138,7 @@ public abstract class ChallengeBragBase
         String str = (String)localIterator.next();
         localStringBuilder.append(str + ": " + this.jdField_a_of_type_AndroidOsBundle.get(str).toString() + " ");
       }
-      bisy.e("qqBaseActivity", "params=" + localStringBuilder.toString());
+      bjtx.e("qqBaseActivity", "params=" + localStringBuilder.toString());
     }
     super.setResult(-1, localIntent);
     super.finish();
@@ -195,7 +195,7 @@ public abstract class ChallengeBragBase
           localBundle.putString("pf", this.l);
         }
         this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(i1), true);
-        new bitt(this.o, "POST", new biky(this)).a(localBundle);
+        new bjus(this.o, "POST", new bjlx(this)).a(localBundle);
       }
     }
     for (;;)

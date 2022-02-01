@@ -1,10 +1,21 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface aafc
+public class aafc
+  implements aamw
 {
-  public abstract void a(int paramInt);
+  public aafc(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      aaak.a().a(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131718483, 0).a();
+  }
 }
 
 

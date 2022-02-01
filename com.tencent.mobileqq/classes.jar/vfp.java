@@ -1,57 +1,18 @@
 import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.bizparts.QCircleSharePart.6;
 
 public class vfp
+  implements aoog
 {
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("createDecoration");
-  private Handler jdField_a_of_type_AndroidOsHandler = new vfq(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-  private WeakReference<vgl> jdField_a_of_type_JavaLangRefWeakReference;
-  private vfs jdField_a_of_type_Vfs;
+  public vfp(QCircleSharePart.6 param6, aoof paramaoof) {}
   
-  static
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
-  }
-  
-  vfp(vgl paramvgl, Looper paramLooper)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvgl);
-    this.jdField_a_of_type_Vfs = new vfs(paramvgl, paramLooper);
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Vfs != null) {
-      this.jdField_a_of_type_Vfs.obtainMessage(0).sendToTarget();
-    }
-  }
-  
-  void a(vfr paramvfr)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, paramvfr).sendToTarget();
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Vfs != null)
-    {
-      this.jdField_a_of_type_Vfs.removeMessages(0);
-      this.jdField_a_of_type_Vfs.removeMessages(1);
-    }
-  }
-  
-  void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    }
+    QLog.d("QCircleSharePart", 1, "shareToWeChat share user icon(need decode task)  onDecodeTaskCompleted");
+    QCircleSharePart.6.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleSharePart$6, paramBitmap);
+    this.jdField_a_of_type_Aoof.a(null);
+    this.jdField_a_of_type_Aoof.d();
   }
 }
 

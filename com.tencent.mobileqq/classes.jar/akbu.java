@@ -1,44 +1,54 @@
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akbu
-  implements bkhe
+  implements View.OnClickListener
 {
-  public akbu(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public akbu(ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(false);
+    if ((paramView.getTag() instanceof String))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    Object localObject1 = (ChatMessage)((akbs)paramView.getTag()).a;
+    if (this.a.c)
+    {
+      this.a.jdField_a_of_type_Akfq.a(localObject1);
+      this.a.jdField_a_of_type_Akbo.notifyDataSetChanged();
+    }
+    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
+    {
+      this.a.jdField_a_of_type_Akbo.notifyDataSetChanged();
+      break;
+    }
+    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
+    Object localObject2;
+    if ((localObject1 instanceof StructMsgForGeneralShare))
+    {
+      localObject2 = (StructMsgForGeneralShare)localObject1;
+      bdpi localbdpi = new bdpi(this.a.b, paramView, (StructMsgForGeneralShare)localObject2);
+      StructMsgForGeneralShare.onClickEvent(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localbdpi);
     }
     for (;;)
     {
-      this.b.u = paramInt;
-      if (paramInt != 0) {
-        break label127;
+      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
+      break;
+      if ((localObject1 instanceof StructMsgForAudioShare))
+      {
+        localObject2 = (StructMsgForAudioShare)localObject1;
+        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
       }
-      if (!this.b.jdField_a_of_type_Ambe.a) {
-        break;
-      }
-      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new AvatarPendantActivity.AnimationScrollListener.1(this), 80L);
-      return;
-      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(true);
     }
-    URLDrawable.resume();
-    this.b.jdField_a_of_type_Ambe.notifyDataSetChanged();
-    return;
-    label127:
-    URLDrawable.pause();
-    this.b.jdField_a_of_type_Ambe.a = true;
   }
 }
 

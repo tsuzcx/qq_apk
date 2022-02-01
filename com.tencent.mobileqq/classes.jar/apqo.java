@@ -1,198 +1,729 @@
-final class apqo
-  extends apnq
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.codeEngine.MiniCodeController.1;
+import com.tencent.mobileqq.ar.codeEngine.MiniCodeController.2;
+import com.tencent.mobileqq.minicode.DecodeProxy;
+import com.tencent.mobileqq.minicode.RecogUtil;
+import com.tencent.mobileqq.minicode.YuvProxy;
+import com.tencent.mobileqq.minicode.recog.MiniCodeDetector;
+import com.tencent.mobileqq.minicode.recog.RecogCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class apqo
+  implements RecogCallback
 {
-  apqo(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  private static long jdField_a_of_type_Long;
+  public static volatile apqo a;
+  private static boolean d;
+  private static boolean e;
+  private static boolean f;
+  private static boolean g;
+  private int jdField_a_of_type_Int = -1;
+  private apkr jdField_a_of_type_Apkr;
+  private MiniCodeDetector jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector;
+  private Set<Long> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private CopyOnWriteArrayList<WeakReference<RecogCallback>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private CopyOnWriteArrayList<WeakReference<apqs>> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean h;
+  private boolean i;
+  private boolean j;
+  private boolean k = apky.a().f;
+  private boolean l = apky.a().g;
+  
+  private apqo()
+  {
+    boolean bool = RecogUtil.isX86VM();
+    if (bool)
+    {
+      this.l = false;
+      this.k = false;
+      QLog.i("MiniRecog.MiniCodeController", 1, String.format("init return [%b %b]", new Object[] { Boolean.valueOf(false), Boolean.valueOf(bool) }));
+    }
+    if ((!g) || (RecogUtil.getMiniScanErrorCnt(false) > 0))
+    {
+      g = true;
+      ThreadManager.post(new MiniCodeController.2(this), 5, null, true);
+    }
+  }
+  
+  public static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (!e) {}
+    do
+    {
+      return -1;
+      try
+      {
+        YuvProxy.Yuv2Rgba(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+        return 0;
+      }
+      catch (Throwable paramArrayOfInt) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("MiniRecog.MiniCodeController", 2, "Yuv2Rgba exception", paramArrayOfInt);
+    return -1;
+  }
+  
+  private apkr a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Apkr == null) {
+        this.jdField_a_of_type_Apkr = new apkr();
+      }
+      apkr localapkr = this.jdField_a_of_type_Apkr;
+      return localapkr;
+    }
+    finally {}
+  }
+  
+  public static apqo a()
+  {
+    if (jdField_a_of_type_Apqo == null) {}
+    try
+    {
+      if (jdField_a_of_type_Apqo == null) {
+        jdField_a_of_type_Apqo = new apqo();
+      }
+      return jdField_a_of_type_Apqo;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return d;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return (paramString != null) && (paramString.length() > 0) && (!paramString.equals("____JAVA_EXCEPTION____")) && (!paramString.equals("____NATIVE_ERROR____")) && (!paramString.equals("____NATIVE_EXCEPTION____")) && (!paramString.startsWith("____NATIVE_ERROR____")) && (!paramString.startsWith("____NATIVE_EXCEPTION____"));
+  }
+  
+  public static boolean b()
+  {
+    return e;
+  }
+  
+  private void c()
+  {
+    if (d)
+    {
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        apqs localapqs = (apqs)((WeakReference)localIterator.next()).get();
+        if (localapqs != null) {
+          localapqs.b();
+        }
+      }
+    }
+  }
+  
+  public String a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  {
+    if (!d) {
+      return "";
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("decode [w,h,barX,barY,barW,barH]=[%d,%d,%d,%d,%d,%d] mode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7) }));
+    }
+    try
+    {
+      if (!f)
+      {
+        String str = DecodeProxy.getVersion();
+        QLog.i("MiniRecog.MiniCodeController", 1, "call nativeDecode version = " + str);
+        if (QLog.isColorLevel()) {
+          DecodeProxy.setLogSwitch(true);
+        }
+        f = true;
+      }
+      paramArrayOfByte = DecodeProxy.nativeDecode(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      QLog.i("MiniRecog.MiniCodeController", 2, "call nativeDecode error", paramArrayOfByte);
+    }
+    return "____JAVA_EXCEPTION____";
+  }
+  
+  public void a()
+  {
+    boolean bool1;
+    boolean bool2;
+    label47:
+    Object localObject3;
+    String str1;
+    label91:
+    label114:
+    try
+    {
+      if ((this.k) && (!d))
+      {
+        bool1 = apqx.a();
+        if (!bool1) {}
+      }
+      try
+      {
+        if (apqx.b("minicode") != 0) {
+          break label522;
+        }
+        bool1 = true;
+        d = bool1;
+      }
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
+        {
+          Object localObject1;
+          QLog.i("MiniRecog.MiniCodeController", 1, "loadSoAndModel decode error", localThrowable1);
+        }
+      }
+      if (this.jdField_a_of_type_Int < 0) {
+        break label550;
+      }
+      bool2 = true;
+      if ((!this.l) || (!bool2)) {
+        break label629;
+      }
+      localObject3 = apqz.c("QMCF_qr");
+      str1 = apqy.b();
+      if ((TextUtils.isEmpty(str1)) || (!str1.equalsIgnoreCase((String)localObject3))) {
+        break label556;
+      }
+      bool1 = true;
+      if (!QLog.isColorLevel()) {
+        break label651;
+      }
+      localObject1 = localObject3;
+      if (localObject3 != null) {
+        break label634;
+      }
+      localObject1 = "null";
+    }
+    finally {}
+    QLog.i("MiniRecog.MiniCodeController", 2, String.format("loadSoAndModel detectSoMd5=%s modelNeedMd5=%s bMatch=%b", new Object[] { localObject1, localObject3, Boolean.valueOf(bool1) }));
+    label522:
+    label651:
+    for (;;)
+    {
+      boolean bool3;
+      if ((this.l) && (bool2) && (!e) && (bool1))
+      {
+        bool3 = apqz.a();
+        if (!bool3) {}
+      }
+      for (;;)
+      {
+        try
+        {
+          int m = apqz.b("QMCF_qr");
+          int n = apqz.b("yuvutil");
+          if ((m != 0) || (n != 0)) {
+            continue;
+          }
+          bool3 = true;
+          e = bool3;
+        }
+        catch (Throwable localThrowable2)
+        {
+          label550:
+          label556:
+          QLog.i("MiniRecog.MiniCodeController", 1, "loadSoAndModel detect error", localThrowable2);
+          continue;
+          jdField_a_of_type_Long = 0L;
+          continue;
+          MiniCodeDetector localMiniCodeDetector = this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector;
+          if (localMiniCodeDetector == null) {
+            continue;
+          }
+          bool1 = true;
+          continue;
+          bool1 = false;
+          continue;
+        }
+        if ((!this.l) || (!bool2) || (!e) || (!bool1) || (this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector != null)) {
+          continue;
+        }
+        bool1 = apqy.a();
+        if (!bool1) {
+          continue;
+        }
+        try
+        {
+          if (jdField_a_of_type_Long != 0L) {
+            continue;
+          }
+          jdField_a_of_type_Long = SystemClock.uptimeMillis();
+          this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector = new MiniCodeDetector(null, this.jdField_a_of_type_Int, 0, 0);
+          this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector.addRecogCallback(this);
+          localObject1 = apqy.a() + File.separator + apqy.a("qr_detection_model.bin");
+          localObject3 = apqy.a() + File.separator + apqy.a("qr_detection_model.txt");
+          str1 = apqy.a() + File.separator + apqy.a("qr_anchor.bin");
+          String str2 = RecogUtil.getKernalBinPath();
+          File localFile = new File(str2);
+          if (!localFile.exists()) {
+            localFile.mkdirs();
+          }
+          this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector.initEnv((String)localObject1, (String)localObject3, str1, str2);
+          bool1 = true;
+        }
+        catch (Throwable localThrowable3)
+        {
+          QLog.i("MiniRecog.MiniCodeController", 1, "loadSoAndModel detect model error", localThrowable3);
+          bool1 = false;
+          continue;
+        }
+        QLog.i("MiniRecog.MiniCodeController", 1, String.format("loadSoAndModel bDecodeInited=%b bDetectInited=%b bSupportDetect=%b mDecodeDpcSwitch=%b mDetectDpcSwitch=%b bModelInited=%b iDetectRuntype=%d", new Object[] { Boolean.valueOf(d), Boolean.valueOf(e), Boolean.valueOf(bool2), Boolean.valueOf(this.k), Boolean.valueOf(this.l), Boolean.valueOf(bool1), Integer.valueOf(this.jdField_a_of_type_Int) }));
+        c();
+        return;
+        bool1 = false;
+        break;
+        bool2 = false;
+        break label47;
+        bool1 = false;
+        break label91;
+        bool3 = false;
+      }
+      label629:
+      bool1 = false;
+      continue;
+      label634:
+      localObject3 = str1;
+      if (str1 != null) {
+        break label114;
+      }
+      localObject3 = "null";
+      break label114;
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(paramLong));
+    }
+    boolean bool = this.jdField_a_of_type_JavaUtilSet.isEmpty();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onDestroy busiHash=%d desc=%s bDoDestroy=%b", new Object[] { Long.valueOf(paramLong), paramString, Boolean.valueOf(bool) }));
+    }
+    if (bool) {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector.close();
+          this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector = null;
+        }
+        if (this.jdField_a_of_type_Apkr != null) {
+          this.jdField_a_of_type_Apkr.a();
+        }
+        this.i = false;
+        this.j = false;
+        jdField_a_of_type_Apqo = null;
+        return;
+      }
+      finally {}
+    }
+  }
   
   /* Error */
-  public void b(boolean paramBoolean, long paramLong, byte[] arg4)
+  public void a(android.content.Context paramContext, long paramLong, String paramString)
   {
     // Byte code:
-    //   0: iload_1
-    //   1: ifeq +271 -> 272
-    //   4: aload 4
-    //   6: ifnull +266 -> 272
-    //   9: aconst_null
-    //   10: astore 6
-    //   12: aconst_null
-    //   13: astore 7
-    //   15: aload 6
-    //   17: astore 5
-    //   19: new 30	java/io/File
-    //   22: dup
-    //   23: aload_0
-    //   24: getfield 13	apqo:a	Ljava/lang/String;
-    //   27: invokespecial 33	java/io/File:<init>	(Ljava/lang/String;)V
-    //   30: astore 8
-    //   32: aload 6
-    //   34: astore 5
-    //   36: aload 8
-    //   38: invokevirtual 37	java/io/File:exists	()Z
-    //   41: ifeq +13 -> 54
-    //   44: aload 6
-    //   46: astore 5
-    //   48: aload 8
-    //   50: invokevirtual 40	java/io/File:delete	()Z
-    //   53: pop
-    //   54: aload 6
-    //   56: astore 5
-    //   58: aload 8
-    //   60: invokevirtual 43	java/io/File:createNewFile	()Z
-    //   63: pop
-    //   64: aload 6
-    //   66: astore 5
-    //   68: new 45	java/io/FileOutputStream
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 68	apqo:k	Z
+    //   6: ifne +17 -> 23
+    //   9: aload_0
+    //   10: getfield 72	apqo:l	Z
+    //   13: istore 5
+    //   15: iload 5
+    //   17: ifne +6 -> 23
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: return
+    //   23: aload_1
+    //   24: invokevirtual 367	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   27: astore_1
+    //   28: aload_0
+    //   29: getfield 59	apqo:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   32: lload_2
+    //   33: invokestatic 341	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   36: invokeinterface 370 2 0
+    //   41: istore 5
+    //   43: iload 5
+    //   45: ifeq +37 -> 82
+    //   48: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   51: ifeq +31 -> 82
+    //   54: ldc 78
+    //   56: iconst_2
+    //   57: ldc_w 372
+    //   60: iconst_2
+    //   61: anewarray 4	java/lang/Object
+    //   64: dup
+    //   65: iconst_0
+    //   66: lload_2
+    //   67: invokestatic 341	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   70: aastore
     //   71: dup
-    //   72: aload 8
-    //   74: invokespecial 48	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   77: astore 6
-    //   79: aload 6
-    //   81: aload 4
-    //   83: invokevirtual 52	java/io/FileOutputStream:write	([B)V
-    //   86: aload 6
-    //   88: ifnull +8 -> 96
-    //   91: aload 6
-    //   93: invokevirtual 55	java/io/FileOutputStream:close	()V
-    //   96: aload_0
-    //   97: getfield 15	apqo:b	Ljava/lang/String;
+    //   72: iconst_1
+    //   73: aload 4
+    //   75: aastore
+    //   76: invokestatic 92	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   79: invokestatic 97	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   82: iload 5
+    //   84: ifeq -64 -> 20
+    //   87: aload_0
+    //   88: invokespecial 374	apqo:a	()Lapkr;
+    //   91: astore 4
+    //   93: aload_0
+    //   94: getfield 153	apqo:i	Z
+    //   97: ifne +80 -> 177
     //   100: aload_0
-    //   101: getfield 17	apqo:c	Ljava/lang/String;
-    //   104: aload_0
-    //   105: getfield 17	apqo:c	Ljava/lang/String;
-    //   108: aload_0
-    //   109: getfield 19	apqo:d	Ljava/lang/String;
-    //   112: invokestatic 60	apqn:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
-    //   115: ifeq +142 -> 257
-    //   118: iconst_4
-    //   119: invokestatic 63	apqn:a	(I)V
-    //   122: ldc 65
-    //   124: iconst_2
-    //   125: ldc 67
-    //   127: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   130: aload_0
-    //   131: getfield 19	apqo:d	Ljava/lang/String;
-    //   134: ldc 75
-    //   136: invokestatic 78	apqn:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   139: invokestatic 81	apqn:a	()Ljava/lang/Object;
-    //   142: astore 4
-    //   144: aload 4
-    //   146: monitorenter
-    //   147: iconst_0
-    //   148: invokestatic 84	apqn:a	(Z)Z
-    //   151: pop
-    //   152: aload 4
-    //   154: monitorexit
-    //   155: return
-    //   156: astore 4
-    //   158: ldc 65
-    //   160: iconst_1
-    //   161: aload 4
-    //   163: iconst_0
-    //   164: anewarray 86	java/lang/Object
-    //   167: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   170: goto -74 -> 96
-    //   173: astore 6
-    //   175: aload 7
-    //   177: astore 4
-    //   179: aload 4
-    //   181: astore 5
-    //   183: ldc 65
-    //   185: iconst_1
-    //   186: aload 6
-    //   188: iconst_0
-    //   189: anewarray 86	java/lang/Object
-    //   192: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   195: aload 4
-    //   197: ifnull -101 -> 96
-    //   200: aload 4
-    //   202: invokevirtual 55	java/io/FileOutputStream:close	()V
-    //   205: goto -109 -> 96
-    //   208: astore 4
-    //   210: ldc 65
-    //   212: iconst_1
-    //   213: aload 4
-    //   215: iconst_0
-    //   216: anewarray 86	java/lang/Object
-    //   219: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   222: goto -126 -> 96
-    //   225: astore 4
-    //   227: aload 5
-    //   229: ifnull +8 -> 237
-    //   232: aload 5
-    //   234: invokevirtual 55	java/io/FileOutputStream:close	()V
-    //   237: aload 4
-    //   239: athrow
-    //   240: astore 5
-    //   242: ldc 65
-    //   244: iconst_1
-    //   245: aload 5
-    //   247: iconst_0
-    //   248: anewarray 86	java/lang/Object
-    //   251: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   254: goto -17 -> 237
-    //   257: iconst_5
-    //   258: invokestatic 63	apqn:a	(I)V
-    //   261: ldc 65
-    //   263: iconst_2
-    //   264: ldc 92
-    //   266: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   269: goto -130 -> 139
-    //   272: bipush 6
-    //   274: invokestatic 63	apqn:a	(I)V
-    //   277: ldc 65
-    //   279: iconst_2
-    //   280: ldc 94
-    //   282: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   285: goto -146 -> 139
-    //   288: astore 5
-    //   290: aload 4
-    //   292: monitorexit
-    //   293: aload 5
-    //   295: athrow
-    //   296: astore 4
-    //   298: aload 6
-    //   300: astore 5
-    //   302: goto -75 -> 227
-    //   305: astore 5
-    //   307: aload 6
-    //   309: astore 4
-    //   311: aload 5
-    //   313: astore 6
-    //   315: goto -136 -> 179
+    //   101: getfield 172	apqo:j	Z
+    //   104: istore 5
+    //   106: iload 5
+    //   108: ifne +69 -> 177
+    //   111: aload_0
+    //   112: iconst_1
+    //   113: putfield 172	apqo:j	Z
+    //   116: aload 4
+    //   118: aload_1
+    //   119: new 376	apqq
+    //   122: dup
+    //   123: aload_0
+    //   124: aload 4
+    //   126: invokespecial 379	apqq:<init>	(Lapqo;Lapkr;)V
+    //   129: new 381	apqr
+    //   132: dup
+    //   133: aload_0
+    //   134: aconst_null
+    //   135: invokespecial 384	apqr:<init>	(Lapqo;Lcom/tencent/mobileqq/ar/codeEngine/MiniCodeController$1;)V
+    //   138: invokevirtual 387	apkr:a	(Landroid/content/Context;Lapkh;Lapkk;)V
+    //   141: getstatic 150	apqo:d	Z
+    //   144: ifeq +7 -> 151
+    //   147: aload_0
+    //   148: invokespecial 329	apqo:c	()V
+    //   151: aload_0
+    //   152: invokevirtual 388	apqo:a	()V
+    //   155: goto -135 -> 20
+    //   158: astore_1
+    //   159: aload_0
+    //   160: monitorexit
+    //   161: aload_1
+    //   162: athrow
+    //   163: astore_1
+    //   164: ldc 78
+    //   166: iconst_1
+    //   167: ldc_w 390
+    //   170: aload_1
+    //   171: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   174: goto -33 -> 141
+    //   177: aload_0
+    //   178: invokevirtual 393	apqo:b	()V
+    //   181: goto -40 -> 141
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	318	0	this	apqo
-    //   0	318	1	paramBoolean	boolean
-    //   0	318	2	paramLong	long
-    //   17	216	5	localObject1	java.lang.Object
-    //   240	6	5	localIOException	java.io.IOException
-    //   288	6	5	localObject2	java.lang.Object
-    //   300	1	5	localException1	java.lang.Exception
-    //   305	7	5	localException2	java.lang.Exception
-    //   10	82	6	localFileOutputStream	java.io.FileOutputStream
-    //   173	135	6	localException3	java.lang.Exception
-    //   313	1	6	localObject3	java.lang.Object
-    //   13	163	7	localObject4	java.lang.Object
-    //   30	43	8	localFile	java.io.File
+    //   0	184	0	this	apqo
+    //   0	184	1	paramContext	android.content.Context
+    //   0	184	2	paramLong	long
+    //   0	184	4	paramString	String
+    //   13	94	5	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   91	96	156	java/io/IOException
-    //   19	32	173	java/lang/Exception
-    //   36	44	173	java/lang/Exception
-    //   48	54	173	java/lang/Exception
-    //   58	64	173	java/lang/Exception
-    //   68	79	173	java/lang/Exception
-    //   200	205	208	java/io/IOException
-    //   19	32	225	finally
-    //   36	44	225	finally
-    //   48	54	225	finally
-    //   58	64	225	finally
-    //   68	79	225	finally
-    //   183	195	225	finally
-    //   232	237	240	java/io/IOException
-    //   147	155	288	finally
-    //   290	293	288	finally
-    //   79	86	296	finally
-    //   79	86	305	java/lang/Exception
+    //   2	15	158	finally
+    //   23	43	158	finally
+    //   48	82	158	finally
+    //   87	106	158	finally
+    //   111	141	158	finally
+    //   141	151	158	finally
+    //   151	155	158	finally
+    //   164	174	158	finally
+    //   177	181	158	finally
+    //   111	141	163	java/lang/RuntimeException
+  }
+  
+  public void a(apqs paramapqs)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      apqs localapqs = (apqs)((WeakReference)localIterator.next()).get();
+      if ((localapqs != null) && (localapqs == paramapqs)) {
+        return;
+      }
+    }
+    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(new WeakReference(paramapqs));
+  }
+  
+  public void a(RecogCallback paramRecogCallback)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      RecogCallback localRecogCallback = (RecogCallback)((WeakReference)localIterator.next()).get();
+      if ((localRecogCallback != null) && (localRecogCallback == paramRecogCallback)) {
+        return;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(new WeakReference(paramRecogCallback));
+  }
+  
+  public boolean a(Bitmap paramBitmap, long paramLong)
+  {
+    MiniCodeDetector localMiniCodeDetector = this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector;
+    boolean bool1;
+    if ((!e) || (!this.h) || (localMiniCodeDetector == null)) {
+      bool1 = false;
+    }
+    boolean bool2;
+    do
+    {
+      return bool1;
+      bool2 = localMiniCodeDetector.detect(paramBitmap, paramLong);
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.i("MiniRecog.MiniCodeController", 2, String.format("detect async exec=%b ts=%d", new Object[] { Boolean.valueOf(bool2), Long.valueOf(paramLong) }));
+    return bool2;
+  }
+  
+  public boolean a(Bitmap paramBitmap, long paramLong, Rect paramRect)
+  {
+    MiniCodeDetector localMiniCodeDetector = this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector;
+    if ((!e) || (localMiniCodeDetector == null) || (paramRect == null)) {
+      return false;
+    }
+    Object localObject = new Object();
+    boolean bool2 = this.h;
+    int m;
+    if (bool2) {
+      m = 3000;
+    }
+    for (;;)
+    {
+      boolean[] arrayOfBoolean = new boolean[1];
+      arrayOfBoolean[0] = false;
+      paramRect = new apqp(this, paramRect, paramLong, localObject, localMiniCodeDetector, arrayOfBoolean, paramBitmap);
+      boolean bool1;
+      if ((bool2) && (localMiniCodeDetector.detect(paramBitmap, paramLong)))
+      {
+        bool1 = true;
+        label97:
+        arrayOfBoolean[0] = bool1;
+        if ((bool2) && ((!bool2) || (arrayOfBoolean[0] == 0))) {
+          break label232;
+        }
+        bool1 = true;
+        label123:
+        if (QLog.isColorLevel()) {
+          QLog.i("MiniRecog.MiniCodeController", 2, String.format("detectSync needWait=%b bReady=%b exec=%b ts=%d", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(arrayOfBoolean[0]), Long.valueOf(paramLong) }));
+        }
+        if (bool1)
+        {
+          localMiniCodeDetector.addRecogCallback(paramRect);
+          paramLong = m;
+        }
+      }
+      try
+      {
+        localObject.wait(paramLong);
+        localMiniCodeDetector.removeRecogCallback(paramRect);
+        return arrayOfBoolean[0];
+        m = 5000;
+        continue;
+        bool1 = false;
+        break label97;
+        label232:
+        bool1 = false;
+        break label123;
+      }
+      catch (InterruptedException paramBitmap)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("MiniRecog.MiniCodeController", 2, "detectSync wait InterruptedException", paramBitmap);
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void b()
+  {
+    int m = 1;
+    for (;;)
+    {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder("requestDownloadResourceIfNeed");
+        if ((!d) && (!this.jdField_a_of_type_Boolean))
+        {
+          if (!apqx.a()) {
+            continue;
+          }
+          this.jdField_a_of_type_Boolean = true;
+          if (QLog.isColorLevel()) {
+            localStringBuilder.append(" decode 0");
+          }
+        }
+        if (this.jdField_a_of_type_Int >= 0)
+        {
+          if ((this.l) && (m != 0) && (!e) && (!this.jdField_b_of_type_Boolean))
+          {
+            if (!apqz.a()) {
+              break label224;
+            }
+            this.jdField_b_of_type_Boolean = true;
+            if (QLog.isColorLevel()) {
+              localStringBuilder.append(" detect 0");
+            }
+          }
+          if ((this.l) && (m != 0) && (this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector == null) && (!this.c))
+          {
+            if (!apqy.a()) {
+              break label256;
+            }
+            this.c = true;
+            if (QLog.isColorLevel()) {
+              localStringBuilder.append(" model 0");
+            }
+          }
+          if ((QLog.isColorLevel()) && (localStringBuilder != null)) {
+            QLog.i("MiniRecog.MiniCodeController", 2, localStringBuilder.toString());
+          }
+          return;
+          if (this.jdField_a_of_type_Apkr != null) {
+            this.jdField_a_of_type_Apkr.c(0);
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          localStringBuilder.append(" decode 1");
+          continue;
+        }
+        m = 0;
+      }
+      finally {}
+      continue;
+      label224:
+      if (this.jdField_a_of_type_Apkr != null) {
+        this.jdField_a_of_type_Apkr.c(1);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject.append(" detect 1");
+        continue;
+        label256:
+        if (this.jdField_a_of_type_Apkr != null) {
+          this.jdField_a_of_type_Apkr.c(2);
+        }
+        if (QLog.isColorLevel()) {
+          localObject.append(" model 1");
+        }
+      }
+    }
+  }
+  
+  public void b(RecogCallback paramRecogCallback)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      RecogCallback localRecogCallback = (RecogCallback)localWeakReference.get();
+      if ((localRecogCallback != null) && (localRecogCallback == paramRecogCallback)) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
+      }
+    }
+  }
+  
+  public void c(RecogCallback paramRecogCallback)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      apqs localapqs = (apqs)localWeakReference.get();
+      if ((localapqs != null) && (localapqs == paramRecogCallback)) {
+        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    return this.h;
+  }
+  
+  public void onDetectReady(int paramInt)
+  {
+    this.h = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.MiniCodeController", 2, "onDetectReady");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      RecogCallback localRecogCallback = (RecogCallback)((WeakReference)localIterator.next()).get();
+      if (localRecogCallback != null) {
+        localRecogCallback.onDetectReady(paramInt);
+      }
+    }
+    long l1;
+    if (jdField_a_of_type_Long > 0L)
+    {
+      l1 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
+      jdField_a_of_type_Long = 0L;
+    }
+    for (;;)
+    {
+      ThreadManager.post(new MiniCodeController.1(this, paramInt, l1), 5, null, true);
+      return;
+      l1 = 0L;
+    }
+  }
+  
+  public void onDetectResult(List<apqk> paramList, long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      RecogCallback localRecogCallback = (RecogCallback)((WeakReference)localIterator.next()).get();
+      if (localRecogCallback != null) {
+        localRecogCallback.onDetectResult(paramList, paramLong);
+      }
+    }
+  }
+  
+  public void onSaveImg(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      RecogCallback localRecogCallback = (RecogCallback)((WeakReference)localIterator.next()).get();
+      if (localRecogCallback != null) {
+        localRecogCallback.onSaveImg(paramLong);
+      }
+    }
   }
 }
 

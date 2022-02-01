@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bouu;
+import bpwp;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class SpeedProviderView
   extends ProviderView
   implements View.OnClickListener
 {
-  private bouu a;
+  private bpwp a;
   protected View c;
   protected View d;
   protected View e;
@@ -25,23 +25,23 @@ public class SpeedProviderView
   
   protected int a()
   {
-    return 2131560974;
+    return 2131561005;
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560974, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561005, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131372661);
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131372772);
     this.c.setOnClickListener(this);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131372660);
+    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131372771);
     this.d.setOnClickListener(this);
-    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131372662);
+    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131372773);
     this.e.setOnClickListener(this);
-    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131372663);
+    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131372774);
     this.f.setOnClickListener(this);
   }
   
@@ -56,8 +56,8 @@ public class SpeedProviderView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bouu != null) {
-        this.jdField_a_of_type_Bouu.a(i);
+      if (this.jdField_a_of_type_Bpwp != null) {
+        this.jdField_a_of_type_Bpwp.a(i);
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -69,9 +69,9 @@ public class SpeedProviderView
     }
   }
   
-  public void setEditSpeedListener(bouu parambouu)
+  public void setEditSpeedListener(bpwp parambpwp)
   {
-    this.jdField_a_of_type_Bouu = parambouu;
+    this.jdField_a_of_type_Bpwp = parambpwp;
   }
 }
 

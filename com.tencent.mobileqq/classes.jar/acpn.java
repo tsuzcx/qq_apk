@@ -1,52 +1,46 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import android.content.Context;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.banner.letter.GdtBannerViewWithLetterStyle;
+import com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle;
+import java.lang.ref.WeakReference;
 
-public class acpn
-  extends QIPCModule
+public final class acpn
 {
-  private static volatile acpn a;
-  
-  private acpn(String paramString)
+  public static int a(int paramInt1, int paramInt2)
   {
-    super(paramString);
+    if (paramInt1 == 0) {
+      return Double.valueOf(1.0D * paramInt2 / 1026.0D * 249.0D).intValue();
+    }
+    acvc.d("GdtBannerViewBuilder", "getHeight error");
+    return -2147483648;
   }
   
-  public static acpn a()
+  public static acpm a(acpl paramacpl)
   {
-    if (a == null) {}
-    try
+    if ((paramacpl == null) || (!paramacpl.a()) || (!paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a()))
     {
-      if (a == null) {
-        a = new acpn("gdt_ipc");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    acqy.b("gdt_ipc", "Action  " + paramString);
-    if ("do_app_jump".equals(paramString))
-    {
-      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-      {
-        paramString = (acqz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
-        paramBundle.setClassLoader(getClass().getClassLoader());
-        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
-        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
-        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
-      }
-    }
-    else {
+      acvc.d("GdtBannerViewBuilder", "build error");
       return null;
     }
-    callbackResult(paramInt, EIPCResult.createResult(-1, null));
-    return null;
+    Object localObject;
+    if (paramacpl.jdField_a_of_type_Int == 0) {
+      if (paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isBannerWithRectangleStyle()) {
+        localObject = new GdtBannerViewWithRectangleStyle((Context)paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null) {
+        ((acpm)localObject).setSize(paramacpl.b, paramacpl.c);
+      }
+      AdReporterForAnalysis.reportForBanner((Context)paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      return localObject;
+      localObject = new GdtBannerViewWithLetterStyle((Context)paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramacpl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      continue;
+      localObject = null;
+    }
   }
 }
 

@@ -1,23 +1,18 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahgv
-  extends ahkn
+  extends ahkx
 {
-  protected ViewGroup a;
-  protected ImageView a;
-  protected TextView a;
-  protected ETTextView a;
-  protected BubbleImageView a;
-  protected TextView b;
-  protected ETTextView b;
-  protected TextView c;
-  public int e;
+  ahgv(ahgk paramahgk)
+  {
+    super(paramahgk, null);
+  }
   
-  ahgv(ahgl paramahgl) {}
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahbb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

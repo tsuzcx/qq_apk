@@ -1,31 +1,28 @@
-import android.graphics.Canvas;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bqkb
+class bqkb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
+  bqkb(bqka parambqka) {}
   
-  bqkb(TCProgressBar paramTCProgressBar)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    if (this.a.a.b == null) {
+      return;
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.s = (this.a.d + this.a.f * f);
+    this.a.t = (this.a.e + this.a.g * f);
+    this.a.q = (this.a.b + this.a.h * f);
+    this.a.r = (this.a.c + this.a.i * f);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(f);
+    }
+    if (f == 1.0F) {
+      this.a.a.b(5);
+    }
+    bqjx.a(this.a.a);
   }
 }
 

@@ -1,10 +1,28 @@
-import java.util.List;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
+import java.util.ArrayList;
 
-public abstract interface yfp
+class yfp
+  extends ParallelJobSegment<String, Integer>
 {
-  public abstract void a(String paramString, List<ygo> paramList);
+  public yfp(yfh paramyfh)
+  {
+    this(paramyfh, "RequestViewCountSegment");
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public yfp(yfh paramyfh, String paramString)
+  {
+    super(paramString);
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    xcq localxcq = new xcq();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString);
+    localxcq.a = localArrayList;
+    wow.a().a(localxcq, new yfq(this, paramJobContext, paramString));
+  }
 }
 
 

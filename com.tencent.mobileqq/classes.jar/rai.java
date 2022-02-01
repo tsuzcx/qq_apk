@@ -1,17 +1,13 @@
-class rai
-  implements qyz
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+
+public class rai
+  implements beye
 {
-  rai(rag paramrag, rab paramrab) {}
+  public rai(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Rab.a();
-  }
-  
-  public void a(int paramInt, long paramLong, String paramString1, qzh paramqzh, String paramString2, String paramString3, String paramString4)
-  {
-    this.jdField_a_of_type_Rab.a(paramInt, paramLong, paramString1, paramqzh, paramString2, paramString3, paramString4);
-  }
+  public void a(ArrayList<MessageRecord> paramArrayList) {}
 }
 
 

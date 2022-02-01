@@ -1,10 +1,37 @@
-public abstract interface zbu
+public class zbu
 {
-  public abstract void a();
+  private int jdField_a_of_type_Int;
+  private zbq jdField_a_of_type_Zbq = new zbp();
+  private int b;
   
-  public abstract void b();
+  public zbs a()
+  {
+    return new zbs(this, null);
+  }
   
-  public abstract void c();
+  public zbu a(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    return this;
+  }
+  
+  public zbu a(zbq paramzbq)
+  {
+    if (paramzbq != null) {
+      this.jdField_a_of_type_Zbq = paramzbq;
+    }
+    return this;
+  }
+  
+  public zbu b(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.b = paramInt;
+    }
+    return this;
+  }
 }
 
 

@@ -1,53 +1,78 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
-class atba
-  extends atbl
+public class atba
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  private atbb jdField_a_of_type_Atbb;
+  private atbc jdField_a_of_type_Atbc;
+  private atbd jdField_a_of_type_Atbd;
+  private atbe jdField_a_of_type_Atbe;
   
-  atba(atan paramatan, MessageRecord paramMessageRecord)
+  public atba(atag paramatag)
   {
-    super(paramatan);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_Atbe = new atbe(this, paramatag);
+    this.jdField_a_of_type_Atbd = new atbd(this, paramatag);
+    this.jdField_a_of_type_Atbc = new atbc(this, paramatag);
+    this.jdField_a_of_type_Atbb = this.jdField_a_of_type_Atbe;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, atbj paramatbj)
+  public int a()
   {
-    if ("1".equals(this.g))
+    return this.jdField_a_of_type_Atbb.a;
+  }
+  
+  public atbb a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramatbj.a(atan.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    case 1: 
+    default: 
+      return this.jdField_a_of_type_Atbc;
+    case 0: 
+      return this.jdField_a_of_type_Atbe;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    return this.jdField_a_of_type_Atbd;
+  }
+  
+  public void a(int paramInt)
+  {
+    b(paramInt, -1);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 != this.jdField_a_of_type_Atbb.a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild uuid is null");
+      atbb localatbb = a(paramInt1);
+      if (localatbb != null)
+      {
+        this.jdField_a_of_type_Atbb.a();
+        this.jdField_a_of_type_Atbb = localatbb;
+        this.jdField_a_of_type_Atbb.a(paramInt2);
       }
-      paramatbj.a(atan.a(this.jdField_a_of_type_Long, true), false);
-      return;
     }
-    atan.a(this.jdField_a_of_type_Atan).a().a().a(paramString, paramInt, this.d, 106, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new atbb(this, paramString, paramatbj));
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    c(paramInt1, paramInt2);
+    int i = this.jdField_a_of_type_Atbb.a;
+    if ((!this.jdField_a_of_type_Atbb.a(paramInt1, paramInt2)) && (QLog.isColorLevel())) {
+      QLog.e("LimitChatUiStateMachine", 2, "state " + i + " not handle event " + paramInt1 + ", subEvent " + paramInt2);
+    }
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.jdField_a_of_type_Atbb.a == 0);
+    this.jdField_a_of_type_Atbb.b();
+    this.jdField_a_of_type_Atbb = this.jdField_a_of_type_Atbe;
+    this.jdField_a_of_type_Atbb.a(-1);
   }
 }
 

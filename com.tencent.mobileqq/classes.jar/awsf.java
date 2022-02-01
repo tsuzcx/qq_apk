@@ -1,216 +1,121 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.lbssearch.httpresponse.BaseObject;
+import com.tencent.lbssearch.httpresponse.HttpResponseListener;
+import com.tencent.lbssearch.httpresponse.Poi;
+import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
+import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
+import com.tencent.lbssearch.object.result.SearchResultObject;
+import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
+import com.tencent.lbssearch.object.result.SuggestionResultObject;
+import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOStarter.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.1;
+import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import mqq.app.AppRuntime;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class awsf
+  implements HttpResponseListener<BaseObject>
 {
-  public static boolean a;
+  awsf(awse paramawse) {}
   
-  public static int a(Context paramContext)
+  public void a(int paramInt, BaseObject paramBaseObject)
   {
-    if ((paramContext instanceof Activity))
+    boolean bool2 = true;
+    boolean bool1 = true;
+    awse.a(this.a, false);
+    Object localObject2;
+    if ((paramBaseObject instanceof Geo2AddressResultObject))
     {
-      paramContext = ((Activity)paramContext).findViewById(16908290);
-      if (paramContext != null) {
-        return paramContext.getHeight();
-      }
-    }
-    return 0;
-  }
-  
-  public static Bitmap a(Context paramContext)
-  {
-    View localView;
-    int i;
-    int j;
-    if ((paramContext instanceof BaseActivity))
-    {
-      localView = ((BaseActivity)paramContext).getWindow().getDecorView();
-      i = localView.getWidth();
-      j = localView.getHeight();
-    }
-    for (;;)
-    {
-      try
+      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
+      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null))
       {
-        localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        Canvas localCanvas;
-        QLog.e("MultiAIOStarter", 1, "getDecorViewBitmap: ", localThrowable1);
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
+        awse.a(this.a);
+        localObject1 = paramBaseObject.result.pois.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          localBitmap.setDensity(paramContext.getResources().getDisplayMetrics().densityDpi);
-          localCanvas = new Canvas(localBitmap);
-          localView.draw(localCanvas);
-          localCanvas.setBitmap(null);
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiAIOStarter", 2, "getDecorViewBitmap() called with: context = [" + paramContext + "], bitmap = " + localBitmap);
+          localObject2 = (Poi)((Iterator)localObject1).next();
+          localObject2 = LocationRoom.Venue.a(awse.a(this.a).app.c(), (Poi)localObject2);
+          awse.a(this.a).add(localObject2);
+        }
+        localObject1 = this.a;
+        if (paramBaseObject.result.poi_count < 20) {
+          break label235;
+        }
+        bool1 = true;
+        awse.b((awse)localObject1, bool1);
+      }
+    }
+    label235:
+    label368:
+    do
+    {
+      do
+      {
+        do
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onSuccess: mVenueList size = " + awse.a(this.a).size() + ", mHashMore = " + awse.a(this.a));
           }
-          return localBitmap;
-        }
-        catch (Throwable localThrowable2)
+          if (awse.a(this.a) != null) {
+            ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
+          }
+          return;
+          bool1 = false;
+          break;
+          if (!(paramBaseObject instanceof SuggestionResultObject)) {
+            break label368;
+          }
+          paramBaseObject = (SuggestionResultObject)paramBaseObject;
+        } while (paramBaseObject.data == null);
+        awse.a(this.a);
+        localObject1 = paramBaseObject.data.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          break label123;
+          localObject2 = (SuggestionResultObject.SuggestionData)((Iterator)localObject1).next();
+          localObject2 = LocationRoom.Venue.a(awse.a(this.a).app.c(), (SuggestionResultObject.SuggestionData)localObject2);
+          awse.a(this.a).add(localObject2);
         }
-        localThrowable1 = localThrowable1;
-        localBitmap = null;
-      }
-      label123:
-      awsl.a();
-      continue;
-      Bitmap localBitmap = null;
-    }
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      ((Vibrator)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("vibrator")).vibrate(20L);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MultiAIOStarter", 2, "asynViratorExecute Vibrator exception.");
-      localException.printStackTrace();
-    }
-  }
-  
-  private static void a(BaseActivity paramBaseActivity, awsk paramawsk)
-  {
-    ThreadManagerV2.postImmediately(new MultiAIOStarter.2(paramBaseActivity, paramawsk), null, false);
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start curType = " + paramInt + " from = " + paramString3 + ", hasOpened = " + a);
-    }
-    if (!awry.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start is forbid: local switch is closed! do not start multiAIO!");
-      }
-      return false;
-    }
-    if (!((awsj)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 配置下发限制 do not start multiAIO!");
-      }
-      return false;
-    }
-    if (AppSetting.c)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 无障碍 mode do not start multiAIO!");
-      }
-      return false;
-    }
-    if (((paramContext instanceof BaseActivity)) && (((BaseActivity)paramContext).isInMultiWindow()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 分屏 mode do not start multiAIO!");
-      }
-      return false;
-    }
-    if (a) {
-      return true;
-    }
-    if (awry.a(paramInt))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("uin", paramString1);
-      localIntent.putExtra("uintype", paramInt);
-      localIntent.putExtra("uinname", paramString2);
-      localIntent.putExtra("conversation_tab_flag", paramString3);
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("OPEN_MULTI_FROM_ACTIVITY", paramContext.getClass().getSimpleName());
-      awry.a();
-      QQAppInterface localQQAppInterface = ((BaseActivity)paramContext).app;
-      awsk localawsk = awsk.a(localQQAppInterface);
-      Bitmap localBitmap = a(paramContext);
-      int i = a(paramContext);
-      a = true;
-      localawsk.a(localBitmap);
-      localawsk.a(i);
-      a((BaseActivity)paramContext, localawsk);
-      localawsk.a((QQAppInterface)localQQAppInterface, (FragmentActivity)paramContext, paramString3, paramInt, paramString1, paramString2);
-      localawsk.a(new awsg(paramContext));
-      localIntent.putExtra("OPEN_MULTI_AIO_CONTEXT", localawsk.a());
-      if ("open_from_aio".equals(paramString3)) {
-        localIntent.putExtra("OPEN_MULTI_AIO_LIST_VIEW_SPECIFY_BOTTOM", a(paramContext));
-      }
-      aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, MultiAIOFragment.class);
-      return true;
-    }
-    return false;
-  }
-  
-  private static int[] a(Context paramContext)
-  {
-    int[] arrayOfInt = new int[2];
-    int j;
-    int i;
-    View localView;
-    if ((paramContext instanceof BaseActivity))
-    {
-      paramContext = (ListView)((BaseActivity)paramContext).findViewById(2131369922);
-      if (paramContext != null)
-      {
-        j = paramContext.getBottom() - paramContext.getPaddingBottom();
-        i = paramContext.getChildCount();
-        if (i < 0) {
-          break label145;
+        localObject1 = this.a;
+        if (paramBaseObject.count >= 20) {}
+        for (;;)
+        {
+          awse.b((awse)localObject1, bool1);
+          break;
+          bool1 = false;
         }
-        localView = paramContext.getChildAt(i);
-        if ((localView == null) || (j <= localView.getTop()) || (j > localView.getBottom())) {
-          break label138;
-        }
-      }
-    }
-    for (;;)
+      } while (!(paramBaseObject instanceof SearchResultObject));
+      paramBaseObject = (SearchResultObject)paramBaseObject;
+    } while (paramBaseObject.data == null);
+    awse.a(this.a);
+    Object localObject1 = paramBaseObject.data.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      j = i;
-      if (i == -1) {
-        j = paramContext.getChildCount() - 1;
-      }
-      if (j != -1)
-      {
-        arrayOfInt[0] = (paramContext.getFirstVisiblePosition() + j);
-        localView = paramContext.getChildAt(j);
-        if (localView != null) {
-          arrayOfInt[1] = (paramContext.getBottom() - paramContext.getPaddingBottom() - localView.getBottom());
-        }
-      }
-      return arrayOfInt;
-      label138:
-      i -= 1;
+      localObject2 = (SearchResultObject.SearchResultData)((Iterator)localObject1).next();
+      localObject2 = LocationRoom.Venue.a(awse.a(this.a).app.c(), (SearchResultObject.SearchResultData)localObject2);
+      awse.a(this.a).add(localObject2);
+    }
+    localObject1 = this.a;
+    if (paramBaseObject.count >= 20) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      awse.b((awse)localObject1, bool1);
       break;
-      label145:
-      i = -1;
+    }
+  }
+  
+  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  {
+    awse.a(this.a, false);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onFailure: mVenueList size = " + awse.a(this.a).size() + ", mHashMore = " + awse.a(this.a));
+    }
+    if (awse.a(this.a) != null) {
+      ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.2(this));
     }
   }
 }

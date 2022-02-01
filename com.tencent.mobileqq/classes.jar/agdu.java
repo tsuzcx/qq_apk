@@ -1,22 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class agdu
-  implements ValueAnimator.AnimatorUpdateListener
+public class agdu
 {
-  agdu(agdt paramagdt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static BaseChatPie a()
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (agdt.a(this.a) != null) {
-      agdt.a(this.a).setAlpha((float)d);
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = ((FragmentActivity)localObject).getChatFragment();
+      if (localObject != null) {
+        return ((ChatFragment)localObject).a();
+      }
     }
-    if (agdt.a(this.a) != null) {
-      agdt.a(this.a).setAlpha((float)d * 2.0F);
+    return null;
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    BaseChatPie localBaseChatPie = a();
+    if (localBaseChatPie != null) {
+      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
     }
+    return bool;
+  }
+  
+  public static boolean b()
+  {
+    return a();
   }
 }
 

@@ -1,359 +1,139 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.avgame.util.AVGameStep;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 public class nfu
+  extends lpk
 {
-  private static nfu jdField_a_of_type_Nfu;
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "param_StepEntrance", "param_StepLoading", "param_StepPrepareGame", "param_StepGameReady", "param_StepGameCanStart" };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "param_StepEntrance", "param_StepLoading", "param_StepPrepareGame", "param_StepSecure", "param_StepResource", "param_StepRoomProto", "param_StepAvAlive" };
-  private final ConcurrentHashMap<String, AVGameStep> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
-  private boolean jdField_b_of_type_Boolean;
+  private final int jdField_a_of_type_Int;
+  private final lpa jdField_a_of_type_Lpa = new lpa();
+  private final WeakReference<lbo> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b = true;
   
-  private AVGameStep a(String paramString)
+  public nfu(lbo paramlbo)
   {
-    AVGameStep localAVGameStep = null;
-    if (!TextUtils.isEmpty(paramString)) {
-      localAVGameStep = (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    }
-    return localAVGameStep;
-  }
-  
-  public static nfu a()
-  {
-    if (jdField_a_of_type_Nfu == null) {}
-    try
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramlbo);
+    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+    this.jdField_a_of_type_Lpa.a("BEAUTY_SKIN", 60);
+    this.jdField_a_of_type_Lpq = new lpq(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_Lpa);
+    int i = nhz.a();
+    if (i == 3) {}
+    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
     {
-      if (jdField_a_of_type_Nfu == null) {
-        jdField_a_of_type_Nfu = new nfu();
+      this.jdField_a_of_type_Boolean = GraphicRenderMgr.soloadedPTV;
+      if (QLog.isColorLevel()) {
+        QLog.i("AVGameEffectCtrl", 2, "AVGameEffectCtrl, line[" + i + "], mode[" + this.jdField_a_of_type_Int + "], PtvSoReady[" + this.jdField_a_of_type_Boolean + "]");
       }
-      return jdField_a_of_type_Nfu;
+      return;
     }
-    finally {}
   }
   
-  private AVGameStep b(String paramString)
+  public int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    AVGameStep localAVGameStep = new AVGameStep(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localAVGameStep);
-    return localAVGameStep;
+    return 0;
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt) {}
+  
+  protected void a(lpc paramlpc, lqh paramlqh)
   {
-    boolean bool = true;
+    paramlqh.a();
+    if (!paramlqh.c) {
+      paramlqh.c = this.jdField_a_of_type_Boolean;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("AVGamePerfReporter", 2, "exit, report[" + this.jdField_b_of_type_Boolean + "], from[" + paramInt + "]");
+      QLog.i("AVGameEffectCtrl", 2, "destroy, exit[" + paramBoolean + "]");
     }
-    AVGameStep localAVGameStep;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      if (paramInt != 1) {
-        break label171;
-      }
-      localAVGameStep = a("param_StepGameCanStart");
-      if ((localAVGameStep == null) || (!localAVGameStep.b())) {
-        break label140;
-      }
-      bool = true;
-    }
-    for (;;)
-    {
-      if (bool)
-      {
-        b(1);
-        label91:
-        if (QLog.isColorLevel()) {
-          QLog.i("AVGamePerfReporter", 2, "exit, isReady[" + bool + "]");
-        }
-      }
-      label140:
-      label171:
-      do
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        this.jdField_b_of_type_Boolean = false;
-        return;
-        localAVGameStep = a("param_StepGameReady");
-        if ((localAVGameStep == null) || (!localAVGameStep.b())) {
-          break label254;
-        }
-        bool = true;
-        break;
-        b(2);
-        break label91;
-      } while (paramInt != 2);
-      localAVGameStep = a("param_StepLoading");
-      if ((localAVGameStep != null) && (localAVGameStep.b())) {
-        bool = false;
-      }
-      for (;;)
-      {
-        if (bool) {
-          b(3);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("AVGamePerfReporter", 2, "exit, needReport[" + bool + "]");
-        break;
-        a("param_StepLoading", 0);
-      }
-      label254:
-      bool = false;
-    }
+    d();
   }
   
-  public void a(Intent paramIntent)
+  public boolean a()
   {
-    if ((paramIntent == null) || (this.jdField_b_of_type_Boolean)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVGamePerfReporter", 2, "getStepInfoFromIntent, report[" + this.jdField_b_of_type_Boolean + "], intent[" + paramIntent + "]");
-      }
-    }
-    for (;;)
-    {
-      return;
-      String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        AVGameStep localAVGameStep1 = a(str);
-        AVGameStep localAVGameStep2 = (AVGameStep)paramIntent.getParcelableExtra(str);
-        if ((localAVGameStep2 != null) && ((localAVGameStep1 == null) || (!localAVGameStep1.a()) || ((localAVGameStep2.b()) && (!localAVGameStep1.b()))))
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localAVGameStep2);
-          if (QLog.isColorLevel()) {
-            QLog.i("AVGamePerfReporter", 2, "getStepInfoFromIntent, pre[" + localAVGameStep1 + "], cur[" + localAVGameStep2 + "]");
-          }
-        }
-        i += 1;
-      }
-    }
+    return this.b;
   }
   
-  public void a(String paramString)
+  public boolean a(AVGameAppInterface paramAVGameAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_b_of_type_Boolean)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVGamePerfReporter", 2, "stepStart, report[" + this.jdField_b_of_type_Boolean + "], name[" + paramString + "]");
-      }
+    if (paramAVGameAppInterface == null) {
+      return this.jdField_a_of_type_Boolean;
     }
-    for (;;)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return;
-      boolean bool = false;
-      AVGameStep localAVGameStep2 = a(paramString);
-      AVGameStep localAVGameStep1 = localAVGameStep2;
-      if (localAVGameStep2 == null) {
-        localAVGameStep1 = b(paramString);
+      paramAVGameAppInterface = paramAVGameAppInterface.a();
+      if (paramAVGameAppInterface != null) {
+        this.jdField_a_of_type_Boolean = paramAVGameAppInterface.a();
       }
-      if ((localAVGameStep1 != null) && (localAVGameStep1.jdField_a_of_type_Long == 0L)) {
-        localAVGameStep1.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-      while (QLog.isColorLevel())
+      while (!this.jdField_a_of_type_Boolean)
       {
-        QLog.i("AVGamePerfReporter", 2, "stepStart, name[" + paramString + "], isRepeatStep[" + bool + "], step[" + localAVGameStep1 + "]");
-        return;
-        bool = true;
+        QLog.w("AVGameEffectCtrl", 1, "isLoadedSO, load ptv so fail, proxy[" + paramAVGameAppInterface + "]");
+        return this.jdField_a_of_type_Boolean;
+        g();
       }
     }
+    return g();
   }
   
-  public void a(String paramString, int paramInt)
+  protected byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4)
   {
-    long l1 = 0L;
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_b_of_type_Boolean))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVGamePerfReporter", 2, "stepEnd, report[" + this.jdField_b_of_type_Boolean + "], name[" + paramString + "]");
-      }
-      return;
-    }
-    boolean bool1 = false;
-    boolean bool2 = false;
-    long l2 = System.currentTimeMillis();
-    AVGameStep localAVGameStep = a(paramString);
-    if (localAVGameStep != null)
-    {
-      if (localAVGameStep.b != 0L) {
-        break label206;
-      }
-      localAVGameStep.b = l2;
-    }
-    label206:
-    for (bool1 = bool2;; bool1 = true)
-    {
-      l1 = Math.abs(localAVGameStep.b - localAVGameStep.jdField_a_of_type_Long);
-      localAVGameStep.jdField_a_of_type_Int = paramInt;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("AVGamePerfReporter", 2, "stepEnd, name[" + paramString + "], cost[" + l1 + "], isRepeatStep[" + bool1 + "], cur[" + localAVGameStep + "], time[" + l2 + "]");
-      return;
-    }
+    return null;
   }
   
-  public void b(int paramInt)
+  protected float[] a()
   {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVGamePerfReporter", 2, "reportForEnterGame, repeat report. retCode[" + paramInt + "=");
-      }
-      return;
+    lbo locallbo = (lbo)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (locallbo != null) {
+      return locallbo.a();
     }
-    Object localObject2 = new ArrayList();
-    long l2 = 0L;
-    long l1 = 0L;
-    long l3 = 0L;
-    int i = 0;
-    Object localObject1;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      localObject1 = (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(jdField_a_of_type_ArrayOfJavaLangString[i]);
-      if (localObject1 == null)
-      {
-        label93:
-        i += 1;
-      }
-      else
-      {
-        ((List)localObject2).add(localObject1);
-        if (l2 != 0L) {
-          break label697;
-        }
-        l2 = ((AVGameStep)localObject1).jdField_a_of_type_Long;
-      }
-    }
-    label544:
-    label683:
-    label697:
-    for (;;)
-    {
-      if (((AVGameStep)localObject1).b != 0L) {
-        l1 = ((AVGameStep)localObject1).b;
-      }
-      for (;;)
-      {
-        l3 = i + 1;
-        break label93;
-        if (((List)localObject2).size() == 0)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("AVGamePerfReporter", 2, "reportForEnterGame, no main step for report.");
-          return;
-        }
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put("param_RetCode", String.valueOf(paramInt));
-        long l4 = l1;
-        if (l1 == 0L) {
-          l4 = System.currentTimeMillis();
-        }
-        if (l2 != 0L) {}
-        for (l1 = Math.abs(l4 - l2);; l1 = 0L)
-        {
-          Object localObject3 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            Object localObject4 = (String)((Iterator)localObject3).next();
-            localObject4 = (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject4);
-            if ((localObject4 != null) && (!((List)localObject2).contains(localObject4))) {
-              ((List)localObject2).add(localObject4);
-            }
-          }
-          i = 0;
-          if (i < ((List)localObject2).size())
-          {
-            localObject3 = (AVGameStep)((List)localObject2).get(i);
-            if ((((AVGameStep)localObject3).jdField_a_of_type_Long != 0L) && (((AVGameStep)localObject3).b != 0L) && (Math.abs(((AVGameStep)localObject3).b - ((AVGameStep)localObject3).jdField_a_of_type_Long) > 0L))
-            {
-              ((HashMap)localObject1).put(((AVGameStep)localObject3).jdField_a_of_type_JavaLangString + "Cost", String.valueOf(((AVGameStep)localObject3).b - ((AVGameStep)localObject3).jdField_a_of_type_Long));
-              ((HashMap)localObject1).put(((AVGameStep)localObject3).jdField_a_of_type_JavaLangString + "Ret", String.valueOf(((AVGameStep)localObject3).jdField_a_of_type_Int));
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              if (QLog.isColorLevel()) {
-                QLog.i("AVGamePerfReporter", 2, "reportForEnterGame, invalid step[" + localObject3 + "]");
-              }
-            }
-          }
-          localObject2 = BaseApplicationImpl.getApplication().getQQProcessName();
-          if ((jdField_a_of_type_Boolean) && (localObject2 != null) && (((String)localObject2).endsWith(":avgame")))
-          {
-            jdField_a_of_type_Boolean = false;
-            ((HashMap)localObject1).put("param_AVGameFirst", "1");
-            this.jdField_b_of_type_Boolean = true;
-            localObject2 = bctj.a(BaseApplicationImpl.getApplication());
-            if (paramInt != 0) {
-              break label683;
-            }
-          }
-          for (boolean bool = true;; bool = false)
-          {
-            ((bctj)localObject2).a("", "actAVGameMainCost", bool, l1, l3, (HashMap)localObject1, "", true);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("AVGamePerfReporter", 2, "reportForEnterGame, tagName[" + "actAVGameMainCost" + "], retCode[" + paramInt + "], duration[" + l1 + "], mainStepCnt[" + l3 + "], params[" + localObject1 + "]");
-            return;
-            ((HashMap)localObject1).put("param_AVGameFirst", "0");
-            break label544;
-          }
-        }
-      }
-    }
+    return null;
   }
   
-  public void b(Intent paramIntent)
+  protected int b()
   {
-    if ((paramIntent == null) || (this.jdField_b_of_type_Boolean)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVGamePerfReporter", 2, "addStepInfoToIntent, report[" + this.jdField_b_of_type_Boolean + "], intent[" + paramIntent + "]");
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b(int paramInt) {}
+  
+  public boolean f()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean g()
+  {
+    boolean bool2;
+    if (!GraphicRenderMgr.soloadedPTV)
+    {
+      GraphicRenderMgr.loadPtuSO();
+      QLog.w("AVGameEffectCtrl", 1, "isLoadedSO, loadPtvSoRet[" + GraphicRenderMgr.soloadedPTV + "]");
+      bool2 = GraphicRenderMgr.soloadedPTV;
+      bool1 = bool2;
+      if (bool2)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        b();
       }
     }
-    for (;;)
+    for (boolean bool1 = bool2;; bool1 = true)
     {
-      return;
-      String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        AVGameStep localAVGameStep = (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-        if (localAVGameStep != null) {
-          paramIntent.putExtra(str, localAVGameStep);
-        }
-        if ((localAVGameStep != null) && (QLog.isColorLevel())) {
-          QLog.i("AVGamePerfReporter", 2, "addStepInfoToIntent, step[" + localAVGameStep + "]");
-        }
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("AVGameEffectCtrl", 2, "loadPtvSo, ret[" + bool1 + "]");
       }
+      return bool1;
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nfu
  * JD-Core Version:    0.7.0.1
  */

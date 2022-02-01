@@ -1,29 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
-import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
-import mqq.util.WeakReference;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 
-public class vns
-  extends BroadcastReceiver
+class vns
+  implements aabr
 {
-  private WeakReference<QCirclePersonalDetailFragment> a;
+  vns(vnp paramvnp) {}
   
-  public vns(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment)
+  public void a(aabu paramaabu, Object paramObject)
   {
-    this.a = new WeakReference(paramQCirclePersonalDetailFragment);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = (QCirclePersonalDetailFragment)this.a.get();
-    if ((paramContext != null) && (paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")) && (paramIntent.hasExtra("uin")) && (paramIntent.getStringExtra("uin").equals(QCirclePersonalDetailFragment.a(paramContext))))
+    if ((vnp.a(this.a) != null) && (vnp.a(this.a) != null))
     {
-      QCirclePersonalDetailFragment.a(paramContext, false);
-      QCirclePersonalDetailFragment.b(paramContext, false);
-      zwp.a().a(new UserStateUpdateEvent());
+      if ((paramaabu.c()) || (paramaabu.d())) {
+        vnp.a(this.a).a(vnp.a(this.a));
+      }
+      if (!vnp.a(this.a).isSingleFeed()) {
+        vnp.a(this.a).a(vnp.a(this.a), paramaabu);
+      }
     }
   }
 }

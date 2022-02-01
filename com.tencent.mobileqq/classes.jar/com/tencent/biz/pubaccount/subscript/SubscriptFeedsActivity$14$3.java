@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import tuv;
-import tva;
+import tux;
+import tvc;
 
 public class SubscriptFeedsActivity$14$3
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$3(tuv paramtuv, Serializable paramSerializable) {}
+  public SubscriptFeedsActivity$14$3(tux paramtux, Serializable paramSerializable) {}
   
   public void run()
   {
     SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a) != null))
+    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a) != null))
     {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Tuv.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tuv.a).f != 1) {
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a));
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).a = true;
+      localSubscriptFeedsActivity = this.jdField_a_of_type_Tux.a;
+      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).f != 1) {
         break label110;
       }
     }

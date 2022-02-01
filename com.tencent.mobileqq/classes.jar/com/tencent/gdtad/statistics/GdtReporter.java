@@ -1,6 +1,6 @@
 package com.tencent.gdtad.statistics;
 
-import acqy;
+import acvc;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 
@@ -15,7 +15,7 @@ public class GdtReporter
       return;
     }
     ThreadManager.post(new GdtCgiReportRunnable(paramString), 2, null, false);
-    acqy.b("GDT_CGI_REPORT", paramString);
+    acvc.b("GDT_CGI_REPORT", paramString);
   }
 }
 

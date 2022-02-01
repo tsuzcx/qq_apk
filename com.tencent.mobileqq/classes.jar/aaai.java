@@ -1,6 +1,13 @@
-public abstract interface aaai<T extends aaah>
+public class aaai
 {
-  public abstract void setPresenter(T paramT);
+  public String a;
+  public zzy a;
+  
+  public aaai(String paramString, zzy paramzzy)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Zzy = paramzzy;
+  }
 }
 
 

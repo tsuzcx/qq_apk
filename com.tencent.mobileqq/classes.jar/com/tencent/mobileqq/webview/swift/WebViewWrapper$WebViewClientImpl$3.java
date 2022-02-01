@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bhon;
+import bipi;
 
 public class WebViewWrapper$WebViewClientImpl$3
   implements Runnable
 {
-  public WebViewWrapper$WebViewClientImpl$3(bhon parambhon, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapper$WebViewClientImpl$3(bipi parambipi, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {

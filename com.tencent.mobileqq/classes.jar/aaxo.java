@@ -1,223 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.net.Uri;
-import com.tencent.biz.videostory.video.VsMediaPlayer.1;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Timer;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import java.io.PrintStream;
 
 public class aaxo
-  implements MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnSeekCompleteListener
+  implements InputFilter
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  private aaxp jdField_a_of_type_Aaxp;
-  private volatile MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private VsMusicItemInfo jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private long c;
-  private long d;
+  protected int a;
   
-  public aaxo()
+  public aaxo(TroopGiftPanel paramTroopGiftPanel, int paramInt)
   {
-    f();
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(this.jdField_a_of_type_Float, this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(this);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart);
-      h();
-    }
-  }
-  
-  private void h()
-  {
-    i();
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new VsMediaPlayer.1(this), 0L, 1000L);
-  }
-  
-  private void i()
-  {
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-  }
-  
-  public VsMusicItemInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if (!this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-        break label30;
-      }
-      if (this.jdField_a_of_type_Int == -1) {
-        g();
-      }
-    }
-    return;
-    label30:
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-    h();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
+    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(long paramLong)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.d = paramLong;
-  }
-  
-  public void a(aaxp paramaaxp)
-  {
-    this.jdField_a_of_type_Aaxp = paramaaxp;
-  }
-  
-  public void a(VsMusicItemInfo paramVsMusicItemInfo)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null)
-    {
-      localObject = new HashMap();
-      ((HashMap)localObject).put("ret_code", Integer.valueOf(0));
-      ((HashMap)localObject).put("time_cost", Long.valueOf(this.c));
-      ((HashMap)localObject).put("total_play_time", Long.valueOf(System.currentTimeMillis() - this.jdField_b_of_type_Long));
-      ((HashMap)localObject).put("video_duration", Long.valueOf(this.d));
-      ((HashMap)localObject).put("music_source", Integer.valueOf(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.jdField_a_of_type_Int));
-      ((HashMap)localObject).put("file_size", Long.valueOf(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.fileSize));
-      ((HashMap)localObject).put("element_id", this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid);
-      aaxb.a("edit_smart_music_play", aaxb.a((HashMap)localObject));
+    System.out.println("filter() source = " + paramCharSequence + ", dest = " + paramSpanned + ", start = " + paramInt1 + ", dstart = " + paramInt3 + ", dend = " + paramInt4);
+    if (paramCharSequence.length() != 1) {
+      return "";
     }
-    if (paramVsMusicItemInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if ((paramVsMusicItemInfo.mUrl != null) && (paramVsMusicItemInfo.mUrl.trim().length() != 0)) {
-          break;
-        }
-      } while (this.jdField_a_of_type_Aaxp == null);
-      this.jdField_a_of_type_Aaxp.a(this.jdField_a_of_type_AndroidMediaMediaPlayer, -2, -1);
-      return;
-      localObject = Uri.parse(paramVsMusicItemInfo.mUrl);
-      if (localObject != null) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Aaxp == null);
-    this.jdField_a_of_type_Aaxp.a(this.jdField_a_of_type_AndroidMediaMediaPlayer, -1, -1);
-    return;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
-    b();
-    try
-    {
-      f();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(BaseApplicationImpl.getContext(), (Uri)localObject);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      return;
+    paramInt1 = paramCharSequence.charAt(0);
+    if ((paramInt1 < 48) || (paramInt1 > 57)) {
+      return "";
     }
-    catch (IOException paramVsMusicItemInfo)
-    {
-      paramVsMusicItemInfo.printStackTrace();
+    if ((paramInt3 == 0) && (paramInt1 == 48)) {
+      return "";
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      c();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+    if ((this.jdField_a_of_type_Int > 0) && (paramSpanned.length() >= this.jdField_a_of_type_Int)) {
+      return "";
     }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo((int)paramLong);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    }
-    i();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-    }
-  }
-  
-  public void e()
-  {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null)) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-    }
-  }
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Aaxp != null) && (paramInt1 != -38)) {
-      this.jdField_a_of_type_Aaxp.a(paramMediaPlayer, paramInt1, paramInt2);
-    }
-    return false;
-  }
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    if ((paramMediaPlayer != null) && (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null)) {
-      paramMediaPlayer.seekTo(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart);
-    }
-  }
-  
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
-  {
-    if ((paramMediaPlayer != null) && (this.jdField_a_of_type_Aaxp != null) && (!paramMediaPlayer.isPlaying()))
-    {
-      this.c = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Aaxp.a(paramMediaPlayer, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
-    }
+    return null;
   }
 }
 

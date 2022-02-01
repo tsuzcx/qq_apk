@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.app.Activity;
-import ayox;
+import azhq;
 import java.util.ArrayList;
 
 class OnlineStatusPanel$2
@@ -11,7 +11,7 @@ class OnlineStatusPanel$2
   
   public void run()
   {
-    ArrayList localArrayList1 = ayox.a().a();
+    ArrayList localArrayList1 = azhq.a().a();
     ArrayList localArrayList2 = this.this$0.a.a;
     ((Activity)this.this$0.getContext()).runOnUiThread(new OnlineStatusPanel.2.1(this, localArrayList1, localArrayList1, localArrayList2));
   }

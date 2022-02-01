@@ -1,16 +1,11 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
-
-public class augu
-  implements DialogInterface.OnClickListener
+class augu
+  implements atit
 {
-  public augu(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  augu(augr paramaugr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    this.a.a.finish();
+    augr.a(this.a, paramLong);
   }
 }
 

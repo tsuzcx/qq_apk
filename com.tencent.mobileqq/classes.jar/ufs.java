@@ -1,24 +1,31 @@
+import android.animation.Animator;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ufs
-  implements View.OnClickListener
+  extends uex
 {
-  ufs(ufp paramufp) {}
+  ufs(ufr paramufr) {}
   
-  public void onClick(View paramView)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    upe.a("comment", "onClick hide comment");
-    ufp.a(this.a);
-    uhd.a().a(new WSCommentShowEvent(false));
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = 0;
+    super.onAnimationStart(paramAnimator);
+    this.a.b.setTranslationY(this.a.b.getHeight());
+    this.a.b.setVisibility(0);
+    paramAnimator = ufr.a(this.a);
+    if (TextUtils.equals(this.a.a(), "focus")) {}
+    for (;;)
+    {
+      paramAnimator.setVisibility(i);
+      return;
+      i = 8;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ufs
  * JD-Core Version:    0.7.0.1
  */

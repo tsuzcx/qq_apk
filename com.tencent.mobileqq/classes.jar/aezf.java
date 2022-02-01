@@ -1,125 +1,216 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NewAuthDevUgFragment;
+import com.tencent.mobileqq.activity.NewAuthDevUgFragment.1.1;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import tencent.im.login.GatewayVerify.RspBody;
+import tencent.im.login.GatewayVerify.RspBodySelfPhone;
+import tencent.im.login.GatewayVerify.RspBodySelfPhoneCheck;
+import tencent.im.login.GatewayVerify.RspBodySelfPhoneGetUrl;
 
 public class aezf
-  implements alzu
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public aezf(QQSettingMe paramQQSettingMe) {}
+  public aezf(NewAuthDevUgFragment paramNewAuthDevUgFragment) {}
   
-  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject)
   {
-    if (this.a.jdField_c_of_type_Boolean)
+    int i = 1;
+    if (this.a.a())
     {
-      if (!paramBoolean) {
-        break label387;
-      }
-      paramInt = paramBundle.getInt("show_flag");
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult show_flag:" + paramInt);
-      }
-      if (paramInt != 0) {
-        break label91;
-      }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setClickable(false);
-      this.a.g.setVisibility(4);
+      QLog.e("NewAuthDevUgFragment", 1, "onReceive getActivity is null or activity is finish");
+      return;
     }
-    label90:
-    label91:
-    do
+    boolean bool;
+    if (paramObject == null)
     {
-      int i;
-      do
+      bool = true;
+      QLog.d("NewAuthDevUgFragment", 1, new Object[] { "VerifyDevLockObserver onReceive, type is ", paramNotifyType, ", ret is ", Integer.valueOf(paramInt), "data == null ? ", Boolean.valueOf(bool) });
+      if ((paramNotifyType != VerifyDevLockManager.NotifyType.NOTIFY_GET_GATEWAY_URL) || (paramInt != 239)) {
+        break label365;
+      }
+      if (paramObject != null) {
+        break label202;
+      }
+      try
       {
-        String str1;
-        String str2;
-        Object localObject;
-        do
+        QLog.e("NewAuthDevUgFragment", 1, "data is null");
+        NewAuthDevUgFragment.a(this.a);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramNotifyType)
+      {
+        QLog.e("NewAuthDevUgFragment", 1, new Object[] { "onReceive, GatewayVerify.RspBody mergeFrom error : ", paramNotifyType.getMessage() });
+        NewAuthDevUgFragment.a(this.a, "V_GET_GATEWAY_URL_ERROR", paramInt, paramNotifyType.getMessage());
+        NewAuthDevUgFragment.a(this.a);
+        if (!(NewAuthDevUgFragment.a(this.a) instanceof QQAppInterface)) {}
+      }
+    }
+    for (paramNotifyType = (QQAppInterface)NewAuthDevUgFragment.a(this.a);; paramNotifyType = null)
+    {
+      awvm.a(NewAuthDevUgFragment.a(this.a), paramNotifyType, 3, NewAuthDevUgFragment.b(this.a));
+      return;
+      bool = false;
+      break;
+      label202:
+      paramObject = (byte[])paramObject;
+      paramNotifyType = new GatewayVerify.RspBody();
+      paramNotifyType.mergeFrom(paramObject);
+      paramObject = paramNotifyType.msg_rsp_self_phone.msg_rsp_get_url.str_upload_url.get();
+      NewAuthDevUgFragment.a(this.a, paramNotifyType.msg_rsp_self_phone.msg_rsp_get_url.int32_channel_id.get());
+      NewAuthDevUgFragment.a(this.a, paramNotifyType.msg_rsp_self_phone.msg_rsp_get_url.str_msg_id.get());
+      NewAuthDevUgFragment.b(this.a, 0);
+      NewAuthDevUgFragment.a(this.a, true);
+      QLog.d("NewAuthDevUgFragment", 1, new Object[] { "msgid: ", NewAuthDevUgFragment.a(this.a), " channelId : ", Integer.valueOf(NewAuthDevUgFragment.a(this.a)) });
+      NewAuthDevUgFragment.a(this.a).a(paramObject, NewAuthDevUgFragment.a(this.a));
+      return;
+    }
+    label365:
+    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_CHECK_SELF_PHONE)
+    {
+      if (paramInt == 160)
+      {
+        NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt, "");
+        NewAuthDevUgFragment.a(this.a);
+        return;
+      }
+      if (paramInt == 241)
+      {
+        NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt, "");
+        NewAuthDevUgFragment.b(this.a);
+        if ((NewAuthDevUgFragment.a(this.a) instanceof QQAppInterface)) {}
+        for (paramNotifyType = (QQAppInterface)NewAuthDevUgFragment.a(this.a);; paramNotifyType = null)
         {
-          break label90;
-          do
-          {
-            return;
-          } while (paramInt != 1);
-          str1 = paramBundle.getString("KEY_TEMPER");
-          str2 = paramBundle.getString("o_wea_code");
-          localObject = paramBundle.getString("area_info");
-          paramInt = paramBundle.getInt("adcode");
-          if (QLog.isColorLevel()) {
-            QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult temp:" + str1 + " o_wea_code:" + str2 + " area_name:" + (String)localObject + "adcode:" + paramInt);
-          }
-        } while ((str1 == null) || (str1.equals("")) || (TextUtils.isEmpty((CharSequence)localObject)));
-        this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.a.g.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setClickable(true);
-        this.a.d.setText(str1);
-        paramBundle = ((String)localObject).split("-");
-        TextView localTextView = this.a.g;
-        if (paramBundle.length == 2) {
-          paramBundle = paramBundle[1];
+          awvm.a(NewAuthDevUgFragment.a(this.a), paramNotifyType, 5, NewAuthDevUgFragment.b(this.a));
+          return;
         }
-        for (;;)
-        {
-          localTextView.setText(paramBundle);
+      }
+      if (paramInt == 242)
+      {
+        if (paramObject == null) {
           try
           {
-            paramBundle = URLEncoder.encode((String)localObject, "utf-8");
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("&city=").append(paramBundle).append("&adcode=").append(paramInt);
-            this.a.g.setTag(((StringBuilder)localObject).toString());
-            this.a.f.setText("o");
-            QQSettingMe.a(this.a, str1);
-            QQSettingMe.b(this.a, str2);
+            QLog.e("NewAuthDevUgFragment", 1, "data is null");
+            NewAuthDevUgFragment.a(this.a);
             return;
-            paramBundle = paramBundle[0];
           }
-          catch (Exception paramBundle)
+          catch (InvalidProtocolBufferMicroException paramNotifyType)
           {
-            for (;;)
-            {
-              paramBundle = (Bundle)localObject;
-            }
+            QLog.e("NewAuthDevUgFragment", 1, new Object[] { "onReceive, GatewayVerify.RspBody mergeFrom error : ", paramNotifyType.getMessage() });
+            NewAuthDevUgFragment.a(this.a);
+            return;
           }
         }
-        i = paramBundle.getInt("uint32_result");
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult resultCode:" + i);
+        paramNotifyType = (byte[])paramObject;
+        paramObject = new GatewayVerify.RspBody();
+        paramObject.mergeFrom(paramNotifyType);
+        paramNotifyType = paramObject.msg_rsp_self_phone.msg_rsp_check_phone.str_upload_redirect_url.get();
+        NewAuthDevUgFragment.a(this.a).a(paramNotifyType);
+        return;
+      }
+      NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt, "");
+      NewAuthDevUgFragment.a(this.a);
+      if ((NewAuthDevUgFragment.a(this.a) instanceof QQAppInterface)) {}
+      for (paramNotifyType = (QQAppInterface)NewAuthDevUgFragment.a(this.a);; paramNotifyType = null)
+      {
+        awvm.a(NewAuthDevUgFragment.a(this.a), paramNotifyType, 3, NewAuthDevUgFragment.b(this.a));
+        return;
+      }
+    }
+    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_GET_GATEWAY_URL)
+    {
+      if (i == 0) {
+        break label731;
+      }
+      paramNotifyType = "V_GET_GATEWAY_URL_ERROR";
+      label663:
+      NewAuthDevUgFragment.a(this.a, paramNotifyType, paramInt, "");
+      NewAuthDevUgFragment.a(this.a);
+      if (!(NewAuthDevUgFragment.a(this.a) instanceof QQAppInterface)) {
+        break label737;
+      }
+    }
+    label731:
+    label737:
+    for (paramNotifyType = (QQAppInterface)NewAuthDevUgFragment.a(this.a);; paramNotifyType = null)
+    {
+      awvm.a(NewAuthDevUgFragment.a(this.a), paramNotifyType, 3, NewAuthDevUgFragment.b(this.a));
+      return;
+      i = 0;
+      break;
+      paramNotifyType = "V_VERIFY_TOKEN_ERROR";
+      break label663;
+    }
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a.a())
+    {
+      QLog.e("NewAuthDevUgFragment", 1, "onVerifyClose getActivity is null or activity is finish");
+      return;
+    }
+    QLog.d("NewAuthDevUgFragment", 1, new Object[] { "onVerifyClose ret : ", Integer.valueOf(paramInt2) });
+    if (paramInt2 == 0)
+    {
+      NewAuthDevUgFragment.a(this.a, false);
+      NewAuthDevUgFragment.a(this.a, "V_RET_SUCCESS", paramInt2, "");
+      NewAuthDevUgFragment.a(this.a).a();
+      NewAuthDevUgFragment.a(this.a).setText(2131691855);
+      NewAuthDevUgFragment.a(this.a).postDelayed(new NewAuthDevUgFragment.1.1(this), 800L);
+      if (NewAuthDevUgFragment.a(this.a))
+      {
+        paramString = NewAuthDevUgFragment.a(this.a).getHandler(LoginActivity.class);
+        if (paramString != null) {
+          paramString.sendEmptyMessage(20200515);
         }
-      } while ((paramInt != 6666) || (i != 191005));
-      if (Build.VERSION.SDK_INT < 23) {
-        break label602;
+        paramString = NewAuthDevUgFragment.a(this.a).getHandler(SubLoginActivity.class);
+        if (paramString != null) {
+          paramString.sendEmptyMessage(20200515);
+        }
+        paramString = NewAuthDevUgFragment.a(this.a).getHandler(AddAccountActivity.class);
+        if (paramString != null) {
+          paramString.sendEmptyMessage(20200515);
+        }
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
-        break label594;
+      if ((NewAuthDevUgFragment.a(this.a) instanceof QQAppInterface))
+      {
+        paramString = (QQAppInterface)NewAuthDevUgFragment.a(this.a);
+        awvm.a(NewAuthDevUgFragment.a(this.a), paramString, 4, NewAuthDevUgFragment.b(this.a));
+        if (!(NewAuthDevUgFragment.a(this.a) instanceof QQAppInterface)) {
+          break label297;
+        }
       }
-      paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-      long l = paramBundle.getLong("sp_key_request_permission", 0L);
-      if (NetConnInfoCenter.getServerTime() - l >= 86400L) {
+      label297:
+      for (paramString = (QQAppInterface)NewAuthDevUgFragment.a(this.a);; paramString = null)
+      {
+        bdll.a(paramString, "dc00898", "", NewAuthDevUgFragment.b(this.a), "0X800AEFB", "0X800AEFB", 0, 0, "", "", "", "");
+        return;
+        paramString = null;
         break;
       }
-    } while (!QLog.isColorLevel());
-    label387:
-    QLog.e("QQSettingRedesign", 2, "User requestPermissions but has requested in 24 h");
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.requestPermissions(new aezg(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-    paramBundle.edit().putLong("sp_key_request_permission", NetConnInfoCenter.getServerTime()).commit();
-    return;
-    label594:
-    this.a.g();
-    return;
-    label602:
-    this.a.g();
+    }
+    QLog.e("NewAuthDevUgFragment", 1, new Object[] { "VerifyDevLockObserver onVerifyClose error, ret : ", Integer.valueOf(paramInt2) });
+    NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt2, paramErrMsg.getMessage());
+    NewAuthDevUgFragment.a(this.a);
+    if ((NewAuthDevUgFragment.a(this.a) instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)NewAuthDevUgFragment.a(this.a);; paramString = null)
+    {
+      awvm.a(NewAuthDevUgFragment.a(this.a), paramString, 3, NewAuthDevUgFragment.b(this.a));
+      return;
+    }
   }
 }
 

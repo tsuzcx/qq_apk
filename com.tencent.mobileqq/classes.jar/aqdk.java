@@ -1,68 +1,30 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aqdk
-  implements aqdf
+class aqdk
+  implements View.OnClickListener
 {
-  public void a(Context paramContext, ColorNote paramColorNote)
+  aqdk(aqdj paramaqdj) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject1 = paramColorNote.getSubType();
-    if (((String)localObject1).startsWith("qzone_detail")) {}
-    do
+    if ((aqdj.a(this.a) == 0) && (!TextUtils.isEmpty(aqdj.a(this.a))))
     {
-      try
-      {
-        Object localObject2 = new JSONObject(new String(paramColorNote.getReserve()));
-        int i = ((JSONObject)localObject2).getInt("appid");
-        paramColorNote = ((JSONObject)localObject2).getString("cellid");
-        localObject1 = ((JSONObject)localObject2).getString("subid");
-        long l = ((JSONObject)localObject2).getLong("uin");
-        ((JSONObject)localObject2).getString("source");
-        boolean bool = ((JSONObject)localObject2).getBoolean("mIsFromKuolie");
-        String str = ((JSONObject)localObject2).getString("mainTitle");
-        localObject2 = ((JSONObject)localObject2).getString("subType");
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("req_from_kuolie", bool);
-        localBundle.putString("mainTitle", str);
-        localBundle.putString("subType", (String)localObject2);
-        blsb.a(paramContext, blsi.a(), Long.valueOf(l).toString(), i + "", paramColorNote, (String)localObject1, 0, localBundle, true, true);
-        return;
+      aqdj.a(this.a).put(aqdj.b(this.a), Integer.valueOf(1));
+      WebViewFragment localWebViewFragment = this.a.mRuntime.a();
+      if (localWebViewFragment != null) {
+        localWebViewFragment.webView.loadUrl(aqdj.a(this.a));
       }
-      catch (JSONException paramContext)
-      {
-        QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-        return;
-      }
-      if (((String)localObject1).startsWith("qzone_userhome")) {
-        try
-        {
-          paramColorNote = new JSONObject(new String(paramColorNote.getReserve())).getString("visitUin");
-          blsb.a(paramContext, blsi.a(), paramColorNote, 0, 0, 0, null, null, true);
-          return;
-        }
-        catch (JSONException paramContext)
-        {
-          QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-          return;
-        }
-      }
-    } while (!((String)localObject1).startsWith("qzone_famous_userhome"));
-    try
-    {
-      localObject1 = new JSONObject(new String(paramColorNote.getReserve()));
-      paramColorNote = ((JSONObject)localObject1).getString("visitUin");
-      localObject1 = ((JSONObject)localObject1).getString("webviewUrl");
-      blsb.a(paramContext, blsi.a(), paramColorNote, 0, 0, null, (String)localObject1, true);
-      return;
+      aqdj.a(this.a, null);
     }
-    catch (JSONException paramContext)
-    {
-      QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-    }
+    aqdj.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

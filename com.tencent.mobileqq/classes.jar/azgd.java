@@ -1,36 +1,23 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime.Status;
 
-public class azgd
-  extends Handler
+class azgd
+  implements DialogInterface.OnClickListener
 {
-  public azgd(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  azgd(azfn paramazfn, AppRuntime.Status paramStatus, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
+    if (!bhnv.g(azfn.a(this.jdField_a_of_type_Azfn)))
     {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
-      {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
-      }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131694544, 0).show();
-      return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131694493, 0).show();
+      this.jdField_a_of_type_Azfn.c();
+      QQToast.a(azfn.a(this.jdField_a_of_type_Azfn), 1, 2131718340, 1).a();
       return;
     }
-    this.a.d();
+    azfn.a(this.jdField_a_of_type_Azfn, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, true);
+    bdll.b(azfn.a(this.jdField_a_of_type_Azfn), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
   }
 }
 

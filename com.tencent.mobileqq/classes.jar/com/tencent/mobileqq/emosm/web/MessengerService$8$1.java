@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.content.res.Resources;
-import anni;
-import artg;
+import anzj;
+import asiu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,12 +10,12 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class MessengerService$8$1
   implements Runnable
 {
-  public MessengerService$8$1(artg paramartg) {}
+  public MessengerService$8$1(asiu paramasiu) {}
   
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.i(this.a.a);
-    QQToast.a(localQQAppInterface.getApplication(), anni.a(2131705459), 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131298998));
+    QQToast.a(localQQAppInterface.getApplication(), anzj.a(2131705566), 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299011));
   }
 }
 

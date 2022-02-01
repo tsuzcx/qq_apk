@@ -1,27 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class alvv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animation.AnimationListener
 {
-  public alvv(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public alvv(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.a.setAlpha(f);
-      }
-      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.c.setAlpha(Float.valueOf(f).floatValue());
-      }
-    }
+    NewFlowCameraActivity.a(this.a).setVisibility(4);
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    this.a.e.setVisibility(4);
+    alug.a("", "0X8007C05", this.a.c + "", "", "", "");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
   }
 }
 

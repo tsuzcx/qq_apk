@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajph
-  extends ProxyObserver
+class ajph
+  implements View.OnClickListener
 {
-  public ajph(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  ajph(ajpe paramajpe) {}
   
-  public void onProxySaveToDbFinished()
+  public void onClick(View paramView)
   {
-    this.a.a.sendEmptyMessage(41);
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    bguq.a(ajpe.a(this.a), localRecommendTroopItem, 17, 10029);
+    bhju.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

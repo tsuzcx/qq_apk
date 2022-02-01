@@ -19,7 +19,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
-import bgmo;
+import beyq;
+import bhmq;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -28,6 +29,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
@@ -56,7 +58,8 @@ public class RedTouchTextView
   public Drawable b;
   private String jdField_b_of_type_JavaLangString = "";
   private boolean jdField_b_of_type_Boolean;
-  private int c = this.jdField_a_of_type_Int;
+  private int c;
+  public Drawable c;
   private int d = a(9);
   private int e = a(9);
   private int f = a(4);
@@ -71,6 +74,7 @@ public class RedTouchTextView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
   }
   
   private int a()
@@ -82,21 +86,31 @@ public class RedTouchTextView
     return (int)(getWidth() - f1 - getPaddingLeft() - a(0) - a(0));
   }
   
+  private int a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    if (a(paramRedTypeInfo, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return this.jdField_b_of_type_Int + this.f;
+      }
+      return this.jdField_a_of_type_Int + this.f;
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_b_of_type_Int;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
   private int a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, boolean paramBoolean)
   {
-    int j = 0;
     int i = 0;
-    if (paramRedTypeInfo == null)
-    {
-      j = i;
+    int j = 0;
+    if (paramRedTypeInfo == null) {
       return j;
     }
     int k = paramRedTypeInfo.red_type.get();
-    i = j;
     switch (k)
     {
-    default: 
-      i = j;
     }
     for (;;)
     {
@@ -108,41 +122,28 @@ public class RedTouchTextView
       return i;
       i = this.d;
       continue;
-      if (a(paramRedTypeInfo, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo))
+      i = a(paramRedTypeInfo);
+      continue;
+      i = a(paramRedTypeInfo);
+      continue;
+      paramRedTypeInfo = paramRedTypeInfo.red_content.get();
+      try
       {
-        if (this.jdField_a_of_type_Boolean) {
-          i = this.jdField_b_of_type_Int + this.f;
-        } else {
-          i = this.jdField_a_of_type_Int + this.f;
-        }
-      }
-      else if (this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_b_of_type_Int;
-      }
-      else
-      {
-        i = this.jdField_a_of_type_Int;
-        continue;
-        paramRedTypeInfo = paramRedTypeInfo.red_content.get();
-        try
-        {
-          i = Integer.valueOf(paramRedTypeInfo).intValue();
-        }
-        catch (Exception paramRedTypeInfo)
-        {
-          QLog.e("RedTouchTextView", 1, "getRedTypeInfoWidth exception e = ", paramRedTypeInfo);
-          i = j;
-        }
-        continue;
-        this.jdField_b_of_type_JavaLangString = paramRedTypeInfo.red_content.get();
-        paramRedTypeInfo = new TextPaint();
-        paramRedTypeInfo.setTextSize(a(11));
-        j = (int)paramRedTypeInfo.measureText(this.jdField_b_of_type_JavaLangString);
+        j = Integer.valueOf(paramRedTypeInfo).intValue();
         i = j;
-        if (paramBoolean) {
-          i = j + a(6) * 2;
-        }
+      }
+      catch (Exception paramRedTypeInfo)
+      {
+        QLog.e("RedTouchTextView", 1, "getRedTypeInfoWidth exception e = ", paramRedTypeInfo);
+      }
+      continue;
+      this.jdField_b_of_type_JavaLangString = paramRedTypeInfo.red_content.get();
+      paramRedTypeInfo = new TextPaint();
+      paramRedTypeInfo.setTextSize(a(11));
+      j = (int)paramRedTypeInfo.measureText(this.jdField_b_of_type_JavaLangString);
+      i = j;
+      if (paramBoolean) {
+        i = j + a(6) * 2;
       }
     }
   }
@@ -304,8 +305,9 @@ public class RedTouchTextView
         for (JSONObject localJSONObject = new JSONObject();; localJSONObject = new JSONObject(localRedTypeInfo.red_desc.get()))
         {
           a(paramCanvas, i, j);
-          b(paramCanvas, i, localRedTypeInfo, j, localJSONObject);
+          c(paramCanvas, i, localRedTypeInfo, j, localJSONObject);
           a(paramCanvas, i, localRedTypeInfo, j, localJSONObject);
+          b(paramCanvas, i, localRedTypeInfo, j, localJSONObject);
           break;
         }
       }
@@ -326,7 +328,7 @@ public class RedTouchTextView
       }
       paramInt1 = getWidth() - a(this.jdField_a_of_type_JavaUtilList, paramInt1) - a(0);
       paramInt2 = getHeight() / 2 - this.d / 2;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850388);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850400);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramInt1, paramInt2, this.d + paramInt1, this.d + paramInt2);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
@@ -342,7 +344,7 @@ public class RedTouchTextView
         QLog.d("RedTouchTextView", 2, "draw redtouch img");
       }
       j = getWidth() - a(this.jdField_a_of_type_JavaUtilList, paramInt1) - a(0);
-      k = getHeight() / 2 - this.c / 2;
+      k = getHeight() / 2 - this.jdField_c_of_type_Int / 2;
       if (!paramJSONObject.has("av")) {
         break label447;
       }
@@ -362,19 +364,19 @@ public class RedTouchTextView
             if (QLog.isColorLevel()) {
               QLog.d("RedTouchTextView", 2, "draw redtouch img gif ");
             }
-            paramJSONObject = getResources().getDrawable(2130840264);
+            paramJSONObject = getResources().getDrawable(2130840274);
             localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
             localURLDrawableOptions.mLoadingDrawable = paramJSONObject;
             localURLDrawableOptions.mFailedDrawable = paramJSONObject;
             localURLDrawableOptions.mRequestWidth = this.jdField_b_of_type_Int;
-            localURLDrawableOptions.mRequestHeight = this.c;
+            localURLDrawableOptions.mRequestHeight = this.jdField_c_of_type_Int;
             localURLDrawableOptions.mPlayGifImage = true;
             paramRedTypeInfo = URLDrawable.getDrawable(paramRedTypeInfo, localURLDrawableOptions);
             paramRedTypeInfo.setCallback(this);
             paramRedTypeInfo.draw(paramCanvas);
             if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)
             {
-              this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, k, this.jdField_b_of_type_Int + j, this.c + k);
+              this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, k, this.jdField_b_of_type_Int + j, this.jdField_c_of_type_Int + k);
               this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
             }
           }
@@ -391,7 +393,7 @@ public class RedTouchTextView
           {
             if (paramInt2 == 1)
             {
-              paramJSONObject = getResources().getDrawable(2130850388);
+              paramJSONObject = getResources().getDrawable(2130850400);
               paramJSONObject.setBounds(getWidth() - a(0) - a(9), k - a(4), getWidth() - a(0), k + a(5));
               paramJSONObject.draw(paramCanvas);
             }
@@ -400,11 +402,35 @@ public class RedTouchTextView
             }
             ThreadManager.post(new RedTouchTextView.1(this, paramRedTypeInfo, paramInt1), 8, null, true);
             return;
-            this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, k, this.jdField_b_of_type_Int + j, this.c + k);
+            this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, k, this.jdField_b_of_type_Int + j, this.jdField_c_of_type_Int + k);
             this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
           }
         }
       }
+    }
+  }
+  
+  private static void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramRedTypeInfo.red_desc.get())) {}
+      for (JSONObject localJSONObject = new JSONObject();; localJSONObject = new JSONObject(paramRedTypeInfo.red_desc.get()))
+      {
+        if (localJSONObject.has("dot")) {
+          localJSONObject.put("dot", 0);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("RedTouchTextView", 2, "setImageRedNotShowRedPoint ,path = " + paramAppInfo.path.get());
+        }
+        paramRedTypeInfo.red_desc.set(localJSONObject.toString());
+        return;
+      }
+      return;
+    }
+    catch (Exception paramRedTypeInfo)
+    {
+      QLog.e("RedTouchTextView", 1, "setImageRedNotShowRedPoint json exception e = " + paramRedTypeInfo.getMessage());
     }
   }
   
@@ -425,171 +451,139 @@ public class RedTouchTextView
             QLog.d("RedTouchTextView", 1, "isSupportRedTouch inewflag = 0, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path);
             return false;
           }
-          localObject1 = (BusinessInfoCheckUpdate.RedDisplayInfo)this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.red_display_info.get();
-          if (localObject1 != null) {
+          localObject = (BusinessInfoCheckUpdate.RedDisplayInfo)this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.red_display_info.get();
+          if (localObject != null) {
             break;
           }
         } while (!QLog.isColorLevel());
         QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo diplayInfo = null, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get());
         return false;
-        localObject1 = ((BusinessInfoCheckUpdate.RedDisplayInfo)localObject1).red_type_info.get();
-        if (localObject1 != null) {
+        localObject = ((BusinessInfoCheckUpdate.RedDisplayInfo)localObject).red_type_info.get();
+        if (localObject != null) {
           break;
         }
       } while (!QLog.isColorLevel());
       QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo redInfos = null, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get());
       return false;
-      if (((List)localObject1).size() >= 2) {
+      if (((List)localObject).size() >= 2) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo redInfos.size < 2, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get());
     return false;
-    Object localObject1 = new ArrayList((Collection)localObject1);
-    int j = a((List)localObject1);
-    Object localObject2 = ((List)localObject1).iterator();
+    Object localObject = new ArrayList((Collection)localObject);
+    int j = a((List)localObject);
+    Iterator localIterator = ((List)localObject).iterator();
     int i = 0;
-    label270:
-    if (((Iterator)localObject2).hasNext())
+    label260:
+    if (localIterator.hasNext())
     {
-      if (((BusinessInfoCheckUpdate.RedTypeInfo)((Iterator)localObject2).next()).red_type.get() == 9) {
-        break label698;
+      if (((BusinessInfoCheckUpdate.RedTypeInfo)localIterator.next()).red_type.get() == 9) {
+        break label330;
       }
       i += 1;
     }
-    label698:
+    label330:
     for (;;)
     {
-      break label270;
+      break label260;
       if (i == 0)
       {
         QLog.e("RedTouchTextView", 1, "isSupportRedTouch notSpaceInfoCount = 0");
         return false;
       }
-      int i1 = a();
-      int k = j;
-      if ((k > i1) && (i > 1))
-      {
-        int n = ((List)localObject1).size();
-        int m = 0;
-        label354:
-        k = n;
-        j = i;
-        if (m < n)
-        {
-          if (((BusinessInfoCheckUpdate.RedTypeInfo)((List)localObject1).get(m)).red_type.get() != 9)
-          {
-            ((List)localObject1).remove(m);
-            j = i - 1;
-            k = n - 1;
-          }
-        }
-        else {
-          i = 0;
-        }
-        for (;;)
-        {
-          if (i < k - 1)
-          {
-            if ((((BusinessInfoCheckUpdate.RedTypeInfo)((List)localObject1).get(i)).red_type.get() == 9) && (((BusinessInfoCheckUpdate.RedTypeInfo)((List)localObject1).get(i + 1)).red_type.get() == 9)) {
-              ((List)localObject1).remove(i);
-            }
-          }
-          else
-          {
-            k = a((List)localObject1);
-            i = j;
-            break;
-            m += 1;
-            break label354;
-          }
-          i += 1;
-        }
-      }
-      if ((k > i1) && (i == 1))
-      {
-        j = 0;
-        while (j < ((List)localObject1).size())
-        {
-          localObject2 = (BusinessInfoCheckUpdate.RedTypeInfo)((List)localObject1).get(j);
-          if ((((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.get() == 3) && (a((BusinessInfoCheckUpdate.RedTypeInfo)localObject2, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo))) {
-            setImageRedNotShowRedPoint((BusinessInfoCheckUpdate.RedTypeInfo)localObject2, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-          }
-          j += 1;
-        }
-      }
-      if ((a((List)localObject1) > i1) && (i == 1))
-      {
-        i = 0;
-        while (i < ((List)localObject1).size())
-        {
-          localObject2 = (BusinessInfoCheckUpdate.RedTypeInfo)((List)localObject1).get(i);
-          if ((((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.get() != 9) && (((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.get() != 0))
-          {
-            localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
-            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(0);
-            ((List)localObject1).set(i, localObject2);
-          }
-          i += 1;
-        }
-      }
-      if (a((List)localObject1) > i1) {
+      if (a((List)localObject, j, i)) {
         break;
       }
-      this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
+      setShowRedInfo((List)localObject);
       return true;
     }
   }
   
   public static boolean a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    boolean bool = true;
-    if ((paramRedTypeInfo == null) || (paramRedTypeInfo.red_type.get() != 3))
-    {
-      bool = false;
-      return bool;
+    if ((paramRedTypeInfo == null) || (paramRedTypeInfo.red_type.get() != 3)) {
+      return false;
     }
-    for (;;)
+    return c(paramRedTypeInfo, paramAppInfo);
+  }
+  
+  private boolean a(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList, int paramInt1, int paramInt2)
+  {
+    boolean bool = false;
+    int m = a();
+    int i = paramInt1;
+    paramInt1 = paramInt2;
+    if ((i > m) && (paramInt1 > 1))
     {
+      int k = paramList.size();
+      int j = 0;
+      label37:
+      i = k;
+      paramInt2 = paramInt1;
+      if (j < k)
+      {
+        if (((BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(j)).red_type.get() != 9)
+        {
+          paramList.remove(j);
+          paramInt2 = paramInt1 - 1;
+          i = k - 1;
+        }
+      }
+      else {
+        paramInt1 = 0;
+      }
       for (;;)
       {
-        try
+        if (paramInt1 < i - 1)
         {
-          if (!TextUtils.isEmpty(paramRedTypeInfo.red_desc.get())) {
-            continue;
+          if ((((BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(paramInt1)).red_type.get() == 9) && (((BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(paramInt1 + 1)).red_type.get() == 9)) {
+            paramList.remove(paramInt1);
           }
-          paramRedTypeInfo = new JSONObject();
-          if (!paramRedTypeInfo.has("dot")) {
-            continue;
-          }
-          i = paramRedTypeInfo.getInt("dot");
         }
-        catch (Exception paramRedTypeInfo)
+        else
         {
-          int i = 0;
-          QLog.e("RedTouchTextView", 1, "isSupportRedTouch json exception e = " + paramRedTypeInfo.getMessage());
-          int j = i;
-          continue;
-          i = 0;
-          continue;
+          i = a(paramList);
+          paramInt1 = paramInt2;
+          break;
+          j += 1;
+          break label37;
         }
-        j = i;
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("RedTouchTextView", 2, "isSupportRedTouch had dot = " + i + ",path = " + paramAppInfo.path.get());
-            j = i;
-          }
-          if (j == 1) {
-            break;
-          }
-          return false;
-        }
-        catch (Exception paramRedTypeInfo) {}
+        paramInt1 += 1;
       }
-      paramRedTypeInfo = new JSONObject(paramRedTypeInfo.red_desc.get());
     }
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo;
+    if ((i > m) && (paramInt1 == 1))
+    {
+      paramInt2 = 0;
+      while (paramInt2 < paramList.size())
+      {
+        localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(paramInt2);
+        if ((localRedTypeInfo.red_type.get() == 3) && (a(localRedTypeInfo, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo))) {
+          setImageRedNotShowRedPoint(localRedTypeInfo, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+        }
+        paramInt2 += 1;
+      }
+    }
+    if ((a(paramList) > m) && (paramInt1 == 1))
+    {
+      paramInt1 = 0;
+      while (paramInt1 < paramList.size())
+      {
+        localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(paramInt1);
+        if ((localRedTypeInfo.red_type.get() != 9) && (localRedTypeInfo.red_type.get() != 0))
+        {
+          localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+          localRedTypeInfo.red_type.set(0);
+          paramList.set(paramInt1, localRedTypeInfo);
+        }
+        paramInt1 += 1;
+      }
+    }
+    if (a(paramList) > m) {
+      bool = true;
+    }
+    return bool;
   }
   
   private boolean a(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList1, List<BusinessInfoCheckUpdate.RedTypeInfo> paramList2)
@@ -616,6 +610,51 @@ public class RedTouchTextView
   }
   
   private void b(Canvas paramCanvas, int paramInt1, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, int paramInt2, JSONObject paramJSONObject)
+  {
+    int i;
+    if (paramInt2 == 15)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RedTouchTextView", 2, "draw redtouch diffimg");
+      }
+      paramInt2 = getWidth() - a(this.jdField_a_of_type_JavaUtilList, paramInt1) - a(0);
+      i = getHeight() / 2 - this.jdField_c_of_type_Int / 2;
+      if (paramJSONObject.has("av")) {
+        paramJSONObject.getInt("av");
+      }
+      if (!paramJSONObject.has("dot")) {
+        break label237;
+      }
+    }
+    label237:
+    for (paramInt1 = paramJSONObject.getInt("dot");; paramInt1 = 0)
+    {
+      if (paramInt1 == 1)
+      {
+        paramRedTypeInfo = getResources().getDrawable(2130850400);
+        paramRedTypeInfo.setBounds(getWidth() - a(0) - a(9), i - a(4), getWidth() - a(0), a(5) + i);
+        paramRedTypeInfo.draw(paramCanvas);
+      }
+      if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        paramInt1 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() / 2;
+        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_Int + paramInt2 - a(paramInt1), i, paramInt2 + this.jdField_b_of_type_Int, this.jdField_c_of_type_Int + i);
+        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setCallback(this);
+        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      }
+      return;
+    }
+  }
+  
+  public static boolean b(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramRedTypeInfo == null) || (paramRedTypeInfo.red_type.get() != 15)) {
+      return false;
+    }
+    return c(paramRedTypeInfo, paramAppInfo);
+  }
+  
+  private void c(Canvas paramCanvas, int paramInt1, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, int paramInt2, JSONObject paramJSONObject)
   {
     float f1;
     float f2;
@@ -653,7 +692,7 @@ public class RedTouchTextView
       f2 = ((Paint.FontMetrics)localObject).top;
       if (i != 0)
       {
-        localObject = getResources().getDrawable(2130850392);
+        localObject = getResources().getDrawable(2130850404);
         ((Drawable)localObject).getBounds();
         ((Drawable)localObject).setBounds(paramInt1, m, localRect.right, localRect.bottom);
         ((Drawable)localObject).draw(paramCanvas);
@@ -672,35 +711,68 @@ public class RedTouchTextView
     }
   }
   
-  public static void setImageRedNotShowRedPoint(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  private static boolean c(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    if ((paramRedTypeInfo == null) || (paramRedTypeInfo.red_type.get() != 3)) {
-      return;
-    }
     for (;;)
     {
       try
       {
         if (TextUtils.isEmpty(paramRedTypeInfo.red_desc.get()))
         {
-          localJSONObject = new JSONObject();
-          if (localJSONObject.has("dot")) {
-            localJSONObject.put("dot", 0);
+          paramRedTypeInfo = new JSONObject();
+          if (!paramRedTypeInfo.has("dot")) {
+            break label159;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("RedTouchTextView", 2, "setImageRedNotShowRedPoint ,path = " + paramAppInfo.path.get());
-          }
-          paramRedTypeInfo.red_desc.set(localJSONObject.toString());
-          return;
+          i = paramRedTypeInfo.getInt("dot");
+          j = i;
         }
       }
       catch (Exception paramRedTypeInfo)
       {
-        QLog.e("RedTouchTextView", 1, "setImageRedNotShowRedPoint json exception e = " + paramRedTypeInfo.getMessage());
-        return;
+        i = 0;
+        QLog.e("RedTouchTextView", 1, "isSupportRedTouch json exception e = " + paramRedTypeInfo.getMessage());
+        int j = i;
+        continue;
       }
-      JSONObject localJSONObject = new JSONObject(paramRedTypeInfo.red_desc.get());
+      try
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("RedTouchTextView", 2, "isSupportRedTouch had dot = " + i + ",path = " + paramAppInfo.path.get());
+          j = i;
+        }
+        if (j != 1) {
+          break label153;
+        }
+        return true;
+      }
+      catch (Exception paramRedTypeInfo)
+      {
+        continue;
+      }
+      paramRedTypeInfo = new JSONObject(paramRedTypeInfo.red_desc.get());
+      continue;
+      label153:
+      return false;
+      label159:
+      int i = 0;
     }
+  }
+  
+  public static void setDiffImageRedNotShowRedPoint(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramRedTypeInfo == null) || (paramRedTypeInfo.red_type.get() != 15)) {
+      return;
+    }
+    a(paramRedTypeInfo, paramAppInfo);
+  }
+  
+  public static void setImageRedNotShowRedPoint(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramRedTypeInfo == null) || (paramRedTypeInfo.red_type.get() != 3)) {
+      return;
+    }
+    a(paramRedTypeInfo, paramAppInfo);
   }
   
   protected int a(int paramInt)
@@ -728,7 +800,7 @@ public class RedTouchTextView
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramFile));
       if (!this.jdField_a_of_type_Boolean) {
-        localOptions.inSampleSize = ((int)bgmo.a(localBufferedInputStream, this.e, this.e));
+        localOptions.inSampleSize = ((int)bhmq.a(localBufferedInputStream, this.e, this.e));
       }
       paramFile = SafeBitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramFile)), null, localOptions);
       return paramFile;
@@ -751,7 +823,7 @@ public class RedTouchTextView
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
     if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_b_of_type_Int = ((int)(this.c * (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() / this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight())));
+      this.jdField_b_of_type_Int = ((int)(this.jdField_c_of_type_Int * (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() / this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight())));
     }
     this.jdField_a_of_type_AndroidOsHandler.post(new RedTouchTextView.2(this));
   }
@@ -789,12 +861,30 @@ public class RedTouchTextView
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
     }
     this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo = paramAppInfo;
+    if ((paramAppInfo.red_display_info != null) && (paramAppInfo.red_display_info.red_type_info != null))
+    {
+      paramAppInfo = paramAppInfo.red_display_info.red_type_info.get();
+      int i = paramAppInfo.size() - 1;
+      while (i >= 0)
+      {
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i);
+        if (localRedTypeInfo.red_type.get() == 15) {
+          this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = VasApngUtil.getApngURLDrawable(localRedTypeInfo.red_content.get(), VasApngUtil.VIP_APNG_TAGS, beyq.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        }
+        i -= 1;
+      }
+    }
     invalidate();
   }
   
   public void setIsNeedRedImageAutoFix(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setShowRedInfo(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

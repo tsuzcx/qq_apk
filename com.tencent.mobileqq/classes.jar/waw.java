@@ -1,78 +1,33 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView.QCircleTimeFlowFeedInnerImageAdapter.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPushWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class waw
-  extends RecyclerView.Adapter<wat>
+  implements wak
 {
-  private int jdField_a_of_type_Int;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-  private List<wav> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public waw(QCircleLightInteractPushWidget paramQCircleLightInteractPushWidget) {}
   
-  public waw(QCircleTimeLineFeedItemView paramQCircleTimeLineFeedItemView) {}
-  
-  private void a()
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    vud localvud;
+    vuf localvuf;
+    if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(new QCircleTimeLineFeedItemView.QCircleTimeFlowFeedInnerImageAdapter.1(this), 500L);
+      vtn.a(87, 4, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
+      localvud = vud.a();
+      localvuf = new vuf().a("followbutton");
+      if (!paramBoolean) {
+        break label125;
       }
     }
-    else {
+    label125:
+    for (String str = "follow";; str = "unfollow")
+    {
+      localvud.a(localvuf.b(str).a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed).a(this.a.a()).a(this.a.jdField_a_of_type_Int).c(paramStUser.id.get()));
       return;
+      vtn.a(87, 5, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
+      break;
     }
-    notifyDataSetChanged();
-  }
-  
-  public wat a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new wat(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleTimeLineFeedItemView, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560706, paramViewGroup, false));
-  }
-  
-  public void a(RecyclerView paramRecyclerView)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-  }
-  
-  public void a(FeedCloudMeta.StFeed paramStFeed, int paramInt, List<wav> paramList)
-  {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      a();
-    }
-  }
-  
-  public void a(wat paramwat, int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > paramInt)
-    {
-      paramwat.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
-      paramwat.a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramwat, paramInt, getItemId(paramInt));
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
   }
 }
 

@@ -1,13 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class ryg
-  implements ozq
+final class ryg
+  extends ryf
 {
-  ryg(ryd paramryd) {}
+  private final int jdField_a_of_type_Int;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onViewCreated(boolean paramBoolean)
+  public ryg(int paramInt)
   {
-    ryd.a(this.a).d();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public long a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
+    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public String toString()
+  {
+    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
   }
 }
 

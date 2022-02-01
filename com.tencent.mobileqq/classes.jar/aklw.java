@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class aklw
-  extends bhhe
+class aklw
+  implements bhso
 {
-  aklw(aklv paramaklv) {}
+  aklw(aklt paramaklt) {}
   
-  public void onDone(bhhf parambhhf)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super.onDone(parambhhf);
-    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambhhf));
+    aklt.a(this.a, bhsm.a(paramInt));
+    this.a.a.height = aklt.a(this.a);
   }
 }
 

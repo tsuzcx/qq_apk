@@ -7,10 +7,10 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import azde;
-import bjhf;
-import bjhg;
+import anzj;
+import azvr;
+import bkif;
+import bkig;
 import com.tencent.image.URLImageView;
 import com.tencent.qidian.data.QidianExternalInfo;
 import java.util.Iterator;
@@ -23,8 +23,8 @@ class QidianProfileCardActivity$8
   
   public void run()
   {
-    LinearLayout localLinearLayout1 = (LinearLayout)this.this$0.getLayoutInflater().inflate(2131560921, null);
-    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131364961);
+    LinearLayout localLinearLayout1 = (LinearLayout)this.this$0.getLayoutInflater().inflate(2131560952, null);
+    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131365008);
     Object localObject1;
     int j;
     Object localObject2;
@@ -35,7 +35,7 @@ class QidianProfileCardActivity$8
       i = j;
       if (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (bjhf)((Iterator)localObject1).next();
+        localObject2 = (bkif)((Iterator)localObject1).next();
         if (j < 4) {
           break label401;
         }
@@ -45,11 +45,11 @@ class QidianProfileCardActivity$8
     {
       if ((this.this$0.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null) && (this.this$0.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.getCompanyShowCaseInfos() != null) && (this.this$0.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.getCompanyShowCaseInfos().size() > 0))
       {
-        localObject1 = (LinearLayout)this.this$0.getLayoutInflater().inflate(2131560920, null);
-        localObject2 = (TextView)((LinearLayout)localObject1).findViewById(2131378776);
-        localObject2 = (LinearLayout)((LinearLayout)localObject1).findViewById(2131364961);
+        localObject1 = (LinearLayout)this.this$0.getLayoutInflater().inflate(2131560951, null);
+        localObject2 = (TextView)((LinearLayout)localObject1).findViewById(2131378936);
+        localObject2 = (LinearLayout)((LinearLayout)localObject1).findViewById(2131365008);
         localObject3 = new PhotoWallViewForQiDianProfile(this.this$0.getApplicationContext());
-        ((PhotoWallViewForQiDianProfile)localObject3).setPhotoWallCallback(this.this$0.jdField_a_of_type_Bjfs);
+        ((PhotoWallViewForQiDianProfile)localObject3).setPhotoWallCallback(this.this$0.jdField_a_of_type_Bkgs);
         localObject4 = this.this$0.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.getCompanyShowCaseInfos();
         ((PhotoWallViewForQiDianProfile)localObject3).a(this.this$0.getApplicationContext(), (List)localObject4);
         ((PhotoWallViewForQiDianProfile)localObject3).setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
@@ -69,7 +69,7 @@ class QidianProfileCardActivity$8
             j = i;
             if (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (bjhg)((Iterator)localObject1).next();
+              localObject2 = (bkig)((Iterator)localObject1).next();
               if (i < 4) {
                 break label574;
               }
@@ -83,56 +83,56 @@ class QidianProfileCardActivity$8
       }
       return;
       label401:
-      Object localObject3 = (RelativeLayout)this.this$0.getLayoutInflater().inflate(2131560922, null);
-      Object localObject4 = (URLImageView)((RelativeLayout)localObject3).findViewById(2131368138);
-      TextView localTextView1 = (TextView)((RelativeLayout)localObject3).findViewById(2131371539);
-      ImageView localImageView = (ImageView)((RelativeLayout)localObject3).findViewById(2131364290);
-      TextView localTextView2 = (TextView)((RelativeLayout)localObject3).findViewById(2131365344);
-      ((URLImageView)localObject4).post(new QidianProfileCardActivity.8.1(this, (bjhf)localObject2, (URLImageView)localObject4));
-      localTextView1.setText(String.valueOf(((bjhf)localObject2).jdField_a_of_type_JavaLangString));
+      Object localObject3 = (RelativeLayout)this.this$0.getLayoutInflater().inflate(2131560953, null);
+      Object localObject4 = (URLImageView)((RelativeLayout)localObject3).findViewById(2131368212);
+      TextView localTextView1 = (TextView)((RelativeLayout)localObject3).findViewById(2131371647);
+      ImageView localImageView = (ImageView)((RelativeLayout)localObject3).findViewById(2131364335);
+      TextView localTextView2 = (TextView)((RelativeLayout)localObject3).findViewById(2131365388);
+      ((URLImageView)localObject4).post(new QidianProfileCardActivity.8.1(this, (bkif)localObject2, (URLImageView)localObject4));
+      localTextView1.setText(String.valueOf(((bkif)localObject2).jdField_a_of_type_JavaLangString));
       ((RelativeLayout)localObject3).setOnClickListener(QidianProfileCardActivity.a(this.this$0));
-      localTextView2.setText(anni.a(2131708512));
-      ((RelativeLayout)localObject3).setTag(new azde(51, String.valueOf(((bjhf)localObject2).jdField_a_of_type_Long)));
+      localTextView2.setText(anzj.a(2131708621));
+      ((RelativeLayout)localObject3).setTag(new azvr(51, String.valueOf(((bkif)localObject2).jdField_a_of_type_Long)));
       localImageView.setVisibility(8);
       localLinearLayout2.addView((View)localObject3, new LinearLayout.LayoutParams(0, -2, 1.0F));
       j += 1;
       break;
       label574:
-      localObject3 = (RelativeLayout)this.this$0.getLayoutInflater().inflate(2131560922, null);
-      localObject4 = (URLImageView)((RelativeLayout)localObject3).findViewById(2131368138);
-      localTextView1 = (TextView)((RelativeLayout)localObject3).findViewById(2131371539);
-      localImageView = (ImageView)((RelativeLayout)localObject3).findViewById(2131364290);
-      localTextView2 = (TextView)((RelativeLayout)localObject3).findViewById(2131365344);
-      ((URLImageView)localObject4).post(new QidianProfileCardActivity.8.2(this, (bjhg)localObject2, (URLImageView)localObject4));
-      localTextView1.setText(((bjhg)localObject2).jdField_b_of_type_JavaLangString);
+      localObject3 = (RelativeLayout)this.this$0.getLayoutInflater().inflate(2131560953, null);
+      localObject4 = (URLImageView)((RelativeLayout)localObject3).findViewById(2131368212);
+      localTextView1 = (TextView)((RelativeLayout)localObject3).findViewById(2131371647);
+      localImageView = (ImageView)((RelativeLayout)localObject3).findViewById(2131364335);
+      localTextView2 = (TextView)((RelativeLayout)localObject3).findViewById(2131365388);
+      ((URLImageView)localObject4).post(new QidianProfileCardActivity.8.2(this, (bkig)localObject2, (URLImageView)localObject4));
+      localTextView1.setText(((bkig)localObject2).jdField_b_of_type_JavaLangString);
       ((RelativeLayout)localObject3).setOnClickListener(QidianProfileCardActivity.a(this.this$0));
-      if (((bjhg)localObject2).jdField_a_of_type_Int == 0)
+      if (((bkig)localObject2).jdField_a_of_type_Int == 0)
       {
-        localTextView2.setText(2131697481);
-        ((RelativeLayout)localObject3).setTag(new azde(49, ((bjhg)localObject2).jdField_a_of_type_JavaLangString));
+        localTextView2.setText(2131697563);
+        ((RelativeLayout)localObject3).setTag(new azvr(49, ((bkig)localObject2).jdField_a_of_type_JavaLangString));
         label714:
-        if ((((bjhg)localObject2).jdField_a_of_type_Int != 0) || (((bjhg)localObject2).jdField_b_of_type_Int != 1)) {
+        if ((((bkig)localObject2).jdField_a_of_type_Int != 0) || (((bkig)localObject2).jdField_b_of_type_Int != 1)) {
           break label804;
         }
         localImageView.setVisibility(0);
-        localImageView.setBackgroundResource(2130842600);
+        localImageView.setBackgroundResource(2130842613);
       }
       for (;;)
       {
         localLinearLayout2.addView((View)localObject3, new LinearLayout.LayoutParams(0, -2, 1.0F));
         i += 1;
         break;
-        if (((bjhg)localObject2).jdField_a_of_type_Int != 1) {
+        if (((bkig)localObject2).jdField_a_of_type_Int != 1) {
           break label714;
         }
-        localTextView2.setText(2131697482);
-        ((RelativeLayout)localObject3).setTag(new azde(50, localObject2));
+        localTextView2.setText(2131697564);
+        ((RelativeLayout)localObject3).setTag(new azvr(50, localObject2));
         break label714;
         label804:
-        if ((((bjhg)localObject2).jdField_a_of_type_Int == 1) && (((bjhg)localObject2).jdField_b_of_type_Int == 1))
+        if ((((bkig)localObject2).jdField_a_of_type_Int == 1) && (((bkig)localObject2).jdField_b_of_type_Int == 1))
         {
           localImageView.setVisibility(0);
-          localImageView.setBackgroundResource(2130844434);
+          localImageView.setBackgroundResource(2130844448);
         }
         else
         {

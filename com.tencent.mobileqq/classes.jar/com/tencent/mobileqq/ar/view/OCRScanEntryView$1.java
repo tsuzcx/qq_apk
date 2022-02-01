@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.app.Activity;
-import apek;
-import atwl;
-import bcst;
+import apsa;
+import auog;
+import bdll;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
 class OCRScanEntryView$1
@@ -13,11 +13,11 @@ class OCRScanEntryView$1
   
   public void run()
   {
-    String str = apek.a().a();
-    if (atwl.a(str))
+    String str = apsa.a().a();
+    if (auog.a(str))
     {
       OCRPerformFragment.a((Activity)this.this$0.a, str, 0, -1008, null);
-      bcst.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
+      bdll.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
     }
     OCRScanEntryView.a(this.this$0, false);
   }

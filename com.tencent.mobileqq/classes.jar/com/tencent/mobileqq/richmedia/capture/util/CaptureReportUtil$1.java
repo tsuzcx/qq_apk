@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import banm;
-import bano;
+import bbgf;
+import bbgh;
 import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
 import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ public final class CaptureReportUtil$1
   
   public void run()
   {
-    banm.a(this.a.mGameTotalScore, this.a.mGameDuration);
+    bbgf.a(this.a.mGameTotalScore, this.a.mGameDuration);
     Iterator localIterator = this.a.mBoyData.iterator();
     while (localIterator.hasNext())
     {
       BoyDataReport.BoyItem localBoyItem = (BoyDataReport.BoyItem)localIterator.next();
       if (localBoyItem.mEnd) {
-        banm.a(localBoyItem.mId, "" + localBoyItem.mScore, banm.a(localBoyItem.status));
+        bbgf.a(localBoyItem.mId, "" + localBoyItem.mScore, bbgf.a(localBoyItem.status));
       }
     }
-    bano.a().a(this.a);
+    bbgh.a().a(this.a);
   }
 }
 

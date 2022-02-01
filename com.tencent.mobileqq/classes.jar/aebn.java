@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public class aebn
-  implements View.OnClickListener
+public final class aebn
+  implements DialogInterface.OnClickListener
 {
-  public aebn(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aebn(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DiscussionInfoCardActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 1)
+    {
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 

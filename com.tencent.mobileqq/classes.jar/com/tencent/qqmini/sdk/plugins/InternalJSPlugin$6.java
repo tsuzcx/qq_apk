@@ -9,7 +9,7 @@ class InternalJSPlugin$6
   
   public void run()
   {
-    MiniToast.makeText(InternalJSPlugin.access$700(this.this$0), "当前版本下载能力暂不可用", 0).show();
+    MiniToast.makeText(InternalJSPlugin.access$800(this.this$0), "当前版本下载能力暂不可用", 0).show();
   }
 }
 

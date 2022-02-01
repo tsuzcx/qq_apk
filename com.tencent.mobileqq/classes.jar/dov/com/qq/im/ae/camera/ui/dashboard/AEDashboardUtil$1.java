@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bnlm;
-import bnmd;
+import bomz;
+import bonq;
 
 public final class AEDashboardUtil$1
   implements Runnable
 {
-  public AEDashboardUtil$1(bnmd parambnmd) {}
+  public AEDashboardUtil$1(bonq parambonq) {}
   
   public void run()
   {
-    bnlm.a(this.a);
+    bomz.a(this.a);
   }
 }
 

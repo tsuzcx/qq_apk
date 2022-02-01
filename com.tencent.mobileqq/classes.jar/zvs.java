@@ -1,36 +1,29 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-class zvs
-  extends zvz
+public class zvs
+  extends Handler
 {
-  zvs(zvq paramzvq, RecyclerView.ViewHolder paramViewHolder, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
-  {
-    super(null);
-  }
+  public zvs(QRCardActivity paramQRCardActivity) {}
   
-  public void onAnimationCancel(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    ViewCompat.setAlpha(paramView, 1.0F);
-    ViewCompat.setTranslationX(paramView, 0.0F);
-    ViewCompat.setTranslationY(paramView, 0.0F);
-  }
-  
-  public void onAnimationEnd(View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    this.jdField_a_of_type_Zvq.dispatchAddFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    zvq.e(this.jdField_a_of_type_Zvq).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    zvq.a(this.jdField_a_of_type_Zvq);
-  }
-  
-  public void onAnimationStart(View paramView)
-  {
-    this.jdField_a_of_type_Zvq.dispatchAddStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
+      paramMessage = (Bitmap)paramMessage.obj;
+    } while (paramMessage == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
   }
 }
 

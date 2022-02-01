@@ -1,20 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vck
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  vck(vcb paramvcb) {}
+  vck(vci paramvci) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    vcb.a(this.a, false);
-    vcb.a(this.a).setVisibility(8);
-    vcb.a(this.a).getLayoutParams().width = bgtn.a(80.0F);
-    vcb.a(this.a).setAlpha(1.0F);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

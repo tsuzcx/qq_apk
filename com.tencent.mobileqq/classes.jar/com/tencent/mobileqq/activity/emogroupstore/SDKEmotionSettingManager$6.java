@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ajnk;
+import ajyt;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 public class SDKEmotionSettingManager$6
   implements Runnable
 {
-  public SDKEmotionSettingManager$6(ajnk paramajnk) {}
+  public SDKEmotionSettingManager$6(ajyt paramajyt) {}
   
   public void run()
   {
-    if (ajnk.a(this.this$0).isFinishing()) {
+    if (ajyt.a(this.this$0).isFinishing()) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.w("SDKEmotionSettingManager", 2, "checkApiTimeOutRunnable -->preForward--checkapi timeout");
     }
     this.this$0.b = true;
-    ajnk.b(this.this$0);
+    ajyt.b(this.this$0);
   }
 }
 

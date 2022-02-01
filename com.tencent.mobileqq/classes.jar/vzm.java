@@ -1,22 +1,17 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StUser;
 
-class vzm
-  extends LinearLayoutManager
+public class vzm
+  implements vya
 {
-  vzm(vzl paramvzl, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  public vzm(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StComment paramStComment) {}
   
-  public boolean canScrollHorizontally()
+  public void a()
   {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
+    vtn.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.d());
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get());
   }
 }
 

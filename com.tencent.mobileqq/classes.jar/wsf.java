@@ -1,49 +1,132 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wsf
-  extends JobSegment<List<xfb>, List<xfb>>
+  implements wsp
 {
-  private final xfa a;
+  protected SharedPreferences a;
+  protected AtomicBoolean a;
   
   public wsf()
   {
-    this(new wsg());
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public wsf(xfa paramxfa)
+  private void a(@Nullable String paramString1, @Nullable Object paramObject, @Nullable String paramString2)
   {
-    this.a = paramxfa;
-  }
-  
-  protected void a(JobContext paramJobContext, List<xfb> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
+    paramString2 = new StringBuilder().append("key=").append(paramString1).append(" expected ").append(paramString2).append(" but value was ");
+    if (paramObject == null) {}
+    for (paramString1 = "null";; paramString1 = paramObject.getClass().getName())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
-      }
-      notifyResult(paramList);
+      yuk.d("ConfigManager", paramString1);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
+  }
+  
+  private void c()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      throw new IllegalStateException("have not attachContext");
     }
-    paramJobContext = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      paramJobContext.add(((xfb)localIterator.next()).b);
+  }
+  
+  public <V> V a(@NonNull String paramString, @NonNull V paramV)
+  {
+    c();
+    Object localObject;
+    if (paramV.getClass() == Integer.class) {
+      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
     }
-    paramJobContext = new xev(paramJobContext);
-    if (this.a != null) {
-      paramJobContext.a = this.a;
+    for (;;)
+    {
+      yuk.b("ConfigManager", "get value : K : %s, V : %s", paramString, localObject);
+      if ((localObject == null) || (localObject.getClass() != paramV.getClass())) {
+        break label183;
+      }
+      return localObject;
+      if (paramV.getClass() == Long.class)
+      {
+        localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break;
+        }
+        localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
+      }
     }
-    paramJobContext.a(new wsh(this, paramList));
-    paramJobContext.b();
+    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
+    label183:
+    a(paramString, localObject, paramV.getClass().getName());
+    return paramV;
+  }
+  
+  public void a()
+  {
+    yuk.b("ConfigManager", "onInit");
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext == null) {
+      throw new IllegalArgumentException("Context should not be null");
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      yuk.b("ConfigManager", "attachContext, " + paramContext);
+      this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("qqstory_config", 4);
+      return;
+    }
+    yuk.d("ConfigManager", "attachContext duplicate");
+  }
+  
+  public void a(String paramString)
+  {
+    c();
+    if (!this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove(paramString).commit())
+    {
+      yuk.e("ConfigManager", "remove value error : K:%s.", new Object[] { paramString });
+      return;
+    }
+    yuk.b("ConfigManager", "remove value success :  K:%s.", paramString);
+  }
+  
+  public <V> void a(String paramString, V paramV)
+  {
+    c();
+    boolean bool;
+    if (paramV.getClass() == Integer.class) {
+      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
+    }
+    while (!bool)
+    {
+      yuk.e("ConfigManager", "set value error : K:%s, V:%s .", new Object[] { paramString, paramV });
+      return;
+      if (paramV.getClass() == Long.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
+      } else if (paramV.getClass() == String.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
+      } else if (paramV.getClass() == Boolean.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
+      } else {
+        throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
+      }
+    }
+    yuk.b("ConfigManager", "set value success :  K:%s, V:%s .", paramString, paramV);
+  }
+  
+  public void b()
+  {
+    yuk.b("ConfigManager", "onDestroy");
   }
 }
 

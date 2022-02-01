@@ -1,14 +1,58 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wwn
-  extends weu
+  extends wpa
 {
-  public List<xzg> a;
+  public static String a = wnu.a("StorySvc.check_activity");
+  public String b;
+  public final String c;
   
-  public wwn(ErrorMessage paramErrorMessage)
+  public wwn(String paramString)
   {
-    this.a = paramErrorMessage;
+    this.c = paramString;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
+    try
+    {
+      localRspCheckActivity.mergeFrom(paramArrayOfByte);
+      return new wwo(localRspCheckActivity);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
+    if (!TextUtils.isEmpty(this.c)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    }
+    yuk.a("MsgTabCheckActiveRequest", "client version=%s", "8.4.5");
+    localReqCheckActivity.version.set("8.4.5");
+    return localReqCheckActivity.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
   }
 }
 

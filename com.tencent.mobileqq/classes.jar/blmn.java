@@ -1,14 +1,13 @@
-import android.os.Bundle;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class blmn
+class blmn
+  implements PopupWindow.OnDismissListener
 {
-  public int a;
-  public Bundle a;
+  blmn(blmm paramblmm) {}
   
-  blmn(blml paramblml, int paramInt, Bundle paramBundle)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a.a(1.0F);
   }
 }
 

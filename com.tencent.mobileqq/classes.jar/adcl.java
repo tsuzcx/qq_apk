@@ -1,38 +1,15 @@
-abstract class adcl
-  implements com.tencent.mobileqq.javahooksdk.HookMethodCallback
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class adcl
+  implements adci
 {
-  public static com.tencent.qapmsdk.battery.monitor.MethodHookParam a(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    com.tencent.qapmsdk.battery.monitor.MethodHookParam localMethodHookParam = new com.tencent.qapmsdk.battery.monitor.MethodHookParam();
-    if (paramMethodHookParam != null)
-    {
-      localMethodHookParam.args = paramMethodHookParam.args;
-      localMethodHookParam.method = paramMethodHookParam.method;
-      localMethodHookParam.result = paramMethodHookParam.result;
-      localMethodHookParam.thisObject = paramMethodHookParam.thisObject;
-      localMethodHookParam.throwable = paramMethodHookParam.throwable;
-    }
-    return localMethodHookParam;
-  }
-  
-  public abstract com.tencent.qapmsdk.battery.monitor.HookMethodCallback a();
-  
-  public abstract void a();
-  
-  public void afterHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
-  {
-    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
-    if (localHookMethodCallback != null) {
-      localHookMethodCallback.afterHookedMethod(a(paramMethodHookParam));
-    }
-  }
-  
-  public void beforeHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
-  {
-    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
-    if (localHookMethodCallback != null) {
-      localHookMethodCallback.beforeHookedMethod(a(paramMethodHookParam));
-    }
+    bcrw.a(paramadan.a().a(), paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+    return null;
   }
 }
 

@@ -1,17 +1,20 @@
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 class ajwp
-  extends aooo
+  extends asvt
 {
-  ajwp(ajvr paramajvr) {}
+  ajwp(ajwm paramajwm) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  protected void b(boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    ajwh localajwh = this.a.a(2);
+    localajwh.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
+    if ((localajwh.c) && (paramBoolean)) {
+      ajwm.a(this.a);
     }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
-      this.a.g();
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localajwh.jdField_a_of_type_Int), Boolean.valueOf(localajwh.c), Boolean.valueOf(paramBoolean) }));
     }
   }
 }

@@ -1,82 +1,15 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import java.util.Comparator;
 
 public class avou
-  extends WebViewPlugin
+  implements Comparator<MessageForGrayTips.HightlightItem>
 {
-  aanz jdField_a_of_type_Aanz;
-  String jdField_a_of_type_JavaLangString;
-  njz jdField_a_of_type_Njz = new avov(this);
+  public avou(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
   
-  public avou()
+  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
   {
-    this.mPluginNameSpace = "push";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"push".equals(paramString2)) || (("addListener".equals(paramString3)) && (paramVarArgs.length > 0))) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        i = paramJsBridgeListener.optInt("appid");
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-        this.jdField_a_of_type_Aanz.a().a(i, this.jdField_a_of_type_Njz);
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-        }
-        return false;
-      }
-      if (("removeListener".equals(paramString3)) && (paramVarArgs.length > 0)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          i = paramJsBridgeListener.optInt("appid");
-          this.jdField_a_of_type_Aanz.a().a(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    if (this.jdField_a_of_type_Aanz == null)
-    {
-      this.jdField_a_of_type_Aanz = aanz.a();
-      this.jdField_a_of_type_Aanz.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Aanz != null) {
-      this.jdField_a_of_type_Aanz.b();
-    }
+    return paramHightlightItem1.start - paramHightlightItem2.start;
   }
 }
 

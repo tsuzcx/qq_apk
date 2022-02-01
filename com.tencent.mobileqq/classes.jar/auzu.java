@@ -1,47 +1,12 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-
-public class auzu
-  extends GestureDetector.SimpleOnGestureListener
+class auzu
+  implements bhso
 {
-  public auzu(HiBoomTextView paramHiBoomTextView) {}
+  auzu(auzt paramauzt) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Avaa != null)
-    {
-      this.a.jdField_a_of_type_Avaa.a(this.a);
-      return true;
-    }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    auze localauze = auzc.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Auzd);
-    if (this.a.b())
-    {
-      localauze.a(true);
-      this.a.invalidate();
-      return true;
-    }
-    if (HiBoomTextView.a(this.a)) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return super.onSingleTapConfirmed(paramMotionEvent);
-      if (localauze.jdField_a_of_type_Int == 3)
-      {
-        this.a.a(true);
-      }
-      else if (localauze.jdField_a_of_type_Int == 4)
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
-    }
+    auzt.a(this.a, bhsm.a(paramInt));
+    auzt.a(this.a).height = auzt.a(this.a);
   }
 }
 

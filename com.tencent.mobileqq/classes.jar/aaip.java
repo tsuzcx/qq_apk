@@ -1,23 +1,8 @@
-public class aaip
+import android.view.View;
+
+public abstract interface aaip
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
+  public abstract void a(View paramView);
 }
 
 

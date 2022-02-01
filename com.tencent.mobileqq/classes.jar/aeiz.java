@@ -1,19 +1,67 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.annotation.TargetApi;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aeiz
-  implements View.OnClickListener
+  implements almg
 {
-  public aeiz(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aeiz(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.jdField_a_of_type_Alms != null) {
+      this.a.jdField_a_of_type_Alms.f();
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
+    }
+    if (this.a.jdField_a_of_type_Wyd != null) {
+      this.a.jdField_a_of_type_Wyd.e();
+    }
+  }
+  
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.jdField_a_of_type_Azti.i();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        aqgb localaqgb = (aqgb)localIterator.next();
+        if (localaqgb != null) {
+          localaqgb.h();
+        }
+      }
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.F();
+    }
+    if (this.a.jdField_a_of_type_Wyd != null) {
+      this.a.jdField_a_of_type_Wyd.f();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Conversation.o(this.a);
+    this.a.jdField_a_of_type_Azti.j();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.E();
+    }
+    if (this.a.jdField_a_of_type_Wyd != null) {
+      this.a.jdField_a_of_type_Wyd.j();
+    }
+    if (this.a.jdField_a_of_type_Alrd != null) {
+      this.a.jdField_a_of_type_Alrd.f();
+    }
   }
 }
 

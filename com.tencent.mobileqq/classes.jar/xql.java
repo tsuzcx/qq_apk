@@ -1,17 +1,56 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class xql
-  implements xrw
+  extends xrg
+  implements View.OnClickListener
 {
-  public xql(TrimTextureVideoView paramTrimTextureVideoView) {}
-  
-  public boolean a(xrt paramxrt, int paramInt1, int paramInt2)
+  public xql(@NonNull ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+    super(paramViewGroup);
+    this.a.findViewById(2131368418).setOnClickListener(this);
+    this.a.findViewById(2131378767).setOnClickListener(this);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt1, int paramInt2, @NonNull xqz paramxqz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    super.a(paramInt1, paramInt2, paramxqz, paramStoryPlayerGroupHolder);
+    if (LiuHaiUtils.a)
+    {
+      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131368418).getLayoutParams();
+      paramStoryPlayerGroupHolder.topMargin = (zps.a(this.a.getContext(), 5.0F) + 114);
+      this.a.findViewById(2131368418).setLayoutParams(paramStoryPlayerGroupHolder);
     }
-    return true;
+    a().a(this, paramInt1, paramInt2, paramxqz);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    a().a(this, paramBoolean);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    a().a(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    a().a(this, paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

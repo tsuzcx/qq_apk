@@ -8,9 +8,9 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import azgk;
-import bghy;
-import bgmo;
+import azyw;
+import bhhz;
+import bhmq;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -31,7 +31,7 @@ public class VipProfileCardPhotoHandlerActivity
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bghy.b(this), bghy.a(this), bghy.b(this), bghy.a(this), bghy.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bhhz.b(this), bhhz.a(this), bhhz.b(this), bhhz.a(this), bhhz.c());
   }
   
   private void b()
@@ -40,7 +40,7 @@ public class VipProfileCardPhotoHandlerActivity
     {
       if (checkSelfPermission("android.permission.CAMERA") != 0)
       {
-        requestPermissions(new azgk(this), 1, new String[] { "android.permission.CAMERA" });
+        requestPermissions(new azyw(this), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
       this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
@@ -51,11 +51,11 @@ public class VipProfileCardPhotoHandlerActivity
   
   protected void a(Uri paramUri)
   {
-    paramUri = bgmo.b(this, paramUri);
+    paramUri = bhmq.b(this, paramUri);
     Intent localIntent = new Intent();
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bghy.b(this), bghy.a(this), bghy.b(this), bghy.a(this), paramUri, bghy.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bhhz.b(this), bhhz.a(this), bhhz.b(this), bhhz.a(this), paramUri, bhhz.c());
   }
   
   protected void a(String paramString)

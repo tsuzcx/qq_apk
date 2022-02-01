@@ -1,120 +1,89 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
-import mqq.app.AppRuntime;
-import mqq.manager.PushManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ProxyService(proxy=VoIPProxy.class)
-public class bjzs
-  extends VoIPProxy
+class bjzs
+  extends bkaa
 {
-  private bjcp jdField_a_of_type_Bjcp = new bjzu(this);
-  private VoIPProxy.VoIPListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener;
+  bjzs(bjzo parambjzo, bjzb parambjzb, bjpq parambjpq, String paramString, JSONObject paramJSONObject) {}
   
-  private void a()
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    QLog.i("VoIPProxyImpl", 1, "qavDeInitSDK");
-    ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
-    bjce localbjce = bjce.a();
-    localbjce.b(this.jdField_a_of_type_Bjcp);
-    localbjce.a();
-  }
-  
-  public int enableLocalAudio(boolean paramBoolean)
-  {
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null)
+    bool2 = false;
+    boolean bool3 = true;
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.uploadAvatarImage.result:", bjzy.a(paramString1, this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) });
+    localObject = null;
+    bool1 = bool2;
+    paramString2 = localObject;
+    i = paramInt;
+    if (paramBoolean) {}
+    try
     {
-      localbjcm.a(paramBoolean);
-      return 0;
+      paramString1 = new JSONObject(paramString1);
+      i = paramString1.optInt("ErrorCode");
+      if (i != 0) {}
     }
-    return -1;
-  }
-  
-  public int enableRemoteAudio(boolean paramBoolean)
-  {
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null)
+    catch (JSONException paramString1)
     {
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      label96:
+      do
       {
-        localbjcm.b(paramBoolean);
-        return 0;
-      }
+        for (;;)
+        {
+          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.uploadAvatarImage.e:", paramString1);
+          bool1 = bool2;
+          paramString2 = localObject;
+          i = paramInt;
+        }
+        bjzo.a(this.jdField_a_of_type_Bjzo);
+        if (bjzo.b(this.jdField_a_of_type_Bjzo) < 2) {
+          break;
+        }
+      } while (this.jdField_a_of_type_Bjpq == null);
+      this.jdField_a_of_type_Bjpq.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      return;
+      bjzo.a(this.jdField_a_of_type_Bjzo, this.jdField_a_of_type_Bjzb, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Bjpq);
+      return;
     }
-    return -1;
-  }
-  
-  public void exitRoom()
-  {
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null) {
-      localbjcm.e();
-    }
-  }
-  
-  public void init(long paramLong, VoIPProxy.VoIPListener paramVoIPListener)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
-    bjcq.a(new bjcs());
-    bjch localbjch = bjch.a();
-    localbjch.a((AppRuntime)localObject);
-    localbjch.a(new bjzt(this));
-    localObject = bjce.a();
-    ((bjce)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbjch);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = paramVoIPListener;
-    ((bjce)localObject).a(this.jdField_a_of_type_Bjcp);
-  }
-  
-  public int joinRoom(long paramLong, int paramInt, String paramString, byte[] paramArrayOfByte)
-  {
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null)
+    try
     {
-      bjcd localbjcd = new bjcd();
-      localbjcd.jdField_a_of_type_Int = 11;
-      localbjcd.b = 14;
-      localbjcd.c = 1;
-      localbjcd.d = paramInt;
-      localbjcd.jdField_a_of_type_Long = paramLong;
-      localbjcd.jdField_a_of_type_JavaLangString = paramString;
-      localbjcd.e = 1;
-      localbjcd.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      return localbjcm.a(localbjcd);
+      paramString1 = paramString1.optJSONObject("msg_img_data");
+      if (paramString1 == null) {
+        break label253;
+      }
+      paramString1 = paramString1.optString("str_file_name");
+      paramBoolean = bool3;
     }
-    return -4;
-  }
-  
-  public void setAudioRoute(int paramInt)
-  {
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null) {
-      localbjcm.b(paramInt);
+    catch (JSONException paramString1)
+    {
+      paramInt = i;
+      break label155;
+      paramBoolean = false;
+      paramString1 = null;
+      break label96;
     }
-  }
-  
-  public void unInit()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = null;
-  }
-  
-  public void updateRoomInfo()
-  {
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null) {
-      localbjcm.f();
+    paramInt = i;
+    for (;;)
+    {
+      i = paramInt;
+      paramString2 = paramString1;
+      bool1 = paramBoolean;
+      if (!bool1) {
+        break;
+      }
+      if (this.jdField_a_of_type_Bjpq != null) {
+        this.jdField_a_of_type_Bjpq.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      }
+      return;
+      paramInt = paramString1.optInt("uint32_ret_to_http", i);
+      paramString1 = null;
+      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjzs
  * JD-Core Version:    0.7.0.1
  */

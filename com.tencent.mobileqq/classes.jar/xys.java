@@ -1,14 +1,37 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract interface xys
+public final class xys
+  extends QQUIEventReceiver<xyd, wzw>
 {
-  public abstract void a();
+  public xys(@NonNull xyd paramxyd)
+  {
+    super(paramxyd);
+  }
   
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  public void a(@NonNull xyd paramxyd, @NonNull wzw paramwzw)
+  {
+    if ((paramwzw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwzw.jdField_a_of_type_JavaUtilList != null) && (paramxyd.a != null))
+    {
+      paramwzw = paramwzw.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwzw.hasNext())
+      {
+        wuk localwuk = (wuk)paramwzw.next();
+        if (TextUtils.equals(paramxyd.a.b, localwuk.a)) {
+          paramxyd.i();
+        }
+      }
+    }
+  }
   
-  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
+  public Class acceptEventClass()
+  {
+    return wzw.class;
+  }
 }
 
 

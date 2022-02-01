@@ -1,26 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import java.lang.ref.WeakReference;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import java.io.File;
+import java.util.List;
 
 public class bove
-  implements View.OnClickListener
+  extends ViewModel
 {
-  public bove(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  private MutableLiveData<bosz> a = new MutableLiveData();
+  private MutableLiveData<String> b = new MutableLiveData();
+  private MutableLiveData<bovn> c = new MutableLiveData();
   
-  public void onClick(View paramView)
+  public MutableLiveData<bosz> a()
   {
-    VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
-    {
-      bovf localbovf = (bovf)VideoSegmentPickerProviderView.a(this.a).get();
-      if (localbovf != null) {
-        localbovf.a(0L, 0L);
-      }
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.postValue(new bosz("#ccffffff", "#000000"));
+    this.b.postValue("");
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.b.postValue(paramString);
+    this.a.postValue(bosy.a.get(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    bovn localbovn = new bovn();
+    String[] arrayOfString = new File(paramString2).list();
+    String str = paramString2 + File.separator + "snapshot.png";
+    if (arrayOfString.length != 0) {
+      boef.a(paramString2 + File.separator + arrayOfString[0], 320, 320, str);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localbovn.a = paramString2;
+    localbovn.b = paramString1;
+    localbovn.c = str;
+    this.c.postValue(localbovn);
+  }
+  
+  public MutableLiveData<String> b()
+  {
+    return this.b;
+  }
+  
+  public MutableLiveData<bovn> c()
+  {
+    return this.c;
   }
 }
 

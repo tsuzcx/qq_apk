@@ -1,55 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
 public class bize
 {
-  private static String a(String paramString)
+  private Stack<AnimationTextView> jdField_a_of_type_JavaUtilStack = new Stack();
+  
+  public bize(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public AnimationTextView a()
   {
-    String str = paramString;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        str = paramString;
-        if (!paramString.startsWith("##@")) {
-          str = "##@" + paramString;
-        }
-      }
-      return str;
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
     }
-    catch (Throwable localThrowable) {}
-    return paramString;
+    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
   }
   
-  public static void a(String paramString1, int paramInt, String paramString2)
+  public void a(AnimationTextView paramAnimationTextView)
   {
-    paramString2 = "step" + paramInt + "-->" + paramString2;
-    QLog.d("WadlStep." + paramString1, 2, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, a(paramString2));
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, a(paramString2), paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, a(paramString2));
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, 1, a(paramString2), paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, a(paramString2));
+    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
   }
 }
 

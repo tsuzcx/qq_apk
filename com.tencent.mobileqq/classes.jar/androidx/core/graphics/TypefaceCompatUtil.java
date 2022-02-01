@@ -276,24 +276,24 @@ public class TypefaceCompatUtil
     //   127: dup
     //   128: invokespecial 158	java/lang/NullPointerException:<init>	()V
     //   131: athrow
-    //   132: astore_1
-    //   133: aload_1
+    //   132: astore_0
+    //   133: aload_0
     //   134: athrow
-    //   135: astore_0
+    //   135: astore_1
     //   136: aload_2
     //   137: ifnull +11 -> 148
-    //   140: aload_1
+    //   140: aload_0
     //   141: ifnull +77 -> 218
     //   144: aload_2
     //   145: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   148: aload_0
+    //   148: aload_1
     //   149: athrow
     //   150: aload 5
     //   152: invokevirtual 188	java/io/FileInputStream:close	()V
     //   155: goto -57 -> 98
-    //   158: astore_0
+    //   158: astore_1
     //   159: aconst_null
-    //   160: astore_1
+    //   160: astore_0
     //   161: goto -25 -> 136
     //   164: aload_2
     //   165: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
@@ -320,7 +320,7 @@ public class TypefaceCompatUtil
     //   203: invokevirtual 188	java/io/FileInputStream:close	()V
     //   206: goto -18 -> 188
     //   209: astore_2
-    //   210: aload_1
+    //   210: aload_0
     //   211: aload_2
     //   212: invokevirtual 192	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   215: goto -67 -> 148

@@ -4,26 +4,26 @@ import UserGrowth.stSimpleGetFeedListRsp;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
 import java.util.List;
-import uen;
-import upe;
-import ups;
+import uep;
+import uqf;
+import uqt;
 
 public class WeiShiCacheManager$10
   implements Runnable
 {
-  public WeiShiCacheManager$10(uen paramuen, stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, ArrayList paramArrayList, long paramLong, List paramList) {}
+  public WeiShiCacheManager$10(uep paramuep, stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, ArrayList paramArrayList, long paramLong, List paramList) {}
   
   public void run()
   {
-    boolean bool = uen.a(this.this$0, this.jdField_a_of_type_UserGrowthStSimpleGetFeedListRsp, uen.d(this.this$0), this.jdField_a_of_type_JavaUtilArrayList.size());
+    boolean bool = uep.a(this.this$0, this.jdField_a_of_type_UserGrowthStSimpleGetFeedListRsp, uep.d(this.this$0), this.jdField_a_of_type_JavaUtilArrayList.size());
     if (bool)
     {
       LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_msg_valid_timestamp", System.currentTimeMillis() + this.jdField_a_of_type_Long);
       LocalMultiProcConfig.putInt("weishi_usergrowth", "key_red_msg_valid_count", this.jdField_a_of_type_JavaUtilList.size());
-      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", ups.c());
-      ups.a(this.jdField_a_of_type_JavaUtilArrayList, true);
+      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", uqt.c());
+      uqt.a(this.jdField_a_of_type_JavaUtilArrayList, true);
     }
-    upe.d("WeiShiCacheManager", "cacheRedDotData isSuccess: " + bool);
+    uqf.d("WeiShiCacheManager", "cacheRedDotData isSuccess: " + bool);
   }
 }
 

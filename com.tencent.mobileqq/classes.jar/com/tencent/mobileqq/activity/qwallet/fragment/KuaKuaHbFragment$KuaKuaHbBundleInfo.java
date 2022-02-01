@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import blqw;
+import bmry;
 
 public class KuaKuaHbFragment$KuaKuaHbBundleInfo
-  extends blqw
+  extends bmry
 {
   public String downHint;
   public String downSubjects;

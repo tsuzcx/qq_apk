@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aeni;
-import amdc;
+import aewl;
+import amow;
 import java.util.List;
 
 public class LebaListMgrActivity$4$1
   implements Runnable
 {
-  public LebaListMgrActivity$4$1(aeni paramaeni, List paramList) {}
+  public LebaListMgrActivity$4$1(aewl paramaewl, List paramList) {}
   
   public void run()
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Aeni.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Aeni.a).a(this.jdField_a_of_type_JavaUtilList);
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Aewl.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Aewl.a).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

@@ -1,65 +1,92 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nvb
-  implements INetInfoHandler
+public class nvb
+  implements AdapterView.OnItemClickListener
 {
-  nuy a;
+  public nvb(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public nvb(nuy paramnuy1, nuy paramnuy2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramnuy2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    nuy.c("onNetMobile2None");
-    if (this.a != null) {
-      nuy.b(this.a);
+    Object localObject = paramView.getTag();
+    if (localObject == null)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    nuy.c("onNetMobile2Wifi");
-    if (this.a != null) {
-      nuy.b(this.a);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    nuy.c("onNetNone2Mobile");
-    if (this.a != null) {
-      nuy.b(this.a);
+    int i = ((bhsc)localObject).a.action;
+    int j = ocd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    label103:
+    String str;
+    if (i == 11)
+    {
+      this.a.F();
+      i = 7;
+      str = this.a.e;
+      if (!this.a.d()) {
+        break label479;
+      }
     }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    nuy.c("onNetNone2Wifi");
-    if (this.a != null) {
-      nuy.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    nuy.c("onNetWifi2Mobile");
-    if (this.a != null) {
-      nuy.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    nuy.c("onNetWifi2None");
-    if (this.a != null) {
-      nuy.b(this.a);
+    label479:
+    for (localObject = "02";; localObject = "01")
+    {
+      ocd.a(null, str, "0X8007CA6", "0X8007CA6", 0, 0, (String)localObject, i + "", j + "", null);
+      break;
+      if (i == 2)
+      {
+        aavs.b(this.a, this.a.a(), this.a.a(), this.a.b());
+        i = 1;
+        break label103;
+      }
+      if (i == 3)
+      {
+        aavs.a(this.a, this.a.a(), this.a.a(), this.a.b());
+        i = 2;
+        break label103;
+      }
+      if ((i == 9) || (i == 10))
+      {
+        aavs.a(this.a, this.a.a(), this.a.a(), this.a.b(), i);
+        if (i == 9)
+        {
+          i = 3;
+          break label103;
+        }
+        i = 4;
+        break label103;
+      }
+      if (i == 31)
+      {
+        this.a.E();
+        i = 6;
+        break label103;
+      }
+      if (i == 30)
+      {
+        this.a.f();
+        i = 5;
+        break label103;
+      }
+      if (i == 32)
+      {
+        this.a.H();
+        i = 8;
+        break label103;
+      }
+      if (i == 19) {
+        bkgt.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.i, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, j, true);
+      }
+      i = 0;
+      break label103;
     }
   }
 }

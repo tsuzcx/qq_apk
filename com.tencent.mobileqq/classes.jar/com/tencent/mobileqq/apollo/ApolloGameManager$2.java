@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo;
 
-import amgz;
-import amhd;
+import amst;
+import amsx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ApolloGameManager$2
   implements Runnable
 {
-  public ApolloGameManager$2(amgz paramamgz) {}
+  public ApolloGameManager$2(amst paramamst) {}
   
   public void run()
   {
-    if (amgz.a(this.this$0) != null) {
-      ((amhd)amgz.a(this.this$0).getManager(153)).e();
+    if (amst.a(this.this$0) != null) {
+      ((amsx)amst.a(this.this$0).getManager(153)).e();
     }
   }
 }

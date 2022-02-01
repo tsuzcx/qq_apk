@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class ahlf
-  implements View.OnClickListener
+public class ahlf
 {
-  ahlf(ahlc paramahlc) {}
-  
-  public void onClick(View paramView)
-  {
-    ahlc.b(this.a);
-    bcst.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahlc.a(this.a), "个性签名");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public CharSequence a;
+  public int b;
 }
 
 

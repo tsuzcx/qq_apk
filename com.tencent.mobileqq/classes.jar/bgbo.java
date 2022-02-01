@@ -1,44 +1,24 @@
 import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.RichText;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class bgbo
-  implements ayyt
+public abstract interface bgbo
 {
-  protected WeakReference<TroopPicEffectsEditActivity> a;
+  public abstract void a();
   
-  public bgbo(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity)
-  {
-    this.a = new WeakReference(paramTroopPicEffectsEditActivity);
-  }
+  public abstract void a(int paramInt);
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void a(ayyu paramayyu) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void b(ayyu paramayyu)
-  {
-    TroopPicEffectsEditActivity localTroopPicEffectsEditActivity = (TroopPicEffectsEditActivity)this.a.get();
-    if (localTroopPicEffectsEditActivity == null) {
-      return;
-    }
-    localTroopPicEffectsEditActivity.c();
-    Intent localIntent = new Intent(localTroopPicEffectsEditActivity, SplashActivity.class);
-    localIntent.putExtra("uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("friendUin"));
-    localIntent.putExtra("uintype", 1);
-    localIntent.putExtra("troop_uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("troopUin"));
-    localIntent.putExtra("isFromTroopEffectPic", true);
-    localTroopPicEffectsEditActivity.startActivity(afur.a(localIntent, new int[] { 1 }));
-    localTroopPicEffectsEditActivity.finish();
-    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramayyu.a, new bgbp(this, localTroopPicEffectsEditActivity));
-  }
+  public abstract void a(JSONArray paramJSONArray);
+  
+  public abstract void a(JSONObject paramJSONObject);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

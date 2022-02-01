@@ -1,61 +1,48 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class bezo
-  implements bdvw
+public abstract class bezo
+  implements bezn
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
+  protected abstract ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2);
   
-  bezo(bezn parambezn, Handler paramHandler, int paramInt, boolean paramBoolean)
+  public ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramInt == 2) {
+      return paramArrayList1;
+    }
+    if (paramInt == 3) {
+      return a(paramArrayList1, paramArrayList2);
+    }
+    return paramArrayList2;
   }
   
-  public void onResp(bdwt parambdwt)
+  protected ArrayList b(ArrayList paramArrayList1, ArrayList paramArrayList2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp: " + parambdwt.jdField_a_of_type_Int + ", desc: " + parambdwt.jdField_a_of_type_JavaLangString);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
+      localArrayList.add(paramArrayList1.get(0));
     }
-    if (parambdwt.jdField_a_of_type_Int == 3) {
-      return;
+    if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
+      localArrayList.addAll(paramArrayList2);
     }
-    if (parambdwt.jdField_a_of_type_Int == 0)
-    {
-      parambdwt = bezn.a(parambdwt.jdField_a_of_type_Bdws.c);
-      if (bezn.a(this.jdField_a_of_type_Bezn).equalsIgnoreCase(parambdwt))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success");
-        }
-        bezn.a(this.jdField_a_of_type_Bezn, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success, md5 check failed");
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1112);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp error");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1113);
+    return localArrayList;
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  protected ArrayList c(ArrayList paramArrayList1, ArrayList paramArrayList2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener Dowloading " + paramLong1 + "/" + paramLong2 + " " + 100L * paramLong1 / paramLong2);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
+      localArrayList.addAll(paramArrayList2);
     }
+    if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
+      localArrayList.add(paramArrayList1.get(0));
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bezo
  * JD-Core Version:    0.7.0.1
  */

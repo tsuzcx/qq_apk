@@ -1,31 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import msf.registerproxy.register_proxy.DiscussList;
+import msf.registerproxy.register_proxy.GroupList;
+
 public class bcrl
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
+  public List<register_proxy.GroupList> a;
+  public ConcurrentHashMap<String, ArrayList<String>> a;
+  public List<register_proxy.DiscussList> b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcrl
  * JD-Core Version:    0.7.0.1
  */

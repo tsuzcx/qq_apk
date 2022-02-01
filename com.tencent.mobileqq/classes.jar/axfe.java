@@ -1,23 +1,47 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.Vector;
 
-class axfe
-  implements ValueAnimator.AnimatorUpdateListener
+public class axfe
+  implements axfg
 {
-  axfe(axfb paramaxfb, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  public axfe(ChatBackgroundManager paramChatBackgroundManager, Context paramContext) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, Vector<Integer> paramVector)
   {
-    if (this.jdField_a_of_type_Axfb.b)
+    if ((paramBoolean) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
     {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
-      this.jdField_a_of_type_Axfb.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Axfb.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
+      paramVector = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
+      {
+        ChatXListView localChatXListView = paramVector.a().a;
+        int i = localChatXListView.getFirstVisiblePosition();
+        int j = localChatXListView.getLastVisiblePosition();
+        while (i <= j)
+        {
+          Object localObject = agej.a(localChatXListView, i);
+          if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof aggl)))
+          {
+            localObject = (aggl)((View)localObject).getTag();
+            if ((((aggl)localObject).jdField_a_of_type_Aqkt != null) && (!((aggl)localObject).jdField_a_of_type_Aqkt.a) && (((aggl)localObject).jdField_a_of_type_Aqkt.b))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
+              }
+              paramVector.a().a(((aggl)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
+            }
+          }
+          i += 1;
+        }
+      }
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

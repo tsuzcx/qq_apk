@@ -1,21 +1,29 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class adss
-  implements DialogInterface.OnClickListener
+public class adss
+  implements URLDrawable.URLDrawableListener
 {
-  public adss(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
+  public adss(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    bcst.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramURLDrawable != null)
+    {
+      paramURLDrawable = bhmq.a(paramURLDrawable);
+      QQAppInterface localQQAppInterface = this.a.app;
+      paramURLDrawable = QQAppInterface.a(paramURLDrawable, 50, 50);
+      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
     }
   }
 }

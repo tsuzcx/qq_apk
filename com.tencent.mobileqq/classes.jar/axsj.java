@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class axsj
-  implements View.OnClickListener
+final class axsj
+  implements Comparator<axtj>
 {
-  axsj(axsd paramaxsd) {}
-  
-  public void onClick(View paramView)
+  public int a(axtj paramaxtj1, axtj paramaxtj2)
   {
-    bkho localbkho = bkho.a(this.a.a);
-    localbkho.a(2131716603, 1);
-    localbkho.c(2131690582);
-    localbkho.a(new axsk(this, localbkho));
-    localbkho.show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramaxtj1.a < paramaxtj2.a) {
+      return -1;
+    }
+    if (paramaxtj1.a > paramaxtj2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 

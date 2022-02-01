@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aeul;
+import afdp;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
-import blev;
+import bmfy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
@@ -30,7 +30,7 @@ public class PreloadWebService
     }
     if (paramIntent.getBooleanExtra("isPreloadLiveShopping", false))
     {
-      blev.a(paramIntent);
+      bmfy.a(paramIntent);
       return 2;
     }
     String str3 = paramIntent.getStringExtra("url");
@@ -39,7 +39,7 @@ public class PreloadWebService
       if (this.a == null)
       {
         this.a = new CustomWebView(getBaseContext());
-        this.a.setWebViewClient(new aeul(this));
+        this.a.setWebViewClient(new afdp(this));
         WebSettings localWebSettings = this.a.getSettings();
         localWebSettings.setJavaScriptEnabled(true);
         localWebSettings.setCacheMode(-1);

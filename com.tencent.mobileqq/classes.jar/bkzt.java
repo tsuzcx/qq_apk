@@ -1,123 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.mobileqq.mini.share.MiniProgramShareUtils.OnShareListener;
+import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
 
-public class bkzt
+class bkzt
+  implements MiniProgramShareUtils.OnShareListener
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h;
-  public boolean h;
-  public int i;
-  public boolean i;
-  public boolean j;
-  public boolean k;
+  bkzt(bkzs parambkzs, InnerShareData paramInnerShareData) {}
   
-  public static bkzt a(String paramString)
+  public void onShared(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    InnerShareData localInnerShareData;
+    Activity localActivity;
+    if (paramBoolean1)
     {
-      paramString = new JSONObject(paramString);
-      return a(paramString);
+      localInnerShareData = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData;
+      localActivity = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity;
+      if (!paramBoolean2) {
+        break label35;
+      }
     }
-    catch (JSONException paramString)
+    label35:
+    for (int i = 0;; i = 1)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
-        }
-        paramString = null;
-      }
+      localInnerShareData.notifyShareResult(localActivity, i, true);
+      return;
     }
-  }
-  
-  public static bkzt a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    bkzt localbkzt = new bkzt();
-    try
-    {
-      if (paramJSONObject.has("pppid")) {
-        localbkzt.jdField_a_of_type_Int = paramJSONObject.getInt("pppid");
-      }
-      if (paramJSONObject.has("timecontrol"))
-      {
-        localObject = paramJSONObject.getJSONObject("timecontrol");
-        localbkzt.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
-        localbkzt.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("dayofweek");
-        localbkzt.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("hourofday");
-      }
-      if (paramJSONObject.has("reddot"))
-      {
-        localObject = paramJSONObject.getJSONObject("reddot");
-        localbkzt.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
-        localbkzt.jdField_c_of_type_Boolean = ((JSONObject)localObject).optBoolean("apponly");
-        localbkzt.jdField_d_of_type_Boolean = ((JSONObject)localObject).getBoolean("app");
-        localbkzt.jdField_e_of_type_Boolean = ((JSONObject)localObject).getBoolean("leba");
-      }
-      if (paramJSONObject.has("lebalist")) {
-        localbkzt.jdField_h_of_type_Boolean = paramJSONObject.getJSONObject("lebalist").getBoolean("switch");
-      }
-      if (paramJSONObject.has("activetime"))
-      {
-        localObject = paramJSONObject.getJSONObject("activetime");
-        localbkzt.jdField_i_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
-        localbkzt.jdField_e_of_type_Int = ((JSONObject)localObject).getInt("hour");
-      }
-      if (paramJSONObject.has("usedtimes"))
-      {
-        localObject = paramJSONObject.getJSONObject("usedtimes");
-        localbkzt.j = ((JSONObject)localObject).getBoolean("switch");
-        localbkzt.jdField_f_of_type_Int = ((JSONObject)localObject).getInt("times");
-      }
-      if (paramJSONObject.has("userlearn"))
-      {
-        localObject = paramJSONObject.getJSONObject("userlearn");
-        localbkzt.k = ((JSONObject)localObject).getBoolean("switch");
-        localbkzt.jdField_g_of_type_Int = ((JSONObject)localObject).getInt("timearea");
-        localbkzt.jdField_h_of_type_Int = ((JSONObject)localObject).getInt("methodid");
-        localbkzt.jdField_i_of_type_Int = ((JSONObject)localObject).getInt("clusternum");
-      }
-      localObject = localbkzt;
-      if (paramJSONObject.has("cdperiod"))
-      {
-        paramJSONObject = paramJSONObject.getJSONObject("cdperiod");
-        localbkzt.jdField_f_of_type_Boolean = paramJSONObject.optBoolean("switch");
-        localbkzt.jdField_d_of_type_Int = paramJSONObject.optInt("time");
-        localbkzt.jdField_g_of_type_Boolean = paramJSONObject.optBoolean("reverse");
-        localObject = localbkzt;
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
-        }
-        Object localObject = null;
-      }
-    }
-    return localObject;
   }
 }
 

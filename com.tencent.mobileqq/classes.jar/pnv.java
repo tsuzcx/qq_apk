@@ -1,46 +1,130 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class pnv
-  extends pnq
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public pnv(@NotNull pnr parampnr, Activity paramActivity)
+  private long a(String paramString)
   {
-    super(parampnr, "RIJLockScreenPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
+    {
+      return -1L;
+      localObject = bnrf.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    return ((SharedPreferences)localObject).getLong("event_simple_g_info_" + pnw.a(paramString), -1L);
   }
   
-  private boolean c()
+  private String a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    if (paramString == null) {
+      return "";
+    }
+    return blev.a(paramString);
+  }
+  
+  private void a(String paramString, long paramLong)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
     {
-      Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-      if ((localIntent != null) && (localIntent.hasExtra("launch_from")) && (localIntent.hasExtra("kan_dian_lock_screen_flag")) && (localIntent.getIntExtra("launch_from", 0) == 9))
+      return;
+      localObject = bnrf.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("event_simple_g_info_" + pnw.a(paramString), paramLong);
+    bnrf.a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  private void a(String paramString, TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo == null) {}
+    while ((paramTroopInfo.timeSec == a(paramTroopInfo.troopuin)) && (!pnu.a().a)) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(b("g_ui"), b(a(paramTroopInfo.troopuin)));
+    localHashMap.put(b("g_code"), b(a(paramTroopInfo.troopcode)));
+    localHashMap.put(b("g_oui"), b(a(paramTroopInfo.troopowneruin)));
+    localHashMap.put(b("g_name"), b(paramTroopInfo.troopname));
+    localHashMap.put(b("g_mem"), b(paramTroopInfo.troopmemo));
+    localHashMap.put(b("g_ind"), b(paramTroopInfo.fingertroopmemo));
+    localHashMap.put(b("g_create_time"), b(paramTroopInfo.troopCreateTime + ""));
+    localHashMap.put(b("g_mem_num"), b(paramTroopInfo.wMemberNum + ""));
+    localHashMap.put(b("g_adm"), b(c(paramTroopInfo.Administrator)));
+    localHashMap.put(b("g_class"), b(paramTroopInfo.mGroupClassExtText));
+    localHashMap.put(b("g_grade"), b(paramTroopInfo.nTroopGrade + ""));
+    localHashMap.put(b("g_type"), b(paramTroopInfo.troopTypeExt + ""));
+    bdmc.a(null).a(paramString, "event_simple_g_info", false, 1000L, 1000L, localHashMap, null);
+    a(paramTroopInfo.troopuin, paramTroopInfo.timeSec);
+  }
+  
+  private String b(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    return Base64.encodeToString(paramString.getBytes(), 3);
+  }
+  
+  private String c(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramString = paramString.split("\\|");
+    int i = 0;
+    while (i < paramString.length)
+    {
+      if (!TextUtils.isEmpty(paramString[i])) {
+        localStringBuilder.append(a(paramString[i])).append('^');
+      }
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    for (;;)
+    {
+      return;
+      Object localObject = (TroopManager)paramQQAppInterface.getManager(52);
+      if (localObject != null)
       {
-        ReadInJoyLockScreenJumpDelegate.a(this.jdField_a_of_type_AndroidAppActivity, localIntent);
-        localIntent.removeExtra("kan_dian_lock_screen_flag");
-        QLog.i("RIJDailyPopupStep", 1, "RIJLockScreenPopupStep handleLockScreenJump!");
-        return true;
+        localObject = ((TroopManager)localObject).b();
+        if (localObject != null)
+        {
+          paramQQAppInterface = paramQQAppInterface.c();
+          localObject = ((ArrayList)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            a(paramQQAppInterface, (TroopInfo)((Iterator)localObject).next());
+            try
+            {
+              Thread.sleep(1000L);
+            }
+            catch (Exception localException)
+            {
+              localException.printStackTrace();
+            }
+          }
+        }
       }
     }
-    return false;
-  }
-  
-  protected void g()
-  {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    this.jdField_a_of_type_Boolean = c();
-    a(this.jdField_a_of_type_Boolean);
   }
 }
 

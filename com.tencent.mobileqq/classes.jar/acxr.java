@@ -1,16 +1,13 @@
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+
 public class acxr
-  implements acxq
+  implements actm
 {
-  private acww<Integer, acxp> a = new acwx();
+  public acxr(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public acxp a(Integer paramInteger)
+  public void a(Object... paramVarArgs)
   {
-    return (acxp)this.a.a(paramInteger);
-  }
-  
-  public void a(Integer paramInteger, Class<? extends acxp> paramClass)
-  {
-    this.a.a(paramInteger, paramClass);
+    GdtVideoCommonView.a(this.a);
   }
 }
 

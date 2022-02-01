@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agax;
-import agbh;
-import agbi;
+import agkr;
+import aglb;
+import aglc;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -12,10 +12,10 @@ import com.tencent.widget.ListView;
 import java.util.ArrayList;
 
 public class PathAnimation
-  extends agax
+  extends agkr
 {
   private PathAnimation.Animator jdField_a_of_type_ComTencentMobileqqActivityAioAnimPathAnimation$Animator;
-  ArrayList<agbi> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<aglc> jdField_a_of_type_JavaUtilArrayList;
   
   public PathAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
@@ -23,9 +23,9 @@ public class PathAnimation
   }
   
   @TargetApi(11)
-  void a(View paramView, agbi paramagbi)
+  void a(View paramView, aglc paramaglc)
   {
-    if (!paramagbi.jdField_b_of_type_Boolean) {}
+    if (!paramaglc.jdField_b_of_type_Boolean) {}
     do
     {
       return;
@@ -33,15 +33,15 @@ public class PathAnimation
       int j = paramView.getWidth() / 2;
       int k = paramView.getTop();
       int m = paramView.getHeight() / 2;
-      paramView.offsetTopAndBottom(paramagbi.jdField_b_of_type_Int - (k + m));
-      paramView.offsetLeftAndRight(paramagbi.jdField_a_of_type_Int - (i + j));
+      paramView.offsetTopAndBottom(paramaglc.jdField_b_of_type_Int - (k + m));
+      paramView.offsetLeftAndRight(paramaglc.jdField_a_of_type_Int - (i + j));
     } while (!VersionUtils.isHoneycomb());
-    paramView.setAlpha(paramagbi.f);
-    paramView.setRotation(paramagbi.jdField_a_of_type_Float);
-    paramView.setScaleX(paramagbi.d);
-    paramView.setScaleY(paramagbi.e);
-    paramView.setRotationX(paramagbi.jdField_b_of_type_Float);
-    paramView.setRotationY(paramagbi.c);
+    paramView.setAlpha(paramaglc.f);
+    paramView.setRotation(paramaglc.jdField_a_of_type_Float);
+    paramView.setScaleX(paramaglc.d);
+    paramView.setScaleY(paramaglc.e);
+    paramView.setRotationX(paramaglc.jdField_b_of_type_Float);
+    paramView.setRotationY(paramaglc.c);
   }
   
   public boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -56,19 +56,19 @@ public class PathAnimation
     {
       Drawable[] arrayOfDrawable;
       long l1;
-      agbh localagbh;
+      aglb localaglb;
       int i;
       label82:
       View localView;
       int j;
       label159:
-      agbi localagbi;
+      aglc localaglc;
       if ((paramVarArgs[0] instanceof Drawable[]))
       {
         arrayOfDrawable = (Drawable[])paramVarArgs[0];
         int k = ((Integer)paramVarArgs[1]).intValue();
         l1 = ((Long)paramVarArgs[2]).longValue();
-        localagbh = (agbh)AIOAnimationConatiner.a.loadClass((String)paramVarArgs[3]).newInstance();
+        localaglb = (aglb)AIOAnimationConatiner.a.loadClass((String)paramVarArgs[3]).newInstance();
         this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(k);
         long l2 = AnimationUtils.currentAnimationTimeMillis();
         i = 0;
@@ -84,15 +84,15 @@ public class PathAnimation
           break label272;
         }
         j = 0;
-        localagbi = new agbi();
-        localagbi.jdField_a_of_type_Long = (j + l2);
-        localagbi.jdField_a_of_type_AndroidViewView = localView;
+        localaglc = new aglc();
+        localaglc.jdField_a_of_type_Long = (j + l2);
+        localaglc.jdField_a_of_type_AndroidViewView = localView;
         if (i != 0) {
           break label284;
         }
-        paramVarArgs = localagbh;
+        paramVarArgs = localaglb;
         label192:
-        localagbi.jdField_a_of_type_Agbh = paramVarArgs;
+        localaglc.jdField_a_of_type_Aglb = paramVarArgs;
         if (!VersionUtils.isHoneycomb()) {
           break label295;
         }
@@ -102,7 +102,7 @@ public class PathAnimation
       }
       for (;;)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localagbi);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localaglc);
         i += 1;
         break label82;
         arrayOfDrawable = new Drawable[] { (Drawable)paramVarArgs[0] };
@@ -111,10 +111,10 @@ public class PathAnimation
         j = (int)(Math.random() * l1);
         break label159;
         label284:
-        paramVarArgs = localagbh.a();
+        paramVarArgs = localaglb.a();
         break label192;
         label295:
-        localView.setTag(localagbi);
+        localView.setTag(localaglc);
       }
       label305:
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimPathAnimation$Animator == null)

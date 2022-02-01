@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import afur;
+import agej;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -30,7 +30,7 @@ public class ARRoundCorneredFrameLayout
   public ARRoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = afur.a(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = agej.a(a(paramContext, paramAttributeSet), paramContext.getResources());
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }

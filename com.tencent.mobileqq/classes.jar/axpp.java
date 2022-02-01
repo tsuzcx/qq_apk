@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class axpp
-  implements View.OnClickListener
+public class axpp
+  extends axot
 {
-  axpp(axop paramaxop) {}
-  
-  public void onClick(View paramView)
+  public axpp(QQAppInterface paramQQAppInterface)
   {
-    this.a.g(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface);
+  }
+  
+  public void a(axpl paramaxpl, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axow paramaxow)
+  {
+    super.a(paramaxpl, paramHashMap, paramaxow);
+    paramaxow.a(0, 4, paramaxpl);
   }
 }
 

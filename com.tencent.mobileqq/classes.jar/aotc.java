@@ -1,86 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Environment;
-import android.os.StatFs;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.2;
-import java.io.File;
-import java.text.DecimalFormat;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
 
-public final class aotc
+public class aotc
 {
-  public static String a(int paramInt)
+  public static final HashSet<aotc> a;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
+  
+  static
   {
-    StringBuilder localStringBuilder = new StringBuilder(30);
-    localStringBuilder.append("录制中 (");
-    int i = paramInt / 60;
-    paramInt -= i * 60;
-    if (i < 10)
-    {
-      localStringBuilder.append("0").append(i);
-      localStringBuilder.append(":");
-      if (paramInt >= 10) {
-        break label91;
-      }
-      localStringBuilder.append("0").append(paramInt);
-    }
-    for (;;)
-    {
-      localStringBuilder.append(")");
-      return localStringBuilder.toString();
-      localStringBuilder.append(i);
-      break;
-      label91:
-      localStringBuilder.append(paramInt);
-    }
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
   }
   
-  public static void a(File paramFile)
+  public aotc(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    zkr.a(BaseApplicationImpl.getContext(), paramFile);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(String paramString1, String paramString2)
+  @NonNull
+  public String toString()
   {
-    ThreadManager.getUIHandler().post(new ARRecordUtils.1(paramString1, paramString2));
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new ARRecordUtils.2(paramBoolean, paramString));
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    bgsg.a(BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).edit().putBoolean("ARVideoRecordPressKey12", paramBoolean));
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).getBoolean("ARVideoRecordPressKey12", false);
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath());
-    int i = localStatFs.getAvailableBlocks();
-    long l = localStatFs.getBlockSize();
-    return i * l >= paramLong;
-  }
-  
-  public static String b(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(10);
-    DecimalFormat localDecimalFormat = new DecimalFormat(".00");
-    double d = paramInt / 1024.0F / 1024.0F;
-    if (d < 1.0D) {
-      localStringBuilder.append(0);
-    }
-    localStringBuilder.append(localDecimalFormat.format(d));
-    localStringBuilder.append("M");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PushMsg0x210_c7Info{");
+    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
+    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }

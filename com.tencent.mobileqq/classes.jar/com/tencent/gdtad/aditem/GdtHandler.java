@@ -1,13 +1,18 @@
 package com.tencent.gdtad.aditem;
 
-import acqx;
-import acqy;
-import acrk;
-import acsb;
-import acsc;
+import acvb;
+import acvc;
+import acvo;
+import acwf;
+import acwg;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdReporterForClick;
 import com.tencent.ad.tangram.util.AdClickUtil;
 import com.tencent.ad.tangram.util.AdClickUtil.Params;
 import com.tencent.ad.tangram.util.AdClickUtil.Result;
@@ -46,7 +51,7 @@ public class GdtHandler
     localParams.extrasForIntent.putString("big_brother_source_key", "biz_src_ads");
     if (paramParams.jdField_a_of_type_AndroidOsBundle != null)
     {
-      acqy.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
+      acvc.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
       localParams.extrasForIntent.putAll(paramParams.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
@@ -55,21 +60,21 @@ public class GdtHandler
       localParams.halfScreenPageEnabled = paramParams.g;
       localParams.antiSpamParams = paramParams.jdField_a_of_type_JavaLangString;
       return localParams;
-      acqy.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
+      acvc.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
     }
   }
   
   public static void a(GdtHandler.Params paramParams)
   {
-    acqy.b("GdtHandler", "handle");
+    acvc.b("GdtHandler", "handle");
     ThreadManager.getSubThreadHandler().post(new GdtHandler.1(paramParams));
-    acsb localacsb = acsb.a();
+    acwf localacwf = acwf.a();
     if ((paramParams != null) && (paramParams.a())) {}
     for (Activity localActivity = (Activity)paramParams.jdField_a_of_type_JavaLangRefWeakReference.get();; localActivity = null)
     {
-      localacsb.a(localActivity, new acsc());
+      localacwf.a(localActivity, new acwg());
       b(paramParams);
-      acrk.a(paramParams.jdField_a_of_type_OrgJsonJSONObject);
+      acvo.a(paramParams.jdField_a_of_type_OrgJsonJSONObject);
       return;
     }
   }
@@ -82,7 +87,7 @@ public class GdtHandler
     try
     {
       JSONObject localJSONObject1 = new JSONObject(paramString);
-      acqy.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
+      acvc.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
       paramString = localJSONObject1.getJSONObject("options");
       boolean bool1 = paramString.getBoolean("reportForClick");
       boolean bool2 = paramString.getBoolean("appAutoDownload");
@@ -111,13 +116,13 @@ public class GdtHandler
       paramOptions.f = paramString.optBoolean("videoPlayForced");
       paramOptions.g = paramString.optBoolean("halfScreenPageEnabled");
       if (localJSONObject1.has("adInfo")) {
-        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
+        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
       }
       return true;
     }
     catch (Throwable paramOptions)
     {
-      acqy.d("GdtHandler", "handleJsCallRequest error", paramOptions);
+      acvc.d("GdtHandler", "handleJsCallRequest error", paramOptions);
     }
     return false;
   }
@@ -129,11 +134,25 @@ public class GdtHandler
     while (paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd == null) {
       return;
     }
-    paramParams = AdClickUtil.handle(a(paramParams));
+    AdClickUtil.Params localParams = a(paramParams);
+    if (paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isWeChatMiniApp())
+    {
+      AdReporterForAnalysis.reportForClickStart(localParams);
+      Object localObject = new Handler(Looper.getMainLooper());
+      localObject = paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.jumpToWechatMiniApp((Handler)localObject);
+      if (paramParams.jdField_a_of_type_Boolean)
+      {
+        paramParams = AdClickUtil.getUrlForClick(localParams);
+        AdReporterForClick.reportAsync(new WeakReference((Context)localParams.activity.get()), localParams.ad, paramParams);
+      }
+      AdReporterForAnalysis.reportForClickEnd(localParams, (AdClickUtil.Result)localObject);
+      return;
+    }
+    paramParams = AdClickUtil.handle(localParams);
     if (paramParams != null) {
       i = paramParams.getErrorCode();
     }
-    acqy.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
+    acvc.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
   }
 }
 

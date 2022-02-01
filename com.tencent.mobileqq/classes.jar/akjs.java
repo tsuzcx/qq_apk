@@ -1,17 +1,35 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
-public class akjs
-  extends akhu
+class akjs
+  implements blih
 {
-  public akjs(NewPhotoListActivity paramNewPhotoListActivity)
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  
+  akjs(akjn paramakjn) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramNewPhotoListActivity);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.b = paramInt3;
   }
   
-  public void initData(Intent paramIntent)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super.initData(paramIntent);
+    if (this.jdField_a_of_type_Akjn.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Akjn.jdField_a_of_type_Akjx) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i(akjn.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+      }
+    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
+    if (QLog.isColorLevel()) {
+      QLog.i(akjn.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+    }
+    akjn.a(this.jdField_a_of_type_Akjn);
   }
 }
 

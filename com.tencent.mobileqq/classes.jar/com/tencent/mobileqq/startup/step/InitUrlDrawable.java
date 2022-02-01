@@ -3,15 +3,15 @@ package com.tencent.mobileqq.startup.step;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import anhk;
-import bcpl;
-import bcpm;
-import bcpn;
-import bcpo;
-import bcpq;
-import bdqh;
-import bdua;
-import bhgg;
+import antf;
+import bdid;
+import bdie;
+import bdif;
+import bdig;
+import bdii;
+import bejd;
+import besu;
+import bigv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.image.URLDrawable;
@@ -30,8 +30,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class InitUrlDrawable
   extends Step
 {
-  public static bdua a;
-  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new bcpl();
+  public static besu a;
+  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new bdid();
   private static List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   public static volatile boolean a;
   
@@ -127,8 +127,8 @@ public class InitUrlDrawable
     }
     jdField_a_of_type_Boolean = true;
     DiniFlyLog.setLog(jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog);
-    QEffectEngine.getInstance().setJsonConvert(new bcpo());
-    QEffectEngine.getInstance().registerLoad(new bdqh());
+    QEffectEngine.getInstance().setJsonConvert(new bdig());
+    QEffectEngine.getInstance().registerLoad(new bejd());
     QEffectEngine.getInstance().registerEffect(2, "a.png", QEffectApngImageView.class);
     QEffectEngine.getInstance().registerEffect(3, "lottie", QEffectLottieImageView.class);
     QEffectEngine.getInstance().registerEffect(8, "gif", QEffectGifImageView.class);
@@ -136,21 +136,21 @@ public class InitUrlDrawable
     URLDrawable.DEBUG = false;
     File localFile;
     if ("mounted".equals(Environment.getExternalStorageState())) {
-      localFile = new File(bhgg.a(anhk.ba));
+      localFile = new File(bigv.a(antf.ba));
     }
     try
     {
       for (;;)
       {
-        URLDrawable.init(localBaseApplicationImpl, new bcpq(localBaseApplicationImpl));
+        URLDrawable.init(localBaseApplicationImpl, new bdii(localBaseApplicationImpl));
         if (Build.VERSION.SDK_INT >= 11) {
-          URLDrawable.setDebuggableCallback(new bcpm());
+          URLDrawable.setDebuggableCallback(new bdie());
         }
         URLDrawable.isPublicVersion = true;
         localFile = new File(localFile, "diskcache");
-        jdField_a_of_type_Bdua = new bdua(localFile);
-        bdzx.a = localFile;
-        JpegExifReader.initJpegExifReader(new bcpn());
+        jdField_a_of_type_Besu = new besu(localFile);
+        beyq.a = localFile;
+        JpegExifReader.initJpegExifReader(new bdif());
         return true;
         localFile = localBaseApplicationImpl.getCacheDir();
       }

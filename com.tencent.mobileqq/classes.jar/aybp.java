@@ -1,43 +1,82 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-final class aybp
-  implements QQPermissionCallback
+public abstract class aybp
+  extends Binder
+  implements aybo
 {
-  aybp(Context paramContext, String paramString, AppActivity paramAppActivity, Intent paramIntent) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aybp()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
-    }
-    bglp.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static aybo a(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions grant");
+    if (paramIBinder == null) {
+      return null;
     }
-    try
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof aybo))) {
+      return (aybo)localIInterface;
+    }
+    return new aybq(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    switch (paramInt1)
     {
-      aybo.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
-      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
       }
-      return;
+      paramParcel1 = a((BasicTypeDataParcel)localObject1);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
+      }
     }
-    catch (Exception paramArrayOfString)
+    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+    localObject1 = localObject2;
+    if (paramParcel1.readInt() != 0) {
+      localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
+    }
+    paramParcel1 = a((Message)localObject1);
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
     {
-      QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690580, 0).a();
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+    }
+    for (;;)
+    {
+      return true;
+      paramParcel2.writeInt(0);
     }
   }
 }

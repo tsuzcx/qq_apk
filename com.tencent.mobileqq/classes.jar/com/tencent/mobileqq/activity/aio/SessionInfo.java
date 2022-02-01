@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afxa;
-import agat;
+import aggu;
+import agkn;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,10 +10,10 @@ import android.os.Parcelable.Creator;
 public class SessionInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<SessionInfo> CREATOR = new agat();
+  public static final Parcelable.Creator<SessionInfo> CREATOR = new agkn();
   public int a;
   public long a;
-  public afxa a;
+  public aggu a;
   private Bundle a;
   public String a;
   public boolean a;

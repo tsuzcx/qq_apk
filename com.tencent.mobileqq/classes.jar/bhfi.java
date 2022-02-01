@@ -1,91 +1,47 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bhfi
-  implements SensorEventListener
+final class bhfi
+  implements DownloadParams.DecodeHandler
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
-  
-  private void a(long paramLong)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    bhfe.b = 1;
-    bhfe.a = true;
-  }
-  
-  public void b()
-  {
-    bhfe.b = 3;
-    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    label66:
     do
     {
       do
       {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-      }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
-      {
-        a();
-        a(l1);
-        return;
-      }
-      if (this.jdField_a_of_type_Int < 10)
-      {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
-        return;
-      }
-      a(l1);
-    } while (bhfe.b >= 3);
-    b();
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = bhlo.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
+    }
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    paramDownloadParams = bhmq.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    paramBitmap = new Canvas(paramDownloadParams);
+    Object localObject = new Paint();
+    ((Paint)localObject).setAntiAlias(true);
+    ((Paint)localObject).setStyle(Paint.Style.STROKE);
+    ((Paint)localObject).setColor(Color.argb(20, 0, 0, 0));
+    ((Paint)localObject).setStrokeWidth(0.5F);
+    f1 = paramDownloadParams.getWidth() * 0.5F;
+    paramBitmap.drawCircle(f1, f1, f1 - 0.5F, (Paint)localObject);
+    return paramDownloadParams;
   }
 }
 

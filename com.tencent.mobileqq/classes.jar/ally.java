@@ -1,26 +1,30 @@
-public abstract interface ally
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
+
+class ally
+  implements View.OnClickListener
 {
-  public abstract zdw a();
+  private allw jdField_a_of_type_Allw;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public abstract void a();
+  ally(allw paramallw, MqqHandler paramMqqHandler)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Allw = paramallw;
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(zdw paramzdw);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract void d();
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Allw.jdField_a_of_type_JavaLangString + " on enter");
+    }
+    this.jdField_a_of_type_Allw.jdField_a_of_type_Allu.onEnter();
+    bdll.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

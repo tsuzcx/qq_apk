@@ -1,58 +1,41 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class azwd
-  extends BaseAdapter
+  implements Animator.AnimatorListener
 {
-  public List<QCallRecord> a;
+  public azwd(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
   
-  public azwd(QCallDetailActivity paramQCallDetailActivity)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
+    for (int i = 2130845672;; i = 2130845664)
+    {
+      paramAnimator.setImageResource(i);
+      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
+      return;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public Object getItem(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
-      return QCallRecord.TYPE_DATE;
+    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
+    for (int i = 2130845672;; i = 2130845664)
+    {
+      paramAnimator.setImageResource(i);
+      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
+      return;
     }
-    return QCallRecord.TYPE_REALRECORD;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return paramView;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public int getViewTypeCount()
-  {
-    return 3;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

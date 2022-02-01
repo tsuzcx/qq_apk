@@ -1,27 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPushWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StUser;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCirclePrivateMsgShow.StChangePMSettingRsp;
 
-public class vxl
-  implements View.OnClickListener
+class vxl
+  implements aaav<QQCirclePrivateMsgShow.StChangePMSettingRsp>
 {
-  public vxl(QCircleLightInteractPushWidget paramQCircleLightInteractPushWidget, FeedCloudMeta.StUser paramStUser) {}
+  vxl(vxj paramvxj) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCirclePrivateMsgShow.StChangePMSettingRsp paramStChangePMSettingRsp)
   {
-    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a().clone().setElementIdStr("portrait"));
-    if (paramView == QCircleLightInteractPushWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget)) {
-      vrc.a(87, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.d());
-    }
-    for (;;)
+    QLog.d("QCirclePrivateMessageSettingViewModel", 1, "setProfileRequest isSuccess:" + paramBoolean + " retCode:" + paramLong + " errorMsg:" + paramString);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStChangePMSettingRsp == null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.b.setValue(vxq.a(paramString).a(paramLong));
       return;
-      vrc.a(87, 3, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.d());
     }
+    this.a.b.setValue(vxq.a(false).a(false, paramStChangePMSettingRsp));
   }
 }
 

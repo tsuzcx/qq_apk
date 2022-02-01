@@ -1,15 +1,20 @@
-class twt
+import android.support.annotation.Nullable;
+
+public abstract class twt
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public abstract int a();
   
-  public twt(int paramInt1, int paramInt2, boolean paramBoolean)
+  @Nullable
+  public Object a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return null;
   }
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract int b();
+  
+  public abstract boolean b(int paramInt1, int paramInt2);
 }
 
 

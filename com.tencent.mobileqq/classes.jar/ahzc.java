@@ -1,29 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahzc
-  implements Animator.AnimatorListener
+public class ahzc
+  implements ahyf
 {
-  ahzc(ahzb paramahzb) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (ahyy.a(this.a.a.this$0) != null) {
-      ahyy.a(this.a.a.this$0).setVisibility(0);
-    }
-    if (ahyy.a(this.a.a.this$0) != null) {
-      ahyy.a(this.a.a.this$0).setVisibility(4);
-    }
+    paramahed.c(paramagjk, paramahfq, paramString);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,19 +1,22 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auig
-  implements augl
+class auig
+  implements View.OnClickListener
 {
-  public auig(ForwardPhotoOption paramForwardPhotoOption) {}
+  auig(auid paramauid, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ForwardPhotoOption.a(this.a).a.setVisibility(0);
-  }
-  
-  public void b()
-  {
-    ForwardPhotoOption.a(this.a).a.setVisibility(8);
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.jdField_a_of_type_Auid.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Auid.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

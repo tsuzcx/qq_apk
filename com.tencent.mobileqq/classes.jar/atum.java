@@ -1,16 +1,17 @@
-class atum
-  implements bhhd
+public class atum
 {
-  atum(atul paramatul, atve paramatve) {}
+  public int a;
+  public String a;
   
-  public void callback(int paramInt)
+  public atum(String paramString, int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.jdField_a_of_type_Atve.a();
-      return;
-    }
-    this.jdField_a_of_type_Atve.b();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "" + this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
   }
 }
 

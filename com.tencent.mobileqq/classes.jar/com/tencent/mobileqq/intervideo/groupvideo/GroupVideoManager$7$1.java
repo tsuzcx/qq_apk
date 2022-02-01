@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import avid;
+import awag;
 import java.util.List;
 
 class GroupVideoManager$7$1
@@ -10,11 +10,11 @@ class GroupVideoManager$7$1
   
   public void run()
   {
-    avid localavid = this.this$0.a;
+    awag localawag = this.this$0.a;
     if ((this.a != null) && (this.a.size() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      localavid.a(bool);
+      localawag.a(bool);
       return;
     }
   }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
-import aoai;
-import bdvs;
-import bdvu;
-import bdvv;
-import bdvw;
-import bdws;
+import aoms;
+import beum;
+import beuo;
+import beup;
+import beuq;
+import bevl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -15,9 +15,9 @@ import java.io.File;
 
 public class MonitorSocketDownload
   extends AsyncStep
-  implements bdvw
+  implements beuq
 {
-  protected static bdvv a;
+  protected static beup a;
   private long a;
   private final String b = "https://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
   private final String c = "https://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
@@ -25,7 +25,7 @@ public class MonitorSocketDownload
   
   static
   {
-    jdField_a_of_type_Bdvv = new aoai();
+    jdField_a_of_type_Beup = new aoms();
   }
   
   private void a()
@@ -36,14 +36,14 @@ public class MonitorSocketDownload
     {
       String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + "/monitor_config.properties";
       localObject = ((QQAppInterface)localObject).getNetEngine(0);
-      bdvs localbdvs = new bdvs();
-      localbdvs.jdField_a_of_type_Bdvw = this;
-      localbdvs.jdField_a_of_type_JavaLangString = "https://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
-      localbdvs.jdField_a_of_type_Int = 0;
-      localbdvs.c = str;
-      localbdvs.d = 0;
-      localbdvs.jdField_a_of_type_Bdvv = jdField_a_of_type_Bdvv;
-      ((bdvu)localObject).a(localbdvs);
+      beum localbeum = new beum();
+      localbeum.jdField_a_of_type_Beuq = this;
+      localbeum.jdField_a_of_type_JavaLangString = "https://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
+      localbeum.jdField_a_of_type_Int = 0;
+      localbeum.c = str;
+      localbeum.d = 0;
+      localbeum.jdField_a_of_type_Beup = jdField_a_of_type_Beup;
+      ((beuo)localObject).a(localbeum);
       if (QLog.isColorLevel()) {
         QLog.d("MonitorSocketDownload", 2, "download MS config");
       }
@@ -69,14 +69,14 @@ public class MonitorSocketDownload
         }
         String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + "/com.tencent.mobileqq_checkurl";
         localObject = ((QQAppInterface)localObject).getNetEngine(0);
-        bdvs localbdvs = new bdvs();
-        localbdvs.jdField_a_of_type_Bdvw = this;
-        localbdvs.jdField_a_of_type_JavaLangString = "https://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
-        localbdvs.jdField_a_of_type_Int = 0;
-        localbdvs.c = str;
-        localbdvs.d = 0;
-        localbdvs.jdField_a_of_type_Bdvv = jdField_a_of_type_Bdvv;
-        ((bdvu)localObject).a(localbdvs);
+        beum localbeum = new beum();
+        localbeum.jdField_a_of_type_Beuq = this;
+        localbeum.jdField_a_of_type_JavaLangString = "https://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
+        localbeum.jdField_a_of_type_Int = 0;
+        localbeum.c = str;
+        localbeum.d = 0;
+        localbeum.jdField_a_of_type_Beup = jdField_a_of_type_Beup;
+        ((beuo)localObject).a(localbeum);
         if (QLog.isColorLevel()) {
           QLog.d("MonitorSocketDownload", 2, "send request to check version and decide whether to download MS config");
         }
@@ -97,30 +97,30 @@ public class MonitorSocketDownload
   }
   
   /* Error */
-  public void onResp(bdwt parambdwt)
+  public void onResp(bevm parambevm)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
     //   3: aload_1
-    //   4: getfield 152	bdwt:jdField_a_of_type_Int	I
+    //   4: getfield 152	bevm:jdField_a_of_type_Int	I
     //   7: ifne +222 -> 229
     //   10: iconst_1
     //   11: istore_2
     //   12: aload_1
-    //   13: getfield 155	bdwt:jdField_a_of_type_Bdws	Lbdws;
-    //   16: checkcast 77	bdvs
+    //   13: getfield 155	bevm:jdField_a_of_type_Bevl	Lbevl;
+    //   16: checkcast 77	beum
     //   19: astore_3
     //   20: new 58	java/io/File
     //   23: dup
     //   24: aload_3
-    //   25: getfield 86	bdvs:c	Ljava/lang/String;
+    //   25: getfield 86	beum:c	Ljava/lang/String;
     //   28: invokespecial 158	java/io/File:<init>	(Ljava/lang/String;)V
     //   31: astore 4
     //   33: iload_2
     //   34: ifeq +488 -> 522
     //   37: aload_3
-    //   38: getfield 83	bdvs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   38: getfield 83	beum:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   41: ldc 31
     //   43: invokevirtual 164	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   46: ifeq +280 -> 326
@@ -257,7 +257,7 @@ public class MonitorSocketDownload
     //   324: aload_1
     //   325: athrow
     //   326: aload_3
-    //   327: getfield 83	bdvs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   327: getfield 83	beum:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   330: ldc 27
     //   332: invokevirtual 164	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   335: ifeq -107 -> 228
@@ -350,7 +350,7 @@ public class MonitorSocketDownload
     //   532: ldc 236
     //   534: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   537: aload_1
-    //   538: getfield 152	bdwt:jdField_a_of_type_Int	I
+    //   538: getfield 152	bevm:jdField_a_of_type_Int	I
     //   541: invokevirtual 139	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   544: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   547: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -394,7 +394,7 @@ public class MonitorSocketDownload
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	614	0	this	MonitorSocketDownload
-    //   0	614	1	parambdwt	bdwt
+    //   0	614	1	parambevm	bevm
     //   11	229	2	i	int
     //   19	472	3	localObject1	Object
     //   557	1	3	localIOException1	java.io.IOException
@@ -434,7 +434,7 @@ public class MonitorSocketDownload
     //   95	112	600	java/lang/Exception
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

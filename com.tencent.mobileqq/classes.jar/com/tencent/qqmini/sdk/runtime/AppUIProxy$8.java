@@ -1,23 +1,15 @@
 package com.tencent.qqmini.sdk.runtime;
 
-import android.app.Activity;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
-import com.tencent.qqmini.sdk.manager.MiniLoadingAdManager;
-
 class AppUIProxy$8
   implements Runnable
 {
-  AppUIProxy$8(AppUIProxy paramAppUIProxy, Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong) {}
+  AppUIProxy$8(AppUIProxy paramAppUIProxy) {}
   
   public void run()
   {
-    if ((this.this$0.mCurrRuntimeLoader != null) && (this.this$0.mCurrRuntimeLoader.mRuntime != null)) {
-      this.this$0.mCurrRuntimeLoader.mRuntime.setLoadingAdStatus(2);
+    if (AppUIProxy.access$500(this.this$0) != null) {
+      AppUIProxy.access$500(this.this$0).setVisibility(4);
     }
-    DisplayUtil.setSystemUIVisible(this.val$activity, false);
-    MiniLoadingAdManager.getInstance().updateLoadingAdLayoutAndShow(this.val$miniAppInfo, this.val$activity, false, this.val$adJson, this.val$aid, new AppUIProxy.8.1(this));
   }
 }
 

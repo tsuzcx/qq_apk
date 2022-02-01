@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.activity;
 
-import begt;
+import bffu;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class JoinTroopUtil$4
   implements Runnable
 {
-  public JoinTroopUtil$4(begt parambegt) {}
+  public JoinTroopUtil$4(bffu parambffu) {}
   
   public void run()
   {
-    begt.a(this.this$0, begt.a(this.this$0).troopUin, 2);
+    bffu.a(this.this$0, bffu.a(this.this$0).troopUin, 2);
     this.this$0.dismiss();
   }
 }

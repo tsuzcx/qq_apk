@@ -1,8 +1,24 @@
-public abstract interface bmro
+import android.support.annotation.NonNull;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
+
+public final class bmro
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
+  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
+  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
+  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bmqa parambmqa)
+  {
+    a(paramPair, parambmqa, false);
+  }
+  
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bmqa parambmqa, boolean paramBoolean)
+  {
+    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
+    paramPair.a(parambmqa, paramBoolean);
+    paramPair.a();
+  }
 }
 
 

@@ -1,73 +1,18 @@
-import android.content.Context;
-import android.util.Log;
-import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.dating.DatingFilters;
 
-public class asai
+public final class asai
+  implements Parcelable.Creator<DatingFilters>
 {
-  private static asai jdField_a_of_type_Asai;
-  private List<EmotionPanelListView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static asai a()
+  public DatingFilters a(Parcel paramParcel)
   {
-    if (jdField_a_of_type_Asai == null) {}
-    try
-    {
-      if (jdField_a_of_type_Asai == null) {
-        jdField_a_of_type_Asai = new asai();
-      }
-      return jdField_a_of_type_Asai;
-    }
-    finally {}
+    return new DatingFilters(paramParcel, null);
   }
   
-  public EmotionPanelListView a(Context paramContext)
+  public DatingFilters[] a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      paramContext = (EmotionPanelListView)this.jdField_a_of_type_JavaUtilList.remove(0);
-      if (QLog.isColorLevel()) {
-        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      return paramContext;
-    }
-    return new EmotionPanelListView(paramContext);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      Log.d("EmotionPanelListViewPool", "destory");
-    }
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList = null;
-    }
-  }
-  
-  public void a(EmotionPanelListView paramEmotionPanelListView)
-  {
-    if (paramEmotionPanelListView == null) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilList.add(paramEmotionPanelListView);
-      }
-      while (QLog.isColorLevel())
-      {
-        Log.d("EmotionPanelListViewPool", "relase listview");
-        return;
-        if (!this.jdField_a_of_type_JavaUtilList.contains(paramEmotionPanelListView)) {
-          this.jdField_a_of_type_JavaUtilList.add(0, paramEmotionPanelListView);
-        }
-      }
-    }
+    return new DatingFilters[paramInt];
   }
 }
 

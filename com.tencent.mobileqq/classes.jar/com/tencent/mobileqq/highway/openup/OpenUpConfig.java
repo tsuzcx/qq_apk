@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class OpenUpConfig
 {
-  public static boolean isOpenUpEnable;
+  public static boolean isOpenUpEnable = false;
   public static int preSendDots_2g = 2;
   public static int preSendDots_3g = 2;
   public static int preSendDots_4g = 2;
@@ -19,7 +19,7 @@ public class OpenUpConfig
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 15	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_2g	I
+    //   3: getstatic 17	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_2g	I
     //   6: istore_1
     //   7: aload_0
     //   8: ifnonnull +8 -> 16
@@ -28,24 +28,24 @@ public class OpenUpConfig
     //   14: iload_1
     //   15: ireturn
     //   16: aload_0
-    //   17: invokestatic 32	com/tencent/mobileqq/highway/utils/HwNetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
+    //   17: invokestatic 34	com/tencent/mobileqq/highway/utils/HwNetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
     //   20: istore_2
     //   21: iconst_3
     //   22: iload_2
     //   23: if_icmpne +10 -> 33
-    //   26: getstatic 17	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_3g	I
+    //   26: getstatic 19	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_3g	I
     //   29: istore_1
     //   30: goto -19 -> 11
     //   33: iconst_4
     //   34: iload_2
     //   35: if_icmpne +10 -> 45
-    //   38: getstatic 19	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_4g	I
+    //   38: getstatic 21	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_4g	I
     //   41: istore_1
     //   42: goto -31 -> 11
     //   45: iconst_1
     //   46: iload_2
     //   47: if_icmpne -36 -> 11
-    //   50: getstatic 21	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_wifi	I
+    //   50: getstatic 23	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_wifi	I
     //   53: istore_1
     //   54: goto -43 -> 11
     //   57: astore_0

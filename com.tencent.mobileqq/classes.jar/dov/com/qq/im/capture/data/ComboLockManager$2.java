@@ -3,20 +3,20 @@ package dov.com.qq.im.capture.data;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import bglp;
-import bgpa;
-import boln;
+import bhlq;
+import bhpc;
+import bpni;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class ComboLockManager$2
   implements Runnable
 {
-  public ComboLockManager$2(boln paramboln, Context paramContext, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ComboLockManager$2(bpni parambpni, Context paramContext, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void run()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    bglp.a(localBaseActivity, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131718949), localBaseActivity.getString(2131718946), 2131718947, 2131718948, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener).show();
+    bhlq.a(localBaseActivity, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131719099), localBaseActivity.getString(2131719096), 2131719097, 2131719098, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener).show();
   }
 }
 

@@ -1,25 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-class awad
-  implements View.OnClickListener
+public class awad
+  implements EnterCallback
 {
-  awad(awac paramawac, avzs paramavzs) {}
+  public awad(GroupVideoManager.3 param3) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      avzs.a(this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs).c(true);
-      avzs.a(this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs);
-      bcst.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
-    }
-  }
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView) {}
 }
 
 

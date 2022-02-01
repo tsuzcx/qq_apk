@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import biyn;
+import bjzm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
@@ -53,7 +53,7 @@ public class EncryTokenActivity
     }
     if ("action_check_token".equals(paramBundle))
     {
-      localObject = biyn.a(this, "openid_encrytoken");
+      localObject = bjzm.a(this, "openid_encrytoken");
       try
       {
         paramBundle = super.getIntent().getStringExtra("openid") + "";

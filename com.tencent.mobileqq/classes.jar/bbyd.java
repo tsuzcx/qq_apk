@@ -1,22 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 class bbyd
-  extends Handler
+  implements Comparator<bcep>
 {
-  bbyd(bbyc parambbyc) {}
+  bbyd(bbyb parambbyb) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(bcep parambcep1, bcep parambcep2)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
-    {
-      bbyc.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
-      }
-    }
+    parambcep1 = parambcep1.c;
+    parambcep2 = parambcep2.c;
+    return ChnToSpell.a(parambcep1, 2).compareTo(ChnToSpell.a(parambcep2, 2));
   }
 }
 

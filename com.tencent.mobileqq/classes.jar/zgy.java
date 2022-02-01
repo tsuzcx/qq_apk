@@ -1,25 +1,24 @@
-import java.io.File;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import android.media.MediaCodec;
+import android.media.MediaExtractor;
+import java.util.ArrayList;
 
-public final class zgy
-  implements Comparator<File>
+public class zgy
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return true;
-  }
+  public int a;
+  public long a;
+  public MediaCodec a;
+  public MediaExtractor a;
+  public ArrayList<String> a = new ArrayList();
+  public zgv a;
+  public zgz a;
+  public long[] a;
+  public int b;
+  public long b;
+  public ArrayList<Bitmap> b = new ArrayList();
+  public long[] b;
+  public int c;
+  public int d;
 }
 
 

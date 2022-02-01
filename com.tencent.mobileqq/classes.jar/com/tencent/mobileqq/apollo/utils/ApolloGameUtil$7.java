@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ancd;
+import annx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameData;
@@ -33,11 +33,11 @@ final class ApolloGameUtil$7
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] real update " + this.jdField_a_of_type_JavaLangString);
       }
       localVasExtensionHandler = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
-      Object localObject1 = (ancd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      Object localObject1 = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Object localObject5 = ((ancd)localObject1).j();
-      Object localObject3 = ((ancd)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
-      Object localObject4 = ((ancd)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject5 = ((annx)localObject1).j();
+      Object localObject3 = ((annx)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject4 = ((annx)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
       if ((localObject3 != null) && (QLog.isColorLevel())) {
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] self init " + ((List)localObject3).size());
       }

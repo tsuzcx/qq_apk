@@ -1,82 +1,29 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneInternalWebViewPlugin.1;
-import java.util.Map;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.FadeIconImageView;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import mqq.app.AppRuntime;
 
-public abstract class bmmk
+public class bmmk
+  extends bmme
 {
-  public WebViewPlugin a;
-  
-  public static void a(CustomWebView paramCustomWebView, String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public bmmk(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, bmmg parambmmg, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramCustomWebView == null) {
-      return;
-    }
-    try
+    super(paramActivity, parambmmg, paramInt1, paramInt2, paramAppRuntime);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (LocationDetailActivity.a(this.a))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("event", paramString);
-      if (paramJSONObject1 != null) {
-        localJSONObject.put("data", paramJSONObject1);
-      }
-      if (paramJSONObject2 != null) {
-        localJSONObject.put("options", paramJSONObject2);
-      }
-      paramString = "jsbridge://event/dispatchEvent?p=" + Uri.encode(localJSONObject.toString());
-      if (QLog.isDebugVersion()) {
-        QLog.i("QzoneInternalWebViewPlugin", 1, "dispatchEventImpl url:" + paramString);
-      }
-      if (Looper.myLooper() == Looper.getMainLooper())
-      {
-        paramCustomWebView.loadUrl(paramString);
-        return;
+      bmlc.a(true);
+      if (LocationDetailActivity.a(this.a) != null) {
+        LocationDetailActivity.a(this.a).setVisibility(8);
       }
     }
-    catch (Exception paramCustomWebView)
-    {
-      paramCustomWebView.printStackTrace();
-      return;
-    }
-    paramCustomWebView.post(new QzoneInternalWebViewPlugin.1(paramCustomWebView, paramString));
-  }
-  
-  public Object a(String paramString, long paramLong)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt) {}
-  
-  public void a(WebViewPlugin paramWebViewPlugin)
-  {
-    this.a = paramWebViewPlugin;
-  }
-  
-  public void a(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if ((this.a != null) && (this.a.mRuntime != null)) {}
-    for (CustomWebView localCustomWebView = this.a.mRuntime.a();; localCustomWebView = null)
-    {
-      a(localCustomWebView, paramString, paramJSONObject1, paramJSONObject2);
-      return;
-    }
-  }
-  
-  public abstract boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs);
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    return false;
+    super.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

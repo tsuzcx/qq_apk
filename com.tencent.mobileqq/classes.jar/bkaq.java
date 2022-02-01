@@ -1,24 +1,11 @@
-final class bkaq
-  extends bkat
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
+
+public abstract interface bkaq
 {
-  public bkbm a;
-  private String jdField_a_of_type_JavaLangString;
+  public abstract void a(int paramInt, WadlResult paramWadlResult);
   
-  public bkaq(bkao parambkao, String paramString)
-  {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a(String paramString, bkbm parambkbm)
-  {
-    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Bkbm = parambkbm;
-      return false;
-    }
-    return true;
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 

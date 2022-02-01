@@ -1,142 +1,151 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
 public class bdzh
 {
-  public static int d;
-  public static int e;
-  public static int f;
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  private static bdzh jdField_a_of_type_Bdzh;
+  private long jdField_a_of_type_Long = -1L;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private long b = -1L;
   
-  static
+  public static bdzh a()
   {
-    jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
-    jdField_f_of_type_Int = 10;
+    if (jdField_a_of_type_Bdzh == null) {
+      jdField_a_of_type_Bdzh = new bdzh();
+    }
+    return jdField_a_of_type_Bdzh;
   }
   
-  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3)
+  public int a(QQAppInterface paramQQAppInterface)
   {
-    return bdzv.a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramInt2, paramInt3);
+    int i = 0;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      i = paramQQAppInterface.getInt("sp_unread_friendsys_count", 0);
+    }
+    return i;
   }
   
-  public void a(String paramString)
+  public long a()
   {
-    Object localObject;
-    if ((paramString != null) && (paramString.length() > 0) && (paramString.charAt(0) == '\026'))
-    {
-      localObject = paramString.split("\\|");
-      if (localObject != null)
-      {
-        int i = 0;
-        while (i < localObject.length)
-        {
-          if ((localObject[i] != null) && (localObject[i].equals("null"))) {
-            localObject[i] = null;
-          }
-          i += 1;
-        }
-        if (localObject.length >= 1) {
-          this.jdField_a_of_type_JavaLangString = localObject[0].trim();
-        }
-        if (localObject.length < 2) {}
-      }
+    return this.b;
+  }
+  
+  public long a(QQAppInterface paramQQAppInterface)
+  {
+    long l = 0L;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      l = paramQQAppInterface.getLong("sp_oldest_friendmsg", 0L);
     }
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(localObject[1]);
-      if (localObject.length < 3) {}
+    return l;
+  }
+  
+  public structmsg.StructMsg a(Long paramLong)
+  {
+    structmsg.StructMsg localStructMsg = null;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
     }
-    catch (NumberFormatException localException3)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
-        if (localObject.length < 4) {}
-      }
-      catch (NumberFormatException localException3)
-      {
-        try
-        {
-          this.jdField_a_of_type_Boolean = Boolean.parseBoolean(localObject[3]);
-          if (localObject.length >= 5) {
-            this.jdField_b_of_type_JavaLangString = localObject[4];
-          }
-          if (localObject.length >= 6) {
-            this.jdField_c_of_type_JavaLangString = localObject[5];
-          }
-          if (localObject.length >= 7) {
-            this.jdField_d_of_type_JavaLangString = localObject[6];
-          }
-          if (localObject.length >= 8) {
-            this.jdField_e_of_type_JavaLangString = localObject[7];
-          }
-          if (localObject.length >= 9) {
-            this.jdField_f_of_type_JavaLangString = localObject[8];
-          }
-          if (localObject.length >= 10) {
-            this.g = localObject[9];
-          }
-          if (localObject.length < 11) {}
-        }
-        catch (Exception localException3)
-        {
-          try
-          {
-            this.jdField_b_of_type_Int = Integer.parseInt(localObject[10]);
-            if (localObject.length < 12) {}
-          }
-          catch (Exception localException3)
-          {
-            try
-            {
-              for (;;)
-              {
-                this.jdField_c_of_type_Int = Integer.parseInt(localObject[11]);
-                if (this.jdField_c_of_type_Int == jdField_f_of_type_Int)
-                {
-                  localObject = new bdxa();
-                  ((bdxa)localObject).a(paramString);
-                  this.jdField_a_of_type_JavaLangObject = localObject;
-                }
-                return;
-                localNumberFormatException1 = localNumberFormatException1;
-                this.jdField_a_of_type_Long = 0L;
-                localNumberFormatException1.printStackTrace();
-                continue;
-                localNumberFormatException2 = localNumberFormatException2;
-                this.jdField_a_of_type_Int = 0;
-                localNumberFormatException2.printStackTrace();
-                continue;
-                localException2 = localException2;
-                this.jdField_a_of_type_Boolean = false;
-                localException2.printStackTrace();
-              }
-              localException3 = localException3;
-              this.jdField_b_of_type_Int = 0;
-              localException3.printStackTrace();
-            }
-            catch (Exception localException1)
-            {
-              for (;;)
-              {
-                this.jdField_c_of_type_Int = 0;
-                localException1.printStackTrace();
-              }
-            }
-          }
-        }
-      }
+    return localStructMsg;
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_Bdzh = null;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendSystemMsgController", 2, "setUnReadFriendSystemMsgNum count = " + paramInt, new Throwable("debug"));
     }
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putInt("sp_unread_friendsys_count", paramInt).commit();
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putLong("sp_oldest_friendmsg", paramLong).commit();
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putBoolean("sp_is_sysmsg_over", paramBoolean).commit();
+    }
+  }
+  
+  public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendSystemMsgController", 2, "putStructMsgToMap key=" + paramLong);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
+    }
+  }
+  
+  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface.a(new FriendSystemMsgController.1(this, paramQQAppInterface, paramBoolean));
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()))) {
+      this.jdField_a_of_type_Boolean = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      bool = paramQQAppInterface.getBoolean("sp_is_sysmsg_over", false);
+    }
+    return bool;
   }
 }
 

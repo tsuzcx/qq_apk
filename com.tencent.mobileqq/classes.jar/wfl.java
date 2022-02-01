@@ -1,17 +1,44 @@
-import android.support.annotation.Nullable;
-import com.tribe.async.async.FutureListener.SimpleFutureListener;
-import com.tribe.async.async.JobController.DoneEvent;
-import com.tribe.async.async.Worker;
-import com.tribe.async.dispatch.Dispatcher;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.polymerization.QCirclePolymerizationFuelListItemView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StTagPageData;
+import qqcircle.QQCircleRankinglist.RankingItem;
 
 class wfl
-  extends FutureListener.SimpleFutureListener<Progress, Result>
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  wfl(wfk paramwfk, Worker paramWorker) {}
+  private wfl(wfi paramwfi) {}
   
-  public void onFutureDone(@Nullable Result paramResult)
+  public int getItemCount()
   {
-    wfo.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
+    if (wfi.a(this.a) == null) {
+      return 0;
+    }
+    return wfi.a(this.a).fuelCircleRankItem.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((wfi.a(this.a) == null) || (wfi.a(this.a).fuelCircleRankItem.size() < paramInt)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      ((wfk)paramViewHolder).a((QQCircleRankinglist.RankingItem)wfi.a(this.a).fuelCircleRankItem.get().get(paramInt), paramInt);
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = new QCirclePolymerizationFuelListItemView(wfi.a(this.a).getContext());
+    paramViewGroup.setReportBean(this.a.a());
+    paramViewGroup.a(paramInt);
+    return new wfk(paramViewGroup);
   }
 }
 

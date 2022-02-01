@@ -1,60 +1,45 @@
-import android.support.v4.view.ViewPager;
-import android.view.MotionEvent;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.1;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.2;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.3;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
 
 public class banf
-  implements GLGestureListener
 {
-  private ViewPager a;
+  private static volatile banf jdField_a_of_type_Banf;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public banf(ViewPager paramViewPager)
+  public static banf a()
   {
-    this.a = paramViewPager;
-  }
-  
-  public void a(ViewPager paramViewPager)
-  {
-    this.a = paramViewPager;
-  }
-  
-  public int onGetPriority()
-  {
-    return 1002;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    paramMotionEvent.getAction();
-    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
+    if (jdField_a_of_type_Banf == null) {}
     try
     {
-      this.a.onTouchEvent(paramMotionEvent);
-      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
-    }
-    catch (Exception localException)
-    {
-      try
-      {
-        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
-        {
-          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
-          this.a.onTouchEvent(paramMotionEvent);
-          paramMotionEvent.recycle();
-        }
-        return false;
-        localException = localException;
-        localException.printStackTrace();
+      if (jdField_a_of_type_Banf == null) {
+        jdField_a_of_type_Banf = new banf();
       }
-      catch (Exception paramMotionEvent)
-      {
-        for (;;)
-        {
-          paramMotionEvent.printStackTrace();
-        }
-      }
+      return jdField_a_of_type_Banf;
     }
+    finally {}
+  }
+  
+  public void a(EntityManager paramEntityManager, long paramLong, bang parambang)
+  {
+    long l = System.currentTimeMillis() - 86400000L;
+    ThreadManager.post(new PushDialogDbUtil.1(this, paramEntityManager, new String[] { String.valueOf(paramLong), String.valueOf(l) }, paramLong, l, parambang), 8, null, false);
+  }
+  
+  public void a(EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate)
+  {
+    ThreadManager.post(new PushDialogDbUtil.2(this, paramEntityManager, paramPushDialogTemplate), 8, null, false);
+  }
+  
+  public void b(EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate)
+  {
+    if ((paramEntityManager == null) || (paramPushDialogTemplate == null)) {
+      return;
+    }
+    ThreadManager.post(new PushDialogDbUtil.3(this, paramEntityManager, paramPushDialogTemplate), 2, null, false);
   }
 }
 

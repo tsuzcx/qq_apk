@@ -1,26 +1,44 @@
-import android.os.Bundle;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonInfoWidget;
-import com.tencent.biz.qqcircle.requests.QCircleJoinGroupReportRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-public class vnd
-  implements vzb
+class vnd
+  extends RecyclerView.OnScrollListener
 {
-  public vnd(QCirclePersonInfoWidget paramQCirclePersonInfoWidget) {}
+  vnd(vmw paramvmw) {}
   
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    Bundle localBundle = TroopInfoActivity.a(String.valueOf(paramLong), 0);
-    localBundle.putBoolean("troop_info_from_troopsetting", true);
-    localBundle.putInt("exposureSource", 3);
-    bfup.a(this.a.getContext(), localBundle, 2);
-    VSNetworkHelper.a().a(this.a.getContext(), new QCircleJoinGroupReportRequest(paramLong), new vne(this));
-    vrf.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 31, 2, "", QCirclePersonInfoWidget.a(this.a));
+    if ((paramInt == 0) && (vmw.a(this.a) != null) && ((vmw.a(this.a).getLayoutManager() instanceof LinearLayoutManager))) {
+      vmw.a(this.a, ((LinearLayoutManager)vmw.a(this.a).getLayoutManager()).findFirstCompletelyVisibleItemPosition());
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if ((vmw.a(this.a) != null) && ((vmw.a(this.a).getLayoutManager() instanceof LinearLayoutManager)))
+    {
+      if (paramInt2 > 0)
+      {
+        paramInt1 = ((LinearLayoutManager)vmw.a(this.a).getLayoutManager()).findLastVisibleItemPosition();
+        paramInt2 = vmw.a(this.a).getLayoutManager().getItemCount();
+        if (paramInt1 >= paramInt2 - 2) {
+          vmw.d(this.a);
+        }
+        if ((paramInt1 == paramInt2 - 1) && (vmw.a(this.a).a().a())) {
+          vmw.e(this.a);
+        }
+        vmw.b(this.a, paramInt1);
+      }
+      return;
+    }
+    paramInt1 = ((LinearLayoutManager)vmw.a(this.a).getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+    if (vmw.a(this.a) == 0) {
+      vmw.e(this.a);
+    }
+    vmw.b(this.a, paramInt1);
   }
 }
 

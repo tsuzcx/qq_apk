@@ -1,29 +1,49 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import android.os.Handler;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import java.util.ArrayList;
 
 public class bqby
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public bqby(CaptureQmcfSoDownloadFragment.7 param7) {}
+  public bqby(bqbx parambqbx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void dispatchMessage(Message paramMessage)
   {
-    paramDialogInterface = this.a.this$0.getActivity();
-    if (paramInt == 1)
+    super.dispatchMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
+    default: 
+      return;
+    case 1: 
+      if (bqbx.a(this.a) != null)
+      {
+        yuq.b("0X80080E3", yuq.a);
+        paramMessage = new ArrayList();
+        paramMessage.add(Uri.parse(bqbx.a(this.a)));
+        paramMessage = new Intent("", Uri.parse("pituopenapi://TTPTBEAUTIFY?back=1&v=490&refer=qqimageedit")).setClassName("com.tencent.ttpic", "com.tencent.ttpic.module.MainActivity").putParcelableArrayListExtra("android.intent.extra.STREAM", paramMessage);
+        paramMessage.putExtra("big_brother_source_key", "biz_src_jc_editor");
+        this.a.jdField_a_of_type_Bqhs.getActivity().startActivityForResult(paramMessage, 100);
+      }
+      this.a.c();
+      return;
+    case 2: 
+      paramMessage = (Bitmap)paramMessage.obj;
+      this.a.jdField_a_of_type_Bqgk.a(paramMessage, false);
+      if (this.a.jdField_a_of_type_Bqgk.a != null)
+      {
+        this.a.jdField_a_of_type_Bqgk.a.d();
+        this.a.jdField_a_of_type_Bqgk.z();
+      }
+      this.a.jdField_a_of_type_Boolean = true;
       return;
     }
-    paramDialogInterface.finish();
+    this.a.jdField_a_of_type_Bqgk.a(0);
+    this.a.c();
   }
 }
 

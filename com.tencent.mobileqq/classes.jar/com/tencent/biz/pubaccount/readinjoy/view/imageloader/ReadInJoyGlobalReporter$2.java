@@ -4,12 +4,12 @@ import android.content.IntentFilter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tdx;
+import sup;
 
 public class ReadInJoyGlobalReporter$2
   implements Runnable
 {
-  public ReadInJoyGlobalReporter$2(tdx paramtdx) {}
+  public ReadInJoyGlobalReporter$2(sup paramsup) {}
   
   public void run()
   {
@@ -19,10 +19,10 @@ public class ReadInJoyGlobalReporter$2
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      if (tdx.b(this.this$0) == 0)
+      if (sup.b(this.this$0) == 0)
       {
         BaseApplicationImpl.getContext().registerReceiver(this.this$0.a, localIntentFilter);
-        tdx.a(this.this$0, 1);
+        sup.a(this.this$0, 1);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyGlobalReporter", 2, "registerScreenListener");

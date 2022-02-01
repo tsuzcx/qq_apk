@@ -9,7 +9,7 @@ class TransactionActivity$5
   
   public void run()
   {
-    TransactionActivity.b(this.this$0).setText(this.this$0.getString(2131696136));
+    TransactionActivity.b(this.this$0).setText(this.this$0.getString(2131696179));
   }
 }
 

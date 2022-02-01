@@ -1,175 +1,111 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import java.io.File;
 
 public class amvi
 {
-  private final int jdField_a_of_type_Int;
-  private amvj jdField_a_of_type_Amvj;
-  private amvm jdField_a_of_type_Amvm;
-  private amvn jdField_a_of_type_Amvn;
-  private amvr jdField_a_of_type_Amvr;
-  private amvs jdField_a_of_type_Amvs;
-  private amvt jdField_a_of_type_Amvt;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
   
-  public amvi(String paramString, int paramInt)
+  public static String a(String paramString1, long paramLong, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_SpriteScriptManager", 2, "SpriteDrawerInfoManager constructor.");
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
     }
-    this.jdField_a_of_type_Amvm = new amvm();
-    this.jdField_a_of_type_Amvm.a(paramString);
-    this.jdField_a_of_type_Amvr = new amvr(this.jdField_a_of_type_Amvm);
-    this.jdField_a_of_type_Amvt = new amvt(this.jdField_a_of_type_Amvm, this.jdField_a_of_type_Amvr, this);
-    this.jdField_a_of_type_Amvs = new amvs(this.jdField_a_of_type_Amvm);
-    this.jdField_a_of_type_Amvn = new amvn(this.jdField_a_of_type_Amvm, this.jdField_a_of_type_Amvr, this.jdField_a_of_type_Amvs, this.jdField_a_of_type_Amvt);
-    this.jdField_a_of_type_Amvm.a(this.jdField_a_of_type_Amvs);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public amvj a()
-  {
-    return this.jdField_a_of_type_Amvj;
-  }
-  
-  public amvm a()
-  {
-    return this.jdField_a_of_type_Amvm;
-  }
-  
-  public amvs a()
-  {
-    return this.jdField_a_of_type_Amvs;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Amvj != null) {
-      this.jdField_a_of_type_Amvj.a(1);
+    if (paramString1.endsWith("/")) {
+      return paramString1 + paramLong + "/" + paramInt + "/" + paramString2;
     }
-    this.jdField_a_of_type_Amvm.a(-1);
+    return paramString1 + "/" + paramLong + "/" + paramInt + "/" + paramString2;
   }
   
-  public void a(int paramInt)
+  public static boolean a(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    QLog.i("CmShow_SpriteScriptManager", 1, "[onSurfaceReady], spriteFrom:" + paramInt);
-    if ((this.jdField_a_of_type_Amvm == null) || (this.jdField_a_of_type_Amvn == null) || (this.jdField_a_of_type_Amvt == null)) {
-      return;
+    if (100 == paramInt) {
+      return new File(annv.jdField_b_of_type_JavaLangString + paramInt + "_" + paramLong + "_" + paramString1 + File.separator + paramString2).exists();
     }
-    this.jdField_a_of_type_Amvm.a(0, 0);
-    this.jdField_a_of_type_Amvm.b(true);
-    paramInt = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Amvm.b(paramInt);
-    this.jdField_a_of_type_Amvt.a();
-    this.jdField_a_of_type_Amvm.a(true);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Amvj = ((amvj)this.jdField_a_of_type_Amvt.a(100));
+    return false;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public String a()
   {
-    this.jdField_a_of_type_Amvn.a(paramInt1, paramInt2);
+    return this.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(amkg paramamkg)
+  public String b()
   {
-    if (paramamkg == null) {}
-    ApolloCmdChannel localApolloCmdChannel;
-    do
+    if (100 == this.jdField_a_of_type_Int) {
+      return annv.jdField_b_of_type_JavaLangString + a() + File.separator;
+    }
+    return "";
+  }
+  
+  public String c()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + ".zip";
+    }
+    return "";
+  }
+  
+  public String d()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + "_patch.zip";
+    }
+    return "";
+  }
+  
+  public String e()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_c_of_type_Int + ".zip";
+    }
+    return "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ContentUpdateCheckResult{");
+    localStringBuffer.append("mBuzId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mItemId=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mVersion=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", mOldVersion=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", mDownloadFileUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mIsPatch=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", mPatchData=");
+    if (this.jdField_a_of_type_ArrayOfByte == null) {
+      localStringBuffer.append("null");
+    }
+    for (;;)
     {
-      return;
-      this.jdField_a_of_type_Amvm.a(paramamkg);
-      localApolloCmdChannel = ApolloUtil.a();
-    } while (localApolloCmdChannel == null);
-    localApolloCmdChannel.addRenderRunner(paramamkg);
-  }
-  
-  public void a(amve paramamve)
-  {
-    this.jdField_a_of_type_Amvr.a(paramamve);
-  }
-  
-  public void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
-  {
-    this.jdField_a_of_type_Amvn.a(this.jdField_a_of_type_Amvm, paramPlayActionConfig);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Amvn.a(paramString);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Amvn.a(paramString, paramInt);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Amvn.a(paramString, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Amvn != null) {
-      this.jdField_a_of_type_Amvn.a(this.jdField_a_of_type_Amvm, paramString1, paramString2);
+      localStringBuffer.append(", mPatchSize=").append(this.jdField_b_of_type_Long);
+      localStringBuffer.append(", mDownloadPatchFileUrl='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mMd5='").append(this.jdField_d_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadFileName='").append(this.jdField_e_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadPatchFileName='").append(this.jdField_f_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mFlagWriteIntervalTs=").append(this.jdField_b_of_type_Boolean);
+      localStringBuffer.append(", mCheckServerInterval=").append(this.jdField_d_of_type_Int);
+      localStringBuffer.append(", mCheckRequestId=").append(this.jdField_e_of_type_Int);
+      localStringBuffer.append(", mDomainId=").append(this.jdField_f_of_type_Int);
+      localStringBuffer.append('}');
+      return localStringBuffer.toString();
+      localStringBuffer.append("mPatchData:").append(this.jdField_a_of_type_ArrayOfByte);
     }
-  }
-  
-  public void a(String paramString1, String paramString2, float paramFloat, int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Amvm.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Amvm.b = paramString1;
-    this.jdField_a_of_type_Amvm.jdField_a_of_type_Float = paramFloat;
-    if (this.jdField_a_of_type_Amvr != null) {
-      this.jdField_a_of_type_Amvn.a(this.jdField_a_of_type_Amvm, paramInt, this.jdField_a_of_type_Amvr.a, paramBundle);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Amvn.a(paramString1, paramString2, paramInt1, paramInt2);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Amvn.a(paramString, paramBoolean);
-  }
-  
-  public void a(List<String> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Amvn.a(paramList, paramBoolean);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Amvj != null) {
-      this.jdField_a_of_type_Amvj.a(2);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Amvs != null) {
-      this.jdField_a_of_type_Amvs.a();
-    }
-    Object localObject = this.jdField_a_of_type_Amvm.a();
-    if (localObject != null)
-    {
-      localObject = ((amkg)localObject).getRenderImpl();
-      if (localObject != null) {
-        ((amir)localObject).c();
-      }
-    }
-    this.jdField_a_of_type_Amvr.a();
-    this.jdField_a_of_type_Amvt.b();
-    this.jdField_a_of_type_Amvm.c();
-    this.jdField_a_of_type_Amvn.a();
-    this.jdField_a_of_type_Boolean = false;
   }
 }
 

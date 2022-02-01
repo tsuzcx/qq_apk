@@ -1,85 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class afrh
-  extends axeu
+  extends anyu
 {
-  public afrh(VisitorsActivity paramVisitorsActivity) {}
+  public afrh(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean) && (TextUtils.equals("0", paramString)))
-    {
-      if (this.a.jdField_a_of_type_Afrz != null) {
-        this.a.jdField_a_of_type_Afrz.notifyDataSetChanged();
-      }
-      if (this.a.b != null) {
-        this.a.b.notifyDataSetChanged();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
+    if (this.a.jdField_a_of_type_Amro == null) {}
     do
     {
-      return;
-      if (paramInt2 == 1)
+      do
       {
-        if (!paramBoolean)
-        {
-          this.a.jdField_a_of_type_Azkn.b(paramString2, paramInt1, false);
-          return;
-        }
-        this.a.jdField_a_of_type_Azkn.a(paramString2, paramInt1, false);
         return;
-      }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_Azkn.a(Long.parseLong(paramString2));
+      } while (!paramBoolean1);
+      this.a.jdField_a_of_type_JavaUtilMap = axan.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
+    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
+    this.a.jdField_a_of_type_Amro.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Amro.notifyDataSetChanged();
+    this.a.b();
   }
   
-  protected void a(boolean paramBoolean, ArrayList<axdg> paramArrayList, int paramInt)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    if ((paramBoolean) && (paramArrayList != null)) {}
-    for (;;)
-    {
-      axdg localaxdg;
-      try
-      {
-        if (paramArrayList.size() > 0)
-        {
-          paramArrayList = paramArrayList.iterator();
-          if (paramArrayList.hasNext())
-          {
-            localaxdg = (axdg)paramArrayList.next();
-            if (paramInt != 511) {
-              break label121;
-            }
-            if (localaxdg.jdField_a_of_type_Int != 0) {
-              continue;
-            }
-            azkn localazkn = this.a.jdField_a_of_type_Azkn;
-            String str = localaxdg.jdField_a_of_type_Long + "";
-            int i = localaxdg.b;
-            localazkn.a(str, localaxdg.c + i, false);
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Exception paramArrayList)
-      {
-        paramArrayList.printStackTrace();
-      }
-      label121:
-      if (localaxdg.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_Azkn.a(localaxdg.jdField_a_of_type_Long);
-      }
+    if (this.a.jdField_a_of_type_Amro == null) {
+      return;
     }
+    if ((paramBoolean) && (paramMap != null))
+    {
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Integer localInteger = (Integer)paramMap.get(str);
+        if (localInteger != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
+        }
+      }
+      this.a.jdField_a_of_type_Amro.a(this.a.jdField_a_of_type_JavaUtilMap);
+      this.a.jdField_a_of_type_Amro.notifyDataSetChanged();
+      this.a.b();
+      return;
+    }
+    this.a.jdField_a_of_type_Amro.notifyDataSetChanged();
+    this.a.b();
+    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131718983), 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class akna
-  implements View.OnClickListener
+  extends ayxl
 {
-  public akna(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public akna(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    AvatarPendantActivity.a(this.a);
   }
 }
 

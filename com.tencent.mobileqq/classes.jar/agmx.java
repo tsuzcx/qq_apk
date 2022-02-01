@@ -1,33 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
 
-public class agmx
-  implements View.OnClickListener
+class agmx
+  implements ImageAssetDelegate
 {
-  agmx(agmv paramagmv) {}
+  agmx(agmu paramagmu) {}
   
-  public void onClick(View paramView)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
     try
     {
-      bcst.b(agmv.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
-      agmv.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
-      this.a.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramLottieImageAsset = bhmq.a(agmu.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramLottieImageAsset)
     {
-      for (;;)
-      {
-        QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + localThrowable);
-      }
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
     }
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
   }
 }
 

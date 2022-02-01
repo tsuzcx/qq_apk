@@ -1,9 +1,15 @@
-import eipc.EIPCModule;
-import eipc.EIPCResultCallback;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public abstract interface bhcx
+class bhcx
+  implements FilenameFilter
 {
-  public abstract void a(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback);
+  bhcx(bhct parambhct, String paramString) {}
+  
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+  }
 }
 
 

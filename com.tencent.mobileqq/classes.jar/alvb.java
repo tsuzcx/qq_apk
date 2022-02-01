@@ -1,24 +1,26 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class alvb
-  extends zyu
+  implements alwc
 {
-  public alvb(ShoppingFragment paramShoppingFragment, Bundle paramBundle)
+  public alvb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    super(paramBundle);
+    if (this.a.r == 10011)
+    {
+      NewFlowCameraActivity.a(this.a, paramString1);
+      return;
+    }
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.b(this.a, paramString1);
+      return;
+    }
+    this.a.i(true);
+    QQToast.a(this.a, anzj.a(2131706370), 0).a();
   }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
-  {
-    return ShoppingFragment.a(this.a);
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

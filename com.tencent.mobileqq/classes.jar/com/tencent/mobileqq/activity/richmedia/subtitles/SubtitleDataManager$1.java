@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import alnu;
-import alnw;
+import alzm;
+import alzo;
 import java.lang.ref.WeakReference;
 
 public class SubtitleDataManager$1
   implements Runnable
 {
-  public SubtitleDataManager$1(alnu paramalnu) {}
+  public SubtitleDataManager$1(alzm paramalzm) {}
   
   public void run()
   {
     if (this.this$0.a != null) {
-      ((alnw)this.this$0.a.get()).a();
+      ((alzo)this.this$0.a.get()).a();
     }
   }
 }

@@ -1,35 +1,70 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import com.tencent.biz.subscribe.comment.EmoView;
-import com.tencent.mobileqq.widget.QQToast;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.SubscribeGetRecommendUserListRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class aafq
-  implements aafr
+  implements aafo
 {
-  public aafq(EmoView paramEmoView) {}
+  private static String jdField_a_of_type_JavaLangString = "TopPanelPresenter";
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private aafp jdField_a_of_type_Aafp;
   
-  public boolean a()
+  public aafq(aafp paramaafp)
   {
-    if (EmoView.a(this.a) == null) {
-      return false;
-    }
-    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
-    return true;
+    this.jdField_a_of_type_Aafp = paramaafp;
+    this.jdField_a_of_type_Aafp.setPresenter(this);
   }
   
-  public boolean a(String paramString)
+  private List<aagb> a(CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
   {
-    if (EmoView.a(this.a) == null) {
-      return false;
-    }
-    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
+    ArrayList localArrayList = new ArrayList();
+    if (paramStGetRecommendUserListRsp.expType.get() == 0)
     {
-      QQToast.a(this.a.getContext(), 0, anni.a(2131702913), 0);
-      return false;
+      if (paramStGetRecommendUserListRsp.vecUser.has())
+      {
+        paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUser.get().iterator();
+        while (paramStGetRecommendUserListRsp.hasNext()) {
+          localArrayList.add(new aagb((CertifiedAccountMeta.StUser)paramStGetRecommendUserListRsp.next()));
+        }
+      }
     }
-    EmoView.a(EmoView.a(this.a), paramString);
-    return true;
+    else if ((paramStGetRecommendUserListRsp.expType.get() == 1) && (paramStGetRecommendUserListRsp.vecUserWithFeed.has()))
+    {
+      paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUserWithFeed.get().iterator();
+      while (paramStGetRecommendUserListRsp.hasNext()) {
+        localArrayList.add(new aagb((CertifiedAccountMeta.StFeed)paramStGetRecommendUserListRsp.next()));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l = System.currentTimeMillis();
+    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 100, 0);
+    ((SubscribeGetRecommendUserListRequest)localObject).setEnableCache(false);
+    VSNetworkHelper.a().a((VSBaseRequest)localObject, new aafr(this, l));
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aafp != null)
+    {
+      this.jdField_a_of_type_Aafp.setPresenter(null);
+      this.jdField_a_of_type_Aafp = null;
+    }
   }
 }
 

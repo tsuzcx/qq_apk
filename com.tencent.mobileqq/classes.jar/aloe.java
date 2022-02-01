@@ -1,6 +1,24 @@
-public abstract interface aloe
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+
+public class aloe
+  extends alnv
 {
-  public abstract void a(int paramInt, String paramString);
+  public Button a;
+  public RelativeLayout a;
+  public TextView a;
+  public TroopLabelLayout a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

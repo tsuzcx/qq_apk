@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import anni;
-import apvb;
+import anzj;
+import aqir;
 
 public class DrawableSeekbar
   extends LinearLayout
@@ -22,7 +22,7 @@ public class DrawableSeekbar
 {
   int jdField_a_of_type_Int;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  apvb jdField_a_of_type_Apvb;
+  aqir jdField_a_of_type_Aqir;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
@@ -53,7 +53,7 @@ public class DrawableSeekbar
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702319));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131702426));
   }
   
   private void b()
@@ -108,8 +108,8 @@ public class DrawableSeekbar
         getParent().requestDisallowInterceptTouchEvent(true);
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
         this.b = ((int)paramMotionEvent.getRawY());
-        if (this.jdField_a_of_type_Apvb != null) {
-          this.jdField_a_of_type_Apvb.a();
+        if (this.jdField_a_of_type_Aqir != null) {
+          this.jdField_a_of_type_Aqir.a();
         }
       }
     case 2: 
@@ -132,12 +132,12 @@ public class DrawableSeekbar
         k = getWidth();
         j = k - paramView.getWidth();
       }
-      if (this.jdField_a_of_type_Apvb != null)
+      if (this.jdField_a_of_type_Aqir != null)
       {
         i = this.d;
         this.d = ((int)(j / (getWidth() - paramView.getWidth()) * this.c));
         if (i != this.d) {
-          this.jdField_a_of_type_Apvb.a(this.d);
+          this.jdField_a_of_type_Aqir.a(this.d);
         }
       }
       paramView.layout(j, paramView.getTop(), k, paramView.getBottom());
@@ -147,10 +147,10 @@ public class DrawableSeekbar
       break;
       getParent().requestDisallowInterceptTouchEvent(false);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Apvb == null) {
+      if (this.jdField_a_of_type_Aqir == null) {
         break;
       }
-      this.jdField_a_of_type_Apvb.b();
+      this.jdField_a_of_type_Aqir.b();
       break;
       j = i;
     }
@@ -161,9 +161,9 @@ public class DrawableSeekbar
     this.c = paramInt;
   }
   
-  public void setOnProgressChangedListener(apvb paramapvb)
+  public void setOnProgressChangedListener(aqir paramaqir)
   {
-    this.jdField_a_of_type_Apvb = paramapvb;
+    this.jdField_a_of_type_Aqir = paramaqir;
   }
   
   public void setProgress(int paramInt)

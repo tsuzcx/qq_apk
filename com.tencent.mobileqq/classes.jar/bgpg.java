@@ -1,36 +1,31 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Observable;
 
-class bgpg
-  implements View.OnClickListener
+public class bgpg
+  extends Observable
 {
-  bgpg(bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener) {}
+  private static bgpg a;
   
-  public void onClick(View paramView)
+  public static bgpg a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgpa, 0);
-    }
+    if (a == null) {}
     try
     {
-      if (this.jdField_a_of_type_Bgpa.isShowing()) {
-        this.jdField_a_of_type_Bgpa.dismiss();
+      if (a == null) {
+        a = new bgpg();
       }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      return a;
     }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    finally {}
+  }
+  
+  public void setChanged()
+  {
+    super.setChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgpg
  * JD-Core Version:    0.7.0.1
  */

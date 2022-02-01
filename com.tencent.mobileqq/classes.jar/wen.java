@@ -1,30 +1,15 @@
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
-import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleWaterfallFeedItemView;
+import com.tencent.qphone.base.util.QLog;
 
-class wen
-  implements RecyclerView.OnChildAttachStateChangeListener
+public class wen
+  extends vrh
 {
-  wen(wef paramwef) {}
+  public wen(QCircleWaterfallFeedItemView paramQCircleWaterfallFeedItemView) {}
   
-  public void onChildViewAttachedToWindow(View paramView)
+  public void a(int paramInt, vrd paramvrd)
   {
-    paramView = (wdx)wef.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == wef.a(this.a)))
-    {
-      paramView.b();
-      yqp.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
-    }
-  }
-  
-  public void onChildViewDetachedFromWindow(View paramView)
-  {
-    paramView = (wdx)wef.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == wef.a(this.a)))
-    {
-      paramView.c();
-      yqp.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
-    }
+    super.a(paramInt, paramvrd);
+    QLog.d("QCircleWaterfallFeedItemView1", 1, paramvrd.a() + "\n, state callback:" + paramInt);
   }
 }
 

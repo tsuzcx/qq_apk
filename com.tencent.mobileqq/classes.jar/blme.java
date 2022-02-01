@@ -1,73 +1,27 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.database.DataSetObserver;
+import com.tencent.widget.HorizontalListView;
 
 public class blme
-  extends RemoteCommand
+  extends DataSetObserver
 {
-  private SparseArray<List<blmf>> a = new SparseArray();
+  public blme(HorizontalListView paramHorizontalListView) {}
   
-  public blme(AppRuntime paramAppRuntime)
+  public void onChanged()
   {
-    super("com.tencent.individuality.individualityremotecommand");
-    a(0, new blmg());
+    this.a.mDataChanged = true;
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.invalidate();
+    this.a.requestLayout();
   }
   
-  public boolean a(int paramInt, blmf paramblmf)
+  public void onInvalidated()
   {
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList();
-      this.a.put(paramInt, localObject);
-    }
-    if (!((List)localObject).contains(paramblmf)) {
-      return ((List)localObject).add(paramblmf);
-    }
-    return false;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    int i = paramBundle.getInt("com.tencent.individuality.individualityremotecommand.id", -1);
-    if (-1 != i)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("IndividualityRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
-      }
-      paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
-      {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((blmf)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    }
-    label100:
-    do
-    {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
-        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      }
-    } while (!((blmf)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    return paramBundle;
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.reset(true);
+    this.a.invalidate();
+    this.a.requestLayout();
   }
 }
 

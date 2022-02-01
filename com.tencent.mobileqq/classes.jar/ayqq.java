@@ -1,69 +1,109 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ayqq
+  extends BaseAdapter
 {
-  private double jdField_a_of_type_Double = 0.0D;
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ayqr jdField_a_of_type_Ayqr;
-  private String jdField_a_of_type_JavaLangString;
-  private double jdField_b_of_type_Double = 0.0D;
-  private int jdField_b_of_type_Int;
+  private ayqs jdField_a_of_type_Ayqs;
+  private List<aysi> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  ayqq(String paramString, int paramInt)
+  public void a(ayqs paramayqs)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
+    this.jdField_a_of_type_Ayqs = paramayqs;
   }
   
-  void a()
+  public void a(List<aysi> paramList)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Double = 0.0D;
-    this.jdField_b_of_type_Double = 0.0D;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public void a(double paramDouble)
+  public int getCount()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int - 1)
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = 0;
+    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561343, paramViewGroup, false);
+    aysi localaysi = (aysi)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject2 = localaysi.a;
+    Object localObject1 = localObject2;
+    if (localObject2 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 9) {
+        localObject1 = ((String)localObject2).substring(0, 8) + "...";
       }
-      this.jdField_a_of_type_Double += paramDouble;
-      this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
-      this.jdField_b_of_type_Int += 1;
     }
-    for (;;)
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder((CharSequence)localObject1);
+    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
+    localObject2 = localaysi.b;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      this.jdField_a_of_type_Long = l;
-      return;
-      this.jdField_a_of_type_Double += paramDouble;
-      if (l - this.jdField_a_of_type_Long < 30L)
+      localSpannableStringBuilder.append(" 回复 ");
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 9) {
+        localObject1 = ((String)localObject2).substring(0, 8) + "...";
+      }
+      localSpannableStringBuilder.append((CharSequence)localObject1);
+      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - ((String)localObject1).length(), localSpannableStringBuilder.length(), 33);
+    }
+    localSpannableStringBuilder.append("：").append(localaysi.c);
+    localObject1 = localTextView.getPaint();
+    localObject2 = new ArrayList();
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = (zps.a(localTextView.getContext()) - zps.a(localTextView.getContext(), 85.0F));
+    }
+    int i = 0;
+    while (i < localSpannableStringBuilder.length())
+    {
+      int k = j;
+      if (((TextPaint)localObject1).measureText(localSpannableStringBuilder.subSequence(j, i).toString()) > this.jdField_a_of_type_Int)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. batch mode count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
-        }
-        this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
-        this.jdField_b_of_type_Int += 1;
-        return;
+        ((List)localObject2).add(Integer.valueOf(i - 1));
+        k = i;
       }
-      double d = this.jdField_a_of_type_Double / (this.jdField_b_of_type_Int + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. triggered count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double + " ave: " + d);
-      }
-      if (this.jdField_a_of_type_Ayqr != null) {
-        this.jdField_a_of_type_Ayqr.a(d, this.jdField_b_of_type_Double);
-      }
-      a();
+      i += 1;
+      j = k;
     }
-  }
-  
-  void a(ayqr paramayqr)
-  {
-    this.jdField_a_of_type_Ayqr = paramayqr;
+    localObject1 = ((List)localObject2).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (Integer)((Iterator)localObject1).next();
+      if (((Integer)localObject2).intValue() < localSpannableStringBuilder.length() - 1) {
+        localSpannableStringBuilder.insert(((Integer)localObject2).intValue(), "\n");
+      }
+    }
+    localTextView.setText(localSpannableStringBuilder);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    localTextView.setOnClickListener(new ayqr(this, paramViewGroup));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localTextView;
   }
 }
 

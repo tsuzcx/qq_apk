@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.logic;
 
 import android.widget.LinearLayout;
-import bfbv;
+import bgbp;
 
 public class WeiKeEntranceHelper$1
   implements Runnable
 {
-  public WeiKeEntranceHelper$1(bfbv parambfbv) {}
+  public WeiKeEntranceHelper$1(bgbp parambgbp) {}
   
   public void run()
   {

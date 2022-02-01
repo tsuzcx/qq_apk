@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aanz;
+import aasb;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -60,7 +60,7 @@ public abstract class GuardProcessExitListener
   
   protected String a()
   {
-    return aanz.a();
+    return aasb.a();
   }
   
   public void a(boolean paramBoolean)

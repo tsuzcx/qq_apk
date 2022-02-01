@@ -1,37 +1,8 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
-import com.tencent.mobileqq.now.widget.DecoratorViewPager;
+import android.os.Bundle;
 
-class aydk
-  implements ViewPager.OnPageChangeListener
+public abstract interface aydk
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  aydk(aydj paramaydj) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if ((paramInt1 == 2) && (paramFloat > 0.4F))
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        aydj.a(this.jdField_a_of_type_Aydj);
-      }
-      aydj.a(this.jdField_a_of_type_Aydj).setCurrentItem(2);
-    }
-    if (paramFloat == 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    aydj.a(this.jdField_a_of_type_Aydj, paramInt);
-    aydj.a(this.jdField_a_of_type_Aydj, aydj.a(this.jdField_a_of_type_Aydj).a(paramInt));
-  }
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

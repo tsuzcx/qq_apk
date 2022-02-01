@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
 import android.os.Message;
-import binj;
+import bjoi;
 import java.util.ArrayList;
 
 public class OpenSdkFriendService$1

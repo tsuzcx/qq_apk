@@ -1,23 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class afhz
-  implements CompoundButton.OnCheckedChangeListener
+  extends ayxl
 {
-  public afhz(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public afhz(QQSettingMe paramQQSettingMe) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramCompoundButton.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      awhv.a().a(this.a.app, paramBoolean);
+    if (this.a.c) {
+      this.a.i();
     }
   }
 }

@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alvx
-  implements DialogInterface.OnClickListener
+  implements amap
 {
-  public alvx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public alvx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a_(String paramString)
   {
-    this.a.s();
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    }
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
   }
 }
 

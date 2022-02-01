@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bgak
-  implements bdfn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bgak(TroopInteractGiftAnimationController.1.1 param1) {}
+  public bgak(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.this$0.a();
-    if (this.a.a.jdField_a_of_type_Bdfn != null) {
-      this.a.a.jdField_a_of_type_Bdfn.a();
-    }
-    this.a.a.this$0.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.this$0.a, true);
+    this.a.a(paramCompoundButton, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

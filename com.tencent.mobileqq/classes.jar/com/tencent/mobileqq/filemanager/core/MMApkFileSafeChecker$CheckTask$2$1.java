@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atei;
-import atek;
+import atwc;
+import atwe;
 
 public class MMApkFileSafeChecker$CheckTask$2$1
   implements Runnable
 {
-  public MMApkFileSafeChecker$CheckTask$2$1(atek paramatek, int paramInt1, int paramInt2, String paramString1, String paramString2) {}
+  public MMApkFileSafeChecker$CheckTask$2$1(atwe paramatwe, int paramInt1, int paramInt2, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Atek.a.a) {
+    if (this.jdField_a_of_type_Atwe.a.a) {
       return;
     }
-    this.jdField_a_of_type_Atek.a.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Atwe.a.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, null);
   }
 }
 

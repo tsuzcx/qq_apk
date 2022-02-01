@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
 public class amwm
-  extends amok
+  implements Comparator<amwq>
 {
-  public amwm(ApolloGameActivity paramApolloGameActivity) {}
+  public amwm(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  public int a(amwq paramamwq1, amwq paramamwq2)
   {
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
-    }
+    return paramamwq1.a() - paramamwq2.a();
   }
 }
 

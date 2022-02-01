@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import bclx;
+import bdep;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.widget.HorizontalListView;
 
@@ -62,7 +62,7 @@ public class CTEntryListView
       if ((!this.jdField_a_of_type_Boolean) || (i <= k)) {
         break label200;
       }
-      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(bclx.jdField_a_of_type_Int * 0.1F))) {
+      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(bdep.jdField_a_of_type_Int * 0.1F))) {
         break label208;
       }
     }

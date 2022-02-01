@@ -1,22 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class psy
-  implements psu
+class psy
+  implements View.OnClickListener
 {
-  public psy(VideoView paramVideoView) {}
+  psy(psx parampsx, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      QLog.d("gifvideo.VideoView", 1, "install success");
-      VideoView.access$000(this.a, 2);
-      VideoView.access$100(this.a);
-      return;
-    }
-    QLog.d("gifvideo.VideoView", 1, "install fail");
-    VideoView.access$000(this.a, -1);
+    ozs.a(psx.a(this.jdField_a_of_type_Psx), this.jdField_a_of_type_JavaLangString);
+    psx.a(1, ozs.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

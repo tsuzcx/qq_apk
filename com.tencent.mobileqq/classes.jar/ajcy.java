@@ -1,56 +1,34 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
-public class ajcy<T>
+public class ajcy
+  implements ampn
 {
-  SparseArrayCompat<ajcx<T>> a = new SparseArrayCompat();
+  public ajcy(AddContactsView paramAddContactsView) {}
   
-  public int a()
+  public void a()
   {
-    return this.a.size();
-  }
-  
-  public int a(T paramT, int paramInt)
-  {
-    int i = this.a.size() - 1;
-    while (i >= 0)
-    {
-      if (((ajcx)this.a.valueAt(i)).a(paramT, paramInt)) {
-        return this.a.keyAt(i);
-      }
-      i -= 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled _B");
     }
-    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
   }
   
-  public ajcx a(int paramInt)
+  public void b()
   {
-    return (ajcx)this.a.get(paramInt);
-  }
-  
-  public ajcy<T> a(ajcx<T> paramajcx)
-  {
-    int i = this.a.size();
-    if (paramajcx != null) {
-      this.a.put(i, paramajcx);
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable _B");
     }
-    return this;
-  }
-  
-  public void a(ajdf paramajdf, T paramT, int paramInt)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      ajcx localajcx = (ajcx)this.a.valueAt(i);
-      if (localajcx.a(paramT, paramInt))
-      {
-        localajcx.a(paramajdf, paramT, paramInt);
-        return;
-      }
-      i += 1;
-    }
-    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.getViewTreeObserver().addOnGlobalLayoutListener(new ajcz(this));
   }
 }
 

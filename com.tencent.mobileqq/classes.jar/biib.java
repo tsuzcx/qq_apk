@@ -1,50 +1,146 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.LinkedHashMap;
+import QC.LoginInfo;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Map;
+import mqq.manager.TicketManager;
 
 public class biib
 {
-  public Context a;
-  public bihy a;
-  private Map<String, Object> a;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, JceStruct> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String b;
+  private String c = "req";
+  private String d = "rsp";
   
-  public biib(Context paramContext, bihy parambihy)
+  @Deprecated
+  public biib(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bihy = parambihy;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    if (!anvc.a().containsKey(paramString2)) {
+      anvc.a(paramString2, new int[] { 13 });
+    }
   }
   
-  public Object a(String paramString)
+  public biib(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (TextUtils.isEmpty(paramString)) {
-      return localObject2;
-    }
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    if (TextUtils.equals(paramString, "intchk")) {
-      localObject1 = new biie(this);
-    }
-    for (;;)
+    this(paramString1, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    anvc.a(paramString2, a(paramString2, 13));
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public static LoginInfo a()
+  {
+    try
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        break;
+      Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject == null) {
+        return null;
       }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
-      return localObject1;
-      if (TextUtils.equals(paramString, "app_scan")) {
-        localObject1 = new biid(this);
-      } else if (TextUtils.equals(paramString, "sig_check")) {
-        localObject1 = new biig(this);
-      }
+      String str = ((AppInterface)localObject).getCurrentAccountUin();
+      localObject = ((TicketManager)((AppInterface)localObject).getManager(2)).getSkey(str);
+      LoginInfo localLoginInfo = new LoginInfo();
+      localLoginInfo.lUin = Long.parseLong(str);
+      localLoginInfo.iKeyType = 1;
+      localLoginInfo.sSKey = ((String)localObject);
+      localLoginInfo.iOpplat = 2;
+      localLoginInfo.sClientVer = bhlo.c();
+      return localLoginInfo;
     }
+    catch (Exception localException)
+    {
+      QLog.e("JceProtocol", 1, localException, new Object[0]);
+    }
+    return null;
+  }
+  
+  public static String a(ToServiceMsg paramToServiceMsg)
+  {
+    return paramToServiceMsg.getServiceCmd() + "_" + paramToServiceMsg.extraData.get(anty.SEQ_KEY);
+  }
+  
+  private int[] a(String paramString, int paramInt)
+  {
+    int j = 0;
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = paramInt;
+    Object localObject = arrayOfInt;
+    if (anvc.a().containsKey(paramString))
+    {
+      localObject = (int[])anvc.a().get(paramString);
+      if ((localObject == null) || (localObject.length == 0))
+      {
+        paramString = arrayOfInt;
+        return paramString;
+      }
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localObject.length) {
+          break label86;
+        }
+        paramString = (String)localObject;
+        if (localObject[i] == paramInt) {
+          break;
+        }
+        i += 1;
+      }
+      label86:
+      paramString = new int[localObject.length + 1];
+      i = j;
+      while (i < localObject.length)
+      {
+        paramString[i] = localObject[i];
+        i += 1;
+      }
+      paramString[(paramString.length - 1)] = paramInt;
+      localObject = paramString;
+    }
+    return localObject;
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket)
+  {
+    paramToServiceMsg = a(paramToServiceMsg);
+    bcqh.a(paramToServiceMsg);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramToServiceMsg))
+    {
+      paramFromServiceMsg = (JceStruct)this.jdField_a_of_type_JavaUtilHashMap.get(paramToServiceMsg);
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramToServiceMsg);
+      return paramUniPacket.getByClass(this.d, paramFromServiceMsg);
+    }
+    return null;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket, int paramInt)
+  {
+    paramUniPacket.setServantName(this.b);
+    paramUniPacket.setFuncName(paramToServiceMsg.extraData.getString("funcName"));
+    paramUniPacket.setRequestId(paramInt);
+    paramUniPacket.put(this.c, paramToServiceMsg.extraData.get("req"));
+  }
+  
+  public void a(String paramString, JceStruct paramJceStruct1, JceStruct paramJceStruct2, anui paramanui, boolean paramBoolean)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramanui = ((aogu)localQQAppInterface.a(13)).createToServiceMsg(this.jdField_a_of_type_JavaLangString, paramanui, paramBoolean);
+    String str = a(paramanui);
+    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramJceStruct2);
+    bcqh.a(this, str);
+    paramanui.extraData.putSerializable("req", paramJceStruct1);
+    paramanui.extraData.putString("funcName", paramString);
+    localQQAppInterface.sendToService(paramanui);
   }
 }
 

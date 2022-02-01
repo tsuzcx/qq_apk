@@ -1,16 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import java.util.Locale;
 
 class bbqt
-  implements View.OnClickListener
+  implements MessageQueue.IdleHandler
 {
-  bbqt(bbqr parambbqr, bbnd parambbnd) {}
+  bbqt(bbqq parambbqq) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_Bbnd.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    AIOFilePictureData localAIOFilePictureData = this.a.a.a();
+    if (localAIOFilePictureData != null)
+    {
+      bbpj localbbpj = new bbpj();
+      if ((localbbpj.a(localAIOFilePictureData, 20)) && (localbbpj.a(localAIOFilePictureData, 20) == null))
+      {
+        if ((!localAIOFilePictureData.g) || (!bhnt.a(localAIOFilePictureData.d))) {
+          break label116;
+        }
+        this.a.f(true);
+        this.a.updateUI();
+      }
+    }
+    for (;;)
+    {
+      this.a.a(String.format(Locale.CHINA, this.a.mContext.getString(2131694456), new Object[] { auog.a(localAIOFilePictureData.e) }));
+      return false;
+      label116:
+      if (localAIOFilePictureData.h) {
+        this.a.f(false);
+      } else {
+        this.a.f(true);
+      }
+    }
   }
 }
 

@@ -1,62 +1,46 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.StrikethroughSpan;
+import android.util.SparseArray;
+import android.widget.Button;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 
 public class bhbj
+  extends bgst
 {
-  public static File a(Context paramContext)
-  {
-    return bhbn.a(paramContext);
-  }
+  public bhbj(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public static String a(Context paramContext)
+  public void a(SparseArray<bgtg> paramSparseArray)
   {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "GLDrawableV841.zip";
-    }
-    return paramContext + File.separator + "GLDrawableV841.zip";
-  }
-  
-  public static void a()
-  {
-    try
+    int j = 0;
+    this.a.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    Object localObject = (bgtg)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
+    if (localObject != null)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "GLDrawableV841", "gldrawable");
+      paramSparseArray = ((bgtg)localObject).a;
+      if (localObject == null) {
+        break label120;
       }
+      localObject = ((bgtg)localObject).b;
+      label55:
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label126;
+      }
+      j = paramSparseArray.indexOf((String)localObject);
+    }
+    label120:
+    label126:
+    for (int i = ((String)localObject).length() + j;; i = 0)
+    {
+      paramSparseArray = new SpannableString(paramSparseArray);
+      paramSparseArray.setSpan(new StrikethroughSpan(), j, i, 18);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramSparseArray);
       return;
+      paramSparseArray = "30金豆秀一下";
+      break;
+      localObject = null;
+      break label55;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    if (paramInt != 0) {}
-    try
-    {
-      QLog.e("GLDrawableDownloadHelper", 1, "error: " + paramInt);
-      return;
-    }
-    finally
-    {
-      paramContext = finally;
-      throw paramContext;
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return new File(a(paramContext)).exists();
   }
 }
 

@@ -1,23 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.Utils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.view.KeyEvent;
 
-public class bgyp
-  implements Sizeable
+public abstract interface bgyp
 {
-  public int a;
-  public HashMap<Integer, Bitmap> a = new HashMap();
-  public int b;
-  
-  public int getByteSize()
-  {
-    Iterator localIterator = this.a.values().iterator();
-    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
-    return i;
-  }
+  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
 }
 
 

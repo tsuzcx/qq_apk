@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import bglm;
+import bhln;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class HotChatFlashPicActivity$2
@@ -10,7 +10,7 @@ class HotChatFlashPicActivity$2
   
   public void run()
   {
-    bglm.b(this.a, HotChatFlashPicActivity.c(this.this$0));
+    bhln.b(this.a, HotChatFlashPicActivity.c(this.this$0));
     HotChatFlashPicActivity.b(this.this$0, true);
     if (!HotChatFlashPicActivity.a(this.this$0).get()) {
       HotChatFlashPicActivity.b(this.this$0, this.a);

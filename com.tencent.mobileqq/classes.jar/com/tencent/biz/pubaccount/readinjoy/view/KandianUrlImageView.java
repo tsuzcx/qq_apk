@@ -4,14 +4,14 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import sna;
-import tdt;
+import see;
+import sul;
 
 public class KandianUrlImageView
   extends ResizeURLImageView
 {
   private boolean mIsRecyclerView;
-  private sna mVisibilityChangedListener;
+  private see mVisibilityChangedListener;
   
   public KandianUrlImageView(Context paramContext)
   {
@@ -55,14 +55,14 @@ public class KandianUrlImageView
     this.mIsRecyclerView = paramBoolean;
   }
   
-  public void setVisibilityChangedListener(sna paramsna)
+  public void setVisibilityChangedListener(see paramsee)
   {
-    this.mVisibilityChangedListener = paramsna;
+    this.mVisibilityChangedListener = paramsee;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView
  * JD-Core Version:    0.7.0.1
  */

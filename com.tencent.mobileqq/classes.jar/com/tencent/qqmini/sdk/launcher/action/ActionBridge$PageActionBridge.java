@@ -8,6 +8,15 @@ import java.util.Map;
 public class ActionBridge$PageActionBridge
   extends ActionBridge<AppPageInfo>
 {
+  public static int getPageId(IMiniAppContext paramIMiniAppContext)
+  {
+    paramIMiniAppContext = (AppPageInfo)paramIMiniAppContext.performAction(obtain(1));
+    if (paramIMiniAppContext != null) {
+      return paramIMiniAppContext.pageId;
+    }
+    return -1;
+  }
+  
   public static String getPageUrl(IMiniAppContext paramIMiniAppContext)
   {
     paramIMiniAppContext = (AppPageInfo)paramIMiniAppContext.performAction(obtain(1));
@@ -28,7 +37,7 @@ public class ActionBridge$PageActionBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.ActionBridge.PageActionBridge
  * JD-Core Version:    0.7.0.1
  */

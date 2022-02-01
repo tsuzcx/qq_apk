@@ -1,58 +1,82 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bejl
-  implements befs
 {
-  public bejl(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  SparseArray<beji> jdField_a_of_type_AndroidUtilSparseArray;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(int paramInt1, int paramInt2)
+  bejl(QQAppInterface paramQQAppInterface)
   {
-    int k = 1;
-    if (this.a.b.getText().length() <= 0) {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(bejj.a.length);
+  }
+  
+  beji a(int paramInt)
+  {
+    beji localbeji = (beji)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localbeji != null) {
+      ??? = localbeji;
+    }
+    do
+    {
+      do
+      {
+        return ???;
+        switch (paramInt)
+        {
+        default: 
+          ??? = localbeji;
+        }
+      } while (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null);
+      ??? = localbeji;
+    } while (localbeji == null);
     for (;;)
     {
-      return;
-      if (paramInt1 < 0)
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
       {
-        if (paramInt2 > this.a.G.length() + 1) {}
-        for (;;)
+        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
+          break label167;
+        }
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbeji);
+        return localbeji;
+      }
+      Object localObject2 = new bejt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      localObject2 = new bejs(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      localObject2 = new bejv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      localObject2 = new beju(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      label167:
+      localObject2 = (beji)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    }
+  }
+  
+  void a()
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      {
+        int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+        i = 0;
+        if (i < j)
         {
-          this.a.b.setSelection(paramInt2);
+          beji localbeji = (beji)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+          if (localbeji != null) {
+            localbeji.a();
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidUtilSparseArray.clear();
           return;
-          paramInt2 = this.a.G.length() + 1;
         }
       }
-      if (paramInt2 < 0)
-      {
-        if (paramInt1 > this.a.G.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt1);
-          return;
-          paramInt1 = this.a.G.length() + 1;
-        }
-      }
-      if (!TextUtils.isEmpty(this.a.G))
-      {
-        int i = 0;
-        int j = paramInt1;
-        if (paramInt1 < this.a.G.length() + 1)
-        {
-          j = this.a.G.length() + 1;
-          i = 1;
-        }
-        if (paramInt2 < this.a.G.length() + 1) {
-          paramInt2 = this.a.G.length() + 1;
-        }
-        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
-        {
-          this.a.b.setSelection(j, paramInt2);
-          return;
-        }
-      }
+      i += 1;
     }
   }
 }

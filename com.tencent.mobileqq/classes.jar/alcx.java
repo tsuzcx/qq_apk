@@ -1,39 +1,60 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-class alcx
-  extends aoqo
+public class alcx
+  implements alcs
 {
-  alcx(alcv paramalcv, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  private List<String> a;
   
-  public int a()
+  public String a(List<String> paramList, boolean paramBoolean)
   {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow success");
+    int i = paramList.size() - 1;
+    while (i >= 0)
+    {
+      String str = (String)paramList.remove(i);
+      if (!TextUtils.isEmpty(str)) {
+        return str;
+      }
+      i -= 1;
     }
-    alcv.a(this.jdField_a_of_type_Alcv, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    ((bfrd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    alcv.b(this.jdField_a_of_type_Alcv, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (paramBoolean)
+    {
+      if (this.a == null)
+      {
+        this.a = new ArrayList(4);
+        this.a.add("apple");
+        this.a.add("good");
+        this.a.add("study");
+        this.a.add("play");
+      }
+      i = new Random().nextInt(this.a.size());
+      if (QLog.isColorLevel()) {
+        QLog.i("WordChainBizImpl", 2, "getRandomIdiom get backIdiom:" + i + " backWordListSize:" + this.a.size());
+      }
+      return (String)this.a.get(i);
+    }
+    return "";
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
+  public void a(String paramString) {}
   
-  public void b(Object paramObject)
+  public boolean a(String paramString)
   {
-    alcv.a(this.jdField_a_of_type_Alcv, 2131694617);
+    return !TextUtils.isEmpty(paramString);
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public InputFilter[] a(int paramInt)
   {
-    alcv.a(this.jdField_a_of_type_Alcv);
+    if ((bhjr.d()) || (bhjr.e())) {}
+    for (int i = 1; (i == 0) && (paramInt > 0); i = 0) {
+      return new InputFilter[] { new InputFilter.LengthFilter(paramInt) };
+    }
+    return new InputFilter[0];
   }
 }
 

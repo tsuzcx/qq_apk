@@ -1,28 +1,88 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.widgets.TabLayout;
-import java.io.PrintStream;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abee
-  implements ValueAnimator.AnimatorUpdateListener
+class abee
+  extends BroadcastReceiver
 {
-  public abee(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private abee(abec paramabec) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    System.out.println("value = " + f);
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int - this.b)
-    {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.setTranslationX(this.d * f);
+    int i = paramIntent.getIntExtra("bc_seq", -1);
+    if (i < 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
       }
-      i += 1;
     }
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
+    byte[] arrayOfByte;
+    do
+    {
+      do
+      {
+        return;
+        if (i == this.jdField_a_of_type_Int) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
+      return;
+      paramContext = paramIntent.getExtras();
+      arrayOfByte = paramContext.getByteArray("bc_data");
+      i = paramIntent.getIntExtra("portal_type_key", -1);
+      if (arrayOfByte != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
+    return;
+    if (QLog.isColorLevel())
+    {
+      if (i != 1009) {
+        break label286;
+      }
+      paramContext = "REQ_TYPE_GET_HEAD returned";
+    }
+    for (;;)
+    {
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
+      switch (i)
+      {
+      default: 
+        return;
+      }
+      this.jdField_a_of_type_Abec.a(this.jdField_a_of_type_Int);
+      paramIntent = azul.b(arrayOfByte);
+      paramContext = paramIntent;
+      if (paramIntent == null) {
+        paramContext = new JSONObject();
+      }
+      try
+      {
+        paramContext.put("errorCode", -1);
+        paramContext = paramContext.toString();
+        this.jdField_a_of_type_Abec.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
+        return;
+        label286:
+        paramContext = paramContext.toString();
+      }
+      catch (JSONException paramContext)
+      {
+        for (;;)
+        {
+          paramContext.printStackTrace();
+          paramContext = paramIntent;
+        }
+      }
+    }
   }
 }
 

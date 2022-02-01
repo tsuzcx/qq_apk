@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class rsb
-  implements View.OnClickListener
+public class rsb
+  extends odo
 {
-  rsb(rsa paramrsa) {}
+  private rsb(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public final void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = paramBundle.getString("VALUE_VIDEO_VID");
+      } while (localObject == null);
+      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
+    } while (localObject == null);
+    ((VideoInfo)localObject).q = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
   }
 }
 

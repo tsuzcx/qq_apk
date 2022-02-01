@@ -1,71 +1,61 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.graphics.Rect;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.method.Touch;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
-class biwl
-  implements DialogInterface.OnClickListener
+public class biwl
+  extends LinkMovementMethod
 {
-  biwl(biwe parambiwe, boolean paramBoolean1, DialogInterface.OnClickListener paramOnClickListener, Bundle paramBundle, int paramInt1, boolean paramBoolean2, Activity paramActivity, String paramString1, boolean paramBoolean3, boolean paramBoolean4, String paramString2, int paramInt2) {}
+  private static biwl a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static MovementMethod a()
   {
-    bisy.c("MyAppApi", "---onConfirm--onClick");
-    if (!this.jdField_a_of_type_Biwe.b())
+    if (a == null) {
+      a = new biwl();
+    }
+    return a;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp = new biwp(this.jdField_a_of_type_Biwe);
-      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
-      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      if (this.jdField_b_of_type_Boolean)
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
       {
-        this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
-        if ((this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws != null) && (this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.isShowing())) {
-          this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.a(0, 1);
+        if (i == 1) {
+          localObject[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            Rect localRect = new Rect();
+            paramTextView.getGlobalVisibleRect(localRect);
+            if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+              Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
+            }
+          }
         }
       }
     }
-    label636:
-    for (;;)
-    {
-      paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bivp.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.d);
-      this.jdField_a_of_type_Biwe.c = true;
-      biuh.a("201", biuh.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.jdField_b_of_type_JavaLangString);
-      paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 100 + "|" + paramDialogInterface;
-      bipx.a().a(25, paramDialogInterface);
-      bcst.b(null, "dc00898", "", "", "0X8008F7D", "0X8008F7D", 0, 0, "", "", "", "");
-      if (this.jdField_b_of_type_Int == 1)
-      {
-        paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.d);
-        bisp.b("6006", "1", "0", this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      }
-      if (("ANDROID.QQ.YYBXZGAMECENTER".equals(this.jdField_a_of_type_JavaLangString)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(this.jdField_a_of_type_JavaLangString))) {
-        aceh.a(null, "765", "205010", this.jdField_b_of_type_JavaLangString, "76501", "1", "156");
-      }
-      return;
-      new biwo(this.jdField_a_of_type_Biwe, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp).execute(new Void[0]);
-      continue;
-      if ((bivk.h()) || (this.c)) {
-        if (this.jdField_a_of_type_Int == 0) {
-          this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
-        }
-      }
-      for (;;)
-      {
-        if ((this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws == null) || (!this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.isShowing())) {
-          break label636;
-        }
-        this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.dismiss();
-        break;
-        this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
-        continue;
-        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-        }
-      }
-    }
+    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 

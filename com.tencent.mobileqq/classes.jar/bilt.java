@@ -1,17 +1,14 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bilt
-  extends afnj
 {
-  public CheckBox a;
-  public ImageView a;
-  public RelativeLayout b;
-  public String b;
-  public TextView c;
-  public TextView d;
+  public static void a(Runnable paramRunnable)
+  {
+    QLog.d("OpenSdkQIPCClient", 1, "installWBSdk process=" + bjrc.r());
+    QIPCClientHelper.getInstance().callServer("weibo_qipc_module", "action_install_weibo_sdk", new Bundle(), new bilu(paramRunnable));
+  }
 }
 
 

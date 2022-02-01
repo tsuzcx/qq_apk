@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.commonsdk.cache.QQLruCache;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
 class pwu
-  extends QQLruCache<String, List<BaseData>>
+  implements qfd
 {
-  pwu(pwt parampwt, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  pwu(pws parampws, ArticleInfo paramArticleInfo, ppu paramppu) {}
   
-  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
+    QLog.d("NewPolymericMultiVideoProteusItem", 1, "position : " + paramInt);
+    pws.a(this.jdField_a_of_type_Pws, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
+    this.jdField_a_of_type_Ppu.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
   }
 }
 

@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aadk
-  implements View.OnClickListener
+public abstract interface aadk<T>
 {
-  aadk(aadj paramaadj) {}
+  public abstract void a(aadm<T> paramaadm);
   
-  public void onClick(View paramView)
-  {
-    if ((!aauy.a("SUB_ENTER_FLOAT_MODE")) && (aadj.a(this.a) != null)) {
-      aadj.a(this.a).b();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
 }
 
 

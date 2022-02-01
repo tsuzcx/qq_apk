@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bgmg;
+import bhmi;
 import com.tencent.viola.utils.ViolaUtils;
-import pha;
+import ozs;
 
 class ViolaBaseView$18
   implements Runnable
@@ -11,14 +11,14 @@ class ViolaBaseView$18
   
   public void run()
   {
-    Object localObject = bgmg.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pha.a());
+    Object localObject = bhmi.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ozs.a());
     if (localObject == null) {
-      bgmg.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pha.a(), ViolaBaseView.b(this.this$0));
+      bhmi.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ozs.a(), ViolaBaseView.b(this.this$0));
     }
     while ((!(localObject instanceof String)) || (ViolaBaseView.b(this.this$0).equals(localObject))) {
       return;
     }
-    bgmg.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pha.a(), ViolaBaseView.b(this.this$0));
+    bhmi.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ozs.a(), ViolaBaseView.b(this.this$0));
   }
 }
 

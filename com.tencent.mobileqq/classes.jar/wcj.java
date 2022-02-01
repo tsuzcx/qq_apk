@@ -1,114 +1,76 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import feedcloud.FeedCloudMeta.StTagInfo;
 import java.util.List;
+import qqcircle.QQCircleFeedBase.StMainPageBusiRspData;
 
 public class wcj
-  extends wcf
+  implements aabg<QCircleReportBean>
 {
-  public wcj(int paramInt, wcz paramwcz)
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  protected QCircleReportBean a;
+  private List<FeedCloudMeta.StTagInfo> jdField_a_of_type_JavaUtilList;
+  private wcl jdField_a_of_type_Wcl;
+  
+  public QCircleReportBean a()
   {
-    super(2);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = new wde();
-    ((wde)localObject).a(paramInt);
-    ((wde)localObject).a(paramwcz);
-    a((wda)localObject);
-    paramwcz = new wdd();
-    localObject = ((wca)wpm.a(30)).c();
-    if (localObject != null)
+    return QCircleReportBean.getReportBean(a(), this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+  }
+  
+  protected String a()
+  {
+    return "QCircleTaglistView";
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView != null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        wdk localwdk = (wdk)((Iterator)localObject).next();
-        switch (localwdk.a)
-        {
-        default: 
-          break;
-        case 2: 
-          paramwcz.a(localwdk);
-          break;
-        case 4: 
-          paramwcz.b(localwdk);
-          break;
-        case 3: 
-          paramwcz.c(localwdk);
-        }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131374080));
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131381114);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+      paramView = new LinearLayoutManager(paramView.getContext());
+      paramView.setOrientation(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
+      this.jdField_a_of_type_Wcl = new wcl(this, null);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wcl);
+    }
+  }
+  
+  public void a(QCircleReportBean paramQCircleReportBean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof QQCircleFeedBase.StMainPageBusiRspData))
+    {
+      this.jdField_a_of_type_JavaUtilList = ((QQCircleFeedBase.StMainPageBusiRspData)paramObject).recomTagList.get();
+      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+        break label75;
+      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_Wcl != null) {
+        this.jdField_a_of_type_Wcl.a(this.jdField_a_of_type_JavaUtilList);
       }
     }
-    paramwcz.a(new wdi());
-    a(paramwcz);
-  }
-  
-  private static boolean a(String paramString1, String paramString2)
-  {
-    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
-  }
-  
-  public static boolean a(@NonNull wcl paramwcl, int paramInt)
-  {
-    Object localObject = paramwcl.a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    label75:
+    do
     {
-      AddressItem localAddressItem = ((wcm)((List)localObject).get(0)).a;
-      localObject = ((wcm)((List)localObject).get(((List)localObject).size() - 1)).a;
-      if ((localAddressItem == null) || (localObject == null))
-      {
-        yqp.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramwcl);
-        paramwcl.b = "";
-        return false;
-      }
-      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
-      {
-        paramwcl.b = localAddressItem.building;
-        return true;
-      }
-      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
-      {
-        paramwcl.b = localAddressItem.district;
-        return true;
-      }
-      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
-      {
-        paramwcl.b = localAddressItem.city;
-        return true;
-      }
-      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
-      {
-        paramwcl.b = localAddressItem.province;
-        return true;
-      }
-      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
-      {
-        paramwcl.b = localAddressItem.country;
-        return true;
-      }
-    }
-    paramwcl.b = "";
-    return false;
+      return;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+    } while (this.jdField_a_of_type_AndroidViewView == null);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
-  
-  protected List<wcm> a()
-  {
-    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = super.a().iterator();
-    while (localIterator.hasNext())
-    {
-      wcm localwcm = (wcm)localIterator.next();
-      if (localwcm.a != null) {
-        localArrayList.add(localwcm);
-      }
-    }
-    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
-    return localArrayList;
-  }
-  
-  protected void c(List<wcl> paramList) {}
 }
 
 

@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import bnzc;
-import boiu;
+import anzj;
+import bpan;
+import bpkp;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.qq.im.ae.view.AECompoundButton;
 
@@ -17,7 +17,7 @@ public class AEEditorTopBar
   implements View.OnClickListener
 {
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boiu jdField_a_of_type_Boiu;
+  private bpkp jdField_a_of_type_Bpkp;
   private AECompoundButton jdField_a_of_type_DovComQqImAeViewAECompoundButton;
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
@@ -44,13 +44,13 @@ public class AEEditorTopBar
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = bnzc.a();
-    paramContext = View.inflate(paramContext, 2131558562, this);
-    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton = ((AECompoundButton)paramContext.findViewById(2131362246));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362247));
-    this.b = ((TextView)paramContext.findViewById(2131362250));
-    this.c = ((TextView)paramContext.findViewById(2131362248));
-    this.d = ((TextView)paramContext.findViewById(2131362249));
+    this.jdField_a_of_type_Boolean = bpan.a();
+    paramContext = View.inflate(paramContext, 2131558564, this);
+    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton = ((AECompoundButton)paramContext.findViewById(2131362257));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362258));
+    this.b = ((TextView)paramContext.findViewById(2131362261));
+    this.c = ((TextView)paramContext.findViewById(2131362259));
+    this.d = ((TextView)paramContext.findViewById(2131362260));
     this.jdField_a_of_type_DovComQqImAeViewAECompoundButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -78,12 +78,12 @@ public class AEEditorTopBar
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Boiu != null)
+      if (this.jdField_a_of_type_Bpkp != null)
       {
-        this.jdField_a_of_type_Boiu.aQ_();
+        this.jdField_a_of_type_Bpkp.aQ_();
         continue;
-        if (this.jdField_a_of_type_Boiu != null) {
-          this.jdField_a_of_type_Boiu.aR_();
+        if (this.jdField_a_of_type_Bpkp != null) {
+          this.jdField_a_of_type_Bpkp.aR_();
         }
       }
     }
@@ -95,7 +95,7 @@ public class AEEditorTopBar
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     this.c.setVisibility(0);
     this.d.setVisibility(4);
-    this.c.setText(anni.a(2131689700));
+    this.c.setText(anzj.a(2131689705));
   }
   
   public void setStyleAsCancelAndFinish()
@@ -104,7 +104,7 @@ public class AEEditorTopBar
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     this.c.setVisibility(4);
     this.d.setVisibility(0);
-    this.d.setText(anni.a(2131689692));
+    this.d.setText(anzj.a(2131689697));
   }
   
   public void setTitle(String paramString)
@@ -112,9 +112,9 @@ public class AEEditorTopBar
     this.b.setText(paramString);
   }
   
-  public void setTopBarClickListener(boiu paramboiu)
+  public void setTopBarClickListener(bpkp parambpkp)
   {
-    this.jdField_a_of_type_Boiu = paramboiu;
+    this.jdField_a_of_type_Bpkp = parambpkp;
   }
 }
 

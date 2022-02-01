@@ -1,19 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
 public class swn
-  implements syg
 {
-  public swn(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final int b;
   
-  public BaseData a()
+  public swn(int paramInt1, int paramInt2, Object paramObject)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public void a()
+  public int a()
   {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 

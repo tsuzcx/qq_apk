@@ -1,24 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
-
-public class artt
-  implements amzx
+class artt
+  implements arvy<aruc>
 {
-  public artt(MessengerService.IncomingHandler.30 param30) {}
+  artt(arts paramarts) {}
   
-  public void a(long paramLong, String paramString)
+  public int a(aruc paramaruc, long paramLong)
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
+    if (paramaruc == null) {}
+    do
     {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
+      return -1;
+      paramLong = paramaruc.d() - paramLong;
+      if (paramLong == 0L) {
+        return 0;
+      }
+    } while (paramLong <= 0L);
+    return 1;
   }
 }
 

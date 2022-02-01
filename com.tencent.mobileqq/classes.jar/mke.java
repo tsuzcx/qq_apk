@@ -1,39 +1,51 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class mke
   extends BroadcastReceiver
 {
-  public mke(VideoInviteActivity paramVideoInviteActivity) {}
+  public mke(VideoControlUI paramVideoControlUI) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
-    }
-    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
-      this.a.h();
-    }
-    do
-    {
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
       return;
-      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
+    }
+    long l = muk.a(paramIntent);
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    QLog.w(this.a.d, 1, "CameraAvailabilityReceiver, cameraId[" + paramContext + "], availability[" + i + "], mCameraAvailable[" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa + "], seq[" + l + "]");
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+    if (i == 0)
+    {
+      VideoControlUI.a(this.a, l, i);
+      return;
+    }
+    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if ((paramContext != null) && (paramContext.size() > 0))
+    {
+      paramContext = paramContext.entrySet().iterator();
+      do
       {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
-        this.a.e();
-        return;
-      }
-      if ("android.intent.action.USER_PRESENT".equals(str))
-      {
-        this.a.a("ACTION_USER_PRESENT");
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Mkk == null);
-    this.a.jdField_a_of_type_Mkk.a(paramContext, str, paramIntent);
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (i = 0;; i = -1)
+    {
+      VideoControlUI.a(this.a, l, i);
+      return;
+    }
   }
 }
 

@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ListView;
 
-public class bfcp
-  implements DialogInterface.OnClickListener
+class bfcp
+  implements Animator.AnimatorListener
 {
-  public bfcp(ReciteFragment paramReciteFragment) {}
+  bfcp(bfcn parambfcn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
+    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), -bfcn.a(this.a), 0, 0);
+    bfcn.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    bfcn.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), -bfcn.a(this.a), 0, 0);
+    bfcn.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfcp
  * JD-Core Version:    0.7.0.1
  */

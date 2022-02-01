@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vipav;
 
 import Override;
-import afur;
+import agej;
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -29,24 +29,24 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import aobu;
-import aoch;
-import bggl;
-import bghy;
-import bglf;
-import bglp;
-import bgmo;
-import bgnm;
-import bgpa;
-import bgxe;
-import bhjt;
-import bhka;
-import bhkb;
-import bhkc;
-import bhkd;
-import bhke;
-import biau;
+import anzj;
+import aoof;
+import aoot;
+import bhgm;
+import bhhz;
+import bhlg;
+import bhlq;
+import bhmq;
+import bhno;
+import bhpc;
+import bhxi;
+import biki;
+import bikp;
+import bikq;
+import bikr;
+import biks;
+import bikt;
+import bjbs;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
@@ -80,10 +80,10 @@ public class VipFunCallPreviewActivity
   public Button a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  aobu jdField_a_of_type_Aobu;
-  bgnm jdField_a_of_type_Bgnm = bgnm.a();
-  protected bhka a;
-  biau jdField_a_of_type_Biau;
+  aoof jdField_a_of_type_Aoof;
+  bhno jdField_a_of_type_Bhno = bhno.a();
+  protected bikp a;
+  bjbs jdField_a_of_type_Bjbs;
   public VipFullScreenVideoView a;
   public String a;
   public ArrayList<String> a;
@@ -107,8 +107,8 @@ public class VipFunCallPreviewActivity
   public VipFunCallPreviewActivity()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new bhkb(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Bhka = new bhkd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bikq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bikp = new biks(this);
   }
   
   private Bundle a(Intent paramIntent)
@@ -179,7 +179,7 @@ public class VipFunCallPreviewActivity
   
   private boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (bhjt.a(this, this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView, paramString, this.jdField_d_of_type_Int, null, this.jdField_a_of_type_Int, true)) {}
+    if (biki.a(this, this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView, paramString, this.jdField_d_of_type_Int, null, this.jdField_a_of_type_Int, true)) {}
     for (;;)
     {
       if (paramBoolean1) {
@@ -195,7 +195,7 @@ public class VipFunCallPreviewActivity
   {
     this.g.setVisibility(0);
     if ((this.g instanceof Button)) {
-      ((Button)this.g).setText(anni.a(2131715402));
+      ((Button)this.g).setText(anzj.a(2131715511));
     }
     this.g.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
@@ -204,7 +204,7 @@ public class VipFunCallPreviewActivity
   
   private boolean b(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    paramString = bggl.a(paramString);
+    paramString = bhgm.a(paramString);
     if (paramString != null)
     {
       paramString = new BitmapDrawable(paramString);
@@ -229,34 +229,34 @@ public class VipFunCallPreviewActivity
   
   Bitmap a(String paramString, int paramInt)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_Aobu.a(paramInt, paramString);
+    Bitmap localBitmap = this.jdField_a_of_type_Aoof.a(paramInt, paramString);
     if (localBitmap != null) {
       return localBitmap;
     }
-    if (!this.jdField_a_of_type_Aobu.a()) {
-      this.jdField_a_of_type_Aobu.a(paramString, paramInt, true);
+    if (!this.jdField_a_of_type_Aoof.a()) {
+      this.jdField_a_of_type_Aoof.a(paramString, paramInt, true);
     }
-    return bgmo.a();
+    return bhmq.a();
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Bgnm != null)
+    if (this.jdField_a_of_type_Bhno != null)
     {
       this.jdField_b_of_type_Boolean = true;
-      File localFile = new File(bgxe.a(this.jdField_b_of_type_Int, 3));
+      File localFile = new File(bhxi.a(this.jdField_b_of_type_Int, 3));
       if (!localFile.exists()) {
         break label70;
       }
-      this.jdField_a_of_type_Bgnm.a(getApplicationContext(), Uri.fromFile(localFile));
+      this.jdField_a_of_type_Bhno.a(getApplicationContext(), Uri.fromFile(localFile));
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bgnm.a(true);
-      this.jdField_a_of_type_Bgnm.a();
+      this.jdField_a_of_type_Bhno.a(true);
+      this.jdField_a_of_type_Bhno.a();
       return;
       label70:
-      this.jdField_a_of_type_Bgnm.a(getApplicationContext(), Uri.parse("android.resource://" + getPackageName() + "/" + 2131230743));
+      this.jdField_a_of_type_Bhno.a(getApplicationContext(), Uri.parse("android.resource://" + getPackageName() + "/" + 2131230743));
     }
   }
   
@@ -270,7 +270,7 @@ public class VipFunCallPreviewActivity
       return;
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Object localObject1 = (RelativeLayout)super.findViewById(2131380988);
+    Object localObject1 = (RelativeLayout)super.findViewById(2131381168);
     int i = ((RelativeLayout)localObject1).getChildCount() - 1;
     while (i >= 0)
     {
@@ -298,24 +298,24 @@ public class VipFunCallPreviewActivity
       localImageView.setImageBitmap(a((String)localObject3, 1));
       ((RelativeLayout)localObject1).addView(localImageView);
       localObject3 = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
-      int j = afur.a(40.0F, getResources());
+      int j = agej.a(40.0F, getResources());
       ((RelativeLayout.LayoutParams)localObject3).height = j;
       ((RelativeLayout.LayoutParams)localObject3).width = j;
-      ((RelativeLayout.LayoutParams)localObject3).addRule(5, 2131372629);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(6, 2131372629);
-      ((RelativeLayout.LayoutParams)localObject3).leftMargin = afur.a(i * 30, getResources());
+      ((RelativeLayout.LayoutParams)localObject3).addRule(5, 2131372740);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(6, 2131372740);
+      ((RelativeLayout.LayoutParams)localObject3).leftMargin = agej.a(i * 30, getResources());
       i += 1;
     }
     label535:
     for (;;)
     {
       break label107;
-      localObject1 = (TextView)super.findViewById(2131379998);
+      localObject1 = (TextView)super.findViewById(2131380183);
       if (i > 0)
       {
-        ((RelativeLayout.LayoutParams)((TextView)localObject1).getLayoutParams()).leftMargin = afur.a((i - 1) * 30 + 40 + 10, getResources());
+        ((RelativeLayout.LayoutParams)((TextView)localObject1).getLayoutParams()).leftMargin = agej.a((i - 1) * 30 + 40 + 10, getResources());
         if (5 < paramArrayList.size()) {
-          ((TextView)localObject1).setText(String.format(anni.a(2131715409), new Object[] { Integer.valueOf(paramArrayList.size()) }));
+          ((TextView)localObject1).setText(String.format(anzj.a(2131715518), new Object[] { Integer.valueOf(paramArrayList.size()) }));
         }
         for (;;)
         {
@@ -328,17 +328,17 @@ public class VipFunCallPreviewActivity
             break;
           }
           if ((this.g instanceof Button)) {
-            ((Button)this.g).setText(anni.a(2131715393));
+            ((Button)this.g).setText(anzj.a(2131715502));
           }
           this.g.setEnabled(false);
           return;
-          ((TextView)localObject1).setText(anni.a(2131715399));
+          ((TextView)localObject1).setText(anzj.a(2131715508));
         }
         this.g.setEnabled(true);
         if (!(this.g instanceof Button)) {
           break;
         }
-        ((Button)this.g).setText(anni.a(2131715396));
+        ((Button)this.g).setText(anzj.a(2131715505));
         return;
       }
       if (QLog.isColorLevel()) {
@@ -357,18 +357,18 @@ public class VipFunCallPreviewActivity
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Biau == null)
+      if (this.jdField_a_of_type_Bjbs == null)
       {
-        this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
-        this.jdField_a_of_type_Biau.setCancelable(true);
+        this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bjbs.setCancelable(true);
       }
-      this.jdField_a_of_type_Biau.c(paramInt);
-      this.jdField_a_of_type_Biau.show();
+      this.jdField_a_of_type_Bjbs.c(paramInt);
+      this.jdField_a_of_type_Bjbs.show();
     }
-    while ((this.jdField_a_of_type_Biau == null) || (!this.jdField_a_of_type_Biau.isShowing())) {
+    while ((this.jdField_a_of_type_Bjbs == null) || (!this.jdField_a_of_type_Bjbs.isShowing())) {
       return;
     }
-    this.jdField_a_of_type_Biau.dismiss();
+    this.jdField_a_of_type_Bjbs.dismiss();
   }
   
   public boolean a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -379,26 +379,26 @@ public class VipFunCallPreviewActivity
     this.jdField_a_of_type_AndroidOsBundle.putString("url", paramString5);
     this.jdField_a_of_type_AndroidOsBundle.putInt("fcID", paramInt2);
     if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = anni.a(2131715418);
+      paramString1 = anzj.a(2131715527);
     }
     for (;;)
     {
       if (TextUtils.isEmpty(paramString2)) {
-        paramString2 = anni.a(2131715397);
+        paramString2 = anzj.a(2131715506);
       }
       for (;;)
       {
         if (TextUtils.isEmpty(paramString3)) {
-          paramString3 = anni.a(2131715392);
+          paramString3 = anzj.a(2131715501);
         }
         for (;;)
         {
           if (TextUtils.isEmpty(paramString4)) {
-            paramString4 = anni.a(2131715416);
+            paramString4 = anzj.a(2131715525);
           }
           for (;;)
           {
-            paramString1 = bglp.a(this, 0, paramString1, paramString2, paramString3, paramString4, this, this);
+            paramString1 = bhlq.a(this, 0, paramString1, paramString2, paramString3, paramString4, this, this);
             boolean bool1 = bool2;
             if (paramString1 != null)
             {
@@ -464,8 +464,8 @@ public class VipFunCallPreviewActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131563060);
-    this.jdField_a_of_type_Aobu = new aobu(this, this.app);
+    super.setContentView(2131563095);
+    this.jdField_a_of_type_Aoof = new aoof(this, this.app);
     paramBundle = getIntent();
     if (paramBundle != null) {}
     for (paramBundle = a(paramBundle);; paramBundle = null)
@@ -479,35 +479,35 @@ public class VipFunCallPreviewActivity
       if (paramBundle != null) {
         this.jdField_c_of_type_Int = paramBundle.getInt("feeType");
       }
-      this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = ((VipFullScreenVideoView)super.findViewById(2131380545));
-      boolean bool2 = bhjt.a(this.app, 0, null).getBoolean("key_fun_call_soundon", true);
+      this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = ((VipFullScreenVideoView)super.findViewById(2131380732));
+      boolean bool2 = biki.a(this.app, 0, null).getBoolean("key_fun_call_soundon", true);
       String str1;
       boolean bool1;
       if (this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView != null)
       {
-        this.jdField_d_of_type_Int = bhjt.a();
-        String str2 = bhjt.a(this.app, this.jdField_a_of_type_Int, this.jdField_d_of_type_Int, null);
+        this.jdField_d_of_type_Int = biki.a();
+        String str2 = biki.a(this.app, this.jdField_a_of_type_Int, this.jdField_d_of_type_Int, null);
         str1 = str2;
         if (str2 == null)
         {
           str1 = str2;
           if (paramBundle != null)
           {
-            bhjt.a(this.app, this.jdField_a_of_type_Int, paramBundle, null, true);
-            str1 = bhjt.a(this.app, this.jdField_a_of_type_Int, this.jdField_d_of_type_Int, null);
+            biki.a(this.app, this.jdField_a_of_type_Int, paramBundle, null, true);
+            str1 = biki.a(this.app, this.jdField_a_of_type_Int, this.jdField_d_of_type_Int, null);
           }
         }
         if (str1 == null)
         {
           QLog.e("VipFunCallPreviewActivity", 1, "doOnCreate resourceFilePath == null Error.");
-          a(3, this.jdField_a_of_type_Int, null, anni.a(2131715419), null, null, null);
+          a(3, this.jdField_a_of_type_Int, null, anzj.a(2131715528), null, null, null);
           return true;
         }
         if (this.jdField_d_of_type_Int == 6)
         {
           bool1 = a(bool2, false, str1);
           label251:
-          this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setOnTouchListener(new bhkc(this));
+          this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setOnTouchListener(new bikr(this));
         }
       }
       for (;;)
@@ -518,25 +518,25 @@ public class VipFunCallPreviewActivity
           i = 1;
           label272:
           ThreadManager.post(new VipFunCallPreviewActivity.3(this, i), 8, null, true);
-          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363077));
+          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363098));
           if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(aoch.a(this.app, 3, this.jdField_a_of_type_JavaLangString));
+            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(aoot.a(this.app, 3, this.jdField_a_of_type_JavaLangString));
           }
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363080));
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363101));
           if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-            this.jdField_a_of_type_AndroidWidgetTextView.setText(bglf.i(this.app, this.jdField_a_of_type_JavaLangString));
+            this.jdField_a_of_type_AndroidWidgetTextView.setText(bhlg.i(this.app, this.jdField_a_of_type_JavaLangString));
           }
-          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363072));
-          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366288));
-          this.jdField_a_of_type_AndroidViewView = super.findViewById(2131378778);
-          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368947));
+          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363093));
+          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366337));
+          this.jdField_a_of_type_AndroidViewView = super.findViewById(2131378938);
+          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369042));
           this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-          this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372629);
-          this.jdField_c_of_type_AndroidViewView = super.findViewById(2131379997);
-          this.jdField_d_of_type_AndroidViewView = super.findViewById(2131369297);
-          this.e = super.findViewById(2131369296);
-          this.f = super.findViewById(2131377302);
-          this.g = super.findViewById(2131377300);
+          this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372740);
+          this.jdField_c_of_type_AndroidViewView = super.findViewById(2131380182);
+          this.jdField_d_of_type_AndroidViewView = super.findViewById(2131369387);
+          this.e = super.findViewById(2131369386);
+          this.f = super.findViewById(2131377442);
+          this.g = super.findViewById(2131377440);
           this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
           this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
           this.e.setOnClickListener(this);
@@ -545,10 +545,10 @@ public class VipFunCallPreviewActivity
           }
           this.f.setOnClickListener(this);
           this.g.setOnClickListener(this);
-          this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377301));
+          this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377441));
           this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-          this.app.addObserver(this.jdField_a_of_type_Bhka, false);
-          if (bhjt.a(this.app, this.app.getAccount(), 6, true, null) != this.jdField_a_of_type_Int) {
+          this.app.addObserver(this.jdField_a_of_type_Bikp, false);
+          if (biki.a(this.app, this.app.getAccount(), 6, true, null) != this.jdField_a_of_type_Int) {
             break label660;
           }
           b();
@@ -568,7 +568,7 @@ public class VipFunCallPreviewActivity
           i = 0;
           break label272;
           label660:
-          paramBundle = bhjt.a(this.app, 1, null);
+          paramBundle = biki.a(this.app, 1, null);
           if (paramBundle != null) {
             a(a(paramBundle, paramBundle.getString("group", null), String.valueOf(this.jdField_a_of_type_Int), null));
           }
@@ -586,12 +586,12 @@ public class VipFunCallPreviewActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_Bhka);
-    if (this.jdField_a_of_type_Aobu != null) {
-      this.jdField_a_of_type_Aobu.d();
+    this.app.removeObserver(this.jdField_a_of_type_Bikp);
+    if (this.jdField_a_of_type_Aoof != null) {
+      this.jdField_a_of_type_Aoof.d();
     }
-    if ((this.jdField_a_of_type_Bgnm != null) && (!this.jdField_a_of_type_Bgnm.d())) {
-      this.jdField_a_of_type_Bgnm.a();
+    if ((this.jdField_a_of_type_Bhno != null) && (!this.jdField_a_of_type_Bhno.d())) {
+      this.jdField_a_of_type_Bhno.a();
     }
   }
   
@@ -601,8 +601,8 @@ public class VipFunCallPreviewActivity
     if ((this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView != null) && (this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.isPlaying()) && (this.jdField_d_of_type_Int == 6)) {
       this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.pause();
     }
-    if ((this.jdField_a_of_type_Bgnm != null) && (this.jdField_a_of_type_Bgnm.d())) {
-      this.jdField_a_of_type_Bgnm.c();
+    if ((this.jdField_a_of_type_Bhno != null) && (this.jdField_a_of_type_Bhno.d())) {
+      this.jdField_a_of_type_Bhno.c();
     }
   }
   
@@ -613,15 +613,15 @@ public class VipFunCallPreviewActivity
     if ((this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView != null) && (!this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.isPlaying()) && (this.jdField_d_of_type_Int == 6)) {
       this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.resume();
     }
-    if ((this.jdField_a_of_type_Bgnm != null) && (!this.jdField_a_of_type_Bgnm.d())) {
-      this.jdField_a_of_type_Bgnm.a();
+    if ((this.jdField_a_of_type_Bhno != null) && (!this.jdField_a_of_type_Bhno.d())) {
+      this.jdField_a_of_type_Bhno.a();
     }
   }
   
   public boolean onBackEvent()
   {
     Collections.sort(this.jdField_a_of_type_JavaUtilArrayList);
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.toString().equals(this.jdField_c_of_type_JavaLangString)) && (a(5, this.jdField_a_of_type_Int, null, anni.a(2131715401), null, null, null))) {
+    if ((!this.jdField_a_of_type_JavaUtilArrayList.toString().equals(this.jdField_c_of_type_JavaLangString)) && (a(5, this.jdField_a_of_type_Int, null, anzj.a(2131715510), null, null, null))) {
       return true;
     }
     super.onBackEvent();
@@ -751,10 +751,10 @@ public class VipFunCallPreviewActivity
         }
         this.jdField_d_of_type_AndroidViewView.setVisibility(8);
         this.e.setVisibility(0);
-        if ((this.jdField_a_of_type_Bgnm != null) && (this.jdField_a_of_type_Bgnm.d())) {
-          this.jdField_a_of_type_Bgnm.c();
+        if ((this.jdField_a_of_type_Bhno != null) && (this.jdField_a_of_type_Bhno.d())) {
+          this.jdField_a_of_type_Bhno.c();
         }
-        bhjt.a(this.app, 0, null).edit().putBoolean("key_fun_call_soundon", false).commit();
+        biki.a(this.app, 0, null).edit().putBoolean("key_fun_call_soundon", false).commit();
       }
     }
     if (paramView == this.e)
@@ -762,13 +762,13 @@ public class VipFunCallPreviewActivity
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
       this.e.setVisibility(8);
       if (this.jdField_b_of_type_Boolean) {
-        if ((this.jdField_a_of_type_Bgnm != null) && (!this.jdField_a_of_type_Bgnm.d())) {
-          this.jdField_a_of_type_Bgnm.a();
+        if ((this.jdField_a_of_type_Bhno != null) && (!this.jdField_a_of_type_Bhno.d())) {
+          this.jdField_a_of_type_Bhno.a();
         }
       }
       for (;;)
       {
-        bhjt.a(this.app, 0, null).edit().putBoolean("key_fun_call_soundon", true).commit();
+        biki.a(this.app, 0, null).edit().putBoolean("key_fun_call_soundon", true).commit();
         break;
         a();
       }
@@ -779,7 +779,7 @@ public class VipFunCallPreviewActivity
     if ((paramView == this.jdField_c_of_type_AndroidViewView) || (paramView == this.f)) {
       if (paramView == this.f)
       {
-        localObject2 = bhjt.a(this.app, 1, null).getString("group", null);
+        localObject2 = biki.a(this.app, 1, null).getString("group", null);
         localObject1 = String.valueOf(this.jdField_a_of_type_Int);
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
         {
@@ -800,7 +800,7 @@ public class VipFunCallPreviewActivity
     {
       if (i < 0)
       {
-        a(6, this.jdField_a_of_type_Int, null, anni.a(2131715407), null, null, null);
+        a(6, this.jdField_a_of_type_Int, null, anzj.a(2131715516), null, null, null);
         VasWebviewUtil.reportVASTo00145(this.app, String.valueOf(this.jdField_a_of_type_Int), "preview", "ClickGroupList", "1", new String[0]);
         break;
         i += 1;
@@ -822,13 +822,13 @@ public class VipFunCallPreviewActivity
           break;
         }
         this.jdField_a_of_type_Long = l;
-        localObject1 = (bhke)this.app.a(46);
+        localObject1 = (bikt)this.app.a(46);
         localObject2 = new Bundle();
         ((Bundle)localObject2).putInt("callId", this.jdField_a_of_type_Int);
         ((Bundle)localObject2).putInt("ringId", this.jdField_b_of_type_Int);
         ((Bundle)localObject2).putInt("from", 1);
-        a(true, 2131718547);
-        ((bhke)localObject1).a(3, localObject2);
+        a(true, 2131718683);
+        ((bikt)localObject1).a(3, localObject2);
         break;
       }
       if (paramView != this.g) {
@@ -843,8 +843,8 @@ public class VipFunCallPreviewActivity
       ((VipFunCallAndRing.TSsoCmd0x4Req)localObject1).rpt_uins.set((List)localObject2);
       ((VipFunCallAndRing.TSsoCmd0x4Req)localObject1).i32_funcall_id.set(this.jdField_a_of_type_Int);
       ((VipFunCallAndRing.TSsoCmd0x4Req)localObject1).i32_ring_id.set(this.jdField_b_of_type_Int);
-      a(true, 2131718547);
-      ((bhke)this.app.a(46)).a(4, localObject1);
+      a(true, 2131718683);
+      ((bikt)this.app.a(46)).a(4, localObject1);
       break;
       label724:
       i = -1;
@@ -867,8 +867,8 @@ public class VipFunCallPreviewActivity
       super.getWindow().findViewById(16908290).getDrawingRect((Rect)localObject);
       ((Rect)localObject).width();
       ((Rect)localObject).height();
-      bghy.c(this, 102);
-      int i = bghy.a(getResources());
+      bhhz.c(this, 102);
+      int i = bhhz.a(getResources());
       if (this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView != null) {
         this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setVisibility(0);
       }
@@ -883,25 +883,25 @@ public class VipFunCallPreviewActivity
       if (this.jdField_a_of_type_AndroidWidgetImageView != null)
       {
         localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).topMargin = (i + bghy.c(this, 25) + (int)getResources().getDimension(2131298998));
+        ((RelativeLayout.LayoutParams)localObject).topMargin = (i + bhhz.c(this, 25) + (int)getResources().getDimension(2131299011));
         this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
         localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).topMargin = bghy.c(this, 25);
+        ((RelativeLayout.LayoutParams)localObject).topMargin = bhhz.c(this, 25);
         this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       if (this.jdField_c_of_type_AndroidWidgetTextView != null)
       {
         localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).topMargin = bghy.c(this, 10);
+        ((RelativeLayout.LayoutParams)localObject).topMargin = bhhz.c(this, 10);
         this.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       if (this.jdField_b_of_type_AndroidWidgetTextView != null)
       {
         localObject = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).topMargin = bghy.c(this, 30);
+        ((RelativeLayout.LayoutParams)localObject).topMargin = bhhz.c(this, 30);
         this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }

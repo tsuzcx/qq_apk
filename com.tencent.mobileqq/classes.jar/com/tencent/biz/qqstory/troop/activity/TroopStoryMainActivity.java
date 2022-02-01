@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.qqstory.comment.StoryInputBarView;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
@@ -20,22 +20,22 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import wpm;
-import ybd;
-import yij;
-import ync;
-import zpa;
+import wth;
+import yey;
+import yme;
+import yqx;
+import zsv;
 
 public class TroopStoryMainActivity
   extends QQStoryBaseActivity
-  implements ync
+  implements yqx
 {
   public static final String a;
   protected StoryInputBarView a;
   public TroopStoryListView a;
   public FullScreenEmptyView a;
   protected Runnable a;
-  public yij a;
+  public yme a;
   
   static
   {
@@ -57,7 +57,7 @@ public class TroopStoryMainActivity
     return this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView;
   }
   
-  public zpa a(String paramString)
+  public zsv a(String paramString)
   {
     return this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(paramString);
   }
@@ -97,16 +97,16 @@ public class TroopStoryMainActivity
   {
     this.mUseOptimizMode = true;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561827);
-    super.setTitle(anni.a(2131714466));
-    this.jdField_a_of_type_Yij = ((yij)wpm.a(11));
-    this.jdField_a_of_type_Yij.a.clear();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131374511));
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131369965));
+    super.setContentView(2131561868);
+    super.setTitle(anzj.a(2131714575));
+    this.jdField_a_of_type_Yme = ((yme)wth.a(11));
+    this.jdField_a_of_type_Yme.a.clear();
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131374648));
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131370063));
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(this, this);
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setContentBackground(2130839389);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).setBackgroundColor(getResources().getColor(2131167044));
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setContentBackground(2130839397);
+    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).setBackgroundColor(getResources().getColor(2131167050));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView = new FullScreenEmptyView(this);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView.setVisibility(8);
     ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView);
@@ -125,7 +125,7 @@ public class TroopStoryMainActivity
       this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.l();
     }
     this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.d();
-    this.jdField_a_of_type_Yij.a.clear();
+    this.jdField_a_of_type_Yme.a.clear();
     ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -163,7 +163,7 @@ public class TroopStoryMainActivity
     default: 
       return;
     }
-    ybd.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
+    yey.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
   }
   

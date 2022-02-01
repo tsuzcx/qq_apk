@@ -1,36 +1,14 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
-import qqcircle.QQCircleDitto.StItemInfo;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
 
-class vyi
-  implements vxe
+public class vyi
+  implements aabr
 {
-  vyi(vyh paramvyh) {}
+  public vyi(QCircleCommentListView paramQCircleCommentListView) {}
   
-  public void a()
+  public void a(aabu paramaabu, Object paramObject)
   {
-    String str = "";
-    if ((vyh.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
-      str = ((QQCircleDitto.StItemInfo)vyh.a(this.a)).id.get();
-    }
-    vrc.a(str, 3, 1, 19, 2, vyh.a(this.a), vyh.a(this.a).id.get(), "", vyh.a(this.a).poster.id.get(), vyh.b(this.a), vyh.a(this.a), null, vyh.c(this.a), -1);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
-  {
-    String str = "";
-    if ((vyh.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
-      str = ((QQCircleDitto.StItemInfo)vyh.a(this.a)).id.get();
-    }
-    if (paramInt > 0) {}
-    for (paramInt = 18;; paramInt = 17)
-    {
-      vrc.a(str, 3, 1, paramInt, 2, vyh.a(this.a), vyh.a(this.a).id.get(), "", vyh.a(this.a).poster.id.get(), vyh.b(this.a), vyh.a(this.a), null, vyh.c(this.a), -1);
-      vrr.a().a(new vrt().a("followbutton").b("follow").a(vyh.a(this.a)).a(this.a.a()).a(vyh.a(this.a)).c(str));
-      return;
+    if (paramaabu.e()) {
+      QCircleCommentListView.a(this.a, true);
     }
   }
 }

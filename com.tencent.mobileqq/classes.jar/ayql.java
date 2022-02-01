@@ -1,81 +1,24 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import mqq.app.AppRuntime;
-import mqq.app.AppRuntime.Status;
-import mqq.app.Foreground;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ayql
+class ayql
+  implements ayrk
 {
-  private AppRuntime a;
+  ayql(ayqk paramayqk) {}
   
-  public ayql(AppRuntime paramAppRuntime)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a = paramAppRuntime;
-  }
-  
-  private boolean a(AppRuntime paramAppRuntime)
-  {
-    int j = b();
-    int i;
-    if (Foreground.sCountResume > 0)
+    if (paramBoolean)
     {
-      i = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate countResume:" + Foreground.sCountResume + " curHour: " + j + " begin: " + ayqi.D + " end: " + ayqi.E);
-      }
-      if (ayqi.E <= ayqi.D) {
-        break label165;
-      }
-      if ((j < ayqi.D) || (j >= ayqi.E)) {
-        break label237;
-      }
-      paramAppRuntime = paramAppRuntime.getOnlineStatus();
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate closeZone curHour: " + j + " status: " + paramAppRuntime);
-      }
-      if ((paramAppRuntime != AppRuntime.Status.online) || (i == 0)) {
-        break label163;
+      ayek localayek = new ayek().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Ayqg.a(this.a.jdField_a_of_type_Ayqn)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Ayqg.a(this.a.jdField_a_of_type_Ayqn)));
+      if (this.a.jdField_a_of_type_Ayqg.jdField_a_of_type_Boolean) {}
+      for (paramString = "1";; paramString = "2")
+      {
+        localayek.e(paramString).b(this.a.jdField_a_of_type_Ayqg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
       }
     }
-    label163:
-    label165:
-    do
-    {
-      return true;
-      i = 0;
-      break;
-      return false;
-      if ((j <= ayqi.D) && (j >= ayqi.E)) {
-        break label237;
-      }
-      paramAppRuntime = paramAppRuntime.getOnlineStatus();
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate openZone curHour: " + j + " status: " + paramAppRuntime);
-      }
-    } while ((paramAppRuntime == AppRuntime.Status.online) && (i != 0));
-    return false;
-    label237:
-    return false;
-  }
-  
-  public int a()
-  {
-    if (a(this.a)) {}
-    for (int i = 41032;; i = 40001)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionDetector", 2, "[status][action] getStatus return status: " + i);
-      }
-      return i;
-    }
-  }
-  
-  int b()
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-    return localCalendar.get(11);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131699948), 0).a();
   }
 }
 

@@ -4,13 +4,13 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import qqt;
-import smt;
-import smv;
+import qjh;
+import sdx;
+import sdz;
 
 public class ReadInJoyLifeCycleLinearLayout
   extends LinearLayout
-  implements smt
+  implements sdx
 {
   private boolean a;
   
@@ -22,11 +22,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void a()
   {
     Object localObject = getTag();
-    if ((localObject instanceof qqt))
+    if ((localObject instanceof qjh))
     {
-      localObject = ((qqt)localObject).a();
-      if ((localObject instanceof smv)) {
-        ((smv)localObject).a();
+      localObject = ((qjh)localObject).a();
+      if ((localObject instanceof sdz)) {
+        ((sdz)localObject).a();
       }
     }
   }
@@ -39,11 +39,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void b()
   {
     Object localObject = getTag();
-    if ((localObject instanceof qqt))
+    if ((localObject instanceof qjh))
     {
-      localObject = ((qqt)localObject).a();
-      if ((localObject instanceof smv)) {
-        ((smv)localObject).b();
+      localObject = ((qjh)localObject).a();
+      if ((localObject instanceof sdz)) {
+        ((sdz)localObject).b();
       }
     }
   }

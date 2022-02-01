@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.app.Activity;
-import anni;
-import atoo;
-import atro;
-import atru;
-import atsu;
-import bglp;
-import bgpa;
+import anzj;
+import augj;
+import aujj;
+import aujp;
+import aukp;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,7 +17,7 @@ public class VideoFilePresenter$8
   public void run()
   {
     if ((this.jdField_a_of_type_Int != -6101) && (this.jdField_a_of_type_Int != -7003) && (this.jdField_a_of_type_Int != 201)) {
-      this.this$0.jdField_a_of_type_Atsu.a(this.this$0.jdField_a_of_type_Atoo.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692497));
+      this.this$0.jdField_a_of_type_Aukp.a(this.this$0.jdField_a_of_type_Augj.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692503));
     }
     label301:
     for (;;)
@@ -26,31 +26,31 @@ public class VideoFilePresenter$8
       Object localObject;
       if ((this.jdField_a_of_type_Int == -6101) || (this.jdField_a_of_type_Int == -7003))
       {
-        localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692466);
-        this.this$0.jdField_a_of_type_Atoo.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692472);
+        this.this$0.jdField_a_of_type_Augj.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
         if (BaseActivity.sTopActivity == null) {
           break label301;
         }
-        localObject = bglp.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, anni.a(2131714936), new atru(this), null);
-        if (((bgpa)localObject).isShowing()) {
+        localObject = bhlq.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, anzj.a(2131715045), new aujp(this), null);
+        if (((bhpc)localObject).isShowing()) {
           break;
         }
-        ((bgpa)localObject).show();
+        ((bhpc)localObject).show();
         return;
         if (this.jdField_a_of_type_Int == 201)
         {
-          if (!this.this$0.jdField_a_of_type_Atoo.g()) {
-            localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692498);
+          if (!this.this$0.jdField_a_of_type_Augj.g()) {
+            localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692504);
           } else {
-            this.this$0.jdField_a_of_type_Atsu.a(this.this$0.jdField_a_of_type_Atoo.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692497));
+            this.this$0.jdField_a_of_type_Aukp.a(this.this$0.jdField_a_of_type_Augj.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692503));
           }
         }
         else
         {
-          String str = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692497);
+          String str = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692503);
           localObject = str;
           if (QLog.isColorLevel())
           {

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qqm;
+import qja;
 
 class ReadInJoyListViewGroup$48
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyListViewGroup$48
   
   public void run()
   {
-    if ((qqm.a().a()) && (!ReadInJoyListViewGroup.b(this.this$0))) {
+    if ((qja.a().a()) && (!ReadInJoyListViewGroup.b(this.this$0))) {
       this.this$0.a(false, 8);
     }
     while (this.a == null) {

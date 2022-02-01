@@ -9,30 +9,30 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bhyl;
-import bicf;
-import bicg;
-import bich;
-import bkhe;
+import bizj;
+import bjdd;
+import bjde;
+import bjdf;
+import blih;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class SlideDetectListView
   extends XListView
-  implements bhyl
+  implements bizj
 {
   float jdField_a_of_type_Float = 0.0F;
   public int a;
   protected GestureDetector.SimpleOnGestureListener a;
   protected GestureDetector a;
   public View a;
-  private bich jdField_a_of_type_Bich;
-  private bkhe jdField_a_of_type_Bkhe;
+  private bjdf jdField_a_of_type_Bjdf;
+  private blih jdField_a_of_type_Blih;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   public int b;
-  private bkhe b;
+  private blih b;
   public boolean b;
   public int c;
   public boolean c;
@@ -51,8 +51,8 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bicf(this);
-    super.setOnScrollListener(new bicg(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bjdd(this);
+    super.setOnScrollListener(new bjde(this));
     this.f = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -163,8 +163,8 @@ public class SlideDetectListView
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
         this.jdField_a_of_type_AndroidViewView.setPressed(false);
-        if (this.jdField_a_of_type_Bich != null) {
-          this.jdField_a_of_type_Bich.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+        if (this.jdField_a_of_type_Bjdf != null) {
+          this.jdField_a_of_type_Bjdf.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -176,7 +176,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377341);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377481);
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -266,8 +266,8 @@ public class SlideDetectListView
         if (this.jdField_a_of_type_AndroidViewView != null)
         {
           this.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (this.jdField_a_of_type_Bich != null) {
-            this.jdField_a_of_type_Bich.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+          if (this.jdField_a_of_type_Bjdf != null) {
+            this.jdField_a_of_type_Bjdf.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
           }
         }
         this.jdField_a_of_type_Boolean = false;
@@ -325,21 +325,21 @@ public class SlideDetectListView
     }
   }
   
-  public void setOnScrollGroupFloatingListener(bkhe parambkhe)
+  public void setOnScrollGroupFloatingListener(blih paramblih)
   {
-    this.jdField_b_of_type_Bkhe = parambkhe;
+    this.jdField_b_of_type_Blih = paramblih;
   }
   
-  public void setOnScrollListener(bkhe parambkhe) {}
+  public void setOnScrollListener(blih paramblih) {}
   
-  public void setOnScrollToTopListener(bkhe parambkhe)
+  public void setOnScrollToTopListener(blih paramblih)
   {
-    this.jdField_a_of_type_Bkhe = parambkhe;
+    this.jdField_a_of_type_Blih = paramblih;
   }
   
-  public void setOnSlideListener(bich parambich)
+  public void setOnSlideListener(bjdf parambjdf)
   {
-    this.jdField_a_of_type_Bich = parambich;
+    this.jdField_a_of_type_Bjdf = parambjdf;
   }
 }
 

@@ -1,9 +1,33 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public abstract interface azjq
+public class azjq
 {
-  public abstract void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean);
+  private static double a(double paramDouble)
+  {
+    return 3.141592653589793D * paramDouble / 180.0D;
+  }
+  
+  private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
+  {
+    paramDouble1 = a(paramDouble1);
+    paramDouble3 = a(paramDouble3);
+    paramDouble2 = a(paramDouble2);
+    paramDouble4 = a(paramDouble4);
+    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
+    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
+  }
+  
+  public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
+  {
+    return a(paramLatLng1.latitude, paramLatLng1.longitude, paramLatLng2.latitude, paramLatLng2.longitude);
+  }
+  
+  public static void a(int paramInt, Intent paramIntent, azjt paramazjt)
+  {
+    SosoInterface.a(new azjr(paramInt, paramIntent, paramazjt));
+  }
 }
 
 

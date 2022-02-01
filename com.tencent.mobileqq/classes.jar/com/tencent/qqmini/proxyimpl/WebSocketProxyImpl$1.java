@@ -1,18 +1,18 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bjzv;
-import bjzw;
+import blaz;
+import blba;
 import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
 
 public class WebSocketProxyImpl$1
   implements Runnable
 {
-  public WebSocketProxyImpl$1(bjzv parambjzv, bjzw parambjzw, int paramInt1, int paramInt2, String paramString) {}
+  public WebSocketProxyImpl$1(blaz paramblaz, blba paramblba, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Bjzw.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bjzw.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    if (!this.jdField_a_of_type_Blba.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Blba.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

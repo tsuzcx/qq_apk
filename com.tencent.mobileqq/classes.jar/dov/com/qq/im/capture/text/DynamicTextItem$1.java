@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.view.View;
-import boqo;
+import bpsj;
 
 class DynamicTextItem$1
   implements Runnable
@@ -10,11 +10,11 @@ class DynamicTextItem$1
   
   public void run()
   {
-    boqo localboqo = DynamicTextItem.a(this.this$0);
+    bpsj localbpsj = DynamicTextItem.a(this.this$0);
     if (!((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      localboqo.b = Boolean.valueOf(bool);
+      localbpsj.b = Boolean.valueOf(bool);
       this.a.invalidate();
       return;
     }

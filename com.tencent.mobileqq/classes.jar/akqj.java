@@ -1,24 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class akqj
-  extends Handler
 {
-  public akqj(ThemeHbFragment paramThemeHbFragment) {}
+  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  public akqj(PhotoCropActivity paramPhotoCropActivity)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
     {
+      blir localblir = (blir)blji.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        localblir.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
+        i += 1;
+      }
+      localblir.c(2131690580);
+      localblir.a(new akqk(this, localblir));
+      localblir.show();
     }
-    do
-    {
-      return;
-    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
-    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
 }
 

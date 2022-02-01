@@ -1,31 +1,108 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class argx
-  implements Parcelable.Creator
+public class argx
+  extends arac<argw>
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
+  public static int a(Context paramContext, String paramString)
   {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
   }
   
-  public IPSiteModel.Book[] a(int paramInt)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    return new IPSiteModel.Book[paramInt];
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    paramContext.apply();
+  }
+  
+  @NonNull
+  public argw a(int paramInt)
+  {
+    return new argw(0);
+  }
+  
+  @Nullable
+  public argw a(araj[] paramArrayOfaraj)
+  {
+    j = 0;
+    i = j;
+    if (paramArrayOfaraj != null)
+    {
+      i = j;
+      if (paramArrayOfaraj.length > 0) {
+        paramArrayOfaraj = paramArrayOfaraj[0].a;
+      }
+    }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfaraj);
+      }
+      i = new JSONObject(paramArrayOfaraj).getInt("isPushSwitchShow");
+    }
+    catch (Exception paramArrayOfaraj)
+    {
+      for (;;)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfaraj);
+          i = j;
+        }
+      }
+    }
+    return new argw(i);
+  }
+  
+  public void a(argw paramargw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramargw.a);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramargw.a);
+  }
+  
+  public Class clazz()
+  {
+    return argw.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 439;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argx
  * JD-Core Version:    0.7.0.1
  */

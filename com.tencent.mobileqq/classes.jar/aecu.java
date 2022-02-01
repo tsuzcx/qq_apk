@@ -1,22 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
 public class aecu
-  implements View.OnClickListener
+  implements agfs
 {
-  public aecu(EditActivity paramEditActivity) {}
+  public aecu(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    EditActivity.a(this.a).setVisibility(4);
-    EditActivity.a(this.a).setImageResource(2130847887);
-    EditActivity.a(this.a, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.p();
+    if (this.a.jdField_a_of_type_Aedp != null) {
+      this.a.jdField_a_of_type_Aedp.d();
+    }
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
+  
+  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt)
+  {
+    this.a.b(2131694384);
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+  }
+  
+  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

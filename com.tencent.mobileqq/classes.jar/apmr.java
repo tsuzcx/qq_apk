@@ -1,8 +1,35 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
+
 public class apmr
+  extends Handler
 {
-  public String a;
-  public boolean a;
-  public String[] a;
+  public apmr(apmp paramapmp, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      apsa.a().a(new ARCamera.ARCameraHandler.1(this));
+      removeMessages(100);
+      sendEmptyMessageDelayed(100, 3000L);
+      return;
+    case 101: 
+      apsa.a().a(new ARCamera.ARCameraHandler.2(this));
+      return;
+    }
+    apsa.a().a(new ARCamera.ARCameraHandler.3(this));
+  }
 }
 
 

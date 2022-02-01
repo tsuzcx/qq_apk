@@ -1,26 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class rfy
-  implements Cloneable
+  extends pfh
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  
-  protected Object clone()
+  public void o()
   {
-    try
-    {
-      rfy localrfy = (rfy)super.clone();
-      return localrfy;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
-    }
-    return null;
+    super.o();
   }
 }
 

@@ -1,62 +1,22 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bjfd
-  extends QQUIEventReceiver<bjfb, awlo>
+  implements Animator.AnimatorListener
 {
-  public bjfd(@NonNull bjfb parambjfb)
+  public bjfd(FloatingScreenContainer paramFloatingScreenContainer) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(parambjfb);
+    paramAnimator.removeAllListeners();
   }
   
-  public void a(@NonNull bjfb parambjfb, @NonNull awlo paramawlo)
-  {
-    if (!TextUtils.equals(paramawlo.jdField_a_of_type_JavaLangString, "QGameApp")) {}
-    String str;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QGameApp", 2, "receive event:" + paramawlo.toString());
-      }
-      str = (String)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[0];
-      switch (paramawlo.jdField_a_of_type_Int)
-      {
-      default: 
-        return;
-      }
-    } while (!TextUtils.equals(str, "ak:3214"));
-    if (paramawlo.jdField_a_of_type_Boolean)
-    {
-      str = (String)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[3];
-      if (TextUtils.isEmpty(str))
-      {
-        bjfb.a(parambjfb, 1002);
-        return;
-      }
-      switch (((Integer)paramawlo.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
-      {
-      default: 
-        return;
-      case 1: 
-        bjfb.a(parambjfb, true, str);
-        return;
-      case 2: 
-        bjfb.jdField_a_of_type_Boolean = false;
-        return;
-      }
-      bjfb.a(parambjfb, false, str);
-      return;
-    }
-    bjfb.a(parambjfb, 1002);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public Class acceptEventClass()
-  {
-    return awlo.class;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

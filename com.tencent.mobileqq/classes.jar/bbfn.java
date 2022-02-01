@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bbfn
-  implements View.OnClickListener
+public class bbfn
 {
-  bbfn(bbfm parambbfm) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public bbfn(int paramInt, String paramString1, String paramString2)
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    bbfm.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

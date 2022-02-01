@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class aesy
-  extends anmu
+  implements bljm
 {
-  public aesy(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aesy(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
+      return;
     }
-  }
-  
-  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {
-      this.a.a(2131717834, 1);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
+    GroupManagerActivity.a(this.a, bhlq.a(this.a, 2131692827, 2131692831, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
   }
 }
 

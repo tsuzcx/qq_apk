@@ -1,8 +1,16 @@
-public abstract interface aylp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aylp
+  implements DialogInterface.OnClickListener
 {
-  public abstract aosj a();
+  aylp(aykx paramaykx) {}
   
-  public abstract boolean a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.d(true);
+    bdll.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+  }
 }
 
 

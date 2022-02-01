@@ -1,8 +1,16 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
 
-public abstract interface ota
+public class ota
+  extends pfh
 {
-  public abstract void a(View paramView, int paramInt);
+  public ota(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    ReadInJoySecondCommentListFragment.a(this.a).a(paramString, 2);
+    ReadInJoySecondCommentListFragment.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

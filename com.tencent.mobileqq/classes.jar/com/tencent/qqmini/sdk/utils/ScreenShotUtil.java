@@ -8,33 +8,19 @@ import android.graphics.Color;
 import android.media.ThumbnailUtils;
 import android.util.Base64;
 import android.view.View;
+import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
+import com.tencent.qqmini.sdk.launcher.core.IPage;
+import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import java.io.ByteArrayOutputStream;
+import org.json.JSONObject;
 
 public class ScreenShotUtil
 {
   public static final int EDGE_LEFT_RIGHT = 10;
   public static final String TAG = "ScreenShotUtil";
-  
-  public static boolean CheckIfWhiteScreen(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return false;
-    }
-    int m = paramBitmap.getWidth();
-    int n = paramBitmap.getHeight();
-    int i = getImageRowRgb(paramBitmap, m, n / 4);
-    int j = getImageRowRgb(paramBitmap, m, n / 2);
-    int k = getImageRowRgb(paramBitmap, m, n * 3 / 4);
-    m = getImageColRgb(paramBitmap, m / 2, n);
-    if ((i != -1) && (i == j) && (j == k) && (k == m))
-    {
-      QMLog.i("ScreenShotUtil", "--- CheckIfWhiteScreen:rgb1:" + i + " rgb2:" + j + " rgb3:" + k + " rgb4:" + m);
-      return true;
-    }
-    QMLog.i("ScreenShotUtil", "--- CheckIfWhiteScreen:rgb1:" + i + " rgb2:" + j + " rgb3:" + k + " rgb4:" + m);
-    return false;
-  }
+  private static BaseRuntime runtime;
   
   public static String bitmapTobase64(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
@@ -58,7 +44,7 @@ public class ScreenShotUtil
   
   public static Bitmap captureView(View paramView)
   {
-    if (paramView == null) {
+    if ((paramView == null) || (runtime == null)) {
       return null;
     }
     Bitmap localBitmap = Bitmap.createBitmap(paramView.getWidth(), paramView.getHeight(), Bitmap.Config.RGB_565);
@@ -66,6 +52,34 @@ public class ScreenShotUtil
     localCanvas.drawColor(-1);
     paramView.draw(localCanvas);
     return localBitmap;
+  }
+  
+  public static boolean checkIfWhiteScreen(Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (runtime == null)) {
+      return false;
+    }
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    Object localObject = new NativeViewRequestEvent();
+    ((NativeViewRequestEvent)localObject).dispatchTarget = 3;
+    ((NativeViewRequestEvent)localObject).event = "getMenuButtonBoundingClientRect";
+    localObject = new JSONObject(getMenuButtonRect((NativeViewRequestEvent)localObject));
+    int n = ((JSONObject)localObject).optInt("top");
+    int i1 = (int)DisplayUtil.getDensity(runtime.getAttachedActivity());
+    int k = ((JSONObject)localObject).optInt("bottom");
+    int m = (int)DisplayUtil.getDensity(runtime.getAttachedActivity());
+    n = getImageRowRgb(paramBitmap, i, n * i1 + 5);
+    i1 = getImageRowRgb(paramBitmap, i, j / 2);
+    k = getImageRowRgb(paramBitmap, i, j - k * m - 5);
+    i = getImageColRgb(paramBitmap, i / 2, j);
+    if ((n != -1) && (n == i1) && (i1 == k) && (k == i))
+    {
+      QMLog.i("ScreenShotUtil", "--- checkIfWhiteScreen:rgb1:" + n + " rgb2:" + i1 + " rgb3:" + k + " rgb4:" + i);
+      return true;
+    }
+    QMLog.i("ScreenShotUtil", "--- checkIfWhiteScreen:rgb1:" + n + " rgb2:" + i1 + " rgb3:" + k + " rgb4:" + i);
+    return false;
   }
   
   private static int getImageColRgb(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -118,6 +132,16 @@ public class ScreenShotUtil
     }
     label100:
     return j * k * m;
+  }
+  
+  private static String getMenuButtonRect(NativeViewRequestEvent paramNativeViewRequestEvent)
+  {
+    return runtime.getPage().dispatchEventToNativeView(paramNativeViewRequestEvent);
+  }
+  
+  public static void setRuntime(BaseRuntime paramBaseRuntime)
+  {
+    runtime = paramBaseRuntime;
   }
 }
 

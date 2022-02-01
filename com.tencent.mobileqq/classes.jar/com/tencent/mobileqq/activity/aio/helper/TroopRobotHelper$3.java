@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agnt;
+import agwy;
 
 public class TroopRobotHelper$3
   implements Runnable
 {
-  public TroopRobotHelper$3(agnt paramagnt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7) {}
+  public TroopRobotHelper$3(agwy paramagwy, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7) {}
   
   public void run()
   {

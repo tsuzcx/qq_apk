@@ -1,6 +1,19 @@
-public abstract interface uvd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class uvd
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  uvd(uvc paramuvc) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.a() instanceof uuo)) {
+      ((uuo)this.a.a()).f();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

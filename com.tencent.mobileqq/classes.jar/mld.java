@@ -1,76 +1,47 @@
-import com.tencent.av.gaudio.AVPhoneUserInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class mld
+class mld
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
+  mld(mlc parammlc) {}
   
-  public mld()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Int == 2;
-  }
-  
-  public boolean c()
-  {
-    return this.e;
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_b_of_type_Boolean) && (!this.c);
-  }
-  
-  public boolean e()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin:=").append(this.jdField_a_of_type_Long).append(',');
-    localStringBuilder.append("videoSrc:=").append(this.jdField_b_of_type_Int).append(',');
-    localStringBuilder.append("isVideoIn:=").append(this.e).append(',');
-    localStringBuilder.append("isAttened:=").append(this.jdField_a_of_type_Boolean).append(',');
-    localStringBuilder.append("isSpeaking:=").append(this.jdField_b_of_type_Boolean).append(',');
-    return localStringBuilder.toString();
+    long l;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      l = muk.a(paramIntent);
+      if (!paramContext.equals("tencent.video.invite.accept")) {
+        break label32;
+      }
+      this.a.a(l);
+    }
+    label32:
+    do
+    {
+      return;
+      if (paramContext.equals("tencent.video.invite.refuse"))
+      {
+        this.a.b(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaaccept"))
+      {
+        this.a.d(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaignore"))
+      {
+        this.a.c(l);
+        return;
+      }
+    } while (!paramContext.equals("tencent.video.q2v.sdk.onRequestVideo"));
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onReceive action = " + paramContext);
+    this.a.b();
   }
 }
 

@@ -1,56 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2;
-import java.lang.ref.WeakReference;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class bahj
-  extends Handler
+class bahj
+  extends anuw
 {
-  private WeakReference<ReceiptMessageReadMemberListContainerFragment> a;
+  bahj(bahi parambahi) {}
   
-  private bahj(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
+  protected void onDelQZonePhotoWall(boolean paramBoolean, String paramString)
   {
-    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfilePhotoWallComponent", 2, String.format("onDelQZonePhotoWall isSuc=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    bahi.a(this.a, paramBoolean);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
   {
-    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
-    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      case 0: 
-      default: 
-        return;
-      case -1: 
-        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
-        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      case 1: 
-        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      }
-    } while (this.a.get() == null);
-    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
-      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfilePhotoWallComponent", 2, String.format("onGetQZonePhotoWall isSuc=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString2 }));
     }
-    for (;;)
-    {
-      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
-      return;
-      sendEmptyMessage(5);
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+    bahi.a(this.a, paramBoolean, paramString1, parammobile_sub_get_photo_wall_rsp, paramString2);
   }
 }
 

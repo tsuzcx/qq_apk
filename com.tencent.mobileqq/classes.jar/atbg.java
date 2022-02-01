@@ -1,29 +1,83 @@
-import android.os.Bundle;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.math.BigDecimal;
+import mqq.app.QQPermissionCallback;
 
-class atbg
-  implements aszu
+public class atbg
 {
-  atbg(atbf paramatbf, String paramString) {}
-  
-  public void a(boolean paramBoolean)
+  public static String a(int paramInt)
   {
-    if (paramBoolean)
+    if (paramInt < 1000) {
+      return paramInt + "m";
+    }
+    float f = new BigDecimal(paramInt / 1000.0F).setScale(1, 1).floatValue();
+    return f + "km";
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if ((paramBaseActivity != null) && (paramQQPermissionCallback != null)) {
+      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (paramQQAppInterface != null) {
+      bhsi.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").edit().putBoolean("sp_extend_friend_signal_guide", paramBoolean).commit();
+    }
+  }
+  
+  public static boolean a()
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbe.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+        QLog.d("SignalBombHelper", 2, "hasLocationPermission no permission " + Build.VERSION.SDK_INT);
       }
-      atbe.a(this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbe).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbj.a(this.jdField_a_of_type_JavaLangString, atbe.a(this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbe));
+      return false;
     }
-    for (;;)
+    return true;
+  }
+  
+  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
     {
-      atan.a(this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbe.jdField_a_of_type_Atan).a().a(atbe.a(this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbe));
-      return;
-      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbe.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
-      this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_Atbf.jdField_a_of_type_Atbe.jdField_a_of_type_Long, false), true);
+      paramQQAppInterface = (asvi)paramQQAppInterface.getManager(264);
+      if (!paramQQAppInterface.j()) {
+        break label49;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed waiting");
+      }
     }
+    label49:
+    do
+    {
+      return false;
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed show dialog");
+    }
+    atdz.a(paramBaseActivity, paramQQAppInterface, paramOnDismissListener);
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (paramQQAppInterface != null) {
+      bool = bhsi.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getBoolean("sp_extend_friend_signal_guide", false);
+    }
+    return bool;
   }
 }
 

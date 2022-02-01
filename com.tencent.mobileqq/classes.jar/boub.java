@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class boub
-  implements ValueAnimator.AnimatorUpdateListener
+class boub
+  implements Observer<bovn>
 {
-  public boub(QIMCircleProgress paramQIMCircleProgress) {}
+  boub(botw parambotw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@Nullable bovn parambovn)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.c();
+    if (parambovn != null) {
+      botw.a(this.a, parambovn);
+    }
   }
 }
 

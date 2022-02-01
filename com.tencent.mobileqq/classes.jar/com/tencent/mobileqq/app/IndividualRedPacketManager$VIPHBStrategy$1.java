@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.app;
 
-import anom;
-import anoq;
+import aoan;
+import aoar;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class IndividualRedPacketManager$VIPHBStrategy$1
   implements Runnable
 {
-  public IndividualRedPacketManager$VIPHBStrategy$1(anoq paramanoq, anom paramanom, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public IndividualRedPacketManager$VIPHBStrategy$1(aoar paramaoar, aoan paramaoan, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
     try
     {
-      anom.a(anoq.a(this.this$0), this.jdField_a_of_type_Anom, this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
+      aoan.a(aoar.a(this.this$0), this.jdField_a_of_type_Aoan, this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
       return;
     }
     catch (Exception localException)
     {
-      QLog.e(anom.b(), 1, "dealRedPacketToShow failed", localException);
+      QLog.e(aoan.b(), 1, "dealRedPacketToShow failed", localException);
     }
   }
 }

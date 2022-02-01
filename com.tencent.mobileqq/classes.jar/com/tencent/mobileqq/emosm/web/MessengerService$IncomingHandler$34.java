@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emosm.web;
 
-import amhd;
-import ancd;
+import amsx;
 import android.os.Bundle;
-import arti;
+import annx;
+import asiw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameRoamData;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$34
   implements Runnable
 {
-  public MessengerService$IncomingHandler$34(arti paramarti, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$34(asiw paramasiw, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -39,10 +39,10 @@ public class MessengerService$IncomingHandler$34
         if (QLog.isColorLevel()) {
           QLog.d("MessengerService$IncomingHandler", 2, "IPC_APOLLO_UPDATE_GAME_LIST, update game list");
         }
-        localObject2 = (ancd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-        ((ancd)localObject2).c();
-        ((ancd)localObject2).b((ArrayList)localObject1);
-        ((amhd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).e();
+        localObject2 = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+        ((annx)localObject2).c();
+        ((annx)localObject2).b((ArrayList)localObject1);
+        ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).e();
         localObject1 = new Bundle();
         ((Bundle)localObject1).putInt("result", 0);
         this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);

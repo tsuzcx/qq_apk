@@ -1,20 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-import com.tencent.mobileqq.widget.TabBarView2;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class beon
-  implements ValueAnimator.AnimatorUpdateListener
+class beon
+  extends beou
 {
-  public beon(NewTroopCreateActivity paramNewTroopCreateActivity) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  beon(beoh parambeoh, EditorState paramEditorState, List paramList)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.setLayoutParams(paramValueAnimator);
+    super(parambeoh, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    beoh.a(this.a).a(true, true);
   }
 }
 

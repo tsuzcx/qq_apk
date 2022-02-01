@@ -1,5 +1,5 @@
 class eu
-  implements bkiz
+  implements blkc
 {
   eu(es parames) {}
   

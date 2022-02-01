@@ -1,14 +1,10 @@
-public class amxj
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+
+public abstract interface amxj
 {
-  public int a;
-  public int b;
-  public int c;
+  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
   
-  public amxj(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
 }
 
 

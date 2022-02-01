@@ -1,21 +1,23 @@
-public class lgr
+public abstract class lgr
 {
-  public int a;
-  public String a;
-  public int b = 2;
-  public int c = 2;
-  public int d = 5000;
+  public int cid = -1;
+  public boolean isDownloading;
   
-  public lgr()
-  {
-    this.jdField_a_of_type_Int = 5000;
-    this.jdField_a_of_type_JavaLangString = anni.a(2131702766);
-  }
+  public abstract String getDesc();
   
-  public String a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaLangString.replace("voicesticker", paramString);
-  }
+  public abstract String getIconurl();
+  
+  public abstract String getId();
+  
+  public abstract String getMd5();
+  
+  public abstract int getPlatform();
+  
+  public abstract String getResurl();
+  
+  public abstract boolean isUsable();
+  
+  public abstract void setUsable(boolean paramBoolean);
 }
 
 

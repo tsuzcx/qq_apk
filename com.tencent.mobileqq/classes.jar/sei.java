@@ -1,8 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+
 public class sei
+  implements bdxo
 {
-  public String a;
-  public String b;
-  public String c;
+  public sei(RainView paramRainView) {}
+  
+  public void a()
+  {
+    this.a.b(this.a);
+  }
 }
 
 

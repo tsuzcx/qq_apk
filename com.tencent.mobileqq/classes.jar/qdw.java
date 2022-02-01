@@ -1,66 +1,63 @@
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qdw
-  implements qft
+  extends BaseAdapter
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<smv> b = new ArrayList();
+  
+  public qdw(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List<URL> a()
   {
-    return null;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(qdx paramqdx)
   {
-    if (paramInt == 103) {
-      return qbk.a(paramBaseArticleInfo);
-    }
-    if (paramInt == 102) {
-      return qbi.a(paramBaseArticleInfo);
-    }
-    return qbj.a(paramBaseArticleInfo);
+    this.b = paramqdx.a();
+    this.jdField_a_of_type_JavaUtilList = paramqdx.b();
   }
   
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
+  public int getCount()
   {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    Object localObject = (qij)localViewBase.findViewBaseByName("id_info_avator");
-    if (localObject != null)
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Context localContext = paramViewGroup.getContext();
+    if (paramView == null)
     {
-      ((qij)localObject).a(parampxk, false);
-      parampxk = parampxk.a();
-      localObject = (NativeAvatarView)((qij)localObject).getNativeView();
-      if ((pha.b(parampxk)) && (parampxk.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampxk.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
-        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130846348));
-      }
+      paramView = new SquareCornerTextImageView(localContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     }
-    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
-    parampxk = localViewBase.findViewBaseByName("id_view_nickname");
-    if ((paramContainer != null) && (parampxk != null))
+    for (;;)
     {
-      paramContainer = (NativeTextImp)paramContainer.getNativeView();
-      parampxk = parampxk.getNativeView();
-      if ((paramContainer != null) && (parampxk != null)) {
-        parampxk.post(new GalleryProteusItem.1(this, parampxk, paramContainer));
-      }
+      ((SquareCornerTextImageView)paramView).a((smv)this.b.get(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
-  {
-    return false;
   }
 }
 

@@ -1,22 +1,20 @@
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public abstract interface bofu
+class bofu
+  implements CosFunHelper.CountDownListener
 {
-  public abstract void a(int paramInt, float paramFloat);
+  bofu(bofh parambofh) {}
   
-  public abstract void a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
+  public void onCountDownEnd()
+  {
+    bofh.b(this.a);
+  }
   
-  public abstract boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
-  
-  public abstract boolean f();
-  
-  public abstract void r();
-  
-  public abstract void s();
-  
-  public abstract void t();
-  
-  public abstract void u();
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    bofh.a(this.a, paramVideoMaterial.getTipsDrawable());
+  }
 }
 
 

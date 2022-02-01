@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.widget.AbsListView;
 
 public class blim
-  implements DialogInterface.OnDismissListener
 {
-  public blim(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  private int a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private blim(AbsListView paramAbsListView) {}
+  
+  public void a()
   {
-    this.a.finish();
+    this.a = AbsListView.access$200(this.this$0);
+  }
+  
+  public boolean a()
+  {
+    return (this.this$0.hasWindowFocus()) && (AbsListView.access$300(this.this$0) == this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blim
  * JD-Core Version:    0.7.0.1
  */

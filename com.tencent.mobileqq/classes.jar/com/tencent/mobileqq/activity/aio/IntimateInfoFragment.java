@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afyw;
-import agnz;
-import agoe;
+import agiq;
+import agxf;
+import agxk;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -19,7 +19,7 @@ import com.tencent.widget.immersive.SystemBarCompact;
 public class IntimateInfoFragment
   extends PublicBaseFragment
 {
-  private agnz a;
+  private agxf a;
   
   public void a()
   {
@@ -55,14 +55,14 @@ public class IntimateInfoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = getActivity().getIntent().getStringExtra("FORWARD_PEER_UIN");
-    this.a = agoe.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
+    this.a = agxk.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
     if ((this.a == null) || (this.a.a() == null)) {}
     for (paramLayoutInflater = null;; paramLayoutInflater = this.a.a())
     {
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
-      if ((this.a instanceof afyw)) {
-        ((afyw)this.a).a(2);
+      if ((this.a instanceof agiq)) {
+        ((agiq)this.a).a(2);
       }
     }
   }
@@ -76,8 +76,8 @@ public class IntimateInfoFragment
   public void onPause()
   {
     super.onPause();
-    if ((this.a instanceof afyw)) {
-      ((afyw)this.a).h();
+    if ((this.a instanceof agiq)) {
+      ((agiq)this.a).h();
     }
   }
   
@@ -87,8 +87,8 @@ public class IntimateInfoFragment
     this.a.b(true);
     this.a.d();
     this.a.n();
-    if ((this.a instanceof afyw)) {
-      ((afyw)this.a).i();
+    if ((this.a instanceof agiq)) {
+      ((agiq)this.a).i();
     }
   }
   

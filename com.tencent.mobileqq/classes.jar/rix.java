@@ -1,54 +1,18 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class rix
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class rix
+  implements View.OnClickListener
 {
-  public static <T> int a(Iterable<T> paramIterable, riz<T> paramriz)
-  {
-    if (paramIterable != null)
-    {
-      int i = 0;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        if (paramriz.a(paramIterable.next())) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
-  }
+  rix(riw paramriw) {}
   
-  public static <T, E> List<E> a(Iterable<T> paramIterable, riy<T, E> paramriy)
+  public final void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramriy != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext()) {
-        localArrayList.add(paramriy.a(paramIterable.next()));
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static <T> List<T> a(Iterable<T> paramIterable, riz<T> paramriz)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramriz != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        Object localObject = paramIterable.next();
-        if (paramriz.a(localObject)) {
-          localArrayList.add(localObject);
-        }
-      }
-    }
-    return localArrayList;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

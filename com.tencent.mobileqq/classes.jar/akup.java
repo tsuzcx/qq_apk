@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawClassifier.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class akup
-  implements akse
+class akup
+  implements DialogInterface.OnClickListener
 {
-  public akup(DrawClassifier.1 param1) {}
+  akup(akum paramakum) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawClassifier", 2, "tryPreDownLoadModel finished:" + paramInt);
-    }
-    if (paramInt == 0) {
-      akuo.a(true);
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
     }
   }
 }

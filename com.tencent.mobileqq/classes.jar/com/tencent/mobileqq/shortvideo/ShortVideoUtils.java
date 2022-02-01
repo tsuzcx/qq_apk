@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import afur;
+import agej;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -17,16 +17,16 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import anhk;
-import aqbj;
-import bcee;
-import bcmk;
-import bcrk;
-import bcrl;
-import bcst;
-import bdzx;
-import bedk;
-import bgmg;
+import antf;
+import aqql;
+import bcww;
+import bdfc;
+import bdkc;
+import bdkd;
+import bdll;
+import beyq;
+import bfcj;
+import bhmi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -47,11 +47,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import wes;
-import wip;
+import win;
+import wmk;
 
 public class ShortVideoUtils
-  implements bcee
+  implements bcww
 {
   private static int jdField_a_of_type_Int;
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
@@ -79,7 +79,7 @@ public class ShortVideoUtils
     jdField_b_of_type_Int = 1;
     jdField_a_of_type_ArrayOfInt = new int[] { 1, 97, 125 };
     ThreadManager.getSubThreadHandler().post(new ShortVideoUtils.1());
-    jdField_c_of_type_JavaLangString = bedk.a(anhk.ba);
+    jdField_c_of_type_JavaLangString = bfcj.a(antf.ba);
   }
   
   public static int a()
@@ -450,7 +450,7 @@ public class ShortVideoUtils
     }
     localObject = localStringBuilder.toString() + ".nomedia";
     if (!new File((String)localObject).exists()) {
-      bgmg.c((String)localObject);
+      bhmi.c((String)localObject);
     }
     return localStringBuilder.toString();
   }
@@ -528,7 +528,7 @@ public class ShortVideoUtils
       if (paramMessageForShortVideo.isSendFromLocal())
       {
         bool2 = bool1;
-        if (bgmg.b(paramString)) {
+        if (bhmi.b(paramString)) {
           bool2 = false;
         }
       }
@@ -538,7 +538,7 @@ public class ShortVideoUtils
         break;
       }
       ((File)localObject).mkdirs();
-      bgmg.c(paramMessageForShortVideo + ".nomedia");
+      bhmi.c(paramMessageForShortVideo + ".nomedia");
       return paramString;
     }
     Object localObject = ((File)localObject).list();
@@ -567,7 +567,7 @@ public class ShortVideoUtils
         if (paramMessageForShortVideo.equals(paramString)) {
           return paramString;
         }
-        bgmg.d(paramMessageForShortVideo, paramString);
+        bhmi.d(paramMessageForShortVideo, paramString);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoUtils", 2, "copy " + paramMessageForShortVideo + " to " + paramString);
         }
@@ -585,11 +585,11 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    Object localObject = bcmk.a(paramFile);
-    paramFile = new StringBuilder(anhk.bn);
+    Object localObject = bdfc.a(paramFile);
+    paramFile = new StringBuilder(antf.bn);
     paramFile.append((String)localObject);
     paramFile.append(".mp4");
-    localObject = new File(anhk.bn);
+    localObject = new File(antf.bn);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -601,12 +601,12 @@ public class ShortVideoUtils
     if ((paramFile == null) || (TextUtils.isEmpty(paramString))) {
       return null;
     }
-    String str = bcmk.a(paramFile);
-    paramFile = new StringBuilder(anhk.bn);
+    String str = bdfc.a(paramFile);
+    paramFile = new StringBuilder(antf.bn);
     paramFile.append(paramString);
     paramFile.append(str);
     paramFile.append(".mp4");
-    paramString = new File(anhk.bn);
+    paramString = new File(antf.bn);
     if (!paramString.exists()) {
       paramString.mkdirs();
     }
@@ -696,20 +696,20 @@ public class ShortVideoUtils
   
   public static void a(AppInterface paramAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord, Context paramContext)
   {
-    bcrl localbcrl = new bcrl();
-    localbcrl.b = paramString;
+    bdkd localbdkd = new bdkd();
+    localbdkd.b = paramString;
     switch (paramSessionInfo.jdField_a_of_type_Int)
     {
     default: 
       if (paramString == "0X8008E53")
       {
-        localbcrl.jdField_c_of_type_JavaLangString = "2";
+        localbdkd.jdField_c_of_type_JavaLangString = "2";
         label67:
         if ((paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForShortVideo))) {
           break label257;
         }
         paramString = (MessageForShortVideo)paramMessageRecord;
-        localbcrl.jdField_a_of_type_JavaLangString = String.valueOf(paramString.videoFileTime * 1000);
+        localbdkd.jdField_a_of_type_JavaLangString = String.valueOf(paramString.videoFileTime * 1000);
         switch (paramString.busiType)
         {
         default: 
@@ -724,25 +724,25 @@ public class ShortVideoUtils
       }
       break;
     }
-    for (localbcrl.f = "1";; localbcrl.f = "2")
+    for (localbdkd.f = "1";; localbdkd.f = "2")
     {
-      bcrk.a(paramAppInterface.getAccount(), "dc01178", paramSessionInfo.jdField_a_of_type_JavaLangString, localbcrl);
+      bdkc.a(paramAppInterface.getAccount(), "dc01178", paramSessionInfo.jdField_a_of_type_JavaLangString, localbdkd);
       return;
-      localbcrl.d = "1";
+      localbdkd.d = "1";
       break;
-      localbcrl.d = "2";
+      localbdkd.d = "2";
       break;
-      localbcrl.d = "3";
+      localbdkd.d = "3";
       break;
-      localbcrl.jdField_c_of_type_JavaLangString = "1";
+      localbdkd.jdField_c_of_type_JavaLangString = "1";
       break label67;
-      localbcrl.e = "1";
+      localbdkd.e = "1";
       break label124;
-      localbcrl.e = "2";
+      localbdkd.e = "2";
       break label124;
       label257:
-      localbcrl.jdField_a_of_type_JavaLangString = "0";
-      localbcrl.e = "3";
+      localbdkd.jdField_a_of_type_JavaLangString = "0";
+      localbdkd.e = "3";
       break label150;
     }
   }
@@ -765,7 +765,7 @@ public class ShortVideoUtils
     }
     for (String str1 = paramString;; str1 = "")
     {
-      bcst.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009AA6", "0X8009AA6", paramInt1, 0, String.valueOf(paramInt2), String.valueOf(paramInt3), str2, str1);
+      bdll.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009AA6", "0X8009AA6", paramInt1, 0, String.valueOf(paramInt2), String.valueOf(paramInt3), str2, str1);
       return;
       paramInt1 = 1;
       break;
@@ -788,7 +788,7 @@ public class ShortVideoUtils
     } while (!QLog.isColorLevel());
     QLog.e("ShortVideoUtils", 2, "deleteCacheFileByMessage, md5 == null! ");
     return;
-    bgmg.d(a(paramMessageForShortVideo, "mp4"));
+    bhmi.d(a(paramMessageForShortVideo, "mp4"));
   }
   
   public static void a(String paramString, int paramInt)
@@ -808,24 +808,24 @@ public class ShortVideoUtils
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    bcrl localbcrl = new bcrl();
-    localbcrl.jdField_a_of_type_JavaLangString = paramString3;
-    localbcrl.b = "0X8008E53";
+    bdkd localbdkd = new bdkd();
+    localbdkd.jdField_a_of_type_JavaLangString = paramString3;
+    localbdkd.b = "0X8008E53";
     switch (paramInt)
     {
     }
     for (;;)
     {
-      localbcrl.jdField_c_of_type_JavaLangString = "2";
-      localbcrl.e = paramString4;
-      localbcrl.f = paramString5;
-      bcrk.a(paramString1, "dc01178", paramString2, localbcrl);
+      localbdkd.jdField_c_of_type_JavaLangString = "2";
+      localbdkd.e = paramString4;
+      localbdkd.f = paramString5;
+      bdkc.a(paramString1, "dc01178", paramString2, localbdkd);
       return;
-      localbcrl.d = "1";
+      localbdkd.d = "1";
       continue;
-      localbcrl.d = "2";
+      localbdkd.d = "2";
       continue;
-      localbcrl.d = "3";
+      localbdkd.d = "3";
     }
   }
   
@@ -1015,10 +1015,10 @@ public class ShortVideoUtils
       QLog.d("ShortVideoUtils", 2, "moveMoovAtom() result = " + bool1 + ", step = " + paramString + ", cost = " + (l2 - l1) + "ms");
       return bool1;
       String str3 = paramString + ".back";
-      bgmg.c(paramString, str3);
-      if (!bgmg.c(str2, paramString))
+      bhmi.c(paramString, str3);
+      if (!bhmi.c(str2, paramString))
       {
-        bgmg.c(str3, paramString);
+        bhmi.c(str3, paramString);
         paramString = " rename failure";
         bool1 = bool3;
       }
@@ -1050,11 +1050,11 @@ public class ShortVideoUtils
       }
       m = paramInt2;
       j = (int)(BaseChatItemLayout.f + 0.5D);
-      n = bdzx.a();
+      n = beyq.a();
       if (n < 135) {
         break label361;
       }
-      n = afur.a(n, BaseApplicationImpl.getApplication().getResources());
+      n = agej.a(n, BaseApplicationImpl.getApplication().getResources());
       if (n >= j) {
         break label361;
       }
@@ -1065,7 +1065,7 @@ public class ShortVideoUtils
     label361:
     for (;;)
     {
-      n = afur.a(305.0F, BaseApplicationImpl.getApplication().getResources());
+      n = agej.a(305.0F, BaseApplicationImpl.getApplication().getResources());
       String str;
       if (j > n)
       {
@@ -1303,10 +1303,10 @@ public class ShortVideoUtils
   @TargetApi(14)
   public static long b(String paramString)
   {
-    if (!bgmg.a(paramString)) {
+    if (!bhmi.a(paramString)) {
       return 0L;
     }
-    return wip.a(paramString);
+    return wmk.a(paramString);
   }
   
   public static String b()
@@ -1393,8 +1393,8 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = bcmk.a(paramFile);
-    return wes.e + paramFile + ".mp4";
+    paramFile = bdfc.a(paramFile);
+    return win.e + paramFile + ".mp4";
   }
   
   public static String b(String paramString)
@@ -1508,7 +1508,7 @@ public class ShortVideoUtils
     }
     for (localStringBuilder1 = localStringBuilder2;; localStringBuilder1 = new StringBuilder(str))
     {
-      localStringBuilder1.append(bcmk.a()).append(".mp4");
+      localStringBuilder1.append(bdfc.a()).append(".mp4");
       if (!new File(localStringBuilder1.toString()).exists()) {
         return localStringBuilder1.toString();
       }
@@ -1543,12 +1543,12 @@ public class ShortVideoUtils
       {
         return null;
         String str = a(paramMessageForShortVideo, "mp4");
-        if (bgmg.b(str)) {
+        if (bhmi.b(str)) {
           return str;
         }
       } while (!paramMessageForShortVideo.isSendFromLocal());
       paramMessageForShortVideo = paramMessageForShortVideo.videoFileName;
-    } while (!bgmg.b(paramMessageForShortVideo));
+    } while (!bhmi.b(paramMessageForShortVideo));
     return paramMessageForShortVideo;
   }
   
@@ -1557,7 +1557,7 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = bcmk.a(paramFile);
+    paramFile = bdfc.a(paramFile);
     StringBuilder localStringBuilder = new StringBuilder(jdField_c_of_type_JavaLangString);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
@@ -1606,7 +1606,7 @@ public class ShortVideoUtils
     }
     for (;;)
     {
-      bcst.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+      bdll.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
       return;
       if (paramInt == 1) {
         paramInt = 2;
@@ -1654,7 +1654,7 @@ public class ShortVideoUtils
   {
     String str = Build.MODEL.toUpperCase();
     if (str.contains("GN9000L")) {
-      str = anhk.cN;
+      str = antf.cN;
     }
     for (;;)
     {
@@ -1663,13 +1663,13 @@ public class ShortVideoUtils
       }
       return str;
       if ((str.contains("MX4")) || (str.contains("MX6")) || (str.contains("MX5")) || (str.contains("M355")) || (str.contains("M571C"))) {
-        str = anhk.cM;
+        str = antf.cM;
       } else if (str.contains("M040")) {
-        str = anhk.cP;
+        str = antf.cP;
       } else if ((str.contains("VIVO X7")) || (str.contains("VIVO X6A")) || (str.contains("VIVO XPLAY6")) || (str.contains("VIVO X5PRO")) || (str.contains("VIVO X9 PLUS")) || (str.contains("VIVO Y51A")) || (str.contains("VIVO X9I")) || (str.contains("VIVO X9")) || (str.contains("VIVO X6D"))) {
-        str = anhk.cO;
+        str = antf.cO;
       } else {
-        str = anhk.bn;
+        str = antf.bn;
       }
     }
   }
@@ -1706,7 +1706,7 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = bcmk.a(paramFile);
+    paramFile = bdfc.a(paramFile);
     StringBuilder localStringBuilder = new StringBuilder(jdField_c_of_type_JavaLangString);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
@@ -2151,7 +2151,7 @@ public class ShortVideoUtils
   public static boolean f()
   {
     boolean bool1 = e();
-    boolean bool2 = aqbj.a();
+    boolean bool2 = aqql.a();
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoUtils", 2, "supportShortVideoMergePhoto dpc:" + jdField_b_of_type_Int + " choiceQC:" + bool2);
     }

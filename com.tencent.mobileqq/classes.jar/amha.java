@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-class amha
-  implements INetInfoHandler
+abstract interface amha
 {
-  public void onNetMobile2None() {}
+  public abstract void a(int paramInt);
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    andw.a("onNetMobile2Wifi");
-  }
+  public abstract void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong);
   
-  public void onNetNone2Mobile(String paramString) {}
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
   
-  public void onNetNone2Wifi(String paramString)
-  {
-    andw.a("onNetNone2Wifi");
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 

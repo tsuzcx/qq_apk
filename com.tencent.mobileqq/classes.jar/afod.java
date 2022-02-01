@@ -1,16 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afod
   implements View.OnClickListener
 {
-  public afod(TroopRequestActivity paramTroopRequestActivity) {}
+  public afod(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.g();
+    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_SHOW_BADGE");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

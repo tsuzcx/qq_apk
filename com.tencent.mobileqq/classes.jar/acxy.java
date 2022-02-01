@@ -1,19 +1,17 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
-public class acxy
-  implements acxn
+public abstract interface acxy
 {
-  private acwu<acxm> a = new acwv();
+  public abstract void a(View paramView);
   
-  public List<acxm> a()
-  {
-    return this.a.a();
-  }
+  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
   
-  public void a(Class<? extends acxm> paramClass)
-  {
-    this.a.a(paramClass);
-  }
+  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
 }
 
 

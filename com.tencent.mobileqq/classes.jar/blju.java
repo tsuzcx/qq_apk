@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class blju
+class blju
+  implements View.OnClickListener
 {
-  public ChatMessage a;
-  public String a;
+  blju(bljt parambljt) {}
   
-  public blju(ChatMessage paramChatMessage, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

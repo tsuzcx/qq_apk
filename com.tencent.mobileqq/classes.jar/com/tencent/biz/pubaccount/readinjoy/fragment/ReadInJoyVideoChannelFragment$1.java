@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import oat;
-import och;
+import ocd;
+import odr;
 
 class ReadInJoyVideoChannelFragment$1
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyVideoChannelFragment$1
   
   public void run()
   {
-    oat.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", och.a(56, null), false);
+    ocd.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", odr.a(56, null), false);
   }
 }
 

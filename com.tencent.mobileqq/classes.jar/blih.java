@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import com.tencent.widget.AbsListView;
 
-public class blih
-  implements DialogInterface.OnClickListener
+public abstract interface blih
 {
-  public blih(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public abstract void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abstract void onScrollStateChanged(AbsListView paramAbsListView, int paramInt);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bjuk;
+import bkvl;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -11,20 +11,20 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 public class AIOEntryPlugin$2
   implements Runnable
 {
-  public AIOEntryPlugin$2(bjuk parambjuk, RequestEvent paramRequestEvent) {}
+  public AIOEntryPlugin$2(bkvl parambkvl, RequestEvent paramRequestEvent) {}
   
   public void run()
   {
-    if ((bjuk.g(this.this$0).getAttachedActivity() instanceof GameActivity1)) {
-      ((GameActivity1)bjuk.h(this.this$0).getAttachedActivity()).hideMiniAIOEntrance();
+    if ((bkvl.g(this.this$0).getAttachedActivity() instanceof GameActivity1)) {
+      ((GameActivity1)bkvl.h(this.this$0).getAttachedActivity()).hideMiniAIOEntrance();
     }
     for (;;)
     {
       this.a.ok();
       return;
-      if ((bjuk.i(this.this$0).getMiniAppInfo() != null) && (bjuk.j(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((bjuk.k(this.this$0) instanceof BaseRuntime)))
+      if ((bkvl.i(this.this$0).getMiniAppInfo() != null) && (bkvl.j(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((bkvl.k(this.this$0) instanceof BaseRuntime)))
       {
-        IPage localIPage = ((BaseRuntime)bjuk.l(this.this$0)).getPage();
+        IPage localIPage = ((BaseRuntime)bkvl.l(this.this$0)).getPage();
         if (localIPage != null) {
           localIPage.setMiniAIOEntranceVisible(false, null);
         }

@@ -1,26 +1,14 @@
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
-public class ajix
-  extends abqm
+class ajix
+  implements Comparator<MayKnowRecommend>
 {
-  public ajix(DeviceFragment paramDeviceFragment) {}
+  ajix(ajis paramajis) {}
   
-  protected void a(ArrayList<DeviceInfo> paramArrayList)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    if (this.a.e)
-    {
-      this.a.e = false;
-      if (DeviceFragment.a(this.a) != null) {
-        DeviceFragment.b(this.a).a(this.a.b(), true, null);
-      }
-    }
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.a = ((ArrayList)paramArrayList.clone());
-    this.a.a.notifyDataSetChanged();
+    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
   }
 }
 

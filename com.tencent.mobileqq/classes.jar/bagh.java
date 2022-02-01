@@ -1,37 +1,36 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
 
-public class bagh
-  implements QzoneZipCacheHelperCallBack
+class bagh
+  implements Animator.AnimatorListener
 {
-  public bagh(QzoneGiftUtil.1 param1) {}
+  bagh(bagf parambagf, View paramView, long paramLong, int paramInt) {}
   
-  public void onResult(boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramBoolean)
-    {
-      QzoneGiftUtil.1.a(this.a);
-      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
-      if (this.a.jdField_a_of_type_Bagj != null)
-      {
-        if (QzoneGiftUtil.1.c(this.a) != this.a.jdField_a_of_type_Int) {
-          break label109;
-        }
-        this.a.jdField_a_of_type_Bagj.a();
-      }
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    bagf.a = false;
+    if (this.jdField_a_of_type_Long != 0L) {
+      bagj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     }
-    label109:
-    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != this.a.jdField_a_of_type_Int)
-    {
-      return;
-      QzoneGiftUtil.1.b(this.a);
-      break;
-    }
-    this.a.jdField_a_of_type_Bagj.b();
   }
   
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    bagf.a = false;
+    if (this.jdField_a_of_type_Long != 0L) {
+      bagj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bagf.a = true;
+  }
 }
 
 

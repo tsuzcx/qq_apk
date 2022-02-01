@@ -1,29 +1,37 @@
-class awxq
-  implements atty
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.3;
+import com.tencent.qphone.base.util.QLog;
+
+public class awxq
+  extends biht
 {
-  awxq(awxi paramawxi, awxd paramawxd) {}
+  public awxq(PngFrameManager.3 param3) {}
   
-  public void a(int paramInt)
+  public void onDone(bihu parambihu)
   {
-    if ((this.jdField_a_of_type_Awxd != null) && (this.jdField_a_of_type_Awxd.a != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameManager", 2, "func onDone.【aio preview】");
+    }
+    synchronized (this.a.this$0)
     {
-      String str = this.jdField_a_of_type_Awxd.a.a();
-      awxe localawxe = this.jdField_a_of_type_Awxi.a(str);
-      if ((localawxe != null) && (!localawxe.a))
+      if (this.a.this$0.a != null)
       {
-        localawxe.c = paramInt;
-        this.jdField_a_of_type_Awxi.a(str, localawxe);
-        awxi.a(this.jdField_a_of_type_Awxi, localawxe, paramInt);
+        if (parambihu.a() != 3) {
+          this.a.this$0.a.obtainMessage(226, this.a.jdField_a_of_type_Awxu).sendToTarget();
+        }
       }
+      else {
+        return;
+      }
+      parambihu = awxw.a(this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Awxu.a = parambihu;
+      this.a.this$0.a.obtainMessage(227, this.a.jdField_a_of_type_Awxu).sendToTarget();
+      BaseApplicationImpl.sImageCache.put(this.a.jdField_a_of_type_JavaLangString, parambihu);
     }
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    awxi.a(this.jdField_a_of_type_Awxi, this.jdField_a_of_type_Awxd, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 

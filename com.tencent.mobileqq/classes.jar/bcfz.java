@@ -1,29 +1,69 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-class bcfz
-  implements bcgb
+public class bcfz
+  extends bcga
 {
-  bcfz(bcfy parambcfy) {}
+  public static final String a;
+  public int a;
+  public CharSequence a;
+  public CharSequence b;
+  public String b;
+  public CharSequence c;
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
+  static
   {
-    if (bcfy.a(this.a) != null) {
-      bcfy.a(this.a).a(this.a.a, paramFloat);
-    }
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bcfz.class.getSimpleName();
   }
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  public bcfz(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
-    if (bcfy.a(this.a) != null)
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bcfz(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      bcfy.a(this.a).a(this.a.a, 1.0F);
-      bcfy.a(this.a).a(this.a.a, 3);
+    default: 
+      i = 1;
+    }
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.i = paramString.optString("leftImageURL");
+      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_JavaLangString = bcni.a(paramString.optString("leftImageTagText"));
+      this.jdField_a_of_type_JavaLangCharSequence = bcni.a(paramString.optString("firstLineText"));
+      this.jdField_b_of_type_JavaLangCharSequence = bcni.a(paramString.optString("secondLineText"));
+      this.c = bcni.a(paramString.optJSONArray("thirdLineText"));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
+  public boolean b()
+  {
+    return true;
+  }
 }
 
 

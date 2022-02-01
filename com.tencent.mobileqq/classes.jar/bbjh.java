@@ -1,20 +1,32 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 public class bbjh
-  implements View.OnTouchListener
 {
-  public bbjh(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private void a()
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    }
+  }
+  
+  private void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 

@@ -1,295 +1,210 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.util.QZLog;
-import java.lang.reflect.Method;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmjz
 {
-  public static final int a;
-  public static final String a;
-  public static int b = -1;
-  
-  static
+  /* Error */
+  public static com.tencent.common.app.AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    jdField_a_of_type_JavaLangString = "[PhotoAlbum]" + bmjz.class.getSimpleName();
-    jdField_a_of_type_Int = a(27);
+    // Byte code:
+    //   0: ldc 22
+    //   2: iconst_1
+    //   3: new 24	java/lang/StringBuilder
+    //   6: dup
+    //   7: invokespecial 28	java/lang/StringBuilder:<init>	()V
+    //   10: ldc 30
+    //   12: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: aload_1
+    //   16: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   22: invokestatic 44	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   25: aload_0
+    //   26: ifnull +7 -> 33
+    //   29: aload_1
+    //   30: ifnonnull +13 -> 43
+    //   33: ldc 22
+    //   35: iconst_1
+    //   36: ldc 46
+    //   38: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: aconst_null
+    //   42: areturn
+    //   43: ldc 51
+    //   45: invokestatic 57	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   48: astore_2
+    //   49: aload_2
+    //   50: ifnonnull +41 -> 91
+    //   53: ldc 22
+    //   55: iconst_1
+    //   56: ldc 59
+    //   58: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   61: aconst_null
+    //   62: areturn
+    //   63: astore_3
+    //   64: aload_0
+    //   65: invokestatic 62	bmjz:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   68: astore 4
+    //   70: aload 4
+    //   72: ldc 51
+    //   74: invokevirtual 67	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   77: astore_2
+    //   78: iconst_1
+    //   79: aload 4
+    //   81: invokestatic 73	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
+    //   84: aload_3
+    //   85: invokevirtual 76	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   88: goto -39 -> 49
+    //   91: aload_2
+    //   92: iconst_2
+    //   93: anewarray 53	java/lang/Class
+    //   96: dup
+    //   97: iconst_0
+    //   98: aload_0
+    //   99: invokevirtual 80	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   102: aastore
+    //   103: dup
+    //   104: iconst_1
+    //   105: aload_1
+    //   106: invokevirtual 80	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   109: aastore
+    //   110: invokevirtual 84	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   113: iconst_2
+    //   114: anewarray 4	java/lang/Object
+    //   117: dup
+    //   118: iconst_0
+    //   119: aload_0
+    //   120: aastore
+    //   121: dup
+    //   122: iconst_1
+    //   123: aload_1
+    //   124: aastore
+    //   125: invokevirtual 90	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   128: astore_0
+    //   129: aload_0
+    //   130: ifnull +15 -> 145
+    //   133: aload_0
+    //   134: instanceof 92
+    //   137: ifeq +8 -> 145
+    //   140: aload_0
+    //   141: checkcast 92	com/tencent/common/app/AppInterface
+    //   144: areturn
+    //   145: ldc 22
+    //   147: iconst_1
+    //   148: ldc 94
+    //   150: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   153: aconst_null
+    //   154: areturn
+    //   155: astore_0
+    //   156: aload_0
+    //   157: invokevirtual 76	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   160: goto -7 -> 153
+    //   163: astore_0
+    //   164: aload_0
+    //   165: invokevirtual 95	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   168: goto -15 -> 153
+    //   171: astore_0
+    //   172: aload_0
+    //   173: invokevirtual 96	java/lang/IllegalAccessException:printStackTrace	()V
+    //   176: goto -23 -> 153
+    //   179: astore_0
+    //   180: aload_0
+    //   181: invokevirtual 97	java/lang/InstantiationException:printStackTrace	()V
+    //   184: goto -31 -> 153
+    //   187: astore_0
+    //   188: aload_0
+    //   189: invokevirtual 98	java/lang/reflect/InvocationTargetException:printStackTrace	()V
+    //   192: goto -39 -> 153
+    //   195: astore_0
+    //   196: aload_0
+    //   197: invokevirtual 99	java/lang/NoSuchMethodException:printStackTrace	()V
+    //   200: goto -47 -> 153
+    //   203: astore_0
+    //   204: aload_0
+    //   205: invokevirtual 100	java/lang/Exception:printStackTrace	()V
+    //   208: goto -55 -> 153
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	211	0	paramBaseApplicationImpl	BaseApplicationImpl
+    //   0	211	1	paramString	String
+    //   48	44	2	localClass	java.lang.Class
+    //   63	22	3	localClassNotFoundException	java.lang.ClassNotFoundException
+    //   68	12	4	localClassLoader	ClassLoader
+    // Exception table:
+    //   from	to	target	type
+    //   43	49	63	java/lang/ClassNotFoundException
+    //   53	61	155	java/lang/ClassNotFoundException
+    //   64	88	155	java/lang/ClassNotFoundException
+    //   91	129	155	java/lang/ClassNotFoundException
+    //   133	145	155	java/lang/ClassNotFoundException
+    //   145	153	155	java/lang/ClassNotFoundException
+    //   43	49	163	java/lang/IllegalArgumentException
+    //   53	61	163	java/lang/IllegalArgumentException
+    //   64	88	163	java/lang/IllegalArgumentException
+    //   91	129	163	java/lang/IllegalArgumentException
+    //   133	145	163	java/lang/IllegalArgumentException
+    //   145	153	163	java/lang/IllegalArgumentException
+    //   43	49	171	java/lang/IllegalAccessException
+    //   53	61	171	java/lang/IllegalAccessException
+    //   64	88	171	java/lang/IllegalAccessException
+    //   91	129	171	java/lang/IllegalAccessException
+    //   133	145	171	java/lang/IllegalAccessException
+    //   145	153	171	java/lang/IllegalAccessException
+    //   43	49	179	java/lang/InstantiationException
+    //   53	61	179	java/lang/InstantiationException
+    //   64	88	179	java/lang/InstantiationException
+    //   91	129	179	java/lang/InstantiationException
+    //   133	145	179	java/lang/InstantiationException
+    //   145	153	179	java/lang/InstantiationException
+    //   43	49	187	java/lang/reflect/InvocationTargetException
+    //   53	61	187	java/lang/reflect/InvocationTargetException
+    //   64	88	187	java/lang/reflect/InvocationTargetException
+    //   91	129	187	java/lang/reflect/InvocationTargetException
+    //   133	145	187	java/lang/reflect/InvocationTargetException
+    //   145	153	187	java/lang/reflect/InvocationTargetException
+    //   43	49	195	java/lang/NoSuchMethodException
+    //   53	61	195	java/lang/NoSuchMethodException
+    //   64	88	195	java/lang/NoSuchMethodException
+    //   91	129	195	java/lang/NoSuchMethodException
+    //   133	145	195	java/lang/NoSuchMethodException
+    //   145	153	195	java/lang/NoSuchMethodException
+    //   43	49	203	java/lang/Exception
+    //   53	61	203	java/lang/Exception
+    //   64	88	203	java/lang/Exception
+    //   91	129	203	java/lang/Exception
+    //   133	145	203	java/lang/Exception
+    //   145	153	203	java/lang/Exception
   }
   
-  public static int a(int paramInt)
+  public static ClassLoader a(Context paramContext)
   {
-    DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-    float f = paramInt;
-    return (int)(localDisplayMetrics.density * f + 0.5F);
+    return PluginStatic.getOrCreateClassLoader(paramContext, "qqdataline.apk");
   }
   
-  private static int a(Context paramContext)
+  public static void a(String paramString)
   {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("DATALINE_LOG", 4, "bigTValue:" + paramString);
     }
-    return i;
+    a(paramString, 1);
   }
   
-  public static int a(Context paramContext, Activity paramActivity)
+  public static void a(String paramString, int paramInt)
   {
-    if (b != -1)
+    if (paramInt > 0)
     {
-      QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "has notchHeight:", Integer.valueOf(b) });
-      return b;
-    }
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.MODEL:", Build.MODEL });
-    if (b(paramContext)) {
-      b = jdField_a_of_type_Int;
-    }
-    for (;;)
-    {
-      return b;
-      if (a(paramContext))
-      {
-        if (Build.VERSION.SDK_INT >= 28) {
-          a(paramActivity);
-        }
-        if ((b == 0) || (b == -1)) {
-          b = 80;
-        }
-      }
-      else if (c(paramContext))
-      {
-        b = a(paramContext)[1];
-      }
-      else if ((d(paramContext)) || (e(paramContext)) || (c()))
-      {
-        b = a(paramContext);
-      }
-      else if (d())
-      {
-        b = 121;
-      }
-      else
-      {
-        a(paramActivity);
-      }
-    }
-  }
-  
-  @NonNull
-  public static Rect a(View paramView)
-  {
-    Rect localRect = new Rect();
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.VERSION.SDK_INT:", Integer.valueOf(Build.VERSION.SDK_INT) });
-    if (Build.VERSION.SDK_INT >= 23) {
-      try
-      {
-        paramView = bmio.a(paramView, "getRootWindowInsets", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "insets:", paramView });
-        Object localObject3 = bmio.a(paramView, "getDisplayCutout", false, null, null);
-        if (localObject3 == null)
-        {
-          QZLog.d(jdField_a_of_type_JavaLangString, 1, "displayCutout == null");
-          return localRect;
-        }
-        paramView = bmio.a(localObject3, "getSafeInsetTop", false, null, null);
-        Object localObject1 = bmio.a(localObject3, "getSafeInsetBottom", false, null, null);
-        Object localObject2 = bmio.a(localObject3, "getSafeInsetLeft", false, null, null);
-        localObject3 = bmio.a(localObject3, "getSafeInsetRight", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "safeInsetTop:", paramView, " safeInsetBottom:", localObject1, " safeInsetLeft:", localObject2, " safeInsetRight:", localObject3 });
-        if ((localObject2 instanceof Integer)) {
-          localRect.left = ((Integer)localObject2).intValue();
-        }
-        if ((localObject1 instanceof Integer)) {
-          localRect.bottom = ((Integer)localObject1).intValue();
-        }
-        if ((localObject3 instanceof Integer)) {
-          localRect.right = ((Integer)localObject3).intValue();
-        }
-        if ((paramView instanceof Integer))
-        {
-          localRect.top = ((Integer)paramView).intValue();
-          return localRect;
-        }
-      }
-      catch (Exception paramView)
-      {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, paramView, new Object[0]);
-      }
-    }
-    return localRect;
-  }
-  
-  public static String a(Context paramContext, String paramString1, String paramString2)
-  {
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("android.os.SystemProperties");
-      paramContext = (String)paramContext.getMethod("get", new Class[] { String.class, String.class }).invoke(paramContext, new Object[] { new String(paramString1), new String(paramString2) });
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      return paramString2;
-    }
-    catch (IllegalArgumentException paramContext) {}
-    return paramString2;
-  }
-  
-  private static void a(Activity paramActivity)
-  {
-    if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null)) {
-      b = a(paramActivity.getWindow().getDecorView()).top;
-    }
-  }
-  
-  private static boolean a()
-  {
-    return Build.MODEL.endsWith("L78011");
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-  }
-  
-  public static int[] a(Context paramContext)
-  {
-    int[] arrayOfInt = new int[2];
-    int[] tmp5_4 = arrayOfInt;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      paramContext = (int[])paramContext.getMethod("getNotchSize", new Class[0]).invoke(paramContext, new Object[0]);
-      return paramContext;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize ClassNotFoundException");
-      return arrayOfInt;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize NoSuchMethodException");
-      return arrayOfInt;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize Exception");
-      return arrayOfInt;
-    }
-    finally {}
-    return arrayOfInt;
-  }
-  
-  private static boolean b()
-  {
-    return "GM1910".equals(Build.MODEL);
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    try
-    {
-      paramContext = bmio.a("android.util.FtFeature", "isFeatureSupport", false, bmkc.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(32) });
-      if ((paramContext instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label48;
       }
     }
-    catch (Exception paramContext)
+    label48:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
+      bdll.b((QQAppInterface)localObject, "CliOper", "", "", "DatalineClickReport", paramString, 0, paramInt, 0, "", "", "", "");
+      return;
     }
-    return false;
-  }
-  
-  private static boolean c()
-  {
-    return (a()) || (b()) || (e()) || ("Pixel 3 XL".equals(Build.MODEL)) || ("NX606J".equals(Build.MODEL));
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
-      return bool;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen ClassNotFoundException");
-      return false;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen NoSuchMethodException");
-      return false;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen Exception");
-      return false;
-    }
-    finally {}
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    return "FS8010".equals(Build.MODEL);
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    paramContext = a(paramContext, "ro.miui.notch", "0");
-    if (paramContext != null) {
-      return paramContext.equals("1");
-    }
-    return false;
-  }
-  
-  private static boolean e()
-  {
-    return "SM-F9000".equals(Build.MODEL);
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    try
-    {
-      paramContext = bmio.a("smartisanos.api.DisplayUtilsSmt", "isFeatureSupport", false, bmkc.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(1) });
-      if ((paramContext instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
-    }
-    return false;
   }
 }
 

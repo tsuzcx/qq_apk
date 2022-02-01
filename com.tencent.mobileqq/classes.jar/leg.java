@@ -1,71 +1,43 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
-import android.content.ComponentCallbacks2;
-import android.content.Context;
-import android.content.res.Configuration;
-import com.tencent.av.VideoController;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class leg
-  implements ComponentCallbacks2
+public class leg
 {
-  leg(lef paramlef) {}
+  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new leh(this);
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  private void a(int paramInt)
+  public leg(VideoAppInterface paramVideoAppInterface)
   {
-    VideoController localVideoController = this.a.a.a();
-    if (localVideoController != null) {
-      localVideoController.a("lowMemoryLevel", String.valueOf(paramInt));
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
+  }
+  
+  public void b()
+  {
     try
     {
-      ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
-      if (localMemoryInfo.lowMemory) {}
-      for (paramInt = 1;; paramInt = 0)
+      if (this.jdField_a_of_type_Boolean)
       {
-        localVideoController.a("lowMemory", String.valueOf(paramInt));
-        return;
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_a_of_type_Boolean = false;
       }
       return;
     }
-    catch (Throwable localThrowable)
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      lbc.e("GMemoryMonitor", localThrowable.getMessage());
-    }
-  }
-  
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GMemoryMonitor", 2, "onConfigurationChanged called");
-    }
-  }
-  
-  public void onLowMemory()
-  {
-    QLog.d("GMemoryMonitor", 1, "onLowMemory called");
-    this.a.a(-10, this.a.a.e);
-    a(-10);
-  }
-  
-  public void onTrimMemory(int paramInt)
-  {
-    if (paramInt >= 15) {
-      lhu.a(41, paramInt);
-    }
-    if (paramInt == 15)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GMemoryMonitor", 2, "onTrimMemory called ,level = " + paramInt);
-      }
-      this.a.a(paramInt, this.a.a.e);
-      ((lhw)this.a.a.a(4)).a(27, paramInt);
-      a(paramInt);
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
     }
   }
 }

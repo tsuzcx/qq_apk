@@ -1,63 +1,22 @@
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+
 public class won
-  implements wou
 {
-  public final wol[] a = new wol[2];
-  
-  private void a(wol paramwol, int paramInt)
+  public static Intent a(Context paramContext, int paramInt, String paramString)
   {
-    this.a[paramInt] = paramwol;
+    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
   }
   
-  public <T extends wol> T a(int paramInt)
+  public static void a(Context paramContext, int paramInt, long paramLong)
   {
-    wol localwol = this.a[paramInt];
-    if (localwol == null) {}
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        localwol = this.a[paramInt];
-        if (localwol == null) {
-          break label80;
-        }
-        return localwol;
-        a(localwol, paramInt);
-        if (localwol != null) {
-          localwol.b();
-        }
-        return localwol;
-      }
-      Object localObject2 = new wqa();
-      continue;
-      localObject2 = new woe();
-      continue;
-      return localObject2;
-      label80:
-      switch (paramInt)
-      {
-      }
-    }
+    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
   }
   
-  public void a()
+  public static void a(Context paramContext, int paramInt, String paramString)
   {
-    yqp.b("DataProviderManager", "onInit");
-  }
-  
-  public void b()
-  {
-    yqp.b("DataProviderManager", "onDestroy");
-    wol[] arrayOfwol = this.a;
-    int j = arrayOfwol.length;
-    int i = 0;
-    while (i < j)
-    {
-      wol localwol = arrayOfwol[i];
-      if (localwol != null) {
-        localwol.c();
-      }
-      i += 1;
-    }
+    paramContext.startActivity(a(paramContext, paramInt, paramString));
   }
 }
 

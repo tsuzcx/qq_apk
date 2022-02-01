@@ -1,59 +1,189 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
-import eipc.EIPCClient;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
 
-@JsPlugin(secondary=true)
 public class bjtr
-  extends BaseJsPlugin
 {
-  private JSONObject a(RequestEvent paramRequestEvent)
+  protected int a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected String i;
+  protected String j;
+  protected String k;
+  protected String l;
+  protected String m;
+  
+  public static bjtr a()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("SetAvatarNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
+    return new bjtr();
   }
   
-  @JsEvent({"uploadAvatar"})
-  public void uploadAvatar(RequestEvent paramRequestEvent)
+  private static String a(String paramString)
   {
-    try
-    {
-      Object localObject = a(paramRequestEvent);
-      QLog.i("SetAvatarNativePlugin", 1, "onInvoke, param=" + localObject);
-      localObject = ((JSONObject)localObject).optJSONObject("data");
-      if (localObject == null)
-      {
-        paramRequestEvent.fail(new JSONObject("empty data"), "empty data");
-        return;
-      }
-      localObject = ((JSONObject)localObject).optString("path", null);
-      localObject = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath((String)localObject);
-      QLog.d("SetAvatarNativePlugin", 1, (String)localObject);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("param_avatar_path", (String)localObject);
-      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", localBundle, new bjts(this, paramRequestEvent));
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
-    catch (Throwable paramRequestEvent)
-    {
-      QLog.e("SetAvatarNativePlugin", 1, "setAvatar err", paramRequestEvent);
-    }
+    return paramString.replace("|", "");
+  }
+  
+  public final bjtr a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public final bjtr a(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public final bjtr b(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public final String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(this.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.b));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.c));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.d));
+    localStringBuilder.append("|");
+    localStringBuilder.append(bjjo.a().a());
+    localStringBuilder.append("|");
+    localStringBuilder.append(bjjo.a().c());
+    localStringBuilder.append("|");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.e));
+    return localStringBuilder.toString();
+  }
+  
+  public final bjtr c(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public final String c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(this.f));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.g));
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.h));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.i));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.j));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.k));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.l));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.m));
+    return localStringBuilder.toString();
+  }
+  
+  public final bjtr d(String paramString)
+  {
+    this.i = paramString;
+    return this;
+  }
+  
+  public final String d()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    return localStringBuilder.toString();
+  }
+  
+  public final bjtr e(String paramString)
+  {
+    this.j = paramString;
+    return this;
+  }
+  
+  public final bjtr f(String paramString)
+  {
+    this.k = paramString;
+    return this;
+  }
+  
+  public final bjtr g(String paramString)
+  {
+    this.l = paramString;
+    return this;
+  }
+  
+  public final bjtr h(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public final bjtr i(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public final bjtr j(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public final bjtr k(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public final bjtr l(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public final bjtr m(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

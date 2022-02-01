@@ -1,19 +1,45 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axxv
-  extends axxt
+class axxv
+  implements View.OnClickListener
 {
-  public View e;
-  public ImageView e;
-  public View f;
-  public ImageView f;
-  public TextView g;
+  axxv(axxu paramaxxu, int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2) {}
   
-  public axxv(axxu paramaxxu)
+  public void onClick(View paramView)
   {
-    super(paramaxxu);
+    Intent localIntent;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      localIntent = new Intent(this.jdField_a_of_type_Axxu.a, SplashActivity.class);
+      localIntent.putExtra("uin", this.jdField_a_of_type_Long + "");
+      localIntent.putExtra("uintype", 1);
+      localIntent.putExtra("troop_uin", this.jdField_a_of_type_Long + "");
+      localIntent.putExtra("uinname", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("isGameRoom", true);
+      localIntent = agej.a(localIntent, new int[] { 1, 2 });
+      this.jdField_a_of_type_Axxu.a.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Axxu.a instanceof ChatActivity)) {
+        ((ChatActivity)this.jdField_a_of_type_Axxu.a).finish();
+      }
+      bdll.b(null, "dc00899", "Grp_wolf", "", "in_game", "active_ball", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localIntent = agej.a(new Intent(this.jdField_a_of_type_Axxu.a, GameRoomInviteActivity.class), new int[] { 2 });
+      localIntent.putExtra("inviteId", this.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("roomNum", this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Axxu.a.startActivity(localIntent);
+      this.jdField_a_of_type_Axxu.a();
+    }
   }
 }
 

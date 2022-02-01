@@ -1,25 +1,10 @@
-class bned
-  implements bnhs
+public class bned
 {
-  bned(bndy parambndy) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (bndy.d(this.a)) {
-        bani.a(paramInt);
-      }
-      if (bndy.a(this.a)) {
-        bndy.g(this.a);
-      }
-    }
-    else
-    {
-      return;
-    }
-    bndy.b(this.a, false);
-  }
+  public float a;
+  public int a;
+  private bnee jdField_a_of_type_Bnee;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
 }
 
 

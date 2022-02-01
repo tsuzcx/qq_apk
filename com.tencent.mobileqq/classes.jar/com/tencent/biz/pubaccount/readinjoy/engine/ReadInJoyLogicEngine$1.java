@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pmh;
+import pfa;
 
 public class ReadInJoyLogicEngine$1
   implements Runnable
 {
-  public ReadInJoyLogicEngine$1(pmh parampmh, ReadInJoyEntityManagerFactory paramReadInJoyEntityManagerFactory) {}
+  public ReadInJoyLogicEngine$1(pfa parampfa, ReadInJoyEntityManagerFactory paramReadInJoyEntityManagerFactory) {}
   
   public void run()
   {

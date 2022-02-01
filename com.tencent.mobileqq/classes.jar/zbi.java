@@ -1,93 +1,16 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.graphics.PointF;
 
-public class zbi
-  extends zbc
+public abstract interface zbi
 {
-  public int a;
-  public final List<String> a;
-  public boolean a;
-  public int b;
-  public String e;
-  public String f;
+  public abstract void a();
   
-  public zbi(@NonNull String paramString)
-  {
-    super(paramString);
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public abstract void a(float paramFloat);
   
-  public String a()
-  {
-    return "NormalFacePackage";
-  }
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
   
-  public String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
+  public abstract boolean a(zbj paramzbj);
   
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.f)) {}
-    do
-    {
-      Object localObject1;
-      do
-      {
-        return false;
-        localObject1 = new File(this.f);
-      } while (!((File)localObject1).exists());
-      this.jdField_a_of_type_JavaUtilList.clear();
-      if (((File)localObject1).isDirectory())
-      {
-        localObject1 = ((File)localObject1).listFiles(new zbj(this));
-        if (localObject1 != null)
-        {
-          int j = localObject1.length;
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = localObject1[i];
-            this.jdField_a_of_type_JavaUtilList.add(localObject2.toURI().toString());
-            i += 1;
-          }
-          Collections.sort(this.jdField_a_of_type_JavaUtilList);
-        }
-      }
-    } while (this.jdField_a_of_type_JavaUtilList.isEmpty());
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
-    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
-    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
-    localStringBuffer.append(", zipDownloadUrl='").append(this.e).append('\'');
-    localStringBuffer.append(", facePkgPath='").append(this.f).append('\'');
-    localStringBuffer.append(", faceUriList=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", isDownloading=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append(", maxProgress=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", currentProgress=").append(this.b);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
-  }
+  public abstract void b();
 }
 
 

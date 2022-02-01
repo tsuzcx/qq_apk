@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import aajx;
+import aany;
 import mqq.util.WeakReference;
 
 class VideoFrameCheckHelper$1$1
@@ -11,7 +11,7 @@ class VideoFrameCheckHelper$1$1
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get() != null) {
-      ((aajx)this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get()).a(this.jdField_a_of_type_Boolean);
+      ((aany)this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get()).a(this.jdField_a_of_type_Boolean);
     }
   }
 }

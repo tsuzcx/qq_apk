@@ -1,28 +1,13 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
 
-class ajur
+public class ajur
+  extends azov
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  private TextView c;
+  private ajur(FriendFragment paramFriendFragment) {}
   
-  public ajur(View paramView)
+  protected void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368913);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369898));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369904));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378868));
-    this.b = ((TextView)paramView.findViewById(2131365242));
-    this.c = ((TextView)paramView.findViewById(2131371718));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365362));
+    FriendFragment.a(this.a);
   }
 }
 

@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.image.URLImageView;
 
-public class aste
-  implements atve
+class aste
+  extends RecyclerView.ViewHolder
 {
-  public aste(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public URLImageView[] a;
   
-  public void a()
+  public aste(@NonNull View paramView)
   {
-    UniformDownloadActivity.a(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    super(paramView);
   }
 }
 

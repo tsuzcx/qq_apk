@@ -1,31 +1,28 @@
-import java.util.HashMap;
+import kotlin.Metadata;
 
-public class bdum
-  extends bdul
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"DATE_FORMAT", "", "LOAD_STATUS_FALSE", "", "LOAD_STATUS_NONE", "LOAD_STATUS_TRUE", "MODE_TYPE_DEFAULT", "MODE_TYPE_INVALID", "MODE_TYPE_SIMPLE", "MODE_TYPE_STUDY", "getCurMode", "isSimple", "", "isStudy", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class bdum
 {
-  public HashMap<String, String> a = new HashMap();
-  public String b;
-  public String c;
-  public boolean c;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public long f;
-  
-  public String a()
+  public static final int a()
   {
-    if (a())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("{");
-      localStringBuilder.append("elapsed:" + a());
-      localStringBuilder.append(",tryCount:" + this.b);
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
+    if (bdgb.b()) {
+      return 1;
     }
-    return "{}";
+    if (bduy.a()) {
+      return 2;
+    }
+    return 0;
+  }
+  
+  public static final int a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      return 1;
+    }
+    if (paramBoolean2) {
+      return 2;
+    }
+    return 0;
   }
 }
 

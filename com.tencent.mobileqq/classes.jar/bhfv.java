@@ -1,18 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vashealth.SportManager.3.1;
-import mqq.observer.BusinessObserver;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bhfv
-  implements BusinessObserver
+final class bhfv
+  implements DownloadParams.DecodeHandler
 {
-  bhfv(bhft parambhft) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramBoolean) {
-      ThreadManager.post(new SportManager.3.1(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    if (paramDownloadParams[0] == 0) {
+      paramDownloadParams[0] = paramBitmap.getWidth();
+    }
+    if (paramDownloadParams[1] == 0) {
+      paramDownloadParams[1] = paramBitmap.getHeight();
+    }
+    return bhmq.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

@@ -1,55 +1,48 @@
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class biqn
-  implements bivy
+class biqn
+  implements View.OnClickListener
 {
-  public biqn(DownloadInterface paramDownloadInterface, String paramString) {}
+  biqn(biql parambiql) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    bisy.e("DownloadInterface", "innerQueryDownloadInfo ERROR");
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bisy.c("DownloadInterface", "innerQueryDownloadInfo onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    Object localObject1 = "";
+    Object localObject2 = Uri.parse(biql.a(this.a).c());
+    try
     {
-      if (i < j)
+      localObject2 = ((Uri)localObject2).getQueryParameter("article_id");
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+        localException.printStackTrace();
+        continue;
+        this.a.f(this.a.jdField_a_of_type_JavaLangString);
       }
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bisy.c("DownloadInterface", "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = "";
+    }
+    bdll.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1D", "0X8006A1D", 0, 0, "", (String)localObject2, "", "");
+    ocd.a("0X8006A1D", "", "", (String)localObject2, "", "");
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.b = true;
+      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694682, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299011));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

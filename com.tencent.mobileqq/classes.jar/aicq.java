@@ -1,53 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import android.app.Activity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.widget.Gallery;
 
-class aicq
-  implements Observer
+final class aicq
+  implements URLDrawable.URLDrawableListener
 {
-  aicq(aicl paramaicl) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   
-  public void update(Observable paramObservable, Object paramObject)
+  aicq(aibr paramaibr) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if ((paramObject instanceof ajas))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "new FriendSystemMessage,:");
-      }
-      paramObservable = ((ajas)paramObject).a.getSystemMsg();
-      if (paramObservable != null) {
-        break label42;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
     }
-    label42:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramObservable.msg.sub_type.get() != 9);
-        paramObservable = String.valueOf(paramObservable.req_uin.get());
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + aicl.a(this.a));
-        }
-      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (!paramObservable.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-      if (!aicl.a(this.a))
-      {
-        aicl.a(this.a, true);
-        avsr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, processed:");
+    this.a.a(false);
+    this.a.jdField_a_of_type_Aicq = null;
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
+    }
+    QQToast.a(aibr.b(this.a), aibr.c(this.a).getString(2131694455), 0).a();
+    this.a.c(true);
+    this.a.a(false);
+    this.a.jdField_a_of_type_Aicq = null;
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
+    }
+    this.a.c(false);
+    this.a.a(false);
+    this.a.jdField_a_of_type_Aicx.b.b = paramURLDrawable.getExifOrientation();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, aibr.c(this.a).getSelectedItemPosition());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
+    aibr.d(this.a).e();
+    this.a.jdField_a_of_type_Aicq = null;
   }
 }
 

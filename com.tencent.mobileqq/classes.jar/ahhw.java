@@ -1,40 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.1;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.2;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahhw
-  implements bcgb
+class ahhw
+  extends ahkx
 {
-  private ahhw(ahhm paramahhm) {}
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
+  ahhw(ahgk paramahgk)
   {
-    ahhx localahhx = ahhm.a(this.a, paramMessageForShortVideo);
-    if (localahhx == null) {
-      return;
-    }
-    paramMessageForShortVideo = paramMessageForShortVideo.frienduin + paramMessageForShortVideo.uniseq;
-    localahhx.a.setAnimProgress(anni.a(2131712827), paramMessageForShortVideo);
-    localahhx.a.a(paramMessageForShortVideo, paramFloat);
+    super(paramahgk, null);
   }
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "CompressUpdateListener,onFinish. seq = " + paramMessageForShortVideo.uniseq);
-    }
-    bkgk.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.2(this, paramMessageForShortVideo, paramInt));
-  }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean)
-  {
-    ahhx localahhx = ahhm.a(this.a, paramMessageForShortVideo);
-    if (localahhx == null) {
-      return;
-    }
-    bkgk.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.1(this, paramMessageForShortVideo, paramBoolean, localahhx));
+    return new abyo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, ahgk.a(this.a));
   }
 }
 

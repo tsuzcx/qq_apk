@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import ufh;
-import ufi;
+import ufj;
+import ufk;
 
 public class WsCommentInputPopupWindow$1$1
   implements Runnable
 {
-  public WsCommentInputPopupWindow$1$1(ufi paramufi) {}
+  public WsCommentInputPopupWindow$1$1(ufk paramufk) {}
   
   public void run()
   {

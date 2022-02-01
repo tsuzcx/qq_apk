@@ -1,467 +1,300 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.QuickSendProgressView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.RecentDynamicAvatarView;
-import java.net.URL;
-import java.util.Iterator;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class bptk
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends DynamicTextItem
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private apss jdField_a_of_type_Apss;
-  private bptg jdField_a_of_type_Bptg;
-  private bptt jdField_a_of_type_Bptt;
-  private List<bptq> jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap<Integer, URLDrawable> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private apss b;
-  private apss c;
-  private apss d;
+  public static final float a;
+  public static final float b;
+  public static final int b;
+  public static final int c;
+  public static final int d;
+  private static int e;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private RectF b;
+  private float c;
+  private float d;
+  private int f;
   
-  public bptk(Context paramContext, bptg parambptg)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bptg = parambptg;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a();
-    this.jdField_a_of_type_Int = afur.a(40.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    c();
+    jdField_a_of_type_Float = bdep.a(22.0F);
+    jdField_b_of_type_Float = bdep.a(3.0F);
+    Resources localResources = BaseApplicationImpl.getContext().getResources();
+    jdField_b_of_type_Int = agej.a(27.0F, localResources);
+    jdField_d_of_type_Int = agej.a(6.0F, localResources);
+    int i = bqrh.a();
+    jdField_c_of_type_Int = localResources.getDisplayMetrics().widthPixels - zbh.a - i * 2;
   }
   
-  public static Drawable a(String paramString, int paramInt1, int paramInt2)
+  public bptk(int paramInt, List<String> paramList, Typeface paramTypeface)
   {
-    arnj localarnj = new arnj(Color.rgb(214, 214, 214), paramInt1, paramInt2);
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localarnj, localarnj);
-        if (localURLDrawable.getStatus() != 1) {
-          localURLDrawable.downloadImediatly();
-        }
-        return localURLDrawable;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("SendPanelAdapter", 2, "getIconDrawable Exception, coverUrl=" + paramString, localException);
-        }
-      }
+    super(paramInt, paramList);
+    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    if (paramTypeface == null) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
     }
-    return localarnj;
-  }
-  
-  private bptq a(String paramString, int paramInt1, int paramInt2)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        bptq localbptq = (bptq)localIterator.next();
-        if ((!TextUtils.isEmpty(localbptq.jdField_a_of_type_JavaLangString)) && (paramString.equals(localbptq.jdField_a_of_type_JavaLangString)) && (paramInt1 == localbptq.jdField_a_of_type_Int))
-        {
-          localbptq.jdField_b_of_type_Int = paramInt2;
-          if (localbptq.jdField_b_of_type_Int == 1) {
-            localbptq.jdField_b_of_type_Boolean = true;
-          }
-          return localbptq;
-        }
-      }
-    }
-    return null;
-  }
-  
-  private void a(bptp parambptp)
-  {
-    if ((parambptp == null) || (parambptp.jdField_a_of_type_Bptq == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendPanelAdapter", 2, "updateStatusView fail");
-      }
-    }
-    do
-    {
-      return;
-      parambptp.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView.setStatus(parambptp.jdField_a_of_type_Bptq.jdField_b_of_type_Int);
-    } while (parambptp.jdField_a_of_type_Bptq.jdField_b_of_type_Int != 1);
-    parambptp.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView.setProgress(parambptp.jdField_a_of_type_Bptq.jdField_c_of_type_Int);
-  }
-  
-  private void a(String paramString, int paramInt1, int paramInt2, RecentDynamicAvatarView paramRecentDynamicAvatarView, int paramInt3)
-  {
-    if (bgmg.b(paramString))
-    {
-      paramString = ShortVideoUtils.a(paramString);
-      if (paramString == null) {
-        break label57;
-      }
-      paramString = a(paramString.toString(), paramInt1, paramInt2);
-      if ((paramString instanceof URLDrawable)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt3), (URLDrawable)paramString);
-      }
-      paramRecentDynamicAvatarView.setImageDrawable(paramString);
-    }
-    label57:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SendPanelAdapter", 2, "url  is null ");
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Apss = new apss(this.jdField_a_of_type_AndroidContentContext, 1);
-    this.jdField_a_of_type_Apss.a();
-    this.jdField_a_of_type_Apss.a(new bptl(this));
-    this.b = new apss(this.jdField_a_of_type_AndroidContentContext, 4);
-    this.b.a();
-    this.b.a(new bptm(this));
-    this.c = new apss(this.jdField_a_of_type_AndroidContentContext, 113);
-    this.c.a();
-    this.c.a(new bptn(this));
-    this.d = new apss(this.jdField_a_of_type_AndroidContentContext, 101);
-    this.d.a();
-    this.d.a(new bpto(this));
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Apss != null) {
-      this.jdField_a_of_type_Apss.b();
-    }
-    if (this.b != null) {
-      this.b.b();
-    }
-    if (this.d != null) {
-      this.d.b();
-    }
-    a(false);
-  }
-  
-  public void a(int paramInt, bptp parambptp)
-  {
-    if ((parambptp == null) || (parambptp.jdField_a_of_type_Bptq == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendPanelAdapter", 2, "bindData fail viewHolder");
-      }
-      return;
-    }
-    bptq localbptq = parambptp.jdField_a_of_type_Bptq;
-    if ((localbptq.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!localbptq.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      parambptp.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageBitmap(localbptq.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    label304:
     for (;;)
     {
-      parambptp.jdField_a_of_type_AndroidWidgetTextView.setText(localbptq.jdField_c_of_type_JavaLangString);
-      parambptp.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView.setTag(parambptp);
-      parambptp.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView.setOnClickListener(this);
-      a(parambptp);
-      return;
-      Object localObject;
-      if (!TextUtils.isEmpty(localbptq.d))
-      {
-        localObject = (URLDrawable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-        if (localObject != null) {
-          parambptp.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable((Drawable)localObject);
-        } else {
-          a(localbptq.d, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, parambptp.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView, paramInt);
-        }
+      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      paramTypeface = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      e = (int)Math.abs(paramTypeface.bottom - paramTypeface.top);
+      if (!paramList.isEmpty()) {
+        a(0, (String)paramList.get(0));
       }
-      else
+      return;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    }
+  }
+  
+  private static final boolean a(char paramChar)
+  {
+    return ((paramChar >= 'a') && (paramChar <= 'z')) || ((paramChar >= 'A') && (paramChar <= 'Z'));
+  }
+  
+  private static final boolean b(char paramChar)
+  {
+    return (paramChar >= '0') && (paramChar <= '9');
+  }
+  
+  private static final boolean c(char paramChar)
+  {
+    return (paramChar >= '一') && (paramChar <= 40891);
+  }
+  
+  private void d()
+  {
+    int n = 0;
+    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaLangString.length()];
+    char[] arrayOfChar = new char[this.jdField_a_of_type_JavaLangString.length()];
+    this.jdField_a_of_type_JavaLangString.getChars(0, this.jdField_a_of_type_JavaLangString.length(), arrayOfChar, 0);
+    int k = 0;
+    int m = -1;
+    if (k < this.jdField_a_of_type_JavaLangString.length())
+    {
+      char c2 = arrayOfChar[k];
+      label76:
+      char c1;
+      if (k <= 0)
       {
-        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        if ((localbptq.jdField_a_of_type_Int == 0) || (localbptq.jdField_a_of_type_Int == 1000) || (localbptq.jdField_a_of_type_Int == 1004)) {
-          localObject = this.jdField_a_of_type_Apss.a(localbptq.jdField_a_of_type_JavaLangString, true);
+        i = -1;
+        if (i != -1) {
+          break label149;
         }
+        c1 = '\000';
+        label83:
+        if (!c(c2)) {
+          break label157;
+        }
+        this.jdField_a_of_type_ArrayOfInt[k] = 2;
+      }
+      for (;;)
+      {
+        k += 1;
+        m = i;
+        break;
+        j = k - 1;
         for (;;)
         {
-          if (localObject == null) {
-            break label304;
+          i = m;
+          if (j < 0) {
+            break;
           }
-          parambptp.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageBitmap((Bitmap)localObject);
-          break;
-          if (localbptq.jdField_a_of_type_Int == 1)
-          {
-            if (localbptq.jdField_c_of_type_Boolean) {
-              localObject = this.c.a(localbptq.jdField_a_of_type_JavaLangString, true);
+          if (arrayOfChar[j] != '\n') {
+            break label143;
+          }
+          j -= 1;
+        }
+        label143:
+        i = j;
+        break label76;
+        label149:
+        c1 = arrayOfChar[i];
+        break label83;
+        label157:
+        if (a(c2))
+        {
+          this.jdField_a_of_type_ArrayOfInt[k] = 3;
+          if ((c1 != 0) && (a(c1))) {
+            this.jdField_a_of_type_ArrayOfInt[i] = -3;
+          }
+        }
+        else if (b(c2))
+        {
+          this.jdField_a_of_type_ArrayOfInt[k] = 4;
+        }
+        else if (d(c2))
+        {
+          this.jdField_a_of_type_ArrayOfInt[k] = 5;
+        }
+        else
+        {
+          this.jdField_a_of_type_ArrayOfInt[k] = 1;
+          if (c1 != 0) {
+            if (c(c1)) {
+              this.jdField_a_of_type_ArrayOfInt[i] = -2;
+            } else if (a(c1)) {
+              this.jdField_a_of_type_ArrayOfInt[i] = -3;
+            } else if (b(c1)) {
+              this.jdField_a_of_type_ArrayOfInt[i] = -4;
             } else {
-              localObject = this.b.a(localbptq.jdField_a_of_type_JavaLangString, true);
+              this.jdField_a_of_type_ArrayOfInt[i] = -1;
             }
-          }
-          else if (localbptq.jdField_a_of_type_Int == 3000) {
-            localObject = this.d.a(localbptq.jdField_a_of_type_JavaLangString, true);
           }
         }
       }
     }
-  }
-  
-  public void a(int paramInt, bptq parambptq)
-  {
-    if ((paramInt < 0) || (this.jdField_a_of_type_JavaUtilList == null) || (paramInt > this.jdField_a_of_type_JavaUtilList.size()) || (parambptq == null))
+    this.f = 0;
+    arrayOfChar = this.jdField_a_of_type_JavaLangString.toCharArray();
+    int j = arrayOfChar.length;
+    int i = n;
+    while ((i < j) && (d(arrayOfChar[i])))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendPanelAdapter", 2, "onUpdate return");
-      }
-      return;
+      this.f += 1;
+      i += 1;
     }
-    this.jdField_a_of_type_JavaUtilList.set(paramInt, parambptq);
   }
   
-  public void a(bptt parambptt)
+  private static final boolean d(char paramChar)
   {
-    this.jdField_a_of_type_Bptt = parambptt;
+    return paramChar == '\n';
   }
   
-  public void a(List<bptq> paramList)
+  public float a()
   {
-    if (paramList == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendPanelAdapter", 2, "setData list is empty");
-      }
+    return this.jdField_c_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    int i = 0;
+    super.a(paramInt, paramString);
+    String str = super.b(paramInt);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "　　";
     }
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_AndroidTextStaticLayout = new StaticLayout(paramString, this.jdField_a_of_type_AndroidTextTextPaint, jdField_c_of_type_Int, Layout.Alignment.ALIGN_NORMAL, 1.0F, jdField_a_of_type_Float, false);
+    float f1 = 0.0F;
+    paramInt = i;
+    while (paramInt < this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount())
     {
-      return;
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (!paramList.isEmpty())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SendPanelAdapter", 2, "setData do not need refresh");
-    return;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
+      f1 = Math.max(f1, this.jdField_b_of_type_AndroidTextStaticLayout.getLineWidth(paramInt));
+      paramInt += 1;
+    }
+    this.jdField_c_of_type_Float = f1;
+    this.jdField_d_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
+    d();
   }
   
-  public void a(boolean paramBoolean)
+  public void a(Canvas paramCanvas)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SendPanelAdapter", 2, "onEditUpdate");
-    }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
     {
-      Object localObject = (bptq)this.jdField_a_of_type_JavaUtilList.get(0);
-      if ((TextUtils.isEmpty(((bptq)localObject).e)) && (TextUtils.isEmpty(((bptq)localObject).g))) {
-        return;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      float f2 = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
+      float f3 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
+      int j = 0;
+      int m;
+      for (int i = 0; j < this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount(); i = m)
+      {
+        this.jdField_b_of_type_AndroidTextStaticLayout.getLineBounds(j, this.jdField_a_of_type_AndroidGraphicsRect);
+        m = this.jdField_b_of_type_AndroidTextStaticLayout.getLineVisibleEnd(j);
+        this.jdField_a_of_type_AndroidGraphicsRect.bottom = (this.jdField_a_of_type_AndroidGraphicsRect.top + e);
+        float f1 = 0.0F;
+        float[] arrayOfFloat = new float[m - i];
+        this.jdField_a_of_type_AndroidTextTextPaint.getTextWidths(this.jdField_a_of_type_JavaLangString, i, m, arrayOfFloat);
+        int k = i;
+        while (k < m) {
+          if (String.valueOf(this.jdField_a_of_type_JavaLangString.charAt(k)).equals("\n"))
+          {
+            this.jdField_a_of_type_Boolean = true;
+            k += 1;
+          }
+          else
+          {
+            if ((k == this.f) || (this.jdField_a_of_type_Boolean))
+            {
+              if (!this.jdField_a_of_type_Boolean) {
+                break label368;
+              }
+              this.jdField_a_of_type_Boolean = false;
+              if ((this.jdField_a_of_type_ArrayOfInt[k] != -1) && (this.jdField_a_of_type_ArrayOfInt[k] != 1) && (this.jdField_a_of_type_ArrayOfInt[k] != -3) && (this.jdField_a_of_type_ArrayOfInt[k] != 3)) {
+                break label317;
+              }
+            }
+            for (;;)
+            {
+              f1 += arrayOfFloat[(k - i)];
+              if (this.jdField_a_of_type_ArrayOfInt[k] > 0) {
+                paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom - jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
+              }
+              break;
+              label317:
+              paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom - jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
+              continue;
+              label368:
+              paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom - jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
+            }
+          }
+        }
+        paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
+        j += 1;
       }
-      if ((paramBoolean) && (this.jdField_a_of_type_Bptt != null)) {
-        banm.c(this.jdField_a_of_type_Bptt.a);
-      }
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bptq)((Iterator)localObject).next()).a();
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-65536);
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+      if (super.b(0))
+      {
+        this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
+        this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
+        this.jdField_a_of_type_AndroidGraphicsRectF.right = f2;
+        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = f3;
+        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
       }
     }
-    notifyDataSetChanged();
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      return !TextUtils.isEmpty(((bptq)this.jdField_a_of_type_JavaUtilList.get(0)).e);
-    }
-    return false;
+    return true;
   }
   
-  public void b()
+  public float b()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return (bptq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      try
-      {
-        long l = Long.parseLong(((bptq)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
-        return l;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SendPanelAdapter", 2, "getItemId exception = " + localException.getMessage());
-        }
-      }
-    }
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bptq localbptq = (bptq)getItem(paramInt);
-    bptp localbptp;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562886, null);
-      localbptp = new bptp(this);
-      localbptp.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368138));
-      localbptp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371539));
-      localbptp.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView = ((QuickSendProgressView)paramView.findViewById(2131372011));
-      localbptp.jdField_a_of_type_Bptq = localbptq;
-      a(paramInt, localbptp);
-      paramView.setTag(localbptp);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localbptp = (bptp)paramView.getTag();
-      localbptp.jdField_a_of_type_Bptq = localbptq;
-      a(paramInt, localbptp);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject1;
-    if ((paramView.getTag() instanceof bptp))
-    {
-      localObject1 = (bptp)paramView.getTag();
-      if (((bptp)localObject1).jdField_a_of_type_Bptq != null) {
-        break label48;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SendPanelAdapter", 2, "onClick itemInfo is null");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label48:
-      if (QLog.isColorLevel()) {
-        QLog.d("SendPanelAdapter", 2, "onClick operateStatus = " + ((bptp)localObject1).jdField_a_of_type_Bptq.jdField_b_of_type_Int);
-      }
-      bptq localbptq;
-      switch (((bptp)localObject1).jdField_a_of_type_Bptq.jdField_b_of_type_Int)
-      {
-      default: 
-        break;
-      case 0: 
-        if (!bgnt.g(this.jdField_a_of_type_AndroidContentContext))
-        {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131718220), 0).a();
-        }
-        else
-        {
-          if (!TextUtils.isEmpty(((bptp)localObject1).jdField_a_of_type_Bptq.g))
-          {
-            localbptq = a(((bptp)localObject1).jdField_a_of_type_Bptq.jdField_a_of_type_JavaLangString, ((bptp)localObject1).jdField_a_of_type_Bptq.jdField_a_of_type_Int, 1);
-            Object localObject2;
-            int i;
-            if (localbptq != null)
-            {
-              ((bptp)localObject1).jdField_a_of_type_Bptq = localbptq;
-              a((bptp)localObject1);
-              if (localbptq.jdField_a_of_type_Boolean) {
-                bovt.a(localbptq.e, localbptq.f, localbptq, bptr.a().jdField_a_of_type_JavaLangString, bptr.a().a());
-              }
-            }
-            else
-            {
-              if (this.jdField_a_of_type_Bptt != null) {
-                banm.c(this.jdField_a_of_type_Bptt.a, localbptq);
-              }
-              localObject2 = bnyh.a();
-              localObject1 = ((bptp)localObject1).jdField_a_of_type_Bptq.g;
-              if (localbptq != null) {
-                break label355;
-              }
-              i = -1;
-              ((bnyh)localObject2).a((String)localObject1, i);
-              localObject2 = new StringBuilder().append("【OnClick】messageType:");
-              if (localbptq != null) {
-                break label364;
-              }
-            }
-            for (localObject1 = "-1";; localObject1 = Integer.valueOf(localbptq.jdField_a_of_type_Int))
-            {
-              bnzb.b("SendPanelAdapter", localObject1);
-              break;
-              bovt.a(localbptq.e, localbptq, bptr.a().jdField_a_of_type_JavaLangString, bptr.a().a());
-              break label243;
-              i = localbptq.jdField_a_of_type_Int;
-              break label282;
-            }
-          }
-          this.jdField_a_of_type_Bptt.a.a(49, ((bptp)localObject1).jdField_a_of_type_Bptq);
-          this.jdField_a_of_type_Bptt.a.d();
-        }
-        break;
-      case 1: 
-        localbptq = a(((bptp)localObject1).jdField_a_of_type_Bptq.jdField_a_of_type_JavaLangString, ((bptp)localObject1).jdField_a_of_type_Bptq.jdField_a_of_type_Int, 0);
-        if (localbptq != null)
-        {
-          ((bptp)localObject1).jdField_a_of_type_Bptq = localbptq;
-          a((bptp)localObject1);
-          bovt.a(localbptq);
-        }
-        if (this.jdField_a_of_type_Bptt != null) {
-          banm.b(this.jdField_a_of_type_Bptt.a, localbptq);
-        }
-        break;
-      case 2: 
-        label243:
-        if (!bgnt.g(this.jdField_a_of_type_AndroidContentContext))
-        {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131718220), 0).a();
-        }
-        else
-        {
-          localbptq = a(((bptp)localObject1).jdField_a_of_type_Bptq.jdField_a_of_type_JavaLangString, ((bptp)localObject1).jdField_a_of_type_Bptq.jdField_a_of_type_Int, 1);
-          if (localbptq != null)
-          {
-            ((bptp)localObject1).jdField_a_of_type_Bptq = localbptq;
-            a((bptp)localObject1);
-            bovt.b(localbptq);
-          }
-          if (this.jdField_a_of_type_Bptt != null) {
-            banm.a(this.jdField_a_of_type_Bptt.a, localbptq);
-          }
-        }
-        label282:
-        label355:
-        label364:
-        break;
-      }
-    }
+    return this.jdField_d_of_type_Float;
   }
 }
 

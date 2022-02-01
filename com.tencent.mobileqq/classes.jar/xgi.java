@@ -1,24 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
 
 public class xgi
-  extends wfi
+  extends xhn
 {
-  public xgi(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public void a(boolean paramBoolean, wfd paramwfd)
+  public xgi(@NonNull BannerFeedItem paramBannerFeedItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramwfd);
-    }
-    if (paramBoolean)
-    {
-      if (paramwfd != null) {
-        this.a.a(paramwfd.a);
-      }
-      return;
-    }
-    this.a.e();
+    this.a = paramBannerFeedItem.shareInfo.a;
+    this.b = paramBannerFeedItem.shareInfo.b;
+    this.c = paramBannerFeedItem.shareInfo.d;
+    this.d = paramBannerFeedItem.shareInfo.c;
   }
 }
 

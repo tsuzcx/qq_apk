@@ -1,6 +1,17 @@
-public abstract interface apvd
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.3.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import cooperation.wadl.ipc.WadlResult;
+
+public class apvd
+  implements apvk
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  apvd(apuy paramapuy) {}
+  
+  public void a(WadlResult paramWadlResult)
+  {
+    ArkAppCenter.a().post(this.a.a, new ArkAppDownloadModule.3.1(this, paramWadlResult));
+  }
 }
 
 

@@ -1,18 +1,21 @@
-import com.tencent.widget.AbsListView;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-public abstract interface syp
+public class syp
+  implements TypeEvaluator<Rect>
 {
-  public abstract void a();
+  public syp(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public abstract void a(AbsListView paramAbsListView, int paramInt);
+  public int a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+  }
 }
 
 

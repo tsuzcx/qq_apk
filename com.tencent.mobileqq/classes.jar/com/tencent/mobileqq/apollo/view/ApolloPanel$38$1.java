@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amhd;
-import amhq;
+import amsx;
+import amtk;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import ange;
-import angk;
+import anrz;
+import ansf;
 import com.tencent.image.URLImageView;
 
 public class ApolloPanel$38$1
   implements Runnable
 {
-  public ApolloPanel$38$1(ange paramange) {}
+  public ApolloPanel$38$1(anrz paramanrz) {}
   
   public void run()
   {
     this.a.a.b.setVisibility(8);
     ApolloPanel.a(this.a.a).setVisibility(8);
-    if (amhq.a)
+    if (amtk.a)
     {
       ApolloPanel.a(this.a.a).setVisibility(0);
       ApolloPanel.b(this.a.a).setVisibility(0);
-      amhd.a(101, String.valueOf(amhq.b), amhq.j);
+      amsx.a(101, String.valueOf(amtk.b), amtk.j);
     }
     while (ApolloPanel.a(this.a.a).getVisibility() == 0)
     {
       ApolloPanel.a(this.a.a).setVisibility(0);
       if (this.a.a.a == null) {
-        this.a.a.a = new angk(this.a.a);
+        this.a.a.a = new ansf(this.a.a);
       }
       ApolloPanel.a(this.a.a).setOnClickListener(this.a.a.a);
       this.a.a.a.a();

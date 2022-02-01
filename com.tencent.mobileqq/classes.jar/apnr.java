@@ -1,6 +1,11 @@
-public abstract interface apnr
+public class apnr
 {
-  public abstract void a(apnu paramapnu, boolean paramBoolean, byte[] paramArrayOfByte);
+  public int a = 3000;
+  
+  public String toString()
+  {
+    return "ARCloudRecogReqPreOcrInfo{timeout = " + this.a + '}';
+  }
 }
 
 

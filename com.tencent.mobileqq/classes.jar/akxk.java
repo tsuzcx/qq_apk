@@ -2,11 +2,7 @@ public abstract interface akxk
 {
   public abstract void a();
   
-  public abstract void b();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public abstract void a(Object paramObject);
 }
 
 

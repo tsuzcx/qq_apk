@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public class afsg
-  implements Comparator<aftt>
+class afsg
+  implements DialogInterface.OnClickListener
 {
-  public afsg(ActivateFriendActivity paramActivateFriendActivity) {}
+  afsg(afsf paramafsf, bhpc parambhpc) {}
   
-  public int a(aftt paramaftt1, aftt paramaftt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = paramaftt2.a - paramaftt1.a;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    bdll.b(this.jdField_a_of_type_Afsf.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Afsf.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Afsf.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Afsf.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Bhpc.cancel();
   }
 }
 

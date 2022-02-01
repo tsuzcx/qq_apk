@@ -1,27 +1,37 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
-import com.tencent.mobileqq.widget.AnimationView;
+import QC.CommonRsp;
+import QC.FaceRsp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class akmz
-  extends bidv
+  extends aogx
 {
-  public akmz(RedPacketKSongFragment.10.1 param1) {}
+  public akmz(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
   {
-    if (!this.a.a.a.c())
+    if (paramFaceRsp != null)
     {
-      if (paramBoolean) {
-        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
+      int i = paramFaceRsp.authRet;
+      localObject = "null";
+      if (paramFaceRsp.stRet != null) {
+        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      }
+      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
+      if (i == 0) {
+        this.a.r = 0;
       }
     }
-    else {
+    else
+    {
       return;
     }
-    this.a.a.a.g();
+    this.a.r = 1;
+    Object localObject = new Intent(this.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
+    this.a.startActivity((Intent)localObject);
   }
 }
 

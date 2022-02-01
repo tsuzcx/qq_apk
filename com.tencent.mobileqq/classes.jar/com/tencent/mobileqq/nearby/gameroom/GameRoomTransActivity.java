@@ -7,13 +7,13 @@ import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import axgi;
-import axgj;
-import axgk;
-import axgn;
-import axgo;
-import bgpa;
-import bhte;
+import axzb;
+import axzc;
+import axzd;
+import axzg;
+import axzh;
+import bhpc;
+import bitz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -22,12 +22,12 @@ public class GameRoomTransActivity
   extends BaseActivity
 {
   public DialogInterface.OnDismissListener a;
-  public bgpa a;
+  public bhpc a;
   
   public GameRoomTransActivity()
   {
-    this.jdField_a_of_type_Bgpa = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new axgn(this);
+    this.jdField_a_of_type_Bhpc = null;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new axzg(this);
   }
   
   public void a()
@@ -57,7 +57,7 @@ public class GameRoomTransActivity
     {
       i = getIntent().getIntExtra("roomNum", 10);
       int j = getIntent().getIntExtra("zoneId", 0);
-      ((bhte)this.app.a(107)).b(i, j, new axgj(this, i));
+      ((bitz)this.app.a(107)).b(i, j, new axzc(this, i));
       return;
     }
     catch (Exception localException)
@@ -73,7 +73,7 @@ public class GameRoomTransActivity
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((bhte)this.app.a(107)).a(str, true, new axgk(this, str, i));
+    ((bitz)this.app.a(107)).a(str, true, new axzd(this, str, i));
   }
   
   protected void d()
@@ -81,7 +81,7 @@ public class GameRoomTransActivity
     int i = getIntent().getIntExtra("roomNum", 10);
     int j = getIntent().getIntExtra("zoneId", 0);
     long l = getIntent().getLongExtra("gc", -1L);
-    ((bhte)this.app.a(107)).a(new axgo(this, l, i, j));
+    ((bitz)this.app.a(107)).a(new axzh(this, l, i, j));
   }
   
   @Override
@@ -100,7 +100,7 @@ public class GameRoomTransActivity
     {
       if (checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
       {
-        requestPermissions(new axgi(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+        requestPermissions(new axzb(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
         return true;
       }
       a();

@@ -1,41 +1,26 @@
-import android.net.Uri;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 
-public class bhfl
-  extends bhhe
+final class bhfl
+  implements DownloadParams.DecodeHandler
 {
-  public bhfl(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
-  
-  public void onDone(bhhf parambhhf)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    super.onDone(parambhhf);
-    if (QLog.isColorLevel()) {
-      QLog.d("PathTraceManager", 1, "voice down");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
     }
-    parambhhf = new File(this.jdField_a_of_type_JavaLangString);
-    try
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
     {
-      nmk.a(parambhhf, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
-      i = 1;
+      paramDownloadParams = (int[])paramDownloadParams;
+      return bhmq.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
     }
-    catch (IOException parambhhf)
-    {
-      for (;;)
-      {
-        QLog.i("PathTraceManager", 1, "unzip fail");
-        int i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      QLog.d("PathTraceManager", 1, "unzip success");
-      if (this.b != null) {
-        bgkl.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
-      }
-    }
+    return bhmq.c(paramBitmap, 50, 50);
   }
 }
 

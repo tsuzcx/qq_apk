@@ -1,17 +1,10 @@
-public class bfzu
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+class bfzu
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

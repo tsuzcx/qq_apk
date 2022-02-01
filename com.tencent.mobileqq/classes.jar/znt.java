@@ -1,22 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
-public final class znt
-  implements nkl
+class znt
+  implements woy<xdm, xdn>
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
-      PngQuantUtils.a.set(false);
-    }
-  }
+  znt(zns paramzns, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void progress(int paramInt) {}
+  public void a(@NonNull xdm paramxdm, @Nullable xdn paramxdn, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      yuk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+      return;
+    }
+    if ((paramErrorMessage.isFail()) || (paramxdn == null))
+    {
+      yuk.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      zns.a(this.jdField_a_of_type_Zns, paramErrorMessage);
+      return;
+    }
+    zns.a(this.jdField_a_of_type_Zns).a(paramxdn.jdField_a_of_type_JavaUtilList, paramxdn.jdField_a_of_type_JavaLangString, paramxdn.jdField_a_of_type_Boolean);
+    ((yme)wth.a(11)).a(paramxdn.jdField_a_of_type_JavaUtilList);
+    paramxdm = zns.a(this.jdField_a_of_type_Zns).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    zns.a(this.jdField_a_of_type_Zns, paramxdm);
+  }
 }
 
 

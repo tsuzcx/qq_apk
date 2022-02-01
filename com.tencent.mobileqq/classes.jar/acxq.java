@@ -1,6 +1,7 @@
 public abstract interface acxq
-  extends acww<Integer, acxp>
-{}
+{
+  public abstract void a(boolean paramBoolean);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

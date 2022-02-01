@@ -6,9 +6,9 @@ import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
 import android.util.Log;
-import bcow;
-import bcrg;
-import bkpj;
+import bdho;
+import bdjy;
+import blqm;
 import com.tencent.qphone.base.util.QLog;
 
 public class Step
@@ -64,7 +64,7 @@ public class Step
   public static final int STEP_UPGRAD_DB = 31;
   public static final int STEP_URL_DRAWABLE = 12;
   public static final int STEP_WEBP = 29;
-  public bcow mDirector;
+  public bdho mDirector;
   private Handler mHandler;
   public int mId;
   protected String mName;
@@ -80,7 +80,7 @@ public class Step
       int i = 0;
       while (i < j)
       {
-        if (!bcrg.b(arrayOfInt[i], this.mDirector, null).step()) {
+        if (!bdjy.b(arrayOfInt[i], this.mDirector, null).step()) {
           return false;
         }
         i += 1;
@@ -111,13 +111,13 @@ public class Step
       i = localThread.getPriority();
       localThread.setPriority(10);
     }
-    if (bcow.a)
+    if (bdho.a)
     {
       l = SystemClock.uptimeMillis();
       if (Looper.myLooper() != Looper.getMainLooper()) {
         break label170;
       }
-      bkpj.a(this.mName);
+      blqm.a(this.mName);
     }
     for (;;)
     {
@@ -133,15 +133,15 @@ public class Step
         {
           QLog.e("AutoMonitor", 1, "", localThrowable);
           continue;
-          bkpj.b(4096L, this.mName, Process.myTid());
+          blqm.b(4096L, this.mName, Process.myTid());
         }
       }
-      if (bcow.a)
+      if (bdho.a)
       {
         if (Looper.myLooper() != Looper.getMainLooper()) {
           break;
         }
-        bkpj.a();
+        blqm.a();
         Log.i("AutoMonitor", this.mName + ", cost=" + (SystemClock.uptimeMillis() - l) + " results: " + bool1);
       }
       if (this.mHandler != null)
@@ -151,7 +151,7 @@ public class Step
       }
       return bool1;
       label170:
-      bkpj.a(4096L, this.mName, Process.myTid());
+      blqm.a(4096L, this.mName, Process.myTid());
     }
   }
 }

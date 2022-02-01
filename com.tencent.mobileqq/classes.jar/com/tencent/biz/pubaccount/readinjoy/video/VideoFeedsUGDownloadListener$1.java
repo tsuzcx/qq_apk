@@ -3,22 +3,22 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.text.TextUtils;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.HashMap;
-import ogc;
-import seh;
-import sei;
+import ohk;
+import rvl;
+import rvm;
 
 public class VideoFeedsUGDownloadListener$1
   implements Runnable
 {
-  public VideoFeedsUGDownloadListener$1(seh paramseh, DownloadInfo paramDownloadInfo) {}
+  public VideoFeedsUGDownloadListener$1(rvl paramrvl, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    sei localsei = (sei)seh.a(this.this$0).get(this.a.e);
-    if ((localsei != null) && (!TextUtils.isEmpty(localsei.c)) && (localsei.c.equals(this.a.d)))
+    rvm localrvm = (rvm)rvl.a(this.this$0).get(this.a.e);
+    if ((localrvm != null) && (!TextUtils.isEmpty(localrvm.c)) && (localrvm.c.equals(this.a.d)))
     {
-      ogc.a(ogc.b(localsei.a, "11", localsei.b));
-      ogc.a(ogc.b(localsei.a, "20", localsei.b));
+      ohk.a(ohk.b(localrvm.a, "11", localrvm.b));
+      ohk.a(ohk.b(localrvm.a, "20", localrvm.b));
     }
   }
 }

@@ -1,30 +1,25 @@
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileFilter;
 
-public class apoe
+final class apoe
+  implements FileFilter
 {
-  private static HashMap<String, apof> a = new HashMap();
-  
-  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
+  public boolean accept(File paramFile)
   {
-    paramString = (apof)a.get(paramString);
-    if (paramString != null) {
-      paramObject2 = paramString.a(paramInt, paramObject1);
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
     }
-    return paramObject2;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString != null) {
-      a.remove(paramString);
-    }
-  }
-  
-  public static void a(String paramString, apof paramapof)
-  {
-    if (paramString != null) {
-      a.put(paramString, paramapof);
-    }
+    return false;
   }
 }
 

@@ -1,44 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import dov.com.qq.im.ae.camera.ui.panel.AEGridView;
 
 public class bonz
-  implements GifDecoder
+  extends RecyclerView.ItemDecoration
 {
   private int jdField_a_of_type_Int;
-  private bpoz jdField_a_of_type_Bpoz;
-  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public bonz(int paramInt, String paramString)
+  public bonz(AEGridView paramAEGridView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public Bitmap getNextGifFrame(long paramLong)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AnimationDecodeWrapper", 2, "timestamp:" + paramLong);
-    }
-    paramLong = paramLong / 1000L / 1000L;
-    if (QLog.isColorLevel()) {
-      QLog.d("AnimationDecodeWrapper", 2, "timestampMs:" + paramLong);
-    }
-    if (this.jdField_a_of_type_Bpoz != null) {
-      return this.jdField_a_of_type_Bpoz.a(paramLong);
-    }
-    return null;
-  }
-  
-  public void init()
-  {
-    this.jdField_a_of_type_Bpoz = bpng.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void release()
-  {
-    this.jdField_a_of_type_Bpoz = null;
+    paramRect.top = this.b;
   }
 }
 

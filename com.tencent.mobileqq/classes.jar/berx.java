@@ -1,46 +1,7 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class berx
-  extends berz
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
-  {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 18;
-    try
-    {
-      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + anni.a(2131713982) + paramJSONObject.getString("photo_num") + anni.a(2131713984));
-      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-          if (localJSONObject.getInt("type") == 3) {
-            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
-          }
-        }
-        else
-        {
-          return localTroopFeedItem;
-        }
-        i += 1;
-      }
-      return null;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
+  public byte a;
+  public String a;
 }
 
 

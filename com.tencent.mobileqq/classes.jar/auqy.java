@@ -1,25 +1,37 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-class auqy
-  implements View.OnClickListener
+public class auqy
 {
-  auqy(auqu paramauqu, String paramString) {}
+  public static boolean a;
+  public Activity a;
   
-  public void onClick(View paramView)
+  static
   {
-    HashMap localHashMap = new HashMap();
-    aceh.a(localHashMap, this.jdField_a_of_type_JavaLangString);
-    localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    localHashMap.put(Integer.valueOf(10), "0");
-    aceh.a(ampj.a(), "769", "205711", this.jdField_a_of_type_Auqu.a().gameAppId, "76905", "1", "160", localHashMap);
-    auqu.a(this.jdField_a_of_type_Auqu).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  private auqy(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
+  {
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. >>>gotoDownload. url:" + paramString);
+    if ((paramActivity == null) || (paramString == null) || (paramBundle == null))
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. gotoDownload. param error:");
+      return false;
+    }
+    new auqy(paramActivity).a(paramString, paramBundle);
+    return true;
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    auuf.a(paramString, new auqz(this, paramBundle, paramString, paramBundle.getLong("_filesize"), paramBundle.getLong("_buttontype", 0L)));
   }
 }
 

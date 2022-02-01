@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.notecard;
 
-import pzp;
+import psa;
 
 class SoundCheckRunnable$1
   implements Runnable
 {
-  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, pzp parampzp) {}
+  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, psa parampsa) {}
   
   public void run()
   {

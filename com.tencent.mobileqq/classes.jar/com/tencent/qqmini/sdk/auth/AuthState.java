@@ -23,6 +23,7 @@ import java.util.List;
 public class AuthState
 {
   public static final String IS_ONCE_SUB_ITEM_MAINTAIN = "once_sub_item_maintain";
+  public static final String IS_SYS_SUB_ITEM_MAINTAIN = "sys_sub_item_maintain";
   public static final String KEY_AUTHORITY_SYNCHRONIZED = "authority_synchronized";
   static final String TAG = "AuthState";
   private static volatile String sTempAllowPluginScopeName;
@@ -133,6 +134,11 @@ public class AuthState
   public boolean isSynchronized()
   {
     return getSharedPreferences().getBoolean("authority_synchronized", false);
+  }
+  
+  public boolean isSystemSubscribeMaintain()
+  {
+    return getSharedPreferences().getBoolean("sys_sub_item_maintain", false);
   }
   
   public void revokePermission(String paramString)
@@ -266,15 +272,20 @@ public class AuthState
     getSharedPreferences().edit().putBoolean("once_sub_item_maintain", paramBoolean).apply();
   }
   
-  public void updateOnceSubMsgSetting(boolean paramBoolean, List<INTERFACE.StSubscribeMessage> paramList, AsyncResult paramAsyncResult)
+  public void updateIsSysSubMsgMaintain(boolean paramBoolean)
+  {
+    getSharedPreferences().edit().putBoolean("sys_sub_item_maintain", paramBoolean).apply();
+  }
+  
+  public void updateOnceSubMsgSetting(String paramString, boolean paramBoolean, List<INTERFACE.StSubscribeMessage> paramList, AsyncResult paramAsyncResult)
   {
     INTERFACE.StUserSettingInfo localStUserSettingInfo = new INTERFACE.StUserSettingInfo();
-    localStUserSettingInfo.settingItem.set("setting.onceMsgSubscribed");
-    PBInt32Field localPBInt32Field = localStUserSettingInfo.authState;
+    localStUserSettingInfo.settingItem.set(paramString);
+    paramString = localStUserSettingInfo.authState;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      localPBInt32Field.set(i);
+      paramString.set(i);
       localStUserSettingInfo.subItems.set(paramList);
       ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateUserSetting(this.mAppId, localStUserSettingInfo, new AuthState.1(this, paramAsyncResult));
       return;

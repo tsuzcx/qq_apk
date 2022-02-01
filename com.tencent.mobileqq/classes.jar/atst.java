@@ -1,72 +1,58 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class atst
-  implements GestureDetector.OnGestureListener
+class atst
+  extends attg
 {
-  private atst(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  atst(atsi paramatsi, MessageRecord paramMessageRecord)
   {
-    return false;
+    super(paramatsi);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
+  void a(String paramString, int paramInt) {}
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  void a(String paramString, int paramInt, atte paramatte)
   {
-    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
+    if ("1".equals(this.g))
     {
-      paramMotionEvent1 = this.a.a.b();
-      if (paramFloat2 <= 0.0F) {
-        break label97;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(8);
-      }
-      if (this.a.a.jdField_a_of_type_Audh != null) {
-        this.a.a.jdField_a_of_type_Audh.b(true);
-      }
-      if (this.a.a.jdField_a_of_type_Audf != null) {
-        this.a.a.jdField_a_of_type_Audf.b(true);
-      }
+      paramatte.a(atsi.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    label97:
-    do
+    if ((this.b == null) || (this.b.length() == 0))
     {
-      do
-      {
-        return false;
-      } while (paramFloat2 >= 0.0F);
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
       }
-      if (this.a.a.jdField_a_of_type_Audh != null) {
-        this.a.a.jdField_a_of_type_Audh.a(true);
-      }
-    } while (this.a.a.jdField_a_of_type_Audf == null);
-    this.a.a.jdField_a_of_type_Audf.a(true);
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+      paramatte.a(atsi.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    atsi.a(this.jdField_a_of_type_Atsi).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new atsu(this, paramString, paramatte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atst
  * JD-Core Version:    0.7.0.1
  */

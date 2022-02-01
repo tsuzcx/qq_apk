@@ -1,37 +1,47 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public class apgm
-  implements View.OnTouchListener
+class apgm
+  extends BroadcastReceiver
 {
-  public apgm(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
+  apgm(apgl paramapgl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
-    }
-    long l = System.currentTimeMillis();
-    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
-      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
-    }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
     do
     {
-      return false;
-      ScanEntryProviderContainerView.a(this.a, l);
-      switch (paramMotionEvent.getAction())
+      int i;
+      int j;
+      do
       {
-      default: 
-        return false;
-      }
-      paramView = (Integer)paramView.getTag();
-      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new apgn(this, paramView));
-    } while (paramView.intValue() != 2);
-    bcst.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
-    return false;
+        do
+        {
+          return;
+        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
+        switch (paramIntent.getIntExtra("event", 0))
+        {
+        default: 
+          return;
+        case 1: 
+          paramContext = paramIntent.getStringExtra("bussinessSubName");
+          i = paramIntent.getIntExtra("download_Index", 0);
+          j = paramIntent.getIntExtra("download_Progress", 0);
+          if (AudioHelper.f()) {
+            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
+          }
+          break;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(paramContext, i, j);
+      return;
+      paramContext = paramIntent.getStringExtra("config_Content");
+      this.a.b(paramContext);
+    } while (this.a.a == null);
+    this.a.a.b();
   }
 }
 

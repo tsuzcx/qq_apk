@@ -1,21 +1,21 @@
 package com.tencent.avgame.floatwindow;
 
 import com.tencent.qphone.base.util.QLog;
-import mxb;
+import mya;
 
 public class FloatWindowController$1
   implements Runnable
 {
-  public FloatWindowController$1(mxb parammxb) {}
+  public FloatWindowController$1(mya parammya) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FloatWindowController", 2, "mDelayCheckPermissionShowFloatRunnable callback");
     }
-    mxb localmxb = this.this$0;
-    localmxb.a += 1;
-    if (mxb.a(this.this$0)) {
+    mya localmya = this.this$0;
+    localmya.a += 1;
+    if (mya.a(this.this$0)) {
       this.this$0.a(null, false, this.this$0.d);
     }
     if (this.this$0.a >= 3)

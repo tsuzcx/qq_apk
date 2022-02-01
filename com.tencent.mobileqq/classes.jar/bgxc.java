@@ -1,53 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class bgxc
-  implements arxk
+class bgxc
+  extends bgxd
 {
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public bgxc(bgwv parambgwv) {}
-  
-  public List<asaf> a(boolean paramBoolean1, boolean paramBoolean2)
+  bgxc(bgxb parambgxb)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new asaf(7, 7, null));
-    awmr localawmr = (awmr)bgwv.a(this.jdField_a_of_type_Bgwv).getManager(14);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Integer)localIterator.next()).intValue();
-      EmoticonPackage localEmoticonPackage = localawmr.a(String.valueOf(i));
-      if (localEmoticonPackage != null)
-      {
-        localArrayList.add(new asaf(10, 7, localEmoticonPackage));
-      }
-      else
-      {
-        localEmoticonPackage = new EmoticonPackage();
-        localEmoticonPackage.epId = String.valueOf(i);
-        localEmoticonPackage.wordingId = -1L;
-        localEmoticonPackage.jobType = 4;
-        localEmoticonPackage.isMagicFaceDownloading = false;
-        localEmoticonPackage.valid = true;
-        localEmoticonPackage.status = 0;
-        localEmoticonPackage.aio = true;
-        localawmr.a(localEmoticonPackage);
-        aruo.a().a(bgwv.a(this.jdField_a_of_type_Bgwv));
-        ((arup)bgwv.a(this.jdField_a_of_type_Bgwv).getManager(43)).a(String.valueOf(i), arup.c, null, true, 0);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a(List<Integer> paramList)
-  {
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList);
-    }
+    super(parambgxb.a);
   }
 }
 

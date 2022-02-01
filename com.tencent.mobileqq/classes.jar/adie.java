@@ -1,23 +1,50 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.Face;
+import tencent.im.msg.im_msg_body.OnlineImage;
+import tencent.im.msg.im_msg_body.SmallEmoji;
+import tencent.im.msg.im_msg_body.Text;
 
 public class adie
-  extends anvp
+  extends adic
 {
-  public adie(AccountManageActivity paramAccountManageActivity) {}
-  
-  protected void a(boolean paramBoolean, bdei parambdei)
+  public static Boolean a(im_msg_body.Elem paramElem)
   {
-    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+    boolean bool = true;
+    if ((paramElem.text.has()) || (paramElem.face.has()) || (paramElem.small_emoji.has()) || (paramElem.online_image.has()) || (paramElem.bankcode_ctrl_info.has())) {
+      return Boolean.valueOf(true);
+    }
+    if (paramElem.common_elem.has())
+    {
+      if (33 == paramElem.common_elem.uint32_service_type.get()) {}
+      for (;;)
+      {
+        return Boolean.valueOf(bool);
+        bool = false;
+      }
+    }
+    return Boolean.valueOf(false);
   }
   
-  protected void b(boolean paramBoolean, bdei parambdei)
+  public int a()
   {
-    AccountManageActivity.a(this.a, false);
+    return -1;
   }
   
-  protected void c(boolean paramBoolean, bdei parambdei)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
   {
-    AccountManageActivity.a(this.a, false);
+    new bcrt().i(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return a(paramElem).booleanValue();
   }
 }
 

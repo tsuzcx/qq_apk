@@ -1,15 +1,6 @@
-public class anaq
+public abstract interface anaq
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public anaq(int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-  }
+  public abstract void a(anar paramanar);
 }
 
 

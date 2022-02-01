@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aniz;
+import anuw;
 
 public class CardObserver$1
   implements Runnable
 {
-  public CardObserver$1(aniz paramaniz, boolean paramBoolean, Object paramObject) {}
+  public CardObserver$1(anuw paramanuw, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {

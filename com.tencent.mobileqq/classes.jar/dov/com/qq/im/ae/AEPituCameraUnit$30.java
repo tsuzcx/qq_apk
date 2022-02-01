@@ -1,21 +1,16 @@
 package dov.com.qq.im.ae;
 
-import bglp;
-import bndy;
-import bnel;
-import bnem;
-import boyn;
+import bofh;
+import bqah;
 
 public class AEPituCameraUnit$30
   implements Runnable
 {
-  public AEPituCameraUnit$30(bndy parambndy, String paramString) {}
+  public AEPituCameraUnit$30(bofh parambofh) {}
   
   public void run()
   {
-    bnel localbnel = new bnel(this);
-    bnem localbnem = new bnem(this);
-    bglp.a(bndy.a(this.this$0).a(), null, this.a, localbnel, localbnel, localbnem);
+    bofh.a(this.this$0).a(2);
   }
 }
 

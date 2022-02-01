@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.TMG.utils.QLog;
 
-public class adqe
-  implements QQPermissionCallback
+class adqe
+  implements DialogInterface.OnKeyListener
 {
-  public adqe(BaseChatPie paramBaseChatPie) {}
+  adqe(adqa paramadqa, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    bglp.b(this.a.a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    BaseChatPie.e(this.a);
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
+    {
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
+      {
+        QLog.e("SdkAuthDialog", 1, "keyListener is null");
+        return true;
+      }
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+      this.jdField_a_of_type_Adqa.a();
+      bdll.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
+    }
+    return true;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile;
 
 import android.graphics.Bitmap;
-import azfh;
+import azxu;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ProfileCardShareHelper$3$1
@@ -14,10 +14,10 @@ class ProfileCardShareHelper$3$1
     this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0.c();
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      azfh.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0, azfh.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), azfh.c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      azxu.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0, azxu.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), azxu.c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
       return;
     }
-    QQToast.a(azfh.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), 1, 2131718008, 1).a();
+    QQToast.a(azxu.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), 1, 2131718140, 1).a();
   }
 }
 

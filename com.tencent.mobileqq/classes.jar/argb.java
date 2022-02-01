@@ -1,43 +1,33 @@
-import android.os.SystemClock;
-
 public class argb
 {
-  private long a;
-  private long b;
-  private long c;
+  private argc jdField_a_of_type_Argc;
+  private String jdField_a_of_type_JavaLangString;
   
-  public long a()
+  public argb()
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Argc = new argc();
   }
   
-  public void a()
+  public argb(String paramString, argc paramargc)
   {
-    this.a = 0L;
-    this.b = 0L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Argc = paramargc;
   }
   
-  public long b()
+  public argc a()
   {
-    this.b = (SystemClock.uptimeMillis() - this.c);
-    this.a += this.b;
-    b();
-    return this.b;
+    return this.jdField_a_of_type_Argc;
   }
   
-  public void b()
+  public String a()
   {
-    this.c = SystemClock.uptimeMillis();
-  }
-  
-  public long c()
-  {
-    return this.b;
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,37 @@
-import java.util.HashMap;
-
-class asgi
-  implements bdvv
+public class asgi
 {
-  asgi(asgg paramasgg) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  int c = 0;
   
-  public void a(bdws parambdws, bdwt parambdwt)
+  public asgi(int paramInt)
   {
-    if ((parambdws != null) && (parambdwt != null) && ((parambdws instanceof bdvs)))
-    {
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.c;
-      parambdwt.c = 0L;
-      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
-      if (parambdwt.contains("range="))
-      {
-        parambdwt = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-        parambdws.jdField_a_of_type_JavaLangString = (parambdwt + "range=" + parambdws.jdField_a_of_type_Long);
-      }
+    this(paramInt, null);
+  }
+  
+  public asgi(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    if (bhsr.a(this.jdField_a_of_type_JavaLangString)) {}
+    for (boolean bool = bhsr.a(paramString); (1 != 0) && (bool); bool = this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
+      return true;
     }
+    return false;
+  }
+  
+  public boolean a(asgi paramasgi)
+  {
+    if (paramasgi == null) {
+      return false;
+    }
+    return a(paramasgi.jdField_a_of_type_Int, paramasgi.jdField_a_of_type_JavaLangString);
   }
 }
 

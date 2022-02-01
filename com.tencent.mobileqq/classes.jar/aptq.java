@@ -1,32 +1,23 @@
-import android.content.Context;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class aptq
-  extends apto
+class aptq
+  implements Animator.AnimatorListener
 {
-  private float[] d = new float[16];
+  aptq(aptp paramaptp) {}
   
-  public aptq(Context paramContext, int paramInt, SensorManager paramSensorManager, aptg paramaptg)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext, paramInt, paramSensorManager, paramaptg);
-    paramContext = paramSensorManager.getDefaultSensor(11);
-    if ((Build.VERSION.SDK_INT >= 9) && (paramContext != null))
-    {
-      this.a.add(paramContext);
-      return;
+    if (aptp.a(this.a) != null) {
+      aptp.a(this.a).a();
     }
-    throw new OrientationProviderNotFound(String.valueOf(3));
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    apti.a(this.d, paramSensorEvent);
-    super.a(this.d);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

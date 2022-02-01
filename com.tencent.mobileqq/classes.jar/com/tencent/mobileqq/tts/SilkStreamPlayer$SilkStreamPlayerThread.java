@@ -3,12 +3,12 @@ package com.tencent.mobileqq.tts;
 import android.app.Application;
 import android.media.AudioTrack;
 import android.os.Handler;
-import bgcf;
-import bgcg;
-import bgch;
-import bgcl;
-import bgnt;
-import bgrn;
+import bhcg;
+import bhch;
+import bhci;
+import bhcm;
+import bhnv;
+import bhrp;
 import com.tencent.commonsdk.util.MD5Coding;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -50,7 +50,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Int = bgrn.a(paramInt);
+      this.jdField_a_of_type_Int = bhrp.a(paramInt);
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     }
@@ -121,7 +121,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
       {
         QLog.d("SilkStreamPlayer", 2, paramInputStream, new Object[0]);
         return;
-        int i = bgrn.a(paramArrayOfByte);
+        int i = bhrp.a(paramArrayOfByte);
         if ((i < 0) || (i > this.jdField_a_of_type_ArrayOfByte.length))
         {
           this.jdField_a_of_type_Boolean = false;
@@ -159,7 +159,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
   
   public void run()
   {
-    SilkStreamPlayer.a(this.this$0, bgcl.a().a(MD5Coding.encodeHexStr(SilkStreamPlayer.a(this.this$0))));
+    SilkStreamPlayer.a(this.this$0, bhcm.a().a(MD5Coding.encodeHexStr(SilkStreamPlayer.a(this.this$0))));
     int j;
     if (SilkStreamPlayer.a(this.this$0) != null) {
       j = 1;
@@ -173,18 +173,18 @@ class SilkStreamPlayer$SilkStreamPlayerThread
         this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a();
         this.jdField_a_of_type_Boolean = true;
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-        localbgcf = new bgcf(SilkStreamPlayer.a(this.this$0));
-        localbgcg = new bgcg(localByteArrayOutputStream);
+        localbhcg = new bhcg(SilkStreamPlayer.a(this.this$0));
+        localbhch = new bhch(localByteArrayOutputStream);
         i = 1;
         if (this.jdField_a_of_type_Boolean)
         {
-          if (!bgnt.g(SilkStreamPlayer.a(this.this$0)))
+          if (!bhnv.g(SilkStreamPlayer.a(this.this$0)))
           {
             this.jdField_a_of_type_Boolean = false;
             ThreadManagerV2.getUIHandlerV2().post(new SilkStreamPlayer.SilkStreamPlayerThread.2(this));
             i = 0;
             if ((j == 0) && (i != 0)) {
-              bgcl.a().a(SilkStreamPlayer.a(this.this$0), localByteArrayOutputStream);
+              bhcm.a().a(SilkStreamPlayer.a(this.this$0), localByteArrayOutputStream);
             }
             this.jdField_a_of_type_Boolean = false;
             if ((this.jdField_a_of_type_AndroidMediaAudioTrack == null) || (this.jdField_a_of_type_AndroidMediaAudioTrack.getState() == 0)) {}
@@ -198,7 +198,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
             if (this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper != null) {
               this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a();
             }
-            localbgcf.close();
+            localbhcg.close();
             if (SilkStreamPlayer.a(this.this$0).available() > 0) {
               SilkStreamPlayer.a(this.this$0).close();
             }
@@ -274,8 +274,8 @@ class SilkStreamPlayer$SilkStreamPlayerThread
       {
         for (;;)
         {
-          bgcf localbgcf;
-          bgcg localbgcg;
+          bhcg localbhcg;
+          bhch localbhch;
           int i;
           if (QLog.isColorLevel())
           {
@@ -297,11 +297,11 @@ class SilkStreamPlayer$SilkStreamPlayerThread
                   SilkStreamPlayer.a(this.this$0).a();
                 }
                 localObject1 = localObject3;
-                arrayOfByte = localbgcf.a();
+                arrayOfByte = localbhcg.a();
                 if ((j == 0) && (arrayOfByte != null))
                 {
                   localObject1 = arrayOfByte;
-                  localbgcg.b(arrayOfByte, 0, arrayOfByte.length);
+                  localbhch.b(arrayOfByte, 0, arrayOfByte.length);
                 }
                 localObject3 = arrayOfByte;
                 localObject1 = arrayOfByte;
@@ -322,7 +322,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
                 {
                   try
                   {
-                    localbgcg.close();
+                    localbhch.close();
                     i = 1;
                   }
                   catch (Exception localException1)

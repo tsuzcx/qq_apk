@@ -1,30 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afqs
-  implements DialogInterface.OnClickListener
+  extends ayxv
 {
-  public afqs(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public afqs(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    this.a.n();
-    if (this.a.jdField_a_of_type_Boolean)
+    TextPreviewTranslateActivity.b(this.a);
+    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-      this.a.f();
-    }
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nlw.a(), paramDialogInterface, "1");
+      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
       return;
+    }
+    String str2 = this.a.getResources().getString(2131698246);
+    String str1 = str2;
+    if (paramTranslateResult != null)
+    {
+      if (TextUtils.isEmpty(paramTranslateResult.e)) {
+        break label92;
+      }
+      str1 = paramTranslateResult.e;
+    }
+    for (;;)
+    {
+      QQToast.a(this.a, 1, str1, 0).a();
+      return;
+      label92:
+      str1 = str2;
+      if (paramTranslateResult.a()) {
+        str1 = this.a.getResources().getString(2131698233);
+      }
     }
   }
 }

@@ -1,21 +1,82 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.os.Looper;
+import android.os.Message;
 
-class abbw
-  implements Animation.AnimationListener
+public class abbw
 {
-  abbw(abbt paramabbt, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  private int jdField_a_of_type_Int = -1;
+  protected abbv a;
+  private abby jdField_a_of_type_Abby = new abby(this, Looper.getMainLooper());
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    this.jdField_a_of_type_Abby.removeCallbacks(null);
+    this.jdField_a_of_type_Abbv = null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(long paramLong)
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Abby);
+    localMessage.what = 7;
+    localMessage.obj = new abbx(paramLong);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(abbv paramabbv)
+  {
+    this.jdField_a_of_type_Abbv = paramabbv;
+  }
+  
+  public void b()
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Abby);
+    localMessage.what = 4;
+    localMessage.sendToTarget();
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_Abbv != null) {
+      this.jdField_a_of_type_Abbv.a(paramLong);
+    }
+  }
+  
+  public void c()
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Abby);
+    localMessage.what = 2;
+    localMessage.sendToTarget();
+  }
+  
+  protected void c(long paramLong)
+  {
+    a(3);
+    if (this.jdField_a_of_type_Abbv != null) {
+      this.jdField_a_of_type_Abbv.a(paramLong);
+    }
+  }
+  
+  protected void d()
+  {
+    a(3);
+    if (this.jdField_a_of_type_Abbv != null) {}
+  }
+  
+  protected void e()
+  {
+    a(4);
+    if (this.jdField_a_of_type_Abbv != null) {}
+  }
+  
+  protected void f()
+  {
+    a(5);
+    if (this.jdField_a_of_type_Abbv != null) {}
+  }
 }
 
 

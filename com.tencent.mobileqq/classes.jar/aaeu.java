@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
-class aaeu
-  implements View.OnClickListener
+public class aaeu
+  extends AnimatorListenerAdapter
 {
-  aaeu(aaet paramaaet) {}
+  public aaeu(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    aaet.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    FollowedRecommendBannerView.a(this.a).notifyDataSetChanged();
+    this.a.clearAnimation();
   }
 }
 

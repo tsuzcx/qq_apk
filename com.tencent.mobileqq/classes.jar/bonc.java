@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.support.annotation.NonNull;
 
-public abstract interface bonc
+public class bonc
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
+  public String a;
+  public boolean a;
+  public String b = "null";
+  public String c = "null";
   
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  @NonNull
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ", ready=" + this.jdField_a_of_type_Boolean + ", extraInfo=" + this.c + ", error=" + this.b;
+  }
 }
 
 

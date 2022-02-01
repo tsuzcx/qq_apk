@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.20.1;
 import com.tencent.qphone.base.util.QLog;
 
-class aepv
-  implements DialogInterface.OnClickListener
+public class aepv
+  implements bjba
 {
-  aepv(aepu paramaepu) {}
+  public aepv(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
-    this.a.a.finish();
-    if (bgnt.d(BaseApplication.getContext())) {
-      aumh.a(this.a.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, String.format("onConfigUpdate configId=%s tag=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
     }
-    new bcsy(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
+    this.a.runOnUiThread(new FriendProfileCardActivity.20.1(this, paramString));
   }
 }
 

@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import bojl;
-import bojv;
+import bplg;
+import bplq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class GetAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bojv.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bplq.a(2);
   private List<FlowMusic> jdField_a_of_type_JavaUtilList;
   private List<FlowMusic> b = new ArrayList();
   private String jdField_c_of_type_JavaLangString;
@@ -136,7 +136,7 @@ public class GetAllFullMusicInfoTask
     }
   }
   
-  private void b()
+  private void d()
   {
     if (!this.b.isEmpty())
     {
@@ -159,7 +159,7 @@ public class GetAllFullMusicInfoTask
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.b);
     }
     Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
-    QIMMusicConfigManager.b(bojl.a().getCurrentAccountUin());
+    QIMMusicConfigManager.b(bplg.a().getCurrentAccountUin());
   }
   
   public int a()
@@ -184,7 +184,7 @@ public class GetAllFullMusicInfoTask
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b((AsyncStep)localObject);
       }
     }
-    b();
+    d();
     return 7;
   }
   
@@ -223,7 +223,7 @@ public class GetAllFullMusicInfoTask
     //   52: iload_2
     //   53: ifne +18 -> 71
     //   56: aload_0
-    //   57: invokespecial 300	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:b	()V
+    //   57: invokespecial 300	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:d	()V
     //   60: aload_0
     //   61: bipush 7
     //   63: invokevirtual 310	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:a	(I)V
@@ -283,7 +283,7 @@ public class GetAllFullMusicInfoTask
     //   109	128	133	finally
   }
   
-  public void c()
+  public void b()
   {
     a();
   }

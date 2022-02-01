@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vas;
 
 import androidx.annotation.Keep;
-import bgyr;
-import bgyv;
-import bhbw;
-import bhcg;
-import bhdf;
+import bhyw;
+import bhza;
+import bici;
+import bics;
+import bidp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class VasQuickUpdateEngine
-  implements bhdf
+  implements bidp
 {
   public static final String ENGINE_CONFIG_PATH = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "quickupdate";
   private static final String TAG = "VasQuickUpdateEngine";
@@ -22,44 +22,6 @@ public class VasQuickUpdateEngine
   private static VasQuickUpdateEngine mInstance;
   public WeakReference<VasExtensionHandler> mWeakHandler;
   ArrayList<VasQuickUpdateEngine.PendingTask> pendingTasks = new ArrayList();
-  
-  @Keep
-  public static void QuickUpdateLog(int paramInt, byte[] paramArrayOfByte)
-  {
-    do
-    {
-      do
-      {
-        do
-        {
-          try
-          {
-            paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-            switch (paramInt)
-            {
-            default: 
-              if (QLog.isColorLevel()) {
-                QLog.d("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
-              }
-              return;
-            }
-          }
-          catch (Throwable paramArrayOfByte)
-          {
-            QLog.e("VasQuickUpdateEngine_Native", 1, "Couldn't convert the jbyteArray to jstring", paramArrayOfByte);
-            return;
-          }
-          QLog.e("VasQuickUpdateEngine_Native", 1, paramArrayOfByte);
-          return;
-        } while (!QLog.isColorLevel());
-        QLog.w("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
-  }
   
   public static byte[] alloc(int paramInt)
   {
@@ -99,15 +61,53 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "getItemInfo bid = " + paramLong + " scid = " + paramString);
     }
-    bhbw localbhbw = bhcg.a(paramLong);
+    bici localbici = bics.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "getItemInfo: get null app " + paramString);
     }
-    if (localbhbw == null) {
+    if (localbici == null) {
       return null;
     }
-    return localbhbw.getItemInfo(localQQAppInterface, paramLong, paramString);
+    return localbici.getItemInfo(localQQAppInterface, paramLong, paramString);
+  }
+  
+  @Keep
+  public static void quickUpdateLog(int paramInt, byte[] paramArrayOfByte)
+  {
+    do
+    {
+      do
+      {
+        do
+        {
+          try
+          {
+            paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
+            switch (paramInt)
+            {
+            default: 
+              if (QLog.isColorLevel()) {
+                QLog.d("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
+              }
+              return;
+            }
+          }
+          catch (Throwable paramArrayOfByte)
+          {
+            QLog.e("VasQuickUpdateEngine_Native", 1, "Couldn't convert the jbyteArray to jstring", paramArrayOfByte);
+            return;
+          }
+          QLog.e("VasQuickUpdateEngine_Native", 1, paramArrayOfByte);
+          return;
+        } while (!QLog.isColorLevel());
+        QLog.w("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
   }
   
   public static boolean safeDeleteFile(File paramFile)
@@ -223,14 +223,14 @@ public class VasQuickUpdateEngine
     //   170: invokevirtual 206	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   173: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   179: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   179: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   182: aload 6
     //   184: astore 9
     //   186: aload 4
     //   188: astore 8
     //   190: aload 5
     //   192: astore 7
-    //   194: new 73	java/lang/String
+    //   194: new 127	java/lang/String
     //   197: dup
     //   198: new 26	java/lang/StringBuilder
     //   201: dup
@@ -244,7 +244,7 @@ public class VasQuickUpdateEngine
     //   220: ldc 222
     //   222: invokevirtual 226	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   225: ldc 228
-    //   227: invokespecial 78	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   227: invokespecial 132	java/lang/String:<init>	([BLjava/lang/String;)V
     //   230: astore_0
     //   231: aload 6
     //   233: astore 9
@@ -252,7 +252,7 @@ public class VasQuickUpdateEngine
     //   237: astore 8
     //   239: aload 5
     //   241: astore 7
-    //   243: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   243: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   246: ifeq +40 -> 286
     //   249: aload 6
     //   251: astore 9
@@ -270,7 +270,7 @@ public class VasQuickUpdateEngine
     //   276: aload_0
     //   277: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   280: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   283: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   283: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   286: aload 6
     //   288: astore 9
     //   290: aload 4
@@ -388,7 +388,7 @@ public class VasQuickUpdateEngine
     //   514: iconst_1
     //   515: ldc_w 265
     //   518: aload_1
-    //   519: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   519: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   522: aload_3
     //   523: ifnull +7 -> 530
     //   526: aload_3
@@ -445,21 +445,21 @@ public class VasQuickUpdateEngine
     //   629: iconst_1
     //   630: ldc_w 272
     //   633: aload_0
-    //   634: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   634: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   637: goto -33 -> 604
     //   640: astore_0
     //   641: ldc 11
     //   643: iconst_1
     //   644: ldc_w 272
     //   647: aload_0
-    //   648: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   648: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   651: goto -37 -> 614
     //   654: astore_0
     //   655: ldc 11
     //   657: iconst_1
     //   658: ldc_w 272
     //   661: aload_0
-    //   662: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   662: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   665: aload_3
     //   666: areturn
     //   667: astore_1
@@ -467,21 +467,21 @@ public class VasQuickUpdateEngine
     //   670: iconst_1
     //   671: ldc_w 272
     //   674: aload_1
-    //   675: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   675: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   678: goto -148 -> 530
     //   681: astore_1
     //   682: ldc 11
     //   684: iconst_1
     //   685: ldc_w 272
     //   688: aload_1
-    //   689: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   689: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   692: goto -152 -> 540
     //   695: astore_1
     //   696: ldc 11
     //   698: iconst_1
     //   699: ldc_w 272
     //   702: aload_1
-    //   703: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   703: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   706: aload_0
     //   707: areturn
     //   708: astore_1
@@ -503,7 +503,7 @@ public class VasQuickUpdateEngine
     //   732: iconst_1
     //   733: ldc_w 274
     //   736: aload_1
-    //   737: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   737: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   740: aload_3
     //   741: ifnull +7 -> 748
     //   744: aload_3
@@ -525,7 +525,7 @@ public class VasQuickUpdateEngine
     //   775: iconst_1
     //   776: ldc_w 272
     //   779: aload_1
-    //   780: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   780: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   783: aload_0
     //   784: areturn
     //   785: astore_1
@@ -533,14 +533,14 @@ public class VasQuickUpdateEngine
     //   788: iconst_1
     //   789: ldc_w 272
     //   792: aload_1
-    //   793: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   793: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   796: goto -48 -> 748
     //   799: astore_1
     //   800: ldc 11
     //   802: iconst_1
     //   803: ldc_w 272
     //   806: aload_1
-    //   807: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   807: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   810: goto -52 -> 758
     //   813: astore_0
     //   814: aconst_null
@@ -568,21 +568,21 @@ public class VasQuickUpdateEngine
     //   855: iconst_1
     //   856: ldc_w 272
     //   859: aload_1
-    //   860: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   860: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   863: goto -33 -> 830
     //   866: astore_1
     //   867: ldc 11
     //   869: iconst_1
     //   870: ldc_w 272
     //   873: aload_1
-    //   874: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   874: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   877: goto -37 -> 840
     //   880: astore_1
     //   881: ldc 11
     //   883: iconst_1
     //   884: ldc_w 272
     //   887: aload_1
-    //   888: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   888: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   891: goto -41 -> 850
     //   894: astore_0
     //   895: aconst_null
@@ -778,12 +778,12 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "deleteFiles bid = " + paramLong + " scid = " + paramString);
     }
-    bhbw localbhbw = bhcg.a(paramLong);
+    bici localbici = bics.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "deleteFiles: get null app " + paramString);
     }
-    return (localbhbw != null) && (localbhbw.deleteFiles(localQQAppInterface, paramLong, paramString));
+    return (localbici != null) && (localbici.deleteFiles(localQQAppInterface, paramLong, paramString));
   }
   
   public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
@@ -798,14 +798,14 @@ public class VasQuickUpdateEngine
   public void onCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
     QLog.d("VasQuickUpdateEngine", 1, "onCompleted bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString3 + " dlFrom = " + paramInt1 + " errorCode = " + paramInt2 + " httpCode = " + paramInt3);
-    bhbw localbhbw = bhcg.a(paramLong);
-    if (localbhbw != null)
+    bici localbici = bics.a(paramLong);
+    if (localbici != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onCompleted: get null app " + paramString1);
       }
-      localbhbw.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
+      localbici.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
     }
   }
   
@@ -818,14 +818,14 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "onProgress bid = " + paramLong1 + " scid = " + paramString1 + " cfgScid = " + paramString2 + "dwProgress = " + paramLong2 + " dwProgressMax = " + paramLong3);
     }
-    bhbw localbhbw = bhcg.a(paramLong1);
-    if (localbhbw != null)
+    bici localbici = bics.a(paramLong1);
+    if (localbici != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onProgress: get null app " + paramString1);
       }
-      localbhbw.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+      localbici.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
     }
   }
   

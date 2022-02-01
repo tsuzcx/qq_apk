@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface bolv
+class bolv
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bolv(boll paramboll) {}
   
-  public abstract void a(bpix parambpix, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
-  
-  public abstract void a(bpnf parambpnf, String paramString, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(bpnj parambpnj, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(bpnj parambpnj, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b(bpix parambpix, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
+  public void onClick(View paramView)
+  {
+    boll.a(this.a, true);
+    boll.a(this.a).countDown();
+    this.a.a.g();
+    boll.a(this.a).cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,38 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class aqtb
+class aqtb
+  implements View.OnTouchListener
 {
-  public void a(aqlg[] paramArrayOfaqlg)
+  aqtb(aqsy paramaqsy) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[handleReadInJoyResetAllConfig] " + paramArrayOfaqlg);
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          new pjc();
-          int j = paramArrayOfaqlg.length;
-          int i = 0;
-          while (i < j)
-          {
-            boolean bool = TextUtils.isEmpty(paramArrayOfaqlg[i].a);
-            if (bool) {}
-            i += 1;
-          }
-        }
-        return;
-      }
-      catch (Exception paramArrayOfaqlg)
-      {
-        QLog.e("ReadinjoyResetFunctionConfProcessor", 1, "[handleReadInJoyResetAllConfig] ", paramArrayOfaqlg);
-      }
-    }
+    return aqsy.a(this.a).onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtb
  * JD-Core Version:    0.7.0.1
  */

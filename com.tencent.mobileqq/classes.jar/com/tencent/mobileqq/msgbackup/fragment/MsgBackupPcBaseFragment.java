@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.widget.Button;
-import anni;
-import awng;
-import awnr;
-import awpn;
-import awpo;
-import awpp;
-import awqu;
-import bglp;
-import bgpa;
+import anzj;
+import axfy;
+import axgj;
+import axif;
+import axig;
+import axih;
+import axjn;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -35,15 +35,15 @@ public class MsgBackupPcBaseFragment
   
   private void n()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_Awnh != null)) {
-      getActivity().addObserver(this.jdField_a_of_type_Awnh);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Axfz != null)) {
+      getActivity().addObserver(this.jdField_a_of_type_Axfz);
     }
   }
   
   private void o()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_Awnh != null)) {
-      getActivity().removeObserver(this.jdField_a_of_type_Awnh);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Axfz != null)) {
+      getActivity().removeObserver(this.jdField_a_of_type_Axfz);
     }
   }
   
@@ -61,37 +61,37 @@ public class MsgBackupPcBaseFragment
     do
     {
       return;
-      localObject = anni.a(2131705712);
-      String str1 = anni.a(2131705698);
-      this.jdField_b_of_type_Int = awng.a().a();
+      localObject = anzj.a(2131705819);
+      String str1 = anzj.a(2131705805);
+      this.jdField_b_of_type_Int = axfy.a().a();
       if (this.jdField_b_of_type_Int == 2) {
-        localObject = anni.a(2131705694);
+        localObject = anzj.a(2131705801);
       }
       if (this.jdField_b_of_type_Int == 2) {
-        str1 = anni.a(2131705700);
+        str1 = anzj.a(2131705807);
       }
-      String str2 = anni.a(2131705708);
+      String str2 = anzj.a(2131705815);
       if (this.jdField_b_of_type_Int == 1) {
-        str2 = anni.a(2131705695);
+        str2 = anzj.a(2131705802);
       }
-      localObject = bglp.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131690403), str1, new awpo(this), new awpp(this));
+      localObject = bhlq.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131690398), str1, new axig(this), new axih(this));
     } while (localFragmentActivity.isFinishing());
-    ((bgpa)localObject).show();
+    ((bhpc)localObject).show();
   }
   
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131690393));
-    if (awng.a().a() == 2) {
-      setTitle(getActivity().getString(2131690390));
+    setTitle(getActivity().getString(2131690388));
+    if (axfy.a().a() == 2) {
+      setTitle(getActivity().getString(2131690385));
     }
   }
   
   protected void c()
   {
     super.c();
-    awqu.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.e) });
+    axjn.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.e) });
   }
   
   protected void d()
@@ -119,7 +119,7 @@ public class MsgBackupPcBaseFragment
       }
       bool1 = bool2;
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!awnr.c) {
+        if (!axgj.c) {
           break label124;
         }
       }
@@ -138,13 +138,13 @@ public class MsgBackupPcBaseFragment
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
       return;
     }
-    String str2 = anni.a(2131705693);
-    this.jdField_b_of_type_Int = awng.a().a();
-    String str1 = anni.a(2131705709);
+    String str2 = anzj.a(2131705800);
+    this.jdField_b_of_type_Int = axfy.a().a();
+    String str1 = anzj.a(2131705816);
     if (this.jdField_b_of_type_Int == 1) {
-      str1 = anni.a(2131705699);
+      str1 = anzj.a(2131705806);
     }
-    bglp.a(localFragmentActivity, 0, null, str1, null, str2, new awpn(this), null).show();
+    bhlq.a(localFragmentActivity, 0, null, str1, null, str2, new axif(this), null).show();
   }
   
   public void m()
@@ -162,7 +162,7 @@ public class MsgBackupPcBaseFragment
   {
     super.onDestroyView();
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, "onDestroyView topage = " + this.jdField_a_of_type_Int + ", bizType = " + awng.a().a() + ", sIsShouQiBtnClick = " + awnr.a);
+      QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, "onDestroyView topage = " + this.jdField_a_of_type_Int + ", bizType = " + axfy.a().a() + ", sIsShouQiBtnClick = " + axgj.a);
     }
     o();
   }

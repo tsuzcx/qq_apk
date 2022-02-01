@@ -1,43 +1,37 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 class bjte
-  implements EIPCResultCallback
+  implements ITMAssistantExchangeURLListenner
 {
-  bjte(bjtd parambjtd, RequestEvent paramRequestEvent) {}
+  bjte(bjtd parambjtd) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
   {
-    QLog.d("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO onCallback");
-    if (paramEIPCResult == null)
+    bjtx.b("DownloadResolver", "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
     {
-      QLog.e("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO error, result is null");
+      ??? = ???.iterator();
+      while (???.hasNext())
+      {
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
+        {
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            bjtd.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+          }
+        }
+      }
+    }
+    synchronized (bjtd.a(this.a))
+    {
+      bjtd.a(this.a).notify();
       return;
     }
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("guid", "");
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("guid", paramEIPCResult);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(localJSONObject);
-        return;
-      }
-      catch (JSONException paramEIPCResult)
-      {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramEIPCResult.getMessage());
-        QLog.e("DeviceInfoPlugin", 1, new Object[] { "evaluateCallback error : ", paramEIPCResult.getMessage() });
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(String.valueOf(-102));
-    QLog.e("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO failed, code return error");
   }
 }
 

@@ -1,38 +1,16 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import kotlin.Metadata;
 
-class atdn
-  implements atdp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
+final class atdn
+  implements DialogInterface.OnCancelListener
 {
-  private bktt jdField_a_of_type_Bktt = new bktt();
+  public static final atdn a = new atdn();
   
-  public atdn(atdm paramatdm)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Bktt.a();
-  }
-  
-  public int a(long paramLong1, long paramLong2)
-  {
-    int j = this.jdField_a_of_type_Bktt.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = bktw.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
-    }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
-    }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bktt.b();
+    bdll.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
   }
 }
 

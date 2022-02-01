@@ -1,54 +1,45 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xef.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb6f.Identity;
-import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
-import tencent.im.oidb.oidb_0xb6f.RspBody;
+import mqq.os.MqqHandler;
 
-class adgr
-  extends niv
+public class adgr
+  implements adci
 {
-  adgr(adgq paramadgq, String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static void a(MsgType0x210 paramMsgType0x210)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]");
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.report", 2, "req error");
-      }
+    int i = paramMsgType0x210.vProtobuf.length;
+    if (i < 6) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]. vProtoBuf.length is " + i);
     }
+    int j;
+    byte[] arrayOfByte1;
     do
     {
-      for (;;)
-      {
-        return;
-        paramBundle = new oidb_0xb6f.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.report_freq_rsp.has()) {
-            break label146;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      return;
+      j = (paramMsgType0x210.vProtobuf[0] << 4) + paramMsgType0x210.vProtobuf[1];
+      arrayOfByte1 = new byte[4];
+      System.arraycopy(paramMsgType0x210.vProtobuf, 2, arrayOfByte1, 0, 4);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]. msgType=" + j);
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
-    return;
-    label146:
-    adgq.a(this.jdField_a_of_type_Adgq, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
+      ThreadManager.getUIHandler().post(new SubType0xef.1(j));
+    } while (i <= 6);
+    byte[] arrayOfByte2 = new byte[i - 6];
+    System.arraycopy(paramMsgType0x210.vProtobuf, 6, arrayOfByte2, 0, i - 6);
+    apdl.a(j, arrayOfByte1, arrayOfByte2);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramMsgType0x210);
+    return null;
   }
 }
 

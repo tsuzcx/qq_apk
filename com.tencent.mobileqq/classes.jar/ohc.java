@@ -1,14 +1,22 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import org.json.JSONObject;
 
-class ohc
-  extends bkfi
+final class ohc
+  implements ViewFactory.FoundClickableViewListener
 {
-  ohc(ohb paramohb) {}
+  ohc(String paramString, JSONObject paramJSONObject) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFound(ViewBase paramViewBase)
   {
-    oha.a(this.a.a.this$0, true);
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      paramViewBase.setOnClickListener(new ohe(this));
+      return;
+    }
+    paramViewBase.setOnClickListener(new ohd(this));
   }
 }
 

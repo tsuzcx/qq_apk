@@ -1,6 +1,6 @@
 package com.tencent.avgame.floatwindow;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.MotionEvent;
@@ -9,7 +9,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import mxa;
+import mxz;
 
 public class FloatWindowBaseLayout
   extends FrameLayout
@@ -18,7 +18,7 @@ public class FloatWindowBaseLayout
   public int a;
   WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  mxa jdField_a_of_type_Mxa;
+  mxz jdField_a_of_type_Mxz;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   public int b;
@@ -36,7 +36,7 @@ public class FloatWindowBaseLayout
   
   private void a()
   {
-    this.e = afur.a(3.0F, getResources());
+    this.e = agej.a(3.0F, getResources());
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = -3;
@@ -278,16 +278,16 @@ public class FloatWindowBaseLayout
         if ((Math.abs(f1 - this.jdField_c_of_type_Float) > this.e) && (Math.abs(f2 - this.d) > this.e) && (this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
           this.jdField_b_of_type_Boolean = true;
         }
-        if ((this.jdField_a_of_type_Mxa != null) && (this.jdField_b_of_type_Boolean)) {
-          this.jdField_a_of_type_Mxa.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
+        if ((this.jdField_a_of_type_Mxz != null) && (this.jdField_b_of_type_Boolean)) {
+          this.jdField_a_of_type_Mxz.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
         }
         if (!this.jdField_b_of_type_Boolean) {
           bool1 = super.dispatchTouchEvent(paramMotionEvent);
         }
       }
     }
-    if ((this.jdField_a_of_type_Mxa != null) && (this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_Mxa.b();
+    if ((this.jdField_a_of_type_Mxz != null) && (this.jdField_b_of_type_Boolean)) {
+      this.jdField_a_of_type_Mxz.b();
     }
     if (this.jdField_b_of_type_Boolean) {}
     for (bool1 = bool2;; bool1 = super.dispatchTouchEvent(paramMotionEvent))
@@ -305,12 +305,12 @@ public class FloatWindowBaseLayout
   
   public void e()
   {
-    this.jdField_a_of_type_Mxa = null;
+    this.jdField_a_of_type_Mxz = null;
   }
   
-  public void setFloatPositionChangeCallback(mxa parammxa)
+  public void setFloatPositionChangeCallback(mxz parammxz)
   {
-    this.jdField_a_of_type_Mxa = parammxa;
+    this.jdField_a_of_type_Mxz = parammxz;
   }
 }
 

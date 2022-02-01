@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import apek;
-import apew;
+import apsa;
+import apsm;
 
 class QRScanEntryView$1
   implements Runnable
@@ -10,7 +10,7 @@ class QRScanEntryView$1
   
   public void run()
   {
-    apek.a().a(QRScanEntryView.a(this.this$0), QRScanEntryView.b(this.this$0), apew.a, apew.b);
+    apsa.a().a(QRScanEntryView.a(this.this$0), QRScanEntryView.b(this.this$0), apsm.a, apsm.b);
   }
 }
 

@@ -1,49 +1,30 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.9.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class ahtw
-  implements atea
+  extends fz
 {
-  public ahtw(AIOImageProviderService paramAIOImageProviderService, atnh paramatnh, long paramLong) {}
+  ahtw(ahtp paramahtp) {}
   
-  public void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
-  {
-    ahuo localahuo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (localahuo == null)
-    {
-      QLog.i("AIOImageProviderService", 2, "onDownloadProgressUpdate: callback = null , ctxId[" + this.jdField_a_of_type_Atnh.a() + "] ");
-      return;
-    }
-    paramInt1 = (int)((float)paramLong1 / (float)paramLong2 * 10000.0F);
-    localahuo.a(this.jdField_a_of_type_Long, 0, 269484035, paramInt1, paramLong2, false);
-  }
+  public void a(ChatMessage paramChatMessage, int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
   {
-    ahuo localahuo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (localahuo == null)
+    if ((!paramBoolean) && (paramChatMessage != null))
     {
-      QLog.i("AIOImageProviderService", 2, "onDownloadProgressUpdate: error, ctxId[" + this.jdField_a_of_type_Long + "] ");
+      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
+      ThreadManager.excute(new TextItemBuilder.9.1(this, paramChatMessage), 128, null, true);
+    }
+    String str = this.a.a.c();
+    if (paramBoolean) {}
+    for (paramChatMessage = "1";; paramChatMessage = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
       return;
     }
-    if ((paramInt2 == -7003) || (paramInt2 == -6101)) {}
-    for (paramInt1 = 16;; paramInt1 = 0)
-    {
-      localahuo.a(this.jdField_a_of_type_Long, paramInt1, 269484034, 2, paramString, false);
-      return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    ahuo localahuo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (localahuo == null)
-    {
-      QLog.i("AIOImageProviderServiceXOXO", 2, "onDownloadFinish callback = null , ctxId[" + this.jdField_a_of_type_Long + "] ");
-      return;
-    }
-    QLog.i("AIOImageProviderService", 1, "-----------> notify download finish:" + this.jdField_a_of_type_Long);
-    localahuo.a(this.jdField_a_of_type_Long, 1, 269484034, 1, paramString, false);
   }
 }
 

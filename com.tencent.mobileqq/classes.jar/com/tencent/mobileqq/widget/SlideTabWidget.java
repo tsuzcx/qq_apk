@@ -9,8 +9,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TabWidget;
-import bicm;
-import bicn;
+import bjdk;
+import bjdl;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class SlideTabWidget
@@ -20,8 +20,8 @@ public class SlideTabWidget
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new bicm(this);
-  private bicn jdField_a_of_type_Bicn;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bjdk(this);
+  private bjdl jdField_a_of_type_Bjdl;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private boolean jdField_b_of_type_Boolean;
@@ -30,13 +30,13 @@ public class SlideTabWidget
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166994));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166998));
   }
   
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166994));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166998));
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -68,7 +68,7 @@ public class SlideTabWidget
         }
         paramCanvas.drawRect(i, getHeight() - jdField_c_of_type_Int, j, getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bicn == null) || (!this.jdField_c_of_type_Boolean));
+    } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bjdl == null) || (!this.jdField_c_of_type_Boolean));
     this.jdField_c_of_type_Boolean = false;
     post(new SlideTabWidget.2(this));
   }
@@ -93,9 +93,9 @@ public class SlideTabWidget
     }
   }
   
-  public void setOnTabSlideCompleteListener(bicn parambicn)
+  public void setOnTabSlideCompleteListener(bjdl parambjdl)
   {
-    this.jdField_a_of_type_Bicn = parambicn;
+    this.jdField_a_of_type_Bjdl = parambjdl;
   }
   
   public void setSlideAnimaPlay(boolean paramBoolean)

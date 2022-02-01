@@ -1,26 +1,72 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
 
 public class avzj
-  implements View.OnTouchListener
 {
-  public avzj(LocationPickFragment paramLocationPickFragment) {}
+  private static avzj jdField_a_of_type_Avzj = new avzj();
+  private PluginProcessKiller jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller;
+  private DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private String jdField_a_of_type_JavaLangString;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static avzj a()
   {
-    if (1 == paramMotionEvent.getAction())
+    return jdField_a_of_type_Avzj;
+  }
+  
+  private void a(String paramString, DynamicPluginManager paramDynamicPluginManager, PluginProcessKiller paramPluginProcessKiller)
+  {
+    int j = 1;
+    int i;
+    if ((paramString != null) && (paramString.equals("Now")))
     {
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
+      i = 1;
+      if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals("Now"))) {
+        break label55;
       }
-      bcst.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
     }
-    return false;
+    for (;;)
+    {
+      if ((i == 0) && (j == 0)) {
+        break label61;
+      }
+      return;
+      i = 0;
+      break;
+      label55:
+      j = 0;
+    }
+    label61:
+    if ((paramString != null) && (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager != null)
+      {
+        PluginProcessKiller localPluginProcessKiller = (PluginProcessKiller)this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.getManagerImpl();
+        if (localPluginProcessKiller != null) {
+          localPluginProcessKiller.onKillPluginProcess();
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller != null) {
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller.onKillPluginProcess();
+      }
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller = paramPluginProcessKiller;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString, PluginProcessKiller paramPluginProcessKiller)
+  {
+    a(paramString, null, paramPluginProcessKiller);
+  }
+  
+  public void a(String paramString, DynamicPluginManager paramDynamicPluginManager)
+  {
+    a(paramString, paramDynamicPluginManager, null);
   }
 }
 

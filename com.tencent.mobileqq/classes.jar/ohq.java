@@ -1,41 +1,41 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
 
-final class ohq
-  implements apvt
+class ohq
+  implements View.OnClickListener
 {
-  ohq(WeakReference paramWeakReference, boolean paramBoolean, String paramString1, String paramString2) {}
+  ohq(ohp paramohp) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (ohp.a() == paramInt1)
+    if (paz.a()) {}
+    for (;;)
     {
-      apwh.a().a(paramInt1);
-      ohp.a(-1);
-      if ((2 != paramInt2) && (1 != paramInt2)) {
-        break label123;
-      }
-    }
-    label123:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      Object localObject = localContext;
-      if (localContext == null) {
-        localObject = BaseApplicationImpl.getContext();
-      }
-      if ((-1 == paramInt2) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (localObject != null)) {
-        pha.e((Context)localObject, this.jdField_a_of_type_JavaLangString);
-      }
-      localObject = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramInt2 = i;; paramInt2 = 0)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent();
+      localIntent.putExtra("currentIndex", ohp.a(this.a).getCurrentItem());
+      PublicTransFragmentActivity.b(ohp.a(this.a), localIntent, ReadInJoyChannelPanelFragment.class);
+      try
       {
-        pha.a((String)localObject, paramInt1, paramInt2);
-        return;
+        ReadInJoyChannelPanelFragment.a("0X8009497", new paa().b().c(this.a.a()).a());
+        ohp.a(this.a, false);
+        ohp.a(this.a).setVisibility(8);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(localJSONException));
+        }
       }
     }
   }

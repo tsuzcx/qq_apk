@@ -1,39 +1,18 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
 
-class bfua
-  extends anmu
+public class bfua
+  implements bdyg
 {
-  bfua(bftx parambftx) {}
+  public bfua(TroopEnterEffectController.3 param3) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void a(bdxj parambdxj)
   {
-    if (!this.a.b(paramString)) {}
-    while (!paramBoolean1) {
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
       return;
     }
-    bftx.a(this.a, paramString);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = "" + paramObject;
-    if (!this.a.b(paramObject)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean);
-      bftx.a(this.a, paramObject);
-    } while (!(this.a.a instanceof QQAppInterface));
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
-    ((anmw)this.a.a.getManager(51)).d(paramObject);
-    bajn.a(localQQAppInterface, paramObject);
-    bdqr.a(localQQAppInterface, paramObject);
-    localQQAppInterface.a().a().a(paramObject, true);
+    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, parambdxj));
   }
 }
 

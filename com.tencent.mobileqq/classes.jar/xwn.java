@@ -1,84 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity.1.1;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class xwn
-  extends wfi
 {
-  private List<QQStoryUserInfo> a;
+  public int a;
+  public Drawable a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
   
-  public xwn(QQStoryShieldListActivity paramQQStoryShieldListActivity)
+  public xwn(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370007);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370006));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369998));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369995));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370005));
+    this.c = ((TextView)paramView.findViewById(2131361946));
+    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298905);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839619);
   }
   
-  private void a(List<QQStoryUserInfo> paramList)
+  public void a()
   {
-    ThreadManager.getSubThreadHandler().post(new QQStoryShieldListActivity.1.1(this, paramList));
-  }
-  
-  public void a(boolean paramBoolean1, List<QQStoryUserInfo> paramList, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString)
-  {
-    if (!TextUtils.equals(QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity), paramString)) {
-      return;
-    }
-    if (paramBoolean1)
-    {
-      if (!paramBoolean2)
-      {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        paramList = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Wff;
-        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {}
-        for (paramBoolean1 = true;; paramBoolean1 = false)
-        {
-          paramList.a(paramArrayOfByte, 10, paramBoolean1, QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity));
-          return;
-        }
-      }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(this.jdField_a_of_type_JavaUtilList);
-      paramList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Wfg.jdField_b_of_type_JavaUtilList = paramList;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Wfg.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        paramArrayOfByte = paramList.iterator();
-        while (paramArrayOfByte.hasNext())
-        {
-          paramString = (QQStoryUserInfo)paramArrayOfByte.next();
-          this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Wfg.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.uin, paramString);
-        }
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Wfg.jdField_a_of_type_JavaUtilList = paramList;
-      }
-      a(paramList);
-      QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-    QQStoryShieldListActivity.b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Biax.b();
-    if (paramBoolean1)
-    {
-      List localList = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Wfg.a(paramBoolean3);
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(localList);
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity, 2131694182, 0).b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getTitleBarHeight());
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839614);
+    this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839619);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.c.setVisibility(8);
   }
 }
 

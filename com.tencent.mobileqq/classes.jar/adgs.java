@@ -1,59 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgs
-  implements adgo
+  implements adci
 {
-  adgp jdField_a_of_type_Adgp;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  
-  private void a()
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
-        {
-          IntentFilter localIntentFilter = new IntentFilter();
-          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
-          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
-          adgt localadgt = new adgt(this);
-          BaseApplicationImpl.getContext().registerReceiver(localadgt, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localadgt;
-        }
-        return;
-      }
-      finally {}
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "handleC2COnlinePushMsg0x210Resp invoked. info: AIO story feed. msg0x210.uSubMsgType: " + paramMsgType0x210.uSubMsgType);
     }
+    paramQQAppInterface = (wiz)paramQQAppInterface.getManager(253);
+    long l = paramMsgInfo.lFromUin;
+    paramQQAppInterface.a(paramQQAppInterface.a(paramMsgType0x210.vProtobuf, String.valueOf(l)));
   }
   
-  public void a(adgp paramadgp)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    this.jdField_a_of_type_Adgp = paramadgp;
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key", paramString1);
-    localBundle.putInt("type", paramInt);
-    localBundle.putString("appid", paramString2);
-    adeg.a(2, localBundle, null);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key", paramString1);
-    localBundle.putInt("type", paramInt);
-    localBundle.putString("appid", paramString2);
-    localBundle.putString("api", paramString3);
-    adeg.a(3, localBundle, null);
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

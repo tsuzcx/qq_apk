@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import android.graphics.drawable.Drawable;
-import bghn;
+import bhho;
 
 class ImageWorker$1$1
   implements Runnable

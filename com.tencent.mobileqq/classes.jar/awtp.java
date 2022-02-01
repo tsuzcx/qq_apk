@@ -1,14 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
+import android.graphics.Point;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.List;
 
-public class awtp
+public abstract interface awtp
 {
-  public int a;
-  public ImageView a;
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public String a;
+  public abstract void a(LocationRoom.Venue paramVenue);
+  
+  public abstract void a(LatLng paramLatLng);
+  
+  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
+  
+  public abstract void a(boolean paramBoolean, Point paramPoint);
+  
+  public abstract void a(boolean paramBoolean, awtq paramawtq);
 }
 
 

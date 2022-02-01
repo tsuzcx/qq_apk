@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
-class adhf
-  implements DialogInterface.OnCancelListener
+public class adhf
+  extends adic
 {
-  adhf(adhc paramadhc, DialogInterface.OnCancelListener paramOnCancelListener) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public int a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
-    {
-      QLog.e("SdkAuthDialog", 1, "cancelListener is null");
-      return;
-    }
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
-    bcst.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().f(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (23 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidp;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import twi;
+import aean;
+import ainh;
 
 public class PublicAccountChatPie$47
   implements Runnable
 {
-  public PublicAccountChatPie$47(aidp paramaidp) {}
+  public PublicAccountChatPie$47(ainh paramainh) {}
   
   public void run()
   {
-    twi.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    aean.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

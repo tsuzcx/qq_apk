@@ -353,6 +353,13 @@ public class StickerController
     this.stickerStateCallback = paramStickerStateCallback;
   }
   
+  public void setStickerTouchEnable(boolean paramBoolean)
+  {
+    if (this.stickerContext != null) {
+      this.stickerContext.setTouchable(paramBoolean);
+    }
+  }
+  
   public TAVSticker updateTextSticker(TextEditorData paramTextEditorData)
   {
     Object localObject1;
